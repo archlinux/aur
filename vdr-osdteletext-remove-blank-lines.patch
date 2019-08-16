@@ -1,0 +1,263 @@
+Author: kanadakruemel
+https://www.vdr-portal.de/forum/index.php?thread/131627-gel%C3%B6st-vdr-plugin-osdteletxt-0-9-7/&postID=1303329#post1303329
+
+diff --git a/displaybase.c b/displaybase.c
+index b01079a..73c2f0b 100644
+--- a/displaybase.c
++++ b/displaybase.c
+@@ -20,9 +20,8 @@
+ #include "txtfont.h"
+ #include <iostream>
+ 
+-std::string cDisplay::GFXFontFootprint = "";
+ std::string cDisplay::TXTFontFootprint = "";
+-int cDisplay::realFontWidths[8] = {0};
++int cDisplay::realFontWidths[4] = {0};
+ 
+ cDisplay::cDisplay(int width, int height)
+     : Zoom(Zoom_Off), Concealed(false), Blinked(false), FlushLock(0),
+@@ -32,17 +31,12 @@ cDisplay::cDisplay(int width, int height)
+       ScaleX(1), ScaleY(1), OffsetX(0), OffsetY(0),
+       MessageFont(cFont::GetFont(fontSml)), MessageX(0), MessageY(0),
+       MessageW(0), MessageH(0),
+-      GFXFont(0), GFXDblWFont(0), GFXDblHFont(0), GFXDblHWFont(0),
+       TXTFont(0), TXTDblWFont(0), TXTDblHFont(0), TXTDblHWFont(0)
+ {
+ }
+ 
+ cDisplay::~cDisplay() {
+     DELETENULL(osd);
+-    DELETENULL(GFXFont);
+-    DELETENULL(GFXDblWFont);
+-    DELETENULL(GFXDblHFont);
+-    DELETENULL(GFXDblHWFont);
+     DELETENULL(TXTFont);
+     DELETENULL(TXTDblWFont);
+     DELETENULL(TXTDblHFont);
+@@ -53,22 +47,27 @@ cDisplay::~cDisplay() {
+ cFont *cDisplay::GetFont(const char *name, int fontIndex, int height, int width) {
+     cFont *font = cFont::CreateFont(name, height, width);
+     if (font != NULL) {
+-        int realWidth = font->Width(' ');
+-        for (int i = width * width / realWidth; i < width * 4; i++) {
+-            DELETENULL(font);
+-            font = cFont::CreateFont(name, height, i);
+-            if (font != NULL) {
+-                realWidth = font->Width(' ');
+-                if (realWidth > width) {
+-                    DELETENULL(font);
+-                    width = i - 1;
+-                    font = cFont::CreateFont(name, height, width);
+-                    realFontWidths[fontIndex] = width;
+-                    break;
++        int realWidth = font->Width('g');
++        if (realWidth > 0) {
++            for (int i = width * width / realWidth; i < width * 4; i++) {
++                DELETENULL(font);
++                font = cFont::CreateFont(name, height, i);
++                if (font != NULL) {
++                        realWidth = font->Width('g');
++                    if (realWidth > width) {
++                        DELETENULL(font);
++                        width = i - 1;
++                        font = cFont::CreateFont(name, height, width);
++                        realFontWidths[fontIndex] = width;
++                        break;
++                    }
+                 }
+             }
++        } else {
++            esyslog("OSD-Teletext: font %s returned realWidth of 0 (should not happen, please try a different font)", name);
+         }
+     }
++    isyslog("OSD-Teletext: font %s index %d probed size (w/h) = (%d/%d), char width: %d", name, fontIndex, width, height, font->Width("g"));
+     return font;
+ }
+ 
+@@ -102,48 +101,36 @@ void cDisplay::InitScaler() {
+     ScaleX=(480<<16)/width;
+     ScaleY=(250<<16)/height;
+ 
+-    fontWidth = outputWidth * 2 / 40;
++    fontWidth = (outputWidth * 2 / 40) & 0xfffe;
+     if (Zoom == Zoom_Off) {
+-        fontHeight = outputHeight * 2 / 25;
++        fontHeight = (outputHeight * 2 / 25) & 0xfffe;
+     } else {
+-        fontHeight = outputHeight * 2 / 13;
++        fontHeight = (outputHeight * 2 / 13) & 0xfffe;
+     }
++    // use even font size for double sized characters (prevents rounding errors during character display)
++    fontWidth &= 0xfffe;
++    fontHeight &= 0xfffe;
+ 
+-    int gfxFontWidth = fontWidth;
+-    int gfxFontHeight = fontHeight;
+-    const char *gfxFontName = "teletext2:Medium";
+-    std::string footprint = GetFontFootprint(gfxFontName);
+-
+-    if (footprint.compare(GFXFontFootprint) == 0) {
+-        GFXFont      = cFont::CreateFont(gfxFontName, gfxFontHeight / 2, realFontWidths[0]);
+-        GFXDblWFont  = cFont::CreateFont(gfxFontName, gfxFontHeight / 2, realFontWidths[1]);
+-        GFXDblHFont  = cFont::CreateFont(gfxFontName, gfxFontHeight , realFontWidths[2]);
+-        GFXDblHWFont = cFont::CreateFont(gfxFontName, gfxFontHeight, realFontWidths[3]);
+-    } else {
+-        GFXFontFootprint = footprint;
+-        GFXFont      = GetFont(gfxFontName, 0, gfxFontHeight / 2, gfxFontWidth / 2);
+-        GFXDblWFont  = GetFont(gfxFontName, 1, gfxFontHeight / 2, gfxFontWidth);
+-        GFXDblHFont  = GetFont(gfxFontName, 2, gfxFontHeight , gfxFontWidth / 2);
+-        GFXDblHWFont = GetFont(gfxFontName, 3, gfxFontHeight, gfxFontWidth);
+-    }
+ 
++    isyslog("OSD-Teletext: osd width = %d, height = %d", outputWidth, outputHeight);
++    isyslog("OSD-Teletext: font width * 2 = %d, height = %d", fontWidth, fontHeight);
+ 
+     int txtFontWidth = fontWidth;
+     int txtFontHeight = fontHeight;
+     const char *txtFontName = ttSetup.txtFontName;
+-    footprint = GetFontFootprint(txtFontName);
++    std::string footprint = GetFontFootprint(txtFontName);
+ 
+     if (footprint.compare(TXTFontFootprint) == 0) {
+-        TXTFont      = cFont::CreateFont(txtFontName, txtFontHeight / 2, realFontWidths[4]);
+-        TXTDblWFont  = cFont::CreateFont(txtFontName, txtFontHeight / 2, realFontWidths[5]);
+-        TXTDblHFont  = cFont::CreateFont(txtFontName, txtFontHeight, realFontWidths[6]);
+-        TXTDblHWFont = cFont::CreateFont(txtFontName, txtFontHeight, realFontWidths[7]);
++        TXTFont      = cFont::CreateFont(txtFontName, txtFontHeight / 2, realFontWidths[0]);
++        TXTDblWFont  = cFont::CreateFont(txtFontName, txtFontHeight / 2, realFontWidths[1]);
++        TXTDblHFont  = cFont::CreateFont(txtFontName, txtFontHeight, realFontWidths[2]);
++        TXTDblHWFont = cFont::CreateFont(txtFontName, txtFontHeight, realFontWidths[3]);
+     } else {
+         TXTFontFootprint = footprint;
+-        TXTFont      = GetFont(txtFontName, 4, txtFontHeight / 2, txtFontWidth / 2);
+-        TXTDblWFont  = GetFont(txtFontName, 5, txtFontHeight / 2, txtFontWidth);
+-        TXTDblHFont  = GetFont(txtFontName, 6, txtFontHeight, txtFontWidth / 2);
+-        TXTDblHWFont = GetFont(txtFontName, 7, txtFontHeight, txtFontWidth);
++        TXTFont      = GetFont(txtFontName, 0, txtFontHeight / 2, txtFontWidth / 2);
++        TXTDblWFont  = GetFont(txtFontName, 1, txtFontHeight / 2, txtFontWidth);
++        TXTDblHFont  = GetFont(txtFontName, 2, txtFontHeight, txtFontWidth / 2);
++        TXTDblHWFont = GetFont(txtFontName, 3, txtFontHeight, txtFontWidth);
+     }
+ }
+ 
+@@ -353,22 +340,11 @@ void cDisplay::DrawChar(int x, int y, cTeletextChar c) {
+         h = fontHeight;
+     }
+ 
++    bool isGraphicsChar;
+     if (charset == CHARSET_GRAPHICS_G1 || charset == CHARSET_GRAPHICS_G1_SEP) {
+-        switch(fontType) {
+-            case 0:
+-                font = GFXFont;
+-                break;
+-            case 1:
+-                font = GFXDblWFont;
+-                break;
+-            case 2:
+-                font = GFXDblHFont;
+-                break;
+-            case 3:
+-                font = GFXDblHWFont;
+-                break;
+-        }
++        isGraphicsChar = true;
+     } else {
++        isGraphicsChar = false;
+         switch(fontType) {
+             case 0:
+                 font = TXTFont;
+@@ -401,8 +377,54 @@ void cDisplay::DrawChar(int x, int y, cTeletextChar c) {
+     }
+ 
+     if (drawChar) {
+-        osd->DrawRectangle(vx, vy, vx + w, vy + h, bg);
++        if (isGraphicsChar) {
++            unsigned int buffer[10];
++            unsigned int *charmap;
++
++            // Get character face:
++            charmap=GetFontChar(c,buffer);
++            if (!charmap) {
++                // invalid - clear buffer
++                bzero(&buffer,sizeof buffer);
++                charmap=buffer;
++            }
++
++            cBitmap charBm(w, h, 24);
++            charBm.DrawRectangle(0, 0, w, h, bg);
++
++            // draw scaled graphics char
++            int virtY = 0;
++            while (virtY<=h) {
++                int bitline;
++                bitline=charmap[virtY * 10 / h];
++
++                int virtX=0;
++                while (virtX < w) {
++                    int bit=(virtX * 12 / w);
++                    if (bitline&(0x8000>>bit)) {
++                        charBm.DrawPixel(virtX,virtY,fg);
++//                    } else {
++//                        charBm.DrawPixel(virtX,virtY,bg);
++                    }
++                    virtX++;
++                }
++                virtY++;
++            }
++
++            osd->DrawBitmap(vx, vy, charBm);
++        } else {
++#if 0
++            // hi level osd devices (e.g. rpi and softhddevice openglosd currently do not support monospaced fonts with arbitrary width
++//            osd->DrawRectangle(vx, vy, vx + w - 1, vy + h - 1, bg);
+         osd->DrawText(vx, vy, buf, fg, bg, font);
++#else
++            cBitmap charBm(w, h, 24);
++            charBm.DrawRectangle(0, 0, w, h, bg);
++//            charBm.DrawText(0, 0, buf, fg, bg, font);
++            charBm.DrawText(0, 0, buf, fg, 0, font);
++            osd->DrawBitmap(vx, vy, charBm);
++#endif
++        }
+     }
+ 
+ }
+diff --git a/displaybase.h b/displaybase.h
+index 245a62d..91c3e95 100644
+--- a/displaybase.h
++++ b/displaybase.h
+@@ -71,12 +71,7 @@ protected:
+ 
+     const cFont *MessageFont;
+     int MessageX,MessageY,MessageW,MessageH;
+-    // Message overlay window, position and font
+ 
+-    const cFont *GFXFont;
+-    const cFont *GFXDblWFont;
+-    const cFont *GFXDblHFont;
+-    const cFont *GFXDblHWFont;
+     const cFont *TXTFont;
+     const cFont *TXTDblWFont;
+     const cFont *TXTDblHFont;
+@@ -84,7 +79,7 @@ protected:
+     int fontHeight;
+     int fontWidth;
+ 
+-    static int realFontWidths[8];
++    static int realFontWidths[4];
+ 
+ 
+     class cBox {
+diff --git a/txtfont.h b/txtfont.h
+index 551a7ed..e6e4cac 100644
+--- a/txtfont.h
++++ b/txtfont.h
+@@ -5,6 +5,8 @@
+ 
+ #include "txtrender.h"
+ 
++unsigned int* GetFontChar(cTeletextChar c, unsigned int *buffer);
++
+ unsigned int GetVTXChar(cTeletextChar c);
+ 
+ #endif
