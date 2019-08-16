@@ -1,4 +1,5 @@
-# Maintainer: Josh Hebert <aksr at t-com dot me>
+# Maintainer: Frederick Zhang <frederick888@tsundere.moe>
+# Contributor: Josh Hebert <aksr at t-com dot me>
 pkgname=msi-keyboard-git
 pkgver=r12.cca8ccf
 pkgrel=1
