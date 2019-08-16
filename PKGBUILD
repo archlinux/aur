@@ -5,7 +5,7 @@
 pkgbase=dotnet-core-preview
 pkgname=('dotnet-host-preview' 'dotnet-runtime-preview' 'aspnet-runtime-preview' 'dotnet-sdk-preview')
 pkgver=3.0.0+100+preview.013656
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://www.microsoft.com/net/core'
 license=('MIT')
@@ -16,11 +16,9 @@ makedepends=(
 options=('staticlibs')
 source=(
   'https://download.visualstudio.microsoft.com/download/pr/a0e368ac-7161-4bde-a139-1a3ef5a82bbe/439cdbb58950916d3718771c5d986c35/dotnet-sdk-3.0.100-preview8-013656-linux-x64.tar.gz'
-  'https://download.visualstudio.microsoft.com/download/pr/0bff102b-7983-4947-be67-be740e168ec1/d4b2a3818f2849501710b6ee16a1e2be/aspnetcore-runtime-3.0.0-preview8.19405.7-linux-x64.tar.gz'
   'dotnet.sh'
 )
 sha256sums=('6ce2353764f57a8721fb4caa43851c826913ad3bd24640caeb5503432bd45ca8'
-            '50e81dab852bdf0d95ae6d5fe39860dff676282cd2fe4e3824d76230117be3eb'
             'f4cb02490234b853946477f82514f0c6247b55b08b2e85fae98e99a6e6974edd')
 
 package_dotnet-host-preview() {
@@ -65,7 +63,7 @@ package_dotnet-sdk-preview() {
   conflicts=('dotnet-sdk-3.0')
 
   install -dm 755 "${pkgdir}"/{opt/dotnet,usr/share/licenses}
-  cp -dr --no-preserve='ownership' sdk "${pkgdir}"/opt/dotnet/
+  cp -dr --no-preserve='ownership' packs sdk templates "${pkgdir}"/opt/dotnet/
   ln -s dotnet-host-preview "${pkgdir}"/usr/share/licenses/dotnet-sdk-preview
 }
 
