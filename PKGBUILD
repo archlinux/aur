@@ -3,8 +3,9 @@ pkgname=firefox-china-extra
 _firefoxname=firefox
 pkgver=68.0.2
 _downpkgver=68.0
-pkgrel=1
-pkgdesc="Firefox Chinese extensions pack,provides Firefox China sync services.火狐浏览器的中文包，提供中国版同步。"
+pkgrel=2
+pkgdesc="Firefox Chinese extensions pack,provides Firefox China sync services,China search,screenshot,tab optimised,address bar QR Code and drag gesture.火狐浏览器的中文包，提供中国版同步、中国的搜索引擎
+截图、标签页优化、地址栏里的二维码和拖拽手势"
 license=('MPL')
 depends=('firefox')
 arch=('any')
