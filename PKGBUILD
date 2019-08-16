@@ -4,13 +4,14 @@ pkgname=ambertools
 _srcname=amber
 pkgver=19
 _releasever=18
-pkgrel=1
+_gccver=7.4.1
+pkgrel=2
 pkgdesc="Biomolecular simulation package (tools only)"
 url="http://ambermd.org/"
 license=('GPL' 'LGPL')
 arch=('x86_64')
-depends=('fakeroot' 'zlib' 'bzip2' 'gcc-libs' 'flex' 'python2' 'python2-matplotlib' 'tk' 'boost' 'netcdf' 'netcdf-fortran' 'openmpi<4.0.0')
-makedepends=('make' 'gcc' 'gcc-fortran' 'patch' 'tcsh' 'imake')
+depends=('fakeroot' 'zlib' 'bzip2' 'gcc7-libs' 'flex' 'python2' 'python2-matplotlib' 'tk' 'openmpi3-gcc7')
+makedepends=('make' 'gcc7' 'gcc7-fortran' 'patch' 'tcsh' 'imake')
 optdepends=('plumed: metadynamics support'
             'plumed-mpi: metadynamics support with MPI'
             'cuda: GPU acceleration support for PBSA and CPPTRAJ'
@@ -19,7 +20,9 @@ md5sums=('afffe8a5473a0bd143b98f0396f52f0f'
          '89d470dc64e054d07b9906344d1218ec'
          'eff0977b0c5d2da8ea74186dadd9ed01'
          '2e4a52fb820aae6a0b707fec89cb23d1'
-         '5b1c2586560377ff39726b83143bd9fd')
+         '5b1c2586560377ff39726b83143bd9fd'
+         '2fe2fd85a6312f7847fba8e7c2d49896'
+         'b6a324cd278a0818c87ac2cd802614a5')
 options=(staticlibs !buildflags !makeflags)
 install=amber.install
 
@@ -28,7 +31,9 @@ source=("local://AmberTools${pkgver}.tar.bz2"
         "amber.sh"
         "amber.sysusers"
         "amber.patch"
-        "${pkgver}")
+        "${pkgver}"
+        "sander"
+        "sander.MPI")
 
 prepare() {
   cd ${srcdir}/${_srcname}${_releasever}
@@ -60,12 +65,14 @@ build() {
      export LD_LIBRARY_PATH="${AMBER_PREFIX}/lib:${LD_LIBRARY_PATH}"
   fi
 
+  export LD_LIBRARY_PATH="/usr/lib/gcc/x86_64-pc-linux-gnu/${_gccver}:${LD_LIBRARY_PATH}"
+
   # configure and build serial version of AmberTools
-  LANG=en_US.UTF-8 ./configure --with-python /usr/bin/python2 --with-netcdf /usr --no-updates gnu
+  LANG=en_US.UTF-8 CC=gcc-7 CXX=g++-7 FC=gfortran-7 ./configure --with-python /usr/bin/python2 --no-updates gnu
   make install
 
   # configure and build parallel version of AmberTools
-  LANG=en_US.UTF-8 ./configure --with-python /usr/bin/python2 --with-netcdf /usr --no-updates -mpi gnu
+  LANG=en_US.UTF-8 CC=gcc-7 CXX=g++-7 FC=gfortran-7 ./configure --with-python /usr/bin/python2 --no-updates -mpi gnu
   make install
 
   # if CUDA is installed then build extra binaries
@@ -73,10 +80,10 @@ build() {
       export CUDA_HOME="/opt/cuda"
       export LD_LIBRARY_PATH="/opt/cuda/lib:/opt/cuda/lib64:${LD_LIBRARY_PATH}"
 
-      LANG=en_US.UTF-8 ./configure --with-python /usr/bin/python2 --with-netcdf /usr --no-updates -cuda gnu
+      LANG=en_US.UTF-8 CC=gcc-7 CXX=g++-7 FC=gfortran-7 ./configure --with-python /usr/bin/python2 --no-updates -cuda gnu
       make install
 
-      LANG=en_US.UTF-8 ./configure --with-python /usr/bin/python2 --with-netcdf /usr --no-updates -cuda -mpi gnu
+      LANG=en_US.UTF-8 CC=gcc-7 CXX=g++-7 FC=gfortran-7 ./configure --with-python /usr/bin/python2 --no-updates -cuda -mpi gnu
       make install
   fi
 }
@@ -99,6 +106,10 @@ package() {
   # install stuff
   install -Dm644 ${srcdir}/${pkgver} ${pkgdir}/opt/${pkgname}/share/modulefiles/ambertools/${pkgver}
   install -Dm644 ${srcdir}/amber.sysusers ${pkgdir}/usr/lib/sysusers.d/amber.conf
+
+  # install wrappers
+  install -Dm755 ${srcdir}/sander ${pkgdir}/usr/bin/sander
+  install -Dm755 ${srcdir}/sander.MPI ${pkgdir}/usr/bin/sander.MPI
 
   # fix permissions
   chown -R root:4535 ${pkgdir}/opt/${pkgname}

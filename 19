@@ -9,6 +9,7 @@ proc ModulesHelp { } {
 module-whatis "AmberTools19 package"
 
 set             AMBER_PREFIX    /opt/ambertools
+set             _gccver         7.4.1
 
 setenv          AMBER_PREFIX    ${AMBER_PREFIX}
 setenv          AMBERHOME       ${AMBER_PREFIX}
@@ -16,3 +17,4 @@ setenv          AMBERHOME       ${AMBER_PREFIX}
 prepend-path    PATH            ${AMBER_PREFIX}/bin
 prepend-path    LD_LIBRARY_PATH ${AMBER_PREFIX}/lib
 prepend-path    PYTHONPATH      ${AMBER_PREFIX}/lib/python2.7/site-packages
+prepend-path    LD_LIBRARY_PATH /usr/lib/gcc/x86_64-pc-linux-gnu/${_gccver}

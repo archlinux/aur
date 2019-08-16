@@ -1,3 +1,4 @@
+export _gccver=7.4.1
 export AMBER_PREFIX=/opt/ambertools
 export AMBERHOME=/opt/ambertools
 export PATH="${AMBER_PREFIX}/bin:${PATH}"
@@ -12,3 +13,10 @@ if [ -z "${LD_LIBRARY_PATH}" ]; then
 else
    export LD_LIBRARY_PATH="${AMBER_PREFIX}/lib:${LD_LIBRARY_PATH}"
 fi
+
+if [ -d "/opt/cuda" ]; then
+    export CUDA_HOME="/opt/cuda"
+    export LD_LIBRARY_PATH="/opt/cuda/lib:/opt/cuda/lib64:${LD_LIBRARY_PATH}"
+fi
+
+export LD_LIBRARY_PATH="/usr/lib/gcc/x86_64-pc-linux-gnu/${_gccver}:${LD_LIBRARY_PATH}"
