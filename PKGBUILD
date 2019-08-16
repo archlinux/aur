@@ -25,8 +25,8 @@ _localmodcfg=
 pkgbase=linux-gc
 _srcver=5.2.8-arch1
 pkgver=${_srcver%-*}
-pkgrel=1
-_bmqversion=098
+pkgrel=2
+_bmqversion=099
 arch=(x86_64)
 url="https://cchalpha.blogspot.co.uk/"
 license=(GPL2)
@@ -57,7 +57,7 @@ sha256sums=('3115442a3239cc90c759eb1dfaba68599afc8d2500f3232c44d0c5b458bd283d'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            '628efd7ea8d6eb7a015e8790411e2353aa9cd6548099aa5c229a3b1cd25f1794'
+            'f36f878fb775166c1ea9232309fc7297aec79f58a3a9531d40e7b2681ffe7cf3'
             '2466fb4aecc66d1b258b4cbdb2f215b5099f266d8c4386bb62ad1a0acd0caf5b')
 
 _kernelname=${pkgbase#linux}
