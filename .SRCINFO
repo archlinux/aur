@@ -1,15 +1,15 @@
 pkgbase = nginx-mod-dav-ext
 	pkgdesc = NGINX WebDAV missing commands support
 	pkgver = 3.0.0
-	pkgrel = 2
-	url = http://nginx-rtmp.blogspot.de
+	pkgrel = 3
+	url = https://github.com/arut/nginx-dav-ext-module
 	arch = x86_64
 	license = BSD
-	depends = nginx=1.16.0
+	depends = nginx=1.16.1
 	depends = libutil-linux
 	depends = libxslt
-	source = https://nginx.org/download/nginx-1.16.0.tar.gz
-	source = https://nginx.org/download/nginx-1.16.0.tar.gz.asc
+	source = https://nginx.org/download/nginx-1.16.1.tar.gz
+	source = https://nginx.org/download/nginx-1.16.1.tar.gz.asc
 	source = nginx-mod-dav-ext-3.0.0::https://github.com/arut/nginx-dav-ext-module/archive/v3.0.0.tar.gz
 	validpgpkeys = B0F4253373F8F6F510D42178520A9993A1C052F8
 	sha256sums = 4fd376bad78797e7f18094a00f0f1088259326436b537eb5af69b01be2ca1345
