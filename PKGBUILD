@@ -2,12 +2,12 @@
 
 pkgname=rigsofrods-bin
 pkgver=0.4.8.0_RC5
-pkgrel=2
+pkgrel=3
 pkgdesc='An open source vehicle simulator based on soft-body physics'
 arch=('x86_64')
 url='https://www.rigsofrods.org'
 license=('GPLv3')
-depends=('openal' 'nvidia-cg-toolkit' 'libxaw' 'openjpeg2')
+depends=('openal' 'nvidia-cg-toolkit' 'openjpeg2')
 conflicts=('rigsofrods' 'rigsofrods-git' 'rigsofrods-noangelscript-git')
 source=('http://files.rigsofrods.org/rigs-of-rods-linux-rc5.zip' 'rigsofrods-bin' 'RoR.desktop' 'rigsofrods.png')
 md5sums=('a9acd5cb1380e36737359fe9c8c2812d'
