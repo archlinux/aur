@@ -5,8 +5,8 @@
 
 pkgname=firefox-appmenu
 _pkgname=firefox
-pkgver=68.0.1
-pkgrel=2
+pkgver=68.0.2
+pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org"
 arch=(x86_64)
 license=(MPL GPL LGPL)
@@ -26,7 +26,7 @@ source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-
         0001-Use-remoting-name-for-GDK-application-names.patch
         $_pkgname.desktop firefox-symbolic.svg
         unity-menubar.patch)
-sha256sums=('6037f77bdab29d79ca5e3fbd1d32f6c209e09d2066189a13dc7f7491227f5568'
+sha256sums=('9b3e6d8f99819f9eda9ebba403b644a2b96d19450b42cae422bbf4386902a840'
             'SKIP'
             'ab07ab26617ff76fce68e07c66b8aa9b96c2d3e5b5517e51a3c3eac2edd88894'
             'e466789015e15be9409b7a7044353674ca6aa0f392e882217f90c79821fe2630'
@@ -53,8 +53,8 @@ _mozilla_api_key=16674381-f021-49de-8622-3021c5942aff
 _repo=https://hg.mozilla.org/releases/mozilla-release
 _tag=FIREFOX_${pkgver//./_}_RELEASE
 
-_changeset=837bbcb850cd58eb07c7f6437078d5229986967c
-_changeset_tag=FIREFOX_68_0_1_RELEASE
+_changeset=7ece03f6971968eede29275477502309bbe399da
+_changeset_tag=FIREFOX_68_0_2_RELEASE
 
 if [[ $1 == update_hgrev ]]; then
   _changeset=$(hg id -r $_tag --id $_repo --template '{node}')
@@ -121,6 +121,7 @@ ac_add_options --enable-startup-notification
 ac_add_options --enable-crashreporter
 ac_add_options --disable-gconf
 ac_add_options --disable-updater
+ac_add_options --disable-tests
 END
 }
 
