@@ -6,7 +6,7 @@ pkgdesc='An Apache 2.0 licensed, MainNet compatible, Ethereum client written in 
 arch=('any')
 url='https://pegasys.tech/'
 license=('Apache')
-depends=('java-runtime>=8')
+depends=('java-runtime>=11')
 source=('pantheon'
 	"https://bintray.com/consensys/pegasys-repo/download_file?file_path=pantheon-${pkgver}.tar.gz"
 	"https://bintray.com/consensys/pegasys-repo/download_file?file_path=pantheon-${pkgver}.tar.gz.asc")

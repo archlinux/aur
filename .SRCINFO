@@ -5,7 +5,7 @@ pkgbase = pantheon
 	url = https://pegasys.tech/
 	arch = any
 	license = Apache
-	depends = java-runtime>=8
+	depends = java-runtime>=11
 	source = pantheon
 	source = https://bintray.com/consensys/pegasys-repo/download_file?file_path=pantheon-1.2.1.tar.gz
 	source = https://bintray.com/consensys/pegasys-repo/download_file?file_path=pantheon-1.2.1.tar.gz.asc
