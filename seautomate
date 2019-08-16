@@ -1,3 +1,0 @@
-#!/bin/sh
-cd /usr/share/setoolkit
-exec python2 seautomate "$@"
