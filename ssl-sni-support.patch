@@ -1,0 +1,14 @@
+diff --unified -r --text sylpheed-3.7.0beta1/libsylph/ssl.c patched/libsylph/ssl.c
+--- sylpheed-3.7.0beta1/libsylph/ssl.c	2019-08-16 09:34:58.296699900 +0300
++++ patched/libsylph/ssl.c	2019-08-16 09:40:01.656029709 +0300
+@@ -260,6 +260,10 @@
+ 		return FALSE;
+ 	}
+ 
++#ifdef SSL_CTRL_SET_TLSEXT_HOSTNAME
++	SSL_set_tlsext_host_name(sockinfo->ssl, sockinfo->hostname);
++#endif
++
+ 	SSL_set_fd(sockinfo->ssl, sockinfo->sock);
+ 	while ((ret = SSL_connect(sockinfo->ssl)) != 1) {
+ 		err = SSL_get_error(sockinfo->ssl, ret);
