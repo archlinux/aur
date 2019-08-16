@@ -145,5 +145,5 @@ package() {
 
   # Replace duplicate binary with symlink
   # https://bugzilla.mozilla.org/show_bug.cgi?id=658850
-  ln -sf basilisk "$pkgdir/usr/lib/basilisk-$_ver/basilisk-bin"
+  ln -sf basilisk "$_mozhome/basilisk-bin"
 }
