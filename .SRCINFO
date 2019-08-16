@@ -1,7 +1,7 @@
 pkgbase = social-engineer-toolkit
 	pkgdesc = The Social-Engineer Toolkit (SET)
-	pkgver = 7.7.9
-	pkgrel = 4
+	pkgver = 8.0.1
+	pkgrel = 1
 	url = https://github.com/trustedsec/social-engineer-toolkit
 	arch = any
 	license = custom
@@ -17,21 +17,8 @@ pkgbase = social-engineer-toolkit
 	depends = python2-beautifulsoup4
 	optdepends = metasploit
 	options = !strip
-	source = https://github.com/trustedsec/social-engineer-toolkit/archive/7.7.9.tar.gz
-	source = setoolkit
-	source = setoolkit.sig
-	source = seproxy
-	source = seproxy.sig
-	source = seautomate
-	source = seautomate.sig
-	validpgpkeys = 7A194E3F7A8F867BEA8A5339023F078862ACFE50
-	sha256sums = 267b2efa0470f0da9f6d53414f9a433aaea176d1a6825581ade8998924ddffd0
-	sha256sums = 1901a912bc8fcc24b8a63accaa3824b50dae5f7066dbdfa83f6f9ee3e3dfdb65
-	sha256sums = SKIP
-	sha256sums = 12014216d4249ee76b30126ab3e78862b79cab32fe663b382a579b18350a536f
-	sha256sums = SKIP
-	sha256sums = 18976b6e8a83e158b9ca175dfebe1e98fc4085129a0b20064ec54e0bc5eda1d9
-	sha256sums = SKIP
+	source = https://github.com/trustedsec/social-engineer-toolkit/archive/8.0.1.tar.gz
+	sha256sums = 23a4fe1de24b746f18aa0790f14ddda7d4d70b95071abbd3ae8cedf36268367b
 
 pkgname = social-engineer-toolkit
 
