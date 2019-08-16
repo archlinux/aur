@@ -1,18 +1,18 @@
 pkgbase = nginx-mainline-mod-geoip2
 	pkgdesc = GeoIP2 module for mainline nginx
 	pkgver = 3.2
-	pkgrel = 11
+	pkgrel = 12
 	url = https://github.com/leev/ngx_http_geoip2_module
 	arch = i686
 	arch = x86_64
 	license = BSD
 	depends = nginx-mainline
 	depends = libmaxminddb
-	source = https://nginx.org/download/nginx-1.17.1.tar.gz
-	source = https://nginx.org/download/nginx-1.17.1.tar.gz.asc
+	source = https://nginx.org/download/nginx-1.17.3.tar.gz
+	source = https://nginx.org/download/nginx-1.17.3.tar.gz.asc
 	source = https://github.com/leev/ngx_http_geoip2_module/archive/3.2/ngx_http_geoip2_module-3.2.tar.gz
 	validpgpkeys = B0F4253373F8F6F510D42178520A9993A1C052F8
-	sha256sums = 6f1825b4514e601579986035783769c456b888d3facbab78881ed9b58467e73e
+	sha256sums = 3b84fe1c2cf9ca22fde370e486a9ab16b6427df1b6ea62cdb61978c9f34d0f3c
 	sha256sums = SKIP
 	sha256sums = 15bd1005228cf2c869a6f09e8c41a6aaa6846e4936c473106786ae8ac860fab7
 
