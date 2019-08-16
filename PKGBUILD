@@ -12,20 +12,14 @@ license=('GPL2')
 depends=('gcc-libs' "vdr-api=${_vdrapi}")
 _plugname=${pkgname//vdr-/}
 source=("http://www.u32.de/download/$pkgname-$pkgver.tgz"
-        "vdr-1.7.28-devstatus-0.4.1.diff::https://www.vdr-portal.de/index.php?attachment/31264"
-        "vdr-2.3.2-devstatus-0.4.1.diff::https://www.vdr-portal.de/index.php?attachment/40512")
+        "$pkgname-vdr-2.3.2.patch")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
 md5sums=('503452532add3d4a37f2aa0b4a4488b7'
-         'ba40b25c09cb365ff1e0d4a8db1507af'
-         'ab7480f894b46112fdb809638f39c92e')
+         '02797991e2f6b4c4da507db86f3ce207')
 
 prepare() {
   cd "${srcdir}/${_plugname}-${pkgver}"
-  if [ `vercmp $_vdrapi 2.3.0` -eq 1 ]; then
-    patch -i "$srcdir/vdr-2.3.2-devstatus-0.4.1.diff"
-  else
-    patch -i "$srcdir/vdr-1.7.28-devstatus-0.4.1.diff"
-  fi
+  patch -i "$srcdir/$pkgname-vdr-2.3.2.patch"
 }
 
 package() {
