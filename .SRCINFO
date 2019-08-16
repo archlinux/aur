@@ -1,6 +1,6 @@
 pkgbase = ddev-bin
 	pkgdesc = DDEV-Local: a local PHP development environment system
-	pkgver = 1.10.1
+	pkgver = 1.10.2
 	pkgrel = 1
 	url = https://github.com/drud/ddev
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = ddev-bin
 	optdepends = bash-completion: subcommand completion support
 	provides = ddev
 	conflicts = ddev
-	source = https://github.com/drud/ddev/releases/download/v1.10.1/ddev_linux.v1.10.1.tar.gz
-	sha256sums = b37c2c4a9cabcd31965e06bee9b039ffe89983cd386c4ba192f68236b3084f2e
+	source = https://github.com/drud/ddev/releases/download/v1.10.2/ddev_linux.v1.10.2.tar.gz
+	sha256sums = 16294108e831126514fa2b29f3af51a14655db456377f34609e494d70b44cf70 
 
 pkgname = ddev-bin
 
