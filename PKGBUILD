@@ -33,7 +33,7 @@ optdepends=('aften: support for AC-3 audio encoding'
 'x265: support for H.265 video encoding')
 url="http://www.selur.de/"
 
-source_x86_64=(http://www.selur.de/sites/default/files/hybrid_downloads/Hybrid_${pkgver}_64bit_binary_qt551.zip
+source_x86_64=(http://www.selur.de/sites/default/files/hybrid_downloads/Hybrid_${pkgver}_${pkgrel}_64bit_binary_qt551.zip
           hybrid.desktop
           Hybrid.png
           LICENSE)
@@ -45,7 +45,7 @@ package() {
   install -D -m644 Hybrid.png "${pkgdir}"/usr/share/pixmaps/Hybrid.png
   install -D -m644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
-md5sums_x86_64=('01ec96941639d6ff5abc865b3e68df1b'
+md5sums_x86_64=('0f3aa1320542128c3018ed28720b5617'
                 'dd87c6eb6df85049de38c61dfe400347'
                 '798dd936a3bc9bcd3b131d5dd6db96e6'
                 '1fd2ac133744f86e25fd680d14aed2b4')
