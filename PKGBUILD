@@ -12,11 +12,11 @@ url="http://opmon-game.ga"
 depends=('sfml' 'gcc' 'libstdc++5' 'smpeg')
 makedepends=('cmake')
 conflicts=('opmon-git')
-source=("git+git://github.com/OpMonTeam/OpMon.git#tag=alpha-v${pkgver}")
-md5sums=('SKIP')
+source=("https://github.com/OpMonTeam/OpMon/archive/alpha-v${pkgver}.zip")
+md5sums=('3EC509A1E50633B432B380D619D8E7FC')
 
 build() {
-cd $srcdir/OpMon
+cd ${srcdir}/OpMon-alpha-v${pkgver}
 
 cmake  . -DCMAKE_BUILD_TYPE=Release || return 1
 
@@ -35,10 +35,10 @@ mkdir "${pkgdir}/usr/local/share"
 mkdir "${pkgdir}/usr/local/share/OpMon"
 mkdir "${pkgdir}/usr/share/applications"
 
-cp ${srcdir}/OpMon/bin/Release/opmon ${pkgdir}/usr/bin/opmon
-cp -r ${srcdir}/OpMon/data/* ${pkgdir}/usr/local/share/OpMon
-cp ${srcdir}/OpMon/data/OPMon.desktop ${pkgdir}/usr/share/applications/
+cp ${srcdir}/OpMon-alpha-v${pkgver}/bin/Release/opmon ${pkgdir}/usr/bin/opmon
+cp -r ${srcdir}/OpMon-alpha-v${pkgver}/data/* ${pkgdir}/usr/local/share/OpMon
+cp ${srcdir}/OpMon-alpha-v${pkgver}/data/OPMon.desktop ${pkgdir}/usr/share/applications/
 
-cd "${srcdir}/OpMon"
+cd "${srcdir}/OpMon-alpha-v${pkgver}"
 
 }
