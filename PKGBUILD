@@ -1,5 +1,5 @@
 # Maintainer: Eugene Dvoretsky <radioxoma from gmail com>
-# Contributor: dreieck
+# Contributors: dreieck, jacopo
 
 pkgname="fiji-binary"
 pkgver="20170530"
@@ -11,13 +11,9 @@ license=('GPL')
 _licenses_plugins=('GPL' 'AL' 'SPL' 'LGPL' 'EPL' 'GPL2' 'PD' 'BIG' 'imagescience' 'BSD' 'AGPL' 'MPL1.1' 'CPL' 'PSF2' 'JSF2.1' 'JPSL' 'BSD-like' 'CPL1.0' 'BSDR' 'Citationware') ## Each component has it's individual license, but the AUR does not allow such a big license array ("Error - Package license cannot be greater than 40 characters"), so they are listed in this variable just for information purposes. (The PKGBUILD does not deal with that variable at all.)
 depends=('java-runtime>=8')
 optdepends=('java3d: For the 3D viewer plugin.')
-provides=("fiji=${pkgver}" "fiji-binary=${pkgver}")
-replaces=("fiji<=${pkgver}" "fiji-binary<=${pkgver}")
-conflicts=("fiji-binary-latest")
 install=fiji.install
 
-## Life-line
-
+## Life-line build (comment this lines when building lifeline build)
 source=("https://downloads.imagej.net/fiji/Life-Line/fiji-nojre-${pkgver}.zip"
         "fiji.desktop"
         "fiji.install")
@@ -25,13 +21,17 @@ sha256sums=('cf9fb45c48b22a7888b479968477f1f7a300a9c833e47244cbe0d1e93890bd20'
             '788a32dd0b24f482e78d5ec3209e9d5b3493a59e1da6edf82b1373e87c0320bc'
             '6dcc861af9328076282893ffcecc77a7fee448cec51fb7ccd51c5cece9740fa1')
 
-## Latest (continuous) build
-# source=("http://jenkins.imagej.net/job/Stable-Fiji/lastSuccessfulBuild/artifact/fiji-nojre.zip"
+## Latest build (uncomment next lines to install latest build insted life-line)
+# pkgver() {
+#   wget -q -O - https://downloads.imagej.net/fiji/latest/ | grep fiji-nojre.zip | sed -E 's/^.*([0-9]{4}-[0-9]{2}-[0-9]{2}).*$/\1/' | sed 's/-//g'
+# }
+# source=("https://downloads.imagej.net/fiji/latest/fiji-nojre.zip"
 #         "fiji.desktop"
 #         "fiji.install")
 # sha256sums=('SKIP'
 #             '788a32dd0b24f482e78d5ec3209e9d5b3493a59e1da6edf82b1373e87c0320bc'
 #             '6dcc861af9328076282893ffcecc77a7fee448cec51fb7ccd51c5cece9740fa1')
+
 
 _userexecutable="fiji" # That name to be presented to the user.
 
@@ -41,6 +41,7 @@ if test "$CARCH" == "x86_64"; then
 else
   _executable="${_executablebase}"
 fi
+
 
 build()
 {
@@ -86,7 +87,8 @@ package()
   cp -afv "${_extractdir}"/* "${_targetdir}" || exit 121
   chown -R root:root "${_targetdir}" || true
   cd "${_bindir}" || exit 125
-  # ln -sf "${_targetdir}/${_userexecutable}" "${_bindir}/${_userexecutable}" || exit 131 # We do NOT create a executable "fiji" in the PATH, since one may want to create a custum /usr/local/bin/fiji for setting JAVA_HOME to the SUN/Oracle java. Instead, we name the executable associated with the architecture, and have "fiji" in the /opt-dir.
+  # We do NOT create a executable "fiji" in the PATH, since one may want to create a custum /usr/local/bin/fiji for setting JAVA_HOME to the SUN/Oracle java. Instead, we name the executable associated with the architecture, and have "fiji" in the /opt-dir.
+  # ln -sf "${_targetdir}/${_userexecutable}" "${_bindir}/${_userexecutable}" || exit 131
   ln -sf "${_targetdirinrootfs}/${_executable}" "${_executable}" || exit 135
   install -Dm644 "${srcdir}/fiji.desktop" "${pkgdir}/usr/share/applications/fiji.desktop"
   install -Dm644 "${_extractdir}/images/icon.png" "${pkgdir}/usr/share/pixmaps/fiji.png"
