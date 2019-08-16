@@ -9,7 +9,6 @@ url="https://www.deezer.com/"
 license=('custom:"Copyright (c) 2006-2018 Deezer S.A."')
 depends=('electron')
 provides=('deezer')
-options=('!strip')
 makedepends=('p7zip' 'asar' 'prettier')
 source=(
          "$pkgname-$pkgver-setup.exe::https://www.deezer.com/desktop/download/artifact/win32/x86/$pkgver"
