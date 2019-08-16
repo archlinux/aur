@@ -1,0 +1,16 @@
+post_install() {
+  udevadm control --reload
+cat << EOF
+===> If you have troubles accessing the Librem Key, make sure to:
+===> - restart scdaemon
+===> - add your user to the 'wheel' group
+EOF
+}
+
+post_upgrade() {
+  udevadm control --reload
+}
+
+post_remove() {
+  udevadm control --reload
+}
