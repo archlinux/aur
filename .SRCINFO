@@ -1,0 +1,14 @@
+pkgbase = python-pampy
+	pkgdesc = The Pattern Matching for Python you always dreamed of
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/santinic/pampy
+	arch = any
+	license = MIT
+	depends = python
+	options = !emptydirs
+	source = pampy-0.2.1::git+https://github.com/santinic/pampy.git#commit=27de362e63310eaa5044c7c87414d19aacefef56
+	sha384sums = SKIP
+
+pkgname = python-pampy
+
