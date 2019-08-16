@@ -1,7 +1,7 @@
 # Maintainer: F Carpano < gmail-com: daert781 >
 
 pkgname=ultracopier
-pkgver=2.0.3.8
+pkgver=2.0.3.11
 pkgrel=1
 pkgdesc="Ultracopier is free and open source software licensed under GPL3 that acts as a replacement for files copy dialogs. Main features include: play/pause, speed limitation, on-error resume, error/collision management"
 url="https://ultracopier.first-world.info/"
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('qt5-base' 'qt5-multimedia')
 makedepends=('git' 'qt5-tools')
 provides=('ultracopier')
-commit=954f2f8ca2c5026658ebd39e06adb58055a5db84
+commit=d4e3f138625d8f0583ba130e023e946ac807d457
 source=("${pkgname}"::"git+https://github.com/alphaonex86/Ultracopier#commit=${commit}")
 sha512sums=('SKIP')
 
