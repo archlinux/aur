@@ -2,12 +2,14 @@
 # ie. for x86_64 - AMD-APP-SDKInstaller-v3.0.130.136-GA-linux64.tar.bz2
 # and paste it next to this PKGBUILD
 
-# Maintainer: Vi0L0 <vi0l093@gmail.com>
-# Previous Maintainer: Michael Krause <mk-arch@spline.de>
+# Maintainer: satcom886 <rostik.medved@gmail.com>
+# Previous Maintainer: Vi0L0 <vi0l093@gmail.com>
+# Previous Previous Maintainer: Michael Krause <mk-arch@spline.de>
 # Contributor: kralyk
 # Contributor: pfdm
 # Contributor: caust1c
 # Contributor: kralyk (download execution)
+# Contributor: satcom886 (fixed download links)
 
 # PKGEXT=".tar.gz"  # time to pack this pkg into tar.xz is long, unfortunatelly yaourt got problems when ext is different than .pkg.tar.xz - V
 
@@ -15,11 +17,11 @@
 pkgbase=amdapp-sdk
 pkgname=('amdapp-sdk' 'amdapp-sdk-opencv' 'amdapp-sdk-nocatalyst' 'amdapp-sdk-docs')
 pkgver=3.0
-pkgrel=22
+pkgrel=23
 arch=('i686' 'x86_64')
 url="https://developer.amd.com/amd-accelerated-parallel-processing-app-sdk/"
 license=("custom")
-options=('staticlibs' 'libtool' '!strip' '!upx')
+options=('staticlibs' 'libtool' '!strip')
 groups=('amdapp')
 makedepends=('perl' 'llvm'  'apache-ant' 'wget')
 _dirname='AMD-APP-SDKInstaller-v3.0.130.136-GA-linux'
@@ -43,7 +45,8 @@ _scriptname='AMD-APP-SDK-v3.0.130.136-GA-linux'
 #Sources
 source=(
 # 	"http://developer.amd.com/wordpress/media/files/AMD-APP-SDK-linux-v2.9-1.599.381-GA-${_tarbits}.tar.bz2"
-	"http://developer.amd.com/wordpress/media/files/${_dirname}${_bits}.tar.bz2"
+#	"http://developer.amd.com/wordpress/media/files/${_dirname}${_bits}.tar.bz2"
+	"https://archive.org/download/AMDAPPSDK/${_dirname}${_bits}.tar.bz2"
 	'amd.icd'
 	'amd_i686.icd'
 	'amdapp-sdk.sh'
@@ -71,7 +74,7 @@ build() {
 package_amdapp-sdk() {
 pkgdesc="AMD Accelerated Parallel Processing (APP) SDK, 3.0 with OpenCL 2.0 support."
 install=amdapp-sdk.install
-provides=('opencl' 'amdstream')
+provides=('opencl-amd' 'opencl' 'amdstream' 'opencl-driver' )
 depends=('opencl-icd-loader' 'libgl' 'llvm' 'gcc-libs' 'mesa' 'glut' 'glew' 'glu')
 conflicts=('amdstream')
 optdepends=(
