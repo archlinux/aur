@@ -14,3 +14,4 @@ source=("${pkgname}::https://github.com/pawndev/rofi-autorandr/archive/${pkgver}
 package() {
   install -Dm 755 "$srcdir/$pkgname-$pkgver/rofi-autorandr.sh" "$pkgdir/usr/bin/rofi-autorandr"
 }
+md5sums=('1a81c199b0a4edba8cec6954832d585c')
