@@ -4,7 +4,7 @@
 pkgname=vdr-filebrowser
 pkgver=0.2.1
 _vdrapi=2.4.1
-pkgrel=19
+pkgrel=20
 pkgdesc="filebrowser with custom commands for vdr"
 url="http://opensource.holgerbrunn.net/vdr/filebrowser/"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
@@ -14,18 +14,18 @@ _plugname=${pkgname//vdr-/}
 replaces=("vdr-plugin-$_plugname")
 conflicts=("vdr-plugin-$_plugname")
 source=("http://opensource.holgerbrunn.net/vdr/filebrowser/$pkgname-$pkgver.tgz"
-        "filebrowser-makefile-1.7.36.tar.gz::https://www.vdr-portal.de/index.php?attachment/32857")
+        "$pkgname-new-makefile.patch")
 backup=("var/lib/vdr/plugins/filebrowser/commands.conf"
         "var/lib/vdr/plugins/filebrowser/order.conf"
         "var/lib/vdr/plugins/filebrowser/othercommands.conf"
         "var/lib/vdr/plugins/filebrowser/sources.conf"
         "etc/vdr/conf.avail/50-$_plugname.conf")
 md5sums=('a1813fec39604b62c38c3ab44fe4aa5f'
-         'd6bd0a727bb17e01a029391ec93e3630')
+         'd4a9a9442645c1168b0ed58021958c73')
 
 prepare() {
   cd "${srcdir}/${_plugname}-${pkgver}"
-  cp "$srcdir/filebrowser-makefile-1.7.36" Makefile
+  patch -p1 -i "$srcdir/$pkgname-new-makefile.patch"
 }
 
 build() {
