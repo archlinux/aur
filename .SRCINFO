@@ -8,7 +8,6 @@ pkgbase = skypeforlinux-preview-bin
 	makedepends = asar
 	depends = gtk3
 	depends = libxss
-	depends = gconf
 	depends = alsa-lib
 	depends = libxtst
 	depends = libsecret
