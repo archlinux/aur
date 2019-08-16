@@ -2,7 +2,7 @@
 
 pkgname=mrboom-git
 _basename=mrboom
-pkgver=4.7.r3.g7f18b80
+pkgver=4.8.r0.g8f67ebf
 pkgrel=1
 pkgdesc="Mr.Boom is a 8 players Bomberman clone"
 arch=('i686' 'x86_64')
