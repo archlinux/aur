@@ -1,30 +1,31 @@
 pkgbase = openvr-git
 	pkgdesc = API and runtime that allows access to VR hardware from multiple vendors. Contains API and samples. The runtime is under SteamVR in Tools on Steam.
-	pkgver = 1.6.10.r0.gd9cffe2
+	pkgver = .1.6.10b.r0.g52065df
 	pkgrel = 1
 	url = https://github.com/ValveSoftware/openvr
 	arch = x86_64
 	license = custom
 	makedepends = git
 	makedepends = cmake
+	makedepends = vulkan-headers
 	makedepends = qt5-base
 	depends = libgl
 	depends = sdl2
 	depends = glew
-	optdepends = oculus-udev: Udev rule to make the rift sensors usable to the "plugdev" group
-	optdepends = steam: For SteamVR (Duh)
-	optdepends = vive-udev: Udev rule to make the Vive sensors usable to the "plugdev" group
+	optdepends = steam: SteamVR must be installed through Steam, also contains vive udev rules
 	provides = openvr
 	options = !strip
 	options = staticlibs
 	source = git+https://github.com/ValveSoftware/openvr.git
-	source = https://github.com/ValveSoftware/openvr/commit/0fa21ba17748efcca1816536e27bdca70141b074.patch
 	source = 0001-also-add-pragma-pack-around-VRControllerState_t.patch
 	source = remove-openvrpaths-check.diff
+	source = https://patch-diff.githubusercontent.com/raw/ValveSoftware/openvr/pull/594.patch
+	source = https://patch-diff.githubusercontent.com/raw/ValveSoftware/openvr/pull/1177.patch
 	md5sums = SKIP
-	md5sums = 7350517830b1a0038d30c6ad33b4bb39
 	md5sums = 8a9379f8cdf9a38f21942f46378714a5
 	md5sums = 904a532900792e7273702a9b45d304f2
+	md5sums = 7350517830b1a0038d30c6ad33b4bb39
+	md5sums = 8aaa5723852e5ee81ba910235743fde2
 
 pkgname = openvr-git
 
