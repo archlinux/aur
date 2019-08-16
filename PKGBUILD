@@ -5,10 +5,10 @@ _ndkver=0.3.0
 
 pkgname=nginx-mainline-mod-ndk-set-misc
 pkgver=$_setmiscver+$_ndkver
-pkgrel=30
+pkgrel=31
 
 _modname=set-misc
-_nginxver=1.17.1
+_nginxver=1.17.3
 
 pkgdesc="Various set_xxx directives added to nginx's rewrite + ngx_devel_kit (module for mainline nginx)"
 arch=('i686' 'x86_64')
@@ -28,7 +28,7 @@ validpgpkeys=(
 	'B0F4253373F8F6F510D42178520A9993A1C052F8' # Maxim Dounin <mdounin@mdounin.ru>
 )
 
-sha256sums=('6f1825b4514e601579986035783769c456b888d3facbab78881ed9b58467e73e'
+sha256sums=('3b84fe1c2cf9ca22fde370e486a9ab16b6427df1b6ea62cdb61978c9f34d0f3c'
             'SKIP'
             '97946a68937b50ab8637e1a90a13198fe376d801dc3e7447052e43c28e9ee7de'
             '88e05a99a8a7419066f5ae75966fb1efc409bad4522d14986da074554ae61619')
