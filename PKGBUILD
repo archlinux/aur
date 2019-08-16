@@ -1,8 +1,8 @@
-# Maintainer: Jannik Birk <birk.jannik@gmail.com>
+# Maintainer: Finlay Maroney <finman292004@protonmail.com>
 
 _target=i686-elf
 pkgname=$_target-gcc
-pkgver=7.2.0
+pkgver=9.2.0
 pkgrel=1
 pkgdesc='The GNU Compiler Collection - cross compiler for i686-elf target'
 arch=(i686 x86_64)
@@ -12,7 +12,7 @@ depends=($_target-binutils zlib libmpc mpfr gmp)
 options=(!emptydirs)
 source=("https://mirrors.kernel.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz"
         "libiberty-ignore-cflags.patch")
-sha256sums=('1cf7adf8ff4b5aa49041c8734bbcf1ad18cc4c94d0029aae0f4e48841088479a'
+sha256sums=('ea6ef08f121239da5695f76c9b33637a118dcf63e24164422231917fa61fb206'
             '8b2aea00e98f7c311b1d0fb14e4b435a03c65fde32bc992c924edb6fa7b83c9c')
 _basedir=gcc-$pkgver
 
