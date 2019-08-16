@@ -5,7 +5,7 @@ _sysroot=/usr/lib/${_target}
 _pkgname=binutils
 
 pkgname=$_target-${_pkgname}
-pkgver=2.31.1
+pkgver=2.32
 pkgrel=1
 pkgdesc='A set of programs to assemble and manipulate binary and object files for the x86_64-elf target'
 arch=(x86_64)
@@ -14,7 +14,7 @@ license=(GPL)
 depends=(zlib)
 options=(!emptydirs !docs)
 source=("http://mirrors.kernel.org/gnu/binutils/binutils-$pkgver.tar.xz")
-sha256sums=('5d20086ecf5752cc7d9134246e9588fa201740d540f7eb84d795b1f7a93bca86')
+sha256sums=('0ab6c55dd86a92ed561972ba15b9b70a8b9f75557f896446c82e8b36e473ee04')
 _basedir=binutils-$pkgver
 
 prepare() {
