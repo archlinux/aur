@@ -1,6 +1,6 @@
 pkgbase = ruby-bootstrap-sass
 	pkgdesc = Official Sass port of Bootstrap
-	pkgver = 3.4.0
+	pkgver = 3.4.1
 	pkgrel = 1
 	url = http://getbootstrap.com/css/#sass
 	arch = any
@@ -8,10 +8,10 @@ pkgbase = ruby-bootstrap-sass
 	makedepends = rubygems
 	depends = ruby-sass
 	optdepends = ruby-compass
-	noextract = bootstrap-sass-3.4.0.gem
+	noextract = bootstrap-sass-3.4.1.gem
 	options = !strip
-	source = http://rubygems.org/downloads/bootstrap-sass-3.4.0.gem
-	sha512sums = ba21863215ed1be77228dffccbda47d3accb90ce536218e08ba124ea622c02cc55e909b28101197de3093b803acee290d7562b2aa61b52ecf35221d2811b04b1
+	source = http://rubygems.org/downloads/bootstrap-sass-3.4.1.gem
+	sha512sums = 217ffbfee4e33f1104d57091cc1ebde99403b00d61fc96bf1d180806a816f5996cebab33682a3bb42728a965bd9f0a2188ee51a0a7bd44f4ba22f76b196f127b
 
 pkgname = ruby-bootstrap-sass
 
