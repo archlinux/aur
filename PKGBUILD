@@ -3,24 +3,26 @@
 # Based on PKGBUILD from darkcoin-git maintained by Viliam Kubis <viliam dot kubis at gmail dot com>
 
 pkgname='dashcore'
-pkgver=0.14.0.2
+pkgver=0.14.0.3
 pkgrel=1
+pkgdesc="Dash Core (DASH, Dashpay, formerly Darkcoin) is an open source, privacy-centric digital currency. (Includes the qt-client, the headless daemon and the command-line tool.)"
 arch=('x86_64')
 url="https://www.dash.org/"
+license=('MIT')
 depends=('qt5-base' 'boost' 'boost-libs' 'miniupnpc' 'openssl' 'qrencode')
 makedepends=('autoconf' 'automake' 'binutils' 'gcc' 'libtool' 'make' 'pkg-config' 'protobuf' 'qt5-tools')
-license=('MIT')
-pkgdesc="Dash Core (DASH, Dashpay, formerly Darkcoin) is an open source, privacy-centric digital currency. (Includes the qt-client, the headless daemon and the command-line tool.)"
 provides=('dashd' 'dash-qt' 'dash-cli' 'dash-tx')
 conflicts=('dashcore-git')
 source=('dash256.png'
   'dash-qt.desktop'
   'COPYING'
-  "https://github.com/dashpay/dash/releases/download/v${pkgver}/${pkgname}-${pkgver}-$CARCH-linux-gnu.tar.gz")
+  "https://github.com/dashpay/dash/releases/download/v${pkgver}/${pkgname}-${pkgver}-$CARCH-linux-gnu.tar.gz"{,.asc})
 sha256sums=('d719e01df4b47f4d6f0d4d6eac50d402bebb4127d0b6d64764fe2a42e903819b'
             '41f83cb53ecf33688d899f83e09bd52f9aa8e6d7b9b0f30810f192988b26079a'
             'b5290c16b194d488265f3af37a7ab74cb9fecea2de97b910670cefa4e0909853'
-            '00482c0e2b861d0af042a695d8f6f2bafada0e6df036482d43ba36d51cf2464b')
+            '28d45537e1c982967075742f9f6ff631d6de72d075091d53ff039ed8919714ba'
+            'SKIP')
+validpgpkeys=('99DF0DABDEE182FA53A33AE763A96B406102E091')
 
 package() {
   install -D -m755 "$srcdir/$pkgname-${pkgver%.*}/bin/dash-qt" "$pkgdir/usr/bin/dash-qt"
