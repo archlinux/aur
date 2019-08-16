@@ -25,13 +25,7 @@ md5sums=('208423389ef47f1c70d60d6e591202e0'
          '7ee49aab9514e5a4df00fbd7da982688'
          '3ffc8aa66157da1088eeeaa4b3f05587')
 
-package() {
-    
-    mkdir -p "$pkgdir"/usr/share/deezer
-    mkdir -p "$pkgdir"/usr/share/applications
-    mkdir -p "$pkgdir"/usr/share/icons/hicolor/256x256/apps/
-    mkdir -p "$pkgdir"/usr/bin/
-
+prepare() {
     # Extract app from installer
     7z x -so $pkgname-$pkgver-setup.exe "\$PLUGINSDIR/app-32.7z" > app-32.7z
     # Extract app archive
@@ -56,8 +50,13 @@ package() {
 
     cd ..
     asar pack app app.asar
+}
 
-    cd "${srcdir}"
+package() {
+    mkdir -p "$pkgdir"/usr/share/deezer
+    mkdir -p "$pkgdir"/usr/share/applications
+    mkdir -p "$pkgdir"/usr/share/icons/hicolor/256x256/apps/
+    mkdir -p "$pkgdir"/usr/bin/
 
     echo "#!/bin/sh" > deezer
     echo "exec electron /usr/share/deezer/app.asar \"\$@\"" >> deezer
@@ -67,5 +66,4 @@ package() {
     install -Dm644 resources/build/win/systray.png "$pkgdir"/usr/share/deezer/
     install -Dm644 "$pkgname".desktop "$pkgdir"/usr/share/applications/
     install -Dm755 deezer "$pkgdir"/usr/bin/
-
 }
