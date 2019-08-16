@@ -3,7 +3,7 @@
 # Contributor: Pavel Larev <pavel@larev.ws>
 
 pkgname=apache-tools
-pkgver=2.4.39
+pkgver=2.4.41
 pkgrel=1
 pkgdesc="Useful Apache tools - htdigest, htpasswd, ab, htdbm"
 arch=("i686" "x86_64" "armv6h" "armv7h" "aarch64")
@@ -15,7 +15,7 @@ conflicts=(apache)
 source=(http://www.apache.org/dist/httpd/httpd-$pkgver.tar.bz2
         $pkgname-Makefile.patch
         httpd-2.4.23-openssl11.patch)
-sha256sums=('b4ca9d05773aa59b54d66cd8f4744b945289f084d3be17d7981d1783a5decfa2'
+sha256sums=('133d48298fe5315ae9366a0ec66282fa4040efa5d566174481077ade7d18ea40'
             '2dc48d34773b0c873d10e3542f77a4f7b50d5fb9bd8c52e3bb28b76ff9587f3f'
             'e87409c13feb2abd66d88cdb8c88c2cc408491adb7fd6793025a3ad2d6599a60')
 
