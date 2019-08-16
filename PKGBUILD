@@ -2,14 +2,14 @@
 
 pkgname=rofi-autorandr
 pkgver=1.0.5
-pkgrel=3
+pkgrel=0
 pkgdesc="Autorandr integration for rofi"
 arch=('x86_64')
 url="https://github.com/pawndev/rofi-autorandr"
 license=('MIT')
 depends=('rofi' 'autorandr')
 optdepends=()
-source=("${pkgname}::https://github.com/pawndev/rofi-autorandr/archive/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/pawndev/rofi-autorandr/archive/${pkgver}.tar.gz")
 
 package() {
   install -Dm 755 "$srcdir/$pkgname-$pkgver/rofi-autorandr.sh" "$pkgdir/usr/bin/rofi-autorandr"
