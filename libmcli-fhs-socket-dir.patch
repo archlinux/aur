@@ -1,0 +1,13 @@
+diff --git a/mcast/client/api_server.h b/mcast/client/api_server.h
+index e0f946f..13d4cb4 100644
+--- a/mcast/client/api_server.h
++++ b/mcast/client/api_server.h
+@@ -7,7 +7,7 @@
+  */
+ 
+ #define API_SHM_NAMESPACE "/mcli"
+-#define API_SOCK_NAMESPACE "/var/tmp/mcli.sock"
++#define API_SOCK_NAMESPACE "/run/libmcli/mcli.sock"
+ 
+ typedef enum { 	API_IDLE,
+ 		API_REQUEST,

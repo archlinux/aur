@@ -1,0 +1,13 @@
+diff --git a/mcast/tool/netcvupdate.c b/mcast/tool/netcvupdate.c
+index e311470..7982799 100644
+--- a/mcast/tool/netcvupdate.c
++++ b/mcast/tool/netcvupdate.c
+@@ -24,7 +24,7 @@
+ #endif
+ 
+ #define STATE_FILE "update.log"
+-#define FTP_CMD "ftp"
++#define FTP_CMD "tnftp"
+ #define NC_CONFPATH "/mmc/etc/"
+ #define NC_CONFFILE "netceiver.conf"
+ 
