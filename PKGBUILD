@@ -1,7 +1,7 @@
 # Maintainer: Frederick Zhang <frederick888@tsundere.moe>
 # Contributor: Josh Hebert <aksr at t-com dot me>
 pkgname=msi-keyboard-git
-pkgver=r12.cca8ccf
+pkgver=r19.fb57be9
 pkgrel=1
 epoch=
 pkgdesc="Utility to control MSI Steelseries keyboards, written in C++"
@@ -9,8 +9,8 @@ arch=('i686' 'x86_64')
 url="https://github.com/bparker06/msi-keyboard"
 license=('BSD')
 groups=()
-depends=('')
-makedepends=('git' 'unzip' 'hidapi' 'libusb' 'qt5-base')
+depends=('hidapi')
+makedepends=('git' 'unzip' 'libusb' 'qt5-base')
 optdepends=()
 checkdepends=()
 provides=('msi-keyboard')
