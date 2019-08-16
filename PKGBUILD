@@ -8,7 +8,7 @@ url="https://www.basilisk-browser.org"
 depends=('gtk2' 'libxt' 'mime-types' 'alsa-lib' 'ffmpeg' 'libvpx' 'libevent'
          'nspr' 'nss' 'hunspell' 'hyphen' 'sqlite' 'ttf-font' 'icu' 'libpng' 'libjpeg'
          'bzip2' 'zlib' 'libffi' 'cairo' 'pixman')
-makedepends=('unzip' 'zip' 'python2' 'yasm' 'mesa' 'autoconf2.13')
+makedepends=('unzip' 'zip' 'gcc8' 'python2' 'yasm' 'mesa' 'autoconf2.13')
 options=('!emptydirs')
 source=("https://github.com/MoonchildProductions/UXP/archive/v$pkgver.tar.gz"
         "https://github.com/MoonchildProductions/UXP/commit/9ded0778ee548fd8837bb35bdb5617cae0a791d1.patch"
@@ -109,7 +109,7 @@ EOF
 build() {
   cd "$srcdir/UXP-$pkgver"
 
-  ./mach build
+  CC="cc-8" CXX="c++-8" CPP="cpp-8" ./mach build
 }
 
 package() {
