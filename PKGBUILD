@@ -20,7 +20,7 @@ fi
 
 pkgname=caddy-with-cgi
 _pkgbase=caddy
-pkgver=1.0.2
+pkgver=1.0.3
 _cgiver=1.11.4
 pkgrel=1
 pkgdesc='HTTP/2 Web Server with Automatic HTTPS, with caddy-cgi plugin and gcc-go support'
@@ -40,7 +40,7 @@ source=("https://$_gopkgname/archive/v$pkgver/$_pkgbase-$pkgver.tar.gz"
 	'caddy.conf'
 	'noquic_aesni.patch'
 	'plugins.patch')
-sha256sums=('bdfefc0dfee259424ffd14fcafd4502361e5bd63a017208e83e333ad0b597630'
+sha256sums=('c1c7b337a5008d28c1956fd4f057104a78d0e24b74c30867cea988369b61fed3'
 	'a1c3982093f599b11b05ed9040fb3c0d8da960023226c82f125dbbb0cac9634f'
 	'e679dd79fd92dc351fc190c7af529c73e3896986aaa6b7c0ae01e561398d6b85'
 	'6db7aec45e95bbbf770ce4d120a60d8e4992d2262a8ebf668521179279aa5ae7'
