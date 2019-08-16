@@ -1,12 +1,11 @@
 pkgbase = nixwriter
 	pkgdesc = Create bootable Linux images with dd and from a GTK user interface
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/9898287/nixwriter
 	arch = x86_64
 	license = MIT
 	makedepends = ldc
-	makedepends = libphobos
 	makedepends = dub
 	depends = gtk3
 	depends = polkit
