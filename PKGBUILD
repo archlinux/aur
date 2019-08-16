@@ -3,7 +3,7 @@
 # Maintainer : Anarchiste
 
 pkgname=opmon
-pkgver=a0.16
+pkgver=0.16
 pkgrel=1
 license=('GPL')
 arch=('x86_64')
