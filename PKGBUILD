@@ -3,10 +3,10 @@
 
 
 _pkgname=discover
-pkgname=discover-snap
-pkgver=5.16.4
+pkgname=discover-snap-git
+pkgver=$(git ls-remote --tags https://github.com/KDE/discover.git | wc -l)
 pkgrel=1
-pkgdesc='KDE and Plasma resources management GUI with snap support'
+pkgdesc='KDE and Plasma resources management GUI with snap support (development version)'
 arch=(x86_64)
 url='https://userbase.kde.org/Discover'
 license=(LGPL)
@@ -15,10 +15,10 @@ depends=(knewstuff kitemmodels kdeclarative qt5-graphicaleffects appstream-qt ar
 makedepends=(extra-cmake-modules plasma-framework packagekit-qt5 flatpak fwupd)
 optdepends=('packagekit-qt5: to manage packages from Arch Linux repositories' 'flatpak: Flatpak packages support'
             'fwupd: firmware update support')
+conflicts=('discover' 'discover-snap')
 groups=(plasma)
-source=("https://download.kde.org/stable/plasma/$pkgver/$_pkgname-$pkgver.tar.xz"{,.sig})
-sha256sums=('0e07a49d3ee93434452d69330b11653546a2104601ec08518be111ba7967f1b0'
-            'SKIP')
+source=("git+https://github.com/KDE/discover.git")
+sha256sums=('SKIP')
 validpgpkeys=('2D1D5B0588357787DE9EE225EC94D18F7F05997E'  # Jonathan Riddell <jr@jriddell.org>
               '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
               'D07BD8662C56CB291B316EB2F5675605C74E02CF'  # David Edmundson <davidedmundson@kde.org>
@@ -30,7 +30,7 @@ prepare() {
 
 build() {
   cd build
-  cmake ../$_pkgname-$pkgver \
+  cmake ../$_pkgname \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DCMAKE_INSTALL_LIBEXECDIR=lib \

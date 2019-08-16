@@ -1,6 +1,6 @@
-pkgbase = discover-snap
-	pkgdesc = KDE and Plasma resources management GUI with snap support
-	pkgver = 5.15.6
+pkgbase = discover-snap-git
+	pkgdesc = KDE and Plasma resources management GUI with snap support (development version)
+	pkgver = 184
 	pkgrel = 1
 	url = https://userbase.kde.org/Discover
 	arch = x86_64
@@ -22,14 +22,14 @@ pkgbase = discover-snap
 	optdepends = packagekit-qt5: to manage packages from Arch Linux repositories
 	optdepends = flatpak: Flatpak packages support
 	optdepends = fwupd: firmware update support
-	source = https://download.kde.org/stable/plasma/5.15.6/discover-snap-5.15.6.tar.xz
-	source = https://download.kde.org/stable/plasma/5.15.6/discover-snap-5.15.6.tar.xz.sig
+	conflicts = discover
+	conflicts = discover-snap
+	source = git+https://github.com/KDE/discover.git
 	validpgpkeys = 2D1D5B0588357787DE9EE225EC94D18F7F05997E
 	validpgpkeys = 0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D
 	validpgpkeys = D07BD8662C56CB291B316EB2F5675605C74E02CF
 	validpgpkeys = 1FA881591C26B276D7A5518EEAAF29B42A678C20
-	sha256sums = 0e07a49d3ee93434452d69330b11653546a2104601ec08518be111ba7967f1b0
 	sha256sums = SKIP
 
-pkgname = discover-snap
+pkgname = discover-snap-git
 
