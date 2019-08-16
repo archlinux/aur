@@ -5,8 +5,8 @@
 
 pkgname=librewolf
 _pkgname=LibreWolf
-pkgver=68.0.1
-pkgrel=2
+pkgver=68.0.2
+pkgrel=1
 pkgdesc="Community-maintained fork of Librefox: a privacy and security-focused browser"
 arch=(x86_64)
 license=(MPL GPL LGPL)
@@ -26,7 +26,7 @@ source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-
         $pkgname.desktop
         $pkgname.cfg.patch
         "git+https://gitlab.com/${pkgname}-community/${pkgname}.git#commit=1dde2d0e")
-sha256sums=('6037f77bdab29d79ca5e3fbd1d32f6c209e09d2066189a13dc7f7491227f5568'
+sha256sums=('9b3e6d8f99819f9eda9ebba403b644a2b96d19450b42cae422bbf4386902a840'
             '0471d32366c6f415f7608b438ddeb10e2f998498c389217cdd6cc52e8249996b'
             '3e2df22fa42f95bca8594cf07ed3ec6cc850fd121de4a283bf95c23eba1e467b'
             'SKIP')
@@ -110,7 +110,7 @@ ac_add_options --with-distribution-id=io.gitlab.${pkgname}
 ac_add_options --with-unsigned-addon-scopes=app,system
 # export MOZ_APP_REMOTINGNAME=${_pkgname//-/}
 # export MOZ_TELEMETRY_REPORTING=0
-export MOZ_REQUIRE_SIGNING=1
+export MOZ_REQUIRE_SIGNING=0
 
 # System libraries
 ac_add_options --with-system-nspr
@@ -123,6 +123,7 @@ ac_add_options --enable-startup-notification
 ac_add_options --disable-crashreporter
 ac_add_options --disable-gconf
 ac_add_options --disable-updater
+ac_add_options --disable-tests
 
 # Disables crash reporting, telemetry and other data gathering tools
 mk_add_options MOZ_CRASHREPORTER=0
