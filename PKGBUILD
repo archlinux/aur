@@ -7,7 +7,7 @@ pkgname=(
     'manjarowish-pantheon-settings'
     )
 pkgver=0.1
-pkgrel=5
+pkgrel=6
 arch=('any')
 _branch='master'
 url="https://github.com/librewish/manjarowish-pantheon-settings"
