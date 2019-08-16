@@ -3,7 +3,7 @@
 _pkgbasename=dav1d
 pkgname=lib32-$_pkgbasename
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='AV1 cross-platform decoder focused on speed and correctness (32 bit)'
 url='https://code.videolan.org/videolan/dav1d/'
 arch=('x86_64')
@@ -35,8 +35,8 @@ prepare() {
 }
 
 build() {
-  export CFLAGS="-m32"
-  export CXXFLAGS="-m32"
+  export CC="gcc -m32"
+  export CXX="g++ -m32"
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 
   cd ${_pkgbasename}-${pkgver}
