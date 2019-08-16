@@ -1,14 +1,15 @@
 pkgbase = rofi-autorandr
 	pkgdesc = Autorandr integration for rofi
-	pkgver = 1.0.3
+	pkgver = 1.0.4
 	pkgrel = 3
 	url = https://github.com/pawndev/rofi-autorandr
 	arch = x86_64
 	license = MIT
 	depends = rofi
 	depends = autorandr
-	source = rofi-autorandr::https://github.com/pawndev/rofi-autorandr/archive/1.0.3.tar.gz
+	source = rofi-autorandr::https://github.com/pawndev/rofi-autorandr/archive/1.0.4.tar.gz
 	md5sums = 1a81c199b0a4edba8cec6954832d585c
+	md5sums = 4f9cfbcc029192881a497d7d063730e8
 
 pkgname = rofi-autorandr
 
