@@ -2,7 +2,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgname=python2-evdev
-pkgver=1.1.2
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Python2 bindings for the Linux input subsystem"
 arch=(x86_64)
@@ -10,8 +10,7 @@ url="https://python-evdev.readthedocs.io/en/latest/"
 license=(BSD)
 depends=(python2-pbr)
 makedepends=(python2 git)
-_commit=34a7535e8e160c78bf923adc48a1f1f6bcdcaae8  # tags/v1.1.2
-source=("git+https://github.com/gvalkov/python-evdev#commit=$_commit")
+source=("git+https://github.com/gvalkov/python-evdev#tag=v$pkgver")
 sha256sums=('SKIP')
 
 pkgver() {
