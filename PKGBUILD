@@ -16,7 +16,7 @@ optdepends=()
 #replaces=("bluetoother")
 #conflicts=("bluetoother")
 
-source=('git+https://gitlab.com/efanomars/bluetoother.git#commit=24241b86a03d96c5b57a1f5405718a5495bccaaf')
+source=('git+https://gitlab.com/efanomars/bluetoother.git#commit=cb04639d00d456e072bb7dbb62389a2d821e40a0')
 sha512sums=('SKIP')
 
 build() {
