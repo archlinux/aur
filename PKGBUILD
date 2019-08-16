@@ -2,7 +2,7 @@
 pkgbase=python-spherical_geometry
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=1.2.16
+pkgver=1.2.17
 pkgrel=1
 pkgdesc="Python based tools for spherical geometry"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('python-setuptools' 'python-numpy' 'qd>=2.3.7' 'python-sphinx-autom
 #checkdepends=('python-pytest' 'python-astropy')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         'fix_doc_warning.patch')
-md5sums=('9c3b00d6936bcd6c3a0e3ac007974740'
+md5sums=('07b30fdba1215d2a5a5beea2279019da'
          'fed5395d45a2275ccd5e0d63956ecddf')
 
 prepare() {
