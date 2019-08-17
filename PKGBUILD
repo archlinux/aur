@@ -3,13 +3,13 @@
 pkgname=blobby-volley-svn
 pkgver=r1681
 pkgrel=2
-pkgdesc="Official continuation of the famous Blobby Volley 1.x arcade game."
+pkgdesc="Official continuation of the famous Blobby Volley 1.x arcade game"
 arch=('x86_64' 'i686')
 url="https://sourceforge.net/projects/blobby/"
 makedepends=('subversion' 'boost' 'cmake' 'zip')
 depends=('physfs' 'sdl2')
 license=('GPL')
-source=("blobby-code::svn+http://svn.code.sf.net/p/blobby/code/trunk"
+source=("blobby-code::svn+https://svn.code.sf.net/p/blobby/code/trunk"
         "blobby2.desktop"
         "blobby2.png"
         "0001-fix-vector-include.patch")
@@ -43,9 +43,9 @@ package() {
   make DESTDIR="$pkgdir/" install
 
   # install .desktop file and icon
-  install -dm755 $pkgdir/usr/share/{applications,pixmaps}
-  install -m644 $srcdir/blobby2.desktop $pkgdir/usr/share/applications
-  install -m644 $srcdir/blobby2.png $pkgdir/usr/share/pixmaps
+  install -dm755 "$pkgdir"/usr/share/{applications,pixmaps}
+  install -m644 "$srcdir"/blobby2.desktop "$pkgdir"/usr/share/applications
+  install -m644 "$srcdir"/blobby2.png "$pkgdir"/usr/share/pixmaps
 }
 
 # vim:set ts=2 sw=2 et:
