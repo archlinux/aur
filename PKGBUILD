@@ -51,15 +51,13 @@ _use_current=
 pkgbase=linux-rt-bfq
 # pkgname=('linux-rt-bfq' 'linux-rt-bfq-headers' 'linux-rt-bfq-docs')
 _major=5.2
-#_minor=1
-_rtver=1
+_minor=9
+_rtver=3
 _rtpatchver=rt${_rtver}
-#pkgver=${_major}.${_minor}.${_rtpatchver}
-#_pkgver=${_major}.${_minor}
-pkgver=${_major}.${_rtpatchver}
-_pkgver=${_major}
+pkgver=${_major}.${_minor}.${_rtpatchver}
+_pkgver=${_major}.${_minor}
 _srcname=linux-${_pkgver}
-pkgrel=15
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/sirlucjan/bfq-mq-lucjan"
 license=('GPL2')
@@ -68,7 +66,7 @@ makedepends=('kmod' 'inetutils' 'bc' 'libelf' 'python-sphinx' 'python-sphinx_rtd
              'graphviz' 'imagemagick')
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/${_major}"
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_major}"
-_bfq_path_1="bfq-paolo-dev-lucjan"
+_bfq_path_1="bfq-paolo-dev-lucjan-for-5.2.3"
 _bfq_patch_1="0001-block-bfq-dev-lucjan.patch"
 _bfq_path_2="bfq-paolo-dev-lucjan-v2"
 _bfq_patch_2="0002-block-bfq-dev-lucjan.patch"
@@ -95,7 +93,6 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "${_lucjanpath}/arch-patches/0002-ZEN-Add-CONFIG-for-unprivileged_userns_clone.patch"
         "${_lucjanpath}/arch-patches/0003-iwlwifi-mvm-disable-TX-AMSDU-on-older-NICs.patch"
         "${_lucjanpath}/arch-patches/0004-iwlwifi-Add-support-for-SAR-South-Korea-limitation.patch"
-        "${_lucjanpath}/arch-patches/0005-netfilter-nf_tables-fix-module-autoload-for-redir.patch"
          # the main kernel config files
         'config'
          # pacman hook for depmod
@@ -401,11 +398,11 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('5a28f8a34c4e0470617f5638b7112e6252109b78f23b1eed484a228530970c7ef5c130d6e5a09cf25ea2f6a0329602dcc1ec66ce893182e15b27d99bd228789c'
+sha512sums=('2e3fad96cce66e1ef0a8f82c221970e6535d2d20b5ed8dcc3f368cd51576ff57bd31f5b5b09f7b19acee4f73c7ef5f1a0aa8ecb5176c431c2d4cb5c770432f4b'
             'SKIP'
-            '02563a139f05c13442bf60e31a84809f14e5d2bbca78d00cb7093eec365135e3f1e6eb40eb0aa58ec50363fdfe9bbca12204a1a643c6f0589e8c6fa5a3794b94'
+            'd3d39fa40cf42c9c7d11f56c06975d5f1b57194a79399992258d9dd8019dd24d0ddbfcf082cb353926366e7a7063067a698b642838e88e489a0414a573e27b9d'
             'SKIP'
-            '9a39e5d432da75a8dab9fefff86edc2397968250961f3689e4eb16b2091649e4a991b8ffb2959020ba19a6b89d88157a4bdf89bdd61c9b2844bd6953f112c3bc'
+            'd996a89d7831c4d49980b1b5b73ccd21da419302e86ea6faaf7d8f5a686bdbfe688a75c34d3e9583cbb11a011d2adcb4cb3aef66aba677e0d810f3eb1fb5be4b'
             '8ce2e2c3da37435090abdf0d1875aa0b2870d9cb9ce148cdc30855c1beeffc87cd7a8003c3c351f8f31753c1a4678df6cb3c02c39797b361632c9e5abbe2173f'
             '960028ff15108a88e67caf7769b21e9989aa5c56120fa417baa5a721ef09fb86e73d2ba9f1def27b0f98ac935cc670799b3fbb2b78b98b26516a9063b4c84e5f'
             '831337f1b6042d97dc79cc5768a31f97773248a41af4704742deff4e3224aa0c57e7645d939b9fab9140fc24f0c879fabef85ed58255844ac507f9e971840ee1'
@@ -415,7 +412,6 @@ sha512sums=('5a28f8a34c4e0470617f5638b7112e6252109b78f23b1eed484a228530970c7ef5c
             '9d472377c50ddd9ddab5d4ab3092f3d487eeee20a4d4a04d3cefeef5bbf40daa3eb609b15741ca4a8cd32bf2b6d0781de961cbf55e2f80fd40260f282bf022f4'
             '166653c6d7d76b052aa26f6a0782a74db75d2611c3d5d770219a00fed4da7d2317b35e39aaadec25da1fc91fb7f18385247303d531d15e3998886bb65f8cd89f'
             '1e422fc04acad01380b96dad92b43bbc2ddb26e3f109c519534fe6635e6fc1decebeff22b6f31be773330f1d4504883264e719889a4961a03c31670dbc2d9859'
-            'b6b4b55bca0271677e66566175e28d4032d7f95b9fdd2163fb1fd1fa4997271fef03bcf71257b03080f2a6896eb4becdc8771b90c458ad4a575b5bb126937146'
             'ff86579ad1433fe165099bb0ddf684e876daea19012c689b0efef2819ba79bbc03a81134a3f73f400ba1456291cb244c544c6bcddd21000231d8652d2f599853'
             '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
             '2718b58dbbb15063bacb2bde6489e5b3c59afac4c0e0435b97fe720d42c711b6bcba926f67a8687878bd51373c9cf3adb1915a11666d79ccb220bf36e0788ab7'
