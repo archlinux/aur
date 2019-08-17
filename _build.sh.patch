@@ -1,0 +1,33 @@
+diff --git a/scripts/_build.sh b/scripts/_build.sh
+index 6caa0c3c..758c5627 100755
+--- a/scripts/_build.sh
++++ b/scripts/_build.sh
+@@ -2,11 +2,17 @@
+ 
+ set -euo pipefail
+ 
++DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )/../"
++OUT_D=${OUT_D:-${DIR}/builds}
++mkdir -p "$OUT_D"
++
+ base="-X github.com/digitalocean/doctl."
+ build="$("$DIR"/scripts/version.sh -c)"
++build="$(test -n "$build" || echo "$_build")"
+ ldflags="${base}Build=${build}"
+ 
+ version="$("$DIR"/scripts/version.sh -s)"
++version="$(test -n "$version" || echo "$_version")"
+ major="$(echo "$version" | cut -d . -f1)"
+ ldflags="${ldflags} ${base}Major=${major}"
+ 
+@@ -16,10 +22,6 @@ ldflags="${ldflags} ${base}Minor=${minor}"
+ patch="$(echo "$version" | cut -d . -f3)"
+ ldflags="${ldflags} ${base}Patch=${patch}"
+ 
+-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )/../"
+-OUT_D=${OUT_D:-${DIR}/builds}
+-mkdir -p "$OUT_D"
+-
+ (
+   export GOOS=${GOOS:-linux}
+   export GOARCH=${GOARCH:-amd64}

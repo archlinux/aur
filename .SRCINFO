@@ -10,7 +10,9 @@ pkgbase = doctl
 	makedepends = git
 	conflicts = doctl-bin
 	source = doctl-1.28.0.tar.gz::https://github.com/digitalocean/doctl/archive/v1.28.0.tar.gz
+	source = _build.sh.patch
 	sha256sums = eafb41457c4fb279762b1a81606130bd8f02f0390df77b032d11108666daff49
+	sha256sums = 7182de3afae4a991a6da43d58230f55e57839a55668d2b862d38186e7e7a366f
 
 pkgname = doctl
 
