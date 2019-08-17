@@ -7,11 +7,17 @@ arch=(any)
 url="https://github.com/neurobin/gencsr"
 license=('BSD')
 depends=(bash openssl)
-source=( "https://github.com/neurobin/$pkgname/archive/$pkgver.tar.gz" )
-md5sums=('f7318349d2f133463504c1363eb4edbc')
-validpgpkeys=('3331 6137 5B22 27AC F7AA  6351 A4A2 CA5B 6BDA A871')
+source=( "https://github.com/neurobin/$pkgname/archive/release.tar.gz" )
+md5sums=('SKIP')
+download_branch=release
+
+pkgver() {
+  cd "${srcdir}/gencsr-$download_branch"
+  ./gencsr -v | grep -P 'Version:.*' |grep -oP '[\d.]+$'
+}
+
 
 package() {
-	cd "$pkgname-$pkgver"
+	cd "$pkgname-$download_branch"
 	make DESTDIR="$pkgdir/" install
 }
