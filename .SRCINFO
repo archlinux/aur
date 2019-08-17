@@ -20,6 +20,8 @@ pkgbase = telegram-desktop-udf-patched
 	depends = openssl
 	optdepends = libnotify: desktop notifications
 	optdepends = ttf-opensans: default Open Sans font family
+	provides = telegram-desktop
+	conflicts = telegram-desktop
 	source = tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#tag=v1.8.1
 	source = libtgvoip::git+https://github.com/telegramdesktop/libtgvoip
 	source = variant::git+https://github.com/mapbox/variant

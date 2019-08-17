@@ -22,6 +22,8 @@ optdepends=(
     'libnotify: desktop notifications'
     'ttf-opensans: default Open Sans font family'
 )
+provides=('telegram-desktop')
+conflicts=('telegram-desktop')
 source=(
     "tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#tag=v$pkgver"
     "libtgvoip::git+https://github.com/telegramdesktop/libtgvoip"
