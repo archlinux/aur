@@ -2,20 +2,19 @@
 
 _pkgname=jalv
 pkgname="${_pkgname}-git"
-pkgver=1.6.1.r443.3dc259e
+pkgver=1.6.2.r450.57b35f6
 pkgrel=1
 pkgdesc="A simple but fully featured LV2 host for Jack"
 arch=('i686' 'x86_64')
 url="http://drobilla.net/software/${_pkgname}/"
 license=('custom:ISC')
 depends=('lilv' 'suil')
-makedepends=('git' 'gtk2' 'gtk3' 'gtkmm' 'jack' 'python' 'qt4' 'qt5-base')
+makedepends=('git' 'gtk2' 'gtk3' 'gtkmm' 'jack' 'python' 'qt5-base')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 optdepends=('gtk2: Gtk+ 2.x frontend'
             'gtk3: Gtk+ 3.x frontend'
             'gtkmm: Gtk++ 2.x frontend'
-            'qt4: Qt 4.x frontend'
             'qt5-base: Qt 5.x frontend')
 source=("${_pkgname}::git+http://git.drobilla.net/${_pkgname}.git"
         'autowaf::git+https://gitlab.com/drobilla/autowaf.git')
@@ -39,8 +38,9 @@ prepare() {
 build() {
   cd "${srcdir}/${_pkgname}"
 
-  CXXFLAGS+=' -std=c++11'
-  python waf configure --prefix=/usr
+  python waf configure \
+    --prefix=/usr \
+    --no-qt4
   python waf build $MAKEFLAGS
 }
 
