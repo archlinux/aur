@@ -1,6 +1,6 @@
 pkgbase = transmission-cmake
 	pkgver = 2.94
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.transmissionbt.com/
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = transmission-cmake
 	arch = aarch64
 	license = MIT
 	makedepends = gtk3
-	makedepends = ido-thanos
+	makedepends = ido
 	makedepends = intltool
 	makedepends = curl
 	makedepends = qt5-base

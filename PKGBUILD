@@ -2,12 +2,12 @@
 pkgbase=transmission-cmake
 pkgname=(transmission-cmake-cli transmission-cmake-gtk transmission-cmake-qt libtransmission)
 pkgver=2.94
-pkgrel=1
+pkgrel=2
 arch=(i686 x86_64 arm armv6h armv7h aarch64)
 url="http://www.transmissionbt.com/"
 license=(MIT)
 options=(!buildflags)
-makedepends=(gtk3 ido-thanos intltool curl qt5-base libevent systemd qt5-tools dht libutp libnatpmp)
+makedepends=(gtk3 ido intltool curl qt5-base libevent systemd qt5-tools dht libutp libnatpmp)
 source=("git+https://github.com/transmission/transmission#tag=2.93"
         transmission-cmake-cli.sysusers
         transmission-cmake-cli.tmpfiles)
