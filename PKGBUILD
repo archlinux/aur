@@ -2,8 +2,8 @@
 # Contributor: Adrian Berriel <berriel[at]gmail[dot]com>
 
 pkgname=plasma-theme-helium
-pkgver=9.1.0
-pkgrel=3
+pkgver=9.12
+pkgrel=1
 pkgdesc="A translucent theme for Plasma 5."
 arch=('any')
 url="https://www.opendesktop.org/p/998869/"
@@ -13,7 +13,7 @@ provides=("${pkgname}")
 conflicts=("${pkgname}-git")
 options=('!strip')
 source=('Helium.tar.gz')
-md5sums=('67c1164605e18ac1b7e08469eaec84b2')
+md5sums=('669e61126a5fad06cc4cc130682645cf')
 
 package() {
   install -dm755 "${pkgdir}/usr/share/plasma/desktoptheme/"

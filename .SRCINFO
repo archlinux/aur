@@ -1,7 +1,7 @@
 pkgbase = plasma-theme-helium
 	pkgdesc = A translucent theme for Plasma 5.
-	pkgver = 9.1.0
-	pkgrel = 3
+	pkgver = 9.12
+	pkgrel = 1
 	url = https://www.opendesktop.org/p/998869/
 	arch = any
 	license = custom:Creative Commons
@@ -10,7 +10,7 @@ pkgbase = plasma-theme-helium
 	conflicts = plasma-theme-helium-git
 	options = !strip
 	source = file://Helium.tar.gz
-	md5sums = 67c1164605e18ac1b7e08469eaec84b2
+	md5sums = 669e61126a5fad06cc4cc130682645cf
 
 pkgname = plasma-theme-helium
 
