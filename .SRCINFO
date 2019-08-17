@@ -1,6 +1,6 @@
 pkgbase = libretro-mrboom-git
 	pkgdesc = Mr.Boom is a 8 players Bomberman clone for RetroArch/Libretro
-	pkgver = 296.e65e07e
+	pkgver = 298.8f67ebf
 	pkgrel = 1
 	url = https://github.com/libretro/mrboom-libretro
 	arch = i686
