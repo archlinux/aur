@@ -19,7 +19,7 @@ _reponame=VC4C
 build() {
 	mkdir -p build
 	cd build
-	cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib -DCMAKE_BUILD_TYPE=Release -DMULTI_THREADED=true -DVC4CL_STDLIB_DIR=/usr/include/vc4clstdlib-git/include/ "$srcdir/$_reponame-master"
+	cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib -DCMAKE_BUILD_TYPE=Release -DMULTI_THREADED=true -DVC4CL_STDLIB_DIR=/usr/include/vc4clstdlib-git/include "$srcdir/$_reponame-master"
 	make
 }
 
