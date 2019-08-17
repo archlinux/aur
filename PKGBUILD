@@ -3,7 +3,7 @@
 # Useful: https://gitlab.com/gitlab-org/gitlab-ce/issues/29963
 pkgname=gitlab-pages
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc='GitLab Pages daemon used to serve static websites for GitLab users'
 url='https://gitlab.com/gitlab-org/gitlab-pages'
 license=('MIT')
@@ -20,9 +20,13 @@ sha256sums=('eda36763002b3fe54633c59d384f9840de38c6fc9008eb04cab25ae088d1d8f7'
             'ae62235f0fd66eaed7ad74048daf21b92058aba90e40fc2d3e7a684e9883c32e'
             'fd8f9b60e2247077ad00765904237b6b1c36b11a952cd3b1ad88e74417b82a96')
 
+prepare( ){
+    cd "$srcdir/$pkgname-v$pkgver-"*
+    [[ ${pkgver} == "1.7.0" ]] && sed -i -e '12s/FLAGS) \$(IM/FLAGS) --buildmode exe $(IM/' Makefile.build.mk ||:
+}
+
 build() {
 	cd "$srcdir/$pkgname-v$pkgver-"*
-	export GO_EXTLINK_ENABLED=0
 	make
 }
 
