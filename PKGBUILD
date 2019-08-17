@@ -52,6 +52,10 @@ package_manjarowish-pantheon-settings() {
         'plank-git'
         'switchboard-git'
         'wingpanel-git'
+        'ibus'
+        'orca'
+        'onboard'
+        'numlockx'
         ttf-{droid,opensans,roboto}
        gnome-settings-daemon-{elementary,compat}
         )
