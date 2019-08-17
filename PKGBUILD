@@ -11,7 +11,7 @@ license=('custom:BSD')
 source=("$pkgname-$pkgver::https://github.com/atlas-engineer/next/archive/$pkgver.tar.gz")
 sha256sums=('e459c1f2432bfda853895417be94c6ea0a4254eb060a9a3f5a56491a17fd6da7')
 # If someday Next works with other Lisps, replace 'sbcl' with 'common-lisp'.
-makedepends=('git' 'sbcl' 'cl-asdf')
+makedepends=('sbcl' 'cl-asdf')
 depends=('webkit2gtk' 'sqlite' 'glib-networking' 'gsettings-desktop-schemas' 'libfixposix')
 optdepends=('gstreamer: for HTML5 audio/video'
             'gst-plugins-base: for HTML5 audio/video'

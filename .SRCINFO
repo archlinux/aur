@@ -6,7 +6,6 @@ pkgbase = next-browser
 	arch = i686
 	arch = x86_64
 	license = custom:BSD
-	makedepends = git
 	makedepends = sbcl
 	makedepends = cl-asdf
 	depends = webkit2gtk
