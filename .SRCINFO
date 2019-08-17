@@ -1,6 +1,6 @@
 pkgbase = redo-python
 	pkgdesc = Redo implementation in Python.
-	pkgver = 0.41
+	pkgver = 0.42
 	pkgrel = 1
 	url = https://github.com/apenwarr/redo
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = redo-python
 	optdepends = python-setproctitle: pretty output
 	provides = redo
 	conflicts = redo
-	source = https://github.com/apenwarr/redo/archive/redo-0.41.tar.gz
-	sha256sums = b7c6411185c58d05bafd0dabeb1f45873bc9bb87f7749705964792fa3fb9fedc
+	source = https://github.com/apenwarr/redo/archive/redo-0.42.tar.gz
+	sha256sums = c98379cf6c91544534b2c76929c13337acc013d5a7015deb01492a63b1339f3c
 
 pkgname = redo-python
 

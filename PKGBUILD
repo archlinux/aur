@@ -1,8 +1,8 @@
-# Maintainer: buckket <buckket@cock.li>
+# Maintainer: buckket <felix@buckket.org>
 
 pkgname=redo-python
 _pkgname=redo
-pkgver=0.41
+pkgver=0.42
 pkgrel=1
 pkgdesc="Redo implementation in Python."
 arch=("any")
@@ -14,7 +14,7 @@ optdepends=("python-setproctitle: pretty output")
 provides=("redo")
 conflicts=("redo")
 source=("https://github.com/apenwarr/redo/archive/redo-${pkgver}.tar.gz")
-sha256sums=('b7c6411185c58d05bafd0dabeb1f45873bc9bb87f7749705964792fa3fb9fedc')
+sha256sums=('c98379cf6c91544534b2c76929c13337acc013d5a7015deb01492a63b1339f3c')
 
 package() {
   cd "${_pkgname}-${_pkgname}-${pkgver}"
