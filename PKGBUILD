@@ -2,7 +2,7 @@
 # Maintainer: Michael Yang <ohmyarchlinux@pm.me>
 
 pkgname=vcpkg-git
-pkgver=r8538.b03f62e0e
+pkgver=r9094.300e21d59
 pkgrel=1
 pkgdesc='VC++ Pcakaging Tool'
 arch=('x86_64')
@@ -31,9 +31,8 @@ prepare() {
 
 build() {
   cd build
-  cmake ../vcpkg/toolsrc \
-    -DCMAKE_BUILD_TYPE=Release
-  make
+  ../vcpkg/bootstrap-vcpkg.sh -useSystemBinaries
+  cp ../vcpkg/vcpkg .
 }
 
 package() {

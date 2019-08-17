@@ -1,6 +1,6 @@
 pkgbase = vcpkg-git
 	pkgdesc = VC++ Pcakaging Tool
-	pkgver = r8538.b03f62e0e
+	pkgver = r9094.300e21d59
 	pkgrel = 1
 	url = https://github.com/Microsoft/vcpkg
 	install = vcpkg-git.install
