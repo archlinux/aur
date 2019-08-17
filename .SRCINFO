@@ -2,15 +2,14 @@ pkgbase = bcm2835
 	pkgdesc = C library for the Raspberry Pi
 	pkgver = 1.60
 	pkgrel = 1
-	url = http://www.airspayce.com/mikem/bcm2835/
+	url = https://www.airspayce.com/mikem/bcm2835/
 	arch = armv6h
 	arch = armv7h
 	arch = armv8h
 	arch = i686
 	arch = x86_64
 	license = GPL2
-	provides = bcm2835
-	source = http://www.airspayce.com/mikem/bcm2835/bcm2835-1.60.tar.gz
+	source = https://www.airspayce.com/mikem/bcm2835/bcm2835-1.60.tar.gz
 	sha512sums = 64d56db0cc5d8e2eb7ad61ccbe5c51c82d8f28dc397a4447448ea4aaadf98efa691af8a3f5cc403c31fde32006de1a27e539130b481d13d71abf48e0669c98b7
 
 pkgname = bcm2835
