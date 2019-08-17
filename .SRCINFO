@@ -37,6 +37,11 @@ pkgbase = telegram-desktop-udf-patched
 	source = Use-system-wide-font.patch::https://git.archlinux.org/svntogit/community.git/plain/telegram-desktop/repos/community-x86_64/Use-system-wide-font.patch
 	source = tdesktop_lottie_animation_qtdebug.patch::https://git.archlinux.org/svntogit/community.git/plain/telegram-desktop/repos/community-x86_64/tdesktop_lottie_animation_qtdebug.patch
 	source = revert-private-headers.patch::https://github.com/telegramdesktop/tdesktop/commit/b9d3ba621eb8af638af46c6b3cfd7a8330bf0dd5.patch
+	source = always_delete_for_everyone.patch
+	source = always_clear_history_for_everyone.patch
+	source = always_pin_without_notify.patch
+	source = always_send_as_photo_or_album.patch
+	source = search_by_any_user.patch
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
@@ -54,6 +59,11 @@ pkgbase = telegram-desktop-udf-patched
 	sha512sums = ce6be003220267bac5483caf8302b492e1581892bc36d35a61236ebf9f9d766b8bd2159557a1c36256aa85f461797a38bfaae57b12da7a72101b21c0b17ed653
 	sha512sums = a83b80668b2dc2cc77c857069fdb45b487793fda01ad8a63bab66c6a1c71e5d032050e4ec7efb5b4c3216badc5377c856ef1f4a59c2e02b24ee53b1d83124bf3
 	sha512sums = e25dc1c54d6001a7a3740c6cee40a12a2313a3fd2e41986268f0ee5d9d8bf2d34812f539efb0eb5d26d3f263b2e4a7849016711532bf215aa9ff38da30175557
+	sha512sums = 31ed454cbfe5811dedfac516e1c55cd6a2ea69fedb5e09035c04ed1b9647270eafdee1501494ecd948b6baa7a38dbf0747ba686dc89f31804589a39470793ac2
+	sha512sums = 4a7e9de924bbf32fb4cd24ffa2764bcf49e0540bba649829b180da20a62810d4a21ebf11529d4eca22c9ceaa93b434ca3fbfd0b636795f8109ea4e1eddbff8f3
+	sha512sums = b4eeeb4b2801f3edcc7423f28403b1dfabd3f3869425e4f102a2a4554bde93e63bd73d2d4dbf3e5748ce831b570e441d3917f532fc5cceac1ee5e8fd0832cb30
+	sha512sums = 650a2a2568cacd2775979614c06c90a4c505207246eb229bbf4fccd8e9fc2540093eaa5bd748e3801c1e1b43beb89b19674c27c5f400d451475b0ee068b04ca2
+	sha512sums = 94d39bada22391337a807420b58e3ec622c1e41dc0c5f03ffb18bcceef4f6b248efc9f22cbdeaafe9c876ec976a580f7cd09906c97c65e7917df8a11946f1f6f
 
 pkgname = telegram-desktop-udf-patched
 
