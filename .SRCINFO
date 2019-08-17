@@ -1,6 +1,6 @@
 pkgbase = doctl
 	pkgdesc = A command line tool for DigitalOcean services
-	pkgver = 1.27.0
+	pkgver = 1.28.0
 	pkgrel = 1
 	url = https://github.com/digitalocean/doctl
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = doctl
 	makedepends = go
 	makedepends = git
 	conflicts = doctl-bin
-	source = doctl-1.27.0.tar.gz::https://github.com/digitalocean/doctl/archive/v1.27.0.tar.gz
-	sha256sums = a91e7d78da62bc965a9440cb087e5583d945ce10a3e59211992a304a16f26cad
+	source = doctl-1.28.0.tar.gz::https://github.com/digitalocean/doctl/archive/v1.28.0.tar.gz
+	sha256sums = eafb41457c4fb279762b1a81606130bd8f02f0390df77b032d11108666daff49
 
 pkgname = doctl
 
