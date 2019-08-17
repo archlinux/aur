@@ -6,7 +6,7 @@ package_file=pack-kernel-native-from-0.tar
 pkgname=linux-clear-bin
 arch=('x86_64')
 
-version=30770
+version=30800
 kernel_version="5.2.8-821.native"
 
 pkgver="5.2.8"
