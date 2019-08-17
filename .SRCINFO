@@ -1,15 +1,16 @@
 pkgbase = flatcc
 	pkgdesc = FlatBuffers Compiler and Library in C for C
-	pkgver = 0.5.3
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/dvidelabs/flatcc
 	arch = i686
 	arch = x86_64
 	license = Apache
 	makedepends = cmake
+	depends = glibc
 	options = staticlibs
-	source = flatcc-0.5.3.tar.gz::https://github.com/dvidelabs/flatcc/archive/v0.5.3.tar.gz
-	sha256sums = d7519a97569ebdc9d12b162be0f9861fdc2724244f68595264a411ac48e4e983
+	source = flatcc-0.6.0.tar.gz::https://github.com/dvidelabs/flatcc/archive/v0.6.0.tar.gz
+	sha256sums = a92da3566d11e19bb807a83554b1a2c644a5bd91c9d9b088514456bb56e1c666
 
 pkgname = flatcc
 
