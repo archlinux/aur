@@ -3,6 +3,9 @@
 # Based on telegram-desktop-dev by: Giovanni 'ItachiSan' Santini <giovannisantini93@yahoo.it>
 # Contributor: hexchain <i@hexchain.org>
 
+# Thanks to Dan Elkouby <streetwalrus@codewalr.us> for some of the custom patch ideas!
+# https://github.com/Streetwalrus/dotfiles/blob/master/scripts/telegram-desktop
+
 # Thanks Nicholas Guriev <guriev-ns@ya.ru> for the patches!
 # https://github.com/mymedia2/tdesktop
 
@@ -39,6 +42,7 @@ source=(
     "tdesktop_lottie_animation_qtdebug.patch::https://git.archlinux.org/svntogit/community.git/plain/telegram-desktop/repos/community-x86_64/tdesktop_lottie_animation_qtdebug.patch"
     "revert-private-headers.patch::https://github.com/telegramdesktop/tdesktop/commit/b9d3ba621eb8af638af46c6b3cfd7a8330bf0dd5.patch"
     # Custom patches
+    "always_delete_for_everyone.patch"
 )
 sha512sums=(
     'SKIP'
@@ -58,6 +62,7 @@ sha512sums=(
     'ce6be003220267bac5483caf8302b492e1581892bc36d35a61236ebf9f9d766b8bd2159557a1c36256aa85f461797a38bfaae57b12da7a72101b21c0b17ed653'
     'a83b80668b2dc2cc77c857069fdb45b487793fda01ad8a63bab66c6a1c71e5d032050e4ec7efb5b4c3216badc5377c856ef1f4a59c2e02b24ee53b1d83124bf3'
     'e25dc1c54d6001a7a3740c6cee40a12a2313a3fd2e41986268f0ee5d9d8bf2d34812f539efb0eb5d26d3f263b2e4a7849016711532bf215aa9ff38da30175557'
+    '31ed454cbfe5811dedfac516e1c55cd6a2ea69fedb5e09035c04ed1b9647270eafdee1501494ecd948b6baa7a38dbf0747ba686dc89f31804589a39470793ac2'
 )
 
 prepare() {
@@ -78,6 +83,9 @@ prepare() {
     patch -Np1 -i "$srcdir/Use-system-wide-font.patch"
     patch -Np1 -i "$srcdir/tdesktop_lottie_animation_qtdebug.patch"
     patch -R -Np1 -i "$srcdir/revert-private-headers.patch"
+
+    # custom patches
+    patch -Np1 -i "$srcdir/always_delete_for_everyone.patch"
 
     # disable static-qt for rlottie
     sed "/RLOTTIE_WITH_STATIC_QT/d" -i "$srcdir/tdesktop/Telegram/gyp/lib_rlottie.gyp"
