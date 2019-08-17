@@ -1,7 +1,7 @@
 # Maintainer: Miguel Palencia <mike@qtum.org>
 
 pkgname=qtum-core
-pkgver=0.17.6
+pkgver=0.18.0
 pkgrel=2
 pkgdesc="Qtum Core is a Smart Contracts blockchain platform which makes use of UTXO and Proof of Stake."
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('boost-libs' 'libevent' 'desktop-file-utils' 'qt5-base' 'protobuf' 'ope
 makedepends=('boost' 'qt5-tools' 'miniupnpc' 'qrencode' 'zeromq' 'git')
 license=('MIT')
 source=(https://github.com/qtumproject/qtum/archive/mainnet-ignition-v$pkgver.tar.gz )
-sha256sums=('a5823675c3c501bb1519b9fb5c31d6f8f4df3adfc01a39ba8debe84e14d6be30')
+sha256sums=('59c5746c55ef39cfe975ae9aaf6a51effa79ab5e3d6e702e14a57f75e33ccd95')
 provides=('qtum-cli' 'qtum-daemon' 'qtum-tx' 'qtum-qt')
 conflicts=('qtum-cli' 'qtum-daemon' 'qtum-tx' 'qtum-qt')
 
