@@ -20,7 +20,7 @@ index 7a7cbc72..6705a0f3 100644
          "-fno-strict-aliasing", "-fPIC", "-fno-omit-frame-pointer", // optimization flags
          "-fstack-protector",
 +        "-Wno-error=cast-function-type",
-         "-Wextra", "-Wall", "-Wformat-security", "-Wno-unused", "-Wno-parentheses", "-Werror=implicit-function-declaration"] // warning flags
+         "-Wextra", "-Wall", "-Wformat-security", "-Wno-unused", "-Wno-parentheses", "-Werror=implicit-function-declaration", "-Werror=trampolines"] // warning flags
  
 +commonFlags.addAll(System.getenv("CFLAGS").trim().split(" "))
 +

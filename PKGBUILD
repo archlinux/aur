@@ -13,9 +13,9 @@ pkgname=(
   java-openjfx-doc
   java-openjfx-src
 )
-pkgver=11.0.3.u1
+pkgver=12.0.2.u1
 pkgrel=1
-pkgdesc='Java OpenJFX 11 client application platform (open-source implementation of JavaFX)'
+pkgdesc='Java OpenJFX 12 client application platform (open-source implementation of JavaFX)'
 arch=(x86_64)
 url=https://wiki.openjdk.java.net/display/OpenJFX/Main
 license=(custom)
@@ -31,7 +31,7 @@ makedepends=(
   gperf
   gtk2
   gtk3
-  java-environment-openjdk=11
+  java-environment-openjdk=12
   libgl
   libx11
   libxtst
@@ -44,16 +44,16 @@ makedepends=(
   zip
 )
 source=(
-  https://hg.openjdk.java.net/openjfx/11/rt/archive/${pkgver//.u/+}.tar.bz2
+  https://hg.openjdk.java.net/openjfx/12-dev/rt/archive/${pkgver//.u/+}.tar.bz2
   gradle.properties
   https://services.gradle.org/distributions/gradle-4.8-bin.zip
   java-openjfx-flags.patch
   java-openjfx-no-xlocale.patch
 )
-sha256sums=('c4a42e9f7ac94ca3b05b363375f782bc79be9446bee23eb94e6175a97b5262ae'
+sha256sums=('7d5a8d64892764659ff2f79353b93b09729d8377d981d374a4022cd5497d69ea'
             '2622aa35d733cc69f4421f1cd053bf425e89f93141cb52c9f016a9b425fc0cb6'
             'f3e29692a8faa94eb0b02ebf36fa263a642b3ae8694ef806c45c345b8683f1ba'
-            '62d7356654b541a9f868cc7beb185e64a1375d9a734b906ba00eacbee258d16e'
+            'e76f202e8163a9a6e02138987bfc344a66f70aa30b8b699c6bdb41eec31c1465'
             '220c63396561867a6d07ae81b6390160d8f91502587e4873998e3b7a83793a1c')
 
 prepare() {
@@ -79,7 +79,7 @@ package_java-openjfx() {
     glib2
     gtk2
     gtk3
-    java-runtime-openjdk=11
+    java-runtime-openjdk=12
     libavcodec.so
     libavformat.so
     libfreetype.so
@@ -96,10 +96,10 @@ package_java-openjfx() {
 
   cd rt-${pkgver//.u/+}
 
-  install -dm 755  "${pkgdir}"/usr/{lib/jvm/java-11-openjdk,share/licenses}
-  cp -dr --no-preserve=ownership build/sdk/lib "${pkgdir}"/usr/lib/jvm/java-11-openjdk/
-  rm "${pkgdir}"/usr/lib/jvm/java-11-openjdk/lib/src.zip
-  cp -dr --no-preserve=ownership build/jmods "${pkgdir}"/usr/lib/jvm/java-11-openjdk/
+  install -dm 755  "${pkgdir}"/usr/{lib/jvm/java-12-openjdk,share/licenses}
+  cp -dr --no-preserve=ownership build/sdk/lib "${pkgdir}"/usr/lib/jvm/java-12-openjdk/
+  rm "${pkgdir}"/usr/lib/jvm/java-12-openjdk/lib/src.zip
+  cp -dr --no-preserve=ownership build/jmods "${pkgdir}"/usr/lib/jvm/java-12-openjdk/
   cp -dr --no-preserve=ownership build/sdk/legal "${pkgdir}"/usr/share/licenses/java-openjfx
 }
 
@@ -114,8 +114,8 @@ package_java-openjfx-doc() {
 package_java-openjfx-src() {
   cd rt-${pkgver//.u/+}
 
-  install -dm 755  "${pkgdir}"/usr/{lib/jvm/java-11-openjdk,share/licenses}
-  install -m 644 build/sdk/lib/src.zip "${pkgdir}"/usr/lib/jvm/java-11-openjdk/javafx-src.zip
+  install -dm 755  "${pkgdir}"/usr/{lib/jvm/java-12-openjdk,share/licenses}
+  install -m 644 build/sdk/lib/src.zip "${pkgdir}"/usr/lib/jvm/java-12-openjdk/javafx-src.zip
   ln -s java-openjfx "${pkgdir}"/usr/share/licenses/java-openjfx-src
 }
 
