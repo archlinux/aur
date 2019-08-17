@@ -1,6 +1,6 @@
 pkgbase = kodi-devel
 	pkgver = 18.4rc1pre22
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kodi.tv
 	arch = x86_64
 	license = GPL2
@@ -134,7 +134,7 @@ pkgname = kodi-devel
 	depends = python2-pillow
 	depends = python2-simplejson
 	depends = xorg-xdpyinfo
-	depends = kodi-devel-bin
+	depends = kodi-bin-devel
 	optdepends = afpfs-ng: Apple shares support
 	optdepends = bluez: Blutooth support
 	optdepends = python2-pybluez: Bluetooth support

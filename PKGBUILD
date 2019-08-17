@@ -24,7 +24,7 @@ pkgname=(
 )
 pkgver=18.4rc1pre22
 _major=18.3
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://kodi.tv"
 license=('GPL2')
@@ -274,7 +274,7 @@ package_kodi-devel() {
   depends=(
     'desktop-file-utils' 'hicolor-icon-theme' 'mesa' 'python2-pycryptodome'
     'python2-pillow' 'python2-simplejson' 'xorg-xdpyinfo'
-    "$pkgbase-bin"
+    'kodi-bin-devel'
   )
   optdepends=(
     'afpfs-ng: Apple shares support'
