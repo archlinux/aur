@@ -1,18 +1,20 @@
 pkgbase = suil-git
 	pkgdesc = A lightweight C library for loading and wrapping LV2 plugin UIs
 	pkgver = 0.10.4.r318.e067828
-	pkgrel = 1
+	pkgrel = 2
 	url = http://drobilla.net/software/suil/
 	arch = i686
 	arch = x86_64
 	license = custom:ISC
 	makedepends = git
 	makedepends = gtk2
+	makedepends = gtk3
 	makedepends = lv2
 	makedepends = python
 	makedepends = qt5-base
-	optdepends = qt5-base: Qt 5.x UI wrapping support
 	optdepends = gtk2: GTK+ 2.x UI wrapping support
+	optdepends = gtk3: GTK+ 3.x UI wrapping support
+	optdepends = qt5-base: Qt 5.x UI wrapping support
 	provides = suil
 	provides = suil=0.10.4
 	conflicts = suil

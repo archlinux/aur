@@ -3,14 +3,15 @@
 _pkgname=suil
 pkgname="${_pkgname}-git"
 pkgver=0.10.4.r318.e067828
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight C library for loading and wrapping LV2 plugin UIs"
 arch=('i686' 'x86_64')
 url="http://drobilla.net/software/suil/"
 license=('custom:ISC')
-makedepends=('git' 'gtk2' 'lv2' 'python' 'qt5-base')
-optdepends=('qt5-base: Qt 5.x UI wrapping support'
-            'gtk2: GTK+ 2.x UI wrapping support')
+makedepends=('git' 'gtk2' 'gtk3' 'lv2' 'python' 'qt5-base')
+optdepends=('gtk2: GTK+ 2.x UI wrapping support'
+            'gtk3: GTK+ 3.x UI wrapping support'
+            'qt5-base: Qt 5.x UI wrapping support')
 provides=("${_pkgname}" "${_pkgname}=${pkgver//.r*/}")
 conflicts=("${_pkgname}" "${_pkgname}-svn")
 source=("${_pkgname}::git+https://gitlab.com/lv2/${_pkgname}.git"
