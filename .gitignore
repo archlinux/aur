@@ -1,0 +1,4 @@
+src/
+pkg/
+apk.static
+apk-tools-static-bin-*.pkg.tar.gz
