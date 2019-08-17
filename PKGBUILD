@@ -43,6 +43,7 @@ source=(
     "revert-private-headers.patch::https://github.com/telegramdesktop/tdesktop/commit/b9d3ba621eb8af638af46c6b3cfd7a8330bf0dd5.patch"
     # Custom patches
     "always_delete_for_everyone.patch"
+    "always_pin_without_notify.patch"
 )
 sha512sums=(
     'SKIP'
@@ -63,6 +64,7 @@ sha512sums=(
     'a83b80668b2dc2cc77c857069fdb45b487793fda01ad8a63bab66c6a1c71e5d032050e4ec7efb5b4c3216badc5377c856ef1f4a59c2e02b24ee53b1d83124bf3'
     'e25dc1c54d6001a7a3740c6cee40a12a2313a3fd2e41986268f0ee5d9d8bf2d34812f539efb0eb5d26d3f263b2e4a7849016711532bf215aa9ff38da30175557'
     '31ed454cbfe5811dedfac516e1c55cd6a2ea69fedb5e09035c04ed1b9647270eafdee1501494ecd948b6baa7a38dbf0747ba686dc89f31804589a39470793ac2'
+    'b4eeeb4b2801f3edcc7423f28403b1dfabd3f3869425e4f102a2a4554bde93e63bd73d2d4dbf3e5748ce831b570e441d3917f532fc5cceac1ee5e8fd0832cb30'
 )
 
 prepare() {
@@ -86,6 +88,7 @@ prepare() {
 
     # custom patches
     patch -Np1 -i "$srcdir/always_delete_for_everyone.patch"
+    patch -Np1 -i "$srcdir/always_pin_without_notify.patch"
 
     # disable static-qt for rlottie
     sed "/RLOTTIE_WITH_STATIC_QT/d" -i "$srcdir/tdesktop/Telegram/gyp/lib_rlottie.gyp"
