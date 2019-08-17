@@ -1,6 +1,6 @@
 pkgbase = nemesyst-git
-	pkgdesc = Generalised, sequence-based, deep-learning framework of the gods. Warning may include GANs, does not include nuts.
-	pkgver = 2.0.0.r0.f9a9971
+	pkgdesc = Practical, distributed, hybrid-parallelism, deep learning framework.
+	pkgver = 2.0.0.r1.d57b1f0
 	pkgrel = 1
 	url = https://github.com/DreamingRaven/nemesyst
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = nemesyst-git
 	optdepends = python-sphinx: documentation builder
 	optdepends = python-sphinx_rtd_theme: documentation theme generator
 	optdepends = python-sphinx-argparse: documentation auto generate argument list
-	source = nemesyst::git+https://github.com/DreamingRaven/Nemesyst#branch=master
+	source = nemesyst::git+https://github.com/DreamingRaven/nemesyst#branch=master
 	md5sums = SKIP
 
 pkgname = nemesyst-git

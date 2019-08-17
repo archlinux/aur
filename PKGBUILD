@@ -5,13 +5,13 @@
 
 # Maintainer: George Raven <GeorgeRavenCommunity AT pm dot me>
 pkgname=nemesyst-git
-pkgsrcname="nemesyst"
-pkgver=2.0.0.r0.f9a9971
+_pkgsrcname="nemesyst"
+pkgver=2.0.0.r1.d57b1f0
 pkgrel=1
-pkgdesc="Generalised, sequence-based, deep-learning framework of the gods. Warning may include GANs, does not include nuts."
+pkgdesc="Practical, distributed, hybrid-parallelism, deep learning framework."
 arch=('x86_64' 'aarch64')
 url="https://github.com/DreamingRaven/nemesyst"
-branch="master"
+_branch="master"
 license=('MIT') # MIT is a special case store a copy in /usr/share/pkgname
 groups=("nemesyst-base")
 depends=('python-setuptools' 'python' 'python-pymongo' 'python-configargparse')
@@ -26,32 +26,32 @@ replaces=()
 backup=()
 options=()
 install=
-source=('nemesyst::git+https://github.com/DreamingRaven/Nemesyst#branch='"${branch}")
+source=("${_pkgsrcname}::git+${url}#branch=${_branch}")
 noextract=()
 md5sums=('SKIP')
 
 pkgver() {
-	cd "${srcdir}/${pkgsrcname}"
+	cd "${srcdir}/${_pkgsrcname}"
 	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 prepare() {
-	cd "${srcdir}/${pkgsrcname}"
-	git checkout ${branch} # get off of makepkg branch
+	cd "${srcdir}/${_pkgsrcname}"
+	git checkout ${_branch} # get off of makepkg branch
 }
 
 build() {
-	cd "${srcdir}/${pkgsrcname}"
+	cd "${srcdir}/${_pkgsrcname}"
 }
 
 check() {
-	cd "${srcdir}/${pkgsrcname}"
+	cd "${srcdir}/${_pkgsrcname}"
 	# check that program can run while self checking and updating if somethings missing
 	python3 ./nemesyst.py --update
 }
 
 package() {
-	cd "${srcdir}/${pkgsrcname}"
+	cd "${srcdir}/${_pkgsrcname}"
 	python3 ./setup.py install --prefix=/usr --root="$pkgdir/" --optimize=1
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	install -Dm644 nemesyst.d/nemesyst.conf "${pkgdir}/etc/nemesyst/nemesyst.d/nemesyst.conf"
