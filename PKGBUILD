@@ -1,6 +1,6 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 pkgname=libosmium
-pkgver=2.15.1
+pkgver=2.15.2
 pkgrel=1
 pkgdesc="Fast and flexible C++ library for working with OpenStreetMap data."
 url="http://osmcode.org/libosmium/"
@@ -41,4 +41,4 @@ package() {
   install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-sha256sums=('4c0fe0146aee20423d9526e88f205fe442257fdf26df19225e2bde6084bad0ef')
+sha256sums=('be53024e16946ce49ff787f3ce569aa5710010236db68f971433ac6a10318a46')
