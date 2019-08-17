@@ -1,12 +1,16 @@
 # Maintainer: TC <crt@archlinux.email>
 pkgname=automx
 pkgver=v1.1.1.13.g4aee43f
-pkgrel=1
+pkgrel=2
 pkgdesc="automx makes setting up a mail account easy by handling mail account profile requests from your mail clients"
 arch=('any')
 url="https://automx.org"
 license=('GPL3')
-depends=('mod_wsgi' 'python-dateutil' 'python-ipaddress' 'python-lxml' 'python-ldap' 'python-m2crypto')
+depends=('python-dateutil' 'python-ipaddress' 'python-lxml' 'python-m2crypto')
+optdepends=('python-ldap: LDAP backend support'
+            'python-sqlalchemy: SQL backend support'
+            'mod_wsgi: Apache support'
+            'uwsgi: Nginx support')
 makedepends=('git' 'python')
 provides=("$pkgname")
 conflicts=("$pkgname")
