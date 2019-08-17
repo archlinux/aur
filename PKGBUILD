@@ -2,14 +2,14 @@
 
 pkgname=dot-browser-bin
 pkgver=2.1.0
-pkgrel=5
+pkgrel=6
 pkgdesc="A beautiful browser with material UI, with built-in adblock, based on Wexond"
 arch=('x86_64')
 url="https://getdot.js.org"
 license=('GPL3')
 provides=('dot-browser')
 replaces=('dot-bin')
-depends=('electron' 'gconf' 'libnotify' 'libindicator-gtk2' 'libappindicator-gtk2' 'libxtst' 'nss' 'libxss')
+depends=('gconf' 'libnotify' 'libindicator-gtk2' 'libappindicator-gtk2' 'libxtst')
 options=('!strip')
 
 source_x86_64=(
@@ -23,15 +23,20 @@ md5sums_x86_64=('57715345bcfe249b73804ebe7a4f03c0'
 package() {
     cd "${srcdir}"
 
+    # Make the AppImage executable
+    chmod +x "Dot.${pkgver}.AppImage"
+
     # Extract the AppImage
     ./Dot.${pkgver}.AppImage --appimage-extract
 
-    # Do not copy the bundled electron version to reduce package size and
-    # use the most up to date electron version.
+    # Move the files to pkgdir
+    
     mkdir -p "${pkgdir}/opt/dot"
     cp -a "squashfs-root/." "${pkgdir}/opt/dot/"
     chmod 755 -R "${pkgdir}/opt/dot/" 
     install -Dm644 "dot.desktop" "${pkgdir}/usr/share/applications/dot.desktop"
+
+    # Install desktop icons
 
     for size in 16 32 128 256 512; do
         install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/0x0/apps/dot.png" \
