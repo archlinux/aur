@@ -14,9 +14,11 @@ makedepends=('git')
 provides=('zenmonitor')
 
 source=("$_pkgbase::git+$url.git"
-        "Makefile")
+        "Makefile"
+        "zenmonitor.desktop")
 sha256sums=("SKIP"
-            "b8beb6d450c13207b30b5775dffea9a1ffb56628646d69c4f287152845539167")
+            "b8beb6d450c13207b30b5775dffea9a1ffb56628646d69c4f287152845539167"
+            "64889984173a1e0d319dc71f9d5cb96cf8298e6d78c4ff12513374d7b96bbfe4")
 
 pkgver() {
   cd "$srcdir/$_pkgbase"
@@ -34,4 +36,5 @@ build() {
 
 package() {
   install -Dm755 "$srcdir/$_pkgbase"/zenmonitor ${pkgdir}/usr/bin/zenmonitor
+  install -Dm644 "$srcdir"/zenmonitor.desktop ${pkgdir}/usr/share/applications/zenmonitor.desktop
 }
