@@ -1,0 +1,20 @@
+pkgbase = vc4c-git
+	pkgdesc = Compiler for the VC4CL OpenCL-implementation
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/doe300/VC4C
+	arch = any
+	license = MIT
+	makedepends = wget
+	makedepends = gcc
+	makedepends = cmake
+	makedepends = llvm
+	makedepends = vc4clstdlib-git
+	provides = opencl-pi
+	provides = opencl-vc4
+	provides = opencl-driver
+	source = https://github.com/doe300/VC4C/archive/master.tar.gz
+	md5sums = SKIP
+
+pkgname = vc4c-git
+
