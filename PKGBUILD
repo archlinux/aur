@@ -2,7 +2,7 @@
 # Contributor: Dan Beste <Dan.Ray.Beste@gmail.com>
 
 pkgname='stratis-cli'
-pkgver=1.0.3
+pkgver=1.0.4
 _pkgver=$pkgver
 pkgrel=1
 pkgdesc='A CLI for the Stratis Project.'
@@ -15,7 +15,7 @@ makedepends=('dbus-glib' 'git' 'mpfr' 'python-argparse' 'python-dbus' 'python-pi
 source=(
   "${pkgname}-${_pkgver}.tar.gz::https://github.com/stratis-storage/stratis-cli/archive/v${_pkgver}.tar.gz"
 )
-sha256sums=('053b027eddabc547038da9f7dac27c20554b7f4168c94bdcb5a96fe162285c47')
+sha256sums=('29fa5d87c2e449b0ec580595999072de36aaedec5d850831525fe557d1393c6c')
 
 ### ignore tests because it requires root permission to access stratisd
 # check() {
