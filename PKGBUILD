@@ -5,7 +5,7 @@ pkgver='4.1.0'
 pkgrel=1
 pkgdesc="A bridge from Glyphs source files (.glyphs) to UFOs"
 url="https://github.com/googlefonts/glyphsLib"
-checkdepends=('python-pytest' 'python-ufonormalizer' 'python-xmldiff')
+checkdepends=('python-pytest' 'python-ufonormalizer' 'python-unicodedata2=12.0.0' 'python-xmldiff')
 depends=('python' 'python-defcon' 'python-fonttools')
 makedepends=('python-setuptools')
 optdepends=('python-ufonormalizer')
