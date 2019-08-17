@@ -19,7 +19,7 @@ backup=()
 options=("staticlibs")
 source=("https://gitlab.com/oktopod11/$pkgname/raw/master/archive/$pkgname-$pkgver.tar.gz")
 noextract=()
-sha256sums=("4892f1e09db2bd00653415465816213c7971a22872536ab8cc48a49bdc01f34e")
+sha256sums=("c5773e65f0eb54beaf65f42d0aadde5978e85c36670f55fbce0650e7099ccee5") 
 
 build () {
 	cd "$srcdir/$pkgname/"
