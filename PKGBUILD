@@ -10,7 +10,7 @@ pkgrel=1
 pkgdesc="Distributed RESTful search engine built on top of Lucene"
 arch=('x86_64')
 url="https://www.elastic.co/products/elasticsearch"
-license=('Apache')
+license=('custom:Elastic')
 depends=('java-runtime-headless' 'systemd')
 provides=('elasticsearch')
 conflicts=('elasticsearch')
@@ -61,6 +61,7 @@ package() {
   install -dm755 usr/bin
 
   cd "$srcdir"/$relpkgname-$pkgver
+  install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   cp -R bin lib modules plugins "$pkgdir"/usr/share/elasticsearch/
 
   cd config
