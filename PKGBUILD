@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=pantheon-polkit-agent-git
-pkgver=0.1.4.r19.9d023ae
+pkgver=0.1.6.r23.25ed6ee
 pkgrel=1
 pkgdesc='Pantheon Polkit Agent'
 arch=(x86_64)
@@ -33,24 +33,13 @@ pkgver() {
   git describe --tags | sed 's/-/.r/; s/-g/./'
 }
 
-prepare() {
-  if [[ -d build ]]; then
-    rm -rf build
-  fi
-  mkdir build
-}
-
 build() {
-  cd build
-
-  arch-meson ../pantheon-polkit-agent
-  ninja
+  arch-meson pantheon-polkit-agent build
+  ninja -C build
 }
 
 package() {
-  cd build
-
-  DESTDIR="${pkgdir}" ninja install
+  DESTDIR="${pkgdir}" ninja -C build install
 }
 
 # vim: ts=2 sw=2 et:

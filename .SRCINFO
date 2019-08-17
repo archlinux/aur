@@ -1,6 +1,6 @@
 pkgbase = pantheon-polkit-agent-git
 	pkgdesc = Pantheon Polkit Agent
-	pkgver = 0.1.4.r19.9d023ae
+	pkgver = 0.1.6.r23.25ed6ee
 	pkgrel = 1
 	url = https://github.com/elementary/pantheon-agent-polkit
 	arch = x86_64
