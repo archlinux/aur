@@ -2,7 +2,7 @@
 # Contributor: Dan Beste <dan.ray.beste@gmail.com>
 
 pkgname='stratisd'
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc='Easy to use local storage management for Linux.'
 arch=('x86_64')
@@ -12,16 +12,13 @@ makedepends=('asciidoc' 'cargo' 'rust')
 depends=('dbus')
 optdepends=('stratis-cli: command line interface')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/stratis-storage/stratisd/archive/v${pkgver}.tar.gz")
-sha256sums=('c6d257fe3739073712bac6e763f77f196ee68e02a6219dfd79a383fcdb31cf26')
+sha256sums=('062ff3fa7e0a0e9327dd9f9a86cbf71d8277b3d969880dc980dfb649032cfbcc')
 
 build() {
   cd "${pkgname}-${pkgver}"
 
-  # Append '--release' to `cargo build` (line 24):
-  sed -i 's/cargo build --target/cargo build --release --target/' Makefile
-
   # Release
-  make build
+  make release
   make stratisd.8
 
   # patch systemd config
@@ -37,7 +34,7 @@ check() {
 package() {
   cd "${pkgname}-${pkgver}"
 
-  install -D -m755 "target/${CARCH}-unknown-linux-gnu/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  install -D -m755 "target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
   install -D -m644 stratisd.service "${pkgdir}/usr/lib/systemd/system/stratisd.service"
   install -D -m644 org.storage.stratis1.service "${pkgdir}/usr/share/dbus-1/system-services/org.storage.stratis1.service"
   install -D -m644 stratisd.conf "${pkgdir}/usr/share/dbus-1/system.d/stratisd.conf"
