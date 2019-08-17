@@ -1,6 +1,6 @@
 # Maintainer: duffydack <duffydack73 {at] gmail {dot} com>
 pkgname=zsh-auto-notify
-pkgver=0.5.1
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Zsh plugin that sends out a notification when a long running task has completed"
 arch=('any')
@@ -9,7 +9,7 @@ license=('GPL')
 depends=('zsh')
 install=$pkgname.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/MichaelAquilina/${pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('788f926b957c79ceef2c304bad4aaaeaad47fc066992113f171baf5afadc618831be1f962503ec3ca990c97453407baacd4bb46879677608062faea0569e239c')
+sha512sums=('730b26386919de2c65a1fbf55537662115633f62fe3aac796af16c033c84edb545307cc0032771863471ff73defa664a432e2def1bcc62fdb97126e5795832c0')
 changelog=changelog
 
 package() {
