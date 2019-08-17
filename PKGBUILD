@@ -3,19 +3,19 @@
 # Maintainer: Mike Sampson <mike@sambodata.com>
 
 pkgname=psgrep
-pkgver=1.0.6
-pkgrel=2
+pkgver=1.0.9
+pkgrel=1
 pkgdesc="Process list search thru grep"
 arch=('i686' 'x86_64')
 url="https://github.com/jvz/psgrep"
 license=('GPL3')
-_commit=936fc18be10ebae84eff73c8fb7dc77a93b3d2cf
+_commit=ae7a6f17397f79bd25b77da1be74792039ea8991
 source=(https://github.com/jvz/${pkgname}/archive/${_commit}.zip)
-md5sums=('d2cee26386237dbd8046dbe5599a9f53')
+sha256sums=('9c782bab742a21018ea141fb6b5b9b812a0cb84de59bd67efff7493a8127e15c')
 
 package() {
+	depends=('which')
 	cd ${srcdir}/${pkgname}-${_commit}
 	install -Dm755 psgrep ${pkgdir}/usr/bin/psgrep
 	install -Dm644 psgrep.1 ${pkgdir}/usr/share/man/man1/psgrep.1
 }
-

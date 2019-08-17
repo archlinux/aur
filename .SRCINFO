@@ -1,13 +1,14 @@
 pkgbase = psgrep
 	pkgdesc = Process list search thru grep
-	pkgver = 1.0.6
-	pkgrel = 2
+	pkgver = 1.0.9
+	pkgrel = 1
 	url = https://github.com/jvz/psgrep
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	source = https://github.com/jvz/psgrep/archive/936fc18be10ebae84eff73c8fb7dc77a93b3d2cf.zip
-	md5sums = d2cee26386237dbd8046dbe5599a9f53
+	source = https://github.com/jvz/psgrep/archive/ae7a6f17397f79bd25b77da1be74792039ea8991.zip
+	sha256sums = 9c782bab742a21018ea141fb6b5b9b812a0cb84de59bd67efff7493a8127e15c
 
 pkgname = psgrep
+	depends = which
 
