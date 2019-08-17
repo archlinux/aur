@@ -43,6 +43,7 @@ source=(
     "revert-private-headers.patch::https://github.com/telegramdesktop/tdesktop/commit/b9d3ba621eb8af638af46c6b3cfd7a8330bf0dd5.patch"
     # Custom patches
     "always_delete_for_everyone.patch"
+    "always_clear_history_for_everyone.patch"
     "always_pin_without_notify.patch"
     "always_send_as_photo_or_album.patch"
     "search_by_any_user.patch"
@@ -68,6 +69,7 @@ sha512sums=(
     'e25dc1c54d6001a7a3740c6cee40a12a2313a3fd2e41986268f0ee5d9d8bf2d34812f539efb0eb5d26d3f263b2e4a7849016711532bf215aa9ff38da30175557'
     # Custom patches
     '31ed454cbfe5811dedfac516e1c55cd6a2ea69fedb5e09035c04ed1b9647270eafdee1501494ecd948b6baa7a38dbf0747ba686dc89f31804589a39470793ac2'
+    '3fe39a104f6b520799d263f849115796fd3898947ceb5f4b3fdafbd34a44c0098f443cc702fb6d36c96f18bcf05aa8795bac236e84bf80bbe01c75374a7a23b8'
     'b4eeeb4b2801f3edcc7423f28403b1dfabd3f3869425e4f102a2a4554bde93e63bd73d2d4dbf3e5748ce831b570e441d3917f532fc5cceac1ee5e8fd0832cb30'
     '650a2a2568cacd2775979614c06c90a4c505207246eb229bbf4fccd8e9fc2540093eaa5bd748e3801c1e1b43beb89b19674c27c5f400d451475b0ee068b04ca2'
     'b6527b9d71de1a7688071418778a6935a38e65718d96ea750a8a6c1430220279b0e2b4e0eec148e4a82623dff5e334d98f808b042cf6e9c51ec4afc221419fe2'
@@ -94,6 +96,7 @@ prepare() {
 
     # custom patches
     patch -Np1 -i "$srcdir/always_delete_for_everyone.patch"
+    patch -Np1 -i "$srcdir/always_clear_history_for_everyone.patch"
     patch -Np1 -i "$srcdir/always_pin_without_notify.patch"
     patch -Np1 -i "$srcdir/always_send_as_photo_or_album.patch"
     patch -Np1 -i "$srcdir/search_by_any_user.patch"

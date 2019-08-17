@@ -1,0 +1,15 @@
+Description: Selects the "clear history for {other party}" by default
+
+diff --git a/Telegram/SourceFiles/boxes/confirm_box.cpp b/Telegram/SourceFiles/boxes/confirm_box.cpp
+index 1f392acb9..dccf06391 100644
+--- a/Telegram/SourceFiles/boxes/confirm_box.cpp
++++ b/Telegram/SourceFiles/boxes/confirm_box.cpp
+@@ -522,7 +522,7 @@ void DeleteMessagesBox::prepare() {
+ 				: st::attentionBoxButton);
+ 		}
+ 		if (auto revoke = revokeText(peer)) {
+-			_revoke.create(this, revoke->checkbox, false, st::defaultBoxCheckbox);
++			_revoke.create(this, revoke->checkbox, true, st::defaultBoxCheckbox);
+ 			appendDetails(std::move(revoke->description));
+ 		}
+ 	} else if (_moderateFrom) {
