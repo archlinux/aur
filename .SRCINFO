@@ -1,0 +1,14 @@
+pkgbase = margpp
+	pkgdesc = Simple argument handling library for C++ programs
+	pkgver = 0.2
+	pkgrel = 3
+	url = https://gitlab.com/oktopod11/marg
+	arch = x86_64
+	license = LGPL3
+	provides = margpp
+	options = staticlibs
+	source = https://gitlab.com/oktopod11/margpp/raw/master/archive/margpp-0.2.tar.gz
+	sha256sums = 27dc3aa5b83266239fe1542e5bede2fd40ea5bf98b7394dfdb503c1704ff7ec1
+
+pkgname = margpp
+
