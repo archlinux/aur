@@ -2,7 +2,7 @@
 
 pkgname=nextcloud-app-u2f
 _releasename=twofactor_u2f
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="Two factor U2F provider for Nextcloud"
 arch=('any')
@@ -22,4 +22,4 @@ package() {
     cp -r --target-directory=$pkgdir/usr/share/webapps/nextcloud/apps/ $srcdir/$_releasename
 }
 
-sha256sums=('bb2be4b4f3367b0ba8c8e78cba727ee521df116d2f76a0a73cf956c710d2c08b')
+sha256sums=('ad1d64f1c228513ad987f31874a518aa20371607ca8e58477ca46155638a2f90')
