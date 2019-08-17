@@ -3,7 +3,7 @@
 
 _pkgname=AppImageLauncher
 pkgname=appimagelauncher
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="A Helper application for running and integrating AppImages."
 arch=('x86_64')
