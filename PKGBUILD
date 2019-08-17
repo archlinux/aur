@@ -529,7 +529,7 @@ fi
 
   cd ${_libsdebugdir}
   runuser -l ${_packaginguser} -c 'makepkg -d -f' || exit 1
-  mv ${_libsdebugdir}/${_libsdebugpkgname}-${pkgver}-${pkgrel}-any.pkg.tar.xz ${startdir}
+  mv ${_libsdebugdir}/${_libsdebugpkgname}-${pkgver}-${pkgrel}-any.pkg.tar.* ${startdir}
 fi
 
   if $_static_build || $_target_host; then
@@ -560,7 +560,7 @@ fi
 
     cd ${_libsdir}
     runuser -l ${_packaginguser} -c 'makepkg -d -f' || exit 1
-    mv ${_libsdir}/${_libspkgname}-${pkgver}-${pkgrel}-any.pkg.tar.xz ${startdir}
+    mv ${_libsdir}/${_libspkgname}-${pkgver}-${pkgrel}-any.pkg.tar.* ${startdir}
   fi
 
   cp ${_bindir}/configure_line ${_bindir}/config.summary ${_basepkgdir}
