@@ -2,15 +2,14 @@
 
 _pkgname=suil
 pkgname="${_pkgname}-git"
-pkgver=0.10.3.r311.0229219
-pkgrel=2
+pkgver=0.10.4.r318.e067828
+pkgrel=1
 pkgdesc="A lightweight C library for loading and wrapping LV2 plugin UIs"
 arch=('i686' 'x86_64')
 url="http://drobilla.net/software/suil/"
 license=('custom:ISC')
-makedepends=('git' 'gtk2' 'lv2' 'python' 'qt4' 'qt5-base')
-optdepends=('qt4: Qt 4.x UI wrapping support'
-            'qt5-base: Qt 5.x UI wrapping support'
+makedepends=('git' 'gtk2' 'lv2' 'python' 'qt5-base')
+optdepends=('qt5-base: Qt 5.x UI wrapping support'
             'gtk2: GTK+ 2.x UI wrapping support')
 provides=("${_pkgname}" "${_pkgname}=${pkgver//.r*/}")
 conflicts=("${_pkgname}" "${_pkgname}-svn")
@@ -36,7 +35,10 @@ prepare() {
 build() {
   cd "${srcdir}/${_pkgname}"
 
-  python waf configure --prefix=/usr --configdir=/etc
+  python waf configure \
+    --prefix=/usr \
+    --configdir=/etc \
+    --no-qt4
   python waf build $MAKEFLAGS
 }
 
