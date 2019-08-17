@@ -2,7 +2,7 @@
 # Contributor: Ilya Gulya <ilyagulya@gmail.com>
 pkgname="deezer"
 pkgver=4.15.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A proprietary music streaming service"
 arch=('any')
 url="https://www.deezer.com/"
@@ -16,14 +16,14 @@ source=(
          systray.patch
          nodeIntegration.patch
          urls.patch
-         frameless.patch
+         menu-bar.patch
 )
 md5sums=('208423389ef47f1c70d60d6e591202e0'
          'bb851102d63a9cb396b42d7a61c5104c'
          '4a491cdf76afeffb7680d3abdc3f4b89'
          '199ce71cc60dd7feb84ee36a8580639d'
          '7ee49aab9514e5a4df00fbd7da982688'
-         '3ffc8aa66157da1088eeeaa4b3f05587')
+         '10058bb31eccb62c706be2d336184a70')
 
 prepare() {
     # Extract app from installer
@@ -46,7 +46,7 @@ prepare() {
     # Fix startup error electron 6.0.1 (https://github.com/electron/electron/pull/19570
     patch -p1 < "$srcdir/urls.patch"
     # Disable menu bar
-    patch -p1 < "$srcdir/frameless.patch"
+    patch -p1 < "$srcdir/menu-bar.patch"
 
     cd ..
     asar pack app app.asar
