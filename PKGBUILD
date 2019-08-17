@@ -1,6 +1,6 @@
 # Maintainer: Alex Wilson <alex at cooperi dot net>
 pkgname=pivy
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Tools for using PIV smartcards/Yubikeys with ssh-agent and disk encryption"
 url="https://github.com/arekinath/pivy"
@@ -14,11 +14,11 @@ arch=(x86 x86_64)
 depends=(libbsd pcsclite libedit)
 optdepends=('cryptsetup: LUKS encrypted disk support (pivy-luks)'
 	    'zfs-utils: ZFS encrypted pool/fs support (pivy-zfs)')
-makedepends=(cryptsetup zfs-utils json-c)
-sha256sums=('c7c0bb3179388caa8ac6c20864183dd8b305e1865988f487a691278a8900e9a3'
-            '32bfff1f6f395c70556b0f7eb364973c70cf795b25fc83aaf85aa81cd48c3b7f'
-            'e1fff2b195f63448d16e837735f34810206e2843d49430b0243229378be72d26'
-            '1e3a9fada06c1c060011470ad0ff960de28f9a0515277d7336f7e09362517da6')
+makedepends=(pkgconf cryptsetup zfs-utils json-c)
+md5sums=('d93eb0df79e3700e316903eefc13b669'
+         '682ea42ea2f4ea193e72c7ec332782a7'
+         '15fc9fbdf780d05e093474a9a7faec23'
+         '94ce8f4cdbb6b57565da61e380d63045')
 
 prepare() {
 	mv "libressl-2.7.4" "$pkgname-$pkgver/libressl"
