@@ -1,6 +1,6 @@
 pkgbase = kandoman-git
 	pkgdesc = UI for todoman in form of kanban board
-	pkgver = r8.78441cc
+	pkgver = r11.979a418
 	pkgrel = 1
 	url = https://github.com/janza/kandoman
 	arch = i686
