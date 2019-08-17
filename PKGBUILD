@@ -1,7 +1,7 @@
 # Maintainer: Brad Erhart <brae.04+aur@gmail.com>
 
 pkgname=zapier-platform-cli
-pkgver=8.2.1
+pkgver=8.3.0
 pkgrel=1
 pkgdesc="This CLI is your gateway to creating custom applications on the Zapier platform"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('UNLICENSED')
 depends=('nodejs')
 makedepends=('npm' 'jq')
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
-sha256sums=('48d3c7fb18ce4fd714012cce820c00687fd5cfe31a546da85d891b4d89f78410')
+sha256sums=('7bab662c5e03d133a10dd354acbbb709ddd8c39e89ec09be56f2ff0e80ea07e5')
 noextract=("$pkgname-$pkgver.tgz")
 options=('!strip')
 
