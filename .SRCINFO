@@ -1,6 +1,6 @@
 pkgbase = linux-bootsplash
 	pkgdesc = Linux kernel with kernel bootsplash support
-	pkgver = 5.2.8
+	pkgver = 5.2.9
 	pkgrel = 1
 	url = https://www.kernel.org/
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = linux-bootsplash
 	makedepends = bc
 	makedepends = libelf
 	options = !strip
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.2.8.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.2.9.tar.xz
 	source = config
 	source = 60-linux.hook
 	source = 90-linux.hook
@@ -20,7 +20,6 @@ pkgbase = linux-bootsplash
 	source = 0002-ZEN-Add-CONFIG-for-unprivileged_userns_clone.patch
 	source = 0003-iwlwifi-mvm-disable-TX-AMSDU-on-older-NICs.patch
 	source = 0004-iwlwifi-Add-support-for-SAR-South-Korea-limitation.patch
-	source = 0005-netfilter-nf_tables-fix-module-autoload-for-redir.patch
 	source = 0006-bootsplash.patch
 	source = 0007-bootsplash.patch
 	source = 0008-bootsplash.patch
@@ -37,7 +36,7 @@ pkgbase = linux-bootsplash
 	source = ajax-loader.gif
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	sha256sums = a127cd06cc01468e5564c5242827610b679827d7b40c2a2e4d82c629dd0f6937
+	sha256sums = b6f02a4b306ca5cd314d72615bfc2650166969613135da202630e6c4e1b5d4e6
 	sha256sums = SKIP
 	sha256sums = 1c4d5500a3b4995035c2e940fc0ad2a2dae7be047c8eb20c097444e348258f87
 	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
@@ -48,7 +47,6 @@ pkgbase = linux-bootsplash
 	sha256sums = 63e4378e69e2f23ed87af32a4951477a6d82d4ac0de2295db46502c8120da9d9
 	sha256sums = fc96300831506965383ef30bc46b72735dc45bb97dea2ccb8b9450c005d2f020
 	sha256sums = ef926edbd866d95464eb86f7565de572eb97ecfa0369d3b2e078016a0e71a871
-	sha256sums = 4ca62639b7efb87c847e089b0a9aaf7ffc52bdbf25ac0d785926f6d667d130ec
 	sha256sums = a504f6cf84094e08eaa3cc5b28440261797bf4f06f04993ee46a20628ff2b53c
 	sha256sums = e096b127a5208f56d368d2cb938933454d7200d70c86b763aa22c38e0ddb8717
 	sha256sums = 8c1c880f2caa9c7ae43281a35410203887ea8eae750fe8d360d0c8bf80fcc6e0
@@ -73,12 +71,12 @@ pkgname = linux-bootsplash
 	depends = mkinitcpio
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = bootsplash-systemd: to enable bootsplash
-	provides = linux=5.2.8
+	provides = linux=5.2.9
 	backup = etc/mkinitcpio.d/linux-bootsplash.preset
 
 pkgname = linux-bootsplash-headers
 	pkgdesc = Header files and scripts for building modules for Linux-bootsplash kernel
 	depends = linux
-	provides = linux-headers=5.2.8
-	provides = linux-headers=5.2.8
+	provides = linux-headers=5.2.9
+	provides = linux-headers=5.2.9
 
