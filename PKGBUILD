@@ -2,12 +2,12 @@
 
 pkgname=pkgproxy
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='pkgproxy is a caching proxy server for usage with pacman'
 arch=('x86_64' 'i686')
 url="https://github.com/buckket/$pkgname"
 license=('GPL')
-makedepends=('go-pie')
+makedepends=('go')
 source=("$url/archive/v$pkgver.tar.gz" "pkgproxy.service")
 sha256sums=('9b439b9a0f653b788ccc73a49b7dac31b236c9130c48bed1bf465248e3a50bd9'
             '2c8ca0036aa5dd42d66605cb3a9e02abd33500840be5536579b522592881e7fb')
