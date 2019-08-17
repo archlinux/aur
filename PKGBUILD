@@ -1,9 +1,9 @@
-# Maintainer: buckket <buckket@cock.li>
+# Maintainer: buckket <felix@buckket.org>
 
 pkgname=redo-sh
 _pkgname=redo
-pkgver=2.1.1
-pkgrel=2
+pkgver=2.3.0
+pkgrel=1
 pkgdesc="Redo implementation in Bourne Shell."
 arch=("any")
 license=("AGPL3")
@@ -12,8 +12,8 @@ depends=("sh")
 optdepends=("graphviz: dependency graph support via redo-dot")
 provides=("redo")
 conflicts=("redo")
-source=("https://web.archive.org/web/20180804160339/http://news.dieweltistgarnichtso.net/bin/archives/redo-sh.tar.gz")
-sha256sums=('b30fe0d99132c618a87e3ff2bfc269f21d9c6e2baffae5fccd9e73b069af4f94')
+source=("https://web.archive.org/web/20190805141644/http://news.dieweltistgarnichtso.net/bin/archives/redo-sh.tar.gz")
+sha256sums=('2ebf57bcbbdb9d2e759f71fe0043392398700640707234bc8d7ec16492b2c3b1')
 
 package() {
   mkdir -p ${pkgdir}/usr/bin
