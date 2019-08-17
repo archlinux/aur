@@ -3,7 +3,7 @@
 pkgname=isoimagewriter
 pkgver=0.2
 pkgrel=1
-pkgdesc="A program to write hybrid ISO files onto a USB disk from Linux, Mac or Windows ready to boot."
+pkgdesc="Tool to write a .iso file to a USB disk"
 arch=("x86_64" "i686")
 url="https://community.kde.org/ISOImageWriter"
 license=('GPL3')
