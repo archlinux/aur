@@ -1,7 +1,7 @@
 # Maintainer: cjayross <calvinjayross at gmail dot com>
 
 pkgname=python-riccipy
-pkgver=0.1a0
+pkgver=0.1a
 pkgrel=1
 pkgdesc="A Python3 symbolic calculator for General Relativity"
 arch=("any")
