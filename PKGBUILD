@@ -11,7 +11,7 @@ depends=("python" "python-sympy" "python-numpy" "python-yaml")
 makedepends=("python-setuptools")
 options=("!emptydirs")
 source=("https://github.com/cjayross/riccipy/archive/v${pkgver}.tar.gz")
-sha256sums=("f7f7e08f64fcaed60b346ac6a2523034354ffe09b3e9486e363ef140c6cb7e17")
+sha256sums=("8a13ed362a8128df19059ed27b33e24070cdde667befb109fae6eca7a0e885b2")
 
 package() {
     cd "$srcdir/riccipy-${pkgver}"
