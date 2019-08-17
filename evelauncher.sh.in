@@ -5,6 +5,7 @@ set -e
 ELVER=""
 QTVER="5.11"
 EVEDIR="$HOME/.local/lib/EVE"
+SETUPDIR=""
 LAUNCHER="$EVEDIR/Launcher"
 WINEPATH="/usr/bin"
 

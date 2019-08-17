@@ -14,6 +14,7 @@ bootstrap_install() {
     install -m 0644 "./evesetup.shlib" "$libdir"
     install -m 0644 "./evelauncher-${elver}.tar.gz" "$libdir"
     sed -i s,./eve-transl,$libdir/eve-transl, ./evelauncher.sh
+    sed -i s,SETUPDIR=\"\",SETUPDIR=\"$destdir\", ./evelauncher.sh
     for cmd in evelauncher.sh evewine evewinetricks everegedit evewinecfg evebackup ;do
 	if [ -f "./$cmd" ] ;then
 	    sed -i s,./evesetup.shlib,$libdir/evesetup.shlib, ./$cmd

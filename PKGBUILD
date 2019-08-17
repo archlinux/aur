@@ -1,7 +1,7 @@
 #Maintainer: Gharim Turen <gharim@turen.de>
 pkgname=evesetup
 pkgver=1548102
-pkgrel=0
+pkgrel=1
 pkgdesc="An inofficial EVE Online Launcher Setup Tool."
 arch=(x86_64)
 url="https://forums.eveonline.com/t/eve-installing/71494"
@@ -64,6 +64,8 @@ package() {
         install -d "${pkgdir}/usr/bin"
         install -d "${pkgdir}/usr/share/applications"
         install -d "${pkgdir}/usr/share/icons"
+        sed -i s,ELVER=\"\",ELVER=\"${pkgver}\", "${srcdir}/evelauncher.sh"
+        sed -i s,SETUPDIR=\"\",SETUPDIR=\"/opt/${pkgname}\", "${srcdir}/evelauncher.sh"
         for cmd in evelauncher.sh everegedit evewine evewinecfg evewinetricks evebackup ;do
             if [ -f "${srcdir}/$cmd" ] ;then
                 sed -i s,./evesetup.shlib,/opt/${pkgname}/lib/evesetup.shlib, "${srcdir}/$cmd"
@@ -78,7 +80,6 @@ package() {
                 cp "${srcdir}/${cmd%.*}.desktop" "${pkgdir}/usr/share/applications/"
             fi
         done
-        sed -i s,ELVER=\"\",ELVER=\"${pkgver}\", "${pkgdir}/opt/${pkgname}/bin/evelauncher.sh"
         cp ${srcdir}/evesetup.shlib ${pkgdir}/opt/${pkgname}/lib
         cp -r ${srcdir}/icons ${pkgdir}/usr/share/
         rm -rf ${srcdir}/evelauncher/resources/ ${srcdir}/evelauncher/plugins/
@@ -104,8 +105,8 @@ package() {
 }
 
 sha256sums=('ce85defa2698ea72e88221d72424fb953f86836494ecc0e4006f41ec89682af4'
-            'b5febef1a55d27af357f88079c0c7a1799971bd570080d91034115230323ef68'
-            'e0b2105d58713a71940ae4443f8e4526505fb7db18515897ebbf3e2fd3641992'
+            '351dff8575fe846da69226c9c3ac462917a17c87684b0c4f145bf23aa93934ef'
+            'c2c8f7ff36b0b8aa8290054697138c846b4810760fe9eddff6bd97514b7933eb'
             '80fceef0e28c2291cd4ba3924410211edd188717be093ffc329d18697583bd21'
             'c3849fd2277cedaacbb68805b7667d3980d763e0f1cc80050628bb42b0e0d380'
             'a8e604e6481b9a386269b6252852ee57812fc932f44f767982c4dbac168bb03b'
@@ -117,7 +118,7 @@ sha256sums=('ce85defa2698ea72e88221d72424fb953f86836494ecc0e4006f41ec89682af4'
             '25c84d6823badf7c04dd316857b144b614a917943baeb8dc769b27cd029071ff'
             '2520a9b19f2827fa2634ea2acae3a6f61e73aada1af0eb2029e95709f0c8927d'
             '498c21e2ab8ef8e789d5d99265678a2784e6d0ddbd407a520e107412fd8bfd0d'
-            '11aa040bc38c34bb5ad516813a5879a18a81991f067c8e64a18971d2f4196aa6'
+            '70a9f99442527fbefa9767582e20232b7c7f5241fd635a036d3beac746e61733'
             '69b98d923c08c6fb035c0c6905ec5e9c73273b694f8f3497777d44597dbe63e3'
             '762db1df07dfcf526fe634b4b589a08e8affefb2f79f02cff2624c70e0820422'
             '47accd49b64d624c6a6dee42952f8627aaabdd315fad85ef037507745d393f1a'
