@@ -3,7 +3,7 @@
 pkgname=cppcheck-nox
 _pkgname=cppcheck
 pkgver=1.88
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool for static C/C++ code analysis without the GUI"
 arch=('i686' 'x86_64')
 url="http://cppcheck.sourceforge.net/"
@@ -11,7 +11,7 @@ license=('GPL')
 depends=('python-pygments' 'pcre')
 makedepends=('docbook-xsl')
 provides=('cppcheck')
-conflicts=('ccpcheck')
+conflicts=('cppcheck')
 source=(https://github.com/danmar/cppcheck/archive/${pkgver}.tar.gz)
 md5sums=('0fc4c8180cacc07917b752ddd26954ea')
 
