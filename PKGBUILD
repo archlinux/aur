@@ -17,7 +17,7 @@ md5sums=('SKIP')
 _reponame=VC4CLStdLib
 
 package() {
-	cd $srcdir/_$reponame-master
+	cd $srcdir/$_reponame-master
 	mkdir -p $pkgdir/usr/include/$pkgname/include
 	cp include/* $pkgdir/usr/include/$pkgname/include/
 }
