@@ -2,7 +2,7 @@ contenturl=https://cdn.download.clearlinux.org/update
 manifest_file=Manifest.linux-firmware
 
 pkgname="intel-ucode-clear"
-pkgver=30550
+pkgver=30770
 pkgrel=0
 arch=('x86_64')
 
