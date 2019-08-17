@@ -1,0 +1,11 @@
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!artifactory.conf
+!artifactory.default
+!artifactory-oss.install
+!artifactory.service
+*.pkg.tar
+*.zip
+pkg
+src
