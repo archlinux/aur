@@ -1,0 +1,19 @@
+pkgbase = kandoman-git
+	pkgdesc = UI for todoman in form of kanban board
+	pkgver = r8.78441cc
+	pkgrel = 1
+	url = https://github.com/janza/kandoman
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = arm
+	arch = aarch64
+	license = MIT
+	depends = todoman
+	depends = pyside2
+	source = kandoman::git+https://github.com/janza/kandoman.git
+	sha1sums = SKIP
+
+pkgname = kandoman-git
+
