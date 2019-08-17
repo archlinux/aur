@@ -64,6 +64,7 @@ build()
 
   cp "${_executable}" "${_executablebak}" || exit 31
   rm -Rf "${_removefrompackage[@]}" || exit 41
+  rm -f `find -name 'imagej-updater*.jar'` || exit 42
   mv "${_executablebak}" "${_executable}" || exit 51
   chmod a+x "${_executable}" || exit 56
   ln -sf "${_executable}" "${_userexecutable}" || exit 61
