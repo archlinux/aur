@@ -6,7 +6,7 @@
 
 pkgname=chromium-ozone
 pkgver=76.0.3809.100
-pkgrel=1
+pkgrel=2
 _launcher_ver=6
 _meta_browser_sha=38b36f421f8d984c7004c9d9a6d514ed2fb6cf8e
 pkgdesc="Chromium built with patches for wayland support via Ozone"
@@ -130,6 +130,12 @@ prepare() {
   # Allow building against system libraries in official builds
   sed -i 's/OFFICIAL_BUILD/GOOGLE_CHROME_BUILD/' \
     tools/generate_shim_headers/generate_shim_headers.py
+
+  # https://crbug.com/893950
+  sed -i -e 's/\<xmlMalloc\>/malloc/' -e 's/\<xmlFree\>/free/' \
+    third_party/blink/renderer/core/xml/*.cc \
+    third_party/blink/renderer/core/xml/parser/xml_document_parser.cc \
+    third_party/libxml/chromium/libxml_utils.cc
 
   # Load Widevine CDM if available
   patch -Np1 -i ../chromium-widevine.patch
