@@ -1,6 +1,6 @@
 pkgbase = whirlpool-gui-bin
 	pkgdesc = Desktop GUI for Whirlpool by Samourai-Wallet.
-	pkgver = 0.7.0
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/Samourai-Wallet/whirlpool-gui/
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = whirlpool-gui-bin
 	depends = hicolor-icon-theme
 	depends = java-runtime
 	depends = nss
-	source = https://github.com/Samourai-Wallet/whirlpool-gui/releases/download/0.7.0/whirlpool-gui_0.7.0_amd64.deb
+	source = https://github.com/Samourai-Wallet/whirlpool-gui/releases/download/0.8.0/whirlpool-gui_0.8.0_amd64.deb
 	source = LICENSE
-	sha512sums = 9af8cdbad7b49563b95a54a3ccdbadef1ff27fbf6a48a16639f5bc5381d8db7dee1d52937f7f9c015aca56b5e619432fc22e94cd11812980a11e5c18ea17f399
+	sha512sums = ed789aa88db2b4eebb5b2d1f4eabf0ad7cd2e896ac9f87e2f2d773b7e27f8e7840215bbeb84824dde01d72e92763d91915276f93dd62c2b9b747ac3fdece4e6b
 	sha512sums = 6db610810f1b22a21ef217b4b6ace78dd5a4f427be3e6934a5770b64d019c0699459ea433b7117e955aac3feea02bd703fba2892a7961e27b2c0de859f68d7d7
 
 pkgname = whirlpool-gui-bin
