@@ -4,16 +4,28 @@ pkgname=pantheon-polkit-agent-git
 pkgver=0.1.4.r19.9d023ae
 pkgrel=1
 pkgdesc='Pantheon Polkit Agent'
-arch=('x86_64')
-url='https://github.com/elementary/pantheon-agent-polkit'
-license=('GPL3')
-groups=('pantheon-unstable')
-depends=('glib2' 'glibc' 'gtk3' 'polkit')
-makedepends=('git' 'intltool' 'meson' 'vala')
-provides=('pantheon-polkit-agent')
-conflicts=('pantheon-polkit-agent')
-source=('pantheon-polkit-agent::git+https://github.com/elementary/pantheon-agent-polkit.git')
-sha256sums=('SKIP')
+arch=(x86_64)
+url=https://github.com/elementary/pantheon-agent-polkit
+license=(GPL3)
+groups=(pantheon-unstable)
+depends=(
+  glib2
+  glibc
+  gtk3
+  libgranite.so
+  polkit
+)
+makedepends=(
+  git
+  granite-git
+  intltool
+  meson
+  vala
+)
+provides=(pantheon-polkit-agent)
+conflicts=(pantheon-polkit-agent)
+source=(pantheon-polkit-agent::git+https://github.com/elementary/pantheon-agent-polkit.git)
+sha256sums=(SKIP)
 
 pkgver() {
   cd pantheon-polkit-agent
