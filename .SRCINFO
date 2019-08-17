@@ -8,6 +8,7 @@ pkgbase = vcpkg-git
 	license = MIT
 	makedepends = git
 	makedepends = cmake>=3.3.0
+	makedepends = ninja
 	provides = vcpkg
 	conflicts = vcpkg
 	source = git+https://github.com/Microsoft/vcpkg.git

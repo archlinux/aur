@@ -8,7 +8,7 @@ pkgdesc='VC++ Pcakaging Tool'
 arch=('x86_64')
 url='https://github.com/Microsoft/vcpkg'
 license=('MIT')
-makedepends=('git' 'cmake>=3.3.0')
+makedepends=('git' 'cmake>=3.3.0' 'ninja')
 conflicts=('vcpkg')
 provides=('vcpkg')
 source=('git+https://github.com/Microsoft/vcpkg.git'
