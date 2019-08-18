@@ -2,9 +2,18 @@ Author: TheWug (https://github.com/TheWug)
 Description: Allows searching by any user instead of only members of a chat
 
 diff --git a/Telegram/SourceFiles/boxes/peers/add_participants_box.cpp b/Telegram/SourceFiles/boxes/peers/add_participants_box.cpp
-index dfea07f62..617ba8d6a 100644
+index dfea07f62..e2e332577 100644
 --- a/Telegram/SourceFiles/boxes/peers/add_participants_box.cpp
 +++ b/Telegram/SourceFiles/boxes/peers/add_participants_box.cpp
+@@ -299,7 +299,7 @@ void AddSpecialBoxController::migrate(not_null<ChannelData*> channel) {
+ 
+ std::unique_ptr<PeerListRow> AddSpecialBoxController::createSearchRow(
+ 		not_null<PeerData*> peer) {
+-	if (peer->isSelf()) {
++	if (_excludeSelf && peer->isSelf()) {
+ 		return nullptr;
+ 	}
+ 	if (const auto user = peer->asUser()) {
 @@ -312,6 +312,8 @@ void AddSpecialBoxController::prepare() {
  	delegate()->peerListSetSearchMode(PeerListSearchMode::Enabled);
  	auto title = [&] {
@@ -14,8 +23,32 @@ index dfea07f62..617ba8d6a 100644
  		case Role::Admins:
  			return tr::lng_channel_add_admin();
  		case Role::Restricted:
+@@ -799,7 +801,8 @@ void AddSpecialBoxController::kickUser(
+ }
+ 
+ bool AddSpecialBoxController::appendRow(not_null<UserData*> user) {
+-	if (delegate()->peerListFindRow(user->id) || user->isSelf()) {
++	if (delegate()->peerListFindRow(user->id)
++		|| (_excludeSelf && user->isSelf())) {
+ 		return false;
+ 	}
+ 	delegate()->peerListAppendRow(createRow(user));
+diff --git a/Telegram/SourceFiles/boxes/peers/add_participants_box.h b/Telegram/SourceFiles/boxes/peers/add_participants_box.h
+index deef59d01..b1fab5a43 100644
+--- a/Telegram/SourceFiles/boxes/peers/add_participants_box.h
++++ b/Telegram/SourceFiles/boxes/peers/add_participants_box.h
+@@ -131,6 +131,9 @@ private:
+ 	AdminDoneCallback _adminDoneCallback;
+ 	BannedDoneCallback _bannedDoneCallback;
+ 
++protected:
++	bool _excludeSelf = true;
++
+ };
+ 
+ // Finds chat/channel members, then contacts, then global search results.
 diff --git a/Telegram/SourceFiles/dialogs/dialogs_search_from_controllers.cpp b/Telegram/SourceFiles/dialogs/dialogs_search_from_controllers.cpp
-index b5823b308..a474436e1 100644
+index b5823b308..9e11fa53e 100644
 --- a/Telegram/SourceFiles/dialogs/dialogs_search_from_controllers.cpp
 +++ b/Telegram/SourceFiles/dialogs/dialogs_search_from_controllers.cpp
 @@ -19,18 +19,15 @@ https://github.com/telegramdesktop/tdesktop/blob/master/LEGAL
@@ -37,7 +70,7 @@ index b5823b308..a474436e1 100644
  				peer,
  				std::move(callback));
  		}
-@@ -50,18 +47,18 @@ void ShowSearchFromBox(
+@@ -50,18 +47,20 @@ void ShowSearchFromBox(
  }
  
  SearchFromController::SearchFromController(
@@ -49,10 +82,13 @@ index b5823b308..a474436e1 100644
 +: AddSpecialBoxController(
  	peer,
 -	ParticipantsBoxController::Role::Members)
+-, _callback(std::move(callback)) {
 +	ParticipantsBoxController::Role::Members,
 +	AdminDoneCallback(),
 +	BannedDoneCallback())
- , _callback(std::move(callback)) {
++, _callback(std::move(callback))
++{
++	_excludeSelf = false;
  }
  
  void SearchFromController::prepare() {
