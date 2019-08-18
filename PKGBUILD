@@ -7,7 +7,7 @@ arch=("any")
 url="https://github.com/marioortizmanero/spotify-music-videos"
 license=("custom:MIT")
 depends=("python" "glib2" "python-gobject" "gtk3" "youtube-dl" "python-vlc"
-         "python-lyricwikia" "pydbus" "python-requests" "python-six")
+         "python-lyricwikia" "python-pydbus" "python-requests" "python-six")
 makedepends=("python-setuptools")
 source=("https://github.com/marioortizmanero/spotify-music-videos/archive/$pkgver.tar.gz")
 md5sums=('cc380a63f20d61125923551cab31e96c')
