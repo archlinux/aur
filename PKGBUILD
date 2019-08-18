@@ -1,5 +1,5 @@
 pkgname=ruplacer
-pkgver="0.3.0"
+pkgver="0.4.1"
 pkgrel=2
 pkgdesc="Find and replace text in source files"
 url="http://github.com/TankerHQ/ruplacer"
@@ -8,7 +8,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('rust')
 source=("ruplacer-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-md5sums=('46472ebcad033da4f2cc46dedef8e1e7')
+md5sums=('8d5830076e99f9aa997cf00280572402')
 
 build() {
   cd ruplacer-$pkgver
