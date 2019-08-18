@@ -14,6 +14,7 @@ url="https://github.com/openSUSE/osc"
 license=('GPL2')
 depends=('python'
          'python-m2crypto')
+makedepends=('python-setuptools')
 optdepends=('obs-build: required to run local builds'
             'obs-service-format_spec_file: for running the format_spec_file source service'
             'obs-service-download_files: for running the download_files source service'
