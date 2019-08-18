@@ -1,4 +1,5 @@
 # Maintainer: Dario Ostuni <another.code.996@gmail.com>
+# Maintainer: Vincent Grande <shoober420@gmail.com>
 
 pkgname=lib32-tslib
 _pkgname=tslib
