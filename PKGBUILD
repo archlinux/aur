@@ -1,81 +1,49 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 # Contributor: mutantmonkey <aur@mutantmonkey.in>
 
-pkgbase=python-kombu
-pkgname=('python-kombu' 'python2-kombu')
-pkgver=4.6.3
+pkgname=python-kombu
+pkgver=4.6.4
 pkgrel=1
 pkgdesc='A messaging library for Python'
 arch=('any')
 url="https://kombu.readthedocs.org/"
 license=('BSD')
 options=('!emptydirs')
-makedepends=('python-amqp' 'python2-amqp' 'python-setuptools' 'python2-setuptools')
-checkdepends=('python-pytest-runner' 'python2-pytest-runner' 'python-redis' 'python2-redis'
-              'python-yaml' 'python2-yaml' 'python-msgpack' 'python2-msgpack'
-              'python-pycurl' 'python2-pycurl' 'python-case' 'python2-case' 'python-pymongo'
-              'python2-pymongo' 'python-pytz' 'python2-pytz' 'python-pytest-sugar'
-              'python2-pytest-sugar' 'python-sqlalchemy' 'python2-sqlalchemy' 'python-pyro'
-              'python2-pyro' 'python2-librabbitmq' 'python-boto3' 'python2-boto3')
-source=("$pkgbase-$pkgver.tar.gz::https://github.com/celery/kombu/archive/$pkgver.tar.gz")
-sha512sums=('2335a5fe2fda526400dcfd8cfe587974e57ed1cfaffb554cbe0c07a3f8059b2d20de762085935512897611e78d3f4004f0ccc3df031f5e88443a2b277b35f9cc')
+depends=('python-amqp')
+optdepends=('python-pymongo: for MongoDB support'
+            'python-msgpack: for MessagePack support'
+            'python-pyro: for Pyro support'
+            'python-redis: for Redis support'
+            'python-sqlalchemy: for SQLAlchemy support'
+            'python-boto3: for Amazon SQS support'
+            'python-pycurl: for Amazon SQS support'
+            'python-yaml: for YAML support')
+            # 'python-softlayer-messaging: for SoftLayer Message Queue support': Not packaged yet
+            # 'python-kazoo: for Zookeeper support': Not packaged yet
+            # 'python-librabbitmq: C optimization for AMQP transport' Not available for python 3 yet
+makedepends=('python-setuptools')
+checkdepends=('python-pytest-runner' 'python-redis' 'python-yaml' 'python-msgpack' 'python-pycurl'
+              'python-case' 'python-pymongo' 'python-pytz' 'python-pytest-sugar' 'python-sqlalchemy'
+              'python-pyro' 'python-boto3')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/celery/kombu/archive/$pkgver.tar.gz")
+sha512sums=('fe5e4d0b54bbde23983d557b7593b77982aece76277a8c4c69543c18e89d6224ba914da1024b0cb5565915503d60dcd7110d4c6b4e707a3c642c9c26bb7691ad')
 
 prepare() {
-  cp -a kombu-$pkgver{,-py2}
+  sed -i 's/>=2.5.1/>=2.5/' kombu-$pkgver/requirements/default.txt
 }
 
 build() {
-  cd "$srcdir"/kombu-$pkgver
+  cd kombu-$pkgver
   python setup.py build
-
-  cd "$srcdir"/kombu-$pkgver-py2
-  python2 setup.py build
 }
 
 check() {
-  cd "$srcdir"/kombu-$pkgver
+  cd kombu-$pkgver
   python setup.py pytest
-
-  cd "$srcdir"/kombu-$pkgver-py2
-  python2 setup.py pytest
 }
 
-package_python-kombu() {
-  depends=('python-amqp')
-  optdepends=('python-pymongo: for MongoDB support'
-              'python-msgpack: for MessagePack support'
-              'python-pyro: for Pyro support'
-              'python-redis: for Redis support'
-              'python-sqlalchemy: for SQLAlchemy support'
-              'python-boto3: for Amazon SQS support'
-              'python-pycurl: for Amazon SQS support'
-              'python-yaml: for YAML support')
-              # 'python-softlayer-messaging: for SoftLayer Message Queue support': Not packaged yet
-              # 'python-kazoo: for Zookeeper support': Not packaged yet
-              # 'python-librabbitmq: C optimization for AMQP transport' Not available for python 3 yet
-
-  cd "$srcdir"/kombu-$pkgver
+package() {
+  cd kombu-$pkgver
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
   install -D -m644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
-
-package_python2-kombu() {
-  depends=('python2-amqp')
-  optdepends=('python2-pymongo: for MongoDB support'
-              'python2-msgpack: for MessagePack support'
-              'python2-pyro: for Pyro support'
-              'python2-redis: for Redis support'
-              'python2-sqlalchemy: for SQLAlchemy support'
-              'python2-pycurl: for Amazon SQS support'
-              'python2-yaml: for YAML support'
-              'python2-librabbitmq: C optimization for AMQP transport'
-              'python2-boto3: for Amazon SQS support')
-              # 'python2-softlayer-messaging: for SoftLayer Message Queue support': Not packaged yet
-              # 'python2-kazoo: for Zookeeper support': Not packaged yet
-
-  cd "$srcdir"/kombu-$pkgver-py2
-  python2 setup.py install --root="$pkgdir" --optimize=1 --skip-build
-  install -D -m644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
-}
-
-# vim:set ts=2 sw=2 et:
