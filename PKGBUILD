@@ -6,7 +6,7 @@ pkgdesc="PreMiD adds Discord Rich Presence support to a lot of services you use 
 url='https://github.com/PreMiD/PreMiD'
 arch=('i686' 'x86_64')
 license=('MIT')
-depends=('nodejs>=10.0.0' 'npm>=6.0.0')
+depends=('nodejs>=10.11.0' 'npm>=6.4.1')
 makedepens=('git')
 source=("git+${url}.git")
 md5sums=('SKIP')
