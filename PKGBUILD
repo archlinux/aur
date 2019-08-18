@@ -2,7 +2,7 @@
 
 pkgname=uhk-agent-appimage
 pkgver=1.2.13
-pkgrel=2
+pkgrel=3
 pkgdesc="The configuration application of the Ultimate Hacking Keyboard."
 arch=('x86_64')
 url="https://github.com/UltimateHackingKeyboard/agent"
@@ -11,7 +11,7 @@ depends=(libusb fuse2 dbus-glib gtk2)
 source=("https://github.com/UltimateHackingKeyboard/agent/releases/download/v${pkgver}/UHK.Agent-${pkgver}-linux-x86_64.AppImage"
         uhk-agent.desktop.patch
         uhk-agent.sh)
-md5sums=('4114d88cbfba60d92661dfe1a01665a5'
+md5sums=('9e40698ca645cfb1d1c7c5ff688c9aa6'
          '6d46d385f3c70dab72e1eea2bee58732'
          'a417373306c108ea2632571d8309df9b')
 options=(!strip)
