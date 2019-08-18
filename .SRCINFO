@@ -1,6 +1,6 @@
 pkgbase = perl-math-anynum
 	pkgdesc = Math::AnyNum - arbitrary size precision for integers, rationals, floating-points and complex numbers.
-	pkgver = 0.32
+	pkgver = 0.33
 	pkgrel = 1
 	url = https://metacpan.org/release/Math-AnyNum
 	arch = any
@@ -10,9 +10,9 @@ pkgbase = perl-math-anynum
 	depends = perl-math-mpc>=1.07
 	depends = perl-math-mpfr>=3.29
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/T/TR/TRIZEN/Math-AnyNum-0.32.tar.gz
-	md5sums = 72a654cd4c6d1d897279d15ebcbeefcb
-	sha512sums = 8fe3efa61819754b4b17df369d697732d260700a86c50eec110242087b179f675d61d2508ec2f6a6b922bd3d62c81852868a302c94426532a1f7c936d7aaa833
+	source = https://cpan.metacpan.org/authors/id/T/TR/TRIZEN/Math-AnyNum-0.33.tar.gz
+	md5sums = 5c1db09c6a9736279a60010c413ee903
+	sha512sums = bc95979f2285469c234478f71712e2c43b52a9e466d4e2e5845f91e045263a7e797fabbe4c3a4c97b39b7a878ad0586602733a6889d76bfe05e0690662b27562
 
 pkgname = perl-math-anynum
 
