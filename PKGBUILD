@@ -1,4 +1,4 @@
-# Maintainer: Ratbot <Ratbot at GnuPG dot uk>
+# Maintainer: peeweep <peeweep at 0x0 dot ee>
 # Contributor: David Naramski <david.naramski AT gmail.com>
 # Contributor: Paul Oppenheimer <redg3ar@airmail.cc>
 pkgname=ao
