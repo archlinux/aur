@@ -9,15 +9,22 @@ license=('LGPL3')
 url="http://purelang.bitbucket.org/"
 depends=("emacs" "flycheck" "pure")
 groups=(pure-complete pure-base)
-source=("https://github.com/agraef/pure-lang/releases/download/pure-$pkgver/pure-$pkgver.tar.gz")
-md5sums=('082d522d05e58e55dc8094ba4c3d3eda')
+source=("https://github.com/agraef/pure-lang/releases/download/pure-$pkgver/pure-$pkgver.tar.gz"
+	"pure-mode.patch")
+md5sums=('082d522d05e58e55dc8094ba4c3d3eda'
+         '8495eceda7b0238dd493b3a6cd54d606')
+
+prepare() {
+    cd pure-$pkgver
+    patch -Np2 -i "${srcdir}/pure-mode.patch"
+}
 
 build() {
-  cd $srcdir/pure-$pkgver
+  cd pure-$pkgver
   ./configure --prefix=/usr
 }
 
 package() {
-  cd $srcdir/pure-$pkgver
+  cd pure-$pkgver
   make DESTDIR=$pkgdir install-el install-elc
 }

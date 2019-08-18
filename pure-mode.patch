@@ -1,0 +1,13 @@
+diff --git a/pure/etc/pure-mode.el.in b/pure/etc/pure-mode.el.in
+index 221bfa52..b2163dcf 100644
+--- a/pure/etc/pure-mode.el.in
++++ b/pure/etc/pure-mode.el.in
+@@ -2270,7 +2270,7 @@ If prefix ARG is not nil, remove an existing tracepoint instead."
+ 	   (indent-to (eval (cdr indent-fun)))
+ 	   ))))
+ 
+-(defun pure-alignment-column (&optional lim &optional flag)
++(defun pure-alignment-column (&optional lim flag)
+   "Look for an alignment column (`=') in the vicinity of
+ point. LIM, if given, limits the search to the region between
+ point and LIM. Return a list of two elements: (EQUALS-COL
