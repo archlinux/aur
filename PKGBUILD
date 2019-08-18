@@ -1,7 +1,7 @@
 #Maintainer: Iwan Timmer <irtimmer@gmail.com>
 
 pkgname=kubernetes
-pkgver=1.14.2
+pkgver=1.15.2
 _contribver=f4ce29dd35b68f538a5845d7e294bbf056d5d215
 pkgrel=1
 pkgdesc="Production-Grade Container Scheduling and Management"
@@ -22,7 +22,7 @@ backup=('etc/kubernetes/apiserver'
         'etc/kubernetes/proxy'
         'etc/kubernetes/scheduler')
 install=kubernetes.install
-sha256sums=('7d2b7755f0b1c306c270251585b3bfe33caf6fe9e8eabb71394bd352c55ca354'
+sha256sums=('6f07bf2b375cbfcb1ba1040ed7a218ecdae12a04ae42a878030811180b64623e'
             '4bd2a2f4fc2a17b78dd53a8f7312760b4028d600d14006a3cdf5768b28b44b27'
             'fb6fce3ef4b793863286dafb5856ce28027427005d6c6fd44162844921ab714b')
 
