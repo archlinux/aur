@@ -1,4 +1,4 @@
-# Maintainer : Daniel Bermond < yahoo-com: danielbermond >
+# Maintainer : Daniel Bermond < gmail-com: danielbermond >
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 # Contributor: André Silva <emulatorman@riseup.net>
 # Contributor: Márcio Silva <coadde@riseup.net>
@@ -13,7 +13,7 @@
 pkgbase=linux-libre         # Build stock kernel
 #pkgbase=linux-libre-custom # Build kernel with a different name
 _srcbasever=5.2-gnu
-_srcver=5.2.2-gnu
+_srcver=5.2.5-gnu
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -23,7 +23,7 @@ _srcname=linux-${_srcbasever%-*}
 _archpkgver=${_srcver%-*}
 pkgver=${_srcver//-/_}
 pkgrel=1
-rcnrel=armv7-x2
+rcnrel=armv7-x3
 arch=(i686 x86_64 armv7h)
 url='https://linux-libre.fsfla.org/'
 license=(GPL2)
@@ -83,7 +83,7 @@ validpgpkeys=(
 )
 sha512sums=('3359b0a10ac04243399a1b0aa84f6c09e3c1914880be19a7e931189da92900ca77e467e7ab5c296a03d2ff0ab3238ec75b13fd41bd2796049b63e71f6896900e'
             'SKIP'
-            '53bc4aa6a36d93ad9275c312e31bf90a19a274877632ba806e3e8c16c166a209968610b8db41c9d619eb57034445ceeb1753554fb459063c2a0600a208f9cdc8'
+            '9b35cbb7b1b7ef851a0fb9531ade4360487a75723d8bd9ebfd064b54d3b9697741d60b4b38dca15317e1b1f11d403c830d8f85b663bae56615f1b361eedeae35'
             'SKIP'
             '13cb5bc42542e7b8bb104d5f68253f6609e463b6799800418af33eb0272cc269aaa36163c3e6f0aacbdaaa1d05e2827a4a7c4a08a029238439ed08b89c564bb3'
             'SKIP'
@@ -91,9 +91,9 @@ sha512sums=('3359b0a10ac04243399a1b0aa84f6c09e3c1914880be19a7e931189da92900ca77e
             'SKIP'
             '267295aa0cea65684968420c68b32f1a66a22d018b9d2b2c1ef14267bcf4cb68aaf7099d073cbfefe6c25c8608bdcbbd45f7ac8893fdcecbf1e621abdfe9ecc1'
             'SKIP'
-            '9cd90ba3384c99c78e31d58198513886ce6bee3c5a222605e33c43973609dd4995e933843571e2492d37260204a540b0054869fa05b15b242661d9aad2b18787'
-            'af67018e01ecd472422db0b6bc4b3eb0ef00848de10c431650c904dd632096f1c00cf32324885fb10ae2c15d2ec1eaa2e3991c582ecb9f05956e0065dd482207'
-            '413d761727e25c6b20f942588ec162d2a04fdbc06c22d59f16766b9fd9764c0b71458d32db7932417a712544149a3fa81ba290e3ea140bd276c78f4fcf8e8b1c'
+            '174f1b3bc887fb5e244c4990f0b63366d15c25b2c19ba89b1f50c894232e6b8517dd9f6b51bd4325250e604fe34d9c2d2cb5383d7717ddcaedd2a9806b719b3f'
+            'ed182e126545a45fb9aaa8e689be8a9b0a0092426b3d354176b1e5197734d1c4a20549b1d5254dc1da79d0ee981d4eaf0414ce359ac4d029ea1c4b0e6fa87c16'
+            '27fdc0085318c0ebb1ffe29fd25d258c3ad2c14e3b3c9c4f6eba5ab44e3aca0bfacf90aad2ca66c24896579796b4b731da149ffdd831eab92871e89f96951e84'
             '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
             '2718b58dbbb15063bacb2bde6489e5b3c59afac4c0e0435b97fe720d42c711b6bcba926f67a8687878bd51373c9cf3adb1915a11666d79ccb220bf36e0788ab7'
             '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
@@ -107,7 +107,7 @@ sha512sums=('3359b0a10ac04243399a1b0aa84f6c09e3c1914880be19a7e931189da92900ca77e
             'ac7220d35b9a0e9765aba42458702b23dfe5065e56dff1456a131ead2b165e2dd316548078a23641ebadd35dec8428b250c83d1f21fb1572728ceefe2096d699'
             '00dceecb6b4a8da2deb757118a0a203d91926183bb42539d518ff2e2903b2750dc77f73f3f2e33aa13e1ec0578b05ad12d9828fd5d3a02caf9ca479f5e2f8db9'
             '06738961d1c87b8f3bf6409dace1c8b99c0bd1a8c64d5070e2c88a23191401292b7c6dca018df76213451cdae2d3e7edc80b94ccfaa17986e5d2196cecfa9113')
-sha512sums_armv7h=('56d27a8e61e47a8eb7c6efddd421e5452ba91b4d78c4398dfed1fad0b500deb4cdf83e0c602657e58bfc502e13ec75a3ded62e0ea1109bdb23881bbb6512a1c5'
+sha512sums_armv7h=('dda9e03327dffb6425ec981f4e548802357f9e148d6cb7fa0e9fd8b95548144bfab8e3b15f7ac3cbf73c2d3ec3dcb380ca018b79b125832fd52bfd12662c0943'
                    'SKIP'
                    'cd064ca844aa2f0f1e4157ce7a7607850d7c4b531f5b8336d75ce2f49d3a76e09f1e41ebd712b942357068028896dd7f55d037f5c01367c5cd8297c98920e7dc'
                    '066a9e3dca09e5dee2e4f852c1c446f9ccf0a8ebd1effedf9b11492be2ea4bf48b3cffdde809749e8602bb6d6af129c4087d97cb1158df89ad9e0b7eb6aa00d8'
@@ -118,7 +118,7 @@ sha512sums_armv7h=('56d27a8e61e47a8eb7c6efddd421e5452ba91b4d78c4398dfed1fad0b500
                    '565cd932a8a35822431d03f03219a9cf9ff289afd1c25e20e93eb7b69d614122af0407e4a1ed93b4f124f27af924042461ee99b9bc7ac43caec079e7eb8afa45'
                    'cb74edfc1cdb504a74c3b4ccad4f13a0e9ea7ab96ab9b87d35880d8dc8f54a8697cb2689201c8d5b3810802e0fd967193b64b7e6357ea07d369c72e066e43c87')
 
-_kernelname=${pkgbase#linux-libre}
+_kernelname=${pkgbase#linux}
 _replacesarchkernel=("${_replacesarchkernel[@]/\%/${_kernelname}}")
 _replacesoldkernels=("${_replacesoldkernels[@]/\%/${_kernelname}}")
 _replacesoldmodules=("${_replacesoldmodules[@]/\%/${_kernelname}}")
@@ -187,9 +187,7 @@ _package() {
   [[ $pkgbase = linux-libre ]] && groups=(base base-openrc)
   depends=(coreutils linux-libre-firmware kmod mkinitcpio)
   optdepends=('crda: to set the correct wireless channels of your country')
-  provides=("${_replacesarchkernel[@]/%/=${_archpkgver}}" "LINUX-ABI_VERSION=${_srcver%%-*}")
-  conflicts=("${_replacesarchkernel[@]}" "${_replacesoldkernels[@]}" "${_replacesoldmodules[@]}")
-  replaces=("${_replacesarchkernel[@]}" "${_replacesoldkernels[@]}" "${_replacesoldmodules[@]}")
+  provides=("LINUX-ABI_VERSION=${_srcver%%-*}")
   backup=("etc/mkinitcpio.d/$pkgbase.preset")
   install=linux.install
 
@@ -255,9 +253,6 @@ _package() {
 
 _package-headers() {
   pkgdesc="Header files and scripts for building modules for ${pkgbase^} kernel"
-  provides=("${_replacesarchkernel[@]/%/-headers=${_archpkgver}}")
-  conflicts=("${_replacesarchkernel[@]/%/-headers}" "${_replacesoldkernels[@]/%/-headers}")
-  replaces=("${_replacesarchkernel[@]/%/-headers}" "${_replacesoldkernels[@]/%/-headers}")
 
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
@@ -360,9 +355,6 @@ _package-headers() {
 
 _package-docs() {
   pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase^} kernel"
-  provides=("${_replacesarchkernel[@]/%/-docs=${_archpkgver}}")
-  conflicts=("${_replacesarchkernel[@]/%/-docs}" "${_replacesoldkernels[@]/%/-docs}")
-  replaces=("${_replacesarchkernel[@]/%/-docs}" "${_replacesoldkernels[@]/%/-docs}")
   
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
