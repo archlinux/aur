@@ -1,4 +1,4 @@
-# Maintainer: Ratbot <Ratbot at GnuPG dot uk>
+# Maintainer: peeweep <peeweep at 0x0 dot ee>
 
 pkgname=sddm-sugar-dark
 pkgver=1.2
