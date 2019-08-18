@@ -8,6 +8,7 @@ pkgbase = editorconfig-checker-git
 	makedepends = git
 	makedepends = go
 	provides = ec
+	provides = editorconfig-checker
 	source = git+https://github.com/editorconfig-checker/editorconfig-checker
 	md5sums = SKIP
 

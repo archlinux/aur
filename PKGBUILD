@@ -11,7 +11,7 @@ depends=()
 makedepends=('git' 'go')
 source=("git+$url")
 md5sums=('SKIP')
-provides=('ec')
+provides=('ec' 'editorconfig-checker')
 
 pkgver() {
     cd "$srcdir/editorconfig-checker" || exit
@@ -27,6 +27,7 @@ build() {
 package() {
     cd "$srcdir/editorconfig-checker/bin" || exit
     install -Dm755 ec "$pkgdir/usr/bin/ec"
+    install -Dm755 ec "$pkgdir/usr/bin/editorconfig-checker"
     cd "$srcdir/editorconfig-checker" || exit
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/editorconfig-checker/LICENSE"
 }
