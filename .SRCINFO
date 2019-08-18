@@ -1,0 +1,23 @@
+pkgbase = mwm-git
+	pkgdesc = A minimal windowchef fork.
+	pkgver = r197.7e9fab2
+	pkgrel = 1
+	url = https://github.com/vxid/mwm
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = ISC
+	makedepends = git
+	makedepends = xproto
+	depends = libxcb
+	depends = xcb-util-wm
+	optdepends = sxhkd
+	optdepends = wmutils-git
+	optdepends = lemonbar
+	conflicts = windowchef
+	source = mwm-git::git+https://github.com/vxid/mwm.git
+	md5sums = SKIP
+
+pkgname = mwm-git
+
