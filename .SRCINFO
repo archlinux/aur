@@ -1,11 +1,11 @@
 pkgbase = ryzencontroller
 	pkgdesc = A minimal Electron application to use ryzenAdj through a friendly interface
 	pkgver = 1.15.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://gitlab.com/ryzen-controller-team/ryzen-controller
 	arch = x86_64
 	license = CC0 1.0 Universal
-	depends = gtk3
+	depends = gtk3ryzenadj-git
 	provides = ryzencontroller
 	conflicts = ryzencontroller
 	source = ryzencontroller_1.15.0_amd64.deb::https://gitlab.com/ryzen-controller-team/ryzen-controller/-/jobs/274540190/artifacts/raw/installer-builds/installers/ryzencontroller_1.15.0_amd64.deb

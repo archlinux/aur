@@ -2,10 +2,10 @@
 pkgname=ryzencontroller
 _pkgver=1.15.0
 pkgver=${_pkgver//[+-]/_}
-pkgrel=4
+pkgrel=5
 pkgdesc="A minimal Electron application to use ryzenAdj through a friendly interface"
 arch=('x86_64')
-depends=('gtk3')
+depends=('gtk3''ryzenadj-git')
 provides=('ryzencontroller')
 conflicts=('ryzencontroller')
 url="https://gitlab.com/ryzen-controller-team/ryzen-controller"
