@@ -25,8 +25,8 @@ build() {
 }
 
 package() {
-    cd "$srcdir/ediroconfig-checker/bin" || exit
+    cd "$srcdir/editorconfig-checker/bin" || exit
     install -Dm755 ec "$pkgdir/usr/bin/editorconfig-checker"
-    cd "$srcdir/ediroconfig-checker" || exit
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/ediroconfig-checker/LICENSE"
+    cd "$srcdir/editorconfig-checker" || exit
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/editorconfig-checker/LICENSE"
 }
