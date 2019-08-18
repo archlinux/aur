@@ -1,6 +1,6 @@
 pkgbase = spotify-videos
 	pkgdesc = Watch Youtube music videos for the currently playing Spotify songs
-	pkgver = 1.7.1
+	pkgver = 1.8
 	pkgrel = 1
 	url = https://github.com/marioortizmanero/spotify-music-videos
 	arch = any
@@ -13,10 +13,10 @@ pkgbase = spotify-videos
 	depends = youtube-dl
 	depends = python-vlc
 	depends = python-lyricwikia
-	depends = python-dbus
+	depends = pydbus
 	depends = python-requests
 	depends = python-six
-	source = https://github.com/marioortizmanero/spotify-music-videos/archive/1.7.1.tar.gz
+	source = https://github.com/marioortizmanero/spotify-music-videos/archive/1.8.tar.gz
 	md5sums = cc380a63f20d61125923551cab31e96c
 
 pkgname = spotify-videos
