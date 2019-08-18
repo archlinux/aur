@@ -1,31 +1,35 @@
 # Maintainer: Manish Munikar <munikarmanish@gmail.com>>
 
 pkgname="photocrypt-git"
-pkgver=0.6.r1.gf7d0927
+pkgver=0.7.r0.g0ba79b5
 pkgrel=1
 pkgdesc="A text-to-image steganography tool"
-arch=('any')
+arch=("any")
 url="https://github.com/munikarmanish/photocrypt"
-license=('BSD')
+license=("BSD")
 groups=()
-depends=()
-makedepends=('git' 'opencv' 'gtkmm' 'openssl')
-provides=('photocrypt')
-conflicts=('photocrypt')
+depends=("gtkmm3" "opencv" "openssl" "vtk" "hdf5")
+makedepends=("gcc" "make" "pkg-config")
+provides=("photocrypt")
+conflicts=("photocrypt")
 replaces=()
 backup=()
 options=()
 install=
-source=("git+https://github.com/munikarmanish/photocrypt" "photocrypt.desktop")
+source=("git+https://github.com/munikarmanish/photocrypt"
+        "photocrypt.desktop"
+        "photocrypt.png")
 noextract=()
-sha256sums=('SKIP' '0614b31b3a1e6e80c737c6711a983be6889e70f78374318b4848f23442cd6801') #generate with 'makepkg -g'
+sha256sums=("SKIP"
+            "cb94a180ac7dcd527679b71a1a64a178ad8785f4f2d865f2f3cb0ee7fc70d735"
+            "cc6d04e2e570918209184d8c5d9cb10361ee899c6c4f4b678942728c7deee270")
 
 _gitname="photocrypt"
 _gitroot="https://github.com/munikarmanish/photocrypt"
 
 pkgver() {
   cd "${srcdir}/${_gitname}"
-  git describe --long --tags | sed 's|-|-r|; s|-|\.|g'
+  git describe --long --tags | sed "s|-|-r|; s|-|\.|g"
 }
 
 build() {
@@ -54,6 +58,7 @@ package() {
 
   msg "Installing desktop entry..."
   install -Dm644 "${srcdir}/photocrypt.desktop" "${pkgdir}/usr/share/applications/photocrypt.desktop"
+  install -Dm 644 "${srcdir}/photocrypt.png" "${pkgdir}/opt/photocrypt/photocrypt.png"
 }
 
 # vim:set ts=2 sw=2 et:
