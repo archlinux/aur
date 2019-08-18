@@ -1,12 +1,12 @@
-# Maintainer: Vain <aurmaint1 on host: uninformativ dot de>
-pkgname=univga
+pkgname=univga-bdf
 pkgver=1.0
-pkgrel=6
-pkgdesc="(X11) VGA font with unicode glyphs by Dmitry Yu. Bolkhovityanov"
+pkgrel=7
+pkgdesc="X terminal emulator compatible version of univga (BDF instead of OTB)"
 arch=('any')
 url="http://www.inp.nsk.su/~bolkhov/files/fonts/univga/"
 license=('custom:MIT')
 depends=('fontconfig' 'xorg-font-utils')
+conflicts=('univga')
 source=('http://www.inp.nsk.su/~bolkhov/files/fonts/univga/uni-vga.tgz'
         COPYING)
 md5sums=('60fbba53cb0efec1363fcc5fb8c244d9'
