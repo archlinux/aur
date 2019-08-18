@@ -6,6 +6,8 @@ pkgdesc="Linux-native io_uring I/O access library (git-version)"
 arch=(x86 x86_64)
 url="http://git.kernel.dk/cgit/liburing/"
 license=('LGPL2.1')
+provides=(liburing liburing.so)
+conflicts=(liburing liburing.so)
 source=("$pkgname::git+http://git.kernel.dk/liburing")
 sha256sums=('SKIP')
 

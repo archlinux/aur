@@ -6,6 +6,10 @@ pkgbase = liburing-git
 	arch = x86
 	arch = x86_64
 	license = LGPL2.1
+	provides = liburing
+	provides = liburing.so
+	conflicts = liburing
+	conflicts = liburing.so
 	source = liburing-git::git+http://git.kernel.dk/liburing
 	sha256sums = SKIP
 
