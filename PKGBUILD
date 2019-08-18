@@ -5,18 +5,19 @@ pkgrel=1
 pkgdesc="LyricWikia API for song lyrics"
 arch=("any")
 url="http://github.com/enricobacis/lyricwikia"
-license=("MIT")
+license=("custom:MIT")
 depends=("python" "python-six" "python-requests" "python-beautifulsoup4")
 makedepends=("python-setuptools")
 source=("https://github.com/enricobacis/lyricwikia/archive/${pkgver}.tar.gz")
 md5sums=('38cf496f85110964fb303cfa8a4aa26b')
 
 build() {
-    cd $srcdir/lyricwikia-$pkgver
+    cd "lyricwikia-$pkgver"
     python setup.py build
 }
 
 package() {
-    cd $srcdir/lyricwikia-$pkgver
-    python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+    cd "lyricwikia-$pkgver"
+    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
