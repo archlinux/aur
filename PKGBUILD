@@ -2,7 +2,7 @@
 
 pkgname=bananapkg-git
 pkgver=r154.b545d63
-pkgrel=3
+pkgrel=4
 pkgdesc="Low-level package manager written in shell bash"
 url="https://bananapkg.github.io"
 license=('MIT')
@@ -33,5 +33,5 @@ package() {
     install -vDm644 -t "${pkgdir}/usr/lib/banana/" {core,help}'.sh'
     install -vDm644 -t "${pkgdir}/etc/banana/" "banana.conf"
     # create dirs
-    mkdir -vp '/var/lib/banana/list' '/var/lib/banana/desc' '/var/lib/banana/remove'
+    mkdir -vp "${pkgdir}/var/lib/banana/list" "${pkgdir}/var/lib/banana/desc" "${pkgdir}/var/lib/banana/remove"
 }
