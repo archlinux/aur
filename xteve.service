@@ -1,0 +1,18 @@
+[Unit]
+Description=xTeVe Service
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+User=xteve
+Group=xteve
+Type=simple
+ExecStart=/usr/bin/xteve 
+ExecReload=/usr/bin/killall xteve
+ExecStop=/usr/bin/killall xteve
+KillMode=process
+Restart=always
+RestartSec=15
+
+[Install]
+WantedBy=multi-user.target
