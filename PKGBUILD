@@ -1,20 +1,21 @@
-# Maintainer: Ivan Naydonov <samogot@gmail.com>
+# Maintainer: Nils Czernia <nils[at]czserver.de>
 
-pkgname=ricoh-spc261-ppd
+pkgname=ricoh-spc261sfnw-ppd
 pkgver=1.0.1
+_pkgver=1.01
 pkgrel=1
-pkgdesc="CUPS driver for Ricoh SP C 261DNw series"
+pkgdesc="CUPS driver for Ricoh SP C261SFNw series"
 arch=("x86_64")
-url="http://support.ricoh.com/bb/html/dr_ut_e/re1/model/spc261dnw/spc261dnw.htm"
+url="http://support.ricoh.com/bb/html/dr_ut_e/rc3/model/spc261sfnw/spc261sfnw.htm"
 license=("unknown")
 depends=("cups" )
 makedepends=("binutils" "p7zip")
 
-source=("http://support.ricoh.com/bb/pub_e/dr_ut_e/0001305/0001305295/V101/r80978en.exe")
-sha256sums=("a91017ab0ce697dff16d4a0f699c4525f87acc25b5ed673f8563f165c1416de6")
+source=("http://support.ricoh.com/bb/pub_e/dr_ut_e/0001305/0001305275/V101/r80942en.exe")
+sha256sums=("53007663e4a5a0c6c3e3b81c82c5a5ea740aceb36496be8812c0b714aafc19cd")
 
 prepare() {
-	ar x sp260-series-p-pcl-1.01-noarch.deb
+	ar x sp260-series-mf-pcl-${_pkgver}-noarch.deb
 	tar -zxf data.tar.gz
 }
 
