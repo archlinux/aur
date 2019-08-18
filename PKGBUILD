@@ -3,13 +3,13 @@
 _gradlename=Raven
 _pkgname=raven
 pkgname=${_pkgname}-git
-pkgver=r41.45a1360
+pkgver=r58.b10ba12
 pkgrel=1
 pkgdesc="Free software alternative discord client"
 arch=("any")
 url="https://github.com/SavageLLC/Raven"
 license=("GPL2")
-depends=("java-runtime>=12" "ffmpeg-compat-54")
+depends=("java-runtime>=12" "ffmpeg-compat-54" "libnotify")
 makedepends=("java-environment>=12" "gradle" "kotlin" "git")
 source=("$pkgname::git+https://github.com/SavageLLC/Raven.git"
         "raven.desktop")
