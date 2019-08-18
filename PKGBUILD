@@ -26,7 +26,7 @@ build() {
 
 package() {
     cd "$srcdir/editorconfig-checker/bin" || exit
-    install -Dm755 ec "$pkgdir/usr/bin/ec-checker"
+    install -Dm755 ec "$pkgdir/usr/bin/ec"
     cd "$srcdir/editorconfig-checker" || exit
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/editorconfig-checker/LICENSE"
 }
