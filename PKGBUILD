@@ -5,7 +5,7 @@
 
 pkgname=buildbot
 pkgdesc='The Continuous Integration Framework'
-pkgver=2.3.1
+pkgver=2.4.0
 pkgrel=1
 arch=(any)
 url='https://buildbot.net'
@@ -16,7 +16,7 @@ depends=(python-twisted python-jinja python-zope-interface
 checkdepends=(python-boto3 python-lz4 python-treq python-txrequests
               python-mock python-moto python-parameterized
               python-buildbot-pkg=$pkgver buildbot-worker=$pkgver python-buildbot-www=$pkgver
-              openssh)
+              openssh git)
 makedepends=(python-setuptools)
 optdepends=(
   'python-boto3: for AWS EC2 latent worker'
@@ -28,7 +28,7 @@ optdepends=(
   'vault: to use SecretInVault provider'
 )
 source=("https://github.com/buildbot/buildbot/releases/download/v$pkgver/buildbot-v$pkgver.gitarchive.tar.gz"{,.sig})
-sha256sums=('93241e1660cc8e0a37dba6c8c4bbb2e989f5da35006d6b5b523dfc3f37e8b927'
+sha256sums=('a865074e4874f20e11990ab5c65f87276b2bce9f7c29ca5b3b0da53ae51afbfd'
             'SKIP')
 validpgpkeys=(
   '390EB159056ED56F66AB1092AECD456B4D2531FC'  # Pierre Tardy <tardyp@gmail.com> (@tardyp on GitHub)
@@ -43,9 +43,13 @@ build() {
 check() {
   cd buildbot-$pkgver/master
 
-  python setup.py install --root="$srcdir"/tmp_install
+  site_packages_path=$(python -c 'import site; print(site.getsitepackages()[0])')
 
-  export PYTHONPATH="$srcdir"/tmp_install/usr/lib/python3.7/site-packages
+  python setup.py install --root="$srcdir"/tmp_install
+  # Copy files over for integration tests
+  cp -v buildbot/test/integration/*.tgz "$srcdir"/tmp_install$site_packages_path/buildbot/test/integration/
+
+  export PYTHONPATH="$srcdir"/tmp_install$site_packages_path
   export PATH="$PATH:$srcdir/tmp_install/usr/bin"
   TZ=UTC trial3 --rterrors buildbot
 }
