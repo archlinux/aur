@@ -1,7 +1,7 @@
 # Maintainer: Paul Hentschel <aur at hpminc dot com>
 
 pkgname=camotics-git
-pkgver=r829.a1bc453
+pkgver=r832.7bbfce8
 pkgrel=1
 pkgdesc="3-axis NC machining simulation software"
 arch=('x86_64')
@@ -16,7 +16,7 @@ depends=(
 makedepends=(
   'git'
   'scons'
-  'python2-six'
+  'python-six'
   'qt5-tools'
   'cbang-git'
 )
