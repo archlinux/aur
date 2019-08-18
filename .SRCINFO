@@ -1,7 +1,7 @@
 pkgbase = fotoxx-test
 	pkgdesc = A program for improving image files made with a digital camera, test-version
-	pkgver = 20.0.2019.08.10
-	pkgrel = 2
+	pkgver = 20.0.2019.08.18
+	pkgrel = 1
 	url = http://www.kornelix.net/fotoxx/fotoxx.html
 	arch = i686
 	arch = x86_64
@@ -17,8 +17,8 @@ pkgbase = fotoxx-test
 	provides = fotoxx
 	conflicts = fotoxx
 	options = !makeflags
-	source = http://kornelix.net/downloads/downloads/fotoxx-20.0-test-2019-08-10.tar.gz
-	sha256sums = ed6b10a5e706ce3f06dc123c952a90a76cd01200a5b8d6717db586af7893639d
+	source = http://kornelix.net/downloads/downloads/fotoxx-20.0-test-2019-08-18.tar.gz
+	sha256sums = f2d72b29ea54dbeb1f28d94bcaf46cc24ce4787bb028830db505d832c9a09f81
 
 pkgname = fotoxx-test
 
