@@ -19,6 +19,8 @@ source=('git+https://gitlab.freedesktop.org/mstoeckl/waypipe.git')
 sha512sums=('SKIP')
 options=(debug !strip)
 arch=('any')
+provides=('waypipe')
+conflicts=('waypipe')
 
 pkgver() {
 	cd waypipe
