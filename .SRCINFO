@@ -1,6 +1,6 @@
 pkgbase = python-aiogram
 	pkgdesc = A pretty simple and fully asynchronous library for Telegram Bot API written in Python 3.7 with asyncio and aiohttp
-	pkgver = 2.2
+	pkgver = 2.3
 	pkgrel = 1
 	url = https://github.com/aiogram/aiogram
 	arch = any
@@ -12,8 +12,14 @@ pkgbase = python-aiogram
 	depends = python-certifi>=2019.3.9
 	optdepends = python-uvloop: fast, drop-in replacement of the built-in asyncio event loop
 	optdepends = python-ujson: ultra fast JSON encoder and decoder written in pure C
-	source = https://github.com/aiogram/aiogram/archive/v2.2.tar.gz
-	sha256sums = 5bd01e03e6286c6b1e7c4fa37053441c2b576b8add221b8cbebd2a40e34c1937
+	optdepends = python-rapidjson: extremely fast C++ JSON parser and serialization library
+	optdepends = python-emoji: emojize and demojize support
+	optdepends = python-aioredis: Redis storage support
+	optdepends = python-aiohttp-socks: SOCKS4(a) and SOCKS5 proxy support
+	source = https://github.com/aiogram/aiogram/archive/v2.3.tar.gz
+	source = no-pip.patch
+	sha256sums = 20f509db24fdd54c700e54c9400c40cdf9ccce42716b690436787d1df8a14057
+	sha256sums = 6279e16e20acbae3e289cd0e5ba89db199753f35afa5201e3e8adbcd9c1653bb
 
 pkgname = python-aiogram
 
