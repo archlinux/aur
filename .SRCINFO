@@ -1,6 +1,6 @@
 pkgbase = yggdrasil
 	pkgdesc = An experiment in scalable routing as an encrypted IPv6 overlay network
-	pkgver = 0.3.6
+	pkgver = 0.3.7
 	pkgrel = 1
 	url = https://github.com/yggdrasil-network/yggdrasil-go
 	arch = i686
@@ -11,9 +11,9 @@ pkgbase = yggdrasil
 	license = LGPLv3
 	makedepends = go
 	conflicts = yggdrasil-git
-	source = yggdrasil-0.3.6.tar.gz::https://github.com/yggdrasil-network/yggdrasil-go/archive/v0.3.6.tar.gz
+	source = yggdrasil-0.3.7.tar.gz::https://github.com/yggdrasil-network/yggdrasil-go/archive/v0.3.7.tar.gz
 	source = yggdrasil.sysusers
-	sha512sums = 3867b50b47048bd3e42483605116e695ecc6719afd2c1f5cbe261636f58389cd1aa9eaaef6cda907824a0bc7bbb653c1c1a3956d9ff0d0f4403307d2db9ae361
+	sha512sums = ad8f5e1ae3b2e4270e1e95d17f3892614c8456e28b5ae1e16b9ed4c32d1a7171c4d3161546aedc4de7b3f1b4b12add85dc8463c94b4d55bb6c05bf4b26c7d3a8
 	sha512sums = b78d1f5efeeba184588ba7bdb2249d976aec160daa59742e032983da1aedad062d15c7c97cba3eba69412a0f7904ee123d98b58f859892d71188c25624295c32
 
 pkgname = yggdrasil
