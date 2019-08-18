@@ -1,4 +1,5 @@
-# Maintainer: Florian Pritz <bluewind@xinu.at>
+# Maintainer:  Vincent Grande <shoober420@gmail.com>
+# Contributor: Florian Pritz <bluewind@xinu.at>
 
 pkgname=(lib32-harfbuzz-git lib32-harfbuzz-icu-git)
 pkgver=2.1.1+174+g6c22f3fd
