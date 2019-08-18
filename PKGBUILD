@@ -10,7 +10,7 @@ pkgrel=1
 pkgdesc='Browser based analytics and search dashboard for Elasticsearch'
 url='https://www.elastic.co/products/kibana'
 arch=('any')
-license=('Apache')
+license=('custom:Elastic')
 depends=('nodejs-lts-dubnium')
 optdepends=('elasticsearch')
 provides=('kibana')
@@ -41,6 +41,7 @@ package() {
 
   install -dm 755 "${pkgdir}/usr/share/kibana"
   cp -a * "${pkgdir}/usr/share/kibana"
+  install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   install -dm 750 "${pkgdir}/etc/kibana"
   install -Dm 640 config/kibana.yml -t "${pkgdir}/etc/kibana"
