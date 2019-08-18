@@ -16,8 +16,8 @@ source=('git+https://github.com/nroi/cpcache.git#tag=0.1.0'
 )
 sha256sums=('SKIP'
             '0098e749b19617c0f7d619d47a3bc3015bab62e9ad0916087502daff672fb309'
-            '3ca1bcfb52153bfee7b316174b02cb51e2468bbdc69a41821b96804678ab4d69'
-            'a5d891b7d5cd282a3e7db445d8bbe14b230af7cb1a1e9536130e2f0e514d69bd'
+            '1fd14ab29e17b07eaeb9634b160380feeb67fef6c15710df2e88e488c69ee0e5'
+            '7f9ac6a73156119d1f1c7125dd5ce6ef8e5fdaa1a55f486d17462b7d3af0f812'
 )
 
 pkgver() {
@@ -31,12 +31,12 @@ package() {
   HOME="$TMP" /usr/bin/mix local.hex --force
   HOME="$TMP" /usr/bin/mix local.rebar --force
   HOME="$TMP" /usr/bin/mix deps.get
-  HOME="$TMP" MIX_ENV=prod /usr/bin/mix release --env=prod
+  HOME="$TMP" MIX_ENV=prod /usr/bin/mix release
   mkdir -p "${pkgdir}/usr/share/${pkgname%-git}"
   mkdir -p "${pkgdir}/var/lib/${pkgname%-git}"
   mkdir -p "${pkgdir}/etc/cpcache"
   cd "${pkgdir}/usr/share/${pkgname%-git}"
-  tar xf "${srcdir}/${pkgname%-git}/cpcache/_build/prod/rel/${pkgname%-git}/releases/0.1.0/${pkgname%-git}.tar.gz"
+  mv "${srcdir}/${pkgname%-git}/cpcache/_build/prod/rel/${pkgname%-git}"/* .
   ln -s "/var/lib/${pkgname%-git}" var
   install -Dm644 "${srcdir}/cpcache.service" "${pkgdir}/usr/lib/systemd/system/cpcache.service"
   install -Dm644 "${srcdir}/sysuser.conf" "${pkgdir}/usr/lib/sysusers.d/cpcache.conf"

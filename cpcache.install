@@ -1,11 +1,14 @@
 post_install() {
   systemd-sysusers cpcache.conf
-  mkdir -p /var/cache/cpcache/pkg/{community,community-staging,community-testing,core,extra,gnome-unstable,kde-unstable,multilib,multilib-testing,staging,testing}/os/x86_64
+  mkdir -p /var/cache/cpcache/pkg/{community,community-staging,community-testing,core,extra,gnome-unstable,kde-unstable,multilib,mu ltilib-testing,staging,testing}/os/x86_64
   mkdir -p /var/cache/cpcache/state
   chown -R cpcache:cpcache "/var/cache/cpcache"
+  chown -R cpcache:cpcache "/usr/share/cpcache"
   chown cpcache:cpcache "/var/lib/cpcache"
 }
 
 post_upgrade() {
   systemd-sysusers cpcache.conf
+  chown -R cpcache:cpcache "/var/cache/cpcache"
+  chown -R cpcache:cpcache "/usr/share/cpcache"
 }

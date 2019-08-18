@@ -9,8 +9,7 @@ TimeoutSec=90
 SuccessExitStatus=143
 User=cpcache
 Group=cpcache
-Environment="ELIXIR_ERL_OPTIONS=-sname cpcache"
-ExecStart=/usr/share/cpcache/bin/cpcache foreground
+ExecStart=/usr/share/cpcache/bin/cpcache start
 ExecStop=/usr/share/cpcache/bin/cpcache stop
 
 [Install]
