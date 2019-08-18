@@ -2,7 +2,7 @@
 
 pkgname=cbang
 pkgver=1.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="a library of cross-platform C++ utilities"
 arch=('x86_64')
 url="https://github.com/CauldronDevelopmentLLC/cbang"
@@ -18,7 +18,6 @@ depends=(
   'expat'
 )
 makedepends=(
-  'git'
   'scons'
 )
 checkdepends=(
@@ -29,8 +28,15 @@ optdepends=(
 )
 source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/CauldronDevelopmentLLC/cbang/archive/$pkgver.tar.gz"
+  "0001_python3_fix.patch"
 )
-sha256sums=('23bf2997ac8438592545f1cde7cd076ba759f3f4a01e6540cdf45a97616eaaef')
+sha256sums=('23bf2997ac8438592545f1cde7cd076ba759f3f4a01e6540cdf45a97616eaaef'
+            '4047b8dcaeae671d631e4cfbc896833c861ecf1a1e1c3d873095d901515f7e11')
+
+prepare() {
+	cd "$pkgname-$pkgver"
+	patch -p1 -i "../0001_python3_fix.patch"
+}
 
 build() {
   cd "$pkgname-$pkgver"
