@@ -1,0 +1,18 @@
+pkgbase = killjoy-notifier-notification-git
+	pkgdesc = Generate desktop notifications on behalf of killjoy
+	pkgver = 0
+	pkgrel = 1
+	url = https://github.com/Ichimonji10/killjoy-notifier-notification
+	install = killjoy-notifier-notification-git.install
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = rust
+	depends = dbus
+	provides = killjoy-notifier-notification
+	conflicts = killjoy-notifier-notification
+	source = git+https://github.com/Ichimonji10/killjoy-notifier-notification.git
+	sha256sums = SKIP
+
+pkgname = killjoy-notifier-notification-git
+

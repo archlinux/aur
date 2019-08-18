@@ -1,0 +1,7 @@
+# Ignore everything, then whitelist specific files.
+*
+
+!.SRCINFO
+!.gitignore
+!PKGBUILD
+!killjoy-notifier-notification-git.install

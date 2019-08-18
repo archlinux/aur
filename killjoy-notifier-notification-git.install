@@ -1,0 +1,10 @@
+post_install() {
+    fmt <(
+cat <<EOF
+Make sure a desktop notifications service is available. See:
+https://wiki.archlinux.org/index.php/Desktop_notifications
+EOF
+    )
+}
+
+# vim:set ts=2 sw=2 et:
