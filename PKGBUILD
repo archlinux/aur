@@ -1,8 +1,8 @@
 # Maintainer: José Almeida <jose.afga@gmail.com>
 
 pkgname=bananapkg-git
-pkgver=2.2.4.8
-pkgrel=3
+pkgver=r154.b545d63
+pkgrel=1
 pkgdesc="Low-level package manager written in shell bash"
 url="https://bananapkg.github.io"
 license=('MIT')
