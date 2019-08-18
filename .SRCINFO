@@ -1,0 +1,27 @@
+pkgbase = gdk-pixbuf2-git
+	pkgdesc = An image loading library
+	pkgver = 2.39.2+1+g3249c681f
+	pkgrel = 1
+	url = https://wiki.gnome.org/Projects/GdkPixbuf
+	install = gdk-pixbuf2.install
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = gobject-introspection
+	makedepends = git
+	makedepends = meson
+	depends = glib2
+	depends = libpng
+	depends = libtiff
+	depends = libjpeg
+	depends = libx11
+	depends = jasper
+	depends = shared-mime-info
+	provides = gdk-pixbuf2
+	conflicts = gdk-pixbuf2
+	source = git+https://gitlab.gnome.org/GNOME/gdk-pixbuf.git
+	source = gdk-pixbuf-query-loaders.hook
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = gdk-pixbuf2-git
+
