@@ -2,13 +2,15 @@
 
 pkgname=suwidgets-git
 pkgver=r5.26f87aa
-pkgrel=1
+pkgrel=2
 pkgdesc="Sigutils-related widgets"
 arch=(any)
 license=('custom')
 url="https://github.com/BatchDrake/SuWidgets"
 depends=('qt5-base')
 makedepends=('git' 'gcc')
+provides=('suwidgets')
+conflicts=('suwidgets')
 source=("$pkgname::git+https://github.com/BatchDrake/SuWidgets.git")
 sha1sums=('SKIP')
 
