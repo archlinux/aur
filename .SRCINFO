@@ -1,0 +1,15 @@
+pkgbase = klib-git
+	pkgdesc = A standalone and lightweight C library http://attractivechaos.github.io/klib/
+	pkgver = 0.1.r365.f719aad
+	pkgrel = 1
+	url = http://attractivechaos.github.io/klib/
+	arch = i686
+	arch = x86_64
+	license = MIT/X11
+	provides = klib=0.1.r365.f719aad
+	conflicts = klib
+	source = klib::git+https://github.com/attractivechaos/klib.git
+	md5sums = SKIP
+
+pkgname = klib-git
+
