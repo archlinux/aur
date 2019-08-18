@@ -10,7 +10,7 @@ provides=('ryzencontroller')
 conflicts=('ryzencontroller')
 url="https://gitlab.com/ryzen-controller-team/ryzen-controller"
 license=('CC0 1.0 Universal')
-source=("ryzencontroller_${_pkgver}_amd64.deb::https://gitlab.com/ryzen-controller-team/ryzen-controller/-/jobs/274540190/artifacts/browse/installer-builds/installers/ryzencontroller_${_pkgver}_amd64.deb")
+source=("ryzencontroller_${_pkgver}_amd64.deb::https://gitlab.com/ryzen-controller-team/ryzen-controller/-/jobs/274540190/artifacts/file/installer-builds/installers/ryzencontroller_${_pkgver}_amd64.deb")
 sha256sums=('6a1818fa28dd39ff12746685ba5d530b65b332323d92070fe88da98d09c8001c')
 
 package() {
