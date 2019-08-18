@@ -1,5 +1,5 @@
 # Maintainer:  Vincent Grande <shoober420@gmail.com>
-# Contributor: Amanoel Dawod <amanoel at outlook dot com>
+# Maintainer:  Amanoel Dawod <amanoel at outlook dot com>
 # Contributor: Yichao Yu <yyc1992@gmail.com>
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Jan de Groot <jgc@archlinux.org>
