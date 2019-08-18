@@ -8,6 +8,7 @@ pkgbase = emacs-pure-mode
 	groups = pure-complete
 	groups = pure-base
 	license = LGPL3
+	makedepends = llvm35
 	depends = emacs
 	depends = flycheck
 	depends = pure

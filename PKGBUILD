@@ -7,6 +7,7 @@ pkgdesc="An Emacs major mode for the Pure programming language"
 arch=("i686" "x86_64")
 license=('LGPL3')
 url="http://purelang.bitbucket.org/"
+makedepends=('llvm35')
 depends=("emacs" "flycheck" "pure")
 groups=(pure-complete pure-base)
 source=("https://github.com/agraef/pure-lang/releases/download/pure-$pkgver/pure-$pkgver.tar.gz"
