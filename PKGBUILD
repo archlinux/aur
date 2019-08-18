@@ -1,14 +1,13 @@
 # Maintainer: Pedro A. López-Valencia <youremail@domain.com>
 pkgname=tnftpd
 pkgver=20190602
-pkgrel=8
+pkgrel=9
 pkgdesc="Also known as lukemftpd, it is the default NetBSD FTP server"
 arch=('x86_64')
 url="https://ftp.netbsd.org/pub/NetBSD/misc/tnftp/"
 license=('custom:BSD-2clause')
 depends=('pam')
 backup=(etc/tnftpchroot etc/tnftpmotd etc/tnftpd.conf etc/tnftpusers etc/tnftpwelcome)
-conflicts=('bftpd' 'vsftpd' 'proftpd' 'pure-ftpd' 'pure-ftpd-db') # also inetutils ftpd
 source=("http://ftp.netbsd.org/pub/NetBSD/misc/tnftp/$pkgname-$pkgver.tar.gz"{,.asc} 
 	'pathnames.h'
 	'tnftpd.service'  # daemon service
