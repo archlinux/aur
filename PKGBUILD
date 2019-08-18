@@ -1,10 +1,10 @@
 major=19.30
-minor=838629
+minor=855429
 
 pkgname='amdgpu-dkms'
 pkgver=${major}_${minor}
 pkgdesc="DKMS AMDGPU driver from AMD"
-pkgrel=4
+pkgrel=0
 arch=('x86_64')
 url=https://www.amd.com/en/support/kb/release-notes/rn-amdgpu-unified-navi-linux
 license=('custom')
@@ -34,7 +34,7 @@ source=(https://drivers.amd.com/drivers/linux/amdgpu-pro-${major}-${minor}-ubunt
         patch_amd_display_amdgpu_dm_amdgpu_dm_mst_types_c.patch
         patch_Makefile.patch)
 
-sha256sums=('e2eb0a34745ecb9e244f81e0f3af8e4ab063d699dbc3e1a1e0867e8ce773d473'
+sha256sums=('05161b3226e569b068f6dc9d85c50bb533bec8024b80e8f7459374d9d28654ba'
             'd575728fbe9e53586a30c24865a4741b19ffb29e9845a2dd935cac3faea4bec9'
             'be0940ccf42c941a5537acfeff299b2b0588e7e5e8f01a53e76a01b30efca2fd'
             'aa09dc25dfdfbbcb1ccd16f5420f9f8291c5db97e7d366828244460015262f4a'
