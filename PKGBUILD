@@ -20,6 +20,7 @@ source=(
 	revert_linkflags.patch
 	FreeFileSync.desktop
 	RealTimeSync.desktop
+	dlagent
 	)
 
 sha256sums=('bf495c182c51565a622023e4823a8df0a912c73f134e57a7398ccb6578d46dc5'
@@ -27,10 +28,10 @@ sha256sums=('bf495c182c51565a622023e4823a8df0a912c73f134e57a7398ccb6578d46dc5'
             '2ea1f157ab31feb18b0d8ac117a1820174a4b2b9bdaee2027c1fbc2c287e1caa'
             'd3dedc100163ce00ae5889a6039a1fff11ae32b676ae5e83ae9182509f80638d'
             '590d87707240529ca893199f852143f5d7c7266cb050e37e615900b013ac3d51'
-            '82439b4b81b0a72652befad9b9db52ffbc0180f307c92205aa5ab344f9f82830')
-	 
-DLAGENTS=("https::/usr/bin/curl -fLC - --retry 5 --retry-delay 3 -A Mozilla -o %o %u")
+            '82439b4b81b0a72652befad9b9db52ffbc0180f307c92205aa5ab344f9f82830'
+            '1f47fa51bf9b8a15e3785a083662dd78aa5b0e92e0f8789ffbaa3c184e411f24')
 
+DLAGENTS=("https::./dlagent $url %u %o")
 
 prepare() {
 # wxgtk < 3.1.0
