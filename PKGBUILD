@@ -1,4 +1,5 @@
-# Maintainer: Moritz Lipp <mlq@pwmt.org>
+# Maintainer: Yiyao Yu <yuydevel at protonmail org>
+# Contributor: Moritz Lipp <mlq@pwmt.org>
 
 pkgname=bear
 _pkgname=Bear
