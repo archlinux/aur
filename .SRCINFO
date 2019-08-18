@@ -8,6 +8,7 @@ pkgbase = pure-gl
 	groups = pure-complete
 	groups = pure-graphics
 	license = BSD
+	makedepends = glu
 	depends = pure
 	depends = freeglut
 	source = https://bitbucket.org/purelang/pure-lang/downloads/pure-gl-0.9.tar.gz
