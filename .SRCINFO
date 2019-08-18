@@ -1,0 +1,15 @@
+pkgbase = editorconfig-checker-git
+	pkgdesc = A tool to verify that your files are in harmony with your .editorconfig
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/editorconfig-checker/editorconfig-checker
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = go
+	provides = ec
+	source = git+https://github.com/editorconfig-checker/editorconfig-checker
+	md5sums = SKIP
+
+pkgname = editorconfig-checker-git
+
