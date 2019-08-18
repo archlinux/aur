@@ -1,33 +1,35 @@
-# Maintainer: Andy Weidenbaum <archbaum@gmail.com>
-# Contributor: Manish Munikar <munikarmanish at gmail dot com>
+# Maintainer: Manish Munikar <munikarmanish@gmail.com>
 
 pkgname=photocrypt
-pkgver=0.6
+pkgver=0.7
 pkgrel=1
 pkgdesc="A text-to-image steganography tool"
-arch=('i686' 'x86_64')
-depends=('gtkmm' 'opencv' 'openssl')
-makedepends=('gcc' 'make' 'pkg-config')
-url="https://github.com/mdbct/photocrypt"
-license=('BSD')
-source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/mdbct/$pkgname/tar.gz/$pkgver
-        photocrypt.desktop)
-sha256sums=('92cb9036c2838aa29c9913b35dd13143f83432d97aa96f1949011511bd1c3164'
-            '0614b31b3a1e6e80c737c6711a983be6889e70f78374318b4848f23442cd6801')
+arch=("i686" "x86_64")
+depends=("gtkmm3" "opencv" "openssl" "vtk" "hdf5")
+makedepends=("gcc" "make" "pkg-config")
+url="https://github.com/munikarmanish/photocrypt"
+license=("BSD")
+source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/munikarmanish/$pkgname/tar.gz/$pkgver
+        photocrypt.desktop
+        photocrypt.png)
+sha256sums=("18f1d08401856563ad2c3e71e20667da42c612aac9a29e8ccade209431caa41b"
+            "cb94a180ac7dcd527679b71a1a64a178ad8785f4f2d865f2f3cb0ee7fc70d735"
+            "cc6d04e2e570918209184d8c5d9cb10361ee899c6c4f4b678942728c7deee270")
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  msg 'Building...'
+  msg "Building..."
   make
 }
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  msg 'Installing...'
+  msg "Installing..."
   make DESTDIR="$pkgdir" install
 
-  msg 'Installing desktop entry...'
-  install -Dm 644 "$srcdir/photocrypt.desktop" "$pkgdir/usr/share/applications/photocrypt.desktop"
+  msg "Installing desktop entry..."
+  install -Dm 644 "${srcdir}/photocrypt.desktop" "${pkgdir}/usr/share/applications/photocrypt.desktop"
+  install -Dm 644 "${srcdir}/photocrypt.png" "${pkgdir}/opt/photocrypt/photocrypt.png"
 }
