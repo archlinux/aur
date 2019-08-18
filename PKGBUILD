@@ -2,7 +2,7 @@
 
 pkgname=ocaml-sexplib0
 pkgver=0.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Library containing the definition of S-expressions and some base converters"
 arch=('x86_64')
 url='https://github.com/janestreet/sexplib0'
@@ -16,7 +16,7 @@ sha512sums=('104f8526a147cfa6ecf168c8ee10a78ad3133c0a8a3714dc9dffd6358152752b337
 build() {
   cd "${srcdir}/sexplib0-v${pkgver}"
 
-  dune build
+  dune build --profile release
 }
 
 
