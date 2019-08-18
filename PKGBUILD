@@ -1,6 +1,6 @@
 # Maintainer: Manuel Stoeckl <com dоt mstoeckl аt wppkgb>
 pkgname=waypipe-git
-pkgver=0.5.0.r0.ge66f424
+pkgver=0.6.0.r0.ge9ed082
 pkgrel=1
 pkgdesc='A proxy for Wayland protocol applications. WARNING: unstable'
 license=('MIT')

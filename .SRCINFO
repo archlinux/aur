@@ -1,6 +1,6 @@
 pkgbase = waypipe-git
-	pkgdesc = A proxy for Wayland protocol applications. WARNING: very unstable
-	pkgver = 0.5.0.r0.ge66f424
+	pkgdesc = A proxy for Wayland protocol applications. WARNING: unstable
+	pkgver = 0.6.0.r0.ge9ed082
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/mstoeckl/waypipe
 	arch = any
