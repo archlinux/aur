@@ -1,6 +1,6 @@
 pkgbase = gti-bin
 	pkgdesc = Just a silly git launcher, basically. Inspired by sl. (New version in Go)
-	pkgver = v1.4.0
+	pkgver = v1.5.0
 	pkgrel = 1
 	url = https://github.com/ldez/gti
 	arch = x86_64
@@ -11,14 +11,14 @@ pkgbase = gti-bin
 	provides = gti
 	conflicts = gti-git
 	conflicts = gti
-	source_x86_64 = https://github.com/ldez/gti/releases/download/v1.4.0/gti_v1.4.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = b87f6e2769cd9d3f913de8511ff8279831a9e086a64fb16bc2b5271f2e61f5ff
-	source_i686 = https://github.com/ldez/gti/releases/download/v1.4.0/gti_v1.4.0_linux_386.tar.gz
-	sha256sums_i686 = 93b7cab9e924093fe59f543f1976b6bf076907754c73faa76f56cd8282491788
-	source_armv7h = https://github.com/ldez/gti/releases/download/v1.4.0/gti_v1.4.0_linux_armv7.tar.gz
-	sha256sums_armv7h = 1450461f3436018599a2e94f8a984a5d58017142dda97aab73eb6cb42ae52482
-	source_aarch64 = https://github.com/ldez/gti/releases/download/v1.4.0/gti_v1.4.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = 9d64193d99964e85d49330affecc4bcf3e6816a9de67ba8b63d7384f68dde448
+	source_x86_64 = https://github.com/ldez/gti/releases/download/v1.5.0/gti_v1.5.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = cc2cdad3713ff6efa1504d53036a60d7f7ded82813d877278259c844a594c433
+	source_i686 = https://github.com/ldez/gti/releases/download/v1.5.0/gti_v1.5.0_linux_386.tar.gz
+	sha256sums_i686 = 97bf5c722382fc5ed3b65d54f404cf8be09c59c61c0640f218577800edd0c1c4
+	source_armv7h = https://github.com/ldez/gti/releases/download/v1.5.0/gti_v1.5.0_linux_armv7.tar.gz
+	sha256sums_armv7h = 5ea1993e4a8831e0db7460e4faddb88c62c50d8509fb6e8d39e5c04ea2bb6be1
+	source_aarch64 = https://github.com/ldez/gti/releases/download/v1.5.0/gti_v1.5.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = a28759449c5d9e383ea58f2872e8f977763ef0fca41321f46b75b918da214727
 
 pkgname = gti-bin
 
