@@ -13,17 +13,21 @@
 pkgbase=dbus-selinux
 pkgname=(dbus-selinux dbus-docs-selinux)
 pkgver=1.12.16
-pkgrel=1
+pkgrel=2
 pkgdesc="Freedesktop.org message bus system with SELinux support"
 url="https://wiki.freedesktop.org/www/Software/dbus/"
 arch=(x86_64)
 license=(GPL custom)
 groups=('selinux')
-depends=(systemd-libs-selinux expat audit)
+# Make sure systemd's hook supports reloading dbus: the following commit was introduced in package systemd 242.84-2
+# https://git.archlinux.org/svntogit/packages.git/commit/trunk?h=packages/systemd&id=4e247891655844511c775fba566df270f8d0d55f
+depends=('systemd-libs-selinux>=242.84-2' expat audit)
 makedepends=(systemd-selinux xmlto docbook-xsl python yelp-tools doxygen git autoconf-archive graphviz audit libselinux)
 _commit=23cc709db8fab94f11fa48772bff396b20aea8b0  # tags/dbus-1.12.16^0
-source=("git+https://gitlab.freedesktop.org/dbus/dbus.git#commit=$_commit")
-sha256sums=('SKIP')
+source=("git+https://gitlab.freedesktop.org/dbus/dbus.git#commit=$_commit"
+        dbus-reload.hook)
+sha256sums=('SKIP'
+            '56d0b5131e030649c6666707aefd67d5c44b6498091f7fdc92dc570b6d6b94fe')
 validpgpkeys=('DA98F25C0871C49A59EAFF2C4DE8FF2A63C7CC90'  # Simon McVittie <simon.mcvittie@collabora.co.uk>
               '3C8672A0F49637FE064AC30F52A43A1E4B77B059') # Simon McVittie <simon.mcvittie@collabora.co.uk>
 
