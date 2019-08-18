@@ -1,7 +1,8 @@
+# Maintainer: Michael Gerdau <mgd@qata.de>
 # Maintainer: Jon Arnold <jonarnoldsemail at gmail dot com>
 # Contributor: Xiao-Long Chen
 pkgname=pacpl
-pkgver=5.1.0
+pkgver=6.1.1
 pkgrel=1
 pkgdesc="Convert multiple audio types from one format to another."
 arch=('any')
