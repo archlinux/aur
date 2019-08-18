@@ -2,7 +2,7 @@
 
 pkgname=fstl
 pkgver=0.9.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A viewer for .stl files"
 url="http://www.mattkeeter.com/projects/fstl/"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=("icoutils")
 source=("https://github.com/mkeeter/fstl/archive/v${pkgver}.tar.gz"
         "fstl.desktop")
 sha256sums=('a366861683eda9510b36b7c06068d9c314bef21b1f6aa43c5069e096347fbce2'
-            '1b41e3cd75765738c7519b03579af00895bb4bff77370d3e774185aefba55996')
+            '53d2a7911cacc1ca8e9fe823e8ecf2777c1158f51d2b909ebb106d976c70bec5')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
