@@ -1,44 +1,26 @@
-# Maintainer: Clint Valentine <valentine.clint@gmail.com>
+# Maintainer: Jean Lucas <jean@4ray.co>
+# Contributor: Clint Valentine <valentine.clint@gmail.com>
 
-_name=codecov
-pkgbase='python-codecov'
-pkgname=('python-codecov' 'python2-codecov')
+pkgname=python-codecov
 pkgver=2.0.15
-pkgrel=1
-pkgdesc="Hosted coverage reports for Github, Bitbucket and Gitlab"
-arch=('any')
-url="https://pypi.python.org/pypi/codecov"
-license=('Apache')
-makedepends=(
-  'python' 'python-setuptools'
-  'python2' 'python2-setuptools')
-checkdepends=('python-unittest2')
-options=(!emptydirs)
-source=("${pkgname}"-"${pkgver}".tar.gz::https://pypi.python.org/packages/77/f2/9790ee0f04eb0571841aff5ba1709c7869e82aa2145a04a3d4770807ff50/codecov-2.0.15.tar.gz)
-sha256sums=('8ed8b7c6791010d359baed66f84f061bba5bd41174bf324c31311e8737602788')
+pkgrel=2
+pkgdesc='Report uploader for Codecov'
+arch=(any)
+url=https://codecov.io
+license=(Apache)
+depends=(python python-requests python-coverage)
+makedepends=(python-setuptools)
+source=(codecov-$pkgver.tar.gz::https://github.com/codecov/codecov-python/archive/v$pkgver.tar.gz)
+sha512sums=('53cf2dc9926e2009a3918dfc7317d1e93f6ba9e25c6bb5bcc42c81fb15c07593f4fabd24883f081719432a029ab4f399126dea4cd8ff92d5e0f53b7155b1e522')
 
-prepare() {
-  cp -a "${_name}"-"${pkgver}"{,-py2}
-}
-
-build(){
-  cd "${srcdir}"/"${_name}"-"${pkgver}"
+build() {
+  cd codecov-python-$pkgver
   python setup.py build
-
-  cd "${srcdir}"/"${_name}"-"${pkgver}"-py2
-  python2 setup.py build
 }
 
-package_python2-codecov() {
-  depends=('python2' 'python2-requests' 'python2-coverage')
-
-  cd "${_name}"-"${pkgver}"-py2
-  python2 setup.py install --root="${pkgdir}"/ --optimize=1 --skip-build
-}
-
-package_python-codecov() {
-  depends=('python' 'python-requests' 'python-coverage')
-
-  cd "${_name}"-"${pkgver}"
-  python setup.py install --root="${pkgdir}"/ --optimize=1 --skip-build
+package() {
+  cd codecov-python-$pkgver
+  python setup.py install --root="$pkgdir" -O1
+  install -Dm 644 README.md -t "$pkgdir"/usr/share/doc/$pkgname
+  install -Dm 644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
 }
