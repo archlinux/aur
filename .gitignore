@@ -1,0 +1,6 @@
+*.log*
+*.log.*
+*.pkg
+*.sign
+*.xz
+*.xz.sig
