@@ -1,9 +1,10 @@
-# Maintainer: Aniket Pradhan <aniket17133@iiitd.ac.in>
-# Contributor: Martin Briza <m@rtinbriza.cz>
+# Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
+# Contributor: Aniket Pradhan <aniket17133 (at) iiitd (dot) ac (dot) in>
+# Contributor: Martin Briza <m (at) rtinbriza (dot) cz>
 
 pkgname=adwaita-qt
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A style to bend Qt applications to look like they belong into GNOME Shell'
 arch=('x86_64')
 url="https://github.com/FedoraQt/adwaita-qt"
@@ -30,5 +31,5 @@ package() {
   cd "${srcdir}/${pkgname}-${pkgver}/build"
   make DESTDIR="$pkgdir" install
   install -Dm644 ../README.md "${pkgdir}/usr/share/doc/${pkgname}/README"
-  install -Dm644 ../LICENSE.LGPL2 "${pkgdir}/usr/share/licences/${pkgname}/LICENSE"
+  install -Dm644 ../LICENSE.LGPL2 "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
