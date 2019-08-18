@@ -10,7 +10,7 @@ depends=("python" "glib2" "python-gobject" "gtk3" "youtube-dl" "python-vlc"
          "python-lyricwikia" "python-pydbus" "python-requests" "python-six")
 makedepends=("python-setuptools")
 source=("https://github.com/marioortizmanero/spotify-music-videos/archive/$pkgver.tar.gz")
-md5sums=('cc380a63f20d61125923551cab31e96c')
+md5sums=('752c5b286d9e2aa4c9d2491c31ee687e')
 
 build() {
     cd "spotify-music-videos-$pkgver"
