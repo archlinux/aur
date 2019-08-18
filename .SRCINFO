@@ -1,0 +1,17 @@
+pkgbase = killjoy-git
+	pkgdesc = Monitor systemd units
+	pkgver = 0
+	pkgrel = 1
+	url = https://github.com/Ichimonji10/killjoy
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = rust
+	depends = dbus
+	provides = killjoy
+	conflicts = killjoy
+	source = git+https://github.com/Ichimonji10/killjoy.git
+	sha256sums = SKIP
+
+pkgname = killjoy-git
+
