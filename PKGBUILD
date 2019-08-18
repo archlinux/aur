@@ -1,7 +1,7 @@
 # Maintainer: Nils Czernia <nils[at]czserver[dot]de>
 
 pkgname=dnsvi
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc="Edit dynamic DNS zones in vi"
 arch=("any")
@@ -10,7 +10,7 @@ license=("GPL3")
 depends=("perl" "bind-tools")
 
 source=("https://github.com/ChristophBerg/dnsvi/archive/${pkgver}.tar.gz")
-sha512sums=("7f65e8870c50a52f3494cd1fdd70dd839c63708e04980ccd0ee1b18e74e38255b4d86d06b89ab548875eaf0c44685a5fa758fa70c0a27fba7eb98dc4c3ebc81d")
+sha512sums=("931e25527ceb7d4e4ddebb56f3dfdfe9dfaeb0e7c308817bff212f69157f32c66a853c250d89176a8cc3135a2770c284ccfa372403daf59821fefd85cbd4809d")
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
