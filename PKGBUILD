@@ -3,7 +3,7 @@
 
 pkgname=torrent-file-editor-qt5-git
 _pkgname=torrent-file-editor
-pkgver=0.3.9.r0.g4546e6d
+pkgver=0.3.15.r20.g350570d
 pkgrel=1
 pkgdesc="Qt based GUI tool designed to create and edit .torrent files. Qt5 build"
 arch=('i686' 'x86_64')
