@@ -8,6 +8,7 @@ pkgbase = pure-glpk
 	groups = pure-complete
 	groups = pure-math
 	license = GPL3
+	makedepends = unixodbc
 	depends = pure
 	depends = glpk
 	source = https://bitbucket.org/purelang/pure-lang/downloads/pure-glpk-0.5.tar.gz
