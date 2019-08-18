@@ -1,13 +1,14 @@
 pkgbase = deezer
 	pkgdesc = A proprietary music streaming service
 	pkgver = 4.15.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.deezer.com/
 	arch = any
 	license = custom:"Copyright (c) 2006-2018 Deezer S.A."
 	makedepends = p7zip
 	makedepends = asar
 	makedepends = prettier
+	makedepends = imagemagick
 	depends = electron
 	provides = deezer
 	source = deezer-4.15.0-setup.exe::https://www.deezer.com/desktop/download/artifact/win32/x86/4.15.0

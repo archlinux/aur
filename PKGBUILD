@@ -2,14 +2,14 @@
 # Contributor: Ilya Gulya <ilyagulya@gmail.com>
 pkgname="deezer"
 pkgver=4.15.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A proprietary music streaming service"
 arch=('any')
 url="https://www.deezer.com/"
 license=('custom:"Copyright (c) 2006-2018 Deezer S.A."')
 depends=('electron')
 provides=('deezer')
-makedepends=('p7zip' 'asar' 'prettier')
+makedepends=('p7zip' 'asar' 'prettier' 'imagemagick')
 source=(
          "$pkgname-$pkgver-setup.exe::https://www.deezer.com/desktop/download/artifact/win32/x86/$pkgver"
          "$pkgname.desktop"
@@ -30,6 +30,9 @@ prepare() {
     7z x -so $pkgname-$pkgver-setup.exe "\$PLUGINSDIR/app-32.7z" > app-32.7z
     # Extract app archive
     7z x -y -bsp0 -bso0 app-32.7z
+
+    # Extract png from ico container
+    convert resources/build/win/app.ico resources/build/win/deezer.png
 
     cd resources/
     rm -r app || true
@@ -62,7 +65,7 @@ package() {
     echo "exec electron /usr/share/deezer/app.asar \"\$@\"" >> deezer
 
     install -Dm644 resources/app.asar "$pkgdir"/usr/share/deezer/
-    install -Dm644 resources/build/win/app.ico "$pkgdir"/usr/share/icons/hicolor/256x256/apps/deezer.png
+    install -Dm644 resources/build/win/deezer.png "$pkgdir"/usr/share/icons/hicolor/256x256/apps/
     install -Dm644 resources/build/win/systray.png "$pkgdir"/usr/share/deezer/
     install -Dm644 "$pkgname".desktop "$pkgdir"/usr/share/applications/
     install -Dm755 deezer "$pkgdir"/usr/bin/
