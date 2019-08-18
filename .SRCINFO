@@ -1,7 +1,7 @@
 pkgbase = pacpl
 	pkgdesc = Convert multiple audio types from one format to another.
 	pkgver = 6.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://pacpl.sourceforge.net/
 	install = pacpl.install
 	arch = any
