@@ -2,7 +2,7 @@
 # Contributor: greyltc
 
 pkgname=cbang-git
-pkgver=1.3.2.r35.ga6bb026
+pkgver=1.3.2.r75.g0f1fb56
 pkgrel=1
 pkgdesc="A library of cross-platform C++ utilities"
 arch=('x86_64')
@@ -48,11 +48,11 @@ build() {
   scons disable_local="libevent sqlite3 re2 libyaml zlib bzip2 expat"
 }
 
-check() {
-  cd "${pkgname%-git}/tests"
-  scons
-  python2 ./testHarness
-}
+#check() {
+#  cd "${pkgname%-git}/tests"
+#  scons
+#  python2 ./testHarness
+#}
 
 package() {
   cd "${pkgname%-git}"
