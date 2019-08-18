@@ -1,6 +1,6 @@
 pkgname=ruplacer
 pkgver="0.4.1"
-pkgrel=2
+pkgrel=1
 pkgdesc="Find and replace text in source files"
 url="http://github.com/TankerHQ/ruplacer"
 arch=('x86_64')
