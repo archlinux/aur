@@ -1,0 +1,15 @@
+pkgbase = simple-shutdown-dialog-git
+	pkgdesc = A simple dialog to shutdown, reboot, suspend or logout, built with GTK
+	pkgver = 3.436e6bc
+	pkgrel = 1
+	url = https://github.com/Maxr1998/SimpleShutdownDialog
+	arch = x86_64
+	arch = i686
+	license = GPL
+	depends = gtk3
+	provides = simple-shutdown-dialog
+	source = simple-shutdown-dialog::git+https://github.com/Maxr1998/SimpleShutdownDialog.git
+	sha256sums = SKIP
+
+pkgname = simple-shutdown-dialog-git
+
