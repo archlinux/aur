@@ -7,7 +7,7 @@ pkgname=(
     'manjarowish-pantheon-settings'
     )
 pkgver=0.1
-pkgrel=8
+pkgrel=9
 arch=('any')
 _branch='master'
 url="https://github.com/librewish/manjarowish-pantheon-settings"
@@ -51,13 +51,14 @@ package_manjarowish-pantheon-settings() {
         'granite'
         'plank'
         'switchboard'
-        'wingpanel'
+        'wingpanel-standalone-git'
+        'compiz'
         'ibus'
         'orca'
         'onboard'
         'numlockx'
         ttf-{droid,opensans,roboto}
-       gnome-settings-daemon-{elementary,compat}
+       'gnome-settings-daemon-elementary'
         )
     optdepends=(
         'timeshift-autosnap'
@@ -72,9 +73,9 @@ package_manjarowish-pantheon-settings() {
     'manjaro-kde-settings'
     'manjarowish-light-settings-settings'
     'pantheon-workaround'
+    'pantheon-3d'
     'pantheon-default-settings'
     )
 
     _install ''
 }
-
