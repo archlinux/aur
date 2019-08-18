@@ -12,9 +12,11 @@ source=("https://github.com/enricobacis/lyricwikia/archive/${pkgver}.tar.gz")
 md5sums=('38cf496f85110964fb303cfa8a4aa26b')
 
 build() {
+    cd $srcdir/lyricwikia-$pkgver
     python setup.py build
 }
 
 package() {
-    python setup.py --root="$pkgdir/" --optimize=1 --skip-build
+    cd $srcdir/lyricwikia-$pkgver
+    python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
