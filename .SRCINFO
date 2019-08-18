@@ -15,7 +15,7 @@ pkgbase = cpcache-git
 	source = cpcache.service
 	sha256sums = SKIP
 	sha256sums = 0098e749b19617c0f7d619d47a3bc3015bab62e9ad0916087502daff672fb309
-	sha256sums = 1fd14ab29e17b07eaeb9634b160380feeb67fef6c15710df2e88e488c69ee0e5
+	sha256sums = c360324b57070f3e833ea1f0ed62cf1ccd09601fd9993a59792334779397df9d
 	sha256sums = 7f9ac6a73156119d1f1c7125dd5ce6ef8e5fdaa1a55f486d17462b7d3af0f812
 
 pkgname = cpcache-git
