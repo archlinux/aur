@@ -2,7 +2,7 @@
 
 _pkgname=i3lock-fancy-rapid
 pkgname=$_pkgname-git
-pkgver=r7.f055acf
+pkgver=r13.80467db
 pkgrel=1
 pkgdesc="A faster implementation of i3lock-fancy"
 arch=('x86_64')
