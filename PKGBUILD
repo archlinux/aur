@@ -1,23 +1,32 @@
 # Maintainer: Danilo Bargen aur ât dbrgn döt ch
+# PGP key is on keyservers and at https://keybase.io/dbrgn
 pkgname=upscrot
-pkgver=1.0.0b2
-pkgrel=2
-_wheel="${pkgname}-${pkgver}-py3-none-any.whl"
-pkgdesc="Take a screenshot using the Linux scrot command and upload it directly to your SSH server."
-arch=('i686' 'x86_64')
+pkgver=1.0.0
+pkgrel=1
+pkgdesc="Take a screenshot using the Linux scrot command and upload it to your SSH server."
+arch=('any')
 url="https://github.com/dbrgn/$pkgname"
 license=('GPL')
-makedepends=('python' 'python-setuptools' 'python-pip')
-depends=('python'
-         'python-appdirs'
-         'scrot')
-provides=('upscrot')
-conflicts=('upscrot')
-noextract=(${_wheel})
-source=("https://pypi.python.org/packages/py3/u/${pkgname}/${_wheel}")
-sha256sums=('d04b88f7fc7e93b0a49e5a76d0c4c2f60fad2a943de25d605046f2993680a801')
+makedepends=('python' 'python-setuptools')
+depends=('python' 'python-appdirs' 'scrot')
+source=(
+  "https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz"
+  "https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz.asc"
+)
+sha256sums=(
+  '7343be1d8be132d7410fc57dfa22cb980bfce871b1fd3b65da2d4d81972f2749'
+  'SKIP'
+)
+validpgpkeys=('EA456E8BAF0109429583EED83578F667F2F3A5FA')
+
+build() {
+  cd "$srcdir/$pkgname-$pkgver/"
+  python setup.py build
+}
 
 package() {
-  cd "$srcdir"
-  pip install --no-deps --no-warn-script-location --root "$pkgdir" $_wheel
+  cd "$srcdir/$pkgname-$pkgver/"
+  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
+
+# vim:set ts=2 sw=2 et:

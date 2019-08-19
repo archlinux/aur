@@ -2,4 +2,6 @@
 pkg/
 src/
 *.whl
+*.tar.gz
 *.tar.xz
+*.asc
