@@ -1,12 +1,13 @@
 pkgbase = ginkgo-cadx-2
 	pkgdesc = Complete DICOM viewer solution
 	pkgver = 2.14.0.4972
-	pkgrel = 2
+	pkgrel = 3
 	url = http://ginkgo-cadx.com/
 	install = ginkgo-cadx.install
 	arch = i686
 	arch = x86_64
 	license = LGPL3
+	makedepends = cmake
 	depends = dcmtk
 	depends = insight-toolkit
 	depends = tcp_wrappers

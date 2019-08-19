@@ -2,12 +2,12 @@
 pkgname=ginkgo-cadx-2
 _realpkgname=ginkgo-cadx
 pkgver=2.14.0.4972
-pkgrel=2
+pkgrel=3
 pkgdesc="Complete DICOM viewer solution"
 arch=('i686' 'x86_64')
 url="http://ginkgo-cadx.com/"
 license=('LGPL3')
-makdepends=('cmake')
+makedepends=('cmake')
 depends=('dcmtk' 'insight-toolkit' 'tcp_wrappers' 'vtk' 'wxgtk2.8')
 conflicts=('ginkgo-cadx')
 install="${_realpkgname}.install"
