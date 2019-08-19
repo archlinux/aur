@@ -61,7 +61,7 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-bcachefs-git
-_srcver_tag=5.1.15-arch1
+_srcver_tag=5.1.21-arch1
 pkgver="${_srcver_tag//-/.}"
 pkgrel=1
 arch=(x86_64)
@@ -93,6 +93,7 @@ source=(
     60-linux.hook  # pacman hook for depmod
     90-linux.hook  # pacman hook for initramfs regeneration
     linux.preset   # standard config files for mkinitcpio ramdisk
+    5.1.16-fix.patch
 )
 validpgpkeys=(
     "ABAF11C65A2970B130ABE3C479BE3E4300411886"  # Linus Torvalds
@@ -100,10 +101,11 @@ validpgpkeys=(
 )
 sha512sums=('SKIP'
             'SKIP'
-            'f78db94e15ed4a5abca28238d2a315dcf13ff20e04694497275208b4aad18b1ded8b715bad546c623b0138747e6de4c070c28b5d3cc383bdd8b5959afc58294b'
+            'ed5be61c001e4dec518226843c5074a82a9699f733e5718ed48401d4519d0d53b75fe2e89f298f26177645cf9efb90438cc350d30677e68c44ab6e773983fb54'
             '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
             '2718b58dbbb15063bacb2bde6489e5b3c59afac4c0e0435b97fe720d42c711b6bcba926f67a8687878bd51373c9cf3adb1915a11666d79ccb220bf36e0788ab7'
-            '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf')
+            '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
+            '70159dd2463f8dc937ac05ebf3679cf8f09f5337a95f4b98cb11878d65633926581d6e484a6ab86b8ed0b375ef835fd1c2f569bf508b424983d351fc6fff1ff8')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-ARCH}
@@ -116,13 +118,20 @@ prepare() {
     echo "-${pkgrel}" > localversion.10-pkgrel
     echo "${_kernelname}" > localversion.20-pkgname
 
+    msg2 "bcachefs 5.1.16 fix"
+    git am --3way "${srcdir}"/5.1.16-fix.patch
+
+    msg2 "Adding patches from Linux upstream kernel repository..."
+    git remote add upstream_stable "https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git" || true
+    git pull --no-edit -s recursive -X ours upstream_stable v"${_srcver_tag//-arch*/}"
+
     msg2 "Adding patches from Arch Linux kernel repository..."
     git remote add arch_stable "https://git.archlinux.org/linux.git" || true
-    git pull --no-edit arch_stable "v${_srcver_tag}"
-
-    # msg2 "Adding patches from Linux upstream kernel repository..."
-    # git remote add upstream_stable "https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git" || true
-    # git pull --no-edit upstream_stable v"${_srcver_tag//-arch*/}"
+    # git pull --no-edit arch_stable "v${_srcver_tag}"
+    git fetch arch_stable "v5.1.16-arch1"
+    git cherry-pick fd0f4757ded3627edc883650941a26a21e435a7d
+    git cherry-pick 7e6c7c0d56e1342b9ad5d8071736a5851d1ae1c7
+    sed -i 's/EXTRAVERSION =/EXTRAVERSION = -arch1/g' "${srcdir}/${_reponame}/Makefile"
 
     # https://github.com/graysky2/kernel_gcc_patch
     msg2 "Patching to enabled additional gcc CPU optimizatons..."

@@ -1,0 +1,25 @@
+From 2d6a2017e0e3e7d66c98eb2dcf8fb049f5973241 Mon Sep 17 00:00:00 2001
+From: Kyle De'Vir <kyle.devir@mykolab.com>
+Date: Mon, 19 Aug 2019 20:05:28 +1000
+Subject: [PATCH] 5.1.16 fix
+
+---
+ fs/inode.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/fs/inode.c b/fs/inode.c
+index cc44f345e09c..4892d43a6233 100644
+--- a/fs/inode.c
++++ b/fs/inode.c
+@@ -349,7 +349,7 @@ EXPORT_SYMBOL(inc_nlink);
+ 
+ static void __address_space_init_once(struct address_space *mapping)
+ {
+-	xa_init_flags(&mapping->i_pages, XA_FLAGS_LOCK_IRQ);
++	xa_init_flags(&mapping->i_pages, XA_FLAGS_LOCK_IRQ | XA_FLAGS_ACCOUNT);
+ 	pagecache_lock_init(&mapping->add_lock);
+ 	init_rwsem(&mapping->i_mmap_rwsem);
+ 	INIT_LIST_HEAD(&mapping->private_list);
+-- 
+2.22.1
+
