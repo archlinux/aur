@@ -1,7 +1,7 @@
 # Maintainer: Alexandros Theodotou <alex@zrythm.org>
 _pkgname=zrythm
 pkgname=$_pkgname-git
-pkgver=0.6.003.r5.g2c5ff65c
+pkgver=0.6.003.r24.g501ba444
 pkgrel=1
 pkgdesc='An highly automated, intuitive, Digital Audio Workstation (DAW)'
 arch=('x86_64' 'i686')
@@ -12,7 +12,7 @@ depends=('gtk3' 'lv2' 'lilv' 'libx11' 'jack'
   'libsamplerate' 'alsa-lib'
   'ladspa' 'fftw')
 makedepends=('python' 'gettext' 'sed'
-             'meson' 'ninja' 'help2man')
+             'meson' 'ninja' 'help2man' 'python-sphinx')
 optdepends=('portaudio: portaudio backend'
             'qt5-base: for embedding qt5 plugin UIs')
 conflicts=("$_pkgname")
@@ -29,7 +29,7 @@ pkgver () {
 build() {
   cd "$srcdir/$_pkgname"
   mkdir -p build
-  cd build && meson --prefix=/usr .. -Denable_tests=true
+  cd build && meson --prefix=/usr .. -Denable_tests=true -Duser_manual=true -Dmanpage=true
   ninja
 }
 

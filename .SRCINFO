@@ -1,6 +1,6 @@
 pkgbase = zrythm-git
 	pkgdesc = An highly automated, intuitive, Digital Audio Workstation (DAW)
-	pkgver = 0.6.003.r5.g2c5ff65c
+	pkgver = 0.6.003.r24.g501ba444
 	pkgrel = 1
 	url = https://git.zrythm.org/zrythm/zrythm
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = zrythm-git
 	makedepends = meson
 	makedepends = ninja
 	makedepends = help2man
+	makedepends = python-sphinx
 	depends = gtk3
 	depends = lv2
 	depends = lilv
