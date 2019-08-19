@@ -1,0 +1,17 @@
+pkgbase = ntsclient-git
+	pkgdesc = Small Network Time Security Client (NTP with NTS). Alpha software.
+	pkgver = r27.671e778
+	pkgrel = 1
+	url = https://gitlab.com/hacklunch/ntsclient
+	arch = i686
+	arch = x86_64
+	license = ISC
+	makedepends = git
+	makedepends = go-pie
+	provides = ntsclient
+	conflicts = ntsclient
+	source = ntsclient::git+https://gitlab.com/hacklunch/ntsclient
+	sha256sums = SKIP
+
+pkgname = ntsclient-git
+
