@@ -20,8 +20,9 @@ package() {
     install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-#check() {
-  #cd "$srcdir/$_pkgname-$pkgver"
-  #PYTHONPATH=. python fontParts/fontshell/test.py
-#}
+check() {
+  cd "$srcdir/$_pkgname-$pkgver/Lib"
+  sed -e 's/unittest2 as //' -i fontParts/test/test_deprecated.py
+  PYTHONPATH=. python fontParts/fontshell/test.py
+}
 
