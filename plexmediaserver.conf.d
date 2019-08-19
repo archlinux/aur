@@ -1,3 +1,7 @@
+# If your LC_ALL and LANG aren't en_US.UTF-8, plex crashes.
+# LC_ALL=en_US.UTF-8
+# LANG=en_US.UTF-8
+
 LD_LIBRARY_PATH=/usr/lib/plexmediaserver/lib
 PLEX_MEDIA_SERVER_HOME=/usr/lib/plexmediaserver
 PLEX_MEDIA_SERVER_APPLICATION_SUPPORT_DIR=/var/lib/plex
