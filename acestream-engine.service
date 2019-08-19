@@ -1,12 +1,9 @@
 [Unit]
-Description=AceStream Engine (console)
+Description=AceStream Engine Service
 After=network.target
 
 [Service]
-Type=simple
-User=acestream
-Group=video
-ExecStart=/usr/bin/acestreamengine --client-console --bind-all
+ExecStart=/usr/bin/acestreamengine --client-console --live-cache-type memory --state-dir /usr/share/ACEStream --log-file /usr/share/ACEStream/acestreamengine.log
 
 [Install]
 WantedBy=multi-user.target 

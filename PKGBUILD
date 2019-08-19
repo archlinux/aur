@@ -14,7 +14,7 @@ _enginename=acestreamengine
 
 pkgname=acestream-engine-stable
 pkgver=3.1.49
-pkgrel=3
+pkgrel=4
 pkgdesc="P2P utility for multimedia live streaming and file transfer (stable version)"
 arch=("x86_64")
 url="http://acestream.org/"
@@ -30,14 +30,14 @@ conflicts=("$_pkgbasename")
 backup=("usr/lib/$_pkgbasename/acestream.conf")
 install="$_pkgbasename.install"
 source=(
-    "$_pkgbasename.service"
     "$pkgname-$pkgver.tar.gz::http://acestream.org/downloads/linux/acestream_${pkgver}_ubuntu_${_ubuntuver}_x86_64.tar.gz"
+    "$_pkgbasename.service"
     "$_pkgbasename.desktop"
     "LICENSE")
 sha256sums=(
-    "9446e4c36c2e92b4253a1c3fea5fa30d366d46295dcd1f1cac4ddfe8f002fcbe"
     "d2ed7bdc38f6a47c05da730f7f6f600d48385a7455d922a2688f7112202ee19e"
-    "fad731aec3371b3e76065cf1668be6b61d33547d321c8cfb2b6018faa3d5b7b0"
+    "eac3ba7e0aea10deae99d9d494de424c3ccbcc0efb11618e7490e084c05f5412"
+    "e5e0ff385cecfe9af381f870836295b48d466cb675f36b658c80a978a3006d87"
     "SKIP")
 
 package() {

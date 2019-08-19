@@ -1,16 +1,29 @@
+#_create_acestream_user() {
+#   if ! getent passwd acestream &> /dev/null; then
+#       useradd -u 4035 -g video -M -s /usr/bin/nologin acestream
+#   fi
+#}
+
+_remove_acestream_user() {
+    if getent passwd acestream &>/dev/null; then
+        userdel acestream
+    fi
+}
+
 post_install() {
-  if ! getent passwd acestream &> /dev/null; then
-    useradd -u 4035 -g video -m -s /usr/bin/nologin acestream
-  fi
+    _remove_acestream_user
 }
 
 post_upgrade() {
-  post_install
+    _remove_acestream_user
 }
 
 post_remove() {
-  if getent passwd acestream &>/dev/null; then
-    userdel acestream
-  fi
+    _remove_acestream_user
+
+    echo
+    echo ">>> remove files under /usr/share/ACEStream if you"
+    echo ">>> don't need to reinstall the package in the future"
+    echo
 }
  
