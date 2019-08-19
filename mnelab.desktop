@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=MNELAB
+GenericName=MNE GUI
+Comment=Graphical user interface (GUI) for MNE, a Python-based toolbox for EEG/MEG analysis
+Exec=mnelab %f
+Icon=mnelab
+Terminal=false
+Categories=Science
