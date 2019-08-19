@@ -1,5 +1,5 @@
 pkgname=fontforge-git
-pkgver=20190801.r29.gf40e1fbc5
+pkgver=20190801.r31.g4dc8313c0
 pkgrel=1
 epoch=1
 
@@ -33,6 +33,7 @@ build() {
     cmake \
         -G"Ninja" \
         -D"CMAKE_INSTALL_PREFIX:PATH=/usr" \
+        -D"CMAKE_INSTALL_LIBDIR:PATH=lib" \
         ..
     ninja
 }
