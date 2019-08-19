@@ -1,7 +1,9 @@
 # Maintainer: Giusy Margarita <kurmikon at libero dot it>
 
+_relver=1.2
+
 pkgname=acestream-proxy-git
-pkgver=1.1
+pkgver=$_relver
 pkgrel=1
 pkgdesc="AceStream Proxy new version capable of providing multiple streams of the same channel over HTTP (git version)"
 arch=("any")
@@ -22,7 +24,7 @@ pkgver() {
     cd "$srcdir/$pkgname"
     
     # Git, no tags available
-    printf "$pkgver.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "$_relver.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
