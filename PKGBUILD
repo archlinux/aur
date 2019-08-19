@@ -4,7 +4,7 @@
 
 pkgname=perl-algorithm-permute
 pkgver=0.16
-pkgrel=1
+pkgrel=2
 pkgdesc='Perl package for handy and fast permutations with object oriented interface'
 arch=('i686' 'x86_64')
 url='https://metacpan.org/release/Algorithm-Permute'
@@ -37,5 +37,5 @@ package() {
 	cd Algorithm-Permute-0.16
 	sanitize
 	make install DESTDIR="$pkgdir"
-	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+	find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
 }
