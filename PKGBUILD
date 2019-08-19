@@ -17,6 +17,7 @@ depends=('openmotif' 'libjpeg' 'libpng' 'libxmu' 'libxpm' 'xorg-fonts-misc' 'xor
 makedepends=('git')
 provides=("${pkgname%-git}" 'mosaic')
 conflicts=("${pkgname%-git}" 'mosaic')
+options=(!makeflags)
 source=('git+https://github.com/yotann/ncsa-mosaic.git')
 sha256sums=('SKIP')
 

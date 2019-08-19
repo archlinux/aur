@@ -20,6 +20,7 @@ pkgbase = ncsa-mosaic-git
 	provides = mosaic
 	conflicts = ncsa-mosaic
 	conflicts = mosaic
+	options = !makeflags
 	source = git+https://github.com/yotann/ncsa-mosaic.git
 	sha256sums = SKIP
 
