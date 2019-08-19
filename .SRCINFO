@@ -1,6 +1,6 @@
 pkgbase = gtkplatform
 	pkgdesc = Run Qt applications using gtk+ as a windowing system
-	pkgver = 0.2.4+4+ga9b8447
+	pkgver = 0.2.4+5+gda0e695
 	pkgrel = 1
 	url = https://github.com/CrimsonAS/gtkplatform
 	arch = x86_64
@@ -11,12 +11,9 @@ pkgbase = gtkplatform
 	depends = libnotify
 	depends = qt5-base
 	conflicts = qt-gtk-platform-plugin
-	source = git+https://github.com/CrimsonAS/gtkplatform.git#commit=a9b84470ceefa481beef598c45bd7cae3042a61c
-	source = 50-gtkplatform.conf
+	source = git+https://github.com/CrimsonAS/gtkplatform.git#commit=da0e6959ae4dcc4db1bf44058883bea2207bf73b
 	md5sums = SKIP
-	md5sums = feb8d574489bed9bd91dae7c3b5b54a1
 	sha512sums = SKIP
-	sha512sums = d96788c66228b336c1932531221cc92902d40986d378bfcea15e3b53b0ba2a1a39568c9592e1745145c60b569e8909af095292e95faee6ef284e7fcb263b907f
 
 pkgname = gtkplatform
 
