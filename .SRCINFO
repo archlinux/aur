@@ -1,14 +1,15 @@
 pkgbase = casefile
 	pkgdesc = Offline intelligence application, allowing analysts to examine links between offline data
-	pkgver = 4.2.3.12223
+	pkgver = 4.2.6.12502
 	pkgrel = 1
 	url = https://www.paterva.com/web7/buy/maltego-clients/casefile.php
 	arch = any
 	license = custom
 	depends = java-environment=8
 	optdepends = perl
-	source = https://www.paterva.com/malv423/Maltego.v4.2.3.12223.deb
-	sha256sums = 747eaf663524f016546c7e1c8790124ff91b7f6d6a07442403c9d607f588f786
+	source = https://www.paterva.com/malv426/Maltego.v4.2.6.12502.deb
+	md5sums = 7400f0e8fba47b7fdf8bc2b4a9d23714
+	sha256sums = cd127ad57deb603ec181ae367b194d0e312dc1be912d933a24398c6ac9832947
 
 pkgname = casefile
 
