@@ -15,10 +15,16 @@ pkgbase = gpm-vm
 	source = 0001-glibc-sigemptyset.patch
 	source = gpm.sh
 	source = gpm.service
+	source = gpm-23.patch
+	source = gpm-vm
+	source = gpm-vm.conf
 	sha256sums = SKIP
 	sha256sums = 61f901aae46ff79679a058758151dc93901dcd9ea938fabb0765554993b8cb09
 	sha256sums = f41e90dcf6c0c6c4b8eff1c69039a20eb6b38ea851ffd1fa47ba311bf83d6ed8
-	sha256sums = dc7d2463f6670ff2c1646a571ffad51f7c603793c25c6f685efad13cbb444034
+	sha256sums = 4d1e92a82006a7d361deeb8760514bbf1b33b40264bb57a4f4087239009d0485
+	sha256sums = f9f228a17701afcf383396861cfe798067505b4dbfddbb4fa91ee3e4c5088175
+	sha256sums = 92c6040e43617fe1aaf3af45c63c211e9de6a2728fc005aef32a5aebe4bcfe19
+	sha256sums = a0b57507017158316facb9e603b187dc443fbe934ed024ceea94715565843d4f
 
 pkgname = gpm-vm
 

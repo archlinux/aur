@@ -1,4 +1,9 @@
+# Original Core Repo
+# ======================
 # Maintainer: Eric Bélanger <eric@archlinux.org>
+
+# Modifications to work for QEMU and Virtualbox
+# Maintainer: James P. Harvey <jamespharvey20 at gmail dot com>
 
 pkgname=gpm-vm
 _pkgname=gpm
@@ -15,11 +20,17 @@ options=('!makeflags')
 source=("git+https://github.com/telmich/gpm.git#commit=${_commit}"
         '0001-glibc-sigemptyset.patch'
         'gpm.sh'
-        'gpm.service')
+        'gpm.service'
+        'gpm-23.patch'
+        'gpm-vm'
+        'gpm-vm.conf')
 sha256sums=('SKIP'
             '61f901aae46ff79679a058758151dc93901dcd9ea938fabb0765554993b8cb09'
             'f41e90dcf6c0c6c4b8eff1c69039a20eb6b38ea851ffd1fa47ba311bf83d6ed8'
-            'dc7d2463f6670ff2c1646a571ffad51f7c603793c25c6f685efad13cbb444034')
+            '4d1e92a82006a7d361deeb8760514bbf1b33b40264bb57a4f4087239009d0485'
+            'f9f228a17701afcf383396861cfe798067505b4dbfddbb4fa91ee3e4c5088175'
+            '92c6040e43617fe1aaf3af45c63c211e9de6a2728fc005aef32a5aebe4bcfe19'
+            'a0b57507017158316facb9e603b187dc443fbe934ed024ceea94715565843d4f')
 provides=('gpm')
 conflicts=('gpm')
 
@@ -37,6 +48,7 @@ prepare() {
   cd "${srcdir}/${_pkgname}"
 
   patch -Np1 < ../0001-glibc-sigemptyset.patch
+  patch -Np1 < ../gpm-23.patch
 
   ./autogen.sh
 }
@@ -57,6 +69,8 @@ package() {
   make DESTDIR="${pkgdir}" install
   install -D -m0755 ../gpm.sh "${pkgdir}/etc/profile.d/gpm.sh"
   install -D -m0644 ../gpm.service "${pkgdir}/usr/lib/systemd/system/gpm.service"
+  install -D -m0755 ../gpm-vm "${pkgdir}/usr/bin/gpm-vm"
+  install -D -m0644 ../gpm-vm.conf "${pkgdir}/etc/gpm-vm.conf"
 
 # library fixes
   cd "${pkgdir}/usr/lib/"

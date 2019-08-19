@@ -1,0 +1,22 @@
+#!/usr/bin/bash
+
+conf="/etc/gpm-vm.conf"
+
+if [[ ! -f "${conf}" ]]; then
+   echo "'${conf}' does not exist"
+   exit 1
+fi
+
+source "${conf}"
+
+if [[ ! -v event ]]; then
+   echo "'event' is not set in '${conf}'"
+   exit 1
+fi
+
+if [[ ! -c "${event}" ]]; then
+   echo "'${event}' does not exist or is not a character device"
+   exit 1
+fi
+
+/usr/bin/gpm -m "${event}" -t vbox

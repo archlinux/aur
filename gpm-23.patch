@@ -1,0 +1,92 @@
+From 99e29cb2206d1c5a43c3035098ae1a7f434b9b8f Mon Sep 17 00:00:00 2001
+From: fonic <fonic.maxxim@live.com>
+Date: Mon, 28 Aug 2017 15:30:02 +0200
+Subject: [PATCH] Add support for VirtualBox guests This adds support for the
+ 'USB Tablet' absolute pointing device emulated by VirtualBox. This enables
+ Linux guests to seamlessly integrate, i.e. the pointer doesn't have to be
+ captured by the guest anymore.
+
+Pointer movement, all five buttons (two of them being mapped to 'middle') and both vertical and horizontal wheels are supported.
+
+Vertical mouse wheel functionality could be verified using links in framebuffer mode. Horizontal wheel is untested due to the lack of a device with that feature.
+---
+ src/mice.c | 59 ++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 59 insertions(+)
+
+diff --git a/src/mice.c b/src/mice.c
+index 6cbd491..00c69b9 100644
+--- a/src/mice.c
++++ b/src/mice.c
+@@ -254,6 +254,62 @@ static int M_evdev (Gpm_Event * state, unsigned char *data)
+    }
+    return 0;
+ }
++
++/*
++ * USB Tablet emulated by VirtualBox for seamless mouse integration
++ *
++ * The 'VirtualBox USB Tablet' is an absolute pointing device which
++ * uses values of range 0-32767 for both axes, reports five button
++ * states (left, right, middle, side, extra) and two wheel states
++ * (vertical, horizontal; both relative)
++ */
++#define VBOX_MAX 32767
++
++static int M_vbox (Gpm_Event * state, unsigned char *data)
++{
++   struct input_event thisevent;
++   (void) memcpy (&thisevent, data, sizeof (struct input_event));
++
++   state->dx = state->dy = 0;
++   state->wdx = state->wdy = 0;
++
++   // Pointer
++   if (thisevent.type == EV_ABS) {
++      if (thisevent.code == REL_X) {
++         state->x = thisevent.value * (win.ws_col+1) / VBOX_MAX;
++         realposx = thisevent.value * REALPOS_MAX / VBOX_MAX;
++      } else if (thisevent.code == REL_Y) {
++         state->y = thisevent.value * (win.ws_row+1) / VBOX_MAX;
++         realposy = thisevent.value * REALPOS_MAX / VBOX_MAX;
++      }
++
++   // Wheels
++   } else if (thisevent.type == EV_REL) {
++      if (thisevent.code == REL_WHEEL) {
++         //state->buttons ^= thisevent.value > 0 ? GPM_B_UP : GPM_B_DOWN;
++         //state->wdy = thisevent.value > 0 ? +1 : -1;
++         state->wdy = thisevent.value;
++      } else if (thisevent.code == REL_HWHEEL) {
++         //state->buttons ^= thisevent.value > 0 ? GPM_B_RIGHT : GPM_B_LEFT;
++         //state->buttons ^= thisevent.value > 0 ? GPM_B_LEFT : GPM_B_RIGHT;
++         //state->wdx = thisevent.value > 0 ? +1 : -1;
++         //state->wdx = thisevent.value > 0 ? -1 : +1;
++         state->wdx = thisevent.value;
++      }
++
++   // Buttons
++   } else if (thisevent.type == EV_KEY) {
++      switch (thisevent.code) {
++         case BTN_LEFT:    state->buttons ^= GPM_B_LEFT;    break;
++         case BTN_MIDDLE:  state->buttons ^= GPM_B_MIDDLE;  break;
++         case BTN_RIGHT:   state->buttons ^= GPM_B_RIGHT;   break;
++         case BTN_SIDE:    state->buttons ^= GPM_B_MIDDLE;  break;
++         case BTN_EXTRA:   state->buttons ^= GPM_B_MIDDLE;  break;
++      }
++   }
++
++   return 0;
++}
+ #endif /* HAVE_LINUX_INPUT_H */
+ 
+ static int M_ms(Gpm_Event *state,  unsigned char *data)
+@@ -2404,6 +2460,9 @@ Gpm_Type mice[]={
+    {"evdev", "Linux Event Device",
+             "", M_evdev, I_empty, STD_FLG,
+                         {0x00, 0x00, 0x00, 0x00} , 16, 16, 0, 0, NULL},
++   {"vbox", "For USB Tablet emulated by VirtualBox for mouse integration",
++            "", M_vbox, I_empty, STD_FLG,
++                        {0x00, 0x00, 0x00, 0x00} , 24, 24, 0, 1, NULL},
+ #endif /* HAVE_LINUX_INPUT_H */
+    {"exps2",   "IntelliMouse Explorer (ps2) - 3 buttons, wheel unused",
+            "ExplorerPS/2", M_imps2, I_exps2, STD_FLG,
