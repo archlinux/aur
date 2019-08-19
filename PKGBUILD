@@ -118,7 +118,7 @@ prepare() {
     echo "-${pkgrel}" > localversion.10-pkgrel
     echo "${_kernelname}" > localversion.20-pkgname
 
-    msg2 "bcachefs 5.1.16 fix"
+    msg2 "Patching to make bcachefs work for 5.1.16 onwards..."
     git am --3way "${srcdir}"/5.1.16-fix.patch
 
     msg2 "Adding patches from Linux upstream kernel repository..."
@@ -129,8 +129,16 @@ prepare() {
     git remote add arch_stable "https://git.archlinux.org/linux.git" || true
     # git pull --no-edit arch_stable "v${_srcver_tag}"
     git fetch arch_stable "v5.1.16-arch1"
+
+    # https://git.archlinux.org/linux.git/commit/?h=v5.1.16-arch1&id=fd0f4757ded3627edc883650941a26a21e435a7d
+    # add sysctl to disallow unprivileged CLONE_NEWUSER by default
     git cherry-pick fd0f4757ded3627edc883650941a26a21e435a7d
+
+    # https://git.archlinux.org/linux.git/commit/?h=v5.1.16-arch1&id=7e6c7c0d56e1342b9ad5d8071736a5851d1ae1c7
+    # ZEN: Add CONFIG for unprivileged_userns_clone
     git cherry-pick 7e6c7c0d56e1342b9ad5d8071736a5851d1ae1c7
+    
+    msg2 "Fixing EXTRAVERSION..."
     sed -i 's/EXTRAVERSION =/EXTRAVERSION = -arch1/g' "${srcdir}/${_reponame}/Makefile"
 
     # https://github.com/graysky2/kernel_gcc_patch
