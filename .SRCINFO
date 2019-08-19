@@ -4,8 +4,10 @@ pkgbase = argos-uri-installer-git
 	pkgrel = 1
 	url = https://github.com/chabad360/argos-installer
 	arch = any
+	license = GPL3
 	makedepends = git
 	depends = gnome-shell-extension-argos-git
+	depends = desktop-file-utils
 	source = git+https://github.com/chabad360/argos-installer.git
 	md5sums = SKIP
 

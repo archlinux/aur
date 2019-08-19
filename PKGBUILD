@@ -5,7 +5,9 @@ pkgrel=1
 pkgdesc="Argos URI handler for bitbar://"
 arch=('any')
 url="https://github.com/chabad360/argos-installer"
-depends=('gnome-shell-extension-argos-git')
+license=('GPL3')
+depends=('gnome-shell-extension-argos-git'
+        'desktop-file-utils')
 makedepends=('git')
 source=('git+https://github.com/chabad360/argos-installer.git')
 md5sums=('SKIP')
@@ -17,6 +19,7 @@ prepare() {
 
 package() {
     cd "${srcdir}/argos-installer"
-    install -Dm755 "add-argos" "${pkgdir}/usr/bin/add-argos"
-    install -Dm644 "argos.desktop" "${pkgdir}/usr/share/applications/argos.desktop"
+    install -Dm755 "add-argos" "$pkgdir/usr/bin/add-argos"
+    install -Dm644 "argos.desktop" "$pkgdir/usr/share/applications/argos.desktop"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
