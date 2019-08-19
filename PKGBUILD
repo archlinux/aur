@@ -16,14 +16,14 @@
 # Maintainer: Samuel Littley <samuellittley@google.com>
 
 pkgname=('google-compute-engine' 'google-compute-engine-oslogin')
-pkgver=20190522
+pkgver=20190801
 pkgrel=1
 arch=('any' 'x86_64')
 url='https://github.com/GoogleCloudPlatform/compute-image-packages'
 license=('Apache')
 makedepends=('curl' 'json-c' 'pam' 'python-boto' 'python-distro' 'python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/GoogleCloudPlatform/compute-image-packages/archive/$pkgver.tar.gz")
-sha256sums=('8cfb338c3c768ea7e76e479728a1438b2f10b0df13bddd70c9fbcbfc1273efd6')
+sha256sums=('495ce6e44034b26cbcf619aeebe2cb83334ee801b2130ba2f20d4468483d3ce8')
 
 build() {
 	cd "compute-image-packages-$pkgver/packages"
@@ -52,8 +52,7 @@ package_google-compute-engine() {
 	install -m644 -Dt "$pkgdir/usr/lib/systemd/system/" lib/systemd/system/*
 	install -m644 -Dt "$pkgdir/usr/lib/udev/rules.d" lib/udev/rules.d/*
 	install -m755 -Dt "$pkgdir/usr/bin" usr/bin/*
-	# Use cp to install symbolic links.
-	cp -d etc/dhcp/dhclient-exit-hooks "$pkgdir/etc/dhclient-exit-hooks"
+	ln -s /usr/bin/google_set_hostname "$pkgdir/etc/dhclient-exit-hooks"
 	popd
 }
 
