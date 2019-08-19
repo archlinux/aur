@@ -1,5 +1,5 @@
 pkgbase = python-fontmake
-	pkgdesc = A bridge from Glyphs source files (.glyphs) to UFOs
+	pkgdesc = Compile fonts from sources (UFO, Glyphs) to binary (OpenType, TrueType).
 	pkgver = 1.10.1
 	pkgrel = 1
 	url = https://github.com/googlefonts/fontmake
