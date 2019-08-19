@@ -11,7 +11,7 @@ arch=(any)
 license=('MIT')
 depends=(
 	'python'
-	'python-gmusicapi-git'
+	'python-gmusicapi'
 	'python-google-api-python-client'
 	'python-urwid'
 	'python-yaml'
