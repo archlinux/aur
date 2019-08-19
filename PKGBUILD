@@ -2,7 +2,7 @@
 
 pkgname=juce
 pkgdesc='Cross-platform C++ framework, including the Projucer C++ editor'
-pkgver=5.4.3
+pkgver=5.4.4
 pkgrel=1
 arch=('i686' 'x86_64')
 url='https://www.juce.com/'
@@ -13,7 +13,7 @@ optdepends=('java-environment: for graddle')
 source=("https://github.com/WeAreROLI/JUCE/archive/${pkgver}.tar.gz"
         "Projucer.desktop"
         "Projucer.png")
-sha256sums=('05cfec616c854d0f8f6646c0d8a7ac868410b25a3ba2c839879a7904504d5403'
+sha256sums=('40536c5792002ceec09faea8d5a57d5c17486f8805c5efe3bc734e27d2df2202'
             'f57572e3ff616fc349da7f6b581f09becbe469b8111ff7a83ce854be363d5de4'
             'f9ec15bbcb51b24a798f7d56680190e21829b9f6ff101f756beaccf95fbdad86')
 
