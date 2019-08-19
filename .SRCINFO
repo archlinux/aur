@@ -1,5 +1,5 @@
 pkgbase = input-wacom-dkms-git
-	pkgdesc = Latest Kernel modules form Wacom tablets (DKMS). Useful if your wacom tablet is not supported upstream yet.
+	pkgdesc = Latest kernel modules for Wacom tablets (DKMS). Useful if your wacom tablet is not supported upstream yet.
 	pkgver = 0.43.0.13.g4d718cc
 	pkgrel = 1
 	url = https://github.com/linuxwacom/input-wacom/
