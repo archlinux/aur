@@ -2,7 +2,7 @@
 
 pkgname=ant-theme-git
 _pkgname=Ant
-pkgver=r71.8889b8a
+pkgver=r72.d4dc397
 pkgrel=1
 pkgdesc="A flat and light theme with a modern look"
 arch=("any")
@@ -33,8 +33,6 @@ build() {
 	msg2 "- THEME_FONT_SIZE (default font point size is 10)"
 	msg2 ""
 	msg2 "Continuing build in 5 seconds..."; sleep 5
-	msg2 "Setting gnome-shell font face to ${THEME_FONT_FACE}"
-	msg2 "Setting gnome-shell font size to ${THEME_FONT_SIZE}"
 
 	msg2 "Rendering assets, please wait"
 	pushd gtk-2.0
@@ -47,6 +45,9 @@ build() {
 		<(./render-gtk3-assets.py; ./render-gtk3-assets-hidpi.py); echo
 	popd
 	msg2 "Done!"
+
+	msg2 "Setting gnome-shell font face to ${THEME_FONT_FACE}"
+	msg2 "Setting gnome-shell font size to ${THEME_FONT_SIZE}"
 
 	if [ "${THEME_FONT_FACE}" != "Roboto" ]; then
 		sed -i -re "s/font-family: (.*);/font-family: ${THEME_FONT_FACE}, \1;/" \
