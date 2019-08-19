@@ -1,6 +1,6 @@
 pkgbase = xmrig-proxy
 	pkgdesc = Stratum protocol proxy for Monero, Electroneum, Sumokoin and AEON pools; HTTP API disabled, donation percentage is 0.
-	pkgver = 3.0.0
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = https://github.com/xmrig/xmrig-proxy
 	install = xmrig-proxy.install
@@ -13,8 +13,8 @@ pkgbase = xmrig-proxy
 	optdepends = monero: XMR wallet
 	optdepends = xmrig-bin: XMR CPU miner - binary
 	optdepends = xmrig: XMR CPU miner
-	source = https://github.com/xmrig/xmrig-proxy/archive/v3.0.0.tar.gz
-	sha256sums = b3203e38ae0178e90004a41b0b2b9f767a4b47866544f6d87dfd0c4e41c21d81
+	source = https://github.com/xmrig/xmrig-proxy/archive/v3.1.0.tar.gz
+	sha256sums = ad65068e07d9ba3a720dd36494648528d872ddfaff3e48b7e7235cd9cff41337
 
 pkgname = xmrig-proxy
 
