@@ -1,0 +1,19 @@
+pkgbase = hgview
+	pkgdesc = A fast Mercurial log navigator
+	pkgver = 1.10.7
+	pkgrel = 1
+	url = https://www.logilab.org/project/hgview/
+	arch = any
+	license = GPL
+	makedepends = asciidoc
+	makedepends = xmlto
+	depends = mercurial>=1.6
+	depends = python2-urwid
+	depends = python2-pyinotify
+	depends = python2-pygments
+	depends = python2-pyqt4
+	source = http://download.logilab.org/pub/hgview/hgview-1.10.7.tar.gz
+	sha256sums = 49f009d3b04f5e0aade7bf9bb3a70345e688467a84a78d202d24fd98781cac5b
+
+pkgname = hgview
+
