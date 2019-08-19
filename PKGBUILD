@@ -6,7 +6,7 @@
 
 pkgbase=cyrus-imapd
 pkgname=(cyrus-imapd cyrus-imapd-docs)
-pkgver=3.0.10
+pkgver=3.0.11
 pkgrel=1
 pkgdesc="An email, contacts and calendar server"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -14,10 +14,9 @@ url="https://www.cyrusimap.org/"
 license=('BSD')
 makedepends=('libsasl' 'icu' 'jansson' 'libical' 'libxml2' 'krb5' 'sqlite'
              'mariadb-libs' 'postgresql-libs' 'libnghttp2' 'brotli' 'shapelib'
-             'libldap' 'libcap' 'net-snmp' 'xapian-core' 'perl' 'clamav'
+             'libldap' 'libcap' 'net-snmp' 'xapian-core' 'perl' 'clamav' 'rsync'
              'python-sphinx<2' 'perl-pod-pom-view-restructured')
 source=("https://www.cyrusimap.org/releases/${pkgbase}-${pkgver}.tar.gz"{,.sig}
-        "2750.patch::https://github.com/cyrusimap/cyrus-imapd/pull/2750/commits/ad4d5fb85e1480158ee32c9b0d3d0baeac2c324a.patch"
         "perl-libs.patch"
         "vzic-flags.patch"
         "imapd.conf.patch"
@@ -25,10 +24,9 @@ source=("https://www.cyrusimap.org/releases/${pkgbase}-${pkgver}.tar.gz"{,.sig}
         "cyrus-imapd.sysusers.conf"
         "cyrus-imapd.tmpfiles.conf")
 validpgpkeys=('5B55619A9D7040A9DEE2A2CB554F04FEB36378E0')
-sha512sums=('1ae153a8f181bbe020326bec2dc177b78ef3c442f94e24e89b7a719298d93701006596dd21fa1c3a40afd75f01162b03524cf793dd7438ec7192f9a13f7614d0'
+sha512sums=('058efc2e462729b79e431e1b5dab1addfe737aeec8b686698cd2270748275028ca5722ed3960fcd680a0393027ee1b1d7dff65872dd1d8349a3f933e81227e48'
             'SKIP'
-            'bc4df5a743689cf674d50f32ce04308a6ac9ee167f62fc25cf30d186f8e79523441062e5043f8eab422d8fd8f1c9b8a658d4b3ebe203a27795b793f477364a67'
-            '6c1cec2d2cecc000cfa0a95befba75e303a151c6552148c671ef3b054ae7cce457571e0c8d416bb0b2fc83f86d27d2e477ea0073b8fa8ea295f14f5165aae6d5'
+            '0076967074a5c4ada11b886f13a6994c0ccb4058caf9278179dac10e99347fea51d587b03fcdad4d1895ff97032c27cfc90032171216ce7a674f56898bae81e1'
             'ff1adb55abb059f0c022ae3e375c0a099278d69174bef712b85af40b00fa68a6d49604d09f80195a429ff842813e914557d7aff773231776cbbc5037164c180a'
             '0862ffc8c05208efd4d2fb50a6e3719ebc65fc2d72f8e6404235aa32cc44d8227056a17b78f2726e15ff8e38d473795f837c34bfbe89b694b2298c9baab9d5db'
             '738242e80cec2c25ae6a85a889cc8d35d7c2f43b2b4d64d74f99a230b21024f168a885f1e319aec1aab0e0599e41211478b99dc608a4ba036be90f8d7e23fd96'
@@ -38,7 +36,6 @@ sha512sums=('1ae153a8f181bbe020326bec2dc177b78ef3c442f94e24e89b7a719298d93701006
 prepare() {
   cd "${srcdir}/${pkgbase}-${pkgver}"
 
-  patch -Np1 < "${srcdir}/2750.patch"
   patch -Np1 < "${srcdir}/perl-libs.patch"
   patch -Np1 < "${srcdir}/vzic-flags.patch"
   autoreconf
@@ -87,7 +84,8 @@ package_cyrus-imapd() {
            'mariadb-libs' 'postgresql-libs' 'libnghttp2' 'brotli' 'shapelib'
            'libldap' 'libcap' 'net-snmp' 'xapian-core' 'perl')
   optdepends=('cyrus-imapd-docs: documentation'
-              'clamav: for cyr_virusscan')
+              'clamav: for cyr_virusscan'
+              'rsync: for compacting Xapian databases')
   provides=('imap-server' 'pop3-server')
   backup=('etc/cyrus/cyrus.conf' 'etc/cyrus/imapd.conf')
   install="${pkgname}.install"

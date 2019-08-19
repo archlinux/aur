@@ -1,7 +1,7 @@
 diff -aur package.pristine/configure.ac package.new/configure.ac
 --- package.pristine/configure.ac	2019-03-15 01:31:20.000000000 +0100
 +++ package.new/configure.ac	2019-03-30 11:31:11.971579309 +0100
-@@ -1347,6 +1347,7 @@
+@@ -1361,6 +1361,7 @@
          with_libcap="${withval}")
  
  have_libcap=no
@@ -9,7 +9,7 @@ diff -aur package.pristine/configure.ac package.new/configure.ac
  case $host_os in
  linux*)
          if test "x$with_libcap" = "xyes"; then
-@@ -1354,13 +1355,14 @@
+@@ -1368,13 +1369,14 @@
                  AC_CHECK_HEADERS([sys/capability.h sys/prctl.h], , have_libcap=no)
                  if test "$have_libcap" = "yes"; then
                          AC_DEFINE(HAVE_LIBCAP, [], [Do we have libcap system capabilities handling (Linux systems only)?])
