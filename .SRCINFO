@@ -4,7 +4,6 @@ pkgbase = fontforge-git
 	pkgrel = 1
 	epoch = 1
 	url = https://fontforge.github.io/
-	install = fontforge-git.install
 	arch = i686
 	arch = x86_64
 	license = GPL3

@@ -16,8 +16,6 @@ makedepends=('git' 'cmake' 'ninja')
 provides=('fontforge')
 conflicts=('fontforge')
 
-install='fontforge-git.install'
-
 source=('git://github.com/fontforge/fontforge.git')
 
 sha256sums=('SKIP')
