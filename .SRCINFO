@@ -1,14 +1,14 @@
 pkgbase = python-normality
 	pkgdesc = Micro-library to normalize text strings
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = http://github.com/pudo/normality
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/n/normality/normality-1.0.0.tar.gz
-	sha256sums = 94c1f8f72c14ffc82296351fafba70bcfdc6b4c79bc385318de1b1fbe9985b22
+	source = https://files.pythonhosted.org/packages/source/n/normality/normality-1.0.1.tar.gz
+	sha256sums = a7ddffa23f4fbc0de1c1f621550555967c65581140c80528e953e08333389553
 
 pkgname = python-normality
 	depends = python
