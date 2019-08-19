@@ -1,39 +1,18 @@
 pkgbase = python-mutatormath
 	pkgdesc = A library for the calculation of piecewise linear interpolations in n-dimensions with any number of masters.
-	pkgver = 2.1.1
+	pkgver = 2.1.2
 	pkgrel = 1
 	url = https://github.com/LettError/MutatorMath
 	arch = any
 	license = BSD
-	makedepends = python-pip
-	makedepends = python2-pip
+	makedepends = python-setuptools
 	depends = python
 	depends = python-fonttools
-	depends = python-ufolib
 	depends = python-defcon
 	depends = python-fontmath
-	depends = python2
-	depends = python2-fonttools
-	depends = python2-ufolib
-	depends = python2-defcon
-	depends = python2-fontmath
 	options = !emptydirs
-	source = https://files.pythonhosted.org/packages/py2.py3/M/MutatorMath/MutatorMath-2.1.1-py2.py3-none-any.whl
-	sha256sums = e6da8ae2a7008085ee0bac6d62737d37b90ce4a883d89a0f3d5c19dd350b0538
+	source = https://pypi.org/packages/source/M/MutatorMath/MutatorMath-2.1.2.zip
+	sha256sums = 6930f966a07a7459bcdb15b36dbcb615a791853d79965897cedb1047d5beeecb
 
 pkgname = python-mutatormath
-	depends = python
-	depends = python-fonttools
-	depends = python-ufolib
-	depends = python-defcon
-	depends = python-fontmath
-	provides = python-mutatormath
-
-pkgname = python2-mutatormath
-	depends = python2
-	depends = python2-fonttools
-	depends = python2-ufolib
-	depends = python2-defcon
-	depends = python2-fontmath
-	provides = python2-mutatormath
 
