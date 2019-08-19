@@ -1,0 +1,13 @@
+pkgbase = argos-uri-installer-git
+	pkgdesc = Argos URI handler for bitbar://
+	pkgver = r30.b9c3898
+	pkgrel = 1
+	url = https://github.com/chabad360/argos-installer
+	arch = any
+	makedepends = git
+	depends = gnome-shell-extension-argos-git
+	source = git+https://github.com/chabad360/argos-installer.git
+	md5sums = SKIP
+
+pkgname = argos-uri-installer-git
+
