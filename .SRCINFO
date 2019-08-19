@@ -1,6 +1,6 @@
 pkgbase = tlauncher
-	pkgdesc = TLauncher is freeware launcher of Minecraft.
-	pkgver = 1.111.1
+	pkgdesc = TLauncher Legacy is freeware launcher of Minecraft.
+	pkgver = 1.112.3
 	pkgrel = 1
 	epoch = 1
 	url = https://tlaun.ch

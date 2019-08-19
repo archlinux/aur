@@ -1,10 +1,11 @@
 # Maintainer: SaMaLerO <smlr[at]ukr[dot]net>
 # Co-Maintainer: McModder <aur @ modder.pw>
+# PLEASE do not mark it out-of date because "2.xx is released", *2.xx a separate project with same name from other dev team*
 pkgname=tlauncher
-pkgver=1.111.1
+pkgver=1.112.3
 pkgrel=1
 epoch=1
-pkgdesc='TLauncher is freeware launcher of Minecraft.'
+pkgdesc='TLauncher Legacy is freeware launcher of Minecraft.'
 url='https://tlaun.ch'
 arch=('any')
 license=('GPLv3')
