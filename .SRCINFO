@@ -1,25 +1,15 @@
 pkgbase = python-fontmath
 	pkgdesc = A set of objects for performing math operations on font data.
-	pkgver = 0.4.7
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/typesupply/fontMath
 	arch = any
 	license = MIT
-	makedepends = python-pip
-	makedepends = python2-pip
+	checkdepends = python-pytest
+	depends = python-fonttools
 	options = !emptydirs
-	source = https://files.pythonhosted.org/packages/py2.py3/f/fontMath/fontMath-0.4.7-py2.py3-none-any.whl
-	sha256sums = c0c6dcee170893c252f7753ec21e3a33548f5e8f0b9cdfc2536daff93ec2558a
+	source = https://pypi.org/packages/source/f/fontMath/fontMath-0.5.0.zip
+	sha256sums = f455c8f76277ba9e9ee36d60b79c25d8ddbb20f55983713731ed0234c716e378
 
 pkgname = python-fontmath
-	depends = python
-	depends = python-fonttools
-	depends = python-ufolib
-	provides = python-fontmath
-
-pkgname = python2-fontmath
-	depends = python2
-	depends = python2-fonttools
-	depends = python2-ufolib
-	provides = python2-fontmath
 

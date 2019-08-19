@@ -1,50 +1,27 @@
-# Maintainer: William Turner <willtur.will@gmail.com>
-pkgbase=python-fontmath
-pkgname=(python-fontmath python2-fontmath)
+# Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
+# Ex-Maintainer: William Turner <willtur.will@gmail.com>
+pkgname='python-fontmath'
 _pkgname=fontMath
-pkgver=0.4.7
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='A set of objects for performing math operations on font data.'
 arch=('any')
 url='https://github.com/typesupply/fontMath'
 license=('MIT')
-makedepends=('python-pip' 'python2-pip')
+makedepends=()
+depends=('python-fonttools')
+checkdepends=('python-pytest')
 options=(!emptydirs)
-source=("https://files.pythonhosted.org/packages/py2.py3/${_pkgname:0:1}/${_pkgname}/${_pkgname}-${pkgver}-py2.py3-none-any.whl")
-sha256sums=('c0c6dcee170893c252f7753ec21e3a33548f5e8f0b9cdfc2536daff93ec2558a')
+source=("https://pypi.org/packages/source/${_pkgname:0:1}/${_pkgname}/${_pkgname}-${pkgver}.zip")
+sha256sums=('f455c8f76277ba9e9ee36d60b79c25d8ddbb20f55983713731ed0234c716e378')
 
-package_python-fontmath() {
-  depends=('python' 'python-fonttools' 'python-ufolib')
-  provides=('python-fontmath')
+package() {
 
-  cd "${srcdir}"
-
-  # install the wheel
-  PIP_CONFIG_FILE=/dev/null pip install \
-    --isolated \
-    --root="${pkgdir}" \
-    --ignore-installed \
-    --no-deps \
-    ${_pkgname}-${pkgver}-py2.py3-none-any.whl
-
-  # compile to pyo
-  python -O -m compileall "${pkgdir}"
+  cd "${srcdir}/$_pkgname-$pkgver"
+  python setup.py install --root=$pkgdir || return 1
 }
 
-package_python2-fontmath() {
-  depends=('python2' 'python2-fonttools' 'python2-ufolib')
-  provides=('python2-fontmath')
-
-  cd "${srcdir}"
-
-  # install the wheel
-  PIP_CONFIG_FILE=/dev/null pip2 install \
-    --isolated \
-    --root="${pkgdir}" \
-    --ignore-installed \
-    --no-deps \
-    ${_pkgname}-${pkgver}-py2.py3-none-any.whl
-
-  # compile to pyo
-  python2 -O -m compileall "${pkgdir}"
+check() {
+  cd "${srcdir}/$_pkgname-$pkgver"
+  python setup.py test
 }
