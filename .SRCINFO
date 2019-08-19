@@ -1,21 +1,27 @@
 pkgbase = ncsa-mosaic-git
 	pkgdesc = One of the first graphical web browsers
-	pkgver = 2.7b6.r25.gaf942b9
-	pkgrel = 1
+	pkgver = 2.7b6.r25.af942b9
+	pkgrel = 2
 	epoch = 1
-	url = http://github.com/yotann/ncsa-mosaic
+	url = https://github.com/yotann/ncsa-mosaic
 	arch = i686
 	arch = x86_64
 	license = custom
 	makedepends = git
-	depends = lesstif
+	depends = openmotif
 	depends = libjpeg
 	depends = libpng
 	depends = libxmu
 	depends = libxpm
-	options = !makeflags
-	source = git://github.com/yotann/ncsa-mosaic
-	md5sums = SKIP
+	depends = xorg-fonts-misc
+	depends = xorg-fonts-100dpi
+	depends = xorg-fonts-75dpi
+	provides = ncsa-mosaic
+	provides = mosaic
+	conflicts = ncsa-mosaic
+	conflicts = mosaic
+	source = git+https://github.com/yotann/ncsa-mosaic.git
+	sha256sums = SKIP
 
 pkgname = ncsa-mosaic-git
 
