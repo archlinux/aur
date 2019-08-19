@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 5.2.5-arch1 Kernel Configuration
+# Linux/x86 5.2.9-arch1 Kernel Configuration
 #
 
 #
@@ -163,6 +163,7 @@ CONFIG_CGROUP_HUGETLB=y
 CONFIG_CPUSETS=y
 CONFIG_PROC_PID_CPUSET=y
 CONFIG_CGROUP_DEVICE=y
+CONFIG_CGROUP_CPUACCT=y
 CONFIG_CGROUP_PERF=y
 CONFIG_CGROUP_BPF=y
 # CONFIG_CGROUP_DEBUG is not set

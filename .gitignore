@@ -5,3 +5,4 @@ kernel_gcc_patch
 *.pkg.tar*
 pkg
 src
+config.last
