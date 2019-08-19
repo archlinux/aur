@@ -9,6 +9,7 @@ pkgbase = ccache-git
 	makedepends = git
 	makedepends = asciidoc
 	depends = zlib
+	depends = libb2
 	provides = ccache
 	conflicts = ccache
 	source = git+https://github.com/ccache/ccache.git
