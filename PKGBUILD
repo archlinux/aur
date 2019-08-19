@@ -3,7 +3,7 @@
 # Contributor: jfranco
 
 pkgname=plasma5-applets-plasma-pass-git
-pkgver=1.0.0.r12.360dfe8
+pkgver=1.0.0.r18.d5999a0
 pkgrel=1
 pkgdesc='Plasma applet for the Pass password manager'
 url="https://cgit.kde.org/plasma-pass.git"
