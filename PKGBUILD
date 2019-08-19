@@ -1,7 +1,7 @@
 # Maintainer: Andrzej Giniewicz <gginiu@gmail.com>
 
 pkgname='python-traits'
-pkgver=5.1.1
+pkgver=5.1.2
 pkgrel=1
 pkgdesc="Explicitly typed attributes for Python"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('BSD')
 depends=('python-numpy')
 makedepends=('python-setuptools')
 source=("traits-${pkgver}.tar.gz::https://github.com/enthought/traits/archive/${pkgver}.tar.gz")
-sha256sums=('f1c80743dc952c34d25438be202071aef7d397ea9d29995efce9a6f300271d24')
+sha256sums=('9bafc5211ddbb4f6949511726c1696a080d0a3498c2657b6a1527029b7df7951')
 
 build() {
   cd "$srcdir"/traits-$pkgver
