@@ -1,7 +1,7 @@
 # Maintainer: Blair Bonnett <blair dot bonnett at gmail dot com>
 
 pkgname=python-pytest-html
-pkgver=1.21.1
+pkgver=1.22.0
 pkgrel=1
 pkgdesc="Plugin for generating HTML reports for pytest results"
 url="https://github.com/pytest-dev/pytest-html"
@@ -13,7 +13,7 @@ source=(
   "https://files.pythonhosted.org/packages/source/p/pytest-html/pytest-html-$pkgver.tar.gz"
 )
 sha256sums=(
-  "ac405ca2fc4a55b83ca59319c69552f9bc870db2378e851633970bfc7fb93928"
+  "43d3a3040ee9676d215225bf8b6aaab916e388bbca7eb05c2a98f28e5cbaa30e"
 )
 
 build() {
