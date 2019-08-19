@@ -1,6 +1,6 @@
 pkgbase = geos-git
 	pkgdesc = C++ port of the Java Topology Suite (git version)
-	pkgver = 3.7.0rc1.r9.g1be02b36
+	pkgver = 3.8.0dev.4c70abae
 	pkgrel = 1
 	url = http://trac.osgeo.org/geos/
 	arch = i686
