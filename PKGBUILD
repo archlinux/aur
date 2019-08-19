@@ -1,22 +1,16 @@
 # Maintainer: Svitozar Cherepii <razotivs@gmail.com>
 pkgname=rvgl-skins
-pkgver=19.0630
+pkgver=19.0701
 pkgrel=1
-pkgdesc="Additional RVGL skins for default cars and more."
+pkgdesc="Additional RVGL skins for default and pack cars."
 url='https://rvgl.re-volt.io'
 arch=('any')
 license=('custom')
 depends=('rvgl-bin')
 optdepends=('rvgl-cars: additional cars skins provided for'
             'rvgl-cars-bonus: additional cars skins provided for')
-source=("https://distribute.re-volt.io/packs/io_skins.zip"
-        "https://distribute.re-volt.io/releases/io_skins.txt")
-sha256sums=('48c92208c51dcf7e6dbb0d351c0742a61440fec82b86306013dc6cc154af2488'
-            'SKIP')
-
-pkgver() {
-    cat io_skins.txt
-}
+source=("$pkgname-$pkgver.zip::https://distribute.re-volt.io/packs/io_skins.zip")
+sha256sums=('7c1e950f5d7ed03317bf3950fae895b9946f2b43e555125cae21f287b3c14706')
 
 package() {
     find cars -type f -exec \
