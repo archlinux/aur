@@ -1,8 +1,8 @@
 diff --git a/python-package/setup.py b/python-package/setup.py
-index 30e0d070..f96ef69e 100644
+index a2146f6b..7f13a07b 100644
 --- a/python-package/setup.py
 +++ b/python-package/setup.py
-@@ -8,28 +8,9 @@ import os
+@@ -7,28 +7,9 @@ import os
  from setuptools import setup, find_packages
  
  # import subprocess
@@ -28,10 +28,10 @@ index 30e0d070..f96ef69e 100644
 -
 -print("Install libxgboost from: %s" % LIB_PATH)
 -
- # Get dmlc tracker script
- shutil.copy('../dmlc-core/tracker/dmlc_tracker/tracker.py', 'xgboost/')
- 
-@@ -50,7 +31,6 @@ setup(name='xgboost',
+ # Please use setup_pip.py for generating and deploying pip installation
+ # detailed instruction in setup_pip.py
+ setup(name='xgboost',
+@@ -53,7 +34,6 @@ setup(name='xgboost',
        # this will use MANIFEST.in during install where we specify additional files,
        # this is the golden line
        include_package_data=True,
