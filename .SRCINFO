@@ -1,8 +1,8 @@
 pkgbase = libbitcoin-system
 	pkgdesc = Bitcoin Cross-Platform C++ Development Toolkit
-	pkgver = 3.5.0
-	pkgrel = 2
-	url = https://github.com/libbitcoin/libbitcoin
+	pkgver = 20190105
+	pkgrel = 1
+	url = https://github.com/libbitcoin/libbitcoin-system
 	arch = aarch64
 	arch = arm
 	arch = armv6h
@@ -25,12 +25,9 @@ pkgbase = libbitcoin-system
 	depends = libpng
 	depends = libsecp256k1
 	depends = qrencode
-	provides = libbitcoin
-	provides = libbitcoin-system
-	conflicts = libbitcoin
-	source = libbitcoin-system-3.5.0.tar.gz::https://codeload.github.com/libbitcoin/libbitcoin-system/tar.gz/v3.5.0
-	source = git+https://github.com/libbitcoin/libbitcoin.wiki
-	sha256sums = 214d9cd6581330b0e1f6fd8f0c634c46b75ae5515806ecac189f21c0291ae2d9
+	source = git+https://github.com/libbitcoin/libbitcoin-system#tag=v3.6.0
+	source = git+https://github.com/libbitcoin/libbitcoin-system.wiki
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = libbitcoin-system
