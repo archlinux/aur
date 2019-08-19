@@ -1,7 +1,7 @@
 pkgbase = gjacktransport
-	pkgdesc = graphical slider and clock for JACK Transport
+	pkgdesc = Graphical slider and clock for JACK Transport
 	pkgver = 0.6.4
-	pkgrel = 2
+	pkgrel = 3
 	url = http://gjacktransport.sourceforge.net/
 	install = gjacktransport.install
 	arch = x86_64

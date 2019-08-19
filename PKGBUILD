@@ -1,10 +1,10 @@
-# Maintainer: David Adler <d dot adler at posteo dot de>
+# Maintainer: David Adler <d.adler@posteo.de>
 # Contributor: SpepS <dreamspepser at yahoo dot it>
 
 pkgname=gjacktransport
 pkgver=0.6.4
-pkgrel=2
-pkgdesc="graphical slider and clock for JACK Transport"
+pkgrel=3
+pkgdesc="Graphical slider and clock for JACK Transport"
 arch=('x86_64')
 url="http://gjacktransport.sourceforge.net/"
 license=('GPL')
@@ -16,7 +16,7 @@ source=("http://downloads.sourceforge.net/project/$pkgname/$pkgname/v0.6/$pkgnam
 md5sums=('96102577be683f32732bf368a6f44c06')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$pkgname-$pkgver"
   
   ./configure \
 	  --prefix=/usr \
@@ -25,7 +25,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$pkgname-$pkgver"
 
   make DESTDIR="$pkgdir/" install
 

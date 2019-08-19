@@ -1,5 +1,4 @@
 post_upgrade() {
-  post_install
   cat << EOF
 
   ==> New rc files installed as:
