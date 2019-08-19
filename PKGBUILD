@@ -38,8 +38,8 @@ package() {
   cd "$pkgdir/$_p"
   asar extract app.asar _tmp
   cd _tmp/images/tray
-  find . -iname '*@2x.png' | while read f; do
-    cp $f ${f//@2x/}
+  find . -iname '*@2x.png' | while read -r f; do
+    cp "$f" "${f//@2x/}"
   done
   cd "$pkgdir/$_p"
   asar pack _tmp app.asar
