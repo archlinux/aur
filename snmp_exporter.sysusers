@@ -1,2 +1,1 @@
-u prometheus - "Prometheus dedicated user"
-g prometheus -
+u prometheus 210 "Prometheus dedicated user"
