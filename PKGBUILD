@@ -1,21 +1,19 @@
-# Maintainer: Avi Knoll <aknoll@atlassian.com>
+# Maintainer: Andrew Sun <adsun701 at gmail dot com>
+# Contributor: Avi Knoll <aknoll@atlassian.com>
+
 pkgname=mvnvm
-pkgver=1.0.9
-pkgrel=2
-pkgdesc="Run different versions of maven for different projects."
+pkgver=1.0.12
+pkgrel=1
+pkgdesc="Maven version manager"
 arch=('any')
 url="http://mvnvm.org/"
-license=('unknown')
-groups=()
-depends=()
-makedepends=(bash)
-provides=(maven)
-source=(
-    https://bitbucket.org/mjensen/mvnvm/raw/mvnvm-${pkgver}/mvn
-)
-sha256sums=('7f09faee6147aac4d57a73e7e97a053ca3350a737048104c7ae4cee6addde0d0')
+license=('Apache')
+depends=('sh')
+conflicts=('maven')
+provides=('maven')
+source=("${pkgname}-${pkgver}"::"https://bitbucket.org/mjensen/mvnvm/raw/mvnvm-${pkgver}/mvn")
+sha256sums=('6ce49ff5121d3e75cd22c74b5473032e0b57bffade60292e74a99a4472d3d3c6')
 package() {
-    mkdir -p ${pkgdir}/usr/bin
-    cp ${srcdir}/mvn ${pkgdir}/usr/bin/mvn
-    chmod 0755 ${pkgdir}/usr/bin/mvn
+  mkdir -p ${pkgdir}/usr/bin
+  install -Dm755 "${srcdir}/${pkgname}-${pkgver}" ${pkgdir}/usr/bin/mvn
 }
