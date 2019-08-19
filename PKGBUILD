@@ -5,7 +5,7 @@
 
 _pkgname=babl
 pkgname="${_pkgname}-qfix-git"
-pkgver=0.1.70.14.g868a077
+pkgver=0.1.71.r27.5801e2b
 pkgrel=1
 pkgdesc="babl is a dynamic, any to any, pixel format translation library."
 arch=('x86_64')
@@ -19,28 +19,32 @@ options=(!libtool)
 source=(git+https://gitlab.gnome.org/GNOME/babl)
 md5sums=('SKIP')
 
-_gitname=babl
-
-build() {
+prepare() {
     mkdir "${srcdir}/build" -p
 
-    meson "${srcdir}/${_gitname}"\
+    meson "${srcdir}/${_pkgname}"\
           "${srcdir}/build" \
         --prefix=/usr \
         -Dbuildtype=release \
         -Db_lto=true \
         -Dwith-docs=false
+}
 
+pkgver() {
+  printf "%d.%d.%d.r%s.%s" \
+    $(grep -Po '^#define BABL_MAJOR_VERSION \K[0-9]*$' build/config.h) \
+    $(grep -Po '^#define BABL_MINOR_VERSION \K[0-9]*$' build/config.h) \
+    $(grep -Po '^#define BABL_MICRO_VERSION \K[0-9]*$' build/config.h) \
+    $(git rev-list --count HEAD) \
+    $(git rev-parse --short HEAD)
+}
+
+build() {
     ninja -C "${srcdir}/build"
 }
 
 package() {
     DESTDIR="${pkgdir}" ninja -C "${srcdir}/build" install
-}
-
-pkgver() {
-    cd "${_gitname}"
-    git describe --always | sed -e 's/BABL_//g' -e 's/[_-]/./g'
 }
 
 check() {
