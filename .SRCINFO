@@ -1,7 +1,7 @@
 pkgbase = patchbay
 	pkgdesc = An alternative Secure Scuttlebutt client interface that is fully compatible with Patchwork
-	pkgver = 8.0.1
-	pkgrel = 3
+	pkgver = 8.1.0
+	pkgrel = 1
 	url = https://github.com/ssbc/patchbay
 	arch = i686
 	arch = x86_64
@@ -15,10 +15,10 @@ pkgbase = patchbay
 	depends = python
 	depends = electron4
 	options = !strip
-	source = https://github.com/ssbc/patchbay/archive/v8.0.1.zip
+	source = https://github.com/ssbc/patchbay/archive/v8.1.0.zip
 	source = run.sh
 	source = patchbay.desktop
-	md5sums = 33d51bd5114df2da89d3847b25668870
+	md5sums = ffe16e13d7aa3e957f706dbd44cc1f3b
 	md5sums = abfe60313ffa85d809d349149aefebcb
 	md5sums = f459479fef0987c5fa81a38b04767ffa
 
