@@ -19,4 +19,8 @@ if [[ ! -c "${event}" ]]; then
    exit 1
 fi
 
-/usr/bin/gpm -m "${event}" -t vbox
+if [[ ! -v additional_args ]]; then
+   additional_args=""
+fi
+
+/usr/bin/gpm -m "${event}" -t vbox "${additional_args}"
