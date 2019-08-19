@@ -10,9 +10,9 @@ license=('custom')
 depends=(gconf libnotify libxss libxtst)
 makedepends=()
 optdepends=()
-source=(nsqlb4m.AppImage::https://nosqlbooster.com/s3/download/releasesv${_majorver}/nosqlbooster4mongo-${pkgver}.AppImage
+source=(nsqlb4m-${pkgver}.AppImage::https://nosqlbooster.com/s3/download/releasesv${_majorver}/nosqlbooster4mongo-${pkgver}.AppImage
         LICENSE)
-noextract=(nsqlb4m.AppImage)
+noextract=(nsqlb4m-${pkgver}.AppImage)
 md5sums=('33085c4445a12f89a361e78bd7a01bbf'
          'fab008e596133037239e4a206bba3ccf')
 sha1sums=('148a531cac085bcbb0ebbe43aa4c596ab1cceee1'
@@ -23,8 +23,8 @@ sha256sums=('047f67ca27de15cde68d6ed6315c6cdf814afb45f8e743f04e6b7177c4d61922'
 build() {
   cd "$srcdir"
 
-  chmod +x nsqlb4m.AppImage
-  ./nsqlb4m.AppImage --appimage-extract
+  chmod +x nsqlb4m-${pkgver}.AppImage
+  ./nsqlb4m-${pkgver}.AppImage --appimage-extract
 
   chmod +x 'squashfs-root/nosqlbooster4mongo'
 
