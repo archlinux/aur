@@ -17,12 +17,12 @@ makedepends=('asar')
 optdepends=('gnome-keyring')
 conflicts=('slack-desktop')
 source=("https://downloads.slack-edge.com/linux_releases/${pkgname%-dark}-${pkgver}-amd64.deb"
-        "https://raw.githubusercontent.com/caiceA/slack-black-theme/master/slack-dark-mode.css"
+        "https://raw.githubusercontent.com/caiceA/slack-raw/master/slack-4"
         "darkify_slack.js"
         "${pkgname}.patch")
 noextract=("${pkgname%-dark}-${pkgver}-amd64.deb")
 sha256sums=('6277a6c3d9c1c55813ad4fe1e56702a486ab8ff36ecbef345d1794a3a644ecbc'
-            '1fef7eb3d9225b319fb9cc3e983cde532cd434beb7a68492f3c03addd7bc6029'
+            '1a5d76f1cff4a430ab5c45e49899a5ec0055284f228e1749ba8bfbd499753416'
             '13fc4ea2c9bfd113e123a7f74375f17c17a7256d7481f9acacb466088b913418'
             'c952eb32dd59beff9fc5374853b04acde4a60ed8c39934fcd0b66829455d594d')
 
@@ -53,8 +53,8 @@ package() {
     # of our function from being commented out
     echo "" >> $file
     head -n $((lineno - 1)) darkify_slack.js >> $file
-	sed -i -e '/\\E/d' -e 's/939393/ffffff/' slack-dark-mode.css # temporary fix for 'Add Reaction' icon
-    cat slack-dark-mode.css >> $file
+	sed -i -e '/\\E/d' -e 's/939393/ffffff/' slack-4
+    cat slack-4 >> $file
     tail -n +$((lineno + 1)) darkify_slack.js >> $file
 
     # Repack with the theme change
