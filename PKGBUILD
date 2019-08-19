@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc='9anime electron client'
 arch=('any')
 license=('MIT')
-makedepends=('nodejs-nativefier')
+makedepends=('git')
 provides=('9anime')
 
 source=("git+https://github.com/$author/$_gitname.git")
