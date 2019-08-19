@@ -1,7 +1,7 @@
 pkgbase = goglus-cursor-theme
 	pkgdesc = X11 Mouse Theme
 	pkgver = 1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.opendesktop.org/p/999675/
 	arch = any
 	license = GPL
