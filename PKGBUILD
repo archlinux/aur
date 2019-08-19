@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
 pkgname=pdfstudioviewer
 _pkgname=pdfstudioviewer2019
-pkgver=2019.1.0
+pkgver=2019.1.1
 pkgrel=1
 pkgdesc="Review, annotate, and edit PDF Documents"
 arch=('i686' 'x86_64')
@@ -12,8 +12,8 @@ source_i686=("${pkgname}-${pkgver}_linux.deb::https://download.qoppa.com/$pkgnam
 source_x86_64=("${pkgname}-${pkgver}_linux64.deb::https://download.qoppa.com/$pkgname/PDFStudioViewer_linux64.deb")
 source=("$pkgname.desktop")
 sha256sums=('366e4cc2c4db9bbb3baa0901b2a22a4e8ee0b2093d6e13e7c9558e6e28555f86')
-sha256sums_i686=('8e4c625e8d71be395454a4a6e214785534361fc3c6953f507839ee529df813b6')
-sha256sums_x86_64=('f2386b37aec0721fbd0dc6a29ff67a57ecbb5c3e45396e33cddc728549ce5d97')
+sha256sums_i686=('91aac74b5382f25d4f60decb9ff9ae76544ba67aeca1ff82d80135610fe83b94')
+sha256sums_x86_64=('96140bc8a4370ca310c03994562dbae45fa39cc9964850fa8bbac1f1e119d5a4')
 
 prepare() {
 	bsdtar xf data.tar.gz
