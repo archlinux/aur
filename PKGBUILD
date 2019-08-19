@@ -2,7 +2,7 @@
 
 _pkgname=libuinputplus
 pkgname=$_pkgname-git
-pkgver=v0.1.3.r0.gd8f8650
+pkgver=v0.1.3.r3.g036b057
 pkgrel=1
 pkgdesc="Easy-to-use uinput library in C++"
 arch=('i686' 'x86_64')
