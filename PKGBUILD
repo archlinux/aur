@@ -1,7 +1,7 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 pkgname=('python-glyphslib')
 _pkgname='glyphsLib'
-pkgver='4.1.0'
+pkgver='4.1.1'
 pkgrel=1
 pkgdesc="A bridge from Glyphs source files (.glyphs) to UFOs"
 url="https://github.com/googlefonts/glyphsLib"
@@ -12,7 +12,7 @@ optdepends=('python-ufonormalizer')
 license=('Apache')
 arch=('any')
 source=("https://pypi.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.zip")
-sha256sums=('0813bd8a61181bd481ac14c2a7aad536036d3a3eccaa4a6403e17cf9135f247e')
+sha256sums=('e80810f6b98ca4e809278f9c010e1971698edae0ef8a83a965e075592ecfa4ee')
 
 check() {
     cd "$srcdir/$_pkgname-$pkgver"
