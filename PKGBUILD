@@ -5,8 +5,8 @@
 _gitname=zuluCrypt
 _build=build
 pkgname=zulucrypt
-pkgver=5.5.0
-pkgrel=2
+pkgver=5.6.0
+pkgrel=1
 pkgdesc="A cli and gui frontend to cryptsetup"
 url="https://github.com/mhogomchungu/$_gitname/"
 arch=('x86_64' 'i686')
