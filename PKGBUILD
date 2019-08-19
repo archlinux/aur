@@ -3,7 +3,7 @@
 
 pkgname=smartgit
 pkgver=19.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Git client with Hg and SVN support.'
 arch=('any')
 url="http://www.syntevo.com/smartgit"
@@ -18,7 +18,7 @@ _pkgver=${pkgver//\./_}
 _pkgfolder=${pkgname}
 source=("https://www.syntevo.com/downloads/${pkgname}/${pkgname}-linux-${_pkgver}.tar.gz"
         "${pkgname}.desktop")
-sha1sums=('9c1fae4a4701f01aa3d9536668bcf69b88b26c28'
+sha1sums=('2bde6ba14d69918139e8d1246aa5d1e9a4546977'
           'bafa47c0b43ad89aaa3b34a078771b3cd12bd1f3')
 
 package() {
