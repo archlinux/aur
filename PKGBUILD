@@ -2,7 +2,7 @@
 
 _pkgname=libevdevplus
 pkgname=$_pkgname-git
-pkgver=v0.1.0.r0.g67a69ab
+pkgver=v0.1.0.r3.g15dc6d5
 pkgrel=1
 pkgdesc="Easy-to-use event device library in C++"
 arch=('i686' 'x86_64')
