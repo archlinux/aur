@@ -1,7 +1,7 @@
-# Maintainer: Omar Roth <omarroth@hotmail.com>
+# Maintainer: Omar Roth <omarroth@protonmail.com>
 
 pkgname=urbit
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
 pkgdesc="An operating function"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('libsigsegv' 'gmp' 'openssl' 'ncurses' 'curl' 'libuv' 'python')
 conflicts=('urbit-git')
 source=($pkgname-$pkgver.tgz::https://bootstrap.urbit.org/urbit-linux64-v$pkgver.tgz)
-sha256sums=('503c5dbaeae2dae504990dfb08eb687ae3fc75553978874e2179e8b1b29c5e7d')
+sha256sums=('9eca7de118cb1f80b180f23afc4e6edb8c61db62ebcad90f1fbf484d0d5c248e')
 
 package() {
   msg2 'Installing...'
