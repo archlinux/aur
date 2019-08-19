@@ -1,13 +1,13 @@
 # Maintainer: surefire@cryptomile.net
 
 pkgname=keeweb
-pkgver=1.8.2
-pkgrel=2
+pkgver=1.9.0
+pkgrel=1
 pkgdesc="Desktop password manager compatible with KeePass databases"
 arch=('any')
 url="https://keeweb.info"
 license=('MIT')
-depends=('electron4')
+depends=('electron')
 makedepends=(
 	'asar'
 	'git'
@@ -26,7 +26,7 @@ source=(
 
 sha1sums=('SKIP'
           'a55c2ed276c6073b7954452cdc88209633d51ace'
-          '388e1757a41a3b017833af3a20fd1e2c3c23d36c'
+          'c925527f25e732d58438ee16b1c93b33be7bf9c4'
           '914afdd9651e71091d4b927cabd25d75786ec7d4')
 
 prepare() {
@@ -66,6 +66,7 @@ build() {
 	export npm_config_build_from_source=true
 
 	npm install
+	npm install css-loader
 
 	npx grunt build-web-app build-desktop-app-content
 
