@@ -1,0 +1,14 @@
+pkgbase = python-ctypescrypto-git
+	pkgdesc = Python interface to some openssl function based on ctypes module
+	pkgver = 0.0.0.r104.33c3290
+	pkgrel = 1
+	url = https://github.com/vbwagner/ctypescrypto
+	arch = any
+	license = MIT
+	depends = openssl
+	depends = python
+	source = python-ctypescrypto-git::git+https://github.com/vbwagner/ctypescrypto#branch=master
+	sha512sums = SKIP
+
+pkgname = python-ctypescrypto-git
+
