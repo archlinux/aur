@@ -1,7 +1,7 @@
 pkgbase = go-filecoin
 	pkgdesc = A decentralized storage network, full node implementation in Go
-	pkgver = 0.2.2
-	pkgrel = 2
+	pkgver = 0.3.2
+	pkgrel = 1
 	url = https://github.com/filecoin-project/go-filecoin
 	arch = x86_64
 	license = MIT
@@ -13,7 +13,7 @@ pkgbase = go-filecoin
 	makedepends = jq
 	optdepends = rustup: compiling proofs from scratch
 	conflicts = go-filecoin-git
-	source = git+https://github.com/filecoin-project/go-filecoin.git#tag=0.2.2
+	source = git+https://github.com/filecoin-project/go-filecoin.git#tag=0.3.2
 	md5sums = SKIP
 	sha256sums = SKIP
 	sha512sums = SKIP

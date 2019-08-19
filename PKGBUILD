@@ -6,8 +6,8 @@
 # Contributor: Ian Naval <ianonavy@gmail.com>
 
 pkgname=go-filecoin
-pkgver=0.2.2
-pkgrel=2
+pkgver=0.3.2
+pkgrel=1
 pkgdesc='A decentralized storage network, full node implementation in Go'
 _organization='filecoin-project'
 url="https://github.com/$_organization/$pkgname"
