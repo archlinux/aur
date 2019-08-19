@@ -2,7 +2,7 @@
 
 gitname=htop
 pkgname=htop-temperature-clockspeed-vim
-pkgver=1118.6cb2e30
+pkgver=1119.1d95f0b
 pkgrel=1
 pkgdesc="Interactive text-mode process viewer"
 url="https://github.com/vitrvvivs/${gitname}"

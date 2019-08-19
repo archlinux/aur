@@ -1,6 +1,6 @@
 pkgbase = htop-temperature-clockspeed-vim
 	pkgdesc = Interactive text-mode process viewer
-	pkgver = 1118.6cb2e30
+	pkgver = 1119.1d95f0b
 	pkgrel = 1
 	url = https://github.com/vitrvvivs/htop
 	arch = i686
