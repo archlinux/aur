@@ -1,0 +1,17 @@
+pkgbase = python-skia-pathops
+	pkgdesc = Python bindings for the Skia library's Path Opts.
+	pkgver = 0.2.0.post2
+	pkgrel = 1
+	url = https://github.com/googlefonts/fontmak://github.com/fonttools/skia-pathops
+	arch = x86_64
+	license = BSD
+	checkdepends = python-pytest
+	checkdepends = python-pytest-cython
+	makedepends = cython
+	makedepends = python-setuptools
+	depends = python
+	source = https://pypi.org/packages/source/s/skia-pathops/skia-pathops-0.2.0.post2.zip
+	sha256sums = 87ac9513f17944cc27f67a9db393cf1a385e300cb914ad44b82797c1498b4af5
+
+pkgname = python-skia-pathops
+
