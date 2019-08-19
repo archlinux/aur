@@ -1,6 +1,6 @@
 # Maintainer: Nigel Michki <nigeil@yahoo.com>
 pkgname=star-seq-alignment
-pkgver=2.7.1a
+pkgver=2.7.2a
 pkgrel=1
 pkgdesc="An RNA-seq alignment suite, by Alexander Dobin"
 arch=('i686' 
@@ -13,8 +13,8 @@ depends=()
 makedepends=('wget'
              'gcc')
 optdepends=()
-source=('https://github.com/alexdobin/STAR/archive/2.7.1a.tar.gz')
-md5sums=(SKIP)
+source=('https://github.com/alexdobin/STAR/archive/2.7.2a.tar.gz')
+md5sums=('f99240e7a863a8f1bda55a6d702af7d1')
 
 prepare() {
 #  msg2 "Downloading files"
