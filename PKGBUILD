@@ -6,7 +6,7 @@ pkgver='2.9.1'
 pkgrel=1
 pkgdesc="A bridge from UFOs to FontTools objects."
 url="https://github.com/googlefonts/ufo2ft"
-checkdepends=()
+checkdepends=('python-pytest' 'python-skia-pathops')
 depends=('python' 'python-booleanoperations' 'python-compreffor' 'python-cu2qu' 'python-defcon' 'python-fonttools')
 makedepends=('python-setuptools')
 optdepends=()
@@ -21,7 +21,7 @@ package() {
     install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-#check() {
-    #cd "$srcdir/$_pkgname-$pkgver"
-    #python setup.py test
-#}
+check() {
+    cd "$srcdir/$_pkgname-$pkgver"
+    python setup.py test
+}
