@@ -1,11 +1,11 @@
 # Maintainer:  Christoph Mohr <christoph.mohr@gmail.com>
 # Contributor: Det <nimetonmaili g-mail>
-# Bades on Det's AUR package
+# Based on Det's AUR package
 # Based on [extra]'s thunderbird
 
 pkgname=thunderbird-beta-bin-de
 _pkgname=thunderbird-beta
-pkgver=69.0b2
+pkgver=69.0b3
 _major=${pkgver/rc*}
 _build=${pkgver/*rc}
 pkgrel=1
