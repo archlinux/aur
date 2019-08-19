@@ -1,3 +1,5 @@
 src/*
 pkg/*
 *.tar.*
+
+prepare.sh
