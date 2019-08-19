@@ -1,8 +1,8 @@
 pkgbase = perl-algorithm-combinatorics
 	pkgdesc = Perl module for efficient generation of combinatorial sequences
 	pkgver = 0.27
-	pkgrel = 1
-	url = http://search.cpan.org/dist/Algorithm-Combinatorics
+	pkgrel = 2
+	url = https://metacpan.org/release/Algorithm-Combinatorics
 	arch = i686
 	arch = x86_64
 	license = GPL
