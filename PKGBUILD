@@ -3,8 +3,9 @@
 
 _gitname='fenrir'
 pkgname="${_gitname}-git"
-pkgver=0.0
+pkgver=r2983.a5b7694e
 pkgrel=1
+epoch=1
 pkgdesc='A user space console screen reader written in python3'
 arch=('any')
 url="https://linux-a11y.org/index.php?page=fenrir-screenreader"
@@ -31,7 +32,7 @@ md5sums=('SKIP'
 pkgver()
 {
   cd "$srcdir/$_gitname"
-  date '+%Y.%m.%d'
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package()
