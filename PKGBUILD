@@ -1,8 +1,8 @@
 # Contributor: Brian F.G. <bidulock@openss7.org>
 # Maintainer: Alexandr Boiko <4le34n at gmail dot com>
 pkgname=accel-ppp
-pkgver=1.11.2
-pkgrel=4
+pkgver=1.12.0
+pkgrel=1
 pkgdesc="High performance PPTP/L2TP/PPPoE/IPoE server"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/apps/trac/accel-ppp/"
@@ -20,14 +20,13 @@ source=("http://sourceforge.net/projects/$pkgname/files/$pkgname-$pkgver.tar.bz2
 	'accel-ppp.tmpfiles'
 	'accel-pppd.service'
 	'dictionary.abills'
-        'dictionary.accel_ipoe'
-        'shaper.patch')
+        'dictionary.accel_ipoe')
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver"
 
         # Fix error build:
-        patch -p1 <../shaper.patch
+        #patch -p1 <../shaper.patch
         
         sed -i 's|RUNTIME DESTINATION sbin|RUNTIME DESTINATION bin|' \
 		"accel-pppd/CMakeLists.txt"
@@ -76,11 +75,10 @@ package() {
 	install -Dm0644 "$srcdir/$pkgname-$pkgver/COPYING" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-md5sums=('81a3312cd0ff468ab5ee5edad3424a91'
+md5sums=('d0f2668e182ec99b64fcd6bc8fc2a19b'
          '0536dd60960e76cf5a6cdbf0518782d8'
          '1faebf39e7a665d756cae3e0e33831a9'
          '312fd63b9688a05b71a6b33ddd3a9f4b'
          '2cc98daa5fbd5b1163e5613e49fc9ef4'
          '4e0d4fc5975ea8794ea286e8fbfa56cd'
-         '7e58716f1249f924ce218bd348d4c03a'
-         'c203b966d62f3b04bf413f7b46af4212')
+         '7e58716f1249f924ce218bd348d4c03a')
