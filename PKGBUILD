@@ -4,7 +4,7 @@
 
 _pkgname=balena-etcher
 pkgname=balena-etcher-git
-pkgver=1.5.53.r0.gf4ac4dee
+pkgver=1.5.54.r0.g75be3a37
 pkgrel=1
 pkgdesc='Flash OS images to SD cards & USB drives, safely and easily. (git version)'
 arch=(x86_64)
