@@ -1,7 +1,7 @@
 pkgbase = edgetpu_api
 	pkgdesc = Google Coral Edge TPU runtime and Python library
-	pkgver = 1.9.2
-	pkgrel = 2
+	pkgver = 2.11.1
+	pkgrel = 1
 	url = https://coral.withgoogle.com/
 	arch = x86_64
 	arch = aarch64
@@ -14,8 +14,9 @@ pkgbase = edgetpu_api
 	depends = libunwind
 	depends = libc++
 	options = !strip
-	source = https://dl.google.com/coral/edgetpu_api/edgetpu_api_1.9.2.tar.gz
-	sha256sums = 82324ac028fda707926b756cc97430c8d7f5ffa39940ba74d373de7d9dc90c86
+	source = https://dl.google.com/coral/edgetpu_api/edgetpu_api_2.11.1.tar.gz
+	md5sums = b9f38b4322da647e2ec460126750bf80
+	sha256sums = 6067fcc921423c3dc23e1bc12186e42ff954eada50b44826b2167700b50dc69e
 
 pkgname = edgetpu_api
 
