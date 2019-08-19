@@ -3,7 +3,7 @@ pkgname=exo-player
 arch=(x86_64)
 pkgdesc="eXo music player based on moc"
 pkgver=8.0
-pkgrel=3
+pkgrel=4
 source=(git://github.com/Feresey/exo)
 url=https://blaze.alwaysdata.net/exo
 sha1sums=('SKIP')
@@ -17,15 +17,15 @@ depends=(liblastfm-qt5
         python-notify2)
 
 build() {
-    cd $srcdir/exo
+	cd "$srcdir"/exo
     [[ ! -d build ]] && mkdir build
-    cd build
-    cmake .. -DCMAKE_INSTALL_PREFIX=$pkgdir/usr
+	cd build
+    cmake .. -DCMAKE_INSTALL_PREFIX="$pkgdir"/usr
     make
 }
 
 package() {
-    cd $srcdir/exo/build
+    cd "$srcdir"/exo/build
     make install
 }
 
