@@ -2,7 +2,7 @@
 
 _pkgname=ydotool
 pkgname=$_pkgname-git
-pkgver=v0.1.5.r0.g3277fe3
+pkgver=v0.1.5.r17.g1efeb7e
 pkgrel=1
 pkgdesc="Generic command-line automation tool (no X!)"
 arch=('i686' 'x86_64')
