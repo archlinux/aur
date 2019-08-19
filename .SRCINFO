@@ -1,6 +1,6 @@
 pkgbase = pocillo-gtk-theme-git
 	pkgdesc = Theme for the Budgie Desktop that has Material Design elements and styled using the Arc colour palette
-	pkgver = 0.5
+	pkgver = 0.6.r15.gaa800c9
 	pkgrel = 1
 	url = https://github.com/UbuntuBudgie/pocillo-gtk-theme
 	arch = any
@@ -20,10 +20,9 @@ pkgbase = pocillo-gtk-theme-git
 	depends = gtk3
 	optdepends = budgie-desktop: The Budgie desktop
 	optdepends = gdk-pixbuf2
-	optdepends = gtk-engine-murrine
 	provides = pocillo-gtk-theme
 	conflicts = pocillo-gtk-theme
-	source = git+https://github.com/UbuntuBudgie/pocillo-gtk-theme.git
+	source = pocillo-gtk-theme-git::git+https://github.com/UbuntuBudgie/pocillo-gtk-theme
 	sha256sums = SKIP
 
 pkgname = pocillo-gtk-theme-git
