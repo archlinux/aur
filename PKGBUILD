@@ -4,16 +4,16 @@
 # Contributor: Alessio Biancalana <dottorblaster@gmail.com>
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
-pkgname=gegl-git
-_pkgname=${pkgname%-git}
-pkgver=0.4.9.r8934.cf7eacb75
+pkgname=gegl-qfix-git
+_pkgname=${pkgname%-qfix-git}
+pkgver=0.4.17.r29.2da17e3
 pkgrel=1
 pkgdesc="Graph based image processing framework"
 arch=('i686' 'x86_64')
 url="http://www.gegl.org"
 license=('GPL3' 'LGPL3')
-depends=('babl>=0.1.68' 'libspiro' 'json-glib')
-makedepends=('git' 'intltool' 'python2' 'ruby' 'lua'
+depends=('babl>=0.1.71' 'libspiro' 'json-glib')
+makedepends=('git' 'meson' 'intltool' 'python2' 'ruby' 'lua'
              'libraw' 'openexr' 'ffmpeg' 'librsvg' 'jasper'
              'libtiff' 'suitesparse' 'gobject-introspection')
 optdepends=('openexr: for using the openexr plugin'
@@ -31,40 +31,28 @@ source=('git+https://gitlab.gnome.org/GNOME/gegl.git')
 sha512sums=('SKIP')
 
 pkgver() {
-  cd $_pkgname
-
-  printf "%s.r%s.%s" \
-  	$(cat configure.ac | grep '^m4_define(\[gegl_.*_version\], \[[0-9]*\])' | tr -d '\n' | sed -e 's|^m4_define(\[gegl_major_version\], \[||' -e 's|\])m4_define(\[gegl_minor_version\], \[|.|' -e 's|\])m4_define(\[gegl_micro_version\], \[|.|' -e 's|\])|\n|') \
-  	$(git rev-list --count HEAD) \
-  	$(git rev-parse --short HEAD)
+  printf "%d.%d.%d.r%s.%s" \
+    $(grep -Po '^#define GEGL_MAJOR_VERSION \K[0-9]*$' build/config.h) \
+    $(grep -Po '^#define GEGL_MINOR_VERSION \K[0-9]*$' build/config.h) \
+    $(grep -Po '^#define GEGL_MICRO_VERSION \K[0-9]*$' build/config.h) \
+    $(git rev-list --count HEAD) \
+    $(git rev-parse --short HEAD)
 }
 
 prepare() {
-  cd $_pkgname
+  mkdir "${srcdir}/build" -p
 
-  autoreconf -if
-
-  ./configure \
-  	--prefix=/usr \
-  	--with-sdl \
-  	--with-openexr \
-  	--with-librsvg \
-  	--with-libavformat \
-  	--with-jasper \
-  	--disable-docs \
-  	--enable-workshop \
-  	--enable-introspection=yes
+  meson "${srcdir}/${_pkgname}" \
+        "${srcdir}/build" \
+        --prefix=/usr \
+        -Dworkshop=true
 }
 
 build() {
-  cd $_pkgname
-
-  make
+  ninja -C "${srcdir}/build"
 }
 
 package() {
-  cd $_pkgname
-
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" ninja -C "${srcdir}/build" install
 }
 

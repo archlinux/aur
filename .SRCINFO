@@ -1,6 +1,6 @@
-pkgbase = gegl-git
+pkgbase = gegl-qfix-git
 	pkgdesc = Graph based image processing framework
-	pkgver = 0.4.9.r8934.cf7eacb75
+	pkgver = 0.4.17.r29.2da17e3
 	pkgrel = 1
 	url = http://www.gegl.org
 	arch = i686
@@ -8,6 +8,7 @@ pkgbase = gegl-git
 	license = GPL3
 	license = LGPL3
 	makedepends = git
+	makedepends = meson
 	makedepends = intltool
 	makedepends = python2
 	makedepends = ruby
@@ -20,7 +21,7 @@ pkgbase = gegl-git
 	makedepends = libtiff
 	makedepends = suitesparse
 	makedepends = gobject-introspection
-	depends = babl>=0.1.54
+	depends = babl>=0.1.71
 	depends = libspiro
 	depends = json-glib
 	optdepends = openexr: for using the openexr plugin
@@ -31,11 +32,11 @@ pkgbase = gegl-git
 	optdepends = libraw: raw plugin
 	optdepends = suitesparse: matting-levin plugin
 	optdepends = lua: lua plugin
-	provides = gegl=0.4.9.r8934.cf7eacb75
+	provides = gegl=0.4.17.r29.2da17e3
 	conflicts = gegl
 	options = !libtool
 	source = git+https://gitlab.gnome.org/GNOME/gegl.git
 	sha512sums = SKIP
 
-pkgname = gegl-git
+pkgname = gegl-qfix-git
 
