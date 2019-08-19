@@ -1,0 +1,12 @@
+[Unit]
+Description=Virtual console mouse server
+Requires=systemd-udevd.service
+After=systemd-udevd.service
+ConditionPathExists=/dev/input/mice
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/gpm -m /dev/input/mice -t imps2
+
+[Install]
+WantedBy=multi-user.target

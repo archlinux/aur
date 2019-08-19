@@ -1,0 +1,24 @@
+pkgbase = gpm-vm
+	pkgdesc = A mouse server for the console and xterm (for QEMU/VirtualBox)
+	pkgver = 1.20.7.r27.g1fd1941
+	pkgrel = 1
+	url = https://www.nico.schottelius.org/software/gpm/
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = bash
+	depends = procps-ng
+	provides = gpm
+	conflicts = gpm
+	options = !makeflags
+	source = git+https://github.com/telmich/gpm.git#commit=1fd19417b8a4dd9945347e98dfa97e4cfd798d77
+	source = 0001-glibc-sigemptyset.patch
+	source = gpm.sh
+	source = gpm.service
+	sha256sums = SKIP
+	sha256sums = 61f901aae46ff79679a058758151dc93901dcd9ea938fabb0765554993b8cb09
+	sha256sums = f41e90dcf6c0c6c4b8eff1c69039a20eb6b38ea851ffd1fa47ba311bf83d6ed8
+	sha256sums = dc7d2463f6670ff2c1646a571ffad51f7c603793c25c6f685efad13cbb444034
+
+pkgname = gpm-vm
+
