@@ -2,7 +2,7 @@
 
 pkgname=sweet-theme-git
 _pkgname=Sweet
-pkgver=r47.2a939fd
+pkgver=r48.c65be30
 pkgrel=1
 pkgdesc="Light and dark colorful Gtk3.20+ theme"
 arch=("any")
@@ -33,18 +33,6 @@ build() {
 	msg2 "- THEME_FONT_SIZE (default font point size is 10)"
 	msg2 ""
 	msg2 "Continuing build in 5 seconds..."; sleep 5
-	msg2 "Setting gnome-shell font face to ${THEME_FONT_FACE}"
-	msg2 "Setting gnome-shell font size to ${THEME_FONT_SIZE}"
-
-	if [ "${THEME_FONT_FACE}" != "Roboto" ]; then
-		sed -i -re "s/font-family: (.*);/font-family: ${THEME_FONT_FACE}, \1;/" \
-			"${srcdir}/${_pkgname}/gnome-shell/gnome-shell.css"
-	fi
-
-	if [ "${THEME_FONT_SIZE}" != "10" ]; then
-		sed -i -re "s/font-size: (.*);/font-size: ${THEME_FONT_SIZE}pt;/" \
-			"${srcdir}/${_pkgname}/gnome-shell/gnome-shell.css"
-	fi
 
 	msg2 "Rendering assets, please wait"
 	pushd gtk-2.0
@@ -57,6 +45,19 @@ build() {
 		<(./render-gtk3-assets.py; ./render-gtk3-assets-hidpi.py; ./render-wm-assets-hidpi.py; ./render-wm-assets.py); echo
 	popd
 	msg2 "Done!"
+
+	msg2 "Setting gnome-shell font face to ${THEME_FONT_FACE}"
+	msg2 "Setting gnome-shell font size to ${THEME_FONT_SIZE}"
+
+	if [ "${THEME_FONT_FACE}" != "Roboto" ]; then
+		sed -i -re "s/font-family: (.*);/font-family: ${THEME_FONT_FACE}, \1;/" \
+			"${srcdir}/${_pkgname}/gnome-shell/gnome-shell.css"
+	fi
+
+	if [ "${THEME_FONT_SIZE}" != "10" ]; then
+		sed -i -re "s/font-size: (.*);/font-size: ${THEME_FONT_SIZE}pt;/" \
+			"${srcdir}/${_pkgname}/gnome-shell/gnome-shell.css"
+	fi
 }
 
 package() {
