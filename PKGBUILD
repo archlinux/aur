@@ -2,8 +2,8 @@
 
 pkgname=accel-ppp-ipoe-dkms
 _pkgname=accel-ppp
-pkgver=1.11.2
-pkgrel=3
+pkgver=1.12.0
+pkgrel=1
 pkgdesc='Accel-ppp ipoe kernel module sources'
 arch=('i686' 'x86_64')
 url='http://sourceforge.net/apps/trac/accel-ppp/'
@@ -25,5 +25,5 @@ package() {
         -i "${pkgdir}"/usr/src/accel-ppp-ipoe-${pkgver}/dkms.conf
 }
 
-md5sums=('81a3312cd0ff468ab5ee5edad3424a91'
+md5sums=('d0f2668e182ec99b64fcd6bc8fc2a19b'
          'f363b0f073f88de2a537dd1de0faab8b')
