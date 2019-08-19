@@ -1,19 +1,17 @@
 pkgname=drpm
-_commit=f955e6ba5f920dea25d9ec28f93ce650bf9d6c9d
-pkgver=0.3.0
-pkgrel=2
+pkgver=0.4.0
+pkgrel=1
 pkgdesc="A small library for fetching information from deltarpm packages"
 arch=('i686' 'x86_64')
 url="https://github.com/rpm-software-management/$pkgname"
-license=('BSD' 'LGPL3')
-depends=('bzip2' 'openssl' 'rpm-org' 'xz' 'zlib')
-makedepends=('cmake' 'doxygen')
+license=('custom:BSD' 'LGPL3')
+depends=('bzip2' 'openssl' 'rpm-org' 'xz' 'zlib' 'zstd')
+makedepends=('cmake>=2.8.5' 'doxygen')
 checkdepends=('cmocka')
-source=("$url/archive/$_commit/$pkgname-$pkgver.tar.gz")
-md5sums=('f2b03f8821c61a23264becbad01cda63')
+source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
+md5sums=('346bd89eba41d23713fa49f546453796')
 
 prepare() {
-	mv "$pkgname-$_commit" "$pkgname-$pkgver"
 	cd "$pkgname-$pkgver"
 	rm -rf build
 	mkdir build
@@ -21,10 +19,12 @@ prepare() {
 
 build() {
 	cd "$pkgname-$pkgver"/build
-	cmake -DCMAKE_BUILD_TYPE=Release  \
+
+	cmake -DCMAKE_BUILD_TYPE=Release \
+	      -DCMAKE_C_FLAGS="$CFLAGS $CPPFLAGS" \
 	      -DCMAKE_INSTALL_PREFIX=/usr \
-	      -DINCLUDE_INSTALL_DIR=/usr/include \
-	      -DLIB_INSTALL_DIR=/usr/lib \
+	      -DCMAKE_INSTALL_LIBDIR=lib \
+	      -DWITH_ZSTD=ON \
 	      ..
 
 	make
