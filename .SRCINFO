@@ -1,7 +1,7 @@
 pkgbase = snmp_exporter
 	pkgdesc = This is an exporter that exposes information gathered from SNMP for use by the Prometheus monitoring system
 	pkgver = 0.15.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/prometheus/snmp_exporter
 	arch = x86_64
 	arch = i686

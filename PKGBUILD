@@ -3,7 +3,7 @@
 
 pkgname='snmp_exporter'
 pkgver='0.15.0'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='This is an exporter that exposes information gathered from SNMP for use by the Prometheus monitoring system'
 arch=('x86_64' 'i686')
 url="https://github.com/prometheus/${pkgname}"
@@ -33,7 +33,7 @@ build() {
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-  install -Dm644 -o210 -g210 "snmp.yml" "${pkgdir}/etc/prometheus/snmp.yml"
+  install -Dm640 -o210 -g210 "snmp.yml" "${pkgdir}/etc/prometheus/snmp.yml"
   install -Dm644 "${srcdir}/${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
   install -Dm644 "${srcdir}/${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
 }
