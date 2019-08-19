@@ -1,14 +1,15 @@
 pkgbase = python2-backports.lzma
 	pkgdesc = Backport of Python 3.3's 'lzma' module for XZ/LZMA compressed files.
-	pkgver = 0.0.3
+	pkgver = 0.0.13
 	pkgrel = 1
-	url = https://pypi.python.org/pypi/backports.lzma
-	arch = any
-	license = unknown
-	depends = python2
-	options = !emptydirs
-	source = https://pypi.python.org/packages/source/b/backports.lzma/backports.lzma-0.0.3.tar.gz
-	md5sums = c3d109746aefa86268e500c07d7e8e0f
+	url = https://github.com/peterjc/backports.lzma
+	arch = x86_64
+	license = BSD
+	makedepends = python2-setuptools
+	depends = python2-backports
+	depends = xz
+	source = https://pypi.io/packages/source/b/backports.lzma/backports.lzma-0.0.13.tar.gz
+	md5sums = b9f7d8e17729090adba6cac3f7d348aa
 
 pkgname = python2-backports.lzma
 
