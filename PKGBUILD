@@ -1,9 +1,9 @@
 # Maintainer: Louis Tim Larsen <louis(a)louis.dk>
 
 pkgname=thunderbird-appmenu-bin
-pkgver=60.7.2
-_build=build2-0ubuntu0.19.04.1
-pkgrel=4
+pkgver=60.8.0
+_build=build1.1-0ubuntu3
+pkgrel=1
 pkgdesc="Thunderbird with appmenu patch from Ubuntu"
 arch=('x86_64')
 url="https://packages.ubuntu.com/source/disco/thunderbird"
@@ -20,7 +20,7 @@ replaces=('thunderbird')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source=(http://security.ubuntu.com/ubuntu/pool/main/t/thunderbird/thunderbird_${pkgver}+${_build}_amd64.deb)
-sha512sums=('c466699c3cbce93b1b15494d91ea9496bb0418681c7959e2fd6b06e55fefb8b8416ea2f95dcf0b1da9a2c2cac464ac0aedb9c484a970bb48b34c3c9a69b93c3a')
+sha512sums=('9c0e02783f38cba851608bbead62c0eeb710b0ca9408a4475212d356c56a424a1f454519fdc397fafa989cb48c35b7f1bf89a9f52bcf68befd2843dad6556463')
 
 package(){
 

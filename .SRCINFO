@@ -1,7 +1,7 @@
 pkgbase = thunderbird-appmenu-bin
 	pkgdesc = Thunderbird with appmenu patch from Ubuntu
-	pkgver = 60.7.2
-	pkgrel = 4
+	pkgver = 60.8.0
+	pkgrel = 1
 	url = https://packages.ubuntu.com/source/disco/thunderbird
 	install = thunderbird-appmenu-bin.install
 	arch = x86_64
@@ -34,13 +34,13 @@ pkgbase = thunderbird-appmenu-bin
 	optdepends = libdbusmenu-glib
 	optdepends = libdbusmenu-gtk3
 	optdepends = lyx
-	provides = thunderbird=60.7.2
+	provides = thunderbird=60.8.0
 	conflicts = thunderbird
 	replaces = thunderbird
 	options = !strip
 	options = !emptydirs
-	source = http://security.ubuntu.com/ubuntu/pool/main/t/thunderbird/thunderbird_60.7.2+build2-0ubuntu0.19.04.1_amd64.deb
-	sha512sums = c466699c3cbce93b1b15494d91ea9496bb0418681c7959e2fd6b06e55fefb8b8416ea2f95dcf0b1da9a2c2cac464ac0aedb9c484a970bb48b34c3c9a69b93c3a
+	source = http://security.ubuntu.com/ubuntu/pool/main/t/thunderbird/thunderbird_60.8.0+build1.1-0ubuntu3_amd64.deb
+	sha512sums = 9c0e02783f38cba851608bbead62c0eeb710b0ca9408a4475212d356c56a424a1f454519fdc397fafa989cb48c35b7f1bf89a9f52bcf68befd2843dad6556463
 
 pkgname = thunderbird-appmenu-bin
 
