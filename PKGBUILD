@@ -19,6 +19,16 @@ pkgver() {
     printf "%s" "$(git describe --tag | sed 's/^v//;s/-/./')"
 }
 
+build_python-omemo-backend-signal() {
+    cd ${_pkgname}
+    python3 setup.py build
+}
+
+build_python2-omemo-backend-signal() {
+    cd ${_pkgname}
+    python2 setup.py build
+}
+
 package_python-omemo-backend-signal() {
     depends=('python-cryptography'
              'python-xeddsa'
@@ -30,7 +40,7 @@ package_python-omemo-backend-signal() {
     conflicts=("${_pkgname}")
 
     cd ${_pkgname}
-    python3 setup.py install --root="${pkgdir}" --optimize=1
+    python3 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
 
 package_python2-omemo-backend-signal() {
@@ -44,5 +54,5 @@ package_python2-omemo-backend-signal() {
     conflicts=("${_pkgname2}")
 
     cd ${_pkgname}
-    python2 setup.py install --root="${pkgdir}" --optimize=1
+    python2 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
