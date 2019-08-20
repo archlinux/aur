@@ -3,14 +3,14 @@
 
 pkgname=python-codecov
 pkgver=2.0.15
-pkgrel=2
+pkgrel=3
 pkgdesc='Report uploader for Codecov'
 arch=(any)
 url=https://codecov.io
 license=(Apache)
-depends=(python python-requests python-coverage)
+depends=(python python-requests)
 makedepends=(python-setuptools)
-source=(codecov-$pkgver.tar.gz::https://github.com/codecov/codecov-python/archive/v$pkgver.tar.gz)
+source=($pkgname-$pkgver.tar.gz::https://github.com/codecov/codecov-python/archive/v$pkgver.tar.gz)
 sha512sums=('53cf2dc9926e2009a3918dfc7317d1e93f6ba9e25c6bb5bcc42c81fb15c07593f4fabd24883f081719432a029ab4f399126dea4cd8ff92d5e0f53b7155b1e522')
 
 build() {
