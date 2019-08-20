@@ -1,6 +1,7 @@
 # Maintainer: gxb153 <maintainer at gmail dot com>
 
 pkgname=listen1-desktop-appimage
+_installdir=/opt/${pkgname}
 pkgver=2.5.0
 pkgrel=1
 pkgdesc="One for all free music in China"
@@ -17,11 +18,11 @@ package() {
     mv "Listen1_${pkgver}_linux_x86_64.AppImage" "listen1.AppImage"
     chmod a+x "listen1.AppImage"
     ${srcdir}/listen1.AppImage --appimage-extract
-    sed -i "s/AppRun/env DESKTOPINTEGRATION=no \/opt\/${pkgname}\/listen1.AppImage %U/" "squashfs-root/listen1.desktop"
+    sed -i "s+AppRun+env DESKTOPINTEGRATION=no ${_installdir}/listen1.AppImage %U+" "squashfs-root/listen1.desktop"
     find "squashfs-root/usr/share/icons/hicolor" -type d -exec chmod 755 {} \;
 
     install -d -m755 "${pkgdir}/usr/share/icons"
     cp -R "squashfs-root/usr/share/icons/hicolor" "${pkgdir}/usr/share/icons"
-    install -Dm755 "listen1.AppImage" "${pkgdir}/opt/${pkgname}/listen1.AppImage"
+    install -Dm755 "listen1.AppImage" "${pkgdir}/${_installdir}/listen1.AppImage"
     install -Dm644 "squashfs-root/listen1.desktop" "${pkgdir}/usr/share/applications/listen1.desktop"
 }
