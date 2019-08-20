@@ -1,5 +1,5 @@
 pkgbase = listen-moe-desktop-git
-	pkgdesc = Deezloader Remix is an improved version of Deezloader based on the Reborn branch
+	pkgdesc = Official LISTEN.moe Desktop Client
 	pkgver = 0.2.3.r0.g7395915
 	pkgrel = 1
 	url = https://github.com/LISTEN-moe/desktop-app
