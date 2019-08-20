@@ -11,7 +11,7 @@ pkgdesc="An open python implementation of the OMEMO Multi-End Message and Object
 url="https://github.com/Syndace/${_pkgname}"
 license=('MIT')
 arch=('any')
-makedepends=('python-setuptools' 'python2-setuptools')
+makedepends=('git' 'python-setuptools' 'python2-setuptools')
 source=("${_pkgname}::git+https://github.com/Syndace/${_pkgname}.git#tag=${_tag}")
 sha256sums=('SKIP')
 
