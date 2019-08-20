@@ -2,13 +2,13 @@
 
 name=meshroom
 #fragment="#commit=9bd70ed8ace83c6dde174178e17c5147bb50248f"
-fragment="#tag=v2019.1.0"
+fragment="#tag=v2019.2.0"
 pkgname=${name}
-pkgver=2019.1.0
+pkgver=${fragment#\#tag=v}
 pkgrel=1
 pkgdesc="Meshroom is a free, open-source 3D Reconstruction Software based on the AliceVision framework."
 arch=('i686' 'x86_64')
-url="http://alicevision.github.io/"
+url="https://alicevision.github.io/"
 license=('MPL2')
 groups=()
 _depends_qt=(python-pyside2 qt5-quickcontrols{,2} qt5-3d qt5-graphicaleffects qt5-imageformats qt5-location qt5-svg)
