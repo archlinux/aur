@@ -1,8 +1,8 @@
 pkgbase = mailparser
-	pkgdesc = Python package and CLI for parsing aggregate and forensic DMARC reports
+	pkgdesc = Tokenizer for raw mails
 	pkgver = 3.9.3
-	pkgrel = 2
-	url = https://domainaware.github.io/parsedmarc
+	pkgrel = 3
+	url = https://github.com/SpamScope/mail-parser
 	arch = any
 	license = Apache
 	makedepends = python-setuptools
