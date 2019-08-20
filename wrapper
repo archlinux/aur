@@ -1,0 +1,3 @@
+#!/bin/sh
+export CARP_DIR=/usr/lib/carp
+exec %BINARY% "$@"

@@ -1,0 +1,19 @@
+pkgbase = carp-git
+	pkgdesc = A statically typed lisp, without a GC, for real-time applications.
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/carp-lang/Carp
+	arch = x86_64
+	license = Apache
+	makedepends = gcc
+	makedepends = stack
+	depends = gcc
+	provides = carp
+	conflicts = carp
+	source = carp::git://github.com/carp-lang/Carp.git
+	source = wrapper
+	sha512sums = SKIP
+	sha512sums = 4421fa7d2db996b4101bc8ee189c1ecb081469826d7cb540c346ed1bdd47c03563f8b52aeef6b033e6bba438f86700855157dd178df72bcca30e40ea4fe61e07
+
+pkgname = carp-git
+
