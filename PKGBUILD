@@ -67,30 +67,30 @@ prepare() {
 
 build() {
   echo "Building without cuda and without non-x86-64 optimizations"
-  export NO_CUDA=1
-  export WITH_CUDNN=0
+  export USE_CUDA=1
+  export USE_CUDNN=0
   cd "${srcdir}/${_pkgname}-${pkgver}"
   python setup.py build
 
 
   echo "Building without cuda and with non-x86-64 optimizations"
-  export NO_CUDA=1
-  export WITH_CUDNN=0
+  export USE_CUDA=1
+  export USE_CUDNN=0
   cd "${srcdir}/${_pkgname}-${pkgver}-opt"
   echo "add_definitions(-march=haswell)" >> cmake/MiscCheck.cmake
   python setup.py build
 
 
   echo "Building with cuda and without non-x86-64 optimizations"
-  export NO_CUDA=0
-  export WITH_CUDNN=1
+  export USE_CUDA=0
+  export USE_CUDNN=1
   cd "${srcdir}/${_pkgname}-${pkgver}-cuda"
   python setup.py build
 
 
   echo "Building with cuda and with non-x86-64 optimizations"
-  export NO_CUDA=0
-  export WITH_CUDNN=1
+  export USE_CUDA=0
+  export USE_CUDNN=1
   cd "${srcdir}/${_pkgname}-${pkgver}-opt-cuda"
   echo "add_definitions(-march=haswell)" >> cmake/MiscCheck.cmake
   python setup.py build
