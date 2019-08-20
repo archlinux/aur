@@ -5,6 +5,7 @@ pkgbase = python-doubleratchet
 	url = https://github.com/Syndace/python-doubleratchet
 	arch = any
 	license = MIT
+	makedepends = git
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
 	source = python-doubleratchet::git+https://github.com/Syndace/python-doubleratchet.git#tag=v0.7.0-beta
