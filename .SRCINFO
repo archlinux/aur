@@ -1,8 +1,8 @@
 pkgbase = perl-cgi-application-plugin-dbh
 	pkgdesc = Perl package for easy DBI access from CGI::Application
 	pkgver = 4.04
-	pkgrel = 1
-	url = http://search.cpan.org/dist/CGI-Application-Plugin-DBH
+	pkgrel = 2
+	url = https://metacpan.org/release/CGI-Application-Plugin-DBH
 	arch = any
 	license = PerlArtistic
 	license = GPL
