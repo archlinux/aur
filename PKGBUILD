@@ -61,7 +61,7 @@ _localmodcfg=
 
 pkgbase=linux-mainline-bcachefs
 _srcver_tag=5.3
-pkgver=v5.3_rc3
+pkgver=v5.3_rc4
 pkgrel=1
 arch=(x86_64)
 url="https://github.com/koverstreet/bcachefs"
@@ -126,7 +126,7 @@ actual_prepare() {
     msg2 "Latest tag found: ${_srcver_tag}"
 
     cd ${_reponame}
-
+    export EDITOR=true
     git remote add upstream ../upstream || true
     git fetch --tags upstream
     if ! git merge ${_srcver_tag}
@@ -221,7 +221,7 @@ _package() {
     ln -sr "$extradir" "$modulesdir/extramodules"
 
     # remove build and source links
-#   rm "$modulesdir"/{source,build}
+    rm "$modulesdir"/{source,build}
 
     msg2 "Installing hooks..."
     # sed expression for following substitutions
