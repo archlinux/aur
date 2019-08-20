@@ -6,12 +6,12 @@ _tag=v0.5.9-beta
 pkgbase=${_pkgname}
 pkgname=("${_pkgname}" "${_pkgname2}")
 pkgver=0.5.9.beta
-pkgrel=1
+pkgrel=2
 pkgdesc="A python implementation of the Extended Triple Diffie-Hellman key agreement protocol"
 url="https://github.com/Syndace/${_pkgname}"
 license=('MIT')
 arch=('any')
-makedepends=('python-setuptools' 'python2-setuptools')
+makedepends=('git' 'python-setuptools' 'python2-setuptools')
 source=("${_pkgname}::git+https://github.com/Syndace/${_pkgname}.git#tag=${_tag}")
 sha256sums=('SKIP')
 
