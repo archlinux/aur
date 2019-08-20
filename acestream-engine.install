@@ -1,29 +1,19 @@
-#_create_acestream_user() {
-#   if ! getent passwd acestream &> /dev/null; then
-#       useradd -u 4035 -g video -M -s /usr/bin/nologin acestream
-#   fi
-#}
-
-_remove_acestream_user() {
-    if getent passwd acestream &>/dev/null; then
-        userdel acestream
-    fi
-}
-
 post_install() {
-    _remove_acestream_user
+    echo
+    echo ">>> To start acestream-engine as systemd service, first reboot the system"
+    echo
 }
 
 post_upgrade() {
-    _remove_acestream_user
+    echo
+    echo ">>> To start acestream-engine as systemd service, first reboot the system"
+    echo
 }
 
 post_remove() {
-    _remove_acestream_user
-
     echo
-    echo ">>> remove files under /usr/share/ACEStream if you"
-    echo ">>> don't need to reinstall the package in the future"
+    echo ">>> remove files under /var/lib/ACEStream and ~/.config/ACEStream"
+    echo ">>> if you don't need to reinstall the package in the future"
     echo
 }
  

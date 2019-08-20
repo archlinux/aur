@@ -14,7 +14,7 @@ _enginename=acestreamengine
 
 pkgname=acestream-engine-stable
 pkgver=3.1.49
-pkgrel=4
+pkgrel=5
 pkgdesc="P2P utility for multimedia live streaming and file transfer (stable version)"
 arch=("x86_64")
 url="http://acestream.org/"
@@ -36,8 +36,8 @@ source=(
     "LICENSE")
 sha256sums=(
     "d2ed7bdc38f6a47c05da730f7f6f600d48385a7455d922a2688f7112202ee19e"
-    "eac3ba7e0aea10deae99d9d494de424c3ccbcc0efb11618e7490e084c05f5412"
-    "e5e0ff385cecfe9af381f870836295b48d466cb675f36b658c80a978a3006d87"
+    "a0b657b00e8cedc69d24d28591c478d5b4c3443ed1a2796f3c606ae6635cbd89"
+    "930ba23b7d94487d51c2b43203922467ae254981d00992337ab9a057c5e0f804"
     "SKIP")
 
 package() {
@@ -56,4 +56,15 @@ package() {
 
     mkdir -p "$pkgdir/usr/bin"
     ln -sf "/usr/lib/$_pkgbasename/start-engine" "$pkgdir/usr/bin/$_enginename"
+    ln -sf "/usr/lib/$_pkgbasename/start-engine" "$pkgdir/usr/bin/$_pkgbasename"
+    
+    # acestream user
+    install -Dm644 /dev/stdin "$pkgdir/usr/lib/sysusers.d/$_pkgbasename.conf" <<END
+u acestream - "systemd Ace Stream Service"
+END
+
+    # acestream service directory
+    install -Dm644 /dev/stdin "$pkgdir/usr/lib/tmpfiles.d/$_pkgbasename.conf" <<END
+d /var/lib/ACEStream 0755 acestream acestream -
+END
 }

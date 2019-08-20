@@ -1,7 +1,7 @@
 pkgbase = acestream-engine-stable
 	pkgdesc = P2P utility for multimedia live streaming and file transfer (stable version)
 	pkgver = 3.1.49
-	pkgrel = 4
+	pkgrel = 5
 	url = http://acestream.org/
 	install = acestream-engine.install
 	arch = x86_64
@@ -19,8 +19,8 @@ pkgbase = acestream-engine-stable
 	source = acestream-engine.desktop
 	source = LICENSE
 	sha256sums = d2ed7bdc38f6a47c05da730f7f6f600d48385a7455d922a2688f7112202ee19e
-	sha256sums = eac3ba7e0aea10deae99d9d494de424c3ccbcc0efb11618e7490e084c05f5412
-	sha256sums = e5e0ff385cecfe9af381f870836295b48d466cb675f36b658c80a978a3006d87
+	sha256sums = a0b657b00e8cedc69d24d28591c478d5b4c3443ed1a2796f3c606ae6635cbd89
+	sha256sums = 930ba23b7d94487d51c2b43203922467ae254981d00992337ab9a057c5e0f804
 	sha256sums = SKIP
 
 pkgname = acestream-engine-stable

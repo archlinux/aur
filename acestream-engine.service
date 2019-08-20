@@ -3,7 +3,8 @@ Description=AceStream Engine Service
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/acestreamengine --client-console --live-cache-type memory --state-dir /usr/share/ACEStream --log-file /usr/share/ACEStream/acestreamengine.log
+User=acestream
+ExecStart=env PYTHON_EGG_CACHE=/var/lib/ACEStream/Python-Eggs /usr/bin/acestream-engine --client-console @/usr/lib/acestream-engine/acestream.conf --live-cache-type memory --state-dir /var/lib/ACEStream --log-file /var/lib/ACEStream/acestream-engine.log
 
 [Install]
 WantedBy=multi-user.target 
