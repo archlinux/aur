@@ -1,0 +1,18 @@
+pkgbase = shengbte
+	pkgdesc = ShengBTE is a software package for solving the Boltzmann Transport Equation for phonons
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = http://www.shengbte.org/
+	arch = any
+	license = GPL
+	makedepends = gcc-fortran
+	depends = lapack
+	depends = spglib
+	depends = openmpi
+	source = http://www.shengbte.org/downloads/ShengBTE-v1.1.1-8a63749.tar.bz2
+	source = arch.make
+	sha1sums = 30089b08da8de198c6c42b3cd15f5ffc6fe4aacb
+	sha1sums = c66a79e95045acc1bc613d904f092f54e7c8c5eb
+
+pkgname = shengbte
+
