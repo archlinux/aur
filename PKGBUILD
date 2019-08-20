@@ -8,11 +8,10 @@ arch=('any')
 url="https://www.dcmembers.com/jibsen/download/61/"
 license=('custom')
 depends=('xorg-font-utils' 'fontconfig')
-makedepends=('fontforge')
+makedepends=('fonttosfnt-git')
 conflicts=('dina-font' 'dina-powerline' 'dina-font-otb-alt')
-source=("dina-$pkgver-new.zip::https://www.dcmembers.com/jibsen/download/61/?wpdmdl=61" "otbconvert.pe")
-md5sums=('028424baac750e9fd0f54df03202e5d0'
-         'ef3dae0059b22d7c232cbd04d9cffff8')
+source=("dina-$pkgver-new.zip::https://www.dcmembers.com/jibsen/download/61/?wpdmdl=61")
+md5sums=('028424baac750e9fd0f54df03202e5d0')
 
 _ex_pt() {
     _pt=${1%.bdf}
@@ -22,8 +21,9 @@ _ex_pt() {
 
 build() {
     cd "$srcdir/BDF"
-    sed -i 's/microsoft-cp1252/ISO8859-1/' *.bdf
-    ../otbconvert.pe *.bdf
+    for f in *.bdf; do
+        fonttosfnt -o "${f/bdf/otb}" "$f"
+    done
 }
 
 package() {
