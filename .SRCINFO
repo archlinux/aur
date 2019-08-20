@@ -1,6 +1,6 @@
 pkgbase = white_dune
 	pkgdesc = A graphical VRML97/X3D editor, simple NURBS/Superformula 3D modeller, animation tool and VRML97/X3DV commandline compiler.
-	pkgver = 1.331
+	pkgver = 1.333
 	pkgrel = 1
 	url = http://wdune.ourproject.org/
 	arch = any
@@ -43,8 +43,8 @@ pkgbase = white_dune
 	makedepends = curl
 	makedepends = freetype2
 	makedepends = ttf-bitstream-vera
-	source = ftp://ftp.ourproject.org/pub/wdune/white_dune-1.331.tar.bz2
-	md5sums = e14d9669116cc7859607385d7bb8a747
+	source = ftp://ftp.ourproject.org/pub/wdune/white_dune-1.333.tar.bz2
+	md5sums = 92fb45dec394e78e9c36e2cae19a789d
 
 pkgname = white_dune
 
