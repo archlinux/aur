@@ -4,10 +4,10 @@
 # Contributor: Aaron Lindsay <aaron@aclindsay.com>
 
 pkgname=seahub
-pkgver=7.0.3
+pkgver=7.0.4
 pkgrel=1
 pkgdesc='The web frontend for seafile server'
-arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
+arch=('any')
 url='https://github.com/haiwen/seahub'
 license=('Apache')
 depends=(
@@ -44,9 +44,8 @@ optdepends=(
     'python2-django-pylibmc: Memcached support'
     'ffmpeg: For video thumbnails'
 )
-changelog="ChangeLog"
 source=("$pkgname-$pkgver-server.tar.gz::$url/archive/v$pkgver-server.tar.gz")
-sha256sums=('0cc209b6195eef73253f45e18b9ba33db977144de7092d417bfebe2e46f98cca')
+sha256sums=('222311e4c30aa9a56e30bc9f4d98b8db9589a6ba8d1b22443b529c6e876c7efd')
 options=('!strip')
 
 prepare() {
@@ -63,11 +62,9 @@ prepare() {
 
 build() {
     cd "$srcdir/$pkgname-$pkgver-server"
-    printf 'Compile seahub locales...'
     for locale in ./locale/*/LC_MESSAGES/*.po; do
-        msgfmt -o "${locale%.po}.mo" "$locale"
+        msgfmt -vo "${locale%.po}.mo" "$locale"
     done
-    printf 'done.\n'
 }
 
 package() {
