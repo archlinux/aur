@@ -1,7 +1,7 @@
 pkgbase = certbot-dns-gandi-git
 	pkgdesc = gandi DNS authenticator plugin for certbot - GIT version
-	pkgver = 20190716.9bc7d07
-	pkgrel = 1
+	pkgver = 1.1.1.r3.g9bc7d07
+	pkgrel = 2
 	url = https://github.com/obynio/certbot-plugin-gandi.git
 	arch = any
 	license = MIT
