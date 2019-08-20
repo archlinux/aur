@@ -1,0 +1,21 @@
+pkgbase = phonopy
+	pkgdesc = Phonopy is an open source package for phonon calculations at harmonic and quasi-harmonic levels
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://atztogo.github.io/phonopy
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	makedepends = python
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-h5py
+	depends = python-pyaml
+	depends = python-matplotlib
+	optdepends = python-spglib
+	optdepends = openmpi
+	source = https://github.com/atztogo/phonopy/archive/v2.2.0.tar.gz
+	sha512sums = 74d6058aea179a84dcad9f98e09de69569a1cf62c1163b2142481f85d143a273b14459800485ebac627dcd1d1a71a3151dc69d9067271ed9aec3def8b37cb712
+
+pkgname = phonopy
+
