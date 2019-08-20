@@ -5,7 +5,7 @@ _pkgauthor=bitnami-labs
 _upstream_devteam=sealed-secrets
 _upstream_pkgname=kubeseal
 pkgname=kubeseal-bin
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="SealedSecret is a way to encrypt kubernetes secrets, which are safe to store on a public source code repository."
 arch=('x86_64')
@@ -25,7 +25,7 @@ license=("Apache")
 ### https://github.com/bitnami-labs/sealed-secrets/releases/download/v0.7.0/kubeseal-linux-amd64
 source=("${_upstream_pkgname}-${_goos}-${_goarch}::https://github.com/${_pkgauthor}/${_upstream_devteam}/releases/download/v${pkgver}/${_upstream_pkgname}-${_goos}-${_goarch}"
   "LICENSE::https://raw.githubusercontent.com/${_pkgauthor}/${_upstream_devteam}/master/LICENSE")
-sha256sums=('f028cfd60bc19335850df96d795279401835c7a7c19327e18b87f75fce738dbe'
+sha256sums=('a142996cf707efb40edf2daae950fadb6035fdcf6b5f27237ee5f87985406c13'
             'b40930bbcf80744c86c46a12bc9da056641d722716c378f5659b9e555ef833e1')
 
 package() {
