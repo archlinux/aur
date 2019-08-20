@@ -1,7 +1,7 @@
 # Maintainer: Ryan Jacobs <ryan@rmj.us>
 pkgname=azure-kinect-sensor-sdk-git
 pkgver=v1.2.0.beta.1.r4.4b37ca7d
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross platform user mode SDK to read data from Azure Kinect devices."
 arch=("x86_64")
 url="https://github.com/microsoft/Azure-Kinect-Sensor-SDK"
