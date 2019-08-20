@@ -1,8 +1,8 @@
 pkgbase = perl-b-hooks-op-annotation
 	pkgdesc = Perl module that allows XS modules to annotate and delegate hooked OPs
 	pkgver = 0.44
-	pkgrel = 1
-	url = http://search.cpan.org/dist/B-Hooks-OP-Annotation
+	pkgrel = 2
+	url = https://metacpan.org/release/B-Hooks-OP-Annotation
 	arch = i686
 	arch = x86_64
 	license = PerlArtistic

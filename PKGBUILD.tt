@@ -5,28 +5,36 @@
 pkgname=[% pkgname %]
 pkgver=[% pkgver %]
 pkgrel=[% pkgrel %]
-pkgdesc="Perl module that allows XS modules to annotate and delegate hooked OPs"
-arch=("i686" "x86_64")
-url="[% url %]"
-license=("PerlArtistic" "GPL")
-depends=("perl" "perl-extutils-depends>=0.304")
+pkgdesc='Perl module that allows XS modules to annotate and delegate hooked OPs'
+arch=('i686' 'x86_64')
+url='[% url %]'
+license=('PerlArtistic' 'GPL')
+depends=('perl' 'perl-extutils-depends>=0.304')
 source=([% source %])
 options=(!emptydirs)
-md5sums=("[% md5sums %]")
+md5sums=('[% md5sums %]')
+
+sanitize() {
+	unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
+	export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL="--skipdeps"
+}
 
 build() {
-  cd "$srcdir/[% distdir %]"
-  PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
-  make
+	cd [% distdir %]
+	sanitize
+	perl Makefile.PL INSTALLDIRS=vendor
+	make
 }
 
 check() {
-  cd "$srcdir/[% distdir %]"
-  make test
+	cd [% distdir %]
+	sanitize
+	make test
 }
 
 package() {
-  cd "$srcdir/[% distdir %]"
-  make install DESTDIR="$pkgdir"
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+	cd [% distdir %]
+	sanitize
+	make install DESTDIR="$pkgdir"
+	find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
 }
