@@ -2,8 +2,8 @@
 # Contributor: Adrian Petrescu <adrian@apetre.sc>
 
 pkgname=yada
-pkgver=0.8
-pkgrel=2
+pkgver=0.9
+pkgrel=1
 pkgdesc='Yet another dotfile aggregator'
 arch=(any)
 url=https://github.com/apetresc/yada
