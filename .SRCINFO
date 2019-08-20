@@ -15,7 +15,7 @@ pkgbase = mongodb
 	makedepends = python2-typing
 	makedepends = python2-yaml
 	makedepends = readline
-	makedepends = python2-scons
+	makedepends = python2-scons>=3.1.1
 	depends = curl
 	depends = libstemmer
 	depends = lsb-release
