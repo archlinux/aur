@@ -4,16 +4,18 @@
 pkgbase="python-pytorch"
 pkgname=("python-pytorch" "python-pytorch-opt" "python-pytorch-cuda" "python-pytorch-opt-cuda")
 _pkgname="pytorch"
-pkgver=1.1.0
-pkgrel=8
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU acceleration"
 arch=('x86_64')
 url="https://pytorch.org"
 license=('BSD')
 depends=('google-glog' 'gflags' 'opencv' 'openmp' 'nccl' 'pybind11' 'python' 'python-yaml' 'python-numpy' 'protobuf' 'ffmpeg' 'python-future')
 makedepends=('python' 'python-setuptools' 'python-yaml' 'python-numpy' 'cmake' 'cuda' 'cudnn' 'git')
-source=("${_pkgname}-${pkgver}::git+https://github.com/pytorch/pytorch.git#tag=v$pkgver")
-sha256sums=('SKIP')
+source=("${_pkgname}-${pkgver}::git+https://github.com/pytorch/pytorch.git#tag=v$pkgver"
+        24143.patch)
+sha256sums=('SKIP'
+            '773971a391e2d517630b37150ec20bd4ba06181c5c9767d51cd7358729b4aa5a')
 
 get_pyver () {
     python -c 'import sys; print(str(sys.version_info[0]) + "." + str(sys.version_info[1]))'
@@ -21,6 +23,8 @@ get_pyver () {
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
+
+  patch -Np1 -i "$srcdir"/24143.patch
 
   # This is the lazy way since pytorch has sooo many submodules and they keep
   # changing them around but we've run into more problems so far doing it the
@@ -57,6 +61,8 @@ prepare() {
   export CUDNN_INCLUDE_DIR=/usr/include
   export TORCH_NVCC_FLAGS="-Xfatbin -compress-all"
   export TORCH_CUDA_ARCH_LIST="3.0;3.2;3.5;3.7;5.0;5.2;5.3;6.0;6.1;6.2;7.0;7.2;7.5"
+  # Experimental
+  export _GLIBCXX_USE_CXX11_ABI=TRUE
 }
 
 build() {
