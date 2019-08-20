@@ -1,7 +1,7 @@
 pkgbase = bluej
 	pkgdesc = An integrated Java environment specifically designed for introductory teaching
 	pkgver = 4.2.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.bluej.org
 	arch = any
 	license = GPL2
@@ -20,7 +20,7 @@ pkgbase = bluej
 	source = bluej
 	source = bluej.desktop
 	sha256sums = 66ae3834680a8b32f874c26d8ac74d468c416e6fa8180f6dd06d65a624267bb5
-	sha256sums = 96504c8908422f77e7fcecdbc0e66723483d5c57231b3dd35d83092c906295ec
+	sha256sums = dacf8c2c28f13197cc0c3a6f9023f5728051aedc5bfb174d1569ed428205a344
 	sha256sums = d48f47e2a16cef483ded299e37016a5172829303fc6ac43cab486049e9f61711
 
 pkgname = bluej

@@ -4,5 +4,6 @@ JAVAFX_CP="$JAVAFX_HOME/javafx.base.jar:$JAVAFX_HOME/javafx.controls.jar:$JAVAFX
 
 archlinux-java-run -a 11 -b 11 -- -Djavafx.embed.singleThread=true \
         -Dawt.useSystemAAFontSettings=on \
-        -cp /opt/bluej/bluej.jar:/usr/lib/jvm/default/lib/tools.jar:$JAVAFX_CP bluej.Boot \
+        -cp /opt/bluej/bluej.jar:$JAVAFX_CP bluej.Boot \
+        -javafxpath=$JAVAFX_CP \
         "$@"
