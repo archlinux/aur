@@ -2,7 +2,7 @@
 # based on original squirrelmail package by darose
 
 pkgname=squirrelmail-dev-svn
-pkgver=14539
+pkgver=r14832
 pkgrel=1
 _svnmod='squirrelmail'
 pkgdesc='Webmail for Nuts! (Development version Subversion source)'
@@ -13,7 +13,7 @@ depends=('php' 'perl' 'imap-server')
 makedepends=('subversion')
 conflicts=('squirrelmail')
 provides=('squirrelmail=1.5.2')
-source=("squirrelmail::svn+http://svn.code.sf.net/p/squirrelmail/code/trunk/${_svnmod}#revision=${pkgver}")
+source=("squirrelmail::svn+http://svn.code.sf.net/p/squirrelmail/code/trunk/${_svnmod}")
 sha512sums=('SKIP')
 backup=(srv/http/squirrelmail/.htaccess srv/http/squirrelmail/config/config.php)
 install=${pkgname}.install
