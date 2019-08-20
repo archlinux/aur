@@ -2,15 +2,15 @@
 # Contributor: twiggers
 
 pkgname=python-pympress
-pkgver=1.3.1
-pkgrel=4
+pkgver=1.4.1
+pkgrel=1
 pkgdesc="Dual-screen PDF reader designed for presentations"
-url="http://pympress.xyz/"
+url="https://cimbali.github.io/pympress/"
 license=('GPL-2')
 arch=('any')
 depends=('python-vlc' 'poppler' 'python-gobject' 'cairo' 'gtk3' 'perl-x11-protocol' 'perl-net-dbus' 'python-watchdog')
 source=("https://github.com/Cimbali/pympress/archive/v${pkgver}.tar.gz")
-md5sums=('bef4d8fec4f8244d08b885feb85aa43f')
+md5sums=('8d58deca4d9dfe0111b1550d56daac2a')
  
 build() {
 	cd $srcdir/pympress-$pkgver
