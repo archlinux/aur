@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=LISTEN.moe - Desktop App
+Exec=listen-moe-desktop
+Terminal=false
+Type=Application
+Icon=listen-moe-desktop
+StartupWMClass=LISTEN.moe - Desktop App
+X-AppImage-Version=0.2.3
+Comment=It’s time to ditch other radios
+Categories=Audio;
