@@ -1,0 +1,16 @@
+pkgbase = cherrytree-bin
+	pkgdesc = Binary version of cherrytree
+	pkgver = 0.38.9
+	pkgrel = 1
+	url = https://www.giuspen.com/cherrytree/
+	arch = any
+	license = GPL3
+	depends = pygtksourceview2
+	depends = python2-dbus
+	optdepends = python2-pyenchant: for spell checking support
+	optdepends = p7zip: for password protection support
+	source = http://www.giuspen.com/software/cherrytree_0.38.9-0_all.deb
+	sha256sums = SKIP
+
+pkgname = cherrytree-bin
+
