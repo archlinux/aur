@@ -2,29 +2,33 @@
 # Past-Maintainer: CUI Hao <cuihao.leo@gmail.com>
 
 pkgname=seismic-unix
-pkgver=44.14
-pkgrel=3
+pkgver=44.16
+pkgrel=1
 pkgdesc='A seismic processing and research environment developed \
 at the Center for Wave Phenomena, Colorado School of Mines'
 arch=('i686' 'x86_64')
 license=('custom')
 url="http://www.cwp.mines.edu/cwpcodes/"
-depends=('libtirpc' 'libxi' 'libglvnd' 'libxmu')
+depends=('libtirpc' 'libxi' 'libglvnd' 'libxmu' 'openmotif')
 #depends=('freeglut' 'glu' 'libxmu' 'lesstif' 'libtirpc' 'libtirpc-compat')
 #depends=('freeglut' 'glu' 'libxmu' 'openmotif')
 #depends=('freeglut' 'glu' 'libxmu')
 optdepends=(
     'tcsh: some scripts'
     'gcc-fortran: Fortran support')
-makedepends=('git' 'gcc-fortran' 'libtirpc' 'libtirpc-compat' 'lesstif' 'glu' 'libxmu' 'freeglut')
+#makedepends=('git' 'gcc-fortran' 'libtirpc' 'libtirpc-compat' 'lesstif' 'glu' 'libxmu' 'freeglut')
+makedepends=('git' 'gcc-fortran' 'libtirpc' 'libtirpc-compat' 'openmotif' 'glu' 'libxmu' 'freeglut')
 #source=("ftp://ftp.cwp.mines.edu/pub/cwpcodes/cwp_su_all_$pkgver.tgz")
 #sha1sums=('2456bfa4145ba5e8c03d9ffe85173b6657972bb3')
-source=("git+https://github.com/JohnWStockwellJr/SeisUnix.git")
+#source=("git+https://github.com/JohnWStockwellJr/SeisUnix.git")
+source=("https://nextcloud.seismic-unix.org/index.php/s/LZpzc8jMzbWG9BZ")
+source=("seismic_unix.tgz::https://nextcloud.seismic-unix.org/index.php/s/LZpzc8jMzbWG9BZ/download?path=%2F&files=cwp_su_all_44R16.tgz")
 md5sums=("SKIP")
 install=seismic-unix.install
 
 prepare() {
-    cd ${srcdir}/SeisUnix/src
+    #cd ${srcdir}/src/SeisUnix/src
+    cd ${srcdir}/src/
     # start fresh
     rm -rf ../bin/
     rm -rf ../lib/
@@ -41,15 +45,17 @@ prepare() {
 }
 
 build() {
-    export CWPROOT="$srcdir/SeisUnix/build"
+    export CWPROOT="$srcdir/src/build"
     #export CWPROOT="$srcdir/SeisUnix"
 
     mkdir -p "$CWPROOT"
     cd "$CWPROOT"
-    ln -sf "$srcdir/SeisUnix/src" src
+    #ln -sf "$srcdir/src/SeisUnix/src" src
+    ln -sf "$srcdir/src/" src
     #ln -sf "$srcdir/seismic-unix/src" src
 
-    cd "$srcdir/SeisUnix/src"
+    #cd "$srcdir/src/SeisUnix/src"
+    cd ${srcdir}/src/
     make -j1 install
     make -j1 xtinstall
     make -j1 xminstall
@@ -59,7 +65,8 @@ build() {
 }
 
 package() {
-    export CWPROOT="$srcdir/SeisUnix/build"
+    #export CWPROOT="$srcdir/src/SeisUnix/build"
+    export CWPROOT="$srcdir/src/build"
     cd "$CWPROOT"
     install -dm755 "$pkgdir/opt/$pkgname"
     cp -r {,"$pkgdir/opt/$pkgname/"}bin/
@@ -69,8 +76,8 @@ package() {
     chmod -R a+r "$pkgdir/opt/$pkgname"
     
     install -dm755 "$pkgdir/usr/share/licenses/$pkgname" 
-    install -m644 "$srcdir/SeisUnix/src/LEGAL_STATEMENT" "$pkgdir/usr/share/licenses/$pkgname" 
-    install -m644 "$srcdir/SeisUnix/src/ACKNOWLEDGEMENTS" "$pkgdir/usr/share/licenses/$pkgname" 
+    install -m644 "$srcdir/src/LEGAL_STATEMENT" "$pkgdir/usr/share/licenses/$pkgname" 
+    install -m644 "$srcdir/src/ACKNOWLEDGEMENTS" "$pkgdir/usr/share/licenses/$pkgname" 
     install -dm755 "$pkgdir/etc/profile.d/"
     cat > "$pkgdir/etc/profile.d/$pkgname.sh" << EOF
 #!/bin/bash
@@ -83,3 +90,4 @@ setenv PATH \${PATH}:\${CWPROOT}/bin
 EOF
     chmod 755 "$pkgdir/etc/profile.d/$pkgname"{.sh,.csh}
 }
+md5sums=('dc786ef7b95cf7924716e8479838a13e')
