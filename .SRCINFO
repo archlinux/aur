@@ -1,0 +1,16 @@
+pkgbase = srandr
+	pkgdesc = srandr - A tool for managing your sway outputs
+	pkgver = 0.0.1
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = go
+	makedepends = dep
+	makedepends = git
+	depends = sway
+	source = srandr::git+https://gitlab.com/ragon000/srandr.git#tag=0.0.1
+	md5sums = SKIP
+
+pkgname = srandr
+
