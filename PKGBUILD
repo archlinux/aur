@@ -1,4 +1,4 @@
-# Maintainer: Fabio Zanini <fabio.zanini _at_ fastmail.fm>
+# Maintainer: Leo Mao <leomaoyw _at_ gmail.com>
 _pypiname=kaldi_io
 pkgname=python-kaldi-io
 pkgver=0.9.1
