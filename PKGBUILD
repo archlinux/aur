@@ -5,9 +5,7 @@ pkgdesc="Standalone web browser forked from mozilla.org, UXP version"
 arch=('x86_64')
 license=('MPL' 'GPL' 'LGPL')
 url="https://www.basilisk-browser.org"
-depends=('gtk2' 'libxt' 'mime-types' 'alsa-lib' 'ffmpeg' 'libvpx' 'libevent'
-         'nspr' 'nss' 'hunspell' 'hyphen' 'sqlite' 'ttf-font' 'icu' 'libpng' 'libjpeg'
-         'bzip2' 'zlib' 'libffi' 'cairo' 'pixman')
+depends=('gtk2' 'libxt' 'mime-types' 'alsa-lib' 'ffmpeg' 'ttf-font')
 makedepends=('unzip' 'zip' 'gcc8' 'python2' 'yasm' 'mesa' 'autoconf2.13')
 options=('!emptydirs')
 source=("https://github.com/MoonchildProductions/UXP/archive/v$pkgver.tar.gz"
@@ -59,21 +57,6 @@ ac_add_options --disable-gconf
 ac_add_options --disable-gio
 ac_add_options --disable-necko-wifi
 ac_add_options --disable-startup-notification
-
-ac_add_options --with-system-nspr
-ac_add_options --with-system-nss
-ac_add_options --with-system-icu
-ac_add_options --with-system-libevent
-ac_add_options --with-system-bz2
-ac_add_options --with-system-zlib
-ac_add_options --with-system-jpeg
-ac_add_options --with-system-png
-ac_add_options --with-system-libvpx
-ac_add_options --enable-system-ffi
-ac_add_options --enable-system-hunspell
-ac_add_options --enable-system-sqlite
-ac_add_options --enable-system-cairo
-ac_add_options --enable-system-pixman
 
 ac_add_options --enable-devtools
 
@@ -137,13 +120,8 @@ package() {
     -e "s@https://start.palemoon.org@about:newtab@" \
     "$pkgdir/usr/share/applications/basilisk.desktop"
 
-  # Use system-provided dictionaries
-  local _mozhome="$pkgdir/usr/lib/basilisk-$(< application/basilisk/config/version.txt)"
-  rm -rf "$_mozhome/"{dictionaries,hyphenation}
-  ln -s /usr/share/hunspell "$_mozhome/dictionaries"
-  ln -s /usr/share/hyphen "$_mozhome/hyphenation"
-
   # Replace duplicate binary with symlink
   # https://bugzilla.mozilla.org/show_bug.cgi?id=658850
+  local _mozhome="$pkgdir/usr/lib/basilisk-$(< application/basilisk/config/version.txt)"
   ln -sf basilisk "$_mozhome/basilisk-bin"
 }
