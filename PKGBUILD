@@ -3,7 +3,7 @@
 
 _name=sphinxcontrib-tikz
 pkgname=("python-${_name}" "python2-${_name}")
-pkgver=0.4.6
+pkgver=0.4.7
 pkgrel=1
 pkgdesc="TikZ extension for Sphinx."
 arch=('any')
@@ -11,7 +11,7 @@ url="https://bitbucket.org/philexander/tikz"
 license=('BSD')
 makedepends=('python' 'python-setuptools' 'python2' 'python2-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('4f362b11e3c2bd17d5f0f07fec03917c16fc5bbcda6fe31ee137c547ed6b03a3')
+sha256sums=('5ee0611ef1a527d436c0555d45f745eaf922c2e4c65271f28daa2048531b024d')
 
 prepare() {
   cp -a "sphinxcontrib-tikz-$pkgver" "sphinxcontrib-tikz2-$pkgver"
