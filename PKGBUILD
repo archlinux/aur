@@ -20,13 +20,23 @@ pkgver() {
     printf "%s" "$(git describe --tags | sed -e 's/^v//;s/-/./')"
 }
 
+build_python-x3dh() {
+    cd ${_pkgname}
+    python3 setup.py build
+}
+
+build_python2-x3dh() {
+    cd ${_pkgname}
+    python2 setup.py build
+}
+
 package_python-x3dh() {
     depends=('python-xeddsa')
     provides=("${_pkgname}")
     conflicts=("${_pkgname}")
 
     cd ${_pkgname}
-    python3 setup.py install --root="${pkgdir}" --optimize=1
+    python3 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
 
 package_python2-x3dh() {
@@ -35,5 +45,5 @@ package_python2-x3dh() {
     conflicts=("${_pkgname2}")
 
     cd ${_pkgname}
-    python2 setup.py install --root="${pkgdir}" --optimize=1
+    python2 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
