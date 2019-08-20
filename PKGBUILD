@@ -2,12 +2,13 @@
 
 pkgname=mailparser
 pkgver=3.9.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Python package and CLI for parsing aggregate and forensic DMARC reports'
 arch=(any)
 url=https://domainaware.github.io/parsedmarc
 license=(Apache)
-depends=(python-simplejson
+depends=(python-ipaddress
+         python-simplejson
          python-six)
 makedepends=(python-setuptools)
 source=($pkgname-$pkgver.tar.gz::https://github.com/SpamScope/mail-parser/archive/v$pkgver.tar.gz)
