@@ -2,7 +2,7 @@
 
 pkgname=mcmojave-circle-icon-theme-git
 _gitname=McMojave-circle
-pkgver=38.60e1fef
+pkgver=46.d9355e3
 pkgrel=1
 pkgdesc="MacOSX Mojave like circle icon theme for linux desktops."
 arch=('any')
