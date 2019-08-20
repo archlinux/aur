@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=libtpms
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="The libtpms library provides software emulation of a Trusted Platform Module (TPM 1.2)"
 arch=('i686' 'x86_64')
@@ -23,4 +23,4 @@ package() {
 	make DESTDIR="${pkgdir}" install
 }
 
-md5sums=('c9301e08d50bc07dab62804261be44d5')
+md5sums=('4cf548358bf934f4e269b6bf26cd0289')
