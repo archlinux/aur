@@ -1,13 +1,13 @@
 pkgbase = artwork-breath
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.manjaro.org/artwork/themes/breath
 	arch = any
 	license = LGPL
 	makedepends = extra-cmake-modules
 	makedepends = plasma-framework
-	source = breath-0.4.0-1.tar.gz::https://gitlab.manjaro.org/artwork/themes/breath/-/archive/master/breath-32f53e151801b584c138fbf20d1b3b3e93e583d7.tar.gz
-	sha256sums = ef3276f1ee4fa0bbcf2ec798e278b0e006e410c69efbc69f4cdc7708af0147e8
+	source = breath-0.4.0-2.tar.gz::https://gitlab.manjaro.org/artwork/themes/breath/-/archive/master/breath-970d907b9682236caa176c737f86b42972140dc3.tar.gz
+	sha256sums = e5128df5f907e04cf658c8c52cfe70ea738d954634fecddb9fc979081c53660e
 
 pkgname = breath-icon-theme
 	pkgdesc = breath icon theme
