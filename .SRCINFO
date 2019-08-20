@@ -1,0 +1,16 @@
+pkgbase = randomart
+	pkgdesc = Generate ASCII randomart by hashing input with BLAKE2b and using an adapted drunken bishop alogirthm.
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://github.com/ansemjo/randomart
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-numpy
+	provides = randomart
+	conflicts = randomart
+	source = https://github.com/ansemjo/randomart/archive/0.2.3/randomart-0.2.3.tar.gz
+	sha256sums = 8b0cf1c98945e86d631520234ba37340426d5740b1021b9c6a5fa52a8ff3132d
+
+pkgname = randomart
+
