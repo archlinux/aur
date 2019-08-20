@@ -1,0 +1,19 @@
+pkgbase = cantools-git
+	pkgdesc = Cantools is a set of libraries and command line tools for handling.
+	pkgver = r59.d6f0a5a
+	pkgrel = 1
+	url = https://github.com/aheit/cantools
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = bison
+	makedepends = flex
+	makedepends = autoconf
+	depends = libmatio
+	depends = check
+	source = cantools-git::git+https://github.com/aheit/cantools
+	md5sums = SKIP
+
+pkgname = cantools-git
+
