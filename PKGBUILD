@@ -1,71 +1,47 @@
 #Maintainer: Iwan Timmer <irtimmer@gmail.com>
 
-pkgname=kubernetes
-pkgver=1.15.2
-_contribver=f4ce29dd35b68f538a5845d7e294bbf056d5d215
+pkgbase=kubernetes
+pkgname=(kubelet kubeadm)
+pkgver=1.15.3
 pkgrel=1
-pkgdesc="Production-Grade Container Scheduling and Management"
-depends=('glibc' 'bash')
-makedepends=('go' 'rsync' 'go-bindata')
-optdepends=('etcd: etcd cluster required to run Kubernetes')
-arch=('x86_64' 'i686')
-source=("$pkgname-$pkgver.tar.gz::https://dl.k8s.io/v$pkgver/kubernetes-src.tar.gz"
-        "https://github.com/kubernetes/contrib/archive/$_contribver.tar.gz"
-        "kubernetes.install")
-noextract=("$pkgname-$pkgver.tar.gz")
+arch=('x86_64')
 url="http://kubernetes.io/"
-license=("APACHE")
-backup=('etc/kubernetes/apiserver'
-        'etc/kubernetes/config'
-        'etc/kubernetes/controller-manager'
-        'etc/kubernetes/kubelet'
-        'etc/kubernetes/proxy'
-        'etc/kubernetes/scheduler')
-install=kubernetes.install
-sha256sums=('6f07bf2b375cbfcb1ba1040ed7a218ecdae12a04ae42a878030811180b64623e'
-            '4bd2a2f4fc2a17b78dd53a8f7312760b4028d600d14006a3cdf5768b28b44b27'
-            'fb6fce3ef4b793863286dafb5856ce28027427005d6c6fd44162844921ab714b')
-
-prepare() {
-    mkdir -p $srcdir/$pkgname-$pkgver
-    tar -xf $srcdir/$pkgname-$pkgver.tar.gz -C $srcdir/$pkgname-$pkgver
-}
+pkgdesc="Production-Grade Container Scheduling and Management"
+makedepends=('go-pie' 'rsync')
+source=("kubernetes-$pkgver.tar.gz::https://dl.k8s.io/v$pkgver/kubernetes-src.tar.gz"
+	"kubelet.default")
+license=("Apache")
+sha512sums=('2f2a304c11e2aaf68e339c970ebd919fa1ce5913e3a6f47ac51be080de9300a7cd91267e637b4fa6cbd945d0de6d4263badb06a6bb3160dc03cd422b0a818963'
+            'bd8bfcb4de9866e1e61beb37d8caae5f553fb406744c62bee226033dde746c11b47a536b1557664fe7cacb0c702234e08561e7460426e25667fe7e1e9b913adc')
 
 build() {
-    cd $srcdir/$pkgname-$pkgver
-    
-    make -j1
-    hack/generate-docs.sh
+    make WHAT="cmd/kubelet cmd/kubeadm"
 }
 
-package() {
-    cd $srcdir/$pkgname-$pkgver
+package_kubelet() {
+    pkgdesc='Kubernetes Node Agent'
+    depends=(conntrack-tools ebtables ethtool iptables socat cni-plugins)
+    optdepends=('docker: container runtime'
+		'containerd: container runtime'
+		'cri-o: container runtime')
+    backup=('etc/default/kubelet')
 
-    [ "$CARCH" = 'i686' ] && _kubearch=386
-    [ "$CARCH" = 'x86_64' ] && _kubearch=amd64
+    install -Dm755 _output/bin/kubelet -t "$pkgdir/usr/bin"
 
-    binaries=(apiextensions-apiserver cloud-controller-manager kube-proxy kube-apiserver kube-controller-manager kubelet kubeadm kubemark hyperkube kube-scheduler kubectl kubemark)
-    for bin in "${binaries[@]}"; do
-        install -Dm755 _output/local/bin/linux/$_kubearch/$bin $pkgdir/usr/bin/$bin
-    done
-   
-    # install manpages
-    install -d $pkgdir/usr/share/man/man1/
-    install -pm 644 docs/man/man1/* $pkgdir/usr/share/man/man1
+    install -Dm644 build/debs/kubelet.service -t "$pkgdir/usr/lib/systemd/system"
+    install -Dm644 kubelet.default "$pkgdir/etc/default/kubelet"
+}
 
-    # install the place the kubelet defaults to put volumes
-    install -d $pkgdir/var/lib/kubelet
+package_kubeadm() {
+    pkgdesc='Kubernetes Cluster Bootstrapping Tool'
+    depends=(kubelet kubectl crictl)
 
-    cd $srcdir/contrib-$_contribver
+    install -Dm755 _output/bin/kubeadm -t "$pkgdir/usr/bin"
 
-    # install config files
-    install -dm 755 $pkgdir/etc/kubernetes/
-    install -m 644 -t $pkgdir/etc/kubernetes/ init/systemd/environ/*
-    
-    # install service files
-    install -dm 755 $pkgdir/usr/lib/systemd/system
-    install -m 644 -t $pkgdir/usr/lib/systemd/system init/systemd/*.service
+    install -Dm644 build/debs/kubeadm.conf -t "$pkgdir/usr/lib/modules-load.d"
+    install -Dm644 build/debs/10-kubeadm.conf -t "$pkgdir/etc/systemd/system/kubelet.service.d"
+    install -Dm644 build/debs/50-kubeadm.conf -t "$pkgdir/etc/sysctl.d"
 
-    install -dm 755 $pkgdir/usr/lib/tmpfiles.d
-    install -m 644 -t $pkgdir/usr/lib/tmpfiles.d init/systemd/tmpfiles.d/*.conf
+    "$pkgdir/usr/bin/kubeadm" completion bash | install -Dm644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/kubeadm"
+    "$pkgdir/usr/bin/kubeadm" completion zsh | install -Dm644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_kubeadm"
 }
