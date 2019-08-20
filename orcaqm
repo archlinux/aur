@@ -1,0 +1,8 @@
+#!/usr/bin/bash
+
+export LD_LIBRARY_PATH="/opt/orca:$LD_LIBRARY_PATH"
+export PATH="/opt/orca:$PATH"
+
+/opt/orca/orca "$@"
+
+exit 0
