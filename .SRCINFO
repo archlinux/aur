@@ -1,13 +1,13 @@
 pkgbase = manifold-cli-bin
 	pkgdesc = Manages Manifold services and config from the command line
 	pkgver = 0.15.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/manifoldco/manifold-cli
 	arch = x86_64
 	license = BSD
 	conflicts = manifold-cli
 	source = https://github.com/manifoldco/manifold-cli/releases/download/v0.15.1/manifold-cli_0.15.1_linux_amd64.tar.gz
-	sha1sums = 2827c2c37daa93fb3f65e6beca29f650215edd4d
+	sha256sums = 5dd34e1064fd3cde1888a397ee9de2315eaf8bb6a406039983fd1f26f6684aa6
 
 pkgname = manifold-cli-bin
 
