@@ -2,12 +2,12 @@
 
 pkgname=pecl-mcrypt
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Bindings for the libmcrypt library"
 arch=('i686' 'x86_64')
 url="https://pecl.php.net/package/mcrypt"
 license=('PHP')
-depends=('php' 'libmcrypt' 'php-pear')
+depends=('php' 'libmcrypt')
 makedepends=('autoconf' 're2c')
 source=(http://pecl.php.net/get/mcrypt-${pkgver}.tgz)
 install=mcrypt.install
