@@ -86,33 +86,32 @@ build() {
 }
 
 check() {
-  cd "${srcdir}/${pkgname}-src-r${pkgver}"
-
-  export SCONSFLAGS="$MAKEFLAGS"
-
-  scons unittests "${_scons_args[@]}"
-
-  # These use mlock(), which will fail under systemd-nspawn (using devtools)
+  # Before 4.2.0, only 8 unit tests would fail under devtools, because mlock() is not available under systemd-nspawn
   # See https://jira.mongodb.org/browse/SERVER-32773
-  # "systemd-detect-virt" outputs "systemd-nspawn" as root, but "none" as builduser
+  # 4.2.0 uses mlock() in many more places.  At first attempt, I had 24 tests pass, and 345 skipped due to the failing test.
+  # After repeatedly re-running check() to find additional failures and increasing skipping 8 unit tests to 27, only had an extra 2 passing
+  # Disabling unit tests entirely, the db tests fail as well
+  # Also disabling the db tests, the integration tests fail as well
+  # It's not practical to re-run check() hundreds of more times to pick up a few additional tests, so they will just all be skipped through devtools
+
+  # I'd use "systemd-detect-virt" to detect systemd-nspawn, but it only succeeds running as root, saying there is "none" as builduser
   if [[ -f /chrootbuild ]]; then
-    sed -i "/build\/opt\/mongo\/base\/secure_allocator_test/d" build/unittests.txt
-    sed -i "/build\/opt\/mongo\/crypto\/mechanism_scram_test/d" build/unittests.txt
-    sed -i "/build\/opt\/mongo\/db\/auth\/authorization_manager_test/d" build/unittests.txt
-    sed -i "/build\/opt\/mongo\/db\/auth\/authorization_session_test/d" build/unittests.txt
-    sed -i "/build\/opt\/mongo\/db\/auth\/sasl_mechanism_registry_test/d" build/unittests.txt
-    sed -i "/build\/opt\/mongo\/db\/auth\/sasl_scram_test/d" build/unittests.txt
-    sed -i "/build\/opt\/mongo\/db\/auth\/user_document_parser_test/d" build/unittests.txt
-    sed -i "/build\/opt\/mongo\/db\/logical_session_id_test/d" build/unittests.txt
+    echo "devtools detected, skipping check() because tests fail not being able to use mlock() within systemd-nspawn"
+  else
+    cd "${srcdir}/${pkgname}-src-r${pkgver}"
+
+    export SCONSFLAGS="$MAKEFLAGS"
+
+    scons unittests "${_scons_args[@]}"
+
+    python "${srcdir}/${pkgname}-src-r${pkgver}/buildscripts/resmoke.py" --suites=unittests
+
+    scons dbtest "${_scons_args[@]}"
+    python "${srcdir}/${pkgname}-src-r${pkgver}/buildscripts/resmoke.py" --suites=dbtest
+
+    scons integration_tests "${_scons_args[@]}"
+    python "${srcdir}/${pkgname}-src-r${pkgver}/buildscripts/resmoke.py" --suites=integration_tests_replset,integration_tests_standalone --dbpathPrefix="${srcdir}"
   fi
-
-  python "${srcdir}/${pkgname}-src-r${pkgver}/buildscripts/resmoke.py" --suites=unittests
-
-  scons dbtest "${_scons_args[@]}"
-  python "${srcdir}/${pkgname}-src-r${pkgver}/buildscripts/resmoke.py" --suites=dbtest
-
-  scons integration_tests "${_scons_args[@]}"
-  python "${srcdir}/${pkgname}-src-r${pkgver}/buildscripts/resmoke.py" --suites=integration_tests_replset,integration_tests_standalone --dbpathPrefix="${srcdir}"
 }
 
 package() {
