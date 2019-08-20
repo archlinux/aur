@@ -5,7 +5,7 @@
 _gemname=jekyll
 pkgname=$_gemname
 pkgver=3.8.6
-pkgrel=3
+pkgrel=4
 pkgdesc='A simple, blog aware, static site generator.'
 arch=('any')
 url='https://github.com/jekyll/jekyll'
@@ -23,8 +23,6 @@ depends=('ruby>=2.1.0'
     'ruby-safe_yaml>=1.0' 'ruby-safe_yaml<2.0'
     'ruby-i18n>=0.7' 'ruby-i18n<1.0'
     'ruby-em-websocket>=0.5' 'ruby-em-websocket<1.0'
-    'ruby-public_suffix-3>=3.0' 'ruby-public_suffix-3<3.9'
-
     )
 optdepends=('ruby-jekyll-paginate'
     'ruby-jekyll-gist'

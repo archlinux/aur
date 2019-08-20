@@ -1,7 +1,7 @@
 pkgbase = jekyll
 	pkgdesc = A simple, blog aware, static site generator.
 	pkgver = 3.8.6
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/jekyll/jekyll
 	arch = any
 	license = MIT
@@ -30,8 +30,6 @@ pkgbase = jekyll
 	depends = ruby-i18n<1.0
 	depends = ruby-em-websocket>=0.5
 	depends = ruby-em-websocket<1.0
-	depends = ruby-public_suffix-3>=3.0
-	depends = ruby-public_suffix-3<3.9
 	optdepends = ruby-jekyll-paginate
 	optdepends = ruby-jekyll-gist
 	optdepends = ruby-jekyll-feed
