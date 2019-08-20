@@ -6,7 +6,7 @@
 # Contributor: Angel 'angvp' Velasquez <angvp@archlinux.com.ve>
 
 pkgname=mantisbt
-pkgver=2.21.1
+pkgver=2.21.2
 pkgrel=1
 pkgdesc='Web-based issue tracking system'
 arch=('any')
@@ -29,7 +29,7 @@ source=("https://downloads.sourceforge.net/project/${pkgname}/mantis-stable/${pk
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles"
         "${pkgname}.uwsgi")
-sha512sums=('cc7f9c46a55753e08ddde6c351139f6c8f77fd23e35ffc2668fbe393d80054138442d6db3cfde1087ee52ce1a4441661aaa1f3acdd1ea1d718b31a6b86144bf8'
+sha512sums=('ac4dd21662ef2e8fdfac328c9591ed94d6f89bd76c451b10ad3a1c4c240f710e6f012201296fe4acab7c22796f4202bdb458268452009063169c31caf2951467'
             '3fd4e7faad7774892abfd20006ae3efcd7b0ba315447da9cea8d7352d5fd1e7f0c558d3855ad4e667a0bfe6ae0d95d12c848a78d53312521a7f551f2edca723e'
             'b1b9145d1ba423055d5e45734a9d74c639b75ae5b5d580024b50626332a74830dd39b976de590549ff1c47c400ba4e1c20b27b69fb140f7d8527d8d281d0c7bd'
             '1b36d8956986360306eb15a9279c54eba46e74dfe0623dc26b3be3e8f409ab4f0afe6b34a9001cbeb9f33452fec5ccc8089a53352fa885894cc262ca9c12bc39')
@@ -48,7 +48,7 @@ prepare() {
 package() {
   cd "${pkgname}-${pkgver}"
   # configuration
-  install -vDm 644 config/config_inc.php.sample \
+  install -vDm 640 config/config_inc.php.sample \
     "${pkgdir}/etc/webapps/${pkgname}/config_inc.php"
   install -vDm 644 ${srcdir}/*.php -t "${pkgdir}/etc/webapps/${pkgname}"
   # web application
