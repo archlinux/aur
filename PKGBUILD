@@ -3,13 +3,13 @@
 _pkgname=python-omemo-backend-signal
 _pkgname2=python2-omemo-backend-signal
 pkgname=("python-omemo-backend-signal-git" "python2-omemo-backend-signal-git")
-pkgver=r7.3df3d98
+pkgver=r12.60bcacd
 pkgrel=1
 pkgdesc="A backend for python-omemo offering compatibility with libsignal."
 url="https://github.com/Syndace/${_pkgname}"
 license=('MIT')
 arch=('any')
-makedepends=('python-setuptools' 'python2-setuptools')
+makedepends=('git' 'python-setuptools' 'python2-setuptools')
 source=("${_pkgname}::git+https://github.com/Syndace/${_pkgname}.git")
 sha256sums=('SKIP')
 
