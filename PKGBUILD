@@ -4,12 +4,12 @@
 
 pkgname=rr
 pkgver=5.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Record and Replay framework: lightweight recording and deterministic debugging'
 arch=(i686 x86_64)
 url='http://rr-project.org/'
 license=('custom')
-depends=('python2-pexpect' 'gdb' 'capnproto')
+depends=('gdb' 'capnproto')
 makedepends=('git' 'cmake' 'gdb' 'ninja')
 source=(
 	$pkgname-$pkgver.tar.gz::https://github.com/mozilla/${pkgname}/archive/${pkgver}.tar.gz
