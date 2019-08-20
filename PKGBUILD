@@ -4,7 +4,7 @@
 _pkgauthor=tsenart
 _upstream_pkgname=vegeta
 pkgname=vegeta-bin
-pkgver=12.5.1
+pkgver=12.6.0
 pkgrel=1
 pkgdesc="Vegeta is a versatile HTTP load testing tool built out of a need to drill HTTP services with a constant request rate. It can be used both as a command line utility and a library."
 arch=('x86_64')
@@ -23,9 +23,10 @@ url="https://github.com/${_pkgauthor}/${_upstream_pkgname}"
 license=("MIT")
 # https://github.com/tsenart/vegeta/releases/download/v12.0.0/vegeta-linux-amd64.tar.gz
 # https://github.com/tsenart/vegeta/releases/download/cli/v12.1.0/vegeta-12.1.0-linux-amd64.tar.gz
-source=("${_upstream_pkgname}-${pkgver}-${_goos}-${_goarch}.tar.gz::https://github.com/${_pkgauthor}/${_upstream_pkgname}/releases/download/cli/v${pkgver}/${_upstream_pkgname}-${pkgver}-${_goos}-${_goarch}.tar.gz"
+# https://github.com/tsenart/vegeta/releases/download/v12.6.0/vegeta-12.6.0-linux-amd64.tar.gz
+source=("${_upstream_pkgname}-${pkgver}-${_goos}-${_goarch}.tar.gz::https://github.com/${_pkgauthor}/${_upstream_pkgname}/releases/download/v${pkgver}/${_upstream_pkgname}-${pkgver}-${_goos}-${_goarch}.tar.gz"
   "LICENSE::https://raw.githubusercontent.com/${_pkgauthor}/${_upstream_pkgname}/master/LICENSE")
-sha256sums=('1b43d5ef5227e0384af2d8cd5b452f4d8a99e257500217275be7a5b5415e9296'
+sha256sums=('06427b6489c13b1b701e704b7e147b62a86da73ea3bd17182066334be169830a'
             '374db7067e9e238a74a5c3d25d9f17d5a6fb885e4b6392897ceffcabb274fd7c')
 
 package() {
