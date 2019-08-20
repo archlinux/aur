@@ -2,7 +2,7 @@
 
 pkgbase=python-doublex-expects
 pkgname=('python-doublex-expects' 'python2-doublex-expects')
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="Expects matchers for Doublex test doubles assertions"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('python-setuptools' 'python2-setuptools' 'python-doublex' 'python2-
              'python-expects' 'python2-expects')
 checkdepends=('python-mamba' 'python2-mamba')
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/jaimegildesagredo/doublex-expects/archive/v$pkgver.tar.gz")
-sha512sums=('68aac0e9d8e6dae3c7007cf59e32ba8ea96f3d70377112431e10e59984ec6167e8fca57e0428e01ddcdd3b7f1c784e04c0a6837f7d297b1fcebf130c022b8f7c')
+sha512sums=('2aaff2e58556ed9eb91ebb418e65058367411e011e843afb5adb08ab69705b6bdfb478d3052aae093ad1c1a1b49ba1e084e4c5510acde4874182a658330e3448')
 
 build() {
   cd doublex-expects-$pkgver
