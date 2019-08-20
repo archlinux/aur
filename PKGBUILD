@@ -9,8 +9,8 @@
 
 pkgname=mongodb
 # #.<odd number>.# releases are unstable development/testing
-pkgver=4.0.12
-pkgrel=2
+pkgver=4.2.0
+pkgrel=1
 pkgdesc="A high-performance, open source, schema-free document-oriented database"
 arch=("x86_64")
 url="https://www.${pkgname}.com/"
@@ -26,7 +26,7 @@ source=(
   "${pkgname}.sysusers"
   "${pkgname}.tmpfiles"
 )
-sha256sums=('2132def2478c7d45b028a9b79db346a19f9c56f456b52c0ff243982c89c20dc9'
+sha256sums=('c7214ee7bda3cf9566e8776a8978706d9827c1b09017e17b66a5a4e0c0731e1f'
             '3757d548cfb0e697f59b9104f39a344bb3d15f802608085f838cb2495c065795'
             'b7d18726225cd447e353007f896ff7e4cbedb2f641077bce70ab9d292e8f8d39')
 
