@@ -1,10 +1,11 @@
 pkgbase = python-omemo-backend-signal
 	pkgdesc = A backend for python-omemo offering compatibility with libsignal.
 	pkgver = 0.2.4.beta
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Syndace/python-omemo-backend-signal
 	arch = any
 	license = MIT
+	makedepends = git
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
 	source = python-omemo-backend-signal::git+https://github.com/Syndace/python-omemo-backend-signal.git#tag=v0.2.4-beta
