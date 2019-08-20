@@ -1,0 +1,11 @@
+[Unit]
+Description=Project Calorina - a complete rewrite of cleardns.
+After=network.target
+
+[Service]
+Type=simple
+Restart=on-abort
+ExecStart=/usr/bin/calorina -c %E/calorina/config.toml
+
+[Install]
+WantedBy=multi-user.target

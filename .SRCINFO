@@ -1,0 +1,16 @@
+pkgbase = calorina-git
+	pkgdesc = Project Calorina - a complete rewrite of cleardns
+	pkgver = 3.2.1.r0.g8978847
+	pkgrel = 1
+	url = https://gitlab.com/NickCao/calorina
+	arch = x86_64
+	license = GPL3
+	makedepends = go
+	backup = etc/calorina/config.toml
+	source = git+https://gitlab.com/NickCao/calorina
+	source = calorina.service
+	md5sums = SKIP
+	md5sums = 2e9c6347d4876f4ac42243a01af8dfad
+
+pkgname = calorina-git
+
