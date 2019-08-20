@@ -4,7 +4,7 @@
 # Contributor: Bruno Pagani <archange at archlinux dot org>
 
 pkgname=mattermost-desktop
-pkgver=4.2.1
+pkgver=4.2.3
 pkgrel=2
 pkgdesc="Mattermost Desktop application for Linux (Beta)"
 arch=('i686' 'x86_64')
@@ -15,22 +15,19 @@ makedepends=('npm' 'git')
 source=(
     "${pkgname}-${pkgver}.tar.gz"::"${url}/archive/v${pkgver}.tar.gz"
     "${pkgname}.sh"
-    "${pkgname/-/.}"
     "${pkgname%%-*}-package-json.patch"
-    "https://github.com/mattermost/desktop/commit/40257cf93e153a84a94f888aea3225788fbb9d3a.patch"
 )
-sha512sums=('54484871cdeb52f70241b6f154215f7aaeaa0aac0abae4293e19988032e18a50fa1744dbecab5ce333c35f4ba151434101b68f49c7a256cd3aaf70395fc94afb'
-            'ec10960a56593429996f153d0832345d1f9279aa386d5d09f078aed39a5e8e4c3d1900fc8ff608318c9c57a161c3850b2c7924d86af0ae41f76649c080fccc1f'
-            'a8db88c1db7cba497ee2a1db059430d235942052322b26a2ece7a1340a28ae24686630fa89a37fcfa6bf9f277cbf8a7018ce78e7117b247b2b408fa0fb709d84'
-            '09605ae4d5b6fe895f1ca9904984393ea7e2a3c08ca519e270d3d26fa0b14ae353c374bfd5917055f7fa3034f33a428e5bcd9b6c70c64dcbdf106a1733de023a'
-            'beb984681a1a381de59e6eb3b5dc65a8fbffe3f4a14bf9568f4b18c7394d45c449386a033de34ea625e59b17b7a85273040ea86472455ff2ce177d0b12ff9ea1')
+sha512sums=(
+    '478124a2cf9fff618035d408a73176fd68c21d16fdbecc307c621bf576d9bbdd2663a52a1dd4be6e3a0ea52029270d3f1d92c2180f0158b3c29d4116630c6f37'
+    'ec10960a56593429996f153d0832345d1f9279aa386d5d09f078aed39a5e8e4c3d1900fc8ff608318c9c57a161c3850b2c7924d86af0ae41f76649c080fccc1f'
+    'c5e6f14152eb325eab4cf43355f586a82975210a48599cb5b555eb56a4d25d3d66f669a95056baac43cb0372208ac954aa726d901411c9f16b8884c3a19777ed'
+)
 
 prepare() {
     cd "desktop-${pkgver}"
 
     # Bump dependencies. Temporary patch. Remove when 4.3 is out.
     patch < "${srcdir}"/mattermost-package-json.patch
-    patch -p1 < "${srcdir}"/40257cf93e153a84a94f888aea3225788fbb9d3a.patch
 
     # Depending on the architecture, in order to accelerate the build process,
     # removes the compilation of ia32 or x64 build.
