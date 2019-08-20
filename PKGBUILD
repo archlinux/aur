@@ -252,6 +252,7 @@ prepare() {
   # Status: 2
   # Comment: Can't be cleanly applied on 3.32 without lot of cherry-pick unrelated commits...
   patch -Np1 < ../429.diff
+  git add clutter/clutter/*.{c,h}
 
   # Title: Implement clipboard manager
   # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/320
@@ -273,6 +274,13 @@ prepare() {
   # Status: 2
   # Comment:
   git_cp_by_msg '!719' 'clutter/stage-cogl: Remove pending_swaps counter'
+
+  # Title: clutter: Use va_marshallers for actor signals
+  # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/700
+  # Type: 1
+  # Status: 4
+  # Comment:
+  git cherry-pick -n c4a9117e^..9d65eab5 -Xours
 }
 
 build() {
