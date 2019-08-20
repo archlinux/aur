@@ -1,0 +1,149 @@
+diff --git a/clutter/clutter/clutter-stage-private.h b/clutter/clutter/clutter-stage-private.h
+index 2812b5fac..1a583ba2b 100644
+--- a/clutter/clutter/clutter-stage-private.h
++++ b/clutter/clutter/clutter-stage-private.h
+@@ -83,6 +83,7 @@ void _clutter_stage_push_pick_clip (ClutterStage       *stage,
+                                     const ClutterPoint  vertices[4]);
+ 
+ void _clutter_stage_pop_pick_clip (ClutterStage *stage);
++int64_t  _clutter_stage_get_next_presentation_time        (ClutterStage *stage);
+ 
+ ClutterActor *_clutter_stage_do_pick (ClutterStage    *stage,
+                                       gint             x,
+diff --git a/clutter/clutter/clutter-stage-window.c b/clutter/clutter/clutter-stage-window.c
+index 5da7c50f5..312ce0c3e 100644
+--- a/clutter/clutter/clutter-stage-window.c
++++ b/clutter/clutter/clutter-stage-window.c
+@@ -178,6 +178,22 @@ _clutter_stage_window_clear_update_time (ClutterStageWindow *window)
+   iface->clear_update_time (window);
+ }
+ 
++int64_t
++_clutter_stage_window_get_next_presentation_time (ClutterStageWindow *window)
++{
++  ClutterStageWindowInterface *iface;
++
++  g_return_val_if_fail (CLUTTER_IS_STAGE_WINDOW (window), 0);
++
++  iface = CLUTTER_STAGE_WINDOW_GET_IFACE (window);
++
++  /* If not implemented then just revert to the old behaviour... */
++  if (iface->get_next_presentation_time == NULL)
++    return _clutter_stage_window_get_update_time (window);
++
++  return iface->get_next_presentation_time (window);
++}
++
+ void
+ _clutter_stage_window_add_redraw_clip (ClutterStageWindow    *window,
+                                        cairo_rectangle_int_t *stage_clip)
+diff --git a/clutter/clutter/clutter-stage-window.h b/clutter/clutter/clutter-stage-window.h
+index f0aa3d3e9..6fd5200d9 100644
+--- a/clutter/clutter/clutter-stage-window.h
++++ b/clutter/clutter/clutter-stage-window.h
+@@ -69,6 +69,8 @@ struct _ClutterStageWindowInterface
+   GList            *(* get_views)               (ClutterStageWindow *stage_window);
+   int64_t           (* get_frame_counter)       (ClutterStageWindow *stage_window);
+   void              (* finish_frame)            (ClutterStageWindow *stage_window);
++
++  int64_t           (* get_next_presentation_time) (ClutterStageWindow *stage_window);
+ };
+ 
+ ClutterActor *    _clutter_stage_window_get_wrapper        (ClutterStageWindow *window);
+@@ -115,6 +117,8 @@ void              _clutter_stage_window_finish_frame            (ClutterStageWin
+ 
+ int64_t           _clutter_stage_window_get_frame_counter       (ClutterStageWindow *window);
+ 
++int64_t           _clutter_stage_window_get_next_presentation_time (ClutterStageWindow *window);
++
+ G_END_DECLS
+ 
+ #endif /* __CLUTTER_STAGE_WINDOW_H__ */
+diff --git a/clutter/clutter/clutter-stage.c b/clutter/clutter/clutter-stage.c
+index 982c1da6c..2e4c4d674 100644
+--- a/clutter/clutter/clutter-stage.c
++++ b/clutter/clutter/clutter-stage.c
+@@ -3908,6 +3908,21 @@ _clutter_stage_clear_update_time (ClutterStage *stage)
+     _clutter_stage_window_clear_update_time (stage_window);
+ }
+ 
++int64_t
++_clutter_stage_get_next_presentation_time (ClutterStage *stage)
++{
++  ClutterStageWindow *stage_window;
++
++  if (CLUTTER_ACTOR_IN_DESTRUCTION (stage))
++    return 0;
++
++  stage_window = _clutter_stage_get_window (stage);
++  if (stage_window == NULL)
++    return 0;
++
++  return _clutter_stage_window_get_next_presentation_time (stage_window);
++}
++
+ /**
+  * clutter_stage_set_no_clear_hint:
+  * @stage: a #ClutterStage
+diff --git a/clutter/clutter/cogl/clutter-stage-cogl.c b/clutter/clutter/cogl/clutter-stage-cogl.c
+index fe7444d7e..89ace1983 100644
+--- a/clutter/clutter/cogl/clutter-stage-cogl.c
++++ b/clutter/clutter/cogl/clutter-stage-cogl.c
+@@ -217,7 +217,12 @@ clutter_stage_cogl_schedule_update (ClutterStageWindow *stage_window,
+   stage_cogl->update_time = next_presentation_time - max_render_time_allowed;
+ 
+   if (stage_cogl->update_time == stage_cogl->last_update_time)
+-    stage_cogl->update_time = stage_cogl->last_update_time + refresh_interval;
++    {
++      stage_cogl->update_time += refresh_interval;
++      next_presentation_time += refresh_interval;
++    }
++
++  stage_cogl->next_presentation_time = next_presentation_time;
+ }
+ 
+ static gint64
+@@ -235,6 +240,15 @@ clutter_stage_cogl_clear_update_time (ClutterStageWindow *stage_window)
+ 
+   stage_cogl->last_update_time = stage_cogl->update_time;
+   stage_cogl->update_time = -1;
++  stage_cogl->next_presentation_time = -1;
++}
++
++static int64_t
++clutter_stage_cogl_get_next_presentation_time (ClutterStageWindow *stage_window)
++{
++  ClutterStageCogl *stage_cogl = CLUTTER_STAGE_COGL (stage_window);
++
++  return stage_cogl->next_presentation_time;
+ }
+ 
+ static ClutterActor *
+@@ -975,6 +989,7 @@ clutter_stage_window_iface_init (ClutterStageWindowInterface *iface)
+   iface->schedule_update = clutter_stage_cogl_schedule_update;
+   iface->get_update_time = clutter_stage_cogl_get_update_time;
+   iface->clear_update_time = clutter_stage_cogl_clear_update_time;
++  iface->get_next_presentation_time = clutter_stage_cogl_get_next_presentation_time;
+   iface->add_redraw_clip = clutter_stage_cogl_add_redraw_clip;
+   iface->has_redraw_clips = clutter_stage_cogl_has_redraw_clips;
+   iface->ignoring_redraw_clips = clutter_stage_cogl_ignoring_redraw_clips;
+@@ -1024,6 +1039,7 @@ _clutter_stage_cogl_init (ClutterStageCogl *stage)
+   stage->refresh_rate = 0.0;
+ 
+   stage->update_time = -1;
++  stage->next_presentation_time = -1;
+ }
+ 
+ static void
+diff --git a/clutter/clutter/cogl/clutter-stage-cogl.h b/clutter/clutter/cogl/clutter-stage-cogl.h
+index 53d0267de..1d83d5525 100644
+--- a/clutter/clutter/cogl/clutter-stage-cogl.h
++++ b/clutter/clutter/cogl/clutter-stage-cogl.h
+@@ -53,6 +53,7 @@ struct _ClutterStageCogl
+   gint64 last_presentation_time;
+   gint64 update_time;
+   int64_t last_update_time;
++  int64_t next_presentation_time;
+ 
+   /* We only enable clipped redraws after 2 frames, since we've seen
+    * a lot of drivers can struggle to get going and may output some
