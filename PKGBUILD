@@ -1,4 +1,5 @@
 # Maintainer: Ckat <ckat@teknik.io>
+# Contributor: Ryan Farley <ryan.farley@gmx.com>
 
 pkgname=dina-font-otb
 pkgver=2.92
