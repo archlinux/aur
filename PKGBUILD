@@ -19,13 +19,23 @@ pkgver() {
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+build_python-x3dh-git() {
+    cd ${_pkgname}
+    python3 setup.py build
+}
+
+build_python2-x3dh-git() {
+    cd ${_pkgname}
+    python2 setup.py build
+}
+
 package_python-x3dh-git() {
     depends=('python-xeddsa-git')
     provides=("${_pkgname}")
     conflicts=("${_pkgname}")
 
     cd ${_pkgname}
-    python3 setup.py install --root="${pkgdir}" --optimize=1
+    python3 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
 
 package_python2-x3dh-git() {
@@ -34,5 +44,5 @@ package_python2-x3dh-git() {
     conflicts=("${_pkgname2}")
 
     cd ${_pkgname}
-    python2 setup.py install --root="${pkgdir}" --optimize=1
+    python2 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
