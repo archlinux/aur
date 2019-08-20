@@ -18,6 +18,16 @@ pkgver() {
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+build_python-omemo-backend-signal-git() {
+    cd ${_pkgname}
+    python3 setup.py build
+}
+
+build_python2-omemo-backend-signal-git() {
+    cd ${_pkgname}
+    python2 setup.py build
+}
+
 package_python-omemo-backend-signal-git() {
     depends=('python-cryptography'
              'python-xeddsa-git'
@@ -29,7 +39,7 @@ package_python-omemo-backend-signal-git() {
     conflicts=("${_pkgname}")
 
     cd ${_pkgname}
-    python3 setup.py install --root="${pkgdir}" --optimize=1
+    python3 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
 
 package_python2-omemo-backend-signal-git() {
@@ -43,5 +53,5 @@ package_python2-omemo-backend-signal-git() {
     conflicts=("${_pkgname2}")
 
     cd ${_pkgname}
-    python2 setup.py install --root="${pkgdir}" --optimize=1
+    python2 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
