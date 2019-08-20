@@ -3,14 +3,14 @@
 pkgname=python-publicsuffix2
 pkgver=2.20190812
 _pkgver=2.2019-08-12
-pkgrel=1
+pkgrel=2
 pkgdesc='Get a public suffix for a domain name using the Public Suffix List'
 arch=(any)
 url=https://github.com/nexb/python-publicsuffix2
 license=(MIT)
 depends=(python)
 makedepends=(python-setuptools)
-source=(publicsuffix2-$_pkgver.tar.gz::$url/archive/release-$_pkgver.tar.gz)
+source=($pkgname-$_pkgver.tar.gz::$url/archive/release-$_pkgver.tar.gz)
 sha512sums=('e3d7484b19d4c8afe8cf93b9c5e8cc1782f81d84018458a18837b958794fe6e0e6bf3fdb940e60dcfc82a72f4517eb46baaae231a7fc280e03320bae39238b74')
 
 pkgver() {
