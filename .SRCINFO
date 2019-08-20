@@ -1,0 +1,27 @@
+pkgbase = rkward-git
+	pkgdesc = An Easy to use, transparent frontend to the R-language
+	pkgver = v0.7.0b.r500.g394128e8
+	pkgrel = 1
+	url = https://rkward.kde.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = docbook-xsl
+	makedepends = git
+	makedepends = extra-cmake-modules
+	makedepends = kdoctools
+	depends = qt5-base
+	depends = r
+	depends = docbook-xml
+	depends = kxmlgui
+	depends = kcodecs
+	depends = kdewebkit
+	provides = rkward
+	conflicts = rkward-git
+	conflicts = rkward
+	source = git+https://anongit.kde.org/rkward.git#branch=master
+	md5sums = SKIP
+
+pkgname = rkward-git
+
