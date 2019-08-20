@@ -1,6 +1,6 @@
 # Maintainer: Josh Hoffer < hoffer.joshua@gmail.com > 
 pkgname=awx
-pkgver=4.0.0
+pkgver=6.1.0
 pkgrel=1
 pkgdesc="AWX provides a web-based user interface, REST API, and task engine built on top of Ansible."
 arch=('any')
@@ -22,4 +22,4 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-md5sums=('85879bded35749857dbd224c3e0eb152')
+md5sums=('6ba1f7b70d1a6664cc8464aa0f0d7ad3')
