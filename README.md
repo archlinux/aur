@@ -1,4 +1,4 @@
-# AUR-azure-kinect-sensor-sdk
+# AUR-azure-kinect-sensor-sdk-git
 
 Created in response to
 https://github.com/microsoft/Azure-Kinect-Sensor-SDK/issues/631
