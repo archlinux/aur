@@ -1,0 +1,21 @@
+pkgbase = phono3py
+	pkgdesc = phono3py calculates phonon-phonon interaction and related properties using the supercell approach
+	pkgver = 1.17.0
+	pkgrel = 1
+	url = https://atztogo.github.io/phono3py
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	makedepends = python
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-h5py
+	depends = python-pyaml
+	depends = python-matplotlib
+	depends = openblas
+	depends = lapacke
+	source = https://github.com/atztogo/phono3py/archive/v1.17.0.tar.gz
+	sha512sums = 4b17748a89bba48373a5fbecc9d395876853d8637f0864c5c5ecc183144583820d11d9f1ca5f21bc7cdddf36bb7d3a765d3e6c71564f2c6dc8135bf8d1573fff
+
+pkgname = phono3py
+
