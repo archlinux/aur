@@ -1,8 +1,8 @@
 pkgbase = perl-cache-simple-timedexpiry
 	pkgdesc = Perl package providing a lightweight cache with timed expiration
 	pkgver = 0.27
-	pkgrel = 1
-	url = http://search.cpan.org/dist/Cache-Simple-TimedExpiry
+	pkgrel = 2
+	url = https://metacpan.org/release/Cache-Simple-TimedExpiry
 	arch = any
 	license = PerlArtistic
 	license = GPL
