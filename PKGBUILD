@@ -1,4 +1,5 @@
 # Maintainer: Ryan Farley <ryan.farley@gmx.com>
+# Contributor: Andreas Bosch (progandy) <linux+aur@progandy.de>
 pkgname=fonttosfnt-git
 pkgver=r83.c214ab0
 pkgrel=1
@@ -7,7 +8,7 @@ arch=(x86_64)
 url="https://gitlab.freedesktop.org/xorg/app/fonttosfnt"
 license=('MIT')
 depends=(libfontenc freetype2)
-makedepends=(git libfontenc freetype2) # 'bzr', 'git', 'mercurial' or 'subversion'
+makedepends=(git make autoconf automake xproto) # 'bzr', 'git', 'mercurial' or 'subversion'
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://gitlab.freedesktop.org/xorg/app/fonttosfnt.git'
