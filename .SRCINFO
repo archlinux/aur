@@ -1,16 +1,16 @@
 pkgbase = python-scanpydoc
 	pkgdesc = A series of Sphinx extensions to get easy to maintain, numpydoc style documentation.
-	pkgver = 0.3.3
-	pkgrel = 2
+	pkgver = 0.3.5
+	pkgrel = 1
 	url = https://github.com/theislab/scanpydoc
 	arch = any
 	license = GPL3
 	depends = python-sphinx
 	depends = python-get_version
 	depends = python-future-fstrings
-	noextract = scanpydoc-0.3.3-py3-none-any.whl
-	source = https://files.pythonhosted.org/packages/py3/s/scanpydoc/scanpydoc-0.3.3-py3-none-any.whl
-	sha256sums = 91869ec0faed3c1f760c302098e85790ad4b69d7c859c4d0277613131c75cca8
+	noextract = scanpydoc-0.3.5-py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py3/s/scanpydoc/scanpydoc-0.3.5-py3-none-any.whl
+	sha256sums = a752462a3ab2e81297461d824c296f8f5c1482f24e6461b6a8a59245dd716498
 
 pkgname = python-scanpydoc
 
