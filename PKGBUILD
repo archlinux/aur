@@ -4,7 +4,7 @@ _pkgname=python-doubleratchet
 _pkgname2=python2-doubleratchet
 pkgbase=${_pkgname}-git
 pkgname=("${_pkgname}-git" "${_pkgname2}-git")
-pkgver=r33.d4497af
+pkgver=r35.95524cf
 pkgrel=1
 pkgdesc="A python implementation of the Double Ratchet algorithm"
 url='https://github.com/Syndace/python-doubleratchet'
@@ -19,6 +19,16 @@ pkgver() {
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+build_python-doubleratchet-git() {
+    cd ${_pkgname}
+    python3 setup.py build
+}
+
+build_python2-doubleratchet-git() {
+    cd ${_pkgname}
+    python2 setup.py build
+}
+
 package_python-doubleratchet-git() {
     depends=('python-pynacl'
              'python-cryptography')
@@ -26,7 +36,7 @@ package_python-doubleratchet-git() {
     conflicts=("${_pkgname}")
 
     cd ${_pkgname}
-    python3 setup.py install --root="${pkgdir}" --optimize=1
+    python3 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
 
 package_python2-doubleratchet-git() {
@@ -36,5 +46,5 @@ package_python2-doubleratchet-git() {
     conflicts=("${_pkgname2}")
 
     cd ${_pkgname}
-    python2 setup.py install --root="${pkgdir}" --optimize=1
+    python2 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
