@@ -20,6 +20,16 @@ pkgver() {
     printf "%s" "$(git describe --tags | sed -e 's/^v//;s/-/./g')"
 }
 
+build_python-omemo-syndace() {
+    cd ${_pkgname}
+    python3 setup.py build
+}
+
+build_python2-omemo-syndace() {
+    cd ${_pkgname}
+    python2 setup.py build
+}
+
 package_python-omemo-syndace() {
     depends=('python-pynacl'
              'python-cryptography'
@@ -29,7 +39,7 @@ package_python-omemo-syndace() {
              'python-protobuf')
 
     cd ${_pkgname}
-    python3 setup.py install --root="${pkgdir}" --optimize=1
+    python3 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
 
 package_python2-omemo-syndace() {
@@ -41,5 +51,5 @@ package_python2-omemo-syndace() {
              'python2-protobuf')
 
     cd ${_pkgname}
-    python2 setup.py install --root="${pkgdir}" --optimize=1
+    python2 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
