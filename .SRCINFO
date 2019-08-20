@@ -1,6 +1,6 @@
 pkgbase = mate-menu
 	pkgdesc = Advanced menu for MATE Panel, a fork of MintMenu
-	pkgver = 19.04.0
+	pkgver = 19.10.1
 	pkgrel = 1
 	url = https://github.com/ubuntu-mate/mate-menu
 	arch = any
@@ -17,8 +17,8 @@ pkgbase = mate-menu
 	depends = python-setproctitle
 	depends = mate-menus
 	depends = python-unidecode
-	source = mate-menu-19.04.0.tar.gz::https://github.com/ubuntu-mate/mate-menu/archive/19.04.0.tar.gz
-	sha256sums = dbcf2af2c12fbbf4a9014aecd42f46ff159ff94a2d1efc0603abc5431a06a3aa
+	source = mate-menu-19.10.1.tar.gz::https://github.com/ubuntu-mate/mate-menu/archive/19.10.1.tar.gz
+	sha256sums = 52e5c8ea9c441cb46b2d454e0315c71511260eec09ceeacadca63454c81775c3
 
 pkgname = mate-menu
 
