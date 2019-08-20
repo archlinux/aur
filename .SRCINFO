@@ -10,6 +10,7 @@ pkgbase = fonttosfnt-git
 	makedepends = autoconf
 	makedepends = automake
 	makedepends = xproto
+	makedepends = xorg-util-macros
 	depends = libfontenc
 	depends = freetype2
 	provides = fonttosfnt
