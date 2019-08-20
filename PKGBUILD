@@ -14,7 +14,7 @@ pkgname=(
   java-openjfx-src
 )
 pkgver=12.0.2.u1
-pkgrel=1
+pkgrel=2
 pkgdesc='Java OpenJFX 12 client application platform (open-source implementation of JavaFX)'
 arch=(x86_64)
 url=https://wiki.openjdk.java.net/display/OpenJFX/Main
@@ -96,10 +96,10 @@ package_java-openjfx() {
 
   cd rt-${pkgver//.u/+}
 
-  install -dm 755  "${pkgdir}"/usr/{lib/jvm/java-12-openjdk,share/licenses}
-  cp -dr --no-preserve=ownership build/sdk/lib "${pkgdir}"/usr/lib/jvm/java-12-openjdk/
-  rm "${pkgdir}"/usr/lib/jvm/java-12-openjdk/lib/src.zip
-  cp -dr --no-preserve=ownership build/jmods "${pkgdir}"/usr/lib/jvm/java-12-openjdk/
+  install -dm 755  "${pkgdir}"/usr/{lib/jvm/java-12-openjfx,share/licenses}
+  cp -dr --no-preserve=ownership build/sdk/lib "${pkgdir}"/usr/lib/jvm/java-12-openjfx/
+  rm "${pkgdir}"/usr/lib/jvm/java-12-openjfx/lib/src.zip
+  cp -dr --no-preserve=ownership build/jmods "${pkgdir}"/usr/lib/jvm/java-12-openjfx/
   cp -dr --no-preserve=ownership build/sdk/legal "${pkgdir}"/usr/share/licenses/java-openjfx
 }
 
@@ -114,8 +114,8 @@ package_java-openjfx-doc() {
 package_java-openjfx-src() {
   cd rt-${pkgver//.u/+}
 
-  install -dm 755  "${pkgdir}"/usr/{lib/jvm/java-12-openjdk,share/licenses}
-  install -m 644 build/sdk/lib/src.zip "${pkgdir}"/usr/lib/jvm/java-12-openjdk/javafx-src.zip
+  install -dm 755  "${pkgdir}"/usr/{lib/jvm/java-12-openjfx,share/licenses}
+  install -m 644 build/sdk/lib/src.zip "${pkgdir}"/usr/lib/jvm/java-12-openjfx/javafx-src.zip
   ln -s java-openjfx "${pkgdir}"/usr/share/licenses/java-openjfx-src
 }
 
