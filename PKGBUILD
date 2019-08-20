@@ -25,10 +25,12 @@ source=(
   "http://downloads.${pkgname}.org/src/${pkgname}-src-r${pkgver}.tar.gz"
   "${pkgname}.sysusers"
   "${pkgname}.tmpfiles"
+  "systemLibraries.patch"
 )
 sha256sums=('c7214ee7bda3cf9566e8776a8978706d9827c1b09017e17b66a5a4e0c0731e1f'
             '3757d548cfb0e697f59b9104f39a344bb3d15f802608085f838cb2495c065795'
-            'b7d18726225cd447e353007f896ff7e4cbedb2f641077bce70ab9d292e8f8d39')
+            'b7d18726225cd447e353007f896ff7e4cbedb2f641077bce70ab9d292e8f8d39'
+            '2879392baba8af386e623751818b692b8101ead6e9d4fe0de92fef97e54f284a')
 
 _scons_args=(
   --use-system-pcre
@@ -70,6 +72,10 @@ prepare() {
   # If MongoDB needs a long time to start, prevent systemd from restarting it every 90 seconds
   # See: https://jira.mongodb.org/browse/SERVER-38086
   sed -i 's/\[Service]/[Service]\nTimeoutStartSec=infinity/' rpm/mongod.service
+
+  # Allow 4.2.0 to use system libraries
+  # See: https://jira.mongodb.org/browse/SERVER-42787
+  patch -Np1 -i "${srcdir}/systemLibraries.patch"
 }
 
 build() {
