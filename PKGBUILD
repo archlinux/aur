@@ -4,13 +4,13 @@ _pkgname=python-x3dh
 _pkgname2=python2-x3dh
 pkgbase=${_pkgname}-git
 pkgname=("${_pkgname}-git" "${_pkgname2}-git")
-pkgver=r42.26a0997
+pkgver=r49.a951c0a
 pkgrel=1
 pkgdesc="A python implementation of the Extended Triple Diffie-Hellman key agreement protocol"
 url="https://github.com/Syndace/${_pkgname}"
 license=('MIT')
 arch=('any')
-makedepends=('python-setuptools' 'python2-setuptools')
+makedepends=('git' 'python-setuptools' 'python2-setuptools')
 source=("${_pkgname}::git+https://github.com/Syndace/${_pkgname}.git")
 sha256sums=('SKIP')
 
