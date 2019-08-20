@@ -7,7 +7,7 @@
 
 pkgname=mutter-performance
 pkgver=3.32.2+43+gb7f158811
-pkgrel=14
+pkgrel=15
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -33,11 +33,29 @@ pkgver() {
   git describe --tags | sed 's/-/+/g'
 }
 
+hash_of() {
+  git log --oneline --all | grep "$1" | tail -n 1 | awk '{print $1}'
+}
+
+git_cp_by_msg() {
+  # Comment: Saren found a way to fetch hash based on commit name. It's controversial but might be interesting to create a function to call for each MR to not have to update the hash at each rebase.
+  h_first=$(hash_of "$2")
+  if [[ -n "$3" ]]; then
+    h_last=$(hash_of "$3")
+    echo "Found $h_first^$h_last for $1"
+    git cherry-pick -n -Xtheirs $h_first^..$h_last
+  else
+    echo "Found $h_first for $1"
+    git cherry-pick -n -Xtheirs $h_first
+  fi
+}
+
 prepare() {
   cd $pkgname
 
   ### Adding and fetching remotes providing the selected merge-requests
 
+  git cherry-pick --abort || true
   git remote add vanvugt https://gitlab.gnome.org/vanvugt/mutter.git || true
   git fetch vanvugt
 
@@ -115,14 +133,17 @@ prepare() {
   # Type: 1
   # Status: 2
   # Comment: Replaces !168
-  git cherry-pick -n 1b0cc2dd^..da16c479
+  git_cp_by_msg '!711' 'clutter/device-manager-evdev: Update device modifiers before queuing' 'clutter/stage: Only queue compressible events'
 
   # Title: Resource scale computation optimizations
   # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/493
   # Type: 1
   # Status: 3
   # Comment: Disabled because breaks the overview on Wayland. https://gitlab.gnome.org/GNOME/mutter/merge_requests/493#note_549833
-  # git cherry-pick -n 3aa449af^..1017ce44
+  if [ -f "$HOME/.i_dont_use_wayland_on_gnome" ]; then
+    echo "OK, you dont use wayland on gnome"
+    git cherry-pick -n 3aa449af^..1017ce44
+  fi
 
   # Title: clutter: Defer actor allocations till shown
   # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/677
@@ -135,18 +156,15 @@ prepare() {
   # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/575
   # Type: 1
   # Status: 2
-  # Comment: Saren found a way to fetch hash based on commit name. It's controversial but might be interesting to create a function to call for each MR to not have to update the hash at each rebase.
-  h_first=$(git log --oneline --all | grep "clutter/stage: Add an API for shallow relayouts" | tail -n 1 | awk '{print $1}') # Sorry guys
-  h_last=$(git log --oneline --all | grep 'clutter/actor: Use the new shallow relayout API' | tail -n 1 | awk '{print $1}') # Sorry guys
-  echo "Found $h_first^$h_last for MR575"
-  git cherry-pick -n $h_first^..$h_last
+  git_cp_by_msg '!575' 'clutter/stage: Add an API for shallow relayouts' 'clutter/actor: Use the new shallow relayout API'
 
   # Title: cogl: Remove GLX "threaded swap wait" used on Nvidia
   # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/602
   # Type: 1
   # Status: 2
   # Comment:
-  git cherry-pick -n -Xtheirs df38ad3c
+  git_cp_by_msg '!602' 'cogl: Remove GLX "threaded swap wait" used on Nvidia'
+  # git cherry-pick -n -Xtheirs df38ad3c
 
   # Title: compositor: Don't emit size-changed when only position changes
   # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/568
@@ -174,7 +192,10 @@ prepare() {
   # Type: 1
   # Status: 4
   # Comment: Disabled by default because it has issues when using multiple layouts
-  # git cherry-pick -n b01edc22
+  if [ -f "$HOME/.i_dont_use_multiple_keyboard_layouts" ]; then
+    echo "OK, you dont use multiple keyboard layouts"
+    git cherry-pick -n b01edc22
+  fi
 
   # Title: Fix background texture corruption when resuming from suspend on Nvidia
   # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/600
@@ -246,12 +267,12 @@ prepare() {
   # Comment: Needed for !719 to behave well
   git cherry-pick -n fecc57dd
 
-  # Title: clutter/stage-cogl: Don't return uptime_time=-1 when pending_swaps
+  # Title: clutter/stage-cogl: Remove pending_swaps counter
   # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/719
   # Type: 1
   # Status: 2
   # Comment:
-  git cherry-pick -n 1130b19b^..d2989eb8
+  git_cp_by_msg '!719' 'clutter/stage-cogl: Remove pending_swaps counter'
 }
 
 build() {
