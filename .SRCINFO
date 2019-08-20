@@ -1,5 +1,5 @@
 pkgbase = openmpi3-gcc7
-	pkgdesc = High performance message passing library (MPI)
+	pkgdesc = High performance message passing library (MPI), version 3 (built with GCC7)
 	pkgver = 3.1.4
 	pkgrel = 1
 	url = https://www.open-mpi.org
