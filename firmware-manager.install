@@ -1,0 +1,7 @@
+post_install() {
+	systemctl --user enable com.system76.FirmwareManager.Notify.timer
+}
+
+post_remove() {
+	systemctl --user disable com.system76.FirmwareManager.Notify.timer
+}
