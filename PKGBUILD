@@ -2,7 +2,7 @@
 # Maintainer: BlackEagle < ike DOT devolder AT gmail DOT com >
 
 pkgname=opera-ffmpeg-codecs
-pkgver=75.0.3770.142
+pkgver=76.0.3809.100
 pkgrel=1
 pkgdesc="additional support for proprietary codecs for opera"
 arch=('x86_64')
@@ -17,7 +17,7 @@ options=('!strip')
 source=(
   "https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz"
 )
-sha512sums=('89534fafe06281cf8ac328f7a17c192f4a03cbc8e6b410626ea2e7993231b4ba195b4190a3f183fad63a03602df7b763a776f10802b1330c737f0249bf17a792')
+sha512sums=('63cfb45dc6bb0b1662ba4ffebc6313c24d65dae10a61752575e34a24d8d3d6f80e0422a984b560b259c299d6e493dfa177907201a1c1f785a7e294c9a03bd8a1')
 
 prepare() {
   cd "$srcdir/chromium-$pkgver"
