@@ -1,6 +1,6 @@
 pkgbase = kubeless-git
 	pkgdesc = A Kubernetes-native serverless framework that lets you deploy small bits of code without having to worry about the underlying infrastructure plumbing.
-	pkgver = v1.0.2.r2.g2df5c61e
+	pkgver =  v1.0.4.r3.gba4c1a02
 	pkgrel = 1
 	url = https://github.com/kubeless/kubeless
 	arch = x86_64
@@ -19,4 +19,3 @@ pkgbase = kubeless-git
 	sha256sums = SKIP
 
 pkgname = kubeless-git
-

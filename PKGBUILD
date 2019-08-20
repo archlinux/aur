@@ -4,7 +4,7 @@
 _pkgauthor=kubeless
 _upstream_pkgname=kubeless
 pkgname=kubeless-git
-pkgver=v1.0.2.r2.g2df5c61e
+pkgver=v1.0.4.r3.gba4c1a02
 pkgrel=1
 pkgdesc="A Kubernetes-native serverless framework that lets you deploy small bits of code without having to worry about the underlying infrastructure plumbing."
 arch=('x86_64')
@@ -21,7 +21,7 @@ makedepends=(
   "git"
   "wget"
 )
-_builddepends_bins_path="/tmp/build/bin"
+_builddepends_bins_path="$HOME/tmp/build/bin"
 provides=()
 conflicts=()
 replaces=()
