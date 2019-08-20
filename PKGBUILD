@@ -6,8 +6,8 @@ pkgname=(qemu-pinning qemu-pinning-headless qemu-pinning-arch-extra qemu-pinning
          qemu-pinning-block-{iscsi,rbd,gluster} qemu-pinning-guest-agent)
 _pkgname=qemu
 pkgdesc="A generic and open source machine emulator and virtualizer. Patch from saveriomiroddi/qemu-pinning applied"
-pkgver=4.0.0
-pkgrel=2
+pkgver=4.1.0
+pkgrel=1
 arch=(x86_64)
 license=(GPL2 LGPL2.1)
 url="https://wiki.qemu.org/"
@@ -19,12 +19,12 @@ makedepends=(spice-protocol python2 ceph libiscsi glusterfs python-sphinx)
 source=(https://download.qemu.org/qemu-$pkgver.tar.xz{,.sig}
         qemu-ga.service
         65-kvm.rules
-        https://github.com/saveriomiroddi/qemu-pinning/commit/f2fff5faee2b4723472d2a69520b77e23a609962.diff)
-sha512sums=('952e94194ce9e64c15388c59035cb31fb9f761d30095c2fb9441012b609c18c9976285727b93bf37b95e15675802d73f8e1c4619ebecd23606675bb503646b13'
+        https://github.com/saveriomiroddi/qemu-pinning/commit/3c467032dca13f9a4b4a2316dbf904112dd2b364.diff)
+sha512sums=('82fd51702a7b9b1b00b2f1bd3b4a832b80249018dbba1add0b0a73e7d4bee452afd45574b4d8df7ce4477d8711f3bda4ca072a1a6de25895c93eb21cf78fc4b2'
             'SKIP'
             '269c0f0bacbd06a3d817fde02dce26c99d9f55c9e3b74bb710bd7e5cdde7a66b904d2eb794c8a605bf9305e4e3dee261a6e7d4ec9d9134144754914039f176e4'
             'bdf05f99407491e27a03aaf845b7cc8acfa2e0e59968236f10ffc905e5e3d5e8569df496fd71c887da2b5b8d1902494520c7da2d3a8258f7fd93a881dd610c99'
-            '02b1425b0230106a544de9ced11f440ac41ef2048c06e569da9279309d137061629c94fa1eecba7191845a9b158d64b04039bfa66a2529ab8f7c335d485db6db')
+            'SKIP')
 validpgpkeys=('CEACC9E15534EBABB82D3FA03353C9CEF108B584')
 
 case $CARCH in
@@ -38,9 +38,9 @@ prepare() {
 
   cd ${_pkgname}-${pkgver}
 
-  patch -p1 < ../f2fff5faee2b4723472d2a69520b77e23a609962.diff
+  patch -p1 < ../3c467032dca13f9a4b4a2316dbf904112dd2b364.diff
 
-  sed -i 's/vte-2\.90/vte-2.91/g' configure
+  #sed -i 's/vte-2\.90/vte-2.91/g' configure
 }
 
 build() {
@@ -64,7 +64,7 @@ _build() (
   export ARFLAGS=rv
 
   # http://permalink.gmane.org/gmane.comp.emulators.qemu/238740
-  export CFLAGS+=" -fPIC"
+  export CFLAGS+=" -fPIC -march=native -Ofast"
 
   ../${_pkgname}-${pkgver}/configure \
     --prefix=/usr \
