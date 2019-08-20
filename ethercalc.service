@@ -1,0 +1,16 @@
+[Unit]
+Description=Ethercalc (a web spreadsheet)
+After=syslog.target
+After=network.target
+After=redis.service
+
+[Service]
+User=ethercalc
+Group=ethercalc
+Type=simple
+WorkingDirectory=~
+EnvironmentFile=/etc/conf.d/ethercalc
+ExecStart=/usr/bin/ethercalc $ETHERCALC_ARGS
+
+[Install]
+WantedBy=multi-user.target
