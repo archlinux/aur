@@ -1,47 +1,22 @@
 # Maintainer: Philipp Claßen <philipp.classen@posteo.de>
 pkgname=buckaroo
-pkgver=1.5.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="A C++ package manager"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/LoopPerfect/buckaroo"
 license=('MIT')
-depends=('java-runtime' 'buck')
-makedepends=('')
+depends=('buck')
+options=(!strip)
 
-source=("https://github.com/LoopPerfect/${pkgname}/archive/v${pkgver}.tar.gz"
-        disable-analytics.patch)
-sha256sums=('e8c2bc83b967b49840c370a61c862ef3c63146ef4b4e6de901f9d6abb91025b0'
-            '9b8eb3b92afb718b151859379d409b5329bd02e7363cc298c444fd6db35b4478')
-
-prepare() {
-  # Make telemetry an opt-in feature by omitting the "analytics"
-  # property in the default configuration.
-  #
-  # If you want to enable it to support the development, add the
-  # following property to "~/.buckaroo/buckaroo.json" (this config
-  # will be created automatically after the first run):
-  #
-  #   "analytics": "https://analytics.buckaroo.pm"
-  #
-  # For more details, see the documentation:
-  # https://buckaroo.readthedocs.io/en/latest/installation.html#analytics
-  patch -Np1 -i "${srcdir}/disable-analytics.patch"
-}
-
-build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  buck build :buckaroo-cli
-}
+source=("https://github.com/LoopPerfect/buckaroo/releases/download/v${pkgver}/buckaroo-linux")
+sha256sums=('23f9a4145a3e51f1205a4b265374c548fc4a4e9156e5121285f5c5bdb4d3228c')
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  # Make telemetry an opt-in feature
+  mkdir -p "${pkgdir}/etc/profile.d"
+  echo "export BUCKAROO_TELEMETRY_OPT_OUT=1" > "${pkgdir}/etc/profile.d/buckaroo-telemetry-opt-out.sh"
 
-  install -Dm644 buck-out/gen/buckaroo-cli.jar ${pkgdir}/usr/lib/${pkgname}/buckaroo-cli.jar
-
-  mkdir -p ${pkgdir}/usr/bin
-  printf "#!/bin/sh\njava -jar /usr/lib/%s/buckaroo-cli.jar \"\$@\"\n" ${pkgname} > "${pkgdir}/usr/bin/buckaroo"
-  chmod 755 "${pkgdir}/usr/bin/buckaroo"
-
-  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  # Install the binary
+  install -Dm755 buckaroo-linux "${pkgdir}/usr/bin/buckaroo"
 }
