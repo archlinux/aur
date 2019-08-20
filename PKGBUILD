@@ -1,9 +1,9 @@
 # Maintainer: Ricardo Grim Cabrita <grimkriegor@krutt.org>
 
 pkgname=kotlin-language-server
-pkgver=0.1.13
-_commit=e3df0185ebcdf9502051fd806e45a9469e9d41e4
-pkgrel=2
+pkgver=0.3.0
+_commit=6ccc0bea196a88b242b90fe87477cb978d46d7ef
+pkgrel=1
 pkgdesc="Smart code completion, diagnostics and more for Kotlin using the Language Server Protocol"
 arch=(any)
 url="https://github.com/fwcd/KotlinLanguageServer.git"
@@ -28,7 +28,7 @@ package() {
       "${srcdir}/${pkgname}/server/build/install/server/" \
       "${pkgdir}/usr/share/kotlin/kotlin-language-server"
     ln -srf \
-      "${pkgdir}/usr/share/kotlin/kotlin-language-server/bin/server" \
+      "${pkgdir}/usr/share/kotlin/kotlin-language-server/bin/kotlin-language-server" \
       "${pkgdir}/usr/bin/kotlin-language-server"
 }
 
