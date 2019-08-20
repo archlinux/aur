@@ -1,0 +1,36 @@
+pkgbase = aegisub-japan7
+	pkgdesc = A fork of aegisub project with custom predefined configuration
+	pkgver = 3.2.2.r396.deaf588af
+	pkgrel = 1
+	url = https://github.com/odrling/Aegisub
+	arch = x86_64
+	license = GPL
+	license = BSD
+	makedepends = autoconf-archive
+	makedepends = boost
+	makedepends = git
+	makedepends = intltool
+	makedepends = lua
+	makedepends = mesa
+	depends = alsa-lib
+	depends = boost-libs
+	depends = fftw
+	depends = fontconfig
+	depends = hunspell
+	depends = icu
+	depends = libass.so
+	depends = libffms2.so
+	depends = libgl
+	depends = libpulse
+	depends = uchardet
+	depends = wxgtk3
+	depends = zlib
+	provides = aegisub
+	conflicts = aegisub
+	source = aegisub::git+https://github.com/odrling/Aegisub.git
+	source = git+https://github.com/Aegisub/assdraw.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = aegisub-japan7
+
