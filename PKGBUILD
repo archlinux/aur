@@ -1,9 +1,9 @@
 # Maintainer: Leo Mao <leomaoyw at gmail dot com>
 pkgname=python-torchaudio-git
 _pkgname=audio
-pkgver=0.4.0a0+a450cf8
+pkgver=r172.fc9fb93
 pkgrel=1
-pkgdesc="simple audio I/O for pytorch"
+pkgdesc="Data manipulation and transformation for audio signal processing, powered by PyTorch"
 arch=('any')
 url="https://github.com/pytorch/audio"
 _github='pytorch/audio'
@@ -20,7 +20,8 @@ pkgver () {
   cd "${_pkgname}"
   (
     set -o pipefail
-    python setup.py --version 2>/dev/null | tail -n 1
+    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
 }
 
