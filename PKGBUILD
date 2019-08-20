@@ -20,6 +20,16 @@ pkgver() {
     printf "%s" "$(git describe --tags | sed -e 's/^v//;s/-/./')"
 }
 
+build_python-doubleratchet() {
+    cd ${_pkgname}
+    python3 setup.py build
+}
+
+build_python2-doubleratchet() {
+    cd ${_pkgname}
+    python2 setup.py build
+}
+
 package_python-doubleratchet() {
     depends=('python-pynacl'
              'python-cryptography')
@@ -27,7 +37,7 @@ package_python-doubleratchet() {
     conflicts=("${_pkgname}")
 
     cd ${_pkgname}
-    python3 setup.py install --root="${pkgdir}" --optimize=1
+    python3 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
 
 package_python2-doubleratchet() {
@@ -37,5 +47,5 @@ package_python2-doubleratchet() {
     conflicts=("${_pkgname2}")
 
     cd ${_pkgname}
-    python2 setup.py install --root="${pkgdir}" --optimize=1
+    python2 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
