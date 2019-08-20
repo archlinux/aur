@@ -4,7 +4,6 @@ pkgbase = listen-moe-desktop-git
 	pkgrel = 1
 	url = https://github.com/LISTEN-moe/desktop-app
 	arch = x86_64
-	license = GPL3
 	makedepends = git
 	makedepends = npm
 	source = git+https://github.com/LISTEN-moe/desktop-app.git

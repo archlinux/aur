@@ -7,7 +7,6 @@ pkgrel=1
 pkgdesc="Official LISTEN.moe Desktop Client"
 arch=('x86_64')
 url="https://github.com/LISTEN-moe/${__pkgname}"
-license=('GPL3')
 makedepends=('git' 'npm')
 source=("git+https://github.com/LISTEN-moe/${__pkgname}.git"
         "listen-moe-desktop.desktop")
