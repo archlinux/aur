@@ -1,10 +1,10 @@
 # CPAN Name  : autodie
-# Contributor: Anton Leontiev <bunder /at/ t-25.ru>
-# Generator  : CPANPLUS::Dist::Arch 1.30
+# Contributor: Anton Leontiev <scileont /at/ gmail.com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname=perl-autodie
 pkgver=2.29
-pkgrel=1
+pkgrel=2
 pkgdesc='Replace functions with ones that succeed or die with lexical scope'
 arch=('any')
 url='https://metacpan.org/release/autodie'
@@ -28,5 +28,5 @@ check() {
 package() {
 	cd autodie-2.29
 	make install DESTDIR="$pkgdir"
-	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+	find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
 }

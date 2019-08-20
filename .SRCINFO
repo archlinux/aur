@@ -1,7 +1,7 @@
 pkgbase = perl-autodie
 	pkgdesc = Replace functions with ones that succeed or die with lexical scope
 	pkgver = 2.29
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/autodie
 	arch = any
 	license = PerlArtistic
