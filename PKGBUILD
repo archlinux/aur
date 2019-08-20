@@ -28,7 +28,7 @@ pkgver () {
 build() {
   msg "Building Python 3"
   cd "${srcdir}/${_pkgname}"
-  python setup.py build_ext
+  python setup.py build
 }
 
 package() {
