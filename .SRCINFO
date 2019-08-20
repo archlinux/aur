@@ -1,0 +1,23 @@
+pkgbase = azure-kinect-sensor-sdk-git
+	pkgdesc = A cross platform user mode SDK to read data from Azure Kinect devices.
+	pkgver = v1.2.0.beta.1.r4.4b37ca7d
+	pkgrel = 1
+	url = https://github.com/microsoft/Azure-Kinect-Sensor-SDK
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	depends = libsoundio
+	depends = libxinerama
+	depends = libxrandr
+	depends = libglvnd
+	depends = libxcursor
+	depends = systemd-libs
+	provides = azure-kinect-sensor-sdk
+	conflicts = azure-kinect-sensor-sdk
+	source = azure-kinect-sensor-sdk::git+https://github.com/microsoft/Azure-Kinect-Sensor-SDK
+	md5sums = SKIP
+
+pkgname = azure-kinect-sensor-sdk-git
+

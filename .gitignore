@@ -1,0 +1,5 @@
+pkg/
+src/
+Azure-Kinect-Sensor-SDK/
+azure-kinect-sensor-sdk/
+*.tar.xz

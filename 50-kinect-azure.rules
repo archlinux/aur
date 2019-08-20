@@ -1,0 +1,2 @@
+# /etc/udev/rules.d/50-kinect-azure.rules
+SUBSYSTEM=="usb", ATTR{idVendor}=="045e", TAG+="uaccess"
