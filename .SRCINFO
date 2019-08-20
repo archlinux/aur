@@ -1,0 +1,17 @@
+pkgbase = killjoy-notifier-logfile-git
+	pkgdesc = Log unit state changes on behalf of killjoy
+	pkgver = 0
+	pkgrel = 1
+	url = https://github.com/Ichimonji10/killjoy-notifier-logfile
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = rust
+	depends = dbus
+	provides = killjoy-notifier-logfile
+	conflicts = killjoy-notifier-logfile
+	source = git+https://github.com/Ichimonji10/killjoy-notifier-logfile.git
+	sha256sums = SKIP
+
+pkgname = killjoy-notifier-logfile-git
+
