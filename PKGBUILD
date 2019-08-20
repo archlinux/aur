@@ -267,7 +267,7 @@ prepare() {
   # Comment: Needed for !719 to behave well
   git cherry-pick -n fecc57dd
 
-  # Title: clutter/stage-cogl: Remove pending_swaps counter
+  # Title: Remove pending_swaps counter
   # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/719
   # Type: 1
   # Status: 2
