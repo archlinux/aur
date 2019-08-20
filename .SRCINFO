@@ -1,7 +1,7 @@
 pkgbase = python-doubleratchet
 	pkgdesc = A python implementation of the Double Ratchet algorithm
 	pkgver = 0.7.0.beta
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Syndace/python-doubleratchet
 	arch = any
 	license = MIT
