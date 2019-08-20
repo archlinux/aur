@@ -8,7 +8,7 @@ pkgbase = rofi-autorandr
 	depends = rofi
 	depends = autorandr
 	source = rofi-autorandr-1.0.6.tar.gz::https://github.com/pawndev/rofi-autorandr/archive/1.0.6.tar.gz
-	md5sums = 738b24f32ac9168abd64901757d237cf
+	md5sums = 8893f11cdb4dbe8b17add87c8232028e
 
 pkgname = rofi-autorandr
 
