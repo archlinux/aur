@@ -7,7 +7,7 @@
 
 pkgname=mapnik-git
 _pkgname=mapnik
-pkgver=3.0.20.805.gb7e486d3c
+pkgver=3.0.20.1032.ge80dd063b
 pkgrel=1
 pkgdesc="Free Toolkit for developing mapping applications. Above all Mapnik is about rendering beautiful maps (git version)"
 arch=('i686' 'x86_64')
@@ -57,5 +57,5 @@ build() {
 
 package(){
 	cd "$srcdir/$_pkgname"
-	make DESTDIR="$pkgdir" install
+	JOBS=$(nproc) make DESTDIR="$pkgdir" install
 }
