@@ -3,13 +3,13 @@
 # Contributor: Bertram Felgenhauer <int-e@gmx.de>
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 pkgname=camlidl
-pkgver=1.06
+pkgver=1.07
 _pkgver=${pkgver/\./}
-pkgrel=4
+pkgrel=1
 pkgdesc="A stub code generator and COM binding for Objective Caml (OCaml)"
 arch=('i686' 'x86_64')
 url="https://github.com/xavierleroy/camlidl"
-license=('custom')
+license=(LGPL2.1)
 depends=('ocaml')
 options=(staticlibs)
 source=("https://github.com/xavierleroy/$pkgname/archive/$pkgname$_pkgver.tar.gz"
@@ -31,10 +31,7 @@ package() {
   make BINDIR="$_bindir" OCAMLLIB="$_ocamldir" install
 
   install -Dm644 "$srcdir/META.camlidl" "$_ocamldir/$pkgname/META"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-sha1sums=('674c75608faa841caea5a3d3c75dc8ff58d5c5a4'
-          'aeaa511cd2e98e312182cb49da3ecc8da8d72e76')
-sha256sums=('abf490f1b07f23ed8c9f050475832436c56db22c40083c87f89cb5d4250cf12a'
+sha256sums=('aa00c826017ba5d56f7bbed4a1c2e3ab98318e32dd6cdff849a3bffb85597961'
             'ed7c8db53b950f62bfe3d1f99081a42787f7b17358dcdcc0e842daacdd5c70b2')
