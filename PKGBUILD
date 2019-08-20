@@ -16,7 +16,7 @@ arch=("x86_64")
 url="https://www.${pkgname}.com/"
 license=("custom:SSPL")
 # lsb-release::/etc/lsb-release required by src/mongo/util/processinfo_linux.cpp::getLinuxDistro()
-depends=("curl" "libstemmer" "lsb-release" "pcre" "wiredtiger>=3.1.1.20190808" "yaml-cpp")
+depends=("curl" "libstemmer" "lsb-release" "pcre" "yaml-cpp" "snappy" "gperftools")
 optdepends=("${pkgname}-tools: mongoimport, mongodump, mongotop, etc")
 makedepends=("scons" "python-psutil" "python-setuptools" "python-regex" "python-cheetah3" "python-yaml" "python-requests")
 checkdepends=("python-pymongo")
@@ -37,7 +37,7 @@ _scons_args=(
   --use-system-snappy
   --use-system-yaml
   --use-system-zlib
-  --use-system-wiredtiger
+  #--use-system-wiredtiger # https://jira.mongodb.org/browse/SERVER-42813 upstream broke this in 4.2.0, says in meantime not to use it
   --use-system-stemmer
   --use-sasl-client
   --ssl

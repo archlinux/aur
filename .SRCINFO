@@ -17,8 +17,9 @@ pkgbase = mongodb
 	depends = libstemmer
 	depends = lsb-release
 	depends = pcre
-	depends = wiredtiger>=3.1.1.20190808
 	depends = yaml-cpp
+	depends = snappy
+	depends = gperftools
 	optdepends = mongodb-tools: mongoimport, mongodump, mongotop, etc
 	backup = etc/mongodb.conf
 	source = http://downloads.mongodb.org/src/mongodb-src-r4.2.0.tar.gz
