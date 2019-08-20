@@ -20,19 +20,16 @@ pkgver() {
 
 prepare() {
     cd $srcdir/$pkgname
-	ls
     autoreconf -vif
+    ./configure CFLAGS="-fPIC"
 }
 
 build() {
     cd $srcdir/$pkgname/
-
-    ./configure CFLAGS="-fPIC"
     make
 }
 
 package() {
     cd $srcdir/$pkgname/
-
     make install DESTDIR=$pkgdir
 }
