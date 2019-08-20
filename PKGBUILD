@@ -4,13 +4,13 @@ _pkgname=python-doubleratchet
 _pkgname2=python2-doubleratchet
 pkgbase=${_pkgname}-git
 pkgname=("${_pkgname}-git" "${_pkgname2}-git")
-pkgver=r30.352f0fd
+pkgver=r33.d4497af
 pkgrel=1
 pkgdesc="A python implementation of the Double Ratchet algorithm"
 url='https://github.com/Syndace/python-doubleratchet'
 license=('MIT')
 arch=('any')
-makedepends=('python-setuptools' 'python2-setuptools')
+makedepends=('git' 'python-setuptools' 'python2-setuptools')
 source=("${_pkgname}::git+https://github.com/Syndace/${_pkgname}.git")
 sha256sums=('SKIP')
 
