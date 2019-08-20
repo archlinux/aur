@@ -2,12 +2,12 @@
 
 pkgname=openucx
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Unified Communication X (http://www.openucx.org)"
 arch=('any')
 url="http://www.openucx.org"
 license=('BSD')
-depends=('rdma-core')
+depends=('numactl' 'rdma-core')
 makedepends=('git')
 source=('git+https://github.com/openucx/ucx.git#tag=v1.4.0')
 noextract=()
@@ -16,7 +16,7 @@ md5sums=('SKIP')
 build() {
     cd $srcdir/ucx
     ./autogen.sh
-    ./contrib/configure-release --prefix=/usr
+    ./contrib/configure-release --prefix=/usr CFLAGS="-Wno-address-of-packed-member"
     make
 }
 

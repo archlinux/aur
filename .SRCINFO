@@ -6,6 +6,7 @@ pkgbase = openucx
 	arch = any
 	license = BSD
 	makedepends = git
+	depends = numactl
 	depends = rdma-core
 	source = git+https://github.com/openucx/ucx.git#tag=v1.4.0
 	md5sums = SKIP
