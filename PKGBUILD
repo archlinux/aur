@@ -1,7 +1,7 @@
 # Maintainer: Mario Finelli <mario at finel dot li>
 
 pkgname=kubesec
-pkgver=0.8.0
+pkgver=0.9.2
 pkgrel=1
 pkgdesc="Secure Secret management for Kubernetes."
 arch=(x86_64)
@@ -9,7 +9,7 @@ url="https://github.com/shyiko/kubesec"
 license=(Apache)
 makedepends=('glide')
 source=("https://github.com/shyiko/kubesec/archive/$pkgver.tar.gz")
-sha256sums=('41acf9f60ecb8edf4df5d61b8bc6df11cab7ee253b50fc8a0a426b4eca312089')
+sha256sums=('49c9a69fc7f4c3d9efba0cbc9110a76f8d3390c4333a97c26e8f868ed84b4078')
 
 prepare() {
   mkdir -p build/go && cd build/go
