@@ -12,7 +12,7 @@
 # Upstream: https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/master/extra/ffmpeg/PKGBUILD
 
 pkgname=ffmpeg-mmal
-pkgver=4.1.4
+pkgver=4.2
 pkgrel=1
 epoch=1
 pkgdesc='ffmpeg built with MMAL hardware acceleration support for Raspberry Pi'
@@ -32,6 +32,7 @@ depends=(
   libass.so
   libavc1394
   libbluray.so
+  libdav1d.so
   libdrm
   libfreetype.so
   libiec61883
@@ -107,6 +108,7 @@ build() {
     --enable-ladspa \
     --enable-libass \
     --enable-libbluray \
+    --enable-libdav1d \
     --enable-libdrm \
     --enable-libfreetype \
     --enable-libfribidi \
