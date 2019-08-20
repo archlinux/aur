@@ -128,7 +128,7 @@ prepare() {
   # Comment:
   git cherry-pick -n 4faeb127
 
-  # Title: clutter/stage: Don't queue incompressible events [performance]
+  # Title: clutter/stage: Only queue compressible events
   # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/711
   # Type: 1
   # Status: 2
