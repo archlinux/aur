@@ -1,8 +1,8 @@
 pkgbase = ungoogled-chromium-bin
 	pkgdesc = Modifications to Google Chromium for removing Google integration and enhancing privacy, control, and transparency (binary version)
-	pkgver = 75.0.3770.142
+	pkgver = 76.0.3809.100
 	pkgrel = 1
-	url = https://github.com/Eloston/ungoogled-chromium
+	url = https://github.com/ungoogled-software/ungoogled-chromium-binaries
 	arch = x86_64
 	license = BSD
 	depends = gtk3
@@ -24,6 +24,7 @@ pkgbase = ungoogled-chromium-bin
 	depends = jsoncpp
 	depends = openjpeg2
 	optdepends = pepper-flash: support for Flash content
+	optdepends = pipewire: WebRTC desktop sharing under Wayland
 	optdepends = kdialog: needed for file dialogs in KDE
 	optdepends = gnome-keyring: for storing passwords in GNOME keyring
 	optdepends = kwallet: for storing passwords in KWallet
@@ -31,8 +32,8 @@ pkgbase = ungoogled-chromium-bin
 	conflicts = chromium
 	conflicts = iridium
 	conflicts = ungoogled-chromium
-	source = https://github.com/rtMis/ungoogled-chromium-binaries/releases/download/75.0.3770.142-1/ungoogled-chromium-75.0.3770.142-1-x86_64.pkg.tar.xz
-	sha256sums = 5405deb13e7cdefe1e767a57beee9eae09fd4b4fcf6d46e91a9190e1a56fb96e
+	source = https://github.com/hammerpavel/ungoogled-chromium-binaries/releases/download/76.0.3809.100-1/ungoogled-chromium-76.0.3809.100-1-x86_64.pkg.tar.xz
+	sha256sums = 8205beb93747a3d6eb1398cc19eb45858861774ea391ed150b7ffb6286da124b
 
 pkgname = ungoogled-chromium-bin
 
