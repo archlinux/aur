@@ -18,8 +18,8 @@ license=("custom:SSPL")
 # lsb-release::/etc/lsb-release required by src/mongo/util/processinfo_linux.cpp::getLinuxDistro()
 depends=("curl" "libstemmer" "lsb-release" "pcre" "wiredtiger>=3.1.1.20190808" "yaml-cpp")
 optdepends=("${pkgname}-tools: mongoimport, mongodump, mongotop, etc")
-makedepends=("libpcap" "ncurses" "python2-cheetah" "python2-regex" "python2-requests" "python2-setuptools" "python2-typing" "python2-yaml" "readline" "python2-scons>=3.1.1")
-checkdepends=("python2-pymongo")
+makedepends=("scons" "python-psutil" "python-setuptools" "python-regex" "python-cheetah3" "python-yaml" "python-requests")
+checkdepends=("python-pymongo")
 backup=("etc/${pkgname}.conf")
 source=(
   "http://downloads.${pkgname}.org/src/${pkgname}-src-r${pkgver}.tar.gz"
@@ -76,7 +76,7 @@ build() {
   cd "${srcdir}/${pkgname}-src-r${pkgver}"
 
   export SCONSFLAGS="$MAKEFLAGS"
-  scons2 core "${_scons_args[@]}"
+  scons core "${_scons_args[@]}"
 }
 
 check() {
@@ -84,7 +84,7 @@ check() {
 
   export SCONSFLAGS="$MAKEFLAGS"
 
-  scons2 unittests "${_scons_args[@]}"
+  scons unittests "${_scons_args[@]}"
 
   # These use mlock(), which will fail under systemd-nspawn (using devtools)
   # See https://jira.mongodb.org/browse/SERVER-32773
@@ -100,19 +100,19 @@ check() {
     sed -i "/build\/opt\/mongo\/db\/logical_session_id_test/d" build/unittests.txt
   fi
 
-  python2 "${srcdir}/${pkgname}-src-r${pkgver}/buildscripts/resmoke.py" --suites=unittests
+  python "${srcdir}/${pkgname}-src-r${pkgver}/buildscripts/resmoke.py" --suites=unittests
 
-  scons2 dbtest "${_scons_args[@]}"
-  python2 "${srcdir}/${pkgname}-src-r${pkgver}/buildscripts/resmoke.py" --suites=dbtest
+  scons dbtest "${_scons_args[@]}"
+  python "${srcdir}/${pkgname}-src-r${pkgver}/buildscripts/resmoke.py" --suites=dbtest
 
-  scons2 integration_tests "${_scons_args[@]}"
-  python2 "${srcdir}/${pkgname}-src-r${pkgver}/buildscripts/resmoke.py" --suites=integration_tests_replset,integration_tests_standalone --dbpathPrefix="${srcdir}"
+  scons integration_tests "${_scons_args[@]}"
+  python "${srcdir}/${pkgname}-src-r${pkgver}/buildscripts/resmoke.py" --suites=integration_tests_replset,integration_tests_standalone --dbpathPrefix="${srcdir}"
 }
 
 package() {
   cd "${srcdir}/${pkgname}-src-r${pkgver}"
 
-  scons2 install --prefix="${pkgdir}/usr" "${_scons_args[@]}"
+  scons install --prefix="${pkgdir}/usr" "${_scons_args[@]}"
 
   # Keep historical Arch conf file name
   install -Dm644 "rpm/mongod.conf" "${pkgdir}/etc/${pkgname}.conf"
