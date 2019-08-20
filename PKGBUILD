@@ -6,7 +6,7 @@
 # Maintainer: George Raven <GeorgeRavenCommunity AT pm dot me>
 pkgname=nemesyst-git
 _pkgsrcname="nemesyst"
-pkgver=2.0.0.r1.d57b1f0
+pkgver=2.0.0.r19.4a06c3f
 pkgrel=1
 pkgdesc="Practical, distributed, hybrid-parallelism, deep learning framework."
 arch=('x86_64' 'aarch64')
@@ -54,5 +54,6 @@ package() {
 	cd "${srcdir}/${_pkgsrcname}"
 	python3 ./setup.py install --prefix=/usr --root="$pkgdir/" --optimize=1
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 docs/build/man/nemesyst.1 "$pkgdir/usr/share/man/man1/nemesyst.1"
 	install -Dm644 nemesyst.d/nemesyst.conf "${pkgdir}/etc/nemesyst/nemesyst.d/nemesyst.conf"
 }
