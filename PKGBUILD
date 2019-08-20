@@ -3,7 +3,7 @@ pkgname=srandr
 _pkgname=srandr
 _pkgprefix=gitlab.com/ragon000/
 pkgver=0.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="srandr - A tool for managing your sway outputs"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -42,6 +42,7 @@ prepare() {
 
 build() {
 	cd "$srcdir/go/src/$_pkgprefix$_pkgname/"
+	export GOPATH="$srcdir/go"
 
 	echo ":: Building binary"
         make

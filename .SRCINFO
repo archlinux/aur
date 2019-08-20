@@ -1,7 +1,7 @@
 pkgbase = srandr
 	pkgdesc = srandr - A tool for managing your sway outputs
 	pkgver = 0.0.1
-	pkgrel = 2
+	pkgrel = 3
 	arch = i686
 	arch = x86_64
 	license = GPL
