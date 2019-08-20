@@ -18,4 +18,4 @@ prepare() {
 package() {
   install -Dm 755 "$srcdir/$pkgname-$pkgver/rofi-autorandr.sh" "$pkgdir/usr/bin/rofi-autorandr"
 }
-md5sums=('8893f11cdb4dbe8b17add87c8232028e')
+md5sums=('8f107d5e6508d86188ba7b59b3da8e6a')
