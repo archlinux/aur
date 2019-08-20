@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=iortcw-venom-mod
-pkgver=6.0
+pkgver=6.5
 pkgrel=1
 pkgdesc="Venom Mod is a general improvement of original Rtcw game, with a new challenging and aggressive AI and some exploitation of features of id tech 3 engine, keeping the original gameplay"
 arch=(any)
@@ -21,4 +21,4 @@ package() {
 	install -Dm755 autoexec.cfg $pkgdir/opt/iortcw/Venom\ Mod/autoexec.cfg
 }
 
-md5sums=('28460f0100a2faace32b385790465366')
+md5sums=('545a7427b639a7dfecaf13dec7d9772d')
