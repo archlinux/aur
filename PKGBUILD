@@ -13,7 +13,8 @@ provides=("chromium")
 conflicts=("chromium" "iridium" "ungoogled-chromium")
 depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
          'ttf-font' 'systemd' 'dbus' 'libpulse' 'pciutils' 'json-glib' 'libva'
-         'desktop-file-utils' 'hicolor-icon-theme' 'jsoncpp' 'openjpeg2')
+         'desktop-file-utils' 'hicolor-icon-theme' 'jsoncpp' 'openjpeg2' 're2'
+         'snappy' 'minizip')
 optdepends=('pepper-flash: support for Flash content'
             'pipewire: WebRTC desktop sharing under Wayland'
             'kdialog: needed for file dialogs in KDE'
