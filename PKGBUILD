@@ -3,7 +3,7 @@ pkgname=srandr
 _pkgname=srandr
 _pkgprefix=gitlab.com/ragon000/
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="srandr - A tool for managing your sway outputs"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -11,7 +11,7 @@ depends=(
   'sway'
 )
 makedepends=(
-	'go'
+	'gcc-go'
         'dep'
 	'git'
 )
