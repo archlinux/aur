@@ -2,23 +2,17 @@
 # Maintainer: Patrick Förster <patrick DOT foerster AT outlook DOT de>
 
 pkgname=texlab
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="A cross-platform implementation of the Language Server Protocol providing rich cross-editing support for the LaTeX typesetting system."
 arch=('x86_64')
 url="https://github.com/latex-lsp/texlab"
 license=('MIT')
-makedepends=('rustup' 'python' 'nodejs' 'npm')
+makedepends=('rustup' 'nodejs' 'npm')
 depends=('gcc-libs')
-optdepends=('nodejs: citation rendering support')
 conflicts=("${pkgname}-git" "${pkgname}-bin")
 source=("https://github.com/latex-lsp/texlab/archive/v${pkgver}.tar.gz")
-sha512sums=('98f588e7807350e5ba7a3fb5e55b374693bc27b9e9512be50122682fce5f7eb5f284ce870b81d6693139bbb92dee7c377e2d184b64f72e822cec3cae7dee9603')
-
-prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  python setup.py
-}
+sha512sums=('d3d845d0f2106e49b6a323c1304343a8bed4b44007d7b931f7383b01d5c9a839a21baa991f2be6ca118041d1833de46514d2e1f3e647f5d171dbc7301a9aa176')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
