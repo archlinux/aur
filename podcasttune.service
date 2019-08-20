@@ -1,0 +1,20 @@
+[Unit]
+Description=Podcast Tune server
+After=network.target
+
+[Service]
+User=podcasttune
+Group=podcasttune
+Type=simple
+ExecStart=/usr/bin/meteor /usr/share/webapps/podcasttune
+WorkingDirectory=/usr/share/webapps/podcasttune
+LimitNOFILE=1048576
+LimitNPROC=64
+PrivateTmp=true
+PrivateDevices=true
+ProtectHome=true
+ProtectSystem=strict
+ReadWritePaths=/usr/share/webapps/podcasttune
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,22 @@
+pkgbase = podcasttune-git
+	pkgdesc = Web application for listening and discovering podcasts
+	pkgver = 10.2.1
+	pkgrel = 1
+	url = https://github.com/Zimniros/PodcastTune
+	arch = any
+	license = MIT
+	makedepends = npm
+	makedepends = meteor
+	depends = nodejs
+	options = !strip
+	source = git+https://github.com/Zimniros/PodcastTune.git
+	source = podcasttune.service
+	source = podcasttune.tmpfiles
+	source = podcasttune.sysusers
+	sha512sums = SKIP
+	sha512sums = 786ec1b7b785c24ddf27b9bc18311bdfc34ec7d87c253c05f0c304ca7c4e042f39ea92af82c1f73001f43e1e8c1e9c83668a293e111e820048dc03b61253d25a
+	sha512sums = 6fa00fbb134fdb107e6042be8d3562e2b675724c03887375a27a9429925cd1add7564d056db977f4248a0329618878c2534f05773369e1b0e0fe4467f595afef
+	sha512sums = ac7f613d9d725a847c49c50be9488f1312a61443ef88c25a97d3ce8c5ca4a27fb10b6ac1299ed7da51ba11ddb8666071e6ab63eb6c0c007c0b05ec161fd0aa94
+
+pkgname = podcasttune-git
+
