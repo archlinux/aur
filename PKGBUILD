@@ -10,6 +10,8 @@ url="https://listen1.github.io/listen1/"
 license=("MIT")
 noextract=("Listen1_${pkgver}_linux_x86_64.AppImage")
 options=("!strip")
+provides=('listen1')
+conflicts=('listen1')
 source=("https://github.com/listen1/listen1_desktop/releases/download/v${pkgver}/Listen1_${pkgver}_linux_x86_64.AppImage")
 sha256sums=("8c6a190fd0fa77ba5f0bf051f836bd9b706bea7c8aeb4436edb81f63e9bbe635")
 
