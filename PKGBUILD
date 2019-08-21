@@ -10,7 +10,7 @@
 # https://github.com/mymedia2/tdesktop
 
 pkgname=telegram-desktop-udf-patched
-pkgver=1.8.1
+pkgver=1.8.2
 pkgrel=1
 pkgdesc='Telegram Desktop client with several personal patches'
 arch=('x86_64')
