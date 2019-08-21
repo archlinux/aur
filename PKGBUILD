@@ -38,7 +38,7 @@ prepare() {
 	cd "$_pkgname"
 	mkdir build
 	cd build
-	cmake -DVIDEO_SUPPORT=ON -DCMAKE_INSTALL_PREFIX:PATH=/usr ..
+	cmake -DVIDEO_SUPPORT=ON -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_INSTALL_LIBDIR:PATH=/usr/lib ..
 }
 
 package() {
