@@ -1,6 +1,6 @@
 # Maintainer: Pest <ppest@protonmail.com>
 pkgname=devault
-pkgver=1.0.6
+pkgver=1.0.7
 pkgrel=1
 pkgdesc="Desktop wallet for the dvt blockchain"
 arch=('x86_64')
@@ -10,7 +10,7 @@ source=(${pkgname}-${pkgver}::\
 https://github.com/devaultcrypto/devault/archive/v${pkgver}.tar.gz)
 depends=('boost-libs' 'qt5-base' 'qrencode' 'zeromq' 'miniupnpc' 'hicolor-icon-theme' 'libevent')
 makedepends=('python' 'boost')
-md5sums=('e53cd0cf5e310805291376e4d400ddb6')
+md5sums=('194183e1d5fbd50ebf112923f0c744b6')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -34,3 +34,4 @@ package() {
    "${pkgdir}/usr/share/icons/hicolor/128x128/apps/devault-128.png"
   install -D -m644 COPYING  "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
+
