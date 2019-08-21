@@ -3,7 +3,7 @@
 # Contributor: felix <base64 -d <<< ZmVsaXgudm9uLnNAcG9zdGVvLmRlCg==>
 
 pkgname=djgpp-binutils
-pkgver=2.31.1
+pkgver=2.32
 pkgrel=1
 pkgdesc="Binutils for the djgpp cross-compiler"
 arch=('i686' 'x86_64')
@@ -15,9 +15,9 @@ source=("http://ftp.gnu.org/gnu/binutils/binutils-${pkgver}.tar.xz"
 	"binutils-bfd-djgpp.patch"
 	"binutils-djgpp.patch"
 	"lto-discard.patch")
-sha256sums=('5d20086ecf5752cc7d9134246e9588fa201740d540f7eb84d795b1f7a93bca86'
-            '13cc73a6042515c16ddfa2e6277d09a0c1de7a33fdb1a106f61ee0bbd665014a'
-            'e968d8630825bed104d9f9b3c5ffe565ab858c5835acdc96f50ed0fccaf9f08a'
+sha256sums=('0ab6c55dd86a92ed561972ba15b9b70a8b9f75557f896446c82e8b36e473ee04'
+            'd5d0f706d44abf4de1a578c27268522bdda9c91b146d2a8fa506f5fec97bee8a'
+            '98716ca9092784e5b44f54134031e1411274f961d2a6b0bfeb702ad97de7c5bc'
             '358cab5b397662718260f41c8a4139c97676600fa5ef9f3aa699bfe27606c434')
 _target="i686-pc-msdosdjgpp"
 

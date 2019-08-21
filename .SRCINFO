@@ -1,6 +1,6 @@
 pkgbase = djgpp-binutils
 	pkgdesc = Binutils for the djgpp cross-compiler
-	pkgver = 2.31.1
+	pkgver = 2.32
 	pkgrel = 1
 	url = http://www.gnu.org/software/binutils
 	arch = i686
@@ -9,13 +9,13 @@ pkgbase = djgpp-binutils
 	license = GPL3
 	options = !libtool
 	options = !emptydirs
-	source = http://ftp.gnu.org/gnu/binutils/binutils-2.31.1.tar.xz
+	source = http://ftp.gnu.org/gnu/binutils/binutils-2.32.tar.xz
 	source = binutils-bfd-djgpp.patch
 	source = binutils-djgpp.patch
 	source = lto-discard.patch
-	sha256sums = 5d20086ecf5752cc7d9134246e9588fa201740d540f7eb84d795b1f7a93bca86
-	sha256sums = 13cc73a6042515c16ddfa2e6277d09a0c1de7a33fdb1a106f61ee0bbd665014a
-	sha256sums = e968d8630825bed104d9f9b3c5ffe565ab858c5835acdc96f50ed0fccaf9f08a
+	sha256sums = 0ab6c55dd86a92ed561972ba15b9b70a8b9f75557f896446c82e8b36e473ee04
+	sha256sums = d5d0f706d44abf4de1a578c27268522bdda9c91b146d2a8fa506f5fec97bee8a
+	sha256sums = 98716ca9092784e5b44f54134031e1411274f961d2a6b0bfeb702ad97de7c5bc
 	sha256sums = 358cab5b397662718260f41c8a4139c97676600fa5ef9f3aa699bfe27606c434
 
 pkgname = djgpp-binutils

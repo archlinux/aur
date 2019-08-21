@@ -2,7 +2,7 @@
 #  excluding the changes specific to libbfd and libiberty.
 
 
-2018-07-21 Juan Manuel Guerrero  <juan.guerrero@gmx.de>
+2019-02-13 Juan Manuel Guerrero  <juan.guerrero@gmx.de>
 
 	* binutils/addr2line.c (main):  Use STRIP_FULL_PATH_AND_EXTENSION to adjust file name.
 
@@ -105,9 +105,9 @@
 
 
 
-diff -aprNU5 binutils-2.31.1.orig/binutils/ar.c binutils-2.31.1/binutils/ar.c
---- binutils-2.31.1.orig/binutils/ar.c	2018-06-24 18:38:56 +0000
-+++ binutils-2.31.1/binutils/ar.c	2018-07-21 17:04:22 +0000
+diff -aprNU5 binutils-2.32.orig/binutils/ar.c binutils-2.32/binutils/ar.c
+--- binutils-2.32.orig/binutils/ar.c	2019-01-19 16:01:32 +0000
++++ binutils-2.32/binutils/ar.c	2019-02-13 22:00:24 +0000
 @@ -694,11 +694,11 @@ main (int argc, char **argv)
    setlocale (LC_CTYPE, "");
  #endif
@@ -121,9 +121,9 @@ diff -aprNU5 binutils-2.31.1.orig/binutils/ar.c binutils-2.31.1/binutils/ar.c
  #if BFD_SUPPORTS_PLUGINS
    bfd_plugin_set_program_name (program_name);
  #endif
-diff -aprNU5 binutils-2.31.1.orig/binutils/coffdump.c binutils-2.31.1/binutils/coffdump.c
---- binutils-2.31.1.orig/binutils/coffdump.c	2018-06-24 18:38:56 +0000
-+++ binutils-2.31.1/binutils/coffdump.c	2018-07-21 17:04:22 +0000
+diff -aprNU5 binutils-2.32.orig/binutils/coffdump.c binutils-2.32/binutils/coffdump.c
+--- binutils-2.32.orig/binutils/coffdump.c	2019-01-19 16:01:32 +0000
++++ binutils-2.32/binutils/coffdump.c	2019-02-13 22:00:24 +0000
 @@ -497,11 +497,11 @@ main (int ac, char **av)
    setlocale (LC_CTYPE, "");
  #endif
@@ -137,10 +137,10 @@ diff -aprNU5 binutils-2.31.1.orig/binutils/coffdump.c binutils-2.31.1/binutils/c
  
    expandargv (&ac, &av);
  
-diff -aprNU5 binutils-2.31.1.orig/binutils/config.in binutils-2.31.1/binutils/config.in
---- binutils-2.31.1.orig/binutils/config.in	2018-07-18 07:46:06 +0000
-+++ binutils-2.31.1/binutils/config.in	2018-07-21 17:43:36 +0000
-@@ -291,5 +291,40 @@
+diff -aprNU5 binutils-2.32.orig/binutils/config.in binutils-2.32/binutils/config.in
+--- binutils-2.32.orig/binutils/config.in	2019-02-02 15:54:12 +0000
++++ binutils-2.32/binutils/config.in	2019-02-13 22:00:24 +0000
+@@ -297,5 +297,40 @@
  /* Define to 1 if you need to in order for `stat' and other things to work. */
  #undef _POSIX_SOURCE
  
@@ -181,10 +181,10 @@ diff -aprNU5 binutils-2.31.1.orig/binutils/config.in binutils-2.31.1/binutils/co
 +#else
 +# define STRIP_FULL_PATH_AND_EXTENSION(file_name)  (file_name)
 +#endif
-diff -aprNU5 binutils-2.31.1.orig/binutils/cxxfilt.c binutils-2.31.1/binutils/cxxfilt.c
---- binutils-2.31.1.orig/binutils/cxxfilt.c	2018-06-24 18:38:56 +0000
-+++ binutils-2.31.1/binutils/cxxfilt.c	2018-07-21 17:04:22 +0000
-@@ -172,11 +172,11 @@ main (int argc, char **argv)
+diff -aprNU5 binutils-2.32.orig/binutils/cxxfilt.c binutils-2.32/binutils/cxxfilt.c
+--- binutils-2.32.orig/binutils/cxxfilt.c	2019-01-19 16:01:32 +0000
++++ binutils-2.32/binutils/cxxfilt.c	2019-02-13 22:00:24 +0000
+@@ -142,11 +142,11 @@ main (int argc, char **argv)
  {
    int c;
    const char *valid_symbols;
@@ -197,10 +197,10 @@ diff -aprNU5 binutils-2.31.1.orig/binutils/cxxfilt.c binutils-2.31.1/binutils/cx
  
    expandargv (&argc, &argv);
  
-diff -aprNU5 binutils-2.31.1.orig/binutils/nm.c binutils-2.31.1/binutils/nm.c
---- binutils-2.31.1.orig/binutils/nm.c	2018-06-24 18:38:56 +0000
-+++ binutils-2.31.1/binutils/nm.c	2018-07-21 17:04:22 +0000
-@@ -1641,11 +1641,11 @@ main (int argc, char **argv)
+diff -aprNU5 binutils-2.32.orig/binutils/nm.c binutils-2.32/binutils/nm.c
+--- binutils-2.32.orig/binutils/nm.c	2019-01-19 16:01:32 +0000
++++ binutils-2.32/binutils/nm.c	2019-02-13 22:00:24 +0000
+@@ -1651,11 +1651,11 @@ main (int argc, char **argv)
    setlocale (LC_COLLATE, "");
  #endif
    bindtextdomain (PACKAGE, LOCALEDIR);
@@ -213,10 +213,10 @@ diff -aprNU5 binutils-2.31.1.orig/binutils/nm.c binutils-2.31.1/binutils/nm.c
  #if BFD_SUPPORTS_PLUGINS
    bfd_plugin_set_program_name (program_name);
  #endif
-diff -aprNU5 binutils-2.31.1.orig/binutils/objcopy.c binutils-2.31.1/binutils/objcopy.c
---- binutils-2.31.1.orig/binutils/objcopy.c	2018-06-24 18:38:56 +0000
-+++ binutils-2.31.1/binutils/objcopy.c	2018-07-21 17:04:22 +0000
-@@ -5548,11 +5548,11 @@ main (int argc, char *argv[])
+diff -aprNU5 binutils-2.32.orig/binutils/objcopy.c binutils-2.32/binutils/objcopy.c
+--- binutils-2.32.orig/binutils/objcopy.c	2019-01-19 16:01:32 +0000
++++ binutils-2.32/binutils/objcopy.c	2019-02-13 22:00:24 +0000
+@@ -5654,11 +5654,11 @@ main (int argc, char *argv[])
    setlocale (LC_CTYPE, "");
  #endif
    bindtextdomain (PACKAGE, LOCALEDIR);
@@ -229,10 +229,10 @@ diff -aprNU5 binutils-2.31.1.orig/binutils/objcopy.c binutils-2.31.1/binutils/ob
    START_PROGRESS (program_name, 0);
  
    expandargv (&argc, &argv);
-diff -aprNU5 binutils-2.31.1.orig/binutils/objdump.c binutils-2.31.1/binutils/objdump.c
---- binutils-2.31.1.orig/binutils/objdump.c	2018-06-24 18:38:56 +0000
-+++ binutils-2.31.1/binutils/objdump.c	2018-07-21 17:04:22 +0000
-@@ -3826,11 +3826,11 @@ main (int argc, char **argv)
+diff -aprNU5 binutils-2.32.orig/binutils/objdump.c binutils-2.32/binutils/objdump.c
+--- binutils-2.32.orig/binutils/objdump.c	2019-01-19 16:01:32 +0000
++++ binutils-2.32/binutils/objdump.c	2019-02-13 22:00:24 +0000
+@@ -4022,11 +4022,11 @@ main (int argc, char **argv)
  #endif
  
    bindtextdomain (PACKAGE, LOCALEDIR);
@@ -245,10 +245,10 @@ diff -aprNU5 binutils-2.31.1.orig/binutils/objdump.c binutils-2.31.1/binutils/ob
  
    START_PROGRESS (program_name, 0);
  
-diff -aprNU5 binutils-2.31.1.orig/binutils/readelf.c binutils-2.31.1/binutils/readelf.c
---- binutils-2.31.1.orig/binutils/readelf.c	2018-06-24 18:38:56 +0000
-+++ binutils-2.31.1/binutils/readelf.c	2018-07-21 17:04:22 +0000
-@@ -570,11 +570,16 @@ print_symbol (signed int width, const ch
+diff -aprNU5 binutils-2.32.orig/binutils/readelf.c binutils-2.32/binutils/readelf.c
+--- binutils-2.32.orig/binutils/readelf.c	2019-01-19 16:01:32 +0000
++++ binutils-2.32/binutils/readelf.c	2019-02-13 22:00:24 +0000
+@@ -571,11 +571,16 @@ print_symbol (signed int width, const ch
  
  #ifdef HAVE_MBSTATE_T
  	  /* Try to find out how many bytes made up the character that was
@@ -265,9 +265,9 @@ diff -aprNU5 binutils-2.31.1.orig/binutils/readelf.c binutils-2.31.1/binutils/re
  #endif
  	  if (n != (size_t) -1 && n != (size_t) -2 && n > 0)
  	    symbol += (n - 1);
-diff -aprNU5 binutils-2.31.1.orig/binutils/size.c binutils-2.31.1/binutils/size.c
---- binutils-2.31.1.orig/binutils/size.c	2018-06-24 18:38:56 +0000
-+++ binutils-2.31.1/binutils/size.c	2018-07-21 17:04:22 +0000
+diff -aprNU5 binutils-2.32.orig/binutils/size.c binutils-2.32/binutils/size.c
+--- binutils-2.32.orig/binutils/size.c	2019-01-19 16:01:32 +0000
++++ binutils-2.32/binutils/size.c	2019-02-13 22:00:24 +0000
 @@ -129,11 +129,11 @@ main (int argc, char **argv)
    setlocale (LC_CTYPE, "");
  #endif
@@ -281,9 +281,9 @@ diff -aprNU5 binutils-2.31.1.orig/binutils/size.c binutils-2.31.1/binutils/size.
  
    expandargv (&argc, &argv);
  
-diff -aprNU5 binutils-2.31.1.orig/binutils/srconv.c binutils-2.31.1/binutils/srconv.c
---- binutils-2.31.1.orig/binutils/srconv.c	2018-06-24 18:38:56 +0000
-+++ binutils-2.31.1/binutils/srconv.c	2018-07-21 17:04:22 +0000
+diff -aprNU5 binutils-2.32.orig/binutils/srconv.c binutils-2.32/binutils/srconv.c
+--- binutils-2.32.orig/binutils/srconv.c	2019-01-19 16:01:32 +0000
++++ binutils-2.32/binutils/srconv.c	2019-02-13 22:00:24 +0000
 @@ -1731,11 +1731,11 @@ main (int ac, char **av)
    setlocale (LC_CTYPE, "");
  #endif
@@ -297,9 +297,9 @@ diff -aprNU5 binutils-2.31.1.orig/binutils/srconv.c binutils-2.31.1/binutils/src
  
    expandargv (&ac, &av);
  
-diff -aprNU5 binutils-2.31.1.orig/binutils/strings.c binutils-2.31.1/binutils/strings.c
---- binutils-2.31.1.orig/binutils/strings.c	2018-06-24 18:38:56 +0000
-+++ binutils-2.31.1/binutils/strings.c	2018-07-21 17:04:22 +0000
+diff -aprNU5 binutils-2.32.orig/binutils/strings.c binutils-2.32/binutils/strings.c
+--- binutils-2.32.orig/binutils/strings.c	2019-01-19 16:01:32 +0000
++++ binutils-2.32/binutils/strings.c	2019-02-13 22:00:24 +0000
 @@ -153,11 +153,11 @@ main (int argc, char **argv)
    setlocale (LC_ALL, "");
  #endif
@@ -313,9 +313,9 @@ diff -aprNU5 binutils-2.31.1.orig/binutils/strings.c binutils-2.31.1/binutils/st
  
    expandargv (&argc, &argv);
  
-diff -aprNU5 binutils-2.31.1.orig/binutils/sysdump.c binutils-2.31.1/binutils/sysdump.c
---- binutils-2.31.1.orig/binutils/sysdump.c	2018-06-24 18:38:56 +0000
-+++ binutils-2.31.1/binutils/sysdump.c	2018-07-21 17:04:22 +0000
+diff -aprNU5 binutils-2.32.orig/binutils/sysdump.c binutils-2.32/binutils/sysdump.c
+--- binutils-2.32.orig/binutils/sysdump.c	2019-01-19 16:01:32 +0000
++++ binutils-2.32/binutils/sysdump.c	2019-02-13 22:00:24 +0000
 @@ -668,11 +668,11 @@ main (int ac, char **av)
    setlocale (LC_CTYPE, "");
  #endif
@@ -329,10 +329,10 @@ diff -aprNU5 binutils-2.31.1.orig/binutils/sysdump.c binutils-2.31.1/binutils/sy
  
    expandargv (&ac, &av);
  
-diff -aprNU5 binutils-2.31.1.orig/config.sub binutils-2.31.1/config.sub
---- binutils-2.31.1.orig/config.sub	2018-07-06 07:13:30 +0000
-+++ binutils-2.31.1/config.sub	2018-07-21 17:46:36 +0000
-@@ -250,10 +250,19 @@ case $1 in
+diff -aprNU5 binutils-2.32.orig/config.sub binutils-2.32/config.sub
+--- binutils-2.32.orig/config.sub	2019-01-19 16:01:32 +0000
++++ binutils-2.32/config.sub	2019-02-13 22:00:24 +0000
+@@ -301,10 +301,19 @@ case $1 in
  				basic_machine=i686-pc
  				os=dicos
  				;;
@@ -352,10 +352,10 @@ diff -aprNU5 binutils-2.31.1.orig/config.sub binutils-2.31.1/config.sub
  			ebmon29k)
  				basic_machine=a29k-amd
  				os=ebmon
-diff -aprNU5 binutils-2.31.1.orig/djgpp/build.sh binutils-2.31.1/djgpp/build.sh
---- binutils-2.31.1.orig/djgpp/build.sh	1970-01-01 00:00:00 +0000
-+++ binutils-2.31.1/djgpp/build.sh	2018-07-21 17:04:22 +0000
-@@ -0,0 +1,321 @@
+diff -aprNU5 binutils-2.32.orig/djgpp/build.sh binutils-2.32/djgpp/build.sh
+--- binutils-2.32.orig/djgpp/build.sh	1970-01-01 00:00:00 +0000
++++ binutils-2.32/djgpp/build.sh	2019-02-13 22:15:42 +0000
+@@ -0,0 +1,490 @@
 +#  This script only works in the ./djgpp directory.
 +
 +export HOME=.
@@ -411,6 +411,7 @@ diff -aprNU5 binutils-2.31.1.orig/djgpp/build.sh binutils-2.31.1/djgpp/build.sh
 +export ac_cv_prog_mkdir=${MKDIR_P='/dev/env/DJDIR/bin/mkdir -p'}
 +export ac_cv_prog_RM=${RM='/dev/env/DJDIR/bin/rm'}
 +export ac_cv_prog_MV=${MV='/dev/env/DJDIR/bin/mv'}
++export ac_cv_prog_CAT=${CAT='/dev/env/DJDIR/bin/cat'}
 +export ac_cv_prog_SORT=${SORT='/dev/env/DJDIR/bin/sort'}
 +export ac_cv_prog_TAR=${TAR='/dev/env/DJDIR/bin/tar'}
 +export ac_cv_prog_PR_PROGRAM=${PR='/dev/env/DJDIR/bin/pr'}
@@ -440,7 +441,7 @@ diff -aprNU5 binutils-2.31.1.orig/djgpp/build.sh binutils-2.31.1/djgpp/build.sh
 +# Ensure that always old GNU extern inline semantics is used
 +# (aka -fgnu89-inline) even if ISO C99 semantics has been specified.
 +case $(gcc --version 2>/dev/null | sed "/^.* \([1-9]\+\.[0-9]\+[.0-9]*\).*$/!d;s/^.* \([1-9]\+\.[0-9]\+[.0-9]*\).*$/\1/") in
-+[1-3].*|4.[0-1][.0-9]* )  export CFLAGS=${CFLAGS='-g2 -O2 -march=i386 -mtune=i586'};;
++[1-3].*|4.[0-1][.0-9]* )  export CFLAGS=${CFLAGS='-g2 -O2 -std=gnu99 -march=i386 -mtune=i586'};;
 +* )                       export CFLAGS=${CFLAGS='-g2 -O2 -fgnu89-inline -march=i386 -mtune=i586'};;
 +esac
 +
@@ -510,6 +511,153 @@ diff -aprNU5 binutils-2.31.1.orig/djgpp/build.sh binutils-2.31.1/djgpp/build.sh
 +  }
 +}
 +
++# Supress makeinfo test.  DJGPP does not provide any other port than 4.13.
++/# For an installed makeinfo, we require it to be from texinfo 4.7 or/,/;;/ {
++  /MAKEINFO.*makeinfo/ s/MAKEINFO/IGNORE_&/
++}
++
++# We always use _deps and _libs instead of .deps and .libs, because
++# the latter is an invalid name on 8+3 MS-DOS filesystem.  This makes
++# the generated Makefiles good for every DJGPP installation, not only
++# the one where the package was configured (which could happen to be
++# a Windows box, where leading dots in file names are allowed).
++s,\.deps,_deps,g
++s,\.libs,_libs,g
++/^rmdir[ 	]*\.tst/ i\\
++am__leading_dot=_
++
++# Autoconf 2.63b produces if clauses that are enclosed in \`
++# so we cannot use \` to replace parenthesized commands.
++# This case must be treated before the parenthesized commands
++# are replaced by \`.
++/.*\`if[ 	](/ {
++  s/(/"/
++  s/)/"/
++}
++
++# Replace (command) > /dev/null with \`command > /dev/null\`, since
++# parenthesized commands always return zero status in the ported Bash,
++# even if the named command doesn't exist
++/if ([^|;\`]*null/{
++  s,(,\`,
++  s,\\([^ 	)]\\)),\\1,
++  /null[ 	]*2>&1/ s,2>&1,&\`,
++  /null.*null/ s,null.*null,&\`,
++  /null.*null/ !{
++    /null[ 	]*2>&1/ !s,null,&\`,
++  }
++}
++
++# DOS-style absolute file names should be supported as well
++/\*) top_srcdir=/s,/\*,[\\\\\\\\/]* | ?:[\\\\\\\\/]*,
++
++# The following two items are changes needed for configuring
++# and compiling across partitions.
++# 1) The given srcdir value is always translated from the
++#    "x:" syntax into "/dev/x" syntax while we run configure.
++/^[ 	]*-srcdir=\\*.*$/ a\\
++    ac_optarg=\`echo "\$ac_optarg" | sed "s,^\\\\([A-Za-z]\\\\):,/dev/\\\\1,"\`
++/set X \`ls -Lt \\\$srcdir/ i\\
++   if \`echo \$srcdir | grep "^/dev/" - > /dev/null\`; then\\
++     srcdir=\`echo "\$srcdir" | sed -e "s%^/dev/%%" -e "s%/%:/%"\`\\
++   fi
++
++# Autoconf 2.52e generated configure scripts
++# write absolute paths into Makefiles making
++# them useless for DJGPP installations for which
++# the package has not been configured for.
++/am_missing_run=/,/^$/ {
++  /^fi$/ a\\
++am_missing_run=\`echo "\$am_missing_run" | sed 's%/dev.*/@FILE_NAME@[-_0-9]\\\\{1,1\\\\}[-.0-9A-z+]*%\${top_srcdir}%;s%.:.*/@FILE_NAME@[-_0-9]\\\\{1,1\\\\}[-.0-9A-z+]*%\${top_srcdir}%'\`
++}
++/^[	 ]*install_sh=/,/^$/ {
++  /^fi$/ a\\
++install_sh=\`echo "\$install_sh" | sed 's%/dev.*/@FILE_NAME@[-_0-9]\\\\{1,1\\\\}[-.0-9A-z+]*%\${top_srcdir}%;s%.:.*/@FILE_NAME@[-_0-9]\\\\{1,1\\\\}[-.0-9A-z+]*%\${top_srcdir}%'\`
++}
++
++# Only if both builddir and srcdir are on the same
++# partition the absolute paths are converted to
++# relative paths so that the produced makefiles are
++# good for all installations but not only for the one
++# where it was configured.
++/^# If the template does not know about datarootdir, expand it.$/ i\\
++# DJGPP specific.\\
++# Autoconf generated configure scripts write\\
++# absolute paths into Makefiles making them\\
++# useless for DJGPP installations for which\\
++# the package has not been configured for.\\
++djgpp_ac_abs_top_builddir_drive=\\\$(echo \${ac_abs_top_builddir} | sed -e 's%:[/\\\\\\\\]*.*$%%;s%^/dev/\\\\([A-z]\\\\)/.*$%\\\\1%')\\
++djgpp_ac_abs_top_srcdir_drive=\\\$(echo \${ac_abs_top_srcdir} | sed -e 's%:[/\\\\\\\\]*.*$%%;s%^/dev/\\\\([A-z]\\\\)/.*$%\\\\1%')\\
++if [ "x\\\${ac_abs_top_srcdir}" == "x\\\${ac_top_srcdir}" ]; then\\
++  paths_are_absolute=yes\\
++else\\
++  paths_are_absolute=no\\
++fi\\
++\\
++if [ "x\\\${djgpp_ac_abs_top_builddir_drive}" == "x\\\${djgpp_ac_abs_top_srcdir_drive}" ]; then\\
++  # builddir and srcdir are on the same partition.\\
++\\
++  # Convert absolute buildir paths to relative ones.\\
++  paths_to_be_adjusted="ac_abs_builddir ac_abs_top_builddir"\\
++  for path in \\\${paths_to_be_adjusted}; do\\
++    eval _path=\\\\\\\${\$path}\\
++    eval djgpp_\\\${path}=\$(echo \\\${_path} | sed -e "s%\\\${ac_abs_top_builddir}%\\\${ac_builddir}%")\\
++  done\\
++\\
++  if [ "x\\\${paths_are_absolute}" == "xyes" ]; then\\
++    # Convert absolute srcdir paths to relative ones.\\
++    djgpp_relative_prefix=\$(echo \\\${ac_abs_builddir} | sed -e 's%^[A-z]:%%;s%^/dev/[A-z]%%;s%^%.%;s%[/\\\\\\\\][A-z0-9._+-]\\\\+%/..%g;s%[/\\\\\\\\]$%%')\\
++    paths_to_be_adjusted="ac_srcdir ac_abs_srcdir ac_top_srcdir ac_abs_top_srcdir"\\
++    for path in \\\${paths_to_be_adjusted}; do\\
++      eval _path=\\\\\\\${\$path}\\
++      eval djgpp_\\\${path}=\$(echo \\\${_path} | sed -e "s%^[A-z]:%%;s%^/dev/[A-z]%%;s%^%\\\${djgpp_relative_prefix}%")\\
++    done\\
++  else\\
++    djgpp_ac_srcdir="\\\${ac_srcdir}"\\
++    djgpp_ac_abs_srcdir="\\\${ac_srcdir}"\\
++    djgpp_ac_top_srcdir="\\\${ac_top_srcdir}"\\
++    djgpp_ac_abs_top_srcdir="\\\${ac_top_srcdir}"\\
++  fi\\
++else\\
++  # builddir and srcdir are on different partitions.\\
++\\
++  paths_to_be_adjusted="ac_abs_builddir ac_abs_top_builddir"\\
++  for path in \\\${paths_to_be_adjusted}; do\\
++    eval djgpp_\\\${path}=\\\\\\\${\$path}\\
++  done\\
++\\
++  paths_to_be_adjusted="ac_srcdir ac_abs_srcdir ac_top_srcdir ac_abs_top_srcdir"\\
++  for path in \\\${paths_to_be_adjusted}; do\\
++    eval djgpp_\\\${path}=\\\\\\\${\$path}\\
++  done\\
++fi\\
++
++
++/^s|@configure_input@|\\\$ac_sed_conf_input|;t t$/,/^\\\$ac_datarootdir_hack$/ {
++  s/\\\$ac_srcdir/\\\$djgpp_ac_srcdir/
++  s/\\\$ac_abs_srcdir/\\\$djgpp_ac_abs_srcdir/
++  s/\\\$ac_top_srcdir/\\\$djgpp_ac_top_srcdir/
++  s/\\\$ac_abs_top_srcdir/\\\$djgpp_ac_abs_top_srcdir/
++  s/\\\$ac_abs_builddir/\\\$djgpp_ac_abs_builddir/
++  s/\\\$ac_abs_top_builddir/\\\$djgpp_ac_abs_top_builddir/
++}
++
++# Add DJGPP version information.
++/^#define VERSION/ s/\\\$VERSION/&  (DJGPP port (r1))/
++
++# We need makeinfo to make the html formated docs.
++/\\\$am_missing_run[ 	]*makeinfo/ s,\\\$am_missing_run,,
++
++# The path to the FORTRAN compiler and libraries
++# shall contain no absolute path reference so it
++# will be good for all djgpp installations.
++/^FLIBS="\\\$ac_cv_flibs"/ i\\
++ac_djgpp_path=\`echo "\$DJDIR" | sed 's%\\\\\\\\\\\\%/%g' | tr \$as_cr_LETTERS \$as_cr_letters\`\\
++ac_cv_flibs=\`echo "\$ac_cv_flibs" | sed "s%-L$ac_djgpp_path%-L/dev/env/DJDIR%g"\`
++
++# Do not split info output.
++/^MAKEINFO=.*$/s:=.*$:&" --no-split":
++
 +# The CR test for awk does not work for DJGPP.
 +/^ac_cs_awk_cr=/,/^$/ {
 +  /^fi$/ a\\
@@ -524,6 +672,7 @@ diff -aprNU5 binutils-2.31.1.orig/djgpp/build.sh binutils-2.31.1/djgpp/build.sh
 +# Force the test for 'ln -s' to report 'cp -pf'.
 +/as_ln_s='ln -s'/ s/ln -s/cp -pf/
 +
++##LIBTOOL="\${CONFIG_SHELL-\$SHELL} "'\$(top_builddir)/libtool'
 +# Set the right shell for libtool
 +/^LIBTOOL=.*libtool'$/ s/".*"/'\$(SHELL) '/
 +
@@ -541,17 +690,38 @@ diff -aprNU5 binutils-2.31.1.orig/djgpp/build.sh binutils-2.31.1/djgpp/build.sh
 +
 +# Fix realpath check.  DJGPP always prepends a drive letter.
 +/checking whether realpath works/,/^_ACEOF$/ {
-+  /name && \*name == '\/'/ s/\*name/name[2]/
++  /name && \\*name == '\\/'/ s/\\*name/name[2]/
 +}
 +
-+# Supress makeinfo test.  DJGPP does not provide any other port than 4.13.
-+/# For an installed makeinfo, we require it to be from texinfo 4.7 or/,/;;/ {
-+  /MAKEINFO.*makeinfo/ s/MAKEINFO/IGNORE_&/
++# This works around a bug in DJGPP port of Bash 2.0x.
++s|return \$ac_retval|(&)|g
++
++# DJGPP port of Bash 2.04 doesn't like this redirection of stdin
++/exec 7</s|7<&0 </dev/null||
++
++# Remove LINGUAS from dependecy list in ./po/Makefile
++/POMAKEFILEDEPS=/ s/POMAKEFILEDEPS LINGUAS/POMAKEFILEDEPS #LINGUAS/
++
++# The dup2 check of autoconf will fail with SIGABRT due to implementations issues in DJGPP's version of dup2.
++# To avoid this, it will not be allowed to use file descriptors greather than 255.
++# This will be removed as soon as a fixed versions of DJGPP is released.
++/checking whether dup2 works/,/^_ACEOF$/ {
++  /dup2.*256);/d
 +}
++
++# Convert am_aux_dir and abs_aux_dir into relative paths.
++/^# Expand \$ac_aux_dir to an absolute path./ {
++n
++a\\
++am_aux_dir=\${ac_aux_dir}
++}
++
++/abs_aux_dir=/ a\\
++abs_aux_dir=\${ac_aux_dir}
 +EOF
 +
 +
-+for file in ../ltmain.sh ../configure ../bfd/configure ../binutils/configure ../gas/configure ../gprof/configure ../ld/configure ../opcodes/configure; do
++for file in ../ltmain.sh ../configure ../bfd/configure ../binutils/configure ../gas/configure ../gprof/configure ../ld/configure ../opcodes/configure ../zlib/configure; do
 +  if test ! -f ${file}.orig; then
 +    cp -vf ${file} ${file}.orig
 +    touch ${file}.orig -r ${file}
@@ -625,7 +795,6 @@ diff -aprNU5 binutils-2.31.1.orig/djgpp/build.sh binutils-2.31.1/djgpp/build.sh
 +touch ../ld/configure.ac -r ../ld/configure.tgt
 +
 +
-+
 +#
 +#  3: Configure and build the libs and programs.
 +#
@@ -649,7 +818,7 @@ diff -aprNU5 binutils-2.31.1.orig/djgpp/build.sh binutils-2.31.1/djgpp/build.sh
 +echo Configuring the progs and libs for DJGPP. >> build_log.txt
 +echo >> build_log.txt
 +
-+../configure  --disable-dependency-tracking ${NLS_SUPPORT} \
++../configure  --prefix='/dev/env/DJDIR' --disable-dependency-tracking ${NLS_SUPPORT} \
 +              --with-mpc-include='/dev/env/DJDIR/include' --with-mpc-lib='/dev/env/DJDIR/lib' \
 +              --with-mpfr-include='/dev/env/DJDIR/include' --with-mpfr-lib='/dev/env/DJDIR/lib' \
 +              --with-gmp-include='/dev/env/DJDIR/include' --with-gmp-lib='/dev/env/DJDIR/lib' \
@@ -677,10 +846,10 @@ diff -aprNU5 binutils-2.31.1.orig/djgpp/build.sh binutils-2.31.1/djgpp/build.sh
 +make >> build_log.txt  2>&1
 +
 +touch stop_build.txt
-diff -aprNU5 binutils-2.31.1.orig/gas/as.c binutils-2.31.1/gas/as.c
---- binutils-2.31.1.orig/gas/as.c	2018-06-24 18:38:56 +0000
-+++ binutils-2.31.1/gas/as.c	2018-07-21 17:04:22 +0000
-@@ -1218,11 +1218,11 @@ main (int argc, char ** argv)
+diff -aprNU5 binutils-2.32.orig/gas/as.c binutils-2.32/gas/as.c
+--- binutils-2.32.orig/gas/as.c	2019-01-19 16:01:32 +0000
++++ binutils-2.32/gas/as.c	2019-02-13 22:00:26 +0000
+@@ -1223,11 +1223,11 @@ main (int argc, char ** argv)
  
  #ifdef HOST_SPECIAL_INIT
    HOST_SPECIAL_INIT (argc, argv);
@@ -693,9 +862,9 @@ diff -aprNU5 binutils-2.31.1.orig/gas/as.c binutils-2.31.1/gas/as.c
    expandargv (&argc, &argv);
  
    START_PROGRESS (myname, 0);
-diff -aprNU5 binutils-2.31.1.orig/gas/config/obj-coff-seh.c binutils-2.31.1/gas/config/obj-coff-seh.c
---- binutils-2.31.1.orig/gas/config/obj-coff-seh.c	2018-06-24 18:38:56 +0000
-+++ binutils-2.31.1/gas/config/obj-coff-seh.c	2018-07-21 17:04:22 +0000
+diff -aprNU5 binutils-2.32.orig/gas/config/obj-coff-seh.c binutils-2.32/gas/config/obj-coff-seh.c
+--- binutils-2.32.orig/gas/config/obj-coff-seh.c	2019-01-19 16:01:32 +0000
++++ binutils-2.32/gas/config/obj-coff-seh.c	2019-02-13 22:00:26 +0000
 @@ -62,11 +62,11 @@ get_pxdata_name (segT seg, const char *b
    else if (dot < dollar)
      name = dot;
@@ -709,10 +878,10 @@ diff -aprNU5 binutils-2.31.1.orig/gas/config/obj-coff-seh.c binutils-2.31.1/gas/
  }
  
  /* Allocate a seh_seg_list structure.  */
-diff -aprNU5 binutils-2.31.1.orig/gas/config.in binutils-2.31.1/gas/config.in
---- binutils-2.31.1.orig/gas/config.in	2018-07-18 07:41:48 +0000
-+++ binutils-2.31.1/gas/config.in	2018-07-21 17:50:30 +0000
-@@ -393,5 +393,42 @@
+diff -aprNU5 binutils-2.32.orig/gas/config.in binutils-2.32/gas/config.in
+--- binutils-2.32.orig/gas/config.in	2019-02-02 15:50:24 +0000
++++ binutils-2.32/gas/config.in	2019-02-13 22:00:26 +0000
+@@ -409,5 +409,42 @@
  #undef inline
  #endif
  
@@ -755,9 +924,9 @@ diff -aprNU5 binutils-2.31.1.orig/gas/config.in binutils-2.31.1/gas/config.in
 +#else
 +# define STRIP_FULL_PATH_AND_EXTENSION(file_name)  (file_name)
 +#endif
-diff -aprNU5 binutils-2.31.1.orig/gas/dw2gencfi.c binutils-2.31.1/gas/dw2gencfi.c
---- binutils-2.31.1.orig/gas/dw2gencfi.c	2018-06-24 18:38:56 +0000
-+++ binutils-2.31.1/gas/dw2gencfi.c	2018-07-21 17:04:22 +0000
+diff -aprNU5 binutils-2.32.orig/gas/dw2gencfi.c binutils-2.32/gas/dw2gencfi.c
+--- binutils-2.32.orig/gas/dw2gencfi.c	2019-01-19 16:01:32 +0000
++++ binutils-2.32/gas/dw2gencfi.c	2019-02-13 22:00:26 +0000
 @@ -255,11 +255,11 @@ get_debugseg_name (segT seg, const char
  	name = dot;
        else
@@ -771,10 +940,10 @@ diff -aprNU5 binutils-2.31.1.orig/gas/dw2gencfi.c binutils-2.31.1/gas/dw2gencfi.
  /* Allocate a dwcfi_seg_list structure.  */
  
  static struct dwcfi_seg_list *
-diff -aprNU5 binutils-2.31.1.orig/gold/config.in binutils-2.31.1/gold/config.in
---- binutils-2.31.1.orig/gold/config.in	2018-06-24 18:43:54 +0000
-+++ binutils-2.31.1/gold/config.in	2018-07-21 17:04:22 +0000
-@@ -289,5 +289,39 @@
+diff -aprNU5 binutils-2.32.orig/gold/config.in binutils-2.32/gold/config.in
+--- binutils-2.32.orig/gold/config.in	2019-01-19 16:33:26 +0000
++++ binutils-2.32/gold/config.in	2019-02-13 22:00:26 +0000
+@@ -295,5 +295,39 @@
     this defined. */
  #undef _POSIX_1_SOURCE
  
@@ -814,9 +983,9 @@ diff -aprNU5 binutils-2.31.1.orig/gold/config.in binutils-2.31.1/gold/config.in
 +#else
 +# define STRIP_FULL_PATH_AND_EXTENSION(file_name)  (file_name)
 +#endif
-diff -aprNU5 binutils-2.31.1.orig/gprof/gconfig.in binutils-2.31.1/gprof/gconfig.in
---- binutils-2.31.1.orig/gprof/gconfig.in	2018-07-18 07:46:44 +0000
-+++ binutils-2.31.1/gprof/gconfig.in	2018-07-21 17:04:22 +0000
+diff -aprNU5 binutils-2.32.orig/gprof/gconfig.in binutils-2.32/gprof/gconfig.in
+--- binutils-2.32.orig/gprof/gconfig.in	2019-02-02 15:56:30 +0000
++++ binutils-2.32/gprof/gconfig.in	2019-02-13 22:00:26 +0000
 @@ -117,5 +117,42 @@
     this defined. */
  #undef _POSIX_1_SOURCE
@@ -860,9 +1029,9 @@ diff -aprNU5 binutils-2.31.1.orig/gprof/gconfig.in binutils-2.31.1/gprof/gconfig
 +#else
 +# define STRIP_FULL_PATH_AND_EXTENSION(file_name)  (file_name)
 +#endif
-diff -aprNU5 binutils-2.31.1.orig/gprof/gprof.c binutils-2.31.1/gprof/gprof.c
---- binutils-2.31.1.orig/gprof/gprof.c	2018-06-24 18:38:56 +0000
-+++ binutils-2.31.1/gprof/gprof.c	2018-07-21 17:04:22 +0000
+diff -aprNU5 binutils-2.32.orig/gprof/gprof.c binutils-2.32/gprof/gprof.c
+--- binutils-2.32.orig/gprof/gprof.c	2019-01-19 16:01:32 +0000
++++ binutils-2.32/gprof/gprof.c	2019-02-13 22:00:26 +0000
 @@ -196,11 +196,17 @@ main (int argc, char **argv)
  #ifdef ENABLE_NLS
    bindtextdomain (PACKAGE, LOCALEDIR);
@@ -882,9 +1051,9 @@ diff -aprNU5 binutils-2.31.1.orig/gprof/gprof.c binutils-2.31.1/gprof/gprof.c
    expandargv (&argc, &argv);
  
    while ((ch = getopt_long (argc, argv,
-diff -aprNU5 binutils-2.31.1.orig/ld/config.in binutils-2.31.1/ld/config.in
---- binutils-2.31.1.orig/ld/config.in	2018-07-18 07:46:24 +0000
-+++ binutils-2.31.1/ld/config.in	2018-07-21 17:04:22 +0000
+diff -aprNU5 binutils-2.32.orig/ld/config.in binutils-2.32/ld/config.in
+--- binutils-2.32.orig/ld/config.in	2019-02-02 15:54:48 +0000
++++ binutils-2.32/ld/config.in	2019-02-13 22:00:26 +0000
 @@ -252,5 +252,52 @@
     this defined. */
  #undef _POSIX_1_SOURCE
@@ -938,9 +1107,9 @@ diff -aprNU5 binutils-2.31.1.orig/ld/config.in binutils-2.31.1/ld/config.in
 +#else
 +# define STRIP_FULL_PATH_AND_EXTENSION(file_name)  (file_name)
 +#endif
-diff -aprNU5 binutils-2.31.1.orig/ld/configure binutils-2.31.1/ld/configure
---- binutils-2.31.1.orig/ld/configure	2018-07-18 07:46:20 +0000
-+++ binutils-2.31.1/ld/configure	2018-07-21 17:04:22 +0000
+diff -aprNU5 binutils-2.32.orig/ld/configure binutils-2.32/ld/configure
+--- binutils-2.32.orig/ld/configure	2019-02-02 15:54:42 +0000
++++ binutils-2.32/ld/configure	2019-02-13 22:00:26 +0000
 @@ -17667,10 +17667,19 @@ ac_config_commands="$ac_config_commands
  
  
@@ -961,10 +1130,10 @@ diff -aprNU5 binutils-2.31.1.orig/ld/configure binutils-2.31.1/ld/configure
  cat >confcache <<\_ACEOF
  # This file is a shell script that caches the results of configure
  # tests run on this system so they can be shared between configure
-diff -aprNU5 binutils-2.31.1.orig/ld/ldfile.c binutils-2.31.1/ld/ldfile.c
---- binutils-2.31.1.orig/ld/ldfile.c	2018-06-24 18:38:56 +0000
-+++ binutils-2.31.1/ld/ldfile.c	2018-07-21 17:04:22 +0000
-@@ -62,10 +62,128 @@ typedef struct search_arch
+diff -aprNU5 binutils-2.32.orig/ld/ldfile.c binutils-2.32/ld/ldfile.c
+--- binutils-2.32.orig/ld/ldfile.c	2019-01-19 16:01:32 +0000
++++ binutils-2.32/ld/ldfile.c	2019-02-14 21:15:36 +0000
+@@ -62,10 +62,127 @@ typedef struct search_arch
  
  static search_dirs_type **search_tail_ptr = &search_head;
  static search_arch_type *search_arch_head;
@@ -972,8 +1141,8 @@ diff -aprNU5 binutils-2.31.1.orig/ld/ldfile.c binutils-2.31.1/ld/ldfile.c
  
 +
 +#ifdef __DJGPP__
-+/*  Map library long filename to an library short filename
-+    according to the filename table stored in /dev/env/DJDIR/lib/libnames.tab.  */
++/*  Map library long filename to a library short filename according
++    to the filename table stored in /dev/env/DJDIR/lib/libnames.tab.  */
 +
 +static bfd_boolean
 +map_LFN_to_SFN (const char **filename)
@@ -1035,7 +1204,6 @@ diff -aprNU5 binutils-2.31.1.orig/ld/ldfile.c binutils-2.31.1/ld/ldfile.c
 +  if (table)
 +  {
 +    char *extension, *libname, *prefix = concat(*filename, (const char *)NULL);
-+    char line[128];
 +    int i;
 +
 +    /*  Strip library prefix and suffix.  */
@@ -1093,7 +1261,7 @@ diff -aprNU5 binutils-2.31.1.orig/ld/ldfile.c binutils-2.31.1/ld/ldfile.c
  
  static bfd_boolean
  is_sysrooted_pathname (const char *name)
-@@ -122,12 +240,23 @@ ldfile_add_library_path (const char *nam
+@@ -122,12 +239,23 @@ ldfile_add_library_path (const char *nam
  
  bfd_boolean
  ldfile_try_open_bfd (const char *attempt,
@@ -1117,7 +1285,7 @@ diff -aprNU5 binutils-2.31.1.orig/ld/ldfile.c binutils-2.31.1/ld/ldfile.c
        if (entry->the_bfd == NULL)
  	info_msg (_("attempt to open %s failed\n"), attempt);
        else
-@@ -369,11 +498,11 @@ ldfile_open_file_search (const char *arc
+@@ -369,11 +497,11 @@ ldfile_open_file_search (const char *arc
        if (entry->flags.maybe_archive && !entry->flags.full_name_provided)
  	string = concat (search->name, slash, lib, entry->filename,
  			 arch, suffix, (const char *) NULL);
@@ -1130,9 +1298,9 @@ diff -aprNU5 binutils-2.31.1.orig/ld/ldfile.c binutils-2.31.1/ld/ldfile.c
  	{
  	  entry->filename = string;
  	  return TRUE;
-diff -aprNU5 binutils-2.31.1.orig/ld/ldmain.c binutils-2.31.1/ld/ldmain.c
---- binutils-2.31.1.orig/ld/ldmain.c	2018-06-24 18:38:56 +0000
-+++ binutils-2.31.1/ld/ldmain.c	2018-07-21 17:52:32 +0000
+diff -aprNU5 binutils-2.32.orig/ld/ldmain.c binutils-2.32/ld/ldmain.c
+--- binutils-2.32.orig/ld/ldmain.c	2019-01-19 16:01:32 +0000
++++ binutils-2.32/ld/ldmain.c	2019-02-13 22:00:26 +0000
 @@ -200,11 +200,11 @@ main (int argc, char **argv)
    setlocale (LC_CTYPE, "");
  #endif
@@ -1146,7 +1314,7 @@ diff -aprNU5 binutils-2.31.1.orig/ld/ldmain.c binutils-2.31.1/ld/ldmain.c
    START_PROGRESS (program_name, 0);
  
    expandargv (&argc, &argv);
-@@ -976,10 +976,34 @@ multiple_definition (struct bfd_link_inf
+@@ -988,10 +988,34 @@ multiple_definition (struct bfd_link_inf
  	  || (nsec->output_section != NULL
  	      && !bfd_is_abs_section (nsec)
  	      && bfd_is_abs_section (nsec->output_section))))
@@ -1181,9 +1349,9 @@ diff -aprNU5 binutils-2.31.1.orig/ld/ldmain.c binutils-2.31.1/ld/ldmain.c
      {
        nbfd = obfd;
        nsec = osec;
-diff -aprNU5 binutils-2.31.1.orig/ld/libnames.tab binutils-2.31.1/ld/libnames.tab
---- binutils-2.31.1.orig/ld/libnames.tab	1970-01-01 00:00:00 +0000
-+++ binutils-2.31.1/ld/libnames.tab	2018-07-21 17:04:22 +0000
+diff -aprNU5 binutils-2.32.orig/ld/libnames.tab binutils-2.32/ld/libnames.tab
+--- binutils-2.32.orig/ld/libnames.tab	1970-01-01 00:00:00 +0000
++++ binutils-2.32/ld/libnames.tab	2019-02-13 22:00:26 +0000
 @@ -0,0 +1,31 @@
 +#
 +#  Table to map libraries long file name to short file names.
@@ -1216,9 +1384,9 @@ diff -aprNU5 binutils-2.31.1.orig/ld/libnames.tab binutils-2.31.1/ld/libnames.ta
 +pcre2-16       pcr216
 +pcre2-32       pcr232
 +pcre2-posix    pcr2posix
-diff -aprNU5 binutils-2.31.1.orig/ld/scripttempl/i386go32.sc binutils-2.31.1/ld/scripttempl/i386go32.sc
---- binutils-2.31.1.orig/ld/scripttempl/i386go32.sc	2018-06-24 18:38:58 +0000
-+++ binutils-2.31.1/ld/scripttempl/i386go32.sc	2018-07-21 17:04:22 +0000
+diff -aprNU5 binutils-2.32.orig/ld/scripttempl/i386go32.sc binutils-2.32/ld/scripttempl/i386go32.sc
+--- binutils-2.32.orig/ld/scripttempl/i386go32.sc	2019-01-19 16:01:32 +0000
++++ binutils-2.32/ld/scripttempl/i386go32.sc	2019-02-13 22:00:26 +0000
 @@ -45,18 +45,27 @@ SECTIONS
    }
    .data ${RELOCATING+ ${DATA_ALIGNMENT}} : {
@@ -1266,9 +1434,9 @@ diff -aprNU5 binutils-2.31.1.orig/ld/scripttempl/i386go32.sc binutils-2.31.1/ld/
    .stabstr 0 : { *(.stabstr) }
  EOF
  
-diff -aprNU5 binutils-2.31.1.orig/opcodes/config.in binutils-2.31.1/opcodes/config.in
---- binutils-2.31.1.orig/opcodes/config.in	2018-07-18 07:41:40 +0000
-+++ binutils-2.31.1/opcodes/config.in	2018-07-21 17:04:22 +0000
+diff -aprNU5 binutils-2.32.orig/opcodes/config.in binutils-2.32/opcodes/config.in
+--- binutils-2.32.orig/opcodes/config.in	2019-02-02 15:49:40 +0000
++++ binutils-2.32/opcodes/config.in	2019-02-13 22:00:26 +0000
 @@ -118,5 +118,42 @@
     this defined. */
  #undef _POSIX_1_SOURCE
