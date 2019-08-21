@@ -1,7 +1,7 @@
 # Maintainer: dryland <dryland718@163.com>
 
 pkgname=reliao
-pkgver=3.5.0
+pkgver=3.6.0
 pkgrel=1
 pkgdesc="爱奇艺之家热聊"
 arch=("x86_64")
@@ -12,7 +12,7 @@ depends=(
 )
 
 source=("https://hotchat-dl.iqiyi.com/version/linux/${pkgname}_${pkgver}_amd64.deb")
-md5sums=('d07962406600e5e973adfe628ebdf5eb')
+md5sums=('03a34cea4065dfbeeece6cdc6f89007f')
 
 package() {
     cd ${srcdir}
