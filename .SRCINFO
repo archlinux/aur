@@ -16,10 +16,12 @@ pkgbase = go-swarm
 	source = https://github.com/ethersphere/swarm/archive/v0.4.3.tar.gz
 	source = v0.4.3.tar.gz.sig
 	source = swarm-resources.tar.gz
+	source = swarm-resources.tar.gz.sig
 	validpgpkeys = 0826EDA1702D1E87C6E2875121D2E7BB88C2A746
 	md5sums = 7f394b218657463761a555d5c598a320
 	md5sums = SKIP
 	md5sums = ed8552f2daae230a7b67c76adbea2f51
+	md5sums = SKIP
 
 pkgname = go-swarm
 
