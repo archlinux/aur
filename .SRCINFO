@@ -1,6 +1,6 @@
 pkgbase = wtwitch
 	pkgdesc = Terminal user interface for Twitch
-	pkgver = 1.0.3
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://gitlab.com/krathalan/wtwitch
 	arch = any
@@ -9,11 +9,11 @@ pkgbase = wtwitch
 	depends = jq
 	depends = streamlink
 	depends = wget
-	source = https://gitlab.com/krathalan/wtwitch/uploads/15da515f8c963c28b7d88cd4dd45f300/wtwitch-1.0.3-1.tar.gz
-	source = https://gitlab.com/krathalan/wtwitch/uploads/561845c4957b2b9b987033b3c9be9181/wtwitch-1.0.3-1.tar.gz.sig
+	source = https://gitlab.com/krathalan/wtwitch/uploads/94504f151ec932231ac934dba4ea6379/wtwitch-1.0.4.tar.gz
+	source = https://gitlab.com/krathalan/wtwitch/uploads/c5a6bbadafd76e5ddd59f5cf85c7cc05/wtwitch-1.0.4.tar.gz.sig
 	validpgpkeys = 0CE6D5B52BD80B4EDB8DF343546BFAE445159FFC
-	sha256sums = f89f913eca8991b27c1f1878ba66f4cd2a7019adcba1c75d25bcd43c40ce4c51
-	sha256sums = 1405b8a0fa4eca71f53aeb95f9fc8526ede5d0ceea42fe619af09674c406057d
+	sha256sums = 9189137b49f83967aa67b8e888522a1794aa33748fd5869ae3d059eead26b05c
+	sha256sums = dbec4bdc35b3cb8fe85c29cb35c3d82e12c1df843fb2574caf7844c2b7388e29
 
 pkgname = wtwitch
 
