@@ -10,8 +10,8 @@ arch=('any')
 license=('custom:BSD')
 url="https://github.com/textext/textext"
 makedepends=()
-depends=('inkscape' 'texlive-core' 'python2' 'pdf2svg')
-optdepends=('pygtk' 'imagemagick')
+depends=('inkscape' 'texlive-core' 'python2' 'pdf2svg' 'pygtk' 'gnome-themes-extra')
+optdepends=('pygtksourceview2' 'imagemagick')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/textext/textext/releases/download/$pkgver/${_pkgname}-Linux-$pkgver.tar.gz")
 
 sha256sums=('7c4f3ce72d75fcd42d3837189b2056e60575a7b646a5e520a31137ae16850ac0')
