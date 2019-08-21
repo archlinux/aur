@@ -11,6 +11,8 @@ pkgbase = ppp-debian
 	depends = glibc
 	depends = libpcap>=1.0.0
 	depends = openssl
+	provides = ppp
+	conflicts = ppp
 	backup = etc/ppp/chap-secrets
 	backup = etc/ppp/pap-secrets
 	backup = etc/ppp/options
