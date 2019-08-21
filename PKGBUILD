@@ -2,12 +2,11 @@
 # Contributors: Seppia <seppia@seppio.fish>
 # Contributors: Eloston
 # Derived from official Chromium and Inox PKGBUILDS and ungoogled-chromium buildkit
-# Verified builds on Odroid-N2 with 4GB RAM, 20GB rootfs, and 8.9GB swap partition using archlinuxarm with approx. 20hr build-time
 
 pkgname=ungoogled-chromium-arm64
-pkgver=75.0.3770.100
+pkgver=76.0.3809.100
 _rev=1
-_archver=af242f55185ff0ff530d9be502099af0b9f6349b
+_archver=7f34e646009e66258e3d567728d0ac209ea7556c
 pkgrel=${_rev}
 _launcher_ver=6
 pkgdesc="A lightweight approach to removing Google web service dependency"
@@ -31,10 +30,10 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         https://github.com/ungoogled-software/ungoogled-chromium-archlinux/archive/${_archver}.tar.gz
         gcc-9-fix.patch
         0001-crashpad-include-limits.patch)
-sha256sums=('9e1360101b6d9f9635e540db77626e3e15b452f413d8750518244ac37b73fca0'
+sha256sums=('8cd93ada3e0837ced512f69783400991d3b82e0d9622e04fab5922877577d26d'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
-            '6a0dbafd12f369e4a20e08565c80d8348603b49f7dcc6ada11b2ca6ae3acb7c1'
-            '25116b9affc7ffb93c11dc2e3f15e50d74da405b7b79d868ee65b482daa66777'
+            '9458efb5d2313a4ee91c74df607037d4d89d827a42e2edcf84398482e9c00ac5'
+            'e4997a75b5396ae5aaaabcf51cd873e745159df29f31ab14e7fac09d3c5b4a43'
             'dbebf3f50660c30e36ffdf05d9fc3abb338beed5510e051eaee6a2c3fe23a0fa'
             'df99f49ad58b70c9a3e1827d7e80b62e4363419334ed83373cf55b79c17b6f10')
 
@@ -68,14 +67,14 @@ _unwanted_bundled_libs=(
 depends+=(${_system_libs[@]})
 
 prepare() {
-  _ungoogled_archlinux_repo="$srcdir/$pkgname-archlinux-${_archver}"
-  _ungoogled_repo="$srcdir/$pkgname-$pkgver-$pkgrel"
+  _ungoogled_archlinux_repo="$srcdir/ungoogled-chromium-archlinux-${_archver}"
+  _ungoogled_repo="$srcdir/ungoogled-chromium-$pkgver-$pkgrel"
   _utils="${_ungoogled_repo}/utils"
 
   cd "$srcdir/chromium-$pkgver"
 
-  msg2 'Fixing compile time bug on gcc9'
-  patch -p1 --ignore-whitespace -i ../gcc-9-fix.patch --no-backup-if-mismatch
+#  msg2 'Fixing compile time bug on gcc9'
+#  patch -p1 --ignore-whitespace -i ../gcc-9-fix.patch --no-backup-if-mismatch
   
   # Arch Linux ARM fixes
   patch -p1 -i ../0001-crashpad-include-limits.patch
@@ -114,8 +113,8 @@ prepare() {
 }
 
 build() {
-  _ungoogled_archlinux_repo="$srcdir/$pkgname-archlinux-${_archver}"
-  _ungoogled_repo="$srcdir/$pkgname-$pkgver-$pkgrel"
+  _ungoogled_archlinux_repo="$srcdir/ungoogled-chromium-archlinux-${_archver}"
+  _ungoogled_repo="$srcdir/ungoogled-chromium-$pkgver-$pkgrel"
 
   make -C chromium-launcher-$_launcher_ver
 
