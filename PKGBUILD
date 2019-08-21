@@ -1,6 +1,6 @@
 pkgname=weasis-bin
 pkgver=3.5.3
-pkgrel=3
+pkgrel=1
 pkgdesc="Weasis is a multipurpose DICOM viewer with a highly modular architecture"
 arch=('any')
 url="https://nroduit.github.io/"
