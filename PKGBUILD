@@ -5,7 +5,7 @@
 # Contributor: Antti Juhani Oja <antti.oja@gmail.com>
 
 pkgname=texturepacker
-pkgver=4.10.0
+pkgver=5.1.0
 pkgrel=2
 pkgdesc="Sprite sheet creator and image optimizer"
 arch=('x86_64')
@@ -16,7 +16,7 @@ depends=('shared-mime-info' 'hicolor-icon-theme' 'desktop-file-utils' 'grantlee'
          'gcc-libs-multilib' 'qt5-svg' 'qt5-declarative' 'qt5-imageformats'
          'qt5-quickcontrols')
 source=("https://www.codeandweb.com/download/$pkgname/${pkgver}/TexturePacker-${pkgver}-ubuntu64.deb")
-sha256sums=("98e6c48a45765a49596dcca58e4f6edd70dbcb9b319337a1d77626162571d287")
+sha256sums=("86713b1a6e65dd81d6807c599b212f5d79bebf4010dd9fabe782ec7b55b39867")
 
 build() {
     ar -x "TexturePacker-${pkgver}-ubuntu64.deb"
