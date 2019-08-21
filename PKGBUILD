@@ -9,7 +9,8 @@ url="https://github.com/iortcw/iortcw"
 license=('GPL')
 install='iortcw-data.install'
 source=("https://github.com/iortcw/iortcw/releases/download/$pkgver/patch-data-141.zip"
-"https://github.com/M0Rf30/rtcw-assets/raw/master/sp_pak2.pk3")
+	"https://github.com/M0Rf30/rtcw-assets/raw/master/sp_pak2.pk3"
+"https://github.com/M0Rf30/rtcw-assets/raw/master/mp_pak1.pk3")
 
 package() {
 
@@ -21,7 +22,10 @@ package() {
 	mkdir -p $pkgdir/opt/iortcw-data
 	cp -r * $pkgdir/opt/iortcw-data/
 	cp ../sp_pak2.pk3 $pkgdir/opt/iortcw-data/
+	cp ../mp_pak1.pk3 $pkgdir/opt/iortcw-data/
+
 }
 
 md5sums=('291a37caa9d65d0b81f767918b76fa56'
-'330b272d5261fe19fcf3c3fbc943c7f3')
+	'330b272d5261fe19fcf3c3fbc943c7f3'
+'22b972974f499a237c96a2200b0d019e')
