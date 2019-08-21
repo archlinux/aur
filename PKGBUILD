@@ -19,7 +19,7 @@ source=(
   '0001-Fix-ngx_module_type.patch::https://github.com/masterzen/nginx-upload-progress-module/commit/dd138546b16a01e9c09613d02211373baf1cac02.patch'
 )
 validpgpkeys=(B0F4253373F8F6F510D42178520A9993A1C052F8) # Maxim Dounin <mdounin@mdounin.ru>
-sha256sums=('4fd376bad78797e7f18094a00f0f1088259326436b537eb5af69b01be2ca1345'
+sha256sums=('f11c2a6dd1d3515736f0324857957db2de98be862461b5a542a3ac6188dbe32b'
             'SKIP'
             'b286689355442657650421d8e8398bd4abf9dbbaade65947bb0cb74a349cc497'
             '4fdf5269aadce50cc8ab6f2ffed19df40db681b25c6a37fa660686aa07ff3a27')
