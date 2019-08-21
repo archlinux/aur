@@ -20,6 +20,7 @@ optdepends=(
 )
 install='iortcw-git.install'
 source=("git+https://github.com/iortcw/iortcw.git"
+	'iortcw-ded.launcher'
 	'iortcw-sp.launcher'
 	'iortcw-mp.launcher'
 	'iortcw-sp.desktop'
@@ -91,6 +92,7 @@ package_iortcw-git() {
 }
 
 md5sums=('SKIP'
+	'1cb1d7fda29d223a57003d097a1a4a31'
 	'e400094c42766cb2b130d4d95bbe1caf'
 	'bbc343567fa9a2f0101bdbd07cc9d32a'
 	'5d91a81acdc289688ce9a8b3fef2d382'
