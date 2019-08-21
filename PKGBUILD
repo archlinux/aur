@@ -4,7 +4,7 @@
 pkgname=ppp-debian
 pkgver=2.4.7
 pkgrel=1
-pkgdesc='A daemon which implements the Point-to-Point Protocol for dial-up networking, with debian functional patches'
+pkgdesc='A daemon which implements the Point-to-Point Protocol for dial-up networking, with debian functional patches (ifname, host_uniq, replacedefaultroute and others)'
 arch=('i686' 'x86_64' 'armv7h')
 url="https://www.samba.org/ppp/"
 license=('GPL' 'BSD')
