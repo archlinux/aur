@@ -1,7 +1,7 @@
 # Maintainer: Vaporeon <vaporeon@vaporeon.io>
 
 pkgname=invader-git
-pkgver=0.1.0.r311.6247ca0
+pkgver=0.1.0.r333.354621b
 pkgrel=1
 pkgdesc="Open source editing tools for Halo Custom Edition"
 depends=('libtiff' 'libarchive')
@@ -30,7 +30,7 @@ build() {
 
 package() {
   cd "$srcdir"/build
-  for i in invader-{archive,bitmap,build,crc,indexer,resource}; do
+  for i in invader-{archive,bitmap,build,crc,dependency,indexer,resource}; do
      install -Dm755 $i "$pkgdir"/usr/bin/$i
   done
 }
