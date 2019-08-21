@@ -2,8 +2,8 @@
 
 pkgbase=linux-slim
 _srcname=linux
-gitver=v5.2.9
-pkgver=5.2.v.9
+gitver=v5.3-rc5
+pkgver=5.3.rc5
 pkgrel=1
 arch=('x86_64')
 url="http://www.kernel.org/"
@@ -214,8 +214,9 @@ _package-headers() {
     cp ${i} "${pkgdir}/usr/lib/modules/${_kernver}/build/${i}"
   done
 
-  # Fix file conflict with -doc package
+  # Fix file conflicts with -doc package
   rm "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild"/Kconfig.*-*
+  rm "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/Kconfig"
 
   # Add objtool for CONFIG_STACK_VALIDATION
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/tools"
