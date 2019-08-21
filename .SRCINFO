@@ -1,7 +1,7 @@
 pkgbase = xst
 	pkgdesc = st fork fork with xresources support and other patches
 	pkgver = 0.7.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/neeasade/xst
 	arch = i686
 	arch = x86_64
@@ -10,8 +10,6 @@ pkgbase = xst
 	makedepends = libxext
 	makedepends = git
 	depends = libxft
-	provides = xst
-	conflicts = xst-git
 	source = https://github.com/gnotclub/xst/archive/v0.7.2.tar.gz
 	md5sums = 1b1fd5edec1846bee099b40b1c09bbf0
 

@@ -4,7 +4,7 @@
 
 pkgname=xst
 pkgver=0.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc='st fork fork with xresources support and other patches'
 url='https://github.com/neeasade/xst'
 arch=('i686' 'x86_64')
@@ -13,13 +13,6 @@ depends=('libxft')
 makedepends=('ncurses' 'libxext' 'git')
 source=("https://github.com/gnotclub/${pkgname}/archive/v${pkgver}.tar.gz")
 md5sums=('1b1fd5edec1846bee099b40b1c09bbf0')
-
-provides=(
-	${pkgname}
-)
-conflicts=(
-	"${pkgname}-git"
-)
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
