@@ -1,7 +1,7 @@
 pkgbase = insync-nautilus
 	pkgdesc = Python extension and icons for integrating Insync with Nautilus
-	pkgver = 1.3.12.36116
-	pkgrel = 2
+	pkgver = 3.0.13.40201
+	pkgrel = 1
 	url = https://www.insynchq.com/downloads
 	arch = any
 	license = custom:insync
@@ -9,7 +9,7 @@ pkgbase = insync-nautilus
 	depends = nautilus
 	depends = python2-nautilus
 	options = !strip
-	source = http://s.insynchq.com/builds/insync-nautilus_1.3.12.36116-precise_all.deb
-	sha512sums = 0fcebd11082f26caa98f19bb491b8eb958f98893f306d25b735621123037612bb33264d2118851815096eaa4adca9c53a8f5f3e3e010b0ecec7b6d2f021a97b3
+	source = https://d2t3ff60b2tol4.cloudfront.net/builds/insync-nautilus_3.0.13.40201_all.deb
+	sha512sums = 10a57011a333c60d79662cc94f4c5de2b861d6b045435a04963a7a6e440a60d66aef206ea677119ad706ed27613b9af26a9da6a5fc14e354046cb213bf9bc8f2
 
 pkgname = insync-nautilus
