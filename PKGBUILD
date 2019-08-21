@@ -1,8 +1,9 @@
-# Maintainer: DetMittens
+# Maintainer: Giacomo Vercesi <mrjackv@hotmail.it>
+# Contributor: DetMittens
 # Based on PKGBUILD Maintained by: Ondrej Jirman <megous@megous.com>
 
 pkgname=megatools-git
-pkgver=1.10.1.r47.g1ea525e
+pkgver=1.10.1.r80.g9e47ad4
 pkgrel=1
 pkgdesc="Command line client application for Mega.nz"
 arch=('i686' 'x86_64' 'armv7h')
@@ -11,9 +12,8 @@ license=('GPL')
 depends=('curl' 'glib2')
 provides=('megatools')
 conflicts=('megatools')
-makedepends=('asciidoc' 'docbook-xml' 'autoconf' 'libtool' 'automake')
-source=("git+https://github.com/megous/megatools.git")
-options=(!libtool)
+makedepends=('asciidoc' 'docbook2x' 'meson')
+source=("git+https://megous.com/git/megatools")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -25,18 +25,16 @@ pkgver() {
 }
 
 prepare() {
-  cd "megatools"
-  ./autogen.sh --prefix=/usr
+  mkdir -p build
 }
 
 build() {
-  cd "megatools"
-  make -C docs
-  make
+  cd build
+  meson ../megatools --prefix=/usr
+  ninja
 }
 
 package() {
-  cd "megatools"
-
-  make install DESTDIR="${pkgdir}"
+  cd build
+  DESTDIR="$pkgdir" ninja install
 }
