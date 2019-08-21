@@ -3,9 +3,9 @@
 # Contributor: Pieter Goetschalckx <3.14.e.ter <at> gmail <dot> com>
 
 pkgname=franz
-_pkgver=5.1.0
+_pkgver=5.2.0
 pkgver=${_pkgver//-/_}
-pkgrel=3
+pkgrel=1
 # Due to the previous "_beta" naming
 epoch=1
 pkgdesc='Free messaging app for services like WhatsApp, Slack, Messenger and many more.'
@@ -30,9 +30,11 @@ prepare() {
   cd $pkgname
 
   # Prevent franz from being launched in dev mode
-  sed -i "s|export const isDevMode = .*|export const isDevMode = false;|g" \
+  sed -i \
+    "s|export const isDevMode = .*|export const isDevMode = false;|g" \
     src/environment.js
-  sed -i "s|import isDevMode from 'electron-is-dev'|export const isDevMode = false|g" \
+  sed -i \
+    "s|import isDevMode from 'electron-is-dev'|export const isDevMode = false|g" \
     src/index.js
 
   # Adjust the electron version to use when building
@@ -67,4 +69,3 @@ package() {
   # Install run script
   install -Dm 755 "$srcdir"/franz.sh "$pkgdir"/usr/bin/franz
 }
-
