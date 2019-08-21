@@ -1,0 +1,13 @@
+pkgbase = plymouth-theme-minimal-dark-git
+	pkgdesc = Minimal and dark Arch Linux theme for Plymouth, based upon the Debian theme
+	pkgver = r8.62e95c8
+	pkgrel = 1
+	url = https://github.com/bobwallis/minimal-dark
+	arch = any
+	license = unknown
+	makedepends = git
+	source = git+https://github.com/bobwallis/minimal-dark
+	sha256sums = SKIP
+
+pkgname = plymouth-theme-minimal-dark-git
+

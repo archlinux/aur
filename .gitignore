@@ -1,0 +1,4 @@
+minimal-dark/
+pkg/
+src/
+*.pkg.tar.xz
