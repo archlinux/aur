@@ -6,7 +6,7 @@
 #   french pkgbuild here: https://git.deparis.io/pkgbuilds/tree/cliqz_work/PKGBUILD?id=17ec1716c90dd08
 pkgname=cliqz
 _pkgname=browser-f
-pkgver=1.28.1
+pkgver=1.28.2
 pkgrel=1
 _cqzchannel=release
 _cqzbuildid=$(curl -s "http://repository.cliqz.com.s3.amazonaws.com/dist/${_cqzchannel}/${pkgver}/lastbuildid")
@@ -25,7 +25,7 @@ optdepends=('hunspell-en_US: Spell checking, American English')
 conflicts=(cliqz-bin)
 source=("https://github.com/cliqz-oss/browser-f/archive/$pkgver.tar.gz"
         '0001-Use-remoting-name-for-GDK-application-names.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0001-Use-remoting-name-for-GDK-application-names.patch?h=packages/firefox&id=3dac00b6aefd97b66f13af0ad8761a3765094368')
-sha256sums=('4d6d0dbf87d30e760b66e6e891ab80ff5e9863168ce9641cebfe4b114fe38e10'
+sha256sums=('eb22c3c06530a78012e300cd0be28d03e386270477fee29087941ec19d093982'
             'ab07ab26617ff76fce68e07c66b8aa9b96c2d3e5b5517e51a3c3eac2edd88894')
 options=(!emptydirs !makeflags !strip)
 
@@ -111,8 +111,9 @@ ac_add_options --with-system-zlib
 
 # Features
 ac_add_options --enable-startup-notification
-ac_add_options --disable-updater
 ac_add_options --disable-gconf
+ac_add_options --disable-updater
+ac_add_options --disable-tests
 END
 
   cd "$srcdir/${_pkgname}-$pkgver"
