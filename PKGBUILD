@@ -22,10 +22,21 @@ source=("https://github.com/ethersphere/swarm/archive/v${pkgver}.tar.gz"
 	"v${pkgver}.tar.gz.sig"
 	"swarm-resources.tar.gz")
 noextract=()
-md5sums=("7f394b218657463761a555d5c598a320" "SKIP" "d86f000521890a4e84a9ad3e97c30a60");
+md5sums=("7f394b218657463761a555d5c598a320"
+	"SKIP"
+	"8e69aa2b907450a996fd33535051c1b9")
 validpgpkeys=("0826EDA1702D1E87C6E2875121D2E7BB88C2A746")
+_pythonwalletdepends=1
 
 prepare() {
+	for m in ${optdepends[@]}; do
+		if [ ! pacman -Qi $m &> /dev/null ]; then
+			if [ $m =~ /^python-/ ]; then
+				_pythonwalletdepends=0
+			fi
+		fi
+	done
+
 	export GOPATH=${srcdir}/go
 	export SWARMPATH=${GOPATH}/src/github.com/ethersphere
 	if [ -d "$GOPATH" ]; then
@@ -51,30 +62,12 @@ build() {
 }
 
 check() {
-	pythonwalletdepends=1
-	gethwalletdepends=1
-	for m in ${optdepends[@]}; do
-		if [ ! pacman -Qi $m &> /dev/null ]; then
-			if [ $m =~ /^python-/ ]; then
-				pythonwalletdepends=0
-			else
-				gethwalletdepends=0
-			fi
-			warning "missing optional depend ${m}"
-		fi
-	done
-	dependsdir="/tmp/.${pkgname}-depends-${pkgver}-${pkgrel}"
-	mkdir -p ${dependsdir}
-	if [ ${pythonwalletdepends} -eq 1 ]; then
-		touch ${dependsdir}/.havepythonwallet
-	fi
-	if [ ${gethwalletdepends} -eq 1 ]; then
-		touch ${dependsdir}/.havegethwallet
-	fi
 	warning "still need to add checks"
 }
 
 package() {
 	install -v -D -m0755 build/swarm ${pkgdir}/usr/local/bin/swarm
-	install -v -D -m0700 swarm-genkey.py ${pkgdir}/usr/local/bin/swarm-genkey
+	if [ ${_pythonwalletdepends} -eq 1 ]; then
+		install -v -D -m0700 swarm-genkey.py ${pkgdir}/usr/local/bin/swarm-genkey
+	fi
 }
