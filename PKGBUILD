@@ -3,12 +3,12 @@
 pkgname=waifu2x-ncnn-vulkan-git
 _pkgname=waifu2x-ncnn-vulkan
 pkgver=20190712.r3.gc11d4f4
-pkgrel=2
+pkgrel=3
 pkgdesc="waifu2x converter ncnn version, runs fast on intel / amd / nvidia GPU with vulkan"
 url="https://github.com/nihui/waifu2x-ncnn-vulkan"
 license=('MIT')
-depends=('ncnn-git' 'vulkan-icd-loader')
-makedepends=('git' 'cmake')
+depends=('vulkan-icd-loader' 'vulkan-driver')
+makedepends=('ncnn-git' 'git' 'cmake')
 conflicts=('waifu2x-ncnn-vulkan')
 provides=('waifu2x-ncnn-vulkan')
 arch=('i686' 'x86_64')
@@ -41,8 +41,11 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/waifu2x-ncnn-vulkan/src"
-    install -Dm755 "build/waifu2x-ncnn-vulkan" "${pkgdir}/usr/bin/waifu2x-ncnn-vulkan"
+
+    cd "${srcdir}/waifu2x-ncnn-vulkan"
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+    install -Dm755 "src/build/waifu2x-ncnn-vulkan" "${pkgdir}/usr/bin/waifu2x-ncnn-vulkan"
 
     cd "${srcdir}/waifu2x-ncnn-vulkan/models"
     for f in models-cunet/*; do
