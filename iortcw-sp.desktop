@@ -2,9 +2,9 @@
 [Desktop Entry]
 Version=1.0
 Type=Application
-Name=ioRTCW SP Rend2
+Name=ioRTCW SP
 Comment=Return To Castle Wolfenstein with Rend2 (Single Player)
-Exec=/usr/bin/iortcw-sp-rend2
+Exec=/usr/bin/iortcw-sp
 Icon=iortcw
 Terminal=false
 Categories=Game

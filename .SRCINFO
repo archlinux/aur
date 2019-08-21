@@ -31,8 +31,8 @@ pkgbase = iortcw-git
 	md5sums = SKIP
 	md5sums = e400094c42766cb2b130d4d95bbe1caf
 	md5sums = bbc343567fa9a2f0101bdbd07cc9d32a
-	md5sums = ca91389b96827ae71ce3e3831a1d9a80
-	md5sums = a3a81101c2f39d728febd3323eb482fc
+	md5sums = 5d91a81acdc289688ce9a8b3fef2d382
+	md5sums = 7dd75064074886092fa9b3fc77a847b6
 
 pkgname = iortcw-git
 
