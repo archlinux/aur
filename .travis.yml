@@ -1,0 +1,91 @@
+sudo: required
+language: c
+
+branches:
+  only:
+  - master
+
+cache:
+  directories:
+  - ~/.ccache
+  - ~/.pkg-cache
+  - ~/.cache/yay
+  - alice-vision
+  - geogram
+  - MeshSDFilter
+  - nanoflann
+  - osi_clp
+  - ute_lib
+
+addons:
+  apt:
+    packages:
+    - moreutils
+
+services:
+- docker
+
+arch:
+  mount:
+  - ~/.ccache:~/.ccache
+  - ~/.pkg-cache:/var/cache/pacman/pkg
+  - ~/.cache/yay:~/.cache/yay
+  repos:
+  - bartus=https://github.com/bartoszek/AUR-repo/raw/master
+  packages:
+  - ccache
+  - moreutils
+  - cuda
+  - opengv-git
+  - flann
+  - coin-or-lemon
+  - openblas-lapack
+  - gcc-fortran
+  - gsl
+  before_install:
+# 1.Override `package-cleanup.hook` to preserve cache for travis.
+# 2.Enable ccache
+# 3.Multithreaded build and compress
+# 4.Suppress all gcc warnings
+  - |
+     sudo mkdir /etc/pacman.d/hooks/
+     sudo ln -s /dev/null /etc/pacman.d/hooks/package-cleanup.hook
+     sudo sed -i '/^BUILDENV/s/\!ccache/ccache/' /etc/makepkg.conf
+     sudo sed -i '/#MAKEFLAGS=/c MAKEFLAGS="-j2"' /etc/makepkg.conf
+     sudo sed -i '/^COMPRESSXZ/s/\xz/xz -T 2/' /etc/makepkg.conf
+     sudo sed -i '$a   CFLAGS="$CFLAGS -w"'   /etc/makepkg.conf
+     sudo sed -i '$a CXXFLAGS="$CXXFLAGS -w"' /etc/makepkg.conf
+  script:
+#   Incorporate ccache in nvcc
+  - |
+     _gcc="$(readlink /opt/cuda/bin/gcc)"
+     _gpp="$(readlink /opt/cuda/bin/g++)"
+     sudo mv /opt/cuda/bin/nvcc /opt/cuda/bin/nvcc.bin
+     sudo rm /opt/cuda/bin/g{cc,++}
+     echo -e "#!/bin/sh -\n/usr/bin/ccache /opt/cuda/bin/nvcc.bin \"\$@\"" | sudo dd of=/opt/cuda/bin/nvcc
+     echo -e "#!/bin/sh -\n/usr/bin/ccache $_gcc \"\$@\"" | sudo dd of=/opt/cuda/bin/gcc
+     echo -e "#!/bin/sh -\n/usr/bin/ccache $_gpp \"\$@\"" | sudo dd of=/opt/cuda/bin/g++
+     sudo chmod +x /opt/cuda/bin/{nvcc,g{cc,++}}
+# Normalize TRAVIS variable
+  - |
+     [ "$TRAVIS" == "true" ] && TRAVIS=1 || TRAVIS=0
+# Build
+  - export CCACHE_LOGFILE=/tmp/ccache.log
+  - export CCACHE_MAXSIZE=2G
+  - ccache -s
+  - timeout 40m yay -S magma --noconfirm --needed --useask > >(ts -s '[%.T]') || { cd ~/.cache/yay/magma; makepkg -oc; }
+  - makepkg -s --noconfirm; _makepkg_return=$?
+  - sudo pacman -Sc --noconfirm
+  - ccache -s
+  - exit $_makepkg_return
+script:
+#- "curl -s https://raw.githubusercontent.com/bartoszek/arch-travis/base64-encode/arch-travis.sh| timeout 40m bash > >(ts| ts -r '[%M:%.S]') 2>&1"
+- "curl -s https://raw.githubusercontent.com/bartoszek/arch-travis/base64-encode/arch-travis.sh| timeout 40m bash"
+- "echo pacman pkg cache size: $(du -h ~/.pkg-cache|cut -f1) in $(ls ~/.pkg-cache|wc -l) files"
+
+#deploy:
+#  on:
+#    branch: master
+#  skip_cleanup: true
+#  provider: script
+#  script: bash .travis_deploy.sh
