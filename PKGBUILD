@@ -4,7 +4,7 @@
 # Contributor: metzen <metzen@gmail.com>
 
 pkgname=logmein-hamachi
-pkgver=2.1.0.198
+pkgver=2.1.0.203
 pkgrel=1
 pkgdesc="A zero-configuration VPN service"
 url="https://www.vpn.net/linux"
@@ -13,10 +13,10 @@ license=("custom")
 conflicts=("hamachi")
 replaces=("hamachi")
 options=("!strip")
-[ "${CARCH}" == "i686" ] && _filearch_=x86 && sha1sums=('4070960416602dc805400c080e53bee3794d5a13' '2b8052f91bb47beac1fdab0c0c455a36f8876671')
-[ "${CARCH}" == "x86_64" ] && _filearch_=x64 && sha1sums=('235806bf8eecf79da054ffe253150772c677c73c' '2b8052f91bb47beac1fdab0c0c455a36f8876671')
-[ "${CARCH}" == "arm" ] && _filearch_=armel && sha1sums=('24efae6a1255763b2fe9f6fa08ab8e9594c6bf8b' '2b8052f91bb47beac1fdab0c0c455a36f8876671')
-[ "${CARCH}" == "armv7h" ] && _filearch_=armhf && sha1sums=('2c9055351e77f45a20be9ebf989ead23567e21b0' '2b8052f91bb47beac1fdab0c0c455a36f8876671')
+[ "${CARCH}" == "i686" ] && _filearch_=x86 && sha1sums=('2f95d8258dad9e2c8cc6006af1857c124d2b8e08' '2b8052f91bb47beac1fdab0c0c455a36f8876671')
+[ "${CARCH}" == "x86_64" ] && _filearch_=x64 && sha1sums=('72deff7d0a8ea22b6ff306967ab20ecdbce76e63' '2b8052f91bb47beac1fdab0c0c455a36f8876671')
+[ "${CARCH}" == "arm" ] && _filearch_=armel && sha1sums=('e71ad02ae2f39d84d05bb46dcb11db57f1748026' '2b8052f91bb47beac1fdab0c0c455a36f8876671')
+[ "${CARCH}" == "armv7h" ] && _filearch_=armhf && sha1sums=('8639443a9f223cce1b4a82708eb2b190718ee781' '2b8052f91bb47beac1fdab0c0c455a36f8876671')
 
 source=("https://www.vpn.net/installers/${pkgname}-${pkgver}-${_filearch_}.tgz" "${pkgname}.service")
 
@@ -32,7 +32,6 @@ package() {
 	install -m 755 hamachid "${pkgdir}"/opt/${pkgname}/bin
 	install -m 755 dnsup "${pkgdir}"/opt/${pkgname}/bin
 	install -m 755 dnsdown "${pkgdir}"/opt/${pkgname}/bin
-	install -m 755 uninstall.sh "${pkgdir}"/opt/${pkgname}
 	install -m 444 README "${pkgdir}"/opt/${pkgname}
 	install -m 444 LICENSE "${pkgdir}"/opt/${pkgname}
 	install -m 444 CHANGES "${pkgdir}"/opt/${pkgname}
