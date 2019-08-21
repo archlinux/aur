@@ -1,7 +1,7 @@
 # Maintainer: Damien GASPARINA <dgasparina at gmail dot com>
 pkgname=confluent-platform
 pkgver=5.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Confluent, founded by the creators of Apache Kafka, delivers a complete execution of Kafka for the Enterprise, to help you run your business in real time.'
 arch=('any')
 url='https://www.confluent.io/'
@@ -19,54 +19,36 @@ backup=(etc/confluent-control-center/log4j.properties
         etc/schema-registry/log4j.properties
         etc/schema-registry/connect-avro-distributed.properties
         etc/schema-registry/connect-avro-standalone.properties
-        etc/kafka-connect-ibmmq/IbmMQSourceConnector.properties
-        etc/kafka-connect-ibmmq/connect-avro-localhost.properties
-        etc/kafka-connect-s3/quickstart-schema-source-for-s3.properties
-        etc/kafka-connect-s3/quickstart-s3.properties
         etc/kafka/log4j.properties
         etc/kafka/connect-log4j.properties
         etc/kafka/connect-distributed.properties
         etc/kafka/connect-console-source.properties
         etc/kafka/connect-standalone.properties
         etc/kafka/producer.properties
-        etc/kafka/connect-file-source.properties
         etc/kafka/tools-log4j.properties
         etc/kafka/consumer.properties
-        etc/kafka/connect-file-sink.properties
         etc/kafka/server.properties
-        etc/kafka/connect-console-sink.properties
         etc/kafka/zookeeper.properties
         etc/kafka-rest/log4j.properties
         etc/kafka-rest/kafka-rest.properties
-        etc/kafka-connect-replicator/replicator-log4j.properties
-        etc/kafka-connect-replicator/replicator.properties
-        etc/kafka-connect-replicator/quickstart-replicator-unicluster.properties
-        etc/kafka-connect-replicator/replicator-connect-distributed.properties
-        etc/kafka-connect-replicator/quickstart-replicator.properties
-        etc/kafka-connect-replicator/replicator-connect-standalone.properties
         etc/ksql/log4j.properties
         etc/ksql/log4j-rolling.properties
         etc/ksql/log4j-file.properties
         etc/ksql/datagen.properties
         etc/ksql/ksql-server.properties
         etc/ksql/log4j-silent.properties
-        etc/kafka-connect-jms/ActiveMQSourceConnector.properties
-        etc/kafka-connect-jms/JMSSourceConnector.properties
-        etc/kafka-connect-jms/connect-avro-localhost.properties
-        etc/kafka-connect-elasticsearch/quickstart-elasticsearch.properties
-        etc/kafka-connect-jdbc/sink-quickstart-sqlite.properties
-        etc/kafka-connect-jdbc/source-quickstart-sqlite.properties
         etc/confluent-rebalancer/log4j.properties
-        etc/kafka-connect-activemq/ActiveMQSourceConnector.properties
-        etc/kafka-connect-activemq/connect-avro-localhost.properties
         )
 install=install_confluent.sh
 
 source=(https://packages.confluent.io/archive/5.3/confluent-5.3.0-2.11.tar.gz
-        systemd_sysusers.d_confluent.conf)
+        systemd_sysusers.d_confluent.conf
+			  https://s3-us-west-2.amazonaws.com/confluent.cloud/confluent-cli/archives/latest/confluent_latest_linux_amd64.tar.gz
+			 )
 
 sha256sums=('807392e39b8523e2d209995b1a41c4b40673a94e8d29792032772dc41f5d787a'
-            '6f5dfdbaf6ef405117482413b376e55148f75423bc6b8681cd8f91cdb7d96a99')
+            '6f5dfdbaf6ef405117482413b376e55148f75423bc6b8681cd8f91cdb7d96a99'
+					  '46353b135a6d44a8463eb90d9449c17dca72c78e87348093c3ec841645135ebf')
 
 
 package() {
@@ -129,4 +111,7 @@ package() {
 
 	# Removing unneeded file
 	rm ${pkgdir}/confluent.conf
+
+	# Installing Confluent CLI
+	install -D -m 755 ${srcdir}/confluent/confluent "${pkgdir}/usr/bin/confluent"
 }
