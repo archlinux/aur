@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.5
+Name=Editaro
+Comment=Simple text editor for draft
+Exec=editaro
+Terminal=false
+Type=Application
+Icon=editaro
+Categories=GTK;Utility;TextEditor;

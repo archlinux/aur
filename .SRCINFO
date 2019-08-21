@@ -1,0 +1,19 @@
+pkgbase = editaro
+	pkgdesc = Simple text editor for draft
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/kkosuge/editaro
+	arch = x86_64
+	license = MIT
+	makedepends = yarn
+	makedepends = nodejs-lts-dubnium
+	depends = electron2
+	source = editaro-1.5.0.tar.gz::https://github.com/kkosuge/editaro/archive/1.5.0.tar.gz
+	source = editaro.desktop
+	source = editaro
+	md5sums = c26e2f44ab5cf912be9fb5c757b77bc7
+	md5sums = 1ef1ba8c15bfd1e05784eef4bcbc1fef
+	md5sums = b9f9eb8ee4f95edb973a6b18499dd97a
+
+pkgname = editaro
+
