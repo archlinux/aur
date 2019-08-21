@@ -11,16 +11,18 @@ groups=()
 depends=()
 makedepends=('go>=1.10.0' 'git')
 checkdepends=()
-optdepends=('openssl')
+optdepends=('python-scrypt' 'python-ecdsa' 'python-pycryptodome' 'go-ethereum')
 provides=('go-swarm')
 conflicts=()
 replaces=()
 backup=()
 options=()
-install=
-source=("https://github.com/ethersphere/swarm/archive/v${pkgver}.tar.gz" "v${pkgver}.tar.gz.sig")
+install=${pkgname}.install
+source=("https://github.com/ethersphere/swarm/archive/v${pkgver}.tar.gz"
+	"v${pkgver}.tar.gz.sig"
+	"swarm-resources.tar.gz")
 noextract=()
-md5sums=("7f394b218657463761a555d5c598a320" "SKIP");
+md5sums=("7f394b218657463761a555d5c598a320" "SKIP" "d86f000521890a4e84a9ad3e97c30a60");
 validpgpkeys=("0826EDA1702D1E87C6E2875121D2E7BB88C2A746")
 
 prepare() {
@@ -36,18 +38,43 @@ prepare() {
 		mkdir -vp "$SWARMPATH"
 	fi
 	mv -v ${srcdir}/swarm-${pkgver} ${SWARMPATH}/swarm
+	
 }
 
 build() {
 	msg "Building the swarm binary"
 	msg2 "using gopath $GOPATH"
 	go build -o build/swarm -v ${SWARMPATH}/swarm/cmd/swarm
+
+	getent group bzz > /dev/null || groupadd -r bzz
+	getent passwd bzz > /dev/null || useradd -g bzz -d /var/lib/bzz -m -r
 }
 
 check() {
+	pythonwalletdepends=1
+	gethwalletdepends=1
+	for m in ${optdepends[@]}; do
+		if [ ! pacman -Qi $m &> /dev/null ]; then
+			if [ $m =~ /^python-/ ]; then
+				pythonwalletdepends=0
+			else
+				gethwalletdepends=0
+			fi
+			warning "missing optional depend ${m}"
+		fi
+	done
+	dependsdir="/tmp/.${pkgname}-depends-${pkgver}-${pkgrel}"
+	mkdir -p ${dependsdir}
+	if [ ${pythonwalletdepends} -eq 1 ]; then
+		touch ${dependsdir}/.havepythonwallet
+	fi
+	if [ ${gethwalletdepends} -eq 1 ]; then
+		touch ${dependsdir}/.havegethwallet
+	fi
 	warning "still need to add checks"
 }
 
 package() {
 	install -v -D -m0755 build/swarm ${pkgdir}/usr/local/bin/swarm
+	install -v -D -m0700 swarm-genkey.py ${pkgdir}/usr/local/bin/swarm-genkey
 }

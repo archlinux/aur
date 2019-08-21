@@ -1,0 +1,31 @@
+post_install () {
+	dependsdir=/tmp/.go-swarm-depends-$1
+	mkdir -p /var/lib/bzz/keystore
+
+	if [ -f "${dependsdir}/.havepythonwallet" ]; then
+		echo "generating wallet with swarm-genkey"
+		tmpkey=$(mktemp -d)
+		pushd ${tmpkey}
+		/usr/local/bin/swarm-genkey
+		install -v -D -m600 .swarm-pass /var/lib/bzz/.swarm-pass
+		install -v -D -m600 UTC* /var/lib/bzz/keystore/
+		popd
+		rm -vrf ${tmpkey}
+	elif [ -f "${dependsdir}/.havegethwallet" ]; then
+		echo "generating wallet with geth"
+		tmpkey=$(mktemp -d)
+		pushd ${tmpkey}
+		dd if=/dev/urandom of=.swarm-pass bs=1 count=64
+		geth --datadir /var/lib/bzz --password ${tmpkey}/.swarm-pass account new
+		install -v -D -m600 .swarm-pass /var/lib/bzz/.swarm-pass
+		popd
+	else
+		echo "Missing optional dependencies required to automatically generate a ethereum wallet for the swarm node"
+		echo "You will not be able to run a node with it"
+		echo "You can generate it manually later using go-ethereum or the swarm-genkey.py script provided this package, provided dependencies are met"
+	fi	
+	unlink ${dependsdir}/.havepythonwallet
+	unlink ${dependsdir}/.havegethwallet
+	chown -v bzz:bzz /var/lib/bzz -R
+	chmod 700 /var/lib/bzz/keystore 
+}
