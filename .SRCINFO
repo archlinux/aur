@@ -1,14 +1,13 @@
 pkgbase = cx-bin
 	pkgdesc = CX Skycoin Blockchain Programming Language; latest binary release
 	pkgver = 0.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/skycoin/cx
 	arch = x86_64
 	makedepends = unzip
 	provides = cx
 	conflicts = cx
 	source = https://github.com/skycoin/cx/releases/download/v0.7.1/cx-0.7.1-bin-linux-x64.zip
-	validpgpkeys = DE08F924EEE93832DABC642CA8DC761B1C0C0CFC
 	sha256sums = 99235508f1c5f8df651f89a34e61e418d2c092f037b1210e8541cae16334f2d4
 
 pkgname = cx-bin

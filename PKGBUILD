@@ -1,12 +1,12 @@
 # Maintainer: Moses Narrow <moe_narrow@use.startmail.com>
-# Maintainer: Steve Skydev <steve@skycoin.net>
+# Maintainer: Rudi [KittyCash] <rudi@skycoinmail.com>
 pkgname=cx-bin
 pkgname1=cx
 projectname=skycoin
 pkgdesc="CX Skycoin Blockchain Programming Language; latest binary release"
 pkgver=0.7.1
 pkggopath="github.com/$projectname/$pkgname1"
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://${pkggopath}"
 license=()
@@ -17,7 +17,6 @@ source=("https://$pkggopath/releases/download/v$pkgver/$pkgname1-$pkgver-bin-lin
 )
 sha256sums=('99235508f1c5f8df651f89a34e61e418d2c092f037b1210e8541cae16334f2d4'
 )
-validpgpkeys=('DE08F924EEE93832DABC642CA8DC761B1C0C0CFC')
 
 prepare() {
 mkdir -p $srcdir/bin
@@ -35,7 +34,7 @@ package() {
   mkdir -p $pkgdir/usr/lib/$projectname/$pkgname1/
   ln -s $pkgdir/usr/lib/$projectname/$pkgname1 $pkgdir/usr/lib/$projectname/go/src/github.com/
 
-install -Dm755 $srcdir/$pkgname1 $pkgdir/usr/lib/$projectname/go/bin/$pkgname1
+install -Dm755 $srcdir/home/amherag/go/bin/$pkgname1 $pkgdir/usr/lib/$projectname/go/bin/$pkgname1
 ln -rTsf $pkgdir/usr/lib/$projectname/go/bin/$pkgname1 $pkgdir/usr/bin/$pkgname1
 chmod 755 $pkgdir/usr/bin/$pkgname1
 }
