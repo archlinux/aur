@@ -16,7 +16,7 @@
 
 pkgbase=llvm-minimal-git
 pkgname=('llvm-minimal-git' 'llvm-libs-minimal-git')
-pkgver=9.0.0_r319391.1885747498c
+pkgver=10.0.0_r324862.045f33aec9e
 pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
@@ -25,13 +25,16 @@ makedepends=('git' 'cmake' 'ninja' 'libffi' 'libedit' 'ncurses' 'libxml2'
              'python-sphinx' 'python-recommonmark' 'swig')
 source=("llvm-project::git+https://github.com/llvm/llvm-project.git"
                 'llvm-config.h'
-                'enable-SSP-and-PIE-by-default.patch')
+                'enable-SSP-and-PIE-by-default.patch'
+                'always-initialize-all-members-in-ABIArgInfo.patch')
 md5sums=('SKIP'
          '295c343dcd457dc534662f011d7cff1a'
-         '5e9b3822e6b7de45f0ecb0ad71b3f7d3')
+         '5e9b3822e6b7de45f0ecb0ad71b3f7d3'
+         'efa143235f2f933b930902720194c48a')
 sha512sums=('SKIP'
             '75e743dea28b280943b3cc7f8bbb871b57d110a7f2b9da2e6845c1c36bf170dd883fca54e463f5f49e0c3effe07fbd0db0f8cf5a12a2469d3f792af21a73fcdd'
-            '2fdbae0b62d33411beaf191920ff280f83fa80fd505a71077671027f27ed8c61c5867de3e6ee6f26734c7605037e86796404212182f8ffa71f4af6ed2c316a40')
+            '2fdbae0b62d33411beaf191920ff280f83fa80fd505a71077671027f27ed8c61c5867de3e6ee6f26734c7605037e86796404212182f8ffa71f4af6ed2c316a40'
+            '99108936a5d7f1df8027fec09174498db712ad0a25d28213a606013b37cb504d932ad4f998252436888509a9ace7a61fc63efe8c857ce7a7b2ddff49c1bb0f17')
 
 # NINJAFLAGS is an env var used to pass commandline options to ninja
 # NOTE: It's your responbility to validate the value of $NINJAFLAGS. If unsure, don't set it.
@@ -60,6 +63,15 @@ prepare() {
     cd llvm-project
     # remove code parts not needed for build
     rm -rf debuginfo-tests libclc libcxx libcxxabi libunwind lld lldb llgo openmp parallel-libs polly pstl
+
+    # The following patch was reverted upstream because it triggered an ICE with
+    # GCC 7; however, we need it to pass the test suite when building with GCC 9
+    # https://bugs.llvm.org/show_bug.cgi?id=40547
+    # manually adapted to apply cleanly with latest master
+    patch --forward --strip=1 --input="$srcdir"/always-initialize-all-members-in-ABIArgInfo.patch
+
+    cd clang
+    patch --forward --strip=1 --input="$srcdir"/enable-SSP-and-PIE-by-default.patch
 }
 
 build() {
@@ -97,7 +109,10 @@ build() {
 
 check() {
     cd _build
-    ninja $NINJAFLAGS check check-clang check-clang-tools
+    ninja $NINJAFLAGS check
+    ninja $NINJAFLAGS check-clang
+    ninja $NINJAFLAGS check-clang-tools
+
 }
 
 package_llvm-minimal-git() {

@@ -1,0 +1,27 @@
+diff --unified --recursive --text llvm-project.orig/clang/include/clang/CodeGen/CGFunctionInfo.h llvm-project.new/clang/include/clang/CodeGen/CGFunctionInfo.h
+--- llvm-project.orig/clang/include/clang/CodeGen/CGFunctionInfo.h	2019-08-15 21:40:05.816836459 +0200
++++ llvm-project.new/clang/include/clang/CodeGen/CGFunctionInfo.h	2019-08-15 21:46:13.650020726 +0200
+@@ -110,14 +110,16 @@
+   }
+ 
+   ABIArgInfo(Kind K)
+-      : TheKind(K), PaddingInReg(false), InReg(false) {
+-  }
+-
+-public:
+-  ABIArgInfo()
+-      : TypeData(nullptr), PaddingType(nullptr), DirectOffset(0),
+-        TheKind(Direct), PaddingInReg(false), InReg(false) {}
++   : TypeData(nullptr), PaddingType(nullptr), DirectOffset(0), TheKind(K),
++        PaddingInReg(false), InAllocaSRet(false), IndirectByVal(false),
++        IndirectRealign(false), SRetAfterThis(false), InReg(false),
++        CanBeFlattened(false), SignExt(false) {}
+ 
++public:
++  ABIArgInfo()
++      : TypeData(nullptr), PaddingType(nullptr), DirectOffset(0),
++        TheKind(Direct), PaddingInReg(false), InReg(false) {}
++
+   static ABIArgInfo getDirect(llvm::Type *T = nullptr, unsigned Offset = 0,
+                               llvm::Type *Padding = nullptr,
+                               bool CanBeFlattened = true) {
