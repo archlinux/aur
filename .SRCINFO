@@ -1,6 +1,6 @@
 pkgbase = rtrlib-git
 	pkgdesc = RPKI-RTR client library
-	pkgver = r636.ed51444
+	pkgver = r711.b0a7111
 	pkgrel = 1
 	url = https://github.com/rtrlib/rtrlib
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = rtrlib-git
 	makedepends = cmake
 	makedepends = git
 	depends = libssh
+	provides = rtrlib
 	conflicts = rtrlib
 	source = git+https://github.com/rtrlib/rtrlib.git
 	md5sums = SKIP
