@@ -1,6 +1,6 @@
 pkgbase = firmware-manager-git
-	pkgdesc = Generic framework and GTK UI for firmware updates from fwupd, written in Rust.
-	pkgver = r135.4211325
+	pkgdesc = Generic framework and GTK UI for firmware updates from system76-firmware and fwupd, written in Rust.
+	pkgver = r137.a4061a1
 	pkgrel = 1
 	url = https://github.com/pop-os/firmware-manager
 	install = firmware-manager.install
@@ -11,6 +11,8 @@ pkgbase = firmware-manager-git
 	depends = dbus
 	depends = gtk3
 	depends = openssl
+	optdepends = fwupd
+	optdepends = system76-firmware-daemon
 	provides = firmware-manager
 	conflicts = firmware-manager
 	source = git+https://github.com/pop-os/firmware-manager.git
