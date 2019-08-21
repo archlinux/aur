@@ -1,0 +1,20 @@
+pkgbase = mauncher-git
+	pkgdesc = A dmenu-like launcher for Wayland.
+	pkgver = r14.cc224e2
+	pkgrel = 1
+	url = https://github.com/mortie/mauncher
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = make
+	depends = gtk3
+	depends = gobject-introspection
+	provides = mauncher
+	source = git+https://github.com/mortie/mauncher.git
+	md5sums = SKIP
+
+pkgname = mauncher-git
+
