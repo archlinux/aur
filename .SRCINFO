@@ -1,7 +1,7 @@
 pkgbase = cx
 	pkgdesc = CX Skycoin Blockchain Programming Language
-	pkgver = 20190726.1341_031a2f36
-	pkgrel = 1
+	pkgver = autogeneratetd
+	pkgrel = 2
 	url = https://github.com/skycoin/cx
 	arch = any
 	makedepends = git

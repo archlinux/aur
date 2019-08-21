@@ -1,12 +1,12 @@
 # Maintainer: Moses Narrow <moe_narrow@use.startmail.com>
-# Maintainer: Steve Skydev <steve@skycoin.net>
+# Maintainer: Rudi [KittyCash] <rudi@skycoinmail.com>
 pkgname=cx
 pkgname1=cx
 projectname=skycoin
 pkgdesc="CX Skycoin Blockchain Programming Language"
-pkgver=20190726.1341_031a2f36
+pkgver='autogeneratetd'
 pkggopath="github.com/$projectname/$pkgname1"
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="https://${pkggopath}"
 license=()
