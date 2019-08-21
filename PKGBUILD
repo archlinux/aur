@@ -1,7 +1,7 @@
 # Maintainer: Knut Ahlers <knut at ahlers dot me>
 
 pkgname=yggdrasil
-pkgver=0.3.7
+pkgver=0.3.8
 pkgrel=1
 pkgdesc="An experiment in scalable routing as an encrypted IPv6 overlay network"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
@@ -11,7 +11,7 @@ conflicts=('yggdrasil-git')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
 	'yggdrasil.sysusers')
-sha512sums=('ad8f5e1ae3b2e4270e1e95d17f3892614c8456e28b5ae1e16b9ed4c32d1a7171c4d3161546aedc4de7b3f1b4b12add85dc8463c94b4d55bb6c05bf4b26c7d3a8'
+sha512sums=('9e9ef31dcc9be4422604bf95cd1ffbce48b38ddb9b98a30e180ae660f016230331ff74a525f9481f59578798bfaca74efed8567eebb2476705654977527ef40c'
             'b78d1f5efeeba184588ba7bdb2249d976aec160daa59742e032983da1aedad062d15c7c97cba3eba69412a0f7904ee123d98b58f859892d71188c25624295c32')
 
 build() {
