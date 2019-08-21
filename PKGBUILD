@@ -5,8 +5,8 @@
 # Contributor: dieghen89 <dieghen89@gmail.com>
 
 pkgname=musique
-pkgver=1.6
-pkgrel=2
+pkgver=1.7
+pkgrel=1
 pkgdesc='A finely crafted music player'
 arch=('x86_64')
 url='https://flavio.tordini.org/musique'
@@ -22,7 +22,8 @@ sha256sums=('SKIP'
 
 prepare() {
   mkdir -p build
-  mv http idle media musique/lib/
+  mv http idle media $pkgname/lib/
+  sed -i 's|#include "imagedownloader.h"|#include "../imagedownloader.h"|' $pkgname/src/model/artist.cpp
 }
 
 build() {
