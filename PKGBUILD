@@ -1,4 +1,4 @@
-# Maintainer: Benjamin Winger <bmw@disroot.org>
+# Maintainer: Benjamin Winger <bmw at disroot dot org>
 
 pkgname=portmod-migrate
 pkgver=0.1.2
