@@ -4,7 +4,7 @@
 
 pkgname=waterfox-kde
 pkgver=56.2.13
-pkgrel=1
+pkgrel=2
 pkgdesc="Free, open and private browser with openSUSE's patches for better integration with KDE"
 arch=('x86_64')
 license=('MPL')
@@ -24,7 +24,7 @@ conflicts=('waterfox')
 options=('!emptydirs' '!makeflags' 'zipman')
 _patchrev=7339b115a221
 _patchurl=http://www.rosenauer.org/hg/mozilla/raw-file/$_patchrev
-_commit=dc34e4b9d6fccdc97ce8b267eb04ca2c27490d2a
+_commit=e19194a11adea6f9892969eb98a750476a6ce044
 source=("git+https://github.com/MrAlex94/Waterfox.git#commit=$_commit"
         "waterfox.desktop::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-kde/waterfox.desktop"
         "kde.js::https://raw.githubusercontent.com/hawkeye116477/Waterfox/plasma/_Plasma_Build/kde.js"
@@ -34,8 +34,7 @@ source=("git+https://github.com/MrAlex94/Waterfox.git#commit=$_commit"
         no-plt.diff
         "waterfox-kde-56.2.10.1.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-kde/patches/waterfox-kde-56.2.10.1.patch"
         "dont-statically-link-libstdc++.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-kde/patches/dont-statically-link-libstdc%2B%2B.patch"
-        pgo_fix_missing_kdejs.patch
-        restore_successful_build.patch)
+        pgo_fix_missing_kdejs.patch)
 sha256sums=('SKIP'
             '6e9ec5f9c6fc5b191f9dec85b82d58eb2a51577b989bc7852e6b254d56ff13e8'
             '0850a8a8dea9003c67a8ee1fa5eb19a6599eaad9f2ad09db753b74dc5048fdbc'
@@ -45,8 +44,7 @@ sha256sums=('SKIP'
             'ea8e1b871c0f1dd29cdea1b1a2e7f47bf4713e2ae7b947ec832dba7dfcc67daa'
             'b55833542edf8cad2b73cf36dac6c667e588dcf79a99b570c5eca645698b80f7'
             '877bc1f0e768d96118bb739725e590467773dd897c31263099e52b8d7aaaa4c8'
-            'bf6743660623b7c9a43b94edc8acbcade07aa222ff2102a2808809df333ebe8e'
-            '43e449e434b7a00f77dcb2c6dcc76a83d894df73da3e0b7e967efc2661286d56')
+            'bf6743660623b7c9a43b94edc8acbcade07aa222ff2102a2808809df333ebe8e')
 
 prepare() {
   mkdir path
@@ -164,8 +162,6 @@ END
   echo "Patching for Jack"
   patch -Np1 -i ../jack-system-ports.patch
 
-  # That should fix building, but I don't know if MrAlex94 also messed something another on GH, so not all things can work good...
-  patch -Np1 -i ../restore_successful_build.patch
 }
 
 build() {
