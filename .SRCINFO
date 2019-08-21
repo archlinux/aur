@@ -1,7 +1,7 @@
 pkgbase = ttf-impallari-cantora
 	pkgdesc = Cantora ('Singer' in Spanish) is a friendly semi formal, semi condensed, semi sans serif, from Pablo Impallari
 	pkgver = 1.001
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.impallari.com/
 	arch = any
 	groups = impallari-fonts
@@ -9,7 +9,7 @@ pkgbase = ttf-impallari-cantora
 	depends = fontconfig
 	depends = xorg-font-utils
 	source = Cantora_One.zip::https://fonts.google.com/download?family=Cantora%20One
-	md5sums = a33ba0f976aa77df3976e35830844fc0
+	md5sums = 908369993dc47be8cc2cbcda8f8047d7
 
 pkgname = ttf-impallari-cantora
 

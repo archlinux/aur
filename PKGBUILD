@@ -4,7 +4,7 @@ _font="cantora"
 _group="impallari"
 pkgname=ttf-${_group}-${_font}
 pkgver=1.001
-pkgrel=2
+pkgrel=3
 pkgdesc="Cantora ('Singer' in Spanish) is a friendly semi formal, semi condensed, semi sans serif, from Pablo Impallari"
 arch=(any)
 url="http://www.impallari.com/"
@@ -13,7 +13,7 @@ groups=("${_group}-fonts")
 depends=('fontconfig' 'xorg-font-utils')
 #install=updatefont.install
 source=("Cantora_One.zip::https://fonts.google.com/download?family=Cantora%20One")
-md5sums=('a33ba0f976aa77df3976e35830844fc0')
+md5sums=('908369993dc47be8cc2cbcda8f8047d7')
 
 package() {
   cd ${srcdir}
