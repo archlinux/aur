@@ -1,12 +1,11 @@
 pkgbase = linux-clear-bin
-	pkgver = 5.2.8
-	pkgrel = 821
-	arch = x86_64
-	source = depmod.hook
-	md5sums = ef6f6d2359e9925e78ae643072603028
-
-pkgname = linux-clear-bin
 	pkgdesc = clear linux kernel and modules in binary
+	pkgver = 5.2.9
+	pkgrel = 825
+	epoch = 1
+	url = https://clearlinux.org/node/15538
+	arch = x86_64
+	license = GPL2
 	depends = coreutils
 	depends = linux-firmware
 	depends = kmod
@@ -14,7 +13,23 @@ pkgname = linux-clear-bin
 	optdepends = intel-ucode-clear: intel cpu and i915 firmware
 	optdepends = linux-clear-headers-bin: header files for the kernel
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = linux=5.2.8
-	provides = linux-clear=5.2.8
+	provides = linux=5.2.9
+	provides = linux-clear=5.2.9
+	provides = WIREGUARD-MODULE
 	conflicts = linux-clear
+	options = !strip
+	source = https://cdn.download.clearlinux.org/update/30840/Manifest.kernel-native
+	source = https://cdn.download.clearlinux.org/update/30840/pack-kernel-native-from-0.tar
+	source = 60-linux.hook
+	source = 90-linux.hook
+	source = 99-linux.hook
+	source = linux.preset
+	sha256sums = 10792b740f7ad1b70695a0d16f71c5cff61e75eed3c1c865b5cdb0e1ecfd55b8
+	sha256sums = b9289313d9fd783e5134b86a8dcb69db2d5206e6c632e9277005939a50c7e202
+	sha256sums = 60b965278d9b0af897b6a54c847a4ea5adfe6116c19191b2b814c6f8bf92521e
+	sha256sums = 5a1b61d41b4d194d0ff6e1e13f650ee982db403b008cacdc5564e7bd265a81fc
+	sha256sums = a61b3fdc2ef2f1405b3ffe166e9c6d1666289ab427f2348259f04b5e878376a2
+	sha256sums = 210e075d642b212df990a2a669e88b81547e6c4e0ed37ef289c0e2987f713c92
+
+pkgname = linux-clear-bin
 
