@@ -1,13 +1,17 @@
 #!/usr/bin/env bash
 
-readonly info=$'\e[36m'
-readonly warn=$'\e[33m'
+readonly success=$'\e[1;32m'
+readonly info=$'\e[0;36m'
+readonly warn=$'\e[0;33m'
 readonly reset=$'\e[0m'
 
 post_install() {
-    echo "${info}Thanks for installing Nextshot!"
-    echo "${warn}Dependencies vary based on your current environment."
-    echo "Run 'nextshot --deps' after configuration to ensure you have all required packages.${reset}"
+    echo "${success}Thanks for installing Nextshot!"
+    echo
+    echo "${info}Dependencies vary based on your current environment"
+    echo "${reset}Run 'nextshot --deps' after configuration to ensure"
+    echo "that you have all the required packages installed."
+    echo
 }
 
 post_upgrade() {
