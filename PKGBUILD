@@ -14,6 +14,7 @@ optdepends=("gnome-keyring")
 makedepends=("asar")
 conflicts=("$_pkgname" "$_pkgname-bin" "$_pkgname-preview-bin" "$_pkgname-beta-bin" "skype")
 provides=("$_pkgname" "skype")
+install=install.sh
 source=(
 "https://repo.skype.com/deb/pool/main/s/$_pkgname/${_pkgname}_${pkgver}_amd64.deb"
 )
