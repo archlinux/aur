@@ -6,10 +6,11 @@ pkgbase = mirage
 	arch = x86_64
 	license = GPL
 	depends = pygtk
-	depends = desktop-file-utils
-	depends = python2-exiv2
+	optdepends = gnome-python: GNOME toolbar setting support
 	source = http://downloads.sourceforge.net/project/mirageiv.berlios/mirage-0.9.5.2.tar.bz2
+	source = mirage-0.9.5.2-setup.py.patch
 	md5sums = 92191a4496b0a50486ed7299baf6729f
+	md5sums = 9b54ee94338f6daf5e7e7926427040e4
 
 pkgname = mirage
 
