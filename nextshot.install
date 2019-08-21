@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+readonly err=$'\e[0;31m'
+readonly errBold=$'\e[1;31m'
 readonly success=$'\e[1;32m'
 readonly info=$'\e[0;36m'
 readonly warn=$'\e[0;33m'
@@ -12,8 +14,28 @@ post_install() {
     echo "${reset}Run 'nextshot --deps' after configuration to ensure"
     echo "that you have all the required packages installed."
     echo
+
+    check_yad
 }
 
 post_upgrade() {
     post_install "$1"
+}
+
+check_yad() {
+    local yMaj yMin yVer yVerParts
+
+    yVer=$(type yad >/dev/null 2>&1 && yad --version | awk '{ print $1 }')
+
+    IFS='.' read -ra yVerParts <<< "${yVer:-"0.0.0"}"
+    yMaj="${yVerParts[0]}"
+    yMin="${yVerParts[1]:-0}"
+    yFix="${yVerParts[2]:-0}"
+
+    if (( yMaj >= 1 )) && (( yMaj < 4 )) || (( yMaj == 4 )) && (( yMin <= 1 )) && (( yFix == 0 )); then
+        echo "${errBold}WARNING: ${err}Version ${yVer} of Yad is known to break the tray menu!"
+        echo "${warn}If a version higher than 4.1 is available, you should upgrade to it."
+        echo "Alternatively, you can switch temporarily to 'yad-git' from the AUR."
+        echo "${reset}"
+    fi
 }
