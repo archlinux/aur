@@ -2,7 +2,7 @@
 # Maintainer: Jan de Groot <jgc@archlinux.org>
 
 pkgname=libgdata
-pkgver=0.17.10
+pkgver=0.17.11
 pkgrel=1
 pkgdesc="GLib-based library for accessing online service APIs using the GData protocol"
 url="https://wiki.gnome.org/Projects/libgdata"
@@ -10,11 +10,9 @@ arch=(x86_64)
 license=(GPL)
 depends=(libsoup liboauth gcr gnome-online-accounts)
 makedepends=(gobject-introspection vala uhttpmock git gtk-doc meson)
-_commit=f54d68f961015f85595b956ff0143a6ee0c41ff7  # tags/0.17.10^0
-source=("git+https://gitlab.gnome.org/GNOME/libgdata.git#commit=$_commit"
-        9.patch)
-sha256sums=('SKIP'
-            '1198980475de88a62d4868f89a5b5418dfa77befc40cf14716b240dd9685b61b')
+_commit=5b2e808bcf73bb44e5fc69c04069d7befec70518  # tags/0.17.11^0
+source=("git+https://gitlab.gnome.org/GNOME/libgdata.git#commit=$_commit")
+sha256sums=('SKIP')
 
 pkgver() {
   cd $pkgname
@@ -23,9 +21,6 @@ pkgver() {
 
 prepare() {
   cd $pkgname
-
-  # https://gitlab.gnome.org/GNOME/libgdata/merge_requests/9
-  patch -Np1 -i ../9.patch
 }
 
 build() {
