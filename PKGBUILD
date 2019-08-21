@@ -1,7 +1,7 @@
 # Maintainer: Vaporeon <vaporeon@vaporeon.io>
 
 pkgname=invader-git
-pkgver=0.1.0.r333.354621b
+pkgver=0.2.0.r334.ad967e9
 pkgrel=1
 pkgdesc="Open source editing tools for Halo Custom Edition"
 depends=('libtiff' 'libarchive')
@@ -14,7 +14,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir"/Invader
-  printf "0.1.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "%s.r%s.%s" "$(git describe --abbrev=0 --tags)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
