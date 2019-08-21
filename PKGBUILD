@@ -1,7 +1,7 @@
 # Maintainer: Skydrome <skydrome at protonmail dot com>
 
 pkgname=zulu-embedded-jdk11
-pkgver=11.0.3
+pkgver=11.0.4
 pkgrel=1
 pkgdesc='Zulu Embedded is a certified build of OpenJDK for Armv8/v7/v6 devices.'
 arch=('armv6h' 'armv7h' 'armv8h')
@@ -23,13 +23,13 @@ provides=(
 case "$CARCH" in
     arm*)
         _JARCH='aarch32hf'
-        _zulu_build=11.31.16
-        sha256sums=('25f703baa5b3109c0dab72dc16f9744b879176e9f85b52f068bebb3ffdbd2c7c')
+        _zulu_build=11.33.21
+        sha256sums=('5e7e76a46fe1cf614ddfd7efc3b139ace7ba3fb552a4d9bd5b4ea31dc28494a3')
         ;;
     aarch64)
         _JARCH='aarch64'
-        _zulu_build=11.31.15
-        sha256sums=('3b0d91611b1bdc4d409afcf9eab4f0e7f4ae09f88fc01bd9f2b48954882ae69b')
+        _zulu_build=11.33.21
+        sha256sums=('a5150033cc8912c0845d547eeea1e4577d6e438b95b106e429db0543d6605500')
         ;;
 esac
 
