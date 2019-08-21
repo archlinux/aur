@@ -9,7 +9,7 @@
 
 pkgname=libselinux
 pkgver=2.9
-pkgrel=1
+pkgrel=2
 pkgdesc="SELinux library and simple utilities"
 arch=('i686' 'x86_64' 'armv6h')
 url='http://userspace.selinuxproject.org'
@@ -23,9 +23,17 @@ optdepends=('python2: python2 bindings'
 conflicts=("selinux-usr-${pkgname}")
 provides=("selinux-usr-${pkgname}=${pkgver}-${pkgrel}")
 source=("https://github.com/SELinuxProject/selinux/releases/download/20190315/${pkgname}-${pkgver}.tar.gz"
-        "libselinux.tmpfiles.d")
+        "libselinux.tmpfiles.d"
+        '0001-libselinux-Use-Python-distutils-to-install-SELinux-p.patch')
 sha256sums=('1bccc8873e449587d9a2b2cf253de9b89a8291b9fbc7c59393ca9e5f5f4d2693'
-            'afe23890fb2e12e6756e5d81bad3c3da33f38a95d072731c0422fbeb0b1fa1fc')
+            'afe23890fb2e12e6756e5d81bad3c3da33f38a95d072731c0422fbeb0b1fa1fc'
+            '47e8c4b6c67d1778bd0a8de782ea6d2406e8de3ad13064c85d53deba222100af')
+
+prepare() {
+  cd "${pkgname}-${pkgver}"
+
+  patch -Np2 -i ../0001-libselinux-Use-Python-distutils-to-install-SELinux-p.patch
+}
 
 build() {
   cd "${pkgname}-${pkgver}"
