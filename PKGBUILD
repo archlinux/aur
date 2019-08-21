@@ -6,15 +6,13 @@ projectname=skycoin
 pkgdesc="CX Skycoin Blockchain Programming Language"
 pkgver='autogeneratetd'
 pkggopath="github.com/$projectname/$pkgname1"
-pkgrel=2
+pkgrel=3
 arch=('any')
 url="https://${pkggopath}"
 license=()
 makedepends=('git' 'go' 'gcc' 'glade' 'xorg-server-xvfb' 'libxinerama' 'libxcursor' 'libxrandr' 'libglvnd' 'libglade' 'mesa' 'libxi' 'cairo' 'perl' 'pango')
 source=("git+${url}.git#branch=${BRANCH:-develop}")
 sha256sums=('SKIP')
-validpgpkeys=('DE08F924EEE93832DABC642CA8DC761B1C0C0CFC')
-
 
 export GOOS=linux
 export GOPATH="$srcdir"
