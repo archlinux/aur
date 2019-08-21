@@ -6,6 +6,15 @@ post_install() {
     chmod 755 /opt/RepetierServer/modules/firmware/bin/avrdude
     chmod 755 /opt/RepetierServer/modules/firmware/bin/bossac
     chmod 755 /opt/RepetierServer/modules/firmware/bin/teensy_loader_cli
+
+    # Fix paths
+    sed -i 's|/usr/local/Repetier-Server/|/opt/RepetierServer/|g' /opt/RepetierServer/etc/RepetierServer.xml
+    sed -i 's|/usr/local/Repetier-Server/|/opt/RepetierServer/|g' /opt/RepetierServer/RepetierServer.service
+    sed -i 's|/var/lib/Repetier-Server/|/opt/RepetierServer/data/|g' /opt/RepetierServer/etc/RepetierServer.xml
+    sed -i 's|/var/lib/Repetier-Server|/opt/RepetierServer/data|g' /opt/RepetierServer/RepetierServer.service
+
+    # install systemd service
+    mv /opt/RepetierServer/RepetierServer.service /usr/lib/systemd/system/
     systemctl --system daemon-reload
 }
 
@@ -17,6 +26,7 @@ post_remove() {
     echo "Removing repetierserver system user"
     id -u repetierserver &>/dev/null && userdel repetierserver
     id -g repetierserver &>/dev/null && groupdel repetierserver
+    rm -r /usr/lib/systemd/system/RepetierServer.service
 }
 
 pre_remove() {
