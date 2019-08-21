@@ -1,0 +1,15 @@
+pkgbase = oelint-adv
+	pkgdesc = Linter for bitbake recipes based in OE Styleguide
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/priv-kweihmann/oelint-adv
+	arch = any
+	license = BSD 2-Clause
+	depends = python
+	depends = python-setuptools
+	provides = oelint-adv=1.4.0
+	source = https://github.com/priv-kweihmann/oelint-adv/archive/1.4.0.tar.gz
+	sha256sums = 363a4878bc9b0c48bc14ef3609e2f0053e0003e51cda74f2a5318291468c673a
+
+pkgname = oelint-adv
+
