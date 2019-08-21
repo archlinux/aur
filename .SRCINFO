@@ -1,0 +1,16 @@
+pkgbase = aptly-zsh-completion-git
+	pkgdesc = ZSH completion for aptly
+	pkgver = r18.8aff667
+	pkgrel = 1
+	url = https://github.com/steinymity/aptly-zsh
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = zsh
+	provides = aptly-zsh-completion-git
+	conflicts = aptly-zsh-completion-git
+	source = aptly-zsh-completion-git::git+https://github.com/steinymity/aptly-zsh
+	md5sums = SKIP
+
+pkgname = aptly-zsh-completion-git
+
