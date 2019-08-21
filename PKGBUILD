@@ -1,7 +1,7 @@
 # Maintainer: Damien GASPARINA <dgasparina at gmail dot com>
 pkgname=confluent-platform
 pkgver=5.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Confluent, founded by the creators of Apache Kafka, delivers a complete execution of Kafka for the Enterprise, to help you run your business in real time.'
 arch=('any')
 url='https://www.confluent.io/'
@@ -48,7 +48,7 @@ source=(https://packages.confluent.io/archive/5.3/confluent-5.3.0-2.11.tar.gz
 
 sha256sums=('807392e39b8523e2d209995b1a41c4b40673a94e8d29792032772dc41f5d787a'
             '6f5dfdbaf6ef405117482413b376e55148f75423bc6b8681cd8f91cdb7d96a99'
-					  '46353b135a6d44a8463eb90d9449c17dca72c78e87348093c3ec841645135ebf')
+					  'SKIP')
 
 
 package() {
