@@ -8,7 +8,7 @@ pkgdesc='A daemon which implements the Point-to-Point Protocol for dial-up netwo
 arch=('i686' 'x86_64' 'armv7h')
 url="https://www.samba.org/ppp/"
 license=('GPL' 'BSD')
-provides=('ppp')
+provides=("ppp=$pkgver")
 conflicts=('ppp')
 depends=('glibc' 'libpcap>=1.0.0' 'openssl')
 backup=(etc/ppp/{chap-secrets,pap-secrets,options,ip-up,ip-down,ip-down.d/00-dns.sh,ip-up.d/00-dns.sh,ipv6-up.d/00-iface-config.sh})
@@ -29,13 +29,11 @@ source=(https://download.samba.org/pub/ppp/ppp-${pkgver}.tar.gz{,.asc}
         adaptive_echos.patch::https://sources.debian.org/data/main/p/ppp/2.4.7-1+4/debian/patches/adaptive_echos
         cifdefroute.patch::https://sources.debian.org/data/main/p/ppp/2.4.7-1+4/debian/patches/cifdefroute.dif
         close_dev_ppp.patch::https://sources.debian.org/data/main/p/ppp/2.4.7-1+4/debian/patches/close_dev_ppp
-        fix_linkpidfile.patch::https://sources.debian.org/data/main/p/ppp/2.4.7-1+4/debian/patches/fix_linkpidfile
         ipv6-accept-remote.patch::https://sources.debian.org/data/main/p/ppp/2.4.7-1+4/debian/patches/ipv6-accept-remote
-        https://sources.debian.org/data/main/p/ppp/2.4.7-1+4/debian/patches/ppp-2.4.2-ifname.diff
+        ppp_ifname.patch::https://github.com/paulusmack/ppp/commit/bbcdc4366bbee6c3f4e1ddda31e4eec8c1b3ccc2.patch
         strip_msdomain.patch::https://sources.debian.org/data/main/p/ppp/2.4.7-1+4/debian/patches/ppp-2.4.2-stripMSdomain
         https://sources.debian.org/data/main/p/ppp/2.4.7-1+4/debian/patches/pr-28-pppoe-custom-host-uniq-tag.patch
         radius_mtu.patch::https://sources.debian.org/data/main/p/ppp/2.4.7-1+4/debian/patches/radius_mtu
-        setenv_call_file.patch::https://sources.debian.org/data/main/p/ppp/2.4.7-1+4/debian/patches/setenv_call_file
         LICENSE)
 sha256sums=('02e0a3dd3e4799e33103f70ec7df75348c8540966ee7c948e4ed8a42bbccfb30'
             'SKIP'
@@ -55,13 +53,11 @@ sha256sums=('02e0a3dd3e4799e33103f70ec7df75348c8540966ee7c948e4ed8a42bbccfb30'
             '4d6333b6fd2bbb9ec3dda8db9ab54ba91621ebcb119c1dff330c201901214267'
             '9af4f7bef2337498b7cdbda1e1d87899005be29c6e322672cb38afb3f4fd8d91'
             '841117fec02748a0e12620d7126c26877a8610e2eb7b056997420cde9034f4fd'
-            '4d8637a6b431e92d0afcd337062e54b0127f539245f2eaee839651fe762f3bc9'
             'c22a0f0380825e5f8c32dc9be51c39bcb7cc56d9a5e5e8a8198ee7c92c7c2c59'
-            '8d3ae2c2103d4eac7cd37882b340162f8bff1177490660a36396cce32954440b'
+            '1384e1d9f586b7e0a5228cdebb022c45a21009d38bc6b410e3f36622ff1a6a10'
             '25b080d852b40ded4071d1573176ffb19cf5b2fa6fbb54d0ff837e0b47392197'
             'a7abb668309b74e7d96f45570632ccd87c942a5589d7462bddcfe6390c2a7d8f'
             '43f9276ed6204a9d78734510928b2881dfd573f46ca995bf53689f7a43122cc2'
-            '2ce5dad1723bcf6ec0b7f9dcc4b35ea4af27debe12a4dfd50ef31f539b385b1d'
             '96fd35104e3d0ec472517afecead88419913ae73ae0189476d5dad9029c2be42')
 validpgpkeys=('631E179E370CD727A7F2A33A9E4295D605F66CE9') # Paul Mackerras (Signing key) <paulus@samba.org>
 
@@ -69,7 +65,8 @@ prepare() {
   cd "${srcdir}/ppp-${pkgver}"
 
   for patchfile in ${srcdir}/*.patch; do
-  patch -p1 -i "${patchfile}"
+    echo "Applying $patchfile"
+    patch -p1 -i "${patchfile}"
   done
 
   # enable active filter
