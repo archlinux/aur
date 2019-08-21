@@ -1,6 +1,6 @@
 # Maintainer: Anton Karmanov <bergentroll@insiberia.net>
 pkgname=spectral-git
-pkgver=218.r431.g256ff10
+pkgver=218.r530.gbb0f801
 pkgrel=1
 epoch=
 pkgdesc="Glossy cross-platform client for Matrix"
@@ -8,8 +8,9 @@ arch=(any)
 url="https://gitlab.com/b0/spectral"
 license=('GPL3')
 depends=(
-    'qt5-tools' 'qt5-multimedia' 'qt5-quickcontrols2' 'qt5-graphicaleffects')
-makedepends=('cmake' 'git')
+  'qt5-graphicaleffects' 'qt5-multimedia' 'qt5-quickcontrols2' 'qt5-svg'
+  'qt5-tools' 'qtkeychain')
+makedepends=('cmake' 'cmark' 'git' 'libolm')
 options=()
 source=("$pkgname::git+https://gitlab.com/b0/spectral.git")
 md5sums=('SKIP')
@@ -28,11 +29,12 @@ build() {
   cd $pkgname
   mkdir -p build
   cd build
-  qmake PREFIX="$pkgdir/usr/" ../spectral.pro
+  cmake -DCMAKE_INSTALL_PREFIX="$pkgdir/usr/" -DCMAKE_BUILD_TYPE='Release' ../
   make
 }
 
 package() {
   cd $pkgname/build
   make install
+  rm $pkgdir/usr/share/icons/hicolor/icon-theme.cache
 }

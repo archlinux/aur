@@ -1,16 +1,20 @@
 pkgbase = spectral-git
 	pkgdesc = Glossy cross-platform client for Matrix
-	pkgver = 218.r431.g256ff10
+	pkgver = 218.r530.gbb0f801
 	pkgrel = 1
 	url = https://gitlab.com/b0/spectral
 	arch = any
 	license = GPL3
 	makedepends = cmake
+	makedepends = cmark
 	makedepends = git
-	depends = qt5-tools
+	makedepends = libolm
+	depends = qt5-graphicaleffects
 	depends = qt5-multimedia
 	depends = qt5-quickcontrols2
-	depends = qt5-graphicaleffects
+	depends = qt5-svg
+	depends = qt5-tools
+	depends = qtkeychain
 	source = spectral-git::git+https://gitlab.com/b0/spectral.git
 	md5sums = SKIP
 
