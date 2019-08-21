@@ -1,0 +1,1 @@
+If a PGP verification error occurs when running makepkg, please run the included prepare.sh script first.

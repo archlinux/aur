@@ -29,7 +29,7 @@ prepare() {
 	if [ -d "$GOPATH" ]; then
 		rm -vrf "$GOPATH"
 	fi
-	if [ ! -d "${srcdir}/build" ]; then
+	if [ ! -d "${srcdir}/build" ]; then
 		mkdir -vp "${srcdir}/build"
 	fi
 	if [ ! -d "$SWARMPATH" ]; then
