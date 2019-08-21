@@ -15,6 +15,7 @@ makedepends=("asar")
 conflicts=("$_pkgname" "$_pkgname-bin" "$_pkgname-stable-bin" "$_pkgname-beta-bin" "skype")
 provides=("$_pkgname" "skype")
 replaces=("$_pkgname-bin")
+install=install.sh
 source=(
 "https://repo.skype.com/deb/pool/main/s/$_pkgname/${_pkgname}_${pkgver}_amd64.deb"
 )
