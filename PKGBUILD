@@ -2,7 +2,7 @@
 # This PKGBUILD is maintained at https://github.com/winged/aur-packages
 
 pkgname=fahrplan
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A SBB/CFF/FFS (Swiss railway) commandline based timetable client"
 url="https://github.com/dbrgn/fahrplan"
@@ -20,7 +20,7 @@ makedepends=('python3')
 license=('GPLv3')
 arch=('any')
 source=("https://github.com/dbrgn/fahrplan/archive/v$pkgver.tar.gz")
-sha256sums=('f87f842784c305a363a15265f220803fd306b11fd3ab476fe4f233a9ce3092a6')
+sha256sums=('adb1a5d27ecbba538a64ba4c74ff084466e8d983643e49c8791ea22a6cd21c72')
 
 if [ -n "$VIRTUAL_ENV" ]; then
   echo "Warning: You're building within a virtualenv. Use"
