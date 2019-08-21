@@ -19,7 +19,7 @@
 
 pkgbase=lib32-llvm-minimal-git
 pkgname=('lib32-llvm-minimal-git' 'lib32-llvm-libs-minimal-git')
-pkgver=9.0.0_r317729.4bc710166fb
+pkgver=10.0.0_r324862.045f33aec9e
 pkgrel=1
 arch=('x86_64')
 url="http://llvm.org/"
@@ -91,6 +91,10 @@ build() {
         ninja $NINJAFLAGS
 }
 
+check() {
+    cd _build
+    ninja $NINJAFLAGS check-llvm
+}
 package_lib32-llvm-minimal-git() {
     pkgdesc="Collection of modular and reusable compiler and toolchain technologies (32-bit)"
     depends=(lib32-llvm-libs-minimal-git=$pkgver-$pkgrel llvm-minimal-git)
