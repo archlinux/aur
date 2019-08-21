@@ -1,0 +1,24 @@
+pkgbase = openocd-riot-git
+	pkgdesc = Open On-Chip Debugger with RIOT support
+	pkgver = 0.10.0
+	pkgrel = 1
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = make
+	makedepends = gcc
+	makedepends = libtool
+	makedepends = pkg-config
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = texinfo
+	makedepends = libusb
+	provides = openocd-riot
+	provides = openocd
+	conflicts = openocd-riot
+	conflicts = openocd
+	source = openocd::git+https://github.com/seeseemelk/openocd.git
+	md5sums = SKIP
+
+pkgname = openocd-riot-git
+
