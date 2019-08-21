@@ -1,0 +1,31 @@
+pkgbase = neatimage
+	pkgdesc = Best noise reduction fro digital cameras and scanners
+	pkgver = 8.4
+	pkgrel = 1
+	url = https://ni.neatvideo.com/
+	arch = x86_64
+	license = custom
+	depends = bzip2
+	depends = expat
+	depends = fontconfig
+	depends = freetype2
+	depends = gcc-libs
+	depends = glib2
+	depends = glibc
+	depends = graphite
+	depends = harfbuzz
+	depends = libpng
+	depends = libutil-linux
+	depends = libx11
+	depends = libxau
+	depends = libxcb
+	depends = libxdmcp
+	depends = libxext
+	depends = libxi
+	depends = pcre
+	depends = zlib
+	source = https://ni.neatvideo.com/demo/ni8/sld/NeatImageSL.Demo.Intel64.tgz
+	sha512sums = b7c15ffe5e11ca66eb3b65a443a699c37bcca4abf66a2daf9d9c65f60538bcdb37d4bfe4c2f32f56d187a40669e5884e831946086f7c044586c32904f328c9d4
+
+pkgname = neatimage
+
