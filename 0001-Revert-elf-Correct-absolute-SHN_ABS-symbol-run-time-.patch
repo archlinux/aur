@@ -1,4 +1,4 @@
-From 9240b22420e122770ba06fdcd38c021361384e33 Mon Sep 17 00:00:00 2001
+From 7d0f675e8f8a21ccfb2b153194edeb5094425fa7 Mon Sep 17 00:00:00 2001
 From: Eli Schwartz <eschwartz@archlinux.org>
 Date: Fri, 28 Sep 2018 05:19:46 +0000
 Subject: [PATCH] Revert "elf: Correct absolute (SHN_ABS) symbol run-time
@@ -18,27 +18,27 @@ This reverts commit e7feec374c635b6a29d65c39ae5e1855528fed39.
  delete mode 100644 elf/tst-absolute-sym.c
 
 diff --git a/elf/Makefile b/elf/Makefile
-index faec577d1c..62e961d655 100644
+index d470e41402..2ff8fe3d7f 100644
 --- a/elf/Makefile
 +++ b/elf/Makefile
-@@ -186,7 +186,7 @@ tests += restest1 preloadtest loadfail multiload origtest resolvfail \
+@@ -190,7 +190,7 @@ tests += restest1 preloadtest loadfail multiload origtest resolvfail \
  	 tst-tlsalign tst-tlsalign-extern tst-nodelete-opened \
  	 tst-nodelete2 tst-audit11 tst-audit12 tst-dlsym-error tst-noload \
  	 tst-latepthread tst-tls-manydynamic tst-nodelete-dlclose \
 -	 tst-debug1 tst-main1 tst-absolute-sym tst-absolute-zero tst-big-note \
 +	 tst-debug1 tst-main1 tst-absolute-zero tst-big-note \
- 	 tst-unwind-ctor tst-unwind-main tst-audit13
+ 	 tst-unwind-ctor tst-unwind-main tst-audit13 \
+ 	 tst-sonamemove-link tst-sonamemove-dlopen tst-dlopen-aout
  #	 reldep9
- tests-internal += loadtest unload unload2 circleload1 \
-@@ -274,7 +274,7 @@ modules-names = testobj1 testobj2 testobj3 testobj4 testobj5 testobj6 \
+@@ -276,7 +276,7 @@ modules-names = testobj1 testobj2 testobj3 testobj4 testobj5 testobj6 \
  		tst-audit12mod1 tst-audit12mod2 tst-audit12mod3 tst-auditmod12 \
  		tst-latepthreadmod $(tst-tls-many-dynamic-modules) \
  		tst-nodelete-dlclose-dso tst-nodelete-dlclose-plugin \
 -		tst-main1mod tst-libc_dlvsym-dso tst-absolute-sym-lib \
 +		tst-main1mod tst-libc_dlvsym-dso \
  		tst-absolute-zero-lib tst-big-note-lib tst-unwind-ctor-lib \
- 		tst-audit13mod1
- # Most modules build with _ISOMAC defined, but those filtered out
+ 		tst-audit13mod1 tst-sonamemove-linkmod1 \
+ 		tst-sonamemove-runmod1 tst-sonamemove-runmod2
 diff --git a/elf/dl-addr.c b/elf/dl-addr.c
 index 9d285d76a7..0dd7d1dde9 100644
 --- a/elf/dl-addr.c
@@ -160,7 +160,7 @@ index c641f7ecdf..0000000000
 -
 -#include <support/test-driver.c>
 diff --git a/sysdeps/generic/ldsodefs.h b/sysdeps/generic/ldsodefs.h
-index 37cab6f06b..eb01538256 100644
+index b1fc5c31f9..41f3415e6c 100644
 --- a/sysdeps/generic/ldsodefs.h
 +++ b/sysdeps/generic/ldsodefs.h
 @@ -72,8 +72,7 @@ typedef struct link_map *lookup_t;
@@ -174,5 +174,5 @@ index 37cab6f06b..eb01538256 100644
  /* On some architectures a pointer to a function is not just a pointer
     to the actual code of the function but rather an architecture
 -- 
-2.21.0
+2.23.0
 

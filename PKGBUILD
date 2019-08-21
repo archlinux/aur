@@ -4,7 +4,7 @@
 # All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
 
 pkgname=glibc-git
-pkgver=2.29.r102.g462e83a4a0
+pkgver=2.30.r51.gf615e3fced
 pkgrel=1
 pkgdesc='GNU C Library'
 arch=('i686' 'x86_64')
@@ -26,7 +26,7 @@ source=('git+https://sourceware.org/git/glibc.git'
         'bz20338.patch')
 sha256sums=('SKIP'
             '05fbb88877cdddc99ef25e48304d6e5ac236660c20925d461cb4e90ebcb3b7de'
-            '5cf67db2da1a8c421b44ed191c2822864ad6672695843409b02487da7addaf92'
+            '52499da026e43c294c84af5af32b18ca304727fe1098a35f2bc7b6bafc096dd6'
             '7ff38c08e51c4a0a3d7fd2712cf435f700bef078fb8f4e7566424ae3d1754bab')
 
 # remove default hardening for building libraries
