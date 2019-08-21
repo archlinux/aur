@@ -1,7 +1,7 @@
 # Maintainer:   M.Reynolds <blackboxnetworkproject@gmail.com>
 
 pkgname=thonny
-pkgver=3.1.2
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="Python IDE for beginners."
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('openssl' 'python' 'python-beautifulsoup4' 'python-docutils' 'mypy'
          'python-astroid' 'python-pylint' 'python-pyserial' 'python-jedi' 'tcl' 'tk')
 source=("https://github.com/$pkgname/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver-x86_64.tar.gz")
-
+sha256sums=('dba7d27be4e5bd5690a719a0c95016561ba2172d619b588080afc1ee486b3d46')
 
 package() {
 
@@ -35,4 +35,3 @@ package() {
     cp -dr --no-preserve=ownership "$pkgname/lib/python3.7/site-packages/thonny" \
                                    "$pkgdir/usr/lib/python3.7/site-packages"
 }
-md5sums=('a80235b22b8c4305abef7c91e8298304')
