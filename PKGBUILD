@@ -156,6 +156,7 @@ case ${_piver} in
   _toolchain="/opt/gcc-linaro-6.4.1-2017.08-x86_64_aarch64-linux-gnu/bin/aarch64-linux-gnu-"
   _float=false
   _mkspec="linux-jetson-nano-g++"
+  _opengl_variant="desktop"
 ;;
 
 esac
