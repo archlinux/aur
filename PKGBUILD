@@ -1,7 +1,7 @@
 # Maintainer Severin Glöckner <severin.gloeckner@stud.htwk-leipzig.de>
 
 pkgname=wesnoth-rcx-git
-pkgver=0.2.1+34+g2afae74
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="small desktop application for previewing and recoloring Wesnoth graphics"
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ prepare() {
   cd morningstar
 
   sed -i "s;/usr/local;$pkgdir/usr;" morningstar.pro
-  qmake -config release
+  qmake -config release QMAKE_CXXFLAGS_RELEASE+="${CXXFLAGS} ${CPPFLAGS}"
 }
 
 build() {
