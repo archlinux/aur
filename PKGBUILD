@@ -2,7 +2,7 @@
 
 pkgname=kpatch
 pkgver=0.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Live kernel patching'
 arch=(i686 x86_64)
 url=https://github.com/dynup/kpatch
@@ -34,16 +34,21 @@ package() {
   cd kpatch-$pkgver
   make DESTDIR="$pkgdir" install
 
-  # Remove incompatible init system file
   cd "$pkgdir"
+
+  # Remove incompatible init system file
   rm etc/init/kpatch.conf
   rmdir -p etc/init
 
-  # Fix directory structure
   cd usr
+
+  # Fix directory structure
   mv local/* .
   rmdir local
   mv lib{exec,}/kpatch
   mv {s,}bin/kpatch
   rmdir libexec sbin
+
+  # Fix file path in systemd service file
+  sed -i 's#local/s##' lib/systemd/system/kpatch.service
 }
