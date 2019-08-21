@@ -7,7 +7,7 @@ pkgdesc="A Return to Castle Wolfenstein modification which enables cooperative g
 arch=('i686' 'x86_64')
 url="http://www.rtcwcoop.com"
 license=('GPL')
-depends=('wolf-data' 'freetype2' 'sdl2' 'libjpeg-turbo' 'openal' 'opus' 'opusfile' 'libogg' 'zlib')
+depends=('iortcw-data' 'freetype2' 'sdl2' 'libjpeg-turbo' 'openal' 'opus' 'opusfile' 'libogg' 'zlib')
 makedepends=('cmake' 'git' 'zip')
 noextract=('patch-data-141.zip')
 install='rtcwcoop-git.install'
@@ -22,14 +22,6 @@ pkgver() {
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-build() {
-  if [ ! -f /opt/wolf-data/pak0.pk3 ]; then
-   echo "pak0.pk3 doesn't exist. The game will not start"
-   echo "Follow the wolf-data package instructions!"
-   sleep 5
-  fi
-}
-
 package() {
   cd "$srcdir/rtcwcoop"
 
@@ -39,19 +31,7 @@ package() {
   
   make USE_INTERNAL_LIBS=0 COPYDIR=$pkgdir/opt/rtcwcoop/ copyfiles
   
-  ln -s -r /opt/wolf-data/mp_pak0.pk3   $pkgdir/opt/rtcwcoop/main
-  ln -s -r /opt/wolf-data/mp_pak1.pk3	$pkgdir/opt/rtcwcoop/main
-  ln -s -r /opt/wolf-data/mp_pak2.pk3	$pkgdir/opt/rtcwcoop/main  
-  ln -s -r /opt/wolf-data/mp_pak3.pk3   $pkgdir/opt/rtcwcoop/main
-  ln -s -r /opt/wolf-data/mp_pak4.pk3   $pkgdir/opt/rtcwcoop/main
-  ln -s -r /opt/wolf-data/mp_pak5.pk3   $pkgdir/opt/rtcwcoop/main
-  ln -s -r /opt/wolf-data/pak0.pk3	$pkgdir/opt/rtcwcoop/main
-  ln -s -r /opt/wolf-data/sp_pak1.pk3	$pkgdir/opt/rtcwcoop/main
-  ln -s -r /opt/wolf-data/sp_pak2.pk3	$pkgdir/opt/rtcwcoop/main
-  ln -s -r /opt/wolf-data/sp_pak3.pk3   $pkgdir/opt/rtcwcoop/main
-  ln -s -r /opt/wolf-data/sp_pak4.pk3   $pkgdir/opt/rtcwcoop/main
-  ln -s -r /opt/wolf-data/scripts	$pkgdir/opt/rtcwcoop/main 
-  ln -s -r /opt/wolf-data/rotate.cfg	$pkgdir/opt/rtcwcoop/main       
+  ln -s -r /opt/iortcw-data/*  $pkgdir/opt/rtcwcoop/main
   
  # Create Coop PK3
     if [ "$CARCH" = "x86_64" ]; then
