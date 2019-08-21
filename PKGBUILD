@@ -1,18 +1,18 @@
 # Contributor: skydrome <skydrome@protonmail.com>
 # Maintainer:  skydrome <skydrome@protonmail.com>
 
-#_branch=maint-0.4.0 # stable
+#_branch=maint-0.4.1 # stable
 #_with_rust=1
 #_malloc=jemalloc # tcmalloc
 
 pkgname=tor-git
-pkgver=0.4.1.0.alpha.r86.g9ac8c85
+pkgver=0.4.1.2.alpha.r449.g4b1
 pkgrel=1
 pkgdesc="An anonymizing overlay network (development version)"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://www.torproject.org"
 license=('BSD')
-depends=('openssl' 'libevent' 'libseccomp' 'zstd')
+depends=('openssl>=1.1.1' 'libevent' 'libseccomp' 'zstd')
 makedepends=('asciidoc')
 optdepends=('torsocks: allow transparent SOCKS proxying'
             'obfs4proxy: obfuscating pluggable transport proxy'
