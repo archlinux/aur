@@ -1,0 +1,15 @@
+
+post_install() {
+  echo '/!\ To select this GRUB2 theme: Edit /etc/default/grub and add or modify the GRUB_THEME parameter like this'
+  echo '/!\ Edit /etc/default/grub and add or modify the GRUB_THEME parameter like this:'
+  echo '/!\ GRUB_THEME="/boot/grub/themes/puzzle-bobble/theme.txt"'
+  echo '/!\ and then update your grub configuration using this command:'
+  echo '/!\ sudo grub-mkconfig -o /boot/grub/grub.cfg'
+  
+}
+
+post_remove() {
+  echo '/!\ Please update GRUB_THEME parameter in /etc/default/grub with a different theme,'
+  echo '/!\ and update your grub configuration using this command:'
+  echo '/!\ sudo grub-mkconfig -o /boot/grub/grub.cfg'
+}
