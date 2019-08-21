@@ -13,7 +13,7 @@
 
 
 pkgname=xamarin-android-git
-pkgver=9.4.99.r2284.gc2ff29f2
+pkgver=10.0.99.r2345.gd762aa99
 pkgrel=1
 pkgdesc="Provides open-source bindings of the Android SDK for use with .NET managed languages (Git version)"
 arch=('x86_64')
@@ -61,23 +61,23 @@ _android_source=('https://dl.google.com/android/repository/android-2.3.3_r02.zip
                  'https://dl.google.com/android/repository/platform-26_r02.zip'
                  'https://dl.google.com/android/repository/platform-27_r03.zip'
                  'https://dl.google.com/android/repository/platform-28_r04.zip'
-                 'https://dl.google.com/android/repository/platform-Q_r03.zip'
+                 'https://dl.google.com/android/repository/platform-29_r01.zip'
                  'https://dl.google.com/android/repository/docs-24_r01.zip'
                  'https://dl.google.com/android/repository/android_m2repository_r47.zip'
-                 'https://dl.google.com/android/repository/sys-img/android/x86-28_r04.zip'
+                 'https://dl.google.com/android/repository/sys-img/android/x86-29_r06.zip'
                  'https://dl.google.com/android/repository/android-ndk-r20-linux-x86_64.zip'
                  'https://dl.google.com/android/repository/build-tools_r29-linux.zip'
                  'https://dl.google.com/android/repository/platform-tools_r29.0.1-linux.zip'
                  'https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip'
                  'https://dl.google.com/android/repository/emulator-linux-5598178.zip'
                  'https://dl.google.com/android/repository/cmake-3.10.2-linux-x86_64.zip'
-                 'https://d3pxv6yz143wms.cloudfront.net/8.212.04.2/amazon-corretto-8.212.04.2-linux-x64.tar.gz' # build-tools/xaprepare/xaprepare/ConfigAndData/Configurables.Linux.cs
-                 'https://xamjenkinsartifact.azureedge.net/mono-sdks/android-release-Linux-537654c1c79564668e4cab9735be613028328a70.zip' # build-tools/xaprepare/xaprepare/ConfigAndData/Configurables.cs
-                 'https://xamjenkinsartifact.azureedge.net/mono-sdks/android-release-Windows-537654c1c79564668e4cab9735be613028328a70.zip'
+                 'https://d3pxv6yz143wms.cloudfront.net/8.222.10.1/amazon-corretto-8.222.10.1-linux-x64.tar.gz' # build-tools/xaprepare/xaprepare/ConfigAndData/Configurables.Linux.cs
+                 'https://xamjenkinsartifact.azureedge.net/mono-sdks/android-release-Linux-cc0632e4f3252554b274ab49a6d67b1d14fa4e18.7z' # build-tools/xaprepare/xaprepare/ConfigAndData/Configurables.cs
+                 'https://xamjenkinsartifact.azureedge.net/mono-sdks/android-release-Windows-cc0632e4f3252554b274ab49a6d67b1d14fa4e18.7z'
                  'https://dl.google.com/dl/android/maven2/com/android/tools/build/aapt2/3.4.1-5326820/aapt2-3.4.1-5326820-osx.jar' # src/aapt2/aapt2.targets
                  'https://dl.google.com/dl/android/maven2/com/android/tools/build/aapt2/3.4.1-5326820/aapt2-3.4.1-5326820-linux.jar'
                  'https://dl.google.com/dl/android/maven2/com/android/tools/build/aapt2/3.4.1-5326820/aapt2-3.4.1-5326820-windows.jar'
-                 'https://github.com/google/bundletool/releases/download/0.8.0/bundletool-all-0.8.0.jar') # src/bundletool/bundletool.targets
+                 'https://github.com/google/bundletool/releases/download/0.10.0/bundletool-all-0.10.0.jar') # src/bundletool/bundletool.targets
 source=('git+https://github.com/xamarin/xamarin-android.git'
         'git+https://github.com/mono/api-doc-tools.git'
         'git+https://github.com/mono/api-snapshot.git'
@@ -103,7 +103,6 @@ source=('git+https://github.com/xamarin/xamarin-android.git'
         'git+https://github.com/witwall/mman-win32.git'
         'git+https://github.com/mono/mono.git'
         'git+https://github.com/jonpryor/mono.linq.expressions.git'
-        'git+https://github.com/xamarin/mxe.git'
         'git+https://github.com/mono/Newtonsoft.Json.git'
         'nrefactory::git+https://github.com/icsharpcode/NRefactory.git'
         'nuget-buildtasks::git+https://github.com/mono/NuGet.BuildTasks.git'
@@ -160,7 +159,6 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
             '54bdb0f1ca06ba5747061ddeea20f431af72c448334fd4d3d7f84ea2ccd29fea'
             '5bc1f93aae86b4336ffc4cae9eb8ec41a9a8fd677582dd86a9629798f019bed9'
             'fd7f269a423d1f1d079eabf9f918ceab49108702a1c6bb2589d57c23393503d3'
@@ -176,23 +174,23 @@ sha256sums=('SKIP'
             '2aafa7d19c5e9c4b643ee6ade3d85ef89dc2f79e8383efdb9baf7fddad74b52a'
             '020c4c090bc82ce87ebaae5d1a922e21b39a1d03c78ffa43f0c3e42fc7d28169'
             '967f8ca99b71d337aa9c7781f9d65dd8110bf5c4746f44304047bf71b20d0ded'
-            '041198ae2cc7cd82d15d0d00ac3e69e814e9081bda7e964d788bb4ecc5bebdc2'
+            '2c9e961858e03900ffa0801a4f6234aa7223363b629fd8e1be60da9aa09d86bd'
             '68db2690cb92e4ee5373ac9b792642c90717d8f417d83eccea48781171b3182a'
             'a3f91808dce50c1717737de90c18479ed3a78b147e06985247d138e7ab5123d0'
-            '7c3615c55b64713fe56842a12fe6827d6792cb27a9f95f9fa3aee1ff1be47f16'
+            'bc2e2d7a2c09c7f71122d7740f8020b869914127e7d67b6655094931ed95f6d9'
             '57435158f109162f41f2f43d5563d2164e4d5d0364783a9a6fab3ef12cb06ce0'
             '97d25d76d7ef5f545c5f034fd77479b56d2e846c59c03756178db99443741d8f'
             '16d2543ac5fb840e1e7c54735591fd0a9552cef128f3e14a9baffe9560acbc69'
             '92ffee5a1d98d856634e8b71132e8a95d96c83a63fde1099be3d86df3106def9'
             '523bf2fae0d93f19b93b0839243acadcca1d8cea8f3946f13651d6989dd1bb6d'
             '763572c87f77d3ddbf7e72d080e8b45184d5c368bfdd170f2589f08a089570fd'
-            '84241d523798c1df5b7c5e2e57615a8761b6eb8386eb87026895803319d3c5ce'
-            '3db0be7b1a821298cd6605357921e4e9bb5390425fa8e8d6605a81fde9dd2518'
-            '9d0d854a2c9f849db21aa8f3f94a1e0bcb83b079239245e4d4d96304c438b958'
+            '293a5b6744558c5e7f520d4cfe27c89a053b8958d9dd3f32d1e95695ba29ab53'
+            '2a5be870a09fdf0ba710b16f91190dd5e15f16756afb12d2cbf9e21d9cb0f96a'
+            '9692e9f927f56813a8509667dd8ffc86ebced842ab65875412cef10f8736fd64'
             'a83c37de4891595fb2c1c5868d4485b7360bdfc0acb4a300aed201174f458420'
             '408852a986886f37e833ab75a6ec58771ee8f1154d477fc0d4d971a3b3951a33'
             'c7d5f5085f918e9a38a328857beb8e599ca907ebfc2edd553222c99dc20e33e1'
-            '5ea68a00f2fe0667d9d66dbf05181828d405a205732221751310dd0c1b5abe64'
+            '4070cbd35c7c8f868864f9d85cab19f8feb4f3982d846c509b9e210a6ec23457'
             '0ace4f53493332c9a75291ee96acd76b371b4e687175e4852bf85948176d7152'
             'c633ea19a84a5b638fb60d6421d8c2b10fdd6f1a5b455c4f0fe0fa0b0628878b'
             '809792dbe7384634e82406b724c3f4f452af0c536f75bf115deb93aa682a7142')
@@ -200,9 +198,9 @@ sha256sums=('SKIP'
 if [ true = "${_include_proprietary}" ]; then
     pkgname=xamarin-android-proprietary-git
     pkgdesc="$pkgdesc (Including proprietary components)"
-    source+=('https://download.visualstudio.microsoft.com/download/pr/402a338a-8d27-4e64-b9c1-0d93e01e3183/3fe416138114726f3cdd74b85c8123dc/xamarin.android.sdk-9.5.0.27.vsix'
+    source+=('https://download.visualstudio.microsoft.com/download/pr/8a466e79-1ee5-4ec8-9651-1bc87a28816f/494e153cbe0307c47f0e3c0ad015d01f/xamarin.android.sdk-10.0.0.4.vsix'
              runtime-xml.patch)
-    sha256sums+=('70de08a0afb7febe45f6147acf12d13aa7aa66ec14d93ddfb88d757e4a97316d'
+    sha256sums+=('fd91ddd271d05933fdef7ee7fba85191520138c3af7edf79fb5c52a70ccf773a'
                  '353d503f404294812040cbaf9c2183f25e62fd56f06cc205ae25eee5f3ae0887')
     provides+=('xamarin-android-git')
     conflicts+=('xamarin-android-git')
@@ -308,7 +306,6 @@ _prepare_submodules() {
                 dlfcn-win32
                 libzip
                 mman-win32
-                mxe
                 nrefactory
                 opentk
                 proguard
