@@ -1,6 +1,6 @@
 # Maintainer: Mewosiku <meowiik at gmail dot com>
 pkgname=environment-overseer-git
-pkgver=r106.4b505f6
+pkgver=r127.bbf2bb6
 pkgrel=1
 pkgdesc="Real time environment manager, used primarily to suppress addictive sites"
 arch=('any')
