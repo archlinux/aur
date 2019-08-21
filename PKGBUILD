@@ -1,5 +1,5 @@
 # Maintainer: Moses Narrow <moe_narrow@use.startmail.com>
-# Maintainer: Steve Skydev <steve@skycoin.net>
+# Maintainer: Rudi [KittyCash] <rudi@skycoinmail.com>
 pkgname=cxo
 projectname=skycoin
 pkgdesc="CX Object Storage System for the Skycoin Blockchain"
@@ -12,7 +12,6 @@ license=()
 makedepends=('go' 'dep')
 source=("https://$pkggopath/archive/v$pkgver.tar.gz")
 sha256sums=('e4fc5221d89b0f548a0093c944829c0b3e94f96efcc339effc5fea34f4accbd3')
-validpgpkeys=('DE08F924EEE93832DABC642CA8DC761B1C0C0CFC')
 
 prepare() {
 
