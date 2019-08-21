@@ -4,7 +4,7 @@
 pkgname=textext
 _pkgname=TexText
 pkgver=0.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An inkscape extension which lets you add LaTeX equations to your drawings"
 arch=('any')
 license=('custom:BSD')
