@@ -1,0 +1,21 @@
+pkgbase = judoassistant
+	pkgdesc = Judo Tournament Software Suite
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://judoassistant.com
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = boost
+	makedepends = meson
+	makedepends = ninja
+	depends = boost-libs
+	depends = qt5-base
+	depends = zstd
+	depends = noto-fonts
+	depends = openssl
+	source = https://github.com/judoassistant/judoassistant/releases/download/v0.1.0-alpha/judoassistant-0.1.0.tar.xz
+	sha1sums = a383b6e84689bcba3832b04d6a395f17b079a44c
+
+pkgname = judoassistant
+
