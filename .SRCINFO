@@ -1,7 +1,7 @@
 pkgbase = cairo-infinality-remix
 	pkgdesc = Cairo vector graphics library with Infinality patch support
-	pkgver = 1.16.0
-	pkgrel = 2
+	pkgver = 1.17.2+17+g52a7c79fd
+	pkgrel = 1
 	url = http://cairographics.org/
 	arch = i686
 	arch = x86_64
@@ -36,14 +36,12 @@ pkgbase = cairo-infinality-remix
 	conflicts = cairo-ocaml-git
 	conflicts = cairo-ubuntu
 	replaces = cairo-xcb
-	source = git+https://anongit.freedesktop.org/git/cairo#tag=1.16.0
-	source = 0001-ft-Use-FT_Done_MM_Var-instead-of-free-when-available.patch
+	source = git+https://gitlab.freedesktop.org/cairo/cairo.git#commit=52a7c79fd4ff96bb5fac175f0199819b0f8c18fc
 	source = cairo-make-lcdfilter-default.patch
 	source = cairo-respect-fontconfig_pb.patch
 	source = cairo-server-side-gradients.patch
 	source = cairo-webkit-html5-fix.patch
 	sha256sums = SKIP
-	sha256sums = 52ab418058076ad01e046ebbbdc834f390305516c222d07de91a93a4dcebe921
 	sha256sums = 9d692ffdbb13eaf5a66e7b5821fa6d67f2dbe3629d86d40e44f8bdcf0e6cdc2d
 	sha256sums = 3ef17cfd14b3edc14092b5e96fc63673b6b020b7f05adaa59d3c3e4b0cfdde66
 	sha256sums = b80c99b10fd48dbf98abd70ca2d1265ad6035383c47bfbee5e540a814b6d2a23

@@ -3,8 +3,8 @@
 
 pkgname=cairo-infinality-remix
 _name=cairo
-pkgver=1.16.0
-pkgrel=2
+pkgver=1.17.2+17+g52a7c79fd
+pkgrel=1
 pkgdesc="Cairo vector graphics library with Infinality patch support"
 arch=(i686 x86_64)
 license=('LGPL' 'MPL')
@@ -26,15 +26,16 @@ conflicts=('cairo'
             'cairo-ocaml-git'
             'cairo-ubuntu')
 
-source=("git+https://anongit.freedesktop.org/git/cairo#tag=$pkgver"
-        0001-ft-Use-FT_Done_MM_Var-instead-of-free-when-available.patch
+# Arch official upstream version commit
+_commit=52a7c79fd4ff96bb5fac175f0199819b0f8c18fc
+
+source=("git+https://gitlab.freedesktop.org/cairo/cairo.git#commit=$_commit"
         cairo-make-lcdfilter-default.patch
         cairo-respect-fontconfig_pb.patch
         cairo-server-side-gradients.patch
         cairo-webkit-html5-fix.patch)
 
 sha256sums=('SKIP'
-            '52ab418058076ad01e046ebbbdc834f390305516c222d07de91a93a4dcebe921'
             '9d692ffdbb13eaf5a66e7b5821fa6d67f2dbe3629d86d40e44f8bdcf0e6cdc2d'
             '3ef17cfd14b3edc14092b5e96fc63673b6b020b7f05adaa59d3c3e4b0cfdde66'
             'b80c99b10fd48dbf98abd70ca2d1265ad6035383c47bfbee5e540a814b6d2a23'
@@ -42,9 +43,6 @@ sha256sums=('SKIP'
 
 prepare(){
     cd $_name
-
-    # CVE-2018-19876
-    patch -Np1 -i "${srcdir}"/0001-ft-Use-FT_Done_MM_Var-instead-of-free-when-available.patch
 
     # Infinality patches
     patch -Np1 -i "${srcdir}"/cairo-make-lcdfilter-default.patch
@@ -57,6 +55,9 @@ prepare(){
     # Update gtk-doc
     cp /usr/share/aclocal/gtk-doc.m4 build/aclocal.gtk-doc.m4
     cp /usr/share/gtk-doc/data/gtk-doc.make build/Makefile.am.gtk-doc
+
+    # Fix a typo
+    sed -i 's/have_png/use_png/g' configure.ac
 
     NOCONFIGURE=1 ./autogen.sh
 }
@@ -74,7 +75,7 @@ build() {
         --enable-pdf \
         --enable-gobject \
         --enable-gtk-doc
-  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+  sed -i 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
 }
 
