@@ -6,12 +6,12 @@
 
 pkgname=mirage
 pkgver=0.9.5.2
-pkgrel=5
+pkgrel=6
 pkgdesc="A simple GTK+ Image Viewer"
 url="https://sourceforge.net/projects/mirageiv.berlios/"
 license=('GPL')
 depends=('pygtk')
-optdepends=('gnome-python: GNOME toolbar setting support')
+optdepends=('gnome-python: toolbar setting support in GNOME')
 arch=('x86_64')
 source=(http://downloads.sourceforge.net/project/mirageiv.berlios/${pkgname}-${pkgver}.tar.bz2
         mirage-0.9.5.2-setup.py.patch)
