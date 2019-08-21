@@ -2,15 +2,15 @@
 
 _debpkg=musique
 pkgname=musique-bin
-pkgver=1.6
-pkgrel=2
+pkgver=1.7
+pkgrel=1
 pkgdesc="A finely crafted music player"
 arch=('x86_64')
 url="https://flavio.tordini.org/musique"
 license=('custom')
 depends=('phonon-qt5' 'taglib' 'mpv')
 source=("${_debpkg}-${pkgver}.deb::http://flavio.tordini.org/files/${_debpkg}/${_debpkg}.deb")
-sha256sums=('5d659a19723ad1c4bc1f9d5d311175d2746d819b6c160c2493549436e124c323')
+sha256sums=('99b6b6d54910a7bf73460e7427e5df00b46bffb62084bd9c6c8e3738561af368')
 
 package() {
   tar -Jxvf data.tar.xz -C "${pkgdir}"
