@@ -28,7 +28,13 @@ post_install () {
 		echo "Missing optional dependencies required to automatically generate a ethereum wallet for the swarm node"
 		echo "You will not be able to run a node with it"
 		echo "You can generate it manually later using go-ethereum or the swarm-genkey.py script provided this package, provided dependencies are met"
-	fi	
+	fi
+
+	echo "setting up variables for systemd service"
+	account=$(ls /var/lib/bzz/.ethereum/keystore | sed -e 's/^.*--\([a-fA-F0-9]*\)$/\1/')
+	echo "SWARM_ACCOUNT=$account" > /etc/systemd/system/swarm.service.d/42-swarm.conf
+	echo "SWARM_PASSWORD=/var/lib/bzz/.swarm-pass" >> /etc/systemd/system/swarm.service.d/42-swarm.conf
+
 	chown -v bzz:bzz /var/lib/bzz -R
 	chmod 700 /var/lib/bzz/.ethereum/keystore 
 }

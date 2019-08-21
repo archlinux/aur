@@ -24,7 +24,7 @@ source=("https://github.com/ethersphere/swarm/archive/v${pkgver}.tar.gz"
 noextract=()
 md5sums=("7f394b218657463761a555d5c598a320"
 	"SKIP"
-	"8e69aa2b907450a996fd33535051c1b9")
+	"ed8552f2daae230a7b67c76adbea2f51")
 validpgpkeys=("0826EDA1702D1E87C6E2875121D2E7BB88C2A746")
 _pythonwalletdepends=1
 
@@ -67,6 +67,8 @@ check() {
 
 package() {
 	install -v -D -m0755 build/swarm ${pkgdir}/usr/local/bin/swarm
+	install -v -D -m0644 swarm.service ${pkgdir}/usr/lib/systemd/system/swarm.service
+	mkdir -p ${pkgdir}/etc/systemd/system/swarm.service.d
 	if [ ${_pythonwalletdepends} -eq 1 ]; then
 		install -v -D -m0700 swarm-genkey.py ${pkgdir}/usr/local/bin/swarm-genkey
 	fi
