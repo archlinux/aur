@@ -1,5 +1,5 @@
 # Maintainer: Moses Narrow <moe_narrow@use.startmail.com>
-# Maintainer: Steve Skydev <steve@skycoin.net>
+# Maintainer: Rudi [KittyCash] <rudi@skycoinmail.com>
 pkgname=skycoin-bin
 pkgname1=skycoin
 projectname=skycoin
@@ -13,7 +13,6 @@ arch=('any')
 url="https://${pkggopath}"
 license=()
 makedepends=()
-validpgpkeys=('DE08F924EEE93832DABC642CA8DC761B1C0C0CFC')
 
 #detect architecture & adjust source & checksums accordingly
 case "$CARCH" in
@@ -24,7 +23,7 @@ case "$CARCH" in
     sha256sums+=('e1a4a92e05aaa3c04d860650934f2f578e051ab65a77fdd326574b6d8b397d2a')
     ;;
 	x86_64) _pkgarch="$pkgoption1"
-		sha256sums+=('831133fb15dd2affe8b9b6363a9cf586d20c90c01f9bd92cb479f8e0724ebb12')
+		sha256sums+=('e06678954e5d45a3b4bbf3dd7e928a454a70887fccccadb4f21d4652e3a6a2ca')
 		;;
 esac
 
