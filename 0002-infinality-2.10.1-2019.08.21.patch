@@ -114,10 +114,25 @@ index 12f47a82e..946a2fb93 100644
  
    /**************************************************************************
 diff --git a/include/freetype/internal/ftobjs.h b/include/freetype/internal/ftobjs.h
-index f3a41b35a..da08ed9ef 100644
+index 0c1d3e5bf..3acde2406 100644
 --- a/include/freetype/internal/ftobjs.h
 +++ b/include/freetype/internal/ftobjs.h
-@@ -910,6 +910,7 @@ FT_BEGIN_HEADER
+@@ -278,12 +278,14 @@ FT_BEGIN_HEADER
+ #ifdef FT_CONFIG_OPTION_SUBPIXEL_RENDERING
+ 
+   typedef void  (*FT_Bitmap_LcdFilterFunc)( FT_Bitmap*      bitmap,
++                                            FT_Render_Mode  render_mode,
+                                             FT_Byte*        weights );
+ 
+ 
+   /* This is the default LCD filter, an in-place, 5-tap FIR filter. */
+   FT_BASE( void )
+   ft_lcd_filter_fir( FT_Bitmap*           bitmap,
++                     FT_Render_Mode       mode,
+                      FT_LcdFiveTapFilter  weights );
+ 
+ #endif /* FT_CONFIG_OPTION_SUBPIXEL_RENDERING */
+@@ -908,6 +910,7 @@ FT_BEGIN_HEADER
      FT_DebugHook_Func  debug_hooks[4];
  
  #ifdef FT_CONFIG_OPTION_SUBPIXEL_RENDERING
@@ -126,7 +141,7 @@ index f3a41b35a..da08ed9ef 100644
      FT_Bitmap_LcdFilterFunc  lcd_filter_func;  /* filtering callback     */
  #else
 diff --git a/src/autofit/aflatin.c b/src/autofit/aflatin.c
-index dccdcaf34..dfe144e94 100644
+index 27d402488..ac1488dcb 100644
 --- a/src/autofit/aflatin.c
 +++ b/src/autofit/aflatin.c
 @@ -23,7 +23,10 @@
@@ -152,7 +167,7 @@ index dccdcaf34..dfe144e94 100644
  
    /* needed for computation of round vs. flat segments */
  #define FLAT_THRESHOLD( x )  ( x / 14 )
-@@ -1145,7 +1152,10 @@
+@@ -1181,7 +1188,10 @@
      FT_Pos        delta;
      AF_LatinAxis  axis;
      FT_UInt       nn;
@@ -164,7 +179,7 @@ index dccdcaf34..dfe144e94 100644
  
      if ( dim == AF_DIMENSION_HORZ )
      {
-@@ -1173,7 +1183,7 @@
+@@ -1209,7 +1219,7 @@
      {
        AF_LatinAxis  Axis = &metrics->axis[AF_DIMENSION_VERT];
        AF_LatinBlue  blue = NULL;
@@ -173,7 +188,7 @@ index dccdcaf34..dfe144e94 100644
  
        for ( nn = 0; nn < Axis->blue_count; nn++ )
        {
-@@ -1183,7 +1193,12 @@
+@@ -1219,7 +1229,12 @@
            break;
          }
        }
@@ -187,7 +202,7 @@ index dccdcaf34..dfe144e94 100644
        if ( blue )
        {
          FT_Pos   scaled;
-@@ -1339,7 +1354,13 @@
+@@ -1375,7 +1390,13 @@
  
          /* a blue zone is only active if it is less than 3/4 pixels tall */
          dist = FT_MulFix( blue->ref.org - blue->shoot.org, scale );
@@ -201,7 +216,7 @@ index dccdcaf34..dfe144e94 100644
          {
  #if 0
            FT_Pos  delta1;
-@@ -1390,7 +1411,12 @@
+@@ -1426,7 +1447,12 @@
              delta2 = -delta2;
  
            blue->ref.fit   = FT_PIX_ROUND( blue->ref.cur );
@@ -214,7 +229,7 @@ index dccdcaf34..dfe144e94 100644
  
  #endif
  
-@@ -2528,7 +2554,10 @@
+@@ -2564,7 +2590,10 @@
                dist = edge->fpos - blue->shoot.org;
                if ( dist < 0 )
                  dist = -dist;
@@ -226,7 +241,7 @@ index dccdcaf34..dfe144e94 100644
                dist = FT_MulFix( dist, scale );
                if ( dist < best_dist )
                {
-@@ -2704,8 +2733,17 @@
+@@ -2740,8 +2769,17 @@
      FT_Pos           dist     = width;
      FT_Int           sign     = 0;
      FT_Int           vertical = ( dim == AF_DIMENSION_VERT );
@@ -246,7 +261,7 @@ index dccdcaf34..dfe144e94 100644
      if ( !AF_LATIN_HINTS_DO_STEM_ADJUST( hints ) ||
           axis->extra_light                       )
        return width;
-@@ -2715,9 +2753,76 @@
+@@ -2751,9 +2789,76 @@
        dist = -width;
        sign = 1;
      }
@@ -324,7 +339,7 @@ index dccdcaf34..dfe144e94 100644
      {
        /* smooth hinting process: very lightly quantize the stem width */
  
-@@ -2809,6 +2914,9 @@
+@@ -2845,6 +2950,9 @@
        }
      }
      else
@@ -334,7 +349,7 @@ index dccdcaf34..dfe144e94 100644
      {
        /* strong hinting process: snap the stem width to integer pixels */
  
-@@ -2816,7 +2924,10 @@
+@@ -2852,7 +2960,10 @@
  
  
        dist = af_latin_snap_width( axis->widths, axis->width_count, dist );
@@ -346,7 +361,7 @@ index dccdcaf34..dfe144e94 100644
        if ( vertical )
        {
          /* in the case of vertical hinting, always round */
-@@ -2879,6 +2990,32 @@
+@@ -2915,6 +3026,32 @@
      }
  
    Done_Width:
@@ -379,7 +394,7 @@ index dccdcaf34..dfe144e94 100644
      if ( sign )
        dist = -dist;
  
-@@ -2897,6 +3034,8 @@
+@@ -2933,6 +3070,8 @@
      FT_Pos  dist, base_delta;
      FT_Pos  fitted_width;
  
@@ -388,7 +403,7 @@ index dccdcaf34..dfe144e94 100644
  
      dist       = stem_edge->opos - base_edge->opos;
      base_delta = base_edge->pos - base_edge->opos;
-@@ -3504,8 +3643,11 @@
+@@ -3540,8 +3679,11 @@
      int       dim;
  
      AF_LatinAxis  axis;
@@ -402,7 +417,7 @@ index dccdcaf34..dfe144e94 100644
      error = af_glyph_hints_reload( hints, outline );
      if ( error )
        goto Exit;
-@@ -3569,7 +3711,11 @@
+@@ -3605,7 +3747,11 @@
      }
  
      af_glyph_hints_save( hints, outline );
@@ -2582,7 +2597,7 @@ index 000000000..5f6e0ae62
 +   gperf --output-file=ftinf_sh.c ftinf_sh.gperf
 +*/
 diff --git a/src/base/ftinit.c b/src/base/ftinit.c
-index 9d524effa..5332fd958 100644
+index c73cd78b8..7f07928c0 100644
 --- a/src/base/ftinit.c
 +++ b/src/base/ftinit.c
 @@ -43,6 +43,10 @@
@@ -2596,7 +2611,7 @@ index 9d524effa..5332fd958 100644
  
    /**************************************************************************
     *
-@@ -217,10 +221,14 @@
+@@ -220,10 +224,14 @@
      error = FT_New_Library( memory, alibrary );
      if ( error )
        FT_Done_Memory( memory );
@@ -2615,7 +2630,7 @@ index 9d524effa..5332fd958 100644
      return error;
    }
 diff --git a/src/base/ftlcdfil.c b/src/base/ftlcdfil.c
-index 9fb49ba11..e03fbc081 100644
+index d9f4af429..e03fbc081 100644
 --- a/src/base/ftlcdfil.c
 +++ b/src/base/ftlcdfil.c
 @@ -22,7 +22,10 @@
@@ -2629,6 +2644,72 @@ index 9fb49ba11..e03fbc081 100644
 +#include "ftinf.h"
  
  #ifdef FT_CONFIG_OPTION_SUBPIXEL_RENDERING
+ 
+@@ -77,13 +80,13 @@
+   /* FIR filter used by the default and light filters */
+   FT_BASE_DEF( void )
+   ft_lcd_filter_fir( FT_Bitmap*           bitmap,
++                     FT_Render_Mode       mode,
+                      FT_LcdFiveTapFilter  weights )
+   {
+     FT_UInt   width  = (FT_UInt)bitmap->width;
+     FT_UInt   height = (FT_UInt)bitmap->rows;
+     FT_Int    pitch  = bitmap->pitch;
+     FT_Byte*  origin = bitmap->buffer;
+-    FT_Byte   mode   = bitmap->pixel_mode;
+ 
+ 
+     /* take care of bitmap flow */
+@@ -91,7 +94,7 @@
+       origin += pitch * (FT_Int)( height - 1 );
+ 
+     /* horizontal in-place FIR filter */
+-    if ( mode == FT_PIXEL_MODE_LCD && width >= 2 )
++    if ( mode == FT_RENDER_MODE_LCD && width >= 2 )
+     {
+       FT_Byte*  line = origin;
+ 
+@@ -134,7 +137,7 @@
+     }
+ 
+     /* vertical in-place FIR filter */
+-    else if ( mode == FT_PIXEL_MODE_LCD_V && height >= 2 )
++    else if ( mode == FT_RENDER_MODE_LCD_V && height >= 2 )
+     {
+       FT_Byte*  column = origin;
+ 
+@@ -183,13 +186,13 @@
+   /* intra-pixel filter used by the legacy filter */
+   static void
+   _ft_lcd_filter_legacy( FT_Bitmap*      bitmap,
++                         FT_Render_Mode  mode,
+                          FT_Byte*        weights )
+   {
+     FT_UInt   width  = (FT_UInt)bitmap->width;
+     FT_UInt   height = (FT_UInt)bitmap->rows;
+     FT_Int    pitch  = bitmap->pitch;
+     FT_Byte*  origin = bitmap->buffer;
+-    FT_Byte   mode   = bitmap->pixel_mode;
+ 
+     static const unsigned int  filters[3][3] =
+     {
+@@ -206,7 +209,7 @@
+       origin += pitch * (FT_Int)( height - 1 );
+ 
+     /* horizontal in-place intra-pixel filter */
+-    if ( mode == FT_PIXEL_MODE_LCD && width >= 3 )
++    if ( mode == FT_RENDER_MODE_LCD && width >= 3 )
+     {
+       FT_Byte*  line = origin;
+ 
+@@ -243,7 +246,7 @@
+         }
+       }
+     }
+-    else if ( mode == FT_PIXEL_MODE_LCD_V && height >= 3 )
++    else if ( mode == FT_RENDER_MODE_LCD_V && height >= 3 )
+     {
+       FT_Byte*  column = origin;
  
 @@ -299,6 +302,7 @@
  
@@ -2711,7 +2792,7 @@ index 9fb49ba11..e03fbc081 100644
  
  #endif
 diff --git a/src/base/ftobjs.c b/src/base/ftobjs.c
-index 3f8619d3b..d8fd36c81 100644
+index e301f8f11..7654c9458 100644
 --- a/src/base/ftobjs.c
 +++ b/src/base/ftobjs.c
 @@ -46,7 +46,9 @@
@@ -2833,7 +2914,7 @@ index 3f8619d3b..d8fd36c81 100644
    }
  
 diff --git a/src/base/ftoutln.c b/src/base/ftoutln.c
-index 00329b46c..fcf45d58f 100644
+index 0e2ba3475..8c6888a39 100644
 --- a/src/base/ftoutln.c
 +++ b/src/base/ftoutln.c
 @@ -22,7 +22,9 @@
@@ -2847,7 +2928,7 @@ index 00329b46c..fcf45d58f 100644
  
    /**************************************************************************
     *
-@@ -897,10 +899,16 @@
+@@ -906,10 +908,16 @@
                           FT_Pos       xstrength,
                           FT_Pos       ystrength )
    {
@@ -2936,7 +3017,7 @@ index 4b24c6dce..b8771b9ca 100644
              $(BASE_DIR)/ftobjs.c   \
              $(BASE_DIR)/ftoutln.c  \
 diff --git a/src/cff/cffobjs.c b/src/cff/cffobjs.c
-index 1a1030c06..fd368a539 100644
+index f76245f30..4b573d695 100644
 --- a/src/cff/cffobjs.c
 +++ b/src/cff/cffobjs.c
 @@ -43,6 +43,9 @@
@@ -2960,7 +3041,7 @@ index 1a1030c06..fd368a539 100644
      driver->darken_params[0] = CFF_CONFIG_OPTION_DARKENING_PARAMETER_X1;
      driver->darken_params[1] = CFF_CONFIG_OPTION_DARKENING_PARAMETER_Y1;
 diff --git a/src/smooth/ftsmooth.c b/src/smooth/ftsmooth.c
-index c8b6bb751..e82c15c25 100644
+index cd034d2b4..e82c15c25 100644
 --- a/src/smooth/ftsmooth.c
 +++ b/src/smooth/ftsmooth.c
 @@ -1,19 +1,19 @@
@@ -5842,7 +5923,7 @@ index c8b6bb751..e82c15c25 100644
 -      }
  
 -      if ( lcd_filter_func )
--        lcd_filter_func( bitmap, mode, lcd_weights );
+-        lcd_filter_func( bitmap, lcd_weights );
 -    }
 +        if ( fringe_filter_strength > 0 /*&& autohinted*/ )
 +          _ft_lcd_fringe_filter( bitmap,
@@ -6216,10 +6297,10 @@ index c8b6bb751..e82c15c25 100644
  
  
 diff --git a/src/truetype/ttinterp.c b/src/truetype/ttinterp.c
-index 403f3753c..8a6775fc1 100644
+index 70434e172..1d84e6618 100644
 --- a/src/truetype/ttinterp.c
 +++ b/src/truetype/ttinterp.c
-@@ -5850,6 +5850,7 @@
+@@ -5901,6 +5901,7 @@
  
        if ( exc->ignore_x_mode                                 &&
             exc->GS.freeVector.x != 0                          &&
