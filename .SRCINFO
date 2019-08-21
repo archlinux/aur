@@ -1,7 +1,7 @@
 pkgbase = waterfox-kde
 	pkgdesc = Free, open and private browser with openSUSE's patches for better integration with KDE
 	pkgver = 56.2.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.waterfox.net/
 	arch = x86_64
 	license = MPL
