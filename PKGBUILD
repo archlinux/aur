@@ -25,7 +25,7 @@ source=("https://github.com/ethersphere/swarm/archive/v${pkgver}.tar.gz"
 noextract=()
 md5sums=("7f394b218657463761a555d5c598a320"
 	"SKIP"
-	"ed8552f2daae230a7b67c76adbea2f51"
+	"19eea4bf47a58afb05fc3eaef209ec84"
 	"SKIP")
 validpgpkeys=("0826EDA1702D1E87C6E2875121D2E7BB88C2A746")
 _pythonwalletdepends=1
