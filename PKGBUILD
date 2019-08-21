@@ -2,11 +2,11 @@
 
 _name=alice-vision
 pkgname=${_name}
-pkgver=2.0.0
-pkgrel=2
+pkgver=2.2.0
+pkgrel=1
 pkgdesc="Photogrammetric Computer Vision Framework which provides a 3D Reconstruction and Camera Tracking algorithms"
 arch=('i686' 'x86_64')
-url="http://alicevision.github.io/"
+url="https://alicevision.github.io/"
 license=('MPL2' 'MIT')
 groups=()
 conflicts=(alice-vision-git)
@@ -20,7 +20,7 @@ source=("https://github.com/alicevision/AliceVision/archive/v${pkgver}.tar.gz"
         "nanoflann::git+https://github.com/alicevision/nanoflann.git"
         "submodule.patch"
         )
-md5sums=('1ff20994f1ff259850c3e170ef451634'
+md5sums=('a9d5cd07ed33c0b73390b11170b3b11f'
          'SKIP'
          'SKIP'
          'SKIP'
@@ -46,7 +46,7 @@ _path="AliceVision-${pkgver}"
 prepare() {
   cd ${srcdir}/${_path}
   patch -Np1 -i ${srcdir}/submodule.patch
-  rmdir src/dependencies/{MeshSDFilter,nanoflann}
+  rm -rf src/dependencies/{MeshSDFilter,nanoflann}
   cp -r ${srcdir}/MeshSDFilter src/dependencies/MeshSDFilter
   cp -r ${srcdir}/nanoflann src/dependencies/nanoflann
 }

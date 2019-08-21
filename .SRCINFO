@@ -1,8 +1,8 @@
 pkgbase = alice-vision
 	pkgdesc = Photogrammetric Computer Vision Framework which provides a 3D Reconstruction and Camera Tracking algorithms
-	pkgver = 2.0.0
-	pkgrel = 2
-	url = http://alicevision.github.io/
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://alicevision.github.io/
 	arch = i686
 	arch = x86_64
 	license = MPL2
@@ -30,13 +30,13 @@ pkgbase = alice-vision
 	depends = google-glog
 	provides = alice-vision
 	conflicts = alice-vision-git
-	source = https://github.com/alicevision/AliceVision/archive/v2.0.0.tar.gz
+	source = https://github.com/alicevision/AliceVision/archive/v2.2.0.tar.gz
 	source = ute_lib::git+https://github.com/alicevision/uncertaintyTE.git
 	source = geogram::git+https://github.com/alicevision/geogram.git
 	source = MeshSDFilter::git+https://github.com/alicevision/MeshSDFilter.git#branch=av_develop
 	source = nanoflann::git+https://github.com/alicevision/nanoflann.git
 	source = submodule.patch
-	md5sums = 1ff20994f1ff259850c3e170ef451634
+	md5sums = a9d5cd07ed33c0b73390b11170b3b11f
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
