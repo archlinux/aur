@@ -1,6 +1,6 @@
 pkgbase = gegl-qfix-git
 	pkgdesc = Graph based image processing framework
-	pkgver = 0.4.17.r29.2da17e3
+	pkgver = 0.4.17.r9768.e1aa95ac1
 	pkgrel = 1
 	url = http://www.gegl.org
 	arch = i686
@@ -32,7 +32,7 @@ pkgbase = gegl-qfix-git
 	optdepends = libraw: raw plugin
 	optdepends = suitesparse: matting-levin plugin
 	optdepends = lua: lua plugin
-	provides = gegl=0.4.17.r29.2da17e3
+	provides = gegl=0.4.17.r9768.e1aa95ac1
 	conflicts = gegl
 	options = !libtool
 	source = git+https://gitlab.gnome.org/GNOME/gegl.git
