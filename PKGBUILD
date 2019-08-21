@@ -1,7 +1,7 @@
 # Maintainer: Bradley Cicenas <bradley@vektor.nyc>
 pkgname=tcolors
 _pkgname=tcolors
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 pkgdesc="Commandline color picker and palette builder"
 arch=('i686' 'x86_64')
