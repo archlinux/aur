@@ -6,7 +6,7 @@ pkgbase = httptoolkit
 	arch = x86_64
 	license = GPL3
 	source = https://github.com/httptoolkit/httptoolkit-desktop/releases/download/v0.1.10/httptoolkit_0.1.10_amd64.deb
-	md5sums = d0905a4be06aa985d44d61d9c8418efd
+	md5sums = 0905a4be06aa985d44d61d9c8418efdd
 
 pkgname = httptoolkit
 
