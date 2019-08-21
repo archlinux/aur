@@ -1,6 +1,6 @@
 pkgbase = iortcw-git
 	pkgdesc = Merge of ioquake3 features and fixes into Return to Castle Wolfenstein
-	pkgver = 1.51c.r9.gb81ddf50
+	pkgver = 1.51c.r14.ga56038c7
 	pkgrel = 1
 	url = https://github.com/iortcw/iortcw
 	install = iortcw-git.install
@@ -26,27 +26,13 @@ pkgbase = iortcw-git
 	source = git+https://github.com/iortcw/iortcw.git
 	source = iortcw-sp.launcher
 	source = iortcw-mp.launcher
-	source = iortcw-ded.launcher
-	source = iortcw-sp-rend2.launcher
-	source = iortcw-mp-rend2.launcher
 	source = iortcw-sp.desktop
 	source = iortcw-mp.desktop
-	source = iortcw-sp-rend2.desktop
-	source = iortcw-mp-rend2.desktop
 	md5sums = SKIP
-	md5sums = adea2fbf4a63d89306d2c209b441704d
-	md5sums = 1406929a04621267f4aa02fb661b154a
-	md5sums = 1cb1d7fda29d223a57003d097a1a4a31
 	md5sums = e400094c42766cb2b130d4d95bbe1caf
 	md5sums = bbc343567fa9a2f0101bdbd07cc9d32a
-	md5sums = 49881f74d27acfc4720d0dfa758abdb6
-	md5sums = e758b92d89b593dab97dd7e8cb819124
 	md5sums = ca91389b96827ae71ce3e3831a1d9a80
 	md5sums = a3a81101c2f39d728febd3323eb482fc
 
 pkgname = iortcw-git
-
-pkgname = iortcw-rend2-git
-	pkgdesc = Experimental render for Return to Castle Wolfenstein
-	depends = iortcw-git
 

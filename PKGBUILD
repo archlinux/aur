@@ -1,9 +1,8 @@
 # Maintainer: robertfoster
 
 pkgbase=iortcw-git
-pkgname=('iortcw-git' 'iortcw-rend2-git')
 pkgname=iortcw-git
-pkgver=1.51c.r9.gb81ddf50
+pkgver=1.51c.r14.ga56038c7
 pkgrel=1
 pkgdesc="Merge of ioquake3 features and fixes into Return to Castle Wolfenstein"
 arch=('i686' 'x86_64')
@@ -21,18 +20,10 @@ optdepends=(
 )
 install='iortcw-git.install'
 source=("git+https://github.com/iortcw/iortcw.git"
-# Classic renderer
-	'iortcw-sp.launcher'
-	'iortcw-mp.launcher'
-	'iortcw-ded.launcher'
-# Alternative renderer launchers
-        'iortcw-sp-rend2.launcher'
-        'iortcw-mp-rend2.launcher'
-# Desktop entries
-	'iortcw-sp.desktop'
+        'iortcw-sp.launcher'
+        'iortcw-mp.launcher'
+        'iortcw-sp.desktop'
         'iortcw-mp.desktop'
-        'iortcw-sp-rend2.desktop'
-        'iortcw-mp-rend2.desktop'
 )
 
 pkgver() {
@@ -40,17 +31,8 @@ pkgver() {
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-build() {
-  if [ ! -f /opt/wolf-data/pak0.pk3 ]; then
-   echo "pak0.pk3 doesn't exist. The game will not start"
-   echo "Follow the wolf-data package instructions!"
-   sleep 5
-  fi
-}
-
 package_iortcw-git() {
   
-  mkdir -p $pkgdir/opt/iortcw/main
   cd "$srcdir/iortcw"
   
   cd SP
@@ -58,27 +40,7 @@ package_iortcw-git() {
   cd ../MP
   make USE_INTERNAL_LIBS=0 COPYDIR=$pkgdir/opt/iortcw/ copyfiles
 
-  ln -s -r /opt/iortcw-data/mp_bin.pk3	$pkgdir/opt/iortcw/main
-  ln -s -r /opt/wolf-data/mp_pak0.pk3   $pkgdir/opt/iortcw/main
-  ln -s -r /opt/wolf-data/mp_pak1.pk3	$pkgdir/opt/iortcw/main
-  ln -s -r /opt/wolf-data/mp_pak2.pk3	$pkgdir/opt/iortcw/main  
-  ln -s -r /opt/iortcw-data/mp_pak3.pk3	$pkgdir/opt/iortcw/main
-  ln -s -r /opt/iortcw-data/mp_pak4.pk3	$pkgdir/opt/iortcw/main
-  ln -s -r /opt/iortcw-data/mp_pak5.pk3	$pkgdir/opt/iortcw/main
-  ln -s -r /opt/iortcw-data/mp_pakmaps0.pk3	$pkgdir/opt/iortcw/main  
-  ln -s -r /opt/iortcw-data/mp_pakmaps1.pk3	$pkgdir/opt/iortcw/main
-  ln -s -r /opt/iortcw-data/mp_pakmaps2.pk3	$pkgdir/opt/iortcw/main  
-  ln -s -r /opt/iortcw-data/mp_pakmaps3.pk3	$pkgdir/opt/iortcw/main
-  ln -s -r /opt/iortcw-data/mp_pakmaps4.pk3	$pkgdir/opt/iortcw/main  
-  ln -s -r /opt/iortcw-data/mp_pakmaps5.pk3	$pkgdir/opt/iortcw/main
-  ln -s -r /opt/iortcw-data/mp_pakmaps6.pk3	$pkgdir/opt/iortcw/main  
-  ln -s -r /opt/iortcw-data/scripts	$pkgdir/opt/iortcw/main 
-  ln -s -r /opt/wolf-data/pak0.pk3	$pkgdir/opt/iortcw/main
-  ln -s -r /opt/wolf-data/sp_pak1.pk3	$pkgdir/opt/iortcw/main
-  ln -s -r /opt/wolf-data/sp_pak2.pk3	$pkgdir/opt/iortcw/main
-  ln -s -r /opt/iortcw-data/sp_pak3.pk3	$pkgdir/opt/iortcw/main
-  ln -s -r /opt/iortcw-data/sp_pak4.pk3	$pkgdir/opt/iortcw/main
-  ln -s -r /opt/iortcw-data/rotate.cfg	$pkgdir/opt/iortcw/main       
+  ln -s -r /opt/iortcw-data/* $pkgdir/opt/iortcw/main
   
 # Modify Launcher Scripts
     if [ "$CARCH" = "x86_64" ]; then
@@ -127,54 +89,8 @@ package_iortcw-git() {
     install -D -m 644 $srcdir/iortcw/SP/misc/iortcw.svg \
         $pkgdir/usr/share/icons/hicolor/scalable/apps/iortcw.svg
 }
-
-package_iortcw-rend2-git() {
-pkgdesc="Experimental render for Return to Castle Wolfenstein"
-depends=('iortcw-git')
-
-# Modify Launcher Scripts
-    if [ "$CARCH" = "x86_64" ]; then
-        #
-        # x86_64 Systems
-        #
-        sed -i "s:ARCH:x86_64:" \
-            $srcdir/iortcw-sp-rend2.launcher
-        sed -i "s:ARCH:x86_64:" \
-            $srcdir/iortcw-mp-rend2.launcher
-    else
-        #
-        # i686 Systems
-        #
-        sed -i "s:ARCH:x86:" \
-            $srcdir/iortcw-sp-rend2.launcher
-        sed -i "s:ARCH:x86:" \
-            $srcdir/iortcw-mp-rend2.launcher
-    fi
-    
-  # Install Launcher Script (Single Player Client Rend2)
-    install -D -m 755 $srcdir/iortcw-sp-rend2.launcher \
-        $pkgdir/usr/bin/iortcw-sp-rend2
-  
-  # Install Launcher Script (Multi Player Client Rend2)
-    install -D -m 755 $srcdir/iortcw-mp-rend2.launcher \
-        $pkgdir/usr/bin/iortcw-mp-rend2
-  
-  # Install Desktop File (Single Player Rend2)
-    install -D -m 644 $srcdir/iortcw-sp-rend2.desktop \
-        $pkgdir/usr/share/applications/iortcw-sp-rend2.desktop
-  
-  # Install Desktop File (Multi Player Rend2)
-    install -D -m 644 $srcdir/iortcw-mp-rend2.desktop \
-        $pkgdir/usr/share/applications/iortcw-mp-rend2.desktop
-}
-
 md5sums=('SKIP'
-         'adea2fbf4a63d89306d2c209b441704d'
-         '1406929a04621267f4aa02fb661b154a'
-         '1cb1d7fda29d223a57003d097a1a4a31'
          'e400094c42766cb2b130d4d95bbe1caf'
          'bbc343567fa9a2f0101bdbd07cc9d32a'
-         '49881f74d27acfc4720d0dfa758abdb6'
-         'e758b92d89b593dab97dd7e8cb819124'
          'ca91389b96827ae71ce3e3831a1d9a80'
          'a3a81101c2f39d728febd3323eb482fc')
