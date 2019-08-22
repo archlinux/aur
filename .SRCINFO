@@ -2,7 +2,7 @@ pkgbase = blackarch-menus-extended
 	pkgdesc = BlackArch specific XDG-compliant menu with more desktop files.
 	pkgver = 0.2
 	pkgrel = 2
-	url = https://github.com/BlackArch/blackarch/tree/master/packages/blackarch-menus
+	url = https://github.com/xeyqe/blackarch-menus-extended
 	arch = any
 	license = GPL
 	depends = xdg-utils
@@ -11,8 +11,8 @@ pkgbase = blackarch-menus-extended
 	provides = blackarch-menus
 	conflicts = blackarch-menus
 	replaces = blackarch-menus
-	source = https://drive.google.com/uc?export=download&id=0B_PopwyKmOH9WUUxRG1uQ0NVZVE
-	md5sums = 84cdec2016c5b0f1958623295d9fa736
+	source = git+https://github.com/xeyqe/blackarch-menus-extended.git
+	md5sums = SKIP
 
 pkgname = blackarch-menus-extended
 
