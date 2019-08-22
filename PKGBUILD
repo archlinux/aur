@@ -25,7 +25,6 @@ source=("git+https://github.com/iortcw/iortcw.git"
 	'iortcw-mp.launcher'
 	'iortcw-sp.desktop'
 	'iortcw-mp.desktop'
-	'openurl.sh'
 )
 
 pkgver() {
@@ -34,7 +33,6 @@ pkgver() {
 }
 
 package() {
-
 	cd "$srcdir/iortcw"
 
 	cd SP
@@ -45,7 +43,8 @@ package() {
 	make USE_INTERNAL_LIBS=0 \
 		COPYDIR=$pkgdir/opt/iortcw/ copyfiles
 
-	ln -s -r /opt/iortcw-data/* $pkgdir/opt/iortcw/main
+	ln -s -r /opt/iortcw-data/*.pk3 $pkgdir/opt/iortcw/main
+	ln -s -r /opt/iortcw-data/openurl.sh   $pkgdir/opt/iortcw/openurl.sh
 
 	# Modify Launcher Scripts
 	if [ "$CARCH" = "x86_64" ]; then
@@ -87,9 +86,6 @@ package() {
 	# Install Icon File (Single Player)
 	install -D -m 644 $srcdir/iortcw/SP/misc/iortcw.svg \
 		$pkgdir/usr/share/icons/hicolor/scalable/apps/iortcw.svg
-
-	# Install openurl.sh script
-	install -D -m 755 $srcdir/openurl.sh $pkgdir/opt/iortcw/openurl.sh
 }
 
 md5sums=('SKIP'
@@ -97,5 +93,4 @@ md5sums=('SKIP'
 	'e400094c42766cb2b130d4d95bbe1caf'
 	'bbc343567fa9a2f0101bdbd07cc9d32a'
 	'dec8be9edbe233c8e69320a35acf9b01'
-	'37889e4c81f20b1dd0b6cf25e1dd6b2c'
-'11a60b83bcfb4b953344db248d886000')
+'37889e4c81f20b1dd0b6cf25e1dd6b2c')
