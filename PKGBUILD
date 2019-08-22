@@ -1,19 +1,19 @@
 # Maintainer: Alex Dewar <a.dewar@sussex.ac.uk>
 pkgname=genn_cpu_only
-pkgver=4.0.1
-pkgrel=2
+pkgver=4.0.2
+pkgrel=1
 pkgdesc="GeNN: GPU-enhanced neural networks (version 4; without CUDA backend)"
 epoch=2
 arch=(x86_64)
 url="https://github.com/genn-team/genn"
 license=('GPL')
-makedepends=(doxygen python python-numpy swig)
+makedepends=(doxygen doxypypy python python-numpy swig)
 optdepends=("python: for pygenn" "python-numpy: for pygenn" "spinecreator: for spineml2genn")
 options=(staticlibs !emptydirs)
 provides=(genn)
 conflicts=(genn)
 source=("$url/archive/${pkgver//_/-}.tar.gz")
-sha256sums=('86c74be81127df2bd4d785988f49bc244bae346da6fb67287ef2c3818945ac22')
+sha256sums=('a7543f53b11fb31d18979d5d03e9866ee9656a825d80cc4fc8a08dfc75a8235b')
 
 # Make sure we aren't building with CUDA support
 export CUDA_PATH=
