@@ -1,0 +1,21 @@
+pkgbase = jitsi-meet-electron
+	pkgdesc = Jitsi Meet desktop application powered by Electron
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://jitsi.org/jitsi-meet/
+	arch = x86_64
+	license = Apache
+	depends = electron
+	provides = jitsi-meet
+	options = !strip
+	source = https://github.com/jitsi/jitsi-meet-electron/releases/download/v1.1.1/jitsi-meet-x86_64.AppImage
+	source = jitsi-meet.desktop
+	source = jitsi-meet
+	source = LICENSE
+	md5sums = decaf85bd761fba1b0e2382a94ec6580
+	md5sums = 38928d2f8464b0f3f52c5f437118306b
+	md5sums = c887b985dfce586bc966500ef6ea327e
+	md5sums = 7d8b7b31deb068490b271e7aea6c08ce
+
+pkgname = jitsi-meet-electron
+

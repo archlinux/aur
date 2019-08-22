@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# Launch application
+/opt/jitsi-meet/jitsi-meet
+
