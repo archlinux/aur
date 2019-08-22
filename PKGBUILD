@@ -4,7 +4,7 @@ _pkgname=python-xeddsa
 pkgbase=${_pkgname}-git
 pkgname=${pkgbase}
 pkgver=r66.444715a
-pkgrel=1
+pkgrel=2
 pkgdesc="A python implementation of the XEdDSA signature scheme"
 url='https://github.com/Syndace/python-xeddsa'
 license=('MIT')
@@ -12,6 +12,8 @@ arch=('any')
 makedepends=('git' 'python-setuptools' 'cmake' 'libsodium')
 source=("${_pkgname}::git+https://github.com/Syndace/python-xeddsa.git")
 sha256sums=('SKIP')
+conflicts=(${_pkgname})
+provides=(${_pkgname})
 
 pkgver() {
     cd ${_pkgname}
