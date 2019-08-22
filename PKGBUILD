@@ -1,13 +1,13 @@
 # Maintainer: hashworks <mail@hashworks.net>
 pkgname=mustache
-pkgver=4.0b2
+pkgver=3.2.1
 pkgrel=1
 pkgdesc="Mustache implementation for modern C++"
 license=('Boost')
 arch=('armv7h' 'i686' 'x86_64')
 url='https://github.com/kainjow/Mustache'
 source=("https://github.com/kainjow/Mustache/archive/v${pkgver}.tar.gz")
-sha256sums=(ba7f02a4a3c4559821a13d7566d224c66806b370c82a5a5cf80be5b339fd32d4)
+sha256sums=(0d17298a81c08f12ebc446cdee387268a395d34bb724050fe67d5ce8c4e98b7a)
 
 package() {
 	mkdir -p ${pkgdir}/usr/include/
