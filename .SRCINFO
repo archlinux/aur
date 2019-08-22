@@ -1,5 +1,5 @@
 pkgbase = seismic-unix
-	pkgdesc = A seismic processing and research environment developed \ at the Center for Wave Phenomena, Colorado School of Mines
+	pkgdesc = A seismic processing and research environment developed at the Center for Wave Phenomena, Colorado School of Mines
 	pkgver = 44.16
 	pkgrel = 1
 	url = http://www.cwp.mines.edu/cwpcodes/

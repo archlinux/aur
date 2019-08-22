@@ -4,7 +4,7 @@
 pkgname=seismic-unix
 pkgver=44.16
 pkgrel=1
-pkgdesc='A seismic processing and research environment developed \
+pkgdesc='A seismic processing and research environment developed
 at the Center for Wave Phenomena, Colorado School of Mines'
 arch=('i686' 'x86_64')
 license=('custom')
