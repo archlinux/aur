@@ -1,7 +1,7 @@
 #Maintainer: Dmytro Aleksandrov <alkersan@gmail.com>
 
 pkgname=parquet-tools
-pkgver=1.10.0
+pkgver=1.10.1
 pkgrel=1
 pkgdesc='Java based command line tools that aid in the inspection of the Parquet files'
 depends=('java-runtime>=8')
@@ -12,7 +12,7 @@ source=(
   "hdfs-packaging.patch")
 url='https://github.com/apache/parquet-mr'
 license=('Apache')
-sha256sums=('2971e6847874a5b1f45ed1413be15117595649e30895df9650645999a2032790'
+sha256sums=('bf5fdcd3f1572bec105651ee9523159bf9c374dc09dbdbeea6c4907d91c48c29'
             'e6250e855909e5437d8ea8d9230aad6e1b9ad7ea5519dc17f4a94d2b7460aac8')
 
 prepare() {
