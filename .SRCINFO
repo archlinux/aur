@@ -1,7 +1,7 @@
 pkgbase = greenfoot
 	pkgdesc = Allows easy development of two-dimensional graphical applications, such as simulations and interactive games.
 	pkgver = 3.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.greenfoot.org
 	arch = any
 	license = GPL2
@@ -21,7 +21,7 @@ pkgbase = greenfoot
 	source = greenfoot
 	source = greenfoot.desktop
 	sha256sums = 398f20e46bb90dba554ebb243f1c3beda0c3a436cfcd08c9deee34db24702a2b
-	sha256sums = d643bbcca722f81e6479fa47b57dddfa64933c1b3b3731ac504b6192e0d81c41
+	sha256sums = 101089f5ec66d177621d3fd6511824b54d37facbf3a7b6941388af1bea34e270
 	sha256sums = 853d6f283623f1de1f1e353abaf90afb345580b0e67f57b6245ea2e2ad6850f3
 
 pkgname = greenfoot
