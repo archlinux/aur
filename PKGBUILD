@@ -1,6 +1,6 @@
 # Maintainer: acidicX <archlinux-aur@datahugger.de>
 pkgname="figma-bin"
-pkgver="0.5.2"
+pkgver="0.5.4"
 pkgrel="1"
 pkgdesc="The collaborative interface design tool. Unofficial Figma desktop client for Linux"
 arch=("x86_64")
@@ -16,7 +16,7 @@ source=("https://github.com/ChugunovRoman/figma-linux/releases/download/v${pkgve
         "256x256.png")
 depends=("unzip")
 noextract=("figma-linux-${pkgver}.zip")
-sha256sums=("eb2a655d7395b969e9867db074cc00753c32cd48c92c4b4c78944a3f13893430"
+sha256sums=("215ac1c9de514539cd6dd8ddf72f90dece2daab28eff16f96c4a92f6c3340054"
             "30333ab2304e493baf23677b38b775a00f641f78052a761e5dac95f979f860e8"
             "160b8bd5f250bca3f79452b57d2acbe9bad2f68d63b09abeef1f69f4deeed395"
             "3595bd69e9e7a36bf90ad6084462fba2271749afdd7ea080b4cd266d05fafe7b"
