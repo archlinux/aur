@@ -1,5 +1,5 @@
 # Maintainer: Nebula <chfsefefgesfen foxmail com>
-# contributor: caiye <ye.jingchen[at]gmail[dot]com>
+# Contributor: caiye <ye.jingchen[at]gmail[dot]com>
 # Contributor: Alvie Zhang <alvie.zhang {AT} gmail {DOT} com>
 pkgname=meow-proxy-git
 pkgver=r1164.4dc7bec
