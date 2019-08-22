@@ -3,14 +3,14 @@
 # General package information
 pkgname=wtwitch
 pkgver=1.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Terminal user interface for Twitch"
 url="https://gitlab.com/krathalan/wtwitch"
 license=("GPL3")
 arch=("any")
 
 # Dependencies
-depends=("bash" "jq" "streamlink" "wget")
+depends=("bash" "coreutils" "jq" "streamlink" "wget")
 
 # Download information
 source=("${url}/uploads/94504f151ec932231ac934dba4ea6379/wtwitch-1.0.4.tar.gz" "${url}/uploads/c5a6bbadafd76e5ddd59f5cf85c7cc05/wtwitch-1.0.4.tar.gz.sig")
