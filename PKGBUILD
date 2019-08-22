@@ -1,9 +1,9 @@
 # Maintainer: Gao xiang<hughgao01@gmail.com>
 # Contributor: Anton Kudelin <kudelin at protonmail dot com>
 
-pkgname='gamess'
-pkgver=2018R3
-pkgrel=2
+pkgname=gamess
+pkgver=2019R1
+pkgrel=1
 pkgdesc="The General Atomic and Molecular Electronic Structure System"
 arch=('x86_64')
 url="http://www.msg.ameslab.gov/GAMESS/GAMESS.html"
@@ -12,18 +12,16 @@ depends=('tcsh' 'openblas-lapack' 'python')
 makedepends=('python-jinja')
 install=${pkgname}.install
 
-# You have to get the package from the official website and put into the current directory.
+# You have to get the package from the official website
+# and put into the current directory.
 source=("local://gamess-current.tar.gz"
         "opt.patch")
-sha256sums=('fb177614395650dc4b4baff643962cc36435ad81516aa58b74204bfe47f90605'
-            '0e71dd49041c11193f2d05f820db2bdf9d7128a79f82abd0979799708cc0da66')
+sha256sums=('2faabb66a61323249e66a993b65c5c237058d7c5d9bca4de49b3ad680b2006a6'
+            '145c0f1624db736e0d587ec896151a8b33d11d4fe4c6a429c824cdbfe83db4c3')
 
 prepare() {
   cd $srcdir/$pkgname
   
-  # opt.patch passes to the compiler "-O3" options in the explicit form (-f...).
-  # This is done because of an unusual compiler behaviour when OPT='-O<n>', n>0.
-  # Architecture-specific options are enabled as well except FMA-intrinsics.
   # You may comment out two lines below to let GAMESS choose compiler options.
   patch -p1 < $srcdir/opt.patch
   msg2 "Compiler options '-O3 -march=native -mno-fma' are enabled by default."
@@ -35,18 +33,19 @@ prepare() {
 build() {
   cd $srcdir/$pkgname
   python bin/create-install-info.py \
-                                  --math=openblas \
-                                  --mathlib_path=/usr/lib \
-                                  --fortran_version=8.2
-  make
+                                    --fortran_version=8.2 \
+                                    --math=openblas \
+                                    --mathlib_path=/usr/lib
+  # Unfortunately, parallel build was broken in 2019R1.
+  make -j1
 }
 
 check() {
-  msg2 "Please, wait for the computation of 47 examples to end."
+  msg2 "Please, wait for the computation of 47 test examples to end."
   msg2 "It is going to take about 5 min depending on your CPU frequency."
   cd $srcdir/$pkgname
   
-  # Prepare the launch script 'rungms' to testing.
+  # Prepare the launch script "rungms" to testing.
   sed -i '/set GMSPATH=/c\set GMSPATH=$PWD' rungms
   sed -i '/set SCR=/c\set SCR=\/tmp' rungms
   mkdir scr

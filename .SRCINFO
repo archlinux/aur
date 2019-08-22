@@ -1,7 +1,7 @@
 pkgbase = gamess
 	pkgdesc = The General Atomic and Molecular Electronic Structure System
-	pkgver = 2018R3
-	pkgrel = 2
+	pkgver = 2019R1
+	pkgrel = 1
 	url = http://www.msg.ameslab.gov/GAMESS/GAMESS.html
 	install = gamess.install
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = gamess
 	depends = python
 	source = local://gamess-current.tar.gz
 	source = opt.patch
-	sha256sums = fb177614395650dc4b4baff643962cc36435ad81516aa58b74204bfe47f90605
-	sha256sums = 0e71dd49041c11193f2d05f820db2bdf9d7128a79f82abd0979799708cc0da66
+	sha256sums = 2faabb66a61323249e66a993b65c5c237058d7c5d9bca4de49b3ad680b2006a6
+	sha256sums = 145c0f1624db736e0d587ec896151a8b33d11d4fe4c6a429c824cdbfe83db4c3
 
 pkgname = gamess
 
