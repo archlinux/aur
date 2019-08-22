@@ -1,12 +1,12 @@
 # Maintainer: Jens Staal <staal1978@gmail.com>
 pkgname=ugene-git
-pkgver=1.31.0.qt.5.7.r431.g13c2ccc2f
+pkgver=1.32.0.r547.ge8c3bd3ed
 pkgrel=1
 pkgdesc="A free cross-platform genome analysis suite."
 arch=('x86_64')
 url="http://ugene.unipro.ru/"
 license=('GPL')
-depends=('libxtst' 'glu' 'qt5-webkit' 'qt5-svg' 'qt5-script' 'desktop-file-utils')
+depends=('libxtst' 'glu' 'qt5-webkit' 'qt5-websockets' 'qt5-svg' 'qt5-script' 'desktop-file-utils')
 provides=('ugene' 'ugene-bin')
 conflicts=('ugene' 'ugene-bin')
 replaces=('ugene' 'ugene-bin')

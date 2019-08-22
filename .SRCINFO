@@ -1,6 +1,6 @@
 pkgbase = ugene-git
 	pkgdesc = A free cross-platform genome analysis suite.
-	pkgver = 1.31.0.qt.5.7.r431.g13c2ccc2f
+	pkgver = 1.32.0.r547.ge8c3bd3ed
 	pkgrel = 1
 	url = http://ugene.unipro.ru/
 	arch = x86_64
@@ -8,6 +8,7 @@ pkgbase = ugene-git
 	depends = libxtst
 	depends = glu
 	depends = qt5-webkit
+	depends = qt5-websockets
 	depends = qt5-svg
 	depends = qt5-script
 	depends = desktop-file-utils
