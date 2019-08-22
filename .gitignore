@@ -1,0 +1,5 @@
+course-crawler
+pkg
+src
+*.pkg.tar.xz
+
