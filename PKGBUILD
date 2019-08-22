@@ -2,7 +2,7 @@
 
 pkgname=minio-mc-bin
 _srcname=minio-mc
-pkgver=2019_07_17T22_13_42Z
+pkgver=2019_08_21T19_59_10Z
 pkgrel=1
 pkgdesc="Minio client, binary version"
 url="https://min.io"
@@ -10,7 +10,7 @@ license=('Apache 2.0')
 arch=('x86_64')
 
 source_x86_64=("mc::https://dl.minio.io/client/mc/release/linux-amd64/archive/mc.RELEASE.${pkgver//_/-}")
-sha256sums_x86_64=('9104939a730081c6ef87417fa1457fa3d34010ed530ccd9a0ec494a91fb6f7fe')
+sha256sums_x86_64=('eff0b8cdcc93c0eb4bb6dd11810f2150944458fd5e6fba7b7ca40200d1b7ff31')
 
 
 package() {
