@@ -1,6 +1,6 @@
 pkgbase = blender-2.7-bin
 	pkgdesc = A fully integrated 3D graphics creation suite (2.7 branch)
-	pkgver = 2.79.190727.e045fe53f1b0
+	pkgver = 2.79.190729.e045fe53f1b0
 	pkgrel = 1
 	url = https://www.blender.org
 	arch = i686
@@ -29,7 +29,7 @@ pkgbase = blender-2.7-bin
 	depends = libpng
 	provides = blender-2.7
 	conflicts = blender-2.7
-	source = download190728::https://builder.blender.org/download/
+	source = download190728::https://download.blender.org/release/Blender2.79/latest/
 	md5sums = SKIP
 
 pkgname = blender-2.7-bin

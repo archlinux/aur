@@ -1,7 +1,7 @@
 # Maintainer: Oliver Mangold <o.mangold@gmail.com>
 # Contributor: Adam Brunnmeier <adam.brunnmeier@gmail.com>
 pkgname=blender-2.7-bin
-pkgver=2.79.190727.e045fe53f1b0
+pkgver=2.79.190729.e045fe53f1b0
 pkgrel=1
 pkgdesc="A fully integrated 3D graphics creation suite (2.7 branch)"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ conflicts=("${pkgname%-bin}")
 # using $pkgver instead of $_inc is not possible (see comments on AUR-website)
 _inc=190728
 source=(
-    "download$_inc::https://builder.blender.org/download/"
+    "download$_inc::https://download.blender.org/release/Blender2.79/latest/"
 )
 md5sums=('SKIP')
 
@@ -28,8 +28,8 @@ _setvars() {
 	_full=${BASH_REMATCH[0]}
 	_upstreamversion=${BASH_REMATCH[1]}
 	_commit=${BASH_REMATCH[2]}
-	local regex="$_full.*?<small>([[:alnum:] ]+), ([[:digit:]:]+) - $_commit" && [[ $(cat download$_inc) =~ $regex ]]
-	_date=$(date --date="${BASH_REMATCH[1]} ${BASH_REMATCH[2]}" "+%y%m%d")
+	local regex="$_full\".* ([0-9]+-[A-Za-z]+-[0-9]+ [0-9]+:[0-9]+)" && [[ $(cat download$_inc) =~ $regex ]]
+	_date=$(date --date="${BASH_REMATCH[1]}" "+%y%m%d")
 }
 
 pkgver() {
@@ -40,7 +40,7 @@ pkgver() {
 build() {
 	_setvars
 	cd "$srcdir"
-	wget -O- "https://builder.blender.org/download//$_full" | tar xj
+	wget -O- "https://download.blender.org/release/Blender2.79/latest/$_full" | tar xj
 	cd "${_full%.tar.bz2}"
 	sed -i 's/=blender/=blender-2.7/' blender.desktop
 	sed -i 's/=Blender/=Blender-2.7/' blender.desktop
