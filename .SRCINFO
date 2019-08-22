@@ -7,27 +7,14 @@ pkgbase = python-omemo-syndace-git
 	license = MIT
 	makedepends = git
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
+	depends = python-pynacl
+	depends = python-cryptography
+	depends = python-xeddsa
+	depends = python-doubleratchet
+	depends = python-x3dh
+	depends = python-protobuf
 	source = python-omemo::git+https://github.com/Syndace/python-omemo.git
 	sha256sums = SKIP
 
 pkgname = python-omemo-syndace-git
-	depends = python-pynacl
-	depends = python-cryptography
-	depends = python-xeddsa-git
-	depends = python-doubleratchet-git
-	depends = python-x3dh-git
-	depends = python-protobuf
-	provides = python-omemo-syndace
-	conflicts = python-omemo-syndace
-
-pkgname = python2-omemo-syndace-git
-	depends = python2-pynacl
-	depends = python2-cryptography
-	depends = python2-xeddsa-git
-	depends = python2-doubleratchet-git
-	depends = python2-x3dh-git
-	depends = python2-protobuf
-	provides = python2-omemo-syndace
-	conflicts = python2-omemo-syndace
 
