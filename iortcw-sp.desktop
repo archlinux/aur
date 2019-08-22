@@ -1,4 +1,3 @@
-#!/usr/bin/env xdg-open
 [Desktop Entry]
 Version=1.0
 Type=Application
@@ -8,4 +7,4 @@ Exec=/usr/bin/iortcw-sp
 Icon=iortcw
 Terminal=false
 Categories=Game
-
+StartupWMClass=iowolfsp.ARCH
