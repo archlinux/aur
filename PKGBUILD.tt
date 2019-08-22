@@ -9,8 +9,7 @@ pkgdesc='Perl package to split big cookies into smaller ones'
 arch=('any')
 url='[% url %]'
 license=('PerlArtistic' 'GPL')
-depends=('perl' 'perl-cgi-simple')
-checkdepends=('perl-test-use-ok')
+depends=('perl-cgi-simple' 'perl-namespace-clean')
 makedepends=('perl-module-build-tiny>=0.034')
 source=([% source %])
 options=(!emptydirs)
