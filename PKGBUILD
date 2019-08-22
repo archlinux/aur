@@ -1,10 +1,10 @@
-# Maintainer: Nebula_Neko <chfsefefgesfen#foxmail>
+# Maintainer: NebulaNeko <chfsefefgesfen foxmail>
 # Contributor: acgtyrant <acgtyrant#gmail>
 
 _pkgname=search-and-view
 pkgname=$_pkgname-git
-pkgver=r36.bad61fa
-pkgrel=2
+pkgver=r37.52a4962
+pkgrel=1
 pkgdesc="Tools to make searching and viewing easy."
 arch=('any')
 url="https://github.com/lilydjwg/search-and-view"
