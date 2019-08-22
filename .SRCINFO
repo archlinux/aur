@@ -1,6 +1,6 @@
 pkgbase = pantheon-applications-menu
 	pkgdesc = The Pantheon Application Menu
-	pkgver = 2.4.3
+	pkgver = 2.4.4
 	pkgrel = 1
 	url = https://github.com/elementary/applications-menu
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = pantheon-applications-menu
 	depends = libwingpanel-2.0.so
 	depends = plank
 	depends = zeitgeist
-	source = pantheon-applications-menu::git+https://github.com/elementary/applications-menu.git#tag=2.4.3
+	source = pantheon-applications-menu::git+https://github.com/elementary/applications-menu.git#tag=2.4.4
 	sha256sums = SKIP
 
 pkgname = pantheon-applications-menu

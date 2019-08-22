@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=pantheon-applications-menu
-pkgver=2.4.3
+pkgver=2.4.4
 pkgrel=1
 pkgdesc='The Pantheon Application Menu'
 arch=(x86_64)
