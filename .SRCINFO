@@ -1,6 +1,6 @@
 pkgbase = tt-rss-theme-feedly-git
 	pkgdesc = Feedly theme for Tiny Tiny RSS
-	pkgver = r479.91460a4
+	pkgver = v2.3.0.r0.g60d2470
 	pkgrel = 1
 	url = https://github.com/levito/tt-rss-feedly-theme
 	arch = any
