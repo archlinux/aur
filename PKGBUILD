@@ -3,7 +3,7 @@
 pkgname=dina-font-ttf
 pkgver=1
 pkgrel=1
-pkgdesc="A monospace bitmap font, primarily aimed at programmers, in ttf format"
+pkgdesc="A monospace bitmap font, primarily aimed at programmers (TTF Format)"
 arch=('any')
 url="https://sites.google.com/site/rickard234/filecabinet"
 license=('custom')
