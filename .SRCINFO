@@ -1,7 +1,7 @@
 pkgbase = realrtcw
 	pkgdesc = A mod that brings some realism to the classic Wolfenstein game. You can expect ruthless AI, new weapons and rebalanced gameplay
 	pkgver = 2.21
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.moddb.com/mods/realrtcw-realism-mod
 	install = realrtcw.install
 	arch = i686
@@ -28,7 +28,7 @@ pkgbase = realrtcw
 	md5sums = eedef619c657f3465e448ae0968fe265
 	md5sums = 800b2b4f9166a46198c093f9c6365bf3
 	md5sums = 7e3991e5f331662419ad1ed04e49366c
-	md5sums = 3a5f5f153404684d5a8e041e9ab135a7
+	md5sums = 5fcd49cca83f7bba0d75c6b4b5801f95
 
 pkgname = realrtcw
 

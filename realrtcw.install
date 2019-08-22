@@ -7,8 +7,4 @@ post_remove() {
     echo ">>>    rm -r /opt/realrtcw/"
     echo ">>>"
 }
-op=$1
-shift
-
-$op $*
 

@@ -8,4 +8,5 @@ Exec=/usr/bin/realrtcw-sp
 Icon=realrtcw
 Terminal=false
 Categories=Game
+StartupWMClass=RealRTCW.ARCH
 
