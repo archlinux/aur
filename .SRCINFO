@@ -1,7 +1,7 @@
 pkgbase = openxray-git
 	pkgdesc = Unofficial X-Ray Engine Linux port by OpenXRay team (Originally developed by GSC Game World)
 	pkgver = 1.6.02_8fa5d36
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/OpenXRay/xray-16
 	install = info.install
 	arch = x86_64
