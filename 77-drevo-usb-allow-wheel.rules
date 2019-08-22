@@ -1,0 +1,7 @@
+SUBSYSTEM=="usb", ATTRS{idVendor}=="1a2c", ATTRS{idProduct}=="b31f", MODE="0660", GROUP="wheel"
+SUBSYSTEM=="usb", ATTRS{idVendor}=="1a2c", ATTRS{idProduct}=="b51f", MODE="0660", GROUP="wheel"
+SUBSYSTEM=="usb", ATTRS{idVendor}=="1a2c", ATTRS{idProduct}=="b58f", MODE="0660", GROUP="wheel"
+SUBSYSTEM=="usb", ATTRS{idVendor}=="1a2c", ATTRS{idProduct}=="b5bf", MODE="0660", GROUP="wheel"
+SUBSYSTEM=="usb", ATTRS{idVendor}=="1a2c", ATTRS{idProduct}=="b57e", MODE="0660", GROUP="wheel"
+SUBSYSTEM=="usb", ATTRS{idVendor}=="1a2c", ATTRS{idProduct}=="b58e", MODE="0660", GROUP="wheel"
+SUBSYSTEM=="usb", ATTRS{idVendor}=="1a2c", ATTRS{idProduct}=="b5be", MODE="0660", GROUP="wheel"

@@ -1,0 +1,25 @@
+pkgbase = drevo-power-console-git
+	pkgdesc = The Drevo Power Console (DPC) for Linux
+	pkgver = 6.eb9bfe1
+	pkgrel = 1
+	url = https://www.drevo.net/dpc
+	arch = x86_64
+	makedepends = git
+	makedepends = make
+	depends = qt5-base
+	depends = libusb
+	depends = gcc-libs
+	depends = glibc
+	depends = libpng
+	optdepends = systemd: for custom udev rules for wheel group
+	source = drevo-power-console-git::git+https://github.com/lanyu7/dpc_linux.git#branch=master
+	source = 77-drevo-usb-allow-wheel.rules
+	source = drevo-power-console.desktop
+	source = drevo-power-console.png
+	sha256sums = SKIP
+	sha256sums = 91441de4d41da914ed3420ec9dabd046b61aaacd79a6064eacda48b823ad7831
+	sha256sums = 80580a90cf0fdd37ad522b73d73de8d554149e6e54ec477e4af55e9070081d70
+	sha256sums = 452b2883243cd43ca5961889eeca0c98b2a2b5bf2321cb57b0d8950ddd4ea814
+
+pkgname = drevo-power-console-git
+

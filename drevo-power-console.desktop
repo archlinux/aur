@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Drevo Power Console
+StartupWMClass=dpc
+Comment=Drevo Power Console for Linux
+GenericName=Drevo Power Console for Linux
+Exec=/usr/bin/drevo-power-console %f
+Icon=drevo-power-console
+Type=Application
+StartupNotify=true
+Categories=Utility;
