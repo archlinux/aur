@@ -21,7 +21,6 @@ makedepends=('git' 'gcc-fortran' 'libtirpc' 'libtirpc-compat' 'openmotif' 'glu' 
 #source=("ftp://ftp.cwp.mines.edu/pub/cwpcodes/cwp_su_all_$pkgver.tgz")
 #sha1sums=('2456bfa4145ba5e8c03d9ffe85173b6657972bb3')
 #source=("git+https://github.com/JohnWStockwellJr/SeisUnix.git")
-source=("https://nextcloud.seismic-unix.org/index.php/s/LZpzc8jMzbWG9BZ")
 source=("seismic_unix.tgz::https://nextcloud.seismic-unix.org/index.php/s/LZpzc8jMzbWG9BZ/download?path=%2F&files=cwp_su_all_44R16.tgz")
 md5sums=("SKIP")
 install=seismic-unix.install
