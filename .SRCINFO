@@ -9,7 +9,6 @@ pkgbase = mup
 	makedepends = gendesk
 	depends = fltk
 	depends = libxpm
-	options = !makeflags
 	source = ftp://ftp.arkkra.com/pub/unix/mup67src.tar.gz
 	source = makefile.patch
 	source = gcc7.patch

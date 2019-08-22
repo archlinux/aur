@@ -14,7 +14,6 @@ source=("ftp://ftp.arkkra.com/pub/unix/$pkgname${_pkgver}src.tar.gz" 'makefile.p
 sha256sums=('254ff1b67e46714b6817555218c0256f73ab57306e14438bcb34aed9a15da34c'
             'd0e2d9d57e4131335678e65c4db94ba182e0fd55c84482acfda630cfceaf5253'
             '0fa766c5907dbe1a026df8cc45c8b8cb75c8238c538d907288d1353e51d0f62b')
-options=('!makeflags')
 
 prepare() {
   cd $pkgname-$pkgver
