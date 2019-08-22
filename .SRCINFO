@@ -1,6 +1,6 @@
 pkgbase = openxray-git
 	pkgdesc = Unofficial X-Ray Engine Linux port by OpenXRay team (Originally developed by GSC Game World)
-	pkgver = 1.6.02_0117cf5
+	pkgver = 1.6.02_8fa5d36
 	pkgrel = 1
 	url = https://github.com/OpenXRay/xray-16
 	install = info.install
@@ -43,7 +43,7 @@ pkgbase = openxray-git
 	depends = lzo
 	depends = lzop
 	depends = libjpeg-turbo
-	source = xray-16::git+https://github.com/OpenXRay/xray-16.git#commit=0117cf5
+	source = xray-16::git+https://github.com/OpenXRay/xray-16.git#commit=8fa5d36
 	md5sums = SKIP
 
 pkgname = openxray-git
