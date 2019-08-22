@@ -1,0 +1,15 @@
+pkgbase = houserat
+	pkgdesc = Notifies when known devices connect to the network
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/drrlvn/houserat
+	arch = x86_64
+	license = GPL3
+	makedepends = rust
+	depends = libpcap
+	backup = etc/houserat/config.toml
+	source = houserat-0.1.0.tar.gz::https://github.com/drrlvn/houserat/archive/0.1.0.tar.gz
+	sha512sums = 86673e1a7fc588e9fa941caa27d0ef183a8663191eeeb24a47fc9cfe78c1dea6ca9a39fc7170c43c43a749c8c8bb2efbbc0f1b82486d9d3b15e0d10ce6e57e5f
+
+pkgname = houserat
+
