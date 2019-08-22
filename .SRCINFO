@@ -1,6 +1,6 @@
 pkgbase = lpcscrypt
 	pkgdesc = Programming tool for LPC1800 and LPC4000 series microcontrollers
-	pkgver = 2.0.0.831
+	pkgver = 2.1.0.842
 	pkgrel = 0
 	url = https://www.nxp.com/support/developer-resources/software-development-tools/lpc-developer-resources-/lpc-microcontroller-utilities/lpcscrypt-v2.0.0:LPCSCRYPT
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = lpcscrypt
 	depends = dfu-util
 	depends = libutil-linux
 	optdepends = bash
-	source = https://www.nxp.com/downloads/en/software/lpcscrypt-2.0.0_831.x86_64.deb.bin
-	sha384sums = 4b3a61b502b4232a1d0605f1c600a7125e57a36378efe879d97873ebc72de243e694200cb6c4e3e0a7f6520920f17855
+	source = https://www.nxp.com/downloads/en/software/lpcscrypt-2.1.0_842.x86_64.deb.bin
+	sha384sums = 665d6ae03ce3ac9bbbaeb975bbd9ef65eaeb44e7cc3073cc9027bbe9ba43104cf81736d50916ddce230d56c4c9eb4db4
 
 pkgname = lpcscrypt
 

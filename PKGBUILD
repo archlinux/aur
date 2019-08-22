@@ -1,5 +1,5 @@
 pkgname=lpcscrypt
-pkgver=2.0.0.831
+pkgver=2.1.0.842
 pkgrel=0
 pkgdesc="Programming tool for LPC1800 and LPC4000 series microcontrollers"
 arch=('x86_64')
@@ -14,7 +14,7 @@ _pkgver_rel=${pkgver##*.}
 _pkgver_u=${_pkgver_main}_${_pkgver_rel}
 _src="$pkgname-$_pkgver_u.x86_64.deb.bin"
 source=("https://www.nxp.com/downloads/en/software/$_src")
-sha384sums=('4b3a61b502b4232a1d0605f1c600a7125e57a36378efe879d97873ebc72de243e694200cb6c4e3e0a7f6520920f17855')
+sha384sums=('665d6ae03ce3ac9bbbaeb975bbd9ef65eaeb44e7cc3073cc9027bbe9ba43104cf81736d50916ddce230d56c4c9eb4db4')
 
 prepare() {
     mkdir -p $pkgname-$_pkgver_u
