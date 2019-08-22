@@ -1,7 +1,7 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
 _modulename=scholarly
 pkgname=python-$_modulename
-pkgver=0.2.4
+pkgver=0.2.5
 pkgrel=1
 pkgdesc="Retrieve author and publication information from Google Scholar in a friendly, Pythonic way"
 arch=(any)
@@ -17,7 +17,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('cace82a7fb6c789eb4a8399e20f62cec5cc5f9c88a76c28f76d9bc2d0973b6eb')
+sha256sums=('73669ef708cc82241620af0ed69da4f4af637abbc76820ef78e2cf2e8a70d322')
 
 package() {
   cd "$srcdir/$(tar -tf v${pkgver}.tar.gz | head -n1)"
