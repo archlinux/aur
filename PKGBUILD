@@ -1,4 +1,4 @@
-# Maintainer: Clarence <azzbcc@sina.com>
+# Maintainer: Clarence <xjh.azzbcc@gmail.com>
 _pkgname=fastoredis
 pkgname=${_pkgname}
 pkgver=2.4.0
