@@ -1,8 +1,8 @@
 # Maintainer: Clarence <azzbcc@sina.com>
 _pkgname=fastoredis
 pkgname=${_pkgname}
-pkgver=2.3.0
-_build_ver=2ebd667
+pkgver=2.4.0
+_build_ver=5993817
 pkgrel=1
 pkgdesc="FastoRedis, cross-platform open source Redis GUI management tool."
 arch=('x86_64')
@@ -15,7 +15,7 @@ conflicts=("$_pkgname")
 source=("${_pkgname}.desktop"
         "${_pkgname}-${pkgver}-x86_64.tar.gz::https://fastoredis.com/downloads/linux/${_pkgname}-${pkgver}-x86_64.tar.gz")
 md5sums=('a3da6c7bf56828a0b94e106960a41f9f'
-         '5e7a7cebe1cec4f778c21aa9dd56ad01')
+         '723eb97c191406c0a98252ce9d4b77a2')
 
 build() {
     echo ${_pkgname} ${pkgver}
