@@ -1,0 +1,18 @@
+pkgbase = doxypypy-git
+	pkgdesc = A more Pythonic version of doxypy, a Doxygen filter for Python.
+	pkgver = r121.2a89e6a
+	pkgrel = 1
+	url = https://github.com/Feneric/doxypypy
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = doxygen
+	provides = doxypypy
+	conflicts = doxypypy
+	source = doxypypy::git+https://github.com/Feneric/doxypypy
+	md5sums = SKIP
+
+pkgname = doxypypy-git
+
