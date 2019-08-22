@@ -1,8 +1,8 @@
 pkgbase = bcloud-git
 	pkgdesc = Baidu Pan client for Linux Desktop users
-	pkgver = 20170416
+	pkgver = 20190711
 	pkgrel = 1
-	url = https://github.com/Yufeikang/bcloud
+	url = https://github.com/poplite/bcloud
 	arch = any
 	license = GPL3
 	makedepends = git
@@ -14,12 +14,11 @@ pkgbase = bcloud-git
 	depends = python-cssselect
 	depends = python-lxml
 	depends = python-crypto
-	depends = webkitgtk
 	depends = python-pyinotify
 	depends = libappindicator-gtk3
 	depends = libnotify
 	conflicts = bcloud
-	source = bcloud-git::git+https://github.com/Yufeikang/bcloud.git
+	source = git+https://github.com/poplite/bcloud
 	md5sums = SKIP
 
 pkgname = bcloud-git
