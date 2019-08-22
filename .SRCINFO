@@ -1,7 +1,7 @@
 pkgbase = platformio-git
 	pkgdesc = A cross-platform code builder and library manager
-	pkgver = v4.0.0.r10.gd5dd4d4b
-	pkgrel = 2
+	pkgver = v4.0.1.r1.gadde5e6a
+	pkgrel = 1
 	url = http://platformio.org/
 	arch = any
 	license = GPL
@@ -12,6 +12,7 @@ pkgbase = platformio-git
 	depends = python-lockfile
 	depends = python-pyserial
 	depends = python-requests
+	depends = python-tabulate
 	depends = python-semantic-version
 	optdepends = energia: For MSP430 based projects
 	optdepends = arduino: For Arduino based projects

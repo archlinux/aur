@@ -4,8 +4,8 @@
 
 pkgname=platformio-git
 _pkgname=platformio-core
-pkgver=v4.0.0.r10.gd5dd4d4b
-pkgrel=2
+pkgver=v4.0.1.r1.gadde5e6a
+pkgrel=1
 pkgdesc="A cross-platform code builder and library manager"
 arch=('any')
 url="http://platformio.org/"
@@ -18,6 +18,7 @@ depends=('python-setuptools'
          'python-lockfile'
          'python-pyserial'
          'python-requests'
+         'python-tabulate'
          'python-semantic-version')
 optdepends=('energia: For MSP430 based projects'
             'arduino: For Arduino based projects')
