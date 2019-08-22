@@ -1,0 +1,11 @@
+diff --git a/mono/build/update_bundled_bits.proj b/mono/build/update_bundled_bits.proj
+index eb4cee4d..0f9ebd3a 100644
+--- a/mono/build/update_bundled_bits.proj
++++ b/mono/build/update_bundled_bits.proj
+@@ -1,5 +1,5 @@
+ <Project DefaultTargets="FetchAndUpdateSdksAndNuGets">
+-    <Import Project="$(MSBuildThisFileDirectory)\DotnetBitsVersions.props" />
++    <Import Project="$(MSBuildThisFileDirectory)\DotNetBitsVersions.props" />
+ 
+     <Target Name="Build" DependsOnTargets="FetchAndUpdateSdksAndNuGets" />
+ 
