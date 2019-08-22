@@ -1,14 +1,14 @@
 pkgbase = dockle-bin
 	pkgdesc = Container Image Linter for Security, Helping build the Best-Practice Docker Image, Easy to start
-	pkgver = 0.1.14
+	pkgver = 0.1.15
 	pkgrel = 1
 	url = https://github.com/goodwithtech/dockle
 	arch = x86_64
 	license = AGPL
 	provides = dockle
 	conflicts = dockle
-	source = https://github.com/goodwithtech/dockle/releases/download/v0.1.14/dockle_0.1.14_Linux-64bit.tar.gz
-	sha256sums = bdcf85c3bef708435bc789d8235380539d80912990ccd64e1641554e11671977
+	source = https://github.com/goodwithtech/dockle/releases/download/v0.1.15/dockle_0.1.15_Linux-64bit.tar.gz
+	sha256sums = 99ccbe3b629945878e99c1e82f1a708c1cdec71335628f8d9472118f69c225ef
 
 pkgname = dockle-bin
 
