@@ -1,7 +1,7 @@
 pkgbase = filebot
 	pkgdesc = The ultimate TV and Movie Renamer
 	pkgver = 4.8.5
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.filebot.net/
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = filebot
 	arch = armv7l
 	arch = armv7h
 	license = Commercial
-	depends = java-openjfx
+	depends = java8-openjfx
 	depends = jre8-openjdk
 	depends = fontconfig
 	depends = chromaprint
