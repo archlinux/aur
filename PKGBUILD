@@ -5,7 +5,7 @@ _gituser="emacs-lsp"
 _gitrepo="lsp-mode"
 
 pkgname=emacs-lsp-mode
-pkgver=6.0
+pkgver=6.1
 pkgrel=1
 pkgdesc="Emacs client/library for the Language Server Protocol"
 url="https://github.com/${_gituser}/${_gitrepo}"
@@ -13,7 +13,7 @@ arch=('any')
 license=('GPL3')
 depends=('emacs')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/${_gituser}/${_gitrepo}/archive/$pkgver.tar.gz")
-sha256sums=('586e08d61b75c9008ba7bdb38b08e0536d3c6d98ba93f4fe6839109d8cf94842')
+sha256sums=('7c502ac206ea66b69f32015ac9e0e62a107bc8ecc2371756080914a561cae7e7')
 
 build() {
   cd ${_gitrepo}-$pkgver
