@@ -3,7 +3,6 @@
 pkgname=ttf-livvic
 pkgver=1.000
 pkgrel=1
-epoch=1
 pkgdesc='Liverpool Victoria Friendly Society Limited custom typeface'
 arch=('any')
 url='https://github.com/Fonthausen/Livvic'
