@@ -37,4 +37,7 @@ package() {
   install -D "${pkgname%-git}" -t "$pkgdir"/usr/bin/
 
   install -D -m644 "${pkgname%-git}.desktop" -t "$pkgdir"/usr/share/applications/
+
+  install -d -m755 "${pkgdir}/usr/share/spotify/"
+  ln -s '/opt/spotify/spotify' "${pkgdir}/usr/share/spotify/spotify"
 }
