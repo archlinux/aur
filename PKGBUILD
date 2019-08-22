@@ -4,7 +4,7 @@
 pkgname=balena-cli
 pkgdesc='balena.io command line interface'
 pkgver=11.8.3
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url='https://balena.io/'
 _github_url="https://github.com/balena-io/balena-cli"
@@ -20,7 +20,7 @@ replaces=('resin-cli')
 sha256sums=('7bd8cab2725d42c77fe178092d18dddb178dfb8d5a6c60f0e11d3b9ccfd6892f')
 
 package() {
-  npm install --global --production --no-shrinkwrap --user root --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tgz"
+  npm install --global --production --user root --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tgz"
 
   find "${pkgdir}" -name package.json -print0 | xargs -r -0 sed -i '/_where/d'
 
