@@ -3,12 +3,12 @@
 # Contributor: Alvie Zhang <alvie.zhang {AT} gmail {DOT} com>
 pkgname=meow-proxy-git
 pkgver=r1164.4dc7bec
-pkgrel=2
+pkgrel=3
 pkgdesc="A fork of MEOW that uses whitelist mode and bypasses IPv6"
 arch=('i686' 'x86_64')
 url="https://github.com/netheril96/MEOW"
 license=('BSD')
-depends=()
+depends=(glibc)
 makedepends=('go' 'git')
 conflicts=(meow-proxy)
 
