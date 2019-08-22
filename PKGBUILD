@@ -2,7 +2,7 @@
 
 pkgname=spotify-adkiller-dns-block-git
 pkgver=r82.1184e1e
-pkgrel=3
+pkgrel=4
 pkgdesc='Experimental dns blocking from Spotify AdKiller'
 arch=('i686' 'x86_64')
 url=https://github.com/SecUpwN/Spotify-AdKiller
