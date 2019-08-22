@@ -1,25 +1,18 @@
 pkgbase = python-doubleratchet
 	pkgdesc = A python implementation of the Double Ratchet algorithm
 	pkgver = 0.7.0.beta
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Syndace/python-doubleratchet
 	arch = any
 	license = MIT
 	makedepends = git
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
-	source = python-doubleratchet::git+https://github.com/Syndace/python-doubleratchet.git#tag=v0.7.0-beta
-	sha256sums = SKIP
-
-pkgname = python-doubleratchet
 	depends = python-pynacl
 	depends = python-cryptography
 	provides = python-doubleratchet
 	conflicts = python-doubleratchet
+	source = python-doubleratchet::git+https://github.com/Syndace/python-doubleratchet.git#tag=v0.7.0-beta
+	sha256sums = SKIP
 
-pkgname = python2-doubleratchet
-	depends = python2-pynacl
-	depends = python2-cryptography
-	provides = python2-doubleratchet
-	conflicts = python2-doubleratchet
+pkgname = python-doubleratchet
 
