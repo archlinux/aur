@@ -1,11 +1,11 @@
 # Maintainer: Danilo Kuehn <dk[at]nogo-software[dot]de>
 
 _pkgname=dry
-_pkgver=v0.9-beta.9
+_pkgver=v0.10-beta.1
 _pkgdownload=${_pkgname}_${_pkgver}
 pkgname=dry-bin
-pkgver=0.9
-pkgrel=9
+pkgver=0.10
+pkgrel=1
 pkgdesc="dry is a terminal application to manage Docker containers and images"
 url="http://moncho.github.io/dry/"
 arch=('x86_64' 'i686')
@@ -16,14 +16,14 @@ source=(
   "${_pkgdownlad}::https://github.com/moncho/dry/releases/download/${_pkgver}/dry-linux-386"
 )
 sha256sums=(
-  '9f035141fefbcac664650ab807d018e9d9bdbabd49b0a243b4e2a9aa99eea8b4'
+  'aea586a2d8f6e38c9f24a7757e954636248209a87480faea8a3e3f96021dd94a'
 )
 else
 source=(
   "${_pkgdownload}::https://github.com/moncho/dry/releases/download/${_pkgver}/dry-linux-amd64"
 )
 sha256sums=(
-  '556b680f2e7680b91901b6562670f616917cda0a5fb1b0c72c39e5fa63852dad'
+  'e2865e54d5ff825b2a2b5f52b8271d86fd51eff868dd8a7cf3a7b81fa854a660'
 )
 fi
 
