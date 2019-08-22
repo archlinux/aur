@@ -1,9 +1,9 @@
 # Maintainer: Giusy Margarita <kurmikon at libero dot it>
 
-_relver=1.1.6
+_relver=1.1.7
 
 pkgname=korla-icon-theme-git
-pkgver=$_relver.r295.23613054
+pkgver=$_relver
 pkgrel=1
 pkgdesc="SVG icon theme suitable for every desktop environment (dark and light versions, HiDPI support, git version)"
 arch=("any")
@@ -23,6 +23,7 @@ md5sums=("SKIP")
 
 _iconpath=usr/share/icons
 _iconcache=icon-theme.cache
+_iconnewcachescript=create-new-icon-theme.cache.sh
 
 pkgver() {
     cd "$srcdir/korla"
@@ -35,11 +36,11 @@ package() {
     cd "$srcdir/korla"
     
     # Delete useless files from source folder
-    rm -f "korla/create-new-icon-theme.cache.sh"
+    rm -f "korla/$_iconnewcachescript"
     rm -f "korla/$_iconcache"
-    rm -f "korla-light/create-new-icon-theme.cache.sh"
+    rm -f "korla-light/$_iconnewcachescript"
     rm -f "korla-light/$_iconcache"
-    rm -f "korla-light-panel/create-new-icon-theme.cache.sh"
+    rm -f "korla-light-panel/$_iconnewcachescript"
     rm -f "korla-light-panel/$_iconcache"
 
     install -dm755 "$pkgdir/$_iconpath"
