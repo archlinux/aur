@@ -12,6 +12,7 @@ source=("https://github.com/iortcw/iortcw/releases/download/$pkgver/patch-data-1
 	"https://github.com/M0Rf30/rtcw-assets/raw/master/sp_pak2.pk3"
 	"https://github.com/M0Rf30/rtcw-assets/raw/master/mp_pak1.pk3"
 "https://github.com/M0Rf30/rtcw-assets/raw/master/mp_pak2.pk3")
+noextract=('sp_pak2.pk3' 'mp_pak1.pk3' 'mp_pak2.pk3')
 
 package() {
 
