@@ -1,16 +1,21 @@
 pkgbase = lsd-git
-	pkgdesc = A ls command with a lot of pretty colors.
-	pkgver = 0.2.0
+	pkgdesc = The next gen ls command
+	pkgver = 0.16.0.381.gaa40bd2
 	pkgrel = 1
 	url = https://github.com/Peltoche/lsd
 	arch = i686
 	arch = x86_64
 	arch = armv6h
 	arch = armv7h
-	license = Apache-2.0
+	license = Apache
 	makedepends = rust
 	makedepends = cargo
-	depends = nerd-fonts-complete
+	makedepends = git
+	depends = gcc-libs
+	provides = lsd
+	conflicts = lsd
+	source = lsd::git+https://github.com/Peltoche/lsd.git
+	sha384sums = SKIP
 
 pkgname = lsd-git
 
