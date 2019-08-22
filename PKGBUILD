@@ -17,6 +17,8 @@ depends=('python-pynacl'
 makedepends=('git' 'python-setuptools')
 source=("${_pkgname}::git+https://github.com/Syndace/${_pkgname}.git")
 sha256sums=('SKIP')
+conflicts=(${pkgname})
+provides=(${pkgname})
 
 pkgver() {
     cd ${_pkgname}

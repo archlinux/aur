@@ -13,6 +13,8 @@ pkgbase = python-omemo-syndace-git
 	depends = python-doubleratchet
 	depends = python-x3dh
 	depends = python-protobuf
+	provides = python-omemo-syndace-git
+	conflicts = python-omemo-syndace-git
 	source = python-omemo::git+https://github.com/Syndace/python-omemo.git
 	sha256sums = SKIP
 
