@@ -2,7 +2,7 @@
 
 pkgname_=truffleruby
 pkgname=${pkgname_}-bin
-pkgver_=19.1.1
+pkgver_=19.2.0
 pkgver=${pkgver_/-/_}
 pkgrel=1
 pkgdesc='Graal based, high-performance implementation of the Ruby language'
@@ -15,13 +15,13 @@ optdepends=()
 provides=("$pkgname_")
 conflicts=("$pkgname_")
 source=("https://github.com/oracle/$pkgname_/releases/download/vm-${pkgver_}/ruby-installable-svm-linux-amd64-${pkgver_}.jar")
-sha256sums=('8bf1e83f2c27aceb6239f22abc3ac0f7210ba0675427583d7736cd4bed8ed8a6')
+sha256sums=('8933b9ef83179f937980bc953250703cad988617dec8b0e2682ea2e95ddf3e1f')
 
 package() {
     local file eq permissions mode name target
 
     mkdir -p "$pkgdir/usr/lib/jvm/java-8-graal/" "$pkgdir/usr/bin/"
-    cp -a -t "$pkgdir/usr/lib/jvm/java-8-graal/" jre/
+    cp -a -t "$pkgdir/usr/lib/jvm/java-8-graal/" jre/ LICENSE_TRUFFLERUBY.txt 3rd_party_licenses_truffleruby.txt
 
     printf '\n' >> META-INF/permissions
     while read -r file eq permissions; do
@@ -54,7 +54,7 @@ package() {
         ln -s -- "$target" "$pkgdir/usr/lib/jvm/java-8-graal/$name"
     done < META-INF/symlinks
 
-    install -DTm644 jre/languages/ruby/LICENSE_TRUFFLERUBY.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -DTm644 LICENSE_TRUFFLERUBY.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
     ln -s ../lib/jvm/java-8-graal/bin/${pkgname_} "$pkgdir/usr/bin/"
 }
