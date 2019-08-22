@@ -7,26 +7,34 @@ pkgver=[% pkgver %]
 pkgrel=[% pkgrel %]
 pkgdesc='Perl module for safe and simple inside-out objects construction'
 arch=('any')
-url="[% url %]"
+url='[% url %]'
 license=('Apache')
-depends=("perl" "perl-class-isa")
+depends=('perl-class-isa')
 options=(!emptydirs)
 source=([% source %])
 md5sums=('[% md5sums %]')
 
+sanitize() {
+	unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
+	export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL="--skipdeps"
+}
+
 build() {
-  cd "$srcdir/[% distdir %]"
-  PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
-  make
+	cd [% distdir %]
+	sanitize
+	perl Makefile.PL INSTALLDIRS=vendor
+	make
 }
 
 check() {
-  cd "$srcdir/[% distdir %]"
-  make test
+	cd [% distdir %]
+	sanitize
+	make test
 }
 
 package() {
-  cd "$srcdir/[% distdir %]"
-  make install DESTDIR="$pkgdir"
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+	cd [% distdir %]
+	sanitize
+	make install DESTDIR="$pkgdir"
+	find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
 }
