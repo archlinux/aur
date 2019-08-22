@@ -1,0 +1,20 @@
+pkgbase = python-fleep
+	pkgdesc = File format determination library
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/floyernick/python-fleep-py
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-setuptools
+	makedepends = python2
+	makedepends = python2-setuptools
+	source = https://files.pythonhosted.org/packages/source/f/fleep/fleep-1.0.1.tar.gz
+	sha256sums = c8f62b258ee5364d7f6c1ed1f3f278e99020fc3f0a60a24ad1e10846e31d104c
+
+pkgname = python-fleep
+	depends = python
+
+pkgname = python2-fleep
+	depends = python2
+
