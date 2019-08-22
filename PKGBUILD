@@ -34,7 +34,7 @@ package() {
 
   # Install the application
   install -d $pkgdir/{opt/$pkgname,usr/bin}
-  cp -a bin gradle lib jre plugins build.txt product-info.json $pkgdir/opt/$pkgname
+  cp -a bin lib jre plugins build.txt product-info.json $pkgdir/opt/$pkgname
   ln -s /opt/android-studio/bin/studio.sh $pkgdir/usr/bin/$pkgname
 
   # Add the icon and desktop file

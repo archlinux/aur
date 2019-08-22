@@ -1,7 +1,7 @@
 pkgbase = android-studio
 	pkgdesc = The official Android IDE (Stable branch)
 	pkgver = 3.5.0.21
-	pkgrel = 1
+	pkgrel = 2
 	url = https://developer.android.com/
 	arch = i686
 	arch = x86_64
