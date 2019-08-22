@@ -1,7 +1,7 @@
 # Maintainer: NebulaNeko <chfsefefgesfen foxmail com>
 pkgname=pandownload-bin
-pkgver=2.1.2
-pkgrel=3
+pkgver=2.1.3
+pkgrel=1
 pkgdesc="一款支持全平台的超级快的网盘下载工具，能真正不限速高速下载。"
 arch=('x86_64')
 url="http://pandownload.com"
@@ -18,7 +18,7 @@ source=("${pkgname%-bin}-$pkgver.zip::http://pandownload.com/$pkgver"
         "48x48.png")
 options=(!strip)
 install=pandownload-bin.install
-sha512sums=('03661cbfe6b49e86ff646f57d5f6d398983c8ab6158f426acaf5f604e20c5305f03a0af1ce707ae63e9fee64ac6dd3e63683e450f4e30c341133dd3fdef975ed'
+sha512sums=('d68485c4d5e95c72f8e70823b7572cb0aaf9d78cc31d246772136a5cf51aee488a83e536a9615bc7e67299626c9f1bdf10818b36d9fbe01172628c83e7cef1d7'
             'f92318c37e6ac4ef6a1c4b629a042b6dc1fbaac2188293a1c7afd42c4e674056167193d7bfbaeb041b3989300594ccf46e6ae97cbd7dc9879cca65bf24b6b9a6'
             '52f9a35cb56064e38dfb7b0f7021a21e822d02a4c35dcd2f7b0789f4922a2f347d64b8bb9e9b13ca8357fb3ae985745b358dbe5a6cedae157337d19c560ce403'
             '2888de2ca54d30368c9456e9866dc98fe9d106a6d58fd0f0cf91448a8b79067cb2adcc86b3aaad52c38d82ca9d86200d770056a0141030a2ec21ff8ed3355b09'
