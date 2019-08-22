@@ -4,6 +4,10 @@ _5_2_2_2_changes() {
   echo ':: Kernel command line update: add page_alloc.shuffle=1'
 }
 
+_5_2_9_6_changes() {
+  echo ':: Microcode is no longer builtin. https://wiki.archlinux.org/index.php/Microcode'
+}
+
 post_install() {
   echo ":: Adjust kernel command line in your bootloader to Clear Linux kernel default:"
   echo "   quiet console=tty0 console=ttyS0,115200n8 cryptomgr.notests initcall_debug"
@@ -19,6 +23,7 @@ post_upgrade() {
 
   local v upgrades=(
     5.2.2-2
+    5.2.9-6
   )
 
   for v in "${upgrades[@]}"; do

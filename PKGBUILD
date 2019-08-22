@@ -65,23 +65,21 @@ _enable_acs_override="y"
 _major=5.2
 _minor=9
 _srcname=linux-${_major}
-_clr=${_major}.9-823
+_clr=${_major}.9-825
 pkgbase=linux-clear
 pkgver=${_major}.${_minor}
-pkgrel=5
+pkgrel=6
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux"
 license=('GPL2')
-makedepends=('bc' 'git' 'inetutils' 'kmod' 'libelf' 'linux-firmware' 'xmlto')
+makedepends=('bc' 'git' 'inetutils' 'kmod' 'libelf' 'xmlto')
 options=('!strip')
-_ucode='20190618'
 _gcc_more_v='20190714'
 source=(
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.tar.xz"
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.tar.sign"
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz"
   "clearlinux::git+https://github.com/clearlinux-pkgs/linux.git#tag=${_clr}"
-  "intel-ucode-${_ucode}.tar.gz::https://github.com/intel/Intel-Linux-Processor-Microcode-Data-Files/archive/microcode-${_ucode}.tar.gz"
   "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
   'add-acs-overrides.patch::https://aur.archlinux.org/cgit/aur.git/plain/add-acs-overrides.patch?h=linux-vfio'
   '60-linux.hook'  # pacman hook for depmod
@@ -130,13 +128,6 @@ CONFIG_MODULE_COMPRESS_XZ=y|' ./.config
         sed -i "s|CONFIG_MODULE_SIG_FORCE=y|# CONFIG_MODULE_SIG_FORCE is not set|g" ./.config
 
         make olddefconfig
-
-    ### Copying i915 firmware and intel-ucode
-        msg2 "Copying i915 firmware and intel-ucode-${_ucode}..."
-        cp -a /usr/lib/firmware/i915 firmware/
-        cp -a ${srcdir}/Intel-Linux-Processor-Microcode-Data-Files-microcode-${_ucode}/intel-ucode firmware/
-        cp  ${srcdir}/Intel-Linux-Processor-Microcode-Data-Files-microcode-${_ucode}/intel-ucode-with-caveats/06* firmware/intel-ucode/
-        rm -f firmware/intel-ucode/0f*
 
     ### Patch source to unlock additional gcc CPU optimizations
         # https://github.com/graysky2/kernel_gcc_patch
@@ -345,7 +336,6 @@ sha256sums=('54ad66f672e1a831b574f5e704e8a05f1e6180a8245d4bdd811208a6cb0ac1e7'
             'SKIP'
             '7edb11f988c1fa13c1c5e75fb42a3b73f02cdd97ceb3459fc942803f643f1f13'
             'SKIP'
-            '74ec7415988d40fa53686d994cf8cb27accdbd35c5373c4c3afc2e93372ebba5'
             '2466fb4aecc66d1b258b4cbdb2f215b5099f266d8c4386bb62ad1a0acd0caf5b'
             'dbf4ac4b873ce6972e63b78d74ddba18f2701716163bb7f4b4fe5e909346a6e1'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
