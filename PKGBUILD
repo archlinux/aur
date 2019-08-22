@@ -3,7 +3,7 @@
 pkgname__=native-image
 pkgname_=graal-${pkgname__}
 pkgname=${pkgname_}-bin
-pkgver_=19.1.1
+pkgver_=19.2.0
 pkgver=${pkgver_/-/_}
 pkgrel=1
 pkgdesc='Plugin to turn Graal-based applications into native binary images'
@@ -16,13 +16,13 @@ optdepends=()
 provides=("$pkgname_")
 conflicts=("$pkgname_")
 source=("https://github.com/oracle/graal/releases/download/vm-${pkgver_}/${pkgname__}-installable-svm-linux-amd64-${pkgver_}.jar")
-sha256sums=('6cb0ad9eafd480c58349771ad1ecfef45802019e5f3bccbc007ad3c4606c6d74')
+sha256sums=('cdaddcdf9ba275e3db5d2122206d462d075c79d39c9f9ab8a217d81c0caf521b')
 
 package() {
     local file eq permissions mode name target
 
     mkdir -p "$pkgdir/usr/lib/jvm/java-8-graal/" "$pkgdir/usr/bin/"
-    cp -a -t "$pkgdir/usr/lib/jvm/java-8-graal/" jre/
+    cp -a -t "$pkgdir/usr/lib/jvm/java-8-graal/" jre/ LICENSE_NATIVEIMAGE.txt
 
     printf '\n' >> META-INF/permissions
     while read -r file eq permissions; do
@@ -55,7 +55,7 @@ package() {
         ln -s -- "$target" "$pkgdir/usr/lib/jvm/java-8-graal/$name"
     done < META-INF/symlinks
 
-    install -DTm644 jre/lib/svm/LICENSE_NATIVEIMAGE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -DTm644 LICENSE_NATIVEIMAGE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
     ln -s ../lib/jvm/java-8-graal/bin/${pkgname__} "$pkgdir/usr/bin/"
 }
