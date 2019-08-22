@@ -1,0 +1,43 @@
+pkgbase = glib2-clear
+	pkgdesc = Low level core library
+	pkgver = 2.60.6
+	pkgrel = 1
+	url = https://wiki.gnome.org/Projects/GLib
+	arch = x86_64
+	license = LGPL2.1
+	checkdepends = desktop-file-utils
+	makedepends = gettext
+	makedepends = gtk-doc
+	makedepends = shared-mime-info
+	makedepends = python
+	makedepends = libelf
+	makedepends = git
+	makedepends = util-linux
+	makedepends = meson
+	makedepends = dbus
+	depends = pcre
+	depends = libffi
+	depends = libutil-linux
+	depends = zlib
+	optdepends = python: gdbus-codegen, glib-genmarshal, glib-mkenums, gtester-report
+	optdepends = libelf: gresource inspection tool
+	options = !emptydirs
+	source = git+https://github.com/GNOME/glib.git#commit=0a63daa96426715498b55318f68a67baee40c509
+	source = clearlinux::git+https://github.com/clearlinux-pkgs/glib.git#commit=c57f2dff8fa0f25043e4d2ce608a2abd57ee7860
+	source = noisy-glib-compile-schemas.diff
+	source = glib-compile-schemas.hook
+	source = gio-querymodules.hook
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 81a4df0b638730cffb7fa263c04841f7ca6b9c9578ee5045db6f30ff0c3fc531
+	sha256sums = e1123a5d85d2445faac33f6dae1085fdd620d83279a4e130a83fe38db52b62b3
+	sha256sums = 5ba204a2686304b1454d401a39a9d27d09dd25e4529664e3fd565be3d439f8b6
+
+pkgname = glib2-clear
+
+pkgname = glib2-docs-clear
+	pkgdesc = Documentation for GLib
+	license = custom
+	depends = 
+	optdepends = 
+
