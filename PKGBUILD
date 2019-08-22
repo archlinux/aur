@@ -2,7 +2,7 @@
 
 pkgname_=graalpython
 pkgname=${pkgname_}-bin
-pkgver_=19.1.1
+pkgver_=19.2.0
 pkgver=${pkgver_/-/_}
 pkgrel=1
 pkgdesc='Graal based, high-performance implementation of the Python language (early development)'
@@ -15,13 +15,13 @@ optdepends=()
 provides=("$pkgname_")
 conflicts=("$pkgname_")
 source=("https://github.com/graalvm/$pkgname_/releases/download/vm-${pkgver_}/python-installable-svm-linux-amd64-${pkgver_}.jar")
-sha256sums=('6887026a1cb161d0cf80a84ee2f7e6e7a7a7c19bc2dbcd77a733c90e938ce3f6')
+sha256sums=('ef0eba0b18922f5d6b1413dc3fd478c6d48b07b3ac0dee3e26c0b92c65bb217c')
 
 package() {
     local file eq permissions mode name target
 
     mkdir -p "$pkgdir/usr/lib/jvm/java-8-graal/" "$pkgdir/usr/bin/"
-    cp -a -t "$pkgdir/usr/lib/jvm/java-8-graal/" jre/
+    cp -a -t "$pkgdir/usr/lib/jvm/java-8-graal/" jre/ LICENSE_GRAALPYTHON.txt 3rd_party_licenses_graalpython.txt
 
     printf '\n' >> META-INF/permissions
     while read -r file eq permissions; do
@@ -54,7 +54,7 @@ package() {
         ln -s -- "$target" "$pkgdir/usr/lib/jvm/java-8-graal/$name"
     done < META-INF/symlinks
 
-    install -DTm644 jre/languages/python/LICENSE_GRAALPYTHON.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -DTm644 LICENSE_GRAALPYTHON.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
     ln -s ../lib/jvm/java-8-graal/bin/${pkgname_} "$pkgdir/usr/bin/"
 }
