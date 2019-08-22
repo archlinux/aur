@@ -2,7 +2,7 @@
 
 pkgname=velero-bin
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Backup client for Kubernetes"
 arch=('x86_64')
 url="https://github.com/heptio/velero"
