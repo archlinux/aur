@@ -5,7 +5,7 @@
 pkgbase=librealsense-git
 pkgname=(librealsense-git python-pyrealsense2-git)
 _pkgname=librealsense
-pkgver=v2.21.0.r4.g6c4fd2dbb
+pkgver=v2.26.0.r6.g4f2eac248
 pkgrel=1
 pkgdesc="Intel® RealSense™ SDK 2.0 is a cross-platform library for Intel® RealSense™ depth cameras (D400 series and the SR300)"
 arch=('x86_64')
