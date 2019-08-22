@@ -1,0 +1,15 @@
+pkgbase = async_comm-git
+	pkgdesc = This project provides a C++ library that gives a simple interface for asynchronous serial communications over a serial port or UDP.
+	pkgver = r47.9b83a41
+	pkgrel = 1
+	url = https://github.com/dpkoch/async_comm
+	arch = x86_64
+	license = BSD-3
+	makedepends = git
+	depends = cmake
+	depends = boost
+	source = git+https://github.com/dpkoch/async_comm
+	sha256sums = SKIP
+
+pkgname = async_comm-git
+
