@@ -29,12 +29,14 @@ pkgbase = iortcw-git
 	source = iortcw-mp.launcher
 	source = iortcw-sp.desktop
 	source = iortcw-mp.desktop
+	source = openurl.sh
 	md5sums = SKIP
 	md5sums = 1cb1d7fda29d223a57003d097a1a4a31
 	md5sums = e400094c42766cb2b130d4d95bbe1caf
 	md5sums = bbc343567fa9a2f0101bdbd07cc9d32a
-	md5sums = 5d91a81acdc289688ce9a8b3fef2d382
-	md5sums = 7dd75064074886092fa9b3fc77a847b6
+	md5sums = dec8be9edbe233c8e69320a35acf9b01
+	md5sums = 37889e4c81f20b1dd0b6cf25e1dd6b2c
+	md5sums = 11a60b83bcfb4b953344db248d886000
 
 pkgname = iortcw-git
 
