@@ -1,22 +1,21 @@
-# Maintainer: Christian Hesse <mail@eworm.de>
+# Maintainer: Skye Viau <skye.viau@gmail.com>
+# Contributor: Christian Hesse <mail@eworm.de>
 # Contributor: Matt Arsenault <arsenm2@rpi.edu>
 
 pkgname=gitg-git
-pkgver=3.30.1.r30.gf7b4e604
+pkgver=3.30.1.r171.gd3855352
 pkgrel=1
 pkgdesc='A GIT repository viewer based on GTK+ - git checkout'
 arch=('i686' 'x86_64')
 url='https://gitlab.gnome.org/GNOME/gitg/'
 license=('GPL')
-depends=('gtksourceview3' 'git' 'desktop-file-utils' 'libgit2-glib' 'libgee' 'webkit2gtk' 'libpeas' 'gtkspell3')
+depends=('gtksourceview4' 'git' 'desktop-file-utils' 'libgit2-glib' 'libgee' 'webkit2gtk' 'libpeas' 'libdazzle' 'gspell')
 makedepends=('meson' 'intltool' 'vala' 'gobject-introspection' 'gnome-common')
 provides=('gitg')
 conflicts=('gitg')
 install=gitg-git.install
-source=('git+https://gitlab.gnome.org/GNOME/gitg.git'
-	'git+https://gitlab.gnome.org/GNOME/libgd.git')
-sha256sums=('SKIP'
-            'SKIP')
+source=('git+https://gitlab.gnome.org/GNOME/gitg.git')
+sha256sums=('SKIP')
 
 pkgver() {
 	cd gitg/
