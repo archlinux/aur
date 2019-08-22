@@ -4,7 +4,7 @@
 pkgname=gnome-kra-ora-thumbnailer-git
 pkgver=1.4.r0.g53b68a1
 epoch=1
-pkgrel=1
+pkgrel=2
 pkgdesc="A thumbnailer for KRA ( Krita native file ) and ORA ( open-raster ) for the Gnome desktop"
 depends=('libarchive' 'gdk-pixbuf2')
 makedepends=('git' 'gnome-common' 'automake' 'intltool')
@@ -16,7 +16,7 @@ _gitname="gnome-kra-ora-thumbnailer"
 noextract=()
 
 pkgver() {
-  cd "$pkgname"
+  cd "$_gitname"
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
@@ -28,7 +28,7 @@ build() {
 }
 
 package() {
-	cd "$pkgname"
+	cd "$_gitname"
 	make DESTDIR="$pkgdir/" install
 }
 
