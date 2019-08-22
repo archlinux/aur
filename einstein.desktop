@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=einstein.desktop
+GenericName=Puzzle Game
+Comment=Remake of old DOS game Sherlock which was inspired by Albert Einstein's puzzle.
+Exec=einstein
+Icon=einstein
+Terminal=false
+StartupNotify=true
+Type=Application
+Categories=Game;LogicGame;
