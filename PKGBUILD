@@ -4,7 +4,7 @@
 
 pkgname=balena-cli-git
 pkgdesc='balena.io command line interface, development version'
-pkgver=11.7.5.r0.g9977451b
+pkgver=11.8.3.r0.g56aabad8
 pkgrel=1
 arch=('x86_64')
 url='https://balena.io/'
@@ -21,15 +21,30 @@ replaces=('resin-cli-git')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "${srcdir}/${pkgname%-git}" || exit 1
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+build() {
+  cd "${srcdir}/${pkgname%-git}" || exit 1
+
+  npm install
+  npm publish --dry-run
+  local packagefile
+  packagefile=$(npm pack)
+  mv "${packagefile}" "${srcdir}/${pkgname}.tgz"
+}
+
 package() {
-  cd "$srcdir/${pkgname%-git}"
+  npm install --global --production --user root --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}.tgz"
 
-  _branch=$(git rev-parse --abbrev-ref HEAD)
-  git archive --format=tar --prefix=${pkgname%-git}/ ${_branch} | gzip >"${srcdir}/${pkgname}.tar.gz"
+  find "${pkgdir}" -name package.json -print0 | xargs -r -0 sed -i '/_where/d'
 
-  npm install --global -user root --prefix "${pkgdir}/usr" "$srcdir/${pkgname}.tar.gz"
+  find "${pkgdir}/usr" -type d -exec chmod 755 {} +
+  local tmppackage
+  tmppackage="$(mktemp)"
+  local pkgjson="${pkgdir}/usr/lib/node_modules/${pkgname%-git}/package.json"
+  jq '.|=with_entries(select(.key|test("_.+")|not))' "${pkgjson}" > "${tmppackage}"
+  mv "${tmppackage}" "${pkgjson}"
+  chmod 644 "${pkgjson}"
 }
