@@ -9,7 +9,7 @@ depends=('xdg-utils' 'fakeroot' 'gksu')
 provides=('blackarch-menus')
 conflicts=('blackarch-menus')
 replaces=('blackarch-menus')
-source=("git+https://github.com/xeyqe/blackarch-menus-extended.git")
+source=("https://codeload.github.com/xeyqe/blackarch-menus-extended/zip/master")
 md5sums=('SKIP')
 
 prepare() {
