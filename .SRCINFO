@@ -8,6 +8,8 @@ pkgbase = python-x3dh-git
 	makedepends = git
 	makedepends = python-setuptools
 	depends = python-xeddsa
+	provides = python-x3dh
+	conflicts = python-x3dh
 	source = python-x3dh::git+https://github.com/Syndace/python-x3dh.git
 	sha256sums = SKIP
 

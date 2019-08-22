@@ -1,7 +1,5 @@
 # Maintainer: Maxime "pep" Buquet <archlinux@bouah.net>
 
-# Maintainer: Maxime "pep" Buquet <archlinux@bouah.net>
-
 _pkgname=python-x3dh
 pkgbase=${pkgname}
 pkgname=${_pkgname}-git
@@ -15,6 +13,8 @@ makedepends=('git' 'python-setuptools')
 source=("${_pkgname}::git+https://github.com/Syndace/${_pkgname}.git")
 sha256sums=('SKIP')
 depends=('python-xeddsa')
+conflicts=(${_pkgname})
+provides=(${_pkgname})
 
 pkgver() {
     cd ${_pkgname}
