@@ -1,12 +1,14 @@
 pkgbase = pandownload-bin
 	pkgdesc = 一款支持全平台的超级快的网盘下载工具，能真正不限速高速下载。
 	pkgver = 2.1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://pandownload.com
 	install = pandownload-bin.install
-	arch = x86_64
+	arch = any
 	license = unknown
 	depends = wine
+	depends = bash
+	depends = hicolor-icon-theme
 	optdepends = sqlite: get Firefox cookies
 	options = !strip
 	source = pandownload-2.1.3.zip::http://pandownload.com/2.1.3

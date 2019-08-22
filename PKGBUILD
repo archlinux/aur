@@ -1,12 +1,12 @@
 # Maintainer: NebulaNeko <chfsefefgesfen foxmail com>
 pkgname=pandownload-bin
 pkgver=2.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="一款支持全平台的超级快的网盘下载工具，能真正不限速高速下载。"
-arch=('x86_64')
+arch=('any')
 url="http://pandownload.com"
 license=('unknown')
-depends=(wine)
+depends=(wine bash hicolor-icon-theme)
 optdepends=('sqlite: get Firefox cookies')
 source=("${pkgname%-bin}-$pkgver.zip::http://pandownload.com/$pkgver"
         "${pkgname%-bin}.desktop"
