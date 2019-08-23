@@ -30,3 +30,15 @@ $ /opt/wechat-devtool/bin/wxdt
 ```shell
 $ sudo pacman -R wechat-devtool
 ```
+
+## 常见问题
+
+### WeappVendor is not a directory
+
+> cp: target '/home/user/.config/wechat_web_devtools/WeappVendor/' is not a directory
+
+这是因为路径不存在，手动创建即可：
+
+```shell
+$ mkdir -p ~/.config/wechat_web_devtools/WeappVendor/
+```
