@@ -1,13 +1,15 @@
 pkgbase = ossia-score
 	pkgdesc = ossia score, an interactive sequencer for the intermedia arts
 	pkgver = 2.5.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://ossia.io
 	arch = x86_64
 	license = GPLv3
 	makedepends = git
 	makedepends = cmake
 	makedepends = qt5-tools
+	makedepends = clang
+	makedepends = lld
 	depends = boost
 	depends = qt5-base
 	depends = qt5-imageformats

@@ -2,13 +2,13 @@
 pkgname=ossia-score
 pkgver=2.5.1
 release_tag=v2.5.1
-pkgrel=2
+pkgrel=3
 pkgdesc="ossia score, an interactive sequencer for the intermedia arts"
 arch=('x86_64')
 url="https://ossia.io"
 license=('GPLv3')
 depends=('boost' 'qt5-base' 'qt5-imageformats' 'qt5-svg' 'qt5-websockets' 'qt5-quickcontrols2' 'qt5-serialport' 'qt5-declarative' 'ffmpeg' 'portaudio' 'jack')
-makedepends=('git' 'cmake' 'qt5-tools')
+makedepends=('git' 'cmake' 'qt5-tools' 'clang' 'lld')
 optdepends=('faust' 'lilv' 'suil' 'sdl2')
 provides=("$pkgname=$pkgver")
 conflicts=('ossia-score-git')
@@ -21,7 +21,16 @@ build() {
 
   mkdir -p "$srcdir/build"
   cd "$srcdir/build"
-  cmake -Wno-dev -DSCORE_CONFIGURATION=static-release -DDEPLOYMENT_BUILD=1 -DCMAKE_SKIP_RPATH=ON -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" "$srcdir"
+  # Note : there is currently a GCC bug when linking - works fine with clang & lld
+  cmake -Wno-dev \
+	-DCMAKE_CXX_COMPILER=clang++ \
+	-DSCORE_CONFIGURATION=static-release \
+	-DDEPLOYMENT_BUILD=1 \
+	-DCMAKE_SKIP_RPATH=ON \
+	-DCMAKE_INSTALL_PREFIX="$pkgdir/usr" \
+	-DOSSIA_USE_FAST_LINKER=1 \
+	"$srcdir"
+
   cmake --build . --target all_unity
 }
 
