@@ -11,6 +11,21 @@ SHAREDIR="$HOME/.eve"
 
 # evesetup shared functions
 
+check_elv() {
+	ELBIN=$(getdate $LAUNCHER/evelauncher)
+	ELBIN=$(expr ${ELBIN:-60} / 60 \* 60)
+	ELARC=$(getdate $SETUPDIR/lib/evelauncher-$ELVER.tar.?z)
+	ELARC=$(expr $ELARC / 60 \* 60)
+	if [ "$ELBIN" -lt "$ELARC" ] ;then
+	    if [ -d "$LAUNCHER" ] ;then
+		rm -rf $LAUNCHER
+		desktop_msg "Update EVE Launcher binaries"
+	    fi
+	    tar xf $SETUPDIR/lib/evelauncher-$ELVER.tar.?z -C $EVEDIR
+	    mv $EVEDIR/evelauncher $LAUNCHER
+	fi
+}
+
 check_env() {
     if [ -d "$CONFDIR" ] ;then
 	if [ -r "$EVECONF" ] ;then
@@ -26,8 +41,6 @@ check_env() {
 	echo "UseCustomWine=true" >>$EVECONF
 	echo "CustomWinePath=$WINEPATH/wine" >>$EVECONF
 	mkdir -p $EVEDIR/SharedCache
-	tar xf $SETUPDIR/lib/evelauncher-$ELVER.tar.?z -C $EVEDIR
-	mv $EVEDIR/evelauncher $LAUNCHER
 	if [ -d "$SHAREDIR/ResFiles/" ] ;then
 	    mv $SHAREDIR/ResFiles/ $EVEDIR/SharedCache/
 	    mv $SHAREDIR/*.txt $EVEDIR/SharedCache/
@@ -65,7 +78,7 @@ check_wine() {
     INSTWINE=$(cat $WINEPREFIX/.update-timestamp 2>/dev/null | tr -dc [:digit:]) || true
     WINEINFP=$(readlink -f $CUSTOMWP)
     WINECONF=${WINEINFP%/bin*}/share/wine/wine.inf
-    WINEDATE=$(ls -l --time-style=+%s $WINECONF 2>/dev/null | cut -d' ' -f6)
+    WINEDATE=$(getdate $WINECONF)
     if [ "x$WINEDATE" != "x$INSTWINE" ] ;then
 	desktop_msg "Preparing wine in $WINEPREFIX"
 	env WINEPREFIX=$WINEPREFIX \
@@ -101,6 +114,10 @@ desktop_msg() {
 	notify-send -i eve $(basename $0) "$@"
     fi
     printf "$(basename $0): $@\n"
+}
+
+getdate() {
+    printf $(ls -l --time-style=+%s $1 2>/dev/null | cut -d' ' -f6)
 }
 
 getval() {

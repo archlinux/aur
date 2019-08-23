@@ -12,6 +12,7 @@ WINEPATH="/usr/bin"
 . ./evesetup.shlib
 
 check_env
+check_elv
 check_wine
 check_steam
 
