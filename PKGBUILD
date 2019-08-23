@@ -10,7 +10,7 @@ url='http://www.sile-typesetter.org/'
 license=('MIT')
 source=("https://github.com/simoncozens/sile/releases/download/v${pkgver}/sile-${pkgver}.tar.bz2")
 _lua_deps=('cosmo' 'expat' 'filesystem' 'lpeg' 'sec' 'zlib')
-depends=('fontconfig' 'harfbuzz>=1.2.6' 'icu' "${_lua_deps[@]/#lua-}" 'ttf-gentium-plus')
+depends=('fontconfig' 'harfbuzz>=1.2.6' 'icu' "${_lua_deps[@]/#/lua-}" 'ttf-gentium-plus')
 checkdepends=('lua-busted')
 sha512sums=('7d83e7737668471f637a59036abe029299148783f87e29e3dd2833d02038bf1aecdf6fc35e36569eaba2cc18f9049d49257a03af4fbab6bceea7898fcb8508d1')
 
