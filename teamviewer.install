@@ -20,6 +20,7 @@ pre_remove() {
   if [ "${_opt_AutoStart}" -ne 0 ]; then
     systemctl disable --now 'teamviewerd.service'
   fi
+  rm -f '/etc/teamviewer/global.conf' # to be removed
 }
 
 pre_upgrade() {
@@ -28,7 +29,30 @@ pre_upgrade() {
 
 post_remove() {
   rm -rf /opt/teamviewer
+  rm -rf "/var/log/teamviewer${1%%.*}/"
+  set -u
+  shopt -s nullglob
+  local _dirs=(/home/*/)
+  local _d
+  for _d in "${_dirs[@]}"; do
+    _d="${_d%/}"
+    local _dirs2=("${_d}"/.local/share/teamviewer*/)
+    if [ "${#_dirs2[@]}" -ne 0 ]; then
+      printf 'rm -r "%s"\n' "${_dirs2[@]}"
+    fi
+    local _dirs2=("${_d}"/.cache/TeamViewer/)
+    if [ "${#_dirs2[@]}" -ne 0 ]; then
+      printf 'rm -r "%s"\n' "${_dirs2[@]}"
+    fi
+  done
+  # This file regenerates on reboot
+  if [ -s '/etc/machine-id' ]; then
+    echo 'sudo rm /etc/machine-id && reboot'
+  fi
+  shopt -u nullglob
   #systemctl daemon-reload
+  set +u
 }
+#post_remove "14.0"
 
 # vim: ts=2 sw=2 et:
