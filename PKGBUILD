@@ -2,11 +2,11 @@
 
 pkgname=encompass
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="BIP-0044 compliant multi-currency wallet based on Electrum. Extendable with ChainKey modules to most coins!"
 arch=('any')
 depends=('python2-ecdsa' 'python2-pbkdf2' 'python2-requests' 'python2-pyasn1' 'python2-pyasn1-modules' 'python2-qrcode' 'python2-ltc_scrypt' 
-	 'python2-darkcoin_hash' 'python2-mnemonic' 'python2-hidapi' 'python2-socks' 'python2-protobuf' 'python2-tlslite' 'python2-dnspython'
+	 'python2-darkcoin_hash' 'python2-mnemonic' 'python2-hidapi' 'python2-socks' 'python2-protobuf' 'python2-tlslite-ng' 'python2-dnspython'
 	 'python2-pyqt4' 'python2-sip' 'python2-slowaes' 'python2-trezor')
 makedepends=('gettext' 'python2-pycurl' 'python2-setuptools' 'desktop-file-utils')
 optdepends=('python2-btchip: BTChip hardware wallet support'
