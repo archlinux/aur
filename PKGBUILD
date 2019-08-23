@@ -1,5 +1,4 @@
 # Maintainer: Phillip Smith <pkgbuild@phs.id.au>
-# http://github.com/fukawi2/aur-packages
 # Contributor: Nathan Owe <ndowens04 at gmail>
 
 ### I AM ONLY THE PACKAGER, NOT THE DEVELOPER
@@ -13,7 +12,7 @@
 ### the software) then please do email me or post an AUR comment.
 
 pkgname=freeipmi
-pkgver=1.6.2
+pkgver=1.6.4
 pkgrel=1
 pkgdesc="sensor monitoring, system event monitoring, power control, and serial-over-LAN (SOL)"
 arch=('i686' 'x86_64')
@@ -25,7 +24,7 @@ source=("http://ftp.gnu.org/gnu/$pkgname/$pkgname-$pkgver.tar.gz"
         'bmc-watchdog.service'
         'ipmidetectd.service'
         'ipmiseld.service')
-sha256sums=('31513324591bf8d79d7cdeb39ecfac45e0ea7f6a5905a625a4a906fb8270124a'
+sha256sums=('65dfbb95a30438ba247f01a58498862a37d2e71c8c950bcfcee459d079241a3c'
             'ac2aadac0f1be10134b2f2aef4652dfa9c32bf48bcb0326d39a583cce4bf2d56'
             '53e79cb652e8840a5e3178b797544ef44d6405f74a862d8b4d430165cf070e35'
             'd8a117fecae35c9d9f3fe3572d6abd660744ceebfe2fa1cc9fabddd0e9a38746')
