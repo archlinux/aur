@@ -5,19 +5,21 @@
 pkgbase=linux-rc
 pkgrel=1
 _srcname=linux-5.2
-_stable=5.2.8
-_patchver=5.2.9
+_major=5.2
+_minor=9
+_minorc=$((_minor+1))
 _rcver=1
-pkgver=${_patchver}rc${_rcver}
-_rcpatch=patch-${_patchver}-rc${_rcver}
+_rcpatch=patch-${_major}.${_minorc}-rc${_rcver}
+pkgver=${_major}.${_minorc}rc${_rcver}
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
 makedepends=('kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 source=(
-  https://www.kernel.org/pub/linux/kernel/v5.x/linux-$_stable.tar.{xz,sign}
-  https://www.kernel.org/pub/linux/kernel/v5.x/stable-review/$_rcpatch.{xz,sign}
+  https://www.kernel.org/pub/linux/kernel/v5.x/linux-$_major.$_minor.tar.{xz,sign}
+  # https://lkml.org/lkml/2019/8/23/712
+  "$_rcpatch.patch::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable-rc.git/patch/?id=$_srcname.y&id2=v${_major}.${_minor}"
   config         # the main kernel config file
   60-linux.hook  # pacman hook for depmod
   90-linux.hook  # pacman hook for initramfs regeneration
@@ -25,40 +27,32 @@ source=(
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
   0002-ZEN-Add-CONFIG-for-unprivileged_userns_clone.patch
   0003-iwlwifi-mvm-disable-TX-AMSDU-on-older-NICs.patch
-  0004-iwlwifi-Add-support-for-SAR-South-Korea-limitation.patch
   # Arch-Linux-kernel-vx.xx.x-arch1.patch is not needed for rc1
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('a127cd06cc01468e5564c5242827610b679827d7b40c2a2e4d82c629dd0f6937'
+sha256sums=('b6f02a4b306ca5cd314d72615bfc2650166969613135da202630e6c4e1b5d4e6'
             'SKIP'
-            '50f42ac40e5c37910a2c06acc2db7a706343e4745a0af6e1fb4e5db453a90a69'
-            'SKIP'
+            '8e60c96a8a9b677f29d3ebe07df058d4e279f1d97cd0b73403ad72342b6e4a06'
             'c405c700b2cb06c4ec805b7e327d0b66416395995519281194a8293da69b398a'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '702840a04a8f08bec4688865ae41303dfc9f8c173c8dc10bfa4ffe12fce562a5'
             '187fa8d9a6c5777a8930dcecfafdd9d6e9095d4bf96ec060e756fb7c6a88b74d'
-            'e2c9c31219cedbb4a279b59940239b4b5df0a1a2757d8b0299d376e74e0f6fb9'
-            'b1dae3c4a169f4809eec40eae06222e7c663878c2343189aea45b99db74cba6d')
+            'e2c9c31219cedbb4a279b59940239b4b5df0a1a2757d8b0299d376e74e0f6fb9')
 
 _kernelname=${pkgbase#linux}
 
 prepare() {
-  cd linux-$_stable
+  cd linux-${_major}.${_minor}
 
   msg2 "Setting version..."
   scripts/setlocalversion --save-scmversion
   echo "-$pkgrel" > localversion.10-pkgrel
   echo "$_kernelname" > localversion.20-pkgname
-
-  msg2 "Applying rc patch..."
-  
-  # add rc patch
-  patch -Np1 -i "../$_rcpatch"
 
   local src
   for src in "${source[@]}"; do
@@ -87,7 +81,7 @@ prepare() {
 }
 
 build() {
-  cd linux-$_stable
+  cd linux-${_major}.${_minor}
   make bzImage modules
 }
 
@@ -102,7 +96,7 @@ _package() {
   local kernver="$(<version)"
   local modulesdir="$pkgdir/usr/lib/modules/$kernver"
 
-  cd linux-$_stable
+  cd linux-${_major}.${_minor}
 
   msg2 "Installing boot image..."
   # systemd expects to find the kernel here to allow hibernation
@@ -152,7 +146,7 @@ _package-headers() {
 
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
-  cd linux-$_stable
+  cd linux-${_major}.${_minor}
 
   msg2 "Installing build files..."
   install -Dt "$builddir" -m644 Makefile .config Module.symvers System.map vmlinux
