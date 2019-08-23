@@ -1,31 +1,28 @@
 # Maintainer: Feresey <p.milko1999@yandex.ru>
 pkgname=exo-player
 arch=(x86_64)
-pkgdesc="eXo music player based on moc"
+pkgdesc="eXo music player based on moc, with QT5-based graphics"
 pkgver=8.0
-pkgrel=4
+pkgrel=5
 source=(git://github.com/Feresey/exo)
 url=https://blaze.alwaysdata.net/exo
 sha1sums=('SKIP')
 license=(GPL)
-
+install=${pkgname}.install
 makedepends=(gcc cmake)
-depends=(liblastfm-qt5
-        qt5-base
-        moc
-        python3
-        python-notify2)
+depends=(hicolor-icon-theme liblastfm-qt5 desktop-file-utils)
+_gitname=exo
 
 build() {
-	cd "$srcdir"/exo
+	cd "${srcdir}/${_gitname}"
     [[ ! -d build ]] && mkdir build
 	cd build
-    cmake .. -DCMAKE_INSTALL_PREFIX="$pkgdir"/usr
+    cmake .. -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr"
     make
 }
 
 package() {
-    cd "$srcdir"/exo/build
+    cd "${srcdir}/${_gitname}/build"
     make install
 }
 
