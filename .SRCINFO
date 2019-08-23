@@ -1,0 +1,16 @@
+pkgbase = task-maker-rust-git
+	pkgdesc = The new cmsMake
+	pkgver = r148.7e4f9c8
+	pkgrel = 1
+	url = https://github.com/edomora97/task-maker-rust
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = MPL2
+	makedepends = cargo
+	source = git+https://github.com/edomora97/task-maker-rust.git
+	sha384sums = SKIP
+
+pkgname = task-maker-rust-git
+
