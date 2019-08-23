@@ -26,11 +26,12 @@ validpgpkeys=('A2923DFF56EDA6E76E55E492D3A80E30382E94DE') # Datadog, Inc <packag
 
 prepare() {
     # Validate hashes from the PGP signed "Release" file
-    echo "$(grep 6/binary-amd64/Packages ${pkgname}-${pkgver}-${_agentrel}-Release | tail -n 2 | head -n 1 | awk '{print $1}') ${pkgname}-${pkgver}-${_agentrel}-Packages" \
+    echo $(grep 6/binary-amd64/Packages ${pkgname}-${pkgver}-${_agentrel}-Release | tail -n 2 | head -n 1 | awk '{print $1}') ${pkgname}-${pkgver}-${_agentrel}-Packages \
         > "${pkgname}-${pkgver}-${_agentrel}-Packages.sha256"
     sha256sum -c "${pkgname}-${pkgver}-${_agentrel}-Packages.sha256"
 
-    echo "$(grep datadog-agent -A 20 ${pkgname}-${pkgver}-${_agentrel}-Packages | grep SHA256 | tail -n 1 | awk '{print $2}') datadog-agent_${pkgver}-${_agentrel}_amd64.deb" \
+    #Using pcregrep because we need to do a multi-line match
+    echo $(pcregrep -A 20 -M "datadog-agent\nVersion: 1:${pkgver}-${_agentrel}" ${pkgname}-${pkgver}-${_agentrel}-Packages | grep ^SHA256 | awk '{print $2}') datadog-agent_${pkgver}-${_agentrel}_amd64.deb \
         > "${pkgname}-${pkgver}-${_agentrel}.deb.sha256"
     sha256sum -c "${pkgname}-${pkgver}-${_agentrel}.deb.sha256"
 }
