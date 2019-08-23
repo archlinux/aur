@@ -1,6 +1,6 @@
 pkgbase = steamos-compositor-plus
 	pkgdesc = Compositor used by SteamOS with some added tweaks and fixes
-	pkgver = 1.2.0
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/gamer-os/steamos-compositor-plus
 	arch = i686
@@ -15,13 +15,14 @@ pkgbase = steamos-compositor-plus
 	depends = libxxf86vm
 	depends = sdl_image
 	depends = libgl
+	depends = lsb-release
 	depends = ttf-dejavu
 	depends = xorg-xrandr
 	depends = steam
 	conflicts = steamos-compositor
-	source = https://github.com/gamer-os/steamos-compositor-plus/archive/1.2.0.tar.gz
+	source = https://github.com/gamer-os/steamos-compositor-plus/archive/1.3.0.tar.gz
 	source = http://repo.steamstatic.com/steamos/pool/main/s/steamos-modeswitch-inhibitor/steamos-modeswitch-inhibitor_1.10.tar.xz
-	md5sums = dbde2a6cf1dcb1862409f01e4c0c792a
+	md5sums = 7244f0b587428dba0cb1678c81b3e0ca
 	md5sums = ab8b731fb917aff183aa338bf3298495
 
 pkgname = steamos-compositor-plus
