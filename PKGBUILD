@@ -26,8 +26,8 @@ validpgpkeys=('A2923DFF56EDA6E76E55E492D3A80E30382E94DE') # Datadog, Inc <packag
 
 prepare() {
     # Validate hashes from the PGP signed "Release" file
-    echo $(grep 6/binary-amd64/Packages ${pkgname}-${pkgver}-${_agentrel}-Release | tail -n 2 | head -n 1 | awk '{print $1}') ${pkgname}-${pkgver}-${_agentrel}-Packages \
-        > "${pkgname}-${pkgver}-${_agentrel}-Packages.sha256"
+    echo $(awk '/^SHA256/,/6\/binary-amd64\/Packages$/ {hash = $1} END {print hash}' ${pkgname}-${pkgver}-${_agentrel}-Release) ${pkgname}-${pkgver}-${_agentrel}-Packages \
+       > "${pkgname}-${pkgver}-${_agentrel}-Packages.sha256"
     sha256sum -c "${pkgname}-${pkgver}-${_agentrel}-Packages.sha256"
 
     #Using pcregrep because we need to do a multi-line match
