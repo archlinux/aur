@@ -2,33 +2,26 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=afdko
-pkgver=2.9.1
+pkgver=3.0.1
 pkgrel=1
 pkgdesc='Tools used by Adobe font developers for wrapping up PostScript fonts as OpenType/CFF font files'
 arch=('x86_64')
 url="https://github.com/adobe-type-tools/$pkgname"
 license=('custom')
-depends=('python2'
-         'python2-booleanoperations'
-         'python2-defcon'
-         'python2-fontmath'
-         'python2-fonttools'
-         'python2-mutatormath'
-         'python2-robofab'
-         'python2-wheel'
-         'python2-ufonormalizer-git')
+_py_deps=('booleanoperations' 'defcon' 'fontparts' 'fontmath' 'fonttools' 'mutatormath' 'wheel' 'ufonormalizer')
+depends=('python' "${_py_deps[@]/#/python-}")
 depends_x86_64=('lib32-glibc')
 conflicts=("$pkgname-git")
 source=("https://github.com/adobe-type-tools/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('3c843f16028e902dbf38b6727e2a8cbf055c00bf56e0f28ee507586e1cf31c23')
+sha256sums=('f0a60d919e555388b417e43ce9019f3e43c869f120e311d50d3c7004edcfc482')
 
 build() {
     cd "$pkgname-$pkgver"
-    python2 setup.py -q build
+    python setup.py -q build
 }
 
 package() {
     cd "$pkgname-$pkgver"
-    python2 setup.py -q install --root="$pkgdir" --optimize=1
+    python setup.py -q install --root="$pkgdir" --optimize=1
     install -D -m644 "LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
