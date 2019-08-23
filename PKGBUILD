@@ -1,3 +1,4 @@
+# Maintainer : Víctor González <mrvikxd@gmail.com>
 # Maintainer : Christian Hesse <mail@eworm.de>
 # Maintainer : Ronald van Haren <ronald.archlinux.org>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
