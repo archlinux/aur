@@ -1,7 +1,7 @@
 pkgbase = ocaml-camomile
 	pkgdesc = Comprehensive Unicode library for OCaml
-	pkgver = 1.0.1
-	pkgrel = 3
+	pkgver = 1.0.2
+	pkgrel = 1
 	url = https://github.com/yoriyuki/Camomile
 	arch = i686
 	arch = x86_64
@@ -13,8 +13,8 @@ pkgbase = ocaml-camomile
 	options = !strip
 	options = !makeflags
 	options = staticlibs
-	source = https://github.com/yoriyuki/Camomile/archive/1.0.1.tar.gz
-	md5sums = 9557fd86f13eba45474fc1336f225f32
+	source = https://github.com/yoriyuki/Camomile/archive/1.0.2.tar.gz
+	md5sums = 2ec60575e485b0b92f821949a81acb4d
 
 pkgname = ocaml-camomile
 

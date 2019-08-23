@@ -3,8 +3,8 @@
 # Contributor: Serge Zirukin <ftrvxmtrx@gmail.com>
 
 pkgname=ocaml-camomile
-pkgver=1.0.1
-pkgrel=3
+pkgver=1.0.2
+pkgrel=1
 pkgdesc="Comprehensive Unicode library for OCaml"
 arch=('i686' 'x86_64')
 url="https://github.com/yoriyuki/Camomile"
@@ -16,11 +16,6 @@ options=(!strip !makeflags staticlibs)
 build() {
 	cd Camomile-${pkgver}
 	jbuilder build @install
-}
-
-check() {
-	cd Camomile-${pkgver}
-	jbuilder runtest
 }
 
 package() {
@@ -41,4 +36,4 @@ package() {
 	rm -Rf usr/lib/ocaml/$_pkgname/*.ml
 }
 
-md5sums=('9557fd86f13eba45474fc1336f225f32')
+md5sums=('2ec60575e485b0b92f821949a81acb4d')
