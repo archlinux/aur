@@ -2,7 +2,7 @@
 
 _pkgname=sccache
 pkgname=$_pkgname-bin
-pkgver=0.2.9
+pkgver=0.2.10
 pkgrel=1
 pkgdesc="ccache-like tool with experimental rust support"
 arch=("x86_64")
@@ -17,4 +17,4 @@ package() {
   install -Dm 644 README.md "${pkgdir}/usr/share/doc/${_pkgname}"
   install -Dm 755 sccache "${pkgdir}/usr/bin/sccache"
 }
-md5sums=('9fbd0fa530de5aa019eabf5deee08672')
+md5sums=('3c91e6cc18c65c62491c76b407759fe9')
