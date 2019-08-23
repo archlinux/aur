@@ -1,7 +1,7 @@
 # Maintainer: Edoardo Morassutto <edoardo.morassutto@gmail.com>
 
 pkgname=task-maker-rust-git
-pkgver=r148.7e4f9c8
+pkgver=r149.bf5f70a
 pkgrel=1
 pkgdesc="The new cmsMake"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -21,11 +21,20 @@ pkgver() {
 build() {
     cd "$srcdir/task-maker-rust"
     git submodule update --init --recursive
+    # make sure that tmbox is recompiled and there is only one executable
+    rm -f target/release/build/task-maker-exec-*/out/bin/tmbox
     cargo build --release
 }
 
 package() {
     cd "$srcdir/task-maker-rust"
     install -Dm755 "target/release/task-maker" "$pkgdir/usr/bin/task-maker-rust"
+    tmbox="target/release/build/task-maker-exec-*/out/bin/tmbox"
+    tmbox=( $tmbox )
+    if [[ "${#tmbox[@]}" != 1 ]]; then
+        error "tmbox was not compiled!"
+        exit 1
+    fi
+    install -Dm755 "${tmbox[0]}" "$pkgdir/usr/bin/tmbox"
 }
 
