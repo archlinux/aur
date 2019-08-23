@@ -1,19 +1,17 @@
 pkgbase = gr-limesdr
 	pkgdesc = gr-limesdr Plugin for GNURadio
-	pkgver = 1.0.0
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/myriadrf/gr-limesdr
 	arch = any
 	license = MIT
 	makedepends = cmake
+	makedepends = swig
 	depends = boost
 	depends = gnuradio
 	depends = limesuite
-	optdepends = doxygen: generate documentation
-	optdepends = swig: bindings
-	optdepends = python2: python bindings
-	source = gr-limesdr-1.0.0.tar.gz::https://github.com/myriadrf/gr-limesdr/archive/v1.0.0-RC.tar.gz
-	sha256sums = a6be1bfd2cbfeef33aa8e91fa35720bfad9d4b7dc4a29afb08dfcee451f6c32e
+	source = gr-limesdr-2.0.0.tar.gz::https://github.com/myriadrf/gr-limesdr/archive/v2.0.0.tar.gz
+	sha512sums = da7dae14af903119e482aed8a2029cf1a188ac28e74fdc2f369c7de77b5eadde9dcca7503d6528d882d8b3a3b371dd66020772c8dc849b284761c4f5f393d180
 
 pkgname = gr-limesdr
 
