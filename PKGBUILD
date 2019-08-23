@@ -5,29 +5,33 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=mirage
-pkgver=0.9.5.2
-pkgrel=6
+pkgver=1.0_pre2
+pkgrel=1
 pkgdesc="A simple GTK+ Image Viewer"
 url="https://sourceforge.net/projects/mirageiv.berlios/"
 license=('GPL')
-depends=('pygtk')
+depends=('pygtk' 'libexif')
 optdepends=('gnome-python: toolbar setting support in GNOME')
 arch=('x86_64')
 source=(http://downloads.sourceforge.net/project/mirageiv.berlios/${pkgname}-${pkgver}.tar.bz2
-        mirage-0.9.5.2-setup.py.patch)
-md5sums=('92191a4496b0a50486ed7299baf6729f'
-         '9b54ee94338f6daf5e7e7926427040e4')
+        exif.patch
+        exif.c)
+md5sums=('3a0cdb4efd445f85bc29a1ab7ff8a579'
+         '6f5148c3ff866fcb5cedac9ee2ad22e2'
+         '16285505d2dea76e2ab3e9159fafd8ce')
 
 prepare() {
-    cd "${pkgname}-${pkgver}"
-    patch --forward --strip=1 --input="${srcdir}/mirage-0.9.5.2-setup.py.patch"
+  cd "${pkgname}-${pkgver}"
+  patch --forward --strip=1 --input="${srcdir}/exif.patch"
+  cp "${srcdir}/exif.c" .
 }
 
 build() {
-    cd "${pkgname}-${pkgver}"
-    python2 setup.py build
+  cd "${pkgname}-${pkgver}"
+  python2 setup.py build
 }
+
 package() {
-    cd "${pkgname}-${pkgver}"
-    python2 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  cd "${pkgname}-${pkgver}"
+  python2 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
