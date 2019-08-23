@@ -1,15 +1,16 @@
 --- src/mattermost-server-5.12.0/Makefile	2019-06-14 21:13:52.000000000 +0200
 +++ src/mattermost-server-5.12.0/Makefile.new	2019-07-01 03:04:42.875342812 +0200
-@@ -49,11 +49,18 @@
+@@ -49,11 +49,20 @@
  GOFLAGS ?= $(GOFLAGS:)
  GO=go
  DELVE=dlv
+-LDFLAGS += -X "github.com/mattermost/mattermost-server/model.BuildNumber=$(BUILD_NUMBER)"
++
 +# We need to use the second flavour of makefile variables and use a dedicated
 +# variable here, otherwise this will cause an infinite loop.
 +# src.: https://www.gnu.org/software/make/manual/make.html#Flavors
 +LDFLAGS_MATTERMOST := $(LDFLAGS)
--LDFLAGS += -X "github.com/mattermost/mattermost-server/model.BuildNumber=$(BUILD_NUMBER)"
-+LDFLAGS = -X "github.com/mattermost/mattermost-server/model.BuildNumber=$(BUILD_NUMBER)"
++LDFLAGS  = -X "github.com/mattermost/mattermost-server/model.BuildNumber=$(BUILD_NUMBER)"
  LDFLAGS += -X "github.com/mattermost/mattermost-server/model.BuildDate=$(BUILD_DATE)"
  LDFLAGS += -X "github.com/mattermost/mattermost-server/model.BuildHash=$(BUILD_HASH)"
  LDFLAGS += -X "github.com/mattermost/mattermost-server/model.BuildHashEnterprise=$(BUILD_HASH_ENTERPRISE)"
@@ -17,6 +18,7 @@
 +# The link mode needs to be at the end of the LDFLAGS statement otherwise the
 +# build pieces of info won't be populated to the about dialog in the app.
 +LDFLAGS += -linkmode external -extldflags '$(LDFLAGS_MATTERMOST)' -s -w
- 
- # GOOS/GOARCH of the build host, used to determine whether we're cross-compiling or not
- BUILDER_GOOS_GOARCH="$(shell $(GO) env GOOS)_$(shell $(GO) env GOARCH)"
++
+ GO_MAJOR_VERSION = $(shell $(GO) version | cut -c 14- | cut -d' ' -f1 | cut -d'.' -f1)
+ GO_MINOR_VERSION = $(shell $(GO) version | cut -c 14- | cut -d' ' -f1 | cut -d'.' -f2)
+ MINIMUM_SUPPORTED_GO_MAJOR_VERSION = 1
