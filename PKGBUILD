@@ -1,7 +1,7 @@
 # Maintainer: Damien GASPARINA <dgasparina at gmail dot com>
 pkgname=confluent-platform
 pkgver=5.3.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Confluent, founded by the creators of Apache Kafka, delivers a complete execution of Kafka for the Enterprise, to help you run your business in real time.'
 arch=('any')
 url='https://www.confluent.io/'
@@ -41,12 +41,12 @@ backup=(etc/confluent-control-center/log4j.properties
         )
 install=install_confluent.sh
 
-source=(https://packages.confluent.io/archive/5.3/confluent-5.3.0-2.11.tar.gz
+source=(https://packages.confluent.io/archive/5.3/confluent-5.3.0-2.12.tar.gz
         systemd_sysusers.d_confluent.conf
 			  https://s3-us-west-2.amazonaws.com/confluent.cloud/confluent-cli/archives/latest/confluent_latest_linux_amd64.tar.gz
 			 )
 
-sha256sums=('807392e39b8523e2d209995b1a41c4b40673a94e8d29792032772dc41f5d787a'
+sha256sums=('b7e21e09fcbdd5f6695352b0e308ef276acd8d54041440e4f66545370ca69191'
             '6f5dfdbaf6ef405117482413b376e55148f75423bc6b8681cd8f91cdb7d96a99'
 					  'SKIP')
 
@@ -55,7 +55,7 @@ package() {
 	cd "${srcdir}/confluent-${pkgver}"
 
 	# Installing and copying all required files
-	install -d "${pkgdir}"{/usr/,/usr/bin,/etc/,/usr/lib/,/usr/share/,/usr/src/}
+	install -d "${pkgdir}"{/usr/,/usr/bin,/etc/,/usr/lib/,/usr/share/,/usr/src/,/var/log/kafka}
 
 	cp -rf  ${srcdir}/confluent-${pkgver}/bin/* ${pkgdir}/usr/bin/
 	cp -rf  ${srcdir}/confluent-${pkgver}/src/* ${pkgdir}/usr/src/

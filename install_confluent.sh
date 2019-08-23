@@ -3,7 +3,7 @@ group=confluent
 
 ensure_directories() {
 	# Configure Apache kafka 
-	for dir in /var/log/confluent/kafka /var/lib/confluent/kafka /var/lib/confluent/zookeeper; do
+	for dir in /var/log/confluent/kafka /var/lib/confluent/kafka /var/lib/confluent/zookeeper /var/log/kafka; do
 		install -g confluent -o cp-kafka -m 0755 -d ${pkgdir}/$dir
 	done
 
