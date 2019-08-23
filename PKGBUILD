@@ -2,13 +2,13 @@
 pkgname='geant4'
 pkgver=10.5.1
 _pkgver=10.05.p01
-pkgrel=1
+pkgrel=2
 pkgdesc="A simulation toolkit for particle physics interactions."
 depends=('cmake>=3.3'
          'xerces-c'
          'qt5-base'
          'glu'
-         'soxt'
+#         'soxt'
         )
 conflicts=('geant4_devel')
 optdepends=('java-environment: for histogram visualizations and
@@ -62,7 +62,6 @@ build() {
       -DQT_QMAKE_EXECUTABLE=/usr/bin/qmake-qt5 \
       -DGEANT4_USE_XM=ON \
       -DGEANT4_USE_OPENGL_X11=ON \
-      -DGEANT4_USE_INVENTOR=ON \
       -DGEANT4_USE_RAYTRACER_X11=ON \
       -DGEANT4_USE_SYSTEM_CLHEP=OFF \
       -DGEANT4_USE_SYSTEM_EXPAT=ON \
@@ -71,6 +70,9 @@ build() {
       ../${pkgname}.${_pkgver}
 
   G4VERBOSE=1 make
+
+# until SoXt stays broken/orphan support for Invertor is removed
+#      -DGEANT4_USE_INVENTOR=ON \
 
 }
 
