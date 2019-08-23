@@ -9,7 +9,7 @@
 pkgbase=gradle4
 pkgname=('gradle4' 'gradle4-doc' 'gradle4-src')
 pkgver=4.10.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Powerful build system for the JVM'
 url='https://gradle.org/'
 arch=('any')
@@ -21,63 +21,58 @@ sha512sums=('a688267399a1632d86e8c3d28e34ea58992bba64968f4d01b6c3e4ea63081167c55
             'f38e9b26e22948366acf6580d6f38e2c88c3791c425b24922368fe1bc78c744fa516a03ffdbef02e3755859da620a6259997d4b4e5f97e3dc8cb49b74a694616')
 
 package_gradle4() {
-  conflicts=('gradle')
-  provides=('gradle')
-
+  install="gradle4.install"
+  
   cd gradle-${pkgver}
 
   # install profile.d script
-  install -Dm 755 "${srcdir}/gradle.sh" "${pkgdir}/etc/profile.d/gradle.sh"
+  install -Dm 755 "${srcdir}/gradle.sh" "${pkgdir}/etc/profile.d/$pkgbase.sh"
 
   # create the necessary directory structure
-  install -d "${pkgdir}/usr/share/java/gradle/bin"
-  install -d "${pkgdir}/usr/share/java/gradle/lib/plugins"
-  install -d "${pkgdir}/usr/share/java/gradle/init.d"
+  install -d "${pkgdir}/usr/share/java/$pkgbase/bin"
+  install -d "${pkgdir}/usr/share/java/$pkgbase/lib/plugins"
+  install -d "${pkgdir}/usr/share/java/$pkgbase/init.d"
   install -d "${pkgdir}/usr/bin"
 
   # copy across jar files
-  install -Dm 644 lib/*.jar "${pkgdir}/usr/share/java/gradle/lib"
-  install -Dm 644 lib/plugins/*.jar "${pkgdir}/usr/share/java/gradle/lib/plugins"
+  install -Dm 644 lib/*.jar "${pkgdir}/usr/share/java/$pkgbase/lib"
+  install -Dm 644 lib/plugins/*.jar "${pkgdir}/usr/share/java/$pkgbase/lib/plugins"
 
   # copy across supporting text documentation and scripts
-  install -m 644 NOTICE "${pkgdir}/usr/share/java/gradle"
-  install -m 644 LICENSE "${pkgdir}/usr/share/java/gradle"
-  install -m 644 *.html "${pkgdir}/usr/share/java/gradle"
-  install -m 755 bin/gradle "${pkgdir}/usr/share/java/gradle/bin"
-  install -m 644 init.d/*.* "${pkgdir}/usr/share/java/gradle/init.d"
+  install -m 644 NOTICE "${pkgdir}/usr/share/java/$pkgbase"
+  install -m 644 LICENSE "${pkgdir}/usr/share/java/$pkgbase"
+  install -m 644 *.html "${pkgdir}/usr/share/java/$pkgbase"
+  install -m 755 bin/gradle "${pkgdir}/usr/share/java/$pkgbase/bin"
+  install -m 644 init.d/*.* "${pkgdir}/usr/share/java/$pkgbase/init.d"
 
   # link gradle script to /usr/bin
-  ln -s /usr/share/java/gradle/bin/gradle "${pkgdir}/usr/bin"
+  ln -s "/usr/share/java/$pkgbase/bin/gradle" "${pkgdir}/usr/bin/$pkgbase"
 }
 
 package_gradle4-doc() {
   pkgdesc='Powerful build system for the JVM (documentation and samples)'
   options=('!strip')
   optdepends=('gradle4')
-  conflicts=('gradle-doc')
-  provides=('gradle-doc')
 
   cd gradle-${pkgver}
 
   # create the necessary directory structure
-  install -d "${pkgdir}/usr/share/java/gradle/docs"
-  install -d "${pkgdir}/usr/share/java/gradle/samples"
+  install -d "${pkgdir}/usr/share/java/$pkgbase/docs"
+  install -d "${pkgdir}/usr/share/java/$pkgbase/samples"
 
   # copy across documentation and samples
-  cp -r docs/* "${pkgdir}/usr/share/java/gradle/docs"
-  cp -r samples/* "${pkgdir}/usr/share/java/gradle/samples"
+  cp -r docs/* "${pkgdir}/usr/share/java/$pkgbase/docs"
+  cp -r samples/* "${pkgdir}/usr/share/java/$pkgbase/samples"
 }
 
 package_gradle4-src() {
   pkgdesc='Powerful build system for the JVM (sources)'
   options=('!strip')
   optdepends=('gradle4')
-  conflicts=('gradle-src')
-  provides=('gradle-src')
 
   cd gradle-${pkgver}
-  install -d "${pkgdir}/usr/share/java/gradle/src"
-  cp -r src/* "${pkgdir}/usr/share/java/gradle/src"
+  install -d "${pkgdir}/usr/share/java/$pkgbase/src"
+  cp -r src/* "${pkgdir}/usr/share/java/$pkgbase/src"
 }
 
 # vim: ts=2 sw=2 et:

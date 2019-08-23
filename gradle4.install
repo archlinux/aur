@@ -1,0 +1,15 @@
+#!/bin/sh
+
+_gradle4_install='NOTE: To avoid conflict with gradle, this package only installs /usr/bin/gradle4
+If you want gradle4 to be your default, please run:
+    sudo ln -s gradle4 /usr/bin/gradle'
+
+post_install()
+{
+	echo "$_gradle4_install"
+}
+
+post_upgrade()
+{
+	echo "$_gradle4_install"
+}
