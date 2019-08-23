@@ -4,8 +4,8 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-ssl
-pkgver=0.5.7
-pkgrel=2
+pkgver=0.5.9
+pkgrel=1
 pkgdesc="OCaml SSL Library"
 arch=('i686' 'x86_64')
 url="http://savonet.sourceforge.net/"
@@ -34,4 +34,4 @@ package() {
     awk 'BEGIN{P=0} /License/ {P = 1;} {if (P) print}' README.md > $pkgdir/usr/share/licenses/$pkgname/license
 }
 
-md5sums=('47ce60f1a019ddb9c66c4f1c8b9ed862')
+md5sums=('09265ae2dee5ac48507ccb8a81244a15')
