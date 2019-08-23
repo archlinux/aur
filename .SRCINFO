@@ -1,6 +1,6 @@
 pkgbase = maltego
 	pkgdesc = Maltego information gathering software by Paterva
-	pkgver = 4.2.4.12374
+	pkgver = 4.2.6.12502
 	pkgrel = 1
 	url = https://www.paterva.com
 	install = maltego.install
@@ -8,12 +8,12 @@ pkgbase = maltego
 	arch = x86_64
 	license = Commercial
 	depends = java-runtime=8
-	source_i686 = https://www.paterva.com/malv424/Maltego.v4.2.4.12374.deb
-	md5sums_i686 = 0cd85c630bc9a21887c29dffe2d26e42
-	sha256sums_i686 = bf3d2762fd899221720d00b523a31f700d074d73ca13d845bbf212a9c7e00427
-	source_x86_64 = https://www.paterva.com/malv424/Maltego.v4.2.4.12374.deb
-	md5sums_x86_64 = 0cd85c630bc9a21887c29dffe2d26e42
-	sha256sums_x86_64 = bf3d2762fd899221720d00b523a31f700d074d73ca13d845bbf212a9c7e00427
+	source_i686 = https://www.paterva.com/malv426/Maltego.v4.2.6.12502.deb
+	md5sums_i686 = 7400f0e8fba47b7fdf8bc2b4a9d23714
+	sha256sums_i686 = cd127ad57deb603ec181ae367b194d0e312dc1be912d933a24398c6ac9832947
+	source_x86_64 = https://www.paterva.com/malv426/Maltego.v4.2.6.12502.deb
+	md5sums_x86_64 = 7400f0e8fba47b7fdf8bc2b4a9d23714
+	sha256sums_x86_64 = cd127ad57deb603ec181ae367b194d0e312dc1be912d933a24398c6ac9832947
 
 pkgname = maltego
 
