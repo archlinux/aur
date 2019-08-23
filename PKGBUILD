@@ -1,6 +1,6 @@
 # Maintainer: DenBrahe <denbrahe@hotmail.com>
 pkgname=jellyfin-theater-electron-git
-pkgver=r541.7518fd3
+pkgver=r542.8cda057
 pkgrel=1
 pkgdesc="Electron Theater app for Jellyfin"
 arch=(i686 x86_64)
@@ -28,7 +28,11 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/${pkgname%-git}"
-  sed -Ei 's/\s+"electron": "[^"]+",//' package.json
+  # Get electron version from pacman
+  ev="$(pacman -Q electron | cut -d " " -f2 | cut -d "-" -f1)"
+  # Insert electron version in package.json
+  sed -i -re "s/^(\s+\"electron\": \")[^\"]+(\",)/\1$ev\2/" package.json
+  sed -i -re "s/^(\s*)(\"build\":\s*\{$)/\1\2\n\1\t\"electronVersion\": \"$ev\",/m" package.json
 }
 
 build() {
@@ -38,9 +42,7 @@ build() {
   echo "Installing electron-packager"
   npm install electron-packager --cache "${srcdir}/npm-cache"
   echo "Packaging"
-  ev="$(electron --version)"
-  ev2="${ev##v}"
-  npm run package-linux -- --electron-version "$ev2"
+  npm run package-linux
   echo "done"
 }
 
