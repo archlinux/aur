@@ -1,4 +1,5 @@
-# Maintainer: Simon Doppler <dopsi[at]dopsi[dot]ch>
+# Maintainer: Amy Wilson <awils_1[at]xsmail[dot]com>
+# Contributor: Simon Doppler <dopsi[at]dopsi[dot]ch>
 # Contributor: Agustin Borgna <hello[at]aborgna.com.ar>
 # Contributor: Marcel Korpel <marcel[dot]korpel[at]gmail>
 # Contributor: Renan Birck <renan.ee.ufsm at gmail.com>
