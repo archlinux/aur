@@ -16,7 +16,7 @@ depends=('python-appdirs'
 )
 replaces=('python-radicale-storage-etesync')
 makedepends=('python-setuptools')
-source=("https://pypi.io/packages/source/e/${pkgname}/${pkgname}-${pkgver}.tar.gz")
+source=("https://pypi.org/packages/source/e/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 sha512sums=('52950d6d9687c37020d910a198c64893b704efac09258e5b22f78b9e042bdfbaeb1507928534e4276663f524cb0064a3dd90d886dcf9ad01c38b666b6c20bd8e')
 
 build() {
