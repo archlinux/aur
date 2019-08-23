@@ -1,14 +1,16 @@
 pkgbase = ignite-bin
 	pkgdesc = Weaveworks Ignite, combines Firecracker MicroVMs with Docker/OCI images to unify containers and VMs.
-	pkgver = 0.4.2
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/weaveworks/ignite
 	arch = x86_64
 	license = apache
 	provides = ignite
-	noextract = ignite-0.4.2
-	source = ignite-0.4.2::https://github.com/weaveworks/ignite/releases/download/v0.4.2/ignite
-	sha256sums = ac58339c4c265ef007f212ef6953070fafb7ff2beb12239711ea389e6c134cb1
+	noextract = ignite-0.5.1
+	noextract = ignited-0.5.1
+	source = ignite-0.5.1::https://github.com/weaveworks/ignite/releases/download/v0.5.1/ignite-amd64
+	source = ignited-0.5.1::https://github.com/weaveworks/ignite/releases/download/v0.5.1/ignited-amd64
+	sha256sums = 2d5dd6e54a30147481991b2c6e614fe31a58da98cfd2e04ddd0c4123a4dec987
 
 pkgname = ignite-bin
 
