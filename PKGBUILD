@@ -8,7 +8,7 @@
 _localepurge=
 
 pkgname=sigil-git
-pkgver=0.9.15.r59.g7ca20f7f
+pkgver=0.9.17.r33.g9135aa97
 pkgrel=1
 pkgdesc="A WYSIWYG ebook editor"
 arch=('i686' 'x86_64')
@@ -33,10 +33,6 @@ sha256sums=('SKIP')
 
 prepare() {
     cd "${srcdir}/${pkgname%-git}"
-
-    # devendor css_parser as it's a direct copy of the external package;
-    # upstream maintains both and plans to switch soon
-    rm -r src/Resource_Files/plugin_launchers/python/css_parser/
 
     if [[ "${_localepurge}" != "" ]]; then
         for trans in src/Resource_Files/ts/*; do
