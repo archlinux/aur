@@ -1,15 +1,15 @@
 # Maintainer: Derin Yarsuvat <derin.aur at fea dot st>
 pkgname=python-yams
-pkgver=0.7
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="A Last.FM scrobbler for MPD"
 arch=('x86_64')
 url="https://github.com/Berulacks/yams"
 license=('GPL3')
-depends=('python' 'mpd' 'python-pyaml' 'python-mpd2' 'python-requests')
+depends=('python' 'mpd' 'python-pyaml' 'python-mpd2' 'python-requests' 'python-psutil')
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz"::"https://github.com/Berulacks/yams/archive/$pkgver.tar.gz")
-sha256sums=('55032fb64dec0b7ceb295dfbb7b4945d48c93a6ef0d65eb54910525b43290b34')
+sha256sums=('dd90e65d661454f2d553e123025b673c2042790e4d28690e5938e614613baef8')
 
 build() {
 	cd "$srcdir/yams-$pkgver"
