@@ -1,6 +1,6 @@
 pkgbase = nushell-git
 	pkgdesc = A shell for the GitHub era
-	pkgver = r700.bc6c92b
+	pkgver = r702.cd1e16d
 	pkgrel = 1
 	url = http://nushell.sh
 	arch = i686
