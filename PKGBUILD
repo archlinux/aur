@@ -2,7 +2,7 @@
 # Contributor: Wojtek Gawroński <afronski@gmail.com>
 
 pkgname=nomad-bin
-pkgver=0.9.4
+pkgver=0.9.5
 pkgrel=1
 pkgdesc='A distributed, highly available, datacenter-aware scheduler'
 arch=('x86_64')
@@ -17,7 +17,7 @@ conflicts=('nomad')
 backup=(etc/nomad/{server,client}.conf)
 source=("https://releases.hashicorp.com/nomad/${pkgver}/nomad_${pkgver}_linux_amd64.zip"
         nomad-{server,client}.{service,hcl})
-sha256sums=('e0cdd0d787bb925910151f9e38fd6daa9590f1bf08d0c6703b7f544875b58c11'
+sha256sums=('9a137abad26959b6c5f8169121f1c7082dff7b11b11c7fe5a728deac7d4bd33f'
             'SKIP'
             'SKIP'
             'SKIP'
