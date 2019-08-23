@@ -10,7 +10,7 @@
 
 _pkgname=angband
 pkgname=angband-ncurses
-pkgver=4.1.3
+pkgver=4.2.0
 pkgrel=1
 pkgdesc="A roguelike dungeon exploration game based on the writings of JRR Tolkien (ncurses-only)"
 arch=('i686' 'x86_64')
@@ -25,6 +25,7 @@ source=(
   "${_pkgname}-${pkgver}.tar.gz::https://github.com/${_pkgname}/${_pkgname}/archive/${pkgver}.tar.gz"
 #  "http://rephial.org/downloads/${pkgver:0:3}/${_pkgname}-${pkgver}.tar.gz"
 )
+install=angband-ncurses.install
 
 prepare() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
@@ -55,7 +56,7 @@ package() {
 
   rm -f "${pkgdir}/usr/share/${_pkgname}/*/delete.me"
   rm -R "${pkgdir}"/usr/share/angband/{icons,sounds}
-  install -Dm644 copying.txt "${pkgdir}/usr/share/licenses/${_pkgname}/COPYING"
+  install -Dm644 docs/copying.rst "${pkgdir}/usr/share/licenses/${_pkgname}/COPYING"
 }
 
-sha256sums=('9402c4f8da691edbd4567a948c5663e1066bee3fcb4a62fbcf86b5454918406f')
+sha256sums=('d3e1495c7cc2a4ee66de7b4e612d3b133048072e37504bd2e58a2351ab0fb56d')
