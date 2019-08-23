@@ -1,8 +1,8 @@
 # Maintainer: Vasia Novikov <n1dr+cmarchlinux@yaaandex.com> (replace "aaa" with "a")
 
 pkgname=rua
-pkgver=0.13.11
-pkgrel=2
+pkgver=0.14.0
+pkgrel=1
 pkgdesc='secure AUR helper written in Rust, supporting offline builds, filesystem isolation and more'
 url='https://github.com/vn971/rua'
 source=("https://github.com/vn971/rua/archive/${pkgver}.tar.gz")
@@ -14,7 +14,7 @@ optdepends=('bubblewrap-suid: version of bubblewrap that works on linux-hardened
 
 #options+=(!strip)  # uncomment if you want readable stack traces
 
-sha256sums=(166f5b232d1f1fad91249b0d4fc88de8ddcc996da73314e1b7ab6f3e311390f6)
+sha256sums=(7db8b9b6cde3c9b5b0dc0449981192bfda936a92c23adaf33ba196bd11911454)
 
 build () {
   cd "$srcdir/$pkgname-$pkgver"
@@ -32,3 +32,4 @@ package() {
   install -Dm644 target/completions/rua.fish "${pkgdir}/usr/share/fish/completions/rua.fish"
   install -Dm644 target/completions/_rua "${pkgdir}/usr/share/zsh/functions/Completion/Linux/_rua"
 }
+
