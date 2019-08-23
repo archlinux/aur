@@ -1,5 +1,5 @@
 # Maintainer: Flaviu Tamas <me@flaviutamas.com>
-pkgname=nu
+pkgname=nushell-git
 pkgver=r700.bc6c92b
 pkgrel=1
 makedepends=('rust' 'cargo')

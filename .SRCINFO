@@ -1,4 +1,4 @@
-pkgbase = nu
+pkgbase = nushell-git
 	pkgdesc = A shell for the GitHub era
 	pkgver = r700.bc6c92b
 	pkgrel = 1
@@ -14,8 +14,8 @@ pkgbase = nu
 	depends = zlib
 	optdepends = libxcb
 	optdepends = libx11
-	source = nu::git+https://github.com/nushell/nushell
+	source = nushell-git::git+https://github.com/nushell/nushell
 	sha256sums = SKIP
 
-pkgname = nu
+pkgname = nushell-git
 
