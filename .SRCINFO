@@ -1,6 +1,6 @@
 pkgbase = python-jupyter_kernel_gateway
 	pkgdesc = A web server for spawning and communicating with Jupyter kernels
-	pkgver = 2.3.0
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = https://github.com/jupyter/kernel_gateway
 	arch = any
@@ -13,8 +13,8 @@ pkgbase = python-jupyter_kernel_gateway
 	depends = python-traitlets
 	depends = python-tornado
 	depends = python-requests
-	source = python-jupyter_kernel_gateway-2.3.0.tar.gz::https://github.com/jupyter/kernel_gateway/archive/2.3.0.tar.gz
-	sha256sums = d6cc1d10b73a620c2990676cea3ace0cdc98a9751724287bddc7ccac0d452b97
+	source = python-jupyter_kernel_gateway-2.4.0.tar.gz::https://github.com/jupyter/kernel_gateway/archive/2.4.0.tar.gz
+	sha256sums = fa05b5cc231ad4eaf0b57adfa2f7e41cf409728492aa55272bf9c70725905018
 
 pkgname = python-jupyter_kernel_gateway
 

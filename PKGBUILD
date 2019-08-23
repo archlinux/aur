@@ -2,7 +2,7 @@
 
 _pkgname="kernel_gateway"
 pkgname="python-jupyter_$_pkgname"
-pkgver=2.3.0
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="A web server for spawning and communicating with Jupyter kernels"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('python')
 depends=('python' 'python-jupyter_core' 'python-jupyter_client' 'jupyter-notebook'
 'python-traitlets' 'python-tornado' 'python-requests')
 source=($pkgname-$pkgver.tar.gz::"https://github.com/jupyter/kernel_gateway/archive/$pkgver.tar.gz")
-sha256sums=('d6cc1d10b73a620c2990676cea3ace0cdc98a9751724287bddc7ccac0d452b97')
+sha256sums=('fa05b5cc231ad4eaf0b57adfa2f7e41cf409728492aa55272bf9c70725905018')
 
 build() {
   cd $_pkgname-$pkgver
