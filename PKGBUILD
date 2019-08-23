@@ -2,7 +2,7 @@
 _pkgname=pandownload
 pkgname=${_pkgname}-bin
 pkgver=2.1.3
-pkgrel=4
+pkgrel=5
 pkgdesc="一款支持全平台的超级快的网盘下载工具，能真正不限速高速下载。"
 arch=('any')
 url="http://pandownload.com"
