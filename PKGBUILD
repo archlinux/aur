@@ -2,7 +2,7 @@
 _pkgname=pandownload
 pkgname=${_pkgname}-bin
 pkgver=2.1.3
-pkgrel=2
+pkgrel=3
 pkgdesc="一款支持全平台的超级快的网盘下载工具，能真正不限速高速下载。"
 arch=('any')
 url="http://pandownload.com"
@@ -11,7 +11,7 @@ depends=(wine bash hicolor-icon-theme)
 optdepends=('sqlite: get Firefox cookies')
 source=("${_pkgname}-$pkgver.zip::http://pandownload.com/$pkgver"
         "${_pkgname}.desktop"
-        pandownload
+        pandownload-wrapper
         pdcookies
         msscript.tar.xz
         override-dll.reg
@@ -21,7 +21,7 @@ options=(!strip)
 install=${pkgname}.install
 sha512sums=('d68485c4d5e95c72f8e70823b7572cb0aaf9d78cc31d246772136a5cf51aee488a83e536a9615bc7e67299626c9f1bdf10818b36d9fbe01172628c83e7cef1d7'
             'f92318c37e6ac4ef6a1c4b629a042b6dc1fbaac2188293a1c7afd42c4e674056167193d7bfbaeb041b3989300594ccf46e6ae97cbd7dc9879cca65bf24b6b9a6'
-            '52f9a35cb56064e38dfb7b0f7021a21e822d02a4c35dcd2f7b0789f4922a2f347d64b8bb9e9b13ca8357fb3ae985745b358dbe5a6cedae157337d19c560ce403'
+            '37efae252a54acafa07643d3d03264fd32036ee4ea4555aec506bcfa036c0b6bcfadc85a6275cd7dd6a3f7a4768745286023b1e1506a9680eb4f38dd1b6f2365'
             '2888de2ca54d30368c9456e9866dc98fe9d106a6d58fd0f0cf91448a8b79067cb2adcc86b3aaad52c38d82ca9d86200d770056a0141030a2ec21ff8ed3355b09'
             'da9ecf93218c994e22dc2a79844a3aefa2bda2c97c9524f63980d66b344b8ecd9b28aaaf5811e7998f6e1cde943716545dfad67b83375e4d4e098e233c447a43'
             'db31364f91abb94ce77dadbe9ed4b257cd77d6b5d9a26f62d43d4e0651bbf78cc1226407cfd7acbf3cb9ab7f84b66277fe55c8c02d29f920228074e5ad9f33c4'
@@ -33,16 +33,14 @@ package() {
     install -dm755 "$pkgdir/opt"
     cp -a "$srcdir/PanDownload" "$pkgdir/opt/${_pkgname}"
 
-    install -dm755 "$pkgdir/opt/${_pkgname}/wine"
-    install -m644 "$srcdir/msscript.ocx" "$pkgdir/opt/${_pkgname}/wine/msscript.ocx"
-    install -m644 "$srcdir/override-dll.reg" "$pkgdir/opt/${_pkgname}/wine/override-dll.reg"
+    install -Dm644 "$srcdir/msscript.ocx" "$pkgdir/opt/${_pkgname}/wine/msscript.ocx"
+    install -Dm644 "$srcdir/override-dll.reg" "$pkgdir/opt/${_pkgname}/wine/override-dll.reg"
 
     find "$pkgdir"/opt -type f -exec chmod 644 "{}" \;
     find "$pkgdir"/opt -type d -exec chmod 755 "{}" \;
 
-    install -dm755 "$pkgdir/usr/bin"
-    install -m755 "$srcdir/${_pkgname}" "$pkgdir/usr/bin/${_pkgname}"
-    install -m755 "$srcdir/pdcookies" "$pkgdir/usr/bin/pdcookies"
+    install -Dm755 "$srcdir/${_pkgname}-wrapper" "$pkgdir/usr/bin/${_pkgname}"
+    install -Dm755 "$srcdir/pdcookies" "$pkgdir/usr/bin/pdcookies"
 
     install -Dm644 "$srcdir/${_pkgname}.desktop" "$pkgdir/usr/share/applications/${_pkgname}.desktop"
 
