@@ -1,0 +1,15 @@
+pkgbase = dolphin-emu-triforce
+	pkgdesc = A Triforce emulator
+	pkgver = 4.0-315
+	pkgrel = 1
+	url = http://www.dolphin-emu.org/
+	arch = x86_64
+	license = GPL2
+	source = https://github.com/monokuma9/dolphin-triforce-linux/releases/download/4.0-315.1/dolphin-emu-triforce-4.0-315.glibc2.15-x86_64.AppImage
+        source = dolphin-emu-triforce.desktop
+        source = dolphin-emu-triforce.png
+	sha256sums = 0aaedf5063336f9bac540654a565891ce0eb3ebb1f2195f17d86c87e94448cfd
+        sha256sums = 8541fbe624024ee7e0d08e6c33ab7d40b19a99fcda284a7e23581a84d1201f2d
+        sha256sums = d917e9ecaa75b1e9e268b869050d76d8e491ba0b862c3ac923a7aa629a91f21b
+
+pkgname = dolphin-emu-triforce
