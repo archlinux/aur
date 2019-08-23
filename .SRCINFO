@@ -1,5 +1,5 @@
 pkgbase = tmux-ver-28
-	pkgdesc = Tmux legacy version 2.8, before \"-style\" breaking changes were introduced.
+	pkgdesc = Tmux legacy version 2.8, before "-style" option breaking changes were introduced.
 	pkgver = 2.8
 	pkgrel = 1
 	url = http://sourceforge.net/projects/tmux/

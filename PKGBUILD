@@ -3,7 +3,7 @@
 pkgname=tmux-ver-28
 pkgver=2.8
 pkgrel=1
-pkgdesc='Tmux legacy version 2.8, before \"-style\" breaking changes were introduced.'
+pkgdesc='Tmux legacy version 2.8, before "-style" option breaking changes were introduced.'
 arch=('i686' 'x86_64')
 url='http://sourceforge.net/projects/tmux/'
 screenshot='http://tmux.sourceforge.net/tmux3.png'
