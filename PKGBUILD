@@ -6,14 +6,14 @@
 
 #  printf "'SKIP'%.0s\n" {1..43}
 pkgname=ossia-score-git
-pkgver=r7448.e3b30e1db
+pkgver=r7534.969e3d855
 pkgrel=1
 pkgdesc="ossia score, an interactive sequencer for the intermedia arts (git master)"
 arch=('x86_64')
 url="https://ossia.io"
 license=('GPLv3')
 depends=('boost' 'qt5-base' 'qt5-imageformats' 'qt5-svg' 'qt5-websockets' 'qt5-quickcontrols2' 'qt5-serialport' 'qt5-multimedia' 'qt5-declarative' 'ffmpeg' 'portaudio' 'jack')
-makedepends=('git' 'cmake' 'qt5-tools')
+makedepends=('git' 'cmake' 'qt5-tools' 'clang' 'lld')
 optdepends=('faust' 'lilv' 'suil' 'sdl2')
 provides=('ossia-score-git')
 conflicts=('ossia-score')
@@ -168,7 +168,14 @@ build() {
 
   mkdir -p "$srcdir/build"
   cd "$srcdir/build"
-  cmake -Wno-dev -DSCORE_CONFIGURATION=static-release -DDEPLOYMENT_BUILD=1 -DCMAKE_SKIP_RPATH=ON -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" "$srcdir/$_gitname"
+  cmake -Wno-dev \
+	-DCMAKE_CXX_COMPILER=clang++ \
+	-DSCORE_CONFIGURATION=static-release \
+	-DDEPLOYMENT_BUILD=1 \
+	-DCMAKE_SKIP_RPATH=ON \
+	-DCMAKE_INSTALL_PREFIX="$pkgdir/usr" \
+	-DOSSIA_USE_FAST_LINKER=1 \
+	"$srcdir/$_gitname"
   cmake --build . --target all_unity
 }
 
