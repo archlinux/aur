@@ -31,7 +31,8 @@ options=('staticlibs')
 source=("http://icl.cs.utk.edu/projectsfiles/${pkgname}/downloads/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('ce32c199131515336b30c92a907effe0c441ebc5c5bdb255e4b06b2508de109f')
 
-prepare() {
+build() {
+#prepare() {
   _CMAKE_FLAGS=(\
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/opt/magma \
@@ -54,9 +55,9 @@ prepare() {
       )
     fi
   fi
-}
-
-build() {
+#}
+#
+#build() {
   cd "${srcdir}/magma-${pkgver}"
   mkdir build-shared && pushd build-shared
   cmake \
