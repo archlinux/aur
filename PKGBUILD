@@ -5,16 +5,15 @@ pkgname=firefox-nightly-de
 pkgdesc='Standalone Web Browser from Mozilla — Nightly build (de-DE)'
 url='https://www.mozilla.org/de-DE/firefox/nightly'
 pkgver=70.0a1
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
 
-source=('firefox-nightly.desktop' 'firefox-nightly-safe.desktop' 'policies.json')
+source=('firefox-nightly.desktop' 'policies.json')
 source_i686=("https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/firefox-${pkgver}.de.linux-i686.tar.bz2"{,.asc})
 source_x86_64=("https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/firefox-${pkgver}.de.linux-x86_64.tar.bz2"{,.asc})
 
-sha512sums=('df3c93f66b9ef30cf8b7301d288328503d796a0e79f994a1650dac900a8071719bb9d5e9c1135e1284c874732dc7c1e2032ecfb921799fb6b1ff50329f362308'
-  '2f7e6aa935542e324eaa09f90a4f972716218c70299776a3476db7e7f2feee1a36c3cd35e51105b3d483436c02dedf5166656de6b58c7efed97d0480f8fc05fc'
+sha512sums=('7e950fbcdd7e0bd972038e3be158ba7ee5e0c0a3c9fc4778a7525e23ca7ab1dfff7ee7b14747651ca8666bd3000011c40074e53f1101e4d2bd3ca3721051cddf'
   '5ed67bde39175d4d10d50ba5b12063961e725e94948eadb354c0588b30d3f97d2178b66c1af466a6e7bd208ab694227a1391c4141f88d3da1a1178454eba5308')
 sha512sums_i686=('SKIP' 'SKIP')
 sha512sums_x86_64=('SKIP' 'SKIP')
@@ -36,13 +35,13 @@ provides=('firefox-nightly')
 
 package() {
   install -d "${pkgdir}"/{usr/{bin,share/{applications,pixmaps}},opt}
-  cp -r firefox "${pkgdir}/opt/firefox-${pkgver}"
-  ln -s /opt/firefox-${pkgver}/firefox "${pkgdir}/usr/bin/firefox-nightly"
+  cp -r firefox "${pkgdir}/opt/firefox-nightly"
+  ln -s /opt/firefox-nightly/firefox "${pkgdir}/usr/bin/firefox-nightly"
 
-  install -m644 "${srcdir}"/{firefox-nightly.desktop,firefox-nightly-safe.desktop} "${pkgdir}/usr/share/applications/"
+  install -m644 "${srcdir}"/firefox-nightly.desktop "${pkgdir}/usr/share/applications/"
 
-  install -m644 "${srcdir}/firefox/browser/chrome/icons/default/default128.png" "${pkgdir}/usr/share/pixmaps/${pkgname}-icon.png"
+  install -m644 "${srcdir}/firefox/browser/chrome/icons/default/default128.png" "${pkgdir}/usr/share/pixmaps/firefox-nightly-icon.png"
 
   # Disabling auto updates
-  install -Dm644 "${srcdir}/policies.json" -t "${pkgdir}/opt/firefox-${pkgver}/distribution"
+  install -Dm644 "${srcdir}/policies.json" -t "${pkgdir}/opt/firefox-nightly/distribution"
 }
