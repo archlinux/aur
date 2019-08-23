@@ -1,0 +1,7 @@
+post_install() {
+    echo
+    echo 'NOTE: ghcup requires ~/.ghcup/bin to be in your PATH'
+    echo '      you could add the following to your .bashrc:'
+    echo '          export PATH="$HOME/.cabal/bin:$HOME/.ghcup/bin:$PATH"'
+    echo
+}
