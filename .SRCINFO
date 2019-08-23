@@ -1,0 +1,14 @@
+pkgbase = qbsolv
+	pkgdesc = A decomposing solver that finds a minimum value of a large quadratic unconstrained binary optimization (QUBO) problem
+	pkgver = 0.2.10
+	pkgrel = 1
+	url = https://github.com/dwavesystems/qbsolv
+	arch = x86_64
+	license = APACHE
+	makedepends = cmake
+	makedepends = make
+	source = git+https://github.com/dwavesystems/qbsolv
+	md5sums = SKIP
+
+pkgname = qbsolv
+
