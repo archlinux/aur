@@ -1,8 +1,8 @@
-# Maintainer: Conor Anderson <conor@conr.ca>
+# Maintainer: Joshua Ward <joshuaward@myoffice.net.au>
 pkgname=zazu-bin
 _pkgname=${pkgname%-bin}
-pkgver=0.5.2
-pkgrel=1
+pkgver=0.6.0
+pkgrel=0
 pkgdesc='A cross platform productivity application.'
 arch=('x86_64')
 url='http://zazuapp.org/'
@@ -11,7 +11,7 @@ depends=('alsa-lib' 'gconf' 'gtk2' 'libxss' 'libxtst' 'nss')
 makedepends=('gendesk')
 provides=('zazu')
 source=("${_pkgname}_${pkgver}_amd64.deb::https://github.com/tinytacoteam/${_pkgname}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
-sha256sums=('b3fd978e482a56ab38b38576ca9ca6b6703592dca500b22122103002b5181548')
+sha256sums=('223f604821c012acff40d168ef7e911332aa09abc854c8063ec0c92b36607076')
 
 prepare() {
   gendesk -f -n --name=Zazu --pkgname="${_pkgname}" --pkgdesc="${pkgdesc}" --exec="${_pkgname}" --categories="Utility"
@@ -25,7 +25,7 @@ package() {
   # Place files
   install -d "${pkgdir}/usr/lib/${_pkgname}"
   cp -a "${srcdir}/opt/Zazu/"* "${pkgdir}/usr/lib/${_pkgname}"
-  
+
   # Symlink main binary
   install -d "${pkgdir}/usr/bin"
   ln -s "/usr/lib/${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"

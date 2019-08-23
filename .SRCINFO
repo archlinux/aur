@@ -1,7 +1,7 @@
 pkgbase = zazu-bin
 	pkgdesc = A cross platform productivity application.
-	pkgver = 0.5.2
-	pkgrel = 1
+	pkgver = 0.6.0
+	pkgrel = 0
 	url = http://zazuapp.org/
 	arch = x86_64
 	license = MIT
@@ -13,8 +13,8 @@ pkgbase = zazu-bin
 	depends = libxtst
 	depends = nss
 	provides = zazu
-	source = zazu_0.5.2_amd64.deb::https://github.com/tinytacoteam/zazu/releases/download/v0.5.2/zazu_0.5.2_amd64.deb
-	sha256sums = b3fd978e482a56ab38b38576ca9ca6b6703592dca500b22122103002b5181548
+	source = zazu_0.6.0_amd64.deb::https://github.com/tinytacoteam/zazu/releases/download/v0.6.0/zazu_0.6.0_amd64.deb
+	sha256sums = 223f604821c012acff40d168ef7e911332aa09abc854c8063ec0c92b36607076
 
 pkgname = zazu-bin
 
