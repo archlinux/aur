@@ -1,0 +1,7 @@
+Currently it's not possible to load more comments. The Reddit API adds
+the "more" item which has a list of item ids as attribute and they can
+only be acquired by using the "morechildren" endpoint.
+
+Private message threads aren't indented properly because the Reddit API
+doesn't provide a "depth" attribute for messages. For now, all messages
+which have a parent are set to depth 1.
