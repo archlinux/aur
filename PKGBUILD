@@ -3,7 +3,7 @@
 # Contributor: Fabian Schoelzel <myfirstname.mylastname@googlemail.com>
 
 pkgname=pyfa
-pkgver=2.9.6
+pkgver=2.10.0
 pkgrel=1
 _distname="Pyfa-${pkgver}"
 pkgdesc="EVE Online Fitting Assistant"
@@ -13,9 +13,10 @@ license=('GPL3')
 makedepends=('python-pip')
 depends=('python' 'python-wxpython' 'python-logbook' 'python-matplotlib' 'python-dateutil' 'python-requests' 'python-sqlalchemy' 'python-cryptography' 'python-markdown2' 'python-packaging' 'python-beautifulsoup4' 'python-yaml' 'python-diskcache' 'python-roman')
 optdepends=()
+options=(!strip)
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/pyfa-org/Pyfa/archive/v$pkgver.tar.gz pyfa.desktop pyfa-start.sh)
 
-sha256sums=('51c213641d31b9df4822023a5b2e3a9f7c1e3b93e54f9cb4610b1c7c9ebb99bb'
+sha256sums=('e097a2b516b60fb317013405a62ca28fa8c245ebacecb5f0f33ba9cdf99ffc08'
             'b54ef367e93d7916f6ef3106a27018571d35afc1aa9eadcccc79463050e70786'
             '0fa4a1cb835ddbb764957cd00426f9bfa52b17bcb6d5dc7428afc256da5e01da')
 
@@ -32,6 +33,7 @@ package() {
   install -Dm644 "${srcdir}"/"${_distname}"/LICENSE "${pkgdir}"/usr/share/licenses/pyfa
 
   cp -a "${srcdir}"/"${_distname}"/eos "${pkgdir}"/usr/share/pyfa
+  cp -a "${srcdir}"/"${_distname}"/graphs "${pkgdir}"/usr/share/pyfa
   cp -a "${srcdir}"/"${_distname}"/gui "${pkgdir}"/usr/share/pyfa
   cp -a "${srcdir}"/"${_distname}"/imgs "${pkgdir}"/usr/share/pyfa
   cp -a "${srcdir}"/"${_distname}"/service "${pkgdir}"/usr/share/pyfa
