@@ -1,6 +1,6 @@
 pkgbase = libringqt-git
 	pkgdesc = A library for GNU Ring, a secure communication platform
-	pkgver = ring.kde.3.0.0.r0.g2c1399b
+	pkgver = ring.kde.3.1.0.r128.g6a275daf
 	pkgrel = 1
 	url = https://github.com/Elv13/libringqt
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = libringqt-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = qt5-tools
+	makedepends = qt5-quickcontrols2
 	depends = ring-daemon
 	depends = qt5-base
 	provides = libringqt
