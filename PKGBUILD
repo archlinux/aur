@@ -5,7 +5,7 @@
 
 _pkgname=babl
 pkgname="${_pkgname}-qfix-git"
-pkgver=0.1.71.r27.5801e2b
+pkgver=0.1.71.r1597.cff46ae
 pkgrel=1
 pkgdesc="babl is a dynamic, any to any, pixel format translation library."
 arch=('x86_64')
@@ -31,10 +31,11 @@ prepare() {
 }
 
 pkgver() {
+  cd ${srcdir}/${_pkgname}
   printf "%d.%d.%d.r%s.%s" \
-    $(grep -Po '^#define BABL_MAJOR_VERSION \K[0-9]*$' build/config.h) \
-    $(grep -Po '^#define BABL_MINOR_VERSION \K[0-9]*$' build/config.h) \
-    $(grep -Po '^#define BABL_MICRO_VERSION \K[0-9]*$' build/config.h) \
+    $(grep -Po '^#define BABL_MAJOR_VERSION \K[0-9]*$' ${srcdir}/build/config.h) \
+    $(grep -Po '^#define BABL_MINOR_VERSION \K[0-9]*$' ${srcdir}/build/config.h) \
+    $(grep -Po '^#define BABL_MICRO_VERSION \K[0-9]*$' ${srcdir}/build/config.h) \
     $(git rev-list --count HEAD) \
     $(git rev-parse --short HEAD)
 }
