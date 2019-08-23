@@ -1,13 +1,13 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=algernon
-pkgver=1.12.4
-pkgrel=2
+pkgver=1.12.5
+pkgrel=1
 pkgdesc='Small self-contained web server with Lua, Markdown, QUIC, Redis and PostgreSQL support'
 arch=(x86_64)
 url='https://algernon.roboticoverlords.org/'
 license=(MIT)
-makedepends=(git go)
+makedepends=(git go upx)
 optdepends=('mariadb: For using the MariaDB/MySQL database backend'
             'postgresql: For using the PostgreSQL database backend'
             'redis: For using the Redis database backend')
@@ -17,6 +17,7 @@ md5sums=('SKIP')
 prepare() {
   cd "$pkgname"
   go build -mod=vendor -gcflags "all=-trimpath=${PWD}" -asmflags "all=-trimpath=${PWD}" -ldflags "-extldflags ${LDFLAGS}"
+  upx algernon
 }
 
 package() {
