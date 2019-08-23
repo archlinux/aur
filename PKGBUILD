@@ -16,11 +16,11 @@
 ##### End
 
 pkgname=magma
-pkgver=2.5.0
-pkgrel=2
+pkgver=2.5.1
+pkgrel=1
 pkgdesc="Provides a dense linear algebra library similar to LAPACK but for heterogeneous/hybrid architectures, starting with current 'Multicore+GPU' systems (with CUDA)"
 arch=('x86_64')
-url="http://icl.cs.utk.edu/magma/"
+url="https://icl.cs.utk.edu/magma/"
 license=('custom')
 depends=("cuda>=6.5.0"
          'gsl'
@@ -30,7 +30,7 @@ makedepends=('gcc-fortran'
              'cmake')
 options=('staticlibs')
 source=("http://icl.cs.utk.edu/projectsfiles/${pkgname}/downloads/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('4fd45c7e46bd9d9124253e7838bbfb9e6003c64c2c67ffcff02e6c36d2bcfa33')
+sha256sums=('ce32c199131515336b30c92a907effe0c441ebc5c5bdb255e4b06b2508de109f')
 
 prepare() {
   _CMAKE_FLAGS=(\
