@@ -6,8 +6,8 @@
 
 pkgbase=phpstorm
 pkgname=(phpstorm phpstorm-jre)
-pkgver=2019.2
-_pkgver=192.5728.108
+pkgver=2019.2.1
+_pkgver=192.6262.66
 pkgrel=1
 pkgdesc='Lightweight and Smart PHP IDE'
 arch=('x86_64' 'i686')
@@ -17,8 +17,8 @@ makedepends=('rsync')
 options=('!strip')
 source=(https://download.jetbrains.com/webide/PhpStorm-${pkgver}.tar.gz
         jetbrains-phpstorm.desktop)
-sha512sums=('2fd86f32044e579b0c13b81406e1fca6d07701b2b990208d1263c182c9a6082e7973dd799b589d278f49102db348781d22496d5b0cd7a2f1dcff26fb62c948e8'
-            'fe312d7c637ec20bd946f2e22681243a51f29afc1052ae3fe5afd0fe01f77c222bf1e2c98f0afad8d5385466215653b7ffa8718da05b6dac100ba768ff2be1d6')
+sha512sums=('734a48d703809ae7fd35a05af3f9e5009730683c579e93baed0ea6f19195e77af6249efdb5cbfd7dcc59fe06a03c0c7cf8966e4094d83e774cc37bf4bd45ca95'
+            'b10edd04a7d48641bec7a9e23037510b426acb5a3059267b2081ec0fce41272d8de413f0b4c1dddd3387bb0ce330c48b3f7894f4817973cd6d32a74a14af3528')
 
 package_phpstorm() {
   optdepends=('phpstorm-jre: JetBrains custom Java Runtime (Recommended)'
