@@ -1,7 +1,7 @@
 # Maintainer: Razon Yang <razonyang@gmail.com>
 pkgname=wechat-devtool
 pkgver=1.02.1907300
-pkgrel=1
+pkgrel=2
 pkgdesc=微信开发者工具
 url=https://github.com/razonyang/archlinux-wechat-devtool
 license=('MIT')
