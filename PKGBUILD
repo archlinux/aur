@@ -8,7 +8,7 @@
 pkgname=erlang-nox
 pkgver=22.0.7
 _docver=22.0
-pkgrel=1
+pkgrel=2
 pkgdesc='General-purpose concurrent functional programming language (headless version)'
 arch=(x86_64)
 url='https://www.erlang.org/'
@@ -21,7 +21,7 @@ optdepends=('erlang-unixodbc: database support'
             'lksctp-tools: for SCTP support')
 options=(staticlibs)
 source=("git+https://github.com/erlang/otp.git#tag=OTP-$pkgver"
-        "http://www.erlang.org/download/otp_doc_man_$_docver.tar.gz"
+        "https://www.erlang.org/download/otp_doc_man_$_docver.tar.gz"
         epmd.conf
         epmd.service
         epmd.socket)
