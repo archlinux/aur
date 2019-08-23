@@ -3,7 +3,7 @@
 
 pkgname=nerd-fonts-dejavu-complete
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="All variants of Nerd-Font-patched DejaVu Sans Mono"
 arch=('any')
 url="https://github.com/ryanoasis/nerd-fonts"
@@ -11,6 +11,7 @@ raw_url="https://raw.githubusercontent.com/ryanoasis/nerd-fonts/v${pkgver}/patch
 license=('MIT')
 depends=('fontconfig' 'xorg-font-utils')
 install="${pkgname}.install"
+provides=(ttf-font)
 source=(
   "DejaVu-Sans-Mono-Bold-Nerd-Font-Complete.ttf::${raw_url}/Bold/complete/DejaVu%20Sans%20Mono%20Bold%20Nerd%20Font%20Complete.ttf"
   "DejaVu-Sans-Mono-Bold-Nerd-Font-Complete-Mono.ttf::${raw_url}/Bold/complete/DejaVu%20Sans%20Mono%20Bold%20Nerd%20Font%20Complete%20Mono.ttf"
@@ -31,8 +32,6 @@ sha512sums=('ca49cf5ef4c71d6b1d843ad39b70438bb68024d51ccfb12fb190b7788e7d8434c9b
             'd0446a09a2aed03eb4162a226c151685065d418157d76816af034f7961a209021536aefbe161cfa035265d645327459487821b71454ce5d56f650dc4ef711e9c')
 
 package() {
-
   install -dm0755 ${pkgdir}/usr/share/fonts/TTF
   install -Dm0644 ${srcdir}/*.ttf ${pkgdir}/usr/share/fonts/TTF
-
 }
