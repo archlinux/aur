@@ -1,8 +1,8 @@
 # Maintainer: Adrián Pérez de Castro <aperez@igalia.com>
 # Contributor: Malina Salina <bluesilence@hotmail.co.uk>
 pkgname='reop'
-pkgver='2.1.0'
-pkgrel='4'
+pkgver='2.1.1'
+pkgrel='1'
 pkgdesc='Utility to create and verify cryptographic signatures'
 url='https://github.com/tedu/reop/'
 license=('MIT')
@@ -11,7 +11,7 @@ depends=('libsodium>=1.0.8')
 conflicts=('reop-git')
 options=('zipman')
 source=("http://www.tedunangst.com/flak/files/${pkgname}-${pkgver}.tgz")
-sha512sums=('074302f7805711983864ece8aed1136458e7028ffd51edb2bb0352589b9e4d17ec5f530ad01b9a057afe57a351ecfb9d23d146a531aba6eb13dd51cf41fd9fcc')
+sha512sums=('ce145cfb7c2347c4df4b6a25f28dab22d6bd0b3cf27d9fcb42b81d969634b122b706aff01c1c3108557d5778981dd8a025ac29d1aa2dfe9e77902ed24daa8ef1')
 
 
 build () {
