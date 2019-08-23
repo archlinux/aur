@@ -4,7 +4,7 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # News updates for packages can be followed at https://devblog.square-r00t.net
 pkgname=chkrootkit
 pkgver=0.53
-pkgrel=3
+pkgrel=4
 pkgdesc="Locally checks for signs of a rootkit"
 arch=('x86_64')
 url="http://www.chkrootkit.org/"
@@ -33,9 +33,9 @@ package() {
         	install -D -m755 ${srcdir}/${pkgname}-${pkgver}/${f} ${pkgdir}/usr/lib/${pkgname}/${f}
 	done
         install -D -m755 ${srcdir}/${pkgname}.launcher ${pkgdir}/usr/bin/${pkgname}
-        install -D -m644 ${srcdir}/${pkgname}-${pkgver}/COPYRIGHT ${pkgdir}/${pkgname}/usr/share/licenses/${pkgname}/LICENSE
+        install -D -m644 ${srcdir}/${pkgname}-${pkgver}/COPYRIGHT ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
         for f in ACKNOWLEDGMENTS README;  # sic
 	do
-        	install -D -m644 ${srcdir}/${pkgname}-${pkgver}/${f} ${pkgdir}/${pkgname}/usr/share/doc/${pkgname}/${f}
+        	install -D -m644 ${srcdir}/${pkgname}-${pkgver}/${f} ${pkgdir}/usr/share/doc/${pkgname}/${f}
 	done
 }

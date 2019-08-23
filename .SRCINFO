@@ -1,7 +1,7 @@
 pkgbase = chkrootkit
 	pkgdesc = Locally checks for signs of a rootkit
 	pkgver = 0.53
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.chkrootkit.org/
 	arch = x86_64
 	license = CUSTOM
