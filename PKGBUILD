@@ -1,6 +1,7 @@
 #!/hint/bash
 #shellcheck disable=SC2034
-# Maintainer: pingplug <pingplug@foxmail.com>
+# Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
+# Contributor: pingplug <pingplug@foxmail.com>
 # Contributor: cornholio <vigo.the.unholy.carpathian@gmail.com>
 
 ##### Configuration Options
@@ -53,6 +54,12 @@ prepare() {
         -DCUDA_HOST_COMPILER=/usr/lib/ccache/bin/$_cuda_gcc \
       )
     fi
+  fi
+
+  # Unset CMAKE_INSTALL_PREFIX preserve default install path
+  if [ -v CMAKE_INSTALL_PREFIX ] ; then
+    msg "You have CMAKE_INSTALL_PREFIX set to \"$CMAKE_INSTALL_PREFIX\". We have to clear it to preserve magma default install path"
+    unset CMAKE_INSTALL_PREFIX
   fi
 }
 
