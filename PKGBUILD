@@ -1,35 +1,32 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 pkgname=('seexpr' 'seexpr-doc')
-_fragment="#tag=v2.11"
-pkgver=2.11
+_fragment="#tag=v3.0.0"
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="An embeddable expression evaluation engine"
 arch=('i686' 'x86_64')
-url="http://www.disneyanimation.com/technology/seexpr.html"
+url="https://www.disneyanimation.com/technology/seexpr.html"
 license=('custom:Apache')
-depends=('python2' 'qt4')
-optdepends=('python2-pyqt4: Editor support')
-#makedepends=('python2-pyqt4' 'doxygen' 'glew' 'libpng' 'cmake>=2.4.6' 'git' 'python-sip' 'boost' 'llvm')
-makedepends=('python2-pyqt4' 'doxygen' 'libpng' 'cmake' 'git' 'python2-sip')
+depends=('python' 'llvm-libs' 'qt5-base')
+optdepends=('python-pyqt5: Editor support')
+optdepends+=('boost-libs: Python bindings')
+makedepends=('boost' 'llvm' 'python-pyqt5' 'doxygen' 'libpng' 'cmake' 'git' 'sip' 'python-sip' 'gtest')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
-source=("git+https://github.com/wdas/SeExpr.git${_fragment}"
-        "build.patch")
-md5sums=('SKIP'
-         'ad7a72d539fbb5b899f26f7fd1cfc950')
-
-prepare() {
-  cd ${srcdir}/SeExpr
-  sed -i 's/env python/env python2/' src/build/build-info
-  patch -Np1 -i ../build.patch 
-}
+source=("git+https://github.com/wdas/SeExpr.git${_fragment}")
+md5sums=('SKIP')
 
 build() {
   cd "$srcdir/SeExpr"
   mkdir -p build
   cd build
-  cmake -DCMAKE_INSTALL_PREFIX='/usr' -DCMAKE_INSTALL_LIBDIR='/usr/lib' ..
+  cmake -DCMAKE_INSTALL_PREFIX='/usr' -DCMAKE_INSTALL_LIBDIR='/usr/lib' -DPYQT_SIP_DIR='/usr/share/sip/PyQt5' -DENABLE_SLOW_TESTS=ON ..
   make
+}
+
+check() {
+  cd "$srcdir/SeExpr/build"
+  make test
 }
 
 package_seexpr() {
