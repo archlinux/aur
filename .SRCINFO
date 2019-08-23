@@ -1,0 +1,16 @@
+pkgbase = tmux-ver-28
+	pkgdesc = Tmux legacy version 2.8, before \"-style\" breaking changes were introduced.
+	pkgver = 2.8
+	pkgrel = 1
+	url = http://sourceforge.net/projects/tmux/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = ncurses
+	depends = libevent
+	provides = tmux
+	source = git+https://github.com/tmux/tmux.git
+	md5sums = SKIP
+
+pkgname = tmux-ver-28
+
