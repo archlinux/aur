@@ -69,6 +69,7 @@ go install \
 #build the UI
 npm install
 npm audit fix
+npm install --save-dev @angular-devkit/build-angular
 make build-ng
 
 }
