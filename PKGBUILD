@@ -1,8 +1,8 @@
 # Maintainer: zaps166 <spaz16@wp.pl>
 
 pkgname=qmplay2-git
-pkgver=18.12.26
-pkgrel=3
+pkgver=19.08.23
+pkgrel=1
 pkgdesc='QMPlay2 is a video and audio player which can play most formats and codecs'
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url='http://zaps166.sourceforge.net/?app=QMPlay2'
@@ -26,16 +26,13 @@ build()
 	# Uncomment below line if you don't want to have 'libsidplayfp' dependency and remove it from 'depends' list
 	#USE_SIDPLAYFP='-DUSE_CHIPTUNE_SID=OFF'
 
-	# Uncomment below line if you don't want to use 'jemalloc' and remove it from 'depends' list
-	#USE_JEMALLOC='-DUSE_JEMALLOC=ON'
-
 	# Uncomment below line for ccache
 	#USE_CCACHE='-DCMAKE_CXX_COMPILER_LAUNCHER=ccache'
 
 	cd $srcdir
 	mkdir -p QMPlay2-build
 	cd QMPlay2-build
-	cmake ../QMPlay2 -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib -DUSE_LINK_TIME_OPTIMIZATION=OFF $USE_CCACHE $USE_JEMALLOC $USE_SIDPLAYFP
+	cmake ../QMPlay2 -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib -DUSE_LINK_TIME_OPTIMIZATION=OFF $USE_CCACHE $USE_SIDPLAYFP
 	time make
 }
 
