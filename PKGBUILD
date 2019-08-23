@@ -1,8 +1,8 @@
 # Maintainer: Flaviu Tamas <me@flaviutamas.com>
 pkgname=nushell-git
 pkgver=r700.bc6c92b
-pkgrel=1
-makedepends=('rust' 'cargo')
+pkgrel=2
+makedepends=('rust-nightly' 'cargo')
 depends=('openssl' 'zlib')
 optdepends=('libxcb' 'libx11')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')

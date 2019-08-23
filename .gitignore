@@ -1,4 +1,4 @@
 *.xz
 /pkg
 /src
-
+nushell-git/
