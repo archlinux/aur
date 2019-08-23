@@ -1,0 +1,14 @@
+pkgbase = turnstile
+	pkgdesc = Markdown FastCGI server
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/roryrjb/turnstile
+	arch = x86_64
+	license = custom:MIT
+	depends = discount
+	depends = fcgi
+	source = https://github.com/roryrjb/turnstile/archive/0.0.2.tar.gz
+	sha512sums = eb7a6fcf560be8967e9172116a5d9a808cde5272445dd6c10a86d976eb48e237351f07e0ac1f9fadac38e17fe67b85325e6f64f31b82ce181803ddd810b82f6a
+
+pkgname = turnstile
+
