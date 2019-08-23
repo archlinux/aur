@@ -5,7 +5,7 @@
 _gemname="i18n"
 pkgname="ruby-${_gemname}-0.9"
 pkgver="0.9.5"
-pkgrel=1
+pkgrel=2
 pkgdesc="New wave internationalisation support for Ruby, version 0.9.x"
 arch=("any")
 license=("MIT")
@@ -17,8 +17,6 @@ source=("https://rubygems.org/downloads/${_gemname}-${pkgver}.gem")
 sha256sums=('43a58b55056ef171cae9b35df8aa5dee22d3a782f8a9bdd0ec8e8d36cfdf180d')
 noextract=("${_gemname}-${pkgver}.gem")
 provides=("ruby-i18n=${pkgver}")
-conflicts=('ruby-i18n')
-replaces=('ruby-i18n')
 
 package() {
   cd "${srcdir}"
