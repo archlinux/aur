@@ -15,7 +15,7 @@ pkgver=10.0.0+v2.086.0
 _branch=ibuclaw/gdc # Change here! pkgver/_gccver/_d_ver will be automatically updated.
 _islver=0.21 # Change here!
 _d_ver=''
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'i686')
 license=('GPL3')
 url="https://gcc.gnu.org/"
@@ -90,7 +90,7 @@ build() {
       --enable-gnu-indirect-function \
       --disable-multilib \
       --disable-werror \
-      --enable-bootstrap \
+      --disable-bootstrap \
       --enable-checking=release \
       --enable-default-pie \
       --enable-default-ssp \
