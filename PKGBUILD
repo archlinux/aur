@@ -1,15 +1,16 @@
 pkgname=python-cu2qu
 _module=cu2qu
-pkgver=1.6.4
+pkgver=1.6.5
 pkgrel=1
 pkgdesc="Cubic-to-quadratic bezier curve conversion"
-url="https://github.com/googlei18n"
-depends=('python' 'python-ufolib')
+url="https://github.com/googlefonts/cu2qu"
+depends=('python' 'python-defcon' 'python-fonttools')
 makedepends=('python-setuptools')
 license=('Apache')
 arch=('any')
-source=("https://files.pythonhosted.org/packages/29/33/6186137547733d15ae15ad00bc81688d474fdbb7e1aad4ee35c1d5228936/cu2qu-${pkgver}.zip")
-md5sums=('5d3fe137d091286f8086588734cedb6b')
+source=("https://pypi.org/packages/source/c/cu2qu/cu2qu-${pkgver}.zip")
+#source=("https://github.com/googlefonts/cu2qu/archive/v${pkgver}.tar.gz")
+md5sums=('083bc4e78c46d36b1cb9bf3ddad6f8ae')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
