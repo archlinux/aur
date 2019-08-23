@@ -13,7 +13,7 @@ source=(
     "https://github.com/cytle/wechat_web_devtools/archive/v$pkgver.tar.gz"
 )
 md5sums=(
-    'cdc1c88e3dd187d06d9b51b5a321755f'
+    '9a50b8f4e5055480dfaf6ac6de33e964'
 )
 package() {
     # copy files to /opt
