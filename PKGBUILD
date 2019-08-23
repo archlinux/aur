@@ -1,19 +1,19 @@
 # Maintainer: Gabriel Laskar <gabriel at lse dot epita dot fr>
 pkgname=oksh
-pkgver=0.5.9
+pkgver=6.5
 pkgrel=1
-url="http://www.connochaetos.org/oksh"
+url="https://github.com/ibara/oksh/"
 pkgdesc="Ported version of ksh from OpenBSD"
 license=('GPL3')
 depends=('glibc')
 arch=('i686' 'x86_64')
-source=(http://www.connochaetos.org/$pkgname/$pkgname-$pkgver.tar.gz)
-md5sums=('f29996538d4ae89095f921b80ec1484f')
+source=(https://github.com/ibara/oksh/releases/download/$pkgname-$pkgver/$pkgname-$pkgver.tar.gz)
+md5sums=('8189e9512b36e42ceb2a06c070dbf7c5')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  ./configure --prefix=$pkgdir/usr
+  ./configure --prefix=/usr --mandir=/usr/share/man/
 
   make
 }
@@ -21,7 +21,7 @@ build() {
 package() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  make DESTDIR="$pkgdir/" mandir=$pkgdir/usr/share/man/man1 install
+  make DESTDIR="$pkgdir/" install
 }
 
 # vim:set ts=2 sw=2 et:
