@@ -1,11 +1,11 @@
 # Maintainer: Gabriel Laskar <gabriel at lse dot epita dot fr>
 pkgname=oksh
 pkgver=6.5
-pkgrel=1
+pkgrel=2
 url="https://github.com/ibara/oksh/"
 pkgdesc="Ported version of ksh from OpenBSD"
 license=('GPL3')
-depends=('glibc')
+depends=('glibc', 'ncurses')
 arch=('i686' 'x86_64')
 source=(https://github.com/ibara/oksh/releases/download/$pkgname-$pkgver/$pkgname-$pkgver.tar.gz)
 md5sums=('8189e9512b36e42ceb2a06c070dbf7c5')
