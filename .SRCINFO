@@ -1,0 +1,21 @@
+pkgbase = safe
+	pkgdesc = SAFE - Single App For Everything.
+	pkgver = 0.0.3
+	pkgrel = 1
+	epoch = 1
+	url = https://safe.abstra.dev
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = git
+	makedepends = npm
+	depends = electron
+	source = git+https://github.com/abstra-llc/safe#tag=v0.0.3
+	source = safe.desktop
+	source = safe.sh
+	sha512sums = SKIP
+	sha512sums = bffa9e3f504bf37b808822bb8a8faf477aad70b9bb52594ab896649375e0fd1ebe6e42fc07ec261935a140c2554b83ae4d0b05e71905ee4ee693c05c71a0e50c
+	sha512sums = d8d6086974e144ab70bdbcc4b4c75eec9548f1e9ea3760faedef80bcd09d8ebc2972527b519666df3ecbf2ea027cbd9974959e287e7275264240fd7a0f4b500a
+
+pkgname = safe
+

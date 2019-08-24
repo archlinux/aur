@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Version=0.0.1
+Name=SAFE
+GenericName=Utility
+Comment=SAFE - Single App For Everything
+Icon=safe
+TryExec=/usr/bin/safe
+Exec=/usr/bin/safe %U
+Terminal=false
+Categories=Network;InstantMessaging;
