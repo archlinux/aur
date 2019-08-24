@@ -16,7 +16,7 @@ pkgbase = tagparser
 	depends = zlib
 	optdepends = tagparser-doc: API documentation
 	source = tagparser-9.0.0.tar.gz::https://github.com/Martchus/tagparser/archive/v9.0.0.tar.gz
-	sha256sums = 79915e782b319ffa1f21b3cc895826b6035c197baa003b9417d7574b039a5041
+	sha256sums = c6dd7cd5f08a6c2aa5c6adb0bc4d240eecec95edcda05bcecdc371a27e9cbfd9
 
 pkgname = tagparser
 
