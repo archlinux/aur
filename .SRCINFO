@@ -1,13 +1,13 @@
 pkgbase = fcitx-skin-aqua
 	pkgdesc = Fcitx Skin - Aqua
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/redchenjs/fcitx-skin-aqua/
 	arch = any
 	license = Apache
 	depends = fcitx
 	source = https://github.com/redchenjs/fcitx-skin-aqua/archive/v0.1.tar.gz
-	md5sums = e70a968d9800d408a687bba7c18d9b4e
+	md5sums = 126d58f4a094c31c775d2341b8c65afe
 
 pkgname = fcitx-skin-aqua
 
