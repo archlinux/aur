@@ -8,7 +8,7 @@ pkgbase = nordvpn-bin-maintained
 	arch = arm64
 	arch = armv6h
 	arch = armv7h
-	arch = i386
+	arch = i686
 	license = custom
 	depends = net-tools
 	depends = libxslt
@@ -27,6 +27,8 @@ pkgbase = nordvpn-bin-maintained
 	sha256sums_armv6h = 428209f06543871d02a8a616e172f735b98c0d17f67a0f34fa2e103097c67df6
 	source_armv7h = https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/nordvpn_3.3.1-1_armhf.deb
 	sha256sums_armv7h = 681f23146b8ad5c46291d3a3058a8f179a6593cc18fa50187ce0d20d9659acc8
+	source_i686 = https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/nordvpn_3.3.1-1_i386.deb
+	sha256sums_i686 = 79b835daf31f6348138e25aae3f46c6d2b344582d7ed67d45a10dcde02d1faf2
 
 pkgname = nordvpn-bin-maintained
 
