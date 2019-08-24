@@ -9,8 +9,8 @@ arch=('i686' 'x86_64')
 license=('LGPL')
 url="http://delta.affinix.com/qca/"
 depends=('qt5-base' )
-makedepends=('cmake' 'doxygen' 'git' 'botan-1.10' 'pkcs11-helper' 'libsasl' 'libgcrypt')
-optdepends=('botan-1.10: Botan plugin'
+makedepends=('cmake' 'doxygen' 'git' 'botan' 'pkcs11-helper' 'libsasl' 'libgcrypt')
+optdepends=('botan: Botan plugin'
             'pkcs11-helper: PKCS11 plugin'
             'nss: nss plugin'
             'libsasl: SASL plugin'
