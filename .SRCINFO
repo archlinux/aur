@@ -17,7 +17,7 @@ pkgbase = videodownloader
 	depends = desktop-file-utils
 	depends = xdg-utils
 	source = videodownloader-1.3.4.tar.gz::https://github.com/Martchus/videodownloader/archive/v1.3.4.tar.gz
-	sha256sums = 60cb2e5e11a7665765dfe8904f51759bdef88b6d11cd93f9b83fab868f9c09e8
+	sha256sums = 2d2537a25332ca745abff5dcde5354b6646c361f46f3dc4d00a529237f2f8e19
 
 pkgname = videodownloader
 

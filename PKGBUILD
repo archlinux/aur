@@ -14,7 +14,7 @@ depends=('qtutilities' 'openssl' 'desktop-file-utils' 'xdg-utils')
 makedepends=('cmake' 'qt5-tools' 'mesa')
 url="https://github.com/Martchus/${_reponame}"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('60cb2e5e11a7665765dfe8904f51759bdef88b6d11cd93f9b83fab868f9c09e8')
+sha256sums=('2d2537a25332ca745abff5dcde5354b6646c361f46f3dc4d00a529237f2f8e19')
 
 build() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
