@@ -7,7 +7,7 @@
 pkgname=gimp-develop-git
 _pkgname=${pkgname%-develop-git}
 epoch=1
-pkgver=2.99.1.r3303.583d965773
+pkgver=2.99.1.r3159.4bafbeca1b
 pkgrel=1
 pkgdesc="GNU Image Manipulation Program (non-conflicting git version)"
 arch=('i686' 'x86_64')
@@ -69,12 +69,8 @@ pkgver() {
 prepare() {
   cd $_pkgname
 
-# Fix mypaint naming scheme
   _mypaintver=$(echo /usr/lib/libmypaint-*.so | grep -o -E '\-[0-9]+(\.[0-9]+)*' | head -1)
   sed -i "s|\\(libmypaint\\)\\( >= libmypaint_required_version\\)|\\1${_mypaintver}\\2|g" configure.ac
-
-# Fix mypaint brushes version pop
-  sed -i "s|mypaint-brushes-1.0|mypaint-brushes-2.0|g" configure.ac
 
   ./autogen.sh \
   	--prefix=/usr \
