@@ -24,7 +24,7 @@ pkgbase = mingw-w64-passwordmanager
 	options = !strip
 	options = !emptydirs
 	source = passwordmanager-4.1.0.tar.gz::https://github.com/Martchus/passwordmanager/archive/v4.1.0.tar.gz
-	sha256sums = 845e119ec24d073411c52b797c8b7a4e44fbce4c793aaf90a11a21f070fcd3fa
+	sha256sums = 1bbea969fcc8ebb3676a311c2841dc3ea640a16fd683a2aec645427260ba881b
 
 pkgname = mingw-w64-passwordmanager
 
