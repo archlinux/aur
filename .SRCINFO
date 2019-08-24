@@ -1,0 +1,14 @@
+pkgbase = python-dircolors
+	pkgdesc = Python library to colorize and format file names based on type
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/aswild/pydircolors
+	arch = any
+	license = Apache
+	depends = python
+	depends = python-setuptools
+	source = https://files.pythonhosted.org/packages/source/d/dircolors/dircolors-0.0.2.tar.gz
+	sha256sums = fe277273ac25bb662c9d91bfc3382aa2be97a9ead38fa4e8024f68743c189685
+
+pkgname = python-dircolors
+
