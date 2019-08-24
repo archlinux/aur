@@ -1,14 +1,14 @@
 # Maintainer: Ke Liu <spcter119@gmail.com>
 
 pkgname=python-ehforwarderbot-git
-pkgver=r388.690be0d
+pkgver=r429.400de55
 pkgrel=1
 pkgdesc='An extensible message tunneling chat bot framework. Delivers messages to and from multiple platforms and remotely control your accounts.'
 arch=('any')
 url='https://github.com/blueset/ehForwarderBot'
 license=('AGPL-3')
 groups=('efb')
-depends=('python-ruamel-yaml' 'python-asciimatics' 'python-cjkwrap' 'python-typing-extensions')
+depends=('python-ruamel-yaml' 'python-bullet' 'python-cjkwrap' 'python-typing-extensions')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
