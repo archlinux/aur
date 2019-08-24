@@ -1,9 +1,10 @@
 pkgbase = olive
 	pkgdesc = Free non-linear video editor
-	pkgver = 0.1.0
-	pkgrel = 2
+	pkgver = 0.1.1
+	pkgrel = 1
 	url = https://www.olivevideoeditor.org/
 	arch = i686
+	arch = pentium4
 	arch = x86_64
 	license = GPL3
 	makedepends = cmake
@@ -13,8 +14,10 @@ pkgbase = olive
 	depends = qt5-svg
 	optdepends = frei0r-plugins
 	optdepends = olive-community-effects-git
-	source = 0.1.0.tar.gz::https://github.com/olive-editor/olive/archive/0.1.0.tar.gz
-	sha512sums = b79d84b17408f4ba62cc3c9782ef1281eb07c040ae3ee70d8cb0fd3788a68a6134528f5c10a79284b9276f33c8e66d42de80a17122465fd10e949f51fbb4d35c
+	source = 0.1.1.tar.gz::https://github.com/olive-editor/olive/archive/0.1.1.tar.gz
+	source = olive_tr.ts
+	sha512sums = 72aefc03956b3a64d4fb69d15f9a5c88429e8988dac7a6f10287265c065e7b85cb7c6c63ea35e07aef34cdc71e6a3611a8622a1916163c08182bab227d8555e1
+	sha512sums = 443ba088018e97597dc5e7209d2493276ebbc15576e4fe638c8f486088ea0041f681693dc3939fba06b7fb4a0ffd289d5e87d36b82753e4c7742659f95a46067
 
 pkgname = olive
 
