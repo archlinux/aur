@@ -83,9 +83,8 @@ build() {
       fi
   fi
 
-# export CFLAGS="${CFLAGS} -DOPENVDB_3_ABI_COMPATIBLE -DOPENVDB_USE_DEPRECATED_ABI"
-# export CXXFLAGS="${CXXFLAGS} -DOPENVDB_3_ABI_COMPATIBLE -DOPENVDB_USE_DEPRECATED_ABI"
-  cmake -GNinja "$srcdir/blender" \
+  ((DISABLE_NINJA)) && generator="Unix Makefiles" || generator="Ninja"
+  cmake -G "$generator" "$srcdir/blender" \
         -C${srcdir}/blender/build_files/cmake/config/blender_release.cmake \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=Release \
@@ -97,14 +96,13 @@ build() {
         -DPYTHON_VERSION=${_pyver} \
         -DWITH_LLVM=ON \
         ${_EXTRAOPTS[@]}
-#       -DWITH_OPENVDB_3_ABI_COMPATIBLE=ON \
   export NINJA_STATUS="[%p | %f<%r<%u | %cbps ] "
-  ninja -d stats
+  ((DISABLE_NINJA)) && make -j$(nproc) || ninja -d stats
 }
 
 package() {
   cd "$srcdir/blender-build"
-  DESTDIR="$pkgdir" ninja install
+  ((DISABLE_NINJA)) && make install DESTDIR="$pkgdir" || DESTDIR="$pkgdir" ninja install
   
   msg "add -2.7 sufix to desktop shortcut"
   sed -i 's/=blender/=blender-2.7/g' ${pkgdir}/usr/share/applications/blender.desktop
