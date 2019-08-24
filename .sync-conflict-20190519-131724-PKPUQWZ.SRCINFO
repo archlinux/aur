@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-c++utilities
 	pkgdesc = Common C++ classes and routines such as argument parser, IO and conversion utilities (mingw-w64)
-	pkgver = 5.0.0
+	pkgver = 4.17.0
 	pkgrel = 1
 	url = https://github.com/Martchus/cpp-utilities
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = mingw-w64-c++utilities
 	options = staticlibs
 	options = !strip
 	options = !emptydirs
-	source = c++utilities-5.0.0.tar.gz::https://github.com/Martchus/cpp-utilities/archive/v5.0.0.tar.gz
+	source = c++utilities-4.17.0.tar.gz::https://github.com/Martchus/cpp-utilities/archive/v4.17.0.tar.gz
 	sha256sums = 92d288b606b4f32d69686cbf5a264f90e5e00d80894583a9df2284d593cdc2b4
 
 pkgname = mingw-w64-c++utilities
