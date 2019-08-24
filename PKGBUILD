@@ -7,7 +7,7 @@
 
 pkgname=libgaminggear
 pkgver=0.15.1
-pkgrel=7
+pkgrel=8
 pkgdesc="Provides functionality for gaming input devices"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -28,6 +28,7 @@ build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     cmake . \
         -DINSTALL_CMAKE_MODULESDIR="/usr/share/libgaminggear/cmake/Modules" \
+        -DCMAKE_C_FLAGS="$(pkg-config --cflags harfbuzz)" \
         -DCMAKE_INSTALL_PREFIX="/usr" \
         -DINSTALL_LIBDIR="/usr/lib"
     make
