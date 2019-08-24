@@ -4,7 +4,7 @@
 pkgdesc="Allen Wild's fork of ag, which supports pcre2 and .agrc user config"
 url='https://github.com/aswild/the_silver_searcher'
 pkgname=the_silver_searcher_wild-git
-pkgver=2.2.0.r145.g80e9135
+pkgver=2.2.0.r190.gc2e20d7
 pkgrel=1
 provides=('the_silver_searcher')
 conflicts=('the_silver_searcher')
