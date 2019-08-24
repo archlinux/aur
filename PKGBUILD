@@ -8,7 +8,7 @@ url="https://github.com/PonasKovas/snake"
 license=('MIT')
 makedepends=('cargo')
 source=("https://github.com/PonasKovas/snake/archive/${pkgver}.tar.gz")
-md5sums=('59777af83cddc1083ad9c8ac4a37749a')
+md5sums=('87d0eef74e04dc80934dd2640be2a0b4')
 
 build () {
   cd "$srcdir/$pkgname-$pkgver"
