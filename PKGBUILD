@@ -25,11 +25,14 @@ check() {
 package() {
 	mkdir -p "$pkgdir/usr/bin" "$pkgdir/usr/lib" "$pkgdir/usr/include/$pkgname" "$pkgdir/usr/share/licenses/$pkgname"
 	cd "$pkgname-$pkgver/build"
+
+	# fix includes
 	sed -e 's|"bearssl_|"bearssl/|g' -i ../inc/*
-	for h in ../inc/bearssl_*
+	mv ../inc/bearssl.h "$pkgdir/usr/include"
+	for h in ../inc/*
 	do  mv $h "$pkgdir/usr/include/bearssl/${h#*_}"
 	done
-	mv ../inc/bearssl.h "$pkgdir/usr/include"
+
 	mv ../LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname"
 	mv brssl "$pkgdir/usr/bin"
 	mv  "lib$pkgname.so.$pkgver" "lib$pkgname.a" "$pkgdir/usr/lib"
