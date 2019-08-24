@@ -34,7 +34,7 @@ pkgname=('roccat-tools-common'
          'roccat-tools-nyth')
 pkgbase=roccat-tools
 pkgver=5.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Userland applications to configure and make extended use of ROCCAT devices'
 arch=('i686' 'x86_64')
 url='http://roccat.sourceforge.net'
@@ -58,6 +58,7 @@ build() {
     -DWITHOUT_PYTHON=TRUE \
     -DLIBDIR="/usr/lib" \
     -DWITH_LUA="5.3" \
+    -DCMAKE_C_FLAGS="$(pkg-config --cflags harfbuzz)" \
     -DCMAKE_MODULE_PATH="/usr/share/libgaminggear/cmake/Modules"
   make
 }
