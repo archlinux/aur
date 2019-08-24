@@ -6,7 +6,7 @@ pkgver() {
   printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 pkgver=r134.66c12ce
-pkgrel=1
+pkgrel=2
 
 pkgdesc='A command-line interface for Reddit written in POSIX sh'
 arch=('any')
@@ -22,13 +22,15 @@ optdepends=('gnu-netcat: authenticate with your Reddit account credentials'
 makedepends=('git')
 
 changelog=ISSUES
-source=("git+$url")
-sha256sums=('SKIP')
+source=("git+$url" 'archlinux.patch')
+sha256sums=('SKIP' 'd56a36a70ea279778a60e8b827c80166189584dce54bdeeccb8f33a047419157')
 
 prepare() {
   cd "${pkgname%-git}"
-  # Arch packages are never ever installed to /usr/local/
-  sed -i 's|/usr/local/|/usr/|g' "${pkgname%-git}"
+  # Bash's printf statement may fail when using `.` as decimal point under
+  # certain locales, so for the time being we set `LC_ALL` to `C`.
+  # Also, Arch packages are never ever installed to `/usr/local/`.
+  patch -Np1 <../archlinux.patch
 }
 
 package() {
