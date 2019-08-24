@@ -16,7 +16,7 @@ pkgbase = qtutilities
 	depends = qt5-base
 	optdepends = qtutilities-doc: API documentation
 	source = qtutilities-6.0.0.tar.gz::https://github.com/Martchus/qtutilities/archive/v6.0.0.tar.gz
-	sha256sums = f12204958d4181154fed7a9d027756cde6fe8a7b84f1c353b06c8c89abb542c5
+	sha256sums = fca8352d43a689264574daebcd4d59d6f296112e16122e5509fbe46ed3976692
 
 pkgname = qtutilities
 

@@ -15,7 +15,7 @@ makedepends=('cmake' 'qt5-tools' 'mesa')
 optdepends=("$pkgname-doc: API documentation")
 url="https://github.com/Martchus/${_reponame}"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('f12204958d4181154fed7a9d027756cde6fe8a7b84f1c353b06c8c89abb542c5')
+sha256sums=('fca8352d43a689264574daebcd4d59d6f296112e16122e5509fbe46ed3976692')
 
 build() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
