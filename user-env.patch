@@ -1,0 +1,19 @@
+diff --git a/openfortigui/sudo/openfortigui b/openfortigui/sudo/openfortigui
+index 7b2fb8e..80062e6 100644
+--- a/openfortigui/sudo/openfortigui
++++ b/openfortigui/sudo/openfortigui
+@@ -1 +1 @@
+-%sudo  ALL=NOPASSWD: /usr/bin/openfortigui
++%wheel  ALL=NOPASSWD:SETENV: /usr/bin/openfortigui
+diff --git a/openfortigui/vpnmanager.cpp b/openfortigui/vpnmanager.cpp
+index baede6b..2f5fd1e 100644
+--- a/openfortigui/vpnmanager.cpp
++++ b/openfortigui/vpnmanager.cpp
+@@ -74,6 +74,7 @@ void vpnManager::startVPN(const QString &name)
+         return;
+ 
+     QStringList arguments;
++    arguments << "-E";
+     arguments << QCoreApplication::applicationFilePath();
+     arguments << "--start-vpn";
+     arguments << "--vpn-name";
