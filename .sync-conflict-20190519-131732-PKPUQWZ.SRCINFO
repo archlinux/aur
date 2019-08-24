@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-syncthingtray
 	pkgdesc = Tray application for Syncthing (mingw-w64)
-	pkgver = 0.10.0
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/Martchus/syncthingtray
 	arch = any
@@ -9,12 +9,6 @@ pkgbase = mingw-w64-syncthingtray
 	makedepends = mingw-w64-cmake
 	makedepends = mingw-w64-qt5-tools
 	makedepends = ffmpeg
-	makedepends = git
-	makedepends = go
-	makedepends = mingw-w64-qt5-base-static
-	makedepends = mingw-w64-qt5-translations
-	makedepends = breeze-icons
-	makedepends = numix-icon-theme-git
 	depends = mingw-w64-crt
 	depends = mingw-w64-qt5-svg
 	depends = mingw-w64-qtutilities
@@ -25,9 +19,8 @@ pkgbase = mingw-w64-syncthingtray
 	options = staticlibs
 	options = !strip
 	options = !emptydirs
-	source = syncthingtray-0.10.0.tar.gz::https://github.com/Martchus/syncthingtray/archive/v0.10.0.tar.gz
-	source = syncthing::git+https://github.com/Martchus/syncthing.git#branch=libsyncthing3
-	sha256sums = 7db8661a16af117dd7ad494bb3264911a7dc926bcbdea887b4def396cf7e019e
+	source = syncthingtray-0.9.0.tar.gz::https://github.com/Martchus/syncthingtray/archive/v0.9.0.tar.gz
+	sha256sums = 48e6f18302e820ae599c3028db246cec553d1a3c33b20a021a471273c84b30e9
 
 pkgname = mingw-w64-syncthingtray
 
