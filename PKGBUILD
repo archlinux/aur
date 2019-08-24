@@ -1,6 +1,6 @@
 
 pkgname=mingw-w64-zeromq
-pkgver=4.3.0
+pkgver=4.3.1
 pkgrel=1
 pkgdesc="Fast messaging system built on sockets, C and C++ bindings. aka 0MQ, ZMQ. (mingw-w64)"
 arch=('any')
@@ -10,8 +10,8 @@ depends=('mingw-w64-crt')
 makedepends=('mingw-w64-configure')
 options=('staticlibs' '!strip' '!buildflags')
 source=("https://github.com/zeromq/libzmq/releases/download/v${pkgver}/zeromq-${pkgver}.tar.gz")
-sha256sums=('8e9c3af6dc5a8540b356697081303be392ade3f014615028b3c896d0148397fd')
-cd 
+sha256sums=('bcbabe1e2c7d0eec4ed612e10b94b112dd5f06fcefa994a0c79a45d835cd21eb')
+
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare () {
