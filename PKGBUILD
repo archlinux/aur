@@ -6,7 +6,7 @@
 
 pkgname=mirage
 pkgver=1.0_pre2
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple GTK+ Image Viewer"
 url="https://sourceforge.net/projects/mirageiv.berlios/"
 license=('GPL')
@@ -17,7 +17,7 @@ source=(http://downloads.sourceforge.net/project/mirageiv.berlios/${pkgname}-${p
         exif.patch
         exif.c)
 md5sums=('3a0cdb4efd445f85bc29a1ab7ff8a579'
-         '6f5148c3ff866fcb5cedac9ee2ad22e2'
+         '1eed664ef628970a7dd16c4d471c6a24'
          '16285505d2dea76e2ab3e9159fafd8ce')
 
 prepare() {

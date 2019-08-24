@@ -1,6 +1,6 @@
 diff --recursive --unified mirage-1.0_pre2.orig/mirage.py mirage-1.0_pre2/mirage.py
---- mirage-1.0_pre2.orig/mirage.py	2012-12-10 13:28:48.000000000 +0200
-+++ mirage-1.0_pre2/mirage.py	2019-08-22 20:51:41.810026855 +0300
+--- mirage-1.0_pre2/mirage.py.orig	2012-12-10 13:28:48.000000000 +0200
++++ mirage-1.0_pre2/mirage.py	2019-08-24 15:01:22.110133416 +0300
 @@ -64,11 +64,11 @@
  	print _("xmouse.so module not found, some screenshot capabilities will be disabled.")
 
@@ -75,7 +75,7 @@ diff --recursive --unified mirage-1.0_pre2.orig/mirage.py mirage-1.0_pre2/mirage
  			else:
  				val = raw
  			value = gtk.Label(format % str(val))
-@@ -4629,10 +4628,13 @@
+@@ -4629,16 +4628,20 @@
  		self.height_original = self.height
  		self.orientation = ImageData.ORIENT_NORMAL
  		if HAS_EXIF :
@@ -83,16 +83,29 @@ diff --recursive --unified mirage-1.0_pre2.orig/mirage.py mirage-1.0_pre2/mirage
 -			exifd.read()
 -			if "Exif.Image.Orientation" in exifd.exif_keys :
 -				self.orientation = exifd["Exif.Image.Orientation"].value
+-				if self.orientation == ImageData.ORIENT_LEFT :
+-					self.rotate_pixbuf(90)
+-				elif self.orientation == ImageData.ORIENT_MIRROR : 
+-					self.rotate_pixbuf(180)
+-				elif self.orientation == ImageData.ORIENT_RIGHT :
+-					self.rotate_pixbuf(270)
 +			self.exif_metadata = exif.read_metadata(self.name)
-+			try:
-+				orientation = self.exif_metadata['1']['Orientation'][0]
-+			except KeyError:
-+				orientation = None
-+			if orientation is not None :
-+				self.orientation = orientation
- 				if self.orientation == ImageData.ORIENT_LEFT :
- 					self.rotate_pixbuf(90)
- 				elif self.orientation == ImageData.ORIENT_MIRROR :
++			if self.exif_metadata is not None:
++				try:
++					orientation = self.exif_metadata['1']['Orientation'][0]
++				except KeyError:
++					orientation = None
++				if orientation is not None :
++					self.orientation = orientation
++					if self.orientation == ImageData.ORIENT_LEFT :
++						self.rotate_pixbuf(90)
++					elif self.orientation == ImageData.ORIENT_MIRROR :
++						self.rotate_pixbuf(180)
++					elif self.orientation == ImageData.ORIENT_RIGHT :
++						self.rotate_pixbuf(270)
+ 		self.zoomratio = 1
+ 		self.isloaded = True
+ 		self.fileinfo = gtk.gdk.pixbuf_get_file_info(self.name)[0]
 diff --recursive --unified mirage-1.0_pre2.orig/po/cs.po mirage-1.0_pre2/po/cs.po
 --- mirage-1.0_pre2.orig/po/cs.po	2012-12-10 12:43:02.000000000 +0200
 +++ mirage-1.0_pre2/po/cs.po	2019-08-22 15:18:10.630214010 +0300
