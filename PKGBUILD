@@ -1,5 +1,4 @@
 # Maintainer: Luong Thanh Lam <ltlam93@gmail.com>
-# Maintainer: Tran Cong <ltlam93@gmail.com>
 
 pkgname=ibus-bamboo
 pkgver=0.5.4
