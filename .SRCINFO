@@ -1,0 +1,13 @@
+pkgbase = eatmemory
+	pkgdesc = Simple C program to allocate memory from the command line. Useful to test programs or systems under high memory usage conditions
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://github.com/julman99/eatmemory
+	arch = i686
+	arch = x86_64
+	license = MIT
+	source = eatmemory-0.1.6.tar.gz::https://github.com/julman99/eatmemory/archive/v0.1.6.tar.gz
+	sha256sums = 5f49eadc5462cebb01afec02caa2729d9885e0f0a251399d1e8f62a726cc0a9e
+
+pkgname = eatmemory
+
