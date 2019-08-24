@@ -1,12 +1,15 @@
+# Maintainer: Marcel Röthke <marcel.roethke@haw-hamburg.de>
+
 pkgname='exabgp'
-pkgver=4.1.0
+pkgver=4.1.2
 pkgrel=1
 pkgdesc="The BGP swiss army knife of networking"
 url="https://github.com/Exa-Networks/exabgp"
-license=('GPL3')
+license=('BSD')
 depends=('python')
+makedepends=('python-setuptools')
 arch=('any')
-source=("exabgp-${exabgp}::https://github.com/Exa-Networks/exabgp/archive/${pkgver}.tar.gz")
+source=("exabgp-${pkgver}.tar.gz::https://github.com/Exa-Networks/exabgp/archive/${pkgver}.tar.gz")
 
 package() {
   cd "$srcdir/exabgp-$pkgver"
@@ -14,7 +17,9 @@ package() {
 
   install -m 755 -d "${pkgdir}/usr/lib/systemd/system"
   install -m 644 etc/systemd/exabgp.service "${pkgdir}/usr/lib/systemd/system/exabgp.service"
+  install -D -m644 COPYRIGHT "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-md5sums=('308d1b93d71b0edf0e547178c5532ed0')
-sha1sums=('a7dc4243bdf1d5e98f64aac3afeffc4394f5c488')
-sha256sums=('74e7e6d11df6bc3ff3e3b4371ef267036bfa66a8c2a385d126aaef66ed206a1f')
+
+md5sums=('cf36ca988159da337048a80148e66877')
+sha1sums=('73712e4f20a5956890052467ccf3b01022977f87')
+sha256sums=('5921e002f196e814d02349a15c250b1fc8bf45c7299b6b652d2fed04eebb529a')
