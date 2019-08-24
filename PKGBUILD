@@ -1,6 +1,6 @@
 #Maintainer: Larzid <juanitocampamocha@gmail.com>
 pkgname=sotw
-pkgver=1.1.0
+pkgver=1.1.2
 pkgrel=1
 epoch=
 pkgdesc="Shadow Of The Wyrm is a single player, traditional roguelike by Julian Day."
@@ -9,7 +9,7 @@ url="http://www.shadowofthewyrm.org/"
 license=('MIT')
 groups=()
 depends=('xerces-c' 'zlib' 'ncurses' 'lua51' 'boost' 'gtest')
-makedepends=('premake' 'mercurial')
+makedepends=('premake' 'git')
 checkdepends=()
 provides=(sotw)
 conflicts=(sotw-dev)
@@ -17,7 +17,7 @@ replaces=()
 backup=()
 options=()
 changelog=
-source=('hg+https://hg@bitbucket.org/prolog/shadow-of-the-wyrm')
+source=('git+https://github.com/prolog/shadow-of-the-wyrm.git')
 noextract=()
 md5sums=('SKIP')
 validpgpkeys=()
