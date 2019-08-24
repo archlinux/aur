@@ -6,19 +6,18 @@
 
 pkgname=xfe
 pkgver=1.43.2
-pkgrel=1
+pkgrel=2
 pkgdesc='X File Explorer (Xfe) is an MS-Explorer like file manager for X'
 arch=('x86_64')
 url='http://roland65.free.fr/xfe'
 license=('GPL')
-depends=('fox>=1:1.6' 'fox<1:1.7' 'freetype2' 'xcb-util')
-makedepends=('intltool' 'libxft')
+depends=('fox>=1:1.6' 'fox<1:1.7' 'freetype2' 'xcb-util' 'libxft')
+makedepends=('intltool')
 source=("https://downloads.sourceforge.net/sourceforge/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('fa5f38fcac64b91eb5d615620a9607b7e6f8675c4f19f30473798b2acb0c85ba')
 
 build() {
   cd "${pkgname}-${pkgver}"
-  ./autogen.sh 
   ./configure --prefix=/usr 
   make
 }
