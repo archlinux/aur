@@ -16,7 +16,7 @@ optdepends=("$_name-doc: API documentation")
 makedepends=('mingw-w64-gcc' 'mingw-w64-cmake' 'mingw-w64-qt5-tools')
 url="https://github.com/Martchus/${_reponame}"
 source=("${_name}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('f12204958d4181154fed7a9d027756cde6fe8a7b84f1c353b06c8c89abb542c5')
+sha256sums=('fca8352d43a689264574daebcd4d59d6f296112e16122e5509fbe46ed3976692')
 options=(!buildflags staticlibs !strip !emptydirs)
 
 _architectures=('i686-w64-mingw32' 'x86_64-w64-mingw32')
