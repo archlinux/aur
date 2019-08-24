@@ -1,6 +1,6 @@
 # Maintainer: Ponas <mykolas.peteraitis@gmail.com>
 pkgname=snake
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A simple lightweight terminal snake game"
 arch=('any')
