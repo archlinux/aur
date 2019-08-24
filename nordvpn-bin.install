@@ -1,0 +1,8 @@
+post_install() {
+  echo ':: In order to enable nordvpn you have to start the following service:'
+  echo '     sudo systemctl enable --now nordvpnd'
+}
+
+pre_remove() {
+  chattr -i /var/lib/nordvpn/data/*
+}
