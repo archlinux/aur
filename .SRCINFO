@@ -1,13 +1,12 @@
 pkgbase = reddio-git
 	pkgdesc = A command-line interface for Reddit written in POSIX sh
 	pkgver = r134.66c12ce
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/aaronNG/reddio
 	changelog = ISSUES
 	arch = any
 	license = custom:MIT
 	makedepends = git
-	depends = dash
 	depends = curl
 	depends = jq
 	optdepends = gnu-netcat: authenticate with your Reddit account credentials

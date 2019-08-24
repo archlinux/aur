@@ -6,7 +6,7 @@ pkgver() {
   printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 pkgver=r134.66c12ce
-pkgrel=2
+pkgrel=3
 
 pkgdesc='A command-line interface for Reddit written in POSIX sh'
 arch=('any')
@@ -16,7 +16,7 @@ license=('custom:MIT')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 
-depends=('dash' 'curl' 'jq')
+depends=('curl' 'jq')
 optdepends=('gnu-netcat: authenticate with your Reddit account credentials'
             'openbsd-netcat: authenticate with your Reddit account credentials')
 makedepends=('git')
