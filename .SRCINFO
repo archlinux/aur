@@ -1,0 +1,30 @@
+pkgbase = mate-panel-git
+	pkgdesc = The MATE Panel
+	pkgver = v1.23.1.r13.g950caf8a
+	pkgrel = 1
+	url = https://mate-desktop.org
+	arch = x86_64
+	groups = mate
+	license = GPL
+	makedepends = mate-common
+	makedepends = yelp-tools
+	makedepends = intltool
+	makedepends = itstool
+	makedepends = gobject-introspection
+	makedepends = gtk-layer-shell
+	depends = dbus-glib
+	depends = libwnck3
+	depends = libcanberra
+	depends = libmateweather
+	depends = libsm
+	depends = mate-menus
+	depends = mate-desktop
+	depends = gtk-layer-shell
+	provides = mate-panel
+	conflicts = mate-panel-gtk3
+	replaces = mate-panel-gtk3
+	source = git+https://github.com/mate-desktop/mate-panel
+	sha256sums = SKIP
+
+pkgname = mate-panel-git
+
