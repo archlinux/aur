@@ -1,0 +1,14 @@
+pkgbase = tccv-git
+	pkgdesc = LaTeX class to generate two-columns resumes
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://github.com/ntd/tccv
+	arch = any
+	license = LPPL
+	makedepends = git
+	depends = texlive-core
+	source = tccv-git::git+https://github.com/ntd/tccv.git
+	sha256sums = SKIP
+
+pkgname = tccv-git
+
