@@ -9,7 +9,7 @@
 
 pkgname=libselinux
 pkgver=2.9
-pkgrel=2
+pkgrel=3
 pkgdesc="SELinux library and simple utilities"
 arch=('i686' 'x86_64' 'armv6h')
 url='http://userspace.selinuxproject.org'
@@ -24,15 +24,23 @@ conflicts=("selinux-usr-${pkgname}")
 provides=("selinux-usr-${pkgname}=${pkgver}-${pkgrel}")
 source=("https://github.com/SELinuxProject/selinux/releases/download/20190315/${pkgname}-${pkgver}.tar.gz"
         "libselinux.tmpfiles.d"
-        '0001-libselinux-Use-Python-distutils-to-install-SELinux-p.patch')
+        '0001-libselinux-Use-Python-distutils-to-install-SELinux-p.patch'
+        '0001-libselinux-Fix-security_get_boolean_names-build-erro.patch')
 sha256sums=('1bccc8873e449587d9a2b2cf253de9b89a8291b9fbc7c59393ca9e5f5f4d2693'
             'afe23890fb2e12e6756e5d81bad3c3da33f38a95d072731c0422fbeb0b1fa1fc'
-            '47e8c4b6c67d1778bd0a8de782ea6d2406e8de3ad13064c85d53deba222100af')
+            '47e8c4b6c67d1778bd0a8de782ea6d2406e8de3ad13064c85d53deba222100af'
+            '9a0bcf7b8e2ec60fe954d2bbcd527f3b5d34e4cdb898ab19cd8b2ef869eed241')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
 
+  # Backport "libselinux: Use Python distutils to install SELinux python bindings"
+  # https://github.com/SELinuxProject/selinux/commit/2efa06857575e4118e91ca250b6b92da68b130d5
   patch -Np2 -i ../0001-libselinux-Use-Python-distutils-to-install-SELinux-p.patch
+
+  # Backport "libselinux: Fix security_get_boolean_names build error"
+  # https://github.com/SELinuxProject/selinux/commit/ee8f7a870c625de139aa271eae0c40578488c2f6
+  patch -Np2 -i ../0001-libselinux-Fix-security_get_boolean_names-build-erro.patch
 }
 
 build() {
