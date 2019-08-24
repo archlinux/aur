@@ -1,16 +1,16 @@
 # Maintainer: Bruce Zhang <zttt183525594@gmail.com>
 pkgname=majsoul-plus
-pkgver=2.0.0b2
+pkgver=2.0.0b6
 _pkgver=${pkgver/b/-beta.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Majsoul browser, with more features"
 arch=('x86_64' 'i686')
 url="https://github.com/MajsoulPlus/majsoul-plus"
 license=('AGPL3')
-depends=('electron4')
+depends=('electron')
 makedepends=('yarn' 'moreutils' 'jq' 'imagemagick')
 source=("https://github.com/MajsoulPlus/majsoul-plus/archive/v$_pkgver.tar.gz")
-sha256sums=('28551dadd794b525239b8e8777bee865f8eda495dcdd2d53185f570cd100a584')
+sha256sums=('cb149f2613cc644589fdb64bc028cc0a53fe1315a2dd7ab3bd005f2d99149db8')
 conflicts=("majsoul-plus-bin")
 
 prepare() {
@@ -19,10 +19,9 @@ prepare() {
 	if [ "$CARCH" == "i686" ]; then
 		targetArch="ia32"
 	fi
-	electronDist="\/usr\/lib\/electron4"
-    electronVersion=$(tail -1 /usr/lib/electron4/version)
+	electronDist="\/usr\/lib\/electron"
+    electronVersion=$(tail -1 /usr/lib/electron/version)
     sed -i "s|\"electron\": \".*|\"electron\": \"$electronVersion\",|" package.json
-	sed -i "/\"build-linux\": \"/c\\\"build-linux\": \"yarn pre-build && electron-builder --linux --$targetArch\"," package.json
     jq '.build.linux.target = ["dir"]' package.json | sponge package.json
     jq ".build.electronDist = \"$electronDist\"" package.json | sponge package.json
     jq ".build.electronVersion = \"$electronVersion\"" package.json | sponge package.json
@@ -32,7 +31,7 @@ prepare() {
 
 build() {
 	cd "$pkgname-$_pkgver"
-	yarn build-linux
+	yarn build
 }
 
 package() {
@@ -56,7 +55,7 @@ package() {
     done
 
 	echo "#!/usr/bin/env bash
-exec electron4 --enable-logging /usr/share/majsoul-plus/app.asar" > "$srcdir/majsoul-plus.sh"
+exec electron --enable-logging /usr/share/majsoul-plus/app.asar" > "$srcdir/majsoul-plus.sh"
 	install -Dm755 "$srcdir/majsoul-plus.sh" "$pkgdir/usr/bin/majsoul-plus"
 
 	echo "[Desktop Entry]
