@@ -2,7 +2,7 @@
 
 _pkgname=ytt
 pkgname=${_pkgname}-git
-pkgver=r113.c6e9032
+pkgver=r191.d7c7e0a
 pkgrel=1
 pkgdesc="YAML templating tool that works on YAML structure instead of text"
 url="https://get-ytt.io/"
@@ -46,7 +46,7 @@ build() {
 			--file-mark 'alt-example**/*:type=data' \
 			--file-mark 'example**/*:type=data' \
 			--file-mark 'generated.go.txt:exclusive-for-output=true' \
-			--output ../../tmp/
+			--output-directory ../../tmp/
 	)
 	mv tmp/generated.go.txt pkg/website/generated.go
 
