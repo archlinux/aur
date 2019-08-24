@@ -3,23 +3,23 @@
 
 # FIXME: holyhammer fails to build with ocaml-num
 pkgname=hol
-pkgver=kananaskis.12
-pkgrel=4
+pkgver=kananaskis.13
+pkgrel=1
 pkgdesc='HOL4 theorem-proving system'
 url='https://hol-theorem-prover.org/'
 arch=('x86_64')
 license=('BSD')
 install="$pkgname.install"
-source=("http://sourceforge.net/projects/hol/files/hol/${pkgver//./-}/hol-${pkgver//./-}.tar.gz"
+source=("https://github.com/HOL-Theorem-Prover/HOL/archive/${pkgver//./-}.tar.gz"
         #
        )
-md5sums=('5b01d43494c7809c029764a95bf06402')
+md5sums=('f40da5a4141739831441380646ca09e7')
 depends=('polyml' 'graphviz')
 provides=('hol')
 conflicts=('hol-git')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver//./-}"
+  cd "${srcdir}/HOL-${pkgver//./-}"
 
   poly < tools/smart-configure.sml
   bin/build
@@ -28,7 +28,7 @@ build() {
 }
 
 package() {
-  _oldtop="${srcdir}/${pkgname}-${pkgver//./-}"
+  _oldtop="${srcdir}/HOL-${pkgver//./-}"
   _newtop="/opt/hol"
 
   cd $_oldtop
