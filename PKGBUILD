@@ -1,18 +1,19 @@
-# Maintainer: Andy Weidenbaum <archbaum@gmail.com>
+# Contributor: Andy Weidenbaum <archbaum@gmail.com>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=runawk
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="AWK wrapper that provides support for modules"
 arch=('i686' 'x86_64')
 makedepends=('bmake' 'mk-configure')
 url="https://github.com/cheusov/runawk"
 license=('MIT')
-source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/cheusov/$pkgname/tar.gz/$pkgname-$pkgver)
-sha256sums=('363032efa8adc49d7446b31782ca49b76913b8fd07b315a3d03c67d3d329620e')
+source=("https://github.com/cheusov/$pkgname/archive/$pkgname-$pkgver.tar.gz")
+sha256sums=('4f0faf7ef1413aab91203a17cf84be729a23ac07337863e2c290131468376521')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgname-$pkgver"
+  cd $pkgname-$pkgname-$pkgver
 
   msg 'Building...'
   export PREFIX=/usr SYSCONFDIR=/etc MANDIR=/usr/share/man
@@ -21,14 +22,14 @@ build() {
 }
 
 check() {
-  cd "$srcdir/$pkgname-$pkgname-$pkgver"
+  cd $pkgname-$pkgname-$pkgver
 
   msg 'Testing...'
   mkcmake test
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgname-$pkgver"
+  cd $pkgname-$pkgname-$pkgver
 
   msg 'Installing...'
   export PREFIX=/usr SYSCONFDIR=/etc MANDIR=/usr/share/man
