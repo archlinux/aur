@@ -21,6 +21,7 @@ pkgbase = efl-git
 	makedepends = gcc
 	makedepends = binutils
 	makedepends = fakeroot
+	makedepends = python2
 	depends = avahi
 	depends = bullet
 	depends = curl
