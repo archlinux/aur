@@ -1,35 +1,36 @@
-# Maintainer: Andy Weidenbaum <archbaum@gmail.com>
+# Contributor: Andy Weidenbaum <archbaum@gmail.com>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=paexec
-pkgver=1.0.1
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Parallel executor, distributes tasks over network or CPUs"
 arch=('i686' 'x86_64')
 depends=('runawk')
-makedepends=('bmake' 'libmaa' 'mk-configure')
+makedepends=('bmake' 'libmaa' 'mk-configure' 'clang')
 url="https://github.com/cheusov/paexec"
 license=('MIT')
-source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/cheusov/$pkgname/tar.gz/$pkgname-$pkgver)
-sha256sums=('281924cf1a1f01a5e0bf0c61037ef0f5487c7f2e516c4905c17b6a5da6d7814d')
+source=("https://github.com/cheusov/$pkgname/archive/$pkgname-$pkgver.tar.gz")
+sha256sums=('bac3846e993e2be22c1b5fe122949f8326b54cdc09e1e1baa7d75c9cfd9d7a4c')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgname-$pkgver"
+  cd $pkgname-$pkgname-$pkgver
 
   msg2 'Building...'
-  export PREFIX=/usr SYSCONFDIR=/etc MANDIR=/usr/share/man
+  export PREFIX=/usr SYSCONFDIR=/etc MANDIR=/usr/share/man CC=clang
   export SUBPRJ_DFLT='paexec doc examples'
   mkcmake all
 }
 
 check() {
-  cd "$srcdir/$pkgname-$pkgname-$pkgver"
+  cd $pkgname-$pkgname-$pkgver
 
   msg2 'Testing...'
   mkcmake test
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgname-$pkgver"
+  cd $pkgname-$pkgname-$pkgver
 
   msg2 'Installing...'
   export PREFIX=/usr SYSCONFDIR=/etc MANDIR=/usr/share/man
