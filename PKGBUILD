@@ -13,7 +13,7 @@ provides=('blender-better-collada')
 conflicts=('blender-better-collada')
 source=("$pkgname::git://github.com/godotengine/collada-exporter.git")
 md5sums=('SKIP')
-_blenderver=2.79
+_blenderver=2.80
 
 pkgver() {
   cd "$srcdir/$pkgname"
