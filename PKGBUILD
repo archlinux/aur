@@ -15,7 +15,7 @@ depends=('mingw-w64-crt' 'mingw-w64-qtutilities')
 makedepends=('mingw-w64-gcc' 'mingw-w64-cmake' 'mingw-w64-qt5-tools' 'ffmpeg')
 url="https://github.com/Martchus/${_reponame}"
 source=("${_name}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('60cb2e5e11a7665765dfe8904f51759bdef88b6d11cd93f9b83fab868f9c09e8')
+sha256sums=('2d2537a25332ca745abff5dcde5354b6646c361f46f3dc4d00a529237f2f8e19')
 options=(!buildflags staticlibs !strip !emptydirs)
 
 _architectures=('i686-w64-mingw32' 'x86_64-w64-mingw32')
