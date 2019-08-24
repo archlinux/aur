@@ -1,6 +1,6 @@
 # Maintainer: Nick Haghiri (n s dot hag hiri at G mail dot com)
 pkgname=obinskit
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="ObinsKit for Anne Pro and Anne Pro 2"
 arch=('x86_64')
@@ -12,15 +12,15 @@ options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source_x86_64=("http://releases.obins.net/occ/linux/tar/ObinsKit_${pkgver}_x64.tar.gz"
 "deb_extra_files_obins.tar.gz")
-sha256sums_x86_64=('bcd09c9b7072b20fdf6ce9f735ef88251865edd3590466be6787587208114de9'
-'fb4b1b173c6d85a1c22d6e2de068d0e2aee346a2c191cc5b5d681c639c14f199')
+sha256sums_x86_64=('100988b25457113e06a91676e754b00297cfc6487497385e9a8451ad2ba9a200'
+'a8e75e41ed64e39d141f42fbcb41451eaafe537735278f973bc2f5906c212dd7')
 
 
 package(){
 
 	# Install the main files
 	install -d "${pkgdir}/opt/${pkgname}"
-	cp -a "${srcdir}/ObinsKit/." "${pkgdir}/opt/${pkgname}"
+	cp -a "${srcdir}/ObinsKit_${pkgver}_x64/." "${pkgdir}/opt/${pkgname}"
 	install -d "${pkgdir}/usr"
 	cp -a "${srcdir}/usr/." "${pkgdir}/usr"
 
