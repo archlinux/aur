@@ -7,7 +7,7 @@
 pkgname=digikam
 _pkgver=6.2.0
 pkgver=${_pkgver//-/_} # for beta versions
-pkgrel=1
+pkgrel=2
 pkgdesc="An advanced digital photo management application"
 arch=(x86_64)
 license=(GPL)
@@ -30,7 +30,6 @@ build() {
   cd build
 
   cmake ../$pkgname-$_pkgver \
-    -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DBUILD_TESTING=OFF \
     -DENABLE_KFILEMETADATASUPPORT=ON \
@@ -38,8 +37,7 @@ build() {
     -DENABLE_AKONADICONTACTSUPPORT=ON \
     -DENABLE_MYSQLSUPPORT=ON \
     -DENABLE_APPSTYLES=ON \
-    -DENABLE_QWEBENGINE=ON \
-    -DOpenGL_GL_PREFERENCE=GLVND
+    -DENABLE_QWEBENGINE=ON
   make
 }
 
