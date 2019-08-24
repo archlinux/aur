@@ -1,4 +1,4 @@
-pkgbase = nordvpn
+pkgbase = nordvpn-cli
 	pkgdesc = Official NordVPN CLI for Linux
 	pkgver = 3.3.1_1
 	pkgrel = 1
@@ -33,5 +33,5 @@ pkgbase = nordvpn
 	source_i686 = https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/nordvpn_3.3.1-1_i386.deb
 	sha256sums_i686 = 90277bbbcfb76eca4f891b125571373c9f1fd2b743fde390df8ee3bc3c8238c2
 
-pkgname = nordvpn
+pkgname = nordvpn-cli
 

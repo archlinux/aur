@@ -1,6 +1,6 @@
 # Maintainer: erkexzcx <aur at erkexzcx dot com>
 
-pkgname=nordvpn
+pkgname=nordvpn-cli
 pkgver=3.3.1_1
 pkgrel=1
 pkgdesc="Official NordVPN CLI for Linux"
