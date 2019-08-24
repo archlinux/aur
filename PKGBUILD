@@ -4,7 +4,7 @@ pkgname=('course-crawler-git')
 _pkgname=course-crawler
 pkgdesc="中国大学MOOC、学堂在线、网易云课堂、好大学在线、爱课程 MOOC 课程下载。"
 pkgver=20181219.78aa42c
-pkgrel=1
+pkgrel=2
 url='https://mooc.xoy.io/'
 arch=('any')
 license=('MIT')
@@ -27,7 +27,7 @@ package() {
   cd "${srcdir}/${_pkgname}"
   install -dm777 "${pkgdir}/usr/share/${_pkgname}"
   install -dm755 "${pkgdir}/usr/share/${_pkgname}/mooc"
-  install -m755 mooc.py "${pkgdir}/usr/share/${_pkgname}/mooc.py"
-  install -m755 LICENSE "${pkgdir}/usr/share/${_pkgname}/LICENSE"
-  install -m755 mooc/*.py "${pkgdir}/usr/share/${_pkgname}/mooc"
+  install -m644 mooc.py "${pkgdir}/usr/share/${_pkgname}/mooc.py"
+  install -m644 LICENSE "${pkgdir}/usr/share/${_pkgname}/LICENSE"
+  install -m644 mooc/*.py "${pkgdir}/usr/share/${_pkgname}/mooc"
 }
