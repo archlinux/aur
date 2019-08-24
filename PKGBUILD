@@ -14,7 +14,7 @@ depends=('c++utilities' 'qt5-base')
 makedepends=('cmake' 'qtutilities')
 url="https://github.com/Martchus/${_reponame}"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('641fe93f1d858d7e2b835dc5b47aef52673c5e8418302aea5725bb83963f3b37')
+sha256sums=('1251ae77a6ffb17d30a43c63729e38db4b7d2c2428f889768677065111bd8320')
 
 build() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
