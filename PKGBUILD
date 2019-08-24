@@ -1,7 +1,7 @@
 # Maintainer: Sibren Vasse <arch@sibrenvasse.nl>
 # Contributor: Ilya Gulya <ilyagulya@gmail.com>
 pkgname="deezer"
-pkgver=4.15.1
+pkgver=4.15.2
 pkgrel=1
 pkgdesc="A proprietary music streaming service"
 arch=('any')
@@ -18,7 +18,7 @@ source=(
          urls.patch
          menu-bar.patch
 )
-md5sums=('d7db6bdbae1be2851d16e1723a0ef7fa'
+md5sums=('f86f410e47142a7efadd1d8246c3d8a8'
          'bb851102d63a9cb396b42d7a61c5104c'
          '4a491cdf76afeffb7680d3abdc3f4b89'
          '199ce71cc60dd7feb84ee36a8580639d'
