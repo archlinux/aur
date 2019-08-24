@@ -17,11 +17,11 @@ source_arm64=("https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/nordvpn_3.3
 source_armv6h=("https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/nordvpn_3.3.1-1_armel.deb")
 source_armv7h=("https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/nordvpn_3.3.1-1_armhf.deb")
 source_i686=("https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/nordvpn_3.3.1-1_i386.deb")
-sha256sums_x86_64=("7004158f43503238a90556331d3b845e6c67de6c0a0e5e406625f132418d1d14")
-sha256sums_arm64=("40ed38281dd5c290148691890a0a5c37182a1b7dd4fdfcea6ef43081cf58beee")
-sha256sums_armv6h=("428209f06543871d02a8a616e172f735b98c0d17f67a0f34fa2e103097c67df6")
-sha256sums_armv7h=("681f23146b8ad5c46291d3a3058a8f179a6593cc18fa50187ce0d20d9659acc8")
-sha256sums_i686=("79b835daf31f6348138e25aae3f46c6d2b344582d7ed67d45a10dcde02d1faf2")
+sha256sums_x86_64=("2cfadc4475c1061bf3d194a5d0faef1d89be7fd61392339304b9f24c52b7aa10")
+sha256sums_arm64=("84ff8272f33f5c4668c666abf1ebfeafe28257675004d54b1e7775b674fc2db3")
+sha256sums_armv6h=("37ae23fb364f824dfc22bb798450870e246d6b34f11ff3c3127225d05f4fce57")
+sha256sums_armv7h=("4140d53d231050055ff0cedd9d50613f605bc82cb7478df1eee9f1fb4a988f6c")
+sha256sums_i686=("90277bbbcfb76eca4f891b125571373c9f1fd2b743fde390df8ee3bc3c8238c2")
 
 package() {
 	bsdtar -O -xf *.deb data.tar.xz | bsdtar -C "${pkgdir}" -xJf -
