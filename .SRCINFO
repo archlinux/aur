@@ -1,6 +1,6 @@
 pkgbase = jrnl-git
 	pkgdesc = A simple command line journal application that stores your journal in a plain text file
-	pkgver = 1.9.7.r16.g15ef974
+	pkgver = 0
 	pkgrel = 1
 	url = https://jrnl.sh/
 	arch = any
@@ -18,9 +18,10 @@ pkgbase = jrnl-git
 	depends = python-xdg
 	depends = python-cryptography
 	conflicts = jrnl
-	options = !emptydirs
-	source = jrnl::git+https://github.com/maebert/jrnl.git
+	source = git+https://github.com/maebert/jrnl.git
 	md5sums = SKIP
+	sha1sums = SKIP
+	sha256sums = SKIP
 
 pkgname = jrnl-git
 
