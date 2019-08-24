@@ -14,7 +14,7 @@ license=('GPL')
 makedepends=('cmake' 'doxygen' 'dia' 'graphviz' 'c++utilities')
 url="https://github.com/Martchus/${_reponame}"
 source=("${_name}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('79915e782b319ffa1f21b3cc895826b6035c197baa003b9417d7574b039a5041')
+sha256sums=('c6dd7cd5f08a6c2aa5c6adb0bc4d240eecec95edcda05bcecdc371a27e9cbfd9')
 
 build() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
