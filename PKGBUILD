@@ -3,10 +3,10 @@
 pkgname=julia-customunitranges
 _pkgname=CustomUnitRanges
 pkgver=0.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Package-specific AbstractUnitRange types for julia'
 arch=(any)
-url=https://github.com/JuliaArrays/CatIndices.jl
+url=https://github.com/JuliaArrays/CustomUnitRanges.jl
 license=(MIT)
 depends=(julia julia-compat julia-loadpath)
 makedepends=(julia-distrohelper)
