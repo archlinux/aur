@@ -6,7 +6,7 @@
 _reponame=reflective-rapidjson
 _llvmver=8
 pkgname=reflective-rapidjson
-pkgver=0.0.8
+pkgver=0.0.9
 pkgrel=1
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='Code generator for serializing/deserializing C++ objects to/from JSON using Clang and RapidJSON'
@@ -22,7 +22,11 @@ sha256sums=('18b99bd820e033eba5aa8b40eca3d3c6fe06722eafe6ea79c298d8b5bc7f434a')
 
 build() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
-  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="/usr" .
+  cmake \
+    -DCMAKE_BUILD_TYPE:STRING='Release' \
+    -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
+    -DBUILD_SHARED_LIBS:BOOL=ON \
+    .
   make
 }
 
