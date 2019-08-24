@@ -1,0 +1,17 @@
+pkgbase = kick-assembler
+	pkgdesc = Advanced MOS 65XX assembler
+	pkgver = 5.9
+	pkgrel = 1
+	url = http://www.theweb.dk/KickAssembler/
+	arch = any
+	license = unknown
+	depends = bash
+	depends = java-runtime
+	noextract = KickAssembler5.9.zip
+	source = http://www.theweb.dk/KickAssembler/KickAssembler5.9.zip
+	source = kickass
+	md5sums = 04449e2a3db2105a708124efe5c9b87a
+	md5sums = 275e9754426ec0063ed7b2219063cbe4
+
+pkgname = kick-assembler
+
