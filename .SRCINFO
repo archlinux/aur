@@ -17,7 +17,7 @@ pkgbase = freeglut-svn
 	conflicts = glut
 	conflicts = freeglut
 	conflicts = freeglut-svn
-	source = svn+https://freeglut.svn.sourceforge.net/svnroot/freeglut/trunk/freeglut/freeglut/
+	source = svn+https://svn.code.sf.net/p/freeglut/code/trunk/freeglut/freeglut
 	md5sums = SKIP
 
 pkgname = freeglut-x11-svn

@@ -2,7 +2,7 @@
 _pkgbase="freeglut"
 pkgbase="$_pkgbase-svn"
 pkgname=("$_pkgbase-x11-svn" "$_pkgbase-wayland-svn")
-pkgver=r1768
+pkgver=r1846
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://freeglut.sourceforge.net/"
@@ -10,7 +10,7 @@ license=('MIT')
 makedepends=('subversion' 'cmake' 'mesa' 'glu' 'wayland' 'libxxf86vm')
 provides=('glut' 'freeglut' 'freeglut-svn')
 conflicts=('glut' 'freeglut' 'freeglut-svn')
-source=("svn+https://freeglut.svn.sourceforge.net/svnroot/freeglut/trunk/freeglut/freeglut/")
+source=("svn+https://svn.code.sf.net/p/freeglut/code/trunk/freeglut/freeglut")
 md5sums=('SKIP')
 
 pkgver() {
