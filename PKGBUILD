@@ -1,7 +1,7 @@
 # Maintainer: HER0_01 <aconrad103 at gmail.com>
 
 pkgname=blender-better-collada-git
-pkgver=101.3250ab9
+pkgver=111.9a8fae9
 pkgrel=1
 pkgdesc="Better Collada exporter for Blender, made for the Godot Engine"
 arch=('any')
