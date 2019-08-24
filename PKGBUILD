@@ -6,7 +6,7 @@
 _reponame=qtutilities
 pkgname=mingw-w64-qtutilities
 _name=${pkgname#mingw-w64-}
-pkgver=5.13.0
+pkgver=6.0.0
 pkgrel=1
 arch=('any')
 pkgdesc='Common Qt related C++ classes and routines used by my applications such as dialogs, widgets and models (mingw-w64)'
@@ -18,34 +18,56 @@ url="https://github.com/Martchus/${_reponame}"
 source=("${_name}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
 sha256sums=('f12204958d4181154fed7a9d027756cde6fe8a7b84f1c353b06c8c89abb542c5')
 options=(!buildflags staticlibs !strip !emptydirs)
-_architectures='i686-w64-mingw32 x86_64-w64-mingw32'
-[[ $NO_STATIC_LIBS ]] ||
-  makedepends+=('mingw-w64-qt5-base-static' 'mingw-w64-qt5-svg') \
-  optdepends+=('mingw-w64-qt5-base-static: use of static library'
-               'mingw-w64-qt5-svg: use of static library') \
-  _configurations='-DENABLE_STATIC_LIBS:BOOL=ON'
-[[ $NO_SHARED_LIBS ]] && _configurations+=' -DDISABLE_SHARED_LIBS:BOOL=ON'
+
+_architectures=('i686-w64-mingw32' 'x86_64-w64-mingw32')
+_configurations=()
+[[ $NO_SHARED_LIBS ]] || _configurations+=('shared')
+[[ $NO_STATIC_LIBS ]] || _configurations+=('static') makedepends+=('mingw-w64-qt5-base-static')
 
 build() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
-  export PREVENT_FORCING_SHARED_LIBS=ON
-  for _arch in ${_architectures}; do
-    mkdir -p "build-${_arch}" && pushd "build-${_arch}"
-    ${_arch}-cmake \
-        -DCMAKE_BUILD_TYPE=Release \
+
+  declare -A _config_flags=(
+    [shared]='
+        -DBUILD_SHARED_LIBS:BOOL=ON
+    '
+    [static]='
+        -DBUILD_SHARED_LIBS:BOOL=OFF
+        -DCMAKE_FIND_LIBRARY_SUFFIXES:STRING=.a;.lib
+        -DSTATIC_LINKAGE:BOOL=ON
+        -DSTATIC_LIBRARY_LINKAGE:BOOL=ON
+        -DQT_PACKAGE_PREFIX=StaticQt5
+        -DKF_PACKAGE_PREFIX=StaticKF5
+    '
+  )
+
+  for _arch in "${_architectures[@]}"; do
+    for _cfg in "${_configurations[@]}"; do
+      msg2 "${_arch}-${_cfg}"
+      mkdir -p "build-${_arch}-${_cfg}" && pushd "build-${_arch}-${_cfg}"
+      ${_arch}-cmake \
+        -DCMAKE_BUILD_TYPE:STRING='Release' \
         -DCMAKE_INSTALL_PREFIX="/usr/${_arch}" \
-        -DBUILTIN_TRANSLATIONS:BOOL=ON \
-        ${_configurations} ../
-    make
-    popd
+        -DCONFIGURATION_NAME:STRING="${_cfg}" \
+        -DCONFIGURATION_PACKAGE_SUFFIX:STRING="-${_cfg}" \
+	-DENABLE_TARGETS_FOR_MINGW64_CROSS_PACKAGING:BOOL=ON \
+        ${_config_flags[$_cfg]} \
+        ../
+      make
+      popd
+    done
   done
 }
 
 package() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
-  for _arch in ${_architectures}; do
-    mkdir -p "build-${_arch}" && pushd "build-${_arch}"
-    make DESTDIR="${pkgdir}" install-mingw-w64-strip
-    popd
+
+  for _arch in "${_architectures[@]}"; do
+    for _cfg in "${_configurations[@]}"; do
+      msg2 "${_arch}-${_cfg}"
+      pushd "build-${_arch}-${_cfg}"
+      make DESTDIR="${pkgdir}" install-mingw-w64-strip
+      popd
+    done
   done
 }
