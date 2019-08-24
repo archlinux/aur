@@ -8,7 +8,7 @@ arch=('any')
 url="https://jrnl.sh/"
 license=('MIT')
 depends=('python-asteval' 'python-dateutil' 'python-keyring' 'python-parsedatetime' \
-         'python-pytz' 'python-tzlocal' 'python-pyaml' 'python-six' 'python-passlib' 'python-pyxdg' 'python-cryptography')
+         'python-pytz' 'python-tzlocal' 'python-pyaml' 'python-six' 'python-passlib' 'python-xdg' 'python-cryptography')
 makedepends=('git')
 conflicts=("${pkgname%-git}")
 options=(!emptydirs)
