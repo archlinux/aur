@@ -1,0 +1,15 @@
+pkgbase = python-pypocketfft
+	pkgdesc = Fast Fourier, trigonometric and Hartley transforms with a simple Python interface
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://gitlab.mpcdf.mpg.de/mtr/pypocketfft
+	arch = any
+	license = BSD 3-clause "New" or "Revised" License
+	makedepends = python-setuptools
+	depends = python
+	depends = python-numpy
+	depends = pybind11
+	source = python-pypocketfft-0.0.1.tar.gz::https://gitlab.mpcdf.mpg.de/mtr/pypocketfft/-/archive/c0f74f610adfc60b8b5e3c3bce6477e646329f63/pypocketfft-c0f74f610adfc60b8b5e3c3bce6477e646329f63.tar.gz
+	sha512sums = 3957e4b1e1b28979d30b32f74dba17e9f26c3ca38f2c909c1b8b445f9fff8cbb04a27b81a31200d4c8b41ad1c7310eea357ca7a68bf0f1e215c2fd557dc53735
+
+pkgname = python-pypocketfft
