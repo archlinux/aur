@@ -3,7 +3,7 @@
 
 pkgname=emscripten-git
 epoch=2
-pkgver=1.38.41.r21.gbef558aff
+pkgver=1.38.42.r25.g7d4968ceb
 pkgrel=1
 pkgdesc="LLVM-to-JavaScript compiler"
 arch=('i686' 'x86_64')
@@ -21,11 +21,11 @@ source=('git://github.com/kripken/emscripten.git#branch=incoming'
         'git://github.com/kripken/emscripten-fastcomp-clang.git#branch=incoming'
         'emscripten.sh::https://git.archlinux.org/svntogit/community.git/plain/trunk/emscripten.sh?h=packages/emscripten'
         'emscripten.config')
-md5sums=('SKIP'
-         'SKIP'
-         'SKIP'
-         '99ad755a0e9ccf5620e05e1293cdbffa'
-         'c8b7db20a44edb41c8675812e17b5c42')
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            '44d6e3df973a7e7ef0b66dbc05d2d49fe06adf711a0f51ba9f05107dfffc35c5'
+            'f5c3836a05f51285c12033607ba174c72576644d59a534ebe6b0476912642d7f')
 
 pkgver() {
   cd ${pkgname%-git}
@@ -87,7 +87,7 @@ package() {
   done
   cd ..
   cp -R em* cmake/ site/ src/ system/ third_party/ tools/ \
-     $pkgdir/usr/lib/emscripten
+     "$pkgdir"/usr/lib/emscripten
   install -m 0755 "$srcdir"/${pkgname%-git}.config \
 	  "$pkgdir"/usr/lib/${pkgname%-git}/tools/settings_template_readonly.py
   install -Dm0644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
