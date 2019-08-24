@@ -1,7 +1,7 @@
 pkgbase = savvycan
 	pkgdesc = QT-based CAN bus analysis tool
 	pkgver = 199.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/collin80/SavvyCAN
 	arch = x86_64
 	license = MIT
