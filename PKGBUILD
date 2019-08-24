@@ -6,30 +6,55 @@
 _reponame=tagparser
 pkgname=mingw-w64-tagparser
 _name=${pkgname#mingw-w64-}
-pkgver=8.3.0
+pkgver=9.0.0
 pkgrel=1
 arch=('any')
 pkgdesc='C++ library for reading and writing MP4/M4A/AAC (iTunes), ID3, Vorbis, Opus, FLAC and Matroska tags (mingw-w64)'
 license=('GPL')
 depends=('mingw-w64-crt' 'mingw-w64-c++utilities>=4.5.0' 'mingw-w64-zlib')
 optdepends=("$_name-doc: API documentation")
-checkdepends=('mingw-w64-cppunit' 'mingw-w64-wine')
+checkdepends=('mingw-w64-cppunit' 'mingw-w64-wine' 'mingw-w64-openssl')
 makedepends=('mingw-w64-gcc' 'mingw-w64-cmake')
 url="https://github.com/Martchus/${_reponame}"
 source=("${_name}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
 sha256sums=('79915e782b319ffa1f21b3cc895826b6035c197baa003b9417d7574b039a5041')
 options=(!buildflags staticlibs !strip !emptydirs)
-_architectures='i686-w64-mingw32 x86_64-w64-mingw32'
-[[ $NO_STATIC_LIBS ]] || _configurations='-DENABLE_STATIC_LIBS:BOOL=ON'
-[[ $NO_SHARED_LIBS ]] && _configurations+=' -DDISABLE_SHARED_LIBS:BOOL=ON'
+
+_architectures=('i686-w64-mingw32' 'x86_64-w64-mingw32')
+_configurations=()
+[[ $NO_SHARED_LIBS ]] || _configurations+=('shared')
+[[ $NO_STATIC_LIBS ]] || _configurations+=('static')
 
 build() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
-  for _arch in ${_architectures}; do
-    mkdir -p "build-${_arch}" && pushd "build-${_arch}"
-    ${_arch}-cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="/usr/${_arch}" ${_configurations} ../
-    make
-    popd
+
+  declare -A _config_flags=(
+    [shared]='
+        -DBUILD_SHARED_LIBS:BOOL=ON
+    '
+    [static]='
+        -DBUILD_SHARED_LIBS:BOOL=OFF
+        -DCMAKE_FIND_LIBRARY_SUFFIXES:STRING=.a;.lib
+        -DSTATIC_LINKAGE:BOOL=ON
+        -DSTATIC_LIBRARY_LINKAGE:BOOL=ON
+    '
+  )
+
+  for _arch in "${_architectures[@]}"; do
+    for _cfg in "${_configurations[@]}"; do
+      msg2 "${_arch}-${_cfg}"
+      mkdir -p "build-${_arch}-${_cfg}" && pushd "build-${_arch}-${_cfg}"
+      ${_arch}-cmake \
+        -DCMAKE_BUILD_TYPE:STRING='Release' \
+        -DCMAKE_INSTALL_PREFIX="/usr/${_arch}" \
+        -DCONFIGURATION_NAME:STRING="${_cfg}" \
+        -DCONFIGURATION_PACKAGE_SUFFIX:STRING="-${_cfg}" \
+	-DENABLE_TARGETS_FOR_MINGW64_CROSS_PACKAGING:BOOL=ON \
+        ${_config_flags[$_cfg]} \
+        ../
+      make
+      popd
+    done
   done
 }
 
@@ -41,20 +66,26 @@ check() {
     return
   fi
 
-  for _arch in ${_architectures}; do
-    mkdir -p "build-${_arch}" && pushd "build-${_arch}"
-    export WINEPATH="/usr/${_arch}/bin"
-    export WINEDEBUG=-all
-    make check
-    popd
+  # note: Only testing the most important configuration here because executing the tests takes quite a while.
+  for _arch in 'x86_64-w64-mingw32'; do
+    for _cfg in 'static'; do
+      msg2 "${_arch}-${_cfg}"
+      pushd "build-${_arch}-${_cfg}"
+      make WINEPATH="/usr/${_arch}/bin" WINEDEBUG=-all check
+      popd
+    done
   done
 }
 
 package() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
-  for _arch in ${_architectures}; do
-    mkdir -p "build-${_arch}" && pushd "build-${_arch}"
-    make DESTDIR="${pkgdir}" install-mingw-w64-strip
-    popd
+
+  for _arch in "${_architectures[@]}"; do
+    for _cfg in "${_configurations[@]}"; do
+      msg2 "${_arch}-${_cfg}"
+      pushd "build-${_arch}-${_cfg}"
+      make DESTDIR="${pkgdir}" install-mingw-w64-strip
+      popd
+    done
   done
 }
