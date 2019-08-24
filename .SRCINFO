@@ -7,6 +7,7 @@ pkgbase = reddio-git
 	arch = any
 	license = custom:MIT
 	makedepends = git
+	depends = dash
 	depends = curl
 	depends = jq
 	optdepends = gnu-netcat: authenticate with your Reddit account credentials

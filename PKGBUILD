@@ -16,7 +16,7 @@ license=('custom:MIT')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 
-depends=('curl' 'jq')
+depends=('dash' 'curl' 'jq')
 optdepends=('gnu-netcat: authenticate with your Reddit account credentials'
             'openbsd-netcat: authenticate with your Reddit account credentials')
 makedepends=('git')
