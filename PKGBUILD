@@ -15,6 +15,8 @@ optdepends=('sabnzbd: usenet downloader'
             'transmission-qt: torrent downloader (Qt)'
             'deluge: torrent downloader'
             'rtorrent: torrent downloader'
+            'qbittorrent: torrent downloader'
+            'qbittorrent-nox: torrent downloader (no X)'
             'jackett: torrent indexer proxy'
             'libgdiplus: provides a gdi+ compatible api')
 
