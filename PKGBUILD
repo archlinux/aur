@@ -16,9 +16,10 @@ url="https://blender.org/"
 depends=('alembic' 'libgl' 'python' 'python-numpy' 'openjpeg' 'desktop-file-utils' 'hicolor-icon-theme'
          'ffmpeg' 'fftw' 'openal' 'freetype2' 'libxi' 'openimageio' 'opencolorio'
          'openvdb' 'opencollada' 'opensubdiv' 'openshadinglanguage' 'libtiff' 'libpng')
-#optdepends=('cuda: CUDA support in Cycles')
-makedepends=('git' 'cmake' 'boost' 'mesa' 'llvm' 'ninja')
-((DISABLE_CUDA)) || makedepends+=('cuda') # disable to prevent build process from exiting Travis 50m build time limit
+makedepends=('git' 'cmake' 'boost' 'mesa' 'llvm')
+((DISABLE_NINJA)) || makedepends+=('ninja')
+((DISABLE_CUDA))  || makedepends+=('cuda') && optdepends=('cuda: CUDA support in Cycles')
+
 options=(!strip)
 provides=('blender-2.7')
 license=('GPL')
@@ -73,7 +74,7 @@ build() {
 
   # determine whether we can precompile CUDA kernels
   _CUDA_PKG=`pacman -Qq cuda 2>/dev/null` || true
-  if [ "$_CUDA_PKG" != "" ]; then
+  if [ "$_CUDA_PKG" != "" ] && ! ((DISABLE_CUDA)) ; then
       _EXTRAOPTS=(-DWITH_CYCLES_CUDA_BINARIES=ON \
                   -DCUDA_TOOLKIT_ROOT_DIR=/opt/cuda)
       ((TRAVIS)) && _EXTRAOPTS+=(-DCUDA_NVCC_FLAGS="--ptxas-options=-w")  # suppress all ptxas warnings in Travis build
