@@ -1,48 +1,32 @@
-# Maintainer: Tarn Burton <twburton at gmail dot com>
+# Maintainer: Anton Kudelin <kudelin at protonmail dot com>
+# Contributor: Tarn Burton <twburton at gmail dot com>
+
 pkgname='cadabra2'
-pkgver=2.2.0
+pkgver=2.2.7
 pkgrel=1
-pkgdesc="A computer algebra system designed specifically for the solution of problems encountered in field theory."
-arch=('i686' 'x86_64')
-url="http://cadabra.science/"
+pkgdesc="A field-theory motivated approach to computer algebra"
+arch=('x86_64')
+url="http://cadabra.science"
 license=('GPL')
 conflicts=('cadabra2-git')
-depends=(
-  'boost-libs'
-  'glibmm'
-  'gmp'
-  'gtkmm3'
-  'jsoncpp'
-  'mathjax'
-  'pcre'
-  'python-matplotlib'
-  'python-sympy'
-  'texlive-core'
-)
-makedepends=(
-  'boost'
-  'cmake'
-  'git'
-)
-source=("$pkgname::git+https://github.com/kpeeters/cadabra2#tag=$pkgver" "package.patch")
-md5sums=('SKIP'
-         '2cf414a7280fd64858d1d19d38d4bd8c')
-# install=package.install
-
-# prepare() {
-#   cd "${srcdir}/${pkgname}"
-#   patch -Np1 -i ../package.patch
-# }
+depends=('python' 'sqlite3' 'boost' 'gtkmm3')
+makedepends=('cmake')
+source=("https://github.com/kpeeters/$pkgname/archive/$pkgver.tar.gz")
+sha256sums=('9baec68c52fca1e7bcda70448b8596f335ef004f4fc670a1def4721e6d8ac035')
 
 build() {
-  cd $pkgname
+  cd $pkgname-$pkgver
   mkdir -p build
   cd build
-  cmake -DCMAKE_SKIP_RPATH=true -DCMAKE_INSTALL_PREFIX=/usr ..
+  cmake ..\
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DSQLITE3_INCLUDE_DIR=/usr/include
   make
 }
 
 package() {
-  cd "${pkgname}/build"
-  make DESTDIR="${pkgdir}" install
+  cd $pkgname-$pkgver/build
+  make DESTDIR=$pkgdir install
+  mv $pkgdir/usr/man $pkgdir/usr/share/$pkgname
 }
+

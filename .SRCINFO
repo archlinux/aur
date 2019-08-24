@@ -1,29 +1,18 @@
 pkgbase = cadabra2
-	pkgdesc = A computer algebra system designed specifically for the solution of problems encountered in field theory.
-	pkgver = 2.2.0
+	pkgdesc = A field-theory motivated approach to computer algebra
+	pkgver = 2.2.7
 	pkgrel = 1
-	url = http://cadabra.science/
-	arch = i686
+	url = http://cadabra.science
 	arch = x86_64
 	license = GPL
-	makedepends = boost
 	makedepends = cmake
-	makedepends = git
-	depends = boost-libs
-	depends = glibmm
-	depends = gmp
+	depends = python
+	depends = sqlite3
+	depends = boost
 	depends = gtkmm3
-	depends = jsoncpp
-	depends = mathjax
-	depends = pcre
-	depends = python-matplotlib
-	depends = python-sympy
-	depends = texlive-core
 	conflicts = cadabra2-git
-	source = cadabra2::git+https://github.com/kpeeters/cadabra2#tag=2.2.0
-	source = package.patch
-	md5sums = SKIP
-	md5sums = 2cf414a7280fd64858d1d19d38d4bd8c
+	source = https://github.com/kpeeters/cadabra2/archive/2.2.7.tar.gz
+	sha256sums = 9baec68c52fca1e7bcda70448b8596f335ef004f4fc670a1def4721e6d8ac035
 
 pkgname = cadabra2
 
