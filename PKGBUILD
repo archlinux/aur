@@ -1,6 +1,7 @@
 # Maintainer: Manuel Palenzuela <sadshinobi@protonmail.com>
 
 pkgname=jrnl-git
+_gitname=jrnl
 pkgver=1.9.7.r16.g15ef974
 pkgrel=1
 pkgdesc="A simple command line journal application that stores your journal in a plain text file"
@@ -16,13 +17,13 @@ source=("${pkgname%-git}::git+https://github.com/maebert/jrnl.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "$_gitname"
   printf '0.r%s.%s' \
       "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}"
+	cd "$_gitname"
   python setup.py install --root="$pkgdir/" --optimize=1
   install -D LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
