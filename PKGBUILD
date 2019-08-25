@@ -3,13 +3,14 @@
 # Original Submitter: Bob Finch <w9ya@qrpqrci.net>
 
 pkgname=yfklog
-pkgver=0.3.5
-pkgrel=5
+pkgver=0.5.0
+pkgrel=1
 pkgdesc="Yet Another Ham Radio Logbook - w/ LoTW & Ncurses based"
 arch=('any')
 url="http://fkurz.net/ham/yfklog.html"
 license=('GPL' 'FDL')
-depends=('cty' 'texlive-core' 'perl-curses' 'perl-dbd-sqlite' 'hamradio-menus')
+depends=('cty' 'texlive-core' 'perl-curses' 'perl-dbd-sqlite' \
+         'perl-net-telnet' 'hamradio-menus')
 optdepends=('hamlib: for rig control'
 	    'trustedqsl: for LOTW support'
 	    'xplanet: for ploted output'
@@ -46,15 +47,15 @@ package() {
 	install -m644 ../*.desktop $pkgdir/usr/share/applications/
 	install -m644 ../*.png $pkgdir/usr/share/pixmaps
 }
-md5sums=('b9dcffbd77d262676ed108be0ab2db0d'
-         'f32b15845bb65b204c2522c4474fe96d'
+md5sums=('2c3fe7c0c3bc00918546e7df5ed1c18b'
+         '116f628daf2efb126bba1a4352de5ed6'
          '9dafc2f3a617051ad36dd41ac4b74b34'
          '90b9267746f9b1f1ecd6842e5a308a28'
-         '6aa31a456ddfe674cc3bf95d53ca2817'
-         '24846dfbca5f4e266ca01c320c275a3f')
-sha256sums=('af46983aa8900a8b1379b0302cf7891e29e3c2af662dd96ccd7342dc2a159bbf'
-            '29ed95342a188dfed7d397f04fb2fd0cdcb8337d9d946458bf5a467dab4cb995'
+         '9dd16a491c0c2b0ec0d6cd9b01fde231'
+         'a5160400a5d4014421412508ec5c1f29')
+sha256sums=('ca082e0d15ba1a004fb5fda0d91244183e6077514bf4faceef04956175fc6a92'
+            '6ca482050362a88b88524db140f869c9e6d2b406096116abcafc75722dfc9a54'
             'abe2f31f72a437b95315c21794fed1186988015e84b3aef26b138b5e047a55d1'
             'e54bf52aa79ac2a90b8a901d9eea37c04b4a5895daee4736dde65110abb7d49d'
-            'c5f3bde5b544aa99d41a57760eb6630b1269a6e07500eb7027d078175e32c926'
-            '15f0b3d809db81f48dd3c9d2f10b73eaa3cfe4bf6434427c4702a0a045f014ed')
+            'b1f3da31f7ebd05f23d5cb8499add2ec109de3fcd375da6e7b0c20d7736c2386'
+            'bed6677b575eecaeba9ff426edca3073c7cf5b63e02650f67bb4dcac12d8072a')
