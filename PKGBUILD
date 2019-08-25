@@ -2,7 +2,7 @@
 
 pkgname=emacs-ess
 pkgver=18.10.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Emacs Speaks Statistics: A Universal Interface for Statistical Analysis"
 url="http://ess.r-project.org/"
 arch=('any')
@@ -19,11 +19,6 @@ validpgpkeys=('3808603281971CFF6949D38A1248E0A068E0DB0F') # Martin Maechler, ETH
 prepare() {
   cd "$srcdir"/ess-$pkgver
   patch -Np1 < "$srcdir"/install_els.patch
-}
-
-build() {
-  cd ess-$pkgver
-  make prefix=/usr all
 }
 
 package() {
