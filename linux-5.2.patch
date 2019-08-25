@@ -1,0 +1,13 @@
+diff --git a/os_dep/linux/os_intfs.c b/os_dep/linux/os_intfs.c
+index 2d88a1b..8af779d 100644
+--- a/os_dep/linux/os_intfs.c
++++ b/os_dep/linux/os_intfs.c
+@@ -636,7 +636,7 @@ static u16 rtw_select_queue(struct net_device *dev, struct sk_buff *skb
+ 		, struct net_device *sb_dev
+ 	#endif
+ #endif
+-#if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 14, 0)
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(3, 14, 0) && LINUX_VERSION_CODE < KERNEL_VERSION(5, 2, 0))
+ 	, select_queue_fallback_t fallback
+ #endif
+ )
