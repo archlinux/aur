@@ -1,6 +1,6 @@
 pkgbase = ngs
 	pkgdesc = A new, domain-specific API for accessing reads, alignments and pileups produced from Next Generation Sequencing.
-	pkgver = 2.9.6
+	pkgver = 2.10.0
 	pkgrel = 2
 	url = https://github.com/ncbi/ngs
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = ngs
 	depends = perl-file-copy-recursive
 	depends = zlib
 	provides = ngs
-	source = https://github.com/ncbi/ngs/archive/2.9.6.tar.gz
+	source = https://github.com/ncbi/ngs/archive/2.10.0.tar.gz
 	source = ngs.patch
-	sha256sums = 4be42f4d62b2376dc2fc4cd992822525bd99f8e1193008c2dab387a2f291405b
+	sha256sums = 4139adff83af213d7880bc80d1c0f5ee9b00c6c4e615d00aa47aaa267e40ed25
 	sha256sums = 004eb006e9bbd9f4368c54663e7d991833aeae3e9c6583e61566340cd04d5bb6
 
 pkgname = ngs

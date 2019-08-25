@@ -3,7 +3,7 @@
 # Maintainer: Georgios Amanakis <g_amanakis{at}yahoo{dt}com>
 
 pkgname=ngs
-pkgver=2.9.6
+pkgver=2.10.0
 pkgrel=2
 pkgdesc="A new, domain-specific API for accessing reads, alignments and pileups produced from Next Generation Sequencing."
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('java-environment' 'perl-file-copy-recursive' 'zlib')
 provides=('ngs')
 license=('custom:PublicDomain')
 source=("https://github.com/ncbi/ngs/archive/$pkgver.tar.gz" "$pkgname.patch")
-sha256sums=('4be42f4d62b2376dc2fc4cd992822525bd99f8e1193008c2dab387a2f291405b'
+sha256sums=('4139adff83af213d7880bc80d1c0f5ee9b00c6c4e615d00aa47aaa267e40ed25'
             '004eb006e9bbd9f4368c54663e7d991833aeae3e9c6583e61566340cd04d5bb6')
 
 prepare(){
