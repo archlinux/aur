@@ -1,7 +1,7 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=ttf-iosevka-aile
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Experimental, quasi-proportional family of Iosevka.'
 arch=('any')
 url='https://be5invis.github.io/Iosevka/'
