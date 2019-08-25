@@ -1,6 +1,6 @@
-# Maintainer: Tom Meyers tom@pbfp.team
+# Maintainer: Tom Meyers tom@odex.be
 pkgname=readme-generator-git
-pkgver=r18.0ccf95b
+pkgver=r56.22070b8
 pkgrel=1
 pkgdesc="A basic tool to generate modern readme's"
 arch=(any)
