@@ -1,0 +1,14 @@
+post_install() {
+   sudo -u onlyoffice "/usr/share/webapps/onlyoffice/documentserver/server/tools/AllFontsGen"\
+ 	  --input="/usr/share/webapps/onlyoffice/documentserver/core-fonts"\
+ 	  --allfonts-web="/usr/share/webapps/onlyoffice/documentserver/sdkjs/common/AllFonts.js"\
+ 	  --allfonts="/usr/share/webapps/onlyoffice/documentserver/server/FileConverter/bin/AllFonts.js"\
+	  --images="/usr/share/webapps/onlyoffice/documentserver/sdkjs/common/Images"\
+	  --selection="/usr/share/webapps/onlyoffice/documentserver/server/FileConverter/bin/font_selection.bin"\
+	  --output-web="/usr/share/webapps/onlyoffice/documentserver/fonts"\
+	  --use-system="true"
+}
+ 
+post_upgrade() {
+   post_install
+}
