@@ -1,6 +1,6 @@
-# Maintainer: Tom Meyers tom@pbfp.team
+# Maintainer: Tom Meyers tom@odex.be
 pkgname=shunit-git
-pkgver=r31.6a774f4
+pkgver=r43.1dc12c8
 pkgrel=1
 pkgdesc="A basic unit testing framework for bash"
 arch=(any)
