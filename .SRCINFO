@@ -1,0 +1,17 @@
+pkgbase = ttf-iosevka-aile
+	pkgdesc = Experimental, quasi-proportional family of Iosevka.
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = https://be5invis.github.io/Iosevka/
+	arch = any
+	license = custom:OFL
+	depends = fontconfig
+	depends = xorg-font-utils
+	conflicts = ttf-iosevka-pack
+	source = https://github.com/be5invis/Iosevka/releases/download/v2.3.0/experimental-iosevka-aile-2.3.0.zip
+	source = ttf-iosevka-aile-2.3.0-1-LICENSE.md::https://raw.githubusercontent.com/be5invis/Iosevka/master/LICENSE.md
+	sha256sums = cdc48278957dee4fa550f0ede18a8a2df971b7789921617d43a043ff3355de8f
+	sha256sums = ecfd74a1d6749bf509cee122870da0186bccfae446e3f6bc5faff253577ab000
+
+pkgname = ttf-iosevka-aile
+
