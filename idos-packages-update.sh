@@ -40,6 +40,12 @@ idos_pkgs_strings=(
 )
 
 
+### Packages with those regexp's are ignored. No whitespaces are allowed!
+idos_ignore_pkgs_regexps=(
+  '\-license'
+)
+
+
 msg()
 {
   if [ $# -ge 1 ]; then
@@ -242,7 +248,7 @@ declare -a upgrades
 for pkg_string in "${idos_pkgs_strings[@]}"; do
   ### Get packages which are installed.
   debug "Searching for installed packages matching the search string '${pkg_string}' ..."
-  for _pkg_ver_group in $(pacman -Q -s "${pkg_string}" | sed -n 's|^local/||p' | tr ' \t' ';;'); do
+  for _pkg_ver_group in $(pacman -Q -s "${pkg_string}" | sed -n 's|^local/||p' | grep -v "${idos_ignore_pkgs_regexps[@]/#/-e}" | tr ' \t' ';;'); do
     _pkg="$(awk -F';' '{print $1}' <<< "${_pkg_ver_group}")"
     _old_ver="$(awk -F';' '{print $2}' <<< "${_pkg_ver_group}")"
     _aur_ver="$(get_aur_pkgs_version "${_pkg}" 2>/dev/null || cat <<< '')"
