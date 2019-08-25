@@ -129,9 +129,8 @@ prepare() {
   # URL: https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/110
   # Type: 3
   # Status: 4
-  # Comment: Makes the grid search icons hidden on some configuration: https://gitlab.gnome.org/GNOME/gnome-shell/issues/1456
-  # git cherry-pick -n a7852705^..2d908e80
-  patch -Np1 < ../110.patch
+  # Comment: Makes the grid search icons hidden if using certain custom themes, disabled by default
+  # patch -Np1 < ../110.patch
 
   git submodule init
   git config --local submodule.subprojects/gvc.url "$srcdir/libgnome-volume-control"
