@@ -1,21 +1,21 @@
 pkgbase = st-yutna
 	pkgdesc = Simple terminal emulator.
-	pkgver = 0.8.1
-	pkgrel = 3
+	pkgver = 0.8.2
+	pkgrel = 1
 	url = https://st.suckless.org/
 	arch = x86_64
 	license = MIT
 	depends = libxft
 	depends = ttf-roboto-mono
 	provides = st
-	source = https://dl.suckless.org/st/st-0.8.1.tar.gz
-	source = st-yutna-0.8.1.diff
-	source = st-no_bold_colors-0.8.1.diff
-	source = st-solarized-dark-0.8.1.diff
-	sha256sums = c4fb0fe2b8d2d3bd5e72763e80a8ae05b7d44dbac8f8e3bb18ef0161c7266926
-	sha256sums = 499c4aed075dcb4198f50a6b0da17e111ebd6b8e26925659e4b53dc29b87d99b
-	sha256sums = 7d47158cf17a4940da1e00ec613753aa98e7bbe021755d3cee26ada74782232e
-	sha256sums = b2d5e88a2616eafb82b2fefb63eecb0f9d71f839349ef40f9f69c1953444f88c
+	source = https://dl.suckless.org/st/st-0.8.2.tar.gz
+	source = st-yutna-0.8.2.diff
+	source = st-no_bold_colors-0.8.2.diff
+	source = st-solarized-dark-0.8.2.diff
+	sha256sums = aeb74e10aa11ed364e1bcc635a81a523119093e63befd2f231f8b0705b15bf35
+	sha256sums = 4e6ae20701290278bb9f4c1243a40d85b6bcc83d8478df964867df6c9b38fe8e
+	sha256sums = 8879e5a0dd1b529e5dc6905ae8b64b217f3b85f1a1d3c9d69e23f752c5539b6b
+	sha256sums = 1f5aa16f454a413b2f9c4e7f67e7b620607178365fdd0f15e62ba3922f9b531d
 
 pkgname = st-yutna
 

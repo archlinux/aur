@@ -2,8 +2,8 @@
 
 pkgname=st-yutna
 _pkgname=st
-pkgver=0.8.1
-pkgrel=3
+pkgver=0.8.2
+pkgrel=1
 pkgdesc="Simple terminal emulator."
 arch=("x86_64")
 url="https://st.suckless.org/"
@@ -11,19 +11,19 @@ license=("MIT")
 depends=("libxft" "ttf-roboto-mono")
 provides=("st")
 source=(https://dl.suckless.org/st/$_pkgname-$pkgver.tar.gz
-    st-yutna-0.8.1.diff
-    st-no_bold_colors-0.8.1.diff
-    st-solarized-dark-0.8.1.diff)
-sha256sums=("c4fb0fe2b8d2d3bd5e72763e80a8ae05b7d44dbac8f8e3bb18ef0161c7266926"
-    "499c4aed075dcb4198f50a6b0da17e111ebd6b8e26925659e4b53dc29b87d99b"
-    "7d47158cf17a4940da1e00ec613753aa98e7bbe021755d3cee26ada74782232e"
-    "b2d5e88a2616eafb82b2fefb63eecb0f9d71f839349ef40f9f69c1953444f88c")
+    st-yutna-$pkgver.diff
+    st-no_bold_colors-$pkgver.diff
+    st-solarized-dark-$pkgver.diff)
+sha256sums=("aeb74e10aa11ed364e1bcc635a81a523119093e63befd2f231f8b0705b15bf35"
+    "4e6ae20701290278bb9f4c1243a40d85b6bcc83d8478df964867df6c9b38fe8e"
+    "8879e5a0dd1b529e5dc6905ae8b64b217f3b85f1a1d3c9d69e23f752c5539b6b"
+    "1f5aa16f454a413b2f9c4e7f67e7b620607178365fdd0f15e62ba3922f9b531d")
 
 prepare() {
     cd $srcdir/$_pkgname-$pkgver
-    patch -p1 -i $srcdir/st-yutna-0.8.1.diff
-    patch -p1 -i $srcdir/st-no_bold_colors-0.8.1.diff
-    patch -p1 -i $srcdir/st-solarized-dark-0.8.1.diff
+    patch -p1 -i $srcdir/st-yutna-$pkgver.diff
+    patch -p1 -i $srcdir/st-no_bold_colors-$pkgver.diff
+    patch -p1 -i $srcdir/st-solarized-dark-$pkgver.diff
 }
 
 build() {

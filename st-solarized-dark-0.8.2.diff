@@ -1,5 +1,5 @@
 diff --git a/config.def.h b/config.def.h
-index 82b1b09..6065bb6 100644
+index 0e01717..0fe81d4 100644
 --- a/config.def.h
 +++ b/config.def.h
 @@ -84,31 +84,23 @@ unsigned int tabspaces = 8;
@@ -31,7 +31,7 @@ index 82b1b09..6065bb6 100644
 -	/* more colors can be added after 255 to use with DefaultXX */
 -	"#cccccc",
 -	"#555555",
-+	/* solarized dark */
++    /* solarized dark */
 +	"#073642",  /*  0: black    */
 +	"#dc322f",  /*  1: red      */
 +	"#859900",  /*  2: green    */

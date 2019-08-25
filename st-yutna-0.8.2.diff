@@ -1,5 +1,5 @@
 diff --git a/config.def.h b/config.def.h
-index 82b1b09..456b1a9 100644
+index 0e01717..10ffc1d 100644
 --- a/config.def.h
 +++ b/config.def.h
 @@ -5,7 +5,7 @@
@@ -22,3 +22,4 @@ index 82b1b09..456b1a9 100644
  
  /*
   * Default colour and shape of the mouse cursor
+  
