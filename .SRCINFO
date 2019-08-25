@@ -1,7 +1,7 @@
 pkgbase = pegasus-frontend-git
 	pkgdesc = A cross platform, customizable graphical frontend for launching emulators and managing your game collection.
-	pkgver = alpha12.r12.gca00bb4
-	pkgrel = 2
+	pkgver = alpha12.r39.gdd58baf
+	pkgrel = 1
 	url = https://pegasus-frontend.org/
 	arch = i686
 	arch = x86_64
