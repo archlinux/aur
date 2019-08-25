@@ -85,6 +85,7 @@ source=(
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
   0002-ZEN-Add-CONFIG-for-unprivileged_userns_clone.patch
   0003-iwlwifi-mvm-disable-TX-AMSDU-on-older-NICs.patch
+  0004-drm-amdgpu-pin-the-csb-buffer-on-hw-init-for-gfx-v8.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -92,7 +93,7 @@ validpgpkeys=(
 )
 sha256sums=('6096c4387c2a296de9136080942d11ae3f1bd28129b6952f7133c570e43bfc49'
             'SKIP'
-            '1c4d5500a3b4995035c2e940fc0ad2a2dae7be047c8eb20c097444e348258f87'
+            '42e2bc6a7d8439b3a6fe4084d1349077472e0a6831d8a39edda46824a5f0987b'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
@@ -100,7 +101,8 @@ sha256sums=('6096c4387c2a296de9136080942d11ae3f1bd28129b6952f7133c570e43bfc49'
             'f1abc13a8d859fbf6350040e45d7f04ad551a6d39f113ba96fbbd820118c0e36'
             '91fafa76bf9cb32159ac7f22191b3589278b91e65bc4505cf2fc6013b8037bf3'
             '63e4378e69e2f23ed87af32a4951477a6d82d4ac0de2295db46502c8120da9d9'
-            'fc96300831506965383ef30bc46b72735dc45bb97dea2ccb8b9450c005d2f020')
+            'fc96300831506965383ef30bc46b72735dc45bb97dea2ccb8b9450c005d2f020'
+            '2186ca201a99edb94ce56840132544c47234636aada75b75aca6bfa780e04f57')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-ARCH}
