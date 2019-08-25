@@ -1,7 +1,7 @@
 # Maintainer: Vasia Novikov <n1dr+cmarchlinux@yaaandex.com> (replace "aaa" with "a")
 
 pkgname=rua
-pkgver=0.14.2
+pkgver=0.14.4
 pkgrel=1
 pkgdesc='secure AUR helper written in Rust, supporting offline builds, filesystem isolation and more'
 url='https://github.com/vn971/rua'
@@ -18,7 +18,7 @@ optdepends=(
 
 #options+=(!strip)  # uncomment if you want readable stack traces
 
-sha256sums=(63d12ce4b1a6526afb0f9c2afe6c0d2adec3a3fff23294003b50737085c3003b)
+sha256sums=(b6363854afb0e2ca61a96074053266c6211dfea66bfba316507ee7e461ecca54)
 
 build () {
   cd "$srcdir/$pkgname-$pkgver"
