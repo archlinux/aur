@@ -2,7 +2,7 @@
 # Contributor: Robosky <fangyuhao0612 at gmail dot com>
 pkgname=anbox-image-gapps
 pkgver=2018.07.19
-pkgrel=10
+pkgrel=11
 pkgdesc="Android image for running in Anbox, with Opengapps and houdini"
 arch=('x86_64')
 url="https://anbox.io"
