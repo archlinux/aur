@@ -4,7 +4,7 @@
 # Contributor: Hans Janssen <hans@janserv.xs4all.nl>
 
 pkgname=flightgear
-pkgver=2018.3.2
+pkgver=2018.3.4
 _pkgver=${pkgver%.*}
 pkgrel=2
 pkgdesc="An open-source, multi-platform flight simulator"
@@ -18,7 +18,7 @@ license=("GPL")
 url="http://www.flightgear.org/"
 options=('makeflags')
 source=("http://downloads.sourceforge.net/project/flightgear/release-${_pkgver}/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('5acbd008a31119877fefbdfae912ae8495f716288731c91add487fc98828fe53')
+sha256sums=('809377ed1a264daf74a6a826d235fd4566986f9d20e534b327807e1e2b8c20fd')
 
 build() {
   cd "$srcdir"/flightgear-$pkgver

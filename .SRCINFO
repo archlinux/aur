@@ -1,6 +1,6 @@
 pkgbase = flightgear
 	pkgdesc = An open-source, multi-platform flight simulator
-	pkgver = 2018.3.2
+	pkgver = 2018.3.4
 	pkgrel = 2
 	url = http://www.flightgear.org/
 	arch = x86_64
@@ -24,8 +24,8 @@ pkgbase = flightgear
 	optdepends = qt5-declarative: fgfs --launcher
 	optdepends = flightgear-data
 	options = makeflags
-	source = http://downloads.sourceforge.net/project/flightgear/release-2018.3/flightgear-2018.3.2.tar.bz2
-	sha256sums = 5acbd008a31119877fefbdfae912ae8495f716288731c91add487fc98828fe53
+	source = http://downloads.sourceforge.net/project/flightgear/release-2018.3/flightgear-2018.3.4.tar.bz2
+	sha256sums = 809377ed1a264daf74a6a826d235fd4566986f9d20e534b327807e1e2b8c20fd
 
 pkgname = flightgear
 
