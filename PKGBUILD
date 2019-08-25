@@ -39,6 +39,7 @@ _CMAKE_FLAGS=(
               -DCERES_DIR=/usr/include/ceres
               -DMAGMA_ROOT=/opt/magma
               -DCUDA_HOST_COMPILER=/opt/cuda/bin/gcc
+              -DALICEVISION_BUILD_DOC=OFF
              )
 
 _path="AliceVision-${pkgver}"
