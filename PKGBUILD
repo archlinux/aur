@@ -1,7 +1,7 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=altrace-hg
-pkgver=r4.5142f3405002
+pkgver=r8.05e260da7f89
 pkgrel=1
 pkgdesc="Debugging tool for applications that use OpenAL for audio"
 arch=('x86_64')
@@ -31,8 +31,5 @@ build() {
 
 package() {
   cd altrace
-  #DESTDIR="$pkgdir" ninja install
-  install -dm755 "$pkgdir"/usr/{bin,lib}
-  install -m755 -t "$pkgdir"/usr/bin/ altrace_cli altrace_wx
-  install -m755 -t "$pkgdir"/usr/lib/ libaltrace_record.so
+  DESTDIR="$pkgdir" ninja install
 }

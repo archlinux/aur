@@ -1,6 +1,6 @@
 pkgbase = altrace-hg
 	pkgdesc = Debugging tool for applications that use OpenAL for audio
-	pkgver = r4.5142f3405002
+	pkgver = r8.05e260da7f89
 	pkgrel = 1
 	url = https://icculus.org/altrace/
 	arch = x86_64
