@@ -2,7 +2,7 @@
 
 pkgname=emacs-ess-git
 epoch=2
-pkgver=18.10.3.git.8325.977e8930
+pkgver=18.10.3.git.8699.0f725b7f
 pkgrel=1
 pkgdesc="Emacs Speaks Statistics: A Universal Interface for \
  Statistical Analysis - git-version"
@@ -23,13 +23,8 @@ pkgver() {
   printf "%s.%s.%s" $(cat VERSION|sed 's+snapshot+.git+') $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
 }
 
-build() {
-  cd ${pkgname%-git}
-  make prefix=/usr
-}
-
 package() {
   cd ${pkgname%-git}
   make DESTDIR="$pkgdir"/usr LISPDIR="$pkgdir"/usr/share/emacs/site-lisp/ess \
-       INFODIR="$pkgdir"/usr/share/info/ install 
+       INFODIR="$pkgdir"/usr/share/info/ install || true
 }
