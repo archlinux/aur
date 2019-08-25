@@ -59,12 +59,12 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=4.14
-_minor=139
+_minor=140
 _srcname=linux-${_major}
 _clr=${_major}.139-58
 pkgbase=linux-clear-lts2017
 pkgver=${_major}.${_minor}
-pkgrel=2
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux-lts2017"
 license=('GPL2')
@@ -329,7 +329,7 @@ done
 
 sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'SKIP'
-            'f1384dbb4a49624d5ed896bb11af99142853844593933d32aaca8b47c6ff977c'
+            'b3db4c7cf41650fac66061f8bb2b1283cfa1040058fe1dbc72215fd80af74da5'
             'SKIP'
             '74ec7415988d40fa53686d994cf8cb27accdbd35c5373c4c3afc2e93372ebba5'
             '2466fb4aecc66d1b258b4cbdb2f215b5099f266d8c4386bb62ad1a0acd0caf5b'
