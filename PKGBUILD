@@ -1,7 +1,7 @@
 # Maintainer: Boris Momčilović <boris.momcilovic@gmail.com>
 
 pkgname=php-uopz-git
-pkgver=v6.1.0.r8.g13a7f05
+pkgver=v6.1.0.r9.g998a115
 pkgrel=1
 pkgdesc="PHP User Operations for Zend"
 arch=('i686' 'x86_64')
