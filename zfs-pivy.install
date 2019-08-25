@@ -9,6 +9,18 @@ build() {
         zfs \
         spl
 
+    if [[ -f /usr/lib/libminipcsc.so ]]; then
+        map add_file /usr/lib/libminipcsc.so
+        ln -sf libminipcsc.so "${BUILDROOT}/usr/lib/libpcsclite.so.1"
+    else
+        map add_file \
+            /etc/libccid_Info.plist \
+            /usr/lib/pcsc/drivers/ifd-ccid.bundle/Contents/Info.plist \
+            /usr/lib/pcsc/drivers/ifd-ccid.bundle/Contents/Linux/libccid.so \
+            /usr/lib/libpcsclite.so.1
+        map add_binary pcscd
+    fi
+
     map add_binary \
         fsck.zfs \
         mount.zfs \
@@ -23,7 +35,6 @@ build() {
         /lib/udev/vdev_id \
         /lib/udev/zvol_id \
         findmnt \
-        pcscd \
         pivy-zfs \
         pivy-box \
         pivy-tool
@@ -33,9 +44,6 @@ build() {
         /lib/udev/rules.d/69-vdev.rules \
         /lib/udev/rules.d/90-zfs.rules \
         /lib/libgcc_s.so.1 \
-        /etc/libccid_Info.plist \
-        /usr/lib/pcsc/drivers/ifd-ccid.bundle/Contents/Info.plist \
-        /usr/lib/pcsc/drivers/ifd-ccid.bundle/Contents/Linux/libccid.so \
         /usr/lib/libfl.so.2 \
         /usr/lib/libusb-1.0.so.0
 
