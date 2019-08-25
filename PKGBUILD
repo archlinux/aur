@@ -1,7 +1,7 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=python-asyncssh
-pkgver=1.17.1
+pkgver=1.18.0
 pkgrel=1
 pkgdesc="Asynchronous SSHv2 client and server library"
 arch=(any)
@@ -10,7 +10,7 @@ license=('EPL')
 depends=('python')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/a/asyncssh/asyncssh-$pkgver.tar.gz")
-sha256sums=('bbb4497115e469a09bde32755f4e07c26d4138519b08ffda994926fd89aed83f')
+sha256sums=('651055ea7694a168c8251617a714f53d3fe6a9392cb8331bd3a561ac6f3f3db5')
 
 build() {
     cd "$srcdir"/asyncssh-$pkgver
