@@ -1,9 +1,9 @@
 # Maintainer: Ricardo Grim Cabrita <grimkriegor@krutt.org>
 
 pkgname=java-language-server
-pkgver=0.2.13
-_commit=e747b6bce6740066755e3fa6fa12eb9c7263660c
-pkgrel=3
+pkgver=0.2.24
+_commit=4615ec3f224069a0c24e71afaae1b8f12c458aca
+pkgrel=1
 pkgdesc="Java language server using the Java compiler API"
 arch=(any)
 url="https://github.com/georgewfraser/java-language-server.git"
