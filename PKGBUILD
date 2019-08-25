@@ -4,7 +4,7 @@
 
 pkgname=toggldesktop-dev-bin
 _pkgname=toggldesktop
-pkgver=7.4.504
+pkgver=7.4.528
 pkgrel=1
 pkgdesc="Time Tracking Software."
 arch=('x86_64')
@@ -26,7 +26,7 @@ url='https://toggl.com/'
 source=(
 	"https://github.com/toggl/toggldesktop/releases/download/v${pkgver}/toggldesktop_${pkgver}_amd64.deb")
 
-sha512sums=('d9d774b8cad93b4d8cd07496179ade9789b2b978dde41fc2eef3c1afa0254c2bf8edce6f225e4fe7a4d38535a85c9ddb1003053d31993df210a9908ffe173dae')
+sha512sums=('d15b3801cd7eae8af245b2b57f42d510fe4b0e0a8e9c3f7a2e67fc253e3bbc04c86a56e955e0addb398447d4f08035f1cdfbf239849341a8ce7bae1ed368ebef')
 
 prepare() {
   tar -xf data.tar.xz
