@@ -1,0 +1,18 @@
+pkgbase = notementum
+	pkgdesc = A native Markdown notebook app.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/IvanFon/notementum
+	arch = any
+	license = GPL3
+	depends = gtk3
+	depends = gtksourceview4
+	depends = python
+	depends = python-gobject
+	depends = python-setuptools
+	depends = webkit2gtk
+	source = https://github.com/IvanFon/notementum/releases/download/v0.1.0/notementum-0.1.0.tar.gz
+	sha256sums = e1e0fc06d26c6e4bb1487a521b9c6a8a1c0338a6d237cb431ff17bc434510ef5
+
+pkgname = notementum
+
