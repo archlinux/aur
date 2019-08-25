@@ -3,12 +3,12 @@
 
 pkgname=python-pyxel
 pkgver=1.2.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Retro game development environment'
 arch=('i686' 'x86_64')
 url='https://github.com/kitao/pyxel'
 license=('MIT')
-depends=('portaudio' 'python-glfw' 'python-numpy' 'python-opengl'
+depends=('portaudio' 'python-glfw' 'python-opengl'
          'python-pillow' 'python-sounddevice' 'sdl2_image')
 optdepends=('pyinstaller')
 makedepends=('python-setuptools')
