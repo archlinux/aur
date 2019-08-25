@@ -18,7 +18,7 @@ source=("https://build.anbox.io/android-images/${pkgver//./\/}/android_amd64.img
 # opengapps
 _OPENGAPPS_RELEASEDATE="$(curl -s https://api.github.com/repos/opengapps/x86_64/releases/latest | head -n 10 | grep tag_name | grep -o "\"[0-9][0-9]*\"" | grep -o "[0-9]*")"
 _OPENGAPPS_FILE="open_gapps-x86_64-7.1-mini-${_OPENGAPPS_RELEASEDATE}.zip"
-_OPENGAPPS_URL="https://github.com/opengapps/x86_64/releases/download/${_OPENGAPPS_RELEASEDATE}/${_OPENGAPPS_FILE}"
+_OPENGAPPS_URL="https://downloads.sourceforge.net/project/opengapps/x86_64/${_OPENGAPPS_RELEASEDATE}/${_OPENGAPPS_FILE}"
 source+=("${_OPENGAPPS_URL}")
 
 # houdini
@@ -34,7 +34,7 @@ noextract=('android_amd64.img'
 	'houdini_z.sfs'
 	'libhoudini.so')
 sha256sums=('6b04cd33d157814deaf92dccf8a23da4dc00b05ca6ce982a03830381896a8cca'
-            'b3726d7850679e345db74eb7afbc71a8c4177592309c04383bce8a5b36193c31'
+            '908bd6ce12c5685b92a8c21ff7879a84d529b929d63d169bfcafa194d65f4b0a'
             '56fd08c448840578386a71819c07139122f0af39f011059ce728ea0f3c60b665'
             '7eedc42015e6fb84a11a406a099241efccc20d4e020d476335a5fdb6e69a33d2'
             '2d15d126e46ea933a92fcc6dd30ad2c93d063af322fc1ba84aaa4f3e75d84e68')
