@@ -1,7 +1,7 @@
 # Maintainer: Ales Katona <almindor@gmail.com>
 pkgname=rx
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A modern and extensible pixel editor implemented in rust.'
 arch=(i686 x86_64)
 url='http://cloudhead.io/rx/'
@@ -22,6 +22,10 @@ package() {
   mkdir -p "${pkgdir}/usr/bin"
   mkdir -p "${pkgdir}/usr/share/rx/palettes"
 
+  echo "$PWD"
+
   install -Dm755 -t "${pkgdir}/usr/bin" "${srcdir}/${pkgname}-${pkgver}/target/release/rx"
   install -Dm644 -t "${pkgdir}/usr/share/rx/palettes" "sweetie16.palette"
+  install -Dm644 -t "${pkgdir}/usr/share/applications" "../rx.desktop"
+  install -Dm644 -t "${pkgdir}/usr/share/pixmaps" "../rx.png" 
 }
