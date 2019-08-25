@@ -1,17 +1,15 @@
 # Maintainer: Martin Diehl <m.diehl@mpie.de>
 pkgname=dream3d
-pkgver=6.5.121
-pkgrel=2
+pkgver=6.5.128
+pkgrel=1
 pkgdesc='analysis tool for microstructure data'
 arch=('x86_64')
 license=('custom: DREAM.3D License')
 depends=('libpng12')
 source=(http://dream3d.bluequartz.net/binaries/DREAM3D-${pkgver}-Linux-x86_64.tar.gz
-        dream3d.desktop
-)
-sha256sums=(95711bd026bf5c56954c1e0460bcb5b9e75cc045d6030d7f3d3c38cbed969d0f
-            1b920026ee87b3fdd7484292a1f151b260b9f36712346a2800f3a510dae99de4
-)
+        dream3d.desktop)
+sha256sums=('5a1d8eec4929c6b031369a83dc917229949090fcd18a01459eec4be140e7a3b9'
+            '1b920026ee87b3fdd7484292a1f151b260b9f36712346a2800f3a510dae99de4')
 package() {
 
   install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
