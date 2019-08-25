@@ -2,7 +2,7 @@
 
 pkgname="python-djoser"
 _pkgname="djoser"
-pkgver=2.0.2
+pkgver=2.0.3
 pkgrel=1
 pkgdesc="REST version of Django authentication system."
 arch=('any')
@@ -10,8 +10,8 @@ url="https://pypi.python.org/pypi/$_pkgname"
 license=('MIT')
 depends=('python>=2.7' 'python-django>=1.11' 'python-django-rest-framework>=3.7')
 provides=('djoser')
-source=("https://files.pythonhosted.org/packages/04/b0/2c61cdea42d540c86bdf5a68b4ceff3c1614105709b44c7f2a841d14a83e/$_pkgname-$pkgver.tar.gz")
-md5sums=('d542256948fd49c12bfdb96535501bba')
+source=("https://files.pythonhosted.org/packages/97/08/c3df7cfa8c5edb3c665e2050246d5b8158c96c2b89b92f6c27895e8ffbf2/$_pkgname-$pkgver.tar.gz")
+md5sums=('5acb14742722ddfa55b7252ee7695853')
 
 build() {
 	cd ${srcdir}/${_pkgname}-${pkgver}
