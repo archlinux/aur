@@ -1,0 +1,15 @@
+pkgbase = vtk-docs
+	pkgdesc = Documentation for VTK
+	pkgver = 8.2.0
+	pkgrel = 1
+	url = https://vtk.org/
+	arch = any
+	license = BSD
+	makedepends = libarchive
+	noextract = vtkDocHtml-8.2.0.tar.gz
+	options = !strip
+	source = https://www.vtk.org/files/release/8.2/vtkDocHtml-8.2.0.tar.gz
+	sha256sums = a41a40fad204aff45e257e62fa7d25eb4b9f10f1f7acc4b3b0e9f06165c987d3
+
+pkgname = vtk-docs
+
