@@ -3,7 +3,7 @@
 # Maintainer: Georgios Amanakis <g_amanakis{at}yahoo{dt}com>
 
 pkgname=sra-tools
-pkgver=2.9.6
+pkgver=2.10.0
 pkgrel=1
 pkgdesc="The SRA Toolkit and SDK from NCBI is a collection of tools and libraries for using data in the INSDC Sequence Read Archives."
 arch=('x86_64')
@@ -14,7 +14,7 @@ provides=('sra-tools')
 license=('custom:PublicDomain')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ncbi/sra-tools/archive/$pkgver.tar.gz"
 	"sra-tools.patch")
-sha256sums=('f1fdd0d294da0528d00ab14e34921cb9cfe775a332543abf54ade5db13467e44'
+sha256sums=('6d2b02bad674cde6b9677a522f62da092da5471d23738976abce8eae5710fa0c'
             '59c87371b10a3d8f7c1c8312c534ec9a6374cb3428ecbeb42c60cf422cab0782')
 
 prepare(){
