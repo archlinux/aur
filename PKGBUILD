@@ -2,8 +2,8 @@
 _orgname=BourgeoisLab
 _pkgname=GPXLab
 pkgname=${_pkgname,,}
-pkgver=0.5.0
-pkgrel=2
+pkgver=0.6.0
+pkgrel=1
 pkgdesc='Program to show and manipulate GPS tracks'
 arch=(x86_64)
 url='https://bourgeoislab.wordpress.com/gpxlab/'
@@ -13,7 +13,7 @@ makedepends=('qt5-tools')
 provides=("${pkgname}=${pkgver}")
 conflicts=(${pkgname}-git)
 source=("https://github.com/${_orgname}/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('430672eaf0c76e1f7f43cf2c117e63d818ac7e444acceefe6a0ef5a2f7b3d7f4')
+sha256sums=('9b563dbdec884405c740bca63c57f275f2962ed0d84c3bc5ad8872141a65f7ff')
 
 build() {
   cd ${_pkgname}-${pkgver}
