@@ -1,7 +1,7 @@
 # Maintainer: mistiru (Anaël Megna) <anael.megna@gmail.com>
 
 pkgname=aegisub-japan7
-pkgver=3.2.2.r396.deaf588af
+pkgver=3.2.2.r407.8ab7a886d
 pkgrel=1
 pkgdesc='A fork of aegisub project with custom predefined configuration'
 arch=(x86_64)
@@ -54,9 +54,6 @@ pkgver() {
 
 prepare() {
   cd aegisub
-
-  # boost 1.69
-  sed 's|gil/gil_all.hpp|gil.hpp|g' -i src/*.cpp
 
   sed 's/$(LIBS_BOOST) $(LIBS_ICU)/$(LIBS_BOOST) $(LIBS_ICU) -pthread/' -i tools/Makefile
 
