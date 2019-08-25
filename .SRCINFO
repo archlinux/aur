@@ -1,0 +1,15 @@
+pkgbase = msbuild-sdkresolver-16-bin
+	pkgdesc = Xamarin implementation of the Microsoft build system
+	pkgver = 16.3_xamarinxplat.2019.08.08.00.55_0xamarin2_ubuntu1804b1
+	pkgrel = 1
+	url = https://github.com/mono/msbuild
+	arch = x86_64
+	license = MIT
+	depends = mono>=5.0.0
+	provides = msbuild-sdkresolver
+	conflicts = msbuild-sdkresolver
+	source = msbuild-sdkresolver-amd64-v16.3+xamarinxplat.2019.08.08.00.55-0xamarin2+ubuntu1804b1.deb::http://download.mono-project.com/repo/ubuntu/pool/main/m/msbuild/msbuild-sdkresolver_16.3+xamarinxplat.2019.08.08.00.55-0xamarin2+ubuntu1804b1_all.deb
+	sha256sums = 1ad43912ba5e8190f5dde65d4b7ccba7f765e4097adb0bc482d811f913a7fc00
+
+pkgname = msbuild-sdkresolver-16-bin
+
