@@ -1,7 +1,7 @@
 pkgbase = pantheon-default-settings
 	pkgdesc = Default settings for Pantheon
-	pkgver = 5.1.0
-	pkgrel = 1
+	pkgver = 5.1.1
+	pkgrel = 2
 	url = https://github.com/elementary/default-settings
 	arch = any
 	groups = pantheon-stable
@@ -13,8 +13,8 @@ pkgbase = pantheon-default-settings
 	depends = ttf-opensans
 	provides = default-settings
 	conflicts = default-settings-git
-	source = pantheon-default-settings-5.1.0.tar.gz::https://github.com/elementary/default-settings/archive/5.1.0.tar.gz
-	md5sums = f67cf1db96f7e97450480f056908c56a
+	source = pantheon-default-settings-5.1.1.tar.gz::https://github.com/elementary/default-settings/archive/5.1.1.tar.gz
+	sha1sums = 1f2e3499b1c2d820743714318b1f396876f5b948
 
 pkgname = pantheon-default-settings
 
