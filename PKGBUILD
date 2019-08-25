@@ -1,6 +1,6 @@
 # Maintainer: Tom Meyers tom@odex.be
 pkgname=readme-generator-git
-pkgver=r56.22070b8
+pkgver=r62.2092668
 pkgrel=1
 pkgdesc="A basic tool to generate modern readme's"
 arch=(any)
@@ -26,5 +26,6 @@ build() {
 package() {
         cd "$srcdir/$_reponame"
         install -Dm755 readme-gen "$pkgdir"/usr/bin/readme-gen
-        install -Dm644 demo "$pkgdir"/var/cache/readme/demo
+        install -Dm644 visual "$pkgdir"/var/cache/readme/demo
+        install -Dm644 generic "$pkgdir"/var/cache/readme/demo
 }
