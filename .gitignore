@@ -1,0 +1,7 @@
+pegasus-frontend-git*
+pegasus-frontend/
+pegasus-frontend-translations/
+pegasus-theme-grid/
+pkg/
+SortFilterProxyModel/
+src/
