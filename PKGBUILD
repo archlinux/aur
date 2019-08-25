@@ -3,7 +3,7 @@
 # Contributor: Wang Jiajun <amesists@gmail.com>
 
 pkgname=kdesrc-build-git
-pkgver=r2081.673ef32
+pkgver=r2082.f1d2468
 pkgrel=1
 pkgdesc="A script to build KDE software from KDE's source repositories"
 url='https://kdesrc-build.kde.org/'
@@ -23,25 +23,21 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-  mkdir -p build
-}
-
 build() {
-  cd build
-  cmake ../kdesrc-build \
+  cmake \
+    -S kdesrc-build \
+    -B build \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr
-  make
+    -DCMAKE_INSTALL_PREFIX="${pkgdir}"/usr
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="${pkgdir}" install
+  cmake --install build --prefix "${pkgdir}"/usr
 
   install -d "${pkgdir}"/usr/share/doc/samples
-  install -Dm644 ../kdesrc-build/kdesrc-buildrc-kf5-sample \
+  install -Dm644 kdesrc-build/kdesrc-buildrc-kf5-sample \
     "${pkgdir}"/usr/share/doc/samples/
-  install -Dm644 ../kdesrc-build/kf5-{applications,frameworks,kdepim,qt5,workspace}-build-include \
+  install -Dm644 kdesrc-build/kf5-{applications,frameworks,kdepim,qt5,workspace}-build-include \
     "${pkgdir}"/usr/share/doc/samples/
 }
