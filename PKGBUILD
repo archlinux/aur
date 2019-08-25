@@ -4,7 +4,7 @@
 _gitname=default-settings
 _author=elementary
 pkgname=pantheon-default-settings
-pkgver=5.1.0
+pkgver=5.1.1
 pkgrel=1
 pkgdesc="Default settings for Pantheon"
 arch=('any')
@@ -18,7 +18,7 @@ conflicts=('pantheon-default-settings')
 provides=("${_gitname}")
 conflicts=("${_gitname}-git")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-md5sums=("f67cf1db96f7e97450480f056908c56a")
+sha1sums=("1f2e3499b1c2d820743714318b1f396876f5b948")
 
 package() {
   cd "${srcdir}/${_gitname}-${pkgver}"
