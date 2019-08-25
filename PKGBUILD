@@ -21,7 +21,7 @@ build() {
 }
 
 package() {
-  cd $startdir/src/BitTornado-CVS
+  cd BitTornado-CVS
   # python2 setup.py install --root="$pkgdir/" --optimize=1 --skip-build
   python2 setup.py install_lib --install-dir="$pkgdir/usr/lib/python2.7/site-packages/" --optimize=1 --skip-build
 }
