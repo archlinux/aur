@@ -7,7 +7,7 @@
 
 pkgname=mutter-performance
 pkgver=3.32.2+43+gb7f158811
-pkgrel=17
+pkgrel=18
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -25,10 +25,12 @@ groups=(gnome)
 _commit=b7f158811934d8e4d9dd0be28ad8e1746ceac46c # tags/3.32.2^43
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
 	429.diff
-	724.diff)
+	724.diff
+	189.diff)
 sha256sums=('SKIP'
             'c22bc32ab8a29e3da986f386d14a8376f1985c051328ca6786571b4b67ec9e48'
-            '3bfd673cbae598f6482124525d342b4323a1395a0f72d6532bbcf34f66773213')
+            '3bfd673cbae598f6482124525d342b4323a1395a0f72d6532bbcf34f66773213'
+            '95e29ca135a024ad2fab6d0b4d8d6674699a95e6df91f4ca9e0437a475459d87')
 
 pkgver() {
   cd $pkgname
@@ -107,7 +109,8 @@ prepare() {
   # Type: 1
   # Status: 2
   # Comment:
-  git cherry-pick -n 836b420a^..b10f82d3
+  patch -Np1 < ../189.diff
+  git add .
 
   # Title: clutter/stage-cogl: Don't skip over the next frame
   # URL : https://gitlab.gnome.org/GNOME/mutter/merge_requests/520

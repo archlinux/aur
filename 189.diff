@@ -1,0 +1,1692 @@
+diff --git a/clutter/clutter/clutter-actor-private.h b/clutter/clutter/clutter-actor-private.h
+index c44f6342f..9bf1a3049 100644
+--- a/clutter/clutter/clutter-actor-private.h
++++ b/clutter/clutter/clutter-actor-private.h
+@@ -297,8 +297,6 @@ const gchar *                   _clutter_actor_get_debug_name
+ void                            _clutter_actor_push_clone_paint                         (void);
+ void                            _clutter_actor_pop_clone_paint                          (void);
+ 
+-guint32                         _clutter_actor_get_pick_id                              (ClutterActor *self);
+-
+ void                            _clutter_actor_shader_pre_paint                         (ClutterActor *actor,
+                                                                                          gboolean      repeat);
+ void                            _clutter_actor_shader_post_paint                        (ClutterActor *actor);
+diff --git a/clutter/clutter/clutter-actor.c b/clutter/clutter/clutter-actor.c
+index 803f76aae..f77d73a95 100644
+--- a/clutter/clutter/clutter-actor.c
++++ b/clutter/clutter/clutter-actor.c
+@@ -729,8 +729,6 @@ struct _ClutterActorPrivate
+ 
+   gchar *name; /* a non-unique name, used for debugging */
+ 
+-  gint32 pick_id; /* per-stage unique id, used for picking */
+-
+   /* a back-pointer to the Pango context that we can use
+    * to create pre-configured PangoLayout
+    */
+@@ -1280,6 +1278,129 @@ clutter_actor_verify_map_state (ClutterActor *self)
+ 
+ #endif /* CLUTTER_ENABLE_DEBUG */
+ 
++static gboolean
++_clutter_actor_transform_local_box_to_stage (ClutterActor          *self,
++                                             const ClutterActorBox *box,
++                                             ClutterPoint           vertices[4])
++{
++  ClutterActor *stage = _clutter_actor_get_stage_internal (self);
++  CoglMatrix stage_transform, inv_stage_transform;
++  CoglMatrix modelview, transform_to_stage;
++  int v;
++
++  g_return_val_if_fail (CLUTTER_IS_ACTOR (self), FALSE);
++  g_return_val_if_fail (box != NULL, FALSE);
++
++  g_return_val_if_fail (stage != NULL, FALSE);
++  g_return_val_if_fail (box->x1 <= box->x2, FALSE);
++  g_return_val_if_fail (box->y1 <= box->y2, FALSE);
++
++  /* Below is generally equivalent to:
++   *
++   * _clutter_actor_get_relative_transformation_matrix (self,
++   *                                                    stage,
++   *                                                    &transform_to_stage);
++   *
++   * but we do it the hard way here instead so as to accurately include any
++   * cogl transformations that an actor's paint function might have added in.
++   * Those additional transformations are only known to cogl matrices and not
++   * known to the clutter getter like above. So this way we more accurately
++   * represent what's really getting painted.
++   */
++  clutter_actor_get_transform (stage, &stage_transform);
++  if (!cogl_matrix_get_inverse (&stage_transform, &inv_stage_transform))
++    return FALSE;
++  cogl_get_modelview_matrix (&modelview);
++  cogl_matrix_multiply (&transform_to_stage, &inv_stage_transform, &modelview);
++
++  vertices[0].x = box->x1;
++  vertices[0].y = box->y1;
++
++  vertices[1].x = box->x2;
++  vertices[1].y = box->y1;
++
++  vertices[2].x = box->x2;
++  vertices[2].y = box->y2;
++
++  vertices[3].x = box->x1;
++  vertices[3].y = box->y2;
++
++  for (v = 0; v < 4; v++)
++    {
++      gfloat z = 0.f;
++      gfloat w = 1.f;
++
++      cogl_matrix_transform_point (&transform_to_stage,
++                                   &vertices[v].x,
++                                   &vertices[v].y,
++                                   &z,
++                                   &w);
++    }
++
++  return TRUE;
++}
++
++/**
++ * clutter_actor_pick_box:
++ * @self: The #ClutterActor being "pick" painted.
++ * @box: A rectangle in the actor's own local coordinates.
++ *
++ * Logs (does a virtual paint of) a rectangle for picking. Note that @box is
++ * in the actor's own local coordinates, so is usually {0,0,width,height}
++ * to include the whole actor. That is unless the actor has a shaped input
++ * region in which case you may wish to log the (multiple) smaller rectangles
++ * that make up the input region.
++ */
++void
++clutter_actor_pick_box (ClutterActor          *self,
++                        const ClutterActorBox *box)
++{
++  ClutterActor *stage;
++  ClutterPoint vertices[4];
++
++  g_return_if_fail (CLUTTER_IS_ACTOR (self));
++  g_return_if_fail (box != NULL);
++
++  /* An empty box to a "pick" paint means to paint nothing at all. */
++  if (box->x1 >= box->x2 || box->y1 >= box->y2)
++    return;
++
++  stage = _clutter_actor_get_stage_internal (self);
++
++  if (_clutter_actor_transform_local_box_to_stage (self, box, vertices))
++    _clutter_stage_log_pick (CLUTTER_STAGE (stage), vertices, self);
++}
++
++static gboolean
++_clutter_actor_push_pick_clip (ClutterActor          *self,
++                               const ClutterActorBox *clip)
++{
++  ClutterActor *stage;
++  ClutterPoint vertices[4];
++
++  g_return_val_if_fail (CLUTTER_IS_ACTOR (self), FALSE);
++  g_return_val_if_fail (clip != NULL, FALSE);
++
++  stage = _clutter_actor_get_stage_internal (self);
++
++  if (!_clutter_actor_transform_local_box_to_stage (self, clip, vertices))
++    return FALSE;
++
++  _clutter_stage_push_pick_clip (CLUTTER_STAGE (stage), vertices);
++  return TRUE;
++}
++
++static void
++_clutter_actor_pop_pick_clip (ClutterActor *self)
++{
++  ClutterActor *stage;
++
++  g_return_if_fail (CLUTTER_IS_ACTOR (self));
++
++  stage = _clutter_actor_get_stage_internal (self);
++  _clutter_stage_pop_pick_clip (CLUTTER_STAGE (stage));
++}
++
+ static void
+ clutter_actor_set_mapped (ClutterActor *self,
+                           gboolean      mapped)
+@@ -1508,8 +1629,7 @@ clutter_actor_update_map_state (ClutterActor  *self,
+ static void
+ clutter_actor_real_map (ClutterActor *self)
+ {
+-  ClutterActorPrivate *priv = self->priv;
+-  ClutterActor *stage, *iter;
++  ClutterActor *iter;
+ 
+   g_assert (!CLUTTER_ACTOR_IS_MAPPED (self));
+ 
+@@ -1520,13 +1640,6 @@ clutter_actor_real_map (ClutterActor *self)
+ 
+   self->priv->needs_paint_volume_update = TRUE;
+ 
+-  stage = _clutter_actor_get_stage_internal (self);
+-  priv->pick_id = _clutter_stage_acquire_pick_id (CLUTTER_STAGE (stage), self);
+-
+-  CLUTTER_NOTE (ACTOR, "Pick id '%d' for actor '%s'",
+-                priv->pick_id,
+-                _clutter_actor_get_debug_name (self));
+-
+   clutter_actor_ensure_resource_scale (self);
+ 
+   /* notify on parent mapped before potentially mapping
+@@ -1631,11 +1744,6 @@ clutter_actor_real_unmap (ClutterActor *self)
+ 
+       stage = CLUTTER_STAGE (_clutter_actor_get_stage_internal (self));
+ 
+-      if (stage != NULL)
+-        _clutter_stage_release_pick_id (stage, priv->pick_id);
+-
+-      priv->pick_id = -1;
+-
+       if (stage != NULL &&
+           clutter_stage_get_key_focus (stage) == self)
+         {
+@@ -2254,46 +2362,14 @@ static void
+ clutter_actor_real_pick (ClutterActor       *self,
+ 			 const ClutterColor *color)
+ {
+-  CoglFramebuffer *framebuffer = cogl_get_draw_framebuffer ();
+-
+-  /* the default implementation is just to paint a rectangle
+-   * with the same size of the actor using the passed color
+-   */
+   if (clutter_actor_should_pick_paint (self))
+     {
+-      static CoglPipeline *default_pick_pipeline = NULL;
+-      ClutterActorBox box = { 0, };
+-      CoglPipeline *pick_pipeline;
+-      float width, height;
+-
+-      if (G_UNLIKELY (default_pick_pipeline == NULL))
+-        {
+-          CoglContext *ctx =
+-            clutter_backend_get_cogl_context (clutter_get_default_backend ());
+-
+-          default_pick_pipeline = cogl_pipeline_new (ctx);
+-        }
+-
+-      g_assert (default_pick_pipeline != NULL);
+-      pick_pipeline = cogl_pipeline_copy (default_pick_pipeline);
+-
+-      clutter_actor_get_allocation_box (self, &box);
+-
+-      width = box.x2 - box.x1;
+-      height = box.y2 - box.y1;
+-
+-      cogl_pipeline_set_color4ub (pick_pipeline,
+-                                  color->red,
+-                                  color->green,
+-                                  color->blue,
+-                                  color->alpha);
++      ClutterActorBox box = {0,
++                             0,
++                             clutter_actor_get_width (self),
++                             clutter_actor_get_height (self)};
+ 
+-      cogl_framebuffer_draw_rectangle (framebuffer,
+-                                       pick_pipeline,
+-                                       0, 0,
+-                                       width, height);
+-
+-      cogl_object_unref (pick_pipeline);
++      clutter_actor_pick_box (self, &box);
+     }
+ 
+   /* XXX - this thoroughly sucks, but we need to maintain compatibility
+@@ -3584,15 +3660,6 @@ _clutter_actor_update_last_paint_volume (ClutterActor *self)
+   priv->last_paint_volume_valid = TRUE;
+ }
+ 
+-guint32
+-_clutter_actor_get_pick_id (ClutterActor *self)
+-{
+-  if (self->priv->pick_id < 0)
+-    return 0;
+-
+-  return self->priv->pick_id;
+-}
+-
+ /* This is the same as clutter_actor_add_effect except that it doesn't
+    queue a redraw and it doesn't notify on the effect property */
+ static void
+@@ -3824,6 +3891,7 @@ clutter_actor_paint (ClutterActor *self)
+ {
+   ClutterActorPrivate *priv;
+   ClutterPickMode pick_mode;
++  ClutterActorBox clip;
+   gboolean clip_set = FALSE;
+   ClutterStage *stage;
+ 
+@@ -3917,24 +3985,38 @@ clutter_actor_paint (ClutterActor *self)
+ 
+   if (priv->has_clip)
+     {
+-      CoglFramebuffer *fb = _clutter_stage_get_active_framebuffer (stage);
+-      cogl_framebuffer_push_rectangle_clip (fb,
+-                                            priv->clip.origin.x,
+-                                            priv->clip.origin.y,
+-                                            priv->clip.origin.x + priv->clip.size.width,
+-                                            priv->clip.origin.y + priv->clip.size.height);
++      clip.x1 = priv->clip.origin.x;
++      clip.y1 = priv->clip.origin.y;
++      clip.x2 = priv->clip.origin.x + priv->clip.size.width;
++      clip.y2 = priv->clip.origin.y + priv->clip.size.height;
+       clip_set = TRUE;
+     }
+   else if (priv->clip_to_allocation)
+     {
+-      CoglFramebuffer *fb = _clutter_stage_get_active_framebuffer (stage);
+-      gfloat width, height;
++      clip.x1 = 0.f;
++      clip.y1 = 0.f;
++      clip.x2 = priv->allocation.x2 - priv->allocation.x1;
++      clip.y2 = priv->allocation.y2 - priv->allocation.y1;
++      clip_set = TRUE;
++    }
+ 
+-      width  = priv->allocation.x2 - priv->allocation.x1;
+-      height = priv->allocation.y2 - priv->allocation.y1;
++  if (clip_set)
++    {
++      if (pick_mode == CLUTTER_PICK_NONE)
++        {
++          CoglFramebuffer *fb = _clutter_stage_get_active_framebuffer (stage);
+ 
+-      cogl_framebuffer_push_rectangle_clip (fb, 0, 0, width, height);
+-      clip_set = TRUE;
++          cogl_framebuffer_push_rectangle_clip (fb,
++                                                clip.x1,
++                                                clip.y1,
++                                                clip.x2,
++                                                clip.y2);
++        }
++      else
++        {
++          if (!_clutter_actor_push_pick_clip (self, &clip))
++            clip_set = FALSE;
++        }
+     }
+ 
+   if (pick_mode == CLUTTER_PICK_NONE)
+@@ -4015,9 +4097,16 @@ clutter_actor_paint (ClutterActor *self)
+ done:
+   if (clip_set)
+     {
+-      CoglFramebuffer *fb = _clutter_stage_get_active_framebuffer (stage);
++      if (pick_mode == CLUTTER_PICK_NONE)
++        {
++          CoglFramebuffer *fb = _clutter_stage_get_active_framebuffer (stage);
+ 
+-      cogl_framebuffer_pop_clip (fb);
++          cogl_framebuffer_pop_clip (fb);
++        }
++      else
++        {
++          _clutter_actor_pop_pick_clip (self);
++        }
+     }
+ 
+   cogl_pop_matrix ();
+@@ -4088,11 +4177,12 @@ clutter_actor_continue_paint (ClutterActor *self)
+         {
+           ClutterColor col = { 0, };
+ 
+-          _clutter_id_to_color (_clutter_actor_get_pick_id (self), &col);
+-
+-          /* Actor will then paint silhouette of itself in supplied
+-           * color.  See clutter_stage_get_actor_at_pos() for where
+-           * picking is enabled.
++          /* The actor will log a silhouette of itself to the stage pick log.
++           * Note that the picking color is no longer used as the "log" instead
++           * keeps a weak pointer to the actor itself. But we keep the color
++           * parameter for now so as to maintain ABI compatibility. The color
++           * parameter can be removed when someone feels like breaking the ABI
++           * along with gnome-shell.
+            *
+            * XXX:2.0 - Call the pick() virtual directly
+            */
+@@ -8598,8 +8688,6 @@ clutter_actor_init (ClutterActor *self)
+ 
+   self->priv = priv = clutter_actor_get_instance_private (self);
+ 
+-  priv->pick_id = -1;
+-
+   priv->opacity = 0xff;
+   priv->show_on_set_parent = TRUE;
+   priv->resource_scale = -1.0f;
+diff --git a/clutter/clutter/clutter-actor.h b/clutter/clutter/clutter-actor.h
+index 7d2168af1..b1abff86d 100644
+--- a/clutter/clutter/clutter-actor.h
++++ b/clutter/clutter/clutter-actor.h
+@@ -902,6 +902,10 @@ void                            clutter_actor_bind_model_with_properties
+                                                                                  const char                 *first_model_property,
+                                                                                  ...);
+ 
++CLUTTER_EXPORT
++void clutter_actor_pick_box (ClutterActor          *self,
++                             const ClutterActorBox *box);
++
+ G_END_DECLS
+ 
+ #endif /* __CLUTTER_ACTOR_H__ */
+diff --git a/clutter/clutter/clutter-base-types.c b/clutter/clutter/clutter-base-types.c
+index aeb25c90e..0d98c4814 100644
+--- a/clutter/clutter/clutter-base-types.c
++++ b/clutter/clutter/clutter-base-types.c
+@@ -570,6 +570,119 @@ G_DEFINE_BOXED_TYPE_WITH_CODE (ClutterPoint, clutter_point,
+                                clutter_point_free,
+                                CLUTTER_REGISTER_INTERVAL_PROGRESS (clutter_point_progress))
+ 
++static int
++clutter_point_compare_line (const ClutterPoint *p,
++                            const ClutterPoint *a,
++                            const ClutterPoint *b)
++{
++  /*
++   * Given two vectors ab and ap:
++   *   ab = (x1, y1, 0)
++   *   ap = (x2, y2, 0)
++   * their cross product is a vector:
++   *   ab x ap = (0, 0, x1 * y2 - y1 * x2)
++   */
++  float x1 = b->x - a->x;
++  float y1 = b->y - a->y;
++  float x2 = p->x - a->x;
++  float y2 = p->y - a->y;
++  float cross_z = x1 * y2 - y1 * x2;
++
++  /*
++   * The cross product is also proportional to the sine of the angle between
++   * the vectors, so its sign tells us the sign of the angle between the two
++   * vectors. That is whether p is left of or right of line ab.
++   */
++  if (cross_z > 0.f)
++    return +1;
++  else if (cross_z < 0.f)
++    return -1;
++  else
++    return 0;
++}
++
++static int
++clutter_point_compare_polygon (const ClutterPoint *point,
++                               const ClutterPoint *vertices,
++                               unsigned int        nvertices)
++{
++  unsigned int i;
++  int first_side = 0;
++  gboolean on_an_edge = FALSE;
++
++  g_return_val_if_fail (nvertices >= 3, +1);
++
++  for (i = 0; i < nvertices; i++)
++    {
++      int side = clutter_point_compare_line (point,
++                                             &vertices[i],
++                                             &vertices[(i + 1) % nvertices]);
++
++      if (side)
++        {
++          if (!first_side)
++            first_side = side;
++          else if (side != first_side)
++            return +1;  /* outside */
++        }
++      else
++        {
++          on_an_edge = TRUE;
++        }
++    }
++
++  if (first_side)
++    {
++      return on_an_edge ? 0 : -1;  /* on an edge or completely inside */
++    }
++  else
++    {
++      /* The point was neither inside nor outside any edges so we have an empty
++       * polygon. Therefore if the vertices match the point we'll at least call
++       * that touching. Otherwise the point is outside.
++       */
++      return point->x == vertices[0].x && point->y == vertices[0].y ? 0 : +1;
++    }
++}
++
++/**
++ * clutter_point_inside_polygon:
++ * @point: a #ClutterPoint to test
++ * @vertices: array of vertices of the polygon
++ * @nvertices: number of vertices in array @vertices
++ *
++ * Determines whether a point is inside the convex polygon provided, and not
++ * on any of its edges or vertices.
++ *
++ * Return value: true if @point is inside the polygon
++ */
++gboolean
++clutter_point_inside_polygon (const ClutterPoint *point,
++                              const ClutterPoint *vertices,
++                              unsigned int        nvertices)
++{
++  return clutter_point_compare_polygon (point, vertices, nvertices) < 0;
++}
++
++/**
++ * clutter_point_touches_polygon:
++ * @point: a #ClutterPoint to test
++ * @vertices: array of vertices of the polygon
++ * @nvertices: number of vertices in array @vertices
++ *
++ * Determines whether a point is on the convex polygon provided, including
++ * on any of its edges or vertices.
++ *
++ * Return value: true if @point is on the polygon
++ */
++gboolean
++clutter_point_touches_polygon (const ClutterPoint *point,
++                               const ClutterPoint *vertices,
++                               unsigned int        nvertices)
++{
++  return clutter_point_compare_polygon (point, vertices, nvertices) <= 0;
++}
++
+ 
+ 
+ /*
+diff --git a/clutter/clutter/clutter-debug.h b/clutter/clutter/clutter-debug.h
+index 2462385f6..3744c648f 100644
+--- a/clutter/clutter/clutter-debug.h
++++ b/clutter/clutter/clutter-debug.h
+@@ -29,8 +29,7 @@ typedef enum
+ 
+ typedef enum
+ {
+-  CLUTTER_DEBUG_NOP_PICKING         = 1 << 0,
+-  CLUTTER_DEBUG_DUMP_PICK_BUFFERS   = 1 << 1
++  CLUTTER_DEBUG_NOP_PICKING         = 1 << 0
+ } ClutterPickDebugFlag;
+ 
+ typedef enum
+diff --git a/clutter/clutter/clutter-main.c b/clutter/clutter/clutter-main.c
+index 2bb97bb66..87b457d3e 100644
+--- a/clutter/clutter/clutter-main.c
++++ b/clutter/clutter/clutter-main.c
+@@ -128,7 +128,6 @@ static const GDebugKey clutter_debug_keys[] = {
+ 
+ static const GDebugKey clutter_pick_debug_keys[] = {
+   { "nop-picking", CLUTTER_DEBUG_NOP_PICKING },
+-  { "dump-pick-buffers", CLUTTER_DEBUG_DUMP_PICK_BUFFERS },
+ };
+ 
+ static const GDebugKey clutter_paint_debug_keys[] = {
+@@ -400,125 +399,6 @@ clutter_disable_accessibility (void)
+   clutter_enable_accessibility = FALSE;
+ }
+ 
+-void
+-_clutter_id_to_color (guint         id_,
+-                      ClutterColor *col)
+-{
+-  ClutterMainContext *ctx;
+-  gint red, green, blue;
+-
+-  ctx = _clutter_context_get_default ();
+-
+-  if (ctx->fb_g_mask == 0)
+-    {
+-      /* Figure out framebuffer masks used for pick */
+-      cogl_get_bitmasks (&ctx->fb_r_mask,
+-			 &ctx->fb_g_mask,
+-			 &ctx->fb_b_mask, NULL);
+-
+-      ctx->fb_r_mask_used = ctx->fb_r_mask;
+-      ctx->fb_g_mask_used = ctx->fb_g_mask;
+-      ctx->fb_b_mask_used = ctx->fb_b_mask;
+-
+-      /* XXX - describe what "fuzzy picking" is */
+-      if (clutter_use_fuzzy_picking)
+-	{
+-	  ctx->fb_r_mask_used--;
+-	  ctx->fb_g_mask_used--;
+-	  ctx->fb_b_mask_used--;
+-	}
+-    }
+-
+-  /* compute the numbers we'll store in the components */
+-  red   = (id_ >> (ctx->fb_g_mask_used+ctx->fb_b_mask_used))
+-        & (0xff >> (8-ctx->fb_r_mask_used));
+-  green = (id_ >> ctx->fb_b_mask_used)
+-        & (0xff >> (8-ctx->fb_g_mask_used));
+-  blue  = (id_)
+-        & (0xff >> (8-ctx->fb_b_mask_used));
+-
+-  /* shift left bits a bit and add one, this circumvents
+-   * at least some potential rounding errors in GL/GLES
+-   * driver / hw implementation.
+-   */
+-  if (ctx->fb_r_mask_used != ctx->fb_r_mask)
+-    red = red * 2;
+-  if (ctx->fb_g_mask_used != ctx->fb_g_mask)
+-    green = green * 2;
+-  if (ctx->fb_b_mask_used != ctx->fb_b_mask)
+-    blue  = blue  * 2;
+-
+-  /* shift up to be full 8bit values */
+-  red   = (red   << (8 - ctx->fb_r_mask)) | (0x7f >> (ctx->fb_r_mask_used));
+-  green = (green << (8 - ctx->fb_g_mask)) | (0x7f >> (ctx->fb_g_mask_used));
+-  blue  = (blue  << (8 - ctx->fb_b_mask)) | (0x7f >> (ctx->fb_b_mask_used));
+-
+-  col->red   = red;
+-  col->green = green;
+-  col->blue  = blue;
+-  col->alpha = 0xff;
+-
+-  /* XXX: We rotate the nibbles of the colors here so that there is a
+-   * visible variation between colors of sequential actor identifiers;
+-   * otherwise pick buffers dumped to an image will pretty much just look
+-   * black.
+-   */
+-  if (G_UNLIKELY (clutter_pick_debug_flags & CLUTTER_DEBUG_DUMP_PICK_BUFFERS))
+-    {
+-      col->red   = (col->red << 4)   | (col->red >> 4);
+-      col->green = (col->green << 4) | (col->green >> 4);
+-      col->blue  = (col->blue << 4)  | (col->blue >> 4);
+-    }
+-}
+-
+-guint
+-_clutter_pixel_to_id (guchar pixel[4])
+-{
+-  ClutterMainContext *ctx;
+-  gint red, green, blue;
+-  guint retval;
+-
+-  ctx = _clutter_context_get_default ();
+-
+-  /* reduce the pixel components to the number of bits actually used of the
+-   * 8bits.
+-   */
+-  if (G_UNLIKELY (clutter_pick_debug_flags & CLUTTER_DEBUG_DUMP_PICK_BUFFERS))
+-    {
+-      guchar tmp;
+-
+-      /* XXX: In _clutter_id_to_color we rotated the nibbles of the colors so
+-       * that there is a visible variation between colors of sequential actor
+-       * identifiers (otherwise pick buffers dumped to an image will pretty
+-       * much just look black.) Here we reverse that rotation.
+-       */
+-      tmp = ((pixel[0] << 4) | (pixel[0] >> 4));
+-      red = tmp >> (8 - ctx->fb_r_mask);
+-      tmp = ((pixel[1] << 4) | (pixel[1] >> 4));
+-      green = tmp >> (8 - ctx->fb_g_mask);
+-      tmp = ((pixel[2] << 4) | (pixel[2] >> 4));
+-      blue = tmp >> (8 - ctx->fb_b_mask);
+-    }
+-  else
+-    {
+-      red   = pixel[0] >> (8 - ctx->fb_r_mask);
+-      green = pixel[1] >> (8 - ctx->fb_g_mask);
+-      blue  = pixel[2] >> (8 - ctx->fb_b_mask);
+-    }
+-
+-  /* divide potentially by two if 'fuzzy' */
+-  red   = red   >> (ctx->fb_r_mask - ctx->fb_r_mask_used);
+-  green = green >> (ctx->fb_g_mask - ctx->fb_g_mask_used);
+-  blue  = blue  >> (ctx->fb_b_mask - ctx->fb_b_mask_used);
+-
+-  /* combine the correct per component values into the final id */
+-  retval = blue
+-         + (green <<  ctx->fb_b_mask_used)
+-         + (red << (ctx->fb_b_mask_used + ctx->fb_g_mask_used));
+-
+-  return retval;
+-}
+-
+ static CoglPangoFontMap *
+ clutter_context_get_pango_fontmap (void)
+ {
+diff --git a/clutter/clutter/clutter-private.h b/clutter/clutter/clutter-private.h
+index cdda7e4c4..79664c650 100644
+--- a/clutter/clutter/clutter-private.h
++++ b/clutter/clutter/clutter-private.h
+@@ -202,11 +202,7 @@ gboolean      _clutter_feature_init (GError **error);
+ gboolean        _clutter_diagnostic_enabled     (void);
+ void            _clutter_diagnostic_message     (const char *fmt, ...) G_GNUC_PRINTF (1, 2);
+ 
+-/* Picking code */
+-guint           _clutter_pixel_to_id            (guchar        pixel[4]);
+-void            _clutter_id_to_color            (guint         id,
+-                                                 ClutterColor *col);
+-
++CLUTTER_EXPORT
+ void            _clutter_set_sync_to_vblank     (gboolean      sync_to_vblank);
+ 
+ /* use this function as the accumulator if you have a signal with
+diff --git a/clutter/clutter/clutter-stage-private.h b/clutter/clutter/clutter-stage-private.h
+index 74d4f7bfd..3782e9925 100644
+--- a/clutter/clutter/clutter-stage-private.h
++++ b/clutter/clutter/clutter-stage-private.h
+@@ -74,6 +74,15 @@ gint64    _clutter_stage_get_update_time                  (ClutterStage *stage);
+ void     _clutter_stage_clear_update_time                 (ClutterStage *stage);
+ gboolean _clutter_stage_has_full_redraw_queued            (ClutterStage *stage);
+ 
++void _clutter_stage_log_pick (ClutterStage       *stage,
++                              const ClutterPoint  vertices[4],
++                              ClutterActor       *actor);
++
++void _clutter_stage_push_pick_clip (ClutterStage       *stage,
++                                    const ClutterPoint  vertices[4]);
++
++void _clutter_stage_pop_pick_clip (ClutterStage *stage);
++
+ ClutterActor *_clutter_stage_do_pick (ClutterStage    *stage,
+                                       gint             x,
+                                       gint             y,
+@@ -92,13 +101,6 @@ void                          _clutter_stage_queue_redraw_entry_invalidate (Clut
+ 
+ CoglFramebuffer *_clutter_stage_get_active_framebuffer (ClutterStage *stage);
+ 
+-gint32          _clutter_stage_acquire_pick_id          (ClutterStage *stage,
+-                                                         ClutterActor *actor);
+-void            _clutter_stage_release_pick_id          (ClutterStage *stage,
+-                                                         gint32        pick_id);
+-ClutterActor *  _clutter_stage_get_actor_by_pick_id     (ClutterStage *stage,
+-                                                         gint32        pick_id);
+-
+ void            _clutter_stage_add_pointer_drag_actor    (ClutterStage       *stage,
+                                                           ClutterInputDevice *device,
+                                                           ClutterActor       *actor);
+diff --git a/clutter/clutter/clutter-stage-window.c b/clutter/clutter/clutter-stage-window.c
+index 76421d6a0..5da7c50f5 100644
+--- a/clutter/clutter/clutter-stage-window.c
++++ b/clutter/clutter/clutter-stage-window.c
+@@ -275,24 +275,6 @@ _clutter_stage_window_redraw (ClutterStageWindow *window)
+     iface->redraw (window);
+ }
+ 
+-
+-void
+-_clutter_stage_window_get_dirty_pixel (ClutterStageWindow *window,
+-                                       ClutterStageView   *view,
+-                                       int *x, int *y)
+-{
+-  ClutterStageWindowInterface *iface;
+-
+-  *x = 0;
+-  *y = 0;
+-
+-  g_return_if_fail (CLUTTER_IS_STAGE_WINDOW (window));
+-
+-  iface = CLUTTER_STAGE_WINDOW_GET_IFACE (window);
+-  if (iface->get_dirty_pixel)
+-    iface->get_dirty_pixel (window, view, x, y);
+-}
+-
+ gboolean
+ _clutter_stage_window_can_clip_redraws (ClutterStageWindow *window)
+ {
+diff --git a/clutter/clutter/clutter-stage-window.h b/clutter/clutter/clutter-stage-window.h
+index 389ed0596..f0aa3d3e9 100644
+--- a/clutter/clutter/clutter-stage-window.h
++++ b/clutter/clutter/clutter-stage-window.h
+@@ -64,10 +64,6 @@ struct _ClutterStageWindowInterface
+ 
+   void              (* redraw)                  (ClutterStageWindow *stage_window);
+ 
+-  void              (* get_dirty_pixel)         (ClutterStageWindow *stage_window,
+-                                                 ClutterStageView   *view,
+-                                                 int *x, int *y);
+-
+   gboolean          (* can_clip_redraws)        (ClutterStageWindow *stage_window);
+ 
+   GList            *(* get_views)               (ClutterStageWindow *stage_window);
+@@ -111,10 +107,6 @@ void              _clutter_stage_window_set_accept_focus        (ClutterStageWin
+ 
+ void              _clutter_stage_window_redraw                  (ClutterStageWindow *window);
+ 
+-void              _clutter_stage_window_get_dirty_pixel         (ClutterStageWindow *window,
+-                                                                 ClutterStageView   *view,
+-                                                                 int *x, int *y);
+-
+ gboolean          _clutter_stage_window_can_clip_redraws        (ClutterStageWindow *window);
+ 
+ GList *           _clutter_stage_window_get_views               (ClutterStageWindow *window);
+diff --git a/clutter/clutter/clutter-stage.c b/clutter/clutter/clutter-stage.c
+index 9e9e8d006..453e0ed38 100644
+--- a/clutter/clutter/clutter-stage.c
++++ b/clutter/clutter/clutter-stage.c
+@@ -103,6 +103,23 @@ struct _ClutterStageQueueRedrawEntry
+   ClutterPaintVolume clip;
+ };
+ 
++struct _PickRecord
++{
++  ClutterPoint vertex[4];
++  ClutterActor *actor;
++  int clip_stack_top;
++};
++
++typedef struct _PickRecord PickRecord;
++
++struct _PickClipRecord
++{
++  int prev;
++  ClutterPoint vertex[4];
++};
++
++typedef struct _PickClipRecord PickClipRecord;
++
+ struct _ClutterStagePrivate
+ {
+   /* the stage implementation */
+@@ -136,7 +153,11 @@ struct _ClutterStagePrivate
+   GTimer *fps_timer;
+   gint32 timer_n_frames;
+ 
+-  ClutterIDPool *pick_id_pool;
++  GArray *pick_stack;
++  GArray *pick_clip_stack;
++  int pick_clip_stack_top;
++  gboolean pick_stack_frozen;
++  ClutterPickMode cached_pick_mode;
+ 
+ #ifdef CLUTTER_ENABLE_DEBUG
+   gulong redraw_count;
+@@ -315,6 +336,177 @@ clutter_stage_get_preferred_height (ClutterActor *self,
+     *natural_height_p = geom.height;
+ }
+ 
++/* In order to keep weak pointers valid between frames we need them to not
++ * move in memory, so the stack is marked as "frozen".
++ */
++static void
++_clutter_stage_freeze_pick_stack (ClutterStage *stage)
++{
++  ClutterStagePrivate *priv = stage->priv;
++  int i;
++
++  if (priv->pick_stack_frozen)
++    return;
++
++  for (i = 0; i < priv->pick_stack->len; i++)
++    {
++      PickRecord *rec = &g_array_index (priv->pick_stack, PickRecord, i);
++
++      if (rec->actor)
++        g_object_add_weak_pointer (G_OBJECT (rec->actor),
++                                   (gpointer) &rec->actor);
++    }
++
++  priv->pick_stack_frozen = TRUE;
++}
++
++static void
++_clutter_stage_thaw_pick_stack (ClutterStage *stage)
++{
++  ClutterStagePrivate *priv = stage->priv;
++  int i;
++
++  if (!priv->pick_stack_frozen)
++    return;
++
++  for (i = 0; i < priv->pick_stack->len; i++)
++    {
++      PickRecord *rec = &g_array_index (priv->pick_stack, PickRecord, i);
++
++      if (rec->actor)
++        g_object_remove_weak_pointer (G_OBJECT (rec->actor),
++                                      (gpointer) &rec->actor);
++    }
++
++  priv->pick_stack_frozen = FALSE;
++}
++
++static void
++_clutter_stage_clear_pick_stack (ClutterStage *stage)
++{
++  ClutterStagePrivate *priv = stage->priv;
++
++  _clutter_stage_thaw_pick_stack (stage);
++  g_array_set_size (priv->pick_stack, 0);
++  g_array_set_size (priv->pick_clip_stack, 0);
++  priv->pick_clip_stack_top = -1;
++  priv->cached_pick_mode = CLUTTER_PICK_NONE;
++}
++
++void
++_clutter_stage_log_pick (ClutterStage       *stage,
++                         const ClutterPoint  vertices[4],
++                         ClutterActor       *actor)
++{
++  ClutterStagePrivate *priv;
++  PickRecord rec;
++
++  g_return_if_fail (CLUTTER_IS_STAGE (stage));
++  g_return_if_fail (actor != NULL);
++
++  priv = stage->priv;
++
++  g_assert (!priv->pick_stack_frozen);
++
++  memcpy (rec.vertex, vertices, 4 * sizeof (ClutterPoint));
++  rec.actor = actor;
++  rec.clip_stack_top = priv->pick_clip_stack_top;
++
++  g_array_append_val (priv->pick_stack, rec);
++}
++
++void
++_clutter_stage_push_pick_clip (ClutterStage       *stage,
++                               const ClutterPoint  vertices[4])
++{
++  ClutterStagePrivate *priv;
++  PickClipRecord clip;
++
++  g_return_if_fail (CLUTTER_IS_STAGE (stage));
++
++  priv = stage->priv;
++
++  g_assert (!priv->pick_stack_frozen);
++
++  clip.prev = priv->pick_clip_stack_top;
++  memcpy (clip.vertex, vertices, 4 * sizeof (ClutterPoint));
++
++  g_array_append_val (priv->pick_clip_stack, clip);
++  priv->pick_clip_stack_top = priv->pick_clip_stack->len - 1;
++}
++
++void
++_clutter_stage_pop_pick_clip (ClutterStage *stage)
++{
++  ClutterStagePrivate *priv;
++  const PickClipRecord *top;
++
++  g_return_if_fail (CLUTTER_IS_STAGE (stage));
++
++  priv = stage->priv;
++
++  g_assert (!priv->pick_stack_frozen);
++  g_assert (priv->pick_clip_stack_top >= 0);
++
++  /* Individual elements of pick_clip_stack are not freed. This is so they
++   * can be shared as part of a tree of different stacks used by different
++   * actors in the pick_stack. The whole pick_clip_stack does however get
++   * freed later in _clutter_stage_clear_pick_stack.
++   */
++
++  top = &g_array_index (priv->pick_clip_stack,
++                        PickClipRecord,
++                        priv->pick_clip_stack_top);
++
++  priv->pick_clip_stack_top = top->prev;
++}
++
++static gboolean
++pick_record_contains_pixel (ClutterStage       *stage,
++                            const PickRecord   *rec,
++                            int                 x,
++                            int                 y)
++{
++  ClutterStagePrivate *priv;
++  int clip_index;
++
++  /* We test the centre point of the pixel so that we can use
++   * clutter_point_inside_polygon and avoid any ambiguity about the boundaries
++   * of pixel-aligned actors. If we were to use point (x,y) instead (which is
++   * the top-left corner of the pixel) then we'd need to use
++   * clutter_point_touches_polygon.
++   */
++  const ClutterPoint point = { x + 0.5f, y + 0.5f };
++
++  if (!clutter_point_inside_polygon (&point, rec->vertex, 4))
++    return FALSE;
++
++  priv = stage->priv;
++
++  /* pick_clip_stack is actually a graph containing one or more trees. And the
++   * clip_stack_top for a given PickRecord is the path from a leaf of such a
++   * tree to its root. It's still a stack though, from the point of view of the
++   * code that built it and the code that traverses it here.
++   *
++   * Allowing multiple stacks to overlap and merge into trees saves us time and
++   * memory.
++   */
++  clip_index = rec->clip_stack_top;
++  while (clip_index >= 0)
++    {
++      const PickClipRecord *clip = &g_array_index (priv->pick_clip_stack,
++                                                   PickClipRecord,
++                                                   clip_index);
++
++      if (!clutter_point_inside_polygon (&point, clip->vertex, 4))
++        return FALSE;
++
++      clip_index = clip->prev;
++    }
++
++  return TRUE;
++}
++
+ static inline void
+ queue_full_redraw (ClutterStage *stage)
+ {
+@@ -622,6 +814,12 @@ clutter_stage_do_paint_view (ClutterStage                *stage,
+   float viewport[4];
+   cairo_rectangle_int_t geom;
+ 
++  /* Any mode of painting/picking invalidates the pick cache, unless we're
++   * in the middle of building it. So we reset the cached flag but don't
++   * completely clear the pick stack...
++   */
++  priv->cached_pick_mode = CLUTTER_PICK_NONE;
++
+   _clutter_stage_window_get_geometry (priv->impl, &geom);
+ 
+   viewport[0] = priv->viewport[0];
+@@ -1353,40 +1551,6 @@ clutter_stage_get_redraw_clip_bounds (ClutterStage          *stage,
+     }
+ }
+ 
+-static void
+-read_pixels_to_file (CoglFramebuffer *fb,
+-                     char            *filename_stem,
+-                     int              x,
+-                     int              y,
+-                     int              width,
+-                     int              height)
+-{
+-  guint8 *data;
+-  cairo_surface_t *surface;
+-  static int read_count = 0;
+-  char *filename = g_strdup_printf ("%s-%05d.png",
+-                                    filename_stem,
+-                                    read_count);
+-
+-  data = g_malloc (4 * width * height);
+-  cogl_framebuffer_read_pixels (fb,
+-                                x, y, width, height,
+-                                CLUTTER_CAIRO_FORMAT_ARGB32,
+-                                data);
+-
+-  surface = cairo_image_surface_create_for_data (data, CAIRO_FORMAT_RGB24,
+-                                                 width, height,
+-                                                 width * 4);
+-
+-  cairo_surface_write_to_png (surface, filename);
+-  cairo_surface_destroy (surface);
+-
+-  g_free (data);
+-  g_free (filename);
+-
+-  read_count++;
+-}
+-
+ static ClutterActor *
+ _clutter_stage_do_pick_on_view (ClutterStage     *stage,
+                                 gint              x,
+@@ -1394,140 +1558,47 @@ _clutter_stage_do_pick_on_view (ClutterStage     *stage,
+                                 ClutterPickMode   mode,
+                                 ClutterStageView *view)
+ {
+-  ClutterActor *actor = CLUTTER_ACTOR (stage);
++  ClutterMainContext *context = _clutter_context_get_default ();
++  int i;
+   ClutterStagePrivate *priv = stage->priv;
+   CoglFramebuffer *fb = clutter_stage_view_get_framebuffer (view);
+-  cairo_rectangle_int_t view_layout;
+-  ClutterMainContext *context;
+-  guchar pixel[4] = { 0xff, 0xff, 0xff, 0xff };
+-  CoglColor stage_pick_id;
+-  gboolean dither_enabled_save;
+-  ClutterActor *retval;
+-  gint dirty_x;
+-  gint dirty_y;
+-  gint read_x;
+-  gint read_y;
+-  float fb_width, fb_height;
+-  float fb_scale;
+-  float viewport_offset_x;
+-  float viewport_offset_y;
+-
+-  priv = stage->priv;
+-
+-  context = _clutter_context_get_default ();
+-  fb_scale = clutter_stage_view_get_scale (view);
+-  clutter_stage_view_get_layout (view, &view_layout);
+-
+-  fb_width = view_layout.width * fb_scale;
+-  fb_height = view_layout.height * fb_scale;
+-  cogl_push_framebuffer (fb);
+ 
+-  /* needed for when a context switch happens */
+-  _clutter_stage_maybe_setup_viewport (stage, view);
+-
+-  /* FIXME: For some reason leaving the cogl clip stack empty causes the
+-   * picking to not work at all, so setting it the whole framebuffer content
+-   * for now. */
+-  cogl_framebuffer_push_scissor_clip (fb, 0, 0,
+-                                      view_layout.width * fb_scale,
+-                                      view_layout.height * fb_scale);
+-
+-  _clutter_stage_window_get_dirty_pixel (priv->impl, view, &dirty_x, &dirty_y);
+-
+-  if (G_LIKELY (!(clutter_pick_debug_flags & CLUTTER_DEBUG_DUMP_PICK_BUFFERS)))
+-    {
+-      CLUTTER_NOTE (PICK, "Pushing pick scissor clip x: %d, y: %d, 1x1",
+-                    (int) (dirty_x * fb_scale),
+-                    (int) (dirty_y * fb_scale));
+-      cogl_framebuffer_push_scissor_clip (fb, dirty_x * fb_scale, dirty_y * fb_scale, 1, 1);
+-    }
++  /* We are not reentrant right now. If this proves to be a problem then we
++   * would need to keep a stack of pick_stack's, or something... :(
++   */
++  g_assert (context->pick_mode == CLUTTER_PICK_NONE);
+ 
+-  viewport_offset_x = x * fb_scale - dirty_x * fb_scale;
+-  viewport_offset_y = y * fb_scale - dirty_y * fb_scale;
+-  CLUTTER_NOTE (PICK, "Setting viewport to %f, %f, %f, %f",
+-                priv->viewport[0] * fb_scale - viewport_offset_x,
+-                priv->viewport[1] * fb_scale - viewport_offset_y,
+-                priv->viewport[2] * fb_scale,
+-                priv->viewport[3] * fb_scale);
+-  cogl_framebuffer_set_viewport (fb,
+-                                 priv->viewport[0] * fb_scale - viewport_offset_x,
+-                                 priv->viewport[1] * fb_scale - viewport_offset_y,
+-                                 priv->viewport[2] * fb_scale,
+-                                 priv->viewport[3] * fb_scale);
+-
+-  read_x = dirty_x * fb_scale;
+-  read_y = dirty_y * fb_scale;
+-
+-  CLUTTER_NOTE (PICK, "Performing pick at %i,%i on view %dx%d+%d+%d s: %f",
+-                x, y,
+-                view_layout.width, view_layout.height,
+-                view_layout.x, view_layout.y, fb_scale);
+-
+-  cogl_color_init_from_4ub (&stage_pick_id, 255, 255, 255, 255);
+-  cogl_framebuffer_clear (fb, COGL_BUFFER_BIT_COLOR | COGL_BUFFER_BIT_DEPTH, &stage_pick_id);
+-
+-  /* Disable dithering (if any) when doing the painting in pick mode */
+-  dither_enabled_save = cogl_framebuffer_get_dither_enabled (fb);
+-  cogl_framebuffer_set_dither_enabled (fb, FALSE);
+-
+-  /* Render the entire scence in pick mode - just single colored silhouette's
+-   * are drawn offscreen (as we never swap buffers)
+-  */
+-  context->pick_mode = mode;
+-
+-  clutter_stage_do_paint_view (stage, view, NULL);
+-  context->pick_mode = CLUTTER_PICK_NONE;
+-
+-  /* Read the color of the screen co-ords pixel. RGBA_8888_PRE is used
+-     even though we don't care about the alpha component because under
+-     GLES this is the only format that is guaranteed to work so Cogl
+-     will end up having to do a conversion if any other format is
+-     used. The format is requested as pre-multiplied because Cogl
+-     assumes that all pixels in the framebuffer are premultiplied so
+-     it avoids a conversion. */
+-  cogl_framebuffer_read_pixels (fb,
+-                                read_x, read_y, 1, 1,
+-                                COGL_PIXEL_FORMAT_RGBA_8888_PRE,
+-                                pixel);
+-
+-  if (G_UNLIKELY (clutter_pick_debug_flags & CLUTTER_DEBUG_DUMP_PICK_BUFFERS))
++  if (mode != priv->cached_pick_mode)
+     {
+-      char *file_name =
+-        g_strdup_printf ("pick-buffer-%s-view-x-%d",
+-                         _clutter_actor_get_debug_name (actor),
+-                         view_layout.x);
+-
+-      read_pixels_to_file (fb, file_name, 0, 0, fb_width, fb_height);
++      _clutter_stage_clear_pick_stack (stage);
+ 
+-      g_free (file_name);
++      /* We don't render to the fb, but have to set one to stop the cogl matrix
++       * operations from crashing in paint functions. Because the matrices are
++       * stored relative to the current fb.
++       */
++      cogl_push_framebuffer (fb);
++      context->pick_mode = mode;
++      clutter_stage_do_paint_view (stage, view, NULL);
++      context->pick_mode = CLUTTER_PICK_NONE;
++      priv->cached_pick_mode = mode;
++      cogl_pop_framebuffer ();
++
++      _clutter_stage_freeze_pick_stack (stage);
+     }
+ 
+-  /* Restore whether GL_DITHER was enabled */
+-  cogl_framebuffer_set_dither_enabled (fb, dither_enabled_save);
+-
+-  if (G_LIKELY (!(clutter_pick_debug_flags & CLUTTER_DEBUG_DUMP_PICK_BUFFERS)))
+-    cogl_framebuffer_pop_clip (fb);
+-
+-  cogl_framebuffer_pop_clip (fb);
+-
+-  _clutter_stage_dirty_viewport (stage);
+-
+-  if (pixel[0] == 0xff && pixel[1] == 0xff && pixel[2] == 0xff)
+-    retval = actor;
+-  else
++  /* Search all "painted" pickable actors from front to back. A linear search
++   * is required, and also performs fine since there is typically only
++   * on the order of dozens of actors in the list (on screen) at a time.
++   */
++  for (i = priv->pick_stack->len - 1; i >= 0; i--)
+     {
+-      guint32 id_ = _clutter_pixel_to_id (pixel);
++      const PickRecord *rec = &g_array_index (priv->pick_stack, PickRecord, i);
+ 
+-      retval = _clutter_stage_get_actor_by_pick_id (stage, id_);
+-      CLUTTER_NOTE (PICK, "Picking actor %s with id %u (pixel: 0x%x%x%x%x",
+-                    G_OBJECT_TYPE_NAME (retval),
+-                    id_,
+-                    pixel[0], pixel[1], pixel[2], pixel[3]);
++      if (rec->actor && pick_record_contains_pixel (stage, rec, x, y))
++        return rec->actor;
+     }
+ 
+-  cogl_pop_framebuffer ();
+-
+-  return retval;
++  return CLUTTER_ACTOR (stage);
+ }
+ 
+ static ClutterStageView *
+@@ -1819,7 +1890,9 @@ clutter_stage_finalize (GObject *object)
+ 
+   g_array_free (priv->paint_volume_stack, TRUE);
+ 
+-  _clutter_id_pool_free (priv->pick_id_pool);
++  _clutter_stage_clear_pick_stack (stage);
++  g_array_free (priv->pick_clip_stack, TRUE);
++  g_array_free (priv->pick_stack, TRUE);
+ 
+   if (priv->fps_timer != NULL)
+     g_timer_destroy (priv->fps_timer);
+@@ -2225,7 +2298,10 @@ clutter_stage_init (ClutterStage *self)
+   priv->paint_volume_stack =
+     g_array_new (FALSE, FALSE, sizeof (ClutterPaintVolume));
+ 
+-  priv->pick_id_pool = _clutter_id_pool_new (256);
++  priv->pick_stack = g_array_new (FALSE, FALSE, sizeof (PickRecord));
++  priv->pick_clip_stack = g_array_new (FALSE, FALSE, sizeof (PickClipRecord));
++  priv->pick_clip_stack_top = -1;
++  priv->cached_pick_mode = CLUTTER_PICK_NONE;
+ }
+ 
+ /**
+@@ -3895,6 +3971,12 @@ _clutter_stage_queue_actor_redraw (ClutterStage                 *stage,
+   CLUTTER_NOTE (CLIPPING, "stage_queue_actor_redraw (actor=%s, clip=%p): ",
+                 _clutter_actor_get_debug_name (actor), clip);
+ 
++  /* Queuing a redraw or clip change invalidates the pick cache, unless we're
++   * in the middle of building it. So we reset the cached flag but don't
++   * completely clear the pick stack...
++   */
++  priv->cached_pick_mode = CLUTTER_PICK_NONE;
++
+   if (!priv->redraw_pending)
+     {
+       ClutterMasterClock *master_clock;
+@@ -4155,39 +4237,6 @@ _clutter_stage_get_active_framebuffer (ClutterStage *stage)
+   return stage->priv->active_framebuffer;
+ }
+ 
+-gint32
+-_clutter_stage_acquire_pick_id (ClutterStage *stage,
+-                                ClutterActor *actor)
+-{
+-  ClutterStagePrivate *priv = stage->priv;
+-
+-  g_assert (priv->pick_id_pool != NULL);
+-
+-  return _clutter_id_pool_add (priv->pick_id_pool, actor);
+-}
+-
+-void
+-_clutter_stage_release_pick_id (ClutterStage *stage,
+-                                gint32        pick_id)
+-{
+-  ClutterStagePrivate *priv = stage->priv;
+-
+-  g_assert (priv->pick_id_pool != NULL);
+-
+-  _clutter_id_pool_remove (priv->pick_id_pool, pick_id);
+-}
+-
+-ClutterActor *
+-_clutter_stage_get_actor_by_pick_id (ClutterStage *stage,
+-                                     gint32        pick_id)
+-{
+-  ClutterStagePrivate *priv = stage->priv;
+-
+-  g_assert (priv->pick_id_pool != NULL);
+-
+-  return _clutter_id_pool_lookup (priv->pick_id_pool, pick_id);
+-}
+-
+ void
+ _clutter_stage_add_pointer_drag_actor (ClutterStage       *stage,
+                                        ClutterInputDevice *device,
+diff --git a/clutter/clutter/clutter-types.h b/clutter/clutter/clutter-types.h
+index 0f0fb1c2a..e3683184b 100644
+--- a/clutter/clutter/clutter-types.h
++++ b/clutter/clutter/clutter-types.h
+@@ -200,6 +200,14 @@ float                   clutter_point_distance  (const ClutterPoint *a,
+                                                  const ClutterPoint *b,
+                                                  float              *x_distance,
+                                                  float              *y_distance);
++CLUTTER_EXPORT
++gboolean clutter_point_inside_polygon           (const ClutterPoint *point,
++                                                 const ClutterPoint *vertices,
++                                                 unsigned int        nvertices);
++CLUTTER_EXPORT
++gboolean clutter_point_touches_polygon          (const ClutterPoint *point,
++                                                 const ClutterPoint *vertices,
++                                                 unsigned int        nvertices);
+ 
+ /**
+  * ClutterSize:
+diff --git a/clutter/clutter/cogl/clutter-stage-cogl.c b/clutter/clutter/cogl/clutter-stage-cogl.c
+index e0c39185b..137c66598 100644
+--- a/clutter/clutter/cogl/clutter-stage-cogl.c
++++ b/clutter/clutter/cogl/clutter-stage-cogl.c
+@@ -956,55 +956,6 @@ clutter_stage_cogl_redraw (ClutterStageWindow *stage_window)
+   stage_cogl->frame_count++;
+ }
+ 
+-static void
+-clutter_stage_cogl_get_dirty_pixel (ClutterStageWindow *stage_window,
+-                                    ClutterStageView   *view,
+-                                    int                *x,
+-                                    int                *y)
+-{
+-  CoglFramebuffer *framebuffer = clutter_stage_view_get_framebuffer (view);
+-  gboolean has_buffer_age =
+-    cogl_is_onscreen (framebuffer) &&
+-    is_buffer_age_enabled ();
+-  float fb_scale;
+-  gboolean scale_is_fractional;
+-
+-  fb_scale = clutter_stage_view_get_scale (view);
+-  if (fb_scale != floorf (fb_scale))
+-    scale_is_fractional = TRUE;
+-  else
+-    scale_is_fractional = FALSE;
+-
+-  /*
+-   * Buffer damage is tracked in the framebuffer coordinate space
+-   * using the damage history. When fractional scaling is used, a
+-   * coordinate on the stage might not correspond to the exact position of any
+-   * physical pixel, which causes issues when painting using the pick mode.
+-   *
+-   * For now, always use the (0, 0) pixel for picking when using fractional
+-   * framebuffer scaling.
+-   */
+-  if (!has_buffer_age || scale_is_fractional)
+-    {
+-      *x = 0;
+-      *y = 0;
+-    }
+-  else
+-    {
+-      ClutterStageViewCogl *view_cogl = CLUTTER_STAGE_VIEW_COGL (view);
+-      ClutterStageViewCoglPrivate *view_priv =
+-        clutter_stage_view_cogl_get_instance_private (view_cogl);
+-      cairo_rectangle_int_t view_layout;
+-      cairo_rectangle_int_t *fb_damage;
+-
+-      clutter_stage_view_get_layout (view, &view_layout);
+-
+-      fb_damage = &view_priv->damage_history[DAMAGE_HISTORY (view_priv->damage_index - 1)];
+-      *x = fb_damage->x / fb_scale;
+-      *y = fb_damage->y / fb_scale;
+-    }
+-}
+-
+ static void
+ clutter_stage_window_iface_init (ClutterStageWindowInterface *iface)
+ {
+@@ -1022,7 +973,6 @@ clutter_stage_window_iface_init (ClutterStageWindowInterface *iface)
+   iface->ignoring_redraw_clips = clutter_stage_cogl_ignoring_redraw_clips;
+   iface->get_redraw_clip_bounds = clutter_stage_cogl_get_redraw_clip_bounds;
+   iface->redraw = clutter_stage_cogl_redraw;
+-  iface->get_dirty_pixel = clutter_stage_cogl_get_dirty_pixel;
+ }
+ 
+ static void
+diff --git a/clutter/clutter/deprecated/clutter-texture.c b/clutter/clutter/deprecated/clutter-texture.c
+index bea239f45..2c677b8a4 100644
+--- a/clutter/clutter/deprecated/clutter-texture.c
++++ b/clutter/clutter/deprecated/clutter-texture.c
+@@ -572,83 +572,6 @@ gen_texcoords_and_draw_cogl_rectangle (ClutterActor    *self,
+                                             0, 0, t_w, t_h);
+ }
+ 
+-static CoglPipeline *
+-create_pick_pipeline (ClutterActor *self)
+-{
+-  ClutterTexture *texture = CLUTTER_TEXTURE (self);
+-  ClutterTexturePrivate *priv = texture->priv;
+-  CoglPipeline *pick_pipeline = cogl_pipeline_copy (texture_template_pipeline);
+-  GError *error = NULL;
+-
+-  if (!cogl_pipeline_set_layer_combine (pick_pipeline, 0,
+-                                        "RGBA = "
+-                                        "  MODULATE (CONSTANT, TEXTURE[A])",
+-                                        &error))
+-    {
+-      if (!priv->seen_create_pick_pipeline_warning)
+-        g_warning ("Error setting up texture combine for shaped "
+-                   "texture picking: %s", error->message);
+-      priv->seen_create_pick_pipeline_warning = TRUE;
+-      g_error_free (error);
+-      cogl_object_unref (pick_pipeline);
+-      return NULL;
+-    }
+-
+-  cogl_pipeline_set_blend (pick_pipeline,
+-                           "RGBA = ADD (SRC_COLOR[RGBA], 0)",
+-                           NULL);
+-
+-  cogl_pipeline_set_alpha_test_function (pick_pipeline,
+-                                         COGL_PIPELINE_ALPHA_FUNC_EQUAL,
+-                                         1.0);
+-
+-  return pick_pipeline;
+-}
+-
+-static void
+-clutter_texture_pick (ClutterActor       *self,
+-                      const ClutterColor *color)
+-{
+-  ClutterTexture *texture = CLUTTER_TEXTURE (self);
+-  ClutterTexturePrivate *priv = texture->priv;
+-  CoglFramebuffer *framebuffer = cogl_get_draw_framebuffer ();
+-
+-  if (!clutter_actor_should_pick_paint (self))
+-    return;
+-
+-  if (G_LIKELY (priv->pick_with_alpha_supported) && priv->pick_with_alpha)
+-    {
+-      CoglColor pick_color;
+-
+-      if (priv->pick_pipeline == NULL)
+-        priv->pick_pipeline = create_pick_pipeline (self);
+-
+-      if (priv->pick_pipeline == NULL)
+-        {
+-          priv->pick_with_alpha_supported = FALSE;
+-          CLUTTER_ACTOR_CLASS (clutter_texture_parent_class)->pick (self,
+-                                                                    color);
+-          return;
+-        }
+-
+-      if (priv->fbo_handle != NULL)
+-        update_fbo (self);
+-
+-      cogl_color_init_from_4ub (&pick_color,
+-                                color->red,
+-                                color->green,
+-                                color->blue,
+-                                0xff);
+-      cogl_pipeline_set_layer_combine_constant (priv->pick_pipeline,
+-                                                0, &pick_color);
+-      cogl_pipeline_set_layer_texture (priv->pick_pipeline, 0,
+-                                       clutter_texture_get_cogl_texture (texture));
+-      gen_texcoords_and_draw_cogl_rectangle (self, priv->pick_pipeline, framebuffer);
+-    }
+-  else
+-    CLUTTER_ACTOR_CLASS (clutter_texture_parent_class)->pick (self, color);
+-}
+-
+ static void
+ clutter_texture_paint (ClutterActor *self)
+ {
+@@ -767,12 +690,6 @@ clutter_texture_dispose (GObject *object)
+       priv->pipeline = NULL;
+     }
+ 
+-  if (priv->pick_pipeline != NULL)
+-    {
+-      cogl_object_unref (priv->pick_pipeline);
+-      priv->pick_pipeline = NULL;
+-    }
+-
+   G_OBJECT_CLASS (clutter_texture_parent_class)->dispose (object);
+ }
+ 
+@@ -944,7 +861,6 @@ clutter_texture_class_init (ClutterTextureClass *klass)
+   GParamSpec *pspec;
+ 
+   actor_class->paint            = clutter_texture_paint;
+-  actor_class->pick             = clutter_texture_pick;
+   actor_class->get_paint_volume = clutter_texture_get_paint_volume;
+   actor_class->realize          = clutter_texture_realize;
+   actor_class->unrealize        = clutter_texture_unrealize;
+@@ -1263,11 +1179,9 @@ clutter_texture_init (ClutterTexture *self)
+   priv->repeat_y          = FALSE;
+   priv->sync_actor_size   = TRUE;
+   priv->fbo_handle        = NULL;
+-  priv->pick_pipeline     = NULL;
+   priv->keep_aspect_ratio = FALSE;
+   priv->pick_with_alpha   = FALSE;
+   priv->pick_with_alpha_supported = TRUE;
+-  priv->seen_create_pick_pipeline_warning = FALSE;
+ 
+   if (G_UNLIKELY (texture_template_pipeline == NULL))
+     {
+@@ -3052,13 +2966,8 @@ clutter_texture_set_pick_with_alpha (ClutterTexture *texture,
+   if (priv->pick_with_alpha == pick_with_alpha)
+     return;
+ 
+-  if (!pick_with_alpha && priv->pick_pipeline != NULL)
+-    {
+-      cogl_object_unref (priv->pick_pipeline);
+-      priv->pick_pipeline = NULL;
+-    }
++  g_assert (!pick_with_alpha);  /* No longer supported */
+ 
+-  /* NB: the pick pipeline is created lazily when we first pick */
+   priv->pick_with_alpha = pick_with_alpha;
+ 
+   /* NB: actors are expected to call clutter_actor_queue_redraw when
+diff --git a/clutter/tests/conform/actor-pick.c b/clutter/tests/conform/actor-pick.c
+index 969b4920a..2bf5954c7 100644
+--- a/clutter/tests/conform/actor-pick.c
++++ b/clutter/tests/conform/actor-pick.c
+@@ -5,7 +5,6 @@
+ #define STAGE_HEIGHT 480
+ #define ACTORS_X 12
+ #define ACTORS_Y 16
+-#define SHIFT_STEP STAGE_WIDTH / ACTORS_X
+ 
+ typedef struct _State State;
+ 
+@@ -20,84 +19,11 @@ struct _State
+   gboolean pass;
+ };
+ 
+-struct _ShiftEffect
+-{
+-  ClutterShaderEffect parent_instance;
+-};
+-
+-struct _ShiftEffectClass
+-{
+-  ClutterShaderEffectClass parent_class;
+-};
+-
+-typedef struct _ShiftEffect       ShiftEffect;
+-typedef struct _ShiftEffectClass  ShiftEffectClass;
+-
+-#define TYPE_SHIFT_EFFECT        (shift_effect_get_type ())
+-
+-GType shift_effect_get_type (void);
+-
+-G_DEFINE_TYPE (ShiftEffect,
+-               shift_effect,
+-               CLUTTER_TYPE_SHADER_EFFECT);
+-
+-static void
+-shader_paint (ClutterEffect           *effect,
+-              ClutterEffectPaintFlags  flags)
+-{
+-  ClutterShaderEffect *shader = CLUTTER_SHADER_EFFECT (effect);
+-  float tex_width;
+-  ClutterActor *actor =
+-    clutter_actor_meta_get_actor (CLUTTER_ACTOR_META (effect));
+-
+-  if (g_test_verbose ())
+-    g_debug ("shader_paint");
+-
+-  clutter_shader_effect_set_shader_source (shader,
+-    "uniform sampler2D tex;\n"
+-    "uniform float step;\n"
+-    "void main (void)\n"
+-    "{\n"
+-    "  cogl_color_out = texture2D(tex, vec2 (cogl_tex_coord_in[0].s + step,\n"
+-    "                                        cogl_tex_coord_in[0].t));\n"
+-    "}\n");
+-
+-  tex_width = clutter_actor_get_width (actor);
+-
+-  clutter_shader_effect_set_uniform (shader, "tex", G_TYPE_INT, 1, 0);
+-  clutter_shader_effect_set_uniform (shader, "step", G_TYPE_FLOAT, 1,
+-                                     SHIFT_STEP / tex_width);
+-
+-  CLUTTER_EFFECT_CLASS (shift_effect_parent_class)->paint (effect, flags);
+-}
+-
+-static void
+-shader_pick (ClutterEffect           *effect,
+-             ClutterEffectPaintFlags  flags)
+-{
+-  shader_paint (effect, flags);
+-}
+-
+-static void
+-shift_effect_class_init (ShiftEffectClass *klass)
+-{
+-  ClutterEffectClass *shader_class = CLUTTER_EFFECT_CLASS (klass);
+-
+-  shader_class->paint = shader_paint;
+-  shader_class->pick = shader_pick;
+-}
+-
+-static void
+-shift_effect_init (ShiftEffect *self)
+-{
+-}
+-
+ static const char *test_passes[] = {
+   "No covering actor",
+   "Invisible covering actor",
+   "Clipped covering actor",
+   "Blur effect",
+-  "Shift effect",
+ };
+ 
+ static gboolean
+@@ -165,30 +91,10 @@ on_timeout (gpointer data)
+           if (g_test_verbose ())
+             g_print ("With blur effect:\n");
+         }
+-      else if (test_num == 4)
+-        {
+-          if (!clutter_feature_available (CLUTTER_FEATURE_SHADERS_GLSL))
+-            continue;
+-
+-          clutter_actor_hide (over_actor);
+-          clutter_actor_remove_effect_by_name (CLUTTER_ACTOR (state->stage),
+-                                               "blur");
+-
+-          clutter_actor_add_effect_with_name (CLUTTER_ACTOR (state->stage),
+-                                              "shift",
+-                                              g_object_new (TYPE_SHIFT_EFFECT,
+-                                                            NULL));
+-
+-          if (g_test_verbose ())
+-            g_print ("With shift effect:\n");
+-        }
+ 
+       for (y = 0; y < ACTORS_Y; y++)
+         {
+-          if (test_num == 4)
+-            x = 1;
+-          else
+-            x = 0;
++          x = 0;
+ 
+           for (; x < ACTORS_X; x++)
+             {
+@@ -198,9 +104,6 @@ on_timeout (gpointer data)
+ 
+               pick_x = x * state->actor_width + state->actor_width / 2;
+ 
+-              if (test_num == 4)
+-                pick_x -= SHIFT_STEP;
+-
+               actor =
+                 clutter_stage_get_actor_at_pos (CLUTTER_STAGE (state->stage),
+                                                 CLUTTER_PICK_ALL,
+diff --git a/src/compositor/meta-surface-actor.c b/src/compositor/meta-surface-actor.c
+index ca4ca19a9..814199145 100644
+--- a/src/compositor/meta-surface-actor.c
++++ b/src/compositor/meta-surface-actor.c
+@@ -70,38 +70,23 @@ meta_surface_actor_pick (ClutterActor       *actor,
+   else
+     {
+       int n_rects;
+-      float *rectangles;
+       int i;
+-      CoglPipeline *pipeline;
+-      CoglContext *ctx;
+-      CoglFramebuffer *fb;
+-      CoglColor cogl_color;
+ 
+       n_rects = cairo_region_num_rectangles (priv->input_region);
+-      rectangles = g_alloca (sizeof (float) * 4 * n_rects);
+ 
+       for (i = 0; i < n_rects; i++)
+         {
+           cairo_rectangle_int_t rect;
+-          int pos = i * 4;
++          ClutterActorBox box;
+ 
+           cairo_region_get_rectangle (priv->input_region, i, &rect);
+ 
+-          rectangles[pos + 0] = rect.x;
+-          rectangles[pos + 1] = rect.y;
+-          rectangles[pos + 2] = rect.x + rect.width;
+-          rectangles[pos + 3] = rect.y + rect.height;
++          box.x1 = rect.x;
++          box.y1 = rect.y;
++          box.x2 = rect.x + rect.width;
++          box.y2 = rect.y + rect.height;
++          clutter_actor_pick_box (actor, &box);
+         }
+-
+-      ctx = clutter_backend_get_cogl_context (clutter_get_default_backend ());
+-      fb = cogl_get_draw_framebuffer ();
+-
+-      cogl_color_init_from_4ub (&cogl_color, color->red, color->green, color->blue, color->alpha);
+-
+-      pipeline = cogl_pipeline_new (ctx);
+-      cogl_pipeline_set_color (pipeline, &cogl_color);
+-      cogl_framebuffer_draw_rectangles (fb, pipeline, rectangles, n_rects);
+-      cogl_object_unref (pipeline);
+     }
+ 
+   clutter_actor_iter_init (&iter, actor);
