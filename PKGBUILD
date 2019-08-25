@@ -20,16 +20,14 @@ pkgver() {
 }
 
 build() {
-  cd altrace
   cmake \
     -G Ninja \
     -D CMAKE_BUILD_TYPE=Release \
     -D CMAKE_INSTALL_PREFIX=/usr \
-    .
-  ninja
+    -S altrace -B build
+  ninja -C build
 }
 
 package() {
-  cd altrace
-  DESTDIR="$pkgdir" ninja install
+  DESTDIR="$pkgdir" ninja -C build install
 }
