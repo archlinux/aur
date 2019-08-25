@@ -1,6 +1,6 @@
 pkgbase = torrential-git
 	pkgdesc = Download torrents in style with this speedy, minimalist torrent client designed for Pantheon Shell
-	pkgver = latest
+	pkgver = r219.465f834
 	pkgrel = 1
 	url = https://github.com/davidmhewitt/torrential
 	arch = i686
@@ -10,7 +10,6 @@ pkgbase = torrential-git
 	makedepends = vala
 	makedepends = git
 	depends = gtk3
-	depends = vala
 	depends = granite
 	depends = curl
 	depends = libb64

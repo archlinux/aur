@@ -4,15 +4,14 @@
 _gitname=torrential
 _author=davidmhewitt
 pkgname=("${_gitname}-git")
-pkgver=latest
+pkgver=r219.465f834
 pkgrel=1
 pkgdesc="Download torrents in style with this speedy, minimalist torrent client designed for Pantheon Shell"
 arch=('i686' 'x86_64')
 url="https://github.com/${_author}/${_gitname}"
 license=('GPL3')
-depends=('gtk3' 'vala' 'granite'
-         'curl' 'libb64' 'libevent' 'libnatpmp' 'libunity' 'libtransmission'
-         'libutp-git' 'miniupnpc' 'openssl')
+depends=('gtk3' 'granite' 'curl' 'libb64' 'libevent' 'libnatpmp' 'libunity' 
+		 'libtransmission' 'libutp-git' 'miniupnpc' 'openssl')
 optdepends=()
 makedepends=('cmake' 'vala' 'git')
 provides=("${_gitname}")
