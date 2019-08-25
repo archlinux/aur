@@ -1,3 +1,4 @@
+# Maintainer: Stephanie Wilde-Hobbs <steph@rx14.co.uk>
 # Maintainer: Radostin Stoyanov  <rstoyanov1@gmail.com>
 pkgname=libvirt-sandbox
 pkgver=0.8.0
@@ -7,7 +8,7 @@ arch=('i686' 'x86_64')
 url="http://sandbox.libvirt.org/"
 license=('LGPL')
 depends=('libvirt-glib' 'libselinux' 'cpio')
-makedepends=('gobject-introspection' 'intltool')
+makedepends=('gobject-introspection' 'intltool' 'rpcsvc-proto' 'xz-static')
 optdepends=('dhclient: for sandbox network configuration using DHCP')
 source=(
     http://libvirt.org/sources/sandbox/$pkgname-$pkgver.tar.gz{,.asc}
@@ -39,9 +40,8 @@ build() {
       --prefix=/usr \
       --libexecdir=/usr/lib/$pkgname \
       --sysconfdir=/etc \
-      --enable-introspection \
-      --without-lzma
-  make -j4
+      --enable-introspection
+  make
 }
 
 check() {
