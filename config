@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 5.2.9-zen1 Kernel Configuration
+# Linux/x86 5.2.10-zen1 Kernel Configuration
 #
 
 #
@@ -8529,7 +8529,7 @@ CONFIG_IOMMU_SUPPORT=y
 # CONFIG_IOMMU_DEFAULT_PASSTHROUGH is not set
 CONFIG_OF_IOMMU=y
 CONFIG_AMD_IOMMU=y
-CONFIG_AMD_IOMMU_V2=m
+CONFIG_AMD_IOMMU_V2=y
 CONFIG_DMAR_TABLE=y
 CONFIG_INTEL_IOMMU=y
 CONFIG_INTEL_IOMMU_SVM=y
