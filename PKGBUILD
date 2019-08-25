@@ -2,7 +2,7 @@
 # Contributor: Antonio Rojas
 
 pkgname=qca-qt5-git
-pkgver=v2.1.1.7.g558f819
+pkgver=v2.2.1.2.g0be2a2c
 pkgrel=1
 pkgdesc="Qt Cryptographic Architecture. Qt5 Build (GIT Version)"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ optdepends=('botan: Botan plugin'
             'libsasl: SASL plugin'
             'libgcrypt: gcrypt plugin')
 conflicts=('qca-qt5')
-provides=('qca-qt5')
+provides=('qca-qt5''qca')
 source=("git://anongit.kde.org/qca.git")
 md5sums=('SKIP')
 
