@@ -1,6 +1,6 @@
 pkgbase = tomato-git
 	pkgdesc = A simple, usable, and efficient pomodoro app designed for Pantheon Shell
-	pkgver = latest
+	pkgver = r103.c9f059f
 	pkgrel = 1
 	url = https://github.com/tomatoers/tomato
 	arch = i686
@@ -12,6 +12,7 @@ pkgbase = tomato-git
 	depends = gtk3
 	depends = granite
 	depends = libcanberra
+	depends = libunity
 	provides = tomato
 	conflicts = tomato
 	source = git+https://github.com/tomatoers/tomato.git

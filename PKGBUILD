@@ -4,13 +4,13 @@
 _gitname=tomato
 _author=tomatoers
 pkgname=("${_gitname}-git")
-pkgver=latest
+pkgver=r103.c9f059f
 pkgrel=1
 pkgdesc="A simple, usable, and efficient pomodoro app designed for Pantheon Shell"
 arch=('i686' 'x86_64')
 url="https://github.com/${_author}/${_gitname}"
 license=('GPL3')
-depends=('gtk3' 'granite' 'libcanberra')
+depends=('gtk3' 'granite' 'libcanberra' 'libunity')
 optdepends=('')
 makedepends=('cmake' 'git' 'vala')
 provides=("${_gitname}")
