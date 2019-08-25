@@ -2,12 +2,12 @@
 pkgname=blaze
 provides=('blaze')
 pkgver=3.5
-pkgrel=1
+pkgrel=2
 pkgdesc='An open-source, high-performance C++ math library for dense and sparse arithmetic.'
 url='https://bitbucket.org/blaze-lib/blaze'
 arch=('any')
 license=('BSD')
-makedepends=('cmake' 'git' 'make' 'gcc')
+makedepends=('cmake' 'git' 'make' 'gcc' 'blas')
 sha256sums=('f93a4c0535120db26b8e13dd8fce9eeed70e93e42d20f37da968ff86551ce319')
 source=("$pkgname-$pkgver.tar.gz::https://bitbucket.org/blaze-lib/blaze/get/v3.5.tar.gz")
 
