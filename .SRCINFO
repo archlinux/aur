@@ -1,13 +1,13 @@
 pkgbase = snake
 	pkgdesc = A simple lightweight terminal snake game
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/PonasKovas/snake
 	arch = any
 	license = MIT
 	makedepends = cargo
-	source = https://github.com/PonasKovas/snake/archive/0.2.1.tar.gz
-	md5sums = d59270a4a2e13e070a15927c93e66217
+	source = https://github.com/PonasKovas/snake/archive/0.2.2.tar.gz
+	md5sums = cf13dd5c01b92ff86b6bff948bc93516
 
 pkgname = snake
 

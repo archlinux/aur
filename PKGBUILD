@@ -1,6 +1,6 @@
 # Maintainer: Ponas <mykolas.peteraitis@gmail.com>
 pkgname=snake
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="A simple lightweight terminal snake game"
 arch=('any')
@@ -8,7 +8,7 @@ url="https://github.com/PonasKovas/snake"
 license=('MIT')
 makedepends=('cargo')
 source=("https://github.com/PonasKovas/snake/archive/${pkgver}.tar.gz")
-md5sums=('d59270a4a2e13e070a15927c93e66217')
+md5sums=('cf13dd5c01b92ff86b6bff948bc93516')
 
 build () {
   cd "$srcdir/$pkgname-$pkgver"
