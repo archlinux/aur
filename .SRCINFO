@@ -8,6 +8,7 @@ pkgbase = github-release
 	license = MIT
 	makedepends = go
 	depends = glibc
+	depends = git
 	conflicts = github-release-bin
 	source = https://github.com/aktau/github-release/archive/v0.7.2.tar.gz
 	sha512sums = b339e5c21200b4079c08f9f9a722d3ce990d184ee5300536c6b32bf64fc7dbc95881fe8fb42f8274a33350b290cf3a5b588e5ee784e173b631b9dc2decd284df
