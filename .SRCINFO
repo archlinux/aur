@@ -1,15 +1,15 @@
 pkgbase = ttf-iosevka-ss06
 	pkgdesc = A slender monospace typeface. Shape: Liberation Mono
-	pkgver = 2.2.1
-	pkgrel = 2
+	pkgver = 2.3.0
+	pkgrel = 1
 	url = https://be5invis.github.io/Iosevka/
 	arch = any
 	license = custom:OFL
 	depends = fontconfig
 	depends = xorg-font-utils
-	source = https://github.com/be5invis/Iosevka/releases/download/v2.2.1/iosevka-ss06-2.2.1.zip
-	source = ttf-iosevka-ss06-2.2.1-2-LICENSE.md::https://raw.githubusercontent.com/be5invis/Iosevka/master/LICENSE.md
-	sha256sums = a692358139b98d223af24649d06c27fb3c63e206abde0c7cce7c2fd387842319
+	source = https://github.com/be5invis/Iosevka/releases/download/v2.3.0/iosevka-ss06-2.3.0.zip
+	source = ttf-iosevka-ss06-2.3.0-1-LICENSE.md::https://raw.githubusercontent.com/be5invis/Iosevka/master/LICENSE.md
+	sha256sums = 73f1e0435463fdf19bb444b26913373d7a5eb57795d4035bae4005f36cda9b96
 	sha256sums = ecfd74a1d6749bf509cee122870da0186bccfae446e3f6bc5faff253577ab000
 
 pkgname = ttf-iosevka-ss06
