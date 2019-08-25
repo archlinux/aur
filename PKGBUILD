@@ -16,7 +16,7 @@ md5sums=('faeb137036cfaaeab91afc7f62c7dc30')
 sha256sums=('d9e6ad0bf5b2e9820bab809c5a4fcd94e844a57f396ac51547fe47dbe255d9e0')
 
 build() {
-  cd $startdir/src/BitTornado-CVS
+  cd BitTornado-CVS
   python2 setup.py build
 }
 
