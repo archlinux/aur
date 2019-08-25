@@ -1,0 +1,17 @@
+pkgbase = ttf-iosevka-extended
+	pkgdesc = Experimental, extended, monospace family of Iosevka.
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = https://be5invis.github.io/Iosevka/
+	arch = any
+	license = custom:OFL
+	depends = fontconfig
+	depends = xorg-font-utils
+	conflicts = ttf-iosevka-pack
+	source = https://github.com/be5invis/Iosevka/releases/download/v2.3.0/experimental-iosevka-etoile-2.3.0.zip
+	source = ttf-iosevka-extended-2.3.0-1-LICENSE.md::https://raw.githubusercontent.com/be5invis/Iosevka/master/LICENSE.md
+	sha256sums = 72045d83118b8454c05ce415d48eb698e86c0a39a8a36efc63abcc3519207591
+	sha256sums = ecfd74a1d6749bf509cee122870da0186bccfae446e3f6bc5faff253577ab000
+
+pkgname = ttf-iosevka-extended
+
