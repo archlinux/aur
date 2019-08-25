@@ -2,8 +2,8 @@
 # Contributor: Justin R. St-Amant <jstamant24 at gmail dot com>
 
 pkgname=draftsight
-pkgver=2019SP0
-pkgrel=2
+pkgver=2019SP1
+pkgrel=1
 pkgdesc="Freeware CAD software for DWG/DXF files."
 arch=('x86_64')
 url="http://www.3ds.com/products/$pkgname/"
@@ -31,7 +31,7 @@ depends=('alsa-lib'
          'zlib')
 source=("$pkgname-$pkgver::http://dl-ak.solidworks.com/nonsecure/$pkgname/$pkgver/draftSight.rpm"
         "$pkgname.desktop")
-md5sums=('6bd7b4dee942576e3244d24b0e3b92dc'
+md5sums=('6f4f0957da481fdf3acdd695808feab2'
          '70904e450823c6978f242435d414e0fc')
 
 _pkgprefix='opt/dassault-systemes/DraftSight'
@@ -57,4 +57,7 @@ package() {
 
   # Install Draftsight's program files
   cp -pr $srcdir/$_pkgprefix/* $pkgdir/$_pkgprefix/
+
+  # fix pdf export module lib load
+  ln -s /usr/lib/libpcre.so.1 $pkgdir/opt/dassault-systemes/DraftSight/Libraries/libpcre.so.3
 }
