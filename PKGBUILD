@@ -18,7 +18,7 @@ depends=('alembic' 'libgl' 'python' 'python-numpy' 'openjpeg' 'desktop-file-util
          'openvdb' 'opencollada' 'opensubdiv' 'openshadinglanguage' 'libtiff' 'libpng')
 makedepends=('git' 'cmake' 'boost' 'mesa' 'llvm')
 ((DISABLE_NINJA)) || makedepends+=('ninja')
-((DISABLE_CUDA))  || makedepends+=('cuda') && optdepends=('cuda: CUDA support in Cycles')
+((DISABLE_CUDA))  && optdepends=('cuda: CUDA support in Cycles') || makedepends+=('cuda')
 
 options=(!strip)
 provides=('blender-2.7')
