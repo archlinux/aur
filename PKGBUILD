@@ -3,9 +3,9 @@
 # https://wiki.archlinux.org/index.php/Electron_package_guidelines
 
 pkgname=ezra-project-git
-pkgver=0.8.1.r0.g2ec8c58
+pkgver=0.9.0.r16.g99704cd
 _branch='master'
-pkgrel=2
+pkgrel=1
 pkgdesc="a bible study software focussing on topical study based on keywords/tags"
 arch=('x86_64')
 url="https://github.com/tobias-klein/ezra-project"
