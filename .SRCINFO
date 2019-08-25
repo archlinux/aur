@@ -1,5 +1,5 @@
 pkgbase = linux-ck
-	pkgver = 5.2.9
+	pkgver = 5.2.10
 	pkgrel = 1
 	url = https://wiki.archlinux.org/index.php/Linux-ck
 	arch = x86_64
@@ -9,32 +9,30 @@ pkgbase = linux-ck
 	makedepends = bc
 	makedepends = libelf
 	options = !strip
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.2.9.tar.xz
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.2.9.tar.sign
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.2.10.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.2.10.tar.sign
 	source = config
 	source = 60-linux.hook
 	source = 90-linux.hook
 	source = linux.preset
-	source = enable_additional_cpu_optimizations-20190714.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20190714.tar.gz
+	source = enable_additional_cpu_optimizations-20190822.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20190822.tar.gz
 	source = http://ck.kolivas.org/patches/5.0/5.2/5.2-ck1/patch-5.2-ck1.xz
 	source = 0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
 	source = 0002-ZEN-Add-CONFIG-for-unprivileged_userns_clone.patch
 	source = 0003-iwlwifi-mvm-disable-TX-AMSDU-on-older-NICs.patch
-	source = 0004-iwlwifi-Add-support-for-SAR-South-Korea-limitation.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	sha256sums = b6f02a4b306ca5cd314d72615bfc2650166969613135da202630e6c4e1b5d4e6
+	sha256sums = 6096c4387c2a296de9136080942d11ae3f1bd28129b6952f7133c570e43bfc49
 	sha256sums = SKIP
 	sha256sums = 1c4d5500a3b4995035c2e940fc0ad2a2dae7be047c8eb20c097444e348258f87
 	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
 	sha256sums = c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636
 	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
-	sha256sums = 2466fb4aecc66d1b258b4cbdb2f215b5099f266d8c4386bb62ad1a0acd0caf5b
+	sha256sums = 8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5
 	sha256sums = f1abc13a8d859fbf6350040e45d7f04ad551a6d39f113ba96fbbd820118c0e36
 	sha256sums = 91fafa76bf9cb32159ac7f22191b3589278b91e65bc4505cf2fc6013b8037bf3
 	sha256sums = 63e4378e69e2f23ed87af32a4951477a6d82d4ac0de2295db46502c8120da9d9
 	sha256sums = fc96300831506965383ef30bc46b72735dc45bb97dea2ccb8b9450c005d2f020
-	sha256sums = ef926edbd866d95464eb86f7565de572eb97ecfa0369d3b2e078016a0e71a871
 
 pkgname = linux-ck
 	pkgdesc = The Linux-ck kernel and modules with the ck1 patchset featuring MuQSS CPU scheduler v0.192
@@ -44,12 +42,12 @@ pkgname = linux-ck
 	depends = kmod
 	depends = mkinitcpio
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = linux-ck=5.2.9
+	provides = linux-ck=5.2.10
 	backup = etc/mkinitcpio.d/linux-ck.preset
 
 pkgname = linux-ck-headers
 	pkgdesc = Header files and scripts for building modules for Linux-ck kernel
 	depends = linux-ck
-	provides = linux-ck-headers=5.2.9
-	provides = linux-headers=5.2.9
+	provides = linux-ck-headers=5.2.10
+	provides = linux-headers=5.2.10
 
