@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-ffcall
 	pkgdesc = C library for implementing foreign function calls in embedded interpreters (mingw-w64)
-	pkgver = 2.1
+	pkgver = 2.2
 	pkgrel = 1
 	url = http://www.gnu.org/software/libffcall/
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = mingw-w64-ffcall
 	options = !buildflags
 	options = !makeflags
 	options = staticlibs
-	source = https://ftp.gnu.org/gnu/libffcall/libffcall-2.1.tar.gz
-	sha256sums = a091fb8bbabf17c94a2dae2d41161b96a08ab92b5f75d3364157a2c34d538c47
+	source = https://ftp.gnu.org/gnu/libffcall/libffcall-2.2.tar.gz
+	sha256sums = ebfa37f97b6c94fac24ecf3193f9fc829517cf81aee9ac2d191af993d73cb747
 
 pkgname = mingw-w64-ffcall
 

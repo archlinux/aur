@@ -2,7 +2,7 @@
 
 pkgname=mingw-w64-ffcall
 _pkgname=ffcall
-pkgver=2.1
+pkgver=2.2
 pkgrel=1
 pkgdesc="C library for implementing foreign function calls in embedded interpreters (mingw-w64)"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('mingw-w64-configure')
 depends=('mingw-w64-crt')
 options=('!strip' '!buildflags' '!makeflags' 'staticlibs')
 source=("https://ftp.gnu.org/gnu/libffcall/lib${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('a091fb8bbabf17c94a2dae2d41161b96a08ab92b5f75d3364157a2c34d538c47')
+sha256sums=('ebfa37f97b6c94fac24ecf3193f9fc829517cf81aee9ac2d191af993d73cb747')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
