@@ -9,15 +9,22 @@ pkgdesc="A string template engine based on the Django template system and writte
 arch=(x86_64)
 url="https://github.com/steveire/grantlee"
 license=(LGPL2.1)
-depends=('qt5-script')
+depends=(qt5-script)
 makedepends=(cmake doxygen graphviz)
-source=("http://downloads.grantlee.org/grantlee-$pkgver.tar.gz"{,.asc})
+source=("http://downloads.grantlee.org/grantlee-$pkgver.tar.gz"{,.asc}
+        grantlee-c++11.patch grantlee-qt-5.13.patch)
 sha256sums=('ea2e402466c74bb533eee2c7252209ec61cd93a5d236fecd625b4a0eb13a1478'
-            'SKIP')
+            'SKIP'
+            'a14257e61489ee46c9236cc21af06e0eee5084c1563992d5a470153c7f318999'
+            '60226562926c881cc617f236936d611a85e841865095e215f0f470d1eb945b77')
 validpgpkeys=(FCA530E51EE4331C2DF16637D264C7B1D02D6509) # Stephen Kelly <steveire@gmail.com>
 
 prepare() {
   mkdir -p build
+
+  cd $pkgname-$pkgver
+  patch -p1 -i ../grantlee-c++11.patch # Fix build with new gcc/Qt combinations
+  patch -p1 -i ../grantlee-qt-5.13.patch # Fix build with Qt 5.13
 }
 
 build() {
