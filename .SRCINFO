@@ -1,0 +1,17 @@
+pkgbase = rx
+	pkgdesc = A modern and extensible pixel editor implemented in rust.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = http://cloudhead.io/rx/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = clang
+	makedepends = rust
+	source = https://github.com/cloudhead/rx/archive/v0.1.0.tar.gz
+	source = http://cloudhead.io/rx/palettes/sweetie16.palette
+	sha256sums = b5b413d7a4bb3921f6a471dcc0767eee31275ede548ccc59216231c8b2702b26
+	sha256sums = 17f4f037dbcedbed12c650a68cf2af372fdcd4541a2b23ae40d378d12d491ff4
+
+pkgname = rx
+
