@@ -1,0 +1,16 @@
+pkgbase = nx-gtk-themes-git
+	pkgdesc = NX GTK themes
+	pkgver = r28.53c3387
+	pkgrel = 1
+	url = https://github.com/nx-desktop/nx-gtk-themes
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = gtk3
+	depends = gtk2
+	depends = gtk-engine-murrine
+	source = git+https://github.com/nx-desktop/nx-gtk-themes.git
+	sha256sums = SKIP
+
+pkgname = nx-gtk-themes-git
+
