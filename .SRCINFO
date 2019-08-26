@@ -1,0 +1,14 @@
+pkgbase = rectify-jpg
+	pkgdesc = rectify_jpg is a command-line tool that rectifies (corrects geometric distortion) of Meteor-M weather images
+	pkgver = 0.3
+	pkgrel = 1
+	url = http://www.5b4az.org
+	arch = any
+	license = GPL
+	makedepends = gcc
+	depends = libjpeg
+	source = http://www.5b4az.org/pkg/lrpt/rectify-jpg-0.3.tar.bz2
+	sha1sums = 4672ffb03384cd93db189888fc719249479f65fe
+
+pkgname = rectify-jpg
+
