@@ -1,0 +1,17 @@
+pkgbase = vim-tabnine
+	pkgdesc = TabNine is the all-language autocompleter. It uses machine learning to provide responsive, reliable, and relevant suggestions.
+	pkgver = 2.1.11
+	pkgrel = 1
+	url = https://github.com/zxqfl/tabnine-vim
+	arch = any
+	groups = vim-plugins
+	license = https://tabnine.com/eula
+	depends = vim
+	depends = python-language-server
+	replaces = vim-youcompleteme
+	replaces = vim-tabnine-git
+	source = https://github.com/zxqfl/tabnine-vim/archive/2.1.11.tar.gz
+	sha256sums = 48e15d0212a96b181db06146f7cc82f8617673260a8be9e4fc43b57ab1236a9a
+
+pkgname = vim-tabnine
+
