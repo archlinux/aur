@@ -13,8 +13,8 @@ url='https://github.com/RichiH/vcsh'
 license=('GPL')
 depends=('git')
 optdepends=('myrepos: helps manage a large number of repositories')
-source=("https://github.com/RichiH/${pkgname}/archive/v${pkgver}.zip")
-_src_dir="${pkgname}-${pkgver}"
+source=("https://github.com/RichiH/$pkgname/archive/v$pkgver.zip")
+_src_dir="$pkgname-$pkgver"
 sha256sums=('817874ee1022732197e10d385eb9c88f2d7a5629a067761f0dd5ca9459d40a8e')
 
 prepare() {
