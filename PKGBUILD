@@ -2,7 +2,7 @@
 pkgbase=python-camb
 pkgname=("python-camb" "python2-camb")  
 pkgver=1.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Code for Anisotropies in the Microwave Background"
 arch=(any)
 url="https://github.com/cmbant/CAMB"
@@ -16,7 +16,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=('a33eaa474d8b8b7b7a494f9273134cf101d13db993473388cda425913b93793f')
+sha256sums=('189768e0a4b1df9d5b30a6639549b0e2fa571ea370863f1a393281326c30a236')
 
 package_python-camb() {
   depends=('python-numpy' 'gcc-fortran')
