@@ -22,7 +22,7 @@ pkgver() {
 
 package() {
   cd "${pkgname%-git}"
-  mkdir -p ${pkgdir}/usr/bin
-  install -m0755 u2o.py ${pkgdir}/usr/bin/u2o
-  install -m0755 utaglist.py ${pkgdir}/usr/bin/utaglist
+  mkdir -p "$pkgdir"/usr/bin
+  install -m0755 u2o.py "$pkgdir"/usr/bin/u2o
+  install -m0755 utaglist.py "$pkgdir"/usr/bin/utaglist
 }
