@@ -1,12 +1,12 @@
 #AUR Maintainter: JKA Network <contacto@jkanetwork.com>
 pkgname=openlitespeed
 pkgver=1.5.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A high-performance, lightweight, open source HTTP server"
 arch=('x86_64' 'i686')
 url="https://openlitespeed.org/downloads/"
 license=('GPLv3')
-depends=('pcre' 'rcs' 'geoip' 'expat' 'openssl')
+depends=('pcre' 'rcs' 'geoip' 'expat' 'openssl' 'libzip')
 makedepends=('git' 'imake')
 provides=('openlitespeed')
 options=()
