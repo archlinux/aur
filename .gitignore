@@ -1,4 +1,4 @@
-src/
-pkg/
-node-inspector-*
-nodejs-node-inspector-*
+*
+!./.SRCINFO
+!./.gitignore
+!./PKGBUILD
