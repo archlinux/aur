@@ -10,10 +10,8 @@ pkgbase = alice-vision
 	makedepends = boost
 	makedepends = eigen
 	makedepends = ceres-solver
-	makedepends = cuda
 	makedepends = git
 	makedepends = cmake
-	makedepends = magma
 	depends = openblas-lapack
 	depends = gflags
 	depends = glfw-x11
@@ -28,20 +26,21 @@ pkgbase = alice-vision
 	depends = coin-or-lemon
 	depends = coin-or-osi
 	depends = google-glog
+	depends = freetype2
 	provides = alice-vision
 	conflicts = alice-vision-git
 	source = https://github.com/alicevision/AliceVision/archive/v2.2.0.tar.gz
-	source = ute_lib::git+https://github.com/alicevision/uncertaintyTE.git
 	source = geogram::git+https://github.com/alicevision/geogram.git
 	source = MeshSDFilter::git+https://github.com/alicevision/MeshSDFilter.git#branch=av_develop
 	source = nanoflann::git+https://github.com/alicevision/nanoflann.git
 	source = submodule.patch
+	source = ute_lib::git+https://github.com/alicevision/uncertaintyTE.git
 	md5sums = a9d5cd07ed33c0b73390b11170b3b11f
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
-	md5sums = SKIP
 	md5sums = eb62c8be5a0d7ce537a928314c9d0028
+	md5sums = SKIP
 
 pkgname = alice-vision
 
