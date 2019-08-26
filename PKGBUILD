@@ -12,15 +12,15 @@
 # commit log for an old fix on how to tell it to use older versions of Ruby. I'm afraid we'll
 # need this again at some point in the future.
 _pkgname=gitlab
-pkgname=${_pkgname}-ee
+pkgname=$_pkgname-ee
 pkgver=11.9.6
 pkgrel=1
 pkgdesc="Project management and code hosting application"
 arch=('x86_64')
 url="https://gitlab.com/gitlab-org/gitlab-ee"
 license=('MIT')
-conflicts=("${_pkgname}")
-provides=("${_pkgname}")
+conflicts=("$_pkgname")
+provides=("$_pkgname")
 options=(!buildflags)
 depends=('ruby2.5' 'ruby2.5-bundler' 'git' 'gitlab-workhorse' 'gitlab-gitaly' 'openssh' 'redis' 'libxslt' 'icu' 're2' 'http-parser' 'nodejs')
 makedepends=('cmake' 'postgresql' 'mariadb' 'yarn' 'go' 'nodejs')
@@ -28,12 +28,12 @@ optdepends=('postgresql: database backend'
             'mysql: database backend'
             'python2-docutils: reStructuredText markup language support'
             'smtp-server: mail server in order to receive mail notifications')
-backup=("etc/webapps/${_pkgname}/application.rb"
-        "etc/webapps/${_pkgname}/gitlab.yml"
-        "etc/webapps/${_pkgname}/resque.yml"
-        "etc/webapps/${_pkgname}/unicorn.rb"
-        "etc/logrotate.d/${_pkgname}")
-source=("$pkgname-$pkgver.tar.gz::https://gitlab.com/api/v4/projects/gitlab-org%2Fgitlab-ee/repository/archive?sha=v${pkgver}-ee"
+backup=("etc/webapps/$_pkgname/application.rb"
+        "etc/webapps/$_pkgname/gitlab.yml"
+        "etc/webapps/$_pkgname/resque.yml"
+        "etc/webapps/$_pkgname/unicorn.rb"
+        "etc/logrotate.d/$_pkgname")
+source=("$pkgname-$pkgver.tar.gz::https://gitlab.com/api/v4/projects/gitlab-org%2Fgitlab-ee/repository/archive?sha=v$pkgver-ee"
         gitlab-unicorn.service
         gitlab-sidekiq.service
         gitlab-backup.service
@@ -53,20 +53,20 @@ sha512sums=('c8f0dcfdf08b5d935800383c0b711a6255c80acbaeee01c44930e0c04438ee967bf
             'abacbff0d7be918337a17b56481c84e6bf3eddd9551efe78ba9fb74337179e95c9b60f41c49f275e05074a4074a616be36fa208a48fc12d5b940f0554fbd89c3'
             '20b93eab504e82cc4401685b59e6311b4d2c0285bc594d47ce4106d3f418a3e2ba92c4f49732748c0ba913aa3e3299126166e37d2a2d5b4d327d66bae4b8abda')
 
-_datadir="/usr/share/webapps/${_pkgname}"
-_etcdir="/etc/webapps/${_pkgname}"
-_homedir="/var/lib/${_pkgname}"
-_logdir="/var/log/${_pkgname}"
-_srcdir="${pkgname}-v${pkgver}-ee-"
+_datadir="/usr/share/webapps/$_pkgname"
+_etcdir="/etc/webapps/$_pkgname"
+_homedir="/var/lib/$_pkgname"
+_logdir="/var/log/$_pkgname"
+_srcdir="$pkgname-v$pkgver-ee-"
 
 prepare() {
   # Get first 7 characters from sha1 which has 40 characters in total
-  local revision=$(ls -d ${_srcdir}* | rev | cut -c 34-40 | rev)
+  local revision="$(ls -d "$_srcdir"* | rev | cut -c 34-40 | rev)"
 
-  cd "${_srcdir}"*
+  cd "$_srcdir"*
 
   # GitLab tries to read its revision information from a file.
-  echo "${revision}" > REVISION
+  echo "$revision" > REVISION
 
   export SKIP_STORAGE_VALIDATION='true'
 
@@ -74,19 +74,19 @@ prepare() {
   echo "Patching paths in and username gitlab.yml..."
   sed -e "s|# user: git|user: gitlab|" \
       -e "s|/home/git/gitaly/bin|/usr/bin|" \
-      -e "s|/home/git/repositories|${_homedir}/repositories|" \
-      -e "s|/home/git/gitlab-satellites|${_homedir}/satellites|" \
-      -e "s|# path: /mnt/gitlab|path: ${_homedir}/shared|" \
+      -e "s|/home/git/repositories|$_homedir/repositories|" \
+      -e "s|/home/git/gitlab-satellites|$_homedir/satellites|" \
+      -e "s|# path: /mnt/gitlab|path: $_homedir/shared|" \
       -e "s|/home/git/gitlab-shell|/usr/share/webapps/gitlab-shell|" \
-      -e "s|tmp/backups|${_homedir}/backups|" \
-      -e "s|/home/git/gitlab/tmp/sockets/private/gitaly.socket|${_homedir}/sockets/gitlab-gitaly.socket|" \
+      -e "s|tmp/backups|$_homedir/backups|" \
+      -e "s|/home/git/gitlab/tmp/sockets/private/gitaly.socket|$_homedir/sockets/gitlab-gitaly.socket|" \
       config/gitlab.yml.example > config/gitlab.yml
 
   echo "Patching paths and timeout in unicorn.rb..."
   sed -e "s|/home/git/gitlab/tmp/.*/|/run/gitlab/|g" \
       -e "s|/var/run/|/run/|g" \
-      -e "s|/home/git/gitlab|${_datadir}|g" \
-      -e "s|${_datadir}/log/|${_logdir}/|g" \
+      -e "s|/home/git/gitlab|$_datadir|g" \
+      -e "s|$_datadir/log/|$_logdir/|g" \
       config/unicorn.rb.example > config/unicorn.rb
 
   # We need this one untouched because otherwise assets will fail
@@ -102,14 +102,14 @@ prepare() {
 
   echo "Setting up systemd service files ..."
   for service_file in gitlab-sidekiq.service gitlab-unicorn.service gitlab.logrotate gitlab-backup.service gitlab-mailroom.service; do
-    sed -i "s|<HOMEDIR>|${_homedir}|g" "${srcdir}/${service_file}"
-    sed -i "s|<DATADIR>|${_datadir}|g" "${srcdir}/${service_file}"
-    sed -i "s|<LOGDIR>|${_logdir}|g" "${srcdir}/${service_file}"
+    sed -i "s|<HOMEDIR>|$_homedir|g" "$srcdir/$service_file"
+    sed -i "s|<DATADIR>|$_datadir|g" "$srcdir/$service_file"
+    sed -i "s|<LOGDIR>|$_logdir|g" "$srcdir/$service_file"
   done
 }
 
 build() {
-  cd "${srcdir}/${_srcdir}"*
+  cd "$srcdir/$_srcdir"*
 
   echo "Fetching bundled gems..."
 
@@ -131,93 +131,93 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${_srcdir}"*
+  cd "$srcdir/$_srcdir"*
   depends+=('gitlab-shell')
 
-  install -d "${pkgdir}/usr/share/webapps"
+  install -d "$pkgdir/usr/share/webapps"
 
-  cp -r "${srcdir}/${_srcdir}"* "${pkgdir}${_datadir}"
+  cp -r "$srcdir/$_srcdir"* "$pkgdir$_datadir"
   # Remove unneeded directories: node_modules is only needed during build
-  rm -r "${pkgdir}${_datadir}/node_modules"
+  rm -r "$pkgdir$_datadir/node_modules"
   # https://gitlab.com/gitlab-org/omnibus-gitlab/blob/194cf8f12e51c26980c09de6388bbd08409e1209/config/software/gitlab-rails.rb#L179
   for dir in spec qa rubocop app/assets vendor/assets; do
-    rm -r "${pkgdir}${_datadir}/${dir}"
+    rm -r "$pkgdir$_datadir/$dir"
   done
 
-  chown -R root:root "${pkgdir}${_datadir}"
-  chmod 755 "${pkgdir}${_datadir}"
+  chown -R root:root "$pkgdir$_datadir"
+  chmod 755 "$pkgdir$_datadir"
 
-  install -dm750 -o 105 -g 105 "${pkgdir}${_homedir}"
-  install -dm750 -o 105 -g 105 "${pkgdir}${_homedir}/satellites"
-  install -dm750 -o 105 -g 105 "${pkgdir}${_homedir}/shared/"{,artifacts,lfs-objects}
-  install -dm750 -o 105 -g 105 "${pkgdir}${_homedir}/builds"
-  install -dm700 -o 105 -g 105 "${pkgdir}${_homedir}/uploads"
-  install -dm750 -o 105 -g 105 "${pkgdir}${_homedir}/backups"
-  install -dm750 -o 105 -g 105 "${pkgdir}${_etcdir}"
-  install -dm755 "${pkgdir}/usr/share/doc/${_pkgname}"
+  install -dm750 -o 105 -g 105 "$pkgdir$_homedir"
+  install -dm750 -o 105 -g 105 "$pkgdir$_homedir/satellites"
+  install -dm750 -o 105 -g 105 "$pkgdir$_homedir/shared/"{,artifacts,lfs-objects}
+  install -dm750 -o 105 -g 105 "$pkgdir$_homedir/builds"
+  install -dm700 -o 105 -g 105 "$pkgdir$_homedir/uploads"
+  install -dm750 -o 105 -g 105 "$pkgdir$_homedir/backups"
+  install -dm750 -o 105 -g 105 "$pkgdir$_etcdir"
+  install -dm755 "$pkgdir/usr/share/doc/$_pkgname"
 
-  ln -fs /run/gitlab "${pkgdir}${_homedir}/pids"
-  ln -fs /run/gitlab "${pkgdir}${_homedir}/sockets"
-  ln -fs ${_datadir}/log "${pkgdir}${_homedir}/log"
+  ln -fs /run/gitlab "$pkgdir$_homedir/pids"
+  ln -fs /run/gitlab "$pkgdir$_homedir/sockets"
+  ln -fs "$_datadir"/log "$pkgdir$_homedir/log"
 
-  rm -rf "${pkgdir}${_datadir}/public/uploads" && ln -fs "${_homedir}/uploads" "${pkgdir}${_datadir}/public/uploads"
-  rm -rf "${pkgdir}${_datadir}/builds" && ln -fs "${_homedir}/builds" "${pkgdir}${_datadir}/builds"
-  rm -rf "${pkgdir}${_datadir}/tmp" && ln -fs /var/tmp "${pkgdir}${_datadir}/tmp"
-  rm -rf "${pkgdir}${_datadir}/log" && ln -fs "${_logdir}" "${pkgdir}${_datadir}/log"
+  rm -rf "$pkgdir$_datadir/public/uploads" && ln -fs "$_homedir/uploads" "$pkgdir$_datadir/public/uploads"
+  rm -rf "$pkgdir$_datadir/builds" && ln -fs "$_homedir/builds" "$pkgdir$_datadir/builds"
+  rm -rf "$pkgdir$_datadir/tmp" && ln -fs /var/tmp "$pkgdir$_datadir/tmp"
+  rm -rf "$pkgdir$_datadir/log" && ln -fs "$_logdir" "$pkgdir$_datadir/log"
 
   # Fixes https://bugs.archlinux.org/task/59762
-  ln -s "${_datadir}/config/boot.rb" "${pkgdir}"/${_etcdir}/boot.rb
+  ln -s "$_datadir/config/boot.rb" "$pkgdir"/"$_etcdir"/boot.rb
 
-  mv "${pkgdir}${_datadir}/.gitlab_workhorse_secret" "${pkgdir}${_etcdir}/gitlab_workhorse_secret"
-  chmod 660 "${pkgdir}${_etcdir}/gitlab_workhorse_secret"
-  chown root:105 "${pkgdir}${_etcdir}/gitlab_workhorse_secret"
-  ln -fs "${_etcdir}/gitlab_workhorse_secret" "${pkgdir}${_datadir}/.gitlab_workhorse_secret"
+  mv "$pkgdir$_datadir/.gitlab_workhorse_secret" "$pkgdir$_etcdir/gitlab_workhorse_secret"
+  chmod 660 "$pkgdir$_etcdir/gitlab_workhorse_secret"
+  chown root:105 "$pkgdir$_etcdir/gitlab_workhorse_secret"
+  ln -fs "$_etcdir/gitlab_workhorse_secret" "$pkgdir$_datadir/.gitlab_workhorse_secret"
 
-  ln -fs /etc/webapps/gitlab-shell/secret "${pkgdir}${_datadir}/.gitlab_shell_secret"
+  ln -fs /etc/webapps/gitlab-shell/secret "$pkgdir$_datadir/.gitlab_shell_secret"
 
-  sed -i "s|require_relative '../lib|require '${_datadir}/lib|" config/application.rb
+  sed -i "s|require_relative '../lib|require '$_datadir/lib|" config/application.rb
 
   # Fix for ruby-2.5 and bundle-2.5
-  sed -i "s|bundle|bundle-2.5|g" "${pkgdir}${_datadir}/lib/tasks/gitlab/check.rake"
-  grep -rl "bin/env ruby" "${pkgdir}${_datadir}" | xargs sed -i "s|bin/env ruby$|bin/env ruby-2.5|g"
+  sed -i "s|bundle|bundle-2.5|g" "$pkgdir$_datadir/lib/tasks/gitlab/check.rake"
+  grep -rl "bin/env ruby" "$pkgdir$_datadir" | xargs sed -i "s|bin/env ruby$|bin/env ruby-2.5|g"
   sed -i \
     -e "s|ruby --version|ruby-2.5 --version|g" \
     -e "s|gem --version|gem-2.5 --version|g" \
     -e "s|bundle --version|bundle-2.5 --version|g" \
     -e "s|rake --version|rake-2.5 --version|g" \
-    "${pkgdir}${_datadir}/lib/tasks/gitlab/info.rake"
+    "$pkgdir$_datadir/lib/tasks/gitlab/info.rake"
 
   # Install config files
   for config_file in application.rb gitlab.yml unicorn.rb resque.yml; do
-    mv "config/${config_file}" "${pkgdir}${_etcdir}/"
-    [[ -f "${pkgdir}${_datadir}/config/${config_file}" ]] && rm "${pkgdir}${_datadir}/config/${config_file}"
-    ln -fs "${_etcdir}/${config_file}" "${pkgdir}${_datadir}/config/"
+    mv "config/$config_file" "$pkgdir$_etcdir/"
+    [[ -f "${pkgdir}${_datadir}/config/${config_file}" ]] && rm "$pkgdir$_datadir/config/$config_file"
+    ln -fs "$_etcdir/$config_file" "$pkgdir$_datadir/config/"
   done
 
   # Install database symlink
-  ln -fs "${_etcdir}/database.yml" "${pkgdir}${_datadir}/config/database.yml"
+  ln -fs "$_etcdir/database.yml" "$pkgdir$_datadir/config/database.yml"
 
   # Install secrets symlink
-  ln -fs "${_etcdir}/secrets.yml" "${pkgdir}${_datadir}/config/secrets.yml"
+  ln -fs "$_etcdir/secrets.yml" "$pkgdir$_datadir/config/secrets.yml"
 
   # Install license and help files
-  mv README.md MAINTENANCE.md CONTRIBUTING.md CHANGELOG.md PROCESS.md VERSION config/*.{example,mysql,postgresql} "${pkgdir}/usr/share/doc/${_pkgname}"
-  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  mv README.md MAINTENANCE.md CONTRIBUTING.md CHANGELOG.md PROCESS.md VERSION config/*.{example,mysql,postgresql} "$pkgdir/usr/share/doc/$_pkgname"
+  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 
   # https://gitlab.com/gitlab-org/gitlab-ce/issues/765
-  cp -r "${pkgdir}${_datadir}/doc" "${pkgdir}${_datadir}/public/help"
-  find "${pkgdir}${_datadir}/public/help" -name "*.md" -exec rm {} \;
-  find "${pkgdir}${_datadir}/public/help/" -depth -type d -empty -exec rmdir {} \;
+  cp -r "$pkgdir$_datadir/doc" "$pkgdir$_datadir/public/help"
+  find "$pkgdir$_datadir/public/help" -name "*.md" -exec rm {} \;
+  find "$pkgdir$_datadir/public/help/" -depth -type d -empty -exec rmdir {} \;
 
-  chown 105:105 "${pkgdir}${_datadir}/db/schema.rb"
+  chown 105:105 "$pkgdir$_datadir/db/schema.rb"
 
   # Install systemd service files
   for service_file in gitlab-unicorn.service gitlab-sidekiq.service gitlab-backup.service gitlab-backup.timer gitlab.target gitlab-mailroom.service; do
-    install -Dm644 "${srcdir}/${service_file}" "${pkgdir}/usr/lib/systemd/system/${service_file}"
+    install -Dm644 "$srcdir/$service_file" "$pkgdir/usr/lib/systemd/system/$service_file"
   done
 
-  install -Dm644 "${srcdir}/gitlab.tmpfiles.d" "${pkgdir}/usr/lib/tmpfiles.d/gitlab.conf"
-  install -Dm644 "${srcdir}/gitlab.logrotate" "${pkgdir}/etc/logrotate.d/gitlab"
+  install -Dm644 "$srcdir/gitlab.tmpfiles.d" "$pkgdir/usr/lib/tmpfiles.d/gitlab.conf"
+  install -Dm644 "$srcdir/gitlab.logrotate" "$pkgdir/etc/logrotate.d/gitlab"
 }
 
 # vim:set ts=2 sw=2 et:
