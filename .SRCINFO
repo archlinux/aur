@@ -1,0 +1,15 @@
+pkgbase = plam
+	pkgdesc = A tool to explore, test and implement various λ-expressions
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/sandrolovnicki/pLam
+	arch = x86_64
+	license = MIT
+	makedepends = stack
+	depends = ncurses
+	depends = gmp
+	source = https://github.com/sandrolovnicki/pLam/archive/v2.0.0.tar.gz
+	sha256sums = cf8f2401f5d29029cc05b51b7bc90df4f897c12bd4dd1d3242172d3792281a2b
+
+pkgname = plam
+
