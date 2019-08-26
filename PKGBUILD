@@ -3,7 +3,7 @@
 
 pkgname=xmake
 pkgver=2.2.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A make-like build utility based on Lua"
 arch=('i686' 'x86_64')
 url="https://github.com/xmake-io/xmake"
@@ -13,12 +13,12 @@ source=("$pkgname.tar.gz::https://github.com/xmake-io/xmake/releases/download/v$
 sha256sums=('f607955bb83c991e6c69197cbd9f21c31debcb08ffcd97a73e67766e2ad0d313')
 
 build() {
-    cd "$srcdir/${pkgname}-v${pkgver}"
+    cd "$srcdir/${pkgname}-${pkgver}"
     make build
 }
 
 package() {
-    cd "$srcdir/${pkgname}-v${pkgver}"
+    cd "$srcdir/${pkgname}-${pkgver}"
     mkdir -p "${pkgdir}/usr/share"
     cp -r "./xmake" "${pkgdir}/usr/share/"
     install -Dm755 ./core/src/demo/demo.b "${pkgdir}/usr/share/xmake/xmake"
