@@ -21,11 +21,11 @@ pkgbase = slack-desktop-dark
 	conflicts = slack-desktop
 	noextract = slack-desktop-4.0.2-amd64.deb
 	source = https://downloads.slack-edge.com/linux_releases/slack-desktop-4.0.2-amd64.deb
-	source = https://raw.githubusercontent.com/caiceA/slack-raw/e00542bc1acd7130e296a41b820ca546dd71174f/slack-4
+	source = https://raw.githubusercontent.com/caiceA/slack-raw/1f0102fdde77216fa97ed936dadd6f2364436dd8/slack-4
 	source = darkify_slack.js
 	source = slack-desktop-dark.patch
 	sha256sums = 75c26004ae56bbb944d4b97347b00bb28ff4042d10666490e7974613fc2d7214
-	sha256sums = 0847579762755aac8ad9d355e54353ac44135110c2b2da5ae2a00031c23d7500
+	sha256sums = f5e4d12d280ef6196b1a08f738b49dbe115b6087ecd00776581eca9e48e8660e
 	sha256sums = 13fc4ea2c9bfd113e123a7f74375f17c17a7256d7481f9acacb466088b913418
 	sha256sums = c952eb32dd59beff9fc5374853b04acde4a60ed8c39934fcd0b66829455d594d
 
