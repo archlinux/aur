@@ -18,11 +18,11 @@ depends=("python-click"
         "python-yaml")
 
 build() {
-  pip install --no-deps --target="$_pipname" $_pipname==$pkgver
+  pip install --no-deps --target="$_pipname" "$_pipname==$pkgver"
 }
 
 package() {
   sitepackages=$(python -c "import site; print(site.getsitepackages()[0])")
-  mkdir -p $pkgdir/"$sitepackages"
-  cp -r "$srcdir/$_pipname"/* $pkgdir/"$sitepackages"
+  mkdir -p "$pkgdir/$sitepackages"
+  cp -r "$srcdir/$_pipname"/* "$pkgdir/$sitepackages"
 }
