@@ -1,0 +1,15 @@
+[Unit]
+Description=Janus WebRTC Gateway
+Wants=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/janus
+User=janus
+Group=janus
+Restart=on-failure
+LimitNOFILE=65536
+TasksMax=infinity
+
+[Install]
+WantedBy=multi-user.target
