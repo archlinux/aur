@@ -1,0 +1,17 @@
+pkgbase = lyriek-git
+	pkgver = 0.1.0.18.g15d1373
+	pkgrel = 1
+	url = https://gitlab.com/bartwillems/lyriek
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	makedepends = desktop-file-utils
+	depends = gtk3
+	source = lyriek::git+https://gitlab.com/bartwillems/lyriek.git
+	sha256sums = SKIP
+
+pkgname = lyriek-git
+
