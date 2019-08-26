@@ -12,7 +12,7 @@ pkgbase = vlc-plugin-fluidsynth
 	conflicts = vlc-plugin-fluidsynth-git
 	replaces = vlc-plugin-fluidsynth-git
 	source = libfluidsynth_plugin.so
-	md5sums =5a258abe00f25da98ebaba318e4c2221
- 
+	md5sums = 5a258abe00f25da98ebaba318e4c2221
+
 pkgname = vlc-plugin-fluidsynth
 
