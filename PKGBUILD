@@ -8,7 +8,7 @@ pkgrel=4
 arch=('i386' 'x86_64')
 url='http://www.sile-typesetter.org/'
 license=('MIT')
-source=("https://github.com/simoncozens/sile/releases/download/v${pkgver}/sile-${pkgver}.tar.bz2")
+source=("https://github.com/simoncozens/sile/releases/download/v$pkgver/sile-$pkgver.tar.bz2")
 _lua_deps=('cosmo' 'expat' 'filesystem' 'lpeg' 'sec' 'zlib')
 depends=('fontconfig' 'harfbuzz>=1.2.6' 'icu' "${_lua_deps[@]/#/lua-}" 'ttf-gentium-plus')
 checkdepends=('lua-busted')
