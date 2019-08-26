@@ -1,7 +1,7 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
 _pkgname=vim-tabnine
 pkgname=$_pkgname-git
-pkgver=2.0.2
+pkgver=2.1.11
 pkgrel=1
 pkgdesc="TabNine is the all-language autocompleter. It uses machine learning to provide responsive, reliable, and relevant suggestions."
 arch=('any')
@@ -32,7 +32,7 @@ package() {
   mkdir -p $installpath
   mkdir -p $installpath/binaries/${pkgver}  
   cp -r plugin doc autoload python third_party $installpath
-  cp -r binaries/${pkgver}/x86_64-unknown-linux-gnu/  $installpath/binaries/${pkgver}
+  cp -r binaries/${pkgver}/x86_64-unknown-linux-musl/  $installpath/binaries/${pkgver}
 
   # Remove all the unnecessary git repositories
   find "$pkgdir" -name .git -exec rm -fr {} +
