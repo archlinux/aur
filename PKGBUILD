@@ -1,8 +1,8 @@
 # Maintainer: Bernhard Landauer <oberon@manjaro.org>
 
 pkgname=flowblade
-pkgver=2.0
-pkgrel=2
+pkgver=2.2
+pkgrel=1
 pkgdesc="a multitrack non-linear video editor for Linux"
 arch=('any')
 url="https://github.com/jliljebl/$pkgname"
@@ -24,7 +24,7 @@ depends=('dbus-glib'
          'sox'
          'swh-plugins')
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('c8f21d76803d9ed44585e6d960b12ba1930661e58ee36456fc424d41e2945b33')
+sha256sums=('4c7bc61d2d38dbf91bbae9f835fbf82504a47d973983427264706a0596573e70')
 
 package() {
   cd $pkgname-$pkgver/$pkgname-trunk
