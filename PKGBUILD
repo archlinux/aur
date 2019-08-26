@@ -2,7 +2,7 @@
 
 pkgname=kjots
 pkgver=5.0.2
-pkgrel=3
+pkgrel=4
 pkgdesc="A note taking application for KDE"
 url="https://www.kde.org/applications/utilities/kjots/"
 arch=(x86_64)
@@ -19,8 +19,6 @@ prepare() {
 build() {
   cd build 
   cmake ../$pkgname-$pkgver \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DBUILD_TESTING=OFF 
   make
