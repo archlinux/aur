@@ -1,0 +1,19 @@
+pkgbase = libnorm1
+	pkgdesc = libnorm1 built from source
+	pkgver = 1.5.8
+	pkgrel = 1
+	url = https://www.nrl.navy.mil/itd/ncs/products/norm
+	arch = x86_64
+	arch = i686
+	arch = armv7h
+	arch = aarch64
+	license = custom
+	depends = libstdc++5
+	depends = glibc
+	depends = gcc
+	provides = libnorm1
+	source = https://downloads.pf.itd.nrl.navy.mil/norm/src-norm-1.5.8.tgz
+	sha256sums = 4480a6ea53fb7ce45b4bc2061d18fbfd46ee9990fc2ed9a9dc303ce4d87888a6
+
+pkgname = libnorm1
+
