@@ -8,13 +8,13 @@
 
 pkgname=blender-2.8-git
 _fragment="#branch=master"
-pkgver=2.81.r89367.ae7db537448
+pkgver=2.81.r90039.d5f3f4410d6
 pkgrel=1
 pkgdesc="Development version of Blender 2.8 branch"
 arch=('i686' 'x86_64')
 url="https://blender.org/"
 depends=('alembic' 'libgl' 'python' 'python-numpy' 'openjpeg' 'desktop-file-utils' 'hicolor-icon-theme'
-         'ffmpeg' 'fftw' 'openal' 'freetype2' 'libxi' 'openimageio' 'opencolorio'
+         'ffmpeg' 'fftw' 'openal' 'freetype2' 'libxi' 'openimageio' 'opencolorio' 'oidn'
          'openvdb' 'opencollada' 'opensubdiv' 'openshadinglanguage' 'libtiff' 'libpng')
 makedepends=('git' 'cmake' 'boost' 'mesa' 'llvm')
 ((DISABLE_NINJA)) ||  makedepends+=('ninja')
