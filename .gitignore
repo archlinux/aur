@@ -1,0 +1,7 @@
+*
+!./.SRCINFO
+!./.gitignore
+!./PKGBUILD
+!./getbitmap.patch
+!./user.lua
+!./zbstudio.patch
