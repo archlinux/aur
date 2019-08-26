@@ -12,10 +12,10 @@ license=('GPL')
 depends=('lua51')
 makedepends=('luarocks')
 conflicts=()
-source=("https://luarocks.org/${_rockname}-${pkgver}-${_rockrel}.src.rock")
+source=("https://luarocks.org/$_rockname-$pkgver-$_rockrel.src.rock")
 sha256sums=('3a2556a999c215641bc6e443a6a3d3a61238ee67b5abd9f706737b125a3a2ef6')
 
 package() {
-  luarocks --lua-version=5.1 --tree="$pkgdir/usr" install --deps-mode=none "${_rockname}-${pkgver}-${_rockrel}.src.rock"
+  luarocks --lua-version=5.1 --tree="$pkgdir/usr" install --deps-mode=none "$_rockname-$pkgver-$_rockrel.src.rock"
   find "$pkgdir/usr" -name manifest -delete
 }
