@@ -1,7 +1,7 @@
 # Maintainer: Hendrik 'T4cC0re' Meyer <aur@t4cc0.re>
 pkgname=gitlab-cli
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Perform GitLab actions on the CLI"
 arch=('any')
 url="https://gitlab.com/T4cC0re/gitlab-cli"

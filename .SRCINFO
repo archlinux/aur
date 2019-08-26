@@ -1,7 +1,7 @@
 pkgbase = gitlab-cli
 	pkgdesc = Perform GitLab actions on the CLI
 	pkgver = 0.1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/T4cC0re/gitlab-cli
 	arch = any
 	license = GPLv3
