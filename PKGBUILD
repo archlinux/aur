@@ -1,7 +1,7 @@
 _npmname=bootlint
 _npmver=0.16.6
 pkgname=nodejs-bootlint
-pkgver=0.16.6
+pkgver=0.16.7
 pkgrel=1
 pkgdesc="HTML linter for Bootstrap projects"
 arch=(any)

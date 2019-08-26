@@ -1,6 +1,6 @@
 pkgbase = nodejs-bootlint
 	pkgdesc = HTML linter for Bootstrap projects
-	pkgver = 0.16.6
+	pkgver = 0.16.7
 	pkgrel = 1
 	url = https://github.com/twbs/bootlint
 	arch = any
