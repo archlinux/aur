@@ -1,17 +1,16 @@
 pkgbase = python-kealib
 	pkgdesc = Python library to access parts of kealib not exposed by GDAL
-	pkgver = 0.1_1.4.10
+	pkgver = 0.1_1.4.11
 	pkgrel = 1
 	url = http://kealib.org
 	arch = x86_64
 	license = MIT
-	makedepends = kealib
 	makedepends = python-setuptools
 	depends = kealib
 	depends = python
 	options = !emptydirs
-	source = https://bitbucket.org/chchrsc/kealib/downloads/kealib-1.4.10.tar.gz
-	sha256sums = b1bd2d6834d2fe09ba456fce77f7a9452b406dbe302f7ef1aabe924e45e6bb5e
+	source = https://bitbucket.org/chchrsc/kealib/get/kealib-1.4.11.tar.bz2
+	sha256sums = c39aa8009e2504ed461e943974a1478ec2b96c0b04516d2386317c191ffce5aa
 
 pkgname = python-kealib
 
