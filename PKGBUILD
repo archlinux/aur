@@ -1,5 +1,5 @@
-# $Id: PKGBUILD 266875 2017-11-15 14:29:11Z foutrelis $
-# Maintainer: schuay <jakob.gruber@gmail.com>
+# Maintainer: Allan M. de Azevedo <4lln.medeiros@gmail.com>
+# Contributor: schuay <jakob.gruber@gmail.com>
 # Contributor: quantax -- contact via Arch Linux forum or AUR
 # Contributor: Christoph Zeiler <archNOSPAM_at_moonblade.dot.org>
 
@@ -22,12 +22,21 @@ optdepends_i686=('libpulse: Pulseaudio support'
 # Accessible through /srv/ftp/other/community on nymeria.
 source=("https://sources.archlinux.org/other/community/pcsxr/pcsxr-${pkgver}.tar.bz2")
 
+prepare() {
+    cd "$srcdir/$pkgname"
+    sed -i 's/uncompress2/uncompress2_internal/' libpcsxcore/cdriso.c
+}
+
 build() {
     cd "$srcdir/$pkgname"
 
     if [[ $CARCH == 'x86_64' ]]; then
-        export CC="gcc -m32"
-        export CXX="g++ -m32"
+        export CC="gcc"
+        export CXX="g++"
+        export CFLAGS+=" -m32 -I/usr/include/harfbuzz"
+        export CXXFLAGS+=" -m32 -I/usr/include/harfbuzz"
+        export LDFLAGS+=" -m32"
+        export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
     fi
 
     autoreconf -f -i
