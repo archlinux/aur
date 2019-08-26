@@ -1,7 +1,7 @@
 # Maintainer: cupnoodles <cupn8dles@gmail.com>
 
 pkgname=plasma5-applets-virtual-desktop-bar-git
-pkgver=r300.482bfb6
+pkgver=r313.5dc3a59
 pkgrel=1
 pkgdesc='KDE Plasma panel applet for managing virtual desktops'
 arch=(i686 x86_64)
