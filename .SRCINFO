@@ -4,7 +4,7 @@ pkgbase = go-swarm
 	pkgrel = 1
 	url = https://swarm.ethereum.org
 	install = go-swarm.install
-	changelog = CHANGELOG.md
+	changelog = CHANGELOG
 	arch = x86_64
 	license = LGPL3
 	makedepends = go>=1.10.0

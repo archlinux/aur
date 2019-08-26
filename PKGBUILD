@@ -18,7 +18,7 @@ replaces=()
 backup=()
 options=()
 install=${pkgname}.install
-changelog=CHANGELOG.md
+changelog=CHANGELOG
 source=("https://github.com/ethersphere/swarm/archive/v${pkgver}.tar.gz"
 	"v${pkgver}.tar.gz.sig"
 	"swarm-resources.tar.gz"
