@@ -16,7 +16,7 @@ optdepends=('weston: default terminal emulator'
 provides=('way-cooler')
 conflicts=('way-cooler')
 backup=('etc/way-cooler/rc.lua')
-source=("${pkgname}::git+https://github.com/Immington-Industries/way-cooler.git"
+source=("$pkgname::git+https://github.com/Immington-Industries/way-cooler.git"
         "0001-wlroots-needs-to-be-dynamic.patch")
 md5sums=('SKIP'
          '0aa8ef19bbe4d66d5dd6d796498ab8e2')
@@ -27,7 +27,7 @@ pkgver() {
 }
 
 prepare() {
-  cd $pkgname
+  cd "$pkgname"
   git submodule update --init --recursive
 }
 build() {
@@ -50,7 +50,7 @@ package() {
 
   mkdir -p "$pkgdir/usr/share/wayland-sessions"
   cp "$srcdir/$pkgname/way-cooler.desktop" "$pkgdir/usr/share/wayland-sessions"
-  rm $pkgdir/.crates.toml
+  rm "$pkgdir"/.crates.toml
 }
 
 # vim:set ts=2 sw=2 et:
