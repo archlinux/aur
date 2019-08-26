@@ -8,14 +8,14 @@ arch=(any)
 url='https://github.com/travis-ci/travis-lint'
 license=("MIT")
 depends=('ruby')
-source=(https://rubygems.org/downloads/$pkgname-$pkgver.gem)
-noextract=($pkgname-$pkgver.gem)
+source=(https://rubygems.org/downloads/"$pkgname-$pkgver".gem)
+noextract=("$pkgname-$pkgver".gem)
 sha256sums=('1918261232d278d6c371ab3ace1d43a13408af799ed62fcb62bd866654c2eaea')
 
 package() {
-  cd "${srcdir}"
+  cd "$srcdir"
     local _gemdir="$(ruby -rubygems -e'puts Gem.default_dir')"
 
-  gem install --no-user-install --ignore-dependencies -n "${pkgdir}/usr/bin" \
-      -i "${pkgdir}${_gemdir}" ${pkgname}-${pkgver}.gem
+  gem install --no-user-install --ignore-dependencies -n "$pkgdir/usr/bin" \
+      -i "$pkgdir$_gemdir" "$pkgname-$pkgver".gem
 }
