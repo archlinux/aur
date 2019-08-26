@@ -6,7 +6,7 @@ pkgdesc="Perform GitLab actions on the CLI"
 arch=('any')
 url="https://gitlab.com/T4cC0re/gitlab-cli"
 license=('GPLv3')
-makedepends=('go>=1.12')
+makedepends=('go>=1.12' 'git')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/-/archive/master/gitlab-cli-v${pkgver}.tar.gz")
 noextract=("${pkgname}-${pkgver}.tar.gz")
 
@@ -32,4 +32,4 @@ package() {
   install -Dm755 $pkgname                              "$pkgdir/usr/bin/$pkgname"
   install -Dm644 "README.md"                           "$pkgdir/usr/share/$pkgname/README.md"
 }
-sha512sums=(2887eb6dff5c4356c78d0093d2b51f6fb2136184d6caf1c91e0d9914aeb4e7234f78e529f520de9ad99907a3f37832ccecf68c3bcc37103891d90087a3435170)
+sha512sums=(5a7b6a43a263b679b197617550b7cc41423b5ce99f8b1646e2623a1462c4d8a630f6e4a4cc1ef20726e40772b0c79ede604989aa31e42ec0c2f60d94430959fa)
