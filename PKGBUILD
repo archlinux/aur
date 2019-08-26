@@ -12,8 +12,8 @@ url="https://github.com/tobias-klein/ezra-project"
 license=('GPL3')
 depends=('electron' 'nodejs')
 makedepends=('npm' 'git' 'sword')
-conflicts=(${pkgname%-git})
-provides=(${pkgname%-git})
+conflicts=("${pkgname%-git}")
+provides=("${pkgname%-git}")
 source=("git://github.com/tobias-klein/${pkgname%-git}.git#branch=$_branch"
         'ezra-project.sh'
         'ezra-project.desktop')
@@ -35,15 +35,15 @@ prepare() {
 
 build() {
     cd "$srcdir/${pkgname%-git}"
-    $(npm bin)/electron-rebuild -f -w node-sword-interface -v $_electron
+    "$(npm bin)"/electron-rebuild -f -w node-sword-interface -v "$_electron"
 }
 
 package() {
     cd "$srcdir/${pkgname%-git}"
     install -Dm644 "$srcdir/${pkgname%-git}.desktop" "$pkgdir/usr/share/applications/${pkgname%-git}.desktop"
     install -Dm755 "$srcdir/${pkgname%-git}.sh" "$pkgdir/usr/bin/${pkgname%-git}"
-    $(npm bin)/electron-packager . ${pkgname%-git} --overwrite --asar --platform=linux --arch=x64 --prune=true --out=release --electron-version=$_electron
-    rm release/ezra-project-linux-x64/${pkgname%-git}
+    "$(npm bin)"/electron-packager . "${pkgname%-git}" --overwrite --asar --platform=linux --arch=x64 --prune=true --out=release --electron-version="$_electron"
+    rm release/ezra-project-linux-x64/"${pkgname%-git}"
     mkdir "$pkgdir/usr/lib/"
     cp -a release/ezra-project-linux-x64 "$pkgdir/usr/lib/${pkgname%-git}"
 }
