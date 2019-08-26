@@ -1,7 +1,7 @@
 pkgbase = sheepshaver-git
 	pkgdesc = An Open Source PowerMac Emulator
 	pkgver = r2604.g143b0827
-	pkgrel = 1
+	pkgrel = 2
 	url = http://sheepshaver.cebix.net
 	arch = x86_64
 	license = GPL

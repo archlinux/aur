@@ -2,7 +2,7 @@
 
 pkgname=sheepshaver-git
 pkgver=r2604.g143b0827
-pkgrel=1
+pkgrel=2
 pkgdesc="An Open Source PowerMac Emulator"
 arch=('x86_64')
 url="http://sheepshaver.cebix.net"
@@ -28,6 +28,8 @@ build() {
   cd macemu/SheepShaver/src/Unix
   ./autogen.sh \
     --prefix=/usr \
+    --enable-addressing=direct \
+    --enable-standalone-gui \
     --enable-sdl-audio \
     --enable-sdl-video \
     --enable-tuntap \
@@ -38,7 +40,8 @@ build() {
 }
 
 package() {
-  install -Dm755 macemu/SheepShaver/src/Unix/SheepShaver "$pkgdir"/usr/bin/SheepShaver
+  install -Dm755 macemu/SheepShaver/src/Unix/SheepShaver    "$pkgdir"/usr/bin/SheepShaver
+  install -Dm755 macemu/SheepShaver/src/Unix/SheepShaverGUI "$pkgdir"/usr/bin/SheepShaverGUI
 
   mkdir -p "$pkgdir"/usr/share/doc
   cp -a macemu/SheepShaver/doc/Linux "$pkgdir"/usr/share/doc/SheepShaver
