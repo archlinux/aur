@@ -11,8 +11,8 @@ url="https://github.com/tobias-klein/ezra-project"
 license=('GPL3')
 depends=('electron' 'nodejs')
 makedepends=('npm' 'sword')
-conflicts=("${pkgname}-git")
-source=("https://github.com/tobias-klein/${pkgname}/archive/${pkgver}.tar.gz"
+conflicts=("$pkgname-git")
+source=("https://github.com/tobias-klein/$pkgname/archive/$pkgver.tar.gz"
         'ezra-project.sh'
         'ezra-project.desktop')
 sha256sums=('7b6c64179af58ec1828b8334d2c97204aec9af57eb3bba0303ede3f2294ba293'
@@ -21,23 +21,23 @@ sha256sums=('7b6c64179af58ec1828b8334d2c97204aec9af57eb3bba0303ede3f2294ba293'
 _electron="$(electron --version | sed 's/^v//')"
 
 prepare() {
-    cd "${pkgname}-${pkgver}"
+    cd "$pkgname-$pkgver"
     npm uninstall --no-audit -D electron
     npm install --no-audit electron@"$_electron"
 }
 
 build() {
-    cd "${pkgname}-${pkgver}"
+    cd "$pkgname-$pkgver"
     # npm run rebuild-linux
-    $(npm bin)/electron-rebuild -f -w node-sword-interface -v $_electron
+    "$(npm bin)"/electron-rebuild -f -w node-sword-interface -v "$_electron"
 }
 
 package() {
-    cd "${pkgname}-${pkgver}"
-    install -Dm644 "$srcdir/${pkgname}.desktop" "$pkgdir/usr/share/applications/${pkgname}.desktop"
-    install -Dm755 "$srcdir/${pkgname}.sh" "$pkgdir/usr/bin/${pkgname}"
-    $(npm bin)/electron-packager . ${pkgname} --overwrite --asar --platform=linux --arch=x64 --prune=true --out=release --electron-version=$_electron
-    rm release/ezra-project-linux-x64/${pkgname}
+    cd "$pkgname-$pkgver"
+    install -Dm644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+    install -Dm755 "$srcdir/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
+    "$(npm bin)"/electron-packager . "$pkgname" --overwrite --asar --platform=linux --arch=x64 --prune=true --out=release --electron-version="$_electron"
+    rm release/ezra-project-linux-x64/"$pkgname"
     mkdir "$pkgdir/usr/lib/"
-    cp -a release/ezra-project-linux-x64 "$pkgdir/usr/lib/${pkgname}"
+    cp -a release/ezra-project-linux-x64 "$pkgdir/usr/lib/$pkgname"
 }
