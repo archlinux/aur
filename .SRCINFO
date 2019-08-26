@@ -1,12 +1,13 @@
 pkgbase = chronoengine-git
 	pkgdesc = C++ library for physics simulation
-	pkgver = 4.0.0.r62.gba682856c
+	pkgver = 4.0.0.r388.g2d25965db
 	pkgrel = 1
 	url = https://projectchrono.org/
 	arch = i686
 	arch = x86_64
 	license = custom
 	makedepends = cmake
+	makedepends = eigen
 	makedepends = git
 	makedepends = boost
 	makedepends = glm

@@ -2,7 +2,7 @@
 
 _pkgname=chronoengine
 pkgname=${_pkgname}-git
-pkgver=4.0.0.r62.gba682856c
+pkgver=4.0.0.r388.g2d25965db
 #_fragment="#tag=${pkgver}"
 pkgrel=1
 pkgdesc="C++ library for physics simulation"
@@ -10,7 +10,7 @@ license=('custom')
 arch=('i686' 'x86_64')
 url="https://projectchrono.org/"
 depends=(openmpi boost-libs)
-makedepends=(cmake git boost glm glew glfw irrlicht glut openmpi)
+makedepends=(cmake eigen git boost glm glew glfw irrlicht glut openmpi)
 makedepends+=(python swig) # -DENABLE_MODULE_PYTHON requirement
 makedepends+=(blaze) # -DENABLE_MODULE_PARALLEL=ON requirement
 makedepends+=(cuda) # -DENABLE_MODULE_PARALLEL=ON optional
