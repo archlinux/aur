@@ -1,6 +1,6 @@
 # Maintainer: Tony Duco <nosduco@gmail.com>
 pkgname=safe
-_pkgver=0.0.5
+_pkgver=0.0.6
 pkgver=${_pkgver//-/_}
 pkgrel=1
 epoch=1
