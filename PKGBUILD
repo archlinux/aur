@@ -1,15 +1,14 @@
 # Maintainer: Eric DeStefano <eric at ericdestefano dot com>
 
-pkgname=sheepshaver-git
-pkgver=r2604.g143b0827
+pkgbase=sheepshaver-git
+pkgname=(sheepshaver-git sheepnet-dkms-git)
+pkgver=r2608.g01052ca8
 pkgrel=2
 pkgdesc="An Open Source PowerMac Emulator"
 arch=('x86_64')
 url="http://sheepshaver.cebix.net"
 license=('GPL')
 depends=('gtk2' 'sdl' 'vde2')
-provides=("sheepshaver=$pkgver")
-conflicts=("sheepshaver")
 source=('git+https://github.com/cebix/macemu'
         'SheepShaver.sysctl'
         'SheepShaver.desktop'
@@ -39,7 +38,10 @@ build() {
   make -j1
 }
 
-package() {
+package_sheepshaver-git() {
+  provides=("sheepshaver=$pkgver")
+  conflicts=("sheepshaver")
+
   install -Dm755 macemu/SheepShaver/src/Unix/SheepShaver    "$pkgdir"/usr/bin/SheepShaver
   install -Dm755 macemu/SheepShaver/src/Unix/SheepShaverGUI "$pkgdir"/usr/bin/SheepShaverGUI
 
@@ -49,6 +51,23 @@ package() {
   install -Dm644 SheepShaver.desktop "$pkgdir"/usr/share/applications/SheepShaver.desktop
   install -Dm644 SheepShaver.png     "$pkgdir"/usr/share/pixmaps/SheepShaver.png
   install -Dm644 SheepShaver.sysctl  "$pkgdir"/etc/sysctl.d/90-SheepShaver.conf
+}
+
+package_sheepnet-dkms-git() {
+  depends=('dkms')
+  provides=("sheepnet-dkms=$pkgver")
+  conflicts=("sheepnet-dkms")
+
+  mkdir -p "$pkgdir"/usr/src
+  cp -rL macemu/SheepShaver/src/Unix/Linux/NetDriver "$pkgdir"/usr/src/sheepnet-$pkgver
+
+  cat > "$pkgdir"/usr/src/sheepnet-$pkgver/dkms.conf <<EOF
+PACKAGE_NAME="sheepnet"
+PACKAGE_VERSION="$pkgver"
+AUTOINSTALL=yes
+BUILT_MODULE_NAME="sheep_net"
+DEST_MODULE_LOCATION="/kernel/net"
+EOF
 }
 
 # vim: ts=2:sw=2:et:
