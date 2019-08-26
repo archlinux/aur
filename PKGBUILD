@@ -1,21 +1,26 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=sopel
-pkgver=6.5.3
-pkgrel=2
+pkgver=6.6.9
+pkgrel=1
 pkgdesc="An easy-to-use and highly extensible IRC Bot framework (Formerly Willie)"
 arch=('any')
 license=('custom:EFL')
 url='https://sopel.chat'
-depends=('python-setuptools' 'sqlite' 'python-xmltodict' 'python-pytz' 'python-praw'
-         'python-pyenchant' 'python-pygeoip')
+depends=('ipython' 'python-setuptools' 'sqlite' 'python-xmltodict' 'python-pytz' 'python-praw'
+         'python-geoip2' 'python-pyenchant' 'python-requests' 'python-dnspython' 'python-sqlalchemy')
 makedepends=('python-sphinx')
-checkdepends=('python-pytest-runner' 'ipython')
+checkdepends=('python-pytest-runner')
 backup=('etc/sopel.cfg')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/sopel-irc/sopel/archive/v$pkgver.tar.gz")
-sha512sums=('6f8f3003c87f8092a7a05320197237033f8d650402155f1f71482078e2bb851aa5f1942d2ccf378d3446011326f174087f478754e212b40e2216e2ad46a82812')
+sha512sums=('d1c91bc972742136cb786cad1cac09b485c6efd5ba11686002005a6f212ba326e2338c085cf6dffe5c23a04a1b414ab82933ef671bb9153c13875041a1ecd771')
 
 export LC_CTYPE=en_US.UTF-8
+
+prepare() {
+  cd sopel-$pkgver
+  sed -i 's/<6/<7/' requirements.txt
+}
 
 build() {
   cd sopel-$pkgver
