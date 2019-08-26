@@ -1,26 +1,23 @@
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 # Contributor: Pierre Chapuis <catwell at archlinux dot us>
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
-pkgname=lua-stdlib
-pkgver=41.1.1
+_rockname=stdlib
+pkgname=lua-$_rockname
+pkgver=41.2.2
+_rockrel=1
 pkgrel=1
-pkgdesc='Standard library for Lua'
-arch=('any' 'x86_64')
-url="http://github.com/$pkgname/$pkgname"
+pkgdesc="Library of modules for common programming tasks"
+arch=('i686' 'x86_64')
+url="http://github.com/lua-stdlib/lua-stdlib/"
 license=('MIT')
-depends=('lua')
-source=("http://github.com/$pkgname/$pkgname/archive/release-v$pkgver.zip")
-md5sums=('01182a1858336e8d927eee83641ee711')
-
-build() {
-  cd $pkgname-release-v$pkgver
-  ./configure --prefix=/usr
-  make
-}
+depends=('lua' 'lua-penlight')
+makedepends=('luarocks')
+conflicts=()
+source=("https://luarocks.org/$_rockname-$pkgver-$_rockrel.rockspec")
+sha256sums=('c6192597da0bc590f4eb4a5f4df5c5721d9f8c607666341d5a0b695419594c67')
 
 package() {
-  cd $pkgname-release-v$pkgver
-  make DESTDIR=$pkgdir install
-  install -Dm644 COPYING "$pkgdir"/usr/share/licenses/$pkgname/COPYING
+  luarocks --tree="$pkgdir/usr" install --deps-mode=none "$_rockname-$pkgver-$_rockrel.rockspec"
+  find "$pkgdir/usr" -name manifest -delete
 }
-
