@@ -1,6 +1,6 @@
 pkgname=tea4cups-py3-git
 _pkgname=tea4cups-py3
-pkgver=3.1.5_alpha+65b5c3a
+pkgver=3.1.5_alpha+4ffc26a
 
 pkgrel=1
 pkgdesc="A unofficial python3 fork of Tea4cups"
