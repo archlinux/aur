@@ -23,15 +23,12 @@ _makegconfig=
 # See, https://bugs.archlinux.org/task/31187
 _NUMAdisable=y
 
-# Compile ONLY probed modules
-# Build in only the modules that you currently have probed in your system VASTLY
-# reducing the number of modules built and the build time.
-#
-# WARNING - ALL modules must be probed BEFORE you begin making the pkg!
+# Compile ONLY used modules to VASTLYreduce the number of modules built
+# and the build time.
 #
 # To keep track of which modules are needed for your specific system/hardware,
 # give module_db script a try: https://aur.archlinux.org/packages/modprobed-db
-# This PKGBUILD will call it directly to probe all the modules you have logged!
+# This PKGBUILD read the database kept if it exists
 #
 # More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
 _localmodcfg=
@@ -51,10 +48,10 @@ _1k_HZ_ticks=
 pkgbase=linux-aufs
 # pkgname=('linux-aufs' 'linux-aufs-headers' 'linux-aufs-docs')
 _major=5.2
-_minor=9
+_minor=10
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=3
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/sfjro/aufs5-standalone"
 license=('GPL2')
@@ -73,10 +70,10 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
         "${_gcc_path}/${_gcc_patch}"
         "${_lucjanpath}/${_aufs_path}/${_aufs_patch}"
-        "${_lucjanpath}/arch-patches/0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch"
-        "${_lucjanpath}/arch-patches/0002-ZEN-Add-CONFIG-for-unprivileged_userns_clone.patch"
-        "${_lucjanpath}/arch-patches/0003-iwlwifi-mvm-disable-TX-AMSDU-on-older-NICs.patch"
-        "${_lucjanpath}/arch-patches/0004-iwlwifi-Add-support-for-SAR-South-Korea-limitation.patch"
+        "${_lucjanpath}/arch-patches-v2/0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch"
+        "${_lucjanpath}/arch-patches-v2/0002-ZEN-Add-CONFIG-for-unprivileged_userns_clone.patch"
+        "${_lucjanpath}/arch-patches-v2/0003-iwlwifi-mvm-disable-TX-AMSDU-on-older-NICs.patch"
+        "${_lucjanpath}/arch-patches-v2/0004-drm-amdgpu-pin-the-csb-buffer-on-hw-init-for-gfx-v8.patch"
          # the main kernel config files
         'config'
          # pacman hook for depmod
@@ -163,13 +160,12 @@ prepare() {
     ### Optionally load needed modules for the make localmodconfig
         # See https://aur.archlinux.org/packages/modprobed-db
         if [ -n "$_localmodcfg" ]; then
-        msg2 "If you have modprobed-db installed, running it in recall mode now"
-            if [ -e /usr/bin/modprobed-db ]; then
-            [[ -x /usr/bin/sudo ]] || {
-            echo "Cannot call modprobe with sudo. Install sudo and configure it to work with this user."
-            exit 1; }
-            sudo /usr/bin/modprobed-db recall
-            make localmodconfig
+            if [ -f $HOME/.config/modprobed.db ]; then
+            msg2 "Running Steven Rostedt's make localmodconfig now"
+            make LSMOD=$HOME/.config/modprobed.db localmodconfig
+        else
+            msg2 "No modprobed.db data found"
+            exit1
             fi
         fi
 
@@ -382,15 +378,15 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('2e3fad96cce66e1ef0a8f82c221970e6535d2d20b5ed8dcc3f368cd51576ff57bd31f5b5b09f7b19acee4f73c7ef5f1a0aa8ecb5176c431c2d4cb5c770432f4b'
+sha512sums=('abd20b6bf41572c51df0d609db205e2d5f541aa486c2d37c15d4dd43e8bf36a06eb5514bdd5a1c114fd6f6c00a3bf9d1ac40a722b8e01146e2779f806b3a4ee7'
             'SKIP'
             '2eb574fbfac6e334d3b06e52e466dbf8e88034515729b6571990b10f75a0fe2a52f188615405c5a695b5820669e595deead44d7961a97c5872359be3435fdf63'
             '2f1fc8a346dcdc5f1d0734a4d101116943514233b405b90b8068d37da0422b73ef4afb73fd554e60a3e5f0aed9cc83c5d9a1562a17801588b01d5de1d735d160'
-            '8a158ae5660426f0fb9fa74f37c093f325b5a23392b95e50c36825205f42311cbf05f818f0275ebda27ce9fad40652ba6dc2397f19f45addb3f68f8f4476196f'
-            '9d472377c50ddd9ddab5d4ab3092f3d487eeee20a4d4a04d3cefeef5bbf40daa3eb609b15741ca4a8cd32bf2b6d0781de961cbf55e2f80fd40260f282bf022f4'
-            '166653c6d7d76b052aa26f6a0782a74db75d2611c3d5d770219a00fed4da7d2317b35e39aaadec25da1fc91fb7f18385247303d531d15e3998886bb65f8cd89f'
-            '1e422fc04acad01380b96dad92b43bbc2ddb26e3f109c519534fe6635e6fc1decebeff22b6f31be773330f1d4504883264e719889a4961a03c31670dbc2d9859'
-            '75569535c53bb85ee06b74e3ea0820f3fad38d36f78e794ff98b6b446ef937b59ef00da7b12ca5472e03bb4dd2b02d12d714268d6cb6930d18cda61abb668466'
+            '1cd40df805987a50723da456e5874e6ca1070e5efbf23b3267e833bb73465573eb82d5c8f74c54e9fb894cdbe5137a822381152716d7dedd64a07ac1601b0f37'
+            'd75d9fc44b31e6adafe4cae641bc513c1594c7a314087fede6a7ff1f3c98c67117d84a1f7fe70f39856af9d66d9f79298791598505283ac53453cb4e763fa69c'
+            'fa87f577af56a8c4219b4c064fba7c85ea8cc1c1ee066f6972022145af04a1fb982f5e5ff5d983e44654440892fa429c00c47ddfef8a8a4b0e16fc4484119adf'
+            '694efbf25e17b30b73eb16de5819068565e37e3f6e263a700c06d01bd7f299d5d0286144426ed3161081b969d4536024709bbbf6dc3e65ca96d5cd18192b74d1'
+            'f7616fdd9d98ee6cebfd23d58ab6c2b641640830d26ed264ed49fbab542524291865244830c40a13c8f674bab9a321c62325e9b4982fb81a6073969a896b39df'
             '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
             '2718b58dbbb15063bacb2bde6489e5b3c59afac4c0e0435b97fe720d42c711b6bcba926f67a8687878bd51373c9cf3adb1915a11666d79ccb220bf36e0788ab7'
             '8742e2eed421e2f29850e18616f435536c12036ff793f5682a3a8c980cf5dbfc88d17fd9539c87de15d9e4663dc3190f964f18a4722940465437927b6052abbf'
