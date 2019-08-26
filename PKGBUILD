@@ -20,8 +20,8 @@ build() {
 package() {
     cd "uld"
     find ./noarch/etc/ -type f -execdir install -Dm644 {} "$pkgdir/etc/{}" \; -print
-    find ./noarch -type f -name '*3025*.ppd.gz' -execdir install -Dm644 {} "${pkgdir}/usr/share/ppd/xerox/{}" \; -print
-    find ./noarch -type f -name '*3025*.cts' -execdir install -Dm644 {} "${pkgdir}/usr/share/ppd/cms/{}" \; -print
+    find ./noarch -type f -name '*3025*.ppd.gz' -execdir install -Dm644 {} "$pkgdir/usr/share/ppd/xerox/{}" \; -print
+    find ./noarch -type f -name '*3025*.cts' -execdir install -Dm644 {} "$pkgdir/usr/share/ppd/cms/{}" \; -print
     # find ./x86_64 -type f -execdir install -Dm755 {} "${pkgdir}/usr/lib/cups/filter/{}" \; -print
-    install -Dm0755 ./x86_64/rastertospl "${pkgdir}/usr/lib/cups/filter/rastertospl"
+    install -Dm0755 ./x86_64/rastertospl "$pkgdir/usr/lib/cups/filter/rastertospl"
 }
