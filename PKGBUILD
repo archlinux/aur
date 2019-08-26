@@ -3,12 +3,12 @@
 pkgbase=msbuild
 pkgname=('msbuild' 'msbuild-sdkresolver')
 pkgver=16.3+xamarinxplat.2019.08.08.00.55
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/mono/msbuild"
 license=('MIT')
 depends=('mono>=6.0.0')
-makedepends=('unzip' 'dotnet-host' 'dotnet-sdk')
+makedepends=('unzip' 'dotnet-host-preview' 'dotnet-sdk-preview')
 source=("https://download.mono-project.com/sources/msbuild/msbuild-${pkgver}.tar.xz"
         'copy_hostfxr.patch'
         'fix_bashisms.patch'
@@ -49,5 +49,5 @@ package_msbuild-sdkresolver() {
 
     mkdir -p "${pkgdir}"/usr/lib/mono/msbuild/Current/bin/SdkResolvers/
     cp -dr --no-preserve='ownership' $srcdir/target/usr/lib/mono/msbuild/Current/bin/SdkResolvers/Microsoft.DotNet.MSBuildSdkResolver "${pkgdir}"/usr/lib/mono/msbuild/Current/bin/SdkResolvers/
-    #cp -dr --no-preserve='ownership' $(pacman -Ql dotnet-host | grep libhostfxr.so | cut -d' ' -f2) "${pkgdir}"/usr/lib/mono/msbuild/Current/bin/SdkResolvers/Microsoft.DotNet.MSBuildSdkResolver/
+    cp -dr --no-preserve='ownership' $(pacman -Ql dotnet-host | grep libhostfxr.so | cut -d' ' -f2) "${pkgdir}"/usr/lib/mono/msbuild/Current/bin/SdkResolvers/Microsoft.DotNet.MSBuildSdkResolver/
 }
