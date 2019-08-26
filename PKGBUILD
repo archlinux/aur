@@ -21,13 +21,13 @@ md5sums=('SKIP'
          'd4bdd1ccbb3a33abf4e7e33776811038')
 
 pkgver() {
-    cd ${pkgname%-svn}
+    cd "${pkgname%-svn}"
     local ver="$(svnversion)"
     printf "%s" "${ver//[[:alpha:]]}"
 }
 
 prepare() {
-    cd ${pkgname%-svn}
+    cd "${pkgname%-svn}"
 
     sed -i -e 's/Exec=wxluaedit/Exec=wxLuaEdit/' wxLua/distrib/autopackage/wxlua.desktop
 
@@ -40,7 +40,7 @@ prepare() {
 }
 
 build() {
-    cd ${pkgname%-svn}/wxLua/
+    cd "${pkgname%-svn}"/wxLua/
 
     cd build
     cmake .. -DCMAKE_INSTALL_PREFIX=/usr \
@@ -57,7 +57,7 @@ build() {
 }
 
 package() {
-    cd ${pkgname%-svn}/wxLua/build
+    cd "${pkgname%-svn}"/wxLua/build
     make DESTDIR="$pkgdir/" install
 
     # mv lua module
@@ -76,5 +76,5 @@ package() {
         "$pkgdir/usr/share/mime/packages/wxlua.xml"
 
     install -Dm 644 docs/licence.txt \
-        "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
+        "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
