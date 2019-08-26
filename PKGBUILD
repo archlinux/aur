@@ -1,6 +1,6 @@
 pkgname=tea4cups-py3-git
 _pkgname=tea4cups-py3
-pkgver=3.1.5_alpha+4ffc26a
+pkgver=3.1.5_alpha+r14.4ffc26a
 
 pkgrel=1
 pkgdesc="A unofficial python3 fork of Tea4cups"
@@ -42,7 +42,7 @@ _tea4cups_spool='/var/spool/tea4cups' # Should match that which get's defined by
 pkgver() {
   cd "${srcdir}/${_pkgname}"
   _ver="$(cat tea4cups | sed -n -E 's|^[[:space:]]*__version__[[:space:]]*=[[:space:]]*(.*)$|\1|p' | tr -d \"\' | tr '-' '_')"
-  _git="$(git rev-parse --short HEAD)"
+  _git=`printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"`
 
   if [ -z ${_ver} ]; then
     echo "Error: Could not determine software version. Aborting." >&2
