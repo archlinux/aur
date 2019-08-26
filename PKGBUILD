@@ -1,9 +1,9 @@
 # Maintainer: Frederik Schwan <frederik dot schwan at linux dot com>
 
 pkgname="mongodb-bin-4.0"
-pkgver="4.0.12"
-basever="4.0"
-pkgrel="1"
+pkgver=4.0.12
+basever=4.0
+pkgrel=2
 pkgdesc='A high-performance, open source, schema-free document-oriented database'
 arch=("x86_64")
 url='https://www.mongodb.com/'
@@ -11,18 +11,18 @@ license=("SSPLv1")
 provides=("mongodb=$pkgver")
 conflicts=("mongodb" "mongodb-bin")
 optdepends=("mongodb-tools: The MongoDB tools provide import, export, and diagnostic capabilities.")
-source=("https://repo.mongodb.org/apt/debian/dists/jessie/mongodb-org/${basever}/main/binary-amd64/mongodb-org-shell_${pkgver}_amd64.deb"
-        "https://repo.mongodb.org/apt/debian/dists/jessie/mongodb-org/${basever}/main/binary-amd64/mongodb-org-server_${pkgver}_amd64.deb"
-        "https://repo.mongodb.org/apt/debian/dists/jessie/mongodb-org/${basever}/main/binary-amd64/mongodb-org-mongos_${pkgver}_amd64.deb"
+source=("https://repo.mongodb.org/apt/ubuntu/dists/bionic/mongodb-org/${basever}/multiverse/binary-amd64/mongodb-org-shell_${pkgver}_amd64.deb"
+        "https://repo.mongodb.org/apt/ubuntu/dists/bionic/mongodb-org/${basever}/multiverse/binary-amd64/mongodb-org-server_${pkgver}_amd64.deb"
+        "https://repo.mongodb.org/apt/ubuntu/dists/bionic/mongodb-org/${basever}/multiverse/binary-amd64/mongodb-org-mongos_${pkgver}_amd64.deb"
         "mongodb.service"
         "mongodb.conf"
         "mongodb.sysusers"
         "mongodb.tmpfiles"
         "LICENSE")
 
-sha512sums=('a0f7dd30cfd755b4b4a7557d696ddd06af5eba35f9e056eb65922f3dda1d1991c8822972abe419be98161c448f36745ec8915ef592c3a29863baa0730099af34'
-            'c3e7363642b6a6b0957408204eca1339c6c67a5b7f368a2c7e47bc685b3adfcfdf86e5f1c556af98dcd8d6bece502340c5c9fa54a6d8a858146a416a2c4319ac'
-            'eafdec8c3ac23fda52a584888cef0ca27e09661537682b4975618ff00abc8396e2363be60667d4ab9269d06ba1c42d3c3e939028ac12f4971c6a84931cd9496f'
+sha512sums=('31c5e50ff4992b07c50ee958974566d3d231b257cff5f6e7bc3722024a328ec3c36d358d1c503037e5d26b1e282868dfdceaefed9b1e11c6aabe65695231feeb'
+            '12e1cb94dede190ba83e90b119fdad8eec77d00043ed4f3c18daf7dd5b0d8309b382ab5f710f2ae797cb4c2da365871e79bc3d07cfed0d226d76be403ca2a2f3'
+            '590a7dc0a12cbefb4618328be627fa7ba736b6a5b0813784a62c34ba8ea1e586317a1fbe7f9c3b9901e768ce3c6a09c8e3cfe0f639aeea936908c0130af92662'
             '177251404b2e818ae2b546fe8b13cb76e348c99e85c7bef22a04b0f07b600fd515a309ede50214f4198594388a6d2b31f46e945b9dae84aabb4dfa13b1123bb9'
             '05dead727d3ea5fe8af1a3c3888693f6b3e2b8cb7f197a5d793352e10d2c524e96c9a5c55ad2e88c1114643a9612ec0b26a2574b48a5260a9b51ec8941461f1c'
             '889425b864c58a767aa5865c0ce9817361ad99fec78050fa600f14eaef5a56ce0bc41a03878233e99f4862596a94dafcfebebecd4d57443b742117b873ab813d'
