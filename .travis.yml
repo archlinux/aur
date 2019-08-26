@@ -43,6 +43,7 @@ arch:
      [ "$TRAVIS" == "true" ] && TRAVIS=1 || TRAVIS=0
 # Build
   - ccache -s
+  - unset CC CXX
   - timeout 30m makepkg -s --noconfirm > >(ts -s '[%.T]') 2>&1; _makepkg_return=$?
   - sudo pacman -Sc --noconfirm
   - ccache -s
