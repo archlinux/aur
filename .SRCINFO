@@ -1,12 +1,15 @@
 pkgbase = freedroidrpg-git
 	pkgdesc = a mature science fiction role playing game set in the future
-	pkgver = r1.a038585
+	pkgver = r7402.66afd54be
 	pkgrel = 1
 	url = http://freedroid.sourceforge.net
 	arch = x86_64
 	license = GPL
 	makedepends = git
 	makedepends = mesa
+	makedepends = autoconf
+	makedepends = gettext
+	makedepends = automake
 	depends = sdl_mixer
 	depends = sdl_image
 	depends = sdl_gfx
