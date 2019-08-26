@@ -3,7 +3,7 @@
 
 pkgname=python-nbdime
 _pkgname="nbdime"
-pkgver=1.0.5
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Diff and merge of Jupyter Notebooks"
 url="http://jupyter.org"
@@ -12,8 +12,8 @@ depends=(python python-gitpython python-six jupyter-nbformat python-tornado
          python-colorama)
 license=('BSD')
 arch=('any')
-source=("https://files.pythonhosted.org/packages/10/97/63e18d01ee2ec570c4440fb47f4e6b7b0e2c915e48ec838ebbd2fc013a82/$_pkgname-$pkgver.tar.gz")
-sha256sums=(0928fb09bf384d2b66760d1fc29f6bdf1843770ab2cb2761fe5d296636222964)
+source=("https://files.pythonhosted.org/packages/1d/49/f173b8697f9868059739055c27f4263dcbcc2060669249b5e4d62765b3e5/$_pkgname-$pkgver.tar.gz")
+sha256sums=(80032f75d2a9a4b23bb1a0cd6411a68ced8c33b8a63d9ab7cfbb9c47ab3dde61)
 
 build() {
   cd $_pkgname-$pkgver
