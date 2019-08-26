@@ -4,8 +4,8 @@
 
 _pyname=xxhash
 pkgname=python-${_pyname,,}
-pkgver=1.3.0
-pkgrel=2
+pkgver=1.4.0
+pkgrel=1
 pkgdesc='Python binding for xxHash'
 arch=('i686' 'x86_64')
 url="https://pypi.python.org/pypi/$_pyname/"
@@ -13,7 +13,7 @@ depends=('python')
 makedepends=('python-setuptools')
 license=('BSD')
 source=("https://pypi.io/packages/source/${_pyname:0:1}/$_pyname/$_pyname-${_pyver:-$pkgver}.tar.gz")
-md5sums=('a4289aa01839f3ea1fb98929d9131001')
+md5sums=('130a57385de144c8d196bbce32d44940')
 
 build() {
   cd $srcdir/$_pyname-${_pyver:-$pkgver}
