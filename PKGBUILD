@@ -107,27 +107,27 @@ _features=()
 
 gitannexfeature(){
   case $1 in
-    (0) _features=("${_features[@]}" -f-$2);;
-    (*) _features=("${_features[@]}" -f$2);;
+    (0) _features=("${_features[@]}" -f-"$2");;
+    (*) _features=("${_features[@]}" -f"$2");;
   esac
 }
 
-gitannexfeature $_android    Android
-gitannexfeature $_assistant  Assistant
-gitannexfeature $_dbus       Dbus
-gitannexfeature $_dns        DNS
-gitannexfeature $_inotify    Inotify
-gitannexfeature $_pairing    Pairing
-gitannexfeature $_production Production
-gitannexfeature $_s3         S3
-gitannexfeature $_testsuite  TestSuite
-gitannexfeature $_tdfa       TDFA
-gitannexfeature $_webapp     Webapp
-gitannexfeature $_webdav     WebDAV
-gitannexfeature $_xmpp       XMPP
-gitannexfeature $_feed       Feed
-gitannexfeature $_quvi       Quvi
-gitannexfeature $_cryptohash CryptoHash
+gitannexfeature "$_android"    Android
+gitannexfeature "$_assistant"  Assistant
+gitannexfeature "$_dbus"       Dbus
+gitannexfeature "$_dns"        DNS
+gitannexfeature "$_inotify"    Inotify
+gitannexfeature "$_pairing"    Pairing
+gitannexfeature "$_production" Production
+gitannexfeature "$_s3"         S3
+gitannexfeature "$_testsuite"  TestSuite
+gitannexfeature "$_tdfa"       TDFA
+gitannexfeature "$_webapp"     Webapp
+gitannexfeature "$_webdav"     WebDAV
+gitannexfeature "$_xmpp"       XMPP
+gitannexfeature "$_feed"       Feed
+gitannexfeature "$_quvi"       Quvi
+gitannexfeature "$_cryptohash" CryptoHash
 
 (( ! _s3 || ! _haskell_core )) ||
   makedepends=("${makedepends[@]}" haskell-hs3)
@@ -236,8 +236,8 @@ asking() {
 _localize-home(){
   ORIG_HOME="$HOME"
   ORIG_TMPDIR="$TMPDIR"
-  export HOME="${srcdir}/home"
-  export TMPDIR="${srcdir}/home/tmp"
+  export HOME="$srcdir/home"
+  export TMPDIR="$srcdir/home/tmp"
   export PATH="$HOME/.cabal/bin:$PATH"
 }
 
@@ -286,6 +286,6 @@ build() {
 package() {
   cd "$srcdir/${pkgname%-git}"
   _localize-home
-  make DESTDIR=$pkgdir install
+  make DESTDIR="$pkgdir" install
   _restore-home
 }
