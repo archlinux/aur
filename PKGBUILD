@@ -1,33 +1,38 @@
-# Maintainer: Joan Figueras <ffigue at gmail dot com>
+# Maintainer: Chris Severance aur.severach aATt spamgourmet dott com
+# Contributor: Joan Figueras <ffigue at gmail dot com>
 # Contributor: megadriver <megadriver at gmx dot com>
 # Based on hplip from [extra]
 
 pkgname=hplip-minimal
-pkgver=3.19.3
+pkgver=3.19.6
 pkgrel=1
 pkgdesc="The HP printer drivers, and not much else"
 arch=('i686' 'x86_64' 'armv6h')
-url="http://hplipopensource.com"
+url="https://hplipopensource.com"
 license=('GPL')
 depends=('ghostscript>=8.64-6')
 makedepends=('cups' 'libusb')
-optdepends=('cups: for printing support' 'libusb: for advanced usb support')
+optdepends=(
+  'cups: for printing support'
+  'libusb: for advanced usb support'
+)
 conflicts=('hplip')
 options=('!docs')
-source=("http://downloads.sourceforge.net/hplip/hplip-$pkgver.tar.gz")
-md5sums=('31ad7a812c2a8ce59c73b6c2178eee6b')
+source=("https://downloads.sourceforge.net/hplip/hplip-${pkgver}.tar.gz")
+md5sums=('2796dd80255e4f583e253cebe3959765')
+sha256sums=('fcdaedee9ed17d2e70f3aff9558a452d99443d1b93d6623132faf3f3ae61d66d')
 
 prepare() {
-  cd "$srcdir/hplip-$pkgver"
+  cd "hplip-${pkgver}"
 
   # https://bugs.archlinux.org/task/30085 - hack found in Gentoo
   # Use system foomatic-rip for hpijs driver instead of foomatic-rip-hplip
   # The hpcups driver does not use foomatic-rip
-  local i
-  for i in ppd/hpcups/*.ppd.gz ; do
-    rm -f ${i}.temp
-    gunzip -c ${i} | sed 's/foomatic-rip-hplip/foomatic-rip/g' |  gzip > ${i}.temp || return 1
-    mv ${i}.temp ${i}
+  local _i
+  for _i in ppd/hpcups/*.ppd.gz ; do
+    rm -f "${_i}.temp"
+    gunzip -c "${_i}" | sed -e 's/foomatic-rip-hplip/foomatic-rip/g' | gzip > "${_i}.temp"
+    mv "${_i}.temp" "${_i}"
   done
 
   export AUTOMAKE='automake --foreign'
@@ -35,25 +40,25 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/hplip-$pkgver"
+  cd "hplip-${pkgver}"
 
   ./configure --prefix=/usr --disable-qt4 --disable-doc-build --disable-dbus-build --disable-network-build \
               --disable-scan-build --disable-fax-build --disable-foomatic-rip-hplip-install \
               --enable-foomatic-ppd-install --enable-new-hpcups --disable-cups-drv-install \
               --enable-cups-ppd-install --enable-pp-build
-  make MAKEOPTS="-j1"
+  make -j1
 }
 
 package() {
-  cd "$srcdir/hplip-$pkgver"
-  make MAKEOPTS="-j1" DESTDIR="$pkgdir/" install
+  cd "hplip-${pkgver}"
+  make -j1 DESTDIR="${pkgdir}/" install
 
   # remove config provided by sane and autostart of hp-daemon
-  rm -rf "$pkgdir"/etc/{sane.d,xdg}
+  rm -rf "${pkgdir}"/etc/{sane.d,xdg}
 
   # remove HAL .fdi file because HAL is no longer used
-  rm -rf "$pkgdir"/usr/share/hal
+  rm -rf "${pkgdir}"/usr/share/hal
 
   # remove rc script
-  rm -rf "$pkgdir"/etc/init.d
+  rm -rf "${pkgdir}"/etc/init.d
 }
