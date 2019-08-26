@@ -8,4 +8,4 @@ arch=('i686' 'x86_64')
 url="https://mastodon.social"
 license=('AGPL-3.0')
 provides=("${pkgname%-docker}")
-conflicts=("${pkgname%-docker}" "${pkgname%-docker}-git" "${pkgname}-git")
+conflicts=("${pkgname%-docker}" "${pkgname%-docker}-git" "$pkgname-git")
