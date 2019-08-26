@@ -7,7 +7,8 @@ pkgbase = pamac-qt-git
 	arch = x86_64
 	license = GPL3
 	makedepends = git
-	depends = pamac-aur-git
+	depends = pamac-cli
+	depends = pamac-common
 	depends = qt5-base>=5.12.0
 	depends = qt5-quickcontrols2
 	depends = qt5-quickcontrols
