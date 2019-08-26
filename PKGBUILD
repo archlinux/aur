@@ -20,7 +20,7 @@ source=("http://downloads.sourceforge.net/$pkgname/$pkgname/$pkgver/wxLua-$pkgve
 md5sums=('e0a28904d046400713c07d7c4c9515ef')
 
 prepare() {
-  cd wxLua-$pkgver-src
+  cd wxLua-"$pkgver"-src
   [ -d b ] || mkdir b
 
   # wxstedit doc folder fix
@@ -31,7 +31,7 @@ prepare() {
 }
 
 build() {
-  cd wxLua-$pkgver-src/b
+  cd wxLua-"$pkgver"-src/b
   cmake .. -DCMAKE_INSTALL_PREFIX=/usr \
            -DCMAKE_BUILD_TYPE=Release \
            -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config-2.8 \
@@ -43,7 +43,7 @@ build() {
 }
 
 package() {
-  cd wxLua-$pkgver-src/b
+  cd wxLua-"$pkgver"-src/b
   make DESTDIR="$pkgdir/" install
 
   # mv lua module
@@ -51,11 +51,11 @@ package() {
   mv "$pkgdir/usr/lib/libwx.so" "$pkgdir/usr/lib/lua/5.2/wx.so"
 
   # desktop file
-  install -Dm644 ../distrib/autopackage/$pkgname.desktop \
+  install -Dm644 ../distrib/autopackage/"$pkgname".desktop \
     "$pkgdir/usr/share/applications/$pkgname.desktop"
 
   # mime file
-  install -Dm644 ../distrib/autopackage/$pkgname.xml \
+  install -Dm644 ../distrib/autopackage/"$pkgname".xml \
     "$pkgdir/usr/share/mime/packages/$pkgname.xml"
 
   # license
