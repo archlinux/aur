@@ -15,6 +15,6 @@ package() {
   install -d "$pkgdir/usr/share/fonts/TTF"
   install -Dm644 *.ttf "$pkgdir/usr/share/fonts/TTF/"
 
-  install -d $pkgdir/usr/share/doc/$pkgname
+  install -d "$pkgdir/usr/share/doc/$pkgname"
   install -m644 *.pdf "$pkgdir/usr/share/doc/$pkgname/"
 }
