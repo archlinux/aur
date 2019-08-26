@@ -2,7 +2,7 @@
 # Maintainer: Hendrik "T4cC0re" Meyer <aur@t4cc0.re>
 pkgname=tfenv
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Terraform version manager inspired by rbenv"
 arch=("x86_64")
@@ -18,7 +18,7 @@ source=("https://github.com/tfutils/tfenv/archive/v${pkgver}.tar.gz")
 validpgpkeys=()
 
 package() {
-	cd "${srcdir}/${pkgname}"
+	cd "${srcdir}/${pkgname}-${pkgver}"
 	mkdir -p "${pkgdir}/usr/local/bin"
 	mkdir -p "${pkgdir}/usr/local/libexec"
 	echo $srcdir

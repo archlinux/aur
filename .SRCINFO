@@ -1,7 +1,7 @@
 pkgbase = tfenv
 	pkgdesc = Terraform version manager inspired by rbenv
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tfutils/tfenv
 	arch = x86_64
 	license = MIT
