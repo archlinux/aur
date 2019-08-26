@@ -27,7 +27,7 @@ optdepends=('rlwrap: readline support for awesome-client'
             'xcb-util-errors: for pretty-printing of X11 errors'
             'librsvg: for displaying SVG files without scaling artifacts'
 )
-provides=('notification-daemon' "$_pkgbase")
+provides=('notification-daemon' "$_pkgbase" "$_pkgname")
 conflicts=("$_pkgbase")
 backup=("etc/xdg/$_pkgbase/rc.lua")
 source=("$pkgname::git+https://github.com/way-cooler/$_pkgbase.git")

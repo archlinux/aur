@@ -34,6 +34,7 @@ pkgbase = awesome-way-cooler-git
 	optdepends = librsvg: for displaying SVG files without scaling artifacts
 	provides = notification-daemon
 	provides = awesome
+	provides = awesome-way-cooler
 	conflicts = awesome
 	backup = etc/xdg/awesome/rc.lua
 	source = awesome-way-cooler-git::git+https://github.com/way-cooler/awesome.git
