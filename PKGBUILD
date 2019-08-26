@@ -17,7 +17,7 @@ conflicts=('zerobrane-studio-git')
 optdepends=('love: to debug love programs')
 _github_user="pkulchenko"
 _github_project="ZeroBraneStudio"
-source=("https://github.com/$_github_user/$_github_project/archive/${pkgver}.tar.gz"
+source=("https://github.com/$_github_user/$_github_project/archive/$pkgver.tar.gz"
         "zbstudio.patch"
         "getbitmap.patch"
         "user.lua")
