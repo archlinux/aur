@@ -1,7 +1,7 @@
 # Maintainer: Ethan Brittain-Morby <ebm539 at protonmail dot com>
 pkgname=dsvpn-ipv6-git
 pkgver=r221.9952bb8
-pkgrel=1
+pkgrel=2
 pkgdesc="A Dead Simple VPN. (IPv6 branch)"
 arch=('any')
 url="https://github.com/jedisct1/dsvpn"
@@ -9,6 +9,7 @@ license=('MIT')
 depends=('iproute2' 'gawk' 'iptables' 'procps-ng')
 makedepends=('make' 'gcc' 'git')
 provides=(${pkgname%-git})
+conflicts=(${pkgname%-git})
 source=("git+https://github.com/jedisct1/dsvpn#branch=ipv6")
 sha256sums=('SKIP')
 

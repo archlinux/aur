@@ -1,7 +1,7 @@
 pkgbase = dsvpn-ipv6-git
 	pkgdesc = A Dead Simple VPN. (IPv6 branch)
 	pkgver = r221.9952bb8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jedisct1/dsvpn
 	arch = any
 	license = MIT
@@ -13,6 +13,7 @@ pkgbase = dsvpn-ipv6-git
 	depends = iptables
 	depends = procps-ng
 	provides = dsvpn-ipv6
+	conflicts = dsvpn-ipv6
 	source = git+https://github.com/jedisct1/dsvpn#branch=ipv6
 	sha256sums = SKIP
 
