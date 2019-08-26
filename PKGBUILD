@@ -1,9 +1,7 @@
 # Maintainer: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
-_kotlin_ver=1.3.41
-
 pkgname=kotlin-native-bin
-pkgver=1.3.1
+pkgver=1.3.50
 pkgrel=1
 pkgdesc="A LLVM backend for the Kotlin compiler"
 arch=('x86_64')
@@ -14,17 +12,17 @@ depends=('java-environment' 'ncurses5-compat-libs')
 provides=('kotlin-native')
 conflicts=('kotlin-native' 'kotlin-native-git')
 source=(
-  "https://github.com/JetBrains/kotlin/releases/download/v${_kotlin_ver}/kotlin-native-linux-${_kotlin_ver}.tar.gz"
+  "https://github.com/JetBrains/kotlin/releases/download/v${pkgver}/kotlin-native-linux-${pkgver}.tar.gz"
 )
 sha256sums=(
-  'e6e7ed1eeef87dfacfd3fdf55342c83f263d4be263b6dc8534729725fb36e663'
+  '15eb0589aef8dcb435e4cb04ef9a3ad90b8d936118b491618a70912cef742874'
 )
 
 package() {
   install -d "${pkgdir}/usr/bin"
   install -d "${pkgdir}/usr/lib"
 
-  cp -r "kotlin-native-linux-${_kotlin_ver}" "${pkgdir}/usr/lib/kotlin-native"
+  cp -r "kotlin-native-linux-${pkgver}" "${pkgdir}/usr/lib/kotlin-native"
 
   ln -s /usr/lib/kotlin-native/bin/kotlinc-native "${pkgdir}/usr/bin/kotlinc-native"
   ln -s /usr/lib/kotlin-native/bin/konanc "${pkgdir}/usr/bin/konanc"
