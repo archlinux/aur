@@ -20,7 +20,7 @@ pre_remove() {
   if [ "${_opt_AutoStart}" -ne 0 ]; then
     systemctl disable --now 'teamviewerd.service'
   fi
-  rm -f '/etc/teamviewer/global.conf' # to be removed
+  rm -f '/etc/teamviewer/global.conf' # line to be removed
 }
 
 pre_upgrade() {
@@ -32,22 +32,21 @@ post_remove() {
   rm -rf "/var/log/teamviewer${1%%.*}/"
   set -u
   shopt -s nullglob
-  local _dirs=(/home/*/)
+  local _homedirs
+  readarray -t _homedirs < <(getent passwd | awk -F':' '{if ($3>=1000 && length($6)>1) {print $6;}}')
+  local _teamdirs=()
   local _d
-  for _d in "${_dirs[@]}"; do
-    _d="${_d%/}"
-    local _dirs2=("${_d}"/.local/share/teamviewer*/)
-    if [ "${#_dirs2[@]}" -ne 0 ]; then
-      printf 'rm -r "%s"\n' "${_dirs2[@]}"
-    fi
-    local _dirs2=("${_d}"/.cache/TeamViewer/)
-    if [ "${#_dirs2[@]}" -ne 0 ]; then
-      printf 'rm -r "%s"\n' "${_dirs2[@]}"
-    fi
+  for _d in "${_homedirs[@]}"; do
+    _teamdirs+=("${_d}"/.local/share/teamviewer*/)
+    _teamdirs+=("${_d}"/.cache/TeamViewer/)
   done
-  # This file regenerates on reboot
+  if [ "${#_teamdirs[@]}" -ne 0 ]; then
+    echo 'Teamviewer may be cleanly removed by removing the following user folders'
+    printf '  %s\n' "${_teamdirs[@]}"
+  fi
   if [ -s '/etc/machine-id' ]; then
-    echo 'sudo rm /etc/machine-id && reboot'
+    echo 'Additional Teamviewer problems may be solved by removing the following non TeamViewer file and reboot to regenerate.'
+    echo '  /etc/machine-id'
   fi
   shopt -u nullglob
   #systemctl daemon-reload
