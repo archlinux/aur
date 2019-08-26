@@ -3,5 +3,5 @@ Name=NVIDIA Nsight Graphics
 Exec=nv-nsight-gfx
 Type=Application
 StartupNotify=true
-Icon=nsight
+Icon=nsight-graphics
 Terminal=false

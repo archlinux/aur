@@ -1,7 +1,7 @@
-pkgname=nsight
+pkgname=nsight-graphics
 pkgver=2019.4.1
 _pkgver=${pkgver//\./_}
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone application for the debugging and profiling of graphics applications"
 arch=(x86_64)
 url="https://developer.nvidia.com/nsight-graphics"
@@ -10,11 +10,14 @@ license=("custom")
 #depends=("libx11" "libxcb" "mesa" "libgl" "qt5-base" "qt5-svg" "qt5-x11extras" "xcb-util-keysyms")
 depends=("libx11" "libxcb" "nvidia" "openssl" "icu" "qt5-base" "qt5-multimedia" "qt5-location" "qt5-declarative" "qt5-script" "qt5-sensors" "qt5-svg" "qt5-webchannel" "qt5-webengine" "qt5-xmlpatterns" "qt5-tools" "qt5-charts")
 source=("NVIDIA_Nsight_Graphics_${pkgver}.run::https://developer.nvidia.com/rdp/assets/nsight-graphics-${_pkgver}-linux-installer"
-        "http://developer.download.nvidia.com/NsightVisualStudio/3.1/Documentation/UserGuide/HTML/Content/Images/NSight_256.png"
-        "nsight.desktop")
+        "${pkgname}.png::http://developer.download.nvidia.com/NsightVisualStudio/3.1/Documentation/UserGuide/HTML/Content/Images/NSight_256.png"
+        "${pkgname}.desktop")
 sha512sums=("cdad2d51a8d536b60802fdcf7d72d53ca3b97f04f21e2a7a280a753737dab6dc487eb16acadfd7d675ccd39e6cedef2a0761e9ba2e70b8f6bf04eeb1317ec1ac"
             "784985c2bd3a053cee4887af3b960c7fdc041dda3ca71196ec0870d5413f646d542687b16bffe85985a46d70f68ccf7df29ed5e39952d5e553a4beec485a1185"
-            "f4b1c7e2d152b765838f39a247cd57e6d4cae6a3b93d88d3b8e448e6ecf0115b806ceaacff60455d611e594b0121c16281f832a081b64ddf42009fe8d0548edd")
+            "f1bf5ebab9b766cba14438b0560652debe9b16f9a37bb1d606238d055cfc64f60978b6f2d64a30aced5e48ed4609bb535eb89d6606c49b927678b01c52d13546")
+replaces=('nsight')
+provides=('nsight')
+options=('!debug')
 
 prepare() {
   sh "NVIDIA_Nsight_Graphics_${pkgver}.run" --noexec --target ${pkgname}
@@ -84,12 +87,12 @@ package() {
   ./install-linux.pl -noprompt -targetpath=${pkgdir}/opt/${pkgname}
 
   install -dm 755 "${pkgdir}"/usr/bin
-  ln -s /opt/nsight/host/linux-desktop-nomad-x64/nv-nsight-gfx "${pkgdir}"/usr/bin
+  ln -s /opt/${pkgname}/host/linux-desktop-nomad-x64/nv-nsight-gfx "${pkgdir}"/usr/bin
 
   install -Dt "${pkgdir}/usr/share/vulkan/implicit_layer.d" -m644 "${srcdir}/${pkgname}/pkg/target/linux-desktop-nomad-x64/VK_LAYER_NV_nomad_release_public_${_pkgver}.json"
 
   install -Dm644 "${srcdir}/${pkgname}.desktop" ${pkgdir}/usr/share/applications/${pkgname}.desktop
-  install -Dm644 ${srcdir}/NSight_256.png ${pkgdir}/usr/share/icons/hicolor/256x256/apps/${pkgname}.png
+  install -Dm644 "${srcdir}/${pkgname}.png" ${pkgdir}/usr/share/icons/hicolor/256x256/apps/${pkgname}.png
 
   install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 "${srcdir}/${pkgname}/pkg/EULA.txt"
 }
