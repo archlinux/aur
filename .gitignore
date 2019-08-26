@@ -1,0 +1,5 @@
+*
+!./.SRCINFO
+!./.gitignore
+!./0001-wlroots-needs-to-be-dynamic.patch
+!./PKGBUILD
