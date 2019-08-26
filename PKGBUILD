@@ -3,7 +3,7 @@
 pkgbase=ivre-git
 _pkgname=ivre
 pkgname=('ivre-git' 'ivre-web-git' 'ivre-docs-git' 'python-ivre-git' 'python2-ivre-git')
-pkgver=0.9.13.dev86
+pkgver=0.9.13.dev117
 pkgrel=1
 pkgdesc='Network recon framework based on Nmap, Masscan, Zeek (Bro), Argus, Netflow,...'
 arch=('any')
@@ -81,7 +81,7 @@ package_ivre-docs-git() {
 }
 
 package_ivre-web-git() {
-  depends=('ivre-git' 'python-bottle')
+  depends=('python-ivre-git' 'python-bottle')
   optdepends=('apache: Web server'
               'mod_wsgi: Web server'
               'dokuwiki: Web server (notebook)')
@@ -113,6 +113,7 @@ package_python-ivre-git() {
   optdepends=('python-py2neo: experimental flow analysis (Neo4j backend)'
               'python-sqlalchemy: experimental PostgreSQL & SQLite backends'
               'python-psycopg2: experimental PostgreSQL backend'
+              'python-elasticsearch: experimental Elasticsearch backend'
               'python-pillow: trim screenshots on insertion'
               'tesseract: extract words from screenshots on insertion'
               'python-pycryptodome: extract data from public keys ("ivre getmoduli")'
@@ -142,6 +143,7 @@ package_python2-ivre-git() {
   optdepends=('python2-py2neo: experimental flow analysis (Neo4j backend)'
               'python2-sqlalchemy: experimental PostgreSQL & SQLite backends'
               'python2-psycopg2: experimental PostgreSQL backend'
+              'python2-elasticsearch: experimental Elasticsearch backend'
               'python2-pillow: trim screenshots on insertion'
               'tesseract: extract words from screenshots on insertion'
               'python2-pycryptodome: extract data from public keys ("ivre getmoduli")'
