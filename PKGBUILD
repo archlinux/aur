@@ -1,10 +1,11 @@
-# Maintainer: Hyacinthe Cartiaux <hyacinthe.cartiaux @ free.fr>
+# Maintainer: Joshua Ward <joshuaward@myoffice.net.au>
+# Contributor: Hyacinthe Cartiaux <hyacinthe.cartiaux @ free.fr>
 # Contributor: Francesco Groccia <frgroccia gmail.com>
 # Contributor: Dincer Celik <dincer@bornovali.com>
 
 pkgname=localepurge
-pkgver=0.7.3.4
-pkgrel=2
+pkgver=0.7.3.8
+pkgrel=0
 pkgdesc="Script to remove disk space wasted for unneeded localizations."
 arch=('any')
 url="http://packages.debian.org/source/sid/localepurge"
@@ -36,8 +37,8 @@ package()
     fi
     install -D -m644 ${srcdir}/localelist ${pkgdir}/var/cache/localepurge/localelist
 }
-sha256sums=('18d933181bf455ce386b91794a6e8dc9026bd89dde29ca6fbcde34d3030e2060'
-            'b8704eec22d0e84ada9a524277322f9892c11f3f4b84ec0dd4f50f0ca2dc7474'
+sha256sums=('1677b6a22a0cecdcbc0222e4df76eead49c9b2a04043331b7e559b8e5dbd9d97'
+            '7a3bff4fd339c883060c9219795e416e85d04ee46fce8dde6d5f0e0a0a51d0b5'
             '82bd40594ef0646465eed6e525368e87694322513c0d3280879fcfc5c40cb6a7'
             'b27e69a87f81ecb01ecd9fd92c174ed3c4406200eedc50ba6ebabce91e3851e8'
             'b9c28be93fa47d4f0315972159e501d9eef28bbab7ffe6e8e7c4a13c359f35e8')

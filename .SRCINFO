@@ -2,8 +2,8 @@
 # Mon Aug  8 09:31:51 UTC 2016
 pkgbase = localepurge
 	pkgdesc = Script to remove disk space wasted for unneeded localizations.
-	pkgver = 0.7.3.4
-	pkgrel = 2
+	pkgver = 0.7.3.8
+	pkgrel = 0
 	url = http://packages.debian.org/source/sid/localepurge
 	arch = any
 	license = GPL

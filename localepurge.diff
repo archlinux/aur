@@ -168,18 +168,7 @@
 +    echo "    /usr/bin/localepurge-config"
      echo
  fi
- 
-@@ -157,7 +143,7 @@
- ## all locales and create a pattern matching superfluous locales.
- nopurge=$(
-     set -o noglob;		# Disable path expansion and use 'echo'
--				# below to change newlines into spaces
-+    # below to change newlines into spaces
-     echo $(grep --invert-match --extended-regexp '^[ \t]*(#|$)' $NOPURGECONF)
- )
- nopurgepat='@(C|'"${nopurge// /|}"')'
-@@ -172,7 +158,7 @@
- )
+
  
  ################################################################
 -## Define utility functions 
