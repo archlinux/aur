@@ -1,8 +1,8 @@
-pkgbase = awesome-git
-	pkgdesc = Highly configurable framework window manager
-	pkgver = 4.3.318.g6101ef51
+pkgbase = awesome-way-cooler-git
+	pkgdesc = Highly configurable framework window manager (wayland compatible fork using way-cooler)
+	pkgver = 4.3.r333.g3b4f3640
 	pkgrel = 1
-	url = http://awesome.naquadah.org/
+	url = https://github.com/way-cooler/awesome
 	arch = i686
 	arch = x86_64
 	license = GPL2
@@ -27,6 +27,7 @@ pkgbase = awesome-git
 	depends = xcb-util-wm
 	depends = xcb-util-xrm
 	depends = libxfixes
+	depends = way-cooler
 	optdepends = rlwrap: readline support for awesome-client
 	optdepends = dex: autostart your desktop files
 	optdepends = xcb-util-errors: for pretty-printing of X11 errors
@@ -35,8 +36,8 @@ pkgbase = awesome-git
 	provides = awesome
 	conflicts = awesome
 	backup = etc/xdg/awesome/rc.lua
-	source = awesome-git::git+https://github.com/awesomeWM/awesome.git
-	md5sums = SKIP
+	source = awesome-way-cooler-git::git+https://github.com/way-cooler/awesome.git
+	sha256sums = SKIP
 
-pkgname = awesome-git
+pkgname = awesome-way-cooler-git
 
