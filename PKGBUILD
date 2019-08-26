@@ -1,7 +1,7 @@
 # Author: Torkus
 # Maintainer: Torkus <48141663+ogri-la@users.noreply.github.com>
 pkgname=wowman
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
 pkgdesc="World of Warcraft addon manager. F/OSS, ad-free and privacy respecting."
 arch=("x86_64")
@@ -10,10 +10,10 @@ license=("AGPL")
 depends=("java-runtime")
 provides=("$pkgname")
 conflicts=("$pkgname")
-# e.g.: "https://github.com/ogri-la/wowman/releases/download/0.7.0/wowman-0.7.0-standalone.jar"
+# e.g.: "https://github.com/ogri-la/wowman/releases/download/0.8.2/wowman-0.8.2-standalone.jar"
 source=("https://github.com/ogri-la/wowman/releases/download/$pkgver/$pkgname-$pkgver-standalone.jar")
 noextract=("$pkgname-$pkgver-standalone.jar")
-sha256sums=("515fe1f811e8ebef1ae87fece70855bf8becde4ae4dbca6e9c3d9c8b4d7ede2f")
+sha256sums=("276e87cf226191f6376f624db8d85e04daea9c9c35d4caebf9885394b54142c9")
 
 # following: https://wiki.archlinux.org/index.php/Java_package_guidelines
 package() {
