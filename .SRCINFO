@@ -1,7 +1,7 @@
 pkgbase = ttf-sarasa-gothic
 	pkgdesc = A Chinese & Japanese programming font based on Iosevka and Source Han Sans (TTC)
 	pkgver = 0.8.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/be5invis/Sarasa-Gothic
 	arch = any
 	license = custom:SIL Open Font License v1.1
