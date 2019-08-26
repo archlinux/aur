@@ -1,0 +1,15 @@
+pkgbase = lua-repl
+	pkgdesc = A reusable REPL component for Lua, written in Lua
+	pkgver = 0.9
+	pkgrel = 1
+	url = https://github.com/hoelzro/lua-repl
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = luarocks
+	depends = lua
+	source = https://luarocks.org/luarepl-0.9-1.rockspec
+	sha256sums = 1fc5b25e5dfffe1407537b58f7f118379ed3e86e86c09c0b9e4893ddada20990
+
+pkgname = lua-repl
+
