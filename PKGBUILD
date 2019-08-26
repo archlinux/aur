@@ -10,7 +10,8 @@
 # this PKGBUILD file is in the public domain.
 
 pkgname=nimf
-pkgver=2019.06.07	# This strictly follows AC_INIT field in configure.ac
+# This strictly follows AC_INIT field in configure.ac
+pkgver=2019.08.14
 pkgrel=1
 pkgdesc="Nimf is an input method framework."
 arch=('any')
@@ -28,7 +29,7 @@ depends=('glib2' 'gtk3' 'gtk2' 'qt4' 'qt5-base' 'libappindicator-gtk3'
 optdepends=('brise: Rime schema repository'
             'noto-fonts-cjk: Google Noto CJK fonts')
 
-source=("nimf-master::git+https://gitlab.com/nimf-i18n/nimf#commit=d27ab903205c4842782c1b26d84882c980cea7db")
+source=("nimf-master::git+https://gitlab.com/nimf-i18n/nimf#commit=dec1a11c3034677a825b0dff319a05a8d019ae08")
 md5sums=('SKIP')
 
 build() {
@@ -41,3 +42,4 @@ package() {
 	cd "$srcdir/nimf-master"
 	make DESTDIR="${pkgdir}/" install
 }
+

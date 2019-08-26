@@ -1,6 +1,6 @@
 pkgbase = nimf
 	pkgdesc = Nimf is an input method framework.
-	pkgver = 2019.06.07
+	pkgver = 2019.08.14
 	pkgrel = 1
 	url = https://gitlab.com/nimf-i18n/nimf
 	arch = any
@@ -44,7 +44,7 @@ pkgbase = nimf
 	depends = m17n-db
 	optdepends = brise: Rime schema repository
 	optdepends = noto-fonts-cjk: Google Noto CJK fonts
-	source = nimf-master::git+https://gitlab.com/nimf-i18n/nimf#commit=d27ab903205c4842782c1b26d84882c980cea7db
+	source = nimf-master::git+https://gitlab.com/nimf-i18n/nimf#commit=dec1a11c3034677a825b0dff319a05a8d019ae08
 	md5sums = SKIP
 
 pkgname = nimf
