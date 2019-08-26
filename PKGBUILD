@@ -1,9 +1,9 @@
 # Maintainer: Jorengarenar
 
 pkgname=quiterss-backup
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
-pkgdesc='Simple script, which provides better backup options for QuiteRSS, than the build-in one'
+pkgdesc='Simple script, which provides better than the build-in backup options for QuiteRSS'
 arch=('any')
 url='https://joren.ga'
 license=('MIT')
