@@ -1,6 +1,6 @@
 pkgname=pishrink-git
 _name=pishrink
-pkgver=r58.76d2254
+pkgver=r63.95f4839
 pkgrel=1
 pkgdesc="Make your pi images smaller!"
 depends=()
