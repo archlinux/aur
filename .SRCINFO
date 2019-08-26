@@ -1,0 +1,16 @@
+pkgbase = onesixtyone-git
+	pkgdesc = Fast SNMP scanner
+	pkgver = r45.742b1a3
+	pkgrel = 1
+	url = https://github.com/trailofbits/onesixtyone
+	arch = any
+	license = GPL
+	depends = python-colorama
+	depends = python-toml
+	provides = onesixtyone
+	conflicts = onesixtyone
+	source = onesixtyone::git+https://github.com/trailofbits/onesixtyone.git
+	sha256sums = SKIP
+
+pkgname = onesixtyone-git
+
