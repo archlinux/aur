@@ -2,13 +2,13 @@
 
 pkgname=group-service 
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Borrowing DBUS services to manage user groups"
 arch=('x86_64')
 url="https://github.com/zhuyaliang/group-service"
 license=('GPL3')
 depends=('mate-polkit')
-makedepends=('gettext' 'itstool' 'vala' 'meson' 'ninja' 'gobject-introspection')
+makedepends=('gettext' 'itstool' 'vala-git' 'meson' 'ninja' 'gobject-introspection')
 options=(!emptydirs)
 source=(https://github.com/zhuyaliang/group-service/archive/$pkgver.tar.gz)
 sha256sums=('cd84741acf66f08c061911dd59bbbdbe46016bd7fc48cada08f389ce139cf423')
