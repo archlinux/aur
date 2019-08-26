@@ -2,23 +2,23 @@
 # PKGBuild Create By: lumpyzhu <lumpy.zhu@gmail.com>
 
 pkgname=xmake
-pkgver=2.2.7
+pkgver=2.2.8
 pkgrel=1
 pkgdesc="A make-like build utility based on Lua"
 arch=('i686' 'x86_64')
 url="https://github.com/xmake-io/xmake"
 license=('Apache')
 makedepends=()
-source=("$pkgname.zip::https://github.com/xmake-io/xmake/archive/v${pkgver}.zip")
-sha256sums=('0a57a6a28273881fff2699da9f5191f195d96bf5e6084f3aa25fb19bd3ac4d68')
+source=("$pkgname.tar.gz::https://github.com/xmake-io/xmake/releases/download/v${pkgver}/xmake-v${pkgver}.tar.gz")
+sha256sums=('f607955bb83c991e6c69197cbd9f21c31debcb08ffcd97a73e67766e2ad0d313')
 
 build() {
-    cd "$srcdir/${pkgname}-${pkgver}"
+    cd "$srcdir/${pkgname}-v${pkgver}"
     make build
 }
 
 package() {
-    cd "$srcdir/${pkgname}-${pkgver}"
+    cd "$srcdir/${pkgname}-v${pkgver}"
     mkdir -p "${pkgdir}/usr/share"
     cp -r "./xmake" "${pkgdir}/usr/share/"
     install -Dm755 ./core/src/demo/demo.b "${pkgdir}/usr/share/xmake/xmake"
