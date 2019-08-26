@@ -8,7 +8,7 @@ pkgdesc="A simple command line journal application that stores your journal in a
 arch=('any')
 url="https://jrnl.sh/"
 license=('MIT')
-depends=('python-asteval' 'python-dateutil' 'python-keyring' 'python-parsedatetime' \
+depends=('python-asteval' 'python-dateutil' 'python-keyring' 'python-keyrings-alt' 'python-parsedatetime' \
          'python-pytz' 'python-tzlocal' 'python-pyaml' 'python-six' 'python-passlib' 'python-xdg' 'python-cryptography')
 makedepends=('git')
 conflicts=("jrnl")

@@ -9,6 +9,7 @@ pkgbase = jrnl-git
 	depends = python-asteval
 	depends = python-dateutil
 	depends = python-keyring
+	depends = python-keyrings-alt
 	depends = python-parsedatetime
 	depends = python-pytz
 	depends = python-tzlocal
