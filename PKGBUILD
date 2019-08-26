@@ -14,6 +14,7 @@ makedepends=('python-setuptools')
 license=('BSD')
 source=("https://pypi.io/packages/source/${_pyname:0:1}/$_pyname/$_pyname-${_pyver:-$pkgver}.tar.gz")
 md5sums=('130a57385de144c8d196bbce32d44940')
+sha256sums=('cb7a830d216e433518aeca389def4260940823308816358a5fc5d3beef682055')
 
 build() {
   cd $srcdir/$_pyname-${_pyver:-$pkgver}
