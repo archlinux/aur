@@ -1,6 +1,6 @@
 pkgbase = vlc-plugin-fluidsynth
 	pkgdesc = FluidSynth plugin for VLC
-	pkgver = 3.0.6
+	pkgver = 3.0.8
 	pkgrel = 1
 	url = http://www.videolan.org/vlc/
 	install = notes.install
@@ -12,7 +12,7 @@ pkgbase = vlc-plugin-fluidsynth
 	conflicts = vlc-plugin-fluidsynth-git
 	replaces = vlc-plugin-fluidsynth-git
 	source = libfluidsynth_plugin.so
-	md5sums = 72b2021ecf1155f74981007f7075a03b
-
+	md5sums =5a258abe00f25da98ebaba318e4c2221
+ 
 pkgname = vlc-plugin-fluidsynth
 
