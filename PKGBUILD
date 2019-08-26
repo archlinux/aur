@@ -1,7 +1,7 @@
 # Maintainer: Frederic Bezies <fredbezies at gmail dot com> 
 
 pkgname=user-admin 
-pkgver=1.4.2
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Mate-Desktop user management tool"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('group-service' 'accountsservice' 'libpwquality' 'mate-desktop')
 makedepends=('gettext' 'itstool' 'vala' 'meson' 'ninja' 'gobject-introspection' )
 options=(!emptydirs)
 source=(https://github.com/zhuyaliang/user-admin/archive/$pkgver.tar.gz)
-sha256sums=('acb074dce37ee597f4d490802ebb69600ca2e697245d941f5cc65592251472d4')
+sha256sums=('67777c10cf23ec90217a251d35505e60b285bfdd4068f5f20f001b47ff0adcc3')
 
 build() {
   cd $pkgname-$pkgver
