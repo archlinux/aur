@@ -2,8 +2,8 @@
 
 pkgname=rua
 pkgver=0.14.5
-pkgrel=1
-pkgdesc='secure AUR helper written in Rust, supporting offline builds, filesystem isolation and more'
+pkgrel=2
+pkgdesc='AUR helper in Rust providing control, review and jailed/offline build options'
 url='https://github.com/vn971/rua'
 source=("https://github.com/vn971/rua/archive/${pkgver}.tar.gz")
 arch=('x86_64' 'i686')
