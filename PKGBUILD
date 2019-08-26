@@ -22,8 +22,9 @@ depends=(
         'python-yaml'
         'python-requests'
         'python-pysocks')
-conflicts=('searx-git' 'searx')
-backup=('etc/searx/settings.yml')
+conflicts=('searx-git' )
+replaces=('searx-py3')
+backup=('etc/searx/settings.yml' 'etc/uwsgi/searx.ini')
 source=("https://github.com/asciimoo/searx/archive/v$pkgver.zip"
         'searx.ini'
         'searx.sysusers')
