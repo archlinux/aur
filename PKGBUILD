@@ -2,7 +2,7 @@
 
 pkgname=veyon
 pkgver=4.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Source computer monitoring and classroom management"
 arch=('i686' 'x86_64')
 url="https://github.com/veyon"
@@ -45,6 +45,7 @@ prepare() {
 build() {
     cd build
     cmake -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_INSTALL_DATA_DIR=/usr/share/ \
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DCMAKE_VEYON_X11VNC_EXTERNAL=ON \
 	-DSYSTEMD_SERVICE_INSTALL_DIR=/usr/lib/systemd/system/ \
