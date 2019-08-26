@@ -1,6 +1,6 @@
 pkgbase = ravi
 	pkgdesc = A derivative of Lua 5.3 with limited optional static typing and LLVM and libgccjit based JIT compilers
-	pkgver = 1.0.beta1
+	pkgver = 1.0.beta2
 	pkgrel = 1
 	url = https://github.com/dibyendumajumdar/ravi
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = ravi
 	license = MIT
 	makedepends = cmake
 	makedepends = git
-	depends = llvm6
-	source = git+https://github.com/dibyendumajumdar/ravi.git#commit=8cafee076256319ec636bd131d53cc93c1f62bcc
+	depends = llvm
+	source = git+https://github.com/dibyendumajumdar/ravi.git#commit=5b15a2ffceb4478db1181ab195418f3e022bbf83
 	sha1sums = SKIP
 
 pkgname = ravi
