@@ -10,6 +10,7 @@ url='https://github.com/vn-ki/anime-downloader.git'
 arch=('any')
 license=('unlicense')
 depends=('aria2' 'python-beautifulsoup4' 'python-requests' 'python-click' 'python-fuzzywuzzy' 'python-coloredlogs' 'python-cfscrape' 'python-requests-cache' 'python-tabulate' 'python-pycryptodome' 'python')
+optdepends=('mpv: support for online anime watching')
 makedepends=('git')
 provides=('anime-downloader')
 

@@ -17,6 +17,7 @@ pkgbase = anime-downloader-git
 	depends = python-tabulate
 	depends = python-pycryptodome
 	depends = python
+	optdepends = mpv: support for online anime watching
 	provides = anime-downloader
 	source = git+https://github.com/vn-ki/anime-downloader.git
 	md5sums = SKIP
