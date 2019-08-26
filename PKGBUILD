@@ -3,7 +3,7 @@
 #pkgname=('python-twodict' 'python2-twodict')
 _pkgname=python2-twodict
 pkgname=$_pkgname-git
-pkgver=1.2.r0.g4c6e0e3
+pkgver=1.2.r2.g925d3bd
 pkgrel=1
 pkgdesc="Simple two way ordered dictionary for Python"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('python2')
 makedepends=('git')
 provides=($_pkgname)
 conflicts=($_pkgname)
-source=($pkgname::git://github.com/MrS0m30n3/twodict.git)
+source=($pkgname::git+https://github.com/MrS0m30n3/twodict.git)
 md5sums=('SKIP')
 
 pkgver() {
