@@ -12,6 +12,7 @@ pkgbase = sddm-theme-sugar-candy-git
 	depends = qt5-svg
 	provides = sddm-theme-sugar-candy
 	conflicts = sddm-theme-sugar-candy
+	backup = usr/share/sddm/themes/Sugar-Candy/theme.conf
 	source = sugar-candy::git+https://www.opencode.net/marianarlt/sddm-sugar-candy.git
 	sha256sums = SKIP
 

@@ -10,6 +10,7 @@ depends=('sddm>=0.18' 'qt5-graphicaleffects' 'qt5-quickcontrols2' 'qt5-svg')
 makedepends=('git')
 provides=("sddm-theme-sugar-candy")
 conflicts=("sddm-theme-sugar-candy")
+backup=('usr/share/sddm/themes/Sugar-Candy/theme.conf')
 source=('sugar-candy::git+https://www.opencode.net/marianarlt/sddm-sugar-candy.git')
 sha256sums=('SKIP')
 
