@@ -3,8 +3,8 @@
 
 _pkgname=youtube-dl-gui
 pkgname=$_pkgname-git
-pkgver=0.3.8.r447.g182a587
-pkgrel=2
+pkgver=0.4.r81.gc5c18e5
+pkgrel=1
 pkgdesc="A cross platform front-end GUI of the popular youtube-dl written in wxPython"
 arch=('any')
 url="https://github.com/MrS0m30n3/youtube-dl-gui"
