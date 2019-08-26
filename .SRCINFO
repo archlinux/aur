@@ -4,6 +4,7 @@ pkgbase = go-swarm
 	pkgrel = 1
 	url = https://swarm.ethereum.org
 	install = go-swarm.install
+	changelog = CHANGELOG.md
 	arch = x86_64
 	license = LGPL3
 	makedepends = go>=1.10.0
@@ -12,16 +13,19 @@ pkgbase = go-swarm
 	optdepends = python-ecdsa
 	optdepends = python-pycryptodome
 	optdepends = go-ethereum
+	optdepends = systemd
 	provides = go-swarm
 	source = https://github.com/ethersphere/swarm/archive/v0.4.3.tar.gz
 	source = v0.4.3.tar.gz.sig
 	source = swarm-resources.tar.gz
 	source = swarm-resources.tar.gz.sig
+	source = README
 	validpgpkeys = 0826EDA1702D1E87C6E2875121D2E7BB88C2A746
 	md5sums = 7f394b218657463761a555d5c598a320
 	md5sums = SKIP
 	md5sums = 19eea4bf47a58afb05fc3eaef209ec84
 	md5sums = SKIP
+	md5sums = 02f48077fb06278a5b9eed4950b2ce3e
 
 pkgname = go-swarm
 

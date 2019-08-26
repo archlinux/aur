@@ -11,22 +11,25 @@ groups=()
 depends=()
 makedepends=('go>=1.10.0' 'git')
 checkdepends=()
-optdepends=('python-scrypt' 'python-ecdsa' 'python-pycryptodome' 'go-ethereum')
+optdepends=('python-scrypt' 'python-ecdsa' 'python-pycryptodome' 'go-ethereum' 'systemd')
 provides=('go-swarm')
 conflicts=()
 replaces=()
 backup=()
 options=()
 install=${pkgname}.install
+changelog=CHANGELOG.md
 source=("https://github.com/ethersphere/swarm/archive/v${pkgver}.tar.gz"
 	"v${pkgver}.tar.gz.sig"
 	"swarm-resources.tar.gz"
-	"swarm-resources.tar.gz.sig")
+	"swarm-resources.tar.gz.sig"
+	"README")
 noextract=()
 md5sums=("7f394b218657463761a555d5c598a320"
 	"SKIP"
 	"19eea4bf47a58afb05fc3eaef209ec84"
-	"SKIP")
+	"SKIP"
+	"02f48077fb06278a5b9eed4950b2ce3e")
 validpgpkeys=("0826EDA1702D1E87C6E2875121D2E7BB88C2A746")
 _pythonwalletdepends=1
 
