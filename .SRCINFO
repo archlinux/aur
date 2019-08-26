@@ -1,13 +1,13 @@
 pkgbase = group-service
 	pkgdesc = Borrowing DBUS services to manage user groups
 	pkgver = 1.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/zhuyaliang/group-service
 	arch = x86_64
 	license = GPL3
 	makedepends = gettext
 	makedepends = itstool
-	makedepends = vala-git
+	makedepends = vala
 	makedepends = meson
 	makedepends = ninja
 	makedepends = gobject-introspection
