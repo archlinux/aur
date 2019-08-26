@@ -48,13 +48,13 @@ _use_current=
 pkgbase=linux-rt-bfq
 # pkgname=('linux-rt-bfq' 'linux-rt-bfq-headers' 'linux-rt-bfq-docs')
 _major=5.2
-_minor=9
-_rtver=3
+_minor=10
+_rtver=4
 _rtpatchver=rt${_rtver}
 pkgver=${_major}.${_minor}.${_rtpatchver}
 _pkgver=${_major}.${_minor}
 _srcname=linux-${_pkgver}
-pkgrel=5
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/sirlucjan/bfq-mq-lucjan"
 license=('GPL2')
@@ -187,7 +187,7 @@ prepare() {
             make LSMOD=$HOME/.config/modprobed.db localmodconfig
         else
             msg2 "No modprobed.db data found"
-            exit1
+            exit 1
             fi
         fi
 
@@ -397,9 +397,9 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('2e3fad96cce66e1ef0a8f82c221970e6535d2d20b5ed8dcc3f368cd51576ff57bd31f5b5b09f7b19acee4f73c7ef5f1a0aa8ecb5176c431c2d4cb5c770432f4b'
+sha512sums=('abd20b6bf41572c51df0d609db205e2d5f541aa486c2d37c15d4dd43e8bf36a06eb5514bdd5a1c114fd6f6c00a3bf9d1ac40a722b8e01146e2779f806b3a4ee7'
             'SKIP'
-            'd3d39fa40cf42c9c7d11f56c06975d5f1b57194a79399992258d9dd8019dd24d0ddbfcf082cb353926366e7a7063067a698b642838e88e489a0414a573e27b9d'
+            '90ab00146fa92bcf8b3d37c88c44000010a8d4095b790815d9289f8c6ff75641af1cc27cd6ca4efa257d28e1b3f11b9d75a57548a722f6eee5c5091131fb01b2'
             'SKIP'
             'd996a89d7831c4d49980b1b5b73ccd21da419302e86ea6faaf7d8f5a686bdbfe688a75c34d3e9583cbb11a011d2adcb4cb3aef66aba677e0d810f3eb1fb5be4b'
             '8ce2e2c3da37435090abdf0d1875aa0b2870d9cb9ce148cdc30855c1beeffc87cd7a8003c3c351f8f31753c1a4678df6cb3c02c39797b361632c9e5abbe2173f'
