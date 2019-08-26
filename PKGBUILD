@@ -3,16 +3,20 @@
 
 pkgname=sile-git
 pkgdesc='Modern typesetting system inspired by TeX'
-pkgver=0.9.5.1.r228.g1a1904c
+pkgver=0.9.5.1.r271.g7e33b81
 _branch='testing'
 pkgrel=1
 arch=(any)
-url='http://www.sile-typesetter.org/'
+url='http://www.sile-typesetter.org'
 license=('MIT')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
+_lua_deps=('bit32' 'luaepnf' 'lpeg' 'cassowary' 'linenoise' 'zlib' 'cliargs'
+           'luaepnf' 'filesystem' 'repl' 'sec' 'socket' 'penlight' 'stdlib'
+           'vstruct')
 depends=('fontconfig'
          'harfbuzz>=1.4.2'
+         "${_lua_deps[@]/#/lua-}"
          'icu'
          'ttf-gentium-plus')
 optmakedepents=('luajit')
@@ -35,7 +39,7 @@ prepare () {
 
 build () {
     cd "$srcdir/${pkgname%-git}"
-    ./configure --prefix=/usr
+    ./configure --prefix=/usr --with-system-luarocks
     make
 }
 
