@@ -24,5 +24,5 @@ pkgver() {
 package() {
     cd "${pkgname%-git}"
     python2 setup.py -q install --root="$pkgdir" --optimize=1
-    install -Dm644 LICENSE.txt $pkgdir/usr/share/licenses/${pkgname}/LICENSE
+    install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname"/LICENSE
 }
