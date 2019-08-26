@@ -3,7 +3,7 @@
 
 pkgname=neatimage
 pkgver=8.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Best noise reduction fro digital cameras and scanners"
 arch=('x86_64')
 url="https://ni.neatvideo.com/"
@@ -22,6 +22,7 @@ package() {
 	install -Dm644 "$pkgdir"/opt/NeatImage/Legal.txt "$pkgdir"/usr/share/licenses/"$pkgname"/Legal.txt
 #	install -Dm755 neatimage "$pkgdir"/usr/bin/neatimage
 	mkdir -p "$pkgdir"/usr/bin
-	ln -s "$pkgdir"/opt/NeatImage/NeatImage "$pkgdir"/usr/bin/NeatImage
-	ln -s "$pkgdir"/opt/NeatImage/NeatImageCL "$pkgdir"/usr/bin/NeatImageCL
+	echo -e '#!/bin/bash \n cd /opt/NeatImage/ && ./NeatImage "$@"' > "$pkgdir"/usr/bin/NeatImage
+	echo -e '#!/bin/bash \n cd /opt/NeatImage/ && ./NeatImageCL "$@"' > "$pkgdir"/usr/bin/NeatImageCL
+	chmod +x "$pkgdir"/usr/bin/NeatImage{,CL}
 }

@@ -1,7 +1,7 @@
 pkgbase = neatimage
 	pkgdesc = Best noise reduction fro digital cameras and scanners
 	pkgver = 8.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ni.neatvideo.com/
 	arch = x86_64
 	license = custom
