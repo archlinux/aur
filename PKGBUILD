@@ -9,17 +9,19 @@ pkgdesc="An Open Source Multi-physics Simulation Engine"
 license=('custom')
 arch=('i686' 'x86_64')
 url="https://projectchrono.org/"
-depends=(openmpi boost-libs)
-makedepends=(cmake git boost glm glew glfw irrlicht glut openmpi)
-makedepends+=(python swig) # -DENABLE_MODULE_PYTHON requirement
-makedepends+=(blaze) # -DENABLE_MODULE_PARALLEL=ON requirement
-makedepends+=(cuda) # -DENABLE_MODULE_PARALLEL=ON optional
-#makedepends+=(opencascade) # -DENABLE_MODULE_CASCADE=ON required (version<=7.2)
+depends=(openmpi blas boost-libs hdf5)
+makedepends+=(cmake eigen git boost glm glew glfw irrlicht glut openmpi gcc-fortran)
+makedepends+=(python swig) # MODULE_PYTHON
+makedepends+=(cuda)        # MODULE_GRANULAR
+                           # MODULE_PARALLEL optional
+makedepends+=(blaze)       # MODULE_PARALLEL required
+makedepends+=(thrust)      # MODULE_PARALLEL required
+#makedepends+=(opencascade)# MODULE_CASCADE (version<=7.2)
                            # use oce (opencascade comunitiy edition)
 makedepends+=(oce)         # MODULE_CASCADE
-#makedepends+=(intel-mkl) # -DENABLE_MODULE_MKL=ON requirement
-optdepends=( 	 
-		"irrlicht: Runtime visualization with Irrlicht."
+makedepends+=(mumps)       # MODULE_MUMPS
+makedepends+=(blas)        # MODULE_MUMPS required
+optdepends+=(	"irrlicht: Runtime visualization with Irrlicht."
 		"glew: Runtime visualization with OpenGL."
 		"glfw: Runtime visualization with OpenGL."
 		"freeglut: Runtime visualization with OpenGL."
@@ -40,9 +42,9 @@ sha256sums=('SKIP'
             '0fe883cfcc1db869d08235482a3801fa458db15360e0eefac9084c7f2993af4a'
             '4e8ed0097fb14bbe437c2a57e9ef1852fdbfe8675e5345b0af42287d24fbfefe')
 
-CMAKE_FLAGS=( 	-DENABLE_MODULE_POSTPROCESS=ON
+CMAKE_FLAGS=(	-DENABLE_MODULE_POSTPROCESS=ON
+		-DENABLE_HDF5=ON
 		-DENABLE_MODULE_VEHICLE=ON
-		-DENABLE_MODULE_FEA=ON
 		-DENABLE_MODULE_PYTHON=ON
 		-DENABLE_MODULE_IRRLICHT=ON
 		-DENABLE_MODULE_CASCADE=ON
@@ -50,9 +52,13 @@ CMAKE_FLAGS=( 	-DENABLE_MODULE_POSTPROCESS=ON
 		-DCASCADE_INCLUDE_DIR=/opt/oce/include/oce
 		-DENABLE_MODULE_OPENGL=ON
 		-DENABLE_MODULE_PARALLEL=ON
+		-DTHRUST_INCLUDE_DIR=/opt/thrust
 		-DENABLE_MODULE_MKL=OFF
 		-DENABLE_MODULE_COSIMULATION=ON
 		-DENABLE_MODULE_FSI=ON
+		-DENABLE_MODULE_MUMPS=OFF
+		-DENABLE_MODULE_DISTRIBUTED=ON
+		-DENABLE_MODULE_GRANULAR=ON
 		-DCUDA_HOST_COMPILER=/opt/cuda/bin/gcc
 		)
 
