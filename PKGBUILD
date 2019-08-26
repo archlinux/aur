@@ -1,7 +1,7 @@
 #AUR Maintainter: JKA Network <contacto@jkanetwork.com>
 pkgname=openlitespeed
 pkgver=1.5.6
-pkgrel=2
+pkgrel=3
 pkgdesc="A high-performance, lightweight, open source HTTP server"
 arch=('x86_64' 'i686')
 url="https://openlitespeed.org/downloads/"
@@ -17,11 +17,15 @@ md5sums=('2daf624395aec0435c0eaf720dc552e3'
 install=$pkgname.install
 build() {
 	cd "$pkgname-$pkgver"
-	./configure --prefix=/usr/local/lsws/
+	./configure --prefix=/usr/local/lsws/ --with-lsphp7
 	make
 }
 package() {
 	cd "$pkgname-$pkgver"
 	make DESTDIR="$pkgdir/" install
 	install -Dm0644 "${srcdir}/openlitespeed.service" "${pkgdir}/usr/lib/systemd/system/openlitespeed.service"
+	#fix ln at php building (It has problems with installed compiled php (And its php5 I don't know why)
+	cd "${pkgdir}/usr/local/lsws/fcgi-bin"
+	rm lsphp
+	ln -s lsphp5 lsphp
 }

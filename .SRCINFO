@@ -1,7 +1,7 @@
 pkgbase = openlitespeed
 	pkgdesc = A high-performance, lightweight, open source HTTP server
 	pkgver = 1.5.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://openlitespeed.org/downloads/
 	install = openlitespeed.install
 	arch = x86_64
