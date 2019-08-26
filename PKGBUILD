@@ -24,7 +24,7 @@ pkgver() {
 }
 
 build() {
-    cd ${pkgname%-git}/wxLua/
+    cd "${pkgname%-git}"/wxLua/
 
     cd build
     cmake .. -DCMAKE_INSTALL_PREFIX=/usr \
@@ -36,10 +36,10 @@ build() {
 }
 
 package() {
-    cd ${pkgname%-git}/wxLua/build
+    cd "${pkgname%-git}"/wxLua/build
     make DESTDIR="$pkgdir/" install
-    rm $pkgdir/usr/bin/lua
-    rm $pkgdir/usr/bin/luac
+    rm "$pkgdir"/usr/bin/lua
+    rm "$pkgdir"/usr/bin/luac
 
     # mv lua module
     install -d "$pkgdir/usr/lib/lua/5.3"
@@ -57,5 +57,5 @@ package() {
         "$pkgdir/usr/share/mime/packages/wxlua.xml"
 
     install -Dm 644 docs/licence.txt \
-        "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
+        "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
