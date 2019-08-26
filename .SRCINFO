@@ -1,6 +1,6 @@
 pkgbase = dosbox-x-git
 	pkgdesc = x86 emulator with builtin DOS, with patches with more features
-	pkgver = 8930.b6f889438
+	pkgver = 8933.869b4860d
 	pkgrel = 1
 	url = http://dosbox.sourceforge.net
 	arch = i686
