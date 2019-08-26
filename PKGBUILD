@@ -24,15 +24,12 @@ _makegconfig=
 # See, https://bugs.archlinux.org/task/31187
 _NUMAdisable=y
 
-# Compile ONLY probed modules
-# Build in only the modules that you currently have probed in your system VASTLY
-# reducing the number of modules built and the build time.
-#
-# WARNING - ALL modules must be probed BEFORE you begin making the pkg!
+# Compile ONLY used modules to VASTLYreduce the number of modules built
+# and the build time.
 #
 # To keep track of which modules are needed for your specific system/hardware,
 # give module_db script a try: https://aur.archlinux.org/packages/modprobed-db
-# This PKGBUILD will call it directly to probe all the modules you have logged!
+# This PKGBUILD read the database kept if it exists
 #
 # More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
 _localmodcfg=
@@ -50,7 +47,7 @@ _1k_HZ_ticks=
 ### Do not edit below this line unless you know what you're doing
 
 pkgbase=linux-next-git
-pkgver=20190807.r0.g3880be629e26
+pkgver=20190823.r0.g9733a7c62c66
 _srcname=linux-next
 pkgrel=1
 arch=('x86_64')
@@ -156,13 +153,12 @@ prepare() {
     ### Optionally load needed modules for the make localmodconfig
         # See https://aur.archlinux.org/packages/modprobed-db
         if [ -n "$_localmodcfg" ]; then
-        msg2 "If you have modprobed-db installed, running it in recall mode now"
-            if [ -e /usr/bin/modprobed-db ]; then
-            [[ -x /usr/bin/sudo ]] || {
-            echo "Cannot call modprobe with sudo. Install sudo and configure it to work with this user."
-            exit 1; }
-            sudo /usr/bin/modprobed-db recall
-            make localmodconfig
+            if [ -f $HOME/.config/modprobed.db ]; then
+            msg2 "Running Steven Rostedt's make localmodconfig now"
+            make LSMOD=$HOME/.config/modprobed.db localmodconfig
+        else
+            msg2 "No modprobed.db data found"
+            exit1
             fi
         fi
 
@@ -378,7 +374,7 @@ done
 sha512sums=('SKIP'
             '8a158ae5660426f0fb9fa74f37c093f325b5a23392b95e50c36825205f42311cbf05f818f0275ebda27ce9fad40652ba6dc2397f19f45addb3f68f8f4476196f'
             '9d472377c50ddd9ddab5d4ab3092f3d487eeee20a4d4a04d3cefeef5bbf40daa3eb609b15741ca4a8cd32bf2b6d0781de961cbf55e2f80fd40260f282bf022f4'
-            '468e5f6f23132e6a1e12b74145da2b7ebbcf21492617fe56c0a0957e2989b879d4909082c1da1cadf9f3a90609678019c80ae35d00fe345c168fdbdbfbad911b'
+            '010c3c820e587b4cac7dee34344ea6bcb032c6f2ab5795f945bb822feaf741d10a050d4693555560c1d38f444e59e9146bf6254cad39b6335564c6dfd783a3d2'
             '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
             '2718b58dbbb15063bacb2bde6489e5b3c59afac4c0e0435b97fe720d42c711b6bcba926f67a8687878bd51373c9cf3adb1915a11666d79ccb220bf36e0788ab7'
             '8742e2eed421e2f29850e18616f435536c12036ff793f5682a3a8c980cf5dbfc88d17fd9539c87de15d9e4663dc3190f964f18a4722940465437927b6052abbf'
