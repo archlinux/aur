@@ -1,61 +1,82 @@
-#!/usr/bin/bashs
-# Maintainer: Alex Talker <alextalker at openmailbox dot org>
+# Maintainer: johnnybash <jb at wachenzell dot org>
+# Contributor: Alex Talker <alextalker at openmailbox dot org>
+# Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
+# Contributor: Alexander Suhoverhov <cy at ngs dot ru>
+# Contributor: Jookia <166291@gmail.com>
 pkgname=xonotic-autobuild
-pkgver=22022014
+pkgver=0.8.2.r2903.gfc89b93
 pkgrel=1
-pkgdesc="A free, fast-paced crossplatform first-person shooter (autobuild version)"
-arch=('i686' 'x86_64')
+pkgdesc="A free, fast-paced crossplatform first-person shooter"
+arch=('x86_64')
 url="http://xonotic.org"
-
 license=('GPL')
-# autobuild not supported  'libjpeg>=8'
-depends=('alsa-lib' 'curl' 'libmodplug' 'libvorbis' 'libxpm' 'libxxf86dga' 'libxxf86vm' 'sdl' 'libpng>=1.4.0' 'libjpeg6')
-makedepends=('unzip' 'mesa' 'rsync')
-provides=('xonotic' 'xonotic-git' 'xonotic-data')
-conflicts=('xonotic' 'xonotic-git' 'xonotic-data')
-source=("xonotic-glx.desktop"
-        "xonotic-sdl.desktop"
-)
-_link="rsync://beta.xonotic.org/autobuild-Xonotic/"
-md5sums=('914c7b9163e92b35f0ab57fdb1653ac5'
-         'da7d812ff231c9332cd694b39757adda')
+depends=('alsa-lib' 'curl' 'libmodplug' 'libvorbis' 'libxpm' 'libxxf86dga'
+         'sdl2' 'gtk-update-icon-cache' 'desktop-file-utils')
+makedepends=('mesa' 'rsync')
+conflicts=('xonotic' 'xonotic-data' 'xonotic-git')
+
+#source=("http://dl.xonotic.org/xonotic-${pkgver}.zip")
+#sha256sums=('a22f7230f486c5825b55cfdadd73399c9b0fae98c9e081dd8ac76eca08359ad5')
+
+prepare() {
+
+	excludes=
+	excludes="$excludes --exclude=*.exe"
+	excludes="$excludes --exclude=/gmqcc/*.exe"
+	excludes="$excludes --exclude=/bin32"
+	excludes="$excludes --exclude=*.dll"
+	excludes="$excludes --exclude=/bin64"
+	excludes="$excludes --exclude=/Xonotic*.app"
+	excludes="$excludes --exclude=/xonotic-osx-*"
+	excludes="$excludes --exclude=/gmqcc/gmqcc.osx"
+	excludes="$excludes --exclude=/xonotic-linux32-*"
+	excludes="$excludes --exclude=/gmqcc/gmqcc.linux32"
+	
+	rsync -c -r -P --delete-excluded --links $excludes rsync://beta.xonotic.org/autobuild-Xonotic $srcdir/Xonotic/
+}
+
+build() {
+
+	# compile engine
+	make -C $srcdir/Xonotic/source/darkplaces CPUOPTIMIZATIONS="${CFLAGS}" DP_FS_BASEDIR=/usr/share/xonotic/ DP_LINK_TO_LIBJPEG=1 sdl-release
+	make -C $srcdir/Xonotic/source/darkplaces CPUOPTIMIZATIONS="${CFLAGS}" DP_FS_BASEDIR=/usr/share/xonotic/ DP_LINK_TO_LIBJPEG=1 sv-release
+
+	cd $srcdir/Xonotic/source/d0_blind_id
+	sh autogen.sh
+	./configure --prefix=/usr --disable-rijndael
+	make
+}
+
+pkgver() {
+	ls $srcdir/Xonotic/source/qcsrc/csprogs-xonotic-* | sed 's/[^v]*[^-]//;s/-/.r/;s/-/./;s/~.*//'
+}
 
 package() {
-  # downloaded linux sources and cross-platform content
-  rsync "${_link}*" "${srcdir}/" -c -r -P --links --exclude "*.exe" --exclude "*.dll" --exclude "Xonotic.app/" || return 1
-  
-  # detected computer architecture
-  _arch=`uname -m`
-  _xondir="${pkgdir}/opt/xonotic-autobuild"
-  
-  if [[ "$_arch"=='x86_64' ]]; then
-      _arch="linux64"
-  else
-      _arch="linux32"
-  fi
-  # installing...
-  cd "${srcdir}/"
-  mkdir -p "${_xondir}/"
-  cp -R "${srcdir}"/* "${_xondir}/"
-  mkdir -p "${pkgdir}/usr/share/applications"
-  install -Dm644 "${_xondir}"/*.desktop -t "${pkgdir}/usr/share/applications"
-  install -Dm644 "${_xondir}/misc/logos/icons_png/xonotic_512.png" "${pkgdir}/usr/share/pixmaps/xonotic.png"
-  mkdir -p "${pkgdir}/usr/bin/"
-  chmod 755 "${_xondir}"/xonotic-${_arch}-dedicated
-  chmod 755 "${_xondir}"/xonotic-${_arch}-glx
-  chmod 755 "${_xondir}"/xonotic-${_arch}-sdl
-  ln -s "${_xondir}/xonotic-linux-dedicated.sh" "${pkgdir}/usr/bin/xonotic-dedicated" || return 1
-#  install -Dm755 $srcdir/xonotic-${_arch}-dedicated ${pkgdir}/usr/bin/xonotic-dedicated 
-  ln -s "${_xondir}/xonotic-linux-glx.sh" "${pkgdir}/usr/bin/xonotic-glx" || return 1
-  ln -s "${_xondir}/xonotic-linux-sdl.sh" "${pkgdir}/usr/bin/xonotic-sdl" ||return 1
+	
+	cd $srcdir/Xonotic
 
-  # data
-#  mkdir -p ${pkgdir}/usr/share/xonotic/
-#  mv $srcdir/data ${pkgdir}/usr/share/xonotic/ || return 1
+	mkdir -p $pkgdir/usr/share/xonotic/
+	cp -r data $pkgdir/usr/share/xonotic/
+	cp -r server $pkgdir/usr/share/xonotic/
 
-  # server stuff
-#  cp -r $srcdir/server ${pkgdir}/usr/share/xonotic/ || return 1
+	# binaries
+	install -Dm755 source/darkplaces/darkplaces-dedicated $pkgdir/usr/bin/xonotic-dedicated
+	install -Dm755 source/darkplaces/darkplaces-sdl $pkgdir/usr/bin/xonotic-sdl
 
-  # key
-#  install -Dm644 ${srcdir}/key_0.d0pk ${pkgdir}/usr/share/xonotic/key_0.d0pk || return 1
+	# convenience files
+	install -Dm644 misc/logos/xonotic.desktop -t $pkgdir/usr/share/applications
+  	
+	for size in 16 22 24 32 48 64 128 256 512; do
+		install -Dm644 misc/logos/icons_png/xonotic_${size}.png \
+		"$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/xonotic.png"
+	done
+	
+	# key
+	install -Dm644 key_0.d0pk $pkgdir/usr/share/xonotic/key_0.d0pk
+  	
+	# crypto stuff
+	cd source/d0_blind_id
+	make DESTDIR=$pkgdir install
 }
+
+# vim: ts=2:sw=2 et:
