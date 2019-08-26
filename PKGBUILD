@@ -1,13 +1,13 @@
 # Maintainer: Wouter Haffmans <wouter@simply-life.net>
 pkgname=tomtomsportsconnect
 pkgver=3.3.9
-pkgrel=1
+pkgrel=2
 pkgdesc="TomTom Sports Connect"
 arch=(x86_64)
 url="http://us.support.tomtom.com/app/answers/detail/a_id/24742/~/linux-version-of-tomtom-sports-connect"
 license=('custom')
 groups=()
-depends=(gstreamer0.10-base)
+depends=(gstreamer0.10-base openssl-1.0)
 makedepends=()
 checkdepends=()
 optdepends=()
