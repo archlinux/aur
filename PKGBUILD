@@ -5,7 +5,7 @@ pkgdesc="A Qt5 frontend for libpamac - git version"
 arch=('i686' 'x86_64')
 url="https://gitlab.manjaro.org/applications/pamac-qt"
 license=('GPL3')
-depends=('pamac-cli' 'pamac-common' 'qt5-base>=5.12.0' 'qt5-quickcontrols2' 'qt5-quickcontrols' 'qt5-graphicaleffects' 'breeze-icons')
+depends=('pamac-cli' 'pamac-aur-git' 'qt5-base>=5.12.0' 'qt5-quickcontrols2' 'qt5-quickcontrols' 'qt5-graphicaleffects' 'breeze-icons')
 makedepends=('git')
 replaces=('pamac-qt')
 conflicts=('pamac-qt')
