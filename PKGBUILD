@@ -39,11 +39,11 @@ license=('BSD')
 depends=('nodejs')
 makedepends=('npm')
 source=("http://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz")
-noextract=($_npmname-$pkgver.tgz)
+noextract=("$_npmname-$pkgver".tgz)
 sha256sums=('969f309a0148bb9546999e7b45d474a4e5fd3715967a982e7e776022aca3577f')
 
 package() {
-  npm install -g --user root --prefix "$pkgdir"/usr "$srcdir"/$_npmname-$pkgver.tgz
+  npm install -g --user root --prefix "$pkgdir"/usr "$srcdir"/"$_npmname-$pkgver".tgz
   rm -r "$pkgdir"/usr/etc
   mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
   ln -s "../../../lib/node_modules/$_npmname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
