@@ -17,14 +17,14 @@ source=(git+https://github.com/crosswire/xiphos.git)
 sha512sums=('SKIP')
 
 pkgver() {
-  cd ${pkgname%-git}
+  cd "${pkgname%-git}"
   git describe --tags | sed 's+-+.r+'|tr - .
 }
 
 build() {
   [[ -d build ]] || mkdir build
   cd build
-  cmake ../${pkgname%-git} -DCMAKE_INSTALL_PREFIX=/usr \
+  cmake ../"${pkgname%-git}" -DCMAKE_INSTALL_PREFIX=/usr \
 	-DCMAKE_BUILD_TYPE=Release -DGTKHTML=ON
   make
 }
