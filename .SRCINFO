@@ -1,7 +1,7 @@
 pkgbase = udiskie-dmenu-git
 	pkgdesc = manage removable devices via dmenu (or rofi)
-	pkgver = 9.451ec99
-	pkgrel = 2
+	pkgver = 0.3.0.r5.378d374
+	pkgrel = 1
 	url = https://github.com/fogine/udiskie-dmenu
 	arch = any
 	license = MIT
