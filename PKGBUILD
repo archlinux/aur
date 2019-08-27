@@ -10,15 +10,15 @@
 #_BUILD_OCTAVE=
 
 pkgname=spm12
-pkgver=7219
-pkgrel=2
+pkgver=7487
+pkgrel=1
 pkgdesc="A MATLAB toolbox for the analysis of brain imaging data sequences"
 arch=('i686' 'x86_64')
 url="http://www.fil.ion.ucl.ac.uk/spm/"
 license=('GPL2')
 makedepends=(make)
 source=("${pkgname}-r${pkgver}.tar.gz::https://github.com/spm/${pkgname}/archive/r${pkgver}.tar.gz")
-sha256sums=('421e337c8685b0c2cfb43802459c4edd7cc322749ffbccdf68ee2e99b95ef843')
+sha512sums=('4c8d448771bc7e1c1923fd92138d736f3760542686942e02242b137e3aed8455098e247b5d903cfa5f1f573757fb6c1c220f47d4d2dd74002674aa7346315ae8')
 
 prepare() {
 
@@ -28,6 +28,9 @@ prepare() {
   if [ -z "${_MATLAB_DIR}" ]; then
     if [ -d "/opt/matlab" ]; then
       _MATLAB_DIR=$(find /opt/matlab/R*/bin -mindepth 1 -maxdepth 1 -name mex | sort | tail -n 1 | xargs dirname | xargs dirname)
+    fi
+    if [ -d "/opt/MATLAB" ]; then
+      _MATLAB_DIR=$(find /opt/MATLAB/R*/bin -mindepth 1 -maxdepth 1 -name mex | sort | tail -n 1 | xargs dirname | xargs dirname)
     fi
   fi
   
