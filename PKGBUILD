@@ -2,8 +2,8 @@
 
 pkgname=udiskie-dmenu-git
 _gitroot='udiskie-dmenu'
-pkgver=9.451ec99
-pkgrel=2
+pkgver=0.3.0.r5.378d374
+pkgrel=1
 pkgdesc='manage removable devices via dmenu (or rofi)'
 arch=('any')
 url="https://github.com/fogine/${_gitroot}"
@@ -18,7 +18,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_gitroot}"
-  echo "$(git rev-list --count HEAD).$(git describe --always)"
+  printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 package() {
