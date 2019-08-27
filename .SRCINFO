@@ -1,0 +1,14 @@
+pkgbase = dupliseek
+	pkgdesc = Application to find all your duplicate images.
+	pkgver = 0.0.2
+	pkgrel = 2
+	url = https://gitlab.com/magnusmj/dupliseek.git
+	install = dupliseek.install
+	arch = any
+	license = MIT
+	depends = python-pip
+	source = git+https://gitlab.com/magnusmj/dupliseek.git
+	md5sums = SKIP
+
+pkgname = dupliseek
+
