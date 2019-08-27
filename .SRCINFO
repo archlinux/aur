@@ -1,0 +1,32 @@
+pkgbase = uplexa-bin
+	pkgdesc = uPlexa: Incentivizing the mass compute power of IoT devices to form a means of anonymous blockchain payments - CLI release (includes daemon, wallet and miner)
+	pkgver = 0.2.1.0
+	pkgrel = 1
+	url = https://uplexa.com/
+	arch = x86_64
+	license = BSD3
+	provides = uplexad=0.2.1.0
+	provides = uplexa-blockchain-export=0.2.1.0
+	provides = uplexa-blockchain-import=0.2.1.0
+	provides = uplexa-utils-deserialize=0.2.1.0
+	provides = uplexa-wallet-cli=0.2.1.0
+	provides = uplexa-wallet-rpc=0.2.1.0
+	conflicts = uplexa
+	conflicts = uplexad
+	conflicts = uplexa-blockchain-export
+	conflicts = uplexa-blockchain-import
+	conflicts = uplexa-utils-deserialize
+	conflicts = uplexa-wallet-cli
+	conflicts = uplexa-wallet-rpc
+	backup = etc/uplexad.conf
+	source = https://github.com/uPlexa/uplexa/releases/download/v2.1.0/uplexa-cmd-linux-x86_64.tar.gz
+	source = uplexad.conf
+	source = uplexad.service
+	source = LICENSE
+	sha256sums = 862c742b259364eb9f318539d66ad145084946db324f57a369cdb6aca68b3680
+	sha256sums = 0c8ed5f082a01f36392406d09c5881ae332803133acb8e76f0aca9d6f1b0c73b
+	sha256sums = 5539816584076695422c0da445e10b27fe7594a5cdd0ff0ef5e0280898fe13c6
+	sha256sums = 68be90bc8012ff79b67a8b3fedd84538a2a9f03500a85ecf90aa015880b6aaf0
+
+pkgname = uplexa-bin
+
