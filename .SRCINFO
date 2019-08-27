@@ -1,0 +1,20 @@
+pkgbase = bgbillingrunner
+	pkgdesc = Client runner for billing system BGBilling 8.0+
+	pkgver = 1907121757
+	pkgrel = 1
+	url = http://bgbilling.ru
+	install = bgbillingrunner.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = java-runtime>=8
+	replaces = bgbillingclient72,bgbillingclient80
+	source = bgbillingrunner.sh
+	source = bgbillingrunner.desktop
+	source = bgbillingrunner.png
+	md5sums = d4139a7f14b60ea83b3a1e4b4acfe53e
+	md5sums = 2702367e788dd74bbf8f135329e6f3c2
+	md5sums = b26bc923ad15a117c129441768117b19
+
+pkgname = bgbillingrunner
+

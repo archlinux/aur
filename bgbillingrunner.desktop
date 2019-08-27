@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=BGBilling Runner
+Comment=BGBilling Client Runner ${pkgver}
+Exec=bgbillingrunner.sh
+Icon=bgbillingrunner.png
+Type=Application
+Terminal=false
+Categories=Office;
