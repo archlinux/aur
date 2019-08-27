@@ -22,7 +22,7 @@ pkgname=(
   "$pkgbase" kodi-bin-devel kodi-wayland-devel kodi-gbm-devel
   kodi-eventclients-devel kodi-tools-texturepacker-devel kodi-dev-devel
 )
-pkgver=18.4rc1pre25
+pkgver=18.4rc1pre27
 _major=18.3
 pkgrel=1
 arch=('x86_64')
@@ -84,25 +84,27 @@ source=(
   004-PR16334.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16334.patch
   005-PR16337.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16337.patch
   006-PR16340.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16340.patch
-  007-PR16342.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16342.patch
-  008-PR16352.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16352.patch
-  009-PR16353.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16353.patch
-  010-PR16355.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16355.patch
-  011-PR16364.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16364.patch
-#  012-PR16378.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16378.patch
+  007-PR16352.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16352.patch
+  008-PR16353.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16353.patch
+  009-PR16355.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16355.patch
+  010-PR16364.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16364.patch
+  011-PR16378.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16378.patch
+  012-PR16398.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16398.patch
   013-PR16409.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16409.patch
   014-PR16416.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16416.patch
   015-PR16422.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16422.patch
   016-PR16426.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16426.patch
-  017-PR16447.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16447.patch
-  018-PR16467.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16467.patch
-  019-PR16468.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16468.patch
-  020-PR16471.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16471.patch
-  021-PR16496.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16496.patch
-  022-PR16500.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16500.patch
-  023-PR16398.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16398.patch
-  024-PR16505.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16505.patch
-  025-PR16517.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16517.patch
+  017-PR16439.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16439.patch
+  018-PR16447.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16447.patch
+  019-PR16467.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16467.patch
+  020-PR16468.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16468.patch
+  021-PR16471.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16471.patch
+  022-PR16496.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16496.patch
+  023-PR16499.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16499.patch
+  024-PR16500.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16500.patch
+  025-PR16505.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16505.patch
+  026-PR16517.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16517.patch
+  027-PR16525.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16525.patch
 )
 noextract=(
   "libdvdcss-$_libdvdcss_version.tar.gz"
@@ -131,24 +133,27 @@ sha256sums=('4f265901c00f582beb8d6ad96c9c303e5ab82611e828c7121ae822b07c0915cc'
             '6d9a3710c4e205ff5ecf63d71181e0acde207bb8b93f3677c5c3395cbfa5dc9a'
             'e75f924d3e9f2fc0935791e324a111e77f4243476084f7e08cfabb28af903520'
             'bafe677ee2e8a8484d01bc41812fdd099b05185eb85a821760639503d34d679a'
-            '841cbdce9f207ce5d7eb719f4a6eace49232787bc7e06d66b222dda128c8d346'
             '61b42371a22f4683d13358a7f6d59284ef8b6b82a1235e508c15fdc5a29423ba'
             'a5d8af6af6c33aa62c935d924f3df2b341cd34a9d008f3f50a1697533a628db8'
             'd2ba346fbe3f2b428409588fe3461b58cc450dc56d5d5083703fa252155a1aef'
             '9ac8a0404739172e77addf6f1d3c05bbb6e3938c9e1e662264e95c64942de278'
+            'cc648ac2128a251122f47504aab62647513910e2df856ab8c46062b13e424d2a'
+            '5ee750c89bee592246a1076f07882a69ea20c2e54e80691fe3b7bcb1e4e2bd75'
             'fa6e929a5f55f9dc1b8807c2c83ca387225f87bb014dfc15ca5ea977d7a41180'
             'fa44afc553164952c497c75a2ebca36358f73a22bde3c2bfcd243e45bfb6247c'
             'a44771f00abda9f219340b4afce974b3add7d53db3b73ff36a30cabb4bda546e'
             '6835c87aabb8e43f6313f6a1d61b06efc31daea3cb2777d10392b5f2c8c604f5'
+            '7267d195e3f522c8c0c035996fcb6a538f0ee80fe1915c355170f90dd80ed9ff'
             '7fadba3375a912ff5c65ac1bf5d78394173b9ab1a19435ee99aa713dd0175f78'
             '54da6342b8132638a6b195f0224d94ea435ee28381faa1a0b84349000a8398fd'
             '89c56c229d8598ef8c0bf1bae4476e733baeab5cac7171410e668a4ff801a8b4'
             '761d0bedc5ee7cb9bcdab426cbb32da072f39c3f620fafeb62a46fadbf10b878'
             '6ddf1001c6facb4b32d4f0dbc012832df24a2c4b502a433f529c31fe581f9826'
+            'f837168ff84f157f954796a261a4f5951041cdee0067124d752d062a062a8e3e'
             '5907ac068c171c9e7bc27900fa82c207175f87482bad060a96dfb9077450b3f9'
-            '5ee750c89bee592246a1076f07882a69ea20c2e54e80691fe3b7bcb1e4e2bd75'
             'f0396813eb5c0b290a584312a1dabb05d6cdf1bf6d72347019a9afdaa41a1978'
-            'aef231173b893716a6c28307597ed92c2e0d3ece05fe165572f1e8a3c5d8b789')
+            'aef231173b893716a6c28307597ed92c2e0d3ece05fe165572f1e8a3c5d8b789'
+            'd7f3c1ac708ad1b018bc16f2948ce3471c5e850ee90754dbdffa61677dddd5e4')
 
 prepare() {
   # force python 'binary' as python2
