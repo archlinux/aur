@@ -2,7 +2,7 @@
 
 pkgname=rua
 pkgver=0.14.6
-pkgrel=1
+pkgrel=2
 pkgdesc='AUR helper in Rust providing control, review and jailed/offline build options'
 url='https://github.com/vn971/rua'
 source=("https://github.com/vn971/rua/archive/${pkgver}.tar.gz")
@@ -24,9 +24,13 @@ build () {
   cd "$srcdir/$pkgname-$pkgver"
   mkdir -p target/completions
 
+  if pacman -T pacman-git > /dev/null; then
+    _features="git"
+  fi
+
   RUSTUP_TOOLCHAIN=stable \
     COMPLETIONS_DIR=target/completions \
-    cargo build --release
+    cargo build --features "${_features:-}" --release
 }
 
 package() {
