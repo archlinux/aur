@@ -1,7 +1,7 @@
 pkgbase = gnome-shell-extension-argos-git
 	pkgdesc = Create GNOME Shell extensions in seconds
 	pkgver = r51.e7c69ff
-	pkgrel = 3
+	pkgrel = 1
 	url = https://github.com/p-e-w/argos
 	install = gschemas.install
 	arch = any

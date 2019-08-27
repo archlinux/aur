@@ -1,7 +1,7 @@
 # Maintainer: Mendel Greenberg <chabad 360 at gmail dot com>
 pkgname=gnome-shell-extension-argos-git
 pkgver=r51.e7c69ff
-pkgrel=3
+pkgrel=1
 pkgdesc="Create GNOME Shell extensions in seconds"
 arch=('any')
 url="https://github.com/p-e-w/argos"
@@ -14,15 +14,17 @@ conflicts=('gnome-shell-extension-argos')
 source=('git+https://github.com/p-e-w/argos.git')
 md5sums=('SKIP')
 
-prepare() {
-  cd argos
-  printf '0+%s+g%s' $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
+pkgver() {
+  cd "${srcdir}/argos"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  cd "$srcdir/argos"
-  rm -rf ".git" "README.md"
-  install -dm644 "argos@pew.worldwidemann.com/." "$pkgdir/usr/share/gnome-shell/extensions/argos@pew.worldwidemann.com/"
+  cd "${srcdir}/argos"
+  chmod -R 644 ./*
+  install -d "${pkgdir}/usr/share/gnome-shell/extensions/"
+  cp -r "argos@pew.worldwidemann.com/" "${pkgdir}/usr/share/gnome-shell/extensions/"
+
 }
 
 if [ -z "$install" ]; then
