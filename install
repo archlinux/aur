@@ -13,7 +13,7 @@ BLUE="${BOLD}$(tput setaf 4)"
 GREEN="${BOLD}$(tput setaf 2)"
 
 post_install() {
-        mkdir /var/lib/nfsen && chmod 775 /var/lib/nfsen && chown nfsen:http /var/lib/nfsen
+        mkdir /var/lib/nfsen && chmod 775 /var/lib/nfsen
 
         note 'To complete the installation, run:'
         note '    cd /usr/share/webapps/nfsen'
