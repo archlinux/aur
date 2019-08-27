@@ -8,6 +8,7 @@ pkgbase = argos-uri-installer-git
 	makedepends = git
 	depends = gnome-shell-extension-argos-git
 	depends = desktop-file-utils
+	depends = bash
 	source = git+https://github.com/chabad360/argos-installer.git
 	md5sums = SKIP
 
