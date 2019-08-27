@@ -11,7 +11,8 @@ license=('MPL2' 'MIT')
 groups=()
 conflicts=(alice-vision-git)
 provides=(alice-vision)
-depends=('openblas-lapack' 'gflags' 'glfw-x11' 'alembic' 'boost-libs' 'openexr' 'openimageio' 'opengv-git' 'flann' 'coin-or-coinutils' 'coin-or-clp' 'coin-or-lemon' 'coin-or-osi' 'google-glog' 'freetype2')
+# split: uncertaintyTE, geogram, popsift, cctag
+depends=('gflags' 'glfw-x11' 'alembic' 'boost-libs' 'openexr' 'openimageio' 'opengv-git' 'flann' 'coin-or-coinutils' 'coin-or-clp' 'coin-or-lemon' 'coin-or-osi' 'google-glog' 'freetype2' 'zlib' 'libtiff' 'libjpeg' 'libpng' 'libraw' 'opencv' 'lapack' 'suitesparse')
 makedepends=('boost' 'eigen' 'ceres-solver' 'git' 'cmake')
 source=("https://github.com/alicevision/AliceVision/archive/v${pkgver}.tar.gz"
         "geogram::git+https://github.com/alicevision/geogram.git"
