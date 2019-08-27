@@ -1,0 +1,19 @@
+pkgbase = fastgame-git
+	pkgdesc = Optimize system performance for games on demand
+	pkgver = 0.0.1.r0.g5d1da8a
+	pkgrel = 1
+	url = https://github.com/wwmm/fastgame
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = meson
+	makedepends = boost
+	depends = boost-libs
+	optdepends = libxnvctrl: nvidia overclock
+	provides = fastgame
+	conflicts = fastgame
+	source = git+https://github.com/wwmm/fastgame.git
+	sha512sums = SKIP
+
+pkgname = fastgame-git
+
