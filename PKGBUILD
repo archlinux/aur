@@ -1,13 +1,13 @@
 # Maintainer: Mendel Greenberg <chabad 360 at gmail dot com>
 
-_pkgbase='citra'
-pkgbase="$_pkgbase-bin"
-pkgname=("$_pkgbase-bin" "$_pkgbase-qt-bin")
-pkgrel=7
-replaces=("$_pkgbase-nightly-bin" "$_pkgbase-qt-nightly-bin")
+pkgbase="citra-bin"
+pkgname=("citra-bin" "citra-qt-bin")
+pkgrel=8
 pkgver=1343_20190821_8fa6be5
 pkgdesc="An experimental open-source Nintendo 3DS emulator/debugger"
 provides=('citra' 'citra-qt')
+confilcts=('citra-git' 'citra-qt-git' 'citra-nightly-bin' 'citra-qt-nightly-bin')
+replaces=("citra-nightly-bin" "citra-qt-nightly-bin")
 license=('GPL2')
 arch=('x86_64')
 url="https://github.com/citra-emu/citra-nightly"
@@ -15,9 +15,8 @@ url="https://github.com/citra-emu/citra-nightly"
 _nightly_id=$(echo $pkgver | cut -d'_' -f1)
 _ref="$(echo $pkgver | cut -d'_' -f2)-$(echo $pkgver | cut -d'_' -f3)"
 
-source=(
-    "https://github.com/citra-emu/citra-nightly/releases/download/nightly-$_nightly_id/citra-linux-$_ref.tar.xz"
-    "https://raw.githubusercontent.com/citra-emu/citra/master/dist/citra.desktop")
+source=("https://github.com/citra-emu/citra-nightly/releases/download/nightly-$_nightly_id/citra-linux-$_ref.tar.xz"
+        "https://raw.githubusercontent.com/citra-emu/citra/master/dist/citra.desktop")
 
 sha256sums=('14267ac9f9122d2b5fb53984fba124bd3bee059c54d0cbf329beeb84bbe564eb'
             '93bd8f799877eba7dd87ed7a4c29607d78c42b8769626c1d479f7e34fb7b39e2')

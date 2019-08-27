@@ -1,7 +1,7 @@
 pkgbase = citra-bin
 	pkgdesc = An experimental open-source Nintendo 3DS emulator/debugger
 	pkgver = 1343_20190821_8fa6be5
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/citra-emu/citra-nightly
 	arch = x86_64
 	license = GPL2
