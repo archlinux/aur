@@ -7,7 +7,8 @@ arch=('any')
 url="https://github.com/chabad360/argos-installer"
 license=('GPL3')
 depends=('gnome-shell-extension-argos-git'
-        'desktop-file-utils')
+         'desktop-file-utils'
+	 'bash')
 makedepends=('git')
 source=('git+https://github.com/chabad360/argos-installer.git')
 md5sums=('SKIP')
@@ -21,5 +22,4 @@ package() {
     cd "${srcdir}/argos-installer"
     install -Dm755 "add-argos" "$pkgdir/usr/bin/add-argos"
     install -Dm644 "argos.desktop" "$pkgdir/usr/share/applications/argos.desktop"
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
