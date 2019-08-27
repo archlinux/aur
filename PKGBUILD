@@ -2,7 +2,7 @@
 
 pkgname=writeas-cli
 pkgver=2.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Write.as command line interface"
 arch=('x86_64')
 url='https://write.as/apps/cli'
@@ -18,6 +18,7 @@ build() {
 		-gcflags "all=-trimpath=${PWD}" \
 		-asmflags "all=-trimpath=${PWD}" \
 		-ldflags "-extldflags=${LDFLAGS}" \
+		-buildmode=pie \
 		./cmd/writeas/
 }
 

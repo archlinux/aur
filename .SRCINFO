@@ -1,7 +1,7 @@
 pkgbase = writeas-cli
 	pkgdesc = Write.as command line interface
 	pkgver = 2.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://write.as/apps/cli
 	arch = x86_64
 	license = GPL3
