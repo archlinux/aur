@@ -2,10 +2,10 @@ pkgdesc="clear linux kernel and modules in binary"
 url="https://clearlinux.org/node/15538"
 pkgname=linux-clear-bin
 # check org.clearlinux.native.X.Y.Z in Manifest
-pkgver="5.2.9"
-pkgrel="825"
+pkgver="5.2.10"
+pkgrel="828"
 # use in case we need to update the Arch package without incrementing pkgrel
-epoch=1
+epoch=0
 arch=('x86_64')
 license=('GPL2')
 depends=('coreutils' 'linux-firmware' 'kmod')
@@ -20,7 +20,7 @@ conflicts=("linux-clear")
 options=('!strip')
 
 # see: https://cdn.download.clearlinux.org/current/latest
-_clear_version=30840
+_clear_version=30870
 _kernel_version="${pkgver}-${pkgrel}.native"
 
 source=("https://cdn.download.clearlinux.org/update/${_clear_version}/Manifest.kernel-native"
@@ -30,8 +30,8 @@ source=("https://cdn.download.clearlinux.org/update/${_clear_version}/Manifest.k
         "99-linux.hook" # pacman hook for remove initramfs
         "linux.preset"  # standard config files for mkinitcpio ramdisk)
 )
-sha256sums=('10792b740f7ad1b70695a0d16f71c5cff61e75eed3c1c865b5cdb0e1ecfd55b8'
-            'b9289313d9fd783e5134b86a8dcb69db2d5206e6c632e9277005939a50c7e202'
+sha256sums=('051fdad404b0a01db9baed3daf882dbdc3f2400c5849dfcc9dede8baae9fdebc'
+            'fbf8e2c0104e1b98bfcc451f2f071743e611d8dc1baa9daf23a001d2208cb52c'
             '60b965278d9b0af897b6a54c847a4ea5adfe6116c19191b2b814c6f8bf92521e'
             '5a1b61d41b4d194d0ff6e1e13f650ee982db403b008cacdc5564e7bd265a81fc'
             'a61b3fdc2ef2f1405b3ffe166e9c6d1666289ab427f2348259f04b5e878376a2'
