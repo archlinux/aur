@@ -1,6 +1,6 @@
 pkgbase = luajit-git
 	pkgdesc = Just-in-time compiler and drop-in replacement for Lua 5.1
-	pkgver = 2.0.3.28.ga6c34b8
+	pkgver = 2.0.5.25.g61464b0
 	pkgrel = 1
 	url = http://luajit.org/
 	arch = i686

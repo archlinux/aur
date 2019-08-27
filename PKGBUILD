@@ -1,8 +1,5 @@
-# Maintainer: SneakySnake <radiantstatue@gmail.com>
-# Submit issues/pull requests at https://github.com/crumblingstatue/aur-luajit-git
-
 pkgname=luajit-git
-pkgver=2.0.3.28.ga6c34b8
+pkgver=2.0.5.25.g61464b0
 pkgrel=1
 pkgdesc='Just-in-time compiler and drop-in replacement for Lua 5.1'
 arch=('i686' 'x86_64')
@@ -28,7 +25,5 @@ build() {
 package() {
   cd luajit-2.0
   make install DESTDIR=$pkgdir PREFIX=/usr
-
-  install -Dm644 COPYRIGHT \
-    $pkgdir/usr/share/licenses/$pkgname/COPYRIGHT
+  install -Dm644 COPYRIGHT $pkgdir/usr/share/licenses/$pkgname/COPYRIGHT
 }
