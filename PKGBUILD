@@ -3,41 +3,37 @@
 # Contributor: quantax -- contact via Arch Linux forum or AUR
 # Contributor: Christoph Zeiler <archNOSPAM_at_moonblade.dot.org>
 
-pkgname=pcsxr
+pkgname=lib32-pcsxr
 pkgver=1.9.93
 pkgrel=5
-pkgdesc='A Sony PlayStation (PSX) emulator based on the PCSX-df project'
+pkgdesc='A Sony PlayStation (PSX) emulator based on the PCSX-df project (lib32)'
 arch=('x86_64')
 url='http://pcsxr.codeplex.com/'
 license=('GPL')
-depends=('libcdio' 'libxv' 'sdl' 'gtk3')
-depends_x86_64=('lib32-libcdio' 'lib32-libxv' 'lib32-sdl' 'lib32-gtk3')
-makedepends=('mesa' 'intltool' 'nasm')
-makedepends_x86_64=('lib32-mesa')
-optdepends_x86_64=('lib32-libpulse: Pulseaudio support'
-                   'lib32-alsa-plugins: ALSA support')
-optdepends_i686=('libpulse: Pulseaudio support'
-                 'alsa-plugins: ALSA support')
+depends=('lib32-libcdio' 'lib32-libxv' 'lib32-sdl' 'lib32-gtk3')
+makedepends=('lib32-mesa')
+optdepends=('lib32-libpulse: Pulseaudio support'
+            'lib32-alsa-plugins: ALSA support')
+provides=("pcsxr")
+conflicts=("pcsxr" "pcsxr-git")
 
 # Accessible through /srv/ftp/other/community on nymeria.
 source=("https://sources.archlinux.org/other/community/pcsxr/pcsxr-${pkgver}.tar.bz2")
 
 prepare() {
-    cd "$srcdir/$pkgname"
+    cd "$srcdir/pcsxr"
     sed -i 's/uncompress2/uncompress2_internal/' libpcsxcore/cdriso.c
 }
 
 build() {
-    cd "$srcdir/$pkgname"
+    cd "$srcdir/pcsxr"
 
-    if [[ $CARCH == 'x86_64' ]]; then
-        export CC="gcc"
-        export CXX="g++"
-        export CFLAGS+=" -m32 -I/usr/include/harfbuzz"
-        export CXXFLAGS+=" -m32 -I/usr/include/harfbuzz"
-        export LDFLAGS+=" -m32"
-        export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
-    fi
+    export CC="gcc"
+    export CXX="g++"
+    export CFLAGS+=" -m32 -I/usr/include/harfbuzz"
+    export CXXFLAGS+=" -m32 -I/usr/include/harfbuzz"
+    export LDFLAGS+=" -m32"
+    export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
 
     autoreconf -f -i
     intltoolize --force
@@ -51,7 +47,7 @@ build() {
 }
 
 package() {
-    cd "$srcdir/$pkgname"
+    cd "$srcdir/pcsxr"
     make DESTDIR="$pkgdir" install
 }
 
