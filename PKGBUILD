@@ -1,0 +1,43 @@
+# Maintainer: Michael Kuc <michaelkuc6 at gmail dot com>
+_pkgname=nngpp
+pkgname=${_pkgname}-git
+pkgver=nng.v1.1.1.r13.g3351f54
+pkgrel=1
+pkgdesc="C++ wrapper around the nanomsg NNG API "
+arch=('x86_64')
+url="https://github.com/cwzx/nngpp"
+license=('MIT')
+depends=('nng'
+	'mbedtls')
+makedepends=('catch2')
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+epoch=1
+source=("${_pkgname}::git+https://github.com/cwzx/nngpp.git")
+
+pkgver() {
+	cd "${_pkgname}"
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+build() {
+	cd "${_pkgname}"
+	make
+}
+
+check() {
+	# cd "${_pkgname}/build"
+	cd "${_pkgname}"
+	make test
+}
+
+package() {
+	cd "${_pkgname}"
+	install -dm644 "${pkgdir}/usr/include"
+	cp -r include "${pkgdir}/usr"
+	chmod -R 644 "${pkgdir}/usr/include"
+	install -m644 -D "license.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -m644 -D "readme.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+}
+
+sha256sums=('SKIP')
