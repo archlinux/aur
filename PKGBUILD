@@ -6,7 +6,7 @@ projectname=skycoin
 pkgdesc="CX Skycoin Blockchain Programming Language"
 pkgver='autogeneratetd'
 pkggopath="github.com/$projectname/$pkgname1"
-pkgrel=3
+pkgrel=4
 arch=('any')
 url="https://${pkggopath}"
 license=()
@@ -91,7 +91,7 @@ mkdir -p $pkgdir/usr/lib/$projectname/go/bin
 mkdir -p $pkgdir/usr/lib/$projectname/go/src/github.com/$projectname/
 mkdir -p $pkgdir/usr/lib/$projectname/$pkgname1/
 #install sources
-cp -r $srcdir/$pkgname1 $pkgdir/usr/lib/$projectname/go/src/github.com/$projectname/$pkgname1
+#cp -r $srcdir/$pkgname1 $pkgdir/usr/lib/$projectname/go/src/github.com/$projectname/$pkgname1
 #install binary
 msg2 'installing binaries'
 #cxbins="$srcdir"/go/bin
