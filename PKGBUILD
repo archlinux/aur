@@ -2,7 +2,7 @@
 
 pkgname=pkgtop-git
 pkgdesc="Interactive package manager & resource monitor"
-pkgver=r315.19d57fb
+pkgver=1.0.0
 pkgrel=1
 arch=('any')
 url="https://github.com/keylo99/pkgtop"
@@ -13,11 +13,6 @@ provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git://github.com/keylo99/pkgtop.git#branch=master')
 sha256sums=('SKIP')
-
-pkgver() {
-  cd "$srcdir/${pkgname%-git}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
 
 build() {
   cd "$srcdir/${pkgname%-git}/src"
