@@ -5,8 +5,6 @@ pkgbase = citra-bin
 	url = https://citra-emu.org
 	arch = x86_64
 	license = GPL2
-	provides = citra
-	provides = citra-qt
 	replaces = citra-nightly-bin
 	replaces = citra-qt-nightly-bin
 	source = https://github.com/citra-emu/citra-nightly/releases/download/nightly-1343/citra-linux-20190821-8fa6be5.tar.xz
@@ -17,6 +15,7 @@ pkgbase = citra-bin
 pkgname = citra-bin
 	depends = libsndio-61-compat
 	depends = sdl2
+	provides = citra
 
 pkgname = citra-qt-bin
 	depends = qt5-multimedia
@@ -25,4 +24,5 @@ pkgname = citra-qt-bin
 	depends = desktop-file-utils
 	optdepends = libxkbcommon-x11: for X11 support
 	optdepends = qt5-wayland: for Wayland support
+	provides = citra-qt
 

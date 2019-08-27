@@ -1,11 +1,10 @@
 # Maintainer: Mendel Greenberg <chabad 360 at gmail dot com>
 
-pkgbase="citra-bin"
-pkgname=("citra-bin" "citra-qt-bin")
+pkgbase='citra-bin'
+pkgname=('citra-bin' 'citra-qt-bin')
 pkgrel=8
 pkgver=1343_20190821_8fa6be5
 pkgdesc="An experimental open-source Nintendo 3DS emulator/debugger"
-provides=('citra' 'citra-qt')
 confilcts=('citra-git' 'citra-qt-git' 'citra-nightly-bin' 'citra-qt-nightly-bin')
 replaces=("citra-nightly-bin" "citra-qt-nightly-bin")
 license=('GPL2')
@@ -23,6 +22,8 @@ sha256sums=('14267ac9f9122d2b5fb53984fba124bd3bee059c54d0cbf329beeb84bbe564eb'
 
 package_citra-bin() {
     depends=('libsndio-61-compat' 'sdl2')
+    provides=('citra')
+
 
     cd "${srcdir}/citra-linux-${_ref}"
     install -Dm644 -t "${pkgdir}/usr/bin" citra
@@ -33,8 +34,9 @@ package_citra-qt-bin() {
     depends=('qt5-multimedia' 'libsndio-61-compat' 'sdl2' 'desktop-file-utils')
     optdepends=('libxkbcommon-x11: for X11 support'
 	        'qt5-wayland: for Wayland support')
+    provides=('citra-qt')
 
-    
+
     cd "${srcdir}/citra-linux-${_ref}"
     install -Dm644 -t "${pkgdir}/usr/bin" citra-qt
     install -Dm644 -t "${pkgdir}/usr/bin" citra-room
