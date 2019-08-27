@@ -1,6 +1,6 @@
 pkgbase = tracy
 	pkgdesc = Real-time, nanosecond resolution frame profiler
-	pkgver = 0.4.1
+	pkgver = 0.5
 	pkgrel = 1
 	url = https://bitbucket.org/wolfpld/tracy
 	arch = i686
@@ -8,9 +8,10 @@ pkgbase = tracy
 	license = BSD
 	depends = glfw-x11
 	depends = gtk2
+	depends = intel-tbb
 	provides = tracy
 	conflicts = tracy
-	source = git+https://bitbucket.org/wolfpld/tracy#tag=v0.4.1
+	source = git+https://bitbucket.org/wolfpld/tracy#tag=v0.5
 	md5sums = SKIP
 
 pkgname = tracy
