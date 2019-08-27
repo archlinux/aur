@@ -1,6 +1,6 @@
 pkgbase = nemesyst-git
 	pkgdesc = Practical, distributed, hybrid-parallelism, deep learning framework.
-	pkgver = 2.0.0.r19.4a06c3f
+	pkgver = 2.0.2.r27.dc930b9
 	pkgrel = 1
 	url = https://github.com/DreamingRaven/nemesyst
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = nemesyst-git
 	depends = python
 	depends = python-pymongo
 	depends = python-configargparse
+	depends = python-future
 	optdepends = mongodb: local database creation
 	optdepends = python-sphinx: documentation builder
 	optdepends = python-sphinx_rtd_theme: documentation theme generator

@@ -6,7 +6,7 @@
 # Maintainer: George Raven <GeorgeRavenCommunity AT pm dot me>
 pkgname=nemesyst-git
 _pkgsrcname="nemesyst"
-pkgver=2.0.0.r19.4a06c3f
+pkgver=2.0.2.r27.dc930b9
 pkgrel=1
 pkgdesc="Practical, distributed, hybrid-parallelism, deep learning framework."
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,8 @@ url="https://github.com/DreamingRaven/nemesyst"
 _branch="master"
 license=('MIT') # MIT is a special case store a copy in /usr/share/pkgname
 groups=("nemesyst-base")
-depends=('python-setuptools' 'python' 'python-pymongo' 'python-configargparse')
+depends=('python-setuptools' 'python' 'python-pymongo' 'python-configargparse'
+				 'python-future')
 makedepends=('git')
 optdepends=('mongodb: local database creation'
 						'python-sphinx: documentation builder'
