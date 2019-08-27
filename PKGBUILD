@@ -5,7 +5,7 @@ _svt_av1_ver='0.6.0'
 _svt_vp9_ver='ce245894c6fc1c5d1439c41a7dda8d6dc61784c4'
 
 pkgname=ffmpeg-full-git
-pkgver=4.3.r94501.g33186028fc
+pkgver=4.3.r94667.gdead949a1f
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac; git version)'
 arch=('x86_64')
@@ -218,7 +218,6 @@ build() {
         --enable-nvdec \
         --enable-nvenc \
         --enable-omx \
-        --enable-omx-rpi \
         --enable-rkmpp \
         --enable-v4l2-m2m \
         --enable-vaapi \
