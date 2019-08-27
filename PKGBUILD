@@ -1,6 +1,6 @@
 # Maintainer: Mendel Greenberg <chabad 360 at gmail dot com>
 pkgname=argos-uri-installer-git
-pkgver=r30.b9c3898
+pkgver=r32.b9139f2
 pkgrel=1
 pkgdesc="Argos URI handler for bitbar://"
 arch=('any')
@@ -12,9 +12,9 @@ makedepends=('git')
 source=('git+https://github.com/chabad360/argos-installer.git')
 md5sums=('SKIP')
 
-prepare() {
-    cd argos-installer
-    printf '0+%s+g%s' $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
+pkgver() {
+    cd "${srcdir}/argos-installer"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {

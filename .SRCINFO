@@ -1,6 +1,6 @@
 pkgbase = argos-uri-installer-git
 	pkgdesc = Argos URI handler for bitbar://
-	pkgver = r30.b9c3898
+	pkgver = r32.b9139f2
 	pkgrel = 1
 	url = https://github.com/chabad360/argos-installer
 	arch = any
