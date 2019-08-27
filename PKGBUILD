@@ -2,7 +2,7 @@
 
 pkgname=kwin-script-grid-tiling
 _pkgname=Grid-Tiling-Kwin
-pkgver=20180606
+pkgver=20190827
 pkgrel=1
 pkgdesc="A kwin script that automatically tiles windows"
 arch=('any')
