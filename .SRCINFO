@@ -1,0 +1,20 @@
+pkgbase = blkmenu
+	pkgdesc = Tiny curses wrapper around lsblk and udisksctl
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/gcmt/blkmenu
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = asciidoc
+	depends = python
+	depends = udisks2
+	depends = util-linux
+	provides = blkmenu
+	conflicts = blkmenu
+	source = blkmenu-0.1::git+https://github.com/gcmt/blkmenu
+	sha1sums = SKIP
+
+pkgname = blkmenu
+
