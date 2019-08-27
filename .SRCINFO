@@ -1,6 +1,6 @@
 pkgbase = kwin-script-grid-tiling
 	pkgdesc = A kwin script that automatically tiles windows
-	pkgver = 20180606
+	pkgver = 20190827
 	pkgrel = 1
 	url = https://github.com/lingtjien/Grid-Tiling-Kwin
 	arch = any
@@ -10,4 +10,3 @@ pkgbase = kwin-script-grid-tiling
 	sha512sums = SKIP
 
 pkgname = kwin-script-grid-tiling
-
