@@ -3,7 +3,7 @@
 
 pkgbase=phonon-gstreamer
 pkgname=(phonon-qt5-gstreamer)
-pkgver=4.9.1
+pkgver=4.10.0
 pkgrel=1
 arch=(x86_64)
 pkgdesc="Phonon GStreamer backend for Qt5"
@@ -15,7 +15,7 @@ optdepends=('pulseaudio: PulseAudio support' 'gst-plugins-good: PulseAudio suppo
 makedepends=(extra-cmake-modules qt5-tools)
 provides=(phonon-qt5-backend)
 source=("http://download.kde.org/stable/phonon/phonon-backend-gstreamer/$pkgver/phonon-backend-gstreamer-$pkgver.tar.xz"{,.sig})
-sha256sums=('3fcca9cb284ff12de70a65ffc1f85ddf8f278cd4ba06021e11666ac8bffb6ea2'
+sha256sums=('c5871835521d015ef2ad1276b1f58340d946c2903466337f3170bac3c58d61f2'
             'SKIP')
 validpgpkeys=(CB9387521E1EE0127DA804843FDBB55084CC5D84) # Harald Sitter <sitter@kde.org>
 
@@ -25,10 +25,7 @@ prepare() {
 
 build() {
   cd build
-  cmake ../$pkgbase-$pkgver \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=lib \
-    -DPHONON_BUILD_PHONON4QT5=ON
+  cmake ../phonon-backend-gstreamer-$pkgver
   make
 }
 
