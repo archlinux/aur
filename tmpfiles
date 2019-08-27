@@ -1,1 +1,1 @@
-d /run/nfsen 0755 netflow http -
+d /run/nfsen 0755 nfsen http -

@@ -13,6 +13,7 @@ BLUE="${BOLD}$(tput setaf 4)"
 GREEN="${BOLD}$(tput setaf 2)"
 
 post_install() {
+        usr/bin/systemd-sysusers nfsen.conf || true
 	usr/bin/systemd-tmpfiles --create nfsen.conf || true
         
         note 'To complete the installation, run:'
