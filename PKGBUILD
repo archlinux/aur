@@ -2,7 +2,7 @@
 
 pkgname=("openxr-loader-git" "openxr-headers-git")
 _dirname="openxr-loader"
-pkgver=1.0.1.r0.g46d7cb3
+pkgver=1.0.2.r0.g69bb150
 pkgrel=1
 pkgdesc='OpenXR Loader and headers'
 arch=('i686' 'x86_64')

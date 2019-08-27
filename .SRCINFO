@@ -1,6 +1,6 @@
 pkgbase = openxr-loader-git
 	pkgdesc = OpenXR Loader and headers
-	pkgver = 1.0.1.r0.g46d7cb3
+	pkgver = 1.0.2.r0.g69bb150
 	pkgrel = 1
 	url = https://github.com/KhronosGroup/OpenXR-SDK
 	arch = i686
