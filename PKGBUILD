@@ -2,13 +2,13 @@
 # Maintainer: Zeph <zeph33@gmail.com>
 # https://gitlab.manjaro.org/packages/extra/pamac
 pkgname=pamac-cli
-pkgver=8.0.3
-pkgrel=2
+pkgver=8.0.4
+pkgrel=1
 _pkgfixver=$pkgver
 
-_pkgvercommit=v$pkgver
-# _pkgvercommit=a1ea02d9180bf8708f40a50939f455ac5fe34435
-sha256sums=('63c65e51f5f62ae79faf315e395e5e15bfa23d5f36b138d02613d32bf097a6e8'
+#_pkgvercommit=v$pkgver
+_pkgvercommit='1656246d332bc694fb61da6d64e30137a10f10f6'
+sha256sums=('db6ba7f73cff5d2feebc56fef039f84d2b4ffd1c81c4cd490259d604590477e3'
             '732512829081cb979a01087a8d8ec2a578e6555ed4f67af998537f6707d8bcaf')
 
 pkgdesc="Pamac cli frontend for libalpm"
