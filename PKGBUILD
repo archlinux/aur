@@ -1,7 +1,7 @@
 # Maintainer: Leo Mao <leomaoyw at gmail dot com>
 pkgname=python-cupy
 _pkgname=cupy
-pkgver=6.2.0
+pkgver=6.3.0
 pkgrel=1
 pkgdesc="NumPy-like API accelerated with CUDA"
 _github="cupy/cupy"
@@ -11,10 +11,12 @@ license=('MIT')
 depends=('cuda' 'cudnn' 'nccl' 'python-numpy' 'python-six' 'python-fastrlock')
 makedepends=('python' 'python-setuptools')
 source=("https://github.com/cupy/cupy/archive/v$pkgver.tar.gz")
-md5sums=('dbcc42a35f9bf9cb79a075d17bc61ffa')
+md5sums=('8977b840bc8885ef1d6c574a939646eb')
 
 prepare() {
   cd "$srcdir/$_pkgname-$pkgver"
+  export CC=/opt/cuda/bin/gcc
+  export CXX=/opt/cuda/bin/g++
 }
 
 build() {
