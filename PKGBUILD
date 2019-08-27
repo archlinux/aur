@@ -7,15 +7,12 @@
 # Tweak kernel options prior to a build via nconfig
 _makenconfig=
 
-# Compile ONLY probed modules
-# Build in only the modules that you currently have probed in your system VASTLY
-# reducing the number of modules built and the build time.
-#
-# WARNING - ALL modules must be probed BEFORE you begin making the pkg!
+# Compile ONLY used modules to VASTLYreduce the number of modules built
+# and the build time.
 #
 # To keep track of which modules are needed for your specific system/hardware,
 # give module_db script a try: https://aur.archlinux.org/packages/modprobed-db
-# This PKGBUILD will call it directly to probe all the modules you have logged!
+# This PKGBUILD read the database kept if it exists
 #
 # More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
 _localmodcfg=
@@ -23,9 +20,9 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-gc
-_srcver=5.2.8-arch1
+_srcver=5.2.10-arch1
 pkgver=${_srcver%-*}
-pkgrel=2
+pkgrel=1
 _bmqversion=099
 arch=(x86_64)
 url="https://cchalpha.blogspot.co.uk/"
@@ -37,7 +34,7 @@ makedepends=(
 options=('!strip')
 _srcname=linux-$_srcver
 _bmq_patch="v5.2_bmq${_bmqversion}.patch"
-_gcc_more_v='20190714'
+_gcc_more_v='20190822'
 source=(
   "$_srcname.tar.gz::https://git.archlinux.org/linux.git/snapshot/linux-$_srcver.tar.gz"
   config         # the main kernel config file
@@ -52,13 +49,13 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('3115442a3239cc90c759eb1dfaba68599afc8d2500f3232c44d0c5b458bd283d'
-            'b22d748dd419708cda26970f97bd302d84100b5df0147cbe29d29749d57d2637'
+sha256sums=('91c6d6b7419c133544280b23936bec3ebe208dc02528c480a4bf6a8636651e21'
+            '2cec1dc4c34746cdcb1a7ddc28bdceb8a599e73176db9efb6dd82df78f30e8c0'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             'f36f878fb775166c1ea9232309fc7297aec79f58a3a9531d40e7b2681ffe7cf3'
-            '2466fb4aecc66d1b258b4cbdb2f215b5099f266d8c4386bb62ad1a0acd0caf5b')
+            '8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-gc}
@@ -92,13 +89,12 @@ prepare() {
   ### Optionally load needed modules for the make localmodconfig
   # See https://aur.archlinux.org/packages/modprobed-db
   if [ -n "$_localmodcfg" ]; then
-    msg "If you have modprobed-db installed, running it in recall mode now"
-    if [ -e /usr/bin/modprobed-db ]; then
-      [[ -x /usr/bin/sudo ]] || {
-      echo "Cannot call modprobe with sudo. Install sudo and configure it to work with this user."
-      exit 1; }
-      sudo /usr/bin/modprobed-db recall
-      make localmodconfig
+    if [ -f $HOME/.config/modprobed.db ]; then
+      msg2 "Running Steven Rostedt's make localmodconfig now"
+      make LSMOD=$HOME/.config/modprobed.db localmodconfig
+    else
+      msg2 "No modprobed.db data found"
+      exit
     fi
   fi
 
