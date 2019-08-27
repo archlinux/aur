@@ -1,7 +1,7 @@
 # Maintainer: kpcyrd <git@rxv.cc>
 
 pkgname=cargo-crev
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Scalable, social, Code REView and recommendation system that we desperately need"
 url="https://github.com/dpc/crev"
@@ -9,21 +9,21 @@ depends=('openssl' 'curl')
 makedepends=('cargo' 'clang')
 arch=('i686' 'x86_64' 'armv6h' 'aarch64')
 license=('MPL' 'Apache' 'MIT')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/dpc/crev/archive/cargo-crev-v${pkgver}.tar.gz")
-sha512sums=('67a5416815cf88e80749be019e1b2e5397a88dceaae28f3581297884fb000f71bf82af189453ccfee24fb519f01d776e61262b2b6903d33d40bd00cf6934f351')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/dpc/crev/archive/v${pkgver}.tar.gz")
+sha512sums=('66d9f17378ef4f64d70bf3924eb3e3f3a307bebdb5d8c99f18654b25ca05f2f7f285209eef10443aba4a8da2716bafccd2b6f153670db7c704fa33e8aa543830')
 
 build() {
-  cd "crev-${pkgname}-v${pkgver}/cargo-crev"
+  cd "${pkgname}-${pkgver}/cargo-crev"
   cargo build --release --locked
 }
 
 check() {
-  cd "crev-${pkgname}-v${pkgver}"
+  cd "${pkgname}-${pkgver}"
   cargo test --release --locked
 }
 
 package() {
-  cd "crev-${pkgname}-v${pkgver}"
+  cd "${pkgname}-${pkgver}"
   install -Dm755 "target/release/${pkgname}" -t "${pkgdir}/usr/bin"
 
   install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
