@@ -5,7 +5,7 @@
 # Contributor: Mario J Steele <mario@ruby-im.net>
 
 pkgname=dvdstyler
-pkgver=3.1.1
+pkgver=3.1.2
 pkgrel=1
 pkgdesc="Cross-platform DVD authoring application"
 arch=('i686' 'x86_64')
@@ -17,8 +17,8 @@ optdepends=('dvdisaster: ECC support'
 	    'xine-ui: DVD preview player'
 	    'vlc: DVD preview player'
 	    'smplayer: DVD preview player')
-source=("http://downloads.sourceforge.net/dvdstyler/${pkgver}/DVDStyler-${pkgver}.tar.bz2")
-sha256sums=('b737eeb4bcc35bc0abf2873f90292a09be1827422fedaa72ef7456026e46f49d')
+source=("https://downloads.sourceforge.net/dvdstyler/${pkgver}/DVDStyler-${pkgver}.tar.bz2")
+sha256sums=('04ff61c278167363904f7ee366bcf98ee15ce05368fa353f6d8ab1e8305d9a0e')
 
 build() {
   cd "${srcdir}/DVDStyler-${pkgver}"
