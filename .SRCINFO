@@ -1,7 +1,7 @@
 pkgbase = fastgame-git
-	pkgdesc = Optimize system performance for games on demand
+	pkgdesc = Optimize system performance for games
 	pkgver = 0.0.1.r0.g5d1da8a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wwmm/fastgame
 	arch = x86_64
 	arch = i686
