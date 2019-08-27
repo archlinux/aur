@@ -1,7 +1,7 @@
 pkgbase = rx
 	pkgdesc = A modern and extensible pixel editor implemented in rust.
 	pkgver = 0.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://cloudhead.io/rx/
 	arch = i686
 	arch = x86_64
