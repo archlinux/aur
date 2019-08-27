@@ -5,6 +5,7 @@ pkgbase = uplexa-bin
 	url = https://uplexa.com/
 	arch = x86_64
 	license = BSD3
+	depends = libnorm1
 	provides = uplexad=0.2.1.0
 	provides = uplexa-blockchain-export=0.2.1.0
 	provides = uplexa-blockchain-import=0.2.1.0
