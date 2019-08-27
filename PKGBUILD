@@ -2,8 +2,8 @@
 # Contributor: Egor Kovetskiy <e.kovetskiy@office.ngs.ru>
 
 pkgname=go-tools-git
-pkgver=v0.0.0_20190702152245_7e72c71c505f
-pkgrel=2
+pkgver=v0.0.0_20190826234050_71894ab67ee3
+pkgrel=1
 pkgdesc='Developer tools for the Go programming language'
 arch=(x86_64)
 url='https://godoc.org/golang.org/x/tools/'
@@ -44,6 +44,7 @@ build() {
     -gcflags "all=-trimpath=${PWD}" \
     -asmflags "all=-trimpath=${PWD}" \
     -ldflags "-extldflags ${LDFLAGS}" \
+    -buildmode=pie \
     ./cmd/...
 }
 
