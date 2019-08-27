@@ -1,7 +1,7 @@
 # Maintainer: Stefano Gabryel <esse[dot]gab2[at]gmail[dot]com>
 
 pkgname=dirstalk
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='Multi threaded application designed to brute force paths on web servers, modern alternative to dirb and dirbuster'
 url='https://github.com/stefanoj3/dirstalk'
@@ -10,7 +10,7 @@ license=('MIT')
 makedepends=('go' 'git' 'dep')
 options=('!emptydirs')
 source=(https://github.com/stefanoj3/dirstalk/archive/${pkgver}.tar.gz)
-sha512sums=('6030ba784dc46ae30defb854372105438cc2151b4cfa21aebe3e11e43394f5064e87f0ea0695bca6fa05ef42707e68c1cebdd6733f2dcb7ea7cf41fbeb8c5b90')
+sha512sums=('bafa76ce85f0d87bd63e814f120f2a16111aeecdeaef52f853415fcac7e8823aa04d788ae76a3ce4ebc0465321142392c2e8081364af624e11d9fe25b385e68c')
 provides=('dirstalk')
 
 prepare() {
