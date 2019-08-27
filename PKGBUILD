@@ -2,7 +2,7 @@
 
 pkgname=nfsen
 pkgver=1.3.8
-pkgrel=29
+pkgrel=30
 pkgdesc="Netflow visualisation and investigation tool"
 arch=('i686' 'x86_64')
 url="https://sourceforge.net/projects/nfsen"
@@ -66,5 +66,5 @@ md5sums=('fc45b3f44a66c2ed65d1269e479c2414'
          '19e7acd1c98f32009de6541f4e5e39f9'
          'ba000ec98e02b4baec2afd9aa5f52854'
          '69898397995d35b1d53d6a61b16b24a8'
-         '64e13c98fe68c0e3b3f3f56dcf8fdd63'
+         '4590eab9fea0b468b47155e849e16678'
          '7f691fde1b2c423fbc7cadf42f08c236')
