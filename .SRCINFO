@@ -1,0 +1,20 @@
+pkgbase = adl-git
+	pkgdesc = anime-downloader + trackma wrapper
+	pkgver = 0.r48.a0b864e
+	pkgrel = 1
+	url = https://github.com/RaitaroH/adl
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = trackma-git
+	depends = fzf
+	depends = anime-downloader
+	depends = mpv
+	provides = adl
+	source = git://github.com/RaitaroH/adl.git
+	md5sums = SKIP
+	sha1sums = SKIP
+	sha256sums = SKIP
+
+pkgname = adl-git
+
