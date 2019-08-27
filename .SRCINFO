@@ -1,7 +1,8 @@
 pkgbase = emacs-mew-git
 	pkgdesc = Messaging in the Emacs World
-	pkgver = 6.8.r30.g70d6da0
+	pkgver = 6.8.r36.g3bc70db
 	pkgrel = 1
+	epoch = 1
 	url = http://www.mew.org/
 	arch = x86_64
 	arch = i686

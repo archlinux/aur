@@ -2,8 +2,9 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-mew-git
-pkgver=6.8.r30.g70d6da0
+pkgver=6.8.r36.g3bc70db
 pkgrel=1
+epoch=1
 arch=('x86_64' 'i686')
 pkgdesc="Messaging in the  Emacs World"
 url="http://www.mew.org/"
