@@ -9,7 +9,7 @@ url="https://github.com/devaultcrypto/"
 source=(${pkgname}-${pkgver}::\
 https://github.com/devaultcrypto/devault/archive/v${pkgver}.tar.gz)
 depends=('boost-libs' 'qt5-base' 'qrencode' 'zeromq' 'miniupnpc' 'hicolor-icon-theme' 'libevent')
-makedepends=('python' 'boost')
+makedepends=('python' 'boost' 'qt5-tools')
 md5sums=('194183e1d5fbd50ebf112923f0c744b6')
 
 prepare() {
