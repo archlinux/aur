@@ -1,6 +1,6 @@
 # Maintainer: Marius Orcsik <marius@littr.me>
 pkgname=mpris-scrobbler
-pkgver=0.3.4
+pkgver=0.3.5
 pkgrel=1
 pkgdesc="Minimalistic user daemon which submits the currently playing song to libre.fm and compatible services."
 arch=('x86' 'x86_64')
@@ -10,7 +10,7 @@ makedepends=('dbus' 'libevent' 'curl' 'json-c' 'meson' 'ninja' 'scdoc')
 depends=('dbus' 'libevent' 'curl' 'json-c')
 optdepends=('scdoc')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mariusor/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('583f319337c3323f6cb43eea00398a1d8f1d4bfbf14d17579d2e2922f2009b37')
+sha256sums=('84fa9bef4f7b2c23b2a2d7c7046ee246c710f81c2e7513774ba2e86a323b67a6')
 validpgpkeys=('57D7D1ACC58E01C56961F9FB0FBA983067613EE6')
 
 build() {
