@@ -1,6 +1,6 @@
 pkgbase = tagcat-git
 	pkgdesc = Netcat but using broadcast to find open streams
-	pkgver = 1
+	pkgver = 698638d
 	pkgrel = 1
 	url = https://github.com/dudoslav/tagcat.git
 	arch = any

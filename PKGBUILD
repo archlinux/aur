@@ -1,7 +1,7 @@
 # Maintainer: Dusan Baran <work.dusanbaran@gmail.com>
 
 pkgname=tagcat-git
-pkgver=1
+pkgver=698638d
 pkgrel=1
 pkgdesc="Netcat but using broadcast to find open streams"
 arch=('any')
