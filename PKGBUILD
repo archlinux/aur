@@ -8,8 +8,8 @@
 
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-rt       # Build kernel with a different name
-_pkgver=5.2.9
-_rtpatchver=rt3
+_pkgver=5.2.10
+_rtpatchver=rt4
 pkgver="${_pkgver}_${_rtpatchver}"
 pkgrel=1
 arch=('x86_64')
@@ -29,8 +29,6 @@ source=(
   ${pkgbase}.preset   # standard config files for mkinitcpio ramdisk
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
   0002-ZEN-Add-CONFIG-for-unprivileged_userns_clone.patch
-  0003-iwlwifi-mvm-disable-TX-AMSDU-on-older-NICs.patch
-  0004-iwlwifi-Add-support-for-SAR-South-Korea-limitation.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -40,18 +38,16 @@ validpgpkeys=(
   '5ED9A48FC54C0A22D1D0804CEBC26CDB5A56DE73'  # Steven Rostedt
   'E644E2F1D45FA0B2EAA02F33109F098506FF0B14'  # Thomas Gleixner
 )
-sha256sums=('b6f02a4b306ca5cd314d72615bfc2650166969613135da202630e6c4e1b5d4e6'
+sha256sums=('6096c4387c2a296de9136080942d11ae3f1bd28129b6952f7133c570e43bfc49'
             'SKIP'
-            'bcac9b78dc4bd0a399b68248bcfb16e89d36a13e0e0f4255b89d66bd607ce546'
+            '2f00aa1463069dab042e72ff454c1f5317841fee0d841f4619644b4f40b4ed0d'
             'SKIP'
-            '20fe9b75deddc48578ab1b5ce8bb7c82f73c11b6a610fcce9f704f2cda36a11d'
+            'cf4ef9d0b61efb7a27215fc4ec77a8a07ef67d9cf53a1ab14a07882a6c7613f9'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '75aa8dd708ca5a0137fbf7cddc9cafefe6aac6b8e0638c06c156d412d05af4bc'
-            '187fa8d9a6c5777a8930dcecfafdd9d6e9095d4bf96ec060e756fb7c6a88b74d'
-            'fc96300831506965383ef30bc46b72735dc45bb97dea2ccb8b9450c005d2f020'
-            'ba36bb1acb9e20578ec67e6f84a75fd928b71745533fb445248fe4b9a65c046b')
+            '187fa8d9a6c5777a8930dcecfafdd9d6e9095d4bf96ec060e756fb7c6a88b74d')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-ARCH}
