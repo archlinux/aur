@@ -8,24 +8,12 @@ url="https://gitlab.com/magnusmj/dupliseek.git"
 license=('MIT')
 depends=(python-pip)
 install=dupliseek.install
-source=(git+$url)
-md5sums=('SKIP')
+source=(dupliseek.0.0.2.tar.xz::https://gitlab.com/magnusmj/dupliseek/uploads/7a6999dd09ba87984e176c893344db9a/dupliseek.0.0.2.tar.xz)
+md5sums=('feaeff56c2ccd5827e2e7efd2315a66b')
 
-build()
-{
-    cd "$srcdir"/dupliseek
-    pwd
-    python setup.py build
-}
 
 package() {
-    cd "$srcdir"/dupliseek
+    cd "$srcdir"
 
-    mkdir -p $pkgdir/usr/share/applications/
-    mkdir -p $pkgdir/usr/share/icons/
-
-    python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-    cp icons/compare.png "$pkgdir"/usr/share/icons/dupliseek
-    cp dupliseek.desktop "$pkgdir"/usr/share/applications/
-
+	cp -r dupliseek/* "$pkgdir"/
 }
