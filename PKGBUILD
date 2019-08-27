@@ -60,6 +60,8 @@ makedepends=('kmod' 'inetutils' 'bc' 'libelf' 'python-sphinx' 'python-sphinx_rtd
              'graphviz' 'imagemagick')
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/${_major}"
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_major}"
+_bfq_rev_path="bfq-reverts-sep"
+_bfq_rev_patch="0001-Revert-block-bfq-handle-NULL-return-value-by-bfq_ini.patch"
 _bfq_path_1="bfq-paolo-dev-lucjan-for-5.2.3"
 _bfq_patch_1="0001-block-bfq-dev-lucjan.patch"
 _bfq_path_2="bfq-paolo-dev-lucjan-v2"
@@ -78,6 +80,7 @@ _gcc_patch="enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v4.13+.patc
 source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
         "${_gcc_path}/${_gcc_patch}"
+        #"${_lucjanpath}/${_bfq_rev_path}/${_bfq_rev_patch}"
         "${_lucjanpath}/${_bfq_path_1}/${_bfq_patch_1}"
         "${_lucjanpath}/${_bfq_path_2}/${_bfq_patch_2}"
         "${_lucjanpath}/${_bfq_path_3}/${_bfq_patch_3}"
