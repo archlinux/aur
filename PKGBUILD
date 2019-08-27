@@ -22,7 +22,7 @@ _localmodcfg=
 pkgbase=linux-gc
 _srcver=5.2.10-arch1
 pkgver=${_srcver%-*}
-pkgrel=1
+pkgrel=2
 _bmqversion=099
 arch=(x86_64)
 url="https://cchalpha.blogspot.co.uk/"
@@ -33,7 +33,7 @@ makedepends=(
 )
 options=('!strip')
 _srcname=linux-$_srcver
-_bmq_patch="v5.2_bmq${_bmqversion}.patch"
+_bmq_patch="v5.2.10+_bmq${_bmqversion}.patch"
 _gcc_more_v='20190822'
 source=(
   "$_srcname.tar.gz::https://git.archlinux.org/linux.git/snapshot/linux-$_srcver.tar.gz"
@@ -54,7 +54,7 @@ sha256sums=('91c6d6b7419c133544280b23936bec3ebe208dc02528c480a4bf6a8636651e21'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            'f36f878fb775166c1ea9232309fc7297aec79f58a3a9531d40e7b2681ffe7cf3'
+            '0f9e4b66b5049166774760c98a6f3daabc3298baa74b87abe45517ab2c80c053'
             '8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5')
 
 _kernelname=${pkgbase#linux}
