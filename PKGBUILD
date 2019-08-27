@@ -6,7 +6,7 @@ _srcname="${_name}-dropbox"
 pkgname="${_name}-git"
 provides=("${_name}")
 conflicts=("${_name}")
-pkgver=0.2.3.r42.g44c7387
+pkgver=0.3.2.r2.gc4efc18
 pkgrel=1
 pkgdesc='A light-weight and open-source Dropbox client.'
 arch=('any')
@@ -20,7 +20,8 @@ depends=(
     'python-dropbox'
     'python-keyrings-alt'
     'python-u-msgpack'
-    'python-watchdog')
+    'python-watchdog'
+    'python-pyro')
     optdepends=('python-pyqt5: GUI support (runtime)')
 md5sums=('SKIP')
 
@@ -47,5 +48,5 @@ package() {
     python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
     install -Dm644 "${srcdir}/${_name}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${_name}/LICENSE"
-    install -Dm644 "${_name}/gui/resources/app_icon.svg" "${pkgdir}/usr/share/pixmaps/${_name}.svg"
+    install -Dm644 "${_name}/gui/resources/Maestral.png" "${pkgdir}/usr/share/pixmaps/${_name}.png"
 }

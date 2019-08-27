@@ -1,6 +1,6 @@
 pkgbase = maestral-git
 	pkgdesc = A light-weight and open-source Dropbox client.
-	pkgver = 0.2.3.r42.g44c7387
+	pkgver = 0.3.2.r2.gc4efc18
 	pkgrel = 1
 	url = https://github.com/SamSchott/maestral-dropbox
 	arch = any
@@ -14,6 +14,7 @@ pkgbase = maestral-git
 	depends = python-keyrings-alt
 	depends = python-u-msgpack
 	depends = python-watchdog
+	depends = python-pyro
 	optdepends = python-pyqt5: GUI support (runtime)
 	provides = maestral
 	conflicts = maestral
