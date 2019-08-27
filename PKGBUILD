@@ -1,7 +1,7 @@
 # Maintainer: Mike Williamson <mike at korora dot ca>
 
 pkgname=arangodb
-pkgver=3.4.7
+pkgver=3.5.0
 pkgrel=1
 pkgdesc="A multi-model NoSQL database, combining key-value, document and graph data models."
 arch=("i686" "x86_64")
@@ -17,7 +17,7 @@ source=("https://download.arangodb.com/Source/ArangoDB-$pkgver.tar.bz2"
 "arangodb-tmpfile.conf"
 "arangodb-users.conf")
 validpgpkeys=("CD8CB0F1E0AD5B52E93F41E7EA93F5E56E751E9B") # Frank Celler (ArangoDB Debian Repository) <info@arangodb.com>
-sha512sums=('f0e1036ff1ab4b332b3308aa485085112e893c4205f932cc683f7bc9fc63f486726b2bb3da132f1f00b8389bdb229108da46055ec44f8a3ec1f98e65cd558815'
+sha512sums=('b091e9459b8bc60243e5ca98bff52a067a39d9674b273f983bdd61d8c1d45637000fbea2e3da96bb2af4c01110a0017f06163d5e9417bd1baf3f8ca99e57c76c'
             'SKIP'
             '18bccbc960555c600c86409a89545c1c056dbce9abcd5724cd61c54a734d9c974df0d01b0a49c1859299ffc448c3e576f8c2bcc6134ad3f5062293b11cf85091'
             'b1fdf8cc0525d1fc093d02b24b18a1d8361fb2cd8274974269957ef8074a26eb4f2174bdd4abd41154d535df43cd9d553c1b8205cd5945e53674d25dfa3c533f'
@@ -55,7 +55,7 @@ package() {
   mkdir -p $pkgdir/var/lib/arangodb3-apps
   mkdir -p $pkgdir/var/log/arangodb3
   cp -R $srcdir/ArangoDB-$pkgver/js/* $pkgdir/usr/share/arangodb3/js
-  cp -R $srcdir/ArangoDB-$pkgver/Documentation/man/* $pkgdir/usr/share/man
+  cp -R $srcdir/ArangoDB-$pkgver/build/Documentation/man/* $pkgdir/usr/share/man
 
   install -D -m644 arangodb-users.conf "$pkgdir"/usr/lib/sysusers.d/arangodb.conf
   install -D -m644 arangodb-tmpfile.conf "$pkgdir"/usr/lib/tmpfiles.d/arangodb.conf
