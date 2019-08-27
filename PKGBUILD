@@ -1,7 +1,7 @@
 pkgname=yup
 _pkgname=yup
-pkgver="0.2.0_beta"
-_pkgver="0.2.0-beta"
+pkgver="0.2.1_beta"
+_pkgver="0.2.1-beta"
 pkgrel=1
 pkgdesc="Arch Linux AUR Helper with ncurses functionality and better searching and sorting"
 arch=('any')
