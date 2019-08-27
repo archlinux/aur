@@ -1,7 +1,7 @@
 # Maintainer: Fabio Heday <fheday@gmail.com>
 
 pkgname=trnascanse
-pkgver=2.0.0
+pkgver=2.0.3
 pkgrel=1
 epoch=1
 pkgdesc="a program for improved detection of transfer RNA (tRNA) genes in genomic sequence."
@@ -10,7 +10,7 @@ url="http://lowelab.ucsc.edu/tRNAscan-SE/"
 license=(GPL)
 makedepends=(cmake gcc)
 source=("http://trna.ucsc.edu/software/trnascan-se-${pkgver}.tar.gz")
-sha512sums=('4f4fcd4f694c4bf3ff2ff8f531dc7e19668d46dc3017979a8f24a99ecd967e48adbf6a9591ce4fd9f6ceda871ba72a9f32daa6b1001308709c8c66e1f1e4b58f')
+sha512sums=('7dc2205afd39bff6ddb700bacdaac16b427e130ac0e311397a7301e124bbd5d1d1b90de4b8a629ab4fe31eeccc7146f0008ceb16fd79f3467f991dde49b5c38a')
 
 prepare() {
   chmod -R o+xr tRNAscan-SE-2.0/lib/tRNAscanSE/
