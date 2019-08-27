@@ -1,8 +1,8 @@
 # Maintainer: Vasia Novikov <n1dr+cmarchlinux@yaaandex.com> (replace "aaa" with "a")
 
 pkgname=rua
-pkgver=0.14.5
-pkgrel=2
+pkgver=0.14.6
+pkgrel=1
 pkgdesc='AUR helper in Rust providing control, review and jailed/offline build options'
 url='https://github.com/vn971/rua'
 source=("https://github.com/vn971/rua/archive/${pkgver}.tar.gz")
@@ -18,11 +18,12 @@ optdepends=(
 
 #options+=(!strip)  # uncomment if you want readable stack traces
 
-sha256sums=(a5ee258589f515b0ba258169a5f333e8fa7f3ff72e767729e78dc19ae0267afb)
+sha256sums=(607f8e0c05887d21d366d5010efabd5b580b531a5d3f3492bb9754b357dac35d)
 
 build () {
   cd "$srcdir/$pkgname-$pkgver"
   mkdir -p target/completions
+
   RUSTUP_TOOLCHAIN=stable \
     COMPLETIONS_DIR=target/completions \
     cargo build --release
