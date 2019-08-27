@@ -9,7 +9,7 @@ url='https://community.kde.org/Frameworks'
 license=(LGPL)
 groups=(kf5)
 depends=(qt5-quickcontrols qt5-quickcontrols2 qt5-graphicaleffects)
-makedepends=(extra-cmake-modules qt5-tools qt5-svg kpackage doxygen)
+makedepends=(extra-cmake-modules qt5-tools qt5-doc qt5-svg kpackage doxygen)
 source=("https://download.kde.org/stable/frameworks/${pkgver%.*}/$pkgname-$pkgver.tar.xz"{,.sig})
 sha256sums=('afdbe922f0627330319f22834d6631af13edb0081c687422d36acb8697a88c30'
             'SKIP')
@@ -22,7 +22,6 @@ prepare() {
 build() {
   cd build
   cmake ../$pkgname-$pkgver \
-    -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DBUILD_TESTING=OFF \
     -DBUILD_QCH=ON
