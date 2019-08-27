@@ -1,0 +1,16 @@
+pkgbase = pkgtop-git
+	pkgdesc = Interactive package manager & resource monitor
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/keylo99/pkgtop
+	arch = any
+	license = GPL3
+	makedepends = go>=1.7
+	depends = git
+	provides = pkgtop
+	conflicts = pkgtop
+	source = git://github.com/keylo99/pkgtop.git#branch=master
+	sha256sums = SKIP
+
+pkgname = pkgtop-git
+
