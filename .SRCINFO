@@ -7,8 +7,8 @@ pkgbase = dupliseek
 	arch = any
 	license = MIT
 	depends = python-pip
-	source = git+https://gitlab.com/magnusmj/dupliseek.git
-	md5sums = SKIP
+	source = dupliseek.0.0.2.tar.xz::https://gitlab.com/magnusmj/dupliseek/uploads/7a6999dd09ba87984e176c893344db9a/dupliseek.0.0.2.tar.xz
+	md5sums = feaeff56c2ccd5827e2e7efd2315a66b
 
 pkgname = dupliseek
 
