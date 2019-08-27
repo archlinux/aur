@@ -10,7 +10,7 @@ arch=(x86_64)
 url='https://www.kde.org/workspaces/plasmadesktop/'
 license=(LGPL)
 depends=(qt5-x11extras libxrandr kwayland)
-makedepends=(extra-cmake-modules doxygen qt5-tools)
+makedepends=(extra-cmake-modules doxygen qt5-tools qt5-doc)
 groups=(plasma)
 source=("https://download.kde.org/stable/plasma/$pkgver/$pkgname-$pkgver.tar.xz"{,.sig})
 sha256sums=('f20f33a2f32b3db39e94ca9d10e240591650357d03c1a2f8eb6c5faa4d1bf723'
@@ -27,7 +27,6 @@ prepare() {
 build() {
   cd build
   cmake ../$pkgname-$pkgver \
-    -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DCMAKE_INSTALL_LIBEXECDIR=lib \
     -DBUILD_TESTING=OFF \
