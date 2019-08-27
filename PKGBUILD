@@ -2,13 +2,13 @@
 
 pkgname=pkgtop-git
 pkgdesc="Interactive package manager & resource monitor"
-pkgver=1.0.0
+pkgver=r315.19d57fb
 pkgrel=1
 arch=('any')
 url="https://github.com/keylo99/pkgtop"
 license=('GPL3')
 depends=('git')
-makedepends=('go>=1.7')
+makedepends=('go')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git://github.com/keylo99/pkgtop.git#branch=master')
