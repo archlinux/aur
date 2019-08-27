@@ -10,7 +10,7 @@ confilcts=('citra-git' 'citra-qt-git' 'citra-nightly-bin' 'citra-qt-nightly-bin'
 replaces=("citra-nightly-bin" "citra-qt-nightly-bin")
 license=('GPL2')
 arch=('x86_64')
-url="https://github.com/citra-emu/citra-nightly"
+url="https://citra-emu.org"
 
 _nightly_id=$(echo $pkgver | cut -d'_' -f1)
 _ref="$(echo $pkgver | cut -d'_' -f2)-$(echo $pkgver | cut -d'_' -f3)"
