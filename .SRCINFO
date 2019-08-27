@@ -1,7 +1,7 @@
 pkgbase = python-cartopy
 	pkgdesc = A cartographic python library with matplotlib support for visualisation
 	pkgver = 0.17.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://scitools.org.uk/cartopy/docs/latest/
 	arch = x86_64
 	license = LGPL3
