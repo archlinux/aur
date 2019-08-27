@@ -18,6 +18,7 @@ conflicts=("${pkgname%-bin}"
 ) # TODO
 url="https://uplexa.com/"
 license=("BSD3")
+depends=('libnorm1')
 backup=("etc/uplexad.conf")
 provides=("uplexad=${pkgver}"
           "uplexa-blockchain-export=${pkgver}"
