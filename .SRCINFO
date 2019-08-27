@@ -1,0 +1,14 @@
+pkgbase = smtp-user-enum-git
+	pkgver = r2.69eea42
+	pkgrel = 1
+	url = https://github.com/pentestmonkey/smtp-user-enum
+	arch = any
+	license = GPL
+	depends = perl
+	provides = smtp-user-enum
+	conflicts = smtp-user-enum
+	source = smtp-user-enum::git+https://github.com/pentestmonkey/smtp-user-enum.git
+	sha256sums = SKIP
+
+pkgname = smtp-user-enum-git
+
