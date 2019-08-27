@@ -24,6 +24,7 @@ validpgpkeys=()
 
 build() {
  	cd shadow-of-the-wyrm
+ 	git checkout develop
 	premake4 --lua_include=/usr/include/lua5.1 --lua_link=lua5.1 gmake
 	make config=release
 	#make config=debug 
