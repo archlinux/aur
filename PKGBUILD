@@ -1,8 +1,8 @@
 # Maintainer: Piyush Pangtey <gokuvsvegita at gmail dot com>
 _pkgname=gitin
 pkgname="${_pkgname}-bin"
-pkgver=0.1.5
-pkgrel=2
+pkgver=0.2.1
+pkgrel=1
 pkgdesc="commit/branch/workdir explorer for git"
 arch=('x86_64')
 url="https://github.com/isacikgoz/gitin"
@@ -13,7 +13,7 @@ source=(
         "https://raw.githubusercontent.com/isacikgoz/${_pkgname}/v${pkgver}/LICENSE"
        )
 sha256sums=(
-        '3b29e931972d4a104d41ccc49e74e62eb38f4c50c78cc8f660a702626ca372bc'
+        'a11cddbcc20a91c1e29e902f3152158bd2f6d60069d220a7adac7fff5fb1be7f'
         'SKIP'
         )
 
