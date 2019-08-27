@@ -8,7 +8,7 @@ pkgoption1="gui-standalone-linux-x64"
 pkgoption2="gui-standalone-linux-arm"
 pkgver='0.26.0'
 pkggopath="github.com/$projectname/$pkgname1"
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="https://${pkggopath}"
 license=()
@@ -17,10 +17,10 @@ makedepends=()
 #detect architecture & adjust source & checksums accordingly
 case "$CARCH" in
 	arm*) _pkgarch="$pkgoption2"
-		sha256sums+=('e1a4a92e05aaa3c04d860650934f2f578e051ab65a77fdd326574b6d8b397d2a')
+		sha256sums+=('aa2b0441f8fae3880179b1fac12466c058ded1326abbe9388e9d2141035437d1')
 		;;
   aarch64*) _pkgarch="$pkgoption2"
-    sha256sums+=('e1a4a92e05aaa3c04d860650934f2f578e051ab65a77fdd326574b6d8b397d2a')
+    sha256sums+=('aa2b0441f8fae3880179b1fac12466c058ded1326abbe9388e9d2141035437d1')
     ;;
 	x86_64) _pkgarch="$pkgoption1"
 		sha256sums+=('e06678954e5d45a3b4bbf3dd7e928a454a70887fccccadb4f21d4652e3a6a2ca')
