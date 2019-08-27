@@ -1,0 +1,2 @@
+g netflow - -
+u netflow - "netflow user" /var/lib/nfsen /usr/bin/false
