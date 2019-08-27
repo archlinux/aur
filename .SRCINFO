@@ -1,0 +1,35 @@
+pkgbase = autorecon-git
+	pkgdesc = Multi-threaded network reconnaissance tool which performs automated enumeration of services.
+	pkgver = r51.d705884
+	pkgrel = 1
+	url = https://github.com/Tib3rius/AutoRecon
+	arch = any
+	license = GPL
+	depends = python-colorama
+	depends = python-toml
+	optdepends = seclists-git
+	optdepends = enum4linux
+	optdepends = gobuster
+	optdepends = nbtscan
+	optdepends = nikto
+	optdepends = nmap
+	optdepends = onesixtyone
+	optdepends = oscanner
+	optdepends = smbclient
+	optdepends = smbmap
+	optdepends = smtp-user-enum
+	optdepends = net-snmp
+	optdepends = sslscan
+	optdepends = sipvicious
+	optdepends = tnscmd10g
+	optdepends = whatweb
+	optdepends = wkhtmltopdf
+	provides = autorecon
+	conflicts = autorecon
+	source = autorecon::git+https://github.com/Tib3rius/AutoRecon.git
+	source = autorecon.sh
+	sha256sums = SKIP
+	sha256sums = 90b36035e98bffbe2fe7e9a504fa7c6b17bf22d231cf6daea102e5ec055737fe
+
+pkgname = autorecon-git
+
