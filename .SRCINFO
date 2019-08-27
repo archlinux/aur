@@ -1,6 +1,6 @@
 pkgbase = redshift-wlr-gamma-control
 	pkgdesc = Redshift fork supporting color temperature adjustment with wlroots
-	pkgver = 1.12+r25+geecbfed
+	pkgver = 1.12+r25+g7da875d
 	pkgrel = 1
 	url = https://github.com/minus7/redshift/tree/wayland
 	arch = i686
@@ -20,7 +20,7 @@ pkgbase = redshift-wlr-gamma-control
 	optdepends = sway: Wayland environment using the wlr-gamma-control protocol
 	provides = redshift
 	conflicts = redshift
-	source = git+https://github.com/minus7/redshift#commit=eecbfedac48f827e96ad5e151de8f41f6cd3af66
+	source = git+https://github.com/minus7/redshift#commit=7da875d34854a6a34612d5ce4bd8718c32bec804
 	sha512sums = SKIP
 
 pkgname = redshift-wlr-gamma-control

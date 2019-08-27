@@ -1,8 +1,8 @@
 # Maintainer: Jean Lucas <jean@4ray.co>
 
 pkgname=redshift-wlr-gamma-control
-pkgver=1.12+r25+geecbfed
-_commit=eecbfedac48f827e96ad5e151de8f41f6cd3af66
+pkgver=1.12+r25+g7da875d
+_commit=7da875d34854a6a34612d5ce4bd8718c32bec804
 pkgrel=1
 pkgdesc='Redshift fork supporting color temperature adjustment with wlroots'
 arch=(i686 x86_64)
