@@ -6,7 +6,7 @@
 #_with_usermode=1
 
 pkgname=mock
-pkgver=1.4.17
+pkgver=1.4.18
 _rpmrel=1
 _pkgtag=$pkgname-$pkgver-$_rpmrel
 pkgrel=$_rpmrel.1
@@ -21,6 +21,7 @@ optdepends=('createrepo_c: for mockchain command'
             'lvm2: for lvm_root plugin'
             'nosync: to speed up yum/dnf database access'
             'pigz: for parallel compression of chroot cache'
+            'procenv: for procenv plugin'
             'python-requests: for mockchain command'
             'yum-utils: to create RPMs for Fedora <= 23 (including EL5, EL6 and EL7)')
 install="$pkgname.install"
@@ -29,7 +30,7 @@ backup=("etc/$pkgname/logging.ini"
 source=("$url/archive/$_pkgtag.tar.gz"
         "$pkgname.sysusers"
         "$pkgname.tmpfiles")
-md5sums=('e18b9f2a57070c86c45e725dca54b448'
+md5sums=('fcb34f9ab2f793767aa7bebbf33b1c65'
          'd277502b9a95484594f86231d073dae0'
          '1052fa4db74b59b0c195f4756bd865e8')
 
