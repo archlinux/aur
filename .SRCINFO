@@ -1,0 +1,16 @@
+pkgbase = luajit-openresty
+	pkgdesc = Just-in-time compiler and drop-in replacement for Lua (openresty fork)
+	pkgver = 2.1.20190626
+	pkgrel = 1
+	url = http://luajit.org/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = gcc-libs
+	provides = luajit
+	conflicts = luajit
+	source = https://github.com/openresty/luajit2/archive/v2.1-20190626.tar.gz
+	sha1sums = da301ba74abcd4bdc36c4c9f37d6ef97b3673fdc
+
+pkgname = luajit-openresty
+
