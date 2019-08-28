@@ -1,7 +1,7 @@
 # Maintainer: Ke Liu <spcter119@gmail.com>
 
 pkgname=python-efb-wechat-slave-git
-pkgver=r97.530dd69
+pkgver=r144.c7e4b3e
 pkgrel=1
 pkgdesc='EFB WeChat Slave, a channel for EH Forwarder Bot.'
 arch=('any')
