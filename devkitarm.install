@@ -11,9 +11,4 @@ post_install() {
 
 post_upgrade() {
   post_install
-
-  if [[ $(vercmp "$2" "r47") -ne 1 && $(vercmp "r48" "$1") -ne 1 ]]; then
-    echo "Note: The provided tools are not added to the \$PATH automatically anymore."
-    echo "  This caused problems with other toolchains using the same executable names."
-  fi
 }

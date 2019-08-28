@@ -1,12 +1,12 @@
 # Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=devkitarm
-pkgver=r48
-_buildscriptsver=20180514
-_binutilsver=2.30
-_gccver=8.1.0
-_newlibver=3.0.0
-_gdbver=8.0
+pkgver=r53
+_buildscriptsver=20190701
+_binutilsver=2.32
+_gccver=9.1.0
+_newlibver=3.1.0
+_gdbver=8.2.1
 pkgrel=1
 pkgdesc="ARM toolchain for GP32, Nintendo (3)DS and GBA homebrew development"
 arch=('x86_64')
@@ -14,56 +14,57 @@ url="http://devkitpro.org"
 license=('GPL')
 options=(!strip libtool staticlibs emptydirs)
 depends=('flex' 'libmpc' 'python' 'xz')
+conflicts=('devkitARM')
+provides=('devkitARM')
 install=devkitarm.install
-source=("https://github.com/devkitPro/buildscripts/releases/download/v$_buildscriptsver/buildscripts-$_buildscriptsver.tar.bz2"
-        "https://ftp.gnu.org/gnu/binutils/binutils-$_binutilsver.tar.bz2"
-        "https://ftp.gnu.org/gnu/gcc/gcc-$_gccver/gcc-$_gccver.tar.xz"
-        "ftp://sourceware.org/pub/newlib/newlib-$_newlibver.tar.gz"
-        "https://ftp.gnu.org/gnu/gdb/gdb-$_gdbver.tar.xz"
+source=(buildscripts-$_buildscriptsver.tar.gz::"https://github.com/devkitPro/buildscripts/archive/v$_buildscriptsver.tar.gz"
+        "https://github.com/devkitPro/buildscripts/releases/download/sources/binutils-$_binutilsver.tar.xz"
+        "https://github.com/devkitPro/buildscripts/releases/download/sources/gcc-$_gccver.tar.xz"
+        "https://github.com/devkitPro/buildscripts/releases/download/sources/newlib-$_newlibver.tar.gz"
+        "https://github.com/devkitPro/buildscripts/releases/download/sources/gdb-$_gdbver.tar.xz"
         "devkitarm.sh"
         "devkitarm.fish")
-sha256sums=('c7c11bacfdbcc634d2d70ac17785a0701d5eaaa6753762ca57a918c3841119ac'
-            'efeade848067e9a03f1918b1da0d37aaffa0b0127a06b5e9236229851d9d0c09'
-            '1d1866f992626e61349a1ccd0b8d5253816222cdc13390dcfaa74b093aa2b153'
-            'c8566335ee74e5fcaeb8595b4ebd0400c4b043d6acb3263ecb1314f8f5501332'
-            'f6a24ffe4917e67014ef9273eb8b547cb96a13e5ca74895b06d683b391f3f4ee'
+sha256sums=('3dbe4ee7ef819cb5ee0dd87632eea69cfe355d0f5723ce58343775a5ab6684d5'
+            '0ab6c55dd86a92ed561972ba15b9b70a8b9f75557f896446c82e8b36e473ee04'
+            '79a66834e96a6050d8fe78db2c3b32fb285b230b855d0a66288235bc04b327a0'
+            'fb4fa1cc21e9060719208300a61420e4089d6de6ef59cf533b57fe74801d102a'
+            'baaabb28026ba47e3fd56f0138e020c9b3d51e11800a3b220d736fae8e677112'
             '2162a4cf8ae8567b5ddff631474f28b6a0a5d0bce43915396b7dea602e2131e0'
             '13357e81de7ec8d7ad7f9fb37a78c23c4f99c6f7ca67d3a0070eedc388deb938')
-noextract=("binutils-$_binutilsver.tar.bz2" "gcc-$_gccver.tar.xz"
+noextract=("binutils-$_binutilsver.tar.xz" "gcc-$_gccver.tar.xz"
            "newlib-$_newlibver.tar.gz" "gdb-$_gdbver.tar.xz")
 
 prepare() {
-  # reset build dir and force reinstalling already built tools
+  # reset build dir
   rm -rf build
-  [ -d buildscripts/.devkitARM ] && find buildscripts/.devkitARM \
-    \( -name "installed-*" -o -name "installed" \) -delete
 
-  (cd buildscripts
+  (cd buildscripts-$_buildscriptsver
+    # force reinstalling already built tools
+    [ -d .devkitARM ] && find .devkitARM \( -name "installed-*" -o -name "installed" \) -delete
+
     # generate config file for automatic build
     cat << END > config.sh
 #!bin/sh
 BUILD_DKPRO_PACKAGE=1
 BUILD_DKPRO_INSTALLDIR="$srcdir"/build
 BUILD_DKPRO_SRCDIR="$srcdir"
-BUILD_DKPRO_SKIP_LIBRARIES=1
 BUILD_DKPRO_SKIP_TOOLS=1
 BUILD_DKPRO_AUTOMATED=1
 END
 
-    # do not try to download or extract tool packages and libraries
-    sed 's/ \$hostarchives/ ""/g;s/ \$targetarchives/ ""/g' -i build-devkit.sh
+    # do not try to download or extract tool packages
+    sed 's/ \$hostarchives/ ""/g;s/archives=\"devkitarm.*//' -i build-devkit.sh
 
     # do not build gdb with guile support (broken)
     sed '/gdb/,$ s/--disable-werror/& --with-guile=no/' -i dkarm-eabi/scripts/build-gcc.sh
 
     # fix search path to use correct tools
-    sed 's|$PATH:$TOOLPATH/$package/bin|$TOOLPATH/$package/bin:$PATH|' -i \
-      build-devkit.sh
+    sed 's|$PATH:$TOOLPATH/$package/bin|$TOOLPATH/$package/bin:$PATH|' -i build-devkit.sh
   )
 }
 
 build() {
-  cd buildscripts
+  cd buildscripts-$_buildscriptsver
 
   # disable conflicting build flags
   unset CPPFLAGS
