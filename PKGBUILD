@@ -3,7 +3,7 @@ pkgbase=python-stsci.tools
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python2-${_pyname}")
 pkgver=3.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Collection of STScI utility functions"
 arch=('i686' 'x86_64')
 url="https://stscitools.readthedocs.io/"
@@ -42,6 +42,8 @@ check() {
 package_python2-stsci.tools() {
     depends=('python2-astropy')
     optdepends=('python-stsci.tools-doc: Documentation for STScI Tools')
+    provides=("python2-stscitools=${pkgver}")
+    conflicts=('python2-stscitools')
     cd ${srcdir}/${_pyname}-${pkgver}
 
     install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE.md
@@ -54,6 +56,8 @@ package_python2-stsci.tools() {
 package_python-stsci.tools() {
     depends=('python-astropy')
     optdepends=('python-stsci.tools-doc: Documentation for STScI Tools')
+    provides=("python-stscitools=${pkgver}")
+    conflicts=('python-stscitools')
     cd ${srcdir}/${_pyname}-${pkgver}
 
     install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE.md

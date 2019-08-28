@@ -1,7 +1,7 @@
 pkgbase = python-stsci.tools
 	pkgdesc = Collection of STScI utility functions
 	pkgver = 3.6.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://stscitools.readthedocs.io/
 	arch = i686
 	arch = x86_64
@@ -19,8 +19,12 @@ pkgbase = python-stsci.tools
 pkgname = python-stsci.tools
 	depends = python-astropy
 	optdepends = python-stsci.tools-doc: Documentation for STScI Tools
+	provides = python-stscitools=3.6.0
+	conflicts = python-stscitools
 
 pkgname = python2-stsci.tools
 	depends = python2-astropy
 	optdepends = python-stsci.tools-doc: Documentation for STScI Tools
+	provides = python2-stscitools=3.6.0
+	conflicts = python2-stscitools
 
