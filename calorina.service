@@ -5,7 +5,7 @@ After=network.target
 [Service]
 Type=simple
 Restart=on-abort
-ExecStart=/usr/bin/calorina -c %E/calorina/config.toml
+ExecStart=/usr/bin/calorinad -c %E/calorina/config.toml
 
 [Install]
 WantedBy=multi-user.target
