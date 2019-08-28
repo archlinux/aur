@@ -1,0 +1,23 @@
+pkgbase = android-ndk-r18b
+	pkgdesc = Android C/C++ developer kit (r18b)
+	pkgver = r18b
+	pkgrel = 1
+	url = https://developer.android.com/ndk/
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	license = custom
+	depends = ncurses5-compat-libs
+	provides = android-ndk
+	conflicts = android-ndk
+	replaces = android-ndk64
+	options = !strip
+	options = staticlibs
+	backup = etc/profile.d/android-ndk.sh
+	source = android-ndk.sh
+	source = http://dl.google.com/android/repository/android-ndk-r18b-linux-x86_64.zip
+	sha256sums = 5bc58ccd7e7de03c9656ca8f13fb9bf9dff2eeee31a2670ce04a4b97be73dc95
+	sha256sums = 4f61cbe4bbf6406aa5ef2ae871def78010eed6271af72de83f8bd0b07a9fd3fd
+
+pkgname = android-ndk-r18b
+
