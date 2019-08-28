@@ -3,7 +3,7 @@
 # Upstream: https://gitlab.com/thann/pingg
 
 pkgname=pingg-git
-pkgver=0.0.10.1.g2d97bb4
+pkgver=0.0.10.5.gde7311a
 pkgrel=1
 pkgdesc='Ping latency graphical CLI.'
 arch=('any')
@@ -29,6 +29,9 @@ package() {
   rm "$pkgdir/usr/lib/node_modules/pingg"
   find * -exec install -D -m644 "{}" "$pkgdir/usr/lib/node_modules/pingg/{}" \;
   chmod +x "$pkgdir/usr/lib/node_modules/pingg/pingg"
+  # install desktop file and icon
+  install -D -m644 thann.pingg.desktop "$pkgdir/usr/share/applications/thann.pingg.desktop"
+  install -D -m644 icon.pingg.png "$pkgdir/usr/share/pixmaps/icon.pingg.png"
   #HACK: remove references to $srcdir & $pkgdir (if you care)
   # npm install -g removeNPMAbsolutePaths --prefix "$pkgdir"/usr
   # "$pkgdir"/usr/bin/removeNPMAbsolutePaths "$pkgdir"/usr
