@@ -1,7 +1,7 @@
 # Maintainer: James Spencer <james.s.spencer@gmail.com>
 
 pkgname=opium
-pkgver=3.8
+pkgver=4.1
 pkgrel=1
 pkgdesc="pseudopotential generator for density functional theory"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="http://opium.sourceforge.net/"
 license=('GPL')
 makedepends=('gcc' 'gcc-fortran')
 source=(http://downloads.sourceforge.net/project/$pkgname/$pkgname/$pkgname-v$pkgver/$pkgname-v$pkgver-src.tgz)
-sha1sums=('9649e79e2393fe35e7575ab31dffd2b1f0437e71')
+sha256sums=('e5a102b52601ad037d8a7b3e2dbd295baad23b8c1e4908b9014df2e432c23c60')
 
 build() {
   cd "$srcdir/$pkgname-v$pkgver-src"
