@@ -1,7 +1,7 @@
 # Maintainer: Jorengarenar
 
 pkgname=quiterss-backup
-pkgver=0.6.2
+pkgver=0.6.3
 pkgrel=1
 pkgdesc='Simple script, which provides better than the build-in backup options for QuiteRSS'
 arch=('any')
