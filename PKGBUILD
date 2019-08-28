@@ -1,8 +1,9 @@
-# Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
+# Maintainer:
+# Contributor: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgbase=python-tatsu
 pkgname=(python-tatsu python2-tatsu)
-pkgver=4.2.5
+pkgver=4.4.0
 pkgrel=1
 pkgdesc="A tool that takes grammars in a variation of EBNF as input, and outputs memoizing (Packrat) PEG parsers in Python"
 arch=('any')
@@ -11,7 +12,7 @@ license=('custom: BSD')
 makedepends=('python-setuptools'
              'python2-setuptools')
 source=($pkgname-$pkgver.tar.gz::"https://github.com/neogeny/TatSu/archive/v$pkgver.tar.gz")
-sha256sums=('5d31af50b87760816e2703ea6ea91e744190317aec8cb5093fb4d9a9b7f00d61')
+sha256sums=('db392dffa3a847f748490e7dc5e4a37c6004aa5b4712a8b122ad3fdf43676a3e')
 
 prepare() {
   # copy folder, so we can cleanly build for both python versions
