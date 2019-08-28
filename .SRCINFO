@@ -1,7 +1,7 @@
 pkgbase = xcb-imdkit-git
 	pkgdesc = Input method development support for xcb
 	pkgver = r62.a607b19
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/fcitx/xcb-imdkit
 	arch = i686
 	arch = x86_64
