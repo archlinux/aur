@@ -3,14 +3,15 @@
 # Contributor: csslayer <wengxt AT gmail com>
 
 pkgname=libime-git
-pkgver=r139.d612e07
-pkgrel=3
+pkgver=r140.3254159
+pkgrel=1
 pkgdesc="A library to support generic input method implementation"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/fcitx/libime"
 license=('GPL')
 depends=('boost-libs' 'fcitx5-git')
 makedepends=('boost' 'extra-cmake-modules' 'git' 'python')
+conflicts=('libime')
 source=("git+$url.git")
 sha512sums=('SKIP')
 
