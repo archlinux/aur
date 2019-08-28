@@ -1,17 +1,17 @@
 # Maintainer: Danilo J. S. Bellini <danilo dot bellini at gmail dot com>
 pkgname=('kealib')
-pkgver=1.4.11
+pkgver=1.4.12
 pkgrel=1
 pkgdesc="An HDF5 Based Raster File Format and its GDAL plugin"
 arch=('i686' 'x86_64')
 url='http://kealib.org'
 license=('MIT')
 makedepends=('cmake')
-depends=('hdf5' 'gdal<2.4')
+depends=('hdf5' 'gdal')
 options=(!emptydirs)
 source=("https://bitbucket.org/chchrsc/kealib/get/kealib-$pkgver.tar.bz2")
-sha256sums=('c39aa8009e2504ed461e943974a1478ec2b96c0b04516d2386317c191ffce5aa')
-_srcpath=chchrsc-kealib-74ca085025e9
+sha256sums=('844cdef518ab3fe3b6bae4bce5c1ca46e9ac9ff453b5ca5f3ccd87b23b89d511')
+_srcpath=chchrsc-kealib-e042a597679f
 
 build() {
   cd "$srcdir/$_srcpath"
@@ -23,6 +23,11 @@ build() {
         -D LIBKEA_WITH_GDAL=TRUE \
         .
   make
+}
+
+check() {
+  cd "$srcdir/$_srcpath"
+  make test
 }
 
 package() {
