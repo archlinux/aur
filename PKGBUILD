@@ -8,7 +8,7 @@
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 _pkgname=gegl
-pkgname="${_pkgname}-qfix-git"
+pkgname="${_pkgname}-git"
 pkgver=0.4.17.r9768.e1aa95ac1
 pkgrel=1
 pkgdesc="Graph based image processing framework"

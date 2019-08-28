@@ -1,4 +1,4 @@
-pkgbase = gegl-qfix-git
+pkgbase = gegl-git
 	pkgdesc = Graph based image processing framework
 	pkgver = 0.4.17.r9768.e1aa95ac1
 	pkgrel = 1
@@ -38,5 +38,5 @@ pkgbase = gegl-qfix-git
 	source = git+https://gitlab.gnome.org/GNOME/gegl.git
 	sha512sums = SKIP
 
-pkgname = gegl-qfix-git
+pkgname = gegl-git
 
