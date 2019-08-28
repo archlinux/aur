@@ -1,0 +1,20 @@
+pkgbase = nushell-bin
+	pkgdesc = A shell for the GitHub era
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = http://nushell.sh
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = MIT
+	depends = openssl
+	depends = zlib
+	optdepends = libxcb
+	optdepends = libx11
+	conflicts = nushell
+	source = nushell-bin-0.2.0.tar.gz::https://github.com/nushell/nushell/releases/download/0.2.0/nu_0_2_0_linux.tar.gz
+	sha256sums = 5ea42e58f0ce6952298beb926f7b5b5dabe9a4da6e08144ca6a52069bafaeeef
+
+pkgname = nushell-bin
+
