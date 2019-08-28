@@ -1,9 +1,9 @@
 pkgbase = dupliseek-git
 	pkgdesc = Duplicate image finder written in Python/Qt5
 	pkgver = 0.0.2alpha.r55.3ce09f8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/magnusmj/dupliseek
-	arch = any
+	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = python-setuptools
