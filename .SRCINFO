@@ -7,7 +7,6 @@ pkgbase = glib2-clear
 	license = LGPL2.1
 	checkdepends = desktop-file-utils
 	makedepends = gettext
-	makedepends = gtk-doc
 	makedepends = shared-mime-info
 	makedepends = python
 	makedepends = libelf
@@ -21,6 +20,8 @@ pkgbase = glib2-clear
 	depends = zlib
 	optdepends = python: gdbus-codegen, glib-genmarshal, glib-mkenums, gtester-report
 	optdepends = libelf: gresource inspection tool
+	provides = glib2=2.60.6
+	conflicts = glib2
 	options = !emptydirs
 	source = git+https://github.com/GNOME/glib.git#commit=0a63daa96426715498b55318f68a67baee40c509
 	source = clearlinux::git+https://github.com/clearlinux-pkgs/glib.git#commit=c57f2dff8fa0f25043e4d2ce608a2abd57ee7860
@@ -34,10 +35,4 @@ pkgbase = glib2-clear
 	sha256sums = 5ba204a2686304b1454d401a39a9d27d09dd25e4529664e3fd565be3d439f8b6
 
 pkgname = glib2-clear
-
-pkgname = glib2-docs-clear
-	pkgdesc = Documentation for GLib
-	license = custom
-	depends = 
-	optdepends = 
 

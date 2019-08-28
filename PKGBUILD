@@ -2,9 +2,9 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
-pkgbase=glib2-clear
 _pkgname=glib2
-pkgname=(glib2-clear glib2-docs-clear)
+pkgname=$_pkgname-clear
+pkgbase=$_pkgname-clear
 pkgver=2.60.6
 pkgrel=1
 pkgdesc="Low level core library"
@@ -12,7 +12,7 @@ url="https://wiki.gnome.org/Projects/GLib"
 license=(LGPL2.1)
 arch=(x86_64)
 depends=(pcre libffi libutil-linux zlib)
-makedepends=(gettext gtk-doc shared-mime-info python libelf git util-linux meson dbus)
+makedepends=(gettext shared-mime-info python libelf git util-linux meson dbus)
 checkdepends=(desktop-file-utils)
 optdepends=('python: gdbus-codegen, glib-genmarshal, glib-mkenums, gtester-report'
             'libelf: gresource inspection tool')
@@ -57,9 +57,7 @@ build() {
               -ffat-lto-objects -flto=4 -fno-math-errno -fno-semantic-interposition \
               -fno-trapping-math -fstack-protector-strong"
   arch-meson glib build \
-    -D selinux=disabled \
-    -D man=true \
-    -D gtk_doc=true
+    -D selinux=disabled
   ninja -C build
 }
 
@@ -73,23 +71,6 @@ package_glib2-clear() {
 
   python -m compileall -d /usr/share/glib-2.0/codegen "$pkgdir/usr/share/glib-2.0/codegen"
   python -O -m compileall -d /usr/share/glib-2.0/codegen "$pkgdir/usr/share/glib-2.0/codegen"
-
-  # Split docs
-  mv "$pkgdir/usr/share/gtk-doc" "$srcdir"
-}
-
-package_glib2-docs-clear() {
-  pkgdesc="Documentation for GLib"
-  depends=()
-  optdepends=()
-  provides=($_pkgname-docs)
-  conflicts=($_pkgname-docs)
-  license+=(custom)
-
-  mkdir -p "$pkgdir/usr/share"
-  mv gtk-doc "$pkgdir/usr/share"
-
-  install -Dt "$pkgdir/usr/share/licenses/glib2-docs" -m644 glib/docs/reference/COPYING
 }
 
 # vim:set sw=2 et:
