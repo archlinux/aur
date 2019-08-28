@@ -14,8 +14,6 @@ source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname
 md5sums=('5f8124328c523f01a27e3883ee8b5d84')
 
 prepare() {
-    cd ${srcdir}/${_pyname}-${pkgver}
-
     cp -a ${srcdir}/${_pyname}-${pkgver}{,-py2}
 }
 
