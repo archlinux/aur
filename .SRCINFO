@@ -1,0 +1,17 @@
+pkgbase = python-cmocean
+	pkgdesc = Beautiful colormaps for oceanography
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://matplotlib.org/cmocean/
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	depends = python-matplotlib
+	source = python-cmocean-2.0.tar.gz::https://github.com/matplotlib/cmocean/archive/2.0.tar.gz
+	md5sums = 37203d30c9a791974bfb4be06c0356ed
+	sha1sums = ce9849b7423effc099ad646f76d8bc788a6eb411
+	sha256sums = bab61cbcd6a17d55f3351e210299ed7ad2117b47952d22fdddfbdd055c2ca75d
+
+pkgname = python-cmocean
+
