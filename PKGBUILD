@@ -3,25 +3,26 @@
 # Maintainer: Martoko <mbastholm at gmail dot com>
 
 pkgname=nordvpn-bin
-pkgver=3.3.0_4
-pkgrel=2
+pkgver=3.3.1_1
+pkgrel=1
 pkgdesc="NordVPN CLI tool for Linux"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://nordvpn.com/download/linux/"
 license=('custom')
 depends=('net-tools' 'libxslt' 'iptables' 'procps' 'iproute2')
-optdepends=('wireguard-tools: nordlynx support' 'wireguard-module: nordlynx support')
+optdepends=('wireguard-tools: nordlynx support' 'wireguard-arch: nordlynx support')
 provides=('nordvpn')
 conflicts=('openvpn-nordvpn')
 install=nordvpn-bin.install
-source_i686=("https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/nordvpn_${pkgver//_/-}_i386.deb")
 source_x86_64=("https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/nordvpn_${pkgver//_/-}_amd64.deb")
+source_i686=("https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/nordvpn_${pkgver//_/-}_i386.deb")
+source_armv6h=("https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/nordvpn_${pkgver//_/-}_armel.deb")
 source_armv7h=("https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/nordvpn_${pkgver//_/-}_armhf.deb")
-source_aarch64=("https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/nordvpn_${pkgver//_/-}_aarch64.deb")
-sha256sums_i686=('64616b5d5891f5c07e34c2dc7db5e39c15a9aa51fa3a390112d9f49dc29b723d')
-sha256sums_x86_64=('508722c2bb4943dad260ebbecd0af8d4d115330f55dbf2bc32f3b74a47f125a7')
-sha256sums_armv7h=('71d1569c21e08555f47382fe01b4d1faa5d39425eb628c5e5f4f2c8eda0f83bf')
-sha256sums_aarch64=('536fbbd7f387ea2d6b24839f62d0c55d2298a2f8dd0ab9f97632c2efc6009c18')
+source_aarch64=("https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/nordvpn_${pkgver//_/-}_arm64.deb")
+sha256sums_i686=('90277bbbcfb76eca4f891b125571373c9f1fd2b743fde390df8ee3bc3c8238c2')
+sha256sums_x86_64=('2cfadc4475c1061bf3d194a5d0faef1d89be7fd61392339304b9f24c52b7aa10')
+sha256sums_armv7h=('4140d53d231050055ff0cedd9d50613f605bc82cb7478df1eee9f1fb4a988f6c')
+sha256sums_aarch64=('84ff8272f33f5c4668c666abf1ebfeafe28257675004d54b1e7775b674fc2db3')
 
 package() {
     bsdtar -O -xf *.deb data.tar.xz | bsdtar -C "${pkgdir}" -xJf -
