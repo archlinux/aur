@@ -2,7 +2,7 @@
 # Contributor: Peter Nguyen <peter.hieu.nguyen@gmail.com>
 
 pkgname=mongrel2
-pkgver=1.12.0
+pkgver=1.12.2
 pkgrel=1
 pkgdesc="Application, language, and network architecture agnostic web server"
 url="http://mongrel2.org"
@@ -10,7 +10,7 @@ license=("BSD")
 arch=("i686" "x86_64")
 depends=("sqlite3" "zeromq")
 source=("https://github.com/mongrel2/mongrel2/releases/download/v$pkgver/$pkgname-v$pkgver.tar.bz2")
-sha256sums=('054b87d94f5c2fb5311ad7979276ce12684f72bff476fdf943e1c485723e9f3c')
+sha256sums=('3bffeae198c37a1efc9c12f77d5f1eb61cdf62b35d661babc2527dd030aa7d8f')
 
 build() {
     cd "$srcdir"/$pkgname-v$pkgver
