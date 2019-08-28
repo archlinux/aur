@@ -7,7 +7,7 @@ pkgdesc="Documentation for STScI Image"
 arch=('i686' 'x86_64')
 url="https://github.com/spacetelescope/stsci.image"
 license=('BSD')
-makedepends=("python2-${_pyname}=${pkgver}" 'python2-numpydoc' 'python2-stsci.sphinxext' 'python2-matplotlib')
+makedepends=("python2-${_pyname}=${pkgver}" 'python2-stsci.sphinxext')
 source=("https://github.com/spacetelescope/${_pyname}/archive/${pkgver}.tar.gz"
         'fix_new_sphinx.patch')
 md5sums=('3067df5c19b14573b17c080931acc93c'
