@@ -1,6 +1,7 @@
 # Maintainer: loathingkernel <loathingkernel @at gmail .dot com>
 
 pkgname=d9vk-mingw-git
+_tag=0.20
 pkgver=r2933.d112de83
 pkgrel=1
 pkgdesc="A d3d9 to vk layer based off DXVK's codebase, mingw version"
@@ -14,16 +15,28 @@ conflicts=("d9vk")
 source=(
     "git+https://github.com/Joshua-Ashton/d9vk.git"
     "setup_d9vk"
+    "dxvk-async.patch"
 )
 sha256sums=(
     "SKIP"
     "7147644664ef33d04f7b18683c47be95b5664c57cf6d63fdc019d915deebd37a"
+    "757fd5ca3faf476730891541de408593450fe4b490cc87bd90b342826d66c564"
 )
 
 pkgver() {
     cd d9vk
     #printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/m//g')"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    #printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "%s.r%s.%s" "$_tag" "$(git rev-list $_tag..HEAD --count)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+    cd d9vk
+    # Uncomment to enable dxvk async patch.
+    # Enable at your own risk. If you don't know what it is,
+    # and its implications, leave it as is. You have been warned.
+    # I am not liable if anything happens to you by using it.
+    #patch -p1 -i ../dxvk-async.patch
 }
 
 build() {
@@ -33,10 +46,10 @@ build() {
         --bindir "" --libdir "" \
         --buildtype "release" \
         --strip \
-        -Denable_tests=false \
         -Denable_d3d10=false \
         -Denable_d3d11=false \
-        -Denable_dxgi=false
+        -Denable_dxgi=false \
+        -Denable_tests=false
     ninja -C "build/x64" -v
 
     meson d9vk "build/x32" \
@@ -45,10 +58,10 @@ build() {
         --bindir "" --libdir "" \
         --buildtype "release" \
         --strip \
-        -Denable_tests=false \
         -Denable_d3d10=false \
         -Denable_d3d11=false \
-        -Denable_dxgi=false
+        -Denable_dxgi=false \
+        -Denable_tests=false
     ninja -C "build/x32" -v
 }
 
