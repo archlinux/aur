@@ -1,7 +1,7 @@
 # Maintainer: S Stewart <tda@lmao.tf>
 # Special thanks to RyanTheAllmighty for making hyper-appimage
 pkgname="gdlauncher-appimage"
-pkgver="v0.11.17"
+pkgver="v0.11.15"
 pkgrel=1
 arch=('x86_64')
 pkgdesc="Modded Minecraft launcher built with Electron/React"
