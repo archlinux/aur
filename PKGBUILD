@@ -6,12 +6,12 @@ pkgver=0.2.1
 pkgrel=1
 pkgdesc="A simple game launcher"
 arch=("any")
-url="https://gitlab.com/dunon/grevis"
+url="https://gitlab.com/josepoliver/grevis"
 license=("GPL3")
 depends=("python" "gtk3")
 makedepends=("meson" "ninja" "git")
 conflicts=("grevis")
-source=("grevis::git+https://gitlab.com/dunon/grevis.git")
+source=("grevis::git+https://gitlab.com/josepoliver/grevis.git")
 md5sums=("SKIP")
 
 pkgver() {
