@@ -1,18 +1,20 @@
-# Maintainer: Alexander Hunziker <alex.hunziker@gmail.com>
+# Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
+# Contributor: Filipe Laíns (FFY00) <filipe.lains@gmail.com>
+# Contributor: Alexander Hunziker <alex.hunziker@gmail.com>
 # Contributor: Alessio Biancalana <dottorblaster@gmail.com>
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 # Contributor: Salamandar <felix@piedallu.me>
 
 _pkgname=babl
-pkgname="${_pkgname}-qfix-git"
-pkgver=0.1.71.r1597.cff46ae
+pkgname="${_pkgname}-git"
+pkgver=0.1.73.r1597.cff46ae
 pkgrel=1
-pkgdesc="babl is a dynamic, any to any, pixel format translation library."
+pkgdesc="Dynamic, any to any, pixel format translation library."
 arch=('x86_64')
 url="https://www.gegl.org/babl"
 license=('LGPL3')
-depends=('glibc' 'gobject-introspection')
-makedepends=('git' 'meson' 'lcms2')
+depends=('glibc' 'lcms2')
+makedepends=('git' 'gobject-introspection' 'meson')
 provides=("babl=${pkgver}")
 conflicts=('babl')
 options=(!libtool)

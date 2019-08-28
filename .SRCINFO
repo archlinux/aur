@@ -1,5 +1,5 @@
-pkgbase = babl-qfix-git
-	pkgdesc = babl is a dynamic, any to any, pixel format translation library.
+pkgbase = babl-git
+	pkgdesc = Dynamic, any to any, pixel format translation library.
 	pkgver = 0.1.71.r1597.cff46ae
 	pkgrel = 1
 	url = https://www.gegl.org/babl
@@ -16,5 +16,5 @@ pkgbase = babl-qfix-git
 	source = git+https://gitlab.gnome.org/GNOME/babl
 	md5sums = SKIP
 
-pkgname = babl-qfix-git
+pkgname = babl-git
 
