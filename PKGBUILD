@@ -1,7 +1,8 @@
 # Maintainer: loathingkernel <loathingkernel @at gmail .dot com>
 
 pkgname=d9vk-winelib
-pkgver=0.13f
+_tag=0.20
+pkgver=$_tag
 pkgrel=1
 pkgdesc="A d3d9 to vk layer based off DXVK's codebase, winelib version"
 arch=('x86_64')
@@ -38,10 +39,10 @@ build() {
         --bindir "" --libdir "" \
         --buildtype "release" \
         --strip \
-        -Denable_tests=false \
         -Denable_d3d10=false \
         -Denable_d3d11=false \
-        -Denable_dxgi=false
+        -Denable_dxgi=false \
+        -Denable_tests=false
     ninja -C "build/x64" -v
 
     meson d9vk "build/x32" \
@@ -50,10 +51,10 @@ build() {
         --bindir "" --libdir "" \
         --buildtype "release" \
         --strip \
-        -Denable_tests=false \
         -Denable_d3d10=false \
         -Denable_d3d11=false \
-        -Denable_dxgi=false
+        -Denable_dxgi=false \
+        -Denable_tests=false
     ninja -C "build/x32" -v
 }
 
