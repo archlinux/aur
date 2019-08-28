@@ -1,7 +1,7 @@
 pkgbase = nngpp-git
 	pkgdesc = C++ wrapper around the nanomsg NNG API
 	pkgver = 1.1.1133351f54
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/cwzx/nngpp
 	arch = x86_64

@@ -2,7 +2,7 @@
 _pkgname=nngpp
 pkgname=${_pkgname}-git
 pkgver=1.1.1133351f54
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ wrapper around the nanomsg NNG API "
 arch=('x86_64')
 url="https://github.com/cwzx/nngpp"
@@ -35,7 +35,7 @@ package() {
 	cd "${_pkgname}"
 	install -dm755 "${pkgdir}/usr/include"
 	cp -r include "${pkgdir}/usr"
-	chmod -R 644 "${pkgdir}/usr/include/${_pkgname}"
+	find "${pkgdir}/usr/include/${_pkgname}" \( -type d -exec chmod 755 {} \; \) -o \( -type f -exec chmod 644  {} \; \)
 	install -m644 -D "license.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	install -m644 -D "readme.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
