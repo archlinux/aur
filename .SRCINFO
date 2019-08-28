@@ -1,0 +1,24 @@
+pkgbase = pebl2-svn
+	pkgdesc = PEBL (Psychology Experiment Building Language) is a system designed for creating psychology and neuroscience experiments and tests.
+	pkgver = 2.1.r1468
+	pkgrel = 1
+	url = https://sourceforge.net/projects/pebl/
+	arch = any
+	license = GPL2
+	makedepends = subversion
+	makedepends = clang
+	makedepends = dos2unix
+	depends = sdl2
+	depends = sdl2_ttf
+	depends = sdl2_image
+	depends = sdl2_net
+	depends = sdl2_mixer
+	depends = sdl2_gfx
+	provides = pebl2
+	provides = pebl2-svn
+	conflicts = pebl2
+	source = pebl2::svn+http://svn.code.sf.net/p/pebl/code-0/branches/sdl2
+	sha256sums = SKIP
+
+pkgname = pebl2-svn
+
