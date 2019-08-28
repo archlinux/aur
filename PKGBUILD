@@ -1,28 +1,15 @@
-# Maintainer: bscubed <bscubed@pm.me>
+# Maintainer: Brendan Szymanski <brendan.szymanski1@gmail.com>
 
-_pkgname='yuzu-canary'
-pkgname="$_pkgname-git"
-pkgver=r12153.f83d9adca
+_pkgname=yuzu
+pkgname=$_pkgname-canary-git
+pkgver=r12355.7510df6ab
 pkgrel=1
 pkgdesc="An experimental open-source Nintendo Switch emulator/debugger"
 arch=('i686' 'x86_64')
 url="https://github.com/yuzu-emu/yuzu-canary"
 license=('GPL2')
-provides=('yuzu' 'yuzu-cmd')
-conflicts=('yuzu-git')
-depends=('shared-mime-info'
-         'desktop-file-utils'
-         'sdl2'
-         'qt5-base'
-         'qt5-multimedia'
-         'qt5-tools'
-         'qt5-webengine'
-         'libxkbcommon-x11'
-         'libzip'
-         'zlib')
-makedepends=('git'
-             'cmake'
-             'python2')
+depends=('shared-mime-info' 'desktop-file-utils' 'sdl2' 'qt5-base' 'qt5-multimedia' 'qt5-tools' 'libxkbcommon-x11')
+makedepends=('git' 'cmake' 'python')
 optdepends=('qt5-wayland: for Wayland support')
 source=("$_pkgname::git+https://github.com/yuzu-emu/yuzu-canary")
 md5sums=('SKIP')
@@ -54,9 +41,8 @@ build() {
 	mkdir -p build && cd build
 	cmake .. \
 	  -DCMAKE_INSTALL_PREFIX=/usr \
-	  -DYUZU_USE_BUNDLED_UNICORN=ON \
-	  -DYUZU_USE_QT_WEB_ENGINE=ON \
 	  -DCMAKE_BUILD_TYPE=Release \
+	  -DYUZU_USE_BUNDLED_UNICORN=ON \
 	  -DYUZU_ENABLE_COMPATIBILITY_REPORTING=ON \
 	  -DENABLE_COMPATIBILITY_LIST_DOWNLOAD=ON \
 	  -DUSE_DISCORD_PRESENCE=ON
@@ -70,6 +56,5 @@ check() {
 
 package() {
 	cd "$srcdir/$_pkgname/build"
-	
 	make DESTDIR="$pkgdir/" install
 }
