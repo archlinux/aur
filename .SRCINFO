@@ -7,6 +7,7 @@ pkgbase = python-stsci.image-doc
 	arch = x86_64
 	license = BSD
 	makedepends = python2-stsci.image=2.3.3
+	makedepends = python2-numpydoc
 	makedepends = python2-stsci.sphinxext
 	source = https://github.com/spacetelescope/stsci.image/archive/2.3.3.tar.gz
 	source = fix_new_sphinx.patch
