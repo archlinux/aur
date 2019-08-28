@@ -13,7 +13,7 @@ _dhall_ver=1.25.0
 source=("https://github.com/dhall-lang/dhall-haskell/releases/download/$_dhall_ver/dhall-lsp-server-$pkgver-x86_64-linux.tar.bz2"
         "https://raw.githubusercontent.com/dhall-lang/dhall-haskell/$_dhall_ver/dhall-lsp-server/LICENSE")
 sha256sums=('84f9f722abef989e02da6257bcb115e901487cd8d1b64fbf1f5a4286d8f60555'
-            '681f75c2ab1536a01a914b1be992d1694023abe2b81c0217a6cfbd2e08a7c506')
+            'SKIP')
 
 function package {
 	install -Dt "$pkgdir/usr/bin/" "$srcdir/bin/dhall-lsp-server"
