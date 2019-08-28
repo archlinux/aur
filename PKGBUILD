@@ -2,7 +2,7 @@
 
 pkgname=pkgtop-git
 pkgdesc="Interactive package manager & resource monitor"
-pkgver=r315.19d57fb
+pkgver=r319.ebbf9ba
 pkgrel=1
 arch=('any')
 url="https://github.com/keylo99/pkgtop"
