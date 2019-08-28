@@ -1,0 +1,17 @@
+pkgbase = python-stsci.imagestats-doc
+	pkgdesc = Documentation for STScI Imagestats
+	pkgver = 1.6.2
+	pkgrel = 1
+	url = https://stsciimagestats.readthedocs.io/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = python-stsci.imagestats=1.6.2
+	makedepends = python-numpydoc
+	makedepends = python-sphinx_rtd_theme
+	makedepends = python-stsci_rtd_theme
+	source = https://files.pythonhosted.org/packages/source/s/stsci.imagestats/stsci.imagestats-1.6.2.tar.gz
+	md5sums = 54fde240cb959755efee0b9f0c8e9450
+
+pkgname = python-stsci.imagestats-doc
+
