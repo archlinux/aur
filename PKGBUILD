@@ -5,7 +5,7 @@
 pkgname=franz
 _pkgver=5.2.0
 pkgver=${_pkgver//-/_}
-pkgrel=1
+pkgrel=2
 # Due to the previous "_beta" naming
 epoch=1
 pkgdesc='Free messaging app for services like WhatsApp, Slack, Messenger and many more.'
@@ -40,6 +40,17 @@ prepare() {
   # Adjust the electron version to use when building
   electron_version="`expac %v electron4 | cut -d'-' -f1`"
   sed -i "s|\(\s\+\"electron\":\).*,|\1 \"$electron_version\",|" package.json
+
+  # Better configuration for npm cache and calling installed binaries
+  export npm_config_cache="$srcdir"/npm_cache
+  export PATH="$srcdir/$pkgname/node_modules/.bin:$srcdir/python2_path:$PATH"
+
+  # Adjust node-sass version to avoid build issues
+  npm install "node-sass@4.12.0"
+
+  # Prepare the packages for building
+  npm install lerna
+  lerna bootstrap
 }
 
 build() {
@@ -49,8 +60,7 @@ build() {
   export npm_config_cache="$srcdir"/npm_cache
   export PATH="$srcdir/$pkgname/node_modules/.bin:$srcdir/python2_path:$PATH"
 
-  npm install lerna
-  lerna bootstrap
+  # Actually build the package
   gulp build
   electron-builder --linux dir
 }
