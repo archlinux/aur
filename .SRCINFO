@@ -1,0 +1,16 @@
+pkgbase = libehp-git
+	pkgdesc = Exception handling parsing support for Elf files (eh_frame, etc.)
+	pkgver = Release_1.0.0.r36.g1896c4f
+	pkgrel = 1
+	url = https://git.zephyr-software.com/opensrc/libehp
+	arch = x86_64
+	license = Apache License 2.0
+	makedepends = git
+	makedepends = cmake
+	optdepends = elfio: use the elfio library to parse elf files
+	provides = libehp
+	source = git+https://git.zephyr-software.com/opensrc/libehp.git
+	sha512sums = SKIP
+
+pkgname = libehp-git
+
