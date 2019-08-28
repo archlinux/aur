@@ -1,0 +1,36 @@
+pkgbase = linux-firmware-agd5f-radeon-navi10
+	pkgdesc = Firmware for navi 10 GPUs from agd5f
+	pkgver = 2019.08.26.14.36
+	pkgrel = 1
+	url = https://people.freedesktop.org/~agd5f/radeon_ucode/navi10/
+	arch = any
+	license = GPL3
+	source = https://people.freedesktop.org/~agd5f/radeon_ucode/navi10//navi10_asd.bin
+	source = https://people.freedesktop.org/~agd5f/radeon_ucode/navi10//navi10_ce.bin
+	source = https://people.freedesktop.org/~agd5f/radeon_ucode/navi10//navi10_gpu_info.bin
+	source = https://people.freedesktop.org/~agd5f/radeon_ucode/navi10//navi10_me.bin
+	source = https://people.freedesktop.org/~agd5f/radeon_ucode/navi10//navi10_mec.bin
+	source = https://people.freedesktop.org/~agd5f/radeon_ucode/navi10//navi10_mec2.bin
+	source = https://people.freedesktop.org/~agd5f/radeon_ucode/navi10//navi10_pfp.bin
+	source = https://people.freedesktop.org/~agd5f/radeon_ucode/navi10//navi10_rlc.bin
+	source = https://people.freedesktop.org/~agd5f/radeon_ucode/navi10//navi10_sdma.bin
+	source = https://people.freedesktop.org/~agd5f/radeon_ucode/navi10//navi10_sdma1.bin
+	source = https://people.freedesktop.org/~agd5f/radeon_ucode/navi10//navi10_smc.bin
+	source = https://people.freedesktop.org/~agd5f/radeon_ucode/navi10//navi10_sos.bin
+	source = https://people.freedesktop.org/~agd5f/radeon_ucode/navi10//navi10_vcn.bin
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = linux-firmware-agd5f-radeon-navi10
+
