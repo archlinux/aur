@@ -1,0 +1,15 @@
+pkgbase = python2-d2to1
+	pkgdesc = Modeling and fitting package for scientific data analysis
+	pkgver = 0.2.12.post1
+	pkgrel = 5
+	url = https://github.com/embray/d2to1
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = python2-setuptools
+	depends = python2
+	source = https://files.pythonhosted.org/packages/source/d/d2to1/d2to1-0.2.12.post1.tar.gz
+	md5sums = 1ba7e64ead23cbf104993122f0871030
+
+pkgname = python2-d2to1
+
