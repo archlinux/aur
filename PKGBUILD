@@ -23,4 +23,4 @@ package() {
   install -D -t "$pkgdir/usr/bin" "$srcdir/gitpusher"
 }
 
-md5sums=('be5e0840e072ef755d410fff18af107f')
+md5sums=('b95ce9ced33c3ea04a4c8a06297ea4dd')
