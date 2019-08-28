@@ -1,5 +1,5 @@
 pkgbase = otf-new-york
-	pkgdesc = This all-new, Apple-designed serif typeface is based on essential aspects of historical type styles and is designed to work on its own as well as alongside San Francisco.
+	pkgdesc = Apple-designed serif typeface based on essential aspects of historical type styles.
 	pkgver = 1
 	pkgrel = 1
 	url = https://developer.apple.com/fonts/
@@ -7,8 +7,11 @@ pkgbase = otf-new-york
 	license = custom
 	makedepends = p7zip
 	makedepends = dmg2img
+	makedepends = cpio
+	makedepends = xar
+	makedepends = gzip
 	source = https://developer.apple.com/design/downloads/NY-Font.dmg
-	md5sums = a64538ebe8130ecf9011c3bde96054c0
+	md5sums = b50a8fc74bfeb830340b68f8987db239
 
 pkgname = otf-new-york
 
