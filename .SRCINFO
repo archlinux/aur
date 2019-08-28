@@ -1,5 +1,5 @@
 pkgbase = otf-san-francisco-pro
-	pkgdesc = This sans-serif typeface is the system font for iOS, macOS, and tvOS, and includes a rounded variant. It provides a consistent, legible, and friendly typographic voice.
+	pkgdesc = System font for iOS, macOS, and tvOS.
 	pkgver = 1
 	pkgrel = 1
 	url = https://developer.apple.com/fonts/
@@ -7,11 +7,11 @@ pkgbase = otf-san-francisco-pro
 	license = custom
 	makedepends = p7zip
 	makedepends = dmg2img
-	depends = fontconfig
-	depends = xorg-fonts-encodings
-	depends = xorg-font-utils
+	makedepends = cpio
+	makedepends = xar
+	makedepends = gzip
 	source = https://developer.apple.com/design/downloads/SF-Font-Pro.dmg
-	md5sums = 5e8f0a64534d95db546b052c5363b273
+	md5sums = 6a2c92e8ebd3ea389d162b790423ca20
 
 pkgname = otf-san-francisco-pro
 
