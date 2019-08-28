@@ -1,7 +1,7 @@
 # Maintainer: Colin Adler <cadler@coder.com>
 
 pkgname=sail
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=0
 pkgdesc='A universal workflow for reproducible, project-defined development environments.'
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=(
 )
 
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('56fe76bde41d2f5d0b8777b85dcb726a324908cd9b60d93ac5aceb361d1f5cc4694396c0561b9545ca8b6d4f99975f4c89a6f6427ae12b067261aa9feacfa23f')
+sha512sums=('a396c75b4e613cada463df7001baf1efbac2cc2b5e6ffc54745a23c17bc2e56ce6b6020da0bda71fd869f20276e1e6b49a71762051ca99b3cf6f8d93d34a1b17')
 
 build() {
 	export GO111MODULE=on
@@ -23,7 +23,7 @@ build() {
 	go build \
 		-gcflags "all=-trimpath=${PWD}" \
 		-asmflags "all=-trimpath=${PWD}" \
-		-ldflags "-extldflags ${LDFLAGS}" \
+		-ldflags "-extldflags ${LDFLAGS} -X main.version=${pkgver}" \
 		-o ${pkgname} .
 }
 
