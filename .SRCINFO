@@ -1,0 +1,15 @@
+pkgbase = nodejs-markdownlint-cli
+	pkgdesc = MarkdownLint Command Line Interface
+	pkgver = 0.18.0
+	pkgrel = 1
+	url = https://github.com/igorshubovych/markdownlint-cli
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	noextract = markdownlint-cli-0.18.0.tgz
+	source = https://registry.npmjs.org/markdownlint-cli/-/markdownlint-cli-0.18.0.tgz
+	sha512sums = 990db3be330ba32d0fda46fd634dd2a82db858f1f87d344dd3f0b20a8ac1d76d9ce02860f6f5892a050a073dca47bb30a73aa6948d1262affb0656ea7b891bda
+
+pkgname = nodejs-markdownlint-cli
+
