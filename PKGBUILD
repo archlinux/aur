@@ -1,4 +1,4 @@
-# Maintainer: Colin Adler <cadler@coder.com>
+# Maintainer: Colin Adler <colin@coder.com>
 
 pkgname=sail
 pkgver=1.0.6
