@@ -1,0 +1,27 @@
+pkgbase = python-stregion
+	pkgdesc = Python parser for ds9 region files
+	pkgver = 1.1.6
+	pkgrel = 1
+	url = https://github.com/spacetelescope/stregion
+	arch = i686
+	arch = x86_64
+	license = MIT
+	license = BSD
+	checkdepends = python-matplotlib
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	makedepends = python-numpy
+	makedepends = python2-numpy
+	source = https://files.pythonhosted.org/packages/source/s/stregion/stregion-1.1.6.tar.gz
+	source = https://raw.githubusercontent.com/spacetelescope/stregion/master/LICENSE.txt
+	md5sums = 7b23f7aaad4d2f07e59294b469d9b321
+	md5sums = 90af6948044c90bc28a1fed1865cc6ea
+
+pkgname = python-stregion
+	depends = python-numpy
+	depends = python-pyparsing>=2.0.0
+
+pkgname = python2-stregion
+	depends = python2-numpy
+	depends = python2-pyparsing>=2.0.0
+
