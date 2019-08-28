@@ -2,7 +2,7 @@
 # Contributor: vuslkopp <vuslkopp@i2pmail.org>
 
 pkgname=irclog2html
-pkgver=2.17.0
+pkgver=2.17.2
 pkgrel=1
 pkgdesc='Colourises and converts IRC logs to HTML format for easy web reading.'
 arch=('any')
@@ -11,7 +11,7 @@ url='https://mg.pov.lt/irclog2html/'
 depends=('python')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/i/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('50fbfa1d2b046497058c4b805742b6883b29f9e3da36b0eaf67b71676b3c3105')
+sha256sums=('5c0f3a5485c8d2139c7ba6f8b72b4a5844df12fa7c711532bbbbaa1077cea421')
 
 package() {
   cd $pkgname-$pkgver
