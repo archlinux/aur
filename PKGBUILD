@@ -1,4 +1,4 @@
-# Maintainer: Colin Adler <cadler@coder.com>
+# Maintainer: Colin Adler <colin@coder.com>
 
 pkgname=code-server
 pkgver=1.1156_vsc1.33.1
