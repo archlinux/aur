@@ -11,7 +11,7 @@ license=('MPL2' 'MIT')
 groups=()
 conflicts=(alice-vision-git)
 provides=(alice-vision)
-# split: uncertaintyTE, geogram, popsift, cctag
+# split: uncertaintyTE, geogram, cctag
 depends=('gflags' 'glfw-x11' 'alembic' 'boost-libs' 'openexr' 'openimageio' 'opengv-git' 'flann' 'coin-or-coinutils' 'coin-or-clp' 'coin-or-lemon' 'coin-or-osi' 'google-glog' 'freetype2' 'zlib' 'libtiff' 'libjpeg' 'libpng' 'libraw' 'opencv' 'lapack' 'suitesparse')
 makedepends=('boost' 'eigen' 'ceres-solver' 'git' 'cmake')
 source=("https://github.com/alicevision/AliceVision/archive/v${pkgver}.tar.gz"
@@ -41,8 +41,9 @@ _CMAKE_FLAGS=(
 
 ((DISABLE_CUDA)) && { _CMAKE_FLAGS+=('-DALICEVISION_USE_CUDA=OFF')
                        DISABLE_UTE=1 # Disable uncertaintyTE as it also depends on cuda
-               } || {  makedepends+=('cuda')
-                      _CMAKE_FLAGS+=('-DCUDA_HOST_COMPILER=/opt/cuda/bin/gcc')
+               } || {  makedepends+=('cuda' 'popsift')
+                      _CMAKE_FLAGS+=( -DCUDA_HOST_COMPILER=/opt/cuda/bin/gcc )
+                      _CMAKE_FLAGS+=( -DPopSift_DIR=/usr )
                     } 
 
 ((DISABLE_UTE)) || {  source+=("ute_lib::git+https://github.com/alicevision/uncertaintyTE.git")
