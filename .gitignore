@@ -1,0 +1,4 @@
+*.tar.xz
+cpr/
+pkg/
+src/
