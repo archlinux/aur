@@ -1,6 +1,6 @@
 pkgbase = redream-git
-	pkgdesc = SEGA Dreamcast emulator (development version)
-	pkgver = r941.0846d112
+	pkgdesc = SEGA Dreamcast emulator (not open source anymore!)
+	pkgver = r1078.ffb73022
 	pkgrel = 1
 	url = http://redream.io
 	arch = x86_64

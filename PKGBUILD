@@ -1,9 +1,9 @@
 # Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=redream-git
-pkgver=r941.0846d112
+pkgver=r1078.ffb73022
 pkgrel=1
-pkgdesc="SEGA Dreamcast emulator (development version)"
+pkgdesc="SEGA Dreamcast emulator (not open source anymore!)"
 url="http://redream.io"
 arch=('x86_64')
 license=('GPL3')
@@ -22,6 +22,9 @@ pkgver() {
 prepare() {
   rm -rf build
   mkdir -p build
+
+  # fix building
+  sed 's/-Werror//' -i redream/CMakeLists.txt
 }
 
 build() {
