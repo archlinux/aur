@@ -14,7 +14,7 @@ arch=('x86_64')
 url="https://www.chromium.org/Home"
 license=('BSD')
 provides=(chromium=$pkgver)
-conflicts=(chromium=$pkgver)
+conflicts=(chromium)
 depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
          'ttf-font' 'systemd' 'dbus' 'libpulse' 'pciutils' 'json-glib'
                     'desktop-file-utils' 'hicolor-icon-theme')

@@ -53,7 +53,7 @@ pkgbase = chromium-no-extras
 	optdepends = gnome-keyring: for storing passwords in GNOME keyring
 	optdepends = kwallet: for storing passwords in KWallet
 	provides = chromium=76.0.3809.132
-	conflicts = chromium=76.0.3809.132
+	conflicts = chromium
 	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-76.0.3809.132.tar.xz
 	source = chromium-launcher-6.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v6.tar.gz
 	source = chromium-widevine.patch
