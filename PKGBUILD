@@ -4,19 +4,19 @@
 # Contributor: Dave Reisner <d@falconindy.com>
 
 _pkgname=pyalpm
-pkgname=$_pkgname-git
-pkgver=0.8.4.r100.gbca42ad
+pkgname=$_pkgname-next-git
+pkgver=0.8.4.r72.g871346f
 pkgrel=1
-pkgdesc="Libalpm bindings for Python 3 (Git version)"
+pkgdesc="Libalpm bindings for Python 3 (Git version, compatible with pacman-git)"
 arch=('x86_64')
 url="https://git.archlinux.org/pyalpm.git/"
 license=('GPL3')
-depends=('python>=3.6' 'pacman>=5')
+depends=('python>=3.6' 'pacman-git')
 makedepends=('git' 'python-setuptools')
 checkdepends=('python-pytest')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
-source=('git+https://git.archlinux.org/pyalpm.git')
+source=('git+https://git.archlinux.org/pyalpm.git#branch=next')
 sha256sums=('SKIP')
 
 pkgver() {
