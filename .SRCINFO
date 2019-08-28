@@ -1,6 +1,6 @@
 pkgbase = gtirb-git
 	pkgdesc = GrammaTech Intermediate Representation for Binaries
-	pkgver = v0.1.0.r118.g94f7146
+	pkgver = v0.1.1.r344.gde2e2e0
 	pkgrel = 1
 	url = https://github.com/grammatech/gtirb
 	arch = x86_64
