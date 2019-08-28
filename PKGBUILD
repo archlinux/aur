@@ -11,7 +11,7 @@ _enable_gcc_more_v="y"
 # Optionally select a sub architecture by number if building in a clean chroot
 # Leaving this entry blank will require user interaction during the build
 # which will cause a failure to build if using makechrootpkg. Note that the
-# generic (default) option is 27.
+# generic (default) option is 30.
 #
 #  1. AMD Opteron/Athlon64/Hammer/K8 (MK8)
 #  2. AMD Opteron/Athlon64/Hammer/K8 with SSE3 (MK8SSE3)
@@ -31,27 +31,27 @@ _enable_gcc_more_v="y"
 #  16. Intel Nehalem (MNEHALEM)
 #  17. Intel Westmere (MWESTMERE)
 #  18. Intel Silvermont (MSILVERMONT)
-#  19. Intel Sandy Bridge (MSANDYBRIDGE)
-#  20. Intel Ivy Bridge (MIVYBRIDGE)
-#  21. Intel Haswell (MHASWELL)
-#  22. Intel Broadwell (MBROADWELL)
-#  23. Intel Skylake (MSKYLAKE)
-#  24. Intel Skylake X (MSKYLAKEX)
-#  25. Intel Cannon Lake (MCANNONLAKE)
-#  26. Intel Ice Lake (MICELAKE)
-#  27. Generic-x86-64 (GENERIC_CPU)
-#  28. Native optimizations autodetected by GCC (MNATIVE)
-_subarch=28
+#  19. Intel Goldmont (MGOLDMONT)
+#  20. Intel Goldmont Plus (MGOLDMONTPLUS)
+#  21. Intel Sandy Bridge (MSANDYBRIDGE)
+#  22. Intel Ivy Bridge (MIVYBRIDGE)
+#  23. Intel Haswell (MHASWELL)
+#  24. Intel Broadwell (MBROADWELL)
+#  25. Intel Skylake (MSKYLAKE)
+#  26. Intel Skylake X (MSKYLAKEX)
+#  27. Intel Cannon Lake (MCANNONLAKE)
+#  28. Intel Ice Lake (MICELAKE)
+#  29. Intel Cascade Lake (MCASCADELAKE)
+#  30. Generic-x86-64 (GENERIC_CPU)
+#  31. Native optimizations autodetected by GCC (MNATIVE)
+_subarch=31
 
-# Compile ONLY probed modules
-# Build in only the modules that you currently have probed in your system VASTLY
-# reducing the number of modules built and the build time.
-#
-# WARNING - ALL modules must be probed BEFORE you begin making the pkg!
+# Compile ONLY used modules to VASTLY reduce the number of modules built
+# and the build time.
 #
 # To keep track of which modules are needed for your specific system/hardware,
 # give module_db script a try: https://aur.archlinux.org/packages/modprobed-db
-# This PKGBUILD will call it directly to probe all the modules you have logged!
+# This PKGBUILD read the database kept if it exists
 #
 # More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
 _localmodcfg=
@@ -65,16 +65,16 @@ _enable_acs_override="y"
 _major=5.2
 _minor=10
 _srcname=linux-${_major}
-_clr=${_major}.9-825
+_clr=${_major}.10-828
 pkgbase=linux-clear
 pkgver=${_major}.${_minor}
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux"
 license=('GPL2')
 makedepends=('bc' 'git' 'inetutils' 'kmod' 'libelf' 'xmlto')
 options=('!strip')
-_gcc_more_v='20190714'
+_gcc_more_v='20190822'
 source=(
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.tar.xz"
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.tar.sign"
@@ -105,7 +105,7 @@ prepare() {
         echo "$_kernelname" > localversion.20-pkgname
 
     ### Add Clearlinux patches
-        for i in $(grep '^Patch' ${srcdir}/clearlinux/linux.spec | grep -Ev '^Patch0125|^Patch0005' | sed -n 's/.*: //p'); do
+        for i in $(grep '^Patch' ${srcdir}/clearlinux/linux.spec | grep -Ev '^Patch0125' | sed -n 's/.*: //p'); do
         msg2 "Applying patch ${i}..."
         patch -Np1 -i "$srcdir/clearlinux/${i}"
         done
@@ -156,14 +156,13 @@ CONFIG_MODULE_COMPRESS_XZ=y|' ./.config
     ### Optionally load needed modules for the make localmodconfig
         # See https://aur.archlinux.org/packages/modprobed-db
         if [ -n "$_localmodcfg" ]; then
-        msg2 "If you have modprobed-db installed, running it in recall mode now"
-            if [ -e /usr/bin/modprobed-db ]; then
-            [[ -x /usr/bin/sudo ]] || {
-            echo "Cannot call modprobe with sudo. Install sudo and configure it to work with this user."
-            exit 1; }
-            sudo /usr/bin/modprobed-db recall
-            make localmodconfig
-            fi
+          if [ -f $HOME/.config/modprobed.db ]; then
+            msg2 "Running Steven Rostedt's make localmodconfig now"
+            make LSMOD=$HOME/.config/modprobed.db localmodconfig
+          else
+            msg2 "No modprobed.db data found"
+            exit
+          fi
         fi
 
     ### do not run `make olddefconfig` as it sets default options
@@ -336,7 +335,7 @@ sha256sums=('54ad66f672e1a831b574f5e704e8a05f1e6180a8245d4bdd811208a6cb0ac1e7'
             'SKIP'
             '6fae3dfa150ea98196acd40e1b8e16b13710d07f607e900e418aa71787f872ff'
             'SKIP'
-            '2466fb4aecc66d1b258b4cbdb2f215b5099f266d8c4386bb62ad1a0acd0caf5b'
+            '8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5'
             'dbf4ac4b873ce6972e63b78d74ddba18f2701716163bb7f4b4fe5e909346a6e1'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
