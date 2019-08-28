@@ -12,7 +12,7 @@ makedepends=('pkgconf' 'intltool')
 provides=("${pkgname}")
 conflicts=("${pkgname}-git")
 source=("https://github.com/madmurphy/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('6ace75770e68f6f09bc9f7287910aaf5320cf2f5a284b61f9d7084750f34b96f')
+sha256sums=('ba0cb93d185fe38f2b458acfe140eff2f9f8f3be8e74998b131b3e5a16fc28ff')
 
 prepare() {
 
