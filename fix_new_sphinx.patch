@@ -1,0 +1,11 @@
+--- a/lib/stsci/sphinxext/conf.py	2013-05-01 23:55:08.000000000 +0800
++++ b/lib/stsci/sphinxext/conf.py	2019-08-28 20:38:57.921737537 +0800
+@@ -52,7 +52,7 @@
+ #    'parameter_anchor',        # Add HTML anchors to parameter names
+     'sphinx.ext.autodoc',      # Extract documentation from docstrings
+     'sphinx.ext.intersphinx',  # Link to other Sphinx documentation trees
+-    'sphinx.ext.pngmath',      # Render math as images
++    'sphinx.ext.imgmath',      # Render math as images
+     'sphinx.ext.inheritance_diagram',
+     'sphinx.ext.autosummary',  # (Required by numpydoc)
+     'numpydoc',                # Support the Numpy docstring format
