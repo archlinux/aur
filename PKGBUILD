@@ -1,7 +1,7 @@
 # Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=liblcf
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="Library to handle RPG Maker 2000/2003 and EasyRPG projects"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://easyrpg.org"
 license=('MIT')
 depends=('gcc-libs' 'expat' 'icu')
 source=("https://easyrpg.org/downloads/player/$pkgver/liblcf-$pkgver.tar.xz")
-sha256sums=('a9089c502cdf5f075073cc46263fc3723d4344f461110c691e259772bc377a32')
+sha256sums=('a8f96164da2b25c4094a4c5d8cd9901fbacab8394c3e25d32103dcac3a496dbd')
 
 build () {
   cd liblcf-$pkgver
