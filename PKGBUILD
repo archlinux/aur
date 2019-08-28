@@ -2,13 +2,14 @@
 
 pkgname=vcsn-git
 _realname=vcsn
-pkgver=v2.5.r113.g620a9084
+pkgver=v2.8.r2.g1780f25b8
 pkgrel=1
 pkgdesc="Finite state machine manipulation platform, consisting of a library and tools implemented on top of it."
 arch=('i686' 'x86_64')
 url="http://vcsn.lrde.epita.fr/"
 license=('GPL3')
 depends=('boost' 'gcc' 'ccache' 'libltdl' 'jupyter' 'mathjax' 'graphviz' 'yaml-cpp')
+optdepends=('python-regex: to get better error messages')
 makedepends=('git' 'texlive-core' 'doxygen' 'python2-docutils')
 conflicts=('vaucanson-git' 'vaucanson' 'vcsn')
 provides=('vaucanson-git' 'vaucanson' 'vcsn')
