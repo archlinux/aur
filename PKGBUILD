@@ -3,7 +3,7 @@
 pkgname=bitwarden_rs
 _pkgbase=bitwarden_rs
 pkgver=1.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An unofficial lightweight implementation of the bitwarden-server using rust and sqlite. Does NOT include the web-interface."
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/dani-garcia/bitwarden_rs"
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('openssl')
 makedepends=('rust-nightly' 'cargo-nightly')
 optdepends=("bitwarden_rs-vault: Web Interface 'Vault'")
-conflicts=("${_pkgbase}-git") 
+conflicts=("${_pkgbase}-git" "${_pkgbase}-mysql")  
 backup=('etc/bitwarden_rs.env')
 install=bitwarden_rs.install
 source=("https://github.com/dani-garcia/bitwarden_rs/archive/$pkgver.tar.gz"
