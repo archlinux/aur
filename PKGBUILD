@@ -1,4 +1,4 @@
-# Maintainer: Colin Adler <cadler@coder.com>
+# Maintainer: Colin Adler <colin@coder.com>
 
 pkgname=sshcode
 pkgver=0.8.0
