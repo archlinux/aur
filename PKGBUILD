@@ -2,7 +2,7 @@
 
 pkgname=cubew
 _version=4.4
-_patch=.2
+_patch=.3
 pkgver=${_version}${_patch}
 pkgrel=2
 pkgdesc="High-performance library for writing a multi-dimensional performance space."
@@ -11,7 +11,7 @@ url="http://www.scalasca.org/software/cube-4.x/download.html"
 license=('BSD')
 depends=('zlib')
 source=(http://apps.fz-juelich.de/scalasca/releases/cube/${_version}/dist/${pkgname}-${pkgver}.tar.gz)
-sha256sums=('31a71e9a05e6523de2b86b4026821bbb75fb411eb5b18ae38b27c1f44158014a')
+sha256sums=('93fff6cc1e8b0780f0171ef5302a2e1a257f99b6383fbfc1b9b82f925ceff501')
 
 build() {
   cd "$srcdir/${pkgname}-$pkgver"
