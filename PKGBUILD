@@ -1,24 +1,17 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 pkgbase=python-naima
 _pyname=${pkgbase#python-}
-pkgname=("python-${_pyname}" "python2-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.8.3
+pkgname=("python-${_pyname}" "python-${_pyname}-doc")
+pkgver=0.8.4
 pkgrel=1
 pkgdesc="Derivation of non-thermal particle distributions through MCMC spectral fitting"
 arch=('i686' 'x86_64')
-url="https://naima.readthedocs.io/en/latest/"
+url="https://naima.readthedocs.io/"
 license=('BSD')
-makedepends=('python-setuptools' 'python2-setuptools' 'python-astropy' 'python-astropy-helpers>=3.1' 'python2-astropy-helpers' 'python-sphinx-astropy' 'python-emcee')
-checkdepends=('python2-pytest<3.7'
-#             'python-pytest-astropy'
-              'python2-astropy'
-#             'python-corner'
-              'python2-corner'
-#             'python-yaml'
-              'python2-yaml'
-              'python2-emcee')
+makedepends=('python-setuptools' 'python-astropy' 'python-astropy-helpers>=3.1' 'python-sphinx-astropy' 'python-emcee')
+checkdepends=('python-pytest-astropy' 'python-corner' 'python-yaml')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('3970fed9996826054774fe770a959736')
+md5sums=('d74e64cb53179886d45936c56a0934fd')
 
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -28,11 +21,6 @@ prepare() {
 }
 
 build() {
-    msg "Building Python2"
-    cd ${srcdir}/${_pyname}-${pkgver}-py2
-    python2 setup.py build --use-system-libraries --offline
-
-    msg "Building Python3"
     cd ${srcdir}/${_pyname}-${pkgver}
     python setup.py build --use-system-libraries --offline
 
@@ -41,33 +29,16 @@ build() {
 }
 
 check() {
-#   msg "Checking Python3"
-#   cd ${srcdir}/${_pyname}-${pkgver}
-#   python setup.py test
+    cd ${srcdir}/${_pyname}-${pkgver}
 
-#   msg "Checking Python2"
-    cd ${srcdir}/${_pyname}-${pkgver}-py2
-    python2 setup.py test
-}
-
-package_python2-naima() {
-    depends=('python2>=2.7' 'python2-astropy>=1.0.2' 'python2-emcee>=2.2.0' 'python2-corner')
-    optdepends=('python2-sherpa: For using Sherpa models'
-                'python-naima-doc: Documentation for Naima'
-                'python2-pytest<3.7: For testing')
-    cd ${srcdir}/${_pyname}-${pkgver}-py2
-
-    install -D -m644 LICENSE.rst -t "${pkgdir}/usr/share/licenses/${pkgname}"
-    install -D -m644 README.rst -t "${pkgdir}/usr/share/doc/${pkgname}"
-    python2 setup.py install --root=${pkgdir} --prefix=/usr --optimize=1 --use-system-libraries --offline
+    python setup.py test
 }
 
 package_python-naima() {
     depends=('python>=3.5' 'python-astropy>=1.0.2' 'python-emcee>=2.2.0' 'python-corner')
     optdepends=('python-sherpa: For using Sherpa models'
-                'python-naima-doc: Documentation for Naima'
-                'python-pytest-astropy: For testing'
-                'python-astropy<3.2: For testing')
+                'python-naima-doc: Documentation for Naima')
+#               'python-pytest-astropy: For testing'
     cd ${srcdir}/${_pyname}-${pkgver}
 
     install -D -m644 LICENSE.rst -t "${pkgdir}/usr/share/licenses/${pkgname}"
