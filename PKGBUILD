@@ -3,7 +3,7 @@
 pkgname=bart-git
 _pkgname=bart
 pkgver=0.5.00.r0.g5efc0a9
-pkgrel=2
+pkgrel=3
 pkgdesc="Berkeley Advanced Reconstruction Toolbox (BART) for Computational Magnetic Resonance Imaging"
 arch=('x86_64')
 url="https://mrirecon.github.io/bart/"
@@ -31,4 +31,13 @@ build() {
 package() {
     cd "$_pkgname"
     make PREFIX="$pkgdir"/usr install
+
+    install -d "$pkgdir"/usr/share/bart/matlab
+    install matlab/* "$pkgdir"/usr/share/bart/matlab
+
+    install -d "$pkgdir"/usr/share/bart/python
+    install python/* "$pkgdir"/usr/share/bart/python
+
+    install -d "$pkgdir"/usr/share/bart/scripts
+    install scripts/* "$pkgdir"/usr/share/bart
 }
