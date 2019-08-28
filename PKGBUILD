@@ -1,6 +1,6 @@
 # Maintainer: Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
 
-pkgname=pology-svn
+pkgname=pology-git
 pkgver=1534626
 pkgrel=1
 pkgdesc='A framework for custom processing of PO files.'

@@ -1,4 +1,4 @@
-pkgbase = pology-svn
+pkgbase = pology-git
 	pkgdesc = A framework for custom processing of PO files.
 	pkgver = 1534626
 	pkgrel = 1
@@ -29,5 +29,5 @@ pkgbase = pology-svn
 	source = svn://anonsvn.kde.org/home/kde/trunk/l10n-support/pology
 	sha256sums = SKIP
 
-pkgname = pology-svn
+pkgname = pology-git
 
