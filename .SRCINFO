@@ -1,0 +1,16 @@
+pkgbase = python-stsci.stimage-doc
+	pkgdesc = Documentation for STScI Image
+	pkgver = 0.2.4
+	pkgrel = 1
+	url = http://www.stsci.edu/institute/software_hardware/pyraf/stsci_python
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = python2-stsci.stimage=0.2.4
+	makedepends = python2-numpydoc
+	makedepends = python2-stsci.sphinxext
+	source = https://github.com/spacetelescope/stsci.stimage/archive/0.2.4.tar.gz
+	md5sums = 29f880d1db686c4c605db8ab8926f56d
+
+pkgname = python-stsci.stimage-doc
+
