@@ -1,6 +1,6 @@
 pkgbase = citra-canary-git
-	pkgdesc = An experimental open-source Nintendo 3DS emulator/debugger
-	pkgver = r7944.2cde47c3c
+	pkgdesc = An experimental open-source Nintendo 3DS emulator/debugger written in C++
+	pkgver = r8016.281ef588f
 	pkgrel = 1
 	url = https://github.com/citra-emu/citra-canary/tree/master
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = citra-canary-git
 	license = GPL2
 	makedepends = git
 	makedepends = cmake
-	makedepends = python2
+	makedepends = python
 	depends = shared-mime-info
 	depends = desktop-file-utils
 	depends = sdl2
@@ -16,10 +16,10 @@ pkgbase = citra-canary-git
 	depends = qt5-multimedia
 	depends = qt5-tools
 	depends = libxkbcommon-x11
-	depends = libfdk-aac
 	depends = ffmpeg
+	depends = libfdk-aac
 	optdepends = qt5-wayland: for Wayland support
-	source = citra-canary::git+https://github.com/citra-emu/citra-canary
+	source = citra::git+https://github.com/citra-emu/citra-canary#branch=master
 	md5sums = SKIP
 
 pkgname = citra-canary-git
