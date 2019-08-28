@@ -1,0 +1,21 @@
+pkgbase = qv2ray
+	pkgdesc = Qt cross platform v2ray GUI client
+	pkgver = 1.3.2
+	pkgrel = 1
+	url = https://github.com/lhy0403/Qv2ray
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = make
+	makedepends = qt5-tools
+	depends = qt5-base
+	optdepends = v2ray
+	optdepends = v2ray-domain-list-community
+	optdepends = v2ray-geoip
+	provides = Qv2ray
+	source = git+https://github.com/lhy0403/Qv2ray
+	sha512sums = SKIP
+
+pkgname = qv2ray
+
