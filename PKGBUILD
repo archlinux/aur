@@ -21,11 +21,13 @@ build() {
 
 check() {
     cd "$srcdir/cmocean-${pkgver}"
-    PYTHONPATH="./build/lib" pytest -v
+    PYTHONPATH="$PWD/build/lib" pytest -v
+    # Don't keep around the bytecode files pytest generated
+    rm -rf "$PWD/build/lib/cmocean/__pycache__"
 }
 
 package() {
     cd "$srcdir/cmocean-${pkgver}"
     install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+    python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
