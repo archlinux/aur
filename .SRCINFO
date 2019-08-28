@@ -1,7 +1,7 @@
 pkgbase = glib2-clear
 	pkgdesc = Low level core library
 	pkgver = 2.60.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.gnome.org/Projects/GLib
 	arch = x86_64
 	license = LGPL2.1
