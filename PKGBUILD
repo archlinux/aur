@@ -1,12 +1,12 @@
 # Maintainer: Sosthène Guédon <sosthene.gued@gmail.com>
 pkgname=peertube-viewer
-pkgver=0.3.1
+pkgver=0.4
 pkgrel=1
 pkgdesc="Peertube command line viewer inspired by youtube-viewer"
 arch=('x86_64')
 url="https://gitlab.com/SostheneGuedon/peertube-viewer"
+md5sums=('8d17ce6b69c03bf55c48a3dc5f1a1c28')
 license=('GPL')
-md5sums=('d6521def926e654067986974046a283c')
 depends=(
   'curl'
   'boost-libs'
