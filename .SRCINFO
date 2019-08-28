@@ -8,11 +8,13 @@ pkgbase = slock-solarized-dark
 	depends = libxrandr
 	provides = slock
 	source = https://dl.suckless.org/tools/slock-1.4.tar.gz
-	source = config.h
-	source = solarized.patch
+	source = slock-nobody-1.4.diff
+	source = slock-solarized-dark-1.4.diff
+	source = slock-yutna-1.4.diff
 	sha256sums = b53849dbc60109a987d7a49b8da197305c29307fd74c12dc18af0d3044392e6a
-	sha256sums = fd86100f2dd81fc41a4b4cb2a54a6076d393b08ab43d98b5e5ba7bbf1218fe71
-	sha256sums = 1d9b1dad24cd6bf51f7ce39b855634dcbb301ae22f79ddcf44fa09fad8dc4e79
+	sha256sums = ca2229fdbded92150a7050c59c5237d2c52e77cd4c36050ffc5fa31600ab9d41
+	sha256sums = 0c668deac297a395cf6211b8940818b0d9ffd46ff6cf101a883b244cebf32d72
+	sha256sums = baf1766a7a09d13601ec5d625415d1d3e5ce183f9d1b6b0b8c27298f26308bae
 
 pkgname = slock-solarized-dark
 

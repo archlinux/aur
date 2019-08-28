@@ -11,16 +11,19 @@ license=("MIT")
 depends=("libxrandr")
 provides=("slock")
 source=(https://dl.suckless.org/tools/$_pkgname-$pkgver.tar.gz
-        config.h
-        solarized.patch)
+        slock-nobody-$pkgver.diff
+        slock-solarized-dark-$pkgver.diff
+        slock-yutna-$pkgver.diff)
 sha256sums=("b53849dbc60109a987d7a49b8da197305c29307fd74c12dc18af0d3044392e6a"
-            "fd86100f2dd81fc41a4b4cb2a54a6076d393b08ab43d98b5e5ba7bbf1218fe71"
-            "1d9b1dad24cd6bf51f7ce39b855634dcbb301ae22f79ddcf44fa09fad8dc4e79")
+            "ca2229fdbded92150a7050c59c5237d2c52e77cd4c36050ffc5fa31600ab9d41"
+            "0c668deac297a395cf6211b8940818b0d9ffd46ff6cf101a883b244cebf32d72"
+            "baf1766a7a09d13601ec5d625415d1d3e5ce183f9d1b6b0b8c27298f26308bae")
 
 prepare() {
   cd $srcdir/$_pkgname-$pkgver
-  cp $srcdir/config.h config.h
-  patch -p0 -i $srcdir/solarized.patch
+  patch -p1 -i $srcdir/slock-nobody-$pkgver.diff
+  patch -p1 -i $srcdir/slock-solarized-dark-$pkgver.diff
+  patch -p1 -i $srcdir/slock-yutna-$pkgver.diff
 }
 
 build() {
@@ -34,4 +37,3 @@ package() {
   install -Dm644 LICENSE $pkgdir/usr/share/licenses/$_pkgname/LICENSE
   install -Dm644 README $pkgdir/usr/share/doc/$_pkgname/README
 }
-

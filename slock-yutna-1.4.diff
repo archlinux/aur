@@ -1,0 +1,10 @@
+diff --git a/config.def.h b/config.def.h
+index 9855e21..92ef6dc 100644
+--- a/config.def.h
++++ b/config.def.h
+@@ -9,4 +9,4 @@ static const char *colorname[NUMCOLS] = {
+ };
+ 
+ /* treat a cleared input like a wrong password (color) */
+-static const int failonclear = 1;
++static const int failonclear = 0;
