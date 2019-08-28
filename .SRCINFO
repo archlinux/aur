@@ -1,0 +1,18 @@
+pkgbase = python-stsci.distutils-doc
+	pkgdesc = Documentation for STScI Distutils
+	pkgver = 0.3.7
+	pkgrel = 1
+	url = http://www.stsci.edu/institute/software_hardware/pyraf/stsci_python
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = python2-stsci.distutils=0.3.7
+	makedepends = python2-d2to1
+	makedepends = python2-numpydoc
+	makedepends = python2-stsci.sphinxext
+	makedepends = python2-matplotlib
+	source = https://github.com/spacetelescope/stsci.distutils/archive/0.3.7.tar.gz
+	md5sums = cc7617f69c0b10eaecdb529a4bec02b5
+
+pkgname = python-stsci.distutils-doc
+
