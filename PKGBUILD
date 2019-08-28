@@ -2,8 +2,8 @@
 # Contributor: John-Gee
 
 pkgname=goofys-bin
-pkgver=0.20.0
-pkgrel=2
+pkgver=0.21.0
+pkgrel=1
 pkgdesc="Goofys is a high performance Amazon S3 backend filey-system interface"
 arch=('x86_64')
 url="https://github.com/kahing/goofys"
@@ -12,7 +12,7 @@ conflicts=('goofys' 'goofys-git')
 depends=('fuse')
 
 source=("https://github.com/kahing/goofys/releases/download/v${pkgver}/goofys")
-md5sums=('6284c651df782d30090b0ea250899af2')
+md5sums=('fcf44727058c5a1e504648886cca1949')
 
 package() {
   cd $srcdir
