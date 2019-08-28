@@ -41,6 +41,7 @@ check() {
 
 package_python2-stsci.tools() {
     depends=('python2-astropy')
+    optdepends=('python-stsci.tools-doc: Documentation for STScI Tools')
     cd ${srcdir}/${_pyname}-${pkgver}
 
     install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE.md
@@ -52,6 +53,7 @@ package_python2-stsci.tools() {
 
 package_python-stsci.tools() {
     depends=('python-astropy')
+    optdepends=('python-stsci.tools-doc: Documentation for STScI Tools')
     cd ${srcdir}/${_pyname}-${pkgver}
 
     install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE.md

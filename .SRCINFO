@@ -18,7 +18,9 @@ pkgbase = python-stsci.tools
 
 pkgname = python-stsci.tools
 	depends = python-astropy
+	optdepends = python-stsci.tools-doc: Documentation for STScI Tools
 
 pkgname = python2-stsci.tools
 	depends = python2-astropy
+	optdepends = python-stsci.tools-doc: Documentation for STScI Tools
 
