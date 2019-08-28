@@ -4,7 +4,9 @@ _blender=$(pacman -Sddp --print-format %v blender|grep -oP '(?<=\:)[[:digit:]]{1
 _name="luxcorerender"
 
 pkgname=blender-plugin-${_name}
-pkgver=2.2alpha1
+pkgver=2.2
+_rel="beta3"
+[ -n "${_rel}" ] && _pkgver=${pkgver}${_rel} && pkgver+=".${_rel}" || _pkgver=${pkgver}
 epoch=1
 pkgrel=1
 pkgdesc="LuxCoreRender exporter plugin for Blender"
@@ -13,12 +15,12 @@ url="https://luxcorerender.org/"
 license=('GPL')
 depends=(blender luxcorerender)
 conflicts=(luxblend25 luxblend25-hg)
-source=("https://github.com/LuxCoreRender/BlendLuxCore/archive/blendluxcore_v${pkgver}.tar.gz")
-md5sums=('62c4b9d42cee2d3d7ba0c3442ba9ccc9')
+source=("https://github.com/LuxCoreRender/BlendLuxCore/archive/blendluxcore_v${_pkgver}.tar.gz")
+sha256sums=('40a4727c2aa20cc610b00a0860ccd735cac39e658c157cb6a57fd630164369e3')
 
 package() {
   install -d -m755 ${pkgdir}/usr/share/blender/${_blender}/scripts/addons
-  cp -a ${srcdir}/BlendLuxCore-blendluxcore_v${pkgver} ${pkgdir}/usr/share/blender/${_blender}/scripts/addons/${_name}
+  cp -a ${srcdir}/BlendLuxCore-blendluxcore_v${_pkgver} ${pkgdir}/usr/share/blender/${_blender}/scripts/addons/${_name}
   # change the search path in exporter so it finds pylux in its new location :(previous solution was much better, what happen to blendlux )
   #sed -i 's|from.*import pylux|import pylux|' "$pkgdir/usr/share/blender/$_blender/scripts/addons/luxrender/outputs/pure_api.py"
   for file in `grep -rl import\ pyluxcore ${pkgdir}` ; do sed -i 's/from .* import pyluxcore/import pyluxcore/g' $file; done
