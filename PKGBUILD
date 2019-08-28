@@ -1,6 +1,5 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 
-_blender=$(pacman -Sddp --print-format %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
 _name="luxcorerender"
 
 pkgname=blender-plugin-${_name}
@@ -19,6 +18,7 @@ source=("https://github.com/LuxCoreRender/BlendLuxCore/archive/blendluxcore_v${_
 sha256sums=('40a4727c2aa20cc610b00a0860ccd735cac39e658c157cb6a57fd630164369e3')
 
 package() {
+  _blender=$(pacman -Sddp --print-format %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=)')
   install -d -m755 ${pkgdir}/usr/share/blender/${_blender}/scripts/addons
   cp -a ${srcdir}/BlendLuxCore-blendluxcore_v${_pkgver} ${pkgdir}/usr/share/blender/${_blender}/scripts/addons/${_name}
   # change the search path in exporter so it finds pylux in its new location :(previous solution was much better, what happen to blendlux )
