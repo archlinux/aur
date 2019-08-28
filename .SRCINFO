@@ -1,6 +1,6 @@
 pkgbase = d9vk-winelib-git
 	pkgdesc = A d3d9 to vk layer based off DXVK's codebase, winelib version
-	pkgver = r2933.d112de83
+	pkgver = 0.20.r1.b23a94155
 	pkgrel = 1
 	url = https://github.com/Joshua-Ashton/d9vk
 	arch = x86_64
@@ -18,8 +18,10 @@ pkgbase = d9vk-winelib-git
 	conflicts = d9vk
 	source = git+https://github.com/Joshua-Ashton/d9vk.git
 	source = setup_d9vk
+	source = dxvk-async.patch
 	sha256sums = SKIP
 	sha256sums = 7147644664ef33d04f7b18683c47be95b5664c57cf6d63fdc019d915deebd37a
+	sha256sums = 757fd5ca3faf476730891541de408593450fe4b490cc87bd90b342826d66c564
 
 pkgname = d9vk-winelib-git
 
