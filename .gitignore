@@ -1,0 +1,7 @@
+/build
+/clang/
+/cling/
+/llvm/
+/pkg/
+/src/
+*.tar.xz
