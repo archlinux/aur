@@ -20,11 +20,12 @@ source=("https://github.com/alicevision/AliceVision/archive/v${pkgver}.tar.gz"
         "nanoflann::git+https://github.com/alicevision/nanoflann.git"
         "submodule.patch"
         )
-md5sums=('a9d5cd07ed33c0b73390b11170b3b11f'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'eb62c8be5a0d7ce537a928314c9d0028')
+sha256sums=('157d06d472ffef29f08a781c9df82daa570a49bb009e56a2924a3bd2f555ef50'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'ddbe76933cea0300b577095afa7459113a2d2ef02d4f300424261165ad9dee22'
+           )
 
 _CMAKE_FLAGS=(
               -DCMAKE_INSTALL_PREFIX=/usr
@@ -47,10 +48,10 @@ _CMAKE_FLAGS=(
                     } 
 
 ((DISABLE_UTE)) || {  source+=("ute_lib::git+https://github.com/alicevision/uncertaintyTE.git")
-                      md5sums+=('SKIP') 
+                      sha256sums+=('SKIP') 
                       makedepends+=('magma')
-                     _CMAKE_FLAGS+=( -DMAGMA_ROOT=/opt/magma
-                                     -DUNCERTAINTYTE_DIR=${srcdir}/ute_bin )
+                     _CMAKE_FLAGS+=( -DMAGMA_ROOT=/opt/magma )
+                     _CMAKE_FLAGS+=( -DUNCERTAINTYTE_DIR=${srcdir}/ute_bin )
                    }
 
 _path="AliceVision-${pkgver}"

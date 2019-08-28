@@ -33,7 +33,7 @@ pkgbase = alice-vision
 	depends = libraw
 	depends = opencv
 	depends = lapack
-	depends = siutesparse
+	depends = suitesparse
 	provides = alice-vision
 	conflicts = alice-vision-git
 	source = https://github.com/alicevision/AliceVision/archive/v2.2.0.tar.gz
@@ -42,12 +42,12 @@ pkgbase = alice-vision
 	source = nanoflann::git+https://github.com/alicevision/nanoflann.git
 	source = submodule.patch
 	source = ute_lib::git+https://github.com/alicevision/uncertaintyTE.git
-	md5sums = a9d5cd07ed33c0b73390b11170b3b11f
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = eb62c8be5a0d7ce537a928314c9d0028
-	md5sums = SKIP
+	sha256sums = 157d06d472ffef29f08a781c9df82daa570a49bb009e56a2924a3bd2f555ef50
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = ddbe76933cea0300b577095afa7459113a2d2ef02d4f300424261165ad9dee22
+	sha256sums = SKIP
 
 pkgname = alice-vision
 
