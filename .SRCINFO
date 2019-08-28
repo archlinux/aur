@@ -1,0 +1,15 @@
+pkgbase = emulator-8080-git
+	pkgdesc = Intel 8080 Emulator
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://gitlab.com/azizyus/emulator-8080
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = glut
+	depends = glu
+	source = git+https://gitlab.com/azizyus/emulator-8080.git
+	md5sums = SKIP
+
+pkgname = emulator-8080-git
+
