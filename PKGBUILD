@@ -3,7 +3,7 @@
 
 pkgname=blackhole-git
 pkgver=0.2.r8.g3f78eb7
-pkgrel=1
+pkgrel=2
 pkgdesc="module system for gambit-c scheme"
 arch=('x86_64')
 url="http://github.com/pereckerdal/blackhole"
@@ -12,7 +12,7 @@ depends=('glibc')
 makedepends=('git' 'gambit-c')
 source=("git+https://github.com/pereckerdal/blackhole.git" compilescript.diff)
 sha256sums=('SKIP'
-            '5d2c5bf85eab249df3bd67c4a297a4705037524e1d683c604eb58dbf8ecfb3a2')
+            '3881cce0e7bab230b088ce0674bb7cf54249a051fb95d63631b477ac57603256')
 
 pkgver() {
   cd ${pkgname%-git}
