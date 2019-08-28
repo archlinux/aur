@@ -12,7 +12,7 @@ provides=('stormchecker')
 # TODO: mathsat?
 # TODO: sylvan is always shipped at the moment
 # TODO: carl hides some dependencies here
-depends=(glpk hwloc xerces-c z3 carl-master14)
+depends=(glpk hwloc xerces-c z3 carl-master14-git)
 makedepends=(cmake)
 source=("https://github.com/moves-rwth/storm/archive/$pkgver.tar.gz")
 md5sums=('894ae6d2addff46380bf640f61bbf92c')
