@@ -1,7 +1,7 @@
 pkgbase = python-stsci.sphinxext
 	pkgdesc = A set of tools and templates to customize Sphinx for use in STScI projects
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.stsci.edu/institute/software_hardware/pyraf/stsci_python
 	arch = i686
 	arch = x86_64
@@ -20,13 +20,16 @@ pkgbase = python-stsci.sphinxext
 
 pkgname = python-stsci.sphinxext
 	depends = python
+	depends = python-sphinx>=0.6.3
+	depends = python-numpydoc
+	depends = python-matplotlib
 	optdepends = python-sphinx>=0.6.3
 	optdepends = python-numpydoc: Provides support for Numpy-style docstring syntax
 	optdepends = python-matplotlib: Provides matplotlib extensions for inline plotting
 
 pkgname = python2-stsci.sphinxext
 	depends = python2
-	optdepends = python2-sphinx>=0.6.3
-	optdepends = python2-numpydoc: Provides support for Numpy-style docstring syntax
-	optdepends = python2-matplotlib: Provides matplotlib extensions for inline plotting
+	depends = python2-sphinx>=0.6.3
+	depends = python2-numpydoc
+	depends = python2-matplotlib
 

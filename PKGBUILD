@@ -3,7 +3,7 @@ pkgbase=python-stsci.sphinxext
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python2-${_pyname}")
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A set of tools and templates to customize Sphinx for use in STScI projects"
 arch=('i686' 'x86_64')
 url="http://www.stsci.edu/institute/software_hardware/pyraf/stsci_python"
@@ -42,10 +42,7 @@ check() {
 }
 
 package_python2-stsci.sphinxext() {
-    depends=('python2')
-    optdepends=('python2-sphinx>=0.6.3'
-                'python2-numpydoc: Provides support for Numpy-style docstring syntax'
-                'python2-matplotlib: Provides matplotlib extensions for inline plotting')
+    depends=('python2' 'python2-sphinx>=0.6.3' 'python2-numpydoc' 'python2-matplotlib')
     cd ${srcdir}/${_pyname}-${pkgver}-py2
 
     install -D -m644 LICENSE* -t "${pkgdir}/usr/share/licenses/${pkgname}"
@@ -55,6 +52,7 @@ package_python2-stsci.sphinxext() {
 
 package_python-stsci.sphinxext() {
     depends=('python')
+    depends=('python' 'python-sphinx>=0.6.3' 'python-numpydoc' 'python-matplotlib')
     optdepends=('python-sphinx>=0.6.3'
                 'python-numpydoc: Provides support for Numpy-style docstring syntax'
                 'python-matplotlib: Provides matplotlib extensions for inline plotting')
