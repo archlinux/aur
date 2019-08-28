@@ -1,5 +1,5 @@
 _npmname=verdaccio
-_npmver=4.2.1
+_npmver=4.2.2
 
 pkgname=$_npmname
 pkgver=$_npmver
@@ -11,7 +11,7 @@ license=(MIT)
 depends=('nodejs' 'npm')
 optdepends=()
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
-sha256sums=('62554a1a13ce9c6ff0d73c4eed36030137d36c3f5878711aca6c4b1f053ec3a6')
+sha256sums=('5d4177f6bd1534ec95f1970fefe2307c1648d238a519009bed11f8cd6da794d7')
 
 backup=(etc/verdaccio/config.yaml)
 
