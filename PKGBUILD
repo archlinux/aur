@@ -3,7 +3,7 @@
 # Contributor: robb_force <robb_force@holybuffalo.net>
 
 pkgname=raine
-pkgver=0.64.15
+pkgver=0.64.16
 pkgrel=1
 pkgdesc="A multiple arcade emulator focused on 680x0 machines like NeoCD and Neo Geo"
 url="http://raine.1emulation.com/"
@@ -21,7 +21,7 @@ optdepends=('raine-artwork: additional background graphics for some games'
             'arcade-command-dat: database with button combinations for special moves in (mostly fighting) games')
 source=(raine-$pkgver.tar.gz::"https://github.com/zelurker/raine/archive/$pkgver.tar.gz"
         "$url/archive/debian/dists/unstable/main/binary-i386/raine_0.64.13_i386.deb")
-sha256sums=('7aabe3138bd41e95b586a48a29c4d8bf68ff44aeb44d54dae0899c2f4aba6542'
+sha256sums=('f0c9a1807610a9b035ada20362321cabbb08079d205b639d14b2071f275f0358'
             '71414fc61c1d26eeccfab4f7319ba9efce19b8276151d3a119fd86c3db0a172b')
 options=('emptydirs')
 
@@ -42,8 +42,9 @@ prepare() {
   # -O3 optimizations cause segfaults, use -O2 instead
   sed 's|-O3|-O2|g' -i makefile
 
-  # link to the dynamic library of SDL_sound, not only for gentoo
-  sed 's|ifeq ("$(shell uname -n)","gentoo")|ifdef RAINE_UNIX|' -i makefile
+  # fix building with dynamic library of SDL_sound
+  # https://github.com/zelurker/raine/commit/705db312376464d15c867142603e4ed4ac9dbbba
+  sed 's|using system SDL_sound.*|"&"|' -i makefile
 
   # 'detect-cpu' script does not recognize most recent cpus, use generic optimizing
   echo "_MARCH=-march=${CARCH/x86_64/x86-64} -mtune=generic" > cpuinfo
