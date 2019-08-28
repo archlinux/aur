@@ -2,7 +2,7 @@
 
 pkgname=cubegui
 _version=4.4
-_patch=.3
+_patch=.4
 pkgver=${_version}${_patch}
 pkgrel=3
 pkgdesc="Performance report explorer for displaying a multi-dimensional performance space."
@@ -11,7 +11,7 @@ url="http://www.scalasca.org/software/cube-4.x/download.html"
 license=('BSD')
 depends=('qt5-base' 'cubelib')
 source=(http://apps.fz-juelich.de/scalasca/releases/cube/${_version}/dist/${pkgname}-${pkgver}.tar.gz)
-sha256sums=('bf4b0f2ff68507ff82ba24eb4895aed961710dae16d783c222a12f152440cf36')
+sha256sums=('9b7b96d5a64b558a9017cc3599bba93a42095534e018e3de9b1f80ab6d04cc34')
 
 build() {
   cd "$srcdir/${pkgname}-$pkgver"
