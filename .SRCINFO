@@ -1,0 +1,24 @@
+pkgbase = python-stsci.tools
+	pkgdesc = Collection of STScI utility functions
+	pkgver = 3.6.0
+	pkgrel = 1
+	url = https://stscitools.readthedocs.io/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	checkdepends = python-pytest-doctestplus
+	checkdepends = python-astropy
+	checkdepends = tk
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	makedepends = python-relic
+	makedepends = python2-relic
+	source = https://files.pythonhosted.org/packages/source/s/stsci.tools/stsci.tools-3.6.0.tar.gz
+	md5sums = 6c3db13921475d8a17c57c75263501a0
+
+pkgname = python-stsci.tools
+	depends = python-astropy
+
+pkgname = python2-stsci.tools
+	depends = python2-astropy
+
