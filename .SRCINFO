@@ -7,6 +7,7 @@ pkgbase = python-stsci.distutils-doc
 	arch = x86_64
 	license = BSD
 	makedepends = python2-stsci.distutils=0.3.7
+	makedepends = python2-numpydoc
 	makedepends = python2-d2to1
 	makedepends = python2-stsci.sphinxext
 	source = https://github.com/spacetelescope/stsci.distutils/archive/0.3.7.tar.gz
