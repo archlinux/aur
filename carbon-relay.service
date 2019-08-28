@@ -1,0 +1,10 @@
+[Unit]
+Description=Graphite Carbon Relay
+After=network.target
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/carbon-relay.py --config=/etc/carbon/carbon.conf start
+
+[Install]
+WantedBy=multi-user.target

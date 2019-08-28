@@ -1,0 +1,15 @@
+post_install() {
+	if ! getent group carbon > /dev/null; then
+		groupadd --system carbon
+	fi
+	if ! getent passwd carbon > /dev/null; then
+		useradd -c "Graphite Carbon Daemons" --system -d /var/lib/carbon -s /usr/bin/nologin -g carbon carbon
+		passwd -l carbon > /dev/null
+	fi
+	mkdir -p /var/lib/carbon
+	chown -R carbon:carbon /var/lib/carbon > /dev/null
+}
+
+post_upgrade() {
+	post_install $1
+}
