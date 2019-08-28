@@ -1,0 +1,15 @@
+pkgbase = fzf-pass
+	pkgdesc = FZF frontend for pass written in bash
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/carnager/rofi-pass
+	arch = any
+	license = GPL
+	depends = fzf
+	depends = pass
+	depends = ydotool
+	source = https://gitlab.com/ReekyMarko/fzf-pass/raw/2533521513b12b1db07bc37cc9087a3e76eb624b/fzf-pass
+	md5sums = 5d83e760ca538380a28b56420f6a858e
+
+pkgname = fzf-pass
+
