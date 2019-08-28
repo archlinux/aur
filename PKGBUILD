@@ -4,13 +4,12 @@
 
 pkgbase=bcc-git
 pkgname=('bcc-git' 'bcc-tools-git' 'python-bcc-git' 'python2-bcc-git')
-pkgver=v0.5.0.r305.7c27c271
-pkgrel=1
+pkgver=v0.10.0.r92.270d54ae
+pkgrel=2
 pkgdesc='BPF Compiler Collection - latest git code'
 arch=('x86_64')
 url='https://github.com/iovisor/bcc'
 license=('Apache')
-conflicts=('bcc')
 makedepends=('cmake' 'clang>=3.7.0' 'llvm>=3.7.0' 'flex' 'bison' 'python' 'python2')
 checkdepends=('netperf' 'iperf')
 source=('bcc-git::git+https://github.com/iovisor/bcc')
@@ -40,8 +39,8 @@ package_bcc-git() {
 	optdepends=('bcc-tools-git: Python utilites using the BCC library'
 		'python-bcc-git: Python 3 bindings for BCC'
 		'python2-bcc-git: Python 2 bindings for BCC')
-	makedepends=('cmake' 'clang>=3.7.0' 'llvm>=3.7.0' 'flex' 'bison')
-	provides=('bcc-git' 'libbcc-git')
+	provides=('bcc' 'libbcc')
+	conflicts=('bcc' 'libbcc')
 
 	cd "${srcdir}/${pkgbase}/build"
 
@@ -58,10 +57,12 @@ package_bcc-git() {
 package_bcc-tools-git() {
 	pkgdesc='BPF Compiler Collection - Tools - latest git code'
 	arch=('any')
-	depends=('bcc-git')
-	conflicts=('bcc-tools')
+	depends=('bcc-git' 'libedit' 'ethtool')
 	optdepends=('python-bcc-git: Python 3 bindings for BCC'
-		'python2-bcc-git: Python 2 bindings for BCC')
+		'python2-bcc-git: Python 2 bindings for BCC'
+		'luajit: Lua bindings for BCC')
+	provides=('bcc-tools')
+	conflicts=('bcc-tools')
 
 	cd "${srcdir}/${pkgbase}/build/tools"
 	make DESTDIR="${pkgdir}" install
@@ -74,7 +75,10 @@ package_python-bcc-git() {
 	pkgdesc='BPF Compiler Collection - Python 3 bindings - latest git code'
 	arch=('any')
 	depends=('bcc-git' 'python')
-	makedepends=('cmake')
+	optdepends=('python-netaddr2: Network address representation and manipulation'
+		'python-pyroute2: Netlink and Linux network configuration')
+	provides=('python-bcc')
+	conflicts=('python-bcc')
 
 	cd "${srcdir}/${pkgbase}/build"
 
@@ -94,7 +98,10 @@ package_python2-bcc-git() {
 	pkgdesc='BPF Compiler Collection - Python 2 bindings - latest git code'
 	arch=('any')
 	depends=('bcc-git' 'python2')
-	makedepends=('cmake')
+	optdepends=('python2-netaddr2: Network address representation and manipulation'
+		'python2-pyroute2: Netlink and Linux network configuration')
+	provides=('python2-bcc')
+	conflicts=('python2-bcc')
 
 	cd "${srcdir}/${pkgbase}/build"
 
