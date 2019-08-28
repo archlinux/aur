@@ -1,0 +1,21 @@
+pkgbase = python-relic
+	pkgdesc = Maintains version information for git projects
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://github.com/spacetelescope/relic
+	arch = i686
+	arch = x86_64
+	license = BSD
+	checkdepends = python-pytest
+	checkdepends = python2-pytest
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = https://files.pythonhosted.org/packages/source/r/relic/relic-1.1.2.tar.gz
+	md5sums = 5f8124328c523f01a27e3883ee8b5d84
+
+pkgname = python-relic
+	depends = python
+
+pkgname = python2-relic
+	depends = python2
+
