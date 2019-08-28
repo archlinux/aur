@@ -19,7 +19,9 @@ pkgbase = gnome-shell-pomodoro
 	depends = appstream-glib
 	depends = gom
 	source = gnome-shell-pomodoro-0.15.1.tar.gz::https://github.com/codito/gnome-pomodoro/archive/0.15.1.tar.gz
+	source = https://github.com/codito/gnome-pomodoro/commit/1e1d8d576d4d5e079c50a874fb8ed09da161c013.patch
 	sha256sums = 67c90673ba6362fb1dea2cc72aa5a2e6a8b75f0141388cf5a48e31d078ecffb3
+	sha256sums = 6faaf1400d79373e1659e2a3a1df0a8d851b253726f5d786c412e7fe523e7817
 
 pkgname = gnome-shell-pomodoro
 
