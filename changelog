@@ -1,3 +1,7 @@
+2019-08-28 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+	* 0.13.r5408.6112c713-1 :
+	  upstream migrated to a git repository
+
 2019-02-03 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
 	* 1534626-1 :
 	  fix cmake compilation error

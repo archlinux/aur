@@ -1,14 +1,14 @@
 # Maintainer: Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
 
 pkgname=pology-git
-pkgver=1534626
+pkgver=0.13.r5408.6112c713
 pkgrel=1
 pkgdesc='A framework for custom processing of PO files.'
 arch=('any')
 license=('GPL3')
 url='http://techbase.kde.org/Localization/Tools/Pology'
 depends=('python2' 'gettext' 'python2-pyenchant')
-makedepends=('subversion' 'cmake' 'libxml2' 'docbook-xsl' 'epydoc' 'python2-pygments')
+makedepends=('git' 'cmake' 'libxml2' 'docbook-xsl' 'epydoc' 'python2-pygments')
 options=(!makeflags)
 optdepends=('python2-dbus: to communicate with external applications'
 	    'hunspell-lang: a spell-checking dictionary for your language(s)'
@@ -20,13 +20,14 @@ optdepends=('python2-dbus: to communicate with external applications'
 	    'git: for processing files under version control'
 	    'subversion: for processing files under version control')
 provides=('pology')
+replaces=('pology-svn')
 changelog=changelog
-source=("svn://anonsvn.kde.org/home/kde/trunk/l10n-support/pology")
+source=("git://anongit.kde.org/pology.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd pology
-  svnversion | tr -d [A-z]
+  cd ${srcdir}/pology
+  printf "%s.r%s.%s" "$(cat VERSION)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
