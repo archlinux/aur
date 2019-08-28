@@ -1,6 +1,6 @@
 pkgbase = bitwarden_rs-git
 	pkgdesc = An unofficial lightweight implementation of the bitwarden-server using rust and sqlite. Does NOT include the web-interface.
-	pkgver = 1.6.1.r18.g82f828a
+	pkgver = 1.10.0.r12.g469318b
 	pkgrel = 1
 	url = https://github.com/dani-garcia/bitwarden_rs
 	install = bitwarden_rs.install
@@ -14,6 +14,7 @@ pkgbase = bitwarden_rs-git
 	depends = openssl
 	provides = bitwarden_rs
 	conflicts = bitwarden_rs
+	conflicts = bitwarden_rs-mysql
 	backup = etc/bitwarden_rs.env
 	source = git+https://github.com/dani-garcia/bitwarden_rs.git
 	source = bitwarden_rs.install

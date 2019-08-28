@@ -2,7 +2,7 @@
 
 pkgname=bitwarden_rs-git
 _pkgbase=bitwarden_rs
-pkgver=1.6.1.r18.g82f828a
+pkgver=1.10.0.r12.g469318b
 pkgrel=1
 pkgdesc="An unofficial lightweight implementation of the bitwarden-server using rust and sqlite. Does NOT include the web-interface."
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -12,7 +12,7 @@ groups=()
 makedepends=('rust-nightly' 'cargo-nightly')
 depends=('openssl')
 provides=("$_pkgbase") 
-conflicts=("$_pkgbase") 
+conflicts=("$_pkgbase" "$_pkgbase-mysql") 
 replaces=()
 backup=('etc/bitwarden_rs.env')
 options=()
@@ -40,7 +40,7 @@ build() {
 	#build bitwarden_rs
 	cd "$srcdir/$_pkgbase"
 	patch -N -p1 -i "$srcdir/0001-Disable-Vault.patch"
-	cargo build --release
+	cargo build --release --features sqlite
 }
 
 package() {
