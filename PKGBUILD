@@ -1,6 +1,6 @@
 # Maintainer: Sascha Wunderlich <archlinux at saschawunderlich dot de>
 pkgname=stormchecker
-pkgver=1.1.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Storm is a tool for the analysis of systems involving random or probabilistic phenomena"
 arch=(i686 x86_64)
@@ -12,10 +12,10 @@ provides=('stormchecker')
 # TODO: mathsat?
 # TODO: sylvan is always shipped at the moment
 # TODO: carl hides some dependencies here
-depends=(glpk hwloc xerces-c z3 carl)
+depends=(glpk hwloc xerces-c z3 carl-master14)
 makedepends=(cmake)
 source=("https://github.com/moves-rwth/storm/archive/$pkgver.tar.gz")
-md5sums=('b85a8162197abca05e76c0cb9475ce1f')
+md5sums=('894ae6d2addff46380bf640f61bbf92c')
 
 build() {
   cd "storm-$pkgver"
@@ -29,7 +29,6 @@ build() {
 	..
 
   make binaries
-  make storm-pgcl-cli
 }
 
 package() {
