@@ -1,7 +1,7 @@
 pkgbase = python-stsci.tools
 	pkgdesc = Collection of STScI utility functions
 	pkgver = 3.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://stscitools.readthedocs.io/
 	arch = i686
 	arch = x86_64
