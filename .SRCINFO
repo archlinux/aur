@@ -9,6 +9,7 @@ pkgbase = barrier-git
 	depends = hicolor-icon-theme
 	depends = qt5-base
 	depends = cmake
+        depends = barrier-headless-git
 	provides = barrier
 	conflicts = barrier
 	source = barrier-git::git+https://github.com/debauchee/barrier.git
