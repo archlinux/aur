@@ -25,8 +25,8 @@ arch:
   packages:
   - ccache
   - moreutils
-  - babl-qfix-git
-  - gegl-qfix-git
+  - babl-git
+  - gegl-git
   before_install:
 # 1.Override `package-cleanup.hook` to preserve cache for travis.
 # 2.Enable ccache
