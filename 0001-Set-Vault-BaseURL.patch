@@ -1,9 +1,9 @@
-index f1b5b392..2bfc2f2e 100644
+index a92bf70c..cf5a4cb4 100644
 --- a/src/app/services/services.module.ts
 +++ b/src/app/services/services.module.ts
-@@ -120,20 +120,16 @@ const notificationsService = new NotificationsService(userService, syncService,
- const environmentService = new EnvironmentService(apiService, storageService, notificationsService);
+@@ -123,20 +123,16 @@ const environmentService = new EnvironmentService(apiService, storageService, no
  const auditService = new AuditService(cryptoFunctionService, apiService);
+ const eventLoggingService = new EventLoggingService(storageService, apiService, userService, cipherService);
  
 -const analytics = new Analytics(window, () => platformUtilsService.isDev() || platformUtilsService.isSelfHost(),
 +const analytics = new Analytics(window, () => platformUtilsService.isDev() || platformUtilsService.isSelfHost() || true,
@@ -37,7 +37,7 @@ index 5560c476..a9b954a8 100644
          }], [], (data: any) => {
              this.ngZone.run(() => {
                  this.u2fListening = false;
-index 3df655fd..7e57cffe 100644
+index 2e1dbec9..2d9b635f 100644
 --- a/src/scss/styles.scss
 +++ b/src/scss/styles.scss
 @@ -1,5 +1,34 @@

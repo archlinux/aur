@@ -1,6 +1,6 @@
 pkgbase = bitwarden_rs-vault
 	pkgdesc = Integrates the Vault Web-Interface into bitwarden_rs.
-	pkgver = 2.10.1
+	pkgver = 2.11.0
 	pkgrel = 1
 	url = https://github.com/bitwarden/web
 	install = bitwarden_rs-vault.install
@@ -9,14 +9,14 @@ pkgbase = bitwarden_rs-vault
 	makedepends = npm
 	depends = bitwarden_rs
 	conflicts = bitwarden_rs-vault-git
-	source = https://github.com/bitwarden/web/archive/v2.10.1.tar.gz
-	source = https://github.com/bitwarden/jslib/archive/741e060d999c7b40e98b5b2b8afab4e43d59afcb.tar.gz
+	source = https://github.com/bitwarden/web/archive/v2.11.0.tar.gz
+	source = https://github.com/bitwarden/jslib/archive/692d1ec20163edaa404b52888af2ea45b13b59cd.tar.gz
 	source = 0001-Set-Vault-BaseURL.patch
 	source = 0002-Disable-Git-Submodule-Commands.patch
 	source = bitwarden_rs-vault.install
-	sha512sums = 1020c94e2167a4e37813dc63c489b19e7ec8d5a9f863b2d904cab1768e1dea35c4c756f3fae974fed958107b7d0b86d4bea82afacda4da8b00d843657368cd75
-	sha512sums = a0be963cd6f96c27f8a8750cce739aae50b3a35a91d7f268496d03680b8e2b669faed2198222d03e3629e1b5380f8ea9da06db56474172be6708ca4d0f9e431f
-	sha512sums = 02bada10c338b8fd6fd792b1d5f275109d296416a0f75f03399a763bf4edb5d2594352511169997c1ec7e532af0335bb322a925bb7f91d0bb067dadaca5a3bd8
+	sha512sums = 06cb7d1e39b72fc1bba5823a67716a932dafba126387a4049481857c5a7af41ca2e4b56bbebda1d283429981b65688c5fbc0535007d52a10c89f06c16784e7ab
+	sha512sums = 92297cc98b655fe3e8c45983f5c58c9af8615012e0ce4177522a461592cf1c1d50110f837cdab67246fe70e76d66e14e849de4c0886e6385df4743691ad96ddd
+	sha512sums = 1a47ae5a1e5664fb207dc021c59b36fe31d3641282b53fdd6092176fa44c86915c8a209619c07f0a031ca7153a1a69514ae9e1d29c3bfcd4fb27fd3ab24a677a
 	sha512sums = adaa6037e59f08a6a44f681c8eab915c0738069989f9d6acbf46e4d3135f69696fa7735a65158979fbc924b27f43bdf255648e615b33495ac7da418e89f27c90
 	sha512sums = 5265612afd40cb757e7d6550ca902f9c02c558e7d03607a181df923374efdf9eff85296c216db7c96d9987eb1fe0834a7eb90de7dcd988c9f7443dc69b9469b1
 
