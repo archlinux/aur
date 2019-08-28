@@ -1,0 +1,28 @@
+pkgbase = python-stsci.image
+	pkgdesc = Collection of STScI utility functions
+	pkgver = 2.3.3
+	pkgrel = 1
+	url = https://github.com/spacetelescope/stsci.image
+	arch = i686
+	arch = x86_64
+	license = BSD
+	checkdepends = python-scipy
+	checkdepends = python2-scipy
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	makedepends = python-numpy
+	makedepends = python2-numpy
+	source = https://files.pythonhosted.org/packages/source/s/stsci.image/stsci.image-2.3.3.tar.gz
+	md5sums = 4dc542e40f5c9b4a79e51855e055ee00
+
+pkgname = python-stsci.image
+	depends = python-numpy>=1.13
+	depends = python-scipy
+	optdepends = python-stsci.image-doc: Documentation for STScI Image
+
+pkgname = python2-stsci.image
+	depends = python2-numpy>=1.13
+	depends = python2-scipy
+	optdepends = python-stsci.image-doc: Documentation for STScI Image
+
