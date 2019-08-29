@@ -1,32 +1,22 @@
-# Maintainer: Pierre-Alexis Ciavaldini <pierre-alexis@ciavaldini.fr>
+# Maintainer: Frederik Schwan <frederik dot schwan at linux dot com>
 
-# maintenance, tar files
-pkgver="1.4.5"
+pkgname=minetime-bin
+pkgver=1.5.1
 pkgrel=1
-md5sums=(
-  # .deb
-  "aae5f63a3741f41fb8a8cf97c7cb45b2"
-)
-
-# info
-pkgname="minetime-bin"
-pkgdesc="Modern, intuitive and smart calendar application."
-
-_name=minetime
-arch=("x86_64")
-license=("unknown")
-url="https://github.com/marcoancona/MineTime"
-
-provides=("${_name}")
-depends=("libsecret")
-conflicts=("minetime")
-
-source=(
-  "${url}/releases/download/v${pkgver}/MineTime_${pkgver}_amd64.deb"
-)
+pkgdesc='MineTime is a modern, intuitive and smart calendar application.'
+arch=('x86_64')
+url='https://github.com/marcoancona/MineTime'
+license=('custom')
+depends=('libsecret' 'libxss')
+conflicts=('minetime')
+replaces=('minetime')
+source=(${url}/releases/download/v${pkgver}/MineTime_${pkgver}_amd64.deb
+        minetime)
+sha512sums=('87fc5d69980c6d8c7c658179890e1551b35979d64a2b4624cf9d989a439f08fd7c9a1492cf5ee5089ce323aba6ffbf49b11af7fc8c1d5fe80992662e50ae1726'
+            'deec4ce019c404b59b7cbad520e837bbb086dc3286a326fe8b07ddd46162a81747269f0be05b8b5ba08621ecc9ed90df436ae6844cf8f3074f4576f0a098efa3')
 
 package() {
-  tar -xJC "${pkgdir}" -f "${srcdir}/data.tar.xz"
-  install -d "${pkgdir}/usr/bin"
-  ln -s "/opt/MineTime/${_name}" "${pkgdir}/usr/bin/${_name}"
+    cd "${srcdir}"
+    tar -xJC "${pkgdir}" -f data.tar.xz
+    install -Dm 755 "${startdir}/minetime" "${pkgdir}/usr/bin/minetime"
 }
