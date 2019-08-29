@@ -2,7 +2,7 @@
 
 pkgname=qtum-core
 pkgver=0.18.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Qtum Core is a Smart Contracts blockchain platform which makes use of UTXO and Proof of Stake."
 arch=('x86_64')
 url="https://qtum.org"
@@ -33,8 +33,7 @@ package() {
     install -Dm755 src/qtumd "$pkgdir"/usr/bin/qtumd
     install -Dm755 src/qtum-cli "$pkgdir"/usr/bin/qtum-cli
     install -Dm755 src/qtum-wallet "$pkgdir"/usr/bin/qtum-wallet
-    install -Dm755 src/qtum-tx "$pkgdir"/usr/bin/qtum-
-    install -Dm755 src/test_qtum "$pkgdir"/usr/bin/test_qtum
+    install -Dm755 src/qtum-tx "$pkgdir"/usr/bin/qtum-tx
     
     
     
