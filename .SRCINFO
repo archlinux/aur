@@ -5,6 +5,7 @@ pkgbase = flat-remix
 	url = https://drasite.com/flat-remix
 	arch = any
 	license = GPL 3.0
+	options = !strip
 	source = https://github.com/daniruiz/flat-remix/archive/20190823.tar.gz
 	sha256sums = SKIP
 
