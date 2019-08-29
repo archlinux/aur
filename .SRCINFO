@@ -1,7 +1,7 @@
 pkgbase = tang
 	pkgdesc = Server for binding data to network presence
 	pkgver = 7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/latchset/tang
 	arch = x86_64
 	license = GPL3

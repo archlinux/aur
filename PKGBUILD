@@ -1,7 +1,7 @@
 # Maintainer: Jonas Witschel <diabonas at gmx dot de>
 pkgname=tang
 pkgver=7
-pkgrel=1
+pkgrel=2
 pkgdesc='Server for binding data to network presence'
 arch=('x86_64')
 url='https://github.com/latchset/tang'
@@ -13,7 +13,7 @@ sha512sums=('dd4187fa6962523ac2a745ef05a27cdf7e5264c595942e63d406d67a1c595e87bd7
 
 build() {
 	cd "$pkgname-$pkgver"
-	./configure --prefix=/usr --libexecdir=/usr/lib
+	./configure --prefix=/usr --libexecdir=/usr/lib --localstatedir=/var
 	make
 }
 
