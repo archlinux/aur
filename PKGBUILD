@@ -3,7 +3,7 @@
 # Maintainer: Nazar Mishturak <nazarmx@gmail.com>
 _binname=step-cli
 pkgname=$_binname-bin
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="A zero trust swiss army knife for working with X509, OAuth, JWT, OATH OTP, etc."
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=("https://github.com/smallstep/cli/releases/download/v${pkgver}/step_${pk
 	"https://github.com/smallstep/cli/raw/v${pkgver}/autocomplete/bash_autocomplete"
 	"https://github.com/smallstep/cli/raw/v${pkgver}/autocomplete/zsh_autocomplete")
 
-sha256sums=('3765f4a8c314d4a3b3661938ec9ca000c12d2ab43cb404c33c407ca1421654f0'
+sha256sums=('1c91190901796840c6e1e440ad81072ff31e84184e71f5f529b8f574cc8fb439'
             'add3e078e394e265f6b6a3bf12af81cc7897410ae5e6a0d4ee7714a5b856a7be'
             '5f5e5bc5cdd96109a82f91e61b8cdffb8695aee201d3bd61ca3874471819372e')
 
