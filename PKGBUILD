@@ -2,9 +2,9 @@
 
 pkgbase=linux-amd-raven
 _srcname=linux
-gitver=v5.2.10
-pkgver=5.2.v.10
-pkgrel=2
+gitver=v5.2.11
+pkgver=5.2.v.11
+pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
