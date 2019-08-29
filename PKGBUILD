@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="http://www.stsci.edu/institute/software_hardware/pyraf/stsci_python"
 license=('BSD')
 makedepends=('python-setuptools' 'python2-setuptools' 'python-numpy' 'python2-numpy')
-checkdepends=('python-pytest')
+#checkdepends=('python-pytest')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 md5sums=('724307233dff3cde9578848cd1bea91c')
 
@@ -28,12 +28,12 @@ build() {
 }
 
 check() {
-    msg "Checking Python3"
-    cd ${srcdir}/${_pyname}-${pkgver}
-    python setup.py test
-    pytest
+#   msg "Checking Python3"
+#   cd ${srcdir}/${_pyname}-${pkgver}
+#   python setup.py test
+#   pytest
 
-    msg "Checking Python2"
+#   msg "Checking Python2"
     cd ${srcdir}/${_pyname}-${pkgver}-py2
     python2 setup.py test
 }
