@@ -1,7 +1,7 @@
 pkgbase = inspircd
 	pkgdesc = A modular C++ IRC daemon (ircd).
 	pkgver = 3.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.inspircd.org/
 	install = inspircd.install
 	arch = any
