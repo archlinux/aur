@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=RuneLite Plus
+GenericName=RuneLite Plus
+Comment=Fork of RuneLite that provides more functionality and less restrictions whilst staying open source.
+Exec=runeliteplus
+Icon=runeliteplus
+Terminal=false
+Type=Application
+Categories=Game;

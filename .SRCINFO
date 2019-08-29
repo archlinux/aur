@@ -1,0 +1,23 @@
+pkgbase = runeliteplus-git
+	pkgdesc = Open source Old School RuneScape client. (from git master branch)
+	pkgver = 3270+gcbc07f18c
+	pkgrel = 1
+	url = https://github.com/runelite-extended/runelite
+	arch = any
+	license = BSD
+	makedepends = gradle
+	makedepends = java-environment=8
+	makedepends = java8-openjfx
+	depends = java-runtime=8
+	depends = ttf-font
+	optdepends = gvfs: enable links
+	provides = runeliteplus
+	source = git+https://github.com/runelite-extended/runelite.git
+	source = runeliteplus.desktop
+	source = runeliteplus.png::https://rawcdn.githack.com/runelite-extended/runelitepl.us/7949832e9c2ef6d4e4a225950132c20e54f58336/src/assets/icons/icon-512x512.png
+	sha512sums = SKIP
+	sha512sums = ced8abfcd9f73e0636139a832cc1b7b93e63937f10ad6fd4cc3439abe68e174501e3503aa7b239e4672386a9f1893305fc6bc2b617290e61b687018099536385
+	sha512sums = d4afe6d853a1cacd50ea62fc06a05e3659a367a156287e52599af7ff5020427335ae3d83b8a7b170d9af645f6951dce47d5acd1d88d1f440652731becda661fe
+
+pkgname = runeliteplus-git
+
