@@ -12,9 +12,9 @@ makedepends=('python-setuptools' 'python2-setuptools' 'python-numpy' 'python2-nu
 checkdepends=('python2-nose')
 #             'python-pytest')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
-        "https://github.com/spacetelescope/stsci.convolve/blob/master/LICENSE.txt")
+        "https://raw.githubusercontent.com/spacetelescope/stsci.convolve/master/LICENSE.txt")
 md5sums=('fb0feba75f45d85f34d6e4599efcd3db'
-         '7ee1b1760f8eb2c2b2b1946060c73630')
+         '901964fd100b953a8c8fd4d8f0ae8a7e')
 _pyver=$(python -V | cut -c 8-10)
 
 prepare() {
