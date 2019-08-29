@@ -1,12 +1,12 @@
 pkgbase = step-ca-bin
 	pkgdesc = An online certificate authority and related tools for secure automated certificate management, so you can use TLS everywhere.
-	pkgver = 0.10.0
-	pkgrel = 2
+	pkgver = 0.11.0
+	pkgrel = 1
 	url = https://smallstep.com/certificates
 	arch = x86_64
 	license = Apache
-	source = https://github.com/smallstep/certificates/releases/download/v0.10.0/step-certificates_0.10.0_linux_amd64.tar.gz
-	sha256sums = b54e5899515d6286cba9f41f131258c1ac6f1b77d93ae3ad7a2018d4b98ed979
+	source = https://github.com/smallstep/certificates/releases/download/v0.11.0/step-certificates_0.11.0_linux_amd64.tar.gz
+	sha256sums = a3cc06f610eaee246040501c0c652f7e065bddf016682bb11dd5ad10182c0838
 
 pkgname = step-ca-bin
 
