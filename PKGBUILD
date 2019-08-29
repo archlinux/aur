@@ -13,7 +13,7 @@ url='https://meetfranz.com'
 license=(Apache)
 depends=(electron4)
 makedepends=(expac git npm python2)
-source=("git+https://github.com/ventezzen/ferdi/"
+source=("git+https://github.com/kytwb/ferdi/"
         'ferdi.desktop'
         'ferdi.sh')
 sha512sums=('SKIP'
