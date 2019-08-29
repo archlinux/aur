@@ -3,7 +3,7 @@
 
 pkgname=rstudio-desktop-git
 _gitname=rstudio
-pkgver=1.2.1330.r238
+pkgver=1.2.1330.r1351
 _gwtver=2.8.2
 _ginver=2.1.2
 pkgrel=1
@@ -60,6 +60,7 @@ build() {
     cmake -DRSTUDIO_TARGET=Desktop \
           -DCMAKE_BUILD_TYPE=Release \
           -DCMAKE_INSTALL_PREFIX=/usr/lib/rstudio \
+          -DRSTUDIO_USE_SYSTEM_BOOST=yes \
           -DQT_QMAKE_EXECUTABLE=/usr/bin/qmake \
           -DRSTUDIO_BUNDLE_QT=FALSE ..
 }
