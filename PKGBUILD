@@ -1,21 +1,19 @@
-# Maintainer: Jameson Pugh <imntreal@gmail.com>
+# Maintainer: graysky <graysky AT archlinux DOT us>
 
 pkgname=ssh-audit
-pkgver=1.7.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="A tool for ssh server auditing."
 arch=(any)
 url="https://github.com/arthepsy/ssh-audit"
 license=('MIT')
 depends=('python')
-source=("https://github.com/arthepsy/ssh-audit/archive/v${pkgver}.tar.gz")
-sha256sums=('cba29cc19ec2932e4f43c720b2c49a7d179219e23482476aeb472f7463713b68')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/jtesta/$pkgname/archive/v$pkgver.tar.gz")
+sha256sums=('9ae7db82c343fc2d3af20994e750fbe69da8bed7ecde14e3fd8607d23b758c75')
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "$pkgname-$pkgver"
 
-  install -m755 -d "${pkgdir}/usr/bin"
-  install -m755 ssh-audit.py "${pkgdir}/usr/bin/ssh-audit"
-  install -m755 -d "${pkgdir}/usr/share/doc/ssh-audit"
-  install -m644 README.md "${pkgdir}/usr/share/doc/ssh-audit/"
+  install -Dm755 ssh-audit.py "$pkgdir/usr/bin/$pkgname"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
