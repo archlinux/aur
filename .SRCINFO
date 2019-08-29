@@ -1,0 +1,17 @@
+pkgbase = python-stwcs-doc
+	pkgdesc = Documentation for STWCS
+	pkgver = 1.5.1
+	pkgrel = 1
+	url = https://stwcs.readthedocs.io/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = python-stwcs=1.5.1
+	makedepends = python-stsci.tools
+	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
+	source = https://github.com/spacetelescope/stwcs/archive/1.5.1.tar.gz
+	md5sums = a2f68a099a9c342b38bb1e5f3c991432
+
+pkgname = python-stwcs-doc
+
