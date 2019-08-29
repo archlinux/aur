@@ -1,7 +1,7 @@
 # Maintainer: Alexander Kobel <a-kobel@a-kobel.de>
 
 pkgname=opendetex
-pkgver=2.8.4
+pkgver=2.8.5
 pkgrel=1
 pkgdesc="Improved version of Detex - tool for extracting plain text from TeX and LaTeX sources (Piotr Kubowicz's fork)"
 url="https://github.com/pkubowicz/opendetex"
@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 depends=('glibc')
 license=('custom')
 source=("${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('d3836f2bdd5ef9c80abc163bf8d91ab7ec59cf269a33c0d09165b4a27584765f')
+sha256sums=('90be111ec1f47af25317d1dbe2f07a350cc46e1bc4cdc995dde79219d7c2623d')
 
 build () {
   cd ${srcdir}
@@ -21,7 +21,7 @@ build () {
 package () {
   cd ${srcdir}
   install -D -m755 detex "${pkgdir}/usr/bin/opendetex"
-  gzip -9 -c detex.1l > opendetex.1.gz
+  gzip -9 -c detex.1 > opendetex.1.gz
   install -D -m644 opendetex.1.gz -t "${pkgdir}/usr/share/man/man1"
   install -D -m644 COPYRIGHT -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
