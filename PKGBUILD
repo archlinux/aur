@@ -20,6 +20,12 @@ build() {
     python setup.py build_sphinx
 }
 
+check() {
+    cd ${srcdir}/${_pyname}-${pkgver}
+
+    python setup.py test
+}
+
 package_python-ci_watson() {
     depends=('python>=3.5' 'python-pytest>=3')
     optdepends=('python-ci_watson-doc: Documentation for CI Watson')
