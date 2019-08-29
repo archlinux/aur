@@ -4,7 +4,8 @@ _pkgorigname=magnacarto
 _pkgname="${_pkgorigname}"
 pkgname="${_pkgname}-git"
 pkgdesc="A CartoCSS map style processor that generates Mapnik XML and MapServer map files. Writte in go."
-pkgver=0.1dev+r563.20181114.70ccb04
+pkgver=0.0.0_dev+r573.20190806.bfc646d
+epoch=1
 pkgrel=1
 arch=('u686' 'x86_64')
 license=('apache')
@@ -44,8 +45,7 @@ pkgver() {
   export GOPATH="${srcdir}/go"
   cd "${GOPATH}/src/github.com/omniscale/magnacarto"
 
-  _ver="$(grep -E '^[[:space:]]*[Vv]ersion[[:space:]]*=' version.go | sed 's|//.*$||' | awk -F '=' '{print $2}' | tr -d [[:space:]]\"\'
-)"
+  _ver="$(sed 's|//.*$||g' version.go | grep -E -e '[[:space:]]*[Vv]ersion[[:space:]]*=' | sed 's|//.*$||' | awk -F '=' '{print $2}' | tr -d [[:space:]]\"\' | tr '-' '_')"
   _additionalver="$(grep -E '^[[:space:]]*BUILD_VERSION[[:space:]]*=' Makefile | awk -F '=' '{print $2}' | sed -E 's|-*\$.*$||g' | tr -d [[:space:]]\"\')"
   _rev="$(git rev-list --count HEAD)"
   _hash="$(git rev-parse --short HEAD)"
