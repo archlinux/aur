@@ -50,7 +50,7 @@ build() {
     --config-dir=/etc/inspircd \
     --data-dir=/var/lib/inspircd \
     --log-dir=/var/log/inspircd
-
+    --distribution-label=archlinux-aur
   make
 }
 
