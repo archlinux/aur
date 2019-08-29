@@ -6,7 +6,7 @@ _pkgname=idos-package-updater-script
 pkgname="${_pkgname}"
 epoch=0
 pkgver=20190825.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Bash script which automates the process of updating installed IDOS timetable browser related packages by reinstalling and thus fetching the newest version."
 arch=('any')
 license=('custom')
@@ -33,12 +33,12 @@ replaces=()
 
 
 source=(
-  "idos-packages-update.sh"
+  "idos-packages-update.sh::http://ix.io/1TLQ"
   "copying.txt"
 )
 
 sha256sums=(
-  "7294eb89d778a30f36640194121fb3a1ae134e1db2b579a36ba200587644f5bb"
+  "c17fbec61a0348c4e070b74a27686bee8415a03f5d5295453033a8dd50019d7e"
   "c3cbff25307e905545788f5c74cc137d79706c60549092f2a37919b93cf55ee3"
 )
 
