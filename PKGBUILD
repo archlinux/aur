@@ -9,7 +9,7 @@ _pkgname="idos-timetable-data-zsr-sk-20${_year}"
 pkgname="${_pkgname}-latest"
 epoch=1
 pkgver=2019_8_27
-pkgrel=1
+pkgrel=2
 pkgdesc="20${_prevyear}/20${_year} Timetable data for the offline railway and other public transport timetable search engines by CHAPS: Slovak train data, provided by Inprop (Slovakia)."
 arch=(any)
 url="https://www.inprop.eu/Home/Downloads"
@@ -87,7 +87,6 @@ prepare() {
     7z x "${_file}"
   done
 }
-
 
 package() {
   _instdirbase='/opt/idos-timetable'
