@@ -1,37 +1,36 @@
 pkgbase = python-asdf
 	pkgdesc = A Python tool for reading and writing Advanced Scientific Data Format (ASDF) files
-	pkgver = 2.3.3
-	pkgrel = 3
+	pkgver = 2.4.1
+	pkgrel = 1
 	url = https://asdf.readthedocs.io/en/latest/
 	arch = i686
 	arch = x86_64
 	license = BSD
-	checkdepends = python-astropy
-	checkdepends = python-pytest-astropy
 	makedepends = python>=3.3
 	makedepends = python-setuptools
 	makedepends = python-numpy>=1.8
-	makedepends = python-jsonschema26
+	makedepends = python-jsonschema
 	makedepends = python-yaml>=3.10
 	makedepends = python-six>=1.9.0
-	makedepends = python-astropy-helpers>=3.1
 	makedepends = python-semantic-version>=2.3.1
 	makedepends = python-pytest
+	makedepends = python-astropy
 	makedepends = python-sphinx-astropy
 	makedepends = graphviz
-	source = https://files.pythonhosted.org/packages/source/a/asdf/asdf-2.3.3.tar.gz
-	md5sums = bdefc8f1772eadb48265027fd3bf33d1
+	source = https://files.pythonhosted.org/packages/source/a/asdf/asdf-2.4.1.tar.gz
+	md5sums = 03d350e7a22dfec46bf1dff56384068e
 
 pkgname = python-asdf
 	depends = python>=3.3
 	depends = python-numpy>=1.8
-	depends = python-jsonschema26
+	depends = python-jsonschema
 	depends = python-yaml>=3.10
 	depends = python-six>=1.9.0
 	depends = python-semantic-version>=2.3.1
 	optdepends = python-astropy>=3.0: Support for units, time, transform, wcs, or running the tests
 	optdepends = python-lz4: Support for lz4 compression
 	optdepends = python-asdf-doc: Documentation for Python-ASDF
+	optdepends = python-pytest-astropy: For testing
 
 pkgname = python-asdf-doc
 	pkgdesc = Documentation for Python ASDF module
