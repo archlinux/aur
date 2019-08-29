@@ -1,7 +1,7 @@
 # Maintainer: Jonas Witschel <diabonas at gmx dot de>
 pkgname=tang-git
 pkgver=7.r1.00fc856
-pkgrel=1
+pkgrel=2
 pkgdesc='Server for binding data to network presence'
 arch=('x86_64')
 url='https://github.com/latchset/tang'
@@ -25,7 +25,7 @@ prepare() {
 
 build() {
 	cd "${pkgname%-git}"
-	./configure --prefix=/usr --libexecdir=/usr/lib
+	./configure --prefix=/usr --libexecdir=/usr/lib --localstatedir=/var
 	make
 }
 
