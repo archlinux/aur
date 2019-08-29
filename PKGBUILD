@@ -1,5 +1,6 @@
 # $Id$
-# Maintainer: physkets <physkets // at // tutanota dot com>
+# Maintainer: Frederic Bezies <fredbezies at gmail dot com>
+# Contributor: physkets <physkets // at // tutanota dot com>
 # Contributor: Kyle Keen <keenerd@gmail.com>
 # Contributor: Mateusz Herych <heniekk@gmail.com>
 # Contributor: Filippo 'JoeyrS' Civiletti <joeyrs@gmail.com>
@@ -7,8 +8,8 @@
 _pkgname=armagetronad
 pkgname=$_pkgname-bzr
 _pkgver=0.4
-pkgver='r1622'
-pkgrel=7
+pkgver=r3105
+pkgrel=1
 pkgdesc='A Tron Clone in 3D.'
 arch=('x86_64')
 url='http://armagetronad.net/'
