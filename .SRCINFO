@@ -1,6 +1,6 @@
 pkgbase = linux-clear
-	pkgver = 5.2.10
-	pkgrel = 2
+	pkgver = 5.2.11
+	pkgrel = 1
 	url = https://github.com/clearlinux-pkgs/linux
 	arch = x86_64
 	license = GPL2
@@ -13,7 +13,7 @@ pkgbase = linux-clear
 	options = !strip
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.2.tar.xz
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.2.tar.sign
-	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.2.10.xz
+	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.2.11.xz
 	source = clearlinux::git+https://github.com/clearlinux-pkgs/linux.git#tag=5.2.10-828
 	source = enable_additional_cpu_optimizations-20190822.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20190822.tar.gz
 	source = add-acs-overrides.patch::https://aur.archlinux.org/cgit/aur.git/plain/add-acs-overrides.patch?h=linux-vfio
@@ -25,7 +25,7 @@ pkgbase = linux-clear
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = 54ad66f672e1a831b574f5e704e8a05f1e6180a8245d4bdd811208a6cb0ac1e7
 	sha256sums = SKIP
-	sha256sums = 6fae3dfa150ea98196acd40e1b8e16b13710d07f607e900e418aa71787f872ff
+	sha256sums = a1ce8ed0c1d2eacd357f198f02290eb15a7e4fa9da0babc68930c14246496972
 	sha256sums = SKIP
 	sha256sums = 8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5
 	sha256sums = dbf4ac4b873ce6972e63b78d74ddba18f2701716163bb7f4b4fe5e909346a6e1
