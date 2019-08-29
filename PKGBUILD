@@ -30,48 +30,30 @@ options=('staticlibs')
 source=("http://icl.cs.utk.edu/projectsfiles/${pkgname}/downloads/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('ce32c199131515336b30c92a907effe0c441ebc5c5bdb255e4b06b2508de109f')
 
+_CMAKE_FLAGS=( -DCMAKE_BUILD_TYPE=Release
+               -DCMAKE_INSTALL_PREFIX=/opt/magma )
+
+[ -n "${_GPU_TARGET}" ]                   && _CMAKE_FLAGS+=(-DGPU_TARGET=${_GPU_TARGET})
+[ -f "/usr/lib/ccache/bin/nvcc-ccache" ]  && _CMAKE_FLAGS+=( -DCUDA_NVCC_EXECUTABLE=/usr/lib/ccache/bin/nvcc-ccache )
+
+if _cuda_gcc=$(basename $(readlink /opt/cuda/bin/gcc)) ; then
+  [ -L "/usr/lib/ccache/bin/$_cuda_gcc" ] && _CMAKE_FLAGS+=( -DCUDA_HOST_COMPILER=/usr/lib/ccache/bin/$_cuda_gcc )
+fi
+
 build() {
-#prepare() {
-  _CMAKE_FLAGS=(\
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/opt/magma \
-  )
-
-  if [[ -n "${_GPU_TARGET}" ]] ; then 
-    _CMAKE_FLAGS+=(-DGPU_TARGET=${_GPU_TARGET})
-  fi
-
-  if [[ -f "/usr/lib/ccache/bin/nvcc-ccache" ]] ; then
-    _CMAKE_FLAGS+=( \
-      -DCUDA_NVCC_EXECUTABLE=/usr/lib/ccache/bin/nvcc-ccache \
-    )
-  fi
-
-  if _cuda_gcc=$(basename $(readlink /opt/cuda/bin/gcc)) ; then
-    if [[ -L "/usr/lib/ccache/bin/$_cuda_gcc" ]] ; then
-      _CMAKE_FLAGS+=( \
-        -DCUDA_HOST_COMPILER=/usr/lib/ccache/bin/$_cuda_gcc \
-      )
-    fi
-  fi
-#}
-#
-#build() {
   cd "${srcdir}/magma-${pkgver}"
-  mkdir build-shared && pushd build-shared
-  cmake \
-    ${_CMAKE_FLAGS[@]} \
-    -DBUILD_SHARED_LIBS:BOOL=ON \
-    ..
-  make magma magma_sparse
-  popd
-  mkdir build-static && pushd build-static
-  cmake \
-    ${_CMAKE_FLAGS[@]} \
-    -DBUILD_SHARED_LIBS:BOOL=OFF \
-    ..
-  make magma magma_sparse
-  popd
+
+    msg2 "Build dynmic ${pkgname} library"
+    mkdir build-shared && pushd build-shared
+    cmake ${_CMAKE_FLAGS[@]} -DBUILD_SHARED_LIBS:BOOL=ON ..
+    make magma magma_sparse
+    popd
+
+    msg2 "Build static ${pkgname} library"
+    mkdir build-static && pushd build-static
+    cmake ${_CMAKE_FLAGS[@]} -DBUILD_SHARED_LIBS:BOOL=OFF ..
+    make magma magma_sparse
+    popd
 }
 
 package() {
