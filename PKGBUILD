@@ -7,6 +7,7 @@ pkgdesc="Flat Remix GTK theme is a pretty simple gtk window theme inspired on ma
 arch=('any')
 url="https://drasite.com/flat-remix-gtk"
 license=('GPL 3.0')
+options=('!strip')
 source=("https://github.com/daniruiz/${pkgname}/archive/${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
