@@ -1,0 +1,54 @@
+From 78019b9ce50c84ac9511072a004fea533841ed01 Mon Sep 17 00:00:00 2001
+From: Jonas Witschel <diabonas@gmx.de>
+Date: Thu, 29 Aug 2019 11:22:47 +0200
+Subject: [PATCH] clevis-luks-askpass: replace nc by ncat
+
+nc is assumed to be ncat from Nmap for the --send-only option to work.
+This assumption holds true on Fedora, where nc is a symbolic link to
+ncat, while other distributions only ship the binary with the original
+upstream name. Replacing the name makes it clearer which version of nc
+is expected and improves compatibility with other distributions while
+retaining compatibility with Fedora.
+---
+ src/luks/systemd/clevis-luks-askpass       | 4 ++--
+ src/luks/systemd/dracut/module-setup.sh.in | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/luks/systemd/clevis-luks-askpass b/src/luks/systemd/clevis-luks-askpass
+index b01d93a..0903cd0 100755
+--- a/src/luks/systemd/clevis-luks-askpass
++++ b/src/luks/systemd/clevis-luks-askpass
+@@ -59,7 +59,7 @@ while true; do
+                 metadata=true
+ 
+                 if pt="`luksmeta load -d $d -s $slot -u $UUID | clevis decrypt`"; then
+-                    echo -n "+$pt" | nc -U -u --send-only "$s"
++                    echo -n "+$pt" | ncat -U -u --send-only "$s"
+                     unlocked=true
+                     break
+                 fi
+@@ -72,7 +72,7 @@ while true; do
+                 metadata=true
+ 
+                 if pt=`echo -n "$jwe" | clevis decrypt`; then
+-                    echo -n "+$pt" | nc -U -u --send-only "$s"
++                    echo -n "+$pt" | ncat -U -u --send-only "$s"
+                     unlocked=true
+                     break
+                 fi
+diff --git a/src/luks/systemd/dracut/module-setup.sh.in b/src/luks/systemd/dracut/module-setup.sh.in
+index 990bf4a..79fd555 100755
+--- a/src/luks/systemd/dracut/module-setup.sh.in
++++ b/src/luks/systemd/dracut/module-setup.sh.in
+@@ -46,7 +46,7 @@ install() {
+         mktemp \
+         curl \
+         jose \
+-        nc
++        ncat
+ 
+     for cmd in clevis-decrypt-tpm2 \
+ 	tpm2_createprimary \
+-- 
+2.23.0
+
