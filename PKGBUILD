@@ -15,7 +15,6 @@ source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname
         "https://raw.githubusercontent.com/spacetelescope/stsci.convolve/master/LICENSE.txt")
 md5sums=('fb0feba75f45d85f34d6e4599efcd3db'
          '901964fd100b953a8c8fd4d8f0ae8a7e')
-_pyver=$(python -V | cut -c 8-10)
 
 prepare() {
     cp -a ${srcdir}/${_pyname}-${pkgver}{,-py2}
