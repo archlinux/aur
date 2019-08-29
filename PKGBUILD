@@ -2,7 +2,7 @@
 
 pkgname=scuba-git
 pkgver=v2.3.0.r46.0244c81
-pkgrel=1
+pkgrel=2
 pkgdesc="SCUBA is a simple tool that makes it easier to use Docker containers in everyday development"
 arch=('any')
 url="https://github.com/JonathonReinhart/scuba"
