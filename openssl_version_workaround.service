@@ -1,0 +1,2 @@
+[Service]
+Environment="LD_LIBRARY_PATH=/opt/mssql/lib"

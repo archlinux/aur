@@ -1,64 +1,34 @@
 # Maintainer: Gabriel Morrison Lima Dantas <gabrielmldantas@gmail.com>
 # Contributor: Aleksey Kamenskikh <aleksey.kamenskikh@gmail.com>
 pkgname=mssql-server
-pkgver=14.0.3192.2
-_prodver=${pkgver}-2
+pkgver=14.0.3223.3
+_prodver=${pkgver}-15
 pkgrel=1
-_libcpp='libc++1_3.7.0-1ubuntu0.1_amd64.deb'
-_libcppabi='libc++abi1_3.7.0-1ubuntu0.1_amd64.deb'
-_jemalloc=libjemalloc1_3.6.0-9ubuntu1_amd64.deb
 pkgdesc="Microsoft SQL Server for Linux"
 arch=('x86_64')
 url="https://www.microsoft.com/en-us/sql-server/sql-server-vnext-including-Linux"
 license=('unknown')
 depends=(python2-configparser numactl sssd 'openssl-1.0>=1.0.2.l')
-source=("https://packages.microsoft.com/ubuntu/16.04/mssql-server-2017/pool/main/m/mssql-server/${pkgname}_${_prodver}_amd64.deb"
-        "http://mirrors.kernel.org/ubuntu/pool/universe/j/jemalloc/${_jemalloc}"
-        "http://mirrors.kernel.org/ubuntu/pool/universe/libc/libc++/${_libcpp}"
-        "http://mirrors.kernel.org/ubuntu/pool/universe/libc/libc++/${_libcppabi}")
+source=("https://packages.microsoft.com/rhel/7/mssql-server-2017/${pkgname}-${_prodver}.x86_64.rpm"
+        "openssl_version_workaround.service")
 
-sha256sums=('905fa5943e73b03452ed3adb7c8179b38b2a7d71fe1ba008ce0b66d4cb532420'
-            '50fd3720d129ad7d659b311bb8436169b851f3671112ef53bf5d03580d4947f1'
-            'e929f077b6cce54a09593c328f230d96fc8b4983be671db73ee6cdaeaab8f138'
-            '9ad2bfaa8fecd5bf6a1138f059fe5fbc28a87b8dcfcefe53f51819a60c919f54')
-noextract=('${pkgname}_${_prodver}_amd64.deb'
-           '${_jemalloc}'
-           '${_libcpp}'
-           '${_libcppabi}')
+sha256sums=('7176728e2e4e07d630d4daf06f1f465e1cc76e2cc13fd8e6f9f767e08c9609fe'
+            'ef29e36c5303feef18f671b9ef4a62b00c4a90dfe0c8496e390f3d623772f1c3')
+
 install=$pkgname.install
 
 package() {
-  ar x $srcdir/${pkgname}_${_prodver}_amd64.deb
-  tar -xf data.tar.xz
- 
-  mkdir jemalloc
-  cd jemalloc
-  ar x $srcdir/$_jemalloc
-  tar -xf data.tar.xz
- 
-  cd $srcdir
-  mkdir libc++
-  cd libc++
-  ar x $srcdir/$_libcpp
-  tar -xf data.tar.xz
- 
-  cd $srcdir
-  mkdir libc++abi
-  cd libc++abi
-  ar x $srcdir/$_libcppabi
-  tar -xf data.tar.xz
-  
   cd $pkgdir
   mv $srcdir/opt .
   mv $srcdir/usr .
-  mv $srcdir/lib usr/
-  mv $srcdir/jemalloc/usr/lib/x86_64-linux-gnu/libjemalloc.so.1 opt/mssql/lib/
-  mv $srcdir/libc++/usr/lib/x86_64-linux-gnu/libc++.so.1 opt/mssql/lib/
-  mv $srcdir/libc++/usr/lib/x86_64-linux-gnu/libc++.so.1.0 opt/mssql/lib/
-  mv $srcdir/libc++abi/usr/lib/x86_64-linux-gnu/libc++abi.so.1 opt/mssql/lib
-  mv $srcdir/libc++abi/usr/lib/x86_64-linux-gnu/libc++abi.so.1.0 opt/mssql/lib
 
   for i in $(ls opt/mssql/lib/mssql-conf/*.py); do
       sed 's/#!\/usr\/bin\/python/#!\/usr\/bin\/python2/' $i -i
   done
+
+  # workaround for SQL Server OpenSSL version problems (see https://stackoverflow.com/a/57453901)
+  ln -s /usr/lib/openssl-1.0/libssl.so opt/mssql/lib/libssl.so
+  ln -s /usr/lib/openssl-1.0/libcrypto.so opt/mssql/lib/libcrypto.so
+  install -d -m 0755 etc/systemd/system/mssql-server.service.d
+  install -m 0644 $srcdir/openssl_version_workaround.service etc/systemd/system/mssql-server.service.d/openssl_version_workaround.service
 }
