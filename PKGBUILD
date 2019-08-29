@@ -1,6 +1,7 @@
 #!/hint/bash
-#shellcheck disable=SC2034
-# Maintainer: pingplug <pingplug@foxmail.com>
+# shellcheck disable=SC2034
+# Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
+# Contributor: pingplug <pingplug@foxmail.com>
 # Contributor: cornholio <vigo.the.unholy.carpathian@gmail.com>
 
 ##### Configuration Options
