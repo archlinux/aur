@@ -1,4 +1,4 @@
-# Maintainer: Alessandro Pazzaglia <alessandro.pazzaglia@sadel.it>
+# Maintainer: Alessandro Pazzaglia <jackdroido@gmail.com>
 
 pkgname=scuba-git
 pkgver=v2.3.0.r46.0244c81
