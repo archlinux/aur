@@ -4,7 +4,7 @@ _android_arch=x86
 
 pkgname=android-${_android_arch}-zlib
 pkgver=1.2.11
-pkgrel=3
+pkgrel=4
 pkgdesc="A compression/decompression Library (android)"
 arch=('any')
 url="http://www.zlib.net/"
@@ -15,7 +15,7 @@ makedepends=('android-environment' 'android-pkg-config')
 source=("http://zlib.net/zlib-${pkgver}.tar.gz"
         "0001-Disable-versioning.patch")
 md5sums=('1c9f62f0778697a09d36121ead88e08e'
-         '2a60cf737d0fdd05c7795b1e6d6e6b69')
+         '3e04fe1f84d547ea0ca318463e319ab7')
 
 prepare() {
     cd "${srcdir}"/zlib-${pkgver}
