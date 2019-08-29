@@ -3,8 +3,8 @@
 _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-giflib
-pkgver=5.1.9
-pkgrel=3
+pkgver=5.2.1
+pkgrel=1
 pkgdesc="A library for reading and writing gif images (android)"
 arch=('any')
 url="http://sourceforge.net/projects/giflib/"
@@ -12,9 +12,9 @@ license=("MIT")
 depends=('android-ndk')
 options=(!strip !buildflags staticlibs !emptydirs)
 makedepends=('android-environment' 'android-pkg-config')
-source=("http://downloads.sourceforge.net/sourceforge/giflib/giflib-${pkgver}.tar.bz2"
+source=("https://downloads.sourceforge.net/project/giflib/giflib-${pkgver}.tar.gz"
         'Makefile.patch')
-md5sums=('c1df79d223b10b92f44ca649ef5f1459'
+md5sums=('6f03aee4ebe54ac2cc1ab3e4b0a049e5'
          '0c6a08273d51f7fd965c79c967f5e7ed')
 
 prepare() {
