@@ -7,7 +7,7 @@ _android_arch=aarch64
 
 pkgname=android-${_android_arch}-libtiff
 pkgver=4.0.10
-pkgrel=2
+pkgrel=3
 pkgdesc="Library for manipulation of TIFF images (android)"
 arch=('any')
 url="http://www.simplesystems.org/libtiff/"
