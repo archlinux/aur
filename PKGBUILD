@@ -69,7 +69,8 @@ package() {
   cp -ru ${srcdir}/magma-${pkgver}/example/* ${pkgdir}/opt/magma/example/
   mkdir -p ${pkgdir}/opt/magma/testing
   cp -ru ${srcdir}/magma-${pkgver}/testing/* ${pkgdir}/opt/magma/testing/
-  rm -rf ${pkgdir}/opt/magma/lib/pkgconfig
+  mkdir -p ${pkgdir}/usr/lib/
+  mv ${pkgdir}/opt/magma/lib/pkgconfig ${pkgdir}/usr/lib/
   mkdir -p ${pkgdir}/usr/share/licenses/magma
   cp ${srcdir}/magma-${pkgver}/COPYRIGHT ${pkgdir}/usr/share/licenses/magma/LICENSE
 }
