@@ -21,6 +21,9 @@ sha256sums=('60f203c91887c692bf09d4f89c905a08d0aa7e42944983332530405c0e1449c0'
             '7aedc76da32f5bc8b7b015c3a87924e9bd6661e3051c84245e965e97348173b6')
 
 build() {
+  # Remove husky (git hooks) from dependencies
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  sed -i '/"husky": ".*"/d' package.json
 
   # Install dependencies for the Tools used on another projects
   cd "${srcdir}/${pkgname}-${pkgver}/Tools"
