@@ -1,0 +1,7 @@
+dpf/
+rezonateur/
+pkg/
+src/
+.AURINFO
+rezonateur-git-*.tar.xz
+rezonateur-git-*.src.tar.gz
