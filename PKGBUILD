@@ -5,11 +5,11 @@
 _pkgname=idos-timetable-data-inprop-mhd-sk-all
 pkgname="${_pkgname}-latest"
 epoch=0
-pkgver=2019_5_27
+pkgver=2019_8_28
 pkgrel=1
 pkgdesc="Public transport data of many Slovak cities for the IDOS timetable browser, data provided by INPROP."
 arch=(any)
-url="http://www.inprop.sk/download.aspx"
+url="https://www.inprop.eu/Home/Downloads"
 license=('custom')
 
 groups=(
@@ -52,8 +52,8 @@ conflicts=(
 )
 
 _list_sources() {
-  wget -nv -O- "${url}" | grep --text \.exe | sed -r 's|(Data/[a-zA-Z0-9]*\.exe)|\n\1\n|g' | grep -E 'Data/MD[a-zA-Z0-9]*\.exe' | while read line; do
-    echo "$(dirname "${url}")/${line}"
+  wget -nv -O- "${url}" | tr -d '\a' | tr '\n' '\a' | sed -E -e 's|<tr>|\n|g' -e 's|</tr>|\n|g' | grep -E '<span.*>MHD' | sed 's|^.*href="/Home/\(DownloadFile/[^"]*\)".*$|\1|g' | while read _line; do
+    echo "$(basename "${_line}").exe::$(dirname "${url}")/${_line}"
   done
 }
 
@@ -67,10 +67,7 @@ source=(
 sha256sums=()
 
 for i in $(seq 1 ${#_sources[@]}); do
-  sha256sums=(
-    "${sha256sums[@]}"
-    'SKIP'
-  )
+  sha256sums+=('SKIP')
 done
 
 sha256sums=(
@@ -80,7 +77,7 @@ sha256sums=(
 
 pkgver() {
   # Use the version of the newest updated file.
-  wget -nv -O- "${url}" | grep --text -E 'Data/MD[a-zA-Z0-9]*\.exe' | sed -r 's|[^0-9]([0-9]{1,2}\.[0-9]{1,2}\.[0-9]{4})[^0-9]|\n\1\n|' | grep --text -E '^[0-9]{1,2}\.[0-9]{1,2}\.[0-9]{4}$' | awk -F. '{print $3"_"$2"_"$1}' | sort -Vr | head -n 1
+  wget -nv -O- "${url}" | tr -d '\a' | tr '\n' '\a' | sed -E -e 's|<tr>|\n|g' -e 's|</tr>|\n|g' | grep -E '<span.*>MHD' | sed -E 's|^.*Updated:.*<span>([0-9]+/[0-9]+/[0-9]+).*$|\1|g' | awk -F/ '{print $3"_"$1"_"$2}' | sort -Vr | head -n1
 }
 
 
@@ -90,15 +87,11 @@ package() {
 
   install -d -m755 "${_instdir}"
 
-  cd "${_instdir}" && {
-    for _file in "${_sources[@]}"; do
-      _sourcefile="$(basename "${_file}")"
-      7z x "${srcdir}/${_sourcefile}"
-    done
-    chmod 755 Data*
-    chmod 644 Data*/*
-  }
-  
+  cp -av "${srcdir}"/Data* "${_instdir}"/
+
+  chmod 755 "${_instdir}"/Data*
+  chmod 644 "${_instdir}"/Data*/*
+
   install -d -m755 "${pkgdir}/usr/share/doc/${_pkgname}"
   echo "${url}" > "${pkgdir}/usr/share/doc/${_pkgname}/info.url"
   chmod 644 "${pkgdir}/usr/share/doc/${_pkgname}/info.url"
