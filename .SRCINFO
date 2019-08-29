@@ -1,7 +1,7 @@
 pkgbase = python-stsci.image
-	pkgdesc = Collection of STScI utility functions
+	pkgdesc = Image array manipulation functions
 	pkgver = 2.3.3
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/spacetelescope/stsci.image
 	arch = i686
 	arch = x86_64
