@@ -29,12 +29,15 @@ depends=(
     'winetricks'
 )
 source=(
+    # TODO: Add the package version here to the saved file name too!
     # Official mod launcher download for the current release.
     "$pkgname.zip::https://cdn.donutteam.com/Downloads/Tools/\
 Lucas'%20Simpsons%20Hit%20&%20Run%20Mod%20Launcher%20${pkgver}.zip"
     # Unofficial mod launcher Linux launcher download for the latest master branch.
-    "$pkgname-linux-launcher.zip::https://github.com/CodingKoopa/\
-lucas-simpsons-hit-and-run-mod-launcher-linux-launcher/archive/master.zip"
+    # TODO: release these in lockstep with the launcher?
+    "$pkgname-linux-launcher.zip::https://gitlab.com/CodingKoopa/\
+lucas-simpsons-hit-and-run-mod-launcher-linux-launcher/-/archive/master/\
+lucas-simpsons-hit-and-run-mod-launcher-linux-launcher-master.zip"
 )
 md5sums=(
     # Skip the mod launcher ZIP because no hashes are provided by upstream.
