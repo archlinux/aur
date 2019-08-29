@@ -7,7 +7,7 @@ pkgname="${_name}-git"
 provides=("${_name}")
 conflicts=("${_name}")
 pkgver=0.3.2.r2.gc4efc18
-pkgrel=1
+pkgrel=2
 pkgdesc='A light-weight and open-source Dropbox client.'
 arch=('any')
 url="https://github.com/SamSchott/${_srcname}"
@@ -28,7 +28,7 @@ md5sums=('SKIP')
 prepare() {
     gendesk -q -n \
         --pkgname="${_name}" \
-        --exec="${_name}-gui" \
+        --exec="${_name} gui" \
         --comment="${pkgdesc}" \
         --categories=Network
 }
