@@ -3,7 +3,7 @@
 pkgname=otf-san-francisco-mono
 pkgver=1
 pkgrel=1
-pkgdesc='Monospaced variant of San Francisco'
+pkgdesc='Monospaced variant of San Francisco. Sources directly from Apple.'
 arch=('any')
 url='https://developer.apple.com/fonts/'
 license=('custom')
