@@ -1,9 +1,9 @@
 # Maintainer: Alexandros Theodotou <alex@zrythm.org>
 _pkgname=zrythm
 pkgname=$_pkgname-git
-pkgver=0.6.039.r22.g9ea2d381
+pkgver=0.6.039.r88.gc95c1237
 pkgrel=1
-pkgdesc='An highly automated, intuitive, Digital Audio Workstation (DAW)'
+pkgdesc='a highly automated and intuitive digital audio workstation'
 arch=('x86_64' 'i686')
 url='https://git.zrythm.org/zrythm/zrythm'
 license=('AGPL3')
