@@ -1,7 +1,7 @@
 # Maintainer: Hork <aliyuchang33@outlook.com>
 
 pkgname=qv2ray
-pkgver=1.3.2
+pkgver=1.3.4
 pkgrel=1
 pkgdesc="Qt cross platform v2ray GUI client"
 arch=('i686' 'x86_64')
