@@ -1,0 +1,29 @@
+pkgbase = python-nictools
+	pkgdesc = Python Tools for NICMOS Data
+	pkgver = 1.1.5
+	pkgrel = 1
+	url = https://github.com/spacetelescope/nictools
+	arch = i686
+	arch = x86_64
+	license = BSD
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	makedepends = python-astropy
+	makedepends = python-numpydoc
+	makedepends = python-stsci.tools
+	makedepends = python-stsci.imagestats
+	source = https://files.pythonhosted.org/packages/source/n/nictools/nictools-1.1.5.tar.gz
+	md5sums = f20b250268ba8fc7a50d9934a269e5dc
+
+pkgname = python-nictools
+	depends = python>=3.5
+	depends = python-numpy>=1.9
+	depends = python-scipy>=0.16
+	depends = python-astropy>=1.0
+	depends = python-stsci.tools
+	depends = python-stsci.imagestats
+	optdepends = python-nictools-doc: Documentation for Python NICMOS Tools
+
+pkgname = python-nictools-doc
+	pkgdesc = Documentation for Python NICMOS Tools
+
