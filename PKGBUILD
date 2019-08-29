@@ -3,16 +3,16 @@
 
 _target="msp430-elf"
 pkgname=${_target}-libstdc++
-pkgver=9.1.0
-pkgrel=3
+pkgver=9.2.0
+pkgrel=1
 pkgdesc="The GNU C++ Standard Library for the ${_target} target."
 arch=(i686 x86_64)
 license=('GPL' 'LGPL')
 url="http://gcc.gnu.org"
-depends=("${_target}-newlib" "${_target}-binutils" "${_target}-gcc=9.1.0" "libmpc" "elfutils" "zlib")
+depends=("${_target}-newlib" "${_target}-binutils" "${_target}-gcc>=9.0.0" "${_target}-gcc<10.0.0" "libmpc" "elfutils" "zlib")
 options=('staticlibs' '!buildflags' '!libtool' '!emptydirs' 'zipman' 'docs' '!strip')
 source=(https://ftpmirror.gnu.org/gcc/gcc-${pkgver}/gcc-${pkgver}.tar.xz)
-sha256sums=('79a66834e96a6050d8fe78db2c3b32fb285b230b855d0a66288235bc04b327a0')
+sha256sums=('ea6ef08f121239da5695f76c9b33637a118dcf63e24164422231917fa61fb206')
 
 
 prepare() {
