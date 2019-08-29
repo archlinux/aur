@@ -1,6 +1,6 @@
 _pkgname=cros-container-guest-tools
 pkgname=${_pkgname}-git
-pkgver=r181.4e1b573
+pkgver=r188.5d14ed4
 pkgrel=1
 pkgdesc="Guest tools for the Crostini containers on ChromeOS"
 arch=('any')
@@ -97,6 +97,14 @@ package() {
 					 ${pkgdir}/usr/lib/systemd/system/cros-sftp.service.d/cros-sftp-conditions.conf
 
 	### cros-sommelier-config
+
+	sed -i \
+		-e 's|<Alt>bracketleft,<Alt>bracketright|<Alt>bracketleft,<Alt>bracketright,<Alt>minus,<Alt>equal,<Alt>1,<Alt>2,<Alt>3,<Alt>4,<Alt>5,<Alt>6,<Alt>7,<Alt>8,<Alt>9|g' \
+		${srcdir}/${_pkgname}/cros-sommelier-config/cros-sommelier-override.conf
+
+	sed -i \
+		-e 's|<Alt>bracketleft,<Alt>bracketright|<Alt>bracketleft,<Alt>bracketright,<Alt>minus,<Alt>equal,<Alt>1,<Alt>2,<Alt>3,<Alt>4,<Alt>5,<Alt>6,<Alt>7,<Alt>8,<Alt>9|g' \
+		${srcdir}/${_pkgname}/cros-sommelier-config/cros-sommelier-x-override.conf
 
 	install -m644 -D ${srcdir}/${_pkgname}/cros-sommelier-config/cros-sommelier-override.conf \
 					 ${pkgdir}/usr/lib/systemd/user/sommelier@0.service.d/cros-sommelier-override.conf
