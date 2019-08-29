@@ -6,7 +6,7 @@
 
 pkgname='inspircd'
 pkgver='3.3.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='A modular C++ IRC daemon (ircd).'
 arch=('any')
 url='http://www.inspircd.org/'
