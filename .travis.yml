@@ -11,7 +11,6 @@ cache:
   - ~/.pkg-cache
   - ~/.cache/yay
   - alice-vision
-  - geogram
   - MeshSDFilter
   - nanoflann
   - osi_clp
@@ -43,6 +42,8 @@ arch:
   - gcc-fortran
   - gsl
   - ceres-solver
+  - geogram
+  - popsift
   before_install:
 # 1.Override `package-cleanup.hook` to preserve cache for travis.
 # 2.Enable ccache
