@@ -1,0 +1,28 @@
+pkgbase = python-stsci.convolve
+	pkgdesc = Image array convolution functions
+	pkgver = 2.2.2
+	pkgrel = 1
+	url = http://www.stsci.edu/institute/software_hardware/pyraf/stsci_python
+	arch = i686
+	arch = x86_64
+	license = BSD
+	checkdepends = python2-nose
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	makedepends = python-numpy
+	makedepends = python2-numpy
+	makedepends = python-d2to1
+	makedepends = python2-d2to1
+	makedepends = python-stsci.distutils
+	makedepends = python2-stsci.distutils
+	source = https://files.pythonhosted.org/packages/source/s/stsci.convolve/stsci.convolve-2.2.2.tar.gz
+	source = https://github.com/spacetelescope/stsci.convolve/blob/master/LICENSE.txt
+	md5sums = fb0feba75f45d85f34d6e4599efcd3db
+	md5sums = 7ee1b1760f8eb2c2b2b1946060c73630
+
+pkgname = python-stsci.convolve
+	depends = python-numpy
+
+pkgname = python2-stsci.convolve
+	depends = python2-numpy
+
