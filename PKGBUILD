@@ -6,7 +6,7 @@ _pkgname=idos-timetable-data-inprop-mhd-sk-all
 pkgname="${_pkgname}-latest"
 epoch=0
 pkgver=2019_8_28
-pkgrel=1
+pkgrel=2
 pkgdesc="Public transport data of many Slovak cities for the IDOS timetable browser, data provided by INPROP."
 arch=(any)
 url="https://www.inprop.eu/Home/Downloads"
@@ -21,7 +21,6 @@ depends=(
         )
 
 makedepends=(
-  "p7zip"
   "wget"
 )
 
