@@ -1,0 +1,29 @@
+pkgbase = python-stsci.ndimage
+	pkgdesc = Various functions for multi-dimensional image processing
+	pkgver = 0.10.3
+	pkgrel = 1
+	url = https://github.com/spacetelescope/stsci.ndimage
+	arch = i686
+	arch = x86_64
+	license = BSD
+	checkdepends = python-nose
+	checkdepends = python2-nose
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	makedepends = python-numpy
+	makedepends = python2-numpy
+	makedepends = python-d2to1
+	makedepends = python2-d2to1
+	makedepends = python-stsci.distutils
+	makedepends = python2-stsci.distutils
+	source = https://files.pythonhosted.org/packages/source/s/stsci.ndimage/stsci.ndimage-0.10.3.tar.gz
+	source = https://raw.githubusercontent.com/spacetelescope/stsci.ndimage/master/LICENSE.txt
+	md5sums = de9adde38b8f83d02cbe1460e004b9e1
+	md5sums = 35b5198447c00d3274a4a2f2c6732e97
+
+pkgname = python-stsci.ndimage
+	depends = python-numpy
+
+pkgname = python2-stsci.ndimage
+	depends = python2-numpy
+
