@@ -136,7 +136,7 @@ prepare() {
     patch -Np1 -i "$srcdir/$_reponame_gcc_patch/$_gcc_patch_name"
 
     # From https://github.com/Tk-Glitch/PKGBUILDS/tree/master/linux52-tkg/linux52-tkg-patches
-    msg2 "Patching Undead PDS 0.99o 5.2 rebase by TkG"
+    msg2 "Patching with Undead PDS 0.99o patches, rebased to 5.2 by TkG"
     patch -Np1 -i "$srcdir/01-Undead-PDS-0.99o-rebase-by-TkG.patch"
     patch -Np1 -i "$srcdir/02-Glitched-PDS-by-TkG.patch"
     
@@ -361,6 +361,18 @@ _package-docs() {
     mkdir -p "$builddir"
     cp -t "$builddir" -a Documentation
 
+    msg2 "Removing doctrees..."
+    rm -r "$builddir/Documentation/output/.doctrees"
+
+    msg2 "Moving HTML docs..."
+    local src dst
+    while read -rd '' src; do
+        dst="$builddir/Documentation/${src#$builddir/Documentation/output/}"
+        mkdir -p "${dst%/*}"
+        mv "$src" "$dst"
+        rmdir -p --ignore-fail-on-non-empty "${src%/*}"
+    done < <(find "$builddir/Documentation/output" -type f -print0)
+
     msg2 "Adding symlink..."
     mkdir -p "$pkgdir/usr/share/doc"
     ln -sr "$builddir/Documentation" "$pkgdir/usr/share/doc/$pkgbase"
@@ -380,5 +392,3 @@ for _p in "${pkgname[@]}"; do
         _package${_p#$pkgbase}
     }"
 done
-
-# vim:set ts=8 sts=2 sw=2 et:
