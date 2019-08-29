@@ -3,7 +3,7 @@
 pkgname=otf-san-francisco-pro
 pkgver=1
 pkgrel=1
-pkgdesc='System font for iOS, macOS, and tvOS.'
+pkgdesc='(Upstream from Apple) System font for iOS, macOS, and tvOS.'
 arch=('any')
 url='https://developer.apple.com/fonts/'
 license=('custom')

@@ -1,5 +1,5 @@
 pkgbase = otf-san-francisco-pro
-	pkgdesc = System font for iOS, macOS, and tvOS.
+	pkgdesc = (Upstream from Apple) System font for iOS, macOS, and tvOS.
 	pkgver = 1
 	pkgrel = 1
 	url = https://developer.apple.com/fonts/
