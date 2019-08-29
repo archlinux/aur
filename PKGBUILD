@@ -1,16 +1,19 @@
-# Maintainer: Mark Lee <mark at markelee dot com>
+# Maintainer: Sebastiaan Lokhorst <sebastiaanlokhorst@gmail.com>
+# Contributor: Tommy Li <ttoo74@gmail.com>
+# Contributor: Mark Lee <mark at markelee dot com>
 
 pkgname=jupyterhub
-pkgver=0.9.2
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Multi-user server for Jupyter notebooks "
-url="http://jupyter.org/"
+url="https://jupyter.org/hub"
 arch=(any)
 license=('BSD')
-depends=('python-alembic' 'python-tornado' 'python-jinja' 'ipython' 'python-pamela' 'python-sqlalchemy' 'python-requests' 'nodejs-configurable-http-proxy')
+depends=('python-prometheus_client' 'python-entrypoints' 'python-async_generator' 'python-oauthlib' 'python-certipy' 'python-alembic' 'python-tornado' 'python-jinja' 'ipython' 'python-pamela' 'python-sqlalchemy' 'python-requests' 'nodejs-configurable-http-proxy')
 makedepends=('bower' 'npm')
+optdepends=('jupyterlab')
 source=("https://github.com/jupyter/jupyterhub/archive/${pkgver}.tar.gz")
-sha256sums=("ef86512a485050dd28df9b785cb9912cbbbf69a131a34da216753af93d095da7")
+sha256sums=('e985fdba1b361add5b8da1736446c7bc8c94466e1e04903233b015aa37d341f5')
 
 build() {
   cd "${srcdir}/jupyterhub-$pkgver"
