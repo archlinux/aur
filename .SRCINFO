@@ -1,14 +1,12 @@
 pkgbase = nushell-bin
 	pkgdesc = A shell for the GitHub era
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://nushell.sh
 	arch = i686
 	arch = x86_64
-	arch = armv6h
-	arch = armv7h
 	license = MIT
-	depends = openssl
+	depends = openssl-1.0
 	depends = zlib
 	optdepends = libxcb
 	optdepends = libx11

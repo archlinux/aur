@@ -4,10 +4,10 @@
 pkgname=nushell-bin
 pkgver=0.2.0
 underscoredpkgver=0_2_0
-pkgrel=1
-depends=('openssl' 'zlib')
+pkgrel=2
+depends=('openssl-1.0' 'zlib')
 optdepends=('libxcb' 'libx11')
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64')
 pkgdesc="A shell for the GitHub era"
 conflicts=('nushell')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nushell/nushell/releases/download/$pkgver/nu_${underscoredpkgver}_linux.tar.gz")
