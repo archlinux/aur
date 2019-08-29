@@ -4,7 +4,7 @@ _pkgname='audible-activator'
 pkgname="${_pkgname}-git"
 epoch=1
 pkgver=0.2+r3.20181128.2e97c84
-pkgrel=2
+pkgrel=3
 pkgdesc="A script to retrieve your activation data (activation_bytes) from Audible servers. Use it to play your aax or aax+ files downloaded from amazon audible. Needs chrome or chromium."
 url='http://github.com/inAudible-NG/audible-activator'
 arch=(any)
@@ -46,8 +46,8 @@ _source_base="https://github.com/inAudible-NG/${_pkgname}"
 
 source=(
   "${_pkgname}::git+${_source_base}"
-  "audible-activator.chromedriverpath.patch"
-  "audible-activator.sh"
+  "audible-activator.chromedriverpath.patch::http://ix.io/1TLM"
+  "audible-activator.sh::http://ix.io/1TLN"
 )
 
 sha256sums=(
