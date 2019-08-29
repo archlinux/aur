@@ -13,7 +13,7 @@ depends=('python' 'python-numpy' 'python-scipy' 'python-numba')
 optdepends=()
 makedepends=('python-setuptools')
 source=("https://github.com/pydata/sparse/archive/$pkgver.tar.gz")
-sha256sums=('879366b93a7033c20c5c5a16beb5d49cd8ed0634f8a73b387f9ccc46576bbd04')
+sha256sums=('c51a5069da86310532a190008ba248783d91f2d6fb2e39c14e8573289b294861')
 
 
 package(){
