@@ -6,7 +6,7 @@
 
 pkgname='inspircd'
 pkgver='3.3.0'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='A modular C++ IRC daemon (ircd).'
 arch=('any')
 url='http://www.inspircd.org/'
@@ -49,8 +49,8 @@ build() {
     --module-dir=/usr/lib/inspircd/modules \
     --config-dir=/etc/inspircd \
     --data-dir=/var/lib/inspircd \
-    --log-dir=/var/log/inspircd
-    --distribution-label=archlinux-aur
+    --log-dir=/var/log/inspircd \
+    --distribution-label=archlinux
   make
 }
 
