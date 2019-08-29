@@ -1,0 +1,7 @@
+pkg/
+src/
+stone-phaser-*.tar.gz
+stone-phaser-*.tar.xz
+stone-phaser-*.src.tar.gz
+.AURINFO
+DPF-bypass.patch
