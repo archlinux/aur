@@ -2,9 +2,9 @@
 Version=1.0
 Type=Application
 Name=DataGrip
-Icon=/opt/datagrip/bin/datagrip.png
+Icon=/opt/datagrip/bin/datagrip.svg
 Exec="/opt/datagrip/bin/datagrip.sh" %f
-Comment=The Drive to Develop
+Comment=IDE for Databases and SQL
 Categories=Development;IDE;
 Terminal=false
 StartupWMClass=jetbrains-datagrip
