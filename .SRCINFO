@@ -1,7 +1,7 @@
 pkgbase = android-aarch64-zlib
 	pkgdesc = A compression/decompression Library (android)
 	pkgver = 1.2.11
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.zlib.net/
 	arch = any
 	license = custom:zlib
@@ -15,7 +15,7 @@ pkgbase = android-aarch64-zlib
 	source = http://zlib.net/zlib-1.2.11.tar.gz
 	source = 0001-Disable-versioning.patch
 	md5sums = 1c9f62f0778697a09d36121ead88e08e
-	md5sums = 2a60cf737d0fdd05c7795b1e6d6e6b69
+	md5sums = 3e04fe1f84d547ea0ca318463e319ab7
 
 pkgname = android-aarch64-zlib
 
