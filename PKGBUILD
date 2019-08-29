@@ -11,21 +11,21 @@ license=('MPL2' 'MIT')
 groups=()
 conflicts=(alice-vision-git)
 provides=(alice-vision)
-depends=('openblas-lapack' 'gflags' 'glfw-x11' 'alembic' 'boost-libs' 'openexr' 'openimageio' 'opengv-git' 'flann' 'coin-or-coinutils' 'coin-or-clp' 'coin-or-lemon' 'coin-or-osi' 'google-glog')
-makedepends=('boost' 'eigen' 'ceres-solver' 'cuda' 'git' 'cmake' 'magma')
+# split: uncertaintyTE, geogram, cctag
+depends=('gflags' 'glfw-x11' 'alembic' 'boost-libs' 'openexr' 'openimageio' 'opengv-git' 'flann' 'coin-or-coinutils' 'coin-or-clp' 'coin-or-lemon' 'coin-or-osi' 'google-glog' 'freetype2' 'zlib' 'libtiff' 'libjpeg' 'libpng' 'libraw' 'opencv' 'lapack' 'suitesparse')
+makedepends=('boost' 'eigen' 'ceres-solver' 'git' 'cmake')
 source=("https://github.com/alicevision/AliceVision/archive/v${pkgver}.tar.gz"
-        "ute_lib::git+https://github.com/alicevision/uncertaintyTE.git"
         "geogram::git+https://github.com/alicevision/geogram.git"
         "MeshSDFilter::git+https://github.com/alicevision/MeshSDFilter.git#branch=av_develop"
         "nanoflann::git+https://github.com/alicevision/nanoflann.git"
         "submodule.patch"
         )
-md5sums=('a9d5cd07ed33c0b73390b11170b3b11f'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'eb62c8be5a0d7ce537a928314c9d0028')
+sha256sums=('157d06d472ffef29f08a781c9df82daa570a49bb009e56a2924a3bd2f555ef50'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'ddbe76933cea0300b577095afa7459113a2d2ef02d4f300424261165ad9dee22'
+           )
 
 _CMAKE_FLAGS=(
               -DCMAKE_INSTALL_PREFIX=/usr
@@ -37,10 +37,22 @@ _CMAKE_FLAGS=(
               -DCLP_INCLUDE_DIR_HINTS=/usr/include/coin
               -DOSI_INCLUDE_DIR_HINTS=/usr/include/coin
               -DCERES_DIR=/usr/include/ceres
-              -DMAGMA_ROOT=/opt/magma
-              -DCUDA_HOST_COMPILER=/opt/cuda/bin/gcc
               -DALICEVISION_BUILD_DOC=OFF
              )
+
+((DISABLE_CUDA)) && { _CMAKE_FLAGS+=('-DALICEVISION_USE_CUDA=OFF')
+                       DISABLE_UTE=1 # Disable uncertaintyTE as it also depends on cuda
+               } || {  makedepends+=('cuda' 'popsift')
+                      _CMAKE_FLAGS+=( -DCUDA_HOST_COMPILER=/opt/cuda/bin/gcc )
+                      _CMAKE_FLAGS+=( -DPopSift_DIR=/usr )
+                    } 
+
+((DISABLE_UTE)) || {  source+=("ute_lib::git+https://github.com/alicevision/uncertaintyTE.git")
+                      sha256sums+=('SKIP') 
+                      makedepends+=('magma')
+                     _CMAKE_FLAGS+=( -DMAGMA_ROOT=/opt/magma )
+                     _CMAKE_FLAGS+=( -DUNCERTAINTYTE_DIR=${srcdir}/ute_bin )
+                   }
 
 _path="AliceVision-${pkgver}"
 
@@ -56,12 +68,14 @@ prepare() {
 build() {
   cd ${srcdir}
 
-  msg2 "Build uncertaintyTE library"
-  mkdir -p ute_build && cd ute_build
-  cmake -DCMAKE_INSTALL_PREFIX=/ -DMAGMA_ROOT=/opt/magma ../ute_lib 
-  make
-  make DESTDIR="../ute_bin" install
-  cd ..
+  ((DISABLE_UTE)) || {
+    msg2 "Build uncertaintyTE library"
+    mkdir -p ute_build && cd ute_build
+    cmake -DCMAKE_INSTALL_PREFIX=/ -DMAGMA_ROOT=/opt/magma ../ute_lib 
+    make
+    make DESTDIR="../ute_bin" install
+    cd ..
+  }
 
   msg2 "Build geogram library"
   mkdir -p geogram_build && cd geogram_build
@@ -72,15 +86,17 @@ build() {
 
   msg2 "Build AliceVision library"
   mkdir -p build && cd build
-  cmake ${_CMAKE_FLAGS[@]} -DUNCERTAINTYTE_DIR=${srcdir}/ute_bin -DGEOGRAM_INSTALL_PREFIX=${srcdir}/geogram_bin ../${_path}
+  cmake ${_CMAKE_FLAGS[@]} -DGEOGRAM_INSTALL_PREFIX=${srcdir}/geogram_bin ../${_path}
   make
 }
 
 
 package() {
-  msg2 "Install uncertaintyTE"
-  cd ${srcdir}/ute_build
-  make DESTDIR=${pkgdir}/usr install
+  ((DISABLE_UTE)) || {
+    msg2 "Install uncertaintyTE"
+    cd ${srcdir}/ute_build
+    make DESTDIR=${pkgdir}/usr install
+  }
 
   msg2 "Install geogram"
   cd ${srcdir}/geogram_build
