@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Grabber
+Exec=bash -c "cd /usr/share/grabber; ./Grabber"
+Icon=grabber
+Type=Application
+Categories=Network;

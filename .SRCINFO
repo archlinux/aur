@@ -1,0 +1,24 @@
+pkgbase = grabber
+	pkgdesc = Very customizable imageboard/booru downloader with powerful filenaming features.
+	pkgver = 7.1.1
+	pkgrel = 1
+	url = https://bionus.github.io/imgbrd-grabber
+	arch = x86_64
+	license = Apache
+	makedepends = gcc
+	makedepends = cmake
+	depends = qt5-base
+	depends = qt5-tools
+	depends = qt5-multimedia
+	depends = libpulse
+	provides = grabber
+	conflicts = grabber
+	source = v7.1.1.tar.gz::https://github.com/Bionus/imgbrd-grabber/archive/v7.1.1.tar.gz
+	source = grabber.png
+	source = grabber.desktop
+	sha256sums = 4ecb247f92fb4ba7c3245439bcd221e8c64dd037c1761065a663adb6b4571740
+	sha256sums = b56858d78c967c582ac52d746c1d9a2845dd27ae8d9050060a67a60a776363bf
+	sha256sums = 8926561f81f2666d51461fd7d8c3ebad7a5b8ade2fc77f8ed36116853eddfee9
+
+pkgname = grabber
+
