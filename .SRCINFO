@@ -1,7 +1,7 @@
 pkgbase = idos-timetable-data-zsr-europe+sk-2018-latest
 	pkgdesc = 2017/2018 Timetable data for the offline railway and other public transport timetable search engines by CHAPS: European and Slovak train data, provided by Inprop (Slovakia).
 	pkgver = 2019_4_12
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = http://www.inprop.sk/download.aspx
 	arch = any

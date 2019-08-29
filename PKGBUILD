@@ -9,7 +9,7 @@ _pkgname="idos-timetable-data-zsr-europe+sk-20${_year}"
 pkgname="${_pkgname}-latest"
 epoch=1
 pkgver=2019_4_12
-pkgrel=1
+pkgrel=2
 pkgdesc="20${_prevyear}/20${_year} Timetable data for the offline railway and other public transport timetable search engines by CHAPS: European and Slovak train data, provided by Inprop (Slovakia)."
 arch=(any)
 url="http://www.inprop.sk/download.aspx"
@@ -74,16 +74,6 @@ sha256sums=(
   'SKIP'
   "14279a732be7d04304ff3860d54e0cf8c1a8ba0a46343eaf9b7ce3a105815946"
 )
-
-pkgver() {
-  # Do not use metadata of the source file, but do website parsing: So we do not need to download the file to (AUR-)update the package version with our own crude hacked script 'idos-aur-update-versions.sh'.
-  #date -r "${srcdir}/${_target0}" +"%Y_%m_%d"
-  
-  _ver="$(wget -nv -O- "${url}" | grep --text -E "Data/Vlak${_year}E_Sk\.exe" | sed -r 's|[^0-9]([0-9]{1,2}\.[0-9]{1,2}\.[0-9]{4})[^0-9]|\n\1\n|' | grep --text -E '^[0-9]{1,2}\.[0-9]{1,2}\.[0-9]{4}$' | awk -F. '{print $3"_"$2"_"$1}')"
-
-  echo "${_ver}"
-}
-
 
 package() {
   _instdirbase='/opt/idos-timetable'
