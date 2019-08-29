@@ -2,7 +2,7 @@
 
 pkgname=mon2cam-git
 _pkgname=Mon2Cam
-pkgver=r11.cf693ee
+pkgver=r14.9d8b51b
 pkgrel=1
 pkgdesc="Workaround for multi-monitor Discord screensharing"
 arch=('any')
@@ -13,6 +13,7 @@ depends=(
     'ffmpeg'
     'v4l2loopback-dkms'
 )
+provides=('mon2cam')
 source=(git+https://github.com/ShayBox/$_pkgname.git)
 md5sums=('SKIP')
 
