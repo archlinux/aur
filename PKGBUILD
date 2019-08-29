@@ -31,6 +31,7 @@ options=(
 
 package() {
  dir=$srcdir/texlive-vub-v${pkgver}*
+
  mkdir -p $pkgdir/usr/share/texmf/tex/latex/vub
  mkdir -p $pkgdir/usr/share/texmf/tex/latex/vub/dept
 
