@@ -2,7 +2,7 @@
 
 _pkgname=minitube
 pkgname="${_pkgname}-bin"
-pkgver=2.9
+pkgver=3.1
 pkgrel=1
 pkgdesc="A native YouTube client in Qt. Watch YouTube videos without Flash Player. Prebuilt binary with included Google API key."
 arch=('x86_64')
@@ -10,8 +10,9 @@ url='https://flavio.tordini.org/minitube'
 license=('GPL3')
 install=minitube.install
 depends=(
-  'phonon-qt5'
+  'mpv'
   'qt5-declarative'
+  'qt5-x11extras'
   'hicolor-icon-theme'
 )
 makedepends=(
@@ -30,7 +31,7 @@ source=(
   "${install}"
 )
 sha256sums=(
-  'b9eaa42bf6a3242fb932c10db89d4d8b103b4fa4dfbcdc9b98e1927e166de26e' # minitube.deb
+  'e5140de6fb47b3670fdfd8f1c649226ec0685d2950fbac72b3ea1226bb5c0275' # minitube.deb
   'c7f4dd1ce7968635a0dbc44908a94e817e8ed6ab12d9443866ad28781038a25b' # minitube.install
 )
 noextract=(
@@ -38,7 +39,7 @@ noextract=(
 )
 
 pkgver() {
-  _ver="$(bsdtar -x -f "${srcdir}/control.tar.gz" -O control | grep -E '^Version:[[:space:]]+' | awk '{print $2}')"
+  _ver="$(bsdtar -x -f "${srcdir}/control.tar.xz" -O control | grep -E '^Version:[[:space:]]+' | awk '{print $2}')"
   if [ -z ${_ver} ]; then
     echo "Error in 'pkgver()': Could not determine version." > /dev/stderr
     return 1
