@@ -1,0 +1,31 @@
+pkgbase = intel-vtune-amplifier-community
+	pkgdesc = VTune Amplifier -- Performance profiler for serial and parallel performance analysis
+	pkgver = 2019.5.0.601413
+	pkgrel = 1
+	url = https://software.intel.com/en-us/vtune/choose-download#standalone
+	arch = x86_64
+	license = custom
+	makedepends = libarchive
+	makedepends = lzop
+	makedepends = cpio
+	makedepends = gtk3
+	makedepends = alsa-lib
+	makedepends = libxss
+	makedepends = nss
+	depends = gtk3
+	depends = alsa-lib
+	depends = libxss
+	depends = nss
+	conflicts = intel-parallel-studio-xe
+	conflicts = intel-vtune-amplifier
+	options = !strip
+	options = libtool
+	source = http://registrationcenter-download.intel.com/akdlm/irc_nas/tec/15703/vtune_amplifier_2019_update5.tar.gz
+	source = EULA.txt
+	source = vtune-group.conf
+	sha256sums = 7b2124123347bbb593d1b8f8cf858d88829a05605769cba5c39444b0aa545473
+	sha256sums = e13bba8c55cf874988dbb541d8a72f53dd0942fca48f49bfbe9d82174bb73808
+	sha256sums = 6d57b60d701db9551c5bbcc7bf5bc528c928513dabb28a2c85cc45695438381b
+
+pkgname = intel-vtune-amplifier-community
+
