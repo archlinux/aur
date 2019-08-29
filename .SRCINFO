@@ -1,6 +1,6 @@
 pkgbase = texlive-vub
 	pkgdesc = Provides a titlepage, a beamer template and other style elements for the Vrije Universiteit Brussel.
-	pkgver = 2.2.0
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://gitlab.com/rubdos/texlive-vub/
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = texlive-vub
 	depends = texlive-latexextra
 	depends = ttf-roboto
 	options = !emptydirs
-	source = https://gitlab.com/rubdos/texlive-vub/repository/archive.tar.bz2?ref=v2.2.0
-	sha512sums = 29f3a6195cf284fda287f4ab1555280331dafa776567271b7432fb605c8305be8b559357918ce89da7816193b982c27dafe5caeaba73be5da0dcdc2ce3762cd0
+	source = https://gitlab.com/rubdos/texlive-vub/repository/archive.tar.bz2?ref=v2.3.0
+	sha512sums = 05b8a9d9da938d6ed88db0ca12854a12476e2d13557eba7eafe71926196c198fd08d5fd4e610ec220799b1b56c7c7fdc426b2461732e186a7e61e526cfc0b746
 
 pkgname = texlive-vub
 
