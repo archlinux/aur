@@ -1,0 +1,24 @@
+pkgbase = i3lock-cri
+	pkgdesc = An improved screenlocker based upon XCB and PAM - cri's version
+	pkgver = 2.11.1.cri
+	pkgrel = 3
+	url = https://github.com/epita/i3lock/
+	arch = i686
+	arch = x86_64
+	groups = i3
+	license = MIT
+	makedepends = git
+	depends = xcb-util-image
+	depends = libev
+	depends = cairo
+	depends = libxkbcommon-x11
+	depends = systemd
+	provides = i3lock
+	conflicts = i3lock
+	options = docs
+	backup = etc/pam.d/i3lock
+	source = git://github.com/epita/i3lock#branch=master
+	sha1sums = SKIP
+
+pkgname = i3lock-cri
+
