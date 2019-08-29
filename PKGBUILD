@@ -1,30 +1,23 @@
-# Maintainer: Aaron DeVore <aaron.devore@gmail.com>
+# Maintainer: Dreieck
+# Contributor: Jelle van der Waa <jelle@vdwaa.nl>
+# Contributor: Aaron DeVore <aaron.devore@gmail.com>
 
 pkgname=python2-selenium
-pkgver=2.47.1
-pkgrel=1
-pkgdesc="Python binding for Selenium Remote Control [Python 2]"
-arch=(i686 x86_64)
-url="http://pypi.python.org/pypi/selenium"
+pkgver=3.141.0
+pkgrel=2
+pkgdesc="Python2 binding for Selenium Remote Control"
+arch=('x86_64')
+url="https://pypi.python.org/pypi/selenium"
 license=('Apache')
-changelog='Changelog'
-depends=('python2')
+depends=('python2' 'python2-urllib3')
 makedepends=('python2-setuptools')
-optdepends=('lib32-glibc: Firefox x86 webdriver support for x86_64')
-source=("http://pypi.python.org/packages/source/s/selenium/selenium-${pkgver}.tar.gz")
-md5sums=('7a2e267e8ef5c221bfd6387c2ad5f3bc')
-
-build() {
-  cd "$srcdir/selenium-$pkgver"
-  python2 setup.py build
-}
+optdepends=('geckodriver: Firefox driver support')
+source=("https://pypi.io/packages/source/s/selenium/selenium-$pkgver.tar.gz")
+sha512sums=('3d2afbe9e96f88e9c055a89786b5090af387d3feba4598577b70fd3e0b20c2c09c4b25af920c654f52ec7e34f23181e6d278ac05f1a1f960d2d371ce7a6b82d8')
 
 package() {
   cd "$srcdir/selenium-$pkgver"
   python2 setup.py install --root="$pkgdir/" --optimize=1
-  find "$pkgdir" -name "*.py" -exec \
-    sed -i '1s/python[[:space:]]*$/python2/' {} \;
 }
 
 # check() takes too many dependencies to run
-
