@@ -4,7 +4,7 @@ _pkgname='audible-activator'
 pkgname="${_pkgname}-git"
 epoch=1
 pkgver=0.2+r3.20181128.2e97c84
-pkgrel=1
+pkgrel=2
 pkgdesc="A script to retrieve your activation data (activation_bytes) from Audible servers. Use it to play your aax or aax+ files downloaded from amazon audible. Needs chrome or chromium."
 url='http://github.com/inAudible-NG/audible-activator'
 arch=(any)
@@ -24,7 +24,9 @@ depends=(
   "chromium" # For chromedriver and 'chromedriver'-executable. You can also use "chrome" or any other chrome-based browser which provides a supported chromedriver.
 )
 
-makedepends=()
+makedepends=(
+  'git'
+)
 
 optdepends=()
 
