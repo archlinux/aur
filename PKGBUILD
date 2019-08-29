@@ -5,7 +5,7 @@
 # - Mirror: https://github.com/timvisee/ffsend/blob/master/pkg/aur/ffsend-git/PKGBUILD
 
 pkgname=ffsend-git
-pkgver=0.2.43.2545708f
+pkgver=0.2.51.e98ddafd
 pkgrel=1
 pkgdesc="Easily and securely share files from the command line. A Firefox Send client."
 url="https://gitlab.com/timvisee/ffsend"
@@ -31,8 +31,13 @@ package() {
     # Install Binary
     install -Dm755 "./target/release/ffsend" "$pkgdir/usr/bin/ffsend"
 
-    # Install completions
-    cd "./contrib/completions"
-    install -Dm644 "ffsend.bash" "$pkgver/usr/share/bash-completion/completions/ffsend"
-    install -Dm644 "ffsend.fish" "$pkgver/usr/share/fish/vendor_completions.d/ffsend.fish"
+    # Install shell completions and LICENSE file
+    install -Dm644 "contrib/completions/ffsend.bash" \
+        "$pkgdir/etc/bash_completion.d/ffsend"
+	install -Dm644 "contrib/completions/_ffsend" \
+        "$pkgdir/usr/share/zsh/site-functions/_ffsend"
+	install -Dm644 "contrib/completions/ffsend.fish" \
+        "$pkgdir/usr/share/fish/vendor_completions.d/ffsend.fish"
+    install -Dm644 "LICENSE" \
+        "$pkgdir/usr/share/licenses/ffsend/LICENSE"
 }
