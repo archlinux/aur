@@ -1,6 +1,6 @@
 pkgbase = popsift
-	pkgdesc = This library provides a GPU implementation of SIFT, 25 fps on HD images on recent graphic cards. (DOI: 10.1145/3204949.3208136)
-	pkgver = 0.9
+	pkgdesc = Realtime GPU implementation of SIFT, 25 fps on HD images on recent graphic cards. (DOI: 10.1145/3204949.3208136)
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://alicevision.github.io/
 	arch = i686
@@ -10,9 +10,8 @@ pkgbase = popsift
 	makedepends = boost
 	makedepends = cmake
 	makedepends = git
-	makedepends = ninja
-	depends = boost-libs>=1.55
-	depends = cuda=10.1.243-9
+	makedepends = cuda>=7.0
+	options = staticlibs
 	source = popsift::git+https://github.com/alicevision/popsift.git
 	sha256sums = SKIP
 
