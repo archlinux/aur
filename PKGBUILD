@@ -27,7 +27,7 @@
 
 _pkgname=retroshare
 pkgname=${_pkgname}-git
-pkgver=v0.6.5.r0.gd63655c9b
+pkgver=v0.6.5.r399.g2d7b85598
 pkgrel=1
 pkgdesc="Serverless encrypted instant messenger with filesharing, chatgroups, e-mail."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -46,7 +46,7 @@ sha256sums=('SKIP')
 # Add missing dependencies if needed
 [[ "$_plugin_voip" == 'true' ]] && depends=(${depends[@]} 'ffmpeg' 'opencv')
 [[ "$_plugin_feedreader" == 'true' ]] && depends=(${depends[@]} 'curl' 'libxslt')
-[[ "$_jsonapi" == 'true' ]] && depends=(${depends[@]} 'restbed')
+[[ "$_jsonapi" == 'true' ]] && depends=(${depends[@]} 'restbed' 'cmake')
 [[ "$_clang" == 'true' ]] && makedepends=(${makedepends[@]} 'clang')
 [[ "$_autologin" == 'true' ]] && depends=(${depends[@]} 'libsecret')
 [[ "$_systems_rapidjson" == 'true' ]] && makedepends=(${makedepends[@]} 'rapidjson')
@@ -89,13 +89,16 @@ build() {
 	[[ "$_plugin_voip" != 'true' ]] && sed -i '/VOIP \\/d' plugins/plugins.pro
 	[[ "$_plugin_feedreader" != 'true' ]] && sed -i '/FeedReader/d' plugins/plugins.pro
 
+	rmdir supportlibs/restbed/include || true
+
 	qmake   CONFIG-=debug CONFIG+=release \
 		${_optJsonapi} ${_optAutol} ${_optClang} \
 		${_optPlugin} ${_optWiki} \
 		QMAKE_CFLAGS_RELEASE="${CFLAGS}" \
 		QMAKE_CXXFLAGS_RELEASE="${CXXFLAGS}" \
 		RetroShare.pro
-	# workaround
+	make
+	rmdir supportlibs/restbed/include || true
 	make || make
 }
 
