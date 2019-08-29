@@ -23,12 +23,6 @@ makedepends=('python>=3.3'
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 md5sums=('03d350e7a22dfec46bf1dff56384068e')
 
-prepare() {
-    cd ${srcdir}/${_pyname}-${pkgver}
-
-    sed -i -e '/auto_use/s/True/False/' setup.cfg
-}
-
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
     python setup.py build
