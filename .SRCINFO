@@ -1,6 +1,6 @@
 pkgbase = ffsend-bin
 	pkgdesc = Easily and securely share files from the command line. A Firefox Send client.
-	pkgver = 0.2.50
+	pkgver = 0.2.51
 	pkgrel = 1
 	url = https://gitlab.com/timvisee/ffsend
 	arch = x86_64
@@ -10,12 +10,16 @@ pkgbase = ffsend-bin
 	optdepends = bash-completion: support auto completion for bash
 	provides = ffsend
 	conflicts = ffsend
-	source = ffsend-v0.2.50::https://github.com/timvisee/ffsend/releases/download/v0.2.50/ffsend-v0.2.50-linux-x64-static
-	source = ffsend-v0.2.50.bash::https://gitlab.com/timvisee/ffsend/raw/v0.2.50/contrib/completions/ffsend.bash
-	source = ffsend-v0.2.50.fish::https://gitlab.com/timvisee/ffsend/raw/v0.2.50/contrib/completions/ffsend.fish
-	sha256sums = cc9604991a6502d57d96a0e5616cff83f2ee3f92397720e2b9e88be6a8f1d0c5
-	sha256sums = bd0f63d4acaed87da9bc80725ec2242c273463cf64ac56c858c46164a6a8a3ab
-	sha256sums = 15d9a3e79265615a73af4de0e20dd662ad96470aac7fc5dfeff7d26d90bdc667
+	source = ffsend-v0.2.51::https://github.com/timvisee/ffsend/releases/download/v0.2.51/ffsend-v0.2.51-linux-x64-static
+	source = ffsend-v0.2.51.bash::https://gitlab.com/timvisee/ffsend/raw/v0.2.51/contrib/completions/ffsend.bash
+	source = ffsend-v0.2.51.zsh::https://gitlab.com/timvisee/ffsend/raw/v0.2.51/contrib/completions/_ffsend
+	source = ffsend-v0.2.51.fish::https://gitlab.com/timvisee/ffsend/raw/v0.2.51/contrib/completions/ffsend.fish
+	source = LICENSE-v0.2.51::https://gitlab.com/timvisee/ffsend/raw/v0.2.51/LICENSE
+	sha256sums = 06874d1e854365ad52b6723d2a18cd5d62be1c34b1a982cb89e1f4132877d829
+	sha256sums = 5d07864cc50626f663d4e0c87edc3e45605f66857633ab373a5f4b2a8d81d433
+	sha256sums = 75a5d1ef0baf7d5711137655aad145140021c8c64584baab95e9faaab765218a
+	sha256sums = d68f1327b93a4b030ce6d3d0bc11a8d04dd8a3ff7cabe159d1bdaa5df86fffa9
+	sha256sums = 8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903
 
 pkgname = ffsend-bin
 
