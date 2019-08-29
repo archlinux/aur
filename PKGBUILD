@@ -1,11 +1,12 @@
 # Maintainer: Aleksandr <contact at via dot aur>
 pkgname=nftables-geoip-sets-git
 pkgver=r25.e1b73b8
-pkgrel=1
+pkgrel=2
 pkgdesc="GeoIP Database for nftables"
 arch=('any')
 license=('GPL-3.0')
 url="https://github.com/chr0mag/geoipsets"
+depends=('curl' 'unzip')
 install='install'
 source=('nftables-geoip-sets::git+git://github.com/chr0mag/geoipsets.git')
 
