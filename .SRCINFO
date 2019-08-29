@@ -1,7 +1,7 @@
 pkgbase = python-stsci.imagestats
 	pkgdesc = STScI clipped image statistics with core functionality of IRAF's imstatistics
 	pkgver = 1.6.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://stsciimagestats.readthedocs.io/
 	arch = i686
 	arch = x86_64
@@ -17,5 +17,6 @@ pkgbase = python-stsci.imagestats
 pkgname = python-stsci.imagestats
 	depends = python>=3.5
 	depends = python-numpy>=1.13
+	depends = python-stsci.tools
 	optdepends = python-stsci.imagestats-doc: Documentation for STScI Imagestats
 
