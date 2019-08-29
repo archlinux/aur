@@ -1,10 +1,10 @@
 pkgbase = notable-bin
 	pkgdesc = The markdown-based note-taking app that doesn't suck
 	pkgver = 1.7.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fabiospampinato/notable
 	arch = x86_64
-	license = AGPL
+	license = Freeware
 	depends = libxss
 	provides = notable
 	source = https://github.com/fabiospampinato/notable/releases/download/v1.7.3/notable_1.7.3_amd64.deb
