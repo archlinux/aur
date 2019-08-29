@@ -11,9 +11,15 @@ pkgbase = popsift
 	makedepends = cmake
 	makedepends = git
 	makedepends = cuda>=7.0
-	options = staticlibs
 	source = popsift::git+https://github.com/alicevision/popsift.git
 	sha256sums = SKIP
 
 pkgname = popsift
+	pkgdesc = Realtime GPU implementation of SIFT, 25 fps on HD images on recent graphic cards. (DOI: 10.1145/3204949.3208136) [development headers and static libs]
+	depends = boost
+	options = staticlibs
+
+pkgname = popsift-libs
+	depends = boost-libs>=1.55
+	depends = libcudart.so
 
