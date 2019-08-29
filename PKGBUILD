@@ -57,14 +57,13 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/magma-${pkgver}/build-shared"
-  # do not build test
-  sed -i "s/install: preinstall/install: magma_sparse/g" Makefile
-  make DESTDIR="${pkgdir}" install
-  cd "${srcdir}/magma-${pkgver}/build-static"
-  # do not build test
-  sed -i "s/install: preinstall/install: magma_sparse/g" Makefile
-  make DESTDIR="${pkgdir}" install
+  for dir in ${srcdir}/magma-${pkgver}/build-*; do
+    pushd "$dir"
+    # do not build test
+    sed -i "s/install: preinstall/install: magma_sparse/g" Makefile
+    make DESTDIR="${pkgdir}" install
+    popd
+  done
 
   mkdir -p ${pkgdir}/opt/magma/example
   cp -ru ${srcdir}/magma-${pkgver}/example/* ${pkgdir}/opt/magma/example/
