@@ -1,0 +1,7 @@
+dpf/
+stone-phaser/
+pkg/
+src/
+.AURINFO
+stone-phaser-git-*.tar.xz
+stone-phaser-git-*.src.tar.gz

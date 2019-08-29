@@ -1,0 +1,25 @@
+pkgbase = stone-phaser-git
+	pkgdesc = A classic analog phaser effect LADSPA, LV2 and VST2 plugin (git version)
+	pkgver = 0.1.0.r10.geaa1787
+	pkgrel = 1
+	url = https://github.com/jpcima/stone-phaser
+	arch = i686
+	arch = x86_64
+	groups = pro-audio
+	groups = ladspa-plugins
+	groups = lv2-plugins
+	groups = vst-plugins
+	license = Boost
+	makedepends = git
+	makedepends = mesa
+	depends = cairo
+	provides = stone-phaser
+	provides = stone-phaser=0.1.0
+	conflicts = stone-phaser
+	source = stone-phaser::git+https://github.com/jpcima/stone-phaser.git
+	source = dpf::git+https://github.com/DISTRHO/DPF.git
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = stone-phaser-git
+
