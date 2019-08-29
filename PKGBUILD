@@ -4,7 +4,7 @@
 
 pkgname=duplicati-latest
 pkgver=2.0.4.22
-pkgrel=1
+pkgrel=2
 _date=2019-06-30
 _branch=canary
 pkgdesc='A free backup client that securely stores encrypted, incremental, compressed backups on cloud storage services and remote file servers'
@@ -23,6 +23,7 @@ sha256sums=('7baa41d79e2a43ec1e82164c4612a2f2bef1b7671225040823fd2e9740b0482c'
             'f6f903ca443935314afeab4cd2e46cf4bef7c5fb1e81c2d95f670f0993774ce5')
 arch=('i686' 'x86_64')
 depends=('gtk-sharp-2' 'mono')
+optdepends=('notify-sharp: for tray notifications')
 
 package() {
   # Install the service.

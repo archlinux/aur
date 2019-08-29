@@ -1,7 +1,7 @@
 pkgbase = duplicati-latest
 	pkgdesc = A free backup client that securely stores encrypted, incremental, compressed backups on cloud storage services and remote file servers
 	pkgver = 2.0.4.22
-	pkgrel = 1
+	pkgrel = 2
 	url = http://duplicati.com
 	install = duplicati.install
 	arch = i686
@@ -9,6 +9,7 @@ pkgbase = duplicati-latest
 	license = LGPL
 	depends = gtk-sharp-2
 	depends = mono
+	optdepends = notify-sharp: for tray notifications
 	source = https://github.com/duplicati/duplicati/releases/download/v2.0.4.22-2.0.4.22_canary_2019-06-30/duplicati-2.0.4.22_canary_2019-06-30.zip
 	source = duplicati-user.service
 	source = duplicati.service
