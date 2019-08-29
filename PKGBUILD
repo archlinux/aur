@@ -2,7 +2,9 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=sway
-pkgver=1.2_rc2
+pkgver=1.2
+_hash='be138dab4419d3e76a7742428d9ec85bce06116b'
+epoch=1
 pkgrel=1
 pkgdesc='Tiling Wayland compositor and replacement for the i3 window manager'
 arch=(x86_64)
@@ -24,12 +26,20 @@ optdepends=(
   'waybar: Highly customizable bar'
   'xorg-server-xwayland: X11 support'
 )
-source=("git+https://github.com/swaywm/sway#tag=${pkgver/_/-}")
+source=("git+https://github.com/swaywm/sway#tag=$pkgver")
 md5sums=('SKIP')
 
 prepare() {
+  cd $pkgname
+
+  # check if the git hash matches
+  if [[ "$(git rev-parse HEAD)" != "$_hash" ]]; then
+    echo "error: $(git rev-parse HEAD) != $_hash"
+    exit 1
+  fi
+
   # Set the version information to 'Arch Linux' instead of 'makepkg'
-  sed -i "s/branch \\\'@1@\\\'/Arch Linux/g" $pkgname/meson.build
+  sed -i "s/branch \\\'@1@\\\'/Arch Linux/g" meson.build
 }
 
 build() {
