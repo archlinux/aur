@@ -17,10 +17,12 @@ pkgbase = python-stsci.image
 pkgname = python-stsci.image
 	depends = python-numpy>=1.13
 	depends = python-scipy
+	depends = python-stsci.tools
 	optdepends = python-stsci.image-doc: Documentation for STScI Image
 
 pkgname = python2-stsci.image
 	depends = python2-numpy>=1.13
 	depends = python2-scipy
+	depends = python2-stsci.tools
 	optdepends = python-stsci.image-doc: Documentation for STScI Image
 
