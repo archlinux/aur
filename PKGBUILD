@@ -1,5 +1,5 @@
 pkgname=openvr-git
-pkgver=.1.6.10b.r0.g52065df
+pkgver=1.6.10b.65.52065df
 pkgrel=1
 pkgdesc="API and runtime that allows access to VR hardware from multiple vendors."
 arch=('x86_64')
@@ -26,8 +26,17 @@ install_examples=false
 
 pkgver() {
   cd "$srcdir/openvr"
-  #echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
-  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+
+  ver=$(git describe | sed 's/^v//')
+  hash=$(git rev-parse --short HEAD)
+  revision=$(git rev-list --count HEAD)
+
+  # remove a trailing "." if needed
+  if [[ ${ver:0:1} == "." ]] ; then
+    ver=${ver:1:${#ver}}
+  fi
+
+  echo $ver.$revision.$hash
 }
 
 
