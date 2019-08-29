@@ -9,6 +9,7 @@ depends=(gnome-shell)
 install=flat-remix-gnome.install
 url="https://drasite.com/flat-remix-gnome"
 license=('CC-BY-SA-4.0')
+options=('!strip')
 source=("https://github.com/daniruiz/${pkgname}/archive/${pkgver}.tar.gz")
 sha256sums=('SKIP')
 

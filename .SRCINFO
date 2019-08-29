@@ -7,6 +7,7 @@ pkgbase = flat-remix-gnome
 	arch = any
 	license = CC-BY-SA-4.0
 	depends = gnome-shell
+	options = !strip
 	source = https://github.com/daniruiz/flat-remix-gnome/archive/20190829.tar.gz
 	sha256sums = SKIP
 
