@@ -23,6 +23,6 @@ package_python-stsci.imagestats() {
     install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "${srcdir}/LICENSE.txt"
     install -D -m644 -t "${pkgdir}/usr/share/doc/${pkgname}" README.rst
     python setup.py install --root=${pkgdir} --prefix=/usr --optimize=1
-    rm "${pkgdir}/usr/lib/python3.7/site-packages/stsci/__init__.py"
-    rm "${pkgdir}/usr/lib/python3.7/site-packages/stsci/__pycache__"/*
+    rm "${pkgdir}/usr/lib/python${_pyver}/site-packages/stsci/__init__.py"
+    rm "${pkgdir}/usr/lib/python${_pyver}/site-packages/stsci/__pycache__"/*
 }
