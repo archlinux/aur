@@ -11,17 +11,15 @@ license=('MPL2' 'MIT')
 groups=()
 conflicts=(alice-vision-git)
 provides=(alice-vision)
-# split: uncertaintyTE, geogram, cctag
-depends=('gflags' 'glfw-x11' 'alembic' 'boost-libs' 'openexr' 'openimageio' 'opengv-git' 'flann' 'coin-or-coinutils' 'coin-or-clp' 'coin-or-lemon' 'coin-or-osi' 'google-glog' 'freetype2' 'zlib' 'libtiff' 'libjpeg' 'libpng' 'libraw' 'opencv' 'lapack' 'suitesparse')
+# split: uncertaintyTE, cctag
+depends=('geogram' 'gflags' 'glfw-x11' 'alembic' 'boost-libs' 'openexr' 'openimageio' 'opengv-git' 'flann' 'coin-or-coinutils' 'coin-or-clp' 'coin-or-lemon' 'coin-or-osi' 'google-glog' 'freetype2' 'zlib' 'libtiff' 'libjpeg' 'libpng' 'libraw' 'opencv' 'lapack' 'suitesparse')
 makedepends=('boost' 'eigen' 'ceres-solver' 'git' 'cmake')
 source=("https://github.com/alicevision/AliceVision/archive/v${pkgver}.tar.gz"
-        "geogram::git+https://github.com/alicevision/geogram.git"
         "MeshSDFilter::git+https://github.com/alicevision/MeshSDFilter.git#branch=av_develop"
         "nanoflann::git+https://github.com/alicevision/nanoflann.git"
         "submodule.patch"
         )
 sha256sums=('157d06d472ffef29f08a781c9df82daa570a49bb009e56a2924a3bd2f555ef50'
-            'SKIP'
             'SKIP'
             'SKIP'
             'ddbe76933cea0300b577095afa7459113a2d2ef02d4f300424261165ad9dee22'
@@ -77,16 +75,9 @@ build() {
     cd ..
   }
 
-  msg2 "Build geogram library"
-  mkdir -p geogram_build && cd geogram_build
-  cmake -DCMAKE_INSTALL_PREFIX=/ -DGEOGRAM_LIB_ONLY=ON -DGEOGRAM_USE_SYSTEM_GLFW3=ON -DCMAKE_BUILD_TYPE:STRING=Debug -DVORPALINE_PLATFORM:STRING=Linux64-gcc-dynamic ../geogram
-  make 
-  make DESTDIR="../geogram_bin" install
-  cd ..
-
   msg2 "Build AliceVision library"
   mkdir -p build && cd build
-  cmake ${_CMAKE_FLAGS[@]} -DGEOGRAM_INSTALL_PREFIX=${srcdir}/geogram_bin ../${_path}
+  cmake ${_CMAKE_FLAGS[@]} -DGEOGRAM_INSTALL_PREFIX=/usr ../${_path}
   make
 }
 
@@ -97,10 +88,6 @@ package() {
     cd ${srcdir}/ute_build
     make DESTDIR=${pkgdir}/usr install
   }
-
-  msg2 "Install geogram"
-  cd ${srcdir}/geogram_build
-  make DESTDIR=${pkgdir}/usr install
 
   cd ${srcdir}/build
   make DESTDIR=${pkgdir} install
