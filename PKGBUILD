@@ -9,7 +9,7 @@ depends=('libgl' 'sdl2' 'glew')
 optdepends=('steam: SteamVR must be installed through Steam, also contains vive udev rules')
 makedepends=('git' 'cmake' 'vulkan-headers' 'qt5-base') #qt5 for the overlayexample
 provides=("openvr")
-options=('!strip' 'staticlibs')
+options=('!strip')
 
 source=("git+https://github.com/ValveSoftware/openvr.git"
         '0001-also-add-pragma-pack-around-VRControllerState_t.patch'
@@ -47,11 +47,7 @@ build() {
   # See: https://github.com/ValveSoftware/openvr/issues/425
   rm -rf bin
 
-  # build static libopenvr_api.a, in case want to statically link their apps
   cd openvr
-  cmake -DBUILD_SHARED=0 -DCMAKE_INSTALL_PREFIX=/usr/ -DCMAKE_BUILD_TYPE=Release .
-  make
-
   # libopenvr_api.so
   cmake -DBUILD_SHARED=1 -DCMAKE_INSTALL_PREFIX=/usr/ -DCMAKE_BUILD_TYPE=Release .
   make
@@ -66,7 +62,6 @@ build() {
 package() {
   cd openvr
   make install DESTDIR="$pkgdir"
-  install -m 555 bin/linux64/libopenvr_api.a "$pkgdir/usr/lib"
 
   # Install examples
   install -d "$pkgdir/usr/bin"
