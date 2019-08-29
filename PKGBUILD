@@ -63,7 +63,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck
-_srcver=5.2.10-arch1
+_srcver=5.2.11-arch1
 pkgver=${_srcver%-*}
 pkgrel=1
 _ckpatchversion=1
@@ -84,14 +84,12 @@ source=(
   "http://ck.kolivas.org/patches/5.0/5.2/5.2-ck${_ckpatchversion}/$_ckpatch.xz"
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
   0002-ZEN-Add-CONFIG-for-unprivileged_userns_clone.patch
-  0003-iwlwifi-mvm-disable-TX-AMSDU-on-older-NICs.patch
-  0004-drm-amdgpu-pin-the-csb-buffer-on-hw-init-for-gfx-v8.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('6096c4387c2a296de9136080942d11ae3f1bd28129b6952f7133c570e43bfc49'
+sha256sums=('0c2a831f993dc8a8a8e1ca4186b467de72ff173c6f5855e2aab70f6f7fb033f9'
             'SKIP'
             '42e2bc6a7d8439b3a6fe4084d1349077472e0a6831d8a39edda46824a5f0987b'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
@@ -100,9 +98,7 @@ sha256sums=('6096c4387c2a296de9136080942d11ae3f1bd28129b6952f7133c570e43bfc49'
             '8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5'
             'f1abc13a8d859fbf6350040e45d7f04ad551a6d39f113ba96fbbd820118c0e36'
             '91fafa76bf9cb32159ac7f22191b3589278b91e65bc4505cf2fc6013b8037bf3'
-            '63e4378e69e2f23ed87af32a4951477a6d82d4ac0de2295db46502c8120da9d9'
-            'fc96300831506965383ef30bc46b72735dc45bb97dea2ccb8b9450c005d2f020'
-            '2186ca201a99edb94ce56840132544c47234636aada75b75aca6bfa780e04f57')
+            '63e4378e69e2f23ed87af32a4951477a6d82d4ac0de2295db46502c8120da9d9')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-ARCH}
