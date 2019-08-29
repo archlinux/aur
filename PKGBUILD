@@ -22,6 +22,8 @@ md5sums=('SKIP'
          '7350517830b1a0038d30c6ad33b4bb39'
          '8aaa5723852e5ee81ba910235743fde2')
 
+install_examples=false
+
 pkgver() {
   cd "$srcdir/openvr"
   #echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
@@ -54,33 +56,37 @@ build() {
 
   # hellovr_vulkan and hellovr_opengl
   # Example apps that are useful to test SteamVR with both graphics APIs.
-  cd samples
-  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/ -Wno-dev .
-  make
+  if [ "$install_examples" = true ]; then
+    cd samples
+    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/ -Wno-dev .
+    make
+  fi
 }
 
 package() {
   cd openvr
   make install DESTDIR="$pkgdir"
 
-  # Install examples
-  install -d "$pkgdir/usr/bin"
-  install -d "$pkgdir/usr/shaders"
+  if [ "$install_examples" = true ]; then
+    # Install examples
+    install -d "$pkgdir/usr/bin"
+    install -d "$pkgdir/usr/shaders"
 
-  cd samples
+    cd samples
 
-  #TODO: fix openvr upstream source to look in proper place for resources
-  install -m 755 "bin/linux64/hellovr_vulkan" "$pkgdir/usr/bin"
-  for shader in "bin/shaders/"*.spv
-  do
-    install -m 755 "$shader" "$pkgdir/usr/shaders"
-  done
+    #TODO: fix openvr upstream source to look in proper place for resources
+    install -m 755 "bin/linux64/hellovr_vulkan" "$pkgdir/usr/bin"
+    for shader in "bin/shaders/"*.spv
+    do
+      install -m 755 "$shader" "$pkgdir/usr/shaders"
+    done
 
-  install -m 755 "bin/linux64/hellovr_opengl" "$pkgdir/usr/bin"
-  install -m 755 "bin/hellovr_actions.json" "$pkgdir/usr/"
-  install -m 755 "bin/linux64/helloworldoverlay" "$pkgdir/usr/bin"
-  install -m 755 "bin/linux64/tracked_camera_openvr_sample" "$pkgdir/usr/bin"
-  install -m 755 "bin/cube_texture.png" "$pkgdir/usr/"
+    install -m 755 "bin/linux64/hellovr_opengl" "$pkgdir/usr/bin"
+    install -m 755 "bin/hellovr_actions.json" "$pkgdir/usr/"
+    install -m 755 "bin/linux64/helloworldoverlay" "$pkgdir/usr/bin"
+    install -m 755 "bin/linux64/tracked_camera_openvr_sample" "$pkgdir/usr/bin"
+    install -m 755 "bin/cube_texture.png" "$pkgdir/usr/"
+  fi
 }
 
 # vim:set ts=2 sw=2 et:
