@@ -1,8 +1,8 @@
 # Maintainer: Wesley Moore <wes@wezm.net>
 
 pkgname=pastel
-pkgver=0.5.2
-pkgrel=2
+pkgver=0.5.3
+pkgrel=1
 pkgdesc='A command-line tool to generate, analyze, convert and manipulate colors'
 arch=('x86_64')
 url="https://github.com/sharkdp/pastel"
@@ -11,7 +11,8 @@ depends=()
 conflicts=('pastel-git')
 makedepends=('rust' 'cargo')
 source=("$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('9a18110c21e13c43d4b3b2d7b4e6a2b6e06bcf07dc7c95cbaff1e62406c37db7')
+sha256sums=('0850e37b92b8d2f5a396d5b9114a21a64dce5c6cce736039151c800f35abaa1e')
+
 
 build() {
   cd "$pkgname-$pkgver"
