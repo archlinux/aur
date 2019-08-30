@@ -1,6 +1,6 @@
 # Maintainer: Milk Brewster (milk/milkii on Freenode)
 pkgname=pomobar
-pkgver=0.1
+pkgver=r23.b613959
 pkgrel=1
 epoch=
 pkgdesc=""
@@ -26,6 +26,14 @@ md5sums=('SKIP')
 prepare() {
 	cd "$pkgname"
 }
+
+pkgver() {
+	cd "$pkgname"
+  ( set -o pipefail
+    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
+ }
 
 build() {
 	cd "$pkgname"
