@@ -1,25 +1,18 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=gpuvis-git
-pkgver=r1641.c927324c1296b5f50819
+pkgver=r1646.95520be9f51c8a04c1af
 pkgrel=1
 pkgdesc=""
 arch=(x86_64)
 url="https://github.com/mikesart/gpuvis"
 license=('MIT')
-source=("git+$url"
-        'fix.diff')
-sha1sums=('SKIP'
-          '0011dcd305d7cb9d67d36d5329240e4d06a68484')
+source=("git+$url")
+sha1sums=('SKIP')
 
 pkgver() {
   cd "$srcdir"/gpuvis
   printf "r%d.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd "$srcdir"/gpuvis
-  patch -sp1 -i "$srcdir"/fix.diff
 }
 
 build() {
