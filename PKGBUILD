@@ -5,7 +5,7 @@ _svt_av1_ver='0.6.0'
 _svt_vp9_ver='ce245894c6fc1c5d1439c41a7dda8d6dc61784c4'
 
 pkgname=ffmpeg-full-git
-pkgver=4.3.r94667.gdead949a1f
+pkgver=4.3.r94694.g95780f4dcb
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac; git version)'
 arch=('x86_64')
@@ -35,7 +35,7 @@ makedepends=(
     # official repositories:
         'git' 'nasm' 'opencl-headers' 'ffnvcodec-headers'
     # AUR:
-        'vmaf' 'blackmagic-decklink-sdk'
+        'vmaf' 'blackmagic-decklink-sdk' 'amf-headers-git'
 )
 provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libavutil.so' 'libpostproc.so' 'libavresample.so' 'libswscale.so'
@@ -209,6 +209,7 @@ build() {
         --enable-xlib \
         --enable-zlib \
         \
+        --enable-amf \
         --enable-cuda-nvcc \
         --enable-cuvid \
         --enable-ffnvcodec \
