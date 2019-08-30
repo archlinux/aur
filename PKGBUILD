@@ -1,7 +1,7 @@
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 
 pkgname=vmware-ovftool
-pkgver=4.3.0.10104578
+pkgver=4.3.0.12320924
 pkgrel=1
 pkgdesc="VMware Open Virtualization Format tool"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('custom:vmware')
 makedepends=('xorg-server-xvfb')
 depends=('curl' 'libxerces-c-3.1' 'icu58' 'icu60')
 source=("http://url.muflone.com/VMware-ovftool-${pkgver%.*}-${pkgver##*.}-lin.x86_64.bundle")
-sha256sums=('f228e3dc7cc7190d40e4a1520e464c71c3d27f0dd671688e8a6754e1ecf4aa0e')
+sha256sums=('621a1c1fbc6f0fe94f9655e8e73c1fc5bda27c8e019d17d0d678e3477cd77f5e')
 
 prepare() {
   # The bundle file doesn't allow extraction using symlinks or relative paths, here's then copied
