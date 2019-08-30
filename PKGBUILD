@@ -2,8 +2,8 @@
 # Contributor: megadriver <megadriver at gmx dot com>
 
 pkgname=alex4
-pkgver=1.2
-pkgrel=2
+pkgver=1.2.1
+pkgrel=1
 pkgdesc="Help Alex the Allegator rescue Lola before the humans make a pair of shoes out of her!"
 url="http://allegator.sourceforge.net"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('GPL2')
 depends=('aldumb' 'allegro4')
 install=$pkgname.install
 source=($pkgname-$pkgver.tar.gz::"https://github.com/carstene1ns/alex4/archive/$pkgver.tar.gz")
-sha256sums=('759bd418c026286dda83b609eddd3fe3a22b75327d3befba831c4a5fd95185bb')
+sha256sums=('f0bdb6f23c858628de8c74b6625d51eccf6b927ecb21744a25dd58d6e02c4c5f')
 
 build() {
   make -C $pkgname-$pkgver PREFIX=/usr
