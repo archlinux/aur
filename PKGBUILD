@@ -2,7 +2,7 @@
 
 pkgname=glimpse-editor-git
 pkgver=r42757.42f38ba96b
-pkgrel=1
+pkgrel=2
 pkgdesc="Fork of the GNU Image Manipulation Program"
 arch=(i686 x86_64)
 url="https://getglimpse.app/"
@@ -58,7 +58,7 @@ build() {
   	--enable-gimp-console \
   	--enable-python \
   	--enable-gtk-doc \
-    --with-bug-report-url=https://example.com/ \
+    --with-bug-report-url=https://aur.archlinux.org/packages/glimpse-editor-git/ \
   	--with-openexr
 
   make

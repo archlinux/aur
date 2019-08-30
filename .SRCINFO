@@ -1,7 +1,7 @@
 pkgbase = glimpse-editor-git
 	pkgdesc = Fork of the GNU Image Manipulation Program
 	pkgver = r42757.42f38ba96b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://getglimpse.app/
 	arch = i686
 	arch = x86_64
