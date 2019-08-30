@@ -1,0 +1,19 @@
+pkgbase = safe-git
+	pkgdesc = Password protected secret keeper
+	pkgver = 1.1.r0.g7958db7
+	pkgrel = 1
+	url = https://z3bra.org/safe
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = ISC
+	makedepends = git
+	depends = libsodium
+	optdepends = thinglaunch: password prompt
+	provides = safe
+	source = safe-git::git://z3bra.org/safe.git
+	md5sums = SKIP
+
+pkgname = safe-git
+
