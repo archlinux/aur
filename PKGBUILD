@@ -2,7 +2,7 @@
 pkgbase=python-asdf
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=2.4.1
+pkgver=2.4.2
 pkgrel=1
 pkgdesc="A Python tool for reading and writing Advanced Scientific Data Format (ASDF) files"
 arch=('i686' 'x86_64')
@@ -11,17 +11,18 @@ license=('BSD')
 makedepends=('python>=3.3'
              'python-setuptools'
              'python-numpy>=1.8'
-             'python-jsonschema'
+             'python-jsonschema<4'
              'python-yaml>=3.10'
              'python-six>=1.9.0'
              'python-semantic-version>=2.3.1'
+             'python-semantic-version<=2.6.0'
              'python-pytest'
              'python-astropy'
              'python-sphinx-astropy'
              'graphviz')
 #checkdepends=('python-pytest-astropy')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('03d350e7a22dfec46bf1dff56384068e')
+md5sums=('0ae265459c13ab0396231c676a8f01aa')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -38,16 +39,15 @@ build() {
 #}
 
 package_python-asdf() {
-    depends=('python>=3.3' 'python-numpy>=1.8' 'python-jsonschema' 'python-yaml>=3.10' 'python-six>=1.9.0' 'python-semantic-version>=2.3.1')
+    depends=('python>=3.3' 'python-numpy>=1.8' 'python-jsonschema<4' 'python-yaml>=3.10' 'python-six>=1.9.0' 'python-semantic-version>=2.3.1' 'python-semantic-version<=2.6.0')
     optdepends=('python-astropy>=3.0: Support for units, time, transform, wcs, or running the tests'
                 'python-lz4: Support for lz4 compression'
                 'python-asdf-doc: Documentation for Python-ASDF'
                 'python-pytest-astropy: For testing')
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    install -d -m755 "${pkgdir}/usr/share/licenses/${pkgname}/"
-    install -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" licenses/*
-    install -D -m644 README.rst -t "${pkgdir}/usr/share/doc/${pkgname}"
+    install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" licenses/*
+    install -D -m644 -t "${pkgdir}/usr/share/doc/${pkgname}" README.rst
     python setup.py install --root=${pkgdir} --prefix=/usr --optimize=1
 }
 
