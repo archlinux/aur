@@ -3,9 +3,9 @@
 _projname='pigpio'
 pkgname="python-${_projname}"
 pkgver=71
-pkgrel=1
+pkgrel=2
 pkgdesc="A C and Python library for controlling GPIOs on a Raspberry Pi"
-url="http://abyz.co.uk/rpi/pigpio/"
+url="http://abyz.me.uk/rpi/pigpio/"
 license=('custom:UNLICENSE')
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 depends=('python')
