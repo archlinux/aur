@@ -1,4 +1,8 @@
+# shellcheck disable=SC2034
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
+
+# ToDo:
+# * add libraw to openimageio
 
 _name=alice-vision
 pkgname=${_name}
@@ -11,9 +15,11 @@ license=('MPL2' 'MIT')
 groups=()
 conflicts=(alice-vision-git)
 provides=(alice-vision)
-# split: uncertaintyTE, cctag
-depends=('geogram' 'gflags' 'glfw-x11' 'alembic' 'boost-libs' 'openexr' 'openimageio' 'opengv-git' 'flann' 'coin-or-coinutils' 'coin-or-clp' 'coin-or-lemon' 'coin-or-osi' 'google-glog' 'freetype2' 'zlib' 'libtiff' 'libjpeg' 'libpng' 'libraw' 'opencv' 'lapack' 'suitesparse')
-makedepends=('boost' 'eigen' 'ceres-solver' 'git' 'cmake')
+# split: cctag
+#depends=('openexr' 'coin-or-coinutils' 'coin-or-lemon' 'opencv' 
+depends=('alembic' 'boost-libs' 'openimageio' 'flann' 'geogram' 'opengv' 'coin-or-clp' 'ceres-solver')
+#makedepends=('ceres-solver')
+makedepends=('boost' 'eigen' 'freetype2' 'coin-or-coinutils' 'coin-or-lemon' 'git' 'cmake')
 source=("https://github.com/alicevision/AliceVision/archive/v${pkgver}.tar.gz"
         "MeshSDFilter::git+https://github.com/alicevision/MeshSDFilter.git#branch=av_develop"
         "nanoflann::git+https://github.com/alicevision/nanoflann.git"
@@ -22,8 +28,7 @@ source=("https://github.com/alicevision/AliceVision/archive/v${pkgver}.tar.gz"
 sha256sums=('157d06d472ffef29f08a781c9df82daa570a49bb009e56a2924a3bd2f555ef50'
             'SKIP'
             'SKIP'
-            'ddbe76933cea0300b577095afa7459113a2d2ef02d4f300424261165ad9dee22'
-           )
+            'ddbe76933cea0300b577095afa7459113a2d2ef02d4f300424261165ad9dee22')
 
 _CMAKE_FLAGS=(
               -DCMAKE_INSTALL_PREFIX=/usr
@@ -38,19 +43,28 @@ _CMAKE_FLAGS=(
               -DALICEVISION_BUILD_DOC=OFF
              )
 
-((DISABLE_CUDA)) && { _CMAKE_FLAGS+=('-DALICEVISION_USE_CUDA=OFF')
-                       DISABLE_UTE=1 # Disable uncertaintyTE as it also depends on cuda
-               } || {  makedepends+=('cuda' 'popsift')
-                      _CMAKE_FLAGS+=( -DCUDA_HOST_COMPILER=/opt/cuda/bin/gcc )
-                      _CMAKE_FLAGS+=( -DPopSift_DIR=/usr )
-                    } 
 
-((DISABLE_UTE)) || {  source+=("ute_lib::git+https://github.com/alicevision/uncertaintyTE.git")
-                      sha256sums+=('SKIP') 
-                      makedepends+=('magma')
-                     _CMAKE_FLAGS+=( -DMAGMA_ROOT=/opt/magma )
-                     _CMAKE_FLAGS+=( -DUNCERTAINTYTE_DIR=${srcdir}/ute_bin )
-                   }
+# Alow user to build without cuda
+if ((DISABLE_CUDA)); then  
+  _CMAKE_FLAGS+=('-DALICEVISION_USE_CUDA=OFF')
+  # Disable component that could yield cuda.
+else
+  makedepends+=('cuda')
+  _CMAKE_FLAGS+=( -DCUDA_HOST_COMPILER=/opt/cuda/bin/gcc )
+fi
+
+# Disable popsift and ute when cuda is disabled.
+((DISABLE_POPSIFT)) || ((DISABLE_CUDA)) || { 
+  _CMAKE_FLAGS+=( -DPopSift_DIR=/usr )
+  makedepends+=('popsift')
+  optdepends+=('popsift-libs: for GPU accelerated feature matching')
+}
+
+((DISABLE_UTE)) || ((DISABLE_CUDA)) || {
+  _CMAKE_FLAGS+=( -DUNCERTAINTYTE_DIR=/usr )
+  makedepends+=('magma' 'uncertainty-framework')
+  optdepends+=('uncertainty-framework: for SFM uncertainty estimation')
+}
 
 _path="AliceVision-${pkgver}"
 
@@ -66,16 +80,6 @@ prepare() {
 build() {
   cd ${srcdir}
 
-  ((DISABLE_UTE)) || {
-    msg2 "Build uncertaintyTE library"
-    mkdir -p ute_build && cd ute_build
-    cmake -DCMAKE_INSTALL_PREFIX=/ -DMAGMA_ROOT=/opt/magma ../ute_lib 
-    make
-    make DESTDIR="../ute_bin" install
-    cd ..
-  }
-
-  msg2 "Build AliceVision library"
   mkdir -p build && cd build
   cmake ${_CMAKE_FLAGS[@]} -DGEOGRAM_INSTALL_PREFIX=/usr ../${_path}
   make
@@ -83,16 +87,22 @@ build() {
 
 
 package() {
-  ((DISABLE_UTE)) || {
-    msg2 "Install uncertaintyTE"
-    cd ${srcdir}/ute_build
-    make DESTDIR=${pkgdir}/usr install
-  }
-
+#  postpone till `cuda-split` package is ready
+#  ((DISABLE_CUDA)) || depends+=( 'libcudart.so=10.1' )
+  ((DISABLE_CUDA)) || optdepends+=( 'cuda: (libcudart.so) for depth map computation' )
   cd ${srcdir}/build
   make DESTDIR=${pkgdir} install
   
-  #fix conflict with openmvg
+# fix conflict with openmvg
   rm ${pkgdir}/usr/lib/libvlsift.a
+  
+# install costume licenses.
+  cd ${pkgdir}/usr/share
+  install -dm755 licenses/${_name}/ 
+  mv aliceVision/LICENSE-{MPL2,MIT-libmv}.md licenses/${_name}
+
+# prune empty dirs
+  cd ${pkgdir}/usr
+  find . -type d | tac | xargs rmdir 2>/dev/null || true
 }
 # vim:set ts=2 sw=2 et:
