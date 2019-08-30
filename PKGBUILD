@@ -42,5 +42,5 @@ package() {
 	cd build
 	# shellcheck disable=SC2154
 	make DESTDIR="$pkgdir" install
-	install -Dm644 -t "$pkgdir"/usr/share/applications $_pkgname.desktop
+	install -Dm644 -t "$pkgdir"/usr/share/applications ../$_pkgname.desktop
 }
