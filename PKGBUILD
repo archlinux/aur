@@ -4,7 +4,7 @@
 # Contributor: Ernia <monghitri@aruba.it>
 
 pkgname=yad-gtk2
-pkgver=0.42.0
+pkgver=3.0
 pkgrel=1
 pkgdesc='A fork of zenity - display graphical dialogs from shell scripts or command line - for gtk2'
 url='https://github.com/v1cont/yad'
@@ -14,8 +14,8 @@ depends=('gtk2')
 provides=('yad')
 conflicts=('yad')
 makedepends=('intltool')
-source=("${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('700b11f449b63ec1bc8fecf0d2df3ed18bc7078472de0f3ee034c28e3e096eb61559529cc094c76fc8a9959bbb3e5f159d621ad9739d857b0d9b8d7ff386deaa')
+source=("${pkgname%-gtk2}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
+sha512sums=('2d97d0216c87be60a62b1e8c2e168c036b21f3d5d68f415dfe2f853cce630ca50660e988c3ba0cd4a5f287eb046abcfbbc2d046d62aaa8a8a32206b6e218467b')
 
 build() {
 	cd "${srcdir}/${pkgname%-gtk2}-${pkgver}"
