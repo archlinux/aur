@@ -4,7 +4,7 @@
 pkgbase='python-bokeh'
 pkgname=('python-bokeh' 'python2-bokeh')
 pkgver=1.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Interactive Web Plotting for Python'
 arch=('any')
 url='http://bokeh.pydata.org/'
@@ -29,12 +29,16 @@ package_python-bokeh() {
          'python-flask'
          'python-jinja'
          'python-requests'
-         'python-pandas'
 	 'python-pillow'
          'python-yaml'
          'python-tornado')
   optdepends=('python-bkcharts: server'
-	 'phantomjs: svg export')
+	 'phantomjs: svg export'
+         'nodejs: extending Bokeh'
+         'python-pandas: Pandas support'
+         'python-psutil: detailed memory logging'
+         'python-networkx: plot directly from NetworkX data'
+         'python-sphinx: support sphinx documentation')
 
   cd "${srcdir}"/bokeh-$pkgver
   python setup.py install --root="${pkgdir}" --optimize=1
@@ -46,12 +50,16 @@ package_python2-bokeh() {
          'python2-flask'
          'python2-jinja'
          'python2-requests'
-         'python2-pandas'
 	 'python2-pillow'
          'python2-yaml'
          'python2-tornado')
   optdepends=('python2-bkcharts: server'
-	 'phantomjs: svg export')
+	 'phantomjs: svg export'
+	 'nodejs: extending Bokeh'
+	 'python2-pandas: Pandas support'
+	 'python2-psutil: detailed memory logging'
+	 'python2-networkx: plot directly from NetworkX data'
+	 'python2-sphinx: support sphinx documentation')
 
   cd "${srcdir}"/bokeh-$pkgver-py2
   python2 setup.py install --root="${pkgdir}" --optimize=1
