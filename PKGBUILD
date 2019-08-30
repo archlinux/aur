@@ -2,7 +2,7 @@
 
 _name=xmlcutty
 pkgname="${_name}-bin"
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="xmlcutty is a simple tool for carving out elements from large XML files, fast - binary static"
 arch=('x86_64')
@@ -12,7 +12,7 @@ options=('!strip' '!emptydirs')
 conflicts=("${_name}")
 replaces=("${_name}")
 source=("${url}/releases/download/v${pkgver}/${_name}_${pkgver}_amd64.deb")
-sha256sums=('da247e1ed755a6bda9c1d680dc856adfe8b2ff8df93c6ac660dd9f8d3c6c078d')
+sha256sums=('dd1b7eed320a02b6f8fd68064a8317e4c0ef186b4d1053738f510de9822f4b5c')
 
 package() {
   ar x ${_name}_${pkgver}_amd64.deb
