@@ -1,18 +1,26 @@
-# Maintainer:  Adrián Pérez de Castro <aperez@igalia.com>
-# Contributor: Caleb Maclennan <caleb@alerque.com>
+# Maintainer: Adrián Pérez de Castro <aperez@igalia.com>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=sile
 pkgdesc='Modern typesetting system inspired by TeX'
-pkgver=0.9.5.1
-pkgrel=4
+pkgver=0.10.0
+pkgrel=1
 arch=('i386' 'x86_64')
 url='http://www.sile-typesetter.org/'
 license=('MIT')
 source=("https://github.com/simoncozens/sile/releases/download/v$pkgver/sile-$pkgver.tar.bz2")
-_lua_deps=('cosmo' 'expat' 'filesystem' 'lpeg' 'sec' 'zlib')
-depends=('fontconfig' 'harfbuzz>=1.2.6' 'icu' "${_lua_deps[@]/#/lua-}" 'ttf-gentium-plus')
+_lua_deps=('bit32' 'luaepnf' 'lpeg' 'cassowary' 'linenoise' 'zlib' 'cliargs'
+           'luaepnf' 'filesystem' 'repl' 'sec' 'socket' 'penlight' 'stdlib'
+           'vstruct')
+depends=('fontconfig'
+         'harfbuzz>=1.4.2'
+         "${_lua_deps[@]/#/lua-}"
+         'icu'
+         'ttf-gentium-plus')
+optdepends=('luajit')
+makedepends=('git')
 checkdepends=('lua-busted')
-sha512sums=('7d83e7737668471f637a59036abe029299148783f87e29e3dd2833d02038bf1aecdf6fc35e36569eaba2cc18f9049d49257a03af4fbab6bceea7898fcb8508d1')
+sha256sums=('f200ef6be390303c6451c1b08c4e0ffd4eb9a3966464706c48a320c4665c30bc')
 
 prepare () {
 	cd "$pkgname-$pkgver"
