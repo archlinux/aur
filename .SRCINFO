@@ -1,7 +1,7 @@
 pkgbase = python-drizzlepac
 	pkgdesc = AstroDrizzle for HST images
 	pkgver = 2.2.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.stsci.edu/scientific-community/software/drizzlepac.html
 	arch = i686
 	arch = x86_64

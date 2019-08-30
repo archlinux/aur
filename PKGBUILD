@@ -3,7 +3,7 @@ pkgbase=python-drizzlepac
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
 pkgver=2.2.6
-pkgrel=1
+pkgrel=2
 pkgdesc="AstroDrizzle for HST images"
 arch=('i686' 'x86_64')
 url="http://www.stsci.edu/scientific-community/software/drizzlepac.html"
@@ -31,6 +31,7 @@ source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname
         "https://raw.githubusercontent.com/spacetelescope/drizzlepac/master/LICENSE.txt")
 md5sums=('a4212f8f8d4c8aaaa69d4f20d6053fae'
          'b45bee901c15ab7e1ac3e5e3626d535d')
+_pyver=$(python -V | cut -c 8-10)
 
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -75,6 +76,8 @@ package_python-drizzlepac() {
     install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE.txt
     install -D -m644 -t "${pkgdir}/usr/share/doc/${pkgname}" README.md
     python setup.py install --root=${pkgdir} --prefix=/usr --optimize=1
+    rm "${pkgdir}/usr/lib/python${_pyver}/site-packages/tests/__init__.py"
+    rm "${pkgdir}/usr/lib/python${_pyver}/site-packages/tests/__pycache__"/__init__*
 }
 
 package_python-drizzlepac-doc() {
