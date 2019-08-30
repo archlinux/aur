@@ -1,0 +1,13 @@
+pkgbase = zram-init-git
+	pkgdesc = Sets up zram-based tmpfs and swap devices on boot
+	pkgver = 9.0.r0.g2cb4dc3
+	pkgrel = 1
+	url = http://en.wikipedia.org/wiki/ZRam
+	arch = any
+	license = GPL
+	depends = bash
+	source = zram-init-git::git+https://github.com/vaeth/zram-init.git#branch=master
+	md5sums = SKIP
+
+pkgname = zram-init-git
+
