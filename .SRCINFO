@@ -1,6 +1,6 @@
 pkgbase = emacs-ht-git
 	pkgdesc = The missing Emacs hash table library.
-	pkgver = 2.2r6.g8ec3eb9
+	pkgver = 2.2.r16.ga5a046e
 	pkgrel = 1
 	url = https://github.com/Wilfred/ht.el
 	arch = any

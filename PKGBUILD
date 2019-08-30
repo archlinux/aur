@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-ht-git
-pkgver=2.2r6.g8ec3eb9
+pkgver=2.2.r16.ga5a046e
 pkgrel=1
 pkgdesc="The missing Emacs hash table library."
 arch=('any')
@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "ht.el"
-  git describe --tags | sed 's+-+r+'| tr - .
+  git describe --tags | sed 's+-+.r+'| tr - .
 }
 
 package() {
