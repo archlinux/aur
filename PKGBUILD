@@ -4,7 +4,7 @@
 
 pkgbase=opencv3-opt
 pkgname=($pkgbase $pkgbase-samples)
-pkgver=3.4.6
+pkgver=3.4.7
 pkgrel=1
 pkgdesc="Open Source Computer Vision Library (Legacy Version & /opt directory version)"
 arch=(x86_64)
@@ -20,8 +20,8 @@ optdepends=('opencv-samples: samples'
             'python-numpy: Python interface')
 source=("opencv-$pkgver.tar.gz::https://github.com/opencv/opencv/archive/$pkgver.zip"
         "opencv_contrib-$pkgver.tar.gz::https://github.com/opencv/opencv_contrib/archive/$pkgver.tar.gz")
-sha256sums=('ca2dbe3008471b059d9f32a176ef2195eaa8a4b357ef1afaa5bfd255d501d2ec'
-            '985f7cffbd2bef0c3654eeb7fb0cde0bf36668da8bf2a66049958b870a9b5c0d')
+sha256sums=('4f7668a83828e0b290b8da999305b7ee30156898de00fe4db524ccf71edaf148'
+            '5e3ba5fbe0ff3ab7462d42c08501f8c15d3e46b0684aee281f735345e1353cb4')
 
 prepare() {
   mkdir -p build
@@ -48,7 +48,8 @@ build() {
     -DOPENCV_EXTRA_MODULES_PATH="$srcdir/opencv_contrib-$pkgver/modules" \
     -DLAPACK_LIBRARIES="/usr/lib/liblapack.so;/usr/lib/libblas.so;/usr/lib/libcblas.so" \
     -DLAPACK_CBLAS_H="/usr/include/cblas.h" \
-    -DLAPACK_LAPACKE_H="/usr/include/lapacke.h"
+    -DLAPACK_LAPACKE_H="/usr/include/lapacke.h" \
+    -DEIGEN_INCLUDE_PATH=`pkg-config --cflags-only-I eigen3 | sed "s/-I//"`
   make
 }
 
