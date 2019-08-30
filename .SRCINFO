@@ -1,0 +1,17 @@
+pkgbase = madx-git
+	pkgdesc = Accelerator Optics simulation code, git master version
+	pkgver = r6826.f631c86e
+	pkgrel = 1
+	url = http://cern.ch/mad
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = cmake
+	depends = gcc-libs
+	depends = libx11
+	provides = madx
+	conflicts = madx-dev
+
+pkgname = madx-git
+
