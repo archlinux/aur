@@ -1,0 +1,12 @@
+pkgbase = pomobar
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/loopzen/pomobar
+	arch = any
+	license = unknown
+	depends = python
+	source = git+https://github.com/loopzen/pomobar
+	md5sums = SKIP
+
+pkgname = pomobar
+
