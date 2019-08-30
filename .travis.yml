@@ -13,13 +13,6 @@ cache:
   - alice-vision
   - MeshSDFilter
   - nanoflann
-  - osi_clp
-  - ute_lib
-
-addons:
-  apt:
-    packages:
-    - moreutils
 
 services:
 - docker
@@ -35,12 +28,9 @@ arch:
   - ccache
   - moreutils
   - cuda
-  - openblas-lapack
   - opengv-git
   - flann
   - coin-or-lemon
-  - gcc-fortran
-  - gsl
   - ceres-solver
   - geogram
   - popsift
@@ -82,15 +72,15 @@ arch:
   - ccache -s
   - ccache -z
   - |
-    sudo pacman -U --noconfirm /var/cache/pacman/pkg/magma-2.5.0-2-x86_64.pkg.tar.xz || {
-      git clone https://aur.archlinux.org/magma.git
-      pushd magma
-      git checkout 1e3ec19ca54c3
+    sudo pacman -U --noconfirm /var/cache/pacman/pkg/magma-2.5.0-1-x86_64.pkg.tar.xz || (
+      git clone https://github.com/bartoszek/AUR-magma.git magma
+      cd magma
       timeout 35m makepkg -s --noconfirm > >(ts -s '[%.T]') || { makepkg -ceo; exit 314; }
-      cp magma-2.5.0-2-x86_64.pkg.tar.xz /var/cache/pacman/pkg
-      sudo pacman -U /var/cache/pacman/pkg/magma-2.5.0-2-x86_64.pkg.tar.xz
+      cp magma-2.5.0-1-x86_64.pkg.tar.xz /var/cache/pacman/pkg
+      sudo pacman -U /var/cache/pacman/pkg/magma-2.5.0-1-x86_64.pkg.tar.xz
       #sudo pacman -S magma
-    }
+    )
+  - yay -S uncertainty-framework --noconfirm --needed --useask
   - timeout 35m makepkg -s --noconfirm > >(ts -s '%.T'); _makepkg_return=$?
   - sudo pacman -Sc --noconfirm
   - ccache -s
