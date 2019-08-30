@@ -1,0 +1,15 @@
+pkgbase = kanshi
+	pkgdesc = Dynamic output configuration for Wayland WMs
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://wayland.emersion.fr/kanshi/
+	arch = x86_64
+	license = MIT
+	makedepends = meson
+	makedepends = scdoc
+	depends = wayland
+	source = https://github.com/emersion/kanshi/releases/download/v1.0.0/kanshi-1.0.0.tar.gz
+	sha256sums = 90b200107b32b72259d60bfc08b12c782b13e706b7e617d058df292506fdbf90
+
+pkgname = kanshi
+
