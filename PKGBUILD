@@ -1,7 +1,7 @@
 # Maintainer: Slavi Pantaleev <slavi at devture.com>
 
 pkgname=redshift-scheduler
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Rule-based screen temperature changer (like redshift)"
 arch=('any')
