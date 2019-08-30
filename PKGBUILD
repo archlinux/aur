@@ -1,7 +1,7 @@
 # Maintainer: Javier Tia <javier dot tia at gmail dot com>
 
 pkgname=xmlcutty
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc='Select elements from large XML files, fast'
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ options=('!strip' '!emptydirs')
 conflicts=("${pkgname}-bin")
 replaces=("${pkgname}-bin")
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('df070332645e5cd2a80d63311d943aa0bd34c48cca7fa13eac425d559d14d84e')
+sha256sums=('2c7eb9fa4e70cae8d6df1982e6c7b98ed99236ca94abb3147bbb7f5984e9a329')
 _gourl='github.com/miku/xmlcutty/cmd/xmlcutty'
 
 prepare() {
