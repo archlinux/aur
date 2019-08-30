@@ -1,6 +1,6 @@
 pkgbase = mod_gnutls
 	pkgdesc = Apache module for the GnuTLS library
-	pkgver = 0.8.3
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://mod.gnutls.org/
 	install = mod_gnutls.install
@@ -10,10 +10,11 @@ pkgbase = mod_gnutls
 	depends = apache
 	depends = gnutls
 	optdepends = aprmemcache
-	source = http://mod.gnutls.org/downloads/mod_gnutls-0.8.3.tar.bz2
-	source = http://mod.gnutls.org/downloads/mod_gnutls-0.8.3.tar.bz2.asc
+	source = http://mod.gnutls.org/downloads/mod_gnutls-0.9.0.tar.bz2
+	source = http://mod.gnutls.org/downloads/mod_gnutls-0.9.0.tar.bz2.asc
 	validpgpkeys = B471C74C72A7F6EC9FFA46E361459C5287768C53
-	sha256sums = 3517dddef04e0cb64c4805799d1b749bb6273f99c3ac33634677210fbe60292b
+	validpgpkeys = E4D3138FE2D9F2FA8152FD91EEA726CE21235A58
+	sha256sums = 6b0d8d8add73012268307719146789b48533cde4a8ca4bbd53c1c9c579d440be
 	sha256sums = SKIP
 
 pkgname = mod_gnutls

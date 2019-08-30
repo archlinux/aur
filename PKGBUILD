@@ -4,7 +4,7 @@
 # Contributor: David Zaragoza <david@zaragoza.com.ve>
 
 pkgname=mod_gnutls
-pkgver=0.8.3
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Apache module for the GnuTLS library"
 arch=('i686' 'x86_64')
@@ -14,11 +14,13 @@ depends=('apache' 'gnutls')
 optdepends=('aprmemcache')
 install=${pkgname}.install
 source=("http://mod.gnutls.org/downloads/${pkgname}-${pkgver}.tar.bz2"{,.asc})
-sha256sums=('3517dddef04e0cb64c4805799d1b749bb6273f99c3ac33634677210fbe60292b'
+sha256sums=('6b0d8d8add73012268307719146789b48533cde4a8ca4bbd53c1c9c579d440be'
             'SKIP')
 
 #Thomas Klute <thomas2.klute@uni-dortmund.de>
-validpgpkeys=('B471C74C72A7F6EC9FFA46E361459C5287768C53')
+#Fiona Klute <fiona.klute@gmx.de>
+validpgpkeys=('B471C74C72A7F6EC9FFA46E361459C5287768C53'
+              'E4D3138FE2D9F2FA8152FD91EEA726CE21235A58')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
