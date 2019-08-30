@@ -1,0 +1,10 @@
+post_install() {
+  echo "If you'd like to instead use a different instance (for example, one run"
+  echo "internally by your company), you can specify the --server option."
+  echo
+  echo "To make that permanent, you can create a config file with contents similar to:"
+  echo
+  echo "  {"server": "https://fluffy.my.corp"}"
+  echo
+  echo "This file can be placed at either /etc/fluffy.json or ~/.config/fluffy.json."
+}

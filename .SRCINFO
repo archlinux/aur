@@ -1,0 +1,24 @@
+pkgbase = fluffy-cli
+	pkgdesc = fluffy: a file sharing web app that doesn't suck.
+	pkgver = v1.28.0
+	pkgrel = 1
+	url = https://github.com/chriskuehl/fluffy
+	install = fluffy-cli.install
+	arch = x86_64
+	license = MIT
+	license = custom
+	makedepends = python
+	depends = python
+	depends = python-requests
+	provides = fput
+	provides = fpb
+	conflicts = fput
+	conflicts = fpb
+	source = fluffy::git+https://github.com/chriskuehl/fluffy#tag=v1.28.0
+	source = config
+	sha256sums = SKIP
+	sha256sums = d07312009d79dd92164fa0f37597f2721abcc01089628d85f20fe9fb2ac05f3d
+
+pkgname = fluffy-cli
+	install = fluffy-cli.install
+
