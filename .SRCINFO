@@ -1,0 +1,18 @@
+pkgbase = thinglaunch-git
+	pkgdesc = A simple command and password prompter for X11
+	pkgver = 2.4.r11.gd67511b
+	pkgrel = 1
+	url = http://r-36.net/scm/thinglaunch/
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = ISC
+	makedepends = git
+	depends = libx11
+	provides = thinglaunch
+	source = thinglaunch-git::git://r-36.net/thinglaunch
+	md5sums = SKIP
+
+pkgname = thinglaunch-git
+
