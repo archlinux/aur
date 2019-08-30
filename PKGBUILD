@@ -17,6 +17,7 @@
 
 pkgname=magma
 pkgver=2.5.1
+((TRAVIS)) && pkgver=2.5.0 # downgrade to prevernt time out.
 pkgrel=1
 pkgdesc="Provides a dense linear algebra library similar to LAPACK but for heterogeneous/hybrid architectures, starting with current 'Multicore+GPU' systems (with CUDA)"
 arch=('x86_64')
@@ -29,6 +30,7 @@ makedepends=('gcc-fortran' 'cmake' 'cuda')
 options=('staticlibs')
 source=("http://icl.cs.utk.edu/projectsfiles/${pkgname}/downloads/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('ce32c199131515336b30c92a907effe0c441ebc5c5bdb255e4b06b2508de109f')
+((TRAVIS)) && sha256sums=('4fd45c7e46bd9d9124253e7838bbfb9e6003c64c2c67ffcff02e6c36d2bcfa33')
 
 _CMAKE_FLAGS=( -DCMAKE_BUILD_TYPE=Release
                -DCMAKE_INSTALL_PREFIX=/opt/magma )
@@ -69,8 +71,10 @@ package() {
   cp -ru ${srcdir}/magma-${pkgver}/example/* ${pkgdir}/opt/magma/example/
   mkdir -p ${pkgdir}/opt/magma/testing
   cp -ru ${srcdir}/magma-${pkgver}/testing/* ${pkgdir}/opt/magma/testing/
-  mkdir -p ${pkgdir}/usr/lib/
-  mv ${pkgdir}/opt/magma/lib/pkgconfig ${pkgdir}/usr/lib/
+  ((TRAVIS)) || {
+    mkdir -p ${pkgdir}/usr/lib/
+    mv ${pkgdir}/opt/magma/lib/pkgconfig ${pkgdir}/usr/lib/
+  }
   mkdir -p ${pkgdir}/usr/share/licenses/magma
   cp ${srcdir}/magma-${pkgver}/COPYRIGHT ${pkgdir}/usr/share/licenses/magma/LICENSE
 }
