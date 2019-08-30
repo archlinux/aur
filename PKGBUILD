@@ -8,7 +8,7 @@ pkgname=('nvidia-full-beta'
          'nvidia-settings-full-beta'
          'lib32-nvidia-utils-full-beta'
          'lib32-opencl-nvidia-full-beta')
-pkgver=435.17
+pkgver=435.21
 pkgrel=1
 pkgdesc="Full NVIDIA driver package for Arch's official 'linux' package (drivers, utilities, and libraries) (beta version)"
 arch=('x86_64')
@@ -22,8 +22,8 @@ source=("https://us.download.nvidia.com/XFree86/Linux-${CARCH}/${pkgver}/${_pkg}
         'nvidia-utils-full-beta.sysusers'
         'FS62142.patch'
         'nvidia-settings-full-beta-change-desktop-paths.patch')
-sha256sums=('a71cecb5b8f0af35ed9a2d4023652a0537271457ef570c5f21dccd5067d9e9a6'
-            '089d6dc247c9091b320c418b0d91ae6adda65e170934d178cdd4e9bd0785b182'
+sha256sums=('fac7c02ccd35c7043f4e1add0224a7380d0bd1e4aa15ca6bc3012c758ec1776c'
+            '5519cdb420a45c15030f99c5c8c73eff322dc24b55d20e0167f0f5e97ebf0a97'
             'd8d1caa5d72c71c6430c2a0d9ce1a674787e9272ccce28b9d5898ca24e60a167'
             'c961006882afb691410c017c239e2c2ef61badb88f15735d37112b513ef0a99d'
             '633bf69c39b8f35d0e64062eb0365c9427c2191583f2daa20b14e51772e8423a')
@@ -165,7 +165,8 @@ package_nvidia-utils-full-beta() {
     install -D -m755 "libnvidia-glvkspirv.so.${pkgver}" -t "${pkgdir}/usr/lib"
     
     # Vulkan ICD
-    install -D -m644 nvidia_icd.json -t "${pkgdir}/usr/share/vulkan/icd.d"
+    install -D -m644 nvidia_icd.json    -t "${pkgdir}/usr/share/vulkan/icd.d"
+    install -D -m644 nvidia_layers.json -t "${pkgdir}/usr/share/vulkan/implicit_layer.d"
     
     # VDPAU
     install -D -m755 "libvdpau_nvidia.so.${pkgver}" -t "${pkgdir}/usr/lib/vdpau"
