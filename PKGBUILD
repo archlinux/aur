@@ -1,4 +1,4 @@
-# Maintainer: Ernesto Castellotti <erny.castell@gmail.com>
+# Maintainer: Antonino Maniscalco <antomani103@pm.me>
 
 pkgbase=('vbar')
 pkgname=('vbar-i3wm' 'vbar-dwm')
