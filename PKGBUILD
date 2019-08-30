@@ -1,26 +1,22 @@
-# Maintainer: keylo99 <keylo99official@gmail.com>
+# Maintainer: Joost Bremmer <joost@madeofmagicandwires.online>
+# Contributor: keylo99 <keylo99official@gmail.com>
 
-pkgname=pkgtop-git
-pkgdesc="Interactive package manager & resource monitor"
-pkgver=r340.10ff101
+pkgname=pkgtop
+pkgdesc="Interactive package manager & resource monitor (stable version)"
+pkgver=1.3
 pkgrel=1
 arch=('any')
 url="https://github.com/keylo99/pkgtop"
 license=('GPL3')
-depends=('git')
 makedepends=('go')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
-source=('git://github.com/keylo99/pkgtop.git#branch=master')
-sha256sums=('SKIP')
+provides=("${pkgname}")
+conflicts=("${pkgname}-git")
+source=("${pkgname}-${pkgver}.zip::https://github.com/keylo99/${pkgname}/archive/${pkgver}.zip")
+sha256sums=('67fa4c6582c13d7a34c19b4f620db7c68e5ef2b78a6ebb077b01f9d9fe5c01ac')
 
-pkgver() {
-  cd "$srcdir/${pkgname%-git}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
 
 build() {
-  cd "$srcdir/${pkgname%-git}/src"
+  cd "$srcdir/${pkgname}-${pkgver}/src"
   go get -d ./...
   go build \
     -gcflags "all=-trimpath=$PWD" \
@@ -30,6 +26,6 @@ build() {
 }
 
 package() {
-  cd "$srcdir/${pkgname%-git}/src"
+  cd "$srcdir/${pkgname}-${pkgver}/src"
   install -Dm755 "${pkgname%-git}" "$pkgdir/usr/local/bin/${pkgname%-git}"
 }
