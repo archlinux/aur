@@ -1,17 +1,16 @@
-# Maintainer: Clayton Craft <clayton at craftyguy dot net>
+# Maintainer: Dario Ostuni <dario.ostuni@gmail.com>
+# Contributor: Clayton Craft <clayton at craftyguy dot net>
 
 pkgname=python-setuptools-rust
-pkgver=0.10.5
+pkgver=0.10.6
 pkgrel=1
 pkgdesc="Compile and distribute Python extensions written in rust as easily as if they were written in C."
 arch=('any')
 license=('MIT')
 url="https://github.com/PyO3/setuptools-rust"
-depends=('python' 'python-setuptools' 'python-semantic-version')
-makedepends=('python-setuptools')
-
+depends=('python' 'python-setuptools' 'python-semantic-version' 'python-toml')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/PyO3/setuptools-rust/archive/v$pkgver.tar.gz")
-sha512sums=('a6514c316dfb83f857488740f588803f76fd6984bdf56efb621f635e8342a57c05a12db0f0a20df6f597eedce1619c13fc34ff83a33110136bcad18b4214f64a')
+sha384sums=('f9c2f7b86c5b88abdf6bd162f2d80029639d0000744a6d830b3a7c63ad54f2571c70a95902b56abef1db390b3f24203f')
 
 package() {
   cd setuptools-rust-"$pkgver"
