@@ -1,105 +1,98 @@
 # Maintainer: Sanpi <sanpi+aur@homecomputing.fr>
 pkgname=rpcs3
-pkgver=0.0.5
-pkgrel=7
+pkgver=0.0.7
+pkgrel=1
 pkgdesc='Open-source Sony PlayStation 3 Emulator'
 arch=('x86_64')
 url='https://rpcs3.net/'
 license=('GPL2')
-depends=('ffmpeg' 'glew' 'openal' 'qt5-base' 'vulkan-icd-loader' 'yaml-cpp')
+depends=('ffmpeg' 'glew' 'openal' 'qt5-base' 'vulkan-icd-loader')
 makedepends=('cmake' 'boost')
 options=('!strip')
 source=("https://github.com/RPCS3/$pkgname/archive/v$pkgver.tar.gz"
-    'GSL.tar.gz::https://github.com/Microsoft/GSL/archive/fc5fce4f4f8d64fbda523d1b0d55115f5ca68774.tar.gz'
-    'cereal.tar.gz::https://github.com/USCiLab/cereal/archive/v1.2.0.tar.gz'
+    'GSL.tar.gz::https://github.com/Microsoft/GSL/archive/1995e86d1ad70519465374fb4876c6ef7c9f8c61.tar.gz'
+    'cereal.tar.gz::https://github.com/USCiLab/cereal/archive/42a45b6e15fcbd1a3d65b033f5d4d0b2ef6c023d.tar.gz'
     'ffmpeg.tar.gz::https://github.com/hrydgard/ppsspp-ffmpeg/archive/7b7ae7b06705bf5539b222e77c779d4b649b53ef.tar.gz'
-    'hidapi.tar.gz::https://github.com/RPCS3/hidapi/archive/ca39ce8939e490ffcadb38ff978447aac1c17662.tar.gz'
-    'libpng.tar.gz::https://github.com/RPCS3/libpng/archive/1dcba4d6eb1bad9500be877cbd1b0442fa92cfa6.tar.gz'
-    'pugixml.tar.gz::https://github.com/RPCS3/pugixml/archive/257fbb4e1b09b0f1a6b2020ae2db190b87c8f9c7.tar.gz'
-    'zlib.tar.gz::https://github.com/madler/zlib/archive/v1.2.11.tar.gz'
-    'Vulkan-LoaderAndValidationLayers.tar.gz::https://github.com/KhronosGroup/Vulkan-LoaderAndValidationLayers/archive/28d93dfc0f24d65237fd773d74a284bf6e399222.tar.gz'
-    'glslang.tar.gz::https://github.com/KhronosGroup/glslang/archive/e22e3473958e9bf3536f6c2133d66e5808816b78.tar.gz'
-    'asmjit.tar.gz::https://github.com/kobalicek/asmjit/archive/673dcefaa048c5f5a2bf8b85daf8f7b9978d018a.tar.gz'
-    'llvm.tar.gz::https://github.com/llvm-mirror/llvm/archive/4423e351176a92975739dd4ea43c2ff5877236ae.tar.gz'
-    'optional.tar.gz::https://github.com/akrzemi1/Optional/archive/f27e79084a9176672ed1eae50b3397fa8035d50d.tar.gz'
-    'git-version.h'
-    'rpcs3.patch')
+    'hidapi.tar.gz::https://github.com/RPCS3/hidapi/archive/9220f5e77c27b8b3717b277ec8d3121deeb50242.tar.gz'
+    'libpng.tar.gz::https://github.com/RPCS3/libpng/archive/eddf9023206dc40974c26f589ee2ad63a4227a1e.tar.gz'
+    'libusb.tar.gz::https://github.com/RPCS3/libusb/archive/7cfa00e9d723f10167b4d71bceebf2b4b2cbd70e.tar.gz'
+    'pugixml.tar.gz::https://github.com/RPCS3/pugixml/archive/8bf806c035373bd0723a85c0820cfd5c804bf6cd.tar.gz'
+    'xxhash.tar.gz::https://github.com/Cyan4973/xxHash/archive/7cc9639699f64b750c0b82333dced9ea77e8436e.tar.gz'
+    'yaml-cpp.tar.gz::https://github.com/jbeder/yaml-cpp/archive/eca9cfd64899525d0a61abb0553849676a0fe511.tar.gz'
+    'zlib.tar.gz::https://github.com/madler/zlib/archive/cacf7f1d4e3d44d871b605da3b647f07d718623f.tar.gz'
+    'glslang.tar.gz::https://github.com/KhronosGroup/glslang/archive/c11e3156af2297f89a23c8db3f5e2323733ee556.tar.gz'
+    'asmjit.tar.gz::https://github.com/kobalicek/asmjit/archive/fc251c914e77cd079e58982cdab00a47539d7fc5.tar.gz'
+    'llvm.tar.gz::https://github.com/llvm-mirror/llvm/archive/b860b5e8f4ee90d6eb567d83ce8ed1a3e71e496f.tar.gz'
+    'git-version.h')
 
-sha256sums=('a33a208076e7bc31e2a4023a270e4769c1ae13463fe16a4fcbe3ad7915fba7b0'
-            '0699d2fbfff96f09b170c5d5d93a7d782bf028a4fbe3c7cc9c5edfedf1124b2d'
-            '1ccf3ed205a7a2f0d6a060415b123f1ae0d984cd4435db01af8de11a2eda49c1'
+sha256sums=('11a57be2d4b732bcb7bd5bd315aca0591a84f63cd25f59256e4b6dc7dae58c87'
+            '0c4cc26e7198bdc2aaac290c113d55dcd0018e2c8f4f0eec8ec986b4680fa14a'
+            '217b49cf4a00308b0344cddaa4dc3f8404343e3b05b93f99e33c92369764bcac'
             '1596acf40444d17e17ef574b9ad8c7f2de9cbc429273da0b90883bffdb493071'
-            '408e65ce23481bdb289f01930602afc36c238e41ffcc7e4915fb8457799c24bb'
-            'c8fbec2f447b2e09b68b6970ee8c3e5cdd5775aff9ec1e2db6ed5f06fc273312'
-            'b5a1f24be920f86c76503a1e856da5b86fdeb98b5a4e3f30c929af9c5fdc0d6c'
-            '629380c90a77b964d896ed37163f5c3a34f6e6d897311f1df2a7016355c45eff'
-            '24417e030a734557b2e424d2446602c8efe5e8cc306e7da68fb3812d125e5afc'
-            'dbb08ec1a3d73c997fe5226320192aaf0cf881412e0956a3bd9aefd7881c3e76'
-            '9c59802895a7812d6ce63f25abf9ad75fe651ab7b550d79cd266fee34bfedfeb'
-            '16dc99ccbe614bba047f35f4338a23fc0f9e071d4fcca65dc4fd211ecf2a7254'
-            '0e7fc73bf95be5a8fe92373c68dab07b09646fba7d9b76eb047a1b665f4e45c6'
-            '4602a47515c0a976da699931358a25e9b9f3c953d2abff9c862c6be9ba2708a6'
-            '70bfa22539a9c5aa85ae4e23a9be7e933897d187518c5c20e35ec8938d517585')
+            'fffe45442204328bb496cf746be8586b1ac120d3f4e18531b2af04df99b603a0'
+            'b1484ff1ae3711084b6dd8a880d0e560fa1c5f6d1c5a87a04a207c4bc3d315af'
+            '6fb6de602be1ca9e15be826378c326dcc219b91ce8f41f522f70b86021bff62b'
+            'c2a717088b6377fff8c28b31f25fdf30dee78ea4b5c5261c884416fac63536b9'
+            '0d1e2b4ae15f98acc49084e23ba94853dba2b0f654865ecedb1072b3959421bf'
+            'e1f0a2a525cff2f82d256b967d22b9a6ce81056f6d42ae7216311d7707ea11d5'
+            '6d4d6640ca3121620995ee255945161821218752b551a1a180f4215f7d124d45'
+            '60ee8f0301eef76cfa913da718e31e3650a903e8ea88852ef88189eff0427a6b'
+            'fc804065cedaa0c6432df62c6effbf1c387907faf089e82794dd6d5429d6c51f'
+            'cbfc66ff2850afcc72e232446c73ebd781a32d5bced4b9aecc5b52453bb5543a'
+            'd58267c0c78f89db3c1fedcd30d4d5447d70bba4a6b9e067e25bc75ac030a96b')
 
 prepare()
 {
     cd "$pkgname-$pkgver"
 
     rmdir 3rdparty/GSL
-    ln --symbolic --force ../../GSL-fc5fce4f4f8d64fbda523d1b0d55115f5ca68774/ 3rdparty/GSL
+    ln --symbolic --force ../../GSL-1995e86d1ad70519465374fb4876c6ef7c9f8c61/ 3rdparty/GSL
     rmdir 3rdparty/cereal
-    ln --symbolic --force ../../cereal-1.2.0 3rdparty/cereal
+    ln --symbolic --force ../../cereal-42a45b6e15fcbd1a3d65b033f5d4d0b2ef6c023d 3rdparty/cereal
     rmdir 3rdparty/ffmpeg
     ln --symbolic --force ../../ppsspp-ffmpeg-7b7ae7b06705bf5539b222e77c779d4b649b53ef 3rdparty/ffmpeg
     rmdir 3rdparty/hidapi
-    ln --symbolic --force ../../hidapi-ca39ce8939e490ffcadb38ff978447aac1c17662 3rdparty/hidapi
+    ln --symbolic --force ../../hidapi-9220f5e77c27b8b3717b277ec8d3121deeb50242 3rdparty/hidapi
     rmdir 3rdparty/libpng
-    ln --symbolic --force ../../libpng-1dcba4d6eb1bad9500be877cbd1b0442fa92cfa6 3rdparty/libpng
-    rmdir 3rdparty/Optional
-    ln --symbolic --force ../../Optional-f27e79084a9176672ed1eae50b3397fa8035d50d 3rdparty/Optional
+    ln --symbolic --force ../../libpng-eddf9023206dc40974c26f589ee2ad63a4227a1e 3rdparty/libpng
+    rmdir 3rdparty/libusb
+    ln --symbolic --force ../../libusb-7cfa00e9d723f10167b4d71bceebf2b4b2cbd70e 3rdparty/libusb
     rmdir 3rdparty/pugixml
-    ln --symbolic --force ../../pugixml-257fbb4e1b09b0f1a6b2020ae2db190b87c8f9c7 3rdparty/pugixml
+    ln --symbolic --force ../../pugixml-8bf806c035373bd0723a85c0820cfd5c804bf6cd 3rdparty/pugixml
+    rmdir 3rdparty/xxHash
+    ln --symbolic --force ../../xxHash-7cc9639699f64b750c0b82333dced9ea77e8436e 3rdparty/xxHash
+    rmdir 3rdparty/yaml-cpp
+    ln --symbolic --force ../../yaml-cpp-eca9cfd64899525d0a61abb0553849676a0fe511 3rdparty/yaml-cpp
     rmdir 3rdparty/zlib
-    ln --symbolic --force ../../zlib-1.2.11 3rdparty/zlib
-    rmdir Vulkan/Vulkan-LoaderAndValidationLayers
-    ln --symbolic --force ../../Vulkan-LoaderAndValidationLayers-28d93dfc0f24d65237fd773d74a284bf6e399222 Vulkan/Vulkan-LoaderAndValidationLayers
+    ln --symbolic --force ../../zlib-cacf7f1d4e3d44d871b605da3b647f07d718623f 3rdparty/zlib
     rmdir Vulkan/glslang
-    ln --symbolic --force ../../glslang-e22e3473958e9bf3536f6c2133d66e5808816b78 Vulkan/glslang
+    ln --symbolic --force ../../glslang-c11e3156af2297f89a23c8db3f5e2323733ee556 Vulkan/glslang
     rmdir asmjit
-    ln --symbolic --force ../asmjit-673dcefaa048c5f5a2bf8b85daf8f7b9978d018a asmjit
+    ln --symbolic --force ../asmjit-fc251c914e77cd079e58982cdab00a47539d7fc5 asmjit
     rmdir llvm
-    ln --symbolic --force ../llvm-4423e351176a92975739dd4ea43c2ff5877236ae llvm
+    ln --symbolic --force ../llvm-b860b5e8f4ee90d6eb567d83ce8ed1a3e71e496f llvm
 
-    if [ ! -d build ]
-    then
-        mkdir build
-    fi
-
-    patch -Np1 -i "${srcdir}/rpcs3.patch"
-
-    cd build
-
-    cmake .. \
+    cmake . \
         -DCMAKE_BUILD_TYPE='Release' \
         -DCMAKE_INSTALL_PREFIX='/usr' \
-        -DCMAKE_EXE_LINKER_FLAGS='-ldl -lyaml-cpp' \
+        -DCMAKE_EXE_LINKER_FLAGS='-ldl' \
         -DCMAKE_SKIP_RPATH='ON' \
         -DUSE_SYSTEM_FFMPEG='ON' \
         -DUSE_SYSTEM_LIBPNG='ON'
 
-    cp ../../git-version.h ../rpcs3/
+    cp ../../git-version.h rpcs3/
 }
 
 build()
 {
-    cd "$pkgname-$pkgver/build"
+    cd "$pkgname-$pkgver"
 
     make
 }
 
 package()
 {
-    cd "$pkgname-$pkgver/build"
+    cd "$pkgname-$pkgver"
 
     make DESTDIR="$pkgdir" install
 
