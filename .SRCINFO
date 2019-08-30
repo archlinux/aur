@@ -1,0 +1,17 @@
+pkgbase = wharfer-git
+	pkgdesc = wrapper around docker
+	pkgver = v0.5.1.r4.gbfcdcb0
+	pkgrel = 1
+	url = https://github.com/ad-freiburg/wharfer
+	arch = x86_64
+	license = APACHE
+	makedepends = go-pie
+	makedepends = git
+	depends = docker
+	provides = wharfer
+	conflicts = wharfer
+	source = wharfer-git::git+https://github.com/ad-freiburg/wharfer
+	md5sums = SKIP
+
+pkgname = wharfer-git
+
