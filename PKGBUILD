@@ -1,5 +1,5 @@
 pkgname=mingw-w64-sz
-pkgver=2.1.5.3
+pkgver=2.1.6.0
 pkgrel=1
 pkgdesc="Error-bounded Lossy Data Compressor (for floating-point/integer datasets) (mingw-w64)"
 url="https://collab.cels.anl.gov/display/ESR/SZ"
@@ -9,7 +9,7 @@ depends=('mingw-w64-zstd')
 makedepends=('mingw-w64-cmake')
 options=('!buildflags' '!strip' 'staticlibs')
 source=("https://github.com/disheng222/SZ/archive/v${pkgver}.tar.gz")
-sha256sums=('d73e024da2095612c27a815fd6eb31cca24f566c9cdd6add74eabc08bba7d70d')
+sha256sums=('6718434f2a5c669ce6b9715e43b5bdfc0e4d498ce04fd848d6798bcccd822dad')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
