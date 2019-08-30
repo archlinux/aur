@@ -3,8 +3,8 @@
 _pkgname=zram-init
 pkgname=${_pkgname}-git
 pkgver=9.0.r0.g2cb4dc3
-pkgrel=1
-pkgdesc="Sets up zram-based tmpfs and swap devices on boot"
+pkgrel=2
+pkgdesc="Setup zram-based tmpfs and swap devices on boot"
 arch=('any')
 url="http://en.wikipedia.org/wiki/ZRam"
 license=('GPL')
