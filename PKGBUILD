@@ -1,7 +1,6 @@
-#!/bin/bash
-# shellcheck disable=SC2034,SC2164
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 # Contributor: Mike Swanson <mikeonthecomputer@gmail.com>
+# shellcheck shell=bash disable=SC2034,SC2164
 _pkgname=dhewm3
 pkgname=$_pkgname-git
 pkgver=1.5.1_PRE1.r0.g3a763fc
@@ -40,7 +39,8 @@ build() {
 }
 
 package() {
+	cd build
 	# shellcheck disable=SC2154
-	make -C build DESTDIR="$pkgdir" install
+	make DESTDIR="$pkgdir" install
 	install -Dm644 -t "$pkgdir"/usr/share/applications $_pkgname.desktop
 }
