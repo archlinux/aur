@@ -10,7 +10,7 @@ pkgbase = kanshi-git
 	makedepends = ninja
 	makedepends = scdoc
 	makedepends = wayland
-	depends = wlroots-git
+	depends = wlroots>=0.7.0
 	provides = kanshi
 	conflicts = kanshi
 	source = kanshi::git+https://github.com/emersion/kanshi.git
