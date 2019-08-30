@@ -1,16 +1,15 @@
 # Maintainer: Vasanth Developer <vasanth@vasanthdeveloper.com>
 pkgname=samaya-git
-pkgver=0.0.0
+_pkgname="samaya"
+pkgver=cf3bd7d
 pkgrel=1
 pkgdesc="A time synchronization program that uses HTTP protocol"
 url="https://github.com/vasanthdeveloper/samaya"
 license=('GPL')
-# source=("${pkgname}-${pkgver}.tar.gz::https://github.com/vasanthdeveloper/samaya/archive/v${pkgver}.tar.gz")
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/vasanthdeveloper/samaya/archive/mainline.zip")
-
-# Uncomment this line when downloading a package from local server for testing purposes
-# source=("${pkgname}-${pkgver}.tar.gz::http://localhost:8080/archive.tar.gz")
-
+conflicts=('samaya')
+provides=('samaya')
+source=("samaya::git+https://github.com/vasanthdeveloper/samaya.git#branch=mainline")
+md5sums=("SKIP")
 depends=('systemd')
 arch=(
     'i686'
@@ -21,11 +20,14 @@ makedepends=(
     'make'
 )
 build() {
-    cd "$srcdir/samaya-mainline"
-    make
+    if [ -d "$(go env GOPATH)/src/vasanthdeveloper.com/samaya" ]; then
+        cd "$(go env GOPATH)/src/vasanthdeveloper.com/samaya" && git pull
+    else
+        mkdir -p "$(go env GOPATH)/src/vasanthdeveloper.com"
+        git clone --single-branch --branch mainline https://github.com/vasanthdeveloper/samaya.git "$(go env GOPATH)/src/vasanthdeveloper.com/samaya"
+    fi
+    cd "$srcdir/samaya" && make
 }
 package() {
-    cd "$srcdir/samaya-mainline"
-    make DESTDIR="$pkgdir" PREFIX=/usr install
+    cd "$srcdir/samaya" && make DESTDIR="$pkgdir" PREFIX=/usr install
 }
-md5sums=('4bd7eb42a9504cd5874e30d4c2d5ebdf')
