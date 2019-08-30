@@ -1,96 +1,96 @@
 # Maintainer: edward-p <edward At edward-p Dot xyz>
 
-_install_name=proxmark3
-pkgbase=proxmark3-iceman-git
-pkgname=($pkgbase'-generic' $pkgbase'-rdv4')
-pkgver=6911.bd7c1ccf
+pkgname=proxmark3-iceman-git
+pkgver=6915.bfec7648
 pkgrel=1
-pkgdesc='A powerful general purpose RFID tool, the size of a deck of cards, designed to snoop, listen and emulate everything from Low Frequency (125kHz) to High Frequency (13.56MHz) tags. (iceman fork)'
+pkgdesc=pkgdesc='RRG / Iceman repo - Proxmark3 RDV4.0 and other Proxmark3 platforms.'
 arch=('x86_64')
 url='https://github.com/RfidResearchGroup/proxmark3'
 license=('GPL2')
-depends=('libusb' 'perl' 'qt5-base')
+depends=('libusb' 'perl')
 makedepends=('git' 'arm-none-eabi-gcc' 'arm-none-eabi-newlib')
 provides=('proxmark3' 'proxmark3-iceman')
 conflicts=('proxmark3' 'proxmark3-iceman')
-source=("$pkgbase::git+https://github.com/RfidResearchGroup/proxmark3.git")
+replaces=($pkgname'-generic' $pkgname'-rdv4')
+source=("$pkgname::git+https://github.com/RfidResearchGroup/proxmark3.git")
 sha512sums=('SKIP')
 install=proxmark3-iceman-git.install
 
 pkgver() {
-  cd $pkgbase
+  cd $pkgname
   echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 prepare() {
-  cp -r $pkgbase $pkgbase-generic
+  export PM3_DOC_PATH="/usr/share/doc/proxmark3"
+  export PM3_SHARE_PATH="/usr/share/proxmark3"
+  export PM3_BIN_PATH="/usr/bin"
+  export UDEV_PREFIX="/usr/lib/udev/rules.d"
 }
 
 build() {
-  cd "${srcdir}/${pkgbase}"
-  make PLATFORM=PM3RDV4 PLATFORM_EXTRAS=BTADDON
+  cd "${srcdir}/${pkgname}"
+  mkdir "firmware"
+  # Build firmware and recovery for pm3rdv4
+  make PLATFORM=PM3RDV4 PLATFORM_EXTRAS=BTADDON fullimage recovery
+  mv "armsrc/obj/fullimage.elf" "firmware/fullimage-rdv4.elf"
+  mv "recovery/proxmark3_recovery.bin" "firmware/proxmark3_recovery-rdv4.bin"
 
-  for obj in $(find | grep -E '\.o$'); do
-    rm $obj
+  make clean
+
+  # Build firmware and recovery for generic pm3 and other targets
+  make PLATFORM=PM3OTHER all
+
+  mv "armsrc/obj/fullimage.elf" "firmware/fullimage-generic.elf"
+  mv "recovery/proxmark3_recovery.bin" "firmware/proxmark3_recovery-generic.bin"
+
+}
+
+package() {
+  cd "${srcdir}/${pkgname}"
+  
+  # Install firmwares
+  mv "tools/simmodule/SIM011.sha512.txt" "firmware/"
+  mv "tools/simmodule/SIM011.BIN" "firmware/"
+  mv "bootrom/obj/bootrom.elf" "firmware/"
+  for file in $(ls firmware); do
+    install -Dm 644 "firmware/$file" "${pkgdir}/$PM3_SHARE_PATH/firmware/$file"
   done
 
-  cd "${srcdir}/${pkgbase}-generic"
-  make PLATFORM=PM3OTHER
+  # Install executables
+  install -Dm 755 "client/proxmark3" "${pkgdir}/$PM3_BIN_PATH/proxmark3"
+  #install -Dm 755 "proxmark3.sh" "${pkgdir}/$PM3_BIN_PATH/p3"
+  install -Dm 755 "client/flasher" "${pkgdir}/$PM3_BIN_PATH/proxmark3-flasher"
+  #install -Dm 755 "flash-all.sh" "${pkgdir}/$PM3_BIN_PATH/pm3-flash-all"
+  #install -Dm 755 "flash-bootrom.sh" "${pkgdir}/$PM3_BIN_PATH/pm3-flash-bootrom"
+  #install -Dm 755 "flash-fullimage.sh" "${pkgdir}/$PM3_BIN_PATH/pm3-flash-fullimage"
 
-  for obj in $(find | grep -E '\.o$'); do
-    rm $obj
-  done
-}
-
-_package() {
-
-  install -Dm 644 "driver/77-pm3-usb-device-blacklist.rules" "$pkgdir/usr/lib/udev/rules.d/77-pm3-usb-device-blacklist.rules"
+  # Install tools
+  install -Dm 755 "tools/mfkey/mfkey32" "${pkgdir}/$PM3_SHARE_PATH/tools/mfkey32"
+  install -Dm 755 "tools/mfkey/mfkey32v2" "${pkgdir}/$PM3_SHARE_PATH/tools/mfkey32v2"
+  install -Dm 755 "tools/mfkey/mfkey64" "${pkgdir}/$PM3_SHARE_PATH/tools/mfkey64"
+  install -Dm 755 "tools/nonce2key/nonce2key" "${pkgdir}/$PM3_SHARE_PATH/tools/nonce2key"
+  install -Dm 755 "client/pm3_eml2lower.sh" "${pkgdir}/$PM3_SHARE_PATH/tools/pm3_eml2lower.sh"
+  install -Dm 755 "client/pm3_eml2upper.sh" "${pkgdir}/$PM3_SHARE_PATH/tools/pm3_eml2upper.sh"
+  install -Dm 755 "client/pm3_mfdread.py" "${pkgdir}/$PM3_SHARE_PATH/tools/pm3_mfdread.py"
+  install -Dm 755 "client/pm3_mfd2eml.py" "${pkgdir}/$PM3_SHARE_PATH/tools/pm3_mfd2eml.py"
+  install -Dm 755 "client/pm3_eml2mfd.py" "${pkgdir}/$PM3_SHARE_PATH/tools/pm3_eml2mfd.py"
+  install -Dm 755 "tools/findbits.py" "${pkgdir}/$PM3_SHARE_PATH/tools/findbits.py"
+  install -Dm 755 "tools/rfidtest.pl" "${pkgdir}/$PM3_SHARE_PATH/tools/rfidtest.pl"
+  install -Dm 755 "tools/xorcheck.py" "${pkgdir}/$PM3_SHARE_PATH/tools/xorcheck.py"
+  cp -a "tools/jtag_openocd" "${pkgdir}/$PM3_SHARE_PATH/"
   
-  install -dm 755 "$pkgdir/usr/bin"
-  install -dm 755 "$pkgdir/usr/share/$_install_name"
-  install -dm 755 "$pkgdir/usr/share/doc/$_install_name/"
+  # Install udev rules
+  install -Dm 644 "driver/77-pm3-usb-device-blacklist.rules" "${pkgdir}/$UDEV_PREFIX/77-pm3-usb-device-blacklist.rules"
 
-  cp -ar doc/* "$pkgdir/usr/share/doc/$_install_name/"
+  # Install others
+  cp -a "client/lualibs" "${pkgdir}/$PM3_SHARE_PATH/"
+  cp -a "client/luascripts" "${pkgdir}/$PM3_SHARE_PATH/"
 
-  install -Dm 644 -t "$pkgdir/usr/share/doc/$_install_name/" README.md HACKING.md \
-    COMPILING.txt CHANGELOG.md
-  
-  install -Dm 644 LICENSE.txt "$pkgdir/usr/share/licenses/$_install_name/LICENSE.txt"
+  cp -a "client/resources" "${pkgdir}/$PM3_SHARE_PATH/"
 
-  rm -rf *.txt *.md doc/
-
-  cp -a * "$pkgdir/usr/share/$_install_name/"
-
-  cat > "$pkgdir/usr/bin/$_install_name" << EOF
-#!/bin/sh
-exec /usr/share/$_install_name/client/proxmark3 "\$@"
-EOF
-
-  chmod +x "$pkgdir/usr/bin/$_install_name"
-
-  cat > "$pkgdir/usr/bin/$_install_name-flasher" << EOF
-#!/bin/sh
-exec /usr/share/$_install_name/client/flasher "\$@"
-EOF
-
-  chmod +x "$pkgdir/usr/bin/$_install_name-flasher"
-
-  cat > "$pkgdir/usr/bin/$_install_name-unbind-$_install_name" << EOF
-#!/bin/sh
-exec /usr/share/$_install_name/client/unbind-$_install_name "\$@"
-EOF
-
-  chmod +x "$pkgdir/usr/bin/$_install_name-unbind-$_install_name"
-}
-
-package_proxmark3-iceman-git-generic(){
-    conflicts+=($pkgbase'-rdv4')
-    cd "${srcdir}/${pkgbase}-generic"
-    _package
-}
-
-package_proxmark3-iceman-git-rdv4(){
-    conflicts+=($pkgbase'-generic')
-    cd "${srcdir}/${pkgbase}"
-    _package
+  cp -a "traces" "${pkgdir}/$PM3_SHARE_PATH/"
+  install -dm 755 "${pkgdir}/$PM3_DOC_PATH"
+  cp -a doc/* "${pkgdir}/$PM3_DOC_PATH/"
+  cp -a "client/dictionaries" "${pkgdir}/$PM3_SHARE_PATH/"
 }

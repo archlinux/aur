@@ -1,6 +1,6 @@
 pkgbase = proxmark3-iceman-git
-	pkgdesc = A powerful general purpose RFID tool, the size of a deck of cards, designed to snoop, listen and emulate everything from Low Frequency (125kHz) to High Frequency (13.56MHz) tags. (iceman fork)
-	pkgver = 6911.bd7c1ccf
+	pkgdesc = pkgdesc=RRG / Iceman repo - Proxmark3 RDV4.0 and other Proxmark3 platforms.
+	pkgver = 6915.bfec7648
 	pkgrel = 1
 	url = https://github.com/RfidResearchGroup/proxmark3
 	install = proxmark3-iceman-git.install
@@ -11,21 +11,14 @@ pkgbase = proxmark3-iceman-git
 	makedepends = arm-none-eabi-newlib
 	depends = libusb
 	depends = perl
-	depends = qt5-base
 	provides = proxmark3
 	provides = proxmark3-iceman
 	conflicts = proxmark3
 	conflicts = proxmark3-iceman
+	replaces = proxmark3-iceman-git-generic
+	replaces = proxmark3-iceman-git-rdv4
 	source = proxmark3-iceman-git::git+https://github.com/RfidResearchGroup/proxmark3.git
 	sha512sums = SKIP
 
-pkgname = proxmark3-iceman-git-generic
-	conflicts = proxmark3
-	conflicts = proxmark3-iceman
-	conflicts = proxmark3-iceman-git-rdv4
-
-pkgname = proxmark3-iceman-git-rdv4
-	conflicts = proxmark3
-	conflicts = proxmark3-iceman
-	conflicts = proxmark3-iceman-git-generic
+pkgname = proxmark3-iceman-git
 
