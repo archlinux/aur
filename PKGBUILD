@@ -1,7 +1,7 @@
 # Maintainer: Naoki Kanazawa <nk dot naoki912 at gmail dot com>
 # Contributor: Yegorius <yegorius at domic dot us>
 pkgname=station
-pkgver=1.46.1
+pkgver=1.47.0
 pkgrel=1
 pkgdesc='The one app to rule them all'
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 source=(
     "https://github.com/getstation/desktop-app-releases/releases/download/${pkgver}/browserX-${pkgver}-x86_64.AppImage"
 )
-sha256sums=('10e479b6d91723fd68602fbdabf528bc7ea448ee68ad74e87c6306f49bbf4aa5')
+sha256sums=('a53ec6a83be9fc18292cddabc482fec0f1b9897c7d6824b3d91f62fac5d6e090')
 
 prepare() {
     chmod u+x ./browserX-${pkgver}-${arch}.AppImage
