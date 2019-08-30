@@ -1,0 +1,22 @@
+pkgbase = uncertainty-framework
+	pkgdesc = Uncertainty estimation framework for a surface from motion dataset
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = http://alicevision.github.io/
+	arch = i686
+	arch = x86_64
+	license = MPL2
+	makedepends = boost
+	makedepends = cmake
+	makedepends = git
+	makedepends = gflags
+	makedepends = cuda
+	depends = magma
+	depends = ceres-solver
+	source = UncertaintyTE::git+https://github.com/alicevision/UncertaintyTE.git
+	source = ctest.patch
+	sha256sums = SKIP
+	sha256sums = abf50924a78ec9628212c5b7086592d302155cf50dcc6f4c49a92d57b9a3b020
+
+pkgname = uncertainty-framework
+
