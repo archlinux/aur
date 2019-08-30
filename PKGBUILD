@@ -3,7 +3,7 @@
 # Contributor: sinkuu <sinkuupump@gmail.com>
 
 pkgname="clamav-unofficial-sigs"
-pkgver="6.0.1"
+pkgver="6.1.0"
 pkgrel="1"
 pkgdesc="ClamAV Unofficial Signatures Updater maintained by eXtremeSHOK.com"
 url="https://github.com/extremeshok/clamav-unofficial-sigs"
@@ -16,7 +16,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/extremeshok/clamav-unof
     'clamav-unofficial-sigs.8'
     'os.conf'
 )
-sha256sums=('bce22b7bd336355ba9da31fb1de68a7f6df8067b9dfbe556ef3443017edf3f90'
+sha256sums=('d32c648f377c612c2ca79af95dcc70d7858b427fa81a0f85da7824849b3d809e'
             '0564ecac9ea02376b627fed158c9ea899c58b528d276d6d962f9e642e060239e'
             'd5441953dbfafb14764ca30b75ad1ae48dbe8a9cace6d3f72ecb9fbe82aa36ca'
             '983b40a2dcf1bf25a2e0ad5c8c971de609532a633879d051e08a0d484ad1ed27'
@@ -37,7 +37,7 @@ package() {
     install -Dm644 -t "${pkgdir}/usr/lib/systemd/system" systemd/${pkgname}.{service,timer}
     install -Dm644 -t "${pkgdir}/usr/share/man/man8" "${srcdir}/clamav-unofficial-sigs.8"
     install -Dm755 -t "${pkgdir}/usr/bin" clamav-unofficial-sigs.sh
-    install -Dm644 "${srcdir}/clamav-unofficial-sigs.tmpfiles" "${pkgdir}"/usr/lib/tmpfiles.d/clamav-unofficial-sigs.conf
+    install -Dm644 "${srcdir}/clamav-unofficial-sigs.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/clamav-unofficial-sigs.conf"
     install -Dm644 -t "${pkgdir}/usr/share/licenses/clamav-unofficial-sigs" LICENSE
 }
 
