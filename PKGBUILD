@@ -1,6 +1,7 @@
-# Maintainer : Markus Kitsinger (SwooshyCueb) <root@swooshalicio.us>
+# Maintainer : Mendel Greenberg <chabad 360 at gmail dot com>
 
-pkgname=rapiddisk-dkms
+_pkgbase='rapiddisk'
+pkgname="$_pkgbase-dkms"
 _vermajor=6
 _verminor=0
 _verrevision=1
@@ -25,7 +26,6 @@ build() {
 
     # build package
     make DESTDIR=${pkgdir} all
-#    pushd src; make DESTDIR=${pkgdir} dkms; popd
 
     # gzip manpages
     gzip -c doc/${_pkgbase}.1 > doc/${_pkgbase}.1.gz
