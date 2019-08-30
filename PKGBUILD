@@ -19,9 +19,7 @@ build() {
 package() {
   cd gdal-$pkgver/swig/python
   python2 setup.py install --root="$pkgdir" --optimize=1
-
-  cd "$pkgdir/usr/bin/"
-  for bin in *.py; do mv $bin ${bin%.py}2.py; done
+  for bin in "$pkgdir/usr/bin/"*.py; do mv "$bin" "${bin%.py}2.py"; done
 
   install -dm755 "$pkgdir/usr/share/licenses"
   ln -s gdal "$pkgdir/usr/share/licenses/$pkgname"
