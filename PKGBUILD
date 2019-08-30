@@ -17,7 +17,7 @@ source=("git+$url.git")
 md5sums=('SKIP')
 
 pkgver() {
-	cd "$_pkgname"
+	cd $_pkgname
 	git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
@@ -27,7 +27,7 @@ prepare() {
 
 build() {
 	cd build
-	cmake ../"$_pkgname" \
+	cmake ../$_pkgname \
 		-DCMAKE_INSTALL_PREFIX="$(qtpaths --install-prefix)" \
 		-DCMAKE_INSTALL_LIBDIR=lib \
 		-DCMAKE_BUILD_TYPE=Release
