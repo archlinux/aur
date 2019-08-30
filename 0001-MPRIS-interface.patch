@@ -1,0 +1,115 @@
+diff --git a/app/js/main/App/index.js b/app/js/main/App/index.js
+index 94631c5..1026110 100644
+--- a/app/main.js
++++ b/app/main.js
+@@ -2436,6 +2436,7 @@
+               main_SchemeHandler.handleSchemeFromOpenUrl(url),
+               event.preventDefault();
+           }),
++          external_electron_.app.commandLine.appendSwitch('disable-features', 'MediaSessionService');
+           external_electron_.app.on("ready", () => {
+             external_electron_log_default.a.debug("App is ready"),
+               main_AutoUpdater.init();
+diff --git a/node_modules/electron-media-service/src/index.js b/node_modules/electron-media-service/src/index.js
+index f4bdbe6..6171945 100644
+--- a/node_modules/electron-media-service/src/index.js
++++ b/node_modules/electron-media-service/src/index.js
+@@ -14,6 +14,10 @@ switch (process.platform) {
+       module.exports = require('./win32');
+     break;
+   }
++  case 'linux': {
++      module.exports = require('./linux');
++    break;
++  }
+   default: {
+     break;
+   }
+diff --git a/node_modules/electron-media-service/src/linux/index.js b/node_modules/electron-media-service/src/linux/index.js
+new file mode 100644
+index 0000000..3935e1c
+--- /dev/null
++++ b/node_modules/electron-media-service/src/linux/index.js
+@@ -0,0 +1,82 @@
++const { EventEmitter } = require('events');
++const mpris = require('mpris-service');
++
++class MediaService extends EventEmitter {
++    constructor() {
++        super();
++        this.player = mpris({
++                            name: 'deezer',
++                            identity: 'Deezer desktop client',
++                            supportedInterfaces: ['player']
++                        });
++        this.player.canRaise = false;
++        this.player.canQuit = false;
++        this.player.canSeek = false;
++        this.player.canEditTracks = false;
++        this.player.playbackStatus = 'Stopped';
++        this._started = false;
++    }
++
++    _requireStart() {
++        if (!this.isStarted()) {
++            throw new Error('This method requires the media service be started before calling');
++        }
++    }
++
++    startService() {
++        this._started = true;
++        var _this = this;
++        var events = ['next', 'previous', 'pause', 'stop', 'play'];
++        events.forEach(function (eventName) {
++            _this.player.on(eventName, (arg) => {
++                if (arg === -1) {
++                    _this.emit(eventName);
++                } else {
++                    _this.emit(eventName, arg * 1000);
++                }
++            });
++        });
++        this.player.on('playpause', (arg) => {
++            if (arg === -1) {
++                _this.emit('playPause');
++            } else {
++                _this.emit('playPause', arg * 1000);
++            }
++        });
++    }
++
++    stopService() {
++        this._requireStart();
++        this._started = false;
++    }
++
++    isStarted() {
++        return this._started;
++    }
++
++    setMetaData({
++        currentTime,
++        duration,
++        title,
++        artist,
++        album,
++        albumArt,
++        id,
++        state
++    }) {
++        this._requireStart();
++        this.player.metadata = {
++            'xesam:title': title,
++            'xesam:album': album,
++            'xesam:artist': artist,
++            'mpris:artUrl': albumArt
++        }
++        if (state === 'playing') {
++            this.player.playbackStatus = 'Playing';
++        } else {
++            this.player.playbackStatus = 'Stopped';
++        }
++    }
++}
++
++module.exports = MediaService;

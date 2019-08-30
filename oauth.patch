@@ -1,0 +1,20 @@
+--- a/app/main.js	2019-08-30 19:55:24.091850904 +0200
++++ b/app/main.js	2019-08-30 20:24:34.256473021 +0200
+@@ -1760,7 +1760,7 @@
+       }
+       getSchemePathFromArgs(args) {
+         if (args.length < 2) return !1;
+-        const arg = args[1];
++        const arg = args[2];
+         return this.getSchemePathFromArg(arg);
+       }
+       getSchemePathFromArg(arg) {
+@@ -1819,7 +1819,7 @@
+       }
+       handleSchemeFromNonSingleInstance(args) {
+         const schemePath = this.getSchemePathFromArgs(args);
+-        return "win32" == process.platform && !1 !== schemePath
++        return !1 !== schemePath
+           ? this.isNonPathAction(schemePath)
+             ? this.handleNonPathAction(schemePath)
+             : this.handlePath(schemePath)
