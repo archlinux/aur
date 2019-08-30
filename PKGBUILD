@@ -33,8 +33,8 @@ package() {
   mkdir -p "$pkgdir/usr/share/$pkgbase"
   install -Dm755 trackless "${pkgdir}/usr/bin/$pkgbase"
   chmod +x "$pkgdir/usr/bin/$pkgbase"
-  install -Dm 644 $pkgbase.service \
-    "$pkgdir/etc/systemd/system/$pkgbase.service"
+  install -Dm 644 trackless@.service \
+    "$pkgdir/etc/systemd/system/trackless@.service"
   cp -a --no-preserve=ownership * "$pkgdir/usr/share/$pkgbase"
   chmod -R 777 "$pkgdir/usr/share/$pkgbase"
 }
