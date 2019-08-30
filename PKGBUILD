@@ -3,19 +3,19 @@
 
 pkgname=wire-desktop-beta
 _pkgname=${pkgname%-beta}
-pkgver=3.9.2895
+pkgver=3.10.2904
 pkgrel=1
 pkgdesc='End-to-end encrypted messenger with file sharing, voice calls and video conferences'
 arch=('any')
 url='https://wire.com/'
 license=('GPL3')
-depends=('electron' 'xdg-utils')
+depends=('electron4' 'xdg-utils')
 makedepends=('git' 'npm' 'yarn')
 optdepends=('emoji-font: colorful emoji')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/wireapp/${_pkgname}/archive/linux/${pkgver}.tar.gz"
         "${pkgname}-${pkgver}.tar.gz.sig::https://github.com/wireapp/${_pkgname}/releases/download/linux%2F${pkgver}/${_pkgname}-linux-${pkgver}.tar.gz.sig"
         "${pkgname}.desktop")
-sha256sums=('852de3b3eddce0611432d1249303a6e99bdf1450ac26aa60858e216b10562e6f'
+sha256sums=('25eec808ecd2bed5506749cc29c8ed5534dc455cf153d8e40ad933b68dfff031'
             'SKIP'
             '35e522978ac21f7aa2f67faa712037d8999482eed1b88953dbea5420a9b13196')
 validpgpkeys=('ABBA007D6E14E2DB5B283C45D599C1AA126762B1')
@@ -25,21 +25,21 @@ prepare() {
     cat << EOF > "${pkgname}"
 #!/usr/bin/env sh
 
-electron "/usr/lib/${pkgname}" "\$@"
+electron4 "/usr/lib/${pkgname}" "\$@"
 EOF
 }
 
 build() {
     cd "${_pkgname}-linux-${pkgver}"
     yarn
-    yarn build:ts
-    BUILD_NUMBER="${pkgver##*.}" npx grunt 'linux-package'
+    sed -i '/Promise.all/d' node_modules/@wireapp/build-tools/dist/cli/build-linux-cli.js
+    BUILD_NUMBER="${pkgver##*.}" LINUX_TARGET=dir yarn build:linux:internal
 }
 
 package() {
     # Place files
     install -d "${pkgdir}/usr/lib/${pkgname}"
-    cp -a "${_pkgname}-linux-${pkgver}/electron/"* "${pkgdir}/usr/lib/${pkgname}"
+    cp -a "${_pkgname}-linux-${pkgver}/wrap/dist/linux-unpacked/resources/app/"{electron,node_modules,package.json} "${pkgdir}/usr/lib/${pkgname}"
 
     # Place launcher script
     install -Dm755 -t "${pkgdir}/usr/bin/" "${pkgname}"
