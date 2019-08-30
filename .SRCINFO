@@ -1,6 +1,6 @@
 pkgbase = nethack-git
 	pkgdesc = A single player dungeon exploration game
-	pkgver = 3.6.3_WIP.r270.g8a328ff7
+	pkgver = 3.6.3_WIP.r271.gb7b8c7a4
 	pkgrel = 1
 	url = https://www.nethack.org/index.html
 	install = nethack.install
@@ -9,6 +9,7 @@ pkgbase = nethack-git
 	license = custom
 	depends = ncurses
 	depends = gzip
+	depends = gdb
 	provides = nethack
 	conflicts = nethack
 	replaces = nethack
