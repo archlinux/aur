@@ -7,11 +7,11 @@ package_file=pack-linux-dev-from-0.tar
 pkgname=linux-clear-headers-bin
 arch=('x86_64')
 
-version=30870
-kernel_version="5.2.10-828.native"
+version=30900
+kernel_version="5.2.11-829.native"
 
-pkgver="5.2.10"
-pkgrel="828"
+pkgver="5.2.11"
+pkgrel="829"
 
 prepare() {
     # version=$(curl $versionurl)
