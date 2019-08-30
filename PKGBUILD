@@ -1,5 +1,5 @@
 pkgname=mingw-w64-paraview-git
-pkgver=r71573.da856edf7f
+pkgver=r71904.1c2ad539d5
 pkgrel=1
 pkgdesc='Parallel Visualization Application using VTK (mingw-w64)'
 arch=('any')
@@ -44,28 +44,9 @@ build() {
       -DPARAVIEW_ENABLE_EMBEDDED_DOCUMENTATION=OFF \
       -DPARAVIEW_USE_VTKM=OFF \
       -DPARAVIEW_PLUGINS_DEFAULT=OFF \
-      -DVTK_MODULE_USE_EXTERNAL_VTK_doubleconversion=ON \
-      -DVTK_MODULE_USE_EXTERNAL_VTK_eigen=ON \
-      -DVTK_MODULE_USE_EXTERNAL_VTK_expat=ON \
-      -DVTK_MODULE_USE_EXTERNAL_VTK_freetype=ON \
+      -DPARAVIEW_USE_EXTERNAL=ON \
       -DVTK_MODULE_USE_EXTERNAL_VTK_gl2ps=OFF \
-      -DVTK_MODULE_USE_EXTERNAL_VTK_glew=ON \
-      -DVTK_MODULE_USE_EXTERNAL_VTK_hdf5=ON \
-      -DVTK_MODULE_USE_EXTERNAL_VTK_jpeg=ON \
-      -DVTK_MODULE_USE_EXTERNAL_VTK_jsoncpp=ON \
       -DVTK_MODULE_USE_EXTERNAL_VTK_libharu=OFF \
-      -DVTK_MODULE_USE_EXTERNAL_VTK_libproj=ON \
-      -DVTK_MODULE_USE_EXTERNAL_VTK_libxml2=ON \
-      -DVTK_MODULE_USE_EXTERNAL_VTK_lz4=ON \
-      -DVTK_MODULE_USE_EXTERNAL_VTK_lzma=ON \
-      -DVTK_MODULE_USE_EXTERNAL_VTK_netcdf=ON \
-      -DVTK_MODULE_USE_EXTERNAL_VTK_png=ON \
-      -DVTK_MODULE_USE_EXTERNAL_VTK_sqlite=ON \
-      -DVTK_MODULE_USE_EXTERNAL_VTK_tiff=ON \
-      -DVTK_MODULE_USE_EXTERNAL_VTK_utf8=ON \
-      -DVTK_MODULE_USE_EXTERNAL_VTK_zlib=ON \
-      -DVTK_MODULE_USE_EXTERNAL_ParaView_protobuf=ON \
-      -DVTK_MODULE_USE_EXTERNAL_ParaView_cgns=ON \
       -DVTK_MODULE_ENABLE_VTK_IOADIOS2=NO \
       ..
     make
