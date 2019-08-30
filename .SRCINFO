@@ -1,6 +1,6 @@
 pkgbase = compton-rounded-corners
 	pkgdesc = X Compositor (a fork of xcompmgr-dana) (with rounded corners patch)
-	pkgver = 1186_Next.58.g0359abe_2019.08.30
+	pkgver = r16.be8b33f
 	pkgrel = 1
 	url = https://github.com/sdhand/compton
 	arch = i686

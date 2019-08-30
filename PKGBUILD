@@ -5,7 +5,7 @@
 
 pkgname=compton-rounded-corners
 _gitname=compton
-pkgver=1186_Next.58.g0359abe_2019.08.30
+pkgver=r16.be8b33f
 pkgrel=1
 pkgdesc="X Compositor (a fork of xcompmgr-dana) (with rounded corners patch)"
 arch=(i686 x86_64)
@@ -24,11 +24,8 @@ source=(git+"https://github.com/sdhand/compton.git#branch=next")
 md5sums=("SKIP")
 
 pkgver() {
-    cd ${_gitname}
-    _tag=$(git describe --tags | sed 's:^v::') # tag is mobile, and switches between numbers and letters, can't use it for versioning
-    _commits=$(git rev-list --count HEAD) # total commits is the most sane way of getting incremental pkgver
-    _date=$(git log -1 --date=short --pretty=format:%cd)
-    printf "%s_%s_%s\n" "${_commits}" "${_tag}" "${_date}" | sed 's/-/./g'
+  cd "${srcdir}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
