@@ -1,6 +1,6 @@
 
 pkgname=mingw-w64-vtk-git
-pkgver=r71511.5fa578568b
+pkgver=r71856.5345571164
 pkgrel=1
 pkgdesc='A software system for 3D computer graphics, image processing, and visualization (mingw-w64)'
 arch=('any')
@@ -21,6 +21,7 @@ pkgver () {
 
 prepare() {
   cd "${srcdir}/vtk"
+  curl -L https://gitlab.kitware.com/vtk/vtk/merge_requests/5905.patch | patch -p1
 }
 
 build() {
@@ -29,26 +30,9 @@ build() {
     mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-cmake \
       -DVTK_DATA_EXCLUDE_FROM_ALL=ON -DVTK_DATA_EXCLUDE_FROM_ALL_NO_WARNING=ON \
-      -DVTK_MODULE_USE_EXTERNAL_VTK_doubleconversion=ON \
-      -DVTK_MODULE_USE_EXTERNAL_VTK_eigen=ON \
-      -DVTK_MODULE_USE_EXTERNAL_VTK_expat=ON \
-      -DVTK_MODULE_USE_EXTERNAL_VTK_freetype=ON \
+      -DVTK_USE_EXTERNAL=ON \
       -DVTK_MODULE_USE_EXTERNAL_VTK_gl2ps=OFF \
-      -DVTK_MODULE_USE_EXTERNAL_VTK_glew=ON \
-      -DVTK_MODULE_USE_EXTERNAL_VTK_hdf5=ON \
-      -DVTK_MODULE_USE_EXTERNAL_VTK_jpeg=ON \
-      -DVTK_MODULE_USE_EXTERNAL_VTK_jsoncpp=ON \
       -DVTK_MODULE_USE_EXTERNAL_VTK_libharu=OFF \
-      -DVTK_MODULE_USE_EXTERNAL_VTK_libproj=ON \
-      -DVTK_MODULE_USE_EXTERNAL_VTK_libxml2=ON \
-      -DVTK_MODULE_USE_EXTERNAL_VTK_lz4=ON \
-      -DVTK_MODULE_USE_EXTERNAL_VTK_lzma=ON \
-      -DVTK_MODULE_USE_EXTERNAL_VTK_netcdf=ON \
-      -DVTK_MODULE_USE_EXTERNAL_VTK_png=ON \
-      -DVTK_MODULE_USE_EXTERNAL_VTK_sqlite=ON \
-      -DVTK_MODULE_USE_EXTERNAL_VTK_tiff=ON \
-      -DVTK_MODULE_USE_EXTERNAL_VTK_utf8=ON \
-      -DVTK_MODULE_USE_EXTERNAL_VTK_zlib=ON \
       -DVTK_BUILD_TESTING=OFF \
       -DVTK_MODULE_ENABLE_VTK_IOADIOS2=NO \
       ..
