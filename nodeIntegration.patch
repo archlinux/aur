@@ -1,21 +1,19 @@
-diff --git a/app/js/main/App/index.js b/app/js/main/App/index.js
-index 94631c5..e00498f 100644
---- a/app/js/main/App/index.js
-+++ b/app/js/main/App/index.js
-@@ -257,6 +257,7 @@ var App = (function() {
-               show: !0,
-               frame: !this.isFrameless,
-               webPreferences: {
-+                nodeIntegration: true,
-                 devTools: _Utils2.default.hasDevTools(),
-                 preload: _path2.default.join(
-                   _Utils2.default.getResolvedDirPath(__dirname),
-@@ -424,7 +425,7 @@ var App = (function() {
-                 (a.oauthWindow = new _electron.BrowserWindow({
-                   parent: a.getWindow(),
+--- a/app/main.js	2019-08-30 19:55:24.091850904 +0200
++++ b/app/main.js	2019-08-30 19:55:47.168907076 +0200
+@@ -2570,6 +2570,7 @@
+           show: !1,
+           frame: !this.isFrameless,
+           webPreferences: {
++            nodeIntegration: true,
+             devTools: Object(utils.f)(),
+             preload: external_path_default.a.resolve(
+               Object(utils.d)(__dirname),
+@@ -2730,7 +2731,7 @@
+                 (this.oauthWindow = new external_electron_.BrowserWindow({
+                   parent: this.getWindow(),
                    show: !1,
 -                  webPreferences: { nodeIntegration: !1 }
 +                  webPreferences: { nodeIntegration: true }
                  }));
-               var n = function() {
-                 a.oauthWindow.loadURL(
+               const openFbLoginWindow = () => {
+                 this.oauthWindow.loadURL(

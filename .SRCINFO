@@ -1,6 +1,6 @@
 pkgbase = deezer
 	pkgdesc = A proprietary music streaming service
-	pkgver = 4.15.3
+	pkgver = 4.16.0
 	pkgrel = 1
 	url = https://www.deezer.com/
 	arch = any
@@ -11,18 +11,18 @@ pkgbase = deezer
 	makedepends = imagemagick
 	depends = electron
 	provides = deezer
-	source = deezer-4.15.3-setup.exe::https://www.deezer.com/desktop/download/artifact/win32/x86/4.15.3
+	source = deezer-4.16.0-setup.exe::https://www.deezer.com/desktop/download/artifact/win32/x86/4.16.0
 	source = deezer.desktop
 	source = systray.patch
 	source = nodeIntegration.patch
 	source = urls.patch
 	source = menu-bar.patch
-	md5sums = fce764189fc0e4e9284e0db84929a728
+	md5sums = 5dd856378377ddc944ae99d3ca958016
 	md5sums = bb851102d63a9cb396b42d7a61c5104c
-	md5sums = 4a491cdf76afeffb7680d3abdc3f4b89
-	md5sums = 199ce71cc60dd7feb84ee36a8580639d
-	md5sums = 7ee49aab9514e5a4df00fbd7da982688
-	md5sums = 10058bb31eccb62c706be2d336184a70
+	md5sums = 2a0a5dd017a7a302cf927f01c9fdbe85
+	md5sums = c68c0f0a44afc016da5ac2a692bc48ca
+	md5sums = 0bab4bf4a6802757b84efbb552a7875b
+	md5sums = 2d7b015bfc85fe13174ba434da6bd1c1
 
 pkgname = deezer
 

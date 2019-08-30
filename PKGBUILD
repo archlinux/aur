@@ -1,7 +1,7 @@
 # Maintainer: Sibren Vasse <arch@sibrenvasse.nl>
 # Contributor: Ilya Gulya <ilyagulya@gmail.com>
 pkgname="deezer"
-pkgver=4.15.3
+pkgver=4.16.0
 pkgrel=1
 pkgdesc="A proprietary music streaming service"
 arch=('any')
@@ -18,12 +18,12 @@ source=(
          urls.patch
          menu-bar.patch
 )
-md5sums=('fce764189fc0e4e9284e0db84929a728'
+md5sums=('5dd856378377ddc944ae99d3ca958016'
          'bb851102d63a9cb396b42d7a61c5104c'
-         '4a491cdf76afeffb7680d3abdc3f4b89'
-         '199ce71cc60dd7feb84ee36a8580639d'
-         '7ee49aab9514e5a4df00fbd7da982688'
-         '10058bb31eccb62c706be2d336184a70')
+         '2a0a5dd017a7a302cf927f01c9fdbe85'
+         'c68c0f0a44afc016da5ac2a692bc48ca'
+         '0bab4bf4a6802757b84efbb552a7875b'
+         '2d7b015bfc85fe13174ba434da6bd1c1')
 
 prepare() {
     # Extract app from installer
@@ -32,7 +32,7 @@ prepare() {
     7z x -y -bsp0 -bso0 app-32.7z
 
     # Extract png from ico container
-    convert resources/build/win/app.ico resources/build/win/deezer.png
+    convert resources/win/app.ico resources/win/deezer.png
 
     cd resources/
     rm -r app || true
@@ -41,12 +41,12 @@ prepare() {
     rm -r app/node_modules/@nodert
 
     cd app
-    prettier --write "app/js/**/*.js"
+    prettier --write "app/*.js"
     # Fix crash on startup since 4.14.1 (patch systray icon path)
     patch -p1 < "$srcdir/systray.patch"
     # Fix electron 5 incompatibility
     patch -p1 < "$srcdir/nodeIntegration.patch"
-    # Fix startup error electron 6.0.1 (https://github.com/electron/electron/pull/19570
+    # Fix startup error electron 6.0.1 (https://github.com/electron/electron/pull/19570)
     patch -p1 < "$srcdir/urls.patch"
     # Disable menu bar
     patch -p1 < "$srcdir/menu-bar.patch"
@@ -65,8 +65,8 @@ package() {
     echo "exec electron /usr/share/deezer/app.asar \"\$@\"" >> deezer
 
     install -Dm644 resources/app.asar "$pkgdir"/usr/share/deezer/
-    install -Dm644 resources/build/win/deezer.png "$pkgdir"/usr/share/icons/hicolor/256x256/apps/
-    install -Dm644 resources/build/win/systray.png "$pkgdir"/usr/share/deezer/
+    install -Dm644 resources/win/deezer.png "$pkgdir"/usr/share/icons/hicolor/256x256/apps/
+    install -Dm644 resources/win/systray.png "$pkgdir"/usr/share/deezer/
     install -Dm644 "$pkgname".desktop "$pkgdir"/usr/share/applications/
     install -Dm755 deezer "$pkgdir"/usr/bin/
 }

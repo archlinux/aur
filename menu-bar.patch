@@ -1,12 +1,10 @@
-diff --git a/app/js/main/App/index.js b/app/js/main/App/index.js
-index 94631c5..3d69857 100644
---- a/app/js/main/App/index.js
-+++ b/app/js/main/App/index.js
-@@ -274,6 +274,7 @@ var App = (function() {
-               this._adjustViewToContentSize(),
-               this.mainView.setAutoResize({ width: !0, height: !0 })),
-             (this.originalUserAgent = this.getWebContents().getUserAgent()),
-+            this.window.setMenuBarVisibility(false),
-             this.getWebContents().setUserAgent(
-               "Deezer/" +
-                 this.app.getVersion() +
+--- a/app/main.js	2019-08-30 19:55:24.091850904 +0200
++++ b/app/main.js	2019-08-30 19:57:32.550487630 +0200
+@@ -2589,6 +2589,7 @@
+             this._adjustViewToContentSize(),
+             this.mainView.setAutoResize({ width: !0, height: !0 })),
+           (this.originalUserAgent = this.getWebContents().getUserAgent()),
++          this.window.setMenuBarVisibility(false),
+           this.getWebContents().setUserAgent(this.getUserAgent()),
+           Object(utils.h)(platform.a)
+             ? this.getWindow().on("moved", () => {
