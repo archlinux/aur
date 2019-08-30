@@ -2,18 +2,16 @@
 pkgbase=python-radio_beam
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python2-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="A tool for manipulating and utilizing two dimensional gaussian beams within the astropy framework"
 arch=('i686' 'x86_64')
 url="https://radio-beam.readthedocs.io/"
 license=('BSD')
-makedepends=('python-setuptools' 'python2-setuptools' 'python-astropy' 'python-astropy-helpers31' 'python2-astropy-helpers' 'python-sphinx-astropy')
+makedepends=('python-setuptools' 'python2-setuptools' 'python-astropy' 'python-astropy-helpers' 'python2-astropy-helpers' 'python-sphinx-astropy')
 checkdepends=('python-pytest-astropy' 'python2-pytest<3.7' 'python2-astropy')
-source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
-        "python2-${_pyname}.install")
-md5sums=('268a38a8196a824bb69c815cdd35fe3a'
-         'a5d326a896bc49ec788cd48f340c1863')
+source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
+md5sums=('9bf93952bcf371a0574df393a897fe89')
 
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -36,22 +34,19 @@ build() {
 }
 
 check() {
-    msg "Checking Python3"
-    cd ${srcdir}/${_pyname}-${pkgver}
-    python setup.py test
+#   msg "Checking Python3"
+#   cd ${srcdir}/${_pyname}-${pkgver}
+#   python setup.py test
 
-    if [ -z $(pacman -Qsq python2-pytest-cov) ]; then
-        msg "Checking Python2"
-        cd ${srcdir}/${_pyname}-${pkgver}-py2
-        python2 setup.py test
-    fi
+#   msg "Checking Python2"
+    cd ${srcdir}/${_pyname}-${pkgver}-py2
+    python2 setup.py test
 }
 
 package_python2-radio_beam() {
     depends=('python2' 'python2-astropy')
     optdepends=('python2-pytest32: For testing'
                 'python-radio_beam-doc: Documentation for Radio Beam')
-    install=python2-${_pyname}.install
     cd ${srcdir}/${_pyname}-${pkgver}-py2
 
     install -D -m644 LICENSE.rst -t "${pkgdir}/usr/share/licenses/${pkgname}"
