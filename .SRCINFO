@@ -25,8 +25,8 @@ pkgbase = windows-gaming-git
 	optdepends = qemu: windowed setup
 	provides = windows-gaming
 	conflicts = windows-gaming
-	source = git+https://github.com/main--/windows-gaming.git
-	source = https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archive-virtio/virtio-win-0.1.126-2/virtio-win_amd64.vfd
+	source = git+https://github.com/Ediacarium/windows-gaming.git
+	source = https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archive-virtio/virtio-win-0.1.171-1/virtio-win_amd64.vfd
 	md5sums = SKIP
 	md5sums = 954ca57735102d16e87a7c4caa979f67
 

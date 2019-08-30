@@ -1,5 +1,5 @@
 pkgname=windows-gaming-git
-pkgver=r200.ba1cfc4
+pkgver=r304.9251360
 pkgrel=1
 pkgdesc="Windows gaming utils"
 arch=('x86_64')
@@ -15,9 +15,9 @@ replaces=()
 backup=()
 options=()
 install="windows-gaming.install"
-source=('git+https://github.com/main--/windows-gaming.git' 'https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archive-virtio/virtio-win-0.1.126-2/virtio-win_amd64.vfd')
+source=('git+https://github.com/Ediacarium/windows-gaming.git' 'https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archive-virtio/virtio-win-0.1.171-1/virtio-win_amd64.vfd')
 noextract=()
-md5sums=('SKIP' '954ca57735102d16e87a7c4caa979f67')
+md5sums=('SKIP' 'e8163b1e97ff85735e63218175cc0fe7')
 
 
 pkgver() {
