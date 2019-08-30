@@ -1,6 +1,6 @@
 pkgbase = rapiddisk-dkms
-	pkgdesc = A collection of open source and enhanced Linux RAM drive and caching modules
-	pkgver = 4.0.2
+	pkgdesc = Advanced Linux RAM Drive and Caching kernel modules
+	pkgver = 6.0.1
 	pkgrel = 1
 	url = http://www.rapiddisk.org/
 	install = rapiddisk-dkms.install
@@ -10,14 +10,8 @@ pkgbase = rapiddisk-dkms
 	depends = dkms
 	depends = zlib
 	depends = cryptsetup
-	backup = etc/rapiddisk/rapiddisk.sh.pacemaker
-	backup = etc/rapiddisk/rapiddisk.sh.rgmanager
-	source = git+http://git.rapiddisk.org/rapiddisk-4.x.git#commit=8284699a529e6a72ee0fbef90457d3819a1e2cb7
-	source = Makefile.dkms.in
-	source = dkms.conf.in
+	source = git+https://github.com/pkoutoupis/rapiddisk#commit=df31a80
 	md5sums = SKIP
-	md5sums = 8c2d495a0da7939300c8e981cc6186e4
-	md5sums = e09ac0d71fe2f49666c5121f0d0eb194
 
 pkgname = rapiddisk-dkms
 
