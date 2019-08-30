@@ -1,6 +1,6 @@
 pkgbase = fortran-language-server
 	pkgdesc = Fortran Language Server for the Language Server Protocol
-	pkgver = 1.10.1
+	pkgver = 1.10.2
 	pkgrel = 1
 	url = https://github.com/hansec/fortran-language-server
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = fortran-language-server
 	depends = python-argparse
 	depends = python-future
 	depends = python-setuptools
-	source = https://github.com/hansec/fortran-language-server/archive/v1.10.1.tar.gz
-	sha256sums = 18a75b040235b049ca1b8a52861790f3ff82816268a3f2194d0c3e60df560b02
+	source = https://github.com/hansec/fortran-language-server/archive/v1.10.2.tar.gz
+	sha256sums = 062da518a47cfe4d8295df2724590513b4a7ec939a966921c5a8d6745f055d3f
 
 pkgname = fortran-language-server
 
