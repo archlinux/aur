@@ -1,0 +1,52 @@
+pkgbase = python-drizzlepac
+	pkgdesc = AstroDrizzle for HST images
+	pkgver = 2.2.6
+	pkgrel = 1
+	url = http://www.stsci.edu/scientific-community/software/drizzlepac.html
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = python-setuptools
+	makedepends = python-relic
+	makedepends = python-spherical_geometry
+	makedepends = python-numpydoc
+	makedepends = python-sphinx_rtd_theme
+	makedepends = python-stsci_rtd_theme
+	makedepends = python-stsci.tools
+	makedepends = python-stsci.convolve
+	makedepends = python-stsci.image
+	makedepends = python-stsci.imagestats
+	makedepends = python-stsci.imagemanip
+	makedepends = python-stsci.ndimage
+	makedepends = python-stsci.skypac
+	makedepends = python-stsci.stimage
+	makedepends = python-stwcs
+	makedepends = python-stregion
+	makedepends = python-fitsblender
+	makedepends = python-nictools
+	source = https://files.pythonhosted.org/packages/source/d/drizzlepac/drizzlepac-2.2.6.tar.gz
+	source = https://raw.githubusercontent.com/spacetelescope/drizzlepac/master/LICENSE.txt
+	md5sums = a4212f8f8d4c8aaaa69d4f20d6053fae
+	md5sums = b45bee901c15ab7e1ac3e5e3626d535d
+
+pkgname = python-drizzlepac
+	depends = python>=3.5
+	depends = python-nose
+	depends = python-spherical_geometry
+	depends = python-stsci.tools
+	depends = python-stsci.convolve
+	depends = python-stsci.image>=2.3.0
+	depends = python-stsci.imagestats
+	depends = python-stsci.imagemanip
+	depends = python-stsci.ndimage
+	depends = python-stsci.skypac
+	depends = python-stsci.stimage
+	depends = python-stwcs
+	depends = python-stregion
+	depends = python-fitsblender
+	depends = python-nictools
+	optdepends = python-drizzlepac-doc: Documentation for DrizzlePac
+
+pkgname = python-drizzlepac-doc
+	pkgdesc = Documentation for DrizzlePac
+
