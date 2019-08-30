@@ -6,7 +6,7 @@
 
 pkgname=greenfoot
 pkgver=3.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Allows easy development of two-dimensional graphical applications, such as simulations and interactive games."
 arch=('any')
 url="https://www.${pkgname}.org"
@@ -22,7 +22,7 @@ sha256sums=('398f20e46bb90dba554ebb243f1c3beda0c3a436cfcd08c9deee34db24702a2b'
 
 package() {
 cd "${srcdir}"
-ar p "Greenfoot-linux-${pkgver//.}.deb" data.tar.xz | tar xJ
+ar p "Greenfoot-linux-${pkgver//.}.deb" data.tar.xz | tar xJ --exclude=usr/share/${pkgname}/{javafx,jdk}
 
 mkdir -p "${pkgdir}/opt/${pkgname}"
 mkdir -p "${pkgdir}/usr/share/doc/${pkgname}"
