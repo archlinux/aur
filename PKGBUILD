@@ -1,15 +1,15 @@
-# Maintainer: WorMzy Tykashi <wormzy.tykashi@gmail.com>
+# Maintainer: Louis Taylor <louis@kragniz.eu>
+# Contributor: WorMzy Tykashi <wormzy.tykashi@gmail.com>
 # Contributor: OK100 <ok100 at lavabit dot com>
 # Contributor: Valère Monseur <valere dot monseur at ymail dot com>
 
-pkgname=compton-git
+pkgname=compton-rounded-corners
 _gitname=compton
-epoch=2
-pkgver=1151_Next.23.g6ac5062_2019.07.27
+pkgver=1186_Next.58.g0359abe_2019.08.30
 pkgrel=1
-pkgdesc="X Compositor (a fork of xcompmgr-dana) (git-version)"
+pkgdesc="X Compositor (a fork of xcompmgr-dana) (with rounded corners patch)"
 arch=(i686 x86_64)
-url="https://github.com/yshui/compton"
+url="https://github.com/sdhand/compton"
 license=('MIT' 'MPL2')
 depends=('libgl' 'libev' 'pcre' 'libx11' 'xcb-util-renderutil' 'libxcb' 'xcb-util-image' 'libxext'
          'pixman' 'libconfig' 'libdbus' 'hicolor-icon-theme' 'libxdg-basedir')
@@ -20,7 +20,7 @@ optdepends=('dbus:          To control compton via D-Bus'
             'python:        For compton-convgen.py')
 provides=('compton')
 conflicts=('compton')
-source=(git+"https://github.com/yshui/compton.git#branch=next")
+source=(git+"https://github.com/sdhand/compton.git#branch=next")
 md5sums=("SKIP")
 
 pkgver() {

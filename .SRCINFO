@@ -1,9 +1,8 @@
-pkgbase = compton-git
-	pkgdesc = X Compositor (a fork of xcompmgr-dana) (git-version)
-	pkgver = 1151_Next.23.g6ac5062_2019.07.27
+pkgbase = compton-rounded-corners
+	pkgdesc = X Compositor (a fork of xcompmgr-dana) (with rounded corners patch)
+	pkgver = 1186_Next.58.g0359abe_2019.08.30
 	pkgrel = 1
-	epoch = 2
-	url = https://github.com/yshui/compton
+	url = https://github.com/sdhand/compton
 	arch = i686
 	arch = x86_64
 	license = MIT
@@ -32,8 +31,8 @@ pkgbase = compton-git
 	optdepends = python: For compton-convgen.py
 	provides = compton
 	conflicts = compton
-	source = git+https://github.com/yshui/compton.git#branch=next
+	source = git+https://github.com/sdhand/compton.git#branch=next
 	md5sums = SKIP
 
-pkgname = compton-git
+pkgname = compton-rounded-corners
 
