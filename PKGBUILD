@@ -3,7 +3,7 @@
 
 pkgname=wire-desktop-git
 _pkgname=${pkgname%-git}
-pkgver=3.7.2891.r63.ge1323198
+pkgver=3.10.3138.r65.gc8ff00f2
 pkgrel=1
 pkgdesc='End-to-end encrypted messenger with file sharing, voice calls and video conferences'
 arch=('x86_64')
@@ -11,7 +11,7 @@ url='https://wire.com/'
 license=('GPL3')
 provides=('wire-desktop')
 conflicts=('wire-desktop')
-depends=('electron' 'xdg-utils')
+depends=('electron4' 'xdg-utils')
 makedepends=('git' 'npm' 'yarn')
 optdepends=('emoji-font: colorful emoji')
 source=("git+https://github.com/wireapp/wire-desktop.git"
@@ -21,7 +21,7 @@ sha256sums=('SKIP'
 
 pkgver() {
     cd "${_pkgname}"
-    git describe --tags | sed 's/linux\///g;s/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --tags | sed 's/\w\+\///g;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -29,21 +29,20 @@ prepare() {
     cat << EOF > "${_pkgname}-launcher"
 #!/usr/bin/env sh
 
-electron "/usr/lib/${_pkgname}" "\$@"
+electron4 "/usr/lib/${_pkgname}" "\$@"
 EOF
 }
 
 build() {
     cd "${_pkgname}"
     yarn
-    yarn build:ts
-    npx grunt 'linux-prod-package'
+    BUILD_NUMBER="$(echo ${pkgver} | cut -d. -f3)" LINUX_TARGET=dir yarn build:linux
 }
 
 package() {
     # Place files
     install -d "${pkgdir}/usr/lib/${_pkgname}"
-    cp -a "${_pkgname}/electron/"* "${pkgdir}/usr/lib/${_pkgname}"
+    cp -a "${_pkgname}/wrap/dist/linux-unpacked/resources/app/"{electron,node_modules,package.json} "${pkgdir}/usr/lib/${_pkgname}"
 
     # Place launcher script
     install -Dm755 "${_pkgname}-launcher" "${pkgdir}/usr/bin/${_pkgname}"
