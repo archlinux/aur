@@ -38,7 +38,7 @@ pkgver() {
 build() {
   cd ${srcdir}
   mkdir -p build && cd build
-  cmake --trace --debug ${_CMAKE_FLAGS[*]} ${srcdir}/${_name}
+  cmake ${_CMAKE_FLAGS[*]} ${srcdir}/${_name}
   make all
 }
 
