@@ -1,7 +1,6 @@
-#!/bin/bash
-# shellcheck disable=SC2034,SC2164
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 # Contributor: Pierre Choffet <peuc@wanadoo.fr>
+# shellcheck shell=bash disable=SC2034,SC2164
 _pkgname=ring-kde
 pkgname=$_pkgname-git
 pkgver=3.1.0.r78.gd348e06a
@@ -20,7 +19,7 @@ source=('git://anongit.kde.org/ring-kde.git')
 md5sums=('SKIP')
 
 pkgver() {
-	cd "$_pkgname"
+	cd $_pkgname
 	git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
@@ -30,7 +29,7 @@ prepare() {
 
 build() {
 	cd build
-	cmake ../"$_pkgname" \
+	cmake ../$_pkgname \
 		-DCMAKE_INSTALL_PREFIX="$(qtpaths --install-prefix)" \
 		-DCMAKE_BUILD_TYPE=Release
 	make
