@@ -5,7 +5,7 @@
 
 pkgname=compton-rounded-corners
 _gitname=compton
-pkgver=r16.be8b33f
+pkgver=r1186.0359abe
 pkgrel=1
 pkgdesc="X Compositor (a fork of xcompmgr-dana) (with rounded corners patch)"
 arch=(i686 x86_64)
@@ -24,18 +24,18 @@ source=(git+"https://github.com/sdhand/compton.git#branch=next")
 md5sums=("SKIP")
 
 pkgver() {
-  cd "${srcdir}"
+  cd "${_gitname}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "${srcdir}/${_gitname}"
+  cd "${_gitname}"
   meson --buildtype=release . build --prefix=/usr -Dwith_docs=true
   ninja -C build
 }
 
 package() {
-  cd "${srcdir}/${_gitname}"
+  cd "${_gitname}"
 
   DESTDIR="${pkgdir}" ninja -C build install
 
