@@ -1,6 +1,6 @@
 pkgbase = samaya-git
 	pkgdesc = A time synchronization program that uses HTTP protocol
-	pkgver = 0.0.0
+	pkgver = cf3bd7d
 	pkgrel = 1
 	url = https://github.com/vasanthdeveloper/samaya
 	arch = i686
@@ -9,8 +9,10 @@ pkgbase = samaya-git
 	makedepends = go
 	makedepends = make
 	depends = systemd
-	source = samaya-git-0.0.0.tar.gz::https://github.com/vasanthdeveloper/samaya/archive/mainline.zip
-	md5sums = 4bd7eb42a9504cd5874e30d4c2d5ebdf
+	provides = samaya
+	conflicts = samaya
+	source = samaya::git+https://github.com/vasanthdeveloper/samaya.git#branch=mainline
+	md5sums = SKIP
 
 pkgname = samaya-git
 
