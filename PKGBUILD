@@ -2,18 +2,18 @@
 
 _gemname=sassc
 pkgname=ruby-$_gemname
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc='Use libsass with Ruby!'
 arch=('x86_64')
 url='https://github.com/sass/sassc-ruby'
 license=(MIT)
-depends=(ruby ruby-ffi libsass)
+depends=(ruby ruby-ffi)
 makedepends=(ruby-rdoc)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('da119e3a122d4d80b5f26db4f26110070f4bcb4b34ecb5e76663387e37767c1a')
+sha256sums=('6e7e4fe5eae9593c29e5dd6c830b91530b92e044b3d3efa89898fca22a75119d')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
