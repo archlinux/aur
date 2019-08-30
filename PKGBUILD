@@ -8,7 +8,7 @@
 
 _rubyver=2.4
 pkgname=ruby2.4
-pkgver=${_rubyver}.6
+pkgver=${_rubyver}.7
 pkgdesc='An object-oriented language for quick and easy programming'
 pkgrel=1
 arch=(x86_64)
@@ -19,7 +19,7 @@ optdepends=('tk: for Ruby/TK')
 makedepends=(doxygen graphviz ttf-dejavu tk)
 options=(!emptydirs)
 source=(https://cache.ruby-lang.org/pub/ruby/${pkgver:0:3}/ruby-${pkgver}.tar.xz)
-sha512sums=('eafb2257747f99e2ed262af142e71175b70f7cceaa4d1253b92c8337f075a9a58a2d93b029d75e11a9b124f112a8f0983273b2b30afc147b5cf71a8dbb5fa0ba')
+sha512sums=('df637c5803ddd83f759e9c24b0e7ca1f6cae7c7b353409583d92dbffece0d9d02b48905d6552327a1522a4a37d4e2d22c6c11bd991383835be35e2f31739d649')
 
 build() {
   cd ruby-${pkgver}
