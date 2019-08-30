@@ -1,21 +1,21 @@
 pkgbase = nginx-mainline-mod-uaparser-git
 	pkgdesc = User agent parser module for mainline nginx
 	pkgver = r1.f5a1e52
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/clarfon/nginx-uaparser-module
 	arch = i686
 	arch = x86_64
 	license = CC0
-	makedepends = nginx-mainline=1.17.1
+	makedepends = nginx-mainline=1.17.3
 	depends = nginx-mainline
 	depends = uap-cpp-git
 	provides = nginx-mainline-mod-uaparser
 	provides = nginx-mod-uaparser
-	source = https://nginx.org/download/nginx-1.17.1.tar.gz
-	source = https://nginx.org/download/nginx-1.17.1.tar.gz.asc
+	source = https://nginx.org/download/nginx-1.17.3.tar.gz
+	source = https://nginx.org/download/nginx-1.17.3.tar.gz.asc
 	source = git+https://github.com/clarfon/nginx-uaparser-module.git
 	validpgpkeys = B0F4253373F8F6F510D42178520A9993A1C052F8
-	sha256sums = e21b5d06cd53e86afb94f0b3678e0abb0c0f011433471fa3d895cefa65ae0fab
+	sha256sums = 6f1825b4514e601579986035783769c456b888d3facbab78881ed9b58467e73e
 	sha256sums = SKIP
 	sha256sums = SKIP
 

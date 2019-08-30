@@ -2,10 +2,10 @@
 
 pkgname=nginx-mainline-mod-uaparser-git
 pkgver=r1.f5a1e52
-pkgrel=3
+pkgrel=4
 
 _modname="nginx-uaparser-module"
-_nginxver=1.17.1
+_nginxver=1.17.3
 
 pkgdesc="User agent parser module for mainline nginx"
 arch=('i686' 'x86_64')
