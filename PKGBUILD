@@ -3,18 +3,18 @@
 
 _name=i3ipc-python
 pkgname=python-i3ipc
-pkgver=1.7.1
-pkgrel=2
+pkgver=2.0.1
+pkgrel=1
 pkgdesc='An improved Python library to control i3wm'
 arch=('any')
 url="https://github.com/acrisci/${pkgname}"
 license=('BSD')
 conflicts=('i3ipc-python')
 replaces=('i3ipc-python')
-depends=('python')
+depends=('python' 'python-xlib')
 makedepends=('python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/acrisci/${_name}/archive/v${pkgver}.tar.gz")
-sha256sums=('b13f4013941e8252988e63d9b7528ba278e4af6edbce031936c5877187fc4d8c')
+sha256sums=('e619ba6671e7a261af60e443fea1340036d2f28bbd328d4e831e28f0420253c3')
 
 build() {
     cd "${_name}-${pkgver}"
