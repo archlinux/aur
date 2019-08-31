@@ -7,11 +7,14 @@
 # berkus <berkus@madfire.net>
 # hm_b <holger@music-nerds.net>
 
-# You have to login to https://backstage.renoise.com and download your copy
+# You have to
+#  login to https://backstage.renoise.com
+#  download your copy
+#  place it into same DIR as this file
 
 pkgname="renoise"
-pkgver="3.1.1"
-pkgrel="2"
+pkgver="3.2.0"
+pkgrel="1"
 pkgdesc="A music composition program"
 arch=("i686" "x86_64")
 url="https://www.renoise.com"
@@ -33,24 +36,18 @@ else
     md5sums=('SKIP')
 fi
 
-source=("file://rns_${pkgver//./_}_linux_x86$if64.tar.gz")
+source=("file://rns_${pkgver//./}_linux_x86$if64.tar.gz")
 
 package() {
-    cd "$srcdir/rns_${pkgver//./_}_linux_x86$if64"
+    cd "$srcdir/rns_${pkgver//./}_linux_x86$if64"
 
     mkdir -p "$pkgdir/usr/share/renoise-$pkgver"
     cp -r "Resources"/* "$pkgdir/usr/share/renoise-$pkgver"
 
-    install -Dm 755 "renoise" "$pkgdir/usr/bin/renoise3"
-    install -Dm 644 "Resources/Skin/Icons/WindowIcon16.png" "$pkgdir/usr/share/icons/hicolor/16x16/apps/renoise3.png"
-    install -Dm 644 "Resources/Skin/Icons/WindowIcon32.png" "$pkgdir/usr/share/icons/hicolor/32x32/apps/renoise3.png"
-    install -Dm 644 "Resources/Skin/Icons/WindowIcon48.png" "$pkgdir/usr/share/icons/hicolor/48x48/apps/renoise3.png"
-    install -Dm 644 "Resources/Skin/Icons/WindowIcon128.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/renoise3.png"
-    install -Dm 644 "Resources/Skin/Icons/WindowIcon256.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/renoise3.png"
-
-    install -Dm 644 "Installer/renoise.desktop" "$pkgdir/usr/share/applications/renoise3.desktop"
-    sed -i 's/=renoise/=renoise3/g' "$pkgdir/usr/share/applications/renoise3.desktop"
+    install -Dm 755 "renoise" "$pkgdir/usr/bin/renoise"
+    install -Dm 644 "Installer/renoise.desktop" "$pkgdir/usr/share/applications/renoise.desktop"
     install -Dm 644 "Installer/renoise.1.gz" "$pkgdir/usr/share/man/man1/renoise3.1.gz"
     install -Dm 644 "Installer/renoise-pattern-effects.5.gz" "$pkgdir/usr/share/man/man5/renoise3-pattern-effects.5.gz" 
     install -Dm 644 "License.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm 644 "Installer/renoise.xml" "$pkgdir/usr/share/mime/packages/renoise.xml"
 }
