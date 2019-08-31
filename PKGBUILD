@@ -1,7 +1,7 @@
 # Maintainer: Bailey Kasin <bailey@gingertechnology.net>
 pkgname=dtrace-utils-devel
 pkgver=1.2.1
-pkgrel=4
+pkgrel=5
 pkgdesc="DTrace-utils contains the Userspace portion of the DTrace port to Linux"
 arch=('x86_64')
 url="https://github.com/oracle/dtrace-utils/"
