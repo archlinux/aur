@@ -1,0 +1,16 @@
+pkgbase = jsonproc
+	pkgdesc = Process JSON for Gen 3 pret repository data
+	pkgver = 1
+	pkgrel = 1
+	url = https://code.caveoforig.in/alex/jsonproc
+	arch = i686
+	arch = x86_64
+	license = BSD-2
+	makedepends = git
+	provides = jsonproc
+	conflicts = jsonproc
+	source = git+https://code.caveoforig.in/alex/jsonproc.git
+	md5sums = SKIP
+
+pkgname = jsonproc
+
