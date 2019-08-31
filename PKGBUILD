@@ -1,5 +1,5 @@
 pkgname=brainworkshop-git
-pkgver=r192.aa0e712
+pkgver=r210.a4b52df
 pkgrel=1
 pkgdesc="Brain Workshop is a free open-source version of the Dual N-Back mental exercise"
 arch=('any')
@@ -23,6 +23,7 @@ pkgver() {
 
 prepare () {
   cd "${srcdir}/brainworkshop"
+  curl -L https://github.com/samcv/brainworkshop/pull/11.patch | patch -p1
 }
 
 package() {
