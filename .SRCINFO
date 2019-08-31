@@ -1,0 +1,15 @@
+pkgbase = scaninc
+	pkgver = 1
+	pkgrel = 1
+	url = https://code.caveoforig.in/alex/scaninc
+	arch = i686
+	arch = x86_64
+	license = BSD-2
+	makedepends = git
+	provides = scaninc
+	conflicts = scaninc
+	source = git+https://code.caveoforig.in/alex/scaninc.git
+	md5sums = SKIP
+
+pkgname = scaninc
+
