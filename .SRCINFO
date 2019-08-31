@@ -1,6 +1,6 @@
 pkgbase = gallery-dl
 	pkgdesc = Command-line program to download image-galleries and collections from several image hosting sites
-	pkgver = 1.10.2
+	pkgver = 1.10.3
 	pkgrel = 1
 	url = https://github.com/mikf/gallery-dl
 	arch = any
@@ -11,10 +11,10 @@ pkgbase = gallery-dl
 	depends = python-requests
 	optdepends = ffmpeg: Convert Pixiv Ugoira to WebM
 	optdepends = youtube-dl: Download videos
-	source = https://github.com/mikf/gallery-dl/releases/download/v1.10.2/gallery_dl-1.10.2.tar.gz
-	source = https://github.com/mikf/gallery-dl/releases/download/v1.10.2/gallery_dl-1.10.2.tar.gz.asc
+	source = https://github.com/mikf/gallery-dl/releases/download/v1.10.3/gallery_dl-1.10.3.tar.gz
+	source = https://github.com/mikf/gallery-dl/releases/download/v1.10.3/gallery_dl-1.10.3.tar.gz.asc
 	validpgpkeys = 3E09F5908333DD83DBDCE7375680CA389D365A88
-	sha512sums = ad7e6a1edeb0c038521754003bbe4e9115fb8ca9b38a060ccb723778f39c18a6001d2d0ca6e051ec1d091f32c1021c8a1d67f6efccaf3360aa2a34d9ee637d1d
+	sha512sums = 875c3b75f8dfdbc7f7dc5565ca11525c6a544b4613358e67599d98d6da1fe9dcbad38efa7289a608954410cd12ae29ee79e3fd0569eb7fb16a3a7d58a46dcc37
 	sha512sums = SKIP
 
 pkgname = gallery-dl
