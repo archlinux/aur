@@ -1,0 +1,17 @@
+pkgbase = sil-q
+	pkgdesc = A role-playing game with a strong emphasis on discovery and tactical combat
+	pkgver = 1.4.2
+	pkgrel = 1
+	url = https://github.com/sil-quirk/sil-q
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	license = custom
+	depends = ncurses
+	depends = libx11
+	depends = xorg-fonts-misc
+	source = sil-q-1.4.2.tar.gz::https://github.com/sil-quirk/sil-q/archive/v1.4.2.tar.gz
+	md5sums = 61ced0d05ca4ef3932e6ce3ba935ec40
+
+pkgname = sil-q
+
