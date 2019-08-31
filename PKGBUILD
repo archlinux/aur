@@ -2,7 +2,7 @@
 # Maintainer : Erik Dubois <erik.dubois@gmail.com>
 
 pkgname=numix-circle-icon-theme-git
-pkgver=0.r45.64afc58
+pkgver=0.r50.386d242
 pkgrel=1
 pkgdesc='Circle icon theme from the Numix project'
 arch=('any')
