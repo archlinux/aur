@@ -10,22 +10,21 @@ index b65a81d..df56fd3 100644
  xmacro(WM_PROTOCOLS)
  xmacro(WM_DELETE_WINDOW)
  xmacro(UTF8_STRING)
-diff --git a/include/data.h b/include/data.h
-index f55e003..d7e22a3 100644
 --- a/include/data.h
 +++ b/include/data.h
-@@ -483,6 +483,11 @@ struct Window {
+@@ -483,7 +483,12 @@ struct Window {
  
      /* aspect ratio from WM_NORMAL_HINTS (MPlayer uses this for example) */
-     double aspect_ratio;
+     double min_aspect_ratio;
+     double max_aspect_ratio;
 +
 +    /** Window icon, as array of ARGB pixels */
 +    uint32_t* icon;
 +    int icon_width;
 +    int icon_height;
- };
  
- /**
+     /** The window has a nonrectangular shape. */
+     bool shaped;
 diff --git a/include/libi3.h b/include/libi3.h
 index 790baba..cc88ee7 100644
 --- a/include/libi3.h
@@ -42,8 +41,6 @@ index 790baba..cc88ee7 100644
  /**
   * Draws a filled rectangle.
   * This function is a convenience wrapper and takes care of flushing the
-diff --git a/include/window.h b/include/window.h
-index 77e3f48..894ee9f 100644
 --- a/include/window.h
 +++ b/include/window.h
 @@ -89,3 +89,9 @@ void window_update_hints(i3Window *win, xcb_get_property_reply_t *prop, bool *ur
@@ -56,8 +53,6 @@ index 77e3f48..894ee9f 100644
 + *
 + */
 +void window_update_icon(i3Window *win, xcb_get_property_reply_t *prop);
-diff --git a/libi3/draw_util.c b/libi3/draw_util.c
-index f88360d..59a9d8e 100644
 --- a/libi3/draw_util.c
 +++ b/libi3/draw_util.c
 @@ -140,6 +140,42 @@ void draw_util_text(i3String *text, surface_t *surface, color_t fg_color, color_
@@ -103,8 +98,6 @@ index f88360d..59a9d8e 100644
  /*
   * Draws a filled rectangle.
   * This function is a convenience wrapper and takes care of flushing the
-diff --git a/src/handlers.c b/src/handlers.c
-index b967791..efab679 100644
 --- a/src/handlers.c
 +++ b/src/handlers.c
 @@ -1392,6 +1392,19 @@ static bool handle_strut_partial_change(void *data, xcb_connection_t *conn, uint
@@ -145,8 +138,6 @@ index b967791..efab679 100644
  }
  
  static void property_notify(uint8_t state, xcb_window_t window, xcb_atom_t atom) {
-diff --git a/src/manage.c b/src/manage.c
-index c4706b0..4e240d7 100644
 --- a/src/manage.c
 +++ b/src/manage.c
 @@ -91,6 +91,8 @@ void manage_window(xcb_window_t window, xcb_get_window_attributes_cookie_t cooki
@@ -174,17 +165,6 @@ index c4706b0..4e240d7 100644
      window_update_leader(cwindow, xcb_get_property_reply(conn, leader_cookie, NULL));
      window_update_transient_for(cwindow, xcb_get_property_reply(conn, transient_cookie, NULL));
      window_update_strut_partial(cwindow, xcb_get_property_reply(conn, strut_cookie, NULL));
-@@ -185,6 +189,8 @@ void manage_window(xcb_window_t window, xcb_get_window_attributes_cookie_t cooki
-     window_update_hints(cwindow, xcb_get_property_reply(conn, wm_hints_cookie, NULL), &urgency_hint);
-     border_style_t motif_border_style = BS_NORMAL;
-     window_update_motif_hints(cwindow, xcb_get_property_reply(conn, motif_wm_hints_cookie, NULL), &motif_border_style);
-+
-+
-     xcb_size_hints_t wm_size_hints;
-     if (!xcb_icccm_get_wm_size_hints_reply(conn, wm_normal_hints_cookie, &wm_size_hints, NULL))
-         memset(&wm_size_hints, '\0', sizeof(xcb_size_hints_t));
-diff --git a/src/window.c b/src/window.c
-index 6128255..797be6a 100644
 --- a/src/window.c
 +++ b/src/window.c
 @@ -17,6 +17,7 @@ void window_free(i3Window *win) {
@@ -287,8 +267,6 @@ index 6128255..797be6a 100644
 +
 +    FREE(prop);
 +}
-diff --git a/src/x.c b/src/x.c
-index 267372f..51ea062 100644
 --- a/src/x.c
 +++ b/src/x.c
 @@ -576,11 +576,35 @@ void x_draw_decoration(Con *con) {
