@@ -2,7 +2,7 @@
 
 pkgname=fpp
 _prjname=PathPicker
-pkgver=0.8.2
+pkgver=0.9.2
 pkgrel=1
 
 pkgdesc='TUI that lets you pick paths out of its stdin and run arbitrary commands on them'
@@ -15,7 +15,7 @@ depends=('python')
 options=('zipman')
 
 source=("https://github.com/facebook/$_prjname/archive/$pkgver.tar.gz")
-sha256sums=('7d1beb76f9864c1f13a25fe382e3467684999068bfcbb99053eb4bc322d6a80c')
+sha256sums=('4b3deac0100fb9405adca17a1c75e133359a6cbb1351c392276a55ef8ef40857')
 
 prepare() {
   rm -rf "$srcdir/$_prjname-$pkgver/src/__tests__"
