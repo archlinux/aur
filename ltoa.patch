@@ -1,0 +1,15 @@
+--- a/src/components/osal/src/common/osal.c	2021-08-31 13:53:54.000000000 -0400
++++ b/src/components/osal/src/common/osal.c	2019-08-31 14:44:58.642768985 -0400
+@@ -404,10 +404,8 @@
+  */
+ unsigned char * _ltoa(unsigned long l, unsigned char *buf, unsigned char radix)
+ {
+-#if defined (__TI_COMPILER_VERSION) || defined (__TI_COMPILER_VERSION__)
+-  return ( (unsigned char*)ltoa( l, (char *)buf ) );
+-#elif defined( __GNUC__ )
+-  return ( (char*)ltoa( l, buf, radix ) );
++#if defined (__TI_COMPILER_VERSION) || defined (__TI_COMPILER_VERSION__) || defined( __GNUC__ )
++  return ( (unsigned char*)ltoa( l, (char *)buf, radix ) );
+ #else
+   unsigned char tmp1[10] = "", tmp2[10] = "", tmp3[10] = "";
+   unsigned short num1, num2, num3;

@@ -5,8 +5,8 @@
 # generate a GUI box. Parent installer fails if run headless.
 
 pkgname=ti-ble-sdk
-pkgver=2.02.02.25
-_pkgver=2_02_02_25
+pkgver=2.02.03.08
+_pkgver=2_02_03_08
 pkgrel=1
 pkgdesc="Texas Instruments BLE Stack for CC2640/CC2650/CC1350"
 arch=('x86_64')
@@ -22,19 +22,19 @@ _bundle=ble_sdk_${_pkgver}
 _installer=${_bundle}_setup.exe
 
 # Installer mirrored on IPFS
-_ipfs_hash=QmWzstCsjpLxkTvH3EtihPR2MQiFvcJohfXYVMdnz9YBjH
+_ipfs_dir_hash=QmahqrocvsQbigEE1siCi4ZiBuMTPzXjSuy9zKqv1SFoQB
 
 # Alternatively, to download from TI, you need a download key, which
-# you can get by following the upstram link above and clicking through
-# _key=KS6V9FEICJSWPWYWAYHF6X6UQ542PAFS
+# you can get by following the $url link above and clicking through
+# _key=
 
-source=(# Requires you to open webpage in browser to get download key
-        #"http://software-dl.ti.com/download/lprf/${_key}/${_installer}"
+source=(# Requires you to open "$url" in browser to get download link with key
+	#"https://downloads.ti.com/downloads/simplelink/esd/ble_sdk/${_installer}?__gda__=${_key}"
         # Alternative source for same file that does not require key and does not 404 after updates
-        #"https://gateway.ipfs.io/ipfs/${_ipfs_hash}/${_installer}"
-        # Alternative source via a different IPFS gateway
-        #"http://ipfs.alexeicolin.com:8080/ipfs/${_ipfs_hash}/${_installer}"
-        "http://camus:8080/ipfs/${_ipfs_hash}/${_installer}")
+        "https://gateway.ipfs.io/ipfs/${_ipfs_dir_hash}/${_installer}"
+	# Alternative via a local installation of the IPFS node:
+        #"http://localhost:8080/ipfs/${_ipfs_dir_hash}/${_installer}"
+	ltoa.patch)
 
 options=(!strip libtool staticlibs emptydirs !purge !zipman)
 
@@ -192,9 +192,16 @@ package() {
         done
     done
 
+    # TI ARM CGT 19.6.0.STS changed the ltoa prototype
+    # See TI Incident Report SDSCM00052006:
+    # https://cqweb.ext.ti.com/cqweb/restapi/SDO-Web/SDOWP/RECORD/SDSCM00052006?format=HTML&noframes=true&recordType=IncidentReport&loginId=readonly&password=readonly
+    # Reported: https://e2e.ti.com/support/wireless-connectivity/bluetooth/f/538/t/835138
+    patch -d ${_installpath}/${_bundle} -p1 < $srcdir/ltoa.patch
+
     cp -al $srcdir/${_installdir}/${_destdir} $pkgdir
 
     install -D -m0644 $srcdir/${_installpath}/${_bundle}/license.txt $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
 
-sha256sums=('4dfc4e0b86b94ba2fd97b3774e52a10554351c5ffeb6a8fe138f25240e1322b6')
+sha256sums=('50aef335f450bfa9b9d59c177bee27f7709708b81e2954d9d5e4126cd5b22430'
+            '675fd1fcd998eb17726210540d5ce3e0061b84defba1b246e7a720e2de1f463e')
