@@ -12,7 +12,7 @@ makedepends=()
 conflicts=()
 replaces=()
 backup=()
-source=("https://www.kernel.org/pub/linux/kernel/v${pkgver:0:1}/linux-${pkgver}.tar.gz"
+source=("https://www.kernel.org/pub/linux/kernel/v${pkgver:0:1}.x/linux-${pkgver}.tar.gz"
         "hypervvssd.service"
        )
 install=''
