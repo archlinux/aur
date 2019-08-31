@@ -1,6 +1,6 @@
 # Maintainer: Mantas Mikulėnas <grawity@gmail.com>
 pkgname=mokutil
-pkgver=0.3.0.r25.gfb6250f
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Shim.efi Machine Owner Key management tool"
 arch=(i686 x86_64)
@@ -8,14 +8,14 @@ url="https://github.com/lcp/mokutil"
 license=(GPL3)
 depends=(efivar openssl)
 makedepends=(git)
-_commit=fb6250f23a1dda24000522f1994f70c73407c402
+_commit=18e5eb052116221197a70e788afc414c1e1f4bb7
 source=("git+https://github.com/lcp/mokutil#commit=$_commit")
 sha256sums=('SKIP')
 validpgpkeys=()
 
 pkgver() {
   cd "$pkgname"
-  git describe | sed 's/-/.r/; s/-/./'
+  git describe --tags | sed 's/-/.r/; s/-/./'
 }
 
 prepare() {
