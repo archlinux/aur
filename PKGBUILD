@@ -24,6 +24,9 @@ prepare () {
 
   # avbin moved
   sed -i "s|from pyglet.media import avbin|from pyglet.media.sources import avbin|g" brainworkshop.pyw
+
+  # set_position was deprecated
+  sed -i "s|.set_position|.position = |g" brainworkshop.pyw
 }
 
 package() {
