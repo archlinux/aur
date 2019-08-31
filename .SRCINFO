@@ -1,0 +1,16 @@
+pkgbase = mid2agb
+	pkgdesc = Process MIDI into M4A AGB compatible assembly
+	pkgver = 1
+	pkgrel = 1
+	url = https://code.caveoforig.in/alex/mid2agb
+	arch = i686
+	arch = x86_64
+	license = BSD-2
+	makedepends = git
+	provides = mid2agb
+	conflicts = mid2agb
+	source = git+https://code.caveoforig.in/alex/mid2agb.git
+	md5sums = SKIP
+
+pkgname = mid2agb
+
