@@ -1,7 +1,7 @@
 pkgbase = kernel-uek-devel
 	pkgdesc = Oracle's Unbreakable Enterprise Kernel development headers
 	pkgver = 4.14.35.1902
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/oracle/linux-uek
 	arch = x86_64
 	license = GPL

@@ -1,7 +1,7 @@
 # Maintainer: Bailey Kasin <bailey@gingertechnology.net>
 pkgname=kernel-uek-devel
 pkgver=4.14.35.1902
-pkgrel=5
+pkgrel=6
 pkgdesc="Oracle's Unbreakable Enterprise Kernel development headers"
 arch=('x86_64')
 url="https://github.com/oracle/linux-uek"
