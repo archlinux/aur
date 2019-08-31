@@ -2,11 +2,11 @@
 # Contributor: Somasis <somasis@cryptolab.net>
 
 pkgname=mugshot
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="Program to update personal user details"
 arch=('any')
-url="https://launchpad.net/mugshot"
+url="https://github.com/bluesabre/mugshot"
 license=('GPLv3')
 depends=('gtk3' 'python-pexpect' 'python-dbus' 'python-cairo' 'python-gobject' 'accountsservice')
 makedepends=('python-distutils-extra' 'intltool')
@@ -14,10 +14,10 @@ optdepends=('cheese: webcam support'
             'pidgin: update buddy icon'
             'libreoffice: update user details')
 options=(!emptydirs)
-source=("https://launchpad.net/mugshot/${pkgver%.*}/$pkgver/+download/mugshot-${pkgver}.tar.gz")
-sha256sums=('d2b52b0b1737bd65d6f6478c4f907b0f641899b5f3b130a155e95d170742f286')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('05698a36494405b5a76be0bf92e89a87fec4e3e6e6168378833de160c9741c84')
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgname}-${pkgver}"
   python setup.py install --root "${pkgdir}" --optimize=1
 }
