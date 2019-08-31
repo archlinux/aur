@@ -38,3 +38,5 @@ package() {
     convert "${srcdir}/${pkgname}.png" -resize "${_size}" "${pkgdir}/usr/share/icons/hicolor/${_size}/apps/${pkgname}.png"
   done
 }
+md5sums=('5c773fc7033090839aa5a2a1d09f2773'
+         'ac0b946b80fafd826eed8ec2c4c4e4a3')
