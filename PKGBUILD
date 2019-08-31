@@ -1,9 +1,9 @@
 # Maintainer: Feresey <p.milko1999@yandex.ru>
 pkgname=exo-player
 arch=(x86_64)
-pkgdesc="eXo music player based on moc, with QT5-based graphics"
+pkgdesc="eXo music player based on mocp, with QT5 graphics"
 pkgver=8.0
-pkgrel=5
+pkgrel=6
 source=(git://github.com/Feresey/exo)
 url=https://blaze.alwaysdata.net/exo
 sha1sums=('SKIP')
