@@ -1,6 +1,6 @@
 # Maintainer: Manuel Coenen <manuel.coenen@gmail.com>
 pkgname=duetcontrolserver
-pkgver=1.0.3.1
+pkgver=1.0.3.2
 pkgrel=1
 pkgdesc="Control server application for Duet 3 series"
 arch=('armv7h')
@@ -11,8 +11,8 @@ conflicts=('duetcontrolserver')
 depends=("duetruntime>=${pkgver}")
 options=(!strip staticlibs)
 backup=('opt/dsf/conf/config.json')
-source=("https://chrishamm.io/debian/dists/buster/dsf/binary-armhf/duetcontrolserver_${pkgver}.deb")
-sha256sums=('abc008c4b8150e01c0090a1094b0b13e48323376c46bc398609f4de98db7ff23')
+source=("https://pkg.duet3d.com/dists/unstable/armv7/binary-armhf/duetcontrolserver_${pkgver}.deb")
+sha256sums=('e2d6749e40c71a1676db46d7084bcaa30ec2affc99a52230f81ab4656df3432f')
 
 prepare() {
     tar -xf data.tar.xz
