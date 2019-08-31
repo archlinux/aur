@@ -50,7 +50,7 @@ $(BOOTDIR)/${DESTFILE}: $(BUILDDIR)/combined-boot-signed.efi
 $(BUILDDIR)/cmdline.txt:
 	@mkdir -p $(BUILDDIR)
 	[ -f ${CMDLINE} ] && \
-	    cp ${CMDLINE} $@ || \
+	    tr '\n' ' ' < ${CMDLINE} > $@ || \
 	    echo -n `</proc/cmdline` > $@
 
 $(BUILDDIR)/initramfs.img: $(UCODE) $(INITRAMFS)
