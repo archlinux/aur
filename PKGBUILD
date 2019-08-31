@@ -3,14 +3,15 @@ _name=poissonrecon
 _fragment="#commit=c1b1214"
 pkgname=${_name}
 pkgver=11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Screened Poisson Surface Reconstruction (and Smoothed Signed Distance Reconstruction)"
 arch=('i686' 'x86_64')
 url="http://www.cs.jhu.edu/~misha/Code/PoissonRecon/Version9.0/"
 license=('MIT')
 groups=('photogrametry')
-depends=('glibc' 'gcc-libs' 'libpng' 'libjpeg')
-makedepends=('git')
+depends=('glibc' 'gcc8-libs' 'libpng' 'libjpeg')
+makedepends=('git' 'gcc8')
+options=(!makeflags)
 provides=('poissonrecon' 'ssdrecon' 'surfacetrimmer')
 source=("${pkgname}::git+https://github.com/mkazhdan/PoissonRecon.git${_fragment}"
         "patch.diff::https://github.com/mkazhdan/PoissonRecon/commit/2fcb16ac782fac312dc3225bea33227cbc0d7488.diff")
@@ -26,6 +27,7 @@ md5sums=('SKIP'
 prepare() {
   cd ${srcdir}/${pkgname}
   git apply -v ${srcdir}/*.diff
+ sed -i -e 's/CC=gcc/CC=gcc-8/' -e 's/CXX=g++/CXX=g++-8/' Makefile
 }
 
 build() {
