@@ -1,6 +1,6 @@
 # Maintainer: Souper <me at supertransformer dot se>
 pkgname=soup-launcher
-pkgver=0.1.11
+pkgver=0.1.12
 pkgrel=1
 _srcname="SoupLauncher-$pkgver"
 pkgdesc='Soup Launcher is a custom Minecraft launcher specifically designed for Modded Minecraft.'
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('electron')
 makedepends=('nodejs' 'npm' 'git' 'unzip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('3de3bda7a3384ab5623aa2e6c72f5ecbeea029dba7e9e14deceec5ae352f95a8d5949e7a931357a531ac7f3a30d48bda3fc05cd8807e5247e8b96dced6dac020')
+sha512sums=('a38298df951783afafcf26ae608200129e6e7107ed24923d210345a0849a61d779ae14a6002571ad85992ac808680e62f5b132ac578ac162f55269912dc571a2')
 
 prepare() {
 	cd "$_srcname"
