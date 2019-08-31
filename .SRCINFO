@@ -1,0 +1,16 @@
+pkgbase = aif2pcm
+	pkgdesc = convert AIF audio to raw PCM waveform data for the GBA.
+	pkgver = 1
+	pkgrel = 1
+	url = https://code.caveoforig.in/alex/aif2pcm
+	arch = i686
+	arch = x86_64
+	license = BSD-2
+	makedepends = git
+	provides = aif2pcm
+	conflicts = aif2pcm
+	source = git+https://code.caveoforig.in/alex/aif2pcm.git
+	md5sums = SKIP
+
+pkgname = aif2pcm
+
