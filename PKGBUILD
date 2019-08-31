@@ -8,7 +8,8 @@ arch=('x86_64')
 url='http://www.openblas.net'
 license=('BSD')
 depends=('gcc-libs')
-makedepends=('perl'
+makedepends=('cmake'
+             'perl'
              'gcc-fortran'
              )
 conflicts=('openblas')

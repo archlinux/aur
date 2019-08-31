@@ -5,6 +5,7 @@ pkgbase = libopenblas
 	url = http://www.openblas.net
 	arch = x86_64
 	license = BSD
+	makedepends = cmake
 	makedepends = perl
 	makedepends = gcc-fortran
 	depends = gcc-libs
