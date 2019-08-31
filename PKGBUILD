@@ -1,6 +1,6 @@
 # Maintainer: Ckat <ckat@teknik.io>
 pkgname=fuf-git
-pkgver=0.1.r0.gcce61ca
+pkgver=0.1.r1.g82b4740
 pkgrel=1
 pkgdesc='Fairly Usable cli Filebrowser. dev/git version'
 arch=('any')
@@ -21,7 +21,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/$pkgname"
-  make
+  make VERSION="$pkgver"
 }
 
 package() {
