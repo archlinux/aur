@@ -2,7 +2,7 @@
 
 pkgname=libphidget22
 pkgver=1.4.20190828
-pkgrel=2
+pkgrel=1
 pkgdesc="user-space access library for the Phidget devices"
 conflicts=('libphidget')
 provides=('libphidget')
@@ -21,6 +21,4 @@ build() {
 package() {
    cd $pkgname-$pkgver
    make DESTDIR="$pkgdir/" install
-   install -d "${pkgdir}/usr/lib/udev/rules.d"
-   install "udev/99-phidgets.rules" "${pkgdir}/usr/lib/udev/rules.d"
 }
