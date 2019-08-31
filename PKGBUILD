@@ -1,17 +1,17 @@
 # Maintainer: Yesterday17 <t@yesterday17.cn>
 pkgname=go-drcom-jlu-git
 _pkgname=go-drcom-jlu
-pkgver=1.0.2
-pkgrel=3
+pkgver=1.0.3
+pkgrel=4
 pkgdesc="JLU drcom client written in golang."
 arch=('i686' 'x86_64')
 url="https://github.com/Yesterday17/go-drcom-jlu"
 license=('MIT')
-depends=()
 makedepends=(
 	'go'
 	'git'
 )
+backup=('etc/go-drcom-jlu/config.json')
 
 source=(
 	"$_pkgname::git+https://github.com/Yesterday17/go-drcom-jlu.git"
