@@ -12,7 +12,7 @@ pkgbase = libxc3
 	conflicts = libxc
 	options = staticlibs
 	source = https://gitlab.com/libxc/libxc/-/archive/3.0.1/libxc-3.0.1.tar.gz
-	sha256sums = 836692f2ab60ec3aca0cca105ed5d0baa7d182be07cc9d0daa7b80ee1362caf7
+	sha256sums = 4dd5d04db454687a21f49b0acd1c740d31dbc978bf97405c8f8ce9e7412ada1b
 
 pkgname = libxc3
 

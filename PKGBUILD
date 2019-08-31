@@ -13,11 +13,12 @@ conflicts=(libxc)
 makedepends=('gcc' 'gcc-fortran')
 optdepends=()
 source=(https://gitlab.com/libxc/libxc/-/archive/$pkgver/$_pkgname-$pkgver.tar.gz)
-sha256sums=('836692f2ab60ec3aca0cca105ed5d0baa7d182be07cc9d0daa7b80ee1362caf7')
+sha256sums=('4dd5d04db454687a21f49b0acd1c740d31dbc978bf97405c8f8ce9e7412ada1b')
 options=(staticlibs)
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
+  autoreconf -i
   FCCPP='/usr/bin/cpp -P -ansi' ./configure --prefix=/usr --enable-shared
   make
 }
