@@ -1,7 +1,7 @@
 pkgbase = prime
 	pkgdesc = PRIME Render Offload Launcher. Please visit https://download.nvidia.com/XFree86/Linux-x86_64/435.21/README/primerenderoffload.html to manually configure your Device.
 	pkgver = 0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://download.nvidia.com/XFree86/Linux-x86_64/435.21/README/primerenderoffload.html
 	arch = any
 	depends = bash
@@ -11,7 +11,7 @@ pkgbase = prime
 	source = prime
 	source = 10-nvidia.conf
 	md5sums = 6251c4caccc4786c13d253a7803e67ed
-	md5sums = f8a84dde30eb3bfe4b9a61254d741788
+	md5sums = 317c1136a06f746bdeb02b0914c63ab4
 
 pkgname = prime
 
