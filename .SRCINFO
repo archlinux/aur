@@ -21,7 +21,6 @@ pkgbase = mingw-w64-vtk-git
 	depends = mingw-w64-libpng
 	depends = mingw-w64-libxml2
 	depends = mingw-w64-hdf5
-	depends = mingw-w64-libtheora
 	depends = mingw-w64-freeglut
 	depends = mingw-w64-lz4
 	depends = mingw-w64-proj
