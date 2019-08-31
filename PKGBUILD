@@ -1,25 +1,30 @@
 # Maintainer: redfish <redfish@galactica.pw>
 
 pkgname=python-ipfshttpclient-git
-_reponame=py-ipfs-api
+_reponame=py-ipfs-http-client
 _name=ipfshttpclient
-pkgver=0.4.3
+pkgver=0.4.12
 pkgrel=1
 pkgdesc="Python IPFS API client library"
 arch=('any')
 provides=("python-ipfshttpclient=$pkgver")
 conflicts=("python-ipfshttpclient" "python-ipfsapi")
-url="https://pypi.python.org/pypi/ipfsapi"
+url="https://pypi.python.org/pypi/ipfshttpclient"
 license=('MIT')
 depends=('python'
+         'python-multiaddr'
+         'python-netaddr'
          'python-requests'
          'python-setuptools'
-	 'flit'
+         'python-six'
         )
+makedepends=('flit')
 checkdepends=('python-pytest' 'python-pytest-cov' 'python-pytest-ordering' 'python-pytest-mock'
-	      'python-pytest-localserver' 'python-pluggy' 'python-py')
+	      'python-pytest-localserver' 'python-pluggy' 'python-py'
+	      #python-py-cid # appears to be optional
+)
 optdepends=('go-ipfs: IPFS daemon') # an IPFS deamon is a checkdepend, but not required to be go-ipfs
-source=("git+https://github.com/ipfs/py-ipfs-api#branch=py-ipfs-http-client")
+source=("git+https://github.com/ipfs/${_reponame}")
 sha256sums=('SKIP')
 
 pkgver() {

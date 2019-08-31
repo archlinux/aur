@@ -2,5 +2,5 @@
 .*.swo
 src/
 pkg/
-py-ipfs-api
+py-ipfs-http-client
 *.tar.xz
