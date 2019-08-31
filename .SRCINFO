@@ -1,0 +1,21 @@
+pkgbase = python-multiaddr
+	pkgdesc = Python implementation of jbenet's multiaddr
+	pkgver = 0.0.8
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/multiaddr
+	arch = any
+	license = MIT
+	checkdepends = flake8
+	checkdepends = python-pytest
+	checkdepends = python-tox
+	depends = python
+	depends = python-base58
+	depends = python-netaddr
+	depends = python-setuptools
+	depends = python-six
+	depends = python-varint
+	source = https://pypi.io/packages/source/m/multiaddr/multiaddr-0.0.8.tar.gz
+	sha256sums = 2faec68b479945fe6b48dd2dc1f8bcccf939aa148836e3a1ab806d6c75db1238
+
+pkgname = python-multiaddr
+
