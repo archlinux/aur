@@ -1,16 +1,14 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=vulkan-caps-viewer
-pkgver=1.93
+pkgver=2.00
 pkgrel=1
 pkgdesc='Vulkan Hardware Capability Viewer'
 url='http://vulkan.gpuinfo.org/'
 arch=('x86_64')
 license=('GPL2')
-source=("https://github.com/SaschaWillems/VulkanCapsViewer/archive/$pkgver.tar.gz"
-        'vulkan-caps-viewer.desktop')
-sha1sums=('4ed4bf8a0e796be7546d7408c61fe8743dadea17'
-          '7ccdb4b4487b43bb428c32994092c00ca14f594a')
+source=("https://github.com/SaschaWillems/VulkanCapsViewer/archive/$pkgver.tar.gz")
+sha1sums=('a1bf6e5072cbdbd10d7b7101217e616fff38bead')
 makedepends=(qt5-base)
 depends=(vulkan-icd-loader qt5-base qt5-x11extras)
 
@@ -29,6 +27,7 @@ prepare() {
     QMAKE_CFLAGS="$CFLAGS" \
     QMAKE_CXXFLAGS="$CXXFLAGS" \
     QMAKE_LFLAGS="$LDFLAGS" \
+    PREFIX=/usr \
     ../VulkanCapsViewer-$pkgver
 }
 
@@ -37,13 +36,9 @@ build() {
 }
 
 package() {
-  # App
-  install -dm755 "$pkgdir"/usr/bin
-  install -m755 build/Win32/Release/vulkanCapsViewer "$pkgdir"/usr/bin
+  make -C build INSTALL_ROOT="$pkgdir" install
 
-  # Desktop shortcut
-  install -Dm644 vulkan-caps-viewer.desktop \
-    "$pkgdir"/usr/share/applications/vulkan-caps-viewer.desktop
+  # There's a bug preventing this from being installed automatically
   install -Dm644 VulkanCapsViewer-$pkgver/gfx/android_icon_256.png \
     "$pkgdir"/usr/share/icons/hicolor/256x256/apps/vulkanCapsViewer.png
 }
