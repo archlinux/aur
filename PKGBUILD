@@ -15,12 +15,12 @@ source=("git+https://github.com/Xunius/markdown2zim.git")
 md5sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/${pkgname%-git}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$srcdir/${pkgname%-git}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-	cd "$srcdir/${pkgname%-git}"
+  cd "$srcdir/${pkgname%-git}"
   for n in markdown2zim zim2markdown; do
     mkdir $n
     cp -r lib/ $n/
@@ -29,7 +29,7 @@ prepare() {
 }
 
 build() {
-	cd "$srcdir/${pkgname%-git}"
+  cd "$srcdir/${pkgname%-git}"
   for n in markdown2zim zim2markdown; do
     pushd $n
     zip -r $n ./*
@@ -39,7 +39,7 @@ build() {
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}"
+  cd "$srcdir/${pkgname%-git}"
   for n in markdown2zim zim2markdown; do
     install -Dm755 $n/$n "$pkgdir/usr/bin/$n"
   done
