@@ -6,7 +6,6 @@ pkgbase = brainworkshop
 	install = brainworkshop.install
 	arch = any
 	license = GPL
-	depends = python2
 	depends = python2-pyglet
 	depends = avbin7
 	depends = openal
