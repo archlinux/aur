@@ -1,0 +1,16 @@
+pkgbase = gbagfx
+	pkgdesc = Process graphics files for compiling into GBA titles.
+	pkgver = 1
+	pkgrel = 1
+	url = https://code.caveoforig.in/alex/gbagfx
+	arch = i686
+	arch = x86_64
+	license = BSD-2
+	makedepends = git
+	provides = gbagfx
+	conflicts = gbagfx
+	source = git+https://code.caveoforig.in/alex/gbagfx.git
+	md5sums = SKIP
+
+pkgname = gbagfx
+
