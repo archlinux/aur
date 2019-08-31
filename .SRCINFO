@@ -1,7 +1,7 @@
 pkgbase = libretro-tic-80-git
 	pkgdesc = TIC-80 is a fantasy computer for making, playing and sharing tiny games.
 	pkgver = 992.634f3e7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/libretro/TIC-80
 	arch = i686
 	arch = x86_64

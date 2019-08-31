@@ -2,7 +2,7 @@
 
 pkgname=libretro-tic-80-git
 pkgver=992.634f3e7
-pkgrel=1
+pkgrel=2
 pkgdesc="TIC-80 is a fantasy computer for making, playing and sharing tiny games."
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="https://github.com/libretro/TIC-80"
