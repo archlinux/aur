@@ -1,18 +1,17 @@
 # Maintainer:  Alexei Colin <ac at alexeicolin dot com>
 
 pkgname=ti-cgt-msp430
-pkgver=18.12.0.LTS
+pkgver=19.6.0.STS
 pkgrel=1
 pkgdesc="Texas Instruments Code Generation Tools (compiler) for MSP430"
 arch=('x86_64')
-url="http://software-dl.ti.com/codegen/non-esd/downloads/index.htm#MSP430"
-#url="http://www.ti.com/tools-software/compilers/download.html"
+url="https://www.ti.com/tool/MSP-CGT"
 license=('custom')
 
 optdepends=('ccstudio')
 
 _installer=ti_cgt_msp430_${pkgver}_linux_installer_x86.bin
-source=("http://downloads.ti.com/codegen/esd/cgt_public_sw/MSP430/${pkgver}/${_installer}")
+source=("http://software-dl.ti.com/codegen/esd/cgt_public_sw/MSP430/${pkgver}/${_installer}")
 
 
 options=(!strip libtool staticlibs emptydirs !purge !zipman)
@@ -45,9 +44,7 @@ package() {
     # Match permissions to ccstudio package (see notes in ccstudio.install)
     find $pkgdir/$_destdir/$_ccsdir -type d -exec chmod 0775 {} \;
 
-    # Version in filename is out of date upstream
-    # File is gone in this version. Oh well.
-    #install -D -m0644 $srcdir/${_installpath}/${pkgname}_${pkgver}/MSP430_RTS_18.12.0.LTS.html $pkgdir/usr/share/licenses/$pkgname/LICENSE.html
+    install -D -m0644 $srcdir/${_installpath}/${pkgname}_${pkgver}/MSP430_RTS_${pkgver}_manifest.html $pkgdir/usr/share/licenses/$pkgname/LICENSE.html
 }
 
-sha256sums=('cd77891ece4aaf7f07eb96549f4d18f184844aee845eeeb0a51ace4798d97f83')
+sha256sums=('842eb32a5104b9b1bc91e00d3a3d92d25829a7998ea83db4a1cdf8052685622c')
