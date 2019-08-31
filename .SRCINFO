@@ -1,0 +1,16 @@
+pkgbase = bin2c-yama
+	pkgdesc = Convert binary data to C source code equivalent
+	pkgver = 1
+	pkgrel = 1
+	url = https://code.caveoforig.in/alex/bin2c-yama
+	arch = i686
+	arch = x86_64
+	license = BSD-2
+	makedepends = git
+	provides = bin2c-yama
+	conflicts = bin2c-yama
+	source = git+https://code.caveoforig.in/alex/bin2c-yama.git
+	md5sums = SKIP
+
+pkgname = bin2c-yama
+
