@@ -1,7 +1,7 @@
 # Maintainer: Alexei Colin <ac@alexeicolin.com>
 
 pkgname=zephyr-sdk
-pkgver=0.10.1
+pkgver=0.10.3
 pkgrel=1
 pkgdesc="SDK for Zephyr real-time operating system"
 arch=('x86_64')
@@ -120,7 +120,9 @@ package ()
 #
 # $ wget https://github.com/zephyrproject-rtos/zephyr/archive/master.tar.gz
 # $ tar xf master.tar.gz
-# $ cd zephyr-master/samples/synchronization
+# $ cd zephyr-master
+# $ source zephyr-env.sh
+# $ cd samples/synchronization
 # $ mkdir build && cd build
 # $ cmake -GNinja -DBOARD=qemu_cortex_m3 ..
 # $ ninja run
@@ -132,5 +134,5 @@ package ()
 # More info: https://docs.zephyrproject.org/latest/boards/arm/qemu_cortex_m3/doc/board.html
 
 
-sha256sums=('cdf1b036acd6692a700c1b4e3e08983d1363cc802a9f79533c9f15ee72c40b9c'
+sha256sums=('3af6de7432e02730ca11cb92d7a473d8391c80d1cc233f1a4d6d7496475cff13'
             '7a1257272c64bdec281283d391e3149cece065935c9e8394d6bece32d0f6fc05')
