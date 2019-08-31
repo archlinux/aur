@@ -1,0 +1,16 @@
+pkgbase = sunxi-awusb-dkms
+	pkgdesc = DKMS module for Allwinner devices
+	pkgver = 0.5
+	pkgrel = 1
+	url = https://github.com/linux-sunxi/sunxi-livesuite
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = dkms
+	conflicts = cubieboard-livesuit
+	source = git+https://github.com/M0Rf30/sunxi-awusb.git
+	md5sums = SKIP
+
+pkgname = sunxi-awusb-dkms
+
