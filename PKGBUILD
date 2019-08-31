@@ -2,7 +2,7 @@
 pkgname=fuf-git
 pkgver=0.1.r0.gcce61ca
 pkgrel=1
-pkgdesc='Fairly Usable cli Filemanager. dev/git version'
+pkgdesc='Fairly Usable cli Filebrowser. dev/git version'
 arch=('any')
 url=https://github.com/ckath/fuf
 license=('MIT')
