@@ -1,7 +1,7 @@
 pkgbase = deezer
 	pkgdesc = A proprietary music streaming service
 	pkgver = 4.16.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.deezer.com/
 	arch = any
 	license = custom:"Copyright (c) 2006-2018 Deezer S.A."
@@ -21,7 +21,7 @@ pkgbase = deezer
 	source = 0001-MPRIS-interface.patch
 	source = https://github.com/SibrenVasse/deezer/raw/mpris/extra_node_modules.tar.xz
 	md5sums = 5dd856378377ddc944ae99d3ca958016
-	md5sums = bb851102d63a9cb396b42d7a61c5104c
+	md5sums = 36d184ea3ad5a0fccd71bebeed0ade27
 	md5sums = 2a0a5dd017a7a302cf927f01c9fdbe85
 	md5sums = c68c0f0a44afc016da5ac2a692bc48ca
 	md5sums = 0bab4bf4a6802757b84efbb552a7875b
