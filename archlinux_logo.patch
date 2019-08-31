@@ -1,0 +1,31 @@
+--- cpu-g.py.orig	2019-08-31 13:31:50.361597000 +0200
++++ cpu-g.py	2019-08-31 15:29:01.168812987 +0200
+@@ -337,10 +337,16 @@
+         except AttributeError:
+             values = platform.dist()
+ 
+-        if len(values) !=0:
++        if len(values) !=0 and ''.join(values) != '':
+             return "%s %s %s" %(values[0], values[1], values[2])
+         else:
+-            return self.readfile('/etc/lsb-release').strip()
++            values = os.popen('lsb_release -d -s').read().strip()
++            if values[0] == '"' and values[-1] == '"':
++                values = values[1:-1]
++            if len(values) != 0:
++                return values
++            else:
++                return self.readfile('/etc/lsb-release').strip()
+ 
+     def gccver(self):
+         gcc_version = os.popen('gcc -dumpversion').read().strip()
+@@ -421,6 +427,9 @@
+ 	#LinuxMint
+ 	elif re.findall("Mint\s*",dist):
+ 	    label = 'linuxmintlogo.png'
++        # Arch Linux
++        elif re.findall("Arch Linux\s*",dist):
++            label = 'archlinux.png'
+ 	#If any distro not found then set standard Tux logo
+ 	elif re.findall("Linux\s*",dist):
+ 	    label = 'linux_logo.png'

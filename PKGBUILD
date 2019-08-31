@@ -3,7 +3,7 @@
 pkgname=cpu-g-bzr
 _pkgname=cpug
 pkgver=r13
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="An application that shows useful information about your CPU, Motherboard and some general information about your system."
 url="http://cpug.sourceforge.net/"
@@ -16,11 +16,12 @@ provides=('cpu-g')
 conflicts=('cpu-g')
 source=('bzr+lp:/cpug'
         'cpu-g_desktop.patch'
-        'xorg_version.patch')
+        'archlinux_logo.patch'
+        'archlinux.png')
 sha256sums=('SKIP'
             'dbe89f2fd631880dc2fd6239fc035fe16b91543a5a80acc57c2ec407d8e00a34'
-            '6a3af8148005bb255591681fc8a32568c07eee705012116f8a80a356130fcc42')
-install="${pkgname}.install"
+            'f68ad58db224e87f193cae84cd2a8e41fa164c9a38156d2638a2f08a8a621158'
+            '5badb15ab15f5b004c510f17622edb0a6c781b6f8dc8638e14e8d30f14d17c57')
 
 pkgver() {
   cd "${_pkgname}"
@@ -30,7 +31,9 @@ pkgver() {
 prepare() {
   cd "${_pkgname}"
   patch -p0 -i "${srcdir}/cpu-g_desktop.patch"
-  patch -p0 -i "${srcdir}/xorg_version.patch"
+  # Add Arch Linux logo
+  patch -p0 -i "${srcdir}/archlinux_logo.patch"
+  install -m 644 -t "gfx/logos/distro_logo/" "${srcdir}/archlinux.png"
 }
 
 package() {

@@ -1,10 +1,9 @@
 pkgbase = cpu-g-bzr
 	pkgdesc = An application that shows useful information about your CPU, Motherboard and some general information about your system.
 	pkgver = r13
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = http://cpug.sourceforge.net/
-	install = cpu-g-bzr.install
 	arch = any
 	license = GPL3
 	makedepends = bzr
@@ -17,10 +16,12 @@ pkgbase = cpu-g-bzr
 	conflicts = cpu-g
 	source = bzr+lp:/cpug
 	source = cpu-g_desktop.patch
-	source = xorg_version.patch
+	source = archlinux_logo.patch
+	source = archlinux.png
 	sha256sums = SKIP
 	sha256sums = dbe89f2fd631880dc2fd6239fc035fe16b91543a5a80acc57c2ec407d8e00a34
-	sha256sums = 6a3af8148005bb255591681fc8a32568c07eee705012116f8a80a356130fcc42
+	sha256sums = f68ad58db224e87f193cae84cd2a8e41fa164c9a38156d2638a2f08a8a621158
+	sha256sums = 5badb15ab15f5b004c510f17622edb0a6c781b6f8dc8638e14e8d30f14d17c57
 
 pkgname = cpu-g-bzr
 
