@@ -16,10 +16,10 @@ arch=("i686" "x86_64" "armv7h")
 url="http://pulseaudio.org/"
 license=("GPL" "LGPL")
 depends=(lib{ltdl,soxr,asyncns,cap,xtst,sm,sndfile} "rtkit" "speexdsp" "tdb"
-         "orc" "webrtc-audio-processing" {jack2-,}dbus "systemd" "avahi" "openssl"
+         "orc" "webrtc-audio-processing" jack2 dbus "systemd" "avahi" "openssl"
          "lirc" bluez{,-libs} "sbc" python-{pyqt5,dbus,sip} "fftw") #json-c
 makedepends=("git" lib{asyncns,cap,xtst,sm,sndfile,tool,soxr} "attr" "rtkit"
-             "speexdsp" "tdb" "systemd" {jack2-,}dbus "avahi" bluez{,-libs}
+             "speexdsp" "tdb" "systemd" jack2 dbus "avahi" bluez{,-libs}
              "intltool"  "sbc" "lirc" "openssl" "fftw" "orc" "gtk3"
              "webrtc-audio-processing" "check" "autoconf-archive") #gconf
 optdepends=("alsa-plugins: ALSA support"
