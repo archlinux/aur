@@ -17,7 +17,6 @@ pkgbase = mingw-w64-paraview-git
 	depends = mingw-w64-glew
 	depends = mingw-w64-freetype2
 	depends = mingw-w64-libxml2
-	depends = mingw-w64-libtheora
 	depends = mingw-w64-libtiff
 	depends = mingw-w64-jsoncpp
 	depends = mingw-w64-hdf5
