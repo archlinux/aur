@@ -6,7 +6,7 @@
 SUMO_HOME='/usr/share/sumo'
 pkgname=('sumo' 'sumo-doc')
 pkgbase=sumo
-pkgver=1.2.0
+pkgver=1.3.1
 _pkgver="${pkgver//./_}"
 pkgrel=2
 pkgdesc="Traffic simulation modelling road vehicles, public transport and pedestrians."
@@ -16,18 +16,14 @@ license=('GPL')
 depends=('openscenegraph' 'python' 'proj' 'fox' 'xerces-c' 'gdal' 'gl2ps')
 makedepends=('cmake' 'help2man' 'swig' 'gtest')
 source=("https://github.com/eclipse/sumo/archive/v${_pkgver}.tar.gz"
-        "${pkgbase}.desktop"
-        "0001-Properly-use-DESTDIR-prefix-and-root.patch")
+        "${pkgbase}.desktop")
 
-sha256sums=('2f749ece251ca1e0c9b77535faaadd77efcf8aa14e0eb9c72fe0e29a4ab16d50'
-            'd9ec82a1b56ebeaf31c6382f6d903baf0767e440b640a713e587d7e09f72d213'
-            '2dc86272997f898908afab9136bb423e378f60c34bfa92cdbd2fbb2a6b0d6c25')
+sha256sums=('a1c1f62792b8024fd3ba7a7c6b86cc6196922720c65ee50eed67ac7e2b79c6e0'
+            'd9ec82a1b56ebeaf31c6382f6d903baf0767e440b640a713e587d7e09f72d213')
 
 prepare() {
     cd ${pkgbase}-${_pkgver}
     sed -i "/^Version=/ s/$/${pkgver}/" "${srcdir}/${pkgbase}.desktop"
-
-    patch -Np1 -i "${srcdir}/0001-Properly-use-DESTDIR-prefix-and-root.patch"
 
     cmake -H. -Bbuild \
         -DCMAKE_C_FLAGS:STRING="${CFLAGS}" \
