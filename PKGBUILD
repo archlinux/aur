@@ -1,6 +1,6 @@
 # Maintainer: Manuel Coenen <manuel.coenen@gmail.com>
 pkgname=duettools
-pkgver=1.0.3.1
+pkgver=1.0.3.2
 pkgrel=1
 pkgdesc="Optional tools (code examples)"
 arch=('armv7h')
@@ -10,8 +10,8 @@ provides=('duettools')
 conflicts=('duettools')
 depends=("duetcontrolserver>=${pkgver}")
 options=(!strip staticlibs)
-source=("https://chrishamm.io/debian/dists/buster/dsf/binary-armhf/duettools_${pkgver}.deb")
-sha256sums=('5c927eda24b1d99c157086fc20fa34a7ba4cd482a96339dd81cba5d9bddf8605')
+source=("https://pkg.duet3d.com/dists/unstable/armv7/binary-armhf/duettools_${pkgver}.deb")
+sha256sums=('6a5d0cb2677f13b384f81590550354ef617d2756ce75f8743b16bcb8988049e1')
 
 prepare() {
     tar -xf data.tar.xz
