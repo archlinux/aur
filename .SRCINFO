@@ -1,0 +1,16 @@
+pkgbase = preproc
+	pkgdesc = Preprocessor for pret repositories
+	pkgver = 1
+	pkgrel = 1
+	url = https://code.caveoforig.in/alex/preproc
+	arch = i686
+	arch = x86_64
+	license = BSD-2
+	makedepends = git
+	provides = preproc
+	conflicts = preproc
+	source = git+https://code.caveoforig.in/alex/preproc.git
+	md5sums = SKIP
+
+pkgname = preproc
+
