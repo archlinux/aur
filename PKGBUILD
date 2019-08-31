@@ -21,7 +21,7 @@ sha256sums=('SKIP'
 pkgver() {
   cd "${_gitname}"
   echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
-  git submodule update --init --recursive
+  echo $(git submodule update --init --recursive)
 }
 
 build() {
