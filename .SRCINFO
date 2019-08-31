@@ -1,4 +1,5 @@
 pkgbase = pulsemeter
+	pkgdesc = Pulse energy meter with Arduino and simple LED sensor
 	pkgver = 1.4.4
 	pkgrel = 1
 	url = https://github.com/ahpohl/pulsemeter
