@@ -1,6 +1,6 @@
 # Maintainer: Ultracoolguy <dummyd241 at gmaildotcom>
 pkgname="switch-lan-play"
-pkgver=v0.1.0.r36.g787a27d
+pkgver=v0.2.1.r0.g1c26ca6
 pkgrel=1
 epoch=0
 pkgdesc="A program for connecting to switch-lan-play servers-see url for more info"
