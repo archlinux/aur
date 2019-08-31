@@ -1,0 +1,11 @@
+--- ./configure.ac	2019-08-31 10:40:06.873284004 +0200
++++ ./configure.ac	2019-08-31 10:39:53.376617487 +0200
+@@ -41,7 +41,7 @@
+ 
+ AC_LANG_POP(C++)
+ 
+-CXXFLAGS="-O2 -Wextra -pedantic -Werror -Wfatal-errors -Wall -Wshadow -Wno-long-long -g "
++CXXFLAGS="-O2 -Wextra -pedantic -Werror -Wfatal-errors -Wall -Wshadow -Wno-long-long -Wno-parentheses -Wno-deprecated-copy -g "
+ 
+ #Trying to set GTKMM-2.4 using pkg-config
+ PKG_CHECK_MODULES(GTKMM, [gtkmm-2.4 >= 2.8.0], have_gtkmm=true, have_gtkmm=false)
