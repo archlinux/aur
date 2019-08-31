@@ -1,0 +1,54 @@
+diff -Naur cpu-g.orig/bin/cpu-g cpu-g.new/bin/cpu-g
+--- cpu-g.orig/bin/cpu-g	2019-08-31 17:47:20.324500394 +0200
++++ cpu-g.new/bin/cpu-g	2019-08-31 17:47:43.654443166 +0200
+@@ -37,7 +37,7 @@
+         sys.path.insert(1, '/opt/extras.ubuntu.com/cpu-g/share/cpu-g')
+     else:
+         sys.path.insert(1,
+-                        os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '../src')))
++                        os.path.normpath(os.path.join(os.path.realpath(__file__), '../src')))
+     from cpug import CPUG
+     cpug = CPUG()
+     Gtk.main()
+diff -Naur cpu-g.orig/data/cpu-g.desktop cpu-g.new/data/cpu-g.desktop
+--- cpu-g.orig/data/cpu-g.desktop	2019-08-31 17:47:20.324500394 +0200
++++ cpu-g.new/data/cpu-g.desktop	2019-08-31 17:47:43.654443166 +0200
+@@ -1,11 +1,9 @@
+-#!/usr/bin/env xdg-open
+-
+ [Desktop Entry]
+ Encoding=UTF-8
+ Name=CPU-G
+-TryExec=/opt/extras.ubuntu.com/cpu-g/bin/cpu-g
+-Exec=/opt/extras.ubuntu.com/cpu-g/bin/cpu-g
+-Icon=/opt/extras.ubuntu.com/cpu-g/share/icons/cpu-g.png
++TryExec=cpu-g
++Exec=cpu-g
++Icon=cpu-g
+ StartupNotify=true
+ Terminal=false
+ Type=Application
+diff -Naur cpu-g.orig/src/comun.py cpu-g.new/src/comun.py
+--- cpu-g.orig/src/comun.py	2019-08-31 17:47:20.334500370 +0200
++++ cpu-g.new/src/comun.py	2019-08-31 17:47:43.654443166 +0200
+@@ -52,8 +52,7 @@
+     ROOTDIR = os.path.dirname(__file__)
+     LANGDIR = os.path.normpath(os.path.join(ROOTDIR, '../template1'))
+     APPDIR = ROOTDIR
+-    DEBIANDIR = os.path.normpath(os.path.join(ROOTDIR, '../debian'))
+-    CHANGELOG = os.path.join(DEBIANDIR, 'changelog')
++    CHANGELOG = os.path.normpath(os.path.join(APPDIR, '../changelog'))
+     ICON = os.path.normpath(os.path.join(ROOTDIR, '../data/icons/cpu-g.png'))
+     LOGOSDIR = os.path.normpath(os.path.join(ROOTDIR, '../data/logos'))
+     DISTROSDIR = os.path.normpath(os.path.join(ROOTDIR, '../data/distros'))
+diff -Naur cpu-g.orig/src/cpug.py cpu-g.new/src/cpug.py
+--- cpu-g.orig/src/cpug.py	2019-08-31 17:47:20.334500370 +0200
++++ cpu-g.new/src/cpug.py	2019-08-31 17:48:01.134400236 +0200
+@@ -1177,7 +1177,6 @@
+         self.distribution.set_text(inv.distro())
+         distro_logo = inv.get_distro_logo()
+         if distro_logo is not None:
+-            print(distro_logo)
+             self.distro_logo.set_from_file(distro_logo)
+         #
+         self.graphic_controller.set_text(inv.open_gl('VGA'))
