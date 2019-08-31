@@ -14,7 +14,7 @@
 
 pkgname="renoise"
 pkgver="3.2.0"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="A music composition program"
 arch=("i686" "x86_64")
 url="https://www.renoise.com"
@@ -46,8 +46,8 @@ package() {
 
     install -Dm 755 "renoise" "$pkgdir/usr/bin/renoise"
     install -Dm 644 "Installer/renoise.desktop" "$pkgdir/usr/share/applications/renoise.desktop"
-    install -Dm 644 "Installer/renoise.1.gz" "$pkgdir/usr/share/man/man1/renoise3.1.gz"
-    install -Dm 644 "Installer/renoise-pattern-effects.5.gz" "$pkgdir/usr/share/man/man5/renoise3-pattern-effects.5.gz" 
+    install -Dm 644 "Installer/renoise.1.gz" "$pkgdir/usr/share/man/man1/renoise.1.gz"
+    install -Dm 644 "Installer/renoise-pattern-effects.5.gz" "$pkgdir/usr/share/man/man5/renoise-pattern-effects.5.gz"
     install -Dm 644 "License.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm 644 "Installer/renoise.xml" "$pkgdir/usr/share/mime/packages/renoise.xml"
 }

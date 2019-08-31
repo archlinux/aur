@@ -1,7 +1,7 @@
 pkgbase = renoise
 	pkgdesc = A music composition program
 	pkgver = 3.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.renoise.com
 	arch = i686
 	arch = x86_64
