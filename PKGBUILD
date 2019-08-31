@@ -1,15 +1,15 @@
 # Maintainer: Manuel Coenen <manuel.coenen@gmail.com>
 pkgname=duetwebcontrol
 pkgver=2.0.0.RC8.b3
-pkgrel=1
+pkgrel=2
 pkgdesc="Official web interface for Duet electronics"
 arch=('any')
 url="https://github.com/chrishamm/DuetWebControl"
 license=('GPL3')
 provides=('duetwebcontrol')
 conflicts=('duetwebcontrol')
-source=("https://chrishamm.io/debian/dists/buster/dsf/binary-armhf/duetwebcontrol_2.0.0-3.deb")
-sha256sums=('ab5e49ec7acf36f6e7bedfad3889504264e86ac24be6a73b6934658edbc702c6')
+source=("https://pkg.duet3d.com/dists/unstable/armv7/binary-armhf/duetwebcontrol_2.0.0-3.deb")
+sha256sums=('a2f02baaf32fa14323dd58a31af9c98ec651d212da75e4e0388dc8f1d26c7c10')
 
 prepare() {
     tar -xf data.tar.xz
