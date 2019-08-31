@@ -1,0 +1,12 @@
+pkgbase = pktriot
+	pkgdesc = The official Packetriot command line tool.
+	pkgver = 0.9.5
+	pkgrel = 1
+	url = https://packetriot.com
+	arch = x86_64
+	license = unknown
+	source = https://pktriot-dl-bucket.sfo2.digitaloceanspaces.com/releases/linux/pktriot-0.9.5-1.x86_64.rpm
+	md5sums = 3f2f2a53d31f103e9505bbc2a6653c4c
+
+pkgname = pktriot
+
