@@ -1,0 +1,14 @@
+pkgbase = python-varint
+	pkgdesc = Simple Python varint implementation
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/varint
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-setuptools
+	source = https://pypi.io/packages/source/v/varint/varint-1.0.2.tar.gz
+	sha256sums = a6ecc02377ac5ee9d65a6a8ad45c9ff1dac8ccee19400a5950fb51d594214ca5
+
+pkgname = python-varint
+
