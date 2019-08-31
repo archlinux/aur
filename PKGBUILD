@@ -1,7 +1,7 @@
 # Maintainer: Tommy Li <ttoo74@gmail.com>
 pkgname=python-certipy
 _name=${pkgname#python-}
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="A simple python tool for creating certificate authorities and certificates on the fly"
 arch=(any)
@@ -13,7 +13,7 @@ checkdepends=()
 optdepends=()
 options=()
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('3461c5ff28eda977185132d4c6d4393989c7dd996ba8c780b07b9b4e679d455a')
+sha256sums=('695704b7716b033375c9a1324d0d30f27110a28895c40151a90ec07ff1032859')
 
 prepare() {
 	# fix permission error
