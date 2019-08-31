@@ -1,0 +1,15 @@
+pkgbase = ramscrgen
+	pkgver = 1
+	pkgrel = 1
+	url = https://code.caveoforig.in/alex/ramscrgen
+	arch = i686
+	arch = x86_64
+	license = BSD-2
+	makedepends = git
+	provides = ramscrgen
+	conflicts = ramscrgen
+	source = git+https://code.caveoforig.in/alex/ramscrgen.git
+	md5sums = SKIP
+
+pkgname = ramscrgen
+
