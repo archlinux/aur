@@ -1,5 +1,5 @@
 pkgname=python-chaospy
-pkgver=3.0.9
+pkgver=3.0.11
 pkgrel=1
 pkgdesc="Toolbox for performing uncertainty quantification"
 arch=('any')
@@ -8,7 +8,7 @@ license=('BSD')
 makedepends=('python-setuptools')
 depends=('python-scikit-learn')
 source=("https://github.com/jonathf/chaospy/archive/v${pkgver}.tar.gz")
-sha256sums=('1bbaf2e34a15347e916ddb7563992196b15adee89d7010f0e9e01b6b07f20389')
+sha256sums=('540835cc6402320973126c72bbf10880e0a931ae9abd20bc22f7ebe87dc066b5')
 
 build() {
   cd "${srcdir}/chaospy-$pkgver"
