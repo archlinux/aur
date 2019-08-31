@@ -1,13 +1,17 @@
 pkgbase = hunspell-gl
 	pkgdesc = Galician hunspell dictionaries. RAG/ILG normative
 	pkgver = 18.07
-	pkgrel = 1
-        epoch = 2
+	pkgrel = 2
+	epoch = 2
 	url = https://github.com/meixome/hunspell-gl
 	arch = any
 	license = GPL3
+	makedepends = scons
+	makedepends = python-pyicu
 	optdepends = hunspell: the spell checking libraries and apps
-	source = https://github.com/meixome/hunspell-gl/archive/18.07.tar.gz
+	provides = hunspell-gl
+	conflicts = hunspell-gl
+	source = hunspell-gl.tar.gz::https://github.com/meixome/hunspell-gl/archive/18.07.tar.gz
 	md5sums = f997f11bcfc0eefd923af03d71c107ad
 
 pkgname = hunspell-gl
