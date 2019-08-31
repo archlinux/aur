@@ -1,6 +1,6 @@
 pkgbase = shadow-tech
 	pkgdesc = Shadow launcher (stable version)
-	pkgver = 4.4.24
+	pkgver = 4.7.10
 	pkgrel = 1
 	url = http://shadow.tech
 	install = shadow-tech.install
@@ -33,7 +33,7 @@ pkgbase = shadow-tech
 	depends = libsndio-61-compat
 	provides = shadow-tech
 	source = https://update.shadow.tech/launcher/prod/linux/ubuntu_18.04/Shadow.zip
-	md5sums = f9fe491fae99783cb41a80d35aac7d79
+	md5sums = 2057d3656d67156d52b7fb3bf1f5abaa
 
 pkgname = shadow-tech
 

@@ -6,7 +6,7 @@
 # Made with https://github.com/NicolasGuilloux/blade-shadow-beta
 _commit=9add3366d25530d51d168608c54b5339b64d2a4e
 pkgname=shadow-tech
-pkgver=4.4.24
+pkgver=4.7.10
 pkgrel=1
 pkgdesc="Shadow launcher (stable version)"
 arch=('x86_64')
@@ -15,7 +15,7 @@ license=('unknown')
 depends=('desktop-file-utils' 'freetype2' 'libuv' 'gconf' 'hicolor-icon-theme' 'json-c' 'libappindicator-gtk2' 'libbsd' 'libcurl-gnutls' 'libdrm' 'libnotify' 'libva' 'libxtst' 'nss' 'opus' 'qt5-base' 'qt5-svg' 'sdl2' 'libappindicator' 'libcurl-compat' 'sdl' 'gcc7-libs' 'ttf-dejavu' 'libxss' 'libsndio-61-compat')
 provides=(shadow-tech)
 source=('https://update.shadow.tech/launcher/prod/linux/ubuntu_18.04/Shadow.zip')
-md5sums=('f9fe491fae99783cb41a80d35aac7d79')
+md5sums=('2057d3656d67156d52b7fb3bf1f5abaa')
 install=$pkgname.install
 
 # Build the package
@@ -47,6 +47,7 @@ package() {
 
 	sed -i -e 's/^Categories=.*$/Categories=Games;Game;Utility;Virtualization/g' shadow.desktop
 	sed -i -e 's/^Icon=.*$/Icon=shadow.png/g' shadow.desktop
+	sed -i -e 's/^Exec=.*$/& --no-sandbox/g' shadow.desktop
 	mv shadow.desktop "$srcdir/shadow.desktop"
 
 	# Move the source directory
