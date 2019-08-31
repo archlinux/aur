@@ -10,7 +10,7 @@ optdepends=('w3m: image previews')
 conflicts=('fuf-git')
 provides=('fuf')
 install=fuf.install
-source=("$pkgname::https://github.com/Ckath/fuf/archive/v$pkgver.tar.gz")
+source=("https://github.com/Ckath/fuf/archive/v$pkgver.tar.gz")
 md5sums=('b71cc7ddbe66bc675a4e5738edfc410a')
 
 build() {

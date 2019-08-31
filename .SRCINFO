@@ -9,7 +9,7 @@ pkgbase = fuf
 	optdepends = w3m: image previews
 	provides = fuf
 	conflicts = fuf-git
-	source = fuf::https://github.com/Ckath/fuf/archive/v0.1.tar.gz
+	source = https://github.com/Ckath/fuf/archive/v0.1.tar.gz
 	md5sums = b71cc7ddbe66bc675a4e5738edfc410a
 
 pkgname = fuf
