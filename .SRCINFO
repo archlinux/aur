@@ -17,6 +17,7 @@ pkgbase = python-ipfshttpclient
 	depends = python-netaddr
 	depends = python-requests
 	depends = python-setuptools
+	depends = python-six
 	optdepends = go-ipfs: IPFS daemon
 	conflicts = python-ipfsapi
 	source = https://pypi.io/packages/source/i/ipfshttpclient/ipfshttpclient-0.4.12.tar.gz

@@ -14,9 +14,12 @@ depends=('python'
          'python-netaddr'
          'python-requests'
          'python-setuptools'
+         'python-six'
         )
 checkdepends=('python-pytest' 'python-pytest-cov' 'python-pytest-ordering' 'python-pytest-mock'
-	      'python-pytest-localserver' 'python-pluggy' 'python-py')
+	      'python-pytest-localserver' 'python-pluggy' 'python-py'
+	      #python-py-cid # appears to be optional
+	     )
 optdepends=('go-ipfs: IPFS daemon') # an IPFS deamon is a checkdepend, but not required to be go-ipfs
 source=("https://pypi.io/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
 
