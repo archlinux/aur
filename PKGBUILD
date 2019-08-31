@@ -1,13 +1,13 @@
 # Maintainer: Bleuzen <supgesu at gmail dot com>
 
 pkgname=proaudio-meta
-pkgver=2019.08.15
+pkgver=2019.08.31
 pkgrel=1
 pkgdesc="Metapackage for most useful audio production software"
 arch=("x86_64")
 install="${pkgname}.install"
 url="https://github.com/Bleuzen/archlinux-packages"
-depends=("jack2-dbus"
+depends=("jack2"
          "pulseaudio-jack"
          "realtime-privileges"
          "cadence"
