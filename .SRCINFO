@@ -7,7 +7,6 @@ pkgbase = brainworkshop-git
 	arch = any
 	license = GPL
 	depends = python-pyglet
-	depends = avbin7
 	depends = openal
 	provides = brainworkshop
 	conflicts = brainworkshop
