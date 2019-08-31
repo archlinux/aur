@@ -1,6 +1,6 @@
 pkgbase = pkgtop-git
 	pkgdesc = Interactive package manager & resource monitor
-	pkgver = r337.1d8b0af
+	pkgver = r339.841a201
 	pkgrel = 1
 	url = https://github.com/keylo99/pkgtop
 	arch = any
