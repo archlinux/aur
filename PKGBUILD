@@ -6,7 +6,7 @@ _name=jack2
 pkgname=jack2-git
 pkgdesc="C++ version of the JACK low-latency audio server for multi-processor machines"
 pkgver=1.9.12.r178.g77de2e33
-pkgrel=1
+pkgrel=2
 epoch=1
 arch=('x86_64')
 url="http://jackaudio.org/"
@@ -39,7 +39,6 @@ prepare() {
         -e "s/load('xcode6'/load('xcode6', tooldir='tools'/g" \
         -e "s/load('autooptions'/load('autooptions', tooldir='tools'/g" \
         -i wscript
-
   )
 }
 
@@ -53,6 +52,7 @@ build() {
   cd "${pkgname}"
   waf configure --prefix=/usr \
                 --htmldir="/usr/share/doc/${pkgbase}/" \
+                --systemd-unit \
                 --classic \
                 --dbus
   waf build
