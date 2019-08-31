@@ -4,14 +4,14 @@
 
 pkgname=maddy-git
 pkgver=0.1
-pkgrel=5
+pkgrel=6
 pkgdesc="Fast, cross-platform mail server"
 arch=(any)
 url="https://github.com/emersion/maddy"
 license=('MIT')
 makedepends=('git' 'go' 'scdoc')
 source=("git+https://github.com/emersion/maddy.git"
-	"git+https://github.com/foxcpp/go-imap-sql.git"
+	"git+https://github.com/foxcpp/go-imap-sql.git#branch=dev"
 	"maddy.sysusers"
 	"maddy.tmpfiles"
 	"maddy.service")

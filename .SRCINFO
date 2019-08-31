@@ -1,7 +1,7 @@
 pkgbase = maddy-git
 	pkgdesc = Fast, cross-platform mail server
 	pkgver = 0.1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/emersion/maddy
 	arch = any
 	license = MIT
@@ -12,7 +12,7 @@ pkgbase = maddy-git
 	conflicts = maddy
 	backup = etc/maddy/maddy.conf
 	source = git+https://github.com/emersion/maddy.git
-	source = git+https://github.com/foxcpp/go-imap-sql.git
+	source = git+https://github.com/foxcpp/go-imap-sql.git#branch=dev
 	source = maddy.sysusers
 	source = maddy.tmpfiles
 	source = maddy.service
