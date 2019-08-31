@@ -1,0 +1,5 @@
+post_install() {
+	printf "==> copy scripts for editing:\n"
+	printf "\t mkdir ~/.config/fuf && cp /usr/lib/fuf/{open,preview} ~/.config/fuf\n"
+	printf "\n==> for more info see: https://github.com/Ckath/fuf\n"
+}

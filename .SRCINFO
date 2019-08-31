@@ -1,0 +1,16 @@
+pkgbase = fuf-git
+	pkgdesc = Fairly Usable cli Filemanager. dev/git version
+	pkgver = 0.1.r0.gcce61ca
+	pkgrel = 1
+	url = https://github.com/ckath/fuf
+	install = fuf.install
+	arch = any
+	license = MIT
+	makedepends = git
+	provides = fuf
+	conflicts = fuf
+	source = fuf-git::git+https://github.com/ckath/fuf.git
+	md5sums = SKIP
+
+pkgname = fuf-git
+
