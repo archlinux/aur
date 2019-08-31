@@ -1,0 +1,54 @@
+pkgbase = git-nautilus-icons
+	pkgver = 1.1.1
+	pkgrel = 0
+	url = https://github.com/chrisjbillington/git_nautilus_icons
+	arch = x86_64
+	arch = i686
+	license = BSD 2-Clause "Simplified"
+	source = https://github.com/chrisjbillington/git_nautilus_icons/archive/1.1.1.tar.gz
+	sha512sums = c5e439b1a91b183b6fe3d52ddeae796c2339a78cf9378736c6eaee336c27b8691be0052f76bf15e9e3901bce2e7a2f7bd3383fa928f252ad50be9a53c0090c7b
+
+pkgname = git-nautilus-icons-common
+	pkgdesc = Common files for the git-{nautilus,nemo}-icons packages
+	depends = python-gobject
+	provides = git-nautilus-icons-common
+	conflicts = git-nautilus-icons-common
+	conflicts = git-nautilus-icons-common-py2
+
+pkgname = git-nautilus-icons-common-py2
+	pkgdesc = Common files for the git-{nautilus,caja}-icons-py2 packages
+	depends = python2-gobject
+	depends = python2-pathlib
+	depends = python2-enum34
+	provides = git-nautilus-icons-common-py2
+	conflicts = git-nautilus-icons-common
+	conflicts = git-nautilus-icons-common-py2
+
+pkgname = git-nautilus-icons
+	pkgdesc = A Nautilus extension to overlay icons on files in git repositories
+	depends = git-nautilus-icons-common
+	provides = git-nautilus-icons
+	conflicts = git-nautilus-icons
+	conflicts = git-nautilus-icons-py2
+
+pkgname = git-nautilus-icons-py2
+	pkgdesc = A Nautilus extension to overlay icons on files in git repositories, Python 2 version
+	depends = git-nautilus-icons-common-py2
+	provides = git-nautilus-icons-py2
+	conflicts = git-nautilus-icons
+	conflicts = git-nautilus-icons-py2
+
+pkgname = git-nemo-icons
+	pkgdesc = A Nemo extension to overlay icons on files in git repositories
+	depends = git-nautilus-icons-common
+	provides = git-nemo-icons
+	conflicts = git-nemo-icons
+	conflicts = git-nemo-icons-py2
+
+pkgname = git-caja-icons-py2
+	pkgdesc = A Caja extension to overlay icons on files in git repositories, Python 2 version
+	depends = git-nautilus-icons-common-py2
+	provides = git-caja-icons-py2
+	conflicts = git-caja-icons
+	conflicts = git-caja-icons-py2
+
