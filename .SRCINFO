@@ -1,10 +1,11 @@
 pkgbase = plex-media-player-standalone-service
 	pkgdesc = Systemd service and user to run PMP in stand-alone mode
 	pkgver = 1.0
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/hv15/plex-media-player-standalone-service
 	install = plex-media-player-standalone-service.install
 	arch = x86_64
+	arch = armv7h
 	license = GPL
 	depends = systemd
 	depends = xorg-server
