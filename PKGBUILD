@@ -1,14 +1,14 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-giflib
 pkgver=5.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A library for reading and writing gif images (mingw-w64)"
 arch=(any)
 url="http://sourceforge.net/projects/giflib/"
 license=("MIT")
-makedepends=(xmlto docbook-xsl mingw-w64-configure)
-depends=(mingw-w64-crt)
-options=(staticlibs !strip !buildflags)
+makedepends=('xmlto' 'docbook-xsl' 'make' 'mingw-w64-gcc')
+depends=('mingw-w64-crt')
+options=(staticlibs !strip !buildflags !makeflags)
 source=("https://downloads.sourceforge.net/project/giflib/${pkgname#mingw-w64-}-${pkgver}.tar.gz"
         "giflib-5.1.9-fix-missing-quantize-API-symbols.patch"
         "001-mingw-build.patch"
