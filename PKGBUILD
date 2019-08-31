@@ -11,16 +11,16 @@ optdepends=('w3m: image previews')
 conflicts=('fuf-git')
 provides=('fuf')
 install=fuf.install
-source=("$pkgname::git+https://github.com/ckath/fuf.git#tag=v$pkgver")
-md5sums=('SKIP')
+source=("$pkgname::https://github.com/Ckath/fuf/archive/v$pkgver.tar.gz")
+md5sums=('b71cc7ddbe66bc675a4e5738edfc410a')
 
 build() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$pkgname-$pkgver"
   make
 }
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$pkgname-$pkgver"
   install -Dm755 fuf "$pkgdir/usr/bin/fuf"
   install -Dm755 scripts/open "$pkgdir/usr/lib/$pkgname/open"
   install -Dm755 scripts/preview "$pkgdir/usr/lib/$pkgname/preview"
