@@ -2,7 +2,7 @@
 
 _gemname=video_transcoding
 pkgname=ruby-$_gemname
-pkgver=0.22.0
+pkgver=0.25.2
 pkgrel=1
 pkgdesc='Tools to transcode, inspect and convert videos.'
 arch=(any)
@@ -13,7 +13,7 @@ depends=('ruby' 'handbrake-cli' 'mkvtoolnix-cli' 'libmp4v2' 'ffmpeg')
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('c41beb75d5007e1df2af983c26bdb9edbbfc2e97')
+sha1sums=('5fb021a0853772c166b733621683141c9ef1b1cf')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
