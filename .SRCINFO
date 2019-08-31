@@ -13,8 +13,6 @@ pkgbase = libretro-tic-80-git
 	makedepends = git
 	makedepends = cmake
 	source = git+https://github.com/libretro/TIC-80.git
-	source = https://raw.githubusercontent.com/libretro/libretro-super/master/dist/info/tic80_libretro.info
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = libretro-tic-80-git

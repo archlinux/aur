@@ -13,10 +13,8 @@ makedepends=('git' 'cmake')
 _libname=tic80_libretro
 _gitname=TIC-80
 
-source=("git+https://github.com/libretro/TIC-80.git"
-	"https://raw.githubusercontent.com/libretro/libretro-super/master/dist/info/${_libname}.info")
-sha256sums=('SKIP'
-	'SKIP')
+source=("git+https://github.com/libretro/TIC-80.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${_gitname}"
@@ -36,5 +34,4 @@ build() {
 
 package() {
   install -Dm644 "${_gitname}/build/lib/${_libname}.so" "${pkgdir}/usr/lib/libretro/${_libname}.so"
-  install -Dm644 "${_libname}.info" "${pkgdir}/usr/share/libretro/info/${_libname}.info"
 }
