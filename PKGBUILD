@@ -32,25 +32,23 @@ build() {
 
 	mkdir -p "$srcdir/go/src"
 
-	export GOPATH="$srcdir/go"
-
 	mv "$srcdir/$_pkgname" "$srcdir/go/src/"
 
 	cd "$srcdir/go/src/$_pkgname/"
 	ln -sf "$srcdir/go/src/$_pkgname/" "$srcdir/$_pkgname"
 
 	echo ":: Building binary"
-	go get -v \
-		-gcflags "-trimpath $GOPATH/src"
+	go build
+	
+	rm -rf "$srcdir/go/src/go/pkg/mod"
 }
 
 package() {
-	find "$srcdir/go/bin/" -type f -executable | while read filename; do
-		install -DT "$filename" "$pkgdir/usr/bin/$(basename $filename)"
+    install -m755 -d $pkgdir/usr/bin/
+    install -m644 $srcdir/$_pkgname/$_pkgname $pkgdir/usr/bin/$_pkgname
     
-    install -m755 -d ${pkgdir}/etc/go-drcom-jlu/ || return 1
-    install -m644  $srcdir/$_pkgname/release/config.json ${pkgdir}/etc/go-drcom-jlu/ || return 1
-    install -m755 -d ${pkgdir}/usr/lib/systemd/system || return 1
-    install -m644  $srcdir/$_pkgname/release/go-drcom-jlu.service ${pkgdir}/usr/lib/systemd/system || return 1
-	done
+    install -m755 -d ${pkgdir}/etc/go-drcom-jlu/
+    install -m644  $srcdir/$_pkgname/release/config.json ${pkgdir}/etc/go-drcom-jlu/
+    install -m755 -d ${pkgdir}/usr/lib/systemd/system
+    install -m644  $srcdir/$_pkgname/release/go-drcom-jlu.service ${pkgdir}/usr/lib/systemd/system
 }
