@@ -1,0 +1,16 @@
+pkgbase = agbcc
+	pkgdesc = GCC 2.95.1 reworked to match games compiled for the Game Boy Advance.
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/pret/agbcc
+	arch = i686
+	arch = x86_64
+	license = GPL-2.0
+	makedepends = git
+	provides = agbcc
+	conflicts = agbcc
+	source = git+https://github.com/pret/agbcc.git
+	md5sums = SKIP
+
+pkgname = agbcc
+
