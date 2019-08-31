@@ -1,7 +1,7 @@
-From b21f97e424faac297387fb1d5c0b8eb67d804dd2 Mon Sep 17 00:00:00 2001
+From ae7f143f7b8dd14fd720061922a5a5e03fa60218 Mon Sep 17 00:00:00 2001
 From: Ryan Farley <ryan.farley@gmx.com>
-Date: Tue, 20 Aug 2019 00:33:08 -0500
-Subject: [PATCH] read - let freetype handle 8859-1 mapping
+Date: Tue, 20 Aug 2019 03:16:22 -0500
+Subject: [PATCH app/fonttosfnt 1/2] let freetype handle ISO-8859-1 mapping
 
 https://www.freetype.org/freetype2/docs/reference/ft2-base_interface.html#ft_encoding
 indicates that ISO-8859-1 is automatically mapped to Unicode for BDF and
@@ -12,7 +12,7 @@ leads to an error for such fonts.
  1 file changed, 4 insertions(+), 1 deletion(-)
 
 diff --git a/read.c b/read.c
-index bee518c..e41361a 100644
+index 632c7e7..5e80cc5 100644
 --- a/read.c
 +++ b/read.c
 @@ -79,10 +79,13 @@ readFile(char *filename, FontPtr font)
@@ -31,5 +31,5 @@ index bee518c..e41361a 100644
              mapping = FontEncMapFind(encoding_name,
                                       FONT_ENCODING_UNICODE, 0, 0, NULL);
 -- 
-2.22.1
+2.23.0
 

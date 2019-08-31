@@ -12,9 +12,13 @@ makedepends=(git make autoconf automake xproto xorg-util-macros)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://gitlab.freedesktop.org/xorg/app/fonttosfnt.git'
-	'0001-read-let-freetype-handle-8859-1-mapping.patch')
+	'0001-let-freetype-handle-ISO-8859-1-mapping.patch'
+	'0002-allow-ISO-646.1991-IRV-as-well-adobe-standard-for-bd.patch'
+	'0003-check-for-freetype-NULL-atoms.patch')
 md5sums=('SKIP'
-         '85945e798ebe976d1fba94ea039b625c')
+         'c9a2934334f46681f1a6131d4fd13077'
+         '1b542636d9a95d9bb6095c12aa20eb3a'
+         '9ba2b5498590e75859099cd57c970ac3')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
@@ -24,7 +28,9 @@ pkgver() {
 
 prepare() {
 	cd "$srcdir/${pkgname%-git}"
-	patch --forward --strip=1 --input="${srcdir}/0001-read-let-freetype-handle-8859-1-mapping.patch"
+	patch --forward --strip=1 --input="$srcdir/0001-let-freetype-handle-ISO-8859-1-mapping.patch"
+	patch --forward --strip=1 --input="$srcdir/0002-allow-ISO-646.1991-IRV-as-well-adobe-standard-for-bd.patch"
+	patch --forward --strip=1 --input="$srcdir/0003-check-for-freetype-NULL-atoms.patch"
 }
 
 build() {
