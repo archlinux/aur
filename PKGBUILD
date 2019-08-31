@@ -6,7 +6,7 @@
 pkgname=evince-no-gnome
 _pkgname=evince
 pkgver=3.32.0
-pkgrel=1
+pkgrel=2
 pkgdesc="GTK3 document viewer, complete features, no gnome dependencies"
 url="https://wiki.gnome.org/Apps/Evince"
 arch=('i686' 'x86_64')
@@ -18,22 +18,11 @@ optdepends=('texlive-bin: DVI support'
 provides=("${_pkgname}")
 conflicts=("${_pkgname}" "evince-light")
 options=('!emptydirs')
-_commit=10da4bcec1cdd535a267e4b8e971668a47f0138b # tags/3.32.0
-source=("git+https://gitlab.gnome.org/GNOME/evince.git#commit=$_commit")
-md5sums=('SKIP')
-
-pkgver() {
-cd ${_pkgname}
-git describe --tags | sed 's/-/+/g'
-}
-
-prepare() {
-cd ${_pkgname}
-NOCONFIGURE=1 ./autogen.sh
-}
+source=("https://download.gnome.org/sources/${_pkgname}/${pkgver:0:4}/${_pkgname}-${pkgver}.tar.xz")
+sha256sums=('f0d977216466ed2f5a6de64476ef7113dc7c7c9832336f1ff07f3c03c5324c40')
 
 build() {
-cd ${_pkgname}
+cd ${_pkgname}-${pkgver}
 BROWSER_PLUGIN_DIR=/usr/lib/epiphany/plugins \
 
 ./configure --prefix=/usr \
@@ -59,12 +48,10 @@ BROWSER_PLUGIN_DIR=/usr/lib/epiphany/plugins \
   --disable-libgnome-desktop \
   --disable-browser-plugin
 
-sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
-
 make
 }
 
 package() {
-cd ${_pkgname}
+cd ${_pkgname}-${pkgver}
 make DESTDIR="$pkgdir" install
 }
