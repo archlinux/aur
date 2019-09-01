@@ -5,13 +5,13 @@ _name=treehole
 pkgname=$_name-ocr
 _itemname=tools-ocr
 pkgver=1.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A Cross-Platform OCR Tool"
 arch=(any)
 url="https://github.com/AnyListen/${_itemname}"
 license=('GPL3')
 makedepends=('imagemagick')
-depends=('java-openjfx' 'java-runtime=8')
+depends=('java8-openjfx' 'java-runtime=8')
 source=(
   "https://github.com/AnyListen/$_itemname/releases/download/V$pkgver/treehole-$pkgver.dmg"
   "https://github.com/AnyListen/$_itemname/raw/master/src/main/resources/img/logo.png"
