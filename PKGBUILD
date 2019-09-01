@@ -8,24 +8,26 @@ pkgoption1="gui-standalone-linux-x64"
 pkgoption2="gui-standalone-linux-arm"
 pkgver='0.26.0'
 pkggopath="github.com/$projectname/$pkgname1"
-pkgrel=2
+pkgrel=3
 arch=('any')
 url="https://${pkggopath}"
 license=()
 makedepends=()
+sha256sums=('BINARY RELEASE POSSIBLY COMPROMISED ; DISABLING UNTIL FURTHER NOTICE')
+#t.me/Skycoin for inquiries
 
 #detect architecture & adjust source & checksums accordingly
-case "$CARCH" in
-	arm*) _pkgarch="$pkgoption2"
-		sha256sums+=('aa2b0441f8fae3880179b1fac12466c058ded1326abbe9388e9d2141035437d1')
-		;;
-  aarch64*) _pkgarch="$pkgoption2"
-    sha256sums+=('aa2b0441f8fae3880179b1fac12466c058ded1326abbe9388e9d2141035437d1')
-    ;;
-	x86_64) _pkgarch="$pkgoption1"
-		sha256sums+=('e06678954e5d45a3b4bbf3dd7e928a454a70887fccccadb4f21d4652e3a6a2ca')
-		;;
-esac
+#case "$CARCH" in
+#	arm*) _pkgarch="$pkgoption2"
+#		sha256sums+=('aa2b0441f8fae3880179b1fac12466c058ded1326abbe9388e9d2141035437d1')
+#		;;
+#  aarch64*) _pkgarch="$pkgoption2"
+#    sha256sums+=('aa2b0441f8fae3880179b1fac12466c058ded1326abbe9388e9d2141035437d1')
+#    ;;
+#	x86_64) _pkgarch="$pkgoption1"
+#		sha256sums+=('e06678954e5d45a3b4bbf3dd7e928a454a70887fccccadb4f21d4652e3a6a2ca')
+#		;;
+#esac
 
 source+=("https://downloads.skycoin.net/wallet/$pkgname1-$pkgver-$_pkgarch.tar.gz")
 
