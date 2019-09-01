@@ -1,8 +1,8 @@
 # Maintainer: blubbblubb <lampadada[removeme][at]googlemail[dot]com>
 
 pkgname=loudgain
-pkgver=v0.6.2
-_pkgver=0.6.2
+pkgver=v0.6.3
+_pkgver=0.6.3
 pkgrel=1
 pkgdesc="A loudness normalizer that scans music files and calculates loudness-normalized gain and loudness peak values according to the EBU R128 standard, and can optionally write ReplayGain-compatible metadata."
 url="https://github.com/Moonbase59/loudgain"
@@ -12,7 +12,7 @@ depends=("taglib" "libebur128" "ffmpeg")
 makedepends=('cmake')
 provides=('loudgain' 'rgbpm')
 source=("https://github.com/Moonbase59/loudgain/archive/${pkgver}.tar.gz")
-sha256sums=('5f982a2c1508b5fe07f1993177126069bc5e76abc0aa2f412409f7774b5b6544')
+sha256sums=('05d1190852e1deaa52b7570810e9dae6c99fdf654aedf544b33e74b9e584b7db')
 
 build() {
   cd "${srcdir}/${pkgname}-${_pkgver}"
