@@ -17,7 +17,9 @@ makedepends=('cmake'
              'ninja'
              'python'
              )
-provides=('lib32-shaderc')
+provides=('lib32-shaderc'
+          'libshaderc_shared.so'
+          )
 conflicts=('lib32-shaderc')
 source=('git+https://github.com/google/shaderc.git'
         'fix-glslang-link-order.patch::https://patch-diff.githubusercontent.com/raw/google/shaderc/pull/463.patch'
