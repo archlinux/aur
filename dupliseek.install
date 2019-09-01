@@ -1,8 +1,6 @@
 post_install() {
-    sudo pip install pyqt5 opencv-python numpy imutils
 }
 
 post_remove()
 {
-    sudo pip uninstall pyqt5 opencv-python numpy imutils --yes
 }
