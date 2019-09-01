@@ -3,9 +3,9 @@
 # Contributor: Splex
 
 pkgname=kokua-opensim
-pkgver=6.3.0.45991
-_pkgver=6_3_0_45991
-_pkgprever=6.3.0
+pkgver=4.2.2.41800
+_pkgver=4_2_2_41800
+_pkgprever=4.2.2
 pkgrel=1
 pkgdesc="An Open Source third party viewer for Open Simulator (opensim) grids, only."
 url="http://www.kokuaviewer.org"
@@ -15,20 +15,20 @@ depends=('apr-util' 'gtk2' 'libgl' 'libidn' 'libjpeg-turbo' 'mesa' 'nss' 'sdl' '
 optdepends=('libpulse: for PulseAudio support' 'alsa-lib: for ALSA support' 'nvidia-utils: for NVIDIA support' 'pepper-flash: for inworld Flash support' 'gstreamer0.10: for video support, may need good, bad and ugly plugins' 'lib32-freealut: for OpenAL support')
 conflicts=('kokua-secondlife')
 
-source=("https://liquidtelecom.dl.sourceforge.net/project/kokua.team-purple.p/Kokua-SL/Linux64Bit/Kokua_RLV_${_pkgver}_x86_64.tar.bz2"
+source=("https://netix.dl.sourceforge.net/project/kokua.team-purple.p/Kokua-OS/Linux64Bit/KokuaOS_RLV_64_${_pkgver}_x86_64.tar.txz"
 		"https://www.dropbox.com/s/5p6io8zqc33idwh/kokua_icon.png"
 		'kokua-opensim.desktop'
 		'kokua-opensim.launcher')
-md5sums=('552abc8dd05a44113f1b5a5f2d488ee2'
+md5sums=('75407ffe38350644138dd36c9930af04'
          '58ffa08dac5f50fb6ffefa79ce369653'
          'a5b15ff4dd93dbfc01ee6d7c799728d0'
          'dd2d31fddb0b67846c1dfd3bfed88859')
-
+         
 package() {
 cd $srcdir
-
+  
 # Rename Data Directory
-mv Kokua_RLV_${_pkgver}_$CARCH kokua-opensim
+mv KokuaOS_RLV_64_${_pkgver}_$CARCH kokua-opensim
 
 # Install Desktop File
 install -D -m644 $srcdir/kokua-opensim.desktop \
@@ -55,5 +55,5 @@ chmod g+x $pkgdir/opt/kokua-opensim/kokua
 
 # Do not re-register the application with the desktop system at every launch, saves from locally installed desktop files.
 sed -i 's|./etc/refresh_desktop_app_entry.sh|#./etc/refresh_desktop_app_entry.sh|' $pkgdir/opt/kokua-opensim/kokua
-
+   
 }
