@@ -1,0 +1,18 @@
+pkgbase = vbextreme-bar
+	pkgdesc = vbextreme's statuts bar
+	pkgver = 2.0_rc6
+	pkgrel = 1
+	url = https://github.com/vbextreme/vbar
+	arch = x86_64
+	license = GPLv3
+	makedepends = gperf
+	makedepends = meson
+	conflicts = vbar-i3wm
+	conflicts = vbar-dwm
+	replaces = vbar-i3wm
+	replaces = vbar-dwm
+	source = https://github.com/vbextreme/vbar/archive/v2.0-rc6.tar.gz
+	sha256sums = SKIP
+
+pkgname = vbextreme-bar
+
