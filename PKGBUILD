@@ -13,15 +13,15 @@ license=('MPL2')
 groups=()
 conflicts=()
 provides=()
-depends=(magma ceres-solver)
-makedepends=(boost cmake git gflags cuda)
+depends=(magma-libs ceres-solver)
+makedepends=(magma boost cmake git gflags cuda)
 source=("${_name}::git+https://github.com/alicevision/${_name}.git"
         "ctest.patch")
 sha256sums=('SKIP'
             'abf50924a78ec9628212c5b7086592d302155cf50dcc6f4c49a92d57b9a3b020')
 
 _CMAKE_FLAGS=( -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release )
-_CMAKE_FLAGS+=( -DMAGMA_ROOT=/opt/magma )
+_CMAKE_FLAGS+=( -DMAGMA_ROOT=/usr )
 _CMAKE_FLAGS+=( -DUNC_ALICEVISION_SUPPORT=ON -DUNC_BUILD_TESTS=ON -DUNC_MKL_SUPPORT=ON )
 # test if we can build matlab module
 pacman -Qq matlab && _CMAKE_FLAGS+=( -DUNC_MATLAB_SUPPORT=ON -DUNC_BUILD_MEX=ON )
