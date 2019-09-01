@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc='Grounding tools for (disjunctive) logic programs'
 arch=('x86_64')
 url='https://potassco.org/'
-license=('GPL3')
+license=('MIT')
 depends=('lua' 'python')
 makedepends=('clang' 'cmake' 'git' 'ninja' 're2c')
 conflicts=('clasp')
@@ -37,6 +37,7 @@ build() {
 
 package() {
   DESTDIR="${pkgdir}" ninja -C build install
+  install -Dm644 "${srcdir}/${pkgname}/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
 }
 
 # vim: ts=2 sw=2 et:
