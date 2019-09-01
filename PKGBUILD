@@ -4,7 +4,7 @@
 pkgname=pkgtop
 pkgdesc="Interactive package manager & resource monitor (stable version)"
 pkgver=1.5
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="https://github.com/keylo99/pkgtop"
 license=('GPL3')
@@ -14,18 +14,27 @@ conflicts=("${pkgname}-git")
 source=("${pkgname}-${pkgver}.zip::https://github.com/keylo99/${pkgname}/archive/${pkgver}.zip")
 sha256sums=('cc801ed409639aef3ceb1eb833cae35b1eebd0c00151c3aafdfb48de4ace5f2e')
 
+prepare() {
+  mkdir -p "${srcdir}/gopath"
+}
 
 build() {
-  cd "$srcdir/${pkgname}-${pkgver}/src"
+  cd "$srcdir/${pkgname}-${pkgver}"
+  export GOPATH="${srcdir}/gopath"
   go get -d ./...
   go build \
-    -gcflags "all=-trimpath=$PWD" \
-    -asmflags "all=-trimpath=$PWD" \
+    -gcflags "all=-trimpath=$srcdir" \
+    -asmflags "all=-trimpath=$srcdir" \
     -ldflags "-extldflags $LDFLAGS" \
-    -o "${pkgname%-git}" .
+    -v -o "./${pkgname}" ./src
+
+  # Clear read-only module files after build so that makepkg -Cc still works
+  GOPATH="${srcdir}/gopath" go clean -modcache
 }
 
 package() {
-  cd "$srcdir/${pkgname}-${pkgver}/src"
-  install -Dm755 "${pkgname%-git}" "$pkgdir/usr/local/bin/${pkgname%-git}"
+  cd "$srcdir/${pkgname}-${pkgver}"
+  install -Dvm755 "${pkgname}" "$pkgdir/usr/bin/${pkgname}"
 }
+
+# vim: set ts=2 sts=2 sw=2 et tw=80 :
