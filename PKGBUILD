@@ -6,7 +6,7 @@
 _pkgname=servicewall
 pkgname=servicewall-git
 pkgdesc="The firewall that remembers the different networks you connect to."
-pkgver=0.4.2.r20.96d116f
+pkgver=0.4.2.r27.aa93588
 pkgrel=1
 arch=("any")
 url="https://github.com/lafleurdeboum/servicewall"
@@ -26,7 +26,8 @@ install=servicewall.install
 backup=("etc/servicewall/realms.json" "etc/servicewall/config.json")
 
 # Sources for git repos :
-source=("${pkgname%-git}::git://localhost/#branch=master")
+#source=("${pkgname%-git}::git://localhost/#branch=master")
+source=("${pkgname%-git}::git://localhost/#branch=nflog")
 
 # Sources for non-git repos :
 #options=(!emptydirs)
