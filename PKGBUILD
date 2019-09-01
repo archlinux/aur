@@ -23,7 +23,12 @@ depends=(
 optdepends=("python-argcomplete" "networkd-dispatcher" "networkmanager")
 makedepends=("python-distribute" "python-setuptools" "git")
 install=servicewall.install
-backup=("etc/servicewall/realms.json" "etc/servicewall/config.json")
+backup=(
+        "etc/servicewall/realms.json"
+        "etc/servicewall/config.json"
+        "etc/ulogd.conf"
+        "var/log/ulogd.sqlite3db"
+        )
 
 # Sources for git repos :
 #source=("${pkgname%-git}::git://localhost/#branch=master")
