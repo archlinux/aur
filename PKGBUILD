@@ -3,7 +3,7 @@
 pkgbase=cp210x
 pkgname=(cp210x cp210x-dkms)
 pkgver=2019.7.12
-pkgrel=1
+pkgrel=2
 pkgdesc='Silicon Labs CP210x RS232 serial adaptor driver'
 url='https://www.silabs.com/products/development-tools/software/usb-to-uart-bridge-vcp-drivers'
 arch=('any')
