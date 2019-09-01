@@ -8,7 +8,7 @@ pkgoption1="gui-standalone-linux-x64"
 pkgoption2="gui-standalone-linux-arm"
 pkgver='0.26.0'
 pkggopath="github.com/$projectname/$pkgname1"
-pkgrel=3
+pkgrel=4
 arch=('any')
 url="https://${pkggopath}"
 license=()
@@ -29,7 +29,7 @@ sha256sums=('BINARY RELEASE POSSIBLY COMPROMISED ; DISABLING UNTIL FURTHER NOTIC
 #		;;
 #esac
 
-source+=("https://downloads.skycoin.net/wallet/$pkgname1-$pkgver-$_pkgarch.tar.gz")
+#source+=("https://downloads.skycoin.net/wallet/$pkgname1-$pkgver-$_pkgarch.tar.gz")
 
 build() {
   msg 2 'creating launcher scripts skycoin-wallet & skycoin-wallet-nohup'
