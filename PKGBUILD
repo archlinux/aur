@@ -1,7 +1,7 @@
 # Maintainer: bigpod9 <bigpod9@gmail.com>
 pkgname=dupliseek
 pkgver=0.0.2
-pkgrel=6
+pkgrel=7
 pkgdesc="Application to find all your duplicate images."
 arch=('any')
 url="https://gitlab.com/magnusmj/dupliseek.git"
