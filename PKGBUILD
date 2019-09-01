@@ -3,9 +3,9 @@
 # Contributor: Splex
 
 pkgname=kokua-secondlife
-pkgver=6.2.4.45882
-_pkgver=6_2_4_45882
-_pkgprever=6.2.4
+pkgver=6.3.0.45991
+_pkgver=6_3_0_45991
+_pkgprever=6.3.0
 pkgrel=1
 pkgdesc="An Open Source third party viewer for Second Life® (secondlife), only."
 url="http://www.kokuaviewer.org"
@@ -20,11 +20,9 @@ optdepends=('libpulse: for PulseAudio support' 'alsa-lib: for ALSA support'
 conflicts=('kokua-opensim')
 
 source=("https://netcologne.dl.sourceforge.net/project/kokua.team-purple.p/Kokua-SL/Linux64Bit/Kokua_RLV_${_pkgver}_x86_64.tar.bz2"
-		"https://www.dropbox.com/s/5p6io8zqc33idwh/kokua_icon.png"
 		'kokua-secondlife.desktop'
 		'kokua-secondlife.launcher')
-md5sums=('d8d43ef6db011f1957f18dd94ddf9f01'
-         '58ffa08dac5f50fb6ffefa79ce369653'
+md5sums=('552abc8dd05a44113f1b5a5f2d488ee2'
          '3893a2c8ae9cb8e2adb4d7c47750029b'
          'e12fd7bd333f4f810dec66f1be17c71c')
 
@@ -39,7 +37,7 @@ install -D -m644 $srcdir/kokua-secondlife.desktop \
   $pkgdir/usr/share/applications/kokua-secondlife.desktop
 
 # Install Icon File
-install -D -m644 $srcdir/kokua_icon.png \
+install -D -m644 $srcdir/kokua-secondlife/kokua_icon.png \
   $pkgdir/usr/share/pixmaps/kokua-secondlife.png
 
 # Install Launcher
