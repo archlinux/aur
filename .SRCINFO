@@ -1,16 +1,17 @@
 pkgbase = ttf-electroharmonix
-        pkgdesc = A Romanji font follow Japanese style
-        pkgver = 1.0
-        pkgrel = 3
-        url = https://git.syskiller.io/Stykers/fonts.git
-        install = ttf-electroharmonix.install
-        arch = any
-        license = GPL
-        depends = fontconfig
-        depends = xorg-font-utils
-        source = https://git.syskiller.io/Stykers/fonts/raw/master/electroharmonix.ttf
-        source = https://git.syskiller.io/Stykers/fonts/raw/master/electroharmonix.otf
-        md5sums = fd2bf4b7a257640325d09d1be945e924
-        md5sums = 8dbc0398858f1d8a59337beb4084563c
+	pkgdesc = A Romanji font follow Japanese style
+	pkgver = 1.0
+	pkgrel = 3
+	url = https://cdn.stykers.moe/dl/electroharmonix.ttf
+	install = ttf-electroharmonix.install
+	arch = any
+	license = GPL
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = https://cdn.stykers.moe/dl/electroharmonix.ttf
+	source = https://cdn.stykers.moe/dl/electroharmonix.otf
+	md5sums = fd2bf4b7a257640325d09d1be945e924
+	md5sums = 8dbc0398858f1d8a59337beb4084563c
 
 pkgname = ttf-electroharmonix
+
