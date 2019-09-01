@@ -3,13 +3,14 @@
 
 pkgname=onlyoffice-documentserver
 pkgver=5.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Online office suite comprising viewers and editors for texts, spreadsheets and presentations"
 arch=('any')
 url="https://github.com/ONLYOFFICE/DocumentServer"
-depends=('nodejs' 'noto-fonts')
+# notejs-lts-dubnium due to bug with nodehun build fail
+depends=('nodejs-lts-dubnium' 'noto-fonts')
 # noto-fonts required due to bug https://github.com/ONLYOFFICE/DocumentServer/issues/377#issuecomment-455782913
-makedepends=('npm' 'nodejs' 'grunt-cli' 'qt5-base' 'git' 'wget' 'p7zip' 'clang' 'python2' 'java-runtime' 'svn' 'ncurses5-compat-libs')
+makedepends=('npm' 'nodejs-lts-dubnium' 'grunt-cli' 'qt5-base' 'git' 'wget' 'p7zip' 'clang' 'python2' 'java-runtime' 'svn' 'ncurses5-compat-libs')
 # ncurses-5compat-libs required to build v8
 optdepends=('rabbitmq' 'redis' 'postgresql')
 license=('AGPL')
