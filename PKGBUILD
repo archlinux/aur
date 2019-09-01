@@ -27,7 +27,7 @@
 
 _pkgname=retroshare
 pkgname=${_pkgname}-git
-pkgver=v0.6.5.r399.g2d7b85598
+pkgver=v0.6.5.r403.ga51259beb
 pkgrel=1
 pkgdesc="Serverless encrypted instant messenger with filesharing, chatgroups, e-mail."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -46,7 +46,7 @@ sha256sums=('SKIP')
 # Add missing dependencies if needed
 [[ "$_plugin_voip" == 'true' ]] && depends=(${depends[@]} 'ffmpeg' 'opencv')
 [[ "$_plugin_feedreader" == 'true' ]] && depends=(${depends[@]} 'curl' 'libxslt')
-[[ "$_jsonapi" == 'true' ]] && depends=(${depends[@]} 'restbed' 'cmake')
+[[ "$_jsonapi" == 'true' ]] && depends=(${depends[@]} 'restbed' 'cmake' 'doxygen')
 [[ "$_clang" == 'true' ]] && makedepends=(${makedepends[@]} 'clang')
 [[ "$_autologin" == 'true' ]] && depends=(${depends[@]} 'libsecret')
 [[ "$_systems_rapidjson" == 'true' ]] && makedepends=(${makedepends[@]} 'rapidjson')
