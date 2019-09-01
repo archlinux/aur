@@ -7,15 +7,14 @@
 # installation.
 
 pkgname=jabref-git
-pkgver=2.9.2.r7414.gef7f8248b
-epoch=1
+pkgver=5.0alpha.r14.g66b7fe3af4
 pkgrel=1
 pkgdesc="GUI frontend for BibTeX, written in Java -- built from git"
 arch=('any')
 url="https://www.jabref.org"
 license=('MIT')
-depends=('java-environment>=8')
-makedepends=('git' 'java-environment=8' 'java-openjfx')
+depends=('java-environment>=11')
+makedepends=('git' 'java-environment=11' 'java11-openjfx')
 optdepends=('gsettings-desktop-schemas: For web search support')
 provides=('jabref')
 conflicts=('jabref')
@@ -24,36 +23,34 @@ source=("${pkgname%-git}::git+https://github.com/JabRef/jabref.git"
 	"${pkgname%-git}.sh")
 md5sums=('SKIP'
          '5f76feb6b2f66a2ea8b52bca999a934f'
-         '0b052f22c614f89f9ce854fdd1e5a3c8')
+         'b7c7fca66fe7e0a466df1f6b3c0539ff')
 
 pkgver() {
-  cd ${srcdir}/${pkgname%-git}
-  git describe --long | sed 's/^v_//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cd ${pkgname%-git}
+  git describe --tags | sed 's+-alpha-+alpha.r+'|cut -c2-|tr - .
 }
 
 build() {
-  cd "$srcdir/${pkgname%-git}"
-  PATH=/usr/lib/jvm/java-8-openjdk/jre/bin/:$PATH
-  
+  cd ${pkgname%-git}
   ./gradlew releaseJar
 }
 
 package() {
-  cd "${srcdir}/${pkgname%-git}"
+  cd ${pkgname%-git}
 
   _release=$(sed -n 's/.*version = \"\(.*-dev\)\"/\1/p' build.gradle)
 
   find "${srcdir}/${pkgname%-git}/build/releases" \
 	  -iname "JabRef-${_release}.jar" \
-	  -exec install -Dm644 {} ${pkgdir}/usr/share/java/jabref/JabRef.jar \;
+	  -exec install -Dm644 {} "$pkgdir"/usr/share/java/jabref/JabRef.jar \;
 
-  install -Dm755 $srcdir/jabref.sh ${pkgdir}/usr/bin/jabref
+  install -Dm755 "$srcdir"/jabref.sh "$pkgdir"/usr/bin/jabref
 
-  install -Dm644 $srcdir/jabref.desktop \
-    ${pkgdir}/usr/share/applications/jabref.desktop
+  install -Dm644 "$srcdir"/jabref.desktop \
+    "$pkgdir"/usr/share/applications/jabref.desktop
 
   install -Dm644 "build/resources/main/icons/${pkgname%-git}.svg" \
-    "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.svg"
+    "$pkgdir"/usr/share/pixmaps/${pkgname%-git}.svg
 
-  install -Dm644 LICENSE.md ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+  install -Dm644 LICENSE.md "$pkgdir"/usr/share/licenses/${pkgname}/LICENSE
 }
