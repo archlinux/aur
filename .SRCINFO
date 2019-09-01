@@ -1,6 +1,6 @@
 pkgbase = yup-bin
 	pkgdesc = Arch Linux AUR Helper with ncurses functionality and better searching and sorting
-	pkgver = 0.2.1_beta
+	pkgver = 0.3.0_beta
 	pkgrel = 1
 	url = https://github.com/ericm/yup
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = yup-bin
 	depends = git
 	depends = ncurses
 	depends = sudo
-	source = https://github.com/ericm/yup/releases/download/v0.2.1-beta/yup
+	source = https://github.com/ericm/yup/releases/download/v0.3.0-beta/yup
 	sha256sums = SKIP
 
 pkgname = yup-bin
