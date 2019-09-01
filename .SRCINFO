@@ -13,6 +13,7 @@ pkgbase = coolq-pro-bin
 	depends = xorg-xhost
 	depends = novnc
 	depends = websockify
+	depends = tigervnc
 	provides = coolq
 	noextract = coolq-pro-bin-5.14.10.zip
 	source = coolq-pro-bin-5.14.10.zip::https://dlsec.cqp.me/cqp-full
