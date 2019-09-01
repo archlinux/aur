@@ -23,5 +23,4 @@ build() {
 package() {
     cd "${pkgname}-v${pkgver}"
     make DESTDIR="${pkgdir}/" install
-    mv "$pkgdir/usr/lib64" "$pkgdir/usr/lib"
 }
