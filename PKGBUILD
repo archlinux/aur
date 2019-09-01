@@ -2,7 +2,7 @@
 # Contributor: Christer Edwards <christer.edwards@gmail.com>
 
 pkgname=salt-git
-pkgver=2017.7.1.r5791.g1463e036d7
+pkgver=2019.8.r384.g705e8cca0b
 pkgrel=1
 pkgdesc='A remote execution and communication system built on zeromq'
 url='https://github.com/saltstack/salt'
@@ -20,11 +20,9 @@ depends=('python2'
          'python2-pyzmq'
          'python2-requests'
          'python2-futures'
-         'python2-markupsafe'
-         'python2-apache-libcloud')
+         'python2-markupsafe')
 optdepends=('python2-pysodium: Required for RAET transport method'
             'python2-raet: Required for RAET transport method'
-            'python2-ioflo: Required for RAET transport method'
             'python2-mako: Parser for salt states'
             'python2-pygit2: gitfs support'
             'virt-what: Improve results of the virtual grain'
