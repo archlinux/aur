@@ -8,7 +8,7 @@
 
 pkgname=firefox-hg
 _pkgname=firefox
-pkgver=r525913.43a6ba47356a
+pkgver=r542876+.4d8cee124c4e+
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org"
 arch=(x86_64)
@@ -29,11 +29,13 @@ _repo=https://hg.mozilla.org/mozilla-unified
 conflicts=('firefox')
 provides=('firefox')
 source=("hg+$_repo"
+        0001-Use-remoting-name-for-GDK-application-names.patch
         $_pkgname.desktop
         $_pkgname-symbolic.svg)
-sha256sums=('SKIP'
-            '4a783dca1f88e003c72f32d22719a0915f3fa576adbc492240e7cc250246ce10'
-            '9a1a572dc88014882d54ba2d3079a1cf5b28fa03c5976ed2cb763c93dabbd797')
+sha512sums=('SKIP'
+            '40c931b8abbe5880122dbcc93d457e04e9b4f2bc3e0275e9e3e35dd347fe0658f9446c89e99553203be8a8c9ab6f4ca872a7aedc514920c107b9235c04df91dc'
+            'a2b36adff18d1108023cd31f420681f9adea3cfb337183e425dbeaa17e4a0271ed182e54bda19a3a2e11feed35cd040411be1795f5c1487331130bcb321c474d'
+            'ba7db9a7c95a051bcd84e4c09c802fc55ee3c0d1d06ec1b169b04e414259b75bbe92fe584aee41a1e3f71e71c160df8bedf5393449e5024110ed27dbc0579ea8')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -55,6 +57,9 @@ pkgver() {
 prepare() {
     mkdir -p mozbuild
     cd mozilla-unified
+
+    # https://bugzilla.mozilla.org/show_bug.cgi?id=1530052
+    patch -Np1 -i ../0001-Use-remoting-name-for-GDK-application-names.patch
 
     echo -n "$_google_api_key" >google-api-key
     echo -n "$_mozilla_api_key" >mozilla-api-key
@@ -85,6 +90,7 @@ export RANLIB=llvm-ranlib
 ac_add_options --enable-official-branding
 ac_add_options --enable-update-channel=release
 ac_add_options --with-distribution-id=org.archlinux
+ac_add_options --with-unsigned-addon-scopes=app,system
 export MOZILLA_OFFICIAL=1
 export MOZ_APP_REMOTINGNAME=${_pkgname//-/}
 export MOZ_TELEMETRY_REPORTING=1
@@ -119,7 +125,7 @@ build() {
     # LTO/PGO needs more open files
     ulimit -n 4096
  
-    ./mach build
+    xvfb-run -a -n 97 -s "-screen 0 1600x1200x24" ./mach build
     ./mach buildsymbols
 }
 
@@ -182,5 +188,3 @@ END
     ln -srf "$pkgdir/usr/bin/$_pkgname" \
         "$pkgdir/usr/lib/$_pkgname/firefox-bin"
 }
-
-# vim:set sw=2 et:
