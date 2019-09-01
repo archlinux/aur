@@ -2,7 +2,7 @@
 
 pkgname='lego-git'
 _pkgname="${pkgname%-git}"
-pkgver=r831.7f6155e8
+pkgver=r849.a5a29187
 pkgrel=1
 pkgdesc='Lets Encrypt client and ACME library written in Go (master branch / unstable)'
 url='https://go-acme.github.io/lego/'
@@ -12,38 +12,40 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
 _url='https://github.com/go-acme/lego'
-_goacmepath=github.com/go-acme
-_legopath="${_goacmepath}/lego"
 
 depends=()
 # makedepends=('git' 'make')
-makedepends=('git' 'make' 'go')
+makedepends=('git' 'make' 'go>=1.11')
 
 source=("git+${_url}.git")
 sha512sums=('SKIP')
 
 prepare() {
-  # setup go env vars
-  export GOPATH="${srcdir%/src}"
+  # setup env variables & dirs
+  mkdir -p "${srcdir}/go"
+  export GOPATH="${srcdir}/go"
+  export GO111MODULE=on
 
-  mkdir -p "${srcdir}/${_goacmepath}/" && cd $_
-  mv ${srcdir}/${_pkgname} .
+  cd "${srcdir}/${_pkgname}"
+  
+  # download dependencies
+  go mod download
 }
 
 pkgver() {
-  cd "${srcdir}/${_legopath}"
+  cd "${srcdir}/${_pkgname}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "${srcdir}/${_legopath}"
+  cd "${srcdir}/${_pkgname}"
   make build
 }
 
 package() {
   # Bin
-  install -Dm755  "${srcdir}/${_legopath}/dist/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+  install -Dm755  "${srcdir}/${_pkgname}/dist/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 
   # License
-  install -Dm644 "${srcdir}/${_legopath}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "${srcdir}/${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
