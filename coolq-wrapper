@@ -18,7 +18,7 @@ if [ ! -d "$cq_dir/wine" ]; then
   cp -a /opt/coolq-pro/conf "$cq_dir/conf"
 
   mkdir -p "$cq_dir/data/app"
-  cp -a /etc/coolq/app/io.github.richardchien.coolqhttpapi "$cq_dir/data/app"
+  mkdir -p "$cq_dir/app"
 
   wineboot -u
   ln -sf /opt/coolq-pro/wine/msscript.ocx "$cq_dir/wine/drive_c/windows/system32/msscript.ocx"
@@ -26,6 +26,6 @@ if [ ! -d "$cq_dir/wine" ]; then
   wine regedit /S /opt/coolq-pro/wine/coolq-wine.reg
 fi
 
-mkdir -p "$cq_dir/app"
+cp -a /etc/coolq/app/io.github.richardchien.coolqhttpapi "$cq_dir/data/app"
 ln -fs /usr/lib/coolq/app/io.github.richardchien.coolqhttpapi.cpk "$cq_dir/app/io.github.richardchien.coolqhttpapi.cpk"
 exec wine "${cq_dir%/wine}/CQP.exe" /account $1

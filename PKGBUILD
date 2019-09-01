@@ -3,7 +3,7 @@
 _pkgname=coolq-pro
 pkgname=${_pkgname}-bin
 pkgver=5.14.10
-pkgrel=2
+pkgrel=3
 pkgdesc="一款智能机器人软件，由应用提供群管理、智能对话、好友互动、生活助理等智能功能。"
 arch=(any)
 url="https://cqp.cc/t/14901"
@@ -32,7 +32,7 @@ sha512sums=('a63dbaeed73f98e4ae44641838c27536bd9cfdaec8b0bb2c7ec3da20633954b7b27
             'ea67079f4cc5f5c224ad4b6b6db666ab5da68e858aaebb5951848b48e728570850a28387f9f5eb3cd0de889fdd71cb8944537ada6987addd47d59a4179a3f11b'
             'd762cb27141c3cffe455922c45d98642dcb551f31f11b310f658e0359959d11a93981be4ceea69405b6fbd5b9b892da0f6b34a53f94401b9e551d9d2845a8415'
             '94e87b1bffd83606e71fe072459dea0a190539540a5f3aaf28ee746874757c98c1bad75fb7bb22831d5503a787c323be74c638c6bd6fd9ee20200b29475db082'
-            '9185947aa4a181376ebddf323fb8104ee252dcde4da3409e584607469bf8681f9ffab8565001ee58a9002adcc980e9433642f89b8adcdbf83d094bc1701ecd34')
+            '127e254f6b9390456d013f30858757657bf3338f427323efcac5d666fd02da3ac133404019b892b467ef428995009794ed5aca844a58ad1ddbbfb796b81844d7')
 noextract=("$pkgname-$pkgver.zip")
 
 prepare() {
