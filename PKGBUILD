@@ -1,8 +1,8 @@
 # Maintainer: Wellington <wellingtonwallace@gmail.com>
 
 pkgname=fastgame-git
-pkgver=0.0.1.r0.g5d1da8a
-pkgrel=2
+pkgver=0.0.2.r0.gd998550
+pkgrel=1
 pkgdesc='Optimize system performance for games'
 arch=(x86_64 i686)
 url='https://github.com/wwmm/fastgame'
