@@ -1,6 +1,6 @@
 # Maintainer: Thorsten Schifferdecker <ts at systs dot org>
 pkgname=ignite-bin
-pkgver=0.5.2
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Weaveworks Ignite, combines Firecracker MicroVMs with Docker/OCI images to unify containers and VMs."
 arch=('x86_64')
@@ -15,8 +15,8 @@ noextract=(
 	"ignite-${pkgver}"
 	"ignited-${pkgver}"
 )
-sha256sums=('db67a0db64b5dfcf41f4061477b968547a85a58fb23b065d29b10cdc56585697'
-            'd209a4b0d44bf44d3ce6e9a388bcce53762913bb0345955616c9b3a5a6eaacba')
+sha256sums=('fdb024117bbb3fcbffcda2cabe1627722bbcbedf11b736dbd3949aed01dddd59'
+            '132f40971be1dd617b215df567227284e5750829a3e11061fe2bc3173df787ef')
 
 package() {
 	install -D -m755 "ignite-${pkgver}" "${pkgdir}/usr/bin/ignite"
