@@ -9,7 +9,7 @@ url="https://appleseedhq.net"
 license=('MIT')
 provides=('appleseed')
 conflicts=('appleseed-git')
-depends=(python2 qt4 'seexpr>=2.11' boost openexr opencolorio openimageio openshadinglanguage xerces-c zlib)
+depends=(python2 qt4 'seexpr1=2.11' boost openexr opencolorio openimageio openshadinglanguage xerces-c zlib)
 makedepends=(cmake)
 options=()
 source=("https://github.com/${pkgname}hq/${pkgname}/archive/${_pkgver}.tar.gz"

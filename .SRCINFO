@@ -8,7 +8,7 @@ pkgbase = appleseed
 	makedepends = cmake
 	depends = python2
 	depends = qt4
-	depends = seexpr>=2.11
+	depends = seexpr1-2
 	depends = boost
 	depends = openexr
 	depends = opencolorio
