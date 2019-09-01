@@ -1,0 +1,14 @@
+diff --git a/src/sage/libs/gap/util.pyx b/src/sage/libs/gap/util.pyx
+index 27609f833c..b5cc4bcf65 100644
+--- a/src/sage/libs/gap/util.pyx
++++ b/src/sage/libs/gap/util.pyx
+@@ -186,7 +186,7 @@ def gap_root():
+     # the appropriate GAP_ROOT is to set the GAP_ROOT_DIR variable
+     SAGE_LOCAL = sage.env.SAGE_LOCAL
+     gap_sh = open(os.path.join(SAGE_LOCAL, 'bin', 'gap')).read().splitlines()
+-    gapdir = filter(lambda dir:dir.strip().startswith('GAP_ROOT'), gap_sh)[0]
++    gapdir = next(filter(lambda dir:dir.strip().startswith('GAP_ROOT'), gap_sh))
+     gapdir = gapdir.split('"')[1]
+     gapdir = gapdir.replace('$SAGE_LOCAL', SAGE_LOCAL)
+     return gapdir
+

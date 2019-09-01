@@ -1,3 +1,19 @@
+--- a/src/sage/repl/display/fancy_repr.py
++++ b/src/sage/repl/display/fancy_repr.py
+@@ -15,10 +15,12 @@ Representations of objects.
+ import types
+ 
+ from IPython.lib.pretty import (
+-    _safe_getattr, _baseclass_reprs,
++    _safe_getattr,
+     _type_pprinters,
+ )
+ 
++_baseclass_reprs = (object.__repr__,)
++
+ from sage.repl.display.util import format_list
+ 
+ 
 --- a/src/sage/repl/ipython_extension.py	2019-08-31 11:41:31.505296171 +0200
 +++ b/src/sage/repl/ipython_extension.py	2019-09-01 14:22:24.352575448 +0200
 @@ -509,11 +509,9 @@
