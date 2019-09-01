@@ -21,6 +21,7 @@ pkgbase = palemoon-bin
 	options = !strip
 	source = palemoon.desktop
 	validpgpkeys = 439F46F42C6AE3D23CF52E70865E6C87C65285EC
+	validpgpkeys = 3DAD8CD107197488D2A2A0BD40481E7B8FCF9CEC
 	sha256sums = c6cae1c0de6b59da1d846cb2092ca2725ba2baa4d554223f747a4a71ee63002e
 	source_i686 = https://linux.palemoon.org/datastore/release/palemoon-28.7.0.linux-i686.tar.bz2
 	source_i686 = https://linux.palemoon.org/datastore/release/palemoon-28.7.0.linux-i686.tar.bz2.sig

@@ -25,7 +25,10 @@ source=(palemoon.desktop)
 source_i686=("https://linux.palemoon.org/datastore/release/palemoon-$pkgver.linux-i686.tar.bz2"{,.sig})
 source_x86_64=("https://linux.palemoon.org/datastore/release/palemoon-$pkgver.linux-x86_64.tar.bz2"{,.sig})
 
-validpgpkeys=('439F46F42C6AE3D23CF52E70865E6C87C65285EC') # T. Wine
+validpgpkeys=('439F46F42C6AE3D23CF52E70865E6C87C65285EC' # T. Wine
+              '3DAD8CD107197488D2A2A0BD40481E7B8FCF9CEC') # Moonchild
+                        # see https://forum.palemoon.org/viewtopic.php?f=37&t=19907#p173793
+                        # and https://forum.palemoon.org/viewtopic.php?f=1&t=7176
 sha256sums=('c6cae1c0de6b59da1d846cb2092ca2725ba2baa4d554223f747a4a71ee63002e')
 sha256sums_i686=('3cceba30d686f7cdbf3a2705b13252d24ff905e05c37b1129dc45b2648543f9b'
                  'SKIP')
