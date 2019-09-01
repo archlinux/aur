@@ -1,28 +1,21 @@
 pkgbase = ros-build-tools-py3
 	pkgdesc = Utilities for building Arch packages for ROS stacks.
-	pkgver = 0.2.1
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/ros-melodic-arch/ros-build-tools-py3
 	arch = any
 	license = BSD
 	depends = bash
 	optdepends = python3
+	optdepends = python-argparse
+	optdepends = python-yaml
+	optdepends = python-termcolor
+	optdepends = python-certifi
 	provides = ros-build-tools
 	conflicts = ros-build-tools
 	source = fix-python-scripts.sh
-	source = stack-install-tools.sh
-	source = create-arch-ros-package-legacy.sh
-	source = PKGBUILD.rostemplate
-	source = get_stack_dependencies.py
-	source = generate-python-patch.sh
 	source = clear-ros-env.sh
-	md5sums = ed01573e0ecc0f7ca451d7e2849cc5ee
-	md5sums = 79ae7fb600e116623a42631d15d66a87
-	md5sums = ac82eca7efc9f0ff7e8b976a83692868
-	md5sums = f3378832c3ba121f7c9e17dc43c8b1d4
-	md5sums = d257f7f20384e894b0431ee61068aa96
-	md5sums = 8d6d7eb89a12c449497b209f1a06655b
-	md5sums = 07f5253eb3f8cb5295c32026a20ab6c0
+	source = create_pkgbuild.py
 
 pkgname = ros-build-tools-py3
 
