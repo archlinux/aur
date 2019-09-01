@@ -3,7 +3,7 @@
 # Contributor: Light2Yellow <oleksii.vilchanskyi@gmail.com>
 
 pkgname=ckb-next-git
-pkgver=0.4.0.r16.g216edbc
+pkgver=0.4.1.r6.g69d58a5
 pkgrel=1
 epoch=1
 pkgdesc="Corsair Keyboard and Mouse Input Driver, git master branch"
@@ -12,7 +12,7 @@ url="https://github.com/ckb-next/ckb-next"
 license=('GPL2')
 depends=('qt5-base' 'hicolor-icon-theme' 'quazip')
 makedepends=('git' 'cmake')
-optdepends=('libappindicator-gtk2: Ayatana indicators in Unity, KDE or Systray (GTK+ 2 library)')
+optdepends=('libappindicator-gtk2: Ayatana indicators in Unity, KDE or Systray (GTK+ 2 library)' 'libpulse')
 conflicts=('ckb-git' 'ckb-git-latest' 'ckb-next')
 provides=('ckb-next')
 install=ckb-next-git.install
@@ -21,9 +21,8 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/${pkgname%-VCS}"
-  # based only on annotated tags, always has long version as it's a rolling release
+  # based only on tags, always has long version as it's a rolling release
   # discards v, replaces dashes with dots
-  # NOTE: for one release, 0.3.0, annotated tags are missing, thus --tags is used
   git describe --tags --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
@@ -36,8 +35,9 @@ build() {
     -DCMAKE_BUILD_TYPE="Release"                  \
     -DCMAKE_INSTALL_LIBDIR="lib"                  \
     -DCMAKE_INSTALL_LIBEXECDIR="lib"              \
+    -DDISABLE_UPDATER=1                           \
     -DUDEV_RULE_DIRECTORY="/usr/lib/udev/rules.d" \
-    -DDISABLE_UPDATER=1
+    -DFORCE_INIT_SYSTEM="systemd"
   cmake --build build --target all
 }
 
