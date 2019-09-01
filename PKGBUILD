@@ -2,8 +2,8 @@
 
 _oomox_ver=1.12.3
 _oomox_theme_ver=1.10
-#_materia_theme_ver=20190315
-_materia_cmt=f1ad3125eea55f4fe88ceab1be83bd51ee5eba48
+_materia_theme_ver=20190831
+#_materia_cmt=f1ad3125eea55f4fe88ceab1be83bd51ee5eba48
 _arc_theme_ver=20190330
 _archdroid_icons_ver=1.0.2
 _gnome_colors_icons_ver=5.5.5
@@ -17,7 +17,7 @@ _suru_plus_aspromauros_icons_ver=3.0
 
 pkgname=oomox
 pkgver=${_oomox_ver}
-pkgrel=4
+pkgrel=5
 pkgdesc='Themix: GUI for generating different color variations
 of Arc, Materia, Oomox themes
 (GTK2, GTK3, Cinnamon, GNOME, MATE, Openbox, Xfwm),
@@ -72,7 +72,7 @@ conflicts=('oomox-git')
 source=(
     "oomox-${_oomox_ver}.tar.gz::https://github.com/themix-project/oomox/archive/${_oomox_ver}.tar.gz"
     "oomox-gtk-theme-${_oomox_theme_ver}.tar.gz::https://github.com/themix-project/oomox-gtk-theme/archive/${_oomox_theme_ver}.tar.gz"
-    "materia-theme-${_materia_cmt}.tar.gz::https://github.com/nana-4/materia-theme/archive/${_materia_cmt}.tar.gz"
+    "materia-theme-${_materia_theme_ver}.tar.gz::https://github.com/nana-4/materia-theme/archive/v${_materia_theme_ver}.tar.gz"
     "arc-theme-${_arc_theme_ver}.tar.gz::https://github.com/NicoHood/arc-theme/archive/${_arc_theme_ver}.tar.gz"
     "archdroid-icon-theme-${_archdroid_icons_ver}.tar.gz::https://github.com/themix-project/oomox-archdroid-icon-theme/archive/${_archdroid_icons_ver}.tar.gz"
     "gnome-colors-icon-theme-${_gnome_colors_icons_ver}.tar.gz::https://github.com/themix-project/oomox-gnome-colors-icon-theme/archive/${_gnome_colors_icons_ver}.tar.gz"
@@ -86,7 +86,7 @@ source=(
 )
 md5sums=('c7bc893608ab64a35bce7063a5d26ea9'
          '13945f05eba3b85e6d63fec1ff60380a'
-         'ff8455aa4a17e8939da1a87b649634cd'
+         '92a256f81ac7e2cb41e6fe4ae0fb547b'
          '57c71dbdf05b6cfda073239ff322033c'
          'cb669130685dcbf03a8f7f5738c71dc6'
          '8b4a9a1837211a3caf661ab825d66cb0'
@@ -102,7 +102,7 @@ prepare() {
     cd ${srcdir}
     cp -pr "${pkgname}-gtk-theme-${_oomox_theme_ver}"/* "${pkgname}-${_oomox_ver}/plugins/theme_oomox/gtk-theme"
     #cp -pr "materia-theme-${_materia_theme_ver}"/* "${pkgname}-${_oomox_ver}/plugins/theme_materia/materia-theme"
-	cp -pr "materia-theme-${_materia_cmt}"/* "${pkgname}-${_oomox_ver}/plugins/theme_materia/materia-theme"
+	cp -pr "materia-theme-${_materia_theme_ver}"/* "${pkgname}-${_oomox_ver}/plugins/theme_materia/materia-theme"
     cp -pr "arc-theme-${_arc_theme_ver}"/* "${pkgname}-${_oomox_ver}/plugins/theme_arc/arc-theme"
     cp -pr "archdroid-icon-theme-${_archdroid_icons_ver}"/* "${pkgname}-${_oomox_ver}/plugins/icons_archdroid/archdroid-icon-theme"
     cp -pr "gnome-colors-icon-theme-${_gnome_colors_icons_ver}"/* "${pkgname}-${_oomox_ver}/plugins/icons_gnomecolors/gnome-colors-icon-theme"
