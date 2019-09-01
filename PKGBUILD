@@ -1,7 +1,7 @@
 # Maintainer: Erikas Rudinskas <erikmnkl@gmail.com>
 
 pkgname=nbfc-git
-pkgver=1.6.3.r13.g3733bfa
+pkgver=1.6.3.r19.g175d92a
 pkgrel=1
 pkgdesc='Cross-platform fan control service for notebooks (Development version)'
 arch=('i686' 'x86_64')
