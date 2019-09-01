@@ -2,7 +2,7 @@
 # Contributor: Jon Gjengset <jon@thesquareplanet.com>
 
 pkgname=hotspot-git
-pkgver=v1.1.0.r2.g442c10e
+pkgver=v1.2.0.r25.gc65a82f
 pkgrel=1
 pkgdesc="The Linux perf GUI for performance analysis"
 arch=('any')
@@ -34,5 +34,4 @@ build() {
 package() {
     cd "${pkgname%-git}"
     make DESTDIR="${pkgdir}/" install
-    mv "$pkgdir/usr/lib64" "$pkgdir/usr/lib"
 }
