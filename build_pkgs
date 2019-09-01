@@ -1,7 +1,7 @@
 #!/bin/bash
 # default config
 # default build arches
-DEFAULT_CPU_ARCHES=(generic skylake broadwell silvermont)
+DEFAULT_CPU_ARCHES=(generic ivybridge skylake broadwell silvermont)
 
 
 build_pkg()
