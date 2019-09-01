@@ -10,12 +10,21 @@ license=('MIT')
 depends=('python-pyqt5' 'python-numpy' 'python-imutils' 'python-h5py')
 
 install=dupliseek.install
-source=(dupliseek.0.0.2.tar.xz::https://gitlab.com/magnusmj/dupliseek/uploads/7a6999dd09ba87984e176c893344db9a/dupliseek.0.0.2.tar.xz)
-md5sums=('feaeff56c2ccd5827e2e7efd2315a66b')
+source=(dupliseek.0.0.2.tar.xz::https://www.dropbox.com/s/0nf8r96lr20wnvj/dupliseek0.0.2.tar.xz?dl=1)
+md5sums=('c0ff1a839dc47437d30b0e2e42ce225b')
 
 
 package() {
-    cd "$srcdir"
+    cd "$srcdir"/dupliseek
+	sudo mkdir "$pkgdir"/opt/dupliseek
+	sudo cp -r * "$pkgdir"/opt/dupliseek/
+	mkdir "$pkgdir"/usr/share/applications
+	cp dupliseek.desktop "$pkgdir"/usr/share/applications/
 
-	cp -r dupliseek/* "$pkgdir"/
+	cd "$pkgdir"/opt/dupliseek/
+	rm install_arch.sh
+	rm install_fedora.sh
+	rm install_ubuntu.sh
+	rm -r snap-stuff
+
 }
