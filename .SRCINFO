@@ -10,7 +10,7 @@ pkgbase = python-cqhttp-git
 	depends = python>=3.5
 	depends = python-flask
 	depends = python-requests
-	depends = coolq-cqhttp-api-bin
+	depends = coolq-cqhttp-api
 	provides = python-cqhttp
 	conflicts = python-cqhttp
 	source = python-cqhttp::git+https://github.com/richardchien/python-cqhttp.git

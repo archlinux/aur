@@ -8,7 +8,7 @@ arch=('any')
 url='https://github.com/richardchien/python-cqhttp'
 license=('MIT')
 groups=('eqs')
-depends=('python>=3.5' 'python-flask' 'python-requests' 'coolq-cqhttp-api-bin')
+depends=('python>=3.5' 'python-flask' 'python-requests' 'coolq-cqhttp-api')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
