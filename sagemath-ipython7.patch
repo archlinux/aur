@@ -1,3 +1,53 @@
+diff --git a/src/sage/all.py b/src/sage/all.py
+index c87c9372e9..72db7b85bb 100644
+--- a/src/sage/all.py
++++ b/src/sage/all.py
+@@ -19,7 +19,7 @@ We exclude the dependencies and check to see that there are no others
+ except for the known bad apples::
+ 
+     sage: allowed = [
+-    ....:     'IPython', 'prompt_toolkit',     # sage dependencies
++    ....:     'IPython', 'prompt_toolkit', 'jedi',   # sage dependencies
+     ....:     'threading', 'multiprocessing',  # doctest dependencies
+     ....:     '__main__', 'sage.doctest',      # doctesting
+     ....:     'signal', 'enum',                # may appear in Python 3
+diff --git a/src/sage/repl/attach.py b/src/sage/repl/attach.py
+index c350ec33af..4605951df2 100644
+--- a/src/sage/repl/attach.py
++++ b/src/sage/repl/attach.py
+@@ -249,13 +249,13 @@ def reset_load_attach_path():
+         sage: reset_load_attach_path(); load_attach_path()
+         ['.']
+         sage: os.environ['SAGE_LOAD_ATTACH_PATH'] = '/veni/vidi:vici:'
+-        sage: import imp
+-        sage: imp.reload(sage.repl.attach)    # Simulate startup
++        sage: import importlib
++        sage: importlib.reload(sage.repl.attach)    # Simulate startup
+         <module 'sage.repl.attach' from '...'>
+         sage: load_attach_path()
+         ['.', '/veni/vidi', 'vici']
+         sage: del os.environ['SAGE_LOAD_ATTACH_PATH']
+-        sage: imp.reload(sage.repl.preparse)    # Simulate startup
++        sage: importlib.reload(sage.repl.preparse)    # Simulate startup
+         <module 'sage.repl.preparse' from '...'>
+         sage: reset_load_attach_path(); load_attach_path()
+         ['.']
+@@ -595,12 +595,7 @@ def reload_attached_files_if_modified():
+         basename = os.path.basename(filename)
+         timestr = time.strftime('%T', mtime)
+         notice = '### reloading attached file {0} modified at {1} ###'.format(basename, timestr)
+-        if ip and ip.pt_cli:
+-            with ip.pt_cli.patch_stdout_context(raw=True):
+-                print(notice)
+-                code = load_wrap(filename, attach=True)
+-                ip.run_cell(code)
+-        elif ip:
++        if ip:
+             print(notice)
+             code = load_wrap(filename, attach=True)
+             ip.run_cell(code)
+diff --git a/src/sage/repl/display/fancy_repr.py b/src/sage/repl/display/fancy_repr.py
+index 818498fbae..af33f92126 100644
 --- a/src/sage/repl/display/fancy_repr.py
 +++ b/src/sage/repl/display/fancy_repr.py
 @@ -15,10 +15,12 @@ Representations of objects.
@@ -14,26 +64,11 @@
  from sage.repl.display.util import format_list
  
  
---- a/src/sage/repl/ipython_extension.py	2019-08-31 11:41:31.505296171 +0200
-+++ b/src/sage/repl/ipython_extension.py	2019-09-01 14:22:24.352575448 +0200
-@@ -509,11 +509,9 @@
-         from .interpreter import (SagePreparseTransformer,
-                                  SagePromptTransformer)
- 
--        for s in (self.shell.input_splitter, self.shell.input_transformer_manager):
--            s.physical_line_transforms.insert(1, SagePromptTransformer())
--            s.python_line_transforms.append(SagePreparseTransformer())
--
--
-+        self.shell.input_transformers_cleanup.insert(1, SagePromptTransformer)
-+        self.shell.input_transformers_post.append(SagePreparseTransformer)
-+        
- class SageJupyterCustomizations(SageCustomizations):
-     @staticmethod
-     def all_globals():
---- a/src/sage/repl/interpreter.py	2019-08-31 10:41:55.667982861 +0200
-+++ b/src/sage/repl/interpreter.py	2019-09-01 15:22:50.034086246 +0200
-@@ -78,7 +78,7 @@
+diff --git a/src/sage/repl/interpreter.py b/src/sage/repl/interpreter.py
+index 5c56e6bf89..a96c350791 100644
+--- a/src/sage/repl/interpreter.py
++++ b/src/sage/repl/interpreter.py
+@@ -78,7 +78,7 @@ Check that Cython source code appears in tracebacks::
      dummy line
      ...
      ZeroDivisionError...Traceback (most recent call last)
@@ -42,7 +77,7 @@
      ----> 1 Integer(1)/Integer(0)
      .../sage/rings/integer.pyx in sage.rings.integer.Integer...div... (.../cythonized/sage/rings/integer.c:...)()
      ...
-@@ -367,22 +367,19 @@
+@@ -367,22 +367,19 @@ class SageTestShell(SageShellOverride, TerminalInteractiveShell):
  ###################################################################
  # Transformers used in the SageInputSplitter
  ###################################################################
@@ -72,7 +107,7 @@
  
      TESTS:
  
-@@ -403,57 +400,15 @@
+@@ -403,57 +400,15 @@ def SagePreparseTransformer(line):
          <BLANKLINE>
          sage: shell.quit()
      """
@@ -109,14 +144,7 @@
 -
 -        sage: spt.push("   sage: ....:    2+2")
 -        '   2+2'
-+    lines_out = []
-+    for line in lines:
-+        if _do_preparse and not line.startswith('%'):
-+            lines_out += [preparse(line)]
-+        else:
-+            lines_out += [line]
-+    return lines_out
- 
+-
 -    We test that the input transformer is enabled on the Sage command
 -    line::
 -
@@ -127,7 +155,14 @@
 -        sage: shell.run_cell('sage: a = [\n....: 123]')    # new-style multi-line
 -
 -    We test that :trac:`16196` is resolved::
--
++    lines_out = []
++    for line in lines:
++        if _do_preparse and not line.startswith('%'):
++            lines_out += [preparse(line)]
++        else:
++            lines_out += [line]
++    return lines_out
+ 
 -        sage: shell.run_cell('    sage: 1+1')
 -        2
 -        sage: shell.quit()
@@ -138,7 +173,7 @@
  
  ###################
  # Interface shell #
-@@ -583,7 +538,7 @@
+@@ -583,7 +538,7 @@ def interface_shell_embed(interface):
          sage: shell = interface_shell_embed(gap)
          sage: shell.run_cell('List( [1..10], IsPrime )')
          [ false, true, true, false, true, false, true, false, false, false ]
@@ -147,36 +182,20 @@
      """
      cfg = sage_ipython_config.copy()
      ipshell = InteractiveShellEmbed(config=cfg,
---- a/src/sage/repl/attach.py	2019-08-31 10:41:55.664649493 +0200
-+++ b/src/sage/repl/attach.py	2019-09-01 16:37:15.360169397 +0200
-@@ -249,13 +249,13 @@
-         sage: reset_load_attach_path(); load_attach_path()
-         ['.']
-         sage: os.environ['SAGE_LOAD_ATTACH_PATH'] = '/veni/vidi:vici:'
--        sage: import imp
--        sage: imp.reload(sage.repl.attach)    # Simulate startup
-+        sage: import importlib
-+        sage: importlib.reload(sage.repl.attach)    # Simulate startup
-         <module 'sage.repl.attach' from '...'>
-         sage: load_attach_path()
-         ['.', '/veni/vidi', 'vici']
-         sage: del os.environ['SAGE_LOAD_ATTACH_PATH']
--        sage: imp.reload(sage.repl.preparse)    # Simulate startup
-+        sage: importlib.reload(sage.repl.preparse)    # Simulate startup
-         <module 'sage.repl.preparse' from '...'>
-         sage: reset_load_attach_path(); load_attach_path()
-         ['.']
-@@ -595,12 +595,7 @@
-         basename = os.path.basename(filename)
-         timestr = time.strftime('%T', mtime)
-         notice = '### reloading attached file {0} modified at {1} ###'.format(basename, timestr)
--        if ip and ip.pt_cli:
--            with ip.pt_cli.patch_stdout_context(raw=True):
--                print(notice)
--                code = load_wrap(filename, attach=True)
--                ip.run_cell(code)
--        elif ip:
-+        if ip:
-             print(notice)
-             code = load_wrap(filename, attach=True)
-             ip.run_cell(code)
+diff --git a/src/sage/repl/ipython_extension.py b/src/sage/repl/ipython_extension.py
+index 21d21afd3d..0c58dd1d26 100644
+--- a/src/sage/repl/ipython_extension.py
++++ b/src/sage/repl/ipython_extension.py
+@@ -509,10 +509,8 @@ class SageCustomizations(object):
+         from .interpreter import (SagePreparseTransformer,
+                                  SagePromptTransformer)
+ 
+-        for s in (self.shell.input_splitter, self.shell.input_transformer_manager):
+-            s.physical_line_transforms.insert(1, SagePromptTransformer())
+-            s.python_line_transforms.append(SagePreparseTransformer())
+-
++        self.shell.input_transformers_cleanup.insert(1, SagePromptTransformer)
++        self.shell.input_transformers_post.append(SagePreparseTransformer)
+ 
+ class SageJupyterCustomizations(SageCustomizations):
+     @staticmethod

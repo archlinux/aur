@@ -42,7 +42,7 @@ source=(git://git.sagemath.org/sage.git#branch=develop
         sagemath-singular-4.1.2.patch
         sagemath-ecl-sigfpe.patch
         sagemath-ipython7.patch
-        sagemath-python3-gap.patch)
+        sagemath-python3.patch)
 sha256sums=('SKIP'
             '328e45e78065b5f6527174bda48cfff6828acbf107c2535b0a9a92c3ceb35842'
             '1a82372a96ffd5e6d475b0e620935967ce5eb9b4484607d39da90824a77b07c4'
@@ -51,8 +51,8 @@ sha256sums=('SKIP'
             '5281e5c715ff14ffa4003f643a508863ca58efb9e083cece81928f78810dc525'
             '961bfb5694b67d425d21240d71490cb71714b5207c23448c89be0966512ff8f9'
             'a42f3b152b1aedb8abf16bc70971419919d1fe30328574e7fef8305f9d07d938'
-            '84a7777123838ee3f997a5375c387e1e811da6493b9232c196eaaa1a637b6d20'
-            'fe772d5355e63c1008cffd597d44b07b764cd343d1c54ceafd589f6f0068ff5f')
+            'b7fe63d06b7a3ebf0d752c31e23dfffe629745be5a4d515a9eebff890e64450b'
+            '6e58ff3fc072fa148e751f916955790e008f13faf495285ea9a887ed0e9c3b6d')
 
 pkgver() {
   cd sage
@@ -71,8 +71,8 @@ prepare(){
   patch -p1 -i ../latte-count.patch
 # Support IPython 7
   patch -p1 -i ../sagemath-ipython7.patch
-# python3 fixes in libs/gap
-  patch -p1 -i ../sagemath-python3-gap.patch
+# Additional python3 fixes
+  patch -p1 -i ../sagemath-python3.patch
 
 # Upstream patches  
 # fix build against libfes 0.2 http://trac.sagemath.org/ticket/15209
