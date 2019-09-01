@@ -1,0 +1,24 @@
+pkgbase = lib32-shaderc-git
+	pkgdesc = A collection of tools, libraries and tests for shader compilation. (GIT version)
+	pkgver = v2019.0.72.gf478667
+	pkgrel = 1
+	url = https://github.com/google/shaderc
+	arch = x86_64
+	license = Apache
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = python
+	depends = shaderc
+	depends = lib32-glibc
+	depends = lib32-gcc-libs
+	depends = lib32-glslang
+	depends = lib32-spirv-tools
+	provides = lib32-shaderc
+	conflicts = lib32-shaderc
+	source = git+https://github.com/google/shaderc.git
+	source = fix-glslang-link-order.patch::https://patch-diff.githubusercontent.com/raw/google/shaderc/pull/463.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = lib32-shaderc-git
+
