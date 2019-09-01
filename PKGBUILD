@@ -1,7 +1,7 @@
 # Maintainer: Maxime Arthaud <maxime@arthaud.me>
 
 pkgname=ikos
-pkgver=2.1
+pkgver=2.2
 pkgrel=1
 pkgdesc='Static analyzer for C and C++ developed by NASA'
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
@@ -19,7 +19,7 @@ depends=('gmp'
 makedepends=('cmake'
              'boost')
 source=("https://github.com/nasa-sw-vnv/ikos/releases/download/v$pkgver/ikos-$pkgver.tar.gz")
-sha256sums=('bd5e75a2a94fafc3d1cd01eb6541da458a10c7674e7ae29eb211642c526f1407')
+sha256sums=('4946d479cc8eb00b38960087c14982598b508077187162ec3b9771a82d21d4a5')
 
 prepare() {
   cd "$srcdir/ikos-$pkgver"
@@ -39,7 +39,7 @@ build() {
 package() {
   cd "$srcdir/ikos-$pkgver/build"
   make DESTDIR="$pkgdir" install
-  install -Dm644 "$srcdir/ikos-$pkgver/LICENSE.pdf" "$pkgdir/usr/share/licenses/ikos/LICENSE"
+  install -Dm644 "$srcdir/ikos-$pkgver/LICENSE.txt" "$pkgdir/usr/share/licenses/ikos/LICENSE"
 }
 
 check() {
