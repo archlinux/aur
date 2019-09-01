@@ -3,7 +3,7 @@
 # This PKGBUILD is based on the packages jabref and jabref-git
 
 pkgname=jabref-latest
-pkgver=20190802
+pkgver=20190830
 pkgrel=1
 pkgdesc="GUI frontend for BibTeX, written in Java; latest master version from git"
 arch=('any')
@@ -11,7 +11,8 @@ url="https://www.jabref.org/"
 license=('MIT')
 provides=('jabref')
 conflicts=('jabref')
-depends=('archlinux-java-run>=4' 'java8-openjfx'
+depends=('archlinux-java-run>=4'
+         'java11-openjfx'
          'sh'
          'atk'
          'bzip2'
@@ -59,8 +60,9 @@ source=(https://builds.jabref.org/master/JabRef--master--latest.jar
 noextract=(JabRef--master--latest.jar)
 sha256sums=('SKIP'
             'dad0a06f54ce346cc066c6e27e746974e850b77f04381f3c363021ee927e444d'
-            'b51970cc3b70da835f7ebc971d03570417dba7dae837f28f2cce213ecb844768'
+            '5f75629a9d8984ffd93b2628f1c064fa4f72df4677cfce91977132240d7a3179'
             'a26845ba60ef2588c52d7d18259a977b146c777f935573bacdffcdcefa2b41b5')
+
 
 pkgver() {
   curl --silent --head head https://builds.jabref.org/master/JabRef--master--latest.jar \
