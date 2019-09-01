@@ -14,6 +14,7 @@ sha256sums=('90b200107b32b72259d60bfc08b12c782b13e706b7e617d058df292506fdbf90')
 
 build() {
 	meson --prefix=/usr --buildtype=plain "${srcdir}/${pkgname}-${pkgver}" build
+	ninja -C build
 }
 
 package() {
