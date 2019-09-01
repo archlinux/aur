@@ -1,6 +1,8 @@
 post_install() {
+echo ""
 }
 
 post_remove()
 {
+echo ""
 }
