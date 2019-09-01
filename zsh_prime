@@ -1,0 +1,4 @@
+#compdef prime
+
+_arguments -s -S '*::arguments:{ _normal }'
+

@@ -1,21 +1,26 @@
 pkgbase = prime
 	pkgdesc = PRIME Render Offload Launcher. Please visit https://download.nvidia.com/XFree86/Linux-x86_64/435.21/README/primerenderoffload.html to manually configure your Device.
 	pkgver = 0.1
-	pkgrel = 6
+	pkgrel = 7
 	url = https://download.nvidia.com/XFree86/Linux-x86_64/435.21/README/primerenderoffload.html
 	install = prime.install
 	arch = any
 	depends = sh
 	optdepends = vulkan-intel: for vulkan support
 	optdepends = lib32-vulkan-intel: for vulkan support
+	optdepends = zsh: zsh completion
 	conflicts = bumblebee
 	conflicts = optimus-manager
 	source = prime
 	source = prime.install
 	source = 10-nvidia.conf
+	source = zsh_prime
+	source = bash_prime
 	md5sums = e19cc7136f1e0c070de7da4a65799351
 	md5sums = d5fbf5400bdd0705fcda1ce78ec12077
 	md5sums = 6bc9250bd74dcfd23a9ad4e2039681d4
+	md5sums = bbc3d71244a5fc5d4d6caeea941ff91f
+	md5sums = 5451a4458227a2ffe534713e7fba38f8
 
 pkgname = prime
 
