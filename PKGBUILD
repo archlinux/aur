@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
 pkgname=gammy-git
-pkgver=0.9.42.r18.1c7b3b6
+pkgver=0.9.42.r76.b4e14e0
 pkgrel=1
 pkgdesc="Automatic screen brightness tool."
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=("${pkgname%-git}")
 source=('git+https://github.com/Fushko/gammy.git'
         "${pkgname%-git}.desktop")
 sha256sums=('SKIP'
-            '32bdd9ae6e2eac460bbcc02c4f6cba6428d557e2c471fc67727d9c6a231f6764')
+            'ad02735598429f55246969c58fe5ff54db7960e813996d6d642c08fb18687583')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
@@ -30,7 +30,7 @@ package() {
 	cd "$srcdir/${pkgname%-git}"
 	make INSTALL_ROOT="$pkgdir/" install
 	install -d "$pkgdir/usr/bin"
-	ln -s /opt/Gammy/bin/Gammy "$pkgdir/usr/bin/gammy"
+	ln -s /opt/gammy/bin/gammy "$pkgdir/usr/bin/gammy"
 	install -Dm644 "$srcdir/${pkgname%-git}.desktop" \
 		"$pkgdir/usr/share/applications/${pkgname%-git}.desktop"
 }
