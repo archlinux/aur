@@ -1,7 +1,7 @@
 # Maintainer: Antonino Maniscalco <antomani103@pm.me>
 
 pkgbase=('vbar')
-pkgname=('vbar-git')
+pkgname=('vbextreme-bar-git')
 pkgdesc="another statuts bar"
 pkgver=master
 pkgrel=1
