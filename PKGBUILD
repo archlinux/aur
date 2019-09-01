@@ -13,7 +13,7 @@ pkgname=(
   'xorg-server-common-git'
   'xorg-server-devel-git')
 _pkgbase='xserver'
-pkgver=1.20.0.419.r17053.g7d0e660e0
+pkgver=1.20.0.r419.g7d0e660e0
 pkgrel=1
 arch=('x86_64')
 license=('custom')
@@ -34,8 +34,8 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "${_pkgbase}"
-  # cutting off 'foo-' prefix that presents in the git tag
-  echo $(git describe --long | cut -d "-" -f3-4 | tr - .).r$(git rev-list HEAD --count).$(git describe --long | cut -d "-" -f5)
+  # cutting off 'xorg.server.' prefix that presents in the git tag
+  git describe --long --tags| sed 's/^xorg.server.//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {

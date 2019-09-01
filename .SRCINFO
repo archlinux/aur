@@ -1,5 +1,5 @@
 pkgbase = xorg-server-git
-	pkgver = 1.20.0.419.r17053.g7d0e660e0
+	pkgver = 1.20.0.r419.g7d0e660e0
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/xorg/xserver.git
 	arch = x86_64
