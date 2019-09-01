@@ -2,7 +2,7 @@
 
 pkgname=namecoin-core
 pkgver=0.18.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Namecoin Core headless P2P node"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://namecoin.org"
@@ -69,7 +69,9 @@ package() {
 
   # Rename files left over from forking, because conflict with btc packages
   mv $pkgdir/usr/share/man/man1/{bitcoind,namecoind}.1
+  mv $pkgdir/usr/share/man/man1/{bitcoin,namecoin}-tx.1
   mv $pkgdir/usr/share/man/man1/{bitcoin,namecoin}-cli.1
+  mv $pkgdir/usr/share/doc/namecoin/{bitcoin,namecoin}-conf.md
 
   msg2 'Installing namecoin.conf...'
   install -Dm 600 "$srcdir/namecoin.conf" -t "$pkgdir/etc/namecoin"

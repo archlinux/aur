@@ -1,7 +1,7 @@
 pkgbase = namecoin-core
 	pkgdesc = Namecoin Core headless P2P node
 	pkgver = 0.18.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://namecoin.org
 	install = namecoin.install
 	arch = i686
