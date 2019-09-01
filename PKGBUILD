@@ -1,7 +1,7 @@
 # Maintainer: Lorenzo Fontana <lo@linux.com>
 pkgname=kubectl-trace-git
 _pkgname=kubectl-trace
-pkgver=116.3e8de86
+pkgver=187.d03517f
 pkgrel=1
 pkgdesc="Schedule bpftrace programs on your kubernetes cluster using the kubectl "
 makedepends=("go" "make")

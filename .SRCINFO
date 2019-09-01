@@ -1,6 +1,6 @@
 pkgbase = kubectl-trace-git
 	pkgdesc = Schedule bpftrace programs on your kubernetes cluster using the kubectl
-	pkgver = 116.3e8de86
+	pkgver = 187.d03517f
 	pkgrel = 1
 	url = https://github.com/iovisor/kubectl-trace
 	arch = any
