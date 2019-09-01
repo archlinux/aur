@@ -16,7 +16,7 @@ _android_clang_toolchain_path=$_android_ndk_path/toolchains/llvm/prebuilt/linux-
 _android_sysroot=${_android_ndk_path}/platforms/android-$_android_platform/${_android_platform_arch}
 
 pkgname=android-$_pkg_arch-$_pkgname
-pkgver=1.15
+pkgver=1.16
 pkgrel=1
 pkgdesc="Provides libiconv.so and libcharset.so (Android $_pkg_arch)"
 arch=('any')
@@ -26,7 +26,7 @@ makedepends=('android-ndk')
 conflicts=("android-$_pkgname-$_android_arch")
 replaces=("android-$_pkgname-$_android_arch")
 source=("http://ftp.gnu.org/pub/gnu/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-md5sums=('ace8b5f2db42f7b3b3057585e80d9808')
+sha256sums=('e6a1b1b589654277ee790cce3734f07876ac4ccfaecbee8afa0b649cf529cc04')
 options=(!libtool !buildflags staticlibs !strip !emptydirs)
 
 build() {
@@ -50,7 +50,7 @@ build() {
   export LDFLAGS="${LDFLAGS} -L${_android_sysroot}/usr/lib"
 
   # setup preprocessor (because the NDK doesn't provide a wrapper like for gcc and g++)
-  printf "#!/bin/bash\nexec \"$CXX\" -target=${_android_toolchain} -E \"\$@\"" > "$CPP"
+  printf "#!/bin/bash\nexec \"$CXX\" --target=${_android_toolchain} -E \"\$@\"" > "$CPP"
   chmod +x "$CPP"
 
   ./configure \
