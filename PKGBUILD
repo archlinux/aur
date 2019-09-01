@@ -36,9 +36,8 @@ apps/makescene/makescene
 apps/sceneupgrade/sceneupgrade"
 
 prepare() {
-  cd ${srcdir}
-  patch -Np1 -i gtest.patch
-  cd ${pkgname}
+  cd ${srcdir}/${pkgname}
+  git apply -v ${srcdir}/gtest.patch
   sed -i '/CXXFLAGS*/s/$/ -msse4.2/' libs/sfm/Makefile
 }
 

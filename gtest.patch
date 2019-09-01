@@ -1,17 +1,16 @@
 diff --git a/tests/Makefile b/tests/Makefile
-index f179d48..8927a5c 100644
---- a/mve-git/tests/Makefile
-+++ b/mve-git/tests/Makefile
-@@ -7,9 +7,9 @@ SOURCES = $(wildcard math/gtest_*.cc) $(wildcard mve/gtest_*.cc) $(wildcard sfm/
+index d6d913f..9cb0080 100644
+--- a/tests/Makefile
++++ b/tests/Makefile
+@@ -8,9 +8,9 @@ SOURCES = $(wildcard math/gtest_*.cc) $(wildcard mve/gtest_*.cc) $(wildcard sfm/
  INCLUDES = -I${MVE_ROOT}/libs -I${GTEST_PATH}/include
  CXXWARNINGS = -Wall -Wextra -pedantic -Wno-sign-compare
  CXXFLAGS = -std=c++11 -pthread ${CXXWARNINGS} ${INCLUDES}
 -LDLIBS += -lpng -ltiff -ljpeg
 +LDLIBS += -lpng -ltiff -ljpeg -lgtest -lgtest_main
  
--test: ${SOURCES:.cc=.o} libmve_fssr.a libmve_sfm.a libmve.a libmve_util.a libgtest_main.a
+-test: ${SOURCES:.cc=.o} libmve_fssr.a libmve_sfm.a libmve.a libmve_util.a libgtest_main.a libgtest.a
 +test: ${SOURCES:.cc=.o} libmve_fssr.a libmve_sfm.a libmve.a libmve_util.a
  	${LINK.cc} -o $@ $^ ${LDLIBS}
  
  clean:
-
