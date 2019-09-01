@@ -21,7 +21,6 @@ build() {
 }
 
 package_cp210x() {
-  cd $pkgbase-$pkgver
   install -Dt "$pkgdir/usr/lib/modules/$_extramodules" -m644 *.ko
   find "$pkgdir" -name '*.ko' -exec xz {} +
 
