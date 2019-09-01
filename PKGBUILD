@@ -4,11 +4,11 @@
 # Contributor: Orlando Garcia Feal <rodland at gmail dot com>
 
 pkgname=gnudatalanguage
-pkgver=0.9.8
-pkgrel=9
+pkgver=0.9.9
+pkgrel=1
 pkgdesc="An IDL (Interactive Data Language) compatible incremental compiler (ie. runs IDL programs)"
 arch=('i686' 'x86_64')
-url="http://gnudatalanguage.sourceforge.net/"
+url="https://github.com/gnudatalanguage/gdl"
 license=('GPL')
 depends=('python2'
          'python2-numpy'
@@ -26,26 +26,17 @@ depends=('python2'
          'udunits'
          'eigen3'
          'libtirpc'
-         'libmagick6')
+         'libmagick6'
+         'libgeotiff')
 makedepends=('cmake')
-options=('!makeflags')
-source=("http://downloads.sourceforge.net/gnudatalanguage/gdl-${pkgver}.tgz"
-        'gdl-tirpc.patch'
-        'gdl-updates.patch'
-#       'gdl-python3.patch'
+#options=('!makeflags')
+source=("https://github.com/gnudatalanguage/gdl/archive/v${pkgver}.tar.gz"
         'gdl.profile')
-sha256sums=('86d3aacd1de3994755dc917c732ee3360e4e7e4f16156f1eea47de048d138281'
-            '905d6b2d464e136a2c7d5fccbede8839ad7c277c417e9dd6cd8d82795fd7e686'
-            '56774a6bb7ee6e84412f17b5479a31036ac73991d438864aef9f1543d9ed420e'
-#           'eacacc47fae91e418115bb0845ab585d819151d63bd7f99b43374e72a9cefd0c'
+sha256sums=('ad5de3fec095a5c58b46338dcc7367d2565c093794ab1bbcf180bba1a712cf14'
             '8df4d0676ffcece07a6884c2836523cdda0bd7668b9491a96ef816bb993e6a2b')
 
 prepare() {
     cd ${srcdir}/gdl-${pkgver}
-
-    patch -p1 < ../gdl-tirpc.patch
-    patch -p1 < ../gdl-updates.patch
-#   patch -Np1 -i "${srcdir}/gdl-python3.patch"
 }
 
 build() {
@@ -55,7 +46,7 @@ build() {
     fi
     mkdir build
     cd build
-    cmake -DCMAKE_INSTALL_PREFIX=/usr -DPYTHON=YES -DPYTHONVERSION=2.7 \
+    cmake -DCMAKE_INSTALL_PREFIX=/usr -DPYTHON=YES -DPYTHONVERSION=2 \
         -DPYTHON_EXECUTABLE=/usr/bin/python2.7 -DGRAPHICSMAGICK=OFF -DMAGICK=ON \
         -DFFTW=ON -DHDF=ON -DHDFDIR=/opt/hdf4 -DHDF5=ON -DGRIB=ON -DUDUNITS=ON ..
 
