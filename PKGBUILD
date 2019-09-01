@@ -7,7 +7,7 @@
 
 pkgname=mutter-performance
 pkgver=3.32.2+43+gb7f158811
-pkgrel=18
+pkgrel=19
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -263,8 +263,8 @@ prepare() {
   # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/320
   # Type: 2
   # Status: 4
-  # Comment:
-  git cherry-pick -n 156980ef^..02c99524
+  # Comment: crashes in wayland session when trying to drag a folder/file in nautilus or a tab in firefox
+  # git cherry-pick -n 156980ef^..02c99524
 
   # Title: renderer-native: Reference count front buffers.
   # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/119
