@@ -2,9 +2,10 @@
 # Contributor: John Faust <contact at yayponies dot eu>
 # Contributor: fhilg
 # Contributor: skunk
+# Contributor: Mitmischer
 
 pkgname=ultrastardx-git
-pkgver=r918.8d9b3e32
+pkgver=r949.16331ad4
 pkgrel=1
 pkgdesc='Free and open source karaoke game. (GIT)'
 arch=('i686' 'x86_64')
@@ -21,9 +22,10 @@ optdepends=('ultrastar-creator: Qt program to generate USDX songs'
 provides=('ultrastardx')
 conflicts=('ultrastardx')
 groups=('usdx')
-source=("git://github.com/UltraStar-Deluxe/USDX.git")
+source=("git://github.com/UltraStar-Deluxe/USDX.git" "avcodec.patch")
 
-sha256sums=('SKIP')
+sha256sums=('SKIP'
+            'fbe1e5e887bc235fef71c6d0f6ff26b7c377bb92cbeecd6a81d6ecb354ade84f')
 
 pkgver() {
   cd "${srcdir}/USDX"
@@ -32,6 +34,7 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/USDX"
+  patch -p1 -i "${srcdir}/avcodec.patch"
   ./autogen.sh
 }
 

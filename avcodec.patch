@@ -1,0 +1,65 @@
+diff --git a/src/lib/ffmpeg-4.0/avcodec.pas b/src/lib/ffmpeg-4.0/avcodec.pas
+index e717744d..cef8b16e 100644
+--- a/src/lib/ffmpeg-4.0/avcodec.pas
++++ b/src/lib/ffmpeg-4.0/avcodec.pas
+@@ -84,7 +84,7 @@ const
+ 
+   (* Supported version by this header *)
+   LIBAVCODEC_MAX_VERSION_MAJOR   = 58;
+-  LIBAVCODEC_MAX_VERSION_MINOR   = 35;
++  LIBAVCODEC_MAX_VERSION_MINOR   = 54;
+   LIBAVCODEC_MAX_VERSION_RELEASE = 100;
+   LIBAVCODEC_MAX_VERSION = (LIBAVCODEC_MAX_VERSION_MAJOR * VERSION_MAJOR) +
+                            (LIBAVCODEC_MAX_VERSION_MINOR * VERSION_MINOR) +
+diff --git a/src/lib/ffmpeg-4.0/avformat.pas b/src/lib/ffmpeg-4.0/avformat.pas
+index b1fcea54..b6609e1f 100644
+--- a/src/lib/ffmpeg-4.0/avformat.pas
++++ b/src/lib/ffmpeg-4.0/avformat.pas
+@@ -63,7 +63,7 @@ const
+    *)
+   (* Max. supported version by this header *)
+   LIBAVFORMAT_MAX_VERSION_MAJOR   = 58;
+-  LIBAVFORMAT_MAX_VERSION_MINOR   = 20;
++  LIBAVFORMAT_MAX_VERSION_MINOR   = 29;
+   LIBAVFORMAT_MAX_VERSION_RELEASE = 100;
+   LIBAVFORMAT_MAX_VERSION = (LIBAVFORMAT_MAX_VERSION_MAJOR * VERSION_MAJOR) +
+                             (LIBAVFORMAT_MAX_VERSION_MINOR * VERSION_MINOR) +
+diff --git a/src/lib/ffmpeg-4.0/avutil.pas b/src/lib/ffmpeg-4.0/avutil.pas
+index 2e5e64bd..506344e1 100644
+--- a/src/lib/ffmpeg-4.0/avutil.pas
++++ b/src/lib/ffmpeg-4.0/avutil.pas
+@@ -58,7 +58,7 @@ uses
+ const
+   (* Max. supported version by this header *)
+   LIBAVUTIL_MAX_VERSION_MAJOR   = 56;
+-  LIBAVUTIL_MAX_VERSION_MINOR   = 22;
++  LIBAVUTIL_MAX_VERSION_MINOR   = 32;
+   LIBAVUTIL_MAX_VERSION_RELEASE = 100;
+   LIBAVUTIL_MAX_VERSION = (LIBAVUTIL_MAX_VERSION_MAJOR * VERSION_MAJOR) +
+                           (LIBAVUTIL_MAX_VERSION_MINOR * VERSION_MINOR) +
+diff --git a/src/lib/ffmpeg-4.0/swresample.pas b/src/lib/ffmpeg-4.0/swresample.pas
+index aea02d36..87d30a9f 100644
+--- a/src/lib/ffmpeg-4.0/swresample.pas
++++ b/src/lib/ffmpeg-4.0/swresample.pas
+@@ -83,7 +83,7 @@ const
+ 
+   (* Supported version by this header *)
+   LIBSWRESAMPLE_MAX_VERSION_MAJOR   = 3;
+-  LIBSWRESAMPLE_MAX_VERSION_MINOR   = 3;
++  LIBSWRESAMPLE_MAX_VERSION_MINOR   = 5;
+   LIBSWRESAMPLE_MAX_VERSION_RELEASE = 100;
+   LIBSWRESAMPLE_MAX_VERSION = (LIBSWRESAMPLE_MAX_VERSION_MAJOR * VERSION_MAJOR) +
+                            (LIBSWRESAMPLE_MAX_VERSION_MINOR * VERSION_MINOR) +
+diff --git a/src/lib/ffmpeg-4.0/swscale.pas b/src/lib/ffmpeg-4.0/swscale.pas
+index 59391758..55c74c6c 100644
+--- a/src/lib/ffmpeg-4.0/swscale.pas
++++ b/src/lib/ffmpeg-4.0/swscale.pas
+@@ -77,7 +77,7 @@ const
+ 
+   (* Max. supported version by this header *)
+   LIBSWSCALE_MAX_VERSION_MAJOR   =  5;
+-  LIBSWSCALE_MAX_VERSION_MINOR   =  3;
++  LIBSWSCALE_MAX_VERSION_MINOR   =  5;
+   LIBSWSCALE_MAX_VERSION_RELEASE =  100;
+   LIBSWSCALE_MAX_VERSION = (LIBSWSCALE_MAX_VERSION_MAJOR * VERSION_MAJOR) +
+                            (LIBSWSCALE_MAX_VERSION_MINOR * VERSION_MINOR) +
