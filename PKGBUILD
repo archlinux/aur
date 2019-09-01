@@ -62,7 +62,7 @@ fi
 
 ((DISABLE_UTE)) || ((DISABLE_CUDA)) || {
   _CMAKE_FLAGS+=( -DUNCERTAINTYTE_DIR=/usr )
-  makedepends+=('magma' 'uncertainty-framework')
+  makedepends+=('uncertainty-framework')
   optdepends+=('uncertainty-framework: for SFM uncertainty estimation')
 }
 
