@@ -4,7 +4,7 @@
 pkgname=kodi-addon-pvr-hts
 pkgbase=${pkgname}
 _gitname=pvr.hts
-pkgver=4.4.18
+pkgver=4.4.19
 
 _gitver=branch=Leia
 pkgrel=1
