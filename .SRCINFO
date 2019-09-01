@@ -1,0 +1,15 @@
+pkgbase = pynac-python3
+	pkgdesc = Python 3 version of GiNaC, a C++ library for symbolic mathematical calculations
+	pkgver = 0.7.26
+	pkgrel = 1
+	url = http://pynac.org
+	arch = x86_64
+	license = GPL
+	depends = python
+	depends = singular
+	conflicts = pynac
+	source = https://github.com/pynac/pynac/releases/download/pynac-0.7.26/pynac-0.7.26.tar.bz2
+	sha256sums = cc124ae9757355e3434ff864aeca6503184faf0642d26bc2f7bca6f3f2c9b50f
+
+pkgname = pynac-python3
+
