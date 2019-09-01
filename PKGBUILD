@@ -5,7 +5,7 @@ pkgname=iscan-plugin-gt-f670
 _pkgname=iscan-gt-f670-bundle
 pkgver=2.1.2
 _pkgver=1.0.1
-pkgrel=6
+pkgrel=7
 pkgdesc="iscan plugin for Epson Perfection Photo V200 scanners and similar"
 arch=('i686' 'x86_64')
 url="http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
@@ -14,17 +14,11 @@ depends=('iscan')
 install=gt-f670.install
 changelog=ChangeLog
 
-if [ "$CARCH" = "i686" ]; then
-  _ARCH=i386
-  _ARCH2=x86
-  source=("https://download2.ebz.epson.net/iscan/plugin/gt-f670/deb/x86/iscan-gt-f670-bundle-$_pkgver.x86.deb.tar.gz")
-  md5sums=('737dbc9632b4fe7865f2635d2c415308')
-elif [ "$CARCH" = "x86_64" ]; then
-  _ARCH=amd64
-  _ARCH2=x64
-  source=("https://download2.ebz.epson.net/iscan/plugin/gt-f670/deb/x64/iscan-gt-f670-bundle-$_pkgver.x64.deb.tar.gz")
-  md5sums=('5db14999b28c41aa5c386c5eee238f15')
-fi
+_ARCH=amd64
+_ARCH2=x64
+source=("https://download2.ebz.epson.net/iscan/plugin/gt-f670/deb/x64/iscan-gt-f670-bundle-$_pkgver.x64.deb.tar.gz")
+md5sums=('5db14999b28c41aa5c386c5eee238f15')
+
 
 build(){
   cd $srcdir/$_pkgname-$_pkgver.$_ARCH2.deb/plugins/

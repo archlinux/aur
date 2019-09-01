@@ -1,3 +1,7 @@
+2019-09-01 FoolEcho <foolecho at gmail dot com>
+	* 2.1.2-7 :
+	Removed i386 support.
+
 2016-16-07 FoolEcho <foolecho at gmail dot com>
 	* 2.1.2-6 :
 	Plugin updated to 1.0.1.
