@@ -2,7 +2,7 @@
 
 pkgname=clover-efi
 pkgver=5058
-pkgrel=1
+pkgrel=2
 pkgdesc="An EFI-based bootloader for BIOS-based computers to replace EDK2/Duet bootloader and enable OS X booting on non-Apple hardware."
 arch=('i686' 'x86_64')
 url="http://cloverefiboot.sourceforge.net"

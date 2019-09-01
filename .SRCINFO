@@ -1,7 +1,7 @@
 pkgbase = clover-efi
 	pkgdesc = An EFI-based bootloader for BIOS-based computers to replace EDK2/Duet bootloader and enable OS X booting on non-Apple hardware.
 	pkgver = 5058
-	pkgrel = 1
+	pkgrel = 2
 	url = http://cloverefiboot.sourceforge.net
 	arch = i686
 	arch = x86_64
