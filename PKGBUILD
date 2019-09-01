@@ -9,10 +9,10 @@
 pkgbase=linux-amd-wip-git
 pkgdesc='Linux kernel with AMDGPU DC patches'
 _srcname=${pkgbase}
-_kernel_rel=5.3
+_kernel_rel=5.4
 _branch=drm-next-${_kernel_rel}-wip
 _kernelname=${pkgbase#linux}
-pkgver=5.3.840609.e3c5a4203159
+pkgver=5.3.843232.7a83645ac0cc
 pkgrel=1
 arch=(x86_64)
 url='https://cgit.freedesktop.org/~agd5f/linux/'
@@ -26,10 +26,10 @@ source=("${pkgbase}::git://people.freedesktop.org/~agd5f/linux#branch=${_branch}
   linux.preset   # standard config files for mkinitcpio ramdisk
 )
 sha256sums=('SKIP'
-            'b48519a64a121dd75a48ef1f82769ae110a2b86258cc20721842df2bc5f10f0c'
+            '04c517b92f84c1c2bde2a73b63584449642a9e0d8b3074d3d9ade2ca779c476a'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
-            '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
-            'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
+            'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
+            '997dd1ca5c59e526a35d8367e6371a68406b1a58b90006e6f85d59a580c7503f')
 pkgver() {
   cd "${_srcname}"
   local version="$(grep \^VERSION Makefile|cut -d"=" -f2|cut -d" " -f2)"
