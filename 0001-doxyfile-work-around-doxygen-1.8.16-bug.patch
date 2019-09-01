@@ -1,0 +1,33 @@
+From 515532cf19da948ec72c0cd19b44b5b5133910d2 Mon Sep 17 00:00:00 2001
+From: Cody P Schafer <dev@codyps.com>
+Date: Sat, 31 Aug 2019 22:45:06 -0400
+Subject: [PATCH] doxyfile: work around doxygen 1.8.16 bug
+
+Behavior of FILE_PATTERNS was unintentionally changed in doxygen 1.8.16,
+this lead to the libsigrok doxygen invocation generating almost no data,
+and missing all the enums needed for the binding generation, resulting
+in build failures.
+
+Workaround this by commenting out `FILE_PATTERNS`.
+
+Upstream-issue: https://github.com/doxygen/doxygen/issues/7190
+---
+ Doxyfile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Doxyfile b/Doxyfile
+index 252e504e..729340e2 100644
+--- a/Doxyfile
++++ b/Doxyfile
+@@ -763,7 +763,7 @@ INPUT_ENCODING         = UTF-8
+ # *.md, *.mm, *.dox, *.py, *.f90, *.f, *.for, *.tcl, *.vhd, *.vhdl, *.ucf,
+ # *.qsf, *.as and *.js.
+ 
+-FILE_PATTERNS          =
++#FILE_PATTERNS          =
+ 
+ # The RECURSIVE tag can be used to specify whether or not subdirectories should
+ # be searched for input files as well.
+-- 
+2.23.0
+
