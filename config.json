@@ -1,0 +1,7 @@
+{
+    "general": {
+        "host": "127.0.0.1",
+        "post_url": "http://127.0.0.1:8000",
+        "post_message_format": "array"
+    }
+}

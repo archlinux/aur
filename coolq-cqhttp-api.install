@@ -1,0 +1,12 @@
+# Thanks aur#cow-proxy
+post_install() {
+    post_upgrade
+}
+
+post_upgrade() {
+cat << EOF
+  Please execute:
+    novnc --vnc 127.0.0.1:6133 --listen 9801
+  and enable HTTP API app in coolq
+EOF
+}
