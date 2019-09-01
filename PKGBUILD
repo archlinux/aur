@@ -1,20 +1,31 @@
-# Maintainer: Radek Podgorny <radek@podgorny.cz>
+# Maintainer: NebulaNeko <chfsefefgesfen foxmail>
+# Contributor: Radek Podgorny <radek@podgorny.cz>
 
 pkgname=websockify
-pkgver=0.8.0
-pkgrel=2
-pkgdesc="WebSocket to TCP proxy/bridge."
+pkgver=0.9.0
+pkgrel=1
+pkgdesc="WebSockets support for any application/server"
 license=('LGPL3')
 arch=('any')
-url="http://github.com/kanaka/websockify"
-makedepends=(python "python-distribute")
-depends=(python "python-numpy")
-source=("https://github.com/kanaka/$pkgname/archive/v${pkgver}.tar.gz")
-sha1sums=('7efae9ab9fcf56d105f26038dc1f51ac9b6882a3')
+url="http://github.com/novnc/websockify"
+makedepends=(python)
+depends=(python)
+optdepends=('python-numpy: for better HyBi protocol performance')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/novnc/$pkgname/archive/v${pkgver}.tar.gz")
+sha512sums=('d2251f653a40dc6dca0e5541845565d968c60be96a20a9b70b0305c4b7578f7fe205d4b98a94bb77d7c9383a396833af90fe92a6ade7e1a6f2d9bf8513d372c8')
 
-package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1
+prepare(){
+  cd $pkgname-$pkgver
+  sed -i '/numpy/d' setup.py
+}
+build() {
+  cd "$pkgname-$pkgver"
+
+  python setup.py build
 }
 
-# vim:set sw=2 sts=2 ft=sh et:
+package() {
+  cd "$pkgname-$pkgver"
+
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+}
