@@ -7,7 +7,7 @@ arch=('any')
 url="https://gitlab.com/magnusmj/dupliseek.git"
 license=('MIT')
 
-depends=('python-pyqt5' 'python-numpy' 'python-imutils')
+depends=('python-pyqt5' 'python-numpy' 'python-imutils' 'python-h5py')
 
 install=dupliseek.install
 source=(dupliseek.0.0.2.tar.xz::https://gitlab.com/magnusmj/dupliseek/uploads/7a6999dd09ba87984e176c893344db9a/dupliseek.0.0.2.tar.xz)
