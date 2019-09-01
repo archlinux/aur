@@ -4,18 +4,19 @@ pkgname=prime
 pkgdesc="PRIME Render Offload Launcher. Please visit https://download.nvidia.com/XFree86/Linux-x86_64/435.21/README/primerenderoffload.html to manually configure your Device."
 url="https://download.nvidia.com/XFree86/Linux-x86_64/435.21/README/primerenderoffload.html"
 pkgver=0.1
-pkgrel=0
+pkgrel=1
 arch=(any)
 license=("custom")
 conflicts=(bumblebee optimus-manager)
+
 depends=(bash xorg-server-git nvidia)
 optdepends=(
 "vulkan-intel: for vulkan support"
 "lib32-vulkan-intel: for vulkan support")
 
 source=(prime 10-nvidia.conf)
-md5sums=('673a25aa1b271fd957b32b452cc4681f'
-         '317c1136a06f746bdeb02b0914c63ab4')
+md5sums=('bacec2275f4b6af8ce291100c3062150'
+         '9b0995893478ebfe4d26bc3318c18d3e')
 
 package()
 {
