@@ -1,7 +1,7 @@
 pkgbase = coolq-pro-bin
 	pkgdesc = 一款智能机器人软件，由应用提供群管理、智能对话、好友互动、生活助理等智能功能。
 	pkgver = 5.14.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cqp.cc/t/14901
 	install = coolq-pro.install
 	arch = any

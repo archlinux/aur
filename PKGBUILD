@@ -3,7 +3,7 @@
 _pkgname=coolq-pro
 pkgname=${_pkgname}-bin
 pkgver=5.14.10
-pkgrel=1
+pkgrel=2
 pkgdesc="一款智能机器人软件，由应用提供群管理、智能对话、好友互动、生活助理等智能功能。"
 arch=(any)
 url="https://cqp.cc/t/14901"
@@ -64,8 +64,7 @@ package() {
   install -Dm644 coolq@.service "$pkgdir/usr/lib/systemd/system/coolq@.service"
 
   install -Dm755 xstartup "$pkgdir/usr/lib/coolq/xstartup"
-  install -dm755 "$pkgdir/etc/coolq"
-  install -dm644 "$pkgdir/etc/coolq/env"
+  install -Dm644 env "$pkgdir/etc/coolq/env"
 
   install -Dm644 tmpfiles.d "$pkgdir/usr/lib/tmpfiles.d/coolq.conf"
   install -Dm644 sysusers.d "$pkgdir/usr/lib/sysusers.d/coolq.conf"
