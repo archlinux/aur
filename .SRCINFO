@@ -1,7 +1,7 @@
 pkgbase = go-drcom-jlu-git
 	pkgdesc = JLU drcom client written in golang.
-	pkgver = 1.0.4
-	pkgrel = 5
+	pkgver = 1.0.5
+	pkgrel = 6
 	url = https://github.com/Yesterday17/go-drcom-jlu
 	arch = i686
 	arch = x86_64
