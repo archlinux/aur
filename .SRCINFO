@@ -1,0 +1,20 @@
+pkgbase = python-cqhttp-git
+	pkgdesc = A Python SDK for CoolQ HTTP API plugin.
+	pkgver = r30.1869819
+	pkgrel = 1
+	url = https://github.com/richardchien/python-cqhttp
+	arch = any
+	groups = eqs
+	license = MIT
+	makedepends = git
+	depends = python>=3.5
+	depends = python-flask
+	depends = python-requests
+	depends = coolq-cqhttp-api-bin
+	provides = python-cqhttp
+	conflicts = python-cqhttp
+	source = python-cqhttp::git+https://github.com/richardchien/python-cqhttp.git
+	md5sums = SKIP
+
+pkgname = python-cqhttp-git
+
