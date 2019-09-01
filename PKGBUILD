@@ -26,4 +26,6 @@ package() {
 	rm install_fedora.sh
 	rm install_ubuntu.sh
 	rm -r snap-stuff
+
+	echo "/opt/dupliseek/main.py" >  /usr/bin/dupliseek
 }
