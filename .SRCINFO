@@ -1,6 +1,6 @@
 pkgbase = servicewall-git
 	pkgdesc = The firewall that remembers the different networks you connect to.
-	pkgver = 0.4.2.r18.7e7b8e9
+	pkgver = 0.4.2.r19.7c3253b
 	pkgrel = 1
 	url = https://github.com/lafleurdeboum/servicewall
 	install = servicewall.install
@@ -12,7 +12,7 @@ pkgbase = servicewall-git
 	depends = python
 	depends = python-iptables
 	depends = python-argparse
-	depends = python-netifaces
+	depends = python-arpreq
 	depends = python-systemd
 	depends = ulogd
 	optdepends = python-argcomplete
