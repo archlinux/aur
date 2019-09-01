@@ -1,10 +1,10 @@
-# Maintainer:
+# Maintainer: Andrew Sun <adsun701 at gmail dot com>
 # Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
 # Contributor: Vincent Bernardoff <vb@luminar.eu.org>
 
 pkgname=clingo
-pkgver=5.3.0
-pkgrel=2
+pkgver=5.4.0
+pkgrel=1
 pkgdesc='Grounding tools for (disjunctive) logic programs'
 arch=('x86_64')
 url='https://potassco.org/'
@@ -12,17 +12,17 @@ license=('GPL3')
 depends=('lua' 'python')
 makedepends=('clang' 'cmake' 'git' 'ninja' 're2c')
 conflicts=('clasp')
-source=("git+https://github.com/potassco/clingo#tag=v$pkgver")
-md5sums=('SKIP')
+source=("git+https://github.com/potassco/clingo#tag=v${pkgver}")
+sha256sums=('SKIP')
 
 prepare() {
-  sed '/#include <xlocale.h>/d' -i clingo/clasp/libpotassco/src/string_convert.cpp
+  sed '/#include <xlocale.h>/d' -i "${srcdir}"/clingo/clasp/libpotassco/src/string_convert.cpp
 }
 
 build() {
-  mkdir -p build
-  cd build
-  cmake "../$pkgname" \
+  mkdir -p ${srcdir}/build
+  cd ${srcdir}/build
+  cmake "../${pkgname}" \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DCLINGO_REQUIRE_PYTHON=ON \
@@ -36,7 +36,7 @@ build() {
 }
 
 package() {
-  DESTDIR="$pkgdir" ninja -C build install
+  DESTDIR="${pkgdir}" ninja -C build install
 }
 
 # vim: ts=2 sw=2 et:
