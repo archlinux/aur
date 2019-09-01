@@ -1,5 +1,5 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
-pkgname=('seexpr' 'seexpr-doc')
+pkgname=('seexpr1-2' 'seexpr1-2-doc')
 _fragment="#tag=v2.11"
 pkgver=2.11
 pkgrel=1
@@ -11,8 +11,8 @@ depends=('python2' 'qt4')
 optdepends=('python2-pyqt4: Editor support')
 #makedepends=('python2-pyqt4' 'doxygen' 'glew' 'libpng' 'cmake>=2.4.6' 'git' 'python-sip' 'boost' 'llvm')
 makedepends=('python2-pyqt4' 'doxygen' 'libpng' 'cmake' 'git' 'python2-sip')
-provides=("${pkgname}")
-conflicts=("${pkgname}")
+provides=("${pkgname%-2}=${pkgver}")
+conflicts=("${pkgname%-2}")
 source=("git+https://github.com/wdas/SeExpr.git${_fragment}"
         "build.patch")
 md5sums=('SKIP'
@@ -32,7 +32,7 @@ build() {
   make
 }
 
-package_seexpr() {
+package_seexpr1-2() {
   cd "$srcdir/SeExpr/build"
   make DESTDIR="$pkgdir/" install
   # remove doc
@@ -42,7 +42,7 @@ package_seexpr() {
   install -D -m644 "../LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-package_seexpr-doc() {
+package_seexpr1-2-doc() {
 #reset defs
   arch=('any')
   depends=()

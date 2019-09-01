@@ -1,4 +1,4 @@
-pkgbase = seexpr
+pkgbase = seexpr1-2
 	pkgdesc = An embeddable expression evaluation engine
 	pkgver = 2.11
 	pkgrel = 1
@@ -22,9 +22,9 @@ pkgbase = seexpr
 	md5sums = SKIP
 	md5sums = ad7a72d539fbb5b899f26f7fd1cfc950
 
-pkgname = seexpr
+pkgname = seexpr1-2
 
-pkgname = seexpr-doc
+pkgname = seexpr1-2-doc
 	arch = any
 	depends = 
 	optdepends = 
