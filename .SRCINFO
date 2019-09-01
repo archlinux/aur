@@ -1,0 +1,15 @@
+pkgbase = dotnet-sdk-lts-bin
+	pkgdesc = Provides the .NET core software development kit (sdk).
+	pkgver = 2.1.801
+	pkgrel = 1
+	url = https://www.microsoft.com/net/core
+	arch = x86_64
+	license = MIT
+	depends = dotnet-runtime
+	depends = dotnet-host
+	options = staticlibs
+	source = https://download.visualstudio.microsoft.com/download/pr/b95d51d0-6be0-49eb-aae7-4092c77634d3/4dd3723dcee0d50ad5e5ead5f4f4127e/dotnet-sdk-2.1.801-linux-x64.tar.gz
+	sha256sums = bec7886110ead64ec231583fc30eebd405f4f8676de1762f501b69cc865258c7
+
+pkgname = dotnet-sdk-lts-bin
+
