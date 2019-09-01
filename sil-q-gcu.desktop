@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Sil-Q (GCU)
+GenericName=A roguelike game
+Exec=sil-q -mgcu
+Type=Application
+Categories=Games
+Terminal=true

@@ -1,14 +1,18 @@
 # Maintainer: dalz <dalz @t disroot d0t org>
 pkgname=sil-q
 pkgver=1.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A role-playing game with a strong emphasis on discovery and tactical combat"
 arch=('i686' 'x86_64')
 url="https://github.com/sil-quirk/sil-q"
 license=('GPL2' 'custom')
 depends=('ncurses' 'libx11' 'xorg-fonts-misc')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-md5sums=('61ced0d05ca4ef3932e6ce3ba935ec40')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
+		"sil-q-x11.desktop"
+		"sil-q-gcu.desktop")
+md5sums=('61ced0d05ca4ef3932e6ce3ba935ec40'
+		 '506f43b149bed998918ce0171dd9bceb'
+		 '3e90c16a3ca1fab8e8b4476c5bbc61c7')
 
 prepare() {
 	cd "$pkgname-$pkgver/src"
@@ -35,6 +39,8 @@ build() {
 }
 
 package() {
+	install -Dm644 sil-q-x11.desktop sil-q-gcu.desktop -t "$pkgdir/usr/share/applications/"
+
 	cd "$pkgname-$pkgver"
 	install -Dm644 LICENSE.md -t "$pkgdir/usr/share/licenses/$pkgname/"
 	install -Dm644 "Sil 1.3 Manual.pdf" "Sil-Q 1.4.2 Manual.pdf" -t "$pkgdir/usr/share/doc/$pkgname/"

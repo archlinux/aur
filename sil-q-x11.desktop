@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Sil-Q (X11)
+GenericName=A roguelike game
+Exec=sil-q -mx11
+Type=Application
+Categories=Games
