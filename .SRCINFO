@@ -1,7 +1,7 @@
 pkgbase = skycoin-bin
-	pkgdesc = Skycoin Cryptocurrency Wallet; latest binary release
-	pkgver = 0.26.0
-	pkgrel = 4
+	pkgdesc = Skycoin Cryptocurrency Wallet; binary release
+	pkgver = 0.0.0
+	pkgrel = 1
 	url = https://github.com/skycoin/skycoin
 	arch = any
 	sha256sums = BINARY RELEASE POSSIBLY COMPROMISED ; DISABLING UNTIL FURTHER NOTICE

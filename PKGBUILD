@@ -3,12 +3,12 @@
 pkgname=skycoin-bin
 pkgname1=skycoin
 projectname=skycoin
-pkgdesc="Skycoin Cryptocurrency Wallet; latest binary release"
+pkgdesc="Skycoin Cryptocurrency Wallet; binary release"
 pkgoption1="gui-standalone-linux-x64"
 pkgoption2="gui-standalone-linux-arm"
-pkgver='0.26.0'
+pkgver='0.0.0'
 pkggopath="github.com/$projectname/$pkgname1"
-pkgrel=4
+pkgrel=1
 arch=('any')
 url="https://${pkggopath}"
 license=()
