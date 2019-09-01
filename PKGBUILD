@@ -2,13 +2,13 @@
 # Maintainer: Ryozuki <ryo@ryozuki.xyz>
 
 pkgname=ddnet-git
-pkgver=12.5.r24.g6e24bf9ae
+pkgver=12.6.1.r22.gf1b54d32b
 pkgrel=1
 pkgdesc="A Teeworlds modification with a unique cooperative gameplay."
 arch=('x86_64')
 url="https://ddnet.tw"
 license=('custom:BSD' 'CCPL:by-nc-sa')
-depends=('sdl2' 'freetype2' 'opusfile' 'curl' 'glew' 'wavpack' 'libwebsockets' 'pnglite')
+depends=('sdl2' 'freetype2' 'opusfile' 'curl' 'glew' 'wavpack' 'pnglite')
 makedepends=('git' 'cmake' 'ninja' 'python')
 checkdepends=('gtest')
 optdepends=('ddnet-skins: A collection with more than 700 custom tee skins.'
@@ -46,7 +46,6 @@ build() {
     cmake ../ddnet                  \
         -DCMAKE_BUILD_TYPE=Release  \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DWEBSOCKETS=ON             \
         -DAUTOUPDATE=OFF            \
         -GNinja                     \
         $_mysql_opt
