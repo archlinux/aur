@@ -167,8 +167,8 @@ prepare() {
   # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/602
   # Type: 1
   # Status: 2
-  # Comment:
-  git_cp_by_msg '!602' 'cogl: Remove GLX "threaded swap wait" used on Nvidia'
+  # Comment: Makes the shell unresponsive to most of the interactions with mouse and keyboard
+  # git_cp_by_msg '!602' 'cogl: Remove GLX "threaded swap wait" used on Nvidia'
   # git cherry-pick -n -Xtheirs df38ad3c
 
   # Title: compositor: Don't emit size-changed when only position changes
