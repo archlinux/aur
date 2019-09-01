@@ -1,7 +1,7 @@
 # Maintainer: grufo <madmurphy333 AT gmail DOT com>
 
 pkgname='nautilus-bluetooth'
-pkgver='0.1.0'
+pkgver='0.1.1'
 pkgrel=1
 pkgdesc="A simple Nautilus extension that adds a \"Send via Bluetooth\" entry to Nautilus' right-click menu"
 arch=('any')
@@ -9,10 +9,9 @@ url="https://github.com/madmurphy/nautilus-bluetooth"
 license=('GPL')
 depends=('glib2' 'libnautilus-extension' 'gnome-bluetooth')
 makedepends=('pkgconf' 'intltool')
-provides=("${pkgname}")
-conflicts=("${pkgname}-git")
+conflicts=("${pkgname}-git" "${pkgname}-bin")
 source=("https://github.com/madmurphy/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('ba0cb93d185fe38f2b458acfe140eff2f9f8f3be8e74998b131b3e5a16fc28ff')
+sha256sums=('b7ad2271870397d7f6365b3151c67db02c98c881cf575f6551f1ea5a532fb725')
 
 prepare() {
 
