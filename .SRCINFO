@@ -13,6 +13,7 @@ pkgbase = lib32-libplacebo-git
 	depends = lib32-lcms2
 	depends = lib32-shaderc
 	provides = lib32-libplacebo
+	provides = libplacebo.so
 	conflicts = lib32-libplacebo
 	source = git+https://github.com/haasn/libplacebo.git
 	sha256sums = SKIP

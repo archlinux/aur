@@ -17,7 +17,9 @@ makedepends=('git'
              'ninja'
              'vulkan-headers'
              )
-provides=('lib32-libplacebo')
+provides=('lib32-libplacebo'
+          'libplacebo.so'
+          )
 conflicts=('lib32-libplacebo')
 source=('git+https://github.com/haasn/libplacebo.git')
 sha256sums=('SKIP')
