@@ -1,0 +1,21 @@
+pkgbase = git-nautilus-icons-common-py2-git
+	pkgdesc = Common files for git-nautilus-icons, git-nemo-icons and git-caja-icons
+	pkgver = 1.1.r1.15d76c1
+	pkgrel = 1
+	url = https://github.com/chrisjbillington/git_nautilus_icons
+	arch = x86_64
+	arch = i686
+	license = BSD 2-Clause "Simplified"
+	makedepends = python2-setuptools
+	depends = python2-gobject
+	depends = python2-pathlib
+	depends = python2-enum34
+	provides = git-nautilus-icons-common-py2
+	provides = git-nautilus-icons-common
+	conflicts = git-nautilus-icons-common-py2
+	conflicts = git-nautilus-icons-common
+	source = git+https://github.com/chrisjbillington/git_nautilus_icons.git
+	sha256sums = SKIP
+
+pkgname = git-nautilus-icons-common-py2-git
+
