@@ -3,8 +3,8 @@
 pkgname=prime
 pkgdesc="PRIME Render Offload Launcher. Please visit https://download.nvidia.com/XFree86/Linux-x86_64/435.21/README/primerenderoffload.html to manually configure your Device."
 url="https://download.nvidia.com/XFree86/Linux-x86_64/435.21/README/primerenderoffload.html"
-pkgver=0.1
-pkgrel=8
+pkgver=1.0
+pkgrel=0
 arch=('any')
 # license=("nothing")
 conflicts=(bumblebee optimus-manager)

@@ -9,9 +9,7 @@ Example:
 It should show you video driver in use.
 
 Notice!
-To work this you sould have patched X server. But package xorg-server-git is broken right now.
-You can bulid working Xorg server from PKGBULID on my github: https://github.com/Feresey/xorg-server-git 
-
+To work this you sould have patched X server. Just install package xorg-server-git.
 
 If this does not help, verify that the NVIDIA driver has loaded correctly:
 	grep /var/log/Xorg.0.log -e "EE" -e "WW"
