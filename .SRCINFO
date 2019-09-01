@@ -9,7 +9,6 @@ pkgbase = dupliseek
 	depends = python-pyqt5
 	depends = python-numpy
 	depends = python-imutils
-	depends = python-h5py
 	source = dupliseek.0.0.2.tar.xz::https://www.dropbox.com/s/0nf8r96lr20wnvj/dupliseek0.0.2.tar.xz?dl=1
 	md5sums = c0ff1a839dc47437d30b0e2e42ce225b
 
