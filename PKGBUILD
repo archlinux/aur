@@ -13,7 +13,7 @@ pkgname=(
   'xorg-server-common-git'
   'xorg-server-devel-git')
 _pkgbase='xserver'
-pkgver=1.20.0.r346.g48f4ab750
+pkgver=1.20.0.419.r17053.g7d0e660e0
 pkgrel=1
 arch=('x86_64')
 license=('custom')
@@ -35,10 +35,10 @@ sha256sums=('SKIP'
 pkgver() {
   cd "${_pkgbase}"
   # cutting off 'foo-' prefix that presents in the git tag
-  git describe --long --tags| sed 's/^xorg.server.//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  echo $(git describe --long | cut -d "-" -f3-4 | tr - .).r$(git rev-list HEAD --count).$(git describe --long | cut -d "-" -f5)
 }
 
-build() {
+prepare() {
   # Since pacman 5.0.2-2, hardened flags are now enabled in makepkg.conf
   # With them, module fail to load with undefined symbol.
   # See https://bugs.archlinux.org/task/55102 / https://bugs.archlinux.org/task/54845
@@ -46,7 +46,12 @@ build() {
   export CXXFLAGS=${CXXFLAGS/-fno-plt}
   export LDFLAGS=${LDFLAGS/,-z,now}
 
+  export CFLAGS="$CFLAGS -fplt -fno-lto"
+  export CXXFLAGS="$CXXFLAGS -fplt -fno-lto"
+  export LDFLAGS="$LDFLAGS,-fno-lto"
+
   arch-meson ${_pkgbase} build \
+    $mesonFlags \
     -D os_vendor="Arch Linux" \
     -D ipv6=true \
     -D dmx=true \
@@ -68,6 +73,18 @@ build() {
 
   # Print config
   meson configure build
+}
+
+build() {
+  msg2 "Please confirm"
+  for VAR in VIDEODRV XINPUT EXTENSION; do
+    echo "X-ABI-${VAR}_VERSION=$(grep -Po "${VAR}_V.*\(\K[^)]*" xserver/hw/xfree86/common/xf86Module.h |& sed 's/, /./')"
+  done
+
+  export CFLAGS=${CFLAGS/-fno-plt}
+  export CXXFLAGS=${CXXFLAGS/-fno-plt}
+  export LDFLAGS=${LDFLAGS/,-z,now}
+  
   ninja -C build
 
   # fake installation to be seperated into packages

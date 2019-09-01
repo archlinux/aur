@@ -3,3 +3,4 @@ src/
 pkg/
 *.pkg.*
 *.log
+PKG-orig
