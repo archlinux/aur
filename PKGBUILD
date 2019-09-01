@@ -20,9 +20,7 @@ makedepends=('git'
 provides=('libplacebo'
           'libplacebo.so'
           )
-conflicts=('libplacebo'
-           'libplacebo.so'
-           )
+conflicts=('libplacebo')
 source=('git+https://github.com/haasn/libplacebo.git')
 sha256sums=('SKIP')
 

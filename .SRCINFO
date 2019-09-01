@@ -15,7 +15,6 @@ pkgbase = libplacebo-git
 	provides = libplacebo
 	provides = libplacebo.so
 	conflicts = libplacebo
-	conflicts = libplacebo.so
 	source = git+https://github.com/haasn/libplacebo.git
 	sha256sums = SKIP
 
