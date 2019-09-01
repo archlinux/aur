@@ -17,11 +17,11 @@ source=("${pkgname}::git+https://github.com/simonfuhrmann/mve.git"
         "git+https://github.com/flanggut/smvs.git"
         'gtest.patch'
        )
-md5sums=('SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         '7098c8ebc8ba0c461b81d210a9057118')
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            '06b18787da3a61874fbe9bffd9b90090abe8339e6e91221c7b009c3fb90c655e')
 _binar="apps/sfmrecon/sfmrecon
 apps/meshconvert/meshconvert
 apps/meshalign/meshalign
