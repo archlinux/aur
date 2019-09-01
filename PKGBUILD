@@ -3,7 +3,7 @@
 pkgname=dupliseek-git
 pkgver() { git -C "${pkgname%-git}" describe | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'; }
 pkgver=0.0.2alpha.r55.3ce09f8
-pkgrel=3
+pkgrel=4
 
 pkgdesc='Duplicate image finder written in Python/Qt5'
 arch=('x86_64')
@@ -38,7 +38,7 @@ build() {
 package() {
   cd "${pkgname%-git}"
 
-  python setup.py install --optimize=1 --skip-build --root="$pkgdir"
+  python setup.py install --optimize=1 --root="$pkgdir"
   install -Dm644 icons/compare.png "$pkgdir/usr/share/pixmaps/${pkgname%-git}.png"
   install -Dm644 "${pkgname%-git}.desktop" -t"$pkgdir/usr/share/applications/"
   install -Dm644 README.md -t"$pkgdir/usr/share/doc/${pkgname%-git}/"
