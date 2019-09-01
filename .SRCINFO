@@ -1,7 +1,7 @@
 pkgbase = djgpp-djcrx-cvs
 	pkgdesc = Headers and utilities for the djgpp cross-compiler (development version)
-	pkgver = 2.06.cvs20180509
-	pkgrel = 1
+	pkgver = 2.06.cvs20190901
+	pkgrel = 2
 	url = http://www.delorie.com/djgpp/
 	arch = i686
 	arch = x86_64

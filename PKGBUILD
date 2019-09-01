@@ -1,8 +1,8 @@
 # Maintainer: Andris Pavenis <andris.pavenis iki fi>
 
 pkgname=djgpp-djcrx-cvs
-pkgver=2.06.cvs20180509
-pkgrel=1
+pkgver=2.06.cvs20190901
+pkgrel=2
 pkgdesc="Headers and utilities for the djgpp cross-compiler (development version)"
 arch=('i686' 'x86_64')
 url="http://www.delorie.com/djgpp/"
@@ -41,6 +41,7 @@ prepare() {
   
  build() {
   cd ${srcdir}/${_cvsmod}.build/src
+  make clean
   make -j1 CROSS_PREFIX=${_target}-
 
   cd dxe
