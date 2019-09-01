@@ -14,8 +14,8 @@ source_x86_64=(${_pkgname}.appimage::https://share.dmca.gripe/H6Px8tt53UPHYVUk.z
 #source_i686=(${_pkgname}.appimage::https://www.dropbox.com/s/hhhennqt1d90d5v/Deezloader_Remix_${pkgver}-i386.appimage?dl=0)
 source_i686=(${_pkgname}.appimage::https://share.dmca.gripe/tfJPjDBdJUTRzvnY.zip)
 options=(!strip)
-md5sums_x86_64=('64f784e408c7d07fc468aa66cedde0d8')
-md5sums_i686=('c2d85c932886bef5d57d1d5ede6293e0')
+md5sums_x86_64=('fe3db155950264a9f4759bc988267f3e')
+md5sums_i686=('35652835e49431ee6369ceee375569bb')
 
 package() {
     msg2 "Extracting the AppImage..."
