@@ -6,6 +6,7 @@ pkgbase = go-swarm
 	install = go-swarm.install
 	changelog = CHANGELOG
 	arch = x86_64
+	groups = eth-swarm
 	license = LGPL3
 	makedepends = go>=1.10.0
 	makedepends = git

@@ -7,7 +7,7 @@ pkgdesc="Censorship resistant storage and communication infrastructure for a tru
 arch=('x86_64')
 url="https://swarm.ethereum.org"
 license=('LGPL3')
-groups=()
+groups=(eth-swarm)
 depends=()
 makedepends=('go>=1.10.0' 'git')
 checkdepends=()
@@ -62,8 +62,6 @@ build() {
 	msg2 "using gopath $GOPATH"
 	go build -o build/swarm -v ${SWARMPATH}/swarm/cmd/swarm
 
-	getent group bzz > /dev/null || groupadd -r bzz
-	getent passwd bzz > /dev/null || useradd -g bzz -d /var/lib/bzz -m -r
 }
 
 check() {
