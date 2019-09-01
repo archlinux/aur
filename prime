@@ -23,7 +23,6 @@ Also, the xrandr --listproviders command should output as a minimum 2 providers,
 If you need help, you can write me on AUR or in telegram @Feresey
 DOC
 exit 0
-;;
 esac
 
 __NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME="nvidia" __VK_LAYER_NV_optimus="NVIDIA_only" "$@"
