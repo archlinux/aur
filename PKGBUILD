@@ -7,7 +7,7 @@
 pkgname=home-assistant
 pkgdesc='Open source home automation that puts local control and privacy first'
 pkgver=0.98.1
-pkgrel=1
+pkgrel=2
 arch=(any)
 url=https://home-assistant.io/
 license=(APACHE)
@@ -27,6 +27,7 @@ depends=(
   python-requests
   python-ruamel-yaml
   python-slugify
+  python-sqlalchemy
   python-voluptuous
   python-voluptuous-serialize
   python-yaml
@@ -41,15 +42,17 @@ optdepends=(
   'python-lxml: Meteo France integration'
 )
 source=(
-  git+https://github.com/home-assistant/home-assistant.git#tag=${pkgver}
+  git+https://github.com/home-assistant/home-assistant.git#tag=d1219d0b41fc1231e1525d22a23949727deef78e
   home-assistant.service
   home-assistant.sysusers
   home-assistant.tmpfiles
 )
-sha512sums=('SKIP'
-            'fe96bd3df3ba666fd9f127c466d1dd1dd7314db2e57826a2b319c8a0bfad7aedeac398e748f93c6ecd9c2247ebbae196b8b0e7263b8681e2b7aeab6a8bfeab80'
-            '100665ac35370c3ccec65d73521568de21cebf9e46af364124778861c94e338e32ad9abb675d3917f97d351dd7867e3ab2e80c26616330ae7cf0d9dc3f13369b'
-            '3e93118c84954f829767dc71ce534c5d02c1c95fc8748714c7a2df28a3a297f59962f8fb7cddf721987eb97d62feabb25acda5d38209e365646ca4a4ef4356e3')
+sha256sums=(
+  SKIP
+  2a87a3b529a1eeddfae0c02c415bed13586b002b9580226bdc749a27bbe83af5
+  319c7790d3cdb076bf527b1d478edbc99e00b22fbf4a884b395e46460114ee41
+  f9e43edb276e0fbbbc2273b836ef1da0ac43347b5c3e4c63774e7f7ecdf25660
+)
 
 prepare() {
   cd home-assistant
