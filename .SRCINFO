@@ -1,6 +1,6 @@
 pkgbase = rosa-icons
 	pkgdesc = ROSA icons theme.
-	pkgver = 1.1.17
+	pkgver = 1.1.20
 	pkgrel = 1
 	url = http://www.rosalinux.com
 	install = rosa-icons.install
@@ -8,8 +8,8 @@ pkgbase = rosa-icons
 	license = GPL
 	makedepends = inkscape
 	depends = gnome-icon-theme
-	source = http://mirror.yandex.ru/rosa/rosa2014.1/repository/SRPMS/main/updates/rosa-icons-1.1.17-1.src.rpm
-	md5sums = ddb88e508bd6b6ac0853802fbd99973d
+	source = http://mirror.yandex.ru/rosa/rosa2016.1/repository/SRPMS/main/updates/rosa-icons-1.1.20-4.src.rpm
+	md5sums = be93ea0fe94dc7cd6c7e6536c0d8180e
 
 pkgname = rosa-icons
 
