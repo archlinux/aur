@@ -1,3 +1,11 @@
+2019-09-01 Christopher Arndt <aur -at- chrisarndt -dot- de>
+
+	* 0.9.4-5
+	added patch for compiling JUCE with GCC >= 9.1
+	removed 'steinberg-vst36' from makedepends
+	added 'pro-audio' group
+	compile VST plugin and stand-alone version in one pass again
+
 2018-04-24 Christopher Arndt <aur -at- chrisarndt -dot- de>
 
 	* 0.9.4-2
