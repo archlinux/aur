@@ -7,6 +7,7 @@ pkgbase = devault
 	license = MIT
 	makedepends = python
 	makedepends = boost
+	makedepends = qt5-tools
 	depends = boost-libs
 	depends = qt5-base
 	depends = qrencode
