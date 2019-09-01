@@ -1,0 +1,89 @@
+diff --git a/src/sage/geometry/polyhedron/base_ZZ.py b/src/sage/geometry/polyhedron/base_ZZ.py
+index 268af9db0d..70d41dfa30 100644
+--- a/src/sage/geometry/polyhedron/base_ZZ.py
++++ b/src/sage/geometry/polyhedron/base_ZZ.py
+@@ -170,7 +170,7 @@ class Polyhedron_ZZ(Polyhedron_base):
+             sage: p = P.ehrhart_polynomial(maxdet=5, verbose=True)  # optional - latte_int
+             This is LattE integrale ...
+             ...
+-            Invocation: count --ehrhart-polynomial '--redundancy-check=none' --cdd '--maxdet=5' /dev/stdin
++            Invocation: latte-count --ehrhart-polynomial '--redundancy-check=none' --cdd '--maxdet=5' /dev/stdin
+             ...
+             sage: p    # optional - latte_int
+             1/2*t^2 + 3/2*t + 1
+@@ -178,7 +178,7 @@ class Polyhedron_ZZ(Polyhedron_base):
+             sage: p = P.ehrhart_polynomial(dual=True, verbose=True)  # optional - latte_int
+             This is LattE integrale ...
+             ...
+-            Invocation: count --ehrhart-polynomial '--redundancy-check=none' --cdd --dual /dev/stdin
++            Invocation: latte-count --ehrhart-polynomial '--redundancy-check=none' --cdd --dual /dev/stdin
+             ...
+             sage: p   # optional - latte_int
+             1/2*t^2 + 3/2*t + 1
+@@ -186,7 +186,7 @@ class Polyhedron_ZZ(Polyhedron_base):
+             sage: p = P.ehrhart_polynomial(irrational_primal=True, verbose=True)   # optional - latte_int
+             This is LattE integrale ...
+             ...
+-            Invocation: count --ehrhart-polynomial '--redundancy-check=none' --cdd --irrational-primal /dev/stdin
++            Invocation: latte-count --ehrhart-polynomial '--redundancy-check=none' --cdd --irrational-primal /dev/stdin
+             ...
+             sage: p   # optional - latte_int
+             1/2*t^2 + 3/2*t + 1
+@@ -194,7 +194,7 @@ class Polyhedron_ZZ(Polyhedron_base):
+             sage: p = P.ehrhart_polynomial(irrational_all_primal=True, verbose=True)  # optional - latte_int
+             This is LattE integrale ...
+             ...
+-            Invocation: count --ehrhart-polynomial '--redundancy-check=none' --cdd --irrational-all-primal /dev/stdin
++            Invocation: latte-count --ehrhart-polynomial '--redundancy-check=none' --cdd --irrational-all-primal /dev/stdin
+             ...
+             sage: p   # optional - latte_int
+             1/2*t^2 + 3/2*t + 1
+@@ -206,7 +206,7 @@ class Polyhedron_ZZ(Polyhedron_base):
+             ...
+             RuntimeError: LattE integrale program failed (exit code 1):
+             ...
+-            Invocation: count --ehrhart-polynomial '--redundancy-check=none' --cdd '--bim-bam-boum=19' /dev/stdin
++            Invocation: latte-count --ehrhart-polynomial '--redundancy-check=none' --cdd '--bim-bam-boum=19' /dev/stdin
+             Unknown command/option --bim-bam-boum=19
+         """
+         if self.is_empty():
+diff --git a/src/sage/interfaces/latte.py b/src/sage/interfaces/latte.py
+index 066cedd401..302b39910d 100644
+--- a/src/sage/interfaces/latte.py
++++ b/src/sage/interfaces/latte.py
+@@ -96,7 +96,7 @@ def count(arg, ehrhart_polynomial=False, multivariate_generating_function=False,
+         sage: n = count(cddin, cdd=True, verbose=True, raw_output=True)  # optional - latte_int
+         This is LattE integrale ...
+         ...
+-        Invocation: count '--redundancy-check=none' --cdd /dev/stdin
++        Invocation: latte-count '--redundancy-check=none' --cdd /dev/stdin
+         ...
+         Total Unimodular Cones: ...
+         Maximum number of simplicial cones in memory at once: ...
+@@ -117,7 +117,7 @@ def count(arg, ehrhart_polynomial=False, multivariate_generating_function=False,
+ 
+     arg = str_to_bytes(arg)
+ 
+-    args = ['count']
++    args = ['latte-count']
+     if ehrhart_polynomial and multivariate_generating_function:
+         raise ValueError
+     if ehrhart_polynomial:
+diff --git a/src/sage/features/latte.py b/src/sage/features/latte.py
+index 63d227fd35..040a5cf1f9 100644
+--- a/src/sage/features/latte.py
++++ b/src/sage/features/latte.py
+@@ -9,10 +9,10 @@ from . import Executable, Feature, FeatureTestResult
+ 
+ class Latte_count(Executable):
+     r"""
+-    Feature for the executable ``count`` from the LattE suite.
++    Feature for the executable ``latte-count`` from the LattE suite.
+     """
+     def __init__(self):
+-        Executable.__init__(self, "count", executable="count",
++        Executable.__init__(self, "latte-count", executable="count",
+                             spkg="latte_int",
+                             url=LATTE_URL)
+ 
+

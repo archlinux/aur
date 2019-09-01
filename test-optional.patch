@@ -1,0 +1,20 @@
+--- src/sage/doctest/control.py.orig       2016-10-20 19:39:53.714618246 +0200
++++ src/sage/doctest/control.py    2016-10-20 19:40:15.158049920 +0200
+@@ -347,17 +347,6 @@
+                 # Special case to run all optional tests
+                 options.optional = True
+             else:
+-                # We replace the 'optional' tag by all optional
+-                # packages for which the installed version matches the
+-                # latest available version (this implies in particular
+-                # that the package is actually installed).
+-                if 'optional' in options.optional:
+-                    options.optional.discard('optional')
+-                    from sage.misc.package import list_packages
+-                    for pkg in list_packages('optional', local=True).values():
+-                        if pkg['installed_version'] == pkg['remote_version']:
+-                            options.optional.add(pkg['name'])
+-
+                 # Check that all tags are valid
+                 for o in options.optional:
+                     if not optionaltag_regex.search(o):

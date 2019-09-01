@@ -1,0 +1,57 @@
+From b1f5e3ecc789db674fe17552812f2d0e2ab84be0 Mon Sep 17 00:00:00 2001
+From: Charles Bouillaguet <charles.bouillaguet@lifl.fr>
+Date: Thu, 19 Sep 2013 10:31:11 +0200
+Subject: updating the libFES binding to match a change in the interface
+
+---
+ src/sage/libs/fes.pyx | 12 +++++++-----
+ 1 file changed, 7 insertions(+), 5 deletions(-)
+
+diff --git a/src/sage/libs/fes.pyx b/src/sage/libs/fes.pyx
+index 40b9c23..d188cf0 100644
+--- a/src/sage/libs/fes.pyx
++++ b/src/sage/libs/fes.pyx
+@@ -1,17 +1,19 @@
+ """
+-Binding for the FES library.
++Binding for the libFES library.
+ 
+ Finding solutions of systems of boolean equations by exhaustive
+ search, via the fes library. This is usually (much) faster than
+ computing a Groebner basis, except in special cases where the latter
+ is particularly easy.
+ 
+-The FES library is presently only able to deal with polynomials in 64
++More information is available at [http://www.lifl.fr/~bouillag/fes].
++
++The libFES library is presently only able to deal with polynomials in 64
+ variables. Performing a full exhaustive search over 64 variables will
+ take a **long** time. The number of variables can be artificially
+ reduced to 64 by specializing some of them.
+ 
+-Note that the FES library **requires** at least of the equations to be
++Note that the libFES library **requires** at least of the equations to be
+ non-linear.
+ 
+ AUTHORS:
+@@ -71,7 +73,7 @@ from libc.stdint cimport uint64_t
+ cdef extern from "fes_interface.h":
+     ctypedef int (*solution_callback_t)(void *, uint64_t)
+ 
+-    void exhaustive_search_wrapper(int n, int n_eqs, int degree, int ***coeffs, solution_callback_t callback, void* callback_state, int verbose)
++    void exhaustive_search_wrapper(int n, int n_eqs, int degree, int ***coeffs, solution_callback_t callback, void* callback_state, int verbose, int T)
+ 
+ 
+ from sage.rings.integer import Integer
+@@ -217,7 +217,7 @@ def exhaustive_search(eqs,  max_sols=Infinity, verbose=False):
+ 
+     # ------- runs the library
+     sig_on()
+-    exhaustive_search_wrapper(n, len(eqs), degree, coeffs, report_solution, <void *> internal_state, verbose)
++    exhaustive_search_wrapper(n, len(eqs), degree, coeffs, report_solution, <void *> internal_state, verbose, 0)
+     sig_off()
+ 
+     # ------- frees memory occupied by the dense representation of the equations
+-- 
+cgit v1.0-1-gd88e
+

@@ -1,0 +1,39 @@
+--- src/sage/misc/package.py.orig	2014-11-23 15:58:13.000000000 +0100
++++ src/sage/misc/package.py	2015-01-22 20:32:25.651383902 +0100
+@@ -336,7 +336,7 @@
+         Use the framework provided by :mod:`sage.features` to check
+         whether a library is installed and functional.
+     """
+-    return any(p.split('-')[0] == package for p in installed_packages(exclude_pip))
++    return True
+ 
+ 
+ def package_versions(package_type, local=False):
+--- src/sage_setup/optional_extension.py.orig  2016-10-19 18:35:10.092577510 +0000
++++ src/sage_setup/optional_extension.py       2016-10-19 18:38:13.514765366 +0000
+@@ -21,8 +21,6 @@
+ from distutils.extension import Extension
+ from sage.misc.package import list_packages
+ 
+-all_packages = list_packages(local=True)
+-
+ 
+ class CythonizeExtension(Extension):
+     """
+@@ -76,15 +74,7 @@
+         condition = kwds.pop("condition")
+     except KeyError:
+         pkg = kwds.pop("package")
+-        from sage.misc.package import is_package_installed
+-        try:
+-            pkginfo = all_packages[pkg]
+-        except KeyError:
+-            # Might be an installed old-style package
+-            condition = is_package_installed(pkg)
+-        else:
+-            condition = (pkginfo["installed_version"] == pkginfo["remote_version"])
+-
++        condition = True
+     if condition:
+         return Extension(*args, **kwds)
+     else:
