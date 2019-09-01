@@ -1,0 +1,20 @@
+pkgbase = fith
+	pkgdesc = TON Test Fith compiler and execution environment
+	pkgver = 0.5
+	pkgrel = 2
+	url = https://test.ton.org/download.html
+	arch = i686
+	arch = x86_64
+	license = LGPL.v2
+	makedepends = cmake>3.0.2
+	makedepends = gcc
+	depends = openssl
+	depends = zlib
+	depends = readline
+	source = https://test.ton.org/ton-test-liteclient-full.tar.xz
+	source = https://test.ton.org/fiftbase.pdf
+	md5sums = d76a4b004309782f828bfc2f824aab63
+	md5sums = 1297ddcfdc880c8ed563e7f5aaf10714
+
+pkgname = fith
+

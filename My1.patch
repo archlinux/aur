@@ -1,0 +1,11 @@
+--- lite-client/crypto/fift/fift-main.cpp	2019-08-31 12:47:06.000000000 +0200
++++ ../src1/lite-client/crypto/fift/fift-main.cpp	2019-09-01 21:28:23.816644188 +0200
+@@ -125,6 +125,8 @@
+     const char* path = std::getenv("FIFTPATH");
+     if (path) {
+       parse_include_path_set(path ? path : "/usr/lib/fift", source_include_path);
++    } else {
++      parse_include_path_set( "/usr/lib/fift", source_include_path);
+     }
+   }
+   std::string current_dir;
