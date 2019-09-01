@@ -1,12 +1,10 @@
 pkgbase = prime
 	pkgdesc = PRIME Render Offload Launcher. Please visit https://download.nvidia.com/XFree86/Linux-x86_64/435.21/README/primerenderoffload.html to manually configure your Device.
 	pkgver = 0.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://download.nvidia.com/XFree86/Linux-x86_64/435.21/README/primerenderoffload.html
 	arch = any
-	license = custom
 	depends = bash
-	depends = xorg-server-git
 	depends = nvidia
 	optdepends = vulkan-intel: for vulkan support
 	optdepends = lib32-vulkan-intel: for vulkan support
