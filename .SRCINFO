@@ -1,0 +1,25 @@
+pkgbase = python-efb-qq-slave-git
+	pkgdesc = EFB QQ Slave, a channel for EH Forwarder Bot.
+	pkgver = r95.ae62beb
+	pkgrel = 1
+	url = https://github.com/milkice233/efb-qq-slave
+	arch = any
+	groups = eqs
+	license = GPL3
+	makedepends = git
+	depends = python>=3.6
+	depends = python-ehforwarderbot
+	depends = python-telegram-bot
+	depends = python-requests
+	depends = python-magic
+	depends = python-pyaml
+	depends = python-pillow
+	depends = python-cqhttp
+	depends = ffmpeg
+	provides = python-efb-qq-slave
+	conflicts = python-efb-qq-slave
+	source = python-efb-qq-slave::git+https://github.com/milkice233/efb-qq-slave.git
+	md5sums = SKIP
+
+pkgname = python-efb-qq-slave-git
+
