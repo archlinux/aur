@@ -1,7 +1,7 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=xde-ctools-git
-pkgver=1.8.5.g6047832
+pkgver=1.9.0.ge00c1ae
 pkgrel=1
 pkgdesc="X Desktop Environment C-language tools"
 groups=('xde-git')
@@ -24,8 +24,8 @@ pkgver() {
 build() {
   cd $pkgname
   ./autogen.sh
-  ./configure --prefix=/usr --sysconfdir=/etc
-  make V=0
+  ./configure --sysconfdir=/etc
+  make
 }
 
 package() {
