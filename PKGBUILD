@@ -1,7 +1,7 @@
 # Maintainer: Andrew Nelless <andrew at nelless dot net>
 pkgname='avro-cpp'
-pkgver=1.8.2
-pkgrel=2
+pkgver=1.9.0
+pkgrel=1
 arch=('i686' 'x86_64')
 
 pkgdesc="C++ implementation of the Apache Avro data serialization system"
@@ -11,9 +11,9 @@ groups=('avro')
 depends=('boost-libs')
 makedepends=('boost' 'cmake' 'python2')
 
-source=("http://www.us.apache.org/dist/avro/avro-$pkgver/cpp/$pkgname-$pkgver.tar.gz"
+source=("https://www-us.apache.org/dist/avro/avro-$pkgver/cpp/$pkgname-$pkgver.tar.gz"
 	$pkgname-python2.patch)
-sha256sums=('5328b913882ee5339112fa0178756789f164c9c5162e1c83437a20ee162a3aab'
+sha256sums=('3a66aa600dbb171cda4664fce1c5a73a9720c8b0f55b13f76650453be6d6ab97'
             '5d54151dd25e717a19109c97e68ce2a07d3b28b9fd3fb3ae1dc5df06b8600fd4')
 
 prepare() {
