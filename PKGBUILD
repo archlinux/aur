@@ -1,7 +1,7 @@
 # Maintainer: Wellington <wellingtonwallace@gmail.com>
 
 pkgname=fastgame-git
-pkgver=0.0.2.r0.gd998550
+pkgver=0.0.3.r0.gd243c97
 pkgrel=1
 pkgdesc='Optimize system performance for games'
 arch=(x86_64 i686)
