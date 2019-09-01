@@ -1,6 +1,6 @@
 pkgbase = soapyplutosdr-git
 	pkgdesc = Soapy SDR plugin for PlutoSDR
-	pkgver = r32.4eaad76
+	pkgver = 0.2.0.r2.ge28e4f5
 	pkgrel = 1
 	url = https://github.com/pothosware/SoapyPlutoSDR
 	arch = i686

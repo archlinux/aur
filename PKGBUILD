@@ -1,7 +1,7 @@
 # Maintainer: Dana Sorensen <dana.r.sorensen@gmail.com>
 
 pkgname=soapyplutosdr-git
-pkgver=r32.4eaad76
+pkgver=0.2.0.r2.ge28e4f5
 pkgrel=1
 pkgdesc="Soapy SDR plugin for PlutoSDR"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -16,7 +16,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/${pkgname%-git}"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long | sed 's/^soapy-plutosdr-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
