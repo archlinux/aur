@@ -1,9 +1,9 @@
 # Maintainer: Mikhail Glayutin <Mikhail.Galyutin@googlemail.com>
-pkgname=fith
+pkgname=fift
 pkgver=0.5
 pkgrel=2
 epoch=
-pkgdesc="TON Test Fith compiler and execution environment"
+pkgdesc="TON Test Fift compiler and execution environment"
 arch=('i686' 'x86_64')
 url="https://test.ton.org/download.html"
 license=('LGPL.v2')

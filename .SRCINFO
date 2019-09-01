@@ -1,5 +1,5 @@
-pkgbase = fith
-	pkgdesc = TON Test Fith compiler and execution environment
+pkgbase = fift
+	pkgdesc = TON Test Fift compiler and execution environment
 	pkgver = 0.5
 	pkgrel = 2
 	url = https://test.ton.org/download.html
@@ -16,5 +16,5 @@ pkgbase = fith
 	md5sums = d76a4b004309782f828bfc2f824aab63
 	md5sums = 1297ddcfdc880c8ed563e7f5aaf10714
 
-pkgname = fith
+pkgname = fift
 
