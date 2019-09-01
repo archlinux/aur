@@ -1,0 +1,21 @@
+[Unit]
+Description=Remote desktop service (VNC)
+After=syslog.target network.target
+
+[Service]
+Type=forking
+User=coolq-vnc
+Group=coolq-vnc
+DynamicUser=yes
+PIDFile=/run/coolq-vnc/.vnc/%H:233.pid
+Environment=HOME=/run/coolq-vnc
+EnvironmentFile=/etc/coolq/env
+RuntimeDirectory=coolq-vnc
+ExecStartPre=/bin/sh -c '/usr/bin/vncserver -kill :233 > /dev/null 2>&1 || :'
+ExecStartPre=/bin/sh -c 'echo -e "$VNC_PASSWORD\n$VNC_PASSWORD\n\n" | vncpasswd'
+ExecStart=/usr/bin/vncserver :233 -geometry 800x600 -xstartup /usr/lib/coolq/xstartup
+ExecStartPost=xhost si:localuser:coolq
+ExecStop=/usr/bin/vncserver -kill :233
+
+[Install]
+WantedBy=multi-user.target

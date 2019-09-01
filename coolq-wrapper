@@ -1,0 +1,31 @@
+#!/usr/bin/sh
+
+
+set -ue
+
+if [ "$(pwd)" = "/" ]; then
+  cq_dir=/var/lib/coolq
+else
+  cq_dir="$HOME"/.local/share/coolq
+fi
+export WINEARCH=win32 WINEPREFIX="${cq_dir}"/wine
+export WINEDEBUG=-all WINEDLLOVERRIDES="mscoree,mshtml="
+
+if [ ! -d "$cq_dir/wine" ]; then
+  mkdir -p "${cq_dir}"{,/wine}
+  ln -s /opt/coolq-pro/CQP.exe "$cq_dir/CQP.exe"
+  cp -a /opt/coolq-pro/bin "$cq_dir/bin"
+  cp -a /opt/coolq-pro/conf "$cq_dir/conf"
+
+  mkdir -p "$cq_dir/data/app"
+  cp -a /etc/coolq/app/io.github.richardchien.coolqhttpapi "$cq_dir/data/app"
+
+  wineboot -u
+  ln -sf /opt/coolq-pro/wine/msscript.ocx "$cq_dir/wine/drive_c/windows/system32/msscript.ocx"
+  ln -sf /opt/coolq-pro/wine/winhttp.dll "$cq_dir/wine/drive_c/windows/system32/winhttp.dll"
+  wine regedit /S /opt/coolq-pro/wine/coolq-wine.reg
+fi
+
+mkdir -p "$cq_dir/app"
+ln -fs /usr/lib/coolq/app/io.github.richardchien.coolqhttpapi.cpk "$cq_dir/app/io.github.richardchien.coolqhttpapi.cpk"
+exec wine "${cq_dir%/wine}/CQP.exe" /account $1

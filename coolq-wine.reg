@@ -1,0 +1,22 @@
+REGEDIT4
+
+[HKEY_CURRENT_USER\Control Panel\Desktop]
+"FontSmoothing"="2"
+"FontSmoothingGamma"=dword:00000578
+"FontSmoothingOrientation"=dword:00000001
+"FontSmoothingType"=dword:00000002
+
+[HKEY_CURRENT_USER\Software\Wine\DllOverrides]
+"*winhttp"="native,builtin"
+
+[HKEY_CURRENT_USER\Software\Wine\DllOverrides]
+"*i386/msscript.ocx"="native,builtin"
+
+[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion]
+"CSDVersion"="Service Pack 1"
+"CurrentBuildNumber"="7601"
+"CurrentVersion"="6.1"
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Windows]
+"CSDVersion"=dword:00000100
+

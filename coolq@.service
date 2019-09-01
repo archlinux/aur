@@ -1,0 +1,19 @@
+[Unit]
+Description=Coolq service
+Requires=coolq-vncserver.service
+After=network.target coolq-vncserver.service
+
+[Service]
+Type=simple
+User=coolq
+Group=coolq
+DynamicUser=yes
+ReadWritePaths=/var/cache/coolq /var/lib/coolq /var/log/coolq
+Environment=DISPLAY=:233 XAUTHORITY=/run/coolq/.Xauthority
+TimeoutStopSec=2s
+ExecStart=/usr/bin/coolq %i
+ExecStop=wineserver -k9
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
