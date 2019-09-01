@@ -9,7 +9,7 @@ url="https://github.com/majn/telegram-purple"
 license=("GPL")
 makedepends=("git")
 depends=('glib2' 'libgcrypt>=1.6.0' 'libpurple' 'zlib' 'libwebp')
-conflict=('telegram-purple-git')
+conflicts=('telegram-purple-git')
 source=("https://github.com/majn/${pkgname}/releases/download/v${pkgver}/telegram-purple_${pkgver}.orig.tar.gz")
 sha256sums=('be990b5cac25ccda4fb8c045a2d423296f4af15873f66c2993fb9acf3d1e4962')
 
