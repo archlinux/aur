@@ -14,7 +14,7 @@ optdepends=()
 conflicts=("${pkgname}-git")
 changelog='changelog.txt'
 source=("https://github.com/vpelletier/python-libusb1/archive/${pkgver}.tar.gz")
-sha256sums=('4f7156d7f50d58e8c8cfc78bc97f269e1cf67580cf8ac57ad9ec27e3de699e23')
+sha256sums=('b7e44533f3430540107d6f0ab555357f4060b105f30ecfed6e107d4d7f8f1306')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
