@@ -1,4 +1,5 @@
 # Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
+# Co-Maintainer: Chris Billington <chrisjbillington at gmail dot com>
 pkgname=('git-nemo-icons-git')
 pkgver=1.1.r1.15d76c1
 pkgrel=1
