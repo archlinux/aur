@@ -52,7 +52,7 @@ sha256sums=('SKIP'
             '961bfb5694b67d425d21240d71490cb71714b5207c23448c89be0966512ff8f9'
             'a42f3b152b1aedb8abf16bc70971419919d1fe30328574e7fef8305f9d07d938'
             'b7fe63d06b7a3ebf0d752c31e23dfffe629745be5a4d515a9eebff890e64450b'
-            '6e58ff3fc072fa148e751f916955790e008f13faf495285ea9a887ed0e9c3b6d')
+            'efece94492aa6925cbc07557c4d20f914d7b56ea8f2f1601d1a968cc02367bc9')
 
 pkgver() {
   cd sage
@@ -85,6 +85,7 @@ prepare(){
   patch -p1 -i ../sagemath-ecl-sigfpe.patch
 
   sed -e 's|sage-python23|python|' -i src/bin/*
+  sed -e 's|$SAGE_PYTHON3|yes|' -i src/bin/sage
 }
 
 build() {
