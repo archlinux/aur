@@ -1,0 +1,14 @@
+pkgbase = python-tornado5
+	pkgdesc = open source version of the scalable, non-blocking web server and tools (this package gives the old API for some applications)
+	pkgver = 5.1.1
+	pkgrel = 1
+	url = https://pypi.org/project/tornado/tornado/5.1.1
+	arch = any
+	license = Apache
+	provides = python-tornado
+	conflicts = python-tornado
+	source = https://files.pythonhosted.org/packages/e6/78/6e7b5af12c12bdf38ca9bfe863fcaf53dc10430a312d0324e76c1e5ca426/tornado-5.1.1.tar.gz
+	md5sums = a1ce4f392d30ff0ebcb255150d89b826
+
+pkgname = python-tornado5
+
