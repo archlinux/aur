@@ -21,12 +21,15 @@ prepare() {
     _arch=IA32
   fi
 
-  bsdtar -x --file "Clover-v2.5k-$pkgver-$_arch.iso" EFI
+  bsdtar -x --file "Clover-v2.5k-$pkgver-$_arch.iso" EFI usr
 }
 
 package() {
   install -dm755 "$pkgdir/boot"
   install -dm755 "$pkgdir/usr/share/doc"
+  install -dm755 "$pkgdir/usr/lib/$pkgname"
+
+  cp --archive usr/local/bin usr/standalone/i386 "$pkgdir/usr/lib/$pkgname"
 
   cp --archive EFI "$pkgdir/boot"
   rm --recursive "$pkgdir/boot/EFI/BOOT"
