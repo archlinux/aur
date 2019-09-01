@@ -1,0 +1,13 @@
+pkgbase = maketorrent
+	pkgdesc = CLI .torrent file generator written in Rust
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/fuchsi/maketorrent
+	arch = x86_64
+	license = GPL3
+	depends = rust
+	source = maketorrent-0.2.1.tar.gz::https://github.com/fuchsi/maketorrent/archive/v0.2.1.tar.gz
+	md5sums = 20c9babb7d0e32e7b168a71990446005
+
+pkgname = maketorrent
+
