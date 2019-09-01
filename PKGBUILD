@@ -22,7 +22,6 @@ depends=('python2'
          'python2-futures'
          'python2-markupsafe')
 optdepends=('python2-pysodium: Required for RAET transport method'
-            'python2-ioflo: Required for RAET transport method'
             'python2-mako: Parser for salt states'
             'python2-pygit2: gitfs support'
             'virt-what: Improve results of the virtual grain'
