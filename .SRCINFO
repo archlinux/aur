@@ -1,0 +1,21 @@
+pkgbase = lib32-libplacebo-git
+	pkgdesc = Reusable library for GPU-accelerated video/image rendering primitives. (GIT version)
+	pkgver = v1.18.0.20.g22a9919
+	pkgrel = 1
+	url = https://github.com/haasn/libplacebo
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = vulkan-headers
+	depends = lib32-vulkan-icd-loader
+	depends = lib32-lcms2
+	depends = lib32-shaderc
+	provides = lib32-libplacebo
+	conflicts = lib32-libplacebo
+	source = git+https://github.com/haasn/libplacebo.git
+	sha256sums = SKIP
+
+pkgname = lib32-libplacebo-git
+
