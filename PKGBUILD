@@ -4,7 +4,7 @@
 # Contributor: damir <damir@archlinux.org>
 
 pkgname=libvncserver-git
-pkgver=0.9.11.r126.gc49204c
+pkgver=0.9.12.r62.g42649b01
 pkgrel=1
 pkgdesc='VNC server for real X displays'
 url="https://LibVNC.github.io"
