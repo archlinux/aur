@@ -1,0 +1,15 @@
+[Unit]
+Description="Datadog Agent"
+After=network.target
+
+[Service]
+Type=simple
+PIDFile=/run/datadog-agent/datadog-agent.pid      
+User=dd-agent
+Restart=on-failure
+ExecStart=/usr/bin/datadog-agent run -p /run/datadog-agent/datadog-agent.pid
+StartLimitInterval=10
+StartLimitBurst=5
+
+[Install]
+WantedBy=multi-user.target
