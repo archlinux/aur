@@ -1,8 +1,8 @@
 # Maintainer: Sibren Vasse <arch@sibrenvasse.nl>
 # Contributor: Ilya Gulya <ilyagulya@gmail.com>
 pkgname="deezer"
-pkgver=4.16.0
-pkgrel=3
+pkgver=4.16.1
+pkgrel=1
 pkgdesc="A proprietary music streaming service"
 arch=('any')
 url="https://www.deezer.com/"
@@ -19,7 +19,7 @@ source=("$pkgname-$pkgver-setup.exe::https://www.deezer.com/desktop/download/art
         oauth.patch
         0001-MPRIS-interface.patch
         https://github.com/SibrenVasse/deezer/raw/mpris/extra_node_modules.tar.xz)
-md5sums=('5dd856378377ddc944ae99d3ca958016'
+md5sums=('b0da5b1b070b2d76dd9b3867c4ba3ead'
          '36d184ea3ad5a0fccd71bebeed0ade27'
          '2a0a5dd017a7a302cf927f01c9fdbe85'
          'c68c0f0a44afc016da5ac2a692bc48ca'
