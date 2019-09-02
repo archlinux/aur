@@ -3,7 +3,7 @@
 
 _pkgname=clyrics
 pkgname=$_pkgname-git
-pkgver=0.11
+pkgver=0.12
 pkgrel=1
 
 pkgdesc="An extensible lyrics fetcher, with daemon support for cmus and mocp."
@@ -39,5 +39,3 @@ package() {
         install -Dm644 "$i" "$pkgdir/usr/share/$_pkgname/$i"
     done
 }
-
-# vim:set ts=2 sw=2 et:
