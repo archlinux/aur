@@ -11,7 +11,7 @@
 
 pkgname=lib32-mesa-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=19.2.0_devel.113971.74470baebbd
+pkgver=19.3.0_devel.114998.966a455bb91
 pkgrel=1
 arch=('x86_64')
 makedepends=('python-mako' 'lib32-libxml2' 'lib32-libx11' 'xorgproto'
@@ -96,7 +96,7 @@ prepare() {
 build () {
     export CC="gcc -m32"
     export CXX="g++ -m32"
-    export PKG_CONFIG=/usr/bin/pkg-config-32  
+    export PKG_CONFIG=/usr/bin/i686-pc-linux-gnu-pkg-config
 
     meson setup mesa _build \
         --native-file llvm32.native \
