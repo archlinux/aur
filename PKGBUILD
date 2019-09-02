@@ -26,12 +26,10 @@ install=servicewall.install
 backup=(
         "etc/servicewall/realms.json"
         "etc/servicewall/config.json"
-        "var/log/ulogd.sqlite3db"
         )
 
 # Sources for git repos :
-#source=("${pkgname%-git}::git://localhost/#branch=master")
-source=("${pkgname%-git}::git://localhost/#branch=nflog")
+source=("${pkgname%-git}::git://localhost/#branch=master")
 
 # Sources for non-git repos :
 #options=(!emptydirs)
