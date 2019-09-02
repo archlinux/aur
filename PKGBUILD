@@ -21,7 +21,7 @@ pkgname=(
   "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev"
 )
 _gitname='xbmc'
-pkgver=r53029.31f7b14ec61
+pkgver=r53303.7405d260471
 pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
@@ -56,11 +56,11 @@ _codename=Leia
 _libdvdcss_version="1.4.2-$_codename-Beta-5"
 _libdvdnav_version="6.0.0-$_codename-Alpha-3"
 _libdvdread_version="6.0.0-$_codename-Alpha-3"
-_ffmpeg_version="4.0.3-$_codename-18.2"
+_ffmpeg_version="4.0.4-$_codename-18.4"
 _fmt_version="5.1.0"
 _crossguid_version="8f399e8bd4"
 _fstrcmp_version="0.7.D001"
-_flatbuffers_version="1.9.0"
+_flatbuffers_version="1.11.0"
 
 source=(
   "git://github.com/xbmc/xbmc.git#branch=master"
@@ -73,7 +73,6 @@ source=(
   "http://mirrors.kodi.tv/build-deps/sources/fstrcmp-$_fstrcmp_version.tar.gz"
   "http://mirrors.kodi.tv/build-deps/sources/flatbuffers-$_flatbuffers_version.tar.gz"
   cpuinfo
-  '00-fix.building.with.mariadb.patch::https://github.com/wsnipex/xbmc/commit/cd20c8eb8a0394db1f028b118c4ca9b91b7e746a.patch'
 )
 noextract=(
   "libdvdcss-$_libdvdcss_version.tar.gz"
@@ -89,13 +88,12 @@ sha256sums=('SKIP'
             '38816f8373e243bc5950449b4f3b18938c4e1c59348e3411e23f31db4072e40d'
             '071e414e61b795f2ff9015b21a85fc009dde967f27780d23092643916538a57a'
             'a30b6aa0aad0f2c505bc77948af2d5531a80b6e68112addb4c123fca24d5d3bf'
-            '68535cc2a000946b62ce4be6edf7dda7900bd524f22bcb826800b94f4a873314'
+            'e11e7594af35f36ab2711252c3d6bb106908f26605498aef4a9be2d7bc001db2'
             '73d4cab4fa8a3482643d8703de4d9522d7a56981c938eca42d929106ff474b44'
             '3d77d09a5df0de510aeeb940df4cb534787ddff3bb1828779753f5dfa1229d10'
             'e4018e850f80700acee8da296e56e15b1eef711ab15157e542e7d7e1237c3476'
-            '5ca5491e4260cacae30f1a5786d109230db3f3a6e5a0eb45d0d0608293d247e3'
-            '27387e49043127f09c5ef0a931fffb864f5730e79629100a6e210b68a1b9f2c1'
-            '849daf1d5b081ef6d0e428bbc7d448799fc43a8ac9e79cd7513de0eb5a91b0bb')
+            '1789b97e790da8f2cb5ff827d15580878c8629fd889f5f038d7524dca43eacc9'
+            '27387e49043127f09c5ef0a931fffb864f5730e79629100a6e210b68a1b9f2c1')
 
 pkgver() {
   cd "$_gitname"
@@ -123,8 +121,6 @@ prepare() {
     local _replace="exec_program(cat ARGS \"/build/$pkgname/src/cpuinfo\" OUTPUT_VARIABLE CPUINFO)"
     sed -i s"|$_find|$_replace|" cmake/modules/FindSSE.cmake
   fi
-
-  patch -Np1 -i ../00-fix.building.with.mariadb.patch
 }
 
 build() {
@@ -144,6 +140,7 @@ build() {
     -DENABLE_INTERNAL_CROSSGUID=ON \
     -DENABLE_INTERNAL_FSTRCMP=ON \
     -DENABLE_INTERNAL_FLATBUFFERS=ON \
+    -DENABLE_MYSQLCLIENT=ON \
     -Dlibdvdcss_URL="$srcdir/libdvdcss-$_libdvdcss_version.tar.gz" \
     -Dlibdvdnav_URL="$srcdir/libdvdnav-$_libdvdnav_version.tar.gz" \
     -Dlibdvdread_URL="$srcdir/libdvdread-$_libdvdread_version.tar.gz" \
@@ -152,8 +149,6 @@ build() {
     -DCROSSGUID_URL="$srcdir/crossguid-$_crossguid_version.tar.gz" \
     -DFSTRCMP_URL="$srcdir/fstrcmp-$_fstrcmp_version.tar.gz" \
     -DFLATBUFFERS_URL="$srcdir/flatbuffers-$_flatbuffers_version.tar.gz" \
-    -DENABLE_MARIADBCLIENT=ON \
-    -DENABLE_MYSQLCLIENT=OFF \
     ../xbmc
   make
   make preinstall
