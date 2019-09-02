@@ -1,0 +1,26 @@
+pkgbase = rfm-bin
+	pkgdesc = Command-line interface to perform file management on RepRapFirmware based devices.
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/wilriker/rfm
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	provides = rfm
+	conflicts = rfm
+	source_x86_64 = https://github.com/wilriker/rfm/releases/download/v1.1.0/rfm-linux_amd64.tgz
+	sha256sums_x86_64 = ea43ad5fdb38047c2f4f21e45abf97445eb46f0ca31067c9eb35bc49a5cde1a4
+	source_arm = https://github.com/wilriker/rfm/releases/download/v1.1.0/rfm-linux_arm.tgz
+	sha256sums_arm = 9dfa458ddc67cd9bbad8e0e8a118b4e9c49db363021087d2e8fd69b98db2c920
+	source_armv6h = https://github.com/wilriker/rfm/releases/download/v1.1.0/rfm-linux_arm.tgz
+	sha256sums_armv6h = 9dfa458ddc67cd9bbad8e0e8a118b4e9c49db363021087d2e8fd69b98db2c920
+	source_armv7h = https://github.com/wilriker/rfm/releases/download/v1.1.0/rfm-linux_arm.tgz
+	sha256sums_armv7h = 9dfa458ddc67cd9bbad8e0e8a118b4e9c49db363021087d2e8fd69b98db2c920
+	source_aarch64 = https://github.com/wilriker/rfm/releases/download/v1.1.0/rfm-linux_arm64.tgz
+	sha256sums_aarch64 = 380986c03d6c414857ad523f40f806325f4727dc08083dcfdc0c9969b54e96b9
+
+pkgname = rfm-bin
+
