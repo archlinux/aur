@@ -1,0 +1,11 @@
+diff -Naur 4kyoutubetomp3.orig/4kyoutubetomp3.sh 4kyoutubetomp3/4kyoutubetomp3.sh
+--- 4kyoutubetomp3.orig/4kyoutubetomp3.sh	2019-08-29 15:26:34.000000000 +0200
++++ 4kyoutubetomp3/4kyoutubetomp3.sh	2019-09-02 17:09:33.980880550 +0200
+@@ -1,6 +1,6 @@
+  #!/bin/sh
+  
+- SCRIPT_DIR=$(dirname "$0")
++ SCRIPT_DIR=$(dirname $(readlink -f "$0"))
+  SCRIPT_DIR=`cd "$SCRIPT_DIR"; pwd` #make path absolute
+ 
+  LD_LIBRARY_PATH=$SCRIPT_DIR
