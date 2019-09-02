@@ -285,8 +285,8 @@ Index: dev/media/gpu/vaapi/vaapi_video_decode_accelerator.cc
    for (size_t i = 0; i < buffers.size(); ++i) {
      DCHECK(requested_pic_size_ == buffers[i].size());
 @@ -656,9 +663,13 @@ void VaapiVideoDecodeAccelerator::Assign
-     // only used as a copy destination. Therefore, the VaapiWrapper used and
-     // owned by |picture| is |vpp_vaapi_wrapper_|.
+     PictureBuffer buffer = buffers[i];
+     buffer.set_size(requested_pic_size_);
      std::unique_ptr<VaapiPicture> picture = vaapi_picture_factory_->Create(
 +#if defined(OS_LINUX) && !defined(OS_ANDROID) && !defined(OS_CHROMEOS)
 +            vaapi_wrapper_,
@@ -295,7 +295,7 @@ Index: dev/media/gpu/vaapi/vaapi_video_decode_accelerator.cc
              ? vaapi_wrapper_
              : vpp_vaapi_wrapper_,
 +#endif
-         make_context_current_cb_, bind_image_cb_, buffers[i]);
+         make_context_current_cb_, bind_image_cb_, buffer);
      RETURN_AND_NOTIFY_ON_FAILURE(picture, "Failed creating a VaapiPicture",
                                   PLATFORM_FAILURE, );
 @@ -1077,6 +1088,9 @@ VaapiVideoDecodeAccelerator::GetSupporte

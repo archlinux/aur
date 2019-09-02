@@ -15,7 +15,7 @@ _use_wayland=0           # Build Wayland NOTE: extremely experimental and don't 
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=78.0.3876.0
+pkgver=78.0.3895.5
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
 arch=('x86_64')
@@ -92,7 +92,7 @@ sha256sums=(
             # Patch form Gentoo
 
             # Misc Patches
-            '3cf77d5c90f46fa25f51a6c355f637395e2af84d584350fca406ebf5c3866e76'
+            '4e08be7d28b5b00134fffccef7e2aed0063215d74a145206051894cd155f0637'
             # Patch from crbug (chromium bugtracker) or Arch chromium package
             'd081f2ef8793544685aad35dea75a7e6264a2cb987ff3541e6377f4a3650a28b'
             '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1'
@@ -232,7 +232,7 @@ _keeplibs=(
            'third_party/node/node_modules/polymer-bundler/lib/third_party/UglifyJS2'
            'third_party/one_euro_filter'
            'third_party/openscreen'
-           'third_party/openscreen/src/third_party/tinycbor'
+           'third_party/openscreen/src/third_party/tinycbor/src/src'
            'third_party/ots'
            'third_party/pdfium'
            'third_party/pdfium/third_party/agg23'
@@ -248,6 +248,7 @@ _keeplibs=(
            'third_party/pffft'
            'third_party/ply'
            'third_party/polymer'
+           'third_party/private-join-and-compute'
            'third_party/protobuf'
            'third_party/protobuf/third_party/six'
            'third_party/pyjson5'
@@ -271,6 +272,7 @@ _keeplibs=(
            'third_party/swiftshader/third_party/llvm-7.0'
            'third_party/swiftshader/third_party/llvm-subzero'
            'third_party/swiftshader/third_party/subzero'
+           'third_party/swiftshader/third_party/SPIRV-Headers/include/spirv/unified1'
            'third_party/tcmalloc'
            'third_party/unrar'
            'third_party/usrsctp'
@@ -287,7 +289,8 @@ _keeplibs=(
            'third_party/webrtc/rtc_base/third_party/sigslot'
            'third_party/widevine'
            'third_party/woff2'
-           'third_party/zlib'
+           'third_party/zlib/google'
+           'tools/grit/third_party/six'
            'url/third_party/mozilla'
            'v8/src/third_party/siphash'
            'v8/src/third_party/valgrind'
@@ -378,7 +381,7 @@ _use_system=(
 #              're2'
              'snappy'
              'yasm'
-#              'zlib'
+             'zlib'
              )
 
 # Facilitate deterministic builds (taken from build/config/compiler/BUILD.gn).
@@ -491,6 +494,12 @@ prepare() {
   patch -p1 -i "${srcdir}/enable-vaapi.patch"
   sed 's|/dri/|/|g' -i media/gpu/vaapi/vaapi_wrapper.cc
 
+  # Unbundle zlib
+  sed 's|zlib:zlib_config|zlib:system_zlib|g' -i third_party/perfetto/gn/BUILD.gn
+
+  # # Patch from Gentoo
+
+
   # # Patch from crbug.com (chromium bugtracker), chromium-review.googlesource.com / Gerrit or Arch chromium package.
 
   # https://crbug.com/skia/6663#c10.
@@ -565,6 +574,7 @@ package() {
     DESTDIR="${pkgdir}" \
     install
   install -Dm644 "chromium-launcher/LICENSE" "${pkgdir}/usr/share/licenses/chromium-dev/LICENSE.launcher"
+  strip $STRIP_BINARIES "${pkgdir}/usr/bin/chromium-dev"
 
   pushd "chromium-${pkgver}/out/Release" &> /dev/null
 
@@ -595,7 +605,7 @@ package() {
          'libVkICD_mock_icd.so'
          'swiftshader/libEGL.so'
          'swiftshader/libGLESv2.so'
-         'swiftshader/libvulkan.so'
+         'swiftshader/libvk_swiftshader.so'
          )
   for i in "${_libs[@]}"; do
     install -Dm755 "${i}" "${pkgdir}/usr/lib/chromium-dev/${i}"
