@@ -3,10 +3,12 @@ pkgver=1.2.1
 pkgrel=1
 pkgdesc='Beneath a Steel Sky Enhanced Soundtrack for ScummVM'
 arch=(any)
-url=https://www.jameswoodcock.co.uk/content/scummvm-music-enhancement-project/beneath-a-steel-sky-enhanced-soundtrack-for-scummvm
+url=https://www.jameswoodcock.co.uk/product/beneath-a-steel-sky-soundtrack
 license=(custom)
 depends=(bass)
-source=("https://www.jameswoodcock.co.uk/soundtracks/bass/full175618461/bass_v${pkgver//./_}_flac.zip")
+source=(
+  "https://www.jameswoodcock.co.uk/soundtracks/bass/full175618461/bass_v${pkgver//./_}_flac.zip"
+)
 sha256sums=(3d1eee157aaab63638204326f664ee889d9c173bfa6e3719c58e7c74e6145461)
 
 prepare() {
