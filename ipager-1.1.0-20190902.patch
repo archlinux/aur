@@ -1,0 +1,50 @@
+-- SConstruct.orig  2019-09-01 11:41:55.808084988 -0400
++++ SConstruct  2019-09-01 11:24:34.220907783 -0400
+@@ -74,12 +74,12 @@
+
+ # sys/stat.h
+ if not conf.CheckCHeader('sys/stat.h'):
+-    print "missing 'sys/stat.h', install it."
++    print ("missing 'sys/stat.h', install it.")
+     exit(1)
+
+ # sys/types.h
+ if not conf.CheckCHeader('sys/types.h'):
+-    print "missing 'sys/types.h', install it."
++    print ("missing 'sys/types.h', install it.")
+     exit(1)
+
+
+@@ -91,7 +91,7 @@
+     ipager_env.AppendUnique(
+         LIBS = ['X11','Xmu','Xext'])
+ else:
+-    print "missing x11-dev-stuff, install it."
++    print ("missing x11-dev-stuff, install it.")
+     exit(1)
+
+
+@@ -103,18 +103,18 @@
+
+
+ # imlib2
+-print "Checking for Imlib2... ",
++print ("Checking for Imlib2... ",)
+ if not conf.env.WhereIs('imlib2-config'):
+-    print "cant find 'imlib2-config."
++    print ("cant find 'imlib2-config.")
+     exit(1)
+ else:
+     imlib2_env = Environment()
+     imlib2_env.ParseConfig('imlib2-config --cflags --libs')
+     if not imlib2_env.Dictionary()['LIBS']:
+-        print "missing imlib2, install it."
++        print ("missing imlib2, install it.")
+         exit(1)
+     else:
+-        print "yes"
++        print ("yes")
+         ipager_env.AppendUnique(
+             CPPPATH = imlib2_env.Dictionary().get('CPPPATH'), 
+             CCFLAGS = imlib2_env.Dictionary().get('CCFLAGS'), 
+
