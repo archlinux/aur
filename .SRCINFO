@@ -1,6 +1,6 @@
 pkgbase = stock_quote
 	pkgdesc = python script to get stock quotes and calculate gains and losses
-	pkgver = 1.5.2
+	pkgver = 1.6.0
 	pkgrel = 2
 	url = https://github.com/gps1539/stock_quote
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = stock_quote
 	depends = python-colorama
 	depends = python-influxdb
 	source = https://raw.githubusercontent.com/gps1539/stock_quote/master/stock_quote/stock_quote
-	md5sums = 62034c9f8a02ea74a57bb9219e2c4bb8
+	md5sums = 2f6e7e23d5e696d8ad77af5ee684acbe
 
 pkgname = stock_quote
 
