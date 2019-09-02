@@ -2,10 +2,10 @@
 pkgname=gi-zsh-completion
 
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Zsh completion support for gi"
 arch=('any')
-url="https://bitbucket.org/gagarski/gi-bash-completion"
+url="https://github.com/gagarski/gi-zsh-completion"
 license=('custom')
 makedepends=('python-setuptools' 'git')
 depends=('gi' 'zsh' 'zsh-completions')
