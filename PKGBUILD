@@ -8,7 +8,7 @@ url="http://tams-www.informatik.uni-hamburg.de/applets/hades/"
 license=('custom')
 depends=('java-runtime')
 makedepends=('unzip' 'imagemagick')
-source=("http://tams-www.informatik.uni-hamburg.de/applets/hades/archive/$pkgname.jar"
+source=("https://tams.informatik.uni-hamburg.de/applets/hades/archive/$pkgname.jar"
         'hades'
         'hades.desktop'
         'LICENSE')
