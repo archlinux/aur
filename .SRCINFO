@@ -9,6 +9,7 @@ pkgbase = openra-d2-git
 	makedepends = dos2unix
 	makedepends = git
 	makedepends = unzip
+	makedepends = mono>=5.4
 	depends = mono>5.4
 	depends = ttf-dejavu
 	depends = openal
