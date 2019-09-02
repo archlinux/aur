@@ -2,9 +2,9 @@
 # Contributor: drakkan <nicola.murino at gmail dot com>
 pkgname=sftpgo-git
 _pkgname=sftpgo
-pkgver=r78.51aacae
+pkgver=r94.4a1b674
 pkgrel=1
-pkgdesc='Full featured and highly configurable SFTP server software'
+pkgdesc='Full featured and highly configurable SFTP server'
 arch=('i686' 'x86_64')
 url="https://github.com/giltene/${_pkgname}"
 license=('GPL3')
@@ -28,7 +28,7 @@ pkgver() {
 
 build() {
   cd "${_pkgname}"
-  go build -i -ldflags "-s -w -X github.com/drakkan/sftpgo/utils.commit=`git describe --tags --always --dirty` -X github.com/drakkan/sftpgo/utils.date=`date --utc +%FT%TZ`" -o sftpgo
+  go build -i -ldflags "-s -w -X github.com/drakkan/sftpgo/utils.commit=`git describe --always --dirty` -X github.com/drakkan/sftpgo/utils.date=`date --utc +%FT%TZ`" -o sftpgo
 }
 
 package() {
