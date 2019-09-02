@@ -4,7 +4,7 @@
 pkgname=pkgtop
 pkgdesc="Interactive package manager & resource monitor (stable version)"
 pkgver=1.5
-pkgrel=2
+pkgrel=3
 arch=('any')
 url="https://github.com/keylo99/pkgtop"
 license=('GPL3')
@@ -20,7 +20,7 @@ prepare() {
 
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"
-  export GOPATH="${srcdir}/gopath"
+  export GOPATH="${srcdir}/gopath" GO111MODULE="auto"
   go get -d ./...
   go build \
     -gcflags "all=-trimpath=$srcdir" \
