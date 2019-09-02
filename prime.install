@@ -5,6 +5,7 @@ NAME="X11/xorg.conf.d/10-nvidia.conf"
 post_install() {
 	echo "Creating /etc/${NAME} ..."
 	cp -v /usr/share/${NAME} /etc/${NAME}
+	echo "Pay attention!!!\nIf you use xorg-server-git then you may need to uncomment some lines in /etc/${NAME}"
 }
 
 post_upgrade() {
