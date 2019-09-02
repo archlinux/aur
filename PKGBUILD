@@ -1,8 +1,8 @@
 # Maintainer: dracorp aka Piotr Rogoza <piotr.r.public at gmail.com>
 
 pkgname=kcolorpicker-git
-pkgver=r39.7db1cdb
-pkgrel=3
+pkgver=r44.b6fefec
+pkgrel=1
 pkgdesc='Qt basd Color Picker with popup menu'
 arch=('i686' 'x86_64')
 url='https://github.com/DamirPorobic/kColorPicker'
@@ -37,7 +37,5 @@ build(){
 package(){
   cd "$srcdir"/$_gitname/build
   make DESTDIR="$pkgdir" install
-  cd "$pkgdir"/usr
-  mv lib64 lib
 }
 
