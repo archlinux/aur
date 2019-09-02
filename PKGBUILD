@@ -2,9 +2,9 @@
 
 pkgname=d-containers
 _pkgname=containers
-_pkgver=0.8.0-alpha.13
+_pkgver=0.8.0-alpha.16
 pkgver=${_pkgver/-/}
-pkgrel=2
+pkgrel=1
 pkgdesc='Containers for D backed by std.experimental.allocator'
 arch=('x86_64')
 url='https://github.com/dlang-community/containers'
