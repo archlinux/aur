@@ -3,10 +3,10 @@ pkgname=freetuxtv-svn
 pkgver=0.6.8.r0.g66dda27
 pkgrel=1
 pkgdesc="WebTV vlc player to watch tv/radio playlists on the internet"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://github.com/freetuxtv/freetuxtv"
 license=('GPL3')
-depends=('vlc' 'gtk3' 'sqlite' 'curl' 'libnotify')
+depends=('vlc' 'gtk3' 'sqlite' 'curl' 'libnotify' 'dbus-glib')
 makedepends=('git' 'intltool')
 conflicts=('freetuxtv')
 
