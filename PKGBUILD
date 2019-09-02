@@ -3,7 +3,7 @@
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 
 pkgname=opencv-cuda
-pkgver=4.1.0
+pkgver=4.1.1
 pkgrel=1
 provides=(opencv opencv-samples)
 conflicts=(opencv opencv-samples)
@@ -22,10 +22,12 @@ optdepends=('opencv-samples: samples'
             'python2-numpy: Python 2 interface')
 source=("opencv-$pkgver.tar.gz::https://github.com/opencv/opencv/archive/$pkgver.zip"
         "opencv_contrib-$pkgver.tar.gz::https://github.com/opencv/opencv_contrib/archive/$pkgver.tar.gz"
-        "fix-cuda-10.1.patch")
-sha256sums=('2c75b129da2e2c8728d168b7bf14ceca2da0ebe938557b109bae6742855ede13'
-            'e7d775cc0b87b04308823ca518b11b34cc12907a59af4ccdaf64419c1ba5e682'
-            '4e1640f37ee357d38551a65d3dbfc03a5d7589bffaa3cde92a64c5ea62f55aef')
+        "fix-cuda-10.1.patch"
+        "fix-build-error.patch::https://github.com/opencv/opencv_contrib/commit/00e60f0d578651540b709730aa284af54055ae97.patch")
+sha256sums=('d34985c7b4283519c032e3585b30846644f56c81acba35693295ff8930f080aa'
+            '9f85d380758498d800fec26307e389620cde8b1a2e86ab51cddc5200fbe37102'
+            '4e1640f37ee357d38551a65d3dbfc03a5d7589bffaa3cde92a64c5ea62f55aef'
+            '805166b77b0c38e9e9f69b5b285d2b5313e54f0419a71155f4d9f2d5e6b5d2cc')
 
 prepare() {
   msg2 "Patching sources for CUDA v10"
@@ -35,6 +37,9 @@ prepare() {
 
   cd opencv-$pkgver
   patch --forward --strip=1 < ../fix-cuda-10.1.patch
+
+  cd ../opencv_contrib-$pkgver
+  patch --forward --strip=1 < ../fix-build-error.patch
 }
 
 build() {
@@ -60,7 +65,7 @@ build() {
     -DWITH_CUDA=ON \
     -DCUDA_FAST_MATH=ON \
     -DWITH_CUBLAS=ON \
-    -DCUDA_HOST_COMPILER=/usr/bin/gcc-7 \
+    -DCUDA_HOST_COMPILER=/usr/bin/gcc-8 \
     -DOPENCV_EXTRA_MODULES_PATH="$srcdir/opencv_contrib-$pkgver/modules" \
     -DOPENCV_SKIP_PYTHON_LOADER=ON \
     -DOPENCV_PYTHON3_INSTALL_PATH=$_pythonpath \
