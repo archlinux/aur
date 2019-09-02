@@ -48,7 +48,7 @@ _1k_HZ_ticks=
 pkgbase=linux-bfq
 # pkgname=('linux-bfq' 'linux-bfq-headers' 'linux-bfq-docs')
 _major=5.2
-_minor=10
+_minor=11
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
 pkgrel=1
@@ -80,7 +80,7 @@ _gcc_patch="enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v4.13+.patc
 source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
         "${_gcc_path}/${_gcc_patch}"
-        #"${_lucjanpath}/${_bfq_rev_path}/${_bfq_rev_patch}"
+        "${_lucjanpath}/${_bfq_rev_path}/${_bfq_rev_patch}"
         "${_lucjanpath}/${_bfq_path_1}/${_bfq_patch_1}"
         "${_lucjanpath}/${_bfq_path_2}/${_bfq_patch_2}"
         "${_lucjanpath}/${_bfq_path_3}/${_bfq_patch_3}"
@@ -89,8 +89,6 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "${_lucjanpath}/${_bfq_path_6}/${_bfq_patch_6}"
         "${_lucjanpath}/arch-patches-v2/0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch"
         "${_lucjanpath}/arch-patches-v2/0002-ZEN-Add-CONFIG-for-unprivileged_userns_clone.patch"
-        "${_lucjanpath}/arch-patches-v2/0003-iwlwifi-mvm-disable-TX-AMSDU-on-older-NICs.patch"
-        "${_lucjanpath}/arch-patches-v2/0004-drm-amdgpu-pin-the-csb-buffer-on-hw-init-for-gfx-v8.patch"
          # the main kernel config files
         'config'
          # pacman hook for depmod
@@ -395,9 +393,10 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('abd20b6bf41572c51df0d609db205e2d5f541aa486c2d37c15d4dd43e8bf36a06eb5514bdd5a1c114fd6f6c00a3bf9d1ac40a722b8e01146e2779f806b3a4ee7'
+sha512sums=('6116f7b71711a01e741bf1f9b3e20e9d46b3b2d6c1dfadad79742d42a2142e13dfec0c569b21d0cbcf030369b75bb39c27c05f08f3e9594d391d1df4ddbdbbb6'
             'SKIP'
             '2eb574fbfac6e334d3b06e52e466dbf8e88034515729b6571990b10f75a0fe2a52f188615405c5a695b5820669e595deead44d7961a97c5872359be3435fdf63'
+            'a57192d2989ff816e32970d86320f331be013b2c1d4a236565f33ef41b4092352e7dc560f97a39191d8c5eca8514f646fddc14a1c0168265ca3a470e7a41a2ea'
             'd996a89d7831c4d49980b1b5b73ccd21da419302e86ea6faaf7d8f5a686bdbfe688a75c34d3e9583cbb11a011d2adcb4cb3aef66aba677e0d810f3eb1fb5be4b'
             '8ce2e2c3da37435090abdf0d1875aa0b2870d9cb9ce148cdc30855c1beeffc87cd7a8003c3c351f8f31753c1a4678df6cb3c02c39797b361632c9e5abbe2173f'
             '960028ff15108a88e67caf7769b21e9989aa5c56120fa417baa5a721ef09fb86e73d2ba9f1def27b0f98ac935cc670799b3fbb2b78b98b26516a9063b4c84e5f'
@@ -406,8 +405,6 @@ sha512sums=('abd20b6bf41572c51df0d609db205e2d5f541aa486c2d37c15d4dd43e8bf36a06eb
             'd0480c545bacf3a47f99065e29e7854e840de1cd91d682663d8cb4d23f2d000f48c2de5ab648b85f8748ddb8e2984ce2fd788076fe5e807274187920bd630fe7'
             '1cd40df805987a50723da456e5874e6ca1070e5efbf23b3267e833bb73465573eb82d5c8f74c54e9fb894cdbe5137a822381152716d7dedd64a07ac1601b0f37'
             'd75d9fc44b31e6adafe4cae641bc513c1594c7a314087fede6a7ff1f3c98c67117d84a1f7fe70f39856af9d66d9f79298791598505283ac53453cb4e763fa69c'
-            'fa87f577af56a8c4219b4c064fba7c85ea8cc1c1ee066f6972022145af04a1fb982f5e5ff5d983e44654440892fa429c00c47ddfef8a8a4b0e16fc4484119adf'
-            '694efbf25e17b30b73eb16de5819068565e37e3f6e263a700c06d01bd7f299d5d0286144426ed3161081b969d4536024709bbbf6dc3e65ca96d5cd18192b74d1'
             '77c4e8a6e74c913a3d3cd348911af92ce25246909e7094c31ac1ef215ccd6cf3dac4dd2303f2daad3e48c734568e31e39125430fbd601ca6b808d1bdb49984ba'
             '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
             '2718b58dbbb15063bacb2bde6489e5b3c59afac4c0e0435b97fe720d42c711b6bcba926f67a8687878bd51373c9cf3adb1915a11666d79ccb220bf36e0788ab7'
