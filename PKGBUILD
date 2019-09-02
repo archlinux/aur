@@ -4,7 +4,7 @@
 
 pkgname=gnome-shell-extension-workspaces-to-dock
 _gitname=workspaces-to-dock
-pkgver=50_3.32
+pkgver=51_3.32
 pkgrel=1
 pkgdesc="Gnome shell extension, Workspaces to Dock, Transform Gnome Shell's overview workspaces into an intelligent dock."
 arch=('any')
@@ -13,7 +13,7 @@ license=('GPL3')
 depends=('gnome-shell>=3.32')
 conflicts=("${pkgname}-git")
 source=("https://github.com/passingthru67/${_gitname}/archive/${_gitname}.v${pkgver}.tar.gz")
-sha256sums=('8796513a87518132ee52d11496d878cb2d82b220aa7931f9524da3ad71b456e1')
+sha256sums=('e6da3d9798c99e3072ead9662c6dab126dbf4a864a3330e0271391096c1c2ad5')
 
 package() {
   cd "${srcdir}/${_gitname}-${_gitname}.v${pkgver}"
