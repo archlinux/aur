@@ -1,4 +1,4 @@
-# Maintainer: Ian D. Scott <ian@perebruin.com>
+# Maintainer: Ian Douglas Scott <ian@iandouglasscott.com>
 # Contributor: Zhang Li <msfxzi at sina.com>
 pkgname=bas
 pkgver=2.5
