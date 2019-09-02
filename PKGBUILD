@@ -1,9 +1,9 @@
 # Maintainer: Radoslaw Mejer <radmen@radmen.info>
 pkgname=silicon
 pkgver=0.2.6
-pkgrel=1
+pkgrel=2
 depends=('fontconfig' 'freetype2' 'xclip')
-makedepends=('rust' 'cargo' 'glibc' 'llvm-libs' 'gcc-libs')
+makedepends=('rust' 'cargo' 'glibc' 'llvm-libs' 'gcc-libs' 'clang')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 pkgdesc="Create beautiful image of your code"
 license=('MIT')
