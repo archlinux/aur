@@ -16,7 +16,7 @@ optdepends=()
 #replaces=("fofimon")
 #conflicts=("fofimon")
 
-source=('git+https://gitlab.com/efanomars/fofimon.git#commit=26349f936bf6263b379124fe16a13c247626caad')
+source=('git+https://gitlab.com/efanomars/fofimon.git#commit=c0962563c9fa37d86a0d7636a6fa99f8cd1bda52')
 sha512sums=('SKIP')
 
 build() {
