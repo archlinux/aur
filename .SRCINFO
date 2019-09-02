@@ -1,0 +1,22 @@
+pkgbase = sftpgo
+	pkgdesc = Full featured and highly configurable SFTP server
+	pkgver = 0.9.1
+	pkgrel = 1
+	url = https://github.com/giltene/sftpgo
+	install = sftpgo.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = gcc
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	optdepends = sqlite: to use SQLite provider
+	optdepends = postgresql: to use PostgreSQL provider
+	optdepends = mariadb: to use MySQL provider
+	backup = etc/sftpgo/sftpgo.json
+	source = git+https://github.com/drakkan/sftpgo#tag=0.9.1
+	sha256sums = SKIP
+
+pkgname = sftpgo
+
