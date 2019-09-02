@@ -15,9 +15,13 @@ source=("https://pypi.python.org/packages/source/s/slowaes/slowaes-$pkgver.tar.g
 md5sums=('eafee95a788a795403e972a35e80ce4f')
 sha256sums=('83658ae54cc116b96f7fdb12fdd0efac3a4e8c7c7064e3fac3f4a881aa54bf09')
 
-package() {
+prepare() {
   cd "$srcdir/slowaes-$pkgver"
   sed -i 's#/usr/bin/python#/usr/bin/python2#' aes.py
+}
+
+package() {
+  cd "$srcdir/slowaes-$pkgver"
   python2 setup.py install --root="$pkgdir/" --optimize=1
 }
 
