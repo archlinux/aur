@@ -3,14 +3,13 @@
 # Contributor: Daniel Seymour <dannyseeless@gmail.com>
 
 pkgname=jellyfin-git
-pkgver=10.2.1.r162.g4a3e42e779
+pkgver=10.3.7.r360.gee637e8fec
 pkgrel=1
 pkgdesc='The Free Software Media Browser'
 arch=('i686' 'x86_64' 'armv6h')
 url='https://github.com/jellyfin/jellyfin'
 license=('GPL2')
-# ffmpeg4.0 because of https://github.com/jellyfin/jellyfin/issues/555
-depends=('dotnet-runtime' 'ffmpeg4.0' 'imagemagick' 'sqlite')
+depends=('dotnet-runtime' 'ffmpeg' 'imagemagick' 'sqlite')
 makedepends=('git' 'dotnet-sdk')
 provides=('jellyfin')
 conflicts=('jellyfin')
