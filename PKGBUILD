@@ -9,9 +9,9 @@ arch=('any')
 url="https://github.com/OpenRA/d2"
 license=('GPL3')
 install=openra-d2.install
-depends=('mono' 'ttf-dejavu' 'openal' 'libgl' 'freetype2' 'sdl2' 'lua51' 'hicolor-icon-theme' 'gtk-update-icon-cache'
+depends=('mono>=5.4' 'ttf-dejavu' 'openal' 'libgl' 'freetype2' 'sdl2' 'lua51' 'hicolor-icon-theme' 'gtk-update-icon-cache'
          'desktop-file-utils' 'xdg-utils' 'zenity')
-makedepends=('dos2unix' 'git' 'unzip' 'msbuild')
+makedepends=('dos2unix' 'git' 'unzip')
 provides=('openra-d2')
 options=(!strip)
 source=("git+${url}.git"
