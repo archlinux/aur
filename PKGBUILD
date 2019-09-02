@@ -2,10 +2,10 @@
 pkgname=gi
 
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Git wrapper to perform Mercurial-like short unique abbreviation searching for commands"
 arch=('any')
-url="https://bitbucket.org/gagarski/gi"
+url="https://github.com/gagarski/gi"
 license=('custom')
 makedepends=('python-setuptools' 'git')
 depends=('python' 'python-marisa-trie' 'git')
