@@ -4,7 +4,7 @@
 # Contributor : Jan de Groot <jgc@archlinux.org>
 
 pkgname=lib32-libdrm-git
-pkgver=2.4.99.r1.gdcc586c6
+pkgver=2.4.99.r16.g14922551
 pkgrel=1
 pkgdesc="Userspace interface to kernel DRM services, git 32-bit version"
 arch=(x86_64)
@@ -36,7 +36,7 @@ prepare() {
 build() {
     export CC="gcc -m32"
     export CXX="g++ -m32"
-    export PKG_CONFIG=/usr/bin/pkg-config-32
+    export PKG_CONFIG=/usr/bin/i686-pc-linux-gnu-pkg-config
     meson setup libdrm _build \
         --prefix /usr \
         --libdir lib32 \
