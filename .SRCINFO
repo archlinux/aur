@@ -1,0 +1,15 @@
+pkgbase = gtknodes-git
+	pkgdesc = Graphical Nodes for GTK+3
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/aluntzer/gtknodes
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = gobject-introspection
+	depends = gtk3
+	source = git://github.com/aluntzer/gtknodes.git
+	md5sums = SKIP
+
+pkgname = gtknodes-git
+
