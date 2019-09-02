@@ -14,6 +14,7 @@ pkgbase = linux-xanmod
 	makedepends = python-sphinx_rtd_theme
 	makedepends = graphviz
 	makedepends = imagemagick
+	makedepends = cpio
 	options = !strip
 	source = https://github.com/xanmod/linux/archive/5.2.10-xanmod9.tar.gz
 	source = 60-linux.hook

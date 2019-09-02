@@ -51,7 +51,7 @@ url="http://www.xanmod.org/"
 license=(GPL2)
 makedepends=(
   xmlto kmod inetutils bc libelf git python-sphinx python-sphinx_rtd_theme
-  graphviz imagemagick
+  graphviz imagemagick cpio
 )
 options=('!strip')
 _srcname="linux-${pkgver}-xanmod${xanmod}"
