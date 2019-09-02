@@ -6,7 +6,7 @@
 _pkgname=servicewall
 pkgname=servicewall-git
 pkgdesc="The firewall that remembers the different networks you connect to."
-pkgver=0.4.2.r34.1cfa036
+pkgver=0.4.2.r24.44a4e9b
 pkgrel=1
 arch=("any")
 url="https://github.com/lafleurdeboum/servicewall"
@@ -56,3 +56,4 @@ package() {
   cd "${srcdir}/${pkgname%-git}"
   python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
 }
+
