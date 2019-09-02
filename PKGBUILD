@@ -19,15 +19,15 @@ source=("$pkgname-$pkgver-setup.exe::https://www.deezer.com/desktop/download/art
         oauth.patch
         0001-MPRIS-interface.patch
         https://github.com/SibrenVasse/deezer/raw/mpris/extra_node_modules.tar.xz)
-md5sums=('b0da5b1b070b2d76dd9b3867c4ba3ead'
-         '36d184ea3ad5a0fccd71bebeed0ade27'
-         '2a0a5dd017a7a302cf927f01c9fdbe85'
-         'c68c0f0a44afc016da5ac2a692bc48ca'
-         '0bab4bf4a6802757b84efbb552a7875b'
-         '2d7b015bfc85fe13174ba434da6bd1c1'
-         'fe75d3ae80ff12165400364c8bf6c9f0'
-         '5c05a84c9436e3c8db74df3db821944c'
-         'bf0abe1b196068808543a86f3e8bb2b0')
+sha256sums=('e62dab034261291d56aa776ebb531f91657049fd337153e0195c55db5b77e0f9'
+            'f8a5279239b56082a5c85487b0c261fb332623f27dac3ec8093458b8c55d8d99'
+            'c024851f4c87580b4f764c88f630d77a28794338d0b43947e68939afb146bc0a'
+            '4a405326e0c93188cc305e196cf69684d9dddde4584c5e5dfe1587c6151d5252'
+            'd4fb866b4b58924c830370ecbab6d1b38bbbdb7cc2a803ec4b6baa14c831b716'
+            '964d23e5fa473bd1a78bed4213d0a546a253541e0b82337dc5929c3719bbe020'
+            '59be8a818eb71220afe16816c013ae794aae974a351775e7945fc45b22d45586'
+            '9ea3eb1aadfd3200fe923cb4741fbc1983912911e0468521d769673c9648dbab'
+            'b9343921a4896027798597058149b9666f0782eddf8c2436291397ec5631a742')
 
 prepare() {
     # Extract app from installer
