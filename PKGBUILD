@@ -1,7 +1,7 @@
 pkgname=bass-flac
 pkgver=1.2.1
 pkgrel=1
-pkgdesc='Beneath a Steel Sky Enhanced Soundtrack for ScummVM'
+pkgdesc='Beneath a Steel Sky soundtrack for ScummVM'
 arch=(any)
 url=https://www.jameswoodcock.co.uk/product/beneath-a-steel-sky-soundtrack
 license=(custom)
