@@ -1,0 +1,15 @@
+pkgbase = lua-system
+	pkgdesc = Platform independent system calls for Lua.
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = http://olivinelabs.com/luasystem
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = luarocks
+	depends = lua
+	source = https://luarocks.org/luasystem-0.2.1-0.src.rock
+	sha256sums = d1c706d48efc7279d33f5ea123acb4d27e2ee93e364bedbe07f2c9c8d0ad3d24
+
+pkgname = lua-system
+
