@@ -1,8 +1,8 @@
 # Maintainer: grufo <madmurphy333 AT gmail DOT com>
 
 pkgname='nautilus-bluetooth-git'
-_pkgname='nautilus-bluetooth'
-pkgver='r4.bd46d9d'
+_appname='nautilus-bluetooth'
+pkgver='r5.53ac46c'
 pkgrel=1
 pkgdesc="A simple Nautilus extension that adds a \"Send via Bluetooth\" entry to Nautilus' right-click menu"
 arch=('any')
@@ -10,21 +10,21 @@ url="https://github.com/madmurphy/nautilus-bluetooth"
 license=('GPL')
 depends=('glib2' 'libnautilus-extension' 'gnome-bluetooth')
 makedepends=('pkgconf' 'intltool')
-provides=("${_pkgname}")
-conflicts=("${_pkgname}" "${_pkgname}-bin")
-source=("git+https://github.com/madmurphy/${_pkgname}.git")
+provides=("${_appname}")
+conflicts=("${_appname}" "${_appname}-bin")
+source=("git+https://github.com/madmurphy/${_appname}.git")
 sha256sums=('SKIP')
 
 pkgver() {
 
-	cd "${_pkgname}"
+	cd "${_appname}"
 	printf "'r%s.%s'" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 
 }
 
 prepare() {
 
-	cd "${srcdir}/${_pkgname}"
+	cd "${srcdir}/${_appname}"
 	./autogen.sh --noconfigure
 	./configure --prefix=/usr
 
@@ -32,7 +32,7 @@ prepare() {
 
 build() {
 
-	cd "${srcdir}/${_pkgname}"
+	cd "${srcdir}/${_appname}"
 	make
 
 }
@@ -40,14 +40,14 @@ build() {
 
 check() {
 
-	cd "${srcdir}/${_pkgname}"
+	cd "${srcdir}/${_appname}"
 	make check
 
 }
 
 package() {
 
-	cd "${srcdir}/${_pkgname}"
+	cd "${srcdir}/${_appname}"
 	make DESTDIR="${pkgdir}" install
 
 }
