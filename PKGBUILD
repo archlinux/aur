@@ -1,14 +1,14 @@
 # Mantainer: Michele Bovo <mbovo@gmx.com>
 
 pkgname=dosbox-x
-pkgver=0.82.20
-pkgrel=2
+pkgver=0.82.21
+pkgrel=1
 pkgdesc="x86 emulator with builtin DOS, with patches with more features"
 arch=(i686 x86_64)
 url="http://dosbox-x.com"
 license=(GPL)
 depends=(fluidsynth libxkbfile libpng libxrandr mesa ffmpeg)
-makedepends=(git glu)
+makedepends=(glu)
 optdepends=()
 conflicts=(dosbox-x-git)
 source=(https://github.com/joncampbell123/dosbox-x/archive/dosbox-x-v${pkgver}.tar.gz
@@ -29,6 +29,6 @@ package() {
 	"${pkgdir}/usr/share/applications/dosbox-x.desktop"
 }
 
-sha1sums=('74dd41cfb4324593c46388186fb55762c5b1e85a'
+sha1sums=('9d772be915a2f39f8fc3f6a184d8837244f1fb0c'
          'fa54fcde17bc641fb772cdf595771ff6813d2250'
 	 '7501e53de8053900f5871f14afa3abf6cfbc64d7')
