@@ -44,6 +44,8 @@ build() {
   # Electron App
   cd "${srcdir}/${pkgname}-${pkgver}/ElectronClient/app"
 
+  # NOTE: Manually forcing sqlite 4.0.7 for node v12, remove later on
+  npm install sqlite3@4.0.7
   npm install
   rsync -a --delete "${srcdir}/${pkgname}-${pkgver}/ReactNativeClient/lib/" \
     "${srcdir}/${pkgname}-${pkgver}/ElectronClient/app/lib/"
