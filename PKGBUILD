@@ -1,22 +1,25 @@
 # Maintainer: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
 
 pkgname=dnsmorph
-pkgver=1.2.2
+pkgver=1.2.6
 pkgrel=1
 pkgdesc='Domain name permutation engine written in Go'
 arch=('any')
 url='https://github.com/netevert/dnsmorph'
 license=('MIT')
 makedepends=('go')
-source=("https://github.com/netevert/${pkgname}/archive/v.${pkgver}.tar.gz")
-sha256sums=('1b581fe550a95a0ee47f145bed5554f35e9f01f234895eeaa7c789294a1dd743')
+source=("https://github.com/netevert/${pkgname}/archive/v${pkgver}.tar.gz")
+sha256sums=('36ef1e6e4208580475dd0a61c81d3d14e2806e60fa01376ad735b5f236665f6f')
 
 build() {
   export GOPATH="${srcdir}"
   mkdir -p "${srcdir}/src/github.com/netevert"
-  ln -fsT "${srcdir}/${pkgname}-v.${pkgver}" "${srcdir}/src/github.com/netevert/${pkgname}"
+  ln -fsT "${srcdir}/${pkgname}-${pkgver}" "${srcdir}/src/github.com/netevert/${pkgname}"
   cd "${srcdir}/src/github.com/netevert/${pkgname}"
-  go get -v ./...
+  go get \
+   -gcflags "all=-trimpath=${srcdir}/src" \
+   -asmflags "all=-trimpath=${srcdir}/src" \
+   -v ./...
 }
 
 package() {
