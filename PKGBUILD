@@ -3,7 +3,7 @@
 pkgbase=ivre-git
 _pkgname=ivre
 pkgname=('ivre-git' 'ivre-web-git' 'ivre-docs-git' 'python-ivre-git' 'python2-ivre-git')
-pkgver=0.9.13.dev117
+pkgver=0.9.13.dev142
 pkgrel=1
 pkgdesc='Network recon framework based on Nmap, Masscan, Zeek (Bro), Argus, Netflow,...'
 arch=('any')
@@ -114,6 +114,7 @@ package_python-ivre-git() {
               'python-sqlalchemy: experimental PostgreSQL & SQLite backends'
               'python-psycopg2: experimental PostgreSQL backend'
               'python-elasticsearch: experimental Elasticsearch backend'
+              'python-elasticsearch-dsl: experimental Elasticsearch backend'
               'python-pillow: trim screenshots on insertion'
               'tesseract: extract words from screenshots on insertion'
               'python-pycryptodome: extract data from public keys ("ivre getmoduli")'
@@ -144,6 +145,7 @@ package_python2-ivre-git() {
               'python2-sqlalchemy: experimental PostgreSQL & SQLite backends'
               'python2-psycopg2: experimental PostgreSQL backend'
               'python2-elasticsearch: experimental Elasticsearch backend'
+              'python2-elasticsearch-dsl: experimental Elasticsearch backend'
               'python2-pillow: trim screenshots on insertion'
               'tesseract: extract words from screenshots on insertion'
               'python2-pycryptodome: extract data from public keys ("ivre getmoduli")'
