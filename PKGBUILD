@@ -1,14 +1,14 @@
 # Maintainer: Dana Sorensen <dana.r.sorensen@gmail.com>
 
 pkgname=iio-oscilloscope-git
-pkgver=v0.7.r74.11121a9
+pkgver=v0.10.r28.9b9a441
 pkgrel=1
 pkgdesc="A GTK+ based oscilloscope application for interfacing with various IIO devices"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://github.com/analogdevicesinc/iio-oscilloscope"
 license=('GPL2')
-depends=('gtkdatabox' 'libmatio' 'fftw' 'jansson' 'libad9361-iio-git' 'curl')
-makedepends=('git')
+depends=('gtk2' 'gtkdatabox' 'libmatio' 'fftw' 'libxml2' 'bison' 'flex' 'avahi' 'curl' 'jansson' 'libaio' 'ncurses' 'libad9361-iio')
+makedepends=('git' 'cmake')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/analogdevicesinc/iio-oscilloscope.git')
@@ -20,24 +20,18 @@ pkgver() {
 }
 
 prepare() {
-    # remove -Werror flag (don't treat warnings as errors)
-    sed -i 's/-Werror//g' "$srcdir/${pkgname%-git}/Makefile"
-    # don't ldconfig or update xdg caches (pacman does this)
-    sed -i '/ldconfig/s/^/#/' "$srcdir/${pkgname%-git}/Makefile"
-    sed -i '/--noupdate/! s/\(xdg-icon-resource\) \(\(un\)\?install\)/\1 \2 --noupdate/' "$srcdir/${pkgname%-git}/Makefile"
-    sed -i '/--noupdate/! s/\(xdg-desktop-menu\) \(\(un\)\?install\)/\1 \2 --noupdate/' "$srcdir/${pkgname%-git}/Makefile"
     # change config.h prefix to "/usr"
     sed -i 's/\/usr\/local\//\/usr/' "$srcdir/${pkgname%-git}/config.h"
 }
 
 build() {
     cd "$srcdir/${pkgname%-git}"
-    make PREFIX=/usr
+    cmake -DCMAKE_INSTALL_PREFIX=/usr .
+    make
 }
 
 package() {
     cd "$srcdir/${pkgname%-git}"
-    install -d "${pkgdir}"/usr/share/{applications,desktop-directories,icons/hicolor}
-    make DESTDIR="$pkgdir" PREFIX=/usr XDG_DATA_DIRS="$pkgdir/usr/share" install
+    make DESTDIR="$pkgdir/" install
 }
 
