@@ -16,7 +16,7 @@
 
 pkgbase=llvm-minimal-git
 pkgname=('llvm-minimal-git' 'llvm-libs-minimal-git')
-pkgver=10.0.0_r324862.045f33aec9e
+pkgver=10.0.0_r325842.05a3a927514
 pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
@@ -120,8 +120,6 @@ package_llvm-minimal-git() {
     depends=(llvm-libs-minimal-git=$pkgver-$pkgrel  'perl')
     optdepends=('python-setuptools: for using lit (LLVM Integrated Tester)')
     conflicts=('llvm' compiler-rt clang)
-    provides=(llvm=$pkgver-$pkgrel compiler-rt=$pkgver-$pkgrel clang=$pkgver-$pkgrel lone_wolf-llvm-git)
-    replaces=(lone_wolf-llvm-git)
 
     cd _build
     DESTDIR="$pkgdir" ninja $NINJAFLAGS install
@@ -165,8 +163,6 @@ package_llvm-libs-minimal-git() {
   pkgdesc="LLVM runtime libraries"
   depends=('gcc-libs' 'zlib' 'libffi' 'libedit' 'ncurses' 'libxml2')
   optdepends=('llvm-libs: for LLVMgold linker')
-  provides=(lone_wolf-llvm-libs-git=$pkgver-$pkgrel)
-  replaces=(lone_wolf-llvm-libs-git)
 
   install -d "$pkgdir/usr/lib"
   cp -P \
