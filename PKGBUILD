@@ -6,7 +6,7 @@ projectname=skycoin
 pkgdesc="Skycoin Cryptocurrency Wallet"
 pkgver=0.26.0
 pkggopath="github.com/$projectname/$pkgname1"
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="https://${pkggopath}"
 license=()
@@ -60,10 +60,11 @@ build() {
 #esac
 
 ## manually build
+export GOROOT=/usr/lib/go
 export GOPATH="$srcdir"/go
 export GOBIN=${GOPATH}/bin
 export PATH=${GOPATH}/bin:${PATH}
-cd $srcdir/go/src/$pkggopath
+cd $srcdir/go/src/$pkggopath/cmd/
 go install \
   -gcflags "all=-trimpath=${GOPATH}" \
   -asmflags "all=-trimpath=${GOPATH}" \
