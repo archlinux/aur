@@ -1,5 +1,5 @@
 post_install() {
-  echo -n "Thank you for installing my package!"
+  echo -n "Start the HTTP server by executing /usr/bin/ddshttpd."
 }
 
 post_upgrade() {
