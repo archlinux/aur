@@ -1,4 +1,4 @@
-# Maintainer: Ian D. Scott <ian@perebruin.com>
+# Maintainer: Ian Douglas Scott <ian@iandouglasscott.com>
 
 pkgname=rpython
 pkgver=0.1.4
