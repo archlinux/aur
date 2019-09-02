@@ -1,0 +1,9 @@
+post_install() {
+  echo ""
+  echo -e "\e[1;33mNOTE: If using the web-based UI, please configure your settings in /usr/share/dump1090/config.js\e[0m"
+  echo ""
+}
+
+post_upgrade() {
+  post_install
+}

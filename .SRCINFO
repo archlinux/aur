@@ -1,8 +1,9 @@
 pkgbase = dump1090-tomswartz-git
 	pkgdesc = Dump1090 mode S decoder for RTL-SDR devices. Git based tomswartz07 forked version
-	pkgver = 0.r391.0a95347
+	pkgver = 0.r402.b34d8e0
 	pkgrel = 1
-	url = https://github.com/MalcolmRobb/dump1090
+	url = https://github.com/tomswartz07/dump1090
+	install = dump1090.install
 	arch = i686
 	arch = x86_64
 	license = BSD
