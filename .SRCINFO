@@ -2,7 +2,7 @@ pkgbase = sile-git
 	pkgdesc = Modern typesetting system inspired by TeX
 	pkgver = 0.9.5.1.r271.g7e33b81
 	pkgrel = 1
-	url = http://www.sile-typesetter.org/
+	url = http://www.sile-typesetter.org
 	arch = any
 	license = MIT
 	makedepends = git
@@ -14,7 +14,7 @@ pkgbase = sile-git
 	depends = lua-bit32
 	depends = lua-luaepnf
 	depends = lua-lpeg
-	depends = lua-cassowary
+	depends = lua-cassowary>=2.1
 	depends = lua-linenoise
 	depends = lua-zlib
 	depends = lua-cliargs
