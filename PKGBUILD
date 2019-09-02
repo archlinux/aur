@@ -1,24 +1,19 @@
 # Maintainer: Jean Lucas <jean@4ray.co>
 
 pkgname=monolith
-pkgver=2.0.1+r18+gcc09c2b
-_commit=cc09c2ba0135e0618aa7eaefcffb8dbdc41421f3
+pkgver=2.0.16
+_commit=02b717ae54b0974ec0181c797214f3c176e9c0e8 # Upstream does not tag releases - cherry-pick has release version in commit message
 pkgrel=1
 pkgdesc='CLI to save web pages as single HTML files'
 arch=(i686 x86_64)
 url=https://github.com/Y2Z/monolith
 license=(custom)
 depends=(openssl)
-makedepends=(git cargo)
+makedepends=(cargo)
 provides=(monolith)
 conflicts=(monolith)
-source=(git+$url)
-sha512sums=('SKIP')
-
-pkgver() {
-  cd $pkgname
-  echo $(grep '^version =' Cargo.toml | head -n1 | cut -d\" -f2 | sed s/-/+/)+r$(git rev-list --count HEAD)+g$(git describe --always)
-}
+source=($pkgname-$pkgver.tar.gz::$url/archive/$_commit.tar.gz)
+sha512sums=('48d9e09a0e9a42a9c0e22c36c42fc06f8c84179a0bc353b101cd72102fb3cc0874f5ae89604056255c9d537d747fca80b1ad8f40eab4bb67d882755225a04938')
 
 build() {
   cd $pkgname
