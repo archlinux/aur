@@ -1,0 +1,14 @@
+pkgbase = duetwebcontrol-bin
+	pkgdesc = Official web interface for Duet electronics
+	pkgver = 2.0.0.RC8.b3
+	pkgrel = 1
+	url = https://github.com/chrishamm/DuetWebControl
+	arch = any
+	license = GPL3
+	provides = duetwebcontrol
+	conflicts = duetwebcontrol
+	source = https://pkg.duet3d.com/dists/stable/armv7/binary-armhf/duetwebcontrol_2.0.0-3.deb
+	sha256sums = ed69bc775046f07ff03ea5050d1eff19b7076ad5d2d3e4df673568836d20ffbe
+
+pkgname = duetwebcontrol-bin
+
