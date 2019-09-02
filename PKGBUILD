@@ -42,7 +42,8 @@ source=(git://git.sagemath.org/sage.git#branch=develop
         sagemath-singular-4.1.2.patch
         sagemath-ecl-sigfpe.patch
         sagemath-ipython7.patch
-        sagemath-python3.patch)
+        sagemath-python3.patch
+        sagemath-networkx-2.3.patch)
 sha256sums=('SKIP'
             '328e45e78065b5f6527174bda48cfff6828acbf107c2535b0a9a92c3ceb35842'
             '1a82372a96ffd5e6d475b0e620935967ce5eb9b4484607d39da90824a77b07c4'
@@ -52,7 +53,8 @@ sha256sums=('SKIP'
             '961bfb5694b67d425d21240d71490cb71714b5207c23448c89be0966512ff8f9'
             'a42f3b152b1aedb8abf16bc70971419919d1fe30328574e7fef8305f9d07d938'
             'b7fe63d06b7a3ebf0d752c31e23dfffe629745be5a4d515a9eebff890e64450b'
-            'efece94492aa6925cbc07557c4d20f914d7b56ea8f2f1601d1a968cc02367bc9')
+            'efece94492aa6925cbc07557c4d20f914d7b56ea8f2f1601d1a968cc02367bc9'
+            '332663d3546171a5088dbca9503559596a7fa2a55f5476b4d99de4c443f8a18d')
 
 pkgver() {
   cd sage
@@ -73,6 +75,8 @@ prepare(){
   patch -p1 -i ../sagemath-ipython7.patch
 # Additional python3 fixes
   patch -p1 -i ../sagemath-python3.patch
+# Adapt to networkx 2.3 changes
+  patch -p1 -i ../sagemath-networkx-2.3.patch
 
 # Upstream patches  
 # fix build against libfes 0.2 http://trac.sagemath.org/ticket/15209

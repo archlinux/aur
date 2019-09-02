@@ -104,6 +104,7 @@ pkgbase = sagemath-python3-git
 	source = sagemath-ecl-sigfpe.patch
 	source = sagemath-ipython7.patch
 	source = sagemath-python3.patch
+	source = sagemath-networkx-2.3.patch
 	sha256sums = SKIP
 	sha256sums = 328e45e78065b5f6527174bda48cfff6828acbf107c2535b0a9a92c3ceb35842
 	sha256sums = 1a82372a96ffd5e6d475b0e620935967ce5eb9b4484607d39da90824a77b07c4
