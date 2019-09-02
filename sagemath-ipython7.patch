@@ -199,3 +199,80 @@ index 21d21afd3d..0c58dd1d26 100644
  
  class SageJupyterCustomizations(SageCustomizations):
      @staticmethod
+diff --git a/src/sage/rings/qqbar.py b/src/sage/rings/qqbar.py
+index 0dc5e1f4cc..afb3396755 100644
+--- a/src/sage/rings/qqbar.py
++++ b/src/sage/rings/qqbar.py
+@@ -7732,13 +7732,13 @@ class ANBinaryExpr(ANDescr):
+         decrease it before we return::
+ 
+             sage: import sys; sys.getrecursionlimit()
+-            1000
++            3000
+             sage: s = SymmetricFunctions(QQ).schur()
+             sage: a=s([3,2]).expand(8)(flatten([[QQbar.zeta(3)^d for d in range(3)], [QQbar.zeta(5)^d for d in range(5)]]))
+             sage: a.exactify(); a # long time
+             0
+             sage: sys.getrecursionlimit()
+-            1000
++            3000
+ 
+         """
+         import sys
+diff --git a/src/sage/repl/interface_magic.py b/src/sage/repl/interface_magic.py
+index a2b9988315..15da4c0bab 100644
+--- a/src/sage/repl/interface_magic.py
++++ b/src/sage/repl/interface_magic.py
+@@ -260,7 +260,7 @@ class InterfaceMagic(object):
+             2
+             120
+             sage: shell.run_cell('%%gap foo\n1+1;\n')
+-            File "<string>", line unknown
++            ...File "<string>", line unknown
+             SyntaxError: Interface magics have no options, got "foo"
+             <BLANKLINE>
+             sage: shell.run_cell('%%gap?')
+diff --git a/src/sage/repl/ipython_tests.py b/src/sage/repl/ipython_tests.py
+index d342ba7fac..ab9504337e 100644
+--- a/src/sage/repl/ipython_tests.py
++++ b/src/sage/repl/ipython_tests.py
+@@ -42,6 +42,7 @@ Next, test the pinfo magic for Cython code::
+     Init docstring: ...ee help(type(...)) for...signature...
+     File:           .../sage/tests/stl_vector.pyx
+     Type:           type
++    ...
+ 
+ Next, test the ``pinfo`` magic for ``R`` interface code, see :trac:`26906`::
+ 
+@@ -67,6 +68,7 @@ calls when you ask for the double-questionmark help, like `foo??` ::
+     sage: shell.run_cell(u'from sage.repl.ipython_tests import dummy')
+     sage: shell.run_cell(u'%pinfo2 dummy')
+     Signature: dummy(argument, optional=None)
++    ...
+     Source:
+     def dummy(argument, optional=None):
+         """
+@@ -116,6 +118,7 @@ Next, test the pinfo2 magic for Cython code::
+     ...
+     File:   .../sage/tests/stl_vector.pyx
+     Type:   type
++    ...
+ 
+ Next, test the ``pinfo2`` magic for ``R`` interface code, see :trac:`26906`::
+ 
+diff --git a/src/sage/repl/display/formatter.py b/src/sage/repl/display/formatter.py
+index 5ffdb3d374..0d28873e2a 100644
+--- a/src/sage/repl/display/formatter.py
++++ b/src/sage/repl/display/formatter.py
+@@ -173,8 +173,8 @@ class SageDisplayFormatter(DisplayFormatter):
+             sage: shell.run_cell('ipython_image')
+             <IPython.core.display.Image object>
+             sage: shell.run_cell('get_ipython().display_formatter.format(ipython_image)')
+-            ({u'image/png': ...'\x89PNG...',
+-              u'text/plain': u'<IPython.core.display.Image object>'},
++            ({'image/png': ...',
++              'text/plain': '<IPython.core.display.Image object>'},
+             {})
+ 
+         Test that IPython images still work even in latex output mode::
+
