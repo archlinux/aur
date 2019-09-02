@@ -20,7 +20,7 @@ source=(prime
 		zsh_prime
 		bash_prime)
 md5sums=('38b57e5495ec64786f0b80084b58d471'
-         '4836492ea9eae9f2a9ee2509c0be27ef'
+         'f74097bd14e4a71b9b47f6cbd03eedf4'
          '84d31e7be165f77f6c58fe638b4670cb'
          'bbc3d71244a5fc5d4d6caeea941ff91f'
          '6597766f7fb79d6d030fbbe20f06e7f0')
