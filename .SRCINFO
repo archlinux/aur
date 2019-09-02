@@ -1,0 +1,13 @@
+pkgbase = bibisco
+	pkgdesc = Novel writing software. Community Edition.
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://www.bibisco.com/
+	arch = x86_64
+	license = GPL3
+	depends = npm
+	source = git+https://github.com/andreafeccomandi/bibisco
+	md5sums = SKIP
+
+pkgname = bibisco
+
