@@ -2,7 +2,7 @@
 
 pkgname=namecoin-core
 pkgver=0.18.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Namecoin Core headless P2P node"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://namecoin.org"
@@ -23,6 +23,7 @@ source=(${pkgname%-core}-$pkgver.tar.gz::https://github.com/namecoin/namecoin-co
         namecoin.conf
         namecoin.logrotate
         namecoin.service
+        namecoin.tmpfiles.conf
         namecoin-reindex.service)
 backup=('etc/namecoin/namecoin.conf'
         'etc/logrotate.d/namecoin')
@@ -84,6 +85,9 @@ package() {
   msg2 'Installing namecoin.logrotate...'
   install -Dm 644 "$srcdir/namecoin.logrotate" "$pkgdir/etc/logrotate.d/namecoin"
 
+  msg2 'Installing namecoin.tmpfiles.conf...'
+  install -Dm 644 "$srcdir/namecoin.tmpfiles.conf" "$pkgdir/usr/lib/tmpfiles.d/namecoin.conf"
+
   msg2 'Cleaning up pkgdir...'
   find "$pkgdir" -type f -name .gitignore -exec rm -r '{}' +
 }
@@ -91,5 +95,6 @@ package() {
 sha256sums=('7117a0a0b8f48d49e4abf3577660f8a4eb9a4dea753281d19d9470725fc75d8e'
             '97e7b8e5d402eef231e20b62436d830a955c87f389b20ea663bf5a6b8f7b0ff7'
             'ea48c1dda89c153ea526f07ffa2c46a6813f5075003d5a4098c3675aacb55673'
-            'fefaa5a9c31392d9bb9d0bb6fa06a1dc11852b695ab2092a1e259f27a025560c'
+            '9ce8f53b5c791eb0c9fe930bd483d23228c2e6ee2ccee9a70af53af4615abfa1'
+            'afdcd0dfd06d549c09fbaef77bd9bfc673dc3bc2c9387eda4b4c0ae15a95594b'
             '98ac6d450e2c35e9ed4923c26a013c24165719c61f54d056511dd92061a4da5c')
