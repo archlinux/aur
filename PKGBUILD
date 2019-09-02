@@ -1,7 +1,7 @@
 # Maintainer: dracorp aka Piotr Rogoza <piotr.r.public at gmail.com>
 
 pkgname=kimageannotator-git
-pkgver=r310.50f068a
+pkgver=r397.8d21122
 pkgrel=1
 pkgdesc='Tool for annotating images'
 arch=('i686' 'x86_64')
@@ -50,6 +50,5 @@ package(){
   cd "$srcdir"/$_gitname/build
   make DESTDIR="$pkgdir" install
   cd "$pkgdir"/usr
-  mv lib64 lib
 }
 
