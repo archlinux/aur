@@ -1,0 +1,17 @@
+pkgbase = coda-bits-git
+	pkgdesc = Bits & pieces of information about CODA VPUs
+	pkgver = r6.5840a95
+	pkgrel = 1
+	url = https://github.com/pH5/coda-bits
+	arch = x86_64
+	license = ISC
+	makedepends = git
+	makedepends = meson
+	depends = glibc
+	source = coda-bits::git+https://github.com/pH5/coda-bits.git
+	source = 000-packaging.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = coda-bits-git
+
