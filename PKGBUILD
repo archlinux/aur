@@ -65,7 +65,7 @@ package() {
   install -m755 joplin-desktop.sh "${pkgdir}/usr/bin/joplin-desktop"
   install -m755 joplin.sh "${pkgdir}/usr/bin/joplin"
 
-  install -Dm644 ../joplin.desktop ${pkgdir}/usr/share/applications/joplin.desktop
+  install -Dm644 joplin.desktop "${pkgdir}/usr/share/applications/joplin.desktop"
   install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
