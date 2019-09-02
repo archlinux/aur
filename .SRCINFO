@@ -1,6 +1,6 @@
 pkgbase = signal-desktop-beta-bin
 	pkgdesc = Private messaging from your desktop
-	pkgver = 1.27.1beta.6
+	pkgver = 1.27.1beta.7
 	pkgrel = 1
 	url = https://github.com/WhisperSystems/Signal-Desktop#readme
 	install = signal-desktop-beta-bin.install
@@ -16,8 +16,8 @@ pkgbase = signal-desktop-beta-bin
 	provides = signal-desktop
 	options = !strip
 	options = !emptydirs
-	source = https://updates.signal.org/desktop/apt/pool/main/s/signal-desktop-beta/signal-desktop-beta_1.27.1-beta.6_amd64.deb
-	sha256sums = e4afff9b310a5b19d568d4fda933bacf781b1acc4e413b881b0ccab2b1c96e47
+	source = https://updates.signal.org/desktop/apt/pool/main/s/signal-desktop-beta/signal-desktop-beta_1.27.1-beta.7_amd64.deb
+	sha256sums = b94e7bf0b60c1fa8c10b91641d0c2fa18ba985c52937db55eb4834c294a586a7
 
 pkgname = signal-desktop-beta-bin
 
