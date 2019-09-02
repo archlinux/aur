@@ -3,7 +3,7 @@
 # Maintainer: Adrià Cereto i Massagué <ssorgatem at gmail.com>
 
 pkgname=amdvlk-git
-pkgver=v.2019.Q3.2.r0.4f7b640
+pkgver=v.v.2019.Q3.5.r1.a14d42d
 pkgrel=1
 pkgdesc="AMD's standalone Vulkan driver"
 arch=(x86_64)
@@ -35,9 +35,6 @@ prepare() {
   cd "$srcdir"
   repo init -u 'https://github.com/GPUOpen-Drivers/AMDVLK.git' -b master
   repo sync
-  if [ ! -e ./drivers/wsa ]; then
-    ln -rs ./wsa ./drivers/wsa
-  fi
   # fix building with commit f609020
   # sed -i "s/<drm/<libdrm/g" pal/src/core/os/lnx/display/displayWindowSystem.h
   # pushd "$srcdir/pal"
@@ -48,7 +45,7 @@ prepare() {
   # popd
 
   # Don't turn Werror on for people will build with more recent compilers than you have. Just don't.
-  for i in drivers/xgl/icd/CMakeLists.txt drivers/llpc/CMakeLists.txt drivers/llpc/imported/metrohash/CMakeLists.txt drivers/llvm/utils/benchmark/CMakeLists.txt drivers/llvm/utils/benchmark/test/CMakeLists.txt drivers/pal/src/core/imported/addrlib/CMakeLists.txt drivers/pal/src/core/imported/vam/CMakeLists.txt drivers/pal/shared/gpuopen/cmake/AMD.cmake
+  for i in drivers/pal/shared/gpuopen/cmake/AMD.cmake
   do
     sed -i "s/-Werror//g" "$srcdir"/$i
   done
@@ -58,17 +55,17 @@ prepare() {
 
 build() {
   # /usr/lib/amdvlk64.so: undefined symbol: _ZN3Pal5Linux19DisplayWindowSystem30DeterminePresentationSupportedEPNS0_6DeviceEPvl
-  msg "Changing flags..."
-  msg2 "before: CFLAGS=$CFLAGS"
+  # msg "Changing flags..."
+  # msg2 "before: CFLAGS=$CFLAGS"
   export CFLAGS=${CFLAGS/-fno-plt}
-  msg2 "after: CFLAGS=$CFLAGS"
-  msg2 "before: CXXFLAGS=$CXXFLAGS"
+  # msg2 "after: CFLAGS=$CFLAGS"
+  # msg2 "before: CXXFLAGS=$CXXFLAGS"
   export CXXFLAGS="${CXXFLAGS/-fno-plt}"
-  msg2 "after: CXXFLAGS=${CXXFLAGS}"
-  msg2 "before: LDFLAGS=$LDFLAGS"
+  # msg2 "after: CXXFLAGS=${CXXFLAGS}"
+  # msg2 "before: LDFLAGS=$LDFLAGS"
   export LDFLAGS=${LDFLAGS/,-z,now}
-  msg2 "after: LDFLAGS=${LDFLAGS}"
-  export CPPFLAGS="$CXXFLAGS"
+  # msg2 "after: LDFLAGS=${LDFLAGS}"
+  # export CPPFLAGS="$CXXFLAGS"
 
   msg "building xgl..."
   pushd drivers/xgl > /dev/null
@@ -77,8 +74,7 @@ build() {
     -H. \
     -B builds/Release64 \
     -DBUILD_WAYLAND_SUPPORT=On \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DBUILD_XLIB_XRANDR_SUPPORT=On
+    -DCMAKE_BUILD_TYPE=Release
 
   cd builds/Release64
   ninja
