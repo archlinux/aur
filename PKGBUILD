@@ -1,7 +1,7 @@
 # Maintainer: Flaviu Tamas <me@flaviutamas.com>
 pkgname=nushell-git
-pkgver=r702.cd1e16d
-pkgrel=4
+pkgver=r946.4a00887
+pkgrel=5
 makedepends=('rust-nightly' 'cargo')
 depends=('openssl' 'zlib')
 optdepends=('libxcb' 'libx11')
@@ -29,6 +29,6 @@ package() {
     cd "$srcdir/$pkgname"
     # user may not be using rustup, so always succeed
     rustup override set nightly || true
-    cargo install --root="$pkgdir/usr" --path=. --locked
+    cargo install --root="$pkgdir/usr" --path=. --locked --features raw-key,clipboard
     rm "$pkgdir/usr/.crates.toml"
 }
