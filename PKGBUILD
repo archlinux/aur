@@ -2,7 +2,7 @@
 # Special thanks to RyanTheAllmighty for making hyper-appimage
 pkgname="gdlauncher-appimage"
 pkgver="v0.11.15"
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 pkgdesc="Modded Minecraft launcher built with Electron/React"
 url="https://gdevs.io"
@@ -12,6 +12,14 @@ depends=('libnotify' 'libxss' 'libxtst' 'gconf' 'libindicator' 'libappindicator'
 
 source_x86_64=(
     "GDLauncher-linux-setup.AppImage::https://github.com/gorilla-devs/GDLauncher/releases/download/${pkgver}/GDLauncher-linux-setup.AppImage"
+)
+
+md5sums_x86_64=(
+    "229c980bd01c27826ca61e9f4bcf3004"
+)
+
+source=(
+    "gdlauncher.desktop"
 )
 
 prepare() {

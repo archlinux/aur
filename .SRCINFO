@@ -1,7 +1,7 @@
 pkgbase = gdlauncher-appimage
 	pkgdesc = Modded Minecraft launcher built with Electron/React
 	pkgver = v0.11.15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gdevs.io
 	install = gdlauncher-appimage.install
 	arch = x86_64
@@ -12,7 +12,9 @@ pkgbase = gdlauncher-appimage
 	depends = gconf
 	depends = libindicator
 	depends = libappindicator
+	source = gdlauncher.desktop
 	source_x86_64 = GDLauncher-linux-setup.AppImage::https://github.com/gorilla-devs/GDLauncher/releases/download/v0.11.15/GDLauncher-linux-setup.AppImage
+	md5sums_x86_64 = 229c980bd01c27826ca61e9f4bcf3004
 
 pkgname = gdlauncher-appimage
 
