@@ -1,0 +1,14 @@
+diff --git a/src/gallium/state_trackers/clover/llvm/invocation.cpp 
+b/src/gallium/state_trackers/clover/llvm/invocation.cpp
+index 0a677ce2eaa..0ce3e970303 100644
+--- a/src/gallium/state_trackers/clover/llvm/invocation.cpp
++++ b/src/gallium/state_trackers/clover/llvm/invocation.cpp
+@@ -200,7 +200,7 @@ namespace {
+       const std::string &device_clc_version = dev.device_clc_version();
+
+       if (!clang::CompilerInvocation::CreateFromArgs(
+-             c->getInvocation(), copts.data(), copts.data() + copts.size(), diag))
++             c->getInvocation(), copts, diag))
+          throw invalid_build_options_error();
+
+       diag_buffer->FlushDiagnostics(diag);
