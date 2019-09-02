@@ -2,7 +2,7 @@
 pkgdesc="XDE .desktop entry helpers"
 pkgname=xde-helpers-git
 _pkgname=xde-helpers
-pkgver=1.4.3
+pkgver=1.5
 pkgrel=1
 arch=('any')
 license=('GPL')
@@ -28,8 +28,8 @@ prepare() {
 
 build() {
  cd $pkgname
- ./configure --prefix=/usr --sysconfdir=/etc
- make V=0
+ ./configure --sysconfdir=/etc
+ make
 }
 
 package() {
