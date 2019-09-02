@@ -1,7 +1,7 @@
 # Maintainer: Manuel Coenen <manuel.coenen@gmail.com>
 pkgname=rfm
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Command-line interface to perform file management on RepRapFirmware based devices."
 arch=('any')
 makedepends=('go')
