@@ -1,16 +1,16 @@
---- makefile	2019-03-29 00:31:30.876920063 +0300
-+++ makefile.new	2019-03-29 00:29:17.804365698 +0300
-@@ -34,11 +34,11 @@
+--- makefile	2019-09-02 19:31:17.384033567 +0300
++++ makefile.new	2019-09-02 19:35:01.201051582 +0300
+@@ -42,11 +42,11 @@
  CDEBUG      = -DMNO_MEM_DEBUG
  CWARN       = -Wall -Wextra -Wwrite-strings -Wstrict-prototypes
  
--CFLAGS      = $(CWARN) $(COS) $(CDEBUG) -O2 -g -pg -std=c99 -I$(PLUGINDIR)/include -I$(PLUGINDIR)/$(ARCH)/molfile #$(CGSL)
-+CFLAGS      = $(CWARN) $(COS) $(CDEBUG) -O2 -g -pg -std=c99 -I$(PLUGINDIR)/include -I/usr/include/vmd-molfile-plugins/ #$(CGSL)
+-CFLAGS      = $(CWARN) $(COS) $(CDEBUG) -O2 -g -pg -std=c99 -I$(PLUGINDIR)/include -I$(PLUGINDIR)/$(ARCH)/molfile
++CFLAGS      = $(CWARN) $(COS) $(CDEBUG) -O2 -g -pg -std=c99 -I$(PLUGINDIR)/include -I/usr/include/vmd-molfile-plugins
  QCFLAGS     = -O -g -pg -ansi
  
  LGSL        = -L$(PATH_GSL)lib -lgsl -lgslcblas 
--LFLAGS	    = -lm -L$(PLUGINDIR)/$(ARCH)/molfile $(PLUGINDIR)/$(ARCH)/molfile/libmolfile_plugin.a -lnetcdf -lstdc++
-+LFLAGS	    = -lm -L/usr/lib/vmd-molfile-plugins /usr/lib/vmd-molfile-plugins/libmolfile_plugin.a -lnetcdf -lstdc++
+-LFLAGS	    = -lm -L$(PLUGINDIR)/$(ARCH)/molfile $(PLUGINDIR)/$(ARCH)/molfile/libmolfile_plugin.a -lstdc++
++LFLAGS	    = -lm -L/usr/lib/vmd-molfile-plugins /usr/lib/vmd-molfile-plugins/libmolfile_plugin.a -lstdc++
+ NETCDFFLAGS	= -lnetcdf
+ 
  #
- #------------------------------------------------------------
- # BINARIES OBJECTS 

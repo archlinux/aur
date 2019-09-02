@@ -1,6 +1,6 @@
 pkgbase = fpocket-git
 	pkgdesc = Fpocket is a very fast open source protein pocket detection algorithm based on Voronoi tessellation
-	pkgver = r84.d9012c1
+	pkgver = r93.c530900
 	pkgrel = 1
 	url = https://github.com/Discngine/fpocket
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = fpocket-git
 	source = fpocket-git::git+https://github.com/Discngine/fpocket.git
 	source = fpocket.patch
 	sha1sums = SKIP
-	sha1sums = 9e2ec2ad73e0951446d3521335fc90cda12ebf8b
+	sha1sums = b6a1d7dc414c0a66fca8eeb55cb6f432c589f3b8
 
 pkgname = fpocket-git
 

@@ -1,6 +1,6 @@
 # Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 pkgname=fpocket-git
-pkgver=r84.d9012c1
+pkgver=r93.c530900
 pkgrel=1
 pkgdesc="Fpocket is a very fast open source protein pocket detection algorithm based on Voronoi tessellation"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ makedepends=('git' 'patch' 'gcc')
 source=("$pkgname::git+https://github.com/Discngine/fpocket.git"
         "fpocket.patch")
 sha1sums=('SKIP'
-          '9e2ec2ad73e0951446d3521335fc90cda12ebf8b')
+          'b6a1d7dc414c0a66fca8eeb55cb6f432c589f3b8')
 
 pkgver() {
   cd "${pkgname}"
