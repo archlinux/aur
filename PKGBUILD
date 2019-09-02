@@ -11,7 +11,7 @@ _pkgvermajor=3
 _pkgverminor=8
 _pkgverpatch=0
 pkgver="${_pkgvermajor}.${_pkgverminor}.${_pkgverpatch}"
-pkgrel=1
+pkgrel=2
 
 # Generic
 pkgdesc="The opensource modeling environment"
@@ -37,12 +37,13 @@ optdepends=('atk' 'gtk2' 'cairo')
 #install=modelio
 
 # Sources
-source=("modelio.desktop")
+source=("modelio.desktop" "modelio.patch")
 source_i686=("modelio-${pkgver}-i686.deb::https://sourceforge.net/projects/modeliouml/files/${pkgver}/modelio-open-source${_pkgvermajor}.${_pkgverminor}_${pkgver}_i386.deb/download")
 source_x86_64=("modelio-${pkgver}-x86_64.deb::https://sourceforge.net/projects/modeliouml/files/${pkgver}/modelio-open-source${_pkgvermajor}.${_pkgverminor}_${pkgver}_amd64.deb/download")
 #noextract=()
 #validpgpkeys=()
-sha256sums=('af7e10bb2849fb9cdb2ec0054d782dedd5c6901cbf3e742d1ab872447ae38b5c')
+sha256sums=('af7e10bb2849fb9cdb2ec0054d782dedd5c6901cbf3e742d1ab872447ae38b5c'
+            'e09657ab1f0abd7d780c6b7df2ae56972cefe3d28c16e4a4e72f2ba68a889f0f')
 sha256sums_i686=('8cdc9b094807c509d943bcd1b88bbc3c5862c425799f19f05f796446447f3185')
 sha256sums_x86_64=('4d3252c0f611172c94d322cfa3e3257bb21adc9c2278f1e411bbbde0b5d21ded')
 
@@ -51,6 +52,8 @@ sha256sums_x86_64=('4d3252c0f611172c94d322cfa3e3257bb21adc9c2278f1e411bbbde0b5d2
 
 prepare() {
     ar p modelio-${pkgver}-${CARCH}.deb data.tar.xz | tar xJ
+    cd "${srcdir}/usr/lib/modelio-open-source${_pkgvermajor}.${_pkgverminor}"
+    patch --input=${srcdir}/modelio.patch modelio.sh
 }
 
 #build() {
