@@ -2,32 +2,25 @@
 # Original Maintainer: Daniel Nagy <danielnagy at gmx de>
 
 pkgname=nsq
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="A realtime distributed messaging platform"
 arch=( 'i686' 'x86_64' )
 url="http://nsq.io/"
-makedepends=( "git" "go" "dep" )
+makedepends=( "go" "git" )
 license=('MIT')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/bitly/nsq/archive/v$pkgver.tar.gz")
-sha256sums=('85cb15cc9a7b50e779bc8e76309cff9bf555b2f925c2c8abe81d28d690fb1940')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/nsqio/nsq/archive/v$pkgver.tar.gz")
+sha256sums=('98e24d748550f01dd8775e5e40f3ae657f5b513f875a15081cdcdc567b745480')
 options=( '!strip' )
 
-
 build() {
-  cd "$srcdir"
-  export GOPATH=$PWD/go
-  NSQIO=$GOPATH/src/github.com/nsqio
+  cd "$srcdir/$pkgname-$pkgver"
 
-  mkdir -p        "$NSQIO"
-  mv nsq-$pkgver  "$NSQIO/nsq"
-  cd              "$NSQIO/nsq"
-  dep ensure
-  make GOFLAGS="-ldflags=-w"
+  GO111MODULE=on make BLDFLAGS="-ldflags='-s -w'"
 }
 
 package() {
-  cd "$srcdir/go/src/github.com/nsqio/nsq"
+  cd "$srcdir/$pkgname-$pkgver"
   make PREFIX=/usr DESTDIR=$pkgdir install
   install -D -m644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
