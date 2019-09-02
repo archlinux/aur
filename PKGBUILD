@@ -2,7 +2,7 @@
 # Contributor: drakkan <nicola.murino at gmail dot com>
 pkgname=sftpgo-git
 _pkgname=sftpgo
-pkgver=r94.4a1b674
+pkgver=r95.dc5eeb5
 pkgrel=1
 pkgdesc='Full featured and highly configurable SFTP server'
 arch=('i686' 'x86_64')
@@ -15,6 +15,8 @@ optdepends=(
   "postgresql: to use PostgreSQL provider"
   "mariadb: to use MySQL provider"
 )
+conflicts=('sftpgo')
+provides=('sftpgo')
 backup=("etc/${_pkgname}/sftpgo.json")
 install=${pkgname}.install
 
