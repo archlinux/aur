@@ -35,10 +35,10 @@ build() {
     "${srcdir}/${pkgname}-${pkgver}/CliClient/build/"
   rsync -a --delete "${srcdir}/${pkgname}-${pkgver}/ReactNativeClient/lib/" \
     "${srcdir}/${pkgname}-${pkgver}/CliClient/build/lib"
-  cp "package.json" "${srcdir}/${pkgname}-${pkgver}/CliClient/build"
-  cp "package-lock.json" "${srcdir}/${pkgname}-${pkgver}/CliClient/build"
 
   cd "${srcdir}/${pkgname}-${pkgver}/CliClient/build/"
+  # NOTE: Manually forcing sqlite 4.0.7 for node v12, remove later on
+  npm install sqlite3@4.0.7
   npm install
 
   # Electron App
