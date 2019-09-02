@@ -5,31 +5,28 @@
 # Contributor: Jan Kohnert <kohni.jk at gmail dot com>
 
 pkgname=python2-gdl
-pkgver=0.9.8
-pkgrel=2
+pkgver=0.9.9
+pkgrel=1
 pkgdesc="Python interface for the GNU Data Language(GDL)"
 arch=('i686' 'x86_64')
 url="http://gnudatalanguage.sourceforge.net/"
 license=('GPL')
 depends=("gnudatalanguage=${pkgver}")
 makedepends=('cmake')
-options=('!makeflags')
-source=("http://downloads.sourceforge.net/gnudatalanguage/gdl-${pkgver}.tgz"
-        'gdl-tirpc.patch'
-        'gdl-updates.patch'
+#options=('!makeflags')
+source=("https://github.com/gnudatalanguage/gdl/archive/v${pkgver}.tar.gz"
+#       'gdl-tirpc.patch'
+#       'gdl-updates.patch'
 #       'gdl-python3.patch'
         'gdl.profile')
-md5sums=('451532f1263bbaa8745a4ca8978533c0'
-         'cad6430a812e906ee7f1e15b4589dcac'
-         '0bd883f33312fbe1e5bda5b03d280aa5'
-#        '9f85693d9fc9e838cba1fe03ae45f7cb'
+md5sums=('749dc9b6dd0b9a5385ffe83e7b1a6f46'
          '40aa5fd8278cd8e80425c62a577563cc')
 
 prepare() {
     cd ${srcdir}/gdl-${pkgver}
 
-    patch -p1 < ../gdl-tirpc.patch
-    patch -p1 < ../gdl-updates.patch
+#   patch -p1 < ../gdl-tirpc.patch
+#   patch -p1 < ../gdl-updates.patch
 #   patch -Np1 -i "${srcdir}/gdl-python3.patch"
 }
 
@@ -40,9 +37,9 @@ build() {
     fi
     mkdir build
     cd build
-    cmake -DCMAKE_INSTALL_PREFIX=/usr -DPYTHON=YES -DPYTHONVERSION=2.7 \
+    cmake -DCMAKE_INSTALL_PREFIX=/usr -DPYTHON=YES -DPYTHONVERSION=2 \
         -DPYTHON_EXECUTABLE=/usr/bin/python2.7 -DPYTHON_MODULE=ON \
-        -DGRAPHICSMAGICK=ON -DMAGICK=OFF -DFFTW=ON -DHDF=ON -DHDFDIR=/opt/hdf4 \
+        -DGRAPHICSMAGICK=OFF -DMAGICK=ON -DFFTW=ON -DHDF=ON -DHDFDIR=/opt/hdf4 \
         -DHDF5=ON -DGRIB=ON -DUDUNITS=ON ..
 
     make
