@@ -1,10 +1,11 @@
-# Maintainer: Jean Lucas <jean@4ray.co>
+# Maintainer: Alexander Fasching <fasching.a91@gmail.com>
+# Contributor: Jean Lucas <jean@4ray.co>
 
 pkgname=python-projectq
-pkgver=0.4
-pkgrel=2
+pkgver=0.4.2
+pkgrel=1
 pkgdesc='Open-source framework for quantum computing'
-arch=(any)
+arch=('i686' 'x86_64')
 url=https://projectq.ch
 license=(Apache)
 depends=(python
@@ -15,9 +16,9 @@ depends=(python
          python-requests
          python-scipy
          python-networkx)
-makedepends=(python-setuptools python-sphinx)
+makedepends=(python-setuptools python-sphinx python-sphinx_rtd_theme)
 source=(https://github.com/ProjectQ-Framework/ProjectQ/archive/v$pkgver.tar.gz)
-sha512sums=(8858d2f3d3ca38a4ea6a1e244ce5841708169fbb77c57d3778d868b94128a529cdff188add45ac5999d91e5a2a508917aa592619c54f992c910217fc050fed6e)
+sha512sums=('ed4364d6e350576f4054f16005d5267a048257586a02ddbe7cd8e4958b755e57842e2c76e0fa0ab53b2d897501f52c13f8a97cd920ecfdc7c2fea28bdf90ff0b')
 
 build() {
   cd ProjectQ-$pkgver/docs
