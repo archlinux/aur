@@ -12,6 +12,7 @@ pkgbase = freetuxtv
 	depends = sqlite
 	depends = curl
 	depends = libnotify
+	depends = dbus-glib
 	conflicts = freetuxtv-svn
 	source = https://github.com/freetuxtv/freetuxtv/releases/download/freetuxtv-0.6.8/freetuxtv-0.6.8.tar.gz
 	sha1sums = 9160ae0061bb97834c736b61af8936bf9eb900fc
