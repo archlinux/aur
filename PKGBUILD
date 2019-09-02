@@ -1,25 +1,29 @@
 # Maintainer: Hans-Nikolai Viessmann <hans AT viess.mn>
 # Contributors: SaC Development Team <info AT sac-home.org>
 
-pkgname=sac-compiler-weekly
+pkgname=sac-compiler-weekly-basic
 _version=1.3.3
-_changes=352
+_rev=1
+_changes=390
 _name=MijasCosta
-_commit=g727db
+_commit=g4d66b
 pkgver="${_version}.${_changes}"
 pkgrel=1
-pkgdesc='Provides the compiler (sac2c) of the Single-Assignment C programming language (weekly build)'
+pkgdesc='The compiler (sac2c) of the Single-Assignment C programming language (weekly build)'
 arch=('x86_64')
 url='http://www.sac-home.org/'
 license=('custom:SAC')
-depends=('gcc' 'hwloc' 'libutil-linux' 'cuda')
-optdepends=('sac-stdlib-weekly: StdLib for the SaC Compiler')
+depends=('gcc' 'hwloc')
+optdepends=('sac-stdlib-weekly-basic: StdLib for the SaC Compiler basic-release')
 #makedepends=('python' 'python-argparse') # XXX once sac-version-manager is running on python3
-source=("http://www.sac-home.org/packages/weekly/Linux/${_version}-${_changes}/sac2c-${_version}-${_name}-${_changes}-${_commit}-omnibus.tar.gz"
+provides=('sac-compiler' 'sac-compiler-weekly')
+replaces=('sac-compiler' 'sac-compiler-weekly')
+conflicts=('sac-compiler' 'sac-compiler-weekly')
+source=("https://gitlab.science.ru.nl/sac-group/sac-packages/-/raw/master/packages/weekly/Linux/${_version}-${_changes}-${_rev}/basic/sac2c-${_version}-${_name}-${_changes}-${_commit}-omnibus.tar.gz"
         'LICENSE.txt'
         'Makefile')
-sha256sums=('d73d69b7f9af388db953a92c16ebf8f78155b17a5ad559caa8a8b2767cb983e9'
-            'c7d6d43ee20a247fcdce954274f9ffd419bd92644af9ce09929b7bef54a33398'
+sha256sums=('0f6417a0549d66bbe257a6b34b04578e5177851caa78a8058161648e9e1c3555'
+            '70a44340820b0515f1d29e663342f0ed8efb3a29fa5619f18461cbaf7cdf27c3'
             'eb965cc10ff6d032627429b87c553c2eb962d92753a8e30cfebdf699d1f5504a')
 
 build () {
