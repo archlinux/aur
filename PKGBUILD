@@ -3,7 +3,7 @@
 _prefix=/opt/UnityLts
 
 pkgname=unity-editor-lts-facebook
-pkgver=2017.4.31f1
+pkgver=2018.4.8f1
 pkgrel=1
 pkgdesc="Allows building your Unity projects for the Facebook-Games platform"
 arch=('x86_64')
@@ -11,8 +11,8 @@ url='https://unity3d.com/'
 license=('custom')
 depends=('unity-editor-lts')
 makedepends=('cpio')
-source=("2017.4.31f1.4.31f1.pkg::https://download.unity3d.com/download_unity/9c8dbc3421cb/MacEditorTargetInstaller/UnitySetup-Facebook-Games-Support-for-Editor-2017.4.31f1.pkg")
-md5sums=("8227a272dae36d55c687b12a3621c74d")
+source=("2018.4.8f1.4.8f1.pkg::https://download.unity3d.com/download_unity/9bc9d983d803/MacEditorTargetInstaller/UnitySetup-Facebook-Games-Support-for-Editor-2018.4.8f1.pkg")
+md5sums=("a5a6eba3f9c746aa591c224f5fc6fd91")
 options=(!strip)
 PKGEXT='.pkg.tar' # Prevent compressing of the final package
 
