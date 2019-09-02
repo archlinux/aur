@@ -4,20 +4,13 @@ pkgname=lua-busted
 pkgver=2.0.0
 _rockname=busted
 _rockrel=1
-pkgrel=2
+pkgrel=3
 pkgdesc="Elegant Lua unit testing."
 arch=('i686' 'x86_64')
 url="http://olivinelabs.com/busted/"
 license=('MIT')
-depends=('lua'
-        'lua-cliargs'
-        'lua-filesystem'
-        'lua-dkjson'
-        'lua-say'
-        'lua-luassert'
-        'lua-term'
-        'lua-penlight'
-        'lua-mediator')
+_lua_deps=('cliargs' 'dkjson' 'filesystem' 'luassert' 'mediator' 'penlight' 'say' 'system' 'term')
+depends=('lua' "${_lua_deps[@]/#/lua-}")
 makedepends=('luarocks')
 conflicts=()
 source=("https://luarocks.org/$_rockname-$pkgver-$_rockrel.rockspec")
