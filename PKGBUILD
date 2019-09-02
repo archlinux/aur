@@ -6,7 +6,7 @@ _extname='desktop-icons'
 _uuid="${_extname}@csoriano"
 
 pkgname="gnome-shell-extension-${_extname}"
-pkgver='19.01.3'
+pkgver='19.01.4'
 pkgrel=1
 pkgdesc='Add icons to the desktop'
 arch=('x86_64' 'i686')
@@ -16,8 +16,8 @@ depends=('gnome-shell')
 makedepends=('git' 'meson' 'glib2')
 options=('!strip')
 conflicts=("${pkgname}-git")
-source=("https://gitlab.gnome.org/World/ShellExtensions/${_extname}/uploads/5de9fa81ff4ef1d16edcd96041063f91/${_extname}-${pkgver}.tar.xz")
-sha256sums=('87dfebe5808ddf6d14aac4fa934a78900d651155e88a4bb4870b55210c757d05')
+source=("https://gitlab.gnome.org/World/ShellExtensions/${_extname}/-/archive/${pkgver}/${_extname}-${pkgver}.tar.gz")
+sha256sums=('1461cef54da6ca394907149da939a791d2d555ce9a45a490aabbb04af6155ecd')
 
 package() {
 
