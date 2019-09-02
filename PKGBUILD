@@ -1,6 +1,6 @@
 pkgname=openxray-git
-_commit=5da9a94e
-_build=492
+_commit=6bba2831
+_build=496
 pkgver=1.6.02.$_build
 pkgrel=1 
 pkgdesc="Unofficial X-Ray Engine Linux port by OpenXRay team (Originally developed by GSC Game World)"                                          
@@ -8,8 +8,9 @@ arch=('x86_64')
 url="https://github.com/OpenXRay/xray-16"
 license=('unknown')
 install="info.install"
-makedepends=(gcc cmake glew libglvnd openal pugixml intel-tbb crypto++ liblockfile freeimage freeimage libogg libtheora libvorbis lzo lzop libjpeg-turbo libjpeg6-turbo ncurses pcre2 pcre sdl2)
-depends=(glew sdl2 openal intel-tbb crypto++ liblockfile freeimage freeimage lua51 libogg libtheora libvorbis lzo lzop libjpeg-turbo)  
+makedepends=(gcc git cmake glew libglvnd openal pugixml intel-tbb crypto++ liblockfile freeimage libogg libtheora libvorbis lzo lzop libjpeg-turbo libjpeg6-turbo ncurses pcre2 pcre sdl2)
+depends=(glew sdl2 openal intel-tbb crypto++ liblockfile freeimage lua51 libogg libtheora libvorbis lzo lzop libjpeg-turbo)  
+conflicts=(openxray)
 source=(xray-16::git+https://github.com/OpenXRay/xray-16.git#commit=$_commit)
 md5sums=('SKIP')
 
@@ -26,7 +27,8 @@ build() {
    cd "$srcdir/xray-16/build"
    cmake ..
    #cmake .. -DCMAKE_BUILD_TYPE=Debug
-   make -j$(nproc)
+   #make -j$(nproc)
+   make
 }
 
 package() {
