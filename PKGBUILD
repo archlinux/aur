@@ -2,7 +2,7 @@
 pkgname=gruvbox-material-git
 pkgdesc="Gruvbox with Material Palette"
 pkgrel=1
-pkgver=v0.3.r17.g5e68005
+pkgver=v0.3.r75.ge0ab276
 arch=('any')
 url="https://github.com/sainnhe/gruvbox-material"
 license=('MIT' 'Anti-996')
