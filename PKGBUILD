@@ -29,9 +29,7 @@ sha256sums=('SKIP'
 
 prepare() {
   cd "${pkgname%-git}"
-  # Bash's printf statement may fail when using `.` as decimal point under
-  # certain locales, so for the time being we set `LC_ALL` to `C`.
-  # Also, Arch packages are never ever installed to `/usr/local/`.
+  # Arch packages are never ever installed to `/usr/local/`.
   patch -Np1 <../archlinux.patch
 }
 
