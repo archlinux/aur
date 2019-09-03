@@ -1,6 +1,6 @@
 # Maintainer: Lucas Werkmeister <mail@lucaswerkmeister.de>
 pkgname=dgsh-git
-pkgver=r1422.0e51cfd
+pkgver=r1549.df703ef
 pkgrel=1
 pkgdesc="Directed Graph Shell"
 arch=('any')
@@ -18,6 +18,8 @@ makedepends=(
     'help2man'
     'gettext'
     'git'
+    'bison'
+    'rsync'
 )
 checkdepends=(
     'check'
