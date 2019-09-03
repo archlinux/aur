@@ -4,7 +4,7 @@
 # Thanks to the patch from the MXE project <mxe.cc>
 
 _basever=8.0
-_patchlevel=000
+_patchlevel=001
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-readline
@@ -26,6 +26,8 @@ if [ ${_patchlevel} -gt 00 ]; then
 fi
 
 sha256sums=('e339f51971478d369f8a053a330a190781acb9864cf4c541060f12078948e461'
+            'SKIP'
+            'd8e5e98933cf5756f862243c0601cb69d3667bb33f2c7b751fe4e40b2c3fd069'
             'SKIP')
 validpgpkeys=(7C0135FB088AAF6C66C650B9BB5869F064EA74AB) # Chet Ramey <chet@cwru.edu>
 
