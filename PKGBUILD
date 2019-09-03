@@ -2,7 +2,7 @@
 
 pkgname=xde-applets-git
 pkgver=0.5.r2.g67870c6
-pkgrel=1
+pkgrel=2
 pkgdesc="X Desktop Environment System Tray Icons and Dock Apps"
 groups=('xde-git')
 arch=('i686' 'x86_64')
@@ -22,9 +22,13 @@ pkgver() {
   git describe --long --tags | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
-build() {
+prepare() {
   cd $pkgname
   ./autogen.sh
+}
+
+build() {
+  cd $pkgname
   ./configure --sysconfdir=/etc
   make
 }
