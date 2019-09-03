@@ -1,7 +1,7 @@
 # Maintainer: Hork <aliyuchang33@outlook.com>
 
 pkgname=qv2ray
-pkgver=1.3.4
+pkgver=1.3.5
 pkgrel=1
 pkgdesc="Qt cross platform v2ray GUI client"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('qt5-base')
 makedepends=('git' 'make' 'qt5-tools')
 optdepends=('v2ray' 'v2ray-domain-list-community' 'v2ray-geoip')
 provides=('Qv2ray')
-source=("git+https://github.com/lhy0403/Qv2ray")
+source=("git+https://github.com/lhy0403/Qv2ray#tag=v$pkgver")
 sha512sums=('SKIP')
 
 build() {
