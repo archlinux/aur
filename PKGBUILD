@@ -1,4 +1,5 @@
-# Maintainer: Pieter Goetschalckx <3.14.e.ter <at> gmail <dot> com>
+# Maintainer: Donald Webster <fryfrog@gmail.com>
+# Contributor: Pieter Goetschalckx <3.14.e.ter <at> gmail <dot> com>
 
 pkgname=bazarr
 pkgver=0.8
