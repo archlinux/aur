@@ -1,6 +1,6 @@
 pkgbase = xde-icons
 	pkgdesc = Icons for the X Desktop Environment (XDE)
-	pkgver = 1.3
+	pkgver = 1.4
 	pkgrel = 1
 	url = http://github.com/bbidulock/xde-icons
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = xde-icons
 	makedepends = librsvg
 	depends = hicolor-icon-theme
 	depends = mist-icon-theme
-	source = https://github.com/bbidulock/xde-icons/releases/download/1.3/xde-icons-1.3.tar.lz
-	md5sums = f04a3859d1c0867df86019a5422ad3bd
+	source = https://github.com/bbidulock/xde-icons/releases/download/1.4/xde-icons-1.4.tar.lz
+	md5sums = 5e6226e393f2b3a45b6e69936b095ca9
 
 pkgname = xde-icons
 

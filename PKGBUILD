@@ -1,7 +1,7 @@
 #Maintainer: Brian Bidulock <bidulock@openss7.org>
 pkgdesc="Icons for the X Desktop Environment (XDE)"
 pkgname=xde-icons
-pkgver=1.3
+pkgver=1.4
 pkgrel=1
 arch=(any)
 license=(CCPL:by-sa)
@@ -10,7 +10,7 @@ groups=('xde')
 depends=('hicolor-icon-theme' 'mist-icon-theme')
 source=("https://github.com/bbidulock/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.lz")
 makedepends=('librsvg')
-md5sums=('f04a3859d1c0867df86019a5422ad3bd')
+md5sums=('5e6226e393f2b3a45b6e69936b095ca9')
 
 build() {
  cd $pkgname-$pkgver
