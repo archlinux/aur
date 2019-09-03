@@ -2,7 +2,7 @@
 pkgdesc="XDE .desktop entry helpers"
 pkgname=xde-helpers-git
 _pkgname=xde-helpers
-pkgver=1.5
+pkgver=1.6.r0.g86916b2c
 pkgrel=1
 arch=('any')
 license=('GPL')
@@ -18,7 +18,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd $pkgname
-  git describe --tags | sed 's|-|.|g;s|[.]g[a-f0-9]*$||'
+  git describe --long --tags | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -28,7 +28,7 @@ prepare() {
 
 build() {
  cd $pkgname
- ./configure --sysconfdir=/etc
+ ./configure
  make
 }
 
