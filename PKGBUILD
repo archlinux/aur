@@ -1,6 +1,6 @@
 # Maintainer: Zhanibek Adilbekov <zhanibek.adilbekov@pm.me>
 pkgname='suda-vim-git'
-pkgver=r11.a50ddd0
+pkgver=r58.c91b897
 pkgrel=1
 pkgdesc="An alternative sudo.vim for Vim and Neovim ."
 arch=('i686' 'x86_64')
