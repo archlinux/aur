@@ -6,5 +6,6 @@ Comment=GpsMaster to create, view, edit and analyse GPX files
 Exec=/usr/bin/gpsmaster
 Icon=
 Terminal=false
-Categories=Application;System;
+Categories=Application;System;GTK;Science;Maps;Geography;
 StartupNotify=true
+

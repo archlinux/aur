@@ -2,7 +2,7 @@
 
 pkgname=gpsmaster
 pkgver=0.63.31
-pkgrel=1
+pkgrel=2
 pkgdesc="Create, view, edit and analyse GPX files."
 arch=('any')
 license=('GPL2')
@@ -14,7 +14,7 @@ source=("http://gpsmaster.org/download/GpsMaster_$pkgver.jar"
 noextract=("GpsMaster_$pkgver.jar")
 md5sums=('54fd82cc5f2338713a92477003fcaab2'
          'ee58fda742aa0a9472a10b367e186f73'
-         '219071f074a7b047c5a142b16038c6df')
+         '2466049ed8dac363e62f5e47767898b3')
 
 package() {
 	install -Dm644 "GpsMaster_$pkgver.jar" "${pkgdir}/opt/gpsmaster/GpsMaster.jar"
