@@ -1,3 +1,5 @@
+# Maintainer: Donald Webster <fryfrog@gmail.com>
+
 pkgname=ipmiview
 pkgver=2.16.0
 _pkghash=190528
