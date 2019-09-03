@@ -1,7 +1,7 @@
 pkgbase = waterfox-kde
 	pkgdesc = Free, open and private browser with openSUSE's patches for better integration with KDE
-	pkgver = 56.2.13
-	pkgrel = 2
+	pkgver = 56.2.14
+	pkgrel = 0
 	url = https://www.waterfox.net/
 	arch = x86_64
 	license = MPL
@@ -43,12 +43,12 @@ pkgbase = waterfox-kde
 	optdepends = alsa-lib: Audio support
 	optdepends = jack: Audio support
 	optdepends = speech-dispatcher: Text-to-Speech
-	provides = waterfox=56.2.13
+	provides = waterfox=56.2.14
 	conflicts = waterfox
 	options = !emptydirs
 	options = !makeflags
 	options = zipman
-	source = git+https://github.com/MrAlex94/Waterfox.git#commit=e19194a11adea6f9892969eb98a750476a6ce044
+	source = git+https://github.com/MrAlex94/Waterfox.git#commit=4f22b84524c911ee3d9dba38180304c0a324bca9
 	source = waterfox.desktop::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-kde/waterfox.desktop
 	source = kde.js::https://raw.githubusercontent.com/hawkeye116477/Waterfox/plasma/_Plasma_Build/kde.js
 	source = distribution.ini::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-kde/distribution.ini
