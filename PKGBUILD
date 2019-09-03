@@ -14,8 +14,8 @@ optdepends=('python-qdarkstyle: for dark theme'
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/srevinsaju/guiscrcpy.git'
-        'guiscrcpy.desktop'
-        'guiscrcpy.sh')
+        "${pkgname%-git}.desktop"
+        "${pkgname%-git}.sh")
 sha256sums=('SKIP'
             '17d3182d5a910b51803c72922ffd5a226691a290e360b72a93597dc5700a4c96'
             '21a9e0f6a38db03cbe84d6498519bd79d66796f47cd6a738133f38a45ea4bb42')
