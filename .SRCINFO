@@ -12,10 +12,10 @@ pkgbase = ipmiview
 	backup = email.properties
 	backup = IPMIView.properties
 	backup = timeout.properties
+	source = https://www.supermicro.com/wftp/utility/IPMIView/Linux/IPMIView_2.16.0_build.190528_bundleJRE_Linux_x64.tar.gz
 	source = ipmiview.desktop
-	sha256sums = 6a923aab3561e28e5d3f59acc7897bb51a2051f066dd925500498126c7fdf555
-	source_x86_64 = https://www.supermicro.com/wftp/utility/IPMIView/Linux/IPMIView_2.16.0_build.190528_bundleJRE_Linux_x64.tar.gz
-	sha256sums_x86_64 = 8203bcdc56ca631421a93b71c37a954d3f26d818a32ae3e3c5dc6cab37c2e45f
+	sha512sums = 6cc56f69c0baf68dd00447517f9d35bb81c47ae5bb654c29884b84aafe26078755ae6c192b68fcbd28619d39f5a472e84c26dfb6f3fbe6baaa8bd1a554238c7e
+	sha512sums = 683922d5ce90116ca04fbf1a244da87296beaf079ecde94d799b2d303e21dfda4e771f5a4b724e7dd64143feaef49d2f11fd2eaf380ebdcf02e9db82c9975497
 
 pkgname = ipmiview
 
