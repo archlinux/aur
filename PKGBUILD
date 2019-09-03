@@ -68,6 +68,7 @@ build() {
     -DCUDA_HOST_COMPILER=/usr/bin/gcc-8 \
     -DOPENCV_EXTRA_MODULES_PATH="$srcdir/opencv_contrib-$pkgver/modules" \
     -DOPENCV_SKIP_PYTHON_LOADER=ON \
+    -DEIGEN_INCLUDE_PATH=/usr/include/eigen3 \
     -DOPENCV_PYTHON3_INSTALL_PATH=$_pythonpath \
     -DLAPACK_LIBRARIES="/usr/lib/liblapack.so;/usr/lib/libblas.so;/usr/lib/libcblas.so" \
     -DLAPACK_CBLAS_H="/usr/include/cblas.h" \
