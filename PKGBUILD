@@ -5,7 +5,7 @@
 _name=UncertaintyTE
 pkgname=uncertainty-framework
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Uncertainty estimation framework for a surface from motion dataset"
 arch=('i686' 'x86_64')
 url="http://alicevision.github.io/"
