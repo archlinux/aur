@@ -10,6 +10,7 @@ url='https://github.com/RaitaroH/adl'
 arch=('any')
 license=('GPL')
 depends=('trackma-git' 'fzf' 'anime-downloader' 'mpv')
+optdepends=('frece: support for frece (recently watched)')
 makedepends=('git')
 provides=('adl')
 

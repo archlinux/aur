@@ -10,6 +10,7 @@ pkgbase = adl-git
 	depends = fzf
 	depends = anime-downloader
 	depends = mpv
+	optdepends = frece: support for frece (recently watched)
 	provides = adl
 	source = git://github.com/RaitaroH/adl.git
 	md5sums = SKIP
