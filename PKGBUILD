@@ -2,16 +2,16 @@
 pkgbase=python-ccdproc
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=1.3.0.post1
-pkgrel=2
+pkgver=2.0.0
+pkgrel=1
 pkgdesc="Affiliated package for the AstroPy package for basic data reductions of CCD images"
 arch=('i686' 'x86_64')
-url="http://ccdproc.readthedocs.io/en/latest/"
+url="http://ccdproc.readthedocs.io/"
 license=('BSD')
-makedepends=('cython' 'python-astropy-helpers' 'python-scikit-image' 'python-astroscrappy' 'python-reproject' 'python-sphinx-astropy')
+makedepends=('cython' 'python-astropy-helpers' 'python-scikit-image' 'python-astroscrappy' 'python-reproject' 'python-sphinx-astropy' 'python-pytest')
 #checkdepends=('python-pytest-astropy')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('89a5795245a517fbb5ca740aa85625b6')
+md5sums=('8978c8ce3b603863e5b1d9bdbbe9e3c7')
 
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
