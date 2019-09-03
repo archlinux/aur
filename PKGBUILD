@@ -1,7 +1,7 @@
 # Maintainer: HER0_01 <aconrad103 at gmail.com>
 
 pkgname=hdx-512-git
-pkgver=74.35e493e
+pkgver=374.a26bdc3
 pkgrel=1
 pkgdesc="High Definition Expansion photorealistic, comprehensive texture pack for Minetest"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('minetest')
 makedepends=('git')
 optdepends=('hdx-normalmaps-512: matching high resolution normal maps')
 provides=('hdx-512')
-source=("$pkgname::git://github.com/VanessaE/hdx-512.git")
+source=("$pkgname::git+https://gitlab.com/VanessaE/hdx-512.git")
 md5sums=('SKIP')
 
 PKGEXT=.pkg.tar
