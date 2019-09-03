@@ -20,7 +20,7 @@ pkgbase = next-browser
 	optdepends = gst-plugins-ugly: for HTML5 audio/video
 	options = !strip
 	options = !makeflags
-	source = next-browser-1.3.1::https://github.com/atlas-engineer/next/archive/1.3.1.tar.gz
+	source = next-browser-1.3.1.tar.gz::https://github.com/atlas-engineer/next/archive/1.3.1.tar.gz
 	sha256sums = 6f782d54a9ce545e75c95d2866754c6500029b341158abcf0ac976b002f2d006
 
 pkgname = next-browser
