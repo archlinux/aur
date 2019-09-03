@@ -1,7 +1,7 @@
 # Maintainer: Parker Reed <parker.l.reed@gmail.com>
 pkgname=aasdk-git
 _pkgname=aasdk
-pkgver=r59.9ee5283
+pkgver=r77.95617c2
 pkgrel=1
 pkgdesc="Library to build AndroidAuto headunit"
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=($_pkgname)
 depends=('libusb' 'protobuf' 'openssl' 'boost-libs')
 makedepends=('cmake' 'boost' 'git')
 source=(
-  "$pkgname::git+https://github.com/f1xpl/aasdk.git#branch=master"
+  "$pkgname::git+https://github.com/opencardev/aasdk#branch=development"
   promise.patch
 )
 md5sums=('SKIP'

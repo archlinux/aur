@@ -1,6 +1,6 @@
 pkgbase = aasdk-git
 	pkgdesc = Library to build AndroidAuto headunit
-	pkgver = r59.9ee5283
+	pkgver = r77.95617c2
 	pkgrel = 1
 	url = https://github.com/f1xpl/aasdk
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = aasdk-git
 	depends = boost-libs
 	provides = aasdk
 	conflicts = aasdk
-	source = aasdk-git::git+https://github.com/f1xpl/aasdk.git#branch=master
+	source = aasdk-git::git+https://github.com/opencardev/aasdk#branch=development
 	source = promise.patch
 	md5sums = SKIP
 	md5sums = SKIP
