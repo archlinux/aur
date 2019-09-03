@@ -2,32 +2,39 @@
 # Contributor: blaise <blaise@gmail.com>
 
 pkgname=xtail
-_pkgver=2.1-5
-pkgver=2.1
-pkgrel=7
+_pkgver=2.1
+_pkgver_diff=2.1-5
+pkgver=2.1.5
+pkgrel=1
 pkgdesc="Tail multiple logfiles at once, even if rotated"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://www.unicom.com/sw/xtail/"
 license=('BSD')
-source=(http://ftp.debian.org/debian/pool/main/x/xtail/xtail_$pkgver.orig.tar.gz
-        http://ftp.debian.org/debian/pool/main/x/xtail/xtail_$_pkgver.diff.gz)
+#source=(https://www.unicom.com/files/xtail-$_pkgver.tar.gz)
+source=(http://ftp.debian.org/debian/pool/main/x/xtail/xtail_$_pkgver.orig.tar.gz
+        http://ftp.debian.org/debian/pool/main/x/xtail/xtail_$_pkgver_diff.diff.gz)
+#noextract=(xtail_$_pkgver_diff.diff.gz)
 md5sums=('2e4717c591a2cbbd4aeb63d00c87a0cb'
          '24f33d989e9e49d8ce12e9a1d41d9665')
 
 prepare() {
-  chmod -R +w $pkgname-$pkgver
-  patch -Np0 -i xtail_$_pkgver.diff
+  # Workaround: *.diff.gz file is not extracted
+  cp --dereference xtail_$_pkgver_diff{,.tmp}.diff.gz
+  gunzip xtail_$_pkgver_diff.tmp.diff.gz
+
+  chmod -R +w $pkgname-$_pkgver
+  patch -Np0 -i xtail_$_pkgver_diff.tmp.diff
 }
 
 build() {
-  cd $pkgname-$pkgver
+  cd $pkgname-$_pkgver
   autoreconf -v
   ./configure --prefix="$pkgdir/usr/bin" --mandir="$pkgdir/usr/share/man"
   make
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd $pkgname-$_pkgver
   install -Dm755 xtail $pkgdir/usr/bin/xtail
   install -Dm644 xtail.1 $pkgdir/usr/share/man/man1/xtail.1
   install -Dm644 README $pkgdir/usr/share/doc/$pkgname/README

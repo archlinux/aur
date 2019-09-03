@@ -1,9 +1,8 @@
 pkgbase = xtail
 	pkgdesc = Tail multiple logfiles at once, even if rotated
-	pkgver = 2.1
-	pkgrel = 7
+	pkgver = 2.1.5
+	pkgrel = 1
 	url = http://www.unicom.com/sw/xtail/
-	arch = i686
 	arch = x86_64
 	license = BSD
 	source = http://ftp.debian.org/debian/pool/main/x/xtail/xtail_2.1.orig.tar.gz
