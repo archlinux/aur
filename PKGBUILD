@@ -1,8 +1,8 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=xde-applets-git
-pkgver=0.5.r2.g67870c6
-pkgrel=2
+pkgver=0.6.r0.g8d57dff
+pkgrel=1
 pkgdesc="X Desktop Environment System Tray Icons and Dock Apps"
 groups=('xde-git')
 arch=('i686' 'x86_64')
@@ -29,7 +29,7 @@ prepare() {
 
 build() {
   cd $pkgname
-  ./configure --sysconfdir=/etc
+  ./configure
   make
 }
 
