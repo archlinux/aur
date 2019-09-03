@@ -11,7 +11,7 @@ url='http://www.sile-typesetter.org'
 license=('MIT')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-_lua_deps=('bit32' 'luaepnf' 'lpeg' 'cassowary>=2.1' 'linenoise' 'zlib' 'cliargs'
+_lua_deps=('bit32' 'luaepnf' 'lpeg' 'cassowary>=2.2' 'linenoise' 'zlib' 'cliargs'
            'luaepnf' 'filesystem' 'repl' 'sec' 'socket' 'penlight' 'stdlib'
            'vstruct')
 depends=('fontconfig'

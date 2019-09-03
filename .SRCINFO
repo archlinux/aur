@@ -14,7 +14,7 @@ pkgbase = sile-git
 	depends = lua-bit32
 	depends = lua-luaepnf
 	depends = lua-lpeg
-	depends = lua-cassowary>=2.1
+	depends = lua-cassowary>=2.2
 	depends = lua-linenoise
 	depends = lua-zlib
 	depends = lua-cliargs
