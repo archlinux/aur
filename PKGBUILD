@@ -1,3 +1,5 @@
+# Maintainer: Donald Webster <fryfrog@gmail.com>
+
 pkgname=jackett
 pkgver=0.11.665
 pkgrel=1
