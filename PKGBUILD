@@ -2,8 +2,8 @@
 
 _rockname=cassowary
 pkgname=lua-$_rockname
-pkgver=2.1
-_rockrel=1
+pkgver=2.2
+_rockrel=0
 pkgrel=1
 pkgdesc="The cassowary constraint solver."
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ depends=('lua' 'lua-penlight')
 makedepends=('luarocks')
 conflicts=()
 source=("https://luarocks.org/$_rockname-$pkgver-$_rockrel.rockspec")
-sha256sums=('04c0cba2b6f632a066073cd0b00ea5525ce087bfde7fe5377be850d0812f0beb')
+sha256sums=('cfe38de6efba0fcfc34f630f75fbd803ac2a70361297547a9d98d959c20b383f')
 
 package() {
   luarocks --tree="$pkgdir/usr" install --deps-mode=none "$_rockname-$pkgver-$_rockrel.rockspec"

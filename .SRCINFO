@@ -1,6 +1,6 @@
 pkgbase = lua-cassowary
 	pkgdesc = The cassowary constraint solver.
-	pkgver = 2.1
+	pkgver = 2.2
 	pkgrel = 1
 	url = https://github.com/simoncozens/cassowary.lua
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = lua-cassowary
 	makedepends = luarocks
 	depends = lua
 	depends = lua-penlight
-	source = https://luarocks.org/cassowary-2.1-1.rockspec
-	sha256sums = 04c0cba2b6f632a066073cd0b00ea5525ce087bfde7fe5377be850d0812f0beb
+	source = https://luarocks.org/cassowary-2.2-0.rockspec
+	sha256sums = cfe38de6efba0fcfc34f630f75fbd803ac2a70361297547a9d98d959c20b383f
 
 pkgname = lua-cassowary
 
