@@ -1,3 +1,5 @@
+# Maintainer: Donald Webster <fryfrog@gmail.com>
+
 pkgname=sabnzbd
 _pkgname=SABnzbd
 pkgver=2.3.9
