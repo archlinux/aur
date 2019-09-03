@@ -10,9 +10,9 @@ RuntimeDirectory=gostcoind
 RuntimeDirectoryMode=0700
 WorkingDirectory=~
 Type=simple
-ExecStart=/usr/bin/gostcoind -daemon -conf=/etc/gostcoind.conf -datadir=/var/lib/gostcoin -pid=/var/run/gostcoind/gostcoind.pid
+ExecStart=/usr/bin/gostcoind -daemon -conf=/etc/gostcoind.conf -datadir=/var/lib/gostcoin -pid=/run/gostcoind/gostcoind.pid
 ExecReload=/bin/kill -HUP $MAINPID
-PIDFile=/var/run/gostcoind/gostcoind.pid
+PIDFile=/run/gostcoind/gostcoind.pid
 
 ### Uncomment, if auto restart needed
 #Restart=on-failure

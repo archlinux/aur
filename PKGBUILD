@@ -10,7 +10,7 @@ pkgname+=('gostcoin-qt-git')
 fi
 
 pkgver=0.8.5.12
-pkgrel=2
+pkgrel=1
 pkgdesc="Coin based on GOST R 34.10 and GOST R 34.11-2012 with I2P support"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="http://gostcoin.i2p"
@@ -75,5 +75,5 @@ package_gostcoin-qt-git(){
 }
 
 md5sums=('SKIP'
-         '5fd2ff66d55bdfcba99755bb7c88b7f0'
+         'de88ac1312fd3ebff6be691348c976bf'
          'a2811c45f7bdbb9dc66775f6f897631e')
