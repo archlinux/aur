@@ -1,8 +1,8 @@
 pkgname=microcom
-pkgver=2016.01.0
+pkgver=2017.03.0
 pkgrel=1
 pkgdesc="terminal emulator"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 license=('GPL')
 url='http://git.pengutronix.de/?p=tools/microcom.git'
 source=("git://git.pengutronix.de/git/tools/microcom.git#tag=v${pkgver}")
