@@ -2,7 +2,7 @@
 # Contributor: Philipp A. <flying-sheep at web dot de>
 # Contributor: theSander <aur at sandervanbalen dot be>
 pkgname=hamsket-git
-pkgver=r1112.cc3398f
+pkgver=r1113.d4ea806
 pkgrel=1
 pkgdesc="Free and Open Source messaging and emailing app that combines common web applications into one."
 arch=(i686 x86_64)
