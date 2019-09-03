@@ -1,7 +1,7 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=libcmb
-pkgver=3.5.2
+pkgver=3.5.6
 pkgrel=1
 pkgdesc="combinatorics library"
 url="https://fraubsd.org/libcmb"

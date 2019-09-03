@@ -1,6 +1,6 @@
 pkgbase = libcmb
 	pkgdesc = combinatorics library
-	pkgver = 3.5.2
+	pkgver = 3.5.6
 	pkgrel = 1
 	url = https://fraubsd.org/libcmb
 	arch = x86_64
