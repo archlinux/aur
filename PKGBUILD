@@ -1,36 +1,21 @@
 # Maintainer: Pieter Goetschalckx <3.14.e.ter <at> gmail <dot> com>
+# Maintainer: Donald Webster <fryfrog@gmail.com>
 
 pkgname=bazarr-git
-pkgver=r858.35daaeb
+pkgver=r1384.6c5e6c4
 pkgrel=1
 pkgdesc="Manage and download subtitles for Sonarr and Radarr."
 arch=('any')
 url="https://github.com/morpheus65535/bazarr"
 license=('GPL3')
 depends=('python2'
-         'python2-apprise'
-         'python2-apscheduler'
-         'python2-babelfish'
-         'python2-bottle'
-         'python2-bottle-fdsend'
-         'python2-dogpile.cache'
-         'python2-gitpython'
-         'python2-langdetect'
-         'python2-logutils'
-         'python2-pillow'
-         'python2-py-pretty'
-         'python2-pycountry'
-         'python2-pytz'
-         'python2-requests'
-         'python2-tzlocal'
-         'python2-urllib3'
-         'python2-waitress'
-         'python2-webtest'
+         'python2-lxml'
          'python2-gevent')
 
 makedepends=('git')
 provides=('bazarr')
 conflicts=('bazarr')
+options=('!strip')
 source=('git+https://github.com/morpheus65535/bazarr'
         'bazarr.service'
         'bazarr.sysusers'
