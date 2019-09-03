@@ -1,6 +1,6 @@
 pkgbase = emacs-lucid
 	pkgdesc = The extensible, customizable, self-documenting real-time display editor (Lucid toolkit version)
-	pkgver = 26.2
+	pkgver = 26.3
 	pkgrel = 1
 	url = http://www.gnu.org/software/emacs/emacs.html
 	arch = x86_64
@@ -18,11 +18,11 @@ pkgbase = emacs-lucid
 	depends = libxfixes
 	provides = emacs=26
 	conflicts = emacs
-	source = ftp://ftp.gnu.org/gnu/emacs/emacs-26.2.tar.xz
-	source = ftp://ftp.gnu.org/gnu/emacs/emacs-26.2.tar.xz.sig
-	validpgpkeys = B29426DEFB07724C3C35E5D36592E9A3A0B0F199
+	source = ftp://ftp.gnu.org/gnu/emacs/emacs-26.3.tar.xz
+	source = ftp://ftp.gnu.org/gnu/emacs/emacs-26.3.tar.xz.sig
 	validpgpkeys = 28D3BED851FDF3AB57FEF93C233587A47C207910
-	md5sums = 02ba7003f14957529bcd05cfc3ebb754
+	validpgpkeys = D405AA2C862C54F17EEE6BE0E8BCD7866AFCF978
+	md5sums = 0a2e4b965d31a7cb1930eae3b79df793
 	md5sums = SKIP
 
 pkgname = emacs-lucid

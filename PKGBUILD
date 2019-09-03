@@ -5,7 +5,7 @@
 # Based on emacs from [extra] and emacs-bzr from the AUR
 
 pkgname=emacs-lucid
-pkgver=26.2
+pkgver=26.3
 _pkgver_major=${pkgver/.*}
 pkgrel=1
 pkgdesc="The extensible, customizable, self-documenting real-time display editor (Lucid toolkit version)"
@@ -15,12 +15,12 @@ license=('GPL3')
 depends=('librsvg' 'gpm' 'm17n-lib' 'hicolor-icon-theme' 'dbus' 'alsa-lib' 'libmagick6' 'gnutls' 'libxrandr' 'libxinerama' 'libxfixes')
 conflicts=('emacs')
 provides=("emacs=$_pkgver_major")
-validpgpkeys=('B29426DEFB07724C3C35E5D36592E9A3A0B0F199'
-              '28D3BED851FDF3AB57FEF93C233587A47C207910')
+validpgpkeys=('28D3BED851FDF3AB57FEF93C233587A47C207910'
+              'D405AA2C862C54F17EEE6BE0E8BCD7866AFCF978')
 _source_url_prefix="ftp://ftp.gnu.org/gnu/emacs"
 source=(${_source_url_prefix}/emacs-$pkgver.tar.xz
         ${_source_url_prefix}/emacs-$pkgver.tar.xz.sig)
-md5sums=('02ba7003f14957529bcd05cfc3ebb754'
+md5sums=('0a2e4b965d31a7cb1930eae3b79df793'
          'SKIP')
 
 build() {
@@ -44,8 +44,6 @@ build() {
 package() {
   cd "$srcdir"/emacs-$pkgver
   make DESTDIR="$pkgdir" install
-
-  install -m 644 -D -t "$pkgdir"/usr/include/ src/emacs-module.h
 
   # fix user/root permissions on usr/share files
   find "$pkgdir"/usr/share/emacs/$pkgver -exec chown root:root {} \;
