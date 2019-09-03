@@ -2,7 +2,7 @@
 
 pkgname=mbrowse
 pkgver=0.4.3
-pkgrel=3
+pkgrel=4
 pkgdesc='A graphical SNMP MIB browser based on GTK+ and Net-SNMP'
 arch=('i686' 'x86_64')
 license=('GPL')
