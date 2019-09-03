@@ -22,7 +22,6 @@ build() {
     --verbose \
     --single-instance \
     --tray \
-    --internal-urls ".*zalo.*" \
     "${url}"
 }
 
