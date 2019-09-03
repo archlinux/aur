@@ -12,7 +12,7 @@ depends=('gi' 'zsh' 'zsh-completions')
 provides=('gi-zsh-completion')
 conflicts=('gi-zsh-completion')
 install=
-source=(git+https://bitbucket.org/gagarski/$pkgname.git#tag=$pkgver)
+source=(git+https://github.com/gagarski/$pkgname.git#tag=$pkgver)
 md5sums=('SKIP')
 
 
