@@ -20,8 +20,10 @@ _branch="development"
 arch=('i686' 'x86_64')
 url="https://github.com/Mudlet/Mudlet"
 license=('GPL2')
-depends=('hunspell' 'libzip' 'glu' 'lua51' 'qt5-gamepad' 'ttf-font' 'pugixml' 'qt5-speech')
-makedepends=('git' 'boost' 'qt5-tools' 'yajl')
+depends=('hunspell' 'libzip' 'glu' 'lua51' \
+         'lua51-filesystem' 'luazip5.1' 'lua51-sql-sqlite' 'lrexlib-pcre5.1'  \
+         'qt5-gamepad' 'lua51-utf8' 'lua51-lcf' 'ttf-font' 'pugixml' 'lua-yajl')
+makedepends=('git' 'boost' 'qt5-tools')
 provides=('mudlet')
 conflicts=('mudlet' 'mudlet-dev' 'mudlet-deb')
 source=("$pkgname::git+$url.git#branch=$_branch")
