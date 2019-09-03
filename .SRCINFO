@@ -1,24 +1,22 @@
 pkgbase = python-reproject
 	pkgdesc = Python-based Astronomical image reprojection
-	pkgver = 0.4
-	pkgrel = 3
+	pkgver = 0.5.1
+	pkgrel = 1
 	url = http://reproject.readthedocs.io/en/stable/
 	arch = i686
 	arch = x86_64
 	license = BSD
-	checkdepends = python-shapely
-	checkdepends = python-pytest-astropy
 	makedepends = cython
 	makedepends = cython2
 	makedepends = python-astropy>=2.0
 	makedepends = python2-astropy>=2.0
-	makedepends = python-astropy-helpers31
+	makedepends = python-astropy-helpers
 	makedepends = python2-astropy-helpers
 	makedepends = python-astropy-healpix>=0.2
 	makedepends = python2-astropy-healpix>=0.2
 	makedepends = python-sphinx-astropy
-	source = https://files.pythonhosted.org/packages/source/r/reproject/reproject-0.4.tar.gz
-	md5sums = 56777bf5c2f8e2a7c0a05b3d058943c2
+	source = https://files.pythonhosted.org/packages/source/r/reproject/reproject-0.5.1.tar.gz
+	md5sums = 3de3fddddea39425e175d78fc62039a2
 
 pkgname = python-reproject
 	depends = python>=3.5
@@ -26,7 +24,7 @@ pkgname = python-reproject
 	depends = python-scipy>=0.9
 	depends = python-astropy>=2.0
 	depends = python-astropy-healpix>=0.2
-	optdepends = python-shapely: For some of the mosaicking functionality
+	optdepends = python-shapely>=1.6: For some of the mosaicking functionality
 	optdepends = python-reproject-doc: Documentation for Reproject
 	optdepends = python-pytest-astropy: For testing
 
