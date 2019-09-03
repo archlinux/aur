@@ -1,3 +1,5 @@
+# Maintainer: Donald Webster <fryfrog@gmail.com>
+
 pkgname=duplicacy-util
 pkgver=1.5
 pkgrel=3
