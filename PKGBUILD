@@ -1,30 +1,31 @@
 # Maintainer: Kyle Fuller <kyle@fuller.li>
 
 pkgname=drafter
-pkgver=3.2.7
+pkgver=4.0.0
 pkgrel=1
 pkgdesc='API Blueprint Parser'
 arch=('x86_64' 'i686')
 url='https://github.com/apiaryio/drafter'
 license=('custom')
 depends=('gcc-libs')
-makedepends=('python2')
-source=("https://github.com/apiaryio/drafter/releases/download/v$pkgver/drafter-v$pkgver.tar.gz")
-sha1sums=('02236be885139bb56335124d568458056e8c10ff')
+makedepends=('cmake')
+source=("https://github.com/apiaryio/drafter/releases/download/v$pkgver/drafter-$pkgver.tar.gz")
+sha256sums=('f284cddf24c321947f85c21e5b27500e876f0181d91eda7d96b3350b48533139')
+
+prepare() {
+  mkdir -p "${srcdir}/build"
+}
 
 build() {
-  cd "${srcdir}/drafter-v${pkgver}"
-  python2 configure --shared
-  make
+  cd "${srcdir}/build"
+
+  cmake -DCMAKE_INSTALL_PREFIX=/usr "${srcdir}/drafter-${pkgver}"
+  make drafter drafter-cli
 }
 
 package() {
-  cd "${srcdir}/drafter-v${pkgver}"
-  mkdir -p "${pkgdir}/usr/bin"
-  make DESTDIR="${pkgdir}/usr" install
+  cd "${srcdir}/build"
 
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm644 src/drafter.h "${pkgdir}/usr/include/drafter/drafter.h"
-  install -Dm755 build/out/Release/lib.target/libdrafter.so "${pkgdir}/usr/lib/libdrafter.so.${pkgver}"
-  ln -s "libdrafter.so.${pkgver}" "${pkgdir}/usr/lib/libdrafter.so"
+  make DESTDIR="${pkgdir}" install
+  install -Dm644 "${srcdir}/drafter-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

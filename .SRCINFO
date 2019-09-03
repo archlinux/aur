@@ -1,15 +1,15 @@
 pkgbase = drafter
 	pkgdesc = API Blueprint Parser
-	pkgver = 3.2.7
+	pkgver = 4.0.0
 	pkgrel = 1
 	url = https://github.com/apiaryio/drafter
 	arch = x86_64
 	arch = i686
 	license = custom
-	makedepends = python2
+	makedepends = cmake
 	depends = gcc-libs
-	source = https://github.com/apiaryio/drafter/releases/download/v3.2.7/drafter-v3.2.7.tar.gz
-	sha1sums = 02236be885139bb56335124d568458056e8c10ff
+	source = https://github.com/apiaryio/drafter/releases/download/v4.0.0/drafter-4.0.0.tar.gz
+	sha256sums = f284cddf24c321947f85c21e5b27500e876f0181d91eda7d96b3350b48533139
 
 pkgname = drafter
 
