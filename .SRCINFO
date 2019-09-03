@@ -1,7 +1,7 @@
 pkgbase = zalo-nativefier
 	pkgdesc = Zalo desktop built with nativefier (electron)
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://chat.zalo.me
 	arch = armv7l
 	arch = i686
