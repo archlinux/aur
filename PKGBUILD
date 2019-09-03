@@ -15,7 +15,7 @@
 #     tor-browser -u
 
 pkgname='tor-browser'
-pkgver='8.5.4'
+pkgver='8.5.5'
 pkgrel='1'
 pkgdesc='Tor Browser Bundle: anonymous browsing using Firefox and Tor (international PKGBUILD)'
 url='https://www.torproject.org/projects/torbrowser.html'
@@ -77,9 +77,9 @@ source=("${pkgname}.desktop"
 sha256sums=('9ee0a4672e2d0835ffb94bcf26e17b56432030496a9cdf019b70c96083c24340'
             'bb6b0f27c33d21e0ef6df961e25418327c5e8b01c003bbe18c0a8dae3e16d77d'
             '3a491ad1a476f2fb343f274eab4e8df925637438e6dac3591f092b3ef3294da3')
-sha256sums_i686=('SKIP'
+sha256sums_i686=('49b84482a6c27971aa9b2421a5e2967c3382b4566610ab8a25d9bd1767e1bbdb'
                  'SKIP')
-sha256sums_x86_64=('SKIP'
+sha256sums_x86_64=('5f334f14161952476adde3fbd843f93f647d47a0d7e30eb5d1635fb7569a2503'
                    'SKIP')
 
 noextract=("${pkgname}-${_idstr64}-${pkgver}_${_language}.tar.xz"
