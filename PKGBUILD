@@ -2,7 +2,7 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=wordpress-plugin-jetpack
-pkgver=7.6
+pkgver=7.7
 pkgrel=1
 pkgdesc="Anti spam plugin"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('wordpress')
 makedepends=()
 options=('!strip')
 source=("${pkgname}-${pkgver}.tar.gz::https://downloads.wordpress.org/plugin/jetpack.${pkgver}.zip")
-sha512sums=("4c629e02b7040677b17910a4bcd0ee025a67b2e10717588d89d5b0e5ff20f434927082cc410546a97c5756f991906f0458e9fc5f8745172007030af493ef3a33")
+sha512sums=('4d9298e4e585b82ef185af8ad55946a8a809854e53b976b919d6efac37074fd9d5d50a30c7e9cddfc21eddab09a7e05a27907f8758931e0eeeba0ca69b4f2e1e')
 
 package() {
   install -d "${pkgdir}/usr/share/webapps/wordpress/wp-content/plugins"
