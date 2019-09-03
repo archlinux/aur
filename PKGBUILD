@@ -3,12 +3,12 @@
 _pkgname=vmango
 
 pkgname=${_pkgname}-git
-pkgver=v0.9.0.r1.g1215b87
+pkgver=v0.9.0.r2.g47e93e7
 pkgrel=1
 pkgdesc="Your own personal IaaS cloud"
 arch=("any")
 url="https://github.com/subuk/vmango"
-license=("unknown")
+license=("GPL3")
 
 backup=("etc/vmango.conf")
 
