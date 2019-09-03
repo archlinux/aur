@@ -1,0 +1,19 @@
+pkgbase = xde-icons-git
+	pkgdesc = Icons for the X Desktop Environment (XDE)
+	pkgver = 1.3
+	pkgrel = 1
+	url = http://github.com/bbidulock/xde-icons
+	arch = any
+	groups = xde
+	license = CCPL:by-sa
+	makedepends = librsvg
+	makedepends = git
+	depends = hicolor-icon-theme
+	depends = mist-icon-theme
+	provides = xde-icons=1.3
+	conflicts = xde-icons
+	source = xde-icons-git::git://github.com/bbidulock/xde-icons.git
+	md5sums = SKIP
+
+pkgname = xde-icons-git
+
