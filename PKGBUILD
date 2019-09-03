@@ -7,7 +7,7 @@
 _name=alice-vision
 pkgname=${_name}
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Photogrammetric Computer Vision Framework which provides a 3D Reconstruction and Camera Tracking algorithms"
 arch=('i686' 'x86_64')
 url="https://alicevision.github.io/"
