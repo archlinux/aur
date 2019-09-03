@@ -1,0 +1,15 @@
+pkgbase = gwion-git
+	pkgdesc = a strongly timed musical programming language
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/fennecdjay/gwion
+	arch = any
+	license = GPL3
+	makedepends = git
+	provides = gwion-git
+	conflicts = gwion
+	source = git+https://github.com/fennecdjay/gwion
+	md5sums = SKIP
+
+pkgname = gwion-git
+
