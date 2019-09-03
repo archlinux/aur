@@ -3,7 +3,7 @@
 pkgname=varken
 pkgver=1.7.3
 pkgrel=1
-pkgdesc="Varken is a standalone application to aggregate data from the Plex ecosystem into InfluxDB using Grafana for a frontend."
+pkgdesc="A standalone application to aggregate data from the Plex ecosystem into InfluxDB using Grafana for a frontend."
 arch=('any')
 url="https://github.com/morpheus65535/varken"
 license=('GPL3')
@@ -15,7 +15,7 @@ depends=('python'
          'python-distro'
          'python-urllib3')
 
-optdepend=('plex-media-server: media server for tv shows, movies and more.'
+optdepends=('plex-media-server: media server for tv shows, movies and more.'
            'grafana: display of pretty graphs'
            'influxdb: storage of data')
 
