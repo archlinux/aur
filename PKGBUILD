@@ -1,4 +1,5 @@
-# Maintainer: Pieter Goetschalckx <3.14.e.ter <at> gmail <dot> com>
+# Maintainer: Donald Webster <fryfrog@gmail.com>
+# Contributor: Pieter Goetschalckx <3.14.e.ter <at> gmail <dot> com>
 
 pkgbase=python-pytest-dependency
 pkgname=('python-pytest-dependency' 'python2-pytest-dependency')
