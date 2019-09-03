@@ -18,12 +18,11 @@
 pkgname=(magma magma-libs)
 pkgver=2.5.1
 ((TRAVIS)) && pkgver=2.5.0 # downgrade to prevernt time out.
-pkgrel=1
+pkgrel=2
 pkgdesc="Provides a dense linear algebra library similar to LAPACK but for heterogeneous/hybrid architectures, starting with current 'Multicore+GPU' systems (with CUDA)"
 arch=('x86_64')
 url="https://icl.cs.utk.edu/magma/"
 license=('custom')
-checkdepends=('python')
 makedepends=('gcc-fortran' 'cmake' 'blas' 'lapack' 'cuda')
 options=('staticlibs')
 source=("http://icl.cs.utk.edu/projectsfiles/${pkgname}/downloads/${pkgname}-${pkgver}.tar.gz")
@@ -59,7 +58,7 @@ build() {
 package_magma() {
   pkgdesc+=" [static libraries and headers]"
   depends=(magma-libs)
-  optdepends=('python: for examples and tests')
+  optdepends=('python2: for examples and tests')
   cd ${srcdir}/magma-${pkgver}/build-static # "$dir"
   # do not build test
   sed -i "s/install: preinstall/install: magma_sparse/g" Makefile
