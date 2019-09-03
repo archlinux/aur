@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=guiscrcpy
+Comment=GUI for scrcpy
+Exec=python /opt/guiscrcpy/__main__.py
+Terminal=false
+Icon=/opt/guiscrcpy/ui/guiscrcpy_logo.svg
+Type=Application
+Categories=Utility
+StartupNotify=false
