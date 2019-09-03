@@ -1,0 +1,20 @@
+pkgbase = xde-desktop
+	pkgdesc = X Desktop Environment desktop
+	pkgver = 0.4
+	pkgrel = 1
+	url = https://github.com/bbidulock/xde-desktop
+	arch = i686
+	arch = x86_64
+	groups = xde
+	license = GPL
+	depends = libxss
+	depends = libxxf86misc
+	depends = libsm
+	depends = libunique
+	depends = libwnck+-git
+	depends = gnome-vfs
+	source = https://github.com/bbidulock/xde-desktop/releases/download/0.4/xde-desktop-0.4.tar.lz
+	md5sums = e244c28e181218cc431943781f7ff48c
+
+pkgname = xde-desktop
+
