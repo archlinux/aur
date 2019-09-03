@@ -1,0 +1,26 @@
+pkgbase = ros-kinetic-tf2-sensor-msgs
+	pkgdesc = ROS - Small lib to transform sensor_msgs with tf.
+	pkgver = 0.6.2
+	pkgrel = 1
+	url = http://www.ros.org/wiki/tf2_ros
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-kinetic-catkin
+	makedepends = ros-kinetic-tf2-ros
+	makedepends = ros-kinetic-tf2
+	makedepends = ros-kinetic-sensor-msgs
+	makedepends = ros-kinetic-cmake-modules
+	makedepends = eigen3
+	depends = ros-kinetic-python-orocos-kdl
+	depends = ros-kinetic-tf2-ros
+	depends = ros-kinetic-tf2
+	depends = ros-kinetic-sensor-msgs
+	depends = ros-kinetic-rospy
+	depends = eigen3
+	source = ros-kinetic-tf2-sensor-msgs-0.6.2-0.tar.gz::https://github.com/ros-gbp/geometry2-release/archive/release/kinetic/tf2_sensor_msgs/0.6.2-0.tar.gz
+	sha256sums = 69ba2f86d62f99611e08c14dd8e4f37e3f174f0e235091d960b2b78e4248552b
+
+pkgname = ros-kinetic-tf2-sensor-msgs
+
