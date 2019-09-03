@@ -35,7 +35,7 @@ build() {
 #}
 
 package_python-ccdproc() {
-    depends=('python' 'python-numpy' 'python-scipy' 'python-astropy>=1.0' 'python-scikit-image' 'python-astroscrappy' 'python-reproject')
+    depends=('python' 'python-numpy' 'python-scipy' 'python-astropy>=1.0' 'python-scikit-image' 'python-astroscrappy' 'python-reproject>=0.5')
     optdepends=('python-ccdproc-doc: Documentation for CCDPROC')
     cd ${srcdir}/${_pyname}-${pkgver}
 

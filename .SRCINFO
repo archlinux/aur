@@ -23,7 +23,7 @@ pkgname = python-ccdproc
 	depends = python-astropy>=1.0
 	depends = python-scikit-image
 	depends = python-astroscrappy
-	depends = python-reproject
+	depends = python-reproject>=0.5
 	optdepends = python-ccdproc-doc: Documentation for CCDPROC
 
 pkgname = python-ccdproc-doc
