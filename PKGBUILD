@@ -34,10 +34,10 @@ prepare() {
     patch -Np1 -i "${srcdir}/brave-vaapi-enable.patch"
 
     # Hack to prioritize python2 in PATH
-    mkdir -p "${HOME}/bin"
-    ln -s /usr/bin/python2 "${HOME}/bin/python"
-    ln -s /usr/bin/python2-config "${HOME}/bin/python-config"
-    export PATH="${HOME}/bin:${PATH}"
+    mkdir -p "${srcdir}/bin"
+    ln -s /usr/bin/python2 "${srcdir}/bin/python"
+    ln -s /usr/bin/python2-config "${srcdir}/bin/python-config"
+    export PATH="${srcdir}/bin:${PATH}"
 
     # Prepare the environment
     npm install
