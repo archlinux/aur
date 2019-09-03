@@ -3,7 +3,7 @@
 # Contributor: Patrick Burroughs (Celti) <celti@celti.name>
 
 pkgname=networkmanager-libreswan-git
-pkgver=1.2.11.dev.r15.g932bfbb
+pkgver=1.2.13.dev.r1.ga7366e3
 pkgrel=1
 pkgdesc="NetworkManager IPSec VPN plugin for Libreswan"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('GPL')
 url='http://wiki.gnome.org/Projects/NetworkManager/VPN'
 provides=('networkmanager-libreswan')
 conflicts=('networkmanager-libreswan')
-depends=('libnm-gtk' 'libsecret' 'libreswan' 'libnl')
+depends=('libsecret' 'libreswan' 'libnl')
 makedepends=('intltool' 'python' 'git')
 source=(git+https://gitlab.gnome.org/GNOME/NetworkManager-libreswan.git#branch=master)
 sha256sums=('SKIP')
