@@ -1,27 +1,23 @@
 pkgbase = nvidia-390xx-ck
 	pkgdesc = NVIDIA drivers for linux-ck, 390xx legacy branch.
-	pkgver = 390.116
-	pkgrel = 45
+	pkgver = 390.129
+	pkgrel = 1
 	url = http://www.nvidia.com/
 	arch = x86_64
 	license = custom
-	makedepends = nvidia-390xx-utils=390.116
+	makedepends = nvidia-390xx-utils=390.129
 	makedepends = libglvnd
 	makedepends = linux-ck-headers
 	depends = linux-ck
 	depends = libglvnd
-	depends = nvidia-390xx-utils=390.116
+	depends = nvidia-390xx-utils=390.129
 	conflicts = nvidia-340xx-ck
 	conflicts = nvidia-ck
 	options = !strip
-	source = http://us.download.nvidia.com/XFree86/Linux-x86_64/390.116/NVIDIA-Linux-x86_64-390.116-no-compat32.run
+	source = http://us.download.nvidia.com/XFree86/Linux-x86_64/390.129/NVIDIA-Linux-x86_64-390.129-no-compat32.run
 	source = kernel-4.16.patch
-	source = kernel-5.1.patch
-	source = kernel-5.2.patch
-	sha256sums = de85a2eea39ca16e25645b345259b01fbe858b833286b7e6785afa273009ef6f
+	sha256sums = a7925a327cab828d1eb9e74f8943623c5dbc9a5e376a4c0184065d4a319696c1
 	sha256sums = 622ac792ec200b2239cb663c0010392118b78c9904973d82cd261165c16d6385
-	sha256sums = d92899d4f7a40e2c3cad92d067f2f53c3a18c49b34e62e707a93b125aa37640f
-	sha256sums = 9d94f30662d64400ee43bb7745544b72e1c6216a30ae2907a744c7ae0aa6e384
 
 pkgname = nvidia-390xx-ck
 
