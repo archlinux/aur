@@ -3,8 +3,8 @@
 
 _pkgname=imagewriter
 pkgname="${_pkgname}-git"
-pkgver=20150521
-pkgrel=3
+pkgver=20190501
+pkgrel=1
 pkgdesc="A graphical utility for writing raw disk images & hybrid ISOs to USB keys. QT5 GIT release."
 arch=('i686' 'x86_64')
 url="https://github.com/openSUSE/${_pkgname}"
