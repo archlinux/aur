@@ -11,7 +11,7 @@ _enable_gcc_more_v="y"
 # Optionally select a sub architecture by number if building in a clean chroot
 # Leaving this entry blank will require user interaction during the build
 # which will cause a failure to build if using makechrootpkg. Note that the
-# generic (default) option is 26.
+# generic (default) option is 30.
 #
 #  1. AMD Opteron/Athlon64/Hammer/K8 (MK8)
 #  2. AMD Opteron/Athlon64/Hammer/K8 with SSE3 (MK8SSE3)
@@ -24,64 +24,56 @@ _enable_gcc_more_v="y"
 #  9. AMD Steamroller (MSTEAMROLLER)
 #  10. AMD Excavator (MEXCAVATOR)
 #  11. AMD Zen (MZEN)
-#  12. Intel P4 / older Netburst based Xeon (MPSC)
-#  13. Intel Atom (MATOM)
-#  14. Intel Core 2 (MCORE2)
-#  15. Intel Nehalem (MNEHALEM)
-#  16. Intel Westmere (MWESTMERE)
-#  17. Intel Silvermont (MSILVERMONT)
-#  18. Intel Sandy Bridge (MSANDYBRIDGE)
-#  19. Intel Ivy Bridge (MIVYBRIDGE)
-#  20. Intel Haswell (MHASWELL)
-#  21. Intel Broadwell (MBROADWELL)
-#  22. Intel Skylake (MSKYLAKE)
-#  23. Intel Skylake X (MSKYLAKEX)
-#  24. Intel Cannon Lake (MCANNONLAKE)
-#  25. Intel Ice Lake (MICELAKE)
-#  26. Generic-x86-64 (GENERIC_CPU)
-#  27. Native optimizations autodetected by GCC (MNATIVE)
+#  12. AMD Zen 2 (MZEN2)
+#  13. Intel P4 / older Netburst based Xeon (MPSC)
+#  14. Intel Atom (MATOM)
+#  15. Intel Core 2 (MCORE2)
+#  16. Intel Nehalem (MNEHALEM)
+#  17. Intel Westmere (MWESTMERE)
+#  18. Intel Silvermont (MSILVERMONT)
+#  19. Intel Goldmont (MGOLDMONT)
+#  20. Intel Goldmont Plus (MGOLDMONTPLUS)
+#  21. Intel Sandy Bridge (MSANDYBRIDGE)
+#  22. Intel Ivy Bridge (MIVYBRIDGE)
+#  23. Intel Haswell (MHASWELL)
+#  24. Intel Broadwell (MBROADWELL)
+#  25. Intel Skylake (MSKYLAKE)
+#  26. Intel Skylake X (MSKYLAKEX)
+#  27. Intel Cannon Lake (MCANNONLAKE)
+#  28. Intel Ice Lake (MICELAKE)
+#  29. Intel Cascade Lake (MCASCADELAKE)
+#  30. Generic-x86-64 (GENERIC_CPU)
+#  31. Native optimizations autodetected by GCC (MNATIVE)
 _subarch=
 
-# Compile ONLY probed modules
-# Build in only the modules that you currently have probed in your system VASTLY
-# reducing the number of modules built and the build time.
-#
-# WARNING - ALL modules must be probed BEFORE you begin making the pkg!
+# Compile ONLY used modules to VASTLY reduce the number of modules built
+# and the build time.
 #
 # To keep track of which modules are needed for your specific system/hardware,
 # give module_db script a try: https://aur.archlinux.org/packages/modprobed-db
-# This PKGBUILD will call it directly to probe all the modules you have logged!
+# This PKGBUILD read the database kept if it exists
 #
 # More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
 _localmodcfg=
 
-# If you have laptop with optimus and it hangs on boot one solution might be 
-# to set acpi_rev_override. Yet for this to happen kernel should be compiled
-# with `CONFIG_ACPI_REV_OVERRIDE_POSSIBLE`. Set next variable to `y` to enable.
-_rev_override="n"
-
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
-_major=5.1
-_minor=9
-_srcname=linux-${_major}
-_clr=${_major}.4-3
+_major=5.3
+_minor=0
+_srcname=linux-${_major}-rc7
+_clr=${_major}.0-5
 pkgbase=linux-clear-current
 pkgver=${_major}.${_minor}
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux-current"
 license=('GPL2')
-makedepends=('bc' 'git' 'inetutils' 'kmod' 'libelf' 'linux-firmware' 'xmlto')
+makedepends=('bc' 'git' 'inetutils' 'kmod' 'libelf' 'xmlto')
 options=('!strip')
-_ucode='20190514'
-_gcc_more_v='20180509'
+_gcc_more_v='20190822'
 source=(
-  "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.tar.xz"
-  "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.tar.sign"
-  "https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz"
+  "https://git.kernel.org/torvalds/t/${_srcname}.tar.gz"
   "clearlinux-current::git+https://github.com/clearlinux-pkgs/linux-current.git#tag=${_clr}"
-  "intel-ucode-${_ucode}.tar.gz::https://github.com/intel/Intel-Linux-Processor-Microcode-Data-Files/archive/microcode-${_ucode}.tar.gz"
   "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
   '60-linux.hook'  # pacman hook for depmod
   '90-linux.hook'  # pacman hook for initramfs regeneration
@@ -96,8 +88,8 @@ prepare() {
     cd ${_srcname}
 
     ### Add upstream patches
-        msg2 "Add upstream patches"
-        patch -Np1 -i ../patch-${pkgver}
+        #msg2 "Add upstream patches"
+        #patch -Np1 -i ../patch-${pkgver}
 
     ### Setting version
         msg2 "Setting version..."
@@ -106,7 +98,7 @@ prepare() {
         echo "$_kernelname" > localversion.20-pkgname
 
     ### Add Clearlinux patches
-        for i in $(grep '^Patch' ${srcdir}/clearlinux-current/linux-current.spec | grep -Ev '^patch0127' | sed -n 's/.*: //p'); do
+        for i in $(grep '^Patch' ${srcdir}/clearlinux-current/linux-current.spec | grep -Ev '^Patch0123' | sed -n 's/.*: //p'); do
         msg2 "Applying patch ${i}..."
         patch -Np1 -i "$srcdir/clearlinux-current/${i}"
         done
@@ -115,33 +107,26 @@ prepare() {
         msg2 "Setting config..."
         cp -Tf $srcdir/clearlinux-current/config ./.config
 
-    ### Compress modules
-        msg2 "Enabling XZ compressed modules..."
+    ### Enable extra stuff from arch kernel
+        msg2 "Enable extra stuff from arch kernel..."
         sed -i 's|^# CONFIG_MODULE_COMPRESS|\
 CONFIG_MODULE_COMPRESS=y\
 # CONFIG_MODULE_COMPRESS_GZIP is not set\
 CONFIG_MODULE_COMPRESS_XZ=y|' ./.config
-
-    ### Set ACPI_REV_OVERRIDE_POSSIBLE to prevent optimus lockup
-        if [ "${_rev_override}" = "y" ]; then
-        msg2 "Enabling ACPI Rev Override Possible..."
         sed -i "s|# CONFIG_ACPI_REV_OVERRIDE_POSSIBLE is not set|CONFIG_ACPI_REV_OVERRIDE_POSSIBLE=y|g" ./.config
-        fi
+        sed -i "s|# CONFIG_HIBERNATION is not set|CONFIG_HIBERNATION=y|g" ./.config
+        sed -i "s|# CONFIG_FRAMEBUFFER_CONSOLE_DEFERRED_TAKEOVER is not set|CONFIG_FRAMEBUFFER_CONSOLE_DEFERRED_TAKEOVER=y|g" ./.config
+        sed -i "s|CONFIG_RT_GROUP_SCHED=y|# CONFIG_RT_GROUP_SCHED is not set|g" ./.config
+        sed -i "s|# CONFIG_DELL_SMBIOS_SMM is not set|CONFIG_DELL_SMBIOS_SMM=y|g" ./.config
+        sed -i "s|CONFIG_MODULE_SIG_FORCE=y|# CONFIG_MODULE_SIG_FORCE is not set|g" ./.config
 
         make olddefconfig
-
-    ### Copying i915 firmware and intel-ucode
-        msg2 "Copying i915 firmware and intel-ucode-${_ucode}..."
-        cp -a /usr/lib/firmware/i915 firmware/
-        cp -a ${srcdir}/Intel-Linux-Processor-Microcode-Data-Files-microcode-${_ucode}/intel-ucode firmware/
-        cp  ${srcdir}/Intel-Linux-Processor-Microcode-Data-Files-microcode-${_ucode}/intel-ucode-with-caveats/06* firmware/intel-ucode/
-        rm -f firmware/intel-ucode/0f*
 
     ### Patch source to unlock additional gcc CPU optimizations
         # https://github.com/graysky2/kernel_gcc_patch
         if [ "${_enable_gcc_more_v}" = "y" ]; then
-        msg2 "Enabling additional gcc CPU optimizations..."
-        patch -Np1 -i "$srcdir/kernel_gcc_patch-$_gcc_more_v/enable_additional_cpu_optimizations_for_gcc_v8.1+_kernel_v4.13+.patch"
+        msg2 "Applying enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v4.13+.patch ..."
+        patch -Np1 -i "$srcdir/kernel_gcc_patch-$_gcc_more_v/enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v4.13+.patch"
         fi
 
     ### Get kernel version
@@ -158,14 +143,13 @@ CONFIG_MODULE_COMPRESS_XZ=y|' ./.config
     ### Optionally load needed modules for the make localmodconfig
         # See https://aur.archlinux.org/packages/modprobed-db
         if [ -n "$_localmodcfg" ]; then
-        msg2 "If you have modprobed-db installed, running it in recall mode now"
-            if [ -e /usr/bin/modprobed-db ]; then
-            [[ -x /usr/bin/sudo ]] || {
-            echo "Cannot call modprobe with sudo. Install sudo and configure it to work with this user."
-            exit 1; }
-            sudo /usr/bin/modprobed-db recall
-            make localmodconfig
-            fi
+          if [ -f $HOME/.config/modprobed.db ]; then
+            msg2 "Running Steven Rostedt's make localmodconfig now"
+            make LSMOD=$HOME/.config/modprobed.db localmodconfig
+          else
+            msg2 "No modprobed.db data found"
+            exit
+          fi
         fi
 
     ### do not run `make olddefconfig` as it sets default options
@@ -334,12 +318,9 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha256sums=('d06a7be6e73f97d1350677ad3bae0ce7daecb79c2c2902aaabe806f7fa94f041'
+sha256sums=('97fb851940cde3041ea30322635c4c19db03c96d94cb590e333320d334f151b2'
             'SKIP'
-            '34aee04c1af73dbf2f57f953df8032c581a1210952c231c2f1d80d0165ab0e71'
-            'SKIP'
-            '553858de4315d267d1f259d1146db028eec5112a797379a7a83f5c8a22e626b3'
-            '226e30068ea0fecdb22f337391385701996bfbdba37cdcf0f1dbf55f1080542d'
+            '8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
             'ed9d35cb7d7bd829ff6253353efa5e2d119820fe4f4310aea536671f5e4caa37'
