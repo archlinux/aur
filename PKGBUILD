@@ -7,7 +7,7 @@
 _name=alice-vision
 pkgname=${_name}
 pkgver=2.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Photogrammetric Computer Vision Framework which provides a 3D Reconstruction and Camera Tracking algorithms"
 arch=('i686' 'x86_64')
 url="https://alicevision.github.io/"
@@ -61,8 +61,8 @@ fi
 }
 
 ((DISABLE_UTE)) || ((DISABLE_CUDA)) || {
-  _CMAKE_FLAGS+=( -DUNCERTAINTYTE_DIR=/usr )
-  makedepends+=('uncertainty-framework')
+  _CMAKE_FLAGS+=( -DUNCERTAINTYTE_DIR=/usr -DMAGMA_ROOT=/usr )
+  makedepends+=('uncertainty-framework' 'magma')
   optdepends+=('uncertainty-framework: for SFM uncertainty estimation')
 }
 
