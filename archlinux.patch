@@ -10,18 +10,3 @@ diff -ur old/reddio new/reddio
  
  	# Make sure the lib directory can be found
  	[ -d "$lib_dir" ] \
-diff -ur old/share/reddio/pretty-time.sh new/share/reddio/pretty-time.sh
---- old/share/reddio/pretty-time.sh	2019-08-24 14:59:37.992753822 +0200
-+++ new/share/reddio/pretty-time.sh	2019-08-24 15:00:26.673348916 +0200
-@@ -41,9 +41,9 @@
- 	# Fractions greater than 95 will round up to a whole number
- 	# We do not want to show the .0
- 	elif [ "$_frac" -gt 95 ]; then
--		printf '%.0f %ss ago\n' $_int.$_frac $2
-+		LC_NUMERIC=C printf '%.0f %ss ago\n' $_int.$_frac $2
- 	# Everything else is shown with one decimal
- 	else
--		printf '%.1f %ss ago\n' $_int.$_frac $2
-+		LC_NUMERIC=C printf '%.1f %ss ago\n' $_int.$_frac $2
- 	fi
- }

@@ -1,7 +1,7 @@
 pkgbase = reddio-git
 	pkgdesc = A command-line interface for Reddit written in POSIX sh
-	pkgver = r134.66c12ce
-	pkgrel = 3
+	pkgver = r141.8abd41c
+	pkgrel = 1
 	url = https://gitlab.com/aaronNG/reddio
 	changelog = ISSUES
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = reddio-git
 	source = git+https://gitlab.com/aaronNG/reddio
 	source = archlinux.patch
 	sha256sums = SKIP
-	sha256sums = d56a36a70ea279778a60e8b827c80166189584dce54bdeeccb8f33a047419157
+	sha256sums = caf1b8d24a8427e3de0abdb4a25fa986f2493eaea9df250c144431ce9274edfa
 
 pkgname = reddio-git
 

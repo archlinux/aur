@@ -5,8 +5,8 @@ pkgver() {
   cd "${pkgname%-git}"
   printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-pkgver=r134.66c12ce
-pkgrel=3
+pkgver=r141.8abd41c
+pkgrel=1
 
 pkgdesc='A command-line interface for Reddit written in POSIX sh'
 arch=('any')
@@ -23,7 +23,8 @@ makedepends=('git')
 
 changelog=ISSUES
 source=("git+$url" 'archlinux.patch')
-sha256sums=('SKIP' 'd56a36a70ea279778a60e8b827c80166189584dce54bdeeccb8f33a047419157')
+sha256sums=('SKIP'
+            'caf1b8d24a8427e3de0abdb4a25fa986f2493eaea9df250c144431ce9274edfa')
 
 prepare() {
   cd "${pkgname%-git}"
@@ -36,7 +37,7 @@ prepare() {
 package() {
   cd "${pkgname%-git}"
   make PREFIX="$pkgdir/usr" install
-  install -Dm644 README.md ISSUES example.png -t"$pkgdir/usr/share/doc/${pkgname%-git}/"
+  install -Dm644 README.md ISSUES example.png doc/* -t"$pkgdir/usr/share/doc/${pkgname%-git}/"
   install -Dm644 LICENSE -t"$pkgdir/usr/share/licenses/${pkgname%-git}/"
 }
 
