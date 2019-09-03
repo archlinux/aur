@@ -6,7 +6,7 @@
 _pkgname=servicewall
 pkgname=servicewall-git
 pkgdesc="The firewall that remembers the different networks you connect to."
-pkgver=0.4.2.r27.163e274
+pkgver=0.4.2.r28.062820b
 pkgrel=1
 arch=("any")
 url="https://github.com/lafleurdeboum/servicewall"
