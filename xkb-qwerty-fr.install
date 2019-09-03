@@ -1,5 +1,13 @@
 post_install() {
-	cat << EOF
-==> See http://marin.jb.free.fr/qwerty-fr/manual/ to complete xkb-qwerty-fr installation
-EOF
+    echo "==> Installing qwerty-fr keyboard layout"
+    /usr/bin/xkb-qwerty-fr.install triggered
+}
+
+post_upgrade() {
+    post_install
+}
+
+pre_remove() {
+    echo "==> Removing qwerty-fr keyboard layout"
+    /usr/bin/xkb-qwerty-fr.uninstall triggered
 }

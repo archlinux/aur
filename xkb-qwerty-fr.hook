@@ -1,0 +1,11 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = xkeyboard-config
+
+[Action]
+Description = Install qwerty-fr keyboard layout
+Exec = /usr/bin/xkb-qwerty-fr.install triggered
+When = PostTransaction
+Depends = perl
