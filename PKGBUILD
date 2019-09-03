@@ -51,7 +51,7 @@ _major=5.2
 _minor=11
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/sirlucjan/bfq-mq-lucjan"
 license=('GPL2')
@@ -62,18 +62,8 @@ makedepends=('kmod' 'inetutils' 'bc' 'libelf' 'python-sphinx' 'python-sphinx_rtd
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_major}"
 _bfq_rev_path="bfq-reverts-sep"
 _bfq_rev_patch="0001-Revert-block-bfq-handle-NULL-return-value-by-bfq_ini.patch"
-_bfq_path_1="bfq-paolo-dev-lucjan-for-5.2.3"
-_bfq_patch_1="0001-block-bfq-dev-lucjan.patch"
-_bfq_path_2="bfq-paolo-dev-lucjan-v2"
-_bfq_patch_2="0002-block-bfq-dev-lucjan.patch"
-_bfq_path_3="bfq-paolo-dev-lucjan-v3"
-_bfq_patch_3="0003-block-bfq-dev-lucjan.patch"
-_bfq_path_4="bfq-paolo-dev-lucjan-v4"
-_bfq_patch_4="0004-block-bfq-dev-lucjan.patch"
-_bfq_path_5="bfq-paolo-dev-lucjan-v5r2"
-_bfq_patch_5="0005-block-bfq-dev-lucjan.patch"
-_bfq_path_6="bfq-paolo-dev-lucjan-v6"
-_bfq_patch_6="0006-block-bfq-dev-lucjan.patch"
+_bfq_path="bfq-dev-lucjan"
+_bfq_patch="5.2-bfq-dev-lucjan-v11r1-2K190822.patch"
 _gcc_path="https://raw.githubusercontent.com/graysky2/kernel_gcc_patch/master"
 _gcc_patch="enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v4.13+.patch"
 
@@ -81,12 +71,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
         "${_gcc_path}/${_gcc_patch}"
         "${_lucjanpath}/${_bfq_rev_path}/${_bfq_rev_patch}"
-        "${_lucjanpath}/${_bfq_path_1}/${_bfq_patch_1}"
-        "${_lucjanpath}/${_bfq_path_2}/${_bfq_patch_2}"
-        "${_lucjanpath}/${_bfq_path_3}/${_bfq_patch_3}"
-        "${_lucjanpath}/${_bfq_path_4}/${_bfq_patch_4}"
-        "${_lucjanpath}/${_bfq_path_5}/${_bfq_patch_5}"
-        "${_lucjanpath}/${_bfq_path_6}/${_bfq_patch_6}"
+        "${_lucjanpath}/${_bfq_path}/${_bfq_patch}"
         "${_lucjanpath}/arch-patches-v2/0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch"
         "${_lucjanpath}/arch-patches-v2/0002-ZEN-Add-CONFIG-for-unprivileged_userns_clone.patch"
          # the main kernel config files
@@ -397,12 +382,7 @@ sha512sums=('6116f7b71711a01e741bf1f9b3e20e9d46b3b2d6c1dfadad79742d42a2142e13dfe
             'SKIP'
             '2eb574fbfac6e334d3b06e52e466dbf8e88034515729b6571990b10f75a0fe2a52f188615405c5a695b5820669e595deead44d7961a97c5872359be3435fdf63'
             'a57192d2989ff816e32970d86320f331be013b2c1d4a236565f33ef41b4092352e7dc560f97a39191d8c5eca8514f646fddc14a1c0168265ca3a470e7a41a2ea'
-            'd996a89d7831c4d49980b1b5b73ccd21da419302e86ea6faaf7d8f5a686bdbfe688a75c34d3e9583cbb11a011d2adcb4cb3aef66aba677e0d810f3eb1fb5be4b'
-            '8ce2e2c3da37435090abdf0d1875aa0b2870d9cb9ce148cdc30855c1beeffc87cd7a8003c3c351f8f31753c1a4678df6cb3c02c39797b361632c9e5abbe2173f'
-            '960028ff15108a88e67caf7769b21e9989aa5c56120fa417baa5a721ef09fb86e73d2ba9f1def27b0f98ac935cc670799b3fbb2b78b98b26516a9063b4c84e5f'
-            '831337f1b6042d97dc79cc5768a31f97773248a41af4704742deff4e3224aa0c57e7645d939b9fab9140fc24f0c879fabef85ed58255844ac507f9e971840ee1'
-            '2c8721cdc9a975955aaf8ef95d0917a1c39841edb036d4115a62e8a00998d63147d011453bd3c18d7a4732aed8acf41f376548c9c5d5e791fa58005dad6b9fef'
-            'd0480c545bacf3a47f99065e29e7854e840de1cd91d682663d8cb4d23f2d000f48c2de5ab648b85f8748ddb8e2984ce2fd788076fe5e807274187920bd630fe7'
+            '3b8cb12366eb0a47ec996c6274ed484b0c9a53084853bb9f9799b00abf4e2f6543d37bcd83d042cfa837575b6ab79de9c502bcc3212072dcffecd284e57516b4'
             '1cd40df805987a50723da456e5874e6ca1070e5efbf23b3267e833bb73465573eb82d5c8f74c54e9fb894cdbe5137a822381152716d7dedd64a07ac1601b0f37'
             'd75d9fc44b31e6adafe4cae641bc513c1594c7a314087fede6a7ff1f3c98c67117d84a1f7fe70f39856af9d66d9f79298791598505283ac53453cb4e763fa69c'
             '77c4e8a6e74c913a3d3cd348911af92ce25246909e7094c31ac1ef215ccd6cf3dac4dd2303f2daad3e48c734568e31e39125430fbd601ca6b808d1bdb49984ba'
