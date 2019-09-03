@@ -10,6 +10,8 @@ arch=("any")
 url="https://github.com/subuk/vmango"
 license=("unknown")
 
+backup=("etc/vmango.conf")
+
 depends=("libvirt" "qemu" "cdrtools")
 makedepends=("go-pie" "go-bindata")
 

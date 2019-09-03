@@ -1,7 +1,7 @@
 pkgbase = vmango-git
 	pkgdesc = Your own personal IaaS cloud
 	pkgver = v0.9.0.r1.g1215b87
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/subuk/vmango
 	arch = any
 	license = unknown
@@ -12,6 +12,7 @@ pkgbase = vmango-git
 	depends = cdrtools
 	provides = vmango
 	conflicts = vmango
+	backup = etc/vmango.conf
 	source = vmango::git+https://github.com/subuk/vmango.git
 	source = service
 	source = sysusers
