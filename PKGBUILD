@@ -1,8 +1,8 @@
 # Maintainer: Yesterday17 <t@yesterday17.cn>
 pkgname=go-drcom-jlu-git
 _pkgname=go-drcom-jlu
-pkgver=1.0.5
-pkgrel=6
+pkgver=1.0.6
+pkgrel=7
 pkgdesc="JLU drcom client written in golang."
 arch=('i686' 'x86_64')
 url="https://github.com/Yesterday17/go-drcom-jlu"
