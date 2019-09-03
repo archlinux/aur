@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Liu <net147@gmail.com>
 pkgname=snd-usb-audio-lowlatency-dkms
 _basepkgname=snd-usb-audio-lowlatency
-pkgver=4.19.9
+pkgver=5.2.10
 _srcname=linux-${pkgver%.*}
 pkgrel=1
 pkgdesc="snd-usb-audio kernel module modified for low latency"
@@ -11,8 +11,8 @@ license=('GPL2')
 depends=('dkms')
 install="${pkgname}.install"
 source=(
-  "https://cdn.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
-  "https://cdn.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
+  "https://cdn.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
+  "https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz"
   "${pkgname}.install"
   'dkms.conf'
   'parameters.patch'
@@ -22,8 +22,8 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('0c68f5655528aed4f99dae71a5b259edc93239fa899e2df79c055275c21749a1'
-            '0a64d9fdfbab1707840a5f4487167deca4071553c780caa0574bb0eb60499afc'
+sha256sums=('54ad66f672e1a831b574f5e704e8a05f1e6180a8245d4bdd811208a6cb0ac1e7'
+            '6fae3dfa150ea98196acd40e1b8e16b13710d07f607e900e418aa71787f872ff'
             'b2b40e2640986d0d965ff243d892d6d4d36cdadd930f4e83efffcbd8cbcf75ca'
             '69f325c3af92c4098c9d118b2eab7de76eba691677864f714697bce5f47005e2'
             '7c9b89931e4edc595dda38f8c6116dc45d10d191885c52aba3d9d8efdc26d261'
