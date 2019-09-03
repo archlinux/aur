@@ -1,0 +1,17 @@
+pkgbase = qtscriptbindings
+	pkgdesc = Qt bindings for Qt script (extracted from qcad)
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/qcad/qcad
+	arch = x86_64
+	license = GPLv3
+	depends = qt5-base
+	depends = qt5-script
+	depends = qt5-svg
+	depends = qt5-xmlpatterns
+	depends = qt5-tools
+	source = https://github.com/qcad/qcad/archive/v3.23.0.0.zip
+	md5sums = 026e8e2dd1be0cd0331deb2bd096a11c
+
+pkgname = qtscriptbindings
+
