@@ -1,7 +1,6 @@
 # Maintainer: Donald Webster <fryfrog@gmail.com>
 
-pkgbase=python-fanshim
-pkgname=('python-fanshim')
+pkgname=python-fanshim
 _name=${pkgname#python-}
 pkgver=0.0.2
 pkgrel=1
