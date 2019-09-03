@@ -1,8 +1,9 @@
 pkgbase = mirage
 	pkgdesc = A simple GTK+ Image Viewer
 	pkgver = 1.0_pre2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://sourceforge.net/projects/mirageiv.berlios/
+	install = mirage.install
 	arch = x86_64
 	license = GPL
 	depends = pygtk

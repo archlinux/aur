@@ -1,0 +1,22 @@
+post_upgrade() {
+  local new_pkgver="$1" old_pkgver="$2"
+  if [ "$(vercmp "$old_pkgver" 1.0)" -lt 0 ] && [ "$(vercmp "$new_pkgver" 1.0)" -ge 0 ]; then
+    cat <<EOF
+You may get the following error when trying to run mirage after upgrading from ${old_pkgver} to ${new_pkgver}:
+
+Traceback (most recent call last):
+  File "/usr/bin/mirage", line 30, in <module>
+    app = mirage.Base()
+  File "/usr/lib/python2.7/site-packages/mirage.py", line 227, in __init__
+    self.read_config_and_set_settings()
+  File "/usr/lib/python2.7/site-packages/mirage.py", line 714, in read_config_and_set_settings
+    self.bgcolor = gtk.gdk.Color(red=bg['r'], green=bg['g'], blue=bg['b'])
+TypeError: list indices must be integers, not str
+
+This happens because the config format was changed in 1.0_pre1. To fix this
+issue you can try deleting ~/.config/mirage directory, although you may want to
+copy contents of ~/.config/mirage/miragerc if you made any changes to it. The
+new config is located at ~/.config/mirage/mirage1.conf
+EOF
+  fi
+}
