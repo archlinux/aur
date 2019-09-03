@@ -8,7 +8,7 @@ pkgrel=2
 pkgdesc="Your own personal IaaS cloud"
 arch=("any")
 url="https://github.com/subuk/vmango"
-license=("unknown")
+license=("GPL3")
 
 backup=("etc/vmango.conf")
 
