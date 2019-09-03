@@ -1,12 +1,13 @@
 pkgbase = rainbowpath
 	pkgdesc = Program for making paths pretty.
-	pkgver = 0.3.1
+	pkgver = 0.4
 	pkgrel = 1
 	url = https://github.com/Soft/rainbowpath
 	arch = x86_64
 	license = MIT
-	source = https://github.com/Soft/rainbowpath/archive/0.3.1.tar.gz
-	sha256sums = 121b5d0222bde2031e0636b6713caee41ce449738aacac34ae53c2ee75a0b01d
+	depends = ncurses
+	source = https://github.com/Soft/rainbowpath/archive/0.4.tar.gz
+	sha256sums = 34e6cf35e46fb371eb45a3b4eacf1c7ebc32e69c318421e33aa0a4cd518ce659
 
 pkgname = rainbowpath
 
