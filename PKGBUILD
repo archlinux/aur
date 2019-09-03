@@ -2,7 +2,7 @@
 # Contributor: David Stark <david@starkers.org>
 
 pkgname=dive
-pkgver=0.7.2
+pkgver=0.8.0
 pkgrel=1
 pkgdesc='A tool for exploring each layer in a docker image'
 url='https://github.com/wagoodman/dive'
@@ -12,7 +12,7 @@ depends=('docker')
 makedepends=('go')
 conflicts=('dive-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/wagoodman/dive/archive/v$pkgver.tar.gz")
-sha256sums=('2ec6d77b662e0d709f6fc4282dbd8f0d3f6509f78133451b6b17d9b8fb594cf1')
+sha256sums=('5cf8f745cf1942693eccdb7d75f4b2e170437c60a6f8a6c57f7dc3fadabebf4c')
 
 build() {
   # Trim pwd from path
