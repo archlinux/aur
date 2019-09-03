@@ -1,6 +1,6 @@
-# Maintainer: Zhanibek Adilbekov <zhanibek.adilbekov@protornmail.com>
+# Maintainer: Zhanibek Adilbekov <zhanibek.adilbekov@pm.me>
 pkgname=fzf-git-bindings-gist
-pkgver=r20180616.1
+pkgver=r20190314.1
 pkgrel=1
 pkgdesc="Key bindings for git with fzf."
 arch=('any')
@@ -9,11 +9,11 @@ license=('custom')
 depends=('fzf' 'git')
 install=$pkgname.install
 source=(
-	'https://gist.githubusercontent.com/junegunn/8b572b8d4b5eddd8b85e5f4d40f17236/raw/3dc286fb5873ad244375b8fb22dfad1b1d9c5d99/functions.sh'
-	'https://gist.githubusercontent.com/junegunn/8b572b8d4b5eddd8b85e5f4d40f17236/raw/3dc286fb5873ad244375b8fb22dfad1b1d9c5d99/key-binding.bash'
-	'https://gist.githubusercontent.com/junegunn/8b572b8d4b5eddd8b85e5f4d40f17236/raw/3dc286fb5873ad244375b8fb22dfad1b1d9c5d99/key-binding.zsh'
+	'https://gist.githubusercontent.com/junegunn/8b572b8d4b5eddd8b85e5f4d40f17236/raw/be535c93284afde06342526de9476eb15071e78a/functions.sh'
+	'https://gist.githubusercontent.com/junegunn/8b572b8d4b5eddd8b85e5f4d40f17236/raw/be535c93284afde06342526de9476eb15071e78a/key-binding.bash'
+	'https://gist.githubusercontent.com/junegunn/8b572b8d4b5eddd8b85e5f4d40f17236/raw/be535c93284afde06342526de9476eb15071e78a/key-binding.zsh'
 )
-md5sums=('05a7d0a3affe85a8e4869f482af1c5d3'
+md5sums=('df4bd3be70d60dbce47d3dd3eaff3b3b'
          '949504496bf8f391fb62bec52e9b6390'
          '2f024f6eb7345bd004e8685965874b4b')
 
