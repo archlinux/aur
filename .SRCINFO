@@ -1,0 +1,26 @@
+pkgbase = guiscrcpy-git
+	pkgdesc = A full fledged GUI integration for the most award winning open-source Android screen mirroring system -- scrcpy
+	pkgver = 1.10.r53.897316e
+	pkgrel = 1
+	url = https://srevinsaju.github.io/guiscrcpy
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = scrcpy
+	depends = python-pyqt5
+	depends = python-psutil
+	optdepends = python-qdarkstyle: for dark theme
+	optdepends = wmctrl: to use development toolkit
+	optdepends = xdotool: to use development toolkit
+	provides = guiscrcpy
+	conflicts = guiscrcpy
+	source = git+https://github.com/srevinsaju/guiscrcpy.git
+	source = guiscrcpy.desktop
+	source = guiscrcpy.sh
+	sha256sums = SKIP
+	sha256sums = 17d3182d5a910b51803c72922ffd5a226691a290e360b72a93597dc5700a4c96
+	sha256sums = 21a9e0f6a38db03cbe84d6498519bd79d66796f47cd6a738133f38a45ea4bb42
+
+pkgname = guiscrcpy-git
+
