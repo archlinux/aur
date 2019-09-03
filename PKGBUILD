@@ -1,7 +1,8 @@
 # Maintainer: Chris Billington <chrisjbillington@gmail.com>
 pkgname=('git-nautilus-icons-common')
+_pypi_name=('git_nautilus_icons_common')
 pkgver=1.1.1
-pkgrel=0
+pkgrel=1
 arch=('x86_64' 'i686')
 url="https://github.com/chrisjbillington/git_nautilus_icons"
 license=('BSD 2-Clause "Simplified"')
@@ -10,16 +11,16 @@ depends=('python-gobject')
 makedepends=('python-setuptools')
 provides=('git-nautilus-icons-common')
 conflicts=('git-nautilus-icons-common' 'git-nautilus-icons-common-py2')
-source=("https://github.com/chrisjbillington/git_nautilus_icons/archive/${pkgver}.tar.gz")
-sha512sums=('c5e439b1a91b183b6fe3d52ddeae796c2339a78cf9378736c6eaee336c27b8691be0052f76bf15e9e3901bce2e7a2f7bd3383fa928f252ad50be9a53c0090c7b')
+source=("https://files.pythonhosted.org/packages/source/${_pypi_name::1}/$_pypi_name/$_pypi_name-$pkgver.tar.gz")
+sha512sums=('544de9432bea7e48973242d17b8d845f8928796bf5250e4b78fc5fb2ec396663874611093e3276cbe43c48618d63f116e750139fe61ae3ab8ebb81c10087e155')
 
 build() {
-    cd "${srcdir}/git_nautilus_icons-${pkgver}/git_nautilus_icons_common"
+    cd "${srcdir}/${_pypi_name}-${pkgver}"
     python setup.py build
 }
 
 package() {
-    cd "${srcdir}/git_nautilus_icons-${pkgver}/git_nautilus_icons_common"
+    cd "${srcdir}/${_pypi_name}-${pkgver}"
     python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
     install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
