@@ -4,7 +4,7 @@
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=webkit2gtk-unstable
-pkgver=2.25.4
+pkgver=2.25.92
 pkgrel=1
 pkgdesc="GTK Web content engine library"
 arch=(x86_64)
@@ -17,7 +17,7 @@ optdepends=('gst-plugins-base: free media decoding'
             'gst-plugins-good: media decoding'
             'gst-libav: nonfree media decoding')
 source=(https://webkitgtk.org/releases/webkitgtk-${pkgver}.tar.xz{,.asc})
-sha256sums=('9361058c059402117995c779906f4a25232185ce7735663428fda9cf3c79f101'
+sha256sums=('3ab9b82e863abb7329ec2af39baaf4ce98eb7d96bc61c3c35971b6860e7cc894'
             'SKIP')
 validpgpkeys=('D7FCF61CF9A2DEAB31D81BD3F3D322D0EC4582C3'
               '5AA3BC334FD7E3369E7C77B291C559DBE4C9123B')
