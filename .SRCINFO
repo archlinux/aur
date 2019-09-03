@@ -1,0 +1,18 @@
+pkgbase = opendnp3-git
+	pkgdesc = DNP3 (IEEE-1815) protocol stack built with modern C++
+	pkgver = 2.3.1.r6.g44c06cb14
+	pkgrel = 1
+	url = https://github.com/dnp3/opendnp3
+	arch = i686
+	arch = x86_64
+	license = APACHE
+	makedepends = cmake
+	makedepends = git
+	depends = asio
+	provides = opendnp3
+	conflicts = opendnp3
+	source = opendnp3::git://github.com/dnp3/opendnp3.git
+	sha256sums = SKIP
+
+pkgname = opendnp3-git
+
