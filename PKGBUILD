@@ -74,6 +74,6 @@ package_gostcoin-qt-git(){
   install -Dm755 $srcdir/${pkgbase%%-git}/gostcoin-qt "$pkgdir/usr/bin/gostcoin-qt"
 }
 
-md5sums=('SKIP'
-         'de88ac1312fd3ebff6be691348c976bf'
-         'a2811c45f7bdbb9dc66775f6f897631e')
+sha256sums=('SKIP'
+            '2f3621bdfe990bad094f1a31735af60582eef05150c685d974546b1c8de0b8ce'
+            '7f123c96f26bcd8e1ea12603e2c92988795ac516a8e4b1c2bdc670e51016ae67')
