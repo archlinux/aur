@@ -11,6 +11,7 @@ pkgbase = camo.cr-git
 	checkdepends = ruby-bundler
 	makedepends = crystal
 	makedepends = shards
+	makedepends = git
 	depends = gc
 	depends = libatomic_ops
 	depends = pcre
