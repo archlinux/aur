@@ -3,9 +3,10 @@
 pkgname=reddio-git
 pkgver() {
   cd "${pkgname%-git}"
-  printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'
+  #printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-pkgver=r141.8abd41c
+pkgver=0.3.r6.8c973fb
 pkgrel=1
 
 pkgdesc='A command-line interface for Reddit written in POSIX sh'
