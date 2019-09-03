@@ -1,7 +1,7 @@
 # Maintainer: Zhanibek Adilbekov <zhnaibek.adilbekov@pm.me>
 # Original Maintainer: Daichi Shinozaki <dsdseg@gmail.com>
 pkgname=gibo
-pkgver=2.2.2
+pkgver=2.2.3
 pkgrel=1
 pkgdesc="A shell script for easily accessing gitignore boilerplates"
 url="https://github.com/simonwhitaker/gibo"
@@ -9,8 +9,8 @@ arch=('any')
 install=$pkgname.install
 license=('custom:UNLICENSE')
 source=("https://github.com/simonwhitaker/$pkgname/archive/$pkgver.tar.gz"
-        "$pkgname.install")
-md5sums=('881ed9e518b5aab2a6c40d83e960d9c8'
+	"$pkgname.install")
+md5sums=('8b5f8505b3612daf8c8e60c2c27c5863'
          'b1b49419e90f7b7f0e84a214ecfdbfef')
 
 package() {
@@ -33,4 +33,3 @@ package() {
 	mkdir -p $pkgdir/usr/share/fish/completions
 	install -Dm644 ./shell-completions/$pkgname.fish $pkgdir/usr/share/fish/completions/$pkgname.fish
 }
-
