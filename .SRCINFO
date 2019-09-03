@@ -1,17 +1,16 @@
 pkgbase = python-pybindgen
 	pkgdesc = A tool to generate Python bindings for C/C++ code
-	pkgver = 0.17.0
-	pkgrel = 3
-	url = http://pypi.python.org/pypi/PyBindGen
+	pkgver = 0.20.0
+	pkgrel = 1
+	url = https://github.com/gjcarneiro/pybindgen
 	arch = i686
 	arch = x86_64
 	license = LGPL
-	makedepends = waf
-	depends = python
-	provides = python-pybindgen
-	conflicts = python-pybindgen-bzr
-	source = https://pypi.python.org/packages/source/P/PyBindGen/PyBindGen-0.17.0.tar.gz
-	md5sums = 7d8fe2b3b4646c3c1d9e5342b1645f6a
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = https://pypi.python.org/packages/source/P/PyBindGen/PyBindGen-0.20.0.tar.gz
+	md5sums = 776a22dc2dd7edb66a0887c98d2fdc24
 
 pkgname = python-pybindgen
+	depends = python
 
