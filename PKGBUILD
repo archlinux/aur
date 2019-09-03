@@ -2,8 +2,8 @@
 # Contributor: Timo Wilken <timo 21 wilken plus aur at gmail dot com>
 
 pkgname=(ttf-inter-ui otf-inter-ui)
-pkgver=3.7
-pkgrel=2
+pkgver=3.9
+pkgrel=1
 pkgdesc="A font for highly legible text on computer screens"
 url="https://rsms.me/inter/"
 arch=(any)
@@ -11,7 +11,7 @@ license=(custom:"SIL Open Font License")
 conflicts=('ttf-interface')
 
 source=("Inter-${pkgver}.zip::https://github.com/rsms/inter/releases/download/v${pkgver}/Inter-${pkgver}.zip")
-sha256sums=('0eb097467954991e109d179e22f06b11ef462e632dac5ce65633aa6e7262fa40')
+sha256sums=('445f71a2c6d0a64c11649533346ded15eb28c1be97b5866910f786da78ab4dbb')
 
 package_ttf-inter-ui() {
     install -d "$pkgdir/usr/share/fonts/${pkgname%-fonts}"
