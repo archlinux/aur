@@ -1,0 +1,14 @@
+pkgbase = armm
+	pkgdesc = Android Repo Manifest Management tool
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/jtyr/armm
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://github.com/jtyr/armm/archive/v1.0.0.tar.gz
+	sha256sums = 67c2ea41437802ffba907f710283b2170d5e7b9a4f30e3fd17db81566aaf7215
+
+pkgname = armm
+
