@@ -1,5 +1,5 @@
 pkgname=libosp-bin
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="HemiStereo sensor libraries"
 arch=('x86_64')
@@ -8,7 +8,7 @@ license=('unknown')
 depends=('boost' 'grpc' 'opencv' 'protobuf')
 
 source=("https://3dvisionlabs.com/wp-content/downloads/HemiStereo-$pkgver-Linux.tar.gz")
-sha256sums=('3945b4c65eb04a594c838c238f24fa11168f3a5131975106ed31fbd59c57f4e3')
+sha256sums=('e73a81679b02d5489860c53944ae01af3cdb0a2b43a5ffea65082d0b6579c5c4')
 
 package() {
     install -d "${pkgdir}/usr/lib/osp"
