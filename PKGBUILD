@@ -11,7 +11,7 @@
 
 pkgname=mesa-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=19.3.0_devel.114998.966a455bb91
+pkgver=19.3.0_devel.115005.538820ff5ff
 pkgrel=1
 arch=('x86_64')
 makedepends=('git' 'python-mako' 'xorgproto'
@@ -94,7 +94,10 @@ prepare() {
     fi
     
     cd mesa
-    patch --forward --strip=1 --input="$srcdir"/ArrayRefized-CompilerInvocation-CreateFromArgs.patch
+    if [[ $MESA_WHICH_LLVM < 4 ]]; then
+        # this patch is only needed when building against llvm trunk
+        patch --forward --strip=1 --input="$srcdir"/ArrayRefized-CompilerInvocation-CreateFromArgs.patch
+    fi
 }
 
 build () {
@@ -127,7 +130,7 @@ build () {
        -D lmsensors=true \
        -D osmesa=gallium \
        -D shared-glapi=true \
-       -D gallium-opencl=disabled \
+       -D gallium-opencl=icd \
        -D valgrind=false \
        -D vulkan-overlay-layer=true \
        -D tools=[]
