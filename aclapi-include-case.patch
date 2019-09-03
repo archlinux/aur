@@ -1,0 +1,13 @@
+diff --git a/src/path.c b/src/path.c
+index 90473fc..34346a8 100644
+--- a/src/path.c
++++ b/src/path.c
+@@ -14,7 +14,7 @@
+ #include "win32/w32_buffer.h"
+ #include "win32/w32_util.h"
+ #include "win32/version.h"
+-#include <AclAPI.h>
++#include <aclapi.h>
+ #else
+ #include <dirent.h>
+ #endif
