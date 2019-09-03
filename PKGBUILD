@@ -2,7 +2,7 @@
 
 pkgname=git-brws
 pkgver=0.11.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Command line tool to open repository URLs for GitHub, BitBucket and GitLab in your browser'
 arch=('x86_64')
 url="https://github.com/rhysd/git-brws"
@@ -22,5 +22,6 @@ package() {
   cd "$srcdir/$pkgname-$pkgver"
 
   install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
+  install -Dm644 "$pkgname.1" "$pkgdir/usr/share/man/man1/$pkgname.1"
   install -Dm644 "LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
