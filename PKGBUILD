@@ -1,8 +1,8 @@
 # Maintainer: Gregory Boyce <gregory@auburndaletech.com>
 
 pkgname=ntpsec
-pkgver=1.1.6
-pkgrel=3
+pkgver=1.1.7
+pkgrel=1
 pkgdesc="Security-hardened Network Time Protocol implementation"
 arch=('i686' 'x86_64')
 url="https://www.ntpsec.org/"
@@ -19,7 +19,7 @@ source=("ftp://ftp.ntpsec.org/pub/releases/$pkgname-$pkgver.tar.gz"
         "ftp://ftp.ntpsec.org/pub/releases/$pkgname-$pkgver.tar.gz.asc"
         use-arch-pool.patch
         ntpsec.sysusers)
-sha512sums=('f57fde6f329a858313968798d64df5e93d7eba43edf4752cd0eb45ff1a2237ce2731b4603ec997c493dea85edb42976f96eb1508beae087a8c2ae8a76c0a6941'
+sha512sums=('734b12820539e655e504dd5071a58b9d1f80c0b0c3c7458c797ba7ada23d8e446751fbcbddd9832d9151a3ba9464749878db9e77e23cdd5f6215ab9e1d908ae9'
             'SKIP'
             '7edb1d2dd41b135fa489de1802ea9b4079e9cb6556fa6457924bf7363bef7375987b9e4bb6507730ad906199ba55a44103d0655ad1f517b0426083be5b3e218c'
             'ac4ce13fe88a383382abb92cb34ab231467cbc9dcb8ac8780480d467f295ddf65e217b6415bbadabd8c7ac9832b0fd9058b837946aa2d5dcfd9f3bb81cff6b31')
