@@ -12,7 +12,7 @@ depends=('python' 'python-marisa-trie' 'git')
 provides=('gi')
 conflicts=('gi')
 install=
-source=(git+https://bitbucket.org/gagarski/$pkgname.git#tag=$pkgver)
+source=(git+https://github.com/gagarski/$pkgname.git#tag=$pkgver)
 md5sums=('SKIP')
 
 optdepends=('gi-bash-completion: for bash-completion support')
