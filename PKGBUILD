@@ -1,6 +1,6 @@
 # Maintainer: Johannes Arnold <johannes.arnold@stud.uni-hannover.de>
 pkgname=wldash-git
-pkgver=r75.2bb0a2f
+pkgver=r90.2bad68a
 pkgrel=1
 pkgdesc="Wayland launcher/dashboard"
 arch=('x86_64')
@@ -23,7 +23,7 @@ pkgver() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
-	cargo build --release --features=bc
+	cargo build --release
 }
 
 package() {
