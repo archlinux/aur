@@ -1,67 +1,57 @@
-# Contributor: A. Fluteaux <sigma_g@melix.net>
-# Contributor: Elmo Tudurov <tudurov+arch@gmail.com>
-# Contributor: strata <strata@dropswitch.net>
-pkgname=mudlet-git
-pkgver=20150130
-pkgrel=2
-pkgdesc="Mudlet git development branch - is a quality MUD client, designed to take mudding to a new level."
-arch=('i686' 'x86_64')
-url="http://www.mudlet.org/"
-license=('GPL2')
-depends=('glu' 'hunspell' 'libzip' 'lua51' 'lua51-filesystem'
-         'lua51-sql-sqlite' 'luazip5.1' 'lrexlib-pcre5.1'
-         'qt5-base' 'qt5-multimedia' 'yajl')
-makedepends=('boost' 'git' 'qt5-tools')
+# Previous Maintainers of Mudlet-git
+# Contributor: A. Fluteaux <sigma_g (at) melix (dot) net>
+# Contributor: Elmo Tudurov <tudurov+arch (at) gmail (dot) com>
+# Contributor: strata <strata (at) dropswitch (dot) net>
 
-_gitroot="git://github.com/Mudlet/Mudlet"
-_gitname="mudlet"
-_gitbranch="development"
+# Based on mudlet and mudlet-dev by Xabre et al.
+# Contributor: Jaroslav Lichtblau <dragonlord (at) aur.archlinux (dot) org>
+# Contributor: Christoph Zeiler <archNOSPAM_at_moonblade.dot.org>
+# Contributor: Ryon Sherman <ryon.sherman (at) gmail (dot) com>
+# Contributor: Dardo Marasca <gefarion (at) gmail (dot) com>
+# Contributor: Kevin Kyzer <kev (at) k3v (dot) in>
+# Contributor: Xabre <xabre (at) archlinux (dot) info>
+# Maintainer: WSDMatty <wsdmatty (at) gmail (dot) com>
+
+pkgname=mudlet-git
+pkgver=3.22.1.r153.gadb14133
+pkgrel=1
+pkgdesc="A modern MUD client with a graphical interface and Lua scripting (upstream dev branch)"
+_branch="development"
+arch=('i686' 'x86_64')
+url="https://github.com/Mudlet/Mudlet"
+license=('GPL2')
+depends=('hunspell' 'libzip' 'glu' 'lua51' 'qt5-gamepad' 'ttf-font' 'pugixml' 'qt5-speech')
+makedepends=('git' 'boost' 'qt5-tools' 'yajl')
+provides=('mudlet')
+conflicts=('mudlet' 'mudlet-dev' 'mudlet-deb')
+source=("$pkgname::git+$url.git#branch=$_branch")
+sha1sums=('SKIP')
+
+pkgver() {
+    cd "$srcdir/$pkgname/src"
+    git describe --long --tags | sed 's/^Mudlet-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+    cd "$srcdir/$pkgname/src"
+    # Initialize required submodules for build
+    git submodule update --init --recursive
+    sed -i 's;"mudlet.app/Contents/Resources/mudlet-lua/lua/";"mudlet.app/Contents/Resources/mudlet-lua/lua/", "/usr/share/mudlet/lua/";' mudlet-lua/lua/LuaGlobal.lua
+
+##Fix building with Qt 5.5+
+    sed -i '/#include <QString>/ a #include <QDataStream>' ActionUnit.h
+    sed -i '/#include <QTime>/ a #include <QDataStream>' ctelnet.h
+}
 
 build() {
-  cd "${srcdir}"
-  msg "Connecting to GIT server...."
-
-  if [[ -d "${_gitname}" ]]; then
-    cd "${_gitname}" && git pull origin
-    msg "The local files are updated."
-  else
-    git clone -b "${_gitbranch}" "${_gitroot}" "${_gitname}"
-  fi
-
-  msg "GIT checkout done or server timeout"
-  msg "Starting build..."
-
-  rm -rf "${srcdir}/${_gitname}-build"
-  git clone -b "${_gitbranch}" "${srcdir}/${_gitname}" "${srcdir}/${_gitname}-build" 
-  cd "${srcdir}/${_gitname}-build/src"
-
-  _gitsha=$(git show-branch --sha1-name | cut -b2-8)
-  sed -i "s,BUILD = -dev,BUILD = -${_gitsha}-dev," src.pro
-
-  sed -i 's,QString path = "../src/mudlet-lua/lua/LuaGlobal.lua";,QString path = "/usr/share/mudlet/lua/LuaGlobal.lua";,' TLuaInterpreter.cpp
-  sed -i 's;"mudlet-lua/lua"};"mudlet-lua/lua",\n    "/usr/share/mudlet/lua/" };' mudlet-lua/lua/LuaGlobal.lua
-
-  sed -i 's/settings("Mudlet", "Mudlet 1.0");/settings("mudlet", "mudlet");/' dlgTriggerEditor.cpp
-  sed -i 's/settings("Mudlet", "Mudlet 1.0");/settings("mudlet", "mudlet");/' mudlet.cpp
-
-  qmake-qt5 PREFIX=/usr
-  make
+    cd "$srcdir/$pkgname/src"
+    WITH_FONTS=NO WITH_UPDATER=NO qmake-qt5 PREFIX=/usr
+    make
 }
 
 package() {
-  cd "${srcdir}/${_gitname}-build/src"
-
-  mkdir -p "${pkgdir}/usr/bin"
-  mkdir -p "${pkgdir}/usr/share/mudlet/lua/geyser"
-  mkdir -p "${pkgdir}/usr/share/applications"
-  mkdir -p "${pkgdir}/usr/share/pixmaps"
-
-  install -m 755 mudlet "${pkgdir}/usr/bin/mudlet" || return 1
-  install -m 644 mudlet-lua/lua/*.lua "${pkgdir}/usr/share/mudlet/lua" || return 1
-  install -m 644 mudlet-lua/lua/geyser/*.lua "${pkgdir}/usr/share/mudlet/lua/geyser" || return 1
-  install -m 644 ../mudlet.desktop "${pkgdir}/usr/share/applications" || return 1
-  install -m 644 ../mudlet.png "${pkgdir}/usr/share/pixmaps" || return 1
-  install -m 644 ../mudlet.svg "${pkgdir}/usr/share/pixmaps" || return 1
+    cd "$srcdir/$pkgname/src"
+    make INSTALL_ROOT="$pkgdir" install
+    install -Dm 644 $srcdir/$pkgname/mudlet.desktop ${pkgdir}/usr/share/applications/mudlet.desktop
+    install -Dm 644 $srcdir/$pkgname/mudlet.png ${pkgdir}/usr/share/pixmaps/mudlet.png
 }
-
-# vim:set ts=2 sw=2 et:
