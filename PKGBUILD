@@ -6,12 +6,12 @@ pkgdesc="A Lua wrapper for bcrypt"
 arch=('i686' 'x86_64')
 url="http://github.com/mikejsavage/lua-bcrypt"
 license=('MIT')
-depends=('lua51')
-makedepends=('luarocks5.2')
+depends=('lua52')
+makedepends=('luarocks')
 source=("https://luarocks.org/manifests/mikejsavage/bcrypt-${pkgver/_/-}.src.rock")
 
 package() {
-  luarocks-5.2 --to="$pkgdir/usr" install --deps-mode=none "$srcdir/bcrypt-${pkgver/_/-}.src.rock"
+  luarocks --lua-version=5.2 --to="$pkgdir/usr" install --deps-mode=none "$srcdir/bcrypt-${pkgver/_/-}.src.rock"
   rm -Rf "$pkgdir/usr/lib/luarocks"
 }
 

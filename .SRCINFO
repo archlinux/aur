@@ -6,8 +6,8 @@ pkgbase = luabcrypt5.2
 	arch = i686
 	arch = x86_64
 	license = MIT
-	makedepends = luarocks5.2
-	depends = lua51
+	makedepends = luarocks
+	depends = lua52
 	source = https://luarocks.org/manifests/mikejsavage/bcrypt-2.1-4.src.rock
 	sha256sums = 0201396e62960e11f8506dccd52b620ad0bff91904a2454ce92900799d129b92
 
