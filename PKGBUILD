@@ -9,24 +9,7 @@ url="https://github.com/morpheus65535/bazarr"
 license=('GPL3')
 options=('!strip')
 depends=('python2'
-         'python2-apprise'
-         'python2-apscheduler'
-         'python2-babelfish'
-         'python2-bottle'
-         'python2-bottle-fdsend'
-         'python2-dogpile.cache'
-         'python2-gitpython'
-         'python2-langdetect'
-         'python2-logutils'
-         'python2-pillow'
-         'python2-py-pretty'
-         'python2-pycountry'
-         'python2-pytz'
-         'python2-requests'
-         'python2-tzlocal'
-         'python2-urllib3'
-         'python2-waitress'
-         'python2-webtest'
+         'python2-lxml'
          'python2-gevent')
 
 source=("bazarr-${pkgver}.tar.gz::https://github.com/morpheus65535/bazarr/archive/v${pkgver}.tar.gz"
