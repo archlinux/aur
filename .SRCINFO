@@ -1,6 +1,6 @@
 pkgbase = bspwmbar
 	pkgdesc = A lightweight status bar for bspwm
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/odknt/bspwmbar
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = bspwmbar
 	depends = libxext
 	depends = fontconfig
 	optdepends = ttf-nerd-fonts-symbols: default prefix icons font
-	source = https://github.com/odknt/bspwmbar/archive/v0.5.0.tar.gz
+	source = https://github.com/odknt/bspwmbar/archive/v0.5.1.tar.gz
 	source = config.h
-	sha256sums = 511091af117033ca1d8b04b771f4226a87e05871c2a06fd493fecacb80796934
+	sha256sums = a6d5920626568f2161121004b000e7dd0b614c361471467dbea9e6135453401d
 	sha256sums = SKIP
 
 pkgname = bspwmbar
