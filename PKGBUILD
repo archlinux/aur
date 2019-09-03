@@ -2,7 +2,7 @@
 pkgdesc="Icons for the X Desktop Environment (XDE)"
 pkgname=xde-icons-git
 _pkgname=xde-icons
-pkgver=1.3
+pkgver=1.4.r0.g22a5df7
 pkgrel=1
 arch=('any')
 license=(CCPL:by-sa)
@@ -17,7 +17,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd $pkgname
-  git describe| sed 's|-|.|g;s|[.]g[a-f0-9]*$||'
+  git describe --long --tags | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -27,7 +27,7 @@ prepare() {
 
 build() {
  cd $pkgname
-  ./configure --sysconfdir=/etc
+  ./configure
   make
 }
 
