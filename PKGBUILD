@@ -1,5 +1,5 @@
 # Maintainer: Jérémie Astor <astor.jeremie@wanadoo.fr>
-pkgname=gwion-git
+pkgname=gwion
 pkgver=0.1
 pkgrel=1
 pkgdesc="a strongly timed musical programming language"
