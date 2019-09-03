@@ -4,11 +4,13 @@ _pkgname=vmango
 
 pkgname=${_pkgname}
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Your own personal IaaS cloud"
 arch=("any")
 url="https://github.com/subuk/vmango"
 license=("unknown")
+
+backup=("etc/vmango.conf")
 
 depends=("libvirt" "qemu" "cdrtools")
 makedepends=("go-pie" "go-bindata")
