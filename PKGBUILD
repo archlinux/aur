@@ -1,7 +1,7 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=xde-applets-git
-pkgver=0.5.0.gafb179e
+pkgver=0.5.r2.g67870c6
 pkgrel=1
 pkgdesc="X Desktop Environment System Tray Icons and Dock Apps"
 groups=('xde-git')
@@ -19,14 +19,14 @@ md5sums=('SKIP')
 
 pkgver() {
   cd $pkgname
-  git describe --long|sed -e 's,^[a-zA-Z_]*,,;s,-,.,g'
+  git describe --long --tags | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
   cd $pkgname
   ./autogen.sh
-  ./configure --prefix=/usr --sysconfdir=/etc
-  make V=0
+  ./configure --sysconfdir=/etc
+  make
 }
 
 package() {
