@@ -1,7 +1,7 @@
 pkgbase = git-brws
 	pkgdesc = Command line tool to open repository URLs for GitHub, BitBucket and GitLab in your browser
 	pkgver = 0.11.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rhysd/git-brws
 	arch = x86_64
 	license = MIT
