@@ -1,9 +1,8 @@
 pkgbase = renoise
 	pkgdesc = A music composition program
 	pkgver = 3.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.renoise.com
-	arch = i686
 	arch = x86_64
 	license = custom:renoise
 	makedepends = xdg-utils
@@ -14,7 +13,6 @@ pkgbase = renoise
 	conflicts = renoise3-demo
 	options = !strip
 	source = file://rns_320_linux_x86_64.tar.gz
-	md5sums = SKIP
 
 pkgname = renoise
 

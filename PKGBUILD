@@ -14,9 +14,9 @@
 
 pkgname="renoise"
 pkgver="3.2.0"
-pkgrel="2"
+pkgrel="3"
 pkgdesc="A music composition program"
-arch=("i686" "x86_64")
+arch=("x86_64")
 url="https://www.renoise.com"
 license=("custom:renoise")
 depends=("alsa-lib" "libx11" "gcc-libs")
@@ -25,21 +25,10 @@ makedepends=("xdg-utils")
 options=("!strip")
 conflicts=("renoise3-demo")
 
-# This blurb checks if the host machine is x86 or x86_64,
-# then declares the $source arrays accordingly.
-
-if [[ $CARCH = "x86_64" ]]; then
-    if64="_64"
-# as the registered version is personalized, checksums are not useful
-    md5sums=('SKIP')
-else
-    md5sums=('SKIP')
-fi
-
-source=("file://rns_${pkgver//./}_linux_x86$if64.tar.gz")
+source=("file://rns_${pkgver//./}_linux_x86_64.tar.gz")
 
 package() {
-    cd "$srcdir/rns_${pkgver//./}_linux_x86$if64"
+    cd "$srcdir/rns_${pkgver//./}_linux_x86_64"
 
     mkdir -p "$pkgdir/usr/share/renoise-$pkgver"
     cp -r "Resources"/* "$pkgdir/usr/share/renoise-$pkgver"
