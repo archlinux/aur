@@ -1,0 +1,30 @@
+--- src/scripting/scriptengine/ScriptImporter.cpp	2019-07-08 04:56:00.000000000 +0200
++++ src/scripting/scriptengine/ScriptImporter.cpp	2019-09-03 11:00:24.337219815 +0200
+@@ -52,9 +52,25 @@
+ bool
+ ScriptImporter::loadQtBinding( const QString& binding )
+ {
+-    Q_UNUSED( binding )
++    QStringList availableBindings = m_scriptEngine->availableExtensions();
++    if( availableBindings.contains( binding ) )
++    {
++        if( !m_importedBindings.contains( binding ) )
++        {
++            if( m_scriptEngine->importExtension( binding ).isUndefined() )
++            { // undefined indicates success
++                m_importedBindings << binding;
++                return true;
++            }
++            //else fall through and return false
++        }
++        else
++            return true;
++    }
++    else
++        warning() << __PRETTY_FUNCTION__ << "Binding \"" << binding << "\" could not be found!";
++
+ 
+-    error() << __PRETTY_FUNCTION__ << "Loading Qt bindings in scripts not available in Qt5!";
+     return false;
+ }
+ 
