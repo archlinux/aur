@@ -4,13 +4,13 @@
 
 pkgname=mawk
 pkgver=1.3.4_20190203
-pkgrel=1
+pkgrel=2
 pkgdesc="An interpreter for the AWK Programming Language"
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('glibc')
 url="http://invisible-island.net/mawk/"
-source=("$pkgname-$pkgver::http://invisible-island.net/datafiles/release/$pkgname.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::http://invisible-island.net/datafiles/release/$pkgname.tar.gz")
 sha256sums=('daacb314029185bbef86b0df5627ad8591378d420fc32236f99f15a9a8a6b840')
 
 build() {
