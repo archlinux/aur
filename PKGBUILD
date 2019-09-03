@@ -21,8 +21,6 @@ pkgver() {
 package() {
   cd "$srcdir/$_pkgname"
   install -Dm644 colors/gruvbox-material.vim "$pkgdir/usr/share/vim/vimfiles/colors/gruvbox-material.vim"
-  install -Dm644 colors/gruvbox-material-soft.vim "$pkgdir/usr/share/vim/vimfiles/colors/gruvbox-material-soft.vim"
-  install -Dm644 colors/gruvbox-material-hard.vim "$pkgdir/usr/share/vim/vimfiles/colors/gruvbox-material-hard.vim"
   install -Dm755 ${srcdir}/${_pkgname}/autoload/airline/themes/gruvbox_material.vim ${pkgdir}/usr/share/vim/vimfiles/autoload/airline/themes/gruvbox_material.vim
   install -Dm755 ${srcdir}/${_pkgname}/autoload/lightline/colorscheme/gruvbox_material.vim ${pkgdir}/usr/share/vim/vimfiles/autoload/lightline/colorscheme/gruvbox_material.vim
   install -Dm755 ${srcdir}/${_pkgname}/autoload/leaderf/colorscheme/gruvbox_material.vim ${pkgdir}/usr/share/vim/vimfiles/autoload/leaderf/colorscheme/gruvbox_material.vim
