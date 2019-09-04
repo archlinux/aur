@@ -1,6 +1,6 @@
 pkgname=libosp-bin
 pkgver=0.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="HemiStereo sensor libraries"
 arch=('x86_64')
 url="https://3dvisionlabs.com/"
