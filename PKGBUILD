@@ -11,8 +11,8 @@ pkgdesc="A distributed anonymous network (daily mtn->git sync)"
 url="https://geti2p.net"
 license=('GPL2')
 arch=('x86_64' 'i686' 'armv6h' 'armv7h')
-depends=('java-runtime>=11' 'java-service-wrapper' 'gmp')
-makedepends=('java-environment>=11' 'apache-ant' 'git')
+depends=('java-runtime>=12' 'java-service-wrapper' 'gmp')
+makedepends=('java-environment>=12' 'apache-ant' 'git')
 [[ "$LG2" != 'en' ]] && makedepends+=('gettext')
 #optdepends=('gtk2: for rrd graphs')
 conflicts=('i2p' 'i2p-bin')
@@ -30,7 +30,7 @@ source=("git+https://github.com/i2p/${_gitname}.git#commit=${_commit}"
 sha256sums=('SKIP'
             'ff9942ca43715b5095b0118e306c8aec1af7c68c18e8959dba10d86eac8efbfd'
             'ea8f97e66461d591b1819eab39bbc40056b89ae12f7729b3dd9fd2ce088e5e53'
-            '72c0944cd2b04c747673a534475f2ec42c64d52fdda76714f1165c4655113de2'
+            '3e97ceddc2c4ba766e77893341c83f3f87639d29b0fee346c955bc59ede15d14'
             '41756375ef2e8323147cec31a8675b2bc11109451f9185c036ff32d26d6c9b99')
 
 pkgver() {
@@ -87,7 +87,7 @@ package() {
     cd "$pkgdir"
 
     install -dm755 "usr/bin"
-    install -dm755 "opt/i2p"
+    install -dm755 "opt/i2p/.tmp"
 
     cp -r "$srcdir/$_gitname"/pkg-temp/* "opt/i2p"
 
@@ -114,9 +114,7 @@ package() {
     sed -i opt/i2p/{eepget,wrapper.config} \
         -e 's:%INSTALL_PATH:/opt/i2p:g'
     sed -i opt/i2p/clients.config \
-        -e "s:clientApp.3.startOnLoad=.*:clientApp.4.startOnLoad=false:" \
+        -e "s:clientApp.3.startOnLoad=.*:clientApp.3.startOnLoad=false:" \
         -e "s:clientApp.4.startOnLoad=.*:clientApp.4.startOnLoad=false:"
-    sed -i opt/i2p/i2ptunnel.config \
-        -e "s:tunnel.6.startOnLoad=.*:tunnel.6.startOnLoad=false:"
     rm -r opt/i2p/{osid,postinstall.sh,runplain.sh,INSTALL-headless.txt,LICENSE.txt,licenses,man,lib/wrapper}
 }
