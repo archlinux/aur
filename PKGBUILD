@@ -6,7 +6,7 @@
 
 pkgname=i2p
 pkgver=0.9.42
-pkgrel=1
+pkgrel=2
 pkgdesc="A distributed anonymous network"
 url="https://geti2p.net"
 license=('GPL2')
@@ -34,7 +34,7 @@ sha256sums=(${_hash:-'30482b56becb6135ed4b74bd4715906774f7c3f3302753985a5fde363f
             'SKIP'
             '9bb899ece87099716da29bac8b7da02916fc325699b68989e73c1fe333a6342f'
             'ea8f97e66461d591b1819eab39bbc40056b89ae12f7729b3dd9fd2ce088e5e53'
-            '4c78eb44e9f47cf61d3c60d3e3f267a9aabb62883950ee8b6fa567f68f4635eb'
+            '013993d8f74a912d251fb57f09a4adfc710e7cea5322d5638b94480a0ab63e73'
             '7a4688db826c3dddb762976cd8c9a5d465255c3577069243d8e5af941a4126e2')
 
 # https://geti2p.net/en/get-involved/develop/release-signing-key
@@ -52,7 +52,7 @@ package() {
     cd "$pkgdir"
 
     install -dm755 "usr/bin"
-    install -dm755 "opt/i2p"
+    install -dm755 "opt/i2p/.tmp"
 
     cp -r "$srcdir/$pkgname-$pkgver"/pkg-temp/* "opt/i2p"
 

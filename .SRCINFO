@@ -1,7 +1,7 @@
 pkgbase = i2p
 	pkgdesc = A distributed anonymous network
 	pkgver = 0.9.42
-	pkgrel = 1
+	pkgrel = 2
 	url = https://geti2p.net
 	install = i2p.install
 	arch = any
@@ -26,7 +26,7 @@ pkgbase = i2p
 	sha256sums = SKIP
 	sha256sums = 9bb899ece87099716da29bac8b7da02916fc325699b68989e73c1fe333a6342f
 	sha256sums = ea8f97e66461d591b1819eab39bbc40056b89ae12f7729b3dd9fd2ce088e5e53
-	sha256sums = 315d8128969b372bb553dc2170c3e0709f52e01be77c1db1f071d83569126a70
+	sha256sums = 013993d8f74a912d251fb57f09a4adfc710e7cea5322d5638b94480a0ab63e73
 	sha256sums = 7a4688db826c3dddb762976cd8c9a5d465255c3577069243d8e5af941a4126e2
 
 pkgname = i2p
