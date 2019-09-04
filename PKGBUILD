@@ -5,7 +5,7 @@
 
 pkgname=gnome-shell-performance
 pkgver=3.32.2+10+g2483b6038
-pkgrel=7
+pkgrel=8
 pkgdesc="Next generation desktop shell | Attempt to improve the performance by non-upstreamed patches"
 url="https://wiki.gnome.org/Projects/GnomeShell"
 arch=(x86_64)
@@ -135,9 +135,9 @@ prepare() {
   # Title: endSessionDialog: Initialize Polkit permission asynchronously
   # URL: https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/689
   # Type: 1
-  # Status: 1
+  # Status: 4
   # Comment:
-  git cherry-pick -n 1a3c98bd -Xtheirs
+  git cherry-pick -n 05b345cc -Xtheirs
 
   git submodule init
   git config --local submodule.subprojects/gvc.url "$srcdir/libgnome-volume-control"
