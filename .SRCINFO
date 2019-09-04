@@ -5,6 +5,7 @@ pkgbase = veloview
 	url = https://www.paraview.org/veloview
 	arch = x86_64
 	license = BSD
+	makedepends = gendesk
 	source = veloview.svg
 	source = VeloView-3.5.0-Linux-64bit.tar.gz::https://www.paraview.org/paraview-downloads/download.php?submit=Download&version=v5.1&type=app&os=win32&downloadFile=VeloView-3.5.0-Linux-64bit.tar.gz
 	sha256sums = 704b211a93a53fddf8c3fad2310ea5f260457860cf5bbeea7297fd72bd0fe6dc

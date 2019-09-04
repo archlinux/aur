@@ -8,6 +8,7 @@ pkgdesc="Real-time visualization and processing of live captured 3D LiDAR data f
 arch=(x86_64)
 license=(BSD)
 url="https://www.paraview.org/veloview"
+makedepends=(gendesk)
 source=("veloview.svg"
 		"VeloView-$pkgver-Linux-64bit.tar.gz::https://www.paraview.org/paraview-downloads/download.php?submit=Download&version=v5.1&type=app&os=win32&downloadFile=VeloView-$pkgver-Linux-64bit.tar.gz")
 sha256sums=('704b211a93a53fddf8c3fad2310ea5f260457860cf5bbeea7297fd72bd0fe6dc'
@@ -28,6 +29,6 @@ package() {
   cp -a --no-preserve=ownership "$srcdir"/VeloView-$pkgver-Linux-64bit/share "$pkgdir"/usr/local/
 
   install -Dm644 "$srcdir"/VeloView.desktop -t "$pkgdir"/usr/share/applications
-  install -Dm644 "$srcdir"/$pkgname.svg "$pkgdir"/usr/share/pixmaps/$pkgname.svg
+  install -Dm644 "$srcdir"/$pkgname.svg "$pkgdir"/usr/share/pixmaps/VeloView.svg
 }
 
