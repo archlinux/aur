@@ -34,7 +34,7 @@ sha256sums=(${_hash:-'30482b56becb6135ed4b74bd4715906774f7c3f3302753985a5fde363f
             'SKIP'
             '9bb899ece87099716da29bac8b7da02916fc325699b68989e73c1fe333a6342f'
             'ea8f97e66461d591b1819eab39bbc40056b89ae12f7729b3dd9fd2ce088e5e53'
-            '315d8128969b372bb553dc2170c3e0709f52e01be77c1db1f071d83569126a70'
+            '4c78eb44e9f47cf61d3c60d3e3f267a9aabb62883950ee8b6fa567f68f4635eb'
             '7a4688db826c3dddb762976cd8c9a5d465255c3577069243d8e5af941a4126e2')
 
 # https://geti2p.net/en/get-involved/develop/release-signing-key
@@ -79,6 +79,7 @@ package() {
     sed -i opt/i2p/eepget \
         -e 's:%INSTALL_PATH:/opt/i2p:g'
     sed -i opt/i2p/clients.config \
+        -e "s:clientApp.3.startOnLoad=.*:clientApp.3.startOnLoad=false:" \
         -e "s:clientApp.4.startOnLoad=.*:clientApp.4.startOnLoad=false:"
     rm -r opt/i2p/{osid,postinstall.sh,runplain.sh,INSTALL-headless.txt,LICENSE.txt,licenses,man,lib/wrapper*}
 }
