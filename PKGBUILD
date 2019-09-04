@@ -34,7 +34,7 @@ sha256sums=(${_hash:-'30482b56becb6135ed4b74bd4715906774f7c3f3302753985a5fde363f
             'SKIP'
             '9bb899ece87099716da29bac8b7da02916fc325699b68989e73c1fe333a6342f'
             'ea8f97e66461d591b1819eab39bbc40056b89ae12f7729b3dd9fd2ce088e5e53'
-            '013993d8f74a912d251fb57f09a4adfc710e7cea5322d5638b94480a0ab63e73'
+            'd32da73b85be527ef0cc3791a2cedab089fed8272c7a70d23bc8edfe49d80b28'
             '7a4688db826c3dddb762976cd8c9a5d465255c3577069243d8e5af941a4126e2')
 
 # https://geti2p.net/en/get-involved/develop/release-signing-key
