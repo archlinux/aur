@@ -5,14 +5,14 @@
 #export LG2=en
 
 pkgname=i2p
-pkgver=0.9.41
+pkgver=0.9.42
 pkgrel=1
 pkgdesc="A distributed anonymous network"
 url="https://geti2p.net"
 license=('GPL2')
 arch=('any')
-depends=('java-runtime>=7' 'java-service-wrapper')
-makedepends=('java-environment>=7' 'apache-ant')
+depends=('java-runtime>=8' 'java-service-wrapper')
+makedepends=('java-environment>=8' 'apache-ant')
 [[ "$LG2" != 'en' ]] && makedepends+=('gettext')
 #optdepends=('gtk2: for rrd graphs')
 conflicts=('i2p-bin' 'i2p-dev')
@@ -20,17 +20,17 @@ backup=('opt/i2p/wrapper.config')
 install='i2p.install'
 options=(!strip)
 
-#_url="https://download.i2p2.de/releases/${pkgver}"
-_url="https://launchpad.net/i2p/trunk/${pkgver}/+download"
+_url="https://download.i2p2.de/releases/${pkgver}"
+#_url="https://launchpad.net/i2p/trunk/${pkgver}/+download"
 
 source=("${_url}/i2psource_${pkgver}.tar.bz2"{,.sig}
         'i2prouter.service' 'i2prouter.sh' 'wrapper.config' 'router.config')
 
-#curl -s "https://geti2p.net/en/download" \
-#    |grep -A1 "<div class=\"hash\">" \
-#    |sed -e "s:.*<code>::" -e "s:</code>::" -e '17,17!d'
+_hash=$(curl -Ls "https://geti2p.net/en/download" \
+            |grep -A1 "<div class=\"hash\">" \
+            |sed -e "s:.*<code>::" -e "s:</code>::" -e '17,17!d')
 
-sha256sums=('f988877940b2cff1a90534c47b78343de49cd6290817edb57c0142eecf1d164e'
+sha256sums=(${_hash:-'30482b56becb6135ed4b74bd4715906774f7c3f3302753985a5fde363f0cc713'}
             'SKIP'
             '9bb899ece87099716da29bac8b7da02916fc325699b68989e73c1fe333a6342f'
             'ea8f97e66461d591b1819eab39bbc40056b89ae12f7729b3dd9fd2ce088e5e53'
