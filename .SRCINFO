@@ -1,0 +1,17 @@
+pkgbase = vulkan-device-filter-git
+	pkgver = v0.0.1.r1.8c6a5a1
+	pkgrel = 1
+	url = https://gitlab.com/mcoffin/vulkan-device-filter
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = vulkan-headers
+	makedepends = cargo
+	depends = vulkan-icd-loader
+	provides = vulkan-device-filter-git
+	conflicts = vulkan-device-filter-git
+	source = vulkan-device-filter::git+https://gitlab.com/mcoffin/vulkan-device-filter.git
+	md5sums = SKIP
+
+pkgname = vulkan-device-filter-git
+
