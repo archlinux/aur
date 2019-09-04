@@ -4,7 +4,7 @@ pkgname=prime
 pkgdesc="PRIME Render Offload Launcher. Please visit https://download.nvidia.com/XFree86/Linux-x86_64/435.21/README/primerenderoffload.html to manually configure your Device."
 url="https://download.nvidia.com/XFree86/Linux-x86_64/435.21/README/primerenderoffload.html"
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 arch=('any')
 # license=("nothing")
 conflicts=(bumblebee optimus-manager)
@@ -37,6 +37,6 @@ package()
 	install -m a+xr ./prime "${pkgdir}"/usr/bin/
 	install 10-nvidia.conf "${pkgdir}"/usr/share/X11/xorg.conf.d/
 	install zsh_prime "${pkgdir}"/usr/share/zsh/site-functions/_prime
-	install bash_prime "${pkgdir}"/usr/share/zsh/site-functions/prime
+	install bash_prime "${pkgdir}"/usr/share/bash-completion/completions
 }
 
