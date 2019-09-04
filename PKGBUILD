@@ -1,12 +1,12 @@
-# Contributor: aimileus < $(echo YWltaWxpdXNAcHJvdG9ubWFpbC5jb20K | base64 -d)
 # Maintainer: Severin Kaderli <severin@kaderli.dev>
+# Contributor: aimileus < $(echo YWltaWxpdXNAcHJvdG9ubWFpbC5jb20K | base64 -d)
 _pkgname=vita3k
 pkgname=${_pkgname}-git
-pkgver=r1195.eb9dea27
+pkgver=r1241.74c50634
 pkgrel=1
 pkgdesc="Experimental PlayStation Vita emulator"
 arch=('x86_64')
-url="https://vita3k.github.io/"
+url="https://vita3k.org/"
 license=('GPL2')
 makedepends=(
 	'clang'
@@ -45,8 +45,10 @@ source=(
 	"git+https://github.com/unicorn-engine/unicorn.git"
 	"git+https://github.com/discordapp/discord-rpc.git"
 	"git+https://github.com/zeux/pugixml.git"
+	"git+https://github.com/aantron/better-enums.git"
 )
 md5sums=(
+	'SKIP'
 	'SKIP'
 	'SKIP'
 	'SKIP'
@@ -104,6 +106,7 @@ prepare() {
 	git config submodule.src/external/unicorn-src.url "${srcdir}/unicorn"
 	git config submodule.src/external/discord-rpc.url "${srcdir}/discord-rpc"
 	git config submodule.src/external/pugixml.url "${srcdir}/pugixml"
+	git config submodule.src/external/better-enums.url "${srcdir}/better-enums"
 	git submodule update
 }
 
@@ -114,7 +117,14 @@ build() {
 	export CC="/usr/bin/clang"
 	export CXX="/usr/bin/clang++"
 
-	./gen-linux.sh && cd build-linux
+	./gen-linux.sh
+
+	# Workaround for linking problem with discord-rpc
+	rm -rf build-linux
+	mkdir -p build-linux
+	cd build-linux
+	cmake .. -DUSE_DISCORD_RICH_PRESENCE=OFF
+
 	make VERBOSE=1 UNICORN_QEMU_FLAGS="--python=/usr/bin/python2"
 }
 
