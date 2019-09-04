@@ -2,15 +2,16 @@
 # Contributor: Gordian Edenhofer <gordian.edenhofer[at]yahoo[dot]de>
 
 pkgname=certbot
-pkgver=0.37.2
+pkgver=0.38.0
 pkgrel=1
 pkgdesc="A tool to automatically receive and install X.509 certificates to enable TLS on servers. The client will interoperate with the Let’s Encrypt CA which will be issuing browser-trusted certificates for free."
 arch=('any')
 license=('Apache')
 url="https://certbot.eff.org"
 depends=('ca-certificates' 'python-acme' 'python-configargparse' 'python-configobj'
-         'python-cryptography' 'python-mock' 'python-parsedatetime' 'python-pyrfc3339'
-         'python-pytz' 'python-setuptools' 'python-zope-component' 'python-zope-interface')
+         'python-cryptography' 'python-distro' 'python-mock' 'python-parsedatetime'
+         'python-pyrfc3339' 'python-pytz' 'python-setuptools' 'python-zope-component'
+         'python-zope-interface')
 checkdepends=('python-pytest-runner')
 optdepends=('certbot-apache: Apache plugin for Let’s Encrypt client'
             'certbot-nginx: Nginx plugin for Let’s Encrypt client')
@@ -19,7 +20,7 @@ source=("https://pypi.io/packages/source/c/$pkgname/$pkgname-$pkgver.tar.gz"{,.a
 validpgpkeys=('148C30F6F7E429337A72D992B00B9CC82D7ADF2C'
               '1B41B758F9A78C7F444C20FA3E5B4152E3ADB1FD'
               'A2CFB51FA275A7286234E7B24D17C995CD9775F2')
-sha512sums=('752c37ec513477e9143d1037591dcba49d532e8e2def569ab19270494ad756d89d2e279c7f9b003e814dc51393cedceb4214bae6ce6297f8951f558dc5d3bfb9'
+sha512sums=('93b577efa1f3aaee880d6d3deeec3a902e55788e9c723534e7a1c325e5d48bc9c4aec71d8eb9855ddf2fc9220d028eb4b248d8936cb2fcdce9edcb06c0bb6745'
             'SKIP')
 
 build() {
