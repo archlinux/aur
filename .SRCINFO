@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-coin-or-cbc
 	pkgdesc = COIN-OR branch-and-cut mixed integer programming solver (mingw-w64)
-	pkgver = 2.10.0
+	pkgver = 2.10.3
 	pkgrel = 1
 	url = https://projects.coin-or.org/Cbc
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = mingw-w64-coin-or-cbc
 	options = staticlibs
 	options = !buildflags
 	options = !strip
-	source = http://www.coin-or.org/download/source/Cbc/Cbc-2.10.0.tgz
-	sha256sums = 5709ff89b28a965f52c25e0e67b01d18075fcc491282e0005fbcc4176003a9f3
+	source = http://www.coin-or.org/download/source/Cbc/Cbc-2.10.3.tgz
+	sha256sums = ad388357129497c1cc3be50c3707b1995fddf0a4188abc8e3669173f0179ecff
 
 pkgname = mingw-w64-coin-or-cbc
 
