@@ -3,8 +3,8 @@
 
 _pkgname=lz4
 pkgname=lib32-lz4
-_gitcommit=398e36c756a3067de8e2b35dd380baef040dfe0d
-pkgver=1.9.1
+_gitcommit=fdf2ef5809ca875c454510610764d9125ef2ebbd
+pkgver=1.9.2
 pkgrel=1
 pkgdesc='Extremely fast compression algorithm (32-bit)'
 url='https://www.lz4.org/'
@@ -13,13 +13,12 @@ license=('GPL2')
 makedepends=('git')
 checkdepends=('diffutils')
 depends=('lz4' 'lib32-glibc')
-source=("git+https://github.com/lz4/lz4.git#commit=${_gitcommit}?signed")
+source=("git+https://github.com/lz4/lz4.git#commit=${_gitcommit}")
 sha512sums=('SKIP')
-validpgpkeys=('5DE3E0509C47EA3CF04A42D34AEE18F83AFDEB23') # GitHub (web-flow commit signing) <noreply@github.com>
 
 pkgver() {
   cd ${_pkgname}
-  git describe --tags --always|sed 's/^v//;s/-/./g'
+  git describe --tags --match 'v*' | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
