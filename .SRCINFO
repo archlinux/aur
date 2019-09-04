@@ -1,6 +1,6 @@
 pkgbase = vim-colorscheme-forest-night-git
 	pkgdesc = Comfortable & Pleasant VIM Color Scheme
-	pkgver = v0.4.r6.g20850ed
+	pkgver = v1.0.r0.g4e5ff87
 	pkgrel = 1
 	url = https://github.com/sainnhe/vim-color-forest-night
 	arch = any

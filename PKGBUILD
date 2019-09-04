@@ -2,7 +2,7 @@
 pkgname=vim-colorscheme-forest-night-git
 pkgdesc="Comfortable & Pleasant VIM Color Scheme"
 pkgrel=1
-pkgver=v0.4.r6.g20850ed
+pkgver=v1.0.r0.g4e5ff87
 arch=('any')
 url="https://github.com/sainnhe/vim-color-forest-night"
 license=('MIT' 'Anti-996')
@@ -20,7 +20,6 @@ pkgver() {
 package() {
   cd "$srcdir/$_pkgname"
   install -Dm644 colors/forest-night.vim "$pkgdir/usr/share/vim/vimfiles/colors/forest-night.vim"
-  install -Dm644 colors/forest-dusk.vim "$pkgdir/usr/share/vim/vimfiles/colors/forest-dusk.vim"
 }
 
 # vim:set ts=2 sw=2 et:
