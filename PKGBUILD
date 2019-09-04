@@ -9,7 +9,7 @@ url="https://gstreamer.freedesktop.org/"
 license=("LGPL" "MIT" "Apache")
 groups=()
 depends=("gstreamer")
-makedepends=("rust" "git" "libsodium")
+makedepends=("rust" "git" "libsodium-static")
 checkdepends=()
 optdepends=()
 provides=()
@@ -23,7 +23,7 @@ sha256sums=(SKIP)
 
 prepare() {
 	cd "$srcdir/$pkgname"
-	git checkout $pkgver
+	git checkout "$pkgver"
 }
 
 package() {
