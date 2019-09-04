@@ -1,7 +1,7 @@
 # Maintainer: Lubosz Sarnecki <lubosz [at] gmail [dot] com>
 
 pkgname=vulkan-caps-viewer-git
-pkgver=1.4.104.f3e18c6
+pkgver=2.00.238.b5e15a2
 pkgrel=1
 pkgdesc='Vulkan Hardware Capability Viewer'
 url='http://vulkan.gpuinfo.org/'
@@ -42,7 +42,7 @@ package() {
 
   # App
   install -dm755 "${pkgdir}"/usr/bin
-  install -m755 "${srcdir}"/VulkanCapsViewer/Win32/Release/vulkanCapsViewer "${pkgdir}"/usr/bin
+  install -m755 "${srcdir}"/VulkanCapsViewer/vulkanCapsViewer "${pkgdir}"/usr/bin
 
   # Desktop shortcut
   install -Dm644 "${srcdir}"/vulkan-caps-viewer.desktop "${pkgdir}"/usr/share/applications/vulkan-caps-viewer.desktop
