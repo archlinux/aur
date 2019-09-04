@@ -2,8 +2,8 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=onlyoffice-documentserver
-pkgver=5.3.4
-pkgrel=2
+pkgver=5.4.0
+pkgrel=1
 pkgdesc="Online office suite comprising viewers and editors for texts, spreadsheets and presentations"
 arch=('any')
 url="https://github.com/ONLYOFFICE/DocumentServer"
@@ -14,14 +14,14 @@ makedepends=('npm' 'nodejs-lts-dubnium' 'grunt-cli' 'qt5-base' 'git' 'wget' 'p7z
 # ncurses-5compat-libs required to build v8
 optdepends=('rabbitmq' 'redis' 'postgresql')
 license=('AGPL')
-source=("https://github.com/ONLYOFFICE/DocumentServer/archive/ONLYOFFICE-DocumentServer-${pkgver}.tar.gz"
-	"core-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/core/archive/41606e907a93f22cc6e62a15813a441fff416c8b.tar.gz"
-	"core-fonts-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/core-fonts/archive/ea34b02b1234ea9c4fb68e2a95fd2d689b5ab2dd.tar.gz"
-	"dictionaries-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/dictionaries/archive/8c4afc1bd3ffa893f0728b89bd88fd1560fec4ae.tar.gz"
-	"sdkjs-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/sdkjs/archive/70bf6846ec031ddd3f2d006f3396672874c73563.tar.gz"
-	"sdkjs-plugins-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/sdkjs-plugins/archive/6c4ba1e0b28408cb2df05b5b3680da1b2152ff57.tar.gz"
-	"server-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/server/archive/7db900bdc9506862798b20a3b5556fcc9be53708.tar.gz"
-	"web-apps-pro-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/web-apps-pro/archive/55253c4d75ba209093d11edd7cb3a121cce3eade.tar.gz"
+source=("https://github.com/ONLYOFFICE/DocumentServer/archive/ONLYOFFICE-DocumentServer-5.4.0-2.tar.gz"
+	"core-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/core/archive/11dad1b10b67f7341b284b821b15cf9d90a0c4cd.tar.gz"
+	"core-fonts-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/core-fonts/archive/abc25e4538cbce3ba96671283d14cec09087829b.tar.gz"
+	"dictionaries-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/dictionaries/archive/0e43b7b8aeb099ec30725f39234e2b898e7f0e67.tar.gz"
+	"sdkjs-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/sdkjs/archive/f6c385e9523f9c2136f421e3f843feded622aaf8.tar.gz"
+	"sdkjs-plugins-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/sdkjs-plugins/archive/453f544a7f09fe5599a4ef6ae622faec1796f597.tar.gz"
+	"server-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/server/archive/4ae78080f01940f2274dff72ec95f12e0133afe2.tar.gz"
+	"web-apps-pro-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/web-apps-pro/archive/7aeeb4fe5889203a4578f1f86bd9387eca0c7a87.tar.gz"
 	"server_makefile.patch"
 	"onlyoffice-fileconverter.service"
 	"onlyoffice-spellchecker.service"
@@ -29,15 +29,15 @@ source=("https://github.com/ONLYOFFICE/DocumentServer/archive/ONLYOFFICE-Documen
 	"onlyoffice-documentserver.hook"
 	"onlyoffice-documentserver.sysusers"
 	"onlyoffice-documentserver.tmpfiles")
-sha512sums=('e9b2f1ccad0d86c4987e5691fb5baadc8eb63acaf0ca44ff021279eb5dbc88592a3fb8c478f7155cda52c795756def5ddcf2acdf9a7cfd1b9aaf4bd4c8c9d8fc'
-            'ceb8dcdd8603076e2e573ff342cb6532ba732ff60f95216d8bfe268d10a68420a882f51eb029817ecfcd599553d867aaa30c431dab70554b08568dffd1d51909'
-            '3d79a57aba908f362fb244fc05436d13a8611812545d9f790e4c92baede29cfecd56fab7b2d65d8e136a422f34a4475ec0154016cc96c7387da317e1a39999a1'
-            'e70de033f49924e1587e2d648a8d8db4ace3e1962b3bb7f92524ceec47f99cf73e9bc5b1640a4bba46a416bfa56fab335801f4b5ccae8a92d509b160cb07bb9e'
-            '9525a39490f0eee56755d4339a912bd26231dbe14847d88d57c587b3b84c5412d6f1a1ee5169f22f56b91da56fcb86ef7762e773b6736d93aabfc53e89e75458'
-            '7fb7f2d8a9fb24a4a49493d85f5c3093befc038ea4e679aa9b1f77225333ceec5c881d01c2988f70051307bf75a1f1dfd884ec3a5475e4469f6bc7028125beea'
-            'f351aba1675256ddd5867e5a5df0cbaea3dc85479cbe8c255275098b27456693d9641700db2c3870f608d444b3b083cf04bd669f338e24e9d4b068ef50c16c94'
-            '10d56f644387031ccb22eb20b5a7c8f3e83c616f40d7375f0696ee66d4616ebadf9267496d16420930c36ca2d278d3077824db45dd198aece095e65aca7d181c'
-            'b80098617889cabfb991419855da9c859d1c5874236fdb5106562dc6cfd8db76530d99fb63c56e2a0f46bf847226ed824956533a6478926f7d0aa48eb243eff1'
+sha512sums=('bc16388fdad4afd4144b5d7618c74e44dcd483794c4d2b3a09fb86da2b1af97fd6171f27a5a2e414193ececfaa0bb863b2e5c50da4884d34f2acf78532d9488f'
+            'b41f6316a11a8a5071b80e0e5460245d77b09697839802028151dfc10a8d0ed17c2961ed4496ff4ab3b446ae4ec187c716940278bac218d7a5bcb48a4bd7e0b6'
+            '0a3a2daa0c3c8a3b63ae2e02b4afc2324c0b7cab70b87d18068790cd664d35a7b11083db2e56f62aa2508f942570092aa91ab78097755ab6d8ca3b1459767030'
+            '9f59b29a946b421aed5ff81d8a1bf1e6f33ab95387a052dd53aa2b03313c44aac9a441e4bc5ef2caa2401d4eba24e843cf2dd90c90118ff96d89d540e36eef47'
+            '44942d0c7587d41851704f35ed4b3f142f56cc921446bf81fcbd40b424b39dca98f9988c83464adb088df32341c613c239c3a4eb0fa9aaec5bac0215ba4257c5'
+            'd3437320547ff3578c57d24d3040e3037fbdeae9a5b60a20451f4ae29ab2a0480fd57b917f503722ca88bcbfdb3340ec2a89aa7f1e33cbf97f2eb24d77b020aa'
+            '57a8d6855ee9e1455e2c85003301deccb2ff8ee1855de9680d7b6dc22f6bf4c920bb28fc4626a461540a49873af0de5f4b49f54cfbb6b53adff520e677a89422'
+            'edb2dc4b6d711453548f061ef8ebca94383a11bdbedbbe1da719c07ff0c72a54e3640f29df6dca7e3687b557b4f4ced87b609b388c057f036e4574a22fa66f7b'
+            '40c9ecaa2b2008c152cfb89988bb175b3824550ca913b14365226be9b003c7c394d1c70d269ab64edb7d0eda483d4c67aac232f4ac404d73f5c807483e235f28'
             'f6e888d23d980eb50dcd70c1ce82324f3ee60c666298f77adf7f7abdf524d78bfcd10a8e17180a64596d964d98ae5457645ece6e3d05d93b938f465f2dc3612a'
             '8ed8c1301469242cc669a1f0520708ad0fa4f19406541c976cd9287917f573ec3f47902f9021eef5ff82ca20de04234f459e4826320689705772589b1aca0267'
             'fafee1aa872786116d5c28c08dbe12edcf0dd60890c40b108bb60c9d321d9a579fc8fe6a8a86c1641b58531388410fb51e09d294b9b998ca9a39373349e889a0'
@@ -57,7 +57,7 @@ prepare() {
   cd "${srcdir}"
   rm *.tar.gz
 
-  cd "${srcdir}/DocumentServer-ONLYOFFICE-DocumentServer-${pkgver}"
+  cd "${srcdir}/DocumentServer-ONLYOFFICE-DocumentServer-${pkgver}-2"
   rm -r core core-fonts dictionaries sdkjs sdkjs-plugins server web-apps-pro
   mv ../core-fonts* core-fonts
   mv ../core-* core
@@ -83,7 +83,7 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}/DocumentServer-ONLYOFFICE-DocumentServer-${pkgver}"
+  cd "${srcdir}/DocumentServer-ONLYOFFICE-DocumentServer-${pkgver}-2"
 
   # workaround bug https://github.com/ONLYOFFICE/onlyoffice-owncloud/issues/42
   export PRODUCT_VERSION=${pkgver}
@@ -106,7 +106,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/DocumentServer-ONLYOFFICE-DocumentServer-${pkgver}/server"
+  cd "${srcdir}/DocumentServer-ONLYOFFICE-DocumentServer-${pkgver}-2/server"
   install -Dm 644 "${srcdir}/onlyoffice-docservice.service" "${pkgdir}/usr/lib/systemd/system/onlyoffice-docservice.service"
   install -Dm 644 "${srcdir}/onlyoffice-fileconverter.service" "${pkgdir}/usr/lib/systemd/system/onlyoffice-fileconverter.service"
   install -Dm 644 "${srcdir}/onlyoffice-spellchecker.service" "${pkgdir}/usr/lib/systemd/system/onlyoffice-spellchecker.service"

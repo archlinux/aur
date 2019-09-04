@@ -1,6 +1,6 @@
---- server/Makefile.orig	2019-05-30 17:01:26.463718143 +0000
-+++ server/Makefile	2019-05-30 17:01:13.127062905 +0000
-@@ -173,36 +173,36 @@
+--- server/Makefile.orig	2019-09-03 16:38:51.661456344 +0000
++++ server/Makefile	2019-09-03 16:35:39.414889096 +0000
+@@ -173,41 +173,42 @@
  	rm -rf $(CORE_FONTS) $(OUTPUT) $(GRUNT_FILES)
  
  install:
@@ -22,6 +22,7 @@
 -	chown onlyoffice:onlyoffice -R ${DESTDIR}/var/www/onlyoffice
 -	chown onlyoffice:onlyoffice -R ${DESTDIR}/var/log/onlyoffice
 -	chown onlyoffice:onlyoffice -R ${DESTDIR}/var/lib/onlyoffice
++
 +	#chown onlyoffice:onlyoffice -R ${DESTDIR}/var/www/onlyoffice
 +	#chown onlyoffice:onlyoffice -R ${DESTDIR}/var/log/onlyoffice
 +	#chown onlyoffice:onlyoffice -R ${DESTDIR}/var/lib/onlyoffice
@@ -34,7 +35,7 @@
 -		-exec sh -c 'ln -sf {} ${DESTDIR}/lib/$$(basename {})' \;
 +		-exec sh -c 'ln -sf ${DOCUMENT_ROOT}/server/FileConverter/bin/$$(basename {}) ${DESTDIR}/usr/lib/$$(basename {})' \;
  
--	sudo -u onlyoffice "${DESTDIR}${DOCUMENT_ROOT}/server/tools/AllFontsGen"\
+-	sudo -u onlyoffice "${DESTDIR}${DOCUMENT_ROOT}/server/tools/allfontsgen"\
 -		--input="${DESTDIR}${DOCUMENT_ROOT}/core-fonts"\
 -		--allfonts-web="${DESTDIR}${DOCUMENT_ROOT}/sdkjs/common/AllFonts.js"\
 -		--allfonts="${DESTDIR}${DOCUMENT_ROOT}/server/FileConverter/bin/AllFonts.js"\
@@ -42,7 +43,12 @@
 -		--selection="${DESTDIR}${DOCUMENT_ROOT}/server/FileConverter/bin/font_selection.bin"\
 -		--output-web="${DESTDIR}${DOCUMENT_ROOT}/fonts"\
 -		--use-system="true"
-+	#sudo -u onlyoffice "${DESTDIR}${DOCUMENT_ROOT}/server/tools/AllFontsGen"\
+-
+-	sudo -u onlyoffice "${DESTDIR}${DOCUMENT_ROOT}/server/tools/allthemesgen"\
+-		--converter-dir="${DESTDIR}${DOCUMENT_ROOT}/server/FileConverter/bin"\
+-		--src="${DESTDIR}${DOCUMENT_ROOT}/sdkjs/slide/themes"\
+-		--output="${DESTDIR}${DOCUMENT_ROOT}/sdkjs/common/Images"
++	#sudo -u onlyoffice "${DESTDIR}${DOCUMENT_ROOT}/server/tools/allfontsgen"\
 +	#	--input="${DESTDIR}${DOCUMENT_ROOT}/core-fonts"\
 +	#	--allfonts-web="${DESTDIR}${DOCUMENT_ROOT}/sdkjs/common/AllFonts.js"\
 +	#	--allfonts="${DESTDIR}${DOCUMENT_ROOT}/server/FileConverter/bin/AllFonts.js"\
@@ -50,6 +56,11 @@
 +	#	--selection="${DESTDIR}${DOCUMENT_ROOT}/server/FileConverter/bin/font_selection.bin"\
 +	#	--output-web="${DESTDIR}${DOCUMENT_ROOT}/fonts"\
 +	#	--use-system="true"
++
++	#sudo -u onlyoffice "${DESTDIR}${DOCUMENT_ROOT}/server/tools/allthemesgen"\
++	#	--converter-dir="${DESTDIR}${DOCUMENT_ROOT}/server/FileConverter/bin"\
++	#	--src="${DESTDIR}${DOCUMENT_ROOT}/sdkjs/slide/themes"\
++	#	--output="${DESTDIR}${DOCUMENT_ROOT}/sdkjs/common/Images"
  
  uninstall:
  	userdel onlyoffice
