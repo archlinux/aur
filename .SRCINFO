@@ -1,6 +1,6 @@
 pkgbase = transmission-sequential
 	pkgver = 2.94
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.transmissionbt.com/
 	arch = i686
 	arch = x86_64

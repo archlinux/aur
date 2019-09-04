@@ -5,7 +5,7 @@
 pkgbase=transmission-sequential
 pkgname=(transmission-sequential-cli transmission-sequential-gtk transmission-sequential-qt)
 pkgver=2.94
-pkgrel=1
+pkgrel=2
 arch=(i686 x86_64 arm armv6h armv7h aarch64)
 url="http://www.transmissionbt.com/"
 license=(MIT)
