@@ -1,12 +1,13 @@
 pkgbase = python-cupy
 	pkgdesc = NumPy-like API accelerated with CUDA
 	pkgver = 6.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cupy.chainer.org
 	arch = x86_64
 	license = MIT
 	makedepends = python
 	makedepends = python-setuptools
+	makedepends = cython
 	depends = cuda
 	depends = cudnn
 	depends = nccl
