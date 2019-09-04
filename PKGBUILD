@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
 pkgname=guiscrcpy-git
 pkgver=1.10.r54.f80bfe4
-pkgrel=2
+pkgrel=3
 pkgdesc="A full fledged GUI integration for the most award winning open-source Android screen mirroring system -- scrcpy"
 arch=('i686' 'x86_64')
 url="https://srevinsaju.github.io/guiscrcpy"
@@ -26,7 +26,7 @@ pkgver() {
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
-	install -d "$pkgdir/opt/$pkgname"
+	install -d "$pkgdir/opt/${pkgname%-git}"
 	cp -r * "$pkgdir/opt/${pkgname%-git}/"
 	install -Dm755 "$srcdir/${pkgname%-git}.sh" "$pkgdir/usr/bin/${pkgname%-git}"
 	install -Dm644 "$srcdir/${pkgname%-git}.desktop" "$pkgdir/usr/share/applications/${pkgname%-git}.desktop"
