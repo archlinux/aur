@@ -1,8 +1,7 @@
 # Maintainer: Vasia Novikov <n1dr+cmarchlinux@yaaandex.com> (replace "aaa" with "a")
-
 pkgname=rua
 pkgver=0.14.6
-pkgrel=2
+pkgrel=3
 pkgdesc='AUR helper in Rust providing control, review and jailed/offline build options'
 url='https://github.com/vn971/rua'
 source=("https://github.com/vn971/rua/archive/${pkgver}.tar.gz")
@@ -10,7 +9,7 @@ arch=('x86_64' 'i686')
 license=('GPL3')
 
 makedepends=('cargo')
-depends=('bubblewrap' 'git' 'pacman')
+depends=('bubblewrap' 'git' 'pacman' 'xz' 'openssl')
 optdepends=(
   'bubblewrap-suid: version of bubblewrap that works on linux-hardened kernel'
   'sudo: package installation can be done via sudo, if convenient'
