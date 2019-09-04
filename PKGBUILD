@@ -1,7 +1,7 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=xde-menu-git
-pkgver=0.9.0.ge10cec8
+pkgver=0.10.r0.g1bfb93c
 pkgrel=1
 pkgdesc="XDG compliant menu generator"
 arch=('i686' 'x86_64')
@@ -19,14 +19,18 @@ md5sums=('SKIP')
 
 pkgver() {
   cd $pkgname
-  git describe --long --tags|sed -e 's,^[a-zA-Z_]*,,;s,-,.,g'
+  git describe --long --tags | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd $pkgname
+  ./autogen.sh
 }
 
 build() {
   cd $pkgname
-  ./autogen.sh
-  ./configure --prefix=/usr --sysconfdir=/etc
-  make V=0
+  ./configure
+  make
 }
 
 package() {
