@@ -1,15 +1,15 @@
 # Maintainer: Your name <bros at brocode dot sh>
 
 pkgname=fw
-pkgver=2.0.1
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="faster workspace management"
 depends=('fzf')
 arch=('x86_64')
 url="https://github.com/brocode/fw"
 license=('WTFPL')
-source=('https://github.com/brocode/fw/releases/download/2.0.1/fw')
-sha256sums=('f5cbf0f6c1dc8cdc46a8c29c2c05ab99e38b497c8cbba100fb0b94588690bf05')
+source=('https://github.com/brocode/fw/releases/download/2.1.0/fw')
+sha256sums=('b9c6fd869c486b5ccfa0b3336400f69ff89e91ede277ef827529d8f90cae9a23')
 
 package() {
   mkdir -p "${pkgdir}/usr/bin"
