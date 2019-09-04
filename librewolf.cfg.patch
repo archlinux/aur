@@ -1,8 +1,19 @@
-diff --git a/settings/librewolf.cfg b/settings/librewolf.cfg
-index adb39b4..4d38cec 100644
---- a/settings/librewolf.cfg
-+++ b/settings/librewolf.cfg
-@@ -94,11 +94,11 @@ defaultPref("extensions.enabledAddons", "librefox.http.watcher.tor%40intika.be:2
+diff --git a/librewolf.cfg b/librewolf.cfg
+index d7a6ff6..4d38cec 100644
+--- a/librewolf.cfg
++++ b/librewolf.cfg
+@@ -1,7 +1,8 @@
+-// ---------
++// =====================================================================================
++//
+ // LibreWolf
+-// ---------
+ //
++// =====================================================================================
+ // Documentation .............. :
+ // ==============================
+ //
+@@ -93,11 +94,11 @@ defaultPref("extensions.enabledAddons", "librefox.http.watcher.tor%40intika.be:2
  // User Settings : Cookies settings
  // --------------------------------
  
@@ -17,7 +28,7 @@ index adb39b4..4d38cec 100644
  lockPref("network.cookie.thirdparty.nonsecureSessionOnly", true);
  
  // -----------------------------------
-@@ -162,6 +162,8 @@ defaultPref("privacy.sanitize.timeSpan", 0);
+@@ -161,6 +162,8 @@ defaultPref("privacy.sanitize.timeSpan", 0);
  defaultPref("browser.formfill.enable", false);
  defaultPref("privacy.sanitize.sanitizeOnShutdown", true);
  defaultPref("places.history.enabled", false);
@@ -26,7 +37,7 @@ index adb39b4..4d38cec 100644
  defaultPref("privacy.history.custom", true);
  //defaultPref("privacy.cpd.openWindows", true); // Clear session data
  //defaultPref("privacy.clearOnShutdown.openWindows", true);
-@@ -180,10 +182,10 @@ lockPref("browser.sessionstore.interval", 60000);
+@@ -179,10 +182,10 @@ lockPref("browser.sessionstore.interval", 60000);
  // User Settings : Autofill settings
  // ---------------------------------
  
@@ -41,37 +52,633 @@ index adb39b4..4d38cec 100644
  
  lockPref("signon.autofillForms", false);
  lockPref("signon.autofillForms.http", false);
-@@ -533,13 +535,13 @@ lockPref("dom.w3c_pointer_events.enabled", false);
- // Pref : Enable hardening against various fingerprinting vectors (Tor Uplift project)
- // https://wiki.mozilla.org/Security/Tor_Uplift/Tracking
- // https://bugzilla.mozilla.org/show_bug.cgi?id=1333933
--lockPref("privacy.resistFingerprinting", true);
-+defaultPref("privacy.resistFingerprinting", true);
+@@ -212,78 +215,151 @@ lockPref("media.gmp-widevinecdm.autoupdate", false);
  
- // Pref : 4503 : disable mozAddonManager Web API (FF57+)
- // [NOTE] As a side-effect in FF57-59 this allowed extensions to work on AMO. In FF60+ you also need
- // to sanitize or clear extensions.webextensions.restrictedDomains (see 2662) to keep that side-effect
- // [1] https://bugzilla.mozilla.org/buglist.cgi?bug_id=1384330,1406795,1415644,1453988
+ lockPref("media.gmp-gmpopenh264.enabled", false);
+ lockPref("media.gmp-gmpopenh264.autoupdate", false);
+-lockPref("media.peerconnection.video.enabled", false);
++lockPref("media.peerconnection.video.enabled", false); //Deprecated Active
++
+ //lockPref("media.peerconnection.video.h264", true);
++
+ lockPref("media.gmp-eme-adobe.enabled", false);
++
+ lockPref("media.gmp-manager.certs.2.commonName", "");
+ lockPref("media.gmp-manager.certs.1.commonName", "");
+ 
+-// ----------------------
+-// User Settings : WebRTC
+-// ----------------------
++// ----------------------------------------------------------------------------------------------------
++// User Settings : WebRTC (Very efficient for fingerprinting this is why its disabled)
++// ----------------------------------------------------------------------------------------------------
+ 
++// Pref : Disable WebRTC getUserMedia, screen sharing, audio capture, video capture
++// https://wiki.mozilla.org/Media/getUserMedia
++// https://blog.mozilla.org/futurereleases/2013/01/12/capture-local-camera-and-microphone-streams-with-getusermedia-now-enabled-in-firefox/
++// https://developer.mozilla.org/en-US/docs/Web/API/Navigator
+ lockPref("media.navigator.enabled", false);
+-lockPref("media.navigator.video.enabled", false);
++lockPref("media.navigator.video.enabled", false); //Deprecated Active
+ lockPref("media.getusermedia.browser.enabled", false);
+ lockPref("media.getusermedia.screensharing.enabled", false);
+ lockPref("media.getusermedia.audiocapture.enabled", false);
+-lockPref("media.peerconnection.use_document_iceservers", false);
+-lockPref("media.peerconnection.identity.enabled", false);
+-lockPref("media.peerconnection.identity.timeout", 1);
+-lockPref("media.peerconnection.turn.disable", true);
+-lockPref("media.peerconnection.ice.tcp", false);
+-lockPref("media.peerconnection.ice.default_address_only", true);
+-lockPref("media.peerconnection.ice.no_host", true);
+-
+-// ------------------------------
+-// User Settings : Proxy settings
+-// ------------------------------
+ 
++// Pref : 2001 : disable WebRTC (Web Real-Time Communication)
++// [1] https://www.privacytools.io/#webrtc
++lockPref("media.peerconnection.use_document_iceservers", false); //Deprecated Active
++lockPref("media.peerconnection.identity.enabled", false); //Deprecated Active
++lockPref("media.peerconnection.identity.timeout", 1); //Deprecated Active
++lockPref("media.peerconnection.turn.disable", true); //Deprecated Active
++lockPref("media.peerconnection.ice.tcp", false); //Deprecated Active
++
++// Pref : 2002: limit WebRTC IP leaks if using WebRTC
++// [1] https://bugzilla.mozilla.org/buglist.cgi?bug_id=1189041,1297416
++// [2] https://wiki.mozilla.org/Media/WebRTC/Privacy
++lockPref("media.peerconnection.ice.default_address_only", true); // (FF42-FF50)
++lockPref("media.peerconnection.ice.no_host", true); // (FF51+)
++
++// ----------------------------------------------------------------------------------------------------
++// User Settings : Proxy settings
++// ----------------------------------------------------------------------------------------------------
++
++// Pref : 0706 : remove paths when sending URLs to PAC scripts (FF51+)
++// CVE-2017-5384 : Information disclosure via Proxy Auto-Config (PAC)
++// [1] https://bugzilla.mozilla.org/1255474
++// Does not need to be set as its false by default
++// BUG : This locks proxy settings from the panel
++// BUG-Fix : Fixed in defaulting section
++// MIGRATED : To defaulting section
++// WARNING : Do not change this settings here or proxy settings will be locked
+ //lockPref("network.proxy.autoconfig_url.include_path", false);
++
++// Pref : Send DNS request through SOCKS when SOCKS proxying is in use
++// https://trac.torproject.org/projects/tor/wiki/doc/TorifyHOWTO/WebBrowsers
++// BUG : This lock proxy settings from the panel
++// BUG-Fix : Fixed with defaulting section
++// MIGRATED : To defaulting section
++// WARNING : Do not change this settings here or proxy settings will be locked
+ //lockPref("network.proxy.socks_remote_dns", true);
+ 
+-// ----------------------------
++// ----------------------------------------------------------------------------------------------------
+ // User Settings : DNS settings
+-// ----------------------------
+-
++// ----------------------------------------------------------------------------------------------------
++
++// Pref : 0707 : disable (or setup) DNS-over-HTTPS (DoH) (FF60+)
++// TRR = Trusted Recursive Resolver
++// .mode: 0=off, 1=race, 2=TRR first, 3=TRR only, 4=race for stats,
++// but always use native result, 5=explicitly turn it off
++// [WARNING] DoH bypasses hosts and gives info to yet another party (e.g. Cloudflare)
++// [1] https://www.ghacks.net/2018/04/02/configure-dns-over-https-in-firefox/
++// [2] https://hacks.mozilla.org/2018/05/a-cartoon-intro-to-dns-over-https/
++// BUG : This seems to disable socks_remote_dns ?! need to check with wireshark
++// If true, just settings urls to null should be enough to disable
++// Without impacting socks_remote_dns
++// -------
++// Mode 0 is only off because right now that's the default, the default can change.
++// Mode 5 means explicitly off, regardless of default.
++// https://wiki.mozilla.org/Trusted_Recursive_Resolver
++// https://nakedsecurity.sophos.com/2018/08/07/mozilla-faces-resistance-over-dns-privacy-test/#comment-5193521
++// -------
+ lockPref("network.trr.mode", 5);
+ lockPref("network.trr.bootstrapAddress", "");
+ lockPref("network.trr.uri", "");
++
++// If your OS or ISP does not support IPv6, there is no reason to have this preference set to false.
+ lockPref("network.dns.disableIPv6", true);
++
++// Pref : Disable DNS pre-fetching
++// http://kb.mozillazine.org/Network.dns.disablePrefetch
++// https://developer.mozilla.org/en-US/docs/Web/HTTP/Controlling_DNS_prefetching
+ lockPref("network.dns.disablePrefetch", true);
+ lockPref("network.dns.disablePrefetchFromHTTPS", true);
+ 
+-// ------------------------------------
++// ----------------------------------------------------------------------------------------------------
+ // User Settings : Start page highlight
+-// ------------------------------------
++// ----------------------------------------------------------------------------------------------------
+ 
++// Pref : Defaulting Settings : Start page highlight settings
++// This does not seems to work with defaultPref
+ lockPref("browser.newtabpage.activity-stream.feeds.section.highlights", false);
+ lockPref("browser.newtabpage.activity-stream.section.highlights.includeBookmarks", false);
+ lockPref("browser.newtabpage.activity-stream.section.highlights.includeDownloads", false);
+ lockPref("browser.newtabpage.activity-stream.section.highlights.includeVisited", false);
+ lockPref("browser.newtabpage.activity-stream.prerender", false);
+ 
+-// -------------------------------------------
++// ----------------------------------------------------------------------------------------------------
+ // Defaulting Settings : Do not track settings
+-// -------------------------------------------
++// ----------------------------------------------------------------------------------------------------
+ 
++// Set to enforce; choice was left to the user in a previous version
+ lockPref("privacy.donottrackheader.enabled", true);
++
++// Pref : 1610: (36+) set DNT "value" to "not be tracked" (FF21+)
++// [1] http://kb.mozillazine.org/Privacy.donottrackheader.value
++// [-] https://bugzilla.mozilla.org/1042135#c101
+ lockPref("privacy.donottrackheader.value", 1);
+ 
+-// --------------------------------------
++// ----------------------------------------------------------------------------------------------------
+ // User Settings : Other theming settings
+-// --------------------------------------
++// ----------------------------------------------------------------------------------------------------
+ 
++// Pref : Fix white text on white background for linux
++// fixed with lockPref("ui.use_standins_for_native_colors", true);
+ //lockPref("widget.content.gtk-theme-override", "Adwaita:light");
++
++// Pref :
+ //lockPref("browser.devedition.theme.enabled", true);
++
++// Pref :
+ //lockPref("devtools.theme", "dark");
++
++// Pref :
+ //lockPref("browser.devedition.theme.showCustomizeButton", true);
+ 
+-// --------------------------------------
++// ----------------------------------------------------------------------------------------------------
+ // User Settings : Miscellaneous settings
+-// --------------------------------------
++// ----------------------------------------------------------------------------------------------------
+ 
++// Pref : Disable "Are you sure you want to leave this page?" popups on page close
++// https://support.mozilla.org/en-US/questions/1043508
++// Does not prevent JS leaks of the page close event.
++// https://developer.mozilla.org/en-US/docs/Web/Events/beforeunload
++// Disabled by default in Librefox; could be useful on some sites, e.g. banking sites
+ lockPref("dom.disable_beforeunload", true);
++
++// Pref : Disable geo localisation
+ lockPref("permissions.default.geo", 2);
+ 
+ // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+@@ -293,37 +369,107 @@ lockPref("permissions.default.geo", 2);
+ // Bench Diff : +0/5000
+ // >>>>>>>>>>>>>>>>>>>>
+ 
+-// --------------------------------------
++// ----------------------------------------------------------------------------------------------------
+ // Defaulting Settings : Other Defaulting
+-// --------------------------------------
++// ----------------------------------------------------------------------------------------------------
+ 
++// Pref : Preferred language for displaying websites.
++// The first settings overflow the second one
+ defaultPref("privacy.spoof_english", 2);
+ //defaultPref("intl.accept_languages", "en-US, en"); //This make lang windows unusable
++
++// Pref : 1606: ALL: set the default Referrer Policy
++// 0=no-referer, 1=same-origin, 2=strict-origin-when-cross-origin, 3=no-referrer-when-downgrade
++// [NOTE] This is only a default, it can be overridden by a site-controlled Referrer Policy
++// [1] https://www.w3.org/TR/referrer-policy/
++// [2] https://developer.mozilla.org/docs/Web/HTTP/Headers/Referrer-Policy
++// [3] https://blog.mozilla.org/security/2018/01/31/preventing-data-leaks-by-stripping-path-information-in-http-referrers/
+ defaultPref("network.http.referer.defaultPolicy", 3); // (FF59+) default: 3
+ defaultPref("network.http.referer.defaultPolicy.pbmode", 2); // (FF59+) default: 2
++
++// Pref : 1701: enable Container Tabs setting in preferences (see 1702) (FF50+)
++// [1] https://bugzilla.mozilla.org/1279029
+ defaultPref("privacy.userContext.ui.enabled", true);
++// Pref : 1702: enable Container Tabs (FF50+)
++// [SETTING] General>Tabs>Enable Container Tabs
+ defaultPref("privacy.userContext.enabled", true);
++// Pref : 1703: enable a private container for thumbnail loads (FF51+)
++defaultPref("privacy.usercontext.about_newtab_segregation.enabled", true); // default: true in FF61+
++// Pref : 1704: set long press behaviour on "+ Tab" button to display container menu (FF53+)
++// 0=disables long press, 1=when clicked, the menu is shown
++// 2=the menu is shown after X milliseconds
++// [NOTE] The menu does not contain a non-container tab option
++// [1] https://bugzilla.mozilla.org/1328756
+ defaultPref("privacy.userContext.longPressBehavior", 2);
++
++// Pref : (FF57+)
+ defaultPref("browser.download.autohideButton", false);
++
++// Pref : enable "Find As You Type"
+ defaultPref("accessibility.typeaheadfind", true);
++
++// Pref : disable autocopy default [LINUX]
+ defaultPref("clipboard.autocopy", false);
++
++// Pref : 0=none, 1-multi-line, 2=multi-line & single-line
+ defaultPref("layout.spellcheckDefault", 2);
++
++// Pref : closeWindowWithLastTab
+ defaultPref("browser.tabs.closeWindowWithLastTab", false);
++
++// Pref : middle-click enabling auto-scrolling [WINDOWS] [MAC]
+ defaultPref("general.autoScroll", false);
++
++// Pref : 1601: ALL: control when images/links send a referer
++// This breaks a lot of sites. This is mitigating by an extension.
++// 0=never, 1=send only when links are clicked, 2=for links and images (default)
+ //defaultPref("network.http.sendRefererHeader", 1);
++
++// Pref : 2620: enable Firefox's built-in PDF reader
++// [SETTING] General>Applications>Portable Document Format (PDF)
++// This setting controls if the option "Display in Firefox" in the above setting is available
++// and by effect controls whether PDFs are handled in-browser or externally ("Ask" or "Open With")
++// PROS:   pdfjs is lightweight, open source, and as secure/vetted as any pdf reader out there (more than most)
++//         Exploits are rare (1 serious case in 4 yrs), treated seriously and patched quickly.
++//         It doesn't break "state separation" of browser content (by not sharing with OS, independent apps).
++//         It maintains disk avoidance and application data isolation. It's convenient. You can still save to disk.
++// CONS:   You may prefer a different pdf reader for security reasons
++// CAVEAT: JS can still force a pdf to open in-browser by bundling its own code (rare)
+ defaultPref("pdfjs.disabled", false);
++
++// Pref : 2210: block popup windows
++// [SETTING] Privacy & Security>Permissions>Block pop-up windows
+ defaultPref("dom.disable_open_during_load", true);
++
++// Pref : 2203 : open links targeting new windows in a new tab instead
++// User Settings : Migrated to Defaulting : Links pop-up open in new tab
++// This stops malicious window sizes and some screen resolution leaks.
++// You can still right-click a link and open in a new window.
++// [TEST] https://people.torproject.org/~gk/misc/entire_desktop.html
++// [1] https://trac.torproject.org/projects/tor/ticket/9881
+ defaultPref("browser.link.open_newwindow", 3);
+ defaultPref("browser.link.open_newwindow.restriction", 0);
++
++// Pref : Defaulting Settings : Proxy
+ defaultPref("network.proxy.autoconfig_url", "");
+ defaultPref("network.proxy.autoconfig_url.include_path", false);
+ defaultPref("network.proxy.socks_remote_dns", true);
+ defaultPref("network.proxy.socks_version", 5);
++
++// Pref : Defaulting Settings : Bookmark should by default open in newtab instead of
++// replacing the current page
+ defaultPref("browser.tabs.loadBookmarksInTabs", true);
++
++// Pref : Debugging settings
+ defaultPref("devtools.debugger.remote-enabled", false);
+ defaultPref("devtools.chrome.enabled", false);
++
++// Pref : site_specific_overrides useragent
+ defaultPref("general.useragent.site_specific_overrides", false);
++
++// Pref : Display all sections by default
+ defaultPref("extensions.ui.experiment.hidden", false);
++// These two are not needed (they are set to true automatically when their list is empty)
+ //defaultPref("extensions.ui.dictionary.hidden", false);
+ //defaultPref("extensions.ui.locale.hidden", false);
+ 
+@@ -333,10 +479,47 @@ defaultPref("extensions.ui.experiment.hidden", false);
+ // Bench Diff : +0/5000
+ // >>>>>>>>>>>>>>>>>>>>
+ 
++// Pref : Disable IndexedDB (disabled)
++// Pref : 2720: enforce IndexedDB (IDB)
++// IDB is required for extensions and Firefox internals (even before FF63)
++// To control *website* IDB data, control allowing cookies and service workers, or use
++// Temporary Containers. To mitigate *website* IDB, FPI helps (4001), and/or sanitize
++// on close (Offline Website Data, see User Settings : History settings) or on-demand (Ctrl-Shift-Del),
++// or automatically via an extension. Note that IDB currently cannot be sanitized by host.
++// IndexedDB could be used for tracking purposes, but is required for :
++// twitter and many sites, some addons, old version of uBlock, session manager in certain cases
++// This is mitigated with addons and sanitize settings
++// IndexedDB is a low-level API for client-side storage of significant amounts of structured data,
++// including files/blobs. This API uses indexes to enable high-performance searches of this data.
++// While Web Storage is useful for storing smaller amounts of data, it is less useful for storing
++// larger amounts of structured data. IndexedDB provides a solution. This is the main landing page
++// for MDN's IndexedDB coverage — "here we provide links to the full API reference and usage guides,
++// browser support details, and some explanation of key concepts"
++// Also this is cleaned by privacy.clearOnShutdown.offlineApps"
++// https://blog.mozilla.org/addons/2018/08/03/new-backend-for-storage-local-api/
++// https://developer.mozilla.org/en-US/docs/IndexedDB
++// https://en.wikipedia.org/wiki/Indexed_Database_API
++// https://wiki.mozilla.org/Security/Reviews/Firefox4/IndexedDB_Security_Review
++// http://forums.mozillazine.org/viewtopic.php?p=13842047
++// https://github.com/pyllyukko/user.js/issues/8
+ lockPref("dom.indexedDB.enabled", true); //default true
++
++// Pref : indexedDB Loggingq - disabled for performance
+ //lockPref("dom.indexedDB.logging.details", false); //default true
+ //lockPref("dom.indexedDB.logging.enabled", false); //default true
++
++// Pref : 2516 : disable PointerEvents
++// [1] https://developer.mozilla.org/en-US/docs/Web/API/PointerEvent
+ lockPref("dom.w3c_pointer_events.enabled", false);
++
++// Pref : 0702 : disable HTTP2 (which was based on SPDY which is now deprecated)
++// HTTP2 adds "multiplexing" and "server push", but does nothing to enhance
++// privacy, and in fact opens up a number of server-side fingerprinting opportunities
++// [1] https://http2.github.io/faq/
++// [2] https://blog.scottlogic.com/2014/11/07/http-2-a-quick-look.html
++// [3] https://queue.acm.org/detail.cfm?id=2716278
++// [4] https://github.com/ghacksuserjs/ghacks-user.js/issues/107
++// Disabled because of [4]
+ //lockPref("network.http.spdy.enabled", false);
+ //lockPref("network.http.spdy.enabled.deps", false);
+ //lockPref("network.http.spdy.enabled.http2", false);
+@@ -349,19 +532,48 @@ lockPref("dom.w3c_pointer_events.enabled", false);
+ // Bench Diff : +0/5000
+ // >>>>>>>>>>>>>>>>>>>>
+ 
+-lockPref("privacy.resistFingerprinting", true);
 -lockPref("privacy.resistFingerprinting.block_mozAddonManager", true);
++// Pref : Enable hardening against various fingerprinting vectors (Tor Uplift project)
++// https://wiki.mozilla.org/Security/Tor_Uplift/Tracking
++// https://bugzilla.mozilla.org/show_bug.cgi?id=1333933
++defaultPref("privacy.resistFingerprinting", true);
++
++// Pref : 4503 : disable mozAddonManager Web API (FF57+)
++// [NOTE] As a side-effect in FF57-59 this allowed extensions to work on AMO. In FF60+ you also need
++// to sanitize or clear extensions.webextensions.restrictedDomains (see 2662) to keep that side-effect
++// [1] https://bugzilla.mozilla.org/buglist.cgi?bug_id=1384330,1406795,1415644,1453988
 +defaultPref("privacy.resistFingerprinting.block_mozAddonManager", true);
  
  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
  // Section : Locale/Time/UserAgent
-@@ -565,11 +567,11 @@ lockPref("intl.regional_prefs.use_os_locales", false);
+ // Bench Diff : +0/5000
+ // >>>>>>>>>>>>>>>>>>>>
  
- // Pref : Locale and useragent.
- // Already applied by resistFingerprinting ?
++// Pref : 0864 : disable date/time picker (FF57+ default true)
++// This can leak your locale if not en-US
++// [1] https://trac.torproject.org/projects/tor/ticket/21787
++// Does this work efficiently with resistFingerprinting ??
+ lockPref("dom.forms.datetime", false);
++
++// Pref : Prevent leaking application locale/date format using JavaScript
++// https://bugzilla.mozilla.org/show_bug.cgi?id=867501
++// https://hg.mozilla.org/mozilla-central/rev/52d635f2b33d
++// Already applied by resistFingerprinting ?
+ lockPref("javascript.use_us_english_locale", true);
++
++// Pref : Set Accept-Language HTTP header to en-US regardless of Firefox localization
++// https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Language
++// Already applied by resistFingerprinting ?
+ lockPref("intl.regional_prefs.use_os_locales", false);
 -lockPref("intl.locale.requested", "en-US");
-+defaultPref("intl.locale.requested", "en-US");
- 
- // Pref : Spoof User-agent (re-enabled)
- // See https://gitlab.com/librewolf-community/librewolf/issues/26
 -lockPref("general.useragent.override", "Mozilla/5.0 (Windows NT 6.1; rv:45.0) Gecko/20100101 Firefox/45.0, 45");
++
++// Pref : Locale and useragent.
++// Already applied by resistFingerprinting ?
++defaultPref("intl.locale.requested", "en-US");
++
++// Pref : Spoof User-agent (re-enabled)
++// See https://gitlab.com/librewolf-community/librewolf/issues/26
 +defaultPref("general.useragent.override", "Mozilla/5.0 (Windows NT 6.1; rv:45.0) Gecko/20100101 Firefox/45.0, 45");
- 
- // Pref : This does not work with resistFingerprinting. Still needed for ESR.
++
++// Pref : This does not work with resistFingerprinting. Still needed for ESR.
  lockPref("general.appname.override", "Netscape");
-@@ -849,7 +851,8 @@ lockPref("extensions.webextensions.identity.redirectDomain", "");
+ lockPref("general.appversion.override", "5.0 (Windows)");
+ lockPref("general.platform.override", "Win32");
+@@ -372,52 +584,199 @@ lockPref("general.oscpu.override", "Windows NT 6.1");
+ // Bench Diff : +100/5000
+ // >>>>>>>>>>>>>>>>>>>>>>
+ 
++// Pref : 0335 : disable Telemetry Coverage [FF64+]
++// [1] https://blog.mozilla.org/data/2018/08/20/effectively-measuring-search-in-firefox/
+ lockPref("toolkit.coverage.endpoint.base", "");
+ lockPref("toolkit.coverage.opt-out", true); // [HIDDEN PREF]
++
++// DOWNLOADS
++// Pref : 2652: disable adding downloads to the system's "recent documents" list
+ lockPref("browser.download.manager.addToRecentDocs", false); //do not disable
++// Pref : 2653: disable hiding mime types (Options>General>Applications) not associated with a plugin
+ lockPref("browser.download.hide_plugins_without_extensions", false); //do not disable
++
++// Pref : 2617: remove webchannel whitelist
++// Default value:
++// "https://content.cdn.mozilla.net https://input.mozilla.org https://support.mozilla.org https://install.mozilla.org"
+ lockPref("webchannel.allowObject.urlWhitelist", "");
++
++// Pref : 2730b: disable offline cache on insecure sites (FF60+)
++// [1] https://blog.mozilla.org/security/2018/02/12/restricting-appcache-secure-contexts/
+ lockPref("browser.cache.offline.insecure.enable", false); // default: false in FF62+
++
++// Pref : 2614: limit HTTP redirects (this does not control redirects with HTML meta tags or JS)
++// [NOTE] A low setting of 5 or less will probably break some sites (e.g. gmail logins)
++// To control HTML Meta tag and JS redirects, use an extension.
++// Default: 20
+ lockPref("network.http.redirection-limit", 10);
++
++// Pref : 2731: enforce websites to ask whether to store data for offline use
++// [1] https://support.mozilla.org/questions/1098540
++// [2] https://bugzilla.mozilla.org/959985
+ lockPref("offline-apps.allow_by_default", false);
++
++// EXTENSIONS
++// Pref : 2660: lock down allowed extension directories
++// [SETUP-CHROME] This will break extensions that do not use the default XPI directories
++// [1] https://mike.kaply.com/2012/02/21/understanding-add-on-scopes/
++// [1] archived: https://archive.is/DYjAM
+ lockPref("extensions.enabledScopes", 5); // (hidden pref)
++// Breaks all default themes (including dark) starting with FF68.0+
++
++// Tor-compatibility-patch
+ lockPref("extensions.autoDisableScopes", 15); //Tor value must be 0
++// Pref : 2663: enable warning when websites try to install add-ons
++// [SETTING] Privacy & Security>Permissions>Warn you when websites try to install add-ons
+ lockPref("xpinstall.whitelist.required", true); // default: true
++
++// Pref : 2306: disable push notifications (FF44+)
++// web apps can receive messages pushed to them from a server, whether or
++// not the web app is in the foreground, or even currently loaded
++// [1] https://developer.mozilla.org/docs/Web/API/Push_API
+ lockPref("dom.push.enabled", false);
+ lockPref("dom.push.connection.enabled", false);
+ lockPref("dom.push.serverURL", ""); //default "wss://push.services.mozilla.com/"
+ lockPref("dom.push.userAgentID", "");
++
++// Pref : 2683: block top level window data: URIs (FF56+)
++// [1] https://bugzilla.mozilla.org/1331351
++// [2] https://www.wordfence.com/blog/2017/01/gmail-phishing-data-uri/
++// [3] https://www.fxsitecompat.com/en-CA/docs/2017/data-url-navigations-on-top-level-window-will-be-blocked/
+ lockPref("security.data_uri.block_toplevel_data_uri_navigations", true); // default: true in FF59+
++
++// Pref : 2618: disable exposure of system colors to CSS or canvas (FF44+)
++// [NOTE] see second listed bug: may cause black on black for elements with undefined colors
++// [1] https://bugzilla.mozilla.org/buglist.cgi?bug_id=232227,1330876
+ lockPref("ui.use_standins_for_native_colors", true); // (hidden pref)
++// Fix for widget.content.gtk-theme-override;Adwaita:light
++
++// Pref : 0403: disable individual unwanted/unneeded parts of the Kinto blocklists
++// What is Kinto?: https://wiki.mozilla.org/Firefox/Kinto#Specifications
++// As Firefox transitions to Kinto, the blocklists have been broken down into entries for certs to be
++// revoked, extensions and plugins to be disabled, and gfx environments that cause problems or crashes
+ lockPref("services.blocklist.onecrl.collection", ""); // revoked certificates
+ lockPref("services.blocklist.addons.collection", "");
+ lockPref("services.blocklist.plugins.collection", "");
+ lockPref("services.blocklist.gfx.collection", "");
++
++// Pref : disable showing about:blank as soon as possible during startup (FF60+)
++// When default true (FF62+) this no longer masks the RFP resizing activity
++// [1] https://bugzilla.mozilla.org/1448423
+ lockPref("browser.startup.blankWindow", false);
++
++// Pref : 2428: enforce DOMHighResTimeStamp API
++// [WARNING] Required for normalization of timestamps and any timer resolution mitigations
+ lockPref("dom.event.highrestimestamp.enabled", true); // default: true
++
++// Pref : 0516 : disable Onboarding (FF55+)
++// Onboarding is an interactive tour/setup for new installs/profiles and features. Every time
++// about:home or about:newtab is opened, the onboarding overlay is injected into that page
++// [NOTE] Onboarding uses Google Analytics [2], and leaks resource://URIs [3]
++// [1] https://wiki.mozilla.org/Firefox/Onboarding
++// [2] https://github.com/mozilla/onboard/commit/db4d6c8726c89a5d6a241c1b1065827b525c5baf
++// [3] https://bugzilla.mozilla.org/863246#c154
++// Pref : URL that kicks off the UI tour
+ lockPref("privacy.trackingprotection.introURL", "");
++
++// Pref : 0703 : disable HTTP Alternative Services (FF37+)
++// [1] https://www.ghacks.net/2015/08/18/a-comprehensive-list-of-firefox-privacy-and-security-settings/#comment-3970881
++// [2] https://www.mnot.net/blog/2016/03/09/alt-svc
+ lockPref("network.http.altsvc.enabled", false);
+ lockPref("network.http.altsvc.oe", false);
++
++// Pref : 0709 : disable using UNC (Uniform Naming Convention) paths (FF61+)
++// [1] https://trac.torproject.org/projects/tor/ticket/26424
+ lockPref("network.file.disable_unc_paths", true); // (hidden pref)
++
++// Pref : 0710 : disable GIO as a potential proxy bypass vector
++// Gvfs/GIO has a set of supported protocols like obex, network, archive, computer, dav, cdda,
++// gphoto2, trash, etc. By default only smb and sftp protocols are accepted so far (as of FF64)
++// [1] https://bugzilla.mozilla.org/1433507
++// [2] https://trac.torproject.org/23044
++// [3] https://en.wikipedia.org/wiki/GVfs
++// [4] https://en.wikipedia.org/wiki/GIO_(software)
+ lockPref("network.gio.supported-protocols", ""); // (hidden pref)
++
++// Pref : 0809 : disable location bar suggesting "preloaded" top websites (FF54+)
++// [1] https://bugzilla.mozilla.org/1211726
+ lockPref("browser.urlbar.usepreloadedtopurls.enabled", false);
++
++// Pref : 0810 : disable location bar making speculative connections (FF56+)
++// [1] https://bugzilla.mozilla.org/1348275
+ lockPref("browser.urlbar.speculativeConnect.enabled", false);
++
++// Pref : 0850e: disable location bar one-off searches (FF51+)
++// [1] https://www.ghacks.net/2016/08/09/firefox-one-off-searches-address-bar/
+ lockPref("browser.urlbar.oneOffSearches", false);
++
++// Pref : 0911 : prevent cross-origin images from triggering an HTTP-Authentication prompt (FF55+)
++// [1] https://bugzilla.mozilla.org/1357835
+ lockPref("network.auth.subresource-img-cross-origin-http-auth-allow", false); //Deprecated Active
++
++// Pref : 1030 : disable favicons in shortcuts
++// URL shortcuts use a cached randomly named .ico file which is stored in your
++// profile/shortcutCache directory. The .ico remains after the shortcut is deleted.
++// If set to false then the shortcuts use a generic Firefox icon
+ lockPref("browser.shell.shortcutFavicons", false);
++
++// Pref : 1032 : disable favicons in web notifications
+ lockPref("alerts.showFavicons", false); // default: false
++
++// Pref : 1201 : disable old SSL/TLS "insecure" renegotiation (vulnerable to a MiTM attack)
++// [WARNING] <2% of secure sites do NOT support the newer "secure" renegotiation, see [2]
++// [1] https://wiki.mozilla.org/Security:Renegotiation
++// [2] https://www.ssllabs.com/ssl-pulse/
+ lockPref("security.ssl.require_safe_negotiation", true);
++
++// Pref : 1205 : disable TLS1.3 0-RTT (round-trip time) (FF51+)
++// [1] https://github.com/tlswg/tls13-spec/issues/1001
++// [2] https://blog.cloudflare.com/tls-1-3-overview-and-q-and-a/
+ lockPref("security.tls.enable_0rtt_data", false); // (FF55+ default true)
++
++// Pref : 1272 : display advanced information on Insecure Connection warning pages
++// Only works when it's possible to add an exception
++// i.e. it doesn't work for HSTS discrepancies (https://subdomain.preloaded-hsts.badssl.com/)
++// [TEST] https://expired.badssl.com/
+ lockPref("browser.xul.error_pages.expert_bad_cert", true);
++
++// Pref : 1407 : disable special underline handling for a few fonts which you will probably never use [RESTART]
++// Any of these fonts on your system can be enumerated for fingerprinting.
++// [1] http://kb.mozillazine.org/Font.blacklist.underline_offset
+ lockPref("font.blacklist.underline_offset", "");
++
++// Pref : 1408 : disable graphite which FF49 turned back on by default
++// In the past it had security issues. Update: This continues to be the case, see [1]
++// [1] https://www.mozilla.org/security/advisories/mfsa2017-15/#CVE-2017-7778
+ lockPref("gfx.font_rendering.graphite.enabled", false);
++
++// Pref : 1604 : CROSS ORIGIN: control the amount of information to send (FF52+)
++// Pref : 0=send full URI (default), 1=scheme+host+port+path, 2=scheme+host+port
+ lockPref("network.http.referer.XOriginTrimmingPolicy", 0);
++
++// Pref : 1605 : ALL: disable spoofing a referer
++// [WARNING] Spoofing effectively disables the anti-CSRF (Cross-Site Request Forgery) protections that some sites may rely on
++// Default false
+ lockPref("network.http.referer.spoofSource", false);
++
++// Pref : 1801 : set default plugin state (i.e. new plugins on discovery) to never activate
++// Pref : 0=disabled, 1=ask to activate, 2=active - you can override individual plugins
+ lockPref("plugin.default.state", 1);
+ lockPref("plugin.defaultXpi.state", 1);
++
++// Pref : 2026 : disable canvas capture stream (FF41+)
++// [1] https://developer.mozilla.org/docs/Web/API/HTMLCanvasElement/captureStream
+ lockPref("canvas.capturestream.enabled", false);
++
++// Pref : 2027 : disable camera image capture (FF35+)
++// [1] https://trac.torproject.org/projects/tor/ticket/16339
+ lockPref("dom.imagecapture.enabled", false); // default: false
++
++// Pref : 2028 : disable offscreen canvas (FF44+)
++// [1] https://developer.mozilla.org/docs/Web/API/OffscreenCanvas
+ lockPref("gfx.offscreencanvas.enabled", false); // default: false
++
++// Pref : 2201 : prevent websites from disabling new window features
++// [1] http://kb.mozillazine.org/Prevent_websites_from_disabling_new_window_features
+ lockPref("dom.disable_window_open_feature.close", true);
+ lockPref("dom.disable_window_open_feature.location", true); // default: true
+ lockPref("dom.disable_window_open_feature.menubar", true);
+@@ -427,12 +786,35 @@ lockPref("dom.disable_window_open_feature.resizable", true); // default: true
+ lockPref("dom.disable_window_open_feature.status", true); // status bar - default: true
+ lockPref("dom.disable_window_open_feature.titlebar", true);
+ lockPref("dom.disable_window_open_feature.toolbar", true);
++
++// Pref : 2202 : prevent scripts from moving and resizing open windows
+ lockPref("dom.disable_window_move_resize", true);
++
++// Pref : 2426 : disable Intersection Observer API (FF53+)
++// Took almost a year to complete, three versions late to 'stable' (as default false),
++// number 1 cause of crashes in nightly numerous times, and is (primarily) an
++// ad network API for "ad viewability checks" down to a pixel level
++// [1] https://developer.mozilla.org/docs/Web/API/Intersection_Observer_API
++// [2] https://w3c.github.io/IntersectionObserver/
++// [3] https://bugzilla.mozilla.org/1243846
+ lockPref("dom.IntersectionObserver.enabled", false);
++
++// Pref : 2601 : prevent accessibility services from accessing your browser [RESTART]
++// [SETTING] Privacy & Security>Permissions>Prevent accessibility services from accessing your browser
++// [1] https://support.mozilla.org/kb/accessibility-services
+ lockPref("accessibility.force_disabled", 1);
++
++// Pref : 2606 : disable UITour backend so there is no chance that a remote page can use it
+ lockPref("browser.uitour.enabled", false);
+ lockPref("browser.uitour.url", "");
++
++// Pref : 2611 : disable middle mouse click opening links from clipboard
++// [1] https://trac.torproject.org/projects/tor/ticket/10089
++// [2] http://kb.mozillazine.org/Middlemouse.contentLoadURL
+ lockPref("middlemouse.contentLoadURL", false);
++
++// Pref : 2616 : remove special permissions for certain mozilla domains (FF35+)
++// [1] resource://app/defaults/permissions
+ lockPref("permissions.manager.defaultsUrl", "");
+ 
+ // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+@@ -469,7 +851,8 @@ lockPref("extensions.webextensions.identity.redirectDomain", "");
  // Pref : CSP Settings For Extensions I/II : Extension Firewall Feature
  // Uncomment to disable network for the extensions
  // Enable-Firewall-Feature-In-The-Next-Line extensions-firewall >>>>>>
@@ -81,7 +688,7 @@ index adb39b4..4d38cec 100644
  
  // Pref : CSP Settings For Extensions II/II : Extension Firewall Feature
  // This value is applied after the first one (just ignore this)
-@@ -1191,22 +1194,22 @@ lockPref("extensions.getAddons.compatOverides.url", "");
+@@ -811,22 +1194,22 @@ lockPref("extensions.getAddons.compatOverides.url", "");
  // https://services.addons.mozilla.org/api/v3/addons/compat-override/?guid=%IDS%&lang=%LOCALE%
  
  // Pref :
@@ -108,7 +715,7 @@ index adb39b4..4d38cec 100644
  // Default Value
  // https://addons.mozilla.org/%LOCALE%/firefox/search?q=%TERMS%&platform=%OS%&appver=%VERSION%
  
-@@ -1241,7 +1244,7 @@ lockPref("browser.newtabpage.activity-stream.fxaccounts.endpoint", "");
+@@ -861,7 +1244,7 @@ lockPref("browser.newtabpage.activity-stream.fxaccounts.endpoint", "");
  // https://accounts.firefox.com/
  
  // Pref :
@@ -117,7 +724,7 @@ index adb39b4..4d38cec 100644
  // Default Value
  // https://versioncheck.addons.mozilla.org/update/VersionCheck.php?reqVersion=
  // %REQ_VERSION%&id=%ITEM_ID%&version=%ITEM_VERSION%&maxAppVersion=
-@@ -1837,7 +1840,7 @@ lockPref("app.releaseNotesURL", "");
+@@ -1457,7 +1840,7 @@ lockPref("app.releaseNotesURL", "");
  
  // Pref :
  lockPref("app.update.auto", false);
@@ -126,7 +733,7 @@ index adb39b4..4d38cec 100644
  lockPref("app.update.staging.enabled", false);
  lockPref("app.update.silent", false);
  lockPref("app.update.lastUpdateTime.telemetry_modules_ping", 0);
-@@ -1950,10 +1953,10 @@ lockPref("extensions.blocklist.itemURL", "");
+@@ -1570,10 +1953,10 @@ lockPref("extensions.blocklist.itemURL", "");
  lockPref("extensions.blocklist.url", "");
  
  // Pref :
@@ -139,7 +746,7 @@ index adb39b4..4d38cec 100644
  
  // Pref :
  lockPref("extensions.webservice.discoverURL", "");
-@@ -2245,7 +2248,7 @@ lockPref("security.dialog_enable_delay", 700);
+@@ -1865,7 +2248,7 @@ lockPref("security.dialog_enable_delay", 700);
  
  // Pref : Opt-out of add-on metadata updates
  // https://blog.mozilla.org/addons/how-to-opt-out-of-add-on-metadata-updates/
@@ -148,7 +755,7 @@ index adb39b4..4d38cec 100644
  
  // Pref : Opt-out of theme (Persona) updates
  // https://support.mozilla.org/t5/Firefox/how-do-I-prevent-autoamtic-updates-in-a-50-user-environment/td-p/144287
-@@ -2278,7 +2281,7 @@ lockPref("plugin.sessionPermissionNow.intervalInMinutes", 0);
+@@ -1898,7 +2281,7 @@ lockPref("plugin.sessionPermissionNow.intervalInMinutes", 0);
  
  // Pref : Update addons automatically
  // https://blog.mozilla.org/addons/how-to-turn-off-add-on-updates/
@@ -157,7 +764,7 @@ index adb39b4..4d38cec 100644
  
  // Pref : Enable add-on and certificate blocklists (OneCRL) from Mozilla
  // Updated at interval defined in extensions.blocklist.interval (default: 86400)
-@@ -3002,4 +3005,4 @@ lockPref("security.tls.unrestricted_rc4_fallback", false);
+@@ -2622,4 +3005,4 @@ lockPref("security.tls.unrestricted_rc4_fallback", false);
  //lockPref("toolkit.telemetry.unifiedIsOptIn", true);
  //lockPref("ui.key.menuAccessKey", 0);
  //lockPref("view_source.tab", false);

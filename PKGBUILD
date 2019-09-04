@@ -5,7 +5,7 @@
 
 pkgname=librewolf
 _pkgname=LibreWolf
-pkgver=68.0.2
+pkgver=69.0
 pkgrel=1
 pkgdesc="Community-maintained fork of Librefox: a privacy and security-focused browser"
 arch=(x86_64)
@@ -15,7 +15,7 @@ depends=(gtk3 mozilla-common libxt startup-notification mime-types dbus-glib
          ffmpeg nss ttf-font libpulse)
 makedepends=(unzip zip diffutils python2-setuptools yasm mesa imake inetutils
              xorg-server-xvfb autoconf2.13 rust clang llvm jack gtk2
-             python nodejs python2-psutil cbindgen nasm git inkscape binutils)
+             python nodejs python2-psutil cbindgen nasm git binutils)
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'pulseaudio: Audio support'
@@ -25,33 +25,17 @@ options=(!emptydirs !makeflags !strip)
 source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz
         $pkgname.desktop
         $pkgname.cfg.patch
-        "git+https://gitlab.com/${pkgname}-community/${pkgname}.git#commit=1dde2d0e")
-sha256sums=('9b3e6d8f99819f9eda9ebba403b644a2b96d19450b42cae422bbf4386902a840'
+        "git+https://gitlab.com/${pkgname}-community/browser/common.git"
+        "git+https://gitlab.com/${pkgname}-community/settings.git")
+sha256sums=('413c3febdfeb69eade818824eecbdb11eaeda71de229573810afd641ba741ec5'
             '0471d32366c6f415f7608b438ddeb10e2f998498c389217cdd6cc52e8249996b'
-            '3e2df22fa42f95bca8594cf07ed3ec6cc850fd121de4a283bf95c23eba1e467b'
+            '2acd2aa2ed6e78df5e32840b48518348d529e9a0f8147b282e65b4bc109e52ca'
+            'SKIP'
             'SKIP')
-#
-# For telemetry and crash dump analysis to work correctly, we need to tell the
-# build system which Mercurial changeset is our source. Should not be needed
-# anymore once 69 is released:
-# https://bugzilla.mozilla.org/show_bug.cgi?id=1338099
-# _repo=https://hg.mozilla.org/releases/mozilla-release
-# _tag=FIREFOX_${pkgver//./_}_RELEASE
-#
-# _changeset=353628fec415324ca6aa333ab6c47d447ecc128e
-# _changeset_tag=FIREFOX_68_0_RELEASE
-#
-# if [[ $1 == update_hgrev ]]; then
-  # _changeset=$(hg id -r $_tag --id $_repo --template '{node}')
-  # sed -e "/^_changeset=/s/=.*/=$_changeset/;/^_changeset_tag=/s/=.*/=$_tag/" \
-      # -i "${BASH_SOURCE[0]}"
-  # exit 0
-# elif [[ $_tag != $_changeset_tag ]]; then
-  # error "Changeset needs update. Run: bash PKGBUILD update_hgrev"
-  # exit 1
-# fi
-
 prepare() {
+  _POCKET_SED_STRING="s/'pocket'/#'pocket'/g"
+  _POCKET_FILE=./browser/components/moz.build
+
   mkdir mozbuild
   cd firefox-$pkgver
 
@@ -66,19 +50,6 @@ prepare() {
   # cd ${srcdir}/${pkgname}
   # patch -Np1 -i ${srcdir}/${pkgname}.cfg.patch
   # cd ${srcdir}/firefox-$pkgver
-
-  local ICON_FOLDER=$srcdir/$pkgname/branding/icon
-  local BRANDING_FOLDER=$srcdir/$pkgname/browser/common/source_files/browser/branding/$pkgname
-
-  # generate icons and moves them to the branding folder
-  echo Generating icons from $ICON_FOLDER and moving to $BRANDING_FOLDER;
-  inkscape -z -f $ICON_FOLDER/icon.svg -e $BRANDING_FOLDER/default16.png -w 16 -h 16
-  inkscape -z -f $ICON_FOLDER/icon.svg -e $BRANDING_FOLDER/default32.png -w 32 -h 32
-  inkscape -z -f $ICON_FOLDER/icon.svg -e $BRANDING_FOLDER/default48.png -w 48 -h 48
-  inkscape -z -f $ICON_FOLDER/icon.svg -e $BRANDING_FOLDER/default64.png -w 64 -h 64
-  inkscape -z -f $ICON_FOLDER/icon.svg -e $BRANDING_FOLDER/default128.png -w 128 -h 128
-  inkscape -z -f $ICON_FOLDER/icon.svg -e $BRANDING_FOLDER/VisualElements_70.png -w 70 -h 70
-  inkscape -z -f $ICON_FOLDER/icon.svg -e $BRANDING_FOLDER/VisualElements_150.png -w 150 -h 150
 
   cat >.mozconfig <<END
 ac_add_options --enable-application=browser
@@ -136,10 +107,13 @@ mk_add_options MOZ_TELEMETRY_REPORTING=0
 # ac_add_options --enable-linker=gold
 END
 
-  cp -r ${srcdir}/${pkgname}/browser/common/source_files/browser ./
+
+  rm -f ${srcdir}/common/source_files/mozconfig
+  cp -r ${srcdir}/common/source_files/* ./
+
 
   # Disabling Pocket
-  sed -i "s/'pocket'/#'pocket'/g" ./browser/components/moz.build
+  sed -i $_POCKET_SED_STRING $_POCKET_FILE
 }
 
 
@@ -179,7 +153,7 @@ pref("extensions.autoDisableScopes", 11);
 pref("extensions.shownSelectionUI", true);
 END
 
-  cp -r ${srcdir}/${pkgname}/settings/* $pkgdir/usr/lib/$pkgname
+  cp -r ${srcdir}/settings/* ${pkgdir}/usr/lib/${pkgname}/
 
   _distini="$pkgdir/usr/lib/$pkgname/distribution/distribution.ini"
   install -Dm644 /dev/stdin "$_distini" <<END
