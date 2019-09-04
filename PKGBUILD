@@ -26,7 +26,7 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DPACKAGE_ZIP=OFF \
     -DAPP_VERSION_MINOR=${_kodiminver} \
-    ../pvr.mythtv-${pkgver}
+    ../pvr.mythtv-${pkgver}-${_kodicname}
   make
 }
 
