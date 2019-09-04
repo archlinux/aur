@@ -1,0 +1,16 @@
+pkgbase = bb-rs-git
+	pkgdesc = Simple process viewer in Rust
+	pkgver = r8.f759b54
+	pkgrel = 1
+	url = https://github.com/epilys/bb
+	arch = x86_64
+	license = GPL3
+	makedepends = rust
+	makedepends = cargo
+	conflicts = bb-rs
+	conflicts = bb
+	source = bb-rs::git+https://github.com/epilys/bb.git
+	sha256sums = SKIP
+
+pkgname = bb-rs-git
+
