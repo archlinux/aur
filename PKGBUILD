@@ -1,6 +1,6 @@
 # Maintainer: Your Name <linuxboy@fel.hopto.org>
 pkgname=snx
-pkgver=800008061
+pkgver=800008074
 pkgrel=1
 pkgdesc="Check Point SSL Network Extender (vpn client)"
 arch=('x86_64')
@@ -19,7 +19,7 @@ install=snx.install
 changelog=
 source=("https://vpnportal.aktifbank.com.tr/SNX/INSTALL/snx_install.sh")
 noextract=("${source[@]%%::*}")
-md5sums=('ccf5c17f2820cc02b13b3460d12c0401')
+md5sums=('f54c1b997d6f358a4cf32c6cc34b1a12')
 
 build() {
     cd "$pkgname-$pkgver"
@@ -29,7 +29,7 @@ prepare() {
     mkdir "$pkgname-$pkgver"
 
     # ARCHIVE_OFFSET FROM snx_install.sh FILE
-    ARCHIVE_OFFSET=78
+    ARCHIVE_OFFSET=80
     tail -n +$ARCHIVE_OFFSET snx_install.sh >snx.tar.bz2
 
     cd "$pkgname-$pkgver"

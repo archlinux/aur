@@ -1,6 +1,6 @@
 pkgbase = snx
 	pkgdesc = Check Point SSL Network Extender (vpn client)
-	pkgver = 800008061
+	pkgver = 800008074
 	pkgrel = 1
 	install = snx.install
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = snx
 	depends = lib32-libx11
 	noextract = https://vpnportal.aktifbank.com.tr/SNX/INSTALL/snx_install.sh
 	source = https://vpnportal.aktifbank.com.tr/SNX/INSTALL/snx_install.sh
-	md5sums = ccf5c17f2820cc02b13b3460d12c0401
+	md5sums = f54c1b997d6f358a4cf32c6cc34b1a12
 
 pkgname = snx
 
