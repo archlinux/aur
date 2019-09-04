@@ -1,3 +1,13 @@
+2019-09-04 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 4.0.4.2-1:
+    Improved MatchActively feature, ASF will now also match Fair bots when deemed appropriate (ref: #1375, #1377).
+    Added AssumeWalletKeyOnBadActivationCode option to bot's RedeemingPreferences, as well as AssumeWalletKey r^ command options in regards to Steam wallet code changes (ref: #1358).
+    ASF will now automatically restart its IPC interface on IPC.config changes (ref: #1349).
+    Fixed potential issue with IdleRefundableGames: false which could cause valid games to be skipped.
+    Latest ASF-ui with new features, improvements and bugfixes.
+    Usual amount of other core improvements, optimizations and bugfixes.
+    [Deprecation] Functions deprecated in the previous release have been removed.
+    pkg: use packages hooks for creating user and owning dir
 2019-08-01 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 4.0.3.9-1:
     ASF will now attempt to split long Steam messages on newline if possible (ref: #1329).

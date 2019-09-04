@@ -1,0 +1,3 @@
+post_install() {
+    echo "# configuration is done in /var/lib/asf/config or ~/.config/asf depending on the service file used."
+}
