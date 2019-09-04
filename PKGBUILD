@@ -2,9 +2,9 @@
 
 pkgname=iscan-plugin-epson-v500-photo
 _pkgname=iscan-plugin-gt-x770
-pkgver=1.0.1
+pkgver=2.30.4
 pkgrel=1
-_pkgver=2.1.2
+_pkgver=2.1.3
 _pkgrel=1
 pkgdesc="iscan plugin for Epson V500 Photo, also called GT-X770"
 arch=('i686' 'x86_64')
@@ -16,10 +16,10 @@ install=${pkgname}.install
 md5sums_install=('be4086b1e50cb7e2a2e5d5c1bb5a8848')
 
 source_i686=("https://download2.ebz.epson.net/iscan/plugin/gt-x770/deb/x86/iscan-gt-x770-bundle-${pkgver}.x86.deb.tar.gz")
-md5sums_i686+=('b703adb540de1b6e6cc8128c3e2605a1')
+md5sums_i686+=('6567a33cbb073d83ed4f846a7c02e3b4')
 
 source_x86_64=("https://download2.ebz.epson.net/iscan/plugin/gt-x770/deb/x64/iscan-gt-x770-bundle-${pkgver}.x64.deb.tar.gz")
-md5sums_x86_64+=('6f09e7c6705e84674b0f0e53154fd6b2')
+md5sums_x86_64+=('684b3ec14ac6ff3b2c756861331c6238')
 
 prepare() {
   if [ "$CARCH" = "i686" ] ; then
@@ -39,15 +39,22 @@ package() {
     install -d ${pkgdir}/usr
     mv ${srcdir}/iscan-gt-x770-bundle-${pkgver}.x86.deb/plugins/usr/lib ${pkgdir}/usr
     install -d ${pkgdir}/usr/share/licenses/${pkgname}
-    install -m644 ${srcdir}/iscan-gt-x770-bundle-${pkgver}.x86.deb/plugins/usr/share/doc/${_pkgname}/{AVASYSPL.en.txt,AVASYSPL.ja.txt,copyright} \
+    
+    install -m644 ${srcdir}/iscan-gt-x770-bundle-${pkgver}.x86.deb/plugins/usr/share/doc/${_pkgname}/{COPYING.EPSON.ja.txt.gz,COPYING.EPSON.en.txt.gz,copyright} \
     ${pkgdir}/usr/share/licenses/${pkgname}/
+    
+    mkdir -p ${pkgdir}/usr/share/iscan/
+    install -m644 ${srcdir}/iscan-gt-x770-bundle-${pkgver}.x86.deb/plugins/usr/share/iscan/esfw7C.bin ${pkgdir}/usr/share/iscan/
+
   
   elif [ "$CARCH" = "x86_64" ] ; then
     install -d ${pkgdir}/usr
     mv ${srcdir}/iscan-gt-x770-bundle-${pkgver}.x64.deb/plugins/usr/lib ${pkgdir}/usr
+    
     install -d ${pkgdir}/usr/share/licenses/${pkgname}
-    install -m644 ${srcdir}/iscan-gt-x770-bundle-${pkgver}.x64.deb/plugins/usr/share/doc/${_pkgname}/{AVASYSPL.en.txt,AVASYSPL.ja.txt,copyright} \
+    install -m644 ${srcdir}/iscan-gt-x770-bundle-${pkgver}.x64.deb/plugins/usr/share/doc/${_pkgname}/{COPYING.EPSON.ja.txt.gz,COPYING.EPSON.en.txt.gz,copyright} \
     ${pkgdir}/usr/share/licenses/${pkgname}/
+    
     mkdir -p ${pkgdir}/usr/share/iscan/
     install -m644 ${srcdir}/iscan-gt-x770-bundle-${pkgver}.x64.deb/plugins/usr/share/iscan/esfw7C.bin ${pkgdir}/usr/share/iscan/
   fi
