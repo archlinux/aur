@@ -1,7 +1,7 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=xde-menu
-pkgver=0.9
+pkgver=0.10
 pkgrel=1
 pkgdesc="XDG compliant menu generator"
 arch=('i686' 'x86_64')
@@ -17,13 +17,12 @@ md5sums=('c061abcb49594eafe0a185d206b6fcd5')
 
 build() {
   cd $pkgname-$pkgver
-# CCFLAGS+=" -fPIE"
-# LDFLAGS+=" -fPIE -Wl,-pie"
-  ./configure --prefix=/usr --sysconfdir=/etc
-  make V=0
+  ./configure
+  make
 }
 
 package() {
   cd $pkgname-$pkgver
   make DESTDIR="$pkgdir" install
 }
+md5sums=('2b53faff0d0aa45b9b12004c8206f4b2')
