@@ -1,6 +1,6 @@
 pkgbase = spicetify-themes-git
 	pkgdesc = A community-driven collection of themes for spicetify
-	pkgver = r13.5f997e3
+	pkgver = r1.385d0c6
 	pkgrel = 1
 	url = https://github.com/morpheusthewhite/spicetify-themes
 	arch = any
