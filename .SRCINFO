@@ -20,7 +20,6 @@ pkgbase = servicewall-git
 	optdepends = networkmanager
 	backup = etc/servicewall/realms.json
 	backup = etc/servicewall/config.json
-	backup = etc/ulogd.conf
 	source = servicewall::git://localhost/#branch=master
 	md5sums = SKIP
 
