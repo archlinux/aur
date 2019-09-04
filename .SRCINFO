@@ -13,6 +13,7 @@ pkgbase = renoise
 	conflicts = renoise3-demo
 	options = !strip
 	source = file://rns_320_linux_x86_64.tar.gz
+	md5sums = SKIP
 
 pkgname = renoise
 

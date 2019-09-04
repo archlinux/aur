@@ -26,6 +26,7 @@ options=("!strip")
 conflicts=("renoise3-demo")
 
 source=("file://rns_${pkgver//./}_linux_x86_64.tar.gz")
+md5sums=('SKIP')
 
 package() {
     cd "$srcdir/rns_${pkgver//./}_linux_x86_64"
