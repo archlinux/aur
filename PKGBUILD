@@ -2,7 +2,7 @@
 # Contributor: Tran Van Cong
 
 pkgname=ibus-bamboo
-pkgver=0.5.4
+pkgver=0.5.5
 pkgrel=1
 pkgdesc='A Vietnamese IME for IBus'
 arch=(any)
@@ -11,7 +11,7 @@ url="https://github.com/BambooEngine/ibus-bamboo"
 depends=('ibus')
 makedepends=('go' 'libx11' 'libxtst')
 source=("$pkgname-$pkgver.tar.gz"::"https://github.com/BambooEngine/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('3b945c58e5129081e1cc899f81edccf05c9f579fc429e1bdc8466469441d93cf')
+sha256sums=('6e44641461bcff8d78b7d9c13948fbfdffa90d945d6a0ed5ec03cdffb550fb91')
 options=('!strip')
 conflicts=(ibus-bamboo-git)
 
