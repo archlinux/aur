@@ -2,12 +2,12 @@
 # This PKGBUILD is maintained at https://github.com/winged/aur-packages
 
 pkgname=notevim-git
-pkgver=0.r13.18f2688
-pkgrel=3
+pkgver=0.r24.94b8b95
+pkgrel=1
 pkgdesc="A script to help you manage your notes and access them quickly"
 arch=('x86_64' 'i686')
 license=('BSD')
-url=('https://github.com/winged/notevim')
+url='https://github.com/winged/notevim'
 depends=('wmctrl')
 provides=('notevim' 'notevim-git')
 conflicts=()

@@ -1,7 +1,7 @@
 pkgbase = notevim-git
 	pkgdesc = A script to help you manage your notes and access them quickly
-	pkgver = 0.r13.18f2688
-	pkgrel = 3
+	pkgver = 0.r24.94b8b95
+	pkgrel = 1
 	url = https://github.com/winged/notevim
 	arch = x86_64
 	arch = i686
