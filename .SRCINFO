@@ -1,5 +1,5 @@
 pkgbase = linux-rc
-	pkgver = 5.2.11rc1
+	pkgver = 5.2.12rc1
 	pkgrel = 1
 	url = https://www.kernel.org/
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = linux-rc
 	makedepends = bc
 	makedepends = libelf
 	options = !strip
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.2.10.tar.xz
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.2.10.tar.sign
-	source = patch-5.2.11-rc1.patch::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable-rc.git/patch/?id=linux-5.2.y&id2=v5.2.10
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.2.11.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.2.11.tar.sign
+	source = patch-5.2.12-rc1.patch::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable-rc.git/patch/?id=linux-5.2.y&id2=v5.2.11
 	source = config
 	source = 60-linux.hook
 	source = 90-linux.hook
@@ -20,9 +20,9 @@ pkgbase = linux-rc
 	source = 0002-ZEN-Add-CONFIG-for-unprivileged_userns_clone.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	sha256sums = 6096c4387c2a296de9136080942d11ae3f1bd28129b6952f7133c570e43bfc49
+	sha256sums = 0c2a831f993dc8a8a8e1ca4186b467de72ff173c6f5855e2aab70f6f7fb033f9
 	sha256sums = SKIP
-	sha256sums = 5bcbd6a54e679eac78fcda9814aaf2270425866657f35d18bb8d945e46bd8fb3
+	sha256sums = e9585a22a1035d4b54ea6505c27d9460fdeda9760acf9697210bea9c80bda8d7
 	sha256sums = e0d0f140128a8574217701e61e874a0a108f3b8cd0f6e35d8b16afe897999f8e
 	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
 	sha256sums = c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636
