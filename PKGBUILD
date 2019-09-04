@@ -28,6 +28,6 @@ package() {
   cp -a --no-preserve=ownership "$srcdir"/VeloView-$pkgver-Linux-64bit/share "$pkgdir"/usr/local/
 
   install -Dm644 "$srcdir"/VeloView.desktop -t "$pkgdir"/usr/share/applications
-  install -Dm644 "$srcdir"/$pkgname.svg "$pkgdir"/usr/share/pixmaps/$pkgname.svg
+  install -Dm644 "$srcdir"/$pkgname.svg "$pkgdir"/usr/share/pixmaps/VeloView.svg
 }
 
