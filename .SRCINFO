@@ -1,0 +1,20 @@
+pkgbase = seq66-git
+	pkgdesc = A live-looping sequencer with an interface similar to hardware sequencers
+	pkgver = 0.90.0.r3.e8c865e
+	pkgrel = 1
+	url = https://github.com/ahlstromcj/seq66
+	arch = i686
+	arch = x86_64
+	groups = pro-audio
+	license = GPL2
+	makedepends = git
+	depends = jack
+	depends = qt5-base
+	provides = seq66
+	provides = seq66=0.90.0
+	conflicts = seq66
+	source = seq66::git+https://github.com/ahlstromcj/seq66.git
+	md5sums = SKIP
+
+pkgname = seq66-git
+
