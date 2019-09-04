@@ -13,7 +13,7 @@ pkgbase = unlock-netease-music-git
 	source = unlock-netease-music-git::git+https://github.com/nondanee/UnblockNeteaseMusic.git
 	source = UnblockNeteaseMusic.service
 	md5sums = SKIP
-	md5sums = 514807b688f400cca055ddee36270cc7
+	md5sums = 5cf0f132ceac143f8eac76170d4e083d
 
 pkgname = unlock-netease-music-git
 
