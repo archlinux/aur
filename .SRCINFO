@@ -23,7 +23,7 @@ pkgbase = cryptopro-csp-k1
 	source = linux-amd64.tgz
 	source = cades_linux_amd64.tar.gz
 	md5sums = eba649ae2c974a8c9d0cd69d2b508ae7
-	md5sums = 31672759fe0eddb89484c18c3e1676e1
+	md5sums = d3fbcb7a42f390657771f23712f64750
 
 pkgname = cryptopro-csp-k1
 

@@ -33,7 +33,7 @@ source=(
 )
 md5sums=(
     'eba649ae2c974a8c9d0cd69d2b508ae7'
-    '31672759fe0eddb89484c18c3e1676e1'
+    'd3fbcb7a42f390657771f23712f64750'
 )
 install=cryptopro-csp-k1.install
 options=(!strip)
