@@ -8,7 +8,7 @@ arch=('any')
 url="https://github.com/landscapeio/pylint-plugin-utils"
 license=('GPL2')
 depends=('python')
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'python-pylint')
 source=("https://pypi.io/packages/source/p/pylint-plugin-utils/${_pypi_pkgname}-${pkgver}.tar.gz")
 sha256sums=('8d9e31d5ea8b7b0003e1f0f136b44a5235896a32e47c5bc2ef1143e9f6ba0b74')
 

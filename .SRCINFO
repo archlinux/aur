@@ -6,6 +6,7 @@ pkgbase = python-pylint-plugin-utils
 	arch = any
 	license = GPL2
 	makedepends = python-setuptools
+	makedepends = python-pylint
 	depends = python
 	source = https://pypi.io/packages/source/p/pylint-plugin-utils/pylint-plugin-utils-0.5.tar.gz
 	sha256sums = 8d9e31d5ea8b7b0003e1f0f136b44a5235896a32e47c5bc2ef1143e9f6ba0b74
