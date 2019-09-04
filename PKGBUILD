@@ -2,8 +2,7 @@
 # Contributor: Benjamin Chretien <chretien at lirmm dot fr>
 # Contributor: Sebastien Binet <binet@lblbox>
 pkgbase=python-pybindgen
-#pkgname=('python-pybindgen' 'python2-pybindgen')
-pkgname='python-pybindgen'
+pkgname=('python-pybindgen' 'python2-pybindgen')
 _pkgname='PyBindGen'
 pkgver=0.20.0
 pkgrel=1

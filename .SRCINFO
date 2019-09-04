@@ -14,3 +14,6 @@ pkgbase = python-pybindgen
 pkgname = python-pybindgen
 	depends = python
 
+pkgname = python2-pybindgen
+	depends = python2
+
