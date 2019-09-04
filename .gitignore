@@ -1,6 +1,6 @@
-pkg
-src
-python-gpiozero-*.tar.gz
+pkg/
+src/
+gpiozero-*.tar.gz
 python-gpiozero-*.pkg.tar.xz
 python-gpiozero-*.src.tar.gz
 .AURINFO
