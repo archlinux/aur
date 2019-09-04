@@ -19,7 +19,7 @@ sha256sums=('de0c6aa64ec7fa792ab0358b90c51ed78e53e4ced1930c0cbdd834615e72767d'
 
 package() {
 	cd "$pkgname-$pkgver"
-	install -d "$pkgdir/"{opt/$pkgname,usr/bin}
+	install -d "$pkgdir/opt/$pkgname"
 	cp -r * "$pkgdir/opt/$pkgname/"
 	install -Dm755 "$srcdir/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
 	install -Dm644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
