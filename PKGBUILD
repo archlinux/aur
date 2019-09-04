@@ -19,7 +19,7 @@
 # Contributor: Tran Van Cong
 
 pkgname=ibus-bamboo-git
-pkgver=0.5.5
+pkgver=0.5.6
 pkgrel=1
 pkgdesc='A Vietnamese IME for IBus'
 arch=(any)
