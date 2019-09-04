@@ -562,22 +562,6 @@ def github_raw_url(repo_url, path, commitish):
     }
 
 
-#TODO: I
-def create_submodule(url_ro, url_rw, full_dir):
-    parent_dir = os.path.dirname(full_dir)
-    relative_dir = os.path.basename(full_dir)
-    # First call may fail if the remote AUR package does not exist yet
-    fail = subprocess.call(['git', '-C', parent_dir, 'submodule', 'add', '--force',
-                            url_ro, relative_dir], stder=subprocess.PIPE,
-                           stdout=subprocess.PIPE)
-    if fail:
-        subprocess.check_call(['git', '-C', parent_dir, 'submodule', 'add', '--force',
-                               url_ro, relative_dir], stdout=subprocess.PIPE)
-        subprocess.check_call(['git', '-C', full_dir, 'remote', 'set-url', '--push',
-                               'origin', url_rw], stderr=subprocess.PIPE,
-                              stdout=subprocess.PIPE)
-
-
 def create_clone(url_ro, url_rw, full_dir):
     subprocess.check_call(['git', 'clone', url_ro, full_dir],
                           stderr=subprocess.PIPE, stdout=subprocess.PIPE)
@@ -586,45 +570,9 @@ def create_clone(url_ro, url_rw, full_dir):
                           stdout=subprocess.PIPE)
 
 
-def needs_finalize(full_dir):
-    res = subprocess.call(['git', '-C', full_dir, 'rev-parse', 'HEAD'],
-                          stderr=subprocess.PIPE, stdout=subprocess.PIPE)
-    return bool(res)
-
-
-"""
-def finalize_submodule(full_dir):
-    subprocess.check_call(['mksrcinfo'], stderr=subprocess.PIPE, stdout=subprocess.PIPE,
-                          cwd=full_dir)
-    subprocess.check_call(['git', '-C', full_dir, 'add', 'PKGBUILD', '.SRCINFO'],
-                          stderr=subprocess.PIPE, stdout=subprocess.PIPE)
-    subprocess.check_call(['git', '-C', full_dir, 'commit', '-m', 'Initial commit'],
-                          stderr=subprocess.PIPE, stdout=subprocess.PIPE)
-
-    # Submodule ==> register to parent now that a commit id is available
-    is_submodule = os.path.isfile(os.path.join(full_dir, ".git"))
-    if is_submodule:
-        pull_url = subprocess.check_output(['git', '-C', full_dir, 'config',
-                                            '--get', 'remote.origin.url'],
-                                           stderr=subprocess.PIPE).rstrip()
-        push_url = subprocess.check_output(['git', '-C', full_dir, 'config',
-                                            '--get', 'remote.origin.pushurl'],
-                                           stderr=subprocess.PIPE).rstrip()
-
-        parent_repo = os.path.abspath(os.path.join(full_dir, '..'))
-    rel_path = os.path.basename(os.path.normpath(full_dir))
-
-    subprocess.check_call(['git', '-C', parent_repo, 'submodule', 'add',
-                           pull_url, rel_path],
-                          stderr=subprocess.PIPE, stdout=subprocess.PIPE)
-    subprocess.check_call(['git', '-C', full_dir, 'remote', 'set-url', '--push',
-                           'origin', push_url], stderr=subprocess.PIPE,
-                          stdout=subprocess.PIPE)
-"""
-
 def create_package_directory(directory, package):
     """
-    Create a directory or an AUR submodule based on the context.
+    Create a directory or an AUR git repo based on the context.
     """
     full_dir = os.path.join(directory, package.name)
 
@@ -634,9 +582,10 @@ def create_package_directory(directory, package):
 
     if not os.path.exists(full_dir):
         print("Creating new dir")
-        create_clone(url_ro, url_rw, full_dir)
-    else:
-        create_submodule(url_ro, url_rw, full_dir)
+        try:
+            create_clone(url_ro, url_rw, full_dir)
+        except subprocess.CalledProcessError:
+            os.mkdir(full_dir, 644)
 
     return full_dir
 
@@ -678,7 +627,7 @@ def generate_pkgbuild(distro, package, directory, force=False,
                                   rosdep_urls=rosdep_urls, generated=generated,
                                   written=written)
 
-    # If the directory/submodule does not exist, create it
+    # If the directory/repo/package does not exist, create it
     output_directory = create_package_directory(directory, package)
 
     # If PKGBUILD already exists
@@ -710,12 +659,6 @@ def generate_pkgbuild(distro, package, directory, force=False,
     with open(pkgbuild_file, 'w') as pkgbuild:
         pkgbuild.write(package.generate(distro.python_version, exclude_dependencies,
                                         rosdep_urls, output_directory))
-
-    #TODO: Do we need finalize submodule?
-    """
-    if needs_finalize(output_directory):
-        finalize_submodule(output_directory)
-    """
 
     # Add the package to the txt file containing packages to install
     if written:
