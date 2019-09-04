@@ -24,7 +24,7 @@ pkgver() {
 }
 
 package() {
-        install -d 755 ${pkgdir}/opt
+        install -d 755 ${pkgdir}/opt/UnblockNeteaseMusic
     	cp -r "${srcdir}/${pkgname}/"/*  "${pkgdir}/opt/UnblockNeteaseMusic/"
         install -D -m644 "${srcdir}/UnblockNeteaseMusic.service" "${pkgdir}/usr/lib/systemd/system/UnblockNeteaseMusic.service"
 }
