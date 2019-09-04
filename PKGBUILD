@@ -8,7 +8,7 @@ license=('unknown')
 depends=('boost' 'grpc' 'opencv' 'protobuf')
 
 source=("https://3dvisionlabs.com/wp-content/downloads/HemiStereo-$pkgver-Linux.tar.gz")
-sha256sums=('e73a81679b02d5489860c53944ae01af3cdb0a2b43a5ffea65082d0b6579c5c4')
+sha256sums=('666ff1dafbda25e5ad45452d817ae5c82c5624ea26fae02cc2598f0baa2fca8b')
 
 package() {
     install -d "${pkgdir}/usr/lib/osp"
