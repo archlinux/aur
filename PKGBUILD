@@ -2,7 +2,7 @@
 
 pkgname=doomseeker
 pkgver=r2478.c4537370dc5c
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="A cross-platform Doom server browser"
 arch=(i686 x86_64)
@@ -43,6 +43,4 @@ build() {
 package() {
     cd "$srcdir/$pkgname/build/"
     make DESTDIR=$pkgdir install
-    # lib64 is a symlink of lib. We have to move stuff to lib
-    mv $pkgdir/usr/lib64 $pkgdir/usr/lib
 }
