@@ -4,8 +4,8 @@ pkgname=librewolf-bin
 provides=(${pkgname//-bin/""})
 conflicts=(${pkgname//-bin/""})
 _pkgname=LibreWolf
-pkgver=68.0.2
-_uploadpath='274152460'
+pkgver=69.0
+_uploadpath='287314016'
 pkgrel=1
 pkgdesc="Community-maintained fork of Librefox: a privacy and security-focused browser"
 arch=(x86_64)
@@ -20,8 +20,8 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'hunspell-en_US: Spell checking, American English')
 options=(!emptydirs)
 install='librewolf-bin.install'
-source=(https://gitlab.com/${pkgname//-bin/""}-community/${_pkgname}-Arch/-/jobs/${_uploadpath}/artifacts/raw/${pkgname//-bin/""}-${pkgver}-${pkgrel}-x86_64.pkg.tar.xz)
-sha256sums=('e9f67d7c4904c668383bbafd3b1f6eb426d701ee73d1056215d7063061f78487')
+source=(https://gitlab.com/${pkgname//-bin/""}-community/browser/arch/-/jobs/${_uploadpath}/artifacts/raw/${pkgname//-bin/""}-${pkgver}-${pkgrel}-x86_64.pkg.tar.xz)
+sha256sums=('3abad680e4f6501758fa41a96c62c23bc39202e5329792c4c500a90438e98b70')
 
 package() {
   cp -r $srcdir/usr $pkgdir/
