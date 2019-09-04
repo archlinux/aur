@@ -1,20 +1,21 @@
 pkgbase = st-white
 	pkgdesc = A simple virtual terminal emulator for X.
-	pkgver = 0.6
-	pkgrel = 8
+	pkgver = 0.8.2
+	pkgrel = 1
 	url = http://st.suckless.org
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = ncurses
-	makedepends = libxext
 	depends = libxft
-	provides = st
+	depends = libxext
+	depends = xorg-fonts-misc
+	provides = st=0.8.2
 	conflicts = st
-	source = http://dl.suckless.org/st/st-0.6.tar.gz
+	source = http://dl.suckless.org/st/st-0.8.2.tar.gz
 	source = config.h
-	md5sums = 1a926f450b4eacb7e2f5ac5b8ffea7c8
-	md5sums = 718d8ebf53954c8c2f264ad728db1368
+	sha256sums = aeb74e10aa11ed364e1bcc635a81a523119093e63befd2f231f8b0705b15bf35
+	sha256sums = a01c06d6408ef9e88aa438ef1c0e8a96546b1c97739fe5a6f9bb1701b8a5f346
 
 pkgname = st-white
 
