@@ -1,7 +1,7 @@
 # Maintainer: Jonas Dellinger <jonas@dellinger.dev>
 pkgname=altair
 pkgver=2.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A beautiful feature-rich GraphQL Client for all platforms.'
 arch=('x86_64')
 depends=('gtk2' 'gtk3' 'nss' 'libxss' 'dbus-glib' 'electron4')
@@ -9,20 +9,20 @@ url="https://github.com/imolorhe/altair"
 license=('MIT')
 provides=('altair')
 
-source_x86_64=("${pkgname}.AppImage::https://github.com/imolorhe/altair/releases/download/v${pkgver}/altair_${pkgver}_${arch}_linux.AppImage"
+source_x86_64=("${pkgname}-${pkgver}.AppImage::https://github.com/imolorhe/altair/releases/download/v${pkgver}/altair_${pkgver}_${arch}_linux.AppImage"
                altair)
 sha256sums_x86_64=('decd19bc22b801e69b9be98ba02efa7505d56f08f3c804d94fd9fc0749492d9d'
                    '7ac2746cb9c44d54e234b7e4a222e0ee97ece2aa61679a03082d4f2d7dfcaf9e')
 
 prepare() {
   # mark as executable so we can extract
-  chmod +x "${srcdir}/${pkgname}.AppImage"
+  chmod +x "${srcdir}/${pkgname}-${pkgver}.AppImage"
 
   # extract the AppImage
-  "${srcdir}/${pkgname}.AppImage" --appimage-extract
+  "${srcdir}/${pkgname}-${pkgver}.AppImage" --appimage-extract
 
   # remove execution bit after extraction
-  chmod -x "${srcdir}/${pkgname}.AppImage"
+  chmod -x "${srcdir}/${pkgname}-${pkgver}.AppImage"
 }
 
 package() {
