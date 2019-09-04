@@ -1,7 +1,7 @@
 # Maintainer: lightning1141 <lightning1141@gmail.com>
 
 pkgname=qtalk
-pkgver=1.9.967
+pkgver=1.9.972
 pkgrel=1
 pkgdesc="QTalk (Window/Linux) 2.0 by Qunar"
 arch=("x86_64")
