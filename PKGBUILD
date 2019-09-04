@@ -23,11 +23,7 @@ _url="https://launchpad.net/i2p/trunk/${pkgver}/+download"
 source=("${_url}/i2pinstall_${pkgver}.jar"{,.sig}
         'i2prouter.service' 'i2prouter.sh' 'wrapper.config' 'router.config')
 
-_hash=$(curl -Ls "https://geti2p.net/en/download" \
-            |grep -A1 "<div class=\"hash\">" \
-            |sed -e "s:.*<code>::" -e "s:</code>::" -e '5,5!d')
-
-sha256sums=(${_hash:-'cb192e48c5f06839c99b71861364f3a9117b6b24f78f7f7c25d6716507c81bdf'}
+sha256sums=('cb192e48c5f06839c99b71861364f3a9117b6b24f78f7f7c25d6716507c81bdf'
             'SKIP'
             '9bb899ece87099716da29bac8b7da02916fc325699b68989e73c1fe333a6342f'
             'ea8f97e66461d591b1819eab39bbc40056b89ae12f7729b3dd9fd2ce088e5e53'
