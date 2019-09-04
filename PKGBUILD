@@ -1,5 +1,5 @@
 pkgname=mingw-w64-coin-or-bcp
-pkgver=1.4.3
+pkgver=1.4.4
 pkgrel=1
 pkgdesc="COIN-OR parallel branch-cut-price algorithms for mixed-integer linear programs (mingw-w64)"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('mingw-w64-coin-or-cgl' 'mingw-w64-coin-or-clp')
 makedepends=('mingw-w64-configure')
 options=('staticlibs' '!buildflags' '!strip')
 source=("http://www.coin-or.org/download/source/Bcp/Bcp-${pkgver}.tgz")
-sha256sums=('5e7a2871033f9d5e8dda69b5fc19ff37853f24f4bdd42fb0b97f904e3a7c856e')
+sha256sums=('8b490ad35c28a79806f84dacbdc36d602ce0a3a4e32c3575f99495c6e6b4906e')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
