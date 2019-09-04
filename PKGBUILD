@@ -15,6 +15,7 @@
 #
 #     tor-browser -u
 
+
 pkgname='tor-browser'
 pkgver='8.5.5'
 pkgrel='1'
@@ -33,10 +34,10 @@ optdepends=('zenity: simple dialog boxes'
 	'libnotify: Gnome dialog boxes')
 install="${pkgname}.install"
 
-_idstr32='linux32'
-_idstr64='linux64'
+_tag_i686='linux32'
+_tag_x86_64='linux64'
 _urlbase="https://dist.torproject.org/torbrowser/${pkgver}"
-_archstr=$([[ "${CARCH}" == 'x86_64' ]] && echo -n "${_idstr64}" || echo -n "${_idstr32}")
+_archstr=$([[ "${CARCH}" == 'x86_64' ]] && echo -n "${_tag_x86_64}" || echo -n "${_tag_i686}")
 
 _localetor() {
 
@@ -76,8 +77,8 @@ _dist_checksum() {
 
 }
 
-source_i686=("${_urlbase}/${pkgname}-${_idstr32}-${pkgver}_${_language}.tar.xz"{,.asc})
-source_x86_64=("${_urlbase}/${pkgname}-${_idstr64}-${pkgver}_${_language}.tar.xz"{,.asc})
+source_i686=("${_urlbase}/${pkgname}-${_tag_i686}-${pkgver}_${_language}.tar.xz"{,.asc})
+source_x86_64=("${_urlbase}/${pkgname}-${_tag_x86_64}-${pkgver}_${_language}.tar.xz"{,.asc})
 source=("${pkgname}.desktop"
 	"${pkgname}.png"
 	"${pkgname}.sh")
@@ -87,13 +88,13 @@ source=("${pkgname}.desktop"
 sha256sums=('9ee0a4672e2d0835ffb94bcf26e17b56432030496a9cdf019b70c96083c24340'
             'bb6b0f27c33d21e0ef6df961e25418327c5e8b01c003bbe18c0a8dae3e16d77d'
             '3a491ad1a476f2fb343f274eab4e8df925637438e6dac3591f092b3ef3294da3')
-sha256sums_i686=($(_dist_checksum "${_idstr32}")
+sha256sums_i686=($(_dist_checksum "${_tag_i686}")
                  'SKIP')
-sha256sums_x86_64=($(_dist_checksum "${_idstr64}")
+sha256sums_x86_64=($(_dist_checksum "${_tag_x86_64}")
                    'SKIP')
 
-noextract=("${pkgname}-${_idstr64}-${pkgver}_${_language}.tar.xz"
-           "${pkgname}-${_idstr32}-${pkgver}_${_language}.tar.xz")
+noextract=("${pkgname}-${_tag_i686}-${pkgver}_${_language}.tar.xz"
+           "${pkgname}-${_tag_x86_64}-${pkgver}_${_language}.tar.xz")
 
 prepare() {
 
@@ -137,12 +138,11 @@ package() {
 	sed -i "s/__REPL_LANGUAGE__/${_language}/g"	"${pkgname}.sh"
 	sed -i "s/__REPL_ARCH__/${_archstr}/g"		"${pkgname}.sh"
 
-	install -Dm 644 "${pkgname}.desktop"	"${pkgdir}/usr/share/applications/${pkgname}.desktop"
-	install -Dm 644 "${pkgname}.png"	"${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+	install -Dm 644 "${pkgname}.desktop"		"${pkgdir}/usr/share/applications/${pkgname}.desktop"
+	install -Dm 644 "${pkgname}.png"		"${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 	install -Dm 755 "${pkgname}.sh"		"${pkgdir}/usr/bin/${pkgname}"
 
 	install -Dm 644 "${pkgname}-${_archstr}-${pkgver}_${_language}.tar.xz" "${pkgdir}/opt/${pkgname}/${pkgname}-${_archstr}-${pkgver}_${_language}.tar.xz"
 
 }
 
-# vim: set noet :
