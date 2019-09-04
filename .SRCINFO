@@ -1,0 +1,23 @@
+pkgbase = disklow
+	pkgdesc = Fine grained disk space reporting with emphasis on mail functionality
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://www.loomsday.co.nz/development?id=linuxutils
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	depends = perl-filesys-df
+	depends = perl-config-general
+	depends = perl-mail-sendmail
+	depends = perl-net-smtp-ssl
+	depends = perl-authen-sasl
+	optdepends = msmtp-mta: minimalistic system sendmail command
+	optdepends = s-nail: minimalistic system mail command
+	optdepends = cronie: for periodic disk space monitoring
+	backup = etc/disklow.conf
+	source = https://www.loomsday.co.nz/sources/disklow-1.2.tar.gz
+	sha256sums = 05b9f510278147f24b0556eb745ff2b71c98c00fedf33434744fbe76ec884c26
+
+pkgname = disklow
+
