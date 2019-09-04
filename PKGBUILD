@@ -26,7 +26,6 @@ install=servicewall.install
 backup=(
         "etc/servicewall/realms.json"
         "etc/servicewall/config.json"
-        "etc/ulogd.conf"
         )
 
 # Sources for git repos :
