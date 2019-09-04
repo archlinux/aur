@@ -1,9 +1,9 @@
 # Maintainer: edward-p <edward At edward-p Dot xyz>
 
 pkgname=proxmark3-iceman-git
-pkgver=6953.bccb9069
+pkgver=6961.b577ca15
 pkgrel=1
-pkgdesc=pkgdesc='RRG / Iceman repo - Proxmark3 RDV4.0 and other Proxmark3 platforms.'
+pkgdesc='RRG / Iceman repo - Proxmark3 RDV4.0 and other Proxmark3 platforms.'
 arch=('x86_64')
 url='https://github.com/RfidResearchGroup/proxmark3'
 license=('GPL2')
@@ -27,7 +27,13 @@ build() {
 
   mkdir "build"
   
-  STANDALONE_MODES=('LF_SAMYRUN' 'LF_ICERUN' 'LF_PROXBRUTE' 'LF_HIDBRUTE' 'HF_YOUNG' 'HF_MATTYRUN')
+  STANDALONE_MODES=(
+          'LF_SAMYRUN'
+          #'LF_ICERUN'
+          'LF_PROXBRUTE'
+          'LF_HIDBRUTE'
+          'HF_YOUNG'
+          'HF_MATTYRUN')
   RDV4_STANDALONE_MODES=('HF_COLIN' 'HF_BOG')
  
   # Build recovery (without PLATFORM_EXTRAS and STANDALONE)
