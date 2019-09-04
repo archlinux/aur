@@ -1,5 +1,5 @@
 pkgname=mingw-w64-coin-or-ipopt
-pkgver=3.12.12
+pkgver=3.12.13
 pkgrel=1
 pkgdesc="Interior Point OPTimizer (mingw-w64)"
 arch=('any')
@@ -10,18 +10,24 @@ depends=('mingw-w64-lapack')
 makedepends=('mingw-w64-configure')
 options=('staticlibs' '!buildflags' '!strip')
 source=("http://www.coin-or.org/download/source/Ipopt/Ipopt-$pkgver.tgz")
-sha256sums=('7baeb713ef8d1999bed397b938e9654b38ad536406634384455372dd7e4ed61f')
+sha256sums=('aac9bb4d8a257fdfacc54ff3f1cbfdf6e2d61fb0cf395749e3b0c0664d3e7e96')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
+prepare () {
+  cd "$srcdir/Ipopt-$pkgver"
+  pushd ThirdParty/Metis && ./get.Metis && popd
+  pushd ThirdParty/Mumps && ./get.Mumps && popd
+}
+
 build() {
   cd "$srcdir/Ipopt-$pkgver"
-  #sed -i "s|libipopt_la_LIBADD = \$(IPALLLIBS)|libipopt_la_LIBADD = \$(IPALLLIBS) -lapack|g" src/Interfaces/Makefile.in
-  #sed -i "s|libipopt_la_LDFLAGS = \$(LT_LDFLAGS)|libipopt_la_LDFLAGS = \$(libdir)/liblapack.dll.a \$(libdir)/libblas.dll.a -no-undefined \$(LT_LDFLAGS)|g" src/Interfaces/Makefile.in
-  #sed -i "s|liblinalg_la_LIBADD =|liblinalg_la_LIBADD = \$(libdir)/liblapack.dll.a \$(libdir)/libblas.dll.a|g" src/LinAlg/Makefile.in
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-configure ..
+    ${_arch}-configure \
+      --with-blas-incdir=/usr/${_arch}/include --with-blas-lib="-lblas" \
+      --with-lapack-incdir=/usr/${_arch}/include --with-lapack-lib="-llapack" \
+      ..
     make
     popd
   done
@@ -33,7 +39,7 @@ package() {
     PKG_CONFIG_PATH_CUSTOM="$pkgdir"/usr/${_arch}/lib/pkgconfig/ \
     make DESTDIR="$pkgdir"/ install
     rm -r "$pkgdir"/usr/${_arch}/share
-    #${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
+    ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
   done
 }
