@@ -1,17 +1,16 @@
 # Maintainer: Razer <razer[AT]neuf[DOT]fr>
-
 pkgname=python-bluezero
 _pypi_pkgname=bluezero
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=0
-pkgdesc="Python library for Bluetooth Low Energy (BLE)"
+pkgdesc="Python library for Bluetooth Low Energy (BLE) on Linux"
 arch=(any)
 url="https://github.com/ukBaz/python-bluezero"
 license=('MIT')
 makedepends=('python-setuptools')
 depends=('dbus-glib' 'python' 'python-dbus' 'python-gobject')
 source=("https://pypi.io/packages/source/b/${_pypi_pkgname}/${_pypi_pkgname}-${pkgver}.tar.gz")
-sha256sums=('3821f95f6760034093453a6763b9dbdb9def5fdf59d60e4c2add6d7c788cb0b5')
+sha256sums=('d16eb9ac048665a974ad0db312b23bfd528423000b7b2983566b853d5e0d19b6')
 
 build() {
     cd "${srcdir}/${_pypi_pkgname}-${pkgver}"
