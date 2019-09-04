@@ -1,15 +1,15 @@
 pkgname=libmodulemd
-pkgver=2.7.0
+pkgver=2.8.0
 pkgrel=1
 pkgdesc="C Library for manipulating module metadata files"
 arch=('i686' 'x86_64')
 url="https://github.com/fedora-modularity/$pkgname"
 license=('custom:MIT')
-depends=('glib2' 'libyaml')
+depends=('file' 'glib2' 'libyaml' 'rpm-org')
 makedepends=('gobject-introspection' 'gtk-doc' 'meson>=0.47' 'python-gobject')
 optdepends=('python-gobject: for python bindings')
 source=("$url/releases/download/$pkgname-$pkgver/${pkgname#lib}-$pkgver.tar.xz")
-md5sums=('6a56a944e2ddb8e9d87ebaef52b3245a')
+md5sums=('7ed26103a5a05f9a9ef2fd099e078e84')
 
 prepare() {
 	mv "${pkgname#lib}-$pkgver" "$pkgname-$pkgver"
