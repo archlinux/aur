@@ -5,7 +5,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Liberation Mono:pixelsize=9:antialias=true:autohint=true";
+static char *font = "Liberation Mono:pixelsize=10:antialias=true:autohint=true";
 static int borderpx = 2;
 
 /*
@@ -124,8 +124,8 @@ static const char *colorname[] = {
  */
 unsigned int defaultfg = 0;
 unsigned int defaultbg = 15;
-static unsigned int defaultcs = 256;
-static unsigned int defaultrcs = 257;
+static unsigned int defaultcs = 257;
+static unsigned int defaultrcs = 259;
 
 /*
  * Default shape of cursor
@@ -154,7 +154,7 @@ static unsigned int mousebg = 0;
  * Color used to display font attributes when fontconfig selected a font which
  * doesn't match the ones requested.
  */
-static unsigned int defaultattr = 11;
+static unsigned int defaultattr = 12;
 
 /*
  * Internal mouse shortcuts.

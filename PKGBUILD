@@ -6,7 +6,7 @@
 pkgname=st-white
 _pkgname=st
 pkgver=0.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple virtual terminal emulator for X.'
 arch=('i686' 'x86_64')
 license=('MIT')
@@ -17,7 +17,7 @@ provides=($_pkgname=$pkgver)
 conflicts=($_pkgname)
 source=(http://dl.suckless.org/st/$_pkgname-$pkgver.tar.gz config.h)
 sha256sums=('aeb74e10aa11ed364e1bcc635a81a523119093e63befd2f231f8b0705b15bf35'
-            'a01c06d6408ef9e88aa438ef1c0e8a96546b1c97739fe5a6f9bb1701b8a5f346')
+            'd2675fede628ce1db2bd57efde18bff74803f36219efb70886f2fb3ceab4e7a4')
 
 prepare() {
   cd $_pkgname-$pkgver
