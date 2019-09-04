@@ -1,14 +1,13 @@
 # Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
 pkgname=guiscrcpy
 pkgver=1.10
-pkgrel=1
+pkgrel=2
 pkgdesc="A full fledged GUI integration for the most award winning open-source Android screen mirroring system -- scrcpy"
 arch=('i686' 'x86_64')
 url="https://srevinsaju.github.io/guiscrcpy"
 license=('GPL3')
-depends=('scrcpy' 'python-pyqt5' 'python-psutil')
-optdepends=('python-qdarkstyle: for dark theme'
-            'wmctrl: to use development toolkit'
+depends=('scrcpy' 'python-pyqt5' 'python-psutil' 'python-qdarkstyle')
+optdepends=('wmctrl: to use development toolkit'
             'xdotool: to use development toolkit')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/srevinsaju/$pkgname/archive/$pkgver.tar.gz"
         "$pkgname.desktop"
