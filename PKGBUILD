@@ -23,7 +23,7 @@ sha256sums=('SKIP')
 pkgver() {
     cd "${srcdir}/${_pkgname}"
 
-    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' || echo 1.0.0
+    echo $(head -n 4 package.json | tail -n 1 | sed 's/  "version": "//;s/",//;s/-/./g').$(git log -n 1 --oneline | head -c 7)
 }
 
 build() {
