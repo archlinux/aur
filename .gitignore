@@ -1,0 +1,5 @@
+!.gitignore
+php-pecl-gender*
+gender*
+src/
+pkg/

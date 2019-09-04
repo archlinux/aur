@@ -1,0 +1,14 @@
+pkgbase = php-pecl-gender
+	pkgdesc = Gender PHP extension is a port of the gender.c program originally written by Joerg Michael. The main purpose is to find out the gender of firstnames. The name dictionary contains >40000 firstnames from 54 countries.
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = http://pecl.php.net/package/gender
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = autoconf
+	source = http://pecl.php.net/get/gender-1.1.0.tgz
+	sha256sums = 12be9b7ac54bee8d99e0f705bc3ae743af3ee4cfaddb1fc56432024424672d4f
+
+pkgname = php-pecl-gender
+
