@@ -61,20 +61,18 @@ prepare() {
   export CUDNN_INCLUDE_DIR=/usr/include
   export TORCH_NVCC_FLAGS="-Xfatbin -compress-all"
   export TORCH_CUDA_ARCH_LIST="3.0;3.2;3.5;3.7;5.0;5.2;5.3;6.0;6.1;6.2;7.0;7.2;7.5"
-  # Experimental
-  export _GLIBCXX_USE_CXX11_ABI=TRUE
 }
 
 build() {
   echo "Building without cuda and without non-x86-64 optimizations"
-  export USE_CUDA=1
+  export USE_CUDA=0
   export USE_CUDNN=0
   cd "${srcdir}/${_pkgname}-${pkgver}"
   python setup.py build
 
 
   echo "Building without cuda and with non-x86-64 optimizations"
-  export USE_CUDA=1
+  export USE_CUDA=0
   export USE_CUDNN=0
   cd "${srcdir}/${_pkgname}-${pkgver}-opt"
   echo "add_definitions(-march=haswell)" >> cmake/MiscCheck.cmake
@@ -82,14 +80,14 @@ build() {
 
 
   echo "Building with cuda and without non-x86-64 optimizations"
-  export USE_CUDA=0
+  export USE_CUDA=1
   export USE_CUDNN=1
   cd "${srcdir}/${_pkgname}-${pkgver}-cuda"
   python setup.py build
 
 
   echo "Building with cuda and with non-x86-64 optimizations"
-  export USE_CUDA=0
+  export USE_CUDA=1
   export USE_CUDNN=1
   cd "${srcdir}/${_pkgname}-${pkgver}-opt-cuda"
   echo "add_definitions(-march=haswell)" >> cmake/MiscCheck.cmake
