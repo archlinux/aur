@@ -1,0 +1,15 @@
+[Unit]
+Description=UnblockNeteaseMusic
+After=network.target
+Wants=network.target
+
+[Service]
+Type=simple
+PIDFile=/var/run/UnblockNeteaseMusic.pid
+WorkingDirectory=/opt/UnblockNeteaseMusic/
+ExecStart=$(command -v node) app.js
+RestartPreventExitStatus=23
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
