@@ -23,6 +23,13 @@ You might want to run ckb-next-daemon as a systemd service:
 EOF
 }
 
+_disable_daemon() {
+    running="$(systemctl is-enabled ckb-next-daemon.service)"
+    if [[ "$running" = "enabled" ]]; then
+        systemctl disable ckb-next-daemon.service
+    fi
+}
+
 _terminate_gui_daemon() {
     msg_blue "Terminating ckb-next GUI"
 
@@ -46,11 +53,6 @@ _terminate_gui_daemon() {
     if [[ "$running" = "enabled" ]]; then
         systemctl disable ckb-daemon.service
     fi
-
-    running="$(systemctl is-enabled ckb-next-daemon.service)"
-    if [[ "$running" = "enabled" ]]; then
-        systemctl disable ckb-next-daemon.service
-    fi
 }
 
 # arg 1:  the new package version
@@ -68,12 +70,12 @@ pre_upgrade() {
 # arg 2:  the old package version
 post_upgrade() {
     systemctl daemon-reload
-    _as_service
 }
 
 # arg 1:  the old package version
 pre_remove() {
     _terminate_gui_daemon
+    _disable_daemon
 }
 
 # arg 1:  the old package version
