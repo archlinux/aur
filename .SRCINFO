@@ -1,0 +1,12 @@
+pkgbase = unamea
+	pkgdesc = Print all certain system information.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/AlexandrParkhomenko/aur/
+	arch = any
+	license = LGPL
+	source = https://github.com/AlexandrParkhomenko/aur/blob/master/unamea/releases/unamea-1.0.0.tar.xz?raw=true
+	sha256sums = cebbadff8d85909134958f2ee471f814bbf05efad599de79f3b5b43e2fc21e3a
+
+pkgname = unamea
+
