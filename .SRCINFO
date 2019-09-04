@@ -1,19 +1,18 @@
 pkgbase = theweb
-	pkgdesc = Web Browser based on CEF and Qt
-	pkgver = 15.0
+	pkgdesc = Web Browser based on QtWebEngine
+	pkgver = 16.0
 	pkgrel = 0
 	url = https://github.com/vicr123/theweb
 	arch = x86_64
 	license = GPL3
 	makedepends = git
-	makedepends = clang
-	depends = kwidgetsaddons
+	makedepends = nodejs
+	makedepends = npm
 	depends = xdg-utils
 	depends = qt5-base
-	depends = poppler-qt5
-	source = theweb-15.0::git+https://github.com/vicr123/theweb#branch=master
-	source = http://opensource.spotify.com/cefbuilds/cef_binary_3.2840.1494.g7fe3d03_linux64_minimal.tar.bz2
-	md5sums = SKIP
+	depends = the-libs
+	depends = qt5-webengine
+	source = theweb-16.0::git+https://github.com/vicr123/theweb#branch=master
 	md5sums = SKIP
 
 pkgname = theweb

@@ -1,37 +1,23 @@
 
 # Maintainer: Victor Tran <vicr12345 at gmail dot com>
 pkgname=theweb
-pkgver=15.0
+pkgver=16.0
 pkgrel=0
-pkgdesc="Web Browser based on CEF and Qt"
+pkgdesc="Web Browser based on QtWebEngine"
 arch=("x86_64")
 url="https://github.com/vicr123/theweb"
 license=('GPL3')
-depends=('kwidgetsaddons' 'xdg-utils' 'qt5-base' 'poppler-qt5')
-makedepends=('git' 'clang')
-source=("$pkgname-$pkgver"::'git+https://github.com/vicr123/theweb#branch=master'
-	"http://opensource.spotify.com/cefbuilds/cef_binary_3.2840.1494.g7fe3d03_linux64_minimal.tar.bz2")
-md5sums=('SKIP'
-	 'SKIP')
+depends=('xdg-utils' 'qt5-base' 'the-libs' 'qt5-webengine')
+makedepends=('git' 'nodejs' 'npm')
+source=("$pkgname-$pkgver"::'git+https://github.com/vicr123/theweb#branch=master')
+md5sums=('SKIP')
 
 build() {
-	cp "cef_binary_3.2840.1494.g7fe3d03_linux64_minimal/Release/libcef.so" "$pkgname-$pkgver"
 	cd "$pkgname-$pkgver"
-	qmake
-	make
+	node buildtool.js
 }
 
 package() {
-	mkdir -p "$pkgdir/opt/theWeb"
-	cp "$pkgname-$pkgver/theweb" "$pkgdir/opt/theWeb"
-	cp -r "cef_binary_3.2840.1494.g7fe3d03_linux64_minimal/Release/"* "$pkgdir/opt/theWeb"
-	cp -r "cef_binary_3.2840.1494.g7fe3d03_linux64_minimal/Resources/"* "$pkgdir/opt/theWeb"
-	cp "$pkgname-$pkgver/libcef_dll_wrapper.a" "$pkgdir/opt/theWeb"
-	chmod 4755 "$pkgdir/opt/theWeb/chrome-sandbox"
-	mkdir -p "$pkgdir/usr/share/applications"
-	cp "$pkgname-$pkgver/theweb.desktop" "$pkgdir/usr/share/applications"
-	mkdir -p "$pkgdir/usr/bin/"
-	cp "$pkgname-$pkgver/theweb-execscript" "$pkgdir/usr/bin/theweb"
-	mkdir -p "$pkgdir/usr/share/icons"
-	cp "$pkgname-$pkgver/icon.svg" "$pkgdir/usr/share/icons/theweb.svg"
+	cd "$pkgname-$pkgver"/build
+	make install INSTALL_ROOT=$pkgdir
 }
