@@ -1,13 +1,14 @@
 pkgbase = toot
 	pkgdesc = a Mastodon CLI client
 	pkgver = 0.23.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ihabunek/toot
 	arch = any
 	license = GPL3
 	depends = python-requests
 	depends = python-beautifulsoup4
 	depends = python-wcwidth
+	depends = python-urwid
 	source = https://files.pythonhosted.org/packages/source/t/toot/toot-0.23.1.tar.gz
 	sha256sums = 3ff1c31923f51c63d6eafd07184cee7358315a3c1b0f85e5a148574edc23d5fa
 
