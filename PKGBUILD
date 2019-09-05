@@ -1,19 +1,44 @@
 # Maintainer: Johannes Wienke <languitar@semipol.de>
 
 pkgname=drawio-desktop-bin
-pkgver=11.1.4
+pkgver=11.2.4
 pkgrel=1
 pkgdesc="Diagram drawing application built on web technology"
 arch=('x86_64')
 url="https://github.com/jgraph/drawio-desktop"
 license=('Apache')
-depends=("gconf" "libnotify" "libxtst" "nss" "libxss")
+depends=(
+    "alsa-lib"
+    "at-spi2-atk"
+    "atk"
+    "gconf"
+    "gdk-pixbuf2"
+    "gtk3"
+    "libcups"
+    "libnotify"
+    "libx11"
+    "libxcb"
+    "libxcomposite"
+    "libxcursor"
+    "libxdamage"
+    "libxext"
+    "libxfixes"
+    "libxi"
+    "libxrandr"
+    "libxrender"
+    "libxss"
+    "libxss"
+    "libxtst"
+    "nspr"
+    "nss"
+    "pango"
+)
 provides=('drawio-desktop')
 conflicts=('drawio-desktop')
 optdepends=()
 makedepends=()
 source=("${pkgname}-${pkgver}.deb::https://github.com/jgraph/drawio-desktop/releases/download/v${pkgver}/draw.io-amd64-${pkgver}.deb")
-sha256sums=('e463a150ba2706802f137a6b56f8b741a4d702a1fc4aba04c05959c4c457718c')
+sha256sums=('22d24fde9bb74a92828ede6c5fb0e262f3fecaf51ec46402f1be5e77da8eb8b2')
 
 prepare() {
     cd "${srcdir}"
