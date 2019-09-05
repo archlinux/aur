@@ -5,10 +5,11 @@ pkgbase = globalplatformpro-git
 	url = https://javacard.pro/globalplatform/
 	arch = any
 	license = LGPL3
-	makedepends = git
 	makedepends = apache-ant
+	makedepends = git
+	makedepends = java-environment>=8
 	makedepends = maven
-	depends = java-environment>=8
+	depends = java-runtime-headless>=8
 	depends = pcsclite
 	source = globalplatformpro-git::git+https://github.com/martinpaljak/GlobalPlatformPro.git
 	source = gp-pro

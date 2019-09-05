@@ -7,8 +7,8 @@ pkgdesc="A powerful tool for managing applets and keys on JavaCards based on the
 arch=('any')
 url="https://javacard.pro/globalplatform/"
 license=('LGPL3')
-depends=('java-environment>=8' 'pcsclite')
-makedepends=('git' 'apache-ant' 'maven')
+depends=('java-runtime-headless>=8' 'pcsclite')
+makedepends=('apache-ant' 'git' 'java-environment>=8' 'maven')
 source=(
   "$pkgname::git+https://github.com/martinpaljak/GlobalPlatformPro.git"
   'gp-pro'
