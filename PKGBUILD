@@ -1,10 +1,10 @@
 # Maintainer: Vicente Reyes <vreyesvaldivieso [at] gmail [dot] com>
 pkgname=atool-desktop
 pkgver=0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop Entry for atool-based archive unpacking"
 arch=('any')
-url="https://github.com/~vicentereyes/PKGBUILDs"
+url="https://git.sr.ht/~vicentereyes/PKGBUILDs"
 license=()
 depends=('atool'
 	 'dmenu')
