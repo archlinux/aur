@@ -9,9 +9,9 @@ pkgname=modelio-bin
 # Version
 _pkgvermajor=3
 _pkgverminor=8
-_pkgverpatch=0
+_pkgverpatch=1
 pkgver="${_pkgvermajor}.${_pkgverminor}.${_pkgverpatch}"
-pkgrel=2
+pkgrel=1
 
 # Generic
 pkgdesc="The opensource modeling environment"
@@ -44,8 +44,8 @@ source_x86_64=("modelio-${pkgver}-x86_64.deb::https://sourceforge.net/projects/m
 #validpgpkeys=()
 sha256sums=('af7e10bb2849fb9cdb2ec0054d782dedd5c6901cbf3e742d1ab872447ae38b5c'
             'e09657ab1f0abd7d780c6b7df2ae56972cefe3d28c16e4a4e72f2ba68a889f0f')
-sha256sums_i686=('8cdc9b094807c509d943bcd1b88bbc3c5862c425799f19f05f796446447f3185')
-sha256sums_x86_64=('4d3252c0f611172c94d322cfa3e3257bb21adc9c2278f1e411bbbde0b5d21ded')
+sha256sums_i686=('66a68276ebb11406b012855a8df71bf0287d8ce34d0345a31a2752e36c8df46c')
+sha256sums_x86_64=('da9282b9d6d6c7cb3f2f8f60f57b0d3412d512ba6768a497d8aa4f45b8e71c6c')
 
 #pkgver() {
 #}
