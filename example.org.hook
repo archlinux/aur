@@ -1,0 +1,14 @@
+#!/bin/sh
+#
+#  https://www.freedesktop.org/software/systemd/man/systemd.exec.html#%24EXIT_CODE
+#  > $EXIT_STATUS contains the numeric exit code formatted as string if $EXIT_CODE is "exited",
+#  > and the signal name in all other cases.
+#
+#  $EXIT_STATUS of acme-client
+#	1 on failure
+#	2 if the certificates didn't change (up to date)
+#	0 if certificates were changed (revoked or updated).
+
+if [ 0 = "$EXIT_STATUS" ]; then
+	systemctl reload nginx.service
+fi

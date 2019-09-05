@@ -1,0 +1,23 @@
+[Unit]
+Description=Check and renew ACME TLS certificates
+After=network.target
+Requires=network.target
+
+[Service]
+Type=oneshot
+
+ExecStart=/usr/bin/acme-client -v %I
+SuccessExitStatus=2
+
+ExecStopPost=/usr/bin/sh -c "[ ! -x '/etc/acme-client.d/%I.hook' ] || exec '/etc/acme-client.d/%I.hook'"
+
+PrivateTmp=true
+PrivateDevices=true
+ProtectHome=true
+
+ReadOnlyPaths=/
+
+StateDirectory=acme-client/accounts
+StateDirectory=acme-client/certs
+RuntimeDirectory=acme-challenge
+RuntimeDirectoryMode=0755
