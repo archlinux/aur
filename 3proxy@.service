@@ -1,12 +1,10 @@
 [Unit]
-Description=3proxy
+Description=3proxy Proxy Server (%i)
 After=network.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/3proxy /etc/3proxy/3proxy.cfg
-User=threeproxy
-Group=threeproxy
+ExecStart=/usr/bin/3proxy /etc/3proxy/%i.cfg
 Restart=on-failure
 PrivateUsers=true
 
