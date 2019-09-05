@@ -1,11 +1,12 @@
 pkgbase = 3proxy-git
 	pkgdesc = A tiny crossplatform proxy server (git version)
 	pkgver = r520.22cf925
-	pkgrel = 3
+	pkgrel = 4
 	url = https://3proxy.org/
 	arch = x86_64
 	license = BSD
 	makedepends = git
+	depends = bash
 	provides = 3proxy
 	conflicts = 3proxy
 	source = 3proxy::git+https://github.com/z3APA3A/3proxy.git
