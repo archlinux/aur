@@ -1,6 +1,7 @@
 # Maintainer: Jared Johnson <jaredj@gmx.com>
 pkgname=fvim
 pkgver=0.2_88_g17b59dd
+_pkgver=$(echo "${pkgver}" | sed -e "s/_/-/g")
 pkgrel=1
 pkgdesc="Cross platform Neovim front-end UI, built with F# + Avalonia"
 arch=('any')
@@ -17,18 +18,16 @@ md5sums=('SKIP')
 options=('staticlibs')
 
 build() {
-    cd $(echo "${srcdir}/${pkgname}-${pkgver}" | sed -e "s/_/-/g")
-    mkdir ${srcdir}/build
+    cd "${srcdir}/${pkgname}-${_pkgver}"
     dotnet publish \
         -f netcoreapp3.0 \
         -c Release \
         -r linux-x64 \
-        --self-contained true \
-        -o ${srcdir}/build
+        --self-contained
 }
 
 package() {
-    cd $(echo "${srcdir}/${pkgname}-${pkgver}" | sed -e "s/_/-/g")
+    cd "${srcdir}/${pkgname}-${_pkgver}"
 
     install -dm755 "${pkgdir}/usr/bin"
     install -dm755 "${pkgdir}/usr/share/${pkgname}"
@@ -38,9 +37,5 @@ package() {
     install -m755 lib/fvim-linux-launcher "${pkgdir}/usr/bin/fvim"
     install Assets/fvim.png "${pkgdir}/usr/share/icons/hicolor/48x48/apps/fvim.png"
     install lib/fvim.desktop "${pkgdir}/usr/share/applications/fvim.desktop"
-    cp -R ${srcdir}/build/* "${pkgdir}/usr/share/fvim"
-    chmod -R 755 ${pkgdir}/usr/share/fvim
-    chmod 744 ${pkgdir}/usr/share/fvim/*.dll
-    chmod 744 ${pkgdir}/usr/share/fvim/*.so
-    chmod 644 ${pkgdir}/usr/share/fvim/FVim.*
+    cp -dpr bin/Release/netcoreapp3.0/linux-x64/* "${pkgdir}/usr/share/fvim"
 }
