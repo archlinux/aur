@@ -1,25 +1,29 @@
 pkgbase = simulationcraft
 	pkgdesc = A tool to explore combat mechanics in the popular MMO RPG World of Warcraft (tm). Multi-player event-driven simulator written in C++ that models raid damage.
-	pkgver = 801_01
+	pkgver = 820_01
 	pkgrel = 1
 	url = https://github.com/simulationcraft/simc
 	arch = i686
 	arch = x86_64
 	license = GPL3
+	makedepends = cmake
 	makedepends = qt5-webkit
-	source = simulationcraft-801-01.tar.gz::https://github.com/simulationcraft/simc/archive/release-801-01.tar.gz
+	makedepends = qt5-webengine
+	source = simulationcraft-820-01.tar.gz::https://github.com/simulationcraft/simc/archive/release-820-01.tar.gz
+	source = 0001-set-welcome-path.patch
 	source = SimulationCraft.desktop
-	sha256sums = ba40f946348f608945701aca045d7316e456f9853975d0255c8796d34dcad5fa
+	sha256sums = 33197263f755b7671907dd2538cf229d90ce083c2af0b5c341d6d428b73353cd
+	sha256sums = 0755cfa21435dd3a019a686fd0e313abf631dcd02efa37ebcafe23546bacc048
 	sha256sums = 12cddfa8077e3f7c5c7d8bc445f27691072911d36e296ffe21281c6f4a0c1dd9
 
 pkgname = simulationcraft
 	depends = openssl
-	depends = simulationcraft-data=801_01
+	depends = simulationcraft-data=820_01
 
 pkgname = simulationcraft-gui
 	pkgdesc = A tool to explore combat mechanics in the popular MMO RPG World of Warcraft (tm). Multi-player event-driven simulator written in C++ that models raid damage. GUI
 	depends = qt5-webkit
-	depends = simulationcraft=801_01
+	depends = simulationcraft=820_01
 
 pkgname = simulationcraft-data
 	pkgdesc = A tool to explore combat mechanics in the popular MMO RPG World of Warcraft (tm). Multi-player event-driven simulator written in C++ that models raid damage. Data
