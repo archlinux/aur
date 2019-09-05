@@ -1,55 +1,55 @@
-# Maintainer: Anna <morganamilo@gmail.com>
-# Co-Maintainer: E5ten <e5ten.arch@gmail.com>
-# Co-Maintainer: Pezz <aur [at] sanxion [dot] net>
-# Contributor: Cayde Dixon <me@cazzar.net>
-# Contributor: Anthony Anderson <aantony4122@gmail.com>
+# Maintainer: Tim Schumacher <timschumi@gmx.de>
+# Contributor: Filipe Laíns (FFY00) <lains@archlinux.org>
 
 pkgname=discord-ptb
-pkgver=0.0.15
+_pkgname=DiscordPTB
+pkgver=0.0.16
 pkgrel=1
-pkgdesc="All-in-one voice and text chat for gamers that's free and secure."
+pkgdesc="All-in-one voice and text chat for gamers that's free and secure. - Public Test Build"
 arch=('x86_64')
-url='https://discordapp.com/'
-provides=('discord')
+url='https://discordapp.com'
 license=('custom')
-depends=('gtk2' 'gconf' 'libnotify' 'libxss' 'glibc' 'alsa-lib' 'nspr' 'nss' 'xdg-utils')
-optdepends=(
-  'libpulse: For pulseaudio support'
-  'noto-fonts-emoji: Google font for emoji support.'
-  'ttf-symbola: Font for emoji support.'
-  'noto-fonts-cjk: Font for special characters such as /shrug face.'
-)
+depends=('libnotify' 'libxss' 'nspr' 'nss'
+         'opera-ffmpeg-codecs' 'libegl' 'libgles') # Replacements
+optdepends=('libpulse: Pulseaudio support'
+            'xdg-utils: Open files')
+source=("https://dl-ptb.discordapp.net/apps/linux/$pkgver/$pkgname-$pkgver.tar.gz"
+        'LICENSE.html::https://discordapp.com/terms'
+        'OSS-LICENSES.html::https://discordapp.com/licenses')
+sha512sums=('654f2b600ebce5058dd74d5676a6d40e70a9eecf8351a61601206ccbcd88631fd25b42f0db532b5195285bb8e227d746d433d132b09fae4f77f5dfabc154f8c8'
+            'a23ed34f95184da70aba7d87f879113b274fafdbe235185133397b64cba2a34109fcfa8594f479e434af61714da89293390c4b0425b72268b50c41187f0800fd'
+            '17ae8d140d1ec219b3328ef5d80cd53672ba31b5cc48194798379055eb9224f43c33dac806ce5648ac3ce7cdd2b691e0fcb0bb429601eb78c004f89e6b36f3bc')
 
-source=(LICENSE
-		"https://dl-ptb.discordapp.net/apps/linux/${pkgver}/${pkgname}-${pkgver}.tar.gz")
+prepare() {
+  cd $_pkgname
 
-md5sums=('26b3229c74488c64d94798e48bc49fcd'
-         '4201450fc96eb974ae74740ff925747d')
-
-#This is always latest build, right now I do not know of a version param.
+  sed -i "s|Exec=.*|Exec=/usr/bin/$pkgname|" $pkgname.desktop
+  echo 'Path=/usr/bin' >> $pkgname.desktop
+}
 
 package() {
-  # Install the main files.
-  install -d "${pkgdir}/opt/${pkgname}"
-  cp -a "${srcdir}/DiscordPTB/." "${pkgdir}/opt/${pkgname}"
+  # Install the app
+  install -d "$pkgdir"/opt/$pkgname
+  cp -a $_pkgname/. "$pkgdir"/opt/$pkgname
 
-  # Exec bit
-  chmod 755 "${pkgdir}/opt/${pkgname}/DiscordPTB"
+  chmod 755 "$pkgdir"/opt/$pkgname/$_pkgname
 
-  # Desktop Entry
-  install -d "${pkgdir}/usr/share/applications"
-  install "${pkgdir}/opt/${pkgname}/${pkgname}.desktop" "${pkgdir}/usr/share/applications"
-  sed -i s%/usr/share%/opt% ${pkgdir}/usr/share/applications/${pkgname}.desktop``
+  rm "$pkgdir"/opt/$pkgname/postinst.sh
 
-  # Main binary
-  #install "${srcdir}/Discord.sh" "${pkgdir}/usr/bin/discord"
-  mkdir -p ${pkgdir}/usr/bin
-  ln -s "/opt/${pkgname}/DiscordPTB" "${pkgdir}/usr/bin/${pkgname}"
+  install -d "$pkgdir"/usr/{bin,share/{pixmaps,applications}}
+  ln -s /opt/$pkgname/$_pkgname "$pkgdir"/usr/bin/$pkgname
+  ln -s /opt/$pkgname/discord.png "$pkgdir"/usr/share/pixmaps/$pkgname.png
+  ln -s /opt/$pkgname/$pkgname.desktop "$pkgdir"/usr/share/applications/$pkgname.desktop
 
-  # Create symbolic link to the icon
-  install -d "${pkgdir}/usr/share/pixmaps"
-  ln -s "/opt/${pkgname}/discord.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+  # Replacement symlinks
+  ln -sf /usr/lib/opera/lib_extra/libffmpeg.so "$pkgdir"/opt/$pkgname/libffmpeg.so
+  ln -sf /usr/lib/libEGL.so "$pkgdir"/opt/$pkgname/libEGL.so
+  ln -sf /usr/lib/libGLESv2.so "$pkgdir"/opt/$pkgname/libGLESv2.so
+  ln -sf /usr/lib/libEGL.so "$pkgdir"/opt/$pkgname/swiftshader/libEGL.so
+  ln -sf /usr/lib/libGLESv2.so "$pkgdir"/opt/$pkgname/swiftshader/libGLESv2.so
 
-  # License
-  install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  # Licenses
+  install -Dm 644 LICENSE.html "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.html
+  install -Dm 644 OSS-LICENSES.html "$pkgdir"/usr/share/licenses/$pkgname/OSS-LICENSES.html
 }
+

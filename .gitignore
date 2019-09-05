@@ -1,4 +1,4 @@
-src/
+*.tar.gz
+*.tar.xz
 pkg/
-*.gz
-*.xz
+src/
