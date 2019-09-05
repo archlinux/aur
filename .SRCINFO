@@ -1,6 +1,6 @@
 pkgbase = gb-studio-git
 	pkgdesc = Visual retro game maker
-	pkgver = 1.1.0.r36.g4e74b371
+	pkgver = 1.1.0.r278.ga63866dd
 	pkgrel = 2
 	url = https://github.com/chrismaltby/gb-studio
 	arch = x86_64

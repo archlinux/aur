@@ -1,7 +1,7 @@
-# Maintainer: Valentijn V. <deepnavy at waifu dot club>
+# Maintainer: Valentijn V. <neko at catgirlsin dot space>
 pkgname=gb-studio-git # '-bzr', '-git', '-hg' or '-svn'
 _pkgname=gb-studio
-pkgver=1.1.0.r36.g4e74b371
+pkgver=1.1.0.r278.ga63866dd
 pkgrel=2
 pkgdesc="Visual retro game maker"
 arch=('x86_64')
@@ -27,15 +27,15 @@ pkgver() {
 
 build() {
 	cd "${_pkgname}"
-        build_ver=$(git describe --abbrev=0 --tags | cut -c 2-)
 
-        msg2 "Installing npm packages..."
-	npm install
+        msg2 "Installing yarn packages..."
+	yarn
 	msg2 "Building deb file..."
         npx electron-forge make --targets deb
         cd out/make
 	msg2 "Extracting deb file..."
-        bsdtar -xf "${_pkgname}_${build_ver}_amd64.deb"
+	builddeb=$(ls *.deb)
+        bsdtar -xf "${builddeb}"
 }
 
 package() {
