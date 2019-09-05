@@ -1,11 +1,12 @@
 pkgname=ethercalc
 pkgver=0.20190703.0
-pkgrel=1
+pkgrel=2
 pkgdesc="a web spreadsheet"
 arch=('any')
 url="https://ethercalc.net"
 license=('CPAL')
-depends=('nodejs')
+depends=('nodejs-lts-dubnium')
+optdepends=('redis: redis support')
 makedepends=('npm' 'jq')
 backup=("etc/conf.d/$pkgname")
 source=("https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz"
