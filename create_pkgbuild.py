@@ -192,7 +192,7 @@ class PackageBase(object):
         dependency_map = {}
         for rosdep_url in rosdep_urls:
             stream = http.request('GET', rosdep_url).data
-            rosdep_file = yaml.load(stream)
+            rosdep_file = yaml.load(stream, Loader=yaml.BaseLoader)
             for package_name, distrib in rosdep_file.items():
                 if 'arch' in distrib:
                     if 'pacman' in distrib["arch"]:
@@ -427,7 +427,7 @@ class DistroDescription(object):
     def __init__(self, name, url, python_version):
         stream = http.request('GET', url).data
         self.name = name
-        self._distro = yaml.load(stream)
+        self._distro = yaml.load(stream, Loader=yaml.BaseLoader)
         self._package_cache = {}
         self.python_version = python_version
         if 'metapackages' in self._distro['repositories'].keys():
