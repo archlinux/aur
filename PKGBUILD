@@ -1,4 +1,5 @@
 # Maintainer: Louis Tim Larsen <louis(a)louis.dk>
+# djdsfk
 
 pkgname=thunderbird-appmenu-bin
 pkgver=60.8.0
@@ -26,7 +27,7 @@ package(){
 
 	# Extract package data
 	tar xf data.tar.xz -C "${pkgdir}"
-	
+
 	# Change extensions folder location to comply with upstream Thunderbird
 	rm "${pkgdir}"/usr/lib/thunderbird/extensions
 	mv "${pkgdir}"/usr/lib/thunderbird-addons/extensions "${pkgdir}"/usr/lib/thunderbird/extensions
