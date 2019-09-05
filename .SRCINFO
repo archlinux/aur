@@ -1,11 +1,11 @@
 pkgbase = xde-menu-git
 	pkgdesc = XDG compliant menu generator
 	pkgver = 0.11.r0.g7fce7e4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bbidulock/xde-menu
 	arch = i686
 	arch = x86_64
-	groups = xde
+	groups = xde-git
 	license = GPL
 	makedepends = git
 	depends = libwnck+-git
@@ -13,7 +13,7 @@ pkgbase = xde-menu-git
 	depends = gnome-menus
 	optdepends = xdg-launch-git: for LW WM launch notification
 	optdepends = xde-theme: for LW WM style and theme change support
-	provides = xde-menu
+	provides = xde-menu=0.11.r0.g7fce7e4
 	conflicts = xde-menu
 	source = xde-menu-git::git+https://github.com/bbidulock/xde-menu.git
 	md5sums = SKIP
