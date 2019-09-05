@@ -5,7 +5,7 @@
 pkgbase=dotnet-core-preview
 pkgname=('dotnet-host-preview' 'dotnet-runtime-preview' 'aspnet-runtime-preview' 'dotnet-sdk-preview')
 pkgver=3.0.0+100+preview.013656
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url='https://www.microsoft.com/net/core'
 license=('MIT')
@@ -19,7 +19,7 @@ source=(
   'dotnet.sh'
 )
 sha256sums=('6ce2353764f57a8721fb4caa43851c826913ad3bd24640caeb5503432bd45ca8'
-            'f4cb02490234b853946477f82514f0c6247b55b08b2e85fae98e99a6e6974edd')
+            '4978b3a31a94032b425d2a2a9b5a17f506f36fb784fbfefdf2cfea9485a30f47')
 
 package_dotnet-host-preview() {
   pkgdesc='A generic driver for the .NET Core Command Line Interface (preview)'

@@ -1,6 +1,6 @@
 pkgbase = dotnet-core-preview
 	pkgver = 3.0.0+100+preview.013656
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.microsoft.com/net/core
 	arch = x86_64
 	license = MIT
@@ -20,7 +20,7 @@ pkgbase = dotnet-core-preview
 	source = https://download.visualstudio.microsoft.com/download/pr/a0e368ac-7161-4bde-a139-1a3ef5a82bbe/439cdbb58950916d3718771c5d986c35/dotnet-sdk-3.0.100-preview8-013656-linux-x64.tar.gz
 	source = dotnet.sh
 	sha256sums = 6ce2353764f57a8721fb4caa43851c826913ad3bd24640caeb5503432bd45ca8
-	sha256sums = f4cb02490234b853946477f82514f0c6247b55b08b2e85fae98e99a6e6974edd
+	sha256sums = 4978b3a31a94032b425d2a2a9b5a17f506f36fb784fbfefdf2cfea9485a30f47
 
 pkgname = dotnet-host-preview
 	pkgdesc = A generic driver for the .NET Core Command Line Interface (preview)
