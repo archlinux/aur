@@ -1,0 +1,11 @@
+--- CMakeLists.txt	2019-03-02 08:26:01.000000000 -0600
++++ CMakeLists.txt	2019-09-05 02:32:58.324454246 -0500
+@@ -487,7 +487,7 @@
+ 
+             INSTALL(
+                 FILES ${CMAKE_CURRENT_BINARY_DIR}/stp.1
+-                DESTINATION ${CMAKE_INSTALL_PREFIX}/man/man1)
++                DESTINATION ${CMAKE_INSTALL_FULL_MANDIR}/man1)
+             message(STATUS "Manpage will be created and installed")
+         endif()
+     else()

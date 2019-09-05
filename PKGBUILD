@@ -1,32 +1,37 @@
 # Maintainer: Forest Crossman <cyrozap at gmail dot com>
 
 pkgname=stp
-pkgver=2.1.2
+pkgver=2.3.3
 pkgrel=1
 pkgdesc="Simple Theorem Prover"
 arch=('i686' 'x86_64')
 url="https://stp.github.io/"
 license=('MIT')
-depends=('bison' 'boost' 'flex' 'minisat-git')
+depends=('bison' 'boost' 'cryptominisat5' 'flex' 'minisat-git' 'python2')
 makedepends=('cmake' 'git')
 
 source=("https://github.com/$pkgname/$pkgname/archive/$pkgver.tar.gz"
-        'cmake-git.patch')
-sha256sums=('d7f118324a534cfa33cabe7302e717f960a3d29e01c5cabc9232d21683f0085d'
-            'cedc57c9e375b145dcd9f3586505477737315194e260de0f689b7715b2088312')
+        'mandir.patch')
+sha256sums=('ea6115c0fc11312c797a4b7c4db8734afcfce4908d078f386616189e01b4fffa'
+            '4c09301c5a36cd89845a7177e1215008f8bbb23fa6f3c6cc941006825e28c327')
 
 prepare() {
-  cd "$srcdir"
+  cd "$srcdir/$pkgname-$pkgver"
 
-  # Since we're installing from a release archive, searching for a Git
-  # directory can cause the build to fail.
-  patch -p1 < cmake-git.patch
+  # Correct the destination for man documentation.
+  patch < "$srcdir/mandir.patch"
 }
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
+
   mkdir -p build && cd build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+  cmake \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DENABLE_PYTHON_INTERFACE=ON \
+    ..
   make
 }
 
