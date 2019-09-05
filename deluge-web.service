@@ -1,15 +1,14 @@
 [Unit]
 Description=Deluge Bittorrent Client WebUI
-Documentation=man:deluge-web
+Documentation=man:deluge-web(1)
 After=online.target deluged.service
 Wants=deluged.service
 
 [Service]
-Type=forking
 Umask=027
 User=deluge
 EnvironmentFile=/etc/conf.d/deluged
-ExecStart=/usr/bin/deluge-web $WEB_OPTIONS
+ExecStart=/usr/bin/deluge-web -d $WEB_OPTIONS
 Restart=on-failure
 
 [Install]
