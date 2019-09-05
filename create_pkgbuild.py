@@ -54,7 +54,7 @@ class PackageBase(object):
             self._get_package_xml_url(repository_url, name, version))
         self.name = package.name
         self.version = package.version
-        # TODO:  PKG_RRELEASE_VER: How could we handle this?
+        # TODO:  PKG_RRELEASE_VAR: How could we handle this?
         # self.package_release = str(int(version_patch) + 1)
         self.package_release = str(1)
         self.licenses = package.licenses
@@ -129,7 +129,6 @@ class PackageBase(object):
                         fixed_dependencies.add(package)
                 else:
                     fixed_dependencies.add(dep)
-            print("DEBUG")
             # Fix some possibly missing Python 2/3 package conflicts
             if self.distro.python_major() == "2":
                 fixed_dependencies = [self._ensure_python2_dependency(dependency)
@@ -219,6 +218,22 @@ class PackageBase(object):
     def generate(self, exclude_dependencies=[], rosdep_urls=[], output_dir=None):
         raise Exception('`generate` not implemented.')
 
+    def is_same_version(self, pkgbuild_file):
+        """
+        Checks whether a currently installed PKGBUILD contains the same version.
+        """
+        if os.path.isfile(pkgbuild_file):
+            f = open(pkgbuild_file, "r")
+            content = f.read()
+            pattern_pkgver = re.compile(r"pkgver='([0-9\.]*)'")
+            match_pkgver = re.search(pattern_pkgver, content)
+            if match_pkgver:
+                return (match_pkgver.group(1) == self.version)
+            else:
+                return False
+        else:
+            return False
+
 
 class Package(PackageBase):
     # TODO: --git as a option instead direct in the template?
@@ -292,8 +307,8 @@ class Package(PackageBase):
         ros_run_dep = [dependency for dependency in raw_run_dep
                        if dependency not in exclude_dependencies]
 
-        #DEBUG
-        print(rosdep_urls)
+        #TODO: Is the outprint necessary ?
+        #print(rosdep_urls)
         other_raw_build_dep, other_raw_run_dep = self._get_non_ros_dependencies(rosdep_urls)
         other_build_dep = [dependency for dependency in other_raw_build_dep
                            if dependency not in exclude_dependencies]
@@ -427,10 +442,6 @@ class DistroDescription(object):
         self._distro = yaml.load(stream)
         self._package_cache = {}
         self.python_version = python_version
-        # TODO: Do we need this?
-        # if self.name != self._distro['release-name']:
-        #    raise Exception('ROS distro names do not match (%s != %s)' % (self.name, self._distro['release-name']))
-        # process "metapackages"
         if 'metapackages' in self._distro['repositories'].keys():
             metapackages = self._distro['repositories']['metapackages']['release']
             for meta in metapackages['packages']:
@@ -518,7 +529,7 @@ def list_packages(distro_desc, distro_dir=None):
 # From http://code.activestate.com/recipes/577058/ (r2)
 def query_yes_no(question, default="yes"):
     """
-    Ask a yes/no question via raw_input() and return their answer.
+    Ask a yes/no question via input() and return their answer.
 
     "question" is a string that is presented to the user.
     "default" is the presumed answer if the user just hits <Enter>.
@@ -630,15 +641,6 @@ def generate_pkgbuild(distro, package, directory, force=False,
     # If the directory/repo/package does not exist, create it
     output_directory = create_package_directory(directory, package)
 
-    # If PKGBUILD already exists
-    if os.path.exists(os.path.join(output_directory, 'PKGBUILD')):
-        if no_overwrite:
-            return
-        elif not force and query_yes_no(
-                "Directory '%s' already contains a PKGBUILD file. Overwrite?" % (
-                        output_directory)) == "no":
-            return
-
     pkgbuild_file = os.path.join(output_directory, 'PKGBUILD')
 
     # If we are merely updating packages
@@ -649,6 +651,15 @@ def generate_pkgbuild(distro, package, directory, force=False,
                      colored(package.version, 'white',
                              attrs=['bold'])))
         return
+
+    # If PKGBUILD already exists
+    if os.path.exists(os.path.join(output_directory, 'PKGBUILD')):
+        if no_overwrite:
+            return
+        elif not force and query_yes_no(
+                "Directory '%s' already contains a PKGBUILD file. Overwrite?" % (
+                        output_directory)) == "no":
+            return
 
     print('Generating PKGBUILD for package %s (%s)'
           % (colored(package.name, 'green', attrs=['bold']),
@@ -712,6 +723,7 @@ def main():
                              "melodic": ["2.7", "3.7"]}
 
     # Default Python version that will be used
+    # Even though the official python version for melodic is stil 2.7, the official one for Arch is 3.
     default_python_version = {"kinetic": "2.7",
                               "melodic": "3.7"}
 
