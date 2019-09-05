@@ -76,5 +76,5 @@ package_msbuild-sdkresolver-git() {
 
     mkdir -p "${pkgdir}/usr/lib/mono/msbuild/Current/bin/SdkResolvers/"
     cp -dr --no-preserve=ownership "${srcdir}/target/usr/lib/mono/msbuild/Current/bin/SdkResolvers/Microsoft.DotNet.MSBuildSdkResolver" "${pkgdir}/usr/lib/mono/msbuild/Current/bin/SdkResolvers/"
-    #cp -dr --no-preserve=ownership $(pacman -Ql dotnet-host | grep -F libhostfxr.so | cut -d' ' -f2) "${pkgdir}/usr/lib/mono/msbuild/Current/bin/SdkResolvers/Microsoft.DotNet.MSBuildSdkResolver/"
+    cp -dr --no-preserve=ownership $(pacman -Ql dotnet-host | grep -F libhostfxr.so | cut -d' ' -f2) "${pkgdir}/usr/lib/mono/msbuild/Current/bin/SdkResolvers/Microsoft.DotNet.MSBuildSdkResolver/"
 }
