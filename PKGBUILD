@@ -5,7 +5,7 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # Thanks to asm0dey for making this easier
 pkgname=3proxy-git
 pkgver=r520.22cf925
-pkgrel=2
+pkgrel=3
 pkgdesc="A tiny crossplatform proxy server (git version)"
 arch=('x86_64')
 url="https://3proxy.org/"
@@ -13,6 +13,7 @@ license=('BSD')
 _pkgname=3proxy
 provides=('3proxy')
 conflicts=('3proxy')
+makedepends=('git')
 install=
 changelog=
 noextract=()
