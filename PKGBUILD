@@ -3,8 +3,8 @@
 
 pkgname=mingw-w64-libsigc++
 _pkgname=libsigc++
-pkgver=2.10.2
-pkgrel=2
+pkgver=3.0.0
+pkgrel=1
 pkgdesc="Libsigc++ implements a full callback system for use in widget libraries - V2 (mingw-w64)"
 arch=('any')
 url="https://libsigcplusplus.github.io/libsigcplusplus/"
@@ -13,7 +13,7 @@ makedepends=('mingw-w64-gcc' 'mingw-w64-configure')
 depends=('mingw-w64-crt')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("http://ftp.gnome.org/pub/GNOME/sources/$_pkgname/${pkgver%.*}/$_pkgname-${pkgver}.tar.xz")
-md5sums=('1b067bfae0b502e6a5127336cb09d2dd')
+sha256sums=('50a0855c1eb26e6044ffe888dbe061938ab4241f96d8f3754ea7ead38ab8ed06')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
