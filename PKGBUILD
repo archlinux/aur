@@ -1,7 +1,7 @@
 # Maintainer: Dmitry Barker Medvedev <dimon@bitel.ru>
 pkgname=bgbillingrunner
 pkgver=1907121757
-pkgrel=2
+pkgrel=3
 pkgdesc='Client runner for billing system BGBilling 8.0+'
 arch=('i686' 'x86_64')
 url='http://bgbilling.ru'
@@ -11,7 +11,7 @@ install=bgbillingrunner.install
 source=(bgbillingrunner.sh bgbillingrunner.desktop bgbillingrunner.png)
 md5sums=('d4139a7f14b60ea83b3a1e4b4acfe53e'
          '2702367e788dd74bbf8f135329e6f3c2'
-         'b26bc923ad15a117c129441768117b19')
+         '272f448b1122386a06c87e0c22598113')
 replaces=(bgbillingclient72,bgbillingclient80)
 
 # vesions: major, build, version suffix for package
