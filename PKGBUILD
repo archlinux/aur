@@ -9,7 +9,7 @@ _pkgver_day=10
 
 pkgname=abcmidi
 pkgver="${_pkgver_year}${_pkgver_month}${_pkgver_day}"
-pkgrel=1
+pkgrel=2
 pkgdesc="A set of tools for converting ABC files to MIDI files and vice versa, as well as other small utilities"
 url="http://abc.sourceforge.net/abcMIDI/"
 license=('GPL')
@@ -22,14 +22,14 @@ sha256sums=('a58cd9815447a8a54fe7525f8aa083489b27d8a03b355a71352df11f1a98f008')
 
 build() {
     cd "$srcdir"/abcmidi*
-    make 'binaries=abc2midi midi2abc abc2abc mftext midicopy abcmatch'
+    make
 }
 
 package() {
     cd "$srcdir"/abcmidi*
     mkdir -p "$pkgdir"/usr/bin
 
-    make prefix="$pkgdir"/usr 'binaries=abc2midi midi2abc abc2abc mftext midicopy abcmatch' install
+    make prefix="$pkgdir"/usr install
 
     # Install programming documentation to docdir
     install -m 755 -d "$pkgdir"/usr/share/doc/$pkgname/programming
