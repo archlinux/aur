@@ -3,8 +3,8 @@
 
 _pkgbasename=libsecret
 pkgname=lib32-$_pkgbasename
-pkgver=0.18.8
-pkgrel=2
+pkgver=0.19.0
+pkgrel=1
 pkgdesc="Library for storing and retrieving passwords and other secrets (32-bit)"
 url="https://wiki.gnome.org/Projects/Libsecret"
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('LGPL')
 depends=('lib32-glib2' 'lib32-libgcrypt' "${_pkgbasename}")
 makedepends=('gcc-multilib' 'intltool' 'gobject-introspection' 'vala' 'git' 'gtk-doc' 'meson' 'valgrind')
 optdepends=('gnome-keyring: key storage service, or use any other service implementing org.freedesktop.secrets')
-_commit=b5442654d483e959ac9ecd3a3fb9eebc8d9d8399  # tags/0.18.8^0
+_commit=be541cf9d4a81b97f55794a5b1de50f92aac1fbb  # tags/0.19.0^0
 source=("git+https://git.gnome.org/browse/libsecret#commit=$_commit")
 sha256sums=('SKIP')
 
@@ -31,7 +31,6 @@ build() {
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
   export LDFLAGS+=" -m32"
 
-  CFLAGS+=" -DHAVE_MLOCK" # https://gitlab.gnome.org/GNOME/libsecret/issues/23
   arch-meson "${srcdir}/${_pkgbasename}" build -Ddocs=false --libdir=/usr/lib32
   ninja -C build
 }
