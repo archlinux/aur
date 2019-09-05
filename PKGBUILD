@@ -1,4 +1,5 @@
 # Maintainer: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
+# Co-Maintainer: Maxime "pep" Buquet <archlinux@bouah.net>
 # Contributor: Bjoern Franke <bjo at nord-west.org>
 # Contributor: Lev Lybin <lev.lybin@gmail.com>
 # Contributor: Benjamin Richter <br@waldteufel-online.net>
@@ -8,7 +9,7 @@
 
 _name=gajim
 pkgname="$_name-git"
-pkgver=1.0.0.beta1.r977.gc63e32634
+pkgver=1.0.0.beta1.r1619.g18070f598
 pkgrel=1
 pkgdesc="Jabber/XMPP instant messenger client written in Python with GTK+"
 arch=('any')
@@ -16,7 +17,7 @@ url="https://gajim.org/"
 license=('GPL3')
 depends=('python-gobject' 'python-pyopenssl' 'hicolor-icon-theme'
          'python-pyasn1' 'python-nbxmpp-git' 'python-cairo' 'python-keyring'
-         'python-distro' 'python-cssutils' 'python-precis_i18n')
+         'python-distro' 'python-css-parser' 'python-precis_i18n')
 makedepends=('git' 'python-setuptools')
 optdepends=('python-dbus: for gajim-remote and zeroconf support'
             'farstream: for video/voice support'
