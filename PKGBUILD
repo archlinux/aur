@@ -13,20 +13,20 @@ url="https://github.com/lafleurdeboum/servicewall"
 #url="https://pypi.python.org/pypi/servicewall"
 license=("GPL3")
 depends=(
-        "python"
-        "python-iptables"
-        "python-argparse"
-        "python-arpreq"
-        "python-systemd"
-        "ulogd"
-        )
+    "python"
+    "python-iptables"
+    "python-argparse"
+    "python-arpreq"
+    "python-systemd"
+    "ulogd"
+)
 optdepends=("python-argcomplete" "networkd-dispatcher" "networkmanager")
 makedepends=("python-distribute" "python-setuptools" "git")
 install=servicewall.install
 backup=(
-        "etc/servicewall/realms.json"
-        "etc/servicewall/config.json"
-        )
+    "etc/servicewall/realms.json"
+    "etc/servicewall/config.json"
+)
 
 # Sources for git repos :
 source=("${pkgname%-git}::git://localhost/#branch=master")

@@ -2,6 +2,7 @@
 post_install() {
     braise status | grep -q "enabled" || (
         echo "To enable ServiceWall, issue a\n\t# braise enable";
+        echo "You might also want to systemctl enable ulog.socket";
     )
 }
 
