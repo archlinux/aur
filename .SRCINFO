@@ -1,0 +1,13 @@
+pkgbase = bashball
+	pkgdesc = A tool for compiling bash projects in a single script
+	pkgver = 1.6.3
+	pkgrel = 1
+	url = https://github.com/blkgoose/bashball
+	arch = any
+	license = GPL
+	depends = bash
+	source = https://github.com/blkgoose/bashball/releases/download/v1.6.3/bashball
+	md5sums = 122df628791cc763c12d665920aa94e7
+
+pkgname = bashball
+
