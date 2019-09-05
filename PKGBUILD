@@ -1,13 +1,13 @@
 # Maintainer: Forest Crossman <cyrozap at gmail dot com>
 
 pkgname=globalplatformpro-git
-pkgver=0.3.10rc8.r2.g2c67f83
+pkgver=19.06.16.r4.g1f6b677
 pkgrel=1
 pkgdesc="A powerful tool for managing applets and keys on JavaCards based on the GlobalPlatform specifications"
 arch=('any')
 url="https://javacard.pro/globalplatform/"
 license=('LGPL3')
-depends=('java-environment' 'pcsclite')
+depends=('java-environment>=8' 'pcsclite')
 makedepends=('git' 'apache-ant' 'maven')
 source=(
   "$pkgname::git+https://github.com/martinpaljak/GlobalPlatformPro.git"

@@ -1,6 +1,6 @@
 pkgbase = globalplatformpro-git
 	pkgdesc = A powerful tool for managing applets and keys on JavaCards based on the GlobalPlatform specifications
-	pkgver = 0.3.10rc8.r2.g2c67f83
+	pkgver = 19.06.16.r4.g1f6b677
 	pkgrel = 1
 	url = https://javacard.pro/globalplatform/
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = globalplatformpro-git
 	makedepends = git
 	makedepends = apache-ant
 	makedepends = maven
-	depends = java-environment
+	depends = java-environment>=8
 	depends = pcsclite
 	source = globalplatformpro-git::git+https://github.com/martinpaljak/GlobalPlatformPro.git
 	source = gp-pro
