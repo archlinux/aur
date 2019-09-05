@@ -1,8 +1,8 @@
 pkgbase = gtk3-mushrooms
 	pkgdesc = GTK3 patched for classic desktops like XFCE or MATE. Please see README.
-	pkgver = 3.24.8
+	pkgver = 3.24.11
 	pkgrel = 1
-	url = https://github.com/TomaszGasior/gtk3-mushrooms
+	url = https://github.com/krumelmonster/gtk3-mushrooms
 	arch = x86_64
 	license = LGPL
 	makedepends = gobject-introspection
@@ -37,8 +37,8 @@ pkgbase = gtk3-mushrooms
 	optdepends = libcanberra: sounds events
 	optdepends = adwaita-icon-theme: default icon theme
 	optdepends = cantarell-fonts: default font
-	provides = gtk3=3.24.8
-	provides = gtk3-classic=3.24.8
+	provides = gtk3=3.24.11
+	provides = gtk3-classic=3.24.11
 	provides = gtk3-print-backends
 	conflicts = gtk3
 	conflicts = gtk3-print-backends
@@ -62,7 +62,7 @@ pkgbase = gtk3-mushrooms
 	source = popovers__file-chooser-list.patch
 	source = popovers__places-sidebar.patch
 	source = smaller-adwaita.css
-	source = https://download.gnome.org/sources/gtk+/3.24/gtk+-3.24.8.tar.xz
+	source = https://download.gnome.org/sources/gtk+/3.24/gtk+-3.24.11.tar.xz
 	source = settings.ini::https://git.archlinux.org/svntogit/packages.git/plain/trunk/settings.ini?h=packages/gtk3&id=89cd85e778e9d797f97c66749e5f1d59889b7036
 	source = gtk-query-immodules-3.0.hook::https://git.archlinux.org/svntogit/packages.git/plain/trunk/gtk-query-immodules-3.0.hook?h=packages/gtk3&id=89cd85e778e9d797f97c66749e5f1d59889b7036
 	sha256sums = 68b26360764a2ea7e057a2aaa29c6fdfe164b9987866e038d8d0188a025477fb
@@ -78,14 +78,14 @@ pkgbase = gtk3-mushrooms
 	sha256sums = 7b987cc9bd7ca9722bfb881b30b082c0d7409e3cd68592f5e7a1f401d73e7672
 	sha256sums = 99b12d7af7efc6a014e6afcab1ee82ea0feb0b5a4e9bbd663d1c45354cd34f2b
 	sha256sums = 7a604d453beb9c425b8ed4a60b5e9435c3f4ee10438490641c0ade448401306a
-	sha256sums = 37e3278dd33542b706eb9e1db56997b194a7e2f1fd729a8511369387a74b22bd
+	sha256sums = 64379ca813321b5e8b603dc1557cbc72777031ecbcc1ad9dcc042768f51ae253
 	sha256sums = acd3babd22add981690728e84a89fb8bb332b7ac746e9db7cdb27c47f1ac0042
 	sha256sums = c213812e1fafeb5565f7e329c4501195f04adcfe377b88439a6d51d478edc071
 	sha256sums = 7f3e5da1622e243243ea9b1e487460f608dc375e79d800d2f0d826fd30be68ed
 	sha256sums = ef4fed3a364db8eb9c15c9ce0e733035722f168dc88b385df2178fc1168ada54
 	sha256sums = 2de68b575494d0d034accd7cd0ce881f366d5201a48496d8748c43f297836eac
 	sha256sums = ba93f62e249f2713dbfe6c82de1be4ac655264d6407ed3dc5e05323027520f31
-	sha256sums = 666962de9b9768fe9ca785b0e2f42c8b9db3868a12fa9b356b167238d70ac799
+	sha256sums = dba7658d0a2e1bfad8260f5210ca02988f233d1d86edacb95eceed7eca982895
 	sha256sums = 01fc1d81dc82c4a052ac6e25bf9a04e7647267cc3017bc91f9ce3e63e5eb9202
 	sha256sums = de46e5514ff39a7a65e01e485e874775ab1c0ad20b8e94ada43f4a6af1370845
 
