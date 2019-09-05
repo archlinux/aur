@@ -1,16 +1,16 @@
-# Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
+# Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=monkeyjump
 pkgver=0.5
-pkgrel=2
+pkgrel=3
 pkgdesc='Minimalistic GUI for playing Go with GnuGo and other GTP applications'
-arch=('any')
+arch=(any)
 url='https://github.com/xyproto/monkeyjump'
-license=('GPL2')
-depends=('python2-pygame' 'gnugo')
-makedepends=('setconf' 'python2-setuptools')
-backup=('etc/monkeyjump/gnugocmd.conf' 'etc/monkeyjump/theme.conf' 'etc/monkeyjump/keybindings.conf')
-source=('git+https://github.com/xyproto/monkeyjump.git#commit=a6fcea4e0f03c09a47b0117567893d0fe882b2a8')
+license=(GPL2)
+depends=(python2-pygame gnugo)
+makedepends=(gendesk python2-setuptools setconf)
+backup=(etc/monkeyjump/gnugocmd.conf etc/monkeyjump/theme.conf etc/monkeyjump/keybindings.conf)
+source=("git+$url#commit=a6fcea4e0f03c09a47b0117567893d0fe882b2a8")
 md5sums=('SKIP')
 
 prepare() {
@@ -22,7 +22,6 @@ prepare() {
     --exec="/usr/bin/monkeyjump 19" \
     --categories="Game;BoardGame;" \
     --terminal=true
-
   setconf monkeyjump CONFDIR=\"/etc/monkeyjump\"
   setconf monkeyjump THEMEDIR=\"/usr/share/monkeyjump/themes\"
 }
