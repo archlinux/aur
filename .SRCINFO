@@ -1,6 +1,6 @@
 pkgbase = lib32-libglvnd-git
 	pkgdesc = The GL Vendor-Neutral Dispatch library
-	pkgver = 1.0.0.r0.g005fd3a
+	pkgver = 1.1.1.r10.g396433b
 	pkgrel = 1
 	url = https://github.com/NVIDIA/libglvnd
 	arch = x86_64
@@ -13,14 +13,14 @@ pkgbase = lib32-libglvnd-git
 	provides = lib32-libgl
 	provides = lib32-libegl
 	provides = lib32-libgles
-	provides = lib32-libglvnd=1.0.0.r0.g005fd3a
+	provides = lib32-libglvnd=1.1.1.r10.g396433b
 	conflicts = lib32-libglvnd
 	source = git+https://github.com/NVIDIA/libglvnd.git
 	sha512sums = SKIP
 
 pkgname = lib32-libglvnd-git
 	depends = lib32-libxext
-	depends = libglvnd-git
+	depends = libglvnd
 	depends = lib32-mesa
 	depends = lib32-opengl-driver
 
