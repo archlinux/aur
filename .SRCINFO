@@ -1,0 +1,15 @@
+pkgbase = ruby-kramdown-parser-gfm
+	pkgdesc = A parser for kramdown that converts Markdown documents in the GFM dialect to HTML.
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/kramdown/parser-gfm
+	arch = any
+	license = MIT
+	makedepends = ruby-rdoc
+	depends = ruby-kramdown
+	noextract = kramdown-parser-gfm-1.1.0.gem
+	source = https://rubygems.org/downloads/kramdown-parser-gfm-1.1.0.gem
+	sha256sums = fb39745516427d2988543bf01fc4cf0ab1149476382393e0e9c48592f6581729
+
+pkgname = ruby-kramdown-parser-gfm
+
