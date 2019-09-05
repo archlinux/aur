@@ -68,8 +68,8 @@ _gcc_patch="enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v4.13+.patc
 
 source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
-        "${_gcc_path}/${_gcc_patch}"
         "${_lucjanpath}/${_aufs_path}/${_aufs_patch}"
+        "${_gcc_path}/${_gcc_patch}"
         "${_lucjanpath}/arch-patches-v2/0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch"
         "${_lucjanpath}/arch-patches-v2/0002-ZEN-Add-CONFIG-for-unprivileged_userns_clone.patch"
          # the main kernel config files
@@ -378,8 +378,8 @@ done
 
 sha512sums=('6116f7b71711a01e741bf1f9b3e20e9d46b3b2d6c1dfadad79742d42a2142e13dfec0c569b21d0cbcf030369b75bb39c27c05f08f3e9594d391d1df4ddbdbbb6'
             'SKIP'
-            '2eb574fbfac6e334d3b06e52e466dbf8e88034515729b6571990b10f75a0fe2a52f188615405c5a695b5820669e595deead44d7961a97c5872359be3435fdf63'
             '3271628997ac04b4f59f95eb165a6a85f43f8e177202d9597c91640dcb15c1274e8b245e2e18477600a2272f2c1080d86e68c09ddea844f679000a71d9be9859'
+            '2eb574fbfac6e334d3b06e52e466dbf8e88034515729b6571990b10f75a0fe2a52f188615405c5a695b5820669e595deead44d7961a97c5872359be3435fdf63'
             '1cd40df805987a50723da456e5874e6ca1070e5efbf23b3267e833bb73465573eb82d5c8f74c54e9fb894cdbe5137a822381152716d7dedd64a07ac1601b0f37'
             'd75d9fc44b31e6adafe4cae641bc513c1594c7a314087fede6a7ff1f3c98c67117d84a1f7fe70f39856af9d66d9f79298791598505283ac53453cb4e763fa69c'
             'f7616fdd9d98ee6cebfd23d58ab6c2b641640830d26ed264ed49fbab542524291865244830c40a13c8f674bab9a321c62325e9b4982fb81a6073969a896b39df'
