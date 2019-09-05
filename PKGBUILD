@@ -1,7 +1,7 @@
 # Maintainer: Dmitry Barker Medvedev <dimon@bitel.ru>
 pkgname=bgbillingrunner
 pkgver=1907121757
-pkgrel=1
+pkgrel=2
 pkgdesc='Client runner for billing system BGBilling 8.0+'
 arch=('i686' 'x86_64')
 url='http://bgbilling.ru'
