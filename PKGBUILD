@@ -1,18 +1,19 @@
 # Maintainer : Immae <ismael.bouya@normalesup.org>
 
 pkgname=editline
-pkgver=1.15.3
+pkgver=1.16.1
 pkgrel=1
 pkgdesc="A readline() replacement for UNIX without termcap (ncurses)"
 arch=('x86_64')
 url="http://troglobit.com/editline.html"
 license=('BSD')
-source=("ftp://ftp.troglobit.com/editline/${pkgname}-${pkgver}.tar.xz")
-sha512sums=('7566ba1616ec729fe6f60571b3ca3eef83fc9f12f530e8351976d16627ecc7fce81b7d620218ffa8a853d95fbbb397477e59dbc2dd113505ce27f790df2a7a38')
+source=("https://github.com/troglobit/${pkgname}/archive/${pkgver}.tar.gz")
+sha512sums=('32c8362cd553ff616ecbb259705d6ed13a48f5bae0616c9770d9c254e07723bbd957de8ad0643d0652ec73e8e99e8c45e7f060461ba316b0eb30d911d772b029')
 
 
 build () {
   cd "$pkgname-$pkgver"
+  ./autogen.sh
   ./configure --prefix=/usr \
               --sysconfdir=/etc \
               --enable-gc
