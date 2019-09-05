@@ -1,6 +1,6 @@
 pkgbase = mudlet-git
 	pkgdesc = A modern MUD client with a graphical interface and Lua scripting (upstream dev branch)
-	pkgver = 3.22.1.r153.gadb14133
+	pkgver = 3.22.1.r158.g3c8f12b6
 	pkgrel = 1
 	url = https://github.com/Mudlet/Mudlet
 	arch = i686
@@ -27,7 +27,15 @@ pkgbase = mudlet-git
 	conflicts = mudlet
 	conflicts = mudlet-dev
 	conflicts = mudlet-deb
-	source = mudlet-git::git+https://github.com/Mudlet/Mudlet.git#branch=development
+	source = git+https://github.com/Mudlet/Mudlet.git#branch=development
+	source = git+https://github.com/Mudlet/edbee-lib.git
+	source = git+https://github.com/martin-eden/lua_code_formatter.git
+	source = git+https://bitbucket.org/pentacent/dblsqd-sdk-qt.git
+	source = git+https://github.com/Mudlet/mixing-cocoa-and-qt.git
+	sha1sums = SKIP
+	sha1sums = SKIP
+	sha1sums = SKIP
+	sha1sums = SKIP
 	sha1sums = SKIP
 
 pkgname = mudlet-git
