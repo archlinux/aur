@@ -15,10 +15,10 @@ optdepends=('libpulse: Pulseaudio support'
             'xdg-utils: Open files')
 source=("https://dl-ptb.discordapp.net/apps/linux/$pkgver/$pkgname-$pkgver.tar.gz"
         'LICENSE'
-        'OSS-LICENSES.html::https://discordapp.com/licenses')
+        'OSS-LICENSES::https://discordapp.com/licenses')
 sha512sums=('654f2b600ebce5058dd74d5676a6d40e70a9eecf8351a61601206ccbcd88631fd25b42f0db532b5195285bb8e227d746d433d132b09fae4f77f5dfabc154f8c8'
             '2478ed8c0c3f086cfa9e6f8a7f8264a3a0f20364b940f888efe7a695f54f103523547e9b95db046776d7d9c820447436fbf65e557daf583947a6bbef5620971d'
-            '17ae8d140d1ec219b3328ef5d80cd53672ba31b5cc48194798379055eb9224f43c33dac806ce5648ac3ce7cdd2b691e0fcb0bb429601eb78c004f89e6b36f3bc')
+            'SKIP')
 
 prepare() {
   cd $_pkgname
@@ -50,6 +50,9 @@ package() {
 
   # Licenses
   install -Dm 644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
-  install -Dm 644 OSS-LICENSES.html "$pkgdir"/usr/share/licenses/$pkgname/OSS-LICENSES.html
+  install -Dm 644 OSS-LICENSES "$pkgdir"/usr/share/licenses/$pkgname/OSS-LICENSES
+
+  # Cut HTML from licenses file (remove lines 1-34 and everything from '">' to EOF)
+  sed -i '1,34d;/^">/,$d' "$pkgdir"/usr/share/licenses/$pkgname/OSS-LICENSES
 }
 
