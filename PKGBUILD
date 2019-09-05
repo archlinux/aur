@@ -9,15 +9,15 @@
 
 _name=gajimbo
 pkgname="$_name-git"
-pkgver=v1.1.92.0.ga6db997db
+pkgver=1.1.92.1.g5f0508c31
 pkgrel=1
 pkgdesc="A fork of Gajim with various enhancements, written in Python with GTK+"
 arch=('any')
-url="https://gitlab.com/ao/gajimbo"
+url="https://gitlab.com/a/gajimbo"
 license=('GPL3')
 depends=('python-gobject' 'python-pyopenssl' 'hicolor-icon-theme'
          'python-pyasn1' 'python-nbxmpp-git' 'python-cairo' 'python-keyring'
-         'python-distro' 'python-precis_i18n')
+         'python-distro' 'python-precis_i18n' 'python-css-parser')
 makedepends=('git' 'python-setuptools')
 optdepends=('python-dbus: for gajim-remote and zeroconf support'
             'farstream: for video/voice support'
@@ -26,6 +26,7 @@ optdepends=('python-dbus: for gajim-remote and zeroconf support'
             'gst-plugins-ugly: for video/voice support'
             'gst-libav: for video/voice support'
             'gst-python: for video/voice support'
+            'python-qrcode: support for QR code generation for OMEMO signature'
             'gspell: for spell checking support'
             'libxss: for idle time checking on X11'
             'notification-daemon: for desktop notifications'
@@ -37,7 +38,7 @@ optdepends=('python-dbus: for gajim-remote and zeroconf support'
             'geoclue2: for sharing your location')
 provides=('gajim')
 conflicts=('gajim' 'gajim-hg' 'gajim-svn' 'gajim-git')
-source=("$_name::git+https://gitlab.com/ao/gajimbo")
+source=("$_name::git+https://gitlab.com/a/gajimbo")
 md5sums=('SKIP')
 
 pkgver() {
