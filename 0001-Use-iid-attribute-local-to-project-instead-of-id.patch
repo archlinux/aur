@@ -1,0 +1,40 @@
+From af6dea06d5d67e28d38b762be451cb9f638b26b9 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Maxime=20=E2=80=9Cpep=E2=80=9D=20Buquet?= <pep@bouah.net>
+Date: Sat, 1 Jun 2019 20:06:38 +0200
+Subject: [PATCH 1/2] Use iid attribute (local to project) instead of id
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Thanks eijebong
+
+Signed-off-by: Maxime “pep” Buquet <pep@bouah.net>
+---
+ src/main.rs | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/main.rs b/src/main.rs
+index 3f21e27..ae09722 100644
+--- a/src/main.rs
++++ b/src/main.rs
+@@ -52,7 +52,7 @@ fn format_webhook(wh: &WebHook) -> Option<String> {
+             format!("{} {} issue {} in {}: {}",
+                     issue.user.name,
+                     action,
+-                    issue.object_attributes.id,
++                    issue.object_attributes.iid,
+                     issue.project.name,
+                     issue.object_attributes.title,
+             )
+@@ -75,7 +75,7 @@ fn format_webhook(wh: &WebHook) -> Option<String> {
+             format!("{} {} merge request {} in {}: {}",
+                     merge_req.user.name,
+                     action,
+-                    merge_req.object_attributes.id,
++                    merge_req.object_attributes.iid,
+                     merge_req.project.name,
+                     merge_req.object_attributes.title,
+             )
+-- 
+2.23.0
+

@@ -1,0 +1,43 @@
+From 8a9e34a38f47b264efd69a7f69664d042d4bfd77 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Maxime=20=E2=80=9Cpep=E2=80=9D=20Buquet?= <pep@bouah.net>
+Date: Thu, 5 Sep 2019 12:28:46 +0200
+Subject: [PATCH 2/2] Trait objects without explicit `dyn` are deprecated
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Maxime “pep” Buquet <pep@bouah.net>
+---
+ src/webserver.rs | 2 +-
+ src/xmpp.rs      | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/webserver.rs b/src/webserver.rs
+index 1d3a649..86c6db3 100644
+--- a/src/webserver.rs
++++ b/src/webserver.rs
+@@ -59,7 +59,7 @@ fn error_res<E: std::fmt::Debug, X>(e: E) -> Result<Response<Body>, X> {
+     Ok(res)
+ }
+ 
+-pub fn start(addr: SocketAddr, header_checks: Vec<HeaderCheck>, value_tx: UnboundedSender<WebHook>) -> Box<Future<Item = (), Error = ()> + Send> {
++pub fn start(addr: SocketAddr, header_checks: Vec<HeaderCheck>, value_tx: UnboundedSender<WebHook>) -> Box<dyn Future<Item = (), Error = ()> + Send> {
+     let value_tx = Arc::new(Mutex::new(value_tx));
+     let header_checks = Arc::new(header_checks);
+     let service = move || {
+diff --git a/src/xmpp.rs b/src/xmpp.rs
+index 54a6097..0eafdce 100644
+--- a/src/xmpp.rs
++++ b/src/xmpp.rs
+@@ -12,7 +12,7 @@ pub struct Agent {
+ }
+ 
+ impl Agent {
+-    pub fn new(jid: &str, password: &str, muc_jid: &str) -> (Box<Future<Item = (), Error = ()>>, Self) {
++    pub fn new(jid: &str, password: &str, muc_jid: &str) -> (Box<dyn Future<Item = (), Error = ()>>, Self) {
+         let muc_jid = Jid::from_str(muc_jid).unwrap();
+         let (sender_tx, sender_rx) = mpsc::unbounded();
+ 
+-- 
+2.23.0
+

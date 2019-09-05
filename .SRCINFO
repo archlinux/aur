@@ -1,0 +1,26 @@
+pkgbase = webhook2muc-git
+	pkgdesc = Webhook to MUC bot
+	pkgver = r25.d651a59
+	pkgrel = 1
+	url = https://gitlab.com/xmpp-rs/tokio-webhook2muc
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = rust
+	depends = openssl
+	provides = webhook2muc
+	conflicts = webhook2muc
+	backup = etc/webhook2muc/webhook2muc.env
+	source = webhook2muc::git+https://gitlab.com/xmpp-rs/tokio-webhook2muc
+	source = webhook2muc.env
+	source = webhook2muc.service
+	source = 0001-Use-iid-attribute-local-to-project-instead-of-id.patch
+	source = 0002-Trait-objects-without-explicit-dyn-are-deprecated.patch
+	sha256sums = SKIP
+	sha256sums = 3a3878cf71075383074bb9cea0613fc590f98285652db3d39c8fd97c1d79e0e7
+	sha256sums = b59d5a04f55268ae489a7858d6acafa2eececcf53f7b1070ac2126d52fe8b1b9
+	sha256sums = 3d317c793655155b45132c648dc8f8dbf039772f3b937a6bbe7ea7639bd3be06
+	sha256sums = 52fca5223a207ccf1de360dcfcced62c557cd8800dc407895e5a222b1d22bf4a
+
+pkgname = webhook2muc-git
+
