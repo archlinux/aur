@@ -1,0 +1,21 @@
+pkgbase = gnome-social-git
+	pkgdesc = A Mastodon and Pleroma application for GNOME
+	pkgver = 0.1.0.r206.1cbaccd
+	pkgrel = 1
+	url = https://gitlab.gnome.org/World/social
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = rust
+	makedepends = cmake
+	depends = appstream-glib
+	depends = libhandy
+	depends = gtksourceview4
+	provides = gnome-social
+	conflicts = gnome-social
+	source = git+https://gitlab.gnome.org/World/social.git
+	md5sums = SKIP
+
+pkgname = gnome-social-git
+
