@@ -1,36 +1,34 @@
-# Maintainer: Louis Tim Larsen <louis(a)louis.dk>
-# djdsfk
+# Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+# Contributor: Ionut Biru <ibiru@archlinux.org>
+# Contributor: Alexander Baldeck <alexander@archlinux.org>
+# Contributor: Dale Blount <dale@archlinux.org>
+# Contributor: Anders Bostrom <anders.bostrom@home.se>
+# Additional patching: Nikita Tarasov <nikatar@disroot.org>
 
 pkgname=thunderbird-appmenu-bin
 pkgver=60.8.0
-_build=build1.1-0ubuntu3
-pkgrel=1
-pkgdesc="Thunderbird with appmenu patch from Ubuntu"
+_pkgrel=2
+pkgrel=${_pkgrel}
+pkgdesc="Thunderbird from extra with appmenu patch"
 arch=('x86_64')
-url="https://packages.ubuntu.com/source/disco/thunderbird"
 license=('MPL' 'GPL' 'LGPL')
-depends=('atk>=1.12.4' 'cairo>=1.10.0' 'dbus>=1.9.14' 'dbus-glib>=0.78' 'desktop-file-utils' 'fontconfig>=2.12.6' 'freetype2>=2.2.1' 'gcc8-libs>=6' 'gdk-pixbuf2>=2.22.0' 'glib2>=2.31.8' 'gtk3>=3.4' 'hicolor-icon-theme' 'libx11' 'libxcb' 'libxcomposite>=0.3' 'libxdamage>=1.1' 'libxext' 'libxfixes' 'libxrender' 'libxt' 'startup-notification>=0.8')
-optdepends=('hunspell'
-            'libcanberra'
-            'libdbusmenu-glib'
-            'libdbusmenu-gtk3'
-            'lyx')
+url="https://aur.archlinux.org/packages/thunderbird-appmenu/"
+depends=(gtk3 mozilla-common libxt startup-notification mime-types dbus-glib alsa-lib
+         nss hunspell sqlite ttf-font icu)
+makedepends=(unzip zip diffutils python2 yasm mesa imake libpulse inetutils xorg-server-xvfb
+             autoconf2.13 rust clang llvm gtk2)
+optdepends=('libcanberra: sound support')
 provides=("thunderbird=$pkgver")
-conflicts=('thunderbird')
-replaces=('thunderbird')
-options=('!strip' '!emptydirs')
-install=${pkgname}.install
-source=(http://security.ubuntu.com/ubuntu/pool/main/t/thunderbird/thunderbird_${pkgver}+${_build}_amd64.deb)
-sha512sums=('9c0e02783f38cba851608bbead62c0eeb710b0ca9408a4475212d356c56a424a1f454519fdc397fafa989cb48c35b7f1bf89a9f52bcf68befd2843dad6556463')
+conflicts=("thunderbird")
+options=(!emptydirs !makeflags)
+source=(https://gitlab.com/nikatar/aur-gitlab/raw/master/thunderbird-appmenu-bin/thunderbird-appmenu-${pkgver}-${_pkgrel}-x86_64.pkg.tar.xz{,.sig})
+noextract=(thunderbird-appmenu-${pkgver}-${_pkgrel}-x86_64.pkg.tar.xz)
+validpgpkeys=(85F86E317555BECC1C2184BF2C45BA09ABC5D7DA)
+sha256sums=(
+	'0017b8b336832010e89814cce0d7b74bc6b4c4e6b46aeda4ef69e1e997c1ee3f'
+	'SKIP'
+)
 
-package(){
-
-	# Extract package data
-	tar xf data.tar.xz -C "${pkgdir}"
-
-	# Change extensions folder location to comply with upstream Thunderbird
-	rm "${pkgdir}"/usr/lib/thunderbird/extensions
-	mv "${pkgdir}"/usr/lib/thunderbird-addons/extensions "${pkgdir}"/usr/lib/thunderbird/extensions
-	rm -r "${pkgdir}"/usr/lib/thunderbird-addons
-
+package() {
+	tar -xf $srcdir/thunderbird-appmenu-${pkgver}-${_pkgrel}-x86_64.pkg.tar.xz -C $pkgdir --exclude=".*"
 }

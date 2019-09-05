@@ -1,46 +1,50 @@
 pkgbase = thunderbird-appmenu-bin
-	pkgdesc = Thunderbird with appmenu patch from Ubuntu
+	pkgdesc = Thunderbird from extra with appmenu patch
 	pkgver = 60.8.0
-	pkgrel = 1
-	url = https://packages.ubuntu.com/source/disco/thunderbird
-	install = thunderbird-appmenu-bin.install
+	pkgrel = 2
+	url = https://aur.archlinux.org/packages/thunderbird-appmenu/
 	arch = x86_64
 	license = MPL
 	license = GPL
 	license = LGPL
-	depends = atk>=1.12.4
-	depends = cairo>=1.10.0
-	depends = dbus>=1.9.14
-	depends = dbus-glib>=0.78
-	depends = desktop-file-utils
-	depends = fontconfig>=2.12.6
-	depends = freetype2>=2.2.1
-	depends = gcc8-libs>=6
-	depends = gdk-pixbuf2>=2.22.0
-	depends = glib2>=2.31.8
-	depends = gtk3>=3.4
-	depends = hicolor-icon-theme
-	depends = libx11
-	depends = libxcb
-	depends = libxcomposite>=0.3
-	depends = libxdamage>=1.1
-	depends = libxext
-	depends = libxfixes
-	depends = libxrender
+	makedepends = unzip
+	makedepends = zip
+	makedepends = diffutils
+	makedepends = python2
+	makedepends = yasm
+	makedepends = mesa
+	makedepends = imake
+	makedepends = libpulse
+	makedepends = inetutils
+	makedepends = xorg-server-xvfb
+	makedepends = autoconf2.13
+	makedepends = rust
+	makedepends = clang
+	makedepends = llvm
+	makedepends = gtk2
+	depends = gtk3
+	depends = mozilla-common
 	depends = libxt
-	depends = startup-notification>=0.8
-	optdepends = hunspell
-	optdepends = libcanberra
-	optdepends = libdbusmenu-glib
-	optdepends = libdbusmenu-gtk3
-	optdepends = lyx
+	depends = startup-notification
+	depends = mime-types
+	depends = dbus-glib
+	depends = alsa-lib
+	depends = nss
+	depends = hunspell
+	depends = sqlite
+	depends = ttf-font
+	depends = icu
+	optdepends = libcanberra: sound support
 	provides = thunderbird=60.8.0
 	conflicts = thunderbird
-	replaces = thunderbird
-	options = !strip
+	noextract = thunderbird-appmenu-60.8.0-2-x86_64.pkg.tar.xz
 	options = !emptydirs
-	source = http://security.ubuntu.com/ubuntu/pool/main/t/thunderbird/thunderbird_60.8.0+build1.1-0ubuntu3_amd64.deb
-	sha512sums = 9c0e02783f38cba851608bbead62c0eeb710b0ca9408a4475212d356c56a424a1f454519fdc397fafa989cb48c35b7f1bf89a9f52bcf68befd2843dad6556463
+	options = !makeflags
+	source = https://gitlab.com/nikatar/aur-gitlab/raw/master/thunderbird-appmenu-bin/thunderbird-appmenu-60.8.0-2-x86_64.pkg.tar.xz
+	source = https://gitlab.com/nikatar/aur-gitlab/raw/master/thunderbird-appmenu-bin/thunderbird-appmenu-60.8.0-2-x86_64.pkg.tar.xz.sig
+	validpgpkeys = 85F86E317555BECC1C2184BF2C45BA09ABC5D7DA
+	sha256sums = 0017b8b336832010e89814cce0d7b74bc6b4c4e6b46aeda4ef69e1e997c1ee3f
+	sha256sums = SKIP
 
 pkgname = thunderbird-appmenu-bin
 
