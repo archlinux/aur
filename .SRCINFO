@@ -1,14 +1,14 @@
 pkgbase = soulseekqt
 	pkgdesc = A desktop client for the Soulseek peer-to-peer file sharing network
 	pkgver = 20180130
-	pkgrel = 6
+	pkgrel = 7
 	url = http://www.soulseekqt.net/news/
 	arch = x86_64
 	license = CUSTOM
 	makedepends = gcc
 	depends = freetype2
 	options = !strip
-	source = https://www.dropbox.com/s/0vi87eef3ooh7iy/SoulseekQt-2018-1-30-64bit.tgz
+	source = https://www.slsknet.org/SoulseekQt/Linux/SoulseekQt-2018-1-30-64bit-appimage.tgz
 	source = selinux-mock.c
 	source = soulseekqt.sh
 	source = soulseekqt.desktop
