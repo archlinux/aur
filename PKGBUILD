@@ -28,7 +28,7 @@ package() {
   sed -i s%/usr/share%/opt% ${pkgdir}/usr/share/applications/GooglePlayMusic.desktop
 
   #Enabling User Namespace sandboxing
-  sysctl kernel.unprivileged_userns_clone=1
+  sudo sysctl kernel.unprivileged_userns_clone=1
 
   #create & symlink folder in .config
   mkdir -p /home/$USER/.config/App-Manager
