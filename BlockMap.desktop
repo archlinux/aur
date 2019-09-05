@@ -1,0 +1,13 @@
+[Desktop Entry]
+Name=BlockMap
+GenericName=Minecraft map viewer/renderer
+Comment=View Minecraft worlds in a top-down perspective
+Type=Application
+Terminal=false
+Version=1.0
+Exec=/usr/bin/blockmap-gui
+Icon=blockmap
+StartupWMClass=BlockMap
+Encoding=UTF-8
+Categories=Game;
+Keywords=Minecraft;
