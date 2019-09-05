@@ -1,6 +1,6 @@
 # Maintainer: Nikola Hadžić <nikola@firemail.cc>
 pkgname="pbk"
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 epoch=
 pkgdesc="Backup and retrieve your files efficiently"
@@ -19,7 +19,7 @@ backup=()
 options=()
 source=("https://gitlab.com/oktopod11/$pkgname/raw/master/archive/$pkgname-$pkgver.tar.gz")
 noextract=()
-sha256sums=("752dc56799c8143fa2b6a3ee8aaea487b28076e88dfe17c4c7d8d1b700610cda")
+sha256sums=("eddc69fe74c8b1231ad3bbe2a48a63c290337eb61e573aa6706da73d4f987068")
 
 package() {
 	mkdir -vp "$pkgdir/usr/bin/"
