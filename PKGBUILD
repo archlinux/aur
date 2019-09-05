@@ -5,7 +5,7 @@
 
 _target=lm32-elf
 pkgname=${_target}-binutils
-_pkgver=2.30
+_pkgver=2.32
 pkgver=${_pkgver}
 pkgrel=1
 pkgdesc="GNU binary utilities for the ${_target} target."
@@ -15,8 +15,8 @@ url='https://www.gnu.org/software/binutils/'
 license=('GPL')
 depends=('zlib' 'flex')
 source=("https://ftp.gnu.org/gnu/binutils/binutils-${pkgver}.tar.bz2"{,.sig})
-sha256sums=('efeade848067e9a03f1918b1da0d37aaffa0b0127a06b5e9236229851d9d0c09'
-            '2fddd2a1d8c42ff9ed86bbac673dc8bf65fb305d452bb8f7fee69275a9ad278d')
+sha256sums=('de38b15c902eb2725eac6af21183a5f34ea4634cb0bcef19612b50e5ed31072d'
+            'SKIP')
 validpgpkeys=('3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F') # Nick Clifton (Chief Binutils Maintainer)
 
 prepare() {
