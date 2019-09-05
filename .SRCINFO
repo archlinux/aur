@@ -1,6 +1,6 @@
 pkgbase = xde-session
 	pkgdesc = X Desktop Environment Display and Session Management
-	pkgver = 1.9
+	pkgver = 1.10
 	pkgrel = 1
 	url = https://github.com/bbidulock/xde-session
 	arch = i686
@@ -20,8 +20,8 @@ pkgbase = xde-session
 	depends = libcanberra
 	depends = numlockx
 	optdepends = xorg-xdm-xlogin-git: to use xde-xlogin and xde-xchooser
-	source = https://github.com/bbidulock/xde-session/releases/download/1.9/xde-session-1.9.tar.xz
-	md5sums = e9d7ec1aff044c0d9c3b92a7cbb879a4
+	source = https://github.com/bbidulock/xde-session/releases/download/1.10/xde-session-1.10.tar.lz
+	sha256sums = bbaa094f5bb9462082f3157985aacf802d8e74984678c493558a24e979906b44
 
 pkgname = xde-session
 
