@@ -5,7 +5,7 @@
 
 _target="lm32-elf"
 pkgname=${_target}-gcc
-pkgver=6.1.0
+pkgver=9.2.0
 pkgrel=1
 pkgdesc="The GNU Compiler Collection for the ${_target} target."
 arch=('i686' 'x86_64')
@@ -13,10 +13,9 @@ license=('GPL' 'LGPL')
 url="https://gcc.gnu.org"
 depends=("${_target}-binutils" 'libmpc' 'elfutils')
 options=('staticlibs' '!buildflags' '!libtool' '!emptydirs' 'zipman' 'docs' '!strip')
-source=("https://ftp.gnu.org/pub/gnu/gcc/gcc-${pkgver}/gcc-${pkgver}.tar.bz2"
-        "https://ftp.gnu.org/pub/gnu/gcc/gcc-${pkgver}/gcc-${pkgver}.tar.bz2.sig")
-sha256sums=('09c4c85cabebb971b1de732a0219609f93fc0af5f86f6e437fd8d7f832f1a351'
-            'ff685a09b503ec4062f7559c8d9bd401084301d99a0065e69cf70feed1a4ce00')
+source=("https://ftp.gnu.org/pub/gnu/gcc/gcc-${pkgver}/gcc-${pkgver}.tar.xz"{,.sig})
+sha256sums=('ea6ef08f121239da5695f76c9b33637a118dcf63e24164422231917fa61fb206'
+            'SKIP')
 validpgpkeys=('33C235A34C46AA3FFB293709A328C3A2C3C45C06') # Jakub Jelinek
 
 prepare() {
