@@ -16,6 +16,7 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare () {
   cd "$srcdir/Ipopt-$pkgver"
+  pushd ThirdParty/ASL && ./get.ASL && popd
   pushd ThirdParty/Metis && ./get.Metis && popd
   pushd ThirdParty/Mumps && ./get.Mumps && popd
 }
