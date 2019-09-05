@@ -1,8 +1,8 @@
 pkgbase = nautilus-bluetooth-git
 	pkgdesc = A simple Nautilus extension that adds a "Send via Bluetooth" entry to Nautilus' right-click menu
-	pkgver = r5.53ac46c
+	pkgver = r6.e434063
 	pkgrel = 1
-	url = https://github.com/madmurphy/nautilus-bluetooth
+	url = https://gitlab.gnome.org/madmurphy/nautilus-bluetooth
 	arch = any
 	license = GPL
 	makedepends = pkgconf
@@ -13,7 +13,7 @@ pkgbase = nautilus-bluetooth-git
 	provides = nautilus-bluetooth
 	conflicts = nautilus-bluetooth
 	conflicts = nautilus-bluetooth-bin
-	source = git+https://github.com/madmurphy/nautilus-bluetooth.git
+	source = git+https://gitlab.gnome.org/madmurphy/nautilus-bluetooth.git
 	sha256sums = SKIP
 
 pkgname = nautilus-bluetooth-git
