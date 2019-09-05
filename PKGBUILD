@@ -1,13 +1,13 @@
 # Maintainer: Jonas Witschel <diabonas at gmx dot de>
 # Contributor: hexchain <i at hexchain.org>
 pkgname=tpm2-abrmd-git
-pkgver=2.1.1.r10.46c9bbf
+pkgver=2.2.0.r4.dd42371
 pkgrel=1
 pkgdesc='Trusted Platform Module 2.0 Access Broker and Resource Management Daemon'
 arch=('x86_64')
 url='https://github.com/tpm2-software/tpm2-abrmd'
 license=('BSD')
-depends=('dbus' 'glib2' 'tpm2-tss')
+depends=('dbus' 'glib2' 'tpm2-tss-git')
 makedepends=('git' 'autoconf-archive' 'python')
 checkdepends=('cmocka' # for unit test suite
               'ibm-sw-tpm2' 'net-tools') # for integration test suite
