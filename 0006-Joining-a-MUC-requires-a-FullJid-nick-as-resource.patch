@@ -1,0 +1,49 @@
+From 877b9c347ced027f216b453f17978ee44f4bc2d4 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Maxime=20=E2=80=9Cpep=E2=80=9D=20Buquet?= <pep@bouah.net>
+Date: Fri, 6 Sep 2019 00:01:19 +0200
+Subject: [PATCH 6/6] Joining a MUC requires a FullJid (nick as resource)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Maxime “pep” Buquet <pep@bouah.net>
+---
+ src/xmpp.rs | 10 ++++++----
+ 1 file changed, 6 insertions(+), 4 deletions(-)
+
+diff --git a/src/xmpp.rs b/src/xmpp.rs
+index b636074..e8eb4df 100644
+--- a/src/xmpp.rs
++++ b/src/xmpp.rs
+@@ -23,12 +23,12 @@ impl Agent {
+         let reader = {
+             let sender_tx = sender_tx.clone();
+             let muc_jid = muc_jid.clone();
+-            let jid = jid.to_owned();
++            let jid = BareJid::from_str(jid).unwrap();
+             stream.for_each(move |event| {
+                 match event {
+                     Event::Online => {
+                         info!("XMPP client now online at {}", jid);
+-                        let packet = Packet::Stanza(make_join_presence(muc_jid.clone()));
++                        let packet = Packet::Stanza(make_join_presence(muc_jid.clone(), jid.clone()));
+                         sender_tx.unbounded_send(packet)
+                             .unwrap();
+                     }
+@@ -80,9 +80,11 @@ impl Agent {
+     }
+ }
+ 
+-fn make_join_presence(muc_jid: BareJid) -> Element {
++fn make_join_presence(muc_jid: BareJid, user_jid: BareJid) -> Element {
++    let nick: String = user_jid.node.unwrap_or(String::from("gitbot"));
++    let participant_jid: Jid = Jid::Full(muc_jid.with_resource(nick));
+     let mut presence = Presence::new(PresenceType::None)
+-        .with_to(Some(Jid::Bare(muc_jid)))
++        .with_to(Some(participant_jid))
+         .with_show(PresenceShow::Chat);
+     presence.set_status("en".to_string(), "Your friendly Webhook spammer".to_string());
+     presence.add_payload(Muc::new());
+-- 
+2.23.0
+

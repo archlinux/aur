@@ -1,7 +1,7 @@
 From 8a9e34a38f47b264efd69a7f69664d042d4bfd77 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Maxime=20=E2=80=9Cpep=E2=80=9D=20Buquet?= <pep@bouah.net>
 Date: Thu, 5 Sep 2019 12:28:46 +0200
-Subject: [PATCH 2/2] Trait objects without explicit `dyn` are deprecated
+Subject: [PATCH 2/6] Trait objects without explicit `dyn` are deprecated
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit

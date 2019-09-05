@@ -1,0 +1,38 @@
+From a57ae24b572e080df71622e3896159c80ba6c883 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Maxime=20=E2=80=9Cpep=E2=80=9D=20Buquet?= <pep@bouah.net>
+Date: Thu, 5 Sep 2019 23:59:07 +0200
+Subject: [PATCH 4/6] Use proper Presence structure when receiving stanzas
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Maxime “pep” Buquet <pep@bouah.net>
+---
+ src/xmpp.rs | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/src/xmpp.rs b/src/xmpp.rs
+index 3952e64..d6b8f66 100644
+--- a/src/xmpp.rs
++++ b/src/xmpp.rs
+@@ -1,4 +1,5 @@
+ use std::str::FromStr;
++use std::convert::TryFrom;
+ use futures::{Future, Sink, Stream, sync::mpsc};
+ use tokio_xmpp::{Client, Packet, Event};
+ use xmpp_parsers::{Jid, Element};
+@@ -34,8 +35,9 @@ impl Agent {
+                     }
+                     Event::Stanza(el) => {
+                         if el.is("presence", "jabber:client") {
+-                            if el.attr("from") == Some(&muc_jid_str) {
+-                                if el.attr("type") == PresenceType::Error {
++                            let presence = Presence::try_from(el).unwrap();
++                            if presence.from == Some(Jid::Bare(muc_jid.clone())) {
++                                if presence.type_ == PresenceType::Error {
+                                     info!("Failed to enter MUC {:?}", muc_jid);
+                                 } else {
+                                     info!("Entered MUC {:?}", muc_jid);
+-- 
+2.23.0
+

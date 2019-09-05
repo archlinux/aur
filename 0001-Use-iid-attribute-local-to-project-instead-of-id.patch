@@ -1,7 +1,7 @@
 From af6dea06d5d67e28d38b762be451cb9f638b26b9 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Maxime=20=E2=80=9Cpep=E2=80=9D=20Buquet?= <pep@bouah.net>
 Date: Sat, 1 Jun 2019 20:06:38 +0200
-Subject: [PATCH 1/2] Use iid attribute (local to project) instead of id
+Subject: [PATCH 1/6] Use iid attribute (local to project) instead of id
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
