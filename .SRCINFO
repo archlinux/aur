@@ -1,0 +1,18 @@
+pkgbase = fvim
+	pkgdesc = Cross platform Neovim front-end UI, built with F# + Avalonia
+	pkgver = 0.2_88_g17b59dd
+	pkgrel = 1
+	url = https://github.com/yatli/fvim
+	arch = any
+	license = MIT
+	makedepends = dotnet-sdk-preview
+	depends = neovim
+	depends = ttf-dejavu
+	provides = fvim
+	conflicts = fvim
+	options = staticlibs
+	source = https://github.com/yatli/fvim/archive/v0.2-88-g17b59dd.tar.gz
+	md5sums = SKIP
+
+pkgname = fvim
+
