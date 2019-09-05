@@ -2,25 +2,25 @@
 
 _name="pydantic"
 pkgname="python-${_name}"
-pkgver=0.24
-pkgrel=2
+pkgver=0.32.2
+pkgrel=1
 pkgdesc="Data validation using Python type hinting"
-arch=("any")
+arch=("x86_64")
 url="https://pydantic-docs.helpmanual.io/"
 license=("MIT")
 depends=("python")
-makedepends=("python-setuptools")
+makedepends=("cython")
+optdepends=("python-ujson: faster JSON parsing in pure Python"
+            "python-email-validation: enable email validation")
 source=("https://github.com/samuelcolvin/${_name}/archive/v${pkgver}.tar.gz")
-sha256sums=('4f60796176496faa947c8f5ffca2cc627034cdd7af935cc03e67d89ca6202e7c')
+sha256sums=('734d84a2c141d454e6d350ede78b8da9cc4cdc84bf5f7a8dd066ebb899cd0480')
 
-build(){
+build() {
   cd "${srcdir}"/"${_name}"-"${pkgver}"
   python setup.py build
 }
 
 package() {
-  cd "${_name}"-"${pkgver}"
-
   cd "${srcdir}/${_name}-${pkgver}"
   python setup.py install --root="${pkgdir}"/ --optimize=1 --skip-build
   install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
