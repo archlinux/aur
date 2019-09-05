@@ -2,7 +2,7 @@
 # Contributor: Keshav Amburay <(the ddoott ridikulus ddoott rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
 # Contributor: Pablo Lezaeta <(prflr 88) (arro'a) (gmail) (puntocom)>
 pkgname=shim-efi-git
-pkgver=15.r55.a4a1fbe
+pkgver=15.r57.5abcc10
 pkgrel=1
 pkgdesc='UEFI shim loader'
 arch=('x86_64')
@@ -17,6 +17,12 @@ sha512sums=('SKIP')
 pkgver() {
 	cd shim
 	git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g'
+}
+
+prepare() {
+	cd shim
+	# Fix "address of packed member" compilation error with GGC 9 (GitHub PR #183)
+	git pull origin pull/183/merge
 }
 
 build() {
