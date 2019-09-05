@@ -1,12 +1,12 @@
 # Maintainer: Brent Carmer <bcarmer@gmail.com>
 _pkgname=abc
-pkgname=$_pkgname-hg
+pkgname=$_pkgname-git
 
-pkgver=r.
-pkgver() {
-  cd "$_pkgname"
-  printf "r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
-}
+pkgver=1.01
+# pkgver() {
+#     cd "$_pkgname"
+#     git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+# }
 
 pkgrel=1
 pkgdesc="System for Sequential Logic Synthesis and Formal Verification"
