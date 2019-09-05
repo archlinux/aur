@@ -14,7 +14,6 @@ pkgbase = gnss-sdr-git
 	makedepends = boost-libs
 	makedepends = log4cpp
 	makedepends = gnuradio-osmosdr
-	makedepends = gtest
 	depends = armadillo
 	depends = libvolk
 	depends = gnuradio

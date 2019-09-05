@@ -8,7 +8,7 @@ url="http://gnss-sdr.org"
 license=('GPL3')
 depends=('armadillo' 'libvolk' 'gnuradio' 'blas' 'lapack' 'gflags' 'google-glog' 'gnutls' 'pugixml'
 	 'protobuf' 'python-mako' 'python-six' 'libmatio' 'libpcap' 'hdf5')
-makedepends=('gcc' 'make' 'cmake' 'git' 'boost' 'boost-libs' 'log4cpp' 'gnuradio-osmosdr' 'gtest')
+makedepends=('gcc' 'make' 'cmake' 'git' 'boost' 'boost-libs' 'log4cpp' 'gnuradio-osmosdr')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('gnss-sdr::git+https://github.com/gnss-sdr/gnss-sdr.git')
@@ -19,7 +19,7 @@ pkgver() {
 }
 build() {
  	cd "$srcdir"/gnss-sdr/build
-	cmake -D CMAKE_INSTALL_PREFIX=/usr ..
+	cmake -D CMAKE_INSTALL_PREFIX=/usr -DENABLE_OSMOSDR=ON -DENABLE_UNIT_TESTING=OFF ..
 	make
 }
 package() {
