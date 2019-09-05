@@ -1,7 +1,7 @@
 # Maintainer: Ruben De Smet <ruben dot de dot smet at rubdos dot be>
 
 pkgname='texlive-vub'
-pkgver="2.4.1"
+pkgver="2.4.2"
 pkgrel=1
 pkgdesc='Provides a titlepage, a beamer template and other style elements for the Vrije Universiteit Brussel.'
 url='https://gitlab.com/rubdos/texlive-vub/'
@@ -11,7 +11,7 @@ license=(
 source=(
  "https://gitlab.com/rubdos/texlive-vub/repository/archive.tar.bz2?ref=v${pkgver}"
 )
-sha512sums=('822eb41d219ba41e1ad81e7e92dc11614e232c07b591c5e6fea28f6e9bb28c0f5b960216ec5f63da245cbf0840074ef3b32593f8aa88664d73443fc3f1ec2532')
+sha512sums=('4960a8487b31ac83cd8052f34d2826d4457e6a7d104dbb0c495036b3a0b09b579d40c7f9de5447d498653716b049022d21dd4af5c608ae078694e68fb800b51d')
 arch=(
  'any'
 )
@@ -22,6 +22,10 @@ depends=(
  'ttf-roboto'
 )
 makedepends=(
+)
+optdepends=(
+ 'texlive-fontsextra: The beamer theme uses the Roboto fonts, with pdflatex.'
+ 'ttf-roboto: The beamer theme uses the Roboto fonts, with xelatex and lualatex.'
 )
 checkdepends=(
 )
