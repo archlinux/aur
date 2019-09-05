@@ -2,7 +2,7 @@
 # Contributor: mock <nobody at nowhere dot co dot uk>
 pkgname=clrmamepro
 pkgver=4.035
-pkgrel=2
+pkgrel=1
 pkgdesc="A ROM manager for MAME."
 arch=('x86_64'
       'i686')
