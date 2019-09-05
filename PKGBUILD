@@ -6,8 +6,8 @@
 # Contributor: David Flemström <david.flemstrom@gmail.com>
 
 pkgname=v8
-pkgver=7.4.288.18
-pkgrel=3
+pkgver=7.7.299.10
+pkgrel=1
 pkgdesc="Fast and modern Javascript engine used in Google Chrome."
 arch=('i686' 'x86_64')
 url="https://v8.dev"
@@ -25,6 +25,8 @@ sha256sums=('SKIP'
             'efb37bd706e6535abfa20c77bb16597253391619dae275627312d00ee7332fa3'
             'ae23d543f655b4d8449f98828d0aff6858a777429b9ebdd2e23541f89645d4eb'
             '6abb07ab1cf593067d19028f385bd7ee52196fc644e315c388f08294d82ceff0')
+
+
 
 #
 # Custom configuration for V8
@@ -83,7 +85,11 @@ _export_py2()
   msg2 "Using: `which python`"
 }
 
-prepare() {
+prepare()
+{
+  export CC=/usr/bin/clang
+  export CXX=/usr/bin/clang++
+  
   # Switching to python2 system environment
   mkdir -p bin
   ln -sf /usr/bin/python2 ./bin/python
@@ -104,15 +110,15 @@ prepare() {
 
   if [ -f third_party/icu/BUILD.gn.orig ]
   then
-      msg2 "Restoring bundled ICU build files for syncing"
-      ./build/linux/unbundle/replace_gn_files.py --undo --system-libraries icu
+    msg2 "Restoring bundled ICU build files for syncing"
+    ./build/linux/unbundle/replace_gn_files.py --undo --system-libraries icu
   fi
 
   msg2 "Syncing, this can take a while..."
   gclient sync --revision ${pkgver}
 
   msg2 "Using system libraries for ICU"
-  ./build/linux/unbundle/replace_gn_files.py
+  ./build/linux/unbundle/replace_gn_files.py --system-libraries icu
 
   sed "s/@VERSION@/${pkgver}/g" -i "${srcdir}/v8.pc"
   sed "s/@VERSION@/${pkgver}/g" -i "${srcdir}/v8_libbase.pc"
@@ -120,8 +126,8 @@ prepare() {
 
   msg2 "Running GN..."
   ../depot_tools/gn gen $OUTFLD \
-    -vv --fail-on-unused-args \
-    --args="clang_base_path=\"$V8_CLANG_PATH\"
+		    -vv --fail-on-unused-args \
+		    --args="clang_base_path=\"$V8_CLANG_PATH\"
     is_clang=$V8_IS_CLANG
     is_component_build=$V8_COMPONENT_BUILD
     is_debug=$V8_DEBUG
@@ -129,10 +135,13 @@ prepare() {
     treat_warnings_as_errors=$V8_WARNINGS_AS_ERRORS
     v8_enable_i18n_support=$V8_I18N_SUPPORT
     v8_use_external_startup_data=\"$V8_USE_EXTERNAL_STARTUP_DATA\"
-    use_sysroot=$V8_USE_SYSROOT"
+    use_sysroot=$V8_USE_SYSROOT\
+    use_custom_libcxx=false\
+    linux_use_bundled_binutils=false"
 }
 
-build() {
+build()
+{
   _export_py2
   cd v8
 
@@ -145,19 +154,21 @@ build() {
   ninja -C $OUTFLD
 }
 
-check() {
+check()
+{
   _export_py2
   cd v8
-  msg2 "Using `which python`"
   msg2 "Testing, this will also take a while..."
-  tools/run-tests.py --no-presubmit \
-                     --outdir=out.gn \
-                     --buildbot \
-                     --arch=$V8_ARCH \
-                     --mode=Release
+  tools/run-tests.py --outdir=out.gn \
+		     --buildbot \
+		     --arch=$V8_ARCH \
+		     --mode=Release \
+		     --quickcheck --report \
+		     debugger mjsunit cctest
 }
 
-package() {
+package()
+{
   cd v8
 
   install -d ${pkgdir}/usr/lib/v8
@@ -165,19 +176,17 @@ package() {
   install -Dm755 $OUTFLD/cctest ${pkgdir}/usr/lib/v8/cctest
   install -Dm755 $OUTFLD/d8 ${pkgdir}/usr/lib/v8/d8
 
-  install -Dm755 $OUTFLD/libc++.so ${pkgdir}/usr/lib/v8/libc++.so
-
-  if [ $V8_I18N_SUPPORT == "true" ]
-  then
-    install -Dm755 $OUTFLD/libicui18n.so ${pkgdir}/usr/lib/v8/libicui18n.so
-    install -Dm755 $OUTFLD/libicuuc.so ${pkgdir}/usr/lib/v8/libicuuc.so
-    install -Dm755 $OUTFLD/icudtl.dat ${pkgdir}/usr/lib/v8/icudtl.dat
-  fi
+  #if [ $V8_I18N_SUPPORT == "true" ]
+  #then
+  #  install -Dm755 $OUTFLD/libicui18n.so ${pkgdir}/usr/lib/libicui18n.so
+  #  install -Dm755 $OUTFLD/libicuuc.so ${pkgdir}/usr/lib/libicuuc.so
+  #  install -Dm755 $OUTFLD/icudtl.dat ${pkgdir}/usr/lib/icudtl.dat
+  #fi
   
   install -Dm755 $OUTFLD/libv8_for_testing.so ${pkgdir}/usr/lib/libv8_for_testing.so
   install -Dm755 $OUTFLD/libv8_libbase.so ${pkgdir}/usr/lib/libv8_libbase.so
   install -Dm755 $OUTFLD/libv8_libplatform.so ${pkgdir}/usr/lib/libv8_libplatform.so
-  install -Dm755 $OUTFLD/libv8.so ${pkgdir}/usr/lib/v8/libv8.so
+  install -Dm755 $OUTFLD/libv8.so ${pkgdir}/usr/lib/libv8.so
 
   install -Dm755 $OUTFLD/natives_blob.bin ${pkgdir}/usr/lib/v8/natives_blob.bin
   install -Dm755 $OUTFLD/snapshot_blob.bin ${pkgdir}/usr/lib/v8/snapshot_blob.bin
