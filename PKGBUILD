@@ -1,7 +1,7 @@
 # Maintainer: pingplug < aur at pingplug dot me >
 
 pkgname=ccache-ext
-pkgver=1
+pkgver=2
 pkgrel=1
 pkgdesc='pacman hook for adding more compiler links to ccache'
 arch=('any')

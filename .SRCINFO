@@ -1,6 +1,6 @@
 pkgbase = ccache-ext
 	pkgdesc = pacman hook for adding more compiler links to ccache
-	pkgver = 1
+	pkgver = 2
 	pkgrel = 1
 	install = ccache-ext.install
 	arch = any
