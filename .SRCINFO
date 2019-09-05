@@ -1,0 +1,16 @@
+pkgbase = active-data
+	pkgdesc = CAD model inspection utility and prototyping framework based on OpenCascade
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = http://analysissitus.org/
+	arch = x86_64
+	license = BSD 3-clause
+	makedepends = cmake
+	makedepends = gcc
+	depends = opencascade>=7.2
+	depends = intel-tbb
+	source = https://gitlab.com/AlexandrParkhomenko/active-data/-/archive/v1.5.0/active-data-v1.5.0.tar.gz
+	sha256sums = b5e66eec601c0f417b78ece22115f9c999b152bc1f2bfcb5920b7936d6e886f6
+
+pkgname = active-data
+
