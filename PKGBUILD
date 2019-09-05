@@ -3,7 +3,7 @@
 # Headless by: K900 <me@0upti.me>
 
 pkgname=qt5-base-headless
-_qtver=5.13.0
+_qtver=5.13.1
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=('x86_64')
@@ -21,10 +21,8 @@ optdepends=('postgresql-libs: PostgreSQL driver'
 conflicts=('qtchooser' 'qt5-base')
 provides=('qt5-base')
 _pkgfqn="qtbase-everywhere-src-${_qtver}"
-source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz"
-        qtbase-zlib-compression.patch::"https://code.qt.io/cgit/qt/qtbase.git/patch/?id=cbdc9a77")
-sha256sums=('ff6964b3b528cd3b1d21bcf3470006e8e5cbe69591923f982871d886ea0488fe'
-            '9300d8ab7abe4145e92eea75178a26ad3d5a71b0646665c3776ca2c375dd1233')
+source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
+sha256sums=('110cd08cdacab26274bf2519d3508046616c0b638f0d2f5e00bc8bad87469eab')
 
 prepare() {
   cd ${_pkgfqn}
@@ -35,8 +33,6 @@ prepare() {
     mkspecs/common/gcc-base.conf
   sed -i -e "s|^\(QMAKE_LFLAGS_RELEASE.*\)|\1 ${LDFLAGS}|" \
     mkspecs/common/g++-unix.conf
-
-  patch -p1 -i ../qtbase-zlib-compression.patch # Change the default compression back to zlib for backwards compatibility
 }
 
 build() {
