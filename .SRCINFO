@@ -1,14 +1,15 @@
 pkgbase = atool-desktop
 	pkgdesc = Desktop Entry for atool-based archive unpacking
-	pkgver = 0.1
-	pkgrel = 2
-	url = https://github.com/esclerofilo/tiny-utils
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/~vicentereyes/PKGBUILDs
 	arch = any
 	depends = atool
+	depends = dmenu
 	source = atool-desktop.desktop
 	source = atool-desktop
-	md5sums = 8d461127207d59f6f271c3e2e24374e5
-	md5sums = 1b569d2c7b0ff4534c143bc9a97e4674
+	md5sums = 749254aae821b0c5278cd09ae64f8afd
+	md5sums = 019970d73f97d7225796fd6c4a0d705b
 
 pkgname = atool-desktop
 

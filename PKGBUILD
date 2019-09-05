@@ -1,15 +1,16 @@
 # Maintainer: Vicente Reyes <vreyesvaldivieso [at] gmail [dot] com>
 pkgname=atool-desktop
-pkgver=0.1
-pkgrel=2
+pkgver=0.2
+pkgrel=1
 pkgdesc="Desktop Entry for atool-based archive unpacking"
 arch=('any')
-url="https://github.com/esclerofilo/tiny-utils"
+url="https://github.com/~vicentereyes/PKGBUILDs"
 license=()
-depends=('atool')
+depends=('atool'
+	 'dmenu')
 source=("$pkgname.desktop" "$pkgname")
-md5sums=('8d461127207d59f6f271c3e2e24374e5'
-         '1b569d2c7b0ff4534c143bc9a97e4674')
+md5sums=('749254aae821b0c5278cd09ae64f8afd'
+         '019970d73f97d7225796fd6c4a0d705b')
 
 package() {
   install  -Dm0755 atool-desktop "${pkgdir}/usr/bin/atool-desktop"
