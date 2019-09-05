@@ -2,18 +2,20 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=qt5-lottie
-_qtver=5.13.0
+_qtver=5.13.1
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
 pkgdesc='A family of player software for a certain json-based file format for describing 2d vector graphics animations'
-depends=('qt5-declarative')
+depends=('qt5-base')
+makedepends=('qt5-declarative')
+optdepends=('qt5-declarative: QML bindings')
 groups=('qt' 'qt5')
 _pkgfqn="${pkgname/5-/}-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('5315e8a5d1ab76b61e1cf5f88f5ed43fe06b91ec732139902c9a242ac5ea714c')
+sha256sums=('ea8697bcbb903befde08edce95589b6ef17872c1cab11f164cac0a7ddec51136')
 
 prepare() {
   mkdir -p build
