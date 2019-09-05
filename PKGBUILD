@@ -1,13 +1,13 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=xdg-launch-git
-pkgver=1.9.r0.gb6eb3a0
+pkgver=1.9.r3.gde5ae69
 pkgrel=1
 pkgdesc="A command line XDG compliant launcher"
 arch=('i686' 'x86_64')
 url="http://github.com/bbidulock/xdg-launch"
 license=('GPL')
-groups=('xde')
+groups=('xde-git')
 provides=('xdg-launch')
 conflicts=('xdg-launch')
 depends=('glib2' 'libxrandr' 'libxinerama' 'desktop-file-utils')
