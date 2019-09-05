@@ -1,0 +1,40 @@
+--- a/qt/sc_WelcomeTab.cpp	2019-09-05 11:14:00.167493391 +0200
++++ b/qt/sc_WelcomeTab.cpp	2019-09-05 11:28:01.960790040 +0200
+@@ -9,17 +9,7 @@
+ SC_WelcomeTabWidget_WebKit::SC_WelcomeTabWidget_WebKit( SC_MainWindow* parent ) :
+     SC_WebEngineView( parent )
+ {
+-  QString welcomeFile = "";
+-  for(const auto& path : SC_PATHS::getDataPaths())
+-  {
+-      QFile welcome_path(path + "/Welcome.html");
+-      if (welcome_path.exists())
+-      {
+-          welcomeFile = welcome_path.fileName();
+-          break;
+-      }
+-  }
+-  QString welcome_uri = "file:///" + welcomeFile;
++  QString welcome_uri = "file:///usr/share/simulationcraft/Welcome.html";
+   setUrl( welcome_uri );
+ 
+   page() -> setLinkDelegationPolicy( QWebPage::DelegateAllLinks );
+@@ -39,17 +29,7 @@
+     welcome_uri(),
+     welcome_timer( new QTimer( this ) )
+ {
+-  QString welcomeFile("");
+-  for(const auto& path : SC_PATHS::getDataPaths())
+-  {
+-      QFile welcome_path(path + "/Welcome.html");
+-      if (welcome_path.exists())
+-      {
+-          welcomeFile = welcome_path.fileName();
+-          break;
+-      }
+-  }
+-  welcome_uri = "file:///" + welcomeFile;
++  welcome_uri = "file:///usr/share/simulationcraft/Welcome.html";
+   qDebug() << "welcome_uri: " << welcome_uri << "\n";
+ 
+   welcome_timer->setSingleShot( true );

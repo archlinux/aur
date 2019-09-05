@@ -7,7 +7,7 @@ _gui=true
 pkgbase=simulationcraft
 pkgname=simulationcraft
 _pkgname=simc
-_simver=801
+_simver=820
 _simrel=01
 pkgver=${_simver}_${_simrel}
 pkgrel=1
@@ -15,35 +15,31 @@ pkgdesc="A tool to explore combat mechanics in the popular MMO RPG World of Warc
 url="https://github.com/simulationcraft/simc"
 arch=('i686' 'x86_64')
 license=('GPL3')
+makedepends=('cmake')
 source=("${pkgname}-${_simver}-${_simrel}.tar.gz::https://github.com/simulationcraft/simc/archive/release-${_simver}-${_simrel}.tar.gz"
+        '0001-set-welcome-path.patch'
         'SimulationCraft.desktop')
 
-sha256sums=('ba40f946348f608945701aca045d7316e456f9853975d0255c8796d34dcad5fa'
+sha256sums=('33197263f755b7671907dd2538cf229d90ce083c2af0b5c341d6d428b73353cd'
+            '0755cfa21435dd3a019a686fd0e313abf631dcd02efa37ebcafe23546bacc048'
             '12cddfa8077e3f7c5c7d8bc445f27691072911d36e296ffe21281c6f4a0c1dd9')
 
 prepare() {
     cd "${srcdir}/${_pkgname}-release-${_simver}-${_simrel}"
-    #dos2unix ${_pkgname}-${_simver}-${_simrel}-source/engine/sc_main.cpp
-    # we don't want to build engine twice
+    patch -p1 < "${srcdir}/0001-set-welcome-path.patch"
 
-    if [ ${_gui} = true ] ; then
-        #cd ${_pkgname}-${_simver}-${_simrel}-source
-        sed -e 's|SOURCES|OBJECTS|' -e 's|\.cpp|\.o|' -i source_files/QT_engine{,_main}.pri
-        qmake  INSTALLPATH=/usr/share/simulationcraft \
-          SHAREDIR=/usr/share/simulationcraft \
-          PREFIX=/usr \
-          CONFIG+='to_install' \
-          simcqt.pro -o Makefile
-    fi
+    mkdir -p build
+    cd build
+    cmake ..
 }
 
 build() {
-    cd "${srcdir}/${_pkgname}-release-${_simver}-${_simrel}/engine"
-    make PREFIX=/usr  CFLAGS+="${CFLAGS}"  CXXFLAGS+="${CXXFLAGS}" LDFLAGS+="${LDFLAGS}"
+    cd "${srcdir}/${_pkgname}-release-${_simver}-${_simrel}/build/"
 
     if [ ${_gui} = true ] ; then
-        cd ..
-        make PREFIX=/usr CXXFLAGS+="${CXXFLAGS} \$(DEFINES) -fPIC" LDFLAGS+="${LDFLAGS}"
+        make PREFIX=/usr CFLAGS+="${CFLAGS}" CXXFLAGS+="${CXXFLAGS}" LDFLAGS+="${LDFLAGS}"
+    else
+        make PREFIX=/usr CFLAGS+="${CFLAGS}" CXXFLAGS+="${CXXFLAGS}" LDFLAGS+="${LDFLAGS}" simc
     fi
 }
 
@@ -57,16 +53,15 @@ package_simulationcraft-data() {
         install -Dm644 "${profile}" "${pkgdir}/usr/share/simulationcraft/${profile}"
     done
 
-    install -Dm644 "Welcome.html" "${pkgdir}/usr/share/doc/simulationcraft/Welcome.html"
-    install -Dm644 "Welcome.png" "${pkgdir}/usr/share/doc/simulationcraft/Welcome.png"
+    install -Dm644 "Welcome.html" "${pkgdir}/usr/share/simulationcraft/Welcome.html"
+    install -Dm644 "Welcome.png" "${pkgdir}/usr/share/simulationcraft/Welcome.png"
 }
 
 package_simulationcraft() {
     depends=('openssl' "simulationcraft-data=${pkgver}")
 
-    cd "${srcdir}/${_pkgname}-release-${_simver}-${_simrel}"
-
-    install -Dm755 engine/simc "${pkgdir}/usr/bin/simc"
+    cd "${srcdir}/${_pkgname}-release-${_simver}-${_simrel}/build/"
+    install -Dm755 simc "${pkgdir}/usr/bin/simc"
 }
 
 if [ ${_gui} = true ] ; then
@@ -81,13 +76,11 @@ if [ ${_gui} = true ] ; then
         for _locale in locale/* ; do
             install -Dm644 "${_locale}" "${pkgdir}/usr/share/simulationcraft/${_locale}"
         done
-        install -Dm755 SimulationCraft "${pkgdir}/usr/bin/simulationcraft"
-        make install INSTALL_ROOT="${pkgdir}"
-        rm -rf "${pkgdir}/usr/share/simulationcraft"
+        install -Dm755 build/qt/SimulationCraft "${pkgdir}/usr/bin/simulationcraft"
     }
 
-    makedepends+=('qt5-webkit')
-    true && pkgname=( simulationcraft simulationcraft-gui simulationcraft-data )
+    makedepends+=('qt5-webkit' 'qt5-webengine')
+    true && pkgname=(simulationcraft simulationcraft-gui simulationcraft-data)
 else
-    true && pkgname=( simulationcraft  simulationcraft-data )
+    true && pkgname=(simulationcraft  simulationcraft-data)
 fi
