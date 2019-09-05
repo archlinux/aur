@@ -2,43 +2,57 @@
 validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # Bug reports can be filed at https://bugs.square-r00t.net/index.php?project=3
 # News updates for packages can be followed at https://devblog.square-r00t.net
+# Thanks to asm0dey for making this easier
 pkgname=3proxy-git
-pkgver=0.0001
+pkgver=r520.22cf925
 pkgrel=1
 pkgdesc="A tiny crossplatform proxy server (git version)"
-arch=( 'i686' 'x86_64' )
+arch=('x86_64')
 url="https://3proxy.org/"
-license=( 'BSD' )
+license=('BSD')
 _pkgname=3proxy
+provides=('3proxy')
+conflicts=('3proxy')
 install=
 changelog=
 noextract=()
-source=("3proxy::git+https://github.com/z3APA3A/3proxy.git")
-# see https://wiki.archlinux.org/index.php/VCS_package_guidelines#Git_Submodules if you require git submodules
-sha512sums=('SKIP')
+source=("${_pkgname}::git+https://github.com/z3APA3A/${_pkgname}.git"
+	'3proxy@.service'
+	'no_useradd.patch'
+	'no_useradd.patch.sig'
+	'3proxy@.service.sig')
+sha512sums=('SKIP'
+            '3010f5626148459ba7cecc0929fb47b801a1aa70d3df02a7ddd46a147a7a5e811330d9bcaf5ea092c2f0ef7663c8d4d44d67236e9224362850f72a95817f5936'
+            '9a21b07db619e16fa7fe2a34437f9c133c218364fc8c20635e072f4b44d712afa337415c3d71a05e8ade467d2415a103faec5b625e6f7f21cc41c2f613aca351'
+            'SKIP'
+            'SKIP')
 pkgver() {
   cd "${srcdir}/${_pkgname}"
-  # no tags, so number of revisions e.g. r1142.a17a017
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  ## most recent annotated tag e.g. 2.0.r6.ga17a017
-  #git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-  ## most recent un-annotated tag e.g. 0.71.r115.gd95ee07
-  #git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-  ## or:
-  ##git describe --long --tags | sed 's/-/.r/;s/-/./'
-  ## project uses tags with prefix. e.g. v...
-  #git describe --long | sed 's/^foo-//;s/\([^-]*-g\)/r\1/;s/-/./g'
-  ## both with fallback, e.g. 0.9.9.r27.g2b039da with tags, else r1581.2b039da
-  #( set -o pipefail
-  #  git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-  #  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  #)
 }
-build() {
-        cd "${srcdir}/${_pkgname}/src"
-        make prefix=${pkgdir}/usr
+
+prepare() {
+    cd ${srcdir}/${_pkgname}
+    patch -p1 < ${srcdir}/no_useradd.patch
 }
 package() {
-        install -D -m755 ${srcdir}/${_pkgname}/src/${_pkgname} ${pkgdir}/usr/bin/${_pkgname}
-        install -D -m644 ${srcdir}/${_pkgname}/docs/README.html.en ${pkgdir}/usr/share/doc/${_pkgname}/README.html
+
+    _prefix='/usr'
+    _etcdir='/etc/3proxy'
+
+    install -d -m 0755 ${pkgdir}/usr/etc/init.d
+
+    cd "${srcdir}/${_pkgname}"
+    make='make -f Makefile.Linux INSTALL=/usr/bin/install'
+    ${make} prefix="${_prefix}" ETCDIR="${_etcdir}"
+    ${make} prefix="${_prefix}" install DESTDIR="${pkgdir}" ETCDIR="${pkgdir}${_etcdir}"
+    ( cd ${pkgdir}${_prefix}/bin && mv proxy 3proxy-proxy ) || return 1
+    rm -f ${pkgdir}${_etcdir}/counters ${pkgdir}${_etcdir}/passwd ${pkgdir}${_etcdir}/bandlimiters
+    install -D -m0644 ${srcdir}/${_pkgname}/copying ${pkgdir}${_prefix}/share/licenses/$pkgname/copying
+    install -D -m0644 ${srcdir}/${_pkgname}/cfg/3proxy.cfg.sample ${pkgdir}${_etcdir}/3proxy.cfg.sample
+    install -D -m0644 ${srcdir}/${_pkgname}/cfg/counters.sample ${pkgdir}${_etcdir}/counters.sample
+    mkdir -p "${pkgdir}/usr/lib/systemd/system/"
+    install -D -m0644 "${srcdir}/3proxy@.service" "${pkgdir}/usr/lib/systemd/system/"
+
+    rm -rf ${pkgdir}/etc/init.d
 }
