@@ -1,6 +1,6 @@
 pkgbase = libglvnd-git
 	pkgdesc = The GL Vendor-Neutral Dispatch library
-	pkgver = 1.0.0.r0.g005fd3a
+	pkgver = 1.1.1.r10.g396433b
 	pkgrel = 1
 	url = https://github.com/NVIDIA/libglvnd
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = libglvnd-git
 	provides = libgl
 	provides = libegl
 	provides = libgles
-	provides = libglvnd=1.0.0.r0.g005fd3a
+	provides = libglvnd=1.1.1.r10.g396433b
 	conflicts = libglvnd
 	source = git+https://github.com/NVIDIA/libglvnd.git
 	source = LICENSE
