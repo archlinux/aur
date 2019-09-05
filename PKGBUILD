@@ -1,7 +1,7 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=xde-session-git
-pkgver=1.9.3.gc65950d
+pkgver=1.10.r2.ga1b801f
 pkgrel=1
 pkgdesc="X Desktop Environment Display and Session Management"
 groups=('xde-git')
@@ -19,14 +19,18 @@ md5sums=('SKIP')
 
 pkgver() {
   cd $pkgname
-  git describe --long --tags|sed -e 's,^[a-zA-Z_]*,,;s,-,.,g'
+  git describe --long --tags | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd $pkgname
+  ./autogen.sh
 }
 
 build() {
   cd $pkgname
-  ./autogen.sh
-  ./configure --prefix=/usr --sysconfdir=/etc
-  make V=0
+  ./configure
+  make
 }
 
 package() {
