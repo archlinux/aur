@@ -1,39 +1,30 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
+
 pkgname=xde-styles
-pkgver=1.2.12
+pkgver=1.3
 pkgrel=1
 pkgdesc="Four consistent styles across light-weight WMs for XDE"
-groups=('xde')
 arch=('any')
-license=('CCPL:by-sa')
 url="http://github.com/bbidulock/xde-styles"
-depends=('m4')
+groups=('xde')
+license=('CCPL:by-sa')
 makedepends=('git')
+depends=('m4')
 optdepends=('xdg-launch: for key bindings'
             'xde-menu: for root menus'
             'xde-ctools: for window menus'
             'xde-session: for key bindings')
-source=("$pkgname::git://github.com/bbidulock/$pkgname.git")
-md5sums=('SKIP')
-
-pkgver() {
-  cd $pkgname
-  git describe --tags | sed 's|-|.|g;s|[.]g[a-f0-9]*$||'
-}
-
-prepare() {
-  cd $pkgname
-  ./autogen.sh
-}
+source=("https://github.com/bbidulock/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.lz")
+sha256sums=('814fe5d76b776215ca4066ca8543ef83f27b08e591da03551f1d49ef31824eeb')
 
 build() {
- cd $pkgname
- ./configure --prefix=/usr --sysconfdir=/etc
- make V=0
+ cd $pkgname-$pkgver
+ ./configure
+ make
 }
 
 package() {
-  cd $pkgname
+  cd $pkgname-$pkgver
   make DESTDIR="$pkgdir" install
 }
 
