@@ -9,7 +9,7 @@ pkgbase = python-fanshim
 	depends = python
 	depends = python-psutil
 	depends = python-plasmalights
-	depends = python-rpi.gpio
+	depends = python-raspberry-gpio
 	source = https://files.pythonhosted.org/packages/source/f/fanshim/fanshim-0.0.2.tar.gz
 	sha512sums = bcf7f07eb9cdd0c76b5d2dba3d410b8ee5912d3373966a8d54c0a241c2cd1170d21d8cdb227a5dc593c094ea8f88d74cd4d4491bab03b080d306c64b241ac1fa
 

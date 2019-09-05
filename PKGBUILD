@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python'
          'python-psutil'
          'python-plasmalights'
-         'python-rpi.gpio')
+         'python-raspberry-gpio')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
 
