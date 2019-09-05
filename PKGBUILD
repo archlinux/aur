@@ -29,7 +29,7 @@ build() {
     fi
     cd build/active-data
     cmake ${srcdir}/active-data
-    make
+    make -j `nproc`
 }
 
 package() {
