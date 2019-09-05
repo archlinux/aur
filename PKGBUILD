@@ -5,9 +5,9 @@
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 
 pkgname=digikam
-_pkgver=6.2.0
+_pkgver=6.3.0
 pkgver=${_pkgver//-/_} # for beta versions
-pkgrel=2
+pkgrel=1
 pkgdesc="An advanced digital photo management application"
 arch=(x86_64)
 license=(GPL)
@@ -18,7 +18,7 @@ makedepends=(extra-cmake-modules doxygen eigen boost kdoctools libkvkontakte)
 optdepends=('hugin: panorama tool' 'qt5-imageformats: support for additional image formats (WEBP, TIFF)'
             'libkvkontakte: VKontakte plugin')
 source=("https://download.kde.org/stable/$pkgname/$_pkgver/$pkgname-$_pkgver.tar.xz"{,.sig})
-sha256sums=('28762ea0f03a82e3b2473c0682a358c9b83f5013aec827dd5ab6556a1f29baeb'
+sha256sums=('94dc05e3f9c08b83419010d1689c7b0398d4eced4fef42375249c974622874ba'
             'SKIP')
 validpgpkeys=(D1CF2444A7858C5F2FB095B74A77747BC2386E50) # digiKam.org (digiKam project) <digikamdeveloper@gmail.com>
 
@@ -30,7 +30,6 @@ build() {
   cd build
 
   cmake ../$pkgname-$_pkgver \
-    -DCMAKE_INSTALL_LIBDIR=lib \
     -DBUILD_TESTING=OFF \
     -DENABLE_KFILEMETADATASUPPORT=ON \
     -DENABLE_MEDIAPLAYER=ON \
