@@ -11,7 +11,7 @@
 
 pkgbase=lvm2-noudev
 pkgname=('lvm2-noudev' 'device-mapper-noudev')
-pkgver=2.02.185
+pkgver=2.02.186
 pkgrel=1
 arch=('x86_64')
 url='https://sourceware.org/lvm2/'
