@@ -2,9 +2,9 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=pyside2
-_qtver=5.13.0
+_qtver=5.13.1
 pkgver=${_qtver/-/}
-pkgrel=2
+pkgrel=1
 arch=(x86_64)
 url='https://www.qt.io'
 license=(LGPL)
@@ -31,16 +31,11 @@ conflicts=(python-pyside2)
 provides=(python-pyside2)
 replaces=(python-pyside2)
 _pkgfqn=pyside-setup-everywhere-src-${_qtver}
-source=("https://download.qt.io/official_releases/QtForPython/pyside2/PySide2-$pkgver-src/${_pkgfqn}.tar.xz"
-         qcoreapplication-crash.patch::"https://code.qt.io/cgit/pyside/pyside-setup.git/patch/?id=80a6f91c")
-sha256sums=('8e47e778a6c8ee86e9bc7dbf56371cf607e9f3c1a03a7d6df9e34f8dba555782'
-            '7d36bfc604f4759f593e8d599e04e9ef713b35b3e0c373c12868b32913564303')
+source=("https://download.qt.io/official_releases/QtForPython/pyside2/PySide2-$pkgver-src/${_pkgfqn}.tar.xz")
+sha256sums=('c57c71ddece90b29d0934cf5fac1e1634719484637b56dcbe49eb277c1c01536')
 
 prepare() {
   mkdir -p build
-
-  cd $_pkgfqn
-  patch -Rp1 -i ../qcoreapplication-crash.patch # Revert commit that makes QCoreApplication import crash
 }
 
 build() {
