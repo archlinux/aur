@@ -21,7 +21,7 @@ build() {
 
 check() {
   cd "${pkgname}-${pkgver}"
-  zig-cache/bin/brightnessztl debug
+  zig-cache/bin/brightnessztl debug &>/dev/null
 }
 
 package() {
