@@ -5,7 +5,7 @@
 
 pkgname=firefox-appmenu
 _pkgname=firefox
-pkgver=68.0.2
+pkgver=69.0
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org"
 arch=(x86_64)
@@ -26,12 +26,12 @@ source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-
         0001-Use-remoting-name-for-GDK-application-names.patch
         $_pkgname.desktop firefox-symbolic.svg
         unity-menubar.patch)
-sha256sums=('9b3e6d8f99819f9eda9ebba403b644a2b96d19450b42cae422bbf4386902a840'
+sha256sums=('413c3febdfeb69eade818824eecbdb11eaeda71de229573810afd641ba741ec5'
             'SKIP'
             'ab07ab26617ff76fce68e07c66b8aa9b96c2d3e5b5517e51a3c3eac2edd88894'
             'e466789015e15be9409b7a7044353674ca6aa0f392e882217f90c79821fe2630'
             '9a1a572dc88014882d54ba2d3079a1cf5b28fa03c5976ed2cb763c93dabbd797'
-            '03684be59adac8ab83c4c5cad3156879983b6d1311555fcaa8476684730d94f8')
+            '2fd7261853ee2ed95ca6a68838de1e7cc18e01c7a56db9abcad4ac93867cedf7')
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases <release@mozilla.com>
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -45,26 +45,6 @@ _google_api_key=AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM
 # get your own set of keys. Feel free to contact heftig@archlinux.org for
 # more information.
 _mozilla_api_key=16674381-f021-49de-8622-3021c5942aff
-
-# For telemetry and crash dump analysis to work correctly, we need to tell the
-# build system which Mercurial changeset is our source. Should not be needed
-# anymore once 69 is released:
-# https://bugzilla.mozilla.org/show_bug.cgi?id=1338099
-_repo=https://hg.mozilla.org/releases/mozilla-release
-_tag=FIREFOX_${pkgver//./_}_RELEASE
-
-_changeset=7ece03f6971968eede29275477502309bbe399da
-_changeset_tag=FIREFOX_68_0_2_RELEASE
-
-if [[ $1 == update_hgrev ]]; then
-  _changeset=$(hg id -r $_tag --id $_repo --template '{node}')
-  sed -e "/^_changeset=/s/=.*/=$_changeset/;/^_changeset_tag=/s/=.*/=$_tag/" \
-      -i "${BASH_SOURCE[0]}"
-  exit 0
-elif [[ $_tag != $_changeset_tag ]]; then
-  error "Changeset needs update. Run: bash PKGBUILD update_hgrev"
-  exit 1
-fi
 
 prepare() {
   mkdir mozbuild
@@ -128,15 +108,15 @@ END
 build() {
   cd firefox-$pkgver
 
-  export MOZ_SOURCE_REPO="$_repo"
-  export MOZ_SOURCE_CHANGESET="$_changeset"
   export MOZ_NOSPAM=1
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
 
   # LTO needs more open files
   ulimit -n 4096
 
+  msg2 "Building optimized browser..."
   xvfb-run -a -n 97 -s "-screen 0 1600x1200x24" ./mach build
+  msg2 "Building symbol archive..."
   ./mach buildsymbols
 }
 
