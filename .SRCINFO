@@ -1,16 +1,16 @@
 pkgbase = sblg
 	pkgdesc = simple off-line blog utility
-	pkgver = 0.5.4
+	pkgver = 0.5.5
 	pkgrel = 1
 	url = https://kristaps.bsd.lv/sblg
 	arch = x86_64
+	arch = i686
+	arch = armv6h
+	arch = armv7h
 	license = custom:ISC
-	makedepends = gawk
 	depends = expat
-	source = https://kristaps.bsd.lv/sblg/snapshots/sblg-0.5.4.tar.gz
-	source = makefile-ldflags.patch
-	sha512sums = 6d4eafb1c2c0ebbc6d6dc82bbc79d5a6d40d12baff21f49d891eae490625aa1c7bced7f3cfa59b026b592dfe1abde226ef56537c86a38927cc6c2d7edd4b9517
-	sha512sums = 33593b6d744c57dfbb40bd51a1cbe923f73960dc5632184325486ffb920f4404947257408faa29a4ea9fa7fe3bcb1edf131a87fa9e786ac0d5012a70a4319151
+	source = https://kristaps.bsd.lv/sblg/snapshots/sblg-0.5.5.tar.gz
+	sha512sums = fb18949985292b8db5fe82736fb25c14c1cb0ee19ff6b8764ad77cf745cfb8712fde74665d1efbca29fb7dfb9d4eb959a974bb30e840af78cf0e5e37a4e3520d
 
 pkgname = sblg
 
