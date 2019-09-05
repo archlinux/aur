@@ -1,6 +1,6 @@
 # Maintainer: Matt Frichtl <frichtlm@gmail.com>
 _cranname=Rcpp
-_cranver=1.0.1
+_cranver=1.0.2
 pkgname=r-rcpp
 pkgver=${_cranver}
 pkgrel=1
@@ -11,7 +11,7 @@ license=('GPL-2' 'GPL-3')
 depends=('r>=3.0.0')
 optdepends=('r-runit' 'r-inline' 'r-rbenchmark' 'r-knitr' 'r-rmarkdown' 'r-pinp' 'r-pkgkitten')
 source=("http://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('7cb06160edf58ddccc4d1c1889cf3804')
+md5sums=('791b53cf792b1398254f739ea91a3acd')
 
 package() {
     mkdir -p ${pkgdir}/usr/lib/R/library
