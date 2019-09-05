@@ -236,7 +236,6 @@ class PackageBase(object):
 
 
 class Package(PackageBase):
-    # TODO: --git as a option instead direct in the template?
     BUILD_TEMPLATE = """# Script generated with create_pkgbuild.py
     # For more information: https://github.com/ros-melodic-arch/ros-build-tools-py3
     pkgdesc="ROS - %(description)s"
@@ -256,17 +255,6 @@ class Package(PackageBase):
     ros_depends=(%(ros_run_dependencies)s)
     depends=(${ros_depends[@]}
     %(other_run_dependencies)s)
-
-    # Git version (e.g. for debugging)
-    # _tag=release/%(distro)s/%(package_name)s/${pkgver}
-    # _dir=${pkgname}
-    # source=("${_dir}"::"git+%(package_url)s"#tag=${_tag})
-    # sha256sums=('SKIP')
-
-    # Tarball version (faster download)
-    _dir="%(tarball_dir)s"
-    source=("${pkgname}-${pkgver}.tar.gz"::"%(tarball_url)s")
-    sha256sums=('%(tarball_sha)s')
 
     build() {
         # Use ROS environment variables
