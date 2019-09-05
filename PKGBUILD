@@ -54,7 +54,7 @@ package() {
 	install -Dm644 "BlockMap-cli/build/libs/BlockMap-cli.jar"       "$pkgdir/usr/share/java/blockmap/BlockMap-cli.jar"
 	install -Dm644 "BlockMap-gui/build/libs/BlockMap-gui-linux.jar" "$pkgdir/usr/share/java/blockmap/BlockMap-gui.jar"
 	
-	cd "BlockMap-standalone/build/libs/"
+	cd "build/libs/"
 
 	# Install all the dependencies
 	for name in *.jar ; do
