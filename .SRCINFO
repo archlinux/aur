@@ -1,8 +1,8 @@
 pkgbase = brightnessztl
-	pkgdesc = A CLI to control device backlight
+	pkgdesc = A CLI to control device backlight written in Zig
 	pkgver = 0.1
-	pkgrel = 1
-	url = http://github.com/hspak/brightnessztl
+	pkgrel = 2
+	url = https://github.com/hspak/brightnessztl
 	arch = x86_64
 	license = MIT
 	makedepends = zig-git
