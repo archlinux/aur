@@ -1,7 +1,7 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=heirloom-doctools
 pkgver=160308
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="The Heirloom Documentation Tools provide troff, nroff, and related utilities." 
 arch=('i686' 'x86_64')
@@ -38,6 +38,9 @@ prepare() {
   sed -i 's@^TABDIR.*@TABDIR=/usr/heirloom/lib/doctools/nterm@g' mk.config
   sed -i 's@^HYPDIR.*@HYPDIR=/usr/heirloom/lib/doctools/hyphen@g' mk.config
   sed -i 's@^REFDIR.*@REFDIR=/usr/heirloom/lib/reftools@g' mk.config
+
+  # https://github.com/n-t-roff/heirloom-doctools/commit/8f9fc8
+  sed -i 's@/second part of user declarations/ {@/^#ifdef YYTYPE_UINT8$/ {@' eqn/yyval.sed
 }
 
 build() {
