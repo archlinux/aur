@@ -1,9 +1,9 @@
-# Maintainer: Aaron Fischer <mail@aaaron-fischer.net>
+# Contributor: Aaron Fischer <mail@aaaron-fischer.net>
 # Contributor: BlackEagle < ike DOT devolder AT gmail DOT com >
 # Contributor: Bram Schoenmakers <me@bramschoenmakers.nl>
 
 pkgname=closure-compiler
-pkgver=20181210
+pkgver=20190618
 pkgrel=1
 pkgdesc="Performs checking, instrumentation and optimizations on Javascript code."
 arch=('any')
@@ -11,8 +11,8 @@ url="https://developers.google.com/closure/compiler/"
 license=('APACHE')
 depends=('java-runtime=8')
 makedepends=('maven' 'git')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/google/$pkgname/archive/v$pkgver.tar.gz")
-sha512sums=('54da6f1983e7d3a523e8352ab5749113f33dae64a3df8d08c4db3eb5a13d6bcdd9b9a9850279dc168ed63a15ac5150c9bcd5a8642ff7090a058b9b18ade4d024')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/google/closure-compiler/archive/v$pkgver.tar.gz")
+sha512sums=('b0849af5351b6220fd9c918c402f5c48cc2c61441d573a66b3860c9a9bb3e310608366066987d2011d54bf48b89436c127b3722cf861159dfe7af74f094f4a58')
 
 LANG='en_US.UTF-8'
 
