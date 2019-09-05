@@ -4,7 +4,7 @@ NAME="X11/xorg.conf.d/10-nvidia.conf"
 
 post_install() {
 	echo "Creating /etc/${NAME} ..."
-	cp -v /usr/share/${NAME} /etc/${NAME}
+	[ ! -f /etc/${NAME} ] && cp -v /usr/share/${NAME} /etc/${NAME}
 	cat <<DOC
 Pay attention!!!
 If you use xorg-server-git then you may need to uncomment some lines in /etc/${NAME}
