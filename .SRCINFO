@@ -8,6 +8,7 @@ pkgbase = coin-or-bcp
 	groups = coin-or
 	license = EPL
 	depends = coin-or-vol
+	depends = coin-or-cgl
 	source = http://www.coin-or.org/download/source/Bcp/Bcp-1.4.4.tgz
 	sha256sums = 8b490ad35c28a79806f84dacbdc36d602ce0a3a4e32c3575f99495c6e6b4906e
 
