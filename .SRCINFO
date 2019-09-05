@@ -8,7 +8,6 @@ pkgbase = coin-or-vol
 	groups = coin-or
 	license = EPL
 	depends = coin-or-osi
-	depends = coin-or-coinutils
 	source = http://www.coin-or.org/download/source/Vol/Vol-1.5.4.tgz
 	sha256sums = dbcd822cb42c596990444c9db8b65e77ec71f98c8550e1212f9e8c1a7cba6930
 
