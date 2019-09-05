@@ -4,7 +4,7 @@
 
 pkgname=amdvlk-git
 pkgver=v.v.2019.Q3.5.r1.a14d42d
-pkgrel=1
+pkgrel=2
 pkgdesc="AMD's standalone Vulkan driver"
 arch=(x86_64)
 url="https://github.com/GPUOpen-Drivers"
@@ -79,6 +79,13 @@ build() {
   cd builds/Release64
   ninja
   msg "building xgl finished!"
+
+  msg "building spvgen"
+  pushd ../../../spvgen/external > /dev/null
+  python2 fetch_external_sources.py
+  popd > /dev/null
+  ninja spvgen
+  msg "building spvgen finished!"
   popd > /dev/null
 
   #msg "building spvgen"
@@ -98,7 +105,7 @@ package() {
   install -m755 -d "${pkgdir}"/usr/share/licenses/amdvlk-git
   install -m755 -d "${pkgdir}"/etc/amd
 
-  install -D -t "$pkgdir/usr/lib" drivers/xgl/builds/Release64/icd/amdvlk64.so
+  install -D -t "$pkgdir/usr/lib" drivers/xgl/builds/Release64/icd/amdvlk64.so drivers/xgl/builds/Release64/spvgen/spvgen.so
   install -D -m644 -t "${pkgdir}/usr/share/vulkan/icd.d" drivers/AMDVLK/json/Redhat/amd_icd64.json
   install -D -m644 -t "${pkgdir}/usr/share/licenses/amdvlk-git" drivers/AMDVLK/LICENSE.txt
 
