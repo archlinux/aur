@@ -1,0 +1,13 @@
+pkgbase = googleplaymusic
+	pkgdesc = Google Play Music is a unofficial client to play your music.
+	pkgver = 1.1.5
+	pkgrel = 4
+	url = https://gitlab.com/coreybruce/GooglePlayMusic
+	arch = x86_64
+	license = GPL
+	provides = googleplaymusic
+	source = https://gitlab.com/coreybruce/GooglePlayMusic/raw/binaries/GooglePlayMusic-linux-x64.tar.gz
+	md5sums = SKIP
+
+pkgname = googleplaymusic
+
