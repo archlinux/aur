@@ -2,7 +2,7 @@
 # Contributor: Dennis Kempin <mail@dennis-kempin.de>
 
 pkgname=boost-build
-pkgver=1.70
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="Boost.Build makes it easy to build C++ projects, everywhere."
 arch=('any')
@@ -10,19 +10,19 @@ url="http://www.boost.org/build/"
 license=('custom:boost')
 depends=('gcc' 'boost' 'python')
 conflicts=('boost-build-nightly')
-source=("https://github.com/boostorg/build/archive/boost-${pkgver}.0.tar.gz"
+source=("https://github.com/boostorg/build/archive/${pkgver}.tar.gz"
         "http://www.boost.org/LICENSE_1_0.txt")
-sha256sums=('6630adb18e9fdddf354ce16ee7c358fa79aa0ae264da3b5604cbed6769ce84e5'
+sha256sums=('af615141c14858b67d71a278896523d3df0da0ff3c6495b6acf0ae2e8b44dd92'
             'c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566')
 
 prepare() {
-  cd ${srcdir}/build-boost-${pkgver}.0/
+  cd ${srcdir}/build-${pkgver}/
 
   ./bootstrap.sh
 }
 
 package() {
-  cd ${srcdir}/build-boost-${pkgver}.0/
+  cd ${srcdir}/build-${pkgver}/
 
   echo ${pkgdir}
 
