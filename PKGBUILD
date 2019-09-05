@@ -2,7 +2,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=qt5-gamepad
-_qtver=5.13.0
+_qtver=5.13.1
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=('x86_64')
@@ -15,7 +15,7 @@ optdepends=('qt5-declarative: QML bindings')
 groups=('qt' 'qt5')
 _pkgfqn="${pkgname/5-/}-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('6bc1086d8c6a36a80dfa939b5ecb372be8c913a81e2986d84302012eafdc4b63')
+sha256sums=('660e2bea430be5dc75557d038f162b77454c945ab6df1a1f4a7d69011e02c199')
 
 prepare() {
   mkdir -p build
