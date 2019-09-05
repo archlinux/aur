@@ -29,7 +29,7 @@ build() {
     fi
     cd build/active-data
     cmake ${srcdir}/active-data
-    make -j4
+    make
 }
 
 package() {
