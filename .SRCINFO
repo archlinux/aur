@@ -1,6 +1,6 @@
 pkgbase = lib32-libsecret
 	pkgdesc = Library for storing and retrieving passwords and other secrets (32-bit)
-	pkgver = 0.19.0
+	pkgver = 0.19.1
 	pkgrel = 1
 	url = https://wiki.gnome.org/Projects/Libsecret
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = lib32-libsecret
 	depends = lib32-libgcrypt
 	depends = libsecret
 	optdepends = gnome-keyring: key storage service, or use any other service implementing org.freedesktop.secrets
-	source = git+https://git.gnome.org/browse/libsecret#commit=be541cf9d4a81b97f55794a5b1de50f92aac1fbb
+	source = git+https://git.gnome.org/browse/libsecret#commit=f576dfbe50f9aed22802ad0db0356d081f467d7a
 	sha256sums = SKIP
 
 pkgname = lib32-libsecret
