@@ -1,7 +1,7 @@
 # Maintainer: Jean Lucas <jean@4ray.co>
 
 pkgname=whalebird-desktop
-pkgver=2.8.2
+pkgver=2.8.4
 pkgrel=1
 pkgdesc='Electron-based Mastodon/Pleroma client'
 arch=(i686 x86_64)
@@ -11,7 +11,7 @@ depends=(alsa-lib atk at-spi2-atk cairo dbus gdk-pixbuf2 glib2 gtk3 hicolor-icon
 makedepends=(npm git)
 source=($pkgname-$pkgver.tar.gz::https://github.com/h3poteto/$pkgname/archive/$pkgver.tar.gz
         whalebird.desktop)
-sha512sums=('969c7cec600979d7950a65a5b9bce1906737fee0c82cd70c9bd68ea168994aa0cb645716341fcd98c2a39959a75fc5226df4cdb77d54755c101797e569ac9be8'
+sha512sums=('bb034ba2a3c1e09b7d1b6c67d0e22bfdd041c7f7b2331805b2032c1f489d1872de700955b5fbb96ffd10379655c3fc66ed3a27de6c1fe55c3ba194117958a8ce'
             '3e5f29fc6db305957b81abc8e4b4679fbd979bbf41ce0c190b19c31a96a3bfe03b624885961ce6d7410716d286c82548b960ebbc1e547c1cacc0b16175eecee2')
 
 build() {
@@ -22,14 +22,13 @@ build() {
 }
 
 package() {
-  install -Dm 644 whalebird.desktop -t "$pkgdir"/usr/share/applications
-
   cd $pkgname-$pkgver/build
 
-  mkdir "$pkgdir"/usr/{lib,bin}
+  mkdir -p "$pkgdir"/usr/{lib,bin}
   cp -a linux-unpacked "$pkgdir"/usr/lib/$pkgname
   ln -s /usr/lib/$pkgname/whalebird "$pkgdir"/usr/bin/whalebird
 
+  install -Dm 644 ../../whalebird.desktop -t "$pkgdir"/usr/share/applications
   for i in 16 32 128 256 512; do
     install -Dm 644 icons/icon.iconset/icon_${i}x${i}.png \
       "$pkgdir"/usr/share/icons/hicolor/${i}x${i}/apps/whalebird.png
