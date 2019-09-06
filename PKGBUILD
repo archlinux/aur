@@ -1,16 +1,17 @@
 # Contributor: Ainola
 # Contributor: Milan Knizek
+# Maintainer: K. Hampf <khampf@users.sourceforge.net>
 
 pkgname=scanbd
 pkgver=1.5.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Scanner button daemon looking for scanner button pressed"
 arch=('x86_64')
 url="http://scanbd.sourceforge.net/"
 license=('GPL2')
 depends=('sane' 'confuse')
-source=("https://downloads.sourceforge.net/scanbd/scanbd-$pkgver.tgz")
-sha256sums=('b69ca5a474b81516d19c38082d949363c243df9ab9742315aaae499723267e5f')
+source=("https://downloads.sourceforge.net/scanbd/scanbd-$pkgver.tgz" "strcpy-bounds.patch")
+sha256sums=('b69ca5a474b81516d19c38082d949363c243df9ab9742315aaae499723267e5f' 'SKIP')
 backup=('etc/scanbd/scanbd.conf')
 
 prepare() {
@@ -27,7 +28,6 @@ prepare() {
     sed -i 's@\(Environment=SANE_CONFIG_DIR=/etc/scanbd\)$@\1/sane.d@' \
             integration/systemd/scanbm@.service
 
-
     # Arch uses the 'daemon' user and 'scanner' group.
     sed -i 's/"saned">.*/"daemon">/' integration/scanbd_dbus.conf
 
@@ -36,6 +36,8 @@ prepare() {
     sed -i 's@/var\(/run/scanbd.pid\)@\1@' conf/scanbd.conf
     sed -i 's@\(debug-level =\)7$@\1 2@' conf/scanbd.conf
     sed -i 's@\(SANE_CONFIG_DIR=\)\(/etc/scanbd\)@\1\2/sane.d@' conf/scanbd.conf
+
+    patch --forward --strip=1 --input="${srcdir}/strcpy-bounds.patch"
 }
 
 build() {
