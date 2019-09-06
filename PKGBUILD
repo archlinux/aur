@@ -1,29 +1,33 @@
+# Author: Bruno Pagani <archange@archlinux.org>
 # Maintainer: nerflad <nerflad@gmail.com>
 
-pkgname=ocaml-biniou
-_oname=biniou
-pkgver=1.2.0
-pkgrel=3
-pkgdesc='A binary data serialization format inspired by JSON'
-arch=('i686' 'x86_64' 'armv7h')
-options=('!strip' '!makeflags' 'staticlibs')
+_pkgname=biniou
+pkgname=ocaml-${_pkgname}
+pkgver=1.2.1
+pkgrel=2
+pkgdesc="An optimized parsing and printing library for JSON"
+arch=('x86_64')
+url="https://github.com/ocaml-community/${_pkgname}"
 license=('BSD')
-depends=('glibc')
-makedepends=('ocaml-easy-format' 'ocaml-findlib' 'dune')
-url="https://github.com/mjambon/biniou"
-source=("https://github.com/mjambon/${_oname}/archive/v${pkgver}.tar.gz")
-sha256sums=('d939a9d58660201738c3d22ad5b7976deb2917b22591a07525807bb741357d36')
+options=('!strip' 'staticlibs')
+depends=('ocaml-easy-format')
+makedepends=('dune')
+source=(${pkgname}-${pkgver}.tar.gz::"${url}/archive/${pkgver}.tar.gz")
+sha256sums=('9e38566ede8f2593f9f743fb7da1c8a8674451eabe326b3e2b42a87834a66cb5')
+
 build() {
-    cd ${srcdir}/${_oname}-${pkgver}
+    cd ${_pkgname}-${pkgver}
     make all
 }
 
+check() {
+    cd ${_pkgname}-${pkgver}
+    make test
+}
+
 package() {
-    cd ${srcdir}/${_oname}-${pkgver}
-    export OPAMROOT="${srcdir}/.opam"
-    opam init -n
-    mkdir -p "${pkgdir}/usr/bin"
-    export OCAMLFIND_DESTDIR="$pkgdir/$(ocamlfind printconf destdir)"
-    install -dm755 "$OCAMLFIND_DESTDIR"
-    jbuilder install
+    cd ${_pkgname}-${pkgver}
+    DESTDIR="${pkgdir}" dune install --prefix=/usr --libdir="$(ocamlfind printconf destdir)"
+    install -Dm644 LICENSE -t "${pkgdir}"/usr/share/licenses/${pkgname}/
+    rm -r "${pkgdir}"/usr/doc
 }
