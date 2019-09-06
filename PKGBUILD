@@ -12,7 +12,7 @@ license=('MIT')
 optdepends=('bash-completion: command-line autocomplete with bash')
 source=("https://github.com/tdewolff/minify/releases/download/v${pkgver}/minify_${pkgver}_linux_amd64.tar.gz"
         "https://raw.githubusercontent.com/tdewolff/minify/master/cmd/minify/minify_bash_tab_completion")
-sha256sums=('e6cee22dafe0728f730724cd163920a31e0c63b825b536e21db69fab67640339'
+sha256sums=('079ff19c2f4c860b884385ac1702f4345a0d98101946ceb57867d4875d9f5038'
             '25f25a205ca071471daab6b1c8eeb16e0b1c8609844b158b85c76344eb4bbc31')
 
 package() {
