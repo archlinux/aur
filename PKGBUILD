@@ -3,7 +3,7 @@
 
 pkgname=portecle
 pkgver=1.11
-pkgrel=1
+pkgrel=2
 pkgdesc="User friendly GUI application for creating, managing and examining key stores."
 arch=('any')
 url="http://portecle.sourceforge.net/"
@@ -27,9 +27,9 @@ package() {
 
   # Icons
   for i in 16 32 48 64 96 128 192 256 512; do
-    for ico in ${srcdir}/${pkgname}-${pkgver}/icons/${i}x${i}/*.png; do
-      install -Dm644 ${ico} \
-      ${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/${ico}
+    for ico in `ls ${srcdir}/${pkgname}-${pkgver}/icons/${i}x${i}/*.png`; do
+      install -Dm644 ${srcdir}/${pkgname}-${pkgver}/icons/${i}x${i}/${ico##*/} \
+      ${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/${ico##*/}
     done
   done
 }
