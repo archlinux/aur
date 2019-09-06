@@ -1,0 +1,84 @@
+diff -Naur xfce4-panel-4.14.0-orig/plugins/pager/pager.c xfce4-panel-4.14.0/plugins/pager/pager.c
+--- xfce4-panel-4.14.0-orig/plugins/pager/pager.c	2019-09-04 17:18:06.995162924 +0200
++++ xfce4-panel-4.14.0/plugins/pager/pager.c	2019-09-04 17:16:38.674429040 +0200
+@@ -757,7 +757,7 @@
+   PagerPlugin *plugin = XFCE_PAGER_PLUGIN (panel_plugin);
+   GtkBuilder  *builder;
+   GObject     *dialog, *object;
+-  GtkWidget   *scroll_option;
++  GtkWidget   *scroll_options;
+ 
+   panel_return_if_fail (XFCE_IS_PAGER_PLUGIN (plugin));
+ 
+@@ -786,12 +786,12 @@
+                           G_OBJECT (object), "active",
+                           G_BINDING_SYNC_CREATE | G_BINDING_BIDIRECTIONAL);
+ 
+-  scroll_option = GTK_WIDGET(gtk_builder_get_object(builder, "workspace-invert-scrolling"));
+-  gtk_widget_set_sensitive (GTK_WIDGET (scroll_option),
++  scroll_options = GTK_WIDGET(gtk_builder_get_object(builder, "scroll-options"));
++  gtk_widget_set_sensitive (GTK_WIDGET (scroll_options),
+       gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (object)));
+ 
+   g_signal_connect (object, "toggled",
+-      G_CALLBACK (workspace_scrolling_toggled), scroll_option);
++      G_CALLBACK (workspace_scrolling_toggled), scroll_options);
+ 
+   object = gtk_builder_get_object (builder, "workspace-invert-scrolling");
+   panel_return_if_fail (GTK_IS_TOGGLE_BUTTON (object));
+@@ -799,6 +799,12 @@
+                           G_OBJECT (object), "active",
+                           G_BINDING_SYNC_CREATE | G_BINDING_BIDIRECTIONAL);
+ 
++  object = gtk_builder_get_object (builder, "wrap-workspaces");
++  panel_return_if_fail (GTK_IS_TOGGLE_BUTTON (object));
++  g_object_bind_property (G_OBJECT (plugin), "wrap-workspaces",
++                          G_OBJECT (object), "active",
++                          G_BINDING_SYNC_CREATE | G_BINDING_BIDIRECTIONAL);
++
+   object = gtk_builder_get_object (builder, "miniature-view");
+   panel_return_if_fail (GTK_IS_TOGGLE_BUTTON (object));
+   g_object_bind_property (G_OBJECT (plugin), "miniature-view",
+diff -Naur xfce4-panel-4.14.0-orig/plugins/pager/pager-dialog.glade xfce4-panel-4.14.0/plugins/pager/pager-dialog.glade
+--- xfce4-panel-4.14.0-orig/plugins/pager/pager-dialog.glade	2019-09-04 16:23:48.827680128 +0200
++++ xfce4-panel-4.14.0/plugins/pager/pager-dialog.glade	2019-09-04 17:13:06.856668235 +0200
+@@ -243,14 +243,32 @@
+                             <property name="visible">True</property>
+                             <property name="left_padding">12</property>
+                             <child>
+-                              <object class="GtkCheckButton" id="workspace-invert-scrolling">
+-                                <property name="label" translatable="yes">_Invert mouse wheel workspace switching direction</property>
++                              <object class="GtkVBox" id="scroll-options">
+                                 <property name="visible">True</property>
+-                                <property name="sensitive">True</property>
+-                                <property name="can_focus">True</property>
+-                                <property name="receives_default">False</property>
+-                                <property name="use_underline">True</property>
+-                                <property name="draw_indicator">True</property>
++                                <property name="orientation">vertical</property>
++                                <property name="spacing">6</property>
++                                <child>
++                                  <object class="GtkCheckButton" id="workspace-invert-scrolling">
++                                    <property name="label" translatable="yes">_Invert mouse wheel workspace switching direction</property>
++                                    <property name="visible">True</property>
++                                    <property name="sensitive">True</property>
++                                    <property name="can_focus">True</property>
++                                    <property name="receives_default">False</property>
++                                    <property name="use_underline">True</property>
++                                    <property name="draw_indicator">True</property>
++                                  </object>
++                                </child>
++                                <child>
++                                  <object class="GtkCheckButton" id="wrap-workspaces">
++                                    <property name="label" translatable="yes">Wrap workspaces when _the first or the last workspace is reached</property>
++                                    <property name="visible">True</property>
++                                    <property name="sensitive">True</property>
++                                    <property name="can_focus">True</property>
++                                    <property name="receives_default">False</property>
++                                    <property name="use_underline">True</property>
++                                    <property name="draw_indicator">True</property>
++                                  </object>
++                                </child>
+                               </object>
+                             </child>
+                           </object>
