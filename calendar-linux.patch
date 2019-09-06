@@ -1,6 +1,6 @@
-diff -up calendar-1.35-20190227cvs/calendar.c.orig calendar-1.35-20190227cvs/calendar.c
---- calendar-1.35-20190227cvs/calendar.c.orig	2015-12-07 13:46:35.000000000 -0500
-+++ calendar-1.35-20190227cvs/calendar.c	2019-02-27 15:02:36.384637931 -0500
+diff -up calendar-1.37-20190827cvs/calendar.c.orig calendar-1.37-20190827cvs/calendar.c
+--- calendar-1.37-20190827cvs/calendar.c.orig	2019-02-01 11:22:53.000000000 -0500
++++ calendar-1.37-20190827cvs/calendar.c	2019-08-27 15:50:25.766758389 -0400
 @@ -35,7 +35,6 @@
  #include <err.h>
  #include <errno.h>
@@ -20,8 +20,8 @@ diff -up calendar-1.35-20190227cvs/calendar.c.orig calendar-1.35-20190227cvs/cal
 +			if (errno == ERANGE && (f_dayAfter == LLONG_MIN || f_dayBefore == LLONG_MAX))
 +				errx(1, "-A %s: %s", optarg, strerror(errno));
 +			else if (f_dayAfter < 0 || f_dayAfter > INT_MAX)
-+				errx(1, "-A %s: %s out of range", optarg);
- 			f_SetdayAfter = 1;
++				errx(1, "-A %s: %s out of range", optarg, strerror(errno));
+ 			f_Setday = 1;
  			break;
  
  		case 'B': /* days before current date */
@@ -32,11 +32,11 @@ diff -up calendar-1.35-20190227cvs/calendar.c.orig calendar-1.35-20190227cvs/cal
 +			if (errno == ERANGE && (f_dayBefore == LLONG_MIN || f_dayBefore == LLONG_MAX))
 +				errx(1, "-B %s: %s", optarg, strerror(errno));
 +			else if (f_dayBefore < 0 || f_dayBefore > INT_MAX)
-+				errx(1, "-B %s: %s out of range", optarg);
++				errx(1, "-B %s: %s out of range", optarg, strerror(errno));
+ 			if (f_dayBefore != 0)
+ 				f_Setday = 1;
  			break;
- 
- 		case 'w':
-@@ -123,15 +126,6 @@ main(int argc, char *argv[])
+@@ -125,15 +128,6 @@ main(int argc, char *argv[])
  	if (argc)
  		usage();
  
@@ -52,7 +52,7 @@ diff -up calendar-1.35-20190227cvs/calendar.c.orig calendar-1.35-20190227cvs/cal
  	/* use current time */
  	if (f_time <= 0)
  	    (void)time(&f_time);
-@@ -190,10 +184,6 @@ main(int argc, char *argv[])
+@@ -192,10 +186,6 @@ main(int argc, char *argv[])
  			case 0:	/* child */
  				(void)setpgid(getpid(), getpid());
  				(void)setlocale(LC_ALL, "");
@@ -63,9 +63,9 @@ diff -up calendar-1.35-20190227cvs/calendar.c.orig calendar-1.35-20190227cvs/cal
  				if (acstat) {
  					if (chdir(pw->pw_dir) ||
  					    stat(calendarFile, &sbuf) != 0 ||
-diff -up calendar-1.35-20190227cvs/calendar.h.orig calendar-1.35-20190227cvs/calendar.h
---- calendar-1.35-20190227cvs/calendar.h.orig	2015-12-07 13:46:35.000000000 -0500
-+++ calendar-1.35-20190227cvs/calendar.h	2019-02-27 15:02:36.384637931 -0500
+diff -up calendar-1.37-20190827cvs/calendar.h.orig calendar-1.37-20190827cvs/calendar.h
+--- calendar-1.37-20190827cvs/calendar.h.orig	2019-02-01 11:22:53.000000000 -0500
++++ calendar-1.37-20190827cvs/calendar.h	2019-08-27 15:49:16.082984894 -0400
 @@ -29,6 +29,7 @@
   * SUCH DAMAGE.
   */
@@ -74,7 +74,7 @@ diff -up calendar-1.35-20190227cvs/calendar.h.orig calendar-1.35-20190227cvs/cal
  
  extern struct passwd *pw;
  extern int doall;
-@@ -116,7 +117,7 @@ extern int f_SetdayAfter; /* calendar in
+@@ -116,7 +117,7 @@ extern int f_Setday;	/* calendar invoked
  
  /* calendars */
  extern enum calendars { GREGORIAN = 0, JULIAN, LUNAR } calendar;
@@ -83,9 +83,9 @@ diff -up calendar-1.35-20190227cvs/calendar.h.orig calendar-1.35-20190227cvs/cal
  
  #define NUMEV 3	/* Total number of such special events */
  extern struct specialev spev[NUMEV];
-diff -up calendar-1.35-20190227cvs/day.c.orig calendar-1.35-20190227cvs/day.c
---- calendar-1.35-20190227cvs/day.c.orig	2016-09-14 11:09:46.000000000 -0400
-+++ calendar-1.35-20190227cvs/day.c	2019-02-27 15:02:36.384637931 -0500
+diff -up calendar-1.37-20190827cvs/day.c.orig calendar-1.37-20190827cvs/day.c
+--- calendar-1.37-20190827cvs/day.c.orig	2019-02-01 11:22:53.000000000 -0500
++++ calendar-1.37-20190827cvs/day.c	2019-08-27 15:49:31.774933887 -0400
 @@ -160,7 +160,7 @@ settime(time_t *now)
  	tp->tm_isdst = 0;
  	tp->tm_hour = 12;
@@ -126,9 +126,9 @@ diff -up calendar-1.35-20190227cvs/day.c.orig calendar-1.35-20190227cvs/day.c
  		cumdays = daytab[1];
  	else
  		cumdays = daytab[0];
-diff -up calendar-1.35-20190227cvs/io.c.orig calendar-1.35-20190227cvs/io.c
---- calendar-1.35-20190227cvs/io.c.orig	2017-09-25 15:13:56.000000000 -0400
-+++ calendar-1.35-20190227cvs/io.c	2019-02-27 15:02:36.384637931 -0500
+diff -up calendar-1.37-20190827cvs/io.c.orig calendar-1.37-20190827cvs/io.c
+--- calendar-1.37-20190827cvs/io.c.orig	2019-01-29 17:28:30.000000000 -0500
++++ calendar-1.37-20190827cvs/io.c	2019-08-27 15:50:56.117659733 -0400
 @@ -67,7 +67,7 @@ void
  cal(void)
  {
@@ -138,22 +138,21 @@ diff -up calendar-1.35-20190227cvs/io.c.orig calendar-1.35-20190227cvs/io.c
  	char buf[2048 + 1], *prefix = NULL, *p;
  	struct match *m;
  	FILE *fp;
-@@ -282,8 +282,9 @@ getfield(char *p, char **endp, int *flag
+@@ -282,8 +282,8 @@ getfield(char *p, char **endp, int *flag
  			switch (*start) {
  			case '-':
  			case '+':
 -				var = strtonum(start + 1, 0, 365, &errstr);
 -				if (errstr)
 +				var = strtoll(start + 1, NULL, 10);
-+				if ((errno == ERANGE && (var == LLONG_MIN || var == LLONG_MAX)) ||
-+				    (var < 0 || var > 365))
++				if ((errno == ERANGE && (var == LLONG_MIN || var == LLONG_MAX)) || (var < 0 || var > 365))
  					return (0); /* Someone is just being silly */
  				if (*start == '-')
  					var = -var;
-diff -up calendar-1.35-20190227cvs/ostern.c.orig calendar-1.35-20190227cvs/ostern.c
---- calendar-1.35-20190227cvs/ostern.c.orig	2015-03-14 20:41:28.000000000 -0400
-+++ calendar-1.35-20190227cvs/ostern.c	2019-02-27 15:02:36.384637931 -0500
-@@ -60,7 +60,7 @@ easter(int year)	/* 0 ... abcd, NOT sinc
+diff -up calendar-1.37-20190827cvs/ostern.c.orig calendar-1.37-20190827cvs/ostern.c
+--- calendar-1.37-20190827cvs/ostern.c.orig	2019-01-17 01:15:44.000000000 -0500
++++ calendar-1.37-20190827cvs/ostern.c	2019-08-27 15:49:16.082984894 -0400
+@@ -58,7 +58,7 @@ easter(int year)	/* 0 ... abcd, NOT sinc
  	e_p = e_p + 1;
  
  	e_q = 31 + 28 + e_p;
@@ -162,9 +161,9 @@ diff -up calendar-1.35-20190227cvs/ostern.c.orig calendar-1.35-20190227cvs/oster
  		e_q++;
  
  	if (e_n == 4)
-diff -up calendar-1.35-20190227cvs/paskha.c.orig calendar-1.35-20190227cvs/paskha.c
---- calendar-1.35-20190227cvs/paskha.c.orig	2015-03-14 20:41:28.000000000 -0400
-+++ calendar-1.35-20190227cvs/paskha.c	2019-02-27 15:02:36.384637931 -0500
+diff -up calendar-1.37-20190827cvs/paskha.c.orig calendar-1.37-20190827cvs/paskha.c
+--- calendar-1.37-20190827cvs/paskha.c.orig	2015-03-14 20:41:28.000000000 -0400
++++ calendar-1.37-20190827cvs/paskha.c	2019-08-27 15:49:16.082984894 -0400
 @@ -27,6 +27,7 @@
   */
  
@@ -182,9 +181,9 @@ diff -up calendar-1.35-20190227cvs/paskha.c.orig calendar-1.35-20190227cvs/paskh
  		cumdays++;
  	return ((cumdays + 22) + (d + e) + 13);
  }
-diff -up calendar-1.35-20190227cvs/pathnames.h.orig calendar-1.35-20190227cvs/pathnames.h
---- calendar-1.35-20190227cvs/pathnames.h.orig	2014-07-30 12:46:17.000000000 -0400
-+++ calendar-1.35-20190227cvs/pathnames.h	2019-02-27 15:02:57.883547022 -0500
+diff -up calendar-1.37-20190827cvs/pathnames.h.orig calendar-1.37-20190827cvs/pathnames.h
+--- calendar-1.37-20190827cvs/pathnames.h.orig	2014-07-30 12:46:17.000000000 -0400
++++ calendar-1.37-20190827cvs/pathnames.h	2019-08-27 15:49:16.082984894 -0400
 @@ -33,7 +33,7 @@
  
  #include <paths.h>
@@ -194,9 +193,9 @@ diff -up calendar-1.35-20190227cvs/pathnames.h.orig calendar-1.35-20190227cvs/pa
  
  			/* XXX -- fix when cpp parses arguments rationally */
  #define	_PATH_INCLUDE	"-I/usr/share/calendar"
-diff -up calendar-1.35-20190227cvs/pesach.c.orig calendar-1.35-20190227cvs/pesach.c
---- calendar-1.35-20190227cvs/pesach.c.orig	2015-03-14 20:41:28.000000000 -0400
-+++ calendar-1.35-20190227cvs/pesach.c	2019-02-27 15:02:36.384637931 -0500
+diff -up calendar-1.37-20190827cvs/pesach.c.orig calendar-1.37-20190827cvs/pesach.c
+--- calendar-1.37-20190827cvs/pesach.c.orig	2015-03-14 20:41:28.000000000 -0400
++++ calendar-1.37-20190827cvs/pesach.c	2019-08-27 15:49:16.083984890 -0400
 @@ -18,6 +18,7 @@
   */
  
