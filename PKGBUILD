@@ -5,7 +5,7 @@ pkgdesc="A collection of sparse matrix libraries (mingw-w64)"
 url="http://www.cise.ufl.edu/research/sparse/SuiteSparse/"
 arch=('any')
 depends=('mingw-w64-lapack' 'mingw-w64-metis')
-makedepends=('mingw-w64-gcc')
+makedepends=('mingw-w64-cmake')
 license=('GPL')
 options=('!buildflags' '!strip' 'staticlibs')
 source=("http://faculty.cse.tamu.edu/davis/SuiteSparse/SuiteSparse-${pkgver}.tar.gz")
@@ -30,6 +30,11 @@ prepare () {
   curl -L https://raw.githubusercontent.com/msys2/MINGW-packages/master/mingw-w64-suitesparse/0001-mingw-w64-Use-a-not-lib-as-AR_TARGET-extension.patch | patch -p1
   curl -L https://raw.githubusercontent.com/msys2/MINGW-packages/master/mingw-w64-suitesparse/0002-mingw-w64-Set-SO_OPTS--shared-move-dlls-create-import-libs.patch | patch -p1
   curl -L https://raw.githubusercontent.com/msys2/MINGW-packages/master/mingw-w64-suitesparse/0004-mingw-w64-install-static-libs.patch | patch -p1
+
+  # x86_64 conversion errors
+  sed -i "s|nzmax = std::max(nzmax, 1L)|nzmax = std::max(nzmax, (csi)1)|g" Mongoose/Source/Mongoose_CSparse.cpp
+  sed -i "s|Int M, N, nz;|long M, N, nz;|g" Mongoose/Source/Mongoose_IO.cpp
+  sed -i "s|mm_read_mtx_crd_data(file, M, N, nz, I, J, val, matcode);|mm_read_mtx_crd_data(file, M, N, nz, (long*)I, (long*)J, val, matcode);|g" Mongoose/Source/Mongoose_IO.cpp
 }
 
 build() {
@@ -65,4 +70,3 @@ package() {
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
   done
 }
-
