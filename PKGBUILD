@@ -3,7 +3,7 @@
 _pkgname=kapp
 pkgname=${_pkgname}-git
 pkgver=r193.b0d6b82
-pkgrel=1
+pkgrel=2
 pkgdesc='kapp is a simple deployment tool focused on the concept of "Kubernetes application"'
 url="https://get-kapp.io/"
 license=('Apache')
@@ -28,6 +28,7 @@ build() {
 	cd "${srcdir}/src/github.com/k14s/${_pkgname}"
 
 	export GOPATH="${srcdir}"
+	export GOFLAGS="-gcflags=all=-trimpath=${PWD} -asmflags=all=-trimpath=${PWD} -ldflags=-extldflags=-zrelro -ldflags=-extldflags=-znow"
 
 	mkdir -p tmp
 	build_values_path="../../../${BUILD_VALUES:-./hack/build-values-default.yml}"
