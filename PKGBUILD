@@ -6,7 +6,7 @@
 # https://github.com/mymedia2/tdesktop
 
 pkgname=telegram-desktop-dev
-pkgver=1.8.2
+pkgver=1.8.4
 pkgrel=1
 pkgdesc='Official Telegram Desktop client - development release'
 arch=('i686' 'x86_64')
@@ -87,6 +87,15 @@ prepare() {
 
     # disable static-qt for rlottie
     sed "/RLOTTIE_WITH_STATIC_QT/d" -i "$srcdir/tdesktop/Telegram/gyp/lib_rlottie.gyp"
+
+    # fix C++ ranges::sized_iterator_range
+    sed "s/ranges::make_iterator_range/ranges::subrange/g" -i "$srcdir/tdesktop/Telegram/SourceFiles/data/data_channel.cpp"
+    sed "s/ranges::make_iterator_range/ranges::subrange/g" -i "$srcdir/tdesktop/Telegram/SourceFiles/chat_helpers/emoji_keywords.cpp"
+    sed "s/ranges::make_iterator_range/ranges::subrange/g" -i "$srcdir/tdesktop/Telegram/SourceFiles/media/streaming/media_streaming_reader.cpp"
+    sed "s/ranges::make_iterator_range/ranges::subrange/g" -i "$srcdir/tdesktop/Telegram/SourceFiles/ui/widgets/input_fields.cpp"
+    sed "s/ranges::make_iterator_range/ranges::subrange/g" -i "$srcdir/tdesktop/Telegram/SourceFiles/ui/text/text_entity.cpp"
+    sed "s/make_iterator_range/ranges::subrange/g" -i "$srcdir/tdesktop/Telegram/SourceFiles/history/history_inner_widget.cpp"
+    sed "/int remainder = 0;/a inline bool operator==(const PercentCounterItem &o) const { return !(*this < o) && !(o < *this);}" -i "$srcdir/tdesktop/Telegram/SourceFiles/history/view/media/history_view_poll.cpp"
 
     cd "$srcdir/tdesktop"
     cd "Telegram/ThirdParty/libtgvoip"
