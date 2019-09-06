@@ -1,6 +1,6 @@
 pkgbase = linux-usermode
 	pkgdesc = User mode Linux kernel and modules
-	pkgver = 5.1.5
+	pkgver = 5.2.13
 	pkgrel = 1
 	url = http://user-mode-linux.sourceforge.net/
 	arch = x86_64
@@ -8,21 +8,18 @@ pkgbase = linux-usermode
 	makedepends = bc
 	makedepends = inetutils
 	depends = coreutils
-	source = http://www.kernel.org/pub/linux/kernel/v5.x/linux-5.1.tar.xz
-	source = http://www.kernel.org/pub/linux/kernel/v5.x/linux-5.1.tar.sign
-	source = http://www.kernel.org/pub/linux/kernel/v5.x/patch-5.1.5.xz
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.2.13.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.2.13.tar.sign
 	source = config
-	source = 001-hide_the_int3_emulate_call_jmp_functions_from_uml.patch
+	source = 70-uml.hook
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	sha256sums = d06a7be6e73f97d1350677ad3bae0ce7daecb79c2c2902aaabe806f7fa94f041
+	sha256sums = 17b60f55241dee4b9a2919a653de144ef1002e2de49ccf5d15225b1f07bc178a
 	sha256sums = SKIP
-	sha256sums = def1a382c555454daf28fb768ed2c3e6f339c4bfcd36faa99982e4d31c04efa6
-	sha256sums = c2741019f57c2c918ad80cbf0fad0d03ef585fadf045078b3117cd73d83e5f2b
-	sha256sums = f292341bdbc90f27ea6775bf3c709d92fbf8842c7cf7603c71807f06ad1e69a9
+	sha256sums = a5ad6d1bad174fa407e891c2128746125b2bc0c921be5459ce90fe1949ef617c
+	sha256sums = 452b8d4d71e1565ca91b1bebb280693549222ef51c47ba8964e411b2d461699c
 
 pkgname = linux-usermode
 
 pkgname = linux-usermode-modules
-	install = modules.install
 

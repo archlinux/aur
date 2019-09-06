@@ -1,12 +1,13 @@
-# Maintainer: Haruue Icymoon <haruue@caoyue.com.cn>
-# Contributor: Lucjan Lucjanov <lucjan.lucjanov@gmail.com>
+# Maintainer: Piotr Gorski <lucjan.lucjanov@gmail.com>
+# Contributor: Haruue Icymoon <haruue@caoyue.com.cn>
 
-pkgname=linux-usermode
-true && pkgname=(linux-usermode linux-usermode-modules)
 pkgbase=linux-usermode
+pkgname=('linux-usermode' 'linux-usermode-modules')
 _kernelname=-usermodelinux
-_srcname=linux-5.1
-pkgver=5.1.5
+_major=5.2
+_minor=13
+pkgver=${_major}.${_minor}
+_srcname=linux-${pkgver}
 pkgrel=1
 pkgdesc="User mode Linux kernel and modules"
 arch=('x86_64')
@@ -14,74 +15,79 @@ license=('GPL2')
 url="http://user-mode-linux.sourceforge.net/"
 depends=('coreutils')
 makedepends=('bc' 'inetutils')
-source=(
-  http://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.{xz,sign}
-#  http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.{xz,sign}
-  http://www.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz
-  config
-  001-hide_the_int3_emulate_call_jmp_functions_from_uml.patch)
+source=("https://www.kernel.org/pub/linux/kernel/v5.x/linux-${pkgver}.tar.xz"
+        "https://www.kernel.org/pub/linux/kernel/v5.x/linux-${pkgver}.tar.sign"
+        'config'
+        '70-uml.hook')
 
-sha256sums=('d06a7be6e73f97d1350677ad3bae0ce7daecb79c2c2902aaabe806f7fa94f041'
+sha256sums=('17b60f55241dee4b9a2919a653de144ef1002e2de49ccf5d15225b1f07bc178a'
             'SKIP'
-            'def1a382c555454daf28fb768ed2c3e6f339c4bfcd36faa99982e4d31c04efa6'
-            'c2741019f57c2c918ad80cbf0fad0d03ef585fadf045078b3117cd73d83e5f2b'
-            'f292341bdbc90f27ea6775bf3c709d92fbf8842c7cf7603c71807f06ad1e69a9')
+            'a5ad6d1bad174fa407e891c2128746125b2bc0c921be5459ce90fe1949ef617c'
+            '452b8d4d71e1565ca91b1bebb280693549222ef51c47ba8964e411b2d461699c')
 
 validpgpkeys=(
-  'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
-  '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
-)
+              'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
+              '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
+             )
 
 prepare() {
-  cd "${srcdir}/${_srcname}"
+  cd ${_srcname}
+  
+  msg2 "Setting version..."
+  sed -e "/^EXTRAVERSION =/s/=.*/=/" -i Makefile
+  scripts/setlocalversion --save-scmversion
+  echo "-$pkgrel" > localversion.10-pkgrel
+  echo "$_kernelname" > localversion.20-pkgname
 
-  # add upstream patch
-  patch -p1 -i "${srcdir}/patch-${pkgver}"
-
-  # https://lkml.org/lkml/2019/5/14/966
-  patch -Np1 -i "${srcdir}"/001-hide_the_int3_emulate_call_jmp_functions_from_uml.patch
-
-  cat ../config - >.config <<END
-CONFIG_LOCALVERSION="${_kernelname}"
-CONFIG_LOCALVERSION_AUTO=n
-END
-
-  # set extraversion to pkgrel
-  sed -i "/^EXTRAVERSION =/s/=.*/= -${pkgrel}/" Makefile
-
-  # rewrite configuration
+  msg2 "Setting config..."
+  cp ../config .config
   yes "" | make ARCH=um config >/dev/null
+
+  make ARCH=um kernelrelease > ../version
+  msg2 "Prepared %s version %s" "$pkgbase" "$(<../version)"
+
+  msg2 "Save configuration for later reuse"
+  cat .config > "${startdir}/config.last"
 }
 
 build() {
-  cd "${srcdir}/${_srcname}"
+  cd ${_srcname}
   unset LDFLAGS CFLAGS
-
   make ARCH=um vmlinux modules
 }
 
-package_linux-usermode() {
-  cd "${srcdir}/${_srcname}"
+_package() {
+
+  cd ${_srcname}
   mkdir -p "$pkgdir/usr/bin" "$pkgdir/usr/share/kernel-usermode"
   install -m 644 System.map ${pkgdir}/usr/share/kernel-usermode/System.map
   install -m 755 vmlinux ${pkgdir}/usr/bin/
 }
 
-package_linux-usermode-modules() {
-  install=modules.install
+_package-modules() {
+  
+  local kernver="$(<version)"
 
-  cd "${srcdir}/${_srcname}"
-
-  # get kernel version, but discard the first result
-  make ARCH=um kernelrelease > /dev/null
-  _kernver="$(make ARCH=um kernelrelease)"
-
+  cd ${_srcname}
   #  make ARCH=um INSTALL_MOD_PATH="${pkgdir}/usr" modules_install
   make ARCH=um INSTALL_MOD_PATH="${pkgdir}/usr" _modinst_
-  rm -f $pkgdir/usr/lib/modules/${_kernver}/{source,build}
-  sed \
-    -e "s/KERNEL_VERSION=.*/KERNEL_VERSION=${_kernver}/g" \
-    -i "${startdir}/modules.install"
+  rm -f $pkgdir/usr/lib/modules/${kernver}/{source,build}
+  # sed expression for following substitutions
+  local _subst="
+        s|%PKGBASE%|${pkgbase}|g
+        s|%KERNVER%|${kernver}|g
+  "
+  # install pacman hook
+  sed "${_subst}" ../70-uml.hook |
+        install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/70-uml.hook"
 }
+
+pkgname=("${pkgbase}" "${pkgbase}-modules")
+for _p in ${pkgname[@]}; do
+  eval "package_${_p}() {
+    $(declare -f "_package${_p#${pkgbase}}")
+    _package${_p#${pkgbase}}
+  }"
+done
 
 # vim:set ts=8 sts=2 sw=2 et:
