@@ -1,4 +1,4 @@
-pkgbase = clstl
+pkgbase = libclstl
 	pkgver = 0.0.1
 	pkgrel = 1
 	url = https://github.com/Code-Log/clstl
@@ -6,5 +6,5 @@ pkgbase = clstl
 	license = MIT
 	depends = clang
 
-pkgname = clstl
+pkgname = libclstl
 
