@@ -42,8 +42,8 @@ prepare() {
   npm install "node-sass@4.12.0"
 
   # Prepare the packages for building
-  npm install lerna
-  lerna bootstrap
+ # npm install lerna
+ # lerna bootstrap
 
 }
 
