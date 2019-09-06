@@ -2,9 +2,9 @@
 
 pkgname=xde-applets
 pkgver=0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="X Desktop Environment System Tray Icons and Dock Apps"
-groups=('xde-git')
+groups=('xde')
 arch=('i686' 'x86_64')
 url="https://github.com/bbidulock/xde-applets"
 license=('GPL')

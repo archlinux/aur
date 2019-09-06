@@ -1,11 +1,11 @@
 pkgbase = xde-applets
 	pkgdesc = X Desktop Environment System Tray Icons and Dock Apps
 	pkgver = 0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bbidulock/xde-applets
 	arch = i686
 	arch = x86_64
-	groups = xde-git
+	groups = xde
 	license = GPL
 	makedepends = dbus-glib
 	makedepends = libunique
