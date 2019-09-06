@@ -3,7 +3,7 @@
 
 pkgname=tomighty
 pkgver=0.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Desktop timer for Pomodoro Technique users'
 arch=('any')
 url='http://www.tomighty.org/'
@@ -17,6 +17,12 @@ sha512sums=('SKIP'
             '97e1aa44a6037af9bd4bbbd131dd1a7c6657cbac4875b83f0bfa075bea9164ba642ca0d09c0490401d2c567048391d48deff10c8d215d53de6e36f23909e90b8'
             'f01a72c3777d6dcda7ee78b0025a5474165559f4049d4d76b4f5824dba8ecf83835f2e4de6dbecc6451a658d90e36ee8d475840f90cb90f9d6e869318627af29'
             'aa2207bc686167931f21a722c0b7bbb644ac97cbb89d53948436dbfcdc05a18b98b42feed60a05abba7c8db12946f6350fb5b7b5514d9680652af0f8050975e4')
+
+prepare() {
+	sed -i 's#<source>1.6</source>#<source>1.7</source>#' ${srcdir}/${pkgname}/pom.xml
+	sed -i 's#<target>1.6</target>#<target>1.7</target>#' ${srcdir}/${pkgname}/pom.xml
+}
+
 build() {
 	cd ${srcdir}/${pkgname}
 	mvn clean package

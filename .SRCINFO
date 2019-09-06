@@ -1,7 +1,7 @@
 pkgbase = tomighty
 	pkgdesc = Desktop timer for Pomodoro Technique users
 	pkgver = 0.7.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.tomighty.org/
 	arch = any
 	license = Apache
