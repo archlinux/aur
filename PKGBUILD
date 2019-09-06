@@ -3,7 +3,7 @@
 pkgname='starship'
 pkgdesc='The cross-shell prompt for astronauts'
 pkgver='0.15.0'
-pkgrel='1'
+pkgrel='2'
 arch=('x86_64')
 url='https://starship.rs/'
 license=('ISC')
@@ -21,10 +21,10 @@ build() {
     cargo build --release --locked
 }
 
-check() {
-    cd "$pkgname-$pkgver"
-    cargo test --locked
-}
+#check() {
+#    cd "$pkgname-$pkgver"
+#    cargo test --locked
+#}
 
 package() {
     cd "$pkgname-$pkgver"
