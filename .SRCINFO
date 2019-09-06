@@ -1,6 +1,6 @@
 pkgbase = eksctl
 	pkgdesc = Command line tool for creating clusters on Amazon EKS
-	pkgver = 0.5.1
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = https://github.com/weaveworks/eksctl
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = eksctl
 	makedepends = go
 	depends = kubectl
 	conflicts = eksctl-bin
-	source = eksctl-0.5.1.tar.gz::https://github.com/weaveworks/eksctl/archive/0.5.1.tar.gz
-	sha256sums = 5d12e3b928df39f187003d0977a327734d07ca7c6c75d5dc005d8d30acfb940a
+	source = eksctl-0.5.2.tar.gz::https://github.com/weaveworks/eksctl/archive/0.5.2.tar.gz
+	sha256sums = 507e8614781b4c05f98b48c0bc2f350455e7d14497b1ea3fbb3c3a17e8cb0408
 
 pkgname = eksctl
 
