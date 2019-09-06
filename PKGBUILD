@@ -37,6 +37,14 @@ prepare() {
   # Adjust the electron version to use when building
   electron_version="`expac %v electron4 | cut -d'-' -f1`"
   sed -i "s|\(\s\+\"electron4\":\).*,|\1 \"$electron_version\",|" package.json
+
+  # Adjust node-sass version to avoid build issues
+  npm install "node-sass@4.12.0"
+
+  # Prepare the packages for building
+  npm install lerna
+  lerna bootstrap
+
 }
 
 build() {
@@ -46,8 +54,6 @@ build() {
   export npm_config_cache="$srcdir"/npm_cache
   export PATH="$srcdir/ferdi/node_modules/.bin:$srcdir/python2_path:$PATH"
 
-  npm install lerna
-  lerna bootstrap
   gulp build
   electron-builder --linux dir
 }
