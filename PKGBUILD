@@ -7,8 +7,8 @@
 
 pkgname=lxd
 _pkgname=lxd
-pkgver=3.16
-pkgrel=3
+pkgver=3.17
+pkgrel=1
 pkgdesc="REST API, command line tool and OpenStack integration plugin for LXC."
 arch=('x86_64')
 url="https://github.com/lxc/lxd"
@@ -22,6 +22,7 @@ optdepends=(
     'thin-provisioning-tools: for thin provisioning support'
     'btrfs-progs: for btrfs storage driver support'
     'ceph: for ceph storage driver support'
+    'lxcfs: for lxcfs support'
 )
 options=('!strip' '!emptydirs')
 
@@ -38,7 +39,7 @@ source=(
     "networkmanager-dnsmasq-lxd.conf"
 )
 
-md5sums=('949a2ae0c570a1aa07fa5925428d0c14'
+md5sums=('fb2bd541ece52f06a22e6486b5a2dc4b'
          '6462095d5892d15c4f14310aa263a2a9'
          '1fb28d8dfe82af71d0675c8e9a0a7293'
          'b1fd16933c1b24aaa9ccc8f5a0e6478c'
