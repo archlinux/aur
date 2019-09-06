@@ -1,5 +1,4 @@
-<svg width="512" height="512" version="1.1" xmlns="http://www.w3.org/2000/svg">
- <path d="m0 0v512h512v-512h-512z" fill="#fff"/>
+<svg width="512" height="512" shape-rendering="crispEdges" version="1.1" xmlns="http://www.w3.org/2000/svg">
  <path d="m252 48 1 1-1-1z" fill="#2d2d2d"/>
  <path d="m253 48c4.471 1.8763 10.183 1 15 1-4.471-1.8763-10.183-1-15-1z" fill="#6e6e6e"/>
  <path d="m268 48 1 1-1-1z" fill="#414141"/>
