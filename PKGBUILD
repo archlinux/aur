@@ -5,7 +5,7 @@
 _name=UncertaintyTE
 pkgname=uncertainty-framework
 pkgver=1.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Uncertainty estimation framework for a surface from motion dataset"
 arch=('i686' 'x86_64')
 url="http://alicevision.github.io/"
@@ -13,8 +13,8 @@ license=('MPL2')
 groups=()
 conflicts=()
 provides=()
-depends=(magma-libs ceres-solver)
-makedepends=(magma boost cmake git gflags cuda)
+depends=(magma ceres-solver)
+makedepends=(boost cmake git gflags cuda)
 source=("${_name}::git+https://github.com/alicevision/${_name}.git"
         "ctest.patch")
 sha256sums=('SKIP'
