@@ -3,8 +3,8 @@
 
 pkgname=pkgtop
 pkgdesc="Interactive package manager & resource monitor (stable version)"
-pkgver=1.5
-pkgrel=3
+pkgver=1.8
+pkgrel=1
 arch=('any')
 url="https://github.com/keylo99/pkgtop"
 license=('GPL3')
@@ -12,7 +12,7 @@ makedepends=('go')
 provides=("${pkgname}")
 conflicts=("${pkgname}-git")
 source=("${pkgname}-${pkgver}.zip::https://github.com/keylo99/${pkgname}/archive/${pkgver}.zip")
-sha256sums=('cc801ed409639aef3ceb1eb833cae35b1eebd0c00151c3aafdfb48de4ace5f2e')
+sha256sums=('91c85edc355c58544d1d57310f8d8c8e79684235dfff6a552c7e6d7546289053')
 
 prepare() {
   mkdir -p "${srcdir}/gopath"
