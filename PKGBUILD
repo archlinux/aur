@@ -3,8 +3,8 @@
 
 pkgname=('linux-gpib-dkms')
 _pkgname='linux-gpib'
-pkgver=4.2.0
-pkgrel=2
+pkgver=4.3.0
+pkgrel=1
 pkgdesc='A support package for GPIB (IEEE 488) hardware (DKMS version).'
 arch=('i686' 'x86_64')
 url='http://linux-gpib.sourceforge.net/'
@@ -18,8 +18,8 @@ source=("http://downloads.sourceforge.net/project/${_pkgname}/${_pkgname}%20for%
 install='linux-gpib.install'
 backup=('etc/gpib.conf')
 
-md5sums=('0241dcc2d16f6d12a7aa2c3a623a55ff'
-         '43a6c167d555de581fb5ddfa6f28c7fd')
+md5sums=('3085422695baf210b866601db6108860'
+         '51d4c136aeabb10fc9976ab2539c4d79')
 
 prepare() {
 
@@ -42,8 +42,7 @@ build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
     cd "${_pkgname}-kernel-${pkgver}"
 
-    msg "Bootstrapping kernel module sources"
-    ./bootstrap
+    msg "Nothing to do for the module sources"
 
     cd "${srcdir}/${_pkgname}-${pkgver}"
     cd "${_pkgname}-user-${pkgver}"

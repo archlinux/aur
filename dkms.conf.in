@@ -2,13 +2,6 @@ PACKAGE_NAME="linux-gpib"
 PACKAGE_VERSION="@PACKAGE_VERSION@"
 AUTOINSTALL=yes
 
-PRE_BUILD="configure
-  PYTHON=/usr/bin/python
-  --prefix=/usr
-  --bindir=/usr/bin
-  --sbindir=/usr/bin
-  --with-linux-srcdir=/usr/lib/modules/$kernelver/build"
-
 MAKE="make"
 CLEAN="make clean"
 
