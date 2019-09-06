@@ -1,15 +1,22 @@
-# Maintainer: Hokuto <abrahamhokuto@outlook.com>
+# Maintainer: Frederic Bezies <fredbezies at gmail dot com>
+# Contributor: Hokuto <abrahamhokuto@outlook.com>
 
-pkgver=20190804
+pkgver=3.0.r3.ge05cae5
 pkgrel=1
+epoch=1
 pkgname=windows-xp-themes-git
-_pkgname=Windows-XP-master
+_pkgname=Windows-XP
 pkgdesc='All 7 of Windows XP themes available for Linux'
 arch=('any')
 url='https://github.com/B00merang-Project/WinXP-themes'
 license=('GPL')
-source=("https://github.com/B00merang-Project/Windows-XP/archive/master.zip")
-sha256sums=('5b1f7e75f4e70e4106708eb1a031f8f61c12eb67f7ba7485ee6929e3646ceae2')
+source=("git+https://github.com/B00merang-Project/Windows-XP.git")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd $srcdir/$_pkgname
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 package() {
 	cd $srcdir/$_pkgname
