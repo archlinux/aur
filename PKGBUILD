@@ -8,7 +8,7 @@ pkgdesc='kapp is a simple deployment tool focused on the concept of "Kubernetes 
 url="https://get-kapp.io/"
 license=('Apache')
 arch=('x86_64')
-makedepends=('go-pie' 'ytt>=0.17.0')
+makedepends=('go' 'ytt>=0.17.0')
 source=("git+https://github.com/k14s/${_pkgname}/")
 sha256sums=('SKIP')
 provides=("kapp")
