@@ -1,18 +1,18 @@
 pkgbase = dosbox-binutils
-	pkgdesc = Binutils for the djgpp dosbox cross-compiler
-	pkgver = 2.31.1
+	pkgdesc = binutils for the djgpp dosbox cross-compiler
+	pkgver = 2.32
 	pkgrel = 1
 	url = http://www.gnu.org/software/binutils
 	arch = i686
 	arch = x86_64
 	groups = djgpp
 	license = GPL
-	depends = patch
 	depends = zlib
+	depends = patch
 	options = !libtool
 	options = !emptydirs
-	source = http://ftp.gnu.org/gnu/binutils/binutils-2.31.1.tar.xz
-  source = binutils-bfd-djgpp.patch
+	source = http://ftp.gnu.org/gnu/binutils/binutils-2.32.tar.xz
+	source = binutils-bfd-djgpp.patch
 	source = binutils-djgpp.patch
 	source = lto-discard.patch
 	validpgpkeys = EAF1C276A747E9ED86210CBAC3126D3B4AE55E93
@@ -22,3 +22,4 @@ pkgbase = dosbox-binutils
 	sha256sums = SKIP
 
 pkgname = dosbox-binutils
+

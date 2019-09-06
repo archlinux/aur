@@ -3,7 +3,7 @@
 # Contributor: janezz55
 
 pkgname=dosbox-binutils
-pkgver=2.31.1
+pkgver=2.32
 pkgrel=1
 pkgdesc="binutils for the djgpp dosbox cross-compiler"
 arch=('i686' 'x86_64')

@@ -2,7 +2,7 @@
 #  by the DJGPP ports of binutils and gdb.
 
 
-2018-07-22  Juan Manuel Guerrero  <juan.guerrero@gmx.de>
+2019-02-13  Juan Manuel Guerrero  <juan.guerrero@gmx.de>
 
 	* bfd/bfd-in.h [__DJGPP__]:  Provide the declaration of
 	coff_64k_relocation_enabled.
@@ -86,9 +86,8 @@
 	* libiberty/cp-demangle.c (d_demangle_callback, d_expression_1, d_print_comp):
 	Pacify compiler.  Rename functions and variables that shadow the
 	corresponding libc ones.
-
-	* libiberty/cplus-dem.c (remember_Btype):  Pacify compiler.  Rename
-	functions and variables that shadow the	corresponding libc ones.
+        (d_bare_function_type): Pacify compiler.  Rename functions and
+	variables that shadow the corresponding libiberty ones.
 
 	* libiberty/floatformat.c (floatformat_to_double):  Pacify compiler.
 	Rename functions and variables that shadow the corresponding libc ones.
@@ -134,25 +133,25 @@
 
 
 
-diff -aprNU5 binutils-2.31.1.orig/bfd/bfd-in.h binutils-2.31.1/bfd/bfd-in.h
---- binutils-2.31.1.orig/bfd/bfd-in.h	2018-06-24 18:38:56 +0000
-+++ binutils-2.31.1/bfd/bfd-in.h	2018-07-27 20:52:18 +0000
-@@ -1061,5 +1061,11 @@ extern bfd_boolean v850_elf_set_note
-   (bfd *, unsigned int, unsigned int);
- 
- /* MIPS ABI flags data access.  For the disassembler.  */
- struct elf_internal_abiflags_v0;
- extern struct elf_internal_abiflags_v0 *bfd_mips_elf_get_abiflags (bfd *);
+diff -aprNU5 binutils-2.32.orig/bfd/bfd-in.h binutils-2.32/bfd/bfd-in.h
+--- binutils-2.32.orig/bfd/bfd-in.h	2019-01-19 16:01:32 +0000
++++ binutils-2.32/bfd/bfd-in.h	2019-02-13 22:25:44 +0000
+@@ -1071,5 +1071,11 @@ extern bfd_boolean elf32_csky_size_stubs
+    void (*) (void));
+ extern void elf32_csky_next_input_section
+   (struct bfd_link_info *, struct bfd_section *);
+ extern int elf32_csky_setup_section_lists
+   (bfd *, struct bfd_link_info *);
 +
 +/* This controls if the coff 64k relocation support shall be disabled or not.
 +   By default always enabled.  */
 +#if defined(__DJGPP__) || defined(COFF_GO32_EXE) || defined(COFF_GO32)
 +extern bfd_boolean coff_64k_relocation_enabled;
 +#endif
-diff -aprNU5 binutils-2.31.1.orig/bfd/cache.c binutils-2.31.1/bfd/cache.c
---- binutils-2.31.1.orig/bfd/cache.c	2018-06-24 18:38:56 +0000
-+++ binutils-2.31.1/bfd/cache.c	2018-07-27 20:52:18 +0000
-@@ -76,11 +76,11 @@ static int
+diff -aprNU5 binutils-2.32.orig/bfd/cache.c binutils-2.32/bfd/cache.c
+--- binutils-2.32.orig/bfd/cache.c	2019-01-19 16:01:32 +0000
++++ binutils-2.32/bfd/cache.c	2019-02-13 22:25:44 +0000
+@@ -75,11 +75,11 @@ static int
  bfd_cache_max_open (void)
  {
    if (max_open_files == 0)
@@ -165,9 +164,9 @@ diff -aprNU5 binutils-2.31.1.orig/bfd/cache.c binutils-2.31.1/bfd/cache.c
  	 RLIMIT_NOFILE to a value that is not supported by libc, resulting
  	 in "Too many open files" errors.  This can happen here even though
  	 max_open_files is set to rlim.rlim_cur / 8.  For example, if
-diff -aprNU5 binutils-2.31.1.orig/bfd/coff-go32.c binutils-2.31.1/bfd/coff-go32.c
---- binutils-2.31.1.orig/bfd/coff-go32.c	2018-06-24 18:38:56 +0000
-+++ binutils-2.31.1/bfd/coff-go32.c	2018-07-27 20:52:18 +0000
+diff -aprNU5 binutils-2.32.orig/bfd/coff-go32.c binutils-2.32/bfd/coff-go32.c
+--- binutils-2.32.orig/bfd/coff-go32.c	2019-01-19 16:01:32 +0000
++++ binutils-2.32/bfd/coff-go32.c	2019-02-13 22:25:44 +0000
 @@ -20,10 +20,11 @@
     MA 02110-1301, USA.  */
  
@@ -197,9 +196,9 @@ diff -aprNU5 binutils-2.31.1.orig/bfd/coff-go32.c binutils-2.31.1/bfd/coff-go32.
 +#define coff_mkobject  _bfd_go32_mkobject
 +
  #include "coff-i386.c"
-diff -aprNU5 binutils-2.31.1.orig/bfd/coff-stgo32.c binutils-2.31.1/bfd/coff-stgo32.c
---- binutils-2.31.1.orig/bfd/coff-stgo32.c	2018-06-24 18:38:56 +0000
-+++ binutils-2.31.1/bfd/coff-stgo32.c	2018-07-27 20:52:18 +0000
+diff -aprNU5 binutils-2.32.orig/bfd/coff-stgo32.c binutils-2.32/bfd/coff-stgo32.c
+--- binutils-2.32.orig/bfd/coff-stgo32.c	2019-01-19 16:01:32 +0000
++++ binutils-2.32/bfd/coff-stgo32.c	2019-02-13 22:25:44 +0000
 @@ -51,10 +51,13 @@
  { COFF_SECTION_NAME_PARTIAL_MATCH (".debug"), \
    COFF_ALIGNMENT_FIELD_EMPTY, COFF_ALIGNMENT_FIELD_EMPTY, 0 }, \
@@ -261,9 +260,9 @@ diff -aprNU5 binutils-2.31.1.orig/bfd/coff-stgo32.c binutils-2.31.1/bfd/coff-stg
 +
 +  return TRUE;
 +}
-diff -aprNU5 binutils-2.31.1.orig/bfd/coffcode.h binutils-2.31.1/bfd/coffcode.h
---- binutils-2.31.1.orig/bfd/coffcode.h	2018-06-24 18:38:56 +0000
-+++ binutils-2.31.1/bfd/coffcode.h	2018-07-27 20:52:18 +0000
+diff -aprNU5 binutils-2.32.orig/bfd/coffcode.h binutils-2.32/bfd/coffcode.h
+--- binutils-2.32.orig/bfd/coffcode.h	2019-01-19 16:01:32 +0000
++++ binutils-2.32/bfd/coffcode.h	2019-02-13 22:25:44 +0000
 @@ -362,10 +362,14 @@ CODE_FRAGMENT
  #define DOT_ZDEBUG	".zdebug"
  #define GNU_LINKONCE_WI ".gnu.linkonce.wi."
@@ -422,9 +421,9 @@ diff -aprNU5 binutils-2.31.1.orig/bfd/coffcode.h binutils-2.31.1/bfd/coffcode.h
    /* Don't include the internal abs section in the section count */
  
    /* We will NOT put a fucking timestamp in the header here. Every time you
-diff -aprNU5 binutils-2.31.1.orig/bfd/cofflink.c binutils-2.31.1/bfd/cofflink.c
---- binutils-2.31.1.orig/bfd/cofflink.c	2018-06-24 18:38:56 +0000
-+++ binutils-2.31.1/bfd/cofflink.c	2018-07-27 20:52:18 +0000
+diff -aprNU5 binutils-2.32.orig/bfd/cofflink.c binutils-2.32/bfd/cofflink.c
+--- binutils-2.32.orig/bfd/cofflink.c	2019-01-19 16:01:32 +0000
++++ binutils-2.32/bfd/cofflink.c	2019-02-13 22:25:44 +0000
 @@ -683,11 +683,11 @@ _bfd_coff_final_link (bfd *abfd,
  	  o->flags |= SEC_RELOC;
  	  o->rel_filepos = rel_filepos;
@@ -451,9 +450,9 @@ diff -aprNU5 binutils-2.31.1.orig/bfd/cofflink.c binutils-2.31.1/bfd/cofflink.c
  		 reloc.  The header overflow bit will be set
  		 elsewhere. */
  	      struct internal_reloc incount;
-diff -aprNU5 binutils-2.31.1.orig/bfd/coffswap.h binutils-2.31.1/bfd/coffswap.h
---- binutils-2.31.1.orig/bfd/coffswap.h	2018-06-24 18:38:56 +0000
-+++ binutils-2.31.1/bfd/coffswap.h	2018-07-27 20:52:18 +0000
+diff -aprNU5 binutils-2.32.orig/bfd/coffswap.h binutils-2.32/bfd/coffswap.h
+--- binutils-2.32.orig/bfd/coffswap.h	2019-01-19 16:01:32 +0000
++++ binutils-2.32/bfd/coffswap.h	2019-02-13 22:25:44 +0000
 @@ -750,10 +750,23 @@ coff_swap_scnhdr_in (bfd * abfd, void *
    scnhdr_int->s_relptr = GET_SCNHDR_RELPTR (abfd, scnhdr_ext->s_relptr);
    scnhdr_int->s_lnnoptr = GET_SCNHDR_LNNOPTR (abfd, scnhdr_ext->s_lnnoptr);
@@ -558,10 +557,10 @@ diff -aprNU5 binutils-2.31.1.orig/bfd/coffswap.h binutils-2.31.1/bfd/coffswap.h
  #endif
    return ret;
  }
-diff -aprNU5 binutils-2.31.1.orig/bfd/config.in binutils-2.31.1/bfd/config.in
---- binutils-2.31.1.orig/bfd/config.in	2018-07-18 07:41:16 +0000
-+++ binutils-2.31.1/bfd/config.in	2018-07-27 20:52:18 +0000
-@@ -411,5 +411,39 @@
+diff -aprNU5 binutils-2.32.orig/bfd/config.in binutils-2.32/bfd/config.in
+--- binutils-2.32.orig/bfd/config.in	2019-02-02 15:48:02 +0000
++++ binutils-2.32/bfd/config.in	2019-02-13 22:25:44 +0000
+@@ -414,5 +414,39 @@
     this defined. */
  #undef _POSIX_1_SOURCE
  
@@ -601,9 +600,9 @@ diff -aprNU5 binutils-2.31.1.orig/bfd/config.in binutils-2.31.1/bfd/config.in
 +#else
 +# define STRIP_FULL_PATH_AND_EXTENSION(file_name)  (file_name)
 +#endif
-diff -aprNU5 binutils-2.31.1.orig/bfd/init.c binutils-2.31.1/bfd/init.c
---- binutils-2.31.1.orig/bfd/init.c	2018-06-24 18:38:56 +0000
-+++ binutils-2.31.1/bfd/init.c	2018-07-27 20:52:18 +0000
+diff -aprNU5 binutils-2.32.orig/bfd/init.c binutils-2.32/bfd/init.c
+--- binutils-2.32.orig/bfd/init.c	2019-01-19 16:01:32 +0000
++++ binutils-2.32/bfd/init.c	2019-02-13 22:25:44 +0000
 @@ -21,10 +21,16 @@
  
  #include "sysdep.h"
@@ -621,10 +620,10 @@ diff -aprNU5 binutils-2.31.1.orig/bfd/init.c binutils-2.31.1/bfd/init.c
  	Initialization
  
  SUBSECTION
-@@ -49,6 +55,12 @@ DESCRIPTION
+@@ -55,7 +61,13 @@ DESCRIPTION
     However, someday it may be needed, so keep it around.  */
  
- void
+ unsigned int
  bfd_init (void)
  {
 +#if defined(__DJGPP__) || defined(COFF_GO32_EXE) || defined(COFF_GO32)
@@ -633,10 +632,11 @@ diff -aprNU5 binutils-2.31.1.orig/bfd/init.c binutils-2.31.1/bfd/init.c
 +                                  (disable_64k_reloc_support[0] == 'y' || disable_64k_reloc_support[0] == 'Y') &&
 +                                  disable_64k_reloc_support[1] == '\0') ? TRUE : FALSE;
 +#endif
+   return BFD_INIT_MAGIC;
  }
-diff -aprNU5 binutils-2.31.1.orig/bfd/libcoff-in.h binutils-2.31.1/bfd/libcoff-in.h
---- binutils-2.31.1.orig/bfd/libcoff-in.h	2018-06-24 18:38:56 +0000
-+++ binutils-2.31.1/bfd/libcoff-in.h	2018-07-27 20:52:18 +0000
+diff -aprNU5 binutils-2.32.orig/bfd/libcoff-in.h binutils-2.32/bfd/libcoff-in.h
+--- binutils-2.32.orig/bfd/libcoff-in.h	2019-01-19 16:01:32 +0000
++++ binutils-2.32/bfd/libcoff-in.h	2019-02-13 22:25:44 +0000
 @@ -31,12 +31,13 @@ extern "C" {
  
  /* Object file tdata; access macros.  */
@@ -665,10 +665,10 @@ diff -aprNU5 binutils-2.31.1.orig/bfd/libcoff-in.h binutils-2.31.1/bfd/libcoff-i
    char *go32stub;
  } coff_data_type;
  
-diff -aprNU5 binutils-2.31.1.orig/bfd/Makefile.in binutils-2.31.1/bfd/Makefile.in
---- binutils-2.31.1.orig/bfd/Makefile.in	2018-07-18 07:41:14 +0000
-+++ binutils-2.31.1/bfd/Makefile.in	2018-07-27 20:52:18 +0000
-@@ -2015,11 +2015,11 @@ host-aout.lo: Makefile
+diff -aprNU5 binutils-2.32.orig/bfd/Makefile.in binutils-2.32/bfd/Makefile.in
+--- binutils-2.32.orig/bfd/Makefile.in	2019-02-02 15:47:56 +0000
++++ binutils-2.32/bfd/Makefile.in	2019-02-13 22:25:44 +0000
+@@ -2020,11 +2020,11 @@ host-aout.lo: Makefile
  aout-params.h: gen-aout
  	./gen-aout host > aout-params.h
  gen-aout: $(srcdir)/gen-aout.c Makefile
@@ -681,7 +681,7 @@ diff -aprNU5 binutils-2.31.1.orig/bfd/Makefile.in binutils-2.31.1/bfd/Makefile.i
  	rm -f bfd-tmp.h
  	cp bfd-in3.h bfd-tmp.h
  	$(SHELL) $(srcdir)/../move-if-change bfd-tmp.h $(BFD_H)
-@@ -2037,11 +2037,11 @@ headers:
+@@ -2042,11 +2042,11 @@ headers:
  	$(SHELL) $(srcdir)/../move-if-change libcoff.h-new $(srcdir)/libcoff.h
  
  # We only rebuild the header files automatically if we have been
@@ -694,10 +694,10 @@ diff -aprNU5 binutils-2.31.1.orig/bfd/Makefile.in binutils-2.31.1/bfd/Makefile.i
  	cp $(bfddocdir)/bfd.h bfd-in2.h-new
  	$(SHELL) $(srcdir)/../move-if-change bfd-in2.h-new $(srcdir)/bfd-in2.h
  	touch stmp-bin2-h
-diff -aprNU5 binutils-2.31.1.orig/include/bfdlink.h binutils-2.31.1/include/bfdlink.h
---- binutils-2.31.1.orig/include/bfdlink.h	2018-06-24 18:38:56 +0000
-+++ binutils-2.31.1/include/bfdlink.h	2018-07-27 20:52:18 +0000
-@@ -291,11 +291,11 @@ struct bfd_elf_version_tree;
+diff -aprNU5 binutils-2.32.orig/include/bfdlink.h binutils-2.32/include/bfdlink.h
+--- binutils-2.32.orig/include/bfdlink.h	2019-01-19 16:01:32 +0000
++++ binutils-2.32/include/bfdlink.h	2019-02-13 22:25:44 +0000
+@@ -296,11 +296,11 @@ struct bfd_elf_version_tree;
  enum output_type
  {
    type_pde,
@@ -710,9 +710,9 @@ diff -aprNU5 binutils-2.31.1.orig/include/bfdlink.h binutils-2.31.1/include/bfdl
  #define bfd_link_pde(info)	   ((info)->type == type_pde)
  #define bfd_link_dll(info)	   ((info)->type == type_dll)
  #define bfd_link_relocatable(info) ((info)->type == type_relocatable)
-diff -aprNU5 binutils-2.31.1.orig/include/coff/internal.h binutils-2.31.1/include/coff/internal.h
---- binutils-2.31.1.orig/include/coff/internal.h	2018-06-24 18:38:56 +0000
-+++ binutils-2.31.1/include/coff/internal.h	2018-07-27 20:52:18 +0000
+diff -aprNU5 binutils-2.32.orig/include/coff/internal.h binutils-2.32/include/coff/internal.h
+--- binutils-2.32.orig/include/coff/internal.h	2019-01-19 16:01:32 +0000
++++ binutils-2.32/include/coff/internal.h	2019-02-13 22:25:44 +0000
 @@ -165,11 +165,11 @@ typedef struct _CODEVIEW_INFO
  {
    unsigned long CVSignature;
@@ -726,9 +726,9 @@ diff -aprNU5 binutils-2.31.1.orig/include/coff/internal.h binutils-2.31.1/includ
  /* Default image base for NT.  */
  #define NT_EXE_IMAGE_BASE 0x400000
  #define NT_DLL_IMAGE_BASE 0x10000000
-diff -aprNU5 binutils-2.31.1.orig/include/simple-object.h binutils-2.31.1/include/simple-object.h
---- binutils-2.31.1.orig/include/simple-object.h	2018-06-24 18:38:56 +0000
-+++ binutils-2.31.1/include/simple-object.h	2018-07-27 20:52:18 +0000
+diff -aprNU5 binutils-2.32.orig/include/simple-object.h binutils-2.32/include/simple-object.h
+--- binutils-2.32.orig/include/simple-object.h	2019-01-19 16:01:32 +0000
++++ binutils-2.32/include/simple-object.h	2019-02-13 22:25:44 +0000
 @@ -204,11 +204,11 @@ simple_object_release_write (simple_obje
     If an error occurs, return the errno value in ERR and an error string.  */
  
@@ -742,10 +742,10 @@ diff -aprNU5 binutils-2.31.1.orig/include/simple-object.h binutils-2.31.1/includ
  }
  #endif
  
-diff -aprNU5 binutils-2.31.1.orig/libiberty/config.in binutils-2.31.1/libiberty/config.in
---- binutils-2.31.1.orig/libiberty/config.in	2018-06-24 18:38:58 +0000
-+++ binutils-2.31.1/libiberty/config.in	2018-07-27 21:04:22 +0000
-@@ -570,5 +570,59 @@
+diff -aprNU5 binutils-2.32.orig/libiberty/config.in binutils-2.32/libiberty/config.in
+--- binutils-2.32.orig/libiberty/config.in	2019-01-19 16:01:34 +0000
++++ binutils-2.32/libiberty/config.in	2019-02-13 22:25:44 +0000
+@@ -573,5 +573,59 @@
     pointer, if such a type exists, and if the system does not define it. */
  #undef uintptr_t
  
@@ -805,10 +805,40 @@ diff -aprNU5 binutils-2.31.1.orig/libiberty/config.in binutils-2.31.1/libiberty/
 +#else  /* !__DJGPP__ */
 +# define STRIP_FULL_PATH_AND_EXTENSION(file_name)  (file_name)
 +#endif  /* !__DJGPP__ */
-diff -aprNU5 binutils-2.31.1.orig/libiberty/cp-demangle.c binutils-2.31.1/libiberty/cp-demangle.c
---- binutils-2.31.1.orig/libiberty/cp-demangle.c	2018-06-24 18:38:58 +0000
-+++ binutils-2.31.1/libiberty/cp-demangle.c	2018-07-27 20:52:18 +0000
-@@ -3283,26 +3283,26 @@ d_expression_1 (struct d_info *di)
+diff -aprNU5 binutils-2.32.orig/libiberty/cp-demangle.c binutils-2.32/libiberty/cp-demangle.c
+--- binutils-2.32.orig/libiberty/cp-demangle.c	2019-01-19 16:01:34 +0000
++++ binutils-2.32/libiberty/cp-demangle.c	2019-02-13 22:32:24 +0000
+@@ -2933,11 +2933,11 @@ d_parmlist (struct d_info *di)
+ }
+ 
+ /* <bare-function-type> ::= [J]<type>+  */
+ 
+ static struct demangle_component *
+-d_bare_function_type (struct d_info *di, int has_return_type)
++d_bare_function_type (struct d_info *di, int has_return_type_flag)
+ {
+   struct demangle_component *return_type;
+   struct demangle_component *tl;
+   char peek;
+ 
+@@ -2945,14 +2945,14 @@ d_bare_function_type (struct d_info *di,
+      is the return type.  */
+   peek = d_peek_char (di);
+   if (peek == 'J')
+     {
+       d_advance (di, 1);
+-      has_return_type = 1;
++      has_return_type_flag = 1;
+     }
+ 
+-  if (has_return_type)
++  if (has_return_type_flag)
+     {
+       return_type = cplus_demangle_type (di);
+       if (return_type == NULL)
+ 	return NULL;
+     }
+@@ -3306,26 +3306,26 @@ d_expression_1 (struct d_info *di)
  			  d_expression_1 (di), NULL);
      }
    else if (peek == 'f' && d_peek_next_char (di) == 'p')
@@ -841,7 +871,7 @@ diff -aprNU5 binutils-2.31.1.orig/libiberty/cp-demangle.c binutils-2.31.1/libibe
  	   || (peek == 'o' && d_peek_next_char (di) == 'n'))
      {
        /* We can get an unqualified name as an expression in the case of
-@@ -4625,11 +4625,11 @@ d_print_comp_inner (struct d_print_info
+@@ -4649,11 +4649,11 @@ d_print_comp_inner (struct d_print_info
       without needing to modify *dc.  */
    struct demangle_component *mod_inner = NULL;
  
@@ -854,7 +884,7 @@ diff -aprNU5 binutils-2.31.1.orig/libiberty/cp-demangle.c binutils-2.31.1/libibe
    int need_template_restore = 0;
  
    if (dc == NULL)
-@@ -6206,11 +6206,11 @@ d_demangle_callback (const char *mangled
+@@ -6236,11 +6236,11 @@ d_demangle_callback (const char *mangled
        DCT_GLOBAL_CTORS,
        DCT_GLOBAL_DTORS
      }
@@ -867,33 +897,9 @@ diff -aprNU5 binutils-2.31.1.orig/libiberty/cp-demangle.c binutils-2.31.1/libibe
    if (mangled[0] == '_' && mangled[1] == 'Z')
      type = DCT_MANGLED;
    else if (strncmp (mangled, "_GLOBAL_", 8) == 0
-diff -aprNU5 binutils-2.31.1.orig/libiberty/cplus-dem.c binutils-2.31.1/libiberty/cplus-dem.c
---- binutils-2.31.1.orig/libiberty/cplus-dem.c	2018-06-24 18:38:58 +0000
-+++ binutils-2.31.1/libiberty/cplus-dem.c	2018-07-27 20:52:18 +0000
-@@ -4464,18 +4464,18 @@ register_Btype (struct work_stuff *work)
- 
- /* Store a value into a previously registered B code type. */
- 
- static void
- remember_Btype (struct work_stuff *work, const char *start,
--                int len, int index)
-+                int len, int lib_index)
- {
-   char *tem;
- 
-   tem = XNEWVEC (char, len + 1);
-   memcpy (tem, start, len);
-   tem[len] = '\0';
--  work -> btypevec[index] = tem;
-+  work -> btypevec[lib_index] = tem;
- }
- 
- /* Lose all the info related to B and K type codes. */
- static void
- forget_B_and_K_types (struct work_stuff *work)
-diff -aprNU5 binutils-2.31.1.orig/libiberty/floatformat.c binutils-2.31.1/libiberty/floatformat.c
---- binutils-2.31.1.orig/libiberty/floatformat.c	2018-06-24 18:38:58 +0000
-+++ binutils-2.31.1/libiberty/floatformat.c	2018-07-27 20:52:18 +0000
+diff -aprNU5 binutils-2.32.orig/libiberty/floatformat.c binutils-2.32/libiberty/floatformat.c
+--- binutils-2.32.orig/libiberty/floatformat.c	2019-01-19 16:01:34 +0000
++++ binutils-2.32/libiberty/floatformat.c	2019-02-13 22:25:44 +0000
 @@ -484,20 +484,20 @@ floatformat_to_double (const struct floa
    /* If the exponent indicates a NaN, we don't have information to
       decide what to do.  So we handle it like IEEE, except that we
@@ -917,9 +923,9 @@ diff -aprNU5 binutils-2.31.1.orig/libiberty/floatformat.c binutils-2.31.1/libibe
  	dto = INFINITY;
  
        if (get_field (ufrom, fmt->byteorder, fmt->totalsize, fmt->sign_start, 1))
-diff -aprNU5 binutils-2.31.1.orig/libiberty/hashtab.c binutils-2.31.1/libiberty/hashtab.c
---- binutils-2.31.1.orig/libiberty/hashtab.c	2018-06-24 18:38:58 +0000
-+++ binutils-2.31.1/libiberty/hashtab.c	2018-07-27 20:52:18 +0000
+diff -aprNU5 binutils-2.32.orig/libiberty/hashtab.c binutils-2.32/libiberty/hashtab.c
+--- binutils-2.32.orig/libiberty/hashtab.c	2019-01-19 16:01:34 +0000
++++ binutils-2.32/libiberty/hashtab.c	2019-02-13 22:25:44 +0000
 @@ -478,28 +478,28 @@ htab_empty (htab_t htab)
     HASH is the hash value for the element to be inserted.  */
  
@@ -1074,9 +1080,9 @@ diff -aprNU5 binutils-2.31.1.orig/libiberty/hashtab.c binutils-2.31.1/libiberty/
  /* Like htab_find_slot_with_hash, but compute the hash value from the
     element.  */
  
-diff -aprNU5 binutils-2.31.1.orig/libiberty/make-relative-prefix.c binutils-2.31.1/libiberty/make-relative-prefix.c
---- binutils-2.31.1.orig/libiberty/make-relative-prefix.c	2018-06-24 18:38:58 +0000
-+++ binutils-2.31.1/libiberty/make-relative-prefix.c	2018-07-27 20:52:18 +0000
+diff -aprNU5 binutils-2.32.orig/libiberty/make-relative-prefix.c binutils-2.32/libiberty/make-relative-prefix.c
+--- binutils-2.32.orig/libiberty/make-relative-prefix.c	2019-01-19 16:01:34 +0000
++++ binutils-2.32/libiberty/make-relative-prefix.c	2019-02-13 22:25:44 +0000
 @@ -79,10 +79,11 @@ relative prefix can be found, return @co
  #if defined (_WIN32) || defined (__MSDOS__) \
      || defined (__DJGPP__) || defined (__OS2__)
@@ -1129,9 +1135,9 @@ diff -aprNU5 binutils-2.31.1.orig/libiberty/make-relative-prefix.c binutils-2.31
  
    /* If there are no common directories, there can be no relative prefix.  */
    if (common == 0)
-diff -aprNU5 binutils-2.31.1.orig/libiberty/make-temp-file.c binutils-2.31.1/libiberty/make-temp-file.c
---- binutils-2.31.1.orig/libiberty/make-temp-file.c	2018-06-24 18:38:58 +0000
-+++ binutils-2.31.1/libiberty/make-temp-file.c	2018-07-27 20:52:18 +0000
+diff -aprNU5 binutils-2.32.orig/libiberty/make-temp-file.c binutils-2.32/libiberty/make-temp-file.c
+--- binutils-2.32.orig/libiberty/make-temp-file.c	2019-01-19 16:01:34 +0000
++++ binutils-2.32/libiberty/make-temp-file.c	2019-02-13 22:25:44 +0000
 @@ -52,16 +52,31 @@ extern int mkstemps (char *, int);
  /* '/' works just fine on MS-DOS based systems.  */
  #ifndef DIR_SEPARATOR
@@ -1155,7 +1161,7 @@ diff -aprNU5 binutils-2.31.1.orig/libiberty/make-temp-file.c binutils-2.31.1/lib
 +
  /* Name of temporary file.
     mktemp requires 6 trailing X's.  */
- #define TEMP_FILE "ccXXXXXX"
+ #define TEMP_FILE "XXXXXX"
  #define TEMP_FILE_LEN (sizeof(TEMP_FILE) - 1)
  
 -#if !defined(_WIN32) || defined(__CYGWIN__)
@@ -1192,9 +1198,9 @@ diff -aprNU5 binutils-2.31.1.orig/libiberty/make-temp-file.c binutils-2.31.1/lib
  #else /* defined(_WIN32) && !defined(__CYGWIN__) */
        DWORD len;
  
-diff -aprNU5 binutils-2.31.1.orig/libiberty/pex-common.c binutils-2.31.1/libiberty/pex-common.c
---- binutils-2.31.1.orig/libiberty/pex-common.c	2018-06-24 18:38:58 +0000
-+++ binutils-2.31.1/libiberty/pex-common.c	2018-07-27 20:52:18 +0000
+diff -aprNU5 binutils-2.32.orig/libiberty/pex-common.c binutils-2.32/libiberty/pex-common.c
+--- binutils-2.32.orig/libiberty/pex-common.c	2019-01-19 16:01:34 +0000
++++ binutils-2.32/libiberty/pex-common.c	2019-02-13 22:25:44 +0000
 @@ -115,11 +115,11 @@ temp_file (struct pex_obj *obj, int flag
  
            if (len >= 6
@@ -1234,9 +1240,9 @@ diff -aprNU5 binutils-2.31.1.orig/libiberty/pex-common.c binutils-2.31.1/libiber
        obj->next_input = -1;
      }
    else if ((obj->flags & PEX_USE_PIPES) == 0)
-diff -aprNU5 binutils-2.31.1.orig/libiberty/simple-object-coff.c binutils-2.31.1/libiberty/simple-object-coff.c
---- binutils-2.31.1.orig/libiberty/simple-object-coff.c	2018-06-24 18:38:58 +0000
-+++ binutils-2.31.1/libiberty/simple-object-coff.c	2018-07-27 20:52:18 +0000
+diff -aprNU5 binutils-2.32.orig/libiberty/simple-object-coff.c binutils-2.32/libiberty/simple-object-coff.c
+--- binutils-2.32.orig/libiberty/simple-object-coff.c	2019-01-19 16:01:34 +0000
++++ binutils-2.32/libiberty/simple-object-coff.c	2019-02-13 22:25:44 +0000
 @@ -649,17 +649,17 @@ simple_object_coff_write_to_file (simple
        new_offset = offset & mask;
        new_offset &= ~ mask;
@@ -1260,10 +1266,10 @@ diff -aprNU5 binutils-2.31.1.orig/libiberty/simple-object-coff.c binutils-2.31.1
  	}
  
        scnsize = 0;
-diff -aprNU5 binutils-2.31.1.orig/libiberty/simple-object-elf.c binutils-2.31.1/libiberty/simple-object-elf.c
---- binutils-2.31.1.orig/libiberty/simple-object-elf.c	2018-06-24 18:38:58 +0000
-+++ binutils-2.31.1/libiberty/simple-object-elf.c	2018-07-29 15:26:24 +0000
-@@ -986,20 +986,20 @@ simple_object_elf_write_to_file (simple_
+diff -aprNU5 binutils-2.32.orig/libiberty/simple-object-elf.c binutils-2.32/libiberty/simple-object-elf.c
+--- binutils-2.32.orig/libiberty/simple-object-elf.c	2019-01-19 16:01:34 +0000
++++ binutils-2.32/libiberty/simple-object-elf.c	2019-02-13 22:25:44 +0000
+@@ -990,20 +990,20 @@ simple_object_elf_write_to_file (simple_
        new_sh_offset = sh_offset + mask;
        new_sh_offset &= ~ mask;
        while (new_sh_offset > sh_offset)
@@ -1290,9 +1296,9 @@ diff -aprNU5 binutils-2.31.1.orig/libiberty/simple-object-elf.c binutils-2.31.1/
        sh_size = 0;
        for (buffer = section->buffers; buffer != NULL; buffer = buffer->next)
  	{
-diff -aprNU5 binutils-2.31.1.orig/libiberty/simple-object-mach-o.c binutils-2.31.1/libiberty/simple-object-mach-o.c
---- binutils-2.31.1.orig/libiberty/simple-object-mach-o.c	2018-06-24 18:38:58 +0000
-+++ binutils-2.31.1/libiberty/simple-object-mach-o.c	2018-07-29 16:29:30 +0000
+diff -aprNU5 binutils-2.32.orig/libiberty/simple-object-mach-o.c binutils-2.32/libiberty/simple-object-mach-o.c
+--- binutils-2.32.orig/libiberty/simple-object-mach-o.c	2019-01-19 16:01:34 +0000
++++ binutils-2.32/libiberty/simple-object-mach-o.c	2019-02-13 22:25:44 +0000
 @@ -424,11 +424,11 @@ simple_object_mach_o_segment (simple_obj
    unsigned int index_index;
    unsigned int nametab_index;
@@ -1561,9 +1567,9 @@ diff -aprNU5 binutils-2.31.1.orig/libiberty/simple-object-mach-o.c binutils-2.31
  
    /* Write out the segment header.  */
  
-diff -aprNU5 binutils-2.31.1.orig/libiberty/simple-object-xcoff.c binutils-2.31.1/libiberty/simple-object-xcoff.c
---- binutils-2.31.1.orig/libiberty/simple-object-xcoff.c	2018-06-24 18:38:58 +0000
-+++ binutils-2.31.1/libiberty/simple-object-xcoff.c	2018-07-29 15:32:32 +0000
+diff -aprNU5 binutils-2.32.orig/libiberty/simple-object-xcoff.c binutils-2.32/libiberty/simple-object-xcoff.c
+--- binutils-2.32.orig/libiberty/simple-object-xcoff.c	2019-01-19 16:01:34 +0000
++++ binutils-2.32/libiberty/simple-object-xcoff.c	2019-02-13 22:25:44 +0000
 @@ -905,17 +905,17 @@ simple_object_xcoff_write_to_file (simpl
        new_offset = offset & mask;
        new_offset &= ~ mask;
@@ -1587,9 +1593,9 @@ diff -aprNU5 binutils-2.31.1.orig/libiberty/simple-object-xcoff.c binutils-2.31.
  	}
  
        scnsize = 0;
-diff -aprNU5 binutils-2.31.1.orig/libiberty/simple-object.c binutils-2.31.1/libiberty/simple-object.c
---- binutils-2.31.1.orig/libiberty/simple-object.c	2018-06-24 18:38:58 +0000
-+++ binutils-2.31.1/libiberty/simple-object.c	2018-07-27 20:52:18 +0000
+diff -aprNU5 binutils-2.32.orig/libiberty/simple-object.c binutils-2.32/libiberty/simple-object.c
+--- binutils-2.32.orig/libiberty/simple-object.c	2019-01-19 16:01:34 +0000
++++ binutils-2.32/libiberty/simple-object.c	2019-02-13 22:25:44 +0000
 @@ -254,40 +254,40 @@ simple_object_find_section (simple_objec
     Returns non-NULL if NAME is a LTO debug section, NULL if not.
     If RENAME is true it will rename LTO debug sections to non-LTO
@@ -1663,9 +1669,9 @@ diff -aprNU5 binutils-2.31.1.orig/libiberty/simple-object.c binutils-2.31.1/libi
      {
        simple_object_release_write (dest_sobj);
        return errmsg;
-diff -aprNU5 binutils-2.31.1.orig/libiberty/stack-limit.c binutils-2.31.1/libiberty/stack-limit.c
---- binutils-2.31.1.orig/libiberty/stack-limit.c	2018-06-24 18:38:58 +0000
-+++ binutils-2.31.1/libiberty/stack-limit.c	2018-07-27 20:52:18 +0000
+diff -aprNU5 binutils-2.32.orig/libiberty/stack-limit.c binutils-2.32/libiberty/stack-limit.c
+--- binutils-2.32.orig/libiberty/stack-limit.c	2019-01-19 16:01:34 +0000
++++ binutils-2.32/libiberty/stack-limit.c	2019-02-13 22:25:44 +0000
 @@ -49,11 +49,11 @@ stack_limit_increase (unsigned long pref
  #if defined(HAVE_SETRLIMIT) && defined(HAVE_GETRLIMIT) \
      && defined(RLIMIT_STACK) && defined(RLIM_INFINITY)
