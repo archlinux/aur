@@ -26,8 +26,4 @@ package() {
 # Desktop Entry
   install -Dm 644 "${pkgdir}/opt/GooglePlayMusic/GooglePlayMusic.desktop" "${pkgdir}/usr/share/applications/GooglePlayMusic.desktop"
   sed -i s%/usr/share%/opt% ${pkgdir}/usr/share/applications/GooglePlayMusic.desktop
-
-  #create & symlink folder in .config
-  mkdir -p /home/$USER/.config/App-Manager
-  ln -s -f /home/$USER/.config/App-Manager /home/$USER/.config/GooglePlayMusic
 }
