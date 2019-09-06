@@ -6,7 +6,7 @@
 # Contributor: Muhammad 'MJ' Jassim <UnbreakableMJ@gmail.com> 
 
 pkgname=icecat
-pkgver=60.8.0
+pkgver=60.9.0
 _pkgver=6634ee332979f7a78b11cbf09a77364143a981ed
 pkgrel=1
 pkgdesc="GNU version of the Firefox browser."
