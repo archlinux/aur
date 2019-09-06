@@ -2,8 +2,8 @@
 # Contributor: TZ86
 
 pkgname=vivaldi-snapshot
-_rpmversion=2.8.1650.3-1
-pkgver=2.8.1650.3
+_rpmversion=2.8.1657.8-1
+pkgver=2.8.1657.8
 pkgrel=1
 pkgdesc='An advanced browser made with the power user in mind. Snapshot'
 url="https://vivaldi.com"
@@ -20,7 +20,7 @@ optdepends=(
     'libnotify: native notifications'
 )
 source=("https://downloads.vivaldi.com/snapshot/vivaldi-snapshot-${_rpmversion}.x86_64.rpm")
-sha512sums=('edf557fb671825c9d0d5d50a11bc3f4e19b7588c6b8d1787792f382343ba02b72970e7607ddc0e7866350d0716ed8ee82cd8b9208e7e55131f241c79507854a0')
+sha512sums=('f8aa0b88b05ae7881b4f95666687895b275009b15c0f8da961b280d388c51b989544abab1fb08b141805e10205d2860a8eecb9c388dd58234c8a32f1ed0e70f7')
 
 package() {
     cp --parents -a {opt,usr/bin,usr/share} "$pkgdir"
