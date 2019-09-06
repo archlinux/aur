@@ -1,7 +1,7 @@
 pkgbase = atheme
 	pkgdesc = IRC services
 	pkgver = 7.2.10_r2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.atheme.org/atheme/
 	install = atheme.install
 	arch = i686
