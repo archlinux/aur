@@ -1,0 +1,14 @@
+pkgbase = moar
+	pkgdesc = A pager designed to just do the right thing without any configuration.
+	pkgver = 0.9.8
+	pkgrel = 1
+	url = https://github.com/walles/moar
+	arch = any
+	license = BSD
+	makedepends = go
+	optdepends = highlight
+	source = https://github.com/walles/moar/archive/0.9.8.tar.gz
+	sha256sums = 2b21512c24a5c65d76ec1c7e7c59def9630eabf39855c9ae7c763f8d180c33b0
+
+pkgname = moar
+
