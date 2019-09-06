@@ -2,15 +2,15 @@
 
 gitname=lookbook
 pkgname=("${gitname}-git")
-pkgver=latest
+pkgver=r112.56f35ba
 pkgrel=1
 pkgdesc="Browse and find system icons designed for elementary OS"
 arch=('i686' 'x86_64')
 url="https://github.com/danrabbit/${gitname}"
 license=('GPL3')
-depends=('gtk3' 'vala' 'granite' 'gtksourceview3')
+depends=('gtk3' 'granite' 'gtksourceview3')
 optdepends=()
-makedepends=('git' 'meson' 'ninja')
+makedepends=('git' 'meson' 'vala')
 provides=("${gitname}")
 conflicts=("${gitname}")
 source=("git+${url}.git")
