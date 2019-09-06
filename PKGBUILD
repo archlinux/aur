@@ -1,6 +1,6 @@
 # Maintainer: Jaco Malan <jacomalan.12@gmail.com>
 pkgname=libclstl
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc=""
 arch=('any')
