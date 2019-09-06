@@ -19,7 +19,7 @@ build() {
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
     COIN_SKIP_PROJECTS="Sample" \
-    ${_arch}-configure \
+    LDFLAGS="$LDFLAGS -lOsi" ${_arch}-configure \
       --with-osi-lib="$(${_arch}-pkg-config --libs osi)" \
       --with-osi-incdir="/usr/${_arch}/include/coin/" \
       --with-clp-lib="$(${_arch}-pkg-config --libs clp)" \
