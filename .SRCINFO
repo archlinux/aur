@@ -7,6 +7,7 @@ pkgbase = mingw-w64-suitesparse
 	license = GPL
 	makedepends = mingw-w64-gcc
 	depends = mingw-w64-lapack
+	depends = mingw-w64-metis
 	options = !buildflags
 	options = !strip
 	options = staticlibs
