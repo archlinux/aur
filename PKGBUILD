@@ -1,7 +1,7 @@
 # Maintainer: Tom Zander
 
 pkgname=flowee
-pkgver=2019.6.1
+pkgver=2019.7.1
 pkgrel=1
 pkgdesc="Flowee Bitcoin products"
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('boost' 'cmake')
 provides=('flowee-hub')
 backup=("etc/flowee/flowee.conf")
 install=flowee.install
-source=("git+https://gitlab.com/FloweeTheHub/thehub.git#branch=2019.06"
+source=("git+https://gitlab.com/FloweeTheHub/thehub.git#branch=2019.07"
     "flowee.logrotate"
     "flowee.conf"
     "logs.conf")
@@ -20,7 +20,7 @@ source=("git+https://gitlab.com/FloweeTheHub/thehub.git#branch=2019.06"
 sha256sums=('SKIP'
     "aff02b3312c88113fe7316152c15f1545233dc8c2062ee8c36d2dbcad4a9f5bf"
     "bc14acf0d1b4064553756a1e81c0b943e842296f2a2af6442e480b846392e6bc"
-    "1e74675c7e27837847d5ba0a72fb73ff52f919be5b6e0e630a07735336fe015a")
+    "784a4cdc77d1767299ab10119288c21b478b205d560ae86bc9782b04ae2f82fc")
 
 build() {
   mkdir -p build
