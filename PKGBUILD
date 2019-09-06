@@ -3,7 +3,7 @@
 
 pkgname=i3-gaps-rounded-git
 pkgver=4.16.1.r184.g00181678
-pkgrel=1
+pkgrel=2
 pkgdesc='A fork of i3wm tiling window manager with more features, including gaps and rounded corners'
 arch=('i686' 'x86_64')
 url='https://github.com/resloved/i3'
@@ -13,7 +13,7 @@ conflicts=('i3-wm' 'i3bar' 'i3bar-git' 'i3-git' 'i3-gaps-git' 'i3-gaps')
 depends=('xcb-util-keysyms' 'xcb-util-wm' 'libev' 'yajl'
          'startup-notification' 'pango' 'perl' 'xcb-util-cursor' 'xcb-util-xrm'
          'libxkbcommon-x11')
-makedepends=('git' 'asciidoc' 'docbook-xsl' 'xmlto' 'perl' 'pkgconfig')
+makedepends=('automake' 'git' 'asciidoc' 'docbook-xsl' 'xmlto' 'perl' 'pkgconfig')
 optdepends=('rxvt-unicode: The terminal emulator used in the default config.'
             'dmenu: As menu.'
             'i3lock: For locking your screen.'
