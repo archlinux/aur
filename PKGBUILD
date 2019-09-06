@@ -1,7 +1,7 @@
 # Maintainer: Vinicius Moreira
 
 pkgname=bauh-staging
-pkgver=0.5.1.R
+pkgver=0.5.2.RC
 pkgrel=1
 pkgdesc="Free non-official GUI for Flatpak / Snap applications management (staging: it is a testing branch which receives updates frequently and may not be working properly)"
 arch=('any')
@@ -12,16 +12,16 @@ optdepends=('flatpak' 'snapd')
 makedepends=('git' 'python-setuptools')
 provides=("bauh")
 conflicts=('bauh')
-source=("${url}/archive/0ee6d85dd1eeb22eae16470ad15aafc9652712b1.zip")
-sha512sums=('8bfe96dfb8da05cd8ec813d14b563bda834d60dc2db2232740558e558fe5ebe33f9e3c7c318ef33ea55b41d153b63034b4795a5608b0351b0f848c5d4c786edf')
+source=("${url}/archive/641d3a7601fff482c3b6d0acfb71341f66ec25b4.zip")
+sha512sums=('9a16a99bd7c8e4bbc5df371b799d2cf899ef40f2ce295f6aedc7ebfe582595c3ba99256450ebc696a3f7b6d6784c53ebc978a523e4d8d247699d39757624b9e5')
 
 build() {
-  cd "${srcdir}/bauh-0ee6d85dd1eeb22eae16470ad15aafc9652712b1"
+  cd "${srcdir}/bauh-641d3a7601fff482c3b6d0acfb71341f66ec25b4"
   python3 setup.py build
 }
 
 package() {
-  cd "${srcdir}/bauh-0ee6d85dd1eeb22eae16470ad15aafc9652712b1"
+  cd "${srcdir}/bauh-641d3a7601fff482c3b6d0acfb71341f66ec25b4"
   python3 setup.py install --root="$pkgdir" --optimize=1 || return 1
   python3 aur/panel_entry.py
   python3 aur/tray_entry.py
