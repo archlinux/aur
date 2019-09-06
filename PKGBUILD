@@ -1,26 +1,33 @@
+# Author: Bruno Pagani <archange@archlinux.org>
 # Maintainer: nerflad <nerflad@gmail.com>
 
-pkgname=ocaml-easy-format
-_oname=easy-format
+_pkgname=easy-format
+pkgname=ocaml-${_pkgname}
 pkgver=1.3.1
-pkgrel=3
-pkgdesc="Data pretty printing made easy"
-url="https://github.com/mjambon/easy-format"
-arch=('i686' 'x86_64' 'armv7h')
-options=('!strip' 'staticlibs')
+pkgrel=5
+pkgdesc="Pretty-printing library for OCaml"
+arch=('x86_64')
+url="https://github.com/ocaml-community/${_pkgname}"
 license=('BSD')
-makedepends=('ocaml-findlib' 'dune')
-source=("https://github.com/mjambon/${_oname}/archive/v${pkgver}.tar.gz")
+options=('!strip' 'staticlibs')
+depends=('glibc')
+makedepends=('dune')
+source=(${pkgname}-${pkgver}.tar.gz::"${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('489d55ea5de171cea2d7e2114bcd5cebd1fcbf89f839fbf3757769507502e1f0')
+
 build() {
-  cd ${srcdir}/${_oname}-${pkgver}
-  make all
-  sed -i '/doc:\s\[/,$d' _build/default/easy-format.install
+    cd ${_pkgname}-${pkgver}
+    make all
+}
+
+check() {
+    cd ${_pkgname}-${pkgver}
+    make test
 }
 
 package() {
-  cd ${srcdir}/${_oname}-${pkgver}
-  export OCAMLFIND_DESTDIR="${pkgdir}/$(ocamlfind printconf destdir)"
-  install -dm755 "$OCAMLFIND_DESTDIR"
-  jbuilder install
+    cd ${_pkgname}-${pkgver}
+    DESTDIR="${pkgdir}" dune install --prefix=/usr --libdir="$(ocamlfind printconf destdir)"
+    install -Dm644 LICENSE -t "${pkgdir}"/usr/share/licenses/${pkgname}/
+    rm -r "${pkgdir}"/usr/doc
 }
