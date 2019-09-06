@@ -10,7 +10,7 @@ pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU accelerat
 arch=('x86_64')
 url="https://pytorch.org"
 license=('BSD')
-depends=('google-glog' 'gflags' 'opencv' 'openmp' 'nccl' 'pybind11' 'python' 'python-yaml' 'python-numpy' 'protobuf' 'ffmpeg' 'python-future')
+depends=('google-glog' 'gflags' 'opencv-gcc8' 'openmp' 'nccl' 'pybind11' 'python' 'python-yaml' 'python-numpy' 'protobuf' 'ffmpeg' 'python-future')
 makedepends=('python' 'python-setuptools' 'python-yaml' 'python-numpy' 'cmake' 'cuda' 'cudnn' 'git')
 source=("${_pkgname}-${pkgver}::git+https://github.com/pytorch/pytorch.git#tag=v$pkgver"
         24143.patch)
@@ -59,8 +59,11 @@ prepare() {
   export CUDA_HOME=/opt/cuda
   export CUDNN_LIB_DIR=/usr/lib
   export CUDNN_INCLUDE_DIR=/usr/include
+  export CUDNN_LIBRARY="/usr/lib/libcudnn.so"
   export TORCH_NVCC_FLAGS="-Xfatbin -compress-all"
-  export TORCH_CUDA_ARCH_LIST="3.0;3.2;3.5;3.7;5.0;5.2;5.3;6.0;6.1;6.2;7.0;7.2;7.5"
+  export TORCH_CUDA_ARCH_LIST="3.5;3.7;5.0;5.2;5.3;6.0;6.1;6.2;7.0;7.2;7.5"
+  export NCCL_INCLUDE_DIR=/usr/include
+  export NCCL_VERSION_CODE=$(sed -n 's/^#define NCCL_VERSION_CODE\s*\(.*\).*/\1/p' /usr/include/nccl.h)
 }
 
 build() {
