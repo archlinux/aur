@@ -1,7 +1,7 @@
 pkgbase = arsdk3
 	pkgdesc = The SDK for Parrot Bebop drones
 	pkgver = 3.14.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://developer.parrot.com/docs/SDK3/
 	arch = x86_64
 	license = custom
