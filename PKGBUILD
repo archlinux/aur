@@ -42,8 +42,6 @@ prepare() {
   npm install "node-sass@4.12.0"
 
   # Prepare the packages for building
- # npm install lerna
- # lerna bootstrap
 
 }
 
@@ -54,6 +52,9 @@ build() {
   export npm_config_cache="$srcdir"/npm_cache
   export PATH="$srcdir/ferdi/node_modules/.bin:$srcdir/python2_path:$PATH"
 
+  npm install lerna
+  lerna bootstrap
+ 
   gulp build
   electron-builder --linux dir
 }
