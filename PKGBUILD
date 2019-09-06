@@ -1,7 +1,8 @@
 # Contributor: David Sotelo <dvsotelo@gmail.com>
+# Contributor: Josef Vybíhal <josef.vybihal@gmail.com>
 
 pkgname=portecle
-pkgver=1.9
+pkgver=1.11
 pkgrel=1
 pkgdesc="User friendly GUI application for creating, managing and examining key stores."
 arch=('any')
@@ -9,10 +10,10 @@ url="http://portecle.sourceforge.net/"
 license=('GPL')
 depends=('java-environment' 'bash' 'desktop-file-utils')
 install='portecle.install'
-source=(http://downloads.sourceforge.net/project/$pkgname/$pkgname/$pkgver/$pkgname-$pkgver.zip
+source=(https://github.com/scop/portecle/releases/download/v$pkgver/portecle-$pkgver.zip
         portecle.sh)
-md5sums=('88ecd8a9d37cce8dd184193b76076c8d'
-         '443c7296b801e9372b56d0a4daa76f0c')
+sha256sums=('75da1d5552979f3310adf4c93f90da00b56dfa12424ab52047c0c937ab6709bb'
+            '86e003e596b6e9c031b63482d794ac4ccb16dee864bedbef69c9bc64e24b4763')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -22,8 +23,13 @@ package() {
   install -D -m644 bcprov.jar ${pkgdir}/usr/share/java/${pkgname}/bcprov.jar
   install -D -m644 bcpkix.jar ${pkgdir}/usr/share/java/${pkgname}/bcpkix.jar
 
-  install -D -m644 portecle.desktop ${pkgdir}/usr/share/applications/portecle.desktop
-  install -D -m644 portecle.png ${pkgdir}/usr/share/pixmaps/portecle.png
-}
+  install -D -m644 net.sf.portecle.desktop ${pkgdir}/usr/share/applications/portecle.desktop
 
-# vim:set ts=2 sw=2 et:
+  # Icons
+  for i in 16 32 48 64 96 128 192 256 512; do
+    for ico in ${srcdir}/${pkgname}-${pkgver}/icons/${i}x${i}/*.png; do
+      install -Dm644 ${ico} \
+      ${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/${ico}
+    done
+  done
+}
