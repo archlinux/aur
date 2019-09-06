@@ -1,4 +1,3 @@
-
 pkgname=mingw-w64-coin-or-csdp
 pkgver=6.2.0
 pkgrel=1
@@ -9,7 +8,7 @@ license=(EPL)
 depends=(mingw-w64-lapack)
 makedepends=(mingw-w64-cmake)
 options=('!buildflags' '!strip' 'staticlibs')
-groups=(coin-or)
+groups=(mingw-w64-coin-or)
 source=("https://www.coin-or.org/download/source/Csdp/Csdp-$pkgver.tgz" CMakeLists.txt)
 sha256sums=('7f202a15f33483ee205dcfbd0573fdbd74911604bb739a04f8baa35f8a055c5b' SKIP)
 
