@@ -1,0 +1,10 @@
+pkgbase = clstl
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/Code-Log/clstl
+	arch = any
+	license = MIT
+	depends = clang
+
+pkgname = clstl
+
