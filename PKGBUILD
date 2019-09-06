@@ -11,8 +11,8 @@ makedepends=('cmake' 'git')
 provides=('nod')
 conflicts=('nod')
 source=(
-    'nod::git+https://gitlab.axiodl.com/AxioDL/nod'
-    'logvisor::git+https://gitlab.axiodl.com/AxioDL/logvisor'
+    'nod::git+https://gitlab.axiodl.com/AxioDL/nod.git'
+    'logvisor::git+https://gitlab.axiodl.com/AxioDL/logvisor.git'
 )
 md5sums=('SKIP' 'SKIP')
 
@@ -37,7 +37,7 @@ package() {
     make DESTDIR="$pkgdir/" install
     install -Dm755 driver/nodtool "$pkgdir/usr/bin/nodtool"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/nod/LICENSE"
-    
+
     cd ../logvisor
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/logvisor/LICENSE"
 }
