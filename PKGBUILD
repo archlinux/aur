@@ -28,7 +28,7 @@ source=(http://git.savannah.gnu.org/cgit/gnuzilla.git/snapshot/gnuzilla-${_pkgve
         deny_missing_docs.patch patch_makeicecat_stuff.patch fix-addons.patch)
 
 sha256sums=('2655c3a8f656435e636fcc7774f3fa6e62bf1f98056a64b8b84fbec9a03f7b0c'
-            'c44eab35f71dd3028a74632463710d674b2e8a0682e5e887535e3233a3b7bbb3'
+            '88a2bfdc78e320fc53dcdc732991d305122ea4eecbbea1dc1723538baa6cd8e2'
             '190577ad917bccfc89a9bcafbc331521f551b6f54e190bb6216eada48dcb1303'
             'c10521badc262b476e844d3f3045ddf27e28d83d49b5db0d0e19431f06386e4d'
             '8b37332dd205946ea95c606103b5b0e1e8498819051ea1c1bce79f04fd88ebca'

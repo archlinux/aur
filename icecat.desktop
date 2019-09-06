@@ -73,6 +73,6 @@ GenericName[xh]=Umkhangeli zincwadi we Web
 GenericName[zh_CN]=网页浏览器
 GenericName[zh_TW]=網頁瀏覽器
 GenericName[zu]=Umcingi we-Web
-MimeType=text/html
+MimeType=text/html;text/xml;application/xhtml+xml;x-scheme-handler/http;x-scheme-handler/https;application/x-xpinstall;
 StartupNotify=false
 Categories=Application;Network;
