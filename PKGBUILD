@@ -3,14 +3,14 @@
 # Contributor: janezz55
 
 pkgname=dosbox-gcc
-pkgver=9.1.0
+pkgver=9.2.0
 _target="i586-pc-msdosdjgpp"
 _islver=0.18
 _djver=2.05
 _pthver=3.14
 _zlver=1.2.11
 _wattver="2.2-dev.10"
-pkgrel=2
+pkgrel=1
 pkgdesc="djgpp cross-compiler for the dosbox environment"
 arch=('i686' 'x86_64')
 url="http://gcc.gnu.org"

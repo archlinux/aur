@@ -96,6 +96,47 @@ index 8b21aa7de70..58b81351ff4 100644
     pragma Import (C, Current_Time, "__gnat_current_time");
     pragma Import (C, Current_Process_Id, "__gnat_current_process_id");
  
+diff --git a/gcc/collect2.c b/gcc/collect2.c
+index eb84f84639b..ba7291f293b 100644
+--- a/gcc/collect2.c
++++ b/gcc/collect2.c
+@@ -1235,21 +1235,30 @@ main (int argc, char **argv)
+   *ld1++ = *ld2++ = ld_file_name;
+ 
+   /* Make temp file names.  */
++
++#ifdef __DJGPP__
++#define CDTOR_C_NAME ".ctc"
++#define CDTOR_O_NAME ".cto"
++#else
++#define CDTOR_C_NAME ".cdtor.c"
++#define CDTOR_O_NAME ".cdtor.o"
++#endif
++
+   if (save_temps)
+     {
+       c_file = (char *) xmalloc (strlen (output_file)
+-				  + sizeof (".cdtor.c") + 1);
++				  + sizeof (CDTOR_C_NAME) + 1);
+       strcpy (c_file, output_file);
+-      strcat (c_file, ".cdtor.c");
++      strcat (c_file, CDTOR_C_NAME);
+       o_file = (char *) xmalloc (strlen (output_file)
+-				  + sizeof (".cdtor.o") + 1);
++				  + sizeof (CDTOR_O_NAME) + 1);
+       strcpy (o_file, output_file);
+-      strcat (o_file, ".cdtor.o");
++      strcat (o_file, CDTOR_O_NAME);
+     }
+   else
+     {
+-      c_file = make_temp_file (".cdtor.c");
+-      o_file = make_temp_file (".cdtor.o");
++      c_file = make_temp_file (CDTOR_C_NAME);
++      o_file = make_temp_file (CDTOR_O_NAME);
+     }
+ #ifdef COLLECT_EXPORT_LIST
+   export_file = make_temp_file (".x");
 diff --git a/gcc/config/i386/xm-djgpp.h b/gcc/config/i386/xm-djgpp.h
 index 8cb8bc6939c..6e152a69bfc 100644
 --- a/gcc/config/i386/xm-djgpp.h
@@ -157,7 +198,7 @@ index 5bb1ccac6be..161da5caed3 100644
      return -1;
  #endif
 diff --git a/gcc/ginclude/float.h b/gcc/ginclude/float.h
-index 9ebae057d34..68449ba3a44 100644
+index 4767d7b9dfb..15e83f703a4 100644
 --- a/gcc/ginclude/float.h
 +++ b/gcc/ginclude/float.h
 @@ -25,6 +25,10 @@ see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see
@@ -323,11 +364,33 @@ index 9bfe52439f3..d116e89adde 100644
  	if (rwxXstugo[5] && is_dir)
  	  file_mode |= S_ISVTX;
  	else if (!is_dir)
+diff --git a/libgfortran/intrinsics/execute_command_line.c b/libgfortran/intrinsics/execute_command_line.c
+index 1a471632172..5956fbfd7bd 100644
+--- a/libgfortran/intrinsics/execute_command_line.c
++++ b/libgfortran/intrinsics/execute_command_line.c
+@@ -65,7 +65,7 @@ set_cmdstat (int *cmdstat, int value)
+ }
+ 
+ 
+-#if defined(HAVE_WAITPID) && defined(HAVE_SIGACTION)
++#if defined(HAVE_WAITPID) && defined(HAVE_SIGACTION) && !defined(__DJGPP__)
+ static void
+ sigchld_handler (int signum __attribute__((unused)))
+ {
+@@ -85,7 +85,7 @@ execute_command_line (const char *command, bool wait, int *exitstat,
+   /* Flush all I/O units before executing the command.  */
+   flush_all_units();
+ 
+-#if defined(HAVE_POSIX_SPAWN) || defined(HAVE_FORK)
++#if (defined(HAVE_POSIX_SPAWN) || defined(HAVE_FORK)) && !defined(__DJGPP__)
+   if (!wait)
+     {
+       /* Asynchronous execution.  */
 diff --git a/libgfortran/io/unix.c b/libgfortran/io/unix.c
-index c2fc674cc83..622b3890c2b 100644
+index 42792976c4b..3418a4af1e9 100644
 --- a/libgfortran/io/unix.c
 +++ b/libgfortran/io/unix.c
-@@ -219,6 +219,9 @@ typedef struct
+@@ -221,6 +221,9 @@ typedef struct
  }
  unix_stream;
  
@@ -337,7 +400,7 @@ index c2fc674cc83..622b3890c2b 100644
  
  /* fix_fd()-- Given a file descriptor, make sure it is not one of the
     standard descriptors, returning a non-standard descriptor.  If the
-@@ -1199,8 +1202,13 @@ tempfile_open (const char *tempdir, char **fname)
+@@ -1222,8 +1225,13 @@ tempfile_open (const char *tempdir, char **fname)
    char *template = xmalloc (tempdirlen + 23);
  
  #ifdef HAVE_MKSTEMP
@@ -351,7 +414,7 @@ index c2fc674cc83..622b3890c2b 100644
  
  #ifdef HAVE_UMASK
    /* Temporarily set the umask such that the file has 0600 permissions.  */
-@@ -1566,6 +1574,13 @@ open_external (st_parameter_open *opp, unit_flags *flags)
+@@ -1589,6 +1597,13 @@ open_external (st_parameter_open *opp, unit_flags *flags)
      return NULL;
    fd = fix_fd (fd);
  
@@ -418,10 +481,10 @@ index 2c66e35cc1f..f058c39dc3d 100644
        memoized_tmpdir = tmpdir;
  #else /* defined(_WIN32) && !defined(__CYGWIN__) */
 diff --git a/libiberty/simple-object-elf.c b/libiberty/simple-object-elf.c
-index 22c9ae7ed2d..20f4b2678e2 100644
+index 3d49f339631..75f2ca4e2f4 100644
 --- a/libiberty/simple-object-elf.c
 +++ b/libiberty/simple-object-elf.c
-@@ -1285,7 +1285,9 @@ simple_object_elf_copy_lto_debug_sections (simple_object_read *sobj,
+@@ -1293,7 +1293,9 @@ simple_object_elf_copy_lto_debug_sections (simple_object_read *sobj,
      }
    if (new_i - 1 >= SHN_LORESERVE)
      {
@@ -494,7 +557,7 @@ index 7b8810d62f1..9795a81aa70 100644
  
  #ifdef _GLIBCXX_HAVE_EOWNERDEAD
 diff --git a/libstdc++-v3/include/experimental/bits/fs_path.h b/libstdc++-v3/include/experimental/bits/fs_path.h
-index ebd5072fc1a..81935705a41 100644
+index 64089b432eb..f6b287d8d55 100644
 --- a/libstdc++-v3/include/experimental/bits/fs_path.h
 +++ b/libstdc++-v3/include/experimental/bits/fs_path.h
 @@ -53,6 +53,11 @@
@@ -509,7 +572,7 @@ index ebd5072fc1a..81935705a41 100644
  namespace std _GLIBCXX_VISIBILITY(default)
  {
  _GLIBCXX_BEGIN_NAMESPACE_VERSION
-@@ -491,6 +496,8 @@ _GLIBCXX_BEGIN_NAMESPACE_CXX11
+@@ -493,6 +498,8 @@ _GLIBCXX_BEGIN_NAMESPACE_CXX11
      {
  #ifdef _GLIBCXX_FILESYSTEM_IS_WINDOWS
        return __ch == L'/' || __ch == preferred_separator;
@@ -518,7 +581,7 @@ index ebd5072fc1a..81935705a41 100644
  #else
        return __ch == '/';
  #endif
-@@ -854,6 +861,9 @@ _GLIBCXX_BEGIN_NAMESPACE_CXX11
+@@ -874,6 +881,9 @@ _GLIBCXX_BEGIN_NAMESPACE_CXX11
  #ifdef _GLIBCXX_FILESYSTEM_IS_WINDOWS
      std::replace(_M_pathname.begin(), _M_pathname.end(), L'/',
  		 preferred_separator);
@@ -528,7 +591,7 @@ index ebd5072fc1a..81935705a41 100644
  #endif
      return *this;
    }
-@@ -1059,7 +1069,7 @@ _GLIBCXX_BEGIN_NAMESPACE_CXX11
+@@ -1075,7 +1085,7 @@ _GLIBCXX_BEGIN_NAMESPACE_CXX11
    inline bool
    path::is_absolute() const
    {
@@ -538,10 +601,10 @@ index ebd5072fc1a..81935705a41 100644
  #else
      return has_root_directory();
 diff --git a/libstdc++-v3/src/filesystem/path.cc b/libstdc++-v3/src/filesystem/path.cc
-index 92def10e33e..2e4de6eb15c 100644
+index edf7c67c01b..af343bcee28 100644
 --- a/libstdc++-v3/src/filesystem/path.cc
 +++ b/libstdc++-v3/src/filesystem/path.cc
-@@ -377,8 +377,13 @@ path::_M_split_cmpts()
+@@ -408,8 +408,13 @@ path::_M_split_cmpts()
  	_M_add_root_dir(0);
        ++pos;
      }
@@ -555,4 +618,4 @@ index 92def10e33e..2e4de6eb15c 100644
 +#endif
      {
        // got disk designator
-       _M_add_root_name(2);
+       if (len == 2)
