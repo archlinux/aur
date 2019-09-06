@@ -5,7 +5,7 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # Thanks to asm0dey for making this easier
 pkgname=3proxy-git
 pkgver=r520.22cf925
-pkgrel=5
+pkgrel=6
 pkgdesc="A tiny crossplatform proxy server (git version)"
 arch=('x86_64')
 url="https://3proxy.org/"
@@ -24,7 +24,7 @@ source=("${_pkgname}::git+https://github.com/z3APA3A/${_pkgname}.git"
 	'pkging.patch.sig'
 	'3proxy@.service.sig')
 sha512sums=('SKIP'
-            '54207ceb651510e771a6b5d1f02ca451e3d7521ded7268403ef596f3213bc15a9c200c8a480aed587a46c0aa768d6052db4d27f379d79c5b7232ba9152c38624'
+            'd4cd01bdf9e78b3d22b0af667a54808f406a828ab6c2f056995ec09e46880cd832a12ad97fa0ab2224404c60c796643e479a98d2c9eca04e97cd76b262f48971'
             '80c3c6fca8d297c7fd2fe13802432957220ea850d3ae0433451c9b4a9079a063daf23f1b2cfa328bfdccf2ba69aa035f483269af47a496fc116aee2b5825d80a'
             'SKIP'
             'SKIP')

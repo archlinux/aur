@@ -3,7 +3,7 @@ Description=3proxy Proxy Server (%i)
 After=network.target
 
 [Service]
-Type=simple
+Type=forking
 ExecStart=/usr/bin/3proxy /etc/3proxy/%i.cfg
 Restart=on-failure
 PrivateUsers=true
