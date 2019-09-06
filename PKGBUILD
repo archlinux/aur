@@ -1,14 +1,14 @@
 # Maintainer: Alex J. Malozemoff <amaloz@galois.com>
 pkgname=sealcrypto
-pkgver=3.3.0
+pkgver=3.3.2
 pkgrel=1
-pkgdesc='Simple Encrypted Arithmetic Library'
+pkgdesc='Microsoft library for fully homomorphic encryption'
 arch=('x86_64')
 url="https://sealcrypto.org/"
 license=('MIT')
 makedepends=('cmake')
 source=("https://github.com/Microsoft/SEAL/archive/${pkgver}.tar.gz")
-sha1sums=('f516c85537c6d092f05b52af8b46e4e8d92891ad')
+sha256sums=('33f4775d4e9767699f3b26b6ce31a1f799a42c06ef27ba467b0f4c34c0f7f66e')
 provides=('sealcrypto')
 
 build() {
@@ -16,7 +16,7 @@ build() {
   tar xf ${pkgver}.tar.gz
   cd SEAL-${pkgver}/native/src
   cmake -DCMAKE_INSTALL_PREFIX=${pkgdir}/usr .
-  make
+  make -j
 }
 
 package() {
