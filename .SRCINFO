@@ -1,6 +1,6 @@
 pkgbase = pkgconf-git
 	pkgdesc = pkg-config compatible utility which does not depend on glib
-	pkgver = 1.6.0.7.gbe60112
+	pkgver = 1.6.3.0.gc862e03
 	pkgrel = 1
 	url = https://github.com/pkgconf/pkgconf
 	arch = i686
@@ -16,9 +16,11 @@ pkgbase = pkgconf-git
 	conflicts = pkgconfig
 	conflicts = pkgconf
 	source = git://github.com/pkgconf/pkgconf.git
-	source = platform-pkg-config.in
+	source = i686-pc-linux-gnu.personality
+	source = x86_64-pc-linux-gnu.personality
 	md5sums = SKIP
-	md5sums = 8208d56d649808fe561f088cd32c74e0
+	md5sums = b5bee6aa847bfdcf84ef31229dba32a9
+	md5sums = c6d689e4e8bc7b2b3e13a911bab36e27
 
 pkgname = pkgconf-git
 
