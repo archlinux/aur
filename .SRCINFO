@@ -1,28 +1,5 @@
 pkgbase = calendar
 	pkgdesc = Reminder utility (OpenBSD)
-	pkgver = 6.4_20190201
-	pkgrel = 3
-	url = http://www.openbsd.org/cgi-bin/cvsweb/src/usr.bin/calendar
-	arch = x86_64
-	license = BSD
-	makedepends = cvs
-	makedepends = openssh
-	conflicts = bsdmainutils
-	source = git+https://github.com/ugjka/calendar.latvia.git
-	source = http://ftp.debian.org/debian/pool/main/b/bsdmainutils/bsdmainutils_9.0.14.tar.gz
-	source = calendar-linux.patch
-	source = Makefile.linux
-	source = LICENSE
-	sha256sums = SKIP
-	sha256sums = 1ea1e8f11ddb9cc7c7b72d52d74ecc8e5ecdf0b05335a7e77e1c1ac98c822305
-	sha256sums = 9b5bf0927e89ee8f3000a40a8715e6a1b5c3cfed31b3fc156db01f51a0005e46
-	sha256sums = e29cd94c128ecf76cb5224bd5dea4a2b199773f27226484b17804b83f6e8462a
-	sha256sums = 95112fa05d9b7204808ede37b1c77469826c8c3875e4b1523307b5050d966564
-
-pkgname = calendar
-
-pkgbase = calendar
-	pkgdesc = Reminder utility (OpenBSD)
 	pkgver = 6.5_20190812
 	pkgrel = 1
 	url = http://www.openbsd.org/cgi-bin/cvsweb/src/usr.bin/calendar
