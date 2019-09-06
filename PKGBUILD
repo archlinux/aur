@@ -5,7 +5,7 @@ _pkgsrcname=elpy
 _pkgmaintainer=jorgenschaefer
 _pkgdestdirname=elpy
 _versionprefix=
-pkgver=1.29.1
+pkgver=1.30.0
 pkgrel=1
 pkgdesc="Emacs Python Development Environment"
 pkgname=emacs-${_pkgdestdirname}
@@ -14,7 +14,7 @@ url="https://github.com/${_pkgmaintainer}/${_pkgsrcname}"
 license=('GPL3')
 depends=('emacs' 'emacs-company-mode' 'emacs-find-file-in-project' 'emacs-highlight-indentation' 'emacs-pyvenv' 'emacs-yasnippet' 'emacs-s' 'python-elpy')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/${_pkgmaintainer}/${_pkgsrcname}/archive/${_versionprefix}${pkgver}.tar.gz")
-sha256sums=('9b13b3b0eab550179b44fb197f3f973f52ba4d83bd3154609eeeaa5ef6b79e52')
+sha256sums=('8e89bf5eeb8065972b4736d4d8958a71fbee79cbd2316028c19505a9c93a1d9c')
 install=${pkgname}.install
 
 package() {
