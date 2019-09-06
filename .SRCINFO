@@ -1,0 +1,15 @@
+pkgbase = wowlan-systemd
+	pkgdesc = A systemd unit file for enabling Wake-On-WLAN automatically
+	pkgver = 20190906
+	pkgrel = 1
+	install = wowlan-systemd.install
+	arch = any
+	license = MIT
+	depends = iw
+	source = wowlan@.service
+	source = wowlan-systemd.install
+	sha256sums = 84be5eeb4aa70ff97146c0f628984d2799564d5e813c86219798cc8633c746f4
+	sha256sums = c1e5fd009b8905adfeda674e25c34379048e2e968bedcc5be7537a45950d89da
+
+pkgname = wowlan-systemd
+
