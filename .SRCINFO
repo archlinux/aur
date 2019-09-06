@@ -1,6 +1,6 @@
 pkgbase = bees-git
 	pkgdesc = Best-Effort Extent-Same, a btrfs deduplicator daemon
-	pkgver = v0.6.r0.g3504439
+	pkgver = v0.6.r75.g7117cb4
 	pkgrel = 1
 	url = https://github.com/Zygo/bees
 	arch = any
@@ -9,6 +9,7 @@ pkgbase = bees-git
 	makedepends = make
 	makedepends = gcc
 	makedepends = markdown
+	makedepends = btrfs-progs
 	source = bees-git::git://github.com/zygo/bees.git#branch=master
 	md5sums = SKIP
 
