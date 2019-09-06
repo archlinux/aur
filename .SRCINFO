@@ -1,0 +1,14 @@
+pkgbase = duguanjia
+	pkgdesc = Du Gatekeeper
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://duguanjia.baidu.com/
+	install = duguanjia.install
+	arch = x86_64
+	provides = duguanjia
+	conflicts = duguanjia
+	source = https://duguanjia.baidu.com/download/duguanjia/DuGuanjia_Setup_Linux_amd64.deb
+	sha512sums = SKIP
+
+pkgname = duguanjia
+
