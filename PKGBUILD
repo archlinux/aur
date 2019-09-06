@@ -6,8 +6,8 @@
 
 pkgname=dolphin-meld
 _pkgname=dolphin
-pkgver=19.08.0
-pkgrel=2
+pkgver=19.08.1
+pkgrel=1
 pkgdesc="KDE File Manager, using Meld rather than Kompare"
 arch=(x86_64)
 url="https://kde.org/applications/system/dolphin/"
@@ -22,7 +22,7 @@ optdepends=('kde-cli-tools: for editing file type options' 'ffmpegthumbs: video 
 groups=(kde-applications kdebase)
 source=("https://download.kde.org/stable/applications/$pkgver/src/$_pkgname-$pkgver.tar.xz"{,.sig}
         "dolphin-meld.patch")
-sha256sums=('fd44714541ae7082d4615e441242afdba2d7810a373bfc8c3e64ff5c7db0a0f0'
+sha256sums=('a612dac0cf50301af46ad5fa29aad630bb33a8a4bd416a4d6023b65fb00f25cc'
             'SKIP'
             '13107b72348bd7eea5665196dc4a37c21bff131bbc8457efe77ef8c3e9450c7b')
 validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
@@ -37,8 +37,6 @@ prepare() {
 build() {
   cd build
   cmake ../$_pkgname-$pkgver \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=lib \
     -DBUILD_TESTING=OFF
   make
 }
