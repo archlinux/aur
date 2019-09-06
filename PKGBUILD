@@ -14,7 +14,7 @@ source=("fanshim-${pkgver}-${pkgrel}.py::https://raw.githubusercontent.com/pimor
         'fanshim.service')
 
 sha512sums=('35db868516da1d5ba5f4d337de3fa0c43b210d4b4a6e37efba45801e12f88c7c0e66d39c5307f98811f3268af2b2bc69a9cc476b8986abc699aed2ff0e6b0ae0'
-            '7dd5b37cd81a7001d5f3d09461889294b6b38bcfb7274a4a5c0c558492454ad58bb03822de1ce023c7221b91886f5eff0b07a56ea88a34774e971a4ee1773b26')
+            '10bf465ab1d5d5a769ad2f656030cd6e9cf247efc0a7446797ae2df70bc10e91f1e0b5a478f68a46974a3aa84c01f35bd4119c17739b1bbb0cb98806382354e5')
 
 package() {
   install -D -m 755 "${srcdir}/fanshim-${pkgver}-${pkgrel}.py" "${pkgdir}/usr/bin/fanshim"
