@@ -20,7 +20,6 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP')
-validpgpkeys=('EAF1C276A747E9ED86210CBAC3126D3B4AE55E93') # Tristan Gingold <adacore dot com, gingold>
 _target="i586-pc-msdosdjgpp"
 
 prepare() {
