@@ -1,8 +1,8 @@
 pkgbase = icon
 	pkgdesc = The Icon programming language
 	pkgver = 951
-	pkgrel = 4
-	url = http://www.cs.arizona.edu/icon/
+	pkgrel = 5
+	url = http://www2.cs.arizona.edu/icon/
 	arch = i686
 	arch = x86_64
 	license = custom

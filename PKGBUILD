@@ -2,9 +2,9 @@
 
 pkgname=icon  
 pkgver=951
-pkgrel=4
+pkgrel=5
 pkgdesc="The Icon programming language"
-url="http://www.cs.arizona.edu/icon/"
+url="http://www2.cs.arizona.edu/icon/"
 arch=('i686' 'x86_64')
 depends=('sh' 'libx11')
 makedepends=('libxt')
@@ -24,7 +24,7 @@ package() {
   make Install dest="$pkgdir"/usr/share/icon 
   for _i in colrbook colrpick fontpick icont iconx palette vib wevents 
   do
-    install -D -m755 "$pkgdir"/usr/share/icon/bin/$_i $pkgdir/usr/bin/$_i 
+    install -D -m755 "$pkgdir"/usr/share/icon/bin/$_i "$pkgdir"/usr/bin/$_i 
     rm "$pkgdir"/usr/share/icon/bin/$_i
   done
   cd "$pkgdir"/usr/share/icon/bin
