@@ -11,7 +11,7 @@ _enable_gcc_more_v="y"
 # Optionally select a sub architecture by number if building in a clean chroot
 # Leaving this entry blank will require user interaction during the build
 # which will cause a failure to build if using makechrootpkg. Note that the
-# generic (default) option is 27.
+# generic (default) option is 30.
 #
 #  1. AMD Opteron/Athlon64/Hammer/K8 (MK8)
 #  2. AMD Opteron/Athlon64/Hammer/K8 with SSE3 (MK8SSE3)
@@ -31,27 +31,27 @@ _enable_gcc_more_v="y"
 #  16. Intel Nehalem (MNEHALEM)
 #  17. Intel Westmere (MWESTMERE)
 #  18. Intel Silvermont (MSILVERMONT)
-#  19. Intel Sandy Bridge (MSANDYBRIDGE)
-#  20. Intel Ivy Bridge (MIVYBRIDGE)
-#  21. Intel Haswell (MHASWELL)
-#  22. Intel Broadwell (MBROADWELL)
-#  23. Intel Skylake (MSKYLAKE)
-#  24. Intel Skylake X (MSKYLAKEX)
-#  25. Intel Cannon Lake (MCANNONLAKE)
-#  26. Intel Ice Lake (MICELAKE)
-#  27. Generic-x86-64 (GENERIC_CPU)
-#  28. Native optimizations autodetected by GCC (MNATIVE)
+#  19. Intel Goldmont (MGOLDMONT)
+#  20. Intel Goldmont Plus (MGOLDMONTPLUS)
+#  21. Intel Sandy Bridge (MSANDYBRIDGE)
+#  22. Intel Ivy Bridge (MIVYBRIDGE)
+#  23. Intel Haswell (MHASWELL)
+#  24. Intel Broadwell (MBROADWELL)
+#  25. Intel Skylake (MSKYLAKE)
+#  26. Intel Skylake X (MSKYLAKEX)
+#  27. Intel Cannon Lake (MCANNONLAKE)
+#  28. Intel Ice Lake (MICELAKE)
+#  29. Intel Cascade Lake (MCASCADELAKE)
+#  30. Generic-x86-64 (GENERIC_CPU)
+#  31. Native optimizations autodetected by GCC (MNATIVE)
 _subarch=
 
-# Compile ONLY probed modules
-# Build in only the modules that you currently have probed in your system VASTLY
-# reducing the number of modules built and the build time.
-#
-# WARNING - ALL modules must be probed BEFORE you begin making the pkg!
+# Compile ONLY used modules to VASTLY reduce the number of modules built
+# and the build time.
 #
 # To keep track of which modules are needed for your specific system/hardware,
 # give module_db script a try: https://aur.archlinux.org/packages/modprobed-db
-# This PKGBUILD will call it directly to probe all the modules you have logged!
+# This PKGBUILD read the database kept if it exists
 #
 # More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
 _localmodcfg=
@@ -59,24 +59,22 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=4.14
-_minor=141
+_minor=142
 _srcname=linux-${_major}
-_clr=${_major}.139-58
+_clr=${_major}.141-60
 pkgbase=linux-clear-lts2017
 pkgver=${_major}.${_minor}
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux-lts2017"
 license=('GPL2')
-makedepends=('bc' 'git' 'inetutils' 'kmod' 'libelf' 'linux-firmware' 'xmlto')
+makedepends=('bc' 'git' 'inetutils' 'kmod' 'libelf' 'xmlto')
 options=('!strip')
-_ucode='20190618'
-_gcc_more_v='20190714'
+_gcc_more_v='20190822'
 source=(
   "https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-${_major}.tar".{xz,sign}
   "https://cdn.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
   "${pkgbase}::git+https://github.com/clearlinux-pkgs/linux-lts2017.git#tag=${_clr}"
-  "intel-ucode-${_ucode}.tar.gz::https://github.com/intel/Intel-Linux-Processor-Microcode-Data-Files/archive/microcode-${_ucode}.tar.gz"
   "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
   '60-linux.hook'  # pacman hook for depmod
   '90-linux.hook'  # pacman hook for initramfs regeneration
@@ -123,13 +121,6 @@ CONFIG_MODULE_COMPRESS_XZ=y|' ./.config
 
         make olddefconfig
 
-    ### Copying i915 firmware and intel-ucode
-        msg2 "Copying i915 firmware and intel-ucode-${_ucode}..."
-        cp -a /usr/lib/firmware/i915 firmware/
-        cp -a ${srcdir}/Intel-Linux-Processor-Microcode-Data-Files-microcode-${_ucode}/intel-ucode firmware/
-        cp  ${srcdir}/Intel-Linux-Processor-Microcode-Data-Files-microcode-${_ucode}/intel-ucode-with-caveats/06* firmware/intel-ucode/
-        rm -f firmware/intel-ucode/0f*
-
     ### Patch source to unlock additional gcc CPU optimizations
         # https://github.com/graysky2/kernel_gcc_patch
         if [ "${_enable_gcc_more_v}" = "y" ]; then
@@ -151,14 +142,13 @@ CONFIG_MODULE_COMPRESS_XZ=y|' ./.config
     ### Optionally load needed modules for the make localmodconfig
         # See https://aur.archlinux.org/packages/modprobed-db
         if [ -n "$_localmodcfg" ]; then
-        msg2 "If you have modprobed-db installed, running it in recall mode now"
-            if [ -e /usr/bin/modprobed-db ]; then
-            [[ -x /usr/bin/sudo ]] || {
-            echo "Cannot call modprobe with sudo. Install sudo and configure it to work with this user."
-            exit 1; }
-            sudo /usr/bin/modprobed-db recall
-            make localmodconfig
-            fi
+          if [ -f $HOME/.config/modprobed.db ]; then
+            msg2 "Running Steven Rostedt's make localmodconfig now"
+            make LSMOD=$HOME/.config/modprobed.db localmodconfig
+          else
+            msg2 "No modprobed.db data found"
+            exit
+          fi
         fi
 
     ### do not run `make olddefconfig` as it sets default options
@@ -329,10 +319,9 @@ done
 
 sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'SKIP'
-            'ca5665639551771659d9423f9eff974f01a85626489a9cf7f18979e9956ce643'
+            '142f74ca706b3853f211c921e71abc8ef06958a0d5eaf7b0a2f6c422aeec897b'
             'SKIP'
-            '74ec7415988d40fa53686d994cf8cb27accdbd35c5373c4c3afc2e93372ebba5'
-            '2466fb4aecc66d1b258b4cbdb2f215b5099f266d8c4386bb62ad1a0acd0caf5b'
+            '8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
             'ed9d35cb7d7bd829ff6253353efa5e2d119820fe4f4310aea536671f5e4caa37'
