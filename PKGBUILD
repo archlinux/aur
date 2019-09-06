@@ -9,6 +9,7 @@ license=('Apache')
 url='https://github.com/k14s/kapp'
 depends=('kubectl')
 makedepends=('go')
+conflicts=('kapp-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/k14s/kapp/archive/v$pkgver.tar.gz")
 sha256sums=('9a312eec32f50cd17098aa348f62d0088e9537101c841a31601e0c4697d027f1')
 
