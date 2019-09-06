@@ -1,7 +1,7 @@
 # Maintainer: Jean-Francois Chevrette <jfchevrette@gmail.com>
 
 pkgname=ytt
-pkgver=0.13.0
+pkgver=0.20.0
 pkgrel=1
 pkgdesc="YAML templating tool that works on YAML structure instead of text"
 url="https://get-ytt.io/"
@@ -10,7 +10,7 @@ arch=('x86_64')
 depends=('glibc')
 makedepends=('git' 'go-pie')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/k14s/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('a04bf527923472578e4b86226aea5d2a138ef0d87d5e230d313d33e4305b09a9')
+sha256sums=('96ce1699e822c2c0e6c598fd386b2673c620485252976bc6cf0b1f1aa536baf9')
 
 
 prepare() {
@@ -39,7 +39,7 @@ build() {
 			--file-mark 'alt-example**/*:type=data' \
 			--file-mark 'example**/*:type=data' \
 			--file-mark 'generated.go.txt:exclusive-for-output=true' \
-			--output ../../tmp/
+			--output-directory ../../tmp/
 	)
 	mv tmp/generated.go.txt pkg/website/generated.go
 
