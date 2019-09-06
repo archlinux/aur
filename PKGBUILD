@@ -1,29 +1,39 @@
-# Maintainer: nerflad <nerflad@gmail.com>
+# Author: Bruno Pagani <archange@archlinux.org>
+# Maintainer: nerflad <nerflad@gmail.com)
 
-pkgname=ocaml-yojson
-_oname=yojson
-pkgver=1.4.0
-pkgrel=3
-pkgdesc='An optimized parsing and printing library for JSON'
-arch=('i686' 'x86_64' 'armv7h')
-options=('!makeflags' '!strip' 'staticlibs')
+_pkgname=yojson
+pkgname=ocaml-${_pkgname}
+pkgver=1.4.1
+pkgrel=6
+pkgdesc="Low level JSON binary for OCaml"
+arch=('x86_64')
+url="https://github.com/ocaml-community/${_pkgname}"
 license=('BSD')
+options=('!strip' 'staticlibs')
 depends=('ocaml-biniou' 'ocaml-easy-format')
-makedepends=('ocaml-findlib' 'dune' 'cppo')
-url="https://github.com/mjambon/yojson"
-source=("https://github.com/mjambon/${_oname}/archive/v${pkgver}.tar.gz")
-sha256sums=('7d06340b769ed6ff5b2171a0e820d1e8f4337aef3929090fc976efe845639146')
+makedepends=('dune' 'cppo')
+source=(${pkgname}-${pkgver}.tar.gz::"${url}/archive/v${pkgver}.tar.gz"
+        'https://github.com/ocaml-community/yojson/commit/a8095892a38d2a4e98f963c2627ac8cc484e0bbf.patch')
+sha256sums=('c081a8cb5a03bddbcac4614f468cf5edafe11805277572af4071e362be6611fb' '62aeecc4a880f59fcfaa51ad27826e0ad418adb59b3b125ec4d60fe7f671f1b9')
+
+prepare() {
+    cd ${_pkgname}-${pkgver}
+    # fix jbuild dependencies for cppo generation
+    patch -p1 -i "${srcdir}/a8095892a38d2a4e98f963c2627ac8cc484e0bbf.patch"
+}
 build() {
-    cd ${srcdir}/${_oname}-${pkgver}
+    cd ${_pkgname}-${pkgver}
     make all
 }
 
+check() {
+    cd ${_pkgname}-${pkgver}
+    make test
+}
+
 package() {
-    cd ${srcdir}/${_oname}-${pkgver}
-    export OPAMROOT="${srcdir}/.opam"
-    opam init -n
-    mkdir -p "${pkgdir}/usr/bin"
-    export OCAMLFIND_DESTDIR="${pkgdir}/$(ocamlfind printconf destdir)"
-    install -dm755 "$OCAMLFIND_DESTDIR"
-    jbuilder install
+    cd ${_pkgname}-${pkgver}
+    DESTDIR="${pkgdir}" dune install --prefix=/usr --libdir="$(ocamlfind printconf destdir)"
+    install -Dm644 LICENSE -t "${pkgdir}"/usr/share/licenses/${pkgname}/
+    rm -r "${pkgdir}"/usr/doc
 }
