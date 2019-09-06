@@ -5,7 +5,7 @@ _spirv_tools_commit='55adf4cf707bb12c29fc12f784ebeaa29a819e9b'
 _spirv_headers_commit='29c11140baaf9f7fdaa39a583672c556bf1795a1'
 
 pkgname=spirv-cross
-pkgver=2019.07.26
+pkgver=2019.09.06
 pkgrel=1
 pkgdesc='A tool and library for parsing and converting SPIR-V to other shader languages'
 arch=('x86_64')
