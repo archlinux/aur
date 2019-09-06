@@ -39,6 +39,15 @@ prepare() {
   echo "-$pkgrel" > localversion.10-pkgrel
   echo "$_kernelname" > localversion.20-pkgname
 
+  local src
+  for src in "${source[@]}"; do
+    src="${src%%::*}"
+    src="${src##*/}"
+    [[ $src = *.patch ]] || continue
+    msg2 "Applying patch $src..."
+    patch -Np1 < "../$src"
+  done
+  
   msg2 "Setting config..."
   cp ../config .config
   yes "" | make ARCH=um config >/dev/null
