@@ -11,7 +11,7 @@ makedepends=('python-six>=1.9.0' 'python-numpy>=1.12.0' 'python-certifi>=2017.1.
 depends=('python-six>=1.9.0' 'python-numpy>=1.12.0' 'python-certifi>=2017.1.23')
 optdepends=('python-pytest: testing')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/andrewannex/spiceypy/archive/v$pkgver.tar.gz")
-md5sums=('45578a6d30afa843a6b5edc51b75611a')
+md5sums=('191fe6fba6d54d30fced3320b76dfe91')
 
 build() {
   cd SpiceyPy-$pkgver
