@@ -19,6 +19,7 @@ prepare () {
   # no demos
   curl -L https://git.archlinux.org/svntogit/packages.git/plain/trunk/suitesparse-no-demo.patch?h=packages/suitesparse | patch -p1
   sed -i "s|default: all|default: library|g" */Makefile
+  sed -i "s|all: C cov|default: library|g" */Makefile
 
   # undefined refs to gcov
   sed -i "s|SET(CMAKE_EXE_LINKER_FLAGS_DEBUG|#SET(CMAKE_EXE_LINKER_FLAGS_DEBUG|g" Mongoose/CMakeLists.txt
