@@ -1,14 +1,16 @@
 pkgbase = shim-efi
 	pkgdesc = Bootloader for UEFI Secure Boot
 	pkgver = 15
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/rhboot/shim/
 	arch = any
 	license = BSD
 	makedepends = gnu-efi-libs
 	makedepends = pesign
 	source = shim-efi-15.tar.bz2::https://github.com/rhboot/shim/releases/download/15/shim-15.tar.bz2
+	source = shim-efi-gcc9-fix.patch::https://patch-diff.githubusercontent.com/raw/rhboot/shim/pull/183.patch
 	sha256sums = 473720200e6dae7cfd3ce7fb27c66367a8d6b08233fe63f01aa1d6b3888deeb6
+	sha256sums = b2d2db78a77a4257a95acab9bcb1f1243e230a714748538c915c3173b41e0657
 
 pkgname = shim-efi
 
