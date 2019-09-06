@@ -2,7 +2,7 @@
 
 pkgname=blackboxwm
 _pkgname=blackbox
-pkgver=0.74
+pkgver=0.75
 pkgrel=1
 pkgdesc="A window manager for X11 (maintained fork of blackbox)"
 arch=('i686' 'x86_64')
@@ -13,21 +13,13 @@ conflicts=($_pkgname)
 replaces=($_pkgname)
 depends=('libxext' 'libxft')
 options=('!libtool' 'staticlibs')
-source=("https://github.com/bbidulock/$pkgname/releases/download/$pkgver/$_pkgname-$pkgver.tar.xz")
-md5sums=('9e2117946901ef0de437a223d48d59ce')
-
-# is this necessary?
-#prepare() {
-#  cd $_pkgname-$pkgver
-#  sed -i 's,@XFT_PKGCONFIG@,xft >= 2.0.0,;s,@LDFLAGS@,,;s,@ICONV@,,;s,@LOCALE@,,' lib/libbt.pc.in
-#}
+source=("https://github.com/bbidulock/$pkgname/releases/download/$pkgver/$_pkgname-$pkgver.tar.lz")
+sha256sums=('197e7e8a5616f1a3be77b37f5dafa6c72e6621c779ba87f15d7463c2a71e7f6b')
 
 build() {
   cd $_pkgname-$pkgver
-  ./configure --prefix=/usr --sysconfdir=/etc \
-    --libexecdir=/usr/lib --mandir=/usr/share/man \
-    --enable-static --enable-shared
-  make V=0
+  ./configure --enable-static --enable-shared
+  make
 }
 
 package() {
