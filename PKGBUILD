@@ -1,17 +1,17 @@
 # Maintainer: Archadept
-#   Revision: 2017-02-07
+#   Revision: 2019-09-06
 
 pkgname=keepass-multicipher
 _pkgname=MultiCipher
-pkgver=1.0
+pkgver=2.0
 pkgrel=1
-pkgdesc="Enables KeePass to dual encrypt databases using AES-256 and 3DES-192."
+pkgdesc="Enables KeePass to dual encrypt databases using two ciphers with independent keys."
 license=('GPL3')
-depends=('keepass')
+depends=('keepass>=2.41')
 arch=('any')
 url="http://software.titasraha.com/2016/08/multicipher-plugin-for-keepass.html"
-source=("https://sourceforge.net/projects/multicipher-plugin-for-keepass/files/latest/download?source=files")
-sha256sums=('8ff382726279744935ffa7d33878ad927bc6f080ba321cb2a6a2bea653830890')
+source=("https://sourceforge.net/projects/multicipher-plugin-for-keepass/files/latest/download")
+sha256sums=('767da29472816877e5cc81f82a8f32db3494357e69c4589abdaccd889422db08')
 
 package() {
     mkdir -p "${pkgdir}"/usr/share/keepass
