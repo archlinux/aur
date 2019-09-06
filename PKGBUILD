@@ -8,7 +8,7 @@ license=(EPL)
 depends=(mingw-w64-zlib mingw-w64-bzip2 mingw-w64-glpk mingw-w64-lapack)
 makedepends=(mingw-w64-configure)
 options=('!buildflags' '!strip' 'staticlibs')
-groups=(coin-or)
+groups=(mingw-w64-coin-or)
 source=("https://www.coin-or.org/download/source/CoinUtils/CoinUtils-$pkgver.tgz")
 sha256sums=('7c364792effe89d78b9b5385f30eaccc0fe92aab1caf5a1a835d81680639911f')
 
