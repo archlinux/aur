@@ -20,6 +20,7 @@ pkgbase = webhook2muc-git
 	source = 0004-Use-proper-Presence-structure-when-receiving-stanzas.patch
 	source = 0005-Update-xmpp-parsers-to-0.14.patch
 	source = 0006-Joining-a-MUC-requires-a-FullJid-nick-as-resource.patch
+	source = 0007-Update-gitlab-dependency-to-0.1202.0.patch
 	sha256sums = SKIP
 	sha256sums = 3a3878cf71075383074bb9cea0613fc590f98285652db3d39c8fd97c1d79e0e7
 	sha256sums = 1f1cad56ba6f5a7b2558a3bcae96fad2fe686081d4c36d24188991d11a275348

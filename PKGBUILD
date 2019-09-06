@@ -22,6 +22,7 @@ source=(
   "0004-Use-proper-Presence-structure-when-receiving-stanzas.patch"
   "0005-Update-xmpp-parsers-to-0.14.patch"
   "0006-Joining-a-MUC-requires-a-FullJid-nick-as-resource.patch"
+  "0007-Update-gitlab-dependency-to-0.1202.0.patch"
 )
 backup=("etc/$_pkgbase/$_pkgbase.env")
 
@@ -42,6 +43,7 @@ prepare() {
   patch -p1 < ../0004-Use-proper-Presence-structure-when-receiving-stanzas.patch
   patch -p1 < ../0005-Update-xmpp-parsers-to-0.14.patch
   patch -p1 < ../0006-Joining-a-MUC-requires-a-FullJid-nick-as-resource.patch
+  patch -p1 < ../0007-Update-gitlab-dependency-to-0.1202.0.patch
 }
 
 build() {
@@ -68,4 +70,5 @@ sha256sums=('SKIP'
             'dceb8cdc246a48140a7b247886442be56a411716dfd0b833c41e7ca1982fe126'
             '7cbad8009b5d319fc35ad064c7504b34a8c34174d87d99b3fd2f90e53baea167'
             '86c29a931c5eb0121b84d81985ff9fcd908fcffae98a0e6fb1d95c3d3172ff5a'
-            '9d57b4880ed1bc091004937a99881df8cf68c597830805396f123fb12660e472')
+            '9d57b4880ed1bc091004937a99881df8cf68c597830805396f123fb12660e472'
+            '5f05029d53cbf2f19bf857e9a215a77206f1edad8f685e54fd55ce3eb81daa53')
