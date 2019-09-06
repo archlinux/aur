@@ -1,14 +1,14 @@
 pkgbase = wordpress-plugin-jetpack
 	pkgdesc = Anti spam plugin
-	pkgver = 7.7
+	pkgver = 7.7.1
 	pkgrel = 1
 	url = https://wordpress.org/plugins/jetpack
 	arch = any
 	license = unknown
 	depends = wordpress
 	options = !strip
-	source = wordpress-plugin-jetpack-7.7.tar.gz::https://downloads.wordpress.org/plugin/jetpack.7.7.zip
-	sha512sums = 4d9298e4e585b82ef185af8ad55946a8a809854e53b976b919d6efac37074fd9d5d50a30c7e9cddfc21eddab09a7e05a27907f8758931e0eeeba0ca69b4f2e1e
+	source = wordpress-plugin-jetpack-7.7.1.tar.gz::https://downloads.wordpress.org/plugin/jetpack.7.7.1.zip
+	sha512sums = 29265904e9e42a28e02c3854a522e8b7343c4476e4788c522adf60bf9f2a9cb26497042ad4c44ea4e56829f6d930de18a5d1719294c8c9ce50d07d6da2d6a2c5
 
 pkgname = wordpress-plugin-jetpack
 
