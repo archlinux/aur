@@ -2,7 +2,7 @@
 
 pkgname='godownloader-git'
 _pkgname="${pkgname%-git}"
-pkgver=r289.3ce8d45
+pkgver=r302.7d30e44
 pkgrel=1
 pkgdesc='Download Go binaries as fast and easily as possible.'
 url='https://install.goreleaser.com/'
@@ -16,34 +16,50 @@ _goreleaserpath=github.com/goreleaser
 _godownloaderpath="${_goreleaserpath}/godownloader"
 
 depends=()
-# makedepends=('git')
-makedepends=('git' 'go')
+makedepends=('git')
+# makedepends=('git' 'go>=1.11')
 
 source=("git+${_url}.git")
 sha512sums=('SKIP')
 
 prepare() {
-  # setup go env vars
+  # setup env variables & dirs
+  mkdir -p "${srcdir}/go"
+  export GOPROXY=https://proxy.golang.org
+  export GOPATH="${srcdir}/go"
   export GO111MODULE=on
 
-  mkdir -p "${srcdir}/${_goreleaserpath}/" && cd $_
-  mv ${srcdir}/${_pkgname} .
+  cd "${srcdir}/${_pkgname}"
+  
+  # fix regression from https://github.com/goreleaser/godownloader/pull/131
+  sed '/git.apache.org/d' go.mod > go.mod.tmp
+  mv go.mod.tmp go.mod
+
+  # Waiting for the merge of https://github.com/goreleaser/godownloader/pull/132
+  echo '// related to an invalid pseudo version in code.gitea.io/gitea v1.10.0-dev.0.20190711052757-a0820e09fbf7' >> go.mod
+  echo 'replace github.com/go-macaron/cors => github.com/go-macaron/cors v0.0.0-20190418220122-6fd6a9bfe14e' >> go.mod
+  echo '// related to an invalid pseudo version in contrib.go.opencensus.io/exporter/ocagent@v0.4.2' >> go.mod
+  echo 'replace github.com/census-instrumentation/opencensus-proto => github.com/census-instrumentation/opencensus-proto v0.0.3-0.20181214143942-ba49f56771b8' >> go.mod
+
+  # download dependencies
+  go mod download
 }
 
 pkgver() {
-  cd "${srcdir}/${_godownloaderpath}"
+  cd "${srcdir}/${_pkgname}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "${srcdir}/${_godownloaderpath}"
-  go build .
+  cd "${srcdir}/${_pkgname}"
+
+  go build -trimpath -ldflags "-extldflags ${LDFLAGS}" .
 }
 
 package() {
   # Bin
-  install -Dm755  "${srcdir}/${_godownloaderpath}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+  install -Dm755  "${srcdir}/${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 
   # License
-  install -Dm644 "${srcdir}/${_godownloaderpath}/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "${srcdir}/${_pkgname}/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
