@@ -1,7 +1,7 @@
 # $Id$
 # Maintainer: Shane Stone <shanewstone at gmail>
 pkgname=python-spiceypy
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="A Python wrapper for the NAIF C SPICE Toolkit (N66) written using ctypes."
 arch=('any')
