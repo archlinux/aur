@@ -10,7 +10,7 @@
 
 pkgname='unreal-engine'
 install="$pkgname.install"
-pkgver=4.22.3
+pkgver=4.23.0
 # shellcheck disable=SC2034
 {
   pkgrel=1
@@ -24,26 +24,18 @@ pkgver=4.22.3
   source=(
     "git+ssh://git@github.com/EpicGames/UnrealEngine.git#tag=$pkgver-release"
     'UE4Editor.desktop'
-    'html5-build.patch'
     'recompile-version-selector.patch'
     'Makefile'
     'ignore-clang50-install.patch'
     'use-arch-mono.patch'
-    'clang-70-support.patch'
-    '0001-Updates-UBT-Linux-tool-chain-for-supporting-clang-8.patch'
-    '0002-fixes-shadowing-issues-with-enums.patch'
   )
 
 sha256sums=('SKIP'
             '46871ed662a3c97698be609d27da280d9000ec97183f1fa6592986f9910a2118'
-            '9fd6d16d56fbe0489a2580b86359df84b83a6987b5760a9e57ae0898f51943ac'
             '1dd876fa48c6fb4fcd4ccbdb8ed4ceccfa294685911e91be58bbc5e95726c279'
             '9654226ef3318389aa8fe15f3d4d14e7ac2113520ee5ebf2899d42273a2a6fb0'
             '71a7304deebb00234c323eed9a73cdbd022099ba65f62fc90e78069eceed1f5d'
-            'c2a8ba1aba8fbda51270ec49e745ffba96e89cd627efe0d6a801d7629494a620'
-            '5d86920545fa341a7ae39f198bab61ef2e41b165f41805c2b64c137599eff61e'
-            '926c513cc59dcbde0dbac44b6201089a0381ea992ef3353919c049a25fa6c364'
-            '871e1a95f1761a613cfc2f0209f22e4afbacd102f2d3239bf27e3b16202e28ad')
+            '6b30adf71eeabaf1b2b669aa56c9deba145a4fe7bdd2e77f44b0cb7423162bc0')
 
   # Package is 3 Gib smaller with "strip" but it's skipped because it takes a long time and generates many warnings
   options=(strip staticlibs)
@@ -58,12 +50,6 @@ prepare() {
   patch "$srcdir/UnrealEngine/Engine/Build/BatchFiles/Linux/Setup.sh" ignore-clang50-install.patch
   patch "$srcdir/UnrealEngine/Engine/Build/BatchFiles/Linux/SetupMono.sh" use-arch-mono.patch
   patch "$srcdir/UnrealEngine/Setup.sh" recompile-version-selector.patch
-
-  pushd "$srcdir/UnrealEngine" > /dev/null
-    patch -p1 -i ../clang-70-support.patch 
-    patch -p1 -i ../0001-Updates-UBT-Linux-tool-chain-for-supporting-clang-8.patch
-    patch -p1 -i ../0002-fixes-shadowing-issues-with-enums.patch 
-  popd > /dev/null
 
   cp "$srcdir/Makefile" "$srcdir/UnrealEngine/Makefile"
 
@@ -90,7 +76,6 @@ prepare() {
   echo "Running setup"
   ./Setup.sh
 
-  patch "$ue4src/Programs/UnrealBuildTool/Platform/HTML5/HTML5SDKInfo.cs" "$srcdir/html5-build.patch"
   echo "generating project files"
   ./GenerateProjectFiles.sh -makefile
 }
