@@ -2,14 +2,15 @@
 
 _pkgname=texlab
 pkgname=${_pkgname}-git
-pkgver=r254.0d1575f
-pkgrel=1
+pkgver=r776.d752c2f
+pkgrel=2
 pkgdesc="An implementation of the Language Server Protocol for LaTeX"
 arch=('any')
 url="https://github.com/latex-lsp/texlab"
 license=('MIT')
-depends=('java-runtime')
-makedepends=('git' 'gradle')
+conflicts=("${_pkgname}" "${_pkgname}-bin")
+depends=('gcc-libs')
+makedepends=('rustup')
 source=('texlab-git::git+https://github.com/latex-lsp/texlab.git')
 md5sums=('SKIP')
 
@@ -20,23 +21,23 @@ pkgver() {
 
 build () {
 	cd "$srcdir/${pkgname}"
-	chmod +x gradlew
-	./gradlew build
+	cargo build --release --locked
+}
+
+check() {
+	cd "${srcdir}/${pkgname}"
+	cargo test --release --all --locked
 }
 
 package() {
 	cd "$srcdir/${pkgname}"
-	mkdir -p "${pkgdir}/usr/share/licenses/${_pkgname}"
-	mkdir -p "$pkgdir/usr/share/java/${_pkgname}"
-
-	cp LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
-	chmod 644 "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
-	cp "build/libs/texlab.jar" "$pkgdir/usr/share/java/${_pkgname}"
+	install -Dm 755 "target/release/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+	install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 
 	echo ""
 	echo "IMPORTANT:"
-	echo "The texlab.jar server has been installed under:"
-	echo "    /usr/share/java/${_pkgname}"
+	echo "The texlab server binary has been installed under:"
+	echo "    /usr/share/bin/${_pkgname}"
 	echo "Configure your editor plugin to point here!"
 	echo ""
 }
