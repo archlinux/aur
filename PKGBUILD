@@ -1,7 +1,7 @@
 # Maintainer: Bradley Cicenas <bradley@vektor.nyc>
 pkgname=tcolors
 _pkgname=tcolors
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Commandline color picker and palette builder"
 arch=('i686' 'x86_64')
@@ -27,6 +27,9 @@ pkgbuild() {
 build() {
 	cd "$srcdir/$pkgname"
 
+	echo "Running 'gzip ./docs/man1/${pkgname}.1'..."
+	gzip -f -k ./docs/man1/${pkgname}.1
+
 	echo "Running 'go mod download'..."
 	go mod download
 
@@ -35,6 +38,8 @@ build() {
 }
 
 package() {
-	target="${srcdir}/${pkgname}/tcolors"
-	install -DT $target "${pkgdir}/usr/bin/tcolors"
+	target="${srcdir}/${pkgname}"
+	install -DT ${target}/tcolors "${pkgdir}/usr/bin/tcolors"
+	install -DTm644 ${target}/docs/man1/${pkgname}.1.gz "$pkgdir/usr/share/man/man1/${pkgname}.1.gz"
+	install -Dm644 ${target}/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
