@@ -5,7 +5,7 @@
 export LG2=en
 
 pkgname=i2p-dev
-pkgver=0.9.41.2
+pkgver=0.9.42.2
 pkgrel=1
 pkgdesc="A distributed anonymous network (daily mtn->git sync)"
 url="https://geti2p.net"
@@ -44,9 +44,9 @@ prepare() {
     cd "$_gitname"
 
     sed -i build.properties \
-        -e 's:javac.version=.*:javac.version=11:'
+        -e 's:javac.version=.*:javac.version=12:'
     sed -i {router,core}/java/build.xml \
-        -e 's:1.7:11:'
+        -e 's:1.7:12:'
 }
 
 build_jbigi() {
@@ -72,7 +72,6 @@ fi
 }
 
 build() {
-    source /etc/ant.conf
     export ANT_OPTS="-Dfile.encoding=UTF-8"
     export JAVA_HOME="${JAVA_HOME:-/usr/lib/jvm/default}"
 
