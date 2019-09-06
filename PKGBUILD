@@ -1,7 +1,7 @@
 # Maintainer: Vinicius Moreira
 
 pkgname=bauh
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="Free non-official GUI for Flatpak / Snap applications management."
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python' 'python-pip' 'python-pyqt5' 'python-requests' 'python-colorama
 optdepends=('flatpak' 'snapd')
 makedepends=('git' 'python-setuptools')
 source=("${url}/archive/${pkgver}.tar.gz")
-sha512sums=('78ef5fa564e35cf7c73d79fab2547f41e9a89a16da389e5acda60aeefd3caa1870159f4a40fd33ff81a0a4bf8e863506f511d31b8e7c9e4971734c77f31e59d6')
+sha512sums=('e8a693b5d9d8992cc80fe53de661cb9e3e7f77b548613da8ca812808838018ad588dbac8a8326b32f3dee82cb31840412195fad0e7d63b249a3bc8de85a24100')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"

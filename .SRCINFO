@@ -1,6 +1,6 @@
 pkgbase = bauh
 	pkgdesc = Free non-official GUI for Flatpak / Snap applications management.
-	pkgver = 0.5.1
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = https://github.com/vinifmor/bauh
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = bauh
 	depends = python-colorama
 	optdepends = flatpak
 	optdepends = snapd
-	source = https://github.com/vinifmor/bauh/archive/0.5.1.tar.gz
-	sha512sums = 78ef5fa564e35cf7c73d79fab2547f41e9a89a16da389e5acda60aeefd3caa1870159f4a40fd33ff81a0a4bf8e863506f511d31b8e7c9e4971734c77f31e59d6
+	source = https://github.com/vinifmor/bauh/archive/0.5.2.tar.gz
+	sha512sums = e8a693b5d9d8992cc80fe53de661cb9e3e7f77b548613da8ca812808838018ad588dbac8a8326b32f3dee82cb31840412195fad0e7d63b249a3bc8de85a24100
 
 pkgname = bauh
 
