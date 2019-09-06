@@ -17,7 +17,6 @@ _pkgname=Mudlet
 pkgver=3.22.1.r158.g3c8f12b6
 pkgrel=1
 pkgdesc="A modern MUD client with a graphical interface and Lua scripting (upstream dev branch)"
-_branch="development"
 arch=('i686' 'x86_64')
 url="https://github.com/Mudlet/Mudlet"
 license=('GPL2')
@@ -27,7 +26,7 @@ depends=('hunspell' 'libzip' 'glu' 'lua51'
 makedepends=('git' 'boost' 'qt5-tools')
 provides=('mudlet')
 conflicts=('mudlet' 'mudlet-dev' 'mudlet-deb')
-source=("git+$url.git#branch=$_branch"
+source=("git+https://github.com/Mudlet/Mudlet.git#branch=development"
         "git+https://github.com/Mudlet/edbee-lib.git"
         "git+https://github.com/martin-eden/lua_code_formatter.git"
         "git+https://bitbucket.org/pentacent/dblsqd-sdk-qt.git"
