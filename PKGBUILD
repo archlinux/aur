@@ -16,7 +16,7 @@ optdepends=(
     'steam: Supports any steam, native, flatpak, etc'
 )
 provides=('protondb-tags')
-source=(git+https://github.com/CorruptComputer/$_pkgname.git)
+source=(git+https://github.com/CorruptComputer/$_pkgname.git#branch=dev)
 md5sums=('SKIP')
 
 pkgver() {
