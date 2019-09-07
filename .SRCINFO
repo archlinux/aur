@@ -1,0 +1,17 @@
+pkgbase = fathom-git
+	pkgdesc = Fathom - simple website analytics (Community Edition)
+	pkgver = i.dont.know.what.to.put.here
+	pkgrel = 1
+	url = https://github.com/usefathom/fathom
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = go-pie
+	makedepends = npm
+	provides = fathom
+	conflicts = fathom
+	source = git+https://github.com/usefathom/fathom.git
+	md5sums = SKIP
+
+pkgname = fathom-git
+
