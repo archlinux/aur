@@ -2,7 +2,7 @@ pkgbase = iscan-plugin-perfection-v330
 	pkgdesc = EPSON Image Scan! plugin for Epson scanners GT-F730, GT-S630, Perfection V33, Perfection V330 Photo
 	pkgver = 1.0.0
 	pkgrel = 2
-	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	url = https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
 	install = iscan-plugin-perfection-v330.install
 	arch = i686
 	arch = x86_64
