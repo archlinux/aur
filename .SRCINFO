@@ -1,7 +1,7 @@
 pkgbase = godownloader-git
 	pkgdesc = Download Go binaries as fast and easily as possible.
-	pkgver = r302.7d30e44
-	pkgrel = 2
+	pkgver = r303.93b2b79
+	pkgrel = 1
 	url = https://install.goreleaser.com/
 	arch = x86_64
 	arch = i686

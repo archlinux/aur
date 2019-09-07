@@ -2,8 +2,8 @@
 
 pkgname='godownloader-git'
 _pkgname="${pkgname%-git}"
-pkgver=r302.7d30e44
-pkgrel=2
+pkgver=r303.93b2b79
+pkgrel=1
 pkgdesc='Download Go binaries as fast and easily as possible.'
 url='https://install.goreleaser.com/'
 arch=('x86_64' 'i686')
@@ -30,17 +30,7 @@ prepare() {
   export GO111MODULE=on
 
   cd "${srcdir}/${_pkgname}"
-  
-  # fix regression from https://github.com/goreleaser/godownloader/pull/131
-  sed '/git.apache.org/d' go.mod > go.mod.tmp
-  mv go.mod.tmp go.mod
-
-  # Waiting for the merge of https://github.com/goreleaser/godownloader/pull/132
-  echo '// related to an invalid pseudo version in code.gitea.io/gitea v1.10.0-dev.0.20190711052757-a0820e09fbf7' >> go.mod
-  echo 'replace github.com/go-macaron/cors => github.com/go-macaron/cors v0.0.0-20190418220122-6fd6a9bfe14e' >> go.mod
-  echo '// related to an invalid pseudo version in contrib.go.opencensus.io/exporter/ocagent@v0.4.2' >> go.mod
-  echo 'replace github.com/census-instrumentation/opencensus-proto => github.com/census-instrumentation/opencensus-proto v0.0.3-0.20181214143942-ba49f56771b8' >> go.mod
-
+ 
   # download dependencies
   go mod download
 }
