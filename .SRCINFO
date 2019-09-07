@@ -1,10 +1,11 @@
 pkgbase = pass-rotate
 	pkgdesc = A tool and library for rotating your password on online services
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SirCmpwn/pass-rotate
 	arch = any
 	license = MIT
+	makedepends = python-setuptools
 	depends = python
 	depends = python-beautifulsoup4
 	depends = python-docopt
