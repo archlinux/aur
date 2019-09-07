@@ -1,6 +1,7 @@
 # Maintainer: Matthew McGinn <mamcgi@gmail.com>
 # Contributor: Andrew Stubbs <andrew.stubbs@gmail.com>
 pkgname=etcher-cli-bin
+_pkgname=etcher-cli
 pkgver=1.4.9
 pkgrel=1
 pkgdesc="Burn images to SD cards & USB drives, safe & easy"
@@ -17,7 +18,8 @@ sha256sums=('67d1173fdf7c4c528f4027147463597cffdef9d50ddcf0c74c9651685b1c451e')
 
 package() {
     mkdir -p "${pkgdir}/opt"
-    mv "${srcdir}/balena-etcher-cli-${pkgver}-linux-x64-dist" "${pkgdir}/opt/etcher-cli"
+    mv "${srcdir}/balena-${_pkgname}-${pkgver}-linux-x64-dist" "${pkgdir}/opt/${_pkgname}"
     mkdir -p "${pkgdir}/usr/bin"
-    ln -s "${pkgdir}/opt/etcher-cli/balena-etcher" "${pkgdir}/usr/bin/etcher"
+    cd "${pkgdir}/usr/bin"
+    ln -snf "../../opt/${_pkgname}/balena-etcher" "etcher-cli"
 }
