@@ -1,4 +1,7 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
+# shellcheck disable=SC2034
+# Notice: 0.10.2 is the last version supporting qt4
+
 pkgname=phonon-qt4-vlc
 pkgver=0.10.2
 pkgrel=1
@@ -6,7 +9,7 @@ arch=(x86_64)
 pkgdesc="Phonon VLC backend for Qt4"
 depends=(vlc phonon-qt4)
 provides=(phonon-qt4-backend)
-url='http://phonon.kde.org/'
+url='https://phonon.kde.org/'
 license=(LGPL)
 makedepends=(vlc extra-cmake-modules phonon-qt4)
 source=("http://download.kde.org/stable/phonon/phonon-backend-vlc/$pkgver/phonon-backend-vlc-$pkgver.tar.xz"{,.sig})
