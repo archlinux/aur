@@ -23,7 +23,7 @@ build() {
     mkdir -p build
     cd build
     cmake ..
-    make
+    make -j$(nproc)
     popd
 
     # Reassemble and decompress libdepthengine.so.20
