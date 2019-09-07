@@ -29,7 +29,7 @@ build() {
     # Reassemble and decompress libdepthengine.so.20
     # AUR has a 200 KB blob limit...
     cat ../libdepthengine.so.2.0.xz-part-{1,2,3} > libdepthengine.so.2.0.xz
-    xz -d libdepthengine.so.2.0.xz
+    xz -df libdepthengine.so.2.0.xz
 }
 
 package() {
