@@ -2,7 +2,7 @@
 
 pkgname='pass-update'
 pkgver=2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A pass extension that provides an easy flow for updating passwords.'
 arch=('any')
 url='https://github.com/roddhjav/pass-update'
@@ -18,11 +18,11 @@ sha512sums=('6f7e12ff8bc608bbfb5ae15efd13052896f247d53d9d092f1c1cc527a0e33d8f638
 validpgpkeys=('06A26D531D56C42D66805049C5469996F0DF68EC')
 
 check() {
-  cd "$srcdir/$pkgname-$pkgver/"
+  cd "$pkgname-$pkgver"
   make tests
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver/"
+  cd "$pkgname-$pkgver"
   make DESTDIR="$pkgdir" FORCE_ALL=1 install
 }

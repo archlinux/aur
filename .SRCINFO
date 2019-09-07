@@ -1,7 +1,7 @@
 pkgbase = pass-update
 	pkgdesc = A pass extension that provides an easy flow for updating passwords.
 	pkgver = 2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/roddhjav/pass-update
 	arch = any
 	license = GPL3
