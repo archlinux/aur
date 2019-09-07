@@ -4,7 +4,7 @@
 # Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
 
 pkgname=jhbuild
-pkgver=3.15.92+1631+g65862991
+pkgver=3.34.0
 pkgrel=1
 pkgdesc='Tool to build the whole GNOME desktop from sources'
 arch=('any')
@@ -17,11 +17,11 @@ optdepends=('subversion: fetch subversion repositories'
             'bzr: fetch Bazaar repositories'
             'mercurial: fetch Mercurial repositories'
             'darcs: fetch Darcs repositories')
-_commit=65862991
-source=("$pkgname::git+https://git.gnome.org/browse/jhbuild#commit=$_commit"
+_commit=b7665bca
+source=("$pkgname::git+https://gitlab.gnome.org/GNOME/jhbuild.git#commit=$_commit"
         "module_args.patch")
 sha256sums=('SKIP'
-            'f2c25fd732971383f13559a3ed646b91d561f4eb10de91551f3eea15090c49e2')
+            '570e199c0ac3e1aae5b39638f8f577d0c332133dbb6e099ab6b63c484cdad887')
 
 pkgver() {
   cd $pkgname
@@ -34,7 +34,7 @@ prepare() {
   patch -p1 -i "$srcdir/module_args.patch"
   
     # Set the proper filename for python2 binary
-    # (see jhbuild commit id=ffd00eea72bfdfac02846a46559904bd8fa09d57)
+    # see https://gitlab.gnome.org/GNOME/jhbuild/commit/ffd00eea
   sed -i jhbuild/modtypes/distutils.py \
       -e "/os.environ.get('PYTHON'/s/'python'/'python2'/"
 }
@@ -54,5 +54,23 @@ package() {
   sed -i "s|$srcdir/$pkgname|$HOME/jhbuild|g" "$pkgdir"/usr/bin/jhbuild
 }
 
-# list of dependencies reported by 'jhbuild sysdeps'
-depends+=(anthy argyllcms caribou check cmake cups docbook-sgml docbook-utils docbook-xsl dotconf doxygen espeak exempi fwupdate git gmime gperf gtkspell3 hyphen intltool itstool kyotocabinet libatasmart libcanberra libdmapsharing libdvdread libgexiv2 libgphoto2 libhangul libical libmusicbrainz5 libndp libnfs liboauth libplist libpwquality libraw libunwind libvirt libvpx llvm mpc ninja openldap opus plymouth poppler-glib ppp python-cairo python-pillow ragel ruby rust sane smbclient source-highlight startup-notification taglib udisks2 usbredir v4l-utils vala valgrind wavpack wget wireless_tools xf86-input-wacom xmlto xorg-server-xwayland xorg-util-macros xtrans yasm perl-file-copy-recursive)
+# Here is a list of packages required by software built by JHBuild that
+# can not be installed vi 'jhbuild sysdeps --install' for some reason
+depends+=(
+
+     # at AUR, required by 'jhbuild sysdeps'
+    plymouth
+    fwupdate
+
+     # not found by 'jhbuild sysdeps'
+    spice-protocol
+    libmypaint
+    gobject-introspection
+    gtk-sharp-2
+
+     # other reasons
+    perl-sgmls # required by gnome-color-manager
+    docbook-sgml # required by gnome-color-manager
+    unicode-character-database # required by ibus
+    # ibus-anthy - desabilitar -Werror em CFLAGS e CXXFLAGS para contornar 'g_type_class_add_private' obsoleto
+)
