@@ -1,66 +1,82 @@
+diff --git a/drivers/tty/vt/vt.c b/drivers/tty/vt/vt.c
+index 2ebaba16f785..416735ab6dc1 100644
+--- a/drivers/tty/vt/vt.c
++++ b/drivers/tty/vt/vt.c
+@@ -105,6 +105,7 @@
+ #include <linux/ctype.h>
+ #include <linux/bsearch.h>
+ #include <linux/gcd.h>
++#include <linux/bootsplash.h>
+ 
+ #define MAX_NR_CON_DRIVER 16
+ 
+@@ -4235,6 +4236,7 @@ void do_unblank_screen(int leaving_gfx)
+ 	}
+ 
+ 	console_blanked = 0;
++	bootsplash_mark_dirty();
+ 	if (vc->vc_sw->con_blank(vc, 0, leaving_gfx))
+ 		/* Low-level driver cannot restore -> do it ourselves */
+ 		update_screen(vc);
 diff --git a/drivers/video/fbdev/core/bootsplash.c b/drivers/video/fbdev/core/bootsplash.c
-index 843c5400fefc..815b007f81ca 100644
+index c8642142cfea..13fcaabbc2ca 100644
 --- a/drivers/video/fbdev/core/bootsplash.c
 +++ b/drivers/video/fbdev/core/bootsplash.c
-@@ -112,6 +112,8 @@ void bootsplash_render_full(struct fb_info *info)
- 
- 	bootsplash_do_render_pictures(info, splash_state.file);
- 
-+	bootsplash_do_render_flush(info);
-+
- out:
- 	mutex_unlock(&splash_state.data_lock);
+@@ -165,6 +165,13 @@ bool bootsplash_would_render_now(void)
+ 		&& bootsplash_is_enabled();
  }
-diff --git a/drivers/video/fbdev/core/bootsplash_internal.h b/drivers/video/fbdev/core/bootsplash_internal.h
-index 71e2a27ac0b8..0acb383aa4e3 100644
---- a/drivers/video/fbdev/core/bootsplash_internal.h
-+++ b/drivers/video/fbdev/core/bootsplash_internal.h
-@@ -89,6 +89,7 @@ void bootsplash_do_render_background(struct fb_info *info,
- 				     const struct splash_file_priv *fp);
- void bootsplash_do_render_pictures(struct fb_info *info,
- 				   const struct splash_file_priv *fp);
-+void bootsplash_do_render_flush(struct fb_info *info);
  
- 
- void bootsplash_free_file(struct splash_file_priv *fp);
-diff --git a/drivers/video/fbdev/core/bootsplash_render.c b/drivers/video/fbdev/core/bootsplash_render.c
-index 2ae36949d0e3..8c09c306ff67 100644
---- a/drivers/video/fbdev/core/bootsplash_render.c
-+++ b/drivers/video/fbdev/core/bootsplash_render.c
-@@ -186,3 +186,36 @@ void bootsplash_do_render_pictures(struct fb_info *info,
- 				pp->pic_header->width, pp->pic_header->height);
- 	}
- }
-+
-+
-+void bootsplash_do_render_flush(struct fb_info *info)
++void bootsplash_mark_dirty(void)
 +{
-+	/*
-+	 * FB drivers using deferred_io (such as Xen) need to sync the
-+	 * screen after modifying its contents. When the FB is mmap()ed
-+	 * from userspace, this happens via a dirty pages callback, but
-+	 * when modifying the FB from the kernel, there is no such thing.
-+	 *
-+	 * So let's issue a fake fb_copyarea (copying the FB onto itself)
-+	 * to trick the FB driver into syncing the screen.
-+	 *
-+	 * A few DRM drivers' FB implementations are broken by not using
-+	 * deferred_io when they really should - we match on the known
-+	 * bad ones manually for now.
-+	 */
-+	if (info->fbdefio
-+	    || !strcmp(info->fix.id, "astdrmfb")
-+	    || !strcmp(info->fix.id, "cirrusdrmfb")
-+	    || !strcmp(info->fix.id, "mgadrmfb")) {
-+		struct fb_copyarea area;
-+
-+		area.dx = 0;
-+		area.dy = 0;
-+		area.width = info->var.xres;
-+		area.height = info->var.yres;
-+		area.sx = 0;
-+		area.sy = 0;
-+
-+		info->fbops->fb_copyarea(info, &area);
-+	}
++	mutex_lock(&splash_state.data_lock);
++	splash_state.splash_fb = NULL;
++	mutex_unlock(&splash_state.data_lock);
 +}
++
+ bool bootsplash_is_enabled(void)
+ {
+ 	bool was_enabled;
+@@ -206,9 +213,7 @@ void bootsplash_enable(void)
+ 
+ 	if (!was_enabled) {
+ 		/* Force a full redraw when the splash is re-activated */
+-		mutex_lock(&splash_state.data_lock);
+-		splash_state.splash_fb = NULL;
+-		mutex_unlock(&splash_state.data_lock);
++		bootsplash_mark_dirty();
+ 
+ 		schedule_work(&splash_state.work_redraw_vc);
+ 	}
+@@ -272,9 +277,7 @@ static int splash_resume(struct device *device)
+ 	 * Force full redraw on resume since we've probably lost the
+ 	 * framebuffer's contents meanwhile
+ 	 */
+-	mutex_lock(&splash_state.data_lock);
+-	splash_state.splash_fb = NULL;
+-	mutex_unlock(&splash_state.data_lock);
++	bootsplash_mark_dirty();
+ 
+ 	if (bootsplash_would_render_now())
+ 		schedule_work(&splash_state.work_redraw_vc);
+diff --git a/include/linux/bootsplash.h b/include/linux/bootsplash.h
+index c6dd0b43180d..4075098aaadd 100644
+--- a/include/linux/bootsplash.h
++++ b/include/linux/bootsplash.h
+@@ -19,6 +19,8 @@ extern void bootsplash_render_full(struct fb_info *info);
+ 
+ extern bool bootsplash_would_render_now(void);
+ 
++extern void bootsplash_mark_dirty(void);
++
+ extern bool bootsplash_is_enabled(void);
+ extern void bootsplash_disable(void);
+ extern void bootsplash_enable(void);
+@@ -31,6 +33,8 @@ extern void bootsplash_init(void);
+ 
+ #define bootsplash_would_render_now() (false)
+ 
++#define bootsplash_mark_dirty()
++
+ #define bootsplash_is_enabled() (false)
+ #define bootsplash_disable()
+ #define bootsplash_enable()

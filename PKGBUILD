@@ -80,8 +80,9 @@ source=(
   "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
   0002-ZEN-Add-CONFIG-for-unprivileged_userns_clone.patch
-  0003-iwlwifi-mvm-disable-TX-AMSDU-on-older-NICs.patch
-  0004-iwlwifi-Add-support-for-SAR-South-Korea-limitation.patch
+  0003-bootsplash.patch
+  0004-bootsplash.patch
+  0005-bootsplash.patch
   0006-bootsplash.patch
   0007-bootsplash.patch
   0008-bootsplash.patch
@@ -92,16 +93,13 @@ source=(
   0013-bootsplash.patch
   0014-bootsplash.patch
   0015-bootsplash.patch
-  0016-bootsplash.patch
-  0017-bootsplash.patch
-  0018-bootsplash.patch
   'ajax-loader.gif'
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('b6f02a4b306ca5cd314d72615bfc2650166969613135da202630e6c4e1b5d4e6'
+sha256sums=('0c2a831f993dc8a8a8e1ca4186b467de72ff173c6f5855e2aab70f6f7fb033f9'
             'SKIP'
             '1c4d5500a3b4995035c2e940fc0ad2a2dae7be047c8eb20c097444e348258f87'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
@@ -109,8 +107,6 @@ sha256sums=('b6f02a4b306ca5cd314d72615bfc2650166969613135da202630e6c4e1b5d4e6'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             'f1abc13a8d859fbf6350040e45d7f04ad551a6d39f113ba96fbbd820118c0e36'
             '91fafa76bf9cb32159ac7f22191b3589278b91e65bc4505cf2fc6013b8037bf3'
-            '63e4378e69e2f23ed87af32a4951477a6d82d4ac0de2295db46502c8120da9d9'
-            'fc96300831506965383ef30bc46b72735dc45bb97dea2ccb8b9450c005d2f020'
             'ef926edbd866d95464eb86f7565de572eb97ecfa0369d3b2e078016a0e71a871'
             'a504f6cf84094e08eaa3cc5b28440261797bf4f06f04993ee46a20628ff2b53c'
             'e096b127a5208f56d368d2cb938933454d7200d70c86b763aa22c38e0ddb8717'
