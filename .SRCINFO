@@ -1,7 +1,7 @@
 pkgbase = azure-kinect-sensor-sdk-git
 	pkgdesc = A cross platform user mode SDK to read data from Azure Kinect devices.
 	pkgver = v1.2.0.beta.1.r27.467d8272
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/microsoft/Azure-Kinect-Sensor-SDK
 	arch = x86_64
 	license = MIT
