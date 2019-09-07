@@ -4,11 +4,11 @@
 
 pkgname=thunderbird-beta
 _pkgname=thunderbird
-pkgver=69.0
-_pkgver=69.0b4
+_pkgver=69.0
+pkgver=69.0b4
 _major=${pkgver/[br]*}
 _build=${pkgver/*rc}
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone mail and news reader from mozilla.org - Bleeding edge version"
 arch=(x86_64)
 license=(MPL GPL LGPL)
@@ -21,7 +21,7 @@ provides=("thunderbird=$_pkgver")
 conflicts=('thunderbird-beta-bin')
 options=(!emptydirs !makeflags)
 install=$pkgname.install
-source=(https://ftp.mozilla.org/pub/thunderbird/releases/$_pkgver/source/thunderbird-$_pkgver.source.tar.xz
+source=(https://ftp.mozilla.org/pub/thunderbird/releases/$pkgver/source/thunderbird-$pkgver.source.tar.xz
 		'thunderbird-beta.desktop')
 sha256sums=('586cd300f2bc7c2bdb7987be5d1f2542ef9e79f8b82f5a04a8c1e50f4dbdd326'
             'aef1484f9df38db75330c142edc46d73053acee8b959562bc9e765c235d83cbe')
@@ -33,7 +33,7 @@ sha256sums=('586cd300f2bc7c2bdb7987be5d1f2542ef9e79f8b82f5a04a8c1e50f4dbdd326'
 
 prepare() {
   
-cd $_pkgname-$pkgver
+cd $_pkgname-$_pkgver
 
   # mozconfig
   cat >.mozconfig <<END
@@ -75,13 +75,13 @@ END
 }
 
 build() {
-  cd $_pkgname-$pkgver
+  cd $_pkgname-$_pkgver
   ./mach configure
   ./mach build
 }
 
 package() {
-  cd $_pkgname-$pkgver
+  cd $_pkgname-$_pkgver
   DESTDIR="$pkgdir" ./mach install
 
   _vendorjs="$pkgdir/usr/lib/$pkgname/defaults/preferences/vendor.js"
