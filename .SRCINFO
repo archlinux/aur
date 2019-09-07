@@ -1,0 +1,19 @@
+pkgbase = ton-lite-client
+	pkgdesc = Telegram Open Network lite client
+	pkgver = 1
+	pkgrel = 1
+	url = https://test.ton.org
+	install = ton-lite-client.install
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = cmake
+	makedepends = gperf
+	depends = openssl
+	source = https://test.ton.org/ton-test-liteclient-full.tar.xz
+	source = https://test.ton.org/ton-lite-client-test1.config.json
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = ton-lite-client
+
