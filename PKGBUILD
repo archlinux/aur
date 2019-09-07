@@ -1,10 +1,10 @@
 # Contributor: Oleg `Kanedias` Chernovskiy <kanedias@xaker.ru>
 
 pkgname=marcfs-git
-pkgver=0.6.0.r0.801e616
+pkgver=0.7.0.r1.g91c8aea
 pkgrel=1
 pkgdesc="FUSE-based file system backed by Mail.ru Cloud storage"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://gitlab.com/Kanedias/MARC-FS"
 license=('GPL3')
 depends=('fuse3' 'curl' 'jsoncpp')
@@ -25,7 +25,7 @@ md5sums=('SKIP' 'SKIP' 'SKIP')
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
 
-  printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+  printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {
