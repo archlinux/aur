@@ -2,14 +2,14 @@
 
 pkgname=icon  
 pkgver=951
-pkgrel=5
+pkgrel=6
 pkgdesc="The Icon programming language"
 url="http://www2.cs.arizona.edu/icon/"
 arch=('i686' 'x86_64')
 depends=('sh' 'libx11')
 makedepends=('libxt')
 license=('custom')
-source=("http://www.cs.arizona.edu/icon/ftp/packages/unix/icon-v${pkgver}src.tgz" LICENSE)
+source=("http://www2.cs.arizona.edu/icon/ftp/packages/unix/icon-v${pkgver}src.tgz" LICENSE)
 md5sums=('8fdeb7c5408d9d9bf06bc5e7f4f54498'
          '46e837548bf46e5b0db662322650eb4f')
 build() {
