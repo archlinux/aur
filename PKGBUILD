@@ -72,5 +72,4 @@ depends+=(
     perl-sgmls # required by gnome-color-manager
     docbook-sgml # required by gnome-color-manager
     unicode-character-database # required by ibus
-    # ibus-anthy - desabilitar -Werror em CFLAGS e CXXFLAGS para contornar 'g_type_class_add_private' obsoleto
 )
