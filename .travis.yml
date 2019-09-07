@@ -55,13 +55,7 @@ arch:
   - |
      [ "$TRAVIS" == "true" ] && TRAVIS=1 || TRAVIS=0
 # Build
-  - export CCACHE_LOGFILE=/tmp/ccache.log
-  - export CCACHE_MAXSIZE=2G
-  - export CCACHE_COMPILERCHECK=content
-  - export CCACHE_PCH_EXTSUM=True
-  - export CCACHE_SLOPPINESS=file_macro,include_file_ctime,include_file_mtime,locale,pch_defines,time_macros
-  - ccache -p
-# - ccache -C
+# - ccache -C;exit 1
   - ccache -s
   - ccache -z
   - timeout 35m makepkg -s --noconfirm > >(ts -s '%.T'); _makepkg_return=$?
@@ -71,6 +65,7 @@ arch:
   - exit $_makepkg_return
 script:
 #- "curl -s https://raw.githubusercontent.com/bartoszek/arch-travis/base64-encode/arch-travis.sh| timeout 40m bash > >(ts| ts -r '[%M:%.S]') 2>&1"
+- export CCACHE_MAXSIZE=2G
 - "curl -s https://raw.githubusercontent.com/bartoszek/arch-travis/base64-encode/arch-travis.sh| timeout 40m bash"
 - "echo pacman pkg cache size: $(du -h ~/.pkg-cache|cut -f1) in $(ls ~/.pkg-cache|wc -l) files"
 
