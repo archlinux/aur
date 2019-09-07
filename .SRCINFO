@@ -1,0 +1,16 @@
+pkgbase = fishmarks-git
+	pkgdesc = Handles bookmarks in fish shell
+	pkgver = r23.485f6b3
+	pkgrel = 1
+	url = https://github.com/techwizrd/fishmarks
+	arch = any
+	license = Apache
+	makedepends = git
+	depends = fish
+	provides = fishmarks
+	conflicts = fishmarks
+	source = fishmarks-git::git+https://github.com/techwizrd/fishmarks
+	md5sums = SKIP
+
+pkgname = fishmarks-git
+
