@@ -3,27 +3,36 @@
 
 pkgname=iscan-plugin-perfection-v330
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="EPSON Image Scan! plugin for Epson scanners GT-F730, GT-S630, Perfection V33, Perfection V330 Photo"
 _plugin=${pkgname/iscan-plugin-/}
 _iscan_ver=2.30.4
-arch=('x86_64')
-url="http://support.epson.net/linux/en/iscan.php?model=perfection-v330"
+arch=('i686' 'x86_64')
+url="http://download.ebz.epson.net/dsc/search/01/search/"
 license=('custom')
 depends=('iscan')
 install="${pkgname}.install"
-source=("https://download2.ebz.epson.net/iscan/plugin/perfection-v330/rpm/x64/iscan-${_plugin}-bundle-${_iscan_ver}.x64.rpm.tar.gz")
-sha256sums=('38082e6c080fbbfb96fa005bd8e42b36728ad6ebeff5084b677b3ee6ea2b389a')
+source_i686=("https://download2.ebz.epson.net/iscan/plugin/perfection-v330/rpm/x86/iscan-${_plugin}-bundle-${_iscan_ver}.x86.rpm.tar.gz")
+source_x86_64=("https://download2.ebz.epson.net/iscan/plugin/perfection-v330/rpm/x64/iscan-${_plugin}-bundle-${_iscan_ver}.x64.rpm.tar.gz")
+sha256sums_i686=('23e9f5594f4194016e19d6807c38bbbc4929fd4bcddb64b53b984cef47b06d56')
+sha256sums_x86_64=('38082e6c080fbbfb96fa005bd8e42b36728ad6ebeff5084b677b3ee6ea2b389a')
+
+if [[ $CARCH = x86_64 ]]; then
+  _filearch=x64
+  _64=64
+else
+  _filearch=x86
+fi
 
 prepare() {
-    cd "iscan-${_plugin}-bundle-${_iscan_ver}.x64.rpm/plugins"
+    cd "iscan-${_plugin}-bundle-${_iscan_ver}.${_filearch}.rpm/plugins"
     bsdtar -xf "esci-interpreter-${_plugin}-${pkgver}-1.${CARCH}.rpm"
 }
 
 package() {
-    cd "iscan-${_plugin}-bundle-${_iscan_ver}.x64.rpm/plugins/usr"
+    cd "iscan-${_plugin}-bundle-${_iscan_ver}.${_filearch}.rpm/plugins/usr"
     # install plugin
-    install -Dm 755 -t "${pkgdir}/usr/lib/esci" "lib64/esci/libesci-interpreter-${_plugin}.so.0.0.0"
+    install -Dm 755 -t "${pkgdir}/usr/lib/esci" "lib${_64}/esci/libesci-interpreter-${_plugin}.so.0.0.0"
     ln -s "libesci-interpreter-${_plugin}.so.0.0.0" "${pkgdir}/usr/lib/esci/libesci-interpreter-${_plugin}.so"
     ln -s "libesci-interpreter-${_plugin}.so.0.0.0" "${pkgdir}/usr/lib/esci/libesci-interpreter-${_plugin}.so.0"    
     # install firmware
