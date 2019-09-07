@@ -1,18 +1,18 @@
 # Maintainer: Manish Munikar <munikarmanish at gmail dot com>
 
 pkgname=argouml
-pkgver=0.34
-pkgrel=4
+pkgver=0.35.1
+pkgrel=1
 pkgdesc="UML 1.4 modeller"
 arch=('any')
 url="http://argouml.tigris.org/"
 license=('EPL')
 depends=('java-runtime')
-source=("${pkgname}-${pkgver}.tar.gz::http://argouml-downloads.tigris.org/nonav/argouml-0.34/ArgoUML-0.34.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::http://argouml-downloads.tigris.org/nonav/argouml-0.35.1/ArgoUML-0.35.1.tar.gz"
         "${pkgname}.desktop");
 noextract=()
-md5sums=("440efea6096a00b8c19daab1ecddaf7c"
-         "137bff550da020b3e87d7ab4a6d1f6e5")
+sha256sums=('5e5230eb1bd29c545ae6fd56c0bdfbee86b1e6c2c538d6df22728fa3e3ab1639'
+            'b3d19c56d8c81bb75d4a9b3b994acd2db5ccad144db7d6b0c0cd5487b54a9157')
 validpgpkeys=()
 
 package() {
