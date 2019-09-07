@@ -1,6 +1,6 @@
 pkgbase = z.lua
 	pkgdesc = A new cd command that helps you navigate faster by learning your habits
-	pkgver = 1.7.2
+	pkgver = 1.7.3
 	pkgrel = 1
 	url = https://github.com/skywind3000/z.lua
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = z.lua
 	provides = z.lua
 	conflicts = z.lua-git
 	replaces = z.lua-git
-	source = https://github.com/skywind3000/z.lua/archive/v1.7.2.tar.gz
-	sha256sums = df5107e68e0a3db26b2ab4f8d2e2cbb821c6ef5225e35add2f16a074658b9072
+	source = https://github.com/skywind3000/z.lua/archive/v1.7.3.tar.gz
+	sha256sums = 5d1ef598292743ba1cbb22974734e3167c0efb5d64d3ddfc2a64258355efe6d8
 
 pkgname = z.lua
 
