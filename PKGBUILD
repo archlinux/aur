@@ -3,13 +3,13 @@
 _pkgname=steam
 pkgname=(python-steam python2-steam)
 pkgver=0.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Module for interacting with various Steam features'
 arch=('any')
 url='https://github.com/ValvePython/steam'
 license=('MIT')
 depends=()
-makedepends=(python-setuptools)
+makedepends=(python-setuptools python2-setuptools)
 pythondepends='python python-six python-cryptography python-requests python-gevent python-protobuf python-pyaml python-sphinx python-vdf python-gevent-eventemitter'
 python2depends='python2 python2-six python2-cryptography python2-requests python2-gevent python2-protobuf python2-enum34 python2-pyaml python2-sphinx python2-vdf python2-gevent-eventemitter'
 checkdepends=(
