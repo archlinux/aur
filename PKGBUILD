@@ -36,4 +36,3 @@ package() {
 	install -D -m755 archey ${pkgdir}/usr/bin/archey || return 1
 	install -D -m644 COPYING ${pkgdir}/usr/share/licenses/archey/COPYING
 }
-md5sums=('cadd2230de52758f401ecb7852c417cc')

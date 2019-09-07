@@ -13,7 +13,6 @@ pkgbase = archey2
 	provides = archey
 	conflicts = archey3
 	conflicts = archey
-	md5sums = cadd2230de52758f401ecb7852c417cc
 
 pkgname = archey2
 
