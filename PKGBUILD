@@ -1,6 +1,6 @@
 # Maintainer: Graham Edgecombe <gpe@grahamedgecombe.com>
 pkgname=trellis-git
-pkgver=r518.ec54b23
+pkgver=r560.40129f3
 pkgrel=1
 pkgdesc='Tools and scripts which allow you to document the bit-stream format of Lattice ECP5 series FPGAs'
 arch=('i686' 'x86_64')
@@ -41,7 +41,6 @@ check() {
 package() {
   cd "$srcdir/trellis/libtrellis"
   make DESTDIR="$pkgdir" install
-  mv "$pkgdir/usr/lib64" "$pkgdir/usr/lib"
   install -Dm644 "$srcdir/trellis/COPYING" "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 
   # used by the examples to convert the bitstreams to SVF files for programming
