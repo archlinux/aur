@@ -1,0 +1,19 @@
+pkgbase = ton-node
+	pkgdesc = Telegram Open Network Full Node and Validator
+	pkgver = 1
+	pkgrel = 1
+	url = https://test.ton.org
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = cmake
+	makedepends = gperf
+	depends = openssl
+	conflicts = ton-lite-client
+	source = https://test.ton.org/ton-blockchain-full.tar.xz
+	source = https://test.ton.org/ton-global.config.json
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = ton-node
+
