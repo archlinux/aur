@@ -1,8 +1,8 @@
 # Maintainer: Taiki Sugawara <buzz.taiki@gmail.com>
 _pkgname=super_unko
 pkgname=$_pkgname-git
-pkgver=r119.9783a18
-pkgrel=1
+pkgver=r226.60c8880
+pkgrel=2
 pkgdesc="Super Unko project is the one of the awesome, clean and sophisticated OSS project in the world."
 arch=('i686' 'x86_64')
 url="https://github.com/unkontributors/super_unko"
@@ -24,8 +24,7 @@ pkgver() {
 
 package() {
   cd "$srcdir/$_pkgname"
-  install -d $pkgdir/usr/bin
-  cp bin/* $pkgdir/usr/bin
+  ./install.sh $pkgdir/usr
   install -D -m644 LICENSE $pkgdir/usr/share/licenses/$_pkgname/LICENSE
 }
 

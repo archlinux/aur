@@ -1,7 +1,7 @@
 pkgbase = super_unko-git
 	pkgdesc = Super Unko project is the one of the awesome, clean and sophisticated OSS project in the world.
-	pkgver = r119.9783a18
-	pkgrel = 1
+	pkgver = r226.60c8880
+	pkgrel = 2
 	url = https://github.com/unkontributors/super_unko
 	arch = i686
 	arch = x86_64
