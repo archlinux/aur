@@ -8,7 +8,7 @@ depends=('sdl_mixer' 'sdl_image' 'sdl_gfx' 'libogg' 'libvorbis' 'libgl' 'hicolor
 makedepends=('git' 'mesa' 'autoconf' 'gettext' 'automake')
 optdepends=('python' 'lua' 'espeak')
 pkgdesc="a mature science fiction role playing game set in the future"
-url="http://freedroid.sourceforge.net"
+url="http://www.freedroid.org"
 license=("GPL")
 source=('freedroidrpg-git::git+https://gitlab.com/freedroid/freedroid-src.git')
 sha256sums=('SKIP')
@@ -22,7 +22,7 @@ pkgver() {
 
 build() {
   cd $pkgname
-  ./autogen.sh  
+  ./autogen.sh
   ./configure --prefix=/usr
   make
 }
