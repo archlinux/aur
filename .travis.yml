@@ -26,8 +26,10 @@ arch:
   - bartus=https://github.com/bartoszek/AUR-repo/raw/master
   packages:
   - ccache
-  - moreutils
+  - ccache-ext
+# cuda need to be installed before `makepkg` invocation in order to allow nvcc-ccache logic to work.
   - cuda
+  - moreutils
   - opengv-git
   - flann
   - coin-or-lemon
@@ -48,16 +50,6 @@ arch:
      sudo sed -i '$a   CFLAGS="$CFLAGS -w"'   /etc/makepkg.conf
      sudo sed -i '$a CXXFLAGS="$CXXFLAGS -w"' /etc/makepkg.conf
   script:
-#   Incorporate ccache in nvcc
-  - |
-     _gcc="$(readlink /opt/cuda/bin/gcc)"
-     _gpp="$(readlink /opt/cuda/bin/g++)"
-     sudo mv /opt/cuda/bin/nvcc /opt/cuda/bin/nvcc.bin
-     sudo rm /opt/cuda/bin/g{cc,++}
-     echo -e "#!/bin/sh -\n/usr/bin/ccache /opt/cuda/bin/nvcc.bin \"\$@\"" | sudo dd of=/opt/cuda/bin/nvcc
-     echo -e "#!/bin/sh -\n/usr/bin/ccache $_gcc \"\$@\"" | sudo dd of=/opt/cuda/bin/gcc
-     echo -e "#!/bin/sh -\n/usr/bin/ccache $_gpp \"\$@\"" | sudo dd of=/opt/cuda/bin/g++
-     sudo chmod +x /opt/cuda/bin/{nvcc,g{cc,++}}
 # Normalize TRAVIS variable
   - |
      [ "$TRAVIS" == "true" ] && TRAVIS=1 || TRAVIS=0
