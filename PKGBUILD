@@ -2,13 +2,13 @@
 
 appname=VK-Scraper
 pkgname=vk-scraper-git
-pkgver=1.3.0.r2.636e183
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="Scrapes a VK user's photos"
 arch=('any')
 url='https://github.com/vanyasem/VK-Scraper'
 license=('GPL3')
-depends=('python-vk_api' 'python' 'python-requests' 'python-tqdm')
+depends=('python-vk_api' 'python' 'python-requests' 'python-tqdm' 'youtube-dl')
 makedepends=('python-setuptools')
 provides=('vk-scraper')
 conflicts=('vk-scraper')
