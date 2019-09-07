@@ -1,0 +1,36 @@
+pkgbase = zrythm-git
+	pkgdesc = a highly automated and intuitive digital audio workstation
+	pkgver = 0.6.261
+	pkgrel = 1
+	url = https://www.zrythm.org
+	arch = x86_64
+	arch = i686
+	license = AGPL3
+	makedepends = python
+	makedepends = gettext
+	makedepends = sed
+	makedepends = meson
+	makedepends = ninja
+	makedepends = help2man
+	makedepends = python-sphinx
+	makedepends = ladspa
+	makedepends = lv2
+	depends = gtk3
+	depends = lilv
+	depends = libx11
+	depends = jack
+	depends = libsndfile
+	depends = libyaml
+	depends = libsamplerate
+	depends = alsa-lib
+	depends = fftw
+	optdepends = portaudio: portaudio backend
+	optdepends = qt5-base: for embedding qt5 plugin UIs
+	provides = zrythm
+	conflicts = zrythm
+	options = !strip
+	source = zrythm::git+https://git.zrythm.org/git/zrythm.git
+	md5sums = SKIP
+
+pkgname = zrythm-git
+
