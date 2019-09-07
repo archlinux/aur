@@ -1,6 +1,6 @@
 # Maintainer: Giacomo Comitti <dev@gcomit.com>
 pkgname=blkmenu
-pkgver=0.1.1
+pkgver=0.2
 _pkgname="${pkgname}-${pkgver}"
 pkgrel=1
 pkgdesc="Tiny curses wrapper around lsblk and udisksctl"
