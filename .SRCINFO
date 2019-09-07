@@ -1,7 +1,7 @@
 pkgbase = python-gevent-eventemitter-git
 	pkgdesc = Implements EventEmitter using gevent
 	pkgver = r21.25730d3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rossengeorgiev/gevent-eventemitter
 	arch = any
 	license = MIT
@@ -13,6 +13,7 @@ pkgbase = python-gevent-eventemitter-git
 	checkdepends = python2-gevent
 	checkdepends = python2-pytest
 	checkdepends = python2-coverage
+	makedepends = git
 	makedepends = python-setuptools
 	makedepends = gcc
 	source = git://github.com/rossengeorgiev/gevent-eventemitter
