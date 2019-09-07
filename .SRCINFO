@@ -1,10 +1,11 @@
 pkgbase = python-jproperties
 	pkgdesc = Java Property file parser and writer for Python
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Tblue/python-jproperties
 	arch = any
-	license = custom
+	license = BSD
+	license = Python
 	makedepends = python3
 	depends = python3
 	source = https://files.pythonhosted.org/packages/source/j/jproperties/jproperties-2.0.0.tar.gz
