@@ -3,7 +3,7 @@
 
 _pyname=mbed-cli
 pkgname=python-${_pyname}
-pkgver=1.10.0
+pkgver=1.10.1
 pkgrel=1
 pkgdesc="ARM mbed Command Line Interface"
 arch=('any')
@@ -20,7 +20,7 @@ optdepends=(
 makedepends=('python2-setuptools')
 options=(!emptydirs)
 source=("https://github.com/ARMmbed/mbed-cli/archive/$pkgver.tar.gz")
-sha256sums=('b071b28049a1015a27006fa0430d5577ae1a7b6428fdaf241c867a62b5d38ada')
+sha256sums=('a83c39e0d0856a8fd2e07db2ece402f22182ac0296d6a15ef99dcfe690a48f9b')
 
 package() {
   cd "$srcdir/${_pyname}-${pkgver}"
