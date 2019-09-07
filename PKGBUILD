@@ -1,9 +1,8 @@
 # Maintainer: Mike Redd <mredd@0tue0.com>
 # Contributor: Mike Redd <mredd@0tue0.com>
 pkgname=ttf-amerika
-#_realname=Amerika
 pkgver=2
-pkgrel=1
+pkgrel=2
 pkgdesc="Amerika and America Sans True Type Fonts by: Apostrophic"
 arch=('any')
 license=('custom')

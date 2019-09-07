@@ -1,20 +1,16 @@
 pkgbase = ttf-amerika
 	pkgdesc = Amerika and America Sans True Type Fonts by: Apostrophic
-	pkgver = 1
+	pkgver = 2
 	pkgrel = 2
-	url = http://apostrophiclab.pedroreina.net/
+	url = https://www.1001fonts.com/amerika-font.html
 	install = ttf.install
 	arch = any
 	license = custom
 	depends = fontconfig
 	depends = xorg-fonts-encodings
 	depends = xorg-font-utils
-	source = http://apostrophiclab.pedroreina.net//0116-Amerika/amerika_tt.zip
-	source = http://apostrophiclab.pedroreina.net//0151-AmerikaSans/amsans_tt.zip
-	source = http://apostrophiclab.pedroreina.net/info.html
-	md5sums = 6acff33aeb2a96050379133da38a7d05
-	md5sums = cc215f213eb885f9004c3f460a9a88c2
-	md5sums = 4818882329ff74df4a1bee06f05974a1
+	source = https://dl.1001fonts.com/amerika.zip
+	md5sums = 912f11e840ec0e8a2222b0406a627d9e
 
 pkgname = ttf-amerika
 
