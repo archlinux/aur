@@ -4,9 +4,9 @@
 # Contributor: Andrey Vlasovskikh <andrey.vlasovskikh@gmail.com>
 
 pkgname=pycharm-eap
-_buildver=192.5728.105
-_pkgver=2019.2
-_eap=false
+_buildver=192.6603.24
+_pkgver=2019.2.2
+_eap=true
 pkgver="${_pkgver}.${_buildver}"
 pkgrel=1
 pkgdesc="Powerful Python and Django IDE, Early Access Program (EAP) build. Professional edition."
@@ -42,7 +42,7 @@ else
 	"${pkgname}.desktop")
 fi
 	
-sha256sums=("1940fce9f162b8a804672379345d6b4ec343d2ec65b3d3054bd088e8b1fdfbb4"
+sha256sums=("aa4293d628c0648937252cdd526fbc4be4fe69832955b07f6cf5428c644e676b"
 	    "aa9573c177f5d4d3092b9dff2aef5b4c7d25ff9c2b044be222a0512dff759731")
 
 prepare() {
