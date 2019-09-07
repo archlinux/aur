@@ -40,5 +40,5 @@ package() {
     # install shared data
     install -Dm 644 -t "${pkgdir}/usr/share/iscan-data/device" share/iscan-data/device/{47542d46373330,47542d53363330}.xml
     # install license
-	install -Dm 644 "share/doc/esci-interpreter-${_plugin}-${pkgver}/COPYING.EPSON.en.txt" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING.EPSON"
+    install -Dm 644 "share/doc/esci-interpreter-${_plugin}-${pkgver}/COPYING.EPSON.en.txt" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING.EPSON"
 }
