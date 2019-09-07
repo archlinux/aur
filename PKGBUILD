@@ -1,7 +1,7 @@
 # Maintainer: Ange Kevin Amlaman (charveey) <amlamanangekevin at gmail dot com>
 # Contributor: NicoHood <archlinux {cat} nicohood {dog} de>
 pkgname=typora-bin
-pkgver=0.9.73
+pkgver=0.9.77
 pkgrel=1
 pkgdesc="A minimal Markdown reading & writing app."
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=('noto-fonts-emoji: emoji support')
 source=("${pkgname}-${pkgver}.tar.gz::https://typora.io/linux/Typora-linux-x64.tar.gz"
         "typora.desktop"
         "typora.js")
-sha512sums=('9f8582c3bc9e5fffe7a8e9ca4d7e6317b28d5209a9afb6b15dd888ad8dbe11a74dc31279f7aa6e016d401e7562e0d518d493a51ca454912a1069a2b008df60c0'
+sha512sums=('ba3927ae6d70a1dacd1360ae98918c545f0463a71ceeabfcc089aa9ad66cb18777af06086ecde209fe93fe826ce89f609737060f66fcfa4f7b79a843dc311643'
             '83fb1c7d18e14f4b5118e139e4fe6af1ec4c90f4cab4e4e3f076129fbe08458c50b8174fa61929e8b53d8622cad483385814bf0034570c1e68ce75476ae77ebb'
             '976917931c1739c8b463d1b3f0ba53cf7291e258b2018fd67fe2bf6509aabda0d97fa073e127dc96492a41f1c49d7d47898f25be14aa422490c4ee60771642d9')
 
