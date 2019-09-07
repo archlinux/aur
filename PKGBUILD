@@ -1,8 +1,8 @@
 # Maintainer: BrLi <brli@chakralinux.org>
 
 pkgname=zettlr
-pkgver=1.3.0
-pkgrel=2
+pkgver=1.4.0
+pkgrel=1
 pkgdesc="A markdown editor for writing academic texts and taking notes"
 arch=('x86_64')
 url="https://www.zettlr.com"
@@ -38,7 +38,7 @@ package() {
 
     install -Dm755 /dev/stdin $pkgdir/usr/bin/$pkgname <<END
 #!/bin/bash
-exec electron /usr/lib/$pkgname "$@"
+exec electron /usr/lib/$pkgname "\$@"
 END
 
     for px in 16 24 32 48 64 96 128 256; do
