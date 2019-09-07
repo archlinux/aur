@@ -1,4 +1,7 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
+# shellcheck disable=SC2034
+# Notice: 4.9.0 is the last version supporting qt4
+
 pkgname=phonon-qt4-gstreamer
 pkgver=4.9.0
 pkgrel=1
