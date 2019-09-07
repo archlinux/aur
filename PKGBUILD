@@ -2,7 +2,7 @@
 
 pkgname=mlrpt
 pkgver=1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Non-interactivr command-line version of glrpt for receiving, decoding and saving LRPT images from the Russian Meteor-M type of weather satellites"
 arch=('x86_64')
 url="http://www.5b4az.org"
