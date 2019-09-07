@@ -1,0 +1,15 @@
+pkgbase = qt-autoupdater
+	pkgdesc = A Qt library to automatically check for updates and install them
+	pkgver = 2.1.5_4
+	pkgrel = 1
+	url = https://skycoder42.github.io/QtAutoUpdater/
+	arch = x86_64
+	license = BSD
+	makedepends = qdep
+	makedepends = perl
+	depends = qt5-base
+	source = https://github.com/Skycoder42/QtAutoUpdater/archive/2.1.5-4.tar.gz
+	md5sums = 295433fc74597d539de845f3685a5258
+
+pkgname = qt-autoupdater
+
