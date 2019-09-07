@@ -17,7 +17,7 @@ source=("$pkgname"::"git+${url}.git"
         "UnblockNeteaseMusic.service"
         )
 md5sums=('SKIP'
-         '42b089ebaf8f3074f228a745bd692bf9')
+         '332d84a47d41175039ee89a5d68208e3')
 
 pkgver() {
   cd "$pkgname"
