@@ -1,0 +1,5 @@
+z /etc/webapps/flyspray/*.php 0660 root flyspray
+d %C/flyspray/ 0750 flyspray flyspray
+d %S/flyspray/attachments 0750 flyspray flyspray
+d %S/flyspray/avatars 0750 flyspray flyspray
+d %t/flyspray 755 flyspray flyspray

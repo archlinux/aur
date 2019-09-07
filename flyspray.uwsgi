@@ -1,0 +1,33 @@
+[uwsgi]
+procname-master = flyspray
+plugins = php
+master = true
+socket = /run/%n/%n.sock
+stats = /run/%n/%n-stats.sock
+uid = flyspray
+gid = flyspray
+processes = 10
+cheaper = 2
+cheaper-step = 1
+idle = 600
+die-on-idle = true
+touch-reload = %p
+
+php-allowed-ext = .php
+php-docroot = /usr/share/webapps/flyspray
+php-index = index.php
+php-set = date.timezone=Europe/Berlin
+php-set = open_basedir=/tmp/:/usr/share/webapps/flyspray:/var/cache/flyspray:/var/lib/flyspray:/etc/webapps/flyspray
+php-set = session.save_path=/tmp
+php-set = session.gc_maxlifetime  21600
+php-set = session.gc_divisor  500
+php-set = session.gc_probability  1
+php-set = post_max_size=64M
+php-set = upload_max_filesize=64M
+php-set = always_populate_raw_post_data=-1
+
+php-set = extension=curl
+php-set = extension=gd
+php-set = extension=exif
+php-set = extension=mysqli
+php-set = extension=pgsql

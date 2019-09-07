@@ -1,0 +1,14 @@
+post_install() {
+  echo "Make sure disallow access to /usr/share/webapps/flyspray/setup/ after installation is complete."
+}
+
+post_upgrade() {
+  local new_package_version="$1"
+  local old_package_version="$2"
+  if [ $(vercmp "${old_package_version}" "1.0rc9") -le 0 ]; then
+cat <<EOF
+The webapp now needs to be run as its own user/group: flyspray/flyspray.
+EOF
+  fi
+  echo "Make sure to run setup/upgrade.php for a database schema upgrade."
+}
