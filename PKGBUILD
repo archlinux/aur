@@ -13,18 +13,18 @@ source=("http://www.5b4az.org/pkg/lrpt/$pkgname-$pkgver-beta.tar.bz2")
 md5sums=('SKIP')
 
 build() {
-	cd "$pkgname-$pkgver"
+	cd "$pkgname-$pkgver-beta"
 	./autogen.sh
 	./configure --prefix=/usr
 	make
 }
 
 check() {
-	cd "$pkgname-$pkgver"
+	cd "$pkgname-$pkgver-beta"
 	make -k check
 }
 
 package() {
-	cd "$pkgname-$pkgver"
+	cd "$pkgname-$pkgver-beta"
 	make DESTDIR="$pkgdir/" install
 }
