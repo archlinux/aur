@@ -1,17 +1,17 @@
-# Maintainer: Andrew Sun <adsun701@gmail.com>
-# Contributor: Dmitrij D. Czarkoff <czarkoff@gmail.com>
+# Maintainer: Andrew Sun <adsun701 at gmail dot com>
+# Contributor: Dmitrij D. Czarkoff <czarkoff at gmail dot com>
 
 pkgname=re
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
-pkgdesc="portable library for real-time communications"
+pkgdesc="Portable library for real-time communications"
 arch=('i686' 'x86_64' 'armv6h')
 url="http://creytiv.com/re.html"
 license=('BSD')
 depends=('openssl' 'zlib')
 source=("http://creytiv.com/pub/${pkgname}-${pkgver}.tar.gz"
         "re-flags.patch")
-sha256sums=('0e97bcb5cc8f84d6920aa78de24c7d4bf271c5ddefbb650848e0db50afe98131'
+sha256sums=('cd5bfc79640411803b200c7531e4ba8a230da3806746d3bd2de970da2060fe43'
             'fb1c3db52d49953dbc689b105b3bf90c86ddbde44fbe2cfcf2f271c02e48d36b')
 
 prepare() {
