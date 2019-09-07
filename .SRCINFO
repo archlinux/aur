@@ -1,6 +1,6 @@
 pkgbase = linux-bootsplash
 	pkgdesc = Linux kernel with kernel bootsplash support
-	pkgver = 5.2.9
+	pkgver = 5.2.11
 	pkgrel = 1
 	url = https://www.kernel.org/
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = linux-bootsplash
 	makedepends = bc
 	makedepends = libelf
 	options = !strip
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.2.9.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.2.11.tar.xz
 	source = config
 	source = 60-linux.hook
 	source = 90-linux.hook
@@ -71,12 +71,12 @@ pkgname = linux-bootsplash
 	depends = mkinitcpio
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = bootsplash-systemd: to enable bootsplash
-	provides = linux=5.2.9
+	provides = linux=5.2.11
 	backup = etc/mkinitcpio.d/linux-bootsplash.preset
 
 pkgname = linux-bootsplash-headers
 	pkgdesc = Header files and scripts for building modules for Linux-bootsplash kernel
 	depends = linux
-	provides = linux-headers=5.2.9
-	provides = linux-headers=5.2.9
+	provides = linux-headers=5.2.11
+	provides = linux-headers=5.2.11
 
