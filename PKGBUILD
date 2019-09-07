@@ -2,7 +2,7 @@
 
 pkgname=xfce4-hardware-monitor-plugin
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin for the Xfce4 panel that lets you monitor CPU usage, network bandwith, etc."
 arch=('i686' 'x86_64')
 provides=('xfce4-hardware-monitor-plugin')
@@ -11,7 +11,7 @@ depends=('lm_sensors' 'gtkmm' 'libglademm' 'libgnomecanvasmm' 'libgtop' \
         'libxfce4ui' 'xfce4-panel')
 makedepends=('autoconf-archive' 'intltool' 'git' 'xfce4-dev-tools')
 license=('GPL3')
-source=("git://git.xfce.org/panel-plugins/xfce4-hardware-monitor-plugin#tag=${pkgver}")
+source=("git+https://git.xfce.org/panel-plugins/xfce4-hardware-monitor-plugin#tag=${pkgver}")
 md5sums=('SKIP')
 
 build() {
