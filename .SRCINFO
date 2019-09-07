@@ -1,1142 +1,542 @@
 pkgbase = firefox-beta-i18n
 	pkgdesc = Language pack for Firefox Beta
-	pkgver = 65.0b8
+	pkgver = 70.0b4
 	pkgrel = 1
-	url = http://www.mozilla.com/
+	url = http://www.mozilla.org/
 	arch = any
 	license = MPL
 	license = GPL
-	depends = firefox>=65.0b8
-	provides = firefox-beta-i18n=65.0b8-1
-	noextract = firefox-i18n-65.0b8-ach.xpi
-	noextract = firefox-i18n-65.0b8-af.xpi
-	noextract = firefox-i18n-65.0b8-an.xpi
-	noextract = firefox-i18n-65.0b8-ar.xpi
-	noextract = firefox-i18n-65.0b8-as.xpi
-	noextract = firefox-i18n-65.0b8-ast.xpi
-	noextract = firefox-i18n-65.0b8-az.xpi
-	noextract = firefox-i18n-65.0b8-be.xpi
-	noextract = firefox-i18n-65.0b8-bg.xpi
-	noextract = firefox-i18n-65.0b8-bn-BD.xpi
-	noextract = firefox-i18n-65.0b8-bn-IN.xpi
-	noextract = firefox-i18n-65.0b8-br.xpi
-	noextract = firefox-i18n-65.0b8-bs.xpi
-	noextract = firefox-i18n-65.0b8-ca.xpi
-	noextract = firefox-i18n-65.0b8-cak.xpi
-	noextract = firefox-i18n-65.0b8-cs.xpi
-	noextract = firefox-i18n-65.0b8-cy.xpi
-	noextract = firefox-i18n-65.0b8-da.xpi
-	noextract = firefox-i18n-65.0b8-de.xpi
-	noextract = firefox-i18n-65.0b8-dsb.xpi
-	noextract = firefox-i18n-65.0b8-el.xpi
-	noextract = firefox-i18n-65.0b8-en-GB.xpi
-	noextract = firefox-i18n-65.0b8-en-US.xpi
-	noextract = firefox-i18n-65.0b8-en-ZA.xpi
-	noextract = firefox-i18n-65.0b8-eo.xpi
-	noextract = firefox-i18n-65.0b8-es-AR.xpi
-	noextract = firefox-i18n-65.0b8-es-CL.xpi
-	noextract = firefox-i18n-65.0b8-es-ES.xpi
-	noextract = firefox-i18n-65.0b8-es-MX.xpi
-	noextract = firefox-i18n-65.0b8-et.xpi
-	noextract = firefox-i18n-65.0b8-eu.xpi
-	noextract = firefox-i18n-65.0b8-fa.xpi
-	noextract = firefox-i18n-65.0b8-ff.xpi
-	noextract = firefox-i18n-65.0b8-fi.xpi
-	noextract = firefox-i18n-65.0b8-fr.xpi
-	noextract = firefox-i18n-65.0b8-fy-NL.xpi
-	noextract = firefox-i18n-65.0b8-ga-IE.xpi
-	noextract = firefox-i18n-65.0b8-gd.xpi
-	noextract = firefox-i18n-65.0b8-gl.xpi
-	noextract = firefox-i18n-65.0b8-gn.xpi
-	noextract = firefox-i18n-65.0b8-gu-IN.xpi
-	noextract = firefox-i18n-65.0b8-he.xpi
-	noextract = firefox-i18n-65.0b8-hi-IN.xpi
-	noextract = firefox-i18n-65.0b8-hr.xpi
-	noextract = firefox-i18n-65.0b8-hsb.xpi
-	noextract = firefox-i18n-65.0b8-hu.xpi
-	noextract = firefox-i18n-65.0b8-hy-AM.xpi
-	noextract = firefox-i18n-65.0b8-id.xpi
-	noextract = firefox-i18n-65.0b8-is.xpi
-	noextract = firefox-i18n-65.0b8-it.xpi
-	noextract = firefox-i18n-65.0b8-ja.xpi
-	noextract = firefox-i18n-65.0b8-ka.xpi
-	noextract = firefox-i18n-65.0b8-kab.xpi
-	noextract = firefox-i18n-65.0b8-kk.xpi
-	noextract = firefox-i18n-65.0b8-km.xpi
-	noextract = firefox-i18n-65.0b8-kn.xpi
-	noextract = firefox-i18n-65.0b8-ko.xpi
-	noextract = firefox-i18n-65.0b8-lij.xpi
-	noextract = firefox-i18n-65.0b8-lt.xpi
-	noextract = firefox-i18n-65.0b8-lv.xpi
-	noextract = firefox-i18n-65.0b8-mai.xpi
-	noextract = firefox-i18n-65.0b8-mk.xpi
-	noextract = firefox-i18n-65.0b8-ml.xpi
-	noextract = firefox-i18n-65.0b8-mr.xpi
-	noextract = firefox-i18n-65.0b8-ms.xpi
-	noextract = firefox-i18n-65.0b8-my.xpi
-	noextract = firefox-i18n-65.0b8-nb-NO.xpi
-	noextract = firefox-i18n-65.0b8-nl.xpi
-	noextract = firefox-i18n-65.0b8-nn-NO.xpi
-	noextract = firefox-i18n-65.0b8-or.xpi
-	noextract = firefox-i18n-65.0b8-pa-IN.xpi
-	noextract = firefox-i18n-65.0b8-pl.xpi
-	noextract = firefox-i18n-65.0b8-pt-BR.xpi
-	noextract = firefox-i18n-65.0b8-pt-PT.xpi
-	noextract = firefox-i18n-65.0b8-rm.xpi
-	noextract = firefox-i18n-65.0b8-ro.xpi
-	noextract = firefox-i18n-65.0b8-ru.xpi
-	noextract = firefox-i18n-65.0b8-si.xpi
-	noextract = firefox-i18n-65.0b8-sk.xpi
-	noextract = firefox-i18n-65.0b8-sl.xpi
-	noextract = firefox-i18n-65.0b8-son.xpi
-	noextract = firefox-i18n-65.0b8-sq.xpi
-	noextract = firefox-i18n-65.0b8-sr.xpi
-	noextract = firefox-i18n-65.0b8-sv-SE.xpi
-	noextract = firefox-i18n-65.0b8-ta.xpi
-	noextract = firefox-i18n-65.0b8-te.xpi
-	noextract = firefox-i18n-65.0b8-th.xpi
-	noextract = firefox-i18n-65.0b8-tr.xpi
-	noextract = firefox-i18n-65.0b8-uk.xpi
-	noextract = firefox-i18n-65.0b8-uz.xpi
-	noextract = firefox-i18n-65.0b8-vi.xpi
-	noextract = firefox-i18n-65.0b8-xh.xpi
-	noextract = firefox-i18n-65.0b8-zh-CN.xpi
-	noextract = firefox-i18n-65.0b8-zh-TW.xpi
-	source = firefox-i18n-65.0b8-ach.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/ach.xpi
-	source = firefox-i18n-65.0b8-af.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/af.xpi
-	source = firefox-i18n-65.0b8-an.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/an.xpi
-	source = firefox-i18n-65.0b8-ar.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/ar.xpi
-	source = firefox-i18n-65.0b8-as.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/as.xpi
-	source = firefox-i18n-65.0b8-ast.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/ast.xpi
-	source = firefox-i18n-65.0b8-az.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/az.xpi
-	source = firefox-i18n-65.0b8-be.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/be.xpi
-	source = firefox-i18n-65.0b8-bg.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/bg.xpi
-	source = firefox-i18n-65.0b8-bn-BD.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/bn-BD.xpi
-	source = firefox-i18n-65.0b8-bn-IN.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/bn-IN.xpi
-	source = firefox-i18n-65.0b8-br.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/br.xpi
-	source = firefox-i18n-65.0b8-bs.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/bs.xpi
-	source = firefox-i18n-65.0b8-ca.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/ca.xpi
-	source = firefox-i18n-65.0b8-cak.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/cak.xpi
-	source = firefox-i18n-65.0b8-cs.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/cs.xpi
-	source = firefox-i18n-65.0b8-cy.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/cy.xpi
-	source = firefox-i18n-65.0b8-da.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/da.xpi
-	source = firefox-i18n-65.0b8-de.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/de.xpi
-	source = firefox-i18n-65.0b8-dsb.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/dsb.xpi
-	source = firefox-i18n-65.0b8-el.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/el.xpi
-	source = firefox-i18n-65.0b8-en-GB.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/en-GB.xpi
-	source = firefox-i18n-65.0b8-en-US.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/en-US.xpi
-	source = firefox-i18n-65.0b8-en-ZA.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/en-ZA.xpi
-	source = firefox-i18n-65.0b8-eo.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/eo.xpi
-	source = firefox-i18n-65.0b8-es-AR.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/es-AR.xpi
-	source = firefox-i18n-65.0b8-es-CL.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/es-CL.xpi
-	source = firefox-i18n-65.0b8-es-ES.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/es-ES.xpi
-	source = firefox-i18n-65.0b8-es-MX.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/es-MX.xpi
-	source = firefox-i18n-65.0b8-et.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/et.xpi
-	source = firefox-i18n-65.0b8-eu.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/eu.xpi
-	source = firefox-i18n-65.0b8-fa.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/fa.xpi
-	source = firefox-i18n-65.0b8-ff.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/ff.xpi
-	source = firefox-i18n-65.0b8-fi.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/fi.xpi
-	source = firefox-i18n-65.0b8-fr.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/fr.xpi
-	source = firefox-i18n-65.0b8-fy-NL.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/fy-NL.xpi
-	source = firefox-i18n-65.0b8-ga-IE.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/ga-IE.xpi
-	source = firefox-i18n-65.0b8-gd.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/gd.xpi
-	source = firefox-i18n-65.0b8-gl.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/gl.xpi
-	source = firefox-i18n-65.0b8-gn.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/gn.xpi
-	source = firefox-i18n-65.0b8-gu-IN.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/gu-IN.xpi
-	source = firefox-i18n-65.0b8-he.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/he.xpi
-	source = firefox-i18n-65.0b8-hi-IN.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/hi-IN.xpi
-	source = firefox-i18n-65.0b8-hr.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/hr.xpi
-	source = firefox-i18n-65.0b8-hsb.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/hsb.xpi
-	source = firefox-i18n-65.0b8-hu.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/hu.xpi
-	source = firefox-i18n-65.0b8-hy-AM.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/hy-AM.xpi
-	source = firefox-i18n-65.0b8-id.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/id.xpi
-	source = firefox-i18n-65.0b8-is.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/is.xpi
-	source = firefox-i18n-65.0b8-it.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/it.xpi
-	source = firefox-i18n-65.0b8-ja.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/ja.xpi
-	source = firefox-i18n-65.0b8-ka.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/ka.xpi
-	source = firefox-i18n-65.0b8-kab.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/kab.xpi
-	source = firefox-i18n-65.0b8-kk.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/kk.xpi
-	source = firefox-i18n-65.0b8-km.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/km.xpi
-	source = firefox-i18n-65.0b8-kn.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/kn.xpi
-	source = firefox-i18n-65.0b8-ko.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/ko.xpi
-	source = firefox-i18n-65.0b8-lij.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/lij.xpi
-	source = firefox-i18n-65.0b8-lt.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/lt.xpi
-	source = firefox-i18n-65.0b8-lv.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/lv.xpi
-	source = firefox-i18n-65.0b8-mai.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/mai.xpi
-	source = firefox-i18n-65.0b8-mk.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/mk.xpi
-	source = firefox-i18n-65.0b8-ml.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/ml.xpi
-	source = firefox-i18n-65.0b8-mr.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/mr.xpi
-	source = firefox-i18n-65.0b8-ms.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/ms.xpi
-	source = firefox-i18n-65.0b8-my.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/my.xpi
-	source = firefox-i18n-65.0b8-nb-NO.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/nb-NO.xpi
-	source = firefox-i18n-65.0b8-nl.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/nl.xpi
-	source = firefox-i18n-65.0b8-nn-NO.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/nn-NO.xpi
-	source = firefox-i18n-65.0b8-or.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/or.xpi
-	source = firefox-i18n-65.0b8-pa-IN.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/pa-IN.xpi
-	source = firefox-i18n-65.0b8-pl.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/pl.xpi
-	source = firefox-i18n-65.0b8-pt-BR.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/pt-BR.xpi
-	source = firefox-i18n-65.0b8-pt-PT.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/pt-PT.xpi
-	source = firefox-i18n-65.0b8-rm.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/rm.xpi
-	source = firefox-i18n-65.0b8-ro.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/ro.xpi
-	source = firefox-i18n-65.0b8-ru.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/ru.xpi
-	source = firefox-i18n-65.0b8-si.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/si.xpi
-	source = firefox-i18n-65.0b8-sk.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/sk.xpi
-	source = firefox-i18n-65.0b8-sl.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/sl.xpi
-	source = firefox-i18n-65.0b8-son.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/son.xpi
-	source = firefox-i18n-65.0b8-sq.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/sq.xpi
-	source = firefox-i18n-65.0b8-sr.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/sr.xpi
-	source = firefox-i18n-65.0b8-sv-SE.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/sv-SE.xpi
-	source = firefox-i18n-65.0b8-ta.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/ta.xpi
-	source = firefox-i18n-65.0b8-te.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/te.xpi
-	source = firefox-i18n-65.0b8-th.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/th.xpi
-	source = firefox-i18n-65.0b8-tr.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/tr.xpi
-	source = firefox-i18n-65.0b8-uk.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/uk.xpi
-	source = firefox-i18n-65.0b8-uz.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/uz.xpi
-	source = firefox-i18n-65.0b8-vi.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/vi.xpi
-	source = firefox-i18n-65.0b8-xh.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/xh.xpi
-	source = firefox-i18n-65.0b8-zh-CN.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/zh-CN.xpi
-	source = firefox-i18n-65.0b8-zh-TW.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/65.0b8/linux-i686/xpi/zh-TW.xpi
-	sha256sums = 0749cb5ae90efa42be6a38ee71ce34df8b9a294e81ebe27e2a88997bd4d6a1a9
-	sha256sums = c46f96bfe5a36e6e36156aa27b8a2bb1b1fbf435c2893d8f8e589f4ec4fec818
-	sha256sums = aab160e01692ab34b3ee8af2a4c6a2d35a8dffc83ac175f5435624bcde16deff
-	sha256sums = ac3df39de6bf8ff1dcef1e5023591e2185b59946f307938b10d5fb11a0fc6ac9
-	sha256sums = c2fe27ccea1a1a86f8742a3fc35b4b10b3e7a3c796c37e6028484bd5c134ebc7
-	sha256sums = c824c898ebaa517461860fc245ed51ab367264a542e38ef52307bb5c027942e2
-	sha256sums = 84e18fcb5184dc848001898bca2333f3b66ded99c9d74a2a47cfb5f7a858efdf
-	sha256sums = 91d67e8bf92f62d55c8f39cc2c8619623aa9c65a305f47d73d79b69cacc0c494
-	sha256sums = 8606abf4a66b7f292196a6c4b43aa65abb283c310125c9b8fa3fd43a343ef1ad
-	sha256sums = cea8f2d26d61ab39735123df124683669737757807d4b07cbcb63c265ad617c5
-	sha256sums = 90d5068441b7d5a729e54f6fad623c88dd89e4630beddc5a3dcb5e9a0493fca1
-	sha256sums = d76abda965f1e7e2643c3a7e532a779f4b980ca0e5d82f1edadb8c27dd2f7c9c
-	sha256sums = e81e97aae09008355eb12913c2494913824fd3dab0a961a5c1eab9be54f56e57
-	sha256sums = c584971d69bf8d259bc02da4759072d6f0caf1a7dfa97e451ef1ee0c678a4364
-	sha256sums = 54e1ce5092b2b2e90a86a9588bdb588577de16fa40a075adc61cfd936d6b6bd1
-	sha256sums = f10de6b701bb3a7b9f23fd79f1b2beda18d5ec45681626df413f4c4ddd581177
-	sha256sums = 3e556a23e59abdba859e7f9f1568e1dafd6c8d5a53d92ef80fc069fcef6273cb
-	sha256sums = 526f2fe8843555cdf6d16d3ec643f38dcc5a6109ccd4a20fa5c777add9fd86fd
-	sha256sums = f7a9ab9edf65d143d31b968d923ede77c777e3be5a628654e33aa3ad536ad664
-	sha256sums = 32aede69e0dcf0497db9cff8630e0d35a83f4966b44aded828b31b2d2c829bbf
-	sha256sums = 5b34012993101763e3c06f69987702b43720f70f7ee4310fe2f2361de55f10c0
-	sha256sums = 23f3bbd4b8dbe58e2bc9939929b82d944586aa89af10b637402a8ba0cc3ee38c
-	sha256sums = 1d21581513bed00728be628f97248a7f42b2f78eeb0eb664f8db77586b717df2
-	sha256sums = 4d01d8dec99a44c02f144f6b74dbcfa7092408b8e4c0c8e1ca8288e68f43799f
-	sha256sums = 3eea09f2d198e5ecb19dc29fc6cc97f846bb45def08de87d85a73c3c5bf005db
-	sha256sums = c24e50f1612b2e1485fedc28da5ee3c51764be1a6eed3dbadc9ecc4c104cc310
-	sha256sums = ad2413098740a4963826277a6725a55417e5412bad68e82eab82dfd92374cc65
-	sha256sums = 8d5f45e5d99146ca90148f2b273b11a26a6961e04c7b41539a7c71e6269ec9da
-	sha256sums = a5d53ea4da7641a925412a2ea92da0d62d3691ee09fbaa708ab7eb81d9933044
-	sha256sums = 800f90ab1a74d70fdbf5f4db72aa0c58e06bc358a9d6ec62bfed5ef96205e80e
-	sha256sums = a21d51ee5cf663e0b06b5c17a3e14daf4c33830ff7a5ccc7d861c4275214201f
-	sha256sums = 134c71b87c8e65b9f0f7069b82b92f0c7100c86e0c86673bb6a6336be94ac2da
-	sha256sums = 978f7462f9b221c4292d2155a4e6a34ef1899acc9e76367e6a60b8e750dadff1
-	sha256sums = bee7808e6e4d58e7ca5432b697c13f816e2c1d9715eec7c146fea7a8d459127e
-	sha256sums = f88aa3a8402fb604f1168a73154383ab8fb3aaff5b2793ec0d8e2774b7ee926c
-	sha256sums = 40085f0b85ad7df807bdb8cb4a14d51b6ae2496745c7c645b4d1b829c16d0cc5
-	sha256sums = c2b54dd3b9a583d3d742c00365cceb244df19acad4ba3fda319693e02c95e242
-	sha256sums = 859acbfe5be66f43e79e1c510fa9a3a6e5404937954b2edf0183633a932e7734
-	sha256sums = b450083d611366cc3460b98783dab101d3037c0254e017f5ffdc47eaa92fa23a
-	sha256sums = 743fa3f7d9973d2706c1569ed80084aec14256a13f5ef95293d84014d79f2ee6
-	sha256sums = 8496eb8e6dd6b1ac35cbf152e6ff0d9686e4466c102d73cb1b09a092f75933c9
-	sha256sums = 7ca5d4d3677db7cdf3d8017f1c916d455d94607a47ec4c4d83081753f54a8644
-	sha256sums = fa88cd7ad0bb5c7cfcc354377b6be5667f7620acd1ae6b85fdc37332653cad1d
-	sha256sums = b159ee56fb6c0fbddc3c82f856b2d26a45ed331c1e51ad92519baf9df2ecf4a8
-	sha256sums = a8f5e1b9ccd9616f51edde0e7a9a985ea0bd69b02feeff7037be7464f6f6d7ff
-	sha256sums = 7d43ba8d312536b1e2fad507ef6811ab44bec8607e51c5a3f38df23b8d66976d
-	sha256sums = 279ed2461e2112d1b64ff8c3e436318764f7183ccaea50afdc3a3a8757384b8e
-	sha256sums = b01542de0e858036d7fa00fd781529f80761dcba5d1438dada927bc0701d702a
-	sha256sums = a2ba58360b0b74ea90adf83f7b436758061e93f531fc89e167f714834216a096
-	sha256sums = 738f723e4df60f90c76afa18a0734411b922d7fa82de4c36c77b81769764a03a
-	sha256sums = d3e7f5bd38a4f80df6c3d7bbed5940c5c217dd7a64737da6993d09220fd6753a
-	sha256sums = 9697551541f857ab97f7312decbe520813cc2a7b76beb8a460dee91ac88bb14f
-	sha256sums = 707380da849d81bcde4c587180f8c27a5d2a95a2deb15ca4d5ff8fbec33b0a2d
-	sha256sums = e658fb4f3edaeeff21d8c413e7378f38138ff6f71c8026b1a53c3ff8b34b10a2
-	sha256sums = ecb0539b11ebdbd54199bdce9da1f4d136d15077ef52a37a11c147fb81bd7c9f
-	sha256sums = 939dd97a9ec0c490057219a88188f98e2c03ce3328703d7f7d3b1c103e58c013
-	sha256sums = 4b5ce59abfac33ca04c2bf5faca124899c5489f9cdaedfafdf77ae207dc654ee
-	sha256sums = d1fa6d07dac17f2242a5220ef645d83ebfcbb9a6294feafd64a60656c04d3ce6
-	sha256sums = 3875c4718e83b671553bbf4d164b3fd10d9f49b91a3031e41d3d1664f492f539
-	sha256sums = b8aa693b199daf3640cb1345cc4df378399a3be7516c7e671f2e0871e6aa0b0e
-	sha256sums = 14a1fa4331dc2af8b094c600abe8cddf9961b83384092271a999eddf4e972e43
-	sha256sums = a634ff44bfde7b3bcc6cb8359942c2eef42a71e6da6e19276ce3977836a7e247
-	sha256sums = b4183dce83f47b65f9003aa74cb4227d06add9f81fc92748bf0303f44740a2d8
-	sha256sums = 877feeea6b16e85f0fe5dc9ac81e5dfd8b30c9ad12244a9d94f1f0e9983a51fb
-	sha256sums = 670ff5aa3bbf296f35966a8022a4f4561d58ffa309c25ed5fbebeb9e9925b58f
-	sha256sums = 9e545a7b9364f0b744941f8cede5c5e43833c22185c626e8b135c993ec158632
-	sha256sums = fe1af4f5ae6beced5160ee571d778a67124755154c750594c15fe1b8c0101d0f
-	sha256sums = 2ec40184da50a3b0059b059116e24036f6d410e3c764b943a79ba150005b8146
-	sha256sums = 08d8ed29a8af5e30f4a7e88b53f859dca4c2dc9a8413fec715b9521b3b265aef
-	sha256sums = 9ce7e54ba705bd6ed26ce25d0c4d9cb476fa8740a2669619d73d72a15cc0dad1
-	sha256sums = c38add2e19e7a871514836a9f5e5241a82f37475a8cac6e2499d8c5be54b1749
-	sha256sums = 12836dee46b7726bd627ace2839ce182ecdb10cec0a5c1ea7689eee489e3dde0
-	sha256sums = 6898f4bf1ff4133fdb7ff5740f7ff9d84a151ae6ef3843e6bc732e820c07d102
-	sha256sums = cebe9f8371328d1796da9fe1909fa8606170e6c940680401ebf830f31ed8ab4b
-	sha256sums = cb4ac1f4f2e4d9316b28ea4a6c2193c077770c42b6c4ec751b968d385b78bfcc
-	sha256sums = 786181cb017e863a520135847d2ca3681d7fbf3136cd2adc4510302f9f29d6b6
-	sha256sums = d3cc9cf13ad19efd29e8076842dc16a8bdba7e032d4f6da8804edd16aef46912
-	sha256sums = 976892436e5200ae345e5645771d75786196f15fd0bcd447027963186c68b8eb
-	sha256sums = cfd4890f008815f5f8293a8c029540303310150cc0a50721fa6296dbce89047a
-	sha256sums = e2fa4a94274bb7e75fa8c8d3bc166d6fe9ffe86ca35f6beb951abf890a63ab02
-	sha256sums = 805494db3fad6ff8be845a15400727fd6efadb20eef1fe81e42919d537313806
-	sha256sums = 52132170b9e3edc459469f81d2651663e5a87b03a99dd968f3080d141278d8ba
-	sha256sums = cb17bc85bdaa1dd42f6de3bf74eab382e9265d5a4eceefcf2bf7c428869f3eba
-	sha256sums = 2baa49451e6cdbaa29e9a760e740767da078396ed8bb9e902460baa9c97a2075
-	sha256sums = 008fa5444b12fec4cc28436a02da154f2048abe623ef8a43336fb0d14c8eb4c2
-	sha256sums = b29e4edc5102e5208f6ac0191911261797dc0251058b376b7e6c6cc0ecd188a8
-	sha256sums = c51b641781a60a30255fc36aa3218230de86763ca3b7cbbef1608691aced020a
-	sha256sums = f718d11f202631bd19aaba391e8437aea21285506021cd854d6c9591c27247cd
-	sha256sums = c9592c1f92aee85ab90e9e3450418578c9109f8d07f6b9855524c86838e5b027
-	sha256sums = a59185e9e808b3542eb283aca3142b20b6b77cb9181cfb8966f84c19294ee882
-	sha256sums = db05a77b44dac6e04cd0cb9aba49dfde8faee72a0be3df8a0df56c239376afcc
-	sha256sums = f755a1d7dfd03fda23d6fce4c484971cdfd3b7e21b53af1dd28bfa12dce17f56
-	sha256sums = 7732ff41dc2d17e079484e4ccecc19edea85c8e7e344b241c642ae193445e7cf
-	sha256sums = 0762d60ca8a1a050974b11c8d83faa97b33e58069d5be75bb90fa98cd7e55cc2
+	depends = firefox>=70.0b4
+	provides = firefox-beta-i18n=70.0b4-1
+	noextract = firefox-i18n-70.0b4-ach.xpi
+	noextract = firefox-i18n-70.0b4-af.xpi
+	noextract = firefox-i18n-70.0b4-an.xpi
+	noextract = firefox-i18n-70.0b4-ar.xpi
+	noextract = firefox-i18n-70.0b4-ast.xpi
+	noextract = firefox-i18n-70.0b4-az.xpi
+	noextract = firefox-i18n-70.0b4-be.xpi
+	noextract = firefox-i18n-70.0b4-bg.xpi
+	noextract = firefox-i18n-70.0b4-bn.xpi
+	noextract = firefox-i18n-70.0b4-br.xpi
+	noextract = firefox-i18n-70.0b4-bs.xpi
+	noextract = firefox-i18n-70.0b4-ca.xpi
+	noextract = firefox-i18n-70.0b4-cak.xpi
+	noextract = firefox-i18n-70.0b4-cs.xpi
+	noextract = firefox-i18n-70.0b4-cy.xpi
+	noextract = firefox-i18n-70.0b4-da.xpi
+	noextract = firefox-i18n-70.0b4-de.xpi
+	noextract = firefox-i18n-70.0b4-dsb.xpi
+	noextract = firefox-i18n-70.0b4-el.xpi
+	noextract = firefox-i18n-70.0b4-en-GB.xpi
+	noextract = firefox-i18n-70.0b4-en-US.xpi
+	noextract = firefox-i18n-70.0b4-eo.xpi
+	noextract = firefox-i18n-70.0b4-es-AR.xpi
+	noextract = firefox-i18n-70.0b4-es-CL.xpi
+	noextract = firefox-i18n-70.0b4-es-ES.xpi
+	noextract = firefox-i18n-70.0b4-es-MX.xpi
+	noextract = firefox-i18n-70.0b4-et.xpi
+	noextract = firefox-i18n-70.0b4-eu.xpi
+	noextract = firefox-i18n-70.0b4-fa.xpi
+	noextract = firefox-i18n-70.0b4-ff.xpi
+	noextract = firefox-i18n-70.0b4-fi.xpi
+	noextract = firefox-i18n-70.0b4-fr.xpi
+	noextract = firefox-i18n-70.0b4-fy-NL.xpi
+	noextract = firefox-i18n-70.0b4-ga-IE.xpi
+	noextract = firefox-i18n-70.0b4-gd.xpi
+	noextract = firefox-i18n-70.0b4-gl.xpi
+	noextract = firefox-i18n-70.0b4-gn.xpi
+	noextract = firefox-i18n-70.0b4-gu-IN.xpi
+	noextract = firefox-i18n-70.0b4-he.xpi
+	noextract = firefox-i18n-70.0b4-hi-IN.xpi
+	noextract = firefox-i18n-70.0b4-hr.xpi
+	noextract = firefox-i18n-70.0b4-hsb.xpi
+	noextract = firefox-i18n-70.0b4-hu.xpi
+	noextract = firefox-i18n-70.0b4-hy-AM.xpi
+	noextract = firefox-i18n-70.0b4-id.xpi
+	noextract = firefox-i18n-70.0b4-is.xpi
+	noextract = firefox-i18n-70.0b4-it.xpi
+	noextract = firefox-i18n-70.0b4-ja.xpi
+	noextract = firefox-i18n-70.0b4-ka.xpi
+	noextract = firefox-i18n-70.0b4-kab.xpi
+	noextract = firefox-i18n-70.0b4-kk.xpi
+	noextract = firefox-i18n-70.0b4-km.xpi
+	noextract = firefox-i18n-70.0b4-kn.xpi
+	noextract = firefox-i18n-70.0b4-ko.xpi
+	noextract = firefox-i18n-70.0b4-lij.xpi
+	noextract = firefox-i18n-70.0b4-lt.xpi
+	noextract = firefox-i18n-70.0b4-lv.xpi
+	noextract = firefox-i18n-70.0b4-mk.xpi
+	noextract = firefox-i18n-70.0b4-mr.xpi
+	noextract = firefox-i18n-70.0b4-ms.xpi
+	noextract = firefox-i18n-70.0b4-my.xpi
+	noextract = firefox-i18n-70.0b4-nb-NO.xpi
+	noextract = firefox-i18n-70.0b4-nl.xpi
+	noextract = firefox-i18n-70.0b4-nn-NO.xpi
+	noextract = firefox-i18n-70.0b4-pa-IN.xpi
+	noextract = firefox-i18n-70.0b4-pl.xpi
+	noextract = firefox-i18n-70.0b4-pt-BR.xpi
+	noextract = firefox-i18n-70.0b4-pt-PT.xpi
+	noextract = firefox-i18n-70.0b4-rm.xpi
+	noextract = firefox-i18n-70.0b4-ro.xpi
+	noextract = firefox-i18n-70.0b4-ru.xpi
+	noextract = firefox-i18n-70.0b4-si.xpi
+	noextract = firefox-i18n-70.0b4-sk.xpi
+	noextract = firefox-i18n-70.0b4-sl.xpi
+	noextract = firefox-i18n-70.0b4-son.xpi
+	noextract = firefox-i18n-70.0b4-sq.xpi
+	noextract = firefox-i18n-70.0b4-sr.xpi
+	noextract = firefox-i18n-70.0b4-sv-SE.xpi
+	noextract = firefox-i18n-70.0b4-ta.xpi
+	noextract = firefox-i18n-70.0b4-te.xpi
+	noextract = firefox-i18n-70.0b4-th.xpi
+	noextract = firefox-i18n-70.0b4-tr.xpi
+	noextract = firefox-i18n-70.0b4-uk.xpi
+	noextract = firefox-i18n-70.0b4-uz.xpi
+	noextract = firefox-i18n-70.0b4-vi.xpi
+	noextract = firefox-i18n-70.0b4-xh.xpi
+	noextract = firefox-i18n-70.0b4-zh-CN.xpi
+	noextract = firefox-i18n-70.0b4-zh-TW.xpi
+	source = firefox-i18n-70.0b4-ach.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/70.0b4/linux-i686/xpi/ach.xpi
+	source = firefox-i18n-70.0b4-af.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/70.0b4/linux-i686/xpi/af.xpi
+	source = firefox-i18n-70.0b4-an.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/70.0b4/linux-i686/xpi/an.xpi
+	source = firefox-i18n-70.0b4-ar.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/70.0b4/linux-i686/xpi/ar.xpi
+	source = firefox-i18n-70.0b4-ast.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/70.0b4/linux-i686/xpi/ast.xpi
+	source = firefox-i18n-70.0b4-az.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/70.0b4/linux-i686/xpi/az.xpi
+	source = firefox-i18n-70.0b4-be.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/70.0b4/linux-i686/xpi/be.xpi
+	source = firefox-i18n-70.0b4-bg.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/70.0b4/linux-i686/xpi/bg.xpi
+	source = firefox-i18n-70.0b4-bn.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/70.0b4/linux-i686/xpi/bn.xpi
+	source = firefox-i18n-70.0b4-br.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/70.0b4/linux-i686/xpi/br.xpi
+	source = firefox-i18n-70.0b4-bs.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/70.0b4/linux-i686/xpi/bs.xpi
+	source = firefox-i18n-70.0b4-ca.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/70.0b4/linux-i686/xpi/ca.xpi
+	source = firefox-i18n-70.0b4-cak.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/70.0b4/linux-i686/xpi/cak.xpi
+	source = firefox-i18n-70.0b4-cs.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/70.0b4/linux-i686/xpi/cs.xpi
+	source = firefox-i18n-70.0b4-cy.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/70.0b4/linux-i686/xpi/cy.xpi
+	source = firefox-i18n-70.0b4-da.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/70.0b4/linux-i686/xpi/da.xpi
+	source = firefox-i18n-70.0b4-de.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/70.0b4/linux-i686/xpi/de.xpi
+	source = firefox-i18n-70.0b4-dsb.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/70.0b4/linux-i686/xpi/dsb.xpi
+	source = firefox-i18n-70.0b4-el.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/70.0b4/linux-i686/xpi/el.xpi
+	source = firefox-i18n-70.0b4-en-GB.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/70.0b4/linux-i686/xpi/en-GB.xpi
+	source = firefox-i18n-70.0b4-en-US.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/70.0b4/linux-i686/xpi/en-US.xpi
+	source = firefox-i18n-70.0b4-eo.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/70.0b4/linux-i686/xpi/eo.xpi
+	source = firefox-i18n-70.0b4-es-AR.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/70.0b4/linux-i686/xpi/es-AR.xpi
+	source = firefox-i18n-70.0b4-es-CL.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/70.0b4/linux-i686/xpi/es-CL.xpi
+	source = firefox-i18n-70.0b4-es-ES.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/70.0b4/linux-i686/xpi/es-ES.xpi
+	source = firefox-i18n-70.0b4-es-MX.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/70.0b4/linux-i686/xpi/es-MX.xpi
+	source = firefox-i18n-70.0b4-et.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/70.0b4/linux-i686/xpi/et.xpi
+	source = firefox-i18n-70.0b4-eu.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/70.0b4/linux-i686/xpi/eu.xpi
+	source = firefox-i18n-70.0b4-fa.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/70.0b4/linux-i686/xpi/fa.xpi
+	source = firefox-i18n-70.0b4-ff.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/70.0b4/linux-i686/xpi/ff.xpi
+	source = firefox-i18n-70.0b4-fi.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/70.0b4/linux-i686/xpi/fi.xpi
+	source = firefox-i18n-70.0b4-fr.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/70.0b4/linux-i686/xpi/fr.xpi
+	source = firefox-i18n-70.0b4-fy-NL.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/70.0b4/linux-i686/xpi/fy-NL.xpi
+	source = firefox-i18n-70.0b4-ga-IE.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/70.0b4/linux-i686/xpi/ga-IE.xpi
+	source = firefox-i18n-70.0b4-gd.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/70.0b4/linux-i686/xpi/gd.xpi
+	source = firefox-i18n-70.0b4-gl.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/70.0b4/linux-i686/xpi/gl.xpi
+	source = firefox-i18n-70.0b4-gn.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/70.0b4/linux-i686/xpi/gn.xpi
+	source = firefox-i18n-70.0b4-gu-IN.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/70.0b4/linux-i686/xpi/gu-IN.xpi
+	source = firefox-i18n-70.0b4-he.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/70.0b4/linux-i686/xpi/he.xpi
+	source = firefox-i18n-70.0b4-hi-IN.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/70.0b4/linux-i686/xpi/hi-IN.xpi
+	source = firefox-i18n-70.0b4-hr.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/70.0b4/linux-i686/xpi/hr.xpi
+	source = firefox-i18n-70.0b4-hsb.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/70.0b4/linux-i686/xpi/hsb.xpi
+	source = firefox-i18n-70.0b4-hu.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/70.0b4/linux-i686/xpi/hu.xpi
+	source = firefox-i18n-70.0b4-hy-AM.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/70.0b4/linux-i686/xpi/hy-AM.xpi
+	source = firefox-i18n-70.0b4-id.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/70.0b4/linux-i686/xpi/id.xpi
+	source = firefox-i18n-70.0b4-is.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/70.0b4/linux-i686/xpi/is.xpi
+	source = firefox-i18n-70.0b4-it.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/70.0b4/linux-i686/xpi/it.xpi
+	source = firefox-i18n-70.0b4-ja.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/70.0b4/linux-i686/xpi/ja.xpi
+	source = firefox-i18n-70.0b4-ka.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/70.0b4/linux-i686/xpi/ka.xpi
+	source = firefox-i18n-70.0b4-kab.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/70.0b4/linux-i686/xpi/kab.xpi
+	source = firefox-i18n-70.0b4-kk.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/70.0b4/linux-i686/xpi/kk.xpi
+	source = firefox-i18n-70.0b4-km.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/70.0b4/linux-i686/xpi/km.xpi
+	source = firefox-i18n-70.0b4-kn.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/70.0b4/linux-i686/xpi/kn.xpi
+	source = firefox-i18n-70.0b4-ko.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/70.0b4/linux-i686/xpi/ko.xpi
+	source = firefox-i18n-70.0b4-lij.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/70.0b4/linux-i686/xpi/lij.xpi
+	source = firefox-i18n-70.0b4-lt.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/70.0b4/linux-i686/xpi/lt.xpi
+	source = firefox-i18n-70.0b4-lv.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/70.0b4/linux-i686/xpi/lv.xpi
+	source = firefox-i18n-70.0b4-mk.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/70.0b4/linux-i686/xpi/mk.xpi
+	source = firefox-i18n-70.0b4-mr.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/70.0b4/linux-i686/xpi/mr.xpi
+	source = firefox-i18n-70.0b4-ms.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/70.0b4/linux-i686/xpi/ms.xpi
+	source = firefox-i18n-70.0b4-my.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/70.0b4/linux-i686/xpi/my.xpi
+	source = firefox-i18n-70.0b4-nb-NO.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/70.0b4/linux-i686/xpi/nb-NO.xpi
+	source = firefox-i18n-70.0b4-nl.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/70.0b4/linux-i686/xpi/nl.xpi
+	source = firefox-i18n-70.0b4-nn-NO.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/70.0b4/linux-i686/xpi/nn-NO.xpi
+	source = firefox-i18n-70.0b4-pa-IN.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/70.0b4/linux-i686/xpi/pa-IN.xpi
+	source = firefox-i18n-70.0b4-pl.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/70.0b4/linux-i686/xpi/pl.xpi
+	source = firefox-i18n-70.0b4-pt-BR.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/70.0b4/linux-i686/xpi/pt-BR.xpi
+	source = firefox-i18n-70.0b4-pt-PT.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/70.0b4/linux-i686/xpi/pt-PT.xpi
+	source = firefox-i18n-70.0b4-rm.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/70.0b4/linux-i686/xpi/rm.xpi
+	source = firefox-i18n-70.0b4-ro.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/70.0b4/linux-i686/xpi/ro.xpi
+	source = firefox-i18n-70.0b4-ru.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/70.0b4/linux-i686/xpi/ru.xpi
+	source = firefox-i18n-70.0b4-si.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/70.0b4/linux-i686/xpi/si.xpi
+	source = firefox-i18n-70.0b4-sk.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/70.0b4/linux-i686/xpi/sk.xpi
+	source = firefox-i18n-70.0b4-sl.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/70.0b4/linux-i686/xpi/sl.xpi
+	source = firefox-i18n-70.0b4-son.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/70.0b4/linux-i686/xpi/son.xpi
+	source = firefox-i18n-70.0b4-sq.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/70.0b4/linux-i686/xpi/sq.xpi
+	source = firefox-i18n-70.0b4-sr.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/70.0b4/linux-i686/xpi/sr.xpi
+	source = firefox-i18n-70.0b4-sv-SE.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/70.0b4/linux-i686/xpi/sv-SE.xpi
+	source = firefox-i18n-70.0b4-ta.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/70.0b4/linux-i686/xpi/ta.xpi
+	source = firefox-i18n-70.0b4-te.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/70.0b4/linux-i686/xpi/te.xpi
+	source = firefox-i18n-70.0b4-th.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/70.0b4/linux-i686/xpi/th.xpi
+	source = firefox-i18n-70.0b4-tr.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/70.0b4/linux-i686/xpi/tr.xpi
+	source = firefox-i18n-70.0b4-uk.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/70.0b4/linux-i686/xpi/uk.xpi
+	source = firefox-i18n-70.0b4-uz.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/70.0b4/linux-i686/xpi/uz.xpi
+	source = firefox-i18n-70.0b4-vi.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/70.0b4/linux-i686/xpi/vi.xpi
+	source = firefox-i18n-70.0b4-xh.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/70.0b4/linux-i686/xpi/xh.xpi
+	source = firefox-i18n-70.0b4-zh-CN.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/70.0b4/linux-i686/xpi/zh-CN.xpi
+	source = firefox-i18n-70.0b4-zh-TW.xpi::http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/70.0b4/linux-i686/xpi/zh-TW.xpi
+	sha256sums = ca0c68f0641e81b2a6f01eea0d77c9585c3ea932f102dd61b34d42b0b618862c
+	sha256sums = d10060c66f3728e5f1e20b587263f1e3789c3d07e92f6aaebbc3336f17926009
+	sha256sums = 2c3cabf28c503969b2c9cd7fa43d4e1600685c00c9d6c5e13a4f3d803b8d1675
+	sha256sums = d57cda800007ec25bca69c4a5fc8918db555478a60907c70e8593b75b305a3a1
+	sha256sums = 7d5211a149f3e73049ae1253b204e52485c6b66571cb5691e71a360fc9fcbfe8
+	sha256sums = a87ad59e49483a0374abb5c51ce1a604c441dd2bfea817765c8bd58a4a90c397
+	sha256sums = 62203c038c655041ed6b0059b1e501e4d764a2bc3ab812cb2ef352791e160ec0
+	sha256sums = 3cc0f29a7abbe840457ea667c2646bc4815d460b9824d67fddcb7faa413cb485
+	sha256sums = 9874e8dba1536017fed18e2dfdbb5dea6201565114486e226a0f2683736682d8
+	sha256sums = abd7e4936acf8b23089e78b1e9e8901dba589599547a6fb32d485d6e20e0c39e
+	sha256sums = 3be42db3fca4fd93f8c3cb2fa29a2affe1c1d0f027b2a2bbd0e0c96ddd01b109
+	sha256sums = cde92ee3ed80913a949af9384b139270ade744c2f4997234ecb1043594cbbf1a
+	sha256sums = 65844ccc8b1b09c4047a779d8802297fe94568b44fd83a3a3aac0f4fae98de4a
+	sha256sums = 828173a7af1956f103757cd248922a243b343bb689387f2043dfbf22b8fc2911
+	sha256sums = e4069e76f677d1e3a949e1e0869bd294a16e2e07db6f6a877d4612d1ef3da4b3
+	sha256sums = e7e05c1c5c0c3e44e6d907faf70733e128cff14bf6f8a7db4b26c65678cc6aed
+	sha256sums = 9bc0b8c5ff8260bcd15249aec2556e8268e8d90bc890e96c05eb985d4d483e3d
+	sha256sums = 619c2c127f24925c1417a14a1667bd9bf9480d96b0ebdac3a0a84cf0f5b3312d
+	sha256sums = e94bd6e28a29f934ef31a0bc179061d6e86a63c0b78ba38a6321c02629fbe928
+	sha256sums = 9c63d793c2b2b22d7cac59a59301441228e54ca7957daa4fc24a1eec5a6cc283
+	sha256sums = 97f24977324dcfab21f7c2bc9d00acd4f3897f6e960b991253d3d3b78c3520ee
+	sha256sums = 227a5fad72477a3cebf69bdbd17cb9c16b0cd14596ffd8de82c21bbbf6ef2f8f
+	sha256sums = f33a9b29b0bb3502c2f5e08360da10b5788561c7abdf48de4cc1c96f22642df1
+	sha256sums = 2356f3ab27b7249ff9c602b32ee58408265d05a7093dc7243ba1a53aa5047418
+	sha256sums = 2133bd5dc722ce4c6704f8ef88df7ed5299aabcf91145c742dee1aef06038e23
+	sha256sums = 480a9bfe7a8a61447dfc6771611caa605d9cbc765f4968e036bd49f2466501de
+	sha256sums = f621411b1fbc7d252a892b89b1f9d5af11148f8611586543f80f8c5c9312af56
+	sha256sums = 8d68508d47486c848ec9889d8e7f17ac2c438bf746b077a2df3500d54bb0ccfb
+	sha256sums = 19d3a5b19d645a0bef6562072cfefd799f660c3f226cb1e5d180d86b4381a275
+	sha256sums = 291e944f9b21403da5e20632f030bb4fc9df5074b8779bf21da7f132d3d534dc
+	sha256sums = 23e20a5985982809b81baeb5079f493cac613c64d007e968260e0907984e07de
+	sha256sums = 05d3170f387b9f33167676e3a5a86f1750f3bf9268ed45b37b74d95387497dd8
+	sha256sums = b0f2cc3c7a4b2e8b09dea65637144f77be0c16e497c56e2ad8bfa1719e858e91
+	sha256sums = 550239c1b39b57cc241e10c7b4824c44c94d3c5b3c3d048de0f83b0ec563bf68
+	sha256sums = 3fc4ec154f21af933dd47a2b6538f9ddebaa083e360273cdb219b541e0230f03
+	sha256sums = a68c71b8c97b46a72d6551858aa89c1a4bb63163d12ec8aa779261c10999d1f7
+	sha256sums = 8bf0d912a604d5b8e3b30bcb37e7cb442b486f607ab37b1781af0a5275c6a78b
+	sha256sums = cdb4e11936c933c17803ad4391ae86cf925a8e314f357481acfc3ac881cb4347
+	sha256sums = 3e718eeebf68981727a1523c9c292a2bd1b8874cb52de105385439cc40538846
+	sha256sums = af15b65e4e35224c626860521b2646adb4ce175d35f7261ab817b2b258fadac5
+	sha256sums = b45d5535fd89d9008190d491c13f029156c6dfa9ef9b7ed35ad66be9cf463bb9
+	sha256sums = 1ce7fdcd0cfac1b1fda88912af7be75f17da4d5187dfc75434cbc0157ace1153
+	sha256sums = 9522463f94334a89824319b151f062903f761f37cd5392ac00716fd20a004f77
+	sha256sums = 341c7738310f1770e4e412cf8b08af3f710ca9c6108d666ebb316cb05c5b2aa3
+	sha256sums = 2588b54cb03039cf79140f4661af858bd136f90325606d7df10f172129417bf6
+	sha256sums = 5c4f076accf2ad34656e2fa3f3858dde95c22145683117266e4a12ca661c40ef
+	sha256sums = e7a57df3b6945d127e1b1c85035038f95a35a50fe4f0cae8a7337f70d4d34d0f
+	sha256sums = d396c3feeb5ceb97bd1ad03e1d31895af8bf3a89e92770011b0d8227da07e074
+	sha256sums = 72b81ff60df62d21e71ac042c884bcce98b1f33fec68879791e4734ff03c6ba3
+	sha256sums = f669e8e7203525df26215778635c7d47931843ceecfefa3be1bc064e561ccb5c
+	sha256sums = 30941ad287cd9c49669d782acf38f359ec3cbd8d68d1f794bcac61fc58eb5545
+	sha256sums = a3eeb15c4301e484fd586f1093c38a3e6bc4b27d9f063753396a464fdd0b3ffb
+	sha256sums = 85bf019d33222beabb2d21b07446a62bf01d69c1b61c26ca07a9ed045082fc9b
+	sha256sums = c929f49523ce4e8ad3d8d340b157b70eb942b287c8fe845f8c3579dffd264949
+	sha256sums = 17ea5564763c122d3bd0f29dfab9c2067e0c320a8f81c25530c858865c875d89
+	sha256sums = 175249eb195434d1427c192cc26d311d41226bed886cc7cab666c4eb5bd2adcb
+	sha256sums = 669039e50661b6890e3e4fe79ecb06c21f445e09b7f3b193df86b9c33246c89a
+	sha256sums = c3df8668cc81264437faeb534060993a152f1febdd67db63998da486e94711cb
+	sha256sums = 2323c4436820db0198c4d8c053d1acac17a30b3056b10a6ef2ca74a7ac6b607e
+	sha256sums = acd8181f0638f7c6aa4749c55203471a318849f4b841428f5bf05db52d49523c
+	sha256sums = b79d578123141418e7176970cd1e797e30e148b8891d395536c4eed6cfa53085
+	sha256sums = 4b4ed62998fa662c45b12e291c330a142891429343d0ccad42b44ccd528eade2
+	sha256sums = d5789e33257db7502afa09bca0fdae873753b4ba7a1d93e4c48df344d5f8ae2a
+	sha256sums = 3111744f281d840c7fdd2c0bd83cffe23aecdbd2d0b074c2f6dcdfa51ea638ed
+	sha256sums = 6a54bafc135fd9c110cc03544240a032935eac9028450b81a6b4cbf74a108a5e
+	sha256sums = 9c8c5d8e3c08b587edf206a2fbd8984f545ae1f27ddaa15fccaaa30205d9e916
+	sha256sums = 485747c0fe6651be16cb9bb24c405f49fb2b2839f1beec658c8ed538d95eead4
+	sha256sums = 43e811e98107096d95215f35a28eca17f623399b58efde35f02537ea9e166f52
+	sha256sums = ce4523f474c3ef553a7bba9cfaa96a83afe9981c6a04e900c9f230033a538951
+	sha256sums = 9362a7812ea0a670b1a0de5393b1c2980c4d3a6cebb017eb7eca0b75d000e8b2
+	sha256sums = dc3f2d550a06050cb7888ffd43273235ebcde8ea88bbb84159fef3aeed50c3bf
+	sha256sums = 4dafb7f1e0970b58c3b0973d859c41f097b3c29954050570bde6f97fe59713f9
+	sha256sums = 982bcb88915decb1be5de50f9a053937f714557824ee5410d79971a6219020dd
+	sha256sums = 3a5988d1a84ce20cbe28f5dc9676fa1ca443e17f64d2427656391b42ca9982f7
+	sha256sums = cb2c43b7b1bc93f8c7ebc415a0bfa4cbddc4bc716512e26b0c63ff373f601cb6
+	sha256sums = 12d60665575b57a7618011b4c40de57ab67b47a57f815f7d8a6026dd2f283e25
+	sha256sums = 44ba8bf69be55b2c3a13bd0753e04b1cc8afd1cfb5aad5ad354d70d82431478a
+	sha256sums = 637cd1333ab53b110d3fe17749765696e57ddf38d2c76bdc645547bde3117d5b
+	sha256sums = 936d651f4879baf65b941ff4acbcdfe4d92b5bab0c73d98d48cc35134aa0f97e
+	sha256sums = cd3eba05798af66175b096b0c640a50e09c7df4542d58e34ee6aca46ea747ff2
+	sha256sums = 757c5deb71995ba70d34c59c82abb3893a954002868a07f48b8e9ddc5df567c3
+	sha256sums = 299b677dc738cec6562880f75f8f07ffeb4d396fb68696a8d5d806d7e5f9e6e6
+	sha256sums = 158bff073e6041074155de963c3f1e85bedf873d8e8cd74f5f8c46be3f824cb8
+	sha256sums = a1214f695e78422b1c9adbd8eec5febd544b0846820a1025223f70629644b4fa
+	sha256sums = 1761055ccbeacc64539c1f8930c0e426a2de11f51599e6a2aba4be4265cd6851
+	sha256sums = 418eedddf9d8be6f7e4e9000641f5e0964badc8073c94cb6b1d7712f9c112b3a
+	sha256sums = bbfa7b413085fe36acd99259e62b035349c202ba9fefe7b72eaa6bbfc4185605
+	sha256sums = 9c28d73018f2278ced4dac658e09a2528f8ad8202c2f67cf571a89b35bd4f32f
 
 pkgname = firefox-beta-i18n-all
 	pkgdesc = All language packs for Firefox Beta (meta)
-	depends = firefox-beta-i18n-ach=65.0b8-1
-	depends = firefox-beta-i18n-af=65.0b8-1
-	depends = firefox-beta-i18n-an=65.0b8-1
-	depends = firefox-beta-i18n-ar=65.0b8-1
-	depends = firefox-beta-i18n-as=65.0b8-1
-	depends = firefox-beta-i18n-ast=65.0b8-1
-	depends = firefox-beta-i18n-az=65.0b8-1
-	depends = firefox-beta-i18n-be=65.0b8-1
-	depends = firefox-beta-i18n-bg=65.0b8-1
-	depends = firefox-beta-i18n-bn-bd=65.0b8-1
-	depends = firefox-beta-i18n-bn-in=65.0b8-1
-	depends = firefox-beta-i18n-br=65.0b8-1
-	depends = firefox-beta-i18n-bs=65.0b8-1
-	depends = firefox-beta-i18n-ca=65.0b8-1
-	depends = firefox-beta-i18n-cak=65.0b8-1
-	depends = firefox-beta-i18n-cs=65.0b8-1
-	depends = firefox-beta-i18n-cy=65.0b8-1
-	depends = firefox-beta-i18n-da=65.0b8-1
-	depends = firefox-beta-i18n-de=65.0b8-1
-	depends = firefox-beta-i18n-dsb=65.0b8-1
-	depends = firefox-beta-i18n-el=65.0b8-1
-	depends = firefox-beta-i18n-en-gb=65.0b8-1
-	depends = firefox-beta-i18n-en-us=65.0b8-1
-	depends = firefox-beta-i18n-en-za=65.0b8-1
-	depends = firefox-beta-i18n-eo=65.0b8-1
-	depends = firefox-beta-i18n-es-ar=65.0b8-1
-	depends = firefox-beta-i18n-es-cl=65.0b8-1
-	depends = firefox-beta-i18n-es-es=65.0b8-1
-	depends = firefox-beta-i18n-es-mx=65.0b8-1
-	depends = firefox-beta-i18n-et=65.0b8-1
-	depends = firefox-beta-i18n-eu=65.0b8-1
-	depends = firefox-beta-i18n-fa=65.0b8-1
-	depends = firefox-beta-i18n-ff=65.0b8-1
-	depends = firefox-beta-i18n-fi=65.0b8-1
-	depends = firefox-beta-i18n-fr=65.0b8-1
-	depends = firefox-beta-i18n-fy-nl=65.0b8-1
-	depends = firefox-beta-i18n-ga-ie=65.0b8-1
-	depends = firefox-beta-i18n-gd=65.0b8-1
-	depends = firefox-beta-i18n-gl=65.0b8-1
-	depends = firefox-beta-i18n-gn=65.0b8-1
-	depends = firefox-beta-i18n-gu-in=65.0b8-1
-	depends = firefox-beta-i18n-he=65.0b8-1
-	depends = firefox-beta-i18n-hi-in=65.0b8-1
-	depends = firefox-beta-i18n-hr=65.0b8-1
-	depends = firefox-beta-i18n-hsb=65.0b8-1
-	depends = firefox-beta-i18n-hu=65.0b8-1
-	depends = firefox-beta-i18n-hy-am=65.0b8-1
-	depends = firefox-beta-i18n-id=65.0b8-1
-	depends = firefox-beta-i18n-is=65.0b8-1
-	depends = firefox-beta-i18n-it=65.0b8-1
-	depends = firefox-beta-i18n-ja=65.0b8-1
-	depends = firefox-beta-i18n-ka=65.0b8-1
-	depends = firefox-beta-i18n-kab=65.0b8-1
-	depends = firefox-beta-i18n-kk=65.0b8-1
-	depends = firefox-beta-i18n-km=65.0b8-1
-	depends = firefox-beta-i18n-kn=65.0b8-1
-	depends = firefox-beta-i18n-ko=65.0b8-1
-	depends = firefox-beta-i18n-lij=65.0b8-1
-	depends = firefox-beta-i18n-lt=65.0b8-1
-	depends = firefox-beta-i18n-lv=65.0b8-1
-	depends = firefox-beta-i18n-mai=65.0b8-1
-	depends = firefox-beta-i18n-mk=65.0b8-1
-	depends = firefox-beta-i18n-ml=65.0b8-1
-	depends = firefox-beta-i18n-mr=65.0b8-1
-	depends = firefox-beta-i18n-ms=65.0b8-1
-	depends = firefox-beta-i18n-my=65.0b8-1
-	depends = firefox-beta-i18n-nb-no=65.0b8-1
-	depends = firefox-beta-i18n-nl=65.0b8-1
-	depends = firefox-beta-i18n-nn-no=65.0b8-1
-	depends = firefox-beta-i18n-or=65.0b8-1
-	depends = firefox-beta-i18n-pa-in=65.0b8-1
-	depends = firefox-beta-i18n-pl=65.0b8-1
-	depends = firefox-beta-i18n-pt-br=65.0b8-1
-	depends = firefox-beta-i18n-pt-pt=65.0b8-1
-	depends = firefox-beta-i18n-rm=65.0b8-1
-	depends = firefox-beta-i18n-ro=65.0b8-1
-	depends = firefox-beta-i18n-ru=65.0b8-1
-	depends = firefox-beta-i18n-si=65.0b8-1
-	depends = firefox-beta-i18n-sk=65.0b8-1
-	depends = firefox-beta-i18n-sl=65.0b8-1
-	depends = firefox-beta-i18n-son=65.0b8-1
-	depends = firefox-beta-i18n-sq=65.0b8-1
-	depends = firefox-beta-i18n-sr=65.0b8-1
-	depends = firefox-beta-i18n-sv-se=65.0b8-1
-	depends = firefox-beta-i18n-ta=65.0b8-1
-	depends = firefox-beta-i18n-te=65.0b8-1
-	depends = firefox-beta-i18n-th=65.0b8-1
-	depends = firefox-beta-i18n-tr=65.0b8-1
-	depends = firefox-beta-i18n-uk=65.0b8-1
-	depends = firefox-beta-i18n-uz=65.0b8-1
-	depends = firefox-beta-i18n-vi=65.0b8-1
-	depends = firefox-beta-i18n-xh=65.0b8-1
-	depends = firefox-beta-i18n-zh-cn=65.0b8-1
-	depends = firefox-beta-i18n-zh-tw=65.0b8-1
+	depends = firefox-beta-i18n-ach=70.0b4-1
+	depends = firefox-beta-i18n-af=70.0b4-1
+	depends = firefox-beta-i18n-an=70.0b4-1
+	depends = firefox-beta-i18n-ar=70.0b4-1
+	depends = firefox-beta-i18n-ast=70.0b4-1
+	depends = firefox-beta-i18n-az=70.0b4-1
+	depends = firefox-beta-i18n-be=70.0b4-1
+	depends = firefox-beta-i18n-bg=70.0b4-1
+	depends = firefox-beta-i18n-bn=70.0b4-1
+	depends = firefox-beta-i18n-br=70.0b4-1
+	depends = firefox-beta-i18n-bs=70.0b4-1
+	depends = firefox-beta-i18n-ca=70.0b4-1
+	depends = firefox-beta-i18n-cak=70.0b4-1
+	depends = firefox-beta-i18n-cs=70.0b4-1
+	depends = firefox-beta-i18n-cy=70.0b4-1
+	depends = firefox-beta-i18n-da=70.0b4-1
+	depends = firefox-beta-i18n-de=70.0b4-1
+	depends = firefox-beta-i18n-dsb=70.0b4-1
+	depends = firefox-beta-i18n-el=70.0b4-1
+	depends = firefox-beta-i18n-en-gb=70.0b4-1
+	depends = firefox-beta-i18n-en-us=70.0b4-1
+	depends = firefox-beta-i18n-eo=70.0b4-1
+	depends = firefox-beta-i18n-es-ar=70.0b4-1
+	depends = firefox-beta-i18n-es-cl=70.0b4-1
+	depends = firefox-beta-i18n-es-es=70.0b4-1
+	depends = firefox-beta-i18n-es-mx=70.0b4-1
+	depends = firefox-beta-i18n-et=70.0b4-1
+	depends = firefox-beta-i18n-eu=70.0b4-1
+	depends = firefox-beta-i18n-fa=70.0b4-1
+	depends = firefox-beta-i18n-ff=70.0b4-1
+	depends = firefox-beta-i18n-fi=70.0b4-1
+	depends = firefox-beta-i18n-fr=70.0b4-1
+	depends = firefox-beta-i18n-fy-nl=70.0b4-1
+	depends = firefox-beta-i18n-ga-ie=70.0b4-1
+	depends = firefox-beta-i18n-gd=70.0b4-1
+	depends = firefox-beta-i18n-gl=70.0b4-1
+	depends = firefox-beta-i18n-gn=70.0b4-1
+	depends = firefox-beta-i18n-gu-in=70.0b4-1
+	depends = firefox-beta-i18n-he=70.0b4-1
+	depends = firefox-beta-i18n-hi-in=70.0b4-1
+	depends = firefox-beta-i18n-hr=70.0b4-1
+	depends = firefox-beta-i18n-hsb=70.0b4-1
+	depends = firefox-beta-i18n-hu=70.0b4-1
+	depends = firefox-beta-i18n-hy-am=70.0b4-1
+	depends = firefox-beta-i18n-id=70.0b4-1
+	depends = firefox-beta-i18n-is=70.0b4-1
+	depends = firefox-beta-i18n-it=70.0b4-1
+	depends = firefox-beta-i18n-ja=70.0b4-1
+	depends = firefox-beta-i18n-ka=70.0b4-1
+	depends = firefox-beta-i18n-kab=70.0b4-1
+	depends = firefox-beta-i18n-kk=70.0b4-1
+	depends = firefox-beta-i18n-km=70.0b4-1
+	depends = firefox-beta-i18n-kn=70.0b4-1
+	depends = firefox-beta-i18n-ko=70.0b4-1
+	depends = firefox-beta-i18n-lij=70.0b4-1
+	depends = firefox-beta-i18n-lt=70.0b4-1
+	depends = firefox-beta-i18n-lv=70.0b4-1
+	depends = firefox-beta-i18n-mk=70.0b4-1
+	depends = firefox-beta-i18n-mr=70.0b4-1
+	depends = firefox-beta-i18n-ms=70.0b4-1
+	depends = firefox-beta-i18n-my=70.0b4-1
+	depends = firefox-beta-i18n-nb-no=70.0b4-1
+	depends = firefox-beta-i18n-nl=70.0b4-1
+	depends = firefox-beta-i18n-nn-no=70.0b4-1
+	depends = firefox-beta-i18n-pa-in=70.0b4-1
+	depends = firefox-beta-i18n-pl=70.0b4-1
+	depends = firefox-beta-i18n-pt-br=70.0b4-1
+	depends = firefox-beta-i18n-pt-pt=70.0b4-1
+	depends = firefox-beta-i18n-rm=70.0b4-1
+	depends = firefox-beta-i18n-ro=70.0b4-1
+	depends = firefox-beta-i18n-ru=70.0b4-1
+	depends = firefox-beta-i18n-si=70.0b4-1
+	depends = firefox-beta-i18n-sk=70.0b4-1
+	depends = firefox-beta-i18n-sl=70.0b4-1
+	depends = firefox-beta-i18n-son=70.0b4-1
+	depends = firefox-beta-i18n-sq=70.0b4-1
+	depends = firefox-beta-i18n-sr=70.0b4-1
+	depends = firefox-beta-i18n-sv-se=70.0b4-1
+	depends = firefox-beta-i18n-ta=70.0b4-1
+	depends = firefox-beta-i18n-te=70.0b4-1
+	depends = firefox-beta-i18n-th=70.0b4-1
+	depends = firefox-beta-i18n-tr=70.0b4-1
+	depends = firefox-beta-i18n-uk=70.0b4-1
+	depends = firefox-beta-i18n-uz=70.0b4-1
+	depends = firefox-beta-i18n-vi=70.0b4-1
+	depends = firefox-beta-i18n-xh=70.0b4-1
+	depends = firefox-beta-i18n-zh-cn=70.0b4-1
+	depends = firefox-beta-i18n-zh-tw=70.0b4-1
 
 pkgname = firefox-beta-i18n-ach
-	pkgdesc = Acholi language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-ach=65.0b8
-	provides = firefox-developer-edition-i18n-ach=65.0b8
-	conflicts = firefox-i18n-ach
-	conflicts = firefox-developer-edition-i18n-ach
 
 pkgname = firefox-beta-i18n-af
-	pkgdesc = Afrikaans language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-af=65.0b8
-	provides = firefox-developer-edition-i18n-af=65.0b8
-	conflicts = firefox-i18n-af
-	conflicts = firefox-developer-edition-i18n-af
 
 pkgname = firefox-beta-i18n-an
-	pkgdesc = Aragonese language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-an=65.0b8
-	provides = firefox-developer-edition-i18n-an=65.0b8
-	conflicts = firefox-i18n-an
-	conflicts = firefox-developer-edition-i18n-an
 
 pkgname = firefox-beta-i18n-ar
-	pkgdesc = Arabic language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-ar=65.0b8
-	provides = firefox-developer-edition-i18n-ar=65.0b8
-	conflicts = firefox-i18n-ar
-	conflicts = firefox-developer-edition-i18n-ar
-
-pkgname = firefox-beta-i18n-as
-	pkgdesc = Assamese language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-as=65.0b8
-	provides = firefox-developer-edition-i18n-as=65.0b8
-	conflicts = firefox-i18n-as
-	conflicts = firefox-developer-edition-i18n-as
 
 pkgname = firefox-beta-i18n-ast
-	pkgdesc = Asturian language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-ast=65.0b8
-	provides = firefox-developer-edition-i18n-ast=65.0b8
-	conflicts = firefox-i18n-ast
-	conflicts = firefox-developer-edition-i18n-ast
 
 pkgname = firefox-beta-i18n-az
-	pkgdesc = Azerbaijani language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-az=65.0b8
-	provides = firefox-developer-edition-i18n-az=65.0b8
-	conflicts = firefox-i18n-az
-	conflicts = firefox-developer-edition-i18n-az
 
 pkgname = firefox-beta-i18n-be
-	pkgdesc = Belarusian language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-be=65.0b8
-	provides = firefox-developer-edition-i18n-be=65.0b8
-	conflicts = firefox-i18n-be
-	conflicts = firefox-developer-edition-i18n-be
 
 pkgname = firefox-beta-i18n-bg
-	pkgdesc = Bulgarian language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-bg=65.0b8
-	provides = firefox-developer-edition-i18n-bg=65.0b8
-	conflicts = firefox-i18n-bg
-	conflicts = firefox-developer-edition-i18n-bg
 
-pkgname = firefox-beta-i18n-bn-bd
-	pkgdesc = Bengali (Bangladesh) language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-bn-bd=65.0b8
-	provides = firefox-developer-edition-i18n-bn-bd=65.0b8
-	conflicts = firefox-i18n-bn-bd
-	conflicts = firefox-developer-edition-i18n-bn-bd
-
-pkgname = firefox-beta-i18n-bn-in
-	pkgdesc = Bengali (India) language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-bn-in=65.0b8
-	provides = firefox-developer-edition-i18n-bn-in=65.0b8
-	conflicts = firefox-i18n-bn-in
-	conflicts = firefox-developer-edition-i18n-bn-in
+pkgname = firefox-beta-i18n-bn
 
 pkgname = firefox-beta-i18n-br
-	pkgdesc = Breton language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-br=65.0b8
-	provides = firefox-developer-edition-i18n-br=65.0b8
-	conflicts = firefox-i18n-br
-	conflicts = firefox-developer-edition-i18n-br
 
 pkgname = firefox-beta-i18n-bs
-	pkgdesc = Bosnian language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-bs=65.0b8
-	provides = firefox-developer-edition-i18n-bs=65.0b8
-	conflicts = firefox-i18n-bs
-	conflicts = firefox-developer-edition-i18n-bs
 
 pkgname = firefox-beta-i18n-ca
-	pkgdesc = Catalan language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-ca=65.0b8
-	provides = firefox-developer-edition-i18n-ca=65.0b8
-	conflicts = firefox-i18n-ca
-	conflicts = firefox-developer-edition-i18n-ca
 
 pkgname = firefox-beta-i18n-cak
-	pkgdesc = Maya Kaqchikel language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-cak=65.0b8
-	provides = firefox-developer-edition-i18n-cak=65.0b8
-	conflicts = firefox-i18n-cak
-	conflicts = firefox-developer-edition-i18n-cak
 
 pkgname = firefox-beta-i18n-cs
-	pkgdesc = Czech language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-cs=65.0b8
-	provides = firefox-developer-edition-i18n-cs=65.0b8
-	conflicts = firefox-i18n-cs
-	conflicts = firefox-developer-edition-i18n-cs
 
 pkgname = firefox-beta-i18n-cy
-	pkgdesc = Welsh language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-cy=65.0b8
-	provides = firefox-developer-edition-i18n-cy=65.0b8
-	conflicts = firefox-i18n-cy
-	conflicts = firefox-developer-edition-i18n-cy
 
 pkgname = firefox-beta-i18n-da
-	pkgdesc = Danish language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-da=65.0b8
-	provides = firefox-developer-edition-i18n-da=65.0b8
-	conflicts = firefox-i18n-da
-	conflicts = firefox-developer-edition-i18n-da
 
 pkgname = firefox-beta-i18n-de
-	pkgdesc = German language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-de=65.0b8
-	provides = firefox-developer-edition-i18n-de=65.0b8
-	conflicts = firefox-i18n-de
-	conflicts = firefox-developer-edition-i18n-de
 
 pkgname = firefox-beta-i18n-dsb
-	pkgdesc = Lower Sorbian language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-dsb=65.0b8
-	provides = firefox-developer-edition-i18n-dsb=65.0b8
-	conflicts = firefox-i18n-dsb
-	conflicts = firefox-developer-edition-i18n-dsb
 
 pkgname = firefox-beta-i18n-el
-	pkgdesc = Greek language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-el=65.0b8
-	provides = firefox-developer-edition-i18n-el=65.0b8
-	conflicts = firefox-i18n-el
-	conflicts = firefox-developer-edition-i18n-el
 
 pkgname = firefox-beta-i18n-en-gb
-	pkgdesc = English (British) language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-en-gb=65.0b8
-	provides = firefox-developer-edition-i18n-en-gb=65.0b8
-	conflicts = firefox-i18n-en-gb
-	conflicts = firefox-developer-edition-i18n-en-gb
 
 pkgname = firefox-beta-i18n-en-us
-	pkgdesc = English (US) language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-en-us=65.0b8
-	provides = firefox-developer-edition-i18n-en-us=65.0b8
-	conflicts = firefox-i18n-en-us
-	conflicts = firefox-developer-edition-i18n-en-us
-
-pkgname = firefox-beta-i18n-en-za
-	pkgdesc = English (South African) language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-en-za=65.0b8
-	provides = firefox-developer-edition-i18n-en-za=65.0b8
-	conflicts = firefox-i18n-en-za
-	conflicts = firefox-developer-edition-i18n-en-za
 
 pkgname = firefox-beta-i18n-eo
-	pkgdesc = Esperanto language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-eo=65.0b8
-	provides = firefox-developer-edition-i18n-eo=65.0b8
-	conflicts = firefox-i18n-eo
-	conflicts = firefox-developer-edition-i18n-eo
 
 pkgname = firefox-beta-i18n-es-ar
-	pkgdesc = Spanish (Argentina) language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-es-ar=65.0b8
-	provides = firefox-developer-edition-i18n-es-ar=65.0b8
-	conflicts = firefox-i18n-es-ar
-	conflicts = firefox-developer-edition-i18n-es-ar
 
 pkgname = firefox-beta-i18n-es-cl
-	pkgdesc = Spanish (Chile) language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-es-cl=65.0b8
-	provides = firefox-developer-edition-i18n-es-cl=65.0b8
-	conflicts = firefox-i18n-es-cl
-	conflicts = firefox-developer-edition-i18n-es-cl
 
 pkgname = firefox-beta-i18n-es-es
-	pkgdesc = Spanish (Spain) language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-es-es=65.0b8
-	provides = firefox-developer-edition-i18n-es-es=65.0b8
-	conflicts = firefox-i18n-es-es
-	conflicts = firefox-developer-edition-i18n-es-es
 
 pkgname = firefox-beta-i18n-es-mx
-	pkgdesc = Spanish (Mexico) language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-es-mx=65.0b8
-	provides = firefox-developer-edition-i18n-es-mx=65.0b8
-	conflicts = firefox-i18n-es-mx
-	conflicts = firefox-developer-edition-i18n-es-mx
 
 pkgname = firefox-beta-i18n-et
-	pkgdesc = Estonian language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-et=65.0b8
-	provides = firefox-developer-edition-i18n-et=65.0b8
-	conflicts = firefox-i18n-et
-	conflicts = firefox-developer-edition-i18n-et
 
 pkgname = firefox-beta-i18n-eu
-	pkgdesc = Basque language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-eu=65.0b8
-	provides = firefox-developer-edition-i18n-eu=65.0b8
-	conflicts = firefox-i18n-eu
-	conflicts = firefox-developer-edition-i18n-eu
 
 pkgname = firefox-beta-i18n-fa
-	pkgdesc = Persian language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-fa=65.0b8
-	provides = firefox-developer-edition-i18n-fa=65.0b8
-	conflicts = firefox-i18n-fa
-	conflicts = firefox-developer-edition-i18n-fa
 
 pkgname = firefox-beta-i18n-ff
-	pkgdesc = Fulah language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-ff=65.0b8
-	provides = firefox-developer-edition-i18n-ff=65.0b8
-	conflicts = firefox-i18n-ff
-	conflicts = firefox-developer-edition-i18n-ff
 
 pkgname = firefox-beta-i18n-fi
-	pkgdesc = Finnish language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-fi=65.0b8
-	provides = firefox-developer-edition-i18n-fi=65.0b8
-	conflicts = firefox-i18n-fi
-	conflicts = firefox-developer-edition-i18n-fi
 
 pkgname = firefox-beta-i18n-fr
-	pkgdesc = French language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-fr=65.0b8
-	provides = firefox-developer-edition-i18n-fr=65.0b8
-	conflicts = firefox-i18n-fr
-	conflicts = firefox-developer-edition-i18n-fr
 
 pkgname = firefox-beta-i18n-fy-nl
-	pkgdesc = Frisian language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-fy-nl=65.0b8
-	provides = firefox-developer-edition-i18n-fy-nl=65.0b8
-	conflicts = firefox-i18n-fy-nl
-	conflicts = firefox-developer-edition-i18n-fy-nl
 
 pkgname = firefox-beta-i18n-ga-ie
-	pkgdesc = Irish language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-ga-ie=65.0b8
-	provides = firefox-developer-edition-i18n-ga-ie=65.0b8
-	conflicts = firefox-i18n-ga-ie
-	conflicts = firefox-developer-edition-i18n-ga-ie
 
 pkgname = firefox-beta-i18n-gd
-	pkgdesc = Gaelic (Scotland) language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-gd=65.0b8
-	provides = firefox-developer-edition-i18n-gd=65.0b8
-	conflicts = firefox-i18n-gd
-	conflicts = firefox-developer-edition-i18n-gd
 
 pkgname = firefox-beta-i18n-gl
-	pkgdesc = Galician language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-gl=65.0b8
-	provides = firefox-developer-edition-i18n-gl=65.0b8
-	conflicts = firefox-i18n-gl
-	conflicts = firefox-developer-edition-i18n-gl
 
 pkgname = firefox-beta-i18n-gn
-	pkgdesc = Guarani language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-gn=65.0b8
-	provides = firefox-developer-edition-i18n-gn=65.0b8
-	conflicts = firefox-i18n-gn
-	conflicts = firefox-developer-edition-i18n-gn
 
 pkgname = firefox-beta-i18n-gu-in
-	pkgdesc = Gujarati (India) language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-gu-in=65.0b8
-	provides = firefox-developer-edition-i18n-gu-in=65.0b8
-	conflicts = firefox-i18n-gu-in
-	conflicts = firefox-developer-edition-i18n-gu-in
 
 pkgname = firefox-beta-i18n-he
-	pkgdesc = Hebrew language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-he=65.0b8
-	provides = firefox-developer-edition-i18n-he=65.0b8
-	conflicts = firefox-i18n-he
-	conflicts = firefox-developer-edition-i18n-he
 
 pkgname = firefox-beta-i18n-hi-in
-	pkgdesc = Hindi (India) language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-hi-in=65.0b8
-	provides = firefox-developer-edition-i18n-hi-in=65.0b8
-	conflicts = firefox-i18n-hi-in
-	conflicts = firefox-developer-edition-i18n-hi-in
 
 pkgname = firefox-beta-i18n-hr
-	pkgdesc = Croatian language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-hr=65.0b8
-	provides = firefox-developer-edition-i18n-hr=65.0b8
-	conflicts = firefox-i18n-hr
-	conflicts = firefox-developer-edition-i18n-hr
 
 pkgname = firefox-beta-i18n-hsb
-	pkgdesc = Upper Sorbian language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-hsb=65.0b8
-	provides = firefox-developer-edition-i18n-hsb=65.0b8
-	conflicts = firefox-i18n-hsb
-	conflicts = firefox-developer-edition-i18n-hsb
 
 pkgname = firefox-beta-i18n-hu
-	pkgdesc = Hungarian language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-hu=65.0b8
-	provides = firefox-developer-edition-i18n-hu=65.0b8
-	conflicts = firefox-i18n-hu
-	conflicts = firefox-developer-edition-i18n-hu
 
 pkgname = firefox-beta-i18n-hy-am
-	pkgdesc = Armenian language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-hy-am=65.0b8
-	provides = firefox-developer-edition-i18n-hy-am=65.0b8
-	conflicts = firefox-i18n-hy-am
-	conflicts = firefox-developer-edition-i18n-hy-am
 
 pkgname = firefox-beta-i18n-id
-	pkgdesc = Indonesian language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-id=65.0b8
-	provides = firefox-developer-edition-i18n-id=65.0b8
-	conflicts = firefox-i18n-id
-	conflicts = firefox-developer-edition-i18n-id
 
 pkgname = firefox-beta-i18n-is
-	pkgdesc = Icelandic language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-is=65.0b8
-	provides = firefox-developer-edition-i18n-is=65.0b8
-	conflicts = firefox-i18n-is
-	conflicts = firefox-developer-edition-i18n-is
 
 pkgname = firefox-beta-i18n-it
-	pkgdesc = Italian language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-it=65.0b8
-	provides = firefox-developer-edition-i18n-it=65.0b8
-	conflicts = firefox-i18n-it
-	conflicts = firefox-developer-edition-i18n-it
 
 pkgname = firefox-beta-i18n-ja
-	pkgdesc = Japanese language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-ja=65.0b8
-	provides = firefox-developer-edition-i18n-ja=65.0b8
-	conflicts = firefox-i18n-ja
-	conflicts = firefox-developer-edition-i18n-ja
 
 pkgname = firefox-beta-i18n-ka
-	pkgdesc = Georgian language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-ka=65.0b8
-	provides = firefox-developer-edition-i18n-ka=65.0b8
-	conflicts = firefox-i18n-ka
-	conflicts = firefox-developer-edition-i18n-ka
 
 pkgname = firefox-beta-i18n-kab
-	pkgdesc = Kabyle language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-kab=65.0b8
-	provides = firefox-developer-edition-i18n-kab=65.0b8
-	conflicts = firefox-i18n-kab
-	conflicts = firefox-developer-edition-i18n-kab
 
 pkgname = firefox-beta-i18n-kk
-	pkgdesc = Kazakh language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-kk=65.0b8
-	provides = firefox-developer-edition-i18n-kk=65.0b8
-	conflicts = firefox-i18n-kk
-	conflicts = firefox-developer-edition-i18n-kk
 
 pkgname = firefox-beta-i18n-km
-	pkgdesc = Khmer language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-km=65.0b8
-	provides = firefox-developer-edition-i18n-km=65.0b8
-	conflicts = firefox-i18n-km
-	conflicts = firefox-developer-edition-i18n-km
 
 pkgname = firefox-beta-i18n-kn
-	pkgdesc = Kannada language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-kn=65.0b8
-	provides = firefox-developer-edition-i18n-kn=65.0b8
-	conflicts = firefox-i18n-kn
-	conflicts = firefox-developer-edition-i18n-kn
 
 pkgname = firefox-beta-i18n-ko
-	pkgdesc = Korean language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-ko=65.0b8
-	provides = firefox-developer-edition-i18n-ko=65.0b8
-	conflicts = firefox-i18n-ko
-	conflicts = firefox-developer-edition-i18n-ko
 
 pkgname = firefox-beta-i18n-lij
-	pkgdesc = Ligurian language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-lij=65.0b8
-	provides = firefox-developer-edition-i18n-lij=65.0b8
-	conflicts = firefox-i18n-lij
-	conflicts = firefox-developer-edition-i18n-lij
 
 pkgname = firefox-beta-i18n-lt
-	pkgdesc = Lithuanian language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-lt=65.0b8
-	provides = firefox-developer-edition-i18n-lt=65.0b8
-	conflicts = firefox-i18n-lt
-	conflicts = firefox-developer-edition-i18n-lt
 
 pkgname = firefox-beta-i18n-lv
-	pkgdesc = Latvian language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-lv=65.0b8
-	provides = firefox-developer-edition-i18n-lv=65.0b8
-	conflicts = firefox-i18n-lv
-	conflicts = firefox-developer-edition-i18n-lv
-
-pkgname = firefox-beta-i18n-mai
-	pkgdesc = Maithili language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-mai=65.0b8
-	provides = firefox-developer-edition-i18n-mai=65.0b8
-	conflicts = firefox-i18n-mai
-	conflicts = firefox-developer-edition-i18n-mai
 
 pkgname = firefox-beta-i18n-mk
-	pkgdesc = Macedonian language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-mk=65.0b8
-	provides = firefox-developer-edition-i18n-mk=65.0b8
-	conflicts = firefox-i18n-mk
-	conflicts = firefox-developer-edition-i18n-mk
-
-pkgname = firefox-beta-i18n-ml
-	pkgdesc = Malayalam language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-ml=65.0b8
-	provides = firefox-developer-edition-i18n-ml=65.0b8
-	conflicts = firefox-i18n-ml
-	conflicts = firefox-developer-edition-i18n-ml
 
 pkgname = firefox-beta-i18n-mr
-	pkgdesc = Marathi language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-mr=65.0b8
-	provides = firefox-developer-edition-i18n-mr=65.0b8
-	conflicts = firefox-i18n-mr
-	conflicts = firefox-developer-edition-i18n-mr
 
 pkgname = firefox-beta-i18n-ms
-	pkgdesc = Malay language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-ms=65.0b8
-	provides = firefox-developer-edition-i18n-ms=65.0b8
-	conflicts = firefox-i18n-ms
-	conflicts = firefox-developer-edition-i18n-ms
 
 pkgname = firefox-beta-i18n-my
-	pkgdesc = Burmese language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-my=65.0b8
-	provides = firefox-developer-edition-i18n-my=65.0b8
-	conflicts = firefox-i18n-my
-	conflicts = firefox-developer-edition-i18n-my
 
 pkgname = firefox-beta-i18n-nb-no
-	pkgdesc = Norwegian (Bokmål) language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-nb-no=65.0b8
-	provides = firefox-developer-edition-i18n-nb-no=65.0b8
-	conflicts = firefox-i18n-nb-no
-	conflicts = firefox-developer-edition-i18n-nb-no
 
 pkgname = firefox-beta-i18n-nl
-	pkgdesc = Dutch language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-nl=65.0b8
-	provides = firefox-developer-edition-i18n-nl=65.0b8
-	conflicts = firefox-i18n-nl
-	conflicts = firefox-developer-edition-i18n-nl
 
 pkgname = firefox-beta-i18n-nn-no
-	pkgdesc = Norwegian (Nynorsk) language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-nn-no=65.0b8
-	provides = firefox-developer-edition-i18n-nn-no=65.0b8
-	conflicts = firefox-i18n-nn-no
-	conflicts = firefox-developer-edition-i18n-nn-no
-
-pkgname = firefox-beta-i18n-or
-	pkgdesc = Oriya language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-or=65.0b8
-	provides = firefox-developer-edition-i18n-or=65.0b8
-	conflicts = firefox-i18n-or
-	conflicts = firefox-developer-edition-i18n-or
 
 pkgname = firefox-beta-i18n-pa-in
-	pkgdesc = Punjabi (India) language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-pa-in=65.0b8
-	provides = firefox-developer-edition-i18n-pa-in=65.0b8
-	conflicts = firefox-i18n-pa-in
-	conflicts = firefox-developer-edition-i18n-pa-in
 
 pkgname = firefox-beta-i18n-pl
-	pkgdesc = Polish language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-pl=65.0b8
-	provides = firefox-developer-edition-i18n-pl=65.0b8
-	conflicts = firefox-i18n-pl
-	conflicts = firefox-developer-edition-i18n-pl
 
 pkgname = firefox-beta-i18n-pt-br
-	pkgdesc = Portuguese (Brazilian) language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-pt-br=65.0b8
-	provides = firefox-developer-edition-i18n-pt-br=65.0b8
-	conflicts = firefox-i18n-pt-br
-	conflicts = firefox-developer-edition-i18n-pt-br
 
 pkgname = firefox-beta-i18n-pt-pt
-	pkgdesc = Portuguese (Portugal) language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-pt-pt=65.0b8
-	provides = firefox-developer-edition-i18n-pt-pt=65.0b8
-	conflicts = firefox-i18n-pt-pt
-	conflicts = firefox-developer-edition-i18n-pt-pt
 
 pkgname = firefox-beta-i18n-rm
-	pkgdesc = Romansh language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-rm=65.0b8
-	provides = firefox-developer-edition-i18n-rm=65.0b8
-	conflicts = firefox-i18n-rm
-	conflicts = firefox-developer-edition-i18n-rm
 
 pkgname = firefox-beta-i18n-ro
-	pkgdesc = Romanian language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-ro=65.0b8
-	provides = firefox-developer-edition-i18n-ro=65.0b8
-	conflicts = firefox-i18n-ro
-	conflicts = firefox-developer-edition-i18n-ro
 
 pkgname = firefox-beta-i18n-ru
-	pkgdesc = Russian language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-ru=65.0b8
-	provides = firefox-developer-edition-i18n-ru=65.0b8
-	conflicts = firefox-i18n-ru
-	conflicts = firefox-developer-edition-i18n-ru
 
 pkgname = firefox-beta-i18n-si
-	pkgdesc = Sinhala language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-si=65.0b8
-	provides = firefox-developer-edition-i18n-si=65.0b8
-	conflicts = firefox-i18n-si
-	conflicts = firefox-developer-edition-i18n-si
 
 pkgname = firefox-beta-i18n-sk
-	pkgdesc = Slovak language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-sk=65.0b8
-	provides = firefox-developer-edition-i18n-sk=65.0b8
-	conflicts = firefox-i18n-sk
-	conflicts = firefox-developer-edition-i18n-sk
 
 pkgname = firefox-beta-i18n-sl
-	pkgdesc = Slovenian language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-sl=65.0b8
-	provides = firefox-developer-edition-i18n-sl=65.0b8
-	conflicts = firefox-i18n-sl
-	conflicts = firefox-developer-edition-i18n-sl
 
 pkgname = firefox-beta-i18n-son
-	pkgdesc = Songhai language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-son=65.0b8
-	provides = firefox-developer-edition-i18n-son=65.0b8
-	conflicts = firefox-i18n-son
-	conflicts = firefox-developer-edition-i18n-son
 
 pkgname = firefox-beta-i18n-sq
-	pkgdesc = Albanian language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-sq=65.0b8
-	provides = firefox-developer-edition-i18n-sq=65.0b8
-	conflicts = firefox-i18n-sq
-	conflicts = firefox-developer-edition-i18n-sq
 
 pkgname = firefox-beta-i18n-sr
-	pkgdesc = Serbian language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-sr=65.0b8
-	provides = firefox-developer-edition-i18n-sr=65.0b8
-	conflicts = firefox-i18n-sr
-	conflicts = firefox-developer-edition-i18n-sr
 
 pkgname = firefox-beta-i18n-sv-se
-	pkgdesc = Swedish language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-sv-se=65.0b8
-	provides = firefox-developer-edition-i18n-sv-se=65.0b8
-	conflicts = firefox-i18n-sv-se
-	conflicts = firefox-developer-edition-i18n-sv-se
 
 pkgname = firefox-beta-i18n-ta
-	pkgdesc = Tamil language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-ta=65.0b8
-	provides = firefox-developer-edition-i18n-ta=65.0b8
-	conflicts = firefox-i18n-ta
-	conflicts = firefox-developer-edition-i18n-ta
 
 pkgname = firefox-beta-i18n-te
-	pkgdesc = Telugu language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-te=65.0b8
-	provides = firefox-developer-edition-i18n-te=65.0b8
-	conflicts = firefox-i18n-te
-	conflicts = firefox-developer-edition-i18n-te
 
 pkgname = firefox-beta-i18n-th
-	pkgdesc = Thai language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-th=65.0b8
-	provides = firefox-developer-edition-i18n-th=65.0b8
-	conflicts = firefox-i18n-th
-	conflicts = firefox-developer-edition-i18n-th
 
 pkgname = firefox-beta-i18n-tr
-	pkgdesc = Turkish language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-tr=65.0b8
-	provides = firefox-developer-edition-i18n-tr=65.0b8
-	conflicts = firefox-i18n-tr
-	conflicts = firefox-developer-edition-i18n-tr
 
 pkgname = firefox-beta-i18n-uk
-	pkgdesc = Ukrainian language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-uk=65.0b8
-	provides = firefox-developer-edition-i18n-uk=65.0b8
-	conflicts = firefox-i18n-uk
-	conflicts = firefox-developer-edition-i18n-uk
 
 pkgname = firefox-beta-i18n-uz
-	pkgdesc = Uzbek language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-uz=65.0b8
-	provides = firefox-developer-edition-i18n-uz=65.0b8
-	conflicts = firefox-i18n-uz
-	conflicts = firefox-developer-edition-i18n-uz
 
 pkgname = firefox-beta-i18n-vi
-	pkgdesc = Vietnamese language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-vi=65.0b8
-	provides = firefox-developer-edition-i18n-vi=65.0b8
-	conflicts = firefox-i18n-vi
-	conflicts = firefox-developer-edition-i18n-vi
 
 pkgname = firefox-beta-i18n-xh
-	pkgdesc = Xhosa language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-xh=65.0b8
-	provides = firefox-developer-edition-i18n-xh=65.0b8
-	conflicts = firefox-i18n-xh
-	conflicts = firefox-developer-edition-i18n-xh
 
 pkgname = firefox-beta-i18n-zh-cn
-	pkgdesc = Chinese (Simplified) language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-zh-cn=65.0b8
-	provides = firefox-developer-edition-i18n-zh-cn=65.0b8
-	conflicts = firefox-i18n-zh-cn
-	conflicts = firefox-developer-edition-i18n-zh-cn
 
 pkgname = firefox-beta-i18n-zh-tw
-	pkgdesc = Chinese (Traditional) language pack for Firefox Beta
-	provides = firefox-beta-i18n=65.0b8-1
-	provides = firefox-i18n-zh-tw=65.0b8
-	provides = firefox-developer-edition-i18n-zh-tw=65.0b8
-	conflicts = firefox-i18n-zh-tw
-	conflicts = firefox-developer-edition-i18n-zh-tw
 
