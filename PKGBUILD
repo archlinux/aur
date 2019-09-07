@@ -3,39 +3,38 @@
 
 pkgname=doctl
 pkgver=1.30.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A command line tool for DigitalOcean services'
 arch=('i686' 'x86_64')
 url='https://github.com/digitalocean/doctl'
 license=('APACHE')
 makedepends=('go' 'git')
 conflicts=('doctl-bin')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/digitalocean/${pkgname}/archive/v${pkgver}.tar.gz"
+source=("git+https://github.com/digitalocean/${pkgname}.git"
         "_build.sh.patch")
-_build="release"
 
 prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}"
+  git checkout "v${pkgver}"
   patch -p1 < "${srcdir}/_build.sh.patch"
 }
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}"
   export GOPATH="${srcdir}/build"
   go get -t -d -v
-  _version="${pkgver}" _build="${_build}" scripts/_build.sh
+  make native
 }
 
 check() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}"
   export GOPATH="${srcdir}/build"
-  go test -x -v .
+  make test
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  _pkgname=$(ls builds/ | grep "${pkgname}")
-  install -Dm 755 "builds/${_pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  cd "${srcdir}/${pkgname}"
+  install -Dm 755 "builds/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
   install -Dm 644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
 
   # Install bash and zsh completions
@@ -46,5 +45,5 @@ package() {
 }
 
 # vim: set et sw=2 sts=2:
-sha256sums=('a7174919e0571a590076faa494b6dd7b251f4b27450c89a4bb285a3f2db2a125'
-            '7182de3afae4a991a6da43d58230f55e57839a55668d2b862d38186e7e7a366f')
+sha256sums=('SKIP'
+            '431a7f0dca4f23bb35de818866bc78ba1d435d4e742a7fea887b5627b557af49')
