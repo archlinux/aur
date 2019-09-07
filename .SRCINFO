@@ -1,6 +1,6 @@
 pkgbase = linux-clear-headers-bin
 	pkgver = 5.2.11
-	pkgrel = 829
+	pkgrel = 830
 	arch = x86_64
 
 pkgname = linux-clear-headers-bin
