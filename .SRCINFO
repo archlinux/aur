@@ -40,7 +40,7 @@ pkgbase = thunderbird-beta
 	depends = ttf-font
 	depends = icu
 	optdepends = libcanberra: sound support
-	provides = thunderbird=69.0
+	provides = thunderbird=69.0b4
 	conflicts = thunderbird-beta-bin
 	options = !emptydirs
 	options = !makeflags

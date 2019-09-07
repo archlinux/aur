@@ -17,7 +17,7 @@ depends=(gtk3 mozilla-common libxt startup-notification mime-types dbus-glib als
          nss hunspell sqlite ttf-font icu)
 makedepends=(unzip zip diffutils python python2 yasm nasm mesa imake libpulse inetutils xorg-server-xvfb autoconf2.13 rust clang llvm gtk2 cbindgen nodejs)
 optdepends=('libcanberra: sound support')
-provides=("thunderbird=$_pkgver")
+provides=("thunderbird=$pkgver")
 conflicts=('thunderbird-beta-bin')
 options=(!emptydirs !makeflags)
 install=$pkgname.install
