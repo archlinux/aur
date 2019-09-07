@@ -1,21 +1,23 @@
-# Maintainer: Stefan Heinemann <stefan.heinemann@codedump.ch>
+# Maintainer: Fabius
+# Contributor: Stefan Heinemann <stefan.heinemann@codedump.ch>
 
 _pkgname=pg_query
 pkgname=ruby-pg-query
-pkgver=0.11.3
+pkgver=1.1.0
 pkgrel=1
-pkgdesc="Parses SQL queries using a copy of the PostgreSQL server query parser"
-arch=("any")
+pkgdesc="Ruby extension to parse, deparse and normalize SQL queries using the PostgreSQL query parser"
+arch=(any)
 url="https://github.com/lfittl/pg_query"
-license=("BSD-3-CLAUSE")
-depends=()
+license=('BSD-3-CLAUSE')
 makedepends=("rubygems")
-source=("http://gems.rubyforge.org/gems/$_pkgname-$pkgver.gem")
+depends=()
+optdepends=()
+source=("https://rubygems.org/downloads/$_pkgname-$pkgver.gem")
 noextract=("$_pkgname-$pkgver.gem")
-sha256sums=("ce27b75d638197071f35755a5de47897d9c8b3d075484805a526149c9e35e32f")
+sha256sums=("dc240116e0101950f0de9239b7d841d6b2ad4534b6f82a08755603d964f2111c")
 
 
 package() {
-	local _gemdir="$(ruby -rubygems -e"puts Gem.default_dir")"
+	local _gemdir="$(ruby -r rubygems -e"puts Gem.default_dir")"
 	gem install --no-user-install --ignore-dependencies -i "$pkgdir$_gemdir" -n "$pkgdir/usr/bin" "$_pkgname-$pkgver.gem"
 }
