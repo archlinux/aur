@@ -1,13 +1,13 @@
 # Maintainer: timetoplatypus <timetoplatypus@protonmail.com>
 pkgname=bytewalk
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A firmware extraction tool & binwalk fork"
 arch=("any")
 url="https://gitlab.com/bytesweep/bytewalk"
 license=("MIT")
 source=("https://gitlab.com/bytesweep/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-md5sums=("b8a8709b05fb20eea30b21c7db364d24")
+md5sums=("37fd308931f2290ef3bca98ecc784232")
 depends=("python")
 optdepends=(
   'python-pyqtgraph: graph and visualization support'
