@@ -20,7 +20,7 @@ pkgbase = blink
 	optdepends = python2-service-identity: for TLS certificate hostname verification
 	optdepends = x11vnc: for screen sharing
 	source = https://github.com/XdaemonX/blink-qt/blob/master/release-3.2.0.tar.gz
-	sha512sums = d492ef03c61facc6f1351f90a82ff0f3927b6a16ee6d6ac0799441dd7616a8c47b751acca65f25f9bea7efac878ae94d7facd81b26eb65e341a106692478238b
+	sha512sums = c707ad4dc3adaf371587bb222021713024cb8157e4d4f88301a8c5ba0ae7ffbca605544c6ca70f67287f82e11600c372e725a02560e5f4d597f842063c381fdb
 
 pkgname = blink
 
