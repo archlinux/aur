@@ -1,0 +1,33 @@
+pkgbase = bytewalk
+	pkgdesc = A firmware extraction tool & binwalk fork
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitlab.com/bytesweep/bytewalk
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	optdepends = python-pyqtgraph: graph and visualization support
+	optdepends = python-opengl: binviz module support
+	optdepends = python-capstone: disassembly support
+	optdepends = arj: ARJ decompression support
+	optdepends = cabextract: CAB archive support
+	optdepends = cpio: CPIO archvie support
+	optdepends = gzip: GZIP decompression support
+	optdepends = mtd-utils: JFFS filesystem support
+	optdepends = p7zip: ZIP, LZMA and ISO decompression support
+	optdepends = squashfs-tools: squashfs support
+	optdepends = tar: TAR archive support
+	optdepends = bzip2: BZIP2 archive support
+	optdepends = unrar: RAR decompression support
+	optdepends = xz: XZ decompression support
+	optdepends = firmware-mod-kit: cramfs support
+	optdepends = lhasa: LHA support
+	optdepends = sleuthkit: forensic analysis support
+	provides = bytewalk
+	conflicts = bytewalk
+	source = https://gitlab.com/bytesweep/bytewalk/-/archive/v1.0.0/bytewalk-v1.0.0.tar.gz
+	md5sums = b8a8709b05fb20eea30b21c7db364d24
+
+pkgname = bytewalk
+
