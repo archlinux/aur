@@ -1,6 +1,6 @@
 pkgbase = mktree
 	pkgdesc = Simple tool for creating directory trees in one shot
-	pkgver = 0.2
+	pkgver = 0.3
 	pkgrel = 1
 	url = https://github.com/gcmt/mktree
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = mktree
 	depends = python
 	provides = mktree
 	conflicts = mktree
-	source = mktree-0.2::git+https://github.com/gcmt/mktree
+	source = mktree-0.3::git+https://github.com/gcmt/mktree
 	sha1sums = SKIP
 
 pkgname = mktree
