@@ -1,7 +1,7 @@
 pkgbase = openfx-io
 	pkgdesc = A set of Readers/Writers plugins written using the OpenFX standard
 	pkgver = 2.3.15_rc.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/NatronGitHub/openfx-io
 	arch = i686
 	arch = pentium4
@@ -10,7 +10,7 @@ pkgbase = openfx-io
 	depends = ffmpeg
 	depends = libraw
 	depends = openimageio
-	depends = seexpr
+	depends = seexpr1
 	source = openfx-io_644df5d.tar.gz::https://github.com/NatronGitHub/openfx-io/tarball/644df5d
 	source = openfx_f5f4139.tar.gz::https://github.com/NatronGitHub/openfx/tarball/f5f4139
 	source = openfx-supportext_961aabd.tar.gz::https://github.com/NatronGitHub/openfx-supportext/tarball/961aabd

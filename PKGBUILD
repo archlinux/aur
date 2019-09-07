@@ -10,12 +10,12 @@ _tinydir_commit=3aae922
 
 pkgname=openfx-io
 pkgver=2.3.15_rc.7
-pkgrel=1
+pkgrel=2
 arch=('i686' 'pentium4' 'x86_64')
 pkgdesc="A set of Readers/Writers plugins written using the OpenFX standard"
 url="https://github.com/NatronGitHub/openfx-io"
 license=('GPL')
-depends=('ffmpeg' 'libraw' 'openimageio' 'seexpr')
+depends=('ffmpeg' 'libraw' 'openimageio' 'seexpr1')
 source=("openfx-io_$_openfx_io_commit.tar.gz::https://github.com/NatronGitHub/openfx-io/tarball/$_openfx_io_commit"
         "openfx_$_openfx_commit.tar.gz::https://github.com/NatronGitHub/openfx/tarball/$_openfx_commit"
         "openfx-supportext_$_openfx_supportext_commit.tar.gz::https://github.com/NatronGitHub/openfx-supportext/tarball/$_openfx_supportext_commit"
