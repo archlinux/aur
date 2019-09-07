@@ -1,6 +1,6 @@
 pkgbase = python-pymisp
 	pkgdesc = Python library to access MISP platforms via their REST API
-	pkgver = 2.4.113
+	pkgver = 2.4.114
 	pkgrel = 1
 	url = https://github.com/MISP/PyMISP/
 	arch = any
@@ -9,18 +9,22 @@ pkgbase = python-pymisp
 	makedepends = python2
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = PyMISP-2.4.113.tar.gz::https://github.com/MISP/PyMISP/archive/v2.4.113.tar.gz
-	sha512sums = bf7b5b6cc618f5cd355658b506bbbadbbcf019f63caa4d5ffad14b20ecf02587f0a90bf20c846a65372356e51fca4ae084520dd0a6d3e068ae176482e5114dfe
+	source = PyMISP-2.4.114.tar.gz::https://github.com/MISP/PyMISP/archive/v2.4.114.tar.gz
+	sha512sums = 74a6df7a8ad1a15184011bda5360df1bc3f4c399e67aa5bc98771735cda7d865c6e9041c3b8bc2b72857cc2059fd5d355781363c65c83d0d61b0a562b1d4307e
 
 pkgname = python-pymisp
 	depends = python
 	depends = python-jsonschema
 	depends = python-requests
 	depends = python-dateutil
+	depends = python-deprecated
 
 pkgname = python2-pymisp
 	depends = python2
 	depends = python2-jsonschema
 	depends = python2-requests
 	depends = python2-dateutil
+	depends = python2-deprecated
+	depends = python2-enum34
+	depends = python2-functools32
 
