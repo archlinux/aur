@@ -8,7 +8,7 @@ pkgdesc="EPSON Image Scan! plugin for Epson scanners GT-F730, GT-S630, Perfectio
 _plugin=${pkgname/iscan-plugin-/}
 _iscan_ver=2.30.4
 arch=('i686' 'x86_64')
-url="http://download.ebz.epson.net/dsc/search/01/search/"
+url="http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
 license=('custom')
 depends=('iscan')
 install="${pkgname}.install"
