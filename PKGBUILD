@@ -17,7 +17,7 @@ prepare() {
   rm -rf squashfs-root
   chmod +x $_filename
   ./$_filename --appimage-extract
-  sed -i -e "s|Exec=.\+|Exec=env DESKTOPINTEGRATION=0 /opt/$_downloadname|" squashfs-root/workflowy.desktop
+  sed -i -e "s|Exec=.\+|Exec=env APPIMAGELAUNCHER_DISABLE=1 DESKTOPINTEGRATION=0 /opt/$_downloadname|" squashfs-root/workflowy.desktop
 }
 
 package() {
