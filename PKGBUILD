@@ -2,7 +2,7 @@
 
 pkgname=birdtray-git
 pkgver=latest
-pkgrel=1
+pkgrel=2
 pkgdesc="Run Thunderbird with a system tray icon."
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/gyunaev/birdtray"
@@ -15,7 +15,7 @@ source=("git+https://github.com/gyunaev/${pkgname/-git/}.git")
 sha1sums=(SKIP)
 
 pkgver() {
-  git -C ${pkgname/-git/} describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git -C ${pkgname/-git/} describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^RELEASE_//g'
 }
 
 build() {

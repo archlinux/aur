@@ -1,7 +1,7 @@
 pkgbase = birdtray-git
 	pkgdesc = Run Thunderbird with a system tray icon.
 	pkgver = latest
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gyunaev/birdtray
 	arch = i686
 	arch = x86_64
