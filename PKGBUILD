@@ -2,7 +2,7 @@
 
 pkgname=zerynth-studio
 _archivename=${pkgname%%-studio}.tar.xz
-pkgver=2.3.0
+pkgver=2.3.1
 pkgrel=1
 pkgdesc="A powerful IDE for embedded programming in Python that enables the IoT"
 arch=('x86_64')
