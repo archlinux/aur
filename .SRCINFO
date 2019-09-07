@@ -1,8 +1,8 @@
 pkgbase = pycam
 	pkgdesc = Toolpath generator for 3-axis CNC machining, written in Python.
-	pkgver = 0.6.3
+	pkgver = 0.6.4
 	pkgrel = 1
-	url = http://pycam.sourceforge.net/
+	url = https://pycam.sourceforge.net/
 	arch = i686
 	arch = x86_64
 	license = GPL3
@@ -11,9 +11,9 @@ pkgbase = pycam
 	depends = python2-rsvg
 	depends = python2-gtkglext
 	depends = python2-enum34
-	source = https://github.com/SebKuzminsky/pycam/archive/v0.6.3.tar.gz
+	source = https://github.com/SebKuzminsky/pycam/archive/v0.6.4.tar.gz
 	source = pycam
-	sha512sums = 73dc7a0fc088f467099c7af3aac34f0dae46ca8b0e2f5a9f25c2d6236f244a128e8bd46474c03329e401c15b786f2c749222064a4230fcbe2a73e2a044b965b7
+	sha512sums = 4095d45b6c561c2e706469f12772ede8063fa0216cef4a52412fe4d5e892882aa62a65a6159d97c6c066aec20d4915a7a05724dc0e2b66f2309e0fa3bbc0253f
 	sha512sums = fbb1b026dfa821caea352f44aa5eddb34fcb8ec87e27bf1390fb791b58733c011f5476203a5195bb1e737cd6194000c8ec30ac7444f638c2b70965071757c092
 
 pkgname = pycam

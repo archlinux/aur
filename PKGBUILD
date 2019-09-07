@@ -5,16 +5,16 @@
 # Contributor: Karsten Hinz <k.hinz at tu-bs dot de>
 
 pkgname=pycam
-pkgver=0.6.3
+pkgver=0.6.4
 pkgrel=1
 pkgdesc="Toolpath generator for 3-axis CNC machining, written in Python."
 arch=('i686' 'x86_64')
-url="http://pycam.sourceforge.net/"
+url="https://pycam.sourceforge.net/"
 license=('GPL3')
 depends=('pygtk' 'python2-opengl' 'python2-rsvg' 'python2-gtkglext' 'python2-enum34')
 source=("https://github.com/SebKuzminsky/pycam/archive/v${pkgver}.tar.gz" 
         "${pkgname}")
-sha512sums=('73dc7a0fc088f467099c7af3aac34f0dae46ca8b0e2f5a9f25c2d6236f244a128e8bd46474c03329e401c15b786f2c749222064a4230fcbe2a73e2a044b965b7'
+sha512sums=('4095d45b6c561c2e706469f12772ede8063fa0216cef4a52412fe4d5e892882aa62a65a6159d97c6c066aec20d4915a7a05724dc0e2b66f2309e0fa3bbc0253f'
             'fbb1b026dfa821caea352f44aa5eddb34fcb8ec87e27bf1390fb791b58733c011f5476203a5195bb1e737cd6194000c8ec30ac7444f638c2b70965071757c092')
 
 
