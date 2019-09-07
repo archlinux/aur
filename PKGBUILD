@@ -1,7 +1,7 @@
 # Maintainer: Ryan Jacobs <ryan@rmj.us>
 pkgname=azure-kinect-sensor-sdk-git
-pkgver=v1.2.0.beta.1.r5.aebb27ac
-pkgrel=4
+pkgver=v1.2.0.beta.1.r27.467d8272
+pkgrel=1
 pkgdesc="A cross platform user mode SDK to read data from Azure Kinect devices."
 arch=("x86_64")
 url="https://github.com/microsoft/Azure-Kinect-Sensor-SDK"
@@ -23,7 +23,7 @@ build() {
     mkdir -p build
     cd build
     cmake ..
-    make -j$(nproc)
+    make
     popd
 
     # Reassemble and decompress libdepthengine.so.20
