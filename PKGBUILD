@@ -1,9 +1,8 @@
 # Maintainer: Tim Aab <trazayuya g-mail>
 
 pkgname="plam"
-pkgver=2.1.1
+pkgver=2.2.0
 pkgrel=1
-epoch=
 pkgdesc="A tool to explore, test and implement various λ-expressions"
 arch=('x86_64')
 url="https://github.com/sandrolovnicki/pLam"
@@ -11,7 +10,7 @@ license=('MIT')
 depends=("gmp")
 makedepends=("stack")
 source=("${url}/archive/v$pkgver.tar.gz")
-sha256sums=('75aaad84eb5ee2dd088c0730ed01f72569b3c38f71beb1c7a5d4818e1a46f41c')
+sha256sums=('7871cd85ad33b0130c31f662340d492ee57a53e0f52e2728060556f49843df73')
 
 build() {
 	cd "${srcdir}/pLam-${pkgver}"
