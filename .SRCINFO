@@ -1,6 +1,6 @@
 pkgbase = stone-phaser
 	pkgdesc = A classic analog phaser effect LADSPA, LV2 and VST2 plugin
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/jpcima/stone-phaser
 	arch = i686
@@ -10,10 +10,10 @@ pkgbase = stone-phaser
 	groups = lv2-plugins
 	groups = vst-plugins
 	license = Boost
-	source = https://github.com/jpcima/stone-phaser/releases/download/v0.1.0/stone-phaser-0.1.0.tar.gz
-	source = https://raw.githubusercontent.com/jpcima/stone-phaser/master/resources/patch/DPF-bypass.patch
-	sha256sums = 8d0e9422125c0a6a2515a2a536f835c08b150fd90d261cf9c1ee86668b3e70bd
-	sha256sums = c9f7c7312d459da55f8291bd403449b893862533bcf92d9a4f3c23a10df781c5
+	makedepends = mesa
+	depends = cairo
+	source = https://github.com/jpcima/stone-phaser/releases/download/v0.1.1/stone-phaser-0.1.1.tar.gz
+	sha256sums = 7fd1b688c1ddb0d350028bec6141fedde7ec523354681adc4548b32be132c882
 
 pkgname = stone-phaser
 
