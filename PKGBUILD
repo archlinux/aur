@@ -9,7 +9,7 @@ _pkgname=firefox
 name=firefox-beta
 pkgver=70.0b4
 _pkgver=70.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone web browser from mozilla.org - Beta"
 arch=(i686 x86_64)
 license=(MPL GPL LGPL)
@@ -24,6 +24,7 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'pulseaudio: Audio support'
             'speech-dispatcher: Text-to-Speech'
             'hunspell-en_US: Spell checking, American English')
+conflits=('firefox-beta-bin')
 options=(!emptydirs !makeflags !strip)
 source=("http://ftp.mozilla.org/pub/firefox/releases/70.0b4/source/$_pkgname-$pkgver.source.tar.xz"
 		"$_pkgname.sh"
