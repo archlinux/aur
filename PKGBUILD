@@ -1,6 +1,7 @@
 # Maintainer: Alexandros Theodotou <alex@zrythm.org>
+# and milk / milkii on Freenode
 _pkgname=zrythm
-pkgname=$_pkgname-git
+pkgname=$_pkgname-debug-git
 pkgver=0.6.261
 pkgrel=1
 pkgdesc='a highly automated and intuitive digital audio workstation'
