@@ -1,0 +1,15 @@
+pkgbase = optionmatrix
+	pkgdesc = A financial derivative calculator with 168+ models
+	pkgver = 1.4.3
+	pkgrel = 1
+	url = https://sourceforge.net/projects/optionmatrix
+	arch = x86_64
+	license = GPL
+	makedepends = texlive-core
+	depends = gtk3
+	depends = gsl
+	source = http://downloads.sourceforge.net/optionmatrix/optionmatrix-1.4.3.tar.xz
+	sha256sums = 8dc04f9a8086ffd3aaa2b386f0cfb05ad69b651d8b6b926880325a78a3bba0fd
+
+pkgname = optionmatrix
+
