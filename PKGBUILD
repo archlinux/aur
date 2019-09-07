@@ -3,19 +3,17 @@
 
 pkgname=libretro-pocketcdg-git
 _gitname=libretro-pocketcdg
-pkgver=23.21fd39d
+pkgver=48.9705f33
 pkgrel=1
 pkgdesc="libretro port of pocketcdg, karaoke player"
 arch=('i686' 'x86_64')
 url="https://github.com/libretro/libretro-pocketcdg"
 license=('GPLv2')
 makedepends=('git')
-source=("${_gitname}::git://github.com/libretro/${_gitname}.git"
-	"https://raw.githubusercontent.com/libretro/libretro-super/master/dist/info/pocketcdg_libretro.info")
+source=("${_gitname}::git://github.com/libretro/${_gitname}.git")
 groups=('libretro')
 
-md5sums=('SKIP'
-	 'SKIP')
+md5sums=('SKIP')
 
 pkgver() {
   cd "${_gitname}"
@@ -28,6 +26,5 @@ build() {
 }
 
 package() {
-  install -Dm644 "${srcdir}/pocketcdg_libretro.info" "${pkgdir}/usr/share/libretro/info/pocketcdg_libretro.info"
   install -Dm644 "${_gitname}/pocketcdg_libretro.so" "${pkgdir}/usr/lib/libretro/pocketcdg_libretro.so"
 }
