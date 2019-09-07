@@ -1,17 +1,16 @@
 pkgbase = gsvit
 	pkgdesc = Open Source FDTD solver with graphics card computing support.
-	pkgver = 1.8.2
+	pkgver = 1.9.3
 	pkgrel = 1
 	url = http://gsvit.net/
 	arch = x86_64
 	arch = i686
 	license = GPLv3
-	makedepends = gcc5
 	depends = cuda
 	depends = gwyddion
 	depends = gtk2
-	source = http://downloads.sourceforge.net/project/gsvit/1.8.2/gsvit-1.8.2.tar.gz
-	sha256sums = df7032d46931a8bd0505f74ecdafdf47ddf5d01d0e76bc88135dd1cefb6fb9e3
+	source = http://downloads.sourceforge.net/project/gsvit/1.9.3/gsvit-1.9.3.tar.gz
+	sha256sums = 79013baa392510e0d382efb7b0d87cc16ff498735bd5bdbed7eb95e28b999f15
 
 pkgname = gsvit
 
