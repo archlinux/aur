@@ -1,6 +1,6 @@
 pkgname="fathom-git"
 pkgrel=1
-pkgver="i.dont.know.what.to.put.here"
+pkgver="v1.2.1.r43.gb278944"
 pkgdesc="Fathom - simple website analytics (Community Edition)"
 url="https://github.com/usefathom/fathom"
 license=("MIT")
@@ -13,6 +13,11 @@ makedepends=("git" "go-pie" "npm")
 source=("git+https://github.com/usefathom/fathom.git")
 md5sums=("SKIP")
 _gitname="fathom"
+
+pkgver() {
+  cd "$_gitname"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 prepare(){
   mkdir -p gopath/src/github.com/usefathom
