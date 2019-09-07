@@ -3,8 +3,8 @@
 _pkgname=vmango
 
 pkgname=${_pkgname}
-pkgver=0.9.0
-pkgrel=2
+pkgver=0.9.1
+pkgrel=1
 pkgdesc="Your own personal IaaS cloud"
 arch=("any")
 url="https://github.com/subuk/vmango"
