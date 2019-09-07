@@ -1,0 +1,21 @@
+pkgbase = genie-systemd-git
+	pkgdesc = A quick way into a systemd "bottle" for WSL (development version)
+	pkgver = 1.10.r0.g4dbb9f4
+	pkgrel = 1
+	url = https://github.com/arkane-systems/genie
+	arch = x86_64
+	license = custom:The Unlicense
+	makedepends = dotnet-sdk
+	depends = daemonize
+	depends = dotnet-runtime
+	depends = dotnet-host
+	depends = hostess
+	provides = genie-systemd
+	conflicts = genie-systemd
+	source = git+https://github.com/arkane-systems/genie.git
+	source = LICENSE
+	sha256sums = SKIP
+	sha256sums = 88d9b4eb60579c191ec391ca04c16130572d7eedc4a86daa58bf28c6e14c9bcd
+
+pkgname = genie-systemd-git
+
