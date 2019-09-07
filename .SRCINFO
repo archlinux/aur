@@ -1,4 +1,4 @@
-pkgbase = zrythm-git
+pkgbase = zrythm-debug-git
 	pkgdesc = a highly automated and intuitive digital audio workstation
 	pkgver = 0.6.261
 	pkgrel = 1
@@ -32,5 +32,5 @@ pkgbase = zrythm-git
 	source = zrythm::git+https://git.zrythm.org/git/zrythm.git
 	md5sums = SKIP
 
-pkgname = zrythm-git
+pkgname = zrythm-debug-git
 
