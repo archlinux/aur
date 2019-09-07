@@ -1,7 +1,7 @@
-# Maintainer: Jake <ja.ke@posteo.de>
+# Maintainer: Jake <aur@ja-ke.tech>
 
 pkgname=python2-svg.path
-pkgver=2.2
+pkgver=3.0
 pkgrel=1
 pkgdesc="SVG path objects and parser"
 arch=('any')
@@ -9,8 +9,8 @@ url="https://github.com/regebro/svg.path"
 license=('CCPL')
 depends=('python2')
 makedepends=('python2-setuptools')
-source=(https://pypi.python.org/packages/1d/6c/cf484a95b895a7acd3989082501c67c8f43b6f91181f2a0b7aa634d1df6f/svg.path-${pkgver}.tar.gz)
-md5sums=('4dc43f859480918316fb62a45ed881d7')
+source=(https://pypi.python.org/packages/5a/7f/7a601000fc400024f76e660569b0b97f98787279daff079f0dbfa89293ba/svg.path-${pkgver}.tar.gz)
+md5sums=('13c080a8ce70cc6445c40e7191cf281d')
 
 package() {
   cd "${srcdir}/svg.path-${pkgver}"
