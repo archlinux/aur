@@ -1,6 +1,6 @@
 # Maintainer: Svitozar Cherepii <razotivs@gmail.com>
 pkgname=rvgl-bin
-pkgver=19.0819
+pkgver=19.0907
 gamefilever=18.0328
 pkgrel=1
 pkgdesc="Rewrite of Re-Volt, popular 3D RC car racing game from 1999."
@@ -19,7 +19,7 @@ source=("game-files-$gamefilever.zip::https://distribute.re-volt.io/packs/game_f
         "https://rvgl.re-volt.io/downloads/rvgl_${pkgver}a_linux.7z"
         "rvgl.desktop")
 sha256sums=('e6a6af46b96cfba9d74b0607de6c99a15f316ba7a7008d30197a9ee8b96e7fe3'
-            '90c23acbdaacf8d0117e085336dfbb59fd9b564d191c5fedd9b24fd4a1e2c12f'
+            '9da239190513e7077578db51660c534f557f43d0c0909b1329bd82ad4262b5a4'
             '4313552a067486339319e6e4b13386040183e196d7b6e26a1fec56a711e4721d')
 
 package() {
