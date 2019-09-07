@@ -1,0 +1,9 @@
+post_install() {
+	echo "Running iscan-registry to register plugin and firmware with iscan."
+    iscan-registry -a interpreter usb 0x04b8 0x0142 /usr/lib/esci/libesci-interpreter-perfection-v330 /usr/share/esci/esfwad.bin
+}
+
+pre_remove() {
+	echo "Unregistering plugin and firmware from iscan."
+		iscan-registry -r interpreter usb 0x04b8 0x0142 /usr/lib/esci/libesci-interpreter-perfection-v330 /usr/share/esci/esfwad.bin
+}
