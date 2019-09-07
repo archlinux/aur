@@ -1,0 +1,21 @@
+pkgbase = atomizer-git
+	pkgdesc = Atom/Rss reader for the cli
+	pkgver = r26.dd33eb5
+	pkgrel = 1
+	url = https://git.sr.ht/~ark/atomizer
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = scdoc
+	depends = python
+	depends = python-colorama
+	depends = python-pyperclip
+	provides = atomizer
+	conflicts = atomizer
+	backup = etc/atomizer/feeds
+	backup = etc/atomizer/config.ini
+	source = atomizer::git+https://git.sr.ht/~ark/atomizer
+	sha256sums = SKIP
+
+pkgname = atomizer-git
+
