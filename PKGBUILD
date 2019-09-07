@@ -7,7 +7,10 @@ pkgdesc='A pass extension that helps you to keep the whole tree of password encr
 arch=('any')
 url='https://github.com/roddhjav/pass-tomb'
 license=('GPL3')
-depends=('pass' 'tomb')
+depends=(
+  'pass'
+  'tomb'
+)
 source=(https://github.com/roddhjav/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz
         https://github.com/roddhjav/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz.asc)
 sha512sums=('818c034a5214d1712f59927f806df09e697a76010bbaf03eb6133a3443e17f41fba6bbe88a5a542209186502f64e985276112c562f917eef232a2fc3cacd79d8'
