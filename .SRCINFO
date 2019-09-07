@@ -1,6 +1,6 @@
 pkgbase = python-mbed-ls
 	pkgdesc = ARM mbed device detection module
-	pkgver = 1.6.0
+	pkgver = 1.7.8
 	pkgrel = 1
 	url = https://developer.mbed.org
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = python-mbed-ls
 	depends = python2-appdirs
 	optdepends = python2-colorlog
 	options = !emptydirs
-	source = https://github.com/ARMmbed/mbed-ls/archive/release-version-1.6.0.tar.gz
-	sha256sums = c12e5bfbe37f5f8e45dbf427c5a16e92d900c3672eb116e586610a93da775d15
+	source = https://github.com/ARMmbed/mbed-os-tools/archive/v0.0.9.tar.gz
+	sha256sums = a2ad7f6c8a58ee9150873540a1f1f54f147f1020b86fe8f54bd4defed6b25471
 
 pkgname = python-mbed-ls
 
