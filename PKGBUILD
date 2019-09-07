@@ -1,6 +1,6 @@
 # Maintainer: Raketenjoint <rak.joint@mailbox.org>
 pkgname=espressomd-git
-pkgver=3.4.dev.r12688.f5dade55b
+pkgver=3.4.dev.r13633.ff32b09e5
 pkgrel=1
 pkgdesc="ESPResSo is a software package for performing and analyzing Molecular Dynamics simulations."
 arch=('x86_64')
@@ -33,30 +33,29 @@ source=("${pkgname%-git}::git+https://github.com/espressomd/espresso.git")
 noextract=()
 md5sums=('SKIP')
 
-# Please refer to the 'USING git SOURCES' section of the PKGBUILD man page for
-# a description of each element in the source array.
 
 pkgver() {
-	cd "$srcdir/${pkgname%-git}"
-	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+    cd "$srcdir/${pkgname%-git}"
+    printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 prepare() {
-	cd "$srcdir/${pkgname%-git}"
+    cd "$srcdir/${pkgname%-git}"
 }
 
 build() {
-	cd "$srcdir/${pkgname%-git}"
+    cd "$srcdir/${pkgname%-git}"
     cmake -DCMAKE_INSTALL_PREFIX=/usr .
-	make
+    # Use gcc8 to allow the installation to cuda users
+    make CXX=g++-8 CC=gcc-8 CPP=g++-8
 }
 
 check() {
-	cd "$srcdir/${pkgname%-git}"
-	make -k check
+    cd "$srcdir/${pkgname%-git}"
+    make -k check
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}"
-	make DESTDIR="$pkgdir/" install
+    cd "$srcdir/${pkgname%-git}"
+    make DESTDIR="$pkgdir/" install
 }
