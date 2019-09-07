@@ -4,7 +4,7 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=gtk3-patched-filechooser-icon-view
-pkgver=3.24.10
+pkgver=3.24.11
 pkgrel=1
 epoch=1
 pkgdesc="GTK3 patched with dudemanguy's fork of wfr's filechooser-icon-view patch."
@@ -22,7 +22,7 @@ makedepends=(gobject-introspection gtk-doc git glib2-docs sassc meson)
 
 license=(LGPL)
 install=gtk3.install
-_commit=3642629767ec54c4079f7d90a9ea780a225bfe5e  # tags/3.24.10^0
+_commit=622111f1caf9104251de79bfa27ccfba9614cc90  # tags/3.24.11^0
 source=("git+https://gitlab.gnome.org/GNOME/gtk.git#commit=$_commit"
         settings.ini
         gtk-query-immodules-3.0.hook
@@ -31,7 +31,7 @@ source=("git+https://gitlab.gnome.org/GNOME/gtk.git#commit=$_commit"
 sha256sums=('SKIP'
             '01fc1d81dc82c4a052ac6e25bf9a04e7647267cc3017bc91f9ce3e63e5eb9202'
             'de46e5514ff39a7a65e01e485e874775ab1c0ad20b8e94ada43f4a6af1370845'
-            '90e94f1e287ec0821c995fd17c6a68265c965c72aad3a794d0866184930a5719')
+            '60e7708a09c6773b871b2083e172edbf5cfbe50cd7c3ce92eb48e4f57f9e81c8')
 pkgver() {
   cd gtk
   git describe --tags | sed 's/-/+/g'

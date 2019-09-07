@@ -1,6 +1,6 @@
 pkgbase = gtk3-patched-filechooser-icon-view
 	pkgdesc = GTK3 patched with dudemanguy's fork of wfr's filechooser-icon-view patch.
-	pkgver = 3.24.10
+	pkgver = 3.24.11
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/Dudemanguy911/gtk
@@ -44,19 +44,19 @@ pkgbase = gtk3-patched-filechooser-icon-view
 	depends = iso-codes
 	depends = gtk-update-icon-cache
 	optdepends = glib2-patched-thumbnailer: Thumbnail generation in upload dialog
-	provides = gtk3=3.24.10
+	provides = gtk3=3.24.11
 	provides = gtk3-print-backends
 	conflicts = gtk3
 	conflicts = gtk3-print-backends
 	replaces = gtk3-print-backends<=3.22.26-1
-	source = git+https://gitlab.gnome.org/GNOME/gtk.git#commit=3642629767ec54c4079f7d90a9ea780a225bfe5e
+	source = git+https://gitlab.gnome.org/GNOME/gtk.git#commit=622111f1caf9104251de79bfa27ccfba9614cc90
 	source = settings.ini
 	source = gtk-query-immodules-3.0.hook
 	source = gtk3-filechooser-icon-view.patch
 	sha256sums = SKIP
 	sha256sums = 01fc1d81dc82c4a052ac6e25bf9a04e7647267cc3017bc91f9ce3e63e5eb9202
 	sha256sums = de46e5514ff39a7a65e01e485e874775ab1c0ad20b8e94ada43f4a6af1370845
-	sha256sums = 90e94f1e287ec0821c995fd17c6a68265c965c72aad3a794d0866184930a5719
+	sha256sums = 60e7708a09c6773b871b2083e172edbf5cfbe50cd7c3ce92eb48e4f57f9e81c8
 
 pkgname = gtk3-patched-filechooser-icon-view
 
