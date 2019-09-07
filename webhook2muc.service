@@ -4,14 +4,14 @@ After=network.target
 
 [Service]
 Type=simple
-Environmentfile=/etc/webhook2muc/webhook2muc.env
-ExecStart=/usr/bin/webhook2muc -j ${JID} -p ${PASSWD} -m ${MUC} -P ${HTTP_PORT}
+EnvironmentFile=/etc/webhook2muc/webhook2muc.env
+ExecStart=/usr/bin/webhook2muc -j ${JID} -p ${PASSWD} -m ${MUC} -P ${HTTP_PORT} -H "X-Gitlab-Token: ${SECRET}"
 Restart=always
 RestartSec=5s
 DynamicUser=true
 NoNewPrivileges=true
 CPUWeight=5
-LimitNProc=1
+LimitNPROC=1
 LimitNOFILE=32
 MemoryMax=128M
 ProtectSystem=full

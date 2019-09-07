@@ -3,7 +3,7 @@
 _pkgbase='webhook2muc'
 pkgname=${_pkgbase}-git
 pkgver=r25.d651a59
-pkgrel=3
+pkgrel=4
 pkgdesc="Webhook to MUC bot"
 arch=('x86_64')
 url='https://gitlab.com/xmpp-rs/tokio-webhook2muc'
@@ -64,7 +64,7 @@ package() {
 
 sha256sums=('SKIP'
             '3a3878cf71075383074bb9cea0613fc590f98285652db3d39c8fd97c1d79e0e7'
-            '1f1cad56ba6f5a7b2558a3bcae96fad2fe686081d4c36d24188991d11a275348'
+            '324a0b4cb5e2151d8284a7644d570cc68d477cd8cd1109d961578e98f86c7a60'
             '5e692a34c101f2d08802fa6e92aea33abb00eb9148e53dc77b10e3417c86262a'
             '102f576912316b375e72a0b0b8728e13071c5f6ccbbab29b57bbcd3ee897a32a'
             'dceb8cdc246a48140a7b247886442be56a411716dfd0b833c41e7ca1982fe126'
