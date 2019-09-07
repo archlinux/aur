@@ -25,7 +25,7 @@ optdepends=('python2-service-identity: for TLS certificate hostname verification
             'x11vnc: for screen sharing')
 
 source=("https://github.com/XdaemonX/blink-qt/releases/download/${pkgver}/release-${pkgver}.tar.gz")
-sha512sums = ('d492ef03c61facc6f1351f90a82ff0f3927b6a16ee6d6ac0799441dd7616a8c47b751acca65f25f9bea7efac878ae94d7facd81b26eb65e341a106692478238b')
+sha512sums=('d492ef03c61facc6f1351f90a82ff0f3927b6a16ee6d6ac0799441dd7616a8c47b751acca65f25f9bea7efac878ae94d7facd81b26eb65e341a106692478238b')
 
 
 build() {
