@@ -1,0 +1,12 @@
+pkgbase = tee-supplicant
+	pkgdesc = Normal world client side of the TEE
+	pkgver = 3.6.0.r9.gbc0ec8c
+	pkgrel = 1
+	url = https://github.com/OP-TEE/optee_client
+	arch = aarch64
+	license = BSD
+	source = git://github.com/OP-TEE/optee_client.git
+	sha256sums = SKIP
+
+pkgname = tee-supplicant
+
