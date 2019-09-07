@@ -30,5 +30,5 @@ package() {
 	cd "$srcdir/${pkgname-git}"
 	DST="$pkgdir/$( pkg-config --variable confdir fish)"
 	mkdir -p "$DST"
-	cp "marks.fish" "$DST"
+	install -Dm 644 "marks.fish" "$DST"
 }
