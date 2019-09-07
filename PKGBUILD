@@ -1,9 +1,9 @@
-# Maintainer: Nils Czernia <nils[at]czserver[dot]de>
+# Maintainer: Erhad Husovic <xdaemonx[at]protonmail[dot]ch>
 
 pkgname=blink
 _reponame=blink-qt
-pkgver=3.1.0
-pkgrel=5
+pkgver=3.2.0
+pkgrel=
 pkgdesc='A state of the art, easy to use SIP client'
 arch=('any')
 url='http://icanblink.com'
@@ -24,8 +24,8 @@ depends=('icu'
 optdepends=('python2-service-identity: for TLS certificate hostname verification'
             'x11vnc: for screen sharing')
 
-source=("https://github.com/AGProjects/${_reponame}/archive/release-${pkgver}.tar.gz")
-sha512sums=('fadb79a19ad4dd315c4c54579438605a5b90e49ce8f18934561e9c5ae0aff3c46e7a2842fc0bdf3e7d70f17d56d502494c5a9aef0b07fa13ed5e824cf4169fd3')
+source=("https://github.com/XdaemonX/${_reponame}/release-${pkgver}.tar.gz")
+sha512sums=('d492ef03c61facc6f1351f90a82ff0f3927b6a16ee6d6ac0799441dd7616a8c47b751acca65f25f9bea7efac878ae94d7facd81b26eb65e341a106692478238b')
 
 
 build() {
