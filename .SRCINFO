@@ -1,7 +1,7 @@
 pkgbase = tomb
 	pkgdesc = Crypto Undertaker, a simple tool to manage encrypted storage
 	pkgver = 2.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.dyne.org/software/tomb/
 	install = tomb.install
 	arch = i686
