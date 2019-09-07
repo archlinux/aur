@@ -1,7 +1,7 @@
 #Maintainer Robosky <fangyuhao0612@gmail.com>
 pkgname=mojave-gtk-theme-git
 _pkgname=Mojave-gtk-theme
-pkgver=215.7a621f3
+pkgver=238.c5e590b
 pkgrel=1
 pkgdesc='A Mac OSX like theme for GTK 3, GTK 2 and Gnome-Shell which supports GTK 3 and GTK 2 based desktop environments like Gnome, Pantheon, XFCE, Mate, etc.'
 arch=('any')
