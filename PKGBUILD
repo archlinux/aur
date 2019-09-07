@@ -1,31 +1,31 @@
-# Maintainer: Jitang Zheng <jitang.zheng@gmail.com>
+# Maintainer: Andrew Sun <adsun701 at gmail dot com>
+# Contributor: Jitang Zheng <jitang dot zheng at gmail dot com>
+
 pkgname=google-fruit
-pkgver=2.0.4
+pkgver=3.4.0
 pkgrel=1
 pkgdesc="Fruit, a dependency injection framework for C++."
 arch=('x86_64' 'i686')
 url="https://github.com/google/fruit"
 license=('Apache')
-depends=()
-makedepends=('cmake')
-source=("https://github.com/google/fruit/archive/v${pkgver}.tar.gz")
-md5sums=('42c4de3bb4822a5b81a6a15aad068a93')
-
-prepare() {
-  cd "fruit-$pkgver"
-}
+depends=('gcc-libs')
+makedepends=('boost' 'cmake')
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/google/fruit/archive/v${pkgver}.tar.gz")
+sha256sums=('0f3793ee5e437437c3d6360a037866429a7f1975451fd60d740f9d2023e92034')
 
 build() {
-  cd "fruit-$pkgver"
-  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$pkgdir/usr .
+  mkdir -p "${srcdir}/build" && cd "${srcdir}/build"
+  cmake \
+    -DBUILD_SHARED_LIBS=on \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DFRUIT_USES_BOOST=on \
+    ../fruit-${pkgver}
+
   make
 }
 
-check() {
-  cd "fruit-$pkgver"
-}
-
 package() {
-  cd "fruit-$pkgver"
-  make install
+  cd "${srcdir}/build"
+  make DESTDIR="${pkgdir}" install
 }
