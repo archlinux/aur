@@ -62,7 +62,7 @@ _localmodcfg=
 
 pkgbase=linux-bootsplash
 pkgdesc='Linux kernel with kernel bootsplash support'
-_srcver=5.2.9-arch1
+_srcver=5.2.11-arch1
 pkgver=${_srcver%-*}
 pkgrel=1
 arch=(x86_64)
