@@ -1,10 +1,11 @@
 [Desktop Entry]
+Version=$pkgver
 Encoding=UTF-8
-Version=0.8.3
-Name=mausoleum
+Name=$name
+Comment=$pkgdesc
 Exec=/usr/bin/mausoleum-gui
 Terminal=false
-Icon=/usr/lib/python3.6/site-packages/mausoleum/images/ic_vpn_key_black_48dp_1x.png
+Icon=mausoleum
 Type=Application
 Categories=Application;Security;
 Comment=Graphical wrapper for Tomb
