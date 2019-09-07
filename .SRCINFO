@@ -1,0 +1,21 @@
+pkgbase = jetbrains-jre8
+	pkgdesc = OpenJDK Java 8 runtime with some fixes and enhancements by JetBrains
+	pkgver = 8u202b1483.37
+	pkgrel = 1
+	url = https://bintray.com/jetbrains/intellij-jdk
+	arch = x86_64
+	license = GPL2
+	depends = java-runtime-common
+	depends = ca-certificates-java
+	depends = java-environment-common
+	provides = java-runtime=8
+	provides = java-runtime-headless=8
+	provides = java-environment=8
+	provides = java-runtime-openjdk=8
+	provides = java-runtime-headless-jre=8
+	provides = java-environment-openjdk=8
+	source = https://dl.bintray.com/jetbrains/intellij-jdk/jbrx-8u202-linux-x64-b1483.37.tar.gz
+	sha256sums = 673041f7005c51365d1ea3ca8f8406321722a806a70968d33f3706c51d2fb259
+
+pkgname = jetbrains-jre8
+
