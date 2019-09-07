@@ -1,6 +1,6 @@
 pkgbase = espressomd-git
 	pkgdesc = ESPResSo is a software package for performing and analyzing Molecular Dynamics simulations.
-	pkgver = 3.4.dev.r12688.f5dade55b
+	pkgver = 3.4.dev.r13633.ff32b09e5
 	pkgrel = 1
 	url = http://espressomd.org/wordpress/
 	arch = x86_64
