@@ -1,5 +1,5 @@
 pkgname=basilisk
-pkgver=2019.06.08
+pkgver=2019.09.03
 pkgrel=1
 pkgdesc="Standalone web browser forked from mozilla.org, UXP version"
 arch=('x86_64')
@@ -8,15 +8,11 @@ url="https://www.basilisk-browser.org"
 depends=('gtk2' 'libxt' 'mime-types' 'alsa-lib' 'ffmpeg' 'ttf-font')
 makedepends=('unzip' 'zip' 'gcc8' 'python2' 'yasm' 'mesa' 'autoconf2.13')
 options=('!emptydirs')
-source=("https://github.com/MoonchildProductions/UXP/archive/v$pkgver.tar.gz"
-        "https://github.com/MoonchildProductions/UXP/commit/9ded0778ee548fd8837bb35bdb5617cae0a791d1.patch")
-sha256sums=('ff0c6e093fbab2ecd86fc36d2e4ee9d95d2645e3906c7450ba4876b3bbff3e44'
-            '159d14773306b7e07dc3480c4ad4694e52406fb71b15e3ef53a9096749d9dd42')
+source=("https://github.com/MoonchildProductions/UXP/archive/v$pkgver.tar.gz")
+sha256sums=('92b112fc5ee3cdcfc6814c6f62589716ef243c5d25bec3d0e7c4e14fa7a6c5ab')
 
 prepare() {
   cd "$srcdir/UXP-$pkgver"
-
-  patch -Np1 -i "$srcdir/9ded0778ee548fd8837bb35bdb5617cae0a791d1.patch"
 
   cat > .mozconfig << EOF
 ac_add_options --enable-application=browser
