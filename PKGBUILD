@@ -2,7 +2,7 @@
 
 pkgname='pass-tomb'
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A pass extension that helps you to keep the whole tree of password encrypted inside a tomb.'
 arch=('any')
 url='https://github.com/roddhjav/pass-tomb'
@@ -22,11 +22,11 @@ validpgpkeys=('06A26D531D56C42D66805049C5469996F0DF68EC')
 
 # The checks require root access
 # check() {
-#   cd "$srcdir/$pkgname-$pkgver/"
+#   cd "$pkgname-$pkgver"
 #   make tests
 # }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver/"
+  cd "$pkgname-$pkgver"
   make DESTDIR="$pkgdir" FORCE_ALL=1 install
 }
