@@ -3,7 +3,7 @@
 # You can get the software from https://www.vmware.com/go/download-vmrc
 
 pkgname=vmware-vmrc
-pkgver=10.0.4
+pkgver=10.0.6
 pkgrel=1
 pkgdesc="VMWare VMRC Client."
 arch=('x86_64')
@@ -12,17 +12,17 @@ license=('custom:vmware')
 depends=()
 optdepends=()
 
-source=("file://VMware-Remote-Console-10.0.4-11818843.x86_64.bundle"
+source=("file://VMware-Remote-Console-10.0.6-14247266.x86_64.bundle"
         "bootstrap"
         "config")
 
-sha256sums=('5e2b95e1b8936b3b95fae7151abf4e82ecad46e902e00c7a4072ef949ba11145'
+sha256sums=('878a7237092d1867edf3653f0b0625a25c74f1dec760e46020e3f42d80d387b6'
             '22282e8643d8a20e63773435161e5a5d01c6acce53aa81f27a4d20f111acd228'
             'c5643ebad140391622c57ab88d6071b91d1ea9a8379c1aec573c845a00be30d4')
 
 build() {
     cd "$srcdir"
-    sh ../VMware-Remote-Console-10.0.4-11818843.x86_64.bundle -x ./files
+    sh ../VMware-Remote-Console-10.0.6-14247266.x86_64.bundle -x ./files
     cd "$srcdir/files"
 }
 
