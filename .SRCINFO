@@ -1,6 +1,6 @@
 pkgbase = blkmenu
 	pkgdesc = Tiny curses wrapper around lsblk and udisksctl
-	pkgver = 0.2
+	pkgver = 0.3
 	pkgrel = 1
 	url = https://github.com/gcmt/blkmenu
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = blkmenu
 	depends = util-linux
 	provides = blkmenu
 	conflicts = blkmenu
-	source = blkmenu-0.2::git+https://github.com/gcmt/blkmenu
+	source = blkmenu-0.3::git+https://github.com/gcmt/blkmenu
 	sha1sums = SKIP
 
 pkgname = blkmenu
