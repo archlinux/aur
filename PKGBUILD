@@ -1,7 +1,7 @@
 # Maintainer: Bailey Kasin <bailey@gingertechnology.net> (https://angrysysadmins.tech)
 
 pkgname=gogios-bin
-pkgver=1.2.1
+pkgver=1.3
 pkgrel=1
 pkgdesc="Checks to see if required services are still running on important machines."
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=("https://github.com/BKasin/Gogios/releases/download/${pkgver}/gogios-${p
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 noextract=("gogios-${pkgver}.deb")
-sha256sums=('5f323ef2dff6c95e1bc731f87b69235f94a3c9989734e9e3d0d4b09461a687f6')
+sha256sums=('1f21c298c39e4d12155d1512a307443e836ba3e8731c339e05ec17abcbebc51d')
 provides=('gogios')
 conflicts=('gogios')
 
