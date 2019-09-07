@@ -6,7 +6,7 @@
 
 pkgname=lutris-git
 _pkgname=lutris
-pkgver=0.5.2.1.r23.g2ceedf7d
+pkgver=0.5.3.r0.g06afbc4c
 pkgrel=1
 pkgdesc='Open Gaming Platform'
 arch=('any')
@@ -14,7 +14,7 @@ url='https://lutris.net/'
 license=('GPL3')
 depends=('python-gobject' 'python-yaml' 'python-evdev' 'gtk3' 'glib2' 'psmisc' 'cabextract' 'unzip' 'p7zip' 'curl' 'xorg-xrandr' 'gnome-desktop' 'python-requests' 'python-pillow')
 makedepends=('git' 'python-setuptools')
-checkdepends=('xorg-server-xvfb' 'xterm' 'python-nose-cover3' 'wine' 'webkit2gtk')
+checkdepends=('xorg-server-xvfb' 'xterm' 'wine' 'webkit2gtk')
 optdepends=(
   'wine: Run windows games'
   'wine-staging: Run windows games - Staging patches'
