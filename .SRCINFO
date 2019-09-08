@@ -11,26 +11,12 @@ pkgbase = webhook2muc-git
 	provides = webhook2muc
 	conflicts = webhook2muc
 	backup = etc/webhook2muc/webhook2muc.env
-	source = webhook2muc::git+https://gitlab.com/xmpp-rs/tokio-webhook2muc
+	source = webhook2muc::git+https://gitlab.com/ppjet6/tokio-webhook2muc#commit=41d339927006c3f19e8ede76f5f0dc35a47a0278
 	source = webhook2muc.env
 	source = webhook2muc.service
-	source = 0001-Use-iid-attribute-local-to-project-instead-of-id.patch
-	source = 0002-Trait-objects-without-explicit-dyn-are-deprecated.patch
-	source = 0003-Catch-presence-error-when-joining-MUC.patch
-	source = 0004-Use-proper-Presence-structure-when-receiving-stanzas.patch
-	source = 0005-Update-xmpp-parsers-to-0.14.patch
-	source = 0006-Joining-a-MUC-requires-a-FullJid-nick-as-resource.patch
-	source = 0007-Update-gitlab-dependency-to-0.1202.0.patch
 	sha256sums = SKIP
 	sha256sums = 3a3878cf71075383074bb9cea0613fc590f98285652db3d39c8fd97c1d79e0e7
 	sha256sums = 324a0b4cb5e2151d8284a7644d570cc68d477cd8cd1109d961578e98f86c7a60
-	sha256sums = 5e692a34c101f2d08802fa6e92aea33abb00eb9148e53dc77b10e3417c86262a
-	sha256sums = 102f576912316b375e72a0b0b8728e13071c5f6ccbbab29b57bbcd3ee897a32a
-	sha256sums = dceb8cdc246a48140a7b247886442be56a411716dfd0b833c41e7ca1982fe126
-	sha256sums = 7cbad8009b5d319fc35ad064c7504b34a8c34174d87d99b3fd2f90e53baea167
-	sha256sums = 86c29a931c5eb0121b84d81985ff9fcd908fcffae98a0e6fb1d95c3d3172ff5a
-	sha256sums = 9d57b4880ed1bc091004937a99881df8cf68c597830805396f123fb12660e472
-	sha256sums = 5f05029d53cbf2f19bf857e9a215a77206f1edad8f685e54fd55ce3eb81daa53
 
 pkgname = webhook2muc-git
 
