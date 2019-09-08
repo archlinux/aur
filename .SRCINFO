@@ -1,0 +1,17 @@
+pkgbase = vim-slime-git
+	pkgdesc = A vim plugin for REPL.
+	pkgver = r273.dc8ca22
+	pkgrel = 1
+	url = https://github.com/jpalardy/vim-slime
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = vim
+	provides = vim-slime
+	conflicts = vim-slime
+	source = git+https://github.com/jpalardy/vim-slime.git
+	md5sums = SKIP
+
+pkgname = vim-slime-git
+
