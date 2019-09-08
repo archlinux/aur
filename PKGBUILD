@@ -1,31 +1,28 @@
-# Maintainer: LinArcx <linarcx@gmail.com>
-
-pkgname='kindd'
-_pkgname='Kindd'
-_pkggit='kindd-git'
-pkgver=2.0.0
+# Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
+# Contributor: LinArcx <linarcx at gmail.com>
+pkgname=kindd
+pkgver=2.0.1
 pkgrel=1
 pkgdesc=" A Kindful dd gui written in qt quick"
-conflicts=("${_pkggit}")
 arch=('any')
 url="https://github.com/LinArcX/Kindd"
-license=('GPL-3.0')
-depends=('polkit' 'qt5-quickcontrols2' 'qt5-quickcontrols' 'qt5-graphicaleffects')
-makedepends=('git' 'qt5-base')
-source=("${pkgname}.tar.gz::https://github.com/LinArcX/Kindd/archive/${pkgver}.tar.gz")
-sha256sums=('SKIP')
+license=('GPL3')
+depends=('polkit' 'qt5-multimedia' 'qt5-quickcontrols' 'qt5-quickcontrols2')
+conflicts=("$pkgname-git")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/LinArcX/Kindd/archive/$pkgver.tar.gz")
+sha256sums=('5dbfcbc07cdc36a6a5d2b40ed5e8159a305ccc5608580635961ed9ad6f43e2b3')
 
 build() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  qmake CONFIG+=debug CONFIG+=qml_debug
-  make
+	cd "Kindd-$pkgver"
+	qmake
+	make
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  install -Dm755 ./kindd ${pkgdir}/usr/bin/kindd
-  install -Dm644 ./appconf/kindd.desktop ${pkgdir}/usr/share/applications/kindd.desktop
-  install -Dm644 ./appconf/kindd.svg ${pkgdir}/usr/share/pixmaps/kindd.svg
-  install -Dm644 ./LICENSE ${pkgdir}/usr/share/licenses/kindd/LICENSE
+	cd "Kindd-$pkgver"
+	install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
+	install -Dm644 appconf/"$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+	install -Dm644 appconf/"$pkgname.svg" "$pkgdir/usr/share/pixmaps/kindd.svg"
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
