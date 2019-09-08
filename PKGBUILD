@@ -28,7 +28,7 @@ package() {
       --prefix=/usr \
       --root="${pkgdir}"
   find "${pkgdir}" -type d -name .git -exec rm -r '{}' +
-  install -D -m644 ./README "${pkgdir}"/usr/share/rss2email/README
+  install -D -m644 ./README.rst "${pkgdir}"/usr/share/rss2email/README.rst
   install -m644 ./CHANGELOG "${pkgdir}"/usr/share/rss2email
   install -D -m644 ./r2e.1 "${pkgdir}"/usr/share/man/man1/r2e.1
 }
