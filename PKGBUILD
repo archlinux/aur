@@ -2,7 +2,7 @@
 # Contributor: Julien Nicoulaud <julien.nicoulaud@gmail.com>
 pkgname=yourkit
 _version=2019.8
-_build=109
+_build=110
 pkgver=${_version}b${_build}
 pkgrel=1
 pkgdesc="Java CPU and memory profiler."
@@ -15,7 +15,7 @@ optdepends=('intellij-idea-community-edition: A Java IDE that integrates with Yo
             'netbeans: A Java IDE that integrates with Yourkit')
 options=(!strip)
 source=(https://www.yourkit.com/download/YourKit-JavaProfiler-${_version}-b${_build}.zip)
-sha256sums=('c6d41749510f7919361fa288017e326b461d3655585fa97d407209bbbd349af7')
+sha256sums=('c06dd56e8193443d967d30a9787791af200ec8e79b71e04494a8bd73c0ff7d9c')
 
 build() {
   msg2 "Generate scripts for /usr/bin..."
