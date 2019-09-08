@@ -27,7 +27,7 @@ exec meson setup \
   --buildtype      release \
   --wrap-mode      nofallback \
   -D               b_lto=true \
-  --strip \
+  -D               strip=true \
   --cross-file ${CROSS_FILE} \
   --default-library shared \
   "$@"
