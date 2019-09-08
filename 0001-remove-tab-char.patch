@@ -1,0 +1,13 @@
+diff --git a/sccs2rcs b/sccs2rcs
+index cb5b72d..dc6b651 100755
+--- a/sccs2rcs
++++ b/sccs2rcs
+@@ -365,7 +365,7 @@ if __name__ == '__main__':
+                 except OSError:
+                     die("RCS checkin of delta failed")
+             # We're done with this master, unlock it.
+-	    do_it_or_die(sccs + "unget -r%s %s" % (rev, sccsmaster(stem)))
++            do_it_or_die(sccs + "unget -r%s %s" % (rev, sccsmaster(stem)))
+ 
+     # Generate tags from snapshots created by Emacs VC mode
+     tagnames = os.path.join("SCCS", "VC-names")
