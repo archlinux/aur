@@ -1,0 +1,19 @@
+pkgbase = maple2019
+	pkgdesc = A commercial computer algebra system developed and sold commercially by Maplesoft. Version 2019.
+	pkgver = latest
+	pkgrel = 1
+	url = https://www.maplesoft.com/download/
+	install = maple2019.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = ld-lsb
+	conflicts = maple18
+	options = !strip
+	source = maple2019.desktop
+	source = Maplesoft-x-maple-worksheet.xml
+	sha256sums = 62d6d6c4976e1c401a88094af373c07486963ca3507cf0c8fc45958c2dac460f
+	sha256sums = e29ded05d8cda39ae2c8dd2b204c3b47e5c432d75d8e2bde3ddae0b71136b643
+
+pkgname = maple2019
+

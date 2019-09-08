@@ -1,0 +1,8 @@
+post_install() {
+  echo -e "\033[1;33mRunning Maple 2019 activation wizard!\033[0m"
+  exec /usr/share/maple2019/bin/activation
+}
+
+post_upgrade() {
+  echo "Upgrading maple. Run /usr/share/maple2019/bin/activation if you need to reactivate your maple license."
+}
