@@ -1,6 +1,6 @@
 pkgbase = python-cx_oracle
 	pkgdesc = Python extension module that allows access to Oracle databases
-	pkgver = 6.1
+	pkgver = 7.2.2
 	pkgrel = 1
 	url = https://oracle.github.io/python-cx_Oracle/
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = python-cx_oracle
 	license = BSD
 	depends = python
 	depends = oracle-instantclient-sdk
-	source = https://files.pythonhosted.org/packages/source/c/cx_Oracle/cx_Oracle-6.1.tar.gz
-	sha512sums = 733ad162c87b7b2546646961984ff0c41fb78c4f95af0db742337cb4ad3e25011f27ba78ada9724c102b14e21eb7ee66f23bf15baf55454777d0e156cb9c101a
+	source = https://files.pythonhosted.org/packages/source/c/cx_Oracle/cx_Oracle-7.2.2.tar.gz
+	sha256sums = 406b312a1a6e6ee79bd530bb4390947857bd3ccc060251e56a53024bfd73e6ce
 
 pkgname = python-cx_oracle
 
