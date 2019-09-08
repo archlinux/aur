@@ -5,7 +5,7 @@ _minor=0
 _patch=4
 _build=462.3
 pkgver=${_major}.${_minor}.${_patch}b${_build}
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenJDK Java $_major runtime with some fixes and enhancements by JetBrains"
 arch=('x86_64')
 url="https://bintray.com/jetbrains/intellij-jdk"
@@ -21,6 +21,6 @@ package() {
 	rm "$srcdir/$_zipname"
 	find "$srcdir" -exec chmod g+r,o+r {} +
 	mkdir -p "$pkgdir/usr/lib/jvm"
-	cp -a "$srcdir" "$pkgdir/usr/lib/jvm/$pkgname"
+	cp -a "$srcdir/jbr" "$pkgdir/usr/lib/jvm/$pkgname"
 	ln -sf /etc/ssl/certs/java/cacerts "$pkgdir/usr/lib/jvm/$pkgname/lib/security/cacerts"
 }
