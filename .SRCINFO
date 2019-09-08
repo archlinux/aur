@@ -1,6 +1,6 @@
 pkgbase = qoob-git
 	pkgdesc = foobar-like music player for Linux
-	pkgver = r145.56cc369
+	pkgver = r161.26980df
 	pkgrel = 1
 	url = https://gitlab.com/william.belanger/qoob
 	arch = any
