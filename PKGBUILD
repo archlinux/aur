@@ -1,4 +1,4 @@
-
+# Maintainer: robertfoster
 # Contributor: Fabio Rämi <fabio[at]dynamix-tontechnik[dot]ch>
 # Contributor: speps <speps at aur dot archlinux dot org>
 
