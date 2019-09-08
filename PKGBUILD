@@ -2,7 +2,7 @@
 # Maintainer: LightDot <lightdot -a-t- g m a i l>
 
 pkgname=gplaycli
-pkgver=3.25
+pkgver=3.26
 pkgrel=1
 pkgdesc="command line tool to search/install/update Android applications Google PlayStore able to run with cronjob, in order to automatically update an F-Droid server instance"
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=('java-runtime: needed for autogeneration of a new AndroiID')
 install=$pkgname.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/matlink/gplaycli/archive/${pkgver}.tar.gz"
         "$pkgname.install")
-md5sums=('b3d71f307c721ced76bed2f06dbd9b99'
+md5sums=('f4162332406eab15f9e11e6a5c4ca970'
          'e993658f9913493bb4336d73f23a3195')
 
 package() {
