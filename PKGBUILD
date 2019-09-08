@@ -4,7 +4,7 @@
 pkgname=('linux-gpib-dkms')
 _pkgname='linux-gpib'
 pkgver=4.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A support package for GPIB (IEEE 488) hardware (DKMS version).'
 arch=('i686' 'x86_64')
 url='http://linux-gpib.sourceforge.net/'
@@ -14,12 +14,14 @@ conflicts=('linux-gpib')
 depends=('bash' 'dkms' 'bison' 'perl')
 optdepends=('fxload: firmware upload support for NI USB-B, Keithley KUSB-488 and Agilent 82357')
 source=("http://downloads.sourceforge.net/project/${_pkgname}/${_pkgname}%20for%203.x.x%20and%202.6.x%20kernels/${pkgver}/${_pkgname}-${pkgver}.tar.gz"
-        "dkms.conf.in")
+        "dkms.conf.in"
+        "dkms-kernel-version.diff")
 install='linux-gpib.install'
 backup=('etc/gpib.conf')
 
 md5sums=('3085422695baf210b866601db6108860'
-         '51d4c136aeabb10fc9976ab2539c4d79')
+         '2ca62fa9ee584853203e04ef08e6243d'
+         '079e0f9672e1957c4cae1f707b4e5ed7')
 
 prepare() {
 
@@ -28,6 +30,8 @@ prepare() {
     msg "Unpacking kernel module source"
     cd "${srcdir}/${_pkgname}-${pkgver}"
     tar xvfz "${_pkgname}-kernel-${pkgver}.tar.gz"
+    cd "${_pkgname}-kernel-${pkgver}"
+    patch -p1 < ../../dkms-kernel-version.diff
 
     msg "Unpacking userland utils source"
     cd "${srcdir}/${_pkgname}-${pkgver}"

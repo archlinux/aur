@@ -2,7 +2,7 @@ PACKAGE_NAME="linux-gpib"
 PACKAGE_VERSION="@PACKAGE_VERSION@"
 AUTOINSTALL=yes
 
-MAKE="make"
+MAKE="make LINUX_VERSION=$kernelver"
 CLEAN="make clean"
 
 BUILT_MODULE_NAME[0]="gpib_common"
