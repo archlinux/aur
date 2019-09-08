@@ -10,7 +10,8 @@ depends=('python-xcffib'
          'python-click'
          'python-xpybutil'
          'python-marshmallow'
-         'python-yaml')
+         'python-yaml'
+         'python-i3ipc')
 makedepends=('git' 'python-setuptools')
 conflicts=('flashfocus')
 provides=('flashfocus')

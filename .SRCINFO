@@ -12,6 +12,7 @@ pkgbase = flashfocus-git
 	depends = python-xpybutil
 	depends = python-marshmallow
 	depends = python-yaml
+	depends = python-i3ipc
 	provides = flashfocus
 	conflicts = flashfocus
 	source = flashfocus::git+https://www.github.com/fennerm/flashfocus.git
