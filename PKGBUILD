@@ -6,8 +6,8 @@
 # Contributor: Hawdaa
 
 pkgname=slepc
-+pkgver=3.11.2
-pkgrel=1
+pkgver=3.11.2
+pkgrel=2
 pkgdesc="Scalable library for Eigenvalue problem computations"
 arch=('i686' 'x86_64')
 url="http://www.grycap.upv.es/slepc"
@@ -15,7 +15,7 @@ license=('BSD')
 depends=('petsc>=3.11')
 install=slepc.install
 source=(http://slepc.upv.es/download/distrib/${pkgname}-${pkgver/_/-}.tar.gz)
-+sha256sums=('cd6a73ac0c9f689c12f2987000a7a28fa7df53fdc069fb59a2bb148699e741dd')
+sha256sums=('cd6a73ac0c9f689c12f2987000a7a28fa7df53fdc069fb59a2bb148699e741dd')
 
 export MAKEFLAGS="-j1"
 
