@@ -1,17 +1,15 @@
 pkgbase = rss2email
 	pkgdesc = A tool for delivering news from RSS feeds to your email program
-	pkgver = 2.71
-	pkgrel = 4
-	url = http://www.allthingsrss.com/rss2email
+	pkgver = 3.10
+	pkgrel = 1
+	url = https://github.com/rss2email/rss2email
 	arch = any
 	license = GPL
-	depends = python2
-	depends = python2-html2text
-	depends = python2-feedparser
-	source = http://www.allthingsrss.com/rss2email/rss2email-2.71.tar.gz
-	source = r2e.sh
-	sha256sums = d5245197a5034410405f1f5794610b84bf26c0c40c8d05fe0895116797a99b31
-	sha256sums = 9ff592e44705f771f0b75a9268b8239d5c13764c4c500d76f539344610a62f3f
+	depends = python
+	depends = python-html2text
+	depends = python-feedparser
+	source = rss2email-3.10.tar.gz::https://github.com/rss2email/rss2email/archive/v3.10.tar.gz
+	sha256sums = 922b33f5bc3bce20568b977bff84dfdef3f1f7117fc70cc0b1bee7daa0e0acac
 
 pkgname = rss2email
 
