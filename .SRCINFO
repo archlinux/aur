@@ -1,0 +1,9 @@
+pkgbase = raspberrypi-stop-initramfs
+	pkgdesc = Prevent kernel updates on RPix from generating useless kernel images
+	pkgver = 1
+	pkgrel = 1
+	arch = armv6h
+	arch = armv7h
+
+pkgname = raspberrypi-stop-initramfs
+
