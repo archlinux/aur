@@ -1,0 +1,33 @@
+pkgbase = mailwizard-git
+	pkgdesc = Configure neomutt, isync, getmail and msmtp with pass for passwords
+	pkgver = r723.b52a03b
+	pkgrel = 1
+	url = https://github.com/rpuntaie/mailwizard
+	changelog = changelog.txt
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = neomutt
+	depends = isync
+	depends = getmail
+	depends = msmtp
+	depends = pass
+	depends = urlscan
+	optdepends = imagemagick: view images inside of the neomutt TUI
+	optdepends = w3m: view HTML email and images inside of the neomutt TUI
+	optdepends = lynx: view HTML email inside of the neomutt TUI
+	optdepends = links: view HTML email inside of the neomutt TUI
+	optdepends = elinks: view HTML email inside of the neomutt TUI
+	optdepends = abook: contact store and tab completion
+	optdepends = cronie: auto-sync mails - alt.: fcron
+	optdepends = fcron: auto-sync mails - alt.: cronie
+	optdepends = pam-gnupg: automatically unlock gpg keys at session login
+	provides = mailwizard
+	conflicts = mailwizard
+	conflicts = mutt-wizard
+	options = zipman
+	source = git+https://github.com/rpuntaie/mailwizard
+	sha256sums = SKIP
+
+pkgname = mailwizard-git
+
