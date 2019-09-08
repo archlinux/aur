@@ -12,13 +12,6 @@ conflicts=('pyload' 'pyload-hg')
 backup=('var/lib/pyload/pyload.conf')
 depends=('python' 'python-cheroot' 'python-cryptography' 'python-flask' 'python-flask-babel' 'python-filetype' 'python-flask-themes2' 'python-pycurl' 'python-requests-html' 'python-semver')
 makedepends=('python-setuptools' 'python-babel' 'python-jinja2')
-optdepends=('python-beautifulsoup4: for web scraping'
-	'python-colorlog: for colored log output'
-	'python-pycryptodomex: for low-level crypto routines'
-	'python-pillow: Captcha resolver'
-	'python-pyopenssl: ssl support'
-	'python-send2trash: trash support'
-)
 makedepends=('git')
 install='pyload-git.install'
 
