@@ -1,0 +1,7 @@
+language: c
+compiler: gcc
+
+script:
+  - gcc random.c -o random
+  - ./random
+  - ./random -f -d 4 -g 10
