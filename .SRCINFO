@@ -1,0 +1,19 @@
+pkgbase = mapdamage
+	pkgdesc = Tracking and quantifying damage patterns in ancient DNA sequences
+	pkgver = 2.0.9
+	pkgrel = 1
+	url = https://ginolhac.github.io/mapDamage
+	install = mapdamage.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = python2-setuptools
+	depends = python2
+	depends = python2-pysam
+	depends = gsl
+	optdepends = r: For statistical estimation of DNA damage parameters
+	source = https://github.com/ginolhac/mapDamage/archive/2.0.9.tar.gz
+	sha256sums = 25fadf8a1a0a1f6fcd0df283201edcb308bc6ee35264f6ac81a8efe8b7357508
+
+pkgname = mapdamage
+

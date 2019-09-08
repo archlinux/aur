@@ -1,0 +1,9 @@
+post_install() {
+  echo "When using functionality that depends on R you must install the"
+  echo "following R packages:"
+  echo "inline, gam, Rcpp, RcppGSL, ggplot2"
+}
+
+post_upgrade() {
+  post_install
+}
