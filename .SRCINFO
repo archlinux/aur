@@ -1,0 +1,13 @@
+pkgbase = python-braceexpand
+	pkgdesc = Bash-style brace expansion
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/KenKundert/braceexpand
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	source = https://files.pythonhosted.org/packages/source/b/braceexpand/braceexpand-0.1.2.tar.gz
+	sha256sums = 13980ad19c80ed6097c245febb694e57baffd8179b50bc80437003eb01465ecb
+
+pkgname = python-braceexpand
+
