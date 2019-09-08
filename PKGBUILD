@@ -2,7 +2,7 @@
 
 pkgname='pyload-git'
 pkgver=v0.4.9.r4782.gd686d625b
-pkgrel=1
+pkgrel=2
 pkgdesc="Downloadtool for One-Click-Hoster written in python. Latest stable branch"
 url="https://github.com/pyload/pyload"
 license=('GPL')
@@ -11,8 +11,8 @@ provides=('pyload')
 conflicts=('pyload' 'pyload-hg')
 backup=('var/lib/pyload/pyload.conf')
 depends=('python' 'python-cheroot' 'python-cryptography' 'python-flask' 'python-flask-babel' 'python-filetype' 'python-flask-themes2' 'python-pycurl' 'python-requests-html' 'python-semver')
-makedepends=('git' 'python-setuptools' 'python-babel')
-install='pyload-git.install'
+makedepends=('git' 'python-jinja' 'python-setuptools')
+#install='pyload-git.install'
 
 source=("$pkgname::git+https://github.com/pyload/pyload.git"
 'pyload.service')
@@ -39,7 +39,6 @@ package() {
 
 	# Create PyLoad service
 	install -D -m 644 ${srcdir}/pyload.service ${pkgdir}/usr/lib/systemd/system/pyload.service
-	install -D -m 644 ${srcdir}/pyload.conf ${pkgdir}/var/lib/pyload/pyload.conf
 }
 
 md5sums=('SKIP'

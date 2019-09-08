@@ -1,14 +1,13 @@
 pkgbase = pyload-git
 	pkgdesc = Downloadtool for One-Click-Hoster written in python. Latest stable branch
 	pkgver = v0.4.9.r4782.gd686d625b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pyload/pyload
-	install = pyload-git.install
 	arch = any
 	license = GPL
 	makedepends = git
+	makedepends = python-jinja
 	makedepends = python-setuptools
-	makedepends = python-babel
 	depends = python
 	depends = python-cheroot
 	depends = python-cryptography
