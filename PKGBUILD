@@ -73,6 +73,10 @@ build() {
       if [ -v _cuda_capability ]; then
         _EXTRAOPTS+=(-DCYCLES_CUDA_BINARIES_ARCH=$(IFS=';'; echo "${_cuda_capability[*]}";))
       fi
+      [ -f "/usr/lib/ccache/bin/nvcc-ccache" ] && _CMAKE_FLAGS+=( -DCUDA_NVCC_EXECUTABLE=/usr/lib/ccache/bin/nvcc-ccache )
+      if _cuda_gcc=$(basename $(readlink /opt/cuda/bin/gcc)) ; then
+        [ -L "/usr/lib/ccache/bin/$_cuda_gcc" ] && _CMAKE_FLAGS+=( -DCUDA_HOST_COMPILER=/usr/lib/ccache/bin/$_cuda_gcc )
+      fi
   fi
 
   ((DISABLE_NINJA)) && generator="Unix Makefiles" || generator="Ninja"
