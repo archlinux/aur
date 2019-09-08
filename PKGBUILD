@@ -1,7 +1,7 @@
 # Maintainer: Michael Koloberdin <koloberdin@gmail.com>
 # Contributor: Alain Kalker <a.c.kalker@gmail.com>
 pkgname=shen-sbcl
-pkgver=2.5.0
+pkgver=2.6.0
 pkgrel=1
 epoch=1
 pkgdesc="A portable functional programming language (SBCL port)"
@@ -13,7 +13,7 @@ makedepends=('sbcl')
 provides=('shen')
 options=(!strip)
 source=(https://github.com/Shen-Language/shen-cl/archive/v$pkgver.tar.gz)
-sha512sums=('15cc3439e9a78e50dbd9341d49b195f231b1b0b76e1131568546ed26829e35076487785361bbbcbeb4efd56075cc112fddbd5026fa871c33f5b5331d78a4a35d')
+sha512sums=('acb4e7336f3e3a2e48ffc552bbcf05e59ff8a190849593a4777f98c348b577e77ce5b49ed0d58737612bfaabe650b7dc4ca39c3ef8fb4986d021358fbbeb5300')
 
 build() {
     cd "$srcdir/shen-cl-$pkgver"
