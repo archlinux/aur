@@ -2,7 +2,7 @@
 
 pkgname="surface-control"
 pkgver=0.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Control various aspects of Microsoft Surface devices from the Command-Line'
 license=('MIT')
 arch=('x86_64')
@@ -18,7 +18,7 @@ sha256sums=(
 )
 
 build(){
-    cd "src"
+    cd "${srcdir}/src"
     env CARGO_TARGET_DIR="target" CARGO_INCREMENTAL=0 cargo build --release --locked
     strip --strip-all "target/release/surface"
 }
