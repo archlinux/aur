@@ -9,6 +9,7 @@ license=('custom')
 url=https://www.zivid.com
 
 depends=()
+replaces=(z i v i d - t e l i c a m - s d k)
 groups=(zivid-all)
 
 source=(https://www.zivid.com/hubfs/softwarefiles/releases/1.5.0+63f281e2-26/u18/zivid-telicam-driver_2.0.0.1-1_amd64.deb)
