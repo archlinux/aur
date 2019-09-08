@@ -9,7 +9,7 @@ license=('custom')
 url=https://www.zivid.com
 
 depends=(zivid)
-replaces=()
+conflicts=()
 groups=(zivid-all)
 
 source=(https://www.zivid.com/hubfs/softwarefiles/releases/1.5.0+63f281e2-26/u18/zivid-studio_1.5.0+63f281e2-26_amd64.deb)
