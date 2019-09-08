@@ -10,7 +10,7 @@ depends=('gcc-libs')
 makedepends=('rust' 'cargo')
 
 source=(
-    "src::git+https://github.com/qzed/linux-surface-control.git#tag=v${pkgver}"
+    "${pkgname}::git+https://github.com/qzed/linux-surface-control.git#tag=v${pkgver}"
 )
 
 sha256sums=(
@@ -18,7 +18,7 @@ sha256sums=(
 )
 
 build(){
-    cd "${srcdir}/src"
+    cd "${srcdir}/${pkgname}"
     env CARGO_TARGET_DIR="target" CARGO_INCREMENTAL=0 cargo build --release --locked
     strip --strip-all "target/release/surface"
 }

@@ -7,7 +7,7 @@ pkgbase = surface-control
 	makedepends = rust
 	makedepends = cargo
 	depends = gcc-libs
-	source = src::git+https://github.com/qzed/linux-surface-control.git#tag=v0.2.3
+	source = surface-control::git+https://github.com/qzed/linux-surface-control.git#tag=v0.2.3
 	sha256sums = SKIP
 
 pkgname = surface-control
