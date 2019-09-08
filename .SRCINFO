@@ -1,6 +1,6 @@
 pkgbase = imgbrd-grabber-git
 	pkgdesc = Very customizable imageboard/booru downloader with powerful filenaming features.
-	pkgver = v6.0.6.r0.56818e04
+	pkgver = v7.1.1.r3.1254e59f
 	pkgrel = 1
 	url = https://github.com/Bionus/imgbrd-grabber
 	arch = i686
@@ -13,7 +13,6 @@ pkgbase = imgbrd-grabber-git
 	depends = qt5-multimedia
 	depends = qt5-declarative
 	depends = nodejs
-	depends = openssl-1.0
 	provides = imgbrd-grabber
 	conflicts = imgbrd-grabber
 	source = git+https://github.com/Bionus/imgbrd-grabber.git
