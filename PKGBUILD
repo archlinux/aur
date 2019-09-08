@@ -5,9 +5,9 @@
 pkgname=hop
 epoch=1
 pkgver=3.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Software Development Kit for the Web"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 license=('GPL' 'LGPL')
 depends=('bigloo' 'gmp' 'libunistring' 'libuv' 'avahi' 'sqlite')
 makedepends=('git')
@@ -22,10 +22,10 @@ options=('!makeflags')
 build() {
   cd $pkgname
   ./configure --prefix=/usr --etcdir=/etc/hop --mandir=/usr/share/man \
-	      --disable-ssl --bigloobindir=/usr/bin \
-	      --bigloolibdir=/usr/lib/bigloo/4.3f
-  make
-  make doc
+	      --disable-ssl --bigloobindir=/usr/bin --link=dynamic \
+	      --bigloolibdir=/usr/lib/bigloo/4.3e
+  sed -i 's/, -static-all-bigloo//' share/Makefile
+  LD_LIBRARY_PATH="$PWD/lib/hop/3.1.0/" make
 }
 
 check() {
@@ -44,5 +44,5 @@ package() {
 	  "$pkgdir"/usr/lib/systemd/system/hop.socket
 
   install -Dm755 arch/archlinux/bin/hop.sh "$pkgdir"/usr/bin/hop.sh
-  cd "$pkgdir"/usr/bin; rm hop; ln -s hop-3.0.0 hop
+  cd "$pkgdir"/usr/bin; rm hop; ln -s hop-3.1.0 hop
 }
