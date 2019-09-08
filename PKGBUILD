@@ -10,6 +10,8 @@ url=https://www.zivid.com
 
 depends=()
 conflicts=(zivid-telicam-sdk)
+provides=(zivid-telicam-sdk)
+
 groups=(zivid-all)
 
 source=(https://www.zivid.com/hubfs/softwarefiles/releases/1.5.0+63f281e2-26/u18/zivid-telicam-driver_2.0.0.1-1_amd64.deb)
