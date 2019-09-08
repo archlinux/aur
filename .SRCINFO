@@ -1,0 +1,13 @@
+pkgbase = splitpath
+	pkgdesc = Safely split paths in many ways
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/dino-/splitpath
+	arch = x86_64
+	license = ISC
+	options = !strip
+	source = https://github.com/dino-/splitpath/releases/download/1.0/splitpath-1.0-x86_64.AppImage
+	sha256sums = 32fccf605515d345e0279c8588417d0fc4a60c3961d88e341103f4954879c100
+
+pkgname = splitpath
+
