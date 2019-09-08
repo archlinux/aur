@@ -1,7 +1,7 @@
 # Maintainer: Wesley Moore <wes@wezm.net>
 
 pkgname=diffr
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='Word-by-word diff highlighting tool'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 conflicts=('diffr-git')
 makedepends=('rust' 'cargo' 'git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('28e6f17895cef68854b859bc4e7aebffeca36a678cb3ab5a611872356d845b0b')
+sha256sums=('76767fec7bcec1f86ed0c21c05ce4fee3ac41e00f2b88e91249102b02c0f7307')
 
 build() {
   cd "$pkgname-$pkgver"
