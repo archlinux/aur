@@ -1,0 +1,23 @@
+pkgbase = dotfonts-git
+	pkgdesc = Find beautiful fonts and easy install. Designed for Pantheon Shell
+	pkgver = r47.005e917
+	pkgrel = 1
+	url = https://github.com/aimproxy/dotfonts
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = vala
+	depends = gtk3
+	depends = granite
+	depends = gtksourceview3
+	depends = libsoup
+	depends = json-glib
+	provides = dotfonts
+	conflicts = dotfonts
+	source = git+https://github.com/aimproxy/dotfonts.git
+	md5sums = SKIP
+
+pkgname = dotfonts-git
+
