@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=hoteldruid
-pkgver=2.1.1
+pkgver=2.3.2
 pkgrel=1
 pkgdesc="A php software to manage hotel reservations and booking"
 arch=('i686' 'x86_64')
@@ -14,8 +14,8 @@ conflicts=('php-residence')
 source=(http://www.digitaldruid.net/download/${pkgname}_${pkgver}.tar.gz)
 
 package() {
-	install -d $pkgdir/srv/http/$pkgname
-        cp -r $srcdir/$pkgname/* ${pkgdir}/srv/http/$pkgname
+	install -d $pkgdir/usr/share/webapps/$pkgname
+	cp -r $srcdir/$pkgname/* ${pkgdir}/usr/share/webapps/$pkgname
 }
 
-md5sums=('aec2542864f938647db29bc6ee25d02f')
+md5sums=('6945cf052fe7fdf94c70a6daa3599678')

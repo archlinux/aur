@@ -1,6 +1,6 @@
 pkgbase = hoteldruid
 	pkgdesc = A php software to manage hotel reservations and booking
-	pkgver = 2.1.1
+	pkgver = 2.3.2
 	pkgrel = 1
 	url = http://www.digitaldruid.net/php-residence/
 	install = hoteldruid.install
@@ -12,8 +12,8 @@ pkgbase = hoteldruid
 	optdepends = apache: Web server to run wordpress
 	optdepends = cherokee: Lightweight Web server to run wordpress
 	conflicts = php-residence
-	source = http://www.digitaldruid.net/download/hoteldruid_2.1.1.tar.gz
-	md5sums = aec2542864f938647db29bc6ee25d02f
+	source = http://www.digitaldruid.net/download/hoteldruid_2.3.2.tar.gz
+	md5sums = 6945cf052fe7fdf94c70a6daa3599678
 
 pkgname = hoteldruid
 
