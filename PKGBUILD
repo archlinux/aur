@@ -1,15 +1,16 @@
+# Maintainer: Alexander Fasching <fasching.a91@gmail.com>
 _pkgname=aioconsole
 pkgname=python-aioconsole
-pkgver=0.1.11
-pkgrel=2
+pkgver=0.1.15
+pkgrel=1
 pkgdesc="Asynchronous console and interfaces for asyncio"
 arch=('any')
 url="https://github.com/vxgmichel/aioconsole"
 license=('GPLv3')
 depends=('python' 'python-setuptools')
 _name=${pkgname#python-}
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_pkgname}-${pkgver}.tar.gz")
-md5sums=('019845651ddd50d119c3222a5d20e142')
+source=("https://github.com/vxgmichel/${_name}/archive/v${pkgver}.tar.gz")
+md5sums=('e5234a8dd84510a81eabfba145c46d05')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"

@@ -1,0 +1,4 @@
+v*.tar.gz
+src
+pkg
+python-aioconsole-*.pkg.tar.xz
