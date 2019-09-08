@@ -2,7 +2,7 @@
 
 _pkgname=RestrictedPython
 pkgname=python-restrictedpython
-pkgver=4.0
+pkgver=5.0
 pkgrel=1
 pkgdesc="A restricted execution environment for Python to run untrusted code"
 provides=('python-restrictedpython')
@@ -14,11 +14,14 @@ depends=("python")
 makedepends=("python" "python-setuptools")
 checkdepends=("python-pytest" "python-pytest-mock")
 source=("https://github.com/zopefoundation/$_pkgname/archive/$pkgver.tar.gz")
-sha512sums=('551a6976b42e94d9f9e1eb643761108e891a9d8cb920432c4450a37676d2f1375d6ddb7c28787830dabba9f07d846da151d0b02628785d55b253949abb92aadc')
+sha512sums=('21d64123be0b33cba1689a70ce94bb506c8f52f3f2d1241b8c4732de1bdf92c37b53acc5d86f8f72324e370bcb950120e278be6571c2d640bdb324909c7d5273')
 
 check() {
   cd "$srcdir/$_pkgname-$pkgver"
+  # Source files are inside the src directory and the module is not in the PATH when running tests
+  mv src/RestrictedPython RestrictedPython
   py.test
+  mv RestrictedPython src/RestrictedPython
 }
 
 package() {
