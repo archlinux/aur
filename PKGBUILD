@@ -2,7 +2,7 @@
 
 pkgname="surface-control"
 pkgver=0.2.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Control various aspects of Microsoft Surface devices from the Command-Line'
 url='https://github.com/qzed/linux-surface-control'
 license=('MIT')
