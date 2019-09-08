@@ -2,7 +2,7 @@
 
 pkgname=pext-git
 _pkgname=Pext
-pkgver=0.24.0.r16.6aaaffe
+pkgver=0.24.1
 pkgrel=1
 pkgdesc='Python-based extendable tool'
 url='https://pext.io/'
