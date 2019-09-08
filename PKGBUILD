@@ -2,7 +2,7 @@
 
 pkgname=kotlin-native-bin
 pkgver=1.3.50
-pkgrel=1
+pkgrel=2
 pkgdesc="A LLVM backend for the Kotlin compiler"
 arch=('x86_64')
 url="https://github.com/JetBrains/kotlin-native"
@@ -23,6 +23,8 @@ package() {
   install -d "${pkgdir}/usr/lib"
 
   cp -r "kotlin-native-linux-${pkgver}" "${pkgdir}/usr/lib/kotlin-native"
+  # Fix permissions for some files, e.g. /usr/lib/kotlin-native/klib/common/stdlib/ir/ir_tables/*.knt
+  chmod -R +r "${pkgdir}/usr/lib/kotlin-native"
 
   ln -s /usr/lib/kotlin-native/bin/kotlinc-native "${pkgdir}/usr/bin/kotlinc-native"
   ln -s /usr/lib/kotlin-native/bin/konanc "${pkgdir}/usr/bin/konanc"
