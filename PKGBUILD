@@ -17,6 +17,7 @@ source=("${_pyname}-${pkgver}.tar.gz::https://github.com/kennethreitz/${_pyname}
 
 package() {
   cd "${srcdir}/${_pyname}-${pkgver}"
+  sed -i "s|bs4|beautifulsoup4|g" setup.py
   python setup.py install -O1 --root="${pkgdir}"
   install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm 644 README.rst "${pkgdir}/usr/share/doc/${pkgname}/README"
