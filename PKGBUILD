@@ -1,13 +1,13 @@
 # Maintainer: Alexander Fasching <fasching.a91@gmail.com>
 pkgname=direwolf-git
 _pkgname=direwolf
-pkgver=1.5.beta4.r63.ge219426
-pkgrel=2
+pkgver=1.5.beta4.r64.gc72d06c
+pkgrel=1
 pkgdesc="Software modem/TNC and APRS encoder/decoder"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://github.com/wb2osz/direwolf"
 license=('GPL')
-depends=('alsa-lib' 'gpsd')
+depends=('alsa-lib' 'gpsd' 'hamlib')
 makedepends=('git')
 provides=('direwolf')
 conflicts=('direwolf')
