@@ -3,9 +3,10 @@
 # Contributor: Andreas Bilke <abilke at cosy dot sbg dot ac dot at>
 # Contributor: Myles English <myles at rockhead dot biz>
 # Contributor: Lucas H. Gabrielli <heitzmann at gmail dot com>
+# Contributor: Hawdaa
 
 pkgname=slepc
-pkgver=3.11.1
++pkgver=3.11.2
 pkgrel=1
 pkgdesc="Scalable library for Eigenvalue problem computations"
 arch=('i686' 'x86_64')
@@ -14,7 +15,7 @@ license=('BSD')
 depends=('petsc>=3.11')
 install=slepc.install
 source=(http://slepc.upv.es/download/distrib/${pkgname}-${pkgver/_/-}.tar.gz)
-sha256sums=('4816070d4ecfeea6212c6944cee22dc7b4763df1eaf6ab7847cc5ac5132608fb')
++sha256sums=('cd6a73ac0c9f689c12f2987000a7a28fa7df53fdc069fb59a2bb148699e741dd')
 
 export MAKEFLAGS="-j1"
 
