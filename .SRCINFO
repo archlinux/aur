@@ -7,6 +7,7 @@ pkgbase = lutris-git
 	license = GPL3
 	checkdepends = xorg-server-xvfb
 	checkdepends = xterm
+	checkdepends = python-nose-cover3
 	checkdepends = wine
 	checkdepends = webkit2gtk
 	makedepends = git
