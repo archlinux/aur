@@ -1,22 +1,21 @@
 pkgname=nix-bin
-pkgver=2.2.2
+pkgver=2.3
 pkgrel=1
 pkgdesc="A purely functional package manager - /nix/store multi-user edition"
 arch=('i686' 'x86_64')
 url="https://nixos.org/nix"
 license=('LGPL')
-makedepends=('bzip2')
+makedepends=('xz')
 conflicts=('nix')
 install=nix.install
-source_x86_64=("https://nixos.org/releases/nix/nix-$pkgver/nix-$pkgver-x86_64-linux.tar.bz2")
-source_i686=("https://nixos.org/releases/nix/nix-$pkgver/nix-$pkgver-i686-linux.tar.bz2")
+source_x86_64=("https://nixos.org/releases/nix/nix-$pkgver/nix-$pkgver-x86_64-linux.tar.xz")
+source_i686=("https://nixos.org/releases/nix/nix-$pkgver/nix-$pkgver-i686-linux.tar.xz")
 source=(nix.install nix.tmpfiles nix.conf nix-channels)
 backup=('etc/nix/nix.conf' 'root/.nix-channels')
 options=('!strip' 'staticlibs' 'libtool' 'emptydirs')
 SOURCE_DATE_EPOCH=1
 
-NIX_STORE_NIX=hbhdjn5ik3byg642d1m11k3k3s0kn3py-nix-2.2.2
-NIX_STORE_CACERT=rikxx4wdaj7b4qp1lizzmn7884hh537k-nss-cacert-3.42
+NIX_STORE_NIX=3ds3cgji9vjxdbgp10av6smyym1126d1-nix-2.3
 NIX_SRC=nix-$pkgver-$CARCH-linux
 
 build() {
@@ -69,5 +68,5 @@ package() {
   done
 }
 sha256sums=(SKIP SKIP SKIP SKIP)
-sha256sums_i686=('b055b9ac5e65d43cb6b1d1fe99eb106371a6b5782c3522209a73f473dc7b8779')
-sha256sums_x86_64=('7ce46548509837d4bc8d01b63973f8fb8972fbbe8ba6a9b5e929cf5954c3d85e')
+sha256sums_i686=('e1c6fa89a0d55a56cddb5f26598a15e0f238115423ad884a3673a3e4815fd33b')
+sha256sums_x86_64=('e43f6947d1f302b6193302889e7800f3e3dd4a650b6f929c668c894884a02701')
