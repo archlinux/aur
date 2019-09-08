@@ -11,8 +11,7 @@ provides=('pyload')
 conflicts=('pyload' 'pyload-hg')
 backup=('var/lib/pyload/pyload.conf')
 depends=('python' 'python-cheroot' 'python-cryptography' 'python-flask' 'python-flask-babel' 'python-filetype' 'python-flask-themes2' 'python-pycurl' 'python-requests-html' 'python-semver')
-makedepends=('python-setuptools' 'python-babel' 'python-jinja2')
-makedepends=('git')
+makedepends=('git' 'python-setuptools' 'python-babel' 'python-jinja2')
 install='pyload-git.install'
 
 source=("$pkgname::git+https://github.com/pyload/pyload.git"
@@ -44,4 +43,4 @@ package() {
 }
 
 md5sums=('SKIP'
-         '75069bddcec3ee630d2abea02ffef0b4')
+'75069bddcec3ee630d2abea02ffef0b4')
