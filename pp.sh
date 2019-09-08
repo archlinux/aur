@@ -22,7 +22,8 @@ mirrorArray=( $(shuf -e "${mirrorArray[@]}") )
 #now get the list of stuff to update
 readarray -t packageList < <(checkupdates | cut -d ' ' -f 1,4)
 
-pidToWait=''
+pidToWait=()
+pidToWaitStr=""
 mirrorIndex=0
 for pkgNameAndVersion in "${packageList[@]}"; do
 	pkgName=${pkgNameAndVersion% *}
@@ -46,6 +47,9 @@ for pkgNameAndVersion in "${packageList[@]}"; do
 	done
 	
 	aria2c -c $downloadList -d "$pacmanCahceDir" &> /dev/null &
+	pidTmp=($!)
+	pidToWait+=$pidTmp
+	pidToWaitStr+=" $pidTmp"
 	
 	running=$(jobs |wc -l)
 	echo ">>> $(date +%T) | Downloading $pkgName, $running/$maxParallelDownload download"
@@ -57,8 +61,12 @@ for pkgNameAndVersion in "${packageList[@]}"; do
 done
 
 #now wait for all remaining jobs
-echo "all download started, waiting for completition"
-wait
+echo "all download started, waiting for completition ${pidToWaitStr}"
+
+for pid in "${pidToWait[@]}"; do
+	wait -n
+	# do something when a job completes
+done
 
 if [[ $# -gt 0 ]]; then
 	echo "downloads complete, calling $1"
