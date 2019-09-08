@@ -47,13 +47,22 @@ arch:
   - |
      [ "$TRAVIS" == "true" ] && TRAVIS=1 || TRAVIS=0
 # Build
+  - 'echo "Travis initialization time:      $travis_uptime"'
+  - "arch_uptime=$(cut -d' ' -f1 /proc/uptime|cut -d'.' -f1)"
+  - 'echo "Arch-Travis initialization time: $((arch_uptime-travis_uptime)) seconds"'
   - ccache -s
-  - timeout 30m makepkg -s --noconfirm | ts -s '[%.T]'; _makepkg_return=${PIPESTATUS[0]}
+  - ccache -z
+# set timeout to 50m minus current uptime, minus travis cache in time, minus 60 second buffer for arch-travis cleanup.
+  - timeout $((50*60-arch_uptime-travis_uptime-60)) makepkg -s --noconfirm > >(ts -s '%.T'); _makepkg_return=$?
   - sudo pacman -Sc --noconfirm
   - ccache -s
+  - ccache -z
   - exit $_makepkg_return
 script:
-- "curl -s https://raw.githubusercontent.com/bartoszek/arch-travis/base64-encode/arch-travis.sh| bash"
+- "export travis_uptime=$(cut -d' ' -f1 /proc/uptime|cut -d'.' -f1)"
+- 'echo "Travis initialization time: $travis_uptime seconds"'
+# assume caching out will take the same amount of time as caching in those making build time equal to 50 minutes minus two time current uptime.
+- "curl -s https://raw.githubusercontent.com/bartoszek/arch-travis/base64-encode/arch-travis.sh| timeout $((50*60-2*travis_uptime)) bash"
 - "echo pacman pkg cache size: $(du -h ~/.pkg-cache|cut -f1) in $(ls ~/.pkg-cache|wc -l) files"
 
 #deploy:
