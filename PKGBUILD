@@ -39,7 +39,6 @@ package() {
   install -Dm 4755 -o root "$srcdir/$_pkgname/$_pkgname/bin/Debug/netcoreapp2.2/linux-x64/publish/genie" -t "$pkgdir/usr/bin"
   install -Dm 644 -o root "$srcdir/$_pkgname/$_pkgname/bin/Debug/netcoreapp2.2/linux-x64/publish/genie.dll" -t "$pkgdir/usr/bin"
   install -Dm 644 -o root "$srcdir/$_pkgname/$_pkgname/bin/Debug/netcoreapp2.2/linux-x64/publish/Linux.ProcessManager.dll" -t "$pkgdir/usr/bin"
-  install -Dm 644 -o root "$srcdir/$_pkgname/$_pkgname/bin/Debug/netcoreapp2.2/linux-x64/publish/Linux.ProcessManager.dll" -t "$pkgdir/usr/bin"
   install -Dm 644 -o root "$srcdir/$_pkgname/$_pkgname/bin/Debug/netcoreapp2.2/linux-x64/publish/System.CommandLine.dll" -t "$pkgdir/usr/bin"
   install -Dm 644 -o root "$srcdir/$_pkgname/$_pkgname/bin/Debug/netcoreapp2.2/linux-x64/publish/Tmds.LibC.dll" -t "$pkgdir/usr/bin"
   install -Dm 644 -o root "$srcdir/$_pkgname/$_pkgname/bin/Debug/netcoreapp2.2/linux-x64/publish/genie.runtimeconfig.json" -t "$pkgdir/usr/bin"
