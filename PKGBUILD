@@ -3,7 +3,7 @@
 
 _pkgname=airgeddon
 pkgname=$_pkgname-git
-pkgver=r1816.a3975e5
+pkgver=r1879.6810d79
 pkgrel=1
 pkgdesc='Multi-use bash script for Linux systems to audit wireless networks'
 url='https://github.com/v1s1t0r1sh3r3/airgeddon'
@@ -13,6 +13,7 @@ depends=(
   'aircrack-ng' 'bash>=4.2' 'coreutils'
   'gawk' 'iproute2' 'iw' 'net-tools'
   'sed' 'wireless_tools' 'xterm' 'tmux'
+  'pciutils'
 )
 optdepends=(
   'asleap: Actively recover LEAP/PPTP passwords'
@@ -25,7 +26,6 @@ optdepends=(
   'dsniff: Collection of tools for network auditing and penetration testing'
   'ethtool: Utility for controlling network drivers and hardware'
   'ettercap: A network sniffer/interceptor/logger for ethernet LANs'
-  'expect: A tool for automating interactive applications'
   'hashcat: Multithreaded advanced password recovery utility'
   'hostapd: IEEE 802.11 AP, IEEE 802.1X/WPA/WPA2/EAP/RADIUS Authenticator'
   'hostapd-wpe: Modified hostapd to facilitate AP impersonation attacks'
@@ -36,7 +36,6 @@ optdepends=(
   'mdk4: WLAN penetration tool'
   'nftables: This software provides an in-kernel packet classification framework'
   'openssl: The Open Source toolkit for Secure Sockets Layer and Transport Layer Security'
-  'pciutils: PCI bus configuration space access library and tools'
   'pixiewps: Offline bruteforce of the WPS pin exploiting the low or non-existing entropy of some APs'
   'reaver: Brute force attack against Wifi Protected Setup'
   'rfkill: Tool for enabling and disabling wireless devices'
