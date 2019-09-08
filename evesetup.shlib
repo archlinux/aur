@@ -13,7 +13,7 @@ SHAREDIR="$HOME/.eve"
 
 check_elv() {
 	ELBIN=$(getdate $LAUNCHER/evelauncher)
-	ELBIN=$(expr ${ELBIN:-60} / 60 \* 60)
+	ELBIN=$(expr $ELBIN / 60 \* 60)
 	ELARC=$(getdate $SETUPDIR/lib/evelauncher-$ELVER.tar.?z)
 	ELARC=$(expr $ELARC / 60 \* 60)
 	if [ "$ELBIN" -lt "$ELARC" ] ;then
@@ -117,7 +117,8 @@ desktop_msg() {
 }
 
 getdate() {
-    printf $(ls -l --time-style=+%s $1 2>/dev/null | cut -d' ' -f6)
+    printf $(ls -l --time-style=+%s $1 2>/dev/null | cut -d' ' -f6) \
+	2>/dev/null || printf 60
 }
 
 getval() {

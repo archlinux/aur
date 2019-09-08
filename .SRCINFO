@@ -1,7 +1,7 @@
 pkgbase = evesetup
 	pkgdesc = An inofficial EVE Online Launcher Setup Tool.
 	pkgver = 1548102
-	pkgrel = 2
+	pkgrel = 3
 	url = https://forums.eveonline.com/t/eve-installing/71494
 	arch = x86_64
 	license = custom
@@ -56,7 +56,7 @@ pkgbase = evesetup
 	sha256sums = 892668cc9ceff769beba2d0b286566937de28ad4b1c245cba5cbb1113e74a4c9
 	sha256sums = b1faa042a96746fe80ea5d85a0c26e80b29353394897774f45b9e48e0639a1d8
 	sha256sums = 80fceef0e28c2291cd4ba3924410211edd188717be093ffc329d18697583bd21
-	sha256sums = 211473f0ae06eb3646bfaa6c64fcd102ee156df8404c4eef18fdadeecfe6f742
+	sha256sums = 55490eb289afd5526a470d5df20cd1a97bb5b2b11c14defa3b36c7f354676237
 	sha256sums = a8e604e6481b9a386269b6252852ee57812fc932f44f767982c4dbac168bb03b
 	sha256sums = cd840d3ad3a21517f30bb4979c97adaaccba2affdddaa5da2889f4fd2ba89578
 	sha256sums = 546aaf5669dc3d3f1b2fff1b9a493d8ba31c19940a04fa4b9eb080e7301df4bd
