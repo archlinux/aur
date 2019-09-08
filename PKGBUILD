@@ -1,4 +1,4 @@
-# Maintainer: Erik Westrup <erik.westrup@gmail.com>
+# Maintainer: Erhad Husovic <xdaemonx@protonmail.ch>
 # Contributor: Andre Schlichting <andre dot schlichting at googlemail dot com>
 # Contributor: Manuel "ekerazha" C. (www.ekerazha.com)
 
