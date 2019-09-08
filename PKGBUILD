@@ -1,6 +1,6 @@
 # Maintainer: Joermungand <joermungand at gmail dot com>
 pkgname=carla-bridges-win64-git
-pkgver=3844.ad5dc194
+pkgver=4606.db6dadd6d
 pkgrel=1
 pkgdesc="Carla win64 bridge"
 arch=('i686' 'x86_64')
@@ -53,6 +53,7 @@ build() {
   export LDFLAGS=$_ldflags
   export WIN32=$_win32
   export WIN64=$_win64
+  export JACKBRIDGE_FLAGS="-D__WIDL_objidl_generated_name_0000000C="
   make wine64
 }
 
