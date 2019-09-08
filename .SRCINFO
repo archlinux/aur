@@ -1,0 +1,15 @@
+pkgbase = python-inform
+	pkgdesc = Print and logging utilities for communicating with user
+	pkgver = 1.18.0
+	pkgrel = 1
+	url = https://github.com/KenKundert/inform
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python-six
+	depends = python-arrow
+	source = https://files.pythonhosted.org/packages/source/i/inform/inform-1.18.0.tar.gz
+	sha256sums = 660036f77523d9dea9f4c4556fb22728d6579a2266454ce16c829c88d64a454a
+
+pkgname = python-inform
+
