@@ -1,6 +1,6 @@
 pkgbase = elpa
 	pkgdesc = Eigenvalue SoLvers for Petaflop-Applications
-	pkgver = 2018.11.001
+	pkgver = 2019.05.001
 	pkgrel = 1
 	url = https://elpa.mpcdf.mpg.de/html/Releases
 	arch = x86_64
@@ -8,9 +8,10 @@ pkgbase = elpa
 	makedepends = gcc-fortran
 	makedepends = python
 	depends = scalapack
+	optdepends = cuda: GPU support
 	provides = elpa
-	source = https://gitlab.mpcdf.mpg.de/elpa/elpa/-/archive/ELPA_2018.11.001/elpa-ELPA_2018.11.001.tar.bz2
-	sha256sums = 333b5c684db03d4698b483462dd7f7a27172eb6617efcee943bd40a8728a8ac3
+	source = https://elpa.mpcdf.mpg.de/html/Releases/2019.05.001/elpa-2019.05.001.tar.gz
+	sha256sums = 772c03dab8713ba3891b17757a0b8429b3c4bec4b261dd337ed4b34311f6b221
 
 pkgname = elpa
 
