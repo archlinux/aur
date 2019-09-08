@@ -2,8 +2,7 @@ post_install() {
 	echo
 	echo "==> Please run lite-client -h to have an overview of"
 	echo "==> supported arguments!"
-	echo "==> Run: lite-client -C /etch/ton-global.config"
-	echo "==>      lite-client -C /etch/ton-global.config"
+	echo "==> Run: lite-client -C /etc/ton-global.config"
 	echo "==> to connect to the test network"
 	echo
 }
