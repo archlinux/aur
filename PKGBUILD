@@ -2,7 +2,7 @@
 
 pkgname=maptool-bin
 _pkgname=MapTool
-pkgver=1.5.3
+pkgver=1.5.4
 pkgrel=1
 pkgdesc="An open source virtual tabletop program"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('AGPL3')
 provides=('maptool')
 conflicts=('maptool')
 source=("https://github.com/RPTools/maptool/releases/download/${pkgver}/maptool-${pkgver}.deb")
-sha256sums=('ec358430e715253a7537c0ecfb74e54449b07a326f3801346b1fe7ad1f4e0000')
+sha256sums=('049531508e6fd853831ec547afc87f54ef9bcdcf017a15628fc5e5d4cdd55dcf')
 
 package() {
 
