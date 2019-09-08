@@ -1,0 +1,8 @@
+## arg 1:  the new package version
+## arg 2:  the old package version
+
+post_install() {
+  if [ -f /boot/initramfs-linux.img ]; then
+    echo '--> Feel free to manually delete /boot/initramfs-linux.img'
+  fi
+}

@@ -1,9 +1,10 @@
 # Maintainer: graysky <graysky AT archlinux DOT us>
 pkgname=raspberrypi-stop-initramfs
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Prevent kernel updates on RPix from generating useless kernel images"
 arch=('armv6h' 'armv7h')
+install=readme.install
 
 package() {
   install -d "$pkgdir/etc/pacman.d/hooks"
