@@ -22,13 +22,14 @@ arch:
   - ~/.ccache:~/.ccache
   - ~/.pkg-cache:/var/cache/pacman/pkg
   repos:
-  - bartus=https://github.com/bartoszek/AUR-repo/raw/master
+# - bartus=https://github.com/bartoszek/AUR-repo/raw/master
   packages:
   - ccache
   - ccache-ext
 # cuda need to be installed before `makepkg` invocation in order to allow nvcc-ccache logic to work.
   - cuda
   - moreutils
+  - oidn
   before_install:
 # 1.Override `package-cleanup.hook` to preserve cache for travis.
 # 2.Enable ccache
