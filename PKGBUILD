@@ -1,7 +1,7 @@
 # Maintainer: Ryan Jacobs <ryan@rmj.us>
 pkgname=azure-kinect-sensor-sdk-git
 pkgver=v1.2.0.beta.1.r27.467d8272
-pkgrel=6
+pkgrel=7
 pkgdesc="A cross platform user mode SDK to read data from Azure Kinect devices."
 arch=("x86_64")
 url="https://github.com/microsoft/Azure-Kinect-Sensor-SDK"
@@ -42,5 +42,5 @@ package() {
 
     # symlink the .so files to the standard /usr/lib/ path
     mkdir -p "$pkgdir/usr/lib"
-    ln -s "$pkgdir/usr/local/lib64/"*.so* "$pkgdir/usr/lib"
+    ln -sr "$pkgdir/usr/local/lib64/"*.so* "$pkgdir/usr/lib"
 }
