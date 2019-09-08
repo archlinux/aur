@@ -2,7 +2,7 @@
 
 pkgname=rclone-browser
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple cross-platform GUI for rclone'
 url='https://mmozeiko.github.io/RcloneBrowser/'
 arch=('i686' 'x86_64')
@@ -15,6 +15,7 @@ depends=('qt5-base' 'rclone')
 package() {
 
   cd "$srcdir"/RcloneBrowser-${pkgver}
+  sed -i "s/ -Werror//g" src/CMakeLists.txt
   mkdir -p build && cd build
   cmake .. -DCMAKE_INSTALL_PREFIX=${pkgdir}/usr -DCMAKE_BUILD_TYPE=Release
   cmake --build . --target install
