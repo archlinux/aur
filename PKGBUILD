@@ -7,7 +7,7 @@ url=https://centrabit.com/
 license=(GPL3)
 depends=(qt5-multimedia qt5-script)
 source=("https://downloads.sourceforge.net/bitcointrader/SRC/QtBitcoinTrader-$pkgver.tar.gz")
-sha256sums=(0e3353567b698805181d70ef8e5841e7e675967e14cebaa6a5f7ceb7643842e8)
+sha256sums=(89175875156531cc05b3d43826a788a5f2a9a6220fd0ff6e12d66a05eedd2756)
 
 build() {
   cd QtBitcoinTrader-$pkgver/src
