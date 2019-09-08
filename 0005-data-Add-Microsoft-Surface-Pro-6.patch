@@ -1,0 +1,33 @@
+From a0a5b5e5149f62e179df800155d2b10a56738748 Mon Sep 17 00:00:00 2001
+From: Maximilian Luz <luzmaximilian@gmail.com>
+Date: Mon, 3 Jun 2019 00:40:34 +0200
+Subject: [PATCH 5/7] data: Add Microsoft Surface Pro 6
+
+---
+ data/surface-pro6.tablet | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
+ create mode 100644 data/surface-pro6.tablet
+
+diff --git a/data/surface-pro6.tablet b/data/surface-pro6.tablet
+new file mode 100644
+index 0000000..da31e8f
+--- /dev/null
++++ b/data/surface-pro6.tablet
+@@ -0,0 +1,14 @@
++# This is for the Microsoft Surface Pro 6
++
++[Device]
++Name=Microsoft Surface Pro 6
++DeviceMatch=mei:045E:001F
++Class=ISDV4
++Width=10
++Height=6
++IntegratedIn=Display;System;
++
++[Features]
++Stylus=true
++Touch=true
++Buttons=0
+-- 
+2.23.0
+

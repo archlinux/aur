@@ -1,0 +1,33 @@
+From 582d23d27a6c6c83bdce3702e073f498f68fdeba Mon Sep 17 00:00:00 2001
+From: Maximilian Luz <luzmaximilian@gmail.com>
+Date: Sat, 1 Jun 2019 22:09:47 +0200
+Subject: [PATCH 3/7] data: Add Microsoft Surface Pro 5
+
+---
+ data/surface-pro5.tablet | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
+ create mode 100644 data/surface-pro5.tablet
+
+diff --git a/data/surface-pro5.tablet b/data/surface-pro5.tablet
+new file mode 100644
+index 0000000..2ad6539
+--- /dev/null
++++ b/data/surface-pro5.tablet
+@@ -0,0 +1,14 @@
++# This is for the Microsoft Surface Pro 5 (2017)
++
++[Device]
++Name=Microsoft Surface Pro 5
++DeviceMatch=mei:1B96:001F
++Class=ISDV4
++Width=10
++Height=6
++IntegratedIn=Display;System;
++
++[Features]
++Stylus=true
++Touch=true
++Buttons=0
+-- 
+2.23.0
+

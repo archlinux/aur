@@ -1,0 +1,87 @@
+From fa8fbe3e4d077f4b22d0da65fe9bff4b038f05e8 Mon Sep 17 00:00:00 2001
+From: Maximilian Luz <luzmaximilian@gmail.com>
+Date: Sat, 1 Jun 2019 21:17:15 +0200
+Subject: [PATCH 1/7] Add support for Intel Management Engine bus
+
+Add support for devices connected via the Intel Management Engine (MEI).
+This is required to support IPTS based devices, such as (among others)
+the Microsoft Surface Books, Surface Pro 5 and 6, and Surface Laptops.
+---
+ libwacom/libwacom-database.c | 4 ++++
+ libwacom/libwacom.c          | 5 +++++
+ libwacom/libwacom.h          | 1 +
+ test/test-tablet-validity.c  | 1 +
+ 4 files changed, 11 insertions(+)
+
+diff --git a/libwacom/libwacom-database.c b/libwacom/libwacom-database.c
+index ebc0605..37e797a 100644
+--- a/libwacom/libwacom-database.c
++++ b/libwacom/libwacom-database.c
+@@ -112,6 +112,8 @@ bus_from_str (const char *str)
+ 		return WBUSTYPE_BLUETOOTH;
+ 	if (streq(str, "i2c"))
+ 		return WBUSTYPE_I2C;
++	if (strcmp (str, "mei") == 0)
++		return WBUSTYPE_MEI;
+ 	return WBUSTYPE_UNKNOWN;
+ }
+ 
+@@ -130,6 +132,8 @@ bus_to_str (WacomBusType bus)
+ 		return "bluetooth";
+ 	case WBUSTYPE_I2C:
+ 		return "i2c";
++	case WBUSTYPE_MEI:
++		return "mei";
+ 	}
+ 	g_assert_not_reached ();
+ }
+diff --git a/libwacom/libwacom.c b/libwacom/libwacom.c
+index c4a50a8..bd6b63f 100644
+--- a/libwacom/libwacom.c
++++ b/libwacom/libwacom.c
+@@ -147,6 +147,10 @@ get_bus_vid_pid (GUdevDevice  *device,
+ 		*bus = WBUSTYPE_I2C;
+ 		retval = TRUE;
+ 		break;
++	case 68:
++		*bus = WBUSTYPE_MEI;
++		retval = TRUE;
++		break;
+ 	}
+ 
+ out:
+@@ -765,6 +769,7 @@ static void print_match(int fd, const WacomMatch *match)
+ 		case WBUSTYPE_USB:		bus_name = "usb";	break;
+ 		case WBUSTYPE_SERIAL:		bus_name = "serial";	break;
+ 		case WBUSTYPE_I2C:		bus_name = "i2c";	break;
++		case WBUSTYPE_MEI:		bus_name = "mei";	break;
+ 		case WBUSTYPE_UNKNOWN:		bus_name = "unknown";	break;
+ 		default:			g_assert_not_reached(); break;
+ 	}
+diff --git a/libwacom/libwacom.h b/libwacom/libwacom.h
+index 8035e17..799e9b2 100644
+--- a/libwacom/libwacom.h
++++ b/libwacom/libwacom.h
+@@ -117,6 +117,7 @@ typedef enum {
+ 	WBUSTYPE_SERIAL,	/**< Serial tablet */
+ 	WBUSTYPE_BLUETOOTH,	/**< Bluetooth tablet */
+ 	WBUSTYPE_I2C,		/**< I2C tablet */
++	WBUSTYPE_MEI,		/**< MEI */
+ } WacomBusType;
+ 
+ /**
+diff --git a/test/test-tablet-validity.c b/test/test-tablet-validity.c
+index 7f36197..2805da5 100644
+--- a/test/test-tablet-validity.c
++++ b/test/test-tablet-validity.c
+@@ -171,6 +171,7 @@ test_vidpid(gconstpointer data)
+ 		case WBUSTYPE_USB:
+ 		case WBUSTYPE_BLUETOOTH:
+ 		case WBUSTYPE_I2C:
++		case WBUSTYPE_MEI:
+ 			g_assert_cmpint(libwacom_get_vendor_id(device), >, 0);
+ 			g_assert_cmpint(libwacom_get_product_id(device), >, 0);
+ 			break;
+-- 
+2.23.0
+

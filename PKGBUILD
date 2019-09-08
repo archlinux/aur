@@ -1,11 +1,11 @@
 # Maintainer: Maximilian Luz <luzmaximilian@gmail.com>
 
 pkgname=libwacom-surface
-pkgver=0.33
+pkgver=1.0
 pkgrel=1
 pkgdesc="Patched libwacom for Microsoft Surface devices"
 arch=('x86_64')
-url="https://github.com/geoffholden/libwacom"
+url="https://github.com/qzed/libwacom"
 license=('MIT')
 depends=('glib2' 'systemd' 'libgudev')
 makedepends=('git' 'libxml2')
@@ -14,21 +14,31 @@ conflicts=('libwacom')
 provides=("libwacom=${pkgver}")
 
 source=(
-    '00_mei-bus.patch'
-    '01_surface-tablet-data.patch'
+    '0001-Add-support-for-Intel-Management-Engine-bus.patch'
+    '0002-data-Add-Microsoft-Surface-Book-2-13.5.patch'
+    '0003-data-Add-Microsoft-Surface-Pro-5.patch'
+    '0004-data-Add-Microsoft-Surface-Book-2-15.patch'
+    '0005-data-Add-Microsoft-Surface-Pro-6.patch'
+    '0006-data-Add-Microsoft-Surface-Pro-4.patch'
+    '0007-data-Add-Microsoft-Surface-Book.patch'
     "https://github.com/linuxwacom/libwacom/releases/download/libwacom-${pkgver}/libwacom-${pkgver}.tar.bz2"{,.sig}
 )
-sha256sums=('faf69fa3795a5147665b285f28d82c0977a3870522c98ffccaf819730089599e'
-            '9b7f8d681bf12e81e21cde33b7d77b10b4f2a78f3d0c46c5efe147c278c24bf9'
-            '94f8a3371f30f4a38d6d2290f5160d5f5ba7a7cd6e63bee95686a67a3c19dbf2'
+sha256sums=('eb0f32d5e33cb07cfb66c97ac6303383387ccfb97e808865cf056c21c3998ba4'
+            'abf0137ec6ac8aee8e77b2d33423a4a90689660558bbb9bfef41b43f72170d4d'
+            '55384a33ddb4761729d8915a3709160dfc2c076b103c4072b2a46c0cb24a44b6'
+            'fb16b33addc6c44401c2e36e8f3d5d244d6c76e036a64cf4988c679de8687cb2'
+            '833227f52f050c368e6ca5908aa7534238b96afb5d8a0df8413b14dd63891a9a'
+            'dde9d2328c6c6112656f1537efb2bc8f0f50d96570b055acef1628a2442b464a'
+            '6f7f5f849e460110fad9304b275e4f9f2d880165faed124305b1bf2391c6958f'
+            'c48f931bcebaa87ae38e3c3a14863d507cd083313207802864ab2763c5b90cc7'
             'SKIP')
 
 prepare() {
     cd "libwacom-${pkgver}"
-    patch -p1 -i "${srcdir}/00_mei-bus.patch"
-    patch -Np1 -i "${srcdir}/01_surface-tablet-data.patch" || true
-    # If the patched source has been cached this will fail to apply, ignore that with `|| true`
-    # XXX: There must be a better option?
+
+    for p in "${srcdir}/"*.patch ; do
+        patch -Np1 -i "${p}" || true
+    done
 }
 
 build() {

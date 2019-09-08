@@ -1,0 +1,33 @@
+From e3be71039c05e50d58784b41564c59028f7789fa Mon Sep 17 00:00:00 2001
+From: Maximilian Luz <luzmaximilian@gmail.com>
+Date: Mon, 3 Jun 2019 00:45:41 +0200
+Subject: [PATCH 7/7] data: Add Microsoft Surface Book
+
+---
+ data/surface-book.tablet | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
+ create mode 100644 data/surface-book.tablet
+
+diff --git a/data/surface-book.tablet b/data/surface-book.tablet
+new file mode 100644
+index 0000000..45e17db
+--- /dev/null
++++ b/data/surface-book.tablet
+@@ -0,0 +1,14 @@
++# This is for the Microsoft Surface Book (1)
++
++[Device]
++Name=Microsoft Surface Book
++DeviceMatch=mei:1B96:005e
++Class=ISDV4
++Width=11
++Height=7
++IntegratedIn=Display;System;
++
++[Features]
++Stylus=true
++Touch=true
++Buttons=0
+-- 
+2.23.0
+
