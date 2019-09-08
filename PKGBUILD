@@ -23,7 +23,10 @@ prepare() {
 
   # Add animated PNG (apng) support
   # see http://sourceforge.net/projects/libpng-apng/
-  patch -p0 -i "${srcdir}/libpng-$_apngver-apng.patch"
+  #patch -p0 -i "${srcdir}/libpng-$_apngver-apng.patch"
+
+  # https://bugs.archlinux.org/task/62746
+  zcat "${srcdir}/libpng-$_apngver-apng.patch" | patch -p0
 }
 
 build() {
