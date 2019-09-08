@@ -3,20 +3,19 @@
 
 pkgname=doctl
 pkgver=1.30.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A command line tool for DigitalOcean services'
 arch=('i686' 'x86_64')
 url='https://github.com/digitalocean/doctl'
 license=('APACHE')
 makedepends=('go' 'git')
 conflicts=('doctl-bin')
-source=("git+https://github.com/digitalocean/${pkgname}.git"
-        "_build.sh.patch")
+source=("git+https://github.com/digitalocean/${pkgname}.git")
 
 prepare() {
   cd "${srcdir}/${pkgname}"
   git checkout "v${pkgver}"
-  patch -p1 < "${srcdir}/_build.sh.patch"
+  git checkout master scripts/_build.sh
 }
 
 build() {
@@ -45,5 +44,4 @@ package() {
 }
 
 # vim: set et sw=2 sts=2:
-sha256sums=('SKIP'
-            '431a7f0dca4f23bb35de818866bc78ba1d435d4e742a7fea887b5627b557af49')
+sha256sums=('SKIP')
