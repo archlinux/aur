@@ -1,6 +1,6 @@
 pkgbase = ums
-	pkgdesc = Universal Media Server: a DLNA-compliant UPnP Media Server. Build based on Java 8.
-	pkgver = 8.2.0
+	pkgdesc = Universal Media Server: a DLNA-compliant UPnP Media Server.
+	pkgver = 9.0.0
 	pkgrel = 1
 	url = http://www.universalmediaserver.com/
 	arch = i686
@@ -8,25 +8,25 @@ pkgbase = ums
 	license = GPL2
 	makedepends = unzip
 	depends = mplayer
-	depends = ffmpeg
 	depends = mencoder
 	depends = libmediainfo
-	depends = java-runtime=8
-	depends = tsmuxer-ng-cli-bin
-	optdepends = vlc: Internet video/audio support
-	optdepends = dcraw: thumbnails creation support
-	optdepends = lib32-gcc-libs: tsMuxeR support
-	optdepends = lib32-glibc: tsMuxeR support
+	optdepends = java-runtime: Java runtime environment
+	optdepends = ffmpeg: Complete solution to record, convert and stream audio and video
+	optdepends = tsmuxer-ng-cli-bin: Remux/mux elementary streams without re-encoding
+	optdepends = vlc: For Internet video/audio
 	backup = opt/ums/UMS.conf
 	backup = opt/ums/WEB.conf
-	source = http://downloads.sourceforge.net/project/unimediaserver/Official%20Releases/Linux/UMS-8.2.0.tgz
+	source = https://github.com/UniversalMediaServer/UniversalMediaServer/releases/download/9.0.0/UMS-9.0.0.tgz
 	source = ums.desktop
 	source = ums.service
 	source = ums.timer
-	sha256sums = f13d3d72ff3633be810105d64d124c86ef9e967a821827420872e03a1a9c5011
+	sha256sums = c5750694dcf2b6631e6f2495ab90c9a42d6f8ebb328eb05c268d00b21311c56b
 	sha256sums = 0cdadbabef215b6539e56755147a8f626d9f1fadfb85e2e5b7f7f1b66f1cdef9
 	sha256sums = 1f6efefa58dde9148396bd9236a6985db0fa27f1c767067b52bfae1832f32284
 	sha256sums = 7fd36db71f39fde3d515c697101190f979b308d910b3c4210b90422669683ab0
+	optdepends_x86_64 = dcraw: thumbnails creation support
+	optdepends_x86_64 = lib32-gcc-libs: tsMuxeR support
+	optdepends_x86_64 = lib32-glibc: tsMuxeR support
 
 pkgname = ums
 

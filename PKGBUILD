@@ -3,29 +3,29 @@
 # Based on PMS PKGBUILD
 
 pkgname=ums
-pkgver=8.2.0
+pkgver=9.0.0
 pkgrel=1
-pkgdesc="Universal Media Server: a DLNA-compliant UPnP Media Server. Build based on Java 8."
+pkgdesc="Universal Media Server: a DLNA-compliant UPnP Media Server."
 arch=('i686' 'x86_64')
 url="http://www.universalmediaserver.com/"
 license=('GPL2')
-depends=('mplayer' 'ffmpeg' 'mencoder' 'libmediainfo' 'java-runtime=8' 'tsmuxer-ng-cli-bin')
+depends=('mplayer' 'mencoder' 'libmediainfo')
 makedepends=("unzip")
-[ "$CARCH" = "i686" ] && \
-optdepends=("vlc: For Internet video/audio")
-[ "$CARCH" = "x86_64" ] && \
-optdepends=("vlc: Internet video/audio support"
-            "dcraw: thumbnails creation support"
-            "lib32-gcc-libs: tsMuxeR support"
-            "lib32-glibc: tsMuxeR support")
+optdepends=("java-runtime: Java runtime environment"
+            "ffmpeg: Complete solution to record, convert and stream audio and video"
+            "tsmuxer-ng-cli-bin: Remux/mux elementary streams without re-encoding"
+            "vlc: For Internet video/audio")
+optdepends_x86_64=("dcraw: thumbnails creation support"
+                   "lib32-gcc-libs: tsMuxeR support"
+                   "lib32-glibc: tsMuxeR support")
 backup=(opt/ums/UMS.conf \
         opt/ums/WEB.conf)
-source=("http://downloads.sourceforge.net/project/unimediaserver/Official%20Releases/Linux/UMS-$pkgver.tgz"
-#source=("https://github.com/UniversalMediaServer/UniversalMediaServer/releases/download/$pkgver/UMS-$pkgver.tgz"
+#source=("http://downloads.sourceforge.net/project/unimediaserver/Official%20Releases/Linux/UMS-$pkgver.tgz"
+source=("https://github.com/UniversalMediaServer/UniversalMediaServer/releases/download/$pkgver/UMS-$pkgver.tgz"
         'ums.desktop'
         'ums.service'
         'ums.timer')
-sha256sums=('f13d3d72ff3633be810105d64d124c86ef9e967a821827420872e03a1a9c5011'
+sha256sums=('c5750694dcf2b6631e6f2495ab90c9a42d6f8ebb328eb05c268d00b21311c56b'
             '0cdadbabef215b6539e56755147a8f626d9f1fadfb85e2e5b7f7f1b66f1cdef9'
             '1f6efefa58dde9148396bd9236a6985db0fa27f1c767067b52bfae1832f32284'
             '7fd36db71f39fde3d515c697101190f979b308d910b3c4210b90422669683ab0')
@@ -35,13 +35,9 @@ package() {
   mkdir ${pkgdir}/opt/ums/database
   mkdir -p ${pkgdir}/usr/bin
   chmod -R 755 ${srcdir}/ums-$pkgver/plugins ${srcdir}/ums-$pkgver/documentation
-  rm -R ${srcdir}/ums-$pkgver/linux/*
   cp -r ${srcdir}/ums-$pkgver/* ${pkgdir}/opt/ums/
-  ln -s /usr/bin/ffmpeg ${pkgdir}/opt/ums/linux/ffmpeg
-  ln -s /usr/bin/ffmpeg ${pkgdir}/opt/ums/linux/ffmpeg64
-  ln -s /usr/bin/tsMuxeR ${pkgdir}/opt/ums/linux/tsMuxeR
-  ln -s /usr/bin/tsMuxeR ${pkgdir}/opt/ums/linux/tsMuxeR-new
   chmod +x ${pkgdir}/opt/ums/UMS.sh
+  chmod +x ${pkgdir}/opt/ums/linux/jre-x64/bin/java
   touch ${pkgdir}/opt/ums/UMS.conf
   touch ${pkgdir}/opt/ums/debug.log
   chgrp users ${pkgdir}/opt/ums/UMS.conf \
