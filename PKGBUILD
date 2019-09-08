@@ -1,29 +1,46 @@
-# Maintainer: Elrondo46 <elrond94athotmaildotcom>
+# This is an example PKGBUILD file. Use this as a start to creating your own,
+# and remove these comments. For more information, see 'man PKGBUILD'.
+# NOTE: Please fill out the license field for your package! If it is unknown,
+# then please put 'unknown'.
 
-# Special package for a discord friend Sipomatador ducosmos but now build for all
+# The following guidelines are specific to BZR, GIT, HG and SVN packages.
+# Other VCS sources are not natively supported by makepkg yet.
 
+# Maintainer: Matthew Hiles <matthew.hiles@gmail.com>
 pkgname=inkscape-silhouette-git
-pkgver=1.19.r28.g3c28053
+pkgver=r347.eae9652
 pkgrel=1
-pkgdesc="Inkscape driver for silhouette device"
-arch=('any')
-url="https://github.com/fablabnbg/inkscape-silhouette.git"
-license=('GPL3')
-depends=('python2-setuptools' 'inkscape' 'python2' 'python2-lxml' 'python2-pyusb')
-source=("git://github.com/fablabnbg/inkscape-silhouette.git")
-sha256sums=('SKIP')
+pkgdesc="inkscape plugin to control Silhouette vinyl cutters"
+arch=(any)
+url="https://github.com/fablabnbg/inkscape-silhouette"
+license=('GPLv2')
+groups=()
+depends=(inkscape python2 python2-lxml python2-pyusb)
+makedepends=('git') # 'bzr', 'git', 'mercurial' or 'subversion'
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+replaces=()
+backup=()
+options=()
+install=
+source=('git+https://github.com/fablabnbg/inkscape-silhouette')
+noextract=()
+md5sums=('SKIP')
 
 pkgver() {
-  cd "inkscape-silhouette"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	cd "$srcdir/${pkgname%-git}"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+	cd "$srcdir/${pkgname%-git}"
+	python2 setup.py build
 }
 
 package() {
-  cd "inkscape-silhouette"
-  python2 setup.py install --root="$pkgdir/" --optimize=1
-  mkdir -p "$pkgdir"/usr/share/inkscape/extensions/
-  cp "$srcdir"/inkscape-silhouette/sendto_silhouette.* "$pkgdir"/usr/share/inkscape/extensions/
-  cp -R "$srcdir"/inkscape-silhouette/silhouette "$pkgdir"/usr/share/inkscape/extensions/
+	cd "$srcdir/${pkgname%-git}"
+	python2 setup.py install --root="$pkgdir/"
+	mkdir -p "$pkgdir/usr/share/inkscape/extensions/"
+	cp sendto_silhouette.* "$pkgdir/usr/share/inkscape/extensions/"
+	cp -R silhouette "$pkgdir/usr/share/inkscape/extensions/"
 }
-
-

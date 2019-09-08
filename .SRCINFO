@@ -1,17 +1,19 @@
 pkgbase = inkscape-silhouette-git
-	pkgdesc = Inkscape driver for silhouette device
-	pkgver = 1.19.r28.g3c28053
+	pkgdesc = inkscape plugin to control Silhouette vinyl cutters
+	pkgver = r347.eae9652
 	pkgrel = 1
-	url = https://github.com/fablabnbg/inkscape-silhouette.git
+	url = https://github.com/fablabnbg/inkscape-silhouette
 	arch = any
-	license = GPL3
-	depends = python2-setuptools
+	license = GPLv2
+	makedepends = git
 	depends = inkscape
 	depends = python2
 	depends = python2-lxml
 	depends = python2-pyusb
-	source = git://github.com/fablabnbg/inkscape-silhouette.git
-	sha256sums = SKIP
+	provides = inkscape-silhouette
+	conflicts = inkscape-silhouette
+	source = git+https://github.com/fablabnbg/inkscape-silhouette
+	md5sums = SKIP
 
 pkgname = inkscape-silhouette-git
 
