@@ -1,7 +1,7 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-pixman
 pkgver=0.38.4
-pkgrel=3
+pkgrel=4
 pkgdesc="The pixel-manipulation library for X and cairo (mingw-w64)"
 arch=(any)
 url="http://xorg.freedesktop.org"
@@ -34,6 +34,7 @@ build() {
       -D mips-dspr2=disabled \
       -D b_lto=false \
       -D gtk=disabled \
+      -D strip=false \
       --default-library both ..
     ninja
   done
@@ -44,9 +45,8 @@ package() {
     # fix static libs inside pc file
     sed -i "s/-lpixman-mmx -lpixman-sse2 -lpixman-ssse3//g" ${srcdir}/pixman-${pkgver}/build-${_arch}/meson-private/pixman-1.pc
     DESTDIR="${pkgdir}" ninja -C "${srcdir}/pixman-${pkgver}/build-${_arch}" install
-
-    # see https://github.com/mesonbuild/meson/issues/4138 
-    ${_arch}-gcc-ranlib ${pkgdir}/usr/${_arch}/lib/*.a
+    find "$pkgdir/usr/${_arch}" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
+    find "$pkgdir/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs ${_arch}-strip -g
   done
 }
 
