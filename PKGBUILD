@@ -17,14 +17,13 @@ optdepends=('python-beautifulsoup4: for web scraping'
 	'python-pycryptodomex: for low-level crypto routines'
 	'python-pillow: Captcha resolver'
 	'python-pyopenssl: ssl support'
-	'python-pyxmmp2: notify on xmpp'
 	'python-send2trash: trash support'
 )
 makedepends=('git')
 install='pyload-git.install'
 
 source=("$pkgname::git+https://github.com/pyload/pyload.git"
-'pyload.service' 'pyload.conf' 'pyLoadCore' 'pyLoadCli' 'pyLoadGui')
+'pyload.service')
 
 pkgver() {
 	cd $srcdir/$pkgname
@@ -52,8 +51,4 @@ package() {
 }
 
 md5sums=('SKIP'
-	'454e974b11ab31533423f336c3a182f2'
-	'32b00d50be868c165930c592b99730a9'
-	'6d764666ec89ce218cd00164e73e0989'
-	'6fc2f343d2f324a66745524bbab93e5c'
-'806a22a74e8331dffcb8538182e4df2c')
+         '75069bddcec3ee630d2abea02ffef0b4')
