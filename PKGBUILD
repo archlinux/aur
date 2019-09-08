@@ -11,7 +11,7 @@ provides=('pyload')
 conflicts=('pyload' 'pyload-hg')
 backup=('var/lib/pyload/pyload.conf')
 depends=('python' 'python-cheroot' 'python-cryptography' 'python-flask' 'python-flask-babel' 'python-filetype' 'python-flask-themes2' 'python-pycurl' 'python-requests-html' 'python-semver')
-makedepends=('git' 'python-setuptools' 'python-babel' 'python-jinja2')
+makedepends=('git' 'python-setuptools' 'python-babel')
 install='pyload-git.install'
 
 source=("$pkgname::git+https://github.com/pyload/pyload.git"

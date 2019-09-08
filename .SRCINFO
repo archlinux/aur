@@ -9,7 +9,6 @@ pkgbase = pyload-git
 	makedepends = git
 	makedepends = python-setuptools
 	makedepends = python-babel
-	makedepends = python-jinja2
 	depends = python
 	depends = python-cheroot
 	depends = python-cryptography
