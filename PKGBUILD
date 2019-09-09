@@ -16,7 +16,7 @@
 
 _qt_module=qttools
 pkgname="mingw-w64-qt5-tools"
-pkgver=5.13.0
+pkgver=5.13.1
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="A cross-platform application and UI framework (Development Tools, QtHelp; mingw-w64)"
@@ -29,8 +29,8 @@ url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz"
         '0001-Fix-linguist-macro.patch')
-sha256sums=('a7887a618dc6434c2567521990c2a7ca72ca6a8379c1d93c5aa6c1798d7a0819'
-            '49dfa10ed824ea1885f56ff999bd5cda8e88fc32c16d5646b2bd62fd4ff9ad2f')
+sha256sums=('7947bdd758514a0c2d44b0a2110adb6056b18bce75c716711e48bcc8de5c7e82'
+            '839996d563ae8040b18094d04af81d0140673ff0b503a872ecd2a750d8a26eba')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
@@ -99,6 +99,9 @@ package() {
           [ -f "${file%d*}${file##*d}" ] && rm "${file}";
         done
       fi
+
+      # remove '.static.prl' files
+      find "${pkgdir}/usr/${_arch}" -name '.static.prl' -delete
 
       find "${pkgdir}/usr/${_arch}/lib" -maxdepth 1 -name '*.dll' -delete
       [ "$NO_STATIC_EXECUTABLES" -a "${_config##*=}" = static -o "$NO_EXECUTABLES" ] && \
