@@ -32,7 +32,7 @@ isNoOpenGL() {
 }
 
 pkgname=mingw-w64-qt5-base-static
-pkgver=5.13.0
+pkgver=5.13.1
 pkgrel=1
 pkgdesc='A cross-platform application and UI framework (mingw-w64)'
 # The static variant doesn't contain any executables which need to be executed on the build machine
@@ -88,40 +88,40 @@ source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/subm
         '0031-Disable-hardware-randomizer-for-32-bit.patch'
         '0032-Prevent-static-build-to-prefer-dynamic-libraries.patch'
         '0033-Prevent-Cannot-find-feature-windows_vulkan_sdk.patch')
-sha256sums=('ff6964b3b528cd3b1d21bcf3470006e8e5cbe69591923f982871d886ea0488fe'
-            '2df58c3c5350a7b52ed9a19b23359e8a33644012bd529fd31a42afca08a7de33'
-            '58473061f71f210a8344581cd5654bb6e9625cad90e63cf1f9dca063d14f187b'
-            '161e3e3dec7904a889bfe90bd707c00f8e2f471cde0ba7803ebd7997fc84878c'
-            '11b0bbb41bf8f502932f0d8d79e8470654b6adeaaec63de247d044c695e455b8'
-            '556c1b413d079e6f86974a576f3052645fd5919003fe38056f38a66146cc8c6d'
-            'f59764fa27a9d17f4651f7745416d30570d68b11813f4bc132506213a859e0c0'
-            'c9e4f335c8d0cf53f4ecff9b6642d34d4794b9fbd75a2fe7f4219f908e998b43'
-            'c11a3f2354a8c0b8e12890e09c321ac486c29f32a2702c3d123cd51b49f8152e'
-            'cdd71e7ea046327502872da3657132f276159f7377626a41b1a592a8aa2a435f'
-            '002780bf246a151763fb970234bffc9bb6f82a5e6b3c99641c455a650fad9cd6'
-            'e6b535f1959a1cc5b27aefd3b69f05393d0631bd384c946da278e61f1bce6da9'
-            '56b4695cd46189d297f8583f5d130ef2ed2a91f96ccef76d4d70b59a52da1a6e'
-            '1f55fbf4a5d3dfbe7a2a3f282f0e393e8c88a5b982c694cdaf557aa5508d4be8'
-            '39b0c2de05cf7f51a513fe555520d80cc8a22119c4e3b245459ee486f88d902b'
-            '9a0714b960e82e723828bd18c0bd3a722f58eacb058960aed2e9fcbe4b8d2537'
-            '94dc91c13b5876d05348717b94f0bee6eca3470852e4b0a99f3d5768ee09ec6c'
-            '6129e5bb57e18ab064fbc9c15b7708368bc93e65b0c16ec1c83708f01e2862f1'
-            'ae3cc5e48f69bcb065d919ea1ff6cd4e8216cff348348675dc0932887e62d2c8'
-            '1bf5cbfeab7139e1af66909e9359ed051b02d335cd032e1d87539f7a46974c09'
-            'e8bceae99d8b6a802592fb7476ac68f2f015cbca0dc38959076c5029f63d0f23'
-            'b491f47044b2ea161ec9881d7211ededfd1b3481f54ca93381498a50aebd3795'
-            '3dbb78c2ec5d3b2f33d5545de15da2ee2895978e98d35a677eaa1449e592cf3c'
-            '99782fd0b3cb20f2ce5425607f5f6b909ecaefcd8e038738c19d76ae3dc43ab6'
-            '0ce174399229425fc1f9fac6e27dc9fc7b04dd4eb4770f471fb62244368e6e64'
-            '365459aba005e00fb19cf0fbeb42f563d36b0b7ac9737ea981f4f4034af6e229'
-            '486c27a6a56140f6f43665b79b960dafb93d1d48a2d4b5a0de330f3e55685cf8'
-            '3f4dbd1417a63d04e5e938a37b5a614940d19c318aeeb2de43c126804a509053'
-            'ca721a40d0be358baa31233b0d9db8ee70483dc25dda96dbdb080158e90200fb'
-            '2ba848d3a4e2a3230ee70473fdd7adb6aadb021fea2f09b7871033f281425855'
-            '6cff295c7011ce53319f35749d807cc6b0c3596ae92d9c36e0eb2cecbafd182e'
-            '45aae3d21e88cc0ac9e008cd0cc98e3178c2319d0aef726677555866c3bd4b59'
-            '6d661273b5f6c61c02dd0a0d3b4e7c5788646b056ba7aa3cbad125c84199ffc5'
-            '7e42f2b917e18dfc22e9f4fb7d7d5c1717157e9746fdaf25b55217b0b78d87be')
+sha256sums=('110cd08cdacab26274bf2519d3508046616c0b638f0d2f5e00bc8bad87469eab'
+            '52f473398f93d9446a22ddd806d70ed3c530e4592013b0070f55fa6cb5dd024f'
+            'a88f6a3246993a46ddda334f0b0a0f8969be3a4420fff17fe810399ab709fd4a'
+            'da99200b82fd866b950de2fc5a0e633af12cce1b86168fdb5d91a269437af80c'
+            'd1c962fdcf6974da877c6c94083f9a4c32b3565faa09b92fe4045df97add7fc2'
+            '704bf70f29fcd19863fdb0d1a5be62b4fa9de9c8e0bdc5b9cea4a7ed2def0908'
+            '560c2ad8dc492cd512da18ec66f5dd28892b589810f0e1de436a5e94fd28a52c'
+            'b106f03cc8976ece37cbd3095707ae6d6e41b62e90d0ae6d34f96ebd8eb62a5a'
+            'acaa96d5354c4c7bac6009a78e276b2f756c5557fb9016449af983f5cac896b1'
+            'dc2ee63858c9b8e46a065fb430fb4563448e3d5b493c425939085c3290e1987d'
+            'cddf9ff3f26661142fe9f895fde0ab587639b4bb8d6279e8de2e201e6f637cbf'
+            'd9271e94b596bfdc2901af1ebd8a8284ef421e7a99d46dd3c65daed8a121d6d2'
+            'f073aaf27b8b089cff3d3f54bec0e38229deaa999aff2dcc203656f8b7994cb6'
+            'f6ef098372e051e234d979bd5f5467b81d89b2f803d4316f64564e16e12cbb52'
+            'b001fc1b29d6b3db975d417d1ad9746fd0cabd7692b12a35d473399951f75111'
+            'f9dda213747f49c13414a89a5ac3a57064a06798e92106cc3f2f227d5674450d'
+            'a49459c9ed2a7fc29a82a94ab43459ff510c6763da73da46ccae5d51ff1f16bc'
+            'e25f22a835b9e8ad12aa869222259024fff3d26bf9fe05ce4cc8d0f2f6f4a5e6'
+            '9940d363b3f8dc10b0151845711ba445c98e850c9fe413f52abb7f8c84eb9b50'
+            'd068d378b108ebe4dc645a7cacb89c69acd6b06346bcb0b47563e8cdb9f60c46'
+            'e1d4f534beb22b08cc9b70163a871281723aff19a14911f25f522c2a31de944e'
+            'e7584630ea69fc8c4e937106268cbf38258550cb26d33a6a38feea0a71aa6edc'
+            '6193e9b1baa63819dca331f9a62a483c50150ee0fb64e1199b0c1fd3c6388ac3'
+            '473101992df6f30fb50b2a0be45e55f2391021c01bc2bdf6a97fd7d3067f8fe6'
+            '809214ea4afccba045c7dd41902b160cf5ec7e4a501457b79b0f51def73e6de4'
+            '565a7b7aa93c8fd57cc4e6da69246110cce82663718078b8d08952a2c4038aac'
+            'a4347a60524b83a77c82aaa0502d8561dc9fb8012d676073a4211100404309ad'
+            '392608b8d6cf513f4e67ef1748e0b92e33808a16670db6346974ebc62977f762'
+            'b74e5960f131866c3fb74fc756da9574e0d03227044a8b80ad7ad6716777035c'
+            '9dd9393ea601eee07b23222278369909291f1077ea7a14a790260f7b7a8da4c3'
+            '6ac3bf6b0c447804f8a3b2acebe7e432e2f2dfc6180501ff1a96d0174e4edbe8'
+            '5c37923453bc13b06a37f9e916883516c83fdcd3dcae893beb97d2b52e6b77df'
+            '536cd9405a0a7a825768388f9e761e8c257e7e6e64406c9a3cce3c9cf1f48474'
+            'a0e20cc3bc60f9b7a3a7281b2f778362ce7cdb16d89478039f1c76896b3383bf')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
@@ -333,6 +333,19 @@ package() {
         "${pkgdir}/usr/${_arch}/lib/"{lib,}Qt5WindowsUIAutomationSupport* \
         "${pkgdir}/usr/${_arch}/lib/"{lib,}Qt5VulkanSupport* \
         "${pkgdir}/usr/${_arch}/lib/"libQt5Bootstrap* \
+      rm -r \
+        "${pkgdir}/usr/${_arch}/lib/cmake/StaticQt5AccessibilitySupport" \
+        "${pkgdir}/usr/${_arch}/lib/cmake/StaticQt5DeviceDiscoverySupport" \
+        "${pkgdir}/usr/${_arch}/lib/cmake/StaticQt5EdidSupport" \
+        "${pkgdir}/usr/${_arch}/lib/cmake/StaticQt5EventDispatcherSupport" \
+        "${pkgdir}/usr/${_arch}/lib/cmake/StaticQt5FbSupport" \
+        "${pkgdir}/usr/${_arch}/lib/cmake/StaticQt5FontDatabaseSupport" \
+        "${pkgdir}/usr/${_arch}/lib/cmake/StaticQt5PlatformCompositorSupport" \
+        "${pkgdir}/usr/${_arch}/lib/cmake/StaticQt5ThemeSupport" \
+        "${pkgdir}/usr/${_arch}/lib/cmake/StaticQt5WindowsUIAutomationSupport" \
+        "${pkgdir}/usr/${_arch}/lib/cmake/StaticQt5VulkanSupport" \
+        "${pkgdir}/usr/${_arch}/lib/cmake/StaticQt5Bootstrap" \
+        "${pkgdir}/usr/${_arch}/lib/cmake/StaticQt5BootstrapDBus"
 
       # ensure config files don't conflict with shared version
       pushd "${pkgdir}/usr/${_arch}/lib/cmake"
@@ -392,6 +405,9 @@ package() {
         [ -f "${file%d*}${file##*d}" ] && rm "${file}";
       done
     fi
+
+    # remove '.static.prl' files
+    find "${pkgdir}/usr/${_arch}" -name '.static.prl' -delete
 
     # replace library path in *.prl files so it points to the installed location and not the build directory
     find "${pkgdir}/usr/${_arch}/lib" \( -type f -name '*.prl' -o -name '*.pc' \) -exec sed -i -e "s:${PWD%/*}/build-${_arch}/lib:/usr/${_arch}/lib:g" {} \;
