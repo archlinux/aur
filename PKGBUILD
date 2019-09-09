@@ -36,6 +36,7 @@ build() {
 	      -DCMAKE_C_FLAGS="$CFLAGS $CPPFLAGS" \
 	      -DCMAKE_CXX_FLAGS="$CXXFLAGS $CPPFLAGS" \
 	      -DCMAKE_INSTALL_PREFIX=/usr \
+	      -DCMAKE_INSTALL_LIBDIR=lib \
 	      -DPYTHON_DESIRED=3 \
 	      ..
 
@@ -53,11 +54,8 @@ check() {
 
 package() {
 	cd "$pkgname-$pkgver"/build
+
 	make DESTDIR="$pkgdir/" install
-	if [[ "$CARCH" == "x86_64" ]]; then
-		mv "$pkgdir/"usr/lib64/* "$pkgdir/"usr/lib
-		rmdir "$pkgdir/"usr/lib64
-	fi
 
 	install -Dp -m644 ../README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
