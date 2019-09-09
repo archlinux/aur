@@ -1,4 +1,5 @@
-# Maintainer: Andrejs Mivreņiks <gim at fastmail dot fm>
+# Maintainer: Stefan Ott <arch at desire dot ch>
+# Contributor: Andrejs Mivreņiks <gim at fastmail dot fm>
 pkgname=tvnamer
 pkgver=2.4
 pkgrel=2
