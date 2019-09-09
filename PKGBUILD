@@ -9,7 +9,7 @@
 
 _qt_module=qtactiveqt
 pkgname=mingw-w64-qt5-activeqt
-pkgver=5.13.0
+pkgver=5.13.1
 pkgrel=1
 arch=('any')
 pkgdesc="ActiveX integration framework (mingw-w64)"
@@ -23,9 +23,9 @@ _pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz"
         '0001-Don-t-require-windows.h-when-using-native-Linux-gcc.patch'
         '0002-Handle-win64-in-dumpcpp-and-MetaObjectGenerator-read.patch')
-sha256sums=('7abccc4dfc8891dc96594ace38cfe006ff7fd0eaffcb49c856f4e60119357323'
-            'c08c642b497d551f67563342c9177006c80cb61530403ff809199f6f75e96053'
-            'bcf5e261b5f65680d2d6cdff5b0f64d1d36852317852783572b1ce43e04e9cdd')
+sha256sums=('d2ad456c4b354fa08dc6b42894453ba18db52b09ba7b7921c3f6225772099495'
+            'a83a9eb308c0903de7f0f2af95c38884f89cad1e2406fac5bc19e7d83d9da651'
+            'cd72e8b9680647d1ac7f5fe80b7b946c91800e528020bc5e8f5874ee9cf239a4')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 [[ $NO_STATIC_LIBS ]] || \
@@ -86,6 +86,9 @@ package() {
           [ -f "${file%d*}${file##*d}" ] && rm "${file}";
         done
       fi
+
+      # remove '.static.prl' files
+      find "${pkgdir}/usr/${_arch}" -name '.static.prl' -delete
 
       find "${pkgdir}/usr/${_arch}/lib" -maxdepth 1 -name '*.dll' -delete
       [ "$NO_STATIC_EXECUTABLES" -a "${_config##*=}" = static -o "$NO_EXECUTABLES" ] && \
