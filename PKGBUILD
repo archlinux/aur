@@ -2,7 +2,7 @@
 
 pkgname=clean-lang-bin
 pkgver=3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Clean is a general purpose, pure and lazy functional programming language."
 arch=('x86_64')
 url="https://clean.cs.ru.nl"
@@ -18,7 +18,7 @@ package() {
 	cd "${pkgname/-lang-bin/}"
 
     # install the main files (does a bit of compiling as well...)
-	make INSTALL_DIR="$pkgdir/usr" INSTALL_MAN_DIR="$pkgdir/usr/share" install
+	make INSTALL_DIR="$pkgdir/usr" INSTALL_MAN_DIR="$pkgdir/usr/share/man" install
 
     # resolve permissions on binaries
     chmod go+r "$pkgdir/usr/bin/BatchBuild" "$pkgdir/usr/bin/clm" \
