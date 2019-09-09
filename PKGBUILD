@@ -1,29 +1,29 @@
 # Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-parsexp
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="S-expression parsing library"
 arch=('x86_64')
-url='https://github.com/janestreet/parsexp'
-license=('Apache')
-depends=('ocaml' 'ocaml-sexplib0')
+url="https://github.com/janestreet/parsexp"
+license=('MIT')
+depends=('ocaml' 'ocaml-base' 'ocaml-sexplib0')
 makedepends=('dune')
 options=('!strip')
 source=("https://ocaml.janestreet.com/ocaml-core/v$(echo ${pkgver} | grep -Po "^[0-9]+\.[0-9]+")/files/parsexp-v${pkgver}.tar.gz")
-md5sums=('816fce8d14b71a379296577c803bdbca')
+sha512sums=('849968ac69709b293208fabde5cc22972a3def3ed35517e571c5127b417c7129a0d9eafc94fd580508203b611a9614b2612670dbdf69887b0e71f7cc5278bf12')
 
 build() {
   cd "${srcdir}/parsexp-v${pkgver}"
 
-  jbuilder build
+  dune build --profile release
 }
 
 
 package() {
   cd "${srcdir}/parsexp-v${pkgver}"
 
-  mkdir -p "${pkgdir}$(ocamlfind printconf destdir)" "${pkgdir}/usr/share"
-  jbuilder install --prefix "${pkgdir}/usr" --libdir "${pkgdir}$(ocamlfind printconf destdir)"
+  dune install --destdir "${pkgdir}"
+  install -Dm644 "LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
   mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
 }
