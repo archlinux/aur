@@ -14,7 +14,7 @@ source=("https://github.com/Chocobozzz/PeerTube/releases/download/v$pkgver/$pkgn
 		"$pkgname.install"
 		"$pkgname.sysusers"
 		"$pkgname")
-sha256sums=('4f3173aac72b87fa4057adb52e67b61bab3e31e5beb624973a871886198c3bb2'
+sha256sums=('c85c0da04d5de2718d8377861a9b6f7c4f55274c21bd579c86832d3a5a50911c'
             'f2ce66e100c213b3db7e2f65e8678d06e5d5c37c4ac06ba5cde673a7e9e058cb'
             '61683c744a60f4e0ef43607b25db3173a9d070ad0b9cf6ab50e79825ae365a92'
             '3763963dc9e22de2d95977dcb00529f6e51bd9c042ba2c074aa705e50d656a69')
