@@ -3,7 +3,7 @@
 
 pkgname=asciidocfx
 pkgver=1.6.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Asciidoc Editor and Toolchain written with JavaFX 8"
 arch=('any')
 
@@ -11,7 +11,7 @@ url='http://asciidocfx.com/'
 license=('Apache')
 
 makedepends=('maven>=3.3.9' 'java-environment=8' 'gendesk')
-depends=('java-environment=8' 'java-openjfx>=8.u76')
+depends=('java-environment=8' 'java8-openjfx')
 
 source=(
     "https://github.com/asciidocfx/AsciidocFX/archive/v${pkgver}.tar.gz"
