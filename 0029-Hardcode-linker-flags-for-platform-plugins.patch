@@ -1,4 +1,4 @@
-From cdfab1e716f840d0f1db934246219865054572b7 Mon Sep 17 00:00:00 2001
+From 96aed122b16085b36ffe3c369f858c39f7691137 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Wed, 25 Jan 2017 23:42:30 +0100
 Subject: [PATCH 29/33] Hardcode linker flags for platform plugins
@@ -149,5 +149,5 @@ index 174bc7b609..285d90c6d3 100644
  include(windows.pri)
  
 -- 
-2.22.0
+2.23.0
 
