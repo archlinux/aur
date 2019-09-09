@@ -14,12 +14,19 @@ sha256sums=('3e5bcb57f2a7995ce4fd9c76c033050e487ea375ecf0e277dabc22159c8cfb31')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
+prepare() {
+  cd "$srcdir/Bonmin-$pkgver"
+  # see mingw-w64-coin-or-pkg-config
+  sed -i "s|export PKG_CONFIG_PATH|export PKG_CONFIG_PATH_CUSTOM|g" Bonmin/configure
+  sed -i "s| PKG_CONFIG_PATH=| PKG_CONFIG_PATH_CUSTOM=|g" Bonmin/configure
+}
+
 build() {
   cd "$srcdir/Bonmin-$pkgver"
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
     COIN_SKIP_PROJECTS="Sample" \
-    ${_arch}-configure \
+    CXXFLAGS="-DCOIN_HAS_ASL -DCOIN_HAS_MUMPS" ${_arch}-configure \
        --with-osi-lib="$(${_arch}-pkg-config --libs osi)" \
        --with-osi-incdir="/usr/${_arch}/include/coin/" \
        --with-clp-lib="$(${_arch}-pkg-config --libs clp)" \
