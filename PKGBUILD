@@ -1,7 +1,7 @@
 # Maintainer: Jan Cholasta <jan at cholasta net>
 
 pkgname=nblood-git
-pkgver=1.0+98+gcb90b21
+pkgver=1.01+533+gcefb52a
 pkgrel=1
 pkgdesc='Blood port based on EDuke32 (git version)'
 arch=('i686' 'x86_64')
@@ -32,7 +32,7 @@ pkgver() {
 
 prepare() {
     cd NBlood
-    sed -i 's|/etc/timidity|/etc/timidity++|g' source/blood/src/sdlmusic.cpp
+    sed -i 's|/etc/timidity|/etc/timidity++|g' source/audiolib/src/sdlmusic.cpp
 }
 
 build() {
