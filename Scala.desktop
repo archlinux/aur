@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+
+Name=Scala
+Comment=Music software for experimentation with tunings and different kind of scales
+
+Exec=scala-music
+Terminal=false
+StartupNotify=true
+Icon=Scala
+Categories=Audio;AudioVideo;

@@ -1,0 +1,2 @@
+#!/bin/bash
+LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/scala/libs/ /opt/scala/scala
