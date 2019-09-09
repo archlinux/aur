@@ -1,7 +1,7 @@
 # Maintainer: Stefan Ott <stefan@ott.net>
 pkgname=nml
 pkgver=0.4.5
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="OpenTTD NewGRF Meta Language Tools"
 arch=("any")
@@ -27,11 +27,7 @@ validpgpkeys=()
 
 prepare() {
 	cd "$pkgname-$pkgver"
-	#patch -p1 -i "$srcdir/$pkgname-$pkgver.patch"
-}
-
-check() {
-	echo "OK"
+	patch -p1 -i "$startdir/nml-pillow-6.0.patch"
 }
 
 build()
