@@ -4,12 +4,12 @@
 #
 pkgname="readme-md-generator"
 pkgver="0.6.2"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="A CLI that generates beautiful README.md files."
 arch=('any')
 url="https://www.npmjs.com/package/readme-md-generator"
 license=('MIT')
-depends=('')
+depends=('nodejs')
 makedepends=('npm')
 options=(!strip)
 source=("https://github.com/kefranabg/${pkgname}/archive/v${pkgver}.tar.gz")

@@ -1,11 +1,12 @@
 pkgbase = readme-md-generator
 	pkgdesc = A CLI that generates beautiful README.md files.
 	pkgver = 0.6.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.npmjs.com/package/readme-md-generator
 	arch = any
 	license = MIT
 	makedepends = npm
+	depends = nodejs
 	noextract = v${pkgver}.tar.gz
 	options = !strip
 	source = https://github.com/kefranabg/readme-md-generator/archive/v0.6.2.tar.gz
