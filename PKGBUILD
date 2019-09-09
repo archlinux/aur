@@ -4,7 +4,7 @@
 
 pkgname=i3blocks-contrib
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Community-contributed blocklets for i3blocks"
 arch=('any')
 groups=('i3')
