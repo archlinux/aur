@@ -1,6 +1,6 @@
 # Maintainer: Jonas Witschel <diabonas at gmx dot de>
 pkgname=pdftk-java
-pkgver=3.0.6
+pkgver=3.0.7
 pkgrel=1
 pkgdesc='Command-line tool for working with PDFs'
 arch=('any')
@@ -12,7 +12,7 @@ checkdepends=('java-hamcrest' 'junit' 'junit-system-rules' 'poppler')
 provides=('pdftk')
 conflicts=('pdftk')
 source=("$url/-/archive/v$pkgver/pdftk-v$pkgver.tar.bz2" "pdftk.sh")
-sha512sums=('f37cbc2f99d0d033a706f7ebf9eda89f63d5b8910b7e07cd3f2a7de45a3667e775188330f87304315777862912a8a4d659c64f12d30d6838d005c39426eaf45f'
+sha512sums=('22e144a186b77817ff909543f068031023d7ebcc762443fc5ab4a31f008b9d62dd5662b7d122657e22e95292ea4b6443c4539ff279024d024aac92d7582b13f4'
             '439c397472012d71c8e782a75819a7a950474c387b7050bbd5aa2f849d1dbe29423accf3f8e17d18436ba32eb4f76072df5b4f85caebd853df1e75c131631988')
 
 prepare() {
