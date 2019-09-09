@@ -9,7 +9,7 @@
 
 _qt_module=qtwebglplugin
 pkgname="mingw-w64-qt5-webglplugin"
-pkgver=5.13.0
+pkgver=5.13.1
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="QPA plugin for running an application via a browser using streamed WebGL commands (mingw-w64)"
@@ -22,8 +22,8 @@ url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz"
         '0001-Hardcode-linker-flags-for-platform-plugin.patch')
-sha256sums=('b8f05ee429f3fb7d6cef789333ddb56aafdc30a83e05b04f5f9e05650146c06e'
-            '4a3e65c165fbb0dd7084899e7379344555da52959b81b4871c46f6edf2b758cf')
+sha256sums=('fb40c4077f0dc3954c786c47f065e8fa1816af70bd1d42359aac70bf59652b1a'
+            'ca03e23308c9887f1c406839188126dae9f134be120475fd02f475ce4006a32b')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 [[ $NO_STATIC_LIBS ]] || \
@@ -87,6 +87,9 @@ package() {
           [ -f "${file%d*}${file##*d}" ] && rm "${file}";
         done
       fi
+
+      # remove '.static.prl' files
+      find "${pkgdir}/usr/${_arch}" -name '.static.prl' -delete
 
       find "${pkgdir}/usr/${_arch}/lib" -maxdepth 1 -name '*.dll' -delete
       [ "$NO_STATIC_EXECUTABLES" -a "${_config##*=}" = static -o "$NO_EXECUTABLES" ] && \
