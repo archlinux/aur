@@ -19,6 +19,10 @@ prepare () {
   pushd ThirdParty/ASL && ./get.ASL && popd
   pushd ThirdParty/Metis && ./get.Metis && popd
   pushd ThirdParty/Mumps && ./get.Mumps && popd
+
+  # see mingw-w64-coin-or-pkg-config
+  sed -i "s|export PKG_CONFIG_PATH|export PKG_CONFIG_PATH_CUSTOM|g" Ipopt/configure
+  sed -i "s| PKG_CONFIG_PATH=| PKG_CONFIG_PATH_CUSTOM=|g" Ipopt/configure
 }
 
 build() {
@@ -28,7 +32,7 @@ build() {
     ${_arch}-configure \
       --with-blas-incdir=/usr/${_arch}/include --with-blas-lib="-lblas" \
       --with-lapack-incdir=/usr/${_arch}/include --with-lapack-lib="-llapack" \
-      ..
+      lt_cv_deplibs_check_method=pass_all ..
     make
     popd
   done
