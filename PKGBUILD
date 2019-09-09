@@ -9,7 +9,7 @@
 
 _qt_module=qtwinextras
 pkgname="mingw-w64-qt5-winextras"
-pkgver=5.13.0
+pkgver=5.13.1
 pkgrel=1
 arch=('any')
 pkgdesc="Classes and functions that enable you to use Windows-specific functions (mingw-w64)"
@@ -22,8 +22,8 @@ url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz"
         '0001-Revert-Directly-link-to-functions-available-from-Win.patch')
-sha256sums=('096387a674f7fa1faeda856b87e965bd2937e3dcce334f10df694468003887d4'
-            'f35f506e30596b5add67cf52da359bbaafa4d0b99679d2fe21b41bc7f685b95f')
+sha256sums=('fdcbb45f7255d771fb0e61e1e5f3dc1c29a1967a6ba80da5171fc7c2c0faf7a6'
+            'b48fef502062f2f5062926f2a196441f8dad4dd689d93a4a12c859af7e6ab40f')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 [[ $NO_STATIC_LIBS ]] || \
@@ -77,6 +77,9 @@ package() {
           [ -f "${file%d*}${file##*d}" ] && rm "${file}";
         done
       fi
+
+      # remove '.static.prl' files
+      find "${pkgdir}/usr/${_arch}" -name '.static.prl' -delete
 
       find "${pkgdir}/usr/${_arch}/lib" -maxdepth 1 -name '*.dll' -delete
       [ "$NO_STATIC_EXECUTABLES" -a "${_config##*=}" = static -o "$NO_EXECUTABLES" ] && \
