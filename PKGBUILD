@@ -3,7 +3,7 @@
 # Contributor: Stas Solovey <whats_up@tut.by>
 pkgname=hunspell-ru
 pkgver=20131101
-pkgrel=3
+pkgrel=4
 pkgdesc="Russian hunspell dictionary"
 arch=('any')
 url='https://code.google.com/p/hunspell-ru/'
@@ -13,10 +13,10 @@ source=("$pkgname-$pkgver.zip::https://bitbucket.org/Shaman_Alex/russian-diction
 sha256sums=('c9c30ca305705691fea4810137763f3b790676aa534a5cd6dfc9b45659aa9408')
 
 package() {
-  install -Dm644 ru_RU.dic "$pkgdir/usr/share/hunspell/ru_RU.dic"
-  install -Dm644 ru_RU.aff "$pkgdir/usr/share/hunspell/ru_RU.aff"
-
-  install -dm755 "$pkgdir/usr/share/myspell/dicts"
-  ln -s ../../hunspell/ru_RU.dic "$pkgdir/usr/share/myspell/dicts/ru_RU.dic"
-  ln -s ../../hunspell/ru_RU.aff "$pkgdir/usr/share/myspell/dicts/ru_RU.aff"
+  install -dm755 "${pkgdir}/usr/share/hunspell"
+  install -dm755 "${pkgdir}/usr/share/myspell/dicts"
+  for dict in ru_RU.*; do
+    install -vm644 "${dict}" "${pkgdir}/usr/share/hunspell"
+    ln -sv "/usr/share/hunspell/${dict}" "${pkgdir}/usr/share/myspell/dicts"
+  done
 }
