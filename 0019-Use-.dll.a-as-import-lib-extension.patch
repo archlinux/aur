@@ -1,4 +1,4 @@
-From 0f3da1317f28a882c705fcf3f13c419601b96467 Mon Sep 17 00:00:00 2001
+From ad61d1712db4cdd3389e808d46fbfcb26a2509e3 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 18:26:18 +0200
 Subject: [PATCH 19/33] Use *.dll.a as import lib extension
@@ -12,10 +12,10 @@ g++-win32.conf
  3 files changed, 26 insertions(+), 9 deletions(-)
 
 diff --git a/mkspecs/features/create_cmake.prf b/mkspecs/features/create_cmake.prf
-index 6bc621ce27..226dc93c4d 100644
+index 4fe2ef2326..7cb27b716a 100644
 --- a/mkspecs/features/create_cmake.prf
 +++ b/mkspecs/features/create_cmake.prf
-@@ -245,8 +245,9 @@ mac {
+@@ -281,8 +281,9 @@ mac {
              CMAKE_PRL_FILE_LOCATION_DEBUG = lib$${CMAKE_QT_STEM}d.prl
              CMAKE_PRL_FILE_LOCATION_RELEASE = lib$${CMAKE_QT_STEM}.prl
          } else {
@@ -57,7 +57,7 @@ index bbada46c29..d6299d8eed 100644
              }
          }
 diff --git a/qmake/generators/win32/winmakefile.cpp b/qmake/generators/win32/winmakefile.cpp
-index d9887cd36d..4f1a4344df 100644
+index 8222854cfc..17592c2492 100644
 --- a/qmake/generators/win32/winmakefile.cpp
 +++ b/qmake/generators/win32/winmakefile.cpp
 @@ -80,9 +80,13 @@ Win32MakefileGenerator::parseLibFlag(const ProString &flag, ProString *arg)
@@ -92,5 +92,5 @@ index d9887cd36d..4f1a4344df 100644
                  + project->first("QMAKE_EXTENSION_SHLIB"));
          project->values("TARGET").first() = project->first("QMAKE_PREFIX_SHLIB") + project->first("TARGET");
 -- 
-2.22.0
+2.23.0
 

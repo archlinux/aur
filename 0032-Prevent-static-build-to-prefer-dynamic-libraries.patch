@@ -1,4 +1,4 @@
-From 85670b69fe04b78bb9b43b490c9a91ef6d79a226 Mon Sep 17 00:00:00 2001
+From 7b32e9b9f45a8fd6e1b2a8ac9a70ab68741f370f Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 3 Feb 2019 14:34:42 +0100
 Subject: [PATCH 32/33] Prevent static build to prefer dynamic libraries
@@ -10,7 +10,7 @@ in order to get a fully statically linked binary in the end.
  1 file changed, 6 insertions(+), 6 deletions(-)
 
 diff --git a/mkspecs/features/qt_configure.prf b/mkspecs/features/qt_configure.prf
-index 94eb012b81..96ea2554ec 100644
+index 9be4fb6f1f..6a006b3586 100644
 --- a/mkspecs/features/qt_configure.prf
 +++ b/mkspecs/features/qt_configure.prf
 @@ -577,12 +577,12 @@ defineTest(qtConfResolveLibs) {
@@ -33,5 +33,5 @@ index 94eb012b81..96ea2554ec 100644
                  lcan += $${lib}.lib
              }
 -- 
-2.22.0
+2.23.0
 

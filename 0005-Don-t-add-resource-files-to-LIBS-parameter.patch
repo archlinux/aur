@@ -1,4 +1,4 @@
-From 2ebc0b00f1b3297e1f88d271123df7ecb0fbd955 Mon Sep 17 00:00:00 2001
+From cd4400120aa04adcc40f36f29ae395589a511409 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 13:58:28 +0200
 Subject: [PATCH 05/33] Don't add resource files to LIBS parameter
@@ -11,10 +11,10 @@ like .obj/debug/Qt5Cored_resource_res.o
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/qmake/generators/win32/mingw_make.cpp b/qmake/generators/win32/mingw_make.cpp
-index de7363e51b..b2b9d01799 100644
+index 2175841264..c565d44e67 100644
 --- a/qmake/generators/win32/mingw_make.cpp
 +++ b/qmake/generators/win32/mingw_make.cpp
-@@ -209,7 +209,7 @@ void MingwMakefileGenerator::init()
+@@ -192,7 +192,7 @@ void MingwMakefileGenerator::init()
  
      processVars();
  
@@ -24,5 +24,5 @@ index de7363e51b..b2b9d01799 100644
      if (project->isActiveConfig("dll")) {
          QString destDir = "";
 -- 
-2.22.0
+2.23.0
 

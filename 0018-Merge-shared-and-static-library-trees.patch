@@ -1,4 +1,4 @@
-From 8d8cfe560697425a01b786aee113082495d6c85f Mon Sep 17 00:00:00 2001
+From 24a7b52b579fb5f0787d9738668841392c8bd649 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 18:45:08 +0200
 Subject: [PATCH 18/33] Merge shared and static library trees
@@ -10,15 +10,15 @@ Allow installation of shared and static build in the same prefix
  mkspecs/features/device_config.prf |  9 ++++++++-
  mkspecs/features/qt.prf            | 17 +++++++++++++++++
  mkspecs/features/spec_pre.prf      | 11 ++++++++---
- qmake/generators/makefile.cpp      |  9 ++++++---
+ qmake/generators/makefile.cpp      | 11 +++++++----
  qtbase.pro                         | 10 ++++++++--
- 7 files changed, 73 insertions(+), 10 deletions(-)
+ 7 files changed, 74 insertions(+), 11 deletions(-)
 
 diff --git a/configure.pri b/configure.pri
-index 81133da3d7..927fcbe132 100644
+index 7b8dee0953..5477c264eb 100644
 --- a/configure.pri
 +++ b/configure.pri
-@@ -657,7 +657,12 @@ defineTest(qtConfOutput_machineTuple) {
+@@ -676,7 +676,12 @@ defineTest(qtConfOutput_machineTuple) {
  
  defineTest(qtConfOutput_commitOptions) {
      # qdevice.pri needs to be written early, because the compile tests require it.
@@ -32,7 +32,7 @@ index 81133da3d7..927fcbe132 100644
  }
  
  # type (empty or 'host'), option name, default value
-@@ -1350,3 +1355,12 @@ defineTest(createConfigStatus) {
+@@ -1369,3 +1374,12 @@ defineTest(createConfigStatus) {
  
  QMAKE_POST_CONFIGURE += \
      "createConfigStatus()"
@@ -46,7 +46,7 @@ index 81133da3d7..927fcbe132 100644
 +    CONFIG += no_smart_library_merge
 +}
 diff --git a/mkspecs/features/default_post.prf b/mkspecs/features/default_post.prf
-index 9df99b8648..9c1dd6a735 100644
+index 0e41b825ec..4c4b6dd12a 100644
 --- a/mkspecs/features/default_post.prf
 +++ b/mkspecs/features/default_post.prf
 @@ -1,5 +1,16 @@
@@ -137,10 +137,10 @@ index 51ea3a8321..275e080ae4 100644
  QMAKE_EXT_YACC          = .y
  
 diff --git a/qmake/generators/makefile.cpp b/qmake/generators/makefile.cpp
-index fedbaaf601..fd3b5c405a 100644
+index 8a47d584c3..b158bb9b52 100644
 --- a/qmake/generators/makefile.cpp
 +++ b/qmake/generators/makefile.cpp
-@@ -3247,6 +3247,9 @@ MakefileGenerator::pkgConfigFileName(bool fixify, bool onlyPrependDestdir)
+@@ -3257,6 +3257,9 @@ MakefileGenerator::pkgConfigFileName(bool fixify, bool onlyPrependDestdir)
      if (project->isActiveConfig("debug")) {
          ret += "d";
      }
@@ -150,19 +150,22 @@ index fedbaaf601..fd3b5c405a 100644
      ret += Option::pkgcfg_ext;
      QString subdir = project->first("QMAKE_PKGCONFIG_DESTDIR").toQString();
      if(!subdir.isEmpty()) {
-@@ -3421,9 +3424,9 @@ MakefileGenerator::writePkgConfigFile()
+@@ -3433,11 +3436,11 @@ MakefileGenerator::writePkgConfigFile()
      t << endl;
  
      // requires
--    const QString requires = project->values("QMAKE_PKGCONFIG_REQUIRES").join(' ');
--    if (!requires.isEmpty()) {
--        t << "Requires: " << requires << endl;
+-    const QString requiresString = project->values("QMAKE_PKGCONFIG_REQUIRES").join(' ');
+-    if (!requiresString.isEmpty()) {
+-        t << "Requires: " << requiresString << endl;
 +    t << "Requires:";
-+    for (const auto &required : project->values("QMAKE_PKGCONFIG_REQUIRES")) {
++    const auto pkgconfigRequires = project->values("QMAKE_PKGCONFIG_REQUIRES");
++    for (const auto &required : pkgconfigRequires) {
 +        t << (project->isActiveConfig("staticlib") ? QStringLiteral(" Static") : QStringLiteral(" ")) << required.toQString();
      }
- 
+-
      t << endl;
+ }
+ 
 diff --git a/qtbase.pro b/qtbase.pro
 index c0ce0972ef..5a2deaf31d 100644
 --- a/qtbase.pro
@@ -199,5 +202,5 @@ index c0ce0972ef..5a2deaf31d 100644
  mkspecs.files -= $$PWD/mkspecs/modules $$PWD/mkspecs/modules-inst
  INSTALLS += mkspecs
 -- 
-2.22.0
+2.23.0
 
