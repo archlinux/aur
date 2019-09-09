@@ -1,4 +1,5 @@
 # Maintainer: Josef Vybihal <josef dot vybihal at gmail dot com>
+# Ported to GTK3 by https://github.com/dallenwilson
 # Old Maintainer: Jeff Henson <jeff at henson dot io>
 # Old Maintainer: cuihao <cuihao dot leo at gmail dot com>
 # Original PKGBUILD (community/gstm):
@@ -8,13 +9,15 @@
 
 pkgname=gstm
 pkgver=1.3.3
-pkgrel=4
+pkgrel=5
 pkgdesc="Gnome SSH Tunnel Manager - Gtk3 Edition"
 arch=('i686' 'x86_64')
 url="https://github.com/dallenwilson/gstm"
 license=('GPL')
 depends=('openssh' 'libxml2' 'glib2' 'gdk-pixbuf2' 'gtk3')
 makedepends=('intltool')
+conflicts=('gstm-git' 'gstm-gtk2')
+provides=('gstm')
 source=(https://github.com/dallenwilson/gstm/releases/download/${pkgver}/gstm-${pkgver}.tar.gz)
 sha256sums=('84d982763589b22be4dff593de2cb2e2e907093b9bcca70dbb1fe6859043852a')
 
