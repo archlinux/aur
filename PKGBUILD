@@ -3,7 +3,7 @@
 _basepkg="lightdm-webkit-theme-litarvan"
 pkgname="${_basepkg}-git"
 #pkgname=lightdm-webkit-theme-litarvan
-pkgver=v3.0.0.pre3.r23.gc79eb52
+pkgver=3.0.0.pre3.r23.gc79eb52
 pkgrel=1
 pkgdesc='Modern and full-featured LightDM theme'
 arch=('any')
@@ -19,7 +19,7 @@ sha512sums=('SKIP')
 
 pkgver() {
     cd "$pkgname"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
