@@ -1,17 +1,21 @@
 pkgbase = moony-lv2-git
 	pkgdesc = Realtime Lua as programmable glue in LV2 - git master
-	pkgver = 0.22.0.r2432.8a5483a
+	pkgver = 0.29.1.r2493.54f6d76
 	pkgrel = 1
 	url = http://open-music-kontrollers.ch/lv2/moony/
 	arch = i686
 	arch = x86_64
 	groups = lv2-plugins
+	groups = pro-audio
 	license = Artistic2.0
-	makedepends = cmake
+	makedepends = git
 	makedepends = lv2
+	makedepends = meson
+	makedepends = sord
 	depends = libgl
-	provides = moony-lv2
+	provides = moony.lv2
 	conflicts = moony-lv2
+	conflicts = moony.lv2
 	source = git+https://github.com/OpenMusicKontrollers/moony.lv2
 	sha256sums = SKIP
 

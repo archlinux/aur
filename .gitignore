@@ -1,0 +1,5 @@
+pkg/
+src/
+moony.lv2/
+moony-lv2-git-*.pkg.tar.xz
+moony-lv2-git-*.src.tar.gz
