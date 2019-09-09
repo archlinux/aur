@@ -3,7 +3,7 @@
 
 pkgname=perl-mail-imapclient
 _realname=Mail-IMAPClient
-pkgver=3.39
+pkgver=3.42
 pkgrel=1
 pkgdesc="Perl/CPAN Module Mail::IMAPClient : An IMAP Client API"
 arch=('any')
@@ -13,8 +13,8 @@ depends=('perl>=5.10.0' 'perl-parse-recdescent' 'perl-digest-hmac')
 optdepends=("perl-authen-sasl: for Authmechanism 'DIGEST-MD5'")
 options=(!emptydirs)
 source=(http://search.cpan.org/CPAN/authors/id/P/PL/PLOBBES/${_realname}-${pkgver}.tar.gz)
-md5sums=('b813cfd79a7cab4e886d9caa94991502')
-sha256sums=('b541fdb47d5bca93048bcee69f42ad2cc96af635557ba6a9db1d8f049a434ea3')
+md5sums=('7639380b85da4ad473dc50d6a78d3ad7')
+sha256sums=('1c2264d50c54c839a3e38ce2f8edda3d24f30cc607940d7574beab19cb00ce7e')
 
 build() {
   cd "${srcdir}/${_realname}-${pkgver}"
