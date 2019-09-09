@@ -1,6 +1,6 @@
 pkgbase = gnome-firmware-updater-git
 	pkgdesc = GNOME application to update, reinstall and downgrade firmware on devices supported by fwupd
-	pkgver = r25.d5014ed
+	pkgver = r29.c55c7c6
 	pkgrel = 1
 	url = https://gitlab.gnome.org/hughsie/gnome-firmware-updater
 	arch = i686
@@ -10,6 +10,7 @@ pkgbase = gnome-firmware-updater-git
 	license = GPL2
 	makedepends = git
 	makedepends = meson
+	makedepends = appstream
 	depends = gtk3
 	depends = fwupd
 	depends = libxmlb
