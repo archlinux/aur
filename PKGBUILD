@@ -52,7 +52,7 @@ prepare() {
 
   cd Waterfox
 
-  patch -Np1 -i ../waterfox-kde-68.0a2.patch
+  patch -Np1 -i ../waterfox-kde-68.0b1.patch
   patch -Np1 -i ../mozilla-nongnome-proxies.patch
   patch -Np1 -i ../australis-photon.patch
   patch -Np1 -i ../pocket.patch
