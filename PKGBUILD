@@ -8,7 +8,7 @@
 
 _qt_module=qtgamepad
 pkgname="mingw-w64-qt5-gamepad"
-pkgver=5.13.0
+pkgver=5.13.1
 pkgrel=1
 arch=('any')
 pkgdesc="Adds support for getting events from gamepad devices (mingw-w64)"
@@ -21,7 +21,7 @@ license=('GPL3' 'LGPL' 'FDL' 'custom')
 url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('6bc1086d8c6a36a80dfa939b5ecb372be8c913a81e2986d84302012eafdc4b63')
+sha256sums=('660e2bea430be5dc75557d038f162b77454c945ab6df1a1f4a7d69011e02c199')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 [[ $NO_STATIC_LIBS ]] || \
@@ -75,6 +75,9 @@ package() {
           [ -f "${file%d*}${file##*d}" ] && rm "${file}";
         done
       fi
+
+      # remove '.static.prl' files
+      find "${pkgdir}/usr/${_arch}" -name '.static.prl' -delete
 
       find "${pkgdir}/usr/${_arch}/lib" -maxdepth 1 -name '*.dll' -delete
       [ "$NO_STATIC_EXECUTABLES" -a "${_config##*=}" = static -o "$NO_EXECUTABLES" ] && \
