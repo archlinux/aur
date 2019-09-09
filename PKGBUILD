@@ -32,7 +32,7 @@ isNoOpenGL() {
 }
 
 pkgname=mingw-w64-qt5-base-dynamic
-pkgver=5.13.0
+pkgver=5.13.1
 pkgrel=1
 pkgdesc='A cross-platform application and UI framework (mingw-w64)'
 # The static variant doesn't contain any executables which need to be executed on the build machine
@@ -383,6 +383,9 @@ package() {
         [ -f "${file%d*}${file##*d}" ] && rm "${file}";
       done
     fi
+
+    # remove '.static.prl' files
+    find "${pkgdir}/usr/${_arch}" -name '.static.prl' -delete
 
     # replace library path in *.prl files so it points to the installed location and not the build directory
     find "${pkgdir}/usr/${_arch}/lib" \( -type f -name '*.prl' -o -name '*.pc' \) -exec sed -i -e "s:${PWD%/*}/build-${_arch}/lib:/usr/${_arch}/lib:g" {} \;
