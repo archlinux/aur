@@ -1,0 +1,14 @@
+pkgbase = archupdate-indicator
+	pkgdesc = Creates a taskbar icon that indicates if updates are available and provides a context menu to inspect and install them.
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/epsilontheta/archupdate-indicator
+	arch = any
+	license = MIT
+	depends = pacman-contrib
+	depends = python-wxpython
+	source = https://github.com/epsilontheta/archupdate-indicator/archive/0.0.2.tar.gz
+	sha256sums = 379d385a3a42bd433f3344c19f744de038ed05972004c994bac36e9671d92325
+
+pkgname = archupdate-indicator
+
