@@ -7,7 +7,7 @@
 
 pkgname=i3blocks-contrib-git
 pkgver=v1.4.0.r157.21708ed
-pkgrel=1
+pkgrel=2
 pkgdesc='Official repository of community contributed blocklets'
 arch=('armv7h' 'i686' 'x86_64')
 groups=('i3')
