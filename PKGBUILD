@@ -3,7 +3,7 @@
 libname=libblockdev
 pkgname=$libname-lean
 pkgver=2.23
-pkgrel=1
+pkgrel=2
 pkgdesc="Lean version of libblockdev without any of the plugins"
 arch=('x86_64')
 url="https://github.com/storaged-project/libblockdev"
@@ -11,7 +11,7 @@ provides=(libblockdev)
 conflicts=(libblockdev)
 license=('LGPL')
 depends=('parted')
-makedepends=('gobject-introspection' 'systemd' 'python')
+makedepends=('gobject-introspection' 'systemd' 'python' 'autoconf' 'autoconf-archive' 'libbytesize')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/storaged-project/libblockdev/archive/$pkgver-1.tar.gz")
 sha512sums=('SKIP')
 
