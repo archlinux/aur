@@ -3,13 +3,12 @@
 _pkgname='surface-control'
 pkgname="${_pkgname}-bin"
 pkgver=0.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Control various aspects of Microsoft Surface devices from the Command-Line'
 url='https://github.com/qzed/linux-surface-control'
 license=('MIT')
 arch=('x86_64')
 depends=('gcc-libs')
-makedepends=('rust' 'cargo')
 
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
