@@ -1,0 +1,7 @@
+post_install() {
+	echo -e "\n"
+	echo "#####################################"
+	echo -e "\n"
+	echo "The scales can be found in '/opt/scala/scl'."
+    echo -e "\n"
+}
