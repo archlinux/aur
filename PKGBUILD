@@ -10,7 +10,7 @@
 
 _qt_module=qtmultimedia
 pkgname=mingw-w64-qt5-multimedia
-pkgver=5.13.0
+pkgver=5.13.1
 pkgrel=1
 arch=('any')
 pkgdesc='Classes for audio, video, radio and camera functionality (mingw-w64)'
@@ -25,10 +25,10 @@ source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/subm
         '0001-Recorder-includes-to-prevent-conflict-with-vsnprintf.patch'
         '0002-Fix-build-with-ANGLE.patch'
         '0003-Link-directshow-plugin-against-libamstrmid.patch')
-sha256sums=('5076219d277083d2535e5f739d06783abe2e059e9d3fd9f924a1fa7970946d72'
-            '57cbc4068a36431b08c79e6e10b7f990acc27398fb95e1600dbbf5de317cc969'
-            'a6f9f827ae9be35d7f83407279ce6ec1b02304c5ea92d73698bdc9629d48ccd4'
-            'ea4368191fe53581f407448f7d1cf663e88b07c7a733a97f14bc91c35d7b5902')
+sha256sums=('5efdb5876596c3472d24acf1ed753574dfa87b500458ea675c3112e8c2acec65'
+            'cec9c82e4343520afd96776dad5901db712c4fc1c26cbfbe3468b7c8c1169e48'
+            '0955cd4748b534c0c804a8e42c2ce2263114118955e912c1231bfa21de108149'
+            '81732162031cbf5d5525aabd3dc73cb3595cf10f16ebc102edb167a53e4e6dd0')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 [[ $NO_STATIC_LIBS ]] || \
@@ -100,6 +100,9 @@ package() {
           [ -f "${file%d*}${file##*d}" ] && rm "${file}";
         done
       fi
+
+      # remove '.static.prl' files
+      find "${pkgdir}/usr/${_arch}" -name '.static.prl' -delete
 
       find "${pkgdir}/usr/${_arch}/lib" -maxdepth 1 -name '*.dll' -delete
       [ "$NO_STATIC_EXECUTABLES" -a "${_config##*=}" = static -o "$NO_EXECUTABLES" ] && \
