@@ -5,7 +5,7 @@
 
 pkgname=dropbox
 pkgver=80.4.126
-pkgrel=1
+pkgrel=2
 pkgdesc="A free service that lets you bring your photos, docs, and videos anywhere and share them easily."
 arch=("i686" "x86_64")
 url="https://www.dropbox.com"
@@ -54,6 +54,7 @@ package() {
 
   install -d "$pkgdir"/opt
   cp -dr --no-preserve=ownership "$srcdir"/.dropbox-dist/dropbox-lnx.$_source_arch-$pkgver "$pkgdir"/opt/dropbox
+  chmod 755 "$pkgdir"/opt/dropbox/*.so
 
   install -d "$pkgdir"/usr/bin
   ln -s ../../opt/dropbox/dropbox "$pkgdir"/usr/bin/dropbox
