@@ -1,12 +1,12 @@
 # Maintainer: stiglers-eponym
 pkgname=beamerpresenter
-pkgver=r94.e62963b
+pkgver=r100.6b4dbcc
 pkgrel=1
 pkgdesc="Simple dual screen pdf presentation software"
 arch=('x86_64')
 url="https://github.com/stiglers-eponym/BeamerPresenter"
 license=('GPL3')
-depends=('poppler-qt5' 'qt5-multimedia')
+depends=('poppler-qt5>=0.50.0' 'qt5-multimedia>=5.9.0')
 optdepends=('mupdf-tools: external rendering'
 	'gst-libav: video support'
 	'gst-plugins-good: multimedia support')
@@ -32,6 +32,6 @@ package() {
   install -Dm644 beamerpresenter.conf "${pkgdir}/etc/${pkgname}/${pkgname}.conf"
   echo '#!/bin/bash
 echo $(( 16#$(wmctrl -lp | sed -n "s/^0x\([0-9a-f]\+\) \+[0-9]\+ \+$1 .*$/\1/p") ))' > "${pkgdir}/etc/${pkgname}/pid2wid.sh"
-  gzip beamerpresenter.1
+  gzip -9 beamerpresenter.1
   install -Dm644 beamerpresenter.1.gz "${pkgdir}/usr/share/man/man1/${pkgname}.1.gz"
 }
