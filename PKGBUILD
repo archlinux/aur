@@ -1,7 +1,7 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 
 pkgname=awesomebump-git
-pkgver=5.1.r6.g9f1049f
+pkgver=5.1.r1.gfdd5b77
 pkgrel=1
 pkgdesc="A free program designed to generate normal, height, specular or ambient occlusion textures from a single image"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('LGPL3')
 depends=('qt5-base' 'qt5-location' 'qt5-script' 'qt5-svg')
 conflicts=('awesomebump')
 makedepends=('git' 'wget' 'unzip' 'mesa-demos')
-source=("${pkgname}::git+https://github.com/kmkolasinski/AwesomeBump.git#branch=master"
+source=("${pkgname}::git+https://github.com/kmkolasinski/AwesomeBump.git#branch=Release"
         "awesomebump.log.file.moved.to.tmp.patch"
         "awesomeBump.sh"
         "awesomebump.desktop")
@@ -25,7 +25,7 @@ vergte() {
 
 pkgver() {
   cd ${srcdir}/${pkgname}
-  git describe --long --tags | sed 's/^Winx32v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^Linuxv//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
