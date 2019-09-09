@@ -3,6 +3,7 @@
 # Contributor: Vlad M. <vlad@archlinux.net>
 # Contributor: Patrice Peterson <runiq at archlinux dot us>
 # Contributor: Vivien Didelot <vivien+aur@didelot.org>
+# Contributor: hashworks <mail@hashworks.net>
 
 pkgname=i3blocks-contrib-git
 pkgver=v1.4.0.r157.21708ed
@@ -10,7 +11,7 @@ pkgrel=1
 pkgdesc='Official repository of community contributed blocklets'
 arch=('x86_64')
 groups=('i3')
-url="https://github.com/vivien/i3blocks"
+url="https://github.com/vivien/i3blocks-contrib"
 license=('GPL3')
 makedepends=('git')
 depends=('glibc')
