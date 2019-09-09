@@ -4,31 +4,38 @@
 
 pkgname=zstd-static
 _pkgname=${pkgname%-static}
-pkgver=1.4.2
+pkgver=1.4.3
 pkgrel=1
 pkgdesc='Zstandard - Fast real-time compression algorithm'
 arch=('x86_64')
 url='http://www.zstd.net/'
 license=('BSD')
 depends=('zlib' 'xz' 'lz4')
+makedepends=('cmake')
 options=('staticlibs')
 source=("https://github.com/facebook/zstd/archive/v${pkgver}.tar.gz")
-sha256sums=('7a6e1dad34054b35e2e847eb3289be8820a5d378228802239852f913c6dcf6a7')
+sha256sums=('5eda3502ecc285c3c92ee0cc8cd002234dee39d539b3f692997a0e80de1d33de')
 provides=('zstd')
 conflicts=('zstd')
 
 build() {
-    cd "$srcdir/$_pkgname-$pkgver"
-    make CFLAGS="$CFLAGS -fPIC"
-    make zstdmt
-    make -C contrib/pzstd
+    cd "$srcdir/$_pkgname-$pkgver/build"
+    mkdir builddir
+    cd builddir
+    cmake -DCMAKE_INSTALL_PREFIX=/usr \
+          -DCMAKE_INSTALL_LIBDIR=/usr/lib \
+          ../cmake
+    make
 }
 
 package() {
     cd "$srcdir/$_pkgname-$pkgver"
-    make PREFIX="/usr" DESTDIR="$pkgdir/" install
-    install -D -m755 zstdmt "$pkgdir/usr/bin/zstdmt"
-    install -D -m755 contrib/pzstd/pzstd "$pkgdir/usr/bin/pzstd"
+    pushd "build/builddir"
+    pushd lib
+    make DESTDIR="$pkgdir/" install
+    popd; pushd programs
+    make DESTDIR="$pkgdir" install
+    popd; popd
     install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
