@@ -1,13 +1,13 @@
 # Maintainer: Ben Widawsky <ben@bwidawsk.net>
 pkgname=kanshi-git
-pkgver=r72.e4da814
-pkgrel=1
+pkgver=r73.823cdb0
+pkgrel=2
 pkgdesc="Dynamic display configuration for WMs like i3/sway"
 arch=(x86_64)
 url="https://github.com/emersion/kanshi"
 license=('MIT')
 groups=()
-depends=('wlroots>=0.7.0')
+depends=('wlroots>=0.7')
 makedepends=('git' 'meson' 'ninja' 'scdoc' 'wayland')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
