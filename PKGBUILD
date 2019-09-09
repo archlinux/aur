@@ -1,18 +1,19 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=uhub-git
-pkgver=0.5.0.26.g90d05c9
+pkgver=0.5.0.64.g78a7039
 pkgrel=1
 pkgdesc="A hub for the ADC network. (GIT Version)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 license=('LGPL')
 url='http://www.uhub.org'
-depends=('libsystemd'
-         'python2'
+depends=('libsystemd.so'
+         'sqlite'
          )
 makedepends=('cmake'
              'git'
              )
+optdepends=('python: scripts')
 source=('git+https://github.com/janvidar/uhub.git'
         'uhub.sysuser'
         'uhub.service'
@@ -21,7 +22,7 @@ source=('git+https://github.com/janvidar/uhub.git'
 sha256sums=('SKIP'
             'dfb3d51d95ef90e49b62cfa49d6a2cef58fb1f119f1d357f76ab1953000e5079'
             '4bf39c6265d53e1b08385c8e339c9d7b4449637c29688b1bcd2091e5c2b6c9df'
-            '36645ca1faeb2e1bf12edf736c68e8b70c12aa6dbe3f710acc7823d1addb9050'
+            '94628376878d6b91c55deec62aad59ddfd9dd0d87dd4552aeeb202875f340a09'
             )
 install=uhub-git.install
 backup=('etc/uhub/motd.txt'
@@ -41,13 +42,12 @@ prepare() {
   sed 's|/var/log/uhub.log|/var/log/uhub/uhub.log|g' \
     -i uhub/doc/plugins.conf \
     -i uhub/doc/init.d.RedHat/etc/logrotate.d/uhub
-  for i in $(find uhub/tools -type f -name '*.py'); do sed 's|python|python2|g' -i ${i}; done
 }
 
 build() {
   cd build
   cmake ../uhub \
-    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DSYSTEMD_SUPPORT=ON
 
@@ -73,4 +73,6 @@ package() {
   install -Dm644 uhub/doc/getstarted.txt "${pkgdir}/usr/share/doc/uhub/getstarted.txt"
 
   for i in $(find uhub/tools -type f); do install -Dm755 ${i} "${pkgdir}/usr/share/uhub/${i}"; done
+
+  install -d 750 "${pkgdir}/var/log/uhub"
 }
