@@ -1,6 +1,6 @@
 pkgbase = avro-cpp
 	pkgdesc = C++ implementation of the Apache Avro data serialization system
-	pkgver = 1.9.0
+	pkgver = 1.9.1
 	pkgrel = 1
 	url = https://avro.apache.org/
 	arch = i686
@@ -11,9 +11,9 @@ pkgbase = avro-cpp
 	makedepends = cmake
 	makedepends = python2
 	depends = boost-libs
-	source = https://www-us.apache.org/dist/avro/avro-1.9.0/cpp/avro-cpp-1.9.0.tar.gz
+	source = https://www-us.apache.org/dist/avro/avro-1.9.1/cpp/avro-cpp-1.9.1.tar.gz
 	source = avro-cpp-python2.patch
-	sha256sums = 3a66aa600dbb171cda4664fce1c5a73a9720c8b0f55b13f76650453be6d6ab97
+	sha256sums = ff0c98f6f81294167677b221edcdd56b350fac523d857a5f53cf7fcd2187c683
 	sha256sums = 5d54151dd25e717a19109c97e68ce2a07d3b28b9fd3fb3ae1dc5df06b8600fd4
 
 pkgname = avro-cpp
