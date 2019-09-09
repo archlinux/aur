@@ -1,10 +1,11 @@
 pkgbase = linux-clear-lts2018
 	pkgver = 4.19.71
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/clearlinux-pkgs/linux-lts2018
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
+	makedepends = cpio
 	makedepends = git
 	makedepends = inetutils
 	makedepends = kmod
