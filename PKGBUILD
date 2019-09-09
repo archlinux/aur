@@ -9,7 +9,7 @@
 
 _qt_module=qtwebsockets
 pkgname="mingw-w64-qt5-websockets"
-pkgver=5.13.0
+pkgver=5.13.1
 pkgrel=1
 arch=('any')
 pkgdesc="Provides WebSocket communication compliant with RFC 6455 (mingw-w64)"
@@ -21,7 +21,7 @@ license=('GPL3' 'LGPL' 'FDL' 'custom')
 url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('f941dd44f6e16041a25723c1b70ce9e28910c630509da0044ecb9fdda28a6e34')
+sha256sums=('f6b0583cfc5bbdccb89f68297a53cfe6c858c7a7de8e64548066cafd981c0799')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 [[ $NO_STATIC_LIBS ]] || \
@@ -75,6 +75,9 @@ package() {
           [ -f "${file%d*}${file##*d}" ] && rm "${file}";
         done
       fi
+
+      # remove '.static.prl' files
+      find "${pkgdir}/usr/${_arch}" -name '.static.prl' -delete
 
       find "${pkgdir}/usr/${_arch}/lib" -maxdepth 1 -name '*.dll' -delete
       [ "$NO_STATIC_EXECUTABLES" -a "${_config##*=}" = static -o "$NO_EXECUTABLES" ] && \
