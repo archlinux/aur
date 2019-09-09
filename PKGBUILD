@@ -4,18 +4,18 @@
 # Contributor: Ian Brunelli (brunelli) <ian@brunelli.me>
 
 pkgname=lollypop-git
-pkgver=0.9.923.r101.g621df9b7
+pkgver=1.1.4.2.r1073.gb91d490c
 pkgrel=1
 pkgdesc='Music player for GNOME'
 arch=(any)
 url=https://gitlab.gnome.org/gnumdk/lollypop
 license=(GPL)
 depends=(
+	appstream-glib
 	gst-plugins-base-libs
 	gtk3
 	python-beautifulsoup4
 	python-cairo
-	python-dbus
 	python-gobject
 	python-pillow
 	totem-plparser
@@ -29,7 +29,6 @@ makedepends=(
 )
 optdepends=(
 	'easytag: Modify tags'
-	'flatpak: Flatpak Portal'
 	'gst-libav: FFmpeg plugin for GStreamer'
 	'gst-plugins-bad: "Bad" plugin libraries'
 	'gst-plugins-base: "Base" plugin libraries'
@@ -38,7 +37,7 @@ optdepends=(
 	'kid3-qt: Store covers in tags'
 	'libsecret: Last.FM support'
 	'python-pylast: Last.FM support'
-	'python-wikipedia: Wikipedia support'
+	'youtube-dl: Youtube support'
 )
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
@@ -48,12 +47,12 @@ pkgver() {
 	cd "$srcdir/${pkgname%-git}"
 
 	git describe --tags \
-	| sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+		| sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
 	arch-meson lollypop build \
-	--libexecdir='lib/lollypop'
+		--libexecdir='lib/lollypop'
 	ninja -C build
 }
 
