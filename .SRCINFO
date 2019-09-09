@@ -1,15 +1,15 @@
 pkgbase = libhugetlbfs
-	pkgdesc = interacts with the Linux hugetlbfs to make large pages available to applications in a transparent manner.
-	pkgver = 2.21
+	pkgdesc = A library which provides easy access to huge pages of memory
+	pkgver = 2.22
 	pkgrel = 1
 	url = https://github.com/libhugetlbfs/libhugetlbfs
 	arch = i686
 	arch = x86_64
-	license = GPL
-	checkdepends = python2
+	license = LGPL2.1
+	checkdepends = python
 	depends = perl
-	source = https://github.com/libhugetlbfs/libhugetlbfs/releases/download/2.21/libhugetlbfs-2.21.tar.gz
-	sha1sums = 8ed79a12d07be1e858ef4e0148ab1f4115094ef6
+	source = https://github.com/libhugetlbfs/libhugetlbfs/releases/download/2.22/libhugetlbfs-2.22.tar.gz
+	sha256sums = 94dca9ea2c527cd77bf28904094fe4708865a85122d416bfccc8f4b73b9a6785
 
 pkgname = libhugetlbfs
 
