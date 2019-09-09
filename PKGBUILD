@@ -12,7 +12,7 @@
 
 _qt_module=qtdeclarative
 pkgname=mingw-w64-qt5-declarative
-pkgver=5.13.0
+pkgver=5.13.1
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='Classes for QML and JavaScript languages (mingw-w64)'
@@ -26,9 +26,9 @@ _pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz"
         '0001-Ensure-static-plugins-are-exported.patch'
         '0002-Prevent-exporting-QML-parser-symbols-on-static-build.patch')
-sha256sums=('b9e8780aef0af4a60e64dcc405bdf5c03a04b28e3b94d5c2e69d0006db566ba9'
-            'd324b621d5947676ea8938f90c0e001b6c6b2f04bb95b4d66efd0f1529d41d3c'
-            'b68381599c53a84404d75ddc3c0535fea91a01bdc57c1d1c23a64d120c3174c6')
+sha256sums=('ae3477401b13d6b31e8569629d3f73b3e81e27cec27595988ffd320eaec7f0e2'
+            '7aed56367a2446ffc00b05a23c354f8c45424011939f632a09c31654c9d26ec7'
+            '637a72c7394c19b31484f5ea21e7245c3879843d4ca413e3b2ae20e945ac94b3')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 [[ $NO_STATIC_LIBS ]] || \
@@ -90,6 +90,9 @@ package() {
           [ -f "${file%d*}${file##*d}" ] && rm "${file}";
         done
       fi
+
+      # remove '.static.prl' files
+      find "${pkgdir}/usr/${_arch}" -name '.static.prl' -delete
 
       find "${pkgdir}/usr/${_arch}/lib" -maxdepth 1 -name '*.dll' -delete
       [ "$NO_STATIC_EXECUTABLES" -a "${_config##*=}" = static -o "$NO_EXECUTABLES" ] && \

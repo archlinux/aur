@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-qt5-declarative
 	pkgdesc = Classes for QML and JavaScript languages (mingw-w64)
-	pkgver = 5.13.0
+	pkgver = 5.13.1
 	pkgrel = 1
 	url = https://www.qt.io/
 	arch = i686
@@ -19,12 +19,12 @@ pkgbase = mingw-w64-qt5-declarative
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://download.qt.io/official_releases/qt/5.13/5.13.0/submodules/qtdeclarative-everywhere-src-5.13.0.tar.xz
+	source = https://download.qt.io/official_releases/qt/5.13/5.13.1/submodules/qtdeclarative-everywhere-src-5.13.1.tar.xz
 	source = 0001-Ensure-static-plugins-are-exported.patch
 	source = 0002-Prevent-exporting-QML-parser-symbols-on-static-build.patch
-	sha256sums = b9e8780aef0af4a60e64dcc405bdf5c03a04b28e3b94d5c2e69d0006db566ba9
-	sha256sums = d324b621d5947676ea8938f90c0e001b6c6b2f04bb95b4d66efd0f1529d41d3c
-	sha256sums = b68381599c53a84404d75ddc3c0535fea91a01bdc57c1d1c23a64d120c3174c6
+	sha256sums = ae3477401b13d6b31e8569629d3f73b3e81e27cec27595988ffd320eaec7f0e2
+	sha256sums = 7aed56367a2446ffc00b05a23c354f8c45424011939f632a09c31654c9d26ec7
+	sha256sums = 637a72c7394c19b31484f5ea21e7245c3879843d4ca413e3b2ae20e945ac94b3
 
 pkgname = mingw-w64-qt5-declarative
 
