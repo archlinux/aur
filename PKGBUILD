@@ -2,7 +2,7 @@
 
 pkgname=latex-tuda-ci
 pkgver=1.10
-pkgrel=1
+pkgrel=2
 pkgdesc='TUDa-CI for LaTeX from Technische Universität Darmstadt'
 arch=('any')
 url='https://github.com/tudace/tuda_latex_templates'
@@ -25,7 +25,7 @@ package() {
     install -dm755 "${pkgdir}/usr/share/texmf/tex/latex/tuda-ci/"
     install -dm755 "${pkgdir}/usr/share/texmf/doc/latex/tuda-ci/"
 
-    cd "${srcdir}/tuda_latex_templates-1.01"
+    cd "${srcdir}/tuda_latex_templates-${pkgver}"
     install -Dm644 LICENSE_info "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     cp -r example "${pkgdir}/usr/share/texmf/doc/latex/tuda-ci/"
     cp -r tex "${pkgdir}/usr/share/texmf/tex/latex/tuda-ci/"
