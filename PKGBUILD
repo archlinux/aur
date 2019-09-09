@@ -14,7 +14,7 @@ _mapboxcfg='QT.global.disabled_features+=geoservices_mapboxgl'
 
 _qt_module=qtlocation
 pkgname=mingw-w64-qt5-location
-pkgver=5.13.0
+pkgver=5.13.1
 pkgrel=1
 arch=('any')
 pkgdesc='Provides access to position, satellite and area monitoring classes (mingw-w64)'
@@ -27,8 +27,8 @@ url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz"
         '0001-Ensure-static-3rdparty-libs-are-linked-correctly.patch')
-sha256sums=('205a47d259841b3879c59d3054d8b1098d3b0e7b45c64ad327daedefb4421414'
-            '9a6f99066138a990213565d8debfd3724c9c25110bbd65d4bb2c31db575989a7')
+sha256sums=('16bd4d64b12fc3f8276fe37985f2b0f5443317c882937ab5e0b583a3a9eed298'
+            'd9853eef3735366b1f11716023391dfb558705a41120c0bc1c22652e19493eaf')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 [[ $NO_STATIC_LIBS ]] || \
@@ -91,6 +91,9 @@ package() {
           [ -f "${file%d*}${file##*d}" ] && rm "${file}";
         done
       fi
+
+      # remove '.static.prl' files
+      find "${pkgdir}/usr/${_arch}" -name '.static.prl' -delete
 
       find "${pkgdir}/usr/${_arch}/lib" -maxdepth 1 -name '*.dll' -delete
       [ "$NO_STATIC_EXECUTABLES" -a "${_config##*=}" = static -o "$NO_EXECUTABLES" ] && \
