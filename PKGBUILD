@@ -3,7 +3,7 @@
 _pkgname=shcrt
 pkgname=$_pkgname-git
 pkgver=r23.bd960a6
-pkgrel=1
+pkgrel=2
 pkgdesc="Replace proprietary SecureCRT software with a Bash script that parses its configs"
 arch=('any')
 depends=('bash' 'easybashgui' 'python' 'python-pycrypto')
@@ -25,13 +25,13 @@ pkgver() {
 package() {
   cd "$srcdir/${_pkgname}"
   
-  install -dm755 "$pkgdir/usr/share/shcrt"
-  install -m755 shcrt "$pkgdir/usr/share/shcrt/shcrt"
-  install -m755 crt2foss.py "$pkgdir/usr/share/shcrt/crt2foss.py"
-  install -m755 SecureCRTCipher.py "$pkgdir/usr/share/shcrt/SecureCRTCipher.py"
+  install -dm755 "$pkgdir/usr/lib/shcrt"
+  install -m755 shcrt "$pkgdir/usr/lib/shcrt/shcrt"
+  install -m755 crt2foss.py "$pkgdir/usr/lib/shcrt/crt2foss.py"
+  install -m755 SecureCRTCipher.py "$pkgdir/usr/lib/shcrt/SecureCRTCipher.py"
 
   install -dm755 "$pkgdir/usr/bin"
-  ln -sf /usr/share/shcrt/shcrt "$pkgdir/usr/bin/shcrt"
-  ln -sf /usr/share/shcrt/crt2foss.py "$pkgdir/usr/bin/crt2foss"
-  ln -sf /usr/share/shcrt/SecureCRTCipher.py "$pkgdir/usr/bin/SecureCRTCipher.py"
+  ln -sf /usr/lib/shcrt/shcrt "$pkgdir/usr/bin/shcrt"
+  ln -sf /usr/lib/shcrt/crt2foss.py "$pkgdir/usr/bin/crt2foss"
+  ln -sf /usr/lib/shcrt/SecureCRTCipher.py "$pkgdir/usr/bin/SecureCRTCipher.py"
 }

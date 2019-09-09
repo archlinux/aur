@@ -1,7 +1,7 @@
 pkgbase = shcrt-git
 	pkgdesc = Replace proprietary SecureCRT software with a Bash script that parses its configs
 	pkgver = r23.bd960a6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Depau/shcrt
 	arch = any
 	license = GPL3
