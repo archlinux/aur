@@ -1,7 +1,7 @@
 # Maintainer: Forest Crossman <cyrozap at gmail dot com>
 
 pkgname=pixelpulse2-git
-pkgver=0.87.r0.g942c4ae
+pkgver=1.0.4.r1.g972b7e8
 pkgrel=1
 pkgdesc="A user interface for analog systems exploration."
 arch=('i686' 'x86_64')
