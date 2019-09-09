@@ -41,14 +41,15 @@ prepare() {
 }
 
 build() {
+	cd "pycharm-community-$_buildver/helpers/pydev/"
+
 	# use absolute paths to the python executables so that users with an activated
 	# virtual environment (like e.g. anaconda) can build without issues
-	/usr/bin/python2 "$srcdir/pycharm-community-$_buildver/helpers/pydev/setup_cython.py" build_ext --inplace
-	/usr/bin/python3 "$srcdir/pycharm-community-$_buildver/helpers/pydev/setup_cython.py" build_ext --inplace
+	/usr/bin/python2 "./setup_cython.py" build_ext --inplace
+	/usr/bin/python3 "./setup_cython.py" build_ext --inplace
 }
 
 package() {
-	cd "$srcdir"
 	mkdir -p "$pkgdir/opt/$pkgname"
 	cp -R "pycharm-community-$_buildver/"* "$pkgdir/opt/$pkgname/"
 
