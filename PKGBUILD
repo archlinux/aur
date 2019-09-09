@@ -2,7 +2,7 @@
 
 # General package information
 pkgname=wtwitch
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc="Terminal user interface for Twitch"
 url="https://gitlab.com/krathalan/wtwitch"
@@ -13,9 +13,9 @@ arch=("any")
 depends=("bash" "coreutils" "jq" "streamlink" "wget")
 
 # Download information
-source=("${url}/uploads/6d52402cbb151c9610394db7048dc4a1/wtwitch-1.0.5.tar.gz" "${url}/uploads/1b7700be69b939ac706ed6cf91d3c241/wtwitch-1.0.5.tar.gz.sig")
+source=("${url}/uploads/5fe145dfe14685f3e7d1fbc043bae95b/wtwitch-1.0.6.tar.gz" "${url}/uploads/b48b3727617cfbba25df42343feecba0/wtwitch-1.0.6.tar.gz.sig")
 validpgpkeys=("0CE6D5B52BD80B4EDB8DF343546BFAE445159FFC")
-sha256sums=("96e65705e7ad46543472e8968f81e64ba196b231d6822ecd21dfd58551ddfd11" "60c3326facea41530dd2c74d768d9833784381838c2e4ca281f2ed5f0fbbfe9a")
+sha256sums=("0efcbaf322e005d1c918e124c52dd9e1ad8a7428f6c8066197e7ff1b848c02d0" "e7613cbaa129b392e839158b1daaea972d2961389ff7fb59a51ff6e2d6d8b792")
 
 package() {
   cd "${srcdir}"
