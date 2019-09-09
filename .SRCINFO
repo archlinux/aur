@@ -1,0 +1,12 @@
+pkgbase = i3blocks-contrib
+	pkgdesc = Community-contributed blocklets for i3blocks
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/vivien/i3blocks-contrib
+	arch = any
+	license = GPL3
+	source = https://github.com/vivien/i3blocks-contrib/archive/v1.4.0.tar.gz
+	sha256sums = 84148bf8f514de3b3dcaedeb5621e9640f96423d06759b7072507a15d0b6337f
+
+pkgname = i3blocks-contrib
+
