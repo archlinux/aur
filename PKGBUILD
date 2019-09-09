@@ -1,7 +1,7 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 
 pkgname='python-pyarrow'
-pkgver=0.14.0
+pkgver=0.14.1
 pkgrel=1
 pkgdesc="A columnar in-memory analytics layer for big data."
 arch=('x86_64')
@@ -12,13 +12,17 @@ checkdepends=('git' 'python-hypothesis' 'python-pytest')
 optdepends=()
 makedepends=('cmake' 'cython')
 source=("https://github.com/apache/arrow/archive/apache-arrow-$pkgver.tar.gz"
-  "tensorflow-abi.patch")
-sha256sums=('e6444a73cc7987245e0c89161e587337469d26a518c9af1e6d7dba47027e0cd1'
-            '58152e9c120def968f4212c6f9c2ece71cb18d1e3b7f5fb65eddc4ba53701fd1')
+  "tensorflow-abi.patch"
+  5c005fbca3dc5b5ae4cae524884894bccd1db25e.patch)
+sha256sums=('69d9de9ec60a3080543b28a5334dbaf892ca34235b8bd8f8c1c01a33253926c1'
+            '78fffb2ccc47b4cef1bbeff999c1b809e50e6b2245f55be7f8dda1bd3a206be7'
+            'fc979177f3a2fe67a5f3e26f3efe9a540b4df447509b3802164d19d9323e39f5')
 
 prepare(){
   cd "$srcdir"
   patch -p0 < "tensorflow-abi.patch"
+  cd "arrow-apache-arrow-$pkgver"
+  patch -p1 < ../5c005fbca3dc5b5ae4cae524884894bccd1db25e.patch
 }
 
 build(){
@@ -41,6 +45,6 @@ check(){
   cd "$srcdir/arrow-apache-arrow-$pkgver"
   git clone https://github.com/apache/arrow-testing.git testing
   cd python
-  ARROW_TEST_DATA="$srcdir/arrow-apache-arrow-$pkgver/testing/data" pytest pyarrow/tests
+  ARROW_TEST_DATA="$srcdir/arrow-apache-arrow-$pkgver/testing/data" PARQUET_HOME=/usr pytest pyarrow/tests
 }
 # vim:ts=2:sw=2:et:
