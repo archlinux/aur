@@ -9,7 +9,7 @@
 
 _qt_module=qtserialport
 pkgname="mingw-w64-qt5-serialport"
-pkgver=5.13.0
+pkgver=5.13.1
 pkgrel=1
 arch=('any')
 pkgdesc="Provides access to hardware and virtual serial ports (mingw-w64)"
@@ -21,7 +21,7 @@ license=('GPL3' 'LGPL3' 'FDL' 'custom')
 url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-everywhere-src-$pkgver"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/$pkgver/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('2f58309789e1d6b3a2653922f932703cfffddaea06bff63a552900bd63beb985')
+sha256sums=('d96706f406d89b459ed0ecd129b68309a91cea0f132b839958b5311ea0d118d2')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 [[ $NO_STATIC_LIBS ]] || \
@@ -81,6 +81,9 @@ package() {
           [ -f "${file%d*}${file##*d}" ] && rm "${file}";
         done
       fi
+
+      # remove '.static.prl' files
+      find "${pkgdir}/usr/${_arch}" -name '.static.prl' -delete
 
       find "${pkgdir}/usr/${_arch}/lib" -maxdepth 1 -name '*.dll' -delete
       [ "$NO_STATIC_EXECUTABLES" -a "${_config##*=}" = static -o "$NO_EXECUTABLES" ] && \
