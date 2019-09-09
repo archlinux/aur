@@ -3,7 +3,7 @@
 # Contributor: Alexander Fehr <pizzapunk gmail com>
 #
 pkgname="jclic"
-pkgver="0.3.2.9"
+pkgver="0.3.2.11"
 pkgrel="1"
 pkgdesc="Java applications for educational activities."
 arch=('any')
@@ -13,7 +13,7 @@ depends=('java-environment')
 provides=("${pkgname}")
 
 source=("${pkgname}-${pkgver}.zip::http://clic.xtec.cat/dist/${pkgname}/${pkgname}-${pkgver}.zip")
-sha256sums=('c0134f552de35f0a819f37d9572b92f5fad038cd0268f2782138c2cc9226fcbc')
+sha256sums=('8cc34322c185c9556a92198f7309f6885165f9742a209097771b9c1fd09daa1f')
 
 _jclic_desktop="[Desktop Entry]
 Name=JClic
@@ -66,4 +66,4 @@ package() {
     install -m 644 ${srcdir}/*.desktop ${pkgdir}/usr/share/applications/
 }
 
-# vim:set ts=4 sw=2 ft=sh et:
+# vim:set ts=4 sw=4 et syn=sh ft=sh:
