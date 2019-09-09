@@ -1,23 +1,36 @@
-# Maintainer: Aniket Pradhan <aniket17133@iiitd.ac.in>
-# Contributor: Chris Wanstrath <chris@github.com>
+# Maintainer :  Kr1ss $(echo \<kr1ss+x-yandex+com\>|sed s/\+/./g\;s/\-/@/)
+# Contributor : Aniket Pradhan <aniket17133@iiitd.ac.in>
+# Contributor : Chris Wanstrath <chris@github.com>
 
-_pkgname="pystache"
+
 pkgname=python-pystache-git
-pkgver=20091121
+_pkgname="pystache"
+
+epoch=1
+pkgver() {
+  cd "$_pkgname"
+  git describe --long | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'
+}
+pkgver=0.5.4.r3.17a5dfd
 pkgrel=1
+
 pkgdesc="The mustache template engine written in python"
-arch=("x86_64")
-url="https://github.com/defunkt/pystache"
+arch=('x86_64')
+url="https://github.com/defunkt/$_pkgname"
 license=('MIT')
-depends=('python')
-makedepends=('git' 'python-setuptools')
+
 provides=('python-pystache')
 conflicts=('python-pystache')
-source=("git+https://github.com/defunkt/pystache#branch=master")
-md5sums=('SKIP')
+
+depends=('python')
+makedepends=('git' 'python-setuptools')
+
+changelog=history
+source=("git+$url#branch=master")
+sha256sums=('SKIP')
 
 build() {
-	cd "$srcdir/$_pkgname"
+	cd "$_pkgname"
 	python setup.py build
 }
 
@@ -26,15 +39,17 @@ check() {
 	# So we need to jump through some hoops here
 	rm -rf test_dir
 	mkdir test_dir
-	cd ${_pkgname}
+	cd "$_pkgname"
 	python setup.py install --root=../test_dir
 	PYTHONPATH=../test_dir/usr/lib/python3.7/site-packages/ \
 		../test_dir/usr/bin/pystache-test .
 }
 
 package() {
-	cd ${srcdir}/${_pkgname}
-	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-
-	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+	cd "$_pkgname"
+	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	install -Dm644 LICENSE -t"$pkgdir/usr/share/licenses/$_pkgname/"
+	install -Dm644 {README,HISTORY}.md setup_description.rst -t"$pkgdir/usr/share/doc/$_pkgname/"
 }
+
+# vim: sw=4 ts=4 noet ft=PKGBUILD:
