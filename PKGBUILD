@@ -9,7 +9,7 @@ pkgver() {
   git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g'
 }
 pkgver=2.0.3.r44.730ab91
-pkgrel=1.1
+pkgrel=2
 
 pkgdesc="Execute SQL against structured text like CSV or TSV"
 arch=('x86_64')
