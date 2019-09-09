@@ -10,7 +10,7 @@
 
 _qt_module=qtquickcontrols
 pkgname="mingw-w64-qt5-quickcontrols"
-pkgver=5.13.0
+pkgver=5.13.1
 pkgrel=1
 arch=('any')
 pkgdesc="Reusable Qt Quick based UI controls to create classic desktop-style user interfaces (mingw-w64)"
@@ -22,7 +22,7 @@ license=('GPL3' 'LGPL' 'FDL' 'custom')
 url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-everywhere-src-$pkgver"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('a5c6d40e0432246129d3f350a9aa419901dd73f2e4f8af6efb7a3e86e57ae167')
+sha256sums=('5f3dd9a7c25aabe7a21ed7d137c23e2bfff948fefe94b183b5dee1a13667eb9b')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 [[ $NO_STATIC_LIBS ]] || \
@@ -76,6 +76,9 @@ package() {
           [ -f "${file%d*}${file##*d}" ] && rm "${file}";
         done
       fi
+
+      # remove '.static.prl' files
+      find "${pkgdir}/usr/${_arch}" -name '.static.prl' -delete
 
       find "${pkgdir}/usr/${_arch}/lib" -maxdepth 1 -name '*.dll' -delete
       [ "$NO_STATIC_EXECUTABLES" -a "${_config##*=}" = static -o "$NO_EXECUTABLES" ] && \
