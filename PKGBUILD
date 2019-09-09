@@ -2,7 +2,7 @@
 
 pkgname=ttyd-git
 _gitname=ttyd
-pkgver=r1.2.2_3b58edb
+pkgver=r1.5.2_d8903e1
 pkgrel=1
 pkgdesc="Share your terminal over the web"
 arch=('any')
@@ -26,6 +26,8 @@ build() {
 package() {
   cd $srcdir/$_gitname/build
   make DESTDIR="${pkgdir}" install
+  mv $pkgdir/usr/local/bin $pkgdir/usr/
+  mv $pkgdir/usr/local/share $pkgdir/usr/
 }
 
 # vim:set ts=2 sw=2 et:
