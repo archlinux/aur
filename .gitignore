@@ -1,1 +1,6 @@
-*.pkg.tar.xz
+pkg/
+src/
+*.tgz
+*.tar.xz
+mypy/
+typeshed/

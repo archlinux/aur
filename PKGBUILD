@@ -1,7 +1,8 @@
-# Maintainer: Sebastian Reuße <seb@wirrsal.net>
+# Maintainer: Matthew McGinn <mamcgi@gmail.com>
+# Contributor: Sebastian Reuße <seb@wirrsal.net>
 pkgname=mypy-git
 _gitname=mypy
-pkgver=v0.520.r188.g51fe653f7
+pkgver=v0.520.r2241.g88e2b67c4
 pkgrel=1
 pkgdesc="Optional static typing for Python"
 arch=(any)
@@ -15,7 +16,8 @@ source=(
     git+https://github.com/JukkaL/mypy
     git+https://github.com/python/typeshed
 )
-md5sums=(SKIP SKIP)
+md5sums=('SKIP'
+         'SKIP')
 
 
 pkgver() {
