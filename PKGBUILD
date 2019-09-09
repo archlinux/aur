@@ -4,7 +4,7 @@
 #
 pkgname=bbkeys-git
 _pkgname=bbkeys
-pkgver=0.9.1.21
+pkgver=0.9.2.r0.g6a28d46
 pkgrel=1
 pkgdesc="Blackbox tool for setting keyboard shortcuts for manipulating windows and virtual desktop"
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ md5sums=('SKIP'
 
 pkgver() {
   cd $pkgname
-  git describe --tags|sed -r 's,rel-([0-9])([0-9])([0-9]),\1.\2.\3,;s,^[^0-9]*,,;s,[-_],.,g;s,\.g.*$,,'
+  git describe --long --tags | sed -E 's/rel-([0-9])([0-9])([0-9])/\1.\2.\3/;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 prepare() {

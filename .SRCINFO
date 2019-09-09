@@ -1,6 +1,6 @@
 pkgbase = bbkeys-git
 	pkgdesc = Blackbox tool for setting keyboard shortcuts for manipulating windows and virtual desktop
-	pkgver = 0.9.1.21
+	pkgver = 0.9.2.r0.g6a28d46
 	pkgrel = 1
 	url = http://bbkeys.sourceforge.net/
 	arch = i686
