@@ -1,45 +1,51 @@
-# Maintainer: Aniket-Pradhan aniket17133@iiitd.ac.in
-# Owner/Cofntributer: Paul Bergeron https://github.com/dinedal
+# Maintainer :         Kr1ss $(echo \<kr1ss+x-yandex+com\>|sed s/\+/./g\;s/\-/@/)
+# Contributor :        Aniket-Pradhan <aniket17133@iiitd.ac.in>
+# Owner/Contributor :  Paul Bergeron https://github.com/dinedal
 
 pkgname=textql-git
-pkgver=2.0.3
-pkgrel=1
+_pkgname="${pkgname%-git}"
+pkgver() {
+  cd "$_pkgname"
+  git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g'
+}
+pkgver=2.0.3.r44.730ab91
+pkgrel=1.1
+
 pkgdesc="Execute SQL against structured text like CSV or TSV"
 arch=('x86_64')
-url="https://github.com/dinedal/textql"
+url="https://github.com/dinedal/$_pkgname"
 license=('MIT')
+
 depends=('go-pie')
-options=('!strip' '!emptydirs')
-source=("$pkgname::git+https://github.com/dinedal/textql")
+
+options=('!emptydirs' zipman)
+
+source=("git+$url")
+sha256sums=('SKIP')
 
 prepare(){
-  mkdir -p gopath/src/github.com
-  ln -rTsf $pkgname $srcdir/gopath/src/github.com/$pkgname
-  export GOPATH="$srcdir"/gopath
-  cd $GOPATH/src/github.com/$pkgname
-  go get -d ./...
+  export GOPATH="$srcdir/gopath"
+  mkdir -p "$GOPATH/src/github.com"
+  ln -rTsf "$_pkgname" "$GOPATH/src/github.com/$_pkgname"
+  cd "$GOPATH/src/github.com/$_pkgname"
+
+  go get -v -d ./...
 }
 
 build(){
-  export GOPATH="$srcdir"/gopath
-  cd $GOPATH/src/github.com/$pkgname
-  go build textql/main.go
-    #-gcflags "all=-trimpath=$GOPATH" \
-    #-asmflags "all=-trimpath=$GOPATH" \
-    #-ldflags "-extldflags $LDFLAGS" \
-    #-v ./...
+  export GOPATH="$srcdir/gopath"
+  cd "$GOPATH/src/github.com/$_pkgname"
+
+  go build -v -ldflags "-X main.VERSION=`cat VERSION` -s" textql/main.go
 }
 
 package() {
-  export GOPATH="$srcdir"/gopath
-  install -Dm755 "$GOPATH"/src/github.com/$pkgname/main "$pkgdir"/usr/bin/textql
+  cd "$_pkgname"
 
-  for f in LICENSE COPYING LICENSE.* COPYING.*; do
-    if [ -e "$srcdir/src/$_gourl/$f" ]; then
-    install -Dm644 "$srcdir/src/$_gourl/$f" \
-    "$pkgdir/usr/share/licenses/$pkgname/$f"
-  fi
-  done
+  install -Dm755 main                         "$pkgdir/usr/bin/textql"
+  install -Dm644 LICENSE                    -t"$pkgdir/usr/share/licenses/$_pkgname/"
+  install -Dm644 Readme.md textql_usage.gif -t"$pkgdir/usr/share/doc/$_pkgname/"
+  install -Dm644 "man/$_pkgname.1"          -t"$pkgdir/usr/share/man/man1/"
 }
 
-md5sums=('SKIP')
+# vim: ts=2 sw=2 et ft=PKGBUILD:
