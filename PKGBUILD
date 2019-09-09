@@ -2,7 +2,7 @@
 pkgname=avrdude-svn
 _pkgname=avrdude
 pkgrel=1
-pkgver=20160328.1388
+pkgver=20190105.1429
 pkgdesc="AVRDUDE is an utility to download/upload/manipulate the ROM and EEPROM contents of AVR microcontrollers using the in-system programming technique (ISP)."
 arch=(i686 x86_64 armv6h armv7h)
 url="http://www.nongnu.org/avrdude/"
@@ -11,7 +11,7 @@ groups=()
 depends=('libftdi' 'libusb-compat' 'hidapi')
 makedepends=(svn)
 optdepends=('elfutils')
-provides=()
+provides=('avrdude')
 conflicts=('avrdude' 'avrdude-osuisp2-svn')
 replaces=()
 backup=()
