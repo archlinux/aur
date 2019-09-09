@@ -1,6 +1,6 @@
 pkgbase = ffmpeg-libfdk_aac
 	pkgdesc = Complete solution to record, convert and stream audio and video (Same as official package except with libfdk-aac support)
-	pkgver = 4.2
+	pkgver = 4.2.1
 	pkgrel = 1
 	epoch = 1
 	url = https://ffmpeg.org/
@@ -70,9 +70,9 @@ pkgbase = ffmpeg-libfdk_aac
 	provides = libpostproc.so
 	provides = libswresample.so
 	provides = libswscale.so
-	provides = ffmpeg=4.2
+	provides = ffmpeg=4.2.1
 	conflicts = ffmpeg
-	source = git+https://git.ffmpeg.org/ffmpeg.git#tag=n4.2
+	source = git+https://git.ffmpeg.org/ffmpeg.git#tag=cbb3c9497549f8856d8cd37ac63af1406a784e58
 	sha256sums = SKIP
 
 pkgname = ffmpeg-libfdk_aac
