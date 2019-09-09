@@ -31,7 +31,7 @@ noextract=()
 validpgpkeys=()
 
 pkgver() {
-  _pkgver=`curl -s https://api.github.com/repos/FAForever/downlords-faf-client/releases | jq -r '.[0].tag_name' | cut -d v -f 2 | sed "s/-/\./"`
+  _pkgver=`curl -s https://api.github.com/repos/FAForever/downlords-faf-client/releases/latest | jq -r '.tag_name' | cut -d v -f 2 | sed "s/-/\./"`
   _pkgver_major=$(echo $_pkgver | cut -d . -f 1)
   _pkgver_minor=$(echo $_pkgver | cut -d . -f 2)
   _pkgver_tag=$(echo $_pkgver | cut -d . -f 3)
