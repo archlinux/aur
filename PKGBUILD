@@ -3,19 +3,19 @@
 
 _pkgname="launchpadlib"
 pkgname=("python-launchpadlib")
-pkgver="1.10.6"
+pkgver="1.10.7"
 pkgrel="1"
 pkgdesc="A free Python 3 library for scripting Launchpad through its web services interface."
 arch=('any')
 url="https://launchpad.net/launchpadlib"
 license=('LGPL3')
 makedepends=('python-setuptools')
-depends=('python-lazr-uri' 'python-lazr-restfulclient' 'python-wadllib'
+depends=('python-lazr-uri' 'python-lazr-restfulclient>=0.9.19' 'python-wadllib'
          'python-keyring' 'python-httplib2' 'python-simplejson')
 optdepends=('python-setuptools' 'python-testresources')
 source=("${pkgname}-${pkgver}.tar.gz::https://launchpad.net/$_pkgname/trunk/$pkgver/+download/$_pkgname-$pkgver.tar.gz"
         "${pkgname}-${pkgver}.tar.gz.asc::https://launchpad.net/$_pkgname/trunk/$pkgver/+download/$_pkgname-$pkgver.tar.gz.asc")
-sha256sums=('e4709c18214863d147c6e0415e695d5cfddefc0dbd6ea28eb03e6eada956ae8b'
+sha256sums=('692b8d77057b5931c88ab37480f41fd9cd42a1ff10b0618e4455a42372abf8e1'
             'SKIP')
 validpgpkeys=('AC0A4FF12611B6FCCF01C111393587D97D86500B')
 
