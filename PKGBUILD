@@ -6,7 +6,7 @@
 
 pkgname=('ms-office-online')
 pkgver=19.06.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Microsoft Office Suite Online as a native application"
 url="https://www.office.com/"
 depends=('jade-application-kit' 'pyside2')
@@ -17,8 +17,8 @@ source=("https://gitlab.manjaro.org/applications/ms-office-online-launcher/-/arc
         add-mslogin.patch::https://gitlab.manjaro.org/applications/ms-office-online-launcher/commit/afa0d9e64bef5711180fe5072e48536a05ed313d.patch
         sharepoint.patch::https://gitlab.manjaro.org/applications/ms-office-online-launcher/commit/0c3f2a441b1f83daeaaaf51d956daba7ef156b63.patch)
 sha256sums=('b72b31e199ce6467fdce821ecff9344fe7f1b314db03e09db162b39558c43c2b'
-            '498474e9c3dc43f93c163509ebafc6d916d526939685279c37288f673ef7641c'
-            'ce3878fe605879c23b69fb48e315c2fb549bdedc4847b1d3fdb25200b84c7613')
+            'e9ed046efc7599a3b6f45b29e5672bd6e156407c9f463d8b572d8e7165047474'
+            'f1adab3b72c567e87afdbb78139226322edc47b7734ede61076d4a0cef855c55')
 
 prepare() {
     cd "ms-office-online-launcher-${pkgver}"
