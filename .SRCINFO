@@ -1,0 +1,14 @@
+pkgbase = crystal-cake
+	pkgdesc = Cake is a powerful and flexible Make-like utility tool. Make Tasks Great Again!
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/axvm/cake
+	arch = x86_64
+	license = MIT
+	makedepends = shards
+	depends = crystal
+	source = git+https://github.com/axvm/cake.git#commit=a6343388f78bd55f05ff94ee33a0029f9bfb2012
+	sha256sums = SKIP
+
+pkgname = crystal-cake
+
