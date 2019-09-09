@@ -1,0 +1,12 @@
+
+post_install() {
+	/usr/bin/timekpr.postinst
+}
+
+post_upgrade() {
+	/usr/bin/timekpr.postinst
+}
+
+pre_remove() {
+	/usr/bin/timekpr.postrm purge
+}
