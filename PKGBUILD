@@ -17,7 +17,6 @@ makedepends=('git')
 depends=('glibc')
 source=("git+https://github.com/vivien/i3blocks-contrib")
 sha512sums=('SKIP')
-backup=('etc/i3blocks.conf')
 
 pkgver() {
     cd "${srcdir}"/i3blocks-contrib
