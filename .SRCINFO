@@ -1,15 +1,15 @@
 pkgbase = zfs-linux-vfio-git
-	pkgver = 2019.08.29.r5350.ge2fcfa70e_5.2.9.arch1.1
+	pkgver = 2019.09.06.r5389.g4bbf0477a_5.2.11.arch1.1
 	pkgrel = 1
 	url = http://zfsonlinux.org/
 	arch = x86_64
 	license = CDDL
-	makedepends = linux-vfio-headers=5.2.9.arch1-1
+	makedepends = linux-vfio-headers=5.2.11.arch1-1
 	makedepends = git
 	depends = kmod
-	depends = zfs-utils-git=2019.08.29.r5350.ge2fcfa70e
-	depends = linux-vfio=5.2.9.arch1-1
-	source = git+https://github.com/zfsonlinux/zfs.git#commit=e2fcfa70e36a9f7c059ec64d787f37c6bd9ae48c
+	depends = zfs-utils-git=2019.09.06.r5389.g4bbf0477a
+	depends = linux-vfio=5.2.11.arch1-1
+	source = git+https://github.com/zfsonlinux/zfs.git#commit=4bbf0477a7f8936627c37ab89c704e763aa63b37
 	sha256sums = SKIP
 
 pkgname = zfs-linux-vfio-git
