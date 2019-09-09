@@ -60,15 +60,15 @@ _localmodcfg=
 
 _major=5.3
 _minor=0
-_srcname=linux-${_major}-rc7
+_srcname=linux-${_major}-rc8
 _clr=${_major}.0-5
 pkgbase=linux-clear-current
 pkgver=${_major}.${_minor}
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux-current"
 license=('GPL2')
-makedepends=('bc' 'git' 'inetutils' 'kmod' 'libelf' 'xmlto')
+makedepends=('bc' 'cpio' 'git' 'inetutils' 'kmod' 'libelf' 'xmlto')
 options=('!strip')
 _gcc_more_v='20190822'
 source=(
@@ -119,6 +119,7 @@ CONFIG_MODULE_COMPRESS_XZ=y|' ./.config
         sed -i "s|CONFIG_RT_GROUP_SCHED=y|# CONFIG_RT_GROUP_SCHED is not set|g" ./.config
         sed -i "s|# CONFIG_DELL_SMBIOS_SMM is not set|CONFIG_DELL_SMBIOS_SMM=y|g" ./.config
         sed -i "s|CONFIG_MODULE_SIG_FORCE=y|# CONFIG_MODULE_SIG_FORCE is not set|g" ./.config
+        sed -i "s|# CONFIG_NET_SCH_CAKE is not set|CONFIG_NET_SCH_CAKE=m|g" ./.config
 
         make olddefconfig
 
@@ -318,7 +319,7 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha256sums=('97fb851940cde3041ea30322635c4c19db03c96d94cb590e333320d334f151b2'
+sha256sums=('f2438baf7672aa86e5cc8a82beca86af4b4debe4fcce8fa8535f4e955647f906'
             'SKIP'
             '8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
