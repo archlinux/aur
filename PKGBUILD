@@ -24,7 +24,7 @@ package_python-nio() {
   depends=('python' 'python-olm' 'python-h11' 'python-h2'
            'python-jsonschema' 'python-logbook' 'python-attrs'
            'python-peewee' 'python-atomicwrites' 'python-future'
-           'python-pycryptodome' 'python-unpaddedbase64')
+           'python-pycryptodome' 'python-unpaddedbase64' 'python-aiohttp')
   cd "$srcdir"/$_pypiname-$pkgver
 
   python setup.py install --root="${pkgdir}/" --optimize=1
