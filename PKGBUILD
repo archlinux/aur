@@ -2,7 +2,7 @@
 # Contributor: SoVerySour <gmaiadremailfeis22 at gmail dot com>
 
 pkgname=infra-arcana-git
-pkgver=v19.2.r235.g625b33b5
+pkgver=v19.2.r359.gf3c8e782
 pkgrel=1
 
 pkgdesc="Roguelike game inspired by the writings of H.P. Lovecraft - git version"
@@ -22,23 +22,6 @@ pkgver() {
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-  if [ -f "/opt/games/$pkgname/res/data/config" ]
-  then
-    cp "/opt/games/$pkgname/res/data/config" "$srcdir/"
-  fi
-
-  if [ -f "/opt/games/$pkgname/res/data/save" ]
-  then
-    cp "/opt/games/$pkgname/res/data/save" "$srcdir/"
-  fi
-
-  if [ -f "/opt/games/$pkgname/res/data/highscores" ]
-  then
-    cp "/opt/games/$pkgname/res/data/highscores" "$srcdir/"
-  fi
-}
-
 build() {
   cd $srcdir/ia
 
@@ -47,70 +30,44 @@ build() {
   git submodule update
   cmake ../
   make ia
+
 }
 
 package() {
   cd $pkgdir
 
-  install -DTm644 "$srcdir/ia/res/license.txt" \
+  install -DTm644 "$srcdir/ia/installed_files/LICENSE.txt" \
     "$pkgdir/usr/share/licenses/$pkgname/license.txt"
-  #install -DTm644 "$srcdir/ia/res/gfx/SPECIAL_ELITE_License.txt" \
-  #  "$pkgdir/usr/share/licenses/$pkgname/SPECIAL_ELITE_License.txt"
-
-  install -DTm644 "$srcdir/ia/res/contact.txt" \
+  install -DTm644 "$srcdir/ia/installed_files/contact.txt" \
     "$pkgdir/usr/share/doc/$pkgname/contact.txt"
-  install -DTm644 "$srcdir/ia/res/credits.txt" \
+  install -DTm644 "$srcdir/ia/installed_files/credits.txt" \
     "$pkgdir/usr/share/doc/$pkgname/credits.txt"
-  install -DTm644 "$srcdir/ia/res/manual.txt" \
+  install -DTm644 "$srcdir/ia/installed_files/manual.txt" \
     "$pkgdir/usr/share/doc/$pkgname/manual.txt"
-  install -DTm644 "$srcdir/ia/res/release_history.txt" \
+  install -DTm644 "$srcdir/ia/installed_files/release_history.txt" \
     "$pkgdir/usr/share/doc/$pkgname/release_history.txt"
 
   install -d "$pkgdir/usr/bin/"
   install -d "$pkgdir/opt/games/$pkgname"
-  
+
   install -Dm775 "$srcdir/ia/build/ia" \
     "$pkgdir/opt/games/$pkgname/infra-arcana"
 
-  cp -r "$srcdir/ia/build/res" "$pkgdir/opt/games/$pkgname/"
-  chmod 775 "$pkgdir/opt/games/$pkgname/res"
+  ln -s /opt/games/$pkgname/infra-arcana $pkgdir/usr/bin/
+
+  cp -r "$srcdir/ia/build/audio" "$pkgdir/opt/games/$pkgname/"
+  chmod 775 "$pkgdir/opt/games/$pkgname/audio"
   
-  if [ -f "$srcdir/config" ]
-  then
-    cp "$srcdir/config" "$pkgdir/opt/games/$pkgname/res/data/config"
-    rm "$srcdir/config"
-  else
-    touch "$pkgdir/opt/games/$pkgname/res/data/config"
-  fi
+  cp -r "$srcdir/ia/build/data" "$pkgdir/opt/games/$pkgname/"
+  chmod 775 "$pkgdir/opt/games/$pkgname/data"
 
-  if [ -f "$srcdir/save" ]
-  then
-    cp "$srcdir/save" "$pkgdir/opt/games/$pkgname/res/data/save"
-    rm "$srcdir/save"
-  else
-    touch "$pkgdir/opt/games/$pkgname/res/data/save"
-  fi
-
-  
-  if [ -f "$srcdir/highscores" ] 
-  then
-    cp "$srcdir/highscores" "$pkgdir/opt/games/$pkgname/res/data/highscores"
-    rm "$srcdir/highscores"
-  else
-    touch "$pkgdir/opt/games/$pkgname/res/data/highscores"
-  fi
-
-  chmod 666 "$pkgdir/opt/games/$pkgname/res/data/save"
-  chmod 666 "$pkgdir/opt/games/$pkgname/res/data/config"
-  chmod 666 "$pkgdir/opt/games/$pkgname/res/data/highscores"
-
-  printf "#!/bin/bash\ncd /opt/games/%s\n./infra-arcana" "$pkgname" > "$pkgdir/usr/bin/ia"
-  chmod 775 "$pkgdir/usr/bin/ia"
-
+  cp -r "$srcdir/ia/build/gfx" "$pkgdir/opt/games/$pkgname/"
+  chmod 775 "$pkgdir/opt/games/$pkgname/gfx"
+ 
   printf "\n\n\n"
   printf "*** Note that updating the package will keep ***\n"
   printf "*** Your \"config\", \"save\" and \"highscores\" files ***\n"
-  printf "*** From under /opt/games/%s/res/data/ ***\n" "$pkgname"
+  printf "*** From under /usr/share/games/%s/res/data/ ***\n" "$pkgname"
   printf "*** If anything unusual happens after an update, try deleting those ***\n"
   printf "\n\n\n"
 }
