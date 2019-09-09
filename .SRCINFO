@@ -1,0 +1,16 @@
+pkgbase = i3blocks-contrib-git
+	pkgdesc = Official repository of community contributed blocklets
+	pkgver = v1.4.0.r157.21708ed
+	pkgrel = 1
+	url = https://github.com/vivien/i3blocks
+	arch = x86_64
+	groups = i3
+	license = GPL3
+	makedepends = git
+	depends = glibc
+	backup = etc/i3blocks.conf
+	source = git+https://github.com/vivien/i3blocks-contrib
+	sha512sums = SKIP
+
+pkgname = i3blocks-contrib-git
+
