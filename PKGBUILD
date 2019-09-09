@@ -1,4 +1,5 @@
 # Maintainer: Josef Vybihal <josef dot vybihal at gmail dot com>
+# Ported to GTK3 by https://github.com/dallenwilson
 # Old Maintainer: Jeff Henson <jeff at henson dot io>
 # Old Maintainer: cuihao <cuihao dot leo at gmail dot com>
 # Original PKGBUILD (community/gstm):
