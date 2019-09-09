@@ -1,27 +1,32 @@
-# Maintainer: Alif Rachmawadi <arch@subosito.com>
-
+# Maintainer: Moses Narrow <moe_narrow@use.startmail.com>
+# contributer: Alif Rachmawadi <arch@subosito.com>
 pkgname=dep-bin
-pkgver=0.5.0
+pkgver=0.5.4
 pkgrel=1
 pkgdesc="Go dependency management tool"
-arch=('x86_64' 'i686')
+pkgoption1="dep-linux-amd64"
+pkgoption2="dep-linux-arm64"
+arch=('any')
 url="https://github.com/golang/dep"
 license=('BSD')
 conflicts=('dep')
 provides=('dep')
 source=("LICENSE")
-source_i686=("${url}/releases/download/v${pkgver}/dep-linux-386")
-source_x86_64=("${url}/releases/download/v${pkgver}/dep-linux-amd64")
-sha256sums=("69c47f09a7aec01c59ff1bdc346406d36e84df11461fb2bed92b0d185a7a2ccb")
-sha256sums_i686=("beba05c2af3d584fc2707c92e66f0fded2927114552c3c60ec8215c0bf703ea0")
-sha256sums_x86_64=("287b08291e14f1fae8ba44374b26a2b12eb941af3497ed0ca649253e21ba2f83")
+#detect architecture & adjust source & checksums accordingly
+case "$CARCH" in
+	arm*) _pkgarch="$pkgoption2"
+		sha256sums+=('9dbf1612044598cbb195933213eb3c4bab5d4ada0ce5b90a91241c4431b1783a')
+		;;
+  aarch64*) _pkgarch="$pkgoption2"
+    sha256sums+=('9dbf1612044598cbb195933213eb3c4bab5d4ada0ce5b90a91241c4431b1783a')
+    ;;
+	x86_64) _pkgarch="$pkgoption1"
+		sha256sums+=('40a78c13753f482208d3f4bea51244ca60a914341050c588dad1f00b1acc116c')
+		;;
+esac
+source=("${url}/releases/download/v${pkgver}/$_pkgarch")
 
 package() {
-  if [ "${CARCH}" == "x86_64" ]; then
-    install -Dm755 "${srcdir}/dep-linux-amd64" "${pkgdir}/usr/bin/dep"
-  else
-    install -Dm755 "${srcdir}/dep-linux-386" "${pkgdir}/usr/bin/dep"
-  fi
-
-  install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm755 ../dep-linux-a* ${pkgdir}/usr/bin/dep
+  install -Dm644 ../LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
