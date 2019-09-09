@@ -1,7 +1,7 @@
 pkgbase = filebot
 	pkgdesc = The ultimate TV and Movie Renamer
 	pkgver = 4.8.5
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.filebot.net/
 	arch = i686
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = filebot
 	source = https://get.filebot.net/filebot/FileBot_4.8.5/FileBot_4.8.5-aur.tar.xz
 	source = filebot-arch.sh
 	md5sums = 67567ae0fd2ab5b18fea3442362ac7f4
-	md5sums = 732732f3c5b3160a65862931fc409ebb
+	md5sums = 3506d0f6c990fb918e91337c634ba70c
 
 pkgname = filebot
 
