@@ -4,7 +4,7 @@
 pkgname=emacs-icicles
 epoch=1
 pkgver=2018.10.15 # Taken from icicles.el
-pkgrel=3
+pkgrel=4
 pkgdesc="an emacs library that enhances minibuffer completion"
 arch=('any')
 url="http://www.emacswiki.org/emacs/Icicles"
@@ -39,7 +39,7 @@ sha256sums=('4767672d03e3aea1e95aeb94df2103f42afb327440dd188cc863d7295eb1849c'
             '896d1c3e5df1e683feb8ace3dab039dd0caa09c33ade0ad096efea038a3983ac'
             '396d27a393ae2bb74518100b4b1dc5cd94b30f0b964b90d4a369f032d37bdd8e'
             '00cbc7a07c72bdb7ab04d7bb435eca2342a826c755074c62624350c8833fecb7'
-            'e6def5b2613d6414ca208f2038d49a19e2523f57ca0af09e7fc217e7b345dbf5'
+            'abf9ab363726255d68dacfb6700ba0f9d2a1df6c176c08302b6a00dd9ed95612'
             'e7a866f1bf8898a83bbdf01e328964289683b1b4c2cb4896a7d5ea191a7b9594'
             '48fb48b5ed968b08f0a775e1e015425f51acf4bc32161d36511bfc8053122439'
             '3384917280c34759199f3ef6f9538a1380390b97624212f1bfc6c8b26b544859'
