@@ -3,7 +3,7 @@
 pkgname=i2c-piix4-aura-dkms
 _pkgbase=${pkgname%-dkms}
 pkgver=1
-pkgrel=3
+pkgrel=4
 pkgdesc="The i2c-piix4 kernel driver, patched to be used with OpenAuraSDK: https://gitlab.com/CalcProgrammer1/OpenAuraSDK"
 arch=('x86_64')
 url="https://bugzilla.kernel.org/show_bug.cgi?id=202587"
@@ -19,7 +19,7 @@ md5sums=('fbcf970b45eeb4f1c51b2eddd6503edf'
          'be2def5b9080bdbde94631043fb9575e'
          'dadbad0c5a8bec3ff66161d3f150bbb7'
          '55c9591930d320e3f9912d315c4682ba'
-         'da25a44c35095f6571632e4347834b70'
+         'e44ab261a99faa252fc142cc5569502c'
          'f1cd62671d9f2e4a3e4877b6533bd604')
 
 prepare() {
