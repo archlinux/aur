@@ -1,4 +1,5 @@
-# Maintainer:  Marcin Wieczorek <marcin@marcin.co>
+# Maintainer: Miodrag Tokić
+# Contributor:  Marcin Wieczorek <marcin@marcin.co>
 # Contributor: Stefan Tatschner <rumpelsepp@sevenbyte.org>
 
 pkgname=git-ftp
