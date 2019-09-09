@@ -12,6 +12,7 @@ pkgbase = networkmanager-wireguard-git
 	depends = libnma
 	depends = WIREGUARD-MODULE
 	depends = wireguard-tools
+	depends = libnm-glib
 	provides = networkmanager-wireguard
 	conflicts = networkmanager-wireguard
 	source = networkmanager-wireguard-git::git+https://github.com/max-moser/network-manager-wireguard.git
