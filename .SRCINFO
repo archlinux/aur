@@ -1,7 +1,7 @@
 pkgbase = volti
 	pkgdesc = GTK+ mixer application for controlling alsa audio volume from system tray
 	pkgver = 0.2.3
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/gen2brain/volti
 	arch = any
 	license = GPL3

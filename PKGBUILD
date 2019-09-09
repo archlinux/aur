@@ -1,10 +1,10 @@
-# Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
+# Maintainer: Erhad Husovic <xdaemonx@protonmail.ch>
 # Contributor: PHAM Van Diep <imeo at favadi dot com>
 # Contributor: Alexander Fehr <pizzapunk gmail com>
 
 pkgname=volti
 pkgver=0.2.3
-pkgrel=5
+pkgrel=6
 pkgdesc="GTK+ mixer application for controlling alsa audio volume from system tray"
 arch=('any')
 url="https://github.com/gen2brain/volti"
