@@ -1,16 +1,16 @@
-# Maintainer: Christopher Sculley <cs.sculley@gmail.com>
+# Maintainer: Christopher Sculley <cs.sculley at gmail dot com>
 pkgname=sleepplan-git
-pkgver=r16.4fe2ec9
+pkgver=r17.5c37afa
 pkgrel=2
 pkgdesc="Calculate times to wake up based on bedtimes, and vice versa."
 arch=('any')
 license=('GPL3')
-url="https://github.com/csculley/sleepplan"
+url="https://gitlab.com/csculley/sleepplan"
 depends=('python3')
 makedepends=('git')
 provides=('sleepplan')
 conflicts=('sleepplan')
-source=('sleepplan::git+https://github.com/csculley/sleepplan.git#branch=master')
+source=('sleepplan::git+https://gitlab.com/csculley/sleepplan.git#branch=master')
 md5sums=('SKIP')
 
 pkgver() {
