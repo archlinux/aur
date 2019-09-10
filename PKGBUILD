@@ -6,7 +6,7 @@
 # Maintainer: Andrey Vetrov <vetrov at mail dot ru>
 
 pkgname=gsettings-desktop-schemas-git
-pkgver=3.33.90.r22.gecc8fcd
+pkgver=3.34.0.r0.g56d24d4
 pkgrel=1
 pkgdesc="Shared GSettings schemas for the desktop"
 arch=(any)
