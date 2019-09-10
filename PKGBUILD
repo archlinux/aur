@@ -4,11 +4,11 @@ _name=alice-vision
 #_fragment="#commit=eebc3e4f"
 _fragment="#branch=develop"
 pkgname=${_name}-git
-pkgver=2.0.0.r87.g6e8cc3b7
+pkgver=2.2.0.r17.g63a3d6ad
 pkgrel=1
 pkgdesc="Photogrammetric Computer Vision Framework which provides a 3D Reconstruction and Camera Tracking algorithms"
 arch=('i686' 'x86_64')
-url="http://alicevision.github.io/"
+url="https://alicevision.github.io/"
 license=('MPL2' 'MIT')
 groups=()
 conflicts=(alice-vision)
@@ -36,7 +36,7 @@ _CMAKE_FLAGS=(
               -DCLP_INCLUDE_DIR_HINTS=/usr/include/coin
               -DOSI_INCLUDE_DIR_HINTS=/usr/include/coin
               -DCERES_DIR=/usr/include/ceres
-              -DMAGMA_ROOT=/opt/magma
+              -DMAGMA_ROOT=/usr
               -DCUDA_HOST_COMPILER=/opt/cuda/bin/gcc
              )
 
@@ -62,7 +62,7 @@ build() {
 
   msg2 "Build uncertaintyTE library"
   mkdir -p ute_build && cd ute_build
-  cmake -DCMAKE_INSTALL_PREFIX=/ -DMAGMA_ROOT=/opt/magma ../ute_lib 
+  cmake -DCMAKE_INSTALL_PREFIX=/ -DMAGMA_ROOT=/usr ../ute_lib 
   make
   make DESTDIR="../ute_bin" install
   cd ..
