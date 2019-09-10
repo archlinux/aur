@@ -4,7 +4,7 @@
 
 pkgname='reuse'
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Helper tool for providing and confirming copyright and licensing information'
 arch=('any')
 url='https://git.fsfe.org/reuse/tool'
@@ -13,6 +13,7 @@ depends=('python'
          'git'
          'python-debian'
          'python-requests'
+         'python-jinja'
          'python-binaryornot'
          'python-boolean.py'
          'python-license-expression')
