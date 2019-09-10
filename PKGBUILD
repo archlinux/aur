@@ -1,4 +1,5 @@
-#Maintainer: juan tascon <juantascon __at__ horlux org>
+# Maintainer: Frederick Zhang <frederick888@tsundere.moe>
+# Contributor: juan tascon <juantascon __at__ horlux org>
 
 pkgname="mongodb-shell-bin"
 pkgver="4.0.8"
