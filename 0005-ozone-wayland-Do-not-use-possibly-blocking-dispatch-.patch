@@ -1,8 +1,7 @@
-From 4f4c199c6654ef75319eabf3977e916b2a744d3f Mon Sep 17 00:00:00 2001
+From 3ab4f4ab9266f273b5846a518f9a50c3c455ae78 Mon Sep 17 00:00:00 2001
 From: Maksim Sisov <msisov@igalia.com>
 Date: Thu, 8 Aug 2019 11:47:41 +0000
-Subject: [PATCH 11/11] [ozone/wayland] Do not use possibly blocking dispatch
- API
+Subject: [PATCH 5/6] [ozone/wayland] Do not use possibly blocking dispatch API
 
 Using wl_display_dispatch is a wrong thing to do as it is a blocking
 method (see [1]). It can cause freezes and deadlocks.
@@ -215,10 +214,10 @@ index dcd6b75aa299..1f41fd6786b9 100644
  
  void WaylandDataSource::UpdateDataMap(
 diff --git a/ui/ozone/platform/wayland/host/wayland_keyboard.cc b/ui/ozone/platform/wayland/host/wayland_keyboard.cc
-index 181e6e56b4b6..69cd9686bdf8 100644
+index c082b30133e5..fbadb0e3b1e2 100644
 --- a/ui/ozone/platform/wayland/host/wayland_keyboard.cc
 +++ b/ui/ozone/platform/wayland/host/wayland_keyboard.cc
-@@ -165,7 +165,7 @@ void WaylandKeyboard::FlushInput(base::OnceClosure closure) {
+@@ -167,7 +167,7 @@ void WaylandKeyboard::FlushInput(base::OnceClosure closure) {
    // get spurious repeats.
    sync_callback_.reset(wl_display_sync(connection_->display()));
    wl_callback_add_listener(sync_callback_.get(), &callback_listener_, this);
@@ -228,7 +227,7 @@ index 181e6e56b4b6..69cd9686bdf8 100644
  
  void WaylandKeyboard::DispatchKey(uint32_t key,
 diff --git a/ui/ozone/platform/wayland/host/wayland_window.cc b/ui/ozone/platform/wayland/host/wayland_window.cc
-index 12b3661985a6..cf0f3c336414 100644
+index 64364a3064f3..a03dde334c19 100644
 --- a/ui/ozone/platform/wayland/host/wayland_window.cc
 +++ b/ui/ozone/platform/wayland/host/wayland_window.cc
 @@ -285,7 +285,6 @@ void WaylandWindow::ApplyPendingBounds() {
@@ -239,7 +238,7 @@ index 12b3661985a6..cf0f3c336414 100644
    pending_bounds_dip_ = gfx::Rect();
    connection_->ScheduleFlush();
  
-@@ -659,6 +658,8 @@ void WaylandWindow::HandleSurfaceConfigure(int32_t width,
+@@ -662,6 +661,8 @@ void WaylandWindow::HandleSurfaceConfigure(int32_t width,
      delegate_->OnWindowStateChanged(state_);
    }
  
@@ -249,7 +248,7 @@ index 12b3661985a6..cf0f3c336414 100644
      delegate_->OnActivationChanged(is_active_);
  
 diff --git a/ui/ozone/platform/wayland/host/wayland_window_unittest.cc b/ui/ozone/platform/wayland/host/wayland_window_unittest.cc
-index 8083f7a84dcd..5fdf4a6184ba 100644
+index 699d3cebe703..747b7dd60baf 100644
 --- a/ui/ozone/platform/wayland/host/wayland_window_unittest.cc
 +++ b/ui/ozone/platform/wayland/host/wayland_window_unittest.cc
 @@ -677,19 +677,26 @@ TEST_P(WaylandWindowTest, HasCaptureUpdatedOnPointerEvents) {
@@ -311,5 +310,5 @@ index 9cac792bf630..c7c9fc079590 100644
  
  // static
 -- 
-2.22.0
+2.23.0
 

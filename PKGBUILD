@@ -5,7 +5,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium-ozone
-pkgver=76.0.3809.132
+pkgver=77.0.3865.75
 pkgrel=1
 _launcher_ver=6
 _meta_browser_sha=38b36f421f8d984c7004c9d9a6d514ed2fb6cf8e
@@ -32,34 +32,24 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         chromium-system-icu.patch
         chromium-widevine.patch
         chromium-skia-harmony.patch
-        0001-ozone-wayland-Prepare-WaylandCanvasSurface-for-compl.patch
-        0002-ozone-wayland-Sway-avoid-sending-presentation-early.patch
-        0003-Ozone-Wayland-Manager-make-mojo-calls-on-IO-thread.patch
-        0004-ozone-wayland-Fix-broken-software-rendering-path.patch
-        0005-ozone-wayland-Use-mutex-before-accessing-surfaces-ma.patch
-        0006-ozone-wayland-Reset-surface-contents-in-a-safe-way.patch
-        0007-ozone-wayland-Stop-using-wl_display_roundtrip.patch
-        0008-ozone-wayland-Added-HiDPI-support-for-Ozone-Wayland.patch
-        0009-Fixed-positioning-and-sizes-of-menus-when-the-scale-.patch
-        0010-ozone-wayland-Extract-window-management-methods-to-o.patch
-        0011-ozone-wayland-Do-not-use-possibly-blocking-dispatch-.patch)
-sha256sums=('d54e4640b5e399d170dffbc5bcff65157eb1b29314b94b5d808f727d9ce45241'
+        0001-ozone-wayland-Sway-avoid-sending-presentation-early.patch
+        0002-ozone-wayland-Use-mutex-before-accessing-surfaces-ma.patch
+        0003-ozone-wayland-Stop-using-wl_display_roundtrip.patch
+        0004-ozone-wayland-Extract-window-management-methods-to-o.patch
+        0005-ozone-wayland-Do-not-use-possibly-blocking-dispatch-.patch
+        0006-IWYU-include-memory-in-one_euro_filter.h-as-it-uses-.patch)
+sha256sums=('eb952ff241e719cbdcc2aae1832ecc1dd2263736ab38ee1dbf88ac9120119789'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
             'd87957d01be9fb59faf5fde523eb87a8256605b1533171416b7a56bfcbd6d056'
             'e2d284311f49c529ea45083438a768db390bde52949995534034d2a814beab89'
             'd081f2ef8793544685aad35dea75a7e6264a2cb987ff3541e6377f4a3650a28b'
             '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1'
-            '1fe3bb02ffd0445da8ea3b9eb09e8dff6b7bdd1ca26f4b439310a3e94aa16ebf'
-            'd9c5932f1af91a8c2e8b7687d9ad013d5895e3e03811d9f03e674afb77031ce5'
-            '424c5c0e5b6ded87d0c00dd4755eb6e63bfdf42233ee60c354729f5cbba82334'
-            'fecdfa694a84b4dc688ec20970ea18b11d9e332b8423a935ba35cd3fae7485a5'
-            '2359fdd84a3c10eeb576b15cfea86a34867097cb3e3d30ade6c823cf0d538d99'
-            '13be86e54b14f5a9f21e371a0f2762c5ff9a4204877ded60600f5950f6a14885'
-            'ede2a4c0283f01f7653c0caabd8439d96c27da16dd557ebb0730c0b3e7134097'
-            '9996ddaa8a83c58dcbe45e21746ffe41a9f8b56edc71a16090ebdb6adbc74541'
-            '6f4fc0a82443f9bfaeecfd1a463b4bc10dfa29b9357f17592dfac8332d27cb3c'
-            '470cf88aa6878bfaaf74f00791d33f4f922f31a13e0503b8bb11edb4bb89d29c'
-            'aaefa3a868024aa1eb118236bd528986db972646f762418764b5f0ab326468b0')
+            '333a4ecac50f1f2a2545132dc97bd22ccb1a0623bd5a5d86487327e8ee6fde3d'
+            '5d1e93f1930a53d2cee7d7cff94b4aba3a91dc15e13f667ce56956b2d08222cc'
+            '19dc0c5b521ad252b75a42cad254ced431f790bb71d1c048eb748a65e29aeb69'
+            'd0ed9879427db1412b679c2ab0ff4da83698f6dfe389080d272ec85716478b43'
+            '465dbcefbe8b01d242491bb527da8ecb466654262162b9bdc96bbf13ee8b864f'
+            'c5ea9e17c745de25ce9d1935883b538e660a406b07fc3ac72354e5a24a5354f8')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
@@ -81,7 +71,7 @@ declare -gA _system_libs=(
   [re2]=re2
   [snappy]=snappy
   [yasm]=
-  [zlib]=minizip
+  # [zlib]=minizip
 )
 _unwanted_bundled_libs=(
   ${!_system_libs[@]}
@@ -96,32 +86,20 @@ _google_api_key=AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM
 _google_default_client_id=413772536636.apps.googleusercontent.com
 _google_default_client_secret=0ZChLK6AxeA3Isu96MkwqDR4
 
-_mb_general_patches=(
-  'oe-clang-fixes.patch'
-  # 'v8-qemu-wrapper.patch'
-  'wrapper-extra-flags.patch'
-  'do-not-specify-march-on-arm.patch'
-  'add_internal_define_armv7ve.patch'
-)
+_mb_general_patches=()
 
 _mb_wayland_patches=(
-  '0001-ozone-wayland-Fix-method-prototype-match.patch'
-  'V4L2/0001-Add-support-for-V4L2VDA-on-Linux.patch'
-  'V4L2/0002-Add-mmap-via-libv4l-to-generic_v4l2_device.patch'
+  # 'V4L2/0001-Add-support-for-V4L2VDA-on-Linux.patch'
+  # 'V4L2/0002-Add-mmap-via-libv4l-to-generic_v4l2_device.patch'
 )
 
 _bugfix_patches=(
-  '0001-ozone-wayland-Prepare-WaylandCanvasSurface-for-compl.patch'
-  '0002-ozone-wayland-Sway-avoid-sending-presentation-early.patch'
-  '0003-Ozone-Wayland-Manager-make-mojo-calls-on-IO-thread.patch'
-  '0004-ozone-wayland-Fix-broken-software-rendering-path.patch'
-  '0005-ozone-wayland-Use-mutex-before-accessing-surfaces-ma.patch'
-  '0006-ozone-wayland-Reset-surface-contents-in-a-safe-way.patch'
-  '0007-ozone-wayland-Stop-using-wl_display_roundtrip.patch'
-  '0008-ozone-wayland-Added-HiDPI-support-for-Ozone-Wayland.patch'
-  '0009-Fixed-positioning-and-sizes-of-menus-when-the-scale-.patch'
-  '0010-ozone-wayland-Extract-window-management-methods-to-o.patch'
-  '0011-ozone-wayland-Do-not-use-possibly-blocking-dispatch-.patch'
+  '0001-ozone-wayland-Sway-avoid-sending-presentation-early.patch'
+  '0002-ozone-wayland-Use-mutex-before-accessing-surfaces-ma.patch'
+  '0003-ozone-wayland-Stop-using-wl_display_roundtrip.patch'
+  '0004-ozone-wayland-Extract-window-management-methods-to-o.patch'
+  '0005-ozone-wayland-Do-not-use-possibly-blocking-dispatch-.patch'
+  '0006-IWYU-include-memory-in-one_euro_filter.h-as-it-uses-.patch'
 )
 
 prepare() {

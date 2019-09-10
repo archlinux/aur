@@ -1,8 +1,8 @@
-From 1cac377724089974aef3dd66b215301bfd6c3dbd Mon Sep 17 00:00:00 2001
+From 1a25d1eb6a0a38f27d62f3d872079156e3542d62 Mon Sep 17 00:00:00 2001
 From: Maksim Sisov <msisov@igalia.com>
 Date: Fri, 26 Jul 2019 04:56:22 +0000
-Subject: [PATCH 10/11] [ozone/wayland]: Extract window management methods to
- own class
+Subject: [PATCH 4/6] [ozone/wayland]: Extract window management methods to own
+ class
 
 WaylandConnection still has been overloaded with different tasks.
 
@@ -35,7 +35,7 @@ Cr-Commit-Position: refs/heads/master@{#681191}
  create mode 100644 ui/ozone/platform/wayland/host/wayland_window_manager_unittests.cc
 
 diff --git a/ui/ozone/platform/wayland/BUILD.gn b/ui/ozone/platform/wayland/BUILD.gn
-index a1560a20fe23..157d1beea880 100644
+index 3dbb00bc6239..8c6f4a0dece6 100644
 --- a/ui/ozone/platform/wayland/BUILD.gn
 +++ b/ui/ozone/platform/wayland/BUILD.gn
 @@ -74,6 +74,8 @@ source_set("wayland") {
@@ -47,7 +47,7 @@ index a1560a20fe23..157d1beea880 100644
      "host/wayland_zwp_linux_dmabuf.cc",
      "host/wayland_zwp_linux_dmabuf.h",
      "host/xdg_popup_wrapper.h",
-@@ -250,6 +252,7 @@ source_set("wayland_unittests") {
+@@ -249,6 +251,7 @@ source_set("wayland_unittests") {
      "host/wayland_pointer_unittest.cc",
      "host/wayland_screen_unittest.cc",
      "host/wayland_touch_unittest.cc",
@@ -345,7 +345,7 @@ index ef372ad794d3..126b252624ab 100644
      return window->GetWidget();
    return gfx::kNullAcceleratedWidget;
 diff --git a/ui/ozone/platform/wayland/host/wayland_window.cc b/ui/ozone/platform/wayland/host/wayland_window.cc
-index 9afed0cc87fb..12b3661985a6 100644
+index cf4e41391056..64364a3064f3 100644
 --- a/ui/ozone/platform/wayland/host/wayland_window.cc
 +++ b/ui/ozone/platform/wayland/host/wayland_window.cc
 @@ -105,7 +105,7 @@ WaylandWindow::~WaylandWindow() {
@@ -376,7 +376,7 @@ index 9afed0cc87fb..12b3661985a6 100644
  
    // Tooltip creation is an async operation. By the time Aura actually creates
    // the tooltip, it is possible that the user has already moved the
-@@ -563,7 +564,8 @@ uint32_t WaylandWindow::DispatchEvent(const PlatformEvent& native_event) {
+@@ -566,7 +567,8 @@ uint32_t WaylandWindow::DispatchEvent(const PlatformEvent& native_event) {
      // Parent window of the main menu window is not a popup, but rather an
      // xdg surface.
      DCHECK(!parent_window_->xdg_popup() && parent_window_->xdg_surface());
@@ -386,7 +386,7 @@ index 9afed0cc87fb..12b3661985a6 100644
      if (window) {
        ConvertEventLocationToTargetWindowLocation(GetBounds().origin(),
                                                   window->GetBounds().origin(),
-@@ -802,7 +804,8 @@ void WaylandWindow::MaybeTriggerPendingStateChange() {
+@@ -803,7 +805,8 @@ void WaylandWindow::MaybeTriggerPendingStateChange() {
  
  WaylandWindow* WaylandWindow::GetParentWindow(
      gfx::AcceleratedWidget parent_widget) {
@@ -396,7 +396,7 @@ index 9afed0cc87fb..12b3661985a6 100644
  
    // If propagated parent has already had a child, it means that |this| is a
    // submenu of a 3-dot menu. In aura, the parent of a 3-dot menu and its
-@@ -816,7 +819,7 @@ WaylandWindow* WaylandWindow::GetParentWindow(
+@@ -817,7 +820,7 @@ WaylandWindow* WaylandWindow::GetParentWindow(
    if (parent_window && parent_window->child_window_)
      return parent_window->child_window_;
    if (!parent_window)
@@ -405,7 +405,7 @@ index 9afed0cc87fb..12b3661985a6 100644
    return parent_window;
  }
  
-@@ -873,7 +876,8 @@ void WaylandWindow::RemoveEnteredOutputId(struct wl_output* output) {
+@@ -874,7 +877,8 @@ void WaylandWindow::RemoveEnteredOutputId(struct wl_output* output) {
  void WaylandWindow::UpdateCursorPositionFromEvent(
      std::unique_ptr<Event> event) {
    DCHECK(event->IsLocatedEvent());
@@ -806,5 +806,5 @@ index 000000000000..a38267564a0d
 +
 +}  // namespace ui
 -- 
-2.22.0
+2.23.0
 

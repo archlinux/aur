@@ -1,8 +1,7 @@
-From fd1d8bfd55d5b1d073cbad3ebe8f058c49f3702a Mon Sep 17 00:00:00 2001
+From 296c7b4e9935aaed1d05d32416043a03f67e268d Mon Sep 17 00:00:00 2001
 From: Maksim Sisov <msisov@igalia.com>
 Date: Mon, 5 Aug 2019 16:14:47 +0300
-Subject: [PATCH 05/11] [ozone/wayland] Use mutex before accessing surfaces
- map.
+Subject: [PATCH 2/6] [ozone/wayland] Use mutex before accessing surfaces map.
 
 We must make sure that accessing surfaces map from different threads
 is safe. Otherwise, this is subject to races and unexpected crashes.
@@ -22,7 +21,7 @@ Change-Id: I2e70e9c1ad48943be518c3571b7ca1fb91f8d51b
  create mode 100644 ui/ozone/platform/wayland/gpu/wayland_surface_gpu.cc
 
 diff --git a/ui/ozone/platform/wayland/BUILD.gn b/ui/ozone/platform/wayland/BUILD.gn
-index 686138bb614a..a1560a20fe23 100644
+index 95f20b1fb288..3dbb00bc6239 100644
 --- a/ui/ozone/platform/wayland/BUILD.gn
 +++ b/ui/ozone/platform/wayland/BUILD.gn
 @@ -30,6 +30,7 @@ source_set("wayland") {
@@ -34,10 +33,10 @@ index 686138bb614a..a1560a20fe23 100644
      "host/wayland_buffer_manager_connector.cc",
      "host/wayland_buffer_manager_connector.h",
 diff --git a/ui/ozone/platform/wayland/gpu/gbm_pixmap_wayland.cc b/ui/ozone/platform/wayland/gpu/gbm_pixmap_wayland.cc
-index 5d8167bdfd89..917f849811a2 100644
+index 72d2419b5f84..48f2a7f655bd 100644
 --- a/ui/ozone/platform/wayland/gpu/gbm_pixmap_wayland.cc
 +++ b/ui/ozone/platform/wayland/gpu/gbm_pixmap_wayland.cc
-@@ -126,10 +126,10 @@ bool GbmPixmapWayland::ScheduleOverlayPlane(
+@@ -135,10 +135,10 @@ bool GbmPixmapWayland::ScheduleOverlayPlane(
      const gfx::RectF& crop_rect,
      bool enable_blend,
      std::unique_ptr<gfx::GpuFence> gpu_fence) {
@@ -200,10 +199,10 @@ index 87439610cfc3..631d715e719e 100644
  };
  
 diff --git a/ui/ozone/platform/wayland/gpu/wayland_canvas_surface.cc b/ui/ozone/platform/wayland/gpu/wayland_canvas_surface.cc
-index 6de24d7fd177..ce44ebac2915 100644
+index 231d590296d9..d1e244e910c6 100644
 --- a/ui/ozone/platform/wayland/gpu/wayland_canvas_surface.cc
 +++ b/ui/ozone/platform/wayland/gpu/wayland_canvas_surface.cc
-@@ -29,7 +29,7 @@ WaylandCanvasSurface::WaylandCanvasSurface(
+@@ -147,7 +147,7 @@ WaylandCanvasSurface::WaylandCanvasSurface(
      WaylandBufferManagerGpu* buffer_manager,
      gfx::AcceleratedWidget widget)
      : buffer_manager_(buffer_manager), widget_(widget) {
@@ -273,5 +272,5 @@ index ace5279e838e..38d285317ab3 100644
  
  }  // namespace ui
 -- 
-2.22.0
+2.23.0
 

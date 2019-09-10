@@ -1,7 +1,7 @@
-From c644b4aba05233a8a78d7708a98d9a583ff78a27 Mon Sep 17 00:00:00 2001
+From a8202f907f739a2e68e401d3e36136270bd6fc7a Mon Sep 17 00:00:00 2001
 From: Maksim Sisov <msisov@igalia.com>
 Date: Tue, 30 Jul 2019 05:53:48 +0000
-Subject: [PATCH 02/11] [ozone/wayland] Sway: avoid sending presentation early.
+Subject: [PATCH 1/6] [ozone/wayland] Sway: avoid sending presentation early.
 
 In Sway, presentation callbacks may come much earlier than we send
 submission callbacks. That results in unexpected crashes in
@@ -32,7 +32,7 @@ Cr-Commit-Position: refs/heads/master@{#682157}
  create mode 100644 ui/ozone/platform/wayland/test/mock_wp_presentation.h
 
 diff --git a/ui/ozone/platform/wayland/BUILD.gn b/ui/ozone/platform/wayland/BUILD.gn
-index 303173b4ba6c..686138bb614a 100644
+index 91f497052fae..95f20b1fb288 100644
 --- a/ui/ozone/platform/wayland/BUILD.gn
 +++ b/ui/ozone/platform/wayland/BUILD.gn
 @@ -173,6 +173,8 @@ source_set("test_support") {
@@ -66,10 +66,10 @@ index f3593766eed8..ace5279e838e 100644
    // |buffer_id|.
    virtual void OnSubmission(uint32_t buffer_id,
 diff --git a/ui/ozone/platform/wayland/host/wayland_buffer_manager_host.cc b/ui/ozone/platform/wayland/host/wayland_buffer_manager_host.cc
-index bbcfa84016f9..5f7efebac400 100644
+index 3f163a012c31..1bcf85261b41 100644
 --- a/ui/ozone/platform/wayland/host/wayland_buffer_manager_host.cc
 +++ b/ui/ozone/platform/wayland/host/wayland_buffer_manager_host.cc
-@@ -207,6 +207,12 @@ class WaylandBufferManagerHost::Surface {
+@@ -228,6 +228,12 @@ class WaylandBufferManagerHost::Surface {
      // surface can tell the gpu about successful swap.
      bool released = true;
  
@@ -82,7 +82,7 @@ index bbcfa84016f9..5f7efebac400 100644
      gfx::PresentationFeedback feedback;
  
      DISALLOW_COPY_AND_ASSIGN(WaylandBuffer);
-@@ -334,6 +340,11 @@ class WaylandBufferManagerHost::Surface {
+@@ -355,6 +361,11 @@ class WaylandBufferManagerHost::Surface {
    void CompleteSubmission() {
      DCHECK(submitted_buffer_);
      auto id = submitted_buffer_->buffer_id;
@@ -94,7 +94,7 @@ index bbcfa84016f9..5f7efebac400 100644
      prev_submitted_buffer_ = submitted_buffer_;
      submitted_buffer_ = nullptr;
      // We can now complete the latest submission. We had to wait for this
-@@ -349,14 +360,22 @@ class WaylandBufferManagerHost::Surface {
+@@ -370,14 +381,22 @@ class WaylandBufferManagerHost::Surface {
        OnPresentation(id, gfx::PresentationFeedback(
                               base::TimeTicks::Now(), base::TimeDelta(),
                               GetPresentationKindFlags(0)));
@@ -121,7 +121,7 @@ index bbcfa84016f9..5f7efebac400 100644
    }
  
 diff --git a/ui/ozone/platform/wayland/test/mock_surface.cc b/ui/ozone/platform/wayland/test/mock_surface.cc
-index 9d2333683a41..6ee1c0a9c543 100644
+index b086bdc85416..fa53a037669b 100644
 --- a/ui/ozone/platform/wayland/test/mock_surface.cc
 +++ b/ui/ozone/platform/wayland/test/mock_surface.cc
 @@ -13,7 +13,8 @@ void Attach(wl_client* client,
@@ -149,7 +149,7 @@ index 9d2333683a41..6ee1c0a9c543 100644
  }
  
  void Commit(wl_client* client, wl_resource* resource) {
-@@ -85,4 +92,37 @@ MockSurface* MockSurface::FromResource(wl_resource* resource) {
+@@ -89,4 +96,37 @@ MockSurface* MockSurface::FromResource(wl_resource* resource) {
    return GetUserDataAs<MockSurface>(resource);
  }
  
@@ -188,10 +188,10 @@ index 9d2333683a41..6ee1c0a9c543 100644
 +
  }  // namespace wl
 diff --git a/ui/ozone/platform/wayland/test/mock_surface.h b/ui/ozone/platform/wayland/test/mock_surface.h
-index 1ea9c52dea27..0b44ba090187 100644
+index d283e44b2fe9..1d781d03d3dc 100644
 --- a/ui/ozone/platform/wayland/test/mock_surface.h
 +++ b/ui/ozone/platform/wayland/test/mock_surface.h
-@@ -50,10 +50,24 @@ class MockSurface : public ServerObject {
+@@ -51,10 +51,24 @@ class MockSurface : public ServerObject {
    }
    MockXdgPopup* xdg_popup() const { return xdg_popup_.get(); }
  
@@ -376,5 +376,5 @@ index fddd426db690..110e3ffbc1c2 100644
    std::vector<std::unique_ptr<GlobalObject>> globals_;
  
 -- 
-2.22.0
+2.23.0
 

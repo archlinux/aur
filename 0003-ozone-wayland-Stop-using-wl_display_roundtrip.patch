@@ -1,7 +1,7 @@
-From baa6e8592ccb0f4975676e9d1cac4ffc8c1b6e2f Mon Sep 17 00:00:00 2001
+From e58ed0f56e9ffbee6222b9b8b3f62be4acde72ac Mon Sep 17 00:00:00 2001
 From: Maksim Sisov <msisov@igalia.com>
 Date: Thu, 8 Aug 2019 11:32:57 +0000
-Subject: [PATCH 07/11] [ozone/wayland] Stop using wl_display_roundtrip
+Subject: [PATCH 3/6] [ozone/wayland] Stop using wl_display_roundtrip
 
 According to the Wayland documentation, wl_display_roundtrip is a
 blocking call that can block if the event queue is empty. That is,
@@ -53,7 +53,7 @@ Cr-Commit-Position: refs/heads/master@{#685143}
  5 files changed, 175 insertions(+), 61 deletions(-)
 
 diff --git a/ui/ozone/platform/wayland/host/wayland_buffer_manager_host.cc b/ui/ozone/platform/wayland/host/wayland_buffer_manager_host.cc
-index a6759bb798f4..f58a9f1ed8fb 100644
+index 1bcf85261b41..9355d47f2ec7 100644
 --- a/ui/ozone/platform/wayland/host/wayland_buffer_manager_host.cc
 +++ b/ui/ozone/platform/wayland/host/wayland_buffer_manager_host.cc
 @@ -63,10 +63,22 @@ class WaylandBufferManagerHost::Surface {
@@ -468,5 +468,5 @@ index f63b92d34a50..9d2e1077d79f 100644
  };
  
 -- 
-2.22.0
+2.23.0
 
