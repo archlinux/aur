@@ -1,20 +1,21 @@
 # Maintainer: Christopher Sculley <cs.sculley at gmail dot com>
 pkgname=sleepplan-git
-pkgver=r19.0389933
-pkgrel=3
+pkgver=r20.17f01c6
+pkgrel=2
 pkgdesc="Calculate times to wake up based on bedtimes, and vice versa."
 arch=('any')
 license=('GPL3')
 url="https://gitlab.com/csculley/sleepplan"
 depends=('python3')
-makedepends=('git' 'python-setuptools')
+makedepends=('git')
 provides=('sleepplan')
 conflicts=('sleepplan')
-source=("$pkgname-$pkgver::git+https://gitlab.com/csculley/sleepplan.git#branch=master")
+source=("sleepplan::git+https://gitlab.com/csculley/sleepplan.git#branch=master")
 md5sums=('SKIP')
 
 pkgver() {
-    cd "$pkgname-$pkgver"
+    mv sleepplan "$pkgname"
+    cd "$pkgname"
     ( set -o pipefail
       git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
       printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -22,10 +23,10 @@ pkgver() {
 }
 
 package() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgname"
     mkdir -p "$pkgdir"/usr/bin
     mv sleepplan.py sleepplan
 	chmod +x sleepplan
-    cp sleepplan "$pkgdir"/usr/bin
+    mv sleepplan "$pkgdir"/usr/bin
     install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
 }
