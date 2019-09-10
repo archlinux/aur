@@ -7,9 +7,9 @@
 pkgname=firefox-beta
 _pkgname=firefox
 name=firefox-beta
-pkgver=70.0b4
+pkgver=70.0b5
 _pkgver=70.0
-pkgrel=3
+pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org - Beta"
 arch=(i686 x86_64)
 license=(MPL GPL LGPL)
@@ -27,18 +27,18 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
 provides=("firefox=$pkgver")
 conflicts=('firefox-beta-bin')
 options=(!emptydirs !makeflags !strip)
-source=("http://ftp.mozilla.org/pub/firefox/releases/70.0b4/source/$_pkgname-$pkgver.source.tar.xz"
+source=("http://ftp.mozilla.org/pub/firefox/releases/$pkgver/source/$_pkgname-$pkgver.source.tar.xz"
 		"$_pkgname.sh"
         "$pkgname.desktop"
         "$_pkgname-symbolic.svg")
-sha256sums=('ef8f88908009b6e9436245bfc9476779527da401c2c903017c19e7ff573d06cd'
+sha256sums=('fa14b49feec48159f09fbfd1073eb7e213caefe7fa7a2c2aa1a4634b1ef13c36'
             '367100e5f66523a90c3792e2e0d0e2fe8a3c28748b905ce9f5f6b121343d7842'
             'd6b4c91a7fe77f9a335b44b943e120ce44511e46bbb16ae305cc82b4c3db66cd'
             'a2474b32b9b2d7e0fb53a4c89715507ad1c194bef77713d798fa39d507def9e9')
 
 prepare() {
   mkdir mozbuild
-  cd firefox-$_pkgver 
+  cd firefox-$_pkgver
 
   cat >.mozconfig <<END
 ac_add_options --enable-application=browser
