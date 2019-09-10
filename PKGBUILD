@@ -4,7 +4,7 @@ pkgname=ghdl-mcode-git
 pkgver=0.37dev.git20190907
 pkgrel=1
 arch=('i686' 'x86_64')
-pkgdesc='VHDL simulator - mcode backend'
+pkgdesc='VHDL simulator - mcode back-end'
 url='https://github.com/ghdl/ghdl'
 license=('GPLv2')
 
@@ -43,5 +43,7 @@ package() {
 	cd "${srcdir}/ghdl"
 
 	make DESTDIR="${pkgdir}" install
+	# Install library for synthesis
+	make DESTDIR="${pkgdir}" install.libghdlsynth
 
 }
