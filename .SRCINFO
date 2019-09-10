@@ -15,6 +15,7 @@ pkgbase = proton-ide-git
 	depends = gtksourceview4
 	depends = json-glib
 	depends = libdazzle
+	depends = marble
 	depends = vte3-git
 	provides = proton-ide
 	conflicts = proton-ide
