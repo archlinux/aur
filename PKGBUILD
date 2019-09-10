@@ -6,7 +6,7 @@ pkgname=('pamac-aur-git' 'pamac-aur-tray-appindicator-git')
 _pkgname=pamac
 pkgver=8.0.4.r5.g1656246
 _pkgver=8.0.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A Gtk3 frontend for libalpm - git version"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://gitlab.manjaro.org/applications/pamac"
@@ -15,7 +15,7 @@ depends=('dbus-glib' 'polkit' 'vte3>=0.38' 'libnotify' 'pacman>=5.1' 'pacman<5.2
 optdepends=('polkit-gnome: needed for authentification in Cinnamon, Gnome'
             'lxsession: needed for authentification in Xfce, LXDE etc.'
             'pamac-aur-tray-appindicator-git: tray icon for KDE')
-makedepends=('gettext' 'itstool' 'vala=0.44' 'meson' 'ninja' 'gobject-introspection')
+makedepends=('gettext' 'itstool' 'vala0.44' 'meson' 'ninja' 'gobject-introspection')
 options=(!emptydirs)
 # Only for Manjaro users who should not use it...
 provides=('pamac')
