@@ -1,0 +1,12 @@
+pkgbase = docker-local-persist-bin
+	pkgdesc = Create named local docker volumes that persist in the location(s) you want
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/MatchbookLab/local-persist
+	arch = x86_64
+	license = MIT
+	source = https://github.com/MatchbookLab/local-persist/releases/download/v1.3.0/local-persist-linux-amd64
+	sha256sums = bdfe36888d9350a7fb067e44ca11bd52b9106cbc793032901c25c4b237ecb3a3
+
+pkgname = docker-local-persist-bin
+
