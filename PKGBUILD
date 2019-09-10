@@ -11,7 +11,7 @@ arch=('i686' 'x86_64')
 url='https://github.com/stephaneguindon/phyml'
 license=('GPL2')
 source=("https://github.com/stephaneguindon/phyml/archive/v${pkgver}.tar.gz")
-sha256sums=('bf193e508f3b88066ba9302a8d6c8c55d3d26156c42d17230c9ba275c915860a')
+sha256sums=('f3afd6d5332cd98298736b3c6df63d751fa74388a0e972ec08f63a032d5e6a9c')
 depends=('openmpi')
 
 build() {

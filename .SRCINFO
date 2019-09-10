@@ -9,7 +9,7 @@ pkgbase = phyml-mpi
 	license = GPL2
 	depends = openmpi
 	source = https://github.com/stephaneguindon/phyml/archive/v3.3.20190909.tar.gz
-	sha256sums = bf193e508f3b88066ba9302a8d6c8c55d3d26156c42d17230c9ba275c915860a
+	sha256sums = f3afd6d5332cd98298736b3c6df63d751fa74388a0e972ec08f63a032d5e6a9c
 
 pkgname = phyml-mpi
 
