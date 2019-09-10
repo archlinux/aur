@@ -14,12 +14,19 @@ provides=('notification-daemon')
 depends=('qt5-base' 'qt5-x11extras' 'boost-libs>=1.46' 'libxext' 'libxkbcommon-x11')
 makedepends=('git' 'pkg-config' 'boost>=1.46')
 conflicts=('twmn')
-source=("${_name}::git+https://github.com/sboli/${_name}.git")
-sha256sums=('SKIP')
+source=("${_name}::git+https://github.com/sboli/${_name}.git"
+        'werror-fix.patch')
+sha256sums=('SKIP'
+            '65aad59c679620071433864329c00486bfdd7ec3ae70cb34f7bab14f1f5fd54d')
 
 pkgver() {
    cd "${_name}"
    echo "$(git rev-list --count HEAD).$(git describe --always )"
+}
+
+prepare() {
+   cd "${_name}"
+   patch -p1 < "${srcdir}/werror-fix.patch"
 }
 
 build() {

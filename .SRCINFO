@@ -16,7 +16,9 @@ pkgbase = twmn-git
 	provides = notification-daemon
 	conflicts = twmn
 	source = twmn::git+https://github.com/sboli/twmn.git
+	source = werror-fix.patch
 	sha256sums = SKIP
+	sha256sums = 65aad59c679620071433864329c00486bfdd7ec3ae70cb34f7bab14f1f5fd54d
 
 pkgname = twmn-git
 
