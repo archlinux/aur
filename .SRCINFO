@@ -1,0 +1,26 @@
+pkgbase = surge-synthesizer-git
+	pkgdesc = Surge Synthesizer plugin (LV2, git head)
+	pkgver = r984.ba36b33
+	pkgrel = 1
+	url = https://surge-synthesizer.github.io
+	arch = x86_64
+	groups = lv2-plugins
+	license = GPL3
+	makedepends = premake-git
+	makedepends = git
+	depends = cairo
+	depends = fontconfig
+	depends = freetype2
+	depends = libx11
+	depends = xcb-util-cursor
+	depends = xcb-util
+	depends = libxcb
+	depends = xcb-util-renderutil
+	depends = xcb-util-image
+	provides = surge-synthesizer
+	conflicts = surge-synthesizer
+	source = git+https://github.com/surge-synthesizer/surge.git
+	md5sums = SKIP
+
+pkgname = surge-synthesizer-git
+
