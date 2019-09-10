@@ -4,7 +4,7 @@
 _pkgname=yojson
 pkgname=ocaml-${_pkgname}
 pkgver=1.4.1
-pkgrel=6
+pkgrel=7
 pkgdesc="Low level JSON binary for OCaml"
 arch=('x86_64')
 url="https://github.com/ocaml-community/${_pkgname}"
@@ -36,4 +36,5 @@ package() {
     DESTDIR="${pkgdir}" dune install --prefix=/usr --libdir="$(ocamlfind printconf destdir)"
     install -Dm644 LICENSE -t "${pkgdir}"/usr/share/licenses/${pkgname}/
     rm -r "${pkgdir}"/usr/doc
+    rm -r "${pkgdir}"/usr/lib/ocaml/${_pkgname}/dune-package
 }
