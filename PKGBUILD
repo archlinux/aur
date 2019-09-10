@@ -1,4 +1,5 @@
-# Maintainer: osch <oliver@luced.de>
+# Maintainer: Milk (milk / milkii on Freenode) 
+# Contributor: osch <oliver@luced.de>
 pkgname=surge-synthesizer-git
 pkgver=r984.ba36b33
 scmver=1.6.1
@@ -13,8 +14,8 @@ depends=('cairo'  'fontconfig'          'freetype2'
          'libxcb' 'xcb-util-renderutil' 'xcb-util-image'
          )
 makedepends=('premake-git' 'git')
-provides=("surge-synthesizer")
-conflicts=('surge-synthesizer')
+provides=('surge-synthesizer' 'surge-synthesizer-bin')
+conflicts=('surge-synthesizer' 'surge-synthesizer-bin')
 source=("git+https://github.com/surge-synthesizer/surge.git")
 options=()
 md5sums=('SKIP')
@@ -25,24 +26,6 @@ pkgver() {
 }
 
 prepare() {
-	# export VST2SDK_DIR="$srcdir/vst2sdk"
-	# cd "$srcdir"
-	# rm -rf vst2sdk
-	# mkdir  vst2sdk
-	# cd vst2sdk
-	# # Workaround for steinberg-vst36.git:
-	# ln -s /usr/include/vst36/pluginterfaces .
-	# mkdir -p public.sdk/source/
-	# cd public.sdk/source/
-	# ln -s /usr/include/vst36 vst2.x
-	# if [ -d surge ]; then
-	#   cd surge
-	#   git pull
-	# else
-	#   git clone https://github.com/surge-synthesizer/surge.git
-	#   cd surge
-	# fi
-
 	cd "$srcdir/surge"
 	git submodule update --init --recursive
 	pwd
@@ -52,19 +35,15 @@ prepare() {
 }
 
 build() {
-	# export VST2SDK_DIR="$srcdir/vst2sdk"
 	cd "$srcdir/surge"
-	# export MAKEFLAGS="-j1"
 	./build-linux.sh -p lv2 build
 }
 
 package() {
-	export VST2SDK_DIR="$srcdir/vst2sdk"
 	cd "$srcdir/surge"
 	export DEST_DIR="$pkgdir"
 	mkdir -p   "$DEST_DIR/usr/share"
-	mkdir -p   "$DEST_DIR/usr/lib/vst"
-	# export MAKEFLAGS="-j1"
+	mkdir -p   "$DEST_DIR/usr/lib/lv2"
 	./build-linux.sh -p lv2 install
 	mkdir -p   "$DEST_DIR/usr/share/Surge/doc"
 	cp LICENSE "$DEST_DIR/usr/share/Surge/doc"

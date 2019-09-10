@@ -18,7 +18,9 @@ pkgbase = surge-synthesizer-git
 	depends = xcb-util-renderutil
 	depends = xcb-util-image
 	provides = surge-synthesizer
+	provides = surge-synthesizer-bin
 	conflicts = surge-synthesizer
+	conflicts = surge-synthesizer-bin
 	source = git+https://github.com/surge-synthesizer/surge.git
 	md5sums = SKIP
 
