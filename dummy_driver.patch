@@ -1,0 +1,11 @@
+--- dummy_driver.c	2019-09-10 04:41:00.631904080 -0400
++++ dummy_driver_patched.c	2019-09-10 04:41:23.591395577 -0400
+@@ -753,7 +753,7 @@
+     switch (op) {
+ 	case GET_REQUIRED_HW_INTERFACES:
+ 	    flag = (CARD32*)ptr;
+-	    (*flag) = HW_SKIP_CONSOLE;
++	    //(*flag) = HW_SKIP_CONSOLE;
+ 	    return TRUE;
+ 	default:
+ 	    return FALSE;
