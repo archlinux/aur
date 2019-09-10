@@ -2,7 +2,7 @@
 pkgname=libxtrxdsp-git
 _gitname=libxtrxdsp
 pkgver=r10.614f52694ac0
-pkgrel=3
+pkgrel=4
 pkgdesc="DSP specific function for SDR in general and XTRX in specific"
 arch=('armv7h' 'i686' 'x86_64')
 url="https://github.com/xtrx-sdr/libxtrxdsp"
