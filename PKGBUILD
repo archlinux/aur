@@ -26,7 +26,7 @@ build() {
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
     COIN_SKIP_PROJECTS="Sample" \
-    CXXFLAGS="-DCOIN_HAS_ASL -DCOIN_HAS_MUMPS" ${_arch}-configure \
+    ${_arch}-configure \
        --with-osi-lib="$(${_arch}-pkg-config --libs osi)" \
        --with-osi-incdir="/usr/${_arch}/include/coin/" \
        --with-clp-lib="$(${_arch}-pkg-config --libs clp)" \
@@ -55,7 +55,7 @@ package() {
     PKG_CONFIG_PATH_CUSTOM="$pkgdir"/usr/${_arch}/lib/pkgconfig/ \
     make DESTDIR="$pkgdir"/ install
     rm -r "$pkgdir"/usr/${_arch}/share
-    #rm "$pkgdir"/usr/${_arch}/bin/*.exe
+    rm "$pkgdir"/usr/${_arch}/bin/*.exe
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
   done
