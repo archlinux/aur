@@ -10,7 +10,7 @@
 
 _srcname=ffmpeg
 pkgname=ffmpeg-qsv
-pkgver=4.2
+pkgver=4.2.1
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (including qsv and libfdk-aac)'
 arch=(x86_64)
@@ -104,7 +104,7 @@ build() {
   export PKG_CONFIG_PATH="${PKG_CONFIG_PATH:+${PKG_CONFIG_PATH}:}/opt/intel/mediasdk/lib64/pkgconfig"
 
   ./configure \
-    --prefix='/usr' \
+    --prefix=/usr \
     --disable-debug \
     --disable-static \
     --disable-stripping \
