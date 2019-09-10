@@ -1,14 +1,18 @@
 pkgbase = sigutils-git
 	pkgdesc = Digital signal processing library
-	pkgver = 0.1
+	pkgver = r186.4a1e057
 	pkgrel = 1
 	url = https://github.com/BatchDrake/sigutils
 	arch = any
 	license = GPL
+	makedepends = git
+	makedepends = autoconf
+	makedepends = automake
 	depends = libsndfile
+	depends = alsa-lib
 	provides = sigutils
 	conflicts = sigutils
-	source = sigutils::git+https://github.com/BatchDrake/sigutils.git
+	source = sigutils-git::git+https://github.com/BatchDrake/sigutils.git
 	md5sums = SKIP
 
 pkgname = sigutils-git
