@@ -1,21 +1,17 @@
 pkgbase = jekyll
 	pkgdesc = A simple, blog aware, static site generator.
-	pkgver = 3.8.6
-	pkgrel = 4
+	pkgver = 4.0.0
+	pkgrel = 1
 	url = https://github.com/jekyll/jekyll
 	arch = any
 	license = MIT
 	depends = ruby>=2.1.0
 	depends = ruby-addressable>=2.4
-	depends = ruby-addressable<3.0
 	depends = ruby-colorator>=1.0
-	depends = ruby-colorator<=2.0
-	depends = ruby-jekyll-sass-converter-1>=1.0
-	depends = ruby-jekyll-sass-converter-1<2.0
+	depends = ruby-jekyll-sass-converter>=2.0
+	depends = ruby-sassc
 	depends = ruby-jekyll-watch>=2.0
-	depends = ruby-jekyll-watch<3.0
-	depends = ruby-kramdown-1>=1.14
-	depends = ruby-kramdown-1<2.0
+	depends = ruby-kramdown>=2.1.0
 	depends = ruby-liquid>=4.0
 	depends = ruby-liquid<5.0
 	depends = ruby-mercenary>=0.3.3
@@ -26,21 +22,23 @@ pkgbase = jekyll
 	depends = ruby-rouge<4.0
 	depends = ruby-safe_yaml>=1.0
 	depends = ruby-safe_yaml<2.0
-	depends = ruby-i18n>=0.7
-	depends = ruby-i18n<1.0
+	depends = ruby-i18n>=1
 	depends = ruby-em-websocket>=0.5
 	depends = ruby-em-websocket<1.0
+	depends = ruby-kramdown-parser-gfm
+	depends = ruby-terminal-table
+	optdepends = ruby-minima: Default theme for Jekyll
 	optdepends = ruby-jekyll-paginate
 	optdepends = ruby-jekyll-gist
 	optdepends = ruby-jekyll-feed
-	provides = jekyll=3.8.6
+	provides = jekyll=4.0.0
 	provides = ruby-jekyll
 	conflicts = ruby-jekyll
 	replaces = ruby-jekyll
-	noextract = jekyll-3.8.6.gem
+	noextract = jekyll-4.0.0.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/jekyll-3.8.6.gem
-	sha512sums = 9b54f3c06373ff515c3f190645a231538b3045a5d39b568defc4977434a52812a1cfa1f9ec836b0b7376d1d0290ca17a55b69b3039203aa8f99df8e9b66c56e3
+	source = https://rubygems.org/downloads/jekyll-4.0.0.gem
+	sha256sums = 4a1dc48895d525bfb98cd562bf03ab6dd2727b5795360877c90e12670b9fec3a
 
 pkgname = jekyll
 
