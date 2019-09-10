@@ -1,6 +1,6 @@
 pkgbase = kiwix-lib
 	pkgdesc = Library providing the Kiwix software core
-	pkgver = 6.0.2
+	pkgver = 6.0.4
 	pkgrel = 1
 	url = https://github.com/kiwix/kiwix-lib
 	arch = armv7h
@@ -9,13 +9,13 @@ pkgbase = kiwix-lib
 	license = GPL3
 	makedepends = meson
 	makedepends = gtest
-	depends = libzim>=5.0.2
+	depends = libzim>=6.0.1
 	depends = pugixml
 	depends = mustache=3.2.1
 	depends = xapian-core
 	depends = aria2
-	source = https://github.com/kiwix/kiwix-lib/archive/6.0.2.tar.gz
-	sha256sums = 0fd9427ddf2e9f39e889fbce8f6dcb2b9d69fade906c837e103d8baff5ce7506
+	source = https://github.com/kiwix/kiwix-lib/archive/6.0.4.tar.gz
+	sha256sums = 0cb32dc6a156a34846a8b4c8b51ea1532419a5103b1d673cea06cc7af984ecf3
 
 pkgname = kiwix-lib
 

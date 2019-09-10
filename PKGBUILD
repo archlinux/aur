@@ -1,15 +1,15 @@
 # Maintainer: hashworks <mail@hashworks.net>
 pkgname=kiwix-lib
-pkgver=6.0.2
+pkgver=6.0.4
 pkgrel=1
 pkgdesc="Library providing the Kiwix software core"
 license=('GPL3')
 arch=('armv7h' 'i686' 'x86_64')
-depends=('libzim>=5.0.2' 'pugixml' 'mustache=3.2.1' 'xapian-core' 'aria2')
+depends=('libzim>=6.0.1' 'pugixml' 'mustache=3.2.1' 'xapian-core' 'aria2')
 makedepends=('meson' 'gtest')
 url='https://github.com/kiwix/kiwix-lib'
 source=("https://github.com/kiwix/kiwix-lib/archive/${pkgver}.tar.gz")
-sha256sums=(0fd9427ddf2e9f39e889fbce8f6dcb2b9d69fade906c837e103d8baff5ce7506)
+sha256sums=(0cb32dc6a156a34846a8b4c8b51ea1532419a5103b1d673cea06cc7af984ecf3)
 
 build() {
 	cd "${pkgname}-${pkgver}"
