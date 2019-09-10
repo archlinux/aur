@@ -1,6 +1,6 @@
 pkgbase = okuna-desktop-bin
 	pkgdesc = Desktop client for Okuna
-	pkgver = 0.0.51
+	pkgver = 0.0.51_1
 	pkgrel = 1
 	url = https://gitlab.com/999eagle/okuna-desktop
 	arch = x86_64
@@ -12,6 +12,8 @@ pkgbase = okuna-desktop-bin
 	depends = sqlite
 	depends = bash
 	depends = gtk3
+	depends = zlib
+	depends = openssl
 	provides = okuna-desktop
 	provides = openspace-desktop
 	provides = openbook-desktop
@@ -20,8 +22,8 @@ pkgbase = okuna-desktop-bin
 	conflicts = openbook-desktop-bin
 	replaces = openspace-desktop-bin
 	replaces = openbook-desktop-bin
-	source = okuna-desktop-0.0.51.zip::https://gitlab.com/999eagle/okuna-desktop/-/jobs/artifacts/0.0.51/download?job=release-linux
-	sha256sums = f3a8290f6fac99d789b7a4f520b209b1695578f2bbde124fbf05bc4998328f74
+	source = okuna-desktop-0.0.51-1.zip::https://gitlab.com/999eagle/okuna-desktop/-/jobs/artifacts/0.0.51-1/download?job=release-linux
+	sha256sums = 813d07c9fc2bff6cf5beaddb6ddee32175a562d0ddc5ef5025018f69ffa0b49e
 
 pkgname = okuna-desktop-bin
 
