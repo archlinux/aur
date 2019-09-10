@@ -1,7 +1,7 @@
 # Maintainer: Christopher Sculley <cs.sculley at gmail dot com>
 pkgname=sleepplan-git
 pkgver=r19.0389933
-pkgrel=2
+pkgrel=3
 pkgdesc="Calculate times to wake up based on bedtimes, and vice versa."
 arch=('any')
 license=('GPL3')
@@ -21,13 +21,11 @@ pkgver() {
     )
 }
 
-build() {
-    cd "$pkgname-$pkgver"
-    python setup.py build
-}
-
 package() {
     cd "$pkgname-$pkgver"
-    python setup.py install --prefix="/usr" --root="$pkgdir" --optimize=1
+    mkdir -p "$pkgdir"/usr/bin
+    mv sleepplan.py sleepplan
+	chmod +x sleepplan
+    cp sleepplan "$pkgdir"/usr/bin
     install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
 }
