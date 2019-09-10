@@ -1,7 +1,7 @@
 # Maintainer: kpcyrd <git@rxv.cc>
 
 pkgname="python-sepaxml"
-pkgver="2.1.0"
+pkgver="2.2.0"
 pkgrel=1
 pkgdesc="SEPA Direct Debit XML generation in python"
 arch=(any)
@@ -11,7 +11,7 @@ depends=('python' 'python-lxml' 'python-text-unidecode' 'python-xmlschema')
 makedepends=('python-setuptools')
 checkdepends=('python-pytest')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/raphaelm/python-sepaxml/archive/${pkgver}.tar.gz)
-sha512sums=('8ce9d29bb75b111df14b2adb5dffc4c92b90beee6426e9aae166d82cd4f1bc9ba8cb84d4e65c9b51c3fac1fc62b5b7f25f3aa1b2fbda4566933bb297ed2d40a6')
+sha512sums=('d65e7845ef150e5c164d26fffa35c050629cb6337c493c84341c3208de0487a379f294f7bb8578438c641b4a81108bd8584051d90ead51ba4c443148ec4dd8e7')
 
 build() {
   cd "${pkgname}-${pkgver}"
