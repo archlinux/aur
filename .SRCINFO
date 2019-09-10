@@ -1,6 +1,6 @@
 pkgbase = servo-git
 	pkgdesc = Parallel Browser Project: web browser written in Rust
-	pkgver = 38462.f90dd12133
+	pkgver = 38465.6ed204d692
 	pkgrel = 1
 	url = https://github.com/servo/servo
 	install = servo-git.install
