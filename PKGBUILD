@@ -1,7 +1,7 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 pkgname=python2-healpy
-pkgver=1.12.9
-pkgrel=2
+pkgver=1.12.10
+pkgrel=1
 pkgdesc="Python package to manipulate healpix maps"
 arch=('i686' 'x86_64')
 url="http://healpy.readthedocs.io"
@@ -10,7 +10,7 @@ depends=('python2>=2.7' 'python2-numpy>=1.5' 'python2-matplotlib' 'python2-astro
 makedepends=('cython2>=0.16')
 optdepends=('python-healpy-doc: Documentation for healpy')
 source=("https://files.pythonhosted.org/packages/source/h/healpy/healpy-${pkgver}.tar.gz")
-md5sums=('9c1a5ae49b95b6fdbaf352ac8182b9b8')
+md5sums=('9293b2e0bbcfaae1eedf0fd21399ef95')
 
 package() {
     cd ${srcdir}/healpy-${pkgver}
