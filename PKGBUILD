@@ -1,22 +1,22 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 _pyname=healpy
 pkgname=python-${_pyname}-doc
-pkgver=1.12.9
-pkgrel=2
+pkgver=1.12.10
+pkgrel=1
 pkgdesc="Documentation for Python iminuit module"
 arch=('i686' 'x86_64')
 url="http://healpy.readthedocs.io"
 license=('GPL')
 makedepends=("python-${_pyname}=${pkgver}" 'python-numpydoc')
 source=("https://github.com/healpy/healpy/archive/${pkgver}.tar.gz"
-        'fix_underline_warning.patch')
-md5sums=('2966c57f48c637611fe407fafa66f3b8'
-         'd1fd09c9686b5eebdfbf06cd902e8575')
+        'fix_doc_warning.patch')
+md5sums=('ce75bb08a66a215c22af50a71bab006f'
+         '685840f1c3333c81d00b9eea58aafc8e')
 
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    patch -Np1 -i "${srcdir}/fix_underline_warning.patch"
+    patch -Np1 -i "${srcdir}/fix_doc_warning.patch"
 }
 
 build() {

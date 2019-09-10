@@ -1,5 +1,6 @@
---- a/doc/healpy_zoomtool.rst	2019-03-22 05:51:07.000000000 +0800
-+++ b/doc/healpy_zoomtool.rst	2019-03-23 11:08:47.898324511 +0800
+diff -ura a/doc/healpy_zoomtool.rst b/doc/healpy_zoomtool.rst
+--- a/doc/healpy_zoomtool.rst	2019-09-10 13:17:36.000000000 +0800
++++ b/doc/healpy_zoomtool.rst	2019-09-10 14:17:14.230737604 +0800
 @@ -4,7 +4,7 @@
  
  
@@ -10,8 +11,8 @@
  Interactive map visualization
  -----------------------------
 diff -ura a/INSTALL.rst b/INSTALL.rst
---- a/INSTALL.rst	2019-03-22 05:51:07.000000000 +0800
-+++ b/INSTALL.rst	2019-03-23 11:09:21.075138156 +0800
+--- a/INSTALL.rst	2019-09-10 13:17:36.000000000 +0800
++++ b/INSTALL.rst	2019-09-10 14:16:27.437402127 +0800
 @@ -10,7 +10,7 @@
  Only Linux and MAC OS X are supported, not Windows.
  
@@ -30,3 +31,11 @@ diff -ura a/INSTALL.rst b/INSTALL.rst
  
  It is possible to build the latest ``healpy`` with `pip <http://www.pip-installer.org>`_ ::
  
+@@ -73,6 +73,7 @@
+ If everything goes fine, you can test it::
+ 
+     python
++
+ >>> import matplotlib.pyplot as plt
+ >>> import numpy as np
+ >>> import healpy as hp 
