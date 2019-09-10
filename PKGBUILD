@@ -12,6 +12,6 @@ source=('git://github.com/sulchz/cropper.git')
 sha256sums=('SKIP')
 
 package() {
-    cd "$srcdir/cropper"
+    cd "$srcdir/${pkgname}-${pkgver}"
 	install -D -m755 "cropper-$pkgver" "$pkgdir/usr/bin/cropper"
 }
