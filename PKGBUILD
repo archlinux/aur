@@ -3,7 +3,7 @@
 # Contributor: Micha Alt <micha.tucker at gmail dot com>
 
 pkgname=gulp-cli
-pkgver=2.0.1
+pkgver=2.2.0
 pkgrel=1
 pkgdesc='The streaming build system'
 arch=(any)
@@ -15,7 +15,7 @@ replaces=(gulp)
 provides=(gulp)
 conflicts=(gulp)
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
-md5sums=('628bdc3479b9ed0891e5f4e1f2d9f10d')
+sha256sums=('a19275b192a1d3e4323eb54c1dfbb02ff6380d41a066f7c8b4dd31683ef3c22a')
 
 build() {
 	cd "$srcdir/package"
