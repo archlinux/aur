@@ -7,7 +7,7 @@ url="https://projects.coin-or.org/Ipopt"
 license=('EPL')
 groups=('mingw-w64-coin-or')
 depends=('mingw-w64-lapack')
-makedepends=('mingw-w64-configure' 'wget')
+makedepends=('mingw-w64-configure' 'mingw-w64-wine' 'wget')
 options=('staticlibs' '!buildflags' '!strip')
 source=("http://www.coin-or.org/download/source/Ipopt/Ipopt-$pkgver.tgz")
 sha256sums=('aac9bb4d8a257fdfacc54ff3f1cbfdf6e2d61fb0cf395749e3b0c0664d3e7e96')
@@ -23,6 +23,9 @@ prepare () {
   # see mingw-w64-coin-or-pkg-config
   sed -i "s|export PKG_CONFIG_PATH|export PKG_CONFIG_PATH_CUSTOM|g" Ipopt/configure
   sed -i "s| PKG_CONFIG_PATH=| PKG_CONFIG_PATH_CUSTOM=|g" Ipopt/configure
+
+  # run ASL configuration exe through wine
+  sed -i "s|./a.out >arith.h|\$(MINGW_TARGET)-wine ./a.exe >arith.h|g" ThirdParty/ASL/solvers/makefile.u
 }
 
 build() {
@@ -33,7 +36,7 @@ build() {
       --with-blas-incdir=/usr/${_arch}/include --with-blas-lib="-lblas" \
       --with-lapack-incdir=/usr/${_arch}/include --with-lapack-lib="-llapack" \
       lt_cv_deplibs_check_method=pass_all ..
-    make
+    make MINGW_TARGET=${_arch}
     popd
   done
 }
