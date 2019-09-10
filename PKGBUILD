@@ -2,7 +2,7 @@
 pkgname=cropper
 pkgver=1.0
 pkgrel=1
-pkgdesc="A TUI to trim video files within a specified range"
+pkgdesc="A TUI to trim video files within a specified range given start and end times"
 arch=('any')
 url="https://github.com/sulchz/cropper/"
 license=('unknown')

@@ -1,5 +1,5 @@
 pkgbase = cropper
-	pkgdesc = A TUI to trim video files within a specified range
+	pkgdesc = A TUI to trim video files within a specified range given start and end times
 	pkgver = 1.0
 	pkgrel = 1
 	url = https://github.com/sulchz/cropper/
