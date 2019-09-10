@@ -8,10 +8,10 @@ pkgver() {
   printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 pkgver=r723.b52a03b
-pkgrel=1
+pkgrel=2
 
 pkgdesc='Configure neomutt, isync, getmail and msmtp with pass for passwords'
-arch=('any')
+arch=('x86_64')
 url="https://github.com/rpuntaie/${pkgname%-git}"
 license=('GPL3')
 
