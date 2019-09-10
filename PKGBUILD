@@ -14,8 +14,7 @@ backup=()
 
 pkgver() {
     cd "t"
-    printf '0.r%s.%s' \
-        "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./g'
 }
 
 package() {
