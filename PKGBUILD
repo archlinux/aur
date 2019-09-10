@@ -19,7 +19,8 @@ pkgver() {
 
 package() {
   cd "t"
-  python setup.py install --root="$pkgdir/" --optimize=1
+  printf '0.r%s.%s' \
+      "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 # vim:set ts=2 sw=2 et:
