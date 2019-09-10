@@ -14,7 +14,7 @@ backup=()
 
 pkgver() {
     cd "t"
-    git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./g'
+    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
