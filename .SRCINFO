@@ -1,9 +1,11 @@
 pkgbase = libxtrxdsp-git
 	pkgdesc = DSP specific function for SDR in general and XTRX in specific
 	pkgver = r10.614f52694ac0
-	pkgrel = 2
+	pkgrel = 4
 	url = https://github.com/xtrx-sdr/libxtrxdsp
-	arch = any
+	arch = armv7h
+	arch = i686
+	arch = x86_64
 	license = LGPL
 	makedepends = git
 	makedepends = cmake
