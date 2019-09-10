@@ -27,7 +27,13 @@ prepare(){
 
 build(){
   cp -r "$srcdir" "$blddir"
+  cd "$blddir"
+  
+  mkdir -p gopath/src/github.com/usefathom
+  ln -rTsf "$_gitname" gopath/src/github.com/usefathom/fathom
+
   export GOPATH="$blddir"/gopath
+  cd "$_gitname"
   make build
 }
 
@@ -35,4 +41,5 @@ package(){
   cd "$blddir"/"$_gitname"
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE 
   install -Dm755 fathom "$pkgdir"/usr/bin/fathom
+  rm -rf "$blddir"
 }
