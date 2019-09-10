@@ -1,6 +1,6 @@
 pkgbase = python-zarr
 	pkgdesc = An implementation of chunked, compressed, N-dimensional arrays for Python
-	pkgver = 2.2.0
+	pkgver = 2.3.2
 	pkgrel = 1
 	url = https://github.com/zarr-developers/zarr
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = python-zarr
 	depends = python-asciitree
 	depends = python-numpy
 	depends = python-numcodecs
-	source = https://files.pythonhosted.org/packages/source/z/zarr/zarr-2.2.0.tar.gz
-	sha256sums = 678eba19c4ba5821e8d0f64cc59eeaf9b86db5b2229836903687794756dce407
+	source = https://files.pythonhosted.org/packages/source/z/zarr/zarr-2.3.2.tar.gz
+	sha256sums = c62d0158fb287151c978904935a177b3d2d318dea3057cfbeac8541915dfa105
 
 pkgname = python-zarr
 
