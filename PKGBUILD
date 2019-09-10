@@ -13,5 +13,5 @@ sha256sums=('SKIP')
 
 package() {
     cd "$srcdir/cropper"
-	install -D -m755 "cropper" "$pkgdir/usr/bin/cropper"
+	install -D -m755 "cropper-$pkgver" "$pkgdir/usr/bin/cropper"
 }
