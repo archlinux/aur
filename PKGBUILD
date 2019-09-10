@@ -1,17 +1,17 @@
 # Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-taglib
-pkgver=0.3.5
+pkgver=0.3.6
 pkgrel=1
 pkgdesc="OCaml bindings to taglib"
 arch=('i686' 'x86_64')
 url="https://github.com/savonet/ocaml-taglib"
-license=('LGPL2.1')
+license=('custom:LGPL2.1 with linking exception')
 depends=('ocaml' 'taglib')
 makedepends=('ocaml-findlib')
 options=('!strip')
 source=("https://github.com/savonet/ocaml-taglib/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('d9059445acea347261666efa8808fa8c8794aacaec042a103336acf803472a2838686f3e8422975b0f80e8ea9f0faeaa763fe38b9799ff6067b23caa2c6e5f75')
+sha512sums=('b5744b57beb63761cd5ad1a6d9824e1d3e5da2e94649544217264441a9e561f722b31359df02457465eacf168ff162e5bf524df1c239a98d1277466aa887518a')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
@@ -26,4 +26,5 @@ package() {
     export OCAMLFIND_DESTDIR="${pkgdir}$(ocamlfind printconf destdir)"
     mkdir -p "${OCAMLFIND_DESTDIR}/stublibs"
     make install
+    install -Dm644 "COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }
