@@ -1,7 +1,7 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=nawk-git
-pkgver=20180823.r9.0f4e1ba
-pkgrel=2
+pkgver=20190910.r97.34a6f41
+pkgrel=1
 epoch=
 pkgdesc='The version of awk described in "The AWK Programming Language".'
 arch=('i686' 'x86_64')
