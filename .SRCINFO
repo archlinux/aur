@@ -1,6 +1,6 @@
 pkgbase = tsv-utils-bin
 	pkgdesc = Command line tools for large, tabular data files. Filtering, statistics, sampling, joins and more. Self-contained official binary release package.
-	pkgver = 1.4.2
+	pkgver = 1.4.3
 	pkgrel = 1
 	url = https://github.com/eBay/tsv-utils
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = tsv-utils-bin
 	license = Boost
 	provides = tsv-utils
 	conflicts = tsv-utils
-	source = https://github.com/eBay/tsv-utils/releases/download/v1.4.2/tsv-utils-v1.4.2_linux-x86_64_ldc2.tar.gz
-	sha256sums = a159a4f7e916b9ed25fcafe73468ec43f0bb6756746192bddacba0f1fd2ffbb4
+	source = https://github.com/eBay/tsv-utils/releases/download/v1.4.3/tsv-utils-v1.4.3_linux-x86_64_ldc2.tar.gz
+	sha256sums = f2fa98cfe1818e4f345d251fef7e161c5abafd58689048220c56f3e88c694064
 
 pkgname = tsv-utils-bin
 
