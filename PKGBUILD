@@ -3,11 +3,11 @@
 # https://aur.archlinux.org/packages/ghdl/
 
 pkgname=ghdl-gcc-git
-pkgver=0.37dev.git20190811
+pkgver=0.37dev.git20190907
 pkgrel=1
 arch=('any')
-pkgdesc='VHDL simulator - GCC flavour'
-url='https://github.com/tgingold/ghdl'
+pkgdesc='VHDL simulator - GCC back-end'
+url='https://github.com/ghdl/ghdl'
 license=('GPLv2')
 
 provides=('ghdl')
@@ -49,7 +49,8 @@ prepare() {
 
 	./configure \
 		--prefix=/usr \
-		--with-gcc="${srcdir}/gcc"
+		--with-gcc="${srcdir}/gcc" \
+		--enable-synth
 
 	make copy-sources
 
