@@ -1,0 +1,32 @@
+#!/bin/sh
+for f in *; do
+	newfilename="$(echo "$f" | tr ' ' '_')"
+	mv "$f" "$newfilename"
+done
+
+W=() 
+for x in $(find -maxdepth 1 -iregex ".*\.\(mkv\|opus\|mp4\|m4a\|avi\|webm\)" -printf '%f\n'); do
+    W+=("$x" "")
+done
+FILE=$(whiptail --title "List of video files in current directory:" --menu "Choose one" 24 80 17 "${W[@]}" 3>&2 2>&1 1>&3) 
+clear
+
+case $FILE in
+	$FILE)
+		time1=$(whiptail --inputbox 'Enter time to begin crop' 0 70 3>&1 1>&2 2>&3)
+		time2=$(whiptail --inputbox 'Enter time to end crop' 0 70 3>&1 1>&2 2>&3)
+		duration=$(datediff $time1 $time2 -f%0H:%0M:%0S 2>/dev/null)
+		croptype=$(whiptail --title "Choose type of crop" --menu "Choose a type:" 24 80 17 "quick" "" "accurate" "" 3>&1 1>&2 2>&3)
+		outfile=$(whiptail --inputbox 'Enter output file name' 0 70 3>&1 1>&2 2>&3)
+			case $croptype in
+				quick)
+					echo "quick"
+					echo "$duration"
+					ffmpeg -ss $time1 -i $FILE -vcodec copy -acodec copy -t $duration $outfile
+				;;
+				accurate)
+					echo "accurate"
+					echo "$duration"
+					ffmpeg -ss $time1 -i $FILE -t $duration -preset veryslow -async 1 $outfile
+			esac
+esac
