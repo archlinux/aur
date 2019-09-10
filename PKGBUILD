@@ -2,10 +2,10 @@
 # Upstream author :  Roland Puntaier <roland [dot] puntaier [at] gmail [dot] com>
 # Upstream author :  Luke Smith <luke [at] lukesmith [dot] xyz>
 
-pkgname='mailwizard-git'
+pkgname=mailwizard-git
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 pkgver=r723.b52a03b
 pkgrel=1
