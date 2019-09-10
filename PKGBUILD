@@ -45,4 +45,7 @@ package() {
 	cd "${srcdir}/ghdl"
 
 	make DESTDIR="${pkgdir}" install
+
+	# Install library for synthesis
+	make DESTDIR="${pkgdir}" install.libghdlsynth
 }
