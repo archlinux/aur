@@ -1,6 +1,6 @@
 # Maintainer: Mirza Baig <mirzabaig@protonmail.com>
 pkgname=cropper-git
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="A TUI to trim video files within a specified range given start and end times."
 arch=('any')
@@ -12,6 +12,6 @@ source=('git://github.com/sulchz/cropper.git')
 sha256sums=('SKIP')
 
 package() {
-    cd "$srcdir/${pkgname}-${pkgver}"
+    cd "$srcdir/${pkgname}"
 	install -D -m755 "cropper" "$pkgdir/usr/bin/cropper"
 }
