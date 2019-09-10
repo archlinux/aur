@@ -1,9 +1,10 @@
-#Maintainer: Jan de Groot <jgc@archlinux.org>
+#Maintainer: Michael Taboada <michael@2mb.solutions>
+#Contributor: Jan de Groot <jgc@archlinux.org>
 
 _pkgname=xf86-video-dummy
 pkgname=xf86-video-dummy-with-vt
 pkgver=0.3.8
-pkgrel=3
+pkgrel=4
 pkgdesc="X.org dummy video driver with an allocated vt"
 arch=(aarch64 armv7h i686 x86_64)
 url="https://xorg.freedesktop.org/"

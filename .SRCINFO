@@ -1,7 +1,7 @@
 pkgbase = xf86-video-dummy-with-vt
 	pkgdesc = X.org dummy video driver with an allocated vt
 	pkgver = 0.3.8
-	pkgrel = 3
+	pkgrel = 4
 	url = https://xorg.freedesktop.org/
 	arch = aarch64
 	arch = armv7h
