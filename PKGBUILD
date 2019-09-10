@@ -4,7 +4,7 @@ pkgver=0.2_96_g269872a
 _pkgver=$(echo "${pkgver}" | sed -e "s/_/-/g")
 pkgrel=1
 pkgdesc="Cross platform Neovim front-end UI, built with F# + Avalonia"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/yatli/fvim"
 license=('MIT')
 groups=()
@@ -38,4 +38,6 @@ package() {
     install Assets/fvim.png "${pkgdir}/usr/share/icons/hicolor/48x48/apps/fvim.png"
     install lib/fvim.desktop "${pkgdir}/usr/share/applications/fvim.desktop"
     cp -dpr bin/Release/netcoreapp3.0/linux-x64/* "${pkgdir}/usr/share/fvim"
+    chmod 755 "${pkgdir}/usr/share/fvim/FVim"
+    chmod 755 "${pkgdir}/usr/bin/fvim"
 }
