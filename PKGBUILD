@@ -41,7 +41,6 @@ build() {
 
   cd "${srcdir}/${pkgname}-${pkgver}/CliClient/build/"
   # NOTE: Manually forcing sqlite 4.0.7 for node v12, remove later on
-  npm install sqlite3@4.0.7
   npm install
 
   # Electron App
@@ -61,6 +60,8 @@ package() {
   mkdir -p ${pkgdir}/usr/share/{${pkgname},${pkgname}-cli,applications,licenses/${pkgname}}
 
   cp -R "${srcdir}/${pkgname}-${pkgver}/CliClient/build/"* \
+    "${pkgdir}/usr/share/${pkgname}-cli"
+  cp -R "${srcdir}/${pkgname}-${pkgver}/CliClient/node_modules" \
     "${pkgdir}/usr/share/${pkgname}-cli"
   cp -R "${srcdir}/${pkgname}-${pkgver}/ElectronClient/app/dist/linux-unpacked/"* \
     "${pkgdir}/usr/share/${pkgname}"
