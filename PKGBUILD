@@ -2,7 +2,7 @@
 # Helpful url: https://services.lidarr.audio/v1/update/nightly/changes?os=linux
 
 pkgname="lidarr-develop"
-pkgver=0.6.2.1345
+pkgver=0.7.0.1345
 _shortstupidfuckingrandomnumber="554"
 _longstupidfuckingrandomnumber="A9A19B67093F28D739A24B63639F879927341D748BF51453B53036668DB7CB4802"
 pkgrel=1
