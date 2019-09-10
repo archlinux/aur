@@ -2,7 +2,7 @@
 pkgname=libxtrxll-git
 _gitname=libxtrxll
 pkgver=r33.50176aff00ae
-pkgrel=1
+pkgrel=2
 pkgdesc="Low level XTRX hardware abstraction library"
 arch=('armv7h' 'i686' 'x86_64')
 url="https://github.com/xtrx-sdr/libxtrxll"
