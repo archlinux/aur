@@ -14,7 +14,8 @@ backup=()
 
 pkgver() {
     cd "t"
-    echo $(git rev-list --count master).$(git rev-parse --short master)
+    printf '0.r%s.%s' \
+        "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
