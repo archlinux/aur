@@ -1,6 +1,6 @@
 # Maintainer: Sascha Appel <sascha.appel@gmail.com>
 pkgname=tuir
-pkgver=1.28.2
+pkgver=1.28.3
 pkgrel=1
 pkgdesc="Terminal UI for Reddit, forked from discontinued rtv"
 arch=('any')
