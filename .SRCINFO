@@ -1,0 +1,16 @@
+pkgbase = cropper
+	pkgdesc = A TUI to trim video files within a specified range
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/sulchz/cropper/
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = dateutils
+	depends = ffmpeg
+	depends = libnewt
+	source = git://github.com/sulchz/cropper.git
+	sha256sums = SKIP
+
+pkgname = cropper
+
