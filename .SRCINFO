@@ -12,7 +12,7 @@ pkgbase = mirrorlist-manager
 	depends = pyqt5-common>=5.11.2
 	depends = python-pandas>=0.23.4
 	depends = pacman-contrib
-	source = Mirorlist-Manager.tar.gz::https://github.com/Rizwan-Hasan/ArchLinux-Mirrorlist-Manager/archive/v1.3.tar.gz
+	source = Mirrorlist-Manager.tar.gz::https://github.com/Rizwan-Hasan/ArchLinux-Mirrorlist-Manager/archive/v1.3.tar.gz
 	source = mirrorist-manager.desktop.in
 	source = setup.py
 	md5sums = e0510cacd886bda6b4106b1d65d60279

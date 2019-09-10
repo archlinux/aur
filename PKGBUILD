@@ -9,7 +9,7 @@ url="https://github.com/Rizwan-Hasan/ArchLinux-Mirrorlist-Manager"
 license=('GPL3')
 depends=('python>=3.7.0' 'python-pyqt5>=5.11.2' 'python-sip-pyqt5>=4.19.12' 'pyqt5-common>=5.11.2' 'python-pandas>=0.23.4' 'pacman-contrib')
 makedepends=('cython>=0.28.5')
-source=(Mirorlist-Manager.tar.gz::"https://github.com/Rizwan-Hasan/ArchLinux-Mirrorlist-Manager/archive/v${pkgver}.tar.gz"
+source=(Mirrorlist-Manager.tar.gz::"https://github.com/Rizwan-Hasan/ArchLinux-Mirrorlist-Manager/archive/v${pkgver}.tar.gz"
                              	  "mirrorist-manager.desktop.in"
                              	  "setup.py")
 md5sums=('e0510cacd886bda6b4106b1d65d60279' 
