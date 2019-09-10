@@ -29,3 +29,5 @@ package() {
   cp -r "$srcdir/output/usr/share/man/man1" "$pkgdir/usr/share/man/"
   install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+
+# vim: set tabstop=4 shiftwidth=2 expandtab:
