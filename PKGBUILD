@@ -13,7 +13,7 @@ makedepends=("git" "go-pie" "npm")
 source=("git+https://github.com/usefathom/fathom.git")
 md5sums=("SKIP")
 _gitname="fathom"
-blddir="build"
+blddir=${pwd}/"build"
 
 pkgver() {
   cd "$_gitname"
@@ -21,7 +21,6 @@ pkgver() {
 }
 
 build(){
-  cd ..
   cp -r "$srcdir" "$blddir"
   cd "$blddir"
   
@@ -37,4 +36,5 @@ package(){
   cd "$blddir"/"$_gitname"
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE 
   install -Dm755 fathom "$pkgdir"/usr/bin/fathom
+  rm -rf "$blddir"
 }
