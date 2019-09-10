@@ -1,7 +1,7 @@
 # Maintainer: Alexander Couzens <lynxis@fe80.eu>
 pkgname=libusb3380-git
 pkgver=r15.c83d1e93eb3a
-pkgrel=1
+pkgrel=2
 pkgdesc="USB3380 abstraction layer for libusb"
 _gitname=libusb3380
 arch=('armv7h' 'i686' 'x86_64')
