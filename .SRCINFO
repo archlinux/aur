@@ -1,0 +1,20 @@
+pkgbase = go-arc
+	pkgdesc = Easily create and extract .zip, .tar, .tar.gz, .tar.bz2, .tar.xz, and .rar (extract-only) files with Go
+	pkgver = 3.2.0
+	pkgrel = 1
+	url = https://github.com/mholt/archiver
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = MIT
+	makedepends = go
+	makedepends = git
+	options = !strip
+	options = !emptydirs
+	source = https://github.com/mholt/go-arc/archive/v3.2.0.tar.gz
+	sha256sums = 919182c8a2ae8095b12f059a1b2826107629bd13bdba6a429cb3d97eac6ae065
+
+pkgname = go-arc
+
