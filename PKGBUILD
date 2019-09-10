@@ -1,11 +1,11 @@
 # Maintainer: Adrien Prost-Boucle <adrien.prost-boucle@laposte.net>
 
 pkgname=ghdl-mcode-git
-pkgver=0.37dev.git20190702
+pkgver=0.37dev.git20190907
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='VHDL simulator - mcode backend'
-url='https://github.com/tgingold/ghdl'
+url='https://github.com/ghdl/ghdl'
 license=('GPLv2')
 
 provides=('ghdl')
@@ -33,7 +33,7 @@ pkgver() {
 build() {
 	cd "${srcdir}/ghdl"
 
-	./configure --prefix=/usr/
+	./configure --prefix=/usr/ --enable-synth
 
 	make
 
