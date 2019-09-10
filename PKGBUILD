@@ -26,6 +26,7 @@ prepare(){
 }
 
 build(){
+  cd ..
   cp -r "$srcdir" "$blddir"
   cd "$blddir"
   
@@ -41,5 +42,4 @@ package(){
   cd "$blddir"/"$_gitname"
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE 
   install -Dm755 fathom "$pkgdir"/usr/bin/fathom
-  rm -rf "$blddir"
 }
