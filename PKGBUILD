@@ -1,7 +1,7 @@
 # Maintainer: Philipp A. <flying-sheep@web.de>
 pkgname=jupyter_contrib_nbextensions
-pkgver=0.5.0
-pkgrel=2
+pkgver=0.5.1
+pkgrel=1
 pkgdesc='A collection of Jupyter nbextensions'
 arch=(any)
 url="https://github.com/ipython-contrib/$pkgname"
@@ -24,7 +24,7 @@ depends=(
 makedepends=(python-pip mariadb jq)
 _wheel="$pkgname-$pkgver-py2.py3-none-any.whl"
 source=("$_wheel::https://files.pythonhosted.org/packages/py2.py3/${pkgname::1}/$pkgname/$_wheel" "$pkgname.install")
-sha256sums=('f4893d99fed6be6587cd2c722ef8841556283a697a482288b621b514beda2405'
+sha256sums=('2c071f0aa208c569666f656bdc0f66906ca493cf9f06f46db6350db11030ff40'
             'd141d36609422748b0b22b6c432f223bfc92d72359bbccaf709690f7de313e35')
 noextract=("$_wheel")
 install="$pkgname.install"
