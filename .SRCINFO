@@ -1,7 +1,7 @@
 pkgbase = libxtrx-git
 	pkgdesc = High level API for the xtrx SDR
 	pkgver = r53.9af1c458b567
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xtrx-sdr/libxtrx
 	arch = any
 	license = LGPL
