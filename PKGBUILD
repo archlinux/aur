@@ -14,13 +14,13 @@ backup=()
 
 pkgver() {
     cd "t"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    printf '0.r%s.%s' \
+        "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
   cd "t"
-  printf '0.r%s.%s' \
-      "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  python setup.py install --root="$pkgdir/" --optimize=1
 }
 
 # vim:set ts=2 sw=2 et:
