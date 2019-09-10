@@ -1,7 +1,7 @@
 pkgbase = sleepplan-git
 	pkgdesc = Calculate times to wake up based on bedtimes, and vice versa.
 	pkgver = r19.0389933
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/csculley/sleepplan
 	arch = any
 	license = GPL3
