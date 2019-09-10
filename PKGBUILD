@@ -63,12 +63,12 @@ _enable_acs_override="y"
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.2
-_minor=13
+_minor=14
 _srcname=linux-${_major}
 _clr=${_major}.11-830
 pkgbase=linux-clear
 pkgver=${_major}.${_minor}
-pkgrel=2
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux"
 license=('GPL2')
@@ -126,6 +126,7 @@ CONFIG_MODULE_COMPRESS_XZ=y|' ./.config
         sed -i "s|CONFIG_RT_GROUP_SCHED=y|# CONFIG_RT_GROUP_SCHED is not set|g" ./.config
         sed -i "s|# CONFIG_DELL_SMBIOS_SMM is not set|CONFIG_DELL_SMBIOS_SMM=y|g" ./.config
         sed -i "s|CONFIG_MODULE_SIG_FORCE=y|# CONFIG_MODULE_SIG_FORCE is not set|g" ./.config
+        sed -i "s|# CONFIG_NET_SCH_CAKE is not set|CONFIG_NET_SCH_CAKE=m|g" ./.config
 
         make olddefconfig
 
@@ -333,7 +334,7 @@ done
 
 sha256sums=('54ad66f672e1a831b574f5e704e8a05f1e6180a8245d4bdd811208a6cb0ac1e7'
             'SKIP'
-            '75e9bff5e377620870c16e476ac0c90b06f2b2b9e064bfb5ab69a6ea204c37e8'
+            'ee77adddc2daa998fd861efd065976776ee100f06b7dff9be58e84f7b47feb12'
             'SKIP'
             '8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5'
             'dbf4ac4b873ce6972e63b78d74ddba18f2701716163bb7f4b4fe5e909346a6e1'
