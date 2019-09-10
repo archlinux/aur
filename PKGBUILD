@@ -1,11 +1,11 @@
 # Maintainer: Adrien Prost-Boucle <adrien.prost-boucle@laposte.net>
 
 pkgname=ghdl-llvm-git
-pkgver=0.37dev.git20190702
+pkgver=0.37dev.git20190907
 pkgrel=1
 arch=('any')
-pkgdesc='VHDL simulator - LLVM flavour'
-url='https://github.com/tgingold/ghdl'
+pkgdesc='VHDL simulator - LLVM back-end'
+url='https://github.com/ghdl/ghdl'
 license=('GPLv2')
 
 provides=('ghdl')
@@ -33,7 +33,10 @@ pkgver() {
 build() {
 	cd "${srcdir}/ghdl"
 
-	./configure --prefix=/usr/ --with-llvm-config
+	./configure \
+		--prefix=/usr/ \
+		--with-llvm-config \
+		--enable-synth
 
 	make
 }
