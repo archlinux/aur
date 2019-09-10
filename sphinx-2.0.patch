@@ -1,0 +1,118 @@
+diff -aur package.pristine/docsrc/conf.py package.new/docsrc/conf.py
+--- package.pristine/docsrc/conf.py	2019-07-30 01:51:05.000000000 +0200
++++ package.new/docsrc/conf.py	2019-09-10 03:07:36.624407169 +0200
+@@ -321,6 +321,7 @@
+                 )
+ 
+     os.chdir(current)
++del author
+ 
+ 
+ # If true, show URL addresses after external links.
+diff -aur package.pristine/docsrc/exts/sphinxlocal/builders/manpage.py package.new/docsrc/exts/sphinxlocal/builders/manpage.py
+--- package.pristine/docsrc/exts/sphinxlocal/builders/manpage.py	2019-04-18 13:06:35.000000000 +0200
++++ package.new/docsrc/exts/sphinxlocal/builders/manpage.py	2019-09-10 03:07:36.624407169 +0200
+@@ -22,6 +22,7 @@
+ from sphinx.errors import SphinxError
+ from sphinx.builders import Builder
+ from sphinx.environment import NoUri
++from sphinx.util import logging
+ from sphinx.util.nodes import inline_all_toctrees
+ from sphinx.util.console import bold, darkgreen
+ from sphinx.writers.manpage import ManualPageWriter
+@@ -32,6 +33,8 @@
+ # Translater in it.
+ from sphinxlocal.writers.manpage import CyrusManualPageWriter
+ 
++logger = logging.getLogger(__name__)
++
+ class CyrusManualPageBuilder(ManualPageBuilder):
+     """
+     Builds groff output in manual page format.
+@@ -56,7 +59,7 @@
+             components=(docwriter,),
+             read_config_files=True).get_default_values()
+ 
+-        self.info(bold('writing... '), nonl=True)
++        logger.info(bold('writing... '), nonl=True)
+ 
+         for info in self.config.man_pages:
+             docname, name, description, authors, section = info
+@@ -67,7 +70,7 @@
+                     authors = []
+ 
+             targetname = '%s.%s' % (name, section)
+-            self.info(darkgreen(targetname) + ' { ', nonl=True)
++            logger.info(darkgreen(targetname) + ' { ', nonl=True)
+             destination = FileOutput(
+                 destination_path=path.join(self.outdir, targetname),
+                 encoding='utf-8')
+@@ -76,7 +79,7 @@
+             docnames = set()
+             largetree = inline_all_toctrees(self, docnames, docname, tree,
+                                             darkgreen, [docname])
+-            self.info('} ', nonl=True)
++            logger.info('} ', nonl=True)
+             self.env.resolve_references(largetree, docname, self)
+             # remove pending_xref nodes
+             for pendingnode in largetree.traverse(addnodes.pending_xref):
+@@ -89,7 +92,7 @@
+             largetree.settings.section = section
+ 
+             docwriter.write(largetree, destination)
+-        self.info()
++        logger.info('')
+ 
+ def setup(app):
+     app.add_builder(CyrusManualPageBuilder)
+diff -aur package.pristine/docsrc/exts/sphinxlocal/roles/cyrusman.py package.new/docsrc/exts/sphinxlocal/roles/cyrusman.py
+--- package.pristine/docsrc/exts/sphinxlocal/roles/cyrusman.py	2019-06-28 04:34:16.000000000 +0200
++++ package.new/docsrc/exts/sphinxlocal/roles/cyrusman.py	2019-09-10 03:07:36.624407169 +0200
+@@ -12,13 +12,16 @@
+ """
+ 
+ from sphinx.errors import SphinxError
++from sphinx.util import logging
+ from docutils import nodes, utils
+ from docutils.parsers.rst.roles import set_classes
+ from string import Template
+ import re
+ 
++logger = logging.getLogger(__name__)
++
+ def setup(app):
+-    app.info('Initializing cyrusman plugin')
++    logger.info('Initializing cyrusman plugin')
+     app.add_crossref_type('cyrusman', 'cyrusman', '%s', nodes.generated)
+     return
+ 
+diff -aur package.pristine/docsrc/exts/sphinxlocal/writers/manpage.py package.new/docsrc/exts/sphinxlocal/writers/manpage.py
+--- package.pristine/docsrc/exts/sphinxlocal/writers/manpage.py	2019-06-28 04:34:16.000000000 +0200
++++ package.new/docsrc/exts/sphinxlocal/writers/manpage.py	2019-09-10 03:09:19.641702000 +0200
+@@ -13,11 +13,13 @@
+ """
+ 
+ from docutils import nodes
++import sphinx.util.docutils
+ from sphinx.writers.manpage import (
+-    MACRO_DEF,
+     ManualPageWriter,
+     ManualPageTranslator as BaseTranslator
+ )
++if sphinx.util.docutils.__version_info__ < (0, 11):
++  from sphinx.writers.manpage import MACRO_DEF
+ 
+ 
+ from sphinx import addnodes
+@@ -73,8 +75,9 @@
+         self._docinfo['version'] = builder.config.version
+         self._docinfo['manual_group'] = builder.config.project
+ 
+-        # since self.append_header() is never called, need to do this here
+-        self.body.append(MACRO_DEF)
++        # In docutils < 0.11 self.append_header() was never called
++        if sphinx.util.docutils.__version_info__ < (0, 11):
++          self.body.append(MACRO_DEF)
+ 
+         # overwritten -- don't wrap literal_block with font calls
+         self.defs['literal_block'] = ('.sp\n.nf\n', '\n.fi\n')
