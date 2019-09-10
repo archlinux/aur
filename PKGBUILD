@@ -2,7 +2,7 @@
 
 pkgname=icewm-extra-themes
 _oldname=icewm-themes
-pkgver=1.0
+pkgver=1.2
 pkgrel=1
 pkgdesc="Extra themes for IceWM (too large to include in IceWM distribution)"
 arch=(any)
@@ -13,13 +13,13 @@ conflicts=($_oldname)
 replaces=($_oldname)
 depends=('icewm2')
 makedepends=(markdown)
-source=("https://github.com/bbidulock/icewm-extra-themes/releases/download/$pkgver/$pkgname-$pkgver.tar.xz")
-md5sums=('e0f0d745f2f9b528c27423f7e3805984')
+source=("https://github.com/bbidulock/icewm-extra-themes/releases/download/$pkgver/$pkgname-$pkgver.tar.lz")
+md5sums=('8bb4a8bc7fbde0ac083c4f277d205642')
 
 build() {
   cd $pkgname-$pkgver
-  ./configure --prefix=/usr --sysconfdir=/etc
-  make V=0
+  ./configure
+  make
 }
 
 package() {
