@@ -2,22 +2,24 @@
 # Contributor : Aniket Pradhan <aniket17133@iiitd.ac.in>
 # Contributor : Paul Irish <http://paulirish.com/>
 
+
 pkgname=git-open-git
+_pkgname="${pkgname%-git}"
 
 pkgver() {
-  cd "${pkgname%-git}"
+  cd "$_pkgname"
   git describe | sed 's/v\?//;s/-/.r/;s/-/./'
 }
 pkgver=2.1.0.r8.g08fa2ab
-pkgrel=2
+pkgrel=3
 
-pkgdesc='Type `git open` to open the GitHub page or website for a repository in your browser.'
+pkgdesc='Open a repository GitHub page or website in your browser from the shell'
 arch=('x86_64')
-url="https://github.com/paulirish/${pkgname%-git}"
+url="https://github.com/paulirish/$_pkgname"
 license=('MIT')
 
-provides=("${pkgname%-git}")
-conflicts=('nodejs-git-open' "${pkgname%-git}")
+provides=("$_pkgname")
+conflicts=('nodejs-git-open' "$_pkgname")
 
 depends=('git' 'xdg-utils')
 makedepends=('go-md2man')
@@ -25,21 +27,21 @@ makedepends=('go-md2man')
 options=('zipman')
 
 changelog=CHANGELOG
-source=("git+$url.git")
+source=("git+$url")
 sha256sums=('SKIP')
 
 prepare() {
-  cd "${pkgname%-git}"
-  go-md2man <"${pkgname%-git}.1.md" >"${pkgname%-git}.1"
+  cd "$_pkgname"
+  go-md2man <"$_pkgname.1.md" >"$_pkgname.1"
 }
 
 package() {
-  cd "${pkgname%-git}"
-  install -Dm755 "${pkgname%-git}" -t"$pkgdir/usr/bin/"
-  install -Dm644 "${pkgname%-git}.plugin.zsh" -t"$pkgdir/usr/share/${pkgname%-git}/"
-  install -Dm644 "${pkgname%-git}.1" -t"$pkgdir/usr/share/man/man1/"
-  install -Dm644 "${pkgname%-git}.1.md" README.md -t"$pkgdir/usr/share/doc/${pkgname%-git}/"
-  install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/${pkgname%-git}/LICENSE.md"
+  cd "$_pkgname"
+  install -Dm644 "$_pkgname.plugin.zsh"     -t"$pkgdir/usr/share/$_pkgname/"
+  install -Dm644 "$_pkgname.1"              -t"$pkgdir/usr/share/man/man1/"
+  install -Dm644 "$_pkgname.1.md" README.md -t"$pkgdir/usr/share/doc/$_pkgname/"
+  install -Dm755 "$_pkgname"                -t"$pkgdir/usr/bin/"
+  install -Dm644 LICENSE.md                   "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
 
 # vim: ts=2 sw=2 et:
