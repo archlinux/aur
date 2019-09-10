@@ -7,11 +7,11 @@ _use_zeroc_ice="1"
 _use_grpc="0"
 
 pkgname=murmur-git
-pkgver=1.2.5.2624.g742a5d98
+pkgver=1.2.5.r3082.g713b92c3c
 pkgrel=1
 pkgdesc="The voice chat application server for Mumble (git version)"
 arch=('i686' 'x86_64' 'armv7h')
-url="http://mumble.sourceforge.net"
+url="https://www.mumble.info/"
 license=('BSD')
 depends=('avahi' 'lsb-release' 'protobuf' 'qt5-base')
 
@@ -28,7 +28,7 @@ conflicts=('murmur' 'murmur-static' 'murmur-ice')
 provides=('murmur')
 backup=("etc/murmur.ini")
 install="murmur.install"
-source=("git://github.com/mumble-voip/mumble.git"
+source=("git+https://github.com/mumble-voip/mumble.git"
     "murmur.dbus.conf"
     "murmur.service"
     "murmur.sysusers")
@@ -40,12 +40,12 @@ sha512sums=('SKIP'
 _gitname="mumble"
 
 pkgver() {
-    cd ${srcdir}/${_gitname}
-    git describe | sed 's/^v//;s/-/./g'
+    cd "${srcdir}/${_gitname}"
+    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    cd ${srcdir}/${_gitname}
+    cd "${srcdir}/${_gitname}"
 
     CONFIG_OPTS="no-client"
 
@@ -63,29 +63,29 @@ build() {
 }
 
 package() {
-    cd ${srcdir}/${_gitname}
+    cd "${srcdir}/${_gitname}"
 
-    sed -e "1i# vi:ft=cfg" \
-      -e "s|database=|database=/var/lib/murmur/murmur.sqlite|" \
+    sed -e "1i; vi:ft=cfg" \
+      -e "s|database=|database=/var/db/murmur/murmur.sqlite|" \
       -e "s|;logfile=murmur.log|logfile=|" \
       -e "s|;uname=|uname=murmur|" \
       -i scripts/murmur.ini
 
-    install -dm755 -o 122 -g 122 ${pkgdir}/var/lib/murmur    
-    install -Dm755 release/murmurd ${pkgdir}/usr/bin/murmurd
-    install -Dm644 scripts/murmur.ini ${pkgdir}/etc/murmur.ini
-    install -Dm644 ${srcdir}/murmur.dbus.conf ${pkgdir}/etc/dbus-1/system.d/murmur.conf
-    install -Dm644 README ${pkgdir}/usr/share/doc/murmur/README
-    install -Dm644 man/murmurd.1 ${pkgdir}/usr/share/man/man1/murmurd.1
-    install -Dm644 ${srcdir}/murmur.service ${pkgdir}/usr/lib/systemd/system/murmur.service
-    install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
-    install -Dm644 ${srcdir}/murmur.sysusers ${pkgdir}/usr/lib/sysusers.d/$pkgname.conf
+    install -dm755 -o 122 -g 122 "${pkgdir}"/var/db/murmur
+    install -Dm755 release/murmurd "${pkgdir}"/usr/bin/murmurd
+    install -Dm644 scripts/murmur.ini "${pkgdir}"/etc/murmur.ini
+    install -Dm644 "${srcdir}"/murmur.dbus.conf "${pkgdir}"/usr/share/dbus-1/system.d/murmur.conf
+    install -Dm644 README "${pkgdir}"/usr/share/doc/murmur/README
+    install -Dm644 man/murmurd.1 "${pkgdir}"/usr/share/man/man1/murmurd.1
+    install -Dm644 "${srcdir}"/murmur.service "${pkgdir}"/usr/lib/systemd/system/murmur.service
+    install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+    install -Dm644 "${srcdir}"/murmur.sysusers "${pkgdir}"/usr/lib/sysusers.d/murmur.conf
 
     if [[ ${_use_zeroc_ice} == "1" ]]; then
-        install -Dm644 src/murmur/Murmur.ice ${pkgdir}/usr/share/murmur/Murmur.ice
+        install -Dm644 src/murmur/Murmur.ice "${pkgdir}"/usr/share/murmur/Murmur.ice
     fi
 
     if [[ ${_use_grpc} == "1" ]]; then
-        install -Dm644 src/murmur/MurmurRPC.proto ${pkgdir}/usr/share/murmur/MurmurRPC.proto
+        install -Dm644 src/murmur/MurmurRPC.proto "${pkgdir}"/usr/share/murmur/MurmurRPC.proto
     fi
 }
