@@ -5,7 +5,7 @@
 
 pkgname=libtrash
 pkgver=3.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A shared, preloaded library that implements a trash can under Linux"
 arch=('i686' 'x86_64')
 url="http://pages.stern.nyu.edu/~marriaga/software/libtrash/"
@@ -14,7 +14,7 @@ depends=('glibc')
 makedepends=('python2')
 install=$pkgname.install
 source=(http://pages.stern.nyu.edu/~marriaga/software/libtrash/$pkgname-${pkgver}.tgz)
-sha256sums=('0732066f999943a9507495d9dcf48928cb77990432474805ff78b52ec9d9f4af')
+sha256sums=('baf2b83f1b1aa61358c40cb00213dcc400aea984e46120c278c965409eca65b1')
 
 build() {
   cd ${srcdir}/$pkgname-$pkgver
