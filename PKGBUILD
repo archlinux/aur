@@ -1,6 +1,6 @@
 # Maintainer: Kevin Gravier<kevin@mrkmg.com>
 pkgname=nativescript-sidekick
-pkgver=1.16.0.v2019.2.7.3
+pkgver=1.19.1.v.2019.8.1.2
 pkgrel=1
 pkgdesc="NativeScript Sidekick is a desktop GUI that enhances the power of the NativeScript CLI and simplifies the development of mobile applications. It is designed to be a companion that complements your code editor, source control, and any other tools you use."
 arch=('x86_64')
@@ -10,8 +10,8 @@ groups=('')
 depends=('desktop-file-utils' 'gconf' 'hicolor-icon-theme' 'libappindicator-gtk2' 'libnotify' 'libxtst' 'nss')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
-source_x86_64=("$pkgname-$pkgver.deb::https://sk-cdn.nativescript.cloud/fusion/1.16.0-v.2019.2.7.3/linux/NativeScriptSidekick-amd64.deb")
-sha512sums_x86_64=('52fea9858a80c98dabe74739b17cd6fc8fd26b492289fee104a07354f9d16d83ea2d34e5202a5b4b522bf406714187f29066f837a1e3334f94a9b6f48ad4f739')
+source_x86_64=("$pkgname-$pkgver.deb::https://sk-cdn.nativescript.cloud/fusion/1.19.1-v.2019.8.1.2/linux/NativeScriptSidekick__amd64.deb")
+sha512sums_x86_64=('44f0880b475efd84adec246dbf72c4f4a8ce2b623c63ad97c7734809649e37b335cd556722c3aaacdc278ac1b734361a38ac2b9d279afb65fe050df60eddecf8')
 
 package() {
 	tar xf data.tar.xz -C "${pkgdir}"
