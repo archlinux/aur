@@ -10,16 +10,12 @@ depends=('python3')
 makedepends=('git')
 provides=('sleepplan')
 conflicts=('sleepplan')
-source=("sleepplan::git+https://gitlab.com/csculley/sleepplan.git#branch=master")
+source=("sleepplan-git::git+https://gitlab.com/csculley/sleepplan.git#branch=master")
 md5sums=('SKIP')
 
 pkgver() {
-    mv sleepplan "$pkgname"
     cd "$pkgname"
-    ( set -o pipefail
-      git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-      printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-    )
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {

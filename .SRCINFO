@@ -9,7 +9,7 @@ pkgbase = sleepplan-git
 	depends = python3
 	provides = sleepplan
 	conflicts = sleepplan
-	source = sleepplan::git+https://gitlab.com/csculley/sleepplan.git#branch=master
+	source = sleepplan-git::git+https://gitlab.com/csculley/sleepplan.git#branch=master
 	md5sums = SKIP
 
 pkgname = sleepplan-git
