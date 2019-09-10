@@ -2,7 +2,7 @@
 
 pkgname=juno-theme-git
 _pkgname=Juno
-pkgver=r33.7ccc611
+pkgver=r36.4bf7447
 pkgrel=1
 pkgdesc="GTK themes inspired by epic vscode themes"
 arch=("any")
