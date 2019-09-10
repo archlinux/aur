@@ -1,7 +1,7 @@
 # Maintainer: Aidan Coward <aidan -dot- coward -at- gmail -dot- com>
 
 pkgname=xmage
-pkgver=1.4.37V4a
+pkgver=1.4.38V0
 pkgrel=0
 
 pkgdesc="Java-based program for playing Magic:The Gathering, including client and server"
@@ -14,7 +14,7 @@ license=('MIT')
 source=("http://xmage.de/files/xmage_${pkgver}.zip"
 	'https://raw.githubusercontent.com/magefree/mage/master/LICENSE.txt')
 
-sha256sums=("386f4febda37b76c29daa0ecceaff0dfe7f4faab71abfe98f5a8f45395e3b4fb" 
+sha256sums=("e35bdd0f4f2e7095933bc3a2d5609df809b66f0d3d7da0a3633f4c39543f7d5f" 
 	"SKIP")
 
 ###########################
@@ -65,8 +65,8 @@ if [[ "$CARCH" == 'x86_64' ]]; then
 fi
 
 	msg2 "increasing default memory limit of client and server"
-	sed -i 's|-Xmx512m|-Xmx1024m|g' mage-client/startClient-unix-lib.sh
-	sed -i 's|-Xmx512m|-Xmx1024m|g' mage-server/startServer-unix-lib.sh
+	sed -i 's|-Xmx512m|-Xmx2048m|g' mage-client/startClient-unix-lib.sh
+	sed -i 's|-Xmx512m|-Xmx2048m|g' mage-server/startServer-unix-lib.sh
 
 	msg2 "moving files..."
 	install -Dm755 mage-client/startClient-unix-lib.sh ${pkgdir}/usr/bin/mage-client
