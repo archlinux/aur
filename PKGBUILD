@@ -20,11 +20,6 @@ pkgver() {
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare(){
-  mkdir -p gopath/src/github.com/usefathom
-  ln -rTsf "$_gitname" gopath/src/github.com/usefathom/fathom
-}
-
 build(){
   cd ..
   cp -r "$srcdir" "$blddir"
