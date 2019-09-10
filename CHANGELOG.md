@@ -1,8 +1,56 @@
-<a name="unreleased"></a>
-## [Unreleased](https://gitlab.com/langurmonkey/gaiasky/tree/master)
-[Full changelog](https://gitlab.com/langurmonkey/gaiasky/compare/2.2.0...HEAD)
+<a name="2.2.1"></a>
+## [2.2.1](https://gitlab.com/langurmonkey/gaiasky/tree/2.2.0) (2019-09-10)
+[Full changelog](https://gitlab.com/langurmonkey/gaiasky/compare/2.2.0...2.2.1)
 
+### Bug Fixes
 
+- moon coordinates typo causing high-frequency sinusoidal drift 
+- greedy texture initialization works again 
+- init vr models after vr context creation 
+- vr version can't download the data before connecting to the HMD 
+- parameter name in build script 
+- default sprite batch causes core profile error 
+- particle group length() with very distant positions 
+- windows program group for VR 
+- most problems with the VR version fixed by scaling the background models correctly 
+- wee missing bits in z-buffer shaders 
+- wee fixes imported from the vr branch 
+- roll back to GL 3.2 if 4.x not supported 
+- depth computation done per fragment 
+- scripts Sol -> Sun 
+- controller mappings format error in loading 
+- cmd windows launch script actually works 
+- report scene graph loading errors ([#293](https://gitlab.com/langurmonkey/gaiasky/issues/293)) 
+- deb dependency, issue [#291](https://gitlab.com/langurmonkey/gaiasky/issues/291) 
+### Build System
+
+- remove unused deps, update version number 
+- add VR launcher 
+- info on the new VR stuff 
+### Code Refactoring
+
+- cleanup glsl log z-buffer library 
+- improve shader performance and readability (from vr) 
+### Documentation
+
+- fix vr flag in readme 
+- some more on the VR version 
+- update vr info 
+- update docs reference 
+- requirements table in readme 
+- update readme reqs and supported hw 
+### Features
+
+- update logos and x2 UI scaling factor 
+- add lazy texture and mesh initialisation to config file 
+- add checkboxes for all crosshairs/markers 
+- change crosshair appearance so that they stack well 
+- add focus, closest and home objects to top bar 
+- better particle group renderer with scaling particles and color-distance mapping 
+- add closest object to top info bar 
+- add top ui element with current time 
+- unify VR with desktop version 
+- migrate completely to adaptive-scale logarithmic z-buffer 
 <a name="2.2.0"></a>
 ## [2.2.0](https://gitlab.com/langurmonkey/gaiasky/tree/2.1.7-vr) (2019-08-01)
 [Full changelog](https://gitlab.com/langurmonkey/gaiasky/compare/2.1.7-vr...2.2.0)
@@ -98,7 +146,6 @@
 - automatic tone mapping based on Reinhard's method 
 - move all post-processing shaders to version 330 
 - new milky way model 
-- new milky way model 
 - migrate search window to generic dialog 
 - native support for gzipped obj models (.obj.gz) 
 - implement integer indices 
@@ -120,17 +167,21 @@
 - wait for tasks to finish before shutting down 
 - about window layout in non-hidpi mode 
 - 'data files not found' problem 
+
 ### Build System
 
 - remove run command echo, rearrange version logging 
 - fix installer-img not found 
+
 ### Code Refactoring
 
 - topmost render method rewritten to avoid conditionals 
+
 ### Documentation
 
 - fix build system title case 
 - update changelog 
+
 ### Features
 
 - data download dialog details 
