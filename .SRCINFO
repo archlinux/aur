@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-atk
 	pkgdesc = Interface definitions of accessibility infrastructure (mingw-w64)
-	pkgver = 2.34.0
+	pkgver = 2.34.1
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/atk
 	arch = any
@@ -8,14 +8,13 @@ pkgbase = mingw-w64-atk
 	makedepends = mingw-w64-gcc
 	makedepends = mingw-w64-meson
 	makedepends = python
-	makedepends = git
 	depends = mingw-w64-crt
 	depends = mingw-w64-glib2
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = git+https://gitlab.gnome.org/GNOME/atk.git#commit=ae00132c6ef58d779e9389a10badb2f43ee35606
-	sha256sums = SKIP
+	source = http://ftp.gnome.org/pub/gnome/sources/atk/2.34/atk-2.34.1.tar.xz
+	sha256sums = d4f0e3b3d21265fcf2bc371e117da51c42ede1a71f6db1c834e6976bb20997cb
 
 pkgname = mingw-w64-atk
 
