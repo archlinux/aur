@@ -13,7 +13,7 @@ makedepends=("git" "go-pie" "npm")
 source=("git+https://github.com/usefathom/fathom.git")
 md5sums=("SKIP")
 _gitname="fathom"
-blddir=${pwd}/"build"
+blddir="$(pwd)"/"build"
 
 pkgver() {
   cd "$_gitname"
