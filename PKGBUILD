@@ -1,16 +1,16 @@
 # Maintainer      :  Kr1ss $(echo \<kr1ss+x-yandex+com\>|sed s/\+/./g\;s/\-/@/)
 # Upstream author :  Luke Smith <https://git{hub,lab}.com/lukesmithxyz/>
 
-pkgname='mutt-wizard-git'
+pkgname=mutt-wizard-git
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
-  printf "r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf 'r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-pkgver=r601.g0a097fe
-pkgrel=1
+pkgver=r673.g3696862
+pkgrel=2
 
 pkgdesc='A simple interface to auto-configure neomutt and isync with safe passwords'
-arch=('any')
+arch=('x86_64')
 url='https://github.com/lukesmithxyz/mutt-wizard'
 license=('GPL3')
 
@@ -33,7 +33,7 @@ optdepends=('imagemagick: view images inside of the neomutt TUI'
 options=('zipman')
 
 install="${pkgname%-git}.install"
-changelog='CHANGELOG.md'
+changelog=CHANGELOG.md
 source=("git+$url")
 sha256sums=('SKIP')
 
