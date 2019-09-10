@@ -43,7 +43,7 @@ package() {
   install -m755 google-chrome-$_channel.sh "$pkgdir"/usr/bin/google-chrome-$_channel
 
   # Icons
-  for i in 16x16 22x22 24x24 32x32 48x48 64x64 128x128 256x256; do
+  for i in 16x16 24x24 32x32 48x48 64x64 128x128 256x256; do
     install -Dm644 "$pkgdir"/opt/google/chrome/product_logo_${i/x*}.png \
                    "$pkgdir"/usr/share/icons/hicolor/$i/apps/google-chrome.png
   done
