@@ -1,22 +1,15 @@
 # Maintainer: Mikael Eriksson <mikael_eriksson@miffe.org>
 
 pkgname=libbinio
-pkgver=1.4
-pkgrel=3
+pkgver=1.5
+pkgrel=1
 pkgdesc="Binary I/O C++ class library"
-url="http://libbinio.sourceforge.net"
+url="https://github.com/adplug/libbinio"
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('gcc-libs')
-source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.bz2 eof.diff)
-md5sums=('517ded8c7ce9b3de0f84b1db74a2ebda'
-         '457b5d73e4934adfecf5b75b5f16a227')
-
-prepare() {
-  cd "$srcdir/libbinio-$pkgver/src"
-
-  patch -p0 -i "$srcdir/eof.diff"
-}
+source=(https://github.com/adplug/libbinio/releases/download/libbinio-$pkgver/libbinio-$pkgver.tar.bz2)
+md5sums=('261046e16f74d1cdbf9aa6c78fa264e4')
 
 build() {
   cd "$srcdir/libbinio-$pkgver"
