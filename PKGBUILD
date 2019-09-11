@@ -3,7 +3,7 @@
 
 pkgname='glint'
 pkgdesc='A tool for creating git commits in the commitlint style'
-pkgver='0.1.3'
+pkgver='0.1.6'
 pkgrel='1'
 arch=('x86_64')
 url='https://github.com/brigand/glint'
@@ -12,7 +12,7 @@ depends=('gcc-libs')
 makedepends=('rust')
 checkdepends=('rust')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/brigand/glint/archive/${pkgver}.tar.gz")
-sha256sums=('3b2d390f5d1019fd3b6f955b6865ebcd40087ec975e7ecc1675a4cc81d970d13')
+sha256sums=('59c9a3abcc7bdfc16a28d07a919399cfda768cbcbde740ab2dee34db50640397')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -27,5 +27,5 @@ check() {
 package() {
   cd "$pkgname-$pkgver"
   install -Dm755 "target/release/glint" "$pkgdir/usr/bin/$pkgname"
-  #install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
