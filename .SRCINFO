@@ -1,11 +1,11 @@
 pkgbase = wps-office-mui
 	pkgdesc = WPS Office MUI packages
-	pkgver = 11.1.0.8722
+	pkgver = 11.1.0.8865
 	pkgrel = 1
 	url = http://wps-community.org/
 	arch = any
 	license = custom
-	depends = wps-office=11.1.0.8722
+	depends = wps-office=11.1.0.8865
 	source = https://github.com/timxx/wps-office-mui/raw/master/mui/de_DE.7z
 	source = https://github.com/timxx/wps-office-mui/raw/master/mui/en_GB.7z
 	source = https://github.com/timxx/wps-office-mui/raw/master/mui/es_ES.7z
@@ -20,20 +20,20 @@ pkgbase = wps-office-mui
 	source = https://github.com/timxx/wps-office-mui/raw/master/mui/th_TH.7z
 	source = https://github.com/timxx/wps-office-mui/raw/master/mui/zh_HK.7z
 	source = https://github.com/timxx/wps-office-mui/raw/master/mui/zh_TW.7z
-	sha256sums = 03227790054074d9382e2e29ae587502e774e10a0dfbf4f4821311cf8b3a8299
-	sha256sums = 339791f16e10b9e5488c5a85c55c35da0d8818777c55ccee6ded9986e49a48ef
-	sha256sums = 6999cb916912701e9c4381f52fb7a7b678c391eccef93cb922a9b4ca95598f8e
-	sha256sums = ad6ba17d4cd2cd01cfce736d282680d8c422039a624f0121632f901980d176db
-	sha256sums = 097c0bcfd16e1263d1bc4b743a906ca923d581f74acffb286d6283ff1cdec862
-	sha256sums = 09c4c01ae29649f7c0fd0ed4d207e91c5121a35b21929e61f448f65ad50c3b1d
-	sha256sums = e61b44da57c839516d3b43a68c02eeadd7c9c4e008b4b18ba2fff4be82708e3d
-	sha256sums = ddd13c78fd58231f1c700f818a5d0b00f73269569d4894c9b70a1183e7cdf274
-	sha256sums = db6d76bfd8e7d1d166f58fcd9aec7db9473cc9e065c5a1b994afe5dcd0dc4030
-	sha256sums = fef32512cc13e9df7bdd8d5cd7af4c3297647b408032ba8f388100f7184d9efc
-	sha256sums = 75a0174d162deeae7b77263ff962d0059bec4289bdc28e97c944808e47460683
-	sha256sums = 03dc08502d3ad9f36f0936350d8476641eda5325578d708c142f253a1eeb8d9e
-	sha256sums = 6ff7fbf89f09b670781a46f54f5f784fe1582f1fc61f91c0140633324c40a039
-	sha256sums = 22e3ef89e579ac7f79dc65d92c969ac3c2a27f5d3b134e5dc7449a57171150f0
+	sha256sums = 66c45b3aa6600ad8199429a5fe0fa93ded100f768bb1c8663d7fe5825b02d374
+	sha256sums = 3410135379a3f2e22133a0bbfb884befbd06897674bb2abfabf27b6cac176d89
+	sha256sums = 6f2471736218cee29ac739a0261ac85d235cf4011fc1cfaa89d6e9bf8e427099
+	sha256sums = ffd9a22836bf60a897eb2cd2f4e7596eda72a7c8e8bf2df4a33d5a0906d561b7
+	sha256sums = 4864ec83d85d493331679434d510eb543a5dde4da056b5f59f07e935314de296
+	sha256sums = 60b195253a020dfcdd0112825d1e780ae3b27f85be702c41dca0029518fa3060
+	sha256sums = 7cbd8cac907e2d9cfb98a3eb8c0f2c80dbc3c19508e1c1ed9b9de258ab404620
+	sha256sums = 4fd5acdea5453a616a8a4fbd4f939fedcce231abafb4adb1c822a31112f37de9
+	sha256sums = 4cfddc38b6ac5029c1da81835b6235ed6f5cb6cd9c2c151390a44480cdf1255f
+	sha256sums = f56dcd8db400eb063b6e2e1ad96d5839355a2a30c8d3053218b020e4699c3867
+	sha256sums = 8794867e2498cfb07a67bcfdbd708597c3e48435c318bb10906621d9327f7002
+	sha256sums = b5401e9cf3bd0c9395e67a056d9a27c84f8eca6a28cff44a31b48fb271caa431
+	sha256sums = cc8f08dc6f0414d5c228ef2b3a901aad1c6269ce37d7d664978ff934ed4a11cb
+	sha256sums = 9d2a7148c8dd9e3d63e135156643b70ac75ea35937c38339093130674ab9c295
 
 pkgname = wps-office-mui-de-de
 
