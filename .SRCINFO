@@ -14,7 +14,7 @@ pkgbase = ipmiview
 	backup = timeout.properties
 	source = https://www.supermicro.com/wftp/utility/IPMIView/Linux/IPMIView_2.16.0_build.190528_bundleJRE_Linux_x64.tar.gz
 	source = ipmiview.desktop
-	sha512sums = 6cc56f69c0baf68dd00447517f9d35bb81c47ae5bb654c29884b84aafe26078755ae6c192b68fcbd28619d39f5a472e84c26dfb6f3fbe6baaa8bd1a554238c7e
+	sha512sums = 0b53143a599d12fbd9d29bc1677691f09d1363df2ddda7ff817c3a403ebc49767097cc6dab5062b269fc932e8b8a5b1a0061a25f4601e7244a1adb5f85416eea
 	sha512sums = 683922d5ce90116ca04fbf1a244da87296beaf079ecde94d799b2d303e21dfda4e771f5a4b724e7dd64143feaef49d2f11fd2eaf380ebdcf02e9db82c9975497
 
 pkgname = ipmiview
