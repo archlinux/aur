@@ -1,0 +1,19 @@
+pkgbase = agetty-s6
+	pkgdesc = s6 service scripts for agetty
+	pkgver = 20190802
+	pkgrel = 1
+	url = https://github.com/artix-linux
+	install = agetty.install
+	arch = any
+	depends = s6-rc
+	source = agetty.conf
+	source = agetty.finish
+	source = agetty.run
+	source = agetty.type
+	sha256sums = 4260c574b5b94d1b6e68c2aeaf188f80fa64027b35fc2eddd634501f13e372e1
+	sha256sums = d3f8534ffd8c01e27e5d91a807c3017e3d94ae0b05d56a53b0741739943e7983
+	sha256sums = 00db8e4814177b6d83b91d9d370cfc9ec9ddfbfc472c2801d598f0e963160c1b
+	sha256sums = d0001a150b83f68f09004c5059045cb76a3f064eed4d42ce072bc3722c118006
+
+pkgname = agetty-s6
+

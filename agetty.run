@@ -1,0 +1,16 @@
+#!/bin/sh
+
+tty=${PWD##*-}
+
+[ -r conf ] && . ./conf
+
+if [ -x /sbin/getty -o -x /bin/getty ]; then
+	# busybox
+	GETTY=getty
+elif [ -x /sbin/agetty -o -x /bin/agetty ]; then
+	# util-linux
+	GETTY=agetty
+fi
+
+exec ${GETTY} ${GETTY_ARGS} \
+	"${tty}" "${BAUD_RATE}"
