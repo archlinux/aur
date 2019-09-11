@@ -1,0 +1,18 @@
+pkgbase = elogind-s6
+	pkgdesc = s6 service scripts for elogind
+	pkgver = 20190802
+	pkgrel = 1
+	url = https://github.com/artix-linux
+	install = elogind.install
+	arch = any
+	depends = elogind
+	depends = s6-rc
+	source = elogind.dependencies
+	source = elogind.run
+	source = elogind.type
+	sha256sums = 9291726828590f8d9d158572c381e2cefc24adf21055036cba07585acc1abb62
+	sha256sums = c7f062f5f126ec5f9cc1b3117a2b981c8d0ea6f8f284690dc764f4749359ee28
+	sha256sums = d0001a150b83f68f09004c5059045cb76a3f064eed4d42ce072bc3722c118006
+
+pkgname = elogind-s6
+
