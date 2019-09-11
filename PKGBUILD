@@ -1,50 +1,45 @@
-# Maintainer: Holzhaus <jan.holthuis@ruhr-uni-bochum.de>
+# Maintainer: robertfoster
 
-pkgname='pyload-nightly'
-pkgver=0.4.9.9dev
-pkgrel=1
-pkgdesc="Downloadtool for One-Click-Hoster written in python. Nightly build of pyload 0.5 public beta."
-url="http://beta.pyload.org/index.php/5-pyload-beta"
+pkgname='pyload-git'
+pkgver=v0.4.9.r4782.gd686d625b
+pkgrel=2
+pkgdesc="Downloadtool for One-Click-Hoster written in python. Latest devel branch"
+url="https://github.com/pyload/pyload"
 license=('GPL')
 arch=('any')
 provides=('pyload')
 conflicts=('pyload' 'pyload-hg')
 backup=('var/lib/pyload/pyload.conf')
-depends=('python2>=2.5.0' 'python2<2.8.0'
-         'python2-pycurl'
-         'python2-jinja'
-         'python2-beaker')
-optdepends=('python2-crypto: RSDF/CCF/DLC support'
-            'tesseract: Automatic captcha recognition for a small amount of plugins'
-            'python2-pillow: Automatic captcha recognition for a small amount of plugins'
-	    'js: Used for several hoster, ClickNLoad'
-            'python2-feedparser: Feedparser support'
-            'python2-beautifulsoup4: BeautifulSoup support'
-            'python2-pyopenssl: For SSL connection'
-            'python2-flup: for additional webservers')
-source=('http://nightly.pyload.org/job/Nightly/lastSuccessfulBuild/artifact/dist/pyload-0.4.9.9-dev.tar.gz'
-	'pyload.service'
-	'pyload.conf')
-md5sums=('SKIP'
-         'd34a58f919ecf5e53da1c8986e62a1fe'
-	 'e8aa7a9b1ef8ba58a3fdaaf3a43e98a3')
-install='pyload-nightly.install'
+depends=('python' 'python-cheroot' 'python-cryptography' 'python-flask' 'python-flask-babel' 'python-filetype' 'python-flask-themes2' 'python-pycurl' 'python-requests-html' 'python-semver')
+makedepends=('git' 'python-jinja' 'python-setuptools')
+#install='pyload-git.install'
 
-package() {
-  cd $srcdir
-  tar xzvf pyload-0.4.9.9-dev.tar.gz
-  cd pyload-0.4.9.9-dev
-  sed -i 's_#!/usr/bin/env python$_#!/usr/bin/env python2_' pyload*.py
-  install -d ${pkgdir}/opt/pyload
+source=("$pkgname::git+https://github.com/pyload/pyload.git"
+'pyload.service')
 
-  cp -r * ${pkgdir}/opt/pyload
-
-  install -d ${pkgdir}/usr/bin
-  ln -s /opt/pyload/pyload.py ${pkgdir}/usr/bin/pyload
-  ln -s /opt/pyload/pyload-cli.py ${pkgdir}/usr/bin/pyload-cli
-
-  # Create pyload service
-  install -Dm 644 ${srcdir}/pyload.service ${pkgdir}/usr/lib/systemd/system/pyload.service
-  install -Dm 644 ${srcdir}/pyload.conf ${pkgdir}/var/lib/pyload/pyload.conf
+pkgver() {
+	cd $srcdir/$pkgname
+	git describe --long --tags| sed -r 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
+build() {
+	cd $srcdir/$pkgname
+	python setup.py build
+	python setup.py build_locale
+}
+
+package() {
+	cd ${srcdir}/$pkgname
+	python setup.py install --root=$pkgdir --install-data locale
+
+	# Temporary fix for some not found resources
+	cp -r src/pyload/core/config $pkgdir/usr/lib/python3.7/site-packages/pyload/core
+	cp -r src/pyload/core/network/xdcc $pkgdir/usr/lib/python3.7/site-packages/pyload/core/network
+	cp -r src/pyload/locale $pkgdir/usr/lib/python3.7/site-packages/pyload/
+
+	# Create PyLoad service
+	install -D -m 644 ${srcdir}/pyload.service ${pkgdir}/usr/lib/systemd/system/pyload.service
+}
+
+md5sums=('SKIP'
+'75069bddcec3ee630d2abea02ffef0b4')

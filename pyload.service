@@ -1,13 +1,9 @@
 [Unit]
-Description=pyLoad Core
+Description=pyLoad Daemon
 After=network.target
 
 [Service]
-Type=forking
-ExecStart=/usr/bin/pyload --daemon --configdir=/var/lib/pyload
-Restart=on-abort
-KillSignal=SIGQUIT
-PIDFile=/var/lib/pyload/pyload.pid
+ExecStart=/usr/bin/pyload --daemon
 User=pyload
 Group=pyload
 
