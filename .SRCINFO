@@ -1,20 +1,20 @@
 pkgbase = drjava
 	pkgdesc = A lightweight development environment for writing Java programs
-	pkgver = 20160913
+	pkgver = 20190813
 	pkgrel = 1
 	url = http://www.drjava.org/
 	arch = any
 	license = BSD
 	depends = bash
 	depends = java-environment
-	source = http://downloads.sourceforge.net/sourceforge/drjava/drjava-beta-20160913-225446.jar
+	source = https://sourceforge.net/projects/drjava/files/1.%20DrJava%20Stable%20Releases/drjava-beta-20190813-220051/drjava-beta-20190813-220051.jar
 	source = drjava.sh
 	source = drjava.desktop
 	source = LICENSE
-	md5sums = db321486cddbeb7470d62341084e4ae9
-	md5sums = a57baea903b23dc546d8ad0ec016ec93
-	md5sums = df1e9a8e696b70ad57b1adc33a1ea19a
-	md5sums = 2108800ef4928c954af10f1c44bcddfd
+	sha1sums = 8490e4a9ddaee547abd0f8bc35574d98ad9dcaec
+	sha1sums = 1a1ce3f158a582af1db06b8b011825bc853573c9
+	sha1sums = 14a19a5bda1abdaff3764e66ce0880326714877f
+	sha1sums = eb6086dad252c561cbc1faa59cb2b78cfa586844
 
 pkgname = drjava
 
