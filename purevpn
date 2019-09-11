@@ -46,7 +46,8 @@ updlist() {
     sed 's/^[\ \t]*//g' | tr -d '\n' | \
     sed 's/<\/TR[^>]*>/\n/Ig;s/<\/\?\(TABLE\|TR\)[^>]*>//Ig' | \
     sed 's/^<T[DH][^>]*>\|<\/\?T[DH][^>]*>$//Ig;s/<\/T[DH][^>]*><T[DH][^>]*>/\t/Ig' | \
-    sed 's/<[^<>]*>//g;s/\s*\t\s*/\t/g;1d' > /etc/purevpn/vpn-list.tsv
+    sed 's/<[^<>]*>//g;s/\s*\t\s*/\t/g;1d' | \
+    sed -E "s/(pointtoserver\.com)(\S+\-ovpn\-udp)/\1\t\2/g" > /etc/purevpn/vpn-list.tsv
   printf "==> New server list contains $(wc -l < /etc/purevpn/vpn-list.tsv) lines.\n"
 }
 
