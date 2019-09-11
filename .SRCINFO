@@ -1,7 +1,7 @@
 pkgbase = wps-office
 	pkgdesc = Kingsoft Office (WPS Office) is an office productivity suite
-	pkgver = 11.1.0.8722
-	pkgrel = 5
+	pkgver = 11.1.0.8865
+	pkgrel = 1
 	url = http://wps-community.org/
 	install = wps-office.install
 	arch = x86_64
@@ -27,8 +27,8 @@ pkgbase = wps-office
 	optdepends = wps-office-fonts: FZ TTF fonts provided by wps community
 	conflicts = kingsoft-office
 	options = !emptydirs
-	source = http://kdl.cc.ksosoft.com/wps-community/download/8722/wps-office_11.1.0.8722_amd64.deb
-	sha1sums = 7a420957166d2bf6430a67b186f16361dd7b5c7b
+	source = http://kdl.cc.ksosoft.com/wps-community/download/8865/wps-office_11.1.0.8865_amd64.deb
+	sha1sums = ee5e2ea5f7480bb7d6e116dd7690990a861c8a37
 
 pkgname = wps-office
 
