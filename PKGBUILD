@@ -4,8 +4,8 @@
 # Contributor: phi-mah
 
 pkgname=toggldesktop
-pkgver=7.4.510
-pkgrel=2
+pkgver=7.4.528
+pkgrel=1
 pkgdesc="Toggl time tracking software"
 arch=('x86_64')
 url="https://github.com/toggl/toggldesktop"
@@ -27,7 +27,7 @@ source=(
 )
 
 sha512sums=(
-  '3e61c7adcf3f62a063abc8d371b0b05a71040d84e348a380ba6e647bb740813872400deb877988b9c9176e2cb27169d64d9dd1c26d01970917a87cd3ad23ed5c'
+  '46d32861339e832b02c7a3edee8e4dfae0e9f0c685414c559c5c0df1ff82aabc05df528efe31b70a1eeb8fcd14f8e6a6669b05d4eac6534c4f6024906bd39030'
   '05813df185163e1361d99cf24291bd44bdfefeee050b56f2923fb909c2c57d532e0a459cdaea96504ed10d27004fe3ee9f3c34ec35bcc9f9f2e064cccd8cfe77'
 )
 
