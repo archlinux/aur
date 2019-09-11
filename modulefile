@@ -19,12 +19,12 @@ append-path  CPLUS_INCLUDE_PATH $MODULE_ROOT/include
 module-whatis "$MODULE_TEXT version $VERSION"
 
 proc ModulesHelp {} {
-    global MODULE_TEXT
-    puts stderr "This module sets up the environment for $MODULE_TEXT"
-    puts stderr "by adapting the following environment variables:"
-    puts stderr "PATH"
-    puts stderr "LIBRARY_PATH"
-    puts stderr "LD_LIBRARY_PATH"
-    puts stderr "C_INCLUDE_PATH"
-    puts stderr "CPLUS_INCLUDE_PATH"
+	global MODULE_TEXT
+	puts stderr "This module sets up the environment for $MODULE_TEXT"
+	puts stderr "by adapting the following environment variables:"
+	puts stderr "PATH"
+	puts stderr "LIBRARY_PATH"
+	puts stderr "LD_LIBRARY_PATH"
+	puts stderr "C_INCLUDE_PATH"
+	puts stderr "CPLUS_INCLUDE_PATH"
 }
