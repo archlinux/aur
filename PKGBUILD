@@ -3,7 +3,7 @@
 pkgname='pyload-git'
 pkgver=v0.4.9.r4782.gd686d625b
 pkgrel=2
-pkgdesc="Downloadtool for One-Click-Hoster written in python. Latest stable branch"
+pkgdesc="Downloadtool for One-Click-Hoster written in python. Latest devel branch"
 url="https://github.com/pyload/pyload"
 license=('GPL')
 arch=('any')
