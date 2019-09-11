@@ -1,9 +1,9 @@
-# Maintainer: Andrew Sun <adsun701@gmail.com>
+# Maintainer: Andrew Sun <adsun701 at gmail dot com>
 # Contributor: Pedro Silva <psilva+git at pedrosilva dot pt>
 # Contributor: Juri Grabowski <archlinux-aur at juri-grabowski dot de>
 
 pkgname=blogc
-pkgver=0.17.0
+pkgver=0.18.0
 pkgrel=1
 pkgdesc="A blog compiler"
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('BSD')
 depends=('glibc')
 options=('!emptydirs')
 source=("https://github.com/blogc/blogc/releases/download/v${pkgver}/blogc-${pkgver}.tar.gz")
-sha256sums=('e985ba0a5504a8011c3af9a4d8ee845d42f10872a39ead2d653372c64902ef79')
+sha256sums=('abd2a491e26d913b3c42b1f037ded173119a570b3458a75b68f6b57ccabec461')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -24,7 +24,8 @@ build() {
   ./configure \
     --prefix=/usr \
     --enable-git-receiver \
-    --enable-runserver
+    --enable-runserver \
+    --enable-make
   make
 }
 
