@@ -2,8 +2,8 @@
 # Contributor: Shalygin Konstantin <k0ste@k0ste.ru>
 
 pkgname='xtables-addons'
-pkgver='3.3'
-pkgrel='2'
+pkgver='3.5'
+pkgrel='1'
 pkgdesc='Xtables-addons is a set of additional extensions for the Xtables packet filter that is present in the Linux kernel'
 arch=('i686' 'x86_64')
 license=('GPL2')
@@ -12,10 +12,8 @@ depends=('iptables' 'glibc' 'linux')
 makedepends=('linux-api-headers' 'linux-headers' 'libtool' 'gcc' 'pkg-config')
 conflicts=('xtables-addons-dkms')
 replaces=('xtables-addons-dkms')
-source=("https://sourceforge.net/projects/${pkgname}/files/Xtables-addons//${pkgname}-${pkgver}.tar.xz"
-	"0002-fix-deprecated-flags-field.patch")
-sha256sums=('efa62c7df6cd3b82d7195105bf6fe177b605f91f3522e4114d2f4e0ad54320d6'
-            '615c953786f5441c06d099dfe477aeed8a87e70334cee17369850cfdc8c3f3e3')
+source=("https://sourceforge.net/projects/${pkgname}/files/Xtables-addons//${pkgname}-${pkgver}.tar.xz")
+sha256sums=('189ff57a0b8960969bd99141a6c79c345efa67e4461f450e2f162c9bd3d17da6')
 # define 'lts' for linux-lts package
 _linux_custom="ARCH"
 # define '-lts' for linux-lts package
@@ -24,7 +22,6 @@ _kernver="`pacman -Ql linux${_linux_localversion} | awk '/(\/modules\/)([0-9.-])
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  patch -p1 -i "${srcdir}/0002-fix-deprecated-flags-field.patch"
 
   ./autogen.sh
   ./configure \
