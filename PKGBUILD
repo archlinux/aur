@@ -2,7 +2,7 @@
 
 pkgname=s6-linux-init
 pkgver=1.0.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc='A tool to automate the creation of suitable stage 1 init binaries for s6-based Linux systems. For Artix Linux.'
 arch=('x86_64')
 url='https://skarnet.org/software/s6-linux-init/'

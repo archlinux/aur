@@ -1,6 +1,7 @@
 post_install() {
 	rm -rf /etc/s6-linux-init/current
 	mkdir -p /etc/s6-linux-init
+	mkdir -p /etc/s6-rc
 	mv /usr/bin/init /tmp
 	mv /usr/bin/halt /tmp
 	mv /usr/bin/poweroff /tmp
