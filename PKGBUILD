@@ -1,5 +1,5 @@
 pkgname=smeh
-pkgver=2.1
+pkgver=2.2
 pkgrel=3.2
 pkgdesc="генератор смеха на питоне"
 arch=('any')

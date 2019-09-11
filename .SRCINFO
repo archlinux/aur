@@ -1,6 +1,6 @@
 pkgbase = smeh
 	pkgdesc = little laugh generator in python
-	pkgver = 2
+	pkgver = 2.2
 	pkgrel = 1
 	url = https://github.com/anar66/python-test/tree/master/tests
 	arch = any
