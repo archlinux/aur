@@ -1,4 +1,4 @@
-pkgbase = dgl
+pkgbase = dgl-git
 	pkgdesc = Dmenu Game Launcher - use dmenu to launch your games
 	pkgver = 0.8.9
 	pkgrel = 1
@@ -7,8 +7,8 @@ pkgbase = dgl
 	license = MIT
 	depends = python
 	depends = dmenu
-	source = dgl::git+https://github.com/Jorengarenar/dgl.git
+	source = dgl-git::git+https://github.com/Jorengarenar/dgl.git
 	sha512sums = SKIP
 
-pkgname = dgl
+pkgname = dgl-git
 

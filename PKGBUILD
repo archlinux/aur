@@ -1,6 +1,6 @@
 # Maintainer: Jorengarenar
 
-pkgname=dgl
+pkgname=dgl-git
 pkgver=0.8.9
 pkgrel=1
 pkgdesc='Dmenu Game Launcher - use dmenu to launch your games'
