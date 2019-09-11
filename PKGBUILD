@@ -2,7 +2,7 @@
 # Contributor: Konstantin Shalygin <k0ste@k0ste.ru>
 
 pkgname='opendrop'
-pkgver='0.10.1'
+pkgver='0.10.2'
 pkgrel='1'
 pkgdesc='An open Apple AirDrop implementation'
 arch=('any')
@@ -13,7 +13,7 @@ depends=('python-requests' 'python-fleep' 'python-ifaddr'
 	 'python-ctypescrypto' 'python-libarchive-c')
 makedepends=('python' 'python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/o/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('7738b1bc381f7026a4db06d5d15e0faddd706d556c22f299cd5b9d9dbd294553')
+sha256sums=('02768ba9f3daf72a81273545215b1997e9e6975af985a3b1a67e223b2c0bd61f')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
