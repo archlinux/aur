@@ -14,7 +14,7 @@ source=("${pkgname}::git+https://github.com/Jorengarenar/dgl.git")
 sha512sums=(SKIP)
 
 package() {
-    cd "$srcdir/$_pkgname"
+    cd "$srcdir/$pkgname"
     mkdir -p "${pkgdir}/usr/bin"
     install -Dm755 $_pkgname "${pkgdir}/usr/bin"
 }
