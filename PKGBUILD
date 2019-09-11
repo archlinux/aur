@@ -2,10 +2,10 @@
 # contact me via AUR or archlinux forums
 pkgname=mavlink-router-git # '-bzr', '-git', '-hg' or '-svn'
 pkgver=v1.r33.61ce186
-pkgrel=1
-pkgdesc=""
+pkgrel=2
+pkgdesc="Route mavlink packets between endpoints (serial, tcp, udp, etc)"
 arch=('x86_64')
-url=""
+url="https://github.com/intel/mavlink-router"
 license=('Apache 2.0')
 groups=()
 depends=('python-pymavlink')

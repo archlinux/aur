@@ -1,6 +1,8 @@
 pkgbase = mavlink-router-git
+	pkgdesc = Route mavlink packets between endpoints (serial, tcp, udp, etc)
 	pkgver = v1.r33.61ce186
-	pkgrel = 1
+	pkgrel = 2
+	url = https://github.com/intel/mavlink-router
 	arch = x86_64
 	license = Apache 2.0
 	makedepends = git
