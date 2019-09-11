@@ -22,7 +22,7 @@ package() {
 	# modulefile
 	cp modulefile ${pkgdir}/opt/aocc
 	mkdir -p ${pkgdir}/etc/modules/modulefiles/
-	ln -s ${pkgdir}/opt/aocc/modulefile ${pkgdir}/etc/modules/modulefiles/aocc
+	ln -s /opt/aocc/modulefile ${pkgdir}/etc/modules/modulefiles/aocc
 
 	# Not needed
 	rm ${pkgdir}/opt/aocc/install.sh
