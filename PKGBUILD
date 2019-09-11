@@ -7,7 +7,7 @@ pkgdesc='Simple script, which provides better than the build-in backup options f
 arch=('any')
 url='https://joren.ga'
 license=('MIT')
-source=("${pkgname}::git+https://github.com/Jorengarenar/quiterss-backup.git")
+source=("${pkgname}::https://github.com/Jorengarenar/${pkgname}/archive/${pkgver}.tar.gz")
 sha512sums=(SKIP)
 
 package() {
