@@ -1,0 +1,14 @@
+[Unit]
+Description=Resumable File Upload Server
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+User=http
+ExecStart=/usr/bin/tusd -dir /data/tus/uploads
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,10 @@
+post_install() {
+  mkdir -p /data/tus/uploads
+  chown http:http -r /data/tus
+  systemctl enable tusd.service
+  systemctl restart tusd.service
+}
+
+post_upgrade() {
+  post_install $1
+}
