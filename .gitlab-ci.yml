@@ -1,0 +1,85 @@
+variables:
+  # AUR_SSH_KEY     (group)    cat key | base64 | tr -d '\n'
+  # DEPLOY_SSH_KEY  (project)  cat key | base64 | tr -d '\n'
+  GIT_NAME: "GitlabCI"
+  GIT_EMAIL: "mail+ci@hashworks.net"
+
+# Triggered by new entries in https://github.com/openzim/libzim/releases.atom
+# * Parse new version from link variable
+# * Install curl for download, git and openssh for commit
+# * Replace pkgver, pkgrel and sha256sums in PKGBUILD
+# * Setup ssh_agent and git
+# * Push new version to origin, triggering other CI stages
+newVersion:
+  image: alpine:latest
+  script:
+    - test -n "${DEPLOY_SSH_KEY}"
+    - test -n "${link}"
+    - new_pkgver="$(echo "${link}" | rev | cut -d/ -f1 | rev)"
+    - test -n "${new_pkgver}"
+    - 'echo "New version: ${new_pkgver}"'
+    - apk add curl git openssh
+    - curl --fail -L "https://github.com/openzim/libzim/archive/${new_pkgver}.tar.gz" --output /tmp/${new_pkgver}.tar.gz
+    - tar tf /tmp/${new_pkgver}.tar.gz > /dev/null
+    - new_sha256sum=$(sha256sum -z /tmp/${new_pkgver}.tar.gz | cut -d\  -f1)
+    - test -n "${new_sha256sum}"
+    - echo "New sha256sum ${new_sha256sum}"
+    - sed -i "s/pkgver=.*/pkgver=${new_pkgver}/" PKGBUILD
+    - sed -i 's/pkgrel=.*/pkgrel=1/' PKGBUILD
+    - sed -i "s/sha256sums=(.*)/sha256sums=(${new_sha256sum})/" PKGBUILD
+    - git diff
+    - mkdir -p ~/.ssh
+    - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+    - eval $(ssh-agent -s)
+    - ssh-add <(echo "${DEPLOY_SSH_KEY}" | base64 --decode)
+    - git checkout -B "${CI_COMMIT_REF_NAME}"
+    - git add PKGBUILD
+    - test -n "$(git diff --staged)"
+    - git config --global user.email "${GIT_EMAIL}"
+    - git config --global user.name "${GIT_NAME}"
+    - git commit -m "Bump version to ${new_pkgver}"
+    - git remote set-url origin "ssh://gitlab@git.hashworks.net/${CI_PROJECT_PATH}.git"
+    - git push
+  only:
+    - triggers
+
+# Build and install package with makepkg, optionally update .SRCINFO and release to AUR
+# * Install git and openssh for commit, sudo and base-devel for makepkg
+# * Add non-root user for makepkg
+# * Test build and install
+# * Setup ssh_agent and git
+# * Push potential .SRCINFO changes with CI-Skip
+# * Release to AUR
+testAndDeploy:
+  image: archlinux/base:latest
+  script:
+    - pacman --cachedir .pacman --noconfirm -Syy openssh git sudo base-devel
+    - useradd gitlab
+    - 'echo "gitlab ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers'
+    - su gitlab -c 'makepkg --printsrcinfo > .SRCINFO'
+    - git diff
+    - su gitlab -c 'PACMAN="pacman --cachedir .pacman"; makepkg --noconfirm --syncdeps --install --clean .'
+    - test -n "${DEPLOY_SSH_KEY}"
+    - test -n "${AUR_SSH_KEY}"
+    - mkdir -p ~/.ssh
+    - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+    - eval $(ssh-agent -s)
+    - git checkout -B "${CI_COMMIT_REF_NAME}"
+    - git add .SRCINFO
+    - if [[ -n "$(git diff --staged)" ]]; then
+      git config --global user.email "${GIT_EMAIL}";
+      git config --global user.name "${GIT_NAME}";
+      git commit -m '[SKIP CI] Update .SRCINFO';
+      ssh-add <(echo "${DEPLOY_SSH_KEY}" | base64 --decode);
+      git remote set-url origin "ssh://gitlab@git.hashworks.net/${CI_PROJECT_PATH}.git";
+      git push;
+      fi
+    - ssh-add <(echo "${AUR_SSH_KEY}" | base64 --decode)
+    - git remote show aur || git remote add aur ssh://aur@aur.archlinux.org/libzim.git
+    - git push -u aur master
+  only:
+    - master
+  cache:
+    key: pacman
+    paths:
+      - .pacman
