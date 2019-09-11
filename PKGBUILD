@@ -13,8 +13,10 @@ source=("$pkgname::git+https://gitlab.com/MggMuggins/aurum.git")
 sha256sums=('SKIP')
 
 package() {
-    # Not ideal (building in package())
-    cargo install --root="$pkgdir" aurum-cli
+    mkdir "$pkgdir/usr"
     
-    rm "$pkgdir/.crates.toml"
+    # Not ideal (building in package())
+    cargo install --root="$pkgdir/usr" --version="$pkgver" aurum-cli
+    
+    rm "$pkgdir/usr/.crates.toml"
 }
