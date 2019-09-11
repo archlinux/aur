@@ -7,7 +7,7 @@ pkgbase = dgl
 	license = MIT
 	depends = python
 	depends = dmenu
-	source = dgl::git+https://github.com/Jorengarenar/dgl.git
+	source = dgl::https://github.com/Jorengarenar/DGL/archive/0.8.9.tar.gz
 	sha512sums = SKIP
 
 pkgname = dgl
