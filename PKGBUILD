@@ -12,8 +12,8 @@
 
 pkgname=mesa-aco-git
 pkgdesc="Mesa with the ACO compiler patchset, git version"
-pkgver=19.2.0_devel.114724.fbaabd839e8
-pkgrel=1
+pkgver=19.3.0_devel.115981.f2bed9b344c
+pkgrel=2
 arch=('x86_64')
 makedepends=('git' 'python-mako' 'xorgproto'
               'libxml2' 'libx11'  'libvdpau' 'libva' 'elfutils' 'libomxil-bellagio' 'libxrandr'
@@ -33,7 +33,8 @@ provides=("mesa=$pkgver-$pkgrel"
           "mesa-vulkan-layer=$pkgver-$pkgrel"
           "vulkan-mesa-layer=$pkgver-$pkgrel"
           "opengl-driver"
-          "opencl-driver")
+          "opencl-driver"
+          "mesa-libgl=$pkgver-$pkgrel")
 conflicts=('mesa' 'mesa-git' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'libva-mesa-driver' 'mesa-vdpau' 'mesa-vulkan-layer' 'vulkan-mesa-layer')
 url="https://www.mesa3d.org"
 license=('custom')
