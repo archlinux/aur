@@ -15,7 +15,7 @@ _use_wayland=0           # Build Wayland NOTE: extremely experimental and don't 
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=78.0.3895.5
+pkgver=78.0.3902.4
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
 arch=('x86_64')
@@ -46,10 +46,7 @@ depends=(
 makedepends=(
              'gperf'
              'ninja'
-             'python2-protobuf'
-             'python2-beautifulsoup4'
-             'python2-html5lib'
-             'python2-simplejson'
+             'python2'
              'python'
              'yasm'
              'nasm'
@@ -92,7 +89,7 @@ sha256sums=(
             # Patch form Gentoo
 
             # Misc Patches
-            '4e08be7d28b5b00134fffccef7e2aed0063215d74a145206051894cd155f0637'
+            '8f2a99fbd69b818856e44ecaedef44c4ef8d6b5ad24da8c1ba6e465b45596028'
             # Patch from crbug (chromium bugtracker) or Arch chromium package
             'd081f2ef8793544685aad35dea75a7e6264a2cb987ff3541e6377f4a3650a28b'
             '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1'
@@ -114,7 +111,7 @@ _google_default_client_secret="0ZChLK6AxeA3Isu96MkwqDR4"
 # List of third-party components needed for build chromium. The rest is remove by remove_bundled_libraries srcipt in prepare().
 _keeplibs=(
            'base/third_party/cityhash'
-           'base/third_party/dmg_fp'
+           'base/third_party/double_conversion'
            'base/third_party/dynamic_annotations'
            'base/third_party/icu'
            'base/third_party/nspr'
@@ -162,7 +159,10 @@ _keeplibs=(
            'third_party/catapult'
            'third_party/catapult/common/py_vulcanize/third_party/rcssmin'
            'third_party/catapult/common/py_vulcanize/third_party/rjsmin'
+           'third_party/catapult/third_party/beautifulsoup4'
+           'third_party/catapult/third_party/html5lib-python'
            'third_party/catapult/third_party/polymer'
+           'third_party/catapult/third_party/six'
            'third_party/catapult/tracing/third_party/chai'
            'third_party/catapult/tracing/third_party/d3'
            'third_party/catapult/tracing/third_party/devscripts'
@@ -184,6 +184,8 @@ _keeplibs=(
            'third_party/cros_system_api'
            'third_party/dav1d'
            'third_party/dawn'
+           'third_party/depot_tools'
+           'third_party/depot_tools/third_party/six'
            'third_party/devscripts'
            'third_party/dom_distiller_js'
            'third_party/emoji-segmenter'
@@ -257,6 +259,7 @@ _keeplibs=(
            'third_party/rnnoise'
            'third_party/s2cellid'
            'third_party/sfntly'
+           'third_party/simplejson'
            'third_party/shaderc'
            'third_party/skia'
            'third_party/skia/include/third_party/skcms'
@@ -423,15 +426,12 @@ prepare() {
 
   # Force script incompatible with Python 3 to use /usr/bin/python2.
   sed -i '1s|python$|&2|' \
-    -i build/download_nacl_toolchains.py \
-    -i build/linux/unbundle/remove_bundled_libraries.py \
-    -i build/linux/unbundle/replace_gn_files.py \
-    -i tools/clang/scripts/update.py \
     -i third_party/dom_distiller_js/protoc_plugins/json_values_converter.py \
     -i third_party/dom_distiller_js/protoc_plugins/json_values_converter_tests.py \
     -i third_party/ffmpeg/chromium/scripts/build_ffmpeg.py \
     -i third_party/ffmpeg/chromium/scripts/generate_gn.py
   export PNACLPYTHON=/usr/bin/python2
+  sed 's|iteritems|items|g' -i build/linux/unbundle/remove_bundled_libraries.py
 
   # Remove most bundled libraries. Some are still needed.
   msg2 "Removing unnecessary components to save disk space."
@@ -654,8 +654,6 @@ package() {
     install -Dm644 "${i}" "${pkgdir}/usr/lib/chromium-dev/${i}"
   done
 
-  find resources -type f -name "*" -exec install -Dm644 '{}' "${pkgdir}/usr/lib/chromium-dev/{}" \;
-
   # Set info.
   source "${srcdir}/chromium-${pkgver}/chrome/installer/linux/common/installer.include"
   PACKAGE=chromium-dev
@@ -669,7 +667,7 @@ package() {
   install -Dm644 chromium-dev.desktop "${pkgdir}/usr/share/applications/chromium-dev.desktop"
 
   # Install locales.
-  find locales -type f -name "*.pak" -exec install -Dm644 '{}' "${pkgdir}/usr/lib/chromium-dev/{}" \;
+  install -Dm644 locales/*.pak -t "${pkgdir}/usr/lib/chromium-dev/locales"
 
   # Install icons.
   for _size in 16 24 32 48 64 128 256; do

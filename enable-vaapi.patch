@@ -112,8 +112,8 @@ Index: dev/chrome/browser/flag_descriptions.h
 +
 +#if defined(OS_CHROMEOS)
 +
- extern const char kAppServiceAshName[];
- extern const char kAppServiceAshDescription[];
+ extern const char kAggregatedMlAppRankingName[];
+ extern const char kAggregatedMlAppRankingDescription[];
  
 Index: dev/content/gpu/BUILD.gn
 ===================================================================
