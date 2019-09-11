@@ -6,16 +6,17 @@
 # Contributor: Marcel O'Neil <marcel@marceloneil.com>
 
 pkgname=electrum-git
-pkgver=20190703
+pkgver=3.3.8.r3.g40e2b1d6e
 pkgrel=1
 pkgdesc="Lightweight Bitcoin wallet"
 arch=('any')
+url="https://github.com/spesmilo/electrum"
+license=('MIT')
 depends=('hicolor-icon-theme'
          'libsecp256k1'
          'python'
          'python-dnspython'
          'python-ecdsa'
-         'python-jsonrpclib-pelix'
          'python-protobuf'
          'python-pyaes'
          'python-pyqt5'
@@ -29,6 +30,10 @@ depends=('hicolor-icon-theme'
 	 'python-certifi'
 	 'python-aiorpcx-git'
 	 'python-aiohttp'
+	 'python-bitstring'
+	 'python-pycryptodomex'
+	 'python-jsonrpcserver'
+	 'python-jsonrpcclient'
          'qt5-base')
 checkdepends=('python-tox')
 makedepends=('gettext'
@@ -42,7 +47,6 @@ optdepends=('desktop-file-utils: update desktop icon'
             'python-btchip: Ledger hardware wallet support'
             'python-ckcc-protocol: Coldcard wallet hardware support'
             'python-hidapi: Digital Bitbox hardware wallet support'
-            'python-pycryptodomex: use PyCryptodome AES implementation instead of pyaes'
             'python-keepkey: KeepKey hardware wallet support'
             'python-matplotlib: plot transaction history in graphical mode'
             'python-rpyc: send commands to Electrum Python console from an external script'
@@ -50,8 +54,6 @@ optdepends=('desktop-file-utils: update desktop icon'
             'python-trezor: Trezor hardware wallet support'
             'xdg-utils: update desktop icon'
             'zbar: QR code reading support')
-url="https://github.com/spesmilo/electrum"
-license=('MIT')
 source=(git+https://github.com/spesmilo/electrum)
 sha256sums=('SKIP')
 provides=('electrum')
@@ -60,7 +62,8 @@ install=electrum.install
 
 pkgver() {
   cd ${pkgname%-git}
-  git log -1 --format="%cd" --date=short --no-show-signature | sed "s|-||g"
+#  git log -1 --format="%cd" --date=short --no-show-signature | sed "s|-||g"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
