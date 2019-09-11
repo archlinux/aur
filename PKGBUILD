@@ -1,7 +1,7 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 
 pkgname=awesomebump-git
-pkgver=5.1.r1.gfdd5b77
+pkgver=5.1.r7.g61a574d
 pkgrel=1
 pkgdesc="A free program designed to generate normal, height, specular or ambient occlusion textures from a single image"
 arch=('i686' 'x86_64')
@@ -41,9 +41,9 @@ prepare() {
 build() {
   cd ${srcdir}/${pkgname}
   #sed -i 's:MY_QT_PATH=/Qt/5.6:MY_QT_PATH=/usr/bin:' unixBuildScript.sh
-  sed -i 's:MY_QT_PATH=/opt/Qt5.7.0/5.7/gcc_64/bin/:MY_QT_PATH=/usr/bin:' unixBuildScript.sh
+  sed -i 's:MY_QT_PATH=.*:MY_QT_PATH=/usr/bin:' unixBuildScript.sh
   sed -i "s: make: make ${MAKEFLAGS}:" unixBuildScript.sh
-  ./unixBuildScript.sh
+  ./unixBuildScript.sh yes
 }
 
 package() {
