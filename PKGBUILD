@@ -111,7 +111,7 @@ prepare() {
 build () {
     export CC="gcc -m32"
     export CXX="g++ -m32"
-    export PKG_CONFIG=/usr/bin/pkg-config-32
+    export PKG_CONFIG=/usr/bin/i686-pc-linux-gnu-pkg-config
 
     meson setup mesa-aco _build \
         --native-file llvm32.native \
