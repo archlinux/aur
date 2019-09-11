@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
 pkgname=guiscrcpy
-pkgver=1.10.1
+pkgver=1.10.2
 pkgrel=1
 pkgdesc="A full fledged GUI integration for the most award winning open-source Android screen mirroring system -- scrcpy"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ optdepends=('wmctrl: to use development toolkit'
 source=("$pkgname-$pkgver.tar.gz::https://github.com/srevinsaju/$pkgname/archive/v$pkgver.tar.gz"
         "$pkgname.desktop"
         "$pkgname.sh")
-sha256sums=('a8f5383f809cb32697b8af96100f6d10fbc50906d370399688d2185773c1db89'
+sha256sums=('a29d37a69657851c9aa91a1ea601f5dc80cc6d56b2c3a551f947fe992c4a23b1'
             '17d3182d5a910b51803c72922ffd5a226691a290e360b72a93597dc5700a4c96'
             '21a9e0f6a38db03cbe84d6498519bd79d66796f47cd6a738133f38a45ea4bb42')
 
