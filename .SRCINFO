@@ -1,6 +1,6 @@
 pkgbase = python-appjar
 	pkgdesc = Simple Tkinter GUIs in Python
-	pkgver = 0.93
+	pkgver = 0.94
 	pkgrel = 1
 	url = https://github.com/jarvisteach/appJar
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = python-appjar
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
 	options = !strip
-	source = appJar-0.93.tar.gz::https://github.com/jarvisteach/appJar/archive/v0.93.tar.gz
-	sha256sums = 64057f719c4db6eb82f30e017c7dc72eb182f0b0cc4d55540ab7c351cbf4e289
+	source = appJar-0.94.tar.gz::https://github.com/jarvisteach/appJar/archive/v0.94.tar.gz
+	sha256sums = 1bef9d6546ad32b2ab4ff7abc9039d3a0e648eab1a748fdaf58889a57b1fdd71
 
 pkgname = python-appjar
 	depends = python
