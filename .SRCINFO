@@ -5,7 +5,7 @@ pkgbase = quiterss-backup-git
 	url = https://joren.ga
 	arch = any
 	license = MIT
-	source = quiterss-backup-git::git+https://github.com/Jorengarenar/quiterss-backup.git
+	source = quiterss-backup::git+https://github.com/Jorengarenar/quiterss-backup.git
 	sha512sums = SKIP
 
 pkgname = quiterss-backup-git
