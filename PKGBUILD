@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
 pkgname=viper4linux-gui
 pkgver=1.12
-pkgrel=1
+pkgrel=2
 pkgdesc="Official UI for Viper4Linux"
 arch=('any')
 url="https://github.com/ThePBone/Viper4Linux-GUI"

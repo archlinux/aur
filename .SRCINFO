@@ -1,7 +1,7 @@
 pkgbase = viper4linux-gui
 	pkgdesc = Official UI for Viper4Linux
 	pkgver = 1.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ThePBone/Viper4Linux-GUI
 	arch = any
 	license = GPL3
