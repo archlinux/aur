@@ -1,7 +1,7 @@
 pkgbase = wasabi-wallet-bin
 	pkgdesc = Privacy focused, ZeroLink compliant Bitcoin wallet
 	pkgver = 1.1.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wasabiwallet.io/
 	arch = x86_64
 	license = MIT
@@ -14,11 +14,11 @@ pkgbase = wasabi-wallet-bin
 	options = staticlibs
 	source = https://github.com/zkSNACKs/WalletWasabi/releases/download/v1.1.7/Wasabi-1.1.7.deb
 	source = https://github.com/zkSNACKs/WalletWasabi/releases/download/v1.1.7/Wasabi-1.1.7.deb.asc
-	source = LICENSE.md
-	validpgpkeys = 21D7CA45565DBCCEBE45115DB4B72266C47E075E
+	source = https://raw.githubusercontent.com/zkSNACKs/WalletWasabi/v1.1.7/LICENSE.md
+	validpgpkeys = 6FB3872B5D42292F59920797856348328949861E
 	sha256sums = 1d1eafdd68bf0e1aa75e763a56b68b77d2bf384b49b6fb3bb20f3629c7d86629
 	sha256sums = SKIP
-	sha256sums = 986ee8b1139dbe8405801baf1081d075b53728fd5c57dd31885cf4ddbe5d8f68
+	sha256sums = 6a9baff873bf6e94c289047810e5c6954657cba1c5d46925691a9c2d3872ced0
 
 pkgname = wasabi-wallet-bin
 
