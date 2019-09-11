@@ -2,7 +2,7 @@
 
 pkgname=zettlr
 pkgver=1.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A markdown editor for writing academic texts and taking notes"
 arch=('x86_64')
 url="https://www.zettlr.com"
@@ -21,6 +21,7 @@ build() {
     yarn less
     yarn handlebars
     yarn lang:refresh
+    yarn wp:prod
 
     cd $srcdir/$pkgname/source
     yarn install --pure-lockfile
