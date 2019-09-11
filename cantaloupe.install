@@ -1,0 +1,10 @@
+post_install() {
+  mkdir -p /data/cantaloupe/images/
+  chown http:http -r /data/cantaloupe/
+  systemctl enable cantaloupe.service
+  systemctl restart cantaloupe.service
+}
+
+post_upgrade() {
+  post_install $1
+}

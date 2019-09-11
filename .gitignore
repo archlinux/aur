@@ -1,0 +1,8 @@
+*
+!.gitignore
+!PKGBUILD
+!cantaloupe.service
+!cantaloupe.properties
+!cantaloupe.install
+!.SRCINFO
+
