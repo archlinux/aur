@@ -14,5 +14,7 @@ sha256sums=('SKIP')
 
 package() {
     # Not ideal (building in package())
-    cargo install --root="$pkgdir"
+    cargo install --root="$pkgdir" aurum-cli
+    
+    rm "$pkgdir/.crates.toml"
 }
