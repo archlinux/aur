@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 # Contributor: Firas Zaidan <firas@zaidan.de>
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
-pkgbase=('ogre-1.9')
+pkgbase=ogre-1.9
 pkgname=('ogre-1.9' 'ogre-docs-1.9')
 pkgver=1.9.1
 pkgrel=3
