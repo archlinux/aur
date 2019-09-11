@@ -1,19 +1,20 @@
-diff --git a/third_party/blink/renderer/platform/text/character_property_data.h b/third_party/blink/renderer/platform/text/character_property_data.h
-index 28fb6a9..bb4dbd7 100644
---- a/third_party/blink/renderer/platform/text/character_property_data.h
-+++ b/third_party/blink/renderer/platform/text/character_property_data.h
-@@ -244,10 +244,12 @@ static const UChar32 kIsHangulRanges[] = {
-     0xD7B0, 0xD7FF,
-     // Halfwidth Hangul Jamo
-     // https://www.unicode.org/charts/nameslist/c_FF00.html
--    0xFFA0, 0xFFDC,
-+    0xFFA0, 0xFFDB,
- };
- 
--static const UChar32 kIsHangulArray[] = {};
-+static const UChar32 kIsHangulArray[] = {
-+  0xFFDC,
-+};
- 
- #if !defined(USING_SYSTEM_ICU)
- // Freezed trie tree, see character_property_data_generator.cc.
+diff --git a/build/linux/unbundle/icu.gn b/build/linux/unbundle/icu.gn
+index 4450e40..9ca36dd 100644
+--- a/build/linux/unbundle/icu.gn
++++ b/build/linux/unbundle/icu.gn
+@@ -96,6 +96,7 @@ shim_headers("icui18n_shim") {
+     "unicode/fpositer.h",
+     "unicode/gender.h",
+     "unicode/gregocal.h",
++    "unicode/listformatter.h",
+     "unicode/measfmt.h",
+     "unicode/measunit.h",
+     "unicode/measure.h",
+@@ -178,7 +179,6 @@ shim_headers("icuuc_shim") {
+     "unicode/icudataver.h",
+     "unicode/icuplug.h",
+     "unicode/idna.h",
+-    "unicode/listformatter.h",
+     "unicode/localpointer.h",
+     "unicode/locdspnm.h",
+     "unicode/locid.h",

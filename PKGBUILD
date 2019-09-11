@@ -20,7 +20,7 @@ depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
 provides=('chromium')
 conflicts=('chromium')
 makedepends=('python' 'python2' 'gperf' 'yasm' 'mesa' 'ninja' 'nodejs' 'git'
-             'clang' 'lld' 'gn<0.1578.0' 'java-runtime-headless')
+             'clang' 'lld' 'gn' 'java-runtime-headless')
 optdepends=('pepper-flash: support for Flash content'
             'kdialog: needed for file dialogs in KDE'
             'gnome-keyring: for storing passwords in GNOME keyring'
@@ -29,27 +29,35 @@ install=chromium.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
         meta-browser-${_meta_browser_sha}.tar.gz::https://github.com/OSSystems/meta-browser/archive/${_meta_browser_sha}.tar.gz
+        include-memory-in-one_euro_filter.h.patch
+        link-against-harfbuzz-subset.patch
+        fix-wrong-string-initialization-in-LinkedHashSet.patch
+        include-limits-in-web_time_range.cc.patch
         chromium-system-icu.patch
+        chromium-system-zlib.patch
         chromium-widevine.patch
         chromium-skia-harmony.patch
         0001-ozone-wayland-Sway-avoid-sending-presentation-early.patch
         0002-ozone-wayland-Use-mutex-before-accessing-surfaces-ma.patch
         0003-ozone-wayland-Stop-using-wl_display_roundtrip.patch
         0004-ozone-wayland-Extract-window-management-methods-to-o.patch
-        0005-ozone-wayland-Do-not-use-possibly-blocking-dispatch-.patch
-        0006-IWYU-include-memory-in-one_euro_filter.h-as-it-uses-.patch)
+        0005-ozone-wayland-Do-not-use-possibly-blocking-dispatch-.patch)
 sha256sums=('eb952ff241e719cbdcc2aae1832ecc1dd2263736ab38ee1dbf88ac9120119789'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
             'd87957d01be9fb59faf5fde523eb87a8256605b1533171416b7a56bfcbd6d056'
-            'e2d284311f49c529ea45083438a768db390bde52949995534034d2a814beab89'
+            '33a5bcd1df2cc7aa7467fa882790ef143a4497d2b704c9e1ea86c8ede90c2d90'
+            'ab986e4b723dfcedab1bc8dcada07526facae28a8a7ff3345f658532c1d99987'
+            '840f555020751ec284dca35b9317a9dd7dc69fcb910ea1cae2dd7cc9b237dfb7'
+            'd3dfe3c86901a11636972a774ed6c941ac76e38c9e4a384f458043a0a03291a9'
+            'e73cc2ee8d3ea35aab18c478d76fdfc68ca4463e1e10306fa1e738c03b3f26b5'
+            '0f7ba6882844542a7226b419dfefc5b6a16b5b7882698bd773b5ee9148aa6e87'
             'd081f2ef8793544685aad35dea75a7e6264a2cb987ff3541e6377f4a3650a28b'
             '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1'
             '333a4ecac50f1f2a2545132dc97bd22ccb1a0623bd5a5d86487327e8ee6fde3d'
             '5d1e93f1930a53d2cee7d7cff94b4aba3a91dc15e13f667ce56956b2d08222cc'
             '19dc0c5b521ad252b75a42cad254ced431f790bb71d1c048eb748a65e29aeb69'
             'd0ed9879427db1412b679c2ab0ff4da83698f6dfe389080d272ec85716478b43'
-            '465dbcefbe8b01d242491bb527da8ecb466654262162b9bdc96bbf13ee8b864f'
-            'c5ea9e17c745de25ce9d1935883b538e660a406b07fc3ac72354e5a24a5354f8')
+            '465dbcefbe8b01d242491bb527da8ecb466654262162b9bdc96bbf13ee8b864f')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
@@ -71,7 +79,7 @@ declare -gA _system_libs=(
   [re2]=re2
   [snappy]=snappy
   [yasm]=
-  # [zlib]=minizip
+  [zlib]=minizip
 )
 _unwanted_bundled_libs=(
   ${!_system_libs[@]}
@@ -99,7 +107,6 @@ _bugfix_patches=(
   '0003-ozone-wayland-Stop-using-wl_display_roundtrip.patch'
   '0004-ozone-wayland-Extract-window-management-methods-to-o.patch'
   '0005-ozone-wayland-Do-not-use-possibly-blocking-dispatch-.patch'
-  '0006-IWYU-include-memory-in-one_euro_filter.h-as-it-uses-.patch'
 )
 
 prepare() {
@@ -115,14 +122,27 @@ prepare() {
     third_party/blink/renderer/core/xml/parser/xml_document_parser.cc \
     third_party/libxml/chromium/libxml_utils.cc
 
+  # https://crbug.com/819294
+  patch -Np1 -i ../include-memory-in-one_euro_filter.h.patch
+
+  # https://groups.google.com/a/chromium.org/d/msg/chromium-packagers/UyJsVJ5QqWo/jSv5z7-rEQAJ
+  patch -Np1 -i ../link-against-harfbuzz-subset.patch
+
+  # https://crbug.com/980025
+  patch -Np1 -i ../fix-wrong-string-initialization-in-LinkedHashSet.patch
+
+  # https://crbug.com/992832
+  patch -Np1 -i ../include-limits-in-web_time_range.cc.patch
+
+  # Fixes from Gentoo
+  patch -Np1 -i ../chromium-system-icu.patch
+  patch -Np1 -i ../chromium-system-zlib.patch
+
   # Load Widevine CDM if available
   patch -Np1 -i ../chromium-widevine.patch
 
   # https://crbug.com/skia/6663#c10
   patch -Np0 -i ../chromium-skia-harmony.patch
-
-  # https://bugs.gentoo.org/661880#c21
-  patch -Np1 -i ../chromium-system-icu.patch
 
   # chromium-ozone-wayland
   for PATCH in ${_mb_general_patches[@]}
@@ -251,7 +271,7 @@ package() {
     cp out/Release/icudtl.dat "$pkgdir/usr/lib/chromium/"
   fi
 
-  for size in 22 24 48 64 128 256; do
+  for size in 24 48 64 128 256; do
     install -Dm644 "chrome/app/theme/chromium/product_logo_$size.png" \
       "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/chromium.png"
   done

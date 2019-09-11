@@ -1,7 +1,7 @@
-From b5d3ed44285154ed3a96ba21c01862119559ce12 Mon Sep 17 00:00:00 2001
+From 8c747a9c14ed4905f60f6680e2e09e33ea34163e Mon Sep 17 00:00:00 2001
 From: Jose Dapena Paz <jose.dapena@lge.com>
 Date: Fri, 26 Jul 2019 16:18:17 +0000
-Subject: [PATCH 6/6] IWYU: include <memory> in one_euro_filter.h as it uses
+Subject: [PATCH] IWYU: include <memory> in one_euro_filter.h as it uses
  std::unique_ptr
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -18,7 +18,7 @@ Cr-Commit-Position: refs/heads/master@{#681321}
  1 file changed, 2 insertions(+)
 
 diff --git a/third_party/one_euro_filter/src/one_euro_filter.h b/third_party/one_euro_filter/src/one_euro_filter.h
-index 7f8d15b62afa..a8cd0ab9a256 100644
+index 7f8d15b62a..a8cd0ab9a2 100644
 --- a/third_party/one_euro_filter/src/one_euro_filter.h
 +++ b/third_party/one_euro_filter/src/one_euro_filter.h
 @@ -1,6 +1,8 @@
@@ -30,6 +30,3 @@ index 7f8d15b62afa..a8cd0ab9a256 100644
  #include "low_pass_filter.h"
  
  namespace one_euro_filter {
--- 
-2.23.0
-
