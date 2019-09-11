@@ -4,12 +4,12 @@ post_install() {
 		 Some useful hints
 		 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
 		 • The critical mutt/neomutt files are in ’~/.config/mutt/’.
-		 • Put whatever  global settings you want  in ’muttrc’.  mutt-wizard will add some
-		   lines to  this file,  which you  shouldn't remove  unless you know  what you’re
-		   doing,  but you can move them up/down  over your personal config lines,  if you
-		   need to. If you get binding conflict errors in mutt, you might need to do this.
-		 • Each of the accounts  that mutt-wizard generates  will have custom settings set
-		   in a separate file  in ’accounts/’.  You can edit  these freely if you  want to
+		 • Put whatever  global settings you want in ’muttrc’.  mutt-wizard will add some
+		   lines to this file,  which you  shouldn't remove  unless you know  what you’re
+		   doing,  but you can move them up/down over your personal config lines,  if you
+		   need to. If you get binding conflict errors in mutt you might need to do this.
+		 • Each of the accounts that mutt-wizard generates  will have custom settings set
+		   in a separate file in ’accounts/’.  You can edit  these freely if you  want to
 		   tinker with settings specific to an account.
 		 • In ’/usr/share/mutt-wizard’ are several  global config files,  including mutt-
 		   wizard’s default settings.  You can overwride this in your muttrc if you wish.

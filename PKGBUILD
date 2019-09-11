@@ -6,8 +6,8 @@ pkgver() {
   cd "$srcdir/${pkgname%-git}"
   printf 'r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-pkgver=r673.g3696862
-pkgrel=2
+pkgver=r675.g24ce11c
+pkgrel=1
 
 pkgdesc='A simple interface to auto-configure neomutt and isync with safe passwords'
 arch=('x86_64')
