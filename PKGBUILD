@@ -1,26 +1,23 @@
 # Maintainer: Kevin Brodsky <corax26 at gmail dot com>
 # Contributor: Anton Jongsma <anton@felrood.nl>
 pkgname=libbobcat
-pkgver=4.08.03
+pkgver=5.00.02
 pkgrel=1
 pkgdesc="Bobcat (Brokken's Own Base Classes And Templates) library"
 arch=('i686' 'x86_64')
-url="https://fbb-git.github.io/bobcat/"
+url="https://fbb-git.gitlab.io/bobcat/"
 license=('GPL')
 # Versions taken from the 'required' file in sources
 depends=('openssl' 'libx11>=1.6.2')
 makedepends=('icmake>=8.01.00' 'openssl' 'readline' 'libmilter>=8.14.4' 
              'libx11>=1.6.2' 'yodl>=3.07.01')
 optdepends=()
-source=("https://github.com/fbb-git/bobcat/archive/${pkgver}.tar.gz")
-md5sums=('f90bb919b09a9f2d1cdcd6cb61892f4a')
+source=("https://gitlab.com/fbb-git/bobcat/-/archive/${pkgver}/bobcat-${pkgver}.tar.gz")
+md5sums=('33a0fd25e274deae7a3e25133ce601f6')
 
 build() {
   cd "$srcdir/bobcat-${pkgver}/bobcat"
 
-  # Explicitly define CXX, because since 4.08.03 the build system defines it
-  # by default to g++-8, which doesn't make sense on Arch.
-  export CXX="g++"
   # Since makepkg always defines CXXFLAGS, it overrides the default value
   # defined in the build system, which is problematic because it needs a
   # specific C++ version. Add it back here.
