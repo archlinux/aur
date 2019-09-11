@@ -13,7 +13,7 @@ pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mat
 arch=(x86_64)
 url="http://www.sagemath.org"
 license=(GPL)
-depends=(ipython2 palp brial cliquer maxima-ecl gfan sympow nauty python-rpy2 python-fpylll python-psutil python-cypari2
+depends=(ipython palp brial cliquer maxima-ecl gfan sympow nauty python-rpy2 python-fpylll python-psutil python-cypari2
   python-matplotlib python-scipy python-sympy python-networkx python-pillow python-pplpy python-future
   gap flintqs lcalc lrcalc arb eclib zn_poly gd python-cvxopt pynac-python3 linbox m4rie rubiks pari-galdata pari-seadata-small planarity rankwidth tachyon
   sage-data-combinatorial_designs sage-data-elliptic_curves sage-data-graphs sage-data-polytopes_db sage-data-conway_polynomials
@@ -107,7 +107,7 @@ build() {
 }
 
 package_sagemath-python3-git() {
-  optdepends+=('sagemath-python3-jupyter-git: Jupyter kernel')
+  optdepends+=('sagemath-jupyter-python3-git: Jupyter kernel')
   conflicts=(sagemath)
   provides=(sagemath)
 

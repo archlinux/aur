@@ -20,7 +20,7 @@ pkgbase = sagemath-python3-git
 	makedepends = libfes
 	makedepends = primecount
 	makedepends = git
-	depends = ipython2
+	depends = ipython
 	depends = palp
 	depends = brial
 	depends = cliquer
@@ -146,7 +146,7 @@ pkgname = sagemath-python3-git
 	optdepends = cryptominisat5: SAT solver
 	optdepends = python-pycosat: picosat SAT solver
 	optdepends = python-pip: to install optional packages with sage -pip
-	optdepends = sagemath-python3-jupyter-git: Jupyter kernel
+	optdepends = sagemath-jupyter-python3-git: Jupyter kernel
 	provides = sagemath
 	conflicts = sagemath
 
