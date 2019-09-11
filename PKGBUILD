@@ -17,14 +17,14 @@ replaces=()
 backup=()
 options=()
 #install=.install
-source=(https://bitbucket.org/av-mamzikov/stereophotoview/get/${pkgver}.zip opencv4.patch)
+source=(https://bitbucket.org/stereophotoview/stereophotoview/get/${pkgver}.zip opencv4.patch)
 noextract=()
 # updpkgsums
 md5sums=('ab6fc21116397d19d6963b914a40c23a'
          '541997434314a3eea89cbdda41487302')
 
 prepare() {
-  cd av-mamzikov-stereophotoview-*
+  cd stereophotoview-stereophotoview-*
   patch -Np1 -i "${srcdir}/opencv4.patch"
 }
 
@@ -32,7 +32,7 @@ build() {
   cd "$srcdir"
   test -d build || mkdir build
   cd build
-  qmake NoPostInstall=1 PREFIX=${pkgdir}/usr ../av-mamzikov-stereophotoview-*
+  qmake NoPostInstall=1 PREFIX=${pkgdir}/usr ../stereophotoview-stereophotoview-*
   make
 }
 
