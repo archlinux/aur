@@ -1,8 +1,8 @@
 pkgbase = skycoin-font
-	pkgdesc = Skycoin sans font
+	pkgdesc = Skycoin sans font. Skycoin.com
 	pkgver = 1
-	pkgrel = 2
-	url = https://skycoin.net
+	pkgrel = 3
+	url = https://skycoin.com
 	arch = any
 	makedepends = unzip
 	source = https://downloads.skycoin.net/branding/Skycoin-Sans.zip
