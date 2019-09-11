@@ -1,7 +1,7 @@
 pkgbase = ocaml-lambda-term
 	pkgdesc = A cross-platform library for manipulating the terminal
-	pkgver = 1.13
-	pkgrel = 3
+	pkgver = 2.0.2
+	pkgrel = 1
 	url = https://github.com/diml/lambda-term
 	arch = i686
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = ocaml-lambda-term
 	depends = ocaml-zed
 	depends = ocaml-camomile
 	options = !strip
-	source = https://github.com/diml/lambda-term/releases/download/1.13/lambda-term-1.13.tbz
-	md5sums = c13826a97014d4d573b927b623c7e043
+	source = https://github.com/diml/lambda-term/releases/download/2.0.2/lambda-term-2.0.2.tbz
+	sha512sums = 61b4f3d80a8e17562cd7efe3a15258134a41fad67db200e9bde8896e39bff63c3274f3fff54f0233441555b5119fddcbea80fbab9b82caaa0b6b4deb56843f09
 
 pkgname = ocaml-lambda-term
 
