@@ -1,0 +1,45 @@
+post_install() {
+	timestamp=$(date +%s)
+	s6-rc-compile /etc/s6-rc/compiled-$timestamp /etc/s6/sv
+	s6-rc-update /etc/s6-rc/compiled-$timestamp
+	if [ -d "/etc/s6-rc/compiled" ]; then
+		ln -sf /etc/s6-rc/compiled-$timestamp /etc/s6-rc/compiled/compiled && mv -f /etc/s6-rc/compiled/compiled /etc/s6-rc
+	else
+		ln -sf /etc/s6-rc/compiled-$timestamp /etc/s6-rc/compiled
+	fi
+	len="$(find /etc/s6-rc -name "compiled*" -type d | wc -l)"
+	find /etc/s6-rc -name "compiled*" -type d | sort -n | head -n "$(($len-1))" | xargs rm -rf
+	echo "s6-rc database updated. Don't forget to redo your bundles."
+}
+
+post_remove() {
+	timestamp=$(date +%s)
+	s6-rc-compile /etc/s6-rc/compiled-$timestamp /etc/s6/sv
+	s6-rc-update /etc/s6-rc/compiled-$timestamp
+	if [ -d "/etc/s6-rc/compiled" ]; then
+		ln -sf /etc/s6-rc/compiled-$timestamp /etc/s6-rc/compiled/compiled && mv -f /etc/s6-rc/compiled/compiled /etc/s6-rc
+	else
+		ln -sf /etc/s6-rc/compiled-$timestamp /etc/s6-rc/compiled
+	fi
+	len="$(find /etc/s6-rc -name "compiled*" -type d | wc -l)"
+	find /etc/s6-rc -name "compiled*" -type d | sort -n | head -n "$(($len-1))" | xargs rm -rf
+	echo "s6-rc database updated. Don't forget to redo your bundles."
+	sup="$(ps aux | grep "s6-supervise dhcpcd" | wc -l)"
+	if [[ "$sup" -gt 1 ]]; then
+		pkill -f "s6-supervise dhcpcd"
+	fi
+}
+
+post_upgrade() {
+	timestamp=$(date +%s)
+	s6-rc-compile /etc/s6-rc/compiled-$timestamp /etc/s6/sv
+	s6-rc-update /etc/s6-rc/compiled-$timestamp
+	if [ -d "/etc/s6-rc/compiled" ]; then
+		ln -sf /etc/s6-rc/compiled-$timestamp /etc/s6-rc/compiled/compiled && mv -f /etc/s6-rc/compiled/compiled /etc/s6-rc
+	else
+		ln -sf /etc/s6-rc/compiled-$timestamp /etc/s6-rc/compiled
+	fi
+	len="$(find /etc/s6-rc -name "compiled*" -type d | wc -l)"
+	find /etc/s6-rc -name "compiled*" -type d | sort -n | head -n "$(($len-1))" | xargs rm -rf
+	echo "s6-rc database updated. Don't forget to redo your bundles."
+}

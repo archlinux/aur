@@ -1,0 +1,21 @@
+pkgbase = dhcpcd-s6
+	pkgdesc = s6 service scripts for dhcpcd
+	pkgver = 20190802
+	pkgrel = 1
+	url = https://github.com/artix-linux
+	install = dhcpcd.install
+	arch = any
+	groups = s6-system
+	depends = dhcpcd
+	depends = s6-rc
+	source = dhcpcd.conf
+	source = dhcpcd.dependencies
+	source = dhcpcd.run
+	source = dhcpcd.type
+	sha256sums = d75e413073215f062a56b47d4ec0366e2ae6b5d480fae21fada25d3e33269125
+	sha256sums = 3809f3ba1f3db4bd0eafffd50b0349387b9972672bb3c6e3a152e90952431d12
+	sha256sums = 0638d085d6703d51a29c26ca1483a1038e108f87dd78d32d2fff95cf9fc4fe2f
+	sha256sums = d0001a150b83f68f09004c5059045cb76a3f064eed4d42ce072bc3722c118006
+
+pkgname = dhcpcd-s6
+
