@@ -11,15 +11,10 @@ license=('GPL3')
 depends=('systemd' 'bash' 'schedtool')
 makedepends=('git' 'make')
 conflicts=('ananicy-git')
-source=("$pkgname"::'git+https://github.com/Nefelim4ag/Ananicy.git#tag=${pkgver}')
+source=("$pkgname"::"git+https://github.com/Nefelim4ag/Ananicy.git#tag=${pkgver}")
 md5sums=('SKIP')
 install=$pkgname.install
 backup=( 'etc/ananicy.d/ananicy.conf' )
-
-pkgver() {
-  cd "$pkgname"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
 
 package() {
   cd "$srcdir/${pkgname}/"

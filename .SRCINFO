@@ -13,7 +13,7 @@ pkgbase = ananicy
 	depends = schedtool
 	conflicts = ananicy-git
 	backup = etc/ananicy.d/ananicy.conf
-	source = ananicy::git+https://github.com/Nefelim4ag/Ananicy.git#tag=${pkgver}
+	source = ananicy::git+https://github.com/Nefelim4ag/Ananicy.git#tag=2.1.0
 	md5sums = SKIP
 
 pkgname = ananicy
