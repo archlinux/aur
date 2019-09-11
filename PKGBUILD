@@ -3,10 +3,10 @@
 project='pymavlink'
 pkgname=python-${project}-git # '-bzr', '-git', '-hg' or '-svn'
 pkgver=r2496.264c3e46
-pkgrel=1
-pkgdesc=""
+pkgrel=2
+pkgdesc="python MAVLink interface and utilities"
 arch=('x86_64')
-url=""
+url="https://github.com/ArduPilot/pymavlink/"
 license=('LGPL v3')
 groups=()
 depends=('python-future' 'python-lxml')

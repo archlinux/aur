@@ -1,6 +1,8 @@
 pkgbase = python-pymavlink-git
+	pkgdesc = python MAVLink interface and utilities
 	pkgver = r2496.264c3e46
-	pkgrel = 1
+	pkgrel = 2
+	url = https://github.com/ArduPilot/pymavlink/
 	arch = x86_64
 	license = LGPL v3
 	makedepends = git
