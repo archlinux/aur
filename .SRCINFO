@@ -13,7 +13,7 @@ pkgbase = fift
 	depends = readline
 	source = https://test.ton.org/ton-test-liteclient-full.tar.xz
 	source = https://test.ton.org/fiftbase.pdf
-	md5sums = d76a4b004309782f828bfc2f824aab63
+	md5sums = 5883531eaf293e0278a65525195d39a4
 	md5sums = 1297ddcfdc880c8ed563e7f5aaf10714
 
 pkgname = fift
