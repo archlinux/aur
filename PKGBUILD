@@ -1,7 +1,7 @@
 # Maintainer: ProFfeSsoRr <evvsoft@gmail.com>
 
 pkgname=crictl-bin
-pkgver=1.14.0
+pkgver=1.15.0
 pkgrel=1
 pkgdesc="CLI tool for Kubelet Container Runtime Interface (CRI)"
 arch=(x86_64)
@@ -11,7 +11,7 @@ provides=('crictl')
 conflicts=('crictl')
 source=("https://github.com/kubernetes-sigs/cri-tools/releases/download/v${pkgver}/crictl-v${pkgver}-linux-amd64.tar.gz"
         "crictl.yaml")
-sha256sums=('483c90a9fe679590df4332ba807991c49232e8cd326c307c575ecef7fe22327b'
+sha256sums=('c3b71be1f363e16078b51334967348aab4f72f46ef64a61fe7754e029779d45a'
             'd2725490e1fb2e6f565605f09871c1440371b85e04de5d70bbac05954d827f72')
 
 package() {
