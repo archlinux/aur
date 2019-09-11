@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
 pkgname=gammy-git
-pkgver=0.9.42.r76.b4e14e0
+pkgver=0.9.42.r77.d65e8ae
 pkgrel=1
 pkgdesc="Automatic screen brightness tool."
 arch=('x86_64')
