@@ -1,6 +1,6 @@
 pkgbase = libdap
 	pkgdesc = A library which contains an implementation of DAP 2.0 and 3.1
-	pkgver = 3.20.3
+	pkgver = 3.20.4
 	pkgrel = 1
 	url = https://www.opendap.org/index.php/software/libdap
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = libdap
 	depends = libxml2
 	depends = util-linux
 	depends = libtirpc
-	source = http://www.opendap.org/pub/source/libdap-3.20.3.tar.gz
-	md5sums = c17c4131b807430592311b8c11f297fb
+	source = http://www.opendap.org/pub/source/libdap-3.20.4.tar.gz
+	md5sums = 23a132c914bde86e00f03d7320fc5501
 
 pkgname = libdap
 
