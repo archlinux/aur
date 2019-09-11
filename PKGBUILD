@@ -1,6 +1,6 @@
 # Maintainer: Mirza Baig <mirzabaig@protonmail.com>
 pkgname=cropper-git
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc="A TUI to trim video files within a specified range given start and end times."
 arch=('any')
