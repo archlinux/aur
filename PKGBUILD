@@ -1,7 +1,7 @@
 # Maintainer: Dror Levin <spatz@psybear.com>
 
 pkgname=houserat
-pkgver=0.3.1
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Notifies when known devices connect to the network"
 arch=(x86_64)
@@ -11,7 +11,7 @@ depends=(libpcap)
 makedepends=(rust)
 backup=(etc/houserat/config.toml)
 source=($pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
-sha512sums=('c3a43493bdf124f38d265888df455cd8723f42b55607a65ee7b1fb3992ac545a1fa2fbc47de3a010ab09b4bd24a1f2d2abeb1b605ae95b2a43f2af85964fd6d9')
+sha512sums=('3f271a55a40e929837e3d7a2c02c9ddc977d761a2d3b5f5b1da5dbe826c3b9e4e8711e0665123548201b268048ee185c57b4fa857757c9647c39c22080e1fc13')
 
 build() {
 	cd $pkgname-$pkgver
