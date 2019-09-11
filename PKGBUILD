@@ -1,6 +1,6 @@
 pkgname=openra-yr-git
 _pkgname=openra-yr
-pkgver=227.git.7d6f264
+pkgver=277.git.ac6c3ee
 pkgrel=1
 pkgdesc="A Command & Conquer: Yuri's Revenge-inspired mod of OpenRA"
 arch=('any')
@@ -9,7 +9,7 @@ license=('GPL3')
 install=openra-yr.install
 depends=('mono' 'ttf-dejavu' 'openal' 'libgl' 'freetype2' 'sdl2' 'lua51' 'hicolor-icon-theme' 'gtk-update-icon-cache'
          'desktop-file-utils' 'xdg-utils' 'zenity')
-makedepends=('dos2unix' 'git' 'unzip')
+makedepends=('dos2unix' 'git' 'unzip' 'msbuild' 'msbuild' 'msbuild')
 provides=('openra-yr')
 options=(!strip)
 source=("git+${url}.git"
@@ -43,7 +43,7 @@ package() {
     cd $srcdir/Yuris-Revenge
     mkdir -p $pkgdir/usr/{lib/openra-yr/mods,bin,share/pixmaps,share/doc/packages/openra-yr,share/applications,share/appdata}
     install -dm775 $pkgdir/var/games/openra-yr
-    cp -r engine/{glsl,lua,AUTHORS,COPYING,Eluant.dll*,FuzzyLogicLibrary.dll,GeoLite2-Country.mmdb.gz,'global mix database.dat',ICSharpCode.SharpZipLib.dll,launch-dedicated.sh,launch-game.sh,MaxMind.Db.dll,OpenAL-CS.dll,OpenAL-CS.dll.config,Open.Nat.dll,OpenRA.Game.exe,OpenRA.Platforms.Default.dll,OpenRA.Server.exe,OpenRA.Utility.exe,rix0rrr.BeaconLib.dll,SDL2-CS.dll,SDL2-CS.dll.config,SharpFont.dll,SharpFont.dll.config,VERSION} $pkgdir/usr/lib/openra-yr
+    cp -r engine/* $pkgdir/usr/lib/openra-yr
     cp -r mods/yr $pkgdir/usr/lib/openra-yr/mods
     cp -r engine/mods/{common,modcontent} $pkgdir/usr/lib/openra-yr/mods
     install -Dm755 $srcdir/openra-yr $pkgdir/usr/bin/openra-yr
@@ -51,5 +51,11 @@ package() {
     cp -r README.md $pkgdir/usr/share/doc/packages/openra-yr/README.md
     cp -r mods/yr/icon.png $pkgdir/usr/share/pixmaps/openra-yr.png
     install -Dm644 $srcdir/openra-yr.desktop $pkgdir/usr/share/applications/openra-yr.desktop
-    rm $pkgdir/usr/lib/openra-yr/*.sh
+    mkdir -p $pkgdir/usr/share/icons/hicolor/{16x16,32x32,48x48,64x64,128x128,256x256}/apps
+    for size in 16 32 48 64 128 256; do
+      size="${size}x${size}"
+      cp packaging/linux/mod_${size}.png "$pkgdir/usr/share/icons/hicolor/${size}/apps/${pkgname}.png"
+    done
+    rm -rf $pkgdir/usr/lib/openra-yr/*{.txt,nunit,.yml,.xslt,.cmd,.md,Mono,.sh,Makefile,sln.*,Test,.mdb,.pdb,.ps1,.AS,packaging,thirdparty,engines,OpenRA.Mods}*
+    rm -rf $pkgdir/usr/lib/openra-yr/{mods/{all,cnc,d2k,ra,ts},OpenRA.Mods.*,OpenRA.Platforms.Default,OpenRA.Seyrer,OpenRA.Game,OpenRA.Utility,Settings.StyleCop}
 }
