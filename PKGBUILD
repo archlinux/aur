@@ -1,0 +1,54 @@
+# Maintainer: bobpaul <bobpaul@users.noreply.github.com>
+# contact me via AUR or archlinux forums
+project='pymavlink'
+pkgname=python-${project}-git # '-bzr', '-git', '-hg' or '-svn'
+pkgver=r2496.264c3e46
+pkgrel=1
+pkgdesc=""
+arch=('x86_64')
+url=""
+license=('LGPL v3')
+groups=()
+depends=('python-future' 'python-lxml')
+makedepends=('git') # 'bzr', 'git', 'mercurial' or 'subversion'
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+replaces=()
+backup=()
+options=()
+install=
+source=('git+https://github.com/ArduPilot/pymavlink/'
+        'git+https://github.com/mavlink/mavlink/')
+noextract=()
+md5sums=('SKIP' 'SKIP')
+
+# Please refer to the 'USING VCS SOURCES' section of the PKGBUILD man page for
+# a description of each element in the source array.
+
+pkgver() {
+	cd "$srcdir/${project}"
+
+# Git, tags available
+#	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+
+# Git, no tags available
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+
+}
+
+prepare() {
+	cd "$srcdir/${project}"
+    ln -s ../mavlink/message_definitions ./
+}
+
+build() {
+	cd "$srcdir/${project}"
+    python setup.py build
+}
+
+package() {
+	cd "$srcdir/${project}"
+	python setup.py install --prefix=/usr --root="${pkgdir}" --skip-build
+
+    install -Dm644 COPYING -t "${pkgdir}"/usr/share/licenses/${pkgname%-git}
+}

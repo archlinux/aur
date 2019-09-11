@@ -1,0 +1,17 @@
+pkgbase = python-pymavlink-git
+	pkgver = r2496.264c3e46
+	pkgrel = 1
+	arch = x86_64
+	license = LGPL v3
+	makedepends = git
+	depends = python-future
+	depends = python-lxml
+	provides = python-pymavlink
+	conflicts = python-pymavlink
+	source = git+https://github.com/ArduPilot/pymavlink/
+	source = git+https://github.com/mavlink/mavlink/
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = python-pymavlink-git
+
