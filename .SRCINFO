@@ -8,7 +8,6 @@ pkgbase = jdsp4linux-git
 	makedepends = git
 	depends = gst-plugin-jamesdsp
 	depends = gst-plugins-good
-	optdepends = gdb: for debugging
 	provides = jdsp4linux
 	conflicts = jdsp4linux
 	conflicts = viper4linux

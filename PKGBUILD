@@ -8,7 +8,6 @@ url="https://github.com/ThePBone/JDSP4Linux"
 license=('GPL2')
 depends=('gst-plugin-jamesdsp' 'gst-plugins-good')
 makedepends=('git')
-optdepends=('gdb: for debugging')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}" 'viper4linux')
 source=("${pkgname%-git}::git+https://github.com/ThePBone/JDSP4Linux.git"
