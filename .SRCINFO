@@ -1,18 +1,18 @@
 pkgbase = ocaml-migrate-parsetree
 	pkgdesc = Convert OCaml parsetrees between different versions
-	pkgver = 1.3.1
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/ocaml-ppx/ocaml-migrate-parsetree
 	arch = i686
 	arch = x86_64
-	license = BSD
+	license = custom:LGPL2.1 with linking exception
 	makedepends = dune
 	depends = ocaml
 	depends = ocaml-result
 	depends = ocaml-ppx_derivers
 	options = !strip
-	source = https://github.com/ocaml-ppx/ocaml-migrate-parsetree/releases/download/v1.3.1/ocaml-migrate-parsetree-v1.3.1.tbz
-	sha512sums = 7da86f9596dd1439990a6f087fdeba64a0f3ce2634473be4cca92ecc02b6fcd97917956890fbe35b3cba5a126d007afec6ede1e4afd0a5218c89fd6079ad4182
+	source = https://github.com/ocaml-ppx/ocaml-migrate-parsetree/releases/download/v1.4.0/ocaml-migrate-parsetree-v1.4.0.tbz
+	sha512sums = 61ee91d2d146cc2d2ff2d5dc4ef5dea4dc4d3c8dbd8b4c9586d64b6ad7302327ab35547aa0a5b0103c3f07b66b13d416a1bee6d4d117293cd3cabe44113ec6d4
 
 pkgname = ocaml-migrate-parsetree
 
