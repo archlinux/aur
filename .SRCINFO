@@ -6,7 +6,7 @@ pkgbase = css-beautify-git
 	arch = any
 	license = MIT
 	depends = python-jsbeautifier
-	source = css-beautify-git::git+https://github.com/Jorengarenar/css-beautify.git
+	source = css-beautify::git+https://github.com/Jorengarenar/css-beautify.git
 	sha512sums = SKIP
 
 pkgname = css-beautify-git
