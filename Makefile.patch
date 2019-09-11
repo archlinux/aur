@@ -1,0 +1,13 @@
+--- Makefile	2019-09-11 21:29:16.024251398 +0800
++++ Makefile	2019-09-11 21:30:25.313634546 +0800
+@@ -41,6 +41,10 @@
+ 	  install -d $(DESTDIR)$(RIME_DATA_DIR)/build; \
+ 	  install -m 644 $(OUTPUT)/build/*.* $(DESTDIR)$(RIME_DATA_DIR)/build; \
+ 	fi
++	@if [ -d "$(OUTPUT)/opencc" ]; then \
++	  install -d $(DESTDIR)$(RIME_DATA_DIR)/opencc; \
++	  install -m 644 $(OUTPUT)/opencc/*.* $(DESTDIR)$(RIME_DATA_DIR)/opencc; \
++	fi
+
+ clean:
+ 	rm -rf $(OUTPUT) > /dev/null 2>&1 || true

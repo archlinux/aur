@@ -1,0 +1,20 @@
+pkgbase = rime-data
+	pkgdesc = Rime schema repository from plum
+	pkgver = r109.60cddc8
+	pkgrel = 1
+	url = https://github.com/rime/plum/
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = git
+	makedepends = librime
+	provides = librime-data
+	provides = brise
+	conflicts = brise
+	source = rime-data::git+https://github.com/rime/plum.git
+	source = Makefile.patch
+	sha512sums = SKIP
+	sha512sums = 5da46a18f4391eb3d76c58929db77d8a05d385437d6a2b16ce8b6df6465b494056464fd9481b08fc2286ad0ed35c646add1ff0a7e810350063d0255b05910f3b
+
+pkgname = rime-data
+
