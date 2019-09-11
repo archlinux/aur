@@ -3,11 +3,10 @@
 # Created by Darjan Krijan <darjan_krijan@gmx.de>
 #
 
-set MODULE "aocc"
-set BASE_DIR "/opt"
-set VERSION "2.0.0"
+set MODULE      "aocc"
+set BASE_DIR    "/opt"
+set VERSION     "2.0.0"
 set MODULE_ROOT "$BASE_DIR/$MODULE"
-
 set MODULE_TEXT "AMD Optimizing C/C++ Compiler"
 
 prepend-path PATH               $MODULE_ROOT/bin
