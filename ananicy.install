@@ -1,0 +1,5 @@
+post_install() {
+	echo "To enable:"
+	echo "\$ sudo systemctl enable ananicy"
+	echo "Configs in /etc/ananicy.d/"
+}
