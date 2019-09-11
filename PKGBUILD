@@ -20,7 +20,7 @@ options=()
 install=
 changelog=
 source=("https://test.ton.org/ton-test-liteclient-full.tar.xz" "https://test.ton.org/fiftbase.pdf")
-md5sums=('d76a4b004309782f828bfc2f824aab63' '1297ddcfdc880c8ed563e7f5aaf10714')
+md5sums=('5883531eaf293e0278a65525195d39a4' '1297ddcfdc880c8ed563e7f5aaf10714')
 noextract=()
 validpgpkeys=()
 
