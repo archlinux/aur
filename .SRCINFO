@@ -8,6 +8,7 @@ pkgbase = brainworkshop-git
 	license = GPL
 	depends = python-pyglet
 	depends = openal
+	depends = ffmpeg
 	provides = brainworkshop
 	conflicts = brainworkshop
 	source = git+https://github.com/samcv/brainworkshop.git

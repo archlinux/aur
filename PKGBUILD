@@ -5,7 +5,7 @@ pkgdesc="Brain Workshop is a free open-source version of the Dual N-Back mental 
 arch=('any')
 url="https://github.com/samcv/brainworkshop"
 license=('GPL')
-depends=('python-pyglet' 'openal')
+depends=('python-pyglet' 'openal' 'ffmpeg')
 install='brainworkshop.install'
 provides=('brainworkshop')
 conflicts=('brainworkshop')
@@ -23,7 +23,7 @@ pkgver() {
 
 prepare () {
   cd "${srcdir}/brainworkshop"
-  curl -L https://github.com/samcv/brainworkshop/pull/11.patch | patch -p1
+  curl -L https://github.com/samcv/brainworkshop/pull/13.patch | patch -p1
 }
 
 package() {
