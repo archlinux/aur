@@ -2,7 +2,7 @@
 # Maintainer:  Graziano Giuliani <graziano.giuliani@gmail.com>
 pkgname=nco
 pkgver=4.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="netCDF Operators allow users to manipulate and analyse data stored in NetCDF files"
 url="http://nco.sourceforge.net/"
 license=("GPL")
@@ -23,7 +23,7 @@ build() {
       --enable-ncoxx \
       --enable-udunits2 \
       --enable-optimize-custom
-  make CXXFLAGS="-fpermissive -fPIC" CFLAGS="-fPIC"
+  make CXXFLAGS+="-fpermissive -fPIC" CFLAGS+="-fPIC"
   # make check || return 1
 }
 
