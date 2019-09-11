@@ -2,7 +2,7 @@
 # Contributor: LinArcx <linarcx at gmail.com>
 pkgname=kindd
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc=" A Kindful dd gui written in qt quick"
 arch=('any')
 url="https://github.com/LinArcX/Kindd"
