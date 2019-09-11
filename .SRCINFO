@@ -1,7 +1,7 @@
 pkgbase = skycoin-bin
 	pkgdesc = Skycoin Cryptocurrency Wallet; Deterministic Build
 	pkgver = 0.26.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/skycoin/skycoin
 	arch = x86_64
 	makedepends = git

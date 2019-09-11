@@ -8,8 +8,8 @@ pkgdesc="Skycoin Cryptocurrency Wallet; Deterministic Build"
 pkgoption1="gui-standalone-linux-x64"
 pkgoption2="gui-standalone-linux-arm"
 pkgver='0.26.0'
-pkggopath="github.com/$projectname/$pkgname1"
-pkgrel=1
+pkggopath="github.com/${projectname}/${pkgname1}"
+pkgrel=2
 arch=('x86_64')
 url="https://${pkggopath}"
 license=()
@@ -125,25 +125,25 @@ skybin=${srcdir}/bin
 #avoid generic names for binaries
 #collect the binaries & install
 skybins=$( ls "$skybin")
-for i in $skybins; do
-  install -Dm755 ${srcdir}/bin/$i ${pkgdir}/usr/lib/${projectname}/go/bin/$i
-  ln -rTsf ${pkgdir}/usr/lib/${projectname}/go/bin/$i ${pkgdir}/usr/bin/$i
-  chmod 755 ${pkgdir}/usr/bin/$i
+for i in ${skybins}; do
+  install -Dm755 ${srcdir}/bin/${i} ${pkgdir}/usr/lib/${projectname}/go/bin/${i}
+  ln -rTsf ${pkgdir}/usr/lib/${projectname}/go/bin/${i} ${pkgdir}/usr/bin/${i}
+  chmod 755 ${pkgdir}/usr/bin/${i}
 done
 #install the web dir (UI)
 cp -r ${srcdir}/docker/${pkgname1}-${pkgver}/src/gui/static ${pkgdir}/usr/lib/${projectname}/${pkgname1}/src/gui
 #install the scripts
 skycoinscripts=$( ls ${srcdir}/${pkgname1}-scripts )
 for i in $skycoinscripts; do
-cp ${srcdir}/${pkgname1}-scripts/$i ${pkgdir}/usr/bin/$i
+cp ${srcdir}/${pkgname1}-scripts/${i} ${pkgdir}/usr/bin/${i}
 done
 #make symlinks have less generic names
 namechange=$(ls --ignore='skycoin*' ${pkgdir}/usr/bin/)
-for i in $namechange; do
-mv ${pkgdir}/usr/bin/$i ${pkgdir}/usr/bin/${pkgname1}-$i
+for i in ${namechange}; do
+mv ${pkgdir}/usr/bin/${i} ${pkgdir}/usr/bin/${pkgname1}-${i}
 done
 #install the system.d service
 install -Dm644 ${srcdir}/${pkgname1}-node.service ${pkgdir}/usr/lib/systemd/system/${pkgname1}-node.service
 }
 
-#previous #source+=("https://downloads.skycoin.net/wallet/$pkgname1-$pkgver-$_pkgarch.tar.gz")
+#previous #source+=("https://downloads.skycoin.net/wallet/${pkgname1}-$pkgver-$_pkgarch.tar.gz")
