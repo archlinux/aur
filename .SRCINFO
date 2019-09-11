@@ -1,7 +1,7 @@
 pkgbase = ms-teams
 	pkgdesc = Microsoft Teams for Linux is your chat-centered workspace in Office 365
 	pkgver = 1.2.00.24756
-	pkgrel = 3
+	pkgrel = 2
 	url = https://teams.microsoft.com/start
 	install = ms-teams.install
 	arch = x86_64
@@ -13,7 +13,15 @@ pkgbase = ms-teams
 	depends = cairo
 	depends = fontconfig
 	depends = dbus
+	depends = glibc
 	depends = glib2
+	depends = gcc-libs
+	depends = libxss
+	depends = libxtst
+	depends = nss
+	optdepends = libdbusmenu-glib
+	optdepends = alsa-lib
+	optdepends = libnotify
 	provides = ms-teams=1.2.00.24756
 	options = !emptydirs
 	options = !strip
