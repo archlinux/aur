@@ -1,8 +1,8 @@
-# Maintainer: BrLi <brli@chakralinux.org>
+# Maintainer: BrLi <brli at chakralinux dot org>
 
 pkgname=zettlr
 pkgver=1.4.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A markdown editor for writing academic texts and taking notes"
 arch=('x86_64')
 url="https://www.zettlr.com"
@@ -15,6 +15,11 @@ optdepends=('pandoc: For exporting to various format'
 source=($pkgname::git+https://github.com/Zettlr/Zettlr.git#tag=v$pkgver)
 sha1sums=(SKIP)
 
+prepare() {
+    cd $srcdir/$pkgname/scripts
+    sed "s/'fr-FR'/'fr-FR','ja-JP','zh-CN','es-ES','ru-RU'/" -i refresh-language.js
+}
+
 build() {
     cd $srcdir/$pkgname
     yarn install --pure-lockfile
@@ -22,28 +27,31 @@ build() {
     yarn handlebars
     yarn lang:refresh
     yarn wp:prod
+    yarn reveal:build
 
     cd $srcdir/$pkgname/source
     yarn install --pure-lockfile
 }
 
 package() {
-    install -dm 755 "$pkgdir"/usr/lib/$pkgname
+    local _destdir=usr/lib/$pkgname
+    install -dm755 "$pkgdir/$_destdir"
 
-    cd $srcdir/$pkgname/
-    cp -r --no-preserve=ownership --preserve=mode source/* "$pkgdir"/usr/lib/$pkgname/
+    cd $srcdir/$pkgname/source
+    sed "s,$srcdir/$pkgname/source,$_destdir,g" -i renderer/assets/vue/vue-sidebar.js
+    cp -r --no-preserve=ownership --preserve=mode * "$pkgdir/$_destdir/"
 
     # Remove unneeded addin
-    find $pkgdir/usr/lib/zettlr -name "fonts" -exec rm -rfv {} +
-    find $pkgdir/usr/lib/zettlr -name ".gitignore" -or -name ".eslintrc.json" -or -name ".npmignore" -exec rm -rfv {} +
+    find $pkgdir/$_destdir -name "fonts" -exec rm -rfv {} +
+    find $pkgdir/$_destdir -name ".gitignore" -or -name ".eslintrc.json" -or -name ".npmignore" -or -name "fonts" -exec rm -rfv {} +
 
     install -Dm755 /dev/stdin $pkgdir/usr/bin/$pkgname <<END
 #!/bin/bash
-exec electron /usr/lib/$pkgname "\$@"
+exec electron /$_destdir "\$@"
 END
 
     for px in 16 24 32 48 64 96 128 256; do
-        install -Dm644 resources/icons/png/"$px"x"$px".png \
+        install -Dm644 $srcdir/$pkgname/resources/icons/png/"$px"x"$px".png \
         $pkgdir/usr/share/icons/hicolor/"$px"x"$px"/apps/$pkgname.png
     done
 
