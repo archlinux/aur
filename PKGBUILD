@@ -7,8 +7,8 @@ pkgver() {
   cd "$srcdir/${pkgname%-git}"
   printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-pkgver=r723.b52a03b
-pkgrel=2
+pkgver=r728.b7f0532
+pkgrel=1
 
 pkgdesc='Configure neomutt, isync, getmail and msmtp with pass for passwords'
 arch=('x86_64')
@@ -34,8 +34,11 @@ optdepends=('imagemagick: view images inside of the neomutt TUI'
 options=('zipman')
 
 changelog=changelog.txt
-source=("git+$url")
-sha256sums=('SKIP')
+install=wizard.install
+source=("git+$url"
+        'migrationhelper')
+sha256sums=('SKIP'
+            '34682620297727b9bf93670b84592050d59181e682d3867cd56aefedbd67243f')
 
 #check() {
 #  cd "${pkgname%-git}"
@@ -45,7 +48,8 @@ sha256sums=('SKIP')
 package() {
   cd "${pkgname%-git}"
   make DESTDIR="$pkgdir" -s install
-  install -Dm644 -t"$pkgdir/usr/share/doc/${pkgname%-git}/" README.rst
+  install -m755 ../migrationhelper -t"$pkgdir/usr/share/${pkgname%-git}/"
+  install -Dm644 README.rst -t"$pkgdir/usr/share/doc/${pkgname%-git}/"
 }
 
 # vim: ts=2 sw=2 et ft=PKGBUILD:
