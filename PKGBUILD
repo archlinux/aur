@@ -1,7 +1,7 @@
 # Maintainer: BrLi <brli@chakralinux.org>
 
 pkgname=zettlr
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="A markdown editor for writing academic texts and taking notes"
 arch=('x86_64')
