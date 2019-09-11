@@ -10,7 +10,7 @@
 # https://github.com/mymedia2/tdesktop
 
 pkgname=telegram-desktop-udf-patched
-pkgver=1.8.2
+pkgver=1.8.8
 pkgrel=1
 pkgdesc='Telegram Desktop client with several personal patches'
 arch=('x86_64')
@@ -48,7 +48,6 @@ source=(
     "always_clear_history_for_everyone.patch"
     "always_pin_without_notify.patch"
     "always_send_as_photo_or_album.patch"
-    "search_by_any_user.patch"
 )
 sha512sums=(
     'SKIP'
@@ -63,18 +62,17 @@ sha512sums=(
     'b87414ceaae19185a8a5749cea1f6d9f3fc3c69b8dd729e3db8790cde00b987c3c827cd30baf0eac579d1884e34aa2f37bb90778c3c0bc9ca211d75a82891b9d'
     '16874fabcb0d04d6bf8db1ee2fd77fbd09eeb6acc28bb5fd915d378f7a5ed7ebf4aae01c390e516695572cf9ef0e2cb59493e21a35643fd63ddf3fec446858a6'
     '3b6a0450f7981c2ce5f90c1ea46d9fb504194609f357b957b5c4a741681d3c531252394df116f8b77780a3a110783c047c9a081f9651e0792e7423573e390392'
-    'a8f1708616a598fea3cb94e3b63b02a7b13b55abd129a5dc02ad502529f4ebe7a673b6a350b669290fd26135358d21e2e10bf4a11d88f58f0685b7c4ab515bc5'
+    'f5c7feb710fa12694c9f4ae9c818259c6ced5dc9d63079556a14c8bac14e3cc0ec4d3322df3650530b8afd8a512e573b4d3d8b3130b6374e842a92daacedd534'
     'd60694dc701aa985b0e82a12c9732b945082470441c687b33167a94f94efcf253baf43bb7280ec160ba338485ee5c62de138e4804cae05f27cc5cf4298166d39'
     '6d0bac5aa4c4992b5400a9a9318f7a4e92d5eab961917cf0b05cdd251ab66a77c52ec8fbef246e8019606a7624d7b5420b87f8153e071e9724c7d2f5c94e47c0'
     'ce6be003220267bac5483caf8302b492e1581892bc36d35a61236ebf9f9d766b8bd2159557a1c36256aa85f461797a38bfaae57b12da7a72101b21c0b17ed653'
     'a83b80668b2dc2cc77c857069fdb45b487793fda01ad8a63bab66c6a1c71e5d032050e4ec7efb5b4c3216badc5377c856ef1f4a59c2e02b24ee53b1d83124bf3'
     'e25dc1c54d6001a7a3740c6cee40a12a2313a3fd2e41986268f0ee5d9d8bf2d34812f539efb0eb5d26d3f263b2e4a7849016711532bf215aa9ff38da30175557'
     # Custom patches
-    '31ed454cbfe5811dedfac516e1c55cd6a2ea69fedb5e09035c04ed1b9647270eafdee1501494ecd948b6baa7a38dbf0747ba686dc89f31804589a39470793ac2'
+    'e88fa96024efc6176c818d0a46684e0ee1fb3a7bdadb323ad3b29f736209c80b6c31b135cf84389e7e2bbd614e57b241e4437c94b6fd114e73cfc418bf130015'
     '4a7e9de924bbf32fb4cd24ffa2764bcf49e0540bba649829b180da20a62810d4a21ebf11529d4eca22c9ceaa93b434ca3fbfd0b636795f8109ea4e1eddbff8f3'
     'b4eeeb4b2801f3edcc7423f28403b1dfabd3f3869425e4f102a2a4554bde93e63bd73d2d4dbf3e5748ce831b570e441d3917f532fc5cceac1ee5e8fd0832cb30'
     '650a2a2568cacd2775979614c06c90a4c505207246eb229bbf4fccd8e9fc2540093eaa5bd748e3801c1e1b43beb89b19674c27c5f400d451475b0ee068b04ca2'
-    'f2bee85f3e665b4fe2c1273d2dd8f1ce893e72f2280df6722b14acf5c78dc12b1b71b95c3f8d701f7495265df520cea0075f0299582b21ca0b2fd485d6cf66d6'
 )
 
 prepare() {
@@ -101,10 +99,18 @@ prepare() {
     patch -Np1 -i "$srcdir/always_clear_history_for_everyone.patch"
     patch -Np1 -i "$srcdir/always_pin_without_notify.patch"
     patch -Np1 -i "$srcdir/always_send_as_photo_or_album.patch"
-    patch -Np1 -i "$srcdir/search_by_any_user.patch"
 
     # disable static-qt for rlottie
     sed "/RLOTTIE_WITH_STATIC_QT/d" -i "$srcdir/tdesktop/Telegram/gyp/lib_rlottie.gyp"
+
+    # fix C++ ranges::sized_iterator_range
+    sed "s/ranges::make_iterator_range/ranges::subrange/g" -i "$srcdir/tdesktop/Telegram/SourceFiles/data/data_channel.cpp"
+    sed "s/ranges::make_iterator_range/ranges::subrange/g" -i "$srcdir/tdesktop/Telegram/SourceFiles/chat_helpers/emoji_keywords.cpp"
+    sed "s/ranges::make_iterator_range/ranges::subrange/g" -i "$srcdir/tdesktop/Telegram/SourceFiles/media/streaming/media_streaming_reader.cpp"
+    sed "s/ranges::make_iterator_range/ranges::subrange/g" -i "$srcdir/tdesktop/Telegram/SourceFiles/ui/widgets/input_fields.cpp"
+    sed "s/ranges::make_iterator_range/ranges::subrange/g" -i "$srcdir/tdesktop/Telegram/SourceFiles/ui/text/text_entity.cpp"
+    sed "s/make_iterator_range/ranges::subrange/g" -i "$srcdir/tdesktop/Telegram/SourceFiles/history/history_inner_widget.cpp"
+    sed "/int remainder = 0;/a inline bool operator==(const PercentCounterItem &o) const { return !(*this < o) && !(o < *this);}" -i "$srcdir/tdesktop/Telegram/SourceFiles/history/view/media/history_view_poll.cpp"
 
     cd "$srcdir/tdesktop"
     cd "Telegram/ThirdParty/libtgvoip"
