@@ -1,6 +1,6 @@
 pkgbase = tome4-git
 	pkgdesc = An open-source, single-player, role-playing roguelike game set in the world of Eyal.
-	pkgver = 1.5.0.r1172.g037691f2b
+	pkgver = 1.5.0.r1336.g8390d199d
 	pkgrel = 1
 	url = http://tome.te4.org/
 	arch = i686
