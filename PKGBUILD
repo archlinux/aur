@@ -1,6 +1,6 @@
 # Maintainer: nroi <nroi@mailbox.org>
 pkgname=cpcache-git
-pkgver=0.1.0.r0.g9249d15
+pkgver=0.1.5.r0.g4adf926
 pkgrel=1
 pkgdesc="central pacman cache"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 makedepends=('erlang-nox' 'elixir')
 install="${pkgname%-git}.install"
 backup=('etc/cpcache/cpcache.toml')
-source=('git+https://github.com/nroi/cpcache.git#tag=0.1.0'
+source=('git+https://github.com/nroi/cpcache.git#tag=0.1.5'
         'sysuser.conf'
         'cpcache.install'
         'cpcache.service'
