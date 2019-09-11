@@ -1,7 +1,7 @@
 # Maintainer: gaelic < gaelic at luchmhor dot net>
 # Maintainer: Peter Reschenhofer < peterreschenhofer at gmail dot com >
 pkgname=gams
-pkgver=27.1.0
+pkgver=28.2.0
 pkgrel=1
 pkgdesc="The General Algebraic Modeling System (GAMS) is a high-level modeling system for mathematical optimization."
 arch=('x86_64')
@@ -14,7 +14,7 @@ options=('!strip')
 source=("https://d37drm4t2jghv5.cloudfront.net/distributions/${pkgver}/linux/linux_x64_64_sfx.exe"
         "gams-studio.desktop")
 
-sha256sums=("bf51c6c1a35a7376b5ec1f568584b2d66e9c95581bd25f32d7774716df94a5b1"
+sha256sums=("766e23e5f45c991801cf6e1a267962243655cce43210994f68cc632e79113043"
             "5349929ad07ea8de5e6f1e5d03f264b2fd5afc161b4204981d30fc2ff8faed7e")
 
 package() {
