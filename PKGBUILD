@@ -1,13 +1,13 @@
 # Maintainer: Lettier <gifcurry_aur a@@at@t lettier dd.ot..t ccommm>
 
 _name=gifcurry
-_ver=5.0.0.0
+_ver=6.0.0.0
 _xrev=0
 
 pkgname=${_name}
 pkgver=${_ver}_${_xrev}
 pkgrel=1
-pkgdesc="Your open source video to GIF maker built with Haskell."
+pkgdesc="The open-source, Haskell-built video editor for GIF makers."
 url="https://github.com/lettier/gifcurry"
 license=("BSD3")
 arch=("x86_64")
@@ -15,7 +15,7 @@ makedepends=()
 depends=("gtk3" "imagemagick" "gstreamer" "gst-plugins-base-libs" "gst-plugins-base" "gst-plugins-good")
 options=()
 source=("https://www.github.com/lettier/${_name}/releases/download/${_ver}/${_name}-linux-${_ver}.tar.gz")
-md5sums=('70a176ed398a957ded0297eb73004c45')
+md5sums=('3e66d3ba4fc446787fc50786470bd806')
 
 package() {
   cd "${srcdir}/${_name}-linux-${_ver}"
