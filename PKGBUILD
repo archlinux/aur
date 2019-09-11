@@ -1,6 +1,6 @@
 # Maintainer: Jorengarenar
 
-pkgname=css-beautify
+pkgname=css-beautify-git
 pkgver=1.10.1
 pkgrel=2
 pkgdesc='Beautifier for CSS'
