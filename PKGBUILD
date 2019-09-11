@@ -5,7 +5,7 @@
 
 pkgname=mailwizard
 
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 
 pkgdesc='Configure neomutt, isync, getmail and msmtp with pass for passwords'
@@ -31,7 +31,7 @@ options=('zipman')
 
 changelog=changelog.txt
 source=("$pkgname.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('c895eb5f15a2c677172c7d37faf0c310c94bb9f918bad6989863564ebfd4a954')
+sha256sums=('9d99ab46762cbcd91b90c51cee860950720a1f8561a84c517c930209c90c6237')
 
 #check() {
 #  cd "$pkgname-$pkgver"
