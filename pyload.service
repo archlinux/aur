@@ -1,9 +1,9 @@
 [Unit]
-Description=pyLoad Daemon
+Description=pyLoad Core
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/pyload --daemon
+ExecStart=/usr/bin/pyLoadCore
 User=pyload
 Group=pyload
 

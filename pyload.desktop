@@ -1,0 +1,19 @@
+[Desktop Entry]
+Categories=Network;FileTransfer;
+Comment[de]=schlanker, schneller Open-Source Downloader
+Comment=fast, lightweight Open-Source Downloader
+Exec=/usr/bin/pyLoadCore
+GenericName[de]=pyLoad
+GenericName=pyLoad
+Icon=pyload
+MimeType=
+Name[de]=pyLoad Download Manager
+Name=pyLoad Download Manager
+Path=
+StartupNotify=false
+Terminal=true
+Type=Application
+X-DBUS-ServiceName=
+X-DBUS-StartupType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=
