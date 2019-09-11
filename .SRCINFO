@@ -1,0 +1,15 @@
+pkgbase = python-apply_defaults
+	pkgdesc = Apply default values to functions. Makes configuration easy! Application settings come from a config file into your code cleanly.
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/bcb/apply_defaults
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	options = !emptydirs
+	source = python-apply_defaults-0.1.3.tar.gz::https://files.pythonhosted.org/packages/source/a/apply_defaults/apply_defaults-0.1.3.tar.gz
+	sha256sums = ce7eed01ab3830a701f5c5b7a0322061fbdb1639458350ec76ea27526b2373c8
+
+pkgname = python-apply_defaults
+
