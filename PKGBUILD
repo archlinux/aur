@@ -1,6 +1,6 @@
 # Maintainer: robertfoster
 
-pkgname='pyload-git'
+pkgname=pyload-nightly
 pkgver=v0.4.9.r4782.gd686d625b
 pkgrel=2
 pkgdesc="Downloadtool for One-Click-Hoster written in python. Latest devel branch"

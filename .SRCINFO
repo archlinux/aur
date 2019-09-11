@@ -1,4 +1,4 @@
-pkgbase = pyload-git
+pkgbase = pyload-nightly
 	pkgdesc = Downloadtool for One-Click-Hoster written in python. Latest devel branch
 	pkgver = v0.4.9.r4782.gd686d625b
 	pkgrel = 2
@@ -22,10 +22,10 @@ pkgbase = pyload-git
 	conflicts = pyload
 	conflicts = pyload-hg
 	backup = var/lib/pyload/pyload.conf
-	source = pyload-git::git+https://github.com/pyload/pyload.git
+	source = pyload-nightly::git+https://github.com/pyload/pyload.git
 	source = pyload.service
 	md5sums = SKIP
 	md5sums = 75069bddcec3ee630d2abea02ffef0b4
 
-pkgname = pyload-git
+pkgname = pyload-nightly
 
