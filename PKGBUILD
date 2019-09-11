@@ -11,7 +11,7 @@ source=("${pkgname}::https://github.com/Jorengarenar/${pkgname}/archive/${pkgver
 sha512sums=(SKIP)
 
 package() {
-    cd "$srcdir/$pkgname"
+    cd "$srcdir/$pkgname-${pkgver}"
     mkdir -p "${pkgdir}/usr/bin"
     install -Dm755 $pkgname "${pkgdir}/usr/bin"
     mkdir -p "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
