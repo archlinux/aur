@@ -1,7 +1,7 @@
 pkgbase = cxo
 	pkgdesc = CX Object Storage System for the Skycoin Blockchain
 	pkgver = 3.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/skycoin/cxo
 	arch = any
 	makedepends = go
