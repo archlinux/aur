@@ -30,8 +30,11 @@ optdepends=('imagemagick: view images inside of the neomutt TUI'
 options=('zipman')
 
 changelog=changelog.txt
-source=("$pkgname.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('9d99ab46762cbcd91b90c51cee860950720a1f8561a84c517c930209c90c6237')
+install=wizard.install
+source=("$pkgname.tar.gz::$url/archive/v$pkgver.tar.gz"
+        'migrationhelper')
+sha256sums=('9d99ab46762cbcd91b90c51cee860950720a1f8561a84c517c930209c90c6237'
+            '34682620297727b9bf93670b84592050d59181e682d3867cd56aefedbd67243f')
 
 #check() {
 #  cd "$pkgname-$pkgver"
@@ -41,7 +44,8 @@ sha256sums=('9d99ab46762cbcd91b90c51cee860950720a1f8561a84c517c930209c90c6237')
 package() {
   cd "$pkgname-$pkgver"
   make DESTDIR="$pkgdir" -s install
-  install -Dm644 -t"$pkgdir/usr/share/doc/$pkgname/" README.rst
+  install -m755 ../migrationhelper -t"$pkgdir/usr/share/$pkgname/"
+  install -Dm644 README.rst -t"$pkgdir/usr/share/doc/$pkgname/"
 }
 
 # vim: ts=2 sw=2 et ft=PKGBUILD:

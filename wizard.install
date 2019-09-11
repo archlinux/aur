@@ -1,0 +1,17 @@
+post_install() {
+	echo -e '\n  \e[1;31mmailwizard - IMPORTANT\n  ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\e[0;32m'
+	cat <<-ET1
+		If you are switching from 'mutt-wizard' and  still have the configuration files,
+		these need to be patched in order to prevent conflicts with mailwizard.  In that
+		case, please run :
+	ET1
+	echo -e '\n\e[1;33m    /usr/share/mailwizard/migrationhelper\n\e[0;32m'
+	cat <<-ET2
+		once the installation is complete.  This script will either execute an automatic
+		migration, or give you a simple four-step guide if you'd rather do the necessary
+		steps yourself.
+	ET2
+	echo -e '\e[0m\n'
+}
+
+# vim: ts=2 sw=2 noet ft=bash:
