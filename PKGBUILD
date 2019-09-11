@@ -1,7 +1,7 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 _npmname=webpack-cli
 pkgname=nodejs-webpack-cli
-pkgver=3.3.7
+pkgver=3.3.8
 pkgrel=1
 pkgdesc="CLI for webpack & friends"
 arch=(any)
@@ -12,7 +12,7 @@ optdepends=('nodejs-webpack')
 makedepends=('npm')
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
 noextract=($_npmname-$pkgver.tgz)
-sha256sums=('ae836d53532f80af5f91749c0f815a59bb289e98375de4d6754ca338047a97f1')
+sha256sums=('a198025f402cb37d0e44329ff35fb8dc3bb74c5dd533d299b2997a0b4fc5973f')
 
 package() {
   cd $srcdir
