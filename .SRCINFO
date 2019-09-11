@@ -8,7 +8,7 @@ pkgbase = tym
 	depends = vte3
 	depends = lua
 	source = https://github.com/endaaman/tym/releases/download/3.0.0/tym-3.0.0.tar.gz
-	sha1sums = 28aa081da29d51b96623c857f47e281b3d177150
+	sha1sums = 2b5ff07b7206ecaffa012aadda52e9dd9a2eda6c
 
 pkgname = tym
 
