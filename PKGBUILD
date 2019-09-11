@@ -3,7 +3,7 @@
 pkgname=libqsqlcipher
 _pkgver=5.13-1
 pkgver=5.13
-pkgrel=1
+pkgrel=2
 pkgdesc="Qt5 sqldriver plugin for SQLCipher"
 url="https://github.com/sjemens/qsqlcipher-qt5"
 license=('LGPL3')
