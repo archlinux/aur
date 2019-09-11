@@ -1,0 +1,16 @@
+pkgbase = eudev-s6
+	pkgdesc = s6 service scripts for eudev
+	pkgver = 20190802
+	pkgrel = 1
+	url = https://github.com/artix-linux
+	install = udevd.install
+	arch = any
+	depends = elogind
+	depends = s6-rc
+	source = udevd.run
+	source = udevd.type
+	sha256sums = 78bca25f04b157d6997c6480de9a23d2a65284b3362f20338b23455b9ec1214f
+	sha256sums = d0001a150b83f68f09004c5059045cb76a3f064eed4d42ce072bc3722c118006
+
+pkgname = eudev-s6
+
