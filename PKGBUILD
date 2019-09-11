@@ -1,19 +1,18 @@
 # Maintainer: Kevin Brodsky <corax26 at gmail dot com>
 # Contributor: Anton Jongsma <anton@felrood.nl>
 pkgname=bisonc++
-pkgver=6.01.03
+pkgver=6.03.00
 pkgrel=1
 pkgdesc='C++ parser generator'
 arch=('i686' 'x86_64')
-url='https://fbb-git.github.io/bisoncpp/'
+url='https://fbb-git.gitlab.io/bisoncpp/'
 license=('GPL')
-# Versions taken from the 'required' file in sources
-depends=('libbobcat>=4.02.00')
-makedepends=('icmake>=8.01.00' 'yodl>=3.08.01')
+depends=('libbobcat')
+makedepends=('icmake' 'yodl')
 optdepends=()
-source=("https://github.com/fbb-git/bisoncpp/archive/${pkgver}.tar.gz"
+source=("https://gitlab.com/fbb-git/bisoncpp/-/archive/${pkgver}/bisoncpp-${pkgver}.tar.gz"
         'manual_license.patch')
-md5sums=('f847ccb05583a8ac309c4a91ed9f6f93'
+md5sums=('13dcb06e43a55e0f90303e3572ac269c'
          'bab1f76582bd7518df6debe7265fdd7c')
 
 build() {
@@ -21,7 +20,7 @@ build() {
 
   patch -p1 -i "$srcdir/manual_license.patch"
 
-  CXXFLAGS="$CXXFLAGS --std=c++14"
+  CXXFLAGS="$CXXFLAGS --std=c++2a"
   # Add the -P option not to use precompiled headers, which can be useful since
   # they require a lot of free space, compared to a normal compilation:
   # ./build -P program
