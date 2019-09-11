@@ -1,7 +1,7 @@
 pkgbase = lib32-libwmf
 	pkgdesc = A library for reading vector images in Microsoft's native Windows Metafile Format (WMF) (32-bit)
 	pkgver = 0.2.12
-	pkgrel = 1
+	pkgrel = 2
 	url = http://wvware.sourceforge.net/libwmf.html
 	arch = x86_64
 	license = LGPL

@@ -4,7 +4,7 @@
 _basename=libwmf
 pkgname=lib32-libwmf
 pkgver=0.2.12
-pkgrel=1
+pkgrel=2
 pkgdesc="A library for reading vector images in Microsoft's native Windows Metafile Format (WMF) (32-bit)"
 arch=('x86_64')
 url="http://wvware.sourceforge.net/libwmf.html"
@@ -31,7 +31,7 @@ build() {
     export CC='gcc -m32'
     export CXX='g++ -m32'
     export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
-    export FREETYPE_CONFIG='/usr/bin/pkg-config-32 freetype2'
+    export FREETYPE_CONFIG='/usr/bin/i686-pc-linux-gnu-pkg-config freetype2'
 
     ./configure \
         --build=i686-pc-linux-gnu \
