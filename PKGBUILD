@@ -1,13 +1,14 @@
-# Maintainer: Andrejs Mivreņiks <gim at fastmail dot fm>
+# Maintainer: Valentijn "noirscape" V. <neko at catgirlsin dot space>
+# Contributor: Andrejs Mivreņiks <gim at fastmail dot fm>
 pkgname=python-twitter
 pkgver=1.18.0
-pkgrel=1
+pkgrel=2
 pkgdesc='An API and command-line toolset for Twitter (twitter.com)'
 arch=('any')
 url='http://pypi.python.org/pypi/twitter/'
 license=('MIT')
 depends=('python')
-optdepends=('python-irclib: twitterbot utility dependency')
+optdepends=('python-irc: twitter ircbot dependency')
 replaces=('python-twitter-tools')
 makedepends=('python-setuptools')
 conflicts=('python-twitter-tools' 'python-twitter-tools-git' 'python-twitter-git')
