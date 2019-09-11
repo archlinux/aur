@@ -1,0 +1,9 @@
+post_install() {
+  echo -e '\e[32m' # green text
+  echo 'To use, copy a config from /usr/share/pureline/configs to ~/.pureline.conf'
+  echo 'then add the following lines to ~/.bashrc:'
+  echo 'if [[ -r "/usr/share/pureline/pureline" ]]; then'
+  echo '    source /usr/share/pureline/pureline ~/.pureline.conf'
+  echo 'fi'
+  echo -e '\e[0m' # normal text
+}
