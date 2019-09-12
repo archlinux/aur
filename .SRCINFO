@@ -1,16 +1,16 @@
 pkgbase = handlebars
 	pkgdesc = Handlebars.js is an extension to the Mustache templating language created by Chris Wanstrath. Handlebars.js and Mustache are both logicless templating languages that keep the view and the code separated like we all know they should be.
-	pkgver = v4.0.2
+	pkgver = v4.2.0
 	pkgrel = 1
 	url = http://handlebarsjs.com
 	arch = any
 	license = MIT
 	depends = nodejs
 	optdepends = nodejs-optimist
-	source = http://builds.handlebarsjs.com.s3.amazonaws.com/handlebars-v4.0.2.js
-	source = http://builds.handlebarsjs.com.s3.amazonaws.com/handlebars.runtime-v4.0.2.js
-	md5sums = 5afd2f949524fbf9a543fe7259e605e7
-	md5sums = 7328b11edac98c70ef2f93990183b068
+	source = http://builds.handlebarsjs.com.s3.amazonaws.com/handlebars-v4.2.0.js
+	source = http://builds.handlebarsjs.com.s3.amazonaws.com/handlebars.runtime-v4.2.0.js
+	md5sums = 00a8fa9882a9939dda50bb2d19f45b58
+	md5sums = c99722239b03f67747693ee31286e0fa
 
 pkgname = handlebars
 
