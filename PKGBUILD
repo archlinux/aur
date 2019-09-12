@@ -3,7 +3,7 @@ pkgname=angular-console-bin
 _pkgname=angularconsole
 depends=(fontconfig libxtst gtk3 cairo alsa-lib nss gcc-libs python libxss gconf)
 pkgver=8.0.0
-pkgrel=0
+pkgrel=1
 pkgdesc='Angular Console is the user interface for the Angular CLI'
 arch=('x86_64')
 url='https://github.com/nrwl/angular-console'
@@ -23,6 +23,6 @@ package() {
 
   install -Dm755 /dev/stdin "$pkgdir"/usr/bin/$_pkgname <<END
 #!/usr/bin/bash
-/opt/Terminus/terminus
+/opt/Angular\ Console/angular-console
 END
 }

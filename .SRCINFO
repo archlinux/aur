@@ -1,7 +1,7 @@
 pkgbase = angular-console-bin
 	pkgdesc = Angular Console is the user interface for the Angular CLI
 	pkgver = 8.0.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/nrwl/angular-console
 	arch = x86_64
 	license = MIT
