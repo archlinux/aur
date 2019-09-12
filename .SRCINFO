@@ -1,0 +1,28 @@
+pkgbase = zfs-dkms-head-git
+	pkgdesc = Kernel modules for the Zettabyte File System.
+	pkgver = 0.8.0.r270.gd66620681
+	pkgrel = 1
+	url = http://zfsonlinux.org/
+	arch = x86_64
+	groups = zfs-head-git
+	license = CDDL
+	makedepends = git
+	depends = zfs-utils-head-git
+	depends = lsb-release
+	depends = dkms
+	provides = zfs-git
+	provides = zfs
+	provides = zfs-headers
+	provides = spl
+	provides = spl-headers
+	conflicts = zfs-git
+	conflicts = zfs
+	conflicts = zfs-headers
+	conflicts = spl
+	conflicts = spl-headers
+	replaces = spl-dkms-git
+	source = git+https://github.com/zfsonlinux/zfs.git
+	sha256sums = SKIP
+
+pkgname = zfs-dkms-head-git
+
