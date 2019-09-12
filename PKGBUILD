@@ -2,7 +2,7 @@
 # Contributor: Mateusz Galazyn <carbolymer@gmail.com>
 
 pkgname=python-influxdb
-pkgver=5.2.1
+pkgver=5.2.3
 pkgrel=1
 pkgdesc="Python client for InfluxDB"
 arch=('any')
@@ -14,7 +14,7 @@ checkdepends=('python-nose' 'python-mock' 'python-requests-mock' 'python-pandas'
 optdepends=('influxdb')
 options=(!emptydirs)
 source=("https://github.com/influxdata/influxdb-python/archive/v$pkgver.tar.gz")
-sha512sums=('5a537ca14330d4ff133db1a06a126a7de2eedaa4dfe17e843cb07c7f7d515eb483d498348b28a172a99eac3942b05d91f507feb6dcc4de2e9568940e0520acdc')
+sha512sums=('49d70e6293883bad16db5d7d72e02988562311a070f8aca6c82880dea7f40b1c411d5882bc9e224934341a5180bc1fcb0987363cdf0e2ffe9e7f1c615e9588f8')
 
 build() {
   cd "$srcdir/influxdb-python-$pkgver"
