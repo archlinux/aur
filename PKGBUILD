@@ -145,8 +145,8 @@ package_sagemath-jupyter-python3-git() {
   cd sage/src
 
   export SAGE_ROOT="$PWD" \
-         SAGE_LOCAL="/usr"
-
+         SAGE_LOCAL="/usr" \
+         MATHJAX_DIR="/usr/share/mathjax2"
   python -c "from sage.repl.ipython_kernel.install import SageKernelSpec; SageKernelSpec.update(prefix='$pkgdir/usr')"
 # fix symlinks to assets
   for _i in $(ls ext/notebook-ipython); do
