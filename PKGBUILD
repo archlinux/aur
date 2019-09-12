@@ -1,7 +1,7 @@
 
 # Maintainer: nihilowy <nihilowy at gmail dot com>
 pkgname=surfer
-pkgver=3
+pkgver=4
 pkgrel=0
 
 pkgdesc="simple webkit2gtk browser"
