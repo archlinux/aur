@@ -1,6 +1,6 @@
 
 # Maintainer: Donald Webster <fryfrog@gmail.com>
-# Helpful url: https://ci.appveyor.com/project/galli-leo/radarr-usby1/branch/aphrodite/artifacts
+# Helpful url: https://radarr.aeonlucid.com/v1/update/aphrodite/changes?os=linux
 
 pkgname="radarr-aphrodite"
 pkgver="2.0.0.2051"
