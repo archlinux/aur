@@ -4,12 +4,12 @@
 
 pkgname=google-webdesigner
 pkgver=6.0.1.0801
-pkgrel=1
+pkgrel=2
 pkgdesc="Create engaging, interactive HTML5-based designs and motion graphics that can run on any device."
 arch=('x86_64')
 url="https://www.google.com/webdesigner"
 license=('custom:webdesigner')
-depends=('gtk2' 'libudev0-shim' 'gconf')
+depends=('gtk2' 'libudev0-shim' 'gconf' 'gcc-libs' 'gdk-pixbuf2' 'glibc' 'glib2' 'ca-certificates' 'ttf-liberation' 'libappindicator-gtk2' 'nss' 'libstdc++5' 'xdg-utils')
 optdepends=()
 provides=("google-webdesigner=${pkgver}")
 options=('!emptydirs' '!strip')
