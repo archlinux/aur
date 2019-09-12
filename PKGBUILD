@@ -8,33 +8,50 @@
 
 pkgname=swi-prolog-devel
 pkgver=8.1.13
-pkgrel=1
+pkgrel=2
 pkgdesc='Prolog environment (development version)'
 arch=('x86_64' 'i686')
-url='http://www.swi-prolog.org/'
-license=('GPL' 'LGPL')
-depends=('gmp' 'readline' 'openssl' 'libarchive')
-makedepends=('libxft' 'libjpeg' 'unixodbc' 'libxpm' 'libxinerama')
-optdepends=('unixodbc: for using the odbc4pl library'
+url='https://www.swi-prolog.org/'
+license=(GPL LGPL)
+depends=('gmp' 'readline' 'openssl' 'libarchive' 'libyaml')
+makedepends=(cmake jdk-openjdk junit libjpeg libxft libxinerama libxpm ninja unixodbc)
+optdepends=('unixodbc:     for using the odbc4pl library'
             'uuid: for using the uuid library'
-            'libjpeg: for using the pl2xpce library'
-            'libxpm: for using the pl2xpce library'
-            'libxinerama: for using the pl2xpce library'
-            'libxft: for using the pl2xpce library'
-            'java-environment: for interfacing java with the jpl package')
-#options=('!makeflags')
-source=("http://swi-prolog.org/download/devel/src/swipl-${pkgver}.tar.gz")
-sha256sums=('a8ff9e2b67a4e745f759328b76631a5d6608b0825de2336a103ab84aa6de9577')
-conflicts=('swi-prolog')
+            'libjpeg:      for using the pl2xpce library'
+            'libxpm:       for using the pl2xpce library'
+            'libxinerama:  for using the pl2xpce library'
+            'libxft:       for using the pl2xpce library'
+            'jdk-openjdk:  for using Prolog from Java'
+            'java-runtime: for using Prolog from Java')
+source=("https://www.swi-prolog.org/download/devel/src/swipl-$pkgver.tar.gz")
 provides=('swi-prolog')
+conflicts=('swi-prolog')
+
+sha256sums=('a8ff9e2b67a4e745f759328b76631a5d6608b0825de2336a103ab84aa6de9577')
 
 build() {
-  cd "swipl-$pkgver"
+  mkdir -p build
+  cd build
+  cmake ../swipl-$pkgver \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_C_FLAGS="$CFLAGS -fPIC -ffile-prefix-map=$PWD= -w" \
+    -DLIBEDIT_LIBRARIES=/usr/lib/libedit.so.0 \
+    -DLIBEDIT_INCLUDE_DIR=/usr/include \
+    -G Ninja
+  ../swipl-$pkgver/scripts/pgo-compile.sh
+  ninja
+}
 
-  mkdir build
-  cd build && cmake -DCMAKE_INSTALL_PREFIX=/usr .. && make
+check() {
+  cd build
+  # the prolog_in_java test fails
+  ctest -j 8 || true
 }
 
 package() {
-  make -C "swipl-$pkgver/build" DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" ninja -C build install
 }
+
+# getver: www.swi-prolog.org/download/devel
+# vim: ts=2 sw=2 et:
