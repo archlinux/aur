@@ -1,16 +1,16 @@
-# Maintainer: KeyLo99 <keylo99official@gmail.com>
+# Maintainer: orhun <github.com/orhun>
 
 _pkg=god
 pkgname=god-git
 pkgdesc="Utility for simplifying the Git usage"
-pkgver=1.4
+pkgver=1.5
 pkgrel=1
 arch=('any')
-url="https://github.com/KeyLo99/god"
+url="https://github.com/orhun/god"
 license=('GPL3')
 depends=('git')
 makedepends=('go>=1.7')
-source=('git://github.com/KeyLo99/god.git')
+source=('git://github.com/orhun/god.git')
 sha256sums=('SKIP')
 
 build() {
