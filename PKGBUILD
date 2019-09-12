@@ -1,6 +1,6 @@
 _pkgname=cros-container-guest-tools
 pkgname=${_pkgname}-git
-pkgver=r188.5d14ed4
+pkgver=r198.48dd2aa
 pkgrel=1
 pkgdesc="Guest tools for the Crostini containers on ChromeOS"
 arch=('any')
@@ -98,6 +98,7 @@ package() {
 
 	### cros-sommelier-config
 
+	# Reserve more hotkeys for ChromeOS to allow them work with/in Linux apps as well
 	sed -i \
 		-e 's|<Alt>bracketleft,<Alt>bracketright|<Alt>bracketleft,<Alt>bracketright,<Alt>minus,<Alt>equal,<Alt>1,<Alt>2,<Alt>3,<Alt>4,<Alt>5,<Alt>6,<Alt>7,<Alt>8,<Alt>9|g' \
 		${srcdir}/${_pkgname}/cros-sommelier-config/cros-sommelier-override.conf
@@ -105,6 +106,10 @@ package() {
 	sed -i \
 		-e 's|<Alt>bracketleft,<Alt>bracketright|<Alt>bracketleft,<Alt>bracketright,<Alt>minus,<Alt>equal,<Alt>1,<Alt>2,<Alt>3,<Alt>4,<Alt>5,<Alt>6,<Alt>7,<Alt>8,<Alt>9|g' \
 		${srcdir}/${_pkgname}/cros-sommelier-config/cros-sommelier-x-override.conf
+
+	# Set LIBGL_DRIVERS_PATH for sommelier and sommelier-x to fix GPU acceleration on some devices
+	sed -i '$ s|$|\nEnvironment="LIBGL_DRIVERS_PATH=/opt/google/cros-containers/lib"|' ${srcdir}/${_pkgname}/cros-sommelier-config/cros-sommelier-override.conf
+	sed -i '$ s|$|\nEnvironment="LIBGL_DRIVERS_PATH=/opt/google/cros-containers/lib"|' ${srcdir}/${_pkgname}/cros-sommelier-config/cros-sommelier-x-override.conf
 
 	install -m644 -D ${srcdir}/${_pkgname}/cros-sommelier-config/cros-sommelier-override.conf \
 					 ${pkgdir}/usr/lib/systemd/user/sommelier@0.service.d/cros-sommelier-override.conf
