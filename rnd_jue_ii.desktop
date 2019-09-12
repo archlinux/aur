@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=R'n'D Jue II
+Comment=R'n'D Jue II A remake of the game Rocks'n'Diamonds
+Exec=rnd_jue_ii
+Terminal=false
+Categories=Application;Game;
+Icon=/usr/share/rnd_jue_ii/graphics/jue64/icon.png

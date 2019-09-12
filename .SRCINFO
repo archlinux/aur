@@ -1,0 +1,20 @@
+pkgbase = rnd_jue_ii
+	pkgdesc = A remake of the game Rocks'n'Diamonds.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://www.jb-line.de/rnd17/17start_e.html
+	arch = x86_64
+	license = GPL2
+	depends = sdl2_image
+	depends = sdl2_mixer
+	depends = sdl2_net
+	depends = smpeg
+	source = http://www.jb-line.de/rnd17/dat/rndjue_II-1.0.0.tar.gz
+	source = rnd_jue_ii.desktop
+	source = rnd_jue_ii.sh
+	md5sums = b491e177a8e60273ba39a3bfa2d6ec3b
+	md5sums = d482985e35cedf1ac489b26e83c66441
+	md5sums = 080002ed407306f26c96ef5ade6ba9c2
+
+pkgname = rnd_jue_ii
+
