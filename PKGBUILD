@@ -4,8 +4,8 @@
 # Based on [extra]'s thunderbird
 
 pkgname=thunderbird-nightly
-pkgver=70.0a1.20190715
-_version=70.0a1
+pkgver=71.0a1.20190912
+_version=71.0a1
 pkgrel=1
 pkgdesc='Standalone Mail/News reader - Nightly build'
 arch=('i686' 'x86_64')
