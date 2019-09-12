@@ -1,6 +1,6 @@
 pkgbase = linux-drm-misc-next-git
 	pkgdesc = Kernel DRM miscellaneous fixes and cross-tree changes
-	pkgver = 5.1.840415.c25b84c00826
+	pkgver = 5.1.855921.e1218b8c0cc1
 	pkgrel = 1
 	url = https://cgit.freedesktop.org/drm/drm-misc
 	arch = x86_64
@@ -12,7 +12,10 @@ pkgbase = linux-drm-misc-next-git
 	makedepends = libelf
 	makedepends = git
 	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
 	makedepends = graphviz
+	makedepends = imagemagick
+	makedepends = git
 	options = !strip
 	source = linux-drm-misc-next-git::git://anongit.freedesktop.org/drm/drm-misc#branch=drm-misc-next
 	source = config
@@ -20,7 +23,7 @@ pkgbase = linux-drm-misc-next-git
 	source = 90-linux.hook
 	source = linux.preset
 	sha256sums = SKIP
-	sha256sums = 5788da6bf8b9bc4fa093aca61645d77752489b7bbf0627b0df829a2bb879be3b
+	sha256sums = 5990fe259ba2e0ee28ded0d11b08dd97165e4b387350325aa44116bb63ef514f
 	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
 	sha256sums = 834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0
 	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
