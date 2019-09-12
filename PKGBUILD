@@ -14,10 +14,10 @@ license=('MIT')
 source=("${_pyname}-${pkgver}.tar.gz::https://github.com/miyakogi/${_pyname}/archive/${pkgver}.tar.gz")
 
 package() {
-  cd "${srcdir}/${_pyname}-${pkgver}"
-  python setup.py install -O1 --root="${pkgdir}"
-  install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm 644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README"
+	cd "${srcdir}/${_pyname}-${pkgver}"
+	python setup.py install -O1 --root="${pkgdir}"
+	install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm 644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README"
 
 }
 
