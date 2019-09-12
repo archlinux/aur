@@ -6,13 +6,13 @@
 pkgname=lib32-systemd-git
 _pkgname=lib32-systemd
 _pkgbasename=systemd
-pkgver=242.1174
+pkgver=243.r25.g7d79cc96ea
 pkgrel=1
 pkgdesc='system and service manager (32-bit, git version)'
 arch=('x86_64')
 url='https://www.github.com/systemd/systemd'
 license=('GPL2' 'LGPL2.1')
-depends=('lib32-gcc-libs' 'lib32-libcap' 'lib32-libgcrypt' 'lib32-xz' 'systemd')
+depends=('lib32-gcc-libs' 'lib32-libcap' 'lib32-libgcrypt' 'lib32-xz' 'systemd-git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 makedepends=('gcc-multilib' 'git' 'gperf' 'intltool' 'lib32-acl' 'lib32-bzip2'
@@ -24,14 +24,9 @@ source=('git+https://github.com/systemd/systemd')
 sha512sums=('SKIP')
 
 pkgver() {
-  local version count
-
   cd "$_pkgbasename"
-
-  local _version _count
-  _version="$(git describe --abbrev=0 --tags)"
-  _count="$(git rev-list --count ${_version}..)"
-  printf '%s.%s' "${_version#v}" "${_count}"
+  # cutting off 'foo-' prefix that presents in the git tag
+  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -58,7 +53,7 @@ build() {
     --libexecdir	/usr/lib32
     --libdir		/usr/lib32
 
-    -Dversion-tag="${pkgver}-${pkgrel}-git"
+    -Dversion-tag="${pkgver}-${pkgrel}-arch"
 
     -Daudit=false
     -Dgnu-efi=false
