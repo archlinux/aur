@@ -3,7 +3,7 @@
 # Maintainer: LIN Ruohshoei <lin dot ruohshoei plus archlinux at gmail dot com> 
 
 pkgname=v2ray-plugin-git
-pkgver=1.1.0.r7.gc7017f4
+pkgver=1.1.0.r14.gcb97231
 pkgrel=1
 pkgdesc='A SIP003 plugin based on v2ray for shadowsocks (git version)'
 arch=(x86_64)
