@@ -2,12 +2,14 @@
 _pkgname=undocker
 pkgname=${_pkgname}-git
 pkgver=20180209.gc951f02
-pkgrel=1
+pkgrel=2
 pkgdesc="Unpacks a Docker image"
 arch=('any')
 url="https://github.com/larsks/undocker/"
 license=('GPL3')
 depends=('python')
+provides=('undocker')
+conflicts=('undocker')
 makedepends=('python-setuptools' 'git')
 source=("git://github.com/larsks/${_pkgname}.git")
 md5sums=('SKIP')

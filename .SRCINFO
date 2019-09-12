@@ -1,13 +1,15 @@
 pkgbase = undocker-git
 	pkgdesc = Unpacks a Docker image
 	pkgver = 20180209.gc951f02
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/larsks/undocker/
 	arch = any
 	license = GPL3
 	makedepends = python-setuptools
 	makedepends = git
 	depends = python
+	provides = undocker
+	conflicts = undocker
 	source = git://github.com/larsks/undocker.git
 	md5sums = SKIP
 
