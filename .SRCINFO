@@ -11,8 +11,8 @@ pkgbase = nvidia-container-toolkit
 	conflicts = nvidia-container-runtime-hook
 	conflicts = nvidia-container-runtime<2.0.0
 	replaces = nvidia-container-runtime-hook
-	source = https://github.com/NVIDIA/nvidia-container-runtime/archive/v3.1.3.tar.gz
-	sha256sums = d2eef8256d1499708c5d40eb42d8e4b389e2f62f47466bca1bc5ae927b750674
+	source = https://github.com/NVIDIA/nvidia-container-runtime/archive/2fc9b4b1df98b803f3ce5f3bfbad113ff39bb6da.tar.gz
+	sha256sums = eb467f5b75f8c9eca6b7fb9a4c97db809e3912ce402a44adabf5348f9f4f9565
 
 pkgname = nvidia-container-toolkit
 
