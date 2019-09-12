@@ -10,12 +10,15 @@
 pkgbase=linux-drm-tip-git
 _srcname=${pkgbase}
 _branch=drm-tip
-pkgver=5.3.844786.35b2601c2e73
+pkgver=5.4.860450.05b5eaaa5a67
 pkgrel=1
 arch=(x86_64)
 url='https://cgit.freedesktop.org/drm-tip/'
 license=(GPL2)
-makedepends=(xmlto kmod inetutils bc libelf git)
+makedepends=(
+  xmlto kmod inetutils bc libelf git python-sphinx python-sphinx_rtd_theme
+  graphviz imagemagick git
+)
 options=('!strip')
 source=("${_srcname}::git+https://anongit.freedesktop.org/git/drm-tip.git#branch=${_branch}"
   config         # the main kernel config file
@@ -24,7 +27,7 @@ source=("${_srcname}::git+https://anongit.freedesktop.org/git/drm-tip.git#branch
   linux.preset   # standard config files for mkinitcpio ramdisk
 )
 sha256sums=('SKIP'
-            '0be6f49822ec028f4d39f1dbe4b11a74a9a91ed892f6079704539dd3d416cdc2'
+            '3d92f7c6cadc8991a489e15412e3f0030ed775d5dee8e3e2e96128dea36fbb73'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
@@ -68,9 +71,7 @@ prepare() {
 
 build() {
   cd $_srcname
-#mainline: disabled for 5.1-rc5
-#make bzImage modules htmldocs
-  make bzImage modules
+  make bzImage modules htmldocs
 }
 
 _package() {
@@ -221,19 +222,17 @@ _package-docs() {
   mkdir -p "$builddir"
   cp -t "$builddir" -a Documentation
 
-  #mainline: disabled for 5.1-rc5
+  msg2 "Removing doctrees..."
+  rm -r "$builddir/Documentation/output/.doctrees"
 
-  #msg2 "Removing doctrees..."
-  #rm -r "$builddir/Documentation/output/.doctrees"
-
-  #msg2 "Moving HTML docs..."
-  #local src dst
-  #while read -rd '' src; do
-    #dst="$builddir/Documentation/${src#$builddir/Documentation/output/}"
-    #mkdir -p "${dst%/*}"
-    #mv "$src" "$dst"
-    #rmdir -p --ignore-fail-on-non-empty "${src%/*}"
-  #done < <(find "$builddir/Documentation/output" -type f -print0)
+  msg2 "Moving HTML docs..."
+  local src dst
+  while read -rd '' src; do
+    dst="$builddir/Documentation/${src#$builddir/Documentation/output/}"
+    mkdir -p "${dst%/*}"
+    mv "$src" "$dst"
+    rmdir -p --ignore-fail-on-non-empty "${src%/*}"
+  done < <(find "$builddir/Documentation/output" -type f -print0)
 
   msg2 "Adding symlink..."
   mkdir -p "$pkgdir/usr/share/doc"
@@ -250,3 +249,4 @@ for _p in "${pkgname[@]}"; do
     _package${_p#$pkgbase}
   }"
 done
+
