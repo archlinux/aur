@@ -1,5 +1,5 @@
 diff --git a/Makefile b/Makefile
-index 6634fdd..d58987c 100644
+index 434d6ca..a6cce39 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -32,7 +32,8 @@ SUPPORTED_PLATFORMS := linux-$(GOARCH) darwin-$(GOARCH) windows-$(GOARCH).exe
@@ -12,7 +12,7 @@ index 6634fdd..d58987c 100644
  
  ifeq "$(strip $(VERSION))" ""
   override VERSION = $(shell git describe --always --tags --dirty)
-@@ -53,7 +54,7 @@ GO_BUILD_TAGS_windows := ""
+@@ -57,7 +58,7 @@ GO_BUILD_TAGS_windows := ""
  GO_LDFLAGS = -X $(VERSION_PACKAGE).version=$(VERSION)
  GO_LDFLAGS += -X $(VERSION_PACKAGE).buildDate=$(shell date +'%Y-%m-%dT%H:%M:%SZ')
  GO_LDFLAGS += -X $(VERSION_PACKAGE).gitCommit=$(COMMIT)
