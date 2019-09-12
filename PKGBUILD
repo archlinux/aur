@@ -18,7 +18,7 @@ pkgver() {
 
 build() {
   cd "$srcdir"/gpuvis
-  mkdir build
+  mkdir -p build
   cd build
   cmake \
     -DCMAKE_INSTALL_PREFIX=/usr \
