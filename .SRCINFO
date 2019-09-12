@@ -8,8 +8,7 @@ pkgbase = kiwix-tools
 	arch = x86_64
 	license = GPL3
 	makedepends = meson
-	depends = kiwix-lib>=7.0.0
-	depends = libmicrohttpd
+	depends = kiwix-lib
 	replaces = kiwix-cli-git
 	source = https://github.com/kiwix/kiwix-tools/archive/3.0.1.tar.gz
 	sha256sums = b4d2ff9dfb7d71bb06ee837392a714cf8934d21dba65d5d051c0caa0112e4974
