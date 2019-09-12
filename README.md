@@ -9,3 +9,10 @@ how to create arch32 builder docker image
 ```
 sudo pacstrap -c . base base-devel git ninja cmake nspr nss clang
 ```
+
+makepkg
+```
+env CARCH=i686 makepkg -fp PKGBUILD.x86
+env CARCH=i386 makepkg -fp PKGBUILD.x86
+env CARCH=pentium4 makepkg -fp PKGBUILD.x86
+```
