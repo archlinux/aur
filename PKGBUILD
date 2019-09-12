@@ -2,7 +2,7 @@
 # Contributor: Juan Cuzmar <juan.cuzmar.s@gmail.com>
 
 pkgname=kbdlight-git
-pkgver=1.3.r1.g685c94b
+pkgver=1.3.r3.g32aa092
 pkgrel=1
 pkgdesc='Program to management keyboard brightness'
 arch=('i686' 'x86_64')
