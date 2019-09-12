@@ -1,7 +1,8 @@
 # Maintainer: Jiuyang Liu <liujiuyang1994@gmail.com>
 
-pkgname=wake
-pkgver=0.16.0
+_pkgname=wake
+pkgname=$_pkgname-git
+pkgver=r1216.f64b193
 pkgrel=1
 pkgdesc="The SiFive wake build tool"
 arch=('x86_64')
@@ -10,21 +11,27 @@ license=('custom')
 depends=('dash' 'sqlite' 'gmp' 'fuse-common' 're2' 'ncurses5-compat-libs')
 optdepends=('re2c'
             'utf8proc')
-source=("https://github.com/sifive/wake/releases/download/v0.16.0/wake_$pkgver.tar.xz")
-md5sums=('7be63bd44668a6ca252a3ac53c5a1e4e')
+source=("git://github.com/sifive/wake.git")
+md5sums=('SKIP')
+
+pkgver() {
+  cd $srcdir/$_pkgname
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 prepare() {
-  cd $srcdir/$pkgname-$pkgver
+  cd $srcdir/$_pkgname
+  git checkout master
 }
 
 build() {
-  cd $srcdir/$pkgname-$pkgver
+  cd $srcdir/$_pkgname
   make
 }
 
 package() {
-  cd $srcdir/$pkgname-$pkgver
+  cd $srcdir/$_pkgname
   ./bin/wake 'install "'$pkgdir'/usr"'
   mkdir -p $pkgdir/usr/share/licenses/wake
-  install -Dm644 $srcdir/$pkgname-$pkgver/LICENSE* $pkgdir/usr/share/licenses/wake
+  install -Dm644 $srcdir/$_pkgname/LICENSE* $pkgdir/usr/share/licenses/wake
 }
