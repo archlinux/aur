@@ -12,12 +12,15 @@ _srcname=$pkgbase
 _kernel_rel=5.2
 _branch=drm-next
 _kernelname=${pkgbase#linux}
-pkgver=5.2.840803.2454fcea338a
+pkgver=5.2.858092.9a60b2990d6c
 pkgrel=1
 arch=('x86_64')
 url='https://cgit.freedesktop.org/drm/drm'
 license=(GPL2)
-makedepends=(xmlto kmod inetutils bc libelf git)
+makedepends=(
+  xmlto kmod inetutils bc libelf git python-sphinx python-sphinx_rtd_theme
+  graphviz imagemagick git
+)
 options=('!strip')
 source=("${pkgbase}::git://anongit.freedesktop.org/drm/drm#branch=${_branch}"
   config         # the main kernel config file
@@ -26,7 +29,7 @@ source=("${pkgbase}::git://anongit.freedesktop.org/drm/drm#branch=${_branch}"
   linux.preset   # standard config files for mkinitcpio ramdisk
 )
 sha256sums=('SKIP'
-            '91d9ec84935ca823b76e8836c5c238157ab1db678575c3bd9a0de7d66e93deec'
+            '722e7a0aaf86535ddf5cee67faa0fd8324b5a59135834d5f15181dd02724d08a'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
@@ -66,9 +69,7 @@ prepare() {
 
 build() {
   cd $_srcname
-#mainline: disabled for 5.1-rc5
-#make bzImage modules htmldocs
-  make bzImage modules
+  make bzImage modules htmldocs
 }
 
 _package() {
@@ -219,19 +220,17 @@ _package-docs() {
   mkdir -p "$builddir"
   cp -t "$builddir" -a Documentation
 
-  #mainline: disabled for 5.1-rc5
+  msg2 "Removing doctrees..."
+  rm -r "$builddir/Documentation/output/.doctrees"
 
-  #msg2 "Removing doctrees..."
-  #rm -r "$builddir/Documentation/output/.doctrees"
-
-  #msg2 "Moving HTML docs..."
-  #local src dst
-  #while read -rd '' src; do
-    #dst="$builddir/Documentation/${src#$builddir/Documentation/output/}"
-    #mkdir -p "${dst%/*}"
-    #mv "$src" "$dst"
-    #rmdir -p --ignore-fail-on-non-empty "${src%/*}"
-  #done < <(find "$builddir/Documentation/output" -type f -print0)
+  msg2 "Moving HTML docs..."
+  local src dst
+  while read -rd '' src; do
+    dst="$builddir/Documentation/${src#$builddir/Documentation/output/}"
+    mkdir -p "${dst%/*}"
+    mv "$src" "$dst"
+    rmdir -p --ignore-fail-on-non-empty "${src%/*}"
+  done < <(find "$builddir/Documentation/output" -type f -print0)
 
   msg2 "Adding symlink..."
   mkdir -p "$pkgdir/usr/share/doc"
@@ -248,3 +247,4 @@ for _p in "${pkgname[@]}"; do
     _package${_p#$pkgbase}
   }"
 done
+
