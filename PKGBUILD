@@ -5,10 +5,10 @@ _lua_version=5.2
 _lua_version_nodot=${_lua_version//./}
 pkgname=scansion-hg
 pkgver=r168+.873f6fec12f2+
-pkgrel=1
+pkgrel=2
 pkgdesc="Automated XMPP testing tool"
 arch=('any')
-url="https://code.matthewwild.co.uk/scansion/"
+url="https://matthewwild.co.uk/projects/scansion/"
 license=('TODO')
 depends=("lua${_lua_version_nodot}"
          "lua${_lua_version_nodot}-cjson"

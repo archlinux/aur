@@ -1,8 +1,8 @@
 pkgbase = scansion-hg
 	pkgdesc = Automated XMPP testing tool
 	pkgver = r168+.873f6fec12f2+
-	pkgrel = 1
-	url = https://code.matthewwild.co.uk/scansion/
+	pkgrel = 2
+	url = https://matthewwild.co.uk/projects/scansion/
 	arch = any
 	license = TODO
 	depends = lua52
