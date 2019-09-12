@@ -2,7 +2,7 @@ post_install() {
 
 	# update dconf after GTK+ theme installed
 	if hash dconf 2>/dev/null; then
-    	dconf update
+		dconf update
 	fi
 
 	# mask systemd-journald-audit.socket, which fails inside unprivileged container
@@ -23,11 +23,13 @@ post_upgrade() {
 
 cat << EOF
 
-	(!) This package is permanently work in progress until Crostini 
-	considered to be stable by Google, issues and bugs are expected!
+	(!) This package is permanently work-in-progress while Crostini
+	is in beta. Missing features, issues and bugs are possible!
 
-	Tested on Google Pixelbook and Samsung Chromebook Plus, should
-	work fine on other Chromebooks/Chromeboxes with Crostini enabled.
+	Developed and tested on Google Pixelbook, but should work fine 
+    on other Chromebooks/Chromeboxes with Crostini enabled. 
+
+	Please report any issues to the AUR page!
 
 EOF
 
@@ -37,7 +39,7 @@ post_remove() {
 
 	# update dconf after GTK+ theme installed
 	if hash dconf 2>/dev/null; then
-    	dconf update 2>/dev/null
+		dconf update 2>/dev/null
 	fi
 
 	# unmask systemd-journald-audit.socket
@@ -45,5 +47,4 @@ post_remove() {
 
 	# workaround for https://bugs.archlinux.org/task/58701 - remove after fix
 	rm /usr/share/themes/CrosAdapta
-
 }
