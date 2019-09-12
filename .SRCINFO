@@ -1,11 +1,12 @@
 pkgbase = python-jsonrpcserver
 	pkgdesc = Process JSON-RPC requests in Python.
 	pkgver = 4.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bcb/jsonrpcserver
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
+	makedepends = python-nose
 	depends = python
 	depends = python-apply_defaults
 	depends = python-jsonschema

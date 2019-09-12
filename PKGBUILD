@@ -3,11 +3,11 @@
 pkgname=python-jsonrpcserver
 _name=jsonrpcserver
 pkgver=4.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Process JSON-RPC requests in Python."
 arch=('any')
 depends=('python' 'python-apply_defaults' 'python-jsonschema')
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'python-nose')
 url="https://github.com/bcb/jsonrpcserver"
 license=('MIT')
 options=('!emptydirs')
