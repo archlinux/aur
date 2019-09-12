@@ -2,18 +2,18 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=cheese
-pkgver=3.32.1
-pkgrel=2
+pkgver=3.34.0
+pkgrel=1
 pkgdesc="Take photos and videos with your webcam, with fun graphical effects"
 url="https://wiki.gnome.org/Apps/Cheese"
 arch=(x86_64)
 license=(GPL)
 depends=(gtk3 gstreamer gst-plugins-bad gst-plugins-base gst-plugins-good clutter-gst clutter-gtk
          libcanberra librsvg gnome-desktop libgudev dconf gnome-video-effects)
-makedepends=(intltool gobject-introspection itstool vala gnome-common git appstream-glib)
+makedepends=(gobject-introspection vala git appstream-glib meson yelp-tools)
+checkdepends=(xorg-server-xvfb)
 groups=(gnome)
-options=(!emptydirs)
-_commit=f968f45985a93a75ce20236615bf8ff5586174ce  # gnome-3-32
+_commit=61ff7a2c26b618cb24be7ca3c050530671055602  # master
 source=("git+https://gitlab.gnome.org/GNOME/cheese.git#commit=$_commit")
 sha256sums=('SKIP')
 
@@ -24,23 +24,21 @@ pkgver() {
 
 prepare() {
   cd $pkgname
-  git tag -f 3.32.1 f968f45985a93a75ce20236615bf8ff5586174ce  # Fixup missing tag
-  NOCONFIGURE=1 ./autogen.sh
+  git tag -f 3.34.0 61ff7a2c26b618cb24be7ca3c050530671055602  # Fixup missing tag
 }
 
 build() {
-  cd $pkgname
-  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
-      --disable-static --disable-schemas-compile --libexecdir=/usr/lib/cheese \
-      --enable-gtk-doc
-
-  # https://bugzilla.gnome.org/show_bug.cgi?id=655517
-  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
-
-  make
+  arch-meson $pkgname build -D tests=true
+  ninja -C build
 }
 
+check() (
+  glib-compile-schemas "${GSETTINGS_SCHEMA_DIR:=$PWD/build/data}"
+  export GSETTINGS_SCHEMA_DIR
+
+  xvfb-run meson test -C build --print-errorlogs
+)
+
 package() {
-  cd $pkgname
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" meson install -C build
 }
