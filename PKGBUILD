@@ -1,7 +1,7 @@
 # Maintainer: Anatoly Rugalev <anatoly.rugalev gmail com>
 
 pkgname=kubernetes-helmfile-bin
-pkgver=0.83.0
+pkgver=0.83.2
 pkgrel=1
 pkgdesc="Deploy Kubernetes Helm Charts"
 url="https://github.com/roboll/helmfile"
@@ -10,7 +10,7 @@ arch=('x86_64')
 depends=('kubernetes-helm-bin')
 
 source=("helmfile_linux_amd64_$pkgver::https://github.com/roboll/helmfile/releases/download/v$pkgver/helmfile_linux_amd64")
-sha256sums=('bca012103fa907ddd66a6323fa5cf2ff7601a3073055abde002fe292f7035f6a')
+sha256sums=('f48057441edcfcbf8600af63842fe305b625f0b397449de8bd13e34d1041644b')
 package() {
   cd "$srcdir"
   install -d "$pkgdir/usr/bin"
