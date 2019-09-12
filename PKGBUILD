@@ -3,14 +3,13 @@
 pkgname=naiveproxy
 pkgdesc='Make a fortune quietly'
 pkgver=76.0.3809.87
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://github.com/klzgrad/naiveproxy'
 license=('BSD')
 depends=('nspr' 'nss')
 makedepends=('git' 'ninja' 'cmake')
-source=("${pkgname}.tar.gz::https://github.com/klzgrad/naiveproxy/archive/v${pkgver}-${pkgrel}.tar.gz")
-md5sums=('3070a2428c511f51f012697844261e91')
+source=("${pkgname}.tar.gz::https://github.com/btwiuse/naiveproxy/archive/v${pkgver}-${pkgrel}.tar.gz")
 
 build(){
   pushd ${srcdir}/${pkgname}-${pkgver}-${pkgrel}
