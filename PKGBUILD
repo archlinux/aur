@@ -4,12 +4,12 @@
 pkgname=pamac-tray-appindicator
 
 pkgver=8.0.4
-pkgrel=1
+pkgrel=2
 _pkgfixver=$pkgver
 
 #_pkgvercommit=v$pkgver
-_pkgvercommit='1656246d332bc694fb61da6d64e30137a10f10f6'
-sha256sums=('db6ba7f73cff5d2feebc56fef039f84d2b4ffd1c81c4cd490259d604590477e3')
+_pkgvercommit='fddd7715e23a7199db9498cfee2efecad62074ef'
+sha256sums=('a6c9f4f182497bd08ea223a46e3b4ee86facfa37649d38e0fb15d29be41bb1b0')
 
 pkgdesc="Tray icon using appindicator which feets better in KDE"
 depends=('pamac' 'libappindicator-gtk3')
