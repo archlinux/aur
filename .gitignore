@@ -1,0 +1,6 @@
+*.tar.xz
+*.tgz
+fzf.wiki/
+fzf/
+pkg/
+src/

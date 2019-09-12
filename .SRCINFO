@@ -1,6 +1,6 @@
 pkgbase = fzf-git
 	pkgdesc = Command-line fuzzy finder
-	pkgver = 20171027
+	pkgver = 20190909
 	pkgrel = 1
 	url = https://github.com/junegunn/fzf
 	install = fzf.install

@@ -1,9 +1,10 @@
-# Maintainer: Andy Weidenbaum <archbaum@gmail.com>
+# Maintainer: Matthew McGinn <mamcgi@gmail.com>
+# Contributor: Andy Weidenbaum <archbaum@gmail.com>
 # Contributor: foalsrock <foalsrock at gmail dot-com>
 # Contributor: jebaum <jebaum at ucla dot edu>
 
 pkgname=fzf-git
-pkgver=20171027
+pkgver=20190909
 pkgrel=1
 pkgdesc="Command-line fuzzy finder"
 arch=('aarch64' 'armv6h' 'armv7h' 'i686' 'x86_64')
@@ -63,6 +64,8 @@ package() {
   cp -dpr --no-preserve=ownership "$srcdir/fzf.wiki" \
     "$pkgdir/usr/share/doc/fzf/wiki"
 
+
+
   msg2 'Installing manual...'
   install -Dm 644 "man/man1/fzf.1" -t "$pkgdir/usr/share/man/man1"
   install -Dm 644 "man/man1/fzf-tmux.1" -t "$pkgdir/usr/share/man/man1"
@@ -79,6 +82,10 @@ package() {
   msg2 'Installing fish keybindings...'
   install -Dm 644 "shell/key-bindings.fish" \
     "$pkgdir/usr/share/fish/functions/fzf.fish"
+
+  msg2 'Installing vimfiles...'
+  install -Dm 644 "plugin/fzf.vim" \
+    "$pkgdir/usr/share/vim/vimfiles/plugin/fzf.vim"
 
   msg2 'Installing zsh completion and keybindings...'
   install -Dm 644 "shell/completion.zsh" \
