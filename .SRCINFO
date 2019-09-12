@@ -1,6 +1,6 @@
 pkgbase = gimp-develop-git
 	pkgdesc = GNU Image Manipulation Program (non-conflicting git version)
-	pkgver = 2.99.1.r3594.3a2f8d422a
+	pkgver = 2.99.1.r3723.65530b6aa7
 	pkgrel = 1
 	epoch = 1
 	url = https://www.gimp.org
@@ -28,6 +28,7 @@ pkgbase = gimp-develop-git
 	makedepends = zlib
 	makedepends = gjs
 	makedepends = python-gobject
+	makedepends = luajit
 	depends = lcms2>=2.8
 	depends = libwmf>=0.2.8
 	depends = icu
@@ -61,6 +62,7 @@ pkgbase = gimp-develop-git
 	optdepends = aalib: ASCII art support
 	optdepends = zlib: Compression routines
 	optdepends = gjs: JavaScript scripting support
+	optdepends = luajit: LUA scripting support
 	source = git+https://gitlab.gnome.org/GNOME/gimp.git
 	source = linux.gpl
 	sha512sums = SKIP
