@@ -15,7 +15,6 @@ newVersion:
   stage: trigger
   image: appropriate/curl:latest
   script:
-    - test -n "${DEPLOY_SSH_KEY}"
     - test -n "${link}"
     - new_pkgver="$(echo "${link}" | rev | cut -d/ -f1 | rev)"
     - test -n "${new_pkgver}"
@@ -77,6 +76,7 @@ commitAndPush:
     name: alpine/git:latest
     entrypoint: [""]
   script:
+    - git diff
     - test -n "${DEPLOY_SSH_KEY}"
     - test -n "${AUR_SSH_KEY}"
     - mkdir -p ~/.ssh
