@@ -1,7 +1,7 @@
 pkgbase='python-googlemaps'
 pkgname=('python-googlemaps')
 _module='googlemaps'
-pkgver='3.1.1'
+pkgver='3.1.2'
 pkgrel=1
 pkgdesc="Python client library for Google Maps Platform"
 url="https://github.com/googlemaps/google-maps-services-python"
@@ -10,7 +10,7 @@ makedepends=('python-setuptools')
 license=('Apache')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-sha256sums=('a4c58cb4875d0ac38f2ae38ee24113cbce7902983153be1cfc395c06887c61e7')
+sha256sums=('f25791d855121ae6b2a03c19d7709e1f060b48ef987c6543dc1e2ad7b695792c')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
