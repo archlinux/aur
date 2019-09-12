@@ -5,6 +5,8 @@ pkgname=nvidia-container-runtime
 
 pkgver=3.1.3
 pkgrel=1
+# the 3.1.3 tag got removed for unknown reasons, use commit for now :(
+_commit=2fc9b4b1df98b803f3ce5f3bfbad113ff39bb6da
 
 pkgdesc='NVIDIA opencontainer runtime fork to expose GPU devices to containers.'
 arch=('x86_64')
@@ -14,10 +16,11 @@ license=('BSD')
 makedepends=('go')
 depends=('libseccomp' 'nvidia-container-toolkit<2.0.0')
 
-source=("https://github.com/NVIDIA/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('d2eef8256d1499708c5d40eb42d8e4b389e2f62f47466bca1bc5ae927b750674')
+source=("https://github.com/NVIDIA/${pkgname}/archive/${_commit}.tar.gz")
+sha256sums=('eb467f5b75f8c9eca6b7fb9a4c97db809e3912ce402a44adabf5348f9f4f9565')
 
-_srcdir="${pkgname}-${pkgver}"
+#_srcdir="${pkgname}-${pkgver}"
+_srcdir="${pkgname}-${_commit}"
 
 prepare() {
   mkdir -p gopath/src
