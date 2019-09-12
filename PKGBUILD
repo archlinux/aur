@@ -7,7 +7,7 @@
 pkgname=mudlet
 pkgver=4.1.1
 
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern MUD client with a graphical user inteface and built in Lua scripting"
 arch=('i686' 'x86_64')
 url="http://www.mudlet.org"
@@ -20,7 +20,7 @@ conflicts=('mudlet-dev' 'mudlet-git' 'mudlet-deb')
 #source=("http://www.mudlet.org/download/Mudlet-${pkgver}.tar.xz")
 ##using alternate link
 source=("https://www.mudlet.org/wp-content/files/Mudlet-${pkgver}.tar.xz")
-sha256sums=('778c15c1f1688ab22589bec4a6e69b2c05768e5b750810f0348d03f952b334a8')
+sha256sums=('f3caae45c9540fadf9d928ed70056b9aab07d95079974bb93c73b26bfe4afc6b')
 
 prepare() {
     cd "$srcdir/src"
