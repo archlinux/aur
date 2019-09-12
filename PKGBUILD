@@ -3,11 +3,11 @@
 pkgname=python-apply_defaults
 _name=apply_defaults
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Apply default values to functions. Makes configuration easy! Application settings come from a config file into your code cleanly."
 arch=('any')
 depends=('python')
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'python-nose')
 url="https://github.com/bcb/apply_defaults"
 license=('MIT')
 options=('!emptydirs')
