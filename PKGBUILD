@@ -54,7 +54,7 @@ _rtpatchver=rt${_rtver}
 pkgver=${_major}.${_minor}.${_rtpatchver}
 _pkgver=${_major}.${_minor}
 _srcname=linux-${_pkgver}
-pkgrel=4
+pkgrel=5
 arch=('x86_64')
 url="https://github.com/sirlucjan/bfq-mq-lucjan"
 license=('GPL2')
@@ -83,6 +83,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "${_lucjanpath}/arch-patches-v2/0002-ZEN-Add-CONFIG-for-unprivileged_userns_clone.patch"
         "${_lucjanpath}/arch-patches-v2/0003-iwlwifi-mvm-disable-TX-AMSDU-on-older-NICs.patch"
         "${_lucjanpath}/arch-patches-v2/0004-drm-amdgpu-pin-the-csb-buffer-on-hw-init-for-gfx-v8.patch"
+        "${_lucjanpath}/arch-patches-v3/0003-Btrfs-fix-unwritten-extent-buffers-and-hangs-on-futu.patch"
          # the main kernel config files
         'config'
          # pacman hook for depmod
@@ -397,6 +398,7 @@ sha512sums=('abd20b6bf41572c51df0d609db205e2d5f541aa486c2d37c15d4dd43e8bf36a06eb
             'd75d9fc44b31e6adafe4cae641bc513c1594c7a314087fede6a7ff1f3c98c67117d84a1f7fe70f39856af9d66d9f79298791598505283ac53453cb4e763fa69c'
             'fa87f577af56a8c4219b4c064fba7c85ea8cc1c1ee066f6972022145af04a1fb982f5e5ff5d983e44654440892fa429c00c47ddfef8a8a4b0e16fc4484119adf'
             '694efbf25e17b30b73eb16de5819068565e37e3f6e263a700c06d01bd7f299d5d0286144426ed3161081b969d4536024709bbbf6dc3e65ca96d5cd18192b74d1'
+            'e4c3537e1222e832abb032d8e945ac1be364c105d3d180152d79f70ad230f9370cb891ca231aa89b11ba3c03096131a0d944411d250d037ffa231ba893f9c819'
             '8f6cdf859cf1c712749de734bb9ad5769ff03e2c426cdc3adad8db91adc447e8ca050d7752b30108363330e4b6ad881330c4dbcfdf357e87c6848dae409ef1f4'
             '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
             '2718b58dbbb15063bacb2bde6489e5b3c59afac4c0e0435b97fe720d42c711b6bcba926f67a8687878bd51373c9cf3adb1915a11666d79ccb220bf36e0788ab7'
