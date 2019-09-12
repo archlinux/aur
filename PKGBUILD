@@ -3,34 +3,47 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=lib32-dconf
-pkgver=0.32.0
+pkgver=0.34.0
 pkgrel=1
 pkgdesc='A low-level configuration system'
-arch=('x86_64')
-url='https://live.gnome.org/dconf'
-license=('LGPL2.1')
-depends=('dconf' 'lib32-glib2')
-makedepends=(
-  'bash-completion' 'docbook-xsl' 'gcc-multilib' 'git' 'intltool' 'meson'
-  'python' 'vala'
+arch=(x86_64)
+url=https://live.gnome.org/dconf
+license=(LGPL2.1)
+depends=(
+  dconf
+  lib32-glib2
 )
-source=("git+https://gitlab.gnome.org/GNOME/dconf.git#tag=${pkgver}")
-sha256sums=('SKIP')
+makedepends=(
+  bash-completion
+  docbook-xsl
+  git
+  intltool
+  meson
+  python
+  vala
+)
+source=(git+https://gitlab.gnome.org/GNOME/dconf.git#tag=22d49c42cc71435e1ece14a385286e1d414ff21b)
+sha256sums=(SKIP)
+
+pkgver() {
+  cd dconf
+
+  git describe --tags
+}
 
 build() {
   export CC='gcc -m32'
-  export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
+  export PKG_CONFIG_PATH=/usr/lib32/pkgconfig
 
   arch-meson dconf build \
-    --libdir='/usr/lib32' \
-    --libexecdir='/usr/lib32/dconf' \
-    -Denable-man=false
+    --libdir=/usr/lib32 \
+    -D enable-man=false
   ninja -C build
 }
 
 package() {
   DESTDIR="${pkgdir}" ninja -C build install
-  rm -rf "${pkgdir}"/usr/{bin,include,share}
+  rm -rf "${pkgdir}"/usr/{bin,include,lib,share}
 }
 
 # vim: ts=2 sw=2 et:
