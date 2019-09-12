@@ -1,11 +1,11 @@
-# Maintainer: Andrew Sun <adsun701@gmail.com>
+# Maintainer: Andrew Sun <adsun701 at gmail dot com>
 # Contributor: Eric Le Lay <contact at elelay dot fr>
 
 pkgname=ansifilter
 pkgver=2.14
 pkgrel=1
 pkgdesc="remove or convert ANSI codes to another format"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'pentium4' 'i486')
 url="http://www.andre-simon.de/doku/ansifilter/en/ansifilter.php"
 license=('GPL3')
 depends=('gcc-libs')
