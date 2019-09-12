@@ -1,12 +1,13 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=gpuvis-git
-pkgver=r1646.95520be9f51c8a04c1af
+pkgver=r1649.e2c58f6
 pkgrel=1
 pkgdesc=""
 arch=(x86_64)
 url="https://github.com/mikesart/gpuvis"
 license=('MIT')
+depends=('cmake')
 source=("git+$url")
 sha1sums=('SKIP')
 
