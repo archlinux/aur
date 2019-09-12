@@ -1,7 +1,7 @@
 # Maintainer: Jack Chen <redchenjs@live.com>
 
 pkgname=browser360
-pkgver=10.0.2001.0
+pkgver=10.0.2012.0
 pkgrel=1
 pkgdesc="360 Security Browser"
 arch=('x86_64')
@@ -21,10 +21,10 @@ depends=(
     'xdg-utils'
 )
 source=(
-    'https://down.360safe.com/gc/browser360-cn-stable_10.0.2001.0-1_amd64.deb'
+    'https://down.360safe.com/gc/browser360-cn-stable_'${pkgver}'-'${pkgrel}'_amd64.deb'
 )
 md5sums=(
-    'f441827dc69590b0af35267fe33ad8d7'
+    '7c46603bfc45da505297f946d11d32e4'
 )
 
 package() {
