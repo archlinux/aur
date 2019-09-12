@@ -3,16 +3,15 @@
 pkgbase=python-pyppeteer
 _pyname=pyppeteer
 pkgname=('python-pyppeteer')
-depends=('python' 'python-pyee' 'python-websockets')
+depends=('python' 'python-pyee' 'python-tqdm' 'python-websockets')
 makedepends=('python-setuptools')
-pkgver=0.0.16
+pkgver=0.0.25
 pkgrel=1
 pkgdesc="Headless chrome/chromium automation library"
 arch=('any')
 url="https://github.com/miyakogi/pyppeteer"
 license=('MIT')
 source=("${_pyname}-${pkgver}.tar.gz::https://github.com/miyakogi/${_pyname}/archive/${pkgver}.tar.gz")
-sha512sums=('5c195a79be0fb9062b43648fe4509b6184bc177686f5ecd1d3768dfafde2b43d6ddd855203e06272c3392765b8f066e316e5630f150a858434645901fcf4ee86')
 
 package() {
   cd "${srcdir}/${_pyname}-${pkgver}"
@@ -22,4 +21,4 @@ package() {
 
 }
 
-# vim:set et sw=2 ts=2 tw=79:
+md5sums=('cc42fe229c18e45bd73ac50b73bebdf8')
