@@ -1,0 +1,19 @@
+pkgbase = common-lisp-jupyter-git
+	pkgdesc = A Common Lisp kernel for Jupyter.
+	pkgver = r574.322e3d6
+	pkgrel = 1
+	url = https://github.com/robert-dodier/maxima-jupyter
+	arch = any
+	license = MIT
+	depends = sbcl
+	source = common-lisp-jupyter-git::git+https://github.com/yitzchak/common-lisp-jupyter.git
+	source = ziz-git::git+https://github.com/yitzchak/ziz.git
+	source = https://beta.quicklisp.org/quicklisp.lisp
+	source = load.lisp
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 4a7a5c2aebe0716417047854267397e24a44d0cce096127411e9ce9ccfeb2c17
+	sha256sums = ec2135982cedf94075fa7ef5e93ee0a3a62e9ee14dc68a234c26bae2ab484078
+
+pkgname = common-lisp-jupyter-git
+
