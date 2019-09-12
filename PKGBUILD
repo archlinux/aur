@@ -1,14 +1,14 @@
-# Maintainer: Andrew Sun <adsun701@gmail.com>
-# Contributor: Kevin Cox <kevincox@kevincox.ca>
+# Maintainer: Andrew Sun <adsun701 at gmail dot com>
+# Contributor: Kevin Cox <kevincox at kevincox dot ca>
 
 pkgname=backward-cpp
 pkgver=1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A beautiful stack trace pretty printer for C++."
 url="https://github.com/bombela/backward-cpp"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'pentium4' 'i486')
 license=('MIT')
-depends=('glibc' 'gcc-libs')
+depends=('gcc-libs')
 makedepends=('cmake' 'binutils' 'libelf' 'libdwarf')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/bombela/backward-cpp/archive/v${pkgver}.tar.gz")
 sha256sums=('ad73be31c5cfcbffbde7d34dba18158a42043a109e7f41946f0b0abd589ed55e')

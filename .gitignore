@@ -1,4 +1,5 @@
-backward-*
+*.log
 pkg/
 src/
-v1.3.tar.gz
+*.tar.gz
+*.pkg.tar.xz
