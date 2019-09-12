@@ -3,7 +3,7 @@
 pkgname=lxtask-git
 pkgver=0.1.9.r411.20190912
 pkgrel=1
-pkgdesc="Lightweight X11 task manager and system monitor for LXDE"
+pkgdesc="Lightweight X11 task manager and system monitor for LXDE Desktop"
 arch=('i686' 'x86_64')
 license=('GPL2')
 groups=('lxde-git')
@@ -12,7 +12,7 @@ makedepends=('autoconf' 'automake' 'gcc' 'libtool' 'make' 'pkgconfig' 'git' 'int
 provides=('lxtask')
 conflicts=('lxtask')
 replaces=('lxtask')
-url="http://lxde.org/"
+url="https://lxde.org/"
 source=(
 	$pkgname::git+https://github.com/OpenHelios/lxtask.git
 #	https://downloads.sourceforge.net/lxde/lxtask-0.1.8.tar.xz
@@ -39,6 +39,7 @@ pkgver() {
 
 build() {
 	cd $_gitroot
+	autoreconf
 	./configure --prefix=/usr --sysconfdir=/etc
 	make
 }
