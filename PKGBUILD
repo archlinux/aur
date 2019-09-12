@@ -4,11 +4,9 @@ pkgname=("openxr-loader-git" "openxr-headers-git")
 _dirname="openxr-loader"
 pkgver=1.0.2.r0.g69bb150
 pkgrel=1
-pkgdesc='OpenXR Loader and headers'
 arch=('i686' 'x86_64')
 url='https://github.com/KhronosGroup/OpenXR-SDK'
 depends=()
-provides=("openxr-loader")
 makedepend=('cmake' 'git')
 license=('apache')
 source=("$_dirname::git+https://github.com/KhronosGroup/OpenXR-SDK.git")
@@ -41,6 +39,9 @@ build() {
 }
 
 package_openxr-loader-git() {
+  provides=("openxr-loader")
+  pkgdesc='OpenXR loader'
+
   cd "$_dirname"-build
   make DESTDIR="$pkgdir" install openxr_loader
 
@@ -48,6 +49,9 @@ package_openxr-loader-git() {
 }
 
 package_openxr-headers-git() {
+  provides=("openxr-headers")
+  pkgdesc='OpenXR headers'
+
   # TODO install target for headers
   install -d "$pkgdir"/usr/include/openxr/
   cp "$srcdir"/"$_dirname"/include/openxr/*.h "$pkgdir"/usr/include/openxr
