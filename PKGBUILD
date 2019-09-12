@@ -3,7 +3,7 @@
 # https://gitlab.manjaro.org/packages/extra/pamac
 pkgname=pamac-cli
 pkgver=8.0.4
-pkgrel=1
+pkgrel=2
 _pkgfixver=$pkgver
 
 #_pkgvercommit=v$pkgver
