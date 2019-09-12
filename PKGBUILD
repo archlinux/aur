@@ -1,4 +1,5 @@
 # Maintainer: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
+# Maintainer: Maxime "pep" Buquet <archlinux@bouah.net>
 
 _lua_version=5.2
 _lua_version_nodot=${_lua_version//./}
