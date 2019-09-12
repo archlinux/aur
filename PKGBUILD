@@ -11,6 +11,8 @@ depends=('nspr' 'nss')
 makedepends=('git' 'ninja' 'cmake')
 source=("${pkgname}.tar.gz::https://github.com/btwiuse/naiveproxy/archive/v${pkgver}-${pkgrel}.tar.gz")
 md5sums=('f3b1ba2190b0564cc7e38aa6a2147676')
+optdepends=("ccache: Speed up compilation")
+backup=(etc/naiveproxy/config.json)
 
 build(){
   pushd ${srcdir}/${pkgname}-${pkgver}-${pkgrel}/src
