@@ -1,7 +1,7 @@
 pkgbase = far2l-git
 	pkgdesc = Linux port of FAR v2
-	pkgver = r1127.4c12ff1
-	pkgrel = 2
+	pkgver = r1546.480f7f5
+	pkgrel = 1
 	url = https://github.com/elfmz/far2l
 	arch = i686
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = far2l-git
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = d75dcd5ac96d0b7d2b7964620191d9e81733380ddf47dedf8b5aef1255686fd7
-	sha256sums = 56aca91c73d5fa5072c422d8e3df567a931d01850f92d3f5c046f27bc957c8c3
+	sha256sums = f279f4255d9015e087e036fb793de688b973b1d14afd30a55722cc6f591675ce
 
 pkgname = far2l-git
 

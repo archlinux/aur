@@ -5,7 +5,7 @@ index ba70e73..67eb2ce 100644
 @@ -3,8 +3,8 @@ Type=Application
  Name=far2l
  GenericName=far2l
- Comment=File and archieve manager
+ Comment=File and archive manager
 -Exec=${CMAKE_INSTALL_PREFIX}/bin/far2l
 -TryExec=${CMAKE_INSTALL_PREFIX}/bin/far2l
 +Exec=/usr/bin/far2l
