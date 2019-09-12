@@ -1,0 +1,28 @@
+{
+    "development": {
+        "loglevel": "debug",
+        "hsts": {
+            "enable": false
+        },
+        "uploadsPath": "/var/lib/codimd/uploads"
+    },
+    "production": {
+        "loglevel": "info",
+        "hsts": {
+            "enable": true,
+            "maxAgeSeconds": 31536000,
+            "includeSubdomains": true,
+            "preload": true
+        },
+        "csp": {
+            "enable": true,
+            "directives": {
+            },
+            "upgradeInsecureRequests": "auto",
+            "addDefaults": true,
+            "addDisqus": false,
+            "addGoogleAnalytics": false
+        },
+        "uploadsPath": "/var/lib/codimd/uploads"
+    }
+}

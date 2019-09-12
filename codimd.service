@@ -1,0 +1,24 @@
+[Unit]
+Description=Realtime collaborative markdown notes
+
+[Service]
+Type=simple
+RootDirectory=/opt/codimd
+WorkingDirectory=/opt/codimd
+EnvironmentFile=/etc/codimd/environment
+ExecStartPre=/opt/codimd/node_modules/sequelize-cli/lib/sequelize db:migrate --url ${CMD_DB_URL}
+ExecStart=/usr/bin/node app.js
+User=codimd
+ConfigurationDirectory=codimd
+StateDirectory=codimd codimd/uploads
+MountAPIVFS=true
+NoNewPrivileges=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+PrivateDevices=true
+PrivateUsers=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

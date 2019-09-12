@@ -1,0 +1,282 @@
+# CodiMD configuration file
+#
+# This file is read as an environment file by the systemd service.
+#
+# See https://github.com/codimd/server/blob/master/docs/configuration-env-vars.md
+# for all configuration options
+
+
+###############################################################################
+# Node.JS
+###############################################################################
+
+# Current environment (production or development)
+NODE_ENV=production
+
+# Debug mode showing more logs
+DEBUG=false
+
+
+###############################################################################
+# CodiMD Basics
+###############################################################################
+
+# Override path to CodiMD's config file (DO NOT CHANGE THIS)
+CMD_CONFIG_FILE=/etc/codimd/config.json
+
+# Database URL
+CMD_DB_URL=sqlite:///var/lib/codimd/db.sqlite
+
+# Log level to provide to stdout
+CMD_LOGLEVEL=info
+
+# Disallow creation of notes, even if CMD_ALLOW_FREEURL is true
+#CMD_FORBIDDEN_NOTE_IDS=robots.txt,favicon.ico,api
+
+# Where to upload images
+#CMD_IMAGE_UPLOAD_TYPE=filesystem
+
+# Provides the link to the source code of CodiMD on the entry page.
+#CMD_SOURCE_URL=
+
+# CPU time for one event loop tick until node throttles connections.
+# (milliseconds)
+#CMD_TOOBUSY_LAG=70
+
+# Enable/disable PDF exports
+CMD_ALLOW_PDF_EXPORT=false
+
+
+###############################################################################
+# Location
+###############################################################################
+
+# Domain name
+CMD_DOMAIN=localhost
+
+# If CodiMD is run from a subdirectory like www.example.com/<urlpath>
+#CMD_URL_PATH=
+
+# Interface/IP to listen on
+CMD_HOST=127.0.0.1
+
+# Port to listen on
+CMD_PORT=3000
+
+# Path to UNIX domain socket to listen on
+# (if specified, CMD_HOST and CMD_PORT are ignored)
+#CMD_PATH=/run/codimd/codimd.sock
+
+# Set to use SSL protocol for resources path (only applied when domain is set)
+#CMD_PROTOCOL_USESSL=false
+
+# Set to add port on callback URL (ports 80 or 443 won't be applied)
+# (only applied when domain is set)
+CMD_URL_ADDPORT=true
+
+# Domain name whitelist (use comma to separate)
+#CMD_ALLOW_ORIGIN=localhost
+
+
+###############################################################################
+# CSP and HSTS
+###############################################################################
+
+# Whether to enable Content Security Policy
+# (directives cannot be configured with environment variables)
+#CMD_CSP_ENABLE=true
+
+# Allows to add a URL for CSP reports in case of violations
+#CMD_CSP_REPORTURI=
+
+# Set to enable HSTS if HTTPS is also enabled (default is true)
+#CMD_HSTS_ENABLE=true
+
+# Set to include subdomains in HSTS (default is true)
+#CMD_HSTS_INCLUDE_SUBDOMAINS=true
+
+# Max duration in seconds to tell clients to keep HSTS status
+# (default is a year)
+#CMD_HSTS_MAX_AGE=31536000
+
+# Whether to allow preloading of the site's HSTS status (e.g. into browsers)
+#CMD_HSTS_PRELOAD=true
+
+
+###############################################################################
+# Privacy and External Requests
+###############################################################################
+
+# Set to false to disable gravatar as profile picture source on your instance
+CMD_ALLOW_GRAVATAR=false
+
+# Set to use CDN resources or not
+CMD_USECDN=false
+
+
+###############################################################################
+# Users and Privileges
+###############################################################################
+
+# Set to allow anonymous usage
+CMD_ALLOW_ANONYMOUS=false
+
+# If allowAnonymous is true: allow users to select freely permission,
+# allowing guests to edit existing notes
+CMD_ALLOW_ANONYMOUS_EDITS=false
+
+# Set to allow new note creation by accessing a nonexistent note URL.
+# This is the behavior familiar from Etherpad.
+CMD_ALLOW_FREEURL=false
+
+# Set notes default permission (only applied on signed-in users).
+# Values: freely, editable, limited, locked, protected, private
+CMD_DEFAULT_PERMISSION=private
+
+# Cookie session life time in milliseconds (default: 14 days)
+#CMD_SESSION_LIFE=1209600000
+
+# Secret used to sign the session cookie. If none is set, one will randomly
+# generated on each startup, meaning all your users will be logged out.
+#CMD_SESSION_SECRET=set_this_to_a_very_private_string
+
+
+###############################################################################
+# Login methods
+###############################################################################
+
+## Email (local accounts)
+
+# Set to allow email sign-in
+CMD_EMAIL=true
+
+# Set to allow registration of new accounts using an email address.
+# If set to false, you can still create accounts using the command line -
+# see bin/manage_users for details.
+# This setting has no effect if CMD_EMAIL is false.
+CMD_ALLOW_EMAIL_REGISTER=true
+
+
+## Dropbox Login
+
+#CMD_DROPBOX_CLIENTID=
+#CMD_DROPBOX_CLIENTSECRET=
+
+
+## Facebook Login
+
+#CMD_FACEBOOK_CLIENTID=
+#CMD_FACEBOOK_CLIENTSECRET=
+
+
+## GitHub Login
+
+#CMD_GITHUB_CLIENTID=
+#CMD_GITHUB_CLIENTSECRET=
+
+
+## GitLab Login
+
+#CMD_GITLAB_SCOPE=api
+#CMD_GITLAB_BASEURL=
+#CMD_GITLAB_CLIENTID=
+#CMD_GITLAB_CLIENTSECRET=
+#CMD_GITLAB_VERSION=
+
+
+## Google Login
+
+#CMD_GOOGLE_CLIENTID=
+#CMD_GOOGLE_CLIENTSECRET=
+
+
+## LDAP Login
+
+#CMD_LDAP_URL=
+#CMD_LDAP_BINDDN=
+#CMD_LDAP_BINDCREDENTIALS=
+#CMD_LDAP_SEARCHBASE=
+#CMD_LDAP_SEARCHFILTER=
+#CMD_LDAP_SEARCHATTRIBUTES=
+#CMD_LDAP_USERIDFIELD=
+#CMD_LDAP_USERNAMEFIELD=
+#CMD_LDAP_TLS_CA=
+#CMD_LDAP_PROVIDERNAME=
+
+
+## Mattermost Login
+
+#CMD_MATTERMOST_BASEURL=
+#CMD_MATTERMOST_CLIENTID=
+#CMD_MATTERMOST_CLIENTSECRET=
+
+
+## OAuth2 Login
+
+#CMD_OAUTH2_USER_PROFILE_URL=
+#CMD_OAUTH2_USER_PROFILE_USERNAME_ATTR=
+#CMD_OAUTH2_USER_PROFILE_DISPLAY_NAME_ATTR=
+#CMD_OAUTH2_USER_PROFILE_EMAIL_ATTR=
+#CMD_OAUTH2_TOKEN_URL=
+#CMD_OAUTH2_AUTHORIZATION_URL=
+#CMD_OAUTH2_CLIENT_ID=
+#CMD_OAUTH2_CLIENT_SECRET=
+#CMD_OAUTH2_PROVIDERNAME=
+
+
+## SAML Login
+
+#CMD_SAML_IDPSSOURL=
+#CMD_SAML_IDPCERT=
+#CMD_SAML_ISSUER=
+#CMD_SAML_DISABLEREQUESTEDAUTHNCONTEXT=
+#CMD_SAML_IDENTIFIERFORMAT=
+#CMD_SAML_GROUPATTRIBUTE=
+#CMD_SAML_REQUIREDGROUPS=
+#CMD_SAML_EXTERNALGROUPS=
+#CMD_SAML_ATTRIBUTE_ID=
+#CMD_SAML_ATTRIBUTE_USERNAME=
+#CMD_SAML_ATTRIBUTE_EMAIL=
+
+
+## Twitter Login
+
+#CMD_TWITTER_CONSUMERKEY=
+#CMD_TWITTER_CONSUMERSECRET=
+
+
+###############################################################################
+# Upload Storage
+###############################################################################
+
+## Amazon S3
+
+#CMD_S3_ACCESS_KEY_ID=
+#CMD_S3_SECRET_ACCESS_KEY=
+#CMD_S3_REGION=
+#CMD_S3_BUCKET=
+
+
+## Asure Blob Storage
+
+#CMD_AZURE_CONNECTION_STRING=
+#CMD_AZURE_CONTAINER=
+
+
+## imgur
+
+#CMD_IMGUR_CLIENTID=
+
+
+## Minio
+
+#CMD_MINIO_ACCESS_KEY=
+#CMD_MINIO_SECRET_KEY=
+#CMD_MINIO_ENDPOINT=
+#CMD_MINIO_PORT=
+#CMD_MINIO_SECURE=
+
+
+## Lutim
+
+#CMD_LUTIM_URL=
