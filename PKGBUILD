@@ -1,20 +1,19 @@
-# Maintainer: David Thurstenson <thurstylark@gmail.com>
+# Maintainer: Ludvig Holtze <ludvig.holtze@protonmail.com>
+# Contributor: David Thurstenson <thurstylark@gmail.com>
 
 pkgname=ttf-dseg
-pkgver=030
-pkgrel=2
+epoch=1
+pkgver=0.45
+pkgrel=1
 pkgdesc="Font family that imitates seven and fourteen segment displays"
 arch=('any')
 url="http://www.keshikan.net/fonts-e.html"
-license=('custom')
-depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-mkfontscale' 'xorg-mkfontdir')
-source=("http://www.keshikan.net/archive/DSEG_v${pkgver}.zip")
-sha256sums=('893478aa877e894c79b79dfbbc363be131d1d5060d1f79abe6c135cf57e8166b')
+license=('OFL')
+source=("https://github.com/keshikan/DSEG/releases/download/v${pkgver}/fonts-DSEG_v${pkgver//./}.zip")
+sha256sums=('e2745d06e358474a25271fc58881f3f7806f3f39715fe4943348d04d207c1a6d')
 
 package() {
-
-  cd "${srcdir}"
-  find "${srcdir}"/ -name '*.ttf' -execdir install -Dm644 {} -t "${pkgdir}"/usr/share/fonts/TTF \;
-
-  install -Dm644 readme-en.txt "${pkgdir}"/usr/share/licenses/${pkgname}/README
+	cd "${srcdir}/fonts-DSEG_v${pkgver//./}"
+	find . -name '*.ttf' -execdir install -Dm644 {} -t "${pkgdir}/usr/share/fonts/TTF" \;
+	install -Dm644 DSEG-LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
