@@ -5,7 +5,7 @@
 
 pkgname=ddclient
 pkgver=3.9.0
-pkgrel=3
+pkgrel=4
 
 pkgdesc="Update dynamic DNS entries for accounts on many dynamic DNS services"
 url="https://github.com/ddclient/ddclient"
