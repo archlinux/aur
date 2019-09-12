@@ -3,7 +3,7 @@
 pkgname=ipmiview
 pkgver=2.16.0
 _pkghash=190528
-pkgrel=1
+pkgrel=2
 pkgdesc="Supermicro IPMI tool"
 makedepends=('tar')
 depends=("glibc" "java-runtime=8")
@@ -19,7 +19,7 @@ backup=('account.properties'
 source=("https://www.supermicro.com/wftp/utility/IPMIView/Linux/IPMIView_${pkgver}_build.${_pkghash}_bundleJRE_Linux_x64.tar.gz"
         'ipmiview.desktop')
 
-sha512sums=('0b53143a599d12fbd9d29bc1677691f09d1363df2ddda7ff817c3a403ebc49767097cc6dab5062b269fc932e8b8a5b1a0061a25f4601e7244a1adb5f85416eea'
+sha512sums=('c4ce84946072a8d5531f7dcae3dad7d0e730b12868392e4a7d05e43011eebcbc0c8d263f95ec12e9a815065f23c158f60f943eb13dd184b30d38cee63863d894'
             '683922d5ce90116ca04fbf1a244da87296beaf079ecde94d799b2d303e21dfda4e771f5a4b724e7dd64143feaef49d2f11fd2eaf380ebdcf02e9db82c9975497')
 
 package() {
