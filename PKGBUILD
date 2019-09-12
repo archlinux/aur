@@ -47,7 +47,7 @@ prepare() {
   sed -e "s/^FFMINOR.*/FFMINOR=${pkgver:(-3):(-2)}/g" -i makeicecat
   sed -e "s/^FFSUB.*/FFSUB=${pkgver:(5)}/g" -i makeicecat
   rm -rf output  # Clean output just in case is already an old build there
-  sh makeicecat
+  bash makeicecat
   cd output/icecat-${pkgver}
 
   # Patch to move files directly to /usr/lib/icecat. No more symlinks.
