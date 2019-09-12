@@ -1,0 +1,17 @@
+pkgbase = coreboot-battery-threshold-git
+	pkgdesc = Simple script to set battery thresholds on coreboot devices.
+	pkgver = 0
+	pkgrel = 1
+	url = https://github.com/Baitinq/coreboot-battery-threshold.git
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = ectool
+	provides = coreboot-battery-threshold
+	source = git://github.com/Baitinq/coreboot-battery-threshold.git
+	md5sums = SKIP
+	sha1sums = SKIP
+	sha256sums = SKIP
+
+pkgname = coreboot-battery-threshold-git
+
