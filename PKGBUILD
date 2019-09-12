@@ -1,5 +1,5 @@
-# Maintainer: Andrew Sun <adsun701@gmail.com>
-# Contributor: procrastinator <pseudoj2@gmail.com>
+# Maintainer: Andrew Sun <adsun701 at gmail dot com>
+# Contributor: procrastinator <pseudoj2 at gmail dot com>
 
 pkgname=ttf-essays
 pkgver=2.100
