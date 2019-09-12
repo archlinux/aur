@@ -1,6 +1,6 @@
 # Contributor: graysky <graysky AT archlinux dot us>
 pkgname=pulseaudio-ctl
-pkgver=1.66
+pkgver=1.67
 pkgrel=1
 pkgdesc='Control pulseaudio volume from the shell or mapped to keyboard shortcuts.'
 arch=('any')
@@ -25,4 +25,4 @@ package() {
 	install -Dm644 MIT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-sha256sums=('37e581878b5c0e1d9e55f28c1d2b40546fd02bd0205a410f591b11e6268cab63')
+sha256sums=('7e0ae9f96b44ae6e5d361133aa89b7bbf3136407f164f1545f030f8bee7fa635')
