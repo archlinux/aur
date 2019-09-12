@@ -32,8 +32,8 @@ package() {
   mkdir -p "$pkgdir/usr/share/$_gitname"
   install -Dm755 coreboot-battery-threshold "${pkgdir}/usr/bin/$_gitname"
   chmod +x "$pkgdir/usr/bin/$_gitname"
-  install -Dm 644 $pkgbase.service \
-    "$pkgdir/etc/systemd/system/$pkgbase.service"
+  install -Dm 644 $_gitname.service \
+    "$pkgdir/etc/systemd/system/$_gitname.service"
   cp -a --no-preserve=ownership * "$pkgdir/usr/share/$_gitname"
   chmod -R 777 "$pkgdir/usr/share/$_gitname"
 
