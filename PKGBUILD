@@ -1,7 +1,7 @@
 # Maintainer: Jack Chen <redchenjs@live.com>
 
 pkgname=utools
-pkgver=0.7.1
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="uTools Utilities"
 arch=('x86_64')
@@ -20,7 +20,7 @@ source=(
     'https://resource.u-tools.cn/version/utools_'${pkgver}'-beta_amd64.deb'
 )
 md5sums=(
-    '3a939a2e8e06c04c885f948c717d8432'
+    '496298315327cdc694e0885b77465319'
 )
 
 package() {
