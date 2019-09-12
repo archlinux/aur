@@ -1,11 +1,12 @@
 pkgbase = python-jsonrpcclient
 	pkgdesc = Send JSON-RPC requests in Python.
 	pkgver = 3.3.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bcb/jsonrpcclient
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
+	makedepends = python-nose
 	depends = python
 	options = !emptydirs
 	source = python-jsonrpcclient-3.3.4.tar.gz::https://files.pythonhosted.org/packages/source/j/jsonrpcclient/jsonrpcclient-3.3.4.tar.gz
