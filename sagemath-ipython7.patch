@@ -170,7 +170,7 @@ index 5c56e6bf89..a96c350791 100644
      ----> 1 Integer(1)/Integer(0)
      .../sage/rings/integer.pyx in sage.rings.integer.Integer...div... (.../cythonized/sage/rings/integer.c:...)()
      ...
-@@ -367,22 +367,19 @@ class SageTestShell(SageShellOverride, TerminalInteractiveShell):
+@@ -364,22 +364,19 @@ class SageTestShell(SageShellOverride, TerminalInteractiveShell):
  ###################################################################
  # Transformers used in the SageInputSplitter
  ###################################################################
@@ -200,7 +200,7 @@ index 5c56e6bf89..a96c350791 100644
  
      TESTS:
  
-@@ -403,57 +400,15 @@ def SagePreparseTransformer(line):
+@@ -400,57 +397,15 @@ def SagePreparseTransformer(line):
          <BLANKLINE>
          sage: shell.quit()
      """
@@ -266,7 +266,7 @@ index 5c56e6bf89..a96c350791 100644
  
  ###################
  # Interface shell #
-@@ -583,7 +538,7 @@ def interface_shell_embed(interface):
+@@ -612,7 +567,7 @@ def interface_shell_embed(interface):
          sage: shell = interface_shell_embed(gap)
          sage: shell.run_cell('List( [1..10], IsPrime )')
          [ false, true, true, false, true, false, true, false, false, false ]
