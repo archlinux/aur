@@ -70,6 +70,6 @@ mkdir -p out
 python2=$(which python2 2>/dev/null || which python 2>/dev/null)
 export DEPOT_TOOLS_WIN_TOOLCHAIN=0
 
-./gn/out/gn gen "$out" --args="$flags" --script-executable=$python2
+gn gen "$out" --args="$flags" --script-executable=$python2
 
 ninja -C "$out" naive

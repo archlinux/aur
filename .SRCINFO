@@ -8,12 +8,13 @@ pkgbase = naiveproxy
 	makedepends = git
 	makedepends = ninja
 	makedepends = cmake
+	makedepends = gn
 	depends = nspr
 	depends = nss
 	source = naiveproxy.tar.gz::https://github.com/btwiuse/naiveproxy/archive/v76.0.3809.87-2.tar.gz
 	source = build_x86.sh
 	md5sums = f3b1ba2190b0564cc7e38aa6a2147676
-	md5sums = d1f92f0e8adf70ceb65343c77cfa0e33
+	md5sums = 5257d87a1b4db16c8eb24e19d2570ed6
 
 pkgname = naiveproxy
 
