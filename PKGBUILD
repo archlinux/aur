@@ -1,4 +1,5 @@
-# Maintainer: Ista Zahn <istazahn[at]gmail[dot]com>
+# Maintainer: robertfoster
+# Contributor: Ista Zahn <istazahn[at]gmail[dot]com>
 
 pkgbase=python-pyppeteer
 _pyname=pyppeteer
