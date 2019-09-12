@@ -1,6 +1,6 @@
 pkgbase = spice-up
 	pkgdesc = Create simple and beautiful presentations on the Linux desktop
-	pkgver = 1.8.0
+	pkgver = 1.8.2
 	pkgrel = 1
 	url = https://github.com/Philip-Scott/Spice-up
 	arch = i686
@@ -15,8 +15,8 @@ pkgbase = spice-up
 	depends = libgudev
 	depends = libevdev
 	depends = libsoup
-	source = Spice-up-1.8.0.tar.gz::https://github.com/Philip-Scott/Spice-up/archive/1.8.0.tar.gz
-	sha512sums = f092156d1226a0c1fd65e72fe8c8192ef6c0b7c9e8f829d862c03b786e1fe347d43955892510ed40532699a4a0111eef2bec07d1bf52fa330dd42a7fb0999e6d
+	source = Spice-up-1.8.2.tar.gz::https://github.com/Philip-Scott/Spice-up/archive/1.8.2.tar.gz
+	sha256sums = 67783d7fb8f7a4756f4312e8a43d4d9c9d60524956dd3de9076506a2da513c17
 
 pkgname = spice-up
 

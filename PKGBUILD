@@ -1,9 +1,10 @@
 # Maintainer: NicoHood <archlinux {cat} nicohood {dog} de>
 # PGP ID: 97312D5EB9D7AE7D0BD4307351DAE9B7C1AE9161
+# Contributor: btd1337
 
 pkgname=spice-up
 _pkgname=Spice-up
-pkgver=1.8.0
+pkgver=1.8.2
 pkgrel=1
 pkgdesc="Create simple and beautiful presentations on the Linux desktop"
 arch=('i686' 'x86_64')
@@ -12,7 +13,7 @@ license=('GPL3')
 depends=('granite' 'libgee' 'gtk3' 'json-glib' 'libgudev' 'libevdev' 'libsoup')
 makedepends=('cmake' 'vala')
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/Philip-Scott/${_pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('f092156d1226a0c1fd65e72fe8c8192ef6c0b7c9e8f829d862c03b786e1fe347d43955892510ed40532699a4a0111eef2bec07d1bf52fa330dd42a7fb0999e6d')
+sha256sums=('67783d7fb8f7a4756f4312e8a43d4d9c9d60524956dd3de9076506a2da513c17')
 
 build() {
     cd "${_pkgname}-${pkgver}"
