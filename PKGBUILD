@@ -1,8 +1,8 @@
-# Maintainer: Andrew Sun <adsun701@gmail.com>
-# Contributor: ant32 <antreimer@gmail.com>
+# Maintainer: Andrew Sun <adsun701 at gmail dot com>
+# Contributor: ant32 <antreimer at gmail dot com>
 
 pkgname=mingw-w64-curl
-pkgver=7.65.3
+pkgver=7.66.0
 pkgrel=1
 pkgdesc="An URL retrival utility and library (mingw-w64)"
 arch=('any')
@@ -20,8 +20,8 @@ source=("$url/download/curl-$pkgver.tar.bz2"
         "0001-Make-cURL-relocatable.patch"
         "0002-nghttp2-static.patch"
         "0003-libpsl-static-libs.patch")
-sha256sums=('0a855e83be482d7bc9ea00e05bdb1551a44966076762f9650959179c89fce509'
-            'a3bdfcf7dad7ef86bbfb13eac62183787806d527411e1d981f7091ec26dde4ce'
+sha256sums=('6618234e0235c420a21f4cb4c2dd0badde76e6139668739085a70c4e2fe7a141'
+            'b4dc193e973ae29a33e8b6fe3f03b481ae2a8822c13ef6c960cad4495d847026'
             'e330a7c9bfa88b1347d8ffda2b278a719d658ec99eff68bfa0568e2bc32dffeb'
             '7492d019036b5bec251bfbc3c0b40e5f16d3dd6b2515068835e087a6c21f19ad')
 
@@ -62,6 +62,7 @@ package() {
     make DESTDIR="${pkgdir}" install
     #rm "$pkgdir"/usr/${_arch}/bin/*.exe
     rm -r "${pkgdir}/usr/${_arch}/share"
+    ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.exe
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
   done
