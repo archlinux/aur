@@ -10,15 +10,16 @@
 
 pkgbase=boost
 pkgname=('boost-libs' 'boost')
-pkgver=1.69.0
+pkgver=1.71.0
 _boostver=${pkgver//./_}
-pkgrel=2
+pkgrel=1
+pkgdesc='Free peer-reviewed portable C++ source libraries'
 url='https://www.boost.org/'
 arch=('x86_64')
 license=('custom')
-makedepends=('icu' 'python' 'python2' 'python-numpy' 'python2-numpy' 'bzip2' 'zlib' 'openmpi')
-source=(https://downloads.sourceforge.net/project/${pkgbase}/${pkgbase}/${pkgver}/${pkgbase}_${_boostver}.tar.bz2)
-sha256sums=('8f32d4617390d1c2d16f26a27ab60d97807b35440d45891fa340fc2648b04406')
+makedepends=('icu' 'python' 'python2' 'python-numpy' 'python2-numpy' 'bzip2' 'zlib' 'openmpi' 'zstd' 'findutils')
+source=(https://dl.bintray.com/boostorg/release/${pkgver}/source/boost_${_boostver}.tar.bz2)
+sha256sums=('d73a8da01e8bf8c7eda40b4c84915071a8c8a0df4a6734537ddde4a8580524ee')
 
 build() {
    export _stagedir="${srcdir}/stagedir"
@@ -28,9 +29,7 @@ build() {
 
    ./bootstrap.sh --with-toolset=gcc --with-icu --with-python=/usr/bin/python2
 
-   _bindir="bin.linuxx86"
-   [[ "${CARCH}" = "x86_64" ]] && _bindir="bin.linuxx86_64"
-   install -Dm755 tools/build/src/engine/$_bindir/b2 "${_stagedir}"/bin/b2
+   install -Dm755 tools/build/src/engine/b2 "${_stagedir}"/bin/b2
 
    # Support for OpenMPI
    echo "using mpi ;" >> project-config.jam
@@ -91,7 +90,7 @@ build() {
 }
 
 package_boost() {
-   pkgdesc='Free peer-reviewed portable C++ source libraries - development headers'
+   pkgdesc+=' - development headers'
    depends=("boost-libs=${pkgver}")
    optdepends=('python: for python bindings'
                'python2: for python2 bindings')
@@ -113,10 +112,24 @@ package_boost() {
 }
 
 package_boost-libs() {
-   pkgdesc='Free peer-reviewed portable C++ source libraries - runtime libraries'
-   depends=('bzip2' 'zlib' 'icu')
+   pkgdesc+=' - runtime libraries'
+   depends=('bzip2' 'zlib' 'icu' 'zstd')
    optdepends=('openmpi: for mpi support')
-   provides=('libboost_context.so')
+   provides=(libboost_atomic.so libboost_chrono.so libboost_container.so
+     libboost_context.so libboost_contract.so libboost_coroutine.so
+     libboost_date_time.so libboost_fiber.so libboost_filesystem.so
+     libboost_graph.so libboost_graph_parallel.so libboost_iostreams.so
+     libboost_locale.so libboost_log.so libboost_log_setup.so
+     libboost_math_c99.so libboost_math_c99f.so libboost_math_c99l.so
+     libboost_math_tr1.so libboost_math_tr1f.so libboost_math_tr1l.so
+     libboost_mpi.so libboost_numpy27.so libboost_numpy37.so
+     libboost_prg_exec_monitor.so libboost_program_options.so
+     libboost_python27.so libboost_python37.so libboost_random.so
+     libboost_regex.so libboost_serialization.so
+     libboost_stacktrace_addr2line.so libboost_stacktrace_basic.so
+     libboost_stacktrace_noop.so libboost_system.so libboost_thread.so
+     libboost_timer.so libboost_type_erasure.so libboost_unit_test_framework.so
+     libboost_wave.so libboost_wserialization.so)
 
    install -dm755 "${pkgdir}"/usr
    cp -a "${_stagedir}"/lib "${pkgdir}"/usr
