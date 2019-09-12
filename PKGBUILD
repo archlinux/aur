@@ -1,7 +1,7 @@
 # Maintainer: Sven-Hendrik Haase <svenstaro@gmail.com>
 
 pkgname=dummyhttp
-pkgver=0.2.2
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Super simple HTTP server that replies a fixed body with a fixed response code
 "
@@ -10,12 +10,12 @@ url="https://github.com/svenstaro/dummyhttp"
 license=(MIT)
 makedepends=(cargo)
 source=(https://github.com/svenstaro/dummyhttp/archive/${pkgver}.tar.gz)
-sha512sums=('3c1d645abd80945eb666641a4102ffa7a9e074f57a6d76c4f0af4e0b854e5bd3e9cd92768be980723bf39393be66a793b018f38916260fec04bb200f593cab40')
+sha512sums=('8e3544d94a8bba2d1ca74894225de27161df20d59868cb3b7cdabf3f0810fcbd1a0d71e53e0056df1b62ed45a85c18cd7c1bdc4b2acc9a8a5c5d2fe31436606b')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  cargo build --release
+  cargo build --release --locked
 }
 
 package() {
