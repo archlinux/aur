@@ -12,7 +12,10 @@ pkgbase = linux-amd-staging-drm-next-git
 	makedepends = libelf
 	makedepends = git
 	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
 	makedepends = graphviz
+	makedepends = imagemagick
+	makedepends = git
 	options = !strip
 	source = linux-amd-staging-drm-next-git::git://people.freedesktop.org/~agd5f/linux#branch=amd-staging-drm-next
 	source = config
@@ -22,8 +25,8 @@ pkgbase = linux-amd-staging-drm-next-git
 	sha256sums = SKIP
 	sha256sums = b8d1fd75825a59312e347674f8a13b799e0535109da6218763c5b21c1e071168
 	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
-	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
-	sha256sums = 997dd1ca5c59e526a35d8367e6371a68406b1a58b90006e6f85d59a580c7503f
+	sha256sums = 834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0
+	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
 
 pkgname = linux-amd-staging-drm-next-git
 	pkgdesc = The Linux-amd-staging-drm-next-git kernel and modules
@@ -37,7 +40,4 @@ pkgname = linux-amd-staging-drm-next-git
 
 pkgname = linux-amd-staging-drm-next-git-headers
 	pkgdesc = Header files and scripts for building modules for Linux-amd-staging-drm-next-git kernel
-
-pkgname = linux-amd-staging-drm-next-git-docs
-	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-amd-staging-drm-next-git kernel
 

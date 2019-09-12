@@ -16,7 +16,10 @@ pkgrel=1
 arch=(x86_64)
 url='https://cgit.freedesktop.org/~agd5f/linux/'
 license=(GPL2)
-makedepends=(xmlto kmod inetutils bc libelf git python-sphinx graphviz)
+makedepends=(
+  xmlto kmod inetutils bc libelf git python-sphinx python-sphinx_rtd_theme
+  graphviz imagemagick git
+)
 options=('!strip')
 source=("${pkgbase}::git://people.freedesktop.org/~agd5f/linux#branch=${_branch}"
   config         # the main kernel config file
@@ -27,8 +30,8 @@ source=("${pkgbase}::git://people.freedesktop.org/~agd5f/linux#branch=${_branch}
 sha256sums=('SKIP'
             'b8d1fd75825a59312e347674f8a13b799e0535109da6218763c5b21c1e071168'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
-            'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
-            '997dd1ca5c59e526a35d8367e6371a68406b1a58b90006e6f85d59a580c7503f')
+            '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
+            'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 pkgver() {
   cd "${_srcname}"
   local version="$(grep \^VERSION Makefile|cut -d"=" -f2|cut -d" " -f2)"
@@ -68,9 +71,7 @@ prepare() {
 
 build() {
   cd $_srcname
-#mainline: disabled for 5.1-rc5
-#make bzImage modules htmldocs
-  make bzImage modules
+  make bzImage modules #htmldocs
 }
 
 _package() {
@@ -210,43 +211,11 @@ _package-headers() {
   chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
-_package-docs() {
-  pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase/linux/Linux} kernel"
-
-  local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
-
-  cd $_srcname
-
-  msg2 "Installing documentation..."
-  mkdir -p "$builddir"
-  cp -t "$builddir" -a Documentation
-
-  #mainline: disabled for 5.1-rc5
-
-  #msg2 "Removing doctrees..."
-  #rm -r "$builddir/Documentation/output/.doctrees"
-
-  #msg2 "Moving HTML docs..."
-  #local src dst
-  #while read -rd '' src; do
-    #dst="$builddir/Documentation/${src#$builddir/Documentation/output/}"
-    #mkdir -p "${dst%/*}"
-    #mv "$src" "$dst"
-    #rmdir -p --ignore-fail-on-non-empty "${src%/*}"
-  #done < <(find "$builddir/Documentation/output" -type f -print0)
-
-  msg2 "Adding symlink..."
-  mkdir -p "$pkgdir/usr/share/doc"
-  ln -sr "$builddir/Documentation" "$pkgdir/usr/share/doc/$pkgbase"
-
-  msg2 "Fixing permissions..."
-  chmod -Rc u=rwX,go=rX "$pkgdir"
-}
-
-pkgname=("$pkgbase" "$pkgbase-headers" "$pkgbase-docs")
+pkgname=("$pkgbase" "$pkgbase-headers")
 for _p in "${pkgname[@]}"; do
   eval "package_$_p() {
     $(declare -f "_package${_p#$pkgbase}")
     _package${_p#$pkgbase}
   }"
 done
+
