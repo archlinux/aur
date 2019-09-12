@@ -4,11 +4,11 @@
 
 pkgname=thunderbird-beta
 _pkgname=thunderbird
-_pkgver=69.0
-pkgver=69.0b4
+_pkgver=70.0
+pkgver=70.0b1
 _major=${pkgver/[br]*}
 _build=${pkgver/*rc}
-pkgrel=2
+pkgrel=1
 pkgdesc="Standalone mail and news reader from mozilla.org - Bleeding edge version"
 arch=(x86_64)
 license=(MPL GPL LGPL)
@@ -23,7 +23,7 @@ options=(!emptydirs !makeflags)
 install=$pkgname.install
 source=(https://ftp.mozilla.org/pub/thunderbird/releases/$pkgver/source/thunderbird-$pkgver.source.tar.xz
 		'thunderbird-beta.desktop')
-sha256sums=('586cd300f2bc7c2bdb7987be5d1f2542ef9e79f8b82f5a04a8c1e50f4dbdd326'
+sha256sums=('75a9dfd25965452b2cd0076300352189bb68c68e95975cf8cd5d34fc29e90272'
             'aef1484f9df38db75330c142edc46d73053acee8b959562bc9e765c235d83cbe')
 
 # RC
