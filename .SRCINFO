@@ -12,7 +12,10 @@ pkgbase = linux-amd-git
 	makedepends = libelf
 	makedepends = git
 	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
 	makedepends = graphviz
+	makedepends = imagemagick
+	makedepends = git
 	options = !strip
 	source = linux-amd-git::git://people.freedesktop.org/~agd5f/linux#branch=drm-next-5.4
 	source = config
@@ -22,8 +25,8 @@ pkgbase = linux-amd-git
 	sha256sums = SKIP
 	sha256sums = cf89e945f03bc0863904c2daf68f476f726d1a596a087a9bc217580bfe7423ee
 	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
-	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
-	sha256sums = 997dd1ca5c59e526a35d8367e6371a68406b1a58b90006e6f85d59a580c7503f
+	sha256sums = 834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0
+	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
 
 pkgname = linux-amd-git
 	pkgdesc = The Linux-amd-git kernel and modules
