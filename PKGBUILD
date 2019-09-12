@@ -2,7 +2,7 @@
 
 pkgname=fastcdr
 _pkgnm=Fast-CDR
-pkgver=1.0.9
+pkgver=1.0.11
 pkgrel=1
 pkgdesc="eProsima FastCDR is a C++ library that provides two serialization mechanisms. One is the standard CDR serialization mechanism, while the other is a faster implementation that modifies the standard."
 arch=('any')
@@ -11,7 +11,7 @@ license=('Apache2.0')
 depends=()
 makedepends=('cmake')
 source=(https://github.com/eProsima/Fast-CDR/archive/v${pkgver}.tar.gz)
-sha256sums=('02a89dda8fd8db3ec2e367c13f11d84b27bf35d6b10fa2c61045a74ea6da9ddb')
+sha256sums=('9a83eb34014ee4a466d130bc04546bf53f8598f33261356387cbbf054515a8e8')
 
 
 package(){
