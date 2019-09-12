@@ -1,15 +1,15 @@
 pkgbase = pkgtop-git
 	pkgdesc = Interactive package manager & resource monitor
-	pkgver = 1.9.r0.g2bb92cc
+	pkgver = 2.0.r2.g345aaeb
 	pkgrel = 1
-	url = https://github.com/keylo99/pkgtop
+	url = https://github.com/orhun/pkgtop
 	arch = any
 	license = GPL3
 	makedepends = go
 	depends = git
 	provides = pkgtop
 	conflicts = pkgtop
-	source = git://github.com/keylo99/pkgtop.git#branch=master
+	source = git://github.com/orhun/pkgtop.git#branch=master
 	sha256sums = SKIP
 
 pkgname = pkgtop-git

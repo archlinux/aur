@@ -1,17 +1,17 @@
-# Maintainer: keylo99 <keylo99official@gmail.com>
+# Maintainer: orhun <github.com/orhun>
 
 pkgname=pkgtop-git
 pkgdesc="Interactive package manager & resource monitor"
-pkgver=1.9.r0.g2bb92cc
+pkgver=2.0.r2.g345aaeb
 pkgrel=1
 arch=('any')
-url="https://github.com/keylo99/pkgtop"
+url="https://github.com/orhun/pkgtop"
 license=('GPL3')
 depends=('git')
 makedepends=('go')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git://github.com/keylo99/pkgtop.git#branch=master')
+source=('git://github.com/orhun/pkgtop.git#branch=master')
 sha256sums=('SKIP')
 
 pkgver() {
