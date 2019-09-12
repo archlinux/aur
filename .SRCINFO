@@ -1,0 +1,17 @@
+pkgbase = naiveproxy
+	pkgdesc = Make a fortune quietly
+	pkgver = 76.0.3809.87
+	pkgrel = 1
+	url = https://github.com/klzgrad/naiveproxy
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = ninja
+	makedepends = cmake
+	depends = nspr
+	depends = nss
+	source = naiveproxy.tar.gz::https://github.com/klzgrad/naiveproxy/archive/v76.0.3809.87-1.tar.gz
+	md5sums = 3070a2428c511f51f012697844261e91
+
+pkgname = naiveproxy
+
