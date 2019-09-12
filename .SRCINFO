@@ -8,7 +8,6 @@ pkgbase = naiveproxy
 	makedepends = git
 	makedepends = ninja
 	makedepends = cmake
-	makedepends = gn
 	depends = nspr
 	depends = nss
 	source = naiveproxy.tar.gz::https://github.com/btwiuse/naiveproxy/archive/v76.0.3809.87-2.tar.gz
