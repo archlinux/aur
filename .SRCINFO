@@ -1,0 +1,23 @@
+pkgbase = angular-console-bin
+	pkgdesc = Angular Console is the user interface for the Angular CLI
+	pkgver = 8.0.0
+	pkgrel = 0
+	url = https://github.com/nrwl/angular-console
+	arch = x86_64
+	license = MIT
+	depends = fontconfig
+	depends = libxtst
+	depends = gtk3
+	depends = cairo
+	depends = alsa-lib
+	depends = nss
+	depends = gcc-libs
+	depends = python
+	depends = libxss
+	depends = gconf
+	provides = angular-console
+	source = https://github.com/nrwl/angular-console/releases/download/v8.0.0/angularconsole-8.0.0.deb
+	sha256sums = b3a9734829c808c0853f2b9a87ba06242bf45293c241881e654b5ecb69112cac
+
+pkgname = angular-console-bin
+
