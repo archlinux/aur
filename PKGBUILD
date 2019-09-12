@@ -1,4 +1,4 @@
-# Maintainer: Aleksandar Trifunović <akstrfn at gmail dot com>
+# Maintainer: Frederik Schwan <frederik dot schwan at linux dot com>
 
 pkgname=or-tools-java
 pkgver=7.3
