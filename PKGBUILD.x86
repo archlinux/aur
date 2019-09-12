@@ -8,7 +8,7 @@ arch=('any')
 url='https://github.com/klzgrad/naiveproxy'
 license=('BSD')
 depends=('nspr' 'nss')
-makedepends=('git' 'ninja' 'cmake')
+makedepends=('git' 'ninja' 'cmake' 'docker')
 source=("${pkgname}.tar.gz::https://github.com/btwiuse/naiveproxy/archive/v${pkgver}-${pkgrel}.tar.gz"
         "build_x86.sh")
 md5sums=('f3b1ba2190b0564cc7e38aa6a2147676'
@@ -17,10 +17,7 @@ md5sums=('f3b1ba2190b0564cc7e38aa6a2147676'
 build(){
   pushd ${srcdir}/${pkgname}-${pkgver}-${pkgrel}/src
   ./get-clang.sh
-  ../../build_x86.sh || true
-  pushd out/Release
-  sudo docker run -it -v $PWD:$PWD -w $PWD navigaid/naiveproxy-arch32-base:latest clang++ -Wl,--build-id=sha1 -fPIC -Wl,-z,noexecstack -Wl,-z,relro -Wl,-z,now -Wl,-z,defs -Wl,--as-needed -m32 -Wl,-O2 -Wl,--gc-sections -rdynamic -nostdlib++ -pie -Wl,--disable-new-dtags -o ./naive -Wl,--start-group @./naive.rsp -Wl,--end-group -ldl -lpthread -lrt -lsmime3 -lnss3 -lnssutil3 -lplds4 -lplc4 -lnspr4 -lresolv -latomic
-  popd
+  ../../build_x86.sh || sudo docker run -it -v $PWD/out/Release:$PWD/out/Release -w $PWD/out/Release navigaid/naiveproxy-arch32-base:latest clang++ -Wl,--build-id=sha1 -fPIC -Wl,-z,noexecstack -Wl,-z,relro -Wl,-z,now -Wl,-z,defs -Wl,--as-needed -m32 -Wl,-O2 -Wl,--gc-sections -rdynamic -nostdlib++ -pie -Wl,--disable-new-dtags -o ./naive -Wl,--start-group @./naive.rsp -Wl,--end-group -ldl -lpthread -lrt -lsmime3 -lnss3 -lnssutil3 -lplds4 -lplc4 -lnspr4 -lresolv -latomic
   popd
 }
 
