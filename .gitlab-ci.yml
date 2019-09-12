@@ -1,85 +1,111 @@
-variables:
+#variables:
   # AUR_SSH_KEY     (group)    cat key | base64 | tr -d '\n'
   # DEPLOY_SSH_KEY  (project)  cat key | base64 | tr -d '\n'
-  GIT_NAME: "GitlabCI"
-  GIT_EMAIL: "mail+ci@hashworks.net"
+
+stages:
+  - trigger
+  - test
+  - deploy
 
 # Triggered by new entries in https://github.com/openzim/libzim/releases.atom
 # * Parse new version from link variable
-# * Install curl for download, git and openssh for commit
 # * Replace pkgver, pkgrel and sha256sums in PKGBUILD
-# * Setup ssh_agent and git
-# * Push new version to origin, triggering other CI stages
+# * Check if pkgver actually changed
 newVersion:
-  image: alpine:latest
+  stage: trigger
+  image: appropriate/curl:latest
   script:
     - test -n "${DEPLOY_SSH_KEY}"
     - test -n "${link}"
     - new_pkgver="$(echo "${link}" | rev | cut -d/ -f1 | rev)"
     - test -n "${new_pkgver}"
     - 'echo "New version: ${new_pkgver}"'
-    - apk add curl git openssh
     - curl --fail -L "https://github.com/openzim/libzim/archive/${new_pkgver}.tar.gz" --output /tmp/${new_pkgver}.tar.gz
     - tar tf /tmp/${new_pkgver}.tar.gz > /dev/null
-    - new_sha256sum=$(sha256sum -z /tmp/${new_pkgver}.tar.gz | cut -d\  -f1)
+    - new_sha256sum=$(sha256sum /tmp/${new_pkgver}.tar.gz | cut -d\  -f1)
     - test -n "${new_sha256sum}"
     - echo "New sha256sum ${new_sha256sum}"
+    - old_pkgver="$(grep pkgver= PKGBUILD)"
+    - old_sha256sums="$(grep sha256sums= PKGBUILD)"
     - sed -i "s/pkgver=.*/pkgver=${new_pkgver}/" PKGBUILD
     - sed -i 's/pkgrel=.*/pkgrel=1/' PKGBUILD
     - sed -i "s/sha256sums=(.*)/sha256sums=(${new_sha256sum})/" PKGBUILD
-    - git diff
-    - mkdir -p ~/.ssh
-    - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
-    - eval $(ssh-agent -s)
-    - ssh-add <(echo "${DEPLOY_SSH_KEY}" | base64 --decode)
-    - git checkout -B "${CI_COMMIT_REF_NAME}"
-    - git add PKGBUILD
-    - test -n "$(git diff --staged)"
-    - git config --global user.email "${GIT_EMAIL}"
-    - git config --global user.name "${GIT_NAME}"
-    - git commit -m "Bump version to ${new_pkgver}"
-    - git remote set-url origin "ssh://gitlab@git.hashworks.net/${CI_PROJECT_PATH}.git"
-    - git push
+    - test "${old_pkgver}" != "$(grep pkgver= PKGBUILD)"
+    - test "${old_sha256sums}" != "$(grep sha256sums= PKGBUILD)"
+    - test "$(grep pkgrel=1 PKGBUILD)" == "pkgrel=1"
+    - echo "${new_pkgver}" > .newVersion
   only:
     - triggers
+  artifacts:
+    paths:
+      - PKGBUILD
+      - .newVersion
 
 # Build and install package with makepkg, optionally update .SRCINFO and release to AUR
 # * Install git and openssh for commit, sudo and base-devel for makepkg
 # * Add non-root user for makepkg
 # * Test build and install
-# * Setup ssh_agent and git
-# * Push potential .SRCINFO changes with CI-Skip
-# * Release to AUR
-testAndDeploy:
+buildAndTest:
+  stage: test
   image: archlinux/base:latest
   script:
-    - pacman --cachedir .pacman --noconfirm -Syy openssh git sudo base-devel
+    - mkdir -p .pacman
+    - rm -Rf /var/cache/pacman/pkg
+    - ln -s $PWD/.pacman /var/cache/pacman/pkg
+    - rm /usr/share/libalpm/hooks/package-cleanup.hook
+    - pacman --needed --noconfirm -Syy sudo base-devel
     - useradd gitlab
     - 'echo "gitlab ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers'
     - su gitlab -c 'makepkg --printsrcinfo > .SRCINFO'
-    - git diff
-    - su gitlab -c 'PACMAN="pacman --cachedir .pacman"; makepkg --noconfirm --syncdeps --install --clean .'
+    - su gitlab -c 'makepkg --noconfirm --syncdeps --install .'
+  cache:
+    key: pacman
+    paths:
+      - .pacman
+  artifacts:
+    paths:
+      - .SRCINFO
+
+# Push changes to git
+# * Setup ssh_agent and git
+# * Commit potential new version to origin with CI-Skip
+# * Commit potential .SRCINFO changes to origin with CI-Skip
+# * Push to AUR
+commitAndPush:
+  stage: deploy
+  image:
+    name: alpine/git:latest
+    entrypoint: [""]
+  script:
     - test -n "${DEPLOY_SSH_KEY}"
     - test -n "${AUR_SSH_KEY}"
     - mkdir -p ~/.ssh
     - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
     - eval $(ssh-agent -s)
+    - echo "${DEPLOY_SSH_KEY}" | base64 -d > ~/.ssh/gitlab
+    - echo "${AUR_SSH_KEY}" | base64 -d > ~/.ssh/aur
+    - chmod 0600 ~/.ssh/aur ~/.ssh/gitlab
+    - ssh-add ~/.ssh/gitlab
+    - ssh-add ~/.ssh/aur
+    - git config --global user.email "mail+ci@hashworks.net"
+    - git config --global user.name "GitlabCI"
     - git checkout -B "${CI_COMMIT_REF_NAME}"
-    - git add .SRCINFO
-    - if [[ -n "$(git diff --staged)" ]]; then
-      git config --global user.email "${GIT_EMAIL}";
-      git config --global user.name "${GIT_NAME}";
-      git commit -m '[SKIP CI] Update .SRCINFO';
-      ssh-add <(echo "${DEPLOY_SSH_KEY}" | base64 --decode);
-      git remote set-url origin "ssh://gitlab@git.hashworks.net/${CI_PROJECT_PATH}.git";
-      git push;
+    - echo "Git/SSH configured"
+    - echo "Checking for new package version and commiting them"
+    - git add PKGBUILD
+    - if git diff --staged | grep -q "++ b/PKGBUILD" && test -f .newVersion; then
+        new_pkgver="$(cat .newVersion)";
+        test -n "${new_pkgver}";
+        git commit -m "Bump to version ${new_pkgver}";
       fi
-    - ssh-add <(echo "${AUR_SSH_KEY}" | base64 --decode)
+    - git add .SRCINFO
+    - echo "Checking for .SRCINFO changes and commiting it"
+    - git diff --staged | grep -q "++ b/.SRCINFO" && git commit -m 'Update .SRCINFO'
+    - echo "Pushing potential changes to Gitlab"
+    - git remote set-url origin "ssh://gitlab@git.hashworks.net/${CI_PROJECT_PATH}.git";
+    - git push -o ci.skip -u origin master;
+    - echo "Adding aur remote if it isn't already there and pushing changes"
     - git remote show aur || git remote add aur ssh://aur@aur.archlinux.org/libzim.git
     - git push -u aur master
   only:
     - master
-  cache:
-    key: pacman
-    paths:
-      - .pacman
