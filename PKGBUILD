@@ -11,12 +11,15 @@ pkgdesc='DRM kernel graphics driver development tree'
 _srcname=${pkgbase}
 _branch=drm-fixes
 _kernelname=${pkgbase#linux}
-pkgver=5.4.857105.1c0d63eb0e82
+pkgver=5.4.857462.1e19ec6c3c41
 pkgrel=1
 arch=('x86_64')
 url='https://cgit.freedesktop.org/drm/drm'
 license=(GPL2)
-makedepends=(xmlto kmod inetutils bc libelf git python-sphinx graphviz)
+makedepends=(
+  xmlto kmod inetutils bc libelf git python-sphinx python-sphinx_rtd_theme
+  graphviz imagemagick git
+)
 options=('!strip')
 source=("${pkgbase}::git://anongit.freedesktop.org/drm/drm#branch=${_branch}"
   config         # the main kernel config file
@@ -25,7 +28,7 @@ source=("${pkgbase}::git://anongit.freedesktop.org/drm/drm#branch=${_branch}"
   linux.preset   # standard config files for mkinitcpio ramdisk
 )
 sha256sums=('SKIP'
-            '9f2c616be58d442f19231d54ad61f31e1943139af669306836f733cfb990e8dd'
+            '0c494d955d4e4852f76bfc9278081de4b5c7fe75fac7334523f430cc5fe65daf'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '997dd1ca5c59e526a35d8367e6371a68406b1a58b90006e6f85d59a580c7503f')
@@ -68,9 +71,7 @@ prepare() {
 
 build() {
   cd $_srcname
-#mainline: disabled for 5.1-rc5
-#make bzImage modules htmldocs
-  make bzImage modules
+  make bzImage modules htmldocs
 }
 
 _package() {
@@ -221,19 +222,17 @@ _package-docs() {
   mkdir -p "$builddir"
   cp -t "$builddir" -a Documentation
 
-  #mainline: disabled for 5.1-rc5
+  msg2 "Removing doctrees..."
+  rm -r "$builddir/Documentation/output/.doctrees"
 
-  #msg2 "Removing doctrees..."
-  #rm -r "$builddir/Documentation/output/.doctrees"
-
-  #msg2 "Moving HTML docs..."
-  #local src dst
-  #while read -rd '' src; do
-    #dst="$builddir/Documentation/${src#$builddir/Documentation/output/}"
-    #mkdir -p "${dst%/*}"
-    #mv "$src" "$dst"
-    #rmdir -p --ignore-fail-on-non-empty "${src%/*}"
-  #done < <(find "$builddir/Documentation/output" -type f -print0)
+  msg2 "Moving HTML docs..."
+  local src dst
+  while read -rd '' src; do
+    dst="$builddir/Documentation/${src#$builddir/Documentation/output/}"
+    mkdir -p "${dst%/*}"
+    mv "$src" "$dst"
+    rmdir -p --ignore-fail-on-non-empty "${src%/*}"
+  done < <(find "$builddir/Documentation/output" -type f -print0)
 
   msg2 "Adding symlink..."
   mkdir -p "$pkgdir/usr/share/doc"
@@ -250,3 +249,4 @@ for _p in "${pkgname[@]}"; do
     _package${_p#$pkgbase}
   }"
 done
+
