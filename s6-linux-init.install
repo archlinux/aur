@@ -9,10 +9,13 @@ post_install() {
 	mv /usr/bin/shutdown /tmp
 	s6-linux-init-maker -1 -G "/usr/bin/agetty -L -8 tty1 115200" /etc/s6-linux-init/current
 	mv /etc/s6-linux-init/current/bin/init /etc/s6-linux-init/current/bin/s6-init
+	sed -i 's/ -e//' /etc/s6-linux-init/current/scripts/rc.init
 	sed -i '/^#.* s6-rc-init /s/^# //' /etc/s6-linux-init/current/scripts/rc.init
 	sed -i '/^#.* exec /s/^# //' /etc/s6-linux-init/current/scripts/rc.init
 	sed -i '/shift/a . /usr/lib/rc/functions\nrun_sysinit' /etc/s6-linux-init/current/scripts/rc.init
+	sed -i 's/ -e//' /etc/s6-linux-init/current/scripts/rc.shutdown
 	sed -i '/^#.* exec s6-rc /s/^# //' /etc/s6-linux-init/current/scripts/rc.shutdown
+	sed -i 's/ -e//' /etc/s6-linux-init/current/scripts/runlevel
 	sed -i '/^#.* exec s6-rc /d' /etc/s6-linux-init/current/scripts/runlevel
 	echo -e "exists=\$(s6-rc-db type \"\$1\" 2> /dev/null)\nif [ \"\$exists\" = \"bundle\" ]; then\n	exec s6-rc -v2 -up change \"\$1\"\nfi" >> /etc/s6-linux-init/current/scripts/runlevel
 	cp -a /etc/s6-linux-init/current/bin/* /usr/bin/

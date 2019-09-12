@@ -1,7 +1,7 @@
 pkgbase = s6-linux-init
 	pkgdesc = A tool to automate the creation of suitable stage 1 init binaries for s6-based Linux systems. For Artix Linux.
 	pkgver = 1.0.2.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://skarnet.org/software/s6-linux-init/
 	install = s6-linux-init.install
 	arch = x86_64
