@@ -1,15 +1,3 @@
-diff -aur old/configure new/configure
---- old/configure	2019-02-27 14:33:09.773385526 +0100
-+++ new/configure	2019-02-27 14:38:40.619816260 +0100
-@@ -2945,7 +2945,7 @@
- 
- ac_config_headers="$ac_config_headers config.h"
- 
--am__api_version='1.15'
-+am__api_version='1.14'
- 
- # Find a good install program.  We prefer a C program (faster),
- # so one script is as good as another.  But avoid the broken or
 diff -aur old/g10/keygen.c new/g10/keygen.c
 --- old/g10/keygen.c	2019-02-27 14:33:09.533386670 +0100
 +++ new/g10/keygen.c	2019-02-27 14:38:40.627816221 +0100
