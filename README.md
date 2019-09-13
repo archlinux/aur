@@ -15,4 +15,5 @@ makepkg
 env CARCH=i686 makepkg -fp PKGBUILD.x86
 env CARCH=i386 makepkg -fp PKGBUILD.x86
 env CARCH=pentium4 makepkg -fp PKGBUILD.x86
+env CARCH=arm64 makepkg -sf --needed --noconfirm --skipinteg -p PKGBUILD.arm64
 ```
