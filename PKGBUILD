@@ -4,7 +4,7 @@ pkgname=openmpi3-gcc7
 _pkgname=openmpi
 pkgver=3.1.4
 _gccver=7.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc='High performance message passing library (MPI), version 3 (built with GCC7)'
 url='https://www.open-mpi.org'
 arch=('x86_64')
@@ -23,6 +23,7 @@ build() {
   cd ${_pkgname}-${pkgver}
 
   export LD_LIBRARY_PATH="/usr/lib/gcc/x86_64-pc-linux-gnu/${_gccver}:$LD_LIBRARY_PATH"
+  export LD_PRELOAD=/usr/lib/libstdc++.so
 
   ./configure --prefix=/usr \
     --sysconfdir=/etc/${_pkgname} \
@@ -56,12 +57,10 @@ package() {
   # FS#28583
   install -dm 755 "${pkgdir}/usr/lib/pkgconfig"
   for i in ompi-c.pc ompi-cxx.pc ompi-f77.pc ompi-f90.pc ompi.pc; do
-    ln -sf "/usr/lib/openmpi/pkgconfig/${i}" "${pkgdir}/usr/lib/pkgconfig/"
+    ln -sf "/usr/lib/${_pkgname}/pkgconfig/${i}" "${pkgdir}/usr/lib/pkgconfig/"
   done
 
   install -dm 755 "${pkgdir}/etc/ld.so.conf.d"
   echo "/usr/lib/${_pkgname}" > "${pkgdir}"/etc/ld.so.conf.d/${_pkgname}.conf
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${_pkgname}"
 }
-
-# vim: ts=2 sw=2 et:
