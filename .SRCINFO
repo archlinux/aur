@@ -1,7 +1,7 @@
 pkgbase = python-pymavlink-git
 	pkgdesc = python MAVLink interface and utilities
-	pkgver = r2496.264c3e46
-	pkgrel = 2
+	pkgver = r2452.a1c7106
+	pkgrel = 1
 	url = https://github.com/ArduPilot/pymavlink/
 	arch = x86_64
 	license = LGPL v3
@@ -10,9 +10,7 @@ pkgbase = python-pymavlink-git
 	depends = python-lxml
 	provides = python-pymavlink
 	conflicts = python-pymavlink
-	source = git+https://github.com/ArduPilot/pymavlink/
 	source = git+https://github.com/mavlink/mavlink/
-	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = python-pymavlink-git

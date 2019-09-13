@@ -2,8 +2,8 @@
 # contact me via AUR or archlinux forums
 project='pymavlink'
 pkgname=python-${project}-git # '-bzr', '-git', '-hg' or '-svn'
-pkgver=r2496.264c3e46
-pkgrel=2
+pkgver=r2452.a1c7106
+pkgrel=1
 pkgdesc="python MAVLink interface and utilities"
 arch=('x86_64')
 url="https://github.com/ArduPilot/pymavlink/"
@@ -17,16 +17,21 @@ replaces=()
 backup=()
 options=()
 install=
-source=('git+https://github.com/ArduPilot/pymavlink/'
-        'git+https://github.com/mavlink/mavlink/')
+source=('git+https://github.com/mavlink/mavlink/')
 noextract=()
-md5sums=('SKIP' 'SKIP')
+md5sums=('SKIP')
 
 # Please refer to the 'USING VCS SOURCES' section of the PKGBUILD man page for
 # a description of each element in the source array.
 
+prepare() {
+	cd "$srcdir/mavlink"
+    git submodule init
+    git submodule update
+}
+
 pkgver() {
-	cd "$srcdir/${project}"
+	cd "$srcdir/mavlink/${project}"
 
 # Git, tags available
 #	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
@@ -36,18 +41,13 @@ pkgver() {
 
 }
 
-prepare() {
-	cd "$srcdir/${project}"
-    ln -s ../mavlink/message_definitions ./
-}
-
 build() {
-	cd "$srcdir/${project}"
+	cd "$srcdir/mavlink/${project}"
     python setup.py build
 }
 
 package() {
-	cd "$srcdir/${project}"
+	cd "$srcdir/mavlink/${project}"
 	python setup.py install --prefix=/usr --root="${pkgdir}" --skip-build
 
     install -Dm644 COPYING -t "${pkgdir}"/usr/share/licenses/${pkgname%-git}
