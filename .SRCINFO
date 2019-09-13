@@ -1,6 +1,6 @@
 pkgbase = truffleruby-bin
 	pkgdesc = Graal based, high-performance implementation of the Ruby language
-	pkgver = 19.2.0
+	pkgver = 19.2.0.1
 	pkgrel = 1
 	url = https://github.com/oracle/truffleruby
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = truffleruby-bin
 	depends = graal
 	provides = truffleruby
 	conflicts = truffleruby
-	source = https://github.com/oracle/truffleruby/releases/download/vm-19.2.0/ruby-installable-svm-linux-amd64-19.2.0.jar
-	sha256sums = 8933b9ef83179f937980bc953250703cad988617dec8b0e2682ea2e95ddf3e1f
+	source = https://github.com/oracle/truffleruby/releases/download/vm-19.2.0.1/ruby-installable-svm-linux-amd64-19.2.0.1.jar
+	sha256sums = 9ef6cc071f8ae0916315c86cf14b61b6efd2a4918ef42e710c4f3d2a27229c98
 
 pkgname = truffleruby-bin
 
