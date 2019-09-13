@@ -9,7 +9,7 @@ url="https://github.com/svenstaro/dummyhttp"
 license=(MIT)
 makedepends=(cargo)
 source=(https://github.com/svenstaro/dummyhttp/archive/${pkgver}.tar.gz)
-sha512sums=('229832fdb100404aa0413c8a15983e2de2089b37d2c0b33a5e466b6e217049b7257203200d676bd3dcaed4efca5720bce0cbcf2ad77eebec66864ac0d0edd97b')
+sha512sums=('48ba1441d03dea61543f2c178ba5e125e51b40401d168dcdb9cb374b764fd7e34e8b25a5b124dc76945780fb70f4964ff4107fa013b33335024f2593d6654a36')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
