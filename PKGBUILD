@@ -21,6 +21,7 @@ package() {
 
 	cp -a "${srcdir}/${_projname}-${pkgver}"/* "${pkgdir}/usr/share/${pkgname}"
 	mv "${pkgdir}/usr/share/${pkgname}"/{COPYING,README.md} "${pkgdir}/usr/share/doc/${pkgname}/"
+	rm -f "${pkgdir}/usr/share/${pkgname}/package.json"
 	ln -s "/usr/share/${pkgname}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
 
 }
