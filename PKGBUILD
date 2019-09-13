@@ -2,7 +2,7 @@
 
 pkgname=elvish-git
 _pkgname=elvish
-pkgver=0.12.r508.g14121baa
+pkgver=0.12.r530.ge2a3f2d8
 pkgrel=1
 pkgdesc="A friendly and expressive Unix shell."
 arch=('i686' 'x86_64')
@@ -24,30 +24,23 @@ pkgver() {
     )
 }
 
-prepare() {
-    cd "$srcdir"
-
-    mkdir -p build/src/github.com/elves
-    ln -sf "$srcdir/$_pkgname" build/src/github.com/elves/
-}
-
 build() {
     export GOPATH="$srcdir/build"
-    cd "$GOPATH/src/github.com/elves/elvish"
-    go get \
-        -gcflags "all=-trimpath=${PWD}" \
-        -asmflags "all=-trimpath=${PWD}" \
+    cd "$srcdir/$_pkgname"
+    go build -trimpath \
         -ldflags "-X github.com/elves/elvish/buildinfo.Version=$pkgver \
         -extldflags ${LDFLAGS}" .
+
+    go clean -modcache
 }
 
 check() {
     export GOPATH="$srcdir/build"
-    cd "$GOPATH/src/github.com/elves/elvish"
+    cd "$srcdir/$_pkgname"
     make test
 }
 
 package() {
-    install -Dm755 "$srcdir/build/bin/elvish" -t "$pkgdir/usr/bin/"
+    install -Dm755 "$srcdir/$_pkgname/elvish" -t "$pkgdir/usr/bin/"
     install -Dm644 "$srcdir/$_pkgname/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
