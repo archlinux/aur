@@ -1,8 +1,7 @@
-# Maintainer: Adam Hose <adis@blad.is>
-
+# Maintainer: coldbug <coldBug@e.mail.de>
 _pkgbase=python-netfilterqueue
 pkgname=python-netfilterqueue-git
-pkgver=r66.3fa8a38
+pkgver=r68.ec2ae29
 pkgrel=1
 pkgdesc="Python 3.x for libnetfilter_queue."
 arch=('any')
@@ -20,7 +19,12 @@ pkgver() {
 	)
 }
 
+build() {
+	cd "${srcdir}/${_pkgbase}"
+    python setup.py build
+}
+
 package() {
 	cd "${srcdir}/${_pkgbase}"
-	python setup.py install -O1 --root="$pkgdir"
+    python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
