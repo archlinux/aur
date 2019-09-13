@@ -16,7 +16,7 @@ provides=('qbs')
 conflicts=('qtcreator' 'qbs')
 depends=('qt5-base' 'qt5-script')
 makedepends=('gcc' 'git')
-source=("git://code.qt.io/qt-labs/qbs.git#commit=512704a")
+source=("git://code.qt.io/qbs/qbs.git")
 sha256sums=('SKIP')
 
 pkgver() {
