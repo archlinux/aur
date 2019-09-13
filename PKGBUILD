@@ -1,14 +1,14 @@
-# Maintainer: Geoffrey Frogeye <geoffrey@frogeye.fr>
+# Maintainer: Geoffrey Frogeye <geoffrey+aur@frogeye.fr>
 
 pkgname=sheepit-client-git
-pkgver=5.0.0r325.cc2dacb
+pkgver=5.1676.3035r379.18e9e75
 pkgrel=1
 pkgdesc="Client for the free and distributed render farm"
 arch=('i686' 'x86_64')
 url="https://www.sheepit-renderfarm.com/"
 license=('GPL')
-depends=('java-runtime' 'freetype2' 'glew')
-makedepends=('git' 'apache-ant')
+depends=('java-runtime' 'freetype2' 'glew' 'libxrender')
+makedepends=('git' 'gradle4')
 optdepends=('cuda: CUDA GPU rendering (not in service mode)' 'blender: Create 3D scenes to render')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -27,16 +27,16 @@ md5sums=('SKIP'
 
 pkgver() {
         cd "$srcdir/${pkgname%-git}"
-        printf "%sr%s.%s" "$(grep 'name="compile.release"' build.xml | cut -d '"' -f 4)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+        printf "%sr%s.%s" "$(git describe --tags)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
         cd "$srcdir/${pkgname%-git}"
-        ant
+        gradle4 shadowJar
 }
 
 package() {
-        install -Dm644 "${srcdir}/${pkgname%-git}/bin/sheepit-client.jar" "${pkgdir}/usr/share/java/sheepit-client/sheepit-client.jar"
+        install -Dm644 "${srcdir}/${pkgname%-git}/build/libs/sheepit-client-all.jar" "${pkgdir}/usr/share/java/sheepit-client/sheepit-client.jar"
         install -Dm755 "${srcdir}/sheepit-client.sh" "${pkgdir}/usr/bin/sheepit-client"
         install -Dm644 "${srcdir}/sheepit-client.sysusers" "${pkgdir}/usr/lib/sysusers.d/sheepit-client.conf"
         install -Dm644 "${srcdir}/sheepit-client.conf" "${pkgdir}/etc/conf.d/sheepit-client"
