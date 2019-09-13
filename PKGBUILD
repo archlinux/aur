@@ -29,7 +29,7 @@ pkgname=(
     "${pkgbase}-tidy"
     "${pkgbase}-xsl"
 )
-pkgver=7.1.31
+pkgver=7.1.32
 _pkgver=${pkgbase//php}
 pkgrel=1
 pkgdesc='A general-purpose scripting language that is especially suited to web development (old stable 7.0 series)'
@@ -56,8 +56,8 @@ source=(
     'php-icu-1101-Simplify-namespace-access.patch'
 )
 sha512sums=(
-    '989cd157e0d67c6f03192ce9e1afaa01ff72ccc83f3e6b94ac8dc3d4c2717258a46bd64fb20e4649baec1fe2545805013eedc1de78e556d09c2b0ae64d4272d8'
-    'dcb1105691feec3248eb524271c1fbb7c73de650e6c7aff22dbc19bbc254755421f2216f2eee26f7f5d748064f46ecd17e00c7953bfe7ccd3cffa0360b4a3836'
+    '090dd6d79514f97be125e86d741094c149250a11a4f7d5f8dd08e028ae5f0b347afc58787b2002cc7b183d08a56562042e33ef7f1eeb060aafaf6fef67646ab1'
+    '1a6c17eff8c368ad9a20e4b9ee341754f5f7099027312292225e53bd853bdd6b0c9dd004c7fe490abea9aebe7c966bb15c9bf5c134a12a41b36b48fae9afc96d'
     'f5e5431993c2e0c1806c4edf392030d0b605f4b3c4cebec036e810ff771b2327983f347221735673506e2c91ce2e18ad37ab7600261b684fe29491206171b4f3'
     '30cdc281c6e288cf8a0bf58a0ad74ad5b4e8205d2b0b6ab465fad97d810f7bfae4581ad836712998e834d2e90d38cacd22f19bb01e77fc4c9d200d95613fc669'
     '2d5f3aa71ce7d8da43f0f683f81b06258e3a0d95df4807a8acac91ff89fbe60484ef97856a908bce625b1610d0004767a6a8c622246086afe2f2d464977088b5'
