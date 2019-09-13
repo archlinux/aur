@@ -1,6 +1,6 @@
 # Maintainer: Davide Depau <davide@depau.eu>
 
-_pkgname=gnome-firmware-updater
+_pkgname=gnome-firmware
 pkgname=$_pkgname-git
 pkgver=3.34.0.r5.gcb2aed8
 pkgrel=1
@@ -11,9 +11,10 @@ url="https://gitlab.gnome.org/hughsie/gnome-firmware-updater"
 license=(GPL2)
 depends=(gtk3 fwupd libxmlb libsoup)
 makedepends=(git meson appstream help2man)
-provides=("$_pkgname")
-conflicts=("$_pkgname")
-source=("git+https://gitlab.gnome.org/hughsie/$_pkgname.git")
+provides=("$_pkgname" "gnome-firmware-updater")
+replaces=("gnome-firmware-updater-git")
+conflicts=("$_pkgname" "gnome-firmware-updater")
+source=("$_pkgname::git+https://gitlab.gnome.org/hughsie/gnome-firmware-updater.git")
 sha256sums=('SKIP')
 
 pkgver() {
