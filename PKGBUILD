@@ -1,6 +1,6 @@
 # Maintainer: ChacaS0 <incoming+chacas0-chksum-13830438-issue-@incoming.gitlab.com>
 pkgname=chksum
-pkgver=0.1.16
+pkgver=0.1.17
 pkgrel=1
 pkgdesc="Check and compare easily the checksum of a file."
 arch=('x86_64')
@@ -33,7 +33,8 @@ package () {
 	echo "[INSTALL]  STATUS : Started."
 	echo "[INSTALL]  INFO   : Putting chksum into /usr/bin..."
 	echo "[INSTALL]  INFO   : "
-	sudo install "${srcdir}/chksum" /usr/bin
+	# sudo install "${srcdir}/chksum" /usr/bin
+	make DESTDIR="$pkgdir/usr/bin" install
 	ls -lh /usr/bin | grep chksum
 	echo "[INSTALL]  STATUS : Done."
 }
@@ -41,3 +42,5 @@ package () {
 pre_remove() {
 	rm -rfv /usr/bin/chksum
 }
+
+# see https://wiki.parabola.nu/Creating_Packages#The_package.28.29_function
