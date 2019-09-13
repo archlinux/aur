@@ -1,18 +1,25 @@
 pkgname=openxray-git
 _commit=c7dbc6ea
 _build=502
-pkgver=1.6.02.$_build
+pkgver=1.6.02_b502.c7dbc6ea9
 pkgrel=1 
 pkgdesc="Unofficial X-Ray Engine Linux port by OpenXRay team (Originally developed by GSC Game World)"                                          
 arch=('x86_64') 
 url="https://github.com/OpenXRay/xray-16"
-license=('unknown')
+license=('custom:Custom 3-сlause BSD')
 install="info.install"
-makedepends=(gcc git cmake glew libglvnd openal pugixml intel-tbb crypto++ liblockfile freeimage libogg libtheora libvorbis lzo lzop libjpeg-turbo libjpeg6-turbo ncurses pcre2 pcre sdl2)
-depends=(glew sdl2 openal intel-tbb crypto++ liblockfile freeimage lua51 libogg libtheora libvorbis lzo lzop libjpeg-turbo)  
+makedepends=(gcc git cmake libglvnd libjpeg6-turbo ncurses pcre2 pcre)
+depends=(glew sdl2 openal intel-tbb crypto++ liblockfile freeimage libogg libtheora libvorbis lzo lzop libjpeg-turbo)  
 conflicts=(openxray)
 source=(xray-16::git+https://github.com/OpenXRay/xray-16.git#commit=$_commit)
 md5sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir/xray-16"
+  # OpenXRay versioning is based on AppVeyor build number
+  # https://ci.appveyor.com/project/OpenXRay/xray-16
+  printf 1.6.02_"b%s.%s" $_build "$(git rev-parse --short HEAD)"
+}
 
 prepare(){
 cd "$srcdir/xray-16"
@@ -22,17 +29,18 @@ git submodule update
 
 build() {
    cd "$srcdir/xray-16"
-   rm -fr build
-   mkdir "$srcdir/xray-16/build"
-   cd "$srcdir/xray-16/build"
+   rm -fr bin
+   mkdir "$srcdir/xray-16/bin"
+   cd "$srcdir/xray-16/bin"
    cmake ..
    #cmake .. -DCMAKE_BUILD_TYPE=Debug
-   #make -j$(nproc)
    make
 }
 
 package() {
-    cd "$srcdir/xray-16/build"
-    make DESTDIR="$pkgdir/" install
-    mv $pkgdir/usr/games/ $pkgdir/usr/bin
+    cd "$srcdir/xray-16/bin"
+    make DESTDIR="${pkgdir}/" install
+    mv "${pkgdir}/usr/games/" "${pkgdir}/usr/bin"
+    mkdir -p "${pkgdir}/usr/share/licenses/$pkgname/"
+    cp "$srcdir/xray-16/License.txt" "${pkgdir}/usr/share/licenses/$pkgname/"
 }
