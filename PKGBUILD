@@ -8,10 +8,8 @@ arch=('any')
 url='https://git.remlab.net/gitweb/?p=vlc-plugin-ytdl.git;a=blob;f=README'
 license=('LGPL')
 depends=('youtube-dl' 'vlc')
-makedepends=('git')
 provides=('vlc-plugin-ytdl')
 conflicts=('vlc-plugin-ytdl')
-options=('!strip')
 source=('git+https://git.remlab.net/git/vlc-plugin-ytdl.git')
 sha256sums=('SKIP')
 
