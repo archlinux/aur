@@ -8,7 +8,7 @@ Type=simple
 User=mattermost
 Group=mattermost
 ExecStart=mattermost
-WorkingDirectory=/usr/share/webapps/mattermost/bin/
+WorkingDirectory=/usr/share/webapps/mattermost/
 
 Restart=on-failure
 PrivateTmp=false
