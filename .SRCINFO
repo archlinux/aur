@@ -1,4 +1,5 @@
 pkgbase = lotech-git
+	pkgdesc = A simple framework for making games
 	pkgver = 1.0
 	pkgrel = 1
 	arch = x86_64

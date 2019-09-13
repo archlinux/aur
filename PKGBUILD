@@ -6,7 +6,7 @@ pkgrel=1
 
 license=("custom")
 
-description="A simple framework for making games"
+pkgdesc="A simple framework for making games"
 
 source=("git+https://github.com/ianmaclarty/lotech.git"
         "linux.patch")
