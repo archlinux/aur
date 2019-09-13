@@ -1,7 +1,7 @@
 # Maintainer: Ronald van Engelen <ronalde+gitlab@lacocina.nl>
 
 pkgname=alsa-capabilities
-pkgver=v1.0.1
+pkgver=v1.0.2
 pkgrel=1
 pkgdesc="List alsa output interfaces and their capabilities and properties"
 arch=(any)
