@@ -1,0 +1,26 @@
+pkgbase = waterfox-current-bin
+	pkgdesc = 64-bit Firefox fork; no telemetry; supports XUL & XPCOM (incl. unsigned) add-ons.
+	pkgver = 68.0b1
+	pkgrel = 1
+	url = https://www.waterfoxproject.org/
+	arch = x86_64
+	license = MPL
+	depends = libxt
+	depends = libnotify
+	depends = mime-types
+	depends = nss
+	depends = gtk2
+	depends = gtk3
+	depends = sqlite
+	depends = dbus-glib
+	optdepends = alsa-lib
+	optdepends = pulseaudio
+	provides = waterfox-current
+	conflicts = waterfox-current
+	source = waterfox-current.desktop
+	source = https://storage-waterfox.netdna-ssl.com/Waterfox/beta/Linux/waterfox-68.0b1.en-US.linux-x86_64.tar.bz2
+	sha256sums = 3b0879d36e7ad44988132d28eb7c75e705ba9868550b8e2019befef17a6b0be5
+	sha256sums = 71e77aea048515a63f218d84559f3f49ca1e79a5729ef3b81ae0c622f95baccd
+
+pkgname = waterfox-current-bin
+
