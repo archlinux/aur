@@ -1,6 +1,6 @@
 # Maintainer: Javier Domingo Cansino <javierdo1@gmail.com>
 pkgname=libroxml
-pkgver=2.3.0
+pkgver=3.0.2
 pkgrel=1
 pkgdesc="Tiny XML parsing library"
 url="http://www.libroxml.net/"
@@ -8,13 +8,14 @@ arch=('x86_64' 'i686')
 license=('LGPL')
 depends=()
 makedepends=('make' 'cmake')
-source=("http://download.libroxml.net/pool/v2.x/libroxml-2.3.0.tar.gz")
-md5sums=('a975f91be150f7a19168a45ce15769ca')
+source=("http://download.libroxml.net/pool/v3.x/libroxml-3.0.2.tar.gz")
+md5sums=('901672549367d41bb2d55916bc21eac1')
 _folder=${pkgname}-${pkgver}
 
 build() {
+  echo "${srcdir}/${_folder}"
   cd "${srcdir}/${_folder}"
-  cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr
+  cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DBUILD_TESTING=Off
   make
 }
 
