@@ -1,7 +1,7 @@
 # Maintainer: Stefano Marsili <efanomars@gmx.ch>
 
 pkgname=swapper
-pkgver=0.12
+pkgver=0.13
 pkgrel=1
 pkgdesc="Swap tiles to remove them"
 url='https://www.efanomars.com/games/swapper'
@@ -16,7 +16,7 @@ optdepends=()
 #replaces=("swapper")
 #conflicts=("swapper")
 
-source=('git+https://gitlab.com/efanomars/swapper.git#commit=95c3e5fe2382991a2bd359a893e73a181e0d03f6')
+source=('git+https://gitlab.com/efanomars/swapper.git#commit=01211816ceb939043f46d1b2e6b780c93ec3fa49')
 sha512sums=('SKIP')
 
 build() {
