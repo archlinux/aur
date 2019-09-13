@@ -9,7 +9,7 @@ pkgbase = nextgen
 	depends = libnautilus-extension
 	conflicts = nextgen-git
 	source = https://github.com/madmurphy/NExtGen/archive/0.1.0.tar.gz
-	sha256sums = 482c4cacb723a9e14609fdafcf81f9b0f5733048cb28f2921a90a0d8fb295786
+	sha256sums = b23f7e89172b92bfd8eb9bd721a8a2d1a822002181c42da858158490fab33fee
 
 pkgname = nextgen
 

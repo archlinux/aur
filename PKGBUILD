@@ -11,7 +11,7 @@ license=('GPL')
 depends=('bash' 'libnautilus-extension')
 conflicts=("${pkgname}-git")
 source=("https://github.com/madmurphy/${_projname}/archive/${pkgver}.tar.gz")
-sha256sums=('482c4cacb723a9e14609fdafcf81f9b0f5733048cb28f2921a90a0d8fb295786')
+sha256sums=('b23f7e89172b92bfd8eb9bd721a8a2d1a822002181c42da858158490fab33fee')
 
 package() {
 
