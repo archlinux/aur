@@ -16,7 +16,7 @@ optdepends=()
 #replaces=("stmm-input-bt")
 #conflicts=("stmm-input-bt")
 
-source=('git+https://gitlab.com/efanomars/stmm-input-bt.git#commit=45ff983a073a97cdac2928103ae4595077d400c0')
+source=('git+https://gitlab.com/efanomars/stmm-input-bt.git#commit=8de423cea1f1545e2e0134c809dded0e45eb2772')
 sha512sums=('SKIP')
 
 build() {
