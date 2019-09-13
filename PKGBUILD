@@ -13,8 +13,8 @@ depends=('perl-gnome2-gconf' 'glade-perl' 'openssh' 'perl-crypt-blowfish' 'perl-
 optdepends=('uucp: Unix-to-Unix Copy' 'rdesktop: RDP connections' 'freerdp: RDP connections' 'openssh: SSH connections' 'mosh: Mobile shell' 'tigervnc: for VNC connections'
 	    'perl-x11-guitest: To fit perfectly RDP tabs')
 makedepends=('git')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
+provides=("${pkgname}")
+conflicts=("${pkgname}-git")
 source=("git+https://github.com/asbru-cm/asbru-cm.git#tag=${pkgver}")
 sha256sums=('SKIP')
 

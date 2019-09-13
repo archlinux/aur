@@ -30,7 +30,7 @@ pkgbase = asbru-cm
 	optdepends = tigervnc: for VNC connections
 	optdepends = perl-x11-guitest: To fit perfectly RDP tabs
 	provides = asbru-cm
-	conflicts = asbru-cm
+	conflicts = asbru-cm-git
 	source = git+https://github.com/asbru-cm/asbru-cm.git#tag=5.2.0
 	sha256sums = SKIP
 
