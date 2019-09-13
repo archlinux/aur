@@ -1,6 +1,6 @@
 pkgbase = graalpython-bin
 	pkgdesc = Graal based, high-performance implementation of the Python language (early development)
-	pkgver = 19.2.0
+	pkgver = 19.2.0.1
 	pkgrel = 1
 	url = https://github.com/graalvm/graalpython
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = graalpython-bin
 	depends = graal
 	provides = graalpython
 	conflicts = graalpython
-	source = https://github.com/graalvm/graalpython/releases/download/vm-19.2.0/python-installable-svm-linux-amd64-19.2.0.jar
-	sha256sums = ef0eba0b18922f5d6b1413dc3fd478c6d48b07b3ac0dee3e26c0b92c65bb217c
+	source = https://github.com/graalvm/graalpython/releases/download/vm-19.2.0.1/python-installable-svm-linux-amd64-19.2.0.1.jar
+	sha256sums = 078ba160a76564d06bbeb3f1034799f3026868e749c8600cffe7753a8ff08b5d
 
 pkgname = graalpython-bin
 
