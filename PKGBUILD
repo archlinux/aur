@@ -18,6 +18,7 @@ backup=()
 options=()
 source=("https://gitlab.com/chacas0/chksum/-/jobs/artifacts/master/download?job=build")
 noextract=('archives.zip')
+sha256sums=('e3e020d4235cea52d43fe8bd2b2d111ae38f160278525e0d140b1cb57374617d')
 
 prepare() {
 	echo "[PREPARE]  STATUS : Ready."
