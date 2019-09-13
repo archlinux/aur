@@ -24,4 +24,6 @@ package() {
 
         sed -i -e "s/\$pkgname/$pkgname/g" "$pkgdir/usr/bin/openapi-generator-cli"
         sed -i -e "s/\$pkgver/$pkgver/g" "$pkgdir/usr/bin/openapi-generator-cli"
+
+	ln -s "$pkgdir/usr/bin/openapi-generator-cli" "$pkgdir/usr/bin/openapi-generator"
 }
