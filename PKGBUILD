@@ -2,7 +2,7 @@
 
 _pkgname=gnome-firmware-updater
 pkgname=$_pkgname-git
-pkgver=r29.c55c7c6
+pkgver=3.34.0.r5.gcb2aed8
 pkgrel=1
 pkgdesc="GNOME application to update, reinstall and downgrade firmware on devices 
 supported by fwupd"
@@ -10,7 +10,7 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://gitlab.gnome.org/hughsie/gnome-firmware-updater"
 license=(GPL2)
 depends=(gtk3 fwupd libxmlb libsoup)
-makedepends=(git meson appstream)
+makedepends=(git meson appstream help2man)
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git+https://gitlab.gnome.org/hughsie/$_pkgname.git")
