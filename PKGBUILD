@@ -4,14 +4,14 @@
 # Contributor: Bruno Pagani <archange at archlinux dot org>
 
 pkgname=mattermost
-pkgver=5.14.1
+pkgver=5.14.2
 pkgrel=1
 pkgdesc='Open source Slack-alternative in Golang and React'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://mattermost.com'
 license=('AGPL' 'Apache')
 
-makedepends=('git' 'go-pie' 'libpng' 'npm' 'python2' 'curl' 'wget')
+makedepends=('git' 'go-pie' 'npm')
 # Experiencing issues with gifsicle and mozjpeg on non x64 architectures.
 if [ "$CARCH" != 'x86_64' ]; then
     makedepends+=('gifsicle' 'mozjpeg')
@@ -30,12 +30,14 @@ source=(
     "$pkgname.sysusers"
     "$pkgname.tmpfiles"
 )
-sha512sums=('761e25f5218b9bf924de62dc5623a2d2e7dab62e8cd57416d393eb7b23a6f94bb42e2565626176dc0873e8b6ae579309c29bb0ee173673f9d2732354b5a2b617'
-            'a7778a9722318ba5896dacd26562cb5b15b605d4ca2637ec9526e0951da107cf7e1dcb65fa0642d95c894917e117c8a23e838d1f451f896e0717a67bba857577'
-            '5b761c5715387e6abf3afbe653de218b9a45708d7ffbc699856f53cc3e62760fbd0ce175615f36a4b9090182705c3343d07fca72d12275411080ab516cee3eeb'
-            '6fc1b41f1ddcc44dab3e1f6bc15b7566e7c33132346b7eb0bc91d9709b4cec89ae969a57a57b6097c75868af21f438c2affda5ba1507f485c8689ab8004efd70'
-            'f08d88fd91e91c8b9996cf33699f4a70d69c8c01783cf7add4781ee3c9c6596839e44c5c39f0ff39a836c6d87544eef179f51de0b037ec7f91f86bac8e24d7cc'
-            'e3ffcf4b86e2ecc7166c1abf92cd4de23d81bad405db0121e513a8d81fea05eec9dd508141b14b208c4c13fbc347c56f01ed91326faa01e872ecdedcc18718f9')
+sha512sums=(
+    '9c215f722c3a40bbf0488a71329aa32461ec04555b5deb2825df2161a1a2a5d91e83469b612f9bcbe7e329386823654492a94ab47b998659ef5237e553bd3b74'
+    '222131449f50261a72c2e134058a7068cdd21efb18238e97af72a4eedd9e4ca0d763029d69d6783016b07b18df7aec80a146a1695c0549c6a23239e5430c9c9b'
+    '5b761c5715387e6abf3afbe653de218b9a45708d7ffbc699856f53cc3e62760fbd0ce175615f36a4b9090182705c3343d07fca72d12275411080ab516cee3eeb'
+    '6fc1b41f1ddcc44dab3e1f6bc15b7566e7c33132346b7eb0bc91d9709b4cec89ae969a57a57b6097c75868af21f438c2affda5ba1507f485c8689ab8004efd70'
+    'f08d88fd91e91c8b9996cf33699f4a70d69c8c01783cf7add4781ee3c9c6596839e44c5c39f0ff39a836c6d87544eef179f51de0b037ec7f91f86bac8e24d7cc'
+    'e3ffcf4b86e2ecc7166c1abf92cd4de23d81bad405db0121e513a8d81fea05eec9dd508141b14b208c4c13fbc347c56f01ed91326faa01e872ecdedcc18718f9'
+)
 
 prepare() {
     # cp cannot copy from a symbolic link to the destination link itself
@@ -94,6 +96,11 @@ prepare() {
                 -e "5,7s/amd64/arm/"
             ;;
     esac
+
+    # Patch go dependencies
+    sed -r -i go.mod \
+        -e "s/willnorris.com\/go\/imageproxy.*/willnorris.com\/go\/imageproxy v0.9.0/" \
+        -e "/replace/,//d"
 
     # Remove platform specific lines from the Makefile from the line beginning
     # with that statement to the end of file (we do not care of the additional
