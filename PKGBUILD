@@ -1,7 +1,7 @@
 # Maintainer: Stefano Marsili <efanomars@gmx.ch>
 
 pkgname=jointris
-pkgver=0.12
+pkgver=0.13
 pkgrel=1
 pkgdesc="Joinable tetris blocks with bombs"
 url='https://www.efanomars.com/games/jointris'
@@ -16,7 +16,7 @@ optdepends=()
 #replaces=("jointris")
 #conflicts=("jointris")
 
-source=('git+https://gitlab.com/efanomars/jointris.git#commit=fd2586a68df23e61f7ba06616292664a274385a9')
+source=('git+https://gitlab.com/efanomars/jointris.git#commit=ca2ddcdfded85e7f7d9e5a9d3c601c1f1882aa0d')
 sha512sums=('SKIP')
 
 build() {
