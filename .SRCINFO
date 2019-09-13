@@ -11,7 +11,7 @@ pkgbase = stmm-input
 	makedepends = graphviz
 	makedepends = python
 	depends = gtkmm
-	source = git+https://gitlab.com/efanomars/stmm-input.git#commit=bdfb48c2902dc7bc13876c001e3a049237544f6f
+	source = git+https://gitlab.com/efanomars/stmm-input.git#commit=68c2d2eb490955a1b2d883ab40fd3d7e3d260096
 	sha512sums = SKIP
 
 pkgname = stmm-input
