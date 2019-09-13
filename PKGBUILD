@@ -1,7 +1,7 @@
 # Maintainer: Stefano Marsili <efanomars@gmx.ch>
 
 pkgname=mynes
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 pkgdesc="Rolling minesweeper with islands and sonars"
 url='https://www.efanomars.com/games/mynes'
@@ -16,7 +16,7 @@ optdepends=()
 #replaces=("mynes")
 #conflicts=("mynes")
 
-source=('git+https://gitlab.com/efanomars/mynes.git#commit=e0985980ddb214212ab3a8e1eba5cfeec29536a2')
+source=('git+https://gitlab.com/efanomars/mynes.git#commit=91e7c635d89a12d00e302ddeb0dfca732d1b923f')
 sha512sums=('SKIP')
 
 build() {
