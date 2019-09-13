@@ -2,7 +2,7 @@
 # Contributor: Jason St. John <jstjohn .. purdue . edu>
 
 pkgname=brother-hl2270dw
-pkgver=2.1.0_1
+pkgver=2.1.0_2
 pkgrel=5
 pkgdesc="Brother HL-2270DW CUPS Driver"
 arch=('i686' 'x86_64')
