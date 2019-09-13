@@ -1,6 +1,6 @@
 pkgbase = notes-up
-	pkgdesc = Notes Up is a notes manager written for elementary OS
-	pkgver = 2.0.0
+	pkgdesc = Markdown style notes manager written for elementary OS
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://github.com/Philip-Scott/Notes-up
 	arch = i686
@@ -18,8 +18,8 @@ pkgbase = notes-up
 	depends = libgee
 	depends = gtkspell3
 	depends = discount
-	source = Notes-up-2.0.0.tar.gz::https://github.com/Philip-Scott/Notes-up/archive/2.0.0.tar.gz
-	sha512sums = 1a9bb7da0ddcbffd130d4ea8f879c4c8e43f35db531860c6b0ade49c99e619dbd96aa81e71e14af52908768bcc87a775afa97b04e7d1efd023326685c614f04b
+	source = Notes-up-2.0.2.tar.gz::https://github.com/Philip-Scott/Notes-up/archive/2.0.2.tar.gz
+	sha512sums = 071bf49ce970dabc815b79b768272efab4599ae0e496cc842b82b726d19bd645c7211d4ce9f56dda7cd6b77cad5ab4a1918ae9049fcec5bce6410929cc699dab
 
 pkgname = notes-up
 

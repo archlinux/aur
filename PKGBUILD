@@ -1,18 +1,19 @@
-# Maintainer: NicoHood <archlinux {cat} nicohood {dog} de>
-# PGP ID: 97312D5EB9D7AE7D0BD4307351DAE9B7C1AE9161
+# Contributor: NicoHood <archlinux {cat} nicohood {dog} de>
+# Maintainer: Matthew Sexton <wsdmatty (at) _gmail_ (dot) _com_>
+# PGP ID: 97928FA059F8050487930EAFACF6C1A315EDCB52
 
 pkgname=notes-up
 _pkgname=Notes-up
-pkgver=2.0.0
+pkgver=2.0.2
 pkgrel=1
-pkgdesc="Notes Up is a notes manager written for elementary OS"
+pkgdesc="Markdown style notes manager written for elementary OS"
 arch=('i686' 'x86_64')
 url="https://github.com/Philip-Scott/Notes-up"
 license=('GPL2')
 depends=('gtk3' 'granite' 'gtksourceview3' 'glib2' 'sqlite' 'webkit2gtk' 'libgee' 'gtkspell3' 'discount')
 makedepends=('cmake' 'gtksourceview3' 'vala')
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/Philip-Scott/${_pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('1a9bb7da0ddcbffd130d4ea8f879c4c8e43f35db531860c6b0ade49c99e619dbd96aa81e71e14af52908768bcc87a775afa97b04e7d1efd023326685c614f04b')
+sha512sums=('071bf49ce970dabc815b79b768272efab4599ae0e496cc842b82b726d19bd645c7211d4ce9f56dda7cd6b77cad5ab4a1918ae9049fcec5bce6410929cc699dab')
 
 build() {
     cd "${_pkgname}-${pkgver}"
