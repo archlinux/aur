@@ -1,6 +1,6 @@
 pkgbase = netplan
 	pkgdesc = The network configuration abstraction renderer
-	pkgver = 0.97
+	pkgver = 0.98
 	pkgrel = 1
 	url = https://netplan.io
 	arch = i686
@@ -13,8 +13,10 @@ pkgbase = netplan
 	depends = python-yaml
 	depends = python-netifaces
 	depends = iproute2
-	source = https://github.com/CanonicalLtd/netplan/archive/0.97.tar.gz
-	sha256sums = 2f63695d46fc61a094935fd74fb319b4b48942a6c87fb9885e29be3ca0f3b9ee
+	source = https://github.com/CanonicalLtd/netplan/archive/0.98.tar.gz
+	source = make-fixes.patch
+	sha256sums = 2cc5511eb1675950f37c361e3056fcb17ca213998db7911cbe34511362641d92
+	sha256sums = 7c4f0ca9fa822a5493a3d7dbad2c374cfc489699d4aa105784519617a841deb8
 
 pkgname = netplan
 

@@ -1,7 +1,7 @@
 # Maintainer:  Conrad Hoffmann <ch@bitfehler.net>
 
 pkgname=netplan
-pkgver=0.97
+pkgver=0.98
 pkgrel=1
 pkgdesc="The network configuration abstraction renderer"
 arch=('i686' 'x86_64')
@@ -20,18 +20,23 @@ makedepends=(
 )
 source=(
   "https://github.com/CanonicalLtd/${pkgname}/archive/${pkgver}.tar.gz"
+  'make-fixes.patch'
 )
 sha256sums=(
-  '2f63695d46fc61a094935fd74fb319b4b48942a6c87fb9885e29be3ca0f3b9ee'
+  '2cc5511eb1675950f37c361e3056fcb17ca213998db7911cbe34511362641d92'
+  '7c4f0ca9fa822a5493a3d7dbad2c374cfc489699d4aa105784519617a841deb8'
 )
 
 prepare(){
   cd "${pkgname}-${pkgver}"
+  patch -Np1 -i "$srcdir/make-fixes.patch"
+  env
+}
 
-  # The systemd generator is compiled and linked in a single command, but it
-  # only honors CFLAGS, not LDFLAGS.  Inject LDFLAGS into CFLAGS as a temporary
-  # workaround.
-  make CFLAGS="${CFLAGS} ${LDFLAGS}"
+build(){
+  cd "${pkgname}-${pkgver}"
+  env
+  make
 }
 
 package() {
