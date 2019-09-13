@@ -1,0 +1,18 @@
+pkgbase = svt-hevc
+	pkgdesc = An HEVC-compliant encoder for Intel CPUs of 5th Generation (Broadwell) and above
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = https://github.com/OpenVisualCloud/SVT-HEVC/
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	makedepends = yasm
+	depends = glibc
+	provides = intel-svt-hevc
+	conflicts = intel-svt-hevc
+	replaces = intel-svt-hevc
+	source = svt-hevc-1.4.1.tar.gz::https://github.com/OpenVisualCloud/SVT-HEVC/archive/v1.4.1.tar.gz
+	sha256sums = 8ceb14acddd0af48e87deb17dc0a54fc9f82c50d6e0b392076fa8f7d0533f74b
+
+pkgname = svt-hevc
+
