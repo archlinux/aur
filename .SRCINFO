@@ -1,0 +1,18 @@
+pkgbase = alsa-capabilities
+	pkgdesc = List alsa output interfaces and their capabilities and properties
+	pkgver = v1.0.1
+	pkgrel = 1
+	url = https://gitlab.com/sonida/alsa-capabilities
+	arch = any
+	license = GPL3
+	depends = bash
+	depends = alsa-utils
+	options = !emptydirs
+	options = !makeflags
+	options = zipman
+	source = https://gitlab.com/sonida/alsa-capabilities/-/archive/v1.0.1/alsa-capabilities-v1.0.1.tar.gz
+	validpgpkeys = 4888EA1E1DD158ED3BC39838FBF05DDFC04DF16B
+	sha256sums = 81d60d451923ff2e22837287e18b7d9db924eda998bce6bb53aa627bc297c897
+
+pkgname = alsa-capabilities
+
