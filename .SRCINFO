@@ -51,7 +51,7 @@ pkgname = pamac-common
 	conflicts = pamac-common
 	backup = etc/pamac.conf
 
-pkgname = pamac-cli
+pkgname = pamac-cli-src
 	depends = pamac-common
 	provides = pamac-cli=8.0.4
 	conflicts = pamac<=7.3.4-2
@@ -71,7 +71,7 @@ pkgname = pamac-gtk
 	conflicts = pamac-gtk
 	replaces = pamac
 
-pkgname = pamac-tray-appindicator
+pkgname = pamac-tray-appindicator-src
 	pkgdesc = Tray icon using appindicator which fits better in KDE
 	depends = pamac-gtk
 	depends = libappindicator-gtk3

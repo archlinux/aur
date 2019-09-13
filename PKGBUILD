@@ -4,7 +4,7 @@
 # Contributor: Helmut Stult <helmut@manjaro.org>
 
 pkgbase=pamac
-pkgname=('pamac-common' 'pamac-cli' 'pamac-gtk' 'pamac-tray-appindicator')
+pkgname=('pamac-common' 'pamac-cli-src' 'pamac-gtk' 'pamac-tray-appindicator-src')
 _pkgver=8.0.4
 pkgver=8.0.4
 pkgrel=7
@@ -72,7 +72,7 @@ package_pamac-common() {
   rm -rf "$pkgdir/usr/share/gnome-shell"
 }
 
-package_pamac-cli() {
+package_pamac-cli-src() {
   depends=('pamac-common')
   provides=("pamac-cli=$pkgver")
   conflicts=('pamac<=7.3.4-2' 'pamac-aur' 'pamac-cli')
@@ -104,7 +104,7 @@ package_pamac-gtk() {
   cp -r "data/gnome-shell/pamac-updates@manjaro.org" "$pkgdir/usr/share/gnome-shell/extensions"
 }
 
-package_pamac-tray-appindicator() {
+package_pamac-tray-appindicator-src() {
   pkgdesc="Tray icon using appindicator which fits better in KDE"
   depends=('pamac-gtk' 'libappindicator-gtk3')
   provides=("pamac-tray-appindicator=$pkgver")
