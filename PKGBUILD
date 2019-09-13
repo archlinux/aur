@@ -32,7 +32,7 @@ package() {
 
 	cp -a "${srcdir}/${_projname}"/* "${pkgdir}/usr/share/${_appname}"
 	mv "${pkgdir}/usr/share/${_appname}"/{COPYING,README.md} "${pkgdir}/usr/share/doc/${_appname}/"
-	ln -s "${pkgdir}/usr/share/${_appname}/${_appname}.sh" "${pkgdir}/usr/bin/${_appname}"
+	ln -s "/usr/share/${_appname}/${_appname}.sh" "${pkgdir}/usr/bin/${_appname}"
 
 }
 
