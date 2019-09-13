@@ -2,7 +2,7 @@
 
 pkgname=keeweb
 pkgver=1.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop password manager compatible with KeePass databases"
 arch=('any')
 url="https://keeweb.info"
@@ -14,6 +14,7 @@ makedepends=(
 	'libsass>=3.5.5'
 	'nodejs>=8.15.0'
 	'npm'
+	'python2'
 )
 optdepends=('xdotool: for auto-type')
 conflicts=('keeweb-desktop')
