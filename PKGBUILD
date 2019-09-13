@@ -3,7 +3,7 @@
 pkgbase=phpstorm
 pkgname=(phpstorm phpstorm-jre)
 pkgver=2019.2.2b192.6603.42
-pkgrel=2
+pkgrel=3
 pkgdesc='Lightweight and Smart PHP IDE'
 arch=('x86_64' 'i686')
 license=('Commercial')
@@ -16,7 +16,7 @@ sha512sums=('25979367e999ad7c5fd7f1c9763156370d52f36bf41d911969f33f2e32bf11a8779
             'b10edd04a7d48641bec7a9e23037510b426acb5a3059267b2081ec0fce41272d8de413f0b4c1dddd3387bb0ce330c48b3f7894f4817973cd6d32a74a14af3528')
 
 pkgver() {
-  echo "${pkgver%b*}b$(find ${srcdir} -maxdepth 1 -type d | tail -1 | cut -d "-" -f2)"
+  echo "${pkgver%b*}b$(find ${srcdir} -maxdepth 1 -type d -printf "%P" | cut -d "-" -f2)"
 }
 
 package_phpstorm() {
