@@ -23,7 +23,7 @@ package() {
 
 	cp -a "${srcdir}/${_projname}-${pkgver}"/* "${pkgdir}/usr/share/${pkgname}"
 	mv "${pkgdir}/usr/share/${pkgname}"/{COPYING,README.md} "${pkgdir}/usr/share/doc/${pkgname}/"
-	ln -s "${pkgdir}/usr/share/${pkgname}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
+	ln -s "/usr/share/${pkgname}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
 
 }
 
