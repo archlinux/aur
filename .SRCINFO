@@ -1,6 +1,6 @@
 pkgbase = clash-dev-git
 	pkgdesc = A rule based proxy in Go.
-	pkgver = 20190913.r263.b3e10c0
+	pkgver = 20190913.r264.16e3090
 	pkgrel = 1
 	url = https://github.com/Dreamacro/clash
 	arch = x86_64
