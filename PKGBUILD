@@ -5,9 +5,9 @@
 
 _pkgname=lab
 pkgname=$_pkgname-git
-pkgver=0.15.2.r6.g5c82aaf
+pkgver=0.16.0.r18.gd114488
 _branch=master
-pkgrel=1
+pkgrel=2
 pkgdesc="A hub-like tool for GitLab (git $_branch branch)"
 arch=('x86_64')
 url="https://zaquestion.github.io/lab/"
@@ -27,8 +27,17 @@ pkgver() {
 
 build () {
     export GOPATH="$srcdir/go"
-    mkdir -p "$GOPATH"
-    make -C "$srcdir/$_pkgname" build
+    mkdir -p "$GOPATH"/bin
+
+    local S="$srcdir/$_pkgname"
+
+    export PATH="$GOPATH"/bin:"$PATH"
+    echo "Using goimports to remove unused packages"
+    command -v goimports &>/dev/null ||
+        go get golang.org/x/tools/cmd/goimports
+    find "$S" -name '*.go' -print0 | xargs -r0 goimports -w
+
+    make -C "$S" build || true
 }
 
 package() {
