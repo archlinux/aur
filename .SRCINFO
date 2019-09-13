@@ -27,7 +27,9 @@ pkgbase = pamac
 	depends = git
 	options = !emptydirs
 	source = pamac-8.0.4-7.tar.gz::https://gitlab.manjaro.org/applications/pamac/-/archive/fab7bdaa96e4d29f2b2581d97e5e54cb965d6f42/pamac-common-fab7bdaa96e4d29f2b2581d97e5e54cb965d6f42.tar.gz
+	source = vala-compat.patch::https://gitlab.manjaro.org/applications/pamac/commit/fddd7715e23a7199db9498cfee2efecad62074ef.patch
 	sha256sums = 298e6695ca937040c2af55dddf39a447eb66b14891c1d261ce9a784d5152fd18
+	sha256sums = 98b06d11dbf5d63d3982c9c155f3d3eefa5dbbd003be31549f13b92dc194cb71
 
 pkgname = pamac-common
 	install = pamac-common.install
