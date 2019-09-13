@@ -1,6 +1,6 @@
 pkgbase = fastr-bin
 	pkgdesc = Graal based, high-performance implementation of the R language
-	pkgver = 19.2.0
+	pkgver = 19.2.0.1
 	pkgrel = 1
 	url = https://github.com/oracle/fastr
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = fastr-bin
 	depends = graal
 	provides = fastr
 	conflicts = fastr
-	source = https://github.com/oracle/fastr/releases/download/vm-19.2.0/r-installable-linux-amd64-19.2.0.jar
-	sha256sums = cb3aef553a6bfe8347743739fbb579f9ffb231520d74b55c0e82761a4934824d
+	source = https://github.com/oracle/fastr/releases/download/vm-19.2.0.1/r-installable-linux-amd64-19.2.0.1.jar
+	sha256sums = 807bf98c003079dbcff4e49dcb49feec7a027038cdd2aceec37f41d0bf7124dc
 
 pkgname = fastr-bin
 
