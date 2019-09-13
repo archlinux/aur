@@ -15,7 +15,7 @@ source=("${url}/archive/version_${pkgver}/${pkgname}-${pkgver}.tar.gz"
         "${pkgname}.desktop")
 sha256sums=('5d3c7fd745f2875be55f316cd779805ce1b6ce38634f0f4b0ccd01884da731b3'
             'e2f7b9865b24746a24d87d69eba72d8bf2de899466cf5731fa3cb446b8979e75'
-            'fa469696bd85fef60a0f626d47d2da192902c627a9c80cc34325d47ab5d0172e')
+            'f7119c86968cf20e61caf784269c859fc84fae1e499c7c3df82d3d34ae4c2138')
 
 prepare() {
   mkdir -p build
