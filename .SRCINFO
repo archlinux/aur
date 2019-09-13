@@ -1,0 +1,24 @@
+pkgbase = asciidoc-py3
+	pkgdesc = Text document format for short documents, articles, books and UNIX man pages. (python3 version)
+	pkgver = 8.6.10
+	pkgrel = 1
+	url = https://github.com/asciidoc/asciidoc-py3
+	arch = any
+	license = GPL2
+	depends = python
+	depends = libxslt
+	depends = docbook-xsl
+	optdepends = lilypond: music-filter
+	optdepends = imagemagick: music-filter (used in conjunction with lilypond)
+	optdepends = source-highlight: source-highlight-filter
+	optdepends = dblatex: pdf generation
+	optdepends = fop: alternative pdf generation
+	optdepends = lynx: text generation
+	optdepends = w3m: text generation (alternative to lynx)
+	provides = asciidoc
+	conflicts = asciidoc
+	source = https://github.com/asciidoc/asciidoc-py3/archive/544574e66ca89c898151c1c6d34b88a76e44343f.tar.gz
+	sha512sums = b151239b23a63bee52df2dffd35a690f89e8327ba9312382478a2cef2de6fcbc2c74604f6da3a9c879452aa22326a9d9e8ea69c66315a5b344b7fa24f2398ad2
+
+pkgname = asciidoc-py3
+
