@@ -3,7 +3,7 @@
 _projname='NExtGen'
 _appname="${_projname,,}"
 pkgname="${_appname}-git"
-pkgver='r1.ef96064'
+pkgver='r1.18b14f3'
 pkgrel=1
 pkgdesc="A small bash script that lets you easily set up a new extension project for GNOME's Nautilus file manager"
 arch=('any')
