@@ -4,7 +4,7 @@ _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python2-${_pyname}")
 #"python-${_pyname}-doc")
 pkgver=1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Galactic Dynamics in python"
 arch=('i686' 'x86_64')
 url="http://galpy.readthedocs.io/"
@@ -41,7 +41,11 @@ build() {
 package_python2-galpy() {
     depends=('python2-scipy' 'python2-matplotlib')
     optdepends=('python-galpy-doc: Documentation for galpy'
-                'gsl>=1.14: For some advanced features')
+                'gsl>=1.14: For some advanced features'
+                'python2-future: For some advanced features'
+                'python2-astropy: For Quantity support'
+                'python2-astroquery: For the Orbit.from_name initialization method'
+                'python2-pynbody-git: Foruse of SnapshotRZPotential and InterpSnapshotRZPotential')
     cd ${srcdir}/${_pyname}-${pkgver}-py2
 
     install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
@@ -52,7 +56,12 @@ package_python2-galpy() {
 package_python-galpy() {
     depends=('python-scipy' 'python-matplotlib')
     optdepends=('python-galpy-doc: Documentation for galpy'
-                'gsl>=1.14: For some advanced features')
+                'gsl>=1.14: For some advanced features'
+                'python-future: For some advanced features'
+                'python-astropy: For Quantity support'
+                'python-astroquery: For the Orbit.from_name initialization method'
+                'python-numexpr: For or plotting arbitrary expressions of Orbit quantities'
+                'python-pynbody-git: Foruse of SnapshotRZPotential and InterpSnapshotRZPotential')
     cd ${srcdir}/${_pyname}-${pkgver}
 
     install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"

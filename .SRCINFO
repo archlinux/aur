@@ -1,7 +1,7 @@
 pkgbase = python-galpy
 	pkgdesc = Galactic Dynamics in python
 	pkgver = 1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://galpy.readthedocs.io/
 	arch = i686
 	arch = x86_64
@@ -17,10 +17,19 @@ pkgname = python-galpy
 	depends = python-matplotlib
 	optdepends = python-galpy-doc: Documentation for galpy
 	optdepends = gsl>=1.14: For some advanced features
+	optdepends = python-future: For some advanced features
+	optdepends = python-astropy: For Quantity support
+	optdepends = python-astroquery: For the Orbit.from_name initialization method
+	optdepends = python-numexpr: For or plotting arbitrary expressions of Orbit quantities
+	optdepends = python-pynbody-git: Foruse of SnapshotRZPotential and InterpSnapshotRZPotential
 
 pkgname = python2-galpy
 	depends = python2-scipy
 	depends = python2-matplotlib
 	optdepends = python-galpy-doc: Documentation for galpy
 	optdepends = gsl>=1.14: For some advanced features
+	optdepends = python2-future: For some advanced features
+	optdepends = python2-astropy: For Quantity support
+	optdepends = python2-astroquery: For the Orbit.from_name initialization method
+	optdepends = python2-pynbody-git: Foruse of SnapshotRZPotential and InterpSnapshotRZPotential
 
