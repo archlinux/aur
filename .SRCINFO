@@ -1,6 +1,6 @@
 pkgbase = vim-go
 	pkgdesc = Go development plugin for Vim
-	pkgver = 1.20
+	pkgver = 1.21
 	pkgrel = 1
 	url = https://github.com/fatih/vim-go
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = vim-go
 	optdepends = go-tools: developer tools
 	optdepends = gocode-daemon: autocompletion support
 	options = !strip
-	source = https://github.com/fatih/vim-go/archive/v1.20.tar.gz
-	sha256sums = 8d7b3db8a13f2f5769d4accb1b3c29c2a912f6f38dc513a81f31fc618e2c6d16
+	source = https://github.com/fatih/vim-go/archive/v1.21.tar.gz
+	sha256sums = 073ac6b40f646cb014bf848c189b3567c0553b1669a65569c296d327645e55a6
 
 pkgname = vim-go
 
