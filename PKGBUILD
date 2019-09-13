@@ -14,7 +14,7 @@ source=("http://www.brother.com/pub/bsc/linux/dlf/hl2270dwlpr-2.1.0-1.i386.rpm"
         "HL2270DW.ppd.patch")
 md5sums=('69c1987c0636a64fb48f3c6826a3ae28'
          '5a7cc60cafaf60d722d9bce3f2751164'
-         'de9cee3fed4afb1ee7f5516b5bac9f25')
+         '0021d413084aee35c8880eef1bfe4672')
 
 if [[ "$CARCH" == "x86_64" ]]; then
   depends+=('lib32-glibc')
