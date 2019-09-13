@@ -1,0 +1,13 @@
+pkgbase = keepass-natmsg
+	pkgdesc = KeePass plugin to expose credentials securely to a browser using Native Messaging
+	pkgver = 2.0.6
+	pkgrel = 1
+	url = https://github.com/smorks/keepassnatmsg
+	arch = any
+	license = GPL3
+	depends = keepass
+	source = https://github.com/smorks/keepassnatmsg/releases/download/v2.0.6/KeePassNatMsg-v2.0.6-binaries.zip
+	md5sums = 2b227b21de879d1c7e742e051933cfba
+
+pkgname = keepass-natmsg
+
