@@ -2,11 +2,11 @@
 pkgname='extrae'
 pkgdesc='Instrumentation framework to generate execution traces of the most used parallel runtimes (from BSC).'
 pkgver='3.7.1'
-pkgrel='2'
+pkgrel='3'
 arch=('i686' 'x86_64')
 url='https://www.bsc.es/discover-bsc/organisation/scientific-structure/performance-tools'
 license=('LGPL2.1')
-depends=(openmpi libunwind papi libxml2 zlib)
+depends=(openmpi libunwind papi libxml2 zlib python)
 source=("https://ftp.tools.bsc.es/$pkgname/$pkgname-$pkgver-src.tar.bz2"
         extrae-issue-27-fix-pie-address-translation.patch)
 sha512sums=(efc686afc5e8e8cc9efdba870f0e3a15a8fa4549d8e6369de21bb95b0f0a01488beefb768428474f33477fe55e14aef45222bd7687c9fd932d8331043baff799
