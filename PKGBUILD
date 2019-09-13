@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=ls_extended-git
-pkgver=1.1.0.r13.g418adc4
+pkgver=1.1.0.r16.g40f1c4b
 pkgrel=1
 pkgdesc='ls with coloring and icons from git'
 arch=('x86_64')
@@ -13,7 +13,7 @@ optdepends=('nerd-fonts-complete: for icon support')
 depends=('glibc' 'ttf-nerd-fonts-symbols')
 conflicts=('ls_extended')
 provides=('ls_extended')
-source=("git+$url")
+source=("git+$url#commit=40f1c4b08e6ad8b52011799e5432862957986aa9")
 md5sums=('SKIP')
 
 pkgver() {
