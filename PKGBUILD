@@ -5,16 +5,18 @@
 
 pkgname=v2ray-git
 pkgver=4.20.0.r22.ge9f53059
-pkgrel=1
+pkgrel=2
 pkgdesc="A set of network tools that help you to build your own computer network (git version)."
 arch=(x86_64)
 url="https://github.com/v2ray/v2ray-core"
 license=(MIT)
-makedepends=(go)
+depends=(glibc v2ray-domain-list-community v2ray-geoip)
+makedepends=(go-pie golang-golang-x-crypto golang-golang-x-net git)
+backup=(etc/v2ray/config.json)
 provides=(v2ray)
 conflicts=(v2ray)
 source=("$pkgname::git+$url.git"
-        "v2ray.service")
+        'v2ray.service')
 sha512sums=('SKIP'
             '37efc20ef71147f4400eba2bf57766462b5803b5952768bd32d5224f35e37c9c5639aaa19e0f3b63b52063dafd0381f40e2bfbb60dace08b055f0b3245cfa2b7')
 
