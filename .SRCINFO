@@ -1,16 +1,16 @@
 pkgbase = archuseriso
-	pkgdesc = Archiso user configs for building alternate Arch Linux live and install iso images
-	pkgver = 0.2.5
+	pkgdesc = Archiso configs for building alternate Arch Linux live and install iso images
+	pkgver = 0.2.6
 	pkgrel = 1
 	url = https://github.com/laurent85v/archuseriso
 	arch = any
 	license = GPL
 	depends = archiso
 	conflicts = archuseriso
-	source = http://dl.gnutux.fr/sources/archuseriso/archuseriso-0.2.5.tar.gz
-	source = http://dl.gnutux.fr/sources/archuseriso/archuseriso-0.2.5.tar.gz.sig
+	source = http://dl.gnutux.fr/sources/archuseriso/archuseriso-0.2.6.tar.gz
+	source = http://dl.gnutux.fr/sources/archuseriso/archuseriso-0.2.6.tar.gz.sig
 	validpgpkeys = A5143BB56952B3189F49A175FAC4560863BEEC34
-	sha512sums = 7c1e6ecde0e567d80e9dcf58e0718b4f024c1905bbc0000a38e8e38d887fe8058657295735762156f06e077daa86a51cbaf91966591b524d0f8babcd261d4bc5
+	sha512sums = f54a0ad8b60d80a2f9d571141dcdb4d3d4ad6b2d451bc3331c3edbaa26b5857cf3939c57af7e0f19badcd96f5074bb48fa679f19aad9b942f5a70e5bd6463a27
 	sha512sums = SKIP
 
 pkgname = archuseriso
