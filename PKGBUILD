@@ -1,7 +1,7 @@
 # Maintainer: Florian Walch <florian+aur@fwalch.com>
 
 pkgname=libvterm-bzr
-pkgver=r650
+pkgver=r755
 pkgrel=1
 pkgdesc='Abstract library implementation of a VT220/xterm/ECMA-48 terminal emulator.'
 arch=('i686' 'x86_64')
