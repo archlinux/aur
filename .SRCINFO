@@ -1,6 +1,6 @@
 pkgbase = brother-hl2270dw
 	pkgdesc = Brother HL-2270DW CUPS Driver
-	pkgver = 2.0.4_2
+	pkgver = 2.1.0_0
 	pkgrel = 5
 	url = http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/index.html
 	arch = i686
