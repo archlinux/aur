@@ -1,6 +1,6 @@
 # Maintainer: ChacaS0 <incoming+chacas0-chksum-13830438-issue-@incoming.gitlab.com>
 pkgname=chksum
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Check and compare easily the checksum of a file."
 arch=('x86_64')
@@ -27,8 +27,8 @@ prepare() {
 build() {
 	echo "[BUILD]    STATUS : Ready."
 	echo "[BUILD]    INFO   : Already built."
-	echo $srcdir # DEBUG
-	echo $pkgdir # DEBUG
+	ls -lh $srcdir # DEBUG
+	ls -lh $pkgdir # DEBUG
 }
 
 package () {
