@@ -12,15 +12,18 @@ makedepends=(cmake boost eigen3 expat qhull gtest libpng)
 replaces=(slic3r-prusa3d)
 source=("${url}/archive/version_${pkgver}/${pkgname}-${pkgver}.tar.gz"
         prusa-slicer-mode-switching.patch::"https://github.com/prusa3d/PrusaSlicer/commit/5afd0b4ee28a18733dd8a0e4b4cfd612e60b452c.patch"
-        "${pkgname}.desktop")
+        "${pkgname}.desktop"
+        prusa-slicer-boost-1.70.patch::"https://github.com/prusa3d/PrusaSlicer/commit/bfb135bc.patch")
 sha256sums=('5d3c7fd745f2875be55f316cd779805ce1b6ce38634f0f4b0ccd01884da731b3'
             'e2f7b9865b24746a24d87d69eba72d8bf2de899466cf5731fa3cb446b8979e75'
-            'f7119c86968cf20e61caf784269c859fc84fae1e499c7c3df82d3d34ae4c2138')
+            'f7119c86968cf20e61caf784269c859fc84fae1e499c7c3df82d3d34ae4c2138'
+            '3831b27f2e916606ff88bb727e22ff68a956bad3ac402fb7a814232d63530419')
 
 prepare() {
   mkdir -p build
   cd PrusaSlicer-version_${pkgver}
   patch -p1 -i ../prusa-slicer-mode-switching.patch
+  patch -p1 -i ../prusa-slicer-boost-1.70.patch # Fix build with boost 1.70
 }
 
 build() {
