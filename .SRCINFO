@@ -1,0 +1,29 @@
+pkgbase = librime-octagram
+	pkgdesc = Rime input method engine, with octagram plugin
+	pkgver = 1.5.3
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/rime/librime
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = boost
+	makedepends = gtest
+	makedepends = git
+	depends = boost-libs
+	depends = opencc
+	depends = yaml-cpp
+	depends = leveldb
+	depends = google-glog
+	depends = marisa
+	optdepends = plum: preset input schemas
+	optdepends = plum-extra: extra input schemas
+	provides = librime
+	conflicts = librime
+	source = librime-1.5.3.tar.gz::https://github.com/rime/librime/archive/1.5.3.tar.gz
+	source = git+https://github.com/lotem/librime-octagram
+	sha512sums = 4d7f6ec43bd5728f59f0b3581bcd8a46128651430b6873017d80659942b8f6aa1a2f25f439ba8fba461fe22acbf701c2da7a786104a2e4852a70a89cdc0452d3
+	sha512sums = SKIP
+
+pkgname = librime-octagram
+
