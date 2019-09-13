@@ -1,0 +1,80 @@
+pkgbase = pamac
+	pkgdesc = A Package Manager based on libalpm with AUR and Appstream support
+	pkgver = 8.0.4
+	pkgrel = 7
+	url = https://gitlab.manjaro.org/applications/pamac
+	arch = x86_64
+	license = GPL3
+	makedepends = gettext
+	makedepends = meson
+	makedepends = vala>=0.36.6
+	makedepends = libappindicator-gtk3
+	makedepends = gobject-introspection
+	depends = glib2>=2.42
+	depends = json-glib
+	depends = libsoup
+	depends = dbus-glib
+	depends = polkit
+	depends = vte3>=0.38
+	depends = gtk3>=3.22
+	depends = libnotify
+	depends = desktop-file-utils
+	depends = pacman>=5.1
+	depends = pacman<5.2
+	depends = gnutls>=3.4
+	depends = appstream-glib
+	depends = archlinux-appstream-data
+	depends = git
+	options = !emptydirs
+	source = pamac-8.0.4-7.tar.gz::https://gitlab.manjaro.org/applications/pamac/-/archive/fab7bdaa96e4d29f2b2581d97e5e54cb965d6f42/pamac-common-fab7bdaa96e4d29f2b2581d97e5e54cb965d6f42.tar.gz
+	sha256sums = 298e6695ca937040c2af55dddf39a447eb66b14891c1d261ce9a784d5152fd18
+
+pkgname = pamac-common
+	install = pamac-common.install
+	depends = glib2>=2.42
+	depends = json-glib
+	depends = libsoup
+	depends = dbus-glib
+	depends = polkit
+	depends = libnotify
+	depends = desktop-file-utils
+	depends = pacman>=5.1
+	depends = pacman<5.2
+	depends = gnutls>=3.4
+	depends = appstream-glib
+	depends = archlinux-appstream-data
+	depends = pacman-mirrors>=4.9.1
+	depends = git
+	provides = pamac-common=8.0.4
+	conflicts = pamac<=7.3.4-2
+	conflicts = pamac-aur
+	conflicts = pamac-common
+	backup = etc/pamac.conf
+
+pkgname = pamac-cli
+	depends = pamac-common
+	provides = pamac-cli=8.0.4
+	conflicts = pamac<=7.3.4-2
+	conflicts = pamac-aur
+	conflicts = pamac-cli
+
+pkgname = pamac-gtk
+	install = pamac-gtk.install
+	depends = pamac-cli
+	depends = vte3>=0.38
+	depends = gtk3>=3.22
+	provides = pamac=8.0.4-7
+	provides = pamac=8.0.4-7
+	provides = pamac-gtk=8.0.4
+	conflicts = pamac
+	conflicts = pamac-aur
+	conflicts = pamac-gtk
+	replaces = pamac
+
+pkgname = pamac-tray-appindicator
+	pkgdesc = Tray icon using appindicator which fits better in KDE
+	depends = pamac-gtk
+	depends = libappindicator-gtk3
+	provides = pamac-tray-appindicator=8.0.4
+	conflicts = pamac-tray-appindicator
+
