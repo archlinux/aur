@@ -11,7 +11,7 @@ license=(GPL3)
 depends=(bash alsa-utils)
 options=(!emptydirs !makeflags zipman)
 source=($url/-/archive/$pkgver/alsa-capabilities-$pkgver.tar.gz)
-sha256sums=('81d60d451923ff2e22837287e18b7d9db924eda998bce6bb53aa627bc297c897')
+sha256sums=('dc549746d28650578cf1d0ac66e80a7ab8d4f5da3ac5d10b7634f77c1cf58e92')
 validpgpkeys=(4888EA1E1DD158ED3BC39838FBF05DDFC04DF16B)
 #changelog=CHANGELOG
 

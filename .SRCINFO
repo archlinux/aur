@@ -12,7 +12,7 @@ pkgbase = alsa-capabilities
 	options = zipman
 	source = https://gitlab.com/sonida/alsa-capabilities/-/archive/v1.0.2/alsa-capabilities-v1.0.2.tar.gz
 	validpgpkeys = 4888EA1E1DD158ED3BC39838FBF05DDFC04DF16B
-	sha256sums = 81d60d451923ff2e22837287e18b7d9db924eda998bce6bb53aa627bc297c897
+	sha256sums = dc549746d28650578cf1d0ac66e80a7ab8d4f5da3ac5d10b7634f77c1cf58e92
 
 pkgname = alsa-capabilities
 
