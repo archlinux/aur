@@ -48,13 +48,13 @@ _use_current=
 pkgbase=linux-rt-bfq
 # pkgname=('linux-rt-bfq' 'linux-rt-bfq-headers' 'linux-rt-bfq-docs')
 _major=5.2
-_minor=10
-_rtver=5
+_minor=14
+_rtver=6
 _rtpatchver=rt${_rtver}
 pkgver=${_major}.${_minor}.${_rtpatchver}
 _pkgver=${_major}.${_minor}
 _srcname=linux-${_pkgver}
-pkgrel=5
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/sirlucjan/bfq-mq-lucjan"
 license=('GPL2')
@@ -76,13 +76,11 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
         "http://www.kernel.org/pub/linux/kernel/projects/rt/${_major}/patch-${_pkgver}-${_rtpatchver}.patch.xz"
         "http://www.kernel.org/pub/linux/kernel/projects/rt/${_major}/patch-${_pkgver}-${_rtpatchver}.patch.sign"
-        #"${_lucjanpath}/${_bfq_rev_path}/${_bfq_rev_patch}"
+        "${_lucjanpath}/${_bfq_rev_path}/${_bfq_rev_patch}"
         "${_lucjanpath}/${_bfq_path}/${_bfq_patch}"
         "${_gcc_path}/${_gcc_patch}"
-        "${_lucjanpath}/arch-patches-v2/0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch"
-        "${_lucjanpath}/arch-patches-v2/0002-ZEN-Add-CONFIG-for-unprivileged_userns_clone.patch"
-        "${_lucjanpath}/arch-patches-v2/0003-iwlwifi-mvm-disable-TX-AMSDU-on-older-NICs.patch"
-        "${_lucjanpath}/arch-patches-v2/0004-drm-amdgpu-pin-the-csb-buffer-on-hw-init-for-gfx-v8.patch"
+        "${_lucjanpath}/arch-patches-v3/0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch"
+        "${_lucjanpath}/arch-patches-v3/0002-ZEN-Add-CONFIG-for-unprivileged_userns_clone.patch"
         "${_lucjanpath}/arch-patches-v3/0003-Btrfs-fix-unwritten-extent-buffers-and-hangs-on-futu.patch"
          # the main kernel config files
         'config'
@@ -388,16 +386,15 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('abd20b6bf41572c51df0d609db205e2d5f541aa486c2d37c15d4dd43e8bf36a06eb5514bdd5a1c114fd6f6c00a3bf9d1ac40a722b8e01146e2779f806b3a4ee7'
+sha512sums=('a27fcabaeef23de4d57a716438ced451e98503b8215dac746ec8452ea5f1d2a61491bca1720ff6c998cce86083d5277e5d184cbb41b1c83c6083e6740847da69'
             'SKIP'
-            'f1fd26d485a7e3119bc3198c51d3f48edb2accea7e0ff5b4c30fad11cf266e26135d5f5c8381dadf510b08162b0a2f8eca394f6d3f79d503d8eebb8dee5f58f1'
+            'e8a8ed718702f17d2513c6a5bb555b9e879e7810e6c105671b1a2499714e9b2c472283ea0b1e7b085570904cb00c1cd7bd13a975557281ba4d3837374fd2f74b'
             'SKIP'
+            'a57192d2989ff816e32970d86320f331be013b2c1d4a236565f33ef41b4092352e7dc560f97a39191d8c5eca8514f646fddc14a1c0168265ca3a470e7a41a2ea'
             '41dff043f08639e3a9033d7bd79c8750c4db5499424485cfceab1b79e1dbad651c120546c73cee1cfa50d771e342638428634fce1b230475e90d2520fa9d5638'
             '2eb574fbfac6e334d3b06e52e466dbf8e88034515729b6571990b10f75a0fe2a52f188615405c5a695b5820669e595deead44d7961a97c5872359be3435fdf63'
-            '1cd40df805987a50723da456e5874e6ca1070e5efbf23b3267e833bb73465573eb82d5c8f74c54e9fb894cdbe5137a822381152716d7dedd64a07ac1601b0f37'
-            'd75d9fc44b31e6adafe4cae641bc513c1594c7a314087fede6a7ff1f3c98c67117d84a1f7fe70f39856af9d66d9f79298791598505283ac53453cb4e763fa69c'
-            'fa87f577af56a8c4219b4c064fba7c85ea8cc1c1ee066f6972022145af04a1fb982f5e5ff5d983e44654440892fa429c00c47ddfef8a8a4b0e16fc4484119adf'
-            '694efbf25e17b30b73eb16de5819068565e37e3f6e263a700c06d01bd7f299d5d0286144426ed3161081b969d4536024709bbbf6dc3e65ca96d5cd18192b74d1'
+            'cd4baaf72032e00aee15d8a529d4695c30b220676ada2a1cfe4e36a323167f285b6df562325232c7e330288836dfa3fef702580af413a52553193f1e8c60f4a9'
+            '17346950fbf68c96f3eaa7ac6ea7753f01633aed622586acd7d061661c8b433d861b686ed6e24c0442e89a6b98cc6a01aa1ce70a59e44415dce3131112740ead'
             'e4c3537e1222e832abb032d8e945ac1be364c105d3d180152d79f70ad230f9370cb891ca231aa89b11ba3c03096131a0d944411d250d037ffa231ba893f9c819'
             '8f6cdf859cf1c712749de734bb9ad5769ff03e2c426cdc3adad8db91adc447e8ca050d7752b30108363330e4b6ad881330c4dbcfdf357e87c6848dae409ef1f4'
             '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
