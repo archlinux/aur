@@ -1,7 +1,7 @@
 pkgbase = namd
 	pkgdesc = Scalable molecular dynamic engine
 	pkgver = 2.13
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.ks.uiuc.edu/Research/namd/
 	arch = x86_64
 	license = custom
@@ -16,11 +16,9 @@ pkgbase = namd
 	source = http://charm.cs.illinois.edu/distrib/charm-6.8.2.tar.gz
 	source = local://NAMD_2.13_Source.tar.gz
 	source = namd.patch
-	source = namd2
 	md5sums = a887a34b638a5b2f7fcf7ff3c262496d
 	md5sums = 9e3323ed856e36e34d5c17a7b0341e38
 	md5sums = 835ce380b799d847347999e62966b411
-	md5sums = fed5c77446090c38d8811b82737d4539
 
 pkgname = namd
 

@@ -3,7 +3,7 @@
 pkgname=namd
 pkgver=2.13
 _charmver=6.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Scalable molecular dynamic engine"
 url="http://www.ks.uiuc.edu/Research/namd/"
 license=('custom')
@@ -12,15 +12,13 @@ depends=('gcc7' 'gcc7-libs')
 makedepends=('make' 'patch' 'fftw-static' 'tcl85-static')
 md5sums=('a887a34b638a5b2f7fcf7ff3c262496d'
          '9e3323ed856e36e34d5c17a7b0341e38'
-         '835ce380b799d847347999e62966b411'
-         'fed5c77446090c38d8811b82737d4539')
+         '835ce380b799d847347999e62966b411')
 options=(staticlibs !buildflags)
 
 # You MUST download the package from the NAMD url and put it in the PKGBUILD folder!
 source=("http://charm.cs.illinois.edu/distrib/charm-${_charmver}.tar.gz"
         "local://NAMD_${pkgver}_Source.tar.gz"
-        "namd.patch"
-        "namd2")
+        "namd.patch")
 
 prepare() {
   cd ${srcdir}/NAMD_${pkgver}_Source
@@ -62,6 +60,11 @@ package() {
   # install license
   install -Dm644 ${pkgdir}/opt/${pkgname}/license.txt $pkgdir/usr/share/licenses/$pkgname/LICENSE
 
-  # install wrappers
-  install -Dm755 ${srcdir}/namd2 ${pkgdir}/usr/bin/namd2
+  # create links to executables
+  ln -sf /opt/${pkgname}/charmrun ${pkgdir}/usr/bin/charmrun
+  ln -sf /opt/${pkgname}/flipbinpdb ${pkgdir}/usr/bin/flipbinpdb
+  ln -sf /opt/${pkgname}/flipdcd ${pkgdir}/usr/bin/flipdcd
+  ln -sf /opt/${pkgname}/namd2 ${pkgdir}/usr/bin/namd2
+  ln -sf /opt/${pkgname}/psfgen ${pkgdir}/usr/bin/psfgen
+  ln -sf /opt/${pkgname}/sortreplicas ${pkgdir}/usr/bin/sortreplicas
 }
