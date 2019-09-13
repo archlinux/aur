@@ -10,7 +10,7 @@
 
 pkgbase=calibre-git
 pkgname=(calibre-git calibre-python3-git)
-pkgver=3.42.0.r63.g969ad38858
+pkgver=3.48.0.r0.g290c74fd73
 pkgrel=1
 pkgdesc="Ebook management application"
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ _py_deps=('apsw' 'beautifulsoup4' 'cssselect' 'css-parser' 'dateutil' 'dbus' 'dn
           'feedparser' 'html2text' 'html5-parser' 'lxml' 'markdown' 'mechanize' 'msgpack'
           'netifaces' 'unrardll' 'pillow' 'psutil' 'pygments' 'pyqt5' 'regex')
 _py3_deps=("${_py_deps[@]}" 'zeroconf')
-depends=('chmlib' 'icu' 'jxrlib' 'libmtp' 'libusbx' 'libwmf' 'mathjax' 'mtdev' 'optipng'
+depends=('chmlib' 'hunspell' 'icu' 'jxrlib' 'libmtp' 'libusbx' 'libwmf' 'mathjax2' 'mtdev' 'optipng'
          'podofo' 'qt5-svg' 'qt5-webkit' 'udisks2')
 makedepends=('git' "${_py_deps[@]/#/python2-}" "${_py3_deps[@]/#/python-}" 'qt5-x11extras'
              'sip' 'xdg-utils' 'rapydscript-ng') #'python2-sphinx')
@@ -28,9 +28,11 @@ checkdepends=('xorg-server-xvfb')
 optdepends=('poppler: required for converting pdf to html')
 source=("git+https://github.com/kovidgoyal/${pkgbase%-git}.git?signed"
         "git+https://github.com/kovidgoyal/${pkgbase%-git}-translations.git?signed"
+        "https://github.com/kovidgoyal/calibre/commit/420e9e121b67db197e0c5d0bf23b92c174f2678f.patch"
         "user-agent-data.json")
 sha256sums=('SKIP'
             'SKIP'
+            'ff9be7c1773c18ccf4acaff5598ad29cf1477a1d33ddde85184d97f9a44ace1a'
             'd17a1fff7bf441db8d1ec826afd8661352869ec4e5edd2a17f917ef2fbf01043')
 validpgpkeys=('3CE1780F78DD88DF45194FD706BC317B515ACE7C') # Kovid Goyal (New longer key) <kovid@kovidgoyal.net>
 
@@ -48,8 +50,7 @@ prepare(){
   ln -sfT ../calibre-translations translations
 
   # Desktop integration (e.g. enforce arch defaults)
-  # Use uppercase naming scheme, don't create uninstaller.
-  # xdg *cannot* be kludged into installing mime files properly.
+  # Use uppercase naming scheme, don't delete config files under fakeroot.
   sed -e "/import config_dir/,/os.rmdir(config_dir)/d" \
       -e "s/^Name=calibre/Name=Calibre/g" \
       -i  src/calibre/linux.py
@@ -58,6 +59,8 @@ prepare(){
   # needed for frozen builds + beautifulsoup4
   # see https://github.com/kovidgoyal/calibre/commit/b177f0a1096b4fdabd8772dd9edc66662a69e683#commitcomment-33169700
   rm -r src/backports
+  # de-vendor hunspell now instead of waiting for 4.x
+  patch -p1 -i ../420e9e121b67db197e0c5d0bf23b92c174f2678f.patch
 }
 
 build() {
@@ -73,7 +76,7 @@ build() {
   LANG='en_US.UTF-8' python2 setup.py iso3166
   LANG='en_US.UTF-8' python2 setup.py translations
   LANG='en_US.UTF-8' python2 setup.py gui
-  LANG='en_US.UTF-8' python2 setup.py resources --path-to-mathjax /usr/share/mathjax --system-mathjax
+  LANG='en_US.UTF-8' python2 setup.py resources --path-to-mathjax /usr/share/mathjax2 --system-mathjax
 
   LANG='en_US.UTF-8' CALIBRE_PY3_PORT=1 python3 setup.py build
 
@@ -92,8 +95,9 @@ check() {
 
   # without xvfb-run this fails with much "Control socket failed to recv(), resetting"
   # ERROR: test_websocket_perf (calibre.srv.tests.web_sockets.WebSocketTest)
-  LANG='en_US.UTF-8' xvfb-run python2 setup.py test
+  # one or two tests are a bit flaky, but the python3 build seems to succeed more often
   LANG='en_US.UTF-8' xvfb-run env CALIBRE_PY3_PORT=1 python3 setup.py test
+  LANG='en_US.UTF-8' xvfb-run python2 setup.py test
 }
 
 package_calibre-git() {
@@ -138,7 +142,8 @@ package_calibre-python3-git() {
     --prefix=/usr \
     --no-postinstall \
     --bindir=/opt/calibre-python3 \
-    --staging-bindir="${pkgdir}"/opt/calibre-python3
+    --staging-bindir="${pkgdir}"/opt/calibre-python3 \
+    --staging-sharedir="${srcdir}"/temp
 
   # Compiling bytecode FS#33392
   # This is kind of ugly but removes traces of the build root.
@@ -149,7 +154,6 @@ package_calibre-python3-git() {
   done < <(find "${pkgdir}"/usr/lib/ -name '*.py' -print0)
 
   # cleanup overlapping files
-  find "${pkgdir}"/usr/lib/calibre -name \*.py -delete
-  rm -r "${pkgdir}"/usr/share
+  find "${pkgdir}"/usr/lib/calibre -name '*.py' -delete
   rm "${pkgdir}"/usr/lib/calibre/calibre/plugins/*.so
 }
