@@ -27,12 +27,13 @@ prepare() {
 build() {
 	echo "[BUILD]    STATUS : Ready."
 	echo "[BUILD]    INFO   : Already built."
+
 }
 
 package () {
 	echo "[INSTALL]  STATUS : Started."
 	echo "[INSTALL]  INFO   : Putting chksum into /usr/bin..."
-	unzip "${pkdir}/artifacts.zip" -d /usr/bin
+	unzip "${pkgdir}/artifacts.zip" -d /usr/bin
 	echo "[INSTALL]  INFO   : "
 	ls -lh /usr/bin | grep chksum
 	echo "[INSTALL]  STATUS : Done."
