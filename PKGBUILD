@@ -3,7 +3,7 @@
 
 pkgname=gmt6
 _pkgname=gmt
-pkgver=6.0.0rc2
+pkgver=6.0.0rc4
 pkgrel=1
 pkgdesc="Generic Mapping Tools: Collection of tools for manipulating geographic and Cartesian data sets, and generating EPS maps."
 arch=(i686 x86_64)
@@ -23,7 +23,7 @@ install='gmt.install'
 #source=("ftp://ftp.iag.usp.br/pub/gmt/${_pkgname}-${pkgver}-src.tar.xz")
 #source=("https://mirrors.ustc.edu.cn/gmt/${_pkgname}-${pkgver}-src.tar.xz")
 source=("https://github.com/GenericMappingTools/${_pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('e1b27d2c6831a2523c3b203bd2cc0aa9fe030b1712dd7b93213d8cec749066a7')
+sha256sums=('eb072a2da8d071119a5324b3ceafe5d813d2e33eceda28fc015ef38abd2c1cc4')
 
 prepare() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
