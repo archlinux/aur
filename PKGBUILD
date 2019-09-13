@@ -16,10 +16,10 @@ _JBR=
 
 pkgname=intellij-idea-ue-eap
 _pkgname=idea-IU
-_buildver=192.6603.23
+_buildver=192.6603.28
 _veryear=2019
 _verrelease=2
-_verextra=
+_verextra=2
 pkgver=${_veryear}.${_verrelease}.${_buildver}
 pkgrel=1
 pkgdesc="Early access version of the upcoming version of Intellij Idea IDE (ultimate version)"
@@ -29,11 +29,11 @@ url="http://www.jetbrains.com/idea/"
 license=('custom')
 depends=('java-environment' 'giflib' 'libxtst' 'libdbusmenu-glib')
 if [ -n "${_JBR}" ]; then
-  source=("https://download.jetbrains.com/idea/ideaIU-${_buildver}-${_JBR}.tar.gz")
-  sha256sums=($(curl -sO "${source}.sha256" && cat "ideaIU-${_buildver}-${_JBR}.tar.gz.sha256" | cut -f1 -d" "))
+  source=("https://download.jetbrains.com/idea/ideaIU-${_veryear}.${_verrelease}.${_verextra}-${_JBR}.tar.gz")
+  sha256sums=($(curl -sO "${source}.sha256" && cat "ideaIU-${_veryear}.${_verrelease}.${_verextra}-${_JBR}.tar.gz.sha256" | cut -f1 -d" "))
 else
-  source=("https://download.jetbrains.com/idea/ideaIU-${_buildver}.tar.gz")
-  sha256sums=($(curl -sO "${source}.sha256" && cat "ideaIU-${_buildver}.tar.gz.sha256" | cut -f1 -d" "))
+  source=("https://download.jetbrains.com/idea/ideaIU-${_veryear}.${_verrelease}.${_verextra}.tar.gz")
+  sha256sums=($(curl -sO "${source}.sha256" && cat "ideaIU-${_veryear}.${_verrelease}.${_verextra}.tar.gz.sha256" | cut -f1 -d" "))
 fi
 
 package() {
