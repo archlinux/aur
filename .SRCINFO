@@ -1,0 +1,23 @@
+pkgbase = jdk8-jetbrains
+	pkgdesc = OpenJDK development kit with some fixes and enhancements by JetBrains
+	pkgver = 8.222b1621.1
+	pkgrel = 1
+	url = https://bintray.com/jetbrains/intellij-jdk
+	arch = x86_64
+	license = GPL2
+	depends = java-runtime-common
+	depends = ca-certificates-java
+	depends = java-environment-common
+	provides = java-runtime=8
+	provides = java-runtime-headless=8
+	provides = java-environment=8
+	provides = java-runtime-openjdk=8
+	provides = java-runtime-headless-jre=8
+	provides = java-environment-openjdk=8
+	replaces = intellij-jdk
+	replaces = jdk-jetbrains
+	source = jbrsdk-8u222-linux-x64-b1621.1.tar.gz::https://bintray.com/jetbrains/intellij-jbr/download_file?file_path=jbrsdk-8u222-linux-x64-b1621.1.tar.gz
+	sha256sums = 43a3af04c705933ba12ec9ebedac2afb2f7cf35785197bde4bb27baae4d0d131
+
+pkgname = jdk8-jetbrains
+
