@@ -1,7 +1,7 @@
 # Maintainer: Dónal Murray <dmurray654@gmail.com>
 
 pkgname=protonvpn-applet
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 pkgdesc='Unofficial basic systray applet for protonvpn-cli written in python + PyQt5'
 url='https://github.com/seadanda/protonvpn-applet'
@@ -11,7 +11,7 @@ makedepends=('git')
 depends=('python' 'libnotify' 'python-pyqt5' 'protonvpn-cli')
 
 source=("https://github.com/seadanda/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('33fa863adb09b50a79ae973f38ab787a')
+md5sums=('c785449878d3c9afca0526e88451de45')
 
 prepare() {
     tar xzf ${pkgver}.tar.gz
