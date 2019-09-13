@@ -1,3 +1,5 @@
+# Maintainer: grufo <madmurphy333 AT gmail DOT com>
+
 _projname='NExtGen'
 pkgname="${_projname,,}"
 pkgver='0.1.0'
