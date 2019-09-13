@@ -1,6 +1,6 @@
 # Maintainer: ChacaS0 <incoming+chacas0-chksum-13830438-issue-@incoming.gitlab.com>
 pkgname=chksum
-pkgver=0.1.12
+pkgver=0.1.13
 pkgrel=1
 pkgdesc="Check and compare easily the checksum of a file."
 arch=('x86_64')
@@ -19,7 +19,6 @@ options=()
 source=("https://gitlab.com/chacas0/chksum/-/jobs/artifacts/master/download?job=build")
 noextract=('artifacts.zip')
 sha256sums=('SKIP')
-srcdir="/usr/bin"
 
 prepare() {
 	echo "[PREPARE]  STATUS : Ready."
@@ -35,8 +34,8 @@ package () {
 	# echo "[INSTALL]  INFO   : Putting chksum into /usr/bin..."
 	# sudo mv ${srcdir}/chksum /usr/bin
 	echo "[INSTALL]  INFO   : "
-	install "${srcdir}/chksum" /usr/bin
-	ls -lh /usr/bin | grep chksum
+	sudo install "${srcdir}/chksum" /usr/bin
+	# ls -lh /usr/bin | grep chksum
 	echo "[INSTALL]  STATUS : Done."
 	# DESTDIR="/usr/bin"
 }
