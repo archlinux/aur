@@ -2,8 +2,8 @@
 
 pkgname=libnsfb
 pkgver=0.2.1
-pkgrel=1
-pkgdesc='NetSurf Framebuffer library'
+pkgrel=2
+pkgdesc='Framebuffer abstraction library'
 arch=(x86_64 i686)
 url=http://www.netsurf-browser.org/projects/libnsfb/
 license=(MIT)
