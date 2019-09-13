@@ -16,7 +16,7 @@ pkgbase = lotech-git
 	source = git+https://github.com/ianmaclarty/lotech.git
 	source = linux.patch
 	sha256sums = SKIP
-	sha256sums = d23e06900b72896e892a5bbbf41cce6307c2956c9168ad22a1b0eac0b6892f32
+	sha256sums = 4423d8d1dd95b603001c6537eaf239593bd874fed3e5327c7ed87298f0766123
 
 pkgname = lotech-git
 

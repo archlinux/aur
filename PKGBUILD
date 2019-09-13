@@ -3,7 +3,11 @@
 pkgname=lotech-git
 pkgver=1.0
 pkgrel=1
+
 license=("custom")
+
+description="A simple framework for making games"
+
 source=("git+https://github.com/ianmaclarty/lotech.git"
         "linux.patch")
 
@@ -36,5 +40,7 @@ package()
     cd "${srcdir}/lotech/"
     install -d "${pkgdir}/usr/bin"
     install -m755 ltclient "${pkgdir}/usr/bin"
+    install -d "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
