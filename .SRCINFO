@@ -9,7 +9,6 @@ pkgbase = clash-dev-git
 	makedepends = git
 	depends = glibc
 	provides = clash
-	conflicts = clash-git
 	conflicts = clash-bin
 	conflicts = clash
 	source = clash@.service

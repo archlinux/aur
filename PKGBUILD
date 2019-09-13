@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://github.com/Dreamacro/clash"
 license=('MIT')
 provides=("clash")
-conflicts=("clash-git" "clash-bin" "clash")
+conflicts=("clash-bin" "clash")
 makedepends=('go' 'git')
 depends=('glibc')
 
