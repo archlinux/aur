@@ -10,7 +10,7 @@ url='http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/index.html'
 license=('GPL')
 depends=('a2ps' 'cups')
 source=("http://www.brother.com/pub/bsc/linux/dlf/hl2270dwlpr-2.1.0-1.i386.rpm"
-        "http://www.brother.com/pub/bsc/linux/dlf/cupswrapperHL2270DW-${pkgver//_/-}.i386.rpm"
+        "http://www.brother.com/pub/bsc/linux/dlf/cupswrapperHL2270DW-2.0.4-2.i386.rpm"
         "HL2270DW.ppd.patch")
 md5sums=('69c1987c0636a64fb48f3c6826a3ae28'
          '5a7cc60cafaf60d722d9bce3f2751164'
