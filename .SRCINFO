@@ -1,14 +1,12 @@
 pkgbase = autodesk-nlm
 	pkgdesc = FLEXnet License Manager (lmgrd) + Autodesk® vendor daemon (adskflex)
 	pkgver = 11.16.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://knowledge.autodesk.com/customer-service/network-license-administration
 	arch = x86_64
 	license = custom:¯\_(ツ)_/¯
 	depends = gcc-libs
 	depends = ld-lsb
-	provides = flexnet=11.16.2.0
-	conflicts = flexnet
 	source = https://knowledge.autodesk.com/sites/default/files/file_downloads/nlm11.16.2.0_ipv4_ipv6_linux64.tar.gz
 	source = lmgrd.service
 	md5sums = b97dafa3a2b748e54951d8ac0f06bd44
@@ -17,4 +15,16 @@ pkgbase = autodesk-nlm
 	sha256sums = 10fdaa80006dabba99cdd1ea754043812fb66f8f6ea9ce08998932e1ea6a5086
 
 pkgname = autodesk-nlm
+	pkgdesc = Autodesk® vendor daemon (adskflex) for FLEXnet License Manager
+	optdepends = autodesk-lmgrd: FLEXnet License Manager core (lmgrd) distributed by Autodesk
+	optdepends = flexnet: FLEXnet License Manager core (lmgrd) distributed by Arm
+	optdepends = lmgrd: FLEXnet License Manager core (lmgrd) distributed by MATLAB
+
+pkgname = autodesk-lmgrd
+	pkgdesc = FLEXnet License Manager (lmgrd) distributed by Autodesk
+	optdepends = autodesk-nlm: Autodesk licensing vendor daemon (adskflex)
+	provides = flexnet=11.16.2.0
+	provides = lmgrd=11.16.2.0
+	conflicts = flexnet
+	conflicts = lmgrd
 
