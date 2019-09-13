@@ -1,7 +1,7 @@
 # Maintainer: Stefano Marsili <efanomars@gmx.ch>
 
 pkgname=stmm-games
-pkgver=0.12
+pkgver=0.13
 pkgrel=1
 pkgdesc="C++ 2D games library"
 url='https://www.efanomars.com/libraries/stmm-games'
@@ -16,7 +16,7 @@ optdepends=()
 #replaces=("stmm-games")
 #conflicts=("stmm-games")
 
-source=('git+https://gitlab.com/efanomars/stmm-games.git#commit=fdd391d2fc34467bf7d662c806fe92d1ca773883')
+source=('git+https://gitlab.com/efanomars/stmm-games.git#commit=0532a957b9a0564ee985884926bcc37ac885d9d6')
 sha512sums=('SKIP')
 
 build() {
