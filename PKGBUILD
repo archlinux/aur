@@ -4,7 +4,7 @@
 pkgname=asbru-cm
 _pkgname=${pkgname}
 pkgver=5.2.0
-pkgrel=0
+pkgrel=1
 arch=('any')
 license=('GPL3')
 pkgdesc="A free and open-source connection manager. Latest release pulled from GIT."

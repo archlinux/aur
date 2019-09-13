@@ -1,7 +1,7 @@
 pkgbase = asbru-cm
 	pkgdesc = A free and open-source connection manager. Latest release pulled from GIT.
 	pkgver = 5.2.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/asbru-cm/asbru-cm
 	arch = any
 	license = GPL3
