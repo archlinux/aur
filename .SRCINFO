@@ -1,7 +1,7 @@
 pkgbase = pdftk-java
 	pkgdesc = Command-line tool for working with PDFs
 	pkgver = 3.0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/pdftk-java/pdftk
 	arch = any
 	license = GPL
@@ -18,7 +18,7 @@ pkgbase = pdftk-java
 	source = https://gitlab.com/pdftk-java/pdftk/-/archive/v3.0.7/pdftk-v3.0.7.tar.bz2
 	source = pdftk.sh
 	sha512sums = 22e144a186b77817ff909543f068031023d7ebcc762443fc5ab4a31f008b9d62dd5662b7d122657e22e95292ea4b6443c4539ff279024d024aac92d7582b13f4
-	sha512sums = 439c397472012d71c8e782a75819a7a950474c387b7050bbd5aa2f849d1dbe29423accf3f8e17d18436ba32eb4f76072df5b4f85caebd853df1e75c131631988
+	sha512sums = 91bf8078d4eff759449b5ab0ae3a20f15785e34b4a45a47937c51aa0a983aad797dab9964613f57b9b3d8fd2dde8cf153eb6988cbad5a0b306d56b40ef439832
 
 pkgname = pdftk-java
 
