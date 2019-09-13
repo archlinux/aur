@@ -1,7 +1,7 @@
 pkgbase = java-commons-lang
 	pkgdesc = Provides highly reusable static utility methods, chiefly concerned with adding value to the java.lang classes.
 	pkgver = 3.9
-	pkgrel = 1
+	pkgrel = 2
 	url = http://commons.apache.org/lang/
 	arch = any
 	license = apache

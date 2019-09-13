@@ -5,7 +5,7 @@
  
 pkgname=java-commons-lang
 pkgver=3.9
-pkgrel=1
+pkgrel=2
 pkgdesc='Provides highly reusable static utility methods, chiefly concerned with adding value to the java.lang classes.'
 arch=('any')
 url='http://commons.apache.org/lang/'
@@ -18,7 +18,7 @@ package() {
 	cd "$srcdir/commons-lang3-${pkgver}"
 
 	msg2 "Install Java libraries in /usr/share/java/commons-lang..."
-	install -d "$pkgdir"/usr/share/java/commons-lang
-	install -m 644 commons-lang3-${pkgver}.jar "$pkgdir"/usr/share/java/commons-lang/commons-lang-${pkgver}.jar
-	ln -s commons-lang-${pkgver}.jar "$pkgdir"/usr/share/java/commons-lang/commons-lang.jar
+	install -d "$pkgdir"/usr/share/java/commons-lang3
+	install -m 644 commons-lang3-${pkgver}.jar "$pkgdir"/usr/share/java/commons-lang3/commons-lang-${pkgver}.jar
+	ln -s commons-lang-${pkgver}.jar "$pkgdir"/usr/share/java/commons-lang3/commons-lang.jar
 }
