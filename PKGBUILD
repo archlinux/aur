@@ -13,10 +13,17 @@ depends=('git' 'glew' 'sdl' 'sdl_image' 'sdl_ttf' 'sdl_mixer' 'libpng' 'boost-li
 makedepends=('mesa' 'boost')
 source=("$pkgname-$pkgver.tgz::https://github.com/frogatto/frogatto/archive/$pkgver.tar.gz"
         launcher
-        frogatto.desktop)
+        frogatto.desktop
+        frogatto-boost-1.70.patch)
 md5sums=('f3206fbe1395ea2878092fbd4ed2c591'
          '9ed2c9ea59e95fe3c0b3ad49e58f8890'
-         'e31563b04748a39292a59aaad633ff58')
+         'e31563b04748a39292a59aaad633ff58'
+         'c7c5a084ac3915a446fc26389a714289')
+
+prepare() {
+  cd $pkgname-$pkgver
+  patch -p0 -i ../frogatto-boost-1.70.patch # Fix build with boost 1.70 (freebsd)
+}
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
