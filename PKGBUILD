@@ -1,7 +1,7 @@
 # Maintainer: Naoki Kanazawa <nk dot naoki912 at gmail dot com>
 # Contributor: Yegorius <yegorius at domic dot us>
 pkgname=station
-pkgver=1.48.1
+pkgver=1.49.0
 pkgrel=1
 pkgdesc='The one app to rule them all'
 arch=('x86_64')
@@ -9,13 +9,13 @@ url='https://getstation.com/'
 license=('MIT')
 #depends=('gtk2' 'gconf' 'xdg-utils' 'libxtst' 'libxss' 'nss' 'alsa-lib' 'xdg-utils')
 source=(
-    "https://github.com/getstation/desktop-app-releases/releases/download/${pkgver}/browserX-${pkgver}-x86_64.AppImage"
+    "https://github.com/getstation/desktop-app-releases/releases/download/${pkgver}/Station-${pkgver}.AppImage"
 )
-sha256sums=('8c149866a8d94ca61a47b251ad5a0c71bfc03b964ea4c8efe31b12e19211b503')
+sha256sums=('aa001017c2e12f37050406cf293675afea6ddde346fdbfe504de5bdabf5623aa')
 
 prepare() {
-    chmod u+x ./browserX-${pkgver}-${arch}.AppImage
-    ./browserX-${pkgver}-${arch}.AppImage --appimage-extract
+    chmod u+x ./Station-${pkgver}.AppImage
+    ./Station-${pkgver}.AppImage --appimage-extract
 }
 
 package() {
