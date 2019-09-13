@@ -1,18 +1,17 @@
 pkgbase = v2ray-git
-	pkgdesc = A platform for building proxies to bypass network restrictions
-	pkgver = 3.33
+	pkgdesc = A set of network tools that help you to build your own computer network (git version).
+	pkgver = 4.20.0.r22.ge9f53059
 	pkgrel = 1
 	url = https://github.com/v2ray/v2ray-core
 	arch = x86_64
 	license = MIT
-	makedepends = git
 	makedepends = go
 	provides = v2ray
 	conflicts = v2ray
-	source = git+https://github.com/v2ray/v2ray-core.git
+	source = v2ray-git::git+https://github.com/v2ray/v2ray-core.git
 	source = v2ray.service
 	sha512sums = SKIP
-	sha512sums = 80ea8dde70e43133bbb2803496863e8001fff580281abdbb3be2406ab8789853d4ba7295fbce07058af980a4606eda89c9fc4a7c0f81ec078ae67c38abefbc0c
+	sha512sums = 37efc20ef71147f4400eba2bf57766462b5803b5952768bd32d5224f35e37c9c5639aaa19e0f3b63b52063dafd0381f40e2bfbb60dace08b055f0b3245cfa2b7
 
 pkgname = v2ray-git
 

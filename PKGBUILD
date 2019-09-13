@@ -1,51 +1,68 @@
+# Maintainer: m8D2 <omui (at) proton mail (dot) com>
 # Maintainer: Dct Mei <dctxmei@gmail.com>
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 # Contributor: pandada8 <pandada8@gmail.com>
-pkgname=v2ray-git
-pkgver=3.33
-pkgrel=1
-pkgdesc="A platform for building proxies to bypass network restrictions"
-arch=('x86_64')
-url="https://github.com/v2ray/v2ray-core"
-license=('MIT')
-makedepends=("git" "go")
-provides=('v2ray')
-conflicts=('v2ray')
-source=("git+${url}.git"
-        "v2ray.service")
-sha512sums=("SKIP"
-            "80ea8dde70e43133bbb2803496863e8001fff580281abdbb3be2406ab8789853d4ba7295fbce07058af980a4606eda89c9fc4a7c0f81ec078ae67c38abefbc0c")
 
-pkgver() {
-    git -C v2ray-core describe | sed -e 's/^v//' -e 's/-/./g'
-}
+pkgname=v2ray-git
+pkgver=4.20.0.r22.ge9f53059
+pkgrel=1
+pkgdesc="A set of network tools that help you to build your own computer network (git version)."
+arch=(x86_64)
+url="https://github.com/v2ray/v2ray-core"
+license=(MIT)
+makedepends=(go)
+provides=(v2ray)
+conflicts=(v2ray)
+source=("$pkgname::git+$url.git"
+        "v2ray.service")
+sha512sums=('SKIP'
+            '37efc20ef71147f4400eba2bf57766462b5803b5952768bd32d5224f35e37c9c5639aaa19e0f3b63b52063dafd0381f40e2bfbb60dace08b055f0b3245cfa2b7')
 
 prepare() {
-    export GOPATH="$srcdir/build"
-    go get v2ray.com/core github.com/miekg/dns golang.org/x/sys/unix v2ray.com/ext/assert \
-        github.com/gorilla/websocket golang.org/x/crypto/chacha20poly1305 golang.org/x/crypto/sha3 \
-        v2ray.com/ext golang.org/x/net/proxy github.com/google/go-github/github golang.org/x/oauth2 \
-        github.com/gogo/protobuf/proto google.golang.org/grpc
-    go install v2ray.com/ext/tools/build/vbuild
+    export GOPATH="$srcdir/build:/usr/share/gocode"
+    mkdir -p "$srcdir"/build/src/v2ray.com
+
+    # mv *.com *.io *.org *.net "$srcdir"/build/src/
+    mv $pkgname "$srcdir"/build/src/v2ray.com/core
+
+    # Future makedepends
+    go get github.com/golang/protobuf/proto go.starlark.net/starlark go.starlark.net/syntax \
+         google.golang.org/grpc
+
+    # Future checkdepends
+    go get github.com/golang/mock/gomock github.com/google/go-cmp/cmp \
+         golang.org/x/sync/errgroup github.com/miekg/dns h12.io/socks
+}
+
+
+pkgver() {
+    # $pkgname was moved in prepare(), so need to enter new directory
+    cd "$srcdir"/build/src/v2ray.com/core
+
+    # cutting off 'v' prefix that presents in the git tag
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    cd v2ray-core
-    "$GOPATH"/bin/vbuild
+    go build -o v2ray v2ray.com/core/main
+    go build -o v2ctl v2ray.com/core/infra/control/main
 }
 
 check() {
-    cd v2ray-core
-    go test -p 1 -tags json -v v2ray.com/core/...
+    cd "$srcdir"/build/src/v2ray.com/core
+    go test -p 1 -tags json -v -timeout 30m v2ray.com/core/...
 }
 
 package() {
-    cd v2ray-core
+    cd "$srcdir"/build/src/v2ray.com/core
     install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/v2ray/LICENSE
-    install -Dm644 release/config/systemd/v2ray.service ${pkgdir}/usr/lib/systemd/system/v2ray.service
-    sed -i '/ExecStart/c\ExecStart=/usr/bin/env V2RAY_VMESS_PADDING=1 v2ray.location.asset=/etc/v2ray /usr/bin/v2ray -config /etc/v2ray/config.json' "$pkgdir"/usr/lib/systemd/system/v2ray.service
-    install -Dm644 release/config/geoip.dat release/config/geosite.dat release/config/*.json -t "$pkgdir"/etc/v2ray/
-    install -Dm755 "$GOPATH"/bin/v2ray-custom-linux-64/{v2ray,v2ctl} -t "$pkgdir"/usr/bin/
+    install -Dm644 release/config/systemd/v2ray.service "$pkgdir"/usr/lib/systemd/system/v2ray.service
+    sed -i -e '/ExecStart/i Environment=V2RAY_LOCATION_ASSET=/etc/v2ray' \
+         -e 's|/usr/bin/v2ray/v2ray|/usr/bin/v2ray|' \
+         "$pkgdir"/usr/lib/systemd/system/v2ray.service
+    install -Dm644 release/config/*.json -t "$pkgdir"/etc/v2ray/
+    install -Dm755 "$srcdir"/v2ray -t "$pkgdir"/usr/bin/
+    install -Dm755 "$srcdir"/v2ctl -t "$pkgdir"/usr/bin/
 
     install -Dm644 "$srcdir"/v2ray.service "$pkgdir"/usr/lib/systemd/system/v2ray@.service
 }
