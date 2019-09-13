@@ -1,7 +1,7 @@
 pkgbase = python-liquidctl-git
 	pkgdesc = Cross-platform CLI and Python drivers for AIO liquid coolers and other devices
-	pkgver = 1.2.0rc2.r6.bd2f861
-	pkgrel = 2
+	pkgver = 1.2.0rc2.r7.8de7d64
+	pkgrel = 1
 	url = https://github.com/jonasmalacofilho/liquidctl
 	arch = any
 	license = GPL3
@@ -14,7 +14,7 @@ pkgbase = python-liquidctl-git
 	depends = python-appdirs
 	provides = python-liquidctl
 	conflicts = python-liquidctl
-	source = python-liquidctl::git+https://github.com/jonasmalacofilho/liquidctl.git#branch=master
+	source = python-liquidctl-git::git+https://github.com/jonasmalacofilho/liquidctl.git#branch=master
 	md5sums = SKIP
 
 pkgname = python-liquidctl-git
