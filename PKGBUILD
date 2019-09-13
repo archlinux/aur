@@ -28,7 +28,7 @@ provides=('slic3r' 'slic3r-xs' 'slic3r-xs-git')
 conflicts=('slic3r' 'slic3r-xs' 'slic3r-xs-git')
 #Consider uncommenting line below in case of false negative test results ;)
 #BUILDENV+=('!check')
-source=('git+https://github.com/alexrj/Slic3r.git' 'slic3r.desktop' 'slic3r.pl')
+source=('git+https://github.com/slic3r/Slic3r.git' 'slic3r.desktop' 'slic3r.pl')
 md5sums=('SKIP'
          '1b561afff48c79f86889664375d179ed'
          'b0acc88252ad23ae80c5e2596cfc883a')
