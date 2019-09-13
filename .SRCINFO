@@ -45,7 +45,6 @@ pkgname = pamac-common
 	depends = gnutls>=3.4
 	depends = appstream-glib
 	depends = archlinux-appstream-data
-	depends = pacman-mirrors>=4.9.1
 	depends = git
 	provides = pamac-common=8.0.4
 	conflicts = pamac<=7.3.4-2
@@ -62,9 +61,10 @@ pkgname = pamac-cli-src
 
 pkgname = pamac-gtk
 	install = pamac-gtk.install
-	depends = pamac-cli
+	depends = pamac-cli-src
 	depends = vte3>=0.38
 	depends = gtk3>=3.22
+	depends = pamac-tray-appindicator-src
 	provides = pamac=8.0.4-7
 	provides = pamac=8.0.4-7
 	provides = pamac-gtk=8.0.4
@@ -79,4 +79,5 @@ pkgname = pamac-tray-appindicator-src
 	depends = libappindicator-gtk3
 	provides = pamac-tray-appindicator=8.0.4
 	conflicts = pamac-tray-appindicator
+	conflicts = pamac-tray-appindicator-git
 

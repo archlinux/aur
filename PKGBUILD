@@ -48,7 +48,7 @@ build() {
 package_pamac-common() {
   depends=('glib2>=2.42' 'json-glib' 'libsoup' 'dbus-glib' 'polkit'
          'libnotify' 'desktop-file-utils' 'pacman>=5.1' 'pacman<5.2' 'gnutls>=3.4'
-         'appstream-glib' 'archlinux-appstream-data' 'pacman-mirrors>=4.9.1' 'git')
+         'appstream-glib' 'archlinux-appstream-data' 'git')
   backup=('etc/pamac.conf')
   provides=("pamac-common=$pkgver")
   conflicts=('pamac<=7.3.4-2' 'pamac-aur' 'pamac-common')
@@ -84,7 +84,7 @@ package_pamac-cli-src() {
 }
 
 package_pamac-gtk() {
-  depends=('pamac-cli' 'vte3>=0.38' 'gtk3>=3.22')
+  depends=('pamac-cli-src' 'vte3>=0.38' 'gtk3>=3.22' 'pamac-tray-appindicator-src')
   provides=("pamac=$pkgver-$pkgrel" "pamac=$pkgver-$pkgrel" "pamac-gtk=$pkgver")
   replaces=('pamac')
   conflicts=('pamac' 'pamac-aur' 'pamac-gtk')
@@ -111,7 +111,7 @@ package_pamac-tray-appindicator-src() {
   pkgdesc="Tray icon using appindicator which fits better in KDE"
   depends=('pamac-gtk' 'libappindicator-gtk3')
   provides=("pamac-tray-appindicator=$pkgver")
-  conflicts=('pamac-tray-appindicator')
+  conflicts=('pamac-tray-appindicator' 'pamac-tray-appindicator-git')
   cd "$srcdir/pamac-v$_pkgver"
   install -Dm755 "builddir/src/pamac-tray-appindicator" "$pkgdir/usr/bin/pamac-tray-appindicator"
   install -Dm644 "data/applications/pamac-tray-appindicator.desktop" "$pkgdir/etc/xdg/autostart/pamac-tray-appindicator.desktop"
