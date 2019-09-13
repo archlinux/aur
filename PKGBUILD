@@ -2,9 +2,9 @@
 
 _oomox_ver=1.12.3
 _oomox_theme_ver=1.10
-_materia_theme_ver=20190831
+_materia_theme_ver=20190912
 #_materia_cmt=f1ad3125eea55f4fe88ceab1be83bd51ee5eba48
-_arc_theme_ver=20190330
+_arc_theme_ver=20190910
 _archdroid_icons_ver=1.0.2
 _gnome_colors_icons_ver=5.5.5
 _oomoxify_ver=1.1.4
@@ -17,7 +17,7 @@ _suru_plus_aspromauros_icons_ver=3.0
 
 pkgname=oomox
 pkgver=${_oomox_ver}
-pkgrel=5
+pkgrel=6
 pkgdesc='Themix: GUI for generating different color variations
 of Arc, Materia, Oomox themes
 (GTK2, GTK3, Cinnamon, GNOME, MATE, Openbox, Xfwm),
@@ -86,8 +86,8 @@ source=(
 )
 md5sums=('c7bc893608ab64a35bce7063a5d26ea9'
          '13945f05eba3b85e6d63fec1ff60380a'
-         '92a256f81ac7e2cb41e6fe4ae0fb547b'
-         '57c71dbdf05b6cfda073239ff322033c'
+         '59354a311b17297c2e7f085b7fa43186'
+         'd6f731276110588d05b95bd2e0b4cb2f'
          'cb669130685dcbf03a8f7f5738c71dc6'
          '8b4a9a1837211a3caf661ab825d66cb0'
          'ce59deac7097e169d44bba34e95a8b46'
