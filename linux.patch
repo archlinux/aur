@@ -1,0 +1,1224 @@
+diff --git a/Make.common b/Make.common
+index 1c4f7fb..7938287 100644
+--- a/Make.common
++++ b/Make.common
+@@ -2,109 +2,9 @@ DIR := $(dir $(lastword $(MAKEFILE_LIST)))
+ TARGET_PLATFORM:=$(shell if [ -e $(DIR)/target ]; then cat $(DIR)/target; fi)
+ 
+ EXE_EXT=
+-ifeq ($(TARGET_PLATFORM),)
+-UNAME=$(shell uname -s)
+-ifneq (,$(findstring Linux,$(UNAME)))
+ TARGET_PLATFORM=linux
+-endif
+-ifneq (,$(findstring W32,$(UNAME)))
+-TARGET_PLATFORM=mingw
+-EXE_EXT=.exe
+-endif
+-ifneq (,$(findstring Darwin,$(UNAME)))
+-TARGET_PLATFORM=osx
+-endif
+-endif
+ 
+-ifeq ($(TARGET_PLATFORM),ios)
+-LT_PLATFLAGS+=-DLTIOS -DLTGLES1
+-endif
+-ifeq ($(TARGET_PLATFORM),iossim)
+-LT_PLATFLAGS+=-DLTIOS -DLTIOSSIM -DLTGLES1
+-endif
+-ifeq ($(TARGET_PLATFORM),android)
+-LT_PLATFLAGS+=-DLTANDROID -DLTGLES1
+-endif
+-ifeq ($(TARGET_PLATFORM),tizen-x86)
+-LT_PLATFLAGS+=-DLTTIZEN -DLTTIZENX86 -DLTGLES1
+-endif
+-ifeq ($(TARGET_PLATFORM),tizen-arm)
+-LT_PLATFLAGS+=-DLTTIZEN -DLTTIZENARM -DLTGLES1
+-endif
+-ifeq ($(TARGET_PLATFORM),osx)
+-LT_PLATFLAGS+=-DLTOSX
+-endif
+-ifeq ($(TARGET_PLATFORM),linux)
+ LT_PLATFLAGS+=-DLTLINUX
+-endif
+-ifeq ($(TARGET_PLATFORM),linux32)
+-TARGET_PLATFORM=linux
+-LINUX32=y
+-LT_PLATFLAGS+=-DLTLINUX -DLTLINUX32
+-endif
+-ifeq ($(TARGET_PLATFORM),mingw)
+-LT_PLATFLAGS+=-DLTMINGW
+-endif
+-
+-
+ 
+-LUA=lua-5.1.4
+-LUAJIT=luajit-2.0
+-BOX2D=Box2D-2.2.1
+-ZLIB=zlib-1.2.5
+-LIBPNG=libpng-1.4.22
+-GLEW=glew-1.9.0
+-GLFW=glfw-2.7.8
+-FREETYPE=freetype-2.5.0.1
+-CURL=curl-7.31.0
+ VORBIS=vorbis
+ 
+-# iOS settings
+-
+-#ISDK=/Developer/Platforms/iPhoneOS.platform/Developer
+-#ISDKVER=iPhoneOS4.3.sdk
+-ISDK=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer
+-ISDKVER=iPhoneOS11.3.sdk
+-ISDKP=
+-
+-ifeq ($(TARGET_PLATFORM),iossim)
+-ISDK:=$(subst iPhoneOS,iPhoneSimulator,$(ISDK))
+-ISDKVER:=$(subst iPhoneOS,iPhoneSimulator,$(ISDKVER))
+-endif
+-
+-IOS_ARMv7_OPTS=-arch armv7 -miphoneos-version-min=9.3 -DLTGAMECENTER
+-IOS_ARM64_OPTS=-arch arm64 -miphoneos-version-min=9.3 -DLTGAMECENTER
+-#ARMv7_OPTS=-arch armv7 -mfloat-abi=softfp -mfpu=vfp
+-#ARMv7_OPTS=-arch armv7 -mfloat-abi=softfp -mcpu=cortex-a8
+-#IOS_CC=gcc
+-#IOS_CPP=g++
+-IOS_CC=clang
+-IOS_CPP=clang++
+-#IOS_CC=llvm-gcc
+-#IOS_CPP=llvm-g++
+-
+-# Android settings
+-
+-NDK_VER=$(NDK_HOME)/toolchains/arm-linux-androideabi-4.9
+-NDK_SYSROOT=$(NDK_HOME)/platforms/android-$(NDK_ANDROID_VER)/arch-arm
+-CC=$(NDK_HOME)/toolchains/llvm/prebuilt/$(NDK_HOST)/bin/clang
+-CPP=$(NDK_HOME)/toolchains/llvm/prebuilt/$(NDK_HOST)/bin/clang++
+-AR=$(NDK_VER)/prebuilt/$(NDK_HOST)/bin/arm-linux-androideabi-ar
+-NDKCFLAGS=--sysroot $(NDK_SYSROOT) -gcc-toolchain $(NDK_VER)/prebuilt/$(NDK_HOST) -fpic \
+-        -target armv7-none-linux-androideabi -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-exceptions -fno-rtti \
+-        -I$(NDK_SYSROOT)usr/include
+-NDKSTL=-I$(NDK_HOME)/sources/android/native_app_glue -I$(NDK_HOME)/sources/cxx-stl/gnu-libstdc++/4.9/include \
+-    -I$(NDK_HOME)/sources/cxx-stl/gnu-libstdc++/4.9/libs/armeabi-v7a/include \
+-    -I$(NDK_HOME)/sources/cxx-stl/gnu-libstdc++/4.9/include/backward
+-
+-# Tizen settings
+-
+-TIZHOME=$(HOME)/tizen/sdk
+-
+-TIZSYSROOTX86=$(TIZHOME)/platforms/tizen2.2/rootstraps/tizen-emulator-2.2.native
+-TDKPX86=$(TIZHOME)/tools/i386-linux-gnueabi-gcc-4.5/bin/i386-linux-gnueabi-
+-TIZEN_TARGET_FLAGS_X86=--sysroot $(TIZSYSROOTX86) -march=i386 -fPIE
+-
+-TIZSYSROOTARM=$(TIZHOME)/platforms/tizen2.2/rootstraps/tizen-device-2.2.native
+-TDKPARM=$(TIZHOME)/tools/arm-linux-gnueabi-gcc-4.5/bin/arm-linux-gnueabi-
+-TIZEN_TARGET_FLAGS_ARM=--sysroot $(TIZSYSROOTARM) -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -mtune=cortex-a8 -fPIE
+diff --git a/Makefile b/Makefile
+index d9d1f89..3573549 100644
+--- a/Makefile
++++ b/Makefile
+@@ -6,106 +6,17 @@ LTCFLAGS=-O3 -DNDEBUG
+ -include Make.params
+ LTCFLAGS+=$(LT_PLATFLAGS)
+ 
++LTCFLAGS+= \
++	`pkg-config --cflags lua51` \
++	`pkg-config --cflags libpng` \
++	`pkg-config --cflags libcurl` \
++	`pkg-config --cflags zlib` \
++	`pkg-config --cflags openal` \
++	`pkg-config --cflags glew` \
++	`pkg-config --cflags libglfw`
+ 
+ OBJC_FLAGS=
+-ifeq ($(TARGET_PLATFORM),ios)
+-IPHONEOS_DEPLOYMENT_TARGET=4.3
+-export IPHONEOS_DEPLOYMENT_TARGET
+-default: libs
+-OBJC_FLAGS=-ObjC++
+-endif
+-ifeq ($(TARGET_PLATFORM),iossim)
+-IPHONEOS_DEPLOYMENT_TARGET=4.3
+-export IPHONEOS_DEPLOYMENT_TARGET
+-default: libs
+-OBJC_FLAGS=-ObjC++ -fobjc-legacy-dispatch -fobjc-abi-version=2
+-endif
+-ifeq ($(TARGET_PLATFORM),android)
+-default: libs
+-endif
+-ifeq ($(TARGET_PLATFORM),osx)
+-MACOSX_DEPLOYMENT_TARGET=10.5
+-export MACOSX_DEPLOYMENT_TARGET
+-default: ltclient
+-OBJC_FLAGS=-ObjC++
+-endif
+-ifeq ($(TARGET_PLATFORM),linux)
+-default: ltclient
+-endif
+-ifeq ($(TARGET_PLATFORM),mingw)
+ default: ltclient
+-endif
+-ifeq ($(TARGET_PLATFORM),tizen-x86)
+-default: libs
+-endif
+-ifeq ($(TARGET_PLATFORM),tizen-arm)
+-default: libs
+-endif
+-
+-############################ iOS Target ##############################
+-ifeq ($(TARGET_PLATFORM),ios)
+-
+-.PHONY: $(TARGET_DIR)/liblt.a
+-$(TARGET_DIR)/liblt.a: headers | $(TARGET_DIR)
+-	mkdir -p buildtmp.ios.armv7
+-	mkdir -p buildtmp.ios.arm64
+-	cd src && $(MAKE) \
+-		LTCPP=$(IOS_CPP) \
+-		TARGET_FLAGS="$(IOS_ARMv7_OPTS) -isysroot $(ISDK)/SDKs/$(ISDKVER)" \
+-		OUT_DIR=$(PWD)/buildtmp.ios.armv7 \
+-		LTCFLAGS="$(LTCFLAGS) $(OBJC_FLAGS)" \
+-		all
+-	cd src && $(MAKE) \
+-		LTCPP=$(IOS_CPP) \
+-		TARGET_FLAGS="$(IOS_ARM64_OPTS) -isysroot $(ISDK)/SDKs/$(ISDKVER)" \
+-		OUT_DIR=$(PWD)/buildtmp.ios.arm64 \
+-		LTCFLAGS="$(LTCFLAGS) $(OBJC_FLAGS)" \
+-		all
+-	lipo -create buildtmp.ios.armv7/liblt.a buildtmp.ios.arm64/liblt.a -output $@
+-endif
+-
+-############################ iPhone Simulator Target ##############################
+-ifeq ($(TARGET_PLATFORM),iossim)
+-
+-.PHONY: $(TARGET_DIR)/liblt.a
+-$(TARGET_DIR)/liblt.a: headers | $(TARGET_DIR)
+-	mkdir -p buildtmp.iossim
+-	cd src && $(MAKE) \
+-		LTCPP=$(IOS_CPP) \
+-		TARGET_FLAGS="-arch x86_64 -isysroot $(ISDK)/SDKs/$(ISDKVER)" \
+-		OUT_DIR=$(PWD)/buildtmp.iossim \
+-		LTCFLAGS="$(LTCFLAGS) $(OBJC_FLAGS)" \
+-		all
+-	cp buildtmp.iossim/liblt.a $(TARGET_DIR)/
+-endif
+-
+-############################ Android Target ##############################
+-ifeq ($(TARGET_PLATFORM),android)
+-
+-.PHONY: $(TARGET_DIR)/liblt.a
+-$(TARGET_DIR)/liblt.a: headers | $(TARGET_DIR)
+-	mkdir -p buildtmp.android
+-	cd src && $(MAKE) \
+-		CROSS=$(NDKP) \
+-		TARGET_FLAGS="$(NDKSTL) $(NDKCFLAGS)" \
+-		OUT_DIR=$(PWD)/buildtmp.android \
+-		LTCFLAGS="$(LTCFLAGS)" \
+-		all
+-	cp buildtmp.android/liblt.a $(TARGET_DIR)/
+-endif
+-
+-############################ Max OS X Target ##############################
+-ifeq ($(TARGET_PLATFORM),osx)
+-.PHONY: $(TARGET_DIR)/liblt.a
+-$(TARGET_DIR)/liblt.a: headers | $(TARGET_DIR)
+-	mkdir -p buildtmp.osx
+-	cd src && $(MAKE) \
+-		TARGET_FLAGS="-m64 -arch x86_64" \
+-		OUT_DIR=$(PWD)/buildtmp.osx \
+-		LTCFLAGS="$(LTCFLAGS) $(OBJC_FLAGS)" \
+-		all
+-	cp buildtmp.osx/liblt.a $(TARGET_DIR)/
+-endif
+ 
+ ############################ Linux Target ##############################
+ ifeq ($(TARGET_PLATFORM),linux)
+@@ -119,50 +30,6 @@ $(TARGET_DIR)/liblt.a: headers | $(TARGET_DIR)
+ 	cp buildtmp.linux/liblt.a $(TARGET_DIR)/
+ endif
+ 
+-############################ MinGW Target ##############################
+-ifeq ($(TARGET_PLATFORM),mingw)
+-.PHONY: $(TARGET_DIR)/liblt.a
+-$(TARGET_DIR)/liblt.a: headers | $(TARGET_DIR)
+-	mkdir -p buildtmp.mingw
+-	cd src && $(MAKE) \
+-		OUT_DIR=$(PWD)/buildtmp.mingw \
+-		LTCFLAGS="$(LTCFLAGS)" \
+-		all
+-	cp buildtmp.mingw/liblt.a $(TARGET_DIR)/
+-endif
+-
+-############################ Tizen x86 target ##############################
+-ifeq ($(TARGET_PLATFORM),tizen-x86)
+-LTCFLAGS+=-I$(TIZSYSROOTX86)/usr/include/osp
+-
+-.PHONY: $(TARGET_DIR)/liblt.a
+-$(TARGET_DIR)/liblt.a: headers | $(TARGET_DIR)
+-	mkdir -p buildtmp.tizen-x86
+-	cd src && $(MAKE) \
+-		CROSS=$(TDKPX86) \
+-		TARGET_FLAGS="$(TIZEN_TARGET_FLAGS_X86)" \
+-		OUT_DIR=$(PWD)/buildtmp.tizen-x86 \
+-		LTCFLAGS="$(LTCFLAGS)" \
+-		all
+-	cp buildtmp.tizen-x86/liblt.a $(TARGET_DIR)/
+-endif
+-
+-############################ Tizen ARM target ##############################
+-ifeq ($(TARGET_PLATFORM),tizen-arm)
+-LTCFLAGS+=-I$(TIZSYSROOTARM)/usr/include/osp
+-
+-.PHONY: $(TARGET_DIR)/liblt.a
+-$(TARGET_DIR)/liblt.a: headers | $(TARGET_DIR)
+-	mkdir -p buildtmp.tizen-arm
+-	cd src && $(MAKE) \
+-		CROSS=$(TDKPARM) \
+-		TARGET_FLAGS="$(TIZEN_TARGET_FLAGS_ARM)" \
+-		OUT_DIR=$(PWD)/buildtmp.tizen-arm \
+-		LTCFLAGS="$(LTCFLAGS)" \
+-		all
+-	cp buildtmp.tizen-arm/liblt.a $(TARGET_DIR)/
+-endif
+-
+ ##########################################################
+ ##########################################################
+ 
+diff --git a/clients/glfw/Makefile b/clients/glfw/Makefile
+index f8d7743..1d373b6 100644
+--- a/clients/glfw/Makefile
++++ b/clients/glfw/Makefile
+@@ -7,45 +7,26 @@ default: ltclient
+ 
+ EXTRA_PREREQS=
+ 
+-ifeq ($(TARGET_PLATFORM),osx)
+-LIBFLAGS= -llt -lcurl -lpng -lvorbis -lz -llua -lbox2d -lGLEW -lglfw -framework OpenGL \
+-		-framework OpenAL -framework Cocoa -framework IOKit \
+-		-pagezero_size 10000 -image_base 100000000
+-endif
+-
+-ifeq ($(TARGET_PLATFORM),linux)
+-ifdef LINUX32
+-LIBFLAGS=-static-libstdc++ -static-libgcc \
+-	$(LTDIR)/linux/liblt.a $(LTDIR)/linux/libpng.a $(LTDIR)/linux/libz.a \
+-	$(LTDIR)/linux/liblua.a $(LTDIR)/linux/libvorbis.a \
+-	$(LTDIR)/linux/libbox2d.a $(LTDIR)/linux/libglfw.a \
+-	$(LTDIR)/linux/libGLEW.a $(LTDIR)/linux/libopenal.a \
+-	$(LTDIR)/linux/libcurl.a \
+-	-lX11 -lGL -ldl -pthread
+-else
+ EXTRA_PREREQS=wrap_memcpy.o
+-LIBFLAGS=-static-libstdc++ -static-libgcc \
+-	$(LTDIR)/linux/liblt.a $(LTDIR)/linux/libpng.a $(LTDIR)/linux/libz.a \
+-	$(LTDIR)/linux/liblua.a $(LTDIR)/linux/libvorbis.a \
+-	$(LTDIR)/linux/libbox2d.a $(LTDIR)/linux/libglfw.a \
+-	$(LTDIR)/linux/libGLEW.a $(LTDIR)/linux/libopenal.a \
+-	$(LTDIR)/linux/libcurl.a \
+-	-lX11 -lGL -ldl -pthread wrap_memcpy.o -Wl,--wrap=memcpy
++LIBFLAGS= \
++	$(LTDIR)/linux/liblt.a \
++	$(LTDIR)/linux/libvorbis.a \
++	`pkg-config --libs lua51` \
++	`pkg-config --libs libpng` \
++	`pkg-config --libs libcurl` \
++	`pkg-config --libs zlib` \
++	`pkg-config --libs openal` \
++	`pkg-config --libs glew` \
++	`pkg-config --libs libglfw` \
++	-lBox2D \
++	-ldl -pthread wrap_memcpy.o -Wl,--wrap=memcpy
++
+ wrap_memcpy.o:
+ 	gcc -c wrap_memcpy.c
+-endif
+-endif
+-
+-ifeq ($(TARGET_PLATFORM),mingw)
+-LIBFLAGS= -static -static-libstdc++ -static-libgcc -llt \
+-		-lcurl -lws2_32 -llua -lpng -lvorbis -lz -lbox2d \
+-		 -lOpenAL32 -lwinmm -lole32 -ldsound \
+-		-lglew32 -lglfw -lopengl32
+-endif
+ 
+ .PHONY: ltclient
+ ltclient: ltclient.cpp $(EXTRA_PREREQS)
+-	g++ $(LTCFLAGS) -I$(LTDIR)/$(TARGET_PLATFORM)/include -L$(LTDIR)/$(TARGET_PLATFORM) ltclient.cpp \
++	g++ $(LTCFLAGS) -I$(LTDIR)/$(TARGET_PLATFORM)/include ltclient.cpp \
+ 		-o ltclient $(LIBFLAGS)
+ 
+ .PHONY: clean
+diff --git a/deps/Box2D-2.2.1/Makefile b/deps/Box2D-2.2.1/Makefile
+index 667898e..e2111d5 100644
+--- a/deps/Box2D-2.2.1/Makefile
++++ b/deps/Box2D-2.2.1/Makefile
+@@ -9,11 +9,11 @@ CPP_FLAGS=-I. $(LTCFLAGS) $(TARGET_FLAGS)
+ 
+ $(BOX2D_O_FILES): %.o: %.cpp
+ 	@echo CPP $@
+-	@$(CPP) $(CPP_FLAGS) -c $<
++	$(CXX) $(CPP_FLAGS) -c $< -o "$@"
+ 
+ libbox2d.a: $(BOX2D_O_FILES)
+ 	@echo AR $@
+-	@$(AR) rcus $@ $^
++	$(AR) rcus $@ $^
+ 
+ .PHONY: clean
+ clean:
+diff --git a/deps/Makefile b/deps/Makefile
+index f49ee00..84304d5 100644
+--- a/deps/Makefile
++++ b/deps/Makefile
+@@ -1,651 +1,20 @@
+ include ../Make.common
+ 
+-LUA_DIR=$(LUA)
+-LUAJIT_DIR=$(LUAJIT)
+-BOX2D_DIR=$(BOX2D)
+-ZLIB_DIR=$(ZLIB)
+-LIBPNG_DIR=$(LIBPNG)
+ VORBIS_DIR=$(VORBIS)
+-FREETYPE_DIR=$(FREETYPE)
+-CURL_DIR=$(CURL)
+-GLEW_DIR=$(GLEW)
+-GLFW_DIR=$(GLFW)
+ 
+-TARGETS=liblua.a libbox2d.a libz.a libpng.a libft2.a libvorbis.a headers
+-ifeq ($(TARGET_PLATFORM),android)
+-TARGETS+=libopenal.a openal_headers
+-endif
+-ifeq ($(TARGET_PLATFORM),mingw)
+-TARGETS+=glfw_headers libglfw.a libOpenAL32.a openal_headers libcurl.a libglew32.a glew_headers
+-endif
+-ifeq ($(TARGET_PLATFORM),osx)
+-TARGETS+=glfw_headers libglfw.a libGLEW.a glew_headers libcurl.a 
+-endif
+-ifeq ($(TARGET_PLATFORM),linux)
+-TARGETS+=glfw_headers libglfw.a libGLEW.a glew_headers openal_headers libopenal.a libcurl.a 
+-endif
++TARGETS=libvorbis.a headers
+ 
+ all: $(TARGETS)
+ 
+-ifeq ($(TARGET_PLATFORM),ios)
+-############################ iOS Targets ##############################
+ 
+-#liblua.a: rebuild
+-#	cd $(LUAJIT_DIR) && $(MAKE) \
+-#		HOST_CC="gcc -m32 -arch i386" \
+-#		CROSS=$(ISDKP) \
+-#		TARGET_FLAGS="$(IOS_ARMv7_OPTS) -isysroot $(ISDK)/SDKs/$(ISDKVER)" \
+-#		TARGET=arm TARGET_SYS=iOS \
+-#		clean all
+-#	cp $(LUAJIT_DIR)/src/libluajit.a libluajit-armv7.a
+-#	cd $(LUAJIT_DIR) && $(MAKE) \
+-#		HOST_CC="gcc -m32 -arch i386" \
+-#		CROSS=$(ISDKP) \
+-#		TARGET_FLAGS="$(IOS_ARM64_OPTS) -isysroot $(ISDK)/SDKs/$(ISDKVER)" \
+-#		TARGET=arm TARGET_SYS=iOS \
+-#		clean all
+-#	cp $(LUAJIT_DIR)/src/libluajit.a libluajit-arm64.a
+-#	lipo -create libluajit-armv*.a -output liblua.a
+-#	rm libluajit-armv*.a
+-
+-liblua.a: rebuild
+-	cd $(LUA_DIR) && $(MAKE) -f Makefile.custom \
+-		LTCC=$(IOS_CC) \
+-		TARGET_FLAGS="$(IOS_ARMv7_OPTS) -isysroot $(ISDK)/SDKs/$(ISDKVER)" \
+-		LTCFLAGS="$(LTCFLAGS)" \
+-		clean all
+-	cp $(LUA_DIR)/liblua.a liblua-armv7.a
+-	cd $(LUA_DIR) && $(MAKE) -f Makefile.custom \
+-		LTCC=$(IOS_CC) \
+-		TARGET_FLAGS="$(IOS_ARM64_OPTS) -isysroot $(ISDK)/SDKs/$(ISDKVER)" \
+-		LTCFLAGS="$(LTCFLAGS)" \
+-		clean all
+-	cp $(LUA_DIR)/liblua.a liblua-arm64.a
+-	lipo -create liblua-arm*.a -output liblua.a
+-	rm liblua-arm*.a
+-
+-libbox2d.a: rebuild
+-	cd $(BOX2D_DIR) && $(MAKE) \
+-		LTCPP=$(IOS_CPP) \
+-		TARGET_FLAGS="$(IOS_ARMv7_OPTS) -isysroot $(ISDK)/SDKs/$(ISDKVER)" \
+-		LTCFLAGS="$(LTCFLAGS)" \
+-		clean all
+-	cp $(BOX2D_DIR)/libbox2d.a libbox2d-armv7.a
+-	cd $(BOX2D_DIR) && $(MAKE) \
+-		LTCPP=$(IOS_CPP) \
+-		TARGET_FLAGS="$(IOS_ARM64_OPTS) -isysroot $(ISDK)/SDKs/$(ISDKVER)" \
+-		LTCFLAGS="$(LTCFLAGS)" \
+-		clean all
+-	cp $(BOX2D_DIR)/libbox2d.a libbox2d-arm64.a
+-	lipo -create libbox2d-arm*.a -output libbox2d.a
+-	rm libbox2d-arm*.a
+-
+-libz.a: rebuild
+-	cd $(ZLIB_DIR) && $(MAKE) \
+-		LTCC=$(IOS_CC) \
+-		TARGET_FLAGS="$(IOS_ARMv7_OPTS) -isysroot $(ISDK)/SDKs/$(ISDKVER)" \
+-		LTCFLAGS="$(LTCFLAGS)" \
+-		clean all
+-	cp $(ZLIB_DIR)/libz.a libz-armv7.a
+-	cd $(ZLIB_DIR) && $(MAKE) \
+-		LTCC=$(IOS_CC) \
+-		TARGET_FLAGS="$(IOS_ARM64_OPTS) -isysroot $(ISDK)/SDKs/$(ISDKVER)" \
+-		LTCFLAGS="$(LTCFLAGS)" \
+-		clean all
+-	cp $(ZLIB_DIR)/libz.a libz-arm64.a
+-	lipo -create libz-arm*.a -output libz.a
+-	rm libz-arm*.a
+-
+-libpng.a: rebuild
+-	cd $(LIBPNG_DIR) && $(MAKE) \
+-		LTCC=$(IOS_CC) \
+-		TARGET_FLAGS="$(IOS_ARMv7_OPTS) -isysroot $(ISDK)/SDKs/$(ISDKVER)" \
+-		LTCFLAGS="$(LTCFLAGS)" \
+-		clean all
+-	cp $(LIBPNG_DIR)/libpng.a libpng-armv7.a
+-	cd $(LIBPNG_DIR) && $(MAKE) \
+-		LTCC=$(IOS_CC) \
+-		TARGET_FLAGS="$(IOS_ARM64_OPTS) -isysroot $(ISDK)/SDKs/$(ISDKVER)" \
+-		LTCFLAGS="$(LTCFLAGS)" \
+-		clean all
+-	cp $(LIBPNG_DIR)/libpng.a libpng-arm64.a
+-	lipo -create libpng-arm*.a -output libpng.a
+-	rm libpng-arm*.a
+-
+-libvorbis.a: rebuild
+-	cd $(VORBIS_DIR) && $(MAKE) \
+-		LTCC=$(IOS_CC) \
+-		TARGET_FLAGS="$(IOS_ARMv7_OPTS) -isysroot $(ISDK)/SDKs/$(ISDKVER)" \
+-		LTCFLAGS="$(LTCFLAGS)" \
+-		clean all
+-	cp $(VORBIS_DIR)/libvorbis.a libvorbis-armv7.a
+-	cd $(VORBIS_DIR) && $(MAKE) \
+-		LTCC=$(IOS_CC) \
+-		TARGET_FLAGS="$(IOS_ARM64_OPTS) -isysroot $(ISDK)/SDKs/$(ISDKVER)" \
+-		LTCFLAGS="$(LTCFLAGS)" \
+-		clean all
+-	cp $(VORBIS_DIR)/libvorbis.a libvorbis-arm64.a
+-	lipo -create libvorbis-arm*.a -output libvorbis.a
+-	rm libvorbis-arm*.a
+-
+-libft2.a: rebuild
+-	cd $(FREETYPE_DIR) && $(MAKE) \
+-		LTCC=$(IOS_CC) \
+-		TARGET_FLAGS="$(IOS_ARMv7_OPTS) -isysroot $(ISDK)/SDKs/$(ISDKVER)" \
+-		LTCFLAGS="$(LTCFLAGS)" \
+-		clean all
+-	cp $(FREETYPE_DIR)/libft2.a libft2-armv7.a
+-	cd $(FREETYPE_DIR) && $(MAKE) \
+-		LTCC=$(IOS_CC) \
+-		TARGET_FLAGS="$(IOS_ARM64_OPTS) -isysroot $(ISDK)/SDKs/$(ISDKVER)" \
+-		LTCFLAGS="$(LTCFLAGS)" \
+-		clean all
+-	cp $(FREETYPE_DIR)/libft2.a libft2-arm64.a
+-	lipo -create libft2-arm*.a -output libft2.a
+-	rm libft2-arm*.a
+-
+-#libcurl.a: rebuild
+-#	cd $(CURL_DIR) && $(MAKE) \
+-#		CROSS=$(ISDKP)/ \
+-#		LTCC=$(IOS_CC) \
+-#		TARGET_FLAGS="$(IOS_ARMv7_OPTS) -isysroot $(ISDK)/SDKs/$(ISDKVER)" \
+-#		LTCFLAGS="$(LTCFLAGS)" \
+-#		clean all
+-#	cp $(CURL_DIR)/libcurl.a libcurl-armv7.a
+-#	cd $(CURL_DIR) && $(MAKE) \
+-#		CROSS=$(ISDKP)/ \
+-#		LTCC=$(IOS_CC) \
+-#		TARGET_FLAGS="$(IOS_ARM64_OPTS) -isysroot $(ISDK)/SDKs/$(ISDKVER)" \
+-#		LTCFLAGS="$(LTCFLAGS)" \
+-#		clean all
+-#	cp $(CURL_DIR)/libcurl.a libcurl-arm64.a
+-#	lipo -create libcurl-arm*.a -output libcurl.a
+-#	rm libcurl-arm*.a
+-
+-endif
+-
+-ifeq ($(TARGET_PLATFORM),iossim)
+-############################ iPhone Simulator Targets ##############################
+-
+-liblua.a: rebuild
+-	cd $(LUA_DIR) && $(MAKE) -f Makefile.custom \
+-		LTCC=$(IOS_CC) \
+-		TARGET_FLAGS="-arch x86_64 -isysroot $(ISDK)/SDKs/$(ISDKVER)" \
+-		LTCFLAGS="$(LTCFLAGS)" \
+-		clean all
+-	cp $(LUA_DIR)/liblua.a $@
+-
+-libbox2d.a: rebuild
+-	cd $(BOX2D_DIR) && $(MAKE) \
+-		LTCPP=$(IOS_CPP) \
+-		TARGET_FLAGS="-arch x86_64 -isysroot $(ISDK)/SDKs/$(ISDKVER)" \
+-		LTCFLAGS="$(LTCFLAGS)" \
+-		clean all
+-	cp $(BOX2D_DIR)/libbox2d.a $@
+-
+-libz.a: rebuild
+-	cd $(ZLIB_DIR) && $(MAKE) \
+-		LTCC=$(IOS_CC) \
+-		TARGET_FLAGS="-arch x86_64 -isysroot $(ISDK)/SDKs/$(ISDKVER)" \
+-		LTCFLAGS="$(LTCFLAGS)" \
+-		clean all
+-	cp $(ZLIB_DIR)/libz.a $@
+-
+-libpng.a: rebuild
+-	cd $(LIBPNG_DIR) && $(MAKE) \
+-		LTCC=$(IOS_CC) \
+-		TARGET_FLAGS="-arch x86_64 -isysroot $(ISDK)/SDKs/$(ISDKVER)" \
+-		LTCFLAGS="$(LTCFLAGS)" \
+-		clean all
+-	cp $(LIBPNG_DIR)/libpng.a $@
+-
+-libvorbis.a: rebuild
+-	cd $(VORBIS_DIR) && $(MAKE) \
+-		LTCC=$(IOS_CC) \
+-		TARGET_FLAGS="-arch x86_64 -isysroot $(ISDK)/SDKs/$(ISDKVER)" \
+-		LTCFLAGS="$(LTCFLAGS)" \
+-		clean all
+-	cp $(VORBIS_DIR)/libvorbis.a $@
+-
+-libft2.a: rebuild
+-	cd $(FREETYPE_DIR) && $(MAKE) \
+-		LTCC=$(IOS_CC) \
+-		TARGET_FLAGS="-arch x86_64 -isysroot $(ISDK)/SDKs/$(ISDKVER)" \
+-		LTCFLAGS="$(LTCFLAGS)" \
+-		clean all
+-	cp $(FREETYPE_DIR)/libft2.a $@
+-
+-endif
+-
+-ifeq ($(TARGET_PLATFORM),android)
+-############################ Android Targets ##############################
+-
+-liblua.a: rebuild
+-#	cd $(LUAJIT_DIR) && $(MAKE) \
+-#		HOST_CC="gcc -m32 -arch i386" \
+-#		CROSS=$(NDKP) \
+-#		TARGET_FLAGS="--sysroot $(NDKSYSROOT)" \
+-#		TARGET=arm TARGET_SYS=Linux \
+-#		clean all
+-#	cp $(LUAJIT_DIR)/src/libluajit.a $@
+-	cd $(LUA_DIR) && $(MAKE) -f Makefile.custom \
+-		CC=$(CC) \
+-		AR=$(AR) \
+-		TARGET_FLAGS="$(NDKCFLAGS)" \
+-		LTCFLAGS="$(LTCFLAGS)" \
+-		clean all
+-	cp $(LUA_DIR)/liblua.a $@
+-
+-libbox2d.a: rebuild
+-	cd $(BOX2D_DIR) && $(MAKE) \
+-		CPP=$(CPP) \
+-		AR=$(AR) \
+-		TARGET_FLAGS="$(NDKSTL) $(NDKCFLAGS)" \
+-		clean all
+-	cp $(BOX2D_DIR)/libbox2d.a .
+-
+-libz.a: rebuild
+-	cd $(ZLIB_DIR) && $(MAKE) \
+-		CC=$(CC) \
+-		AR=$(AR) \
+-		TARGET_FLAGS="$(NDKCFLAGS)" \
+-		LTCFLAGS="$(LTCFLAGS)" \
+-		clean all
+-	cp $(ZLIB_DIR)/libz.a .
+-
+-libpng.a: rebuild
+-	cd $(LIBPNG_DIR) && $(MAKE) \
+-		CC=$(CC) \
+-		AR=$(AR) \
+-		TARGET_FLAGS="$(NDKCFLAGS)" \
+-		LTCFLAGS="$(LTCFLAGS)" \
+-		clean all
+-	cp $(LIBPNG_DIR)/libpng.a .
+-
+-libft2.a: rebuild
+-	cd $(FREETYPE_DIR) && $(MAKE) \
+-		CC=$(CC) \
+-		AR=$(AR) \
+-		TARGET_FLAGS="$(NDKCFLAGS)" \
+-		LTCFLAGS="$(LTCFLAGS)" \
+-		clean all
+-	cp $(FREETYPE_DIR)/libft2.a .
+-
+-libvorbis.a: rebuild
+-	cd $(VORBIS_DIR) && $(MAKE) \
+-		CC=$(CC) \
+-		AR=$(AR) \
+-		TARGET_FLAGS="$(NDKCFLAGS)" \
+-		LTCFLAGS="$(LTCFLAGS)" \
+-		clean all
+-	cp $(VORBIS_DIR)/libvorbis.a .
+-
+-#libcurl.a: rebuild
+-#	cd $(CURL_DIR) && $(MAKE) \
+-#		CROSS=$(NDKP) \
+-#		TARGET_FLAGS="--sysroot $(NDKSYSROOT) -marm" \
+-#		LTCFLAGS="$(LTCFLAGS)" \
+-#		clean all
+-#	cp $(CURL_DIR)/libcurl.a libcurl.a
+-
+-#libopenal.a: rebuild.openal
+-#	cd openal-android && $(MAKE) \
+-#		CROSS=$(NDKP) \
+-#		TARGET_FLAGS="--sysroot $(NDKSYSROOT) -marm" \
+-#		LTCFLAGS="$(LTCFLAGS)" \
+-#		clean all
+-#	cp openal-android/libopenal.a .
+-
+-libopenal.a:
+-	cp openal-soft/android/libopenal.a .
+-
+-.PHONY: openal_headers
+-openal_headers:
+-	cp -r openal-soft/include/* include/
+-
+-endif
+-
+-ifeq ($(TARGET_PLATFORM),osx)
+-############################ Mac OS X Targets ##############################
+-
+-liblua.a: rebuild
+-	cd $(LUA_DIR) && $(MAKE) macosx CC="gcc -m64 -arch x86_64 $(LTCFLAGS)"
+-	cp $(LUA_DIR)/src/liblua.a $@
+-
+-libbox2d.a: rebuild
+-	cd $(BOX2D_DIR) && $(MAKE) \
+-		TARGET_FLAGS="-m64 -arch x86_64" \
+-		LTCFLAGS="$(LTCFLAGS)" \
+-		clean all
+-	cp $(BOX2D_DIR)/libbox2d.a .
+-
+-libz.a: rebuild
+-	cd $(ZLIB_DIR) && $(MAKE) \
+-		TARGET_FLAGS="-m64 -arch x86_64" \
+-		LTCFLAGS="$(LTCFLAGS)" \
+-		clean all
+-	cp $(ZLIB_DIR)/libz.a .
+-
+-libpng.a: rebuild
+-	cd $(LIBPNG_DIR) && $(MAKE) \
+-		TARGET_FLAGS="-m64 -arch x86_64" \
+-		LTCFLAGS="$(LTCFLAGS)" \
+-		clean all
+-	cp $(LIBPNG_DIR)/libpng.a .
+-
+-libvorbis.a: rebuild
+-	cd $(VORBIS_DIR) && $(MAKE) \
+-		TARGET_FLAGS="-m64 -arch x86_64" \
+-		LTCFLAGS="$(LTCFLAGS)" \
+-		clean all
+-	cp $(VORBIS_DIR)/libvorbis.a .
+-
+-libft2.a: rebuild
+-	cd $(FREETYPE_DIR) && $(MAKE) \
+-		TARGET_FLAGS="-m64 -arch x86_64" \
+-		LTCFLAGS="$(LTCFLAGS)" \
+-		clean all
+-	cp $(FREETYPE_DIR)/libft2.a .
+-
+-libcurl.a: rebuild
+-	cd $(CURL_DIR) && $(MAKE) \
+-		LTCFLAGS="$(LTCFLAGS)" \
+-		clean all
+-	cp $(CURL_DIR)/libcurl.a .
+-
+-libGLEW.a: rebuild
+-	cd $(GLEW_DIR) && $(MAKE) \
+-		CC="gcc -m64 -arch x86_64" \
+-		clean all
+-	cp $(GLEW_DIR)/lib/libGLEW.a .
+-
+-libglfw.a: rebuild
+-	cd $(GLFW_DIR) && $(MAKE) \
+-		CC="gcc -m64 -arch x86_64" \
+-		cocoa
+-	cp $(GLFW_DIR)/lib/cocoa/libglfw.a .
+-
+-.PHONY: glfw_headers
+-glfw_headers:
+-	cp -r $(GLFW_DIR)/include/* include/
+-
+-.PHONY: glew_headers
+-glew_headers:
+-	cp -r $(GLEW_DIR)/include/* include/
+-
+-endif
+-
+-ifeq ($(TARGET_PLATFORM),linux)
+ ############################ Linux Targets ##############################
+-
+-liblua.a: rebuild
+-	#cd $(LUAJIT_DIR) && $(MAKE)
+-	#cp $(LUAJIT_DIR)/src/libluajit.a $@
+-	cd $(LUA_DIR) && $(MAKE) linux CC="gcc $(LTCFLAGS)"
+-	cp $(LUA_DIR)/src/liblua.a $@
+-
+-libbox2d.a: rebuild
+-	cd $(BOX2D_DIR) && $(MAKE) \
+-		LTCFLAGS="$(LTCFLAGS)" \
+-		clean all
+-	cp $(BOX2D_DIR)/libbox2d.a .
+-
+-libz.a: rebuild
+-	cd $(ZLIB_DIR) && $(MAKE) \
+-		LTCFLAGS="$(LTCFLAGS)" \
+-		clean all
+-	cp $(ZLIB_DIR)/libz.a .
+-
+-libpng.a: rebuild
+-	cd $(LIBPNG_DIR) && $(MAKE) \
+-		LTCFLAGS="$(LTCFLAGS)" \
+-		clean all
+-	cp $(LIBPNG_DIR)/libpng.a .
+-
+-libvorbis.a: rebuild
+-	cd $(VORBIS_DIR) && $(MAKE) \
+-		LTCFLAGS="$(LTCFLAGS)" \
+-		clean all
+-	cp $(VORBIS_DIR)/libvorbis.a .
+-
+-libft2.a: rebuild
+-	cd $(FREETYPE_DIR) && $(MAKE) \
+-		LTCFLAGS="$(LTCFLAGS)" \
+-		clean all
+-	cp $(FREETYPE_DIR)/libft2.a .
+-
+-libcurl.a: rebuild
+-	cd $(CURL_DIR) && $(MAKE) \
+-		LTCFLAGS="$(LTCFLAGS)" \
+-		clean all
+-	cp $(CURL_DIR)/libcurl.a .
+-
+-ifdef LINUX32
+-libopenal.a:
+-	cp openal-soft/linux32/libopenal.a .
+-else
+-libopenal.a:
+-	cp openal-soft/linux64/libopenal.a .
+-endif
+-
+-.PHONY: openal_headers
+-openal_headers:
+-	cp -r openal-soft/include/* include/
+-
+-libGLEW.a: rebuild
+-	cd $(GLEW_DIR) && $(MAKE) \
+-		clean all
+-	cp $(GLEW_DIR)/lib/libGLEW.a .
+-
+-libglfw.a: rebuild
+-	cd $(GLFW_DIR) && $(MAKE) \
+-		x11
+-	cp $(GLFW_DIR)/lib/x11/libglfw.a .
+-
+-.PHONY: glfw_headers
+-glfw_headers:
+-	cp -r $(GLFW_DIR)/include/* include/
+-
+-.PHONY: glew_headers
+-glew_headers:
+-	cp -r $(GLEW_DIR)/include/* include/
+-
+-endif
+-
+-
+-ifeq ($(TARGET_PLATFORM),mingw)
+-############################ MinGW Targets ##############################
+-
+-liblua.a: rebuild
+-	cd $(LUA_DIR) && $(MAKE) mingw
+-	cp $(LUA_DIR)/src/liblua.a $@
+-	#cd $(LUAJIT_DIR) && $(MAKE) BUILDMODE=static
+-	#cp $(LUAJIT_DIR)/src/libluajit.a $@
+-
+-libbox2d.a: rebuild
+-	cd $(BOX2D_DIR) && $(MAKE) \
+-		LTCFLAGS="$(LTCFLAGS)" \
+-		clean all
+-	cp $(BOX2D_DIR)/libbox2d.a .
+-
+-libz.a: rebuild
+-	cd $(ZLIB_DIR) && $(MAKE) \
+-		LTCFLAGS="$(LTCFLAGS)" \
+-		clean all
+-	cp $(ZLIB_DIR)/libz.a .
+-
+-libpng.a: rebuild
+-	cd $(LIBPNG_DIR) && $(MAKE) \
+-		LTCFLAGS="$(LTCFLAGS)" \
+-		clean all
+-	cp $(LIBPNG_DIR)/libpng.a .
+-
+-libft2.a: rebuild
+-	cd $(FREETYPE_DIR) && $(MAKE) \
+-		LTCFLAGS="$(LTCFLAGS)" \
+-		clean all
+-	cp $(FREETYPE_DIR)/libft2.a .
+-
+-libcurl.a: rebuild
+-	cd $(CURL_DIR) && $(MAKE) \
+-		LTCFLAGS="$(LTCFLAGS)" \
+-		clean all
+-	cp $(CURL_DIR)/libcurl.a .
+-
+-libvorbis.a: rebuild
+-	cd $(VORBIS_DIR) && $(MAKE) \
+-		LTCFLAGS="$(LTCFLAGS)" \
+-		clean all
+-	cp $(VORBIS_DIR)/libvorbis.a .
+-
+-libglfw.a: rebuild
+-	cd $(GLFW_DIR) && $(MAKE) \
+-		win32-msys
+-	cp $(GLFW_DIR)/lib/win32/libglfw.a .
+-
+-libglew32.a: rebuild
+-	cd $(GLEW_DIR) && $(MAKE) \
+-		clean all
+-	cp $(GLEW_DIR)/lib/libglew32.a .
+-
+-libOpenAL32.a:
+-	cp openal-soft/mingw/libOpenAL32.a .
+-
+-.PHONY: openal_headers
+-openal_headers:
+-	cp -r openal-soft/include/* include/
+-
+-.PHONY: glfw_headers
+-glfw_headers:
+-	cp -r $(GLFW_DIR)/include/* include/
+-
+-.PHONY: glew_headers
+-glew_headers:
+-	cp -r $(GLEW_DIR)/include/* include/
+-
+-
+-endif
+-
+-
+-ifeq ($(TARGET_PLATFORM),tizen-x86)
+-############################ Tizen ##############################
+-
+-liblua.a: rebuild
+-	cd $(LUA_DIR) && $(MAKE) -f Makefile.custom \
+-		CROSS=$(TDKPX86) \
+-		TARGET_FLAGS="$(TIZEN_TARGET_FLAGS_X86)" \
+-		LTCFLAGS="$(LTCFLAGS)" \
+-		clean all
+-	cp $(LUA_DIR)/liblua.a $@
+-
+-libbox2d.a: rebuild
+-	cd $(BOX2D_DIR) && $(MAKE) \
+-		CROSS=$(TDKPX86) \
+-		TARGET_FLAGS="$(TIZEN_TARGET_FLAGS_X86)" \
+-		clean all
+-	cp $(BOX2D_DIR)/libbox2d.a .
+-
+-libz.a: rebuild
+-	cd $(ZLIB_DIR) && $(MAKE) \
+-		CROSS=$(TDKPX86) \
+-		TARGET_FLAGS="$(TIZEN_TARGET_FLAGS_X86)" \
+-		LTCFLAGS="$(LTCFLAGS)" \
+-		clean all
+-	cp $(ZLIB_DIR)/libz.a .
+-
+-libpng.a: rebuild
+-	cd $(LIBPNG_DIR) && $(MAKE) \
+-		CROSS=$(TDKPX86) \
+-		TARGET_FLAGS="$(TIZEN_TARGET_FLAGS_X86)" \
+-		LTCFLAGS="$(LTCFLAGS)" \
+-		clean all
+-	cp $(LIBPNG_DIR)/libpng.a .
+-
+-libft2.a: rebuild
+-	cd $(FREETYPE_DIR) && $(MAKE) \
+-		CROSS=$(TDKPX86) \
+-		TARGET_FLAGS="$(TIZEN_TARGET_FLAGS_X86)" \
+-		LTCFLAGS="$(LTCFLAGS)" \
+-		clean all
+-	cp $(FREETYPE_DIR)/libft2.a .
+-
++# It's a single-file library :shrug:
+ libvorbis.a: rebuild
+ 	cd $(VORBIS_DIR) && $(MAKE) \
+-		CROSS=$(TDKPX86) \
+-		TARGET_FLAGS="$(TIZEN_TARGET_FLAGS_X86)" \
+ 		LTCFLAGS="$(LTCFLAGS)" \
+ 		clean all
+ 	cp $(VORBIS_DIR)/libvorbis.a .
+ 
+-libcurl.a: rebuild
+-	cd $(CURL_DIR) && $(MAKE) \
+-		CROSS=$(TDKPX86) \
+-		TARGET_FLAGS="$(TIZEN_TARGET_FLAGS_X86)" \
+-		LTCFLAGS="$(LTCFLAGS)" \
+-		clean all
+-	cp $(CURL_DIR)/libcurl.a libcurl.a
+-
+-endif
+-
+-ifeq ($(TARGET_PLATFORM),tizen-arm)
+-############################ Tizen ##############################
+-
+-liblua.a: rebuild
+-	cd $(LUA_DIR) && $(MAKE) -f Makefile.custom \
+-		CROSS=$(TDKPARM) \
+-		TARGET_FLAGS="$(TIZEN_TARGET_FLAGS_ARM)" \
+-		LTCFLAGS="$(LTCFLAGS)" \
+-		clean all
+-	cp $(LUA_DIR)/liblua.a $@
+-
+-libbox2d.a: rebuild
+-	cd $(BOX2D_DIR) && $(MAKE) \
+-		CROSS=$(TDKPARM) \
+-		TARGET_FLAGS="$(TIZEN_TARGET_FLAGS_ARM)" \
+-		clean all
+-	cp $(BOX2D_DIR)/libbox2d.a .
+-
+-libz.a: rebuild
+-	cd $(ZLIB_DIR) && $(MAKE) \
+-		CROSS=$(TDKPARM) \
+-		TARGET_FLAGS="$(TIZEN_TARGET_FLAGS_ARM)" \
+-		LTCFLAGS="$(LTCFLAGS)" \
+-		clean all
+-	cp $(ZLIB_DIR)/libz.a .
+-
+-libpng.a: rebuild
+-	cd $(LIBPNG_DIR) && $(MAKE) \
+-		CROSS=$(TDKPARM) \
+-		TARGET_FLAGS="$(TIZEN_TARGET_FLAGS_ARM)" \
+-		LTCFLAGS="$(LTCFLAGS)" \
+-		clean all
+-	cp $(LIBPNG_DIR)/libpng.a .
+-
+-libft2.a: rebuild
+-	cd $(FREETYPE_DIR) && $(MAKE) \
+-		CROSS=$(TDKPARM) \
+-		TARGET_FLAGS="$(TIZEN_TARGET_FLAGS_ARM)" \
+-		LTCFLAGS="$(LTCFLAGS)" \
+-		clean all
+-	cp $(FREETYPE_DIR)/libft2.a .
+-
+-libvorbis.a: rebuild
+-	cd $(VORBIS_DIR) && $(MAKE) \
+-		CROSS=$(TDKPARM) \
+-		TARGET_FLAGS="$(TIZEN_TARGET_FLAGS_ARM)" \
+-		LTCFLAGS="$(LTCFLAGS)" \
+-		clean all
+-	cp $(VORBIS_DIR)/libvorbis.a .
+-
+-libcurl.a: rebuild
+-	cd $(CURL_DIR) && $(MAKE) \
+-		CROSS=$(TDKPARM) \
+-		TARGET_FLAGS="$(TIZEN_TARGET_FLAGS_ARM)" \
+-		LTCFLAGS="$(LTCFLAGS)" \
+-		clean all
+-	cp $(CURL_DIR)/libcurl.a libcurl.a
+-
+-endif
+ 
+ ##########################################################
+ ##########################################################
+@@ -654,32 +23,10 @@ endif
+ headers: rebuild
+ 	mkdir -p include
+ 	rm -rf include/*
+-	cp $(LUA_DIR)/src/lua.h include/
+-	cp $(LUA_DIR)/src/lauxlib.h include/
+-	cp $(LUA_DIR)/src/lualib.h include/
+-	cp $(LUA_DIR)/src/luaconf.h include/
+-	for h in `find $(BOX2D_DIR)/Box2D -name "*.h"`; do \
+-	    d=`echo $$h | sed 's/^[^\/]*\///g'`; \
+-	    d=`dirname $$d`; \
+-	    mkdir -p include/$$d; \
+-	    cp $$h include/$$d; \
+-	done
+-	cp $(LIBPNG_DIR)/png.h include/
+-	cp $(LIBPNG_DIR)/pngconf.h include/
+-	cp $(ZLIB_DIR)/zlib.h include/
+-	cp $(ZLIB_DIR)/zconf.h include/
+ 	cp $(VORBIS_DIR)/stb_vorbis.h include/
+-	cp -r $(FREETYPE_DIR)/include/freetype include/
+-	cp -r $(CURL_DIR)/include/curl include/
+ 
+ .PHONY: clean
+ clean:
+-	cd $(LUAJIT_DIR) && $(MAKE) clean
+-	cd $(LUA_DIR) && $(MAKE) clean
+-	cd $(BOX2D_DIR) && $(MAKE) clean
+-	cd $(ZLIB_DIR) && $(MAKE) clean
+-	cd $(LIBPNG_DIR) && $(MAKE) clean
+-	cd $(FREETYPE_DIR) && $(MAKE) clean
+ 	cd $(VORBIS_DIR) && $(MAKE) clean
+ 	rm -rf *.a
+ 	rm -rf *.lib
+diff --git a/deps/openal-soft/build_static_linux64.sh b/deps/openal-soft/build_static_linux64.sh
+index 4a3838c..24a6f98 100755
+--- a/deps/openal-soft/build_static_linux64.sh
++++ b/deps/openal-soft/build_static_linux64.sh
+@@ -2,7 +2,7 @@
+ mkdir -p build
+ rm -rf build/*
+ cd build
+-cmake -DLIBTYPE=STATIC -G "Unix Makefiles" ..
++cmake -DLIBTYPE=STATIC -DCMAKE_POSITION_INDEPENDENT_CODE=ON -G "Unix Makefiles" ..
+ cat config.h | sed 's/\#define AL_API .*$/\#define AL_API/' | sed 's/\#define ALC_API .*$/\#define ALC_API/' > config.h.tmp
+ mv config.h.tmp config.h
+-make
++make VERBOSE=1
+
+diff --git a/src/Makefile b/src/Makefile
+index 7f15d21..968acdb 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -2,37 +2,24 @@ include ../Make.common
+ 
+ all: $(OUT_DIR)/liblt.a
+ 
+-CPP_FILES:=$(wildcard *.cpp)
+-CPP_O_FILES:=$(patsubst %.cpp,$(OUT_DIR)/%.o,$(CPP_FILES))
++CXX_FILES:=$(wildcard *.cpp)
++CXX_O_FILES:=$(patsubst %.cpp,$(OUT_DIR)/%.o,$(CXX_FILES))
+ MM_FILES:=$(wildcard *.mm)
+ MM_O_FILES:=$(patsubst %.mm,$(OUT_DIR)/%.o,$(MM_FILES))
+ 
+-O_FILES=$(CPP_O_FILES)
+-
+-ifeq ($(TARGET_PLATFORM),ios)
+-O_FILES+=$(MM_O_FILES)
+-endif
+-ifeq ($(TARGET_PLATFORM),iossim)
+-O_FILES+=$(MM_O_FILES)
+-endif
+-ifeq ($(TARGET_PLATFORM),osx)
+-O_FILES+=$(MM_O_FILES)
+-endif
++O_FILES=$(CXX_O_FILES)
+ 
+ INCLUDE_FLAGS=-I. -I../$(TARGET_PLATFORM)/include
+-CPP_FLAGS= $(INCLUDE_FLAGS) $(LTCFLAGS) -DLTDEPTHBUF $(TARGET_FLAGS) -Wall
++CXX_FLAGS= $(INCLUDE_FLAGS) $(LTCFLAGS) -DLTDEPTHBUF $(TARGET_FLAGS) -Wall
+ 
+-$(CPP_O_FILES): $(OUT_DIR)/%.o: %.cpp lt*.h
+-	@echo CPP   `basename $@`
+-	$(CPP) $(CPP_FLAGS) -c $< -o $@
++$(CXX_O_FILES): $(OUT_DIR)/%.o: %.cpp lt*.h
++	$(CXX) $(CXX_FLAGS) -c $< -o $@
+ 
+ $(MM_O_FILES): $(OUT_DIR)/%.o: %.mm *.h
+-	@echo MM   `basename $@`
+-	$(CPP) -std=c++0x -ObjC++ $(CPP_FLAGS) -c $< -o $@
++	$(CXX) -std=c++0x -ObjC++ $(CXX_FLAGS) -c $< -o $@
+ 
+ $(OUT_DIR)/liblt.a: $(O_FILES)
+-	@echo AR $@
+-	@$(AR) rcus $@ $^
++	$(AR) rcus $@ $^
+ 
+ $(OUT_DIR)/ltlua.o: lua_scripts.h
+ 
+diff --git a/src/lt.h b/src/lt.h
+index 20ef551..16710a6 100644
+--- a/src/lt.h
++++ b/src/lt.h
+@@ -94,8 +94,8 @@ using namespace Tizen::Graphics::Opengl;
+ #include <AL/al.h>
+ #include <AL/alc.h>
+ #else
+-#include <OpenAL/al.h>
+-#include <OpenAL/alc.h>
++#include <AL/al.h>
++#include <AL/alc.h>
+ #endif
+ 
+ // Box2D
+diff --git a/src/ltbox2d.cpp b/src/ltbox2d.cpp
+index 04aebf4..e65a8d8 100644
+--- a/src/ltbox2d.cpp
++++ b/src/ltbox2d.cpp
+@@ -152,14 +152,14 @@ void LTFixture::draw() {
+             case b2Shape::e_polygon: {
+                 b2PolygonShape *poly = (b2PolygonShape *)shape;
+                 ltPushTint(1.0f, 1.0f, 1.0f, 0.5f);
+-                ltDrawPoly((LTfloat *)poly->m_vertices, poly->m_vertexCount);
++                ltDrawPoly((LTfloat *)poly->m_vertices, poly->GetVertexCount());
+                 ltPopTint();
+-                for (int i = 0; i < poly->m_vertexCount - 1; i++) {
++                for (int i = 0; i < poly->GetVertexCount() - 1; i++) {
+                     ltVertexPointer(2, LT_VERT_DATA_TYPE_FLOAT, 0, &poly->m_vertices[i]);
+                     ltDrawArrays(LT_DRAWMODE_LINE_STRIP, 0, 2);
+                 }
+                 b2Vec2 final_line[2];
+-                final_line[0] = poly->m_vertices[poly->m_vertexCount - 1];
++                final_line[0] = poly->m_vertices[poly->GetVertexCount() - 1];
+                 final_line[1] = poly->m_vertices[0];
+                 ltVertexPointer(2, LT_VERT_DATA_TYPE_FLOAT, 0, final_line);
+                 ltDrawArrays(LT_DRAWMODE_LINE_STRIP, 0, 2);
+@@ -607,7 +607,7 @@ static int body_apply_force(lua_State *L) {
+         } else {
+             pos = body->body->GetWorldCenter();
+         }
+-        body->body->ApplyForce(force, pos);
++        body->body->ApplyForce(force, pos, true);
+     }
+     return 0;
+ }
+@@ -616,7 +616,7 @@ static int body_apply_torque(lua_State *L) {
+     ltLuaCheckNArgs(L, 2);
+     LTBody *body = lt_expect_LTBody(L, 1);
+     if (body->body != NULL) {
+-        body->body->ApplyTorque(luaL_checknumber(L, 2));
++        body->body->ApplyTorque(luaL_checknumber(L, 2), true);
+     }
+     return 0;
+ }
+@@ -635,7 +635,7 @@ static int body_apply_impulse(lua_State *L) {
+         } else {
+             pos = body->body->GetWorldCenter();
+         }
+-        body->body->ApplyLinearImpulse(force, pos);
++        body->body->ApplyLinearImpulse(force, pos, true);
+     }
+     return 0;
+ }
+@@ -644,7 +644,7 @@ static int body_apply_angular_impulse(lua_State *L) {
+     ltLuaCheckNArgs(L, 2);
+     LTBody *body = lt_expect_LTBody(L, 1);
+     if (body->body != NULL) {
+-        body->body->ApplyAngularImpulse(luaL_checknumber(L, 2));
++        body->body->ApplyAngularImpulse(luaL_checknumber(L, 2), true);
+     }
+     return 0;
+ }
+diff --git a/tools/Makefile b/tools/Makefile
+index be79727..d2b69bd 100644
+--- a/tools/Makefile
++++ b/tools/Makefile
+@@ -5,11 +5,11 @@ LTDIR=..
+ ifeq ($(TARGET_PLATFORM),osx)
+ MACOSX_DEPLOYMENT_TARGET=10.5
+ export MACOSX_DEPLOYMENT_TARGET
+-GPPOPTS=-DLTOSX -ObjC++ -I../osx/include -L../osx -llt -lcurl -lpng -lvorbis -lz -llua -lbox2d -lGLEW -lglfw -framework OpenGL -framework OpenAL -framework Cocoa -framework IOKit -pagezero_size 10000 -image_base 100000000
+-CPP=g++
++CXXOPTS=-DLTOSX -ObjC++ -I../osx/include -L../osx -llt -lcurl -lpng -lvorbis -lz -llua -lbox2d -lGLEW -lglfw -framework OpenGL -framework OpenAL -framework Cocoa -framework IOKit -pagezero_size 10000 -image_base 100000000
++CXX=g++
+ else
+-GPPOPTS=-O3 -DLTLINUX -I$(LTDIR)/linux/include -L$(LTDIR)/linux -llt -lvorbis -lcurl -lpng -lz -llua -lbox2d -lGLEW -lglfw -lopenal -lGL -pthread -ldl
+-CPP=g++
++CXXOPTS=-O3 -DLTLINUX -I$(LTDIR)/linux/include -L$(LTDIR)/linux -llt -lvorbis -lcurl -lpng -lz -llua -lbox2d -lGLEW -lglfw -lopenal -lGL -pthread -ldl
++CXX=g++
+ endif
+ 
+ PROGS=randtest devserver pngbb
+@@ -17,7 +17,7 @@ PROGS=randtest devserver pngbb
+ all: $(PROGS)
+ 
+ $(PROGS): %: %.cpp
+-	$(CPP) -DLTDEVMODE $< $(GPPOPTS) -o $@ 
++	$(CXX) -DLTDEVMODE $< $(CXXOPTS) -o $@ 
+ 
+ .PHONY: clean
+ clean:

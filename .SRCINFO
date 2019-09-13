@@ -1,12 +1,22 @@
-pkgbase = pkgbase
-	pkgdesc = Japanese-Russian kanji and word dictionary
-	pkgver = 1.10
+pkgbase = lotech-git
+	pkgver = 1.0
 	pkgrel = 1
-	url = http://www.susi.ru/yarxi/
 	arch = x86_64
 	license = custom
-	depends = ttf-sazanami
-	depends = nas
+	makedepends = git
+	depends = lua51
+	depends = libpng
+	depends = curl
+	depends = zlib
+	depends = openal
+	depends = glew
+	depends = glfw2
+	depends = box2d
+	provides = lotech
+	source = git+https://github.com/ianmaclarty/lotech.git
+	source = linux.patch
+	sha256sums = SKIP
+	sha256sums = d23e06900b72896e892a5bbbf41cce6307c2956c9168ad22a1b0eac0b6892f32
 
-pkgname = yarxi
+pkgname = lotech-git
 
