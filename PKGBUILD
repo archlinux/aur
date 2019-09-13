@@ -27,7 +27,8 @@ prepare() {
 build() {
 	echo "[BUILD]    STATUS : Ready."
 	echo "[BUILD]    INFO   : Already built."
-
+	echo $srcdir # DEBUG
+	echo $pkgdir # DEBUG
 }
 
 package () {
