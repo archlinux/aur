@@ -1,7 +1,7 @@
 pkgbase = teleport
 	pkgdesc = Modern SSH server for teams managing distributed infrastructure
 	pkgver = 4.0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gravitational.com/teleport
 	install = teleport.install
 	arch = x86_64
@@ -11,12 +11,16 @@ pkgbase = teleport
 	options = !strip
 	source_x86_64 = https://get.gravitational.com/teleport-v4.0.8-linux-amd64-bin.tar.gz
 	source_x86_64 = teleport.service
+	source_x86_64 = teleport.yaml
 	sha256sums_x86_64 = 77ae0e0fa7d8fa6c2c07c316d1dabec5a255a48364b4a73eeb90619b0980459e
-	sha256sums_x86_64 = 3e332207cfa984a531044d47fde379a9c242aa92e0fef7804a031dff865396dc
+	sha256sums_x86_64 = 48b27cf06bd88f3121f3febec352269f75e4f30e8e7cd80a72c630b3cf34a5e6
+	sha256sums_x86_64 = df47c23a3dedec886c10953c9689615317771fb7cdcaee271e64b84e66ae0acb
 	source_arm = https://get.gravitational.com/teleport-v4.0.8-linux-arm-bin.tar.gz
 	source_arm = teleport.service
+	source_arm = teleport.yaml
 	sha256sums_arm = bbf6bb825b90f8cd1b06e20e6116433a30c25ad911878359a839d14b832734da
-	sha256sums_arm = 3e332207cfa984a531044d47fde379a9c242aa92e0fef7804a031dff865396dc
+	sha256sums_arm = 48b27cf06bd88f3121f3febec352269f75e4f30e8e7cd80a72c630b3cf34a5e6
+	sha256sums_arm = df47c23a3dedec886c10953c9689615317771fb7cdcaee271e64b84e66ae0acb
 
 pkgname = teleport
 
