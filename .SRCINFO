@@ -13,7 +13,7 @@ pkgbase = brother-hl2270dw
 	source = HL2270DW.ppd.patch
 	md5sums = 69c1987c0636a64fb48f3c6826a3ae28
 	md5sums = 5a7cc60cafaf60d722d9bce3f2751164
-	md5sums = de9cee3fed4afb1ee7f5516b5bac9f25
+	md5sums = 0021d413084aee35c8880eef1bfe4672
 
 pkgname = brother-hl2270dw
 
