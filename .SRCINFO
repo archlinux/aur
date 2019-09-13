@@ -1,7 +1,7 @@
 pkgbase = phpstorm
 	pkgdesc = Lightweight and Smart PHP IDE
 	pkgver = 2019.2.2b192.6603.42
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.jetbrains.com/phpstorm/
 	arch = x86_64
 	arch = i686
