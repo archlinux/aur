@@ -3,15 +3,15 @@ pkgbase=python-galpy
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python2-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=1.4.1
+pkgver=1.5
 pkgrel=1
 pkgdesc="Galactic Dynamics in python"
 arch=('i686' 'x86_64')
 url="http://galpy.readthedocs.io/"
 license=('BSD')
-makedepends=('python-setuptools' 'python2-setuptools')
+makedepends=('python-setuptools' 'python2-setuptools' 'gsl')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('f7d5bf5b4d7c963379a89c35ca8acafc')
+md5sums=('aff0a673d498b1b8c4739b6036452536')
 
 prepare() {
     cp -a ${srcdir}/${_pyname}-${pkgver}{,-py2}
@@ -40,7 +40,8 @@ build() {
 
 package_python2-galpy() {
     depends=('python2-scipy' 'python2-matplotlib')
-    optdepends=('python-galpy-doc: Documentation for galpy')
+    optdepends=('python-galpy-doc: Documentation for galpy'
+                'gsl>=1.14: For some advanced features')
     cd ${srcdir}/${_pyname}-${pkgver}-py2
 
     install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
@@ -50,7 +51,8 @@ package_python2-galpy() {
 
 package_python-galpy() {
     depends=('python-scipy' 'python-matplotlib')
-    optdepends=('python-galpy-doc: Documentation for galpy')
+    optdepends=('python-galpy-doc: Documentation for galpy'
+                'gsl>=1.14: For some advanced features')
     cd ${srcdir}/${_pyname}-${pkgver}
 
     install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"

@@ -1,6 +1,6 @@
 pkgbase = python-galpy
 	pkgdesc = Galactic Dynamics in python
-	pkgver = 1.4.1
+	pkgver = 1.5
 	pkgrel = 1
 	url = http://galpy.readthedocs.io/
 	arch = i686
@@ -8,16 +8,19 @@ pkgbase = python-galpy
 	license = BSD
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = https://files.pythonhosted.org/packages/source/g/galpy/galpy-1.4.1.tar.gz
-	md5sums = f7d5bf5b4d7c963379a89c35ca8acafc
+	makedepends = gsl
+	source = https://files.pythonhosted.org/packages/source/g/galpy/galpy-1.5.tar.gz
+	md5sums = aff0a673d498b1b8c4739b6036452536
 
 pkgname = python-galpy
 	depends = python-scipy
 	depends = python-matplotlib
 	optdepends = python-galpy-doc: Documentation for galpy
+	optdepends = gsl>=1.14: For some advanced features
 
 pkgname = python2-galpy
 	depends = python2-scipy
 	depends = python2-matplotlib
 	optdepends = python-galpy-doc: Documentation for galpy
+	optdepends = gsl>=1.14: For some advanced features
 
