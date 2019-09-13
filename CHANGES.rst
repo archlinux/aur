@@ -2,6 +2,30 @@
 Changelog
 =========
 
+Version 12.1.0
+================
+*Released 2019-09-13*
+
+**Major changes:**
+
+- Bot API 4.4 support (`#1464`_, `#1510`_)
+- Add `get_file` method to `Animation` & `ChatPhoto`. Add, `get_small_file` & `get_big_file`
+  methods to `ChatPhoto` (`#1489`_)
+- Tools for deep linking (`#1049`_)
+
+**Minor changes and/or bug fixes:**
+
+- Documentation fixes (`#1500`_, `#1499`_)
+- Improved examples (`#1502`_)
+
+.. _`#1464`: https://github.com/python-telegram-bot/python-telegram-bot/pull/1464
+.. _`#1502`: https://github.com/python-telegram-bot/python-telegram-bot/pull/1502
+.. _`#1499`: https://github.com/python-telegram-bot/python-telegram-bot/pull/1499
+.. _`#1500`: https://github.com/python-telegram-bot/python-telegram-bot/pull/1500
+.. _`#1049`: https://github.com/python-telegram-bot/python-telegram-bot/pull/1049
+.. _`#1489`: https://github.com/python-telegram-bot/python-telegram-bot/pull/1489
+.. _`#1510`: https://github.com/python-telegram-bot/python-telegram-bot/pull/1510
+
 Version 12.0.0
 ================
 *Released 2019-08-29*
@@ -86,7 +110,7 @@ Bug fixes & improvements
 - Allow SOCKSConnection to parse username and password from URL (`#1211`_)
 - Fix for arguments in passport/data.py (`#1213`_)
 - Improve message entity parsing by adding text_mention (`#1206`_)
-- Documentation fixes (`#1348`_, `#1397_`, `#1436`_)
+- Documentation fixes (`#1348`_, `#1397`_, `#1436`_)
 - Merged filters short-circuit (`#1350`_)
 - Fix webhook listen with tornado (`#1383`_)
 - Call task_done() on update queue after update processing finished (`#1428`_)
@@ -101,7 +125,7 @@ Buf fixes since v12.0.0b1
 - Fix _trigger_timeout() missing 1 required positional argument: 'job' (`#1367`_)
 - Add missing message.text check in PrefixHandler check_update (`#1375`_)
 - Make updates persist even on DispatcherHandlerStop (`#1463`_)
-- Dispatcher force updating persistence object's chat data attribute(`#1462`)
+- Dispatcher force updating persistence object's chat data attribute(`#1462`_)
 
 .. _`#1100`: https://github.com/python-telegram-bot/python-telegram-bot/pull/1100
 .. _`#1283`: https://github.com/python-telegram-bot/python-telegram-bot/pull/1283
