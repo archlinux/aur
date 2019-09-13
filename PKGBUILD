@@ -1,5 +1,3 @@
-# Maintainer: grufo <madmurphy333 AT gmail DOT com>
-
 _projname='NExtGen'
 pkgname="${_projname,,}"
 pkgver='0.1.0'
@@ -11,7 +9,7 @@ license=('GPL')
 depends=('bash' 'libnautilus-extension')
 conflicts=("${pkgname}-git")
 source=("https://github.com/madmurphy/${_projname}/archive/${pkgver}.tar.gz")
-sha256sums=('b23f7e89172b92bfd8eb9bd721a8a2d1a822002181c42da858158490fab33fee')
+sha256sums=('6440fb8cd97547b41c4bc05abab8f1c3c6b73d038297f80203802bd3a59c29d4')
 
 package() {
 
