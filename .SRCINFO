@@ -11,7 +11,7 @@ pkgbase = fofimon
 	makedepends = graphviz
 	makedepends = python
 	depends = glibmm
-	source = git+https://gitlab.com/efanomars/fofimon.git#commit=c0962563c9fa37d86a0d7636a6fa99f8cd1bda52
+	source = git+https://gitlab.com/efanomars/fofimon.git#commit=a481515126d62f08e802acd602b8c4ac1827f9dc
 	sha512sums = SKIP
 
 pkgname = fofimon
