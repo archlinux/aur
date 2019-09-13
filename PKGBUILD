@@ -3,11 +3,9 @@
 
 pkgname=nvidia-container-toolkit
 
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
-# the 3.1.3 tag got removed for unknown reasons, use commit for now :(
-#_runtime_pkgver=3.1.3
-_commit=2fc9b4b1df98b803f3ce5f3bfbad113ff39bb6da
+_runtime_pkgver=3.1.4
 
 pkgdesc='NVIDIA container runtime toolkit'
 arch=('x86_64')
@@ -19,11 +17,10 @@ depends=('libnvidia-container-tools' 'docker>=1:19.03')
 conflicts=('nvidia-container-runtime-hook' 'nvidia-container-runtime<2.0.0')
 replaces=('nvidia-container-runtime-hook')
 
-source=("https://github.com/NVIDIA/nvidia-container-runtime/archive/${_commit}.tar.gz")
-sha256sums=('eb467f5b75f8c9eca6b7fb9a4c97db809e3912ce402a44adabf5348f9f4f9565')
+source=("https://github.com/NVIDIA/nvidia-container-runtime/archive/v${_runtime_pkgver}.tar.gz")
+sha256sums=('32bd9f49a1392253dccbfebc850b980b6d7cbd1b2621b06ced4fbe952c918038')
 
-#_srcdir="nvidia-container-runtime-${_runtime_pkgver}"
-_srcdir="nvidia-container-runtime-${_commit}"
+_srcdir="nvidia-container-runtime-${_runtime_pkgver}"
 
 prepare() {
   mkdir -p gopath/src
