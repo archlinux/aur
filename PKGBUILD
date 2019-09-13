@@ -1,7 +1,7 @@
 # Maintainer: agilob <archlinux@agilob.net>
 # Contributor: Aaron J. Graves <linux@ajgraves.com>
 pkgname=tutanota-desktop-linux
-pkgver=3.59.4
+pkgver=3.59.12
 pkgrel=1
 pkgdesc='Official Tutanota email client'
 arch=('x86_64')
@@ -12,13 +12,8 @@ conflicts=("${pkgname}")
 options=(!strip)
 source=("${pkgname}-${pkgver}.AppImage::https://mail.tutanota.com/desktop/${pkgname}.AppImage")
 noextract=("${pkgname}-${pkgver}.AppImage")
-sha512sums=('0e5de02f0e47f1f689c77a95d78d7deb86d3bb8de335cbd39cd8228e55068757190409f91f6915f3854d85dfda042a3d4501b77085e19711bbb2fce34de186d6')
+sha512sums=('15526ee7fffe7da25ae002b7e1dff05e2d9251c2f5dd28747a510a0204de225fcb5f1808ed64f8d9bb876f7d4291f7df00e6512f704c7c318780f8213e26c625')
 #install="tutanota-desktop-linux.install"
-
-check () {
-  # This won't be here forever; needed to transition the packaging
-  printf "\n\nNOTE: If you run in to an error upgrading this package, please execute the command 'rm /usr/bin/tutanota-desktop-linux' as root and try the upgrade again.\n\n"
-}
 
 package() {
   install -Dm755 "${srcdir}/${pkgname}-${pkgver}.AppImage" "${pkgdir}/opt/${pkgname}/${pkgname}.AppImage"
