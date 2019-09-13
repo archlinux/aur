@@ -18,7 +18,7 @@ backup=()
 options=()
 source=("https://gitlab.com/chacas0/chksum/-/jobs/artifacts/master/download?job=build")
 noextract=('artifacts.zip')
-sha256sums=('e3e020d4235cea52d43fe8bd2b2d111ae38f160278525e0d140b1cb57374617d')
+sha256sums=('SKIP')
 
 prepare() {
 	echo "[PREPARE]  STATUS : Ready."
@@ -27,13 +27,14 @@ prepare() {
 build() {
 	echo "[BUILD]    STATUS : Ready."
 	echo "[BUILD]    INFO   : Already built."
+	echo "[INSTALL]  STATUS : Started."
+	echo "[INSTALL]  INFO   : Putting chksum into /usr/bin..."
+	unzip "${pkdir}/chksum" -d /usr/bin
+	echo "[INSTALL]  INFO   : "
+	ls -lh /usr/bin | grep chksum
+	echo "[INSTALL]  STATUS : Done."
 }
 
 package () {
-	echo "[INSTALL]  STATUS : Started."
-	echo "[INSTALL]  INFO   : Putting chksum into /usr/bin..."
-  unzip "$pkdir/chksum" -d /usr/bin
-	echo "[INSTALL]  INFO   : "
-  ls -lh /usr/bin | grep chksum
-	echo "[INSTALL]  STATUS : Done."
+	echo "[PACKAGE]  INFO   : Nothing to do."
 }
