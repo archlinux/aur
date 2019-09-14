@@ -3,7 +3,7 @@
 libname=libblockdev
 pkgname=$libname-lean
 pkgver=2.23
-pkgrel=2
+pkgrel=3
 pkgdesc="Lean version of libblockdev without any of the plugins"
 arch=('x86_64')
 url="https://github.com/storaged-project/libblockdev"

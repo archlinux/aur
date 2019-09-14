@@ -1,7 +1,7 @@
 pkgbase = libblockdev-lean
 	pkgdesc = Lean version of libblockdev without any of the plugins
 	pkgver = 2.23
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/storaged-project/libblockdev
 	arch = x86_64
 	license = LGPL
@@ -10,6 +10,7 @@ pkgbase = libblockdev-lean
 	makedepends = python
 	makedepends = autoconf
 	makedepends = autoconf-archive
+	makedepends = libbytesize
 	depends = parted
 	provides = libblockdev
 	conflicts = libblockdev
