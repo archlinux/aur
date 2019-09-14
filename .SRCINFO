@@ -5,7 +5,7 @@ pkgbase = antergos-wallpapers
 	url = http://www.antergos.com
 	arch = any
 	license = CCPL:by-nc-sa
-	source = http://repo.antergos.info/antergos/x86_64/antergos-wallpapers-0.7-3-any.pkg.tar.xz
+	source = http://mirrors.antergos.com/antergos/x86_64/antergos-wallpapers-0.7-3-any.pkg.tar.xz
 	sha256sums = 15b255ebf16fa4910b08ff59a0421b75d0b5289ffc62227990d619a730105fff
 
 pkgname = antergos-wallpapers
