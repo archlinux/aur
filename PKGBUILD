@@ -3,27 +3,26 @@
 # Contributor: sysrq
 
 pkgname=picard
-pkgver=2.1.3
+pkgver=2.2
 _commit=5b3e83120d2c0baeed4e14d5581c3cba29f8c605
-pkgrel=2
+pkgrel=1
 pkgdesc='Official MusicBrainz tagger'
 url='https://picard.musicbrainz.org/'
 license=('GPL')
 arch=('x86_64')
 depends=('python-pyqt5' 'python-mutagen')
 optdepends=('chromaprint: fingerprinting'
-            'python-discid: cd lookup')
-makedepends=('python-discid' 'git' 'python-setuptools')
-source=("git+https://github.com/metabrainz/picard.git#commit=$_commit"
-        'https://github.com/metabrainz/picard/pull/1183/commits/6f3e32f7119938042fec4fc82514eea65eaaccb2.patch')
-sha256sums=('SKIP'
-            '16e760a195f071614e8b5fc49cce5cba9230850a5f941d2330112a82659568ff')
+            'python-discid: cd lookup'
+            'qt5-multimedia: media player toolbar'
+            'qt5-translations: full UI translation')
+makedepends=('git' 'python-setuptools')
+source=("git+https://github.com/metabrainz/picard.git#commit=$_commit")
+sha256sums=('SKIP')
 
 build() {
 	cd "${srcdir}/${pkgname}"
 	sed "s/‘/'/g" -i setup.cfg
 	python setup.py config
-	patch -p1 -i ../6f3e32f7119938042fec4fc82514eea65eaaccb2.patch # FS#60400
 }
 
 package() {
