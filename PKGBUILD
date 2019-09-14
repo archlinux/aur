@@ -23,7 +23,7 @@ makedepends=('cmake' 'gcc' 'python2-virtualenv' 'python2-pip' 'mercurial')
 conflicts=('firestorm-bin' 'firestorm-beta' 'firestorm-nightly')
 provides=('firestorm')
 
-source=("$pkgname"::'hg+http://hg.phoenixviewer.com/phoenix-firestorm-release' 'autovars' 'firestorm.desktop' 'firestorm.launcher' 'dontTarSelf.patch')
+source=("$pkgname"::'hg+https://hg.firestormviewer.org/phoenix-firestorm-release' 'autovars' 'firestorm.desktop' 'firestorm.launcher' 'dontTarSelf.patch')
 md5sums=('SKIP' '7245883fbdba303d4f827f60907574c6' '5e3dade65948533ff8412da776029179' '3daa9e24492337e62bcac318df4ab370' '5ce1e87b6cbdd300d52906de7444f264')
 
 pkgver() {
