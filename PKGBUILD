@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond < gmail-com: danielbermond >
 
 pkgname=mpv-full-git
-pkgver=0.29.1.r338.g6aecd10eba
+pkgver=0.29.1.r400.gebab42c9a8
 pkgrel=1
 pkgdesc='A free, open source, and cross-platform media player (git version with all possible libs)'
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL3')
 url='https://mpv.io/'
 depends=(
     # official repositories:
-        'ffmpeg' 'lcms2' 'libcdio-paranoia' 'libgl' 'libxss'
+        'cmocka' 'ffmpeg' 'lcms2' 'libcdio-paranoia' 'libgl' 'libxss'
         'libxinerama' 'libxv' 'libxkbcommon' 'libva' 'wayland' 'libcaca'
         'desktop-file-utils' 'hicolor-icon-theme' 'xdg-utils' 'lua52' 'libdvdnav'
         'libxrandr' 'jack' 'rubberband' 'uchardet' 'libarchive' 'smbclient'
@@ -69,7 +69,7 @@ build() {
         \
         --enable-cplugins \
         --enable-zsh-comp \
-        --disable-test \
+        --enable-test \
         --disable-clang-database \
         \
         --disable-android \
@@ -85,7 +85,6 @@ build() {
         --enable-libass-osd \
         --enable-zlib \
         --enable-libbluray \
-        --enable-dvdread \
         --enable-dvdnav \
         --enable-cdda \
         --enable-uchardet \
@@ -94,6 +93,7 @@ build() {
         --enable-vapoursynth \
         --enable-vapoursynth-lazy \
         --enable-libarchive \
+        --enable-dvbin \
         --enable-libavdevice \
         --lua='52arch' \
         \
@@ -157,17 +157,24 @@ build() {
         --disable-gl-dxinterop-d3d9 \
         --enable-cuda-hwaccel \
         \
-        --enable-tv \
-        --enable-tv-v4l2 \
-        --enable-libv4l2 \
-        --enable-audio-input \
-        --enable-dvbin \
-        \
         --disable-apple-remote \
         --disable-macos-touchbar \
+        --disable-macos-10-11-features \
+        --disable-macos-10-14-features \
         --disable-macos-cocoa-cb
         
     ./waf build
+}
+
+check() {
+    cd mpv/build/test
+    
+    local _test
+    while read -r -d '' _test
+    do
+        printf '%s\n' "  -> Running test '${_test##*/}'..."
+        "$_test"
+    done < <(find . -executable -type f -print0)
 }
 
 package() {
