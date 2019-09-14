@@ -5,7 +5,7 @@ _name=alice-vision
 _fragment="#branch=develop"
 pkgname=${_name}-git
 pkgver=2.2.0.r17.g63a3d6ad
-pkgrel=1
+pkgrel=2
 pkgdesc="Photogrammetric Computer Vision Framework which provides a 3D Reconstruction and Camera Tracking algorithms"
 arch=('i686' 'x86_64')
 url="https://alicevision.github.io/"
@@ -14,7 +14,7 @@ groups=()
 conflicts=(alice-vision)
 provides=(alice-vision)
 depends=('openblas-lapack' 'gflags' 'glfw-x11' 'alembic' 'boost-libs' 'openexr' 'openimageio' 'opengv-git' 'flann' 'coin-or-coinutils' 'coin-or-clp' 'coin-or-lemon' 'coin-or-osi' 'google-glog')
-makedepends=('boost' 'eigen' 'ceres-solver' 'cuda' 'git' 'cmake' 'magma')
+makedepends=('boost' 'doxygen' 'python-sphinx' 'eigen' 'ceres-solver' 'cuda' 'git' 'cmake' 'magma')
 source=("${pkgname}::git+https://github.com/alicevision/AliceVision.git${_fragment}"
         "ute_lib::git+https://github.com/alicevision/uncertaintyTE.git"
         "geogram::git+https://github.com/alicevision/geogram.git"
@@ -54,6 +54,8 @@ prepare() {
 #  git config submodule.src/dependencies/osi_clp.url
   git submodule update
   git apply ${srcdir}/submodule.patch
+# fix doc build
+  sed -i '/^ *install.*doc/s/doc/htmlDoc/' src/CMakeLists.txt
 }
 
 
