@@ -9,8 +9,7 @@ license=('GPL')
 depends=('python2' 'pygtk' 'python2-xdg' 'gnome-menus')
 optdepends=('python2-pyinotify: notifications'
             'python2-xlib: systray'
-            'python2-wnck: tasklist/showdesktop/intellihide'
-            'python2-power-git: baterry')
+            'python2-wnck: tasklist/showdesktop/intellihide')
 makedepends=('git')
 source=("adeskbar.sh"
         "remove_launcher_menu.patch"
