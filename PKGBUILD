@@ -1,7 +1,7 @@
 # Maintainer: Sauyon Lee <aur at sjle.co>
 pkgname=bin
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A paste bin written in Rust."
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url=""
 license=('WTFPL')
 groups=()
 depends=()
-makedepends=('rust')
+makedepends=('rust' 'clang')
 checkdepends=()
 optdepends=()
 provides=()

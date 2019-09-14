@@ -6,6 +6,7 @@ pkgbase = bin
 	arch = x86_64
 	license = WTFPL
 	makedepends = rust
+	makedepends = clang
 	source = https://github.com/w4/bin/archive/v1.0.2.tar.gz
 	sha256sums = c4f01275fc56e4ef7a61897fb18f9b09ff3cd8dbc2d475c09d7565b83b8370d3
 
