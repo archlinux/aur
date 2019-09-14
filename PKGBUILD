@@ -1,6 +1,6 @@
 # Maintainer: Alexandros Theodotou <alex at zrythm dot org>
 pkgname=zrythm
-pkgver=0.6.323
+pkgver=0.6.384
 pkgrel=1
 pkgdesc='a highly automated and intuitive digital audio workstation'
 arch=('x86_64' 'i686')
@@ -17,7 +17,7 @@ optdepends=('portaudio: portaudio backend'
 conflicts=('zrythm-git')
 #source=("https://download.savannah.nongnu.org/releases/$pkgname/$pkgname-$pkgver.tar.xz"{,.asc})
 source=("https://download-mirror.savannah.nongnu.org/releases/$pkgname/$pkgname-$pkgver.tar.xz"{,.asc})
-sha256sums=('2a1f454039808632057c271b3b3609f235baec8c678ee64c9c53c81276f01570'
+sha256sums=('f995f549b79410e33041cf85302a765a61c7dc549cb1527dc5f445c040bd9a59'
             'SKIP')
 validpgpkeys=('48132384AD3DF7D86E254B83022EAE42313D70F3')
 
