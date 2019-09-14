@@ -1,4 +1,4 @@
-pkgbase = amuet
+pkgbase = amulet
 	pkgdesc = Lua-based audio / visual toolkit for small-scope games and experimentation
 	pkgver = 1.20.1
 	pkgrel = 1
@@ -10,5 +10,5 @@ pkgbase = amuet
 	source = https://github.com/ianmaclarty/amulet/releases/download/v1.20.1/amulet-v1.20.1-linux.zip
 	md5sums = b700dc787e876e424ea94ecfe4dde9fe
 
-pkgname = amuet
+pkgname = amulet
 

@@ -1,6 +1,6 @@
 # Maintainer: Frederic Bezies <fredbezies at gmail dot com>
 # Contributor: erbridge <f@erbridge.co.uk>
-pkgname=amuet
+pkgname=amulet
 pkgver=1.20.1
 pkgrel=1
 pkgdesc="Lua-based audio / visual toolkit for small-scope games and experimentation"
