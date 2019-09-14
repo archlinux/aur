@@ -1,7 +1,7 @@
 # Maintainer: timescam <rex.ky.ng at gmail dot com>
 pkgname=zentile-bin
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Automatic Tiling for EWMH Complaint Window Managers. Pre-compiled."
 arch=('x86_64')
 url="https://github.com/blrsn/zentile"
