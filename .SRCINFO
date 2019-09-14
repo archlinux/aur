@@ -1,0 +1,16 @@
+pkgbase = libqhttp
+	pkgdesc = HTTP library, managing connections, parsing/building HTTP requests/responses
+	pkgver = r232.2cc654a
+	pkgrel = 1
+	url = https://github.com/azadkuh/qhttp
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = qt5-base
+	provides = libqhttp
+	conflicts = libqhttp
+	source = libqhttp::git+https://github.com/azadkuh/qhttp.git
+	md5sums = SKIP
+
+pkgname = libqhttp
+
