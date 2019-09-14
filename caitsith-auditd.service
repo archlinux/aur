@@ -1,0 +1,15 @@
+[Unit]
+Description=CaitSith Auditing Daemon
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/caitsith-auditd
+ExecReload=/usr/bin/kill -HUP $MAINPID
+ProtectSystem=full
+ProtectHome=true
+PrivateNetwork=true
+PrivateDevices=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
