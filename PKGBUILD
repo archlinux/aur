@@ -3,7 +3,7 @@
 
 pkgname=xsane2tess
 pkgver=1.0
-pkgrel=10
+pkgrel=11
 pkgdesc="Script for OCR with tesseract and xsane"
 arch=('any')
 license=('unknown')
@@ -12,7 +12,7 @@ url="http://doc.ubuntu-fr.org/xsane2tess"
 depends=('tesseract' 'xsane' 'imagemagick')
 makedepends=('git')
 source=(git+https://github.com/FredBezies/xsane2tess.git)
-sha256sum=('SKIP')
+sha256sums=('SKIP')
 
 package() {
   install -D -m755 ${startdir}/script ${pkgdir}/usr/bin/xsane2tess
