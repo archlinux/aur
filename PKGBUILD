@@ -37,7 +37,7 @@ prepare() {
 build() {
 	cd "$srcdir/$_pkgname-$pkgver"
 
-	./configure  --prefix=/usr \
+	./configure  --prefix='/usr' \
         --libexecdir=/usr/bin \
         --with-gihdir=/usr/share/gnuplot \
         --disable-wxwidgets \
@@ -45,7 +45,8 @@ build() {
         --with-x \
         --with-readline=gnu \
         --with-texdir=/usr/share/texmf/tex/latex/gnuplot \
-        --with-kpsexpand
+        --with-kpsexpand \
+        --infodir="$pkgdir/usr/share/info"
 
 	make pkglibexecdir=/usr/bin
 }
@@ -53,8 +54,8 @@ build() {
 package() {
 	cd "$srcdir/$_pkgname-$pkgver"
 	make pkglibexecdir=/usr/bin DESTDIR="$pkgdir" install
-
-	install -Dm644 Copyright "$pkgdir/usr/share/licenses/$_pkgname/Copyright"
+    make install-info
+    install -Dm644 Copyright "$pkgdir/usr/share/licenses/$_pkgname/Copyright"
 
 	rm -f "$pkgdir/usr/share/texmf-dist/ls-R"
 }
