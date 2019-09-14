@@ -1,6 +1,5 @@
 
 # Maintainer: nihilowy <nihilowy at gmail dot com>
-_pkgname=surfer
 pkgname=surfer-git
 pkgver=4
 pkgrel=0
@@ -18,7 +17,7 @@ source=("git+https://github.com/nihilowy/surfer.git")
 
 
 build() {
-	cd "$_pkgname"
+	cd "$pkgname"
 	make
 }
 
