@@ -2,9 +2,9 @@
 # Contributor: Robert Knauer <robert@privatdemail.net>
 
 pkgname=freedoko-git
-pkgver=0.7.20.r34.g9b745a89e
+pkgver=0.7.20.r154.g7ca0fa85d
 pkgrel=1
-pkgdesc="Free implementation of the card game Doppelkopf (git version)"
+pkgdesc="Free implementation of the card game Doppelkopf (developer version)"
 arch=('x86_64')
 url="http://free-doko.sourceforge.net"
 license=('GPL')
