@@ -1,7 +1,7 @@
 pkgbase = libqhttp
 	pkgdesc = HTTP library, managing connections, parsing/building HTTP requests/responses
 	pkgver = r232.2cc654a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/azadkuh/qhttp
 	arch = x86_64
 	license = MIT
