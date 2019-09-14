@@ -1,0 +1,16 @@
+pkgbase = bin32-zentile
+	pkgdesc = Automatic Tiling for EWMH Complaint Window Managers. Pre-compiled. 32 bit
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/blrsn/zentile
+	arch = i686
+	license = MIT
+	depends = go
+	optdepends = xorg-server: with EWMH Complaint Window Managers
+	provides = zentile
+	conflicts = zentile
+	source_i686 = https://github.com/blrsn/zentile/releases/download/v0.1.1/zentile_linux_386
+	md5sums_i686 = e3aa5161485cdb3dbd5bbfe184be85b8
+
+pkgname = bin32-zentile
+
