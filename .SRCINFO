@@ -8,7 +8,8 @@ pkgbase = zentile-bin
 	depends = go
 	optdepends = xorg-server: with EWMH Complaint Window Managers
 	provides = zentile
-	conflicts = zentile
+	conflicts = bin32-zentile
+	conflicts = zentile-git
 	source_x86_64 = https://github.com/blrsn/zentile/releases/download/v0.1.1/zentile_linux_amd64
 	md5sums_x86_64 = a3fe78afeb7b08650c7f09386378b6e7
 

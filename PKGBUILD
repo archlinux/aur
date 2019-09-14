@@ -13,7 +13,10 @@ optdepends=(
   'xorg-server: with EWMH Complaint Window Managers'
 )
 provides=('zentile')
-conflicts=('zentile')
+conflicts=(
+  'bin32-zentile'
+  'zentile-git'
+  )
 
 source_x86_64=("https://github.com/blrsn/zentile/releases/download/v${pkgver}/${pkgname/-bin/}_linux_amd64")
 
