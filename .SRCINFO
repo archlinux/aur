@@ -1,7 +1,7 @@
 pkgbase = mpv-full
 	pkgdesc = A free, open source, and cross-platform media player (with all possible libs)
 	pkgver = 0.29.1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://mpv.io/
 	arch = x86_64
 	license = GPL3
@@ -11,6 +11,7 @@ pkgbase = mpv-full
 	makedepends = vulkan-headers
 	makedepends = wayland-protocols
 	makedepends = ffnvcodec-headers
+	depends = cmocka
 	depends = ffmpeg
 	depends = lcms2
 	depends = libcdio-paranoia

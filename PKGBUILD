@@ -4,14 +4,14 @@ _wafver=2.0.9
 
 pkgname=mpv-full
 pkgver=0.29.1
-pkgrel=5
+pkgrel=6
 pkgdesc='A free, open source, and cross-platform media player (with all possible libs)'
 arch=('x86_64')
 license=('GPL3')
 url='https://mpv.io/'
 depends=(
     # official repositories:
-        'ffmpeg' 'lcms2' 'libcdio-paranoia' 'libgl' 'libxss'
+        'cmocka' 'ffmpeg' 'lcms2' 'libcdio-paranoia' 'libgl' 'libxss'
         'libxinerama' 'libxv' 'libxkbcommon' 'libva' 'wayland' 'libcaca'
         'desktop-file-utils' 'hicolor-icon-theme' 'xdg-utils' 'lua52' 'libdvdnav'
         'libxrandr' 'jack' 'rubberband' 'uchardet' 'libarchive' 'smbclient'
@@ -59,7 +59,7 @@ build() {
         \
         --enable-cplugins \
         --enable-zsh-comp \
-        --disable-test \
+        --enable-test \
         --disable-clang-database \
         \
         --disable-android \
@@ -156,6 +156,17 @@ build() {
         --disable-macos-cocoa-cb
         
     ./waf build
+}
+
+check() {
+    cd "mpv-${pkgver}/build/test"
+    
+    local _test
+    while read -r -d '' _test
+    do
+        printf '%s\n' "  -> Running test '${_test##*/}'..."
+        "$_test"
+    done < <(find . -executable -type f -print0)
 }
 
 package() {
