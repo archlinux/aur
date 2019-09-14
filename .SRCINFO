@@ -1,10 +1,15 @@
 pkgbase = lightning-lang-patcher
-	pkgdesc = This package violates AUR guidelines
-	pkgver = 1.0
+	pkgdesc = Patch langs of Lightning thunderbird addon
+	pkgver = 1.4.5
 	pkgrel = 1
-	url = http://dev.null
-	arch = any
-	license = None
+	url = https://www.tuxnvape.fr/
+	arch = x86_64
+	license = GPL3
+	depends = python
+	depends = python-gobject
+	depends = thunderbird
+	source = https://github.com/Elrondo46/lightning-lang-patcher/archive/1.4.5.tar.gz
+	sha256sums = de519a7a580ff358ddaada89a7eea48df2df2bd30e4bff7754bf86e41b6cc7ef
 
 pkgname = lightning-lang-patcher
 
