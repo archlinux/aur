@@ -20,9 +20,9 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-gc
-_srcver=5.2.10-arch1
+_srcver=5.2.14-arch2
 pkgver=${_srcver%-*}
-pkgrel=2
+pkgrel=1
 _bmqversion=099
 arch=(x86_64)
 url="https://cchalpha.blogspot.co.uk/"
@@ -49,7 +49,7 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('91c6d6b7419c133544280b23936bec3ebe208dc02528c480a4bf6a8636651e21'
+sha256sums=('667697c1e94951184962a97c795f3319e9f35d58282b2ec094790f9fced8c681'
             '2cec1dc4c34746cdcb1a7ddc28bdceb8a599e73176db9efb6dd82df78f30e8c0'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
