@@ -6,7 +6,7 @@
 pkgname=geary-git
 pkgver=r5007.f4b35869
 pkgrel=1
-pkgdesc="A lightweight email client for the GNOME desktop"
+pkgdesc="An email application built around conversations, for the GNOME 3 desktop."
 arch=(i686 x86_64)
 url="https://gitlab.gnome.org/GNOME/geary"
 license=('GPL3')
