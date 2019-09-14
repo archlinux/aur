@@ -13,7 +13,7 @@ source=("main.go"
         "LICENSE"
         "sni-modifier.install")
 sha256sums=("SKIP"
-            "35a8f981f241472d81ac11a7c393dbcea9966c1027e874ae2e706e059de589fc"
+            "2f4f17fa1e7ba462f65aaac3057e64fb3d3b3603978f45a8574b5f104f9d3edd"
             "0a8c70ca29638bbe9f8f26d523240525b62da7182cac8652fc7e315fc1ee4139"
             "2a66a962763091939a56353b9083e99872d419de7458f7cf034f5ec02b18494e")
 
