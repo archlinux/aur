@@ -1,6 +1,6 @@
 pkgbase = systemd-selinux
-	pkgver = 242.84
-	pkgrel = 2
+	pkgver = 243.0
+	pkgrel = 1
 	url = https://www.github.com/systemd/systemd
 	arch = x86_64
 	groups = selinux
@@ -36,8 +36,8 @@ pkgbase = systemd-selinux
 	makedepends = bash-completion
 	makedepends = libselinux
 	options = strip
-	source = git+https://github.com/systemd/systemd-stable#tag=v242?signed
-	source = git+https://github.com/systemd/systemd#tag=v242?signed
+	source = git+https://github.com/systemd/systemd-stable#tag=v243?signed
+	source = git+https://github.com/systemd/systemd#tag=v243?signed
 	source = 0001-Use-Arch-Linux-device-access-groups.patch
 	source = initcpio-hook-udev
 	source = initcpio-install-systemd
@@ -48,14 +48,14 @@ pkgbase = systemd-selinux
 	source = systemd-user.pam
 	source = systemd-hook
 	source = 20-systemd-sysusers.hook
-	source = systemd-binfmt.hook
-	source = systemd-catalog.hook
-	source = systemd-daemon-reload.hook
-	source = systemd-hwdb.hook
-	source = systemd-sysctl.hook
-	source = systemd-tmpfiles.hook
-	source = systemd-udev-reload.hook
-	source = systemd-update.hook
+	source = 30-systemd-binfmt.hook
+	source = 30-systemd-catalog.hook
+	source = 30-systemd-daemon-reload.hook
+	source = 30-systemd-hwdb.hook
+	source = 30-systemd-sysctl.hook
+	source = 30-systemd-tmpfiles.hook
+	source = 30-systemd-udev-reload.hook
+	source = 30-systemd-update.hook
 	validpgpkeys = 63CDA1E5D3FC22B998D20DD6327F26951A015CC4
 	validpgpkeys = 5C251B5FC54EB2F80F407AAAC54CA336CFEB557E
 	sha512sums = SKIP
@@ -111,9 +111,9 @@ pkgname = systemd-selinux
 	optdepends = polkit: allow administration as unprivileged user
 	optdepends = curl: machinectl pull-tar and pull-raw
 	provides = nss-myhostname
-	provides = systemd-tools=242.84
-	provides = udev=242.84
-	provides = systemd=242.84-2
+	provides = systemd-tools=243.0
+	provides = udev=243.0
+	provides = systemd=243.0-1
 	conflicts = nss-myhostname
 	conflicts = systemd-tools
 	conflicts = udev
@@ -146,7 +146,7 @@ pkgname = systemd-libs-selinux
 	provides = libsystemd.so
 	provides = libudev.so
 	provides = libsystemd-selinux
-	provides = systemd-libs=242.84-2
+	provides = systemd-libs=243.0-1
 	conflicts = libsystemd
 	conflicts = libsystemd-selinux
 	conflicts = systemd-libs
@@ -158,16 +158,16 @@ pkgname = systemd-resolvconf-selinux
 	depends = systemd-selinux
 	provides = openresolv
 	provides = resolvconf
-	provides = systemd-resolvconf=242.84-2
+	provides = systemd-resolvconf=243.0-1
 	conflicts = openresolv
-	conflicts = systemd-resolvconf=242.84-2
+	conflicts = systemd-resolvconf=243.0-1
 
 pkgname = systemd-sysvcompat-selinux
 	pkgdesc = sysvinit compat for systemd with SELinux support
 	license = GPL2
 	depends = systemd-selinux
-	provides = systemd-sysvcompat=242.84-2
-	provides = selinux-systemd-sysvcompat=242.84-2
+	provides = systemd-sysvcompat=243.0-1
+	provides = selinux-systemd-sysvcompat=243.0-1
 	conflicts = sysvinit
 	conflicts = systemd-sysvcompat
 	conflicts = selinux-systemd-sysvcompat
