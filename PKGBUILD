@@ -1,7 +1,7 @@
 # Maintainer: timescam <rex.ky.ng at gmail dot com>
 pkgname=bin32-zentile
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Automatic Tiling for EWMH Complaint Window Managers. Pre-compiled. 32 bit"
 arch=('i686')
 url="https://github.com/blrsn/zentile"
@@ -13,7 +13,10 @@ optdepends=(
   'xorg-server: with EWMH Complaint Window Managers'
 )
 provides=('zentile')
-conflicts=('zentile')
+conflicts=(
+  'zentile-bin'
+  'zentile-git'
+)
 
 source_i686=("https://github.com/blrsn/zentile/releases/download/v${pkgver}/zentile_linux_386")
 
