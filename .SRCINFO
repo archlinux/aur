@@ -1,6 +1,6 @@
 pkgbase = pkgtop
 	pkgdesc = Interactive package manager & resource monitor (stable version)
-	pkgver = 1.9
+	pkgver = 2.0
 	pkgrel = 1
 	url = https://github.com/keylo99/pkgtop
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = pkgtop
 	makedepends = go
 	provides = pkgtop
 	conflicts = pkgtop-git
-	source = pkgtop-1.9.zip::https://github.com/keylo99/pkgtop/archive/1.9.zip
-	sha256sums = b594f9b3406cabddb7d181c2501ab9d7d9d7cd95f0332edbbb2bd230a0219fa8
+	source = pkgtop-2.0.zip::https://github.com/keylo99/pkgtop/archive/2.0.zip
+	sha256sums = f4db07ca551453b4061612c0f67258fba52c2a2ebc629f4ea4ef0e192b971f1f
 
 pkgname = pkgtop
 
