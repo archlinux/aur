@@ -11,8 +11,8 @@ pkgdesc="Plotting package which outputs to X11, files and others. Without wxgtk/
 arch=("x86_64")
 url="http://www.gnuplot.info"
 license=("custom")
-depends=("cairo" "libjpeg" "lua" "gd" "gnutls" "readline")
-makedepends=("emacs" "texlive-core" "texlive-latexextra")
+depends=("cairo" "libjpeg" "lua" "gd" "gnutls" 'pango' "readline")
+makedepends=("texlive-core")
 provides=("gnuplot")
 conflicts=("gnuplot" "gnuplot-nox")
 replaces=("gnuplot-notk")
@@ -43,7 +43,9 @@ build() {
         --disable-wxwidgets \
         --with-qt=no \
         --with-x \
-        --with-readline=gnu
+        --with-readline=gnu \
+        --with-texdir=/usr/share/texmf/tex/latex/gnuplot \
+        --with-kpsexpand
 
 	make pkglibexecdir=/usr/bin
 }
