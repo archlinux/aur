@@ -1,10 +1,16 @@
 pkgbase = flac2mp3-bash
-	pkgdesc = This package violates AUR guidelines
+	pkgdesc = Bash script to convert FLAC files to MP3 format
 	pkgver = 1.0
-	pkgrel = 1
-	url = http://dev.null
+	pkgrel = 7
+	url = http://www.linuxtutorialblog.com
+	install = flac2mp3-bash.install
 	arch = any
-	license = None
+	license = GPL
+	makedepends = git
+	depends = flac
+	depends = lame
+	source = git+https://github.com/FredBezies/flac2mp3-bash.git
+	sha256sums = SKIP
 
 pkgname = flac2mp3-bash
 
