@@ -1,0 +1,18 @@
+--- CMakeLists.txt.orig	2019-09-14 14:45:54.089057224 -0400
++++ CMakeLists.txt	2019-09-14 14:46:07.352389966 -0400
+@@ -1,12 +1,14 @@
+ cmake_minimum_required(VERSION 2.8)
+ project(image_view)
+ 
++set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -isystem /usr/include/harfbuzz")
++
+ find_package(catkin REQUIRED COMPONENTS camera_calibration_parsers cv_bridge dynamic_reconfigure image_transport message_filters message_generation nodelet rosconsole roscpp std_srvs stereo_msgs)
+ generate_dynamic_reconfigure_options(cfg/ImageView.cfg)
+ 
+ catkin_package(CATKIN_DEPENDS dynamic_reconfigure)
+ find_package(Boost REQUIRED COMPONENTS thread)
+-find_package(OpenCV REQUIRED)
++find_package(OpenCV 3 REQUIRED)
+ 
+ include_directories(${Boost_INCLUDE_DIRS}
+                     ${catkin_INCLUDE_DIRS}

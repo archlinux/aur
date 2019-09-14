@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-image-view
 	pkgdesc = ROS - A simple viewer for ROS image topics.
 	pkgver = 1.13.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/image_view
 	arch = any
 	license = BSD
@@ -32,9 +32,9 @@ pkgbase = ros-melodic-image-view
 	depends = ros-melodic-image-transport
 	depends = gtk2
 	source = ros-melodic-image-view-1.13.0.tar.gz::https://github.com/ros-perception/image_pipeline/archive/1.13.0.tar.gz
-	source = CMakeLists-opencv.patch
+	source = CMakeLists.patch
 	sha256sums = 3c2309d421acf354ca69a7c814ceec7c8b24732c31a7f1c47a055aedd95cb1c4
-	sha256sums = d5525cc488989fbc49e151eccbc790888ec73c781ff1ab43e559e2c70f1b86d3
+	sha256sums = 715e30310dec53eb3d19ef40fb40be48a01a10e3fc170c6ec857ddaa0cea8474
 
 pkgname = ros-melodic-image-view
 
