@@ -21,12 +21,10 @@ arch:
   - ~/.cache/yay:~/.cache/yay
   - ~/.pkg-cache:/var/cache/pacman/pkg
   repos:
-  - bartus=https://github.com/bartoszek/AUR-repo/raw/master
+# - bartus=https://github.com/bartoszek/AUR-repo/raw/master
   packages:
   - ccache
   - moreutils
-  - babl-git
-  - gegl-git
   before_install:
 # 1.Override `package-cleanup.hook` to preserve cache for travis.
 # 2.Enable ccache
@@ -46,6 +44,10 @@ arch:
      [ "$TRAVIS" == "true" ] && TRAVIS=1 || TRAVIS=0
 # Build
   - ccache -s
+  - yay -S --noconfirm babl-git
+  - unset CC CXX
+  - yay -S --noconfirm gegl-git
+  - unset CC CXX
   - timeout 40m makepkg -s --noconfirm | ts -s '[%.T]'; _makepkg_return=${PIPESTATUS[0]}
   - sudo pacman -Sc --noconfirm
   - ccache -s
