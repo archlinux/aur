@@ -12,3 +12,17 @@ pkgbase = asciidoctor-pdf
 
 pkgname = asciidoctor-pdf
 
+pkgbase = asciidoctor-pdf
+	pkgdesc = translate asciidoctor directly to pdf
+	pkgver = 1.5.0.beta.5
+	pkgrel = 1
+	url = https://asciidoctor.org/
+	arch = any
+	depends = asciidoctor
+	noextract = asciidoctor-pdf-1.5.0.beta.5.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/asciidoctor-pdf-1.5.0.beta.5.gem
+	sha256sums = d37c1d06ba047f17724d2b969c7441ca87180e3e496d8f006ab9d4bc1f11d37d
+
+pkgname = asciidoctor-pdf
+
