@@ -48,7 +48,7 @@ _opt_features=(
 
 pkgname=mpv-git
 _gitname=mpv
-pkgver=0.29.0_334_gfbe267150d
+pkgver=0.29.0_408_g3a035f2a8c
 pkgrel=1
 _waf_version=2.0.9
 pkgdesc='Video player based on MPlayer/mplayer2 (git version)'
@@ -87,7 +87,7 @@ for feature in "${_opt_features[@]}"; do
   case "$feature" in
     dvd)
       depends+=('libdvdnav')
-      _opt_extra_flags+=('--enable-dvdread' '--enable-dvdnav')
+      _opt_extra_flags+=('--enable-dvdnav')
       ;;
     cd)
       depends+=('libcdio-paranoia')
