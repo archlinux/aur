@@ -1,14 +1,14 @@
 pkgbase = coolcv_bin
 	pkgdesc = CoolCV emulator (binary version)
 	pkgver = 0.6.6
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.colecovision.ca
 	arch = x86_64
 	license = custom
 	depends = sdl
 	depends = sdl2
 	source = http://www.colecovision.ca/downloads/coolcv_v0.6.2_all.zip
-	sha256sums = SKIP
+	sha256sums = 82c44c9bd4321402f4ca7842e960cc819c31859991ba55a9c81da298809cf60d
 
 pkgname = coolcv_bin
 
