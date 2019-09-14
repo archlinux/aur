@@ -3,9 +3,9 @@
 # Contributor: Splex
 
 pkgname=kokua-secondlife
-pkgver=6.3.0.45991
-_pkgver=6_3_0_45991
-_pkgprever=6.3.0
+pkgver=6.3.1.46175
+_pkgver=6_3_1_46175
+_pkgprever=6.3.1
 pkgrel=1
 pkgdesc="An Open Source third party viewer for Second Life® (secondlife), only."
 url="http://www.kokuaviewer.org"
@@ -22,9 +22,10 @@ conflicts=('kokua-opensim')
 source=("https://netcologne.dl.sourceforge.net/project/kokua.team-purple.p/Kokua-SL/Linux64Bit/Kokua_RLV_${_pkgver}_x86_64.tar.bz2"
 		'kokua-secondlife.desktop'
 		'kokua-secondlife.launcher')
-md5sums=('552abc8dd05a44113f1b5a5f2d488ee2'
+md5sums=('17fbb26775ce0b35b9d7a27173e66377'
          '3893a2c8ae9cb8e2adb4d7c47750029b'
          'e12fd7bd333f4f810dec66f1be17c71c')
+
 
 package() {
 cd $srcdir
