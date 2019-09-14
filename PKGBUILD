@@ -1,7 +1,7 @@
 # Maintainer: Sauyon Lee <aur at sjle.co>
 pkgname=bin
 pkgver=1.0.2
-pkgrel=3
+pkgrel=4
 epoch=
 pkgdesc="A paste bin written in Rust."
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ changelog=
 source=("https://github.com/w4/bin/archive/v${pkgver}.tar.gz" 'bin.service' 'Rocket.toml')
 sha256sums=('c4f01275fc56e4ef7a61897fb18f9b09ff3cd8dbc2d475c09d7565b83b8370d3'
             'baff25e9693ad10b482f2e4cc8c1f222f1076d0795cf03f40d595c448d00b56e'
-            'f99c0cfcca8f59e962d448c8794836993f2d43013043b8f22827e54a4c3ced8c')
+            'dd1f497805fecbaaa231d115234697f11ffe66ddc37b124326d4d83250b1d6a2')
 noextract=()
 build() {
   cd "$srcdir/$pkgname-$pkgver"

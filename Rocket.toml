@@ -1,7 +1,7 @@
 [production]
 address = "0.0.0.0"
 port = 80
-workers = [number_of_cpus * 2]
+# workers = [number_of_cpus * 2]
 log = "critical"
-secret_key = [randomly generated at launch]
+# secret_key = [randomly generated at launch]
 limits = { forms = 32768 }
