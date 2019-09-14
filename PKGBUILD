@@ -2,7 +2,7 @@
 
 pkgname=gnome-shell-dev
 _pkgname=gnome-shell
-pkgver=3.33.1
+pkgver=3.34.0
 pkgrel=1
 pkgdesc="Next generation desktop shell"
 url="https://gitlab.gnome.org/GNOME/gnome-shell"
@@ -12,7 +12,7 @@ depends=(accountsservice gcr gjs gnome-bluetooth upower gnome-session gnome-sett
          gnome-themes-extra gsettings-desktop-schemas libcanberra-pulse libcroco libgdm libsecret
          mutter-dev nm-connection-editor unzip gstreamer libibus)
 makedepends=(gtk-doc gnome-control-center evolution-data-server gobject-introspection git meson
-             sassc)
+             sassc asciidoc)
 optdepends=('gnome-control-center: System settings'
             'evolution-data-server: Evolution calendar integration')
 groups=(gnome)
