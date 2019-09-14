@@ -22,8 +22,3 @@ package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
 }
-
-#package() {
-#    mkdir -p ${pkgdir}/usr/bin
-#    install -m755 "${srcdir}/${pkgname}-${pkgver}/${pkgname}" ${pkgdir}/usr/bin
-#}
