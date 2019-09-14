@@ -3,7 +3,7 @@
 
 pkgname=unyaffs
 pkgver=0.9.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A program to extract files from a yaffs image"
 arch=("i686" "x86_64")
 url="https://git.bernhard-ehlers.de/ehlers/unyaffs"
