@@ -1,7 +1,7 @@
 pkgbase = adeskbar
 	pkgdesc = application launcher
 	pkgver = 0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/adcomp/adeskbar-0.5
 	arch = any
 	license = GPL
@@ -10,6 +10,10 @@ pkgbase = adeskbar
 	depends = pygtk
 	depends = python2-xdg
 	depends = gnome-menus
+	optdepends = python2-pyinotify: notifications
+	optdepends = python2-xlib: systray
+	optdepends = python2-wnck: tasklist/showdesktop/intellihide
+	optdepends = python2-power-git: baterry
 	source = adeskbar.sh
 	source = remove_launcher_menu.patch
 	source = adeskbar::git://github.com/adcomp/adeskbar-0.5#commit=7af984724eecc31ed9634457d73b5922d087729b
