@@ -1,0 +1,15 @@
+pkgbase = surfer-git
+	pkgdesc = simple webkit2gtk browser
+	pkgver = 4
+	pkgrel = 0
+	url = https://github.com/nihilowy/surfer
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = webkit2gtk
+	source = git+https://github.com/nihilowy/surfer.git
+	md5sums = SKIP
+
+pkgname = surfer-git
+
