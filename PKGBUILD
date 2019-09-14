@@ -3,7 +3,7 @@
 pkgname=zentile-git
 _pkgname="zentile"
 pkgver=r7.c4e3fe0
-pkgrel=1
+pkgrel=2
 pkgdesc="Automatic Tiling for EWMH Complaint Window Managers. Development version."
 arch=('any')
 url="https://github.com/blrsn/zentile"
@@ -52,5 +52,5 @@ build() {
 }
 
 package() {
-	sudo install -Dm755 "$srcdir/.go/bin/$_pkgname" "$_pkgdir/usr/bin/$_pkgname"
+	install -Dm755 "$srcdir/.go/bin/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
 }
