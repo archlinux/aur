@@ -1,22 +1,23 @@
 # Maintainer: Wesley Hershberger <mggmugginsmc at gmail>
 pkgname=aurum
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An AUR helper written in Rust"
 arch=('x86_64')
 url="https://gitlab.com/MggMuggins/aurum"
 license=('MIT')
-depends=('sudo' 'pacman' 'xz')
-makedepends=('cargo')
-conflicts=('aurum-git')
-source=("$pkgname::git+https://gitlab.com/MggMuggins/aurum.git")
+depends=('openssl')
+makedepends=('git' 'rust')
+source=("git+https://gitlab.com/MggMuggins/aurum.git#tag=v$pkgver")
 sha256sums=('SKIP')
 
+build() {
+    cd "$pkgname"
+    cargo build --release --locked
+}
+
 package() {
-    mkdir "$pkgdir/usr"
-    
-    # Not ideal (building in package())
-    cargo install --root="$pkgdir/usr" --version="$pkgver" aurum-cli
-    
-    rm "$pkgdir/usr/.crates.toml"
+    cd "$pkgname"
+    install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
+    install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
 }

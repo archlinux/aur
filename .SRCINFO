@@ -1,16 +1,14 @@
 pkgbase = aurum
 	pkgdesc = An AUR helper written in Rust
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/MggMuggins/aurum
 	arch = x86_64
 	license = MIT
-	makedepends = cargo
-	depends = sudo
-	depends = pacman
-	depends = xz
-	conflicts = aurum-git
-	source = aurum::git+https://gitlab.com/MggMuggins/aurum.git
+	makedepends = git
+	makedepends = rust
+	depends = openssl
+	source = git+https://gitlab.com/MggMuggins/aurum.git#tag=v0.1.0
 	sha256sums = SKIP
 
 pkgname = aurum
