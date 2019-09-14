@@ -6,7 +6,7 @@ projectname=skycoin
 pkgdesc="Skycoin Cryptocurrency Wallet"
 pkgver=0.26.0
 pkggopath="github.com/${projectname}/${pkgname1}"
-pkgrel=3
+pkgrel=4
 arch=('any')
 url="https://${pkggopath}"
 license=()
@@ -42,8 +42,8 @@ mipsel)   export GOARCH="mipsle" ;;
 	export GOBIN=${GOPATH}/bin
 	export PATH=${GOPATH}/bin:${PATH}
 	msg2 'installing go dependencies'
-	dep init
-	dep ensure
+	#dep init
+	#dep ensure
 	}
 
 build() {
