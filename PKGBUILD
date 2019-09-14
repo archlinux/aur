@@ -2,7 +2,7 @@
 
 pkgname=docker-userspace
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Docker in Username Space better isolation and security in case of file conflict you have to do it manually"
 arch=('x86_64')
 license=('GPL3')
