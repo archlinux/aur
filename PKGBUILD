@@ -3,9 +3,9 @@
 # Co-Maintainer: bartus <arch-user-repo@bartus.33mail.com>
 
 pkgname=inkscape-git
-pkgver=1.0+devel.r1.g1b5d3332f1
+pkgver=1.0+devel.r42.gbf052b6e7c
 pkgrel=1
-epoch=2
+epoch=3
 pkgdesc="An Open Source vector graphics editor, using SVG file format, from git master"
 url="https://gitlab.com/inkscape/inkscape"
 arch=('i686' 'x86_64')
