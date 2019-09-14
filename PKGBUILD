@@ -10,7 +10,7 @@ url="https://www.tuxnvape.fr/"
 depends=("docker")
 install=docker-userspace.install
 source=("https://github.com/Elrondo46/docker-userspace/archive/1.1.tar.gz")
-sha256sums=('fa3b8b548c55fc366f41624ed17d9443a108471ccb93f86eaad5089942a01a19')
+sha256sums=('fb9d91c634a080b5e7b7cfca2b69761a94f6a0b2e5082eca022a667fca81e540')
 
 package() {
         install -Dm644 "${srcdir}/${pkgname}-${pkgver}/subuid" "${pkgdir}/etc/subuid"
