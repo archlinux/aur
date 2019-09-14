@@ -1,0 +1,24 @@
+pkgbase = sni-modifier
+	pkgdesc = A socks5 proxy that modifies sni header to bypass https firewalls
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://github.com/poscat0x04/proxy
+	arch = x86_64
+	arch = i686
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = custom
+	makedepends = go
+	makedepends = easy-rsa
+	source = main.go
+	source = sni-modifier.service
+	source = LICENSE
+	source = sni-modifier.install
+	sha256sums = SKIP
+	sha256sums = 35a8f981f241472d81ac11a7c393dbcea9966c1027e874ae2e706e059de589fc
+	sha256sums = 0a8c70ca29638bbe9f8f26d523240525b62da7182cac8652fc7e315fc1ee4139
+	sha256sums = 2a66a962763091939a56353b9083e99872d419de7458f7cf034f5ec02b18494e
+
+pkgname = sni-modifier
+

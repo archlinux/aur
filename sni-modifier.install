@@ -1,0 +1,18 @@
+post_install() {
+        systemctl --quiet daemon-reload
+        systemctl --quiet preset sni-modifier.service
+}
+
+post_upgrade() {
+        systemctl --quiet daemon-reload
+        systemd-tmpfiles --create sni-modifier.conf
+        systemctl --quiet try-restart sni-modifier.service
+}
+
+pre_remove() {
+        systemctl --quiet --no-reload disable --now sni-modifier.service
+}
+
+post_remove() {
+        systemctl --quiet daemon-reload
+}

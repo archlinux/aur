@@ -1,0 +1,11 @@
+[Unit]
+Description=sni-modifier service
+After=network-online.target
+
+[Service]
+Type=simple
+User=nobody
+ExecStart=/usr/bin/sni-modifier
+
+[Install]
+WantedBy=multi-user.target
