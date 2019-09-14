@@ -6,7 +6,7 @@ pkgdesc="application launcher"
 arch=('any')
 url="https://github.com/adcomp/adeskbar-0.5"
 license=('GPL')
-depends=('python2' 'pygtk' 'python2-xdg')
+depends=('python2' 'pygtk' 'python2-xdg' 'gnome-menus')
 optdepends=('python2-pyinotify: notifications'
             'python2-xlib: systray'
             'python2-wnck: tasklist/showdesktop/intellihide'
