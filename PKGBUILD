@@ -1,60 +1,57 @@
-# Maintainer: Michael Bryant (Shadow53)
-# Contributer: Benjamin Colard <benjamin at colard dot be>
+#! /bin/bash
 
-pkgname=darkmod
-pkgver=2.05
-pkgrel=2
-pkgdesc="DOOM III standalone mod based on the Thief series by Looking Glass Studios"
-arch=('i686' 'x86_64')
-url="http://www.thedarkmod.com/"
-license=('CCPL')
+pkgname="darkmod"
+provides=("${pkgname}")
+conflicts=("${pkgname}")
 
-makedepends=('unzip' 'xterm')
-[ "$CARCH" == i686   ] && depends=('glew' 'libpng' 'libjpeg-turbo' 'libpng12' 'curl' 'libxxf86vm' 'libpulse')
+arch=("x86_64")
+pkgver=2.07.1
+pkgrel=1
 
-[ "$CARCH" == x86_64 ] && depends=('lib32-glew' 'lib32-libpng' 'lib32-libjpeg-turbo' 'lib32-libpng12' 'lib32-curl' 'lib32-libxxf86vm' 'lib32-libpulse' 'lib32-alsa-plugins')
+pkgdesc="First person forgery stealth game"
+license=("GPL3" "BSD" "CCPL")
+url="http://www.thedarkmod.com"
 
-source=(http://www.fidcal.com/darkuser/tdm_update_linux.zip
-        "$pkgname".desktop
-        "$pkgname".png
-        "$pkgname".sh)
+depends=("curl" "glew" "libjpeg-turbo" "libpng" "libpng12" "libpulse" "libxxf86vm" "openal")
+makedepends=("git")
+source=("git+https://gitlab.com/es20490446e/darkmod-linux-packager.git")
+md5sums=("SKIP")
 
-md5sums=('ec81603a288ff6d10fb0d5999ee2652c'
-         'bc6537224b60c4ccfd04a51d80e340c1'
-         '5309e528ce22f28ecc0e9781e43379e0'
-         '7230f47d04072a7473f823d6925af947')
 
-build() {
-  cd "$srcdir"
-  if [ ! -d "$srcdir/darkmod" ]; then
-    mkdir $srcdir/darkmod	
-  fi
-  cd darkmod
-  unzip -o $srcdir/tdm_update_linux.zip
-  chmod +x tdm_update.linux
-
-  # If you know which mirrors are closest to you, edit the
-  # tdm_mirrors.txt file and uncomment the keep mirrors argument
-  xterm -e $srcdir/darkmod/tdm_update.linux --noselfupdate #--keep-mirrors	
-  rm -f $srcdir/darkmod/{TheDarkMod.exe,tdm_update.exe,tdm_update.linux,tdm_mirrors.txt,ca-bundle.crt,crc_info.txt,tdm_update.log}
+build () {
+	"${srcdir}/darkmod-linux-packager/build.sh"
 }
 
-package() {
-  cd "$srcdir"/darkmod
 
-  install -m755 -d "$pkgdir"/opt/"$pkgname"/
-  install -m755 -d "$pkgdir"/usr/bin/
-  install -m755 -d "$pkgdir"/usr/share/{applications,icons,licenses/"$pkgname"}
-
-  cp -r * "$pkgdir"/opt/"$pkgname"/
-  find "$pkgdir"/opt/"$pkgname"/ -type d -exec chmod 755 {} \;
-  find "$pkgdir"/opt/"$pkgname"/ -type f -exec chmod 644 {} \;
-  chmod 755 "$pkgdir"/opt/"$pkgname"/thedarkmod.x86
-  install -DTm755 "$srcdir"/"$pkgname".sh "$pkgdir"/usr/bin/"$pkgname"
-
-  install -DTm644 LICENSE.txt "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
-  rm -f "$pkgdir"/opt/"$pkgname"/LICENSE.txt
-
-  install -Dm644 "$srcdir"/"$pkgname".png "$pkgdir"/usr/share/icons/
-  install -Dm644 "$srcdir"/"$pkgname".desktop "$pkgdir"/usr/share/applications/
+package () {
+	mv "${srcdir}/darkmod-linux-packager/build/usr" "${pkgdir}"
 }
+
+
+pkgver () {
+	Release=$(Release)
+	Revision=$(Revision "${Release}")
+	echo "${Release}${Revision}"
+}
+
+
+Release () {
+	curl --silent "http://www.thedarkmod.com/downloads/" |
+	grep "http://www.thedarkmod.com/sources/" |
+	sed -E 's/."([^"]+)"./\1/' |
+	cut --delimiter='/' --fields=5 |
+	cut --delimiter='.' --fields=2,3
+}
+
+
+Revision () {
+	Release="${1}"
+	Hotfix=$(
+		curl --silent "https://svn.thedarkmod.com/publicsvn/darkmod_src/tags/" |
+		grep "${Release}h")
+
+	if [ "${Hotfix}" != "" ]; then
+		echo ".1"
+	fi
+}
+
