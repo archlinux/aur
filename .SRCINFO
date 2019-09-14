@@ -1,0 +1,18 @@
+pkgbase = zentile-git
+	pkgdesc = Automatic Tiling for EWMH Complaint Window Managers. Development version.
+	pkgver = r7.c4e3fe0
+	pkgrel = 1
+	url = https://github.com/blrsn/zentile
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = go
+	optdepends = xorg-server: with EWMH Complaint Window Managers
+	provides = zentile
+	conflicts = bin32-zentile
+	conflicts = zentile-bin
+	source = zentile::git+https://github.com/blrsn/zentile.git
+	md5sums = SKIP
+
+pkgname = zentile-git
+
