@@ -1,7 +1,7 @@
 # Maintainer: Inochi Amaoto <libraryindexsky@gmail.com>
 
 pkgname=mpv-full-build-git
-pkgver=0.29.0.r373.gb539eb222b
+pkgver=0.29.0.r400.gebab42c9a8
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 with all possible libs (uses statically linked ffmpeg with all possible libs). (GIT version )"
 arch=('x86_64')
@@ -187,12 +187,9 @@ pkgver() {
 
 prepare() {
   cd mpv-build
-  rm -rf mpv
-  rm -rf ffmpeg
-  rm -rf libass
-  git clone "${srcdir}/mpv"
-  git clone "${srcdir}/ffmpeg"
-  git clone "${srcdir}/libass"
+  ln -sf -t . "../mpv"
+  ln -sf -t . "../ffmpeg"
+  ln -sf -t . "../libass"
 
   # Set ffmpeg/libass/mpv flags
   _ffmpeg_options=(
@@ -310,16 +307,13 @@ prepare() {
     '--disable-vapoursynth-lazy'
     '--lua=luajit'
     '--enable-alsa'
-    '--enable-audio-input'
     '--enable-caca'
     '--enable-cdda'
     '--enable-cplugins'
-    '--enable-cuda-hwaccel'
     '--enable-drm'
     '--enable-drmprime'
     '--enable-dvbin'
     '--enable-dvdnav'
-    '--enable-dvdread'
     '--enable-egl-drm'
     '--enable-egl-x11'
     '--enable-gbm'
@@ -340,7 +334,6 @@ prepare() {
     '--enable-libmpv-shared'
     '--enable-libplacebo'
     '--enable-libsmbclient'
-    '--enable-libv4l2'
     '--enable-lua'
     '--enable-manpage-build'
     '--enable-openal'
@@ -352,9 +345,6 @@ prepare() {
     '--enable-shaderc'
     '--enable-sndio'
     '--enable-spirv-cross'
-    '--enable-tv'
-    '--enable-tv'
-    '--enable-tv-v4l2'
     '--enable-uchardet'
     '--enable-vaapi'
     '--enable-vaapi-drm'
@@ -380,6 +370,13 @@ prepare() {
     # '--enable-libsmbclient'
     # '--enable-avresample'
 
+    # '--enable-audio-input'
+    # '--enable-dvdread'
+    # '--enable-libv4l2'
+    # '--enable-tv'
+    # '--enable-tv-v4l2'
+
+
   local _ffmpeg_cflags=''
   local _ffmpeg_ldflags=''
   if [ -z ${MPV_NO_CHECK_OPT_DEPEND+yes} ]; then
@@ -391,6 +388,7 @@ prepare() {
       _ffmpeg_options+=('--enable-libnpp')
       _ffmpeg_options+=('--extra-cflags=-I/opt/cuda/include')
       _ffmpeg_options+=('--extra-ldflags=-L/opt/cuda/lib64')
+      _mpv_options+=('--enable-cuda-hwaccel')
     fi
     if [ -f /usr/lib/libtensorflow.so ]; then
       _ffmpeg_options+=('--enable-libtensorflow')
