@@ -1,7 +1,7 @@
 # Maintainer: Kirill Goncharov <kdgoncharov at gmail dot com>
 pkgname=wasabi-wallet-bin
 _pkgname=wasabi-wallet
-pkgver=1.1.8
+pkgver=1.1.9
 pkgrel=1
 pkgdesc="Privacy focused, ZeroLink compliant Bitcoin wallet"
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=(
     "https://github.com/zkSNACKs/WalletWasabi/releases/download/v${pkgver}/Wasabi-${pkgver}.deb.asc"
     "https://raw.githubusercontent.com/zkSNACKs/WalletWasabi/v${pkgver}/LICENSE.md"
 )
-sha256sums=('2850b51e5fa4b0ab70fbe12cc84efc823c81d9679d5e32149544d6706c65edf8'
+sha256sums=('959f464edc238986800004d8c34ee3f40c7036bfab3bdbb1d3d7888b6197420c'
             'SKIP'
             '6a9baff873bf6e94c289047810e5c6954657cba1c5d46925691a9c2d3872ced0')
 # Run curl https://raw.githubusercontent.com/zkSNACKs/WalletWasabi/master/PGP.txt | gpg --import
