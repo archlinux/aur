@@ -4,15 +4,23 @@
 
 pkgname=libopenshot
 pkgver=0.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A high quality, open-source video editing, animation, and playback library for C++, Python, and Ruby."
 arch=('x86_64')
 url="https://openshot.org/"
 license=('LGPL3')
-depends=('libmagick6' 'ffmpeg' 'x264' 'libopenshot-audio' 'python' 'jsoncpp' 'qt5-multimedia' 'zeromq')
+depends=('libmagick6' 'ffmpeg' 'x264' 'libopenshot-audio' 'python' 'libjsoncpp.so' 'qt5-multimedia' 'zeromq')
 makedepends=('cmake' 'doxygen' 'swig' 'unittestpp')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/OpenShot/libopenshot/archive/v$pkgver.tar.gz")
-sha256sums=('8536b0a790b0d98ed4c3b10e11d1b34ae68ccbc710887e3703a5143d95598746')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/OpenShot/libopenshot/archive/v$pkgver.tar.gz"
+        "$pkgname-pr-209.patch::https://github.com/OpenShot/libopenshot/pull/209.patch")
+sha256sums=('8536b0a790b0d98ed4c3b10e11d1b34ae68ccbc710887e3703a5143d95598746'
+            '038b945763dc035ecffe0968a9f0f7a29bb86a3919f4192901d5f152eb5c7f89')
+
+prepare() {
+	cd ${pkgname}-${pkgver}
+
+	patch -p1 -i "$srcdir/$pkgname-pr-209.patch"
+}
 
 build() {
 	cd ${pkgname}-${pkgver}
