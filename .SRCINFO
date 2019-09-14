@@ -1,0 +1,13 @@
+pkgbase = bin
+	pkgdesc = A paste bin written in Rust.
+	pkgver = 1.0.2
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = WTFPL
+	makedepends = rust
+	source = https://github.com/w4/bin/archive/v1.0.2.tar.gz
+	sha256sums = c4f01275fc56e4ef7a61897fb18f9b09ff3cd8dbc2d475c09d7565b83b8370d3
+
+pkgname = bin
+
