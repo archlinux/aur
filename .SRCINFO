@@ -1,7 +1,8 @@
 pkgbase = bin
 	pkgdesc = A paste bin written in Rust.
 	pkgver = 1.0.2
-	pkgrel = 2
+	pkgrel = 3
+	url = https://github.com/w4/bin
 	arch = i686
 	arch = x86_64
 	license = WTFPL
