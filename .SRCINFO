@@ -1,6 +1,6 @@
 pkgbase = linux-ck
 	pkgver = 5.2.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.archlinux.org/index.php/Linux-ck
 	arch = x86_64
 	license = GPL2
@@ -19,6 +19,7 @@ pkgbase = linux-ck
 	source = http://ck.kolivas.org/patches/5.0/5.2/5.2-ck1/patch-5.2-ck1.xz
 	source = 0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
 	source = 0002-ZEN-Add-CONFIG-for-unprivileged_userns_clone.patch
+	source = 0003-Btrfs-fix-unwritten-extent-buffers-and-hangs-on-futu.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = c64d36477fee6a864a734ec417407768e60040a13f144c33208fa9622fd0ce8c
@@ -31,6 +32,7 @@ pkgbase = linux-ck
 	sha256sums = f1abc13a8d859fbf6350040e45d7f04ad551a6d39f113ba96fbbd820118c0e36
 	sha256sums = 91fafa76bf9cb32159ac7f22191b3589278b91e65bc4505cf2fc6013b8037bf3
 	sha256sums = 63e4378e69e2f23ed87af32a4951477a6d82d4ac0de2295db46502c8120da9d9
+	sha256sums = f45f8695a7fe308b7aaef874df0a51ce91ac47ef180adf0cc507b482aad2459f
 
 pkgname = linux-ck
 	pkgdesc = The Linux-ck kernel and modules with the ck1 patchset featuring MuQSS CPU scheduler v0.192
