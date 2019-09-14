@@ -50,8 +50,8 @@ mipsel)   export GOARCH="mipsle" ;;
 	export GOBIN=${GOPATH}/bin
 	export PATH=${GOPATH}/bin:${PATH}
 	msg2 'installing go dependencies'
-	dep init
-	dep ensure
+	#dep init
+	#dep ensure
 	}
 
 build() {
