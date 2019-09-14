@@ -1,7 +1,7 @@
 # Maintainer: Giacomo Comitti <dev@gcomit.com>
 pkgname=blkmenu
-pkgver=0.3
-_pkgname="${pkgname}-${pkgver}"
+pkgver=0.3.1
+_pkgname="_${pkgname}"
 pkgrel=1
 pkgdesc="Tiny curses wrapper around lsblk and udisksctl"
 arch=("i686" "x86_64")
@@ -15,7 +15,7 @@ source=("${_pkgname}::git+https://github.com/gcmt/blkmenu")
 sha1sums=("SKIP")
 
 pkgver() {
-	git -C "${_pkgname}" describe --tags | sed "s/-/./g"
+	git -C "${_pkgname}" describe --long --tags | sed "s/-/.r/;s/-/./g"
 }
 
 package() {
