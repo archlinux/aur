@@ -1,19 +1,20 @@
-# Maintainer: Eli Schwartz <eschwartz@archlinux.org>
-
-# Dummy package to replace AUR content that has been taken down
+# Contributor: ugaciaka <ugaciaka@gmail.com>
+# Maintainer : Frederic Bezies <fredbezies@gmail.com>
 
 pkgname=xsane2tess
 pkgver=1.0
-pkgrel=1
-pkgdesc="This package violates AUR guidelines"
+pkgrel=10
+pkgdesc="Script for OCR with tesseract and xsane"
 arch=('any')
-url="http://dev.null"
-license=('None')
-
-build() {
-    /bin/false
-}
+license=('unknown')
+install='xsane2tess.install'
+url="http://doc.ubuntu-fr.org/xsane2tess"
+depends=('tesseract' 'xsane' 'imagemagick')
+makedepends=('git')
+source=(git+https://github.com/FredBezies/xsane2tess.git)
+sha256sum=('SKIP')
 
 package() {
-    /bin/false
+  install -D -m755 ${startdir}/script ${pkgdir}/usr/bin/xsane2tess
 }
+

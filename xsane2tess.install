@@ -1,0 +1,5 @@
+post_install() {
+
+    echo "In order to make it work, launch XSane, go to Preferences / OCR and enter in OCR command line : xsane2tess -l fra"
+    echo "replace fra by eng for english, deu for german, ita for italian, and so on. Language list  : just look at /usr/share/tessdata/"
+}

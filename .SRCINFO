@@ -1,10 +1,16 @@
 pkgbase = xsane2tess
-	pkgdesc = This package violates AUR guidelines
+	pkgdesc = Script for OCR with tesseract and xsane
 	pkgver = 1.0
-	pkgrel = 1
-	url = http://dev.null
+	pkgrel = 10
+	url = http://doc.ubuntu-fr.org/xsane2tess
+	install = xsane2tess.install
 	arch = any
-	license = None
+	license = unknown
+	makedepends = git
+	depends = tesseract
+	depends = xsane
+	depends = imagemagick
+	source = git+https://github.com/FredBezies/xsane2tess.git
 
 pkgname = xsane2tess
 
