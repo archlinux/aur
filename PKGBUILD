@@ -4,7 +4,7 @@
 
 _pkgbase=amdmemorytweak
 pkgname=amdmemorytweak-git
-pkgver=37.5915978
+pkgver=38.43d122f
 pkgrel=1
 pkgdesc="Read and modify memory timings on AMD graphics cards"
 arch=('x86_64' 'i686')
