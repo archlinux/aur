@@ -65,7 +65,7 @@ _localmodcfg=
 pkgbase=linux-ck
 _srcver=5.2.14-arch1
 pkgver=${_srcver%-*}
-pkgrel=3
+pkgrel=4
 _ckpatchversion=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -82,7 +82,6 @@ source=(
   linux.preset   # standard config files for mkinitcpio ramdisk
   "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
   "http://ck.kolivas.org/patches/5.0/5.2/5.2-ck${_ckpatchversion}/$_ckpatch.xz"
-  fix_patch-5.2-ck1_for_systemd-detect-virt_containers.patch
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
   0002-ZEN-Add-CONFIG-for-unprivileged_userns_clone.patch
   0003-Btrfs-fix-unwritten-extent-buffers-and-hangs-on-futu.patch
@@ -99,7 +98,6 @@ sha256sums=('c64d36477fee6a864a734ec417407768e60040a13f144c33208fa9622fd0ce8c'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5'
             'f1abc13a8d859fbf6350040e45d7f04ad551a6d39f113ba96fbbd820118c0e36'
-            'c3215b4eaf707d1a7d783b1661e9df038f93605ad2ae7936238a8e2ed109ea75'
             '91fafa76bf9cb32159ac7f22191b3589278b91e65bc4505cf2fc6013b8037bf3'
             '63e4378e69e2f23ed87af32a4951477a6d82d4ac0de2295db46502c8120da9d9'
             'f45f8695a7fe308b7aaef874df0a51ce91ac47ef180adf0cc507b482aad2459f')
@@ -108,10 +106,6 @@ _kernelname=${pkgbase#linux}
 : ${_kernelname:=-ARCH}
 
 prepare() {
-  # fix for systemd-detect-virt containers
-  # https://bbs.archlinux.org/viewtopic.php?pid=1863567#p1863567
-  patch -i fix_patch-5.2-ck1_for_systemd-detect-virt_containers.patch
-
   cd linux-${pkgver}
 
   msg2 "Setting version..."
