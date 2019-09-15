@@ -15,7 +15,7 @@ _use_wayland=0           # Build Wayland NOTE: extremely experimental and don't 
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=78.0.3902.4
+pkgver=78.0.3904.9
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
 arch=('x86_64')
@@ -77,6 +77,7 @@ source=(
 
         # Misc Patches.
         'enable-vaapi.patch' # Use Saikrishna Arcot patch again :https://raw.githubusercontent.com/saiarcot895/chromium-ubuntu-build/a996c32c7ae7b369799b528daddb7be3c8b67de4/debian/patches/enable_vaapi_on_linux_2.diff'
+        'fix_vaapi_wayland.patch::https://patch-diff.githubusercontent.com/raw/Igalia/chromium/pull/517.patch' # Attemp to fix build if enable wayland
         # Patch from crbug.com (chromium bugtracker), chromium-review.googlesource.com / Gerrit or Arch chromium package.
         'chromium-widevine-r4.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/chromium-widevine.patch?h=packages/chromium'
         'chromium-skia-harmony-r2.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/chromium-skia-harmony.patch?h=packages/chromium'
@@ -90,6 +91,7 @@ sha256sums=(
 
             # Misc Patches
             '8f2a99fbd69b818856e44ecaedef44c4ef8d6b5ad24da8c1ba6e465b45596028'
+            '1b93388254c9d780365e4639d494bfa337a7924426c12f7362a1f7e8e7fad014'
             # Patch from crbug (chromium bugtracker) or Arch chromium package
             'd081f2ef8793544685aad35dea75a7e6264a2cb987ff3541e6377f4a3650a28b'
             '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1'
@@ -314,6 +316,13 @@ _keeplibs+=(
             'third_party/icu' # https://crbug.com/678661.
             )
 
+if [ "${_use_wayland}" = "1" ]; then
+  _keeplibs+=(
+           'third_party/minigbm'
+           'third_party/wayland'
+           )
+fi
+
 # Set build flags.
 _flags=(
         "custom_toolchain=\"//build/toolchain/linux/unbundle:default\""
@@ -339,8 +348,6 @@ _flags=(
         'enable_nacl=true'
         'enable_nacl_nonsfi=true'
         'use_custom_libcxx=true' # use true if you want use bundled RE2
-        'use_jumbo_build=false' # https://chromium.googlesource.com/chromium/src/+/lkcr/docs/jumbo.md
-#         'jumbo_file_merge_limit=30' # NOTE: test. more than 40 gets OOM in my dual xeon (64Gb ram) machine :/
         'use_vaapi=true'
         'enable_hevc_demuxing=true'
         'enable_ac3_eac3_audio_demuxing=true'
@@ -353,12 +360,13 @@ _flags=(
         'use_dbus=true'
         )
 
-if [ "${_wayland}" = "1" ]; then
+if [ "${_use_wayland}" = "1" ]; then
   _flags+=(
            'use_ozone=true'
            'use_xkbcommon=true'
-           'enable_package_mash_services=true'
-           'enable_vulkan_wayland_client=true'
+           'use_system_libdrm=true'
+           'use_system_libwayland=true'
+           "ozone_platform=\"x11\""
            )
 fi
 
@@ -497,6 +505,9 @@ prepare() {
   # Unbundle zlib
   sed 's|zlib:zlib_config|zlib:system_zlib|g' -i third_party/perfetto/gn/BUILD.gn
 
+  # Attemp to fix build with wayland
+  patch -p1 -i "${srcdir}/fix_vaapi_wayland.patch"
+
   # # Patch from Gentoo
 
 
@@ -600,13 +611,22 @@ package() {
 
   # Install libs.
   _libs=(
-         'libEGL.so'
-         'libGLESv2.so'
-         'libVkICD_mock_icd.so'
          'swiftshader/libEGL.so'
          'swiftshader/libGLESv2.so'
          'swiftshader/libvk_swiftshader.so'
          )
+  if [ "${_use_wayland}" = "1" ]; then
+    _libs+=(
+            'libminigbm.so'
+            )
+  elif [ "${_use_wayland}" = "0" ]; then
+    _libs+=(
+            'libEGL.so'
+            'libGLESv2.so'
+            'libVkICD_mock_icd.so'
+            )
+  fi
+
   for i in "${_libs[@]}"; do
     install -Dm755 "${i}" "${pkgdir}/usr/lib/chromium-dev/${i}"
     strip $STRIP_SHARED "${pkgdir}/usr/lib/chromium-dev/${i}"
@@ -619,8 +639,14 @@ package() {
           'icudtl.dat' # https://crbug.com/678661.
           'MEIPreload/manifest.json'
           'MEIPreload/preloaded_data.pb'
-          'angledata/VkICD_mock_icd.json'
           )
+
+  if [ "${_use_wayland}" = "0" ]; then
+    _blobs+=(
+             'angledata/VkICD_mock_icd.json'
+             )
+  fi
+
   for i in "${_blobs[@]}"; do
     install -Dm644 "${i}" "${pkgdir}/usr/lib/chromium-dev/${i}"
   done
