@@ -1,0 +1,15 @@
+pkgbase = python-estnin
+	pkgdesc = library for working with Estonian national identity numbers
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/antirais/estnin
+	arch = any
+	license = MIT
+	makedepends = python-pip
+	depends = python
+	noextract = estnin-1.0.1-py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py3/e/estnin/estnin-1.0.1-py3-none-any.whl
+	md5sums = 677a7379437f260bf69053ad8c315d93
+
+pkgname = python-estnin
+
