@@ -65,7 +65,7 @@ _localmodcfg=
 pkgbase=linux-ck
 _srcver=5.2.14-arch1
 pkgver=${_srcver%-*}
-pkgrel=2
+pkgrel=3
 _ckpatchversion=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -82,6 +82,7 @@ source=(
   linux.preset   # standard config files for mkinitcpio ramdisk
   "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
   "http://ck.kolivas.org/patches/5.0/5.2/5.2-ck${_ckpatchversion}/$_ckpatch.xz"
+  fix_patch-5.2-ck1_for_systemd-detect-virt_containers.patch
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
   0002-ZEN-Add-CONFIG-for-unprivileged_userns_clone.patch
   0003-Btrfs-fix-unwritten-extent-buffers-and-hangs-on-futu.patch
@@ -98,6 +99,7 @@ sha256sums=('c64d36477fee6a864a734ec417407768e60040a13f144c33208fa9622fd0ce8c'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5'
             'f1abc13a8d859fbf6350040e45d7f04ad551a6d39f113ba96fbbd820118c0e36'
+            'c3215b4eaf707d1a7d783b1661e9df038f93605ad2ae7936238a8e2ed109ea75'
             '91fafa76bf9cb32159ac7f22191b3589278b91e65bc4505cf2fc6013b8037bf3'
             '63e4378e69e2f23ed87af32a4951477a6d82d4ac0de2295db46502c8120da9d9'
             'f45f8695a7fe308b7aaef874df0a51ce91ac47ef180adf0cc507b482aad2459f')
@@ -106,6 +108,10 @@ _kernelname=${pkgbase#linux}
 : ${_kernelname:=-ARCH}
 
 prepare() {
+  # fix for systemd-detect-virt containers
+  # https://bbs.archlinux.org/viewtopic.php?pid=1863567#p1863567
+  patch -i fix_patch-5.2-ck1_for_systemd-detect-virt_containers.patch
+
   cd linux-${pkgver}
 
   msg2 "Setting version..."
@@ -113,17 +119,11 @@ prepare() {
   echo "-$pkgrel" > localversion.10-pkgrel
   echo "$_kernelname" > localversion.20-pkgname
 
-  # fix naming schema in EXTRAVERSION of ck patch set
-  sed -i -re "s/^(.EXTRAVERSION).*$/\1 = /" "../${_ckpatch}"
-
-  msg2 "Patching with ck patchset..."
-  patch -Np1 -i "$srcdir/${_ckpatch}"
-
   local src
   for src in "${source[@]}"; do
     src="${src%%::*}"
     src="${src##*/}"
-    [[ $src = *.patch ]] || continue
+    [[ $src = 00*.patch ]] || continue
     msg2 "Applying patch $src..."
     patch -Np1 < "../$src"
   done
@@ -134,6 +134,16 @@ prepare() {
   # https://bbs.archlinux.org/viewtopic.php?pid=1824594#p1824594
   sed -i -e 's/# CONFIG_PSI_DEFAULT_DISABLED is not set/CONFIG_PSI_DEFAULT_DISABLED=y/' ./.config
 
+  # https://bbs.archlinux.org/viewtopic.php?pid=1863567#p1863567
+  sed -i -e '/CONFIG_LATENCYTOP=/ s,y,n,' \
+      -i -e '/CONFIG_SCHED_DEBUG=/ s,y,n,' ./.config
+
+  # fix naming schema in EXTRAVERSION of ck patch set
+  sed -i -re "s/^(.EXTRAVERSION).*$/\1 = /" "../${_ckpatch}"
+
+  msg2 "Patching with ck patchset..."
+  patch -Np1 -i ../"${_ckpatch}"
+  
   # https://github.com/graysky2/kernel_gcc_patch
   msg2 "Applying enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v4.13+.patch ..."
   patch -Np1 -i "$srcdir/kernel_gcc_patch-$_gcc_more_v/enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v4.13+.patch"
