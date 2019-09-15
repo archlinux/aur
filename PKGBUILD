@@ -4,10 +4,10 @@ pkgdesc="ROS - This package attempts to show the features of ROS python API step
 url='https://www.wiki.ros.org/rospy_tutorials'
 
 pkgname='ros-melodic-rospy-tutorials'
-pkgver='0.9.0'
+pkgver='0.9.1'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=0
 license=('BSD')
 
 ros_makedepends=(
@@ -33,9 +33,9 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="ros_tutorials-release-release-melodic-rospy_tutorials-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_tutorials-release/archive/release/melodic/rospy_tutorials/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('ebda2e7d90130d78a2cc812bc4c8e501e2d675930e91a426a99fc43c583dbe2c')
+_dir="ros_tutorials-${pkgver}/rospy_tutorials"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/ros_tutorials/archive/${pkgver}.tar.gz")
+sha256sums=('b39929a2ac912326fc114256e755fff5d0f0e5e5e7c99640d013eb7f916b85f4')
 
 build() {
 	# Use ROS environment variables.

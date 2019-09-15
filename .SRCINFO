@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-rospy-tutorials
 	pkgdesc = ROS - This package attempts to show the features of ROS python API step-by-step, including using messages, servers, parameters, etc.
-	pkgver = 0.9.0
-	pkgrel = 1
+	pkgver = 0.9.1
+	pkgrel = 0
 	url = https://www.wiki.ros.org/rospy_tutorials
 	arch = any
 	license = BSD
@@ -14,8 +14,8 @@ pkgbase = ros-melodic-rospy-tutorials
 	depends = ros-melodic-message-runtime
 	depends = ros-melodic-rospy
 	depends = ros-melodic-std-msgs
-	source = ros-melodic-rospy-tutorials-0.9.0-0.tar.gz::https://github.com/ros-gbp/ros_tutorials-release/archive/release/melodic/rospy_tutorials/0.9.0-0.tar.gz
-	sha256sums = ebda2e7d90130d78a2cc812bc4c8e501e2d675930e91a426a99fc43c583dbe2c
+	source = ros-melodic-rospy-tutorials-0.9.1.tar.gz::https://github.com/ros/ros_tutorials/archive/0.9.1.tar.gz
+	sha256sums = b39929a2ac912326fc114256e755fff5d0f0e5e5e7c99640d013eb7f916b85f4
 
 pkgname = ros-melodic-rospy-tutorials
 
