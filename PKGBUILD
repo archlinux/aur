@@ -4,10 +4,10 @@ pkgdesc="ROS - This package allows you to publish the state of a robot to tf."
 url='https://wiki.ros.org/robot_state_publisher'
 
 pkgname='ros-melodic-robot-state-publisher'
-pkgver='1.13.6'
+pkgver='1.14.0'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=0
 license=('BSD')
 
 ros_makedepends=(
@@ -49,9 +49,9 @@ depends=(
 	eigen3
 )
 
-_dir="robot_state_publisher-release-release-melodic-robot_state_publisher-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/robot_state_publisher-release/archive/release/melodic/robot_state_publisher/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('6c7097ebd829c690bd5b55296eb4b48ae434f2c75c0e20647f78e716aa56dd74')
+_dir="robot_state_publisher-${pkgver}"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/robot_state_publisher/archive/${pkgver}.tar.gz")
+sha256sums=('9e328e96a6f798215472fa3c462b8fe77e6dad768a3eda4afedaf3caddb296c1')
 
 build() {
 	# Use ROS environment variables.
