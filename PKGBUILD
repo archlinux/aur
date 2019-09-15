@@ -5,7 +5,7 @@
 
 pkgname=aspell-sk
 pkgver=2.02
-pkgrel=1
+pkgrel=2
 pkgdesc="Slovak dictionary for aspell"
 arch=('any')
 url="http://www.sk-spell.sk.cx/aspell-sk"
