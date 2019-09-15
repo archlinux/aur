@@ -1,7 +1,7 @@
 # Maintainer: Poscat <poscat@mail.poscat.moe>
 
 pkgname=sni-modifier
-pkgver=0.0.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="A socks5 proxy that modifies sni header to bypass https firewalls"
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
@@ -12,7 +12,7 @@ source=("main.go"
         "sni-modifier.service"
         "LICENSE"
         "sni-modifier.install")
-sha256sums=("0af1cf56a1b6e071b7c7d8518eb0a1cf700c92a074d6ff2bf7f43817cb9dab63"
+sha256sums=("c3528d2ec9a47113abab24d1c6b22cfe599c15d14a28dadabb71ea7b8b527379"
             "2f4f17fa1e7ba462f65aaac3057e64fb3d3b3603978f45a8574b5f104f9d3edd"
             "0a8c70ca29638bbe9f8f26d523240525b62da7182cac8652fc7e315fc1ee4139"
             "2a66a962763091939a56353b9083e99872d419de7458f7cf034f5ec02b18494e")

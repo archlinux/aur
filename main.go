@@ -238,9 +238,12 @@ func forward443(ctx context.Context, network, addr string) (net.Conn, error) {
 			}
 		}
 		if err != nil {
-			log.Infof("%s is IP-blocked", host)
-			lock.Unlock()
-			return nil, err
+			i, err = tls.DialWithDialer(d, "tcp", host+":443", config)
+			if err != nil {
+				log.Infof("%s is IP-blocked", host)
+				lock.Unlock()
+				return nil, err
+			}
 		}
 	}
 	lock.Unlock()
