@@ -7,7 +7,7 @@ pkgname='ros-melodic-image-geometry'
 pkgver='1.13.0'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -31,9 +31,9 @@ depends=(
 	opencv
 )
 
-_dir="vision_opencv-release-release-melodic-image_geometry-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/vision_opencv-release/archive/release/melodic/image_geometry/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('f1f06fc227662b34743a3391431538326fa3c8833c7ab47b6b1eeeeb631082e2')
+_dir="vision_opencv-${pkgver}/image_geometry"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-perception/vision_opencv/archive/${pkgver}.tar.gz")
+sha256sums=('c8db35dbb6b470cdedb45195f725bc2cfda7f0dc3155e16a5a37e4b48e29fa59')
 
 build() {
 	# Use ROS environment variables.
