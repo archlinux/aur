@@ -7,7 +7,7 @@ pkgname='ros-melodic-qt-gui'
 pkgver='0.3.11'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -32,9 +32,9 @@ depends=(
 	tango-icon-theme
 )
 
-_dir="qt_gui_core-release-release-melodic-qt_gui-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/qt_gui_core-release/archive/release/melodic/qt_gui/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('4a87192e0c9880e2d7d14b67c3ee5d156a5bc6d1e11f8e4a23a3ced3d74e57b1')
+_dir="qt_gui_core-${pkgver}/qt_gui"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/qt_gui_core/archive/${pkgver}.tar.gz")
+sha256sums=('708873d6b5a2e4543435e8a1a2349de8eb41937aaf78b9dbcbe08b4a1dc12da2')
 
 build() {
 	# Use ROS environment variables.
