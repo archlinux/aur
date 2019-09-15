@@ -1,4 +1,4 @@
-# Maintainer: Matej Groma <matejgroma@gmail.com>
+# Maintainer: Matej Groma <sbovdvvnir68a8hftegth9whs+arch-aur@matejgroma.com>
 # Contributor: Jordi De Groof <jordi.degroof@gmail.com>
 
 pkgname=mkinitcpio-numlock
