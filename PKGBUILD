@@ -7,7 +7,7 @@ pkgname='ros-melodic-rqt-bag-plugins'
 pkgver='0.4.12'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -39,9 +39,9 @@ depends=(
 	python-cairo
 )
 
-_dir="rqt_bag-release-release-melodic-rqt_bag_plugins-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rqt_bag-release/archive/release/melodic/rqt_bag_plugins/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('03951bd0c5ee306b14adec3e97a71804e35aed94d2d7a135c0cea5fb58cf87c7')
+_dir="rqt_bag-${pkgver}/rqt_bag_plugins"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/rqt_bag/archive/${pkgver}.tar.gz")
+sha256sums=('99038e0053546f7a4eaff1ff0df3f206494eca254324325cfc315aad5507443a')
 
 build() {
 	# Use ROS environment variables.
