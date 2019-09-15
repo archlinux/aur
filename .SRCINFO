@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-eigen-conversions
 	pkgdesc = ROS - Conversion functions between: - Eigen and KDL - Eigen and geometry_msgs.
 	pkgver = 1.12.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/eigen_conversions
 	arch = any
 	license = BSD
@@ -16,8 +16,8 @@ pkgbase = ros-melodic-eigen-conversions
 	depends = ros-melodic-std-msgs
 	depends = ros-melodic-geometry-msgs
 	depends = eigen3
-	source = ros-melodic-eigen-conversions-1.12.0-0.tar.gz::https://github.com/ros-gbp/geometry-release/archive/release/melodic/eigen_conversions/1.12.0-0.tar.gz
-	sha256sums = 6485f64dd54db8430e4aacfa15b0d09b575aff8cfcf4ad24f946e090004521ad
+	source = ros-melodic-eigen-conversions-1.12.0.tar.gz::https://github.com/ros/geometry/archive/1.12.0.tar.gz
+	sha256sums = 61a278bdd50e00ea442055d9f70eaf82b5a36916739edca188fa1b71a59507b4
 
 pkgname = ros-melodic-eigen-conversions
 
