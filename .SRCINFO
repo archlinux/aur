@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-tuw-airskin-msgs
 	pkgdesc = ROS - The tuw_airskin_msgs package.
-	pkgver = 0.0.6
+	pkgver = 0.0.13
 	pkgrel = 1
 	url = https://github.com/tuw-robotics/tuw_msgs
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = ros-melodic-tuw-airskin-msgs
 	depends = ros-melodic-message-runtime
 	depends = ros-melodic-geometry-msgs
 	depends = ros-melodic-std-msgs
-	source = ros-melodic-tuw-airskin-msgs-0.0.6-0.tar.gz::https://github.com/tuw-robotics/tuw_msgs-release/archive/release/melodic/tuw_airskin_msgs/0.0.6-0.tar.gz
-	sha256sums = fe5a7ec98c973c5b2eb3fee0f4a966084ad90b5f10d7a9205b220b4d84caa5fb
+	source = ros-melodic-tuw-airskin-msgs-0.0.13.tar.gz::https://github.com/tuw-robotics/tuw_msgs/archive/0.0.13.tar.gz
+	sha256sums = b22f12be8014a8855cd179d228ae5312102da4b3d176979f66f13e258cc418b6
 
 pkgname = ros-melodic-tuw-airskin-msgs
 
