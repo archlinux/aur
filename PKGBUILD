@@ -3,7 +3,7 @@
 
 pkgname=pi-hole-server
 _pkgname=pi-hole
-pkgver=4.3.1
+pkgver=4.3.2
 pkgrel=1
 _wwwpkgname=AdminLTE
 _wwwpkgver=4.3
@@ -40,10 +40,10 @@ source=(pihole-$pkgver.tar.gz::https://github.com/$_pkgname/$_pkgname/archive/v$
 	    piholeDebug.sh
 )
 
-md5sums=('3973f2a9d7fcd6ea10265feaa397f108'
+md5sums=('33ea26a46937a0b5d20037639eb0ee34'
          '670e5c4c4ca0cba6f732bf622918784c'
-         'e7bd89ed7b60cda7905176d338615c00'
-         'f5fd7abfcf0ffdbfd181d839fb8edd60'
+         '904b62c2053380b44eba47af015f2d6a'
+         '4ade3c130b0379d0b2c4bcb411f8a624'
          '4d9038588164bb9130c8ca11653f83f3'
          '971cc2859672341d77f8deba702fb7f7'
          'b63fcf29c29796023a2677bcf2b369a7'
