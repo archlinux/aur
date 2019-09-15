@@ -4,7 +4,7 @@ pkgdesc="ROS - rosbuild contains scripts for managing the CMake-based build syst
 url='https://wiki.ros.org/rosbuild'
 
 pkgname='ros-melodic-rosbuild'
-pkgver='1.14.4'
+pkgver='1.14.6'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -31,9 +31,9 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="ros-release-release-melodic-rosbuild-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros-release/archive/release/melodic/rosbuild/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('eec79bbf61ec0af498d7227f714d7b96e0be0e65a0c00bdb1b46ba779a1d8eab')
+_dir="ros-${pkgver}/rosbuild"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/ros/archive/${pkgver}.tar.gz")
+sha256sums=('62f1350271a76bc35794c2cdb741cdae2ba096c96a924dba025aed4f561c978c')
 
 build() {
 	# Use ROS environment variables.
