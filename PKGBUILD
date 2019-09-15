@@ -7,7 +7,7 @@ pkgname='ros-melodic-image-rotate'
 pkgver='1.12.23'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -45,9 +45,9 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="image_pipeline-release-release-melodic-image_rotate-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/image_pipeline-release/archive/release/melodic/image_rotate/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('300158018b97ce2b2f3cdfac00889d443b74165b3fb49105317148c76657638a')
+_dir="image_pipeline-${pkgver}/image_rotate"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-perception/image_pipeline/archive/${pkgver}.tar.gz")
+sha256sums=('0b024f155f79f16982b31951ad0b1bde5440159b0ba6b1128ecbe2e867a2e357')
 
 build() {
 	# Use ROS environment variables.
