@@ -4,10 +4,10 @@ pkgdesc="ROS - This package retrieves data from url-format files such as http://
 url='https://wiki.ros.org/resource_retriever'
 
 pkgname='ros-melodic-resource-retriever'
-pkgver='1.12.4'
+pkgver='1.12.5'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=0
 license=('BSD')
 
 ros_makedepends=(
@@ -36,9 +36,9 @@ depends=(
 	curl
 )
 
-_dir="resource_retriever-release-release-melodic-resource_retriever-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/resource_retriever-release/archive/release/melodic/resource_retriever/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('568a6d1f0bd3a0c6e4c26b6e6524bc14a282df35a6b3ea1720e37591aaf024a1')
+_dir="resource_retriever-${pkgver}"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/resource_retriever/archive/${pkgver}.tar.gz")
+sha256sums=('a0ffbfb29924fb2ea6ef13868a23393d2657ea6bb2053c735d03b94b0d29527c')
 
 build() {
 	# Use ROS environment variables.
