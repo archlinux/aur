@@ -1,7 +1,7 @@
 # Contributor: Jake Mannens <jakem_5@hotmail.com>
 pkgname=powertool
-pkgver=0.1
-pkgrel=2
+pkgver=0.2
+pkgrel=1
 pkgdesc="A simple power management script"
 arch=('any')
 url="https://gitlab.com/plasmicplexus/powertool"
@@ -13,7 +13,7 @@ optdepends=('brightnessctl: brightness control'
             'networkmanager: WiFi control'
             'tpacpi-bat: battery charge thresholds')
 source=("https://gitlab.com/plasmicplexus/powertool/-/archive/$pkgver/powertool-$pkgver.tar.gz")
-md5sums=('d9015fecbf5a803323db745fd6a2bcd9')
+md5sums=('aa62793fa3e16bd429cc65033c1a6d2d')
 
 package() {
     cd "$pkgname-$pkgver"
