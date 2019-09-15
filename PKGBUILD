@@ -4,8 +4,7 @@ pkgdesc="ROS - This package provides a script that launches Emacs with Slime (th
 url='https://wiki.ros.org/roslisp_repl'
 
 pkgname='ros-melodic-roslisp-repl'
-pkgver='0.4.12'
-_pkgver_patch=0
+pkgver='0.4.13'
 arch=('any')
 pkgrel=1
 license=('Public domain')
@@ -28,9 +27,9 @@ depends=(${ros_depends[@]}
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="ros_emacs_utils-release-release-melodic-roslisp_repl-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/code-iai-release/ros_emacs_utils-release/archive/release/melodic/roslisp_repl/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('990a1af10fe48b76c89e5295d840a5db45f9b8f303ce0dc1d5dd91fa72a4f23f')
+_dir="ros_emacs_utils-${pkgver}/roslisp_repl"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/code-iai/ros_emacs_utils/archive/${pkgver}.tar.gz")
+sha256sums=('14c8463b3c354a53659843c82af416a4ff6713747f04da98e8fc39de90c8ec6c')
 
 build() {
   # Use ROS environment variables
