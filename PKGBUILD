@@ -5,7 +5,7 @@
 
 pkgname=buildbot
 pkgdesc='The Continuous Integration Framework'
-pkgver=2.4.0
+pkgver=2.4.1
 pkgrel=1
 arch=(any)
 url='https://buildbot.net'
@@ -24,11 +24,12 @@ optdepends=(
   'python-treq: for using HTTP requests as steps'
   'python-txrequests: for using HTTP requests as steps'
   'python-pyopenssl: to use SSL/TLS in mail or IRC notifiers'
+  'python-docker: for Docker latent worker'
   'pass: to use SecretInPass provider'
   'vault: to use SecretInVault provider'
 )
 source=("https://github.com/buildbot/buildbot/releases/download/v$pkgver/buildbot-v$pkgver.gitarchive.tar.gz"{,.sig})
-sha256sums=('a865074e4874f20e11990ab5c65f87276b2bce9f7c29ca5b3b0da53ae51afbfd'
+sha256sums=('6237a4c61a6208324ca246b328ba01660fa40a40cce20430963b33901cd80672'
             'SKIP')
 validpgpkeys=(
   '390EB159056ED56F66AB1092AECD456B4D2531FC'  # Pierre Tardy <tardyp@gmail.com> (@tardyp on GitHub)
