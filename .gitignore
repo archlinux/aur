@@ -1,0 +1,5 @@
+*.pkg.tar.xz
+rlpr-*.tar.gz
+
+pkg/
+src/

@@ -1,0 +1,11 @@
+--- src/util.c
++++ src/util.c
+@@ -413,7 +413,7 @@
+     int			retval;
+     int			orig_flags;
+     int			error = 0;
+-    size_t		error_len = sizeof (int);
++    socklen_t		error_len = sizeof (int);
+     fd_set		fds;
+     struct timeval	tv;
+ 
