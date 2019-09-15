@@ -7,7 +7,7 @@ pkgname='ros-melodic-polled-camera'
 pkgver='1.11.13'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -37,9 +37,9 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="image_common-release-release-melodic-polled_camera-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/image_common-release/archive/release/melodic/polled_camera/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('87717ae0569b27aeccb0c84c372ef5e5b16ea23e4549f918d7a2ad1ba88464f3')
+_dir="image_common-${pkgver}/polled_camera"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-perception/image_common/archive/${pkgver}.tar.gz")
+sha256sums=('32a2e07724dec6eaaace21eae006274436d70d40bfe205249438570275c43cac')
 
 build() {
 	# Use ROS environment variables.
