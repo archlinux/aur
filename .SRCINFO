@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-mavros-extras
 	pkgdesc = ROS - Extra nodes and plugins for MAVROS.
-	pkgver = 0.26.3
+	pkgver = 0.32.2
 	pkgrel = 1
 	url = https://wiki.ros.org/mavros_extras
 	arch = any
@@ -27,8 +27,8 @@ pkgbase = ros-melodic-mavros-extras
 	depends = ros-melodic-mavros
 	depends = ros-melodic-visualization-msgs
 	depends = ros-melodic-sensor-msgs
-	source = ros-melodic-mavros-extras-0.26.3-0.tar.gz::https://github.com/mavlink/mavros-release/archive/release/melodic/mavros_extras/0.26.3-0.tar.gz
-	sha256sums = 74bc1807d8ea3db66f529238cd274f73b03001b8e114dbc024c911993841aad5
+	source = ros-melodic-mavros-extras-0.32.2.tar.gz::https://github.com/mavlink/mavros/archive/0.32.2.tar.gz
+	sha256sums = d5e04661f88896a9a77f22a083023ce5e8e13dd71c1f8f1b7d5e187b3bf6c4f8
 
 pkgname = ros-melodic-mavros-extras
 

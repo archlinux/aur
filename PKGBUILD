@@ -4,8 +4,7 @@ pkgdesc="ROS - Extra nodes and plugins for MAVROS."
 url='https://wiki.ros.org/mavros_extras'
 
 pkgname='ros-melodic-mavros-extras'
-pkgver='0.26.3'
-_pkgver_patch=0
+pkgver='0.32.2'
 arch=('any')
 pkgrel=1
 license=('GPLv3, LGPLv3, BSD')
@@ -42,9 +41,9 @@ depends=(${ros_depends[@]})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="mavros-release-release-melodic-mavros_extras-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/mavlink/mavros-release/archive/release/melodic/mavros_extras/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('74bc1807d8ea3db66f529238cd274f73b03001b8e114dbc024c911993841aad5')
+_dir="mavros-${pkgver}/mavros_extras"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/mavlink/mavros/archive/${pkgver}.tar.gz")
+sha256sums=('d5e04661f88896a9a77f22a083023ce5e8e13dd71c1f8f1b7d5e187b3bf6c4f8')
 
 build() {
   # Use ROS environment variables
