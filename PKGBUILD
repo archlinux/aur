@@ -7,7 +7,7 @@ pkgname='ros-melodic-rqt-graph'
 pkgver='0.4.10'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -39,9 +39,9 @@ depends=(
 	python-rospkg
 )
 
-_dir="rqt_graph-release-release-melodic-rqt_graph-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rqt_graph-release/archive/release/melodic/rqt_graph/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('42392c916b12e8c40f044840f42090981ae5bdf5925bcaccd716416e2aace427')
+_dir="rqt_graph-${pkgver}"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/rqt_graph/archive/${pkgver}.tar.gz")
+sha256sums=('fe10331840b1c861e600d0d47669e5e02c3803d61e21e00b1378ff06038134ec')
 
 build() {
 	# Use ROS environment variables.
