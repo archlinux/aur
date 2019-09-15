@@ -1,12 +1,12 @@
 # Maintainer: James Pike <github@chilon.net>
 pkgname=fzu-git
-pkgver=r310.eda33da
-pkgrel=2
+pkgver=r393.27d9655
+pkgrel=1
 pkgdesc="A fuzzy text selector menu for the terminal"
 arch=('i686' 'x86_64')
 url="https://github.com/ohjames/fzu"
 license=('custom:MIT')
-depends=('glibc' 'libconfig')
+depends=('glibc' 'libconfig' 'libxdg-basedir')
 makedepends=('git')
 provides=('fzu')
 conflicts=('fzu')
