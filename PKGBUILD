@@ -7,7 +7,7 @@ pkgname='ros-melodic-rqt-robot-steering'
 pkgver='0.5.9'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -33,9 +33,9 @@ depends=(
 	python-rospkg
 )
 
-_dir="rqt_robot_steering-release-release-melodic-rqt_robot_steering-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rqt_robot_steering-release/archive/release/melodic/rqt_robot_steering/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('88c3867ac42fc3ad6533f1fabc58ab169a1f3d4cbe9ae0e165edae28ad5b4df4')
+_dir="rqt_robot_steering-${pkgver}"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/rqt_robot_steering/archive/${pkgver}.tar.gz")
+sha256sums=('46586ae0c43b40ac3a72eaf90a61ea7cd8192da6d83898234b49abf8b7df3048')
 
 build() {
 	# Use ROS environment variables.
