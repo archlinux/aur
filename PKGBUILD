@@ -7,7 +7,7 @@ pkgname='ros-melodic-cv-bridge'
 pkgver='1.13.0'
 _pkgver_patch=0
 arch=('any')
-pkgrel=0
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -39,9 +39,9 @@ depends=(
 	opencv3-opt
 )
 
-_dir="vision_opencv-release-release-melodic-cv_bridge-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/vision_opencv-release/archive/release/melodic/cv_bridge/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('fb812741718a40399f538eaef7c887b79004afcdbe0271b3258c5c8ee9c55023')
+_dir="vision_opencv-${pkgver}/cv_bridge"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-perception/vision_opencv/archive/${pkgver}.tar.gz")
+sha256sums=('c8db35dbb6b470cdedb45195f725bc2cfda7f0dc3155e16a5a37e4b48e29fa59')
 
 build() {
 	# Use ROS environment variables.
