@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-slime-ros
 	pkgdesc = ROS - Extensions for slime to assist in working with ROS packages.
-	pkgver = 0.4.12
+	pkgver = 0.4.13
 	pkgrel = 1
 	url = https://wiki.ros.org/slime_ros
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = ros-melodic-slime-ros
 	depends = ros-melodic-rosemacs
 	depends = ros-melodic-roslisp
 	depends = sbcl
-	source = ros-melodic-slime-ros-0.4.12-0.tar.gz::https://github.com/code-iai-release/ros_emacs_utils-release/archive/release/melodic/slime_ros/0.4.12-0.tar.gz
-	sha256sums = 2f6c34e79dc6cd7fed073e0a37674682298280150c52a85c052de983daf899fc
+	source = ros-melodic-slime-ros-0.4.13.tar.gz::https://github.com/code-iai/ros_emacs_utils/archive/0.4.13.tar.gz
+	sha256sums = 14c8463b3c354a53659843c82af416a4ff6713747f04da98e8fc39de90c8ec6c
 
 pkgname = ros-melodic-slime-ros
 
