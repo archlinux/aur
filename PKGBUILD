@@ -7,7 +7,7 @@ pkgname='ros-melodic-desktop-full'
 pkgver='1.4.1'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-catkin)
@@ -27,9 +27,9 @@ depends=(${ros_depends[@]})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="metapackages-release-release-melodic-desktop_full-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/metapackages-release/archive/release/melodic/desktop_full/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('236064fd3c4cccc5327f1ac4c951c70762a1f6c88e9faa521251f78e26ea987b')
+_dir="metapackages-${pkgver}/desktop_full"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/metapackages/archive/${pkgver}.tar.gz")
+sha256sums=('ef1df96c61c9762555174cc1a0e21e05149f74909d27044be0cd10aa065747a1')
 
 build() {
   # Use ROS environment variables
