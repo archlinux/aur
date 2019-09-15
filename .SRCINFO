@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-image-publisher
 	pkgdesc = ROS - Contains a node publish an image stream from single image file or avi motion file.
 	pkgver = 1.12.23
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/image_publisher
 	arch = any
 	license = BSD
@@ -22,8 +22,8 @@ pkgbase = ros-melodic-image-publisher
 	depends = ros-melodic-roscpp
 	depends = ros-melodic-sensor-msgs
 	depends = ros-melodic-image-transport
-	source = ros-melodic-image-publisher-1.12.23-0.tar.gz::https://github.com/ros-gbp/image_pipeline-release/archive/release/melodic/image_publisher/1.12.23-0.tar.gz
-	sha256sums = 56bebe095951f6cfb7e0d4c0250ed2dea459b085b214b9e21cdd93f4878efa4a
+	source = ros-melodic-image-publisher-1.12.23.tar.gz::https://github.com/ros-perception/image_pipeline/archive/1.12.23.tar.gz
+	sha256sums = 0b024f155f79f16982b31951ad0b1bde5440159b0ba6b1128ecbe2e867a2e357
 
 pkgname = ros-melodic-image-publisher
 

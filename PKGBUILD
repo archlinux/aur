@@ -7,7 +7,7 @@ pkgname='ros-melodic-image-publisher'
 pkgver='1.12.23'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -41,9 +41,9 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="image_pipeline-release-release-melodic-image_publisher-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/image_pipeline-release/archive/release/melodic/image_publisher/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('56bebe095951f6cfb7e0d4c0250ed2dea459b085b214b9e21cdd93f4878efa4a')
+_dir="image_pipeline-${pkgver}/image_publisher"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-perception/image_pipeline/archive/${pkgver}.tar.gz")
+sha256sums=('0b024f155f79f16982b31951ad0b1bde5440159b0ba6b1128ecbe2e867a2e357')
 
 build() {
 	# Use ROS environment variables.
