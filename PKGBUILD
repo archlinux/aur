@@ -4,9 +4,8 @@ url='https://wiki.ros.org/rotate_recovery'
 
 pkgname='ros-melodic-rotate-recovery'
 pkgver='1.16.2'
-_pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-nav-core
@@ -36,9 +35,9 @@ depends=(${ros_depends[@]}
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="navigation-release-release-melodic-rotate_recovery-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/navigation-release/archive/release/melodic/rotate_recovery/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('c16310caacd9352ba89b5eb4903bb43349ee2b781b77157a33df6cfa39bc6a07')
+_dir="navigation-${pkgver}/rotate_recovery"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-planning/navigation/archive/${pkgver}.tar.gz")
+sha256sums=('d83201296e773e2789635fddf39ac18e9465219b18707e53bd2361de4762d205')
 
 build() {
   # Use ROS environment variables

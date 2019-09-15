@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-rotate-recovery
 	pkgdesc = ROS - This package provides a recovery behavior for the navigation stack that attempts to clear space by performing a 360 degree rotation of the robot.
 	pkgver = 1.16.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/rotate_recovery
 	arch = any
 	license = BSD
@@ -22,8 +22,8 @@ pkgbase = ros-melodic-rotate-recovery
 	depends = ros-melodic-roscpp
 	depends = ros-melodic-costmap-2d
 	depends = eigen3
-	source = ros-melodic-rotate-recovery-1.16.2-0.tar.gz::https://github.com/ros-gbp/navigation-release/archive/release/melodic/rotate_recovery/1.16.2-0.tar.gz
-	sha256sums = c16310caacd9352ba89b5eb4903bb43349ee2b781b77157a33df6cfa39bc6a07
+	source = ros-melodic-rotate-recovery-1.16.2.tar.gz::https://github.com/ros-planning/navigation/archive/1.16.2.tar.gz
+	sha256sums = d83201296e773e2789635fddf39ac18e9465219b18707e53bd2361de4762d205
 
 pkgname = ros-melodic-rotate-recovery
 
