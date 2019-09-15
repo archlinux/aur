@@ -7,7 +7,7 @@ pkgname='ros-melodic-qt-gui-py-common'
 pkgver='0.3.11'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -29,9 +29,9 @@ depends=(
 	python-rospkg
 )
 
-_dir="qt_gui_core-release-release-melodic-qt_gui_py_common-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/qt_gui_core-release/archive/release/melodic/qt_gui_py_common/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('d665864b786a0267d7c9ad26cc7d0af998b4e51b99941e43cd551cf4b0c08cae')
+_dir="qt_gui_core-${pkgver}/qt_gui_py_common"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/qt_gui_core/archive/${pkgver}.tar.gz")
+sha256sums=('708873d6b5a2e4543435e8a1a2349de8eb41937aaf78b9dbcbe08b4a1dc12da2')
 
 build() {
 	# Use ROS environment variables.
