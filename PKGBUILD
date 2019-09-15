@@ -1,43 +1,38 @@
-#Contributor: mathieu.clabaut <mathieu.clabaut@gmail.com>
+# Maintainer: mathieu.clabaut <mathieu.clabaut@gmail.com>
 
+_pkgname=notifymuch
 pkgname=notifymuch-git
 pkgver=r39.9d4aaf5
 pkgrel=3
-pkgdesc="Display desktop notifications for unread mail in notmuch database"
-arch=('i686' 'x86_64')
-url="https://github.com/kspi/notifymuch"
-license=('GPL2')
-provides=('notifymuch-git')
-conflict=()
-makedepends=( 'pygobject-devel')
-depends=('python' 'notmuch' 'python-setuptools' 'hicolor-icon-theme' 'python-gobject' )
-optdeps=()
-source=('notifymuch::git://github.com/kspi/notifymuch' notifymuch.desktop
-notifymuch.png)
-md5sums=('SKIP'
-         'cdcb64c98b5abf94525bf37f0764287c'
-         '4f2822f4ea6ab4a5e935b03804fde698')
+pkgdesc='Display desktop notifications for unread mail in notmuch database'
+arch=('x86_64')
+url=https://github.com/kspi/notifymuch
+license=('GPL')
+depends=('hicolor-icon-theme' 'notmuch' 'python-gobject')
+makedepends=('python-setuptools')
+provides=("$_pkgname")
+replaces=("$_pkgname")
+source=("git+$url.git" "$_pkgname".{desktop,png})
+sha512sums=('SKIP'
+            'b968378113271d39cfddfb6e0c28ff2528be05c20ecfa31561e799e227167e28e0ff33ff8a4698f59857c2192150677dc84a9d40e8a103d53669b06b5d87c365'
+            '2b94f087f4b6e3e01157de2aa03ac27bf5e85457a955c70450575729fc58ff0be53585dddcf5a7e84f840a95cf57596097a63e71df90ab67fcc6b54e84ea7425')
 
+pkgver() {
+  cd $_pkgname
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
-  cd $srcdir/notifymuch
-  python setup.py build || return 1
+  cd $_pkgname
+  python setup.py build
 }
 
 package() {
-  cd $srcdir/notifymuch
-  python setup.py install --root=$pkgdir || return 1
-  install -m755  -d $pkgdir/usr/share/icons/hicolor/512x512/apps/
-  install -m644  $srcdir/notifymuch.png $pkgdir/usr/share/icons/hicolor/512x512/apps/
-  install -m755 -d  $pkgdir/usr/share/applications/
-  install -m644 $srcdir/notifymuch.desktop  $pkgdir/usr/share/applications/
+  cd $_pkgname
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  install -Dm644 -t "$pkgdir"/usr/share/applications ../$_pkgname.desktop
+  install -Dm644 -t "$pkgdir"/usr/share/icons/hicolor/512x512/apps \
+    ../$_pkgname.png
 }
 
-
-pkgver() {
-  cd "$srcdir/notifymuch"
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
-}
+# vim:set ts=2 sw=2 et:
