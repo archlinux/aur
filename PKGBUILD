@@ -22,5 +22,5 @@ package() {
     cd pinger-indicator
     ./build.sh
     mkdir -p $pkgdir/usr/bin
-    cp self $pkgdir/usr/bin/pinger-indicator
+    install -m0755 self $pkgdir/usr/bin/pinger-indicator
 }
