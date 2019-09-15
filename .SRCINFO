@@ -1,5 +1,5 @@
 pkgbase = kodi-devel
-	pkgver = 18.4rc1pre27
+	pkgver = 18.5pre1
 	pkgrel = 1
 	url = https://kodi.tv
 	arch = x86_64
@@ -60,7 +60,7 @@ pkgbase = kodi-devel
 	noextract = crossguid-8f399e8bd4.tar.gz
 	noextract = fstrcmp-0.7.D001.tar.gz
 	noextract = flatbuffers-1.9.0.tar.gz
-	source = kodi-18.3-Leia.tar.gz::https://github.com/xbmc/xbmc/archive/18.3-Leia.tar.gz
+	source = kodi-18.4-Leia.tar.gz::https://github.com/xbmc/xbmc/archive/18.4-Leia.tar.gz
 	source = libdvdcss-1.4.2-Leia-Beta-5.tar.gz::https://github.com/xbmc/libdvdcss/archive/1.4.2-Leia-Beta-5.tar.gz
 	source = libdvdnav-6.0.0-Leia-Alpha-3.tar.gz::https://github.com/xbmc/libdvdnav/archive/6.0.0-Leia-Alpha-3.tar.gz
 	source = libdvdread-6.0.0-Leia-Alpha-3.tar.gz::https://github.com/xbmc/libdvdread/archive/6.0.0-Leia-Alpha-3.tar.gz
@@ -71,34 +71,8 @@ pkgbase = kodi-devel
 	source = http://mirrors.kodi.tv/build-deps/sources/flatbuffers-1.9.0.tar.gz
 	source = cpuinfo
 	source = 000-fix.building.with.mariadb.patch::https://github.com/wsnipex/xbmc/commit/cd20c8eb8a0394db1f028b118c4ca9b91b7e746a.patch
-	source = 001-PR16305.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16305.patch
-	source = 002-PR16313.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16313.patch
-	source = 003-PR16323.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16323.patch
-	source = 004-PR16334.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16334.patch
-	source = 005-PR16337.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16337.patch
-	source = 006-PR16340.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16340.patch
-	source = 007-PR16352.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16352.patch
-	source = 008-PR16353.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16353.patch
-	source = 009-PR16355.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16355.patch
-	source = 010-PR16364.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16364.patch
-	source = 011-PR16378.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16378.patch
-	source = 012-PR16398.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16398.patch
-	source = 013-PR16409.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16409.patch
-	source = 014-PR16416.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16416.patch
-	source = 015-PR16422.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16422.patch
-	source = 016-PR16426.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16426.patch
-	source = 017-PR16439.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16439.patch
-	source = 018-PR16447.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16447.patch
-	source = 019-PR16467.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16467.patch
-	source = 020-PR16468.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16468.patch
-	source = 021-PR16471.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16471.patch
-	source = 022-PR16496.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16496.patch
-	source = 023-PR16499.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16499.patch
-	source = 024-PR16500.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16500.patch
-	source = 025-PR16505.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16505.patch
-	source = 026-PR16517.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16517.patch
-	source = 027-PR16525.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16525.patch
-	sha256sums = 4f265901c00f582beb8d6ad96c9c303e5ab82611e828c7121ae822b07c0915cc
+	source = 001-PR16596.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16596.patch
+	sha256sums = bf2be186d8ae5b5377e43c06a538012bb9f51a0e98f8244b70a401006861d110
 	sha256sums = 38816f8373e243bc5950449b4f3b18938c4e1c59348e3411e23f31db4072e40d
 	sha256sums = 071e414e61b795f2ff9015b21a85fc009dde967f27780d23092643916538a57a
 	sha256sums = a30b6aa0aad0f2c505bc77948af2d5531a80b6e68112addb4c123fca24d5d3bf
@@ -109,33 +83,7 @@ pkgbase = kodi-devel
 	sha256sums = 5ca5491e4260cacae30f1a5786d109230db3f3a6e5a0eb45d0d0608293d247e3
 	sha256sums = 27387e49043127f09c5ef0a931fffb864f5730e79629100a6e210b68a1b9f2c1
 	sha256sums = 849daf1d5b081ef6d0e428bbc7d448799fc43a8ac9e79cd7513de0eb5a91b0bb
-	sha256sums = a162fee84b8c7a52d5120874fa81cbf0534e5f993a1bb33b842a071186191698
-	sha256sums = db2a285d0ef635e9cad6c8cace1937e39f0393bc2efbc724203c3cf580471951
-	sha256sums = f9b0c2368151a37265a380d5cd164b8b73b8d3b0dea6df25bcc745ef23bee594
-	sha256sums = 6d9a3710c4e205ff5ecf63d71181e0acde207bb8b93f3677c5c3395cbfa5dc9a
-	sha256sums = e75f924d3e9f2fc0935791e324a111e77f4243476084f7e08cfabb28af903520
-	sha256sums = bafe677ee2e8a8484d01bc41812fdd099b05185eb85a821760639503d34d679a
-	sha256sums = 61b42371a22f4683d13358a7f6d59284ef8b6b82a1235e508c15fdc5a29423ba
-	sha256sums = a5d8af6af6c33aa62c935d924f3df2b341cd34a9d008f3f50a1697533a628db8
-	sha256sums = d2ba346fbe3f2b428409588fe3461b58cc450dc56d5d5083703fa252155a1aef
-	sha256sums = 9ac8a0404739172e77addf6f1d3c05bbb6e3938c9e1e662264e95c64942de278
-	sha256sums = cc648ac2128a251122f47504aab62647513910e2df856ab8c46062b13e424d2a
-	sha256sums = 5ee750c89bee592246a1076f07882a69ea20c2e54e80691fe3b7bcb1e4e2bd75
-	sha256sums = fa6e929a5f55f9dc1b8807c2c83ca387225f87bb014dfc15ca5ea977d7a41180
-	sha256sums = fa44afc553164952c497c75a2ebca36358f73a22bde3c2bfcd243e45bfb6247c
-	sha256sums = a44771f00abda9f219340b4afce974b3add7d53db3b73ff36a30cabb4bda546e
-	sha256sums = 6835c87aabb8e43f6313f6a1d61b06efc31daea3cb2777d10392b5f2c8c604f5
-	sha256sums = 7267d195e3f522c8c0c035996fcb6a538f0ee80fe1915c355170f90dd80ed9ff
-	sha256sums = 7fadba3375a912ff5c65ac1bf5d78394173b9ab1a19435ee99aa713dd0175f78
-	sha256sums = 54da6342b8132638a6b195f0224d94ea435ee28381faa1a0b84349000a8398fd
-	sha256sums = 89c56c229d8598ef8c0bf1bae4476e733baeab5cac7171410e668a4ff801a8b4
-	sha256sums = 761d0bedc5ee7cb9bcdab426cbb32da072f39c3f620fafeb62a46fadbf10b878
-	sha256sums = 6ddf1001c6facb4b32d4f0dbc012832df24a2c4b502a433f529c31fe581f9826
-	sha256sums = f837168ff84f157f954796a261a4f5951041cdee0067124d752d062a062a8e3e
-	sha256sums = 5907ac068c171c9e7bc27900fa82c207175f87482bad060a96dfb9077450b3f9
-	sha256sums = f0396813eb5c0b290a584312a1dabb05d6cdf1bf6d72347019a9afdaa41a1978
-	sha256sums = aef231173b893716a6c28307597ed92c2e0d3ece05fe165572f1e8a3c5d8b789
-	sha256sums = d7f3c1ac708ad1b018bc16f2948ce3471c5e850ee90754dbdffa61677dddd5e4
+	sha256sums = d5eead90e570a96d4ed947e7d671cf7b1794fca12c3b834f45a9628fe1a8e9ab
 
 pkgname = kodi-devel
 	pkgdesc = Alpha, Beta, or RC versions of the software media player and entertainment hub for digital media
@@ -154,7 +102,7 @@ pkgname = kodi-devel
 	optdepends = pulseaudio: PulseAudio support
 	optdepends = shairplay: AirPlay support
 	optdepends = upower: Display battery level
-	provides = kodi=18.4rc1pre27
+	provides = kodi=18.5pre1
 	conflicts = kodi
 
 pkgname = kodi-bin-devel
@@ -180,7 +128,7 @@ pkgname = kodi-bin-devel
 	depends = taglib
 	depends = tinyxml
 	depends = kodi-devel
-	provides = kodi-bin=18.4rc1pre27
+	provides = kodi-bin=18.5pre1
 	conflicts = kodi-bin
 
 pkgname = kodi-wayland-devel
@@ -206,7 +154,7 @@ pkgname = kodi-wayland-devel
 	depends = tinyxml
 	depends = waylandpp
 	depends = kodi-devel
-	provides = kodi-bin=18.4rc1pre27
+	provides = kodi-bin=18.5pre1
 	provides = kodi-wayland
 	conflicts = kodi-wayland
 
@@ -233,14 +181,14 @@ pkgname = kodi-gbm-devel
 	depends = taglib
 	depends = tinyxml
 	depends = kodi-devel
-	provides = kodi-bin=18.4rc1pre27
+	provides = kodi-bin=18.5pre1
 	provides = kodi-gbm
 	conflicts = kodi-gbm
 
 pkgname = kodi-eventclients-devel
 	pkgdesc = Kodi Event Clients
 	optdepends = python2: most eventclients are implemented in python2
-	provides = kodi-eventclients=18.4rc1pre27
+	provides = kodi-eventclients=18.5pre1
 	conflicts = kodi-eventclients
 
 pkgname = kodi-tools-texturepacker-devel
@@ -249,12 +197,12 @@ pkgname = kodi-tools-texturepacker-devel
 	depends = giflib
 	depends = libjpeg-turbo
 	depends = lzo
-	provides = kodi-tools-texturepacker=18.4rc1pre27
+	provides = kodi-tools-texturepacker=18.5pre1
 	conflicts = kodi-tools-texturepacker
 
 pkgname = kodi-dev-devel
 	pkgdesc = Kodi dev files
 	depends = kodi-devel
-	provides = kodi-dev=18.4rc1pre27
+	provides = kodi-dev=18.5pre1
 	conflicts = kodi-dev
 
