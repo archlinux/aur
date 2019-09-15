@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-rqt-gui-cpp
 	pkgdesc = ROS - rqt_gui_cpp enables GUI plugins to use the C++ client library for ROS.
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/rqt_gui_cpp
 	arch = any
 	license = BSD
@@ -17,8 +17,8 @@ pkgbase = ros-melodic-rqt-gui-cpp
 	depends = ros-melodic-nodelet
 	depends = ros-melodic-qt-gui-cpp
 	depends = ros-melodic-roscpp
-	source = ros-melodic-rqt-gui-cpp-0.5.0-0.tar.gz::https://github.com/ros-gbp/rqt-release/archive/release/melodic/rqt_gui_cpp/0.5.0-0.tar.gz
-	sha256sums = 29dd122311b73050bde2957210a6523688298a3c1993833b78ef18b80a671603
+	source = ros-melodic-rqt-gui-cpp-0.5.0.tar.gz::https://github.com/ros-visualization/rqt/archive/0.5.0.tar.gz
+	sha256sums = 3f62f90db254e111483b9a7cb9d486d0bf07c863b2a987808dc3636ee7004c22
 
 pkgname = ros-melodic-rqt-gui-cpp
 
