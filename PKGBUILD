@@ -7,7 +7,7 @@ pkgname='ros-melodic-kdl-conversions'
 pkgver='1.12.0'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -31,9 +31,9 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="geometry-release-release-melodic-kdl_conversions-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/geometry-release/archive/release/melodic/kdl_conversions/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('2a82a8648b7c47cdf7ee46f7bf331202c2d8e6a6d25c058d944f78283452994f')
+_dir="geometry-${pkgver}/kdl_conversions"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/geometry/archive/${pkgver}.tar.gz")
+sha256sums=('61a278bdd50e00ea442055d9f70eaf82b5a36916739edca188fa1b71a59507b4')
 
 build() {
 	# Use ROS environment variables.
