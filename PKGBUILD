@@ -30,7 +30,7 @@ depends=(
 	console-bridge
 )
 
-_dir="roscpp_core-${pkgver}/cpp_common/"
+_dir="roscpp_core-${pkgver}/cpp_common"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/roscpp_core/archive/${pkgver}.tar.gz")
 sha256sums=('6fb2cfb7ec7db0512cd0e43634328aa6474fc15005e51279d2926d9246f02afc')
 
