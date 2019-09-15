@@ -4,9 +4,8 @@ url='https://wiki.ros.org/octomap_msgs'
 
 pkgname='ros-melodic-octomap-msgs'
 pkgver='0.3.3'
-_pkgver_patch=1
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-message-generation
@@ -28,9 +27,9 @@ depends=(${ros_depends[@]})
 # sha256sums=('e4206d3d3faee4ba465426507df19e6aba521e9fd2c47dd64c142d0d060c3055')
 
 # Tarball version (faster download)
-_dir="octomap_msgs-release-release-melodic-octomap_msgs-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/octomap_msgs-release/archive/release/melodic/octomap_msgs/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('416e70d1633904e7a65bfcd4e1665e5ff5e013d8a9d6a53329d2a449c2002304')
+_dir="octomap_msgs-${pkgver}"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/OctoMap/octomap_msgs/archive/${pkgver}.tar.gz")
+sha256sums=('ead6be1199e0d5cf44765e3172e156394602817aad21ca59c22d7a4f678639e4')
 
 build() {
   # Use ROS environment variables

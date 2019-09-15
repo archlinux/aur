@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-octomap-msgs
 	pkgdesc = ROS - This package provides messages and serializations / conversion for the OctoMap library.
 	pkgver = 0.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/octomap_msgs
 	arch = any
 	license = BSD
@@ -14,8 +14,8 @@ pkgbase = ros-melodic-octomap-msgs
 	depends = ros-melodic-message-runtime
 	depends = ros-melodic-std-msgs
 	depends = ros-melodic-geometry-msgs
-	source = ros-melodic-octomap-msgs-0.3.3-1.tar.gz::https://github.com/ros-gbp/octomap_msgs-release/archive/release/melodic/octomap_msgs/0.3.3-1.tar.gz
-	sha256sums = 416e70d1633904e7a65bfcd4e1665e5ff5e013d8a9d6a53329d2a449c2002304
+	source = ros-melodic-octomap-msgs-0.3.3.tar.gz::https://github.com/OctoMap/octomap_msgs/archive/0.3.3.tar.gz
+	sha256sums = ead6be1199e0d5cf44765e3172e156394602817aad21ca59c22d7a4f678639e4
 
 pkgname = ros-melodic-octomap-msgs
 
