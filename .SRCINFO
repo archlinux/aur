@@ -10,8 +10,8 @@ pkgbase = ros-melodic-geneus
 	makedepends = ros-melodic-genmsg
 	makedepends = ros-melodic-catkin
 	depends = ros-melodic-genmsg
-	source = ros-melodic-geneus-2.2.6-0.tar.gz::https://github.com/tork-a/geneus-release/archive/release/melodic/geneus/2.2.6-0.tar.gz
-	sha256sums = aadb96f7266f5584813ea6033317b1decf6a7358d01cf257239ae4c04ffb67c6
+	source = ros-melodic-geneus-2.2.6.tar.gz::https://github.com/jsk-ros-pkg/geneus/archive/2.2.6.tar.gz
+	sha256sums = 82837e184338f14024a78aac5cac700d5de8a935d3de2d3ac41bd9e4213cec45
 
 pkgname = ros-melodic-geneus
 

@@ -29,9 +29,9 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="geneus-release-release-melodic-geneus-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/tork-a/geneus-release/archive/release/melodic/geneus/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('aadb96f7266f5584813ea6033317b1decf6a7358d01cf257239ae4c04ffb67c6')
+_dir="geneus-${pkgver}"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/jsk-ros-pkg/geneus/archive/${pkgver}.tar.gz")
+sha256sums=('82837e184338f14024a78aac5cac700d5de8a935d3de2d3ac41bd9e4213cec45')
 
 build() {
 	# Use ROS environment variables.
