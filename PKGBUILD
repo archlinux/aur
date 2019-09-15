@@ -3,8 +3,7 @@ pkgdesc="ROS - This package provides the c++ extensions for a variety of threade
 url='https://wiki.ros.org/ecl_threads'
 
 pkgname='ros-melodic-ecl-threads'
-pkgver='0.62.1'
-_pkgver_patch=0
+pkgver='0.62.2'
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -38,9 +37,9 @@ depends=(${ros_depends[@]})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="ecl_core-release-release-melodic-ecl_threads-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/yujinrobot-release/ecl_core-release/archive/release/melodic/ecl_threads/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('3bf1e58807257180bf4f6789b5da2920baeaa129f2e8762fdf4d7d64f3d2cbc8')
+_dir="ecl_core-${pkgver}/ecl_threads"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/stonier/ecl_core/archive/${pkgver}.tar.gz")
+sha256sums=('69d503109878e3a2c4f5be611fc9609078714899cae15fbf7f58119fdbd61e37')
 
 build() {
   # Use ROS environment variables
