@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-control-msgs
 	pkgdesc = ROS - control_msgs contains base messages and actions useful for controlling robots.
-	pkgver = 1.4.0
-	pkgrel = 1
+	pkgver = 1.5.0
+	pkgrel = 0
 	url = https://wiki.ros.org/control_msgs
 	arch = any
 	license = BSD
@@ -18,8 +18,8 @@ pkgbase = ros-melodic-control-msgs
 	depends = ros-melodic-actionlib-msgs
 	depends = ros-melodic-message-runtime
 	depends = ros-melodic-geometry-msgs
-	source = ros-melodic-control-msgs-1.4.0-0.tar.gz::https://github.com/ros-gbp/control_msgs-release/archive/release/melodic/control_msgs/1.4.0-0.tar.gz
-	sha256sums = 15aa30c0f9da4249d10a42a57cc840abbad9d6d64d247d089da10b495970aa69
+	source = ros-melodic-control-msgs-1.5.0.tar.gz::https://github.com/ros-controls/control_msgs/archive/1.5.0.tar.gz
+	sha256sums = 230b0f893d1d57aff482b5672bb6cbadcf9908956a6e986c78d85006472f4dc5
 
 pkgname = ros-melodic-control-msgs
 

@@ -4,10 +4,10 @@ pkgdesc="ROS - control_msgs contains base messages and actions useful for contro
 url='https://wiki.ros.org/control_msgs'
 
 pkgname='ros-melodic-control-msgs'
-pkgver='1.4.0'
+pkgver='1.5.0'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=0
 license=('BSD')
 
 ros_makedepends=(
@@ -37,9 +37,9 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="control_msgs-release-release-melodic-control_msgs-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/control_msgs-release/archive/release/melodic/control_msgs/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('15aa30c0f9da4249d10a42a57cc840abbad9d6d64d247d089da10b495970aa69')
+_dir="control_msgs-${pkgver}"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-controls/control_msgs/archive/${pkgver}.tar.gz")
+sha256sums=('230b0f893d1d57aff482b5672bb6cbadcf9908956a6e986c78d85006472f4dc5')
 
 build() {
 	# Use ROS environment variables.
