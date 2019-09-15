@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-libmavconn
 	pkgdesc = ROS - MAVLink communication library.
-	pkgver = 0.26.3
+	pkgver = 0.32.2
 	pkgrel = 1
 	url = https://wiki.ros.org/mavros
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = ros-melodic-libmavconn
 	depends = ros-melodic-mavlink
 	depends = boost
 	depends = console-bridge
-	source = ros-melodic-libmavconn-0.26.3-0.tar.gz::https://github.com/mavlink/mavros-release/archive/release/melodic/libmavconn/0.26.3-0.tar.gz
-	sha256sums = edf9ee6507a50180a26a0912f03a82fc4218bc9a4d734580c3f5570d86767836
+	source = ros-melodic-libmavconn-0.32.2.tar.gz::https://github.com/mavlink/mavros/archive/0.32.2.tar.gz
+	sha256sums = d5e04661f88896a9a77f22a083023ce5e8e13dd71c1f8f1b7d5e187b3bf6c4f8
 
 pkgname = ros-melodic-libmavconn
 
