@@ -4,7 +4,7 @@
 pkgbase=bootstrap-studio
 pkgname=bootstrap-studio
 pkgver=4.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A powerful desktop app for creating responsive websites using the Bootstrap framework.'
 url='https://bootstrapstudio.io/'
 arch=('x86_64')
@@ -47,4 +47,4 @@ package() {
 	chmod -R go-w "$pkgdir"
 }
 
-sha512sums=('ddcfcf6e19de5e1a02931829f6f25982c9cabc6e3995cf133f2fbceaef9736b8ce88af234029ea46a59fa46e886887f2489347778ae71d475edee3c1704a475d')
+sha512sums=('9d4be450de5db91cffd4cbc3b14adbb9083c5f95ba141478281344732e57b1655c35ec2625f9e80ab9d140c1c68d2960b209f130baa3252919f7bfc8b4b05c4a')
