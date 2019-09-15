@@ -1,6 +1,6 @@
 pkgbase = audisp-json-git
 	pkgdesc = Audisp plugin outputting auditd events as JSON.
-	pkgver = 2.2.4.r4.f8d754c
+	pkgver = 2.2.5.r1.ab9ed20
 	pkgrel = 1
 	url = https://github.com/gdestuynder/audisp-json
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = audisp-json-git
 	source = audisp-json-git::git+https://github.com/gdestuynder/audisp-json
 	source = audisp-json.patch
 	sha512sums = SKIP
-	sha512sums = bd09bdd5c4b138e3f51fd24e23c4a0d5066550c34bc2b6a91c7547c4d2fb24555a2b5b4adda712c3927dfd19b2acaa239d41f43ec4115ae9fc7ee31ad4fb94e8
+	sha512sums = a030b546ed42f96ee13cdea6afb1a1f6bb625e03913a711b003c0dafdc52c0a86f42c19eb985df5dc2d98ded506ab7f8478319ab4d2b03eca51b913e94ee6477
 
 pkgname = audisp-json-git
 
