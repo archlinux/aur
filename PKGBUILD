@@ -2,7 +2,7 @@
 # Maintainer: William Di Luigi <williamdiluigi@gmail.com>
 
 pkgname=isolate
-pkgver=1.7
+pkgver=1.8.1
 pkgrel=1
 pkgdesc="Sandbox for securely executing untrusted programs"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ conflicts=('isolate-git')
 install=$pkgname.install
 
 source=("https://github.com/ioi/isolate/archive/v$pkgver.zip")
-sha512sums=('c0d502966d1a88e3881d7e8385b2d2c8bd1c37645ff613a8fd3e7cee6f2eaf0e269aa10f713029b0bcde763dd1f9d65101f0e04831f6cac61fcc2f7c0eab9c42')
+sha512sums=('b907cd9493b04eea01de3f5e90ea71c3f6773f6757ed5d8445dafe001bdb786f52d80255d355af1fbeb8957f83e8768be67ff5449e91f9f6de973187d87629b0')
 
 build() {
   cd isolate-$pkgver
