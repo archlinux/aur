@@ -6,7 +6,7 @@ url='https://wiki.ros.org/image_view'
 pkgname='ros-melodic-image-view'
 pkgver='1.13.0'
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -51,13 +51,13 @@ depends=(
 
 _dir="image_pipeline-${pkgver}/image_view"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-perception/image_pipeline/archive/${pkgver}.tar.gz"
-        CMakeLists-opencv.patch)
+        CMakeLists.patch)
 sha256sums=('3c2309d421acf354ca69a7c814ceec7c8b24732c31a7f1c47a055aedd95cb1c4'
-            'd5525cc488989fbc49e151eccbc790888ec73c781ff1ab43e559e2c70f1b86d3')
+            '715e30310dec53eb3d19ef40fb40be48a01a10e3fc170c6ec857ddaa0cea8474')
 
 prepare() {
   cd "${srcdir}/${_dir}"
-  patch -uN CMakeLists.txt ../../../CMakeLists-opencv.patch || return 1
+  patch -uN CMakeLists.txt ../../../CMakeLists.patch || return 1
 }
 
 build() {
