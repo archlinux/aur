@@ -1,6 +1,6 @@
 pkgbase = swaynagmode
 	pkgdesc = control swaynag via keyboard shortcuts
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/b0o/swaynagmode
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = swaynagmode
 	depends = bash
 	depends = sway
 	provides = swaynagmode
-	source = https://github.com/b0o/swaynagmode/archive/v0.2.0.tar.gz
-	sha256sums = f7d9e082f3883a31869d75bc4a9f7a2dde4d391fe89cebf836404130ff91f44e
+	source = https://github.com/b0o/swaynagmode/archive/v0.2.1.tar.gz
+	sha256sums = f513395a27ac63192a9f188b6f4f5b36c2c5fa8fa8d71b936e6f069ec5a63f24
 
 pkgname = swaynagmode
 
