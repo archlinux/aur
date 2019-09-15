@@ -4,10 +4,9 @@ pkgdesc="ROS - This metapackage depends on packages for interfacing common joyst
 url='https://www.wiki.ros.org/joystick_drivers'
 
 pkgname='ros-melodic-joystick-drivers'
-pkgver='1.12.0'
-_pkgver_patch=0
+pkgver='1.13.0'
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-melodic-catkin)
@@ -27,9 +26,9 @@ depends=(${ros_depends[@]})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="joystick_drivers-release-release-melodic-joystick_drivers-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/joystick_drivers-release/archive/release/melodic/joystick_drivers/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('bfa46ae2ec0edaf6d3bb8d0876da64c78f295047cd7d60a40ace164bdcd6fdeb')
+_dir="joystick_drivers-${pkgver}/joystick_drivers"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-drivers/joystick_drivers/archive/${pkgver}.tar.gz")
+sha256sums=('bfe0633623f4dc917524198aaea10b1c4603881e736dafb7b652f1af60922ad7')
 
 build() {
   # Use ROS environment variables

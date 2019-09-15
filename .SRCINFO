@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-joystick-drivers
 	pkgdesc = ROS - This metapackage depends on packages for interfacing common joysticks and human input devices with ROS.
-	pkgver = 1.12.0
-	pkgrel = 2
+	pkgver = 1.13.0
+	pkgrel = 1
 	url = https://www.wiki.ros.org/joystick_drivers
 	arch = any
 	license = BSD
@@ -12,8 +12,8 @@ pkgbase = ros-melodic-joystick-drivers
 	depends = ros-melodic-joy
 	depends = ros-melodic-ps3joy
 	depends = ros-melodic-spacenav-node
-	source = ros-melodic-joystick-drivers-1.12.0-0.tar.gz::https://github.com/ros-gbp/joystick_drivers-release/archive/release/melodic/joystick_drivers/1.12.0-0.tar.gz
-	sha256sums = bfa46ae2ec0edaf6d3bb8d0876da64c78f295047cd7d60a40ace164bdcd6fdeb
+	source = ros-melodic-joystick-drivers-1.13.0.tar.gz::https://github.com/ros-drivers/joystick_drivers/archive/1.13.0.tar.gz
+	sha256sums = bfe0633623f4dc917524198aaea10b1c4603881e736dafb7b652f1af60922ad7
 
 pkgname = ros-melodic-joystick-drivers
 
