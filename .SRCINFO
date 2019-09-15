@@ -10,16 +10,16 @@ pkgbase = openrazer-blade-pro-2019
 	source = git+https://github.com/openrazer/openrazer.git
 	sha256sums = SKIP
 
-pkgname = python-openrazer-git
+pkgname = python-openrazer-blade-pro-2019
 	pkgdesc = Python library for accessing the Razer daemon from Python.
 	depends = openrazer-daemon
 	depends = python-numpy
 	provides = python-openrazer
 	conflicts = python-openrazer
 
-pkgname = openrazer-daemon-git
+pkgname = openrazer-daemon-blade-pro-2019
 	pkgdesc = Userspace daemon that abstracts access to the kernel driver. Provides a DBus service for applications to use.
-	install = openrazer-daemon-git.install
+	install = openrazer-daemon-blade-pro-2019.install
 	depends = openrazer-driver-dkms
 	depends = gtk3
 	depends = python-dbus
@@ -31,15 +31,15 @@ pkgname = openrazer-daemon-git
 	provides = openrazer-daemon
 	conflicts = openrazer-daemon
 
-pkgname = openrazer-driver-dkms-git
+pkgname = openrazer-driver-dkms-blade-pro-2019
 	pkgdesc = Kernel driver for Razer devices (DKMS-variant)
-	install = openrazer-driver-dkms-git.install
+	install = openrazer-driver-dkms-blade-pro-2019.install
 	depends = dkms
 	depends = udev
 	provides = openrazer-driver-dkms
 	conflicts = openrazer-driver-dkms
 
-pkgname = openrazer-meta-git
+pkgname = openrazer-meta-blade-pro-2019
 	pkgdesc = Meta package for installing all required openrazer packages.
 	depends = openrazer-driver-dkms
 	depends = openrazer-daemon
