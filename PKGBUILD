@@ -7,7 +7,7 @@ pkgname='ros-melodic-roslint'
 pkgver='0.11.2'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -27,9 +27,9 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="roslint-release-release-melodic-roslint-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/roslint-release/archive/release/melodic/roslint/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('85588e28bc32d5359340c5524437aa447aadbd15f25c30d9e6cb4030f49232a5')
+_dir="roslint-${pkgver}"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/roslint/archive/${pkgver}.tar.gz")
+sha256sums=('e86b12ddf03cf1530b3343df797e381bcb8214004c992b7ac280918fd70672f0')
 
 build() {
 	# Use ROS environment variables.
