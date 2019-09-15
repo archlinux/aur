@@ -7,7 +7,7 @@ pkgname='ros-melodic-rqt-action'
 pkgver='0.4.9'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -30,9 +30,9 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="rqt_action-release-release-melodic-rqt_action-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rqt_action-release/archive/release/melodic/rqt_action/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('5ac33f2d857d43c2c79f82f73070f6dec9bf326ea6bc0b3bce4e49c3d5b8c7d8')
+_dir="rqt_action-${pkgver}"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/rqt_action/archive/${pkgver}.tar.gz")
+sha256sums=('6f69d38f7770efd6da560c5c95438fbbed25fd2bea06e34421ed6aae2655a46c')
 
 build() {
 	# Use ROS environment variables.
