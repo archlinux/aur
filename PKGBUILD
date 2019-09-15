@@ -1,8 +1,8 @@
 # Maintainer: Oliver Friedrich <olifriedrich at gmail dot com>
 
 pkgname='tonelib-jam-bin'
-pkgver=3.9.0
-pkgrel=2
+pkgver=3.9.9
+pkgrel=1
 pkgdesc="ToneLib Jam – the learning and practice software for guitar players"
 arch=('x86_64')
 filename="ToneLib-Jam-amd64.deb"
@@ -11,7 +11,7 @@ url="https://tonelib.net/jam-overview/"
 depends=('gtk3' 'glib2' 'desktop-file-utils' 'alsa-lib' 'harfbuzz' 'fribidi' 'pango' 'freetype2')
 optdepends=('jack: JACK output')
 source=("https://www.tonelib.net/download/${filename}")
-sha256sums=('d3beea45cd4803c11946e8de036222e1cafdd9e062c07e35d833e2d7f670bf26')
+sha256sums=('31bc99cb6e0b4f83b017c641b2c53c88e85b995e22710a54961936f56cabacee')
 
 package () {
     tar xf data.tar.xz -C "${pkgdir}"
