@@ -29,9 +29,9 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="gennodejs-release-release-melodic-gennodejs-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/RethinkRobotics-release/gennodejs-release/archive/release/melodic/gennodejs/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('09d5f9ee001d83dd19c111dc8c2d995b9e9a90e21df2a379b882ac555b9bc9b1')
+_dir="gennodejs-${pkgver}"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/RethinkRobotics-opensource/gennodejs/archive/${pkgver}.tar.gz")
+sha256sums=('6380efc25d0c80e0372d1f57dea5e3bd3ab05b537f0477a702fd472965035478')
 
 build() {
 	# Use ROS environment variables.
