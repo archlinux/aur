@@ -7,7 +7,7 @@ pkgname='ros-melodic-tf2-kdl'
 pkgver='0.6.5'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -36,9 +36,9 @@ depends=(
 	eigen3
 )
 
-_dir="geometry2-release-release-melodic-tf2_kdl-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/geometry2-release/archive/release/melodic/tf2_kdl/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('af0a21267f7ff0d435f5b54a3b55575e399daaf75ed8e01f09906e1b9af018cf')
+_dir="geometry2-${pkgver}/tf2_kdl"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/geometry2/archive/${pkgver}.tar.gz")
+sha256sums=('9a1268621518fc22afd7b12ef1cf30e6901a57b054535924d1d74fd5d267773a')
 
 build() {
 	# Use ROS environment variables.
