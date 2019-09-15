@@ -1,16 +1,17 @@
 pkgbase = lib32-jsoncpp
 	pkgdesc = A C++ library for interacting with JSON
-	pkgver = 1.8.4
+	pkgver = 1.9.1
 	pkgrel = 1
 	url = https://github.com/open-source-parsers/jsoncpp
 	arch = x86_64
 	license = MIT
 	license = custom:Public_Domain
-	makedepends = cmake
+	makedepends = meson
+	makedepends = python
 	depends = jsoncpp
 	depends = lib32-gcc-libs
-	source = lib32-jsoncpp-1.8.4.tar.gz::https://github.com/open-source-parsers/jsoncpp/archive/1.8.4.tar.gz
-	sha256sums = c49deac9e0933bcb7044f08516861a2d560988540b23de2ac1ad443b219afdb6
+	source = lib32-jsoncpp-1.9.1.tar.gz::https://github.com/open-source-parsers/jsoncpp/archive/1.9.1.tar.gz
+	sha256sums = c7b40f5605dd972108f503f031b20186f5e5bca2b65cd4b8bd6c3e4ba8126697
 
 pkgname = lib32-jsoncpp
 
