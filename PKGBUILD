@@ -7,7 +7,7 @@ pkgname='ros-melodic-pcl-msgs'
 pkgver='0.2.0'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-catkin
@@ -29,9 +29,9 @@ depends=(${ros_depends[@]})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="pcl_msgs-release-release-melodic-pcl_msgs-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/pcl_msgs-release/archive/release/melodic/pcl_msgs/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('e4d2bd132c08b705e38958c8fd8203311af0feefdaa2a3aeeac86cb54e4b6d2b')
+_dir="pcl_msgs-${pkgver}"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-perception/pcl_msgs/archive/${pkgver}.tar.gz")
+sha256sums=('d02be421db01d22f8555f616b3658682ee60a885cc3dc37668fbc28454f562f8')
 
 build() {
   # Use ROS environment variables
