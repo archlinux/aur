@@ -1,6 +1,6 @@
 pkgbase = gr-rds-git
 	pkgdesc = An FM-RDS Receiver for GNU Radio
-	pkgver = r278.f1c584a
+	pkgver = r281.dc38017
 	pkgrel = 1
 	url = https://github.com/bastibl/gr-rds
 	arch = i686
