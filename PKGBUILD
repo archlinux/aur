@@ -7,7 +7,7 @@ pkgname='ros-melodic-compressed-depth-image-transport'
 pkgver='1.9.5'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -33,9 +33,9 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="image_transport_plugins-release-release-melodic-compressed_depth_image_transport-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/image_transport_plugins-release/archive/release/melodic/compressed_depth_image_transport/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('344ba8616aae571668169db0759f432c049e9f2c272dbcbb2a82371ff285c212')
+_dir="image_transport_plugins-${pkgver}/compressed_depth_image_transport"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-perception/image_transport_plugins/archive/${pkgver}.tar.gz")
+sha256sums=('8047bc717c83f04a1b05a7cfe70778d99a82ceb5eb717d480aab19513de0719c')
 
 build() {
 	# Use ROS environment variables.
