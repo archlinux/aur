@@ -7,7 +7,7 @@ pkgname='ros-melodic-rqt'
 pkgver='0.5.0'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-catkin)
@@ -26,9 +26,9 @@ depends=(${ros_depends[@]})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="rqt-release-release-melodic-rqt-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rqt-release/archive/release/melodic/rqt/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('0838063390001fcb552096bd5a6827aae9bb3105855cbdf0c2a3105a25851e67')
+_dir="rqt-${pkgver}/rqt"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/rqt/archive/${pkgver}.tar.gz")
+sha256sums=('3f62f90db254e111483b9a7cb9d486d0bf07c863b2a987808dc3636ee7004c22')
 
 build() {
   # Use ROS environment variables
