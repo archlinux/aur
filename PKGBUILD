@@ -1,21 +1,25 @@
-_pkgname=moviepy
-pkgname=python-${_pkgname}
-pkgver=0.2.3.5
+pkgbase='python-moviepy'
+pkgname=('python-moviepy')
+_module='moviepy'
+pkgver='1.0.0'
 pkgrel=1
-pkgdesc="Script-based movie editing with python"
-arch=('any')
-url="http://zulko.github.io/moviepy/"
-license=("MIT")
+pkgdesc="Video editing with Python"
+url="https://zulko.github.io/moviepy/"
+depends=('python' 'ffmpeg' 'imagemagick' 'opencv'
+         'python-decorator' 'python-numpy' 'python-pillow' 'python-scikit-image' 'python-scipy' 'python-tqdm' 'python-imageio')
 makedepends=('python-setuptools')
-depends=('ffmpeg' 'imagemagick' 'opencv'
-	 'python-decorator' 'python-numpy' 'python-pillow' 'python-scikit-image' 'python-scipy' 'python-tqdm' 'python-imageio')
-optdepens=('python-pygame')
-provides=('python-moviepy-git')
-conflicts=('python-moviepy-git')
-source=(https://github.com/Zulko/${_pkgname}/archive/v${pkgver}.tar.gz)
-sha256sums=('2c05515f5a3ff4225be192ef560b0328348899a64f566548efe131243eb9eb8d')
+license=('MIT')
+arch=('any')
+source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
+sha256sums=('16c7ffca23d90c76dd7b163f648c8166dfd589b7c180b8ff75aa327ae0a2fc6d')
+
+build() {
+    cd "${srcdir}/${_module}-${pkgver}"
+    python setup.py build
+}
 
 package() {
-	 cd "${srcdir}/${_pkgname}-${pkgver}"
-	 python setup.py install --root="${pkgdir}" --optimize=1
+    depends+=()
+    cd "${srcdir}/${_module}-${pkgver}"
+    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
