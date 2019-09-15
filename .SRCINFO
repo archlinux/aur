@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-depth-image-proc
 	pkgdesc = ROS - Contains nodelets for processing depth images such as those produced by OpenNI camera.
 	pkgver = 1.12.23
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/depth_image_proc
 	arch = any
 	license = BSD
@@ -28,8 +28,8 @@ pkgbase = ros-melodic-depth-image-proc
 	depends = ros-melodic-tf2
 	depends = ros-melodic-image-transport
 	depends = boost
-	source = ros-melodic-depth-image-proc-1.12.23-0.tar.gz::https://github.com/ros-gbp/image_pipeline-release/archive/release/melodic/depth_image_proc/1.12.23-0.tar.gz
-	sha256sums = afd0f4eaae77e022b7c340519fda4b5c170e9fca7bfed5cc6888b0f081ad85a9
+	source = ros-melodic-depth-image-proc-1.12.23.tar.gz::https://github.com/ros-perception/image_pipeline/archive/1.12.23.tar.gz
+	sha256sums = 0b024f155f79f16982b31951ad0b1bde5440159b0ba6b1128ecbe2e867a2e357
 
 pkgname = ros-melodic-depth-image-proc
 

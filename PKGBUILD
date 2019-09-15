@@ -7,7 +7,7 @@ pkgname='ros-melodic-depth-image-proc'
 pkgver='1.12.23'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -47,9 +47,9 @@ depends=(
 	boost
 )
 
-_dir="image_pipeline-release-release-melodic-depth_image_proc-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/image_pipeline-release/archive/release/melodic/depth_image_proc/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('afd0f4eaae77e022b7c340519fda4b5c170e9fca7bfed5cc6888b0f081ad85a9')
+_dir="image_pipeline-${pkgver}/depth_image_proc"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-perception/image_pipeline/archive/${pkgver}.tar.gz")
+sha256sums=('0b024f155f79f16982b31951ad0b1bde5440159b0ba6b1128ecbe2e867a2e357')
 
 build() {
 	# Use ROS environment variables.
