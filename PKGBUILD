@@ -3,10 +3,9 @@ pkgdesc="ROS - Enhanced tools for benchmarks in MoveIt!."
 url='https://moveit.ros.org'
 
 pkgname='ros-melodic-moveit-ros-benchmarks'
-pkgver='0.10.8'
-_pkgver_patch=0
+pkgver='1.0.2'
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-melodic-pluginlib
@@ -32,9 +31,9 @@ depends=(${ros_depends[@]})
 # sha256sums=('c84005b45be5707a4e6d5a01c966a9a13ea5c8f754c8c35b5d3fdb2d2ed44c56')
 
 # Tarball version (faster download)
-_dir="moveit-release-release-melodic-moveit_ros_benchmarks-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/moveit-release/archive/release/melodic/moveit_ros_benchmarks/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('73521b1dd7c950603cfd99ed2a1e744a3aa80574b325127c5bcd25e03c945335')
+_dir="moveit-${pkgver}/moveit_ros/benchmarks"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-planning/moveit/archive/${pkgver}.tar.gz")
+sha256sums=('b8194308c57dbe34bbb729cfccb30d1113af3a54a90a2cfb49482142d1044ea4')
 
 build() {
   # Use ROS environment variables
