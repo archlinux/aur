@@ -7,7 +7,7 @@ pkgname='ros-melodic-gl-dependency'
 pkgver='1.1.0'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -28,9 +28,9 @@ depends=(
 	python-pyqt5
 )
 
-_dir="gl_dependency-release-release-melodic-gl_dependency-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/gl_dependency-release/archive/release/melodic/gl_dependency/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('268881107d9d7d88c38530235fe1c38bd6343ffa7d326c451136895e06f3422e')
+_dir="gl_dependency-${pkgver}"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/gl_dependency/archive/${pkgver}.tar.gz")
+sha256sums=('415d2cddfd1b06ce2937eac2c6ea1b33d3d2606250baf771a0e65d251fc0d336')
 
 build() {
 	# Use ROS environment variables.
