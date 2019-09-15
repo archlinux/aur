@@ -1,8 +1,8 @@
 pkgbase = openrazer-git
-	pkgdesc = An entirely open source driver and user-space daemon that allows you to manage your Razer peripherals on GNU/Linux.
+	pkgdesc = An entirely open source driver and user-space daemon that allows you to manage your Razer peripherals on GNU/Linux. (Modified for Razer Blade Pro 2019)
 	pkgver = 2.5.0.r0.gf0e422f
 	pkgrel = 1
-	url = https://github.com/openrazer/openrazer
+	url = https://github.com/cawilliamson/openrazer
 	arch = any
 	license = GPL2
 	makedepends = git
