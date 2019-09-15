@@ -4,7 +4,7 @@
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 
 pkgname=mingw-w64-unixodbc
-pkgver=2.3.6
+pkgver=2.3.7
 pkgrel=1
 pkgdesc="ODBC is an open specification for providing application developers with a predictable API with which to access Data Sources (mingw-w64)"
 arch=('any')
@@ -15,7 +15,7 @@ backup=('usr/i686-w64-mingw32/etc/odbc.ini' 'usr/i686-w64-mingw32/etc/odbcinst.i
 depends=('mingw-w64-readline' 'mingw-w64-libtool')
 makedepends=('mingw-w64-configure')
 source=(ftp://ftp.unixodbc.org/pub/unixODBC/unixODBC-$pkgver.tar.gz)
-md5sums=('a8629fd2953b04b4639d0a9d8a5cf9d1')
+md5sums=('274a711b0c77394e052db6493840c6f9')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 

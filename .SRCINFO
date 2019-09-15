@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-unixodbc
 	pkgdesc = ODBC is an open specification for providing application developers with a predictable API with which to access Data Sources (mingw-w64)
-	pkgver = 2.3.6
+	pkgver = 2.3.7
 	pkgrel = 1
 	url = http://www.unixodbc.org/
 	arch = any
@@ -13,8 +13,8 @@ pkgbase = mingw-w64-unixodbc
 	backup = usr/i686-w64-mingw32/etc/odbcinst.ini
 	backup = usr/x86_64-w64-mingw32/etc/odbc.ini
 	backup = usr/x86_64-w64-mingw32/etc/odbcinst.ini
-	source = ftp://ftp.unixodbc.org/pub/unixODBC/unixODBC-2.3.6.tar.gz
-	md5sums = a8629fd2953b04b4639d0a9d8a5cf9d1
+	source = ftp://ftp.unixodbc.org/pub/unixODBC/unixODBC-2.3.7.tar.gz
+	md5sums = 274a711b0c77394e052db6493840c6f9
 
 pkgname = mingw-w64-unixodbc
 
