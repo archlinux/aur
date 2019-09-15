@@ -4,7 +4,7 @@ pkgdesc="ROS - Wrapper interface for tracing libraries."
 url='https://github.com/bosch-robotics-cr/tracetools'
 
 pkgname='ros-melodic-tracetools'
-pkgver='0.1.0'
+pkgver='0.2.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -26,9 +26,9 @@ depends=(${ros_depends[@]})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="tracetools-release-release-melodic-tracetools-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/bosch-robotics-cr/tracetools-release/archive/release/melodic/tracetools/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('1bda2cf38782fd1b9924d6fd4adaefb01f77e67b52e0f1da06bb44649a912ac5')
+_dir="tracetools-${pkgver}"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/bosch-robotics-cr/tracetools/archive/${pkgver}.tar.gz")
+sha256sums=('81a2cbf033a7cb35d98f7d9fd088616a4106ca9c8292b0761cee4ae9c89c7ffe')
 
 build() {
   # Use ROS environment variables
