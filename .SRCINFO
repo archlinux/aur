@@ -1,7 +1,7 @@
 pkgbase = linux-covolunablu-gaming
-	pkgver = 5.2.10.arch1
+	pkgver = 5.2.14.arch2
 	pkgrel = 1
-	url = https://git.archlinux.org/linux.git/log/?h=v5.2.10-arch1
+	url = https://git.archlinux.org/linux.git/log/?h=v5.2.14-arch2
 	arch = x86_64
 	license = GPL2
 	makedepends = xmlto
@@ -16,7 +16,7 @@ pkgbase = linux-covolunablu-gaming
 	makedepends = imagemagick
 	conflicts = steamos-xpad-dkms
 	options = !strip
-	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v5.2.10-arch1
+	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v5.2.14-arch2
 	source = config
 	source = 60-linux.hook
 	source = 90-linux.hook

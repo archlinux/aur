@@ -5,7 +5,7 @@
 # Contributor: Thomas Baechler <thomas at archlinux dot org>
 
 pkgbase=linux-covolunablu-gaming
-_srcver=5.2.10-arch1
+_srcver=5.2.14-arch2
 pkgver=${_srcver//-/.}
 pkgrel=1
 arch=(x86_64)
