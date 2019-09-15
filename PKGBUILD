@@ -7,7 +7,7 @@ pkgname='ros-melodic-rqt-image-view'
 pkgver='0.4.13'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -40,9 +40,9 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="rqt_image_view-release-release-melodic-rqt_image_view-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rqt_image_view-release/archive/release/melodic/rqt_image_view/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('adbd60be7c1f3517942285d3bcb166f838d362e88a910192bdaa35dc193126e3')
+_dir="rqt_image_view-${pkgver}"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/rqt_image_view/archive/${pkgver}.tar.gz")
+sha256sums=('e24e26dc98404966cc827a4e576a3c7465d82076095d1831eb9da49d3a97c4d5')
 
 build() {
 	# Use ROS environment variables.
