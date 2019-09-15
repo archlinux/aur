@@ -7,7 +7,7 @@ pkgname='ros-melodic-python-orocos-kdl'
 pkgver='1.4.0'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('LGPL')
 
 ros_makedepends=(
@@ -33,9 +33,9 @@ depends=(
 	sip
 )
 
-_dir="orocos-kdl-release-release-melodic-python_orocos_kdl-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/orocos/orocos-kdl-release/archive/release/melodic/python_orocos_kdl/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('e2f7f6fafccaf26d88863ac50b826301c14db71f61e4caff757a482e304a62a0')
+_dir="orocos_kinematics_dynamics-${pkgver}/python_orocos_kdl"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/orocos/orocos_kinematics_dynamics/archive/v${pkgver}.tar.gz")
+sha256sums=('05b93e759923684dc07433ccae1e476d158d89b3c2be5079c20062406da7b4dd')
 
 build() {
 	# Use ROS environment variables.
