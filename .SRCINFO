@@ -1,7 +1,7 @@
 pkgbase = xsane2tess
 	pkgdesc = Script for OCR with tesseract and xsane
 	pkgver = 1.0
-	pkgrel = 11
+	pkgrel = 12
 	url = http://doc.ubuntu-fr.org/xsane2tess
 	install = xsane2tess.install
 	arch = any
