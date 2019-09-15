@@ -3,8 +3,7 @@ pkgdesc="ROS - chomp motion planner"
 url='https://wiki.ros.org/chomp_motion_planner'
 
 pkgname='ros-melodic-chomp-motion-planner'
-pkgver='0.10.5'
-_pkgver_patch=0
+pkgver='1.0.2'
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -19,9 +18,9 @@ ros_depends=(ros-melodic-moveit-core
 depends=(${ros_depends[@]})
 
 # Tarball version (faster download)
-_dir="moveit-release-release-melodic-chomp_motion_planner-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/moveit-release/archive/release/melodic/chomp_motion_planner/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('e0e5fed284b6365b1957e1b26285946be3c54ae5b71de934bd90eb27307de1e4')
+_dir="moveit-${pkgver}/moveit_planners/chomp/chomp_motion_planner"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-planning/moveit/archive/${pkgver}.tar.gz")
+sha256sums=('b8194308c57dbe34bbb729cfccb30d1113af3a54a90a2cfb49482142d1044ea4')
 
 build() {
   # Use ROS environment variables
