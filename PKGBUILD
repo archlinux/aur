@@ -7,7 +7,7 @@ pkgname='ros-melodic-rosbaglive'
 pkgver='0.2.4'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-rosbag
@@ -27,9 +27,9 @@ depends=(${ros_depends[@]})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="wu_ros_tools-release-melodic-rosbaglive-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/wu-robotics/wu_ros_tools/archive/release/melodic/rosbaglive/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('96a3356c1fe0467cb3049b0a3962a1a987b55aa11fc69d4dfdd9e7ec9c4d666e')
+_dir="wu_ros_tools-${pkgver}/rosbaglive"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/DLu/wu_ros_tools/archive/${pkgver}.tar.gz")
+sha256sums=('fd0bb39a69302dae5ccfd565277209719a4199644fc8265a2ae7ccedd92c004a')
 
 build() {
   # Use ROS environment variables
