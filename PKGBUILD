@@ -4,10 +4,10 @@ pkgdesc="ROS - The control toolbox contains modules that are useful across all c
 url='https://wiki.ros.org/control_toolbox'
 
 pkgname='ros-melodic-control-toolbox'
-pkgver='1.16.0'
+pkgver='1.17.0'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=0
 license=('BSD')
 
 ros_makedepends=(ros-melodic-dynamic-reconfigure
@@ -39,9 +39,9 @@ depends=(${ros_depends[@]}
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="control_toolbox-release-release-melodic-control_toolbox-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/control_toolbox-release/archive/release/melodic/control_toolbox/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('adf41cc48636370fc100e01035663240b5328e593eda03980958451292654d3d')
+_dir="control_toolbox-${pkgver}"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-controls/control_toolbox/archive/${pkgver}.tar.gz")
+sha256sums=('f137b29311f2bef60f910d411c43dd123a3c7609f9e438796b80144e19b696c8')
 
 build() {
   # Use ROS environment variables
