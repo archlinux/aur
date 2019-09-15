@@ -7,14 +7,15 @@ pkgname='ros-melodic-controller-manager'
 pkgver='0.15.1'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-pluginlib
   ros-melodic-controller-manager-msgs
   ros-melodic-catkin
   ros-melodic-hardware-interface
-  ros-melodic-controller-interface)
+  ros-melodic-controller-interface
+  ros-melodic-rostest)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
@@ -31,9 +32,9 @@ depends=(${ros_depends[@]})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="ros_control-release-release-melodic-controller_manager-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_control-release/archive/release/melodic/controller_manager/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('23c70277cc132ceacb08eaea3ce9ff79d956458f817b9ab72bcf2713b12e7824')
+_dir="ros_control-${pkgver}/controller_manager"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-controls/ros_control/archive/${pkgver}.tar.gz")
+sha256sums=('adf1a9d1fd10f4d89e91c8279d1278d9cd301767b658c143810479b2d10eedca')
 
 build() {
   # Use ROS environment variables
