@@ -7,7 +7,7 @@ pkgname='ros-melodic-urdf-parser-plugin'
 pkgver='1.13.1'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -29,9 +29,9 @@ depends=(
 	urdfdom-headers
 )
 
-_dir="urdf-release-release-melodic-urdf_parser_plugin-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/urdf-release/archive/release/melodic/urdf_parser_plugin/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('7031baf19ed479dcc35455fc5090a740ccc28592c8fd565154ea6556aa80f747')
+_dir="urdf-${pkgver}/urdf_parser_plugin"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/urdf/archive/${pkgver}.tar.gz")
+sha256sums=('9959b9963a5c112f71995405e8aa6d4dcf634e9f38f061ed7577d3db449179d6')
 
 build() {
 	# Use ROS environment variables.
