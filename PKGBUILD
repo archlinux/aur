@@ -5,9 +5,8 @@ url='https://wiki.ros.org/stage_ros'
 
 pkgname='ros-melodic-stage-ros'
 pkgver='1.8.0'
-_pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-tf
@@ -42,9 +41,9 @@ depends=(${ros_depends[@]}
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="stage_ros-release-release-melodic-stage_ros-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/stage_ros-release/archive/release/melodic/stage_ros/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('5762c477b0401c12f43573895f7a94ec3bdfddc4aa9fe3a127d3acc1ce2960d8')
+_dir="stage_ros-${pkgver}"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-simulation/stage_ros/archive/${pkgver}.tar.gz")
+sha256sums=('21fbe64e3a5f639ce88a69b3ae15eea38a9e2dbeedfb7f9bed21f787706973fb')
 
 build() {
   # Use ROS environment variables
