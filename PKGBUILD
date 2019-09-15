@@ -1,9 +1,9 @@
 # Maintainer: theflameemperor <un.own.cry@gmail.com>
 pkgname=ygopro-koishipro
-pkgver=2019.8.7
+pkgver=2019.9.15
 pkgrel=1
 _pkgrel=1
-name="Charin"
+name="Scarlet"
 zipFile="KoishiPro-linux-full-$name.zip"
 pkgdesc="Link compatable ygopro client with AI"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('mono' 'libevent')
 makedepends=('patchelf' 'unzip')
 source=("$url/releases/download/$name/$zipFile")
 noextract=($zipFile)
-sha256sums=('622fb41491b8c380d5620ae486de06efcbe7a9a125517429a3923541389a4768')
+sha256sums=('b665f2ff7a387fc7914779cb6bf4ff96baca2dbc6791d13dd4cd5c47730c00c2')
 options=('!strip' 'emptydirs')
 
 prepare(){
