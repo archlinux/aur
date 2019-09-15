@@ -1,47 +1,59 @@
-# Maintainer: Gordian Edenhofer <gordian.edenhofer@gmail.com>
-# Contributer: Philip Abernethy <chais.z3r0@gmail.com>
-# Contributer: sowieso <sowieso@dukun.de>
+# Maintainer: Nitroretro <nitroretro@protonmail.com>
+# Contributor: Gordian Edenhofer <gordian.edenhofer@gmail.com>
+# Contributor: Philip Abernethy <chais.z3r0@gmail.com>
+# Contributor: sowieso <sowieso@dukun.de>
 
-pkgname=minecraft-server
-pkgver=1.14.4
-_nonce=3dc3d84a581f14691199cf6831b71ed1296a9fdf
+pkgname=forge-server
+_minecraft_ver=1.12.2
+pkgver=${_minecraft_ver}_14.23.5.2768
+_ver=${pkgver//_/-}
 pkgrel=1
-pkgdesc="Minecraft server unit files, script, and jar"
+pkgdesc="Minecraft Forge server unit files, script, and jar"
 arch=('any')
-url="https://minecraft.net/"
+url="https://minecraftforge.net/"
 license=('custom')
-depends=('java-runtime-headless>=8' 'screen' 'sudo' 'bash' 'awk' 'sed')
+depends=('java-runtime-headless=8' 'screen' 'sudo' 'bash' 'awk' 'sed')
 optdepends=("tar: needed in order to create world backups"
 	"netcat: required in order to suspend an idle server")
-conflicts=('minecraft-server-systemd' 'minecraft-canary')
-backup=('etc/conf.d/minecraft')
+backup=('etc/conf.d/forge')
 install="${pkgname}.install"
-# See https://launchermeta.mojang.com/mc/game/version_manifest.json for a list of all releases
-source=("minecraft_server.${pkgver}.jar"::"https://launcher.mojang.com/v1/objects/${_nonce}/server.jar"
-	"minecraftd-backup.service"
-	"minecraftd-backup.timer"
-	"minecraftd.service"
-	"minecraftd.conf"
-	"minecraftd.sh")
-noextract=("minecraft_server.${pkgver}.jar")
-sha512sums=('b3d2852c6fa1b996bbf2fa9fc1fb860c6bca5136bcc5ddd3d236d85789c6bce81620f6b2d69eaa10c41d020fe0bb54de2fa601b3df3093af2691853a4445e1f8'
-            'c8f96bafb0ba3fd8946ac791b09e75cae54dc1a8e02822f91ca70a77a8ba45b253a83c4db30f9cfbf0658a2608b38e6de3d00f1d832ef676f329a78e69eab3e7'
-            '19ee3646bfbace353b65c0373594edb654de11c9671f29cebad3b31109f29f94ade1d529d9f409b0989c376bef9b451585b22a1e0ac4295fcc92d9565f808418'
-            '5203f6331f740ecfcea2a2cc653603ae97419baa89e08512f9d8feb63e4a52978442a69b313eccd9037b676a62ab528e2b533c0fb95a9c7177318279fe0cde79'
-            '73132ec613e05c8ed7ebe4eda2395f1ea0733ffe94ba7e203e06246d5852139bbfb7a9073b2b01891282339a2f85676699cd889cde79d6317066e27fd65b1d67'
-            '9e806e35c207c96714f53a360e2d493f665867126398c2f12486b6f9d2b2db98c883e19aade703e18c31696e05808847762e494f743db7802127f415a00ba3bc')
+source=("forge-${_ver}-installer.jar"::"https://files.minecraftforge.net/maven/net/minecraftforge/forge/${_ver}/forge-${_ver}-installer.jar"
+	"forged-backup.service"
+	"forged-backup.timer"
+	"forged.service"
+	"forged.conf"
+	"forged.sh"
+	"LICENSE.txt")
+noextract=("forge-${_ver}-installer.jar")
+sha512sums=('fefaabeccd17b98752cbef8bd01f4bce27e351106c256edf6aba92267e0fc4ded36fba089f9b7f5fc2d210e5f7b07bca38d8254a2f4732516720e45a249dc5c2'
+            'e9a391a330320a7aea127a3e8ad399d8d6e3c926eac2c0df7a4e550ba61cc13fec737f7e984bd98b9e1f9f9d5a654ee241eeef6a2e433ec845e300ef29405f62'
+            'a47b5a9e2262877008a5dcae3a833fe99f911631d6fdbe97b95e0451e1dd2b5a26b6f7b843dd6a8ccd4f663cf5c3bca53a89a1d3aabb363281ab6c6fb19e41a4'
+            'd6bde61a7aa479b85e35b4a3eccb9b3237a6c97f8919b3d704434f1df15672b74c7ae9ca9473eea6a0593e6e80892a2510782115185c1b7fe332720ccb78a7bd'
+            'ad305f48d869d18cb13f4c4fbae2c5cdfb87d0910ae3d8dd8c0fe83ff0533a8f944fd694718faa1b2cdd6e891d9a4ab3fa43434f75bd9ce5b1ae3b54844f714b'
+            '56e4dfa327a4ab23d067e0bbde372718401027023771c01248bd2283807007379dfca2bbf0ec070d8047cffdef49f3d19fb5776cf6315f5c1aaff6d605215b6d'
+            '3da10d63a5edee4bc8bcd3d5c2730771062f7fa58626a8c51635fbe96bfbceca3ff6937cfaad3e17f16a94ef95137f7c78cc6dac1c846a6b9a8f18d3c6355973')
 
-_game="minecraft"
-_server_root="/srv/minecraft"
+_game="forge"
+_server_root="/srv/forge"
+
+build() {
+	java -jar "forge-${_ver}-installer.jar" --installServer
+}
 
 package() {
-	install -Dm644 ${_game}d.conf              "${pkgdir}/etc/conf.d/${_game}"
-	install -Dm755 ${_game}d.sh                "${pkgdir}/usr/bin/${_game}d"
-	install -Dm644 ${_game}d.service           "${pkgdir}/usr/lib/systemd/system/${_game}d.service"
-	install -Dm644 ${_game}d-backup.service    "${pkgdir}/usr/lib/systemd/system/${_game}d-backup.service"
-	install -Dm644 ${_game}d-backup.timer      "${pkgdir}/usr/lib/systemd/system/${_game}d-backup.timer"
-	install -Dm644 ${_game}_server.${pkgver}.jar "${pkgdir}${_server_root}/${_game}_server.${pkgver}.jar"
-	ln -s "${_game}_server.${pkgver}.jar" "${pkgdir}${_server_root}/${_game}_server.jar"
+	install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
+
+	install -Dm644 "${_game}d.conf"                         "${pkgdir}/etc/conf.d/${_game}"
+	install -Dm755 "${_game}d.sh"                           "${pkgdir}/usr/bin/${_game}d"
+	install -Dm644 "${_game}d.service"                      "${pkgdir}/usr/lib/systemd/system/${_game}d.service"
+	install -Dm644 "${_game}d-backup.service"               "${pkgdir}/usr/lib/systemd/system/${_game}d-backup.service"
+	install -Dm644 "${_game}d-backup.timer"                 "${pkgdir}/usr/lib/systemd/system/${_game}d-backup.timer"
+	install -Dm644 "${_game}-${_ver}-universal.jar"         "${pkgdir}${_server_root}/${_game}-${_ver}-universal.jar"
+	install -Dm644 "minecraft_server.${_minecraft_ver}.jar" "${pkgdir}${_server_root}/minecraft_server.${_minecraft_ver}.jar"
+	ln -s "${_game}-${_ver}-universal.jar" "${pkgdir}${_server_root}/${_game}-universal.jar"
+
+	# Install libraries
+	find libraries -type f -print0 | xargs -0 -i@ install -Dm644 '@' "${pkgdir}${_server_root}/@"
 
 	# Link the log files
 	mkdir -p "${pkgdir}/var/log/"

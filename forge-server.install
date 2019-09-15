@@ -1,6 +1,6 @@
-_game="minecraft"
-_user="minecraft"
-_server_root="/srv/minecraft"
+_game="forge"
+_user="forge"
+_server_root="/srv/forge"
 
 post_install() {
 	getent group "${_user}" &>/dev/null
