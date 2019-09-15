@@ -1,6 +1,6 @@
 pkgbase = genie-systemd-git
 	pkgdesc = A quick way into a systemd "bottle" for WSL (development version)
-	pkgver = 1.10.r0.g4dbb9f4
+	pkgver = 1.12.r12.g21ce15b
 	pkgrel = 1
 	url = https://github.com/arkane-systems/genie
 	arch = x86_64
