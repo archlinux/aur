@@ -7,6 +7,7 @@
 
 pkgname=gimp-noconflict-git
 _pkgname=${pkgname%-noconflict-git}
+replaces=(gimp-develop-git)
 epoch=1
 pkgver=2.99.1.r3749.c98edaf101
 pkgrel=1
