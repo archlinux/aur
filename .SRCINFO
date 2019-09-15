@@ -8,7 +8,7 @@ pkgbase = rlpr
 	source = https://www.openprinting.org/download/printing/rlpr-2.04.tar.gz
 	source = rlpr-2.04.patch
 	sha256sums = 3aa1d7792eb1b0634148b96eaf647e173abe1915564727e893857eeb24e4b78f
-	sha256sums = f7bfcfac87f65bb022d6b9df6b1cc29e288c503b8ba9c7bae4967bdc012b1a37
+	sha256sums = c17c75164ed4e9e433a38bc583f84b25cf5a23b4750ad46cf830aa95e9a38fda
 
 pkgname = rlpr
 
