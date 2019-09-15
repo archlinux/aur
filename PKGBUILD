@@ -7,7 +7,7 @@ pkgname='ros-melodic-rqt-reconfigure'
 pkgver='0.4.10'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -34,9 +34,9 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="rqt_reconfigure-release-release-melodic-rqt_reconfigure-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rqt_reconfigure-release/archive/release/melodic/rqt_reconfigure/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('7dfe332ee9d603a0981832a698c817c14b0fa00c3cc0de4ab7a6676c90d598b4')
+_dir="rqt_reconfigure-${pkgver}"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/rqt_reconfigure/archive/${pkgver}.tar.gz")
+sha256sums=('f1e295756d77e28afd702c2dbed9459fed6997c312129fc8d57954532a4fd004')
 
 build() {
 	# Use ROS environment variables.
