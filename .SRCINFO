@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-base-local-planner
 	pkgdesc = ROS - This package provides implementations of the Trajectory Rollout and Dynamic Window approaches to local robot navigation on a plane.
 	pkgver = 1.16.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wiki.ros.org/base_local_planner
 	arch = any
 	license = BSD
@@ -49,8 +49,8 @@ pkgbase = ros-melodic-base-local-planner
 	depends = ros-melodic-visualization-msgs
 	depends = ros-melodic-voxel-grid
 	depends = eigen3
-	source = ros-melodic-base-local-planner-1.16.2-0.tar.gz::https://github.com/ros-gbp/navigation-release/archive/release/melodic/base_local_planner/1.16.2-0.tar.gz
-	sha256sums = 1c14d73638bd309260ffb06d9a97853ab875b6ab6d6e6723ca8398f6ae0d58a8
+	source = ros-melodic-base-local-planner-1.16.2.tar.gz::https://github.com/ros-planning/navigation/archive/1.16.2.tar.gz
+	sha256sums = d83201296e773e2789635fddf39ac18e9465219b18707e53bd2361de4762d205
 
 pkgname = ros-melodic-base-local-planner
 

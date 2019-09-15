@@ -4,9 +4,8 @@ url='https://wiki.ros.org/base_local_planner'
 
 pkgname='ros-melodic-base-local-planner'
 pkgver='1.16.2'
-_pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(ros-melodic-angles
@@ -61,9 +60,9 @@ depends=(${ros_depends[@]} 'eigen3')
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="navigation-release-release-melodic-base_local_planner-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/navigation-release/archive/release/melodic/base_local_planner/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('1c14d73638bd309260ffb06d9a97853ab875b6ab6d6e6723ca8398f6ae0d58a8')
+_dir="navigation-${pkgver}/base_local_planner"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-planning/navigation/archive/${pkgver}.tar.gz")
+sha256sums=('d83201296e773e2789635fddf39ac18e9465219b18707e53bd2361de4762d205')
 
 build() {
   # Use ROS environment variables
