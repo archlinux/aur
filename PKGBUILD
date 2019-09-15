@@ -3,11 +3,12 @@
 # Contributor: Iru Cai <mytbk920423@gmail.com>
 # Contributor: Alexander Hunziker <alex.hunziker@gmail.com>
 # Contributor: Alessio Biancalana <dottorblaster@gmail.com>
+# shellcheck disable=SC2034
 
-pkgname=gimp-develop-git
-_pkgname=${pkgname%-develop-git}
+pkgname=gimp-noconflict-git
+_pkgname=${pkgname%-noconflict-git}
 epoch=1
-pkgver=2.99.1.r3723.65530b6aa7
+pkgver=2.99.1.r3749.c98edaf101
 pkgrel=1
 pkgdesc="GNU Image Manipulation Program (non-conflicting git version)"
 arch=('i686' 'x86_64')
