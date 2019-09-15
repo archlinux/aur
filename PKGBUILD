@@ -3,7 +3,7 @@
 pkgbase=octopi-notifier-frameworks
 pkgname=('octopi-notifier-frameworks')
 pkgver=0.9.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Notifier for Octopi with Knotifications support"
 pkggit=octopi
 _gitcommit=d76eb8b1c861ece83b4f3178559e2e5253258c76
