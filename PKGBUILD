@@ -3,7 +3,7 @@
 
 pkgname=cheese
 pkgver=3.34.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Take photos and videos with your webcam, with fun graphical effects"
 url="https://wiki.gnome.org/Apps/Cheese"
 arch=(x86_64)
@@ -33,7 +33,7 @@ build() {
 }
 
 check() (
-  glib-compile-schemas "${GSETTINGS_SCHEMA_DIR:=$PWD/build/data}"
+  glib-compile-schemas "${GSETTINGS_SCHEMA_DIR:=$PWD/$pkgname/data}"
   export GSETTINGS_SCHEMA_DIR
 
   xvfb-run meson test -C build --print-errorlogs
