@@ -4,9 +4,8 @@ url='https://sourceforge.net/projects/ivcon/'
 
 pkgname='ros-melodic-ivcon'
 pkgver='0.1.7'
-_pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('GPL')
 
 ros_makedepends=(ros-melodic-catkin)
@@ -23,9 +22,9 @@ depends=(${ros_depends[@]})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="ivcon-release-release-melodic-ivcon-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ivcon-release/archive/release/melodic/ivcon/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('cbf6855c3a967f5e124a3ea7c6c954bbb57345030d77b22e2f76a77a17bcd3f3')
+_dir="ivcon-${pkgver}"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/ivcon/archive/${pkgver}.tar.gz")
+sha256sums=('55b50a0ea6886f031b1b84f3d670e409261821bf10e7ccd315c1c057533ff643')
 
 build() {
   # Use ROS environment variables
