@@ -4,9 +4,8 @@ url='https://wiki.ros.org/move_base'
 
 pkgname='ros-melodic-move-base'
 pkgver='1.16.2'
-_pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-nav-core
@@ -61,9 +60,9 @@ depends=(${ros_depends[@]})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="navigation-release-release-melodic-move_base-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/navigation-release/archive/release/melodic/move_base/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('63af31b19a053e4877e0af0d899b59da73df19a65258c8a823f41afed51e851d')
+_dir="navigation-${pkgver}/move_base"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-planning/navigation/archive/${pkgver}.tar.gz")
+sha256sums=('d83201296e773e2789635fddf39ac18e9465219b18707e53bd2361de4762d205')
 
 build() {
   # Use ROS environment variables
