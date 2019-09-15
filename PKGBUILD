@@ -5,9 +5,8 @@ url='https://wiki.ros.org/libuvc_ros'
 
 pkgname='ros-melodic-libuvc-ros'
 pkgver='0.0.10'
-_pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-catkin)
@@ -24,9 +23,9 @@ depends=(${ros_depends[@]})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="libuvc_ros-release-release-melodic-libuvc_ros-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-drivers-gbp/libuvc_ros-release/archive/release/melodic/libuvc_ros/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('1a1bd0ae98c89cc82d4cb2baf2eb7b1e0216a466c1049490648b074aba53955c')
+_dir="libuvc_ros-${pkgver}/libuvc_ros"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-drivers/libuvc_ros/archive/${pkgver}.tar.gz")
+sha256sums=('33c356df370f548be1dbc1d21a13bf2704b6ea0218f77d3d6f305392266629d3')
 
 build() {
   # Use ROS environment variables
