@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-image-transport-plugins
 	pkgdesc = ROS - A set of plugins for publishing and subscribing to sensor_msgs/Image topics in representations other than raw pixel data.
 	pkgver = 1.9.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.wiki.ros.org/image_transport_plugins
 	arch = any
 	license = BSD
@@ -11,8 +11,8 @@ pkgbase = ros-melodic-image-transport-plugins
 	depends = ros-melodic-compressed-depth-image-transport
 	depends = ros-melodic-compressed-image-transport
 	depends = ros-melodic-theora-image-transport
-	source = ros-melodic-image-transport-plugins-1.9.5-0.tar.gz::https://github.com/ros-gbp/image_transport_plugins-release/archive/release/melodic/image_transport_plugins/1.9.5-0.tar.gz
-	sha256sums = 1838bdad50e903b572a00fcb66935326e81c5e706af3356a64c0322927361ecd
+	source = ros-melodic-image-transport-plugins-1.9.5.tar.gz::https://github.com/ros-perception/image_transport_plugins/archive/1.9.5.tar.gz
+	sha256sums = 8047bc717c83f04a1b05a7cfe70778d99a82ceb5eb717d480aab19513de0719c
 
 pkgname = ros-melodic-image-transport-plugins
 

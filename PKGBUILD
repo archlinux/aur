@@ -7,7 +7,7 @@ pkgname='ros-melodic-image-transport-plugins'
 pkgver='1.9.5'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -30,9 +30,9 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="image_transport_plugins-release-release-melodic-image_transport_plugins-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/image_transport_plugins-release/archive/release/melodic/image_transport_plugins/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('1838bdad50e903b572a00fcb66935326e81c5e706af3356a64c0322927361ecd')
+_dir="image_transport_plugins-${pkgver}/image_transport_plugins"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-perception/image_transport_plugins/archive/${pkgver}.tar.gz")
+sha256sums=('8047bc717c83f04a1b05a7cfe70778d99a82ceb5eb717d480aab19513de0719c')
 
 build() {
 	# Use ROS environment variables.
