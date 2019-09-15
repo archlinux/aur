@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-urdf-tutorial
 	pkgdesc = ROS - This package contains a number of URDF tutorials.
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/urdf_tutorial
 	arch = any
 	license = BSD
@@ -13,8 +13,8 @@ pkgbase = ros-melodic-urdf-tutorial
 	depends = ros-melodic-joint-state-publisher
 	depends = ros-melodic-rviz
 	depends = ros-melodic-robot-state-publisher
-	source = ros-melodic-urdf-tutorial-0.4.0-0.tar.gz::https://github.com/ros-gbp/urdf_tutorial-release/archive/release/melodic/urdf_tutorial/0.4.0-0.tar.gz
-	sha256sums = 92605e8f00f4f6ca12ef65eceb536dc41ba222e9881eaa733a28afc784f7bbbf
+	source = ros-melodic-urdf-tutorial-0.4.0.tar.gz::https://github.com/ros/urdf_tutorial/archive/0.4.0.tar.gz
+	sha256sums = d918909e6ec039423b434efe44b7a9fa08ea21b43f64c314b985b9c134d9921d
 
 pkgname = ros-melodic-urdf-tutorial
 

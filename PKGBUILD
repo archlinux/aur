@@ -7,7 +7,7 @@ pkgname='ros-melodic-urdf-tutorial'
 pkgver='0.4.0'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -32,9 +32,9 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="urdf_tutorial-release-release-melodic-urdf_tutorial-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/urdf_tutorial-release/archive/release/melodic/urdf_tutorial/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('92605e8f00f4f6ca12ef65eceb536dc41ba222e9881eaa733a28afc784f7bbbf')
+_dir="urdf_tutorial-${pkgver}"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/urdf_tutorial/archive/${pkgver}.tar.gz")
+sha256sums=('d918909e6ec039423b434efe44b7a9fa08ea21b43f64c314b985b9c134d9921d')
 
 build() {
 	# Use ROS environment variables.
