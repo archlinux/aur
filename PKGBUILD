@@ -4,7 +4,7 @@ pkgdesc="ROS - The tuw_msgs meta package."
 url='https://wiki.ros.org/tuw_msgs'
 
 pkgname='ros-melodic-tuw-msgs'
-pkgver='0.0.6'
+pkgver='0.0.13'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -30,9 +30,9 @@ depends=(${ros_depends[@]})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="tuw_msgs-release-release-melodic-tuw_msgs-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/tuw-robotics/tuw_msgs-release/archive/release/melodic/tuw_msgs/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('503404c6e0fba89a6a7db34e0acc567c22d0265c4148542c535cb8cd0a48b4f6')
+_dir="tuw_msgs-${pkgver}/tuw_msgs"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/tuw-robotics/tuw_msgs/archive/${pkgver}.tar.gz")
+sha256sums=('b22f12be8014a8855cd179d228ae5312102da4b3d176979f66f13e258cc418b6')
 
 build() {
   # Use ROS environment variables
