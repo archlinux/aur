@@ -7,7 +7,7 @@ pkgname='ros-melodic-urdfdom-py'
 pkgver='0.4.0'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -31,9 +31,9 @@ depends=(
 	python
 )
 
-_dir="urdfdom_py-release-release-melodic-urdfdom_py-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/urdfdom_py-release/archive/release/melodic/urdfdom_py/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('9d0663d9bde7a548ba4df458423922d7d1e326a786e50cc33846f0835c4843f6')
+_dir="urdf_parser_py-${pkgver}"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/urdf_parser_py/archive/${pkgver}.tar.gz")
+sha256sums=('e04b4bf6da70ffdec9b8be08f5009f57b833edc55e8f688b48a64978fde92ac9')
 
 build() {
 	# Use ROS environment variables.
