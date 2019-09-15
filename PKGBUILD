@@ -7,7 +7,7 @@ pkgname='ros-melodic-interactive-markers'
 pkgver='1.11.4'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -41,9 +41,9 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="interactive_markers-release-release-melodic-interactive_markers-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/interactive_markers-release/archive/release/melodic/interactive_markers/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('600001c06acb4e88fe5c9f512476d50b41a795356643bb02e528748b158b81f8')
+_dir="interactive_markers-${pkgver}"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/interactive_markers/archive/${pkgver}.tar.gz")
+sha256sums=('33319252510cae10a8a2e2af5ac104f33ebb0b2f5ae8d9ab9649b5dc9ee34a7a')
 
 build() {
 	# Use ROS environment variables.
