@@ -1,4 +1,4 @@
-# Maintainer:
+# Maintainer: Morgenstern <charles [at] charlesbwise [dot] com>
 # Contributor: Daniel Wallace <danielwallace at gtmanfred dot com>
 # Contributor: megadriver <megadriver at gmx dot com>
 
@@ -12,8 +12,8 @@ license=("CCPL:by-sa")
 depends=('lxdm')
 source=(http://allanmcrae.com/files/lxdm-theme.tar.gz
         git-fixes.patch)
-md5sums=('899b33309ee04f3200bb08aedb5717ed'
-         '7eba1f5ca1dacbc670a05b0467004db5')
+sha256sums=('1eeaee69da8dd0ab28fc6967b06d4594980808bed83e822858a31b46926acbe7'
+            '95f3e1b63f38fb6289beed290c15c022836a2800e4358e22e6c7ec52c741af30')
 
 prepare() {
   patch -Np0 -i git-fixes.patch
