@@ -1,0 +1,31 @@
+[PATCH 3/6] Pass various runtime library flags to GCC.
+* build-aux/ltmain.in (func_mode_link): Pass the
+-shared-libgcc and -static-lib* flags along to GCC.
+---
+ build-aux/ltmain.in |    5 ++++-
+ 1 files changed, 4 insertions(+), 1 deletions(-)
+
+diff --git a/build-aux/ltmain.in b/build-aux/ltmain.in
+index 1821779..eda7790 100644
+--- a/build-aux/ltmain.in
++++ b/build-aux/ltmain.in
+@@ -5378,12 +5378,15 @@ func_mode_link ()
+       # -O*, -g*, -flto*, -fwhopr*, -fuse-linker-plugin GCC link-time optimization
+       # -specs=*             GCC specs files
+       # -stdlib=*            select c++ std lib with clang
++      # -{shared,static}-libgcc, -static-{libgfortran|libstdc++}
++      #                      link against specified runtime library
+       # -fsanitize=*         Clang/GCC memory and address sanitizer
+       # -fuse-ld=*           Linker select flags for GCC
+       -64|-mips[0-9]|-r[0-9][0-9]*|-xarch=*|-xtarget=*|+DA*|+DD*|-q*|-m*| \
+       -t[45]*|-txscale*|-p|-pg|--coverage|-fprofile-*|-F*|@*|-tp=*|--sysroot=*| \
+       -O*|-g*|-flto*|-fwhopr*|-fuse-linker-plugin|-fstack-protector*|-stdlib=*| \
+-      -specs=*|-fsanitize=*|-fuse-ld=*)
++      -specs=*|-fsanitize=*|-fuse-ld=*|-shared-libgcc|-static-libgcc| \
++      -static-libgfortran|-static-libstdc++)
+         func_quote_arg pretty "$arg"
+ 	arg=$func_quote_arg_result
+         func_append compile_command " $arg"
+-- 
+1.7.1
+
