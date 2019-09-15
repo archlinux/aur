@@ -5,8 +5,13 @@ pkgbase = googleplaymusic
 	url = https://gitlab.com/coreybruce/GooglePlayMusic
 	arch = x86_64
 	license = GPL
+	makedepends = nodejs
+	makedepends = git
+	depends = nss
+	depends = gtk3
+	depends = libxss
 	provides = googleplaymusic
-	source = https://gitlab.com/coreybruce/GooglePlayMusic/raw/binaries/GooglePlayMusic-linux-x64.tar.gz
+	source = git+https://gitlab.com/google-play-music-desktop/application.git
 	md5sums = SKIP
 
 pkgname = googleplaymusic
