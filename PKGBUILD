@@ -4,7 +4,7 @@ pkgdesc="ROS - tf2_bullet."
 url='https://www.wiki.ros.org/tf2_bullet'
 
 pkgname='ros-melodic-tf2-bullet'
-pkgver='0.6.2'
+pkgver='0.6.5'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -30,9 +30,9 @@ depends=(${ros_depends[@]}
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="geometry2-release-release-melodic-tf2_bullet-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/geometry2-release/archive/release/melodic/tf2_bullet/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('2a5102bd7a35427021065fd019dea5a620119366a8abd2cc97d94071be16a3f9')
+_dir="geometry2-${pkgver}/tf2_bullet"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/geometry2/archive/${pkgver}.tar.gz")
+sha256sums=('9a1268621518fc22afd7b12ef1cf30e6901a57b054535924d1d74fd5d267773a')
 
 build() {
   # Use ROS environment variables
