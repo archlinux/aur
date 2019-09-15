@@ -1,0 +1,15 @@
+pkgbase = libreoffice-extension-linguist
+	pkgdesc = A simple text analysis extension for LibreOffice
+	pkgver = 1.5.1
+	pkgrel = 1
+	url = https://extensions.libreoffice.org/extensions/linguist
+	arch = any
+	groups = libreoffice-extensions
+	license = GPL
+	depends = libreoffice
+	noextract = linguist-1-5-1.oxt
+	source = https://extensions.libreoffice.org/extensions/linguist/1.5.1/@@download/file/linguist-1-5-1.oxt
+	sha256sums = dd5feae7b790d7111c8540fb6696301ce3a718223aab6e4df54f93c53026539d
+
+pkgname = libreoffice-extension-linguist
+
