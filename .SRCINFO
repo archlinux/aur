@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-turtle-tf
 	pkgdesc = ROS - turtle_tf demonstrates how to write a tf broadcaster and listener with the turtlesim.
 	pkgver = 0.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/turtle_tf
 	arch = any
 	license = BSD
@@ -20,8 +20,8 @@ pkgbase = ros-melodic-turtle-tf
 	depends = ros-melodic-roscpp
 	depends = ros-melodic-rospy
 	depends = ros-melodic-geometry-msgs
-	source = ros-melodic-turtle-tf-0.2.2-0.tar.gz::https://github.com/ros-gbp/geometry_tutorials-release/archive/release/melodic/turtle_tf/0.2.2-0.tar.gz
-	sha256sums = 182947fcfff5ec44a27e343306a78fd488fbcaff6d8ca894ed0646846293f02d
+	source = ros-melodic-turtle-tf-0.2.2.tar.gz::https://github.com/ros/geometry_tutorials/archive/0.2.2.tar.gz
+	sha256sums = 4b3fdc98bf4cb97ba2f1c40666901fa7d08eb3dfed0d3323de4841de2e3a22cc
 
 pkgname = ros-melodic-turtle-tf
 
