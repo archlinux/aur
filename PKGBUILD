@@ -1,26 +1,24 @@
-# Maintainer: Manuel Palenzuela <sadshinobi@protonmail.com>
+# Maintainer Manuel Palenzuela <sadshinobi@protonmail.com>
+
+author=sjl
 pkgname=python-todo-t
 pkgver=0
 pkgrel=1
 pkgdesc="Command-line todo list manager"
 url="https://github.com/sjl/t"
-arch=('i686' 'x86_64')
+makedepends=('git' 'python')
 license=('GPL')
-makedepends=('python')
+arch=('any')
+source=("git://github.com/sjl/t")
+provides=('python-todo-t')
 
-source=("git://github.com/sjl/t.git")
 md5sums=('SKIP')
-backup=()
+sha1sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
-     cd "t"
-     printf '0.r%s.%s' \
-          "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-package() {
   cd "t"
-  python setup.py install --root="$pkgdir/" --optimize=1
+  
+  # Get the version number.
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-
-# vim:set ts=2 sw=2 et:

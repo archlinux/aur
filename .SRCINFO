@@ -3,12 +3,15 @@ pkgbase = python-todo-t
 	pkgver = 0
 	pkgrel = 1
 	url = https://github.com/sjl/t
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = GPL
+	makedepends = git
 	makedepends = python
-	source = git://github.com/sjl/t.git
+	provides = python-todo-t
+	source = git://github.com/sjl/t
 	md5sums = SKIP
+	sha1sums = SKIP
+	sha256sums = SKIP
 
 pkgname = python-todo-t
 
