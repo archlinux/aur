@@ -4,10 +4,10 @@ pkgdesc="ROS - tf2_tools."
 url='https://www.wiki.ros.org/tf2_tools'
 
 pkgname='ros-melodic-tf2-tools'
-pkgver='0.6.2'
+pkgver='0.6.5'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=0
 license=('BSD')
 
 ros_makedepends=(ros-melodic-tf2-msgs
@@ -29,9 +29,9 @@ depends=(${ros_depends[@]})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="geometry2-release-release-melodic-tf2_tools-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/geometry2-release/archive/release/melodic/tf2_tools/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('30a34b8e9ef44eeaf3bad801a78fab8ee684141c61cc633be0ec84be2d694219')
+_dir="geometry2-${pkgver}/tf2_tools"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/geometry2/archive/${pkgver}.tar.gz")
+sha256sums=('9a1268621518fc22afd7b12ef1cf30e6901a57b054535924d1d74fd5d267773a')
 
 build() {
   # Use ROS environment variables
