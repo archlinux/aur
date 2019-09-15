@@ -1,8 +1,8 @@
 diff --git a/whipper/program/cdparanoia.py b/whipper/program/cdparanoia.py
-index 3163dc7..f3f16ae 100644
+index 6bc579d..1e21276 100644
 --- a/whipper/program/cdparanoia.py
 +++ b/whipper/program/cdparanoia.py
-@@ -280,10 +280,10 @@ class ReadTrackTask(task.Task):
+@@ -277,10 +277,10 @@ class ReadTrackTask(task.Task):
  
          bufsize = 1024
          if self._overread:
@@ -15,16 +15,16 @@ index 3163dc7..f3f16ae 100644
                      "--sample-offset=%d" % self._offset, ]
          if self._device:
              argv.extend(["--force-cdrom-device", self._device, ])
-@@ -302,7 +302,7 @@ class ReadTrackTask(task.Task):
+@@ -298,7 +298,7 @@ class ReadTrackTask(task.Task):
+                                          close_fds=True)
          except OSError as e:
-             import errno
              if e.errno == errno.ENOENT:
 -                raise common.MissingDependencyException('cd-paranoia')
 +                raise common.MissingDependencyException('cdparanoia')
  
              raise
  
-@@ -559,8 +559,8 @@ _VERSION_RE = re.compile(
+@@ -556,8 +556,8 @@ _VERSION_RE = re.compile(
  
  
  def getCdParanoiaVersion():
@@ -35,7 +35,7 @@ index 3163dc7..f3f16ae 100644
                                    _VERSION_RE,
                                    "%(version)s %(release)s")
  
-@@ -585,12 +585,12 @@ class AnalyzeTask(ctask.PopenTask):
+@@ -582,12 +582,12 @@ class AnalyzeTask(ctask.PopenTask):
      def __init__(self, device=None):
          # cdparanoia -A *always* writes cdparanoia.log
          self.cwd = tempfile.mkdtemp(suffix='.whipper.cache')
@@ -48,5 +48,5 @@ index 3163dc7..f3f16ae 100644
 -        raise common.MissingDependencyException('cd-paranoia')
 +        raise common.MissingDependencyException('cdparanoia')
  
-     def readbyteserr(self, bytes):
-         self._output.append(bytes)
+     def readbyteserr(self, bytes_stderr):
+         self._output.append(bytes_stderr)
