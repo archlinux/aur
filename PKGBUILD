@@ -3,8 +3,7 @@ pkgdesc="ROS - experimental packages for moveit"
 url='https://moveit.ros.org'
 
 pkgname='ros-melodic-moveit-experimental'
-pkgver='0.10.5'
-_pkgver_patch=0
+pkgver='1.0.2'
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -56,9 +55,9 @@ depends=('eigen' 'cmake' 'boost' 'assimp' 'urdfdom' 'urdfdom-headers'
   ${ros_makedepends[@]})
 
 # Tarball version (faster download)
-_dir="moveit-release-release-melodic-moveit_experimental-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/moveit-release/archive/release/melodic/moveit_experimental/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('1a5c675fee0f1ee3b36ead7c63454687eab1c86e75c674465522df5bb83b1814')
+_dir="moveit-${pkgver}/moveit_experimental"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-planning/moveit/archive/${pkgver}.tar.gz")
+sha256sums=('b8194308c57dbe34bbb729cfccb30d1113af3a54a90a2cfb49482142d1044ea4')
 
 build() {
   # Use ROS environment variables
