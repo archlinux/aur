@@ -12,6 +12,7 @@ license=('BSD')
 
 ros_makedepends=(
 	ros-melodic-catkin
+	ros-melodic-rostest
 )
 
 makedepends=(
@@ -30,9 +31,9 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="joint_state_publisher-release-release-melodic-joint_state_publisher-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/joint_state_publisher-release/archive/release/melodic/joint_state_publisher/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('47bcd5c3c46ffd2d73ee0910bf584a3a23be56e2e423f3849b8771e55fe6fe8e')
+_dir="joint_state_publisher-${pkgver}/joint_state_publisher"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/joint_state_publisher/archive/${pkgver}.tar.gz")
+sha256sums=('7143e42232af0f5cef5413b0f543e951fe81fa673d2ad7b67d0f681da3597600')
 
 build() {
 	# Use ROS environment variables.
