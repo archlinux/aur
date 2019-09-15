@@ -7,7 +7,7 @@ pkgname='ros-melodic-xacro'
 pkgver='1.13.3'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -29,9 +29,9 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="xacro-release-release-melodic-xacro-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/xacro-release/archive/release/melodic/xacro/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('ef77d1f894a192888232b7b545b9f2748713066bae5c139644af3734aa09541d')
+_dir="xacro-${pkgver}"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/xacro/archive/${pkgver}.tar.gz")
+sha256sums=('279f294c79c17e881352a09d051378818449bc057ced8a4328b9a101c8d3600a')
 
 build() {
 	# Use ROS environment variables.
