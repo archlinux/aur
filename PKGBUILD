@@ -1,7 +1,7 @@
 # Maintainer: Ankit R Gadiya <arch@argp.in>
 
 pkgname=ruby-jekyll-seo-tag
-pkgver=2.5.0
+pkgver=2.6.1
 pkgrel=1
 pkgdesc="A Jekyll plugin to add metadata tags for search engines and social networks to better index and display your site's content"
 arch=('any')
@@ -10,7 +10,7 @@ url="https://rubygems.org/gems/jekyll-seo-tag"
 noextract=("jekyll-seo-tag-${pkgver}.gem")
 license=('MIT')
 source=("https://rubygems.org/downloads/jekyll-seo-tag-${pkgver}.gem")
-md5sums=('5dff5c7ed28018a38b6381fbc8f44422')
+sha256sums=('d5986ff4599f2f2dc8e3e5ab231e245a36aa5820f70f12faa220444bb2a02edd')
 
 package() {
     local _gemdir="$(ruby -e'puts Gem.default_dir')"
