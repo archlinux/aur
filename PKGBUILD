@@ -4,7 +4,7 @@ pkgdesc="ROS - A metapackage to bring in the default packages second generation 
 url='https://www.wiki.ros.org/geometry2'
 
 pkgname='ros-melodic-geometry2'
-pkgver='0.6.2'
+pkgver='0.6.5'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -33,9 +33,9 @@ depends=(${ros_depends[@]})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="geometry2-release-release-melodic-geometry2-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/geometry2-release/archive/release/melodic/geometry2/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('cea97c820efc873e5af2b8c110a1a41e865967e033d0079747dad0a41e1f2710')
+_dir="geometry2-${pkgver}/geometry2"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/geometry2/archive/${pkgver}.tar.gz")
+sha256sums=('9a1268621518fc22afd7b12ef1cf30e6901a57b054535924d1d74fd5d267773a')
 
 build() {
   # Use ROS environment variables
