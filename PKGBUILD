@@ -7,7 +7,7 @@ pkgname='ros-melodic-rqt-robot-dashboard'
 pkgver='0.5.7'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -36,9 +36,9 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="rqt_robot_dashboard-release-release-melodic-rqt_robot_dashboard-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rqt_robot_dashboard-release/archive/release/melodic/rqt_robot_dashboard/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('19eb8bffb5697ef7e7d7bc23cf7cda4e3446e6415a40e53987095b85bb9b8568')
+_dir="rqt_robot_dashboard-${pkgver}"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/rqt_robot_dashboard/archive/${pkgver}.tar.gz")
+sha256sums=('13b0b3e0ce6a86d06168f79f91a497c207d495361a3c6680255a5d0ab8c6bd8f')
 
 build() {
 	# Use ROS environment variables.

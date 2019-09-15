@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-rqt-robot-dashboard
 	pkgdesc = ROS - rqt_robot_dashboard provides an infrastructure for building robot dashboard plugins in rqt.
 	pkgver = 0.5.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/rqt_robot_dashboard
 	arch = any
 	license = BSD
@@ -17,8 +17,8 @@ pkgbase = ros-melodic-rqt-robot-dashboard
 	depends = ros-melodic-rqt-gui
 	depends = ros-melodic-rospy
 	depends = ros-melodic-rqt-robot-monitor
-	source = ros-melodic-rqt-robot-dashboard-0.5.7-0.tar.gz::https://github.com/ros-gbp/rqt_robot_dashboard-release/archive/release/melodic/rqt_robot_dashboard/0.5.7-0.tar.gz
-	sha256sums = 19eb8bffb5697ef7e7d7bc23cf7cda4e3446e6415a40e53987095b85bb9b8568
+	source = ros-melodic-rqt-robot-dashboard-0.5.7.tar.gz::https://github.com/ros-visualization/rqt_robot_dashboard/archive/0.5.7.tar.gz
+	sha256sums = 13b0b3e0ce6a86d06168f79f91a497c207d495361a3c6680255a5d0ab8c6bd8f
 
 pkgname = ros-melodic-rqt-robot-dashboard
 
