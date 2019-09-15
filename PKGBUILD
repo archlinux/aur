@@ -4,9 +4,8 @@ url='https://wiki.ros.org/move_base_msgs'
 
 pkgname='ros-melodic-move-base-msgs'
 pkgver='1.13.0'
-_pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-message-generation
@@ -28,9 +27,9 @@ depends=(${ros_depends[@]})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="navigation_msgs-release-release-melodic-move_base_msgs-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/navigation_msgs-release/archive/release/melodic/move_base_msgs/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('a9b1ee115c3252718a9915a94ba16421a39309ed237a33d790f486d468f8a1ef')
+_dir="navigation_msgs-${pkgver}/move_base_msgs"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-planning/navigation_msgs/archive/${pkgver}.tar.gz")
+sha256sums=('09bba8fb7a60135183830dec4381cd3187244794aab9759ac50bbc6007e04a61')
 
 build() {
   # Use ROS environment variables

@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-move-base-msgs
 	pkgdesc = ROS - Holds the action description and relevant messages for the move_base package.
 	pkgver = 1.13.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/move_base_msgs
 	arch = any
 	license = BSD
@@ -14,8 +14,8 @@ pkgbase = ros-melodic-move-base-msgs
 	depends = ros-melodic-message-runtime
 	depends = ros-melodic-actionlib-msgs
 	depends = ros-melodic-geometry-msgs
-	source = ros-melodic-move-base-msgs-1.13.0-0.tar.gz::https://github.com/ros-gbp/navigation_msgs-release/archive/release/melodic/move_base_msgs/1.13.0-0.tar.gz
-	sha256sums = a9b1ee115c3252718a9915a94ba16421a39309ed237a33d790f486d468f8a1ef
+	source = ros-melodic-move-base-msgs-1.13.0.tar.gz::https://github.com/ros-planning/navigation_msgs/archive/1.13.0.tar.gz
+	sha256sums = 09bba8fb7a60135183830dec4381cd3187244794aab9759ac50bbc6007e04a61
 
 pkgname = ros-melodic-move-base-msgs
 
