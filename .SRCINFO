@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-audio-capture
 	pkgdesc = ROS - Transports audio from a source to a destination.
-	pkgver = 0.3.2
-	pkgrel = 1
+	pkgver = 0.3.3
+	pkgrel = 0
 	url = https://wiki.ros.org/audio_capture
 	arch = any
 	license = BSD
@@ -18,8 +18,8 @@ pkgbase = ros-melodic-audio-capture
 	depends = gstreamer
 	depends = gst-plugins-base
 	depends = gst-plugins-ugly
-	source = ros-melodic-audio-capture-0.3.2-0.tar.gz::https://github.com/ros-gbp/audio_common-release/archive/release/melodic/audio_capture/0.3.2-0.tar.gz
-	sha256sums = b43970acdeac028a32a754f771f91fd601f41cdd872534d8d372c0df532faf13
+	source = ros-melodic-audio-capture-0.3.3.tar.gz::https://github.com/ros-drivers/audio_common/archive/0.3.3.tar.gz
+	sha256sums = 9121ce7ea80945a9efb46d89bd33a454877344aa1b4f405f944943a62e1e4bab
 
 pkgname = ros-melodic-audio-capture
 
