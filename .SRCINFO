@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-object-recognition-msgs
 	pkgdesc = ROS - Object_recognition_msgs contains the ROS message and the actionlib definition used in object_recognition_core.
 	pkgver = 0.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/object_recognition_msgs
 	arch = any
 	license = BSD
@@ -20,8 +20,8 @@ pkgbase = ros-melodic-object-recognition-msgs
 	depends = ros-melodic-std-msgs
 	depends = ros-melodic-sensor-msgs
 	depends = ros-melodic-shape-msgs
-	source = ros-melodic-object-recognition-msgs-0.4.1-0.tar.gz::https://github.com/ros-gbp/object_recognition_msgs-release/archive/release/melodic/object_recognition_msgs/0.4.1-0.tar.gz
-	sha256sums = 0d4a39404ca6ce3fe26eb6a00df0edf208a58651c7605d42f20c9c6a2df9be72
+	source = ros-melodic-object-recognition-msgs-0.4.1.tar.gz::https://github.com/wg-perception/object_recognition_msgs/archive/0.4.1.tar.gz
+	sha256sums = b7689a079ad78a4358946fa5a38de0c9a5c12e46381d22106f053ac5cde357f1
 
 pkgname = ros-melodic-object-recognition-msgs
 

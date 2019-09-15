@@ -4,9 +4,8 @@ url='https://wiki.ros.org/object_recognition_msgs'
 
 pkgname='ros-melodic-object-recognition-msgs'
 pkgver='0.4.1'
-_pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-geometry-msgs
@@ -31,12 +30,12 @@ depends=(${ros_depends[@]})
 # _tag=release/melodic/object_recognition_msgs/${pkgver}-${_pkgver_patch}
 # _dir=${pkgname}
 # source=("${_dir}"::"git+https://github.com/ros-gbp/object_recognition_msgs-release.git"#tag=${_tag})
-# sha256sums=('0d4a39404ca6ce3fe26eb6a00df0edf208a58651c7605d42f20c9c6a2df9be72')
+# sha256sums=('b7689a079ad78a4358946fa5a38de0c9a5c12e46381d22106f053ac5cde357f1')
 
 # Tarball version (faster download)
-_dir="object_recognition_msgs-release-release-melodic-object_recognition_msgs-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/object_recognition_msgs-release/archive/release/melodic/object_recognition_msgs/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('0d4a39404ca6ce3fe26eb6a00df0edf208a58651c7605d42f20c9c6a2df9be72')
+_dir="object_recognition_msgs-${pkgver}"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/wg-perception/object_recognition_msgs/archive/${pkgver}.tar.gz")
+sha256sums=('b7689a079ad78a4358946fa5a38de0c9a5c12e46381d22106f053ac5cde357f1')
 
 build() {
   # Use ROS environment variables
