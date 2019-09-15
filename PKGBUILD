@@ -4,9 +4,8 @@ url='https://wiki.ros.org/four_wheel_steering_msgs'
 
 pkgname='ros-melodic-four-wheel-steering-msgs'
 pkgver='1.0.0'
-_pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-catkin
@@ -20,9 +19,9 @@ ros_depends=(ros-melodic-std-msgs
   ros-melodic-message-runtime)
 depends=(${ros_depends[@]})
 
-_dir="four_wheel_steering_msgs-release-release-melodic-four_wheel_steering_msgs-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-drivers-gbp/four_wheel_steering_msgs-release/archive/release/melodic/four_wheel_steering_msgs/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('4089701e5cb0a7f06d6e42aef2863cd985f8e43d46d7aca46f5c0e01caaead86')
+_dir="four_wheel_steering_msgs-${pkgver}"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-drivers/four_wheel_steering_msgs/archive/${pkgver}.tar.gz")
+sha256sums=('391052596ad1e4b9b57ab74ca337f59af896352b84dba719bb96366429456199')
 
 build() {
   # Use ROS environment variables
