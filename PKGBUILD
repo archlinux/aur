@@ -3,8 +3,7 @@ pkgdesc="ROS - Generates a configuration package that makes it easy to use MoveI
 url='https://moveit.ros.org'
 
 pkgname='ros-melodic-moveit-setup-assistant'
-pkgver='0.10.8'
-_pkgver_patch=0
+pkgver='1.0.2'
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -33,9 +32,9 @@ depends=(${ros_depends[@]}
 # sha256sums=('44b21865d318f1cfb13846b72df494b6eb461f814dec78af71f9e7eb6981f537')
 
 # Tarball version (faster download)
-_dir="moveit-release-release-melodic-moveit_setup_assistant-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/moveit-release/archive/release/melodic/moveit_setup_assistant/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('46783ae9cecd46e82f2f77814917ef9ed58e6c99b8e1aa8a8a19337582da29a2')
+_dir="moveit-${pkgver}/moveit_setup_assistant"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-planning/moveit/archive/${pkgver}.tar.gz")
+sha256sums=('b8194308c57dbe34bbb729cfccb30d1113af3a54a90a2cfb49482142d1044ea4')
 
 build() {
   # Use ROS environment variables
