@@ -1,7 +1,7 @@
 # Maintainer: Radoslaw Mejer <radmen@radmen.info>
 pkgname=silicon
 pkgver=0.2.6
-pkgrel=2
+pkgrel=3
 depends=('fontconfig' 'freetype2' 'xclip')
 makedepends=('rust' 'cargo' 'glibc' 'llvm-libs' 'gcc-libs' 'clang')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -15,7 +15,8 @@ sha256sums=(
 )
 
 build() {
-    return 0
+    cd "$srcdir/silicon-$pkgver"
+    cargo build --release --locked
 }
 
 package() {
