@@ -1,8 +1,8 @@
 pkgbase = ros-melodic-gazebo-plugins
 	pkgdesc = ROS - Robot-independent Gazebo plugins for sensors, motors and dynamic reconfigurable components.
-	pkgver = 2.8.4
+	pkgver = 2.8.5
 	pkgrel = 1
-	url = https://gazebosim\.org/tutorials\?cat=connect_ros
+	url = https://gazebosim.org/tutorials?cat=connect_ros
 	arch = any
 	license = BSD, Apache 2.0
 	makedepends = cmake
@@ -56,8 +56,8 @@ pkgbase = ros-melodic-gazebo-plugins
 	depends = ros-melodic-image-transport
 	depends = ros-melodic-gazebo-dev
 	depends = ros-melodic-rospy
-	source = ros-melodic-gazebo-plugins-2.8.4-0.tar.gz::https://github.com/ros-gbp/gazebo_ros_pkgs-release/archive/release/melodic/gazebo_plugins/2.8.4-0.tar.gz
-	sha256sums = 94c5485bf4de9cbdb17df841f0ba08aa28e245dd533f88c78f3533b763622ca7
+	source = ros-melodic-gazebo-plugins-2.8.5.tar.gz::https://github.com/ros-simulation/gazebo_ros_pkgs/archive/2.8.5.tar.gz
+	sha256sums = 0b0f6eeaeca611ebe12ec0ea4388121098fdafee5ecc8d76c6ae69b8b8f14aed
 
 pkgname = ros-melodic-gazebo-plugins
 
