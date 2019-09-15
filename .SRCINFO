@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-stage
 	pkgdesc = ROS - Mobile robot simulator https://rtvhub.com/Stage.
 	pkgver = 4.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://rtvhub.com/Stage
 	arch = any
 	license = GPL
@@ -18,8 +18,8 @@ pkgbase = ros-melodic-stage
 	depends = mesa
 	depends = fltk
 	depends = gtk2
-	source = ros-melodic-stage-4.3.0-0.tar.gz::https://github.com/ros-gbp/stage-release/archive/release/melodic/stage/4.3.0-0.tar.gz
-	sha256sums = 3c72bba7242ecd98b26f177e4227aef06ec85915f196ee88ec6103be4dfb492d
+	source = ros-melodic-stage-4.3.0.tar.gz::https://github.com/rtv/Stage/archive/v4.3.0.tar.gz
+	sha256sums = f32cb6887146441fd34671975fa81ea76438ce447bc68a0a6a1b62b5233ad2d6
 
 pkgname = ros-melodic-stage
 

@@ -5,9 +5,8 @@ url='https://rtvhub.com/Stage'
 
 pkgname='ros-melodic-stage'
 pkgver='4.3.0'
-_pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('GPL')
 
 ros_makedepends=()
@@ -34,9 +33,9 @@ depends=(${ros_depends[@]}
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="stage-release-release-melodic-stage-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/stage-release/archive/release/melodic/stage/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('3c72bba7242ecd98b26f177e4227aef06ec85915f196ee88ec6103be4dfb492d')
+_dir="Stage-${pkgver}"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/rtv/Stage/archive/v${pkgver}.tar.gz")
+sha256sums=('f32cb6887146441fd34671975fa81ea76438ce447bc68a0a6a1b62b5233ad2d6')
 
 build() {
   # Use ROS environment variables
