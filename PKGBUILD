@@ -3,8 +3,7 @@ pkgdesc="ROS - This package contains the description (mechanical, kinematic, vis
 url='https://wiki.ros.org/pr2_description'
 
 pkgname='ros-melodic-pr2-description'
-pkgver='1.12.3'
-_pkgver_patch=0
+pkgver='1.12.4'
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -25,9 +24,9 @@ depends=(${ros_depends[@]})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="pr2_common-release-release-melodic-pr2_description-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/pr2-gbp/pr2_common-release/archive/release/melodic/pr2_description/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('dd73a6a8dc3713503e0f502a3d1940a80a3b96de75e68197d270bff8f3a30aa1')
+_dir="pr2_common-${pkgver}/pr2_description"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/pr2/pr2_common/archive/${pkgver}.tar.gz")
+sha256sums=('135c6947f7511bcb3644fa6c0cf5972c309516895737e83f8eeed2b2d069f009')
 
 build() {
   # Use ROS environment variables
