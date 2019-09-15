@@ -12,5 +12,5 @@ noextract=("extension.xpi")
 sha512sums=('50b74f6cf819717d96378778bebee763c7c2837f64e3b4877f276168884bf25330b6649c03585bd4386134fdb6f4b4015b4693e6334e4fe3c1f25896a5808065')
 
 package() {
-  install -Dm644 extension.xpi "${pkgdir}/usr/lib/firefox/browser/extensions/{b9db16a4-6edc-47ec-a1f4-b86292ed211d}.xpi"
+  install -Dm644 extension.xpi "${pkgdir}/usr/lib/firefox/browser/extensions/browser-mon@xdman.sourceforge.net.xpi"
 }
