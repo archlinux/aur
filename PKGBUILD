@@ -11,7 +11,7 @@ arch=('any')
 url="https://github.com/cawilliamson/openrazer"
 license=('GPL2')
 makedepends=('git' 'python-setuptools')
-source=("git+https://github.com/openrazer/openrazer.git")
+source=("git+https://github.com/cawilliamson/openrazer.git")
 sha256sums=('SKIP')
 
 pkgver() {
