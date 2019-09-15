@@ -4,9 +4,8 @@ url='https://moveit.ros.org'
 
 pkgname='ros-melodic-moveit-resources'
 pkgver='0.6.4'
-_pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-catkin)
@@ -24,9 +23,9 @@ depends=(${ros_depends[@]})
 # sha256sums=('d98d7e113ff2313fdbc0799a2abf4dc39f462bf7dc904b9b9584cbe241883ab6')
 
 # Tarball version (faster download)
-_dir="moveit_resources-release-release-melodic-moveit_resources-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/moveit_resources-release/archive/release/melodic/moveit_resources/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('ae728a1d284591ce8080f4cad69bcb5d143211ba07ef05055585541a3fe94915')
+_dir="moveit_resources-${pkgver}"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-planning/moveit_resources/archive/${pkgver}.tar.gz")
+sha256sums=('6d050a7511f930ca2e2080bcfa379134687eaa24010e2a2cb350dd827de099f1')
 
 build() {
   # Use ROS environment variables
