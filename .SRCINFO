@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-self-test
 	pkgdesc = ROS - self_test.
 	pkgver = 1.9.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.wiki.ros.org/self_test
 	arch = any
 	license = BSD
@@ -15,8 +15,8 @@ pkgbase = ros-melodic-self-test
 	depends = ros-melodic-diagnostic-updater
 	depends = ros-melodic-roscpp
 	depends = ros-melodic-diagnostic-msgs
-	source = ros-melodic-self-test-1.9.3-0.tar.gz::https://github.com/ros-gbp/diagnostics-release/archive/release/melodic/self_test/1.9.3-0.tar.gz
-	sha256sums = cf23d9e067a2cf40f2264386a257c0059656e83854509ad42c00b4c037a4d5a8
+	source = ros-melodic-self-test-1.9.3.tar.gz::https://github.com/ros/diagnostics/archive/1.9.3.tar.gz
+	sha256sums = 3b2d3bb7bb333b8685fa084e086c00a044803dac41ff58351161440931d23550
 
 pkgname = ros-melodic-self-test
 
