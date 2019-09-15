@@ -3,10 +3,9 @@ pkgdesc="ROS - Planning components of MoveIt that use ROS."
 url='https://moveit.ros.org'
 
 pkgname='ros-melodic-moveit-ros-planning'
-pkgver='0.10.8'
-_pkgver_patch=0
+pkgver='1.0.2'
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-melodic-moveit-core
@@ -37,9 +36,9 @@ depends=(${ros_depends[@]})
 # sha256sums=('de57c3ac56de6cc389205f7557d087cbc7f45e23f32079171384c5a26c6b5e9a')
 
 # Tarball version (faster download)
-_dir="moveit-release-release-melodic-moveit_ros_planning-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/moveit-release/archive/release/melodic/moveit_ros_planning/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('beccc923a591ae881a84cc1fb4276b9a6ed9075b3bcfe3d7beb05b81455bdd14')
+_dir="moveit-${pkgver}/moveit_ros/planning"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-planning/moveit/archive/${pkgver}.tar.gz")
+sha256sums=('b8194308c57dbe34bbb729cfccb30d1113af3a54a90a2cfb49482142d1044ea4')
 
 build() {
   # Use ROS environment variables
