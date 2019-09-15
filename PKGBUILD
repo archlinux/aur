@@ -1,8 +1,8 @@
-# Maintainer: Gabriele Musco <emaildigabry@gmail.com>
+# Maintainer: Gabriele Musco <gabmus@disroot.org>
 # Upstream URL: https://gitlab.com/gabmus/gnome-feeds
 
 pkgname=gfeeds-git
-pkgver=0.9.r1.gad60a35
+pkgver=0.10.r1.g40444dd
 pkgrel=1
 pkgdesc='News reader for GNOME'
 arch=('any')
@@ -13,7 +13,7 @@ replaces=(gnome-feeds gnome-feeds-git)
 makedepends=('git' 'meson')
 provides=('gfeeds' 'gnome-feeds')
 conflicts=('gnome-feeds' 'gnome-feeds-git' 'gfeeds')
-source=("gfeeds::git+https://gitlab.com/gabmus/gnome-feeds")
+source=("gfeeds::git+https://gitlab.gnome.org/World/gfeeds")
 sha256sums=('SKIP')
 
 pkgver() {
