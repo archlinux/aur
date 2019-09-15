@@ -7,7 +7,7 @@ pkgname='ros-melodic-qwt-dependency'
 pkgver='1.1.0'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -27,9 +27,9 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="qwt_dependency-release-release-melodic-qwt_dependency-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/qwt_dependency-release/archive/release/melodic/qwt_dependency/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('7d171d5a7bb5226de322e8146262b5ca73461ec9c71afc3675c5b353e90e42f5')
+_dir="qwt_dependency-${pkgver}"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/qwt_dependency/archive/${pkgver}.tar.gz")
+sha256sums=('bb4f0491701c53dd89fc12703fd43715fd1b23f6c66d313f154a26e85e3d2594')
 
 build() {
 	# Use ROS environment variables.
