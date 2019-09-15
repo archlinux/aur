@@ -1,7 +1,7 @@
 # Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
 # Contributor: Gabriele Musco <emaildigabry@gmail.com>
 
-pkgbase=openrazer-git
+pkgbase=openrazer-blade-pro-2019
 _pkgbase=openrazer
 pkgname=('python-openrazer-git' 'openrazer-daemon-git' 'openrazer-driver-dkms-git' 'openrazer-meta-git')
 pkgver=2.5.0.r0.gf0e422f
