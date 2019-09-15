@@ -7,7 +7,7 @@ pkgname='ros-melodic-random-numbers'
 pkgver='0.3.2'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-catkin)
@@ -26,9 +26,9 @@ depends=(${ros_depends[@]}
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="random_numbers-release-release-melodic-random_numbers-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/random_numbers-release/archive/release/melodic/random_numbers/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('989cf481e8bd4c7b44278d73a549554fd874479c1f28e8d26f77fa905a43e409')
+_dir="random_numbers-${pkgver}"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-planning/random_numbers/archive/${pkgver}.tar.gz")
+sha256sums=('da825a0c7a4e9de180d9d539aa78682c1d805b1e4c3ef16af0e6cb384f2134f5')
 
 build() {
   # Use ROS environment variables
