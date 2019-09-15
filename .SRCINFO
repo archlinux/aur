@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-rqt-service-caller
 	pkgdesc = ROS - rqt_service_caller provides a GUI plugin for calling arbitrary services.
 	pkgver = 0.4.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/rqt_service_caller
 	arch = any
 	license = BSD
@@ -13,8 +13,8 @@ pkgbase = ros-melodic-rqt-service-caller
 	depends = ros-melodic-rosservice
 	depends = ros-melodic-rqt-gui-py
 	depends = python-rospkg
-	source = ros-melodic-rqt-service-caller-0.4.8-0.tar.gz::https://github.com/ros-gbp/rqt_service_caller-release/archive/release/melodic/rqt_service_caller/0.4.8-0.tar.gz
-	sha256sums = 574aa580c11737fc800b058f7cac63a7a7b75d144525d04e89c538716418c1b3
+	source = ros-melodic-rqt-service-caller-0.4.8.tar.gz::https://github.com/ros-visualization/rqt_service_caller/archive/0.4.8.tar.gz
+	sha256sums = a8732063265ffd3ebb1f5bc95b8f4908f6972e6470a9debbacdcbc6292613e22
 
 pkgname = ros-melodic-rqt-service-caller
 

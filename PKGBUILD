@@ -7,7 +7,7 @@ pkgname='ros-melodic-rqt-service-caller'
 pkgver='0.4.8'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -32,9 +32,9 @@ depends=(
 	python-rospkg
 )
 
-_dir="rqt_service_caller-release-release-melodic-rqt_service_caller-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rqt_service_caller-release/archive/release/melodic/rqt_service_caller/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('574aa580c11737fc800b058f7cac63a7a7b75d144525d04e89c538716418c1b3')
+_dir="rqt_service_caller-${pkgver}"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/rqt_service_caller/archive/${pkgver}.tar.gz")
+sha256sums=('a8732063265ffd3ebb1f5bc95b8f4908f6972e6470a9debbacdcbc6292613e22')
 
 build() {
 	# Use ROS environment variables.
