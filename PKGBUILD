@@ -7,13 +7,14 @@ pkgname='ros-melodic-joint-limits-interface'
 pkgver='0.15.1'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-urdf
   ros-melodic-roscpp
   ros-melodic-hardware-interface
-  ros-melodic-catkin)
+  ros-melodic-catkin
+  ros-melodic-rostest)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   urdfdom)
@@ -31,9 +32,9 @@ depends=(${ros_depends[@]}
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="ros_control-release-release-melodic-joint_limits_interface-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_control-release/archive/release/melodic/joint_limits_interface/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('c79c7fa6eaa2ccb35ed79b7dc6b125db16a98d298085a1fb1a2ed530e9817a64')
+_dir="ros_control-${pkgver}/joint_limits_interface"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-controls/ros_control/archive/${pkgver}.tar.gz")
+sha256sums=('adf1a9d1fd10f4d89e91c8279d1278d9cd301767b658c143810479b2d10eedca')
 
 build() {
   # Use ROS environment variables

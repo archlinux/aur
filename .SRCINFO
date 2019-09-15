@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-joint-limits-interface
 	pkgdesc = ROS - Interface for enforcing joint limits.
 	pkgver = 0.15.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ros-controls/ros_control/wiki
 	arch = any
 	license = BSD
@@ -11,13 +11,14 @@ pkgbase = ros-melodic-joint-limits-interface
 	makedepends = ros-melodic-roscpp
 	makedepends = ros-melodic-hardware-interface
 	makedepends = ros-melodic-catkin
+	makedepends = ros-melodic-rostest
 	makedepends = urdfdom
 	depends = ros-melodic-urdf
 	depends = ros-melodic-roscpp
 	depends = ros-melodic-hardware-interface
 	depends = urdfdom
-	source = ros-melodic-joint-limits-interface-0.15.1-0.tar.gz::https://github.com/ros-gbp/ros_control-release/archive/release/melodic/joint_limits_interface/0.15.1-0.tar.gz
-	sha256sums = c79c7fa6eaa2ccb35ed79b7dc6b125db16a98d298085a1fb1a2ed530e9817a64
+	source = ros-melodic-joint-limits-interface-0.15.1.tar.gz::https://github.com/ros-controls/ros_control/archive/0.15.1.tar.gz
+	sha256sums = adf1a9d1fd10f4d89e91c8279d1278d9cd301767b658c143810479b2d10eedca
 
 pkgname = ros-melodic-joint-limits-interface
 
