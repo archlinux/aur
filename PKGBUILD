@@ -4,7 +4,7 @@
 
 pkgname=picard
 pkgver=2.2
-_commit=5b3e83120d2c0baeed4e14d5581c3cba29f8c605
+_commit=827907d90cf3a8e23c34459e93e8908431f61fb4
 pkgrel=1
 pkgdesc='Official MusicBrainz tagger'
 url='https://picard.musicbrainz.org/'
