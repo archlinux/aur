@@ -4,8 +4,7 @@ pkgdesc="ROS - Generic keyboard teleop for twist robots."
 url='https://wiki.ros.org/teleop_twist_keyboard'
 
 pkgname='ros-melodic-teleop-twist-keyboard'
-pkgver='0.6.1'
-_pkgver_patch=0
+pkgver='0.6.2'
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -25,9 +24,9 @@ depends=(${ros_depends[@]})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="teleop_twist_keyboard-release-release-melodic-teleop_twist_keyboard-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/teleop_twist_keyboard-release/archive/release/melodic/teleop_twist_keyboard/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('38bb8cf5df1cc46323cf57bfe2aeea686c825733c5eea41456f42a8b2c661244')
+_dir="teleop_twist_keyboard-${pkgver}"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-teleop/teleop_twist_keyboard/archive/${pkgver}.tar.gz")
+sha256sums=('7c0c2c0ef2f47e52922beeac94c093b54677318397b4415ac78933aca5079b0c')
 
 build() {
   # Use ROS environment variables
