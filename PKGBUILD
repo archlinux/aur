@@ -5,9 +5,8 @@ url='https://octomaphub.io'
 
 pkgname='ros-melodic-octovis'
 pkgver='1.9.0'
-_pkgver_patch=1
 arch=('any')
-pkgrel=2
+pkgrel=3
 license=('GPLv2')
 
 ros_makedepends=(ros-melodic-octomap)
@@ -29,9 +28,9 @@ depends=(${ros_depends[@]}
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="octomap-release-release-melodic-octovis-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/octomap-release/archive/release/melodic/octovis/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('3edf836edd904daf7f76b13dad10d4094e37a5a8c5829193fe1b583e62f2c8ef')
+_dir="octomap-${pkgver}/octovis"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/OctoMap/octomap/archive/v${pkgver}.tar.gz")
+sha256sums=('5f81c9a8cbc9526b2e725251cd3a829e5222a28201b394314002146d8b9214dd')
 
 build() {
   # Use ROS environment variables

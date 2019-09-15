@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-octovis
 	pkgdesc = ROS - octovis is visualization tool for the OctoMap library based on Qt and libQGLViewer.
 	pkgver = 1.9.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://octomaphub.io
 	arch = any
 	license = GPLv2
@@ -14,8 +14,8 @@ pkgbase = ros-melodic-octovis
 	depends = ros-melodic-octomap
 	depends = qt4
 	depends = libqglviewer-qt4
-	source = ros-melodic-octovis-1.9.0-1.tar.gz::https://github.com/ros-gbp/octomap-release/archive/release/melodic/octovis/1.9.0-1.tar.gz
-	sha256sums = 3edf836edd904daf7f76b13dad10d4094e37a5a8c5829193fe1b583e62f2c8ef
+	source = ros-melodic-octovis-1.9.0.tar.gz::https://github.com/OctoMap/octomap/archive/v1.9.0.tar.gz
+	sha256sums = 5f81c9a8cbc9526b2e725251cd3a829e5222a28201b394314002146d8b9214dd
 
 pkgname = ros-melodic-octovis
 
