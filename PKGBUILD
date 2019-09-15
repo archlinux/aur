@@ -2,14 +2,14 @@
 pkgname=gst-plugin-viper4linux-git
 _gitname=gst-plugin-viperfx
 pkgver=r21.e0a615e
-pkgrel=2
+pkgrel=3
 pkgdesc="ViPER FX core wrapper plugin for gstreamer"
 arch=('x86_64')
 url="https://github.com/noahbliss/gst-plugin-viperfx"
 license=('custom')
 depends=('gstreamer' 'libviperfx')
 provides=("${pkgname%-git}" "$_gitname")
-conflicts=("${pkgname%-git}")
+conflicts=("${pkgname%-git}" 'gst-plugin-jamesdsp')
 replaces=("$_gitname")
 source=('git+https://github.com/noahbliss/gst-plugin-viperfx.git')
 sha256sums=('SKIP')
