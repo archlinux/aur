@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-turtlesim
 	pkgdesc = ROS - turtlesim is a tool made for teaching ROS and ROS packages.
-	pkgver = 0.9.0
-	pkgrel = 1
+	pkgver = 0.9.1
+	pkgrel = 0
 	url = https://www.wiki.ros.org/turtlesim
 	arch = any
 	license = BSD
@@ -28,8 +28,8 @@ pkgbase = ros-melodic-turtlesim
 	depends = ros-melodic-message-runtime
 	depends = ros-melodic-geometry-msgs
 	depends = qt5-base
-	source = ros-melodic-turtlesim-0.9.0-0.tar.gz::https://github.com/ros-gbp/ros_tutorials-release/archive/release/melodic/turtlesim/0.9.0-0.tar.gz
-	sha256sums = 5205e3c2f38c1ce8aa3284f8b56a0b7e525d64f24ee46af60ec976dc8eeb3aa2
+	source = ros-melodic-turtlesim-0.9.1.tar.gz::https://github.com/ros/ros_tutorials/archive/0.9.1.tar.gz
+	sha256sums = b39929a2ac912326fc114256e755fff5d0f0e5e5e7c99640d013eb7f916b85f4
 
 pkgname = ros-melodic-turtlesim
 
