@@ -5,9 +5,8 @@ url='https://www.wiki.ros.org/vision_opencv'
 
 pkgname='ros-melodic-vision-opencv'
 pkgver='1.13.0'
-_pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-catkin)
@@ -25,9 +24,9 @@ depends=(${ros_depends[@]})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="vision_opencv-release-release-melodic-vision_opencv-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/vision_opencv-release/archive/release/melodic/vision_opencv/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('21275f9903d17bd95c5f01a674548451006a015a2c43b4da143bb7c149667404')
+_dir="vision_opencv-${pkgver}/vision_opencv"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-perception/vision_opencv/archive/${pkgver}.tar.gz")
+sha256sums=('c8db35dbb6b470cdedb45195f725bc2cfda7f0dc3155e16a5a37e4b48e29fa59')
 
 build() {
   # Use ROS environment variables
