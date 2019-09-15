@@ -7,7 +7,7 @@ pkgname='ros-melodic-geometry-tutorials'
 pkgver='0.2.2'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -29,9 +29,9 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="geometry_tutorials-release-release-melodic-geometry_tutorials-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/geometry_tutorials-release/archive/release/melodic/geometry_tutorials/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('681b5bd03623bc5832921eeb3d314a4f8d9dfbf05f7f48fb48adf327bfc4e2ea')
+_dir="geometry_tutorials-${pkgver}/geometry_tutorials"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/geometry_tutorials/archive/${pkgver}.tar.gz")
+sha256sums=('4b3fdc98bf4cb97ba2f1c40666901fa7d08eb3dfed0d3323de4841de2e3a22cc')
 
 build() {
 	# Use ROS environment variables.

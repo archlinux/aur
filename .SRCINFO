@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-geometry-tutorials
 	pkgdesc = ROS - Metapackage of geometry tutorials ROS.
 	pkgver = 0.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.wiki.ros.org/geometry_tutorials
 	arch = any
 	license = BSD
@@ -10,8 +10,8 @@ pkgbase = ros-melodic-geometry-tutorials
 	makedepends = ros-melodic-catkin
 	depends = ros-melodic-turtle-tf
 	depends = ros-melodic-turtle-tf2
-	source = ros-melodic-geometry-tutorials-0.2.2-0.tar.gz::https://github.com/ros-gbp/geometry_tutorials-release/archive/release/melodic/geometry_tutorials/0.2.2-0.tar.gz
-	sha256sums = 681b5bd03623bc5832921eeb3d314a4f8d9dfbf05f7f48fb48adf327bfc4e2ea
+	source = ros-melodic-geometry-tutorials-0.2.2.tar.gz::https://github.com/ros/geometry_tutorials/archive/0.2.2.tar.gz
+	sha256sums = 4b3fdc98bf4cb97ba2f1c40666901fa7d08eb3dfed0d3323de4841de2e3a22cc
 
 pkgname = ros-melodic-geometry-tutorials
 
