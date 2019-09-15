@@ -6,14 +6,14 @@
 # Maintainer: Taylor Lookabaugh <jesus.christ.i.love@gmail.com>
 pkgname=crandpass
 pkgver=6
-pkgrel=2
+pkgrel=3
 pkgdesc="A random password generator for Linux."
 arch=("any")
-url="http://kitsunerising.blogspot.com/"
+url="https://github.com/kitsuneflame-zz/crandpass"
 license=('GPL3')
 depends=("bash")
-source=(https://github.com/LookTJ/crandpass/archive/master.zip)
-md5sums=('9a9e4d18540c6da9365d09ffb1f4383b')
+source=(https://github.com/kitsuneflame-zz/crandpass/archive/master.zip)
+sha384sums=('8cbe069235a2019cf17a4aa0916582559dde60641169fa637e3dffeea8d8110e96ab4ac456d48be328ad99382b52370e')
 
 prepare() {
 	cd "$srcdir/$pkgname-master"
