@@ -3,7 +3,7 @@
 pkgbase=octopi-dev
 pkgname='octopi-dev'
 pkgver=0.9.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A powerful Pacman frontend using Qt5 libs"
 arch=('i686' 'x86_64')
 url="http://octopiproject.wordpress.com"
@@ -23,10 +23,10 @@ conflicts=('octopi')
 #conflicts=('octopi-git' 'octopi-kde-git' 'octopi-notifier-noknotify')
 
 _pkggit=octopi
-_gitcommit=31060ae2b2f7c496c95b2262b8219c39b65e45be
+_gitcommit=d76eb8b1c861ece83b4f3178559e2e5253258c76
 
 source=("octopi-${pkgver}-${pkgrel}.tar.gz::https://github.com/aarnt/octopi/archive/${_gitcommit}.tar.gz")
-sha256sums=('2eac6062b3589700b0d0e37c601f5bff4ad49dc59847be5950777d7e5a09685c')
+sha256sums=('532db1f04c36ec24d4e661c572b0cbf86e9b8bb973161dec4bb605e0309b7d2c')
 
 _subdirs=(helper repoeditor cachecleaner sudo)
 
