@@ -7,7 +7,7 @@ pkgname='ros-melodic-controller-manager-msgs'
 pkgver='0.15.1'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-message-generation
@@ -27,9 +27,9 @@ depends=(${ros_depends[@]})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="ros_control-release-release-melodic-controller_manager_msgs-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_control-release/archive/release/melodic/controller_manager_msgs/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('4f4fcbac638d2fd81b823c7db44c3d0b7dfd41c961cc7360b301f16849ad6b79')
+_dir="ros_control-${pkgver}/controller_manager_msgs"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-controls/ros_control/archive/${pkgver}.tar.gz")
+sha256sums=('adf1a9d1fd10f4d89e91c8279d1278d9cd301767b658c143810479b2d10eedca')
 
 build() {
   # Use ROS environment variables
