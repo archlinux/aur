@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-stereo-image-proc
 	pkgdesc = ROS - Stereo and single image rectification and disparity processing.
 	pkgver = 1.12.23
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ros-perception/image_pipeline
 	arch = any
 	license = BSD
@@ -26,8 +26,8 @@ pkgbase = ros-melodic-stereo-image-proc
 	depends = ros-melodic-message-filters
 	depends = ros-melodic-sensor-msgs
 	depends = ros-melodic-image-transport
-	source = ros-melodic-stereo-image-proc-1.12.23-0.tar.gz::https://github.com/ros-gbp/image_pipeline-release/archive/release/melodic/stereo_image_proc/1.12.23-0.tar.gz
-	sha256sums = 78bcb2383214fce1c9747f1c2b48c380281e6a7e3457fb192997daff5e33045a
+	source = ros-melodic-stereo-image-proc-1.12.23.tar.gz::https://github.com/ros-perception/image_pipeline/archive/1.12.23.tar.gz
+	sha256sums = 0b024f155f79f16982b31951ad0b1bde5440159b0ba6b1128ecbe2e867a2e357
 
 pkgname = ros-melodic-stereo-image-proc
 

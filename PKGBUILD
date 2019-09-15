@@ -7,7 +7,7 @@ pkgname='ros-melodic-stereo-image-proc'
 pkgver='1.12.23'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -45,9 +45,9 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="image_pipeline-release-release-melodic-stereo_image_proc-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/image_pipeline-release/archive/release/melodic/stereo_image_proc/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('78bcb2383214fce1c9747f1c2b48c380281e6a7e3457fb192997daff5e33045a')
+_dir="image_pipeline-${pkgver}/stereo_image_proc"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-perception/image_pipeline/archive/${pkgver}.tar.gz")
+sha256sums=('0b024f155f79f16982b31951ad0b1bde5440159b0ba6b1128ecbe2e867a2e357')
 
 build() {
 	# Use ROS environment variables.
