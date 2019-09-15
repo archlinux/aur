@@ -15,6 +15,7 @@ sha256sums=('16c7ffca23d90c76dd7b163f648c8166dfd589b7c180b8ff75aa327ae0a2fc6d')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
+	rm -rfv "tests/"
     python setup.py build
 }
 
