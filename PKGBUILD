@@ -7,7 +7,7 @@ pkgname='ros-melodic-rqt-logger-level'
 pkgver='0.4.8'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -34,9 +34,9 @@ depends=(
 	python-rospkg
 )
 
-_dir="rqt_logger_level-release-release-melodic-rqt_logger_level-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rqt_logger_level-release/archive/release/melodic/rqt_logger_level/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('c2fcc66a3b20e836aba40218bc745f0112986d329804f3929c275534d907a4b9')
+_dir="rqt_logger_level-${pkgver}"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/rqt_logger_level/archive/${pkgver}.tar.gz")
+sha256sums=('e645a8311a8a461b946a512f7700793c54e2b4d82adddd9328c66f5a86b2fcff')
 
 build() {
 	# Use ROS environment variables.
