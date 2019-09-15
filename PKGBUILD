@@ -3,8 +3,7 @@ pkgdesc="ROS - Maintains the ecl licenses and also provides an install target fo
 url='https://wiki.ros.org/ecl_license'
 
 pkgname='ros-melodic-ecl-license'
-pkgver='0.61.7'
-_pkgver_patch=0
+pkgver='0.61.8'
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -23,9 +22,9 @@ depends=(${ros_depends[@]})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="ecl_tools-release-release-melodic-ecl_license-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/yujinrobot-release/ecl_tools-release/archive/release/melodic/ecl_license/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('ed382fc26835b422b7315c1162c6fcf591b8243be2822b44eaf9a55ffc6529e0')
+_dir="ecl_tools-${pkgver}/ecl_license"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/stonier/ecl_tools/archive/${pkgver}.tar.gz")
+sha256sums=('3c7f16efaae81db62dd482b35c60b25bfaa5fed52112347ecaf97a8d10b445f6')
 
 build() {
   # Use ROS environment variables
