@@ -7,7 +7,7 @@ pkgname='ros-melodic-rqt-gui-py'
 pkgver='0.5.0'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -33,9 +33,9 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="rqt-release-release-melodic-rqt_gui_py-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rqt-release/archive/release/melodic/rqt_gui_py/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('0ff83fecf2965173c22e185ba5388c38645c281a5aa89dbe3baac46c431eece6')
+_dir="rqt-${pkgver}/rqt_gui_py"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/rqt/archive/${pkgver}.tar.gz")
+sha256sums=('3f62f90db254e111483b9a7cb9d486d0bf07c863b2a987808dc3636ee7004c22')
 
 build() {
 	# Use ROS environment variables.
