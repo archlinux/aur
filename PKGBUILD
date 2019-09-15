@@ -3,8 +3,7 @@ pkgdesc="ROS - Messages for representing PR2 state"
 url='https://wiki.ros.org/pr2_msgs'
 
 pkgname='ros-melodic-pr2-msgs'
-pkgver='1.12.3'
-_pkgver_patch=0
+pkgver='1.12.4'
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -22,9 +21,9 @@ ros_depends=(ros-melodic-std-msgs
   ros-melodic-message-runtime)
 depends=(${ros_depends[@]})
 
-_dir="pr2_common-release-release-melodic-pr2_msgs-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/pr2-gbp/pr2_common-release/archive/release/melodic/pr2_msgs/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('9ced0d809f30168f7a97b29da6230c99e19011a5b4416111f02bc62f5e35b8d2')
+_dir="pr2_common-${pkgver}/pr2_msgs"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/pr2/pr2_common/archive/${pkgver}.tar.gz")
+sha256sums=('135c6947f7511bcb3644fa6c0cf5972c309516895737e83f8eeed2b2d069f009')
 
 build() {
   # Use ROS environment variables
