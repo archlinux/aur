@@ -6,55 +6,32 @@
 
 pkgname=libpulse-nosystemd
 pkgdesc="Client library for PulseAudio"
-pkgver=12.2
+pkgver=13.0
 pkgrel=1
 arch=(i686 x86_64)
 url="https://www.freedesktop.org/wiki/Software/PulseAudio/"
 license=(LGPL)
 depends=(dbus libasyncns libcap libxtst libsm libsndfile)
-makedepends=(attr libtool rtkit speexdsp tdb intltool orc gtk3 check libsoxr)
+makedepends=(attr rtkit speexdsp tdb orc gtk3 libsoxr meson xmltoman)
 provides=("libpulse=${pkgver}")
 conflicts=('libpulse')
 replaces=('libpulse')
 backup=(etc/pulse/client.conf)
-options=(!emptydirs)
-_commit=ee910cf6daa5120ab534eb2e6c573d94b9b182e7  # tags/v12.2^0
-source=("git+https://anongit.freedesktop.org/git/pulseaudio/pulseaudio#commit=$_commit")
+_commit=200618b32f0964a479d69c9b6e5073e6931c370a  # tags/v13.0^0
+source=("git+https://gitlab.freedesktop.org/pulseaudio/pulseaudio.git#commit=$_commit")
 sha256sums=('SKIP')
 
-prepare() {
-  cd pulseaudio
-  NOCONFIGURE=1 ./bootstrap.sh
-}
-
 build() {
-  cd pulseaudio
-
-  DATADIRNAME=share ./configure --prefix=/usr \
-    --sysconfdir=/etc \
-    --libexecdir=/usr/lib \
-    --localstatedir=/var \
-    --with-udev-rules-dir=/usr/lib/udev/rules.d \
-    --with-pulsedsp-location='/usr/\\$$LIB/pulseaudio' \
-    --with-database=tdb \
-    --disable-tcpwrap \
-    --disable-bluez4 \
-    --disable-samplerate \
-    --disable-rpath \
-    --disable-default-build-tests \
-    --disable-systemd-daemon \
-    --disable-systemd-login \
-    --disable-systemd-journal
-
-  # fight unused direct deps
-  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
-
-  make
+  arch-meson --auto-features auto pulseaudio build \
+    -D gcov=false \
+    -D pulsedsp-location='/usr/\$LIB/pulseaudio' \
+    -D udevrulesdir=/usr/lib/udev/rules.d \
+    -D systemd=disabled
+  ninja -C build
 }
 
 package() {
-  cd pulseaudio
-  make -j1 DESTDIR="$pkgdir"/temp install
+  DESTDIR="$pkgdir"/temp meson install -C build
 
   cd "$pkgdir"
 
