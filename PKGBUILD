@@ -7,8 +7,8 @@
 # If you want to help keep it up to date, please open a Pull Request there.
 
 pkgname=findutils-selinux
-pkgver=4.6.0
-pkgrel=4
+pkgver=4.7.0
+pkgrel=1
 pkgdesc="GNU utilities to locate files with SELinux support"
 arch=('x86_64')
 license=('GPL3')
@@ -17,29 +17,19 @@ depends=('glibc' 'sh' 'libselinux')
 conflicts=("${pkgname/-selinux}" "selinux-${pkgname/-selinux}")
 provides=("${pkgname/-selinux}=${pkgver}-${pkgrel}"
           "selinux-${pkgname/-selinux}=${pkgver}-${pkgrel}")
-url='https://www.gnu.org/software/findutils'
-source=("https://ftp.gnu.org/pub/gnu/findutils/${pkgname/-selinux}-${pkgver}.tar.gz"
-        "gnulib-fflush.patch"
-        "gnulib-makedev.patch")
-sha1sums=('f18e8aaee3f3d4173a1f598001003be8706d28b0'
-          '1bc1586f6a52083939c4cabc32f12e7aead97e61'
-          '051382a2b0039438c2b143f2f9e5dc4bea130a09')
-#validpgpkeys=('A15B725964A95EE5') # James Youngman <james@youngman.org>  - NOTE: PGP-2 key
-
-prepare() {
-  cd "${srcdir}/${pkgname/-selinux}-${pkgver}"
-  patch -p1 -i "$srcdir"/gnulib-fflush.patch
-  patch -p1 -i "$srcdir"/gnulib-makedev.patch
-}
+url='https://www.gnu.org/software/findutils/'
+source=("https://ftp.gnu.org/pub/gnu/findutils/${pkgname/-selinux}-${pkgver}.tar.xz"{,.sig})
+sha1sums=('bd2fae4add80334173e03272aeed5635d4a0fa03'
+          'SKIP')
+validpgpkeys=('A5189DB69C1164D33002936646502EF796917195') # Bernhard Voelker <mail@bernhard-voelker.de>
 
 build() {
   cd "${srcdir}/${pkgname/-selinux}-${pkgver}"
 
   # Don't build or install locate because we use mlocate,
   # which is a secure version of locate.
-  sed -i '/^SUBDIRS/s/locate//' Makefile.in
+  sed -e '/^SUBDIRS/s/locate//' -e 's/frcode locate updatedb//' -i Makefile.in
 
-  autoreconf
   ./configure --prefix=/usr
   # don't build locate, but the docs want a file in there.
   make -C locate dblocation.texi
