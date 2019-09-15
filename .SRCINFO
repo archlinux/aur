@@ -1,13 +1,13 @@
 pkgbase = blackmagic-decklink-sdk
 	pkgdesc = Blackmagic DeckLink SDK
 	pkgver = 11.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.blackmagicdesign.com/support/family/capture-and-playback
 	arch = any
 	license = custom
 	provides = decklink-sdk
 	conflicts = decklink-sdk
-	source = Blackmagic_DeckLink_SDK_11.4.zip::https://www.blackmagicdesign.com/api/register/us/download/a0340cfa110a4a9ebe2f0730ff30abcc
+	source = Blackmagic_DeckLink_SDK_11.4.zip::https://sw.blackmagicdesign.com/DeckLink/v11.4/Blackmagic_DeckLink_SDK_11.4.zip?Key-Pair-Id=APKAJTKA3ZJMJRQITVEA&Signature=IJlr/ovQ6A1LN82A5iDCzWaxFuEnRv/pbRV8GMUxklEEs+g5NDg2i6zSrjg+qK93gVyc5+YmwHK2qy9kHqJEjgFVEXzM2HxYT0Tv9cfMf0vk8Qc85vnKO6bxCRZC23cTbXxNME09YC4avebIPH+yfXEfyD0ETk8YYLeHE0fwu3yIMLXPILlEmfilRiJGeFbeECz+sAYN4/0m+FaC5Nq5lKFWgwt+YZOTtEP2h+00uw5eZnMFQS9ChLaQTmKk/QlCyChiFujeyGNbrW//tnS3RYMOxz9BROF4zb/W5U9/iA4bqhqkfUzx6FF5ewL8N76VwzcqGk9c+2Ssxd7hecIvig==&Expires=1568564176
 	source = LICENSE
 	sha256sums = 9cfab8b1681303ba882a562b888241e32592fe1f4c172e1e7ff65b7f74e73825
 	sha256sums = cc90e53ac2ef2442d2d0adfe9214119baa31ec080e75c3b087365efdbccc23df
