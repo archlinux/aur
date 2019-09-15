@@ -3,8 +3,7 @@ pkgdesc="ROS - A generic, simple controller manager plugin for MoveIt."
 url='https://moveit.ros.org'
 
 pkgname='ros-melodic-moveit-simple-controller-manager'
-pkgver='0.10.8'
-_pkgver_patch=0
+pkgver='1.0.2'
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -32,9 +31,9 @@ depends=(${ros_depends[@]})
 # sha256sums=('db9c403189e6cc2ee76b0888ea0e1b3708b5791142e4ef90254469e5e6557e8a')
 
 # Tarball version (faster download)
-_dir="moveit-release-release-melodic-moveit_simple_controller_manager-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/moveit-release/archive/release/melodic/moveit_simple_controller_manager/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('5dc519ed4bed9af6b9d149e80ac82575753e08ce8d408b211351c7875785bc83')
+_dir="moveit-${pkgver}/moveit_plugins/moveit_simple_controller_manager"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-planning/moveit/archive/${pkgver}.tar.gz")
+sha256sums=('b8194308c57dbe34bbb729cfccb30d1113af3a54a90a2cfb49482142d1044ea4')
 
 build() {
   # Use ROS environment variables
