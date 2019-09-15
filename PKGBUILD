@@ -4,11 +4,11 @@
 pkgname=dupliseek-git
 pkgver() { git -C "${pkgname%-git}" describe | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'; }
 pkgver=0.0.2alpha.r56.eee4fd7
-pkgrel=2
+pkgrel=3
 
 pkgdesc='Duplicate image finder written in Python/Qt5'
 arch=('x86_64')
-url="https://gitlab.com/magnusmj/${pkgname%-git}"
+url="https://gitlab.com/dupliseek-group/${pkgname%-git}"
 license=('MIT')
 
 provides=("${pkgname%-git}")
