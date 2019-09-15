@@ -7,7 +7,7 @@ pkgname='ros-melodic-rqt-msg'
 pkgver='0.4.8'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -36,9 +36,9 @@ depends=(
 	python-rospkg
 )
 
-_dir="rqt_msg-release-release-melodic-rqt_msg-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rqt_msg-release/archive/release/melodic/rqt_msg/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('ec3e88d3c822856ace98a11ab03950fb0e9390829122b7abfabc863180611630')
+_dir="rqt_msg-${pkgver}"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/rqt_msg/archive/${pkgver}.tar.gz")
+sha256sums=('0f5a928077b9844b7aa558a80c9cc9171c5091868e58f6d0c02a1936c5d74757')
 
 build() {
 	# Use ROS environment variables.
