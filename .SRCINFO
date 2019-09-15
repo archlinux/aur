@@ -1,0 +1,14 @@
+pkgbase = udpspeeder
+	pkgdesc = Improve your Network Quality on a High-latency Lossy Link by using Forward Error Correction
+	pkgver = 20190121.0
+	pkgrel = 1
+	url = https://github.com/wangyu-/UDPspeeder
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = gcc-libs
+	source = udpspeeder-20190121.0.tar.gz::https://github.com/wangyu-/UDPspeeder/archive/20190121.0.tar.gz
+	sha256sums = 3b232a5dac09bc44b37e702ae090f1e478fbc25e2c930e45766031c975ae43c5
+
+pkgname = udpspeeder
+
