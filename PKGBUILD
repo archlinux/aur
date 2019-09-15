@@ -3,8 +3,7 @@ pkgdesc="ROS - Components of MoveIt used for manipulation."
 url='https://moveit.ros.org'
 
 pkgname='ros-melodic-moveit-ros-manipulation'
-pkgver='0.10.8'
-_pkgver_patch=0
+pkgver='1.0.2'
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -43,9 +42,9 @@ depends=(${ros_depends[@]})
 # sha256sums=('7de3f6be5c047901bfe324986686e8d8370be6ebfef96738a8ad3f3365b570f4')
 
 # Tarball version (faster download)
-_dir="moveit-release-release-melodic-moveit_ros_manipulation-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/moveit-release/archive/release/melodic/moveit_ros_manipulation/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('98af1fb9388794b61c53f7313d566ca3892a92068903aa99707f7054b595256c')
+_dir="moveit-${pkgver}/moveit_ros/manipulation"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-planning/moveit/archive/${pkgver}.tar.gz")
+sha256sums=('b8194308c57dbe34bbb729cfccb30d1113af3a54a90a2cfb49482142d1044ea4')
 
 build() {
   # Use ROS environment variables
