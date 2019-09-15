@@ -7,7 +7,7 @@ pkgname='ros-melodic-rqt-nav-view'
 pkgver='0.5.7'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -36,9 +36,9 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="rqt_nav_view-release-release-melodic-rqt_nav_view-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rqt_nav_view-release/archive/release/melodic/rqt_nav_view/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('a531ad91a1753f9dd2b74d56b519c52aebeac013373f76c6e4e6b19c66ca46a0')
+_dir="rqt_nav_view-${pkgver}"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/rqt_nav_view/archive/${pkgver}.tar.gz")
+sha256sums=('93ee15ffdac90401e7b7ba1386f4b5a5ee7aa9c7e7b55227b7763dc21cf0a7cc')
 
 build() {
 	# Use ROS environment variables.
