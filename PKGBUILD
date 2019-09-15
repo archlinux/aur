@@ -7,7 +7,7 @@ pkgname='ros-melodic-viz'
 pkgver='1.4.1'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -31,9 +31,9 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="metapackages-release-release-melodic-viz-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/metapackages-release/archive/release/melodic/viz/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('c2cdc23508adf393957c192b8d62b0278260342d34dbcc58a3bac3abbd61dcf4')
+_dir="metapackages-${pkgver}/viz"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/metapackages/archive/${pkgver}.tar.gz")
+sha256sums=('ef1df96c61c9762555174cc1a0e21e05149f74909d27044be0cd10aa065747a1')
 
 build() {
 	# Use ROS environment variables.
