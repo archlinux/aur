@@ -7,7 +7,7 @@ pkgname='ros-melodic-turtle-actionlib'
 pkgver='0.1.11'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -45,9 +45,9 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="common_tutorials-release-release-melodic-turtle_actionlib-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/common_tutorials-release/archive/release/melodic/turtle_actionlib/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('692d2a6946d45017346aa4165b4331314b1fde5f0067717ce33bf7ebbce1bc94')
+_dir="common_tutorials-${pkgver}/turtle_actionlib"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/common_tutorials/archive/${pkgver}.tar.gz")
+sha256sums=('e6015c289219df58253809254baa53dbf2f3190b61d77fac2b2fb8b8c12f3ec1')
 
 build() {
 	# Use ROS environment variables.

@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-turtle-actionlib
 	pkgdesc = ROS - turtle_actionlib demonstrates how to write an action server and client with the turtlesim.
 	pkgver = 0.1.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/turtle_actionlib
 	arch = any
 	license = BSD
@@ -26,8 +26,8 @@ pkgbase = ros-melodic-turtle-actionlib
 	depends = ros-melodic-std-msgs
 	depends = ros-melodic-message-runtime
 	depends = ros-melodic-geometry-msgs
-	source = ros-melodic-turtle-actionlib-0.1.11-0.tar.gz::https://github.com/ros-gbp/common_tutorials-release/archive/release/melodic/turtle_actionlib/0.1.11-0.tar.gz
-	sha256sums = 692d2a6946d45017346aa4165b4331314b1fde5f0067717ce33bf7ebbce1bc94
+	source = ros-melodic-turtle-actionlib-0.1.11.tar.gz::https://github.com/ros/common_tutorials/archive/0.1.11.tar.gz
+	sha256sums = e6015c289219df58253809254baa53dbf2f3190b61d77fac2b2fb8b8c12f3ec1
 
 pkgname = ros-melodic-turtle-actionlib
 
