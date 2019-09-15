@@ -7,7 +7,7 @@ pkgname='ros-melodic-rqt-common-plugins'
 pkgver='0.4.8'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -48,9 +48,9 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="rqt_common_plugins-release-release-melodic-rqt_common_plugins-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rqt_common_plugins-release/archive/release/melodic/rqt_common_plugins/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('f0c64a0ec07274960b5e4eb9c032c6c439e67a82b0ae25c4cc9d27be2ecacc83')
+_dir="rqt_common_plugins-${pkgver}"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/rqt_common_plugins/archive/${pkgver}.tar.gz")
+sha256sums=('73cba40630e4bb41f1fa2960d5b03925e878ee90ea59bd5117961c231bea9819')
 
 build() {
 	# Use ROS environment variables.
