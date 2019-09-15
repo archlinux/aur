@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-moveit-msgs
 	pkgdesc = ROS - Messages, services and actions used by MoveIt.
 	pkgver = 0.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://moveit.ros.org
 	arch = any
 	license = BSD
@@ -26,8 +26,8 @@ pkgbase = ros-melodic-moveit-msgs
 	depends = ros-melodic-std-msgs
 	depends = ros-melodic-sensor-msgs
 	depends = ros-melodic-shape-msgs
-	source = ros-melodic-moveit-msgs-0.10.0-0.tar.gz::https://github.com/ros-gbp/moveit_msgs-release/archive/release/melodic/moveit_msgs/0.10.0-0.tar.gz
-	sha256sums = d1053ffe57d739fff282835af4753e39f484acad8a596049f8dc97825abeb881
+	source = ros-melodic-moveit-msgs-0.10.0.tar.gz::https://github.com/ros-planning/moveit_msgs/archive/0.10.0.tar.gz
+	sha256sums = 68885eafd4e6fbf9fee33e4cfd85b75ecd7465a29fffc52b3b75a3c1931da6f4
 
 pkgname = ros-melodic-moveit-msgs
 

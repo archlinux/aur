@@ -4,9 +4,8 @@ url='https://moveit.ros.org'
 
 pkgname='ros-melodic-moveit-msgs'
 pkgver='0.10.0'
-_pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-actionlib-msgs
@@ -40,9 +39,9 @@ depends=(${ros_depends[@]})
 # sha256sums=('cf24076ec34f836693b7818e7a36097b50581a66f98518666ebe3f7ba5ef2376')
 
 # Tarball version (faster download)
-_dir="moveit_msgs-release-release-melodic-moveit_msgs-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/moveit_msgs-release/archive/release/melodic/moveit_msgs/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('d1053ffe57d739fff282835af4753e39f484acad8a596049f8dc97825abeb881')
+_dir="moveit_msgs-${pkgver}"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-planning/moveit_msgs/archive/${pkgver}.tar.gz")
+sha256sums=('68885eafd4e6fbf9fee33e4cfd85b75ecd7465a29fffc52b3b75a3c1931da6f4')
 
 build() {
   # Use ROS environment variables
