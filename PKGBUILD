@@ -3,8 +3,7 @@ pkgdesc="ROS - Collection of cmake/make build tools primarily for ecl developmen
 url='https://wiki.ros.org/ecl_build'
 
 pkgname='ros-melodic-ecl-build'
-pkgver='0.61.7'
-_pkgver_patch=0
+pkgver='0.61.8'
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -24,9 +23,9 @@ depends=(${ros_depends[@]})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="ecl_tools-release-release-melodic-ecl_build-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/yujinrobot-release/ecl_tools-release/archive/release/melodic/ecl_build/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('6133fdac73fbedffae19ec5ec6b203225f7e8db9ac1d88fca425d95dc97beae4')
+_dir="ecl_tools-${pkgver}/ecl_build"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/stonier/ecl_tools/archive/${pkgver}.tar.gz")
+sha256sums=('3c7f16efaae81db62dd482b35c60b25bfaa5fed52112347ecaf97a8d10b445f6')
 
 build() {
   # Use ROS environment variables
