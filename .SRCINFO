@@ -1,0 +1,19 @@
+pkgbase = exfat-linux-dkms
+	pkgdesc = This exFAT filesystem module for Linux kernel is based on sdFAT drivers by Samsung, which is used with their smartphone lineups.
+	pkgver = 29.b83fe7e0
+	pkgrel = 1
+	url = https://github.com/arter97/exfat-linux/
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = dkms
+	conflicts = exfat
+	conflicts = exfat-git
+	options = !strip
+	source = git+https://github.com/arter97/exfat-linux/
+	source = dkms.conf
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = exfat-linux-dkms
+
