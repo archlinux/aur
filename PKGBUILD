@@ -2,7 +2,7 @@
 
 pkgname=genie-systemd-git
 _pkgname=genie
-pkgver=1.10.r0.g4dbb9f4
+pkgver=1.12.r12.g21ce15b
 pkgrel=1
 pkgdesc="A quick way into a systemd \"bottle\" for WSL (development version)"
 arch=('x86_64')
@@ -24,23 +24,24 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/$_pkgname"
-  #Remove Debian package build
-  #patch -Np1 -i "${srcdir}/build_for_arch.patch"
 }
 
 build() {
   cd "$srcdir/$_pkgname/$_pkgname"
   dotnet publish -r linux-x64 --self-contained false
-  #TODO: test./build
 }
 
 package() {
   cd "$srcdir/$_pkgname/$_pkgname"
-  install -Dm 4755 -o root "$srcdir/$_pkgname/$_pkgname/bin/Debug/netcoreapp2.2/linux-x64/publish/genie" -t "$pkgdir/usr/bin"
+  install -Dm 4755 -o root "bin/Debug/netcoreapp2.2/linux-x64/publish/genie" -t "$pkgdir/usr/bin"
   install -Dm 644 -o root "$srcdir/$_pkgname/$_pkgname/bin/Debug/netcoreapp2.2/linux-x64/publish/genie.dll" -t "$pkgdir/usr/bin"
   install -Dm 644 -o root "$srcdir/$_pkgname/$_pkgname/bin/Debug/netcoreapp2.2/linux-x64/publish/Linux.ProcessManager.dll" -t "$pkgdir/usr/bin"
   install -Dm 644 -o root "$srcdir/$_pkgname/$_pkgname/bin/Debug/netcoreapp2.2/linux-x64/publish/System.CommandLine.dll" -t "$pkgdir/usr/bin"
   install -Dm 644 -o root "$srcdir/$_pkgname/$_pkgname/bin/Debug/netcoreapp2.2/linux-x64/publish/Tmds.LibC.dll" -t "$pkgdir/usr/bin"
   install -Dm 644 -o root "$srcdir/$_pkgname/$_pkgname/bin/Debug/netcoreapp2.2/linux-x64/publish/genie.runtimeconfig.json" -t "$pkgdir/usr/bin"
+  install -Dm 755 -o root "$srcdir/$_pkgname/systemd-genie/lib/genie/dumpwslenv.sh" -t "$pkgdir/usr/lib/genie/"
+  install -Dm 755 -o root "$srcdir/$_pkgname/systemd-genie/lib/genie/readwslenv.sh" -t "$pkgdir/usr/lib/genie/"
+  install -Dm 755 -o root "$srcdir/$_pkgname/systemd-genie/lib/genie/runinwsl.sh" -t "$pkgdir/usr/lib/genie/"
+  install -Dm 755 -o root "$srcdir/$_pkgname/systemd-genie/lib/systemd/system-environment-generators/10-genie-envar.sh" -t "$pkgdir/usr/lib/systemd/system-environment-generators"
   install -Dm 644 "${srcdir}/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
