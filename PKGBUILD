@@ -7,7 +7,7 @@ pkgname='ros-melodic-rqt-publisher'
 pkgver='0.4.8'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -35,9 +35,9 @@ depends=(
 	python-rospkg
 )
 
-_dir="rqt_publisher-release-release-melodic-rqt_publisher-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rqt_publisher-release/archive/release/melodic/rqt_publisher/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('9411fa1eb8fefee5ab7653c83dc2baa44cf352797759436fdfaa48de29e098e3')
+_dir="rqt_publisher-${pkgver}"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/rqt_publisher/archive/${pkgver}.tar.gz")
+sha256sums=('ee0844e85b264187fac4f6442ff6d443e32d475ddea022a74a08b489d7613a05')
 
 build() {
 	# Use ROS environment variables.
