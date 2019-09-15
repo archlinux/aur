@@ -7,7 +7,7 @@ pkgname='ros-melodic-uuid-msgs'
 pkgver='1.0.6'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-message-generation
@@ -27,9 +27,9 @@ depends=(${ros_depends[@]})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="unique_identifier-release-release-melodic-uuid_msgs-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-geographic-info/unique_identifier-release/archive/release/melodic/uuid_msgs/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('c00cacdbfc12e1cc2715a8531eae1fc69700362b2abab974d03d70de5de6d2b5')
+_dir="unique_identifier-unique_identifier-${pkgver}/uuid_msgs"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-geographic-info/unique_identifier/archive/unique_identifier-${pkgver}.tar.gz")
+sha256sums=('e376df28058d69da4c3c5fce4ef5d3cc24518ed9b64a181055ff86a2fc11b832')
 
 build() {
   # Use ROS environment variables

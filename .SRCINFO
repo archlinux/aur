@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-uuid-msgs
 	pkgdesc = ROS - ROS messages for universally unique identifiers.
 	pkgver = 1.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/uuid_msgs
 	arch = any
 	license = BSD
@@ -12,8 +12,8 @@ pkgbase = ros-melodic-uuid-msgs
 	makedepends = ros-melodic-std-msgs
 	depends = ros-melodic-message-runtime
 	depends = ros-melodic-std-msgs
-	source = ros-melodic-uuid-msgs-1.0.6-0.tar.gz::https://github.com/ros-geographic-info/unique_identifier-release/archive/release/melodic/uuid_msgs/1.0.6-0.tar.gz
-	sha256sums = c00cacdbfc12e1cc2715a8531eae1fc69700362b2abab974d03d70de5de6d2b5
+	source = ros-melodic-uuid-msgs-1.0.6.tar.gz::https://github.com/ros-geographic-info/unique_identifier/archive/unique_identifier-1.0.6.tar.gz
+	sha256sums = e376df28058d69da4c3c5fce4ef5d3cc24518ed9b64a181055ff86a2fc11b832
 
 pkgname = ros-melodic-uuid-msgs
 
