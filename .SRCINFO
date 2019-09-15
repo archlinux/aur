@@ -1,7 +1,7 @@
 pkgbase = grml2usb
 	pkgdesc = Installs one or multiple grml ISOs on an USB device - contains grml2iso
 	pkgver = 0.16.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://grml.org/grml2usb/
 	arch = x86_64
 	license = GPL2

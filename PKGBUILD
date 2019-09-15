@@ -3,7 +3,7 @@
 
 pkgname=grml2usb
 pkgver=0.16.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Installs one or multiple grml ISOs on an USB device - contains grml2iso"
 arch=(x86_64)
 url="http://grml.org/grml2usb/"
@@ -19,9 +19,6 @@ source=("https://github.com/grml/grml2usb/archive/v${pkgver}.tar.gz")
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver"
-
-	sed -i'' -e '1s/python/python2/' grml2usb
-	sed -i'' -e '1s/python/python2/' grml2iso
 
 	sed -i'' -e 's#stylesheet/nwalsh#xsl-stylesheets-$(shell pacman -Q docbook-xsl | cut -d " " -f 2 | cut -d "-" -f 1)#g' Makefile
 }
