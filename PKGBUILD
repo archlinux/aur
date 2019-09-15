@@ -3,8 +3,7 @@ pkgdesc="ROS - Converts a 3D Point Cloud into a 2D laser scan."
 url='https://wiki.ros.org/perception_pcl'
 
 pkgname='ros-melodic-pointcloud-to-laserscan'
-pkgver='1.4.0'
-_pkgver_patch=0
+pkgver='1.4.1'
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -29,9 +28,9 @@ ros_depends=(ros-melodic-tf2-sensor-msgs
   ros-melodic-message-filters)
 depends=(${ros_depends[@]})
 
-_dir="pointcloud_to_laserscan-release-release-melodic-pointcloud_to_laserscan-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/pointcloud_to_laserscan-release/archive/release/melodic/pointcloud_to_laserscan/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('58e4c4ce3d73beaebecfda86a761f17d4680cad274ab57d361ab9bdfe726b29c')
+_dir="pointcloud_to_laserscan-${pkgver}"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-perception/pointcloud_to_laserscan/archive/${pkgver}.tar.gz")
+sha256sums=('ed50811e88be0e60a287eef1973077f74ce16230a73a5f04064c56715f02efc7')
 
 build() {
   # Use ROS environment variables
