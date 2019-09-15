@@ -4,7 +4,7 @@ pkgname=d-containers
 _pkgname=containers
 _pkgver=0.8.0-alpha.16
 pkgver=${_pkgver/-/}
-pkgrel=1
+pkgrel=2
 pkgdesc='Containers for D backed by std.experimental.allocator'
 arch=('x86_64')
 url='https://github.com/dlang-community/containers'
@@ -12,7 +12,7 @@ license=('Boost')
 depends=('liblphobos')
 makedepends=('meson' 'ldc' 'd-stdx-allocator')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$_pkgver.tar.gz")
-sha512sums=('15615efe538396130d07d8ec93f552945908edd58a3bb4bed27c22d9c42b4d9fc8c9f665aac946994e53a2f04f1bb59b3dc6546151a0cbd45e7fd60ce9b48d87')
+sha512sums=('7e88106456a477ef188a86bbe163ec04bda473cede4f8e0082bcd0d9dd9adf9c74b4d9f948dc2340f82a257683d9d4b17bb463053c56a548d1a62c304404b065')
 
 build() {
   mkdir -p $_pkgname-$_pkgver/build
