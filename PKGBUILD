@@ -7,7 +7,7 @@ pkgname='ros-melodic-rqt-py-console'
 pkgver='0.4.8'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -34,9 +34,9 @@ depends=(
 	python-rospkg
 )
 
-_dir="rqt_py_console-release-release-melodic-rqt_py_console-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rqt_py_console-release/archive/release/melodic/rqt_py_console/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('0c5714fce4f464fa175e42a7c8fc0ced483fdcfbd90cf4c8584f40b3cf208242')
+_dir="rqt_py_console-${pkgver}"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/rqt_py_console/archive/${pkgver}.tar.gz")
+sha256sums=('d43380d19b0061e6378735f13c62b9b28a2bbaad6a540735f0512d7f6c163e68')
 
 build() {
 	# Use ROS environment variables.

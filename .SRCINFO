@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-rqt-py-console
 	pkgdesc = ROS - rqt_py_console is a Python GUI plugin providing an interactive Python console.
 	pkgver = 0.4.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/rqt_py_console
 	arch = any
 	license = BSD
@@ -15,8 +15,8 @@ pkgbase = ros-melodic-rqt-py-console
 	depends = ros-melodic-rqt-gui
 	depends = ros-melodic-rospy
 	depends = python-rospkg
-	source = ros-melodic-rqt-py-console-0.4.8-0.tar.gz::https://github.com/ros-gbp/rqt_py_console-release/archive/release/melodic/rqt_py_console/0.4.8-0.tar.gz
-	sha256sums = 0c5714fce4f464fa175e42a7c8fc0ced483fdcfbd90cf4c8584f40b3cf208242
+	source = ros-melodic-rqt-py-console-0.4.8.tar.gz::https://github.com/ros-visualization/rqt_py_console/archive/0.4.8.tar.gz
+	sha256sums = d43380d19b0061e6378735f13c62b9b28a2bbaad6a540735f0512d7f6c163e68
 
 pkgname = ros-melodic-rqt-py-console
 
