@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-spacenav-node
 	pkgdesc = ROS - ROS interface to the 3Dconnexion SpaceNavigator 6DOF joystick.
-	pkgver = 1.12.0
-	pkgrel = 2
+	pkgver = 1.13.0
+	pkgrel = 1
 	url = https://www.wiki.ros.org/spacenav_node
 	arch = any
 	license = BSD
@@ -19,8 +19,8 @@ pkgbase = ros-melodic-spacenav-node
 	depends = spacenavd
 	depends = libspnav
 	depends = libx11
-	source = ros-melodic-spacenav-node-1.12.0-0.tar.gz::https://github.com/ros-gbp/joystick_drivers-release/archive/release/melodic/spacenav_node/1.12.0-0.tar.gz
-	sha256sums = 6b66541475baf7885d88026cb432143520f7ffba8d025c3495d057e26ca76669
+	source = ros-melodic-spacenav-node-1.13.0.tar.gz::https://github.com/ros-drivers/joystick_drivers/archive/1.13.0.tar.gz
+	sha256sums = bfe0633623f4dc917524198aaea10b1c4603881e736dafb7b652f1af60922ad7
 
 pkgname = ros-melodic-spacenav-node
 
