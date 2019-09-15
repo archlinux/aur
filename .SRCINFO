@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-map-msgs
 	pkgdesc = ROS - This package defines messages commonly used in mapping packages.
 	pkgver = 1.13.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/map_msgs
 	arch = any
 	license = BSD
@@ -16,8 +16,8 @@ pkgbase = ros-melodic-map-msgs
 	depends = ros-melodic-sensor-msgs
 	depends = ros-melodic-std-msgs
 	depends = ros-melodic-nav-msgs
-	source = ros-melodic-map-msgs-1.13.0-0.tar.gz::https://github.com/ros-gbp/navigation_msgs-release/archive/release/melodic/map_msgs/1.13.0-0.tar.gz
-	sha256sums = a0b7044c2fd59448eb714ce14d60c5ff2d0073962e011e6549c7dd99fc916ffc
+	source = ros-melodic-map-msgs-1.13.0.tar.gz::https://github.com/ros-planning/navigation_msgs/archive/1.13.0.tar.gz
+	sha256sums = 09bba8fb7a60135183830dec4381cd3187244794aab9759ac50bbc6007e04a61
 
 pkgname = ros-melodic-map-msgs
 
