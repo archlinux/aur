@@ -1,6 +1,6 @@
 # Maintainer: Egor Kovetskiy <e.kovetskiy@gmail.com>
 pkgname=python-todo-t
-pkgver=85.6422833
+pkgver=0
 pkgrel=1
 pkgdesc="Command-line todo list manager"
 url="https://github.com/kovetskiy/t"
@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 license=('GPL')
 makedepends=('python')
 
-source=("git://github.com/kovetskiy/t.git")
+source=("git://github.com/sjl/t.git")
 md5sums=('SKIP')
 backup=()
 
