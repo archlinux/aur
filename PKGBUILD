@@ -7,7 +7,7 @@ pkgname='ros-melodic-smach-ros'
 pkgver='2.0.1'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -36,9 +36,9 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="executive_smach-release-release-melodic-smach_ros-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/executive_smach-release/archive/release/melodic/smach_ros/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('2a6062c9bb60b5cea300784b67e7c977b1cd42bc7117c0d5bea7122eb04d37ed')
+_dir="executive_smach-${pkgver}/smach_ros"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/executive_smach/archive/${pkgver}.tar.gz")
+sha256sums=('2f7f58064c960fc56de15fdedfd883f62122bd44874787f13c8b4d8a77c45380')
 
 build() {
 	# Use ROS environment variables.
