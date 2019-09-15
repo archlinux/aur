@@ -25,9 +25,9 @@ depends=(${ros_depends[@]})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="octomap-release-release-melodic-dynamic_edt_3d-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/octomap-release/archive/release/melodic/dynamic_edt_3d/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('b3da422d3baebaea5aa422558b878f02058f7695617e5b116ee7bdf1723c12cc')
+_dir="octomap-${pkgver}/dynamicEDT3D"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/OctoMap/octomap/archive/v${pkgver}.tar.gz")
+sha256sums=('5f81c9a8cbc9526b2e725251cd3a829e5222a28201b394314002146d8b9214dd')
 
 build() {
   # Use ROS environment variables

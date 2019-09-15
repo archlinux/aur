@@ -10,8 +10,8 @@ pkgbase = ros-melodic-dynamic-edt-3d
 	makedepends = ros-melodic-octomap
 	depends = ros-melodic-octomap
 	depends = ros-melodic-catkin
-	source = ros-melodic-dynamic-edt-3d-1.9.0-1.tar.gz::https://github.com/ros-gbp/octomap-release/archive/release/melodic/dynamic_edt_3d/1.9.0-1.tar.gz
-	sha256sums = b3da422d3baebaea5aa422558b878f02058f7695617e5b116ee7bdf1723c12cc
+	source = ros-melodic-dynamic-edt-3d-1.9.0.tar.gz::https://github.com/OctoMap/octomap/archive/v1.9.0.tar.gz
+	sha256sums = 5f81c9a8cbc9526b2e725251cd3a829e5222a28201b394314002146d8b9214dd
 
 pkgname = ros-melodic-dynamic-edt-3d
 
