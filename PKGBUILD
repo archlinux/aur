@@ -4,9 +4,8 @@ url='https://wiki.ros.org/amcl'
 
 pkgname='ros-melodic-amcl'
 pkgver='1.16.2'
-_pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=3
 license=('LGPL')
 
 ros_makedepends=(ros-melodic-catkin
@@ -42,9 +41,9 @@ depends=(${ros_depends[@]})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="navigation-release-release-melodic-amcl-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/navigation-release/archive/release/melodic/amcl/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('01fc59bbf881b23905d1df0d056f0d2a76d1ce4801c70e68f3f6bfb7f2a6c818')
+_dir="navigation-${pkgver}/amcl"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-planning/navigation/archive/${pkgver}.tar.gz")
+sha256sums=('d83201296e773e2789635fddf39ac18e9465219b18707e53bd2361de4762d205')
 
 build() {
   # Use ROS environment variables
