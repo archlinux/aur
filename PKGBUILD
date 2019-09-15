@@ -7,7 +7,7 @@ pkgname='ros-melodic-swri-console'
 pkgver='1.1.0'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-rosgraph-msgs
@@ -33,9 +33,9 @@ depends=(${ros_depends[@]}
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="swri_console-release-release-melodic-swri_console-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/swri-robotics-gbp/swri_console-release/archive/release/melodic/swri_console/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('3b316832e42c12ebf733b8f9f299ad56326bdeea281c36e1323dfe6c195a4cfe')
+_dir="swri_console-${pkgver}"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/swri-robotics/swri_console/archive/${pkgver}.tar.gz")
+sha256sums=('da27e4f92247ce7016a4325ef7ffea0ed18fa6fe671ce0b7f17652778ce9481c')
 
 build() {
   # Use ROS environment variables
