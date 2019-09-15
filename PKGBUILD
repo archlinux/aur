@@ -7,7 +7,7 @@ pkgname='ros-melodic-rostest'
 pkgver='1.14.3'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -35,9 +35,9 @@ depends=(
 	boost
 )
 
-_dir="ros_comm-release-release-melodic-rostest-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/melodic/rostest/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('90e7b4ba3167ae06f5ad213c193b0c5ab7888b4abd75542a3d7c02592ef9c707')
+_dir="ros_comm-${pkgver}/tools/rostest"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/ros_comm/archive/${pkgver}.tar.gz")
+sha256sums=('3e49bef96b8a0f9684e5c4f1736d171e9c8842a3979d5d3c6442b53698e8167f')
 
 build() {
 	# Use ROS environment variables.
