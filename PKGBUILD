@@ -7,7 +7,7 @@ pkgname='ros-melodic-srdfdom'
 pkgver='0.5.1'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-urdfdom-py
@@ -35,9 +35,9 @@ depends=(${ros_depends[@]}
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="srdfdom-release-release-melodic-srdfdom-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/srdfdom-release/archive/release/melodic/srdfdom/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('97b4cf0327af9082df3270024ceaa89d6b577bb2cbc09a5b19838557189e96f1')
+_dir="srdfdom-${pkgver}"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-planning/srdfdom/archive/${pkgver}.tar.gz")
+sha256sums=('98d585667906da2485dfad67af3ee5df4caab9a5cd9faf5e794c06357a87a9cf')
 
 build() {
   # Use ROS environment variables
