@@ -4,9 +4,8 @@ url='https://wiki.ros.org/ecl_config'
 
 pkgname='ros-melodic-ecl-config'
 pkgver='0.61.6'
-_pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-ecl-license
@@ -26,9 +25,9 @@ depends=(${ros_depends[@]})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="ecl_lite-release-release-melodic-ecl_config-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/yujinrobot-release/ecl_lite-release/archive/release/melodic/ecl_config/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('a8fb8da4c0d398f4f209b8a0f35c738ee3aaca992c8bd3c5d541f60637b83063')
+_dir="ecl_lite-${pkgver}/ecl_config"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/stonier/ecl_lite/archive/${pkgver}.tar.gz")
+sha256sums=('b8a02aabecc9a47bde44c83c7e02669e7ce9a3e43f51315b89d10960ed83f3cc')
 
 build() {
   # Use ROS environment variables
