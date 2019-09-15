@@ -7,7 +7,7 @@ pkgname='ros-melodic-kalman-filter'
 pkgver='0.2.4'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-catkin
@@ -25,9 +25,9 @@ depends=(${ros_depends[@]})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="wu_ros_tools-release-melodic-kalman_filter-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/wu-robotics/wu_ros_tools/archive/release/melodic/kalman_filter/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('dae8cee834dfdb902000812bf4e6141f678bf813a077dd6b6f1580a90a909876')
+_dir="wu_ros_tools-${pkgver}/kalman_filter"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/DLu/wu_ros_tools/archive/${pkgver}.tar.gz")
+sha256sums=('fd0bb39a69302dae5ccfd565277209719a4199644fc8265a2ae7ccedd92c004a')
 
 build() {
   # Use ROS environment variables
