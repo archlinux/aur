@@ -7,7 +7,7 @@ pkgname='ros-melodic-filters'
 pkgver='1.8.1'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -36,9 +36,9 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="filters-release-release-melodic-filters-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/filters-release/archive/release/melodic/filters/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('850380ab0564923c37a6ee93227fe934647a1c4e5dfb4c5d2502f156b6b17d3f')
+_dir="filters-${pkgver}"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/filters/archive/${pkgver}.tar.gz")
+sha256sums=('647958f9eba1cb304fe0e7899c3ee884b3b748720a41afb1c509ac8badf610c2')
 
 build() {
 	# Use ROS environment variables.
