@@ -7,7 +7,7 @@ pkgname='ros-melodic-camera-calibration'
 pkgver='1.12.23'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -33,9 +33,9 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="image_pipeline-release-release-melodic-camera_calibration-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/image_pipeline-release/archive/release/melodic/camera_calibration/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('12493d808dd8edcdfa7e569b70cd8be685c22df027f8dc0fabe6d56ed25e2586')
+_dir="image_pipeline-${pkgver}/camera_calibration"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-perception/image_pipeline/archive/${pkgver}.tar.gz")
+sha256sums=('0b024f155f79f16982b31951ad0b1bde5440159b0ba6b1128ecbe2e867a2e357')
 
 build() {
 	# Use ROS environment variables.
