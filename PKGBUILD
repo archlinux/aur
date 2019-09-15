@@ -7,7 +7,7 @@ pkgname='ros-melodic-image-common'
 pkgver='1.11.13'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -31,9 +31,9 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="image_common-release-release-melodic-image_common-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/image_common-release/archive/release/melodic/image_common/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('987bdb08a0bf935d3c657331b79564a3e272f6c4538e5be5d893ab6a13865ede')
+_dir="image_common-${pkgver}/image_common"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-perception/image_common/archive/${pkgver}.tar.gz")
+sha256sums=('32a2e07724dec6eaaace21eae006274436d70d40bfe205249438570275c43cac')
 
 build() {
 	# Use ROS environment variables.
