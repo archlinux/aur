@@ -7,7 +7,7 @@ pkgname='ros-melodic-rqt-rviz'
 pkgver='0.6.0'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -38,9 +38,9 @@ depends=(
 	boost
 )
 
-_dir="rqt_rviz-release-release-melodic-rqt_rviz-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rqt_rviz-release/archive/release/melodic/rqt_rviz/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('23e3aa89701e33665c95e1bd0f0df853a52a8bfd433c352071ba9ff597b8ecb7')
+_dir="rqt_rviz-${pkgver}"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/rqt_rviz/archive/${pkgver}.tar.gz")
+sha256sums=('5007bf1c30ebe9e68e8ca3a4fa017f81671f1422e55a75b51aaf276ff74bfb0e')
 
 build() {
 	# Use ROS environment variables.
