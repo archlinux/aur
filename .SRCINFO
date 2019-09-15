@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-rqt-tf-tree
 	pkgdesc = ROS - rqt_tf_tree provides a GUI plugin for visualizing the ROS TF frame tree.
-	pkgver = 0.5.8
-	pkgrel = 1
+	pkgver = 0.6.0
+	pkgrel = 0
 	url = https://wiki.ros.org/rqt_tf_tree
 	arch = any
 	license = BSD
@@ -19,8 +19,8 @@ pkgbase = ros-melodic-rqt-tf-tree
 	depends = ros-melodic-rospy
 	depends = ros-melodic-geometry-msgs
 	depends = python-rospkg
-	source = ros-melodic-rqt-tf-tree-0.5.8-0.tar.gz::https://github.com/ros-gbp/rqt_tf_tree-release/archive/release/melodic/rqt_tf_tree/0.5.8-0.tar.gz
-	sha256sums = 9513090b80a462fde8cff0e4ba44ceb1c2db175720100c22502e03bbccd3f962
+	source = ros-melodic-rqt-tf-tree-0.6.0.tar.gz::https://github.com/ros-visualization/rqt_tf_tree/archive/0.6.0.tar.gz
+	sha256sums = 0d5996679310b747ac49d52c39e7869870458065b8ba118ed48b105d9f252604
 
 pkgname = ros-melodic-rqt-tf-tree
 

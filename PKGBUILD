@@ -4,10 +4,10 @@ pkgdesc="ROS - rqt_tf_tree provides a GUI plugin for visualizing the ROS TF fram
 url='https://wiki.ros.org/rqt_tf_tree'
 
 pkgname='ros-melodic-rqt-tf-tree'
-pkgver='0.5.8'
+pkgver='0.6.0'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=0
 license=('BSD')
 
 ros_makedepends=(
@@ -38,9 +38,9 @@ depends=(
 	python-rospkg
 )
 
-_dir="rqt_tf_tree-release-release-melodic-rqt_tf_tree-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rqt_tf_tree-release/archive/release/melodic/rqt_tf_tree/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('9513090b80a462fde8cff0e4ba44ceb1c2db175720100c22502e03bbccd3f962')
+_dir="rqt_tf_tree-${pkgver}"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/rqt_tf_tree/archive/${pkgver}.tar.gz")
+sha256sums=('0d5996679310b747ac49d52c39e7869870458065b8ba118ed48b105d9f252604')
 
 build() {
 	# Use ROS environment variables.
