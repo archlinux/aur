@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-theora-image-transport
 	pkgdesc = ROS - Theora_image_transport provides a plugin to image_transport for transparently sending an image stream encoded with the Theora codec.
 	pkgver = 1.9.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.wiki.ros.org/image_transport_plugins
 	arch = any
 	license = BSD
@@ -26,8 +26,8 @@ pkgbase = ros-melodic-theora-image-transport
 	depends = ros-melodic-image-transport
 	depends = libtheora
 	depends = libogg
-	source = ros-melodic-theora-image-transport-1.9.5-0.tar.gz::https://github.com/ros-gbp/image_transport_plugins-release/archive/release/melodic/theora_image_transport/1.9.5-0.tar.gz
-	sha256sums = 03701fa45f64b4642eb8b7720662363bb10c4f20e32da2783c595258fc3eaced
+	source = ros-melodic-theora-image-transport-1.9.5.tar.gz::https://github.com/ros-perception/image_transport_plugins/archive/1.9.5.tar.gz
+	sha256sums = 8047bc717c83f04a1b05a7cfe70778d99a82ceb5eb717d480aab19513de0719c
 
 pkgname = ros-melodic-theora-image-transport
 
