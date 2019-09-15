@@ -7,7 +7,7 @@ pkgname='ros-melodic-rviz-python-tutorial'
 pkgver='0.10.3'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -29,9 +29,9 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="visualization_tutorials-release-release-melodic-rviz_python_tutorial-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/visualization_tutorials-release/archive/release/melodic/rviz_python_tutorial/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('525f02f83695fda430a40dbb0d980db92744f6782726cc14c1ee731215f6137f')
+_dir="visualization_tutorials-${pkgver}/rviz_python_tutorial"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/visualization_tutorials/archive/${pkgver}.tar.gz")
+sha256sums=('a3162d933fea0dd58b99e46fb71ea5d8596ef6e46eaf3a906e4bf20e9ca1bb1c')
 
 build() {
 	# Use ROS environment variables.
