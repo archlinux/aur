@@ -4,9 +4,8 @@ url='https://wiki.ros.org/yocs_velocity_smoother'
 
 pkgname='ros-melodic-yocs-velocity-smoother'
 pkgver='0.8.2'
-_pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-roscpp
@@ -29,10 +28,9 @@ ros_depends=(ros-melodic-roscpp
   ros-melodic-nodelet)
 depends=(${ros_depends[@]})
 
-# Unfortunately, yocs-velocity-smoother is not yet released for melodic. But the kinetic version works fine
-_dir="yujin_ocs-release-release-kinetic-yocs_velocity_smoother-${pkgver}-${_pkgver_patch}"
-source=("${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/yujinrobot-release/yujin_ocs-release/archive/release/kinetic/yocs_velocity_smoother/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('301ea3851f8e6b544e903177b47025430d8345efde31afbd883754e4c0763b83')
+_dir="yujin_ocs-${pkgver}/yocs_velocity_smoother"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/yujinrobot/yujin_ocs/archive/${pkgver}.tar.gz")
+sha256sums=('cb81a2590558b7513f28ef8f9c9571ba9eeb1cae03d2db4c52b0509a70804001')
 
 build() {
   # Use ROS environment variables
