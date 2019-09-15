@@ -2,7 +2,7 @@
 
 pkgname=nteract-desktop-bin
 pkgver=0.14.5
-pkgrel=1
+pkgrel=2
 pkgdesc='All the power of Jupyter notebooks, wrapped in a native desktop application.'
 arch=('x86_64')
 url='https://nteract.io/desktop'
@@ -13,7 +13,7 @@ options=('!strip')
 
 source=("https://github.com/nteract/nteract/releases/download/v$pkgver/nteract-$pkgver.tar.gz"
         "https://raw.githubusercontent.com/nteract/nteract/v$pkgver/LICENSE"
-        "https://raw.githubusercontent.com/nteract/nteract/master/applications/desktop/static/logoTemplate%403x.png"
+        "https://raw.githubusercontent.com/nteract/nteract/v$pkgver/applications/desktop/static/logoTemplate%403x.png"
         "nteract.desktop")
 sha256sums=('c664229b3819182ff49989586f40e3f060add0a45b640d034d3b68303d655817'
             '866e6fa48cb8810d36d8d85a3085d7aa1c4317d3731f0ef84919428fee87bf71'
