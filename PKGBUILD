@@ -27,7 +27,6 @@ package() {
 
     # Install binaries
     install -D -m755 "target/release/page" "$pkgdir/usr/bin/page"
-    install -D -m755 "target/release/page-term-agent" "$pkgdir/usr/bin/page-term-agent"
 
     # Find last build directory where completions was generated
     completions_dir=$(find "target" -name "shell_completions" -type d -printf "%T+\t%p\n" | sort | awk 'NR==1{print $2}')
