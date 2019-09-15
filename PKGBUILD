@@ -3,8 +3,7 @@ pkgdesc="ROS - ros_control controller manager interface for MoveIt!."
 url='https://wiki.ros.org/moveit_ros_control_interface'
 
 pkgname='ros-melodic-moveit-ros-control-interface'
-pkgver='0.10.8'
-_pkgver_patch=0
+pkgver='1.0.2'
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -34,9 +33,9 @@ depends=(${ros_depends[@]})
 # sha256sums=('3247493cc3b19032030742a54d76f205e3dc03d32888d7193348da140cdcb4de')
 
 # Tarball version (faster download)
-_dir="moveit-release-release-melodic-moveit_ros_control_interface-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/moveit-release/archive/release/melodic/moveit_ros_control_interface/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('6394a7b2bb27415108226738cfe4d838507fa5abd6202564f548f2080344108d')
+_dir="moveit-${pkgver}/moveit_plugins/moveit_ros_control_interface"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-planning/moveit/archive/${pkgver}.tar.gz")
+sha256sums=('b8194308c57dbe34bbb729cfccb30d1113af3a54a90a2cfb49482142d1044ea4')
 
 build() {
   # Use ROS environment variables
