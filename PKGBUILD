@@ -7,7 +7,7 @@ pkgname='ros-melodic-webkit-dependency'
 pkgver='1.1.0'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -28,9 +28,9 @@ depends=(
 	python-pyqt5
 )
 
-_dir="webkit_dependency-release-release-melodic-webkit_dependency-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/webkit_dependency-release/archive/release/melodic/webkit_dependency/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('a187ab79ea2545b2dec0f48d74af9b4f3875f73ac649c8527e54e9ea6cda0e29')
+_dir="webkit_dependency-${pkgver}"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/webkit_dependency/archive/${pkgver}.tar.gz")
+sha256sums=('44cafb6c6ddeafdb82d40103d35ffe4b724ef21eca9a77a3ca3ab739f7aa23c6')
 
 build() {
 	# Use ROS environment variables.
