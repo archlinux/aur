@@ -36,7 +36,7 @@ build() {
 }
 
 package() {
-    install -D -m 0755 sni-modifier "$pkgdir/usr/sbin/sni-modifier"
+    install -D -m 0755 sni-modifier "$pkgdir/usr/bin/sni-modifier"
     install -D -m 0644 pki/ca.crt "$pkgdir/etc/sni-modifier/CA.crt"
     install -D -m 0600 pki/private/ca.key "$pkgdir/etc/sni-modifier/CA.key"
     install -D -m 0644 sni-modifier.service "$pkgdir/usr/lib/systemd/system/sni-modifier.service"
