@@ -12,8 +12,8 @@ pkgbase = ros-melodic-joy-listener
 	makedepends = ros-melodic-rospy
 	depends = ros-melodic-sensor-msgs
 	depends = ros-melodic-rospy
-	source = ros-melodic-joy-listener-0.2.4-0.tar.gz::https://github.com/wu-robotics/wu_ros_tools/archive/release/melodic/joy_listener/0.2.4-0.tar.gz
-	sha256sums = 55b1bf4cf89b9ea2a405f878640a53c30f9205b7a328b88f2052629994e697f3
+	source = ros-melodic-joy-listener-0.2.4.tar.gz::https://github.com/DLu/wu_ros_tools/archive/0.2.4.tar.gz
+	sha256sums = fd0bb39a69302dae5ccfd565277209719a4199644fc8265a2ae7ccedd92c004a
 
 pkgname = ros-melodic-joy-listener
 
