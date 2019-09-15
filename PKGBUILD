@@ -1,13 +1,13 @@
 # Maintainer: Philip Jones <philj56@gmail.com>
 pkgname=gbcc-git
-pkgver=r249.53a1d18
+pkgver=r285.e8e4bdc
 pkgrel=1
 pkgdesc="A Game Boy Color emulator written in C"
 arch=("x86_64")
 url="https://github.com/philj56/GBCC"
 license=("MIT")
 groups=()
-depends=("sdl2" "libpng" "libepoxy" "openal")
+depends=("sdl2" "gtk3" "libpng" "libepoxy" "openal")
 makedepends=("meson" "git" "scdoc")
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
