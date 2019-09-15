@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-rqt-runtime-monitor
 	pkgdesc = ROS - rqt_runtime_monitor provides a GUI plugin viewing DiagnosticsArray messages.
 	pkgver = 0.5.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/rqt_runtime_monitor
 	arch = any
 	license = BSD
@@ -15,8 +15,8 @@ pkgbase = ros-melodic-rqt-runtime-monitor
 	depends = ros-melodic-rqt-gui
 	depends = ros-melodic-rospy
 	depends = python-rospkg
-	source = ros-melodic-rqt-runtime-monitor-0.5.7-0.tar.gz::https://github.com/ros-gbp/rqt_runtime_monitor-release/archive/release/melodic/rqt_runtime_monitor/0.5.7-0.tar.gz
-	sha256sums = f58958b5649d59fca3022a1771e6a457382744c616835cc65980213ab742fd5c
+	source = ros-melodic-rqt-runtime-monitor-0.5.7.tar.gz::https://github.com/ros-visualization/rqt_runtime_monitor/archive/0.5.7.tar.gz
+	sha256sums = 48f32cfce4c395f15d7de22d842f93f97fceee72dffe0576b9b8f0ae67b131a0
 
 pkgname = ros-melodic-rqt-runtime-monitor
 

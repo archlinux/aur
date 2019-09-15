@@ -7,7 +7,7 @@ pkgname='ros-melodic-rqt-runtime-monitor'
 pkgver='0.5.7'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -34,9 +34,9 @@ depends=(
 	python-rospkg
 )
 
-_dir="rqt_runtime_monitor-release-release-melodic-rqt_runtime_monitor-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rqt_runtime_monitor-release/archive/release/melodic/rqt_runtime_monitor/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('f58958b5649d59fca3022a1771e6a457382744c616835cc65980213ab742fd5c')
+_dir="rqt_runtime_monitor-${pkgver}"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/rqt_runtime_monitor/archive/${pkgver}.tar.gz")
+sha256sums=('48f32cfce4c395f15d7de22d842f93f97fceee72dffe0576b9b8f0ae67b131a0')
 
 build() {
 	# Use ROS environment variables.
