@@ -10,29 +10,27 @@
 
 pkgbase=calibre-git
 pkgname=(calibre-git calibre-python3-git)
-pkgver=3.48.0.r0.g290c74fd73
+pkgver=3.48.0.r412.g380ccbc2d4
 pkgrel=1
 pkgdesc="Ebook management application"
 arch=('i686' 'x86_64')
 url="https://calibre-ebook.com/"
 license=('GPL3')
-_py_deps=('apsw' 'beautifulsoup4' 'cssselect' 'css-parser' 'dateutil' 'dbus' 'dnspython' 'dukpy'
+_py_deps=('apsw' 'beautifulsoup4' 'cssselect' 'css-parser' 'dateutil' 'dbus' 'dnspython'
           'feedparser' 'html2text' 'html5-parser' 'lxml' 'markdown' 'mechanize' 'msgpack'
-          'netifaces' 'unrardll' 'pillow' 'psutil' 'pygments' 'pyqt5' 'regex')
+          'netifaces' 'unrardll' 'pillow' 'psutil' 'pygments' 'pyqt5' 'pyqtwebengine' 'regex')
 _py3_deps=("${_py_deps[@]}" 'zeroconf')
 depends=('chmlib' 'hunspell' 'icu' 'jxrlib' 'libmtp' 'libusbx' 'libwmf' 'mathjax2' 'mtdev' 'optipng'
-         'podofo' 'qt5-svg' 'qt5-webkit' 'udisks2')
+         'podofo' 'qt5-svg' 'udisks2')
 makedepends=('git' "${_py_deps[@]/#/python2-}" "${_py3_deps[@]/#/python-}" 'qt5-x11extras'
              'sip' 'xdg-utils' 'rapydscript-ng') #'python2-sphinx')
 checkdepends=('xorg-server-xvfb')
 optdepends=('poppler: required for converting pdf to html')
 source=("git+https://github.com/kovidgoyal/${pkgbase%-git}.git?signed"
         "git+https://github.com/kovidgoyal/${pkgbase%-git}-translations.git?signed"
-        "https://github.com/kovidgoyal/calibre/commit/420e9e121b67db197e0c5d0bf23b92c174f2678f.patch"
         "user-agent-data.json")
 sha256sums=('SKIP'
             'SKIP'
-            'ff9be7c1773c18ccf4acaff5598ad29cf1477a1d33ddde85184d97f9a44ace1a'
             'd17a1fff7bf441db8d1ec826afd8661352869ec4e5edd2a17f917ef2fbf01043')
 validpgpkeys=('3CE1780F78DD88DF45194FD706BC317B515ACE7C') # Kovid Goyal (New longer key) <kovid@kovidgoyal.net>
 
@@ -59,8 +57,6 @@ prepare(){
   # needed for frozen builds + beautifulsoup4
   # see https://github.com/kovidgoyal/calibre/commit/b177f0a1096b4fdabd8772dd9edc66662a69e683#commitcomment-33169700
   rm -r src/backports
-  # de-vendor hunspell now instead of waiting for 4.x
-  patch -p1 -i ../420e9e121b67db197e0c5d0bf23b92c174f2678f.patch
 }
 
 build() {
