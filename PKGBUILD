@@ -7,7 +7,7 @@ pkgname='ros-melodic-unique-id'
 pkgver='1.0.6'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-roscpp
@@ -29,9 +29,9 @@ depends=(${ros_depends[@]})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="unique_identifier-release-release-melodic-unique_id-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-geographic-info/unique_identifier-release/archive/release/melodic/unique_id/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('8f995d23c4bdefadf40cd213fead2b4f4be1285f536a3578823fdaa46cc9019c')
+_dir="unique_identifier-unique_identifier-${pkgver}/unique_id"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-geographic-info/unique_identifier/archive/unique_identifier-${pkgver}.tar.gz")
+sha256sums=('e376df28058d69da4c3c5fce4ef5d3cc24518ed9b64a181055ff86a2fc11b832')
 
 build() {
   # Use ROS environment variables
