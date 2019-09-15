@@ -1,4 +1,4 @@
-# Maintainer: Matej Groma <matejgroma@gmail.com>
+# Maintainer: Matej Groma <sbovdvvnir68a8hftegth9whs+arch-aur@matejgroma.com>
 # Contributor: Aleš Katona <almindor@gmail.com>
 # Contributor: Tomáš Havlas <tomas.havlas@raven-systems.eu>
 # Contributor: Sarah Hay <sarah@archlinux.org>
