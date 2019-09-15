@@ -7,14 +7,15 @@ pkgname='ros-melodic-transmission-interface'
 pkgver='0.15.1'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-pluginlib
   ros-melodic-catkin
   ros-melodic-roscpp
   ros-melodic-hardware-interface
-  ros-melodic-cmake-modules)
+  ros-melodic-cmake-modules
+  ros-melodic-resource-retriever)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   tinyxml)
@@ -31,9 +32,9 @@ depends=(${ros_depends[@]}
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="ros_control-release-release-melodic-transmission_interface-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_control-release/archive/release/melodic/transmission_interface/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('6b28074919478b6422588385850f0450d788ad06829adca29ae5cf2cac798692')
+_dir="ros_control-${pkgver}/transmission_interface"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-controls/ros_control/archive/${pkgver}.tar.gz")
+sha256sums=('adf1a9d1fd10f4d89e91c8279d1278d9cd301767b658c143810479b2d10eedca')
 
 build() {
   # Use ROS environment variables

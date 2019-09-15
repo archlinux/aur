@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-transmission-interface
 	pkgdesc = ROS - Transmission Interface.
 	pkgver = 0.15.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ros-controls/ros_control/wiki
 	arch = any
 	license = BSD
@@ -12,12 +12,13 @@ pkgbase = ros-melodic-transmission-interface
 	makedepends = ros-melodic-roscpp
 	makedepends = ros-melodic-hardware-interface
 	makedepends = ros-melodic-cmake-modules
+	makedepends = ros-melodic-resource-retriever
 	makedepends = tinyxml
 	depends = ros-melodic-pluginlib
 	depends = ros-melodic-roscpp
 	depends = tinyxml
-	source = ros-melodic-transmission-interface-0.15.1-0.tar.gz::https://github.com/ros-gbp/ros_control-release/archive/release/melodic/transmission_interface/0.15.1-0.tar.gz
-	sha256sums = 6b28074919478b6422588385850f0450d788ad06829adca29ae5cf2cac798692
+	source = ros-melodic-transmission-interface-0.15.1.tar.gz::https://github.com/ros-controls/ros_control/archive/0.15.1.tar.gz
+	sha256sums = adf1a9d1fd10f4d89e91c8279d1278d9cd301767b658c143810479b2d10eedca
 
 pkgname = ros-melodic-transmission-interface
 
