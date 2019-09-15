@@ -11,7 +11,7 @@ arch=('any')
 url="http://www.sk-spell.sk.cx/aspell-sk"
 license=('custom')
 depends=('aspell')
-source=(http://www.sk-spell.sk.cx/file_download/103/aspell6-sk-$pkgver-0.tar.bz2)
+source=(http://www.sk-spell.sk.cx/files/aspell6-sk-$pkgver-0.tar.bz2)
 sha512sums=('fcdf5c043168c887f93dfad5b9c6e07d9edd0c6194139e61bee2ba3928798792d8e8b446754bc55a67acc6d333034ebed9655cc3c15ad638f834b5a9efcc63cd')
 
 package() {
