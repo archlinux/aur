@@ -7,7 +7,7 @@ pkgname='ros-melodic-rgbd-launch'
 pkgver='2.2.2'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-image-proc
@@ -31,9 +31,9 @@ depends=(${ros_depends[@]})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="rgbd_launch-release-release-melodic-rgbd_launch-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rgbd_launch-release/archive/release/melodic/rgbd_launch/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('973d8f054d8b7447e8951b5dc8dc65d860a3ce48431789fee0f582d8d56d7f68')
+_dir="rgbd_launch-${pkgver}"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-drivers/rgbd_launch/archive/${pkgver}.tar.gz")
+sha256sums=('2e4bebe8e9f2d9e23f6e0678f6e0f594cd3616f3db0724075bde7219637e6baa')
 
 build() {
   # Use ROS environment variables
