@@ -4,8 +4,7 @@ pkgdesc="ROS - ROS wrapper for slime."
 url='https://common-lisp.net/project/slime'
 
 pkgname='ros-melodic-slime-wrapper'
-pkgver='0.4.12'
-_pkgver_patch=0
+pkgver='0.4.13'
 arch=('any')
 pkgrel=1
 license=('Public domain')
@@ -25,9 +24,9 @@ depends=(${ros_depends[@]}
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="ros_emacs_utils-release-release-melodic-slime_wrapper-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/code-iai-release/ros_emacs_utils-release/archive/release/melodic/slime_wrapper/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('4b518af81b572ae319d7dba4ebf4f837bc1af5519c775b99830ba1387bfe2ad2')
+_dir="ros_emacs_utils-${pkgver}/slime_wrapper"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/code-iai/ros_emacs_utils/archive/${pkgver}.tar.gz")
+sha256sums=('14c8463b3c354a53659843c82af416a4ff6713747f04da98e8fc39de90c8ec6c')
 
 build() {
   # Use ROS environment variables
