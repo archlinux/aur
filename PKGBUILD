@@ -5,20 +5,20 @@ pkgver=v15.0.r5.3b6827e
 pkgrel=1
 pkgdesc="Highly configurable clock written in bash with soundpack and voice options."
 arch=('any')
-url="https://github.com/stormdragon2976/$_pkgname"
+url="https://gitlab.com/stormdragon2976/$_pkgname"
 license=('WTFPL')
 depends=('bash')
 makedepends=('git')
 optdepends=('espeak: TTS support'
 	'festival: TTS support'
 	'flite: TTS support'
+	'jq: For the current temperature'
 	'translate-shell: TTS support'
 	'speech-dispatcher: TTS support'
 	'svox-pico-git: TTS support'
 	'pulseaudio: Chime sound support'
 	'sox: Chime sound support'
 	'vorbis-tools: Chime sound support'
-	'torsocks: Get temperature information anonymously using torify'
 'yad: for talking-clock-gui to work')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
