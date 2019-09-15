@@ -1,0 +1,14 @@
+pkgbase = ooml
+	pkgdesc = C++ Object Oriented Mechanis Language. Program for C++ to openscad cross-compilation.
+	pkgver = r63.4756421
+	pkgrel = 1
+	url = https://github.com/avalero/OOML
+	arch = any
+	license = GPL
+	makedepends = git
+	optdepends = openscad: for using the generated scad files
+	source = ooml::git+https://github.com/avalero/OOML.git
+	sha256sums = SKIP
+
+pkgname = ooml-git
+
