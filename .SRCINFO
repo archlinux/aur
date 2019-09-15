@@ -1,0 +1,14 @@
+pkgbase = pinger-indicator-git
+	pkgdesc = A tray indicator that checks your internet with the ping command
+	pkgver = r1.339b045
+	pkgrel = 1
+	url = https://github.com/lucasew/pinger-indicator
+	arch = x86_64
+	license = mit
+	makedepends = go
+	options = !strip
+	source = git+https://github.com/lucasew/pinger-indicator/
+	sha256sums = SKIP
+
+pkgname = pinger-indicator-git
+
