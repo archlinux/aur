@@ -1,0 +1,7 @@
+bazel-buildtools-*.pkg.tar.xz
+*.tar.gz
+pkg/
+src/
+buildifier
+buildozer
+unused_deps
