@@ -4,10 +4,10 @@ pkgdesc="ROS - rqt_robot_monitor displays diagnostics_agg topics messages that a
 url='https://wiki.ros.org/rqt_robot_monitor'
 
 pkgname='ros-melodic-rqt-robot-monitor'
-pkgver='0.5.8'
+pkgver='0.5.9'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=0
 license=('BSD')
 
 ros_makedepends=(
@@ -37,9 +37,9 @@ depends=(
 	python-rospkg
 )
 
-_dir="rqt_robot_monitor-release-release-melodic-rqt_robot_monitor-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rqt_robot_monitor-release/archive/release/melodic/rqt_robot_monitor/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('3f1c272f0f73b0c3f1dc3283e233a183f4a0541ee345408fcb6ac83430bb52a8')
+_dir="rqt_robot_monitor-${pkgver}"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/rqt_robot_monitor/archive/${pkgver}.tar.gz")
+sha256sums=('11718ae155fb6c60f964b3d9e9616a3b4d1d6fdf9c9732e736ff864ed44c0961')
 
 build() {
 	# Use ROS environment variables.

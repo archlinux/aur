@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-rqt-robot-monitor
 	pkgdesc = ROS - rqt_robot_monitor displays diagnostics_agg topics messages that are published by diagnostic_aggregator.
-	pkgver = 0.5.8
-	pkgrel = 1
+	pkgver = 0.5.9
+	pkgrel = 0
 	url = https://wiki.ros.org/rqt_robot_monitor
 	arch = any
 	license = BSD
@@ -18,8 +18,8 @@ pkgbase = ros-melodic-rqt-robot-monitor
 	depends = ros-melodic-rqt-py-common
 	depends = ros-melodic-rospy
 	depends = python-rospkg
-	source = ros-melodic-rqt-robot-monitor-0.5.8-0.tar.gz::https://github.com/ros-gbp/rqt_robot_monitor-release/archive/release/melodic/rqt_robot_monitor/0.5.8-0.tar.gz
-	sha256sums = 3f1c272f0f73b0c3f1dc3283e233a183f4a0541ee345408fcb6ac83430bb52a8
+	source = ros-melodic-rqt-robot-monitor-0.5.9.tar.gz::https://github.com/ros-visualization/rqt_robot_monitor/archive/0.5.9.tar.gz
+	sha256sums = 11718ae155fb6c60f964b3d9e9616a3b4d1d6fdf9c9732e736ff864ed44c0961
 
 pkgname = ros-melodic-rqt-robot-monitor
 
