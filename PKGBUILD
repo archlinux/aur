@@ -7,7 +7,7 @@ pkgname='ros-melodic-diagnostic-aggregator'
 pkgver='1.9.3'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -42,9 +42,9 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="diagnostics-release-release-melodic-diagnostic_aggregator-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/diagnostics-release/archive/release/melodic/diagnostic_aggregator/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('60f22960bd3056e62b0d354e4de2b80c3f5e377e31e330c91d82b0c4dcd8e70c')
+_dir="diagnostics-${pkgver}/diagnostic_aggregator"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/diagnostics/archive/${pkgver}.tar.gz")
+sha256sums=('3b2d3bb7bb333b8685fa084e086c00a044803dac41ff58351161440931d23550')
 
 build() {
 	# Use ROS environment variables.
