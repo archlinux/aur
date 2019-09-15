@@ -7,7 +7,7 @@ pkgname='ros-melodic-camera-info-manager'
 pkgver='1.11.13'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -40,9 +40,9 @@ depends=(
 	boost
 )
 
-_dir="image_common-release-release-melodic-camera_info_manager-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/image_common-release/archive/release/melodic/camera_info_manager/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('c24f43db36b8922346fb722119850fdd6a0fafe87fa38521edba5c8c6ed4e98d')
+_dir="image_common-${pkgver}/camera_info_manager"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-perception/image_common/archive/${pkgver}.tar.gz")
+sha256sums=('32a2e07724dec6eaaace21eae006274436d70d40bfe205249438570275c43cac')
 
 build() {
 	# Use ROS environment variables.
