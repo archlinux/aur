@@ -5,9 +5,8 @@ url='https://wiki.ros.org/geographic_msgs'
 
 pkgname='ros-melodic-geographic-msgs'
 pkgver='0.5.3'
-_pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-catkin
@@ -31,9 +30,9 @@ depends=(${ros_depends[@]})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="geographic_info-release-release-melodic-geographic_msgs-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-geographic-info/geographic_info-release/archive/release/melodic/geographic_msgs/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('68d46a359b8eec02f2ee60c6997f9bf3399925e9f93c453839a07125ce8f959f')
+_dir="geographic_info-geographic_info-${pkgver}/geographic_msgs"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-geographic-info/geographic_info/archive/geographic_info-${pkgver}.tar.gz")
+sha256sums=('2a2de063b17dc00c20bd49d59ded6934081fc22d8749dc8542d407d1ca0e608e')
 
 build() {
   # Use ROS environment variables
