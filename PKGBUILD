@@ -5,9 +5,8 @@ url='http://www.ros.org/'
 
 pkgname='ros-melodic-vision-msgs'
 pkgver='0.0.1'
-_pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('Apache License 2.0')
 
 ros_makedepends=(ros-melodic-std-msgs
@@ -33,9 +32,9 @@ depends=(${ros_depends[@]})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="vision_msgs-release-release-melodic-vision_msgs-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/Kukanani/vision_msgs-release/archive/release/melodic/vision_msgs/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('aea7d0a539a76bbd0072f74bb3c7ebc0a7f3b3277963f8d696de42a5c4066e90')
+_dir="vision_msgs-${pkgver}"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/Kukanani/vision_msgs/archive/${pkgver}.tar.gz")
+sha256sums=('c50d20dcf010ab02c6c167e58d0f4fc23230d9a90ec774219f6baf7d50597ad9')
 
 build() {
   # Use ROS environment variables
