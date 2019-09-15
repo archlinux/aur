@@ -7,7 +7,7 @@ pkgname='ros-melodic-rqt-pose-view'
 pkgver='0.5.8'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -38,9 +38,9 @@ depends=(
 	python-rospkg
 )
 
-_dir="rqt_pose_view-release-release-melodic-rqt_pose_view-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rqt_pose_view-release/archive/release/melodic/rqt_pose_view/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('00e9962e4a7132dcb9082692fb49563d309b9e446b5eb17e65354dd7e1e24e4d')
+_dir="rqt_pose_view-${pkgver}"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/rqt_pose_view/archive/${pkgver}.tar.gz")
+sha256sums=('72e82d3faf086ab5409a051be7e0d56cd9aac2446f56e0eb2c4895d965e06793')
 
 build() {
 	# Use ROS environment variables.
