@@ -1,0 +1,51 @@
+From e9d06b56a54dcd399d1d3eaaf62bdacb7e07084d Mon Sep 17 00:00:00 2001
+From: Mirco Bauer <meebey@meebey.net>
+Date: Sat, 2 Mar 2013 13:44:46 +0100
+Subject: [PATCH] Explicitly initialize D-Bus GLib threading
+
+When gconf was switched from orbit to dbus it was no longer thread-safe by
+default. This behavior can only get back by explicitly initializing dbus-glib's
+threads. This issue affects multi-threaded GConf# users like Banshee leading
+them to SEGVs.
+
+For more details see:
+https://bugzilla.gnome.org/show_bug.cgi?id=683830
+---
+ gconf/GConf/Client.cs                 |   11 +++++++++++
+ gconf/GConf/gconf-sharp.dll.config.in |    1 +
+ 2 files changed, 12 insertions(+)
+
+diff --git a/gconf/GConf/Client.cs b/gconf/GConf/Client.cs
+index b8cc881..64efc9f 100644
+--- a/gconf/GConf/Client.cs
++++ b/gconf/GConf/Client.cs
+@@ -31,6 +31,17 @@ namespace GConf
+ 		[DllImport("gconf-2")]
+ 		static extern IntPtr gconf_client_get_default ();
+ 
++		[DllImport("dbus-glib-1")]
++		static extern void dbus_g_thread_init ();
++
++		static Client ()
++		{
++			// HACK: we have to initialize dbus' threading else GConf with its
++			// dbus backend will not be thread safe and SEGVs in our face, see:
++			// https://bugzilla.gnome.org/show_bug.cgi?id=683830
++			dbus_g_thread_init();
++		}
++
+ 		public Client ()
+ 		{
+ 			Initialize ();
+diff --git a/gconf/GConf/gconf-sharp.dll.config.in b/gconf/GConf/gconf-sharp.dll.config.in
+index 9fb7d15..f20ddae 100644
+--- a/gconf/GConf/gconf-sharp.dll.config.in
++++ b/gconf/GConf/gconf-sharp.dll.config.in
+@@ -1,3 +1,4 @@
+ <configuration>
+   <dllmap dll="gconf-2" target="libgconf-2@LIB_PREFIX@.4@LIB_SUFFIX@"/>
++  <dllmap dll="dbus-glib-1" target="libdbus-glib-1@LIB_PREFIX@.2@LIB_SUFFIX@"/>
+ </configuration>
+-- 
+1.7.10.4
+

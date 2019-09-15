@@ -1,0 +1,18 @@
+pkgbase = gconf-sharp
+	pkgdesc = Mono bindings for GConf
+	pkgver = 2.24.2
+	pkgrel = 6
+	url = http://gtk-sharp.sourceforge.net
+	arch = x86_64
+	license = LGPL
+	depends = gtk-sharp-2
+	depends = gconf
+	source = https://download.gnome.org/sources/gnome-sharp/2.24/gnome-sharp-2.24.2.tar.bz2
+	source = 02_fix_pkg-config_paths.patch
+	source = 04_initialize_dbus_glib_threading.patch
+	sha256sums = 122b1e03966d63ec3389decf5440fb94285907d1b6be48352dcf6aca292cf7b0
+	sha256sums = f5b971c3101f91b6c2af89ce2af9a95cfa1435a08f95c341bfc2ca218a1e56dc
+	sha256sums = 508e171e4bd155ee0cb99374385460118d5f82998c21715e67a2f3267210170a
+
+pkgname = gconf-sharp
+
