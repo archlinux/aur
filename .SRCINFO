@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-image-proc
 	pkgdesc = ROS - Single image rectification and color processing.
 	pkgver = 1.12.23
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/image_proc
 	arch = any
 	license = BSD
@@ -25,8 +25,8 @@ pkgbase = ros-melodic-image-proc
 	depends = ros-melodic-sensor-msgs
 	depends = ros-melodic-nodelet-topic-tools
 	depends = ros-melodic-image-transport
-	source = ros-melodic-image-proc-1.12.23-0.tar.gz::https://github.com/ros-gbp/image_pipeline-release/archive/release/melodic/image_proc/1.12.23-0.tar.gz
-	sha256sums = 93803bd635f79e7a5c87d295d612a389f21af03603f691b8c392ca9c894c6939
+	source = ros-melodic-image-proc-1.12.23.tar.gz::https://github.com/ros-perception/image_pipeline/archive/1.12.23.tar.gz
+	sha256sums = 0b024f155f79f16982b31951ad0b1bde5440159b0ba6b1128ecbe2e867a2e357
 
 pkgname = ros-melodic-image-proc
 
