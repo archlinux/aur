@@ -4,8 +4,7 @@ pkgdesc="ROS - Persistent storage of ROS messages."
 url='https://wiki.ros.org/warehouse_ros'
 
 pkgname='ros-melodic-warehouse-ros'
-pkgver='0.9.0'
-_pkgver_patch=0
+pkgver='0.9.3'
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -36,9 +35,9 @@ depends=(${ros_depends[@]}
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="warehouse_ros-release-release-melodic-warehouse_ros-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/warehouse_ros-release/archive/release/melodic/warehouse_ros/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('5b7ae9ee2aabcaaaf62e8307eabb836b9eb8da494f79228333170352ae0743e9')
+_dir="warehouse_ros-${pkgver}"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-planning/warehouse_ros/archive/${pkgver}.tar.gz")
+sha256sums=('11782f721259698c4bfcbe99957687c827b92850866b42fb931cf9d134c34a7e')
 
 build() {
   # Use ROS environment variables
