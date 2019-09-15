@@ -4,9 +4,8 @@ url='https://wiki.ros.org/nav_core'
 
 pkgname='ros-melodic-nav-core'
 pkgver='1.16.2'
-_pkgver_patch='0'
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-std-msgs
@@ -30,9 +29,9 @@ depends=(${ros_depends[@]})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="navigation-release-release-melodic-nav_core-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/navigation-release/archive/release/melodic/nav_core/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('d598327496621c871e857d4fb92da871e9a7227397d849c94a7e49f993a239c3')
+_dir="navigation-${pkgver}/nav_core"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-planning/navigation/archive/${pkgver}.tar.gz")
+sha256sums=('d83201296e773e2789635fddf39ac18e9465219b18707e53bd2361de4762d205')
 
 build() {
   # Use ROS environment variables
