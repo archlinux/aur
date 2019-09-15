@@ -14,7 +14,7 @@ license=('GPL')
 provides=('flightgear-data=2019.2.0')
 conflicts=('flightgear-data')
 replaces=('fgdata-git')
-source=("flightgear-data::git+https://git.code.sf.net/p/flightgear/fgdata#branch=next")
+source=("flightgear-data::git+git://git.code.sf.net/p/flightgear/fgdata#branch=next")
 md5sums=('SKIP')
 
 pkgver() {

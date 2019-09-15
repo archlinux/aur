@@ -9,7 +9,7 @@ pkgbase = flightgear-data-git
 	conflicts = flightgear-data
 	replaces = fgdata-git
 	options = !strip
-	source = flightgear-data::git+https://git.code.sf.net/p/flightgear/fgdata#branch=next
+	source = flightgear-data::git+git://git.code.sf.net/p/flightgear/fgdata#branch=next
 	md5sums = SKIP
 
 pkgname = flightgear-data-git
