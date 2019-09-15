@@ -7,7 +7,7 @@ pkgname='ros-melodic-geometry'
 pkgver='1.12.0'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -32,9 +32,9 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="geometry-release-release-melodic-geometry-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/geometry-release/archive/release/melodic/geometry/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('6e5e79d8157d16ce6c27bc7b8f1e8411f0fea3a01698f69962746ec4af80e44d')
+_dir="geometry-${pkgver}/geometry"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/geometry/archive/${pkgver}.tar.gz")
+sha256sums=('61a278bdd50e00ea442055d9f70eaf82b5a36916739edca188fa1b71a59507b4')
 
 build() {
 	# Use ROS environment variables.
