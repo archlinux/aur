@@ -1,9 +1,9 @@
-# Maintainer: Egor Kovetskiy <e.kovetskiy@gmail.com>
+# Maintainer: Manuel Palenzuela <sadshinobi@protonmail.com>
 pkgname=python-todo-t
 pkgver=0
 pkgrel=1
 pkgdesc="Command-line todo list manager"
-url="https://github.com/kovetskiy/t"
+url="https://github.com/sjl/t"
 arch=('i686' 'x86_64')
 license=('GPL')
 makedepends=('python')
@@ -13,9 +13,9 @@ md5sums=('SKIP')
 backup=()
 
 pkgver() {
-    cd "t"
-    printf '0.r%s.%s' \
-        "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+     cd "t"
+     printf '0.r%s.%s' \
+          "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
