@@ -4,8 +4,7 @@ pkgdesc="ROS - This package contains generic definitions of geometric shapes and
 url='http://ros.org/wiki/geometric_shapes'
 
 pkgname='ros-melodic-geometric-shapes'
-pkgver='0.5.4'
-_pkgver_patch=0
+pkgver='0.6.1'
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -46,9 +45,9 @@ depends=(${ros_depends[@]}
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="geometric_shapes-release-release-melodic-geometric_shapes-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/geometric_shapes-release/archive/release/melodic/geometric_shapes/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('03c5a97f018c9c2634350ac5150a18ee07e0721c08c59743e7c2159e05e71b4b')
+_dir="geometric_shapes-${pkgver}"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-planning/geometric_shapes/archive/${pkgver}.tar.gz")
+sha256sums=('768ecbd9bf8501a844b358026d6ae1db5d4d70d1958f47f5ca64c1ee7bd20b8c')
 
 build() {
   # Use ROS environment variables
