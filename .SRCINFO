@@ -1,20 +1,22 @@
 pkgbase = android-google-apis-x86
 	pkgdesc = Android Google APIs x86 System Image, latest API
-	pkgver = 28_r05
-	pkgrel = 2
+	pkgver = 29_r07
+	pkgrel = 1
 	url = https://developer.android.com/studio/index.html
 	arch = any
 	license = custom
 	depends = android-platform
 	optdepends = qemu
 	optdepends = libvirt
-	provides = android-google-apis-x86-28
-	conflicts = android-google-apis-x86-28
+	provides = android-google-apis-x86-29
+	conflicts = android-google-apis-x86-29
 	options = !strip
-	source = https://dl-ssl.google.com/android/repository/sys-img/google_apis/x86-28_r05.zip
+	source = https://dl-ssl.google.com/android/repository/sys-img/google_apis/x86-29_r07-linux.zip
 	source = source.properties
-	sha384sums = 058d0055478ff9615e0d637b5de1d487fab48755258b38d378231c83a55e92fde25b5cda7ca18f57366989789b62d5c0
-	sha384sums = 422b6afb7b44297fe0752f0c4008054c2976d0315383aae7277c05216761627209fe953fb1dd3e905b83e94c1138d8da
+	sha1sums = d07c160db6c74083e27b42dbac73fae9421082f7
+	sha1sums = SKIP
+	sha384sums = c94e3b02d44030b9a76ca595f92451d254168e4dcdf9022a3f9cef01f99b91f0c1991ce0be61d911ee3842c998247366
+	sha384sums = b7c61c67c9951dddb523117f9049570800fc412f13211b96b3c55e6f736b53922a1d649bd6ecf20916b084ba5a8bd57b
 
 pkgname = android-google-apis-x86
 
