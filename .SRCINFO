@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-kdl-parser
 	pkgdesc = ROS - The Kinematics and Dynamics Library (KDL) defines a tree structure to represent the kinematic and dynamic parameters of a robot mechanism.
 	pkgver = 1.13.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/kdl_parser
 	arch = any
 	license = BSD
@@ -12,6 +12,7 @@ pkgbase = ros-melodic-kdl-parser
 	makedepends = ros-melodic-urdf
 	makedepends = ros-melodic-rosconsole
 	makedepends = ros-melodic-orocos-kdl
+	makedepends = ros-melodic-rostest
 	makedepends = tinyxml
 	makedepends = tinyxml2
 	makedepends = urdfdom-headers
@@ -21,8 +22,8 @@ pkgbase = ros-melodic-kdl-parser
 	depends = tinyxml
 	depends = tinyxml2
 	depends = urdfdom-headers
-	source = ros-melodic-kdl-parser-1.13.1-0.tar.gz::https://github.com/ros-gbp/kdl_parser-release/archive/release/melodic/kdl_parser/1.13.1-0.tar.gz
-	sha256sums = 5931eb562bb310633fedf3c2e40b435cfa6a8d25caddb4077c04932c66c2a8a9
+	source = ros-melodic-kdl-parser-1.13.1.tar.gz::https://github.com/ros/kdl_parser/archive/1.13.1.tar.gz
+	sha256sums = 51378b09efc288ad91870322930f032f31a82e4a436865222b9990470995f67a
 
 pkgname = ros-melodic-kdl-parser
 

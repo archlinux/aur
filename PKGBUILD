@@ -7,7 +7,7 @@ pkgname='ros-melodic-kdl-parser'
 pkgver='1.13.1'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -16,6 +16,7 @@ ros_makedepends=(
 	ros-melodic-urdf
 	ros-melodic-rosconsole
 	ros-melodic-orocos-kdl
+	ros-melodic-rostest
 )
 
 makedepends=(
@@ -40,9 +41,9 @@ depends=(
 	urdfdom-headers
 )
 
-_dir="kdl_parser-release-release-melodic-kdl_parser-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/kdl_parser-release/archive/release/melodic/kdl_parser/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('5931eb562bb310633fedf3c2e40b435cfa6a8d25caddb4077c04932c66c2a8a9')
+_dir="kdl_parser-${pkgver}/kdl_parser"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/kdl_parser/archive/${pkgver}.tar.gz")
+sha256sums=('51378b09efc288ad91870322930f032f31a82e4a436865222b9990470995f67a')
 
 build() {
 	# Use ROS environment variables.
