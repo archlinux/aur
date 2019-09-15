@@ -4,10 +4,10 @@ pkgdesc="ROS - rqt_plot provides a GUI plugin visualizing numeric values in a 2D
 url='https://wiki.ros.org/rqt_plot'
 
 pkgname='ros-melodic-rqt-plot'
-pkgver='0.4.8'
+pkgver='0.4.9'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=0
 license=('BSD')
 
 ros_makedepends=(
@@ -39,9 +39,9 @@ depends=(
 	python-numpy
 )
 
-_dir="rqt_plot-release-release-melodic-rqt_plot-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rqt_plot-release/archive/release/melodic/rqt_plot/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('89cebc7715ea72f74783d846cb7149c5b7bbff21ab9bafe65e3d6f2509f75868')
+_dir="rqt_plot-${pkgver}"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/rqt_plot/archive/${pkgver}.tar.gz")
+sha256sums=('f133af1febcb43d82214508a3a6eb51fdf848fe5353f3c6c7f5825cea3f84ead')
 
 build() {
 	# Use ROS environment variables.
