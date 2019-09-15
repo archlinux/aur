@@ -3,8 +3,7 @@ pkgdesc="ROS - Components of MoveIt that offer simpler interfaces to planning an
 url='https://moveit.ros.org'
 
 pkgname='ros-melodic-moveit-ros-planning-interface'
-pkgver='0.10.8'
-_pkgver_patch=0
+pkgver='1.0.2'
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -39,7 +38,8 @@ ros_depends=(ros-melodic-tf-conversions
   ros-melodic-moveit-ros-manipulation
   ros-melodic-rosconsole)
 depends=(${ros_depends[@]}
-  python)
+  python
+  eigenpy)
 
 # Git version (e.g. for debugging)
 # _tag=release/melodic/moveit_ros_planning_interface/${pkgver}-${_pkgver_patch}
@@ -48,17 +48,23 @@ depends=(${ros_depends[@]}
 # sha256sums=('6cbf0b256af768dcd336ff60b142a2f1d363c79879c30bbe5bc0952c0375b2e8')
 
 # Tarball version (faster download)
-_dir="moveit-release-release-melodic-moveit_ros_planning_interface-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/moveit-release/archive/release/melodic/moveit_ros_planning_interface/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('748d5e2ca554190c84b0e43be8aa44c9b76c5e2a77e9d87eac5619147604a174')
+_dir="moveit-${pkgver}/moveit_ros/planning_interface"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-planning/moveit/archive/${pkgver}.tar.gz"
+  "eigenpy.patch")
+sha256sums=('b8194308c57dbe34bbb729cfccb30d1113af3a54a90a2cfb49482142d1044ea4'
+  '797e2415ec9c66b2f7137bb6c0037e4f0ef5520baba7eff3af3eb04119e42b40')
 
 prepare() {
+  cd ${srcdir}/${_dir}
+  patch -uN CMakeLists.txt ${srcdir}/eigenpy.patch || return 1
+
   cd ${srcdir}
   find . \( -iname *.cpp -o -iname *.h \) \
 	  -exec sed -r -i "s/[^_]logError/CONSOLE_BRIDGE_logError/" {} \; \
 	  -exec sed -r -i "s/[^_]logWarn/CONSOLE_BRIDGE_logWarn/" {} \; \
 	  -exec sed -r -i "s/[^_]logDebug/CONSOLE_BRIDGE_logDebug/" {} \; \
 	  -exec sed -r -i "s/[^_]logInform/CONSOLE_BRIDGE_logInform/" {} \;
+
 }
 
 build() {
