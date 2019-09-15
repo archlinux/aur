@@ -7,7 +7,7 @@ pkgname='ros-melodic-rqt-robot-plugins'
 pkgver='0.5.7'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -36,9 +36,9 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="rqt_robot_plugins-release-release-melodic-rqt_robot_plugins-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rqt_robot_plugins-release/archive/release/melodic/rqt_robot_plugins/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('2fa30a70d1eed9ff4724c1b9d1ef8303066b373bae9abcbf2b8a715a89e515ba')
+_dir="rqt_robot_plugins-${pkgver}"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/rqt_robot_plugins/archive/${pkgver}.tar.gz")
+sha256sums=('10cc908fdfc5d22aa4924d65ab0e8215805d5e4e45dcf889272dde0b3849cd4c')
 
 build() {
 	# Use ROS environment variables.
