@@ -1,6 +1,6 @@
-diff -ru galois-0.5-orig/configure galois-0.5/configure
---- galois-0.5-orig/configure	2017-12-21 17:35:20.778204557 +0100
-+++ galois-0.5/configure	2017-12-21 17:46:16.889355223 +0100
+diff -ru galois-0.6-orig/configure galois-0.6/configure
+--- galois-0.6-orig/configure	2019-09-15 10:22:36.593016489 +0200
++++ galois-0.6/configure	2019-09-15 10:22:53.446550978 +0200
 @@ -2495,12 +2495,12 @@
      pkg_cv_libxmlplusplus_CFLAGS="$libxmlplusplus_CFLAGS"
   elif test -n "$PKG_CONFIG"; then
@@ -51,9 +51,9 @@ diff -ru galois-0.5-orig/configure galois-0.5/configure
  
  $libxmlplusplus_PKG_ERRORS
  
-diff -ru galois-0.5-orig/configure.ac galois-0.5/configure.ac
---- galois-0.5-orig/configure.ac	2017-12-21 17:35:20.778204557 +0100
-+++ galois-0.5/configure.ac	2017-12-21 17:46:16.889355223 +0100
+diff -ru galois-0.6-orig/configure.ac galois-0.6/configure.ac
+--- galois-0.6-orig/configure.ac	2019-09-15 10:22:36.593016489 +0200
++++ galois-0.6/configure.ac	2019-09-15 10:22:53.446550978 +0200
 @@ -21,5 +21,5 @@
  AC_CONFIG_FILES([misc/galois.desktop])
  AC_PROG_CXX
@@ -61,9 +61,9 @@ diff -ru galois-0.5-orig/configure.ac galois-0.5/configure.ac
 -PKG_CHECK_MODULES([libxmlplusplus], [libxml++-2.6])
 +PKG_CHECK_MODULES([libxmlplusplus], [libxml++-3.0])
  AC_OUTPUT
-diff -ru galois-0.5-orig/src/makefile.in galois-0.5/src/makefile.in
---- galois-0.5-orig/src/makefile.in	2017-12-21 17:35:20.774871284 +0100
-+++ galois-0.5/src/makefile.in	2017-12-21 17:46:16.889355223 +0100
+diff -ru galois-0.6-orig/src/makefile.in galois-0.6/src/makefile.in
+--- galois-0.6-orig/src/makefile.in	2019-09-15 10:22:36.589683116 +0200
++++ galois-0.6/src/makefile.in	2019-09-15 10:22:53.446550978 +0200
 @@ -23,8 +23,8 @@
  PKG_CONFIG = @PKG_CONFIG@
  GTKMM_CFLAGS = `${PKG_CONFIG} --cflags gtkmm-3.0`
@@ -75,10 +75,10 @@ diff -ru galois-0.5-orig/src/makefile.in galois-0.5/src/makefile.in
  
  EXE = galois
  AC = makefile
-diff -ru galois-0.5-orig/src/preferences.cc galois-0.5/src/preferences.cc
---- galois-0.5-orig/src/preferences.cc	2017-12-21 17:35:20.778204557 +0100
-+++ galois-0.5/src/preferences.cc	2017-12-21 17:49:38.005564783 +0100
-@@ -383,12 +383,12 @@
+diff -ru galois-0.6-orig/src/preferences.cc galois-0.6/src/preferences.cc
+--- galois-0.6-orig/src/preferences.cc	2019-09-15 10:22:36.593016489 +0200
++++ galois-0.6/src/preferences.cc	2019-09-15 10:22:53.446550978 +0200
+@@ -388,12 +388,12 @@
        reader->read();
        // skip whitespace and comments
        while (reader->get_node_type() ==
@@ -94,7 +94,7 @@ diff -ru galois-0.5-orig/src/preferences.cc galois-0.5/src/preferences.cc
  	  reader->get_name() != "galois_config")
  	return false;
  
-@@ -398,16 +398,16 @@
+@@ -403,16 +403,16 @@
  	  reader->read();
  	  // skip whitespace and comments
  	  while (reader->get_node_type() ==
@@ -115,7 +115,7 @@ diff -ru galois-0.5-orig/src/preferences.cc galois-0.5/src/preferences.cc
  	    return false;
  
  	  // read and apply properties
-@@ -420,17 +420,17 @@
+@@ -425,17 +425,17 @@
  		  reader->read();
  		  // skip whitespace and comments
  		  while (reader->get_node_type() ==
@@ -137,7 +137,7 @@ diff -ru galois-0.5-orig/src/preferences.cc galois-0.5/src/preferences.cc
  		      reader->get_name() != "control_key")
  		    return false;
  
-@@ -456,17 +456,17 @@
+@@ -461,17 +461,17 @@
  		  reader->read();
  		  // skip whitespace and comments
  		  while (reader->get_node_type() ==
@@ -159,10 +159,10 @@ diff -ru galois-0.5-orig/src/preferences.cc galois-0.5/src/preferences.cc
  		      reader->get_name() != "control_key")
  		    return false;
  
-diff -ru galois-0.5-orig/src/scores.cc galois-0.5/src/scores.cc
---- galois-0.5-orig/src/scores.cc	2017-12-21 17:35:20.774871284 +0100
-+++ galois-0.5/src/scores.cc	2017-12-21 17:51:00.384008315 +0100
-@@ -414,12 +414,12 @@
+diff -ru galois-0.6-orig/src/scores.cc galois-0.6/src/scores.cc
+--- galois-0.6-orig/src/scores.cc	2019-09-15 10:22:36.593016489 +0200
++++ galois-0.6/src/scores.cc	2019-09-15 10:22:53.446550978 +0200
+@@ -420,12 +420,12 @@
        reader->read();
        // skip whitespace and comments
        while (reader->get_node_type() ==
@@ -178,7 +178,7 @@ diff -ru galois-0.5-orig/src/scores.cc galois-0.5/src/scores.cc
  	  reader->get_name() != "galois_scores")
  	return false;
  
-@@ -430,16 +430,16 @@
+@@ -436,16 +436,16 @@
  	  reader->read();
  	  // skip whitespace and comments
  	  while (reader->get_node_type() ==
