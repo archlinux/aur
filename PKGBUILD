@@ -7,7 +7,7 @@ pkgname='ros-melodic-urdf-geometry-parser'
 pkgver='0.0.3'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-tf2
@@ -29,9 +29,9 @@ depends=(${ros_depends[@]})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="urdf_geometry_parser-release-release-melodic-urdf_geometry_parser-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/urdf_geometry_parser-release/archive/release/melodic/urdf_geometry_parser/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('e9abdad19d455ac3e82dffae119a7e212d53874d4587df5cb5664ac397b86a3f')
+_dir="urdf_geometry_parser-${pkgver}"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-controls/urdf_geometry_parser/archive/${pkgver}.tar.gz")
+sha256sums=('2515e9b176fd97b9190c77f5e4ef791a12b8ac4f44156f5db49dedd5fb64c007')
 
 build() {
   # Use ROS environment variables
