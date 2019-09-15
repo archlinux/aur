@@ -1,15 +1,15 @@
 # Maintainer: Formed <formed at tuta dot io>
 # Co-Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
 pkgname=viper4linux-git
-pkgver=r55.ec2dcf6
-pkgrel=3
+pkgver=r59.192d2ea
+pkgrel=1
 pkgdesc="Implementation of the libviper library for modern Linux desktops."
 arch=('x86_64')
 url="https://github.com/noahbliss/Viper4Linux"
-license=('GPL')
+license=('GPL3')
 depends=('gst-plugin-viper4linux' 'gst-plugins-good')
 provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
+conflicts=("${pkgname%-git}" 'jdsp4linux')
 source=("${pkgname%-git}::git+https://github.com/noahbliss/Viper4Linux.git")
 sha256sums=('SKIP')
 
