@@ -7,7 +7,7 @@ pkgbase = openrazer-blade-pro-2019
 	license = GPL2
 	makedepends = git
 	makedepends = python-setuptools
-	source = git+https://github.com/openrazer/openrazer.git
+	source = git+https://github.com/cawilliamson/openrazer.git
 	sha256sums = SKIP
 
 pkgname = python-openrazer-blade-pro-2019
