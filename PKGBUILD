@@ -7,7 +7,7 @@ pkgname='ros-melodic-geometry2'
 pkgver='0.6.5'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=0
 license=('BSD')
 
 ros_makedepends=(ros-melodic-catkin)
