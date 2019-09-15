@@ -3,8 +3,7 @@ pkgdesc="ROS - This package contains the xxx.machine files that describe the dif
 url='https://wiki.ros.org/pr2_machine'
 
 pkgname='ros-melodic-pr2-machine'
-pkgver='1.12.3'
-_pkgver_patch=0
+pkgver='1.12.4'
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -16,9 +15,9 @@ makedepends=('cmake' 'ros-build-tools'
 ros_depends=()
 depends=(${ros_depends[@]})
 
-_dir="pr2_common-release-release-melodic-pr2_machine-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/pr2-gbp/pr2_common-release/archive/release/melodic/pr2_machine/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('6f00fa41d1506fb75a2fedc3beabf6d3811d73c8a8a4da211714e3591f458021')
+_dir="pr2_common-${pkgver}/pr2_machine"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/pr2/pr2_common/archive/${pkgver}.tar.gz")
+sha256sums=('135c6947f7511bcb3644fa6c0cf5972c309516895737e83f8eeed2b2d069f009')
 
 build() {
   # Use ROS environment variables

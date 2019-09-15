@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-pr2-machine
 	pkgdesc = ROS - This package contains the xxx.machine files that describe the different hosts a node can be spawned on.
-	pkgver = 1.12.3
+	pkgver = 1.12.4
 	pkgrel = 1
 	url = https://wiki.ros.org/pr2_machine
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = ros-melodic-pr2-machine
 	makedepends = cmake
 	makedepends = ros-build-tools
 	makedepends = ros-melodic-catkin
-	source = ros-melodic-pr2-machine-1.12.3-0.tar.gz::https://github.com/pr2-gbp/pr2_common-release/archive/release/melodic/pr2_machine/1.12.3-0.tar.gz
-	sha256sums = 6f00fa41d1506fb75a2fedc3beabf6d3811d73c8a8a4da211714e3591f458021
+	source = ros-melodic-pr2-machine-1.12.4.tar.gz::https://github.com/pr2/pr2_common/archive/1.12.4.tar.gz
+	sha256sums = 135c6947f7511bcb3644fa6c0cf5972c309516895737e83f8eeed2b2d069f009
 
 pkgname = ros-melodic-pr2-machine
 
