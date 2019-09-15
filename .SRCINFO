@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-interactive-marker-tutorials
 	pkgdesc = ROS - The interactive_marker_tutorials package.
 	pkgver = 0.10.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/interactive_marker_tutorials
 	arch = any
 	license = BSD
@@ -16,8 +16,8 @@ pkgbase = ros-melodic-interactive-marker-tutorials
 	depends = ros-melodic-visualization-msgs
 	depends = ros-melodic-interactive-markers
 	depends = ros-melodic-roscpp
-	source = ros-melodic-interactive-marker-tutorials-0.10.3-0.tar.gz::https://github.com/ros-gbp/visualization_tutorials-release/archive/release/melodic/interactive_marker_tutorials/0.10.3-0.tar.gz
-	sha256sums = 9871ffc4468273f1bd8f38a84e6dafa224057f8ebd89db86e0ab174ab46c06eb
+	source = ros-melodic-interactive-marker-tutorials-0.10.3.tar.gz::https://github.com/ros-visualization/visualization_tutorials/archive/0.10.3.tar.gz
+	sha256sums = a3162d933fea0dd58b99e46fb71ea5d8596ef6e46eaf3a906e4bf20e9ca1bb1c
 
 pkgname = ros-melodic-interactive-marker-tutorials
 

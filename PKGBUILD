@@ -7,7 +7,7 @@ pkgname='ros-melodic-interactive-marker-tutorials'
 pkgver='0.10.3'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -35,9 +35,9 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="visualization_tutorials-release-release-melodic-interactive_marker_tutorials-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/visualization_tutorials-release/archive/release/melodic/interactive_marker_tutorials/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('9871ffc4468273f1bd8f38a84e6dafa224057f8ebd89db86e0ab174ab46c06eb')
+_dir="visualization_tutorials-${pkgver}/interactive_marker_tutorials"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/visualization_tutorials/archive/${pkgver}.tar.gz")
+sha256sums=('a3162d933fea0dd58b99e46fb71ea5d8596ef6e46eaf3a906e4bf20e9ca1bb1c')
 
 build() {
 	# Use ROS environment variables.
