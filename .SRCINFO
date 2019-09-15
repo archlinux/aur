@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-rosemacs
 	pkgdesc = ROS - ROS tools for those who live in Emacs.
-	pkgver = 0.4.12
+	pkgver = 0.4.13
 	pkgrel = 1
 	url = https://www.wiki.ros.org/rosemacs
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = ros-melodic-rosemacs
 	makedepends = ros-build-tools
 	makedepends = ros-melodic-catkin
 	depends = emacs
-	source = ros-melodic-rosemacs-0.4.12-0.tar.gz::https://github.com/code-iai-release/ros_emacs_utils-release/archive/release/melodic/rosemacs/0.4.12-0.tar.gz
-	sha256sums = e9a8ce1fb12a537c8854e58eb4f3fcfbb1ae6eee2f490fdd5dd959b172a7df38
+	source = ros-melodic-rosemacs-0.4.13.tar.gz::https://github.com/code-iai/ros_emacs_utils/archive/0.4.13.tar.gz
+	sha256sums = 14c8463b3c354a53659843c82af416a4ff6713747f04da98e8fc39de90c8ec6c
 
 pkgname = ros-melodic-rosemacs
 

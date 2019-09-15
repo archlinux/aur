@@ -4,8 +4,7 @@ pkgdesc="ROS - ROS tools for those who live in Emacs."
 url='https://www.wiki.ros.org/rosemacs'
 
 pkgname='ros-melodic-rosemacs'
-pkgver='0.4.12'
-_pkgver_patch=0
+pkgver='0.4.13'
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -25,9 +24,9 @@ depends=(${ros_depends[@]}
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="ros_emacs_utils-release-release-melodic-rosemacs-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/code-iai-release/ros_emacs_utils-release/archive/release/melodic/rosemacs/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('e9a8ce1fb12a537c8854e58eb4f3fcfbb1ae6eee2f490fdd5dd959b172a7df38')
+_dir="ros_emacs_utils-${pkgver}/rosemacs"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/code-iai/ros_emacs_utils/archive/${pkgver}.tar.gz")
+sha256sums=('14c8463b3c354a53659843c82af416a4ff6713747f04da98e8fc39de90c8ec6c')
 
 build() {
   # Use ROS environment variables
