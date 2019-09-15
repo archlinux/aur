@@ -7,7 +7,7 @@ pkgname='ros-melodic-media-export'
 pkgver='0.2.0'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -27,9 +27,9 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="media_export-release-release-melodic-media_export-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/media_export-release/archive/release/melodic/media_export/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('dba5a590101d4f4969a5f963f8fba90fff5a095e0c19770166787d22bdb799e3')
+_dir="media_export-${pkgver}"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/media_export/archive/${pkgver}.tar.gz")
+sha256sums=('ff340b95693331ddbd493ac2169a3a70192be2e862456ee6bb4cac6421bd3702')
 
 build() {
 	# Use ROS environment variables.
