@@ -1,6 +1,6 @@
 # Maintainer: Vlad Frolov <frolvlad@gmail.com>
 
-pkgname=owl-git
+pkgname=owlink-git
 pkgver=0.0.0
 pkgrel=1
 pkgdesc='An open Apple Wireless Direct Link (AWDL) implementation written in C'
@@ -8,7 +8,9 @@ arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url=https://owlink.org/
 license=('GPL3')
 depends=('libpcap' 'libev' 'libnl')
-makedepends=('cmake')
+makedepends=('cmake' 'git')
+provides=('owlink' 'owl-git')
+conflicts=('owlink' 'owl' 'owl-git')
 source=(
   "$pkgname::git+https://github.com/seemoo-lab/owl.git#branch=master"
   "git+https://github.com/google/googletest.git"
