@@ -7,7 +7,7 @@ pkgname='ros-melodic-actionlib-tutorials'
 pkgver='0.1.11'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -35,9 +35,9 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="common_tutorials-release-release-melodic-actionlib_tutorials-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/common_tutorials-release/archive/release/melodic/actionlib_tutorials/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('202b1bd5a2d7cde96dcd20fa54fb6fc017ec6e1252575b5413618310c536163e')
+_dir="common_tutorials-${pkgver}/actionlib_tutorials"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/common_tutorials/archive/${pkgver}.tar.gz")
+sha256sums=('e6015c289219df58253809254baa53dbf2f3190b61d77fac2b2fb8b8c12f3ec1')
 
 build() {
 	# Use ROS environment variables.
