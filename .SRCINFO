@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-nodelet-tutorial-math
 	pkgdesc = ROS - Package for Nodelet tutorial.
 	pkgver = 0.1.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.wiki.ros.org/nodelet_tutorial_math
 	arch = any
 	license = BSD
@@ -14,8 +14,8 @@ pkgbase = ros-melodic-nodelet-tutorial-math
 	depends = ros-melodic-nodelet
 	depends = ros-melodic-std-msgs
 	depends = ros-melodic-roscpp
-	source = ros-melodic-nodelet-tutorial-math-0.1.11-0.tar.gz::https://github.com/ros-gbp/common_tutorials-release/archive/release/melodic/nodelet_tutorial_math/0.1.11-0.tar.gz
-	sha256sums = 399778f44a140cd9fd5b0ed41b8c88408803791a64b0c3d006bca4b174b1669f
+	source = ros-melodic-nodelet-tutorial-math-0.1.11.tar.gz::https://github.com/ros/common_tutorials/archive/0.1.11.tar.gz
+	sha256sums = e6015c289219df58253809254baa53dbf2f3190b61d77fac2b2fb8b8c12f3ec1
 
 pkgname = ros-melodic-nodelet-tutorial-math
 
