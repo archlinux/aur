@@ -7,7 +7,7 @@ pkgname='ros-melodic-angles'
 pkgver='1.9.11'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -27,9 +27,9 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="geometry_angles_utils-release-release-melodic-angles-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/geometry_angles_utils-release/archive/release/melodic/angles/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('e234fbb316d2e74febab2c47710ecb9c1c7231c439d68a2f8540b416245b2b9a')
+_dir="angles-${pkgver}/angles"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/angles/archive/${pkgver}.tar.gz")
+sha256sums=('c453dc462585320e57e4086f47f3be618ec7a2e83610895ccfdbd31d5d4993f4')
 
 build() {
 	# Use ROS environment variables.
