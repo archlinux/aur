@@ -4,9 +4,8 @@ url='https://codesuppository.blogspot.com'
 
 pkgname='ros-melodic-convex-decomposition'
 pkgver='0.1.12'
-_pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('MIT')
 
 ros_makedepends=(ros-melodic-catkin)
@@ -25,9 +24,9 @@ depends=(${ros_depends[@]}
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="convex_decomposition-release-release-melodic-convex_decomposition-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/convex_decomposition-release/archive/release/melodic/convex_decomposition/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('853e052839ccfe26f6ae8d94e157ad06cfa7c520c3fe12cf33783107caeee369')
+_dir="convex_decomposition-${pkgver}"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/convex_decomposition/archive/${pkgver}.tar.gz")
+sha256sums=('01621bace11c1929a2ae252a37763fbe7f56d0cfb651105e992505b96d9fdd4a')
 
 build() {
   # Use ROS environment variables
