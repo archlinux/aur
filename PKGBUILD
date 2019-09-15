@@ -7,7 +7,7 @@ pkgname='ros-melodic-tf-conversions'
 pkgver='1.12.0'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -38,9 +38,9 @@ depends=(
 	eigen3
 )
 
-_dir="geometry-release-release-melodic-tf_conversions-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/geometry-release/archive/release/melodic/tf_conversions/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('eec87e068f5106c1835fb093d5995ca8c6972e3a5e127038d94c68701ad2029e')
+_dir="geometry-${pkgver}/tf_conversions"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/geometry/archive/${pkgver}.tar.gz")
+sha256sums=('61a278bdd50e00ea442055d9f70eaf82b5a36916739edca188fa1b71a59507b4')
 
 build() {
 	# Use ROS environment variables.
