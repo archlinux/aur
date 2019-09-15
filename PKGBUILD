@@ -7,7 +7,7 @@ pkgname='ros-melodic-diagnostic-common-diagnostics'
 pkgver='1.9.3'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -35,9 +35,9 @@ depends=(
 	hddtemp
 )
 
-_dir="diagnostics-release-release-melodic-diagnostic_common_diagnostics-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/diagnostics-release/archive/release/melodic/diagnostic_common_diagnostics/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('e9729593c5e73825e769d670d78ba809db061ffb344132201020eae878c1359c')
+_dir="diagnostics-${pkgver}/diagnostic_common_diagnostics"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/diagnostics/archive/${pkgver}.tar.gz")
+sha256sums=('3b2d3bb7bb333b8685fa084e086c00a044803dac41ff58351161440931d23550')
 
 build() {
 	# Use ROS environment variables.
