@@ -3,8 +3,7 @@ pkgdesc="ROS - Controller for a four wheel steering mobile base"
 url='https://wiki.ros.org/four_wheel_steering_controller'
 
 pkgname='ros-melodic-four-wheel-steering-controller'
-pkgver='0.14.1'
-_pkgver_patch=0
+pkgver='0.15.0'
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -27,9 +26,9 @@ ros_depends=(ros-melodic-controller-interface
   ros-melodic-urdf-geometry-parser)
 depends=(${ros_depends[@]})
 
-_dir="ros_controllers-release-release-melodic-four_wheel_steering_controller-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_controllers-release/archive/release/melodic/four_wheel_steering_controller/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('5e2aa6a73ff2961c34d1418344578814cb351640371b578caba3ecd873fb8db5')
+_dir="ros_controllers-${pkgver}/four_wheel_steering_controller"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-controls/ros_controllers/archive/${pkgver}.tar.gz")
+sha256sums=('8c19481a28f394d5bf4372fb05a6c638fa2995614f9b0f82b8213ca32d15a4cf')
 
 build() {
   # Use ROS environment variables
