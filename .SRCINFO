@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-ecl-time-lite
 	pkgdesc = ROS - Provides a portable set of time functions that are especially useful for porting other code or being wrapped by higher level c++ classes.
 	pkgver = 0.61.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/ecl_time_lite
 	arch = any
 	license = BSD
@@ -16,8 +16,8 @@ pkgbase = ros-melodic-ecl-time-lite
 	depends = ros-melodic-ecl-errors
 	depends = ros-melodic-ecl-config
 	depends = ros-melodic-ecl-build
-	source = ros-melodic-ecl-time-lite-0.61.6-0.tar.gz::https://github.com/yujinrobot-release/ecl_lite-release/archive/release/melodic/ecl_time_lite/0.61.6-0.tar.gz
-	sha256sums = 97485e9c7be495031bb6c5b207851c5e8458bb243cb2f4e5dcfa9c2dcc854050
+	source = ros-melodic-ecl-time-lite-0.61.6.tar.gz::https://github.com/stonier/ecl_lite/archive/0.61.6.tar.gz
+	sha256sums = b8a02aabecc9a47bde44c83c7e02669e7ce9a3e43f51315b89d10960ed83f3cc
 
 pkgname = ros-melodic-ecl-time-lite
 

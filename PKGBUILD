@@ -4,9 +4,8 @@ url='https://wiki.ros.org/ecl_time_lite'
 
 pkgname='ros-melodic-ecl-time-lite'
 pkgver='0.61.6'
-_pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-ecl-license
@@ -30,9 +29,9 @@ depends=(${ros_depends[@]})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="ecl_lite-release-release-melodic-ecl_time_lite-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/yujinrobot-release/ecl_lite-release/archive/release/melodic/ecl_time_lite/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('97485e9c7be495031bb6c5b207851c5e8458bb243cb2f4e5dcfa9c2dcc854050')
+_dir="ecl_lite-${pkgver}/ecl_time_lite"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/stonier/ecl_lite/archive/${pkgver}.tar.gz")
+sha256sums=('b8a02aabecc9a47bde44c83c7e02669e7ce9a3e43f51315b89d10960ed83f3cc')
 
 build() {
   # Use ROS environment variables
