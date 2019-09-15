@@ -3,8 +3,7 @@ pkgdesc="ROS - Extends c++ type traits and implements a few more to boot."
 url='http://wiki.ros.org/ecl_type_traits'
 
 pkgname='ros-melodic-ecl-type-traits'
-pkgver='0.62.1'
-_pkgver_patch=0
+pkgver='0.62.2'
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -28,9 +27,9 @@ depends=(${ros_depends[@]})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="ecl_core-release-release-melodic-ecl_type_traits-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/yujinrobot-release/ecl_core-release/archive/release/melodic/ecl_type_traits/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('449be3de4029e7e25d7595e9bf8632f02c51ca432c9fb418cd39b181c5f52103')
+_dir="ecl_core-${pkgver}/ecl_type_traits"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/stonier/ecl_core/archive/${pkgver}.tar.gz")
+sha256sums=('69d503109878e3a2c4f5be611fc9609078714899cae15fbf7f58119fdbd61e37')
 
 build() {
   # Use ROS environment variables
