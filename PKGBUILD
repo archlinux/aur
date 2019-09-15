@@ -4,10 +4,9 @@ pkgdesc="ROS - Drivers for the Microsoft Kinect, Asus Xtion, and Primesense Devi
 url='https://www.wiki.ros.org/openni_launch'
 
 pkgname='ros-melodic-openni-launch'
-pkgver='1.11.0'
-_pkgver_patch=0
+pkgver='1.11.1'
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-melodic-nodelet
@@ -30,9 +29,9 @@ depends=(${ros_depends[@]}
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="openni_camera-release-release-kinetic-openni_launch-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/openni_camera-release/archive/release/kinetic/openni_launch/1.11.0-0.tar.gz")
-sha256sums=('ec0a07c5239ce3b8d9bf6dd9ec13f481341bf36b1f319f55240e9e101e0ee7d6')
+_dir="openni_camera-${pkgver}/openni_launch"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-drivers/openni_camera/archive/${pkgver}.tar.gz")
+sha256sums=('4dd0109628b5f8ed497ed11b35023ac82a9ecd3658469dc35b1a04f52ba14daf')
 
 build() {
   # Use ROS environment variables
