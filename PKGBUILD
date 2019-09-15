@@ -7,7 +7,7 @@ pkgname='ros-melodic-eigen-stl-containers'
 pkgver='0.1.8'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-catkin
@@ -27,9 +27,9 @@ depends=(${ros_depends[@]}
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="eigen_stl_containers-release-release-melodic-eigen_stl_containers-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/eigen_stl_containers-release/archive/release/melodic/eigen_stl_containers/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('e10632b9c182ffc09170b5fc80bf0a0f3cb8ab1091c01b44953042ba71ad5843')
+_dir="eigen_stl_containers-${pkgver}"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/eigen_stl_containers/archive/${pkgver}.tar.gz")
+sha256sums=('cf1bcd3253aff0eb032f6d74b9b3c322c99f75ee66bd7034daee8bb2d2a422fc')
 
 build() {
   # Use ROS environment variables
