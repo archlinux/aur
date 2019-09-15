@@ -1,6 +1,6 @@
 pkgbase = goldbars
 	pkgdesc = Gold 3-D theme collection for GTK
-	pkgver = 10_11_18
+	pkgver = 08_21_19
 	pkgrel = 1
 	url = https://www.jasong-designs.com/2018/10/05/goldbars/
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = goldbars
 	optdepends = openbox: optional window manager theme
 	optdepends = metacity: optional window manager theme
 	optdepends = ttf-dejavu: font support
-	source = https://github.com/jgpws/gold-bars/raw/master/downloads/goldbars-rev2-10-11-18.tar.gz
-	md5sums = 52022484677edd96aabccdb2189e6e05
+	source = https://github.com/jgpws/gold-bars/raw/master/downloads/goldbars-rev2-08-21-19.tar.gz
+	md5sums = 0f60919b4ff7cc7d3071a943a3dd620c
 
 pkgname = goldbars
 

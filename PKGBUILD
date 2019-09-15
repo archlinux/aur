@@ -1,7 +1,7 @@
 # Maintainer: Jason Gonzalez <jason at jasong-designs dot com>
 
 pkgname=goldbars
-pkgver=10_11_18
+pkgver=08_21_19
 pkgrel=1
 pkgdesc="Gold 3-D theme collection for GTK"
 arch=('any')
@@ -19,4 +19,5 @@ package() {
 }
 
 
-md5sums=('52022484677edd96aabccdb2189e6e05')
+
+md5sums=('0f60919b4ff7cc7d3071a943a3dd620c')
