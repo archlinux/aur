@@ -10,8 +10,8 @@ pkgbase = ros-melodic-voxel-grid
 	makedepends = ros-melodic-roscpp
 	makedepends = ros-melodic-catkin
 	depends = ros-melodic-roscpp
-	source = ros-melodic-voxel-grid-1.16.2-0.tar.gz::https://github.com/ros-gbp/navigation-release/archive/release/melodic/voxel_grid/1.16.2-0.tar.gz
-	sha256sums = 8102b9aae0f9856c35f38841945094d77eec895fea6d8caaac479cfa162a56d4
+	source = ros-melodic-voxel-grid-1.16.2.tar.gz::https://github.com/ros-planning/navigation/archive/1.16.2.tar.gz
+	sha256sums = d83201296e773e2789635fddf39ac18e9465219b18707e53bd2361de4762d205
 
 pkgname = ros-melodic-voxel-grid
 

@@ -4,7 +4,6 @@ url='https://wiki.ros.org/voxel_grid'
 
 pkgname='ros-melodic-voxel-grid'
 pkgver='1.16.2'
-_pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -24,9 +23,9 @@ depends=(${ros_depends[@]})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="navigation-release-release-melodic-voxel_grid-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/navigation-release/archive/release/melodic/voxel_grid/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('8102b9aae0f9856c35f38841945094d77eec895fea6d8caaac479cfa162a56d4')
+_dir="navigation-${pkgver}/voxel_grid"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-planning/navigation/archive/${pkgver}.tar.gz")
+sha256sums=('d83201296e773e2789635fddf39ac18e9465219b18707e53bd2361de4762d205')
 
 build() {
   # Use ROS environment variables
