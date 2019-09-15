@@ -21,7 +21,7 @@ pkgbase = ros-melodic-rospack
 	depends = pkg-config
 	depends = boost
 	depends = python
-	source = rospack-2.5.3.tar.gz::https://github.com/ros/rospack/archive/2.5.3.tar.gz
+	source = ros-melodic-rospack-2.5.3.tar.gz::https://github.com/ros/rospack/archive/2.5.3.tar.gz
 	sha256sums = 6d3def4e56d351baab049550b41d4b452da3fa262ba1e2fdc8ec8173ebe0eebd
 
 pkgname = ros-melodic-rospack

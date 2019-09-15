@@ -40,7 +40,7 @@ depends=(
 )
 
 _dir="rospack-${pkgver}"
-source=("${_dir}.tar.gz"::"https://github.com/ros/rospack/archive/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/rospack/archive/${pkgver}.tar.gz")
 sha256sums=('6d3def4e56d351baab049550b41d4b452da3fa262ba1e2fdc8ec8173ebe0eebd')
 
 build() {
