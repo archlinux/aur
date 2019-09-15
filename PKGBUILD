@@ -7,7 +7,7 @@ pkgname='ros-melodic-laser-geometry'
 pkgver='1.6.4'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -41,9 +41,9 @@ depends=(
 	python-numpy
 )
 
-_dir="laser_geometry-release-release-melodic-laser_geometry-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/laser_geometry-release/archive/release/melodic/laser_geometry/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('d2c0acb926c14dd2000db4b395b3bbcc26b53fc76461f4cf7c262947e3ed9138')
+_dir="laser_geometry-${pkgver}"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-perception/laser_geometry/archive/${pkgver}.tar.gz")
+sha256sums=('8daf8b8b571ca915d8ccbe517af5e6e69a2083a663c5ba4e89a29aa92a58abdb')
 
 build() {
 	# Use ROS environment variables.
