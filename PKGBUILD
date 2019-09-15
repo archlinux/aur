@@ -7,7 +7,7 @@ pkgname='ros-melodic-rqt-moveit'
 pkgver='0.5.7'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -36,9 +36,9 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="rqt_moveit-release-release-melodic-rqt_moveit-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rqt_moveit-release/archive/release/melodic/rqt_moveit/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('979c1ec400699c3597ee3bc9044aeab021f3cbb79bdf2edfe7572c0ee7a96f96')
+_dir="rqt_moveit-${pkgver}"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/rqt_moveit/archive/${pkgver}.tar.gz")
+sha256sums=('80430ab344e096ae32caa505fb47f33ad52d77a83578ccb19950d097dee85e06')
 
 build() {
 	# Use ROS environment variables.
