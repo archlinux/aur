@@ -4,9 +4,8 @@ url='https://wiki.ros.org/map_server'
 
 pkgname='ros-melodic-map-server'
 pkgver='1.16.2'
-_pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-rostest
@@ -30,9 +29,9 @@ depends=(${ros_depends[@]}
   yaml-cpp)
 
 # Tarball version (faster download)
-_dir="navigation-release-release-melodic-map_server-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/navigation-release/archive/release/melodic/map_server/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('bfa8523b9c697f97956d24e89857dcccc5b4cc09844b42adb0ce066c6df28972')
+_dir="navigation-${pkgver}/map_server"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-planning/navigation/archive/${pkgver}.tar.gz")
+sha256sums=('d83201296e773e2789635fddf39ac18e9465219b18707e53bd2361de4762d205')
 
 build() {
   # Use ROS environment variables
