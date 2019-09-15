@@ -4,8 +4,7 @@ pkgdesc="ROS - mavros_msgs defines messages for MAVROS."
 url='https://wiki.ros.org/mavros_msgs'
 
 pkgname='ros-melodic-mavros-msgs'
-pkgver='0.26.3'
-_pkgver_patch=0
+pkgver='0.32.2'
 arch=('any')
 pkgrel=1
 license=('GPLv3, LGPLv3, BSD')
@@ -33,9 +32,9 @@ depends=(${ros_depends[@]})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="mavros-release-release-melodic-mavros_msgs-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/mavlink/mavros-release/archive/release/melodic/mavros_msgs/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('f1fefec2ca2971bcf58b05b53cb1f8345f1d939cc45ccee6dc521fcd5ebc93eb')
+_dir="mavros-${pkgver}/mavros_msgs"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/mavlink/mavros/archive/${pkgver}.tar.gz")
+sha256sums=('d5e04661f88896a9a77f22a083023ce5e8e13dd71c1f8f1b7d5e187b3bf6c4f8')
 
 build() {
   # Use ROS environment variables
