@@ -4,10 +4,10 @@ pkgdesc="ROS - ros_tutorials contains packages that demonstrate various features
 url='https://www.wiki.ros.org/ros_tutorials'
 
 pkgname='ros-melodic-ros-tutorials'
-pkgver='0.9.0'
+pkgver='0.9.1'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=0
 license=('BSD')
 
 ros_makedepends=(
@@ -30,9 +30,9 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="ros_tutorials-release-release-melodic-ros_tutorials-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_tutorials-release/archive/release/melodic/ros_tutorials/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('a1b47e4bd38407b0714b6598edaaef6d2fc222e123f98c2c12c9d9ee9d9799b8')
+_dir="ros_tutorials-${pkgver}/ros_tutorials"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/ros_tutorials/archive/${pkgver}.tar.gz")
+sha256sums=('b39929a2ac912326fc114256e755fff5d0f0e5e5e7c99640d013eb7f916b85f4')
 
 build() {
 	# Use ROS environment variables.
