@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-forward-command-controller
 	pkgdesc = ROS - forward_command_controller.
 	pkgver = 0.15.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/ros-controls/ros_controllers/wiki
 	arch = any
 	license = BSD
