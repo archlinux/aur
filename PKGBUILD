@@ -2,8 +2,9 @@
 # Contributor: Christian Krause ("wookietreiber") <christian.krause@mailbox.org>
 # Contributor: Guillaume Raffin ("theelectronwill") <theelectronwill@gmail.com>
 
+_pkgname=mill
 pkgname=mill-git
-pkgver=0
+pkgver=r1232.de22b577
 pkgrel=1
 pkgdesc="Your shiny new Java/Scala build tool"
 arch=(any)
@@ -12,20 +13,21 @@ license=('MIT')
 makedepends=('mill' 'scala')
 depends=('bash' 'java-environment')
 replaces=('mill')
-source=("git+https://github.com/lihaoyi/mill.git")
+provides=('mill')
+source=("git+https://github.com/lihaoyi/$_pkgname.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd $srcdir/mill
+  cd $srcdir/$_pkgname
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd $srcdir/mill
-  mill -i all __.publishLocal release
+  cd $srcdir/$_pkgname
+  $_pkgname -i all __.publishLocal assembly
 }
 
 package() {
-  install -Dm755 "$srcdir"/mill/out/release/dest/mill "$pkgdir"/usr/bin/mill
-  install -Dm644 "$srcdir"/mill/LICENSE "$pkgdir"/usr/share/licenses/mill/LICENSE
+  install -Dm755 "$srcdir"/$_pkgname/out/assembly/dest/$_pkgname "$pkgdir"/usr/bin/$_pkgname
+  install -Dm644 "$srcdir"/$_pkgname/LICENSE "$pkgdir"/usr/share/licenses/$_pkgname/LICENSE
 }
