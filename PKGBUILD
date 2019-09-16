@@ -6,7 +6,7 @@ url='https://wiki.ros.org/rosout'
 pkgname='ros-melodic-rosout'
 pkgver='1.14.3'
 arch=('any')
-pkgrel=0
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
