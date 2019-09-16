@@ -1,8 +1,8 @@
-# Maintainer: Andrew Sun <adsun701@gmail.com>
+# Maintainer: Andrew Sun <adsun701 at gmail dot com>
 
 _basename=egl-wayland
 pkgname="lib32-$_basename"
-pkgver=1.1.3
+pkgver=1.1.4
 pkgrel=1
 pkgdesc="EGLStream-based Wayland external platform (32-bit)"
 arch=(x86_64)
@@ -11,7 +11,7 @@ license=(MIT)
 depends=('lib32-wayland' 'eglexternalplatform' "$_basename")
 makedepends=('meson' 'git')
 options=(!emptydirs)
-_commit=d70ead930d458b4e0bcec4ef493f7d54e9fd5435 # tags/1.1.3
+_commit=0c8e822cccff8f4ed472a7b6ac26a215ad13abc4 # tags/1.1.4
 source=("git+$url#commit=$_commit")
 sha256sums=('SKIP')
 
