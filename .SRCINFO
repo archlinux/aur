@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-resource-retriever
 	pkgdesc = ROS - This package retrieves data from url-format files such as http://, ftp://, package:// file://, etc., and loads the data into memory.
 	pkgver = 1.12.5
-	pkgrel = 0
+	pkgrel = 1
 	url = https://wiki.ros.org/resource_retriever
 	arch = any
 	license = BSD
