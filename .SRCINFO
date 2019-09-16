@@ -1,6 +1,6 @@
 pkgbase = bashbullet2
 	pkgdesc = A pushbullet systray notification daemon for linux. also a simple client to receive, mirror, and send pushes. version 2
-	pkgver = 20180209
+	pkgver = 20190916
 	pkgrel = 1
 	url = https://github.com/Boteium/bashbullet2
 	install = bashbullet2.install
@@ -9,7 +9,7 @@ pkgbase = bashbullet2
 	depends = libnotify
 	depends = yad
 	depends = xclip
-	depends = websocketpp-git-dev
+	depends = libwebsockets
 	depends = curl
 	depends = openssl
 	source = git://github.com/Boteium/bashbullet2.git
