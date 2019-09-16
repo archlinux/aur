@@ -1,0 +1,159 @@
+From 2baa572d28c826837d94114acf8e894030c65d67 Mon Sep 17 00:00:00 2001
+From: Jonas Witschel <diabonas@gmx.de>
+Date: Sun, 25 Aug 2019 00:18:03 +0200
+Subject: [PATCH] test: use tpm2-tools 4.X
+
+Since tpm2-tools 4.0 has been released, we can update our tests.
+tpm2-tools 4.0 also requires tpm2-tss 2.3, so bump that as well.
+
+Signed-off-by: Jonas Witschel <diabonas@gmx.de>
+---
+ test/rsasign_parent.sh               |  8 ++++----
+ test/rsasign_persistent.sh           | 26 +++++++++++++-------------
+ test/rsasign_persistent_emptyauth.sh | 24 ++++++++++++------------
+ 3 files changed, 29 insertions(+), 29 deletions(-)
+
+diff --git a/test/rsasign_parent.sh b/test/rsasign_parent.sh
+index 238631d..ce0f494 100755
+--- a/test/rsasign_parent.sh
++++ b/test/rsasign_parent.sh
+@@ -15,12 +15,12 @@ PARENT_CTX=${DIR}/primary_owner_key.ctx
+ 
+ tpm2_startup -c || true
+ 
+-tpm2_createprimary --hierarchy=o --halg=sha256 --kalg=rsa \
+-                   --context=${PARENT_CTX}
++tpm2_createprimary --hierarchy=o --hash-algorithm=sha256 --key-algorithm=rsa \
++                   --key-context=${PARENT_CTX}
+ tpm2_flushcontext --transient-object
+ 
+ # Load primary key to persistent handle
+-HANDLE=$(tpm2_evictcontrol --auth=o --context=${PARENT_CTX} --persistent=0x81010001 | cut -d ' ' -f 2 | head -n 1)
++HANDLE=$(tpm2_evictcontrol --hierarchy=o --object-context=${PARENT_CTX} | cut -d ' ' -f 2 | head -n 1)
+ tpm2_flushcontext --transient-object
+ 
+ # Generating a key underneath the persistent parent
+@@ -32,7 +32,7 @@ cat ${DIR}/mykey.pub
+ echo "abc" | openssl pkeyutl -engine tpm2tss -keyform engine -inkey ${DIR}/mykey -sign -in ${DIR}/mydata.txt -out ${DIR}/mysig -passin stdin
+ 
+ # Release persistent HANDLE
+-tpm2_evictcontrol --auth=o --handle=${HANDLE} --persistent=${HANDLE}
++tpm2_evictcontrol --hierarchy=o --object-context=${HANDLE}
+ 
+ cat ${DIR}/mysig
+ 
+diff --git a/test/rsasign_persistent.sh b/test/rsasign_persistent.sh
+index d08809a..5dd749e 100755
+--- a/test/rsasign_persistent.sh
++++ b/test/rsasign_persistent.sh
+@@ -15,38 +15,38 @@ PARENT_CTX=${DIR}/primary_owner_key.ctx
+ 
+ tpm2_startup -c || true
+ 
+-tpm2_createprimary --hierarchy=o --halg=sha256 --kalg=rsa \
+-                   --context=${PARENT_CTX}
++tpm2_createprimary --hierarchy=o --hash-algorithm=sha256 --key-algorithm=rsa \
++                   --key-context=${PARENT_CTX}
+ tpm2_flushcontext --transient-object
+ 
+ # Create an RSA key pair
+ echo "Generating RSA key pair"
+ TPM_RSA_PUBKEY=${DIR}/rsakey.pub
+ TPM_RSA_KEY=${DIR}/rsakey
+-tpm2_create --pwdk=abc \
+-            --context-parent=${PARENT_CTX} \
+-            --halg=sha256 --kalg=rsa \
+-            --pubfile=${TPM_RSA_PUBKEY} --privfile=${TPM_RSA_KEY} \
+-            --object-attributes=sign\|decrypt\|fixedtpm\|fixedparent\|sensitivedataorigin\|userwithauth\|noda
++tpm2_create --key-auth=abc \
++            --parent-context=${PARENT_CTX} \
++            --hash-algorithm=sha256 --key-algorithm=rsa \
++            --public=${TPM_RSA_PUBKEY} --private=${TPM_RSA_KEY} \
++            --attributes=sign\|decrypt\|fixedtpm\|fixedparent\|sensitivedataorigin\|userwithauth\|noda
+ tpm2_flushcontext --transient-object
+ 
+ # Load Key to persistent handle
+ RSA_CTX=${DIR}/rsakey.ctx
+-tpm2_load --context-parent=${PARENT_CTX} \
+-          --pubfile=${TPM_RSA_PUBKEY} --privfile=${TPM_RSA_KEY} \
+-          --context=${RSA_CTX}
++tpm2_load --parent-context=${PARENT_CTX} \
++          --public=${TPM_RSA_PUBKEY} --private=${TPM_RSA_KEY} \
++          --key-context=${RSA_CTX}
+ tpm2_flushcontext --transient-object
+ 
+-HANDLE=$(tpm2_evictcontrol --auth=o --context=${RSA_CTX} --persistent=0x81010001 | cut -d ' ' -f 2 | head -n 1)
++HANDLE=$(tpm2_evictcontrol --hierarchy=o --object-context=${RSA_CTX} | cut -d ' ' -f 2 | head -n 1)
+ tpm2_flushcontext --transient-object
+ 
+ # Signing Data
+ echo "abc" | openssl pkeyutl -engine tpm2tss -keyform engine -inkey ${HANDLE} -sign -in ${DIR}/mydata.txt -out ${DIR}/mysig -passin stdin
+ # Get public key of handle
+-tpm2_readpublic --object=${HANDLE} --opu=${DIR}/mykey.pem --format=pem
++tpm2_readpublic --object-context=${HANDLE} --output=${DIR}/mykey.pem --format=pem
+ 
+ # Release persistent HANDLE
+-tpm2_evictcontrol --auth=o --handle=${HANDLE} --persistent=${HANDLE}
++tpm2_evictcontrol --hierarchy=o --object-context=${HANDLE}
+ 
+ R="$(openssl pkeyutl -pubin -inkey ${DIR}/mykey.pem -verify -in ${DIR}/mydata.txt -sigfile ${DIR}/mysig || true)"
+ if ! echo $R | grep "Signature Verified Successfully" >/dev/null; then
+diff --git a/test/rsasign_persistent_emptyauth.sh b/test/rsasign_persistent_emptyauth.sh
+index eeded63..5a4c757 100755
+--- a/test/rsasign_persistent_emptyauth.sh
++++ b/test/rsasign_persistent_emptyauth.sh
+@@ -15,28 +15,28 @@ PARENT_CTX=${DIR}/primary_owner_key.ctx
+ 
+ tpm2_startup -c || true
+ 
+-tpm2_createprimary --hierarchy=o --halg=sha256 --kalg=rsa \
+-                   --context=${PARENT_CTX}
++tpm2_createprimary --hierarchy=o --hash-algorithm=sha256 --key-algorithm=rsa \
++                   --key-context=${PARENT_CTX}
+ tpm2_flushcontext --transient-object
+ 
+ # Create an RSA key pair
+ echo "Generating RSA key pair"
+ TPM_RSA_PUBKEY=${DIR}/rsakey.pub
+ TPM_RSA_KEY=${DIR}/rsakey
+-tpm2_create --context-parent=${PARENT_CTX} \
+-            --halg=sha256 --kalg=rsa \
+-            --pubfile=${TPM_RSA_PUBKEY} --privfile=${TPM_RSA_KEY} \
+-            --object-attributes=sign\|decrypt\|fixedtpm\|fixedparent\|sensitivedataorigin\|userwithauth\|noda
++tpm2_create --parent-context=${PARENT_CTX} \
++            --hash-algorithm=sha256 --key-algorithm=rsa \
++            --public=${TPM_RSA_PUBKEY} --private=${TPM_RSA_KEY} \
++            --attributes=sign\|decrypt\|fixedtpm\|fixedparent\|sensitivedataorigin\|userwithauth\|noda
+ tpm2_flushcontext --transient-object
+ 
+ # Load Key to persistent handle
+ RSA_CTX=${DIR}/rsakey.ctx
+-tpm2_load --context-parent=${PARENT_CTX} \
+-          --pubfile=${TPM_RSA_PUBKEY} --privfile=${TPM_RSA_KEY} \
+-          --context=${RSA_CTX}
++tpm2_load --parent-context=${PARENT_CTX} \
++          --public=${TPM_RSA_PUBKEY} --private=${TPM_RSA_KEY} \
++          --key-context=${RSA_CTX}
+ tpm2_flushcontext --transient-object
+ 
+-HANDLE=$(tpm2_evictcontrol --auth=o --context=${RSA_CTX} --persistent=0x81010001 | cut -d ' ' -f 2 | head -n 1)
++HANDLE=$(tpm2_evictcontrol --hierarchy=o --object-context=${RSA_CTX} | cut -d ' ' -f 2 | head -n 1)
+ tpm2_flushcontext --transient-object
+ 
+ # Signing Data
+@@ -52,10 +52,10 @@ EOF
+ fi
+ 
+ # Get public key of handle
+-tpm2_readpublic --object=${HANDLE} --opu=${DIR}/mykey.pem --format=pem
++tpm2_readpublic --object-context=${HANDLE} --output=${DIR}/mykey.pem --format=pem
+ 
+ # Release persistent HANDLE
+-tpm2_evictcontrol --auth=o --handle=${HANDLE} --persistent=${HANDLE}
++tpm2_evictcontrol --hierarchy=o --object-context=${HANDLE}
+ 
+ R="$(openssl pkeyutl -pubin -inkey ${DIR}/mykey.pem -verify -in ${DIR}/mydata.txt -sigfile ${DIR}/mysig || true)"
+ if ! echo $R | grep "Signature Verified Successfully" >/dev/null; then
+-- 
+2.23.0
+
