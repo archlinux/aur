@@ -1,6 +1,6 @@
---- Makefile.libretro.orig	2018-11-28 10:59:09.215710061 +0100
-+++ Makefile.libretro	2018-11-28 11:01:06.945069757 +0100
-@@ -154,6 +154,8 @@
+--- Makefile.libretro.orig	2019-09-16 11:27:03.800264893 +0200
++++ Makefile.libretro	2019-09-16 11:29:51.682903646 +0200
+@@ -163,6 +163,8 @@
  else
     CFLAGS := -funroll-loops -ffast-math -fomit-frame-pointer $(CFLAGS) -O3
  endif
@@ -9,12 +9,12 @@
  CFLAGS := -fsigned-char -D__LIBRETRO__ -fno-builtin $(CFLAGS)
  
  CFLAGS := $(fpic) $(CFLAGS) $(PLATFLAGS)
-@@ -182,7 +184,7 @@
+@@ -190,7 +192,7 @@
  ifeq ($(STATIC_LINKING_LINK),1)
  	$(AR) rcs $@ $(OBJECTS) 
  else
--	$(CC) $(CFLAGS) $(INCFLAGS) -lm -lz $(SHARED) $(LDFLAGS) $(OBJECTS) -o $@
-+	$(CC) $(CFLAGS) $(INCFLAGS) -lm -lz $(SHARED) $(LDFLAGS) $(OBJECTS) -o $@ -lpthread -L/usr/lib64 -lcapsimage
+-	$(CC) $(CFLAGS) $(INCFLAGS) $(LDFLAGS) $(OBJECTS) -o $@ -lm -lz $(SHARED)
++	$(CC) $(CFLAGS) $(INCFLAGS) $(LDFLAGS) $(OBJECTS) -o $@ -lm -lz $(SHARED) -lpthread -L/usr/lib64 -lcapsimage
  endif
- 	@echo "** BUILD SUCCESSFUL! GG NO RE **"
  
+ %.o: %.c
