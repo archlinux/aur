@@ -13,10 +13,10 @@ source=("https://github.com/lampepfl/dotty/releases/download/$_pkgverWithHyphen/
 sha1sums=('1a62c5459f0294c08a221aa5ebb197ab9bb83978')
 
 package() {
-	mkdir -p "$pkgdir/usr/bin" "$pkgdir/opt/scala-dotty"
-	cp -r "$srcdir/dotty-$_pkgverWithHyphen/bin" "$pkgdir/opt/scala-dotty"
-	cp -r "$srcdir/dotty-$_pkgverWithHyphen/lib" "$pkgdir/opt/scala-dotty"
-	ln -s "/opt/scala-dotty/bin/dotc" "$pkgdir/usr/bin/dotc"
-	ln -s "/opt/scala-dotty/bin/dotd" "$pkgdir/usr/bin/dotd"
-	ln -s "/opt/scala-dotty/bin/dotr" "$pkgdir/usr/bin/dotr"
+       mkdir -p "$pkgdir/usr/bin" "$pkgdir/usr/share/scala-dotty"
+       cp -r "$srcdir/dotty-$_pkgverWithHyphen/bin" "$pkgdir/usr/share/scala-dotty"
+       cp -r "$srcdir/dotty-$_pkgverWithHyphen/lib" "$pkgdir/usr/share/scala-dotty"
+       ln -s "/usr/share/scala-dotty/bin/dotc" "$pkgdir/usr/bin/dotc"
+       ln -s "/usr/share/scala-dotty/bin/dotd" "$pkgdir/usr/bin/dotd"
+       ln -s "/usr/share/scala-dotty/bin/dotr" "$pkgdir/usr/bin/dotr"
 }
