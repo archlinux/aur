@@ -9,7 +9,7 @@ url='https://developer.apple.com/fonts/'
 license=('custom')
 makedepends=('p7zip' 'dmg2img' 'cpio' 'xar' 'gzip')
 source=('https://developer.apple.com/design/downloads/SF-Mono.dmg')
-md5sums=('da5cc357ca677b57454e7cacb336d036')
+md5sums=('ae155e755e46149cbd788d38e9dd90fa')
 
 prepare() {
   dmg2img SF-Mono.dmg SF-Mono.img
