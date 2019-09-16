@@ -1,7 +1,7 @@
 # Maintainer: mistiru (Anaël Megna) <anael.megna@gmail.com>
 
 pkgname=aegisub-japan7
-pkgver=3.2.2.r407.8ab7a886d
+pkgver=3.2.2.r439.61f05d234
 pkgrel=1
 pkgdesc='A fork of aegisub project with custom predefined configuration'
 arch=(x86_64)
@@ -21,6 +21,7 @@ depends=(
   libffms2.so
   libgl
   libpulse
+  openssl
   uchardet
   wxgtk3
   zlib
