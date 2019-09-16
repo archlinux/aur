@@ -1,7 +1,7 @@
 pkgbase = clevis-git
 	pkgdesc = Automated Encryption Framework
-	pkgver = 11.r7.95880c6
-	pkgrel = 3
+	pkgver = 11.r48.d1edeba
+	pkgrel = 1
 	url = https://github.com/latchset/clevis
 	arch = x86_64
 	license = GPL3
@@ -27,9 +27,7 @@ pkgbase = clevis-git
 	provides = clevis
 	conflicts = clevis
 	source = git+https://github.com/latchset/clevis.git
-	source = clevis-gh-115-ncat.patch::https://github.com/latchset/clevis/pull/115.patch
 	sha512sums = SKIP
-	sha512sums = 4427457f138b8c45aff4d1b0957418b2eeace0d2bcacdf721a9551b499d8340c580aac3ba14c73280da6620108d73b26e8599c227f38266b15ce650b5cb0f6ee
 
 pkgname = clevis-git
 
