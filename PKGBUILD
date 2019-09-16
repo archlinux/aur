@@ -2,7 +2,7 @@
 
 _gonamespc='github.com/schollz/croc'
 pkgname=croc
-pkgver=6.1.1
+pkgver=6.1.3
 pkgrel=1
 pkgdesc="Easily and securely send things from one computer to another."
 arch=('x86_64')
@@ -16,7 +16,7 @@ conflicts=('croc-bin' 'croc-git')
 #options=()
 source=("${url}/archive/v${pkgver}.tar.gz"
 		"croc.service")
-sha256sums=('4636edd8c76e8a2a52b7b156332f8a5414e8124305cd94633bcff92998dcf166'
+sha256sums=('8f0610dedfe7135f6fc4aa79eb3c65de78fc0f20e776d5bae07c942aad461937'
 			'cf074568f16c7b86870a89a0a2d8e488e3837223cca071a911085d814d6f2194')
 
 prepare() {
