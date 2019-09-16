@@ -1,6 +1,6 @@
 pkgbase = multipath-tools-git
 	pkgdesc = Tools to drive the Device Mapper multipathing driver (contains kpartx)
-	pkgver = 2785.ebbb56f2
+	pkgver = 2837.8a7e9b66
 	pkgrel = 1
 	url = http://christophe.varoqui.free.fr/
 	arch = x86_64
