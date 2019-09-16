@@ -1,0 +1,15 @@
+pkgbase = nibbler-git
+	pkgdesc = Leela Chess Zero (Lc0) interface
+	pkgver = 1.1.1
+	pkgrel = 3
+	url = https://github.com/fohristiwhirl/nibbler
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	makedepends = git
+	depends = electron
+	source = nibbler::git+https://github.com/fohristiwhirl/nibbler.git
+	md5sums = SKIP
+
+pkgname = nibbler-git
+
