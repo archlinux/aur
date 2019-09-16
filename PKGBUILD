@@ -1,5 +1,5 @@
 # Contributor: Frank Fishburn <frankthefishburn@gmail.com>
-# Maintainer: Frank Fishburn <frankthefishburn@gmail.com>
+# Maintainer:  Liam Timms <timms5000@gmail.com>
 
 ## Configuration
 
@@ -9,17 +9,17 @@
 
 pkgname=python-nipype
 _name=${pkgname/python-/}
-pkgver=1.0.1
-pkgrel=3
+pkgver=1.2.2
+pkgrel=5
 pkgdesc='Neuroimaging in python pipelines and interfaces'
 arch=('any')
 url='https://pypi.python.org/pypi/prov/'
 license=('Apache')
-depends=('python-numpy' 'python-numpydoc' 'python-scipy' 'python-networkx' 'python-traits' 'python-dateutil' 'python-nibabel' 'python-future' 'python-simplejson' 'python-prov' 'python-click' 'python-funcsigs' 'python-pytest' 'python-mock' 'python-pydotplus' 'python-pydot' 'python-packaging')
+depends=('python-matplotlib' 'python-numpy' 'python-numpydoc' 'python-scipy' 'python-networkx' 'python-traits' 'python-dateutil' 'python-nibabel' 'python-future' 'python-simplejson' 'python-prov' 'python-click' 'python-funcsigs' 'python-pytest' 'python-mock' 'python-pydotplus' 'python-pydot' 'python-packaging')
 makedepends=('python-sphinx')
-optdepends=('afni' 'freesurfer' 'fsl' 'spm12')
+optdepends=('python-dipy' 'ants-git' '3dslicer' 'afni' 'freesurfer' 'fsl' 'spm12')
 source=("https://github.com/nipy/${_name}/archive/${pkgver}.tar.gz")
-sha256sums=('b06d1504e27cfdca51dcf3b821223b5913f37d87a637a235a0e3bef1cff19951')
+sha256sums=('d20bd3c0e325e0de135f44a4b1af88ff8f5de658f92988346aa304d8c9d4c258')
 
 _setpaths(){
 
@@ -45,7 +45,7 @@ _setpaths(){
 }
 
 prepare() {
-    
+
     cd ${srcdir}/${_name}-${pkgver}
 
     # Allow most recent python-prov
@@ -63,15 +63,6 @@ build() {
 
 }
 
-check() {
-
-    cd ${srcdir}/${_name}-${pkgver}
- 
-    _setpaths
-    echo "MATLABCMD: ${MATLABCMD}"
-    make tests
-
-}
 
 package() {
 

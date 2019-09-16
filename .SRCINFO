@@ -1,11 +1,12 @@
 pkgbase = python-nipype
 	pkgdesc = Neuroimaging in python pipelines and interfaces
-	pkgver = 1.0.1
-	pkgrel = 3
+	pkgver = 1.2.2
+	pkgrel = 5
 	url = https://pypi.python.org/pypi/prov/
 	arch = any
 	license = Apache
 	makedepends = python-sphinx
+	depends = python-matplotlib
 	depends = python-numpy
 	depends = python-numpydoc
 	depends = python-scipy
@@ -23,12 +24,15 @@ pkgbase = python-nipype
 	depends = python-pydotplus
 	depends = python-pydot
 	depends = python-packaging
+	optdepends = python-dipy
+	optdepends = ants-git
+	optdepends = 3dslicer
 	optdepends = afni
 	optdepends = freesurfer
 	optdepends = fsl
 	optdepends = spm12
-	source = https://github.com/nipy/nipype/archive/1.0.1.tar.gz
-	sha256sums = b06d1504e27cfdca51dcf3b821223b5913f37d87a637a235a0e3bef1cff19951
+	source = https://github.com/nipy/nipype/archive/1.2.2.tar.gz
+	sha256sums = d20bd3c0e325e0de135f44a4b1af88ff8f5de658f92988346aa304d8c9d4c258
 
 pkgname = python-nipype
 
