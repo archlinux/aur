@@ -1,6 +1,6 @@
 pkgbase = linux-firmware-agd5f-radeon-navi10
 	pkgdesc = Firmware for navi 10 GPUs from agd5f
-	pkgver = 2019.08.26.14.36
+	pkgver = 2019.09.13.18.36
 	pkgrel = 1
 	url = https://people.freedesktop.org/~agd5f/radeon_ucode/navi10/
 	arch = any

@@ -1,7 +1,7 @@
 # Maintainer: Gabriele Musco <emaildigabry@gmail.com>
 
 pkgname=linux-firmware-agd5f-radeon-navi10
-pkgver=2019.08.26.14.36
+pkgver=2019.09.13.18.36
 pkgrel=1
 pkgdesc='Firmware for navi 10 GPUs from agd5f'
 arch=('any')
