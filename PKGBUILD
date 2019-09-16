@@ -7,7 +7,7 @@ pkgname='ros-melodic-audio-play'
 pkgver='0.3.3'
 _pkgver_patch=0
 arch=('any')
-pkgrel=0
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-melodic-roscpp
