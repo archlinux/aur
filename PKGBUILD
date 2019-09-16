@@ -9,6 +9,7 @@ url='https://github.com/walles/moar'
 license=(BSD)
 makedepends=(go)
 optdepends=(highlight)
+checkdepends=(highlight)
 source=("https://github.com/walles/moar/archive/${pkgver}.tar.gz")
 sha256sums=('2b21512c24a5c65d76ec1c7e7c59def9630eabf39855c9ae7c763f8d180c33b0')
 
