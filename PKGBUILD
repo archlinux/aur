@@ -16,7 +16,7 @@ md5sums=('2aa04994f9e7c9212921a0d7e2e74d82')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  make
+  make VERSION="$pkgver"
 }
 
 package() {
