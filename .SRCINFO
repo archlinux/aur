@@ -1,0 +1,23 @@
+pkgbase = zeromq-draft
+	pkgdesc = Fast messaging system built on sockets. C and C++ bindings. aka 0MQ, ZMQ. With draft APIs.
+	pkgver = 4.3.2
+	pkgrel = 1
+	url = http://www.zeromq.org
+	arch = x86_64
+	license = LGPL
+	makedepends = asciidoc
+	makedepends = xmlto
+	depends = gcc-libs
+	depends = util-linux
+	depends = libsodium
+	depends = libpgm
+	provides = zeromq
+	conflicts = zeromq
+	options = staticlibs
+	source = https://github.com/zeromq/libzmq/releases/download/v4.3.2/zeromq-4.3.2.tar.gz
+	source = zmq.hpp.4.3.2.tgz::https://github.com/zeromq/cppzmq/archive/v4.4.1.tar.gz
+	sha256sums = ebd7b5c830d6428956b67a0454a7f8cbed1de74b3b01e5c33c5378e22740f763
+	sha256sums = 117fc1ca24d98dbe1a60c072cde13be863d429134907797f8e03f654ce679385
+
+pkgname = zeromq-draft
+
