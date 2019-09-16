@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=JDSP4Linux
+GenericName=Equalizer
+Comment=User Interface for JDSP4Linux
+Keywords=equalizer
+Categories=AudioVideo;Audio;
+Exec=jdsp-gui
+Icon=/usr/share/pixmaps/jdsp-gui.png
+StartupNotify=false
+Terminal=false
+Type=Application
