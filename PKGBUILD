@@ -9,7 +9,7 @@ url='https://developer.apple.com/fonts/'
 license=('custom')
 makedepends=('p7zip' 'dmg2img' 'cpio' 'xar' 'gzip')
 source=('https://developer.apple.com/design/downloads/SF-Font-Pro.dmg')
-md5sums=('6a2c92e8ebd3ea389d162b790423ca20')
+md5sums=('4fe5dc4808df029b9a933955ea6ea2cf')
 
 prepare() {
   dmg2img SF-Font-Pro.dmg SF-Font-Pro.img
