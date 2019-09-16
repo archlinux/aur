@@ -3,7 +3,7 @@
 
 pkgname=shared-mime-info
 pkgver=1.13.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Freedesktop.org Shared MIME Info"
 arch=('x86_64')
 license=('GPL2')
@@ -28,8 +28,7 @@ build() {
 
 check() {
   cd ${pkgname}-${pkgver}
-  # issue reported upstream https://gitlab.freedesktop.org/xdg/shared-mime-info/issues/115
-  make -k check || /bin/true
+  make -k check
 }
 
 package() {
