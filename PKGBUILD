@@ -12,7 +12,8 @@ arch=("x86_64")
 url="http://www.gnuplot.info"
 license=("custom")
 depends=("cairo" "libjpeg" "lua" "gd" "gnutls" 'pango' "readline")
-makedepends=("texlive-core")
+makedepends=('emacs')
+optdepends=('texlive-core')
 provides=("gnuplot")
 conflicts=("gnuplot" "gnuplot-nox")
 replaces=("gnuplot-notk")
@@ -45,7 +46,6 @@ build() {
         --with-x \
         --with-readline=gnu \
         --with-texdir=/usr/share/texmf/tex/latex/gnuplot \
-        --with-kpsexpand \
         --infodir="$pkgdir/usr/share/info"
 
 	make pkglibexecdir=/usr/bin
