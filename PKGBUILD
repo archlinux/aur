@@ -7,7 +7,7 @@ pkgname='ros-melodic-control-msgs'
 pkgver='1.5.0'
 _pkgver_patch=0
 arch=('any')
-pkgrel=0
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
