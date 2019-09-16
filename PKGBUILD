@@ -63,7 +63,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck
-_srcver=5.2.14-arch1
+_srcver=5.2.15-arch1
 pkgver=${_srcver%-*}
 pkgrel=4
 _ckpatchversion=1
@@ -84,13 +84,12 @@ source=(
   "http://ck.kolivas.org/patches/5.0/5.2/5.2-ck${_ckpatchversion}/$_ckpatch.xz"
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
   0002-ZEN-Add-CONFIG-for-unprivileged_userns_clone.patch
-  0003-Btrfs-fix-unwritten-extent-buffers-and-hangs-on-futu.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('c64d36477fee6a864a734ec417407768e60040a13f144c33208fa9622fd0ce8c'
+sha256sums=('eb561009da8106b463b1e1a16ab0f75cdef564784f49177148f5f92c32380c4a'
             'SKIP'
             '42e2bc6a7d8439b3a6fe4084d1349077472e0a6831d8a39edda46824a5f0987b'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
@@ -99,8 +98,7 @@ sha256sums=('c64d36477fee6a864a734ec417407768e60040a13f144c33208fa9622fd0ce8c'
             '8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5'
             'f1abc13a8d859fbf6350040e45d7f04ad551a6d39f113ba96fbbd820118c0e36'
             '91fafa76bf9cb32159ac7f22191b3589278b91e65bc4505cf2fc6013b8037bf3'
-            '63e4378e69e2f23ed87af32a4951477a6d82d4ac0de2295db46502c8120da9d9'
-            'f45f8695a7fe308b7aaef874df0a51ce91ac47ef180adf0cc507b482aad2459f')
+            '63e4378e69e2f23ed87af32a4951477a6d82d4ac0de2295db46502c8120da9d9')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-ARCH}
