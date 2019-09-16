@@ -3,7 +3,7 @@
 
 pkgname='glint'
 pkgdesc='A tool for creating git commits in the commitlint style'
-pkgver='0.1.6'
+pkgver='0.2.1'
 pkgrel='1'
 arch=('x86_64')
 url='https://github.com/brigand/glint'
@@ -12,7 +12,7 @@ depends=('gcc-libs')
 makedepends=('rust')
 checkdepends=('rust')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/brigand/glint/archive/${pkgver}.tar.gz")
-sha256sums=('59c9a3abcc7bdfc16a28d07a919399cfda768cbcbde740ab2dee34db50640397')
+sha256sums=('1e18657cfa3a0012c09629db91b9193e8fa96d8b23c9c5ce4ba9d4620cd79888')
 
 build() {
   cd "$pkgname-$pkgver"
