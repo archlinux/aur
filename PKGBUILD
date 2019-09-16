@@ -2,7 +2,7 @@
 # Contributor: Moritz Lipp <mlq@pwmt.org>
 _pkgname=google-drive-ocamlfuse
 pkgname=google-drive-ocamlfuse-git
-pkgver=r550.687ac60
+pkgver=r603.5801092
 pkgrel=1
 pkgdesc='FUSE-based file system backed by Google Drive, written in OCaml'
 arch=('x86_64' 'i686')
@@ -12,7 +12,7 @@ depends=(
 'ocaml>=4.02.3'
 'ocaml-findlib>=1.2.7'
 'ocamlfuse>=2.7.1'
-'gapi-ocaml>=0.3.6'
+'gapi-ocaml>=0.3.15'
 'ocaml-sqlite3>=1.6.1'
 )
 makedepends=(
