@@ -5,10 +5,17 @@ pkgbase = libupnp18
 	url = http://pupnp.sourceforge.net/
 	arch = x86_64
 	license = BSD
-	makedepends = pkgconfig pkgconfig make gcc binutils autoconf automake fakeroot
+	makedepends = pkgconfig
+	makedepends = make
+	makedepends = gcc
+	makedepends = binutils
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = fakeroot
 	depends = glibc
-	source = https://downloads.sourceforge.net/sourceforge/pupnp/libupnp-1.8.3.tar.bz2
-	sha256sums = 9afa0b09faa9ebd9e8a6425ddbfe8d1d856544c49b1f86fde221219e569a308d
+	provides = libupnp=1.8.4
+	source = https://downloads.sourceforge.net/sourceforge/pupnp/libupnp-1.8.4.tar.bz2
+	sha256sums = 188d3f786d92fe14191f17634d2d87847eee7d2b568a5257ea23262fec9973d6
 
 pkgname = libupnp18
 
