@@ -1,0 +1,25 @@
+From af63a8119c14facf376f1787bd24541c9f2b1a2f Mon Sep 17 00:00:00 2001
+From: Dan Johansen <strit@manjaro.org>
+Date: Fri, 13 Sep 2019 08:20:06 +0200
+Subject: [PATCH] fix conflicting path in brightness
+
+---
+ brightness/brightness.pro | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/brightness/brightness.pro b/brightness/brightness.pro
+index bdd45c7..c69aae2 100644
+--- a/brightness/brightness.pro
++++ b/brightness/brightness.pro
+@@ -31,7 +31,7 @@ unix {
+ 
+         target.path = $$PREFIX/lib/coreapps/plugins
+ 
+-        udev.path = /lib/udev/rules.d/
++        udev.path = /usr/lib/udev/rules.d/
+         udev.files = 90-coreaction-brightnessctl.rules
+ }
+ 
+-- 
+2.23.0
+

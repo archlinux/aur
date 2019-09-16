@@ -1,0 +1,19 @@
+pkgbase = coreaction
+	pkgdesc = A side bar for showing widgets from the CoreApps family.
+	pkgver = 2.7.0
+	pkgrel = 2
+	url = https://gitlab.com/cubocore/coreaction
+	arch = x86_64
+	arch = aarch64
+	groups = coreapps
+	license = GPL3
+	depends = qt5-base
+	depends = libcprime
+	depends = libcsys
+	source = https://gitlab.com/cubocore/coreaction/-/archive/v2.7.0/coreaction-v2.7.0.tar.gz
+	source = 0001-fix-conflicting-path-in-brightness.patch
+	md5sums = b2f80408568abba68a2ef3b92bda9deb
+	md5sums = 9d0bcf2721cbeac7a90f15c8f7ae6f4d
+
+pkgname = coreaction
+
