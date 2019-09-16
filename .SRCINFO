@@ -1,0 +1,16 @@
+pkgbase = corepaint
+	pkgdesc = A paint app from the CoreApps family.
+	pkgver = 2.7.0
+	pkgrel = 1
+	url = https://gitlab.com/cubocore/corepaint
+	arch = x86_64
+	arch = aarch64
+	groups = coreapps
+	license = GPL3
+	depends = qt5-base
+	depends = libcprime
+	source = https://gitlab.com/cubocore/corepaint/-/archive/v2.7.0/corepaint-v2.7.0.tar.gz
+	md5sums = 3207260200b9489cedb45e52e5f973bf
+
+pkgname = corepaint
+
