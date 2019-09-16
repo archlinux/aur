@@ -11,7 +11,7 @@ depends=('glib2' 'libnautilus-extension' 'gnome-bluetooth')
 makedepends=('pkgconf' 'intltool')
 conflicts=("${pkgname}-git" "${pkgname}-bin")
 source=("https://gitlab.gnome.org/madmurphy/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('a9e61fa7147138a3abe8754fcf6a149c7f0acdf1286310f154a8fdddf52ca459')
+sha256sums=('36f3950de02cbc48b92774cf794d3485ee4b622b7d7c3cabbd6024cfb81c974a')
 
 prepare() {
 
