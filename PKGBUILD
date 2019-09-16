@@ -34,9 +34,10 @@ package() {
     install -dm755 "${pkgdir}/usr/share/applications"
     install -dm755 "${pkgdir}/usr/share/icons/hicolor/48x48/apps"
 
+    install -m755 lib/fvim-linux-launcher "${pkgdir}/usr/bin/fvim"
     install Assets/fvim.png "${pkgdir}/usr/share/icons/hicolor/48x48/apps/fvim.png"
     install lib/fvim.desktop "${pkgdir}/usr/share/applications/fvim.desktop"
     cp -dpr bin/Release/netcoreapp3.0/linux-x64/* "${pkgdir}/usr/share/fvim"
     chmod 755 "${pkgdir}/usr/share/fvim/FVim"
-    ln -sf "${pkgdir}/usr/share/fvim/FVim" "${pkgdir}/usr/bin/fvim"
+    chmod 755 "${pkgdir}/usr/bin/fvim"
 }
