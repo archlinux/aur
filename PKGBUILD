@@ -2,6 +2,7 @@
 
 author=sjl
 pkgname=python-todo-t
+_gitname=t
 pkgver=0
 pkgrel=1
 pkgdesc="Command-line todo list manager"
@@ -17,13 +18,13 @@ sha1sums=('SKIP')
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "t"
+    cd "$srcdir/$_gitname"
     printf '0.r%s.%s' \
         "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-    cd "t"
+    cd "$srcdir/$_gitname"
     python setup.py install --root=$pkgdir
 }
 
