@@ -1,5 +1,5 @@
 pkgname=desktime
-pkgver=5.1.21
+pkgver=5.1.28
 pkgrel=0
 pkgdesc="Desktime client for Linux"
 arch=('i686' 'x86_64')
@@ -10,10 +10,10 @@ install=$pkgname.install
 
 if [[ $CARCH == 'i686' ]]; then
     source=("$pkgname-$pkgver.deb::https://desktime.com/updates/linux/update/?i386")
-    md5sums=('d621182e7e8486392a7ce7b2c58fc8d5')
+    md5sums=('782411c676f9faf3f276421a8e7d3269')
 else
     source=("$pkgname-$pkgver.deb::https://desktime.com/updates/linux/update/?x64")
-    md5sums=('69799a789d01d0f667e15abc3d1f6e9b')
+    md5sums=('63992b87ffec49537ad9226e857f5583')
 fi
 
 package()
@@ -25,8 +25,8 @@ package()
     cp -a "$srcdir/usr/lib" "$pkgdir/usr/"
     cp -a "$srcdir/usr/share" "$pkgdir/usr/"
 
-    rm -f /bin/desktime-linux
-    ln -s "/usr/lib/desktime-linux/desktime-linux" "/bin/desktime-linux"
+    sudo rm -f /usr/bin/desktime-linux
+    sudo ln -s "/usr/lib/desktime-linux/desktime-linux" "/usr/bin/desktime-linux"
 }
 
 # vim:et:sw=4:sts=4
