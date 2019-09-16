@@ -1,7 +1,7 @@
 # Maintainer: Hork <aliyuchang33@outlook.com>
 
 pkgname=qv2ray
-pkgver=1.3.5.2
+pkgver=1.3.6.1
 pkgrel=1
 pkgdesc="Qt cross platform v2ray GUI client"
 arch=('i686' 'x86_64')
@@ -17,15 +17,14 @@ sha512sums=('SKIP')
 build() {
     cd "${srcdir}/Qv2ray"
     git submodule update --init
-    lrelease ./Qv2ray.pro
     mkdir build && cd ./build
     qmake ../
     make
 }
 
 package() {
-    cd "${srcdir}/Qv2ray"
-    install -Dm644 icons/Qv2ray.desktop $pkgdir/usr/share/applications/Qv2ray.desktop
-    install -Dm644 icons/Qv2ray.png $pkgdir/usr/share/icons/hicolor/256x256/apps/Qv2ray.png
-    install -Dm755 build/Qv2ray $pkgdir/opt/Qv2ray/Qv2ray
+    cd "${srcdir}/Qv2ray/build"
+    make install INSTALL_ROOT=$pkgdir
+    install -Dm644 ../icons/Qv2ray.desktop $pkgdir/usr/share/applications/Qv2ray.desktop
+    install -Dm644 ../icons/Qv2ray.png $pkgdir/usr/share/icons/hicolor/256x256/apps/Qv2ray.png
 }
