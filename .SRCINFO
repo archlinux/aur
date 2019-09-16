@@ -1,0 +1,22 @@
+pkgbase = yenma-git
+	pkgdesc = A milter program for domain authentication technologies (including SPF, DKIM, DMARC)
+	pkgver = 2.0.0.rc1.r3.g19b961b
+	pkgrel = 1
+	url = https://github.com/h2o/h2o
+	arch = i686
+	arch = x86_64
+	license = BSD-2
+	makedepends = git
+	depends = ldns
+	depends = libmilter
+	provides = yemma
+	backup = etc/yemma.conf
+	source = git+https://github.com/iij/yenma
+	source = gh-pr-11.patch
+	sha256sums = SKIP
+	sha256sums = b473d0d0a3f799191894d90dbbbfc5f7437ba49077aadfb221ffd63f900ae7df
+	sha512sums = SKIP
+	sha512sums = cf35d925764c1c2858c0dfcd7fc9bbbbd1511286bbafd7ea90d46362b2a5c0c1735fabddf64cdcb2aeda84ec6e63b364244e8d282a2c22e9f6570078dde28b05
+
+pkgname = yenma-git
+

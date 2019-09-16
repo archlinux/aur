@@ -1,0 +1,29 @@
+From 3bdc32535fee8657213c1d2f946eb5c0e0f7d4eb Mon Sep 17 00:00:00 2001
+From: Sorah Fukumori <her@sorah.jp>
+Date: Tue, 17 Sep 2019 02:11:27 +0900
+Subject: [PATCH] libmilter might need libpthread
+
+when libmilter needs -pthread, ./configure failed with:
+
+```
+/usr/bin/ld: /usr/lib/libmilter.a(signal.o): undefined reference to symbol 'pthread_sigmask@@GLIBC_2.2.5'
+/usr/bin/ld: /usr/lib/libpthread.so.0: error adding symbols: DSO missing from command line
+```
+---
+ configure.ac |     3 +
+ 1 files changed, 3 insertions(+), 0 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 1e64353..da16731 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -54,6 +54,9 @@ AC_CHECK_TYPES([ptrdiff_t])
+ AC_CHECK_FUNCS([prctl])
+ 
+ ACX_PTHREAD([], AC_MSG_ERROR(POSIX thread not found))
++LIBS="$PTHREAD_LIBS $LIBS"
++CFLAGS="$CFLAGS $PTHREAD_CFLAGS"
++CC="$PTHREAD_CC"
+ 
+ AC_ARG_WITH(libmilter,
+     AS_HELP_STRING([--with-libmilter=DIR],[specify libmilter base directory]),
