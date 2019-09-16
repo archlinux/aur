@@ -7,7 +7,7 @@ pkgname='ros-melodic-gazebo-dev'
 pkgver='2.8.5'
 _pkgver_patch=0
 arch=('any')
-pkgrel=0
+pkgrel=1
 license=('Apache 2.0')
 
 ros_makedepends=(ros-melodic-catkin)
