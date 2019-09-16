@@ -7,6 +7,7 @@ pkgbase = fuf-git
 	arch = any
 	license = MIT
 	makedepends = git
+	depends = ncurses
 	optdepends = w3m: image previews
 	provides = fuf
 	conflicts = fuf

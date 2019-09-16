@@ -6,6 +6,7 @@ pkgdesc='Fairly Usable cli Filebrowser. dev/git version'
 arch=('any')
 url=https://github.com/ckath/fuf
 license=('MIT')
+depends=('ncurses')
 makedepends=('git')
 optdepends=('w3m: image previews')
 conflicts=('fuf')
