@@ -1,7 +1,7 @@
 # Maintainer: Filip Matzner <filip.matzner@iterait.com>
 
 pkgname=hipipe
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=0
 pkgdesc='Super fast C++17 data transformation pipeline (with Python interface).'
 arch=('any')
@@ -10,7 +10,7 @@ license=('custom')
 depends=('boost' 'opencv' 'python' 'python-numpy' 'range-v3')
 makedepends=('cmake' 'gcc')
 source=("https://github.com/iterait/hipipe/archive/v${pkgver}.tar.gz")
-sha512sums=('cb6629502b47a7c3bb9a68b7b81d7924023324e86b131aa2832681467c3fd6215ddba91bc7f891865ee6632a51f58bcd6551d1f3880ea6538aec33fbceedf452')
+sha512sums=('26a677cc40b7d8b97c4e4c7c2560409f88457ea099e85667cc7fd6b5e01999870ca6b28aff4b530d2b2d4835de5b18105bec20b7480101ff6625c47d4f89ce2c')
 
 prepare() {
     cd "${srcdir}/hipipe-${pkgver}"
