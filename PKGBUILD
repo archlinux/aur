@@ -4,7 +4,7 @@
 # Contributor: Eric Belanger <eric@archlinux.org>
 pkgname=plplot
 pkgver=5.15.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform software package for creating scientific plots"
 arch=('i686' 'x86_64')
 url="http://plplot.sourceforge.net/"
@@ -36,6 +36,7 @@ build() {
       -DENABLE_tcl=ON \
       -DENABLE_tk=ON \
       -DPL_FREETYPE_FONT_PATH=/usr/share/fonts/TTF ..
+  find . -name '*.make' -exec sed -i 's|-isystem /usr/include ||g' '{}' ';'
   make 
 }
 
