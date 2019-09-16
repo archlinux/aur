@@ -1,7 +1,7 @@
 # Maintainer: David Parrish <daveparrish@tutanota.com>
 
-pkgname=zap-desktop-bin
-pkgver=0.4.1_beta
+pkgname=zap-desktop-appimage
+pkgver=0.5.2_beta
 # Actual version used by project
 _ver=${pkgver//_/-}
 pkgrel=1
@@ -9,33 +9,24 @@ pkgdesc="Lightning wallet focused on user experience and ease of use"
 arch=('x86_64')
 url="https://github.com/LN-Zap/zap-desktop"
 license=('MIT')
-depends=('gtk3' 'nss' 'libxss')
-source_x86_64=("https://github.com/LN-Zap/zap-desktop/releases/download/v${_ver}/Zap-linux-amd64-v${_ver}.deb")
-sha256sums_x86_64=('cd1f640379c2429f099131d1d7883c5e16e2957bfc2e1d74c2f98a1fbed04b1c')
-conflicts=("zap-desktop-git")
-provides=("zap-desktop")
-
-prepare() {
-    tar -Jxvf data.tar.xz
-
-    sed -in "s/\\/Zap\\//\\/${pkgname}\\//g" usr/share/applications/zap-desktop.desktop
-}
+depends=('zlib')
+options=(!strip)
+source_x86_64=("${pkgname}-${pkgver}.AppImage::https://github.com/LN-Zap/zap-desktop/releases/download/v${_ver}/Zap-linux-x86_64-v${_ver}.AppImage"
+               "https://raw.githubusercontent.com/LN-Zap/zap-desktop/v0.5.2-beta/LICENSE"
+              )
+noextract=("${pkgname}-${pkgver}.AppImage")
+sha256sums_x86_64=('431ce50ddfe422b6d4ddc608855642c0cc361d9c30ae926b7159e01c33fc05be'
+                   'c7779cd186930fa9bd4d900b2243b3302f01cd593ac19098bbeb123c8ebf9d72')
 
 package() {
-  install -d "$pkgdir"/{opt/,usr/bin/,usr/share/applications,/usr/share/pixmaps,/usr/share/licenses/$pkgname}
+    install -Dm755 "${srcdir}/${pkgname}-${pkgver}.AppImage" "${pkgdir}/opt/${pkgname}/${pkgname}.AppImage"
+    install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/opt/${pkgname}/LICENSE"
 
-  # /opt install
-  mkdir "$pkgdir/opt/$pkgname"
-  cp -r "$srcdir/opt/Zap/". "$pkgdir/opt/$pkgname"
+    # Symlink executable
+    mkdir -p "${pkgdir}/usr/bin"
+    ln -s "/opt/${pkgname}/${pkgname}.AppImage" "${pkgdir}/usr/bin/${pkgname}"
 
-  # Symlink executable
-  ln -s "/opt/$pkgname/zap-desktop" "$pkgdir/usr/bin/zap-desktop"
-
-  # Symlink licenses
-  ln -s "/opt/$pkgname/LICENSE.electron.txt" "$pkgdir/usr/share/licenses/$pkgname"
-  ln -s "/opt/$pkgname/LICENSES.chromium.html" "$pkgdir/usr/share/licenses/$pkgname"
-
-  # Symlink desktop icon
-  cp "$srcdir/usr/share/applications/zap-desktop.desktop" "${pkgdir}/usr/share/applications/zap-desktop.desktop"
-  cp "$srcdir/usr/share/icons/hicolor/0x0/apps/zap-desktop.png" "${pkgdir}/usr/share/pixmaps/zap-desktop.png"
+    # Symlink license
+    mkdir -p "${pkgdir}/usr/share/licenses/$pkgname"
+    ln -s "/opt/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 }
