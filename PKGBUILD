@@ -4,10 +4,9 @@ pkgname=reddio-git
 pkgver() {
   cd "${pkgname%-git}"
   git describe --long | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'
-  #printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-pkgver=0.3.r6.8c973fb
-pkgrel=1
+pkgver=0.3.r13.079b81a
+pkgrel=2
 
 pkgdesc='A command-line interface for Reddit written in POSIX sh'
 arch=('any')
@@ -23,7 +22,7 @@ optdepends=('gnu-netcat: authenticate with your Reddit account credentials'
 makedepends=('git')
 
 changelog=ISSUES
-source=("git+$url" 'archlinux.patch')
+source=("git+$url.git" 'archlinux.patch')
 sha256sums=('SKIP'
             'caf1b8d24a8427e3de0abdb4a25fa986f2493eaea9df250c144431ce9274edfa')
 
