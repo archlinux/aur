@@ -3,7 +3,7 @@
 # https://bbs.archlinux.org/viewtopic.php?id=235884
 
 pkgname=lando-git
-pkgver=3.0.0.rc.18.r1.g1b52ca4d
+pkgver=3.0.0.rc.20.r17.g30f59404
 
 # Transform git tag into target version string
 _target_version=${pkgver: 0:-10}
@@ -19,7 +19,7 @@ url="https://docs.devwithlando.io"
 license=('GPL')
 depends=('docker' 'docker-compose')
 optdepends=('gcc-libs')
-makedepends=('npm' 'yarn' 'git')
+makedepends=('npm' 'yarn' 'git' 'nvm')
 source=("${pkgname}::git+https://github.com/lando/lando.git")
 sha256sums=('SKIP')
 conflicts=("lando")
@@ -36,11 +36,19 @@ pkgver() {
 build() {
   cd "${srcdir}/$pkgname" || exit
 
-  # https://github.com/lando/lando/issues/1309
-  npm install fs-extra@0.18.4
-  npm install
+  # Use nodejs 10 with NVM
+  export npm_config_cache="$srcdir/npm_cache"
+  _npm_prefix=$(npm config get prefix)
+  npm config delete prefix
+  source /usr/share/nvm/init-nvm.sh
+  nvm install 10.16.3 && nvm use 10.16.3
 
+  npm install
   yarn pkg:cli
+
+  # Restore node config from nvm
+  npm config set prefix "${_npm_prefix}"
+  nvm unalias default
 }
 
 package() {
