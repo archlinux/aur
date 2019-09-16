@@ -4,7 +4,7 @@
 pkgname=robotstxt
 # No released version yet, so versioned based on the number of commits.
 # Zeros to preserve numbering for any future version available.
-pkgver=0.0.0.31
+pkgver=0.0.0.59
 pkgrel=1
 pkgdesc="Google's robots.txt parser and matcher as a C++ library (compliant to C++11)."
 arch=('x86_64')
@@ -12,9 +12,9 @@ url="https://github.com/google/robotstxt"
 license=('Apache')
 depends=('gcc-libs')
 makedepends=('bazel')
-_git_commit='bacd8ba94b6d066ff6c0eb622b46bf655490994d'
+_git_commit='750aec7933648c816d6d5bb2f4fe5c30f2485ccf'
 source=("$pkgname-$pkgver.tar.gz::https://github.com/google/robotstxt/archive/$_git_commit.tar.gz")
-sha256sums=('92fcc2560fa5f889ab9fde01b7fdd8e70c02a7dd7c33e9151de3d98d065c9e2f')
+sha256sums=('dfb60ef01b63585521115cbbc0b344f3116cf7b081000693305f5d98fdc16eba')
 
 build() {
   cd "$srcdir/robotstxt-$_git_commit"
