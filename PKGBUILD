@@ -1,15 +1,16 @@
-# Maintainer: Aaron DeVore <aaron.devore@gmail.com>
+# Maintainer: Frederic Bezies <fredbezies at gmail dot com>
+# Contributor: Aaron DeVore <aaron.devore@gmail.com>
 # Contributor: Michael Fellinger <m.fellinger@gmail.com>
 pkgname=diakonos
-pkgver=0.9.4
+pkgver=0.9.6
 pkgrel=1
 pkgdesc="A Linux editor for the masses."
 arch=('any')
 depends=('ruby' 'ruby-curses')
 license=('MIT')
 url="http://diakonos.pist0s.ca/"
-source=("http://diakonos.pist0s.ca/archives/$pkgname-$pkgver.tar.bz2")
-md5sums=('13cb28073bcd5e4ccf278fedaca829a4')
+source=("https://github.com/Pistos/diakonos/archive/v$pkgver.tar.gz")
+sha256sums=('85da8ccecf41ac85835f0866518073dd0709148707f9fed30049f11985c26348')
 
 package() {
   cd $srcdir/$pkgname-$pkgver
