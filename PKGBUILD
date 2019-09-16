@@ -33,14 +33,14 @@ _float=false
 _shadow_build=true
 # automatically disabled if you are building webengine
 _debug=true
-_skip_qtscript=true
+_skip_qtscript=false
 _skip_qtwebengine=false
-_skip_qtwidgets=true
+_skip_qtwidgets=false
 _static_build=false
 _build_from_local_src_tree=false
 _patching=true
-_minimal=true
-_uber_minimal=true
+_minimal=false
+_uber_minimal=false
 
 if [[ -z ${startdir} ]]; then
   _building=false;
@@ -155,7 +155,6 @@ case ${_piver} in
   # took forever to find one that worked
   #_toolchain="/usr/bin/aarch64-linux-gnu-"
   _toolchain="/opt/gcc-linaro-6.4.1-2017.08-x86_64_aarch64-linux-gnu/bin/aarch64-linux-gnu-"
-  _float=false
   _mkspec="linux-jetson-nano-g++"
   _opengl_variant="desktop"
 ;;
@@ -190,7 +189,6 @@ provides=($pkgname)
 
 if $_static_build; then
   pkgname="${pkgname}-static"
-  _uber_minimal=true
 fi
 
 if $_building && $_uber_minimal; then
@@ -250,8 +248,16 @@ retired_exhaustive_uber_minimal_specific_configure_options="\
     -no-linuxfb \
 "
 
+if $_minimal; then
+    _additional_configure_flags="$_additional_configure_flags \
+        -no-xcb \
+        -qpa eglfs \
+        -egl \
+    "
+fi
+
 if $_uber_minimal; then
-    _exhaustive_uber_minimal_specific_configure_options="\
+    _additional_configure_flags="$_additional_configure_flags \
         -no-direct2d \
         -no-directfb \
         -no-mirclient \
@@ -263,10 +269,6 @@ if $_uber_minimal; then
         -no-tslib \
         -no-feature-bearermanagement \
         -no-qml-debug \
-    "
-
-    _additional_configure_flags="$_additional_configure_flags $_exhaustive_uber_minimal_specific_configure_options"
-    _additional_configure_flags="$_additional_configure_flags \
         -no-ico \
         -no-glib \
     "
@@ -288,9 +290,6 @@ _core_configure_options=" \
                  -pkg-config \
                  -prefix ${_installprefix} \
                  -opengl ${_opengl_variant} \
-                 -no-xcb \
-                 -qpa eglfs \
-                 -egl \
                  -qt-sqlite \
                  -optimized-qmake \
                  -optimized-tools \
