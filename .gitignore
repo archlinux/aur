@@ -1,6 +1,4 @@
-/gn/
-/pkg/
-/src/
-/*.log
-/*.tar
-/*.tar.*
+*
+!/PKGBUILD
+!/.SRCINFO
+!/gcc-support.patch
