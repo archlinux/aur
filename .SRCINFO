@@ -1,0 +1,22 @@
+pkgbase = tangram
+	pkgdesc = Run web apps on your desktop
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/sonnyp/Tangram
+	arch = any
+	license = GPL3
+	makedepends = meson
+	makedepends = ninja
+	depends = gjs
+	depends = webkit2gtk
+	depends = gtk3
+	depends = libsoup
+	depends = glib2
+	provides = gigagram-git
+	conflicts = gigagram-git
+	replaces = gigagram-git
+	source = https://github.com/sonnyp/Tangram/archive/v1.1.0.tar.gz
+	sha256sums = 6f53bb9864b610dd9d6c026500c2a9d8ed03d3ceb179d3dbf16faa74c7955820
+
+pkgname = tangram
+
