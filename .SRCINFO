@@ -1,7 +1,7 @@
 pkgbase = doomsday-bin
 	pkgdesc = An advanced Doom engine that supports DOOM, Heretic and Hexen.
 	pkgver = 2.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://dengine.net/
 	arch = x86_64
 	license = GPL2

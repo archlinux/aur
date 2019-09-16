@@ -4,7 +4,7 @@
 pkgname=doomsday-bin
 _pkgname=doomsday
 pkgver=2.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An advanced Doom engine that supports DOOM, Heretic and Hexen."
 url="http://dengine.net/"
 arch=('x86_64')
@@ -22,5 +22,6 @@ md5sums=('9083fa158b892266490b6a14c206e308')
 package() {
 	cd $pkgdir
 	bsdtar -xf $srcdir/${_pkgname}-${pkgver}-1.x86_64.rpm
+	mv usr/lib64 usr/lib
 	rm -rf usr/include/assimp
 }
