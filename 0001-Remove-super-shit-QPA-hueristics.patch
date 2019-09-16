@@ -1,0 +1,72 @@
+From 77bc37d717d5072e7f8218bc3ec78fafe1117716 Mon Sep 17 00:00:00 2001
+From: Donald Carr <d@chaos-reins.com>
+Date: Mon, 16 Sep 2019 00:38:06 -0700
+Subject: [PATCH] Remove super shit QPA hueristics
+
+Change-Id: I7776958c24822b483de304f7c5d530666b3ae227
+---
+ src/core/content_browser_client_qt.cpp | 43 +++++++++++++++-----------
+ 1 file changed, 25 insertions(+), 18 deletions(-)
+
+diff --git a/src/core/content_browser_client_qt.cpp b/src/core/content_browser_client_qt.cpp
+index 16945020..af34baf3 100644
+--- a/src/core/content_browser_client_qt.cpp
++++ b/src/core/content_browser_client_qt.cpp
+@@ -168,29 +168,36 @@ public:
+         : gl::GLContext(0)
+         , m_handle(0)
+     {
+-        QString platform = qApp->platformName().toLower();
+-        QPlatformNativeInterface *pni = QGuiApplication::platformNativeInterface();
+-        if (platform == QLatin1String("xcb") || platform == QLatin1String("offscreen")) {
++        if (qEnvironmentVariableIsSet(QT_WEBENGINE_SKIP_QPA_DETECTION)) {
+             if (gl::GetGLImplementation() == gl::kGLImplementationEGLGLES2)
+                 m_handle = pni->nativeResourceForContext(QByteArrayLiteral("eglcontext"), qtContext);
+             else
+                 m_handle = pni->nativeResourceForContext(QByteArrayLiteral("glxcontext"), qtContext);
+-        } else if (platform == QLatin1String("cocoa"))
+-            m_handle = pni->nativeResourceForContext(QByteArrayLiteral("cglcontextobj"), qtContext);
+-        else if (platform == QLatin1String("qnx"))
+-            m_handle = pni->nativeResourceForContext(QByteArrayLiteral("eglcontext"), qtContext);
+-        else if (platform == QLatin1String("eglfs") || platform == QLatin1String("wayland")
+-                 || platform == QLatin1String("wayland-egl"))
+-            m_handle = pni->nativeResourceForContext(QByteArrayLiteral("eglcontext"), qtContext);
+-        else if (platform == QLatin1String("windows")) {
+-            if (gl::GetGLImplementation() == gl::kGLImplementationEGLGLES2)
+-                m_handle = pni->nativeResourceForContext(QByteArrayLiteral("eglContext"), qtContext);
+-            else
+-                m_handle = pni->nativeResourceForContext(QByteArrayLiteral("renderingcontext"), qtContext);
+         } else {
+-            qFatal("%s platform not yet supported", platform.toLatin1().constData());
+-            // Add missing platforms once they work.
+-            Q_UNREACHABLE();
++            QString platform = qApp->platformName().toLower();
++            QPlatformNativeInterface *pni = QGuiApplication::platformNativeInterface();
++            if (platform == QLatin1String("xcb") || platform == QLatin1String("offscreen")) {
++                if (gl::GetGLImplementation() == gl::kGLImplementationEGLGLES2)
++                    m_handle = pni->nativeResourceForContext(QByteArrayLiteral("eglcontext"), qtContext);
++                else
++                    m_handle = pni->nativeResourceForContext(QByteArrayLiteral("glxcontext"), qtContext);
++            } else if (platform == QLatin1String("cocoa"))
++                m_handle = pni->nativeResourceForContext(QByteArrayLiteral("cglcontextobj"), qtContext);
++            else if (platform == QLatin1String("qnx"))
++                m_handle = pni->nativeResourceForContext(QByteArrayLiteral("eglcontext"), qtContext);
++            else if (platform == QLatin1String("eglfs") || platform == QLatin1String("wayland")
++                     || platform == QLatin1String("wayland-egl"))
++                m_handle = pni->nativeResourceForContext(QByteArrayLiteral("eglcontext"), qtContext);
++            else if (platform == QLatin1String("windows")) {
++                if (gl::GetGLImplementation() == gl::kGLImplementationEGLGLES2)
++                    m_handle = pni->nativeResourceForContext(QByteArrayLiteral("eglContext"), qtContext);
++                else
++                    m_handle = pni->nativeResourceForContext(QByteArrayLiteral("renderingcontext"), qtContext);
++            } else {
++                qFatal("%s platform not yet supported", platform.toLatin1().constData());
++                // Add missing platforms once they work.
++                Q_UNREACHABLE();
++            }
+         }
+     }
+ 
+-- 
+2.23.0
+

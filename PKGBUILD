@@ -29,7 +29,7 @@ _target_host=false
 _sysroot=""
 _piver=""
 _use_mesa=false
-_float=true
+_float=false
 _shadow_build=true
 # automatically disabled if you are building webengine
 _debug=true
@@ -121,6 +121,7 @@ case ${_piver} in
 1)
   _toolchain_name=armv6-rpi-linux-gnueabihf
   _toolchain="/opt/${_toolchain_name}/bin/${_toolchain_name}-"
+  _float=true
   # too problematic for me to care about
   #_float=true
 ;;
@@ -130,6 +131,7 @@ case ${_piver} in
   # eats shit when linking artriculate with ltcg
   _toolchain_name=arm-cortexa9_neon-linux-gnueabihf
   _toolchain="/opt/x-tools/${_toolchain_name}/bin/${_toolchain_name}-"
+  _float=true
   #_mkspec="linux-rpi${_piver}-vc4-g++"
   #_use_mesa=true
 ;;
@@ -137,7 +139,6 @@ case ${_piver} in
   _toolchain_name=aarch64-rpi3-linux-gnu
   _toolchain="/opt/x-tools/${_toolchain_name}/bin/${_toolchain_name}-"
   _use_mesa=true
-  _float=false
   # just for projectmofo!
   #_opengl_variant="desktop"
 ;;
@@ -209,7 +210,7 @@ fi
 $_skip_qtwebengine && _additional_configure_flags="$_additional_configure_flags -skip qtwebengine -no-icu"
 $_skip_qtscript && _additional_configure_flags="$_additional_configure_flags -skip qtscript"
 $_skip_qtwidgets && _additional_configure_flags="$_additional_configure_flags -no-widgets"
-$_static_build && _additional_configure_flags="$_additional_configure_flags -static"
+$_static_build && _additional_configure_flags="$_additional_configure_flags -static -ltcg"
 $_float && _additional_configure_flags="$_additional_configure_flags -qreal float"
 $_debug && _additional_configure_flags="$_additional_configure_flags -force-debug-info -separate-debug-info"
 
@@ -279,7 +280,6 @@ fi
 
 #-journald \
 _core_configure_options=" \
-                 -ltcg \
                  -qt-freetype \
                  -qt-harfbuzz \
                  -qt-libpng \
@@ -294,7 +294,6 @@ _core_configure_options=" \
                  -qt-sqlite \
                  -optimized-qmake \
                  -optimized-tools \
-                 -optimize-size \
                  -confirm-license \
                  -opensource \
                  -v \
@@ -407,6 +406,8 @@ if $_patching; then
   echo "Patching source"
   cd ${_srcdir}/qtdeclarative
   #patch -p1 < ${startdir}/0005-Fix-qtdeclarative-build-configured-with-qreal-float.patch
+  cd ${_srcdir}/qtwebengine
+  patch -p1 < ${startdir}/0001-Remove-super-shit-QPA-hueristics.patch
 fi
 
   rm -Rf ${_bindir}
@@ -428,9 +429,9 @@ fi
   # Prepare for breakage in all your Qt derived projects
   #-qtnamespace "Pi${_piver}" \
 
-# -platform linux-clang \
 if $_target_host; then
   local _configure_line="${_srcdir}/configure \
+                 -platform linux-clang \
                  ${_core_configure_options} \
                  ${_additional_configure_flags}"
 # ${_arch_specific_configure_options} \
@@ -441,6 +442,7 @@ else
                  -qtlibinfix "Pi${_piver}" \
                  -sysroot ${_sysroot} \
                  -device ${_mkspec} \
+                 -optimize-size \
                  -device-option CROSS_COMPILE=${_toolchain} \
                  ${_additional_configure_flags}"
 fi
