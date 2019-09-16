@@ -8,8 +8,8 @@ pkgbase = palemoon-i18n-nl
 	license = GPL
 	depends = palemoon-i18n-common
 	noextract = palemoon-i18n-nl-28.7.0.xpi
-	source = palemoon-i18n-nl-28.7.0.xpi::http://addons.palemoon.org/?component=download&version=latest&id=langpack-nl@palemoon.org
-	sha256sums = e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+	source = palemoon-i18n-nl-28.7.0.xpi::https://addons.palemoon.org/?component=download&version=28.7.0&id=langpack-nl@palemoon.org
+	sha256sums = 11425b30066facd7c6c3e542f5c7c4605a17a6685e1a6274fed48a7de644d0cf
 
 pkgname = palemoon-i18n-nl
 
