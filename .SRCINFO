@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-catkin
 	pkgdesc = ROS - Low-level build system macros and infrastructure for ROS.
 	pkgver = 0.7.18
-	pkgrel = 0
+	pkgrel = 1
 	url = https://www.wiki.ros.org/catkin
 	arch = any
 	license = BSD

@@ -6,7 +6,7 @@ url='https://www.wiki.ros.org/catkin'
 pkgname='ros-melodic-catkin'
 pkgver='0.7.18'
 arch=('any')
-pkgrel=0
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
