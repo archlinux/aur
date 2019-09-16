@@ -17,7 +17,7 @@ pkgname=vmware-workstation
 pkgver=15.1.0
 _buildver=13591040
 _pkgver=${pkgver}_${_buildver}
-pkgrel=4
+pkgrel=5
 pkgdesc='The industry standard for running multiple operating systems as virtual machines on a single Linux PC.'
 arch=(x86_64)
 url='https://www.vmware.com/products/workstation-for-linux.html'
@@ -39,6 +39,7 @@ depends=(
   fuse2
   gtkmm3
   libcanberra
+  libaio
   pcsclite
   hicolor-icon-theme
   # needed to use Arch GTK3 library (for theme integration)
@@ -130,7 +131,7 @@ _isovirtualprinterimages=(Linux Windows)
 
 if [ -n "$_enable_macOS_guests" ]; then
 
-_vmware_fusion_ver=11.1.1_14328561
+_vmware_fusion_ver=11.1.0_13668589
 # List of VMware Fusion versions: https://softwareupdate.vmware.com/cds/vmw-desktop/fusion/
 
 makedepends+=(
@@ -144,8 +145,8 @@ source+=(
   'unlocker.py'
 )
 sha256sums+=(
-  '09ccd09b1e1e057fd33069ec8332f395428f93de6e0a175a4760daace885ef97'
-  'afac194c1d511faee2c49b5e8aea02af62671d1fd48dd029423c94ef1405e69c'
+  'b228af2f5f7b5eed3a4f574645e823e92dbd95945a5dce343f51445f0cc83b1c'
+  '7bc24a658c0a91ea21ffda67becb9bc40f1e2592ff74020be7c174af1b81f554'
   '29e0b0db9c0296ab81eee543803c4bd430e2c69c76e33492910e17280da1c05c'
 )
 
