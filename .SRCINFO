@@ -1,0 +1,19 @@
+pkgbase = python2-rdpy-git
+	pkgdesc = Remote Desktop Protocol in twisted python
+	pkgver = v1.3.2.r11.g4109b7a
+	pkgrel = 1
+	url = https://github.com/citronneur/rdpy
+	arch = any
+	license = MIT
+	makedepends = python2-setuptools
+	depends = python2-pyopenssl
+	depends = python2-service_identity
+	depends = python2-twisted
+	depends = python2-qt4reactor
+	depends = python2-rsa
+	depends = python2-pyasn1
+	source = git+https://github.com/citronneur/rdpy.git
+	sha256sums = SKIP
+
+pkgname = python2-rdpy-git
+
