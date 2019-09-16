@@ -1,15 +1,15 @@
 pkgbase = palemoon-i18n-es-ar
 	pkgdesc = Spanish (Argentina) language pack for Pale Moon browser
-	pkgver = 28.6.1
+	pkgver = 28.7.0
 	pkgrel = 1
 	url = https://addons.palemoon.org/language-packs/
 	arch = any
 	license = MPL
 	license = GPL
 	depends = palemoon-i18n-common
-	noextract = palemoon-i18n-es-ar-28.6.1.xpi
-	source = palemoon-i18n-es-ar-28.6.1.xpi::http://addons.palemoon.org/?component=download&version=latest&id=langpack-es-AR@palemoon.org
-	sha256sums = b646c8a870c5464634ec7f0c9a2b5564ca0c21c0ab8f7b1f0275e0c55ff0cc77
+	noextract = palemoon-i18n-es-ar-28.7.0.xpi
+	source = palemoon-i18n-es-ar-28.7.0.xpi::https://addons.palemoon.org/?component=download&version=28.7.0&id=langpack-es-AR@palemoon.org
+	sha256sums = 8535aad2b5640a225373c346451ed6f39d58dde65db92e74b5787db1fff54114
 
 pkgname = palemoon-i18n-es-ar
 
