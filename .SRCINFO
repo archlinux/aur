@@ -1,0 +1,10 @@
+pkgbase = softu2f
+	pkgdesc = Software U2F HID token daemon
+	pkgver = 0.3.2.r18.ge47750b
+	pkgrel = 1
+	arch = x86_64
+	source = git+https://github.com/danstiner/rust-u2f
+	sha256sums = SKIP
+
+pkgname = softu2f
+
