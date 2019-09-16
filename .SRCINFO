@@ -1,0 +1,19 @@
+pkgbase = python2-smbmap-git
+	pkgdesc = SMBMap allows users to enumerate samba share drives across an entire domain
+	pkgver = 1.0.5.r15.gb55fc05
+	pkgrel = 1
+	url = https://github.com/ShawnDEvans/smbmap
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python2
+	depends = python2-pyasn1
+	depends = python2-pycryptodome
+	depends = impacket
+	provides = python2-smbmap-git
+	conflicts = smbmap
+	source = smbmap::git+https://github.com/ShawnDEvans/smbmap.git#branch=master
+	md5sums = SKIP
+
+pkgname = python2-smbmap-git
+
