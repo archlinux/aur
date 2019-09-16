@@ -13,7 +13,8 @@ depends=('shaderc'
          'lib32-glslang'
          'lib32-spirv-tools'
         )
-makedepends=('cmake'
+makedepends=('git'
+             'cmake'
              'ninja'
              'python'
              )
@@ -69,7 +70,7 @@ build() {
 
 package() {
   DESTDIR="${pkgdir}" ninja -C build  install
-  
+
   rm -fr "${pkgdir}/usr/include"
   mv "${pkgdir}/usr/bin/glslc" "${pkgdir}/usr/bin/glslc-32"
 }
