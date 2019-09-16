@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-hardware-interface
 	pkgdesc = ROS - Hardware Interface base class.
 	pkgver = 0.15.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ros-controls/ros_control/wiki
 	arch = any
 	license = BSD
@@ -9,6 +9,7 @@ pkgbase = ros-melodic-hardware-interface
 	makedepends = ros-build-tools
 	makedepends = ros-melodic-roscpp
 	makedepends = ros-melodic-catkin
+	makedepends = ros-melodic-rostest
 	depends = ros-melodic-roscpp
 	source = ros-melodic-hardware-interface-0.15.1.tar.gz::https://github.com/ros-controls/ros_control/archive/0.15.1.tar.gz
 	sha256sums = adf1a9d1fd10f4d89e91c8279d1278d9cd301767b658c143810479b2d10eedca

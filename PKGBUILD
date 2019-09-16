@@ -5,7 +5,6 @@ url='https://github.com/ros-controls/ros_control/wiki'
 
 pkgname='ros-melodic-hardware-interface'
 pkgver='0.15.1'
-_pkgver_patch=0
 arch=('any')
 pkgrel=2
 license=('BSD')
