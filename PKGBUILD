@@ -1,6 +1,6 @@
 # Maintainer: Jared Johnson <jaredj@gmx.com>
 pkgname=fvim
-pkgver=0.2_96_g269872a
+pkgver=0.2_100_g520d8b8
 _pkgver=$(echo "${pkgver}" | sed -e "s/_/-/g")
 pkgrel=1
 pkgdesc="Cross platform Neovim front-end UI, built with F# + Avalonia"
@@ -13,7 +13,7 @@ makedepends=('dotnet-sdk-preview')
 optdepends=()
 provides=('fvim')
 conflicts=('fvim')
-source=("https://github.com/yatli/fvim/archive/v0.2-96-g269872a.tar.gz")
+source=("https://github.com/yatli/fvim/archive/v0.2-100-g520d8b8.tar.gz")
 md5sums=('SKIP')
 options=('staticlibs')
 
@@ -34,10 +34,9 @@ package() {
     install -dm755 "${pkgdir}/usr/share/applications"
     install -dm755 "${pkgdir}/usr/share/icons/hicolor/48x48/apps"
 
-    install -m755 lib/fvim-linux-launcher "${pkgdir}/usr/bin/fvim"
     install Assets/fvim.png "${pkgdir}/usr/share/icons/hicolor/48x48/apps/fvim.png"
     install lib/fvim.desktop "${pkgdir}/usr/share/applications/fvim.desktop"
     cp -dpr bin/Release/netcoreapp3.0/linux-x64/* "${pkgdir}/usr/share/fvim"
     chmod 755 "${pkgdir}/usr/share/fvim/FVim"
-    chmod 755 "${pkgdir}/usr/bin/fvim"
+    ln -sf "${pkgdir}/usr/share/fvim/FVim" "${pkgdir}/usr/bin/fvim"
 }
