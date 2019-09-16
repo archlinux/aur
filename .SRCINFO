@@ -1,15 +1,15 @@
 pkgbase = palemoon-i18n-tr
 	pkgdesc = Turkish language pack for Pale Moon browser
-	pkgver = 28.6.1
+	pkgver = 28.7.0
 	pkgrel = 1
 	url = https://addons.palemoon.org/language-packs/
 	arch = any
 	license = MPL
 	license = GPL
 	depends = palemoon-i18n-common
-	noextract = palemoon-i18n-tr-28.6.1.xpi
-	source = palemoon-i18n-tr-28.6.1.xpi::http://addons.palemoon.org/?component=download&version=latest&id=langpack-tr@palemoon.org
-	sha256sums = b804e5687b8345950a6198919b6eb117f1806681a735fb56b4ea4be01285b912
+	noextract = palemoon-i18n-tr-28.7.0.xpi
+	source = palemoon-i18n-tr-28.7.0.xpi::https://addons.palemoon.org/?component=download&version=28.7.0&id=langpack-tr@palemoon.org
+	sha256sums = 2360ff0a8b0c7d66055cc9b69826f21f7e06360a1e3c8c55f7abbebdf3dbbb5c
 
 pkgname = palemoon-i18n-tr
 
