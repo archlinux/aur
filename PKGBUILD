@@ -3,7 +3,7 @@
 _projname='NExtGen'
 _appname="${_projname,,}"
 pkgname="${_appname}-git"
-pkgver='r1.18b14f3'
+pkgver='r2.049d4dd'
 pkgrel=1
 pkgdesc="A small bash script that lets you easily set up a new extension project for GNOME's Nautilus file manager"
 arch=('any')
@@ -31,7 +31,7 @@ package() {
 	install -dm755 "${pkgdir}/usr/share/doc/${_appname}"
 
 	cp -a "${srcdir}/${_projname}"/* "${pkgdir}/usr/share/${_appname}"
-	mv "${pkgdir}/usr/share/${_appname}"/{COPYING,README.md} "${pkgdir}/usr/share/doc/${_appname}/"
+	mv "${pkgdir}/usr/share/${_appname}"/{COPYING,README.md,ChangeLog.md} "${pkgdir}/usr/share/doc/${_appname}/"
 	rm -f "${pkgdir}/usr/share/${_appname}/package.json"
 	ln -s "/usr/share/${_appname}/${_appname}.sh" "${pkgdir}/usr/bin/${_appname}"
 
