@@ -1,22 +1,21 @@
 #Arch Linux PKGBUILD
 #
-#Maintainer: Fux <dfucini[at]gmail[dot]com>
+#Maintainer: Daniele Fucini <dfucini@gmail.com>
 #
 
 pkgname=simple-backup
-pkgver=1.4.r0.g97d1a14
+pkgver=2.0.0.r3.gc61c704
 pkgrel=1
-pkgdesc='Simple backup script that uses rsync'
+pkgdesc='Simple backup script that uses rsync to copy files'
 arch=('any')
-url="https://github.com/Fuxino"
-license=('GPL')
+url="https://github.com/Fuxino/simple-backup.git"
+license=('GPL3')
 makedepends=('git')
-depends=('rsync')
+depends=('python3'
+         'rsync')
 install=${pkgname}.install
-source=(git+https://github.com/Fuxino/$pkgname.git
-        config)
-sha256sums=('SKIP'
-            'd8b88cbb4e6d9cae68c1605496880065337484dff8ee4c06dce2578357e95574')
+source=(git+https://github.com/Fuxino/${pkgname}.git)
+sha256sums=('SKIP')
 
 pkgver() 
 {  
@@ -26,6 +25,6 @@ pkgver()
 
 package()
 {
-   install -Dm755 "${srcdir}/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-   install -Dm644 "${srcdir}/config" "${pkgdir}/etc/${pkgname}/config"
+   install -Dm755 "${srcdir}/${pkgname}/${pkgname}.py" "${pkgdir}/usr/bin/${pkgname}"
+   install -Dm644 "${srcdir}/${pkgname}/config" "${pkgdir}/etc/${pkgname}/config"
 }
