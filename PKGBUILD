@@ -2,7 +2,7 @@
 #Contributor: Maël Leclair <mael.leclair@gmail.com>
 pkgname=grisbi-git
 _pkgname=grisbi
-pkgver=1.2.1.r73.ga371737a
+pkgver=1.2.1.r85.ge0d1e203
 pkgrel=1
 pkgdesc="Personal financial management program"
 arch=('any')
