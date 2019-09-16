@@ -11,7 +11,7 @@ url='http://cclive.sourceforge.net/'
 license=('AGPL3')
 depends=('boost-libs' 'pcre' 'curl' 'libquvi' 'glibmm')
 makedepends=('boost')
-source=("http://downloads.sourceforge.net/project/${pkgname}/${pkgver%.*}/${pkgname}-${pkgver}.tar.xz"{,.sig}
+source=("https://downloads.sourceforge.net/project/${pkgname}/${pkgver%.*}/${pkgname}-${pkgver}.tar.xz"{,.sig}
         iostream.patch
         boost-1.67.patch
         boost.m4) # https://github.com/tsuna/boost.m4
