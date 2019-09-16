@@ -1,0 +1,19 @@
+pkgbase = hexchat-fishlim-reloaded-git
+	pkgdesc = FiSHLiM support to HexChat with with steroids!
+	pkgver = r4.4a8f9ab
+	pkgrel = 1
+	url = https://github.com/BakasuraRCE/hexchat-fishlim-reloaded
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	depends = hexchat
+	depends = openssl>=0.9.8
+	provides = hexchat-fishlim-reloaded
+	conflicts = hexchat-fishlim-reloaded
+	source = hexchat-fishlim-reloaded-git::git+https://github.com/BakasuraRCE/hexchat-fishlim-reloaded
+	sha256sums = SKIP
+
+pkgname = hexchat-fishlim-reloaded-git
+
