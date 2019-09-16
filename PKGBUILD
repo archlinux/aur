@@ -2,15 +2,15 @@
 
 pkgbase=python-parallax
 pkgname=('python-parallax' 'python2-parallax')
-pkgver=1.0.3
-pkgrel=2
+pkgver=1.0.5
+pkgrel=1
 pkgdesc="Execute commands and copy files over SSH to multiple machines at once"
 arch=('any')
 license=('BSD')
 url="https://github.com/krig/parallax"
 makedepends=('python-setuptools' 'python2-setuptools')
 source=("$url/archive/$pkgver.tar.gz")
-sha256sums=('6a0199ea1c3fedd84ea25ab9a1a2c7b7a30e6484331dc33b03ee4e23b5f7b239')
+sha256sums=('58314ab63be40f3209dd4a06f6cbba952da54b2a1f152d889ed3b3291b87bed3')
 
 prepare() {
   cd "$srcdir"

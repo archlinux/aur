@@ -1,14 +1,14 @@
 pkgbase = python-parallax
 	pkgdesc = Execute commands and copy files over SSH to multiple machines at once
-	pkgver = 1.0.3
-	pkgrel = 2
+	pkgver = 1.0.5
+	pkgrel = 1
 	url = https://github.com/krig/parallax
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = https://github.com/krig/parallax/archive/1.0.3.tar.gz
-	sha256sums = 6a0199ea1c3fedd84ea25ab9a1a2c7b7a30e6484331dc33b03ee4e23b5f7b239
+	source = https://github.com/krig/parallax/archive/1.0.5.tar.gz
+	sha256sums = 58314ab63be40f3209dd4a06f6cbba952da54b2a1f152d889ed3b3291b87bed3
 
 pkgname = python-parallax
 	depends = python
