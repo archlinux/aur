@@ -7,7 +7,7 @@ pkgdesc="A milter program for domain authentication technologies (including SPF,
 arch=('i686' 'x86_64')
 depends=('ldns' 'libmilter')
 makedepends=('git')
-url="https://github.com/h2o/h2o"
+url="https://github.com/iij/yenma"
 license=('BSD-2')
 source=(
   'git+https://github.com/iij/yenma' 'gh-pr-11.patch'
