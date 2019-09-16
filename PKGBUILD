@@ -6,7 +6,7 @@ url='https://wiki.ros.org/xmlrpcpp'
 pkgname='ros-melodic-xmlrpcpp'
 pkgver='1.14.3'
 arch=('any')
-pkgrel=0
+pkgrel=1
 license=('LGPL-2.1')
 
 ros_makedepends=(
