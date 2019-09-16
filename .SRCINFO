@@ -1,6 +1,6 @@
 pkgbase = linux-clear-current
 	pkgver = 5.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/clearlinux-pkgs/linux-current
 	arch = x86_64
 	license = GPL2
@@ -12,8 +12,9 @@ pkgbase = linux-clear-current
 	makedepends = libelf
 	makedepends = xmlto
 	options = !strip
-	source = https://git.kernel.org/torvalds/t/linux-5.3-rc8.tar.gz
-	source = clearlinux-current::git+https://github.com/clearlinux-pkgs/linux-current.git#tag=5.3.0-5
+	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.3.tar.xz
+	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.3.tar.sign
+	source = clearlinux-current::git+https://github.com/clearlinux-pkgs/linux-current.git#tag=5.3.0-7
 	source = enable_additional_cpu_optimizations-20190822.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20190822.tar.gz
 	source = 60-linux.hook
 	source = 90-linux.hook
@@ -21,7 +22,8 @@ pkgbase = linux-clear-current
 	source = linux.preset
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	sha256sums = f2438baf7672aa86e5cc8a82beca86af4b4debe4fcce8fa8535f4e955647f906
+	sha256sums = 78f3c397513cf4ff0f96aa7d09a921d003e08fa97c09e0bb71d88211b40567b2
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5
 	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21

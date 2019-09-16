@@ -60,11 +60,11 @@ _localmodcfg=
 
 _major=5.3
 _minor=0
-_srcname=linux-${_major}-rc8
-_clr=${_major}.0-5
+_srcname=linux-${_major}
+_clr=${_major}.0-7
 pkgbase=linux-clear-current
 pkgver=${_major}.${_minor}
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux-current"
 license=('GPL2')
@@ -72,7 +72,8 @@ makedepends=('bc' 'cpio' 'git' 'inetutils' 'kmod' 'libelf' 'xmlto')
 options=('!strip')
 _gcc_more_v='20190822'
 source=(
-  "https://git.kernel.org/torvalds/t/${_srcname}.tar.gz"
+  "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.tar.xz"
+  "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.tar.sign"
   "clearlinux-current::git+https://github.com/clearlinux-pkgs/linux-current.git#tag=${_clr}"
   "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
   '60-linux.hook'  # pacman hook for depmod
@@ -319,7 +320,8 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha256sums=('f2438baf7672aa86e5cc8a82beca86af4b4debe4fcce8fa8535f4e955647f906'
+sha256sums=('78f3c397513cf4ff0f96aa7d09a921d003e08fa97c09e0bb71d88211b40567b2'
+            'SKIP'
             'SKIP'
             '8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
