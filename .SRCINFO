@@ -1,6 +1,6 @@
 pkgbase = python-todo-t
 	pkgdesc = Command-line todo list manager
-	pkgver = 0
+	pkgver = 0.r87.2491982
 	pkgrel = 1
 	url = https://github.com/sjl/t.git
 	arch = any
