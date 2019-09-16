@@ -1,4 +1,4 @@
-From e30c4fdcabb7e2500c632636d99e7e987870fac4 Mon Sep 17 00:00:00 2001
+From cb6022a7261bbec2b44c373e5a83dab039467b73 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Michael=20La=C3=9F?= <lass@mail.uni-paderborn.de>
 Date: Thu, 19 Feb 2015 19:34:00 +0100
 Subject: [PATCH] Adjust RedHat config and service files
@@ -8,14 +8,13 @@ Basically we reuse upstream's config for RedHat but we change a few things:
  * adjust paths to match ArchLinux packaging
  * remove the dynamic creation of CellServDB
  * enable network traffic encryption by default
- * wait for dkms if dkms is used
 
-Change-Id: I44dea414d837f51fc69c52e54d99aee130820e30
+Change-Id: I58edd1c30b0915624a386bbae96879345d7e8b4b
 ---
  src/packaging/RedHat/openafs-cacheinfo      |  2 +-
- src/packaging/RedHat/openafs-client.service | 17 ++++++++---------
+ src/packaging/RedHat/openafs-client.service | 15 +++++++--------
  src/packaging/RedHat/openafs-server.service |  4 ++--
- 3 files changed, 11 insertions(+), 12 deletions(-)
+ 3 files changed, 10 insertions(+), 11 deletions(-)
 
 diff --git a/src/packaging/RedHat/openafs-cacheinfo b/src/packaging/RedHat/openafs-cacheinfo
 index dd0fd05cb..1663c79b5 100755
@@ -25,17 +24,10 @@ index dd0fd05cb..1663c79b5 100755
 -/afs:/usr/vice/cache:100000
 +/afs:/var/cache/openafs:100000
 diff --git a/src/packaging/RedHat/openafs-client.service b/src/packaging/RedHat/openafs-client.service
-index 09379bea3..a63fce486 100644
+index f79240c7f..a63fce486 100644
 --- a/src/packaging/RedHat/openafs-client.service
 +++ b/src/packaging/RedHat/openafs-client.service
-@@ -1,21 +1,20 @@
- [Unit]
- Description=OpenAFS Client Service
- Wants=network-online.target
--After=syslog.target network-online.target
-+After=syslog.target network-online.target dkms.service
- Before=remote-fs.target
- 
+@@ -7,15 +7,14 @@ Before=remote-fs.target
  [Service]
  Type=forking
  RemainAfterExit=true
@@ -74,5 +66,5 @@ index ac9d3c411..0a4b3bfea 100644
  
  [Install]
 -- 
-2.17.0
+2.23.0
 
