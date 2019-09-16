@@ -1,4 +1,5 @@
 # Maintainer: Devin J. Pohly <djpohly+arch@gmail.com>
+# Maintainer: Martin Kröning <m.kroening@hotmail.de>
 # Contributor: sl1pkn07
 # Contributor: Ryan Peters <sloshy45 at sbcglobal dot net>
 # Contributor: Artefact2 <artefact2@gmail.com>
@@ -6,86 +7,74 @@
 # Contributor: Travis Nickles <ryoohki7@yahoo.com>
 # Contributor: Stefan Lohmaier <noneuss at gmail dot com>
 # Contributor: Dan Guzek <dguzek@gmail.com>
+
 pkgname=stepmania-git
-_shortname=stepmania
-pkgver=5.1.0a3+183+g500cfdfb62
+pkgver=5.1.0_b2_362_g75d9400cb0
 pkgrel=1
-pkgdesc="Advanced cross-platform rhythm game designed for home and arcade use"
-arch=('i686' 'x86_64')
-url="http://www.stepmania.com/"
-license=('MIT')
-depends=('gtk2' 'libmad' 'jack' 'libpulse' 'libva')
-makedepends=('git' 'cmake' 'yasm' 'glew')
-provides=('stepmania=5.1')
-conflicts=('stepmania')
-replaces=('sm-ssc-hg')
-install="$pkgname.install"
-source=("git+https://github.com/$_shortname/$_shortname.git"
-        # Renamed to avoid conflict with clones from old URL
-        "fmtlib::git+https://github.com/fmtlib/fmt.git"
-        "git+https://github.com/$_shortname/ffmpeg.git"
-        "git+https://github.com/$_shortname/googletest.git"
-        "git+https://github.com/$_shortname/ogg.git"
-        "git+https://github.com/$_shortname/vorbis.git"
-        "git+https://github.com/$_shortname/libtomcrypt.git"
-        "git+https://github.com/$_shortname/libtommath.git"
-        "$_shortname.sh")
+pkgdesc="An advanced rhythm game designed for both home and arcade use"
+arch=(x86_64)
+url="https://www.stepmania.com/"
+license=(MIT)
+depends=(ffmpeg glew gtk2 libmad libtommath)
+makedepends=(cmake git ninja)
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("git+https://github.com/${pkgname%-git}/${pkgname%-git}.git"
+        '0001-GtkModule-Add-harfbuzz-dependency.patch')
 sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'f9839a0c751fee40a5c21712110bce9f3b73863ece404f1c7e468d0fc1b528eb')
+            'e14451013f32aba41b37ae0c4b4ee5963eccb47e011843bf52f7e5fdc1034468')
 
 pkgver() {
-  cd "$srcdir/$_shortname"
-  git describe --long --tags | sed -e 's/-/+/g' -e 's/^v//'
+	cd ${pkgname%-git}
+	git describe --tags | sed 's/^v//;s/-/_/g'
 }
 
 prepare() {
-  cd "$srcdir/$_shortname"
-
-  # Use local clones for submodules
-  git submodule init
-  git config submodule.extern/cppformat.url "$srcdir/fmtlib"
-  git config submodule.extern/ffmpeg-git.url "$srcdir/ffmpeg"
-  git config submodule.extern/googletest.url "$srcdir/googletest"
-  git config submodule.extern/libogg-git.url "$srcdir/ogg"
-  git config submodule.extern/libvorbis-git.url "$srcdir/vorbis"
-  git config submodule.extern/tomcrypt.url "$srcdir/libtomcrypt"
-  git config submodule.extern/tommath.url "$srcdir/libtommath"
-  git submodule update
+	cd ${pkgname%-git}
+  mkdir build
+  # Related issue: Harfbuzz includes missing
+  # https://github.com/stepmania/stepmania/issues/1850
+	patch -p1 -i "$srcdir/0001-GtkModule-Add-harfbuzz-dependency.patch"
 }
 
 build() {
-  cd "$srcdir/$_shortname/Build"
-  cmake -D WITH_MINIMAID=OFF ..
-  make
+  cd ${pkgname%-git}/build
+  # # Related issues
+  # * OpenGL GL preference: https://github.com/stepmania/stepmania/issues/1859
+  # * system libpng: https://github.com/stepmania/stepmania/issues/1881
+  # * system tomcrypt: https://github.com/stepmania/stepmania/issues/1885
+  # * system jsoncpp: https://github.com/stepmania/stepmania/issues/1883
+  cmake -G Ninja .. \
+    -DCMAKE_INSTALL_PREFIX=/opt \
+    -DOpenGL_GL_PREFERENCE=GLVND \
+    -DWITH_LTO=ON \
+    -DWITH_SYSTEM_PNG=OFF \
+    -DWITH_SYSTEM_OGG=ON \
+    -DWITH_SYSTEM_GLEW=ON \
+    -DWITH_SYSTEM_TOMMATH=ON \
+    -DWITH_SYSTEM_TOMCRYPT=OFF \
+    -DWITH_SYSTEM_MAD=ON \
+    -DWITH_SYSTEM_JSONCPP=OFF \
+    -DWITH_SYSTEM_JPEG=ON \
+    -DWITH_SYSTEM_PCRE=ON \
+    -DWITH_SYSTEM_ZLIB=ON \
+    -DWITH_SYSTEM_FFMPEG=ON
+  cmake --build .
 }
 
 package() {
-  cd "$srcdir/$_shortname"
+  cd ${pkgname%-git}
+  DESTDIR="$pkgdir" cmake --install build
 
-  # Install program
-  install -d "$pkgdir/opt/$_shortname"/{RandomMovies,Packages}
-  install -t "$pkgdir/opt/$_shortname/" stepmania GtkModule.so
-  install -D "$srcdir/$_shortname.sh" "$pkgdir/usr/bin/$_shortname"
-
-  # Install miscellaneous directories
-  cp -r -t "$pkgdir/opt/$_shortname/" Announcers BGAnimations BackgroundEffects \
-      BackgroundTransitions Characters Courses Data Docs NoteSkins Scripts \
-      Songs Themes
+  # Symlink stepmania binary which is located in /opt
+  install -d "$pkgdir/usr/bin"
+  ln -sf /opt/${pkgname%-git}-5.1/${pkgname%-git} "$pkgdir/usr/bin/${pkgname%-git}"
 
   # Install auxiliary files
-  install -Dm644 stepmania.desktop "$pkgdir/usr/share/applications/stepmania.desktop"
+  install -Dt "$pkgdir/usr/share/applications" -m644 "$srcdir/${pkgname%-git}/${pkgname%-git}.desktop"
   install -d "$pkgdir/usr/share"
-  cp -r icons "$pkgdir/usr/share/icons"
+  cp -r "$srcdir/${pkgname%-git}/icons" "$pkgdir/usr/share/icons"
 
   # Install license
-  install -Dm644 "Docs/Licenses.txt" "$pkgdir/usr/share/licenses/$pkgname/Licenses.txt"
+  install -Dm644 Docs/Licenses.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-
-# vim:set ts=2 sw=2 et:
