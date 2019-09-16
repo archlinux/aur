@@ -7,7 +7,7 @@ pkgname='ros-melodic-gazebo-msgs'
 pkgver='2.8.5'
 _pkgver_patch=0
 arch=('any')
-pkgrel=0
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-melodic-std-msgs
