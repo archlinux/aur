@@ -1,15 +1,15 @@
 pkgbase = palemoon-i18n-bg
 	pkgdesc = Bulgarian language pack for Pale Moon browser
-	pkgver = 28.6.1
+	pkgver = 28.7.0
 	pkgrel = 1
 	url = https://addons.palemoon.org/language-packs/
 	arch = any
 	license = MPL
 	license = GPL
 	depends = palemoon-i18n-common
-	noextract = palemoon-i18n-bg-28.6.1.xpi
-	source = palemoon-i18n-bg-28.6.1.xpi::http://addons.palemoon.org/?component=download&version=latest&id=langpack-bg@palemoon.org
-	sha256sums = 698f27274759536a9242ca9c9415a4b1fedad3574dab7ea7484a06ec18d9e9f5
+	noextract = palemoon-i18n-bg-28.7.0.xpi
+	source = palemoon-i18n-bg-28.7.0.xpi::https://addons.palemoon.org/?component=download&version=28.7.0&id=langpack-bg@palemoon.org
+	sha256sums = bb771b94adece586fc9cd99a4bdcf2b0e9f9d71661021d62de1831d2ba350c0f
 
 pkgname = palemoon-i18n-bg
 
