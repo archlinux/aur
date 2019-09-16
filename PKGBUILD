@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
 pkgname=jdsp4linux-gui
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="User Interface for JamesDSP on Linux"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('jdsp4linux' 'qt5-multimedia' 'mesa')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
         "$pkgname.desktop")
-sha256sums=('d718384b13e650d974d092a6c7e181e0ff42215e22d9db05c1a181da72575f6d'
+sha256sums=('53f5975582ff152063bd69866d68343eadd5ef77d39e8278c67968bfdd3943d6'
             'fa8ed0bee321c7fed6d2368d0bdf6fd12a3318e324bbda50ec6dbe7e3b784794')
 
 build() {
