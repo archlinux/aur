@@ -1,16 +1,16 @@
+# Contributor: Kyle Keen <keenerd@gmail.com>
 # Maintainer: Jakob <grandchild@gmx.net>
 pkgname=zeromq-draft
 _pkgname=zeromq
 pkgver=4.3.2
 _cppver=4.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast messaging system built on sockets. C and C++ bindings. aka 0MQ, ZMQ. With draft APIs."
 arch=('x86_64')
 url="http://www.zeromq.org"
 license=('LGPL')
 depends=('gcc-libs' 'util-linux' 'libsodium' 'libpgm')
 makedepends=('asciidoc' 'xmlto')
-provides=('zeromq')
 conflicts=('zeromq')
 options=('staticlibs')
 # "http://download.zeromq.org/$_pkgname-$pkgver.tar.gz"
