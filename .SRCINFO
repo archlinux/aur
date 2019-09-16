@@ -1,6 +1,6 @@
 pkgbase = kronosnet-git
 	pkgdesc = VPNs on steroids
-	pkgver = 1.90.r231.gef4c981
+	pkgver = 1.90.r405.g63d5a3e
 	pkgrel = 1
 	url = http://www.kronosnet.org/
 	arch = i686
@@ -12,6 +12,7 @@ pkgbase = kronosnet-git
 	makedepends = libqb-git
 	depends = nss
 	depends = lzo
+	depends = zstd
 	provides = kronosnet
 	conflicts = kronosnet
 	source = kronosnet-git::git+https://github.com/fabbione/kronosnet.git
