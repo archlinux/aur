@@ -1,15 +1,15 @@
 pkgbase = node-spellchecker
 	pkgdesc = node.js bindings to native spellchecker
-	pkgver = 3.5.2
+	pkgver = 3.7.0
 	pkgrel = 1
 	url = http://atom.github.io/node-spellchecker
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	noextract = spellchecker-3.5.2.tgz
-	source = https://registry.npmjs.org/spellchecker/-/spellchecker-3.5.2.tgz
-	sha256sums = 81925bed54eb7cd8d0cee664bb2877277a2d22a2be6fbf6ba100f7951c7c0684
+	noextract = spellchecker-3.7.0.tgz
+	source = https://registry.npmjs.org/spellchecker/-/spellchecker-3.7.0.tgz
+	sha256sums = 7cba92d59735486a7edf79c0ed91f94374b405bd6e6a1f2ae6a041fd1350b083
 
 pkgname = node-spellchecker
 
