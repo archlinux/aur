@@ -7,7 +7,7 @@ pkgname='ros-melodic-rqt-plot'
 pkgver='0.4.9'
 _pkgver_patch=0
 arch=('any')
-pkgrel=0
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
