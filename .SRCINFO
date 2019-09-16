@@ -1,0 +1,12 @@
+pkgbase = iwlwifi-7265-ucode
+	pkgdesc = Intel® Dual Band Wireless-AC 3165, Intel® Dual Band Wireless-AC 7265, Intel® Dual Band Wireless-N 7265, Intel® Wireless-N 7265 firmware
+	pkgver = 25.30.14.0
+	pkgrel = 1
+	url = https://wireless.wiki.kernel.org
+	arch = any
+	license = custom
+	source = https://wireless.wiki.kernel.org/_media/en/users/drivers/iwlwifi-7265-ucode-25.30.14.0.tgz
+	sha256sums = 78611530b73e8abc9bd2da358b9d260ff7ab8e6df6925d9d8ed587ecbddb4396
+
+pkgname = iwlwifi-7265-ucode
+
