@@ -2,7 +2,7 @@
 
 _name=certainly
 pkgname="$_name-bin"
-pkgver=1.7.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="The easiest way to create self-signed certificates. Ever."
 url='https://github.com/passcod/certainly'
@@ -17,4 +17,4 @@ package() {
   install -Dm644 "$_name.1" "$pkgdir/usr/share/man/man1/$_name.1"
 }
 
-sha512sums=('6204b63291866a463e874c5c9a23ad3d8809ad59d668251ea20ed6934f61c248f23cb9fa6fffad46fdda2f3a7322d1219deaf8108f271b74bc26f6a45300bd0a')
+sha512sums=('09d3fcc7257b691fc41c33a77e2f28d8bf44d3d03dffa390b2e2fa839b8f323a303a91aa24538766cd3e062e970295e9f140421e2fa4b8eee501f39dd9dea714')
