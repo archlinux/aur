@@ -1,15 +1,15 @@
 pkgbase = palemoon-i18n-ko
 	pkgdesc = Korean language pack for Pale Moon browser
-	pkgver = 28.6.1
+	pkgver = 28.7.0
 	pkgrel = 1
 	url = https://addons.palemoon.org/language-packs/
 	arch = any
 	license = MPL
 	license = GPL
 	depends = palemoon-i18n-common
-	noextract = palemoon-i18n-ko-28.6.1.xpi
-	source = palemoon-i18n-ko-28.6.1.xpi::http://addons.palemoon.org/?component=download&version=latest&id=langpack-ko@palemoon.org
-	sha256sums = 26193a6fafbac919a6f74d83b5090d2f1ad4fbd4bfdb5132e86ee4dbe15e2af9
+	noextract = palemoon-i18n-ko-28.7.0.xpi
+	source = palemoon-i18n-ko-28.7.0.xpi::https://addons.palemoon.org/?component=download&version=28.7.0&id=langpack-ko@palemoon.org
+	sha256sums = fc447453dd553cc10fa0a0be3e735e71633fc102a5e5bf0cd70dad29b0989cde
 
 pkgname = palemoon-i18n-ko
 
