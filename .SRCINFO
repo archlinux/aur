@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-diff-drive-controller
 	pkgdesc = ROS - Controller for a differential drive mobile base.
 	pkgver = 0.15.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/ros-controls/ros_controllers/wiki
 	arch = any
 	license = BSD
