@@ -1,6 +1,6 @@
 pkgbase = gst-plugin-jamesdsp-git
 	pkgdesc = JamesDSP wrapper plugin for GStreamer
-	pkgver = r14.378f0fa
+	pkgver = r24.5d256a8
 	pkgrel = 1
 	url = https://github.com/ThePBone/gst-plugin-jamesdsp
 	install = gst-plugin-jamesdsp.install
@@ -8,6 +8,7 @@ pkgbase = gst-plugin-jamesdsp-git
 	license = GPL2
 	makedepends = git
 	depends = gst-plugins-base-libs
+	depends = libsamplerate
 	provides = gst-plugin-jamesdsp
 	conflicts = gst-plugin-jamesdsp
 	conflicts = gst-plugin-viper4linux
