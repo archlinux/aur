@@ -1,14 +1,14 @@
 pkgbase = amulet
 	pkgdesc = Lua-based audio / visual toolkit for small-scope games and experimentation
-	pkgver = 1.20.1
+	pkgver = 1.21.2
 	pkgrel = 1
 	url = http://www.amulet.xyz/
 	arch = x86_64
 	license = MIT
 	depends = gcc-libs-multilib
 	options = !strip
-	source = https://github.com/ianmaclarty/amulet/releases/download/v1.20.1/amulet-v1.20.1-linux.zip
-	md5sums = b700dc787e876e424ea94ecfe4dde9fe
+	source = https://github.com/ianmaclarty/amulet/releases/download/v1.21.2/amulet-v1.21.2-linux.zip
+	md5sums = 846532d21f0818cfaf970e2a68c2bb40
 
 pkgname = amulet
 
