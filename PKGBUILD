@@ -1,7 +1,7 @@
 # Maintainer: Iwan Timmer <irtimmer@gmail.com>
 
 pkgname=ddcci-driver-linux-dkms
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="A pair of Linux kernel drivers for DDC/CI monitors (DKMS)"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL2')
 depends=('dkms')
 conflicts=("ddcci-driver-linux")
 source=("https://gitlab.com/ddcci-driver-linux/ddcci-driver-linux/-/archive/v${pkgver}/ddcci-driver-linux-v${pkgver}.tar.gz")
-md5sums=('2592ba497fa11fbbb0e8cf0b7a35fdc4')
+md5sums=('b4dc5899c108e826c7c9a6b553be2b7f')
 
 package() {
   cd "ddcci-driver-linux-v${pkgver}"
