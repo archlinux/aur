@@ -14,6 +14,7 @@ md5sums=('dfbfdd00f455ba9b4a110971118bf289')
 
 prepare() {
   mkdir -p build
+  sed -e 's/-Werror//' -i $pkgname-*/common-project-config.pri
 }
 
 build() {
