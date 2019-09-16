@@ -1,7 +1,7 @@
 From 1f5dc25333082122907dee4306627bd6da82b4bc Mon Sep 17 00:00:00 2001
 From: Tk-Glitch <ti3nou@gmail.com>
 Date: Mon, 8 Jul 2019 03:48:37 +0200
-Subject: PDS 099o, 5.2 rebase
+Subject: PDS 099o, 5.3 rebase
 
 
 diff --git a/Documentation/scheduler/sched-PDS-mq.txt b/Documentation/scheduler/sched-PDS-mq.txt
@@ -66,10 +66,10 @@ index 000000000000..709e86f6487e
 +
 +
 +To be continued...
-diff --git a/Documentation/sysctl/kernel.txt b/Documentation/sysctl/kernel.txt
+diff --git a/Documentation/admin-guide/sysctl/kernel.rst b/Documentation/admin-guide/sysctl/kernel.rst
 index f0c86fbb3b48..0e4ff65132c9 100644
---- a/Documentation/sysctl/kernel.txt
-+++ b/Documentation/sysctl/kernel.txt
+--- a/Documentation/admin-guide/sysctl/kernel.rst
++++ b/Documentation/admin-guide/sysctl/kernel.rst
 @@ -77,6 +77,7 @@ show up in /proc/sys/kernel:
  - randomize_va_space
  - real-root-dev               ==> Documentation/admin-guide/initrd.rst
@@ -85,7 +85,8 @@ index f0c86fbb3b48..0e4ff65132c9 100644
 +- yield_type
  - version
  
- ==============================================================
+ 
+ acct:
 @@ -881,6 +883,20 @@ rebooting. ???
  
  ==============================================================
@@ -380,19 +381,6 @@ index 0cb034331cbb..eb2d51ef8afa 100644
  
  static inline bool dl_time_before(u64 a, u64 b)
  {
-diff --git a/include/linux/sched/nohz.h b/include/linux/sched/nohz.h
-index b36f4cf38111..46bbab702a3b 100644
---- a/include/linux/sched/nohz.h
-+++ b/include/linux/sched/nohz.h
-@@ -6,7 +6,7 @@
-  * This is the interface between the scheduler and nohz/dynticks:
-  */
- 
--#if defined(CONFIG_SMP) && defined(CONFIG_NO_HZ_COMMON)
-+#if defined(CONFIG_SMP) && defined(CONFIG_NO_HZ_COMMON) && !defined(CONFIG_SCHED_PDS)
- extern void cpu_load_update_nohz_start(void);
- extern void cpu_load_update_nohz_stop(void);
- #else
 diff --git a/include/linux/sched/prio.h b/include/linux/sched/prio.h
 index 7d64feafc408..fba04bb91492 100644
 --- a/include/linux/sched/prio.h
@@ -706,7 +694,7 @@ diff --git a/init/init_task.c b/init/init_task.c
 index c70ef656d0f4..051fb66f53b7 100644
 --- a/init/init_task.c
 +++ b/init/init_task.c
-@@ -60,6 +60,125 @@ struct task_struct init_task
+@@ -60,6 +60,126 @@ struct task_struct init_task
  	__init_task_data
  #endif
  = {
@@ -724,7 +712,8 @@ index c70ef656d0f4..051fb66f53b7 100644
 +	.normal_prio	= NORMAL_PRIO,
 +	.deadline	= 0, /* PDS only */
 +	.policy		= SCHED_NORMAL,
-+	.cpus_allowed	= CPU_MASK_ALL,
++	.cpus_ptr	= &init_task.cpus_mask,
++	.cpus_mask	= CPU_MASK_ALL,
 +	.nr_cpus_allowed= NR_CPUS,
 +	.mm		= NULL,
 +	.active_mm	= &init_mm,
@@ -990,12 +979,12 @@ index 962cf343f798..2821ce592b89 100644
   * used for frequency selection given the linear relation: f = u * f_max.
 @@ -283,6 +284,13 @@ static unsigned long sugov_get_util(struct sugov_cpu *sg_cpu)
  
- 	return schedutil_freq_util(sg_cpu->cpu, util, max, FREQUENCY_UTIL);
+ 	return schedutil_cpu_util(sg_cpu->cpu, util, max, FREQUENCY_UTIL, NULL);
  }
 +#else /* CONFIG_SCHED_PDS */
 +static unsigned long sugov_get_util(struct sugov_cpu *sg_cpu)
 +{
-+	sg_cpu->max = arch_scale_cpu_capacity(NULL, sg_cpu->cpu);
++	sg_cpu->max = arch_scale_cpu_capacity(sg_cpu->cpu);
 +	return sg_cpu->max;
 +}
 +#endif
@@ -2355,7 +2344,7 @@ index 000000000000..3d9cab6ef354
 + */
 +static inline bool is_cpu_allowed(struct task_struct *p, int cpu)
 +{
-+	if (!cpumask_test_cpu(cpu, &p->cpus_allowed))
++	if (!cpumask_test_cpu(cpu, &p->cpus_mask))
 +		return false;
 +
 +	if (is_per_cpu_kthread(p))
@@ -2494,7 +2483,7 @@ index 000000000000..3d9cab6ef354
 +static inline void
 +set_cpus_allowed_common(struct task_struct *p, const struct cpumask *new_mask)
 +{
-+	cpumask_copy(&p->cpus_allowed, new_mask);
++	cpumask_copy(&p->cpus_mask, new_mask);
 +	p->nr_cpus_allowed = cpumask_weight(new_mask);
 +}
 +
@@ -2652,7 +2641,7 @@ index 000000000000..3d9cab6ef354
 +EXPORT_SYMBOL_GPL(kick_process);
 +
 +/*
-+ * ->cpus_allowed is protected by both rq->lock and p->pi_lock
++ * ->cpus_mask is protected by both rq->lock and p->pi_lock
 + *
 + * A few notes on cpu_active vs cpu_online:
 + *
@@ -2692,14 +2681,14 @@ index 000000000000..3d9cab6ef354
 +		for_each_cpu(dest_cpu, nodemask) {
 +			if (!cpu_active(dest_cpu))
 +				continue;
-+			if (cpumask_test_cpu(dest_cpu, &p->cpus_allowed))
++			if (cpumask_test_cpu(dest_cpu, &p->cpus_mask))
 +				return dest_cpu;
 +		}
 +	}
 +
 +	for (;;) {
 +		/* Any allowed, online CPU? */
-+		for_each_cpu(dest_cpu, &p->cpus_allowed) {
++		for_each_cpu(dest_cpu, &p->cpus_mask) {
 +			if (!is_cpu_allowed(p, dest_cpu))
 +				continue;
 +			goto out;
@@ -2839,7 +2828,7 @@ index 000000000000..3d9cab6ef354
 +{
 +	cpumask_t chk_mask;
 +
-+	if (unlikely(!cpumask_and(&chk_mask, &p->cpus_allowed, cpu_online_mask)))
++	if (unlikely(!cpumask_and(&chk_mask, &p->cpus_mask, cpu_online_mask)))
 +		return select_fallback_rq(task_cpu(p), p);
 +
 +	/* Check IDLE tasks suitable to run normal priority */
@@ -3379,7 +3368,7 @@ index 000000000000..3d9cab6ef354
 +#ifdef CONFIG_SMP
 +	/*
 +	 * Fork balancing, do it here and not earlier because:
-+	 * - cpus_allowed can change in the fork path
++	 * - cpus_mask can change in the fork path
 +	 * - any previously selected CPU might disappear through hotplug
 +	 * Use __set_task_cpu() to avoid calling sched_class::migrate_task_rq,
 +	 * as we're not fully set-up yet.
@@ -3946,7 +3935,7 @@ index 000000000000..3d9cab6ef354
 +	 * _something_ may have changed the task, double check again
 +	 */
 +	if (task_on_rq_queued(p) && task_rq(p) == rq &&
-+	    (cpu = cpumask_any_and(&p->cpus_allowed, &sched_cpu_sg_idle_mask)) < nr_cpu_ids)
++	    (cpu = cpumask_any_and(&p->cpus_mask, &sched_cpu_sg_idle_mask)) < nr_cpu_ids)
 +		rq = __migrate_task(rq, p, cpu);
 +
 +	raw_spin_unlock(&rq->lock);
@@ -3968,7 +3957,7 @@ index 000000000000..3d9cab6ef354
 +		return;
 +	curr = rq->curr;
 +	if (!is_idle_task(curr) &&
-+	    cpumask_intersects(&curr->cpus_allowed, &sched_cpu_sg_idle_mask)) {
++	    cpumask_intersects(&curr->cpus_mask, &sched_cpu_sg_idle_mask)) {
 +		int active_balance = 0;
 +
 +		if (likely(!rq->active_balance)) {
@@ -4271,7 +4260,7 @@ index 000000000000..3d9cab6ef354
 +			continue;
 +		if (p->prio >= filter_prio)
 +			break;
-+		if (cpumask_test_cpu(dest_cpu, &p->cpus_allowed)) {
++		if (cpumask_test_cpu(dest_cpu, &p->cpus_mask)) {
 +			detach_task(rq, p, dest_cpu);
 +			attach_task(dest_rq, p);
 +			nr_migrated++;
@@ -5172,7 +5161,7 @@ index 000000000000..3d9cab6ef354
 +		goto out;
 +	}
 +
-+	if (cpumask_equal(&p->cpus_allowed, new_mask))
++	if (cpumask_equal(&p->cpus_mask, new_mask))
 +		goto out;
 +
 +	if (!cpumask_intersects(new_mask, cpu_valid_mask)) {
@@ -5875,7 +5864,7 @@ index 000000000000..3d9cab6ef354
 +
 +long sched_setaffinity(pid_t pid, const struct cpumask *in_mask)
 +{
-+	cpumask_var_t cpus_allowed, new_mask;
++	cpumask_var_t cpus_mask, new_mask;
 +	struct task_struct *p;
 +	int retval;
 +
@@ -5897,7 +5886,7 @@ index 000000000000..3d9cab6ef354
 +		retval = -EINVAL;
 +		goto out_put_task;
 +	}
-+	if (!alloc_cpumask_var(&cpus_allowed, GFP_KERNEL)) {
++	if (!alloc_cpumask_var(&cpus_mask, GFP_KERNEL)) {
 +		retval = -ENOMEM;
 +		goto out_put_task;
 +	}
@@ -5919,27 +5908,27 @@ index 000000000000..3d9cab6ef354
 +	if (retval)
 +		goto out_unlock;
 +
-+	cpuset_cpus_allowed(p, cpus_allowed);
-+	cpumask_and(new_mask, in_mask, cpus_allowed);
++	cpuset_cpus_allowed(p, cpus_mask);
++	cpumask_and(new_mask, in_mask, cpus_mask);
 +again:
 +	retval = __set_cpus_allowed_ptr(p, new_mask, true);
 +
 +	if (!retval) {
-+		cpuset_cpus_allowed(p, cpus_allowed);
-+		if (!cpumask_subset(new_mask, cpus_allowed)) {
++		cpuset_cpus_allowed(p, cpus_mask);
++		if (!cpumask_subset(new_mask, cpus_mask)) {
 +			/*
 +			 * We must have raced with a concurrent cpuset
-+			 * update. Just reset the cpus_allowed to the
-+			 * cpuset's cpus_allowed
++			 * update. Just reset the cpus_mask to the
++			 * cpuset's cpus_mask
 +			 */
-+			cpumask_copy(new_mask, cpus_allowed);
++			cpumask_copy(new_mask, cpus_mask);
 +			goto again;
 +		}
 +	}
 +out_unlock:
 +	free_cpumask_var(new_mask);
 +out_free_cpus_allowed:
-+	free_cpumask_var(cpus_allowed);
++	free_cpumask_var(cpus_mask);
 +out_put_task:
 +	put_task_struct(p);
 +	put_online_cpus();
@@ -6000,7 +5989,7 @@ index 000000000000..3d9cab6ef354
 +		goto out_unlock;
 +
 +	task_access_lock_irqsave(p, &lock, &flags);
-+	cpumask_and(mask, &p->cpus_allowed, cpu_active_mask);
++	cpumask_and(mask, &p->cpus_mask, cpu_active_mask);
 +	task_access_unlock_irqrestore(p, lock, &flags);
 +
 +out_unlock:
@@ -6616,7 +6605,7 @@ index 000000000000..3d9cab6ef354
 +	 * allowed nodes is unnecessary.  Thus, cpusets are not
 +	 * applicable for such threads.  This prevents checking for
 +	 * success of set_cpus_allowed_ptr() on all attached tasks
-+	 * before cpus_allowed may be changed.
++	 * before cpus_mask may be changed.
 +	 */
 +	if (p->flags & PF_NO_SETAFFINITY)
 +		ret = -EINVAL;
@@ -6746,7 +6735,7 @@ index 000000000000..3d9cab6ef354
 +			continue;
 +
 +		/*
-+		 * Rules for changing task_struct::cpus_allowed are holding
++		 * Rules for changing task_struct::cpus_mask are holding
 +		 * both pi_lock and rq->lock, such that holding either
 +		 * stabilizes the mask.
 +		 *
@@ -8224,7 +8213,7 @@ index 1beca96fb625..53739e0782bf 100644
 +		.maxlen		= sizeof (int),
 +		.mode		= 0644,
 +		.proc_handler	= &proc_dointvec_minmax,
-+		.extra1		= &one,
++		.extra1		= SYSCTL_ONE,
 +		.extra2		= &one_thousand,
 +	},
 +	{
@@ -8233,7 +8222,7 @@ index 1beca96fb625..53739e0782bf 100644
 +		.maxlen		= sizeof (int),
 +		.mode		= 0644,
 +		.proc_handler	= &proc_dointvec_minmax,
-+		.extra1		= &zero,
++		.extra1		= SYSCTL_ZERO,
 +		.extra2		= &two,
 +	},
 +#endif
