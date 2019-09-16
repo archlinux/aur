@@ -48,10 +48,10 @@ _1k_HZ_ticks=
 pkgbase=linux-aufs
 # pkgname=('linux-aufs' 'linux-aufs-headers' 'linux-aufs-docs')
 _major=5.2
-_minor=14
+_minor=15
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=2
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/sfjro/aufs5-standalone"
 license=('GPL2')
@@ -72,7 +72,6 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "${_gcc_path}/${_gcc_patch}"
         "${_lucjanpath}/arch-patches-v3/0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch"
         "${_lucjanpath}/arch-patches-v3/0002-ZEN-Add-CONFIG-for-unprivileged_userns_clone.patch"
-        "${_lucjanpath}/arch-patches-v3/0003-Btrfs-fix-unwritten-extent-buffers-and-hangs-on-futu.patch"
          # the main kernel config files
         'config'
          # pacman hook for depmod
@@ -377,13 +376,12 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('a27fcabaeef23de4d57a716438ced451e98503b8215dac746ec8452ea5f1d2a61491bca1720ff6c998cce86083d5277e5d184cbb41b1c83c6083e6740847da69'
+sha512sums=('6f39aa9bc4e7abf269561d19b640eb06641509ade251b652dbfcacab1fa421c85069f60ee7ae1d470b674d79188a691c2d1b41442eed95764a5e45791e9cd0fd'
             'SKIP'
             '3271628997ac04b4f59f95eb165a6a85f43f8e177202d9597c91640dcb15c1274e8b245e2e18477600a2272f2c1080d86e68c09ddea844f679000a71d9be9859'
             '2eb574fbfac6e334d3b06e52e466dbf8e88034515729b6571990b10f75a0fe2a52f188615405c5a695b5820669e595deead44d7961a97c5872359be3435fdf63'
             'cd4baaf72032e00aee15d8a529d4695c30b220676ada2a1cfe4e36a323167f285b6df562325232c7e330288836dfa3fef702580af413a52553193f1e8c60f4a9'
             '17346950fbf68c96f3eaa7ac6ea7753f01633aed622586acd7d061661c8b433d861b686ed6e24c0442e89a6b98cc6a01aa1ce70a59e44415dce3131112740ead'
-            'e4c3537e1222e832abb032d8e945ac1be364c105d3d180152d79f70ad230f9370cb891ca231aa89b11ba3c03096131a0d944411d250d037ffa231ba893f9c819'
             'f7616fdd9d98ee6cebfd23d58ab6c2b641640830d26ed264ed49fbab542524291865244830c40a13c8f674bab9a321c62325e9b4982fb81a6073969a896b39df'
             '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
             '2718b58dbbb15063bacb2bde6489e5b3c59afac4c0e0435b97fe720d42c711b6bcba926f67a8687878bd51373c9cf3adb1915a11666d79ccb220bf36e0788ab7'
