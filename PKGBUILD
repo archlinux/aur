@@ -5,7 +5,7 @@
 
 pkgname=libxml2
 pkgver=2.9.9
-pkgrel=2
+pkgrel=3
 pkgdesc='XML parsing library, version 2'
 url='http://www.xmlsoft.org/'
 arch=(x86_64)
@@ -13,9 +13,11 @@ license=(MIT)
 depends=(zlib readline ncurses xz icu)
 makedepends=(python2 python git)
 _commit=f8a8c1f59db355b46962577e7b74f1a1e8149dc6  # tags/v2.9.9^0
-source=("git+https://git.gnome.org/browse/libxml2#commit=$_commit"
+source=("git+https://gitlab.gnome.org/GNOME/libxml2.git#commit=$_commit"
+        libxml2-2.9.8-python3-unicode-errors.patch
         https://www.w3.org/XML/Test/xmlts20130923.tar.gz)
 sha256sums=('SKIP'
+            '37eb81a8ec6929eed1514e891bff2dd05b450bcf0c712153880c485b7366c17c'
             '9b61db9f5dbffa545f4b8d78422167083a8568c59bd1129f94138f936cf6fc1f')
 
 pkgver() {
@@ -26,6 +28,10 @@ pkgver() {
 prepare() {
   mkdir build-py{2,3}
   cd $pkgname
+
+  # From https://src.fedoraproject.org/rpms/libxml2/tree/master
+  patch -Np1 -i ../libxml2-2.9.8-python3-unicode-errors.patch
+
   NOCONFIGURE=1 ./autogen.sh
 }
 
