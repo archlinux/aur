@@ -1,15 +1,15 @@
 pkgbase = palemoon-i18n-el
 	pkgdesc = Greek language pack for Pale Moon browser
-	pkgver = 28.6.1
+	pkgver = 28.7.0
 	pkgrel = 1
 	url = https://addons.palemoon.org/language-packs/
 	arch = any
 	license = MPL
 	license = GPL
 	depends = palemoon-i18n-common
-	noextract = palemoon-i18n-el-28.6.1.xpi
-	source = palemoon-i18n-el-28.6.1.xpi::http://addons.palemoon.org/?component=download&version=latest&id=langpack-el@palemoon.org
-	sha256sums = a572c992f77a4af0ca2be3e59765954e20f99632e4cbf1e8edc6247a881d7b9f
+	noextract = palemoon-i18n-el-28.7.0.xpi
+	source = palemoon-i18n-el-28.7.0.xpi::https://addons.palemoon.org/?component=download&version=28.7.0&id=langpack-el@palemoon.org
+	sha256sums = a4dbde0d0b8a00dbdd8fdfa1f662710655e3cba31cf4c2a7a0a565237fec174a
 
 pkgname = palemoon-i18n-el
 
