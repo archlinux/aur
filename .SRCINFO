@@ -6,6 +6,7 @@ pkgbase = fuf
 	install = fuf.install
 	arch = any
 	license = MIT
+	depends = ncurses
 	optdepends = w3m: image previews
 	provides = fuf
 	conflicts = fuf-git
