@@ -3,22 +3,39 @@
 # Contributor: Alexander Hunziker <alex.hunziker@gmail.com>
 # Contributor: Alessio Biancalana <dottorblaster@gmail.com>
 
-pkgname=gimp-git
-_pkgname=${pkgname%-git}
+pkgname=gimp-develop-git
+_pkgname=${pkgname%-develop-git}
 epoch=1
-pkgver=3.0.r42265.ff56a3af8d
+pkgver=2.99.1.r1398.f7ac033777
 pkgrel=1
 pkgdesc="GNU Image Manipulation Program"
 arch=('i686' 'x86_64')
 url="https://www.gimp.org"
 license=('GPL' 'LGPL')
-depends=('pygtk' 'lcms2' 'libwmf' 'icu' 'enchant'
-         'libgexiv2' 'librsvg' 'desktop-file-utils'
-         'libexif' 'libart-lgpl' 'dbus-glib' 'gtk-doc'
-         'poppler-glib' 'poppler-data' 'openexr' 'mypaint-brushes'
-         'babl' 'gegl' 'cairo' 'appstream-glib')
-makedepends=('git' 'gutenprint' 'intltool' 'gnome-python'
-             'alsa-lib' 'libxslt' 'glib-networking'
+depends=(
+	'pygtk>=2.10.4'
+	'lcms2>=2.8'
+	'libwmf>=0.2.8'
+	'icu'
+	'enchant'
+	'libgexiv2>=0.10.6'
+	'librsvg>=2.40.6'
+	'desktop-file-utils'
+	'libexif>=0.6.15'
+	'libart-lgpl>=2.3.19'
+	'dbus-glib'
+	'gtk-doc>=1.0'
+	'poppler-glib>=0.69.0'
+	'poppler-data>=0.4.9'
+	'openexr>=1.6.1'
+	'mypaint-brushes>=1.3.0'
+	'babl>=0.1.61'
+	'gegl>=0.4.13'
+	'cairo>=1.14.0'
+	'appstream-glib>=0.7.7'
+	)
+makedepends=('git' 'gutenprint>=5.0.0' 'intltool>=0.40.1' 'gnome-python>=2.16.2'
+             'alsa-lib>=1.0.0' 'libxslt' 'glib-networking'
              'alsa-lib' 'curl' 'ghostscript' 'libxpm' 'webkit2gtk'
              'libheif' 'libwebp' 'libmng' 'iso-codes' 'aalib' 'zlib')
 checkdepends=('xorg-server-xvfb')
@@ -34,8 +51,6 @@ optdepends=('gutenprint: for sophisticated printing only as gimp has built-in cu
             'iso-codes: Language support'
             'aalib: ASCII art support'
             'zlib: Compression routines')
-provides=('gimp')
-conflicts=('gimp')
 source=('git+https://gitlab.gnome.org/GNOME/gimp.git'
         'linux.gpl')
 sha512sums=('SKIP'
@@ -43,11 +58,7 @@ sha512sums=('SKIP'
 
 pkgver() {
   cd $_pkgname
-
-  printf "%s.r%s.%s" \
-  	$(cat configure.ac | grep '^m4_define(\[gimp_api_version\], \[.*\])' | sed -e 's|m4_define(\[gimp_api_version\], \[||' -e 's|\])||') \
-  	$(git rev-list --count HEAD) \
-  	$(git rev-parse --short HEAD)
+  printf %s.%s.%s.r%s.%s $(grep -oP 'gimp_(major|minor|micro)_version\], \[\K[0-9]{1,2}' configure.ac) $(git rev-list $(git describe --abbrev=0)..HEAD --count) $(git log --pretty=format:'%h' -n 1)
 }
 
 prepare() {
@@ -94,9 +105,17 @@ package() {
 
   make DESTDIR="$pkgdir" install
 
-  install -Dm 644 "$srcdir"/linux.gpl "$pkgdir"/usr/share/gimp/2.0/palettes/Linux.gpl
+  install -Dm 644 "$srcdir"/linux.gpl "$pkgdir"/usr/share/gimp/2.99/palettes/Linux.gpl
+  
+  #fix gimp.desktop
+  mv ${pkgdir}/usr/share/applications/gimp.desktop ${pkgdir}/usr/share/applications/gimp-2.99.desktop
+  sed -i 's/Icon=gimp/&-2.99/' ${pkgdir}/usr/share/applications/gimp-2.99.desktop
 
-  ln -s gimptool-2.0 "$pkgdir"/usr/bin/gimptool
-  ln -sf gimptool-2.0.1.gz "$pkgdir"/usr/share/man/man1/gimptool.1.gz
+  #fix icons
+  for icon in $(find ${pkgdir}/usr/share/icons -type f); do
+    mv ${icon} ${icon%.png}-2.99.png
+  done
+
+  #fix metainfo
+  rm -rf ${pkgdir}/usr/share/metainfo
 }
-

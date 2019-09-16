@@ -1,6 +1,6 @@
-pkgbase = gimp-git
+pkgbase = gimp-develop-git
 	pkgdesc = GNU Image Manipulation Program
-	pkgver = 3.0.r42265.ff56a3af8d
+	pkgver = 2.99.1.r1398.f7ac033777
 	pkgrel = 1
 	epoch = 1
 	url = https://www.gimp.org
@@ -10,10 +10,10 @@ pkgbase = gimp-git
 	license = LGPL
 	checkdepends = xorg-server-xvfb
 	makedepends = git
-	makedepends = gutenprint
-	makedepends = intltool
-	makedepends = gnome-python
-	makedepends = alsa-lib
+	makedepends = gutenprint>=5.0.0
+	makedepends = intltool>=0.40.1
+	makedepends = gnome-python>=2.16.2
+	makedepends = alsa-lib>=1.0.0
 	makedepends = libxslt
 	makedepends = glib-networking
 	makedepends = alsa-lib
@@ -27,26 +27,26 @@ pkgbase = gimp-git
 	makedepends = iso-codes
 	makedepends = aalib
 	makedepends = zlib
-	depends = pygtk
-	depends = lcms2
-	depends = libwmf
+	depends = pygtk>=2.10.4
+	depends = lcms2>=2.8
+	depends = libwmf>=0.2.8
 	depends = icu
 	depends = enchant
-	depends = libgexiv2
-	depends = librsvg
+	depends = libgexiv2>=0.10.6
+	depends = librsvg>=2.40.6
 	depends = desktop-file-utils
-	depends = libexif
-	depends = libart-lgpl
+	depends = libexif>=0.6.15
+	depends = libart-lgpl>=2.3.19
 	depends = dbus-glib
-	depends = gtk-doc
-	depends = poppler-glib
-	depends = poppler-data
-	depends = openexr
-	depends = mypaint-brushes
-	depends = babl
-	depends = gegl
-	depends = cairo
-	depends = appstream-glib
+	depends = gtk-doc>=1.0
+	depends = poppler-glib>=0.69.0
+	depends = poppler-data>=0.4.9
+	depends = openexr>=1.6.1
+	depends = mypaint-brushes>=1.3.0
+	depends = babl>=0.1.61
+	depends = gegl>=0.4.13
+	depends = cairo>=1.14.0
+	depends = appstream-glib>=0.7.7
 	optdepends = gutenprint: for sophisticated printing only as gimp has built-in cups print support
 	optdepends = alsa-lib: for MIDI event controller module
 	optdepends = curl: for URI support
@@ -59,12 +59,10 @@ pkgbase = gimp-git
 	optdepends = iso-codes: Language support
 	optdepends = aalib: ASCII art support
 	optdepends = zlib: Compression routines
-	provides = gimp
-	conflicts = gimp
 	source = git+https://gitlab.gnome.org/GNOME/gimp.git
 	source = linux.gpl
 	sha512sums = SKIP
 	sha512sums = 6f33d57f242fa8ce04b65e06a712bd54677306a45b22cb853fbe348089cd4673bd4ed91073074fe067166fe8951c370f8bbbc386783e3ed5170d52e9062666fe
 
-pkgname = gimp-git
+pkgname = gimp-develop-git
 
