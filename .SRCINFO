@@ -1,0 +1,18 @@
+pkgbase = ncline-git
+	pkgdesc = The nCine command line tool
+	pkgver = r10.9693301
+	pkgrel = 1
+	url = http://ncine.github.io
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	depends = gcc-libs
+	provides = ncline
+	conflicts = ncline
+	source = git://github.com/nCine/ncline
+	md5sums = SKIP
+
+pkgname = ncline-git
+
