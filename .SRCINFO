@@ -1,0 +1,12 @@
+pkgbase = mint-backgrounds-tina
+	pkgdesc = The backgrounds included in Linux Mint 19.2 Tina
+	pkgver = 1.2
+	pkgrel = 1
+	url = http://packages.linuxmint.com/pool/main/m/mint-backgrounds-tina
+	arch = any
+	license = GPL3
+	source = http://packages.linuxmint.com/pool/main/m/mint-backgrounds-tina/mint-backgrounds-tina_1.2.tar.gz
+	md5sums = 20f5036d9c582c781912b7bd572610fd
+
+pkgname = mint-backgrounds-tina
+
