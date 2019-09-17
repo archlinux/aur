@@ -2,34 +2,34 @@
 
 pkgname=webtorrent-desktop-bin
 _pkgname=webtorrent-desktop
-pkgver=0.20.0
+pkgver=0.21.0
 pkgrel=1
 pkgdesc="Streaming torrent client."
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://webtorrent.io/desktop"
 license=('MIT')
-depends=('gconf')
+depends=('gconf' 'libnotify')
 provides=('webtorrent-desktop')
 conflicts=('webtorrent-desktop' 'webtorrent-desktop-git')
-source=("${_pkgname}.desktop")
-source_i686=("https://github.com/feross/${_pkgname}/releases/download/v${pkgver}/WebTorrent-v${pkgver}-linux-ia32.zip")
-source_x86_64=("https://github.com/feross/${_pkgname}/releases/download/v${pkgver}/WebTorrent-v${pkgver}-linux.zip")
-sha256sums=('4eba7b17fd0cd90f77fc1a1005f74d8fcd93dac4f669d1b1abbf71734b5bafa6')
-sha256sums_i686=('7f54dcb0b197f98aeca7508aa3d5279950a4bdf20fa718c22833200c78084251')
-sha256sums_x86_64=('4dd5de977791635741ee0bcf0de452f3d0e74d294a0a1b441c129463aa2636ac')
-
-[ "$CARCH" = "i686" ]   && _platform=ia32
-[ "$CARCH" = "x86_64" ] && _platform=x64
+source=("https://github.com/webtorrent/${_pkgname}/releases/download/v${pkgver}/WebTorrent-v${pkgver}-linux.zip"
+        "https://github.com/webtorrent/${_pkgname}/raw/v${pkgver}/static/linux/share/applications/${_pkgname}.desktop"
+        "48x48.png::https://github.com/webtorrent/${_pkgname}/raw/v${pkgver}/static/linux/share/icons/hicolor/48x48/apps/${_pkgname}.png"
+        "256x256.png::https://github.com/webtorrent/${_pkgname}/raw/v${pkgver}/static/linux/share/icons/hicolor/256x256/apps/${_pkgname}.png")
+sha256sums=('e0305fef7fa0c8a753a9a061ae7a77294433c52c51308089b12a3df96652e60a'
+            '8a99900eb1207d3ae278c943b95bd31a35ef8ad2fdcf3e1e664337dc176e26ec'
+            'e41e7e31e3116a7c665419d79ee7242520d0305454b26edc6a792da81337c903'
+            'd30ffbff61753c42239868f2d10feb89d24c6a5fc42fe5e117a5b373f7ee57b5')
 
 package() {
   install -dm755 "${pkgdir}/usr/share"
   install -dm755 "${pkgdir}/usr/bin"
 
-  cp -a "WebTorrent-linux-${_platform}" "${pkgdir}/usr/share/${_pkgname}"
+  cp -a "WebTorrent-linux-x64" "${pkgdir}/usr/share/${_pkgname}"
   ln -s "/usr/share/${_pkgname}/WebTorrent" "${pkgdir}/usr/bin/${_pkgname}"
 
   install -Dm644 "${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-  install -Dm644 "WebTorrent-linux-${_platform}/resources/app.asar.unpacked/static/WebTorrent.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${_pkgname}.png"
+  install -Dm644 "48x48.png" "${pkgdir}/usr/share/icons/hicolor/48x48/apps/${_pkgname}.png"
+  install -Dm644 "256x256.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${_pkgname}.png"
 
-  install -Dm644 "WebTorrent-linux-${_platform}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "WebTorrent-linux-x64/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

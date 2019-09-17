@@ -1,21 +1,23 @@
 pkgbase = webtorrent-desktop-bin
 	pkgdesc = Streaming torrent client.
-	pkgver = 0.20.0
+	pkgver = 0.21.0
 	pkgrel = 1
 	url = https://webtorrent.io/desktop
-	arch = i686
 	arch = x86_64
 	license = MIT
 	depends = gconf
+	depends = libnotify
 	provides = webtorrent-desktop
 	conflicts = webtorrent-desktop
 	conflicts = webtorrent-desktop-git
-	source = webtorrent-desktop.desktop
-	sha256sums = 4eba7b17fd0cd90f77fc1a1005f74d8fcd93dac4f669d1b1abbf71734b5bafa6
-	source_i686 = https://github.com/feross/webtorrent-desktop/releases/download/v0.20.0/WebTorrent-v0.20.0-linux-ia32.zip
-	sha256sums_i686 = 7f54dcb0b197f98aeca7508aa3d5279950a4bdf20fa718c22833200c78084251
-	source_x86_64 = https://github.com/feross/webtorrent-desktop/releases/download/v0.20.0/WebTorrent-v0.20.0-linux.zip
-	sha256sums_x86_64 = 4dd5de977791635741ee0bcf0de452f3d0e74d294a0a1b441c129463aa2636ac
+	source = https://github.com/webtorrent/webtorrent-desktop/releases/download/v0.21.0/WebTorrent-v0.21.0-linux.zip
+	source = https://github.com/webtorrent/webtorrent-desktop/raw/v0.21.0/static/linux/share/applications/webtorrent-desktop.desktop
+	source = 48x48.png::https://github.com/webtorrent/webtorrent-desktop/raw/v0.21.0/static/linux/share/icons/hicolor/48x48/apps/webtorrent-desktop.png
+	source = 256x256.png::https://github.com/webtorrent/webtorrent-desktop/raw/v0.21.0/static/linux/share/icons/hicolor/256x256/apps/webtorrent-desktop.png
+	sha256sums = e0305fef7fa0c8a753a9a061ae7a77294433c52c51308089b12a3df96652e60a
+	sha256sums = 8a99900eb1207d3ae278c943b95bd31a35ef8ad2fdcf3e1e664337dc176e26ec
+	sha256sums = e41e7e31e3116a7c665419d79ee7242520d0305454b26edc6a792da81337c903
+	sha256sums = d30ffbff61753c42239868f2d10feb89d24c6a5fc42fe5e117a5b373f7ee57b5
 
 pkgname = webtorrent-desktop-bin
 
