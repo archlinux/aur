@@ -1,4 +1,5 @@
-# Maintainer: Mitchell Renouf <mitchellarenouf@gmail.com> 
+# Maintainer: Kenneth G. Strawn <kstrawn0@saddleback.edu>
+# (stable)Maintainer: Mitchell Renouf <mitchellarenouf@gmail.com> 
 # (non-snap)Maintainer: Antonio Rojas <arojas@archlinux.org> 
 
 
