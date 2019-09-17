@@ -1,4 +1,4 @@
-# Maintainer: Ainola <ainola@archlinux.org>
+# Maintainer: Brett Cornwall <ainola@archlinux.org>
 # Contributor: polyzen
 # Contributor: Army
 # Contributor: Dan Serban
@@ -6,7 +6,7 @@
 # Contributor: Thomas Zervogiannis
 
 pkgname=gcalcli
-pkgver=4.1.1
+pkgver=4.2.0
 pkgrel=1
 pkgdesc='Google calendar command line interface'
 arch=('any')
@@ -24,7 +24,7 @@ optdepends=(
     'python-vobject: for ics/vcal importing'
 )
 source=("gcalcli-$pkgver.tar.gz::https://github.com/insanum/gcalcli/archive/v$pkgver.tar.gz")
-sha256sums=('0bf4e78ab5d32da96d49008e450b142b7b682e48c483390b3e36203419b06158')
+sha256sums=('81532e9e60ce94530eb19d6fe720cbbaaef5f543b6c4128111f1f47226830368')
 
 build() {
     cd "gcalcli-$pkgver"
