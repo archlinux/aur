@@ -1,5 +1,5 @@
 # Maintainer:   Νικόλαος Κυριάκος Φυτίλης <n-fit@live.com>
-_ver=1.19
+_ver=1.23
 _pkgbase=mate-meta
 pkgname="${_pkgbase}-dev"
 pkgver=${_ver}.0
