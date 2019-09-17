@@ -1,5 +1,3 @@
-# Maintainer: Johannes Löthberg <johannes@kyriasis.com>
-
 pkgname=python-geojson
 pkgver=2.4.0
 pkgrel=1
