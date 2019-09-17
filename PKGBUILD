@@ -2,7 +2,7 @@
 pkgname=mit8_30
 orgname=Iztech
 pkgver=1.0.19
-pkgrel=1
+pkgrel=2
 pkgdesc="Программа для управления измерителями температуры серии МИТ 8.30 производства ООО ИзТех"
 url="https://www.iztech.ru"
 license=(custom)
@@ -12,7 +12,7 @@ replaces=("mit30")
 arch=('x86_64')
 options=('strip')
 source=("$url/content/files/$pkgname-$pkgver-x86_64.tar.gz")
-md5sums=('33ab2647d83735aa9bb5b84754d48f0a')
+md5sums=('68bcdc5116e840c07a9800fc46a26bbd')
 
 package() {
   install -Dm755 "$srcdir/mit8_30" "$pkgdir/usr/bin/$pkgname"
