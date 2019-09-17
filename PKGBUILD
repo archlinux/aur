@@ -1,6 +1,6 @@
 pkgname=charliecloud
 pkgver=0.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight user-defined software stacks for high-performance computing"
 arch=('any')
 license=('Apache-2.0')
@@ -9,6 +9,7 @@ makedepends=(
 	'bash>=4.1'
 	'rsync'
 	'python-sphinx'
+	'python-sphinx_rtd_theme'
 )
 optdepends=(
 	'docker>=17.03'
