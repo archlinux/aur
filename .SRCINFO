@@ -8,7 +8,7 @@ pkgbase = python-geojson
 	makedepends = python-setuptools
 	depends = python
 	source = python-geojson-2.4.0.tar.gz::https://github.com/frewsxcv/python-geojson/archive/2.4.0.tar.gz
-	sha1sums = 8983d37ef9cd26d725a051c1d54093f158d97e80
+	sha1sums = 3d8203a2d673ed71548e13992459356dc2bd4ba8
 
 pkgname = python-geojson
 
