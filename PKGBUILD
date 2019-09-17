@@ -9,7 +9,7 @@ arch=(any)
 url="http://mate-desktop.org"
 license=('GPL')
 depends=(
-atril-dev caja-dev engrampa-dev eom-dev libmatekbd-dev libmatemixer-dev libmateweather-dev marco-dev mate-applets-dev mate-backgrounds-dev mate-common-dev mate-control-center-dev mate-desktop-dev mate-icon-theme-dev mate-icon-theme-faenza-dev mate-media-dev mate-menus-dev mate-notification-daemon-dev mate-panel-dev mate-polkit-dev mate-power-manager-dev mate-screensaver-dev mate-session-manager-dev mate-settings-daemon-dev mate-system-monitor-dev mate-terminal-dev mate-user-guide-dev mate-user-share-dev mate-utils-dev mozo-dev pluma-dev python-caja-dev caja-extensions-common-dev
+atril-devcaja-devengrampa-deveom-devlibmatekbd-devlibmatemixer-devlibmateweather-devmarco-devmate-applets-devmate-backgrounds-devmate-common-devmate-control-center-devmate-desktop-devmate-icon-theme-devmate-icon-theme-faenza-devmate-media-devmate-menus-devmate-notification-daemon-devmate-panel-devmate-polkit-devmate-power-manager-devmate-screensaver-devmate-session-manager-devmate-settings-daemon-devmate-system-monitor-devmate-terminal-devmate-user-guide-devmate-user-share-devmate-utils-devmozo-devpluma-devpython-caja-devcaja-extensions-common-dev
 )
 
 package(){
