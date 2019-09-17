@@ -22,6 +22,7 @@ prepare() {
 build() {
   mkdir -p ${srcdir}/build
   cd ${srcdir}/build
+  CXXFLAGS="${CXXFLAGS//-fvar-tracking-assignments/}" \
   cmake "../${pkgname}" \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
