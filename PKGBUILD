@@ -44,5 +44,5 @@ package() {
     make PREFIX=/usr DESTDIR="$pkgdir" install
 
     # BSD license
-    install -D -m644 LICENSE "$pkgdir/usr/share/licenses/lnav/LICENSE"
+    install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
