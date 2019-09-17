@@ -1,6 +1,6 @@
 pkgbase = php-box
 	pkgdesc = An application for building and managing Phars
-	pkgver = 3.2.0
+	pkgver = 3.3.0
 	pkgrel = 1
 	url = https://github.com/humbug/box
 	install = php-box.install
@@ -10,7 +10,7 @@ pkgbase = php-box
 	makedepends = php-composer
 	makedepends = git
 	depends = php>=7.2
-	source = php-box::git+https://github.com/humbug/box.git#tag=3.2.0
+	source = php-box::git+https://github.com/humbug/box.git#tag=3.3.0
 	sha512sums = SKIP
 
 pkgname = php-box
