@@ -1,7 +1,7 @@
 # Maintainer: whoami <whoami@systemli.org>
 
 pkgname=vlang
-pkgver=0.1.19
+pkgver=0.1.20
 pkgrel=1
 pkgdesc='Simple, fast, safe language created for developing maintainable software'
 arch=('x86_64')
@@ -33,5 +33,5 @@ package() {
     ln -s /usr/lib/vlang/v "$pkgdir/usr/bin/v"
 }
 
-sha256sums=('7fa2b45f88e5653b82ce92532c2cc7631f7646c8eec24763757d62657115be6a'
-            '5afaaff3d041fc8629c6ffaf8cc66266274fdabc5cb2a8a588a218f985a0cc9b')
+sha256sums=('8102b48b2c82be6be14633e76e71e215aab5221198315436f97be53e1abe1f5d'
+            '5b4fc1f39c3aef5214a3366e0d514ee2879a2e52a918dc0181df833028a0eb72')
