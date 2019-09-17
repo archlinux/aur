@@ -1,16 +1,16 @@
 pkgbase = subtitleripper
 	pkgdesc = DVD subtitle to text converter
-	pkgver = 0.3_4
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = http://subtitleripper.sourceforge.net/
 	arch = x86_64
-	arch = i686
 	license = GPL
 	makedepends = make
 	makedepends = gcc
+	makedepends = netpbm
 	depends = netpbm
-	source = http://downloads.sourceforge.net/project/subtitleripper/subtitleripper/subtitleripper-0.3-4/subtitleripper-0.3-4.tgz
-	sha256sums = 8af6c2ebe55361900871c731ea1098b1a03efa723cd29ee1d471435bd21f3ac4
+	source = http://www.joonet.de/sources/subtitleripper/subtitleripper-0.5.2.tar.gz
+	sha256sums = 2ae166123a8d46a0be7eba552ef33d84ab09ba9a882f1b684c85bf442f8ddc35
 
 pkgname = subtitleripper
 
