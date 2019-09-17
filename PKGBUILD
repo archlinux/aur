@@ -10,7 +10,7 @@
 # 0: No yield
 # 1: Yield only to better priority/deadline tasks
 # 2: Expire timeslice and recalculate deadline
-_sched_yield_type=
+_sched_yield_type=0
 
 # Tweak kernel options prior to a build via nconfig
 _makenconfig=
@@ -113,7 +113,7 @@ validpgpkeys=(
 )
 sha512sums=('SKIP'
             'SKIP'
-            '257df4fb23b8c8413f7d8735fdb49e8eca7702d80a5134edad35bc8cd04a7e5bd47290f16f5838bf5e10e227713c1c5b74694a0aa18225d0158f54d0daa809dd'
+            '99415e75fbc23626e27946461cf047a07fe2dda46fcb24fe251fbb8fd93da46e264ba29c50700ca6aef1f1c58e36eb8cccfd8130cbba48eba23f79c6d2186d89'
             '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
             '2718b58dbbb15063bacb2bde6489e5b3c59afac4c0e0435b97fe720d42c711b6bcba926f67a8687878bd51373c9cf3adb1915a11666d79ccb220bf36e0788ab7'
             '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
