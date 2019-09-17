@@ -3,15 +3,15 @@
 # Contributor: Philip Abernethy <chais.z3r0@gmail.com>
 # Contributor: sowieso <sowieso@dukun.de>
 
-_game="forge"
-_server_root="/srv/forge"
+_game="forge-1.12.2"
+_server_root="/srv/forge-1.12.2"
 
-_minecraft_ver=1.14.4
-_pkgver=${_minecraft_ver}-28.1.0
+_minecraft_ver=1.12.2
+_pkgver=${_minecraft_ver}-14.23.5.2768
 
-pkgname=forge-server
+pkgname=forge-server-1.12.2
 pkgver=${_pkgver//-/_}
-pkgrel=2
+pkgrel=1
 pkgdesc="Minecraft Forge server unit files, script, and jar"
 arch=('any')
 url="https://minecraftforge.net/"
@@ -29,12 +29,12 @@ source=("${_game}-${_pkgver}-installer.jar"::"https://files.minecraftforge.net/m
 	"${_game}d.sh"
 	"LICENSE.txt")
 noextract=("${_game}-${_pkgver}-installer.jar")
-sha512sums=('2890b40882c6b91a96024ba7ace6feef85530be74bfde4441fd55ca5244b5a739ccfd8d2d99b47e6fb97b1acc3ee5aa5a648d637f8afa2f353abdb1986d4dcb9'
-            'e9a391a330320a7aea127a3e8ad399d8d6e3c926eac2c0df7a4e550ba61cc13fec737f7e984bd98b9e1f9f9d5a654ee241eeef6a2e433ec845e300ef29405f62'
+sha512sums=('fefaabeccd17b98752cbef8bd01f4bce27e351106c256edf6aba92267e0fc4ded36fba089f9b7f5fc2d210e5f7b07bca38d8254a2f4732516720e45a249dc5c2'
+            '7647801c4cc3192693030b026986df29c53b4124460556543d7601558f8ef09ce65acd0eae52ee51fe3974589d6c0f09d473992d9e44653519f70f75f9987efa'
             'a47b5a9e2262877008a5dcae3a833fe99f911631d6fdbe97b95e0451e1dd2b5a26b6f7b843dd6a8ccd4f663cf5c3bca53a89a1d3aabb363281ab6c6fb19e41a4'
-            'd6bde61a7aa479b85e35b4a3eccb9b3237a6c97f8919b3d704434f1df15672b74c7ae9ca9473eea6a0593e6e80892a2510782115185c1b7fe332720ccb78a7bd'
-            '81251b608fe1a62867c0b5c431fb88135e8a2200327fa57b07c7c83863eddd3c9840190d98dd4a8312c66e6a24d4593b2fda743553386412362c94c0cf6a75c4'
-            'ae4626563595165c8f34de87b6d83f473aef81e1437711e5a11fd9694a59311f3f3d420fb43e5e0a59bd6681298c9544781c667cc6f9abedd9c18035da66d9a4'
+            'e23afa1b34f666f18e4f3ded3210c11b120678d53ca6fcc075b869b600b40fbb52014478be4f22d9fdd785409487092f4cc952ae79ef85561a3ab2b8bbbd07a9'
+            'da2fbd5bc62aa2e26334b32d49839cde771c0ad913414240f997b3e0d662a90cb2f62ed822f96fbcbc726b176017122c73b8624bbdbef9992f1e90ac4478c9cb'
+            'e356c5d3cedab6dd74ac1902d2ad355e25060d19e9ae143d0a4f06f78b575a6f5a94c09b724a88ef2c4f463014de1bb49ac26cd0987f61c9034fe5e7bb732904'
             '3da10d63a5edee4bc8bcd3d5c2730771062f7fa58626a8c51635fbe96bfbceca3ff6937cfaad3e17f16a94ef95137f7c78cc6dac1c846a6b9a8f18d3c6355973')
 
 prepare() {
@@ -49,7 +49,7 @@ package() {
 	install -Dm644 "${_game}d.service"                      "${pkgdir}/usr/lib/systemd/system/${_game}d.service"
 	install -Dm644 "${_game}d-backup.service"               "${pkgdir}/usr/lib/systemd/system/${_game}d-backup.service"
 	install -Dm644 "${_game}d-backup.timer"                 "${pkgdir}/usr/lib/systemd/system/${_game}d-backup.timer"
-	install -Dm644 "${_game}-${_pkgver}.jar"                "${pkgdir}${_server_root}/${_game}-${_pkgver}.jar"
+	install -Dm644 "forge-${_pkgver}-universal.jar"         "${pkgdir}${_server_root}/${_game}-${_pkgver}.jar"
 	install -Dm644 "minecraft_server.${_minecraft_ver}.jar" "${pkgdir}${_server_root}/minecraft_server.${_minecraft_ver}.jar"
 	ln -s "${_game}-${_pkgver}.jar" "${pkgdir}${_server_root}/${_game}.jar"
 
