@@ -6,7 +6,7 @@ pkgver=1.8.1
 pkgrel=1
 pkgdesc='VP8 and VP9 codec'
 arch=(x86_64)
-url=http://www.webmproject.org/
+url=https://www.webmproject.org/
 license=(BSD)
 depends=(
   lib32-gcc-libs
