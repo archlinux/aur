@@ -17,11 +17,12 @@ sha512sums=('SKIP')
 build() {
   cd "${srcdir}/${_pkgname}"
   php /usr/bin/composer install --prefer-dist
+
   ulimit -Sn 2048
   php -d phar.readonly=Off /usr/bin/php-box build
 }
 
 package() {
   cd "${srcdir}/${_pkgname}"
-  install -D -m755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+  install -D -m755 "${_pkgname}.phar" "${pkgdir}/usr/bin/${_pkgname}"
 }
