@@ -3,8 +3,8 @@
 
 _chromiumver=66.0.3359.181
 pkgname=electron3
-pkgver=3.1.11
-pkgrel=2
+pkgver=3.1.13
+pkgrel=1
 pkgdesc='Build cross platform desktop apps with web technologies'
 arch=('x86_64')
 url='https://electronjs.org/'
