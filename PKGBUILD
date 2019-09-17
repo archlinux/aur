@@ -2,14 +2,14 @@
 # Contributor: Fabio Loli
 # Contributor: Adam Rutkowski
 pkgname=python-liquidctl-git
-pkgver=1.2.0rc3.r0.2349168
+pkgver=1.2.0rc3.r7.4506563
 pkgrel=1
 pkgdesc="Cross-platform CLI and Python drivers for AIO liquid coolers and other devices"
 arch=('any')
 url="https://github.com/jonasmalacofilho/liquidctl"
 license=('GPL3')
 depends=('python' 'python-setuptools' 'python-docopt' 'python-pyusb' 'python-hidapi' 'python-appdirs')
-makedepends=('git')
+makedepends=('git' 'screenfetch')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("$pkgname::git+https://github.com/jonasmalacofilho/liquidctl.git#branch=master")
@@ -22,6 +22,8 @@ pkgver() {
 
 build() {
 	cd "$srcdir/$pkgname"
+	export DIST_NAME="$(screenfetch -nN | grep OS: | sed 's/^ *OS: //;s/ *$//')"
+	export DIST_PACKAGE="$pkgname $pkgver-$pkgrel"
 	python setup.py build
 }
 
