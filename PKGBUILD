@@ -36,7 +36,7 @@ sha512sums=('2890b40882c6b91a96024ba7ace6feef85530be74bfde4441fd55ca5244b5a739cc
 _game="forge"
 _server_root="/srv/forge"
 
-build() {
+prepare() {
 	java -jar "forge-${_ver}-installer.jar" --installServer
 }
 
