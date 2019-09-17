@@ -11,9 +11,9 @@ source=("$url/mint-backgrounds-tina_$pkgver.tar.gz")
 md5sums=("20f5036d9c582c781912b7bd572610fd")
 package() {
 	mkdir -p $pkgdir/usr/share/backgrounds/linuxmint-tina
-	cp -a $srcdir/$pkgname-$pkgver/backgrounds/linuxmint-tina $pkgdir/usr/share/backgrounds/
+	cp -a $srcdir/$pkgname/backgrounds/linuxmint-tina $pkgdir/usr/share/backgrounds/
 	mkdir -p $pkgdir/usr/share/{cinnamon-background-properties,gnome-background-properties}
-	cp -a $srcdir/$pkgname-$pkgver/cinnamon-background-properties/* $pkgdir/usr/share/cinnamon-background-properties/
-	cp -a $srcdir/$pkgname-$pkgver/gnome-background-properties/* $pkgdir/usr/share/gnome-background-properties
+	cp -a $srcdir/$pkgname/cinnamon-background-properties/* $pkgdir/usr/share/cinnamon-background-properties/
+	cp -a $srcdir/$pkgname/gnome-background-properties/* $pkgdir/usr/share/gnome-background-properties
 }
 
