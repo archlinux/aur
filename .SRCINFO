@@ -1,6 +1,6 @@
 pkgbase = python-btchip-git
 	pkgdesc = Python library to communicate with BTChip dongle
-	pkgver = 0.1.27
+	pkgver = 0.1.28
 	pkgrel = 1
 	url = https://github.com/LedgerHQ/btchip-python
 	arch = any
