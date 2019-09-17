@@ -1,0 +1,19 @@
+pkgbase = python2-gtksourceview2
+	pkgdesc = Python 2 bindings for gtksourceview2
+	pkgver = 2.10.1
+	pkgrel = 1
+	url = http://www.gnome.org
+	arch = x86_64
+	license = GPL
+	makedepends = intltool
+	makedepends = pkg-config
+	depends = gtksourceview2>=2.10.0
+	depends = pygtk>=2.17.0
+	provides = pygtksourceview2
+	conflicts = pygtksourceview2
+	options = !libtool
+	source = http://ftp.gnome.org/pub/gnome/sources/pygtksourceview/2.10/pygtksourceview-2.10.1.tar.bz2
+	sha512sums = 6f8f35ba36cb26f256861ff7f14c3236cf566d6d02f3dea69f63844081caee969ad6288a2aa48d35d4eb542cda73da9d4bfe2cc57548ca15cd372011cab0276e
+
+pkgname = python2-gtksourceview2
+
