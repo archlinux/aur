@@ -1,12 +1,11 @@
 pkgbase = python-liquidctl-git
 	pkgdesc = Cross-platform CLI and Python drivers for AIO liquid coolers and other devices
 	pkgver = 1.2.0rc3.r7.4506563
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jonasmalacofilho/liquidctl
 	arch = any
 	license = GPL3
 	makedepends = git
-	makedepends = screenfetch
 	depends = python
 	depends = python-setuptools
 	depends = python-docopt
