@@ -1,12 +1,12 @@
 # Maintainer: Stefan Auditor <stefan.auditor@erdfisch.de>
 # Contributor: Johannes Schleifenbaum <johannes [at] js-webcoding [dot] de>
 # Contributor: Attila Bukor <r1pp3rj4ck [at] w4it [dot] eu>
-# Please report issues at https://github.com/jojosch/pkgbuilds
+# Please report issues at https://github.com/sanduhrs/arch-aur-php-box
 
 _pkgname=php-box
 pkgname=${_pkgname}
 pkgver=3.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An application for building and managing Phars"
 arch=("any")
 url="https://github.com/humbug/box"
@@ -28,7 +28,7 @@ build() {
 package() {
   cd "${srcdir}/${_pkgname}"
   install -D -m644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
-  install -D -m755 "box" "${pkgdir}/usr/bin/box"
+  install -D -m755 "bin/box.phar" "${pkgdir}/usr/bin/box"
 
   # For backwards compatibility reasons we symlink to the old name.
   ln -s "${pkgdir}/usr/bin/box" "${pkgdir}/usr/bin/${_pkgname}"
