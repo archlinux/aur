@@ -2,12 +2,13 @@
 
 pkgname=plumed-patches
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Additional patches for PLUMED"
 url="http://www.plumed.org/"
 license=('GPL')
 arch=(any)
 depends=('plumed<=2.5.2')
+optdepends=('plumed-mpi<=2.5.2')
 conflicts=('plumed>2.5.2')
 source=("namd-git.config"
         "namd-git.diff"
@@ -21,6 +22,12 @@ md5sums=('b86e6eb88be3f087299bbd8231e15539'
 package() {
     install -Dm644 ${srcdir}/namd-git.diff ${pkgdir}/usr/lib/plumed/patches/namd-git.diff
     install -Dm644 ${srcdir}/namd-git.config ${pkgdir}/usr/lib/plumed/patches/namd-git.config
+
     install -Dm644 ${srcdir}/amber18.diff ${pkgdir}/usr/lib/plumed/patches/amber18.diff
     install -Dm644 ${srcdir}/amber18.config ${pkgdir}/usr/lib/plumed/patches/amber18.config
+
+    if [ -d "/usr/lib/plumed-mpi" ]; then
+        install -Dm644 ${srcdir}/amber18.diff ${pkgdir}/usr/lib/plumed-mpi/patches/amber18.diff
+        install -Dm644 ${srcdir}/amber18.config ${pkgdir}/usr/lib/plumed-mpi/patches/amber18.config
+    fi
 }
