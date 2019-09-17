@@ -1,0 +1,11 @@
+_pkgname=interception-k2k-git
+_realname=interception-k2k
+
+post_install() {
+  echo -ne "\e[34;1m"
+  echo "=== INSTALLATION NOTES for $_pkgname ==="
+  echo -ne "\e[39;1m"
+  echo "An example config is located at /usr/share/doc/${_realname}/udevmon.example.yaml"
+  echo "You can copy it to /etc/udevmon.yaml"
+  echo -ne "\e[0m"
+}

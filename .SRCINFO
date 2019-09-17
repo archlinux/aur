@@ -1,0 +1,16 @@
+pkgbase = interception-k2k-git
+	pkgdesc = Unofficial plugin for Interception Tools (caps2esc, tab2altgr) - patched
+	pkgver = 0.0.0.r6.0b3dfc1
+	pkgrel = 1
+	url = https://github.com/zsugabubus/interception-k2k
+	install = interception-k2k.install
+	arch = x86_64
+	license = MIT
+	depends = interception-tools
+	source = interception-k2k-git::git+https://github.com/zsugabubus/interception-k2k
+	source = udevmon.yaml
+	md5sums = SKIP
+	md5sums = 5fc5d48b4291bf808205f50c9142c188
+
+pkgname = interception-k2k-git
+

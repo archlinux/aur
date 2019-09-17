@@ -1,0 +1,5 @@
+---
+- JOB: "intercept -g $DEVNODE | interception-k2k | uinput -d $DEVNODE"
+  DEVICE:
+    EVENTS:
+      EV_KEY: [KEY_CAPSLOCK, KEY_ESC]
