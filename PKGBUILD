@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=system76-firmware-daemon-git
-pkgver=1.0.5.r3.g4545a9b
+pkgver=1.0.5.r14.g789457f
 pkgrel=1
 pkgdesc="System76 Firmware Daemon provides a daemon for installing firmware updates."
 arch=('any')
@@ -26,20 +26,11 @@ pkgver() {
 build() {
 	cd "${srcdir}/${pkgname}"
 
-	# Build and install base package
-	#OPENSSL_LIB_DIR="/usr/lib/openssl-1.0" OPENSSL_INCLUDE_DIR="/usr/include/openssl-1.0" cargo build --release --verbose
-	cargo build --release
+	make
 }
 
 package() {
 	cd "${srcdir}/${pkgname}"
 
-	# Install daemons
-	install -m755 -D target/release/system76-firmware-daemon ${pkgdir}/usr/lib/system76-firmware/system76-firmware-daemon
-
-	# Install systemd unit files
-	install -m644 -D debian/system76-firmware-daemon.service ${pkgdir}/usr/lib/systemd/system/system76-firmware-daemon.service
-
-	# Install scripts and configuration
-	install -m755 -D data/system76-firmware-daemon.conf ${pkgdir}/usr/share/dbus-1/system.d/system76-firmware-daemon.conf
+	make DESTDIR="${pkgdir}" install
 }
