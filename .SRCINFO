@@ -1,7 +1,7 @@
 pkgbase = chocolate-doom-git
 	pkgdesc = Historically-accurate Doom, Heretic, Hexen, and Strife ports.
 	pkgver = 3.0.0.r822.ee9fc21f
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.chocolate-doom.org/
 	install = chocolate-doom.install
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = chocolate-doom-git
 	depends = sdl2_net
 	optdepends = freedm: Free deathmatch game
 	optdepends = freedoom1: Free Ultimate Doom-compatible game
-	optdepends = freedoom2: Free Doom II/Final Doom-compatible game
+	optdepends = freedoom2: Free Doom II-compatible game
 	conflicts = chocolate-common
 	conflicts = chocolate-doom
 	conflicts = chocolate-heretic

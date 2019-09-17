@@ -3,7 +3,7 @@
 pkgname=chocolate-doom-git
 pkgdesc="Historically-accurate Doom, Heretic, Hexen, and Strife ports."
 pkgver=3.0.0.r822.ee9fc21f
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.chocolate-doom.org/"
 license=('GPL2')
@@ -12,7 +12,7 @@ depends=('libpng' 'libsamplerate' 'sdl2_mixer' 'sdl2_net')
 makedepends=('git' 'python')
 optdepends=('freedm: Free deathmatch game'
             'freedoom1: Free Ultimate Doom-compatible game'
-            'freedoom2: Free Doom II/Final Doom-compatible game')
+            'freedoom2: Free Doom II-compatible game')
 conflicts=(chocolate-common
           chocolate-doom
           chocolate-heretic
@@ -42,4 +42,13 @@ package() {
   cd "${pkgname/-git//}"
 
   make DESTDIR="${pkgdir}" install
+  install -dm 755 "${pkgdir}"/usr/share/games/doom
+
+  # dedup all the *setup programs, make desktop file work
+  rm "${pkgdir}"/usr/bin/chocolate-{heretic,hexen,strife}-setup
+  mv "${pkgdir}"/usr/bin/chocolate-doom-setup "${pkgdir}"/usr/bin/chocolate-setup
+  ln -s chocolate-setup "${pkgdir}"/usr/bin/chocolate-doom-setup
+  ln -s chocolate-setup "${pkgdir}"/usr/bin/chocolate-heretic-setup
+  ln -s chocolate-setup "${pkgdir}"/usr/bin/chocolate-hexen-setup
+  ln -s chocolate-setup "${pkgdir}"/usr/bin/chocolate-strife-setup
 }
