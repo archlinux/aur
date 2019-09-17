@@ -3,7 +3,7 @@
 pkgname=webtorrent-desktop-bin
 _pkgname=webtorrent-desktop
 pkgver=0.21.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Streaming torrent client."
 arch=('x86_64')
 url="https://webtorrent.io/desktop"
@@ -19,6 +19,10 @@ sha256sums=('e0305fef7fa0c8a753a9a061ae7a77294433c52c51308089b12a3df96652e60a'
             '8a99900eb1207d3ae278c943b95bd31a35ef8ad2fdcf3e1e664337dc176e26ec'
             'e41e7e31e3116a7c665419d79ee7242520d0305454b26edc6a792da81337c903'
             'd30ffbff61753c42239868f2d10feb89d24c6a5fc42fe5e117a5b373f7ee57b5')
+
+prepare() {
+  sed -i -e '/^Path=/d' -e "s#/opt/${_pkgname}/WebTorrent#/usr/bin/${_pkgname}#" ${_pkgname}.desktop
+}
 
 package() {
   install -dm755 "${pkgdir}/usr/share"
