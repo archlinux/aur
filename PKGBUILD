@@ -10,7 +10,7 @@
 pkgname=davinci-resolve-beta
 _pkgname=resolve
 resolve_app_name=com.blackmagicdesign.resolve
-pkgver=16.1b1
+pkgver=16.1b3
 pkgrel=1
 arch=('any')
 url="https://www.blackmagicdesign.com/support/family/davinci-resolve-and-fusion"
@@ -26,13 +26,13 @@ if [ ${pkgname} == "davinci-resolve-studio-beta" ]; then
 # Variables for STUDIO edition
 	pkgdesc='Professional A/V post-production software suite from Blackmagic Design. Studio edition, requires license key or license dongle.'
 	_archive_name=DaVinci_Resolve_Studio_${pkgver}_Linux
-	sha256sums=('e5779215049734dd6d1234e9f7810d938e8c49ad18426bec31f01bce7b48f2f5')
+	sha256sums=('ca59f7cc4f704a46a8451fbb3110e846292d1a77b15965d6c5e03f2688dc7a05')
 	conflicts=('davinci-resolve-beta' 'davinci-resolve' 'davinci-resolve-studio')
 else
 # Variables for FREE edition
 	pkgdesc='Professional A/V post-production software suite from Blackmagic Design'
 	_archive_name=DaVinci_Resolve_${pkgver}_Linux
-	sha256sums=('5be8a13eb7a5886485edf9e6062960d64beca8a6741310452ad2717804ba65b0')
+	sha256sums=('af6b84176a5aeb66432452e038f540b86d13cdec82d91e648338bd0a585e0d06')
 	conflicts=('davinci-resolve' 'davinci-resolve-studio' 'davinci-resolve-studio-beta')
 fi
 
