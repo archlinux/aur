@@ -2,9 +2,9 @@
 # Maintainer: Maksym Sheremet <msheremet at sheremets dot com>
 
 pkgname=upwork
-pkgver=5.2.3.771
+pkgver=5.3.3.791
 _rawver=${pkgver//./_}
-_hashver="okk32anbjc976nah"
+_hashver="emln2d0yjz15bf8h"
 pkgrel=1
 pkgdesc="Desktop App 64-bit Standard version"
 arch=('x86_64')
@@ -15,7 +15,7 @@ depends=('alsa-lib' 'gtk3' 'libxss' 'nss')
 install=upwork.install
 source=("LICENSE" "xdg_session_type.patch")
 md5sums=('bb535c74d4673cee6437b04d33b32138' 'c99eddfeb02a2dc5272b82b276b88c8a')
-md5sums_x86_64=('08e681bb98e3e632971a37c17f4509af')
+md5sums_x86_64=('33b924cc857203b00e7f050c53b8d697')
 # how to get links Prod, Beta, Alpha: grep "_getVersionToDownload" ~/.Upwork/Upwork/Logs/upwork.2*.log | tail -n 1
 source_x86_64=(https://updates-desktopapp.upwork.com/binaries/v${_rawver}_${_hashver}/upwork_${pkgver}_amd64.deb)
 
