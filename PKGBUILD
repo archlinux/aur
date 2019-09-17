@@ -11,7 +11,7 @@ license=('GPL')
 depends=('lib32-glibc' 'lib32-pcre' 'lib32-zlib' 'slang')
 makedepends=('gcc-multilib')
 options=('!makeflags')
-source=("http://www.jedsoft.org/releases/slang/slang-${pkgver}.tar.bz2"{,.asc})
+source=("https://www.jedsoft.org/releases/slang/slang-${pkgver}.tar.bz2"{,.asc})
 sha256sums=('fc9e3b0fc4f67c3c1f6d43c90c16a5c42d117b8e28457c5b46831b8b5d3ae31a'
             'SKIP')
 validpgpkeys=('AE962A02D29BFE4A4BB2805FDE401E0D5873000A') # John E. Davis
