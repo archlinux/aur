@@ -7,7 +7,7 @@ _pkgname=("${_gitname}-stable")
 pkgname=("${_pkgname}-git")
 pkgver=r1152.da85223
 pkgrel=1
-pkgdesc="A window & compositing manager based on libmutter and designed by elementary for use with Pantheon."
+pkgdesc="A window & compositing manager based on libmutter and designed by elementary for use with Pantheon"
 arch=('any')
 url="https://github.com/${_author}/${_gitname}"
 license=('GPL3')
@@ -15,7 +15,7 @@ groups=('pantheon-stable')
 depends=('atk' 'bamf' 'cairo' 'gdk-pixbuf2' 'glib2' 'gnome-settings-daemon-elementary'
 		 'gnome-desktop' 'granite' 'gsettings-desktop-schemas-ubuntu' 'gtk3' 'json-glib' 'libdrm'
 		 'libgee' 'libgl' 
-		 'libmutter2>=3.23.90-1' 'libx11' 'libxcomposite' 'libxdamage' 'libxext' 'libxfixes'
+		 'mutter>=3.23.90-1' 'libx11' 'libxcomposite' 'libxdamage' 'libxext' 'libxfixes'
 		 'libxi' 'libxrandr' 'libxtst' 'mesa' 'pango' 'plank' 'wayland'
   		 )
 makedepends=('git' 'gnome-common' 'meson>=0.42.0-1' 'vala>=0.40.3-1')

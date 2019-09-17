@@ -1,5 +1,5 @@
 pkgbase = gala-stable-git
-	pkgdesc = A window & compositing manager based on libmutter and designed by elementary for use with Pantheon.
+	pkgdesc = A window & compositing manager based on libmutter and designed by elementary for use with Pantheon
 	pkgver = r1152.da85223
 	pkgrel = 1
 	url = https://github.com/elementary/gala
@@ -24,7 +24,7 @@ pkgbase = gala-stable-git
 	depends = libdrm
 	depends = libgee
 	depends = libgl
-	depends = libmutter2>=3.23.90-1
+	depends = mutter>=3.23.90-1
 	depends = libx11
 	depends = libxcomposite
 	depends = libxdamage
