@@ -1,0 +1,16 @@
+pkgbase = spdk-git
+	pkgdesc = spdk-git with minimal dependencies
+	pkgver = 0
+	pkgrel = 1
+	url = https://spdk.io/
+	arch = x86_64
+	license = BSD
+	makedepends = nasm
+	depends = glibc
+	provides = spdk
+	conflicts = spdk
+	source = spdk-git::git+https://github.com/spdk/spdk.git
+	sha256sums = SKIP
+
+pkgname = spdk-git
+
