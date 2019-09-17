@@ -1,0 +1,17 @@
+pkgbase = mucalc-git
+	pkgdesc = Convenient calculator for the command line
+	pkgver = 1.7.r2.g070412f
+	pkgrel = 1
+	url = https://git.marlam.de/gitweb/?p=mucalc.git
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = muparser
+	depends = readline
+	provides = mucalc
+	conflicts = mucalc
+	source = git+https://git.marlam.de/git/mucalc.git
+	sha256sums = SKIP
+
+pkgname = mucalc-git
+
