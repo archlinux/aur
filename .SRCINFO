@@ -1,7 +1,7 @@
 pkgbase = drupal-check
 	pkgdesc = Check Drupal code for deprecations and discover bugs via static analysis.
 	pkgver = 1.0.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mglaman/drupal-check
 	arch = any
 	license = GPL
