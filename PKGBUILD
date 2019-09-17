@@ -4,16 +4,15 @@
 _author=monday15
 _gitname=lounge-gtk-theme
 pkgname=("${_gitname}-git")
-pkgver=latest
+pkgver=r1080.1c22d9c
 pkgrel=1
 pkgdesc="Simple and clean theme, based on original Adwaita"
 arch=('i686' 'x86_64')
 url="https://github.com/${_author}/${_gitname}"
 license=('GPL3')
-depends=('gtk3' 'vala' 'granite')
+depends=('gtk3' 'granite')
 optdepends=('')
-makedepends=('git' 'meson' 'ninja'
-			'sassc')
+makedepends=('git' 'meson' 'sassc' 'vala')
 provides=("${_gitname}")
 conflicts=("${_gitname}")
 source=("git+${url}.git")
