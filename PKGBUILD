@@ -1,8 +1,8 @@
-# Maintainer: Dasith Gunawardhana <dasith.gunawardhana@gmail.com>
+# Maintainer: Dasith Gunawardhana <dasith@dg10a.com>
 
 _pkgname=packer
 pkgname=${_pkgname}-git
-pkgver=v1.3.3_1006_g07dbf8195
+pkgver=v1.4.3_177_g39a57af3e
 pkgrel=1
 pkgdesc="Packer is a tool for creating identical machine images for multiple platforms from a single source configuration."
 arch=('x86_64')
@@ -20,13 +20,10 @@ pkgver() {
   git describe | sed 's/[- ]/_/g'
 }
 
-prepare() {
+build() {
   mkdir -p gopath
   export GOPATH="${srcdir}/gopath"
   export PATH="$PATH:$GOPATH/bin"
-}
-
-build() {
   export GOFLAGS="-gcflags=all=-trimpath=${PWD} -asmflags=all=-trimpath=${PWD} -ldflags=-extldflags=-zrelro -ldflags=-extldflags=-znow"
 
   cd ${_pkgname}
@@ -35,10 +32,10 @@ build() {
   unset GOFLAGS
 }
 
-check() {
-  cd ${_pkgname}
-  make test
-}
+# check() {
+#   cd ${_pkgname}
+#   make test
+# }
 
 package() {
   cd ${_pkgname}
