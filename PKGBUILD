@@ -1,7 +1,7 @@
 # Maintainer: Toqoz <https://github.com/Toqozz/slip>
 
 pkgname=slip
-pkgver=1.1.0.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='dmenu/rofi (optional) interface to select and upload screenshots and gifs to imgur with the help of slop.  (Screencasts too).'
 arch=('any')
@@ -14,7 +14,7 @@ optdepends=('dmenu:     interface'
             'libnotify: upload notification'
             'xsel:      copy link to clipboard')
 source=("https://github.com/Toqozz/slip/archive/${pkgver}.tar.gz")
-sha256sums=('7441c8beff4188cb6ae25b648c25f18e5648890f9b5e72732100e5a782a60530')
+sha256sums=('dde8f3048bbb95be6bc79b4889b47482a0631f8584152145c3f74405187dfe58')
 
 package() {
     cd "$pkgname-$pkgver"
