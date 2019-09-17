@@ -1,13 +1,13 @@
 # Maintainer: Bleuzen <supgesu at gmail dot com>
 
 pkgname=blizcord
-pkgver=0.9.6
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="A simple Discord bot which can play music from YouTube or local files"
 arch=('i686' 'x86_64')
 url="https://github.com/Bleuzen/Blizcord/"
 license=('mit')
-depends=('jre8-openjdk')
+depends=('java-runtime=11')
 install=$pkgname.install
 source=("Blizcord.exe::https://github.com/Bleuzen/Blizcord/releases/download/v${pkgver}/Blizcord.exe"
         "blizcord.png"
