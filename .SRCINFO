@@ -1,0 +1,16 @@
+pkgbase = pyshaper
+	pkgdesc = your easy dynamic traffic shaper
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = http://freenet.mcnabhosting.com/python/pyshaper
+	arch = any
+	license = GPL2
+	makedepends = python2-setuptools
+	depends = python2
+	source = http://freenet.mcnabhosting.com/python/pyshaper/pyshaper-0.1.3.tar.gz
+	source = pyshaper.diff
+	sha512sums = 090561441e1b349072ac8eca7d114f375020683ce174d2ac1fca51f7c7eb2abd0bfae68a00631291c436ea580dd0ecff11b27adc85db6e2da54bed76a1815a12
+	sha512sums = a0322b8fbfaeaeb96e051a313d9a86ada084c470fd3398992c00cd7d30a838a77fd84488839154c15af004198bda72629b155e0c6815c0b74f2d973673e00785
+
+pkgname = pyshaper
+
