@@ -1,15 +1,20 @@
 pkgbase = plumed-patches
 	pkgdesc = Additional patches for PLUMED
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = http://www.plumed.org/
 	arch = any
 	license = GPL
-	depends = plumed
+	depends = plumed<=2.5.2
+	conflicts = plumed>2.5.2
 	source = namd-git.config
 	source = namd-git.diff
+	source = amber18.config
+	source = amber18.diff
 	md5sums = b86e6eb88be3f087299bbd8231e15539
 	md5sums = a91673a94308ebfc6116ae50bafb4bcb
+	md5sums = 9e0da596883144b971bd625deb415060
+	md5sums = 7d4aeeb5d15a343abe93bcf4ec236ba1
 
 pkgname = plumed-patches
 
