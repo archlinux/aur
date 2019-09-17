@@ -1,15 +1,15 @@
 pkgbase = uasm
-	pkgdesc = free MASM-compatible assembler based on JWasm
-	pkgver = 2.47.1
+	pkgdesc = Continued evolution of JWasm
+	pkgver = 2.50
 	pkgrel = 1
 	url = http://www.terraspace.co.uk/uasm.html
 	arch = x86_64
 	license = custom:JWasm License
 	license = custom:Sybase Open Watcom Public License
-	source = uasm::git+https://github.com/Terraspace/UASM.git#commit=f36556139c658bb8f970579d6d84497210d10958
-	source = suppress_color_from_help.patch
+	source = uasm::git+https://github.com/Terraspace/UASM.git#commit=41002d262d3a9d6ca737d72e86f6f1328d42478d
+	source = uasm-default-nocolor.sh
 	md5sums = SKIP
-	md5sums = 7a0e3562bfd82b3b9470bc67aaad2b03
+	md5sums = 16ee809dee22b3f4aa39536330b5c117
 
 pkgname = uasm
 

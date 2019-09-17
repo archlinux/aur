@@ -1,6 +1,7 @@
 *
 
-!suppress_color_from_help.patch
+# !suppress_color_from_help.patch
+!uasm-default-nocolor.sh
 !PKGBUILD
 !.SRCINFO
 !.gitignore
