@@ -1,0 +1,5 @@
+post_install() {
+  echo "To enable Alt+Tab behavior in i3, add this to your config:
+  bindsym Mod1+Tab       exec --no-startup-id i3-switch-tabs right
+  bindsym Mod1+Shift+Tab exec --no-startup-id i3-switch-tabs left"
+}
