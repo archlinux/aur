@@ -3,23 +3,26 @@
 
 pkgname=python-vtc_scrypt
 pkgver=1.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Bindings for scrypt-n proof of work used by Vertcoin'
 
 arch=('any')
-url='https://pypi.python.org/pypi/vtc_scrypt'
+url='https://github.com/vertcoin-project/vtc-scrypt'
 license=('MIT')
 
+makedepends=('git')
 depends=('python-setuptools' 'scrypt')
 
 provides=('python-vtc_scrypt')
 conflicts=('python-vtc_scrypt')
 
-source=('https://files.pythonhosted.org/packages/44/52/fa0eac61c6817adb00bd8f05e2b2130d91f35350ea49e170d890ed27d549/vtc_scrypt_new-1.1.5.tar.gz')
+source=('git://github.com/vertcoin-project/vtc-scrypt.git')
 
-md5sums=('7e0810d0c17331dae5073e69d647f19e')
+md5sums=('SKIP')
 
 package() {
-    cd "$srcdir/vtc_scrypt_new-1.1.5/"
+    cd "$srcdir/vtc-scrypt/"
+    git checkout 9b297869de41d385e571d86a70e98254cd83041b >/dev/null 2>&1
     python setup.py install --root="$pkgdir/" --optimize=1 --prefix=/usr
 }
+
