@@ -3,7 +3,7 @@
 pkgname=avra-git
 pkgver=1.4.1.r3.g55a17c3
 pkgrel=1
-pkgdesc="Assember for the Atmel AVR microcontroller family"
+pkgdesc="Assembler for the Atmel AVR microcontroller family"
 arch=('x86_64')
 url="https://github.com/hsoft/avra"
 license=('GPL2')
