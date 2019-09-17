@@ -1,6 +1,6 @@
 pkgbase = vlang
 	pkgdesc = Simple, fast, safe language created for developing maintainable software
-	pkgver = 0.1.17
+	pkgver = 0.1.19
 	pkgrel = 1
 	url = https://vlang.io
 	arch = x86_64
@@ -11,10 +11,10 @@ pkgbase = vlang
 	optdepends = libcurl.so
 	conflicts = v
 	conflicts = vlang-git
-	source = v-0.1.17.tar.gz::https://github.com/vlang/v/archive/0.1.17.tar.gz
-	source = vc-0.1.17.tar.gz::https://github.com/vlang/vc/archive/0.1.17.tar.gz
-	sha256sums = 8c509b157e3faafac5556e124575b8d82c0441b4b45edc45bfb6c4b05d394d2b
-	sha256sums = 2cf184f70315dd12a23d7ddb4df665f108e5aaf7fcf2253530b76bb8ce0b8b13
+	source = v-0.1.19.tar.gz::https://github.com/vlang/v/archive/0.1.19.tar.gz
+	source = vc-0.1.19.tar.gz::https://github.com/vlang/vc/archive/0.1.19.tar.gz
+	sha256sums = 7fa2b45f88e5653b82ce92532c2cc7631f7646c8eec24763757d62657115be6a
+	sha256sums = 5afaaff3d041fc8629c6ffaf8cc66266274fdabc5cb2a8a588a218f985a0cc9b
 
 pkgname = vlang
 
