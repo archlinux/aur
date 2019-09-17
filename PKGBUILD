@@ -20,8 +20,8 @@ prepare() {
 }
 
 package() {
-	find squashfs-root/locales/ -type d -exec chmod 755 {} +
-	find squashfs-root/resources/ -type d -exec chmod 755 {} +
+	find squashfs-root/{locales,resources,usr/share/icons}/ -type d -exec chmod 755 {} +
+	
 	install -d "$pkgdir/opt/${pkgname%-bin}"
 	cp -r squashfs-root/* "$pkgdir/opt/${pkgname%-bin}"
 	rm -rf "$pkgdir/opt/${pkgname%-bin}/usr"
@@ -31,7 +31,6 @@ package() {
 	install -Dm644 "squashfs-root/${pkgname%-bin}.desktop" \
 		"$pkgdir/usr/share/applications/${pkgname%-bin}.desktop"
 	
-	find squashfs-root/usr/share/icons/ -type d -exec chmod 755 {} +
 	install -d "$pkgdir/usr/share/icons"
 	cp -r squashfs-root/usr/share/icons/hicolor "$pkgdir/usr/share/icons"
 }
