@@ -2,14 +2,14 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname="lnav-git"
-pkgver="0.7.3.r60.g92dd592"
+pkgver="0.8.5.r74.g8b750c8"
 pkgrel="1"
 pkgdesc="A featureful ncurses based log file viewer"
 arch=("i686" "x86_64")
 url="http://lnav.org/"
 license=("BSD")
-depends=("bzip2" "ncurses" "pcre" "readline" "sqlite" "zlib")
-makedepends=("git" "re2c")
+depends=("bzip2" "curl" "ncurses" "pcre" "readline" "sqlite" "zlib")
+makedepends=("git")
 conflicts=("lnav")
 provides=("lnav")
 source=("$pkgname"::"git+https://github.com/tstack/lnav.git")
