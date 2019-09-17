@@ -4,7 +4,7 @@
 # Contributor: Pieter Goetschalckx <3.14.e.ter <at> gmail <dot> com>
 
 pkgname=ferdi-git
-_pkgver=5.3.1
+_pkgver=5.3.3
 pkgver=${_pkgver//-/_}
 pkgrel=1
 pkgdesc='Free messaging app for services like WhatsApp, Slack, Messenger and many more. fork removing the non-skippable app delay frequently inviting you to buy a licence'
