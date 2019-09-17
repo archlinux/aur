@@ -1,0 +1,42 @@
+diff --git a/SConstruct b/SConstruct
+index fcb32424..8ad6e077 100644
+--- a/SConstruct
++++ b/SConstruct
+@@ -168,9 +168,9 @@ class FreelanEnvironment(Environment):
+         Returns a list of file objects that match the specified patterns.
+         """
+ 
+-        path = unicode(path)
++        path = str(path)
+ 
+-        if isinstance(patterns, basestring):
++        if isinstance(patterns, str):
+             patterns = [patterns]
+ 
+         result = []
+diff --git a/apps/freelan/src/system.cpp b/apps/freelan/src/system.cpp
+index 76e13534..8ed74019 100644
+--- a/apps/freelan/src/system.cpp
++++ b/apps/freelan/src/system.cpp
+@@ -145,7 +145,7 @@ fs::path get_configuration_directory()
+ #ifdef WINDOWS
+ 	return get_installation_directory() / "config/";
+ #else
+-	return get_installation_directory() / "etc/" FREELAN_NAME;
++	return "/etc/" FREELAN_NAME;
+ #endif
+ }
+ 
+diff --git a/defines.py b/defines.py
+index 011a50f7..58c1b69a 100644
+--- a/defines.py
++++ b/defines.py
+@@ -100,7 +100,7 @@ class Defines(object):
+         Return the content.
+         """
+ 
+-        return content.format(defines=self)
++        return content.decode('utf-8').format(defines=self).encode('utf-8')
+ 
+     def emitter(self, target, source, env):
+         """
