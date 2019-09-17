@@ -4,7 +4,7 @@ _pkgname=wedder
 pkgname="${_pkgname}-git"
 pkgdesc="Current weather info for status bars like polybar"
 
-pkgver=1.0.5.r0.gbae30e6
+pkgver=1.0.5.r2.gaeb4b6b
 pkgrel=1
 arch=("any")
 
@@ -30,6 +30,6 @@ package() {
 	cd "${_pkgname}"
 
 	install -Dm755 target/release/$_pkgname "$pkgdir/usr/bin/$_pkgname"
-	install -Dm644 example/wedder.toml "${pkgdir}/etc/${_pkgname}/wedder.toml"
+	install -Dm644 examples/wedder.toml "${pkgdir}/etc/${_pkgname}/wedder.toml"
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
