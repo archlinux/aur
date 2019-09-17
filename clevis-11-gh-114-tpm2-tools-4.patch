@@ -1,0 +1,299 @@
+From 90a926a4c60d8504057ddf8800cd45d99a250262 Mon Sep 17 00:00:00 2001
+From: Jonas Witschel <diabonas@gmx.de>
+Date: Sat, 24 Aug 2019 16:43:17 +0200
+Subject: [PATCH 1/2] clevis-encrypt-tpm2: fix TPM object attributes
+
+Fix two problems with the current specification of the object
+attributes:
+
+1. According to the Trusted Platform Module Library Family 2.0
+Specification - Part 2: Structures, Revision 1.38, Section 8.3.3.5,
+sensitiveDataOrigin shall not be set for data objects:
+
+NOTE 3 The inSensitive.sensitive.data.size parameter may not be zero for
+a data object so sensitiveDataOrigin is required to be CLEAR. A data
+object has type = TPM_ALG_KEYEDHASH and its sign and decrypt attributes
+are CLEAR.
+
+tpm2-tools 3.X silently removes the inconsistent 'sensitivedataorigin'
+attribute.
+
+2. If the key is sealed against a certain PCR configuration,
+'userwithauth' needs to be clear so that the key cannot be unsealed with
+the default empty authorisation password. On the other hand, if the key
+is not sealed against a specific PCR configuration, 'userwithauth' must
+be set because there is no PCR policy to fulfil.
+
+tpm2-tools 3.X silently adds 'userwithauth' if no policy is specified
+for tpm2_create.
+---
+ src/pins/tpm2/clevis-encrypt-tpm2 | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/src/pins/tpm2/clevis-encrypt-tpm2 b/src/pins/tpm2/clevis-encrypt-tpm2
+index c70187d..a7f3332 100755
+--- a/src/pins/tpm2/clevis-encrypt-tpm2
++++ b/src/pins/tpm2/clevis-encrypt-tpm2
+@@ -24,7 +24,7 @@ auth="o"
+ # Algorithm type must be keyedhash for object with user provided sensitive data.
+ alg_create_key="keyedhash"
+ # Attributes for the created TPM2 object with the JWK as sensitive data.
+-obj_attr="fixedtpm|fixedparent|sensitivedataorigin|noda|adminwithpolicy"
++obj_attr="fixedtpm|fixedparent|noda|adminwithpolicy"
+ 
+ function on_exit() {
+     if ! rm -rf $TMP; then
+@@ -130,6 +130,8 @@ if [ -n "$pcr_ids" ]; then
+     fi
+ 
+     policy_options="-L $TMP/pcr.policy"
++else
++    obj_attr="$obj_attr|userwithauth"
+ fi
+ 
+ if ! tpm2_create -Q -g "$hash" -G "$alg_create_key" -c $TMP/primary.context -u $TMP/jwk.pub \
+-- 
+2.23.0
+
+
+From 4cd9621c9f849d6ba9b5d175f661b242878ba43c Mon Sep 17 00:00:00 2001
+From: Jonas Witschel <diabonas@gmx.de>
+Date: Sat, 24 Aug 2019 17:01:07 +0200
+Subject: [PATCH 2/2] pins/tpm2: add support for tpm2-tools 4.X
+
+tpm2-tools renamed tpm2_pcrlist to tpm2_pcrread and changed a lot of
+option names. Only the new unified environment variable TPM2TOOLS_TCTI
+is supported, TPM2TOOLS_TCTI_NAME and TPM2TOOLS_DEVICE_FILE are no
+longer recognised. Determine the tpm2-tools version from the output of
+$(tpm2_createprimary -v) and switch accordingly.
+---
+ src/luks/systemd/dracut/module-setup.sh.in |  6 ++-
+ src/pins/tpm2/clevis-decrypt-tpm2          | 40 +++++++++++++-----
+ src/pins/tpm2/clevis-encrypt-tpm2          | 47 +++++++++++++++++-----
+ src/pins/tpm2/meson.build                  |  5 ++-
+ 4 files changed, 76 insertions(+), 22 deletions(-)
+
+diff --git a/src/luks/systemd/dracut/module-setup.sh.in b/src/luks/systemd/dracut/module-setup.sh.in
+index 79fd555..fe34b1a 100755
+--- a/src/luks/systemd/dracut/module-setup.sh.in
++++ b/src/luks/systemd/dracut/module-setup.sh.in
+@@ -50,7 +50,6 @@ install() {
+ 
+     for cmd in clevis-decrypt-tpm2 \
+ 	tpm2_createprimary \
+-	tpm2_pcrlist \
+ 	tpm2_unseal \
+ 	tpm2_load; do
+ 
+@@ -58,13 +57,16 @@ install() {
+ 	    ((ret++))
+ 	fi
+     done
++    if ! find_binary tpm2_pcrread &>/dev/null && ! find_binary tpm2_pcrread &>/dev/null; then
++        ((ret++))
++    fi
+ 
+     if (($ret == 0)); then
+ 	inst_multiple clevis-decrypt-tpm2 \
+ 	    tpm2_createprimary \
+-	    tpm2_pcrlist \
+ 	    tpm2_unseal \
+ 	    tpm2_load
++	inst_multiple -o tpm2_pcrread tpm2_pcrlist
+ 	inst_libdir_file "libtss2-tcti-device.so*"
+     fi
+ 
+diff --git a/src/pins/tpm2/clevis-decrypt-tpm2 b/src/pins/tpm2/clevis-decrypt-tpm2
+index 4fc1c58..78a07e8 100755
+--- a/src/pins/tpm2/clevis-decrypt-tpm2
++++ b/src/pins/tpm2/clevis-decrypt-tpm2
+@@ -37,16 +37,22 @@ if [ -t 0 ]; then
+     exit 1
+ fi
+ 
+-TPM2TOOLS_INFO=`tpm2_pcrlist -v`
++TPM2TOOLS_INFO="$(tpm2_createprimary -v)"
+ 
+-if [[ $TPM2TOOLS_INFO != *version=\"3.* ]]; then
+-    echo "The tpm2 pin requires tpm2-tools version 3" >&2
++match='version="(.)\.'
++[[ $TPM2TOOLS_INFO =~ $match ]] && TPM2TOOLS_VERSION="${BASH_REMATCH[1]}"
++if [[ $TPM2TOOLS_VERSION != 3 ]] && [[ $TPM2TOOLS_VERSION != 4 ]]; then
++    echo "The tpm2 pin requires tpm2-tools version 3 or 4" >&2
+     exit 1
+ fi
+ 
++# Old environment variables for tpm2-tools 3.0
+ export TPM2TOOLS_TCTI_NAME=device
+ export TPM2TOOLS_DEVICE_FILE=`ls /dev/tpmrm? 2>/dev/null`
+ 
++# New environment variable for tpm2-tools >= 3.1
++export TPM2TOOLS_TCTI="$TPM2TOOLS_TCTI_NAME:$TPM2TOOLS_DEVICE_FILE"
++
+ if [ -z "${TPM2TOOLS_DEVICE_FILE[0]}" ]; then
+     echo "A TPM2 device with the in-kernel resource manager is needed!" >&2
+     exit 1
+@@ -98,9 +104,10 @@ trap 'on_exit' EXIT
+ 
+ pcr_ids=`jose fmt -j- -Og clevis -g tpm2 -g pcr_ids -Su- <<< "$jhd"` || true
+ 
++pcr_spec=''
+ if [ -n "$pcr_ids" ]; then
+     pcr_bank=`jose fmt -j- -Og clevis -g tpm2 -g pcr_bank -Su- <<< "$jhd"`
+-    policy_options="-L $pcr_bank:$pcr_ids"
++    pcr_spec="$pcr_bank:$pcr_ids"
+ fi
+ 
+ if ! `jose b64 dec -i- -O $TMP/jwk.pub <<< "$jwk_pub"`; then
+@@ -113,19 +120,34 @@ if ! `jose b64 dec -i- -O $TMP/jwk.priv <<< "$jwk_priv"`; then
+     exit 1
+ fi
+ 
+-if ! tpm2_createprimary -Q -H "$auth" -g "$hash" -G "$key" \
+-     -C $TMP/primary.context 2>/dev/null; then
++case "$TPM2TOOLS_VERSION" in
++    3) tpm2_createprimary -Q -H "$auth" -g "$hash" -G "$key" -C "$TMP"/primary.context || fail=$?;;
++    4) tpm2_createprimary -Q -C "$auth" -g "$hash" -G "$key" -c "$TMP"/primary.context || fail=$?;;
++    *) fail=1;;
++esac
++if [ -n "$fail" ]; then
+     echo "Creating TPM2 primary key failed!" >&2
+     exit 1
+ fi
+ 
+-if ! tpm2_load -Q -c $TMP/primary.context -u $TMP/jwk.pub -r $TMP/jwk.priv \
+-     -C $TMP/load.context 2>/dev/null; then
++case "$TPM2TOOLS_VERSION" in
++    3) tpm2_load -Q -c "$TMP"/primary.context -u "$TMP"/jwk.pub -r "$TMP"/jwk.priv \
++                 -C "$TMP"/load.context || fail=$?;;
++    4) tpm2_load -Q -C "$TMP"/primary.context -u "$TMP"/jwk.pub -r "$TMP"/jwk.priv \
++                 -c "$TMP"/load.context || fail=$?;;
++    *) fail=1;;
++esac
++if [ -n "$fail" ]; then
+     echo "Loading jwk to TPM2 failed!" >&2
+     exit 1
+ fi
+ 
+-if ! jwk=`tpm2_unseal -c $TMP/load.context $policy_options 2>/dev/null`; then
++case "$TPM2TOOLS_VERSION" in
++    3) jwk="$(tpm2_unseal -c "$TMP"/load.context ${pcr_spec:+-L $pcr_spec})" || fail=$?;;
++    4) jwk="$(tpm2_unseal -c "$TMP"/load.context ${pcr_spec:+-p pcr:$pcr_spec})" || fail=$?;;
++    *) fail=1;;
++esac
++if [ -n "$fail" ]; then
+     echo "Unsealing jwk from TPM failed!" >&2
+     exit 1
+ fi
+diff --git a/src/pins/tpm2/clevis-encrypt-tpm2 b/src/pins/tpm2/clevis-encrypt-tpm2
+index a7f3332..d48806d 100755
+--- a/src/pins/tpm2/clevis-encrypt-tpm2
++++ b/src/pins/tpm2/clevis-encrypt-tpm2
+@@ -59,16 +59,22 @@ if [ -t 0 ]; then
+     exit 1
+ fi
+ 
+-TPM2TOOLS_INFO=`tpm2_pcrlist -v`
++TPM2TOOLS_INFO="$(tpm2_createprimary -v)"
+ 
+-if [[ $TPM2TOOLS_INFO != *version=\"3.* ]]; then
+-    echo "The tpm2 pin requires tpm2-tools version 3" >&2
++match='version="(.)\.'
++[[ $TPM2TOOLS_INFO =~ $match ]] && TPM2TOOLS_VERSION="${BASH_REMATCH[1]}"
++if [[ $TPM2TOOLS_VERSION != 3 ]] && [[ $TPM2TOOLS_VERSION != 4 ]]; then
++    echo "The tpm2 pin requires tpm2-tools version 3 or 4" >&2
+     exit 1
+ fi
+ 
++# Old environment variables for tpm2-tools 3.0
+ export TPM2TOOLS_TCTI_NAME=device
+ export TPM2TOOLS_DEVICE_FILE=`ls /dev/tpmrm? 2>/dev/null`
+ 
++# New environment variable for tpm2-tools >= 3.1
++export TPM2TOOLS_TCTI="$TPM2TOOLS_TCTI_NAME:$TPM2TOOLS_DEVICE_FILE"
++
+ if [ -z "${TPM2TOOLS_DEVICE_FILE[0]}" ]; then
+     echo "A TPM2 device with the in-kernel resource manager is needed!" >&2
+     exit 1
+@@ -106,14 +112,24 @@ fi
+ 
+ trap 'on_exit' EXIT
+ 
+-if ! tpm2_createprimary -Q -H "$auth" -g "$hash" -G "$key" -C $TMP/primary.context; then
++case "$TPM2TOOLS_VERSION" in
++    3) tpm2_createprimary -Q -H "$auth" -g "$hash" -G "$key" -C "$TMP"/primary.context || fail=$?;;
++    4) tpm2_createprimary -Q -C "$auth" -g "$hash" -G "$key" -c "$TMP"/primary.context || fail=$?;;
++    *) fail=1;;
++esac
++if [ -n "$fail" ]; then
+     echo "Creating TPM2 primary key failed!" >&2
+     exit 1
+ fi
+ 
+ if [ -n "$pcr_ids" ]; then
+     if [ -z "$pcr_digest" ]; then
+-        if ! tpm2_pcrlist -Q -L "$pcr_bank":"$pcr_ids" -o $TMP/pcr.digest; then
++        case "$TPM2TOOLS_VERSION" in
++            3) tpm2_pcrlist -Q -L "$pcr_bank":"$pcr_ids" -o "$TMP"/pcr.digest || fail=$?;;
++            4) tpm2_pcrread -Q "$pcr_bank":"$pcr_ids" -o "$TMP"/pcr.digest || fail=$?;;
++            *) fail=1;;
++        esac
++        if [ -n "$fail" ]; then
+             echo "Creating PCR hashes file failed!" >&2
+             exit 1
+         fi
+@@ -124,18 +140,31 @@ if [ -n "$pcr_ids" ]; then
+         fi
+     fi
+ 
+-    if ! tpm2_createpolicy -Q -P -L "$pcr_bank":"$pcr_ids" -F $TMP/pcr.digest -f $TMP/pcr.policy; then
++    case "$TPM2TOOLS_VERSION" in
++        3) tpm2_createpolicy -Q -g "$hash" -P -L "$pcr_bank":"$pcr_ids" \
++                             -F "$TMP"/pcr.digest -f "$TMP"/pcr.policy || fail=$?;;
++        4) tpm2_createpolicy -Q -g "$hash" --policy-pcr -l "$pcr_bank":"$pcr_ids" \
++                             -f "$TMP"/pcr.digest -L "$TMP"/pcr.policy || fail=$?;;
++        *) fail=1;;
++    esac
++    if [ -n "$fail" ]; then
+         echo "create policy fail, please check the environment or parameters!"
+         exit 1
+     fi
+ 
+-    policy_options="-L $TMP/pcr.policy"
++    policy_options+=(-L "$TMP/pcr.policy")
+ else
+     obj_attr="$obj_attr|userwithauth"
+ fi
+ 
+-if ! tpm2_create -Q -g "$hash" -G "$alg_create_key" -c $TMP/primary.context -u $TMP/jwk.pub \
+-     -r $TMP/jwk.priv -A "$obj_attr" $policy_options -I- <<< "$jwk"; then
++case "$TPM2TOOLS_VERSION" in
++    3) tpm2_create -Q -g "$hash" -G "$alg_create_key" -c "$TMP"/primary.context -u "$TMP"/jwk.pub \
++                   -r "$TMP"/jwk.priv -A "$obj_attr" "${policy_options[@]}" -I- <<< "$jwk" || fail=$?;;
++    4) tpm2_create -Q -g "$hash" -C "$TMP"/primary.context -u "$TMP"/jwk.pub \
++                   -r "$TMP"/jwk.priv -a "$obj_attr" "${policy_options[@]}" -i- <<< "$jwk" || fail=$?;;
++    *) fail=1;;
++esac
++if [ -n "$fail" ]; then
+     echo "Creating TPM2 object for jwk failed!" >&2
+     exit 1
+ fi
+diff --git a/src/pins/tpm2/meson.build b/src/pins/tpm2/meson.build
+index 8121ec4..4041a9a 100644
+--- a/src/pins/tpm2/meson.build
++++ b/src/pins/tpm2/meson.build
+@@ -1,8 +1,9 @@
+-cmds = ['createprimary', 'pcrlist', 'createpolicy', 'create', 'load', 'unseal']
++cmds = ['tpm2_createprimary', ['tpm2_pcrread', 'tpm2_pcrlist'],
++        'tpm2_createpolicy', 'tpm2_create', 'tpm2_load', 'tpm2_unseal']
+ 
+ all = true
+ foreach cmd : cmds
+-  all = all and find_program('tpm2_' + cmd, required: false).found()
++  all = all and find_program(cmd, required: false).found()
+ endforeach
+ 
+ if all
+-- 
+2.23.0
+
