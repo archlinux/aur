@@ -1,11 +1,12 @@
 pkgbase = smooth-git
 	pkgdesc = An object oriented C++ class library for Windows, OS X, Linux and most Unix-like operating systems
-	pkgver = 0.8.74.0.pre6.30.g7394132e
+	pkgver = 0.8.74.0.pre6.47.gd095aaed
 	pkgrel = 1
 	url = http://www.smooth-project.org
 	arch = i686
 	arch = x86_64
 	license = Artistic2.0
+	makedepends = git
 	depends = curl
 	depends = fribidi
 	depends = gtk3
