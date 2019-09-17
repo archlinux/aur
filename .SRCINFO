@@ -1,7 +1,7 @@
 pkgbase = ambertools
 	pkgdesc = Biomolecular simulation package (tools only)
 	pkgver = 19
-	pkgrel = 2
+	pkgrel = 3
 	url = http://ambermd.org/
 	install = amber.install
 	arch = x86_64

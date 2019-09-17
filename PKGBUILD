@@ -5,7 +5,7 @@ _srcname=amber
 pkgver=19
 _releasever=18
 _gccver=7.4.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Biomolecular simulation package (tools only)"
 url="http://ambermd.org/"
 license=('GPL' 'LGPL')
@@ -49,6 +49,7 @@ build() {
   cd ${srcdir}/${_srcname}${_releasever}
 
   # set necessary variables
+  export LD_PRELOAD=/usr/lib/libstdc++.so
   export AMBER_PREFIX="${srcdir}/${_srcname}${_releasever}"
   export AMBERHOME="${srcdir}/${_srcname}${_releasever}"
   export PATH="${AMBER_PREFIX}/bin:${PATH}"
