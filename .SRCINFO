@@ -1,0 +1,18 @@
+pkgbase = goodix-p2max-dkms
+	pkgdesc = Goodix touchscreen driver hack for GPD P2 Max
+	pkgver = 20190917
+	pkgrel = 1
+	url = https://github.com/PeterCxy
+	install = goodix-p2max-dkms.install
+	arch = any
+	license = GPL2
+	depends = dkms
+	source = goodix.c
+	source = dkms.conf
+	source = Makefile
+	md5sums = 8e926b1baf8f7f367cebce2c8e883357
+	md5sums = 6aec7e75f05eef67ec7cf41f23fdef7d
+	md5sums = d33b0aa9a29b5f5b811e4869ee40e245
+
+pkgname = goodix-p2max-dkms
+
