@@ -1,6 +1,6 @@
 pkgbase = discover-snap-git
 	pkgdesc = KDE and Plasma resources management GUI with snap support (development version)
-	pkgver = 184
+	pkgver = 188
 	pkgrel = 1
 	url = https://userbase.kde.org/Discover
 	arch = x86_64
