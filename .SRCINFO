@@ -1,11 +1,12 @@
 pkgbase = freac-git
 	pkgdesc = Audio converter and CD ripper with support for various popular formats and encoders.
-	pkgver = continuous.r0.86175462
-	pkgrel = 2
-	url = http://www.freac.org
+	pkgver = continuous.r0.a35f5eea
+	pkgrel = 1
+	url = https://www.freac.org
 	arch = i686
 	arch = x86_64
 	license = GPL2
+	makedepends = git
 	depends = faac
 	depends = faad2
 	depends = libjpeg-turbo
