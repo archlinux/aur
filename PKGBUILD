@@ -4,17 +4,17 @@
 gitname=monitor
 auxname=("pantheon-system-${gitname}")
 pkgname=("${auxname}-git")
-pkgver=latest
+pkgver=r347.e3ba5e0
 pkgrel=1
 pkgdesc="Manage processes and monitor system resources. 
         Designed for elementary OS."
 arch=('i686' 'x86_64')
 url="https://github.com/stsdc/${gitname}"
 license=('GPL3')
-depends=('granite' 'gtk3' 'vala'
-         'bamf' 'glib2' 'glibc' 'libgee' 'libgtop' 'libwnck3' 'wingpanel')
+depends=('granite' 'gtk3' 'bamf' 'glib2' 'glibc' 
+	'libgee' 'libgtop' 'libwnck3' 'wingpanel')
 optdepends=('lib32-glib2')
-makedepends=('git' 'meson' 'ninja')
+makedepends=('git' 'meson' 'vala')
 provides=("${auxname}")
 conflicts=("${auxname}")
 source=("git+${url}.git")
