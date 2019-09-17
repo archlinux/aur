@@ -1,7 +1,7 @@
 pkgbase = abricotine
 	pkgdesc = A markdown editor with inline preview
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://abricotine.brrd.fr
 	arch = x86_64
 	license = GPL3
