@@ -4,7 +4,7 @@
 _gitname=screenrecorder
 _author=mohelm97
 pkgname=("${_gitname}-git")
-pkgver=latest
+pkgver=r61.0749062
 pkgrel=1
 pkgdesc="A simple screen recorder app designed for Pantheon Shell"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ url="https://github.com/${_author}/${_gitname}"
 license=('GPL3')
 depends=('gtk3' 'granite' 'clutter-gst' 'clutter-gtk' 'gstreamer' 'libx11')
 optdepends=('')
-makedepends=('git' 'meson' 'ninja' 'vala')
+makedepends=('git' 'meson' 'vala')
 provides=("${_gitname}")
 conflicts=("${_gitname}")
 source=("git+${url}.git")
