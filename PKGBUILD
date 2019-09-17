@@ -23,7 +23,7 @@ source=(https://github.com/$_pkgname/$_pkgname/archive/v$pkgver.tar.gz
 	piholeDebug.sh)
 
 md5sums=('33ea26a46937a0b5d20037639eb0ee34'
-         'a696ca8cb9c9ea14265abb1bd11130cd'
+         'c78397ce4b61586e43624265b02bbe73'
          '50d29442a7b185f0d05bc2ed72f875be'
          '047f13d4ac97877f724f87b002aaee63'
          'd42a864f88299998f8233c0bc0dd093d'
