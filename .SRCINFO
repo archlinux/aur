@@ -1,0 +1,37 @@
+pkgbase = netsurf-fb
+	pkgdesc = Lightweight and fast web browser
+	pkgver = 3.9
+	pkgrel = 1
+	url = https://www.netsurf-browser.org/
+	arch = x86_64
+	arch = i686
+	license = MIT
+	license = GPL2
+	makedepends = check
+	makedepends = gcc
+	makedepends = libcss>=0.9.0
+	makedepends = libnsbmp>=0.1.5
+	makedepends = libnsgif>=0.2.1
+	makedepends = make
+	makedepends = nsgenbind>=0.7
+	makedepends = patch
+	makedepends = words
+	makedepends = xxd
+	depends = curl
+	depends = glibc
+	depends = libdom>=0.4.0
+	depends = libjpeg
+	depends = libnsfb
+	depends = libnsutils=0.0.5-4
+	depends = libpng
+	depends = libsvgtiny
+	depends = libutf8proc>=2.4.0
+	depends = libwebp
+	depends = openssl
+	source = https://download.netsurf-browser.org/netsurf/releases/source/netsurf-3.9-src.tar.gz
+	source = utils-idna.patch
+	sha256sums = d72f1c6f6113a01e541f8476a93c347235068779140090df55ba402eb4a8ecc3
+	sha256sums = 1c2bb855e1b778bae1234018fa4b138f974a55ee56fd77ec0a21d3fcca487d38
+
+pkgname = netsurf-fb
+
