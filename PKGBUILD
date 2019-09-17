@@ -1,7 +1,5 @@
-# Contributor: Jesse Juhani Jaara <gmail.com: jesse.jaara>
-
 pkgname=mingw-w64-pugixml
-_majordotminor=1.9
+_majordotminor=1.10
 pkgver=${_majordotminor}
 pkgrel=1
 pkgdesc="Light-weight, simple and fast XML parser for C++ with XPath support (mingw-w64)"
@@ -12,7 +10,7 @@ depends=('mingw-w64-crt')
 makedepends=('mingw-w64-cmake')
 options=('!buildflags' 'staticlibs' '!strip')
 source=("http://github.com/zeux/pugixml/releases/download/v${pkgver}/pugixml-${pkgver}.tar.gz")
-sha256sums=('d156d35b83f680e40fd6412c4455fdd03544339779134617b9b28d19e11fdba6')
+sha256sums=('55f399fbb470942410d348584dc953bcaec926415d3462f471ef350f29b5870a')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
