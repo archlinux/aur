@@ -1,6 +1,6 @@
 pkgname=weasis-bin
 pkgver=3.5.3
-pkgrel=3
+pkgrel=4
 pkgdesc="Weasis is a multipurpose DICOM viewer with a highly modular architecture"
 arch=('any')
 url="https://nroduit.github.io/"
@@ -16,5 +16,5 @@ package(){
         mkdir -p "${pkgdir}/usr/bin"
         ln -s "/opt/Weasis/bin/Weasis" "$pkgdir/usr/bin/weasis"
 
-        install -Dm 644 /opt/Weasis/bin/Weasis.desktop ${pkgdir}/usr/share/applications/Weasis.desktop
+        install -Dm 644 ${pkgdir}/opt/Weasis/bin/Weasis.desktop ${pkgdir}/usr/share/applications/Weasis.desktop
 }
