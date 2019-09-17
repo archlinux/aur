@@ -1,6 +1,6 @@
 pkgbase = amdvlk-git
 	pkgdesc = AMD's standalone Vulkan driver
-	pkgver = r76.96d8406
+	pkgver = r85.331558e
 	pkgrel = 1
 	url = https://github.com/GPUOpen-Drivers
 	arch = x86_64
@@ -24,6 +24,8 @@ pkgbase = amdvlk-git
 	source = git+https://github.com/GPUOpen-Drivers/wsa.git#branch=master
 	source = git+https://github.com/GPUOpen-Drivers/AMDVLK.git#branch=dev
 	source = git+https://github.com/GPUOpen-Drivers/llpc.git#branch=dev
+	source = git+https://github.com/GPUOpen-Drivers/MetroHash.git
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP

@@ -3,7 +3,7 @@
 # Maintainer: Adrià Cereto i Massagué <ssorgatem at gmail.com>
 
 pkgname=amdvlk-git
-pkgver=r76.96d8406
+pkgver=r85.331558e
 pkgrel=1
 pkgdesc="AMD's standalone Vulkan driver"
 arch=(x86_64)
@@ -19,8 +19,10 @@ source=('llvm::git+https://github.com/GPUOpen-Drivers/llvm.git#branch=amd-vulkan
 	'git+https://github.com/GPUOpen-Drivers/wsa.git#branch=master'
 	'git+https://github.com/GPUOpen-Drivers/AMDVLK.git#branch=dev'
 	'git+https://github.com/GPUOpen-Drivers/llpc.git#branch=dev'
+	'git+https://github.com/GPUOpen-Drivers/MetroHash.git'
 	)
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -36,6 +38,8 @@ prepare() {
 
   # On my system this adds -isystem=/include, which breaks gcc's ability to find stdlib.h
   sed -i "s/if(LLVM_WITH_Z3)/if(FALSE)/g" "$srcdir"/llvm/lib/Support/CMakeLists.txt
+
+  ln -sf "$srcdir"/MetroHash "$srcdir"/pal/src/util/imported/metrohash
 }
 
 pkgver() {
