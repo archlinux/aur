@@ -44,7 +44,7 @@ pkgbase = white_dune
 	makedepends = freetype2
 	makedepends = ttf-bitstream-vera
 	source = ftp://ftp.ourproject.org/pub/wdune/white_dune-1.400.tar.bz2
-	md5sums = c8160c80d1b54e1b02cd7041e4ab39fc
+	md5sums = 366c6b2f8fb7432295e246e00c068d22
 
 pkgname = white_dune
 
