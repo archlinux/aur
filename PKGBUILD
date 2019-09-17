@@ -1,6 +1,6 @@
-# Maintainer: Tarn Burton <twburton at gmail dot com>
+# Maintainer: Erhad Husovic <xdaemonx@protonmail.ch>
 pkgname='cadabra2-git'
-pkgver=r1703.c5394b0e6a
+pkgver=2.2.7
 pkgrel=1
 pkgdesc="A computer algebra system (pre-release version) designed specifically for the solution of problems encountered in field theory."
 arch=('i686' 'x86_64')
@@ -22,26 +22,12 @@ depends=(
 makedepends=(
   'boost'
   'cmake'
-  'git'
 )
-source=("$pkgname::git+https://github.com/kpeeters/cadabra2" "package.patch")
-md5sums=('SKIP'
-         'f18d2d5c9c70064e422cdbd7954ecd59')
-# install=package.install
-
-
-pkgver() {
-  cd $pkgname
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-# prepare() {
-#   cd "${srcdir}/${pkgname}"
-#   patch -Np1 -i ../package.patch
-# }
+source=("https://github.com/kpeeters/cadabra2/archive/${pkgver}.tar.gz")
+md5sums=('95feb70c09aca94a2149adbe4e754f4f')
 
 build() {
-  cd $pkgname
+  cd "$srcdir/cadabra2-$pkgver"
   mkdir -p build
   cd build
   cmake -DCMAKE_SKIP_RPATH=true -DCMAKE_INSTALL_PREFIX=/usr ..
@@ -49,6 +35,6 @@ build() {
 }
 
 package() {
-  cd "${pkgname}/build"
+  cd "$srcdir/cadabra2-$pkgver/build"
   make DESTDIR="${pkgdir}" install
 }
