@@ -10,7 +10,7 @@
 # 0: No yield
 # 1: Yield only to better priority/deadline tasks
 # 2: Expire timeslice and recalculate deadline
-_sched_yield_type=0
+_sched_yield_type=
 
 # Tweak kernel options prior to a build via nconfig
 _makenconfig=
