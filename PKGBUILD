@@ -11,7 +11,11 @@ sha256sums=(89175875156531cc05b3d43826a788a5f2a9a6220fd0ff6e12d66a05eedd2756)
 
 build() {
   cd QtBitcoinTrader-$pkgver/src
-  qmake QMAKE_CXXFLAGS_RELEASE="$CPPFLAGS $CXXFLAGS" QMAKE_LFLAGS_RELEASE="$LDFLAGS"
+  qmake CONFIG+=nostrip \
+        DEFINES+="${CPPFLAGS//-D/}" \
+        QMAKE_CXXFLAGS-=-pipe \
+        QMAKE_CXXFLAGS_RELEASE="$CXXFLAGS" \
+        QMAKE_LFLAGS_RELEASE="$LDFLAGS"
   make
 }
 
