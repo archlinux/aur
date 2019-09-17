@@ -1,6 +1,6 @@
 pkgbase = zap-desktop-git
 	pkgdesc = Lightning wallet focused on user experience and ease of use
-	pkgver = 0.4.1.beta
+	pkgver = 0.5.2.beta.63.gd4b9267ab
 	pkgrel = 1
 	url = https://github.com/LN-Zap/zap-desktop
 	arch = x86_64
