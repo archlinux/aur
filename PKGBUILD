@@ -1,7 +1,7 @@
 # Maintainer: Jonas Witschel <diabonas at gmx dot de>
 pkgname=clevis
 pkgver=11
-pkgrel=4
+pkgrel=5
 pkgdesc='Automated Encryption Framework'
 arch=('x86_64')
 url='https://github.com/latchset/clevis'
@@ -11,16 +11,17 @@ makedepends=('meson'
              # Optional components, must be present during build to enable corresponding features
              'asciidoc' # man page support
              'bash-completion' # Bash completion support
-             'dracut' # Dracut unlocker support
+             'dracut' # dracut unlocker support
              'libpwquality' 'luksmeta' # LUKS unlocker support
              'tpm2-tools' # TPM pin support
              'udisks2') # UDisks2 unlocker support
 checkdepends=('tang')
-optdepends=('curl: Tang pin support'
-            'dracut: Dracut unlocker support'
+optdepends=('cryptsetup: LUKS unlocker support'
+            'curl: Tang pin support'
+            'dracut: dracut unlocker support'
             'libpwquality: LUKS unlocker support'
             'luksmeta: LUKS and UDisks2 unlocker support'
-            'nmap: Dracut unlocker support'
+            'nmap: dracut unlocker support'
             'tpm2-tools: TPM2 pin support'
             'udisks2: UDisks2 unlocker support')
 source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz"
@@ -40,7 +41,6 @@ prepare() {
 	patch --strip=1 --input="$srcdir/clevis-11-gh-115-ncat.patch"
 	# Add support for tpm2-tools 4.0 (backport of GitHub PR #114)
 	patch --strip=1 --input="$srcdir/clevis-11-gh-114-tpm2-tools-4.patch"
-
 }
 
 build() {
