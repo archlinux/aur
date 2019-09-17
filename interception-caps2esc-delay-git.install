@@ -1,0 +1,11 @@
+_pkgname=interception-caps2esc-delay-git
+_realname=interception-caps2esc
+
+post_install() {
+  echo -ne "\e[34;1m"
+  echo "=== INSTALLATION NOTES for $_pkgname ==="
+  echo -ne "\e[39;1m"
+  echo "An example configuration file has been installed at /usr/share/doc/${_realname}/udevmon.example.yaml"
+  echo "You can copy it to /etc/udevmon.yaml and restart udevmon.service"
+  echo -ne "\e[0m"
+}
