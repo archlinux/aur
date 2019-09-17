@@ -1,0 +1,13 @@
+pkgbase = i3-switch-tabs
+	pkgdesc = Switch top-level tabs in i3-wm
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/nikola-kocic/i3-switch-tabs
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	source = i3-switch-tabs-0.1.3.tar.gz::https://github.com/nikola-kocic/i3-switch-tabs/archive/v0.1.3.tar.gz
+	sha512sums = eb65ddca5c62098064a0c034e8aa0a715e5f7b2d74f56353abeadb26ffdff3290647eb27ebcbd372fcd3049af0dcb99875bc0becdcf9b4666537fa11c1b1d711
+
+pkgname = i3-switch-tabs
+
