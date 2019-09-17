@@ -1,8 +1,8 @@
-# Maintainer: Andrew Sun <adsun701@gmail.com>
+# Maintainer: Andrew Sun <adsun701 at gmail dot com>
 
 _pkgname=libfilezilla
 pkgname=lib32-${_pkgname}
-pkgver=0.18.1
+pkgver=0.18.2
 pkgrel=1
 pkgdesc="Small and modern C++ library, offering some basic functionality to build high-performing, platform-independent programs (32-bit)"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=("lib32-gcc-libs" "lib32-clang" "lib32-nettle" "lib32-gnutls" "${_pkgnam
 makedepends=("clang" "gettext")
 checkdepends=("lib32-cppunit")
 source=("https://download.filezilla-project.org/${_pkgname}/${_pkgname}-${pkgver}.tar.bz2")
-sha512sums=('b1077a48575ec6bd99cb01a21171fdec4ea662bb4ecb568cb547c6401164854588801cdc4ae80d62809534d2b04d42dcc3f7325bf57af0e2e737a4ca9f15032e')
+sha512sums=('6f165a008ea8e3090554070685ef042b5304a8e7fdeb9f16c81a01c00b5fcb3d4acd356cfaf3fc1189c04db0b726dd005c592f6c7c6b06a527d8b82e7890257b')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
