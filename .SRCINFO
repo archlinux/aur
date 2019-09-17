@@ -1,7 +1,7 @@
 pkgbase = ambertools
 	pkgdesc = Biomolecular simulation package (tools only)
 	pkgver = 19
-	pkgrel = 2
+	pkgrel = 3
 	url = http://ambermd.org/
 	install = amber.install
 	arch = x86_64
@@ -34,15 +34,11 @@ pkgbase = ambertools
 	source = amber.sysusers
 	source = amber.patch
 	source = 19
-	source = sander
-	source = sander.MPI
 	md5sums = afffe8a5473a0bd143b98f0396f52f0f
-	md5sums = 89d470dc64e054d07b9906344d1218ec
+	md5sums = 85880c3a3267c2e369f4c48c9e552800
 	md5sums = eff0977b0c5d2da8ea74186dadd9ed01
 	md5sums = 2e4a52fb820aae6a0b707fec89cb23d1
-	md5sums = 5b1c2586560377ff39726b83143bd9fd
-	md5sums = 2fe2fd85a6312f7847fba8e7c2d49896
-	md5sums = b6a324cd278a0818c87ac2cd802614a5
+	md5sums = d4a16249f1374ca8c48ccf749106b39f
 
 pkgname = ambertools
 

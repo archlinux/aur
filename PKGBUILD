@@ -5,7 +5,7 @@ _srcname=amber
 pkgver=19
 _releasever=18
 _gccver=7.4.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Biomolecular simulation package (tools only)"
 url="http://ambermd.org/"
 license=('GPL' 'LGPL')
@@ -17,12 +17,10 @@ optdepends=('plumed: metadynamics support'
             'cuda: GPU acceleration support for PBSA and CPPTRAJ'
             'env-modules-tcl: modulefile support')
 md5sums=('afffe8a5473a0bd143b98f0396f52f0f'
-         '89d470dc64e054d07b9906344d1218ec'
+         '85880c3a3267c2e369f4c48c9e552800'
          'eff0977b0c5d2da8ea74186dadd9ed01'
          '2e4a52fb820aae6a0b707fec89cb23d1'
-         '5b1c2586560377ff39726b83143bd9fd'
-         '2fe2fd85a6312f7847fba8e7c2d49896'
-         'b6a324cd278a0818c87ac2cd802614a5')
+         'd4a16249f1374ca8c48ccf749106b39f')
 options=(staticlibs !buildflags !makeflags)
 install=amber.install
 
@@ -31,9 +29,7 @@ source=("local://AmberTools${pkgver}.tar.bz2"
         "amber.sh"
         "amber.sysusers"
         "amber.patch"
-        "${pkgver}"
-        "sander"
-        "sander.MPI")
+        "${pkgver}")
 
 prepare() {
   cd ${srcdir}/${_srcname}${_releasever}
@@ -49,6 +45,8 @@ build() {
   cd ${srcdir}/${_srcname}${_releasever}
 
   # set necessary variables
+  export LD_PRELOAD=/usr/lib/libstdc++.so
+  export LD_LIBRARY_PATH="/usr/lib/gcc/x86_64-pc-linux-gnu/${_gccver}:$LD_LIBRARY_PATH"
   export AMBER_PREFIX="${srcdir}/${_srcname}${_releasever}"
   export AMBERHOME="${srcdir}/${_srcname}${_releasever}"
   export PATH="${AMBER_PREFIX}/bin:${PATH}"
@@ -64,8 +62,6 @@ build() {
   else
      export LD_LIBRARY_PATH="${AMBER_PREFIX}/lib:${LD_LIBRARY_PATH}"
   fi
-
-  export LD_LIBRARY_PATH="/usr/lib/gcc/x86_64-pc-linux-gnu/${_gccver}:${LD_LIBRARY_PATH}"
 
   # configure and build serial version of AmberTools
   LANG=en_US.UTF-8 CC=gcc-7 CXX=g++-7 FC=gfortran-7 ./configure --with-python /usr/bin/python2 --no-updates gnu
@@ -90,6 +86,7 @@ build() {
 
 package() {
   mkdir -p ${pkgdir}/opt/${pkgname}
+  mkdir -p ${pkgdir}/usr/bin
 
   cd ${srcdir}/${_srcname}${_releasever}
   cp -ar bin dat include lib lib64 ${pkgdir}/opt/${pkgname}
@@ -107,9 +104,9 @@ package() {
   install -Dm644 ${srcdir}/${pkgver} ${pkgdir}/opt/${pkgname}/share/modulefiles/ambertools/${pkgver}
   install -Dm644 ${srcdir}/amber.sysusers ${pkgdir}/usr/lib/sysusers.d/amber.conf
 
-  # install wrappers
-  install -Dm755 ${srcdir}/sander ${pkgdir}/usr/bin/sander
-  install -Dm755 ${srcdir}/sander.MPI ${pkgdir}/usr/bin/sander.MPI
+  # create links to sander executables
+  ln -sf /opt/${pkgname}/bin/sander ${pkgdir}/usr/bin/sander
+  ln -sf /opt/${pkgname}/bin/sander.MPI ${pkgdir}/usr/bin/sander.MPI
 
   # fix permissions
   chown -R root:4535 ${pkgdir}/opt/${pkgname}
