@@ -2,7 +2,7 @@
 # shellcheck disable=SC2154
 # Maintainer: Pat Brisbin <pbrisbin@gmail.com>
 pkgname=okta-aws-cli-assume-role
-pkgver=1.0.4
+pkgver=2.0.4
 pkgrel=1
 pkgdesc="Okta AWS CLI Assume Role Tool"
 arch=('any')
