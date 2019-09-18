@@ -1,4 +1,6 @@
-# Maintainer: Raphaël Doursenaud <rdoursenaud@free.fr>
+# Maintainer: Frederick Zhang <frederick888@tsundere.moe>
+# Contributor: Raphaël Doursenaud <rdoursenaud@free.fr>
+
 pkgname=mysql-shell
 pkgver=8.0.16
 pkgrel=1
