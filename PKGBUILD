@@ -2,7 +2,7 @@
 
 _pkgname=componere
 pkgname=php-$_pkgname-git
-pkgver=v3.1.0.r0.g9ea864e
+pkgver=v3.1.1.r0.g5806e3e
 pkgrel=1
 pkgdesc="Complex Type Composition and Manipulation http://docs.php.net/intro.componere"
 arch=('i686' 'x86_64')
