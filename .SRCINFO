@@ -1,16 +1,16 @@
 pkgbase = rclone-browser
 	pkgdesc = Simple cross-platform GUI for rclone
-	pkgver = 1.4
+	pkgver = 1.4.1
 	pkgrel = 1
-	url = https://github.com/kapitainsky/RcloneBrowser 
+	url = https://github.com/kapitainsky/RcloneBrowser
 	arch = i686
 	arch = x86_64
 	license = custom:Public Domain
 	makedepends = cmake
 	depends = qt5-base
 	depends = rclone
-	source = https://github.com/kapitainsky/RcloneBrowser/archive/1.4.tar.gz
-	sha256sums = d84880df8639af35c3737b9fa67fbd34c75d2518a51d156f60c4a9ba13c593dd
+	source = https://github.com/kapitainsky/RcloneBrowser/archive/1.4.1.tar.gz
+	sha256sums = 7051853e70d1d2adbb9714d8975b4c982a9734d7949a154be845569df5a89d53
 
 pkgname = rclone-browser
 
