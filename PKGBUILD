@@ -1,9 +1,9 @@
 
 # Maintainer: Malte Veerman <maldela@halloarsch.de>
 
-_srcname=fancontrol-gui-0.7
+_srcname=fancontrol-gui-0.8
 pkgname=fancontrol-gui
-pkgver=v0.7
+pkgver=v0.8
 pkgrel=1
 pkgdesc="GUI for fancontrol and the fancontrol systemd service"
 arch=('i686' 'x86_64')
@@ -12,8 +12,8 @@ license=('GPL2')
 depends=('qt5-quickcontrols2' 'qt5-declarative' 'lm_sensors' 'kirigami2' 'kdbusaddons' 'knotifications' 'kdeclarative' 'kauth' 'kpackage' 'ki18n' 'kconfig' 'systemd')
 makedepends=('git' 'extra-cmake-modules')
 replaces=('fancontrol-common')
-source=('https://github.com/Maldela/fancontrol-gui/archive/v0.7.tar.gz')
-md5sums=('873ed029f2d2099092ed46398df59988')
+source=('https://github.com/Maldela/fancontrol-gui/archive/v0.8.tar.gz')
+md5sums=('c2d37fcde2d189bf8601a32320f23c32')
 
 
 build() {
