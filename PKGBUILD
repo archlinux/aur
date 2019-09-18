@@ -1,15 +1,14 @@
 # Maintainer: Xingbo Wu <wuxb45 at gmail dot com>
 pkgname=spdk-git
 pkgver=0   # pkgver() updates this
-pkgrel=1
-pkgdesc='spdk-git with minimal dependencies'
+pkgrel=2
+pkgdesc='spdk-git with only headers/libs'
 arch=('x86_64')
 license=('BSD')
 url='https://spdk.io/'
 depends=('glibc')
-makedepends=('nasm')
 provides=('spdk')
-conflicts=('spdk')
+conflicts=('spdk' 'dpdk')
 source=("$pkgname::git+https://github.com/spdk/spdk.git")
 sha256sums=('SKIP')
 
@@ -24,7 +23,7 @@ pkgver() {
 build() {
   cd "$srcdir/$pkgname"
   git submodule update --init
-  ./configure --prefix=/usr --with-shared --disable-tests
+  ./configure --prefix=/usr --with-shared --disable-tests --without-isal
   make
 }
 
