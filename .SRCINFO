@@ -1,6 +1,6 @@
 pkgbase = firefox-babble
-	pkgdesc = Babble is a platform agnostic browser extension that allows for easy encryption and decryption of text data across the web.
-	pkgver = v0.0.1
+	pkgdesc = A platform agnostic browser extension that allows for easy encryption and decryption of text data across the web.
+	pkgver = 0.0.1
 	pkgrel = 1
 	url = https://github.com/XCF-Babble/babble
 	arch = any
