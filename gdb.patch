@@ -1,6 +1,66 @@
+diff -rup gdb-7.8+os161-2.1/gdb/python/python.c gdb-7.8+os161-2.1-new/gdb/python/python.c
+--- gdb-7.8+os161-2.1/gdb/python/python.c	2014-09-30 23:00:34.000000000 -0300
++++ gdb-7.8+os161-2.1-new/gdb/python/python.c	2019-09-17 22:09:14.270409170 -0300
+@@ -108,7 +108,7 @@ int gdb_python_initialized;
+ static PyMethodDef GdbMethods[];
+ 
+ #ifdef IS_PY3K
+-static struct PyModuleDef GdbModuleDef;
++extern struct PyModuleDef GdbModuleDef;
+ #endif
+ 
+ PyObject *gdb_module;
+@@ -1556,6 +1556,17 @@ finalize_python (void *ignore)
+ }
+ #endif
+ 
++#ifdef IS_PY3K
++/* This is called via the PyImport_AppendInittab mechanism called
++   during initialization, to make the built-in _gdb module known to
++   Python.  */
++PyMODINIT_FUNC
++init__gdb_module (void)
++{
++  return PyModule_Create (&GdbModuleDef);
++}
++#endif
++
+ /* Provide a prototype to silence -Wmissing-prototypes.  */
+ extern initialize_file_ftype _initialize_python;
+ 
+@@ -1677,6 +1688,9 @@ message == an error message without a st
+      remain alive for the duration of the program's execution, so
+      it is not freed after this call.  */
+   Py_SetProgramName (progname_copy);
++
++  /* Define _gdb as a built-in module.  */
++  PyImport_AppendInittab ("_gdb", init__gdb_module);
+ #else
+   Py_SetProgramName (progname);
+ #endif
+@@ -1686,9 +1700,7 @@ message == an error message without a st
+   PyEval_InitThreads ();
+ 
+ #ifdef IS_PY3K
+-  gdb_module = PyModule_Create (&GdbModuleDef);
+-  /* Add _gdb module to the list of known built-in modules.  */
+-  _PyImport_FixupBuiltin (gdb_module, "_gdb");
++  gdb_module = PyImport_ImportModule ("_gdb");
+ #else
+   gdb_module = Py_InitModule ("_gdb", GdbMethods);
+ #endif
+@@ -2005,7 +2017,7 @@ Return a tuple containing all inferiors.
+ };
+ 
+ #ifdef IS_PY3K
+-static struct PyModuleDef GdbModuleDef =
++extern struct PyModuleDef GdbModuleDef =
+ {
+   PyModuleDef_HEAD_INIT,
+   "_gdb",
 diff -rup gdb-7.8+os161-2.1/sim/common/sim-arange.c gdb-7.8+os161-2.1-new/sim/common/sim-arange.c
---- gdb-7.8+os161-2.1/sim/common/sim-arange.c	2017-07-29 07:10:29.906548572 +0000
-+++ gdb-7.8+os161-2.1-new/sim/common/sim-arange.c	2017-07-29 07:11:59.793216829 +0000
+--- gdb-7.8+os161-2.1/sim/common/sim-arange.c	2014-09-30 23:01:49.000000000 -0300
++++ gdb-7.8+os161-2.1-new/sim/common/sim-arange.c	2019-09-17 21:43:20.400500779 -0300
 @@ -280,11 +280,7 @@ sim_addr_range_delete (ADDR_RANGE *ar, a
    build_search_tree (ar);
  }
@@ -21,8 +81,8 @@ diff -rup gdb-7.8+os161-2.1/sim/common/sim-arange.c gdb-7.8+os161-2.1-new/sim/co
 -#endif /* DEFINE_INLINE_P */
 +#endif /* DEFINE_NON_INLINE_P */
 diff -rup gdb-7.8+os161-2.1/sim/common/sim-arange.h gdb-7.8+os161-2.1-new/sim/common/sim-arange.h
---- gdb-7.8+os161-2.1/sim/common/sim-arange.h	2017-07-29 06:53:05.909863433 +0000
-+++ gdb-7.8+os161-2.1-new/sim/common/sim-arange.h	2017-07-29 06:56:21.329866890 +0000
+--- gdb-7.8+os161-2.1/sim/common/sim-arange.h	2014-09-30 23:01:49.000000000 -0300
++++ gdb-7.8+os161-2.1-new/sim/common/sim-arange.h	2019-09-17 21:43:20.400500779 -0300
 @@ -62,7 +62,7 @@ extern void sim_addr_range_delete (ADDR_
  
  /* Return non-zero if ADDR is in range AR, traversing the entire tree.
