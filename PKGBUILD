@@ -10,7 +10,7 @@
 pkgname=intel-media-sdk
 pkgver=2019.2.1
 _srcver="${pkgver:2}"
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc='API to access hardware-accelerated video decode, encode and filtering on Intel platforms with integrated graphics'
 arch=('x86_64')
