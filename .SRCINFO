@@ -1,15 +1,42 @@
 pkgbase = mysql-shell
-	pkgdesc = An interactive Javascript, Python, or SQL interface supporting development and administration for the MySQL Server.
-	pkgver = 8.0.16
+	pkgdesc = An interface supporting development and administration for the MySQL Server
+	pkgver = 8.0.17
 	pkgrel = 1
 	url = https://dev.mysql.com/downloads/shell/
 	arch = x86_64
+	arch = i686
 	license = GPL
+	makedepends = v8-6.7-static
+	makedepends = cmake
+	makedepends = clang
+	makedepends = zip
+	makedepends = zlib
+	makedepends = libsasl
+	makedepends = rpcsvc-proto
+	makedepends = python2
+	makedepends = python2-colorama
+	makedepends = python2-pylint
+	makedepends = python2-lazy-object-proxy
+	makedepends = python2-singledispatch
+	makedepends = python2-wrapt
+	makedepends = ninja
+	makedepends = git
+	makedepends = wget
 	depends = python2
-	options = !emptydirs
-	source = https://dev.mysql.com/get/Downloads/MySQL-Shell/mysql-shell-8.0.16-linux-glibc2.12-x86-64bit.tar.gz
+	depends = openssl
+	depends = protobuf
+	noextract = googletest-release-1.8.0.zip
+	source = https://dev.mysql.com/get/Downloads/MySQL-Shell/mysql-shell-8.0.17-src.tar.gz
+	source = mysql-shell-8.0.17-src.tar.gz.asc::https://dev.mysql.com/downloads/gpg/?file=mysql-shell-8.0.17-src.tar.gz
+	source = https://dev.mysql.com/get/Downloads/MySQL-8.0/mysql-boost-8.0.17.tar.gz
+	source = mysql-boost-8.0.17.tar.gz.asc::https://dev.mysql.com/downloads/gpg/?file=mysql-boost-8.0.17.tar.gz
+	source = googletest-release-1.8.0.zip::https://github.com/google/googletest/archive/release-1.8.0.zip
 	validpgpkeys = A4A9406876FCBD3C456770C88C718D3B5072E1F5
-	md5sums = b95f2cf59cac02b6824cbe391a696685
+	md5sums = 8a1b15515ec6f3e21aa777bbfe77c721
+	md5sums = SKIP
+	md5sums = 7472a25d91973cbba5d8a8f176a3080b
+	md5sums = SKIP
+	md5sums = adfafc8512ab65fd3cf7955ef0100ff5
 
 pkgname = mysql-shell
 
