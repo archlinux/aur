@@ -30,5 +30,18 @@ build() {
 
 package() {
   cd "$srcdir/$pkgname"
-  DESTDIR="$pkgdir/" make install
+
+  mkdir -p $pkgdir/usr/lib/
+  mkdir -p $pkgdir/usr/include/spdk/
+  mkdir -p $pkgdir/usr/include/dpdk/
+
+  cp -a build/lib/* $pkgdir/usr/lib/
+  cp -a dpdk/build/lib/* $pkgdir/usr/lib/
+  cp -a include/spdk/* $pkgdir/usr/include/spdk/
+  cp -rL dpdk/build/include/* $pkgdir/usr/include/dpdk/
+
+  #mkdir -p $pkgdir/usr/share/spdk/
+  #cp -a scripts/ $pkgdir/usr/share/spdk/scripts
+  #cp -a examples/ $pkgdir/usr/share/spdk/examples
+  #cp -a mk/ $pkgdir/usr/share/spdk/mk
 }
