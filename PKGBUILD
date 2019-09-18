@@ -6,8 +6,8 @@
 
 _pkgbasename=ffmpeg
 pkgname=lib32-$_pkgbasename
-pkgver=4.2
-pkgrel=2
+pkgver=4.2.1
+pkgrel=1
 epoch=1
 pkgdesc="Complete solution to record, convert and stream audio and video (32 bit)"
 arch=('x86_64')
@@ -87,6 +87,7 @@ prepare() {
   cd ${_pkgbasename}
 
   # Patching if needed
+  git cherry-pick -n dc0806dd25882f41f6085c8356712f95fded56c7
 }
 
 build() {
