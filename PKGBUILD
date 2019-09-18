@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=ls_extended-git
-pkgver=1.1.0.r16.g40f1c4b
+pkgver=1.1.0.r26.geeec8e2
 pkgrel=1
 pkgdesc='ls with coloring and icons from git'
 arch=('x86_64')
@@ -13,9 +13,9 @@ optdepends=('nerd-fonts-complete: for icon support')
 depends=('glibc' 'ttf-nerd-fonts-symbols')
 conflicts=('ls_extended')
 provides=('ls_extended')
-source=("git+$url#commit=40f1c4b08e6ad8b52011799e5432862957986aa9")
+source=("git+$url")
 md5sums=('SKIP')
-
+#commit=40f1c4b08e6ad8b52011799e5432862957986aa9#commit=40f1c4b08e6ad8b52011799e5432862957986aa9
 pkgver() {
   cd "${pkgname%-git}"
   git describe --tags | sed 's+-+.r+'| tr - . | cut -c2-
@@ -23,7 +23,8 @@ pkgver() {
 
 build() {
   cd "${pkgname%-git}"
-  ccp4m project build
+  # ccp4m project build
+  ./build.sh
 }
 
 package() {
