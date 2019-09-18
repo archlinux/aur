@@ -1,0 +1,26 @@
+From e06cb0ae61e0fa0ad4c1bc96392211284633ae0a Mon Sep 17 00:00:00 2001
+From: Christoph Haag <haagch@frickel.club>
+Date: Tue, 25 Jul 2017 02:07:09 +0200
+Subject: [PATCH 3/3] samples/compat: Use correct definition for vsprintf_s.
+
+Defining it to sprintf actually segfaults in a release build.
+---
+ samples/shared/compat.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/samples/shared/compat.h b/samples/shared/compat.h
+index 154f8b0..28002d9 100644
+--- a/samples/shared/compat.h
++++ b/samples/shared/compat.h
+@@ -12,7 +12,7 @@
+ #include <unistd.h>
+ 
+ #define sprintf_s   snprintf
+-#define vsprintf_s  sprintf
++#define vsprintf_s  vsprintf
+ #define _stricmp    strcmp
+ #define stricmp     strcmp
+ #define strnicmp    strncasecmp
+-- 
+2.23.0
+

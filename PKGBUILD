@@ -1,26 +1,27 @@
 pkgname=openvr-git
-pkgver=1.6.10b.65.52065df
+pkgver=1.7.15.66.5aa6c5f
 pkgrel=1
 pkgdesc="API and runtime that allows access to VR hardware from multiple vendors."
 arch=('x86_64')
 url="https://github.com/ValveSoftware/openvr"
 license=('custom')
-depends=('libgl' 'sdl2' 'glew')
+depends=('libgl' 'sdl2' 'glew' 'jsoncpp')
 optdepends=('steam: SteamVR must be installed through Steam, also contains vive udev rules')
 makedepends=('git' 'cmake' 'vulkan-headers' 'qt5-base') #qt5 for the overlayexample
 provides=("openvr")
 options=('!strip')
 
 source=("git+https://github.com/ValveSoftware/openvr.git"
-        '0001-also-add-pragma-pack-around-VRControllerState_t.patch'
-        'remove-openvrpaths-check.diff'
-        'https://patch-diff.githubusercontent.com/raw/ValveSoftware/openvr/pull/594.patch'
-        'https://patch-diff.githubusercontent.com/raw/ValveSoftware/openvr/pull/1177.patch')
+        '0001-openvr_capi-Add-pragma-pack-around-VRControllerState.patch'                   # openvr_capi: Add pragma pack around VRControllerState_t.
+        '0002-samples-cmake-Remove-OpenVR-paths-check.patch'                                # samples/cmake: Remove OpenVR paths check.
+        '0003-samples-compat-Use-correct-definition-for-vsprintf_s.patch'                   # Use correct C++11 definition for vsprintf_s
+        'https://patch-diff.githubusercontent.com/raw/ValveSoftware/openvr/pull/1178.patch' # Add ability to build with system installed jsoncpp
+        )
 md5sums=('SKIP'
-         '8a9379f8cdf9a38f21942f46378714a5'
-         '904a532900792e7273702a9b45d304f2'
-         '7350517830b1a0038d30c6ad33b4bb39'
-         '8aaa5723852e5ee81ba910235743fde2')
+         '177ad5ec0b0714a522c3242fbe312fac'
+         'd3dc9d20967362a2e92e3fb1c7f82b57'
+         'e68ff412ff73b1ca75f8b17ab6c7069a'
+         'bd5a473153106325233f00b3f35c46d8')
 
 install_examples=false
 
@@ -42,11 +43,10 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/openvr"
-  git apply ../0001-also-add-pragma-pack-around-VRControllerState_t.patch
-  git apply ../remove-openvrpaths-check.diff
-  git apply ../594.patch
-  git apply ../1177.patch
-
+  git apply "../0001-openvr_capi-Add-pragma-pack-around-VRControllerState.patch"
+  git apply "../0002-samples-cmake-Remove-OpenVR-paths-check.patch"
+  git apply "../0003-samples-compat-Use-correct-definition-for-vsprintf_s.patch"
+  git apply "../1178.patch"
 }
 
 build() {
@@ -60,7 +60,11 @@ build() {
 
   cd openvr
   # libopenvr_api.so
-  cmake -DBUILD_SHARED=1 -DCMAKE_INSTALL_PREFIX=/usr/ -DCMAKE_BUILD_TYPE=Release .
+  cmake -DBUILD_SHARED=1 \
+        -DCMAKE_INSTALL_PREFIX=/usr/ \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DUSE_SYSTEM_JSONCPP=True \
+        .
   make
 
   # hellovr_vulkan and hellovr_opengl
