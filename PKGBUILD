@@ -1,3 +1,4 @@
+# Maintainer: navigaid < navigaid@gmail.com >
 # Maintainer: Wei Congrui < crvv.mail at gmail dot com >
 # Maintainer: Carl George < arch at cgtx dot us >
 # Contributor: Eric Engeström <eric at engestrom dot ch>
