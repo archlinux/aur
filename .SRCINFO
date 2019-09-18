@@ -1,14 +1,14 @@
 pkgbase = anita
 	pkgdesc = A tool for automating NetBSD installs and building VM images.
-	pkgver = 1.49
+	pkgver = 2.0
 	pkgrel = 1
 	url = http://www.gson.org/netbsd/anita/
 	arch = any
 	license = custom
 	makedepends = python2-setuptools
 	depends = python2-pexpect
-	source = http://www.gson.org/netbsd/anita/download/anita-1.49.tar.gz
-	sha256sums = d5d7436fe2dd31540273a2f4090108716cb181383cd068e34114e3917807de4a
+	source = http://www.gson.org/netbsd/anita/download/anita-2.0.tar.gz
+	sha256sums = fcc3dec95bfbdb681d483eb688e4c58aa885aa20c2d6012d302a4b12360d133d
 
 pkgname = anita
 
