@@ -1,7 +1,7 @@
 # Maintainer: Foxy <gmail: foxyblackhat@gmail.com>
 pkgbase=astreamfs-git
 pkgname=astreamfs-git
-pkgver=1.5.0
+pkgver=r112.69efab8
 pkgrel=1
 pkgdesc='Fuse filesystem to read http(s) URL'
 arch=(i686 x86_64)
@@ -25,5 +25,6 @@ build() {
 package() {
   cd astreamfs
   install -Dm755 astreamfs "${pkgdir}/usr/bin/astreamfs"
-  install -Dm644 license "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm755 1fichier "${pkgdir}/usr/bin/1fichier"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
