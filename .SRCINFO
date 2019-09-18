@@ -7,6 +7,9 @@ pkgbase = loginized
 	license = GPL3
 	depends = glib2
 	depends = xdg-utils
+	depends = gtk3
+	depends = nss
+	depends = libxss
 	source = https://github.com/juhaku/loginized/releases/download/1.3.3/loginized-1.3.3.pacman
 	sha256sums = 95257349ba617339c2ef03d7b4f5c0f26f3ffa2e985196ffc77902a4285baf4b
 
