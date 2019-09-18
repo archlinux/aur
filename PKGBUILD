@@ -7,7 +7,6 @@ arch=('any')
 url='https://github.com/arter97/exfat-linux/'
 license=('GPL2')
 depends=('dkms' 'exfat-utils-nofuse')
-makedepends=('git')
 conflicts=('exfat' 'exfat-git')
 options=('!strip')
 source=("$gitname-$pkgver-1arter97.tar.gz::https://github.com/arter97/exfat-linux/archive/$pkgver-1arter97.tar.gz"
