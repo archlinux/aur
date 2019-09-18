@@ -6,12 +6,12 @@
 # Contributor: Andre Bartke (andre) <andrew@archlinux.us>
 
 pkgname=aksusbd
-pkgver=7.90
+pkgver=7.100
 pkgrel=1
 _tarballname=Sentinel_LDK_RedHat_and_SuSE_RPM_Run-time_Installer
 _rpm_pkgrel=1
-_dl_hash=042a953fae28485faa81e44bc844a05a
-_dl_id=300f289d4f17a384873b69d18110c7b9
+_dl_hash=b8b3742f63ad4445ad85962ddbba62e7
+_dl_id=902e01181b404c50f2888739cd4bcb90
 pkgdesc="SafeNet Sentinel LDK AKSUSB daemon supporting Sentinel HASP, HASP HL, HASP4 and Hardlock keys."
 arch=('i686' 'x86_64')
 url="https://safenet.gemalto.com/"
@@ -20,7 +20,7 @@ source=("${_tarballname}-${pkgver}.tar.gz::https://fdsext.gemalto.com/filesSN/In
         "service-usr-bin-i386.patch"
         "service-usr-bin-x86_64.patch"
         "LICENSE")
-sha256sums=('98b0ec1a6eba54361c98226716cd1fa78286314e94c17d9794cf1657d69c5dab'
+sha256sums=('057d1baa6b4e0db041a9c94af8ec3b48573ca3e818edf2bb3197953d13001156'
             '75c02721799e3f2b498d67265201445c963063b331c61402205db2ad91e72ec3'
             'd63548bac27eab7cf4a524830643705bafc63349d2e3c5276a37d3382e5598ec'
             'c67d1383c94e2fda4c25a70d5a5d4a90d692586ff7977eb5e9e82139f85e22dd')
