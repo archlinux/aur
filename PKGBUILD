@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond < gmail-com: danielbermond >
 
 pkgname=mpv-full-git
-pkgver=0.29.1.r400.gebab42c9a8
+pkgver=0.29.1.r417.gfa0a905ea0
 pkgrel=1
 pkgdesc='A free, open source, and cross-platform media player (git version with all possible libs)'
 arch=('x86_64')
@@ -135,7 +135,6 @@ build() {
         --enable-vaapi-x11 \
         --enable-vaapi-wayland \
         --enable-vaapi-drm \
-        --enable-vaapi-glx \
         --enable-vaapi-x-egl \
         --enable-caca \
         --enable-jpeg \
@@ -174,7 +173,7 @@ check() {
     do
         printf '%s\n' "  -> Running test '${_test##*/}'..."
         "$_test"
-    done < <(find . -executable -type f -print0)
+    done < <(find . -executable -type f -print0 | sort -z)
 }
 
 package() {
