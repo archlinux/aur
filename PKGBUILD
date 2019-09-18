@@ -16,10 +16,10 @@ _boost_arch=arm
 _boost_address_model=32
 
 pkgname=android-$_pkg_arch-$_pkgname
-pkgver=1.69.0
+pkgver=1.71.0
 _boostver=${pkgver//./_}
 pkgrel=1
-url='http://www.boost.org/'
+url='https://www.boost.org/'
 arch=('any')
 license=('custom')
 pkgdesc="Free peer-reviewed portable C++ source libraries (Android, $_pkg_arch)"
@@ -28,14 +28,17 @@ options=(!buildflags staticlibs !strip !emptydirs)
 makedepends=('bzip2' 'zlib' 'android-ndk' 'android-sdk')
 conflicts=("android-$_pkgname-$_android_arch")
 replaces=("android-$_pkgname-$_android_arch")
-source=(https://downloads.sourceforge.net/project/${_pkgname}/${_pkgname}/${pkgver}/${_pkgname}_${_boostver}.tar.bz2
-        no-versioned-shlibs.patch)
-sha256sums=('8f32d4617390d1c2d16f26a27ab60d97807b35440d45891fa340fc2648b04406'
-            'd82d0f15064812dcabb3456a7bcb1db0e0f6145980e4728e638372e0fd35af23')
+source=(https://dl.bintray.com/boostorg/release/${pkgver}/source/boost_${_boostver}.tar.bz2
+        no-versioned-shlibs.patch
+        disable-version-check.patch)
+sha256sums=('d73a8da01e8bf8c7eda40b4c84915071a8c8a0df4a6734537ddde4a8580524ee'
+            'd82d0f15064812dcabb3456a7bcb1db0e0f6145980e4728e638372e0fd35af23'
+            '13d7ed51d05dba2dfe04d9929bf0091505883567178586d0b482b0900a684848')
 
 prepare() {
   cd ${_pkgname}_${_boostver}
   patch -i ../no-versioned-shlibs.patch
+  patch -p1 -i ../disable-version-check.patch
 }
 
 build() {
@@ -67,9 +70,7 @@ build() {
 
   ./bootstrap.sh --with-toolset=gcc
 
-  _bindir="bin.linuxx86"
-  [[ "${CARCH}" = "x86_64" ]] && _bindir="bin.linuxx86_64"
-  install -Dm755 tools/build/src/engine/$_bindir/b2 "${_stagedir}"/bin/b2
+  install -Dm755 tools/build/src/engine/b2 "${_stagedir}"/bin/b2
 
   # Support for OpenMPI
   echo "using mpi ;" >> project-config.jam
@@ -121,7 +122,7 @@ build() {
     toolset=clang-android \
     architecture=$_boost_arch \
     address-model=$_boost_address_model \
-    -sICONV_PATH="/opt/android-libs/$_android_arch" \
+    -sICONV_PATH="/opt/android-libs/$_pkg_arch" \
     cflags="$common_flags" \
     cxxflags="$common_flags -fexceptions -frtti -std=c++14" \
     linkflags="$ld_flags" \
@@ -129,7 +130,6 @@ build() {
     ${jobs} \
     \
     --prefix="${_stagedir}" \
-    -d+2 \
     install
 }
 
