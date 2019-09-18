@@ -2,7 +2,7 @@
 
 pkgbase=zenkit
 pkgname=zenkit
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='A platform for collaboration and project management'
 arch=('x86_64')
@@ -13,7 +13,7 @@ provides=('zenki')
 options=('!strip')
 source=("https://static.zenkit.com/downloads/zenkit-linux.tar.gz"
         'zenkit.desktop')
-sha256sums=('539f6237418491ca70954bbea3b2bb272c11c69f1c2fcead2b51e7520e52b85c'
+sha256sums=('72593b57f932cf1b8f832f36f0a1b6b57db03034d1a0e4250e859d7551bace68'
             'fcb457439946044f52d03ffe2b8b2cc214f836fb8a53beb0d92c58596517960f')
 package() {
 
