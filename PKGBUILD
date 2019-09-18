@@ -1,7 +1,7 @@
 # Maintainer: Xingbo Wu <wuxb45 at gmail dot com>
 pkgname=spdk-git
-pkgver=0   # pkgver() updates this
-pkgrel=2
+pkgver=r0.0   # pkgver() updates this
+pkgrel=1
 pkgdesc='spdk-git with only headers/libs'
 arch=('x86_64')
 license=('BSD')

@@ -1,7 +1,7 @@
 pkgbase = spdk-git
 	pkgdesc = spdk-git with only headers/libs
-	pkgver = 0
-	pkgrel = 2
+	pkgver = r0.0
+	pkgrel = 1
 	url = https://spdk.io/
 	arch = x86_64
 	license = BSD
