@@ -2,18 +2,19 @@
 
 pkgname='git-quick-stats'
 pkgver='2.0.9'
-pkgrel=2
+pkgrel=3
 pkgdesc='`git-quick-stats` is a simple and efficient way to access various statistics in git repository.'
 arch=('x86_64')
 url="https://github.com/arzzen/$pkgname"
 license=('MIT')
 depends=(
-  'git'
-  'gawk'
+  'bash'
   'coreutils'
-  'util-linux'
+  'gawk'
+  'git'
   'grep'
   'ncurses'
+  'util-linux'
 )
 makedepends=()
 provides=('git-quick-stats')
@@ -28,6 +29,6 @@ check() {
 
 package() {
   cd "$srcdir/$pkgname"
-  make PREFIX="$pkgdir/usr" install
+  make DESTDIR="$pkgdir" PREFIX=/usr install
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
