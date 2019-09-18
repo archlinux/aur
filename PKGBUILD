@@ -1,7 +1,7 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 # Contributor: drakkan <nicola.murino at gmail dot com>
 pkgname=sftpgo
-pkgver=0.9.1
+pkgver=0.9.2
 pkgrel=1
 pkgdesc='Full featured and highly configurable SFTP server'
 arch=('i686' 'x86_64')
