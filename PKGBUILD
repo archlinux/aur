@@ -1,14 +1,14 @@
 # Maintainer: Oscar Morante <oscar@mooistudios.com>
 
 pkgname=unityhub
-pkgver=2.1.1
+pkgver=2.1.2
 pkgrel=1
 pkgdesc="The Unity Hub is a standalone application that streamlines the way you find, download, and manage your Unity Projects and installations."
 arch=('x86_64')
 license=('custom')
 depends=('gtk2' 'nss' 'p7zip' 'tar' 'gzip' 'cpio' 'zip' 'libxss' 'gconf' 'libxtst')
 source=("${pkgname}-${pkgver}.AppImage::https://public-cdn.cloud.unity3d.com/hub/prod/UnityHub.AppImage")
-md5sums=('012c855e84965e5fb3d52a36677ccfdf')
+md5sums=('7cbff634d574a4e6da02fd1ce15bf2cb')
 PKGEXT='.pkg.tar'
 
 package() {
