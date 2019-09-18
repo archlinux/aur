@@ -1,0 +1,12 @@
+pkgbase = wtfutil-bin
+	pkgdesc = Personal information dashboard for your terminal
+	pkgver = 0.22.0
+	pkgrel = 1
+	url = https://wtfutil.com
+	arch = x86_64
+	license = MIT
+	source_x86_64 = https://github.com/wtfutil/wtf/releases/download/v0.22.0/wtf_0.22.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 73d9761f34d6b5c157bf16a11442176f03d9e1fd7595923042d87a47a2fcd53f
+
+pkgname = wtfutil-bin
+
