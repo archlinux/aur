@@ -1,7 +1,7 @@
 pkgbase = rbenv-vars
 	pkgdesc = An rbenv plugin that safely sets global and per-project environment variables.
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rbenv/rbenv-vars
 	arch = any
 	license = MIT

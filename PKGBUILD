@@ -2,7 +2,7 @@
 
 pkgname=rbenv-vars
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='An rbenv plugin that safely sets global and per-project environment variables.'
 arch=('any')
 url='https://github.com/rbenv/rbenv-vars'
@@ -14,5 +14,5 @@ package() {
   cd "$srcdir/rbenv-vars-1.2.0"
 
   install -Dm 755 bin/rbenv-vars "$pkgdir/usr/lib/rbenv/libexec/rbenv-vars"
-  install -Dm 644 etc/rbenv.d/exec/rbenv-vars.bash "$pkgdir/usr/lib/rbenv/completions/rbenv-vars.bash"
+  install -Dm 644 etc/rbenv.d/exec/rbenv-vars.bash "$pkgdir/usr/lib/rbenv/hooks/exec/rbenv-vars.bash"
 }
