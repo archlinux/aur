@@ -4,10 +4,10 @@
 pkgname=mesen
 _pkgname=Mesen
 pkgver=0.9.8
-pkgrel=1
+pkgrel=2
 pkgdesc='A cross-platform NES/Famicom emulator'
 arch=('x86_64')
-makedepends=('clang' 'gendesk' 'zip' 'msbuild-stable')
+makedepends=('clang' 'gendesk' 'zip' 'msbuild')
 depends=('mono' 'sdl2')
 url='https://github.com/SourMesen/Mesen'
 license=('GPL3')
