@@ -2,13 +2,14 @@
 # Contributor: Aaron J. Graves <linux@ajgraves.com>
 pkgname=tutanota-desktop-linux
 pkgver=3.59.13
-pkgrel=1
+pkgrel=2
 pkgdesc='Official Tutanota email client'
 arch=('x86_64')
 url='https://tutanota.com/blog/posts/desktop-clients/'
 license=('GPL3')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
+depends=('fuse')
 options=(!strip)
 source=("${pkgname}-${pkgver}.AppImage::https://mail.tutanota.com/desktop/${pkgname}.AppImage")
 noextract=("${pkgname}-${pkgver}.AppImage")
