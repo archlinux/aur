@@ -1,0 +1,17 @@
+pkgbase = python-eq3bt
+	pkgdesc = Click support for Python’s Datetime types.
+	pkgver = 0.1.11
+	pkgrel = 1
+	url = https://github.com/click-contrib/click-datetime
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-click-datetime
+	depends = python-construct
+	depends = python-bluepy
+	source = https://github.com/rytilahti/python-eq3bt/archive/0.1.11.tar.gz
+	sha512sums = 70a272629b0a27b7492b2d3e681bb0fb78e1163cbf447c1aa5eb34f76da41a936d73eb0ad6088f819e8efe6668237e672f7b28a171f0dc28a0c8d54a6d38e6ef
+
+pkgname = python-eq3bt
+
