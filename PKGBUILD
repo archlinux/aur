@@ -2,7 +2,7 @@
 
 _pkgname=ipe-tools
 pkgname=$_pkgname-git
-pkgrel=2
+pkgrel=3
 pkgver=git
 arch=('i686' 'x86_64')
 makedepends=('git' 'sed')
@@ -28,6 +28,10 @@ build() {
     # svgtoipe
     cd "$srcdir/ipe-tools/svgtoipe"
     sed -i -e "s|#![ ]*/usr/bin/env python$|#!/usr/bin/env python2|" svgtoipe.py
+
+    # ipepython
+    cd "$srcdir/ipe-tools/ipepython"
+    python setup.py build
 }
 
 package() {
@@ -37,6 +41,9 @@ package() {
   cp "$srcdir/ipe-tools/figtoipe/figtoipe" "$pkgdir/usr/bin"
   install -m 755 "$srcdir/ipe-tools/svgtoipe/svgtoipe.py" "$pkgdir/usr/bin"
   cp "$srcdir/ipe-tools/ipe5toxml/ipe5toxml" "$pkgdir/usr/bin"
+
+  cd "$srcdir/ipe-tools/ipepython"
+  python setup.py install --prefix="$pkgdir/usr"
 }
 
 # vim: ft=sh syn=sh et ts=2 sw=2
