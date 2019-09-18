@@ -1,0 +1,17 @@
+pkgbase = metag-git
+	pkgdesc = Ncurses audio tag editor with support of regex
+	pkgver = 20190918
+	pkgrel = 1
+	url = https://git.ache.one/metag
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = readline
+	makedepends = taglib
+	provides = metag
+	conflicts = metag
+	source = metag::git+https://git.ache.one/metag
+	md5sums = SKIP
+
+pkgname = metag-git
+
