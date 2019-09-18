@@ -1,0 +1,27 @@
+pkgbase = android-x86-boost
+	pkgdesc = Free peer-reviewed portable C++ source libraries (Android, x86)
+	pkgver = 1.71.0
+	pkgrel = 1
+	url = https://www.boost.org/
+	arch = any
+	license = custom
+	makedepends = bzip2
+	makedepends = zlib
+	makedepends = android-ndk
+	makedepends = android-sdk
+	depends = android-x86-libiconv
+	conflicts = android-boost-x86
+	replaces = android-boost-x86
+	options = !buildflags
+	options = staticlibs
+	options = !strip
+	options = !emptydirs
+	source = https://dl.bintray.com/boostorg/release/1.71.0/source/boost_1_71_0.tar.bz2
+	source = no-versioned-shlibs.patch
+	source = disable-version-check.patch
+	sha256sums = d73a8da01e8bf8c7eda40b4c84915071a8c8a0df4a6734537ddde4a8580524ee
+	sha256sums = d82d0f15064812dcabb3456a7bcb1db0e0f6145980e4728e638372e0fd35af23
+	sha256sums = 13d7ed51d05dba2dfe04d9929bf0091505883567178586d0b482b0900a684848
+
+pkgname = android-x86-boost
+
