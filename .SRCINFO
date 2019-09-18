@@ -1,0 +1,22 @@
+pkgbase = rpolcalc-git
+	pkgdesc = A powerfull reverse notation calculator for your terminal
+	pkgver = c23e6a9
+	pkgrel = 1
+	url = https://github.com/lorlouis/RpolCalc
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = GPL
+	makedepends = cmake
+	makedepends = git
+	makedepends = gcc-libs
+	depends = gcc-libs
+	provides = rpolcalc
+	source = rpolcalc-git::git+https://github.com/lorlouis/RpolCalc.git#branch=master
+	md5sums = SKIP
+
+pkgname = rpolcalc-git
+
