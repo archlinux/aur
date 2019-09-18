@@ -2,7 +2,7 @@
 
 pkgname=python2-awkward
 _pkgname=awkward-array
-pkgver=0.12.9
+pkgver=0.12.10
 pkgrel=1
 pkgdesc="Manipulate jagged, chunky, and/or bitmasked arrays as easily as Numpy"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python2-numpy')
 makedepends=('python2-pytest-runner' 'python2-setuptools')
 checkdepends=('python2-h5py')
 source=("${url}/archive/${pkgver}.zip")
-sha256sums=('0f2bcc09be59a849a95a4449fd2137403e6e53b546cc271bce0eed06cdadbfb2')
+sha256sums=('08d36986cbcc8286fe9cfa5495b2775f98353614ce716fb8ef1a4df4cf6feee9')
 
 prepare() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
