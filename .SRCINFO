@@ -1,0 +1,16 @@
+pkgbase = opensmtpd-filter-senderscore
+	pkgdesc = OpenSMTPD filter integration for the SenderScore reputation
+	pkgver = 0.1.0+r2+gf828d6b
+	pkgrel = 1
+	url = https://github.com/poolpOrg/filter-senderscore
+	arch = i686
+	arch = x86_64
+	license = ISC
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	source = git+https://github.com/poolpOrg/filter-senderscore#commit=f828d6b6bad971fa8b196b1d13416835fb353ef5
+	sha512sums = SKIP
+
+pkgname = opensmtpd-filter-senderscore
+
