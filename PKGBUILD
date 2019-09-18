@@ -5,7 +5,7 @@ url='https://wiki.ros.org/voxel_grid'
 pkgname='ros-melodic-voxel-grid'
 pkgver='1.16.2'
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-roscpp
