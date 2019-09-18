@@ -24,7 +24,7 @@
 # Maintainer: Philipp Paulweber <ppaulweber@casm-lang.org>
 
 pkgname=casm
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Corinthian Abstract State Machine (CASM)"
 arch=('x86_64')
@@ -50,7 +50,7 @@ conflicts=("${pkgname}")
 # noextract=()
 # md5sums=()
 
-sha256sums=('59e2a742eaa5ccd15005652efd7bb7e94b035e29a7ba4e4d89d6abc554f929db')
+sha256sums=('dfddd7e4e4b5eb267e19f50387e9a1b9889b86358094b8d2cfffd1498ef1d2c2')
 
 # validpgpkeys=()
 
