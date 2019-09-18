@@ -46,7 +46,6 @@ package()
 
   # Install Documentation
   install -D -m644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -D -m644 EXTENDED_CONFIGURATION.md "${pkgdir}/usr/share/doc/${pkgname}/EXTENDED_CONFIGURATION.md"
 
   # Install the theme
   install -D -m644 powerlevel10k.zsh-theme "${pkgdir}/usr/share/zsh-theme-${_pkgname}/${_pkgname}.zsh-theme"
