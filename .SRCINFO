@@ -1,18 +1,14 @@
 pkgbase = mkinitcpio-tpm2-encrypt
 	pkgdesc = mkinitcpio hook that decrypts a TPM2-sealed LUKS keyfile
 	pkgver = 1.4.0
-	pkgrel = 1
-	url = https://aur.archlinux.org/packages/mkinitcpio-tpm2-encrypt/
+	pkgrel = 2
+	url = https://github.com/electrickite/mkinitcpio-tpm2-encrypt
 	arch = any
 	license = GPL3
 	depends = mkinitcpio
 	depends = tpm2-tools>=4.0
-	source = install_tpm2
-	source = hook_tpm2
-	source = README.md
-	sha256sums = cb5c9acca16a5ad8d2dbee8aa70f590d57236a0e5ccd0869b770b4535018b2ae
-	sha256sums = 2dcdcfd37ab3ba23d30e0a6bd2c5ae8f93f0e64b8d410ab6a21333bca8392cce
-	sha256sums = 987bab4e47e2df53a25aaec5779b82f79bcfcb61282b7060443e726f335a6f9d
+	source = https://github.com/electrickite/mkinitcpio-tpm2-encrypt/archive/1.4.0.tar.gz
+	sha256sums = 6364f9311db3ccbc5c15e02efe3b5c81bcaeed1002cf9ee40b2a63eaa77d08c0
 
 pkgname = mkinitcpio-tpm2-encrypt
 
