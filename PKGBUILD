@@ -2,7 +2,7 @@
 
 pkgname=gnome-shell-extension-netspeed-git
 _gitname=NetSpeed
-pkgver=106.9c72b1c
+pkgver=119.b2eef96
 pkgrel=1
 pkgdesc="Gnome shell extension to display internet speed"
 arch=('any')
@@ -26,7 +26,8 @@ build() {
 
 package() {
 	cd "${srcdir}/${_gitname}"
-	make DESTDIR="${pkgdir}" install
+	install -d "${pkgdir}/"usr/share/gnome-shell/extensions/netspeed@hedayaty.gmail.com
+	make LOCAL_INSTALL="${pkgdir}/"usr/share/gnome-shell/extensions/netspeed@hedayaty.gmail.com install
 }
 
  
