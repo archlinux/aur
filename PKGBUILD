@@ -11,8 +11,8 @@
 
 _pkgname=weechat
 pkgname=${_pkgname}-git
-pkgver=2.6.1.g9cb685767
-pkgrel=1
+pkgver=2.6.11.gd26893a70
+pkgrel=2
 pkgdesc='Fast, light and extensible IRC client (curses UI). Development version.'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url='http://www.weechat.org/'
@@ -20,10 +20,14 @@ license=('GPL')
 
 depends=('gnutls' 'curl' 'libgcrypt' 'hicolor-icon-theme')
 makedepends=(
-	'git' 'asciidoc' 'source-highlight' 'cmake' 'pkg-config'
-	'perl' 'python' 'lua' 'tcl' 'ruby' 'aspell' 'guile2.0' 'asciidoctor'
+	'git' 'source-highlight' 'cmake' 'pkg-config' 'asciidoctor'
+	'perl' 'python' 'lua' 'tcl' 'ruby' 'aspell' 'guile2.0'
+	#'php' 'v8'
 )
-optdepends=('perl' 'python' 'lua' 'tcl' 'ruby' 'aspell' 'guile2.0')
+optdepends=(
+	'perl' 'python' 'lua' 'tcl' 'ruby'
+	'aspell' 'guile2.0' #'php' 'v8'
+)
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 
@@ -44,15 +48,14 @@ build() {
 	cmake -Wno-dev ../${_pkgname} \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DENABLE_MAN=ON \
-		-DENABLE_DOC=ON# \
-		#-DENABLE_ASPELL=OFF \
+		-DENABLE_DOC=ON \
+		-DENABLE_JAVASCRIPT=OFF \
+		-DENABLE_PHP=OFF #\
 		#-DENABLE_EXEC=OFF \
 		#-DENABLE_FIFO=OFF \
 		#-DENABLE_GUILE=OFF \
-		#-DENABLE_JAVASCRIPT=OFF \
 		#-DENABLE_LUA=OFF \
 		#-DENABLE_PERL=OFF \
-		#-DENABLE_PHP=OFF \
 		#-DENABLE_PYTHON=OFF \
 		#-DENABLE_RUBY=OFF \
 		#-DENABLE_TCL=OFF \
