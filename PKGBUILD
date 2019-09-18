@@ -7,7 +7,8 @@
 
 pkgname=gimp-git
 _pkgname=${pkgname%-git}
-replaces=(gimp-noconflict-git gimp-develop-git)
+provides=(gimp)
+conflicts=(gimp)
 epoch=2
 pkgver=2.99.1.r3759.8edb75d78f
 pkgrel=1
@@ -110,16 +111,4 @@ package() {
   make DESTDIR="$pkgdir" install
 
   install -Dm 644 "$srcdir"/linux.gpl "$pkgdir"/usr/share/gimp/2.99/palettes/Linux.gpl
-  
-  #fix gimp.desktop
-  mv ${pkgdir}/usr/share/applications/gimp.desktop ${pkgdir}/usr/share/applications/gimp-2.99.desktop
-  sed -i 's/Icon=gimp/&-2.99/' ${pkgdir}/usr/share/applications/gimp-2.99.desktop
-
-  #fix icons
-  for icon in $(find ${pkgdir}/usr/share/icons -type f); do
-    mv ${icon} ${icon%.png}-2.99.png
-  done
-
-  #fix metainfo
-  rm -rf ${pkgdir}/usr/share/metainfo
 }
