@@ -1,6 +1,6 @@
 pkgbase = trace-cmd-git
 	pkgdesc = Userspace tooling for the Linux kernel Ftrace internal tracer
-	pkgver = 2.8.r68.gf97e28a
+	pkgver = 2.8.r85.ged1b47c
 	pkgrel = 1
 	url = https://git.kernel.org/pub/scm/utils/trace-cmd/trace-cmd.git
 	arch = x86_64

@@ -3,7 +3,7 @@
 # Maintainer: Netanel Shine <netanel at archlinux.org.il>
 
 pkgname=trace-cmd-git
-pkgver=2.8.r68.gf97e28a
+pkgver=2.8.r85.ged1b47c
 pkgrel=1
 pkgdesc="Userspace tooling for the Linux kernel Ftrace internal tracer"
 arch=('x86_64' 'aarch64')
@@ -31,7 +31,7 @@ build() {
   cd "$srcdir/trace-cmd"
   
   # pkg-config --cflags --libs $PYTHON_VERS
-  make PYTHON_VERS=python3 all doc
+  make PYTHON_VERS=python3 prefix="/usr" all doc
 }
 
 package() {
