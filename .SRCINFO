@@ -1,7 +1,7 @@
 pkgbase = amazon-corretto-11
 	pkgdesc = No-cost, multiplatform, production-ready distribution of OpenJDK
-	pkgver = 11.0.3.7.1
-	pkgrel = 2
+	pkgver = 11.0.4.11.1
+	pkgrel = 1
 	url = https://aws.amazon.com/corretto/
 	arch = x86_64
 	license = GPL2
@@ -10,8 +10,8 @@ pkgbase = amazon-corretto-11
 	provides = java-runtime-headless=11
 	provides = java-runtime=11
 	provides = java-environment=11
-	source = https://d3pxv6yz143wms.cloudfront.net/11.0.3.7.1/amazon-corretto-11.0.3.7.1-linux-x64.tar.gz
-	md5sums = 08a0cea184824c5477a62ce6a6a0fb0b
+	source = https://d3pxv6yz143wms.cloudfront.net/11.0.4.11.1/amazon-corretto-11.0.4.11.1-linux-x64.tar.gz
+	md5sums = 4bbcd5e6d721fef56e46b3bfa8631c1c
 
 pkgname = amazon-corretto-11
 
