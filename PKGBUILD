@@ -1,7 +1,7 @@
 # Maintainer: Tim Liou <wheatdoge at gmail dot com>
 _pkgname="i3-workspace-groups"
 pkgname="${_pkgname}-git"
-pkgver=r78.e30c30f
+pkgver=r97.66a71c7
 pkgrel=1
 pkgdesc='Manage i3wm workspaces in groups you control'
 url='https://github.com/infokiller/i3-workspace-groups'
@@ -9,7 +9,7 @@ arch=('any')
 license=('MIT')
 source=("git+https://github.com/infokiller/i3-workspace-groups")
 sha256sums=('SKIP')
-depends=('python' 'i3-wm' 'i3ipc-python')
+depends=('python' 'i3-wm' 'python-i3ipc')
 makedepends=('python-setuptools' 'git')
 provides=('i3-workspace-groups')
 conflicts=('i3-workspace-groups')
