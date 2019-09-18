@@ -1,28 +1,37 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 
 pkgname=eternity-engine-git
-pkgver=3.42.02.r0.c7e6ea76
+pkgver=4.00.00.r846.2d85d6cd
 pkgrel=1
 pkgdesc="An advanced Doom port with vanilla compatibility"
 url="http://eternity.youfailit.net/"
 arch=('i686' 'x86_64')
 license=('GPL3')
-depends=('sdl' 'sdl_mixer' 'sdl_net' 'zlib')
+depends=('sdl2' 'sdl2_mixer' 'sdl2_net' 'zlib')
 makedepends=('git' 'cmake')
 conflicts=(${pkgname%-git})
-source=(${pkgname%-git}::git+https://github.com/team-eternity/eternity.git)
-sha512sums=('SKIP')
+source=(eternity::git+https://github.com/team-eternity/eternity.git
+       git+https://github.com/Wohlstand/libADLMIDI.git)
+sha512sums=('SKIP'
+            'SKIP')
 
 pkgver() {
-  cd ${pkgname%-git}
+  cd "${srcdir}/eternity"
   printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+}
+
+prepare() {
+  cd "${srcdir}/eternity"
+  git submodule init
+  git config submodule.adlmidi.url "${srcdir}/libADLMIDI"
+  git submodule update
 }
 
 build() {
   # Cannot do in-tree build.
   mkdir ee-build
   cd ee-build
-  cmake ../${pkgname%-git} -DCMAKE_INSTALL_PREFIX=/usr
+  cmake ../eternity -DCMAKE_INSTALL_PREFIX=/usr
   make
 }
 

@@ -1,5 +1,6 @@
 *.pkg.tar*
 *.src.tar*
-/eternity-engine/
+/eternity/
+/libADLMIDI/
 src
 pkg
