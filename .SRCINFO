@@ -1,8 +1,8 @@
 pkgbase = mingw-w64-proj
-	pkgdesc = Cartographic Projections library. (mingw-w64)
-	pkgver = 6.1.1
+	pkgdesc = Cartographic Projections library (mingw-w64)
+	pkgver = 6.2.0
 	pkgrel = 1
-	url = http://trac.osgeo.org/proj/
+	url = https://trac.osgeo.org/proj/
 	arch = any
 	license = MIT
 	makedepends = mingw-w64-configure
@@ -12,8 +12,8 @@ pkgbase = mingw-w64-proj
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = http://download.osgeo.org/proj/proj-6.1.1.tar.gz
-	sha256sums = 5cf0a2360a28b5d724c53edbb87f3f3b14fd96001265411ac4e56f369e2d503f
+	source = https://download.osgeo.org/proj/proj-6.2.0.tar.gz
+	sha256sums = b300c0f872f632ad7f8eb60725edbf14f0f8f52db740a3ab23e7b94f1cd22a50
 
 pkgname = mingw-w64-proj
 
