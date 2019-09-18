@@ -1,8 +1,8 @@
 # Maintainer: Louis Sven Goulet <louis dot sven at gmail dot com>
 pkgname="rpolcalc-git"
 pkgver=c23e6a9
-pkgrel=2
-pkgdesc="A powerfull reverse notation calculator for your terminal"
+pkgrel=3
+pkgdesc="A powerful reverse notation calculator for your terminal"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/lorlouis/RpolCalc"
 license=('GPL')

@@ -1,7 +1,7 @@
 pkgbase = rpolcalc-git
-	pkgdesc = A powerfull reverse notation calculator for your terminal
+	pkgdesc = A powerful reverse notation calculator for your terminal
 	pkgver = c23e6a9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/lorlouis/RpolCalc
 	arch = x86_64
 	arch = i686
