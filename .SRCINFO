@@ -1,0 +1,17 @@
+pkgbase = todo.cpp-git
+	pkgdesc = A todo-list tool written in C++
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://git.ache.one/todo
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = readline
+	makedepends = ncurses
+	provides = todo
+	conflicts = todo
+	source = todo::git+https://git.ache.one/todo
+	md5sums = SKIP
+
+pkgname = todo.cpp-git
+
