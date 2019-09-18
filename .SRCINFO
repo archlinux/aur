@@ -1,6 +1,6 @@
 pkgbase = ruby-sassc
 	pkgdesc = Use libsass with Ruby!
-	pkgver = 2.2.0
+	pkgver = 2.2.1
 	pkgrel = 1
 	url = https://github.com/sass/sassc-ruby
 	arch = x86_64
@@ -8,10 +8,10 @@ pkgbase = ruby-sassc
 	makedepends = ruby-rdoc
 	depends = ruby
 	depends = ruby-ffi
-	noextract = sassc-2.2.0.gem
+	noextract = sassc-2.2.1.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/sassc-2.2.0.gem
-	sha256sums = 6e7e4fe5eae9593c29e5dd6c830b91530b92e044b3d3efa89898fca22a75119d
+	source = https://rubygems.org/downloads/sassc-2.2.1.gem
+	sha256sums = 3fea2409ee4a890f8c8ebc4fb6163fe2c58ef6be7b7a586c64b0fc924f8b7625
 
 pkgname = ruby-sassc
 
