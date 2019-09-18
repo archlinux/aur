@@ -1,0 +1,63 @@
+--- app/electron.js	2019-09-18 13:47:21.474838132 +0800
++++ app-new/electron.js	2019-09-18 13:45:04.000000000 +0800
+@@ -69,39 +69,39 @@
+ //   token: "b9905f2b8cdfa2ba1a4aa7c951febaa7dda60ff4"
+ // });
+ 
+-if (process.env.NODE_ENV === "development") {
++// if (process.env.NODE_ENV === "development") {
+   if (process.platform === "linux")
+     trayIcon = path.join(
+       __dirname,
+-      "desktop/electron/assets/icons/images/22x22.png"
++      "electron/assets/icons/png/32x32.png"
+     );
+   else if (process.platform === "darwin")
+     trayIcon = path.join(
+       __dirname,
+-      "desktop/electron/assets/icons/images/22x22.png"
++      "electron/assets/icons/png/32x32.png"
+     );
+   else if (process.platform === "win32")
+     trayIcon = path.join(
+       __dirname,
+-      "desktop/electron/assets/icons/images/32x32.png"
++      "electron/assets/icons/png/32x32.png"
+     );
+-} else if (process.env.NODE_ENV === "production") {
+-  if (process.platform === "linux")
+-    trayIcon = path.join(
+-      process.resourcesPath,
+-      "electron/assets/icons/images/22x22.png"
+-    );
+-  else if (process.platform === "darwin")
+-    trayIcon = path.join(
+-      process.resourcesPath,
+-      "electron/assets/icons/images/22x22.png"
+-    );
+-  else if (process.platform === "win32")
+-    trayIcon = path.join(
+-      process.resourcesPath,
+-      "electron/assets/icons/images/32x32.png"
+-    );
+-}
++// } else if (process.env.NODE_ENV === "production") {
++//   if (process.platform === "linux")
++//     trayIcon = path.join(
++//       process.resourcesPath,
++//       "electron/assets/icons/images/22x22.png"
++//     );
++//   else if (process.platform === "darwin")
++//     trayIcon = path.join(
++//       process.resourcesPath,
++//       "electron/assets/icons/images/22x22.png"
++//     );
++//   else if (process.platform === "win32")
++//     trayIcon = path.join(
++//       process.resourcesPath,
++//       "electron/assets/icons/images/32x32.png"
++//     );
++// }
+ 
+ if (process.platform === "linux")
+   appIcon =

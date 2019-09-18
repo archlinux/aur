@@ -1,0 +1,19 @@
+pkgbase = firecamp
+	pkgdesc = firecamp, A campsite for developers.
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://firecamp.app/
+	arch = x86_64
+	license = unknown
+	makedepends = squashfs-tools
+	makedepends = asar
+	depends = electron
+	provides = firecamp
+	options = !strip
+	source = manual://firecamp_0.6.0.snap
+	source = runner.patch
+	sha256sums = 4a0d7a8b912dd7ff5045396830285094a3d29bd7ad76ae964882326c371c643f
+	sha256sums = f22a12c6b3ee55161ac9e8debadba48263fad338c13b6700d06261c2346426dd
+
+pkgname = firecamp
+
