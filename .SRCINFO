@@ -1,0 +1,16 @@
+pkgbase = imp-git
+	pkgdesc = Helps you manage your accounts using an ini format
+	pkgver = r27.b327294
+	pkgrel = 1
+	url = https://git.sr.ht/~ark/imp
+	arch = any
+	license = MIT
+	makedepends = meson
+	makedepends = scdoc
+	optdepends = gpgme: gpg file decryption support
+	conflicts = imp
+	source = imp::git+https://git.sr.ht/~ark/imp
+	md5sums = SKIP
+
+pkgname = imp-git
+
