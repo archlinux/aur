@@ -1,7 +1,7 @@
 # Maintainer: Qirui Wang <wqr.prg@gmail.com>
 
 pkgname=rumur
-pkgver=2019.09.07
+pkgver=2019.09.15
 pkgrel=1
 pkgdesc="Yet another Murphi model checker"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('gmp' 'python')
 makedepends=('cmake' 'bison>=3.3.2' 'flex')
 checkdepends=('valgrind')
 source=("https://github.com/Smattr/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('9111b344c75007c7215475396ce27e3b3ff3fbc207a50a088ce9c3e73d28745f')
+sha256sums=('8cd16fb6206db02f1d053a1c05012f49e2679ae5a448b8fa3c383c2be1568714')
 
 prepare() {
   mkdir -p $pkgname-$pkgver/build
