@@ -10,7 +10,7 @@
 pkgname=intel-media-sdk
 pkgver=2019.2.1
 _srcver="${pkgver:2}"
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc='API to access hardware-accelerated video decode, encode and filtering on Intel platforms with integrated graphics'
 arch=('x86_64')
@@ -27,7 +27,7 @@ source=("https://github.com/Intel-Media-SDK/MediaSDK/archive/intel-mediasdk-${_s
         'intel-media-sdk.conf'
         'intel-media-sdk.sh')
 sha256sums=('03c11a0379b61e292e789fa3dc9308ce45f36d68b4ebf437806c0e2c32357970'
-            '63e76d28140486871a3ffc29ce19c84914583bf243201946c76943bf54df374a'
+            '12a37e6e12d93fac5829082773b9f010a3c6c763ddeee177618b8e1a0547fbbc'
             '315ea6f304cf2b7b6a8aaabb0b8f71fcd480677c7fb9c8cbfa51c7830bb159bc')
 
 prepare() {
