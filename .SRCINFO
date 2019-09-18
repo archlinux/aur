@@ -1,17 +1,18 @@
 pkgbase = opendrop-git
 	pkgdesc = OpenDrop: an Open Source AirDrop Implementation
-	pkgver = 0.0.0.r7.8427681
+	pkgver = 0.0.0.r12.bf6d47f
 	pkgrel = 1
 	url = https://github.com/seemoo-lab/opendrop
 	arch = any
 	license = GPL3
-	depends = owl-git
+	depends = owlink-git
 	depends = python
 	depends = python-libarchive-c
 	depends = python-requests-toolbelt
 	depends = python-pillow
 	depends = python-netifaces
 	depends = python-requests
+	depends = python-ifaddr
 	depends = python-ctypescrypto-git
 	depends = python-fleep-git
 	source = opendrop-git::git+https://github.com/seemoo-lab/opendrop#branch=master

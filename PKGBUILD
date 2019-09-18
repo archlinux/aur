@@ -1,19 +1,20 @@
 # Maintainer: 1Conan <me@1conan.com>
 pkgname=opendrop-git
-pkgver=0.0.0.r7.8427681
+pkgver=0.0.0.r12.bf6d47f
 pkgrel=1
 pkgdesc="OpenDrop: an Open Source AirDrop Implementation"
 arch=('any')
 url="https://github.com/seemoo-lab/opendrop"
 license=('GPL3')
 depends=(
-  'owl-git'
+  'owlink-git'
   'python'
   'python-libarchive-c'
   'python-requests-toolbelt'
   'python-pillow'
   'python-netifaces'
   'python-requests'
+  'python-ifaddr'
 
   'python-ctypescrypto-git'
   'python-fleep-git'
