@@ -1,6 +1,6 @@
 pkgbase = dex-git
-	pkgdesc = A program to execute DesktopEntry files of type Application, primarily for window managers that do not implement the Freedesktop autostart specification
-	pkgver = 62.2d158ca
+	pkgdesc = Program to generate and execute DesktopEntry files of type Application
+	pkgver = 83.864be05
 	pkgrel = 1
 	url = https://github.com/jceb/dex
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = dex-git
 	provides = dex
 	conflicts = dex
 	source = git+https://github.com/jceb/dex.git
-	sha256sums = SKIP
+	md5sums = SKIP
 
 pkgname = dex-git
 
