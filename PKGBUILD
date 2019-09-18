@@ -2,7 +2,7 @@
 
 pkgname=webtorrent-desktop
 pkgver=0.21.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Streaming torrent client."
 arch=('any')
 url="https://webtorrent.io/desktop"
@@ -13,10 +13,12 @@ conflicts=('webtorrent-desktop-git' 'webtorrent-desktop-bin')
 options=(!strip)
 source=("https://github.com/webtorrent/${pkgname}/archive/v${pkgver}.tar.gz"
         "webtorrent-desktop"
-        "traysupport.patch")
+        "traysupport.patch"
+        "externalplayer.patch")
 sha256sums=('6a622ae14a7424604b8a94402156bfdd4b1debf9fe4e6db852f38061910febd4'
             'c1a416dbaefa5da60d236af561d60b7ed86def1c3ee05b7090bc5586da72fb17'
-            'dbeff65a109489ce8ce4e89d0b4ad3bc1768d03707bc1a0845db852049296deb')
+            'dbeff65a109489ce8ce4e89d0b4ad3bc1768d03707bc1a0845db852049296deb'
+            'edeafc3d44d22d4226dec185fab053fcbba67eab5b4df0c08ed701ae71546a15')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
@@ -24,6 +26,7 @@ prepare() {
   sed -i '/"\(electron.*\|appdmg\)":/d' package.json
   sed -i -e '/^Path=/d' -e "s#/opt/${pkgname}/WebTorrent#/usr/bin/${pkgname}#" static/linux/share/applications/${pkgname}.desktop
   patch -p1 -i "$srcdir/traysupport.patch"
+  patch -p1 -i "$srcdir/externalplayer.patch"
 }
 
 build() {
