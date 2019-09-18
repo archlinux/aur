@@ -10,7 +10,7 @@
 pkgname=intel-media-sdk
 pkgver=2019.2.1
 _srcver="${pkgver:2}"
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='API to access hardware-accelerated video decode, encode and filtering on Intel platforms with integrated graphics'
 arch=('x86_64')
@@ -65,7 +65,7 @@ package() {
     # metrics_monitor
     install -D -m755 __bin/None/libcttmetrics.so -t "${pkgdir}/opt/intel/mediasdk/share/mfx/samples"
     install -D -m755 __bin/None/metrics_monitor  -t "${pkgdir}/opt/intel/mediasdk/share/mfx/samples"
-    ln -s ../share/mfx/samples/libcttmetrics.so "${pkgdir}/opt/intel/mediasdk/lib64/libcttmetrics.so"
+    ln -s ../share/mfx/samples/libcttmetrics.so "${pkgdir}/opt/intel/mediasdk/lib/libcttmetrics.so"
     
     # ld.so and profile configuration files
     cd "$srcdir"
