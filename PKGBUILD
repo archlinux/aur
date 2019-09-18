@@ -2,7 +2,7 @@
 
 pkgbase=zenkit
 pkgname=zenkit
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='A platform for collaboration and project management'
 arch=('x86_64')
