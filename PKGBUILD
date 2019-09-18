@@ -1,8 +1,8 @@
-# Maintainer: Andrew Sun <adsun701@gmail.com>
+# Maintainer: Andrew Sun <adsun701 at gmail dot com>
 
 pkgname=mingw-w64-potrace
 _pkgname=potrace
-pkgver=1.15
+pkgver=1.16
 pkgrel=1
 pkgdesc="Utility for tracing a bitmap (input: PBM,PGM,PPM,BMP; output: EPS,PS,PDF,SVG,DXF,PGM,Gimppath,XFig) (mingw-w64)"
 arch=('any')
@@ -13,8 +13,8 @@ depends=('mingw-w64-crt' 'mingw-w64-zlib')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("http://potrace.sourceforge.net/download/${pkgver}/${_pkgname}-${pkgver}.tar.gz"
         "001-reaarange-compiler-detect.patch")
-sha256sums=('a9b33904ace328340c850a01458199e0064e03ccaaa731bc869a842b1b8d529d'
-            '2903ae3c291468b9e30f20bc0ab9f261d0c6922ead8fc641b486290bfa33c187')
+sha256sums=('be8248a17dedd6ccbaab2fcc45835bb0502d062e40fbded3bc56028ce5eb7acc'
+            'f454e6407e5b23c80feab11a844aef839e539df6c13b63f262d59bacfb89ecd5')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
