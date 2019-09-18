@@ -1,7 +1,7 @@
 pkgbase = guix
 	pkgdesc = A purely functional package manager for the GNU system
-	pkgver = 1.0.1
-	pkgrel = 2
+	pkgver = 1.0.1+3489+g0ed97e6980
+	pkgrel = 1
 	url = https://www.gnu.org/software/guix/
 	install = guix.install
 	arch = x86_64
@@ -10,9 +10,11 @@ pkgbase = guix
 	license = GPL3
 	makedepends = bash-completion
 	makedepends = fish
-	makedepends = guile-json1
+	makedepends = git
+	makedepends = guile-json>=3
 	makedepends = guile-ssh>=0.10.2
 	makedepends = help2man
+	makedepends = po4a
 	depends = guile>=2.2.4
 	depends = guile-gcrypt
 	depends = guile-git-lib
@@ -21,18 +23,16 @@ pkgbase = guix
 	depends = bzip2
 	depends = gnutls
 	depends = libgcrypt
+	depends = lzlib
 	depends = zlib
 	optdepends = bash-completion: to enable bash programmable completion
-	optdepends = guile-json1: to import packages from cpan, gem, pypi
+	optdepends = guile-json: to import packages from cpan, gem, pypi
 	optdepends = guile-ssh: to offload builds to other machines
 	options = !strip
-	source = https://ftp.gnu.org/gnu/guix/guix-1.0.1.tar.gz
-	source = https://ftp.gnu.org/gnu/guix/guix-1.0.1.tar.gz.sig
+	source = git+https://git.savannah.gnu.org/git/guix.git#commit=0ed97e69805253656df929a6ad678016aa81f08a
 	validpgpkeys = 3CE464558A84FDC69DB40CFB090B11993D9AEBB5
-	sha1sums = f6e32b17e034124edeec11d841e687ba0ee59242
-	sha1sums = 551bf83df2771573403bcd1fe048d74dcb98e4cf
-	sha256sums = 3939b6cfa11661290fee0b82f91d2a0d39c2e36fdf4e53d8afd31dd34430ea5f
-	sha256sums = 15e59f63f95527f7126ed85c66435850a82c17f015568e1432f1fcbabc70dabb
+	sha1sums = SKIP
+	sha256sums = SKIP
 
 pkgname = guix
 

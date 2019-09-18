@@ -6,8 +6,8 @@
 #   gpg --recv-keys 3CE464558A84FDC69DB40CFB090B11993D9AEBB5
 
 pkgname=guix
-pkgver=1.0.1
-pkgrel=2
+pkgver=1.0.1+3489+g0ed97e6980
+pkgrel=1
 pkgdesc="A purely functional package manager for the GNU system"
 arch=('x86_64' 'i686' 'armv7h')
 url="https://www.gnu.org/software/guix/"
@@ -16,9 +16,11 @@ options=('!strip')
 makedepends=(
   'bash-completion'
   'fish'
-  'guile-json1'
+  'git'
+  'guile-json>=3'
   'guile-ssh>=0.10.2'
-  'help2man')
+  'help2man'
+  'po4a')
 depends=(
   'guile>=2.2.4'
   'guile-gcrypt'
@@ -28,26 +30,32 @@ depends=(
   'bzip2'
   'gnutls'
   'libgcrypt'
+  'lzlib'
   'zlib')
 optdepends=(
   'bash-completion: to enable bash programmable completion'
-  'guile-json1: to import packages from cpan, gem, pypi'
+  'guile-json: to import packages from cpan, gem, pypi'
   'guile-ssh: to offload builds to other machines')
+_commit=0ed97e69805253656df929a6ad678016aa81f08a
 source=(
-  "https://ftp.gnu.org/gnu/${pkgname}/${pkgname}-${pkgver}.tar.gz"{,.sig})
+  "git+https://git.savannah.gnu.org/git/${pkgname}.git#commit=${_commit}")
 install="${pkgname}.install"
 sha1sums=(
-  'f6e32b17e034124edeec11d841e687ba0ee59242'
-  '551bf83df2771573403bcd1fe048d74dcb98e4cf')
+  'SKIP')
 sha256sums=(
-  '3939b6cfa11661290fee0b82f91d2a0d39c2e36fdf4e53d8afd31dd34430ea5f'
-  '15e59f63f95527f7126ed85c66435850a82c17f015568e1432f1fcbabc70dabb')
+  'SKIP')
 validpgpkeys=('3CE464558A84FDC69DB40CFB090B11993D9AEBB5')
+
+pkgver() {
+	cd "${srcdir}/${pkgname}"
+	git describe --exclude 'bootstrap-*' --tags | sed -e 's/-/+/g' -e 's/^v//g'
+}
 
 build() {
 	local bash_completion_dir="$(pkg-config --variable=completionsdir bash-completion)"
 	local fish_completion_dir="$(pkg-config --variable=completionsdir fish)"
-	cd "${srcdir}/${pkgname}-${pkgver}"
+	cd "${srcdir}/${pkgname}"
+	./bootstrap
 	./configure --prefix=/usr --sbindir=/usr/bin --sysconfdir=/etc \
 		--libexecdir=/usr/lib --localstatedir=/var \
 		--with-bash-completion-dir="${bash_completion_dir}" \
@@ -58,7 +66,7 @@ build() {
 }
 
 check() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
+	cd "${srcdir}/${pkgname}"
 	# Check whether the current working directory is too long
 	local cwd_str="$(pwd)"
 	local cwd_len="${#cwd_str}"
@@ -76,7 +84,7 @@ check() {
 }
 
 package() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
+	cd "${srcdir}/${pkgname}"
 	make DESTDIR="${pkgdir}" install
 	# Remove unused upstart service files
 	rm -r "${pkgdir}/usr/lib/upstart"
@@ -115,8 +123,6 @@ package() {
 	# put in eval.
 	eval 'options=()'
 	cd "${pkgdir}/usr/bin"
-	tidy_strip
-	cd "${pkgdir}/usr/lib/guix"
 	tidy_strip
 	eval 'options=("!strip")'
 	# Make sure bootstrap binaries are not modified
