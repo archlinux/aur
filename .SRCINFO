@@ -1,6 +1,6 @@
 pkgbase = libindi-gpsd
 	pkgdesc = 3rd party drivers for INDI: GPSD
-	pkgver = 1.7.8
+	pkgver = 1.8.1
 	pkgrel = 1
 	url = http://www.indilib.org/index.php?title=Main_Page
 	arch = i686
@@ -8,9 +8,8 @@ pkgbase = libindi-gpsd
 	license = GPL2
 	makedepends = cmake
 	depends = libindi
-	depends = gpsd
-	source = https://github.com/indilib/indi/archive/v1.7.8.tar.gz
-	sha256sums = 55959bfa271048840782ee61a7c33d769790b7b3e333143de9c8bd60e6e8c5e2
+	source = https://github.com/indilib/indi/archive/v1.8.1.tar.gz
+	sha256sums = d9250a60ce0f37c800982ef3f3c3a00a77f4eb9f500f1e96edbc1ea7c988d489
 
 pkgname = libindi-gpsd
 
