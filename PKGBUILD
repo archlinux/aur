@@ -1,7 +1,7 @@
 # Maintainer: Sven Frenzel <aur@frenzel.dk>
 
 pkgname='lidarr'
-pkgver='0.7.0.1347'
+pkgver='0.7.1.1381'
 pkgrel=1
 pkgdesc='Music downloader for usenet and torrents.'
 arch=(any)
@@ -25,7 +25,7 @@ source=("https://github.com/lidarr/Lidarr/releases/download/v${pkgver}/Lidarr.ma
         'lidarr.tmpfiles'
         'lidarr.sysusers')
 
-sha512sums=('09e5c71662dc0a782c8ae3554454a5a7f176bfb01a37fae9be9512ae2c5363c01095017e4c39491d70fdbd2765798badb63b3a0b95c159d571dbd53fc10ad6df'
+sha512sums=('b33c205acb507898952a61eb2e5cc7fd73abf99efd3201cc6e7b8af6774764b907788a0c7d9c69a41c5325e1129083dae905beec337404370d17373b26b9efab'
             'e339ad3fe7d7569d65346309ffa69ea5f68001a45ae6e1a494e786fc4711a189f38cd73bb4d9bafdb3e5315a625f1c25301804473830418d8284192cb0c04c84'
             'e40ce79a3e1741e7e06312797e652a85d199bd6d719ef953ea8c3c030756ee44e202956ac9e13cff17fac38312c27398f457f79923a7d0f56bd563a69af6ab63'
             'ffd466960527256d8de1d9887d90d4da87486eff062950c46cbc4fd4af1ef89e7d5c070ef1e649b23a95fbab15651e289fd5bdc6d34649e4a6ecdf2f6da06622')
