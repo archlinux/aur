@@ -1,5 +1,5 @@
 pkgbase = ooml
-	pkgdesc = C++ Object Oriented Mechanis Language. Program for C++ to openscad cross-compilation.
+	pkgdesc = C++ Object Oriented Mechanics Language. Program for C++ to openscad cross-compilation.
 	pkgver = r63.4756421
 	pkgrel = 1
 	url = https://github.com/avalero/OOML

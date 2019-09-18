@@ -2,7 +2,7 @@
 pkgname=ooml-git
 pkgver=r63.4756421
 pkgrel=1
-pkgdesc="C++ Object Oriented Mechanis Language. Program for C++ to openscad cross-compilation."
+pkgdesc="C++ Object Oriented Mechanics Language. Program for C++ to openscad cross-compilation."
 arch=('any')
 url="https://github.com/avalero/OOML"
 license=('GPL')
