@@ -9,7 +9,7 @@
 
 pkgname=intel-media-sdk-git
 pkgver=2019.3.pre3.r25.g4311844c
-pkgrel=2
+pkgrel=3
 pkgdesc='API to access hardware-accelerated video decode, encode and filtering on Intel platforms with integrated graphics (git version)'
 arch=('x86_64')
 url='https://github.com/Intel-Media-SDK/MediaSDK/'
@@ -31,7 +31,7 @@ source=('git+https://github.com/Intel-Media-SDK/MediaSDK.git'
         'intel-media-sdk-git.conf'
         'intel-media-sdk-git.sh')
 sha256sums=('SKIP'
-            '63e76d28140486871a3ffc29ce19c84914583bf243201946c76943bf54df374a'
+            '12a37e6e12d93fac5829082773b9f010a3c6c763ddeee177618b8e1a0547fbbc'
             '315ea6f304cf2b7b6a8aaabb0b8f71fcd480677c7fb9c8cbfa51c7830bb159bc')
 
 export GIT_LFS_SKIP_SMUDGE='1'
