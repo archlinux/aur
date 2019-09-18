@@ -1,7 +1,7 @@
 pkgbase = openapi-generator-cli
 	pkgdesc = OpenAPI Generator CLI + bash completion
 	pkgver = 4.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://openapi-generator.tech/
 	arch = any
 	license = Apache

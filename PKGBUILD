@@ -2,7 +2,7 @@
 pkgname=openapi-generator-cli
 pkgver=4.1.2
 _tag=4.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenAPI Generator CLI + bash completion"
 arch=('any')
 url="https://openapi-generator.tech/"
@@ -25,5 +25,5 @@ package() {
         sed -i -e "s/\$pkgname/$pkgname/g" "$pkgdir/usr/bin/openapi-generator-cli"
         sed -i -e "s/\$pkgver/$pkgver/g" "$pkgdir/usr/bin/openapi-generator-cli"
 
-	ln -s "$pkgdir/usr/bin/openapi-generator-cli" "$pkgdir/usr/bin/openapi-generator"
+	ln -sr "$pkgdir/usr/bin/openapi-generator-cli" "$pkgdir/usr/bin/openapi-generator"
 }
