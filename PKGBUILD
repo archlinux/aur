@@ -5,7 +5,7 @@
 pkgbase=spotifyd
 pkgname=('spotifyd' 'spotifyd-pulseaudio' 'spotifyd-dbus-mpris' 'spotifyd-full')
 pkgver=0.2.13
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL3')
 depends=('alsa-lib' 'libogg' 'gcc-libs')
@@ -43,6 +43,7 @@ package_spotifyd() {
 package_spotifyd-pulseaudio() {
   depends=(libpulse)
   conflicts=(spotifyd)
+  provides=(spotifyd)
   pkgdesc="$pkgdesc, with pulseaudio support"
   _package_feature pulseaudio_backend
 }
@@ -50,6 +51,7 @@ package_spotifyd-pulseaudio() {
 package_spotifyd-dbus-mpris() {
   depends=(alsa-lib libogg dbus)
   conflicts=(spotifyd)
+  provides=(spotifyd)
   pkgdesc="$pkgdesc, with D-Bus MPRIS"
   _package_feature dbus_mpris
 }
@@ -57,6 +59,7 @@ package_spotifyd-dbus-mpris() {
 package_spotifyd-full() {
   depends=(libpulse dbus)
   conflicts=(spotifyd)
+  provides=(spotifyd)
   pkgdesc="$pkgdesc, with all Linux features enabled"
   _package_feature "${_features[3]}"
 }
