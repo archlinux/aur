@@ -2,9 +2,9 @@
 # Helpful url: https://services.lidarr.audio/v1/update/nightly/changes?os=linux
 
 pkgname="lidarr-develop"
-pkgver=0.7.1.1385
-_shortstupidfuckingrandomnumber="602"
-_longstupidfuckingrandomnumber="D72ACD52DDEFCC1C735AFFF76AFCC361DB39EDBBF2E5FB7F387FDE9DBB609B0902"
+pkgver=0.7.1.1407
+_shortstupidfuckingrandomnumber="630"
+_longstupidfuckingrandomnumber="2E052C82C52CFB6DFA000A339BAE7A093A8F860F2EAEC9B163354F7741E97E8702"
 pkgrel=1
 pkgdesc="Music downloader for usenet and torrents."
 arch=(any)
@@ -31,7 +31,7 @@ source=("Lidarr.develop.${pkgver}.linux.tar.gz::https://dev.azure.com/Lidarr/Lid
         'lidarr.tmpfiles'
         'lidarr.sysusers')
 
-sha512sums=('e59a03a75901587adae91f6f6d7c488d65d735ad122f1ec81db9d504ad17b53a22a6595dc7dd03e9743ce596de3715b2935a01150de9098f0337280cf142bf24'
+sha512sums=('65060faf63f60f5cf2d7b2e18131edabe45235c2f7fd8bc914abf0d9f692038f605eb66cedc9b68dee4e1bb118cc5c6cfc73bf9a811cbff6801fd10f7a5b1b65'
             'e339ad3fe7d7569d65346309ffa69ea5f68001a45ae6e1a494e786fc4711a189f38cd73bb4d9bafdb3e5315a625f1c25301804473830418d8284192cb0c04c84'
             'e40ce79a3e1741e7e06312797e652a85d199bd6d719ef953ea8c3c030756ee44e202956ac9e13cff17fac38312c27398f457f79923a7d0f56bd563a69af6ab63'
             'ffd466960527256d8de1d9887d90d4da87486eff062950c46cbc4fd4af1ef89e7d5c070ef1e649b23a95fbab15651e289fd5bdc6d34649e4a6ecdf2f6da06622')
