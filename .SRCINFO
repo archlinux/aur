@@ -1,0 +1,15 @@
+pkgbase = taoup
+	pkgdesc = TAO (The Art) of Unix Programming (and related systemic epiphanies)
+	pkgver = 1.8.r20.g6b2726e
+	pkgrel = 1
+	url = https://github.com/globalcitizen/taoup
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = ruby-ansi
+	optdepends = cowsay: fortune compatability mode
+	source = git+https://github.com/globalcitizen/taoup
+	sha256sums = SKIP
+
+pkgname = taoup
+
