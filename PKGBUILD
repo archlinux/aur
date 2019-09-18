@@ -1,11 +1,11 @@
-# Maintainer: Winston Astrachan <winston dot astrachan at gmail dot com
+# Maintainer: Winston Astrachan <winston dot astrachan at gmail dot com>
 
 pkgname="xerox-workcentre-6515-6510"
 pkgver=5.662.0.0
 pkgrel=1
 pkgdesc="Xerox WorkCentre 6515 / Phaser 6510 printer driver for CUPS"
 arch=('x86_64')
-url="https://www.support.xerox.com/support/workcentre-6515/downloads/enus.html?operatingSystem=linux&fileLanguage=en"
+url="https://www.support.xerox.com/support/workcentre-6515/file-download/enus.html?operatingSystem=win10&fileLanguage=en&contentId=144488&from=downloads&viewArchived=false"
 license=('custom')
 depends=('cups')
 makedepends=('unrar')
