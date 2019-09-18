@@ -9,7 +9,7 @@
 pkgname=snort-nfqueue
 _pkgname=snort
 pkgver=2.9.14.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A lightweight network IDS / IPS with NFQUEUE and OpenAppID support.'
 arch=('i686' 'x86_64')
 url='https://www.snort.org'
@@ -29,13 +29,13 @@ backup=('etc/snort/snort.conf'
 options=('!makeflags' '!libtool')
 install=snort.install
 source=("https://www.snort.org/downloads/snort/${_pkgname}-${pkgver}.tar.gz"
-        'snort-openappid.tar.gz::https://snort.org/downloads/openappid/10229'
+        'snort-openappid.tar.gz::https://snort.org/downloads/openappid/11581'
         'snort.logrotate'
         'snort.sysusers'
         'snort.tmpfiles'
         'snort.service')
 sha256sums=('2472989da3aace000d1ea5931ece68f8e5cc0c511e272d65182113a2481e822d'
-            '3312efe27fda90656ce1fd891a9a1a202e1a37e6c1313c5d5262528c4a351a9b'
+            '7582fc56d1412881d21eafaa081cc93a586ca7f68e8e00e62c77da37de8c5424'
             '7fe712141f651254b8e5aa0b3b7d73622d2d1d89bf53d7a522f8c1a067938421'
             'ae3245c5de527fb487c459f2f4a9c78803ae6341e9c81b9a404277679cdee051'
             'a92c591c409fc06661865988795093b0fb0447f614ac77951dbf9b1f6a8cf139'
