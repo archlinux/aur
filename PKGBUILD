@@ -8,7 +8,7 @@
 # Currently it will not be a mandatory makedepend.
 
 pkgname=intel-media-sdk-git
-pkgver=2019.2.pre3.r106.g4108fee8
+pkgver=2019.3.pre3.r25.g4311844c
 pkgrel=1
 pkgdesc='API to access hardware-accelerated video decode, encode and filtering on Intel platforms with integrated graphics (git version)'
 arch=('x86_64')
@@ -85,7 +85,7 @@ package() {
     # metrics_monitor
     install -D -m755 __bin/None/libcttmetrics.so -t "${pkgdir}/opt/intel/mediasdk/share/mfx/samples"
     install -D -m755 __bin/None/metrics_monitor  -t "${pkgdir}/opt/intel/mediasdk/share/mfx/samples"
-    ln -s ../share/mfx/samples/libcttmetrics.so "${pkgdir}/opt/intel/mediasdk/lib64/libcttmetrics.so"
+    ln -s ../share/mfx/samples/libcttmetrics.so "${pkgdir}/opt/intel/mediasdk/lib/libcttmetrics.so"
     
     # ld.so and profile configuration files
     cd "$srcdir"
