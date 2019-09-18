@@ -1,0 +1,15 @@
+pkgbase = go-fac-git
+	pkgdesc = Easy-to-use CUI for fixing git conflicts
+	pkgver = r202.b1d27a1
+	pkgrel = 1
+	url = https://github.com/mkchoi212/fac
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	provides = go-fac
+	conflicts = go-fac
+
+pkgname = go-fac-git
+
