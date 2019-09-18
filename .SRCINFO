@@ -1,6 +1,6 @@
 pkgbase = proton
 	pkgdesc = Compatibility tool for Steam Play based on Wine and additional components
-	pkgver = 4.11.2
+	pkgver = 4.11.3
 	pkgrel = 1
 	url = https://github.com/ValveSoftware/Proton/
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = proton
 	depends = wine-valve-git
 	depends = python2
 	depends = openvr-git
-	source = https://github.com/ValveSoftware/Proton/archive/proton-4.11-2.tar.gz
-	md5sums = d7e121dd47b66bc00a08b5f9134472f6
+	source = https://github.com/ValveSoftware/Proton/archive/proton-4.11-3.tar.gz
+	md5sums = 4479f4924f3da015032f4fac92270a02
 
 pkgname = proton
 
