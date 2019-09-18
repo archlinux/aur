@@ -1,12 +1,12 @@
 pkgbase = linux-clear-headers-bin
-	pkgver = 5.2.14
-	pkgrel = 833
+	pkgver = 5.2.15
+	pkgrel = 834
 	arch = x86_64
 
 pkgname = linux-clear-headers-bin
-	pkgdesc = Header files and scripts for clear linux 5.2.14 kernel and modules
-	provides = linux-headers=5.2.14
-	provides = linux-clear-headers=5.2.14
+	pkgdesc = Header files and scripts for clear linux 5.2.15 kernel and modules
+	provides = linux-headers=5.2.15
+	provides = linux-clear-headers=5.2.15
 	conflicts = linux-clear-headers
 	options = !strip
 
