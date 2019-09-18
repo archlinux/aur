@@ -14,7 +14,7 @@ options=('!strip')
 source=('https://static.zenkit.com/downloads/zenkit-linux.tar.gz'
         'https://zenkit.com/favicon.ico'
 	'zenkit.desktop')
-sha256sums=('72593b57f932cf1b8f832f36f0a1b6b57db03034d1a0e4250e859d7551bace68'
+sha256sums=('SKIP'
             'SKIP'
             '410baee466b84185485c16f525d181efa3287152fd12115b13b9037f31599b5c')
 package() {
