@@ -1,0 +1,15 @@
+pkgbase = pkgbase
+	pkgdesc = Fuse filesystem to read http(s) URL
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://gitlab.com/BylonAkila/astreamfs
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = fuse
+	source = git+https://gitlab.com/BylonAkila/astreamfs.git
+	sha1sums = SKIP
+
+pkgname = astreamfs-git
+
