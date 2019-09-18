@@ -5,7 +5,7 @@ export PIP_DISABLE_PIP_VERSION_CHECK=true
 
 pkgname=inkcut
 epoch=
-pkgver=2.0.6
+pkgver=2.1.0
 pkgrel=00
 pkgdesc='An application for controlling 2D plotters, cutters, engravers, and CNC machines.'
 arch=(any)
@@ -18,12 +18,12 @@ checkdepends=()
 provides=()
 conflicts=(${provides%=*})  # No quotes, to avoid an empty entry.
 source=(PKGBUILD_EXTRAS)
-md5sums=(SKIP)
-source+=(https://files.pythonhosted.org/packages/71/4b/ad44a71e9fc55fec8d44f9e7f9f2773fe8a249d4bdb7ed7dda7dc80353bd/inkcut-2.0.6-py2.py3-none-any.whl)
-md5sums+=(d46bd35d6a622dd5c01cb3078db76485)
-noextract=(inkcut-2.0.6-py2.py3-none-any.whl)
+sha384sums=(SKIP)
+source+=(https://files.pythonhosted.org/packages/f5/f2/76b5ff7cba74764d18fa0b0ca57a4009c35d6f227fe8f6dd95ea52647947/inkcut-2.1.0-py2.py3-none-any.whl)
+sha384sums+=(f66ec4d46d21270a588b9647494d0475075dae5e12f2c1c18c1abfb45187ad997d07ca7df666568cb3a009b810a9b98e)
+noextract=(inkcut-2.1.0-py2.py3-none-any.whl)
 source+=(LICENSE)
-md5sums+=(d32239bcb673463ab874e80d47fae504)
+sha384sums+=(4f601fed19eafc4d21f8f514b614ce87d150bc22c5eef55a2d82819b7e444635420281e80712b9595a0d0a7fa5e9095d)
 _first_source() {
     echo " ${source_i686[@]} ${source_x86_64[@]} ${source[@]}" |
         tr ' ' '\n' | grep -Pv '^(PKGBUILD_EXTRAS)?$' | head -1
