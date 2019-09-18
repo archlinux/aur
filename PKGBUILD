@@ -20,7 +20,6 @@ prepare() {
 }
 
 build() {
-    #make build
     cd "cli-$pkgver"
     export GOFLAGS="-gcflags=all=-trimpath=${PWD} -asmflags=all=-trimpath=${PWD} -ldflags=-extldflags=-zrelro -ldflags=-extldflags=-znow"
     GO111MODULE=on GOFLAGS="-mod=vendor $GOFLAGS" go mod vendor -v
