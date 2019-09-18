@@ -1,9 +1,9 @@
 # Maintainer: Matthias Lisin <ml@visu.li>
 pkgname=kube-prompt-git
 pkgrel=1
-pkgver=1.0.6.r3.gb3d8014
+pkgver=1.0.8.r0.geed9b10
 pkgdesc='An interactive kubernetes client featuring auto-complete using go-prompt.'
-arch=(any)
+arch=('x86_64' 'i686' 'aarch64')
 url='https://github.com/c-bata/kube-prompt'
 license=('MIT')
 depends=('kubectl')
@@ -25,8 +25,7 @@ build() {
     LDFLAGS+=" -X 'main.revision=$(git rev-parse --short HEAD)'"
     go build \
         -o kube-prompt \
-        -gcflags "all=-trimpath=${PWD}" \
-        -asmflags "all=-trimpath=${PWD}" \
+        -trimpath \
         -ldflags "-extldflags ${LDFLAGS}"
 }
 
