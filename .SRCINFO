@@ -1,0 +1,16 @@
+pkgbase = libindi-ticfocuser-git
+	pkgdesc = 3rd party drivers for INDI: TicFocuser-ng bleeding edge.
+	pkgver = r74.9929333
+	pkgrel = 1
+	url = https://github.com/sebo-b/TicFocuser-ng
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	provides = libindi-ticfocuser
+	conflicts = libindi-ticfocuser
+	source = git+https://github.com/sebo-b/TicFocuser-ng.git
+	sha256sums = SKIP
+
+pkgname = libindi-ticfocuser-git
+
