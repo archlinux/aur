@@ -11,10 +11,12 @@ license=('Commercial')
 depends=('gconf')
 provides=('zenki')
 options=('!strip')
-source=("https://static.zenkit.com/downloads/zenkit-linux.tar.gz"
-        'zenkit.desktop')
+source=('https://static.zenkit.com/downloads/zenkit-linux.tar.gz'
+        'https://zenkit.com/favicon.ico'
+	'zenkit.desktop')
 sha256sums=('72593b57f932cf1b8f832f36f0a1b6b57db03034d1a0e4250e859d7551bace68'
-            'fcb457439946044f52d03ffe2b8b2cc214f836fb8a53beb0d92c58596517960f')
+            'SKIP'
+            '410baee466b84185485c16f525d181efa3287152fd12115b13b9037f31599b5c')
 package() {
 
     install -d -m 755 "${pkgdir}/opt/"
@@ -22,9 +24,11 @@ package() {
     install -d -m 755 "${pkgdir}/usr/share/applications/"
     
     install -D -m 644 "${srcdir}/${pkgbase}.desktop" "${pkgdir}/usr/share/applications/"
-    
+
     mkdir "${pkgdir}/opt/${pkgbase}"
+
     tar xpf zenkit-linux.tar.gz -C "${pkgdir}/opt/${pkgbase}/" --strip-components=1
-    
+    mv favicon.ico "${pkgdir}/opt/${pkgbase}/zenkit.ico" 
+
     ln -s "/opt/${pkgbase}/${pkgbase}" "${pkgdir}/usr/bin/${pkgbase}"
 }
