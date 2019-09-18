@@ -2,8 +2,8 @@
 # Contributor: Fabio Loli
 # Contributor: Adam Rutkowski
 pkgname=python-liquidctl-git
-pkgver=1.2.0rc3.r7.4506563
-pkgrel=2
+pkgver=1.2.0rc4.r0.7569a02
+pkgrel=1
 pkgdesc="Cross-platform CLI and Python drivers for AIO liquid coolers and other devices"
 arch=('any')
 url="https://github.com/jonasmalacofilho/liquidctl"
