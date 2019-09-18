@@ -24,7 +24,8 @@ prepare() {
 	asar e app.asar app
 	patch -u app/electron.js -i "$srcdir/runner.patch"
 	echo "#!/usr/bin/env sh
-env ELECTRON_IS_DEV=0 exec electron /usr/share/firecamp/app \$@ --no-sandbox" > "$srcdir/firecamp.sh"
+export ELECTRON_IS_DEV=0
+exec electron /usr/share/firecamp/app \$@ --no-sandbox" > "$srcdir/firecamp.sh"
 }
 
 package() {
