@@ -2,12 +2,19 @@
 
 pkgname='git-quick-stats'
 pkgver='2.0.9'
-pkgrel=1
+pkgrel=2
 pkgdesc='`git-quick-stats` is a simple and efficient way to access various statistics in git repository.'
 arch=('x86_64')
 url="https://github.com/arzzen/$pkgname"
 license=('MIT')
-depends=('git')
+depends=(
+  'git'
+  'gawk'
+  'coreutils'
+  'util-linux'
+  'grep'
+  'ncurses'
+)
 makedepends=()
 provides=('git-quick-stats')
 conflicts=('git-quick-stats')
