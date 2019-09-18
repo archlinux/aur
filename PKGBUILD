@@ -1,8 +1,8 @@
 # Maintainer: Xingbo Wu <wuxb45 at gmail dot com>
 pkgname=spdk-git
 pkgver=r0.0   # pkgver() updates this
-pkgrel=1
-pkgdesc='spdk-git with only headers/libs'
+pkgrel=2
+pkgdesc='spdk-git: headers, libs, and scripts'
 arch=('x86_64')
 license=('BSD')
 url='https://spdk.io/'
@@ -33,14 +33,15 @@ package() {
   mkdir -p $pkgdir/usr/lib/
   mkdir -p $pkgdir/usr/include/spdk/
   mkdir -p $pkgdir/usr/include/dpdk/
+  mkdir -p $pkgdir/usr/bin/
 
   cp -a build/lib/* $pkgdir/usr/lib/
   cp -a dpdk/build/lib/* $pkgdir/usr/lib/
   cp -a include/spdk/* $pkgdir/usr/include/spdk/
   cp -rL dpdk/build/include/* $pkgdir/usr/include/dpdk/
 
-  #mkdir -p $pkgdir/usr/share/spdk/
-  #cp -a scripts/ $pkgdir/usr/share/spdk/scripts
-  #cp -a examples/ $pkgdir/usr/share/spdk/examples
-  #cp -a mk/ $pkgdir/usr/share/spdk/mk
+  echo '#!/usr/bin/env bash' >$pkgdir/usr/bin/spdk-setup
+  cat scripts/{common,setup}.sh     >>$pkgdir/usr/bin/spdk-setup
+  sed -ri '/^rootdir/d;/^source/d;s,\$rootdir,/usr,' $pkgdir/usr/bin/spdk-setup
+  chmod +x $pkgdir/usr/bin/spdk-setup
 }
