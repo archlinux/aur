@@ -1,11 +1,6 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
 # Maintainer: Krystian Chachuła <krystiancha@gmail.com>
 pkgname=soundfont-fatboy
-pkgver=0.785
+pkgver=0.786
 pkgrel=1
 pkgdesc="A free GM/GS SoundFont for classic video game MIDI, emulation, and general usage."
 arch=('any')
