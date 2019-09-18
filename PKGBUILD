@@ -1,6 +1,6 @@
 # Maintainer: Foxy <gmail: foxyblackhat@gmail.com>
 pkgname=astreamfs-git
-pkgver=r112.69efab8
+pkgver=1.15.0
 pkgrel=1
 pkgdesc='Fuse filesystem to read http(s) URL'
 arch=(i686 x86_64)

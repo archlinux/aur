@@ -1,6 +1,6 @@
 pkgbase = astreamfs-git
 	pkgdesc = Fuse filesystem to read http(s) URL
-	pkgver = r112.69efab8
+	pkgver = 1.15.0
 	pkgrel = 1
 	url = https://gitlab.com/BylonAkila/astreamfs
 	arch = i686
