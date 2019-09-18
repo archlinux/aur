@@ -2,7 +2,7 @@
 
 pkgname=trace-cmd
 pkgver=2.8.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Userspace tooling for the Linux kernel Ftrace internal tracer"
 arch=('x86_64' 'aarch64')
 url="https://git.kernel.org/pub/scm/utils/trace-cmd/trace-cmd.git"
@@ -17,7 +17,7 @@ sha256sums=('706564b147bd966957431c4ca70032947d59c5d977c1ac2942b1b5a8668e7a6f')
 build() {
   cd "${srcdir}/${pkgname}-v${pkgver}"
   
-  make PYTHON_VERS=python3 all doc
+  make PYTHON_VERS=python3 prefix="/usr" all doc
 }
 
 package() {
