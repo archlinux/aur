@@ -9,7 +9,7 @@ depends=('mingw-w64-crt' 'mingw-w64-sqlite')
 makedepends=('mingw-w64-configure' 'mingw-w64-wine')
 options=('!strip' '!buildflags' 'staticlibs')
 license=('MIT')
-url="https://trac.osgeo.org/proj/"
+url="https://proj.org/"
 source=("https://download.osgeo.org/proj/proj-${pkgver}.tar.gz")
 sha256sums=('b300c0f872f632ad7f8eb60725edbf14f0f8f52db740a3ab23e7b94f1cd22a50')
 
