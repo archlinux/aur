@@ -3,7 +3,7 @@
 run_hook() {
     local ckeyfile tpmkeypub tpmkeypriv tpmkeyparent tpmkeyindex tpmkeyoffset tpmkeysize
     local tkdev tkarg1 tkarg2 tkarg3 resolved extendargs pcrbanklist pcrextendnum pcrextendalg
-    local tpmload parentkey pcrbank unseal unsealout tpmok noop
+    local tpmload pcrbank unseal unsealout tpmok noop
 
     # This file will be loaded by the encrypt hook
     ckeyfile="/crypto_keyfile.bin"
@@ -15,8 +15,6 @@ run_hook() {
     # TPM device
     [ -z $tpmdev ] && tpmdev="/dev/tpmrm0"
     export TPM2TOOLS_TCTI="device:${tpmdev}"
-    export TPM2TOOLS_TCTI_NAME="device"
-    export TPM2TOOLS_DEVICE_FILE="$tpmdev"
 
     # Parse tpmkey command line argument
     if [ -n "$tpmkey" ]; then
@@ -102,23 +100,18 @@ EOF
         if [ -z "$tpmkeyindex" ]; then
             if [ -n "$tpmprompt" ]; then
                 echo
-                read -s -p "Enter TPM object password: " parentkey
-                echo
-            fi
-
-            if [ -n "$parentkey" ]; then
-                tpm2_load -Q -H "$tpmkeyparent" -P "$parentkey" -r "$tpmkeypriv" -u "$tpmkeypub" -C /tpmobject.ctx >/dev/null 2>&1
+                tpm2_load -Q -C "$tpmkeyparent" -P file:- -r "$tpmkeypriv" -u "$tpmkeypub" -c /tpmobject.ctx 2>/dev/null
                 tpmload=$?
-                parentkey=""
+                echo
             else
-                tpm2_load -Q -H "$tpmkeyparent" -r "$tpmkeypriv" -u "$tpmkeypub" -C /tpmobject.ctx >/dev/null 2>&1
+                tpm2_load -Q -C "$tpmkeyparent" -r "$tpmkeypriv" -u "$tpmkeypub" -c /tpmobject.ctx >/dev/null 2>&1
                 tpmload=$?
             fi
         fi
 
         # Format nvram arguments
-        [ -n "$tpmkeyoffset" ] && tpmkeyoffset="-o ${tpmkeyoffset}"
-        [ -n "$tpmkeysize" ] && tpmkeysize="-s ${tpmkeysize}"
+        [ -n "$tpmkeyoffset" ] && tpmkeyoffset="--offset=${tpmkeyoffset}"
+        [ -n "$tpmkeysize" ] && tpmkeysize="--size=${tpmkeysize}"
 
         # Attempt to decrypt key with each PCR bank specified
         unseal=1
@@ -126,10 +119,10 @@ EOF
             IFS="|"
             for pcrbank in $pcrbanklist; do
                 if [ -n "$tpmkeyindex" ]; then
-                    unsealout=$(tpm2_nvread -Q -x "$tpmkeyindex" -a "$tpmkeyindex" $tpmkeyoffset $tpmkeysize -L "$pcrbank" -f $ckeyfile 2>&1)
+                    unsealout=$(tpm2_nvread -Q $tpmkeyoffset $tpmkeysize -P "pcr:${pcrbank}" -o $ckeyfile "$tpmkeyindex" 2>&1)
                     unseal=$?
                 else
-                    unsealout=$(tpm2_unseal -Q -c /tpmobject.ctx -L "$pcrbank" -o "$ckeyfile" 2>&1)
+                    unsealout=$(tpm2_unseal -Q -c /tpmobject.ctx -p "pcr:${pcrbank}" -o "$ckeyfile" 2>&1)
                     unseal=$?
                 fi
                 if [ $unseal -eq 0 ]; then break; fi
@@ -143,7 +136,7 @@ EOF
             tpmok=1
         elif echo "$unsealout" | grep -sqiE 'Could not load tcti'; then
             err "TPM communication error"
-        elif echo "$unsealout" | grep -sqiE 'Error.*0x99d'; then
+        elif echo "$unsealout" | grep -sqiE 'ERROR.*0x99D'; then
             echo
             echo "!!! TPM WARNING: PCR VALUES HAVE CHANGED !!!"
             echo "This is an indication that the boot configuration has been altered since"

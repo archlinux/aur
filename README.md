@@ -13,8 +13,8 @@ kernel at boot or may be stored in TPM non-volatile memory (NVRAM). For example,
 assuming your unencrypted keyfile is at `/root/mykey` and a primary TPM key has
 been persisted to `0x81000001`:
 
-    # tpm2_createpolicy -P -L sha1:0,2,4,7 -f pcr.pol
-    # tpm2_create -H 0x81000001 -g sha256 -G keyedhash -A 0x492 -I /root/mykey \
+    # tpm2_createpolicy --policy-pcr -l sha1:0,2,4,7 -L pcr.pol
+    # tpm2_create -C 0x81000001 -g sha256 -G keyedhash -a 0x492 -i /root/mykey \
       -L pcr.pol -r /boot/mykey.priv -u /boot/mykey.pub
 
 After generating a TPM-sealed key, both `tpmkey` and `tpmpcr` should be specified
@@ -67,6 +67,12 @@ loading the sealed key. This option has no effect when the key is stored in
 NVRAM.
 
     tpmprompt=1
+
+In recent kernel versions, some systems may not generate enough entropy early in
+the boot process to utilize the TPM. There are several possible solutions to
+this problem. On x86_64 systems, the following kernel parameter may help:
+
+    random.trust_cpu=on
 
 You may also need to add the `vfat` file system driver to the `MODULES` array:
 
