@@ -1,5 +1,5 @@
 # Maintainer: Foxy <gmail: foxyblackhat@gmail.com>
-pkgbase=pkgbase
+pkgbase=astreamfs-git
 pkgname=astreamfs-git
 pkgver=1.5.0
 pkgrel=1
