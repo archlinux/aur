@@ -1,15 +1,14 @@
 pkgbase = code-server
 	pkgdesc = Run VS Code on a remote server
-	pkgver = 2.1485_vsc1.38.1
-	pkgrel = 1
+	pkgver = 2.1523_vsc1.38.1
+	pkgrel = 0
 	url = https://github.com/cdr/code-server
 	arch = x86_64
 	license = MIT
 	depends = glibc
-	depends = net-tools
 	options = !strip
-	source = https://github.com/cdr/code-server/releases/download/2.1485-vsc1.38.1/code-server2.1485-vsc1.38.1-linux-x86_64.tar.gz
-	sha512sums = 8ce1f347b650e457d816d78de8af89b46bfa26faff23b89f2296dea0f75ca347adc0f4a98bb62ab749440571c338fd5a6a0a902dc4d890bad2e76c47c97c645d
+	source = https://github.com/cdr/code-server/releases/download/2.1523-vsc1.38.1/code-server2.1523-vsc1.38.1-linux-x86_64.tar.gz
+	sha512sums = b1a7e081faaeba724172f7cc9f698ca0b8509e8be4cb532e20c455beac6ced0b16654687cb8648439f3857c6ba0dc8a187b5ca2723edebd6da212f25be9e0f3a
 
 pkgname = code-server
 
