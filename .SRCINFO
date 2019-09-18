@@ -1,8 +1,8 @@
 pkgbase = ncurses-nohex
 	pkgdesc = System V Release 4.0 curses emulation library. Patch disables hexadecimal in infocmp.
 	pkgver = 6.1
-	pkgrel = 2
-	url = http://invisible-island.net/ncurses/ncurses.html
+	pkgrel = 6
+	url = https://invisible-island.net/ncurses/ncurses.html
 	arch = x86_64
 	license = MIT
 	depends = glibc

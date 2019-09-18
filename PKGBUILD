@@ -8,10 +8,10 @@
 pkgname=('ncurses-nohex' 'infocmp-nohex')
 conflicts=(ncurses)
 pkgver=6.1
-pkgrel=2
+pkgrel=6
 pkgdesc="System V Release 4.0 curses emulation library. Patch disables hexadecimal in infocmp."
 arch=(x86_64)
-url='http://invisible-island.net/ncurses/ncurses.html'
+url='https://invisible-island.net/ncurses/ncurses.html'
 license=(MIT)
 depends=(glibc gcc-libs)
 provides=(ncurses libncurses++w.so libformw.so libmenuw.so libpanelw.so libncursesw.so)
@@ -62,6 +62,7 @@ package_ncurses-nohex() {
   for lib in tic tinfo; do
     echo "INPUT(libncursesw.so.${pkgver:0:1})" > "$pkgdir/usr/lib/lib${lib}.so"
     ln -s libncursesw.so.${pkgver:0:1} "$pkgdir/usr/lib/lib${lib}.so.${pkgver:0:1}"
+    ln -s ncursesw.pc "$pkgdir/usr/lib/pkgconfig/${lib}.pc"
   done
 
   # some packages look for -lcurses during build
