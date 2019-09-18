@@ -1,0 +1,15 @@
+pkgbase = python-click-datetime
+	pkgdesc = Click support for Python’s Datetime types.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/click-contrib/click-datetime
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-click
+	source = https://github.com/click-contrib/click-datetime/archive/0.2.0.tar.gz
+	sha512sums = b17eec36bcee5f9055f9b716ab0e2125be4f95b9b988fd04ea07ec95a57f26d9d2d4ee2bd879b59730e3f6899ec63285a28af01e7a86fd7a980b1a78d682e482
+
+pkgname = python-click-datetime
+
