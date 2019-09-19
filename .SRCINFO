@@ -1,6 +1,6 @@
 pkgbase = coreimage
 	pkgdesc = An image viewer from the CoreApps family.
-	pkgver = 2.7.0
+	pkgver = 2.7.1
 	pkgrel = 1
 	url = https://gitlab.com/cubocore/coreimage
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = coreimage
 	groups = coreapps
 	license = GPL3
 	depends = qt5-base
-	depends = libcprime
-	source = https://gitlab.com/cubocore/coreimage/-/archive/v2.7.0/coreimage-v2.7.0.tar.gz
-	md5sums = c004b0aeb3ac636c5fbb7f1ac50a3f46
+	depends = libcprime>=2.7.1
+	source = https://gitlab.com/cubocore/coreimage/-/archive/v2.7.1/coreimage-v2.7.1.tar.gz
+	md5sums = fba5522c29a8d3fed6dcabf9d3f496f9
 
 pkgname = coreimage
 
