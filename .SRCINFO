@@ -1,11 +1,16 @@
 pkgbase = vk-scraper
 	pkgdesc = Scrapes a VK user's photos
 	pkgver = 2.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vanyasem/VK-Scraper
 	arch = any
 	license = GPL3
 	makedepends = python-setuptools
+	depends = python-vk_api
+	depends = python
+	depends = python-requests
+	depends = python-tqdm
+	depends = youtube-dl
 	provides = vk-scraper
 	conflicts = vk-scraper
 	source = https://github.com/vanyasem/VK-Scraper/archive/v2.0.3.tar.gz
