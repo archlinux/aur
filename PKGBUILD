@@ -2,18 +2,18 @@
 pkgname=compcert-git
 _basepkgname=${pkgname%-*}
 _dirname=CompCert
-pkgver=3.5.r77.ga8c84a52
-pkgrel=2
+pkgver=3.6.r1.gf1637021
+pkgrel=3
 pkgdesc="The formally verified C compiler"
 arch=('x86_64')
 url="http://compcert.inria.fr"
 license=('custom:INRIA Non-Commercial License Agreement')
 depends=('gcc')
 makedepends=('coq>=8.6.1' 'ocaml>=4.0.2'
-             'ocaml-menhir>=20161201'
+             'ocaml-menhir>=20190626'
              'ocaml-findlib' # See: https://github.com/AbsInt/CompCert/issues/281
-             'git'
-             'parallel')
+             'git')
+checkdepends=('parallel')
 provides=($_basepkgname=$pkgver)
 conflicts=($_basepkgname)
 source=("git+https://github.com/AbsInt/CompCert.git")
