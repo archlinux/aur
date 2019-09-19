@@ -7,7 +7,7 @@ pkgbase = clipman
 	arch = i686
 	license = GPL3
 	makedepends = go-pie
-	depends = wl-clipboard-git
+	depends = wl-clipboard>=2.0
 	provides = clipman
 	source = https://github.com/yory8/clipman/archive/v1.0.0.tar.gz
 	md5sums = 63b20dbcdeb9d415a5cefa33ef3691fe
