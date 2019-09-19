@@ -1,7 +1,7 @@
 pkgbase = python-grpcio-tools
 	pkgdesc = Python protobuf generator for GRPC
 	pkgver = 1.23.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://grpc.io/
 	arch = x86_64
 	arch = i686
