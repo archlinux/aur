@@ -1,6 +1,6 @@
 pkgbase = corestats
 	pkgdesc = A system resource viewer from the CoreApps family.
-	pkgver = 2.7.0
+	pkgver = 2.7.1
 	pkgrel = 1
 	url = https://gitlab.com/cubocore/corestats
 	arch = x86_64
@@ -8,10 +8,10 @@ pkgbase = corestats
 	groups = coreapps
 	license = GPL3
 	depends = qt5-base
-	depends = libcprime
-	depends = libcsys
-	source = https://gitlab.com/cubocore/corestats/-/archive/v2.7.0/corestats-v2.7.0.tar.gz
-	md5sums = 622921807dd694d70ec646e7d569087c
+	depends = libcprime>=2.7.1
+	depends = libcsys>=2.7.1
+	source = https://gitlab.com/cubocore/corestats/-/archive/v2.7.1/corestats-v2.7.1.tar.gz
+	md5sums = 1206562f1ede344f8d414da9df892a47
 
 pkgname = corestats
 
