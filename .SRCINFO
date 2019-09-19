@@ -1,0 +1,17 @@
+pkgbase = python-gdspy-git
+	pkgdesc = Python module for creating GDSII stream files, usually CAD layouts.
+	pkgver = r461.d440538
+	pkgrel = 1
+	url = https://github.com/heitzmann/gdspy
+	arch = x86_64
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python
+	depends = python-numpy
+	provides = python-gdspy
+	replaces = python-gdspy
+	source = git+https://github.com/heitzmann/gdspy
+	md5sums = SKIP
+
+pkgname = python-gdspy-git
+
