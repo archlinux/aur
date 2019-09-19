@@ -6,7 +6,8 @@ pkgdesc="A tool for converting dictionary files aka glossaries with various form
 arch=(any)
 url="https://github.com/ilius/pyglossary"
 license=('GPL3')
-depends=('python-gobject' 'tix')
+depends=('python-gobject')
+optdepends=('tix: Tkinter-based interface')
 provides=("${pkgname}=${pkgver}")
 conflicts=(${pkgname}-git)
 source=("https://github.com/ilius/${pkgname}/archive/${pkgver}.tar.gz"
