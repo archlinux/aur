@@ -1,0 +1,23 @@
+pkgbase = x16-rom-git
+	pkgdesc = ROM files for The 8-Bit Guy's Commander X16
+	pkgver = r30.r18.ge3815b4
+	pkgrel = 1
+	url = http://commanderx16.com/
+	arch = any
+	groups = commander-x16
+	license = unknown
+	license = GPL3
+	makedepends = git
+	makedepends = cc65
+	makedepends = pandoc
+	provides = x16-rom
+	conflicts = x16-rom
+	source = git+https://github.com/commanderx16/x16-rom.git
+	source = https://raw.githubusercontent.com/commanderx16/x16-emulator/master/github-pandoc.css
+	source = https://raw.githubusercontent.com/mobluse/chargen-maker/master/chargen.txt
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = x16-rom-git
+
