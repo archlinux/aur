@@ -1,8 +1,8 @@
 # Maintainer: Ken Enda <buhibuhidog@gmail.com>
 
 pkgname=tym
-pkgver=3.0.0
-pkgrel=1
+pkgver=3.0.1
+pkgrel=2
 pkgdesc="A tiny term for minimalists"
 arch=('x86_64')
 url="https://github.com/endaaman/tym"
