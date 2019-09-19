@@ -1,7 +1,7 @@
 # Maintainer: Christoph Haag <christoph.haag@collabora.com>
 
 pkgname=kdeplasma-applets-xrdesktop-git
-pkgver=18.8f54fd3
+pkgver=20.19a61bb
 pkgrel=1
 pkgdesc="xrdesktop applet for KDE Plasma"
 url="https://gitlab.freedesktop.org/xrdesktop"
