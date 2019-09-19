@@ -2,7 +2,7 @@
 pkgbase=python-crds
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
-pkgver=7.3.4
+pkgver=7.4.1.1
 pkgrel=1
 pkgdesc="Calibration Reference Data System for HST and JWST"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('python-setuptools')
 #checkdepends=('python-lockfile' 'python-filelock' 'python-mock' 'python-astropy' 'python-nose' 'python-pylint')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         "https://raw.githubusercontent.com/spacetelescope/crds/master/LICENSE")
-md5sums=('5a9839b4cecd62c65cc2ffae508a0ed5'
+md5sums=('4fdaf97d66b3f9cb2053c121d8785327'
          'eeff2e5869a14213d19ee6776441af35')
 
 package_python-crds() {
