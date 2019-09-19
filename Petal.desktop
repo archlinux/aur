@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Petal
+Comment=Douban FM Player With Extra
+Terminal=false
+Categories=Audio
+Exec=petal
+Type=Application
+Icon=petal
+Version=2.20.0
