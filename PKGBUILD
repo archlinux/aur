@@ -1,6 +1,6 @@
 # Maintainer: Sonny Piers <sonny@fastmail.net>
 pkgname=tangram
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Run web apps on your desktop"
 arch=('any')
@@ -12,7 +12,7 @@ conflicts=('gigagram-git')
 replaces=('gigagram-git')
 makedepends=('meson' 'ninja')
 source=("https://github.com/sonnyp/Tangram/archive/v$pkgver.tar.gz")
-sha256sums=('6f53bb9864b610dd9d6c026500c2a9d8ed03d3ceb179d3dbf16faa74c7955820')
+sha256sums=('e3f7baae512ab355c817c9638e5b114306f635dd4cfc736f0fb0cfdb2012c7ee')
 
 build() {
 	arch-meson Tangram-$pkgver build
