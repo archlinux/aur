@@ -5,7 +5,7 @@ pkgver=2.0.0
 pkgrel=1
 pkgdesc="Table number filter for pandoc"
 url="https://github.com/tomduck/pandoc-tablenos"
-depends=('pandoc-xnos>=0.15.0')
+depends=('pandoc-xnos>=2.0.0')
 license=('GPL')
 arch=('any')
 source=("https://github.com/tomduck/pandoc-tablenos/archive/${pkgver}.tar.gz")

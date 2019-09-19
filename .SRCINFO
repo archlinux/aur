@@ -5,7 +5,7 @@ pkgbase = pandoc-tablenos
 	url = https://github.com/tomduck/pandoc-tablenos
 	arch = any
 	license = GPL
-	depends = pandoc-xnos>=0.15.0
+	depends = pandoc-xnos>=2.0.0
 	source = https://github.com/tomduck/pandoc-tablenos/archive/2.0.0.tar.gz
 	md5sums = f375d3a8f63887d492d5e3bbe4849079
 
