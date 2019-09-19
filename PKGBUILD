@@ -16,6 +16,7 @@ build() {
 }
 
 package() {
+  cd ${pkgname}-${pkgver}
   install -Dm755 yaegi "${pkgdir}/usr/bin/${pkgname}"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
