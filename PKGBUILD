@@ -1,7 +1,7 @@
 # Maintainer: Zanny <lordzanny@gmail.com>
 
 pkgname=oda-file-converter
-pkgver=20.5.0.0
+pkgver=20.8.0.0
 pkgrel=1
 pkgdesc="Converts files between the .dwg and .dxf file formats"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('qt5-base' 'hicolor-icon-theme')
 source=('https://download.opendesign.com/guestfiles/ODAFileConverter/ODAFileConverter_QT5_lnxX64_4.7dll.deb'
         'oda-file-converter'
         'oda-file-converter.desktop')
-sha256sums=('89860e6a17ba842412b94ddd945c43e83370ef5ff538e2fde114b0276b2e7e53'
+sha256sums=('67ce6e4ff5c63afb3abc69332612095d6ea462e79bfe751cb9a1f065f1269e1f'
             '717f27caf6be52ffa1de45022e1c7534827731a2b59d908d02b5970fc904081d'
             '808bfc11b6c062ca9cccedf3a0231715826eef19d8b0664216999fc9a9792827')
 _ogname='ODAFileConverter'
