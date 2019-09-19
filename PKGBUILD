@@ -5,7 +5,7 @@
 pkgname=xfce4-notifyd-layer-shell-git
 pkgver=0.4.4.r42.g87281dd
 pkgrel=1
-pkgdesc="Notification daemon for the Xfce desktop"
+pkgdesc="xfce4-notifyd (Xfce's notification daemon) with Wayland layer shell support"
 arch=('x86_64')
 url='https://github.com/icasdri/xfce4-notifyd-layer-shell'
 license=('GPL2')

@@ -1,5 +1,5 @@
 pkgbase = xfce4-notifyd-layer-shell-git
-	pkgdesc = Notification daemon for the Xfce desktop
+	pkgdesc = xfce4-notifyd (Xfce's notification daemon) with Wayland layer shell support
 	pkgver = 0.4.4.r42.g87281dd
 	pkgrel = 1
 	url = https://github.com/icasdri/xfce4-notifyd-layer-shell
