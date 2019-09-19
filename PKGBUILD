@@ -1,6 +1,6 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-libsoup
-pkgver=2.66.2
+pkgver=2.68.1
 pkgrel=1
 pkgdesc="HTTP client/server library (mingw-w64)"
 arch=(any)
@@ -10,7 +10,7 @@ depends=('mingw-w64-glib2' 'mingw-w64-glib-networking' 'mingw-w64-sqlite' 'mingw
 makedepends=('mingw-w64-meson')
 options=(!strip !buildflags staticlibs)
 source=("http://download.gnome.org/sources/libsoup/${pkgver%.*}/libsoup-$pkgver.tar.xz")
-sha256sums=('bd2ea602eba642509672812f3c99b77cbec2f3de02ba1cc8cb7206bf7de0ae2a')
+sha256sums=('7f0323e53b8e797baa972dfe25adf3cc6ceff06f0a26235b6c5c7b91403fbf8d')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -19,10 +19,13 @@ build() {
     mkdir -p "${srcdir}/libsoup-${pkgver}/build-${_arch}"
     cd "${srcdir}/libsoup-${pkgver}/build-${_arch}"
     ${_arch}-meson \
-      -D gssapi=false \
+      -D gssapi=disabled \
       -D gnome=false \
-      -D vapi=false \
-      -D doc=false \
+      -D vapi=disabled \
+      -D gtk_doc=false \
+      -D introspection=disabled \
+      -D tests=false \
+      -D tls_check=false \
       --default-library both ..
     ninja
   done
