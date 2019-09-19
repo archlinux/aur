@@ -1,11 +1,11 @@
 pkgname=dnf-plugins-core
-pkgver=4.0.9
+pkgver=4.0.10
 pkgrel=1
 pkgdesc="Core DNF Plugins"
 arch=('any')
 url="https://github.com/rpm-software-management/$pkgname"
 license=('GPL2')
-depends=('dnf>=4.2.8' 'python')
+depends=('dnf>=4.2.10' 'python')
 makedepends=('cmake' 'python-sphinx')
 checkdepends=('python-nose')
 optdepends=('python-dateutil: for changelog plugin'
@@ -17,7 +17,7 @@ backup=('etc/dnf/plugins/copr.conf'
         'etc/dnf/plugins/versionlock.list')
 options=(!emptydirs)
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('01000aa7c054fc0ad9e8b3cd3a74f7e4')
+md5sums=('ada00a3aba3c3c179cf04928150a73bf')
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -65,6 +65,7 @@ package() {
 	   "$pkgdir/usr/share/man/man1/yum-debug-dump.1" \
 	   "$pkgdir/usr/share/man/man1/yum-debug-restore.1" \
 	   "$pkgdir/usr/share/man/man1/yumdownloader.1" \
+	   "$pkgdir/usr/share/man/man1/yum-utils.1" \
 	   "$pkgdir/usr/share/man/man5/yum-versionlock.conf.5" \
 	   "$pkgdir/usr/share/man/man8/yum-copr.8" \
 	   "$pkgdir/usr/share/man/man8/yum-versionlock.8"
