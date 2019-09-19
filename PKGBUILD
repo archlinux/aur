@@ -1,6 +1,6 @@
 # Maintainer: Juliette Monsel <j_4321 at protonmail dot com>
 pkgname=('python-ttkwidgets' 'python2-ttkwidgets')
-pkgver=0.10.0
+pkgver=0.10.1
 pkgrel=1
 pkgdesc="Collection of widgets for Tkinter's ttk extensions"
 _name=ttkwidgets
@@ -8,7 +8,7 @@ arch=('any')
 url="https://github.com/RedFantom/ttkwidgets"
 license=('GPL3')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/RedFantom/$_name/archive/${pkgver}.tar.gz")
-sha512sums=('27b5095053e6ff38a64c39b7fce7814b7188d1accb847fca1eb08f554b9ef83ed71255887bb22a0e5798d0393080e7707e00d88b2f4a8241e317371abcf03903')
+sha512sums=('d522743827fa2f949844d454cf80e324c16046fce619abde086be20392c8c186b31bfb609d85b1d6780685ca3f4df2e6a95ae3f5baa182fba64c4d3402b11fac')
 makedepends=('python-setuptools' 'python2-setuptools')
 
 build() {
