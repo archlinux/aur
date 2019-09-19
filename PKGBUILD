@@ -5,7 +5,7 @@
 
 pkgname=firefox-appmenu
 _pkgname=firefox
-pkgver=69.0
+pkgver=69.0.1
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org"
 arch=(x86_64)
@@ -26,7 +26,7 @@ source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-
         0001-Use-remoting-name-for-GDK-application-names.patch
         $_pkgname.desktop firefox-symbolic.svg
         unity-menubar.patch)
-sha256sums=('413c3febdfeb69eade818824eecbdb11eaeda71de229573810afd641ba741ec5'
+sha256sums=('f5f2f592b8296812d43244d6a50c0c57ad11a5324db8e4e79749545482b79033'
             'SKIP'
             'ab07ab26617ff76fce68e07c66b8aa9b96c2d3e5b5517e51a3c3eac2edd88894'
             'e466789015e15be9409b7a7044353674ca6aa0f392e882217f90c79821fe2630'
@@ -44,7 +44,7 @@ _google_api_key=AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
 # get your own set of keys. Feel free to contact heftig@archlinux.org for
 # more information.
-_mozilla_api_key=16674381-f021-49de-8622-3021c5942aff
+_mozilla_api_key=e05d56db0a694edc8b5aaebda3f2db6a
 
 prepare() {
   mkdir mozbuild
