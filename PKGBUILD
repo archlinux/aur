@@ -1,6 +1,6 @@
 # Maintainer : Andres Urquijo <alfagalileox@gmail.com>
 pkgname=mathgl
-pkgver=2.4.3
+pkgver=2.4.4
 pkgrel=1
 pkgdesc="A library for making high-quality scientific graphics"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ depends=('libpng' 'libharu' 'python2' 'hdf5' 'texlive-bin' 'texlive-core' 'pytho
         'freeglut' 'gsl' 'wxgtk' 'qt5-base' )
 makedepends=( 'cmake' 'swig')
 source=("https://sourceforge.net/projects/$pkgname/files/$pkgname/$pkgname%20$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('fd055c54b5f8c7a8868ae5830a704d0b')
+md5sums=('cbf9bcb4db6c78bda7902d36b9843d7b')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
