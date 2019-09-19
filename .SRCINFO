@@ -1,15 +1,14 @@
 pkgbase = goproxy
 	pkgdesc = A high performance HTTP, HTTPS, websocket, TCP, UDP, Secure DNS, Socks5 proxy server
-	pkgver = 6.9
-	pkgrel = 2
+	pkgver = 8.3
+	pkgrel = 1
 	url = https://github.com/snail007/goproxy
 	arch = x86_64
 	license = GPL3
 	makedepends = go
-	makedepends = dep
 	makedepends = git
-	source = goproxy-6.9.tar.gz::https://github.com/snail007/goproxy/archive/v6.9.tar.gz
-	sha256sums = 7ce1e612b2b6179c1c7b6136730ed1a09ae84fdd87191cca6aeb8a2fdafdf8d3
+	source = goproxy-8.3.tar.gz::https://github.com/snail007/goproxy/archive/v8.3.tar.gz
+	md5sums = 1b0fb4fbf3abfe65b4ed7123b6be6101
 
 pkgname = goproxy
 

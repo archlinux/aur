@@ -1,27 +1,23 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 pkgname=goproxy
-pkgver=6.9
-pkgrel=2
+pkgver=8.3
+pkgrel=1
 pkgdesc="A high performance HTTP, HTTPS, websocket, TCP, UDP, Secure DNS, Socks5 proxy server"
 arch=('x86_64')
 url="https://github.com/snail007/goproxy"
 license=('GPL3')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/snail007/$pkgname/archive/v$pkgver.tar.gz")
-makedepends=('go' 'dep' 'git')
-
-_importpath="github.com/snail007/$pkgname"
+makedepends=('go' 'git')
+md5sums=('1b0fb4fbf3abfe65b4ed7123b6be6101')
 
 prepare() {
-  export GOPATH="$srcdir/_go"
-  mkdir -p $(dirname "$GOPATH/src/$_importpath")
-  ln -sf "$srcdir/$pkgname-$pkgver" "$GOPATH/src/$_importpath"
-  cd "$GOPATH/src/$_importpath"
-  dep ensure -v
+  cd $srcdir/$pkgname-$pkgver
+  find . -name '*.go' | xargs -L1 sed -i -e 's,"proxy/,"github.com/snail007/goproxy/,g'
+  [[ -f go.mod ]] || go mod init
 }
 
 build() {
-  export GOPATH="$srcdir/_go"
-  cd "$GOPATH/src/$_importpath"
+  cd $srcdir/$pkgname-$pkgver
   go build \
     -gcflags "all=-trimpath=${PWD}" \
     -asmflags "all=-trimpath=${PWD}" \
@@ -29,10 +25,7 @@ build() {
 }
 
 package() {
-  export GOPATH="$srcdir/_go"
-  cd "$GOPATH/src/$_importpath"
+  cd $srcdir/$pkgname-$pkgver
   install -dm755 "$pkgdir/usr/bin"
   install -m755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
 }
-
-sha256sums=('7ce1e612b2b6179c1c7b6136730ed1a09ae84fdd87191cca6aeb8a2fdafdf8d3')
