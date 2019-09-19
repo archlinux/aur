@@ -3,7 +3,7 @@
 
 _pkgname=xdo
 pkgname=${_pkgname}-git
-pkgver=0
+pkgver=0.5.7.r1.g688f10f
 pkgrel=1
 pkgdesc='Small X utility to perform elementary actions on windows'
 arch=('i686' 'x86_64')
@@ -18,8 +18,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/$_pkgname"
-    printf '0.r%s.%s' "$(git rev-list --count HEAD)" "$(git log -1 --pretty=format:%h)"
-
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
