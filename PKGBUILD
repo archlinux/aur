@@ -3,7 +3,7 @@
 
 pkgname=python-pyxel
 pkgver=1.2.6
-pkgrel=2
+pkgrel=3
 pkgdesc='Retro game development environment'
 arch=('i686' 'x86_64')
 url='https://github.com/kitao/pyxel'
@@ -20,14 +20,14 @@ md5sums=('ddd3e8211ca2bbc71ac99845bdcb16c0'
 build() {
   cd pyxel-$pkgver
 
-  patch -i $srcdir/0001-optional-pyinstaller.patch
+  patch -i "$srcdir"/0001-optional-pyinstaller.patch
   python setup.py build
 }
 
 package() {
   cd pyxel-$pkgver
 
-  python setup.py install --root="$pkgdir" --optimize=1
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
