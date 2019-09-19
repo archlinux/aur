@@ -2,16 +2,16 @@
 # Maintainer: Dan Johansen <strit@manjaro.org>
 
 pkgname=coregarage
-pkgver=2.7.0
+pkgver=2.7.1
 pkgrel=1
 pkgdesc="A settings manager for the CoreApps family."
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/cubocore/$pkgname"
 license=('GPL3')
-depends=('qt5-base' 'libcprime' 'libcsys' 'libarchive-qt')
+depends=('qt5-base' 'libcprime>=2.7.1' 'libcsys>=2.7.1' 'libarchive-qt')
 groups=('coreapps')
 source=("https://gitlab.com/cubocore/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-md5sums=('21e701a03b5e7630f8528165d8a0419e')
+md5sums=('bdc791f77e210a0d65f123f2eb998005')
 
 prepare() {
   mkdir -p build
