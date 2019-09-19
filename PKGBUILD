@@ -1,7 +1,7 @@
 # Maintainer: asm0dey <pavel.finkelshtein+AUR@gmail.com>
 pkgname=bittorrent-tracker-editor-bin
-pkgver=1.33.0.beta.5
-pkgrel=2
+pkgver=1.33.0.beta.6
+pkgrel=1
 pkgdesc="Software for add or remove tracker from torrent files"
 arch=('x86_64')
 url="https://github.com/GerryFerdinandus/bittorrent-tracker-editor/"
