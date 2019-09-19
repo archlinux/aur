@@ -5,7 +5,8 @@
 !forge-1.11.2d.conf
 !forge-1.11.2d.service
 !forge-1.11.2d.sh
-!LICENSE.txt
+!LICENSE-fml.txt
+!LICENSE-new.txt
 !PKGBUILD
 !.gitignore
 !.SRCINFO

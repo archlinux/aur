@@ -11,7 +11,7 @@ _pkgver=${_minecraft_ver}-13.20.1.2386
 
 pkgname=forge-server-1.11.2
 pkgver=${_pkgver//-/_}
-pkgrel=1
+pkgrel=2
 pkgdesc="Minecraft Forge server unit files, script, and jar"
 arch=('any')
 url="https://minecraftforge.net/"
@@ -27,7 +27,8 @@ source=("${_game}-${_pkgver}-installer.jar"::"https://files.minecraftforge.net/m
 	"${_game}d.service"
 	"${_game}d.conf"
 	"${_game}d.sh"
-	"LICENSE.txt")
+	"LICENSE-fml.txt"
+	"LICENSE-new.txt")
 noextract=("${_game}-${_pkgver}-installer.jar")
 sha512sums=('4eef89201fb6f8662912a5ceb3cfaa0c68da6ca874e403b02f40afa7132f48c339815b987dc190903e4053531957c009f46d388b88083f54f349a3dd6ad26b42'
             '70d7f3855ada6bd06ed707d99d2bc782c8da2f79d236e4d3e0d95ab12e675c8a39d85cd21df8313cd32b00a0227f020c31ab8f77a572d9cf590cbf75655ee426'
@@ -35,14 +36,16 @@ sha512sums=('4eef89201fb6f8662912a5ceb3cfaa0c68da6ca874e403b02f40afa7132f48c3398
             'e3810d59408b303601c9fae95cafaa140019b214b452d36b0ce6017f5724f3c35d8b7f8c06c2c20118ddffeb7faa70ddea09de62e60ab12ddbc2d9e875a68421'
             'c765776ade02eab1a5b2a56b7848f36b7a2e4523e3e753c9a18223bef7307240d867782aa0a4aca9697efd9615fa48cdb8cafdf86d4e344560128abde30c310f'
             'd92dc4745fd335d4c755c9a672741e3c10582a60cf0c81fa74e2f8ae0377c7310c8787cd11dc15d3667703829f12cd3dd9fd288fc8d047d1037ca2333719f05e'
-            '3da10d63a5edee4bc8bcd3d5c2730771062f7fa58626a8c51635fbe96bfbceca3ff6937cfaad3e17f16a94ef95137f7c78cc6dac1c846a6b9a8f18d3c6355973')
+            '07860198b7d40726e9597f9ac748904a8e27bdcf87151f0b1c8c2ade024ad16aa83d412b70f900a7de3f58773f325ee45eb6c30cb1395e45a4d8092a19b4f845'
+            '7fe8163f3f1bb86e59508aff851eb571e280da36c24a6faf49ae51d6a000282bac8c388ac1c0c1208220b3f8fb62466285a306213f5a014faa1b619f4c48bf9b')
 
 prepare() {
 	java -jar "${_game}-${_pkgver}-installer.jar" --installServer
 }
 
 package() {
-	install -Dm644 "LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
+	install -Dm644 "LICENSE-fml.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-fml.txt"
+	install -Dm644 "LICENSE-new.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-new.txt"
 
 	install -Dm644 "${_game}d.conf"                         "${pkgdir}/etc/conf.d/${_game}"
 	install -Dm755 "${_game}d.sh"                           "${pkgdir}/usr/bin/${_game}d"
