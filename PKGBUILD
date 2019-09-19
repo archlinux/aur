@@ -1,8 +1,7 @@
 # Maintainer: Gustavo Castro < gustawho [ at ] disroot [ dot ] org >
 
 pkgname=qtemu-git
-_gitname=Qtemu
-pkgver=r154.42fc907
+pkgver=r242.eb0b8fe
 pkgrel=1
 pkgdesc="Qt5 GUI front-end for QEMU, similar to VirtualBox."
 url="http://qtemu.org"
@@ -10,21 +9,24 @@ license=("GPL2")
 arch=('i686' 'x86_64')
 depends=('qemu' 'qt5-base')
 conflicts=('qtemu')
-source=("git+https://gitlab.com/carlavilla/$_gitname.git")
+source=($pkgname::"git+https://gitlab.com/qtemu/gui.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/$_gitname"
+  cd "${srcdir}/$pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  cd "${srcdir}/$_gitname"
-  mkdir build
+  cd "${srcdir}/$pkgname"
+  if ! [ -d build ]
+  then
+    mkdir build
+  fi
 }
 
 build() {
-  cd "${srcdir}/$_gitname/build"
+  cd "${srcdir}/$pkgname/build"
   qmake-qt5  \
     QMAKE_CFLAGS="${CFLAGS}" \
     QMAKE_CXXFLAGS="${CXXFLAGS}" \
@@ -33,8 +35,8 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/$_gitname/build"
-  install -Dm644 "${srcdir}/$_gitname"/qtemu.desktop "${pkgdir}"/usr/share/applications/qtemu.desktop
-  install -Dm644 "${srcdir}/$_gitname/qtemu.png" "${pkgdir}/usr/share/pixmaps/qtemu.png"
+  cd "${srcdir}/$pkgname/build"
+  install -Dm644 "${srcdir}/$pkgname"/qtemu.desktop "${pkgdir}"/usr/share/applications/qtemu.desktop
+  install -Dm644 "${srcdir}/$pkgname/qtemu.png" "${pkgdir}/usr/share/pixmaps/qtemu.png"
   install -Dm755 qtemu "${pkgdir}/usr/bin/qtemu"
 }
