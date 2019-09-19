@@ -2,20 +2,16 @@
 # Maintainer: Dan Johansen <strit@manjaro.org>
 
 pkgname=corepdf
-pkgver=2.7.0
-pkgrel=2
+pkgver=2.7.1
+pkgrel=1
 pkgdesc="A PDF viewer from the CoreApps family."
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/cubocore/$pkgname"
 license=('GPL3')
-depends=('qt5-base' 'poppler-qt5' 'libcprime')
+depends=('qt5-base' 'poppler-qt5' 'libcprime>=2.7.1')
 groups=('coreapps')
-source=("https://gitlab.com/cubocore/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz"
-        'corepdf.desktop'
-        'corepdf.svg')
-md5sums=('f081935f61c62381f23daf30b7a198b4'
-         'a41a609862a5713ba152474837e3187e'
-         '8c67a9f44d0f7078ed023de96d26adab')
+source=("https://gitlab.com/cubocore/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
+md5sums=('30a12826417f3c69d2fd599587f03c2f')
 
 prepare() {
   mkdir -p build
@@ -31,6 +27,4 @@ build() {
 package() {
   cd ${pkgname}-v${pkgver}
   make INSTALL_ROOT=${pkgdir} install
-  install -Dm644 "../corepdf.desktop" -t "${pkgdir}/usr/share/applications/"
-  install -Dm644 "../corepdf.svg" -t "${pkgdir}/usr/share/icons/hicolor/scalable/apps/"
 }
