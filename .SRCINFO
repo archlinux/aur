@@ -15,6 +15,7 @@ pkgbase = surge-synthesizer-bin
 	depends = libxcb
 	depends = xcb-util-renderutil
 	depends = xcb-util-image
+	depends = xdg-utils
 	provides = surge-synthesizer
 	conflicts = surge-synthesizer
 	options = !strip

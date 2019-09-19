@@ -10,7 +10,8 @@ license=('GPL3')
 groups=('vst-plugins')
 depends=('cairo'  'fontconfig'          'freetype2'
          'libx11' 'xcb-util-cursor'     'xcb-util'
-         'libxcb' 'xcb-util-renderutil' 'xcb-util-image')
+         'libxcb' 'xcb-util-renderutil' 'xcb-util-image'
+         'xdg-utils')
 provides=("surge-synthesizer")
 conflicts=('surge-synthesizer')
 options=('!strip' '!libtool' '!emptydirs')
