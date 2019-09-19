@@ -1,20 +1,20 @@
 pkgname=libdnf
-pkgver=0.35.3
+pkgver=0.35.5
 pkgrel=1
 pkgdesc="Library providing simplified C and Python API to libsolv"
 arch=('i686' 'x86_64')
 url="https://github.com/rpm-software-management/$pkgname"
 license=('LGPL2.1')
-depends=('glib2' 'gpgme' 'json-c' 'libmodulemd>=1.6.1' 'librepo>=1.10.0' 'libsolv>=0.7.4'
+depends=('glib2' 'gpgme' 'json-c' 'libmodulemd1>=1.6.1' 'librepo>=1.10.0' 'libsolv>=0.7.4'
          'libutil-linux' 'openssl' 'rpm-org>=4.14.2.1' 'sqlite' 'zlib')
-makedepends=('cmake' 'gtk-doc' 'python' 'python-sphinx' 'swig')
+makedepends=('cmake' 'gtk-doc' 'python' 'python-sphinx' 'swig' 'zchunk>=0.9.11')
 checkdepends=('check' 'cppunit' 'python-nose')
 optdepends=('python: for python bindings')
 provides=( 'hawkey')
 conflicts=('hawkey')
 replaces=( 'hawkey')
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('ecfe60c41768994a787ec2d2adcc828b')
+md5sums=('5e8531c72006ed83162d7b5e0b2c580f')
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -38,6 +38,7 @@ build() {
 	      -DCMAKE_INSTALL_PREFIX=/usr \
 	      -DCMAKE_INSTALL_LIBDIR=lib \
 	      -DPYTHON_DESIRED=3 \
+	      -DWITH_ZCHUNK=ON \
 	      ..
 
 	make
