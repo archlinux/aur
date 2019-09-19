@@ -9,7 +9,7 @@ url='https://ffx264.teambelgium.net/'
 license=(GPL2)
 depends=(ffmpeg)
 source=("https://downloads.sourceforge.net/project/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('8b50d98f43469f4e4ff2a81a4b2d394b2b364d9a6d4f17e58ee3b8e6dbaff32b')
+sha256sums=('9a38be03f3d874433b3888c4c4ac9647b9e50c1853d1a8e0ae2a42d4e5c394b1')
 
 package() {
     cd $pkgname-$pkgver
