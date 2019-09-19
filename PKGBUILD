@@ -5,7 +5,7 @@ _srcname=amber
 pkgver=19
 _releasever=18
 _gccver=7.4.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Biomolecular simulation package (tools only)"
 url="http://ambermd.org/"
 license=('GPL' 'LGPL')
@@ -17,10 +17,10 @@ optdepends=('plumed: metadynamics support'
             'cuda: GPU acceleration support for PBSA and CPPTRAJ'
             'env-modules-tcl: modulefile support')
 md5sums=('afffe8a5473a0bd143b98f0396f52f0f'
-         '89d470dc64e054d07b9906344d1218ec'
+         '85880c3a3267c2e369f4c48c9e552800'
          'eff0977b0c5d2da8ea74186dadd9ed01'
          '2e4a52fb820aae6a0b707fec89cb23d1'
-         '5b1c2586560377ff39726b83143bd9fd'
+         '768cf354ec1a364d55a858ca871df358'
          '2fe2fd85a6312f7847fba8e7c2d49896'
          'b6a324cd278a0818c87ac2cd802614a5')
 options=(staticlibs !buildflags !makeflags)
