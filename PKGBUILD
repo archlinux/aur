@@ -1,13 +1,13 @@
 # Maintainer: Daniel Peukert <dan.peukert@gmail.com>
 _pkgname='bitw'
 pkgname="$_pkgname-git"
-pkgver='r30.b2f1cee'
-pkgrel='2'
+pkgver='r32.3271a01'
+pkgrel='1'
 pkgdesc='Minimalist BitWarden client with Secret Service API implementation'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/mvdan/$_pkgname"
 license=('BSD')
-makedepends=('go')
+makedepends=('git' 'go')
 source=("$_pkgname::git+$url")
 sha256sums=('SKIP')
 
