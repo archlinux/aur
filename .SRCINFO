@@ -1,6 +1,6 @@
 pkgbase = coreshot
 	pkgdesc = A screen capture utility from the CoreApps family.
-	pkgver = 2.7.0
+	pkgver = 2.7.1
 	pkgrel = 1
 	url = https://gitlab.com/cubocore/coreshot
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = coreshot
 	license = GPL3
 	depends = qt5-base
 	depends = qt5-x11extras
-	depends = libcprime
-	source = https://gitlab.com/cubocore/coreshot/-/archive/v2.7.0/coreshot-v2.7.0.tar.gz
-	md5sums = 74ac9390236633f5c13c97ccade8b131
+	depends = libcprime>=2.7.1
+	source = https://gitlab.com/cubocore/coreshot/-/archive/v2.7.1/coreshot-v2.7.1.tar.gz
+	md5sums = 665fbcba9841fe6911978c558d7a0255
 
 pkgname = coreshot
 
