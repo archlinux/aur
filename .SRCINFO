@@ -1,0 +1,24 @@
+pkgbase = vk-songs
+	pkgdesc = Downloads VK songs
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/vanyasem/VK-Songs
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python-vk_api
+	depends = python
+	depends = python-requests
+	depends = python-pyfiglet
+	depends = python-prompt_toolkit
+	depends = python-colorama
+	depends = python-pathvalidate
+	depends = python-pyinquirer
+	depends = python-magic
+	provides = vk-songs
+	conflicts = vk-songs
+	source = https://github.com/vanyasem/VK-Songs/archive/v0.1.1.tar.gz
+	sha256sums = c67ec6c59b50eff8cfdca75ae97e7cd4d377e5fee770ef29244cbca796a36ab6
+
+pkgname = vk-songs
+
