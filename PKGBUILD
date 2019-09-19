@@ -27,6 +27,10 @@ package(){
 
 	mkdir -p usr/lib 2> /dev/null; mv lib/* usr/lib; rm -rf lib
 
+	rm -fr etc/init/
+
+	sed -i 's/usr\/local/usr/' usr/lib/systemd/system/session-manager-plugin.service
+
 	mv usr/local/* usr; rm -rf usr/local
 
 	cd ..
