@@ -1,8 +1,8 @@
 # Maintainer: Anatoly Rugalev <anatoly.rugalev g-mail>
 
 pkgname=simple-rt
-pkgver=20190919_9b63526
-pkgrel=4
+pkgver=20190920_9b63526
+pkgrel=1
 url="https://github.com/vvviperrr/SimpleRT"
 pkgdesc="SimpleRT - Reverse Tethering utility for Android"
 arch=('x86' 'x86_64')
