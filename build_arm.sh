@@ -32,6 +32,7 @@ elif [ -f "$HOME"/.cargo/bin/sccache* ]; then
 fi
 
 flags="$flags"'
+  use_custom_libcxx=false
   target_cpu="arm"
   is_clang=true
   linux_use_bundled_binutils=false
