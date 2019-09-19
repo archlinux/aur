@@ -3,13 +3,13 @@
 appname=PyInquirer
 pkgname=(python-pyinquirer python2-pyinquirer)
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A Python module for collection of common interactive command line user interfaces, based on Inquirer.js'
 arch=('any')
 url='https://github.com/CITGuru/PyInquirer'
 license=('MIT')
 depends=()
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'python2-setuptools')
 provides=('python-pyinquirer')
 conflicts=('python-pyinquirer')
 source=("https://github.com/CITGuru/PyInquirer/archive/$pkgver.tar.gz")

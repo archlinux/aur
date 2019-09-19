@@ -1,11 +1,12 @@
 pkgbase = python-pyinquirer
 	pkgdesc = A Python module for collection of common interactive command line user interfaces, based on Inquirer.js
 	pkgver = 1.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/CITGuru/PyInquirer
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
+	makedepends = python2-setuptools
 	provides = python-pyinquirer
 	conflicts = python-pyinquirer
 	source = https://github.com/CITGuru/PyInquirer/archive/1.0.3.tar.gz
