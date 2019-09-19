@@ -30,8 +30,8 @@ build() {
 }
 
 package() {
-	mkdir -p "$pkgdir/usr/bin"
 	mkdir -p "$pkgdir/usr/lib/simple-rt"
+	mkdir -p "$pkgdir/usr/libexec/simple-rt"
 	mkdir -p "$pkgdir/etc/systemd/system/multi-user.target.wants"
 	install -m755 "$srcdir/simple-rt/simple-rt-cli/simple-rt" "$pkgdir/usr/lib/simple-rt/simple-rt"
 	install -m755 "$srcdir/simple-rt/simple-rt-cli/iface_up.sh" "$pkgdir/usr/libexec/simple-rt/iface_up.sh"
