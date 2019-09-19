@@ -3,7 +3,7 @@
 
 _pkgname=babble
 pkgname=firefox-$_pkgname
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc='A platform agnostic browser extension that allows for easy encryption and decryption of text data across the web.'
 arch=('any')
