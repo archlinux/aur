@@ -1,13 +1,13 @@
 # Maintainer: copygirl <copygirl@mcft.net>
 pkgname=mindustry-git
-pkgver=r4398.233ae99d3
+pkgver=r4618.5a0669d43
 pkgrel=1
 pkgdesc="A sandbox tower defense game written in Java"
 arch=("any")
 url="https://github.com/Anuken/Mindustry"
 license=("MIT")
-depends=("java-runtime>=8")
-makedepends=("git" "java-environment>=8")
+depends=("java-runtime=8")
+makedepends=("git" "java-environment=8")
 source=("$pkgname::git://github.com/Anuken/Mindustry.git"
         "mindustry-git.desktop"
         "mindustry-git.png"
