@@ -1,7 +1,7 @@
 # Maintainer: FFY00 <filipe.lains@gmail.com>
 pkgname=mitmproxy-git
 _pkgname=${pkgname%-git}
-pkgver=5.0.0.dev.7f464b8
+pkgver=5.0.0.dev.a08c22d
 pkgrel=1
 pkgdesc="An interactive TLS-capable intercepting HTTP proxy."
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python-blinker' 'python-brotlipy' 'python-click' 'python-cryptography'
 	'python-h2' 'python-hyperframe' 'python-kaitaistruct' 'python-ldap3' 'python-passlib'
 	'python-pyasn1' 'python-pyopenssl' 'python-pyparsing' 'python-pyperclip' 'python-requests'
 	'python-ruamel-yaml' 'python-setuptools' 'python-sortedcontainers' 'python-tornado'
-	'python-urwid' 'python-wsproto' 'python-asynctest' 'python-parver')
+	'python-urwid' 'python-wsproto' 'python-asynctest' 'python-parver' 'python-protobuf>=3.6.0' 'python-brotli>=1.0')
 checkdepends=('python-beautifulsoup4' 'python-flask' 'python-pytest-runner' 'python-pytest-asyncio')
 conflicts=('mitmproxy')
 provides=('mitmproxy')

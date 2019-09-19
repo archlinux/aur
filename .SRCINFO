@@ -1,6 +1,6 @@
 pkgbase = mitmproxy-git
 	pkgdesc = An interactive TLS-capable intercepting HTTP proxy.
-	pkgver = 5.0.0.dev.7f464b8
+	pkgver = 5.0.0.dev.a08c22d
 	pkgrel = 1
 	url = https://mitmproxy.org/
 	arch = any
@@ -32,6 +32,8 @@ pkgbase = mitmproxy-git
 	depends = python-wsproto
 	depends = python-asynctest
 	depends = python-parver
+	depends = python-protobuf>=3.6.0
+	depends = python-brotli>=1.0
 	provides = mitmproxy
 	conflicts = mitmproxy
 	source = git+https://github.com/mitmproxy/mitmproxy.git
