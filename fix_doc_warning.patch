@@ -1,0 +1,26 @@
+--- a/documentation/crds_users_guide/source/file_submissions.rst	2019-09-19 05:03:33.000000000 +0800
++++ b/documentation/crds_users_guide/source/file_submissions.rst	2019-09-19 23:58:49.905655146 +0800
+@@ -443,6 +443,7 @@
+    will generate a warning.
+ 
+ 6. Typically for rmaps set::
++
+  * Generate Contexts ON
+  * Auto-Rename ON
+ 
+@@ -484,6 +485,7 @@
+ done just by submitting the new .rmap normally.
+ 
+ 5. Submit the .imap using Submit Mappings with::
++
+   * Generate Contexts OFF
+   * Auto-rename ON
+ 
+@@ -500,6 +502,7 @@
+ 2. Manually edit the .pmap to make any required changes.
+ 
+ 3. Submit the .pmap using Submit Mappings with::
++
+   * Generate Contexts OFF
+   * Auto-rename ON
+ 
