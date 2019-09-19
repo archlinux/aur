@@ -25,7 +25,7 @@ options=('staticlibs')
 install=
 changelog=
 source=(
-	"https://downloads.uclibc-ng.org/releases/1.0.31/uClibc-ng-$pkgver.tar.xz"
+	"https://downloads.uclibc-ng.org/releases/$pkgver/uClibc-ng-$pkgver.tar.xz"
 	"config"
 )
 noextract=()
