@@ -1,6 +1,6 @@
 pkgbase = triggerlinux-archiso
 	pkgdesc = TriggerLinux build scripts
-	pkgver = 0
+	pkgver = 2019.09.18.b3e560e3b60b8fd408cf903143cfc0e7190f9608
 	pkgrel = 1
 	url = https://github.com/realKennyStrawn93/TriggerLinux
 	arch = x86_64
