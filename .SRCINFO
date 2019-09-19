@@ -1,6 +1,6 @@
 pkgbase = imp-git
 	pkgdesc = Helps you manage your accounts using an ini format
-	pkgver = r27.b327294
+	pkgver = r35.0f2d29f
 	pkgrel = 1
 	url = https://git.sr.ht/~ark/imp
 	arch = any

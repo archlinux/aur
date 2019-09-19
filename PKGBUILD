@@ -1,6 +1,6 @@
 # Maintainer: Julian Hurst <julian.hurst@pm.me>
 pkgname=imp-git
-pkgver=r27.b327294
+pkgver=r35.0f2d29f
 pkgrel=1
 pkgdesc="Helps you manage your accounts using an ini format"
 arch=('any')
@@ -29,5 +29,5 @@ build() {
 package() {
 	DESTDIR="$pkgdir" ninja -C build install
 	cd "${pkgname%-git}"
-	install -m755 scripts/impfill_dmenu.sh "$pkgdir"/usr/bin/impfill
+	install -m755 scripts/imp-fill_dmenu.sh "$pkgdir"/usr/bin/imp-fill
 }
