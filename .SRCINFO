@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-glib-networking
 	pkgdesc = Network-related GIO modules for glib (mingw-w64)
-	pkgver = 2.60.3
+	pkgver = 2.62.0
 	pkgrel = 1
 	url = https://git.gnome.org/browse/glib-networking
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = mingw-w64-glib-networking
 	options = !buildflags
 	options = !libtool
 	options = staticlibs
-	source = https://download.gnome.org/sources/glib-networking/2.60/glib-networking-2.60.3.tar.xz
-	sha256sums = d50183046a4ff955d8cc7e953067cdfc94f14dbfda3024bf377ff37a3121dcd5
+	source = https://download.gnome.org/sources/glib-networking/2.62/glib-networking-2.62.0.tar.xz
+	sha256sums = 9321685f7956df74acb54785a6b9e1013ed1546c193a153100798007b67afbdc
 
 pkgname = mingw-w64-glib-networking
 
