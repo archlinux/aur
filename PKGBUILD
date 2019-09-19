@@ -2,7 +2,7 @@
 
 pkgname=simple-rt
 pkgver=20190919_9b63526
-pkgrel=2
+pkgrel=3
 url="https://github.com/vvviperrr/SimpleRT"
 pkgdesc="SimpleRT - Reverse Tethering utility for Android"
 arch=('x86' 'x86_64')
@@ -22,7 +22,7 @@ pkgver() {
 
 build() {
 	cd "$srcdir/simple-rt/simple-rt-cli"
-	make iface_up_sh_path=$pkgdir/usr/libexec/simple-rt/iface_up.sh
+	make iface_up_sh_path=$pkgdir/usr/libexec/simple-rt
 	export SIMPLERT_INTERFACE=$(ip link show | grep "state UP" | awk -F ': ' '{ print $2}')
         if [ `echo "$SIMPLERT_INTERFACE" | wc -l` -eq 1 ]; then 
                 cat "$srcdir/simple-rt@.service" | sed -e "s/%i/$SIMPLERT_INTERFACE/g" > "$srcdir/simple-rt.service"
