@@ -3,7 +3,7 @@
 pkgbase=python-uproot
 _pkgbase=uproot
 pkgname=('python2-uproot' 'python-uproot')
-pkgver=3.9.0
+pkgver=3.10.0
 pkgrel=1
 pkgdesc="Minimalist CERN ROOT I/O in pure Python and Numpy"
 arch=('any')
@@ -15,7 +15,7 @@ url="https://github.com/scikit-hep/uproot"
 license=('BSD')
 
 source=("${url}/archive/${pkgver}.zip")
-sha256sums=('90fb91ebea85e26e7a9a6bf68f69081590fa0a15f0129066ff2a30bf9073f549')
+sha256sums=('cb22c02bc53438b47b23fb26d5f726b9d6fa9818d045ddb4ceb6ee6771910ba0')
 
 prepare() {
     cd "${srcdir}"
