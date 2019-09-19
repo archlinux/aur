@@ -6,11 +6,7 @@ pkgrel=1
 pkgdesc="TriggerLinux build scripts"
 arch=("x86_64")
 url="https://github.com/realKennyStrawn93/$_pkgname"
-if [ ! -d $_pkgname ]; then
-  pkgver=$(git clone $url.git &>/dev/null && cd $_pkgname && git rev-list --all | wc -l)
-else
-  pkgver=$(git rev-list --all $_pkgname | wc -l)
-fi
+pkgver=$(date +%Y.%m.%d.$(git ls-remote $url | head -n1 | cut -c-40))
 license=("GPL")
 depends=("bash")
 source=("git+$url.git#branch=master")
