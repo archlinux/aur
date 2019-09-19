@@ -8,8 +8,8 @@
 
 pkgname=ocaml-menhir-compcert
 _basepkgname=${pkgname%-*}
-pkgver=20181113
-pkgrel=2
+pkgver=20190626
+pkgrel=1
 pkgdesc="Latest version of Menhir that can build the latest CompCert release."
 arch=("i686" "x86_64")
 url="http://cristal.inria.fr/~fpottier/menhir/"
@@ -20,7 +20,7 @@ provides=($_basepkgname=$pkgver)
 conflicts=($_basepkgname)
 options=(!strip !makeflags)
 source=("https://gitlab.inria.fr/fpottier/menhir/-/archive/$pkgver/menhir-$pkgver.tar.gz")
-md5sums=('1c57e4b6a99603bd4169506e3d937950')
+md5sums=('097afbd686172e15bef0ccb938b9c634')
 
 build() {
   cd "$srcdir/${_basepkgname/ocaml-/}-$pkgver"
