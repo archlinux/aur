@@ -1,20 +1,20 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=elfinfo
-pkgver=0.7.4
+pkgver=0.7.5
 pkgrel=1
 pkgdesc='Detect which compiler version was used for compiling an ELF file'
-arch=('x86_64')
+arch=(x86_64)
 url='https://elfinfo.roboticoverlords.org/'
-license=('MIT')
-makedepends=('go' 'git')
+license=(MIT)
+makedepends=(go git upx)
 source=("git+https://github.com/xyproto/elfinfo#tag=$pkgver")
 sha256sums=('SKIP')
 
 build() {
-  cd "$pkgname"
-
-  go build
+  cd $pkgname
+  go build -mod=vendor -gcflags "all=-trimpath=${PWD}" -asmflags "all=-trimpath=${PWD}" -ldflags "-extldflags ${LDFLAGS}"
+  upx $pkgname
 }
 
 package() {
