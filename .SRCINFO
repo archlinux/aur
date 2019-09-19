@@ -1,0 +1,18 @@
+pkgbase = bluespec
+	pkgdesc = Bluespec SystemVerilog Tools
+	pkgver = 2019.05.beta2
+	pkgrel = 0
+	url = http://forum.bluespec.com
+	arch = x86_64
+	license = custom
+	depends = glibc
+	depends = libstdc++5
+	depends = gmp4
+	optdepends = emacs: Syntax highlight with emacs
+	optdepends = vim: Syntax highlight with vim
+	options = !strip
+	source = https://s3.wasabisys.com/bluespec/downloads/Bluespec-2019.05.beta2/Bluespec-2019.05.beta2-centos7-amd64.tar.gz
+	sha256sums = 99bc63f992f80d983b22f50e660a39268a997caed1f484b97161949c7ccf13e4
+
+pkgname = bluespec
+
