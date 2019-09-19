@@ -9,7 +9,7 @@ url='https://ffhevc.teambelgium.net/'
 license=(GPL2)
 depends=(ffmpeg)
 source=("https://downloads.sourceforge.net/project/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('84682de22f843dc7943630f9555e64b343269f0a074f1039ff135a88e976f1e9')
+sha256sums=('a027308a25a9b6ac1ea88efebbaba39409a57163d5a2a0f4dd885eb7d97664db')
 
 package() {
     cd $pkgname-$pkgver
