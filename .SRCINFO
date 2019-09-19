@@ -1,0 +1,19 @@
+pkgbase = avogadro-git-eigen3
+	pkgdesc = Molecule editor and visualizer designed for cross-platform use
+	pkgver = 1.2
+	pkgrel = 1
+	url = http://avogadro.cc/
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	makedepends = doxygen
+	makedepends = git
+	depends = eigen
+	depends = openbabel
+	depends = qt4
+	provides = avogadro
+	source = avogadro-git-eigen3::git+https://github.com/Avogadro/avogadro.git
+	md5sums = SKIP
+
+pkgname = avogadro-git-eigen3
+
