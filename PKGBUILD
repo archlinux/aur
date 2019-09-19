@@ -1,8 +1,8 @@
 # Maintainer: Anatoly Rugalev <anatoly.rugalev g-mail>
 
 pkgname=simple-rt
-pkgver=20170510.132_c270fc9
-pkgrel=2
+pkgver=20190919_9b63526
+pkgrel=1
 url="https://github.com/vvviperrr/SimpleRT"
 pkgdesc="SimpleRT - Reverse Tethering utility for Android"
 arch=('x86' 'x86_64')
@@ -22,7 +22,7 @@ pkgver() {
 
 build() {
 	cd "$srcdir/simple-rt/simple-rt-cli"
-	make
+	make iface_up_sh_path=$pkgdir/usr/libexec/simple-rt/iface_up.sh
 	export SIMPLERT_INTERFACE=$(ip link show | grep "state UP" | awk -F ': ' '{ print $2}')
         if [ `echo "$SIMPLERT_INTERFACE" | wc -l` -eq 1 ]; then 
                 cat "$srcdir/simple-rt@.service" | sed -e "s/%i/$SIMPLERT_INTERFACE/g" > "$srcdir/simple-rt.service"
@@ -34,7 +34,7 @@ package() {
 	mkdir -p "$pkgdir/usr/lib/simple-rt"
 	mkdir -p "$pkgdir/etc/systemd/system/multi-user.target.wants"
 	install -m755 "$srcdir/simple-rt/simple-rt-cli/simple-rt" "$pkgdir/usr/lib/simple-rt/simple-rt"
-	install -m755 "$srcdir/simple-rt/simple-rt-cli/iface_up.sh" "$pkgdir/usr/lib/simple-rt/iface_up.sh"
+	install -m755 "$srcdir/simple-rt/simple-rt-cli/iface_up.sh" "$pkgdir/usr/libexec/simple-rt/iface_up.sh"
 	install -DT -m0755 "$srcdir/simple-rt@.service" "$pkgdir/usr/lib/systemd/system/simple-rt@.service"
         if [ -e "$srcdir/simple-rt.service" ]; then 
                 install -DT -m0755 "$srcdir/simple-rt.service" "$pkgdir/usr/lib/systemd/system/simple-rt.service"
