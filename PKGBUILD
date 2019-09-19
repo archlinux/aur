@@ -9,7 +9,7 @@ arch=('x86_64')
 license=('Apache')
 url='https://github.com/telepresenceio/telepresence'
 source=("$pkgname-$pkgver::https://github.com/telepresenceio/telepresence/archive/${pkgver}.tar.gz")
-sha256sums=('5aa120fbc13ef6f9404f2809e534f13378a741559bdf9a318ca89a7d7225e4d1')
+sha256sums=('5a2962f46e82fafcbe9e665b6e0f6212ca750aafabdfbcb763e8f914b46ccc74')
 makedepends=('git')
 depends=('conntrack-tools' 'fuse2' 'socat' 'sshfs' 'torsocks' 'python' 'python-setuptools')
 
