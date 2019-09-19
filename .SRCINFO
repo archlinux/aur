@@ -8,8 +8,6 @@ pkgbase = x16-emulator
 	license = BSD
 	makedepends = pandoc
 	depends = sdl2
-	provides = x16-emulator
-	conflicts = x16-emulator
 	source = https://github.com/commanderx16/x16-emulator/archive/r30.tar.gz
 	md5sums = SKIP
 
