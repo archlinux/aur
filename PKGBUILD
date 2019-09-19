@@ -2,16 +2,16 @@
 # Maintainer: <strit@manjaro.org>
 
 pkgname=corepaint
-pkgver=2.7.0
+pkgver=2.7.1
 pkgrel=1
 pkgdesc="A paint app from the CoreApps family."
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/cubocore/$pkgname"
 license=('GPL3')
-depends=('qt5-base' 'libcprime')
+depends=('qt5-base' 'libcprime>=2.7.1')
 groups=('coreapps')
 source=("https://gitlab.com/cubocore/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-md5sums=('3207260200b9489cedb45e52e5f973bf')
+md5sums=('7ed257fbace8e7b7eaff045477d5af8f')
 
 prepare() {
   mkdir -p build
