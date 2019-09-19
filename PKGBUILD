@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=hackrf-git
-pkgver=v2018.01.1.r335.g509c8f4
+pkgver=v2018.01.1.r336.gb9558ba
 pkgrel=1
 pkgdesc="Driver for HackRF, allowing general purpose software defined radio (SDR)."
 arch=('i686' 'x86_64')
