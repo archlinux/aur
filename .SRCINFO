@@ -1,7 +1,7 @@
 pkgbase = notion-app
 	pkgdesc = The all-in-one workspace for your notes and tasks
 	pkgver = 1.0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.notion.so/desktop
 	arch = i686
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = notion-app
 	makedepends = p7zip
 	makedepends = libicns
 	makedepends = gendesk
-	depends = electron2
+	depends = electron3-bin
 	source = https://desktop-release.notion-static.com/Notion-1.0.8.dmg
 	source = notion-app
 	md5sums = 11f262eb64de513e1c2b916929d26d43
-	md5sums = a8931f48231137e3acb1541cd38c99f4
+	md5sums = 2b301d7ca56a7f0134239219997df5dd
 
 pkgname = notion-app
 
