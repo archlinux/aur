@@ -44,7 +44,7 @@ build() {
 
 package() {
 	cd "uClibc-ng-$pkgver"
-	make V=1 PREFIX="$pkgdir" install
+	make PREFIX="$pkgdir" install
 
 	# configure RUNTIME_PREFIX with /lib for PT_INTERP compat, but install to /usr/lib
 	mv "$pkgdir"/lib/ld64-uClibc*.so* "$pkgdir"/usr/lib/
