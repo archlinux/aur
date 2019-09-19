@@ -2,7 +2,7 @@
 # Contributor: <gmail.com: jese.jaara>
 
 pkgname=pandoc-fignos
-pkgver=1.4.2
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Figure number filter for pandoc"
 url="https://github.com/tomduck/pandoc-fignos"
@@ -10,7 +10,7 @@ depends=('pandoc-xnos>=0.15.0')
 license=('GPL')
 arch=('any')
 source=("https://github.com/tomduck/pandoc-fignos/archive/${pkgver}.tar.gz")
-md5sums=('724717d33931ac13d8cfa10adb085e2f')
+md5sums=('43daae895f67085bf282960d14aa4cc6')
 
 build() {
     cd "$srcdir/pandoc-fignos-${pkgver}"

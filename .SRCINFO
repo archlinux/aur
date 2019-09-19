@@ -1,13 +1,13 @@
 pkgbase = pandoc-fignos
 	pkgdesc = Figure number filter for pandoc
-	pkgver = 1.4.2
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/tomduck/pandoc-fignos
 	arch = any
 	license = GPL
 	depends = pandoc-xnos>=0.15.0
-	source = https://github.com/tomduck/pandoc-fignos/archive/1.4.2.tar.gz
-	md5sums = 724717d33931ac13d8cfa10adb085e2f
+	source = https://github.com/tomduck/pandoc-fignos/archive/2.0.0.tar.gz
+	md5sums = 43daae895f67085bf282960d14aa4cc6
 
 pkgname = pandoc-fignos
 
