@@ -1,21 +1,37 @@
-diff -urN gitahead/dep/CMakeLists.txt gitahead/dep/CMakeLists.txt
---- gitahead/dep/CMakeLists.txt 2019-03-28 16:25:09.753615593 +0100
-+++ gitahead/dep/CMakeLists.txt 2019-03-28 16:19:28.866933275 +0100
-@@ -1,4 +1,3 @@
+diff --git a/dep/CMakeLists.txt b/dep/CMakeLists.txt
+index d589b6f..02e9035 100644
+--- a/dep/CMakeLists.txt
++++ b/dep/CMakeLists.txt
+@@ -1,6 +1,5 @@
  find_package(PkgConfig)
+ 
 -add_subdirectory(openssl)
  add_subdirectory(libssh2)
  add_subdirectory(libgit2)
-
-diff -urN gitahead/pack/CMakeLists.txt gitahead/pack/CMakeLists.txt
---- gitahead/pack/CMakeLists.txt 2019-03-28 16:06:48.996898436 +0100
-+++ gitahead/pack/CMakeLists.txt 2019-03-28 16:23:57.830278953 +0100
-@@ -147,7 +147,7 @@
+ 
+diff --git a/dep/libssh2/CMakeLists.txt b/dep/libssh2/CMakeLists.txt
+index d5ee005..6ca9e34 100644
+--- a/dep/libssh2/CMakeLists.txt
++++ b/dep/libssh2/CMakeLists.txt
+@@ -1,7 +1,7 @@
+ if(PKG_CONFIG_FOUND)
+   pkg_check_modules(LIBSSH2 libssh2)
+ endif()
+-if(NOT LIBSSH2_FOUND)
++if(TRUE)
+   set(BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
+   set(BUILD_TESTING OFF CACHE BOOL "" FORCE)
+ 
+diff --git a/pack/CMakeLists.txt b/pack/CMakeLists.txt
+index 8cd7ba7..601eb58 100644
+--- a/pack/CMakeLists.txt
++++ b/pack/CMakeLists.txt
+@@ -127,7 +127,7 @@ if(UNIX AND NOT APPLE)
  endif()
  
  # Install SSL libraries.
 -if(NOT APPLE)
 +if(FALSE)
    if(WIN32)
-     if(CMAKE_CL_64)
+     if(CMAKE_SIZEOF_VOID_P EQUAL 8)
        set(SSL_LIB_SUFFIX "-1_1-x64.dll")

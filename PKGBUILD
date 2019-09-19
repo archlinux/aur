@@ -5,7 +5,7 @@
 # Contributor: Angelo Theodorou <encelo@gmail.com>
 
 pkgname=gitahead
-pkgrel=1
+pkgrel=2
 pkgver=2.5.10
 pkgdesc='Graphical Git client that helps you understand and manage your source history'
 url='https://www.gitahead.com/'
@@ -21,7 +21,7 @@ source=(
 )
 sha256sums=('SKIP'
             '022132e59ea2a1ca43df8ca1e20a1f851fca6e61afe4899814619ca241df7f19'
-            '0c1320f33acb314b361ff69b4b5fbeda9dfd1a8c59528d27dc37ce111e42ab10')
+            '375920168a4f59e41cbf412db787c223d54405799dfcec7dd6ae57eed9d97eb2')
 
 prepare() {
   cd "$srcdir/gitahead"
