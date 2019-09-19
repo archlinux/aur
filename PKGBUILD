@@ -6,8 +6,7 @@ pkgrel=1
 pkgdesc="This is a fun, new monospaced font that includes programming ligatures and is designed to enhance the modern look and feel of the Windows Terminal"
 arch=('any')
 url="https://github.com/microsoft/cascadia-code"
-license=('GPL')
-makedepends=('fontforge')
+license=('custom')
 depends=('fontconfig' 'xorg-font-utils')
 noextract=()
 
