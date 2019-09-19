@@ -4,9 +4,9 @@
 # Contributor: Pieter Goetschalckx <3.14.e.ter <at> gmail <dot> com>
 
 pkgname=ferdi-git
-_pkgver=5.3.3
+_pkgver=5.3.4
 pkgver=${_pkgver//-/_}
-pkgrel=3
+pkgrel=1
 pkgdesc='Free messaging app for services like WhatsApp, Slack, Messenger and many more. fork removing the non-skippable app delay frequently inviting you to buy a licence'
 arch=(x86_64 i686)
 url='https://github.com/kytwb/ferdi'
@@ -17,8 +17,8 @@ source=("git+https://github.com/kytwb/ferdi/"
         'ferdi.desktop'
         'ferdi.sh')
 sha512sums=('SKIP'
-            'SKIP'
-            'SKIP')
+            'e09649fd9daa2b8391ae7a60e3f81c056269d71afc22fe891c89611eb6c927a2b3b9e0bc69aeb859d75bb8bc7a104197d9f956345bd227a5ac995ef93a2bb68c'
+            '54586148db4c1df88099485beae49f7a069fdcbca35ebb4fb3df3a15963f295712d8d9dfeddb1402b3676447eb2e9ea07b28808b0c611fca72617e32777ea7e8')
 
 prepare() {
   # Prepare Python 2 for later
@@ -42,7 +42,6 @@ prepare() {
   npm install "node-sass@4.12.0"
 
   # Prepare the packages for building
-
 }
 
 build() {
