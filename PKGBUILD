@@ -2,16 +2,16 @@
 # Maintainer: Dan Johansen <strit@manjaro.org>
 
 pkgname=coreuniverse
-pkgver=2.7.0
+pkgver=2.7.1
 pkgrel=1
 pkgdesc="Shows information about apps from the CoreApps family."
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/cubocore/$pkgname"
 license=('GPL3')
-depends=('qt5-base' 'libcprime')
+depends=('qt5-base' 'libcprime>=2.7.1')
 groups=('coreapps')
 source=("https://gitlab.com/cubocore/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-md5sums=('05c75e1609ff95e46ef3120dc6c023cb')
+md5sums=('0d54bf36ad5c01c39d14dcecc0a27142')
 
 prepare() {
   mkdir -p build
