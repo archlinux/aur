@@ -4,9 +4,9 @@
 # Contributor: Renato Silva <br.renatosilva@gmail.com>
 # Contributor: Martchus <martchus@gmx.net>
 pkgname=mingw-w64-glib2
-pkgver=2.60.7
+pkgver=2.62.0
 pkgrel=1
-_commit=a7da87e3e8dad5e53b2acf10617485d137a44ca5  # tags/2.60.7^0
+_commit=a1af0be78c6cb3bce4791a1598a796c3e912019f  # tags/2.62.0^0
 arch=(any)
 pkgdesc="Low level core library (mingw-w64)"
 depends=(mingw-w64-libffi mingw-w64-pcre mingw-w64-gettext mingw-w64-zlib)
@@ -16,10 +16,10 @@ options=(!strip !buildflags staticlibs !emptydirs)
 url="https://wiki.gnome.org/Projects/GLib"
 source=("git+https://gitlab.gnome.org/GNOME/glib.git#commit=$_commit"
   "0001-Use-CreateFile-on-Win32-to-make-sure-g_unlink-always.patch"
-  "0001-win32-Make-the-static-build-work-with-MinGW-when-pos.patch")
+  "glib-prefer-constructors-over-DllMain.patch")
 sha256sums=('SKIP'
-            'ff0d3df5d57cf621cac79f5bea8bd175e6c18b3fbf7cdd02df38c1eab9f40ac3'
-            '838abaeab8ca4978770222ef5f88c4b464545dd591b2d532c698caa875b46931')
+            '1cea1995b0e21268e55ceed04484305418a471a932f268530e48e2d0e08f8e06'
+            '9698fe428a380e568c3b83035856f83b1c70bf76dc09df7948ddebe7ca39ed65')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -33,7 +33,7 @@ prepare() {
   # https://gitlab.gnome.org/GNOME/glib/issues/539
   patch -Np1 -i ../0001-Use-CreateFile-on-Win32-to-make-sure-g_unlink-always.patch
   # https://gitlab.gnome.org/GNOME/glib/issues/692
-  patch -Np1 -i ../0001-win32-Make-the-static-build-work-with-MinGW-when-pos.patch
+  patch -Np1 -i ../glib-prefer-constructors-over-DllMain.patch
 }
 
 
