@@ -1,0 +1,15 @@
+pkgbase = id3v2lib
+	pkgdesc = Library written in C to read and edit id3 tags from mp3 files.
+	pkgver = r50.4eb49a0
+	pkgrel = 1
+	url = https://github.com/larsbs/id3v2lib
+	arch = any
+	license = BSD
+	makedepends = cmake
+	provides = id3v2lib
+	conflicts = id3v2lib-memleak-patch
+	source = id3v2lib::git+https://github.com/larsbs/id3v2lib.git
+	sha512sums = SKIP
+
+pkgname = id3v2lib
+
