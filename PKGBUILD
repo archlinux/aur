@@ -1,0 +1,37 @@
+# Maintainer: icasdri <icasdri@gmail.com>
+# Contributor: Evangelos Foutras <evangelos@foutrelis.com>
+# Contributor: tobias <tobias funnychar archlinux.org>
+
+pkgname=xfce4-notifyd-layer-shell-git
+pkgver=0.4.4.r42.g87281dd
+pkgrel=1
+pkgdesc="Notification daemon for the Xfce desktop"
+arch=('x86_64')
+url='https://github.com/icasdri/xfce4-notifyd-layer-shell'
+license=('GPL2')
+conflicts=('xfce4-notifyd')
+depends=('libxfce4ui' 'libnotify' 'hicolor-icon-theme' 'gtk-layer-shell-git')
+makedepends=('intltool' 'python' 'xfce4-panel')
+provides=('notification-daemon')
+source=('git+https://github.com/icasdri/xfce4-notifyd-layer-shell.git')
+sha256sums=('SKIP')
+
+pkgver() {
+  cd "${srcdir}/${pkgname}"
+  git describe --long --tags | cut -c 15- | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+build() {
+  cd "${srcdir}/${pkgname}"
+
+  ./autogen.sh \
+    --prefix=/usr \
+    --disable-static \
+    --disable-debug
+  make
+}
+
+package() {
+  cd "${srcdir}/${pkgname}"
+  make DESTDIR="$pkgdir" install
+}

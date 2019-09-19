@@ -1,0 +1,21 @@
+pkgbase = xfce4-notifyd-layer-shell-git
+	pkgdesc = Notification daemon for the Xfce desktop
+	pkgver = 0.4.4.r42.g87281dd
+	pkgrel = 1
+	url = https://github.com/icasdri/xfce4-notifyd-layer-shell
+	arch = x86_64
+	license = GPL2
+	makedepends = intltool
+	makedepends = python
+	makedepends = xfce4-panel
+	depends = libxfce4ui
+	depends = libnotify
+	depends = hicolor-icon-theme
+	depends = gtk-layer-shell-git
+	provides = notification-daemon
+	conflicts = xfce4-notifyd
+	source = git+https://github.com/icasdri/xfce4-notifyd-layer-shell.git
+	sha256sums = SKIP
+
+pkgname = xfce4-notifyd-layer-shell-git
+
