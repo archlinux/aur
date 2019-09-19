@@ -1,7 +1,7 @@
 pkgbase = id3v2lib-memleak-patch
-	pkgdesc = library written in C to read and edit id3 tags from mp3 files. memleak-patch branch
+	pkgdesc = Library written in C to read and edit id3 tags from mp3 files. memleak-patch branch
 	pkgver = r50.4eb49a0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hlgsdx/id3v2lib/tree/memleak-patch
 	arch = any
 	license = BSD
