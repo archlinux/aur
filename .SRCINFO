@@ -1,13 +1,13 @@
 pkgbase = pandoc-tablenos
 	pkgdesc = Table number filter for pandoc
-	pkgver = 1.4.2
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/tomduck/pandoc-tablenos
 	arch = any
 	license = GPL
 	depends = pandoc-xnos>=0.15.0
-	source = https://github.com/tomduck/pandoc-tablenos/archive/1.4.2.tar.gz
-	md5sums = 430265b513c49071898ddfdb06222b25
+	source = https://github.com/tomduck/pandoc-tablenos/archive/2.0.0.tar.gz
+	md5sums = f375d3a8f63887d492d5e3bbe4849079
 
 pkgname = pandoc-tablenos
 
