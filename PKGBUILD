@@ -2,7 +2,7 @@
 
 _pkgname=coda-bits
 pkgname=${_pkgname}-git
-pkgver=r6.5840a95
+pkgver=r11.61c8cc4
 pkgrel=1
 pkgdesc="Bits & pieces of information about CODA VPUs"
 arch=(x86_64)
@@ -10,10 +10,8 @@ url="https://github.com/pH5/${_pkgname}"
 license=(ISC)
 depends=(glibc)
 makedepends=(git meson)
-source=("${_pkgname}::git+${url}.git"
-		000-packaging.patch)
-sha256sums=('SKIP'
-		'SKIP')
+source=("${_pkgname}::git+${url}.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd ${_pkgname}
@@ -22,14 +20,9 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-  cd ${_pkgname}
-  patch -Np1 -i "${srcdir}"/000-packaging.patch
-}
-
 build() {
   cd ${_pkgname}
-  meson --prefix=/usr build
+  meson --prefix=/usr build -D docs=true
   ninja -C build
 }
 
