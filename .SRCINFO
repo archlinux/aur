@@ -1,0 +1,16 @@
+pkgbase = lua-pegdebug
+	pkgdesc = PegDebug is a trace debugger for LPeg rules and captures
+	pkgver = 0.40
+	pkgrel = 1
+	url = http://github.com/pkulchenko/PegDebug
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = luarocks
+	depends = lua
+	depends = lua-lpeg
+	source = https://luarocks.org/pegdebug-0.40-2.rockspec
+	sha256sums = 4ae6b445973ad72354d137ba8d0ab0655d2d83cf71fe83d67ce27d0f38e0c646
+
+pkgname = lua-pegdebug
+
