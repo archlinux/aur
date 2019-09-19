@@ -1,1 +1,2 @@
 d /var/lib/vmango 0700 vmango vmango -
+z /etc/vmango.conf 600 vmango vmango -
