@@ -2,16 +2,16 @@
 # Maintainer: Dan Johansen <strit@manjaro.org>
 
 pkgname=coreinfo
-pkgver=2.7.0
+pkgver=2.7.1
 pkgrel=1
 pkgdesc="A file information tool from the CoreApps family."
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/cubocore/$pkgname"
 license=('GPL3')
-depends=('qt5-base' 'libcprime' 'libmediainfo' 'zlib')
+depends=('qt5-base' 'libcprime>=2.7.1' 'libmediainfo' 'zlib')
 groups=('coreapps')
 source=("https://gitlab.com/cubocore/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-md5sums=('5c0ddf07451aa25aa96061d3fadecfd9')
+md5sums=('263333d0418650b1ec0d53e5de43d0a1')
 
 prepare() {
   mkdir -p build
