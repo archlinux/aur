@@ -3,22 +3,21 @@
 
 pkgname=manly-git
 _name=manly
-pkgver=r101.77d25dd
+pkgver=0.4.0.r12.b9ade3a
 pkgrel=1
 pkgdesc="A compliment to the man pages."
 url="https://github.com/mpolidori/manly"
 depends=('python')
 license=('MIT')
 arch=('any')
+provides=("$_name")
+conflicts=("$_name")
 source=('git+https://github.com/mpolidori/manly.git')
 md5sums=(SKIP)
 
 pkgver() {
   cd "$_name"
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+  printf "%s" "$(git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 package() {
