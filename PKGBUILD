@@ -1,4 +1,4 @@
-# Maintainer: Gustavo Castro < gustawho [ at ] disroot [ dot ] org >
+# Maintainer: Chris Werner Rau < aur [ at ] cwrau [ dot ] io >
 
 pkgname=qtemu-git
 pkgver=r242.eb0b8fe
