@@ -61,7 +61,7 @@ _localmodcfg=
 
 pkgbase=linux-mainline-bcachefs
 _srcver_tag=5.3
-pkgver=v5.3_rc5
+pkgver=v5.3
 pkgrel=1
 arch=(x86_64)
 url="https://github.com/koverstreet/bcachefs"
@@ -114,9 +114,9 @@ _kernelname=${pkgbase#linux}
 pkgver() {
   cd upstream
   git fetch --tags &> /dev/null
-# _srcver_tag=$(git tag | grep v${_srcver_tag} | grep -v '-' | sort -t. -k 1,1n -k 2,2n -k 3,3n | tail -n1)
+ _srcver_tag=$(git tag | grep v${_srcver_tag} | grep -v '-' | sort -t. -k 1,1n -k 2,2n -k 3,3n | tail -n1)
 # [ -z "$_srcver_tag" ] &&
-   _srcver_tag=$(git tag | grep v${_srcver_tag} | grep '-' | tail -n1)
+#   _srcver_tag=$(git tag | grep v${_srcver_tag} | grep '-' | tail -n1)
 msg2 "${_srcver_tag}"
   echo "${_srcver_tag}" | sed 's/-/_/'
 }
