@@ -1,6 +1,6 @@
 pkgbase = coreplayer
 	pkgdesc = A player based on QtAV lib from the CoreApps family.
-	pkgver = 2.7.0
+	pkgver = 2.7.1
 	pkgrel = 1
 	url = https://gitlab.com/cubocore/coreplayer
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = coreplayer
 	license = GPL3
 	depends = qt5-base
 	depends = mpv
-	depends = libcprime
-	source = https://gitlab.com/cubocore/coreplayer/-/archive/v2.7.0/coreplayer-v2.7.0.tar.gz
-	md5sums = 88dc97aba50916db62510be11da366fc
+	depends = libcprime>=2.7.1
+	source = https://gitlab.com/cubocore/coreplayer/-/archive/v2.7.1/coreplayer-v2.7.1.tar.gz
+	md5sums = e171e2d698ccd51077a95c3d8a5b8e5b
 
 pkgname = coreplayer
 
