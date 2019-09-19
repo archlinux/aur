@@ -1,7 +1,6 @@
-# Maintainer:
-# g1eny0ung <g1eny0ung@gmail.com>
-# rapiz <contact@rapiz.me>
-# lxs137 <lxs137@hotmail.com>
+# Maintainer: g1eny0ung <g1eny0ung@gmail.com>
+# Maintainer: rapiz <contact@rapiz.me>
+# Maintainer: lxs137 <lxs137@hotmail.com>
 pkgname=petal-bin
 pkgver=2.20.0
 pkgrel=1
