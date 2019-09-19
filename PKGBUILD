@@ -47,11 +47,12 @@ _1k_HZ_ticks=
 
 pkgbase=linux-aufs
 # pkgname=('linux-aufs' 'linux-aufs-headers' 'linux-aufs-docs')
-_major=5.2
-_minor=16
-pkgver=${_major}.${_minor}
+_major=5.3
+#_minor=0
+#pkgver=${_major}.${_minor}
+pkgver=${_major}
 _srcname=linux-${pkgver}
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/sfjro/aufs5-standalone"
 license=('GPL2')
@@ -60,8 +61,8 @@ makedepends=('kmod' 'inetutils' 'bc' 'libelf' 'python-sphinx' 'python-sphinx_rtd
              'graphviz' 'imagemagick')
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/${_major}"
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_major}"
-_aufs_path="aufs-patches-v5"
-_aufs_ver="20190902"
+_aufs_path="aufs-patches"
+_aufs_ver="20190909"
 _aufs_patch="0001-aufs-${_aufs_ver}.patch"
 _gcc_path="https://raw.githubusercontent.com/graysky2/kernel_gcc_patch/master"
 _gcc_patch="enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v4.13+.patch"
@@ -70,8 +71,8 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
         "${_lucjanpath}/${_aufs_path}/${_aufs_patch}"
         "${_gcc_path}/${_gcc_patch}"
-        "${_lucjanpath}/arch-patches-v3/0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch"
-        "${_lucjanpath}/arch-patches-v3/0002-ZEN-Add-CONFIG-for-unprivileged_userns_clone.patch"
+        "${_lucjanpath}/arch-patches-sep/0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch"
+        "${_lucjanpath}/arch-patches-sep/0002-ZEN-Add-CONFIG-for-unprivileged_userns_clone.patch"
          # the main kernel config files
         'config'
          # pacman hook for depmod
@@ -376,13 +377,13 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('ade606efe1d073fea24d8d9cb062a63c4a5e7410fe034fafe53df8c223dd97d9ced0185a3534c22ed37af37420f2fa0cd7b0af759ec8b0b8b7a4b5ef789474d6'
+sha512sums=('6b5edef47c319a3fa7f6c20a3e0903a5acd89ec75e32dc5f99adcb60c9fe118ea312722d9c3d27e2e3900afa2455afb86e83a8b6bb131009bc79ddbe6fb0595d'
             'SKIP'
-            '3271628997ac04b4f59f95eb165a6a85f43f8e177202d9597c91640dcb15c1274e8b245e2e18477600a2272f2c1080d86e68c09ddea844f679000a71d9be9859'
+            '2ab30763c665dcc18d59dd75701946bc6b73642868b4703861fcfddc3c1cb5366a9618f57dfbb0d9b9ea43350827e25f0a2f22a8356589e4a14a7d93bbb63064'
             '2eb574fbfac6e334d3b06e52e466dbf8e88034515729b6571990b10f75a0fe2a52f188615405c5a695b5820669e595deead44d7961a97c5872359be3435fdf63'
-            'cd4baaf72032e00aee15d8a529d4695c30b220676ada2a1cfe4e36a323167f285b6df562325232c7e330288836dfa3fef702580af413a52553193f1e8c60f4a9'
-            '17346950fbf68c96f3eaa7ac6ea7753f01633aed622586acd7d061661c8b433d861b686ed6e24c0442e89a6b98cc6a01aa1ce70a59e44415dce3131112740ead'
-            'f7616fdd9d98ee6cebfd23d58ab6c2b641640830d26ed264ed49fbab542524291865244830c40a13c8f674bab9a321c62325e9b4982fb81a6073969a896b39df'
+            'd66837934c6012aaf26ff63390102b6adba5e1a05dfd86b3a9d1a186c029f97283bf539931c43f66ec37a2993dfcfd6899421cce8258b494c95650904a67643a'
+            'd066e58cb7fc27ac5bff9699d01af1798a28dd11354b346d1171e098c80a08cf68c3fdea6e145fb47a2059ca7a8fef632bc0ad85262087caf579ed46482847bb'
+            '399421f29688e8fb78600992c79280fb3462bee3853baa198804641b52aa4c2275fb2ebdfb774d9f7f8539ceb9029755b5dcec4daff0bb4924967f4a0b5e6494'
             '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
             '2718b58dbbb15063bacb2bde6489e5b3c59afac4c0e0435b97fe720d42c711b6bcba926f67a8687878bd51373c9cf3adb1915a11666d79ccb220bf36e0788ab7'
             '8742e2eed421e2f29850e18616f435536c12036ff793f5682a3a8c980cf5dbfc88d17fd9539c87de15d9e4663dc3190f964f18a4722940465437927b6052abbf'
