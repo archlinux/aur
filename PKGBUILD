@@ -1,15 +1,15 @@
 # Mantainer: Dave Kleinschmidt <gmail.com: dave.f.kleinschmidt>
 
 pkgname=pandoc-eqnos
-pkgver=1.4.3
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Equation number filter for pandoc"
 url="https://github.com/tomduck/pandoc-eqnos"
-depends=('pandoc-xnos>=0.15.0')
+depends=('pandoc-xnos>=2.0.0')
 license=('GPL')
 arch=('any')
 source=("https://github.com/tomduck/pandoc-eqnos/archive/${pkgver}.tar.gz")
-md5sums=('e0f31d0d1a97cfa39b0a4466c00d37d9')
+md5sums=('7dee322c0828ecb5aeb24ea8915d14cf')
 
 build() {
     cd "$srcdir/pandoc-eqnos-${pkgver}"
