@@ -1,18 +1,18 @@
-# Maintainer: Andrew Sun <adsun701@gmail.com>
+# Maintainer: Andrew Sun <adsun701 at gmail dot com>
 # Contributor: Joel Teichroeb <joel at teichroeb dot net>
 # Contributor: Alim Gokkaya <alimgokkaya at gmail dot com>
 
 pkgname=librdkafka
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='Apache Kafka C driver library'
+arch=('x86_64')
 url="https://github.com/edenhill/librdkafka"
 license=('BSD')
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/edenhill/librdkafka/archive/v${pkgver}.tar.gz")
-arch=('x86_64')
-depends=(zlib libsasl zstd)
+depends=(libsasl zstd)
 makedepends=(python openssl lz4 rapidjson)
-sha256sums=('123b47404c16bcde194b4bd1221c21fdce832ad12912bd8074f88f64b2b86f2b')
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/edenhill/librdkafka/archive/v${pkgver}.tar.gz")
+sha256sums=('eedde1c96104e4ac2d22a4230e34f35dd60d53976ae2563e3dd7c27190a96859')
 
 build() {
   cd $srcdir/librdkafka-$pkgver
