@@ -1,7 +1,7 @@
 pkgbase = python-aiocoap-git
 	pkgdesc = Python implementation of CoAP
-	pkgver = 0.3.r320.g3286f48
-	pkgrel = 1
+	pkgver = 0.4b1.r0.g79feb4c
+	pkgrel = 2
 	url = https://github.com/chrysn/aiocoap
 	arch = any
 	license = MIT
