@@ -47,7 +47,7 @@ _1k_HZ_ticks=
 ### Do not edit below this line unless you know what you're doing
 
 pkgbase=linux-next-git
-pkgver=20190823.r0.g9733a7c62c66
+pkgver=20190919.r0.geb2f12732f67
 _srcname=linux-next
 pkgrel=1
 arch=('x86_64')
@@ -56,13 +56,13 @@ license=('GPL2')
 options=('!strip')
 makedepends=('kmod' 'inetutils' 'bc' 'libelf' 'git' 'python-sphinx' 'python-sphinx_rtd_theme'
              'graphviz' 'imagemagick')
-_lucjanver=5.2
+_lucjanver=5.3
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/${_lucjanver}"
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_lucjanver}"
 
 source=("git://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git"
-        "${_lucjanpath}/arch-patches/0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch"
-        "${_lucjanpath}/arch-patches/0002-ZEN-Add-CONFIG-for-unprivileged_userns_clone.patch"
+        "${_lucjanpath}/arch-patches-sep/0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch"
+        "${_lucjanpath}/arch-patches-sep/0002-ZEN-Add-CONFIG-for-unprivileged_userns_clone.patch"
          # the main kernel config files
         'config'
          # pacman hook for depmod
@@ -372,9 +372,9 @@ for _p in "${pkgname[@]}"; do
 done
 
 sha512sums=('SKIP'
-            '8a158ae5660426f0fb9fa74f37c093f325b5a23392b95e50c36825205f42311cbf05f818f0275ebda27ce9fad40652ba6dc2397f19f45addb3f68f8f4476196f'
-            '9d472377c50ddd9ddab5d4ab3092f3d487eeee20a4d4a04d3cefeef5bbf40daa3eb609b15741ca4a8cd32bf2b6d0781de961cbf55e2f80fd40260f282bf022f4'
-            '010c3c820e587b4cac7dee34344ea6bcb032c6f2ab5795f945bb822feaf741d10a050d4693555560c1d38f444e59e9146bf6254cad39b6335564c6dfd783a3d2'
+            'd66837934c6012aaf26ff63390102b6adba5e1a05dfd86b3a9d1a186c029f97283bf539931c43f66ec37a2993dfcfd6899421cce8258b494c95650904a67643a'
+            'd066e58cb7fc27ac5bff9699d01af1798a28dd11354b346d1171e098c80a08cf68c3fdea6e145fb47a2059ca7a8fef632bc0ad85262087caf579ed46482847bb'
+            '257df4fb23b8c8413f7d8735fdb49e8eca7702d80a5134edad35bc8cd04a7e5bd47290f16f5838bf5e10e227713c1c5b74694a0aa18225d0158f54d0daa809dd'
             '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
             '2718b58dbbb15063bacb2bde6489e5b3c59afac4c0e0435b97fe720d42c711b6bcba926f67a8687878bd51373c9cf3adb1915a11666d79ccb220bf36e0788ab7'
             '8742e2eed421e2f29850e18616f435536c12036ff793f5682a3a8c980cf5dbfc88d17fd9539c87de15d9e4663dc3190f964f18a4722940465437927b6052abbf'
