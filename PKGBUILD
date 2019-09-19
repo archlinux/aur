@@ -2,16 +2,16 @@
 # Maintainer: Dan Johansen <strit@manjaro.org>
 
 pkgname=coretime
-pkgver=2.7.0
+pkgver=2.7.1
 pkgrel=1
 pkgdesc="A time related task manager from the CoreApps family."
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/cubocore/$pkgname"
 license=('GPL3')
-depends=('qt5-base' 'libcprime' 'qt5-multimedia')
+depends=('qt5-base' 'libcprime>=2.7.1' 'qt5-multimedia')
 groups=('coreapps')
 source=("https://gitlab.com/cubocore/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-md5sums=('f9abb7c63b1c4ea39da31c338f358a58')
+md5sums=('84ddf08b20fc96c8eaf3766110dbd538')
 
 prepare() {
   mkdir -p build
