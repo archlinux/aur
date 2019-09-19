@@ -1,6 +1,6 @@
 # Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
-pkgname=meteor-decode-git
+pkgname=meteor-demod-git
 pkgver=r55.7ab2534
 pkgrel=1
 pkgdesc="Meteor-M2 LRPT demodulator"

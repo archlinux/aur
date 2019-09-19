@@ -1,4 +1,4 @@
-pkgbase = meteor-decode-git
+pkgbase = meteor-demod-git
 	pkgdesc = Meteor-M2 LRPT demodulator
 	pkgver = r55.7ab2534
 	pkgrel = 1
@@ -9,8 +9,8 @@ pkgbase = meteor-decode-git
 	depends = ncurses
 	provides = meteor-demod
 	conflicts = meteor-demod
-	source = meteor-decode-git::git+https://github.com/dbdexter-dev/meteor_demod.git
+	source = meteor-demod-git::git+https://github.com/dbdexter-dev/meteor_demod.git
 	sha1sums = SKIP
 
-pkgname = meteor-decode-git
+pkgname = meteor-demod-git
 
