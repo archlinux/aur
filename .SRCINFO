@@ -1,15 +1,13 @@
 pkgbase = opentoonz
 	pkgdesc = This is software for producing a 2D animation.
 	pkgver = 1.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://opentoonz.github.io
 	arch = x86_64
 	license = BSD
 	makedepends = boost
 	makedepends = boost-libs
 	makedepends = cmake
-	makedepends = git
-	makedepends = pkgconf
 	makedepends = qt5-tools
 	depends = cblas
 	depends = freeglut
@@ -22,9 +20,9 @@ pkgbase = opentoonz
 	depends = sdl2
 	depends = superlu
 	conflicts = opentoonz-git
-	source = git+https://github.com/opentoonz/opentoonz.git#tag=v1.3.0
+	source = opentoonz-1.3.0.tar.gz::https://github.com/opentoonz/opentoonz/archive/v1.3.0.tar.gz
 	source = opentoonz-build.patch::https://github.com/opentoonz/opentoonz/commit/adae1528d6f580d56b5499c97b30acfb84af4390.patch
-	sha256sums = SKIP
+	sha256sums = a5dd0286a58017a086a3533016b9b4f54ada25a230c62de63b995bc04d0cd5a8
 	sha256sums = 9b8b4a68d3af0941ed83e655b68cf25037fedff24a53e3ae224b7f56337ab6f2
 
 pkgname = opentoonz
