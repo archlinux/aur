@@ -16,8 +16,8 @@ build() {
         cd "$pkgname"
         
 	if [ -e $pkgname/build]
-		then
-			cd build
+	then
+		cd build
 	else
 		mkdir build
         	cd build
