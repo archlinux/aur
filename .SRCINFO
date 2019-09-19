@@ -1,0 +1,15 @@
+pkgbase = lua-serpent
+	pkgdesc = Lua serializer and pretty printer
+	pkgver = 0.28
+	pkgrel = 1
+	url = https://github.com/pkulchenko/serpent
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = luarocks
+	depends = lua
+	source = https://luarocks.org/serpent-0.28-1.rockspec
+	sha256sums = fdfbb5896aef1fd498f6ee6455e64fd7490f70c679d8bc14f7b4c06c4446915d
+
+pkgname = lua-serpent
+
