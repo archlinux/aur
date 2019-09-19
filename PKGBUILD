@@ -2,16 +2,18 @@
 pkgbase=python-specutils
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.5.2
-pkgrel=2
+pkgver=0.6
+pkgrel=1
 pkgdesc="Astropy Affiliated package for 1D spectral operations"
 arch=('i686' 'x86_64')
 url="http://specutils.readthedocs.io/"
 license=('BSD')
 makedepends=('python-setuptools' 'python-astropy-helpers>=3.1' 'python-sphinx-astropy' 'python-gwcs')
-checkdepends=('python-pytest-astropy')
-source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('3f4be58e8496ab16ee29d894911c0cf6')
+#checkdepends=('python-pytest-astropy')
+source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
+        "https://raw.githubusercontent.com/astropy/specutils/master/LICENSE.rst")
+md5sums=('fadb01b15709dec5401d4e208f08d7bd'
+         '4d0c18788977e008ba0897bd6aed4bf7')
 
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -27,20 +29,19 @@ build() {
     python setup.py build_docs
 }
 
-check() {
-    cd ${srcdir}/${_pyname}-${pkgver}
-
-    python setup.py test
-}
+#check() {
+#    cd ${srcdir}/${_pyname}-${pkgver}
+#
+#    python setup.py test
+#}
 
 package_python-specutils() {
-    depends=('python' 'python-gwcs')
-    optdepends=('python-specutils-doc: Documentation for Specutils')
-#               'python-pytest-astropy: For testing')
+    depends=('python>=3.5' 'python-gwcs')
+    optdepends=('python-specutils-doc: Documentation for Specutils'
+                'python-pytest-astropy: For testing')
     cd ${srcdir}/${_pyname}-${pkgver}
 
-#   install -d -m755 "${pkgdir}/usr/share/licenses/${pkgname}/"
-#   install -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" licenses/*
+    install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "${srcdir}/LICENSE.rst"
     install -D -m644 README.rst -t "${pkgdir}/usr/share/doc/${pkgname}"
     python setup.py install --root=${pkgdir} --prefix=/usr --optimize=1 --use-system-libraries --offline
 }
