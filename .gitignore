@@ -1,10 +1,10 @@
 *
-!forge-server-1.11.2.install
-!forge-1.11.2d-backup.service
-!forge-1.11.2d-backup.timer
-!forge-1.11.2d.conf
-!forge-1.11.2d.service
-!forge-1.11.2d.sh
+!forge-server-1.10.2.install
+!forge-1.10.2d-backup.service
+!forge-1.10.2d-backup.timer
+!forge-1.10.2d.conf
+!forge-1.10.2d.service
+!forge-1.10.2d.sh
 !LICENSE-fml.txt
 !LICENSE-new.txt
 !PKGBUILD
