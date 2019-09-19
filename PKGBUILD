@@ -1,7 +1,7 @@
 # Maintainer: cyrant <cyrant at tuta dot io>
 
 pkgname=scenarist
-pkgver=0.7.2.rc9
+pkgver=0.7.2.rc9a
 pkgrel=1
 pkgdesc='A professional screenwriting software.'
 url='https://kitscenarist.ru/en/'
@@ -11,19 +11,16 @@ depends=('desktop-file-utils' 'qt5-multimedia' 'qt5-webengine')
 makedepends=('git' 'qt5-svg')
 source=(
   "${pkgname}::git+https://github.com/dimkanovikov/KITScenarist.git#tag=${pkgver}"
-  'mime.xml'
-  'build.patch'
+  "${pkgname}.mime.xml"
 )
-md5sums=(
+sha256sums=(
   'SKIP'
-  '45018aa6c472835db014c62a80f5b6dc'
-  'da0f40d723f2d15f888bf3197351da3d'
+  '513987794f8ba5a4c12aa2a65314fccdc098f86e616a416977aead29e6545b63'
 )
 
 prepare() {
   cd "${pkgname}"
   git submodule update --init
-  git apply "${srcdir}/build.patch"
 }
 
 build() {
@@ -34,9 +31,11 @@ build() {
 
 package() {
   install -Dm755 "${pkgname}/build/Release/bin/scenarist-desktop/Scenarist" "${pkgdir}/usr/bin/${pkgname}"
-  
+
   cd "${pkgname}/build/Ubuntu/scenarist_amd64/usr/share"
   install -Dm644 "applications/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
   install -Dm644 "pixmaps/${pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-  install -Dm644 "${srcdir}/mime.xml" "${pkgdir}/usr/share/mime/packages/${pkgname}.xml"
+  
+  cd "${srcdir}"
+  install -Dm644 "${pkgname}.mime.xml" "${pkgdir}/usr/share/mime/packages/${pkgname}.xml"
 }
