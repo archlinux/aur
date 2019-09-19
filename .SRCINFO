@@ -1,6 +1,6 @@
 pkgbase = corearchiver
 	pkgdesc = Archiver from the CoreApps family to create and extract archives.
-	pkgver = 2.7.0
+	pkgver = 2.7.1
 	pkgrel = 1
 	url = https://gitlab.com/cubocore/corearchiver
 	arch = x86_64
@@ -8,10 +8,10 @@ pkgbase = corearchiver
 	groups = coreapps
 	license = GPL3
 	depends = qt5-base
-	depends = libcprime
+	depends = libcprime>=2.7.1
 	depends = libarchive-qt
-	source = https://gitlab.com/cubocore/corearchiver/-/archive/v2.7.0/corearchiver-v2.7.0.tar.gz
-	md5sums = ca93e32d4177c09e64667fb1f67b6c1c
+	source = https://gitlab.com/cubocore/corearchiver/-/archive/v2.7.1/corearchiver-v2.7.1.tar.gz
+	md5sums = 6fadc4a1e80bae1d875a471f763e5664
 
 pkgname = corearchiver
 
