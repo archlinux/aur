@@ -15,5 +15,5 @@ sha256sums=('9f5f5bf939a5d1de6dedcc937c2fe71d869563e5e4ff8dc7f1fdafb695a505bd')
 
 package() {
 	install -d "${pkgdir}"/usr/share/webapps/nextcloud/apps
-	cp -a "${srcdir}"/gpxpod-oc-v$pkgver "${pkgdir}"/usr/share/webapps/nextcloud/apps/gpxpod-oc
+	cp -a "${srcdir}"/gpxpod-oc-v$pkgver "${pkgdir}"/usr/share/webapps/nextcloud/apps/gpxpod
 }
