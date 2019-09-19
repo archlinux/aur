@@ -3,11 +3,11 @@
 _pkgname=coda-bits
 pkgname=${_pkgname}-git
 pkgver=r11.61c8cc4
-pkgrel=1
+pkgrel=2
 pkgdesc="Bits & pieces of information about CODA VPUs"
 arch=(x86_64)
 url="https://github.com/pH5/${_pkgname}"
-license=(ISC)
+license=('custom:0BSD')
 depends=(glibc)
 makedepends=(git meson)
 source=("${_pkgname}::git+${url}.git")
