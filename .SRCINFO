@@ -1,7 +1,7 @@
 pkgbase = molecule
 	pkgdesc = aids in the development and testing of Ansible roles.
 	pkgver = 2.20.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/metacloud/molecule
 	arch = any
 	license = MIT

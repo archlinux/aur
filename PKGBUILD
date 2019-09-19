@@ -2,7 +2,7 @@
 
 pkgname="molecule"
 pkgver=2.20.2
-pkgrel=2
+pkgrel=3
 pkgdesc='aids in the development and testing of Ansible roles.'
 url='https://github.com/metacloud/molecule'
 arch=('any')
@@ -56,7 +56,7 @@ package() {
   export PBR_VERSION="${pkgver}"
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Ddm655 molecule/cookiecutter "${pkgdir}/usr/lib/python3.7/site-packages/${pkgname}"
+  cp -R molecule/cookiecutter "${pkgdir}/usr/lib/python3.7/site-packages/${pkgname}"
 }
 
 # vim:set ft=sh ts=2 sw=2 et:
