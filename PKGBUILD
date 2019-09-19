@@ -1,7 +1,7 @@
 # Maintainer: osch <oliver@luced.de>
 pkgname=surge-synthesizer
-pkgver=1.6.1
-scmver=1.6.1
+pkgver=1.6.1.1
+scmver=1.6.1.1
 pkgrel=1
 pkgdesc="Surge Synthesizer plugin"
 arch=('x86_64')
@@ -11,6 +11,7 @@ groups=('vst-plugins')
 depends=('cairo'  'fontconfig'          'freetype2'
          'libx11' 'xcb-util-cursor'     'xcb-util'
          'libxcb' 'xcb-util-renderutil' 'xcb-util-image'
+         'xdg-utils'
          )
 makedepends=('steinberg-vst36' 'premake-git' 'git')
 provides=("surge-synthesizer")
@@ -38,8 +39,8 @@ prepare() {
 	  git clone https://github.com/surge-synthesizer/surge.git
 	  cd surge
 	fi
-	git submodule update --init --recursive
 	git checkout release/$scmver
+	git submodule update --init --recursive
 	
 	sed -i -e 's:dest_path="/:dest_path="$DEST_DIR/:' build-linux.sh
 	sed -i -e 's:data_path="/:data_path="$DEST_DIR/:' build-linux.sh
@@ -49,7 +50,7 @@ prepare() {
 build() {
 	export VST2SDK_DIR="$srcdir/vst2sdk"
 	cd "$srcdir/surge"
-	export MAKEFLAGS="-j1"
+	export MAKEFLAGS="-j1" # workaround for broken build script
 	./build-linux.sh -p vst2 build
 }
 
@@ -59,9 +60,8 @@ package() {
 	export DEST_DIR="$pkgdir"
 	mkdir -p   "$DEST_DIR/usr/share"
 	mkdir -p   "$DEST_DIR/usr/lib/vst"
-	export MAKEFLAGS="-j1"
+	export MAKEFLAGS="-j1" # just to be sure (s.a.)
 	./build-linux.sh -p vst2 install
 	mkdir -p   "$DEST_DIR/usr/share/Surge/doc"
 	cp LICENSE "$DEST_DIR/usr/share/Surge/doc"
 }
-
