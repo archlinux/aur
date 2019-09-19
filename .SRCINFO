@@ -1,7 +1,7 @@
 pkgbase = mathgl
 	pkgdesc = A library for making high-quality scientific graphics
 	pkgver = 2.4.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://mathgl.sourceforge.net
 	arch = i686
 	arch = x86_64
@@ -17,8 +17,8 @@ pkgbase = mathgl
 	depends = python2-numpy
 	depends = freeglut
 	depends = gsl
-	depends = wxgtk
 	depends = qt5-base
+	depends = glu
 	source = https://sourceforge.net/projects/mathgl/files/mathgl/mathgl%202.4.4/mathgl-2.4.4.tar.gz
 	md5sums = cbf9bcb4db6c78bda7902d36b9843d7b
 
