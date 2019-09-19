@@ -1,14 +1,29 @@
-# Maintainer: Bruno Inec <bruno at inec dot fr>
+# Maintainer: Kaio "yaakushi" Augusto <kaioaugusto dot 8 at gmail dot com>
+# Contributor: yochananmarqos
+# Contributor: Bruno Inec <bruno at inec dot fr>
+
 pkgname=wtfutil
-pkgver=0.4.0
+pkgver=0.22.0
 pkgrel=1
 pkgdesc="Personal information dashboard for your terminal"
-arch=(x86_64)
+arch=('i686' 'x86_64' 'aarch64' 'armv6h')
 url="https://wtfutil.com"
-license=(MIT)
-source_x86_64=("https://github.com/senorprogrammer/wtf/releases/download/${pkgver}/wtf_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('1d2aa742f91e9b930d1fbf49278d1b10ac5a3670adca41a3648b757a7576f6fb')
+license=('MPL2')
+makedepends=('go-pie')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/wtfutil/wtf/archive/v$pkgver.tar.gz")
+sha256sums=('b421af6aceba9b4f4ff67d591fd899e5357891a06fa13704ec4e77f983ee1064')
+
+build() {
+    export GOPROXY="https://gocenter.io"
+
+    cd wtf-$pkgver
+    go build \
+        -trimpath \
+        -ldflags "-extldflags $LDFLAGS" \
+        -o $pkgname .
+}
 
 package(){
-  install -D "${srcdir}/wtf_${pkgver}_linux_amd64/wtf" "${pkgdir}/usr/bin/wtfutil"
+    cd wtf-$pkgver
+    install -Dm755 $pkgname "$pkgdir/usr/bin/$pkgname"
 }
