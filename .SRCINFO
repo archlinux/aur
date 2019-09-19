@@ -1,6 +1,6 @@
 pkgbase = talking-clock-git
 	pkgdesc = Highly configurable clock written in bash with soundpack and voice options.
-	pkgver = v15.0.r5.3b6827e
+	pkgver = r40.0a7fffb
 	pkgrel = 1
 	url = https://gitlab.com/stormdragon2976/talking-clock
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = talking-clock-git
 	optdepends = jq: For the current temperature
 	optdepends = translate-shell: TTS support
 	optdepends = speech-dispatcher: TTS support
-	optdepends = svox-pico-git: TTS support
+	optdepends = rhvoice-git: TTS support
 	optdepends = pulseaudio: Chime sound support
 	optdepends = sox: Chime sound support
 	optdepends = vorbis-tools: Chime sound support

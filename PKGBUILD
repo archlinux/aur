@@ -1,7 +1,7 @@
 # Maintainer: Storm Dragon <stormdragon2976@gmail.com>
 _pkgname=talking-clock
 pkgname=talking-clock-git
-pkgver=v15.0.r5.3b6827e
+pkgver=r40.0a7fffb
 pkgrel=1
 pkgdesc="Highly configurable clock written in bash with soundpack and voice options."
 arch=('any')
@@ -15,7 +15,7 @@ optdepends=('espeak: TTS support'
 	'jq: For the current temperature'
 	'translate-shell: TTS support'
 	'speech-dispatcher: TTS support'
-	'svox-pico-git: TTS support'
+	'rhvoice-git: TTS support'
 	'pulseaudio: Chime sound support'
 	'sox: Chime sound support'
 	'vorbis-tools: Chime sound support'
@@ -28,7 +28,7 @@ md5sums=("SKIP")
 pkgver()
 {
   cd "$_pkgname"
-  git shortlog | head -n 1 | tr -Cd "[:digit:]"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
  
 package()
