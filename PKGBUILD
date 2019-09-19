@@ -2,7 +2,7 @@
 
 pkgname=firefox-nightly-zh-cn
 _pkgname=firefox-nightly
-pkgver=60.0a1
+pkgver=71.0a1
 pkgrel=1
 pkgdesc="Chinese Simplified For Firefox Nightly"
 arch=('i686' 'x86_64')
@@ -22,13 +22,10 @@ _filename="firefox-${pkgver}.zh-CN.linux-${CARCH}"
 # _sha512sum="$(curl -s "${_baseurl}${_filename}.checksums" | grep "${_filename}.tar.bz2$" | grep sha512 | cut -d " " -f1)"
 source=("$pkgname.desktop"
         "vendor.js"
-        "${_baseurl}${_filename}.tar.bz2"
-        "${_baseurl}${_filename}.tar.bz2.asc")
-sha512sums=('SKIP'
-            'SKIP'
-            "SKIP"
-            "SKIP")
-validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353')
+        "${_baseurl}${_filename}.tar.bz2")
+md5sums=('466893dc299e11ffc955d9674112081e'
+         '18d2b11eca6ee3148e9c9a807346e660'
+         'def3d92afa424b0fd1633833aa3321c4')
 
 package() {
   # Create directories

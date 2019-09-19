@@ -1,39 +1,36 @@
 pkgbase = firefox-nightly-zh-cn
-pkgdesc = Chinese Simplified For Firefox Nightly
-pkgver = 60.0a1
-pkgrel = 1
-url = https://nightly.mozilla.org/
-install = firefox-nightly-zh-cn.install
-arch = i686
-arch = x86_64
-license = MPL
-license = GPL
-license = LGPL
-makedepends = pacman>=4.2.0
-depends = alsa-lib
-depends = dbus-glib
-depends = desktop-file-utils
-depends = gtk2
-depends = gtk3
-depends = hicolor-icon-theme
-depends = icu
-depends = libevent
-depends = libvpx
-depends = libxt
-depends = mime-types
-depends = nss
-depends = sqlite
-optdepends = ffmpeg: additional video and audio decoders
-optdepends = libpulse: PulseAudio driver
-optdepends = networkmanager: Location detection via available WiFi networks
-optdepends = upower: Battery API
-provides = firefox=
-source = firefox-nightly-zh-cn.desktop
-source = vendor.js
-source = https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/firefox-.zh-CN.linux-.tar.bz2
-sha512sums = SKIP
-sha512sums = SKIP
-sha512sums = 
+	pkgdesc = Chinese Simplified For Firefox Nightly
+	pkgver = 71.0a1
+	pkgrel = 1
+	url = https://www.mozilla.org/zh-CN/firefox/nightly/
+	install = firefox-nightly-zh-cn.install
+	arch = i686
+	arch = x86_64
+	license = MPL
+	license = GPL
+	license = LGPL
+	makedepends = pacman>=4.2.0
+	depends = alsa-lib
+	depends = dbus-glib
+	depends = desktop-file-utils
+	depends = gtk2
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = icu
+	depends = libevent
+	depends = libvpx
+	depends = libxt
+	depends = mime-types
+	depends = nss
+	depends = sqlite
+	optdepends = ffmpeg: additional video and audio decoders
+	optdepends = libpulse: PulseAudio driver
+	optdepends = networkmanager: Location detection via available WiFi networks
+	optdepends = upower: Battery API
+	provides = firefox=71.0a1
+	source = firefox-nightly-zh-cn.desktop
+	source = vendor.js
+	source = https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/firefox-71.0a1.zh-CN.linux-x86_64.tar.bz2
 
 pkgname = firefox-nightly-zh-cn
 
