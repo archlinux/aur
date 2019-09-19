@@ -1,48 +1,18 @@
 # Maintainer: navigaid <navigaid@gmail.com>
 pkgname=yaegi
-pkgver=0.0.4
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='Yaegi is Another Elegant Go Interpreter'
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/containous/yaegi'
 license=('Apache')
-makedepends=()
-source=()
-sha256sums=()
-case "$CARCH" in
-  armv5h)
-    _pkgarch="armv5"
-    source+=("${pkgname}-${pkgver}-${_pkgarch}.tar.gz::https://github.com/containous/yaegi/releases/download/v${pkgver}/${pkgname}_v${pkgver}_linux_${_pkgarch}.tar.gz")
-    ;;
-  armv6h)
-    _pkgarch="armv6"
-    source+=("${pkgname}-${pkgver}-${_pkgarch}.tar.gz::https://github.com/containous/yaegi/releases/download/v${pkgver}/${pkgname}_v${pkgver}_linux_${_pkgarch}.tar.gz")
-    ;;
-  armv7h)
-    _pkgarch="armv7"
-    source+=("${pkgname}-${pkgver}-${_pkgarch}.tar.gz::https://github.com/containous/yaegi/releases/download/v${pkgver}/${pkgname}_v${pkgver}_linux_${_pkgarch}.tar.gz")
-    ;;
-  aarch64)
-    _pkgarch="arm64"
-    source+=("${pkgname}-${pkgver}-${_pkgarch}.tar.gz::https://github.com/containous/yaegi/releases/download/v${pkgver}/${pkgname}_v${pkgver}_linux_${_pkgarch}.tar.gz")
-    ;;
-  i686)
-    _pkgarch="386"
-    source+=("${pkgname}-${pkgver}-${_pkgarch}.tar.gz::https://github.com/containous/yaegi/releases/download/v${pkgver}/${pkgname}_v${pkgver}_linux_${_pkgarch}.tar.gz")
-    ;;
-  x86_64)
-    _pkgarch="amd64"
-    source+=("${pkgname}-${pkgver}-${_pkgarch}.tar.gz::https://github.com/containous/yaegi/releases/download/v${pkgver}/${pkgname}_v${pkgver}_linux_${_pkgarch}.tar.gz")
-    ;;
-esac
-sha256sums+=('SKIP')
-
-prepare() {
-  true
-}
+makedepends=('go')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/containous/yaegi/archive/v${pkgver}.tar.gz")
+md5sums=('27d46688701f3e452cc5397b83719ec0')
 
 build() {
-  true
+  cd ${pkgname}-${pkgver}
+  go build ./cmd/yaegi
 }
 
 package() {
