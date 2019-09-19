@@ -20,11 +20,13 @@ arch:
   - ~/.ccache:~/.ccache
   - ~/.cache/yay:~/.cache/yay
   - ~/.pkg-cache:/var/cache/pacman/pkg
+  - ~/.ssh:~/.ssh
   repos:
 # - bartus=https://github.com/bartoszek/AUR-repo/raw/master
   packages:
   - ccache
   - moreutils
+  - openssh
   before_install:
 # 1.Override `package-cleanup.hook` to preserve cache for travis.
 # 2.Enable ccache
@@ -48,11 +50,39 @@ arch:
   - unset CC CXX
   - yay -S --noconfirm gegl-git
   - unset CC CXX
-  - timeout 40m makepkg -s --noconfirm | ts -s '[%.T]'; _makepkg_return=${PIPESTATUS[0]}
+  - timeout 40m makepkg -s --noconfirm > >(ts -s '[%.T]'); _makepkg_return=$?
+# Update PKGBUILD and push changes to AUR
+  - ./update.PKGBUILD
+  - |
+     deps_update=$(git diff .SRCINFO|grep -oP "^\+\tdepends = \K.*") && \
+     ( . PKGBUILD
+       git checkout master
+       git config user.name "Travis"
+       git config user.email "travis@example.org"
+       git remote add aur ssh://aur@aur.archlinux.org/${pkgname}-git
+       git remote add github git@github.com:bartoszek/AUR-${pkgname}.git
+       echo "\$ git config"
+       git config -l
+       git commit -a -m "Update denepdencies" -m "$deps_update" -m "[skip ci]"
+       echo "\$ stat ~/.ssh/*"
+       stat ~/.ssh/*
+       echo "\$ git push"
+       git push aur
+       git push github
+     ) || true
+# Clean
   - sudo pacman -Sc --noconfirm
   - ccache -s
   - exit $_makepkg_return
 script:
+# decrypt aur and github ssh key
+- openssl aes-256-cbc -K $encrypted_a4aa308f5b26_key -iv $encrypted_a4aa308f5b26_iv -in aur4travis.enc -out ~/.ssh/aur4travis -d
+- openssl aes-256-cbc -K $encrypted_e22abb3aa17b_key -iv $encrypted_e22abb3aa17b_iv -in github4travis.enc -out ~/.ssh/github4travis -d
+# add ssh keys to ssh_config(5) (ssh key and ssh_config has to have specific/restrictive permissions)
+- echo -e "Host aur.archlinux.org\n\tUser aur\n\tIdentityFile    ~/.ssh/aur4travis\n" >> ~/.ssh/config
+- echo -e "Host github.com       \n\tUser git\n\tIdentityFile ~/.ssh/github4travis\n" >> ~/.ssh/config
+- chmod 600 ~/.ssh/*
+# scripts containing ':' has to come in double quotes.
 - "curl -s https://raw.githubusercontent.com/bartoszek/arch-travis/base64-encode/arch-travis.sh| bash"
 - "echo pacman pkg cache size: $(du -h ~/.pkg-cache|cut -f1) in $(ls ~/.pkg-cache|wc -l) files"
 
