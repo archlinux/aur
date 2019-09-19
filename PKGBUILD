@@ -15,7 +15,7 @@
 
 
 pkgname=('llvm-git' 'llvm-libs-git')
-pkgver=10.0.0_r325028.b43923da5bb
+pkgver=10.0.0_r327286.eb231d15825
 pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
@@ -26,12 +26,14 @@ makedepends=(   'git' 'cmake' 'ninja' 'libffi' 'libedit' 'ncurses' 'libxml2' 'py
 
 source=("llvm-project::git+https://github.com/llvm/llvm-project.git"
               'llvm-config.h'
-              'enable-SSP-and-PIE-by-default.patch'
-              'always-initialize-all-members-in-ABIArgInfo.patch')
-sha256sums=('SKIP'
-            '597dc5968c695bbdbb0eac9e8eb5117fcd2773bc91edf5ec103ecffffab8bc48'
-            '58f86da25eb230ed6d423b5b61870cbf3bef88f38103ca676a2c7f34b2372171'
-            '355553ff360002000d57fc00cd5c753a261c85aafbb9c8b328bef7b8b5a403c1')
+              'enable-SSP-and-PIE-by-default.patch')
+
+md5sums=('SKIP'
+         '295c343dcd457dc534662f011d7cff1a'
+         '5e9b3822e6b7de45f0ecb0ad71b3f7d3')
+sha512sums=('SKIP'
+            '75e743dea28b280943b3cc7f8bbb871b57d110a7f2b9da2e6845c1c36bf170dd883fca54e463f5f49e0c3effe07fbd0db0f8cf5a12a2469d3f792af21a73fcdd'
+            '2fdbae0b62d33411beaf191920ff280f83fa80fd505a71077671027f27ed8c61c5867de3e6ee6f26734c7605037e86796404212182f8ffa71f4af6ed2c316a40')
 
 # NINJAFLAGS is an env var used to pass commandline options to ninja
 # NOTE: It's your responbility to validate the value of $NINJAFLAGS. If unsure, don't set it.
@@ -70,7 +72,7 @@ prepare() {
     # GCC 7; however, we need it to pass the test suite when building with GCC 9
     # https://bugs.llvm.org/show_bug.cgi?id=40547
     # manually adapted to apply cleanly with latest master
-    patch --forward --strip=1 --input="$srcdir"/always-initialize-all-members-in-ABIArgInfo.patch
+#    patch --forward --strip=1 --input="$srcdir"/always-initialize-all-members-in-ABIArgInfo.patch
 
     cd clang
     patch --forward --strip=1 --input="$srcdir"/enable-SSP-and-PIE-by-default.patch
