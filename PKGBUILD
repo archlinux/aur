@@ -4,19 +4,18 @@
 pkgname=vna_j
 _realname=vnaJ
 pkgver=3.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="GUI for various vector network analyzers"
 arch=('any')
-license=('custom')
+license=('CCPL:by-nc-nd')
 url="http://vnaj.dl2sba.com/"
-depends=('java-environment>=10' 'hicolor-icon-theme' 'bash')
+depends=('java-environment>=10' 'hicolor-icon-theme')
 optdepends=('xdg-utils: desktop & menu shortcut support')
 makedepends=('imagemagick')
-install=vna_j.install
 source=(http://download.dl2sba.com/vnaj/$pkgver/${_realname}.${pkgver}.jar
         vnaJ.sh vnaJ.desktop http://download.dl2sba.com/vnaj/$pkgver/logo.ico)
 md5sums=('b3a43b6aaf4026c100fa589f9c58b300'
-         '305963e8e79cbab0741a535207020e2c'
+         '4d4958ceef2ddf13c26633e586b15417'
          'e1f40625326a65e5df479f4eae742041'
          '9f3eed2cc9491779155f111d9e3d6bfd')
 
