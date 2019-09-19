@@ -3,7 +3,7 @@
 
 pkgname=qtemu-git
 pkgver=r242.eb0b8fe
-pkgrel=2
+pkgrel=3
 pkgdesc="Qt5 GUI front-end for QEMU, similar to VirtualBox."
 url="http://qtemu.org"
 license=("GPL2")
