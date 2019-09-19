@@ -1,14 +1,14 @@
 pkgbase = kubectl-trace-bin
 	pkgdesc = Schedule bpftrace programs on your kubernetes cluster using the kubectl (official binary version)
-	pkgver = 0.1.0_rc.0
+	pkgver = 0.1.0_rc.1
 	pkgrel = 1
 	url = https://github.com/iovisor/kubectl-trace
 	arch = x86_64
 	license = MIT
 	provides = kubectl-trace
 	conflicts = kubectl-trace
-	source = kubectl-trace_x64_0.1.0-rc.0.tar.gz::https://github.com/iovisor/kubectl-trace/releases/download/v0.1.0-rc.0/kubectl-trace_0.1.0-rc.0_linux_amd64.tar.gz
-	sha256sums = ba9724bf62004db903028508836f05bffecd6d501b348f5e655b035b12da107e
+	source = kubectl-trace_x64_0.1.0-rc.1.tar.gz::https://github.com/iovisor/kubectl-trace/releases/download/v0.1.0-rc.1/kubectl-trace_0.1.0-rc.1_linux_amd64.tar.gz
+	sha256sums = cd151705bb5e8964aef5f4f8a6443dcdaef5ea66f5960371404e18b47edd485f
 
 pkgname = kubectl-trace-bin
 
