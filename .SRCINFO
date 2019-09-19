@@ -1,6 +1,6 @@
 pkgbase = corerenamer
 	pkgdesc = A batch file renamer from the CoreApps family.
-	pkgver = 2.7.0
+	pkgver = 2.7.1
 	pkgrel = 1
 	url = https://gitlab.com/cubocore/corerenamer
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = corerenamer
 	groups = coreapps
 	license = GPL3
 	depends = qt5-base
-	depends = libcprime
-	source = https://gitlab.com/cubocore/corerenamer/-/archive/v2.7.0/corerenamer-v2.7.0.tar.gz
-	md5sums = dde36c2f48344fd880024ae63d0d36d9
+	depends = libcprime>=2.7.1
+	source = https://gitlab.com/cubocore/corerenamer/-/archive/v2.7.1/corerenamer-v2.7.1.tar.gz
+	md5sums = 9bf94ce03603467a42d9156dff53e6f6
 
 pkgname = corerenamer
 
