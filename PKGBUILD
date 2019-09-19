@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=nauz-file-detector-git
-pkgver=0.02.r115.gfdd55bd
+pkgver=0.03.r110.ga1b3076
 pkgrel=1
 pkgdesc="Nauz File Detector is a portable linker/compiler/packer identifier utility."
 arch=(x86_64)
