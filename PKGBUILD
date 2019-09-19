@@ -1,4 +1,5 @@
 # Maintainer: Chris Werner Rau < aur [ at ] cwrau [ dot ] io >
+# Contributor: Gustavo Castro < gustawho [ at ] disroot [ dot ] org >
 
 pkgname=qtemu-git
 pkgver=r242.eb0b8fe
@@ -7,6 +8,7 @@ pkgdesc="Qt5 GUI front-end for QEMU, similar to VirtualBox."
 url="http://qtemu.org"
 license=("GPL2")
 arch=('i686' 'x86_64')
+makedepends=('git')
 depends=('qemu' 'qt5-base')
 conflicts=('qtemu')
 source=($pkgname::"git+https://gitlab.com/qtemu/gui.git")
