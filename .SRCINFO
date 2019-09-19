@@ -1,7 +1,7 @@
 pkgbase = minecraft-launcher-beta
 	pkgdesc = Official Minecraft Launcher Beta
 	pkgver = 2.1.5969
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mojang.com/
 	arch = x86_64
 	license = All rights reserved
@@ -19,10 +19,10 @@ pkgbase = minecraft-launcher-beta
 	conflicts = minecraft-launcher
 	source = https://launcher.mojang.com/download/linux/x86_64/minecraft-launcher_2.1.5969.tar.gz
 	source = minecraft-launcher.desktop
-	source = minecraft-launcher.svg
+	source = https://launcher.mojang.com/download/linux/x86_64/minecraft-launcher.svg
 	sha256sums = 3d87662da47b5c7fa25a7fe8a9326d664051d7955999bfdb95d4a7184dcc085b
 	sha256sums = 677e2442a1ae83cc58d8d403666e508129e97dbed37fdfafdceac6101dc0dee7
-	sha256sums = 58200e6464bdb26d640be0c4c1ac20384a627b46ed912da1844cd8ad32c0a3b8
+	sha256sums = 35c2bcaeb09fa4b8864e9422fd66bf60847706f8b4400ec4a66ba6436b101f71
 
 pkgname = minecraft-launcher-beta
 

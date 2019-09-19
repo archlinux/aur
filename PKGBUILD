@@ -1,7 +1,7 @@
 # Maintainer: Petr Mrázek <petr@mojang.com>
 pkgname=minecraft-launcher-beta
 pkgver=2.1.5969
-pkgrel=1
+pkgrel=2
 pkgdesc="Official Minecraft Launcher Beta"
 arch=('x86_64')
 url="https://mojang.com/"
@@ -12,12 +12,12 @@ conflicts=('minecraft-launcher')
 source=(
 https://launcher.mojang.com/download/linux/x86_64/minecraft-launcher_${pkgver}.tar.gz
 minecraft-launcher.desktop
-minecraft-launcher.svg
+https://launcher.mojang.com/download/minecraft-launcher.svg
 )
 sha256sums=(
 '3d87662da47b5c7fa25a7fe8a9326d664051d7955999bfdb95d4a7184dcc085b'
 '677e2442a1ae83cc58d8d403666e508129e97dbed37fdfafdceac6101dc0dee7'
-'58200e6464bdb26d640be0c4c1ac20384a627b46ed912da1844cd8ad32c0a3b8'
+'35c2bcaeb09fa4b8864e9422fd66bf60847706f8b4400ec4a66ba6436b101f71'
 )
 
 build() {
