@@ -20,8 +20,8 @@ build() {
 			cd build
 	else
 		mkdir build
-        cd build
-    fi
+        	cd build
+    	fi
         cmake ../
         make -j2
 }
