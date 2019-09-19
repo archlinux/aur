@@ -1,7 +1,7 @@
 pkgbase = otf-solbera-dnd-5e
 	pkgdesc = A collection of unrestricted DND5e-compatible typefaces
-	pkgver = 1.0
-	pkgrel = 2
+	pkgver = 1.1
+	pkgrel = 1
 	url = https://github.com/jonathonf/solbera-dnd-fonts
 	arch = any
 	license = Custom: CC-BY-SA-4.0
@@ -12,8 +12,8 @@ pkgbase = otf-solbera-dnd-5e
 	provides = otf-solbera-imitation
 	provides = otf-zatanna-misdirection
 	conflicts = otf-solbera-dnd-5e-git
-	source = otf-solbera-dnd-5e-1.0.tar.gz::https://github.com/jonathonf/solbera-dnd-fonts/archive/v1.0.tar.gz
-	sha256sums = 2f11c0e51007da046eba688939ba8804133568aaa4402d5a33f2ab51a88ae451
+	source = otf-solbera-dnd-5e-1.1.tar.gz::https://github.com/jonathonf/solbera-dnd-fonts/archive/v1.1.tar.gz
+	sha256sums = ac87f99735521b2a193437801a8571160d619c2d3a1bb61aef2966afbe64a1ff
 
 pkgname = otf-solbera-dnd-5e
 
