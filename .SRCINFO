@@ -1,7 +1,7 @@
 pkgbase = python-vunit_hdl
 	pkgdesc = Unit Testing Framework for VHDL/SystemVerilog
 	pkgver = 4.0.8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://vunit.github.io/
 	arch = any
 	license = MPL2
