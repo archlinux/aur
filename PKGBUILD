@@ -1,21 +1,16 @@
-# Maintainer: Andrew Sun <adsun701@gmail.com>
+# Maintainer: Andrew Sun <adsun701 at gmail dot com>
 
 pkgname=lib32-lightning
-pkgver=2.1.2
-pkgrel=2
+pkgver=2.1.3
+pkgrel=1
 pkgdesc='Library that generates assembly language code at run-time (32-bit)'
 arch=('x86_64')
 url='https://www.gnu.org/software/lightning/'
 license=('GPL')
-depends=('lib32-glibc' 'lib32-zlib' 'lightning')
-makedepends=('lib32-gcc-libs')
+depends=('lib32-zlib' 'lightning')
+makedepends=('gcc-multilib')
 source=("https://ftp.gnu.org/gnu/lightning/lightning-${pkgver}.tar.gz")
-sha256sums=('9b289ed1c977602f9282da507db2e980dcfb5207ee8bd2501536a6852a157a69')
-
-prepare() {
-  cd "${srcdir}/lightning-${pkgver}"
-  autoreconf -fvi
-}
+sha256sums=('ed856b866dc6f68678dc1151579118fab1c65fad687cf847fc2d94ca045efdc9')
 
 build() {
   cd "${srcdir}/lightning-${pkgver}"
