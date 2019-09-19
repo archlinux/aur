@@ -1,5 +1,5 @@
 pkgbase = reduce-svn
-	pkgver = 20190517.4997
+	pkgver = 20190919.5135
 	pkgrel = 1
 	url = http://reduce-algebra.sourceforge.net/
 	arch = x86_64
