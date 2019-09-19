@@ -1,7 +1,7 @@
 pkgbase = latex-tuda-ci
 	pkgdesc = TUDa-CI for LaTeX from Technische Universität Darmstadt
 	pkgver = 1.10
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/tudace/tuda_latex_templates
 	arch = any
 	license = custom
