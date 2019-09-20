@@ -1,9 +1,9 @@
 # Maintainer: Daniel M. Capella <polyzen@archlinux.org>
 # Contributor: Josip Ponjavic <josipponjavic at gmail dot com>
 
-_commit=b16a2c2b5b137f538f0992cd5553c83955257a3a
+_commit=v0.10.0
 pkgname=i3status-rust
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc='Resourcefriendly and feature-rich replacement for i3status, written in pure Rust'
 arch=('x86_64')
@@ -17,15 +17,15 @@ optdepends=('alsa-utils: for the volume block'
             'speedtest-cli: for the speedtest block'
             'ttf-font-awesome: for the Awesome icons')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$_commit.tar.gz")
-sha512sums=('0c5d62325d822b87d65e3b1b8c963f2ff0117b63c0bc2c0adc48575344bebbad2ce10b4d9ff308dcab263682123cfa29e6a22610cbd8b9842896bc4ea18a2f53')
+sha512sums=('2d13ed29dcf94d8dcaeaee03e3c2eb782d1edae28814acbdf0677ee28bece64f6e05b56269641405229fa2ec3c22be076622bd62eec5886967e844b113a9adf5')
 
 build() {
-  cd $pkgname-$_commit
+  cd $pkgname-$pkgver
   cargo build --release --locked
 }
 
 package() {
-  cd $pkgname-$_commit
+  cd $pkgname-$pkgver
   install -Dt "$pkgdir"/usr/bin target/release/i3status-rs
   install -Dm644 -t "$pkgdir"/usr/share/doc/$pkgname/examples example_*.toml
 }
