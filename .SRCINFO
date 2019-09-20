@@ -1,6 +1,6 @@
 pkgbase = spotify-adblock-git
 	pkgdesc = Adblocker for Spotify
-	pkgver = r2.ab860ef
+	pkgver = r26.12beaa7
 	pkgrel = 1
 	url = https://github.com/abba23/spotify-adblock-linux
 	arch = i686
