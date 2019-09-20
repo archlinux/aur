@@ -1,7 +1,7 @@
 pkgbase = gendev
 	pkgdesc = Genesis development environment for Linux
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kubilus1/gendev
 	arch = any
 	license = BSD

@@ -1,7 +1,7 @@
 # Maintainer: Vinicius Correa <vinicius dot correa at zoho dot com>
 pkgname=gendev
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Genesis development environment for Linux"
 arch=('any')
 url="https://github.com/kubilus1/${pkgname}"
