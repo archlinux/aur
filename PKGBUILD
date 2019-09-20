@@ -1,12 +1,13 @@
 # Maintainer: Alexandre Demers <alexandre.f.demers@gmail.com>
 
+# Careful when upgrading this package! It usually breaks ABI without bumping soname.
 _setPrefix="/usr"
 _setLibdir="lib32"
 _setFullLibdir="${_setPrefix}/${_setLibdir}"
 _pkgbasename=glslang
 
 pkgname=lib32-$_pkgbasename
-pkgver=7.11.3214
+pkgver=7.12.3352
 pkgrel=1
 pkgdesc='OpenGL and OpenGL ES shader front end and validator (32bit)'
 arch=('x86_64')
@@ -16,6 +17,7 @@ depends=(
         "$_pkgbasename"
         'lib32-gcc-libs'
         'lib32-spirv-tools'
+        'python'
         )
 makedepends=(
         'cmake'
@@ -23,7 +25,7 @@ makedepends=(
         )
 options=('staticlibs')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/KhronosGroup/glslang/archive/${pkgver}.tar.gz)
-sha256sums=('b30b4668734328d256e30c94037e60d3775b1055743c04d8fd709f2960f302a9')
+sha256sums=('4ecce011b73dd7196a5114f66776d5a4c4c3674fc9bc6f39ad3c1ee15a8abbe1')
 
 build() {
   export CCFLAGS="-m32"
