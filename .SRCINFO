@@ -1,6 +1,6 @@
 pkgbase = sanoid
 	pkgdesc = A policy-driven snapshot management tool for ZFS filesystems.
-	pkgver = 2.0.1
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://github.com/jimsalterjrs/sanoid
 	arch = any
@@ -14,10 +14,10 @@ pkgbase = sanoid
 	provides = sanoid
 	conflicts = sanoid-git
 	backup = etc/sanoid/sanoid.conf
-	source = sanoid-2.0.1.tar.gz::https://github.com/jimsalterjrs/sanoid/archive/v2.0.1.tar.gz
+	source = sanoid-2.0.2.tar.gz::https://github.com/jimsalterjrs/sanoid/archive/v2.0.2.tar.gz
 	source = sanoid.service
 	source = sanoid.timer
-	sha256sums = e28bd2ee372d777cd58e3a2ddd9c5c04210d07323b648c6c21030d0f7a22a464
+	sha256sums = 8937f1b3ef984e1b4d09603b005dcbf6a0315efd65d001aacbeaf56b67558605
 	sha256sums = a1f53363c2814a797ed4b19533b31db87e36bf9ffd41487c036570e80f498f76
 	sha256sums = de506f8deab9cf9920a5efd598bf4bf4806bc6dd24756b1380705f293171da17
 
