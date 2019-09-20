@@ -6,31 +6,27 @@
 # Contributor: Michael Kanis <mkanis_at_gmx_dot_de>
 
 pkgname=mutter-performance
-pkgver=3.32.2+43+gb7f158811
-pkgrel=19
+pkgver=3.34.0+14+g0e69fe078
+pkgrel=1
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
 license=(GPL)
 depends=(dconf gobject-introspection-runtime gsettings-desktop-schemas libcanberra
          startup-notification zenity libsm gnome-desktop upower libxkbcommon-x11
-         gnome-settings-daemon libgudev libinput pipewire xorg-server-xwayland gnome-shell)
-makedepends=(gobject-introspection git egl-wayland meson xorg-server)
+         gnome-settings-daemon libgudev libinput pipewire xorg-server-xwayland)
+makedepends=(gobject-introspection git egl-wayland meson xorg-server "sysprof>=3.34")
 checkdepends=(xorg-server-xvfb)
 options=(debug !strip)
 provides=(mutter mutter-781835-workaround)
 conflicts=(mutter)
 replaces=(mutter-781835-workaround)
 groups=(gnome)
-_commit=b7f158811934d8e4d9dd0be28ad8e1746ceac46c # tags/3.32.2^43
+_commit=0e69fe07819a289f3156f18c46b749b2f128cf05  # master
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
-	429.diff
-	724.diff
-	189.diff)
+	429.diff)
 sha256sums=('SKIP'
-            'c22bc32ab8a29e3da986f386d14a8376f1985c051328ca6786571b4b67ec9e48'
-            '3bfd673cbae598f6482124525d342b4323a1395a0f72d6532bbcf34f66773213'
-            '95e29ca135a024ad2fab6d0b4d8d6674699a95e6df91f4ca9e0437a475459d87')
+            'c22bc32ab8a29e3da986f386d14a8376f1985c051328ca6786571b4b67ec9e48')
 
 pkgver() {
   cd $pkgname
@@ -62,7 +58,8 @@ prepare() {
   git cherry-pick --abort || true
   git remote add vanvugt https://gitlab.gnome.org/vanvugt/mutter.git || true
   git fetch vanvugt
-
+  git remote add verdre https://gitlab.gnome.org/verdre/mutter.git || true
+  git fetch verdre
 
   ### Merge Requests
 
@@ -88,51 +85,6 @@ prepare() {
   #   3. Fix: Regression/bug fix only available in master (not backported).
   #   4. Cleanup: Code styling improvement, function deprecation, rearrangement...
 
-
-
-  # Title: Various Clutter cleanups
-  # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/666
-  # Type: 4
-  # Status: 4
-  # Comment: Needed so !189 doesn't conflict
-  git cherry-pick -n 5bd85ef7^..b0b1ff36
-
-  # Title: Minor clutter stage cleanup
-  # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/616
-  # Type: 4
-  # Status: 4
-  # Comment: Needed so !661 doesn't conflict
-  git cherry-pick -n 4064d9a7^..3073acc3
-
-  # Title: Geometric (OpenGL-less) picking
-  # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/189
-  # Type: 1
-  # Status: 2
-  # Comment:
-  patch -Np1 < ../189.diff
-  git add .
-
-  # Title: clutter/stage-cogl: Don't skip over the next frame
-  # URL : https://gitlab.gnome.org/GNOME/mutter/merge_requests/520
-  # Type: 1
-  # Status: 4
-  # Comment:
-  git cherry-pick -n 45244852
-
-  # Title: Consolidate all frame throttling into clutter-stage-cogl
-  # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/363
-  # Type: 1
-  # Status: 4
-  # Comment:
-  git cherry-pick -n 912a9ecf^..1dbf25af
-
-  # Title: clutter/stage-cogl: Reschedule update on present
-  # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/281
-  # Type: 1
-  # Status: 4
-  # Comment:
-  git cherry-pick -n 4faeb127
-
   # Title: clutter/stage: Only queue compressible events
   # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/711
   # Type: 1
@@ -150,64 +102,11 @@ prepare() {
     git cherry-pick -n 3aa449af^..1017ce44
   fi
 
-  # Title: clutter: Defer actor allocations till shown
-  # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/677
-  # Type: 1
-  # Status: 4
-  # Comment:
-  git cherry-pick -n 0eab73dc
-
   # Title: Honour `CLUTTER_ACTOR_NO_LAYOUT` more efficiently
   # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/575
   # Type: 1
   # Status: 2
   git_cp_by_msg '!575' 'clutter/stage: Add an API for shallow relayouts' 'clutter/actor: Use the new shallow relayout API'
-
-  # Title: cogl: Remove GLX "threaded swap wait" used on Nvidia
-  # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/602
-  # Type: 1
-  # Status: 2
-  # Comment: Makes the shell unresponsive to most of the interactions with mouse and keyboard
-  # git_cp_by_msg '!602' 'cogl: Remove GLX "threaded swap wait" used on Nvidia'
-  # git cherry-pick -n -Xtheirs df38ad3c
-
-  # Title: compositor: Don't emit size-changed when only position changes
-  # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/568
-  # Type: 1
-  # Status: 4
-  # Comment:
-  git cherry-pick -n 01e20a6b
-
-  # Title: cogl: Enable EGL_IMG_context_priority
-  # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/454
-  # Type: 1
-  # Status: 4
-  # Comment:
-  git cherry-pick -n 3f29b478^..7df86fb2
-
-  # Title: Add experimental key for RT scheduling
-  # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/460
-  # Type: 1
-  # Status: 4
-  # Comment: Only works in Wayland
-  git cherry-pick -n dae2c1d4
-
-  # Title: backends: Do not reload keymap on new keyboard notifications
-  # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/579
-  # Type: 1
-  # Status: 4
-  # Comment: Disabled by default because it has issues when using multiple layouts
-  if [ -f "$HOME/.i_dont_use_multiple_keyboard_layouts" ]; then
-    echo "OK, you dont use multiple keyboard layouts"
-    git cherry-pick -n b01edc22
-  fi
-
-  # Title: Fix background texture corruption when resuming from suspend on Nvidia
-  # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/600
-  # Type: 2
-  # Status: 4
-  # Comment:
-  git cherry-pick -n a5265365
 
   # Title: WIP: renderer-native: Accept frames without ever blocking
   # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/73
@@ -216,13 +115,6 @@ prepare() {
   # Comment: Might be replaced: https://gitlab.gnome.org/GNOME/mutter/merge_requests/73#note_544784
   # git cherry-pick -n 35ec0eaf^..202530c9
 
-  # Title: clutter: Force an allocation on clone source if necessary
-  # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/693
-  # Type: 3
-  # Status: 4
-  # Comment: Sometimes produces artefacts in the application grid: https://gitlab.gnome.org/GNOME/mutter/merge_requests/693#note_566491
-  #git cherry-pick -n 08a3cbfc
-
   # Title: core: Only trigger MetaWorkspace::window-* on toplevel window types
   # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/701
   # Type: 1
@@ -230,48 +122,18 @@ prepare() {
   # Comment:
   git cherry-pick -n d7f799bf
 
-  # Title: Make MetaCullable implementations more thorough wrt painted areas
-  # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/698
-  # Type: 1
-  # Status: 4
-  # Comment:
-  git cherry-pick -n 2812338b^..f501fdcc
-
-  #Title: window-actor: Fix rectangle coordinates in culling
-  #URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/707
-  #Type: 3
-  #Status: 4
-  #Comment: Fix for !698
-  git cherry-pick -n aae9f3a3
-
   # Title: clutter-stage-cogl: Use regions
   # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/692
   # Type: 1
-  # Status: 1
+  # Status: 2
   # Comment:
-  #git cherry-pick -n f2694e72^..d0edf91c
+  git cherry-pick -n 1393cd7a^..0f5e3851
 
   # Title: clutter/stage: Update input devices right after doing a relayout
   # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/429
   # Type: 1
-  # Status: 2
-  # Comment: Can't be cleanly applied on 3.32 without lot of cherry-pick unrelated commits...
-  patch -Np1 < ../429.diff
-  git add clutter/clutter/*.{c,h}
-
-  # Title: Implement clipboard manager
-  # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/320
-  # Type: 2
-  # Status: 4
-  # Comment: crashes in wayland session when trying to drag a folder/file in nautilus or a tab in firefox
-  # git cherry-pick -n 156980ef^..02c99524
-
-  # Title: renderer-native: Reference count front buffers.
-  # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/119
-  # Type: 2
-  # Status: 4
-  # Comment: Needed for !719 to behave well
-  git cherry-pick -n fecc57dd
+  # Status: 1
+  # git_cp_by_msg '!429' 'clutter/stage-cogl: Add method to check if ongoing repaint is clipped' 'clutter/stage: Use a device-manager method to update input devices'
 
   # Title: Remove pending_swaps counter
   # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/719
@@ -280,19 +142,12 @@ prepare() {
   # Comment:
   git_cp_by_msg '!719' 'clutter/stage-cogl: Remove pending_swaps counter'
 
-  # Title: clutter: Use va_marshallers for actor signals
-  # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/700
-  # Type: 1
-  # Status: 4
-  # Comment:
-  git cherry-pick -n c4a9117e^..9d65eab5 -Xours
-
   # Title: Sync timelines to hardware vsync
   # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/724
   # Type: 1
   # Status: 2
   # Comment:
-  patch -Np1 < ../724.diff
+  git_cp_by_msg '!724' 'clutter/stage: Add API to get_next_presentation_time' 'clutter/master-clock-default: Sync timelines to hardware vsync'
 }
 
 build() {
@@ -302,6 +157,16 @@ build() {
     -D installed_tests=false
   ninja -C build
 }
+
+check() (
+  mkdir -p -m 700 "${XDG_RUNTIME_DIR:=$PWD/runtime-dir}"
+  glib-compile-schemas "${GSETTINGS_SCHEMA_DIR:=$PWD/build/data}"
+  export XDG_RUNTIME_DIR GSETTINGS_SCHEMA_DIR
+
+  # Unexpected passes in conform test
+  # Stacking test flaky
+  dbus-run-session xvfb-run -s '+iglx -noreset' meson test -C build --print-errorlogs || :
+)
 
 package() {
   DESTDIR="$pkgdir" meson install -C build
