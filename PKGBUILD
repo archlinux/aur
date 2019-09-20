@@ -2,7 +2,7 @@
 
 pkgname=moneydance
 pkgver=2019.1880
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A personal finance manager for Mac, Windows and Linux"
 arch=('i686' 'x86_64')
@@ -48,6 +48,6 @@ package() {
   install -m644 lib/com/moneydance/apps/md/view/gui/glyphs/appicon_128.png "$pkgdir/usr/share/pixmaps/$pkgname.png" || return 1
   install -m644 lib/*.jar "$pkgdir/usr/share/java/$pkgname" || return 1
 }
-sha256sums=('48304a6859a97210abf103d899e5eadc113ee1642a3bde78a92ece77a9694125'
+sha256sums=('9a42c643b8a345d56a5367dfdda31bba6aad89d8a1f17d82b81fcfe2e2e13a5b'
             '242dc66a95c4842099e41092bd87ccaf97c314bed1f9865f5c6a72f135f7de21')
 sha256sums_x86_64=('9670ef2977c3cbff41666bd6a6c83ef8e81343ab1b2d009d4e07dd99acb30d25')

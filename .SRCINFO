@@ -1,7 +1,7 @@
 pkgbase = moneydance
 	pkgdesc = A personal finance manager for Mac, Windows and Linux
 	pkgver = 2019.1880
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.moneydance.com/
 	arch = i686
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = moneydance
 	depends = bash
 	source = moneydance.sh
 	source = moneydance.desktop
-	sha256sums = 48304a6859a97210abf103d899e5eadc113ee1642a3bde78a92ece77a9694125
+	sha256sums = 9a42c643b8a345d56a5367dfdda31bba6aad89d8a1f17d82b81fcfe2e2e13a5b
 	sha256sums = 242dc66a95c4842099e41092bd87ccaf97c314bed1f9865f5c6a72f135f7de21
-	source_x86_64 = moneydance_amd64-2019.1880-1.tar.gz::https://infinitekind.com/stabledl/current/Moneydance_linux_amd64.tar.gz
+	source_x86_64 = moneydance_amd64-2019.1880-2.tar.gz::https://infinitekind.com/stabledl/current/Moneydance_linux_amd64.tar.gz
 	sha256sums_x86_64 = 9670ef2977c3cbff41666bd6a6c83ef8e81343ab1b2d009d4e07dd99acb30d25
 
 pkgname = moneydance
