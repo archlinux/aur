@@ -1,7 +1,7 @@
 # Maintainer: Josef Vybíhal (josef.vybihal@gmail.com)
 
 pkgname=ms-teams
-pkgver=1.2.00.25951
+pkgver=1.2.00.26154
 pkgrel=1
 pkgdesc="Microsoft Teams for Linux is your chat-centered workspace in Office 365"
 arch=('x86_64')
@@ -15,7 +15,7 @@ install=${pkgname}.install
 _source_arch="amd64"
 #[ "${CARCH}" = 'x86_64' ] && _source_arch="amd64"
 source=("teams-insiders_${pkgver}_${_source_arch}.deb::https://packages.microsoft.com/repos/ms-teams/pool/main/t/teams-insiders/teams-insiders_${pkgver}_${_source_arch}.deb")
-sha256sums=('7b657b54b1ba185b038c9d5e9dfe2bc5678f162971e0007cdb3fecfa6ec6f931')
+sha256sums=('012c006ca65d639ee7188689195239d1c320d070cd884f696f0420494ba51bae')
 
 package() {
   msg2 "Extracting the data.tar.xz"
