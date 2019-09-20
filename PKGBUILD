@@ -6,7 +6,7 @@
 pkgbase=termite-nocsd
 pkgname=('termite-nocsd')
 pkgver=15
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple VTE-based terminal without GTK client side decorations. Perfect for wayland+sway users."
 url="https://github.com/thestinger/termite/"
 license=('LGPL')
@@ -16,13 +16,13 @@ arch=('x86_64')
 depends=('gtk3' 'pcre2' 'gnutls' 'vte-common')
 makedepends=('git' 'ncurses' 'intltool' 'gperf' 'gtk-doc')
 _vtever=0.56.2.a
-source=("${pkgbase}::git+https://github.com/thestinger/termite#tag=v${pkgver}"
+source=("${pkgbase}::git+https://github.com/thestinger/termite#commit=7e9a93b421b9596f8980645a46ac2ad5468dac06"
         "git+https://github.com/thestinger/vte-ng#tag=${_vtever}"
         "termite-util::git+https://github.com/thestinger/util"
         "termite.patch")
 sha256sums=('SKIP'
             'SKIP'
-	    'SKIP'
+            'SKIP'
             '4319296a88502b0a0397704177047cf7b0d39816b87d0f477a92ced4d1f16715')
 
 prepare() {
