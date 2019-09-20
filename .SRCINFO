@@ -1,0 +1,17 @@
+pkgbase = pigpio
+	pkgdesc = A C library for controlling GPIOs on a Raspberry Pi
+	pkgver = 71
+	pkgrel = 1
+	url = http://abyz.me.uk/rpi/pigpio/
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = custom:UNLICENSE
+	provides = pigpio
+	conflicts = python-pigpio
+	source = pigpio-71.tar.gz::https://github.com/joan2937/pigpio/archive/V71.tar.gz
+	sha256sums = 41698abdbc95b60a4f4dbcc2fe2a6e88f2bca4dc78d0c0b55a3a932fa95a9249
+
+pkgname = pigpio
+
