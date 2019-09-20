@@ -86,7 +86,7 @@ def store_fonts(dest: Path, source: Path):
     for font in filter(lambda f: f.is_file(), source.glob("*")):
         shutil.move(source / font, dest / font.name)
 
-    subprocess.run(["fc-cache", "--force", "--verbose"]).check_returncode()
+    subprocess.run(["fc-cache", "--force"]).check_returncode()
 
 
 if __name__ == "__main__":
