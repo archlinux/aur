@@ -12,6 +12,7 @@ pkgbase = chromium-widevine
 	depends = nspr
 	depends = nss
 	provides = chromium-widevine-dev=4.10.1503.4
+	provides = vivaldi-widevine=4.10.1503.4
 	conflicts = chromium-widevine-dev
 	options = !strip
 	source = chrome-eula_text-20190829.html::https://www.google.com/intl/en/chrome/privacy/eula_text.html
