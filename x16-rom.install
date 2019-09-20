@@ -1,0 +1,3 @@
+post_install() {
+	echo "You can find the ROMs for the Commander X16 and Commodore 64 in /usr/share/x16-rom, have fun!"
+}
