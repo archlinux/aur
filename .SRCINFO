@@ -1,6 +1,6 @@
 pkgbase = wpewebkit
 	pkgdesc = Web content engine library optimized for embedded devices
-	pkgver = 2.24.2
+	pkgver = 2.26.0
 	pkgrel = 0
 	url = https://wpewebkit.org
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = wpewebkit
 	makedepends = cmake
 	makedepends = python
 	makedepends = ninja
+	makedepends = gtk-doc
 	depends = cairo
 	depends = libxslt
 	depends = gst-plugins-base-libs
@@ -22,12 +23,16 @@ pkgbase = wpewebkit
 	depends = harfbuzz-icu
 	depends = woff2
 	depends = openjpeg2
-	depends = libwpe>=1.2.0
-	source = https://wpewebkit.org/releases/wpewebkit-2.24.2.tar.xz
-	md5sums = 3604a2167827c8354f6dcbab98305d7b
-	sha1sums = 1248d7723d0e6aec52cafc27a92c5c335c1abdd4
-	sha256sums = cf251a467b3bcae50f97e22f4baccca49fcbbd54162dc5b71c0b1ebf655fd95f
-	sha512sums = ee3f6767d9d153043635426f0998f9e5264fb8dfbe2ac2fbebcf0461d993c11b82d63d192f6053f9b1947e3488ead9c9526fa7c07d2e9dfc798bd49000956798
+	depends = libseccomp
+	depends = bubblewrap
+	depends = xdg-dbus-proxy
+	depends = geoclue
+	depends = libwpe>=1.4.0
+	source = https://wpewebkit.org/releases/wpewebkit-2.26.0.tar.xz
+	md5sums = 59a2e64f145b3445187a22eff1f73293
+	sha1sums = 757ab5da23ef7944332d4c57fcf56a932e933ce4
+	sha256sums = a97a24fe0c22243c873c359d7636512c01016ea2068a457ba651040f1a07ee3e
+	sha512sums = a783fedb878a66251d77c51f6f5c6e55ac8ee285ad395ce1f4935f397ddf776b50359757d2d418ae07f9aa11d2eccdb699920d7cc377dc04df389b18b22985a2
 
 pkgname = wpewebkit
 
