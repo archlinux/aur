@@ -60,11 +60,14 @@ def parse_config(config_file: Path) -> Tuple[str, Dict[str, Set[str]]]:
         allow_no_value=True, inline_comment_prefixes=(";")
     )
     config.read_dict({"options": {"name": "myosevka"}})
+
+    sections = {"common", "upright", "italic", "oblique"}
+    config.read_dict({s: {} for s in sections})
     config.read(config_file)
 
     font_styles = {
         section: {f"v-{char}-{style}" for char, style in config[section].items()}
-        for section in {"common", "upright", "italic", "oblique"}
+        for section in sections
     }
 
     for option, value in config["options"].items():
