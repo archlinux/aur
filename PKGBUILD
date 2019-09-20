@@ -2,7 +2,7 @@
 
 pkgname=ashuffle
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Automatic library-wide shuffle for mpd."
 url="https://github.com/joshkunz/ashuffle"
 arch=(x86_64 i686 armv6h armv7h aarch64)
@@ -26,4 +26,7 @@ package() {
   cd "ashuffle-${pkgver}"
 
   DESTDIR="${pkgdir}" ninja -C builddir install
+
+  install -Dm644 "LICENSE" \
+    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
