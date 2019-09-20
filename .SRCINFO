@@ -1,6 +1,6 @@
 pkgbase = cog
 	pkgdesc = WPE launcher and webapp container
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 0
 	url = https://github.com/Igalia/cog
 	arch = i686
@@ -9,17 +9,17 @@ pkgbase = cog
 	groups = wpe
 	license = custom:MIT
 	makedepends = cmake
-	depends = wpewebkit>=2.24.0
-	depends = wpebackend-fdo>=1.2.0
+	depends = wpewebkit>=2.26.0
+	depends = wpebackend-fdo>=1.4.0
 	conflicts = cog-git
-	source = https://github.com/Igalia/cog/releases/download/v0.3.0/cog-0.3.0.tar.xz
-	source = https://github.com/Igalia/cog/releases/download/v0.3.0/cog-0.3.0.tar.xz.asc
+	source = https://wpewebkit.org/releases/releases/cog-0.4.0.tar.xz
+	source = https://wpewebkit.org/releases/releases/cog-0.4.0.tar.xz.asc
 	validpgpkeys = 5AA3BC334FD7E3369E7C77B291C559DBE4C9123B
-	md5sums = 4a144065ee8f1f86b2aa686f3e1bf382
+	md5sums = 75a0838ee6c81bb8df1b254f525440a6
 	md5sums = SKIP
-	sha1sums = 6df3af04dfadf4b7dfd09a4230480017a30123e1
+	sha1sums = 284d2a641e6269b296057918602c8c94eb831527
 	sha1sums = SKIP
-	sha256sums = 6f063c133ad65d153dad08f4f8d912539bfd8fe4ff174a8e3ff34dd80b34330f
+	sha256sums = e9c13a51232434b7340a419b1e6f59c40c582cd80c8e60bd9ec7de16c904fc03
 	sha256sums = SKIP
 
 pkgname = cog
