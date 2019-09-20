@@ -1,7 +1,7 @@
 # Maintainer: Julien Savard <juju@juju2143.ca>
 pkgname=x16-docs-git
 pkgver=r32.2f77157
-pkgrel=1
+pkgrel=2
 pkgdesc="Documentation not found in other packages for The 8-Bit Guy's Commander X16"
 arch=('any')
 url="http://commanderx16.com/"
@@ -29,8 +29,8 @@ pkgver() {
 
 build() {
 	cd "${pkgname%-git}"
-	pandoc --from gfm --to html -c ../github-pandoc.css --standalone --metadata pagetitle="Commander X16 Programmer's Reference Guide" Commander\ X16\ Programmer\'s\ Reference\ Guide.md --output Programmer\'s\ Reference\ Guide.html
-	pandoc --from gfm --to html -c ../github-pandoc.css --standalone --metadata pagetitle="VERA Programmer's Reference.md" VERA\ Programmer\'s\ Reference.md --output VERA\ Programmer\'s\ Reference.html
+	pandoc --from gfm --to html -c github-pandoc.css --standalone --metadata pagetitle="Commander X16 Programmer's Reference Guide" Commander\ X16\ Programmer\'s\ Reference\ Guide.md --output Programmer\'s\ Reference\ Guide.html
+	pandoc --from gfm --to html -c github-pandoc.css --standalone --metadata pagetitle="VERA Programmer's Reference.md" VERA\ Programmer\'s\ Reference.md --output VERA\ Programmer\'s\ Reference.html
 }
 
 package() {
