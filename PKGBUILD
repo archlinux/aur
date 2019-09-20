@@ -2,7 +2,7 @@
 
 pkgname=lander-git
 _pkgname=lander
-pkgver=r296.d5cbffd
+pkgver=r359.04023bc
 pkgrel=1
 pkgdesc="Lunar Lander clone using OpenGL (git)"
 url="https://github.com/nickg/lander"
@@ -19,11 +19,6 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-  cd "${srcdir}/${pkgname}"
-  gendesk -f -n --pkgname "${_pkgname}" --pkgdesc "${pkgdesc}" --exec "lander" --categories "Game;ActionGame"
-}
-
 build() {
   cd ${srcdir}/${pkgname}
   if [ -d build ]
@@ -32,17 +27,13 @@ build() {
   fi
   mkdir build
   cd build
-  cmake -DCMAKE_BUILD_TYPE=Debug -DSDL2_LIBRARIES=-lSDL2 -DCMAKE_INSTALL_PREFIX=/usr ..
-  make
+  meson .. --prefix=/usr
+  ninja 
 }
 
 package() {
-  cd ${srcdir}/${pkgname}
-  pushd build
-  make DESTDIR="${pkgdir}" install
-  popd
-  install -Dm644 "${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-  install -Dm644 data/images/ship.png "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
+  cd ${srcdir}/${pkgname}/build
+  DESTDIR="${pkgdir}" ninja install
 }
 
 # vim:set ts=2 sw=2 et:
