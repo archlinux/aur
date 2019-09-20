@@ -1,14 +1,14 @@
 # Maintainer: Yousef Sultan <yousef.su.2000@gmail.com>
 
 pkgname=bbswitch-monitor
-pkgver=0.1.1
-pkgrel=2
+pkgver=0.1.2
+pkgrel=3
 pkgdesc="System tray icon to monitor external GPU on/off status with Bumblebee"
 arch=('x86_64')
 url='https://github.com/MicroDroid/bbswitch-monitor'
 provides=('bbswitch-monitor')
 license=('MIT')
-depends=('bumblebee')
+depends=('bbswitch')
 makedepends=('make' 'qt5-base')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/MicroDroid/bbswitch-monitor/archive/v${pkgver}.tar.gz")
 sha256sums=('964ed445ffbb2e91e36e5ecbd1a88bf5c9647fdb630cf5cf601bb6eed35bad90')
