@@ -1,5 +1,5 @@
 pkgname=linvst2
-pkgver=2.6.6
+pkgver=2.7.0
 pkgrel=1
 pkgdesc="enables Windows vst's to be used as Linux vst's in Linux vst capable DAW's"
 arch=('x86_64')
@@ -7,7 +7,7 @@ url="https://github.com/osxmidi/LinVst"
 depends=('wine' 'python>=3.7')
 conflicts=('linvst' 'linvst-stable')
 replaces=('linvst' 'linvst-stable')
-source=("https://github.com/osxmidi/LinVst/releases/download/2.66/LinVst-64bit-32bit_${pkgver}.deb"
+source=("https://github.com/osxmidi/LinVst/releases/download/2.7/LinVst-64bit-32bit_${pkgver}.deb"
         "w2lvst2")
 sha256sums=('SKIP'
             'SKIP')
