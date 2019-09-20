@@ -7,7 +7,7 @@
 
 pkgname=mutter-performance
 pkgver=3.34.0+14+g0e69fe078
-pkgrel=1
+pkgrel=2
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -125,9 +125,9 @@ prepare() {
   # Title: clutter-stage-cogl: Use regions
   # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/692
   # Type: 1
-  # Status: 2
+  # Status: 2 (Crashes GDM)
   # Comment:
-  git cherry-pick -n 1393cd7a^..0f5e3851
+  # git cherry-pick -n 1393cd7a^..0f5e3851
 
   # Title: clutter/stage: Update input devices right after doing a relayout
   # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/429
