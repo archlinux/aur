@@ -6,6 +6,7 @@ pkgbase = gendev
 	arch = any
 	license = BSD
 	depends = texinfo
+	depends = jdk8-openjdk
 	options = !strip
 	source = https://github.com/kubilus1/gendev/releases/download/0.4.0/gendev_0.4.0.txz
 	md5sums = 37e61b25baa4229aa6b6c3d79d7b7953
