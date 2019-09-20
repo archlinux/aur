@@ -1,6 +1,6 @@
 # Maintainer: Alex Gentilucci <alexander.gentilucci@gmail.com>
 pkgname=ft2-clone
-pkgver=b166
+pkgver=b168
 pkgrel=1
 pkgdesc="A portable Fasttracker II clone written in C"
 arch=('x86_64')
