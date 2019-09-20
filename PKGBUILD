@@ -3,7 +3,7 @@
 # Contributor: osch <oliver@luced.de>
 pkgname=surge-synthesizer-git
 _pkgname=surge
-pkgver=r992.0d338d8
+pkgver=r1010.856e43b
 pkgrel=1
 pkgdesc="Surge Synthesizer plugin (LV2/VST3, git head)"
 arch=('x86_64')

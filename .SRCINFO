@@ -1,6 +1,6 @@
 pkgbase = surge-synthesizer-git
 	pkgdesc = Surge Synthesizer plugin (LV2/VST3, git head)
-	pkgver = r992.0d338d8
+	pkgver = r1010.856e43b
 	pkgrel = 1
 	url = https://surge-synthesizer.github.io
 	arch = x86_64
