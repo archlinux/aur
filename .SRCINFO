@@ -1,6 +1,6 @@
 pkgbase = x16-rom
 	pkgdesc = ROM files for The 8-Bit Guy's Commander X16
-	pkgver = r30
+	pkgver = r31
 	pkgrel = 1
 	url = http://commanderx16.com/
 	arch = any
@@ -9,10 +9,11 @@ pkgbase = x16-rom
 	license = GPL3
 	makedepends = cc65
 	makedepends = pandoc
-	source = https://github.com/commanderx16/x16-rom/archive/r30.tar.gz
+	optdepends = x16-emulator: emulator for the ROMs
+	source = https://github.com/commanderx16/x16-rom/archive/r31.tar.gz
 	source = https://raw.githubusercontent.com/commanderx16/x16-emulator/4f1c937cd296c8f5cde8e463b672696d5fbd9b8c/github-pandoc.css
 	source = https://raw.githubusercontent.com/mobluse/chargen-maker/6bb59c1859e7c37397a464444d208072aac83b81/chargen.txt
-	md5sums = a48185f8243c6eba1460801963dfe536
+	md5sums = e45226c67087580c6dff83da0a27ca8a
 	md5sums = 3accdbadaf70264c743b1f655f5dc146
 	md5sums = 9a579aff9633b7ffbb6d27335d193cef
 
