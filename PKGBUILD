@@ -9,7 +9,7 @@
 
 pkgname='cronie-selinux'
 pkgver=1.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Daemon that runs specified programs at scheduled times and related tools with SELinux support'
 url='https://github.com/cronie-crond/cronie/'
 license=('custom:BSD')
@@ -18,10 +18,12 @@ depends=('pam-selinux' 'bash' 'run-parts' 'libselinux')
 optdepends=('smtp-server: send job output via email'
             'smtp-forwarder: forward job output to email server')
 source=("https://github.com/cronie-crond/cronie/releases/download/${pkgname/-selinux}-${pkgver}-final/${pkgname/-selinux}-${pkgver}.tar.gz"
+        '0001-do-not-log-carriage-return.patch'
         'service'
         'pam.d'
         'deny')
 sha256sums=('af8970559cad4262f8ffd7ec72abf682d2dcce04fdfb8f206a71d96566aba882'
+            '595e96997afe506ad93a98896830f3651667f56406a5ae67f4bcf513cfcb45ad'
             'ac3ff3c8a5ce1b6367b06877b4b12ff74e7f18a3c510fb9f80d6ea6b6321e3b1'
             '00864268b491bab8c66400a4a4b4bf85f168a6e44e85676105e084940924090c'
             'ae6e533ecdfc1bd2dd80a9e25acb0260cbe9f00c4e4abee93d552b3660f263fc')
@@ -35,6 +37,11 @@ conflicts=('cron' "${pkgname/-selinux}" "selinux-${pkgname/-selinux}")
 provides=('cron' "${pkgname/-selinux}=${pkgver}-${pkgrel}"
           "selinux-${pkgname/-selinux}=${pkgver}-${pkgrel}")
 groups=('selinux')
+
+prepare() {
+	cd "${srcdir}/${pkgname/-selinux}-${pkgver}"
+	patch -Np1 < ../0001-do-not-log-carriage-return.patch
+}
 
 build() {
 	cd "${srcdir}/${pkgname/-selinux}-${pkgver}"
