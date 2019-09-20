@@ -8,7 +8,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=gstm-git
-pkgver=1.3.3.r2.g4c584e4
+pkgver=1.3.3.r3.g5b8d5bb
 pkgrel=1
 pkgdesc="Gnome SSH Tunnel Manager - Gtk3 Edition"
 arch=('i686' 'x86_64')

@@ -1,12 +1,14 @@
 pkgbase = gstm-git
 	pkgdesc = Gnome SSH Tunnel Manager - Gtk3 Edition
-	pkgver = 1.3.3.r2.g4c584e4
+	pkgver = 1.3.3.r3.g5b8d5bb
 	pkgrel = 1
 	url = https://github.com/dallenwilson/gstm
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = intltool
+	makedepends = autoconf
+	makedepends = automake
 	depends = openssh
 	depends = libxml2
 	depends = glib2
