@@ -1,7 +1,7 @@
 pkgbase = velocity
 	pkgdesc = Free open-source templating engine
 	pkgver = 2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://velocity.apache.org/
 	arch = any
 	license = Apache
@@ -11,7 +11,7 @@ pkgbase = velocity
 	depends = java-bcel
 	depends = java-commons-collections
 	depends = java-commons-logging
-	depends = java-commons-lang3
+	depends = java-commons-lang
 	depends = java-jdom
 	depends = junit
 	depends = log4j

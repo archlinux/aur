@@ -4,7 +4,7 @@
 
 pkgname=velocity
 pkgver=2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Free open-source templating engine"
 arch=(any)
 url="http://velocity.apache.org/"
@@ -13,7 +13,7 @@ depends=('jakarta-oro'
          'java-bcel'
          'java-commons-collections'
          'java-commons-logging'
-         'java-commons-lang3'
+         'java-commons-lang'
          'java-jdom'
          'junit'
          'log4j')
