@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=freefem-git
-pkgver=4.3.1r20190619
+pkgver=4.4.1r20190920
 epoch=1
 pkgrel=1
 pkgdesc='A PDE oriented language using the finite element method from git'
@@ -28,8 +28,9 @@ prepare() {
 	      --prefix=/usr \
 	      --sysconfdir=/etc \
 	      --enable-download \
+	      --enable-optim \
 	      --disable-mumps \
-	      --enable-hpddm
+	      --disable-hpddm
   find . -name Makefile -exec sed -i 's+^gcc+gcc =+' {} \;
   find . -name Makefile -exec sed -i 's+^dir+dir =+' {} \;
 }
