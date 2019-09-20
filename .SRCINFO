@@ -1,6 +1,6 @@
 pkgbase = gnome-control-center-nocheese
 	pkgdesc = GNOME's main interface to configure various aspects of the desktop.
-	pkgver = 3.32.2
+	pkgver = 3.34.0.1+10+g0f8e3f332
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/gnome-control-center
 	arch = x86_64
@@ -45,7 +45,7 @@ pkgbase = gnome-control-center-nocheese
 	optdepends = openssh: remote login
 	provides = gnome-control-center
 	conflicts = gnome-control-center
-	source = git+https://gitlab.gnome.org/GNOME/gnome-control-center.git#commit=b3a3c544b37e6c355d94e13069fd86e3978a417d
+	source = git+https://gitlab.gnome.org/GNOME/gnome-control-center.git#commit=0f8e3f332c47e1f9bb336e320d4c5a6d9d762572
 	source = git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git
 	sha256sums = SKIP
 	sha256sums = SKIP
