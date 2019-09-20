@@ -1461,3 +1461,18 @@ Mon Jul 29 06:14:21 2019 +0200
      2019-05-31 ae3adfb3 actionless chore(plugins: oomoxify): update submodule (recursive mkdir)
      2019-04-14 43daeb9e Devon Maloney doc(readme): Add Flatpak instructions (#241)
      2019-04-15 43b67e46 Heimen Stoffels chore(colors: contrib): Create Airmail-Dark (#240)
+
+
+Sat Sep 21 01:42:33 2019 +0200
+-------------------------------------------------
+1.12.4          Release 1.12.4
+    
+    Notable changes:
+     2019-09-20 84e46ecc Leandro Stanger chore(packaging: flatpack): Add tag release (#254)
+     2019-09-15 f02b8e5a actionless fix(oomox_gui: settings): don't fail if config file is not a correct json (ref: #262)
+     2019-09-15 4899896d actionless chore(plugins: theme: arc): update submodule (tag: 20190910 + 11 commits)
+     2019-09-14 d7e05230 actionless chore(plugins: theme: materia): update submobule (tag: v20190912)
+     2019-09-03 a9ed1ec2 Vlada Makhonina Add Baloon theme
+     2019-08-11 63515376 Gideon Wolfe chore({scripted_,}-colors: xresources): first attempt at universal reverse theme (#258)
+     2019-08-06 8937dc20 actionless chore(plugins: icons: papirus): update submodule (tag: 20190802+ 35 commits)
+     2019-08-05 640618b4 actionless chore(plugins: oomoxify): update submodule (replace new red color on disliked Radar/Discover song)
