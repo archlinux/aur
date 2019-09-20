@@ -25,16 +25,29 @@ build() {
 	cd "${srcdir}/${pkgname}-${pkgver}/build"
 	export CXXFLAGS="$CXXFLAGS -std=c++11"
 	
-	cmake -DBUILD_QT_VERSION=5 \
-				-DCMAKE_INSTALL_PREFIX=/usr \
-				-DCMAKE_BUILD_TYPE=Release \
-				..
-	make
+	if which ninja &> /dev/null; then
+		_ninja="-G Ninja"
+	fi
+	msg "$_ninja"
+	cmake $_ninja \
+		-DBUILD_QT_VERSION=5 \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_BUILD_TYPE=Release \
+		..
+	if [[ -z $_ninja ]]; then
+		make
+	else
+		ninja
+	fi
 }
 
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver}/build"
-	make install DESTDIR=${pkgdir}
+	if which ninja &> /dev/null; then
+		DESTDIR=${pkgdir} ninja install
+	else
+		make install DESTDIR=${pkgdir}
+	fi
 }
 
 # vim: set ts=2 sw=2 ft=sh noet:
