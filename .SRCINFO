@@ -1,0 +1,21 @@
+pkgbase = x16-docs-git
+	pkgdesc = Documentation not found in other packages for The 8-Bit Guy's Commander X16
+	pkgver = r32.2f77157
+	pkgrel = 1
+	url = http://commanderx16.com/
+	arch = any
+	groups = commander-x16
+	license = unknown
+	makedepends = git
+	makedepends = pandoc
+	optdepends = x16-emulator: X16 emulator
+	optdepends = x16-rom: X16 ROMs
+	provides = x16-docs
+	conflicts = x16-docs
+	source = git+https://github.com/commanderx16/x16-docs.git
+	source = https://raw.githubusercontent.com/commanderx16/x16-emulator/master/github-pandoc.css
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = x16-docs-git
+
