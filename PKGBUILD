@@ -1,6 +1,6 @@
 # Maintainer: Julien Savard <juju@juju2143.ca>
 pkgname=x16-emulator-git
-pkgver=r30.r19.g4c645a8
+pkgver=r31.r2.g6bf9d9e
 pkgrel=1
 pkgdesc="An emulator for The 8-Bit Guy's Commander X16"
 arch=('x86_64')
@@ -9,19 +9,26 @@ license=('BSD')
 groups=('commander-x16')
 depends=('sdl2')
 makedepends=('git' 'pandoc')
-optdepends=()
+optdepends=('x16-rom: ROMs for the emulator')
 provides=('x16-emulator')
 conflicts=('x16-emulator')
 replaces=()
 options=()
 install=
 changelog=
-source=("git+https://github.com/commanderx16/x16-emulator.git")
-md5sums=('SKIP')
+source=("git+https://github.com/commanderx16/x16-emulator.git"
+	"modify-base-path.patch")
+md5sums=('SKIP'
+	'5cd0550d2af1b4267c9b9f30eed9691e')
 
 pkgver() {
 	cd "${pkgname%-git}"
 	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+	cd "${pkgname%-git}"
+	patch -uN main.c ../modify-base-path.patch
 }
 
 build() {
