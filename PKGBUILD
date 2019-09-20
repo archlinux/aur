@@ -1,5 +1,5 @@
 pkgname=firefox-extension-video-download-helper
-pkgver=7.3.6
+pkgver=7.3.7
 pkgrel=1
 pkgdesc='The easy way to download and convert Web videos from hundreds of YouTube-like sites.'
 arch=('any')
