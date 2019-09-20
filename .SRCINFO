@@ -1,6 +1,6 @@
 pkgbase = fossilize-git
 	pkgdesc = Library and Vulkan layer for serializing various persistent Vulkan objects which typically end up in hashmaps
-	pkgver = 0.0.0+406.0d4a53a205
+	pkgver = 0.0.0+413.0b082debfb
 	pkgrel = 1
 	url = https://github.com/ValveSoftware/Fossilize
 	arch = x86_64
