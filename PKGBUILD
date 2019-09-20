@@ -20,10 +20,10 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-gc
-_srcver=5.2.14-arch2
+_srcver=5.3-arch1
 pkgver=${_srcver%-*}
 pkgrel=1
-_bmqversion=099
+_bmqversion=100
 arch=(x86_64)
 url="https://cchalpha.blogspot.co.uk/"
 license=(GPL2)
@@ -33,7 +33,7 @@ makedepends=(
 )
 options=('!strip')
 _srcname=linux-$_srcver
-_bmq_patch="v5.2.10+_bmq${_bmqversion}.patch"
+_bmq_patch="v5.3_bmq${_bmqversion}.patch"
 _gcc_more_v='20190822'
 source=(
   "$_srcname.tar.gz::https://git.archlinux.org/linux.git/snapshot/linux-$_srcver.tar.gz"
@@ -41,7 +41,7 @@ source=(
   60-linux.hook  # pacman hook for depmod
   90-linux.hook  # pacman hook for initramfs regeneration
   linux.preset   # standard config files for mkinitcpio ramdisk
-  "0001_${_bmq_patch}::https://gitlab.com/alfredchen/bmq/raw/master/5.2/${_bmq_patch}"
+  "0001_${_bmq_patch}::https://gitlab.com/alfredchen/bmq/raw/master/5.3/${_bmq_patch}"
   "0002_enable_additional_cpu_optimizations-${_gcc_more_v}.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/${_gcc_more_v}.tar.gz"
 )
 validpgpkeys=(
@@ -49,12 +49,12 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('667697c1e94951184962a97c795f3319e9f35d58282b2ec094790f9fced8c681'
-            '2cec1dc4c34746cdcb1a7ddc28bdceb8a599e73176db9efb6dd82df78f30e8c0'
+sha256sums=('587d4f9bb44b99e89589e880f987c2f7a402e5f2a946ff870f43ad3bdd31a192'
+            'b8c505fa06525158dcaf4bc071cee13086f455c3cdbd0ebd53180dc3f12bd776'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            '0f9e4b66b5049166774760c98a6f3daabc3298baa74b87abe45517ab2c80c053'
+            '4349ee052909a12f04a9a3e2ede01beafa569eca02458ecb2aebc7a0e4a43cac'
             '8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5')
 
 _kernelname=${pkgbase#linux}
