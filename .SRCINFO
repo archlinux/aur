@@ -1,0 +1,34 @@
+pkgbase = x16-emulator-bin
+	pkgdesc = An emulator for The 8-Bit Guy's Commander X16 (release package)
+	pkgver = r31
+	pkgrel = 1
+	url = http://commanderx16.com/
+	arch = any
+	groups = commander-x16
+	license = unknown
+	optdepends = x16-emulator-bin: X16 emulator
+	optdepends = x16-rom-bin: X16 ROMs
+	optdepends = x16-docs-bin: X16 documentation
+	source = https://github.com/commanderx16/x16-emulator/releases/download/r31/x16emu_linux-r31.zip
+	source = https://raw.githubusercontent.com/commanderx16/x16-emulator/r31/github-pandoc.css
+	md5sums = c70dceb6c7d76fd2c95c0a82f85e6a65
+	md5sums = 3accdbadaf70264c743b1f655f5dc146
+
+pkgname = x16-emulator-bin
+	pkgdesc = An emulator for The 8-Bit Guy's Commander X16 (release package)
+	arch = x86_64
+	license = BSD
+	depends = sdl2
+	provides = x16-emulator
+	conflicts = x16-emulator
+
+pkgname = x16-rom-bin
+	pkgdesc = ROM files for The 8-Bit Guy's Commander X16 (release package)
+	provides = x16-rom
+	conflicts = x16-rom
+
+pkgname = x16-docs-bin
+	pkgdesc = Documentation not found in other packages for The 8-Bit Guy's Commander X16 (release package)
+	provides = x16-docs
+	conflicts = x16-docs
+
