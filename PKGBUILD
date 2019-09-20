@@ -1,8 +1,8 @@
 # Maintainer: Yousef Sultan <yousef.su.2000@gmail.com>
 
 pkgname=bbswitch-monitor
-pkgver=0.1.2
-pkgrel=3
+pkgver=0.1.1
+pkgrel=1
 pkgdesc="System tray icon to monitor external GPU on/off status with Bumblebee"
 arch=('x86_64')
 url='https://github.com/MicroDroid/bbswitch-monitor'
