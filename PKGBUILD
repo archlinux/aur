@@ -1,7 +1,7 @@
 # Maintainer: Alberto Casademunt <alberto.casademunt at protonmail dot ch>
 
 pkgname=gnome-control-center-nocheese
-pkgver=3.32.2
+pkgver=3.34.0.1+10+g0f8e3f332
 pkgrel=1
 pkgdesc="GNOME's main interface to configure various aspects of the desktop."
 url="https://gitlab.gnome.org/GNOME/gnome-control-center"
@@ -22,7 +22,7 @@ optdepends=('system-config-printer: Printer settings'
             'rygel: media sharing'
             'openssh: remote login')
 groups=(gnome)
-_commit=b3a3c544b37e6c355d94e13069fd86e3978a417d  # gnome-3-32
+_commit=0f8e3f332c47e1f9bb336e320d4c5a6d9d762572  # gnome-3-34
 source=("git+https://gitlab.gnome.org/GNOME/gnome-control-center.git#commit=$_commit"
         "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git")
 sha256sums=('SKIP'
@@ -38,9 +38,6 @@ prepare() {
   git submodule init
   git config --local submodule.subprojects/gvc.url "$srcdir/libgnome-volume-control"
   git submodule update
-
-  # Fixup missing tag
-  git tag -f 3.32.2 b3a3c544b37e6c355d94e13069fd86e3978a417d
 }
 
 build() {
@@ -49,7 +46,7 @@ build() {
 }
 
 check() {
-  meson test -C build
+  meson test -C build --print-errorlogs
 }
 
 package() {
