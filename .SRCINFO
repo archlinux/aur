@@ -1,6 +1,6 @@
 pkgbase = wowman
 	pkgdesc = World of Warcraft addon manager. F/OSS, ad-free and privacy respecting.
-	pkgver = 0.9.0
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://github.com/ogri-la/wowman
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = wowman
 	depends = java-runtime
 	provides = wowman
 	conflicts = wowman
-	noextract = wowman-0.9.0-standalone.jar
-	source = https://github.com/ogri-la/wowman/releases/download/0.9.0/wowman-0.9.0-standalone.jar
-	sha256sums = c28029764ebe0672baf3163eef45096012dd4dbfc07bb002ceb24ecab55523f4
+	noextract = wowman-0.9.1-standalone.jar
+	source = https://github.com/ogri-la/wowman/releases/download/0.9.1/wowman-0.9.1-standalone.jar
+	sha256sums = fbe7608037d9ed8be2b809cd1263e38a19f8743332110904d180cfa4d011aa16
 
 pkgname = wowman
 
