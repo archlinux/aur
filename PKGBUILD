@@ -1,20 +1,20 @@
 # Maintainer: grufo <madmurphy333@gmail.com>
 
 pkgname='libconfini'
-pkgver='1.10.0'
+pkgver='1.10.1'
 pkgrel=1
 pkgdesc='Yet another INI parser'
 arch=('i686' 'x86_64')
-url='https://madmurphy.github.io/libconfini/'
+url='https://madmurphy.github.io/libconfini'
 license=('GPL')
-conflicts=('libconfini-git')
+conflicts=("${pkgname}-git" "${pkgname}-bin")
 source=("https://github.com/madmurphy/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('b1ed59ede8dfd150bd1d32e9a1f0a5ca248a040208568d51c1d3048b0aae309e')
+sha256sums=('d1e71164228c08ea4439f5e31e86b7e0f29cdf4ae18ba58e5319f5fc04ab9aaf')
 
 prepare() {
 
 	cd "${srcdir}/${pkgname}-${pkgver}"
-	./autogen.sh --prefix=/usr CFLAGS='-pedantic -std=c99 -g -O2'
+	./autogen.sh --prefix=/usr
 
 }
 
