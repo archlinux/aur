@@ -40,7 +40,7 @@ pkgbase=linux-shmilee
 pkgname=("${pkgbase}" "${pkgbase}-headers" "${pkgbase}-docs")
 _srcname=linux-${_LLL_VER}
 pkgver=${_LLL_VER}.${_LLL_SUBVER}
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -58,6 +58,7 @@ source=(
         ${_UKSM_PATCH}
         'uksm-patch-for-4.19.37+.patch'
         ${_CJKTTY_PATCH}
+        'legacy-wireless-ioctls-4.9+.patch'
         'config'         # the main kernel config file
         '60-linux.hook'  # pacman hook for depmod
         '90-linux.hook'  # pacman hook for initramfs regeneration
@@ -78,6 +79,7 @@ sha256sums=('0c68f5655528aed4f99dae71a5b259edc93239fa899e2df79c055275c21749a1'
             'ec617b1718e6cadfad02c75aca9c4b0e6b6f944bc1a93b7e4d82c847c04b5653'
             'fe32296cad05b08b34369ac49a226ae9591890fb106d0c6bc5b8f690f8d553b3'
             '72be48252f30bc644071bbce2607b773f789c6f19e281b89ab7e16a3d8161ed3'
+            'edfb9939840b8710d6ee0385a8e968609eef348295465bb087744c18ed3496e0'
             '2eb7ec27f3dea53b0aac9ad665195df63e03598a89b6dd1c00af8d2738be88df'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
@@ -112,6 +114,9 @@ prepare() {
   msg "Patching source with Gentoo-zh/linux-cjktty patches"
   cp "../${_CJKTTY_PATCH_FILE}" "../${_CJKTTY_PATCH_FILE}.${_LLL_SUBVER}.patch"
   patch -Np1 -i "../${_CJKTTY_PATCH_FILE}.${_LLL_SUBVER}.patch"
+
+  msg "Patching source to reinstate the legacy wireless ioctls"
+  patch -Np2 -i ../legacy-wireless-ioctls-4.9+.patch
 
   cp -Tf ../config .config
 
