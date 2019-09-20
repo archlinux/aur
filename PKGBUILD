@@ -1,6 +1,6 @@
 # Maintainer: Vinicius Correa <vinicius dot correa at zoho dot com>
 pkgname=gendev
-pkgver=0.3.2
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Genesis development environment for Linux"
 arch=('any')
@@ -10,8 +10,8 @@ depends=('texinfo')
 options=(!strip)
 makedepends=('')
 optdepends=('')
-source=("https://github.com/kubilus1/gendev/releases/download/0.3.2/${pkgname}_${pkgver}.txz")
-md5sums=('bee00fcef94169a82cba3c6b6c415777')
+source=("https://github.com/kubilus1/gendev/releases/download/${pkgver}/${pkgname}_${pkgver}.txz")
+md5sums=('37e61b25baa4229aa6b6c3d79d7b7953')
 
 package() {
   install -dm755 "${pkgdir}/opt"
