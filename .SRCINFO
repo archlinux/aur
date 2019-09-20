@@ -1,13 +1,14 @@
 pkgbase = libconfini-git
 	pkgdesc = Yet another INI parser
-	pkgver = r134.3a19f4b
+	pkgver = r135.8e27fad
 	pkgrel = 1
-	url = https://madmurphy.github.io/libconfini/
+	url = https://madmurphy.github.io/libconfini
 	arch = i686
 	arch = x86_64
 	license = GPL
 	provides = libconfini
 	conflicts = libconfini
+	conflicts = libconfini-bin
 	source = git+https://github.com/madmurphy/libconfini.git
 	md5sums = SKIP
 

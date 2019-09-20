@@ -2,14 +2,14 @@
 
 pkgname='libconfini-git'
 _libname='libconfini'
-pkgver='r134.3a19f4b'
+pkgver='r135.8e27fad'
 pkgrel=1
 pkgdesc='Yet another INI parser'
 arch=('i686' 'x86_64')
-url='https://madmurphy.github.io/libconfini/'
+url='https://madmurphy.github.io/libconfini'
 license=('GPL')
-provides=('libconfini')
-conflicts=('libconfini')
+provides=("${_libname}")
+conflicts=("${_libname}" "${_libname}-bin")
 source=("git+https://github.com/madmurphy/${_libname}.git")
 md5sums=('SKIP')
 
@@ -23,7 +23,7 @@ pkgver() {
 prepare() {
 
 	cd "${srcdir}/${_libname}"
-	./autogen.sh --prefix=/usr CFLAGS='-pedantic -std=c99 -g -O2'
+	./autogen.sh --prefix=/usr
 
 }
 
