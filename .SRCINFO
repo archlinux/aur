@@ -1,6 +1,6 @@
 pkgbase = lutris-wine-meta
 	pkgdesc = Meta package for using lutris with wine
-	pkgver = 1.0.0
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/lutris/lutris/wiki/Wine
 	arch = any
@@ -34,6 +34,8 @@ pkgbase = lutris-wine-meta
 	depends = libxcomposite
 	depends = lib32-libxcomposite
 	depends = libxinerama
+	depends = lib32-libgcrypt
+	depends = libgcrypt
 	depends = lib32-libxinerama
 	depends = ncurses
 	depends = lib32-ncurses
@@ -49,8 +51,6 @@ pkgbase = lutris-wine-meta
 	depends = lib32-gst-plugins-base-libs
 	depends = vulkan-icd-loader
 	depends = lib32-vulkan-icd-loader
-	depends = cups
-	depends = samba
 
 pkgname = lutris-wine-meta
 
