@@ -1,7 +1,8 @@
 pkgbase = gnome-shell-performance
 	pkgdesc = Next generation desktop shell | Attempt to improve the performance by non-upstreamed patches
-	pkgver = 3.32.2+10+g2483b6038
-	pkgrel = 8
+	pkgver = 3.34.0+94+g3d86e6e79
+	pkgrel = 1
+	epoch = 1
 	url = https://wiki.gnome.org/Projects/GnomeShell
 	install = gnome-shell-performance.install
 	arch = x86_64
@@ -9,14 +10,15 @@ pkgbase = gnome-shell-performance
 	license = GPL2
 	makedepends = gtk-doc
 	makedepends = gnome-control-center
-	makedepends = evolution-data-server
+	makedepends = evolution-data-server>=3.34
 	makedepends = gobject-introspection
 	makedepends = git
 	makedepends = meson
 	makedepends = sassc
+	makedepends = asciidoc
 	depends = accountsservice
 	depends = gcr
-	depends = gjs
+	depends = gjs>=2:1.58
 	depends = gnome-bluetooth
 	depends = upower
 	depends = gnome-session
@@ -32,18 +34,16 @@ pkgbase = gnome-shell-performance
 	depends = unzip
 	depends = gstreamer
 	depends = libibus
-	depends = libcap-ng
+	depends = gnome-autoar
 	optdepends = gnome-control-center: System settings
 	optdepends = evolution-data-server: Evolution calendar integration
 	provides = gnome-shell
-	provides = gnome-shell=3.32.2+10+g2483b6038
+	provides = gnome-shell=3.34.0+94+g3d86e6e79
 	conflicts = gnome-shell
-	source = gnome-shell-performance::git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=2483b603869009f7294c00e8a5bdb778eb948b6d
+	source = gnome-shell-performance::git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=3d86e6e791a9e59af3248445a2682cbfe20c60b8
 	source = git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git
-	source = 110.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = ea40cd43b370cc767cefeb554d11f7bd3ee30db8f10e74f11731d42cfb7ee44c
 
 pkgname = gnome-shell-performance
 
