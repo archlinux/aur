@@ -1,0 +1,18 @@
+pkgbase = slock-pam
+	pkgdesc = A simple screen locker for X with patch for PAM auth
+	pkgver = 1.4
+	pkgrel = 1
+	url = https://tools.suckless.org/slock
+	arch = x86_64
+	license = MIT
+	depends = libxext
+	depends = libxrandr
+	provides = slock
+	conflicts = slock
+	source = https://dl.suckless.org/tools/slock-1.4.tar.gz
+	source = https://tools.suckless.org/slock/patches/pam_auth/slock-pam_auth-20190207-35633d4.diff
+	sha256sums = b53849dbc60109a987d7a49b8da197305c29307fd74c12dc18af0d3044392e6a
+	sha256sums = 4ccb97fc919c7bb63c380116c7fbb783277de4388b72a1d9e02932ba938b9036
+
+pkgname = slock-pam
+
