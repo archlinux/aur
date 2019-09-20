@@ -1,0 +1,15 @@
+pkgbase = licensor-git
+	pkgdesc = Write a license to standard output given its SPDX ID
+	pkgver = v1.0.1.r0.gf498f64
+	pkgrel = 1
+	url = https://github.com/raftario/licensor
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	source = licensor-git::git+https://github.com/raftario/licensor
+	sha256sums = SKIP
+
+pkgname = licensor-git
+
