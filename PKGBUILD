@@ -13,13 +13,10 @@ noextract=()
 source=(
   "https://github.com/microsoft/cascadia-code/releases/download/v${pkgver}/Cascadia.ttf"
   "https://github.com/microsoft/cascadia-code/raw/v${pkgver}/LICENSE"
-  "ttf.install"
 )
 md5sums=('be4424ae2b9025062ed0ef751ed23afb'
-         'd7c8ce104cefae86ac6fbc55bf0e3f82'
-         '1f43fbf275c7ee8ee236d9f90c970819')
+         'd7c8ce104cefae86ac6fbc55bf0e3f82')
 
-install="ttf.install"
 
 package() {
   cd "$srcdir"

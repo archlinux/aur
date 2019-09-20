@@ -3,17 +3,14 @@ pkgbase = ttf-cascadia-code
 	pkgver = 1909.16
 	pkgrel = 1
 	url = https://github.com/microsoft/cascadia-code
-	install = ttf.install
 	arch = any
 	license = custom:OFL-1.1
 	depends = fontconfig
 	depends = xorg-font-utils
 	source = https://github.com/microsoft/cascadia-code/releases/download/v1909.16/Cascadia.ttf
 	source = https://github.com/microsoft/cascadia-code/raw/v1909.16/LICENSE
-	source = ttf.install
 	md5sums = be4424ae2b9025062ed0ef751ed23afb
 	md5sums = d7c8ce104cefae86ac6fbc55bf0e3f82
-	md5sums = 1f43fbf275c7ee8ee236d9f90c970819
 
 pkgname = ttf-cascadia-code
 
