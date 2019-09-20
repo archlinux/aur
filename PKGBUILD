@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=mpv-build-git
-pkgver=v0.29.0.400.gebab42c9a8
+pkgver=v0.29.0.655.g257534ed18
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 (uses statically linked ffmpeg). (GIT version)"
 arch=('x86_64')
@@ -123,7 +123,6 @@ prepare() {
     '--htmldir=/usr/share/doc/mpv/html'
     '--disable-test'
     '--disable-build-date'
-    '--disable-vapoursynth-lazy'
     '--lua=luajit'
     '--enable-cdda'
     '--enable-dvbin'
