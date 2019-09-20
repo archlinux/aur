@@ -2,7 +2,7 @@
 
 pkgname=freefem
 pkgver=4.4
-pkgrel=1
+pkgrel=2
 pkgdesc='A PDE oriented language using the finite element method'
 arch=('x86_64')
 url="https://freefem.org/index.html"
@@ -23,8 +23,9 @@ prepare() {
   ./configure --prefix=/usr \
 	      --sysconfdir=/etc \
 	      --enable-download \
-	      --disable-mumps \
-	      --enable-hpddm
+	      --enable-hpddm \
+	      --enable-optim \
+	      --disable-mumps 
 
   find . -name Makefile -exec sed -i 's+^gcc+gcc =+' {} \;
   find . -name Makefile -exec sed -i 's+^dir+dir =+' {} \;
