@@ -30,7 +30,7 @@ source=(https://f002.backblazeb2.com/file/AUR-Store/$pkgname/FileBot_$pkgver-por
 
 md5sums=('961dbdb7d6c62c133952df2f9f427d96'
          '2de8ba99fc91809935e6c2ab02f49a82'
-         'd94b4245dd3b226872f05fd2bf75bd1c'
+         '8bc100f98f3dffba33f8e0a37245fcba'
          '04f46be047049448dba3f0de29fe192d'
          'f37edd0bba7570904d28ab1681c7a7f3')
 
