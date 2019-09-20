@@ -8,7 +8,6 @@ url="http://nspluginwrapper.davidben.net/"
 license=('GPL')
 depends=('curl' 'libxt' 'gcc-libs' 'gtk2')
 depends_x86_64=('lib32-libxt' 'lib32-gcc-libs' 'lib32-gtk2')
-makedepends_x86_64=('gcc-multilib')
 install="install"
 #source=(http://nspluginwrapper.davidben.net/download/$pkgname-$pkgver.tar.gz
 source=("https://github.com/davidben/nspluginwrapper/archive/nspluginwrapper-$pkgver.tar.gz"
