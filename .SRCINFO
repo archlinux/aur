@@ -1,7 +1,7 @@
 pkgbase = papirus-folders-git
 	pkgdesc = Allows to change the color of folders (git version)
-	pkgver = 0.0.2.1.ga58a5d0
-	pkgrel = 3
+	pkgver = 1.4.0.2.gb34b906
+	pkgrel = 1
 	url = https://github.com/PapirusDevelopmentTeam/papirus-folders
 	arch = any
 	license = LGPL3
@@ -10,7 +10,9 @@ pkgbase = papirus-folders-git
 	provides = papirus-folders
 	options = !strip
 	source = papirus-folders-git::git+https://github.com/PapirusDevelopmentTeam/papirus-folders.git
+	source = papirus-folders.hook
 	sha256sums = SKIP
+	sha256sums = b6f52cab4c7a42e85b7e3cc0160bb9cf060aed20ab78ee2135a3f18dcaf6e92c
 
 pkgname = papirus-folders-git
 
