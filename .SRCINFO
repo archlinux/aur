@@ -1,6 +1,6 @@
 pkgbase = nix-zsh-completions-git
-	pkgdesc = Additional completion definitions for Zsh
-	pkgver = 0.4.3.r2.ga03a558
+	pkgdesc = ZSH Completions for Nix
+	pkgver = 0.4.3.r4.g275114f
 	pkgrel = 1
 	url = https://github.com/spwhitt/nix-zsh-completions
 	arch = any

@@ -2,9 +2,9 @@
 
 pkgname=nix-zsh-completions-git
 _pkgname=nix-zsh-completions
-pkgver=0.4.3.r2.ga03a558
+pkgver=0.4.3.r4.g275114f
 pkgrel=1
-pkgdesc="Additional completion definitions for Zsh"
+pkgdesc="ZSH Completions for Nix"
 arch=(any)
 url="https://github.com/spwhitt/nix-zsh-completions"
 license=(BSD)
