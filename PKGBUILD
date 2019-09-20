@@ -9,14 +9,14 @@
 
 _pkgname=gegl
 pkgname="${_pkgname}-git"
-pkgver=0.4.17.r9789.66e49574b
+pkgver=0.4.17.r9794.ae8b3e7ca
 pkgrel=1
 pkgdesc="Graph based image processing framework"
 arch=('i686' 'x86_64')
 url="https://www.gegl.org"
 license=('GPL3' 'LGPL3')
 depends=('babl>=0.1.72' 'libspiro' 'json-glib')
-makedepends=('git' 'meson' 'intltool' 'python2' 'ruby' 'lua'
+makedepends=('git' 'meson' 'intltool' 'python' 'ruby' 'lua'
              'libraw' 'openexr' 'ffmpeg' 'librsvg' 'jasper'
              'libtiff' 'suitesparse' 'gobject-introspection')
 optdepends=('openexr: for using the openexr plugin'

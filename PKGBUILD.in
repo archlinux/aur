@@ -16,7 +16,7 @@ arch=('i686' 'x86_64')
 url="https://www.gegl.org"
 license=('GPL3' 'LGPL3')
 depends=('babl>=@_babl_version@' 'libspiro' 'json-glib')
-makedepends=('git' 'meson' 'intltool' 'python2' 'ruby' 'lua'
+makedepends=('git' 'meson' 'intltool' 'python' 'ruby' 'lua'
              'libraw' 'openexr' 'ffmpeg' 'librsvg' 'jasper'
              'libtiff' 'suitesparse' 'gobject-introspection')
 optdepends=('openexr: for using the openexr plugin'
