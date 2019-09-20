@@ -1,14 +1,14 @@
 # Maintainer: Joan Bruguera Micó <joanbrugueram@gmail.com>
 pkgname='clusteringsuite'
 pkgdesc='Automatically expose the main performance trends in applications'\'' computation structure (from BSC).'
-pkgver='2.6.8'
-pkgrel='5'
+pkgver='2.6.9'
+pkgrel='1'
 arch=('i686' 'x86_64')
 url='https://www.bsc.es/discover-bsc/organisation/scientific-structure/performance-tools'
 license=('LGPL2.1')
 depends=(libxml2 boost libbsctools)
 source=("https://ftp.tools.bsc.es/$pkgname/$pkgname-$pkgver-src.tar.bz2")
-sha512sums=(dd03a25c03727611260d164ca042c9848bf9d1d21cc71ea5dbbe82ee7322ae47fbecf4ad9bf5e1cfc1bf0612607862f4b8e4166aa271ad42eea244be43b55856)
+sha512sums=(80903e3d2c018e8ed23874715f7ffc1706ac5d9dcd0826c75bb07c973c28fa9755d4c130021abd6e969e983fbe23463be7361bb29b6d1ab04596ba4f987b1b6a)
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver"
