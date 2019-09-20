@@ -12,8 +12,8 @@
 
 pkgname=lib32-mesa-aco-git
 pkgdesc="Mesa with the ACO compiler patchset, git version"
-pkgver=19.3.0_devel.115981.f2bed9b344c
-pkgrel=3
+pkgver=19.3.0_devel.20190919.b738bf06917
+pkgrel=4
 arch=('x86_64')
 makedepends=('python-mako' 'lib32-libxml2' 'lib32-libx11' 'xorgproto'
              'lib32-gcc-libs' 'lib32-libvdpau' 'lib32-libelf' 'git' 'lib32-libgcrypt' 'lib32-systemd'
@@ -98,7 +98,7 @@ depends+=('lib32-llvm-libs>=8.0.0' 'lib32-llvm-libs<8.1')
 pkgver() {
     cd mesa-aco
     read -r _ver <VERSION
-    echo ${_ver/-/_}.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+    echo ${_ver/-/_}.$(git log -n1 --format="%cd" --date=format:%Y%m%d HEAD).$(git rev-parse --short HEAD)
 }
 
 prepare() {
