@@ -3,13 +3,12 @@
 
 from distutils.core import setup
 
-
 setup(
-    name='iosevka-generate',
-    version='0.1.1',
-    description='Generate custom Iosevka fonts from a configuration file',
-    author='Oliver Ford',
-    author_email='dev@ojford.com',
-    url='https://github.com/OJFord/iosevka-generate',
-    scripts=['iosevka-generate'],
+    name="iosevka-generate",
+    version="0.1.1",
+    description="Generate custom Iosevka fonts from a configuration file",
+    author="Oliver Ford",
+    author_email="dev@ojford.com",
+    url="https://github.com/OJFord/iosevka-generate",
+    scripts=["iosevka-generate"],
 )
