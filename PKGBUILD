@@ -2,7 +2,7 @@
 
 pkgname=papirus-folders-git
 pkgver=1.4.0.2.gb34b906
-pkgrel=1
+pkgrel=3
 pkgdesc="Allows to change the color of folders (git version)"
 url="https://github.com/PapirusDevelopmentTeam/papirus-folders"
 arch=('any')
@@ -26,5 +26,5 @@ package() {
   cd "${srcdir}/${pkgname}"
   make DESTDIR="${pkgdir}/" install
   
-  install -Dm644 ../papirus-folders.hook "$pkgdir/usr/share/libalpm/hooks/fontconfig.hook"  
+  install -Dm644 ../papirus-folders.hook "$pkgdir/usr/share/libalpm/hooks/papirus-folders.hook"  
 }
