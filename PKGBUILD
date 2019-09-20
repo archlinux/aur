@@ -10,7 +10,7 @@ _pkgver=${_minecraft_ver}-13.20.1.2386
 
 pkgname=forge-server-1.11.2
 pkgver=${_pkgver//-/_}
-pkgrel=2
+pkgrel=3
 pkgdesc="Minecraft Forge server unit files, script, and jar"
 arch=('any')
 url="https://minecraftforge.net/"
