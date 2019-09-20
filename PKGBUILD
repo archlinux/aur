@@ -4,7 +4,7 @@
 # Contributor: stef204 <https://aur.archlinux.org/account/stef204>
 
 pkgname='borgmatic'
-pkgver=1.3.13
+pkgver=1.3.16
 pkgrel=1
 pkgdesc='Simple, configuration-driven backup software for servers and workstations'
 arch=('any')
@@ -17,7 +17,7 @@ source=(
   "${pkgname}-${pkgver}.tar.gz::https://projects.torsion.org/witten/borgmatic/archive/${pkgver}.tar.gz"
   "${pkgname}.install"
 )
-sha256sums=('63c61070c935d2baa2f896fdad9c46f96f6fc6f31cc9648d38ca388c2b23abbd'
+sha256sums=('d29daa4a9f980357b824d386955334eb5791dab06c225915195c57b6a8784b22'
             '2862763feea83e3ee0fb65c9f3fec648312486cd8ab48cd7cac70a7bb742b55b')
 
 prepare() {
