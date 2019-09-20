@@ -2,21 +2,22 @@
 # Contributor: Andrejs Mivreņiks <gim at fastmail dot fm>
 pkgname=otf-literata
 pkgver=1.00
-pkgrel=1
-pkgdesc="Google's new typeface for Play Books"
+pkgrel=2
+_apkm=795620
+pkgdesc="Google's default typeface for Play Books. Android distribution."
 arch=('any')
 url="https://play.google.com/store/apps/details?id=com.google.android.apps.books"
-license=('unknown')
+license=('custom:propietary')
 depends=('fontconfig' 'xorg-font-utils')
-source=("playbooks.apk::https://www.apkmirror.com/wp-content/themes/APKMirror/download.php?id=756572")
-sha256sums=('d235988f1ff6247bf3a3ae192b1b1599cd751bfeeee88f2235a57b4cb3cb1ae3')
+conflicts=('ttf-literata')
+replaces=('ttf-literata')
+source=("playbooks-$_apkm.apk::https://www.apkmirror.com/wp-content/themes/APKMirror/download.php?id=$_apkm")
+sha256sums=('93a4ed336a9c433ec176b73d16c65a6448eb5db63b9924f225ab62ec62280ddf')
 
 package() {
   cd "$srcdir/assets/fonts"
 
-  # Prepare destination directory
   install -dm755 "$pkgdir/usr/share/fonts/OTF/literata"
 
-  # Install fonts
   install -m644 literata*.otf "$pkgdir/usr/share/fonts/OTF/literata"
 }

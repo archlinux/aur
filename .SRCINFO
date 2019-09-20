@@ -1,14 +1,16 @@
 pkgbase = otf-literata
-	pkgdesc = Google's new typeface for Play Books
+	pkgdesc = Google's default typeface for Play Books. Android distribution.
 	pkgver = 1.00
-	pkgrel = 1
+	pkgrel = 2
 	url = https://play.google.com/store/apps/details?id=com.google.android.apps.books
 	arch = any
-	license = unknown
+	license = custom:propietary
 	depends = fontconfig
 	depends = xorg-font-utils
-	source = playbooks.apk::https://www.apkmirror.com/wp-content/themes/APKMirror/download.php?id=756572
-	sha256sums = d235988f1ff6247bf3a3ae192b1b1599cd751bfeeee88f2235a57b4cb3cb1ae3
+	conflicts = ttf-literata
+	replaces = ttf-literata
+	source = playbooks-795620.apk::https://www.apkmirror.com/wp-content/themes/APKMirror/download.php?id=795620
+	sha256sums = 93a4ed336a9c433ec176b73d16c65a6448eb5db63b9924f225ab62ec62280ddf
 
 pkgname = otf-literata
 
