@@ -3,10 +3,8 @@ pkgbase = ttf-zelda
 	pkgver = 1.1
 	pkgrel = 1
 	url = http://www.zeldauniverse.net/media/fonts/
-	install = zelda-ttf.install
 	arch = any
 	license = GPL
-	makedepends = fontforge
 	depends = fontconfig
 	depends = xorg-font-utils
 	source = http://www.zeldauniverse.net/media-files/typography/Triforce.ttf
@@ -25,7 +23,6 @@ pkgbase = ttf-zelda
 	source = http://www.zeldauniverse.net/wp-content/uploads/2012/01/gerudo_typography___font___9_jan___12_minor_update_by_sarinilli-d4ln2mn.zip
 	source = https://zeldauniverse.net/wp-content/uploads/2014/01/HyliaSerif-v0.009.zip
 	source = https://zeldauniverse.net/wp-content/uploads/2014/01/Charlemagne.zip
-	source = zelda-ttf.install
 	md5sums = 3cf0469a6f23aefd25032f8bbc3587e5
 	md5sums = f6f44f2d7890f20ec62ecdae68c249f3
 	md5sums = 487390d5558cff7a17ce35d7d92a0540
@@ -42,7 +39,6 @@ pkgbase = ttf-zelda
 	md5sums = bcad6b509e3fab3a5f9ec471dc3faf6b
 	md5sums = 6e1c9c08f72a51f5c36f590863676520
 	md5sums = b194178d07e97dd558660e4f20f40202
-	md5sums = 1f43fbf275c7ee8ee236d9f90c970819
 
 pkgname = ttf-zelda
 

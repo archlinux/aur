@@ -6,7 +6,6 @@ pkgdesc="A collection of fonts from the Legend of Zelda universe"
 arch=('any')
 url="http://www.zeldauniverse.net/media/fonts/"
 license=('GPL')
-makedepends=('fontforge')
 depends=('fontconfig' 'xorg-font-utils')
 noextract=()
 
@@ -26,8 +25,7 @@ source=("${_source_base_url}Triforce.ttf"
         "http://www.zeldauniverse.net/wp-content/uploads/2012/01/skyward_sword_ancient_hylian___font_by_sarinilli-d4l1t18.zip"
         "http://www.zeldauniverse.net/wp-content/uploads/2012/01/gerudo_typography___font___9_jan___12_minor_update_by_sarinilli-d4ln2mn.zip"
         "https://zeldauniverse.net/wp-content/uploads/2014/01/HyliaSerif-v0.009.zip"
-        "https://zeldauniverse.net/wp-content/uploads/2014/01/Charlemagne.zip"
-        "zelda-ttf.install")
+        "https://zeldauniverse.net/wp-content/uploads/2014/01/Charlemagne.zip")
 md5sums=('3cf0469a6f23aefd25032f8bbc3587e5'
          'f6f44f2d7890f20ec62ecdae68c249f3'
          '487390d5558cff7a17ce35d7d92a0540'
@@ -43,10 +41,8 @@ md5sums=('3cf0469a6f23aefd25032f8bbc3587e5'
          '7354ad6c714b905caec1cf1d7b6301c4'
          'bcad6b509e3fab3a5f9ec471dc3faf6b'
          '6e1c9c08f72a51f5c36f590863676520'
-         'b194178d07e97dd558660e4f20f40202'
-         '1f43fbf275c7ee8ee236d9f90c970819')
+         'b194178d07e97dd558660e4f20f40202')
 
-install="zelda-ttf.install"
 
 package() {
   cd "$srcdir"
