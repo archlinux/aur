@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
 pkgname=kmdr-cli
-pkgver=0.1.34
+pkgver=0.1.35
 pkgrel=1
 pkgdesc="The CLI tool for explaining commands from your terminal"
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=('npm' 'jq')
 provides=("${pkgname%-cli}")
 conflicts=("${pkgname%-cli}")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ediardo/kmdr-cli/archive/v$pkgver.tar.gz")
-sha256sums=('8858a023beb7acfec8fe9a70955409ff29c9bbf66469c30767d4f13fecb725d9')
+sha256sums=('1b1570fe374289a276e4cea55df2ed69e5cf790cbd5dc7b3a42e6eb4b8e94030')
 
 package() {
 	npm install --cache "$srcdir/npm-cache" -g --user root --prefix "$pkgdir"/usr \
