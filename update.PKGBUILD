@@ -6,6 +6,10 @@ srcdir=$PWD/src
 declare -A dep_versions
 readonly -a deps=(babl)
 
+echo "##update sources"
+makepkg -Co
+echo "##finish updating sources"
+
 ## probe configure.ac for dependencies versions
 # the rest have standard form of "[{dep_name}_raqured_version], [{version}]"
 for dep in ${deps[*]};do
@@ -21,7 +25,7 @@ for key in ${!dep_versions[*]};do sed -i "s/@${key}@/${dep_versions[${key}]}/" P
 echo "##finish generating PKGBUILD"
 
 echo "##update pkgver"
-makepkg -Co
+makepkg -eo
 echo "##finish updating pkgver"
 
 echo "##generate .SRCINFO" >&2
