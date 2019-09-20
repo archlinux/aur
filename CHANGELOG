@@ -1463,7 +1463,7 @@ Mon Jul 29 06:14:21 2019 +0200
      2019-04-15 43b67e46 Heimen Stoffels chore(colors: contrib): Create Airmail-Dark (#240)
 
 
-Sat Sep 21 01:42:33 2019 +0200
+Sat Sep 21 01:46:39 2019 +0200
 -------------------------------------------------
 1.12.4          Release 1.12.4
     
@@ -1476,3 +1476,4 @@ Sat Sep 21 01:42:33 2019 +0200
      2019-08-11 63515376 Gideon Wolfe chore({scripted_,}-colors: xresources): first attempt at universal reverse theme (#258)
      2019-08-06 8937dc20 actionless chore(plugins: icons: papirus): update submodule (tag: 20190802+ 35 commits)
      2019-08-05 640618b4 actionless chore(plugins: oomoxify): update submodule (replace new red color on disliked Radar/Discover song)
+     2019-07-30 f8146b51 actionless chore(packaging: flatpak): sync with git@github.com:flathub/com.github.themix_project.Oomox.git
