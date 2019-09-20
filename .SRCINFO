@@ -1,0 +1,18 @@
+pkgbase = ttf-literata
+	pkgdesc = Google's default typeface for Play Books. Truetype format, open source (OFL) distribution.
+	pkgver = 2.201
+	pkgrel = 1
+	url = https://play.google.com/store/apps/details?id=com.google.android.apps.books
+	arch = any
+	license = custom:OFL
+	depends = fontconfig
+	depends = xorg-font-utils
+	conflicts = otf-literata
+	replaces = otf-literata
+	source = https://github.com/googlefonts/literata/releases/download/v2.201/Literata-v2.201.zip
+	source = https://github.com/googlefonts/literata/raw/master/OFL.txt
+	sha256sums = b932af6bea23e1b62d2c524154001886ba3ddaafa7f81a88cb96277e2a452545
+	sha256sums = 8742963604cd89dc81437811a850018fc03b2bfad686d7422c8235967c87614e
+
+pkgname = ttf-literata
+
