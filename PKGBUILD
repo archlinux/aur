@@ -3,8 +3,8 @@
 # Contributor: sysrq
 
 pkgname=picard
-pkgver=2.2
-_commit=827907d90cf3a8e23c34459e93e8908431f61fb4
+pkgver=2.2.1
+_commit=0242b24d8926420e7f0d4000b1a16b2760a487f9
 pkgrel=1
 pkgdesc='Official MusicBrainz tagger'
 url='https://picard.musicbrainz.org/'
