@@ -1,0 +1,8 @@
+pkg/*
+src/*
+
+git-blame-someone-else/*
+
+*.pkg.tar.xz
+
+.#*

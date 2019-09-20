@@ -1,0 +1,14 @@
+pkgbase = git-blame-someone-else
+	pkgdesc = Blame someone else for your bad code.
+	pkgver = r18.8d854c2
+	pkgrel = 1
+	url = https://github.com/jayphelps/git-blame-someone-else
+	arch = any
+	license = MIT
+	depends = git
+	depends = python
+	source = git+https://github.com/jayphelps/git-blame-someone-else
+	sha1sums = SKIP
+
+pkgname = git-blame-someone-else
+
