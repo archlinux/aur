@@ -1,13 +1,13 @@
 pkgbase = fasttree
 	pkgdesc = Approximately-Maximum-Likelihood Trees for Large Alignments
-	pkgver = 2.1.10
+	pkgver = 2.1.11
 	pkgrel = 1
 	url = http://www.microbesonline.org/fasttree/
 	arch = i686
 	arch = x86_64
 	license = GPL
-	source = http://www.microbesonline.org/fasttree/FastTree-2.1.10.c
-	sha256sums = 54cb89fc1728a974a59eae7a7ee6309cdd3cddda9a4c55b700a71219fc6e926d
+	source = http://www.microbesonline.org/fasttree/FastTree-2.1.11.c
+	sha256sums = 9026ae550307374be92913d3098f8d44187d30bea07902b9dcbfb123eaa2050f
 
 pkgname = fasttree
 
