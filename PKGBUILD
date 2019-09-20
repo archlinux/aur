@@ -1,7 +1,7 @@
 # Maintainer: Julien Savard <juju@juju2143.ca>
 pkgname=x16-emulator
 pkgver=r31
-pkgrel=1
+pkgrel=2
 pkgdesc="An emulator for The 8-Bit Guy's Commander X16"
 arch=('x86_64')
 url="http://commanderx16.com/"
@@ -16,8 +16,15 @@ replaces=()
 options=()
 install=
 changelog=
-source=("https://github.com/commanderx16/$pkgname/archive/$pkgver.tar.gz")
-md5sums=('abeffe30fea892e7494e105bb070999b')
+source=("https://github.com/commanderx16/$pkgname/archive/$pkgver.tar.gz"
+	"modify-base-path.patch")
+md5sums=('abeffe30fea892e7494e105bb070999b'
+         '5cd0550d2af1b4267c9b9f30eed9691e')
+
+prepare() {
+	cd "$pkgname-$pkgver"
+	patch -uN main.c ../modify-base-path.patch
+}
 
 build() {
 	cd "$pkgname-$pkgver"
