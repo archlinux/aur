@@ -1,7 +1,8 @@
 pkgbase = qelectrotech
 	pkgdesc = An electric diagram editor
-	pkgver = 0.61
-	pkgrel = 2
+	pkgver = 0.7.0
+	pkgrel = 1
+	epoch = 1
 	url = https://qelectrotech.org/
 	arch = i686
 	arch = x86_64
@@ -9,9 +10,12 @@ pkgbase = qelectrotech
 	depends = qt5-svg
 	depends = hicolor-icon-theme
 	depends = desktop-file-utils
-	source = http://download.tuxfamily.org/qet/tags/20180823/qelectrotech-0.61-src.tar.gz
+	depends = kwidgetsaddons
+	depends = kcoreaddons
+	depends = tk
+	source = https://github.com/qelectrotech/qelectrotech-source-mirror/archive/0.7.0.tar.gz
 	source = install-dir.patch
-	sha512sums = b07d28520bef5773f5f93595c53a839a160c5927a7534ec30eba451fd33ab090909fc1971f28aea53538ff8e20ca45eff0b6597f3ab103b00b89eaa65067f918
+	sha512sums = 7ed59203dbfeb8069fa9407ae8e7a6748c8c6bffddf9a64656477f8b4515587084e5ec908feddf67c589700e90577547114248d044c4b559827ba195d352201b
 	sha512sums = 37bda63af55fb422ab5c5950b229cc8a375295a43decffe31522c14e5dcc6dbeb9ca50a36ca40f595458af652cf1e0f46683a97c950b4745c12a1ddd31e28c57
 
 pkgname = qelectrotech
