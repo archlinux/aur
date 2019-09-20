@@ -1,6 +1,6 @@
 pkgbase = bauh-staging
-	pkgdesc = Free non-official GUI for Flatpak / Snap applications management (staging: it is a testing branch which receives updates frequently and may not be working properly)
-	pkgver = 0.5.2.RC
+	pkgdesc = Free non-official GUI for Flatpak / Snap / AUR applications management (staging: it is a testing branch which receives updates frequently and may not be working properly)
+	pkgver = 0.6.0.RC
 	pkgrel = 1
 	url = https://github.com/vinifmor/bauh
 	arch = any
@@ -12,12 +12,15 @@ pkgbase = bauh-staging
 	depends = python-pyqt5
 	depends = python-requests
 	depends = python-colorama
-	optdepends = flatpak
-	optdepends = snapd
+	optdepends = flatpak: to install Flatpaks
+	optdepends = snapd: to install Snaps
+	optdepends = git: to downgrade AUR packages
+	optdepends = pacman: to install AUR packages
+	optdepends = wget: to install AUR packages
 	provides = bauh
 	conflicts = bauh
-	source = https://github.com/vinifmor/bauh/archive/641d3a7601fff482c3b6d0acfb71341f66ec25b4.zip
-	sha512sums = 9a16a99bd7c8e4bbc5df371b799d2cf899ef40f2ce295f6aedc7ebfe582595c3ba99256450ebc696a3f7b6d6784c53ebc978a523e4d8d247699d39757624b9e5
+	source = https://github.com/vinifmor/bauh/archive/04846928eb74f0d4fe31cd2f2a6512da4feb1c9a.tar.gz
+	sha512sums = 09d05c9baea7a86a7a6564b8de5952ad1a724c4444cee44aee4017e506bc772b91c7bd3efc2264d51299e4a51e2a80761e843da654f273de1b834c6cde0588db
 
 pkgname = bauh-staging
 
