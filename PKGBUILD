@@ -9,7 +9,11 @@ arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/Jguer/yay"
 license=('GPL')
 options=('!strip' '!emptydirs')
-depends=('pacman>=5.1' 'git' 'sudo')
+depends=(
+  'pacman>=5.1.0'
+  'pacman<=5.1.3'
+  'git'
+  'sudo')
 makedepends=('go')
 conflicts=('yay')
 provides=('yay')

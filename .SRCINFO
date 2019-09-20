@@ -9,7 +9,8 @@ pkgbase = yay-git
 	arch = aarch64
 	license = GPL
 	makedepends = go
-	depends = pacman>=5.1
+	depends = pacman>=5.1.0
+	depends = pacman<=5.1.3
 	depends = git
 	depends = sudo
 	provides = yay
