@@ -4,7 +4,7 @@
 _plasma=false
 
 pkgname=optimus-manager-qt-git
-pkgver=1.2.0.r0.ge25f2ce
+pkgver=1.3.0.r0.gdf1fa13
 pkgrel=1
 pkgdesc="A Qt interface for Optimus Manager that allows to configure and switch GPUs on Optimus laptops using the tray menu"
 arch=('x86_64')
@@ -17,7 +17,8 @@ conflicts=("${pkgname%-git}")
 source=("git+https://github.com/Shatur95/optimus-manager-qt")
 sha256sums=('SKIP')
 
-if [ $_plasma == true ]; then
+if [ $_plasma == true ]
+then
     depends+=('knotifications' 'kiconthemes')
 fi
 
@@ -37,7 +38,8 @@ prepare() {
 build() {
     cd "${pkgname%-git}"
 
-    if [ $_plasma == true ]; then
+    if [ $_plasma == true ]
+    then
         qmake "DEFINES += PLASMA"
     else
         qmake
