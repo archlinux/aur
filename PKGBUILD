@@ -1,15 +1,15 @@
 # Maintainer: pingplug < aur at pingplug dot me >
 # Contributor: Schala Zeal < schalaalexiazeal at gmail dot com >
 
-_commit=90530067158560a3ce0e2fb0a8b5020c735d7239  # tags/1.44.5^0
+_commit=512663d4ed441dba3de66cd2b4928b717835f72a  # tags/1.44.6^0
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-pango
-pkgver=1.44.5
+pkgver=1.44.6+2
 pkgrel=1
 pkgdesc="A library for layout and rendering of text (mingw-w64)"
 arch=('any')
-url="http://www.pango.org"
+url="https://pango.gnome.org/"
 license=('LGPL')
 depends=('mingw-w64-harfbuzz'
          'mingw-w64-fribidi'
