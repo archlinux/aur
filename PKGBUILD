@@ -3,7 +3,7 @@
 # Contributor: Andreas Schönfelder <passtschu at freenet dot de>
 
 pkgname=phoronix-test-suite-milestone
-pkgver=8.8.0m3
+pkgver=9.0.0m3
 pkgrel=1
 pkgdesc="The most comprehensive testing and benchmarking platform available for Linux, milestone version"
 arch=(any)
@@ -22,11 +22,11 @@ optdepends=('php-gd'
 provides=(phoronix-test-suite)
 conflicts=(phoronix-test-suite)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/phoronix-test-suite/phoronix-test-suite/archive/v${pkgver}.tar.gz")
-sha256sums=('7419b4f69db4adc44aaec85d8783cd30bd337efdc9a151830fcf168ca5530a9c')
+sha256sums=('ce04f51bed1b0e28b1246e69325cebeef2c3224c9d49593e7f03cef081da89b3')
 
 package() {
   cd "${srcdir}/phoronix-test-suite-${pkgver}"
-  ./install-sh $pkgdir/usr
+  ./install-sh "$pkgdir/usr"
 
   rm -r "${pkgdir}"/usr/share/phoronix-test-suite/deploy
   rm -rf "${pkgdir}"/usr/share/phoronix-test-suite/pts-core/external-test-dependencies/{dependency-handlers,scripts,xml}/{*.php,*.sh,*.xml}
