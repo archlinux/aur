@@ -12,6 +12,7 @@ pkgbase = lazylibrarian
 	depends = python-pyopenssl
 	provides = lazylibrarian
 	conflicts = lazylibrarian-git
+	options = !strip
 	source = https://gitlab.com/LazyLibrarian/LazyLibrarian/-/archive/1.7.0/LazyLibrarian-1.7.0.tar.bz2
 	source = lazylibrarian.service
 	source = lazylibrarian.tmpfiles

@@ -14,7 +14,7 @@ depends=('python'
 conflicts=('lazylibrarian-git')
 provides=('lazylibrarian')
 install='lazylibrarian.install'
-
+options=(!strip)
 source=("https://gitlab.com/LazyLibrarian/LazyLibrarian/-/archive/${pkgver}/LazyLibrarian-${pkgver}.tar.bz2"
         'lazylibrarian.service'
         'lazylibrarian.tmpfiles'
