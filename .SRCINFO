@@ -1,0 +1,25 @@
+pkgbase = python-astroslam
+	pkgdesc = Stellar LAbel Machine (SLAM)
+	pkgver = 1.2019.918.0
+	pkgrel = 1
+	url = https://github.com/hypergravity/astroslam
+	arch = i686
+	arch = x86_64
+	license = MIT
+	checkdepends = python-pyzmq
+	checkdepends = python-jupyter_client
+	makedepends = python-setuptools
+	depends = python-matplotlib
+	depends = python-scikit-learn
+	depends = python-pandas
+	depends = python-emcee
+	depends = python-astropy
+	depends = python-lmfit
+	depends = ipython-ipyparallel
+	source = https://files.pythonhosted.org/packages/source/a/astroslam/astroslam-1.2019.918.0.tar.gz
+	source = https://raw.githubusercontent.com/hypergravity/astroslam/master/LICENSE
+	md5sums = a47ad2551c7ef518199d28a292f8df51
+	md5sums = 0c528275ca1d160019f3524f21587e57
+
+pkgname = python-astroslam
+
