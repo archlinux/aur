@@ -10,7 +10,7 @@ options=(!emptydirs)
 depends=('perl>=5.6' perl-list-moreutils)
 makedepends=(perl-module-build)
 url=https://metacpan.org/release/Statistics-Descriptive
-source=("http://search.cpan.org/CPAN/authors/id/S/SH/SHLOMIF/Statistics-Descriptive-$pkgver.tar.gz")
+source=("https://search.cpan.org/CPAN/authors/id/S/SH/SHLOMIF/Statistics-Descriptive-$pkgver.tar.gz")
 md5sums=(7d367a2b1b057261edd48efcbe66eb97)
 sha512sums=(e0742ec356a38ad38f52e56a3ef58af6e539fbfa090d9a1d154560f353a3346d1c800d5d9f7bb0e2f32fb92b611fec16c939a19b7af104ec6ebe627c6c719df6)
 _ddir="Statistics-Descriptive-$pkgver"
