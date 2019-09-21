@@ -1,16 +1,17 @@
 pkgbase = ros-melodic-turtlebot3-msgs
-	pkgdesc = Message and service types: custom messages and services for TurtleBot3 packages.
+	pkgdesc = ROS - Message and service types: custom messages and services for TurtleBot3 packages
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/turtlebot3_msgs
 	arch = any
-	license = BSD
+	license = Apache-2.0
 	makedepends = cmake
 	makedepends = ros-build-tools
 	makedepends = ros-melodic-catkin
 	makedepends = ros-melodic-message-generation
 	makedepends = ros-melodic-message-runtime
 	depends = ros-melodic-std-msgs
+	depends = ros-melodic-message-runtime
 	source = ros-melodic-turtlebot3-msgs-1.0.0.tar.gz::https://github.com/ROBOTIS-GIT/turtlebot3_msgs/archive/1.0.0.tar.gz
 	sha256sums = 61d1389c9a135b9aa922cf19c69347f3abfe4f2c893bd2e59aaff7dff71020e8
 

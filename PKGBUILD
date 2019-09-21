@@ -1,11 +1,11 @@
-pkgdesc="Message and service types: custom messages and services for TurtleBot3 packages."
+pkgdesc="ROS - Message and service types: custom messages and services for TurtleBot3 packages"
 url='https://wiki.ros.org/turtlebot3_msgs'
 
 pkgname='ros-melodic-turtlebot3-msgs'
 pkgver='1.0.0'
 arch=('any')
-pkgrel=1
-license=('BSD')
+pkgrel=2
+license=('Apache-2.0')
 
 ros_makedepends=(
 	ros-melodic-catkin
@@ -21,6 +21,7 @@ makedepends=(
 
 ros_depends=(
 	ros-melodic-std-msgs
+    ros-melodic-message-runtime
 )
 
 depends=(
