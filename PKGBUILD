@@ -11,7 +11,7 @@ depends=('perl>=5.8.1')
 makedepends=('perl-extutils-parsexs>=3.18' perl-file-copy-recursive perl-module-install)
 checkdepends=(perl-test-requires)
 url=https://metacpan.org/release/Data-MessagePack
-source=("http://search.cpan.org/CPAN/authors/id/S/SY/SYOHEX/Data-MessagePack-$pkgver.tar.gz")
+source=("https://search.cpan.org/CPAN/authors/id/S/SY/SYOHEX/Data-MessagePack-$pkgver.tar.gz")
 md5sums=(a52f9d85cdaffe46bfb34a7b7da2ad92)
 sha512sums=(4dbf9c8eb65b1f8c4f48ac97ffc39f6984c79eaf474445f052e8def5273b117ca2f43ccbf9792559691b3a4e4c3fb190a7c5b173ca9f3db390d4d3cc213324b1)
 _ddir="Data-MessagePack-$pkgver"
