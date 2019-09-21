@@ -13,14 +13,21 @@ post_install() {
 	echo "Making current results file"
 	cp /etc/gingertechengine/checks.json /opt/gingertechengine/js/current.json
     fi
+
+    if [ ! -f /var/log/gingertechnology ]; then
+	mkdir /var/log/gingertechnology
+    fi
     
     if id "gogios" >/dev/null 2>&1; then
         echo "gogios user already exists"
     else
+	mkdir -p /var/spool/gogios
         useradd --system --no-create-home --shell /sbin/nologin gogios
+	chown gogios:gogios /var/spool/gogios
     fi
     
     chown gogios:gogios -R /var/log/gingertechnology
+    chmod 0764 -R /var/log/gingertechnology
     chown gogios:gogios -R /usr/lib/gingertechengine
     chown gogios:gogios -R /etc/gingertechengine
     chown gogios:gogios -R /opt/gingertechengine
@@ -28,8 +35,6 @@ post_install() {
 
 post_upgrade() {
     post_install
-    
-    systemctl restart gogios
 }
 
 pre_remove() {
