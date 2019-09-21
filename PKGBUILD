@@ -33,7 +33,7 @@ pkgver() {
 }
 
 prepare() {
-  mkdir build
+  mkdir -p build
   cd gdm
   patch -Np1 -i ../0001-Xsession-Don-t-start-ssh-agent-by-default.patch
 
