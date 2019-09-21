@@ -1,9 +1,15 @@
 # Maintainer: L. Bradley LaBoon <me@bradleylaboon.com>
 pkgname=splunkforwarder
-basever=7.3.1
-pkgver=${basever}_bd63e13aa157
+basever=7.3.1.1
+splunkver=${basever}-7651b7244cf2
+# Splunk is inconsistent with the length of their version numbers
+if [ ${#basever} -gt 5 ]; then
+	pkgver=${basever}
+else
+	pkgver=${basever}.0
+fi
 pkgrel=1
-epoch=2
+epoch=3
 pkgdesc="Splunk Universal Forwarder"
 url="https://www.splunk.com/"
 arch=('x86_64' 'armv6h' 'armv7h')
@@ -11,13 +17,13 @@ license=('custom')
 conflicts=('splunk')
 install="$pkgname.install"
 source=("$pkgname.service")
-source_x86_64=("https://download.splunk.com/products/universalforwarder/releases/$basever/linux/$pkgname-${pkgver//_/-}-Linux-x86_64.tgz")
-source_armv6h=("https://download.splunk.com/products/universalforwarder/releases/$basever/linux/$pkgname-${pkgver//_/-}-Linux-arm.tgz")
-source_armv7h=("https://download.splunk.com/products/universalforwarder/releases/$basever/linux/$pkgname-${pkgver//_/-}-Linux-arm.tgz")
+source_x86_64=("https://download.splunk.com/products/universalforwarder/releases/$basever/linux/$pkgname-$splunkver-Linux-x86_64.tgz")
+source_armv6h=("https://download.splunk.com/products/universalforwarder/releases/$basever/linux/$pkgname-$splunkver-Linux-arm.tgz")
+source_armv7h=("https://download.splunk.com/products/universalforwarder/releases/$basever/linux/$pkgname-$splunkver-Linux-arm.tgz")
 sha256sums=('8bd6b2bcf9e9d89d3ab2160c409687313bbee00b7e44b3df3266b44d15a5c152')
-sha256sums_x86_64=('62c20e294ef96d5dfe06881b28a1dd09b4ce88175583260f48197224953aa18f')
-sha256sums_armv6h=('b32f7653ef1ae90a1748eec1328af9b8e3ad5932c92c60564521b3626682187c')
-sha256sums_armv7h=('b32f7653ef1ae90a1748eec1328af9b8e3ad5932c92c60564521b3626682187c')
+sha256sums_x86_64=('16f548d9315920ef8f7d62dd62e3e2045406faa333c1c2fd958b01d3cc6ed624')
+sha256sums_armv6h=('9ef77e8dd64025ff652fa74595c2468400489dafe14568e6a9420ef593320ab6')
+sha256sums_armv7h=('9ef77e8dd64025ff652fa74595c2468400489dafe14568e6a9420ef593320ab6')
 
 package() {
 	cd "$srcdir"
