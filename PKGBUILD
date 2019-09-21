@@ -6,10 +6,10 @@
 
 pkgname=('ms-office-online')
 pkgver=19.06.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Microsoft Office Suite Online as a native application"
 url="https://www.office.com/"
-depends=('jade-application-kit' 'pyside2')
+depends=('jade-application-kit' 'qt5-webengine')
 license=('GPL3' 'CC')
 arch=('any')
 provides=('ms-office-online')
