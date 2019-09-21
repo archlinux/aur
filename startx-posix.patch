@@ -1,0 +1,20 @@
+--- xinit-1.4.1-orig/startx.cpp	2019-09-21 12:59:28.894675922 -0400
++++ xinit-1.4.1/startx.cpp	2019-09-21 12:59:58.674672355 -0400
+@@ -205,7 +205,7 @@
+     XCOMM "https://bugzilla.redhat.com/show_bug.cgi?id=806491"
+     tty=$(tty)
+     if expr "$tty" : '/dev/tty[0-9][0-9]*$' > /dev/null; then
+-        tty_num=$(echo "$tty" | grep -oE '[0-9]+$')
++        tty_num=$(echo "$tty" | sed -E 's/[a-zA-Z\/]//g')
+         vtarg="vt$tty_num -keeptty"
+     fi
+ #endif
+@@ -252,7 +252,7 @@
+     XCOMM set up default Xauth info for this machine
+     case `uname` in
+     Linux*)
+-        if [ -z "`hostname --version 2>&1 | grep GNU`" ]; then
++        if [ -n "`hostname --version 2>&1 | grep GNU`" ]; then
+             hostname=`hostname -f`
+         else
+             hostname=`hostname`
