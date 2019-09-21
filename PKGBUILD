@@ -5,7 +5,7 @@
 
 pkgname=librewolf
 _pkgname=LibreWolf
-pkgver=69.0
+pkgver=69.0.1
 pkgrel=1
 pkgdesc="Community-maintained fork of Librefox: a privacy and security-focused browser"
 arch=(x86_64)
@@ -27,9 +27,9 @@ source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-
         $pkgname.cfg.patch
         "git+https://gitlab.com/${pkgname}-community/browser/common.git"
         "git+https://gitlab.com/${pkgname}-community/settings.git")
-sha256sums=('413c3febdfeb69eade818824eecbdb11eaeda71de229573810afd641ba741ec5'
+sha256sums=('f5f2f592b8296812d43244d6a50c0c57ad11a5324db8e4e79749545482b79033'
             '0471d32366c6f415f7608b438ddeb10e2f998498c389217cdd6cc52e8249996b'
-            '2acd2aa2ed6e78df5e32840b48518348d529e9a0f8147b282e65b4bc109e52ca'
+            '5911be9fc69b9db03ac2d2b8e71f3618efadc2fdf3ddd254b9095e0619c63f2c'
             'SKIP'
             'SKIP')
 prepare() {
