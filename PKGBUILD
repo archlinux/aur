@@ -6,7 +6,7 @@
 pkgbase=python-django-debug-toolbar
 _pkgbase="${pkgbase#python-}"
 pkgname=(python-django-debug-toolbar python2-django-debug-toolbar)
-pkgver=1.11
+pkgver=2.0
 pkgrel=1
 pkgdesc='A configurable set of panels that display various debug information about the current request/response.'
 arch=(any)
@@ -20,7 +20,7 @@ makedepends=(
 )
 options=(!emptydirs)
 source=("https://github.com/jazzband/${_pkgbase}/archive/${pkgver}.tar.gz")
-sha256sums=('be63b27dca3019514704130a3ea37da36c23d4bbf39d2011ef1a92a2ba396017')
+sha256sums=('b0147dc4b8dac624ca9cce686ff839d5eaf78d3ff5acc597ee7a393ed2a26850')
 
 package_python-django-debug-toolbar() {
   depends=('python-django>=1.11' 'python-sqlparse')
