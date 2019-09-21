@@ -1,18 +1,24 @@
 # Maintainer: L. Bradley LaBoon <me@bradleylaboon.com>
 pkgname=splunk
-basever=7.3.1
-pkgver=${basever}_bd63e13aa157
+basever=7.3.1.1
+splunkver=${basever}-7651b7244cf2
+# Splunk is inconsistent with the length of their version numbers
+if [ ${#basever} -gt 5 ]; then
+	pkgver=${basever}
+else
+	pkgver=${basever}.0
+fi
 pkgrel=1
-epoch=2
+epoch=3
 pkgdesc="Statistical analysis and search tool for logs and machine data"
 url="https://www.splunk.com/"
 arch=('x86_64')
 license=('custom')
 install="$pkgname.install"
 source=("$pkgname.service")
-source_x86_64=("https://download.splunk.com/products/splunk/releases/$basever/linux/$pkgname-${pkgver//_/-}-Linux-x86_64.tgz")
+source_x86_64=("https://download.splunk.com/products/splunk/releases/$basever/linux/$pkgname-$splunkver-Linux-x86_64.tgz")
 sha256sums=('ca96b85750a0592208facc747bbe1eb22b0a35b6dee841e6f51f1ad6a9157757')
-sha256sums_x86_64=('d5cd5e8680b7a2fd75c315c57ffc8abbe19f1057792d0f7a739193315304e25a')
+sha256sums_x86_64=('c24f421161266fc6b79f3e5374534f97662a3b9659bec261f8633b5a35d7a20c')
 
 package() {
 	cd "$srcdir"
