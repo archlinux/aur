@@ -1,0 +1,21 @@
+pkgbase = mustang-plug-qt5
+	pkgdesc = Software for Fender Mustang Amps. Forked from piorekf/plug.
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://gitlab.com/offa/plug
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	makedepends = cmake
+	makedepends = gtest
+	makedepends = gmock
+	makedepends = git
+	depends = qt5-base
+	depends = libusb
+	provides = mustang-plug-qt5-work
+	conflicts = mustang-plug-qt5-work
+	source = https://gitlab.com/offa/plug/-/archive/v1.4.0/plug-v1.4.0.tar.bz2
+	md5sums = 7734568324a76aa2df668eccf7347067
+
+pkgname = mustang-plug-qt5
+
