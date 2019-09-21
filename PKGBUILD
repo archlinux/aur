@@ -11,7 +11,7 @@ optdepends=('stlib-plugins-git: A set of official plugins for stlib')
 makedepends=('python-setuptools' 'gcc' 'unzip')
 license=('GPL')
 source=("https://github.com/ShyPixie/$pkgname/archive/v$pkgver.tar.gz"
-        'steamworks_sdk_142.zip')
+        'steamworks_sdk_142.zip::file://steamworks_sdk_142.zip')
 sha256sums=('d0b6c10f146490cc171261a895854fe14a7ca2156c739aa0ab829eddf0d1e95b'
             '7695f8e183bef16dc2e663ffbdfad2248ae266bce8ff42066a3e88e1d54f0f42')
 
