@@ -1,7 +1,7 @@
 pkgbase = phockup
 	pkgdesc = Media sorting tool to organize photos and videos from your camera in folders by year, month and day.
 	pkgver = 1.5.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ivandokov/phockup
 	arch = any
 	license = MIT
