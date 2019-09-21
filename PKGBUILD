@@ -17,18 +17,24 @@
 #
 pkgbase="zfs-linux-git"
 pkgname=("zfs-linux-git" "zfs-linux-git-headers")
-_commit='7238cbd4d3ee7eadb3131c890d0692a49ea844af'
-_zfsver="2019.09.12.r5403.g7238cbd4d"
-_kernelver="5.2.14.arch2-1"
-_extramodules="5.2.14-arch2-1-ARCH"
+_commit='afc8f0a6ffb4dd2dd5e17abc39e035eb7c7bcdc8'
+_zfsver="2019.09.18.r5411.gafc8f0a6f"
+_kernelver="5.3.arch1-1"
+_extramodules="5.3.0-arch1-1-ARCH"
 
 pkgver="${_zfsver}_$(echo ${_kernelver} | sed s/-/./g)"
 pkgrel=1
 makedepends=("linux-headers=${_kernelver}" "git")
 arch=("x86_64")
-url="http://zfsonlinux.org/"
-source=("git+https://github.com/zfsonlinux/zfs.git#commit=${_commit}")
-sha256sums=("SKIP")
+url="https://zfsonlinux.org/"
+source=("git+https://github.com/zfsonlinux/zfs.git#commit=${_commit}"
+        "linux-5.3-compat-rw_semaphore-owner.patch"
+        "linux-5.3-compat-retire-rw_tryupgrade.patch"
+        "linux-5.3-compat-Makefile-subdir-m-no-longer-supported.patch")
+sha256sums=("SKIP"
+            "c65c950abda42fb91fb99c6c916a50720a522c53e01a872f9310a4719bae9e2a"
+            "19f798a29c00874874751880f1146c5849b8ebdb6233d8ae923f9fdd4661de19"
+            "6c4627875dd1724f64a196ea584812c99635897dc31cb23641f308770289059a")
 license=("CDDL")
 depends=("kmod" "zfs-utils-git=${_zfsver}" "linux=${_kernelver}")
 
@@ -37,7 +43,7 @@ build() {
     ./autogen.sh
     ./configure --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin --libdir=/usr/lib \
                 --datadir=/usr/share --includedir=/usr/include --with-udevdir=/lib/udev \
-                --libexecdir=/usr/lib/zfs-${zfsver} --with-config=kernel \
+                --libexecdir=/usr/lib/zfs-${_zfsver} --with-config=kernel \
                 --with-linux=/usr/lib/modules/${_extramodules}/build \
                 --with-linux-obj=/usr/lib/modules/${_extramodules}/build
     make
