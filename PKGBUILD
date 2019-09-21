@@ -3,7 +3,7 @@
 # Contributors: Det, Achilleas Pipinellis, speed145a, Schnouki
 
 pkgname=ungoogled-chromium-bin
-pkgver=77.0.3865.75
+pkgver=77.0.3865.90
 pkgrel=1
 pkgdesc="Modifications to Google Chromium for removing Google integration and enhancing privacy, control, and transparency (binary version)"
 arch=("x86_64")
@@ -21,7 +21,7 @@ optdepends=('pepper-flash: support for Flash content'
             'gnome-keyring: for storing passwords in GNOME keyring'
             'kwallet: for storing passwords in KWallet')
 source=("https://github.com/rtMis/ungoogled-chromium-binaries/releases/download/${pkgver}-${pkgrel}/ungoogled-chromium-${pkgver}-${pkgrel}-x86_64.pkg.tar.xz")
-sha256sums=("80ffffe90be724d9638972bec212b69fa4247570977f422f5e263fae4551c7bd")
+sha256sums=("2075a65365cb87eb64d451219a57dab543f8cb37431ff37d14e5ee6e3a399518")
 
 package() {
   cp -R "${srcdir}/usr/" "${pkgdir}/usr"    
