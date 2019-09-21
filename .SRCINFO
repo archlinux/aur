@@ -1,6 +1,6 @@
 pkgbase = mdbook-git
 	pkgdesc = Create book from markdown files, like Gitbook but implemented in Rust
-	pkgver = 0.3.0.r23.g228e99ba1
+	pkgver = 0.3.1.r32.gb4bb44292
 	pkgrel = 1
 	url = https://github.com/rust-lang-nursery/mdBook
 	arch = x86_64
