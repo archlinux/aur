@@ -1,0 +1,20 @@
+pkgbase = mindustry
+	pkgdesc = A sandbox tower defense game written in Java
+	pkgver = 94
+	pkgrel = 1
+	url = https://github.com/Anuken/Mindustry
+	arch = any
+	license = GPL3
+	depends = java-runtime=8
+	noextract = mindustry-94.jar
+	source = mindustry-94.jar::https://github.com/Anuken/Mindustry/releases/download/v94/Mindustry.jar
+	source = mindustry.desktop
+	source = mindustry.png
+	source = mindustry.sh
+	md5sums = ca86232057b5d037e68902b75e3f6cc8
+	md5sums = ca844794a491a7978d89ad966c28b85f
+	md5sums = 2b7f48f1045810ce9892b337a00bb021
+	md5sums = 76db8cba637b9345928a1327f5eb48af
+
+pkgname = mindustry
+
