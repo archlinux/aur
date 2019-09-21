@@ -1,0 +1,19 @@
+pkgbase = deezer-nativefier
+	pkgdesc = Deezer desktop built with nativefier (Electron)
+	pkgver = 1.0
+	pkgrel = 3
+	url = https://www.deezer.com/
+	arch = any
+	license = custom
+	makedepends = imagemagick
+	makedepends = nodejs-nativefier
+	depends = gtk3
+	depends = libxss
+	depends = nss
+	source = deezer.png
+	source = deezer-nativefier.desktop
+	sha256sums = 557b7ff1d344d75dacc6cd5a61f3361684c16a4de1455f6de7bd233d1aeb5c4e
+	sha256sums = 5c7d70acf97eb4f8392ee9fb3c80cef032dbd8356b09e0c231bf8e5e7bfa7492
+
+pkgname = deezer-nativefier
+

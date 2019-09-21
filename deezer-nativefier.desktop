@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Deezer
+Comment=Deezer desktop built with nativefier (Electron)
+Exec=deezer-nativefier
+Icon=deezer
+Encoding=UTF-8
+StartupWMClass=deezer-nativefier-ce9461
+Terminal=false
+StartupNotify=true
+Type=Application
+Categories=Audio;Music;Player;AudioVideo;
