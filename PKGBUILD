@@ -1,13 +1,13 @@
 # Maintainer: Shatur <genaloner@gmail.com>
 
 # Use KDE API features (recommended for Plasma users)
-_plasma=true
+_plasma=false
 
 # Submodule versions
-_singleapplication=3.0.14
+_singleapplication=3.0.15
 
 pkgname=optimus-manager-qt
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="A Qt interface for Optimus Manager that allows to configure and switch GPUs on Optimus laptops using the tray menu"
 arch=('x86_64')
@@ -17,8 +17,8 @@ depends=('qt5-base' 'optimus-manager>=1.2')
 makedepends=('qt5-tools')
 source=($pkgname-$pkgver.tar.gz::"https://github.com/Shatur95/optimus-manager-qt/archive/$pkgver.tar.gz"
         SingleApplication-$_singleapplication.tar.gz::"https://github.com/itay-grudev/SingleApplication/archive/$_singleapplication.tar.gz")
-sha256sums=('331aeb57fe7f687226356dd263eedbf08bcf868955e6e64a094044eac7356494'
-            '898aa58cebceb07a3b9af65011c0eef23e9789f930a021037dd7e05d2910f318')
+sha256sums=('f6fc71e792c7bafadb6e37eca0f6e398fc2517a7defef3e97d673fee95ff9e0a'
+            '312c125a5564f5aaa22b532599bc9707c1570a2e97232529848a66dc74486de3')
 
 if [ $_plasma == true ]
 then
