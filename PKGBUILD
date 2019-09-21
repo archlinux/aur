@@ -1,6 +1,6 @@
 # Maintainer: Aurélien Ooms <aurelien.ooms@gmail.com>
 pkgname=myip
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 epoch=
 pkgdesc="Print your public or private IP address"
