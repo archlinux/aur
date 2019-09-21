@@ -1,3 +1,7 @@
+2019-09-21 Christopher Arndt <aur -at- chrisarndt -dot- de>
+    * 1:1.11.r10585.d96391aca-1:
+	- Simplified pkgver function
+
 2018-07-23 Christopher Arndt <aur -at- chrisarndt -dot- de>
 	* 1:1.9.4.405.g7067ac357-1:
 	Added -Wno-error=array-bounds compiler flag to make invocation for axtls.

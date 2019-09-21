@@ -4,7 +4,7 @@
 
 _pkgname="micropython"
 pkgname="${_pkgname}-git"
-pkgver=1.11.62f004ba4
+pkgver=1.11.r10585.d96391aca
 pkgrel=1
 epoch=1
 pkgdesc="A Python 3 implementation for microcontrollers and constrained environments (Unix version)."
@@ -23,8 +23,9 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
-  PYTHONPATH='py' python -c \
-    'import makeversionhdr, re; v=makeversionhdr.get_version_info_from_git(); print("%s.%s" % (re.sub("-.*$", "", v[0].lstrip("v")), re.sub("-.*$", "", v[1])))'
+
+  local ver=$(grep '^version =' docs/conf.py | cut -d "'" -f 2)
+  echo $ver.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 prepare() {
