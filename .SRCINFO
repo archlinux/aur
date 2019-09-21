@@ -1,6 +1,6 @@
 pkgbase = igdm-bin
 	pkgdesc = Desktop application for Instagram DMs
-	pkgver = 2.7.0
+	pkgver = 2.7.1
 	pkgrel = 1
 	url = https://github.com/ifedapoolarewaju/igdm
 	arch = x86_64
@@ -14,10 +14,10 @@ pkgbase = igdm-bin
 	conflicts = igdm
 	source = https://raw.githubusercontent.com/ifedapoolarewaju/igdm/master/LICENSE
 	sha256sums = 1777c54d2f39e230ba87a3c793117de156a57fcb38043f16f7a6baadc80b1421
-	source_x86_64 = igdm-bin-2.7.0-x86_64.deb::https://github.com/ifedapoolarewaju/igdm/releases/download/v2.7.0/IGdm_2.7.0_amd64.deb
-	sha256sums_x86_64 = faa1ccd5f0548dd5fbc3e94d8308561fa3b557dd302a1621109a9856ae425926
-	source_i686 = igdm-bin-2.7.0-i686.deb::https://github.com/ifedapoolarewaju/igdm/releases/download/v2.7.0/IGdm_2.7.0_i386.deb
-	sha256sums_i686 = 9b993e23c72abed70820ff78d00eaeb767aa5620f74cefb903c3d39e3b3230dc
+	source_x86_64 = igdm-bin-2.7.1-x86_64.deb::https://github.com/ifedapoolarewaju/igdm/releases/download/v2.7.1/IGdm_2.7.1_amd64.deb
+	sha256sums_x86_64 = 7889a1d440fef0db58a9ba2e728e3fd20e956f4a45d454c4619674ea1f9fe539
+	source_i686 = igdm-bin-2.7.1-i686.deb::https://github.com/ifedapoolarewaju/igdm/releases/download/v2.7.1/IGdm_2.7.1_i386.deb
+	sha256sums_i686 = d7e7485e0c23b0567235261d0c21396616ea05d908613f3903504c68e6c34443
 
 pkgname = igdm-bin
 
