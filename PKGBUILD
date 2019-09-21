@@ -5,20 +5,20 @@ _usdx_package=WorldParty
 _pkgname=ultrastardxwp
 _ffmpeg="ffmpeg3.4"
 pkgname=${_pkgname}-git
-pkgver=r111.c1da37e
+pkgver=r308.6f9a09d
 pkgrel=1
 pkgdesc="UltraStar Deluxe WorldParty is a free and open source karaoke game. It allows up to six players to sing along with music using microphones in order to score points, depending on the pitch of the voice and the rhythm of singing."
 arch=("i686" "x86_64")
 url="http://ultrastar-es.org"
 license=("GPL")
-depends=(${_ffmpeg} "lua" "pcre" "portaudio" "sdl2" "sdl2_gfx" "sdl2_mixer" "sdl2_ttf" "sdl2_image" "sdl2_net" "sqlite" "ttf-dejavu" "ttf-freefont")
+depends=(${_ffmpeg} "lua" "pcre" "portaudio" "sdl2" "sdl2_gfx" "sdl2_mixer" "sdl2_ttf" "sdl2_image" "sdl2_net" "sqlite" "ttf-dejavu" "gnu-free-fonts")
 makedepends=("git" "fpc")  
 optdepends=()
 conflicts=("${pkgname}")
 options=("!buildflags")
 install=${pkgname}.install
 source=("${_pkgname}.desktop"
-        "${_pkgname}::git+https://github.com/ultrastares/usdxworldparty/")
+        "${_pkgname}::git+https://github.com/ultrastares/usdxworldparty#branch=alfa")
 md5sums=('45e724d9c3ab756ed908774daedfac24'
          'SKIP')
 
