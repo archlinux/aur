@@ -1,7 +1,7 @@
 # Maintainer: Alexandros Theodotou <alex@zrythm.org>
 _pkgname=zrythm
 pkgname=$_pkgname-git
-pkgver=0.6.384
+pkgver=0.6.422
 pkgrel=1
 pkgdesc='a highly automated and intuitive digital audio workstation'
 arch=('x86_64' 'i686')
@@ -12,7 +12,7 @@ depends=('gtk3' 'lilv' 'libx11' 'jack' 'libsndfile'
 makedepends=(
   'python' 'gettext' 'sed'
   'meson' 'ninja' 'help2man' 'python-sphinx'
-  'ladspa' 'lv2')
+  'ladspa' 'lv2' 'suil')
 optdepends=('portaudio: portaudio backend'
             'qt5-base: for embedding qt5 plugin UIs')
 conflicts=("$_pkgname")
