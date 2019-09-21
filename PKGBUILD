@@ -1,7 +1,7 @@
 # Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=strawberry-lite
-pkgver=0.5.5
+pkgver=0.6.3
 pkgrel=1
 pkgdesc="A music player aimed at audio enthusiasts and music collectors, fewer fautures, Gstreamer and alsa only"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
@@ -16,7 +16,7 @@ optdepends=('gst-libav: additional codecs (i.e. AAC)'
 provides=(strawberry)
 conflicts=(strawberry)
 source=("strawberry-${pkgver}.tar.gz::https://github.com/jonaski/strawberry/archive/${pkgver}.tar.gz")
-sha256sums=('16899fff239e6ce45e9a1e195133addf1ab982c738b387345bc54f328991b58c')
+sha256sums=('9ea31a404cfe71a4adfc236cb64133fe3c6033cfc0355ea475aa6935f51627ab')
 
 prepare() {
   cd "${srcdir}/strawberry-${pkgver}"
