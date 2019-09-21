@@ -10,7 +10,7 @@ options=(!emptydirs)
 depends=('perl>=5.6' perl-data-section perl-text-template)
 checkdepends=(perl-try-tiny)
 url=https://metacpan.org/release/Software-License
-source=("http://search.cpan.org/CPAN/authors/id/L/LE/LEONT/Software-License-$pkgver.tar.gz")
+source=("https://search.cpan.org/CPAN/authors/id/L/LE/LEONT/Software-License-$pkgver.tar.gz")
 md5sums=(24bab4d2b3a8f3cb8533e118f5498de2)
 sha512sums=(8012f9d3e8671bdcbaf52f6790f6cd2f6a0510883bb40115c222c8c685aed6697ba33b3f9df8d853841cd2eef0806d919c9038b6ba7b1057f475b3b63457069d)
 _ddir="Software-License-$pkgver"
