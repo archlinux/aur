@@ -1,0 +1,22 @@
+pkgbase = python-nifty-git
+	pkgdesc = Versatile library designed to enable the development of signal inference algorithms that operate regardless of the underlying grids (spatial, spectral, temporal, ...) and their resolutions
+	pkgver = 5.0.1.r174.g12c5065b
+	pkgrel = 1
+	url = http://ift.pages.mpcdf.de/nifty/ift.html
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python
+	depends = python-scipy
+	depends = python-pypocketfft
+	optdepends = python-pyhealpix: harmonic transforms involving domains on the sphere
+	optdepends = python-nifty_gridder: radio interferometry responses
+	optdepends = python-mpi4py: MPI-parallel execution
+	optdepends = python-matplotlib: field plotting
+	provides = python-nifty=5.0.1.r174.g12c5065b
+	conflicts = python-nifty
+	source = python-nifty-git::git+https://gitlab.mpcdf.mpg.de/ift/nifty.git
+	sha512sums = SKIP
+
+pkgname = python-nifty-git
