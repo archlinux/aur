@@ -1,20 +1,20 @@
 # Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=glimpse-editor-git
-pkgver=r42757.42f38ba96b
-pkgrel=2
+pkgver=r42781.175d402049
+pkgrel=1
 pkgdesc="Fork of the GNU Image Manipulation Program"
 arch=(i686 x86_64)
-url="https://getglimpse.app/"
+url="https://glimpse-editor.org/"
 license=(GPL3 LGPL)
 depends=(gegl libmypaint gtk2 pygtk openexr
-         poppler-glib poppler-data mypaint-brushes
+         poppler-glib poppler-data mypaint-brushes1
          )
 makedepends=(git intltool libxslt gtk-doc libxslt
              ghostscript libxpm libheif libwebp libmng libwmf iso-codes aalib
              appstream-glib xdg-utils
              )
-optdepends=('gutenprint: for sophisticated printing only as gimp has built-in cups print support'
+optdepends=('gutenprint: for sophisticated printing only as glimpse has built-in cups print support'
             'alsa-lib: for MIDI event controller module'
             'ghostscript: for postscript support'
             'libxpm: XPM support'
@@ -25,7 +25,7 @@ optdepends=('gutenprint: for sophisticated printing only as gimp has built-in cu
             'xdg-utils: email plugin'
             'aalib: ASCII art support'
             )
-provides=(glimpse-editor)
+provides=(glimpse-editor gimp)
 conflicts=(glimpse-editor gimp)
 source=("git+https://github.com/glimpse-editor/Glimpse#branch=dev-g210")
 sha512sums=('SKIP')
