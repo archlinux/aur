@@ -1,7 +1,7 @@
 # Maintainer: Thomas Weißschuh <thomas t-8ch de>
 
 pkgname=nbdkit
-pkgver=1.14.1
+pkgver=1.14.2
 pkgrel=1
 pkgdesc="NBD server toolkit"
 arch=('i686' 'x86_64')
@@ -34,5 +34,5 @@ check() {
   make check
 }
 
-sha256sums=('6afa9f75d0b401b21c1faba7723abbeb117c91279f3d5341bf53b640316409c6'
+sha256sums=('6fb187e604ea34dbec8a2d28892e603049fcd5fc4440617b80c2053e5e4e4e0b'
             'SKIP')
