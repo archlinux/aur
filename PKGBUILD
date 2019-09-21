@@ -10,7 +10,7 @@ options=(!emptydirs)
 depends=('perl>=5.6' perl-log-any 'perl-log-log4perl>=1.32')
 checkdepends=(perl-log-any)
 url=https://metacpan.org/release/Log-Any-Adapter-Log4perl
-source=("http://search.cpan.org/CPAN/authors/id/P/PR/PREACTION/Log-Any-Adapter-Log4perl-$pkgver.tar.gz")
+source=("https://search.cpan.org/CPAN/authors/id/P/PR/PREACTION/Log-Any-Adapter-Log4perl-$pkgver.tar.gz")
 md5sums=(33f58745a229cfbe5558fd75aeddf6b4)
 sha512sums=(7b7e0d20e8280be7e741676216e37ef9d480c82e874f22495055b29a365951f3f20d76a27a5a1ab9ee22e93a31bead0b2e09063375284c5342fa0694ccc83114)
 _ddir="Log-Any-Adapter-Log4perl-$pkgver"
