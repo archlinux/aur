@@ -1,24 +1,31 @@
-# Maintainer: Daniel Nagy <danielnagy at gmx de>
+# Maintainer:
+# Contributor: Daniel Nagy <danielnagy at gmx de>
 
 pkgname=dbus-cxx
-pkgver=0.8.0
-pkgrel=2
+pkgver=0.11.0
+pkgrel=1
 pkgdesc="A C++ wrapper for DBus"
-url="http://dbus-cxx.sourceforge.net/"
+url="https://dbus-cxx.github.io/"
 arch=('i686' 'x86_64')
-license=( "GPL3" )
-depends=( "dbus" "libsigc++" "popt" "glibmm" )
-source=( "http://downloads.sourceforge.net/project/$pkgname/$pkgname/$pkgver/$pkgname-$pkgver.tar.bz2" )
-sha1sums=('e5c77bbce9fd3f9a5a8788a20715a4e4fb33c9ee')
+license=('GPL3')
+depends=('dbus' 'libsigc++' 'popt' 'glibmm')
+makedepends=('cmake')
+source=("https://github.com/$pkgname/dbus-cxx/archive/$pkgver.tar.gz")
+sha256sums=('17aad1f785d42fb5602a90d34dbcc33de2ae3b636a03ccd4e5221d9fa1a7b8d8')
+
+prepare() {
+  mkdir -p build
+}
 
 build() {
-  cd $srcdir/$pkgname-$pkgver
-  autoconf
-  ./configure --prefix=/usr --enable-glibmm 
+  cd build
+  cmake ../$pkgname-$pkgver \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DENABLE_GLIBMM=ON
   make
 }
 
 package() {
-  cd $srcdir/$pkgname-$pkgver
+  cd build
   make install DESTDIR="$pkgdir"
 }

@@ -1,17 +1,18 @@
 pkgbase = dbus-cxx
 	pkgdesc = A C++ wrapper for DBus
-	pkgver = 0.8.0
-	pkgrel = 2
-	url = http://dbus-cxx.sourceforge.net/
+	pkgver = 0.11.0
+	pkgrel = 1
+	url = https://dbus-cxx.github.io/
 	arch = i686
 	arch = x86_64
 	license = GPL3
+	makedepends = cmake
 	depends = dbus
 	depends = libsigc++
 	depends = popt
 	depends = glibmm
-	source = http://downloads.sourceforge.net/project/dbus-cxx/dbus-cxx/0.8.0/dbus-cxx-0.8.0.tar.bz2
-	sha1sums = e5c77bbce9fd3f9a5a8788a20715a4e4fb33c9ee
+	source = https://github.com/dbus-cxx/dbus-cxx/archive/0.11.0.tar.gz
+	sha256sums = 17aad1f785d42fb5602a90d34dbcc33de2ae3b636a03ccd4e5221d9fa1a7b8d8
 
 pkgname = dbus-cxx
 
