@@ -1,0 +1,13 @@
+[Trigger]
+Operation = Upgrade
+Operation = Install
+Type = Package
+Target = gnome-shell
+Target = materia-custom-accent
+
+[Action]
+Description = Replace GDM theme with Materia with custom accent
+When = PostTransaction
+Exec = /usr/bin/sh -c "cd /usr/share/themes/materia-custom-accent/gnome-shell && glib-compile-resources --target=/usr/share/gnome-shell/gnome-shell-theme.gresource gnome-shell-theme.gresource.xml"
+Depends = bash
+Depends = glib2
