@@ -21,6 +21,7 @@ package() {
   cd "$srcdir/$pkgname-master"
   install -D target/release/netctl-tray "${pkgdir}/usr/bin/netctl-tray"
   install -D scripts/netctltray "${pkgdir}/etc/netctl/hooks/netctltray"
+  install -d "${pkgdir}/opt/netctl-tray/"
   install -D scripts/* "${pkgdir}/opt/netctl-tray/"
   install -D assets/* "${pkgdir}/opt/netctl-tray/"
 }
