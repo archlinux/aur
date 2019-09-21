@@ -9,7 +9,7 @@ url="https://github.com/bkasin/gogios"
 license=('MIT')
 
 makedepends=('go' 'make')
-optdepends=('nginx')
+optdepends=('nginx' 'nmap')
 
 install=${pkgname}.install
 

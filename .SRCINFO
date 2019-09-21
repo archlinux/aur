@@ -9,6 +9,7 @@ pkgbase = gogios
 	makedepends = go
 	makedepends = make
 	optdepends = nginx
+	optdepends = nmap
 	provides = gogios
 	conflicts = gogios-bin
 	source = gogios::git+https://github.com/bkasin/gogios.git#branch=master
