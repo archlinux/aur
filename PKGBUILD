@@ -4,32 +4,37 @@
 
 pkgbase=gdm-prime
 pkgname=(gdm-prime libgdm-prime)
-pkgver=3.32.0+2+g820f90f5
-pkgrel=2
+pkgver=3.34.0
+pkgrel=1
 url="https://wiki.gnome.org/Projects/GDM"
 arch=(x86_64)
 license=(GPL)
 depends=(gnome-shell gnome-session upower xorg-xrdb xorg-server xorg-xhost)
-makedepends=(yelp-tools gobject-introspection git docbook-xsl binutils make patch autoconf automake gcc)
+makedepends=(yelp-tools gobject-introspection git docbook-xsl)
 checkdepends=(check)
-_commit=820f90f5a78b81b2e4610da14627266c2135c8b0  # master
+_commit=7c8950d94de854a227d2aa0eda82d3145f529a61  # tags/3.34.0^0
 source=("git+https://gitlab.gnome.org/GNOME/gdm.git#commit=$_commit"
         0001-Xsession-Don-t-start-ssh-agent-by-default.patch
-        0002-nvidia-prime.patch)
+        0002-pam-arch-Don-t-check-greeter-account-for-expiry.patch
+        0003-pam-arch-Restrict-greeter-service-to-the-gdm-user.patch
+        0004-nvidia-prime.patch)
 sha256sums=('SKIP'
-            '3412f7da0205409f08a126a1d166b644fe0f1d0444f7cdebdce8e59cea2d672c'
+            '098ffb1cdc0232f014e5fe5fb8d268b752afc54d6ee661664036879acd075b22'
+            '2e2b12d4609004a010245de51a8c017b164e84f249cd19706d020cb599d2d7e7'
+            '3fa02eb7bbbe1586eae4ae98221a284251ca2869dc731c80b753e7effc443379'
             'f2ac60c8e4d62805dc2f441a8754f1c15e12c64ec0dbb1031dbd91dd47df52d9')
-
-pkgver() {
-  cd gdm
-  git describe --tags | sed 's/-/+/g'
-}
 
 prepare() {
   mkdir build
   cd gdm
   patch -Np1 -i ../0001-Xsession-Don-t-start-ssh-agent-by-default.patch
-  patch -Np1 -i ../0002-nvidia-prime.patch
+
+  # https://bugs.archlinux.org/task/63706
+  patch -Np1 -i ../0002-pam-arch-Don-t-check-greeter-account-for-expiry.patch
+  patch -Np1 -i ../0003-pam-arch-Restrict-greeter-service-to-the-gdm-user.patch
+
+  patch -Np1 -i ../0004-nvidia-prime.patch
+
   NOCONFIGURE=1 ./autogen.sh
 }
 
@@ -68,6 +73,7 @@ package_gdm-prime() {
           etc/pam.d/gdm-password etc/pam.d/gdm-smartcard etc/gdm/custom.conf
           etc/gdm/Xsession etc/gdm/PostSession/Default etc/gdm/PreSession/Default)
   groups=(gnome)
+  install=gdm-prime.install
 
   DESTDIR="$pkgdir" make -C build install
 
@@ -75,11 +81,6 @@ package_gdm-prime() {
 
   # Unused or created at start
   rm -r "$pkgdir"/var/{cache,log,run}
-
-  install -Dm644 /dev/stdin "$pkgdir/usr/lib/sysusers.d/gdm.conf" <<END
-g gdm 120 -
-u gdm 120 "Gnome Display Manager" /var/lib/gdm
-END
 
 ### Split libgdm
   mkdir -p libgdm/{lib,share}
