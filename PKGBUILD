@@ -10,7 +10,7 @@ depends=('python>=3.7' 'python-certifi' 'python-aiohttp' 'python-gobject' 'stlib
 makedepends=('python-setuptools')
 license=('GPL')
 source=("https://github.com/ShyPixie/$pkgname/archive/v${pkgver}.tar.gz")
-sha256sums=('dab78db4d31aa7453274fc8f3d1a7e46e40a39f68523f6bbbad0055ea6fbc8bb')
+sha256sums=('e7e2a168ff4d1edf32e1a4001249aa11311c9d8d860ae4c2817338a10e4265ed')
 
 build() {
     cd $pkgname-$pkgver
