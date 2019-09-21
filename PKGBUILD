@@ -2,7 +2,7 @@
 
 pkgname=playmyvideos
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Cinema is a video player for Pantheon, developed by Artem Anufrij"
 arch=(x86_64)
 url="http://anufrij.org/cinema"
@@ -21,4 +21,5 @@ build() {
 package() {
   cd ${srcdir}/${pkgname}-${pkgver}
   DESTDIR="${pkgdir}" ninja -C build install
+  ln -s /usr/bin/com.github.artemanufrij.playmyvideos "$pkgdir/usr/bin/playmyvideos"
 }
