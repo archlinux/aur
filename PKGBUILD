@@ -11,7 +11,7 @@ pkgdesc='DRM kernel graphics driver development tree'
 _srcname=${pkgbase}
 _branch=drm-fixes
 _kernelname=${pkgbase#linux}
-pkgver=5.4.857462.1e19ec6c3c41
+pkgver=5.4.857540.e6bb711600db
 pkgrel=1
 arch=('x86_64')
 url='https://cgit.freedesktop.org/drm/drm'
@@ -28,7 +28,7 @@ source=("${pkgbase}::git://anongit.freedesktop.org/drm/drm#branch=${_branch}"
   linux.preset   # standard config files for mkinitcpio ramdisk
 )
 sha256sums=('SKIP'
-            '0c494d955d4e4852f76bfc9278081de4b5c7fe75fac7334523f430cc5fe65daf'
+            'eda52e1c1f1bc1b0681ec9b1cf2ad27bac4a7c06650a7a2a187f4d72419e7a63'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '997dd1ca5c59e526a35d8367e6371a68406b1a58b90006e6f85d59a580c7503f')
