@@ -1,0 +1,15 @@
+pkgbase = electron-fiddle
+	pkgdesc = The easiest way to get started with Electron
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = https://electronjs.org/fiddle
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	depends = electron
+	provides = electron-fiddle
+	source = fiddle-0.10.0.src.tar.gz::https://github.com/electron/fiddle/archive/v0.10.0.tar.gz
+	sha256sums = 1643abcb6109f9d9a83c77eb64ef112aedd60669540b1f6f76bb230af965e9af
+
+pkgname = electron-fiddle
+
