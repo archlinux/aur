@@ -1,16 +1,17 @@
 pkgbase = python-regli
 	pkgdesc = REgular Grid Linear Interpolator
-	pkgver = 2019.811.0
+	pkgver = 2019.920.0
 	pkgrel = 1
 	url = https://github.com/hypergravity/regli
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = python-setuptools
-	depends = python-scipy
-	depends = python-emcee
-	source = https://files.pythonhosted.org/packages/source/r/regli/regli-2019.811.0.tar.gz
-	md5sums = 823ffd1ae990f556c08ccd629bedec85
+	depends = python-astroslam
+	source = https://files.pythonhosted.org/packages/source/r/regli/regli-2019.920.0.tar.gz
+	source = https://raw.githubusercontent.com/hypergravity/regli/master/LICENSE
+	md5sums = c02ad2bee0979a9defef38e7dea75a93
+	md5sums = 4138b8245bda677d8910e00d4338e70b
 
 pkgname = python-regli
 
