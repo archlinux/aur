@@ -5,11 +5,11 @@
 # Contributor: Alexander Fehr <pizzapunk gmail com>
 
 pkgname=pytrainer
-pkgver=2.0.0rc1
-pkgrel=2
+pkgver=2.0.0
+pkgrel=1
 pkgdesc='A tool to log your sport activities.'
 arch=('any')
-url='https://github.com/pytrainer/pytrainer/wiki'
+url="https://github.com/${pkgname}/${pkgname}/wiki"
 license=('GPL')
 depends=('python2-distribute' 'python2-lxml' 'python2-matplotlib' 'python2-sqlalchemy-migrate' 'pywebkitgtk' 'python2-sqlparse')
 optdepends=('garmintools: "Garmin via garmintools" plugin'
@@ -17,33 +17,33 @@ optdepends=('garmintools: "Garmin via garmintools" plugin'
             'gpsbabel: "Garmin via GPSBabel 1.3.5" plugin'
             'perl: garmin-fit plugin'
             'zenity: garmintools and gpsbabel plugins')
-source=("$pkgname-${pkgver}.tar.gz::https://github.com/$pkgname/$pkgname/archive/v${pkgver}.tar.gz"
-        $pkgname.sh
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz"
+        ${pkgname}.sh
         #pathfix.patch
         )
-md5sums=('1a29bd8749a7ce218e1959e918b60211'
+md5sums=('70c9e62bb9afa06ae7b7e44ec0eb5921'
          '87bc8c7037f17f0be158853485ef713f'
          #'c80aa188dce3a5675b15a703873bf3ad'
          )
 
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "${pkgname}-${pkgver}"
 
-  #patch -Np2 < "$srcdir/pathfix.patch"
-  sed -i 's/\/share\/pytrainer\//\/pytrainer\//' $srcdir/$pkgname-$pkgver/bin/$pkgname
-  sed -i 's/\/share\/locale/\/locale/' $srcdir/$pkgname-$pkgver/bin/$pkgname
+  #patch -Np2 < "${srcdir}/pathfix.patch"
+  sed -i 's/\/share\/pytrainer\//\/pytrainer\//' ${srcdir}/${pkgname}-${pkgver}/bin/${pkgname}
+  sed -i 's/\/share\/locale/\/locale/' ${srcdir}/${pkgname}-${pkgver}/bin/${pkgname}
   
 
   # Fix python paths
-  find "$srcdir/" -name '*.py' -exec \
+  find "${srcdir}/" -name '*.py' -exec \
     sed -ri 's@^#!\s*/usr/bin/(python|env python)$@#!/usr/bin/env python2@' {} +
 
   # Install
   export PYTHON="/usr/bin/env python2"
-  python2 setup.py install --prefix=/usr --root="$pkgdir"
+  python2 setup.py install --prefix=/usr --root="${pkgdir}"
 
   # install launcher
-  mv "$pkgdir"/usr/{bin,share/$pkgname}/$pkgname
-  install -Dm755 "$srcdir/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
+  mv "${pkgdir}"/usr/{bin,share/${pkgname}}/${pkgname}
+  install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
 }
