@@ -6,8 +6,8 @@
 # Contributor: Michael Kanis <mkanis_at_gmx_dot_de>
 
 pkgname=mutter-performance
-pkgver=3.34.0+14+g0e69fe078
-pkgrel=2
+pkgver=3.34.0+30+gb5775e3d8
+pkgrel=1
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -22,11 +22,9 @@ provides=(mutter mutter-781835-workaround)
 conflicts=(mutter)
 replaces=(mutter-781835-workaround)
 groups=(gnome)
-_commit=0e69fe07819a289f3156f18c46b749b2f128cf05  # master
-source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
-	429.diff)
-sha256sums=('SKIP'
-            'c22bc32ab8a29e3da986f386d14a8376f1985c051328ca6786571b4b67ec9e48')
+_commit=b5775e3d85235418fc12c2024a54863d49acf02d  # master
+source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit")
+sha256sums=('SKIP')
 
 pkgver() {
   cd $pkgname
@@ -58,8 +56,6 @@ prepare() {
   git cherry-pick --abort || true
   git remote add vanvugt https://gitlab.gnome.org/vanvugt/mutter.git || true
   git fetch vanvugt
-  git remote add verdre https://gitlab.gnome.org/verdre/mutter.git || true
-  git fetch verdre
 
   ### Merge Requests
 
