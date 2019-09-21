@@ -17,16 +17,16 @@ sha256sums=('65bc6f56ef9c8527763ef72d4a334238dbcb60ce2962c319af169236f136b39e'
 prepare() {
 	export GOPATH="$srcdir/go"
 	mkdir -p "$GOPATH/src"
-	ln -s "$srcdir/libgit2-$_lg2ver" "$GOPATH/src/libgit2-$_lg2verr"
+	ln -s "$srcdir/libgit2-$_lg2ver" "$GOPATH/src/libgit2-$_lg2ver"
 	ln -s "$srcdir/$pkgname-$pkgver" "$GOPATH/src/$pkgname-$pkgver"
 	
-	cd "$GOPATH/src/libgit2-$_lg2verr"
+	cd "$GOPATH/src/libgit2-$_lg2ver"
 	git submodule update --init
 }
 
 build() {
 	export GOPATH="$srcdir/go"
-	cd "$GOPATH/src/libgit2-$_lg2verr"
+	cd "$GOPATH/src/libgit2-$_lg2ver"
 	mkdir build && cd build
 	cmake \
 		-DTHREADSAFE=ON \
