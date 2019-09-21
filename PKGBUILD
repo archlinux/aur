@@ -1,21 +1,20 @@
-# Maintainer: steamport <steamport@protonmail.com>
 # Maintainer: Christian Rebischke <chris.rebischke@archlinux.org>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Jonathan Wiersma <archaur at jonw dot org>
 
 _pkgname=libvirt
 pkgname=libvirt-apparmor
-pkgver=5.0.0
-pkgrel=0
+pkgver=5.6.0
+pkgrel=1
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc). Compiled with Audit and AppArmor support."
 arch=('x86_64')
-url="http://libvirt.org/"
+url="https://libvirt.org/"
 license=('LGPL')
 provides=('libvirt')
 conflicts=('libvirt')
 makedepends=('lvm2' 'linux-api-headers' 'dnsmasq' 'lxc' 'libiscsi' 'open-iscsi'
              'perl-xml-xpath' 'libxslt' 'qemu' 'parted' 'python')
-depends=('e2fsprogs' 'gnutls' 'iptables' 'libxml2' 'parted' 'polkit' 'avahi'
+depends=('e2fsprogs' 'gnutls' 'iptables' 'libxml2' 'parted' 'polkit'
          'yajl' 'libpciaccess' 'udev' 'dbus' 'libxau' 'libxdmcp' 'libpcap'
          'libcap-ng' 'curl' 'libsasl' 'libgcrypt' 'libgpg-error' 'openssl'
          'libxcb' 'gcc-libs' 'iproute2' 'libnl' 'libx11' 'numactl' 'gettext'
@@ -53,6 +52,7 @@ backup=('etc/conf.d/libvirt-guests'
   'etc/libvirt/nwfilter/no-other-rarp-traffic.xml'
   'etc/libvirt/nwfilter/qemu-announce-self-rarp.xml'
   'etc/libvirt/nwfilter/qemu-announce-self.xml'
+  'etc/libvirt/nwfilter/clean-traffic-gateway.xml'
   'etc/libvirt/qemu-lockd.conf'
   'etc/libvirt/qemu.conf'
   'etc/libvirt/qemu/networks/default.xml'
@@ -61,21 +61,18 @@ backup=('etc/conf.d/libvirt-guests'
   'etc/logrotate.d/libvirtd'
   'etc/logrotate.d/libvirtd.lxc'
   'etc/logrotate.d/libvirtd.qemu'
-  'etc/logrotate.d/libvirtd.uml'
   'etc/sasl2/libvirt.conf')
-install="libvirt.install"
-
 options=('emptydirs')
 validpgpkeys=('C74415BA7C9C7F78F02E1DC34606B8A5DE95BC1F')
 source=("https://libvirt.org/sources/${_pkgname}-${pkgver}.tar.xz"{,.asc}
         'libvirtd.conf.d'
         'libvirtd-guests.conf.d'
         'libvirt.sysusers.d')
-sha512sums=('d93042f49d2550d14577b5257c548d7108462fe1ad69420c128acf094ffd3e80deb744db13d4c3d5fbe5e4c1826d13131be12e3413710711a2d8cba6cb5a9db9'
+sha512sums=('95fe931394fb31288faf73349bb298f08f63cf062f851b9935303145f8166f69128be9360757f0e1845256c14f4d7672843dba0dc6c086b1c3c8bfc035cc8986'
             'SKIP'
             'fc0e16e045a2c84d168d42c97d9e14ca32ba0d86025135967f4367cf3fa663882eefb6923ebf04676ae763f4f459e5156d7221b36b47c835f9e531c6b6e0cd9d'
             'ef221bae994ad0a15ab5186b7469132896156d82bfdc3ef3456447d5cf1af347401ef33e8665d5b2f76451f5457aee7ea01064d7b9223d6691c90c4456763258'
-            '519a9f245bed077137a1b01dec07a178885ac2527b47a1bd883bbb908bf9b4fa0c039525600e09f7db636f8849870fe2ce8ffe5b75532ff9d3fa1a91115875f8')
+            '7d1d535aaf739a6753f6819c49272c8d9b5f488e0a8553797499334a76b8631474e222b6048f2125b858e5ecc21e602face45dd02121f833d605b9ae58322982')
 
 prepare() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
@@ -128,7 +125,7 @@ build() {
     --with-storage-gluster \
     --with-storage-iscsi \
     --with-storage-lvm \
-    --with-storage-zfs \
+    --with-storage-zfs
     --with-audit \
     --with-apparmor \
     --with-secdriver-apparmor \
@@ -155,4 +152,10 @@ package() {
     "${pkgdir}"/etc/sysconfig
 
   rm -f "${pkgdir}"/etc/libvirt/qemu/networks/autostart/default.xml
+
+  # Fix permission Fix #61977
+  chmod 600 "${pkgdir}"/etc/libvirt/nwfilter/*.xml "${pkgdir}/etc/libvirt/qemu/networks/default.xml"
+
+  # Fix firewalld rules Fix #62219
+  sed -i "s|<rule priority='32767'><reject/></rule>|#<rule priority='32767'><reject/></rule>|" "${pkgdir}/usr/lib/firewalld/zones/libvirt.xml"
 }
