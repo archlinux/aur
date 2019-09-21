@@ -1,7 +1,7 @@
 # Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=easyssh-git
-pkgver=1.6.1.r13.g2dae345e
+pkgver=1.6.2.r35.g36dae815
 pkgrel=1
 pkgdesc="SSH connection manager for Pantheon"
 arch=(x86_64)
