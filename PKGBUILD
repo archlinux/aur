@@ -7,7 +7,7 @@
 # installation.
 
 pkgname=jabref-git
-pkgver=5.0alpha.r14.g66b7fe3af4
+pkgver=5.0alpha.r141.gdb96f88659
 pkgrel=1
 pkgdesc="GUI frontend for BibTeX, written in Java -- built from git"
 arch=('any')
@@ -32,25 +32,14 @@ pkgver() {
 
 build() {
   cd ${pkgname%-git}
-  ./gradlew releaseJar
+  ./gradlew assemble
+  ./gradlew jlink
 }
 
+
 package() {
-  cd ${pkgname%-git}
-
-  _release=$(sed -n 's/.*version = \"\(.*-dev\)\"/\1/p' build.gradle)
-
-  find "${srcdir}/${pkgname%-git}/build/releases" \
-	  -iname "JabRef-${_release}.jar" \
-	  -exec install -Dm644 {} "$pkgdir"/usr/share/java/jabref/JabRef.jar \;
-
-  install -Dm755 "$srcdir"/jabref.sh "$pkgdir"/usr/bin/jabref
-
-  install -Dm644 "$srcdir"/jabref.desktop \
-    "$pkgdir"/usr/share/applications/jabref.desktop
-
-  install -Dm644 "build/resources/main/icons/${pkgname%-git}.svg" \
-    "$pkgdir"/usr/share/pixmaps/${pkgname%-git}.svg
-
-  install -Dm644 LICENSE.md "$pkgdir"/usr/share/licenses/${pkgname}/LICENSE
+  install -d "${pkgdir}/opt"
+  cp -R "${pkgname%-git}/build" "${pkgdir}/opt/jabref"
+  install -D jabref.desktop "${pkgdir}/usr/share/applications/jabref.desktop"
+  install -D jabref.png "${pkgdir}/usr/share/pixmaps/jabref.desktop"
 }
