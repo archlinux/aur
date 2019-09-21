@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond < gmail-com: danielbermond >
 
 pkgname=mpv-full-git
-pkgver=0.29.1.r417.gfa0a905ea0
+pkgver=0.29.1.r663.g94bfe83355
 pkgrel=1
 pkgdesc='A free, open source, and cross-platform media player (git version with all possible libs)'
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=(
         'desktop-file-utils' 'hicolor-icon-theme' 'xdg-utils' 'lua52' 'libdvdnav'
         'libxrandr' 'jack' 'rubberband' 'uchardet' 'libarchive' 'smbclient'
         'zlib' 'vapoursynth' 'sndio' 'openal' 'vulkan-icd-loader' 'shaderc'
-        'libplacebo'
+        'libplacebo' 'zimg'
     # AUR:
         'mujs' 'rsound' 'spirv-cross'
 )
@@ -89,9 +89,9 @@ build() {
         --enable-cdda \
         --enable-uchardet \
         --enable-rubberband \
+        --enable-zimg \
         --enable-lcms2 \
         --enable-vapoursynth \
-        --enable-vapoursynth-lazy \
         --enable-libarchive \
         --enable-dvbin \
         --enable-libavdevice \
@@ -145,7 +145,6 @@ build() {
         --disable-rpi \
         --disable-ios-gl \
         --enable-plain-gl \
-        --disable-mali-fbdev \
         --enable-gl \
         --enable-libplacebo \
         --enable-vulkan \
@@ -155,6 +154,7 @@ build() {
         --disable-d3d9-hwaccel \
         --disable-gl-dxinterop-d3d9 \
         --enable-cuda-hwaccel \
+        --disable-rpi-mmal \
         \
         --disable-apple-remote \
         --disable-macos-touchbar \
