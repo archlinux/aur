@@ -3,7 +3,7 @@
 pkgname='mplayer-gui'
 pkgver='1.4'
 _sver='3'
-pkgrel='0'
+pkgrel='6'
 pkgdesc='GUI for mplayer'
 arch=('x86_64')
 url='http://www.mplayerhq.hu/'
