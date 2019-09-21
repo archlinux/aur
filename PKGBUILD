@@ -1,7 +1,7 @@
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 
 pkgname=android-google-apis-playstore-x86-system-image
-pkgver=28_r08
+pkgver=29_r07
 pkgrel=1
 pkgdesc='Android with Google APIs and Play Store x86 Atom System Image, latest API'
 arch=('any')
@@ -12,10 +12,10 @@ optdepends=('qemu' 'libvirt')
 provides=("${pkgname}-${pkgver/_*/}")
 conflicts=("${pkgname}-${pkgver/_*/}")
 options=('!strip')
-source=("http://dl-ssl.google.com/android/repository/sys-img/google_apis_playstore/x86-${pkgver}.zip"
+source=("http://dl-ssl.google.com/android/repository/sys-img/google_apis_playstore/x86-${pkgver}-linux.zip"
         "package.xml")
-sha256sums=('3c61ca2dca088889a111b25f0c92fcf6c09a809a4edf0663f0d6979109c7c756'
-            '021737a8031501818b7b3013e4d03bb1e6fd20ee5dc1e7105ee21b520e50eb3c')
+sha256sums=('838aecd8d1c7970c2bde8c088cf84cfbf595e18940e95e41aa6f2a7a05272726'
+            'ad63bd1d952d6fb857cf30bd9a73ca61bc5562c24f0408c4ef59b0d279a95f44')
 
 prepare() {
   # Fix permissions
