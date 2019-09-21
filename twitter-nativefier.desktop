@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Twitter
+Comment=Twitter desktop built with nativefier (Electron)
+Exec=twitter-nativefier
+Icon=twitter
+Encoding=UTF-8
+StartupWMClass=twitter-nativefier-be8b09
+Terminal=false
+StartupNotify=true
+Type=Application
+Categories=Network;
