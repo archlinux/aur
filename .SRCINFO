@@ -1,0 +1,23 @@
+pkgbase = ros-melodic-turtlebot3-gazebo
+	pkgdesc = ROS - Gazebo simulation package for the TurtleBot3
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://wiki.ros.org/turtlebot3_gazebo
+	arch = any
+	license = Apache-2.0
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-catkin
+	depends = gazebo
+	depends = ros-melodic-roscpp
+	depends = ros-melodic-std-msgs
+	depends = ros-melodic-sensor-msgs
+	depends = ros-melodic-geometry-msgs
+	depends = ros-melodic-nav-msgs
+	depends = ros-melodic-tf
+	depends = ros-melodic-gazebo-ros
+	source = ros-melodic-turtlebot3-gazebo-1.2.0.tar.gz::https://github.com/ROBOTIS-GIT/turtlebot3_simulations/archive/1.2.0.tar.gz
+	sha256sums = 6fbb4cf74b9777c3be3a751dd8d638df2570dd4478681b5eadf51dee32f57c5b
+
+pkgname = ros-melodic-turtlebot3-gazebo
+
