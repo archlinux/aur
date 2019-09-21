@@ -2,7 +2,7 @@
 _name=django-otp
 pkgbase=python-django-otp
 pkgname=('python-django-otp' 'python2-django-otp')
-pkgver=0.7.0
+pkgver=0.7.2
 pkgrel=1
 pkgdesc="A pluggable framework for adding two-factor authentication to Django using one-time passwords"
 url="https://github.com/django-otp/django-otp"
@@ -11,7 +11,7 @@ arch=('any')
 optdepends=('python-qrcode: For OTP setup with QR code')
 makedepends=('python-setuptools' 'python2-setuptools')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-$pkgver.tar.gz")
-sha512sums=('f85b6836da39e4b86df1ec6e3614aa8d5ebf0489778af87db613a98b768c85167d2560b29bd4653c9fa87f2cdc4d3e5c5f7c726520648af80e604d16681243f4')
+sha512sums=('004aa33c6da4ec0e38c3bf0451fd72e4625447684091910a61e7e4960dee4f3f26cd73247991d7c39b72516052d95dc9dc5c28e748dfe812d38258d71a0109a0')
 
 prepare() {
   cp -a ${_name}-$pkgver{,-py2}
@@ -38,5 +38,3 @@ package_python2-django-otp() {
   python2 setup.py install --skip-build --root="$pkgdir/" --optimize=1
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-
-# vim: ts=2 sts=2 sw=2 et ft=PKGBUILD
