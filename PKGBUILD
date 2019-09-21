@@ -1,11 +1,11 @@
 # Maintainer: pingplug < aur at pingplug dot me >
 # Contributor: xantares < xantares09 at hotmail dot com >
 
-_commit=787888e181543f5a85eb69d6a3caf14f9a4262b2  # after build failure fix
+_commit=f00183944fad943216ac5842f6b23ab5c4149e50  # 0.23.17
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-p11-kit
-pkgver=0.23.16.1+18+g787888e
+pkgver=0.23.17
 pkgrel=1
 pkgdesc="Provides a way to load and enumerate PKCS#11 modules (mingw-w64)"
 arch=('any')
