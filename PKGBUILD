@@ -33,7 +33,9 @@ build() {
 package() {
     cd "$srcdir/${pkgname%-VCS}"
     install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    install -D -m755 examples/* -t "$pkgdir/usr/share/$pkgname/examples/"
     install -D -m755 bin/glslViewer "$pkgdir/usr/bin/glslviewer"
     install -D -m755 bin/glslLoader "$pkgdir/usr/bin/glslloader"
+    mkdir -p "$pkgdir/usr/share/$pkgname/examples/"
+    cp -R examples/* "$pkgdir/usr/share/$pkgname/examples/"
+    chmod -R 755 "$pkgdir/usr/share/$pkgname/examples/"
 }
