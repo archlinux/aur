@@ -2,8 +2,8 @@
 
 pkgbase=linux-amd-raven
 _srcname=linux
-gitver=v5.2.16
-pkgver=5.2.v.16
+gitver=v5.2.17
+pkgver=5.2.v.17
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
