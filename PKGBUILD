@@ -59,12 +59,12 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.3
-_minor=0
+_minor=1
 _srcname=linux-${_major}
 _clr=${_major}.0-7
 pkgbase=linux-clear-current
 pkgver=${_major}.${_minor}
-pkgrel=3
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux-current"
 license=('GPL2')
@@ -74,6 +74,7 @@ _gcc_more_v='20190822'
 source=(
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.tar.xz"
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.tar.sign"
+  "https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz"
   "clearlinux-current::git+https://github.com/clearlinux-pkgs/linux-current.git#tag=${_clr}"
   "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
   '60-linux.hook'  # pacman hook for depmod
@@ -89,8 +90,8 @@ prepare() {
     cd ${_srcname}
 
     ### Add upstream patches
-        #msg2 "Add upstream patches"
-        #patch -Np1 -i ../patch-${pkgver}
+        msg2 "Add upstream patches"
+        patch -Np1 -i ../patch-${pkgver}
 
     ### Setting version
         msg2 "Setting version..."
@@ -322,6 +323,7 @@ done
 
 sha256sums=('78f3c397513cf4ff0f96aa7d09a921d003e08fa97c09e0bb71d88211b40567b2'
             'SKIP'
+            '84cf9ac904a4af41c23b1830ea98872e43f014fe7daba3e295e45e7381024d34'
             'SKIP'
             '8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
