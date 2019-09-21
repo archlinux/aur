@@ -1,7 +1,7 @@
 # Maintainer: Sherlock Holo <sherlockya@gmail.com>
 _pkgname=camouflage
 pkgname=$_pkgname-git
-pkgver=0.12.0.r1.g46fe529
+pkgver=0.12.0.r2.g123d873
 pkgrel=1
 pkgdesc="a mux websocket over TLS proxy, experimental version"
 arch=('x86_64')
@@ -41,6 +41,7 @@ build() {
 	msg2 "Downloading dependencies"
     export GO111MODULE=on
     export CGO_ENABLED=0
+    export GOPROXY=https://goproxy.cn,direct
 	go mod download
 
     msg2 "Building binary"
