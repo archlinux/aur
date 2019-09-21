@@ -1,0 +1,23 @@
+pkgbase = python2-pyvo
+	pkgdesc = Astropy affiliated package for accessing Virtual Observatory data and services
+	pkgver = 0.9.3
+	pkgrel = 1
+	url = https://pyvo.readthedocs.io/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	checkdepends = python2-pytest<3.7
+	checkdepends = python2-astropy
+	checkdepends = python2-contextlib2
+	checkdepends = python2-requests-mock
+	makedepends = python2-setuptools
+	makedepends = python2-mimeparse
+	makedepends = python2-astropy-helpers
+	source = https://files.pythonhosted.org/packages/source/p/pyvo/pyvo-0.9.3.tar.gz
+	md5sums = 1729177d138a22f10eeebbe4eb973d7e
+
+pkgname = python2-pyvo
+	depends = python2-astropy
+	depends = python2-requests
+	optdepends = python-pyvo-doc: Documentation for PyVO
+
