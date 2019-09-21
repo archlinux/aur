@@ -36,14 +36,13 @@ source=(pihole-$pkgver.tar.gz::https://github.com/$_pkgname/$_pkgname/archive/v$
 	    $_pkgname-logtruncate.service
 	    $_pkgname-logtruncate.timer
 	    mimic_setupVars.conf.sh
-	    version.patch
 	    piholeDebug.sh
 )
 
 md5sums=('33ea26a46937a0b5d20037639eb0ee34'
          '670e5c4c4ca0cba6f732bf622918784c'
-         '58747d9ed820aa68517cd3e14dd780e7'
-         '0853836aa3ef5255840690d61805a2ee'
+         'c6e8c9bea10309b0b2bcacfc2dd7c9a6'
+         '42d5cc143db4ed4c3b68fd0fada60f93'
          '4d9038588164bb9130c8ca11653f83f3'
          '971cc2859672341d77f8deba702fb7f7'
          'b63fcf29c29796023a2677bcf2b369a7'
@@ -53,13 +52,11 @@ md5sums=('33ea26a46937a0b5d20037639eb0ee34'
          '20c5b0c6b4e23e55b25ab6c28dda709d'
          '291d3c95e445fe65caf40c3605efd186'
          'c227ffa88ddebc34cb715b73640cd845'
-         '4e65ef5a25a9a7358cba24450dbed7cc'
          'd7b69ae51db0e8ac8e27f20a234eed85')
 
 prepare() {
   cd "$srcdir"/"$_pkgname"-"$pkgver"
   patch -Np1 -i "$srcdir"/arch-server-core-$pkgver.patch
-  patch -p1 -i "$srcdir"/version.patch
   cd "$srcdir"/"$_wwwpkgname"-"$_wwwpkgver"
   patch -Np1 -i "$srcdir"/arch-server-admin-$_wwwpkgver.patch
 }
