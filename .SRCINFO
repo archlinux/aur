@@ -8,7 +8,7 @@ pkgbase = fcat
 	license = MIT
 	makedepends = rust
 	depends = gcc-libs
-	source = fcat-0.1.0.tar.gz::https://crates.io/api/v1/crates/fcat/0.1.0/download
+	source = fcat-0.1.0.tar.gz::https://static.crates.io/crates/fcat/fcat-0.1.0.crate
 	sha512sums = e4a588bbc3be0ed2ba5e306a6d5f22773572823e9f8aed07f67e10715b9bd85f4fe1fdfcac14fad084169799280de1cc6be5600f08dcbcec0dd8cfae9b9fbcee
 
 pkgname = fcat
