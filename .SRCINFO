@@ -1,4 +1,4 @@
-pkgbase = vc4c-git
+pkgbase = vc4cl-git
 	pkgdesc = VC4CL is an implementation of the OpenCL 1.2 standard for the VideoCore IV GPU.
 	pkgver = 1
 	pkgrel = 1
@@ -22,5 +22,5 @@ pkgbase = vc4c-git
 	md5sums = SKIP
 	md5sums = SKIP
 
-pkgname = vc4c-git
+pkgname = vc4cl-git
 
