@@ -1,7 +1,7 @@
 # Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=playmyvideos-git
-pkgver=1.1.2.r3.g6484192
+pkgver=1.1.2.r16.g901d440
 pkgrel=1
 pkgdesc="Cinema is a video player for Pantheon, developed by Artem Anufrij"
 arch=(x86_64)
@@ -28,4 +28,5 @@ build() {
 package() {
   cd "${pkgname}"
   DESTDIR="${pkgdir}" ninja -C build install
+  ln -s /usr/bin/com.github.artemanufrij.playmyvideos "$pkgdir/usr/bin/playmyvideos"
 }
