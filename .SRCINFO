@@ -1,7 +1,7 @@
 pkgbase = jade-application-kit
 	pkgdesc = Build desktop applications using web technologies on Linux, with Python, JavaScript, HTML5, and CSS3 and webkit.
 	pkgver = 2.0.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/Jade-Application-Kit/
 	arch = any
 	license = GPL3
@@ -9,6 +9,7 @@ pkgbase = jade-application-kit
 	depends = python
 	depends = python-gobject
 	depends = webkit2gtk
+	depends = pyside2
 	provides = jade-application-kit
 	conflicts = jade-application-kit-git
 	source = https://files.pythonhosted.org/packages/13/54/853ffbc55665becd492f4ea7d72d6333b33a561ccfdf105a2435edefb260/Jade-Application-Kit-2.0.10.tar.gz
@@ -18,4 +19,5 @@ pkgname = jade-application-kit
 	depends = python
 	depends = python-gobject
 	depends = webkit2gtk
+	depends = pyside2
 
