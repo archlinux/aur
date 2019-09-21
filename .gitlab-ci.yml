@@ -1,0 +1,12 @@
+stages:
+  - test
+
+testPackageBuild:
+  stage: test
+  image: archlinux/base:latest
+  script:
+    - pacman-key --refresh-keys
+    - pacman -Syu --noconfirm base-devel libusb sudo namcap
+    - chmod 777 .
+    - sudo -u nobody makepkg -f
+    - namcap libuldaq-*-x86_64.pkg.tar.xz
