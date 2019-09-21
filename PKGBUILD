@@ -1,7 +1,7 @@
 # Maintainer: Inochi Amaoto <libraryindexsky@gmail.com>
 
 pkgname=mpv-full-build-git
-pkgver=0.29.0.r400.gebab42c9a8
+pkgver=0.29.0.r668.g4c4d7a64c6
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 with all possible libs (uses statically linked ffmpeg with all possible libs). (GIT version )"
 arch=('x86_64')
@@ -12,6 +12,7 @@ depends=(
          'aribb24'
          'bzip2'
          'celt'
+         'cmocka'
          'dav1d'
          'desktop-file-utils'
          'fontconfig'
@@ -302,9 +303,8 @@ prepare() {
     '--prefix=/usr'
     '--confdir=/etc/mpv'
     '--htmldir=/usr/share/doc/mpv/html'
-    '--disable-test'
+    '--enable-test'
     '--disable-build-date'
-    '--disable-vapoursynth-lazy'
     '--lua=luajit'
     '--enable-alsa'
     '--enable-caca'
@@ -348,7 +348,6 @@ prepare() {
     '--enable-uchardet'
     '--enable-vaapi'
     '--enable-vaapi-drm'
-    '--enable-vaapi-glx'
     '--enable-vaapi-wayland'
     '--enable-vaapi-x11'
     '--enable-vaapi-x-egl'
@@ -360,11 +359,13 @@ prepare() {
     '--enable-wayland-scanner'
     '--enable-x11'
     '--enable-xv'
+    '--enable-zimg'
     '--enable-zlib'
     '--enable-zsh-comp'
   )
 
-
+    # '--enable-vaapi-glx'
+    # '--disable-vapoursynth-lazy'
     # '--enable-omx-rpi'
     # '--enable-libdav1d'
     # '--enable-libsmbclient'
