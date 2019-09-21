@@ -23,7 +23,7 @@ source=(${_pkgname}::git+$url.git
 sha256sums=('SKIP'
             'SKIP'
             '6cbc8dee30cb20f6124e5d1c2816be694322733d8058b014fa2280879c0f520f'
-            '747579f23f1eb7d482ef78e6f2b17f33695405017c1029e845d07381a3dd2509'
+            'bee6e51a3707667d796c3b827e4e6494bcbbf26d47c96f40e08c2f56d528bec1'
             '7db390763b37c3cc2c2984a8a3e8452d1822ac579def6a07eecbee076fb73d77')
 pkgver() {
   cd "${srcdir}/${_pkgname}"
