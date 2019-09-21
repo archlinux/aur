@@ -1,12 +1,13 @@
-pkgbase = pkgbase
-	pkgdesc = Japanese-Russian kanji and word dictionary
-	pkgver = 1.10
+pkgbase = aspell-uz
+	pkgdesc = Uzbek dictionary for aspell
+	pkgver = 0.6
 	pkgrel = 1
-	url = http://www.susi.ru/yarxi/
+	url = http://aspell.net/
 	arch = x86_64
 	license = custom
-	depends = ttf-sazanami
-	depends = nas
+	depends = aspell
+	source = ftp://ftp.gnu.org/gnu/aspell/dict/uz/aspell6-uz-0.6-0.tar.bz2
+	sha512sums = 0542a83c149ad761d8bb964be556bfb2387404fce21e0e38d3c0fa8efef2d1587db0fa80140cf7de72da7f08bbb807ff931a95bb63c2a84771a197f5841e545b
 
-pkgname = yarxi
+pkgname = aspell-uz
 
