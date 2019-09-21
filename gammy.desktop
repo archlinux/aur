@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Gammy
+Exec=/opt/gammy/bin/gammy
+Icon=gammy
+Type=Application
+Terminal=false
+Hidden=false
+Categories=Utility
