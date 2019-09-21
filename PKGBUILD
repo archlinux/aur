@@ -12,7 +12,7 @@ depends=('llvm' 'gcc' 'opencl-headers' 'ocl-icd')
 makedepends=('cmake' 'git' 'make')
 optdepends=()
 provides=('opencl-pi' 'opencl-vc4' 'opencl-driver')
-source=("VC4C::git+https://github.com/doe300/VC4C/VC4C.git" "VC4CL::git+https://github.com/doe300/VC4CL/VC4CL.git" "VC4CLStdLib::git+https://github.com/doe300/VC4CLStdLib/VC4CLStdLib.git")
+source=("VC4C::git+https://github.com/doe300/VC4C/" "VC4CL::git+https://github.com/doe300/VC4CL/" "VC4CLStdLib::git+https://github.com/doe300/VC4CLStdLib/")
 md5sums=('SKIP' 'SKIP' 'SKIP')
 
 build() {
