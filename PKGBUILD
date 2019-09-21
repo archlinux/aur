@@ -4,7 +4,7 @@
 pkgname=chipmachine-git
 pkgver=1.4b3.r68.g720fad4
 pkgrel=1
-pkgdesc='Demoscene/Retro Music Player (develoment version)'
+pkgdesc='Demoscene/Retro Music Player (development version)'
 arch=('x86_64')
 url='https://github.com/sasq64/chipmachine'
 license=('MIT')
