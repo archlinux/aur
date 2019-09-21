@@ -1,6 +1,6 @@
 # Maintainer: Alexandros Theodotou <alex at zrythm dot org>
 pkgname=zrythm
-pkgver=0.6.384
+pkgver=0.6.422
 pkgrel=1
 pkgdesc='a highly automated and intuitive digital audio workstation'
 arch=('x86_64' 'i686')
@@ -11,19 +11,19 @@ depends=('gtk3' 'lilv' 'libx11' 'jack' 'libsndfile'
 makedepends=(
   'python' 'gettext' 'sed'
   'meson' 'ninja' 'help2man' 'python-sphinx'
-  'ladspa' 'lv2')
+  'ladspa' 'lv2' 'suil')
 optdepends=('portaudio: portaudio backend'
             'qt5-base: for embedding qt5 plugin UIs')
 conflicts=('zrythm-git')
-#source=("https://download.savannah.nongnu.org/releases/$pkgname/$pkgname-$pkgver.tar.xz"{,.asc})
-source=("https://download-mirror.savannah.nongnu.org/releases/$pkgname/$pkgname-$pkgver.tar.xz"{,.asc})
-sha256sums=('f995f549b79410e33041cf85302a765a61c7dc549cb1527dc5f445c040bd9a59'
+source=("https://download.savannah.nongnu.org/releases/$pkgname/$pkgname-$pkgver.tar.xz"{,.asc})
+#source=("https://download-mirror.savannah.nongnu.org/releases/$pkgname/$pkgname-$pkgver.tar.xz"{,.asc})
+sha256sums=('57688679b7bb8a5e501386d9986a707f1b751ef7d70f68085e82b225fc02d400'
             'SKIP')
 validpgpkeys=('48132384AD3DF7D86E254B83022EAE42313D70F3')
 
 build() {
   cd "$pkgname-$pkgver"
-  meson build --prefix=/usr -Denable_tests=true -Duser_manual=true -Dmanpage=true
+  meson build --buildtype=release --prefix=/usr -Denable_tests=true -Duser_manual=true -Dmanpage=true
   ninja -C build
 }
 
