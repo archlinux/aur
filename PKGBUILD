@@ -1,9 +1,8 @@
 # Maintainer: Pieter Goetschalckx <3.14.e.ter <at> gmail <dot> com>
 
-pkgbase=python-apprise
 pkgname=('python-apprise' 'python2-apprise')
 _name=${pkgname#python-}
-pkgver=0.7.9
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Push Notifications that work with just about every platform"
 arch=('any')
@@ -12,7 +11,7 @@ license=('MIT')
 makedepends=('python-setuptools'
              'python2-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('e384b4670f510e6a69e91e360a7bc881bb2018d81a8196e38a218c568a98167f')
+sha256sums=('511ced1b2f34eb40e6b90b4c36b83dd3c154437e40d3344b4aa80439d95f5709')
 
 prepare() {
   cp -a apprise-${pkgver}{,-py2}
