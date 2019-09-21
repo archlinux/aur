@@ -1,6 +1,6 @@
 pkgbase = brave
 	pkgdesc = A web browser that stops ads and trackers by default
-	pkgver = 0.68.132
+	pkgver = 0.68.139
 	pkgrel = 1
 	url = https://www.brave.com/download
 	arch = x86_64
@@ -21,17 +21,25 @@ pkgbase = brave
 	optdepends = cups: Printer support
 	optdepends = pepper-flash: Adobe Flash support
 	optdepends = libgnome-keyring: Enable GNOME keyring support
-	source = git+https://github.com/brave/brave-browser.git#tag=v0.68.132
+	source = git+https://github.com/brave/brave-browser.git#tag=v0.68.139
+	source = chromium-vaapi-fix.patch
 	source = chromium-widevine.patch
 	source = chromium-skia-harmony.patch
-	source = chromium-vaapi-fix.patch
+	source = include-memory-in-one_euro_filter.h.patch
+	source = link-against-harfbuzz-subset.patch
+	source = fix-wrong-string-initialization-in-LinkedHashSet.patch
+	source = include-limits-in-web_time_range.cc.patch
 	source = brave-vaapi-enable.patch
 	source = brave-launcher
 	source = brave-browser.desktop
 	sha256sums = SKIP
+	sha256sums = 333b1e0997ad8831906f66550efc73f51b8650ec3436a247d920b5d12e2169de
 	sha256sums = d081f2ef8793544685aad35dea75a7e6264a2cb987ff3541e6377f4a3650a28b
 	sha256sums = 771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1
-	sha256sums = 333b1e0997ad8831906f66550efc73f51b8650ec3436a247d920b5d12e2169de
+	sha256sums = 33a5bcd1df2cc7aa7467fa882790ef143a4497d2b704c9e1ea86c8ede90c2d90
+	sha256sums = ab986e4b723dfcedab1bc8dcada07526facae28a8a7ff3345f658532c1d99987
+	sha256sums = 840f555020751ec284dca35b9317a9dd7dc69fcb910ea1cae2dd7cc9b237dfb7
+	sha256sums = d3dfe3c86901a11636972a774ed6c941ac76e38c9e4a384f458043a0a03291a9
 	sha256sums = 2b07eabd8b3d42456d2de44f6dca6cf2e98fa06fc9b91ac27966fca8295c5814
 	sha256sums = 43f442d9ffacd69a1ca770b029083aaa544d48c052939a66e58a868d91ebde70
 	sha256sums = 2191ba32800a423f37b7a667093e2bdef5762fe5111fee1d5067e66e26564488
