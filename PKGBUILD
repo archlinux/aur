@@ -2,7 +2,7 @@
 
 pkgname=doomseeker
 pkgver=r2478.c4537370dc5c
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="A cross-platform Doom server browser"
 arch=(i686 x86_64)
@@ -17,8 +17,8 @@ optdepends=('qt4: A cross-platform application and UI framework'
             'chocolate-doom: Doom source port accurately reproducing the original DOS versions of Doom'
             'srb2: A 3D Sonic fan game based off of Doom Legacy (aka "Sonic Robo Blast 2")')
 
-source=("hg+https://bitbucket.org/Doomseeker/doomseeker#tag=1.3"
-        "hg+https://bitbucket.org/Doomseeker/doomseeker-blobs#revision=91033f61f0c3")
+source=("doomseeker::hg+https://bitbucket.org/Doomseeker/doomseeker-hg#tag=1.3"
+        "doomseeker-blobs::hg+https://bitbucket.org/Doomseeker/doomseeker-blobs-hg#revision=91033f61f0c3")
 sha256sums=('SKIP'
             'SKIP')
 
