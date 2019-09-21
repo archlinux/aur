@@ -5,6 +5,7 @@ pkgbase = surge-synthesizer-bin
 	url = https://surge-synthesizer.github.io
 	arch = x86_64
 	groups = vst-plugins
+	groups = lv2-plugins
 	license = GPL3
 	depends = cairo
 	depends = fontconfig

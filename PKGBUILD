@@ -7,7 +7,7 @@ pkgdesc="Surge Synthesizer plugin"
 arch=('x86_64')
 url="https://surge-synthesizer.github.io"
 license=('GPL3')
-groups=('vst-plugins')
+groups=('vst-plugins' 'lv2-plugins')
 depends=('cairo'     'fontconfig'          'freetype2'
          'libx11'    'xcb-util-cursor'     'xcb-util'
          'libxcb'    'xcb-util-renderutil' 'xcb-util-image'
