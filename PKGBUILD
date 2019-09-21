@@ -11,7 +11,7 @@ pkgdesc='Linux kernel with AMDGPU DC patches'
 _srcname=${pkgbase}
 _branch=amd-staging-drm-next
 _kernelname=${pkgbase#linux}
-pkgver=5.3.841339.865b4ca43816
+pkgver=5.4.858316.4a6c7afe7d1a
 pkgrel=1
 arch=(x86_64)
 url='https://cgit.freedesktop.org/~agd5f/linux/'
@@ -28,7 +28,7 @@ source=("${pkgbase}::git://people.freedesktop.org/~agd5f/linux#branch=${_branch}
   linux.preset   # standard config files for mkinitcpio ramdisk
 )
 sha256sums=('SKIP'
-            'b8d1fd75825a59312e347674f8a13b799e0535109da6218763c5b21c1e071168'
+            '659f13ca424866539664bffc189a3939d068848c38005bf8c57b7e82e11e64bb'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
