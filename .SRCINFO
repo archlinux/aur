@@ -20,6 +20,7 @@ pkgbase = surge-synthesizer
 	depends = xcb-util-renderutil
 	depends = xcb-util-image
 	depends = xdg-utils
+	depends = zenity
 	provides = surge-synthesizer
 	conflicts = surge-synthesizer
 	source = git+https://github.com/surge-synthesizer/surge.git
