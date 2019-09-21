@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 license=('GPL3')
 depends=('dbus' 'libsigc++' 'popt' 'glibmm')
 makedepends=('cmake')
-source=("https://github.com/$pkgname/dbus-cxx/archive/$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/$pkgver.tar.gz")
 sha256sums=('17aad1f785d42fb5602a90d34dbcc33de2ae3b636a03ccd4e5221d9fa1a7b8d8')
 
 prepare() {
