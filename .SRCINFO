@@ -1,0 +1,21 @@
+pkgbase = arpfox
+	pkgdesc = An arpspoof alternative written in Go that injects specially crafted ARP packets into a LAN.
+	pkgver = 0.9.9
+	pkgrel = 1
+	url = https://github.com/malfunkt/arpfox
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	depends = libpcap
+	provides = arpfox
+	conflicts = arpfox
+	source = arpfox-0.9.9.tar.gz::https://github.com/malfunkt/arpfox/archive/v0.9.9.tar.gz
+	sha256sums = 50f151a0b8bcd309e77e7d9f83b1badaf14ba085f8fc85d5e23c0d1923c2550e
+
+pkgname = arpfox
+
