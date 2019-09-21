@@ -2,13 +2,13 @@
 pkgname=petal
 _name=Petal
 pkgver=2.20.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Douban.FM Client With Extra - - - 一个简洁的豆瓣FM客户端"
 arch=('x86_64' 'i686')
 url="https://ilime.github.io/Petal/"
 license=('MIT')
 depends=('electron')
-makedepends=('yarn')
+makedepends=('yarn' 'jq' 'moreutils')
 provides=('petal')
 conflicts=('petal-bin')
 source=("$pkgname-$pkgver.src.tar.gz::https://github.com/ilime/Petal/archive/v$pkgver.tar.gz")
