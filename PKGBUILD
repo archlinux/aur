@@ -1,7 +1,7 @@
 # Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=hashit
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Checksum tool for Pantheon, developed by Artem Anufrij"
 arch=(x86_64)
@@ -10,12 +10,7 @@ license=(GPL3)
 depends=(libgranite.so gtk3)
 makedepends=(vala meson ninja)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/artemanufrij/hashit/archive/${pkgver}.tar.gz")
-sha256sums=('d298246a3e00953994ee85434ccc02aaab67bf1b1fd507d9dec72e24694f0cd3')
-
-prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  install -d build
-}
+sha256sums=('0fc1d6a015f036b687443b20245d5d4efc67f82812469e9a26f14bff728a50bc')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -26,4 +21,5 @@ build() {
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   DESTDIR="${pkgdir}" ninja -C build install
+  ln -s /usr/bin/com.github.artemanufrij.hashit "$pkgdir/usr/bin/hashit"
 }
