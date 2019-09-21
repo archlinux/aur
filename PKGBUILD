@@ -1,7 +1,7 @@
 # Maintainer: Donald Webster <fryfrog@gmail.com>
 
 pkgname=lazylibrarian-git
-pkgver=r3868.1580e85b
+pkgver=r4240.56edaae6
 pkgrel=1
 pkgdesc="Automatic Book Downloading via NZBs & Torrent"
 arch=('any')
@@ -18,7 +18,7 @@ source=('git+https://gitlab.com/LazyLibrarian/LazyLibrarian.git'
 
 sha256sums=('SKIP'
             '6963070cf23093213fc1230f1786a085f2d8e0f0cc8a206f72df23f7bd6b82a7'
-            'be535eb5cdceb18b5d516e7eac8398dc798896e5e2b6dab820965c06f3fea5f6'
+            '89af84719dfd504f5d05e7a80ec42c17588f1dd5615d194af5a12d5e1034ba1e'
             '1e5ee6265af4e4d8beea3cec49cbdba6624a6169edee081aa03de32965d4729d')
 
 pkgver() {
