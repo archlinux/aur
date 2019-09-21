@@ -1,43 +1,29 @@
-# Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
+# Maintainer: Andrew Sun <adsun701 at gmail dot com>
+# Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
 pkgbase=pyshark
-pkgname=('python-pyshark' 'python2-pyshark')
-pkgver=0.3.7.2
+pkgname=('python-pyshark')
+pkgver=0.4.2.3
 pkgrel=1
 pkgdesc='Python wrapper for tshark, allowing python packet parsing using wireshark dissectors'
 url='https://github.com/KimiNewt/pyshark'
 arch=('any')
 license=('MIT')
-makedepends=('wireshark-cli'
-             'python-setuptools' 'python-mock' 'python-pytest' 'pypy3' 'python-lxml' 'python-trollius' 'python-logbook'
-             'python2-setuptools' 'python2-mock' 'python2-pytest' 'pypy' 'python2-lxml' 'python2-trollius' 'python2-logbook')
+makedepends=('wireshark-cli' 'python-py' 'python-lxml' 'python-logbook' 'python-setuptools')
 source=(${pkgbase}-${pkgver}.tar.gz::https://github.com/KimiNewt/pyshark/archive/v${pkgver}.tar.gz)
-sha512sums=('dbd97665fae7d3067582bf7616e025b0c5e5fa14cacdaca59c89b4e70feb3017f2d8c7d899a70c0c8707589e4735b9283914bb6ccbf432e9072c64d7e957bc15')
+sha512sums=('bbef857dad5e5141e0ec7c04dba9faca81b17d67a7151959e9935577428cd1415e173e9c7ededff46f8621bcbbdfbe7a96ca5cfd65d7143fb6f235c0167964b6')
 
-check() {
-  cd ${pkgbase}-${pkgver}
-  if ! $(groups|grep '\bwireshark\b' >/dev/null); then
-    warning "Tests only work when the build user belongs to the 'wireshark' group!"
-    return
-  fi
-  py.test
-  py.test2
+build() {
+  cd "${srcdir}/${pkgbase}-${pkgver}/src"
+  python setup.py build
 }
 
 package_python-pyshark() {
-  depends=('wireshark-cli' 'pypy3' 'python-lxml' 'python-trollius' 'python-logbook')
-  cd ${pkgbase}-${pkgver}/src
-  python setup.py install -O1 --root="${pkgdir}" --prefix=/usr
-  install -Dm 644 ../README.md "${pkgdir}/usr/share/doc/${pkgname}/README"
-  install -Dm 644 ../LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-}
-
-package_python2-pyshark() {
-  depends=('wireshark-cli' 'pypy' 'python2-lxml' 'python2-trollius' 'python2-logbook')
-  cd ${pkgbase}-${pkgver}/src
-  python2 setup.py install -O1 --root="${pkgdir}" --prefix=/usr
-  install -Dm 644 ../README.md "${pkgdir}/usr/share/doc/${pkgname}/README"
-  install -Dm 644 ../LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  depends=('wireshark-cli' 'python-py' 'python-lxml' 'python-logbook')
+  cd "${srcdir}/${pkgbase}-${pkgver}/src"
+  python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  install -Dm644 ../README.md "${pkgdir}/usr/share/doc/${pkgname}/README"
+  install -Dm644 ../LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 # vim: ts=2 sw=2 et:
