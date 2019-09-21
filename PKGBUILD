@@ -10,7 +10,7 @@ options=(!emptydirs)
 depends=('perl>=5.8.1')
 makedepends=('perl-extutils-makemaker>=6.64')
 url=https://metacpan.org/release/Devel-CheckBin
-source=("http://search.cpan.org/CPAN/authors/id/T/TO/TOKUHIROM/Devel-CheckBin-$pkgver.tar.gz")
+source=("https://search.cpan.org/CPAN/authors/id/T/TO/TOKUHIROM/Devel-CheckBin-$pkgver.tar.gz")
 md5sums=(042b68e48d9b53de7d3ef4c726d57cb2)
 sha512sums=(7b28092fa2e6309ddc09976dcfadabbad9be678352c5b97a7938bf7e73944454e5c3c198aaf1a39939f24544e436ec4323925e77fa91e8d92e3986702c840f44)
 _ddir="Devel-CheckBin-$pkgver"
