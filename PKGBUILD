@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=rclone-browser-git
-pkgver=1.4.r4.g98fce49
+pkgver=1.4.1.r117
 pkgrel=1
 pkgdesc='Simple cross-platform GUI for rclone'
 url='https://github.com/kapitainsky/RcloneBrowser/'
@@ -17,7 +17,7 @@ depends=('qt5-base' 'rclone')
 
 pkgver() {
   cd ${pkgname%-git}
-   git describe --tags|sed 's+-+.r+'|tr - .
+   printf %s.r%s $(cat VERSION) $(git rev-list --count HEAD)
 }
 
 build() {
