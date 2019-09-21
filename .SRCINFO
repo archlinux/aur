@@ -1,0 +1,29 @@
+pkgbase = ros-melodic-turtlebot3-example
+	pkgdesc = ROS - This package provides four TurtleBot3 basic example include move using interactive marker, move and stop using LDS, move to goal position, move to custom routes.
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://wiki.ros.org/turtlebot3_example
+	arch = any
+	license = Apache-2.0
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-catkin
+	makedepends = ros-melodic-message-generation
+	makedepends = ros-melodic-message-runtime
+	depends = ros-melodic-rospy
+	depends = ros-melodic-actionlib
+	depends = ros-melodic-interactive-markers
+	depends = ros-melodic-std-msgs
+	depends = ros-melodic-sensor-msgs
+	depends = ros-melodic-geometry-msgs
+	depends = ros-melodic-nav-msgs
+	depends = ros-melodic-visualization-msgs
+	depends = ros-melodic-actionlib-msgs
+	depends = ros-melodic-turtlebot3-msgs
+	depends = ros-melodic-message-runtime
+	depends = ros-melodic-turtlebot3-bringup
+	source = ros-melodic-turtlebot3-example-1.2.2.tar.gz::https://github.com/ROBOTIS-GIT/turtlebot3/archive/1.2.2.tar.gz
+	sha256sums = c652438109ea99008f6d2e950e6cb7f6e67653b8daa1079c825b77d9f52a4e1d
+
+pkgname = ros-melodic-turtlebot3-example
+
