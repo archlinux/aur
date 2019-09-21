@@ -25,7 +25,7 @@ source=("${pkgbase}::git://anongit.freedesktop.org/drm/drm-intel#branch=${_branc
   linux.preset   # standard config files for mkinitcpio ramdisk
 )
 sha256sums=('SKIP'
-            '05adb09f596fdd97cca126dd01e0fefcd346a478781d2963f0cbe19b0159bdcd'
+            '92b4f9e030f643553dc3e2314fd2d82e4c520a85663bf99d87bf95df788f5fe2'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
