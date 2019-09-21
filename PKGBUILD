@@ -125,7 +125,7 @@ build() {
     --with-storage-gluster \
     --with-storage-iscsi \
     --with-storage-lvm \
-    --with-storage-zfs
+    --with-storage-zfs \
     --with-audit \
     --with-apparmor \
     --with-secdriver-apparmor \
