@@ -9,7 +9,7 @@ url=https://github.com/Freaky/cw
 license=('MIT')
 depends=('gcc-libs')
 makedepends=('rust')
-source=("cw-$pkgver.tar.gz::https://crates.io/api/v1/crates/cw/$pkgver/download")
+source=("cw-$pkgver.tar.gz::https://static.crates.io/crates/cw/cw-$pkgver.crate")
 sha512sums=('4a3c46092fb1bd3ae97f390449394dfedcc3cf6016ba149dca3db486bc7f54f50200a7179c10617d799c7cd38236c9e257961d4f48fcbc4ef90543d81f8d65be')
 
 build() {
