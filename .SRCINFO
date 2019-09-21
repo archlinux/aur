@@ -1,6 +1,6 @@
 pkgbase = mongodb-compass-isolated-beta
 	pkgdesc = The official GUI for MongoDB - Isolated Edition (beta version)
-	pkgver = 1.19.0beta.2
+	pkgver = 1.20.0beta.1
 	pkgrel = 1
 	url = https://www.mongodb.com/products/compass
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = mongodb-compass-isolated-beta
 	depends = electron3
 	depends = libsecret
 	optdepends = gnome-keyring
-	source = https://downloads.mongodb.com/compass/beta/mongodb-compass-isolated-beta-1.19.0-beta.2.x86_64.rpm
+	source = https://downloads.mongodb.com/compass/beta/mongodb-compass-isolated-beta-1.20.0-beta.1.x86_64.rpm
 	source = launch.sh
-	sha256sums = e7c15baa232320e61a997fd5b90c2a54f682b2a93018ca28035ac3c4ee8ca087
+	sha256sums = 1cfdc1a306e70cd426385e66ed6db7c3fefd24cccc990113a0ba0dfe6fa22090
 	sha256sums = c2c2797f4442fde3545d13f296a7307f46d0175cfef59f6848f1660a8a554851
 
 pkgname = mongodb-compass-isolated-beta
