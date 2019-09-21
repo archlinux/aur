@@ -10,6 +10,7 @@ license=('GPL3')
 depends=('python')
 makedepends=('git')
 install='lazylibrarian.install'
+options=(!strip)
 source=('git+https://gitlab.com/LazyLibrarian/LazyLibrarian.git'
         'lazylibrarian.service'
         'lazylibrarian.tmpfiles'

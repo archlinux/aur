@@ -8,6 +8,7 @@ pkgbase = lazylibrarian-git
 	license = GPL3
 	makedepends = git
 	depends = python
+	options = !strip
 	source = git+https://gitlab.com/LazyLibrarian/LazyLibrarian.git
 	source = lazylibrarian.service
 	source = lazylibrarian.tmpfiles
