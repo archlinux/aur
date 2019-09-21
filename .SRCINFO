@@ -1,11 +1,11 @@
 pkgbase = mplayer-gui
 	pkgdesc = GUI for mplayer
 	pkgver = 1.4
-	pkgrel = 6
+	pkgrel = 7
 	url = http://www.mplayerhq.hu/
 	install = mplayer-gui.install
 	arch = x86_64
-	license = GPL
+	license = GPLv3+
 	depends = mencoder
 	depends = mplayer
 	depends = libjpeg6-turbo

@@ -3,11 +3,11 @@
 pkgname='mplayer-gui'
 pkgver='1.4'
 _sver='3'
-pkgrel='6'
+pkgrel='7'
 pkgdesc='GUI for mplayer'
 arch=('x86_64')
 url='http://www.mplayerhq.hu/'
-license=('GPL')
+license=('GPLv3+')
 depends=('mencoder' 'mplayer' 'libjpeg6-turbo')
 install=${pkgname}.install
 source=("http://download1.rpmfusion.org/free/fedora/development/rawhide/Everything/x86_64/os/Packages/m/mplayer-gui-1.4-3.fc32.x86_64.rpm"
