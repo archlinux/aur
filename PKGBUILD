@@ -11,7 +11,7 @@ url="https://github.com/cybre/${pkgname}"
 license=('GPL2')
 depends=('libpeas' 'budgie-desktop' 'json-glib' 'gnome-desktop')
 makedepends=('intltool' 'meson' 'ninja' 'vala' 'gobject-introspection')
-source=("git+${url}.git#tag=v${pkgver}")
+source=("git+${url}.git#tag=v${pkgver:0:5}")
 sha256sums=('SKIP')
 changelog='CHANGELOG'
 
