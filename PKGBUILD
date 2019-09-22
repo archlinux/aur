@@ -21,7 +21,7 @@ sha256sums=("SKIP"
 ###########################
 # x86_64 ONLY
 # Due to compatibility issues with the current version of java in the repositories,
-# xmage-beta now installs a dedicated version of java to /usr/share/xmage-beta/java
+# xmage-beta installs a dedicated version of java to /usr/share/xmage-beta/java
 #
 # For all other architectures, the xmage package requires only jre8-openjdk
 ###########################
