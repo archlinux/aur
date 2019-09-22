@@ -1,4 +1,4 @@
 #!/bin/bash
-export LD_LIBRARY_PATH=/opt/scitools/bin/linux32
+export LD_LIBRARY_PATH=/opt/scitools/bin/linux64
 unset QT_PLUGIN_PATH
-/opt/scitools/bin/linux32/understand.bin "$@"
+LD_PRELOAD=/usr/lib/libfreetype.so.6 /opt/scitools/bin/linux64/understand "$@"
