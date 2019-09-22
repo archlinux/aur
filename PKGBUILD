@@ -1,7 +1,7 @@
 # Maintainer: Ponas <mykolas.peteraitis@gmail.com>
 pkgname="netctl-tray"
 pkgver=0.1.0
-pkgrel=5
+pkgrel=6
 pkgdesc="A lightweight netctl tray app with notifications"
 arch=('any')
 url="https://github.com/PonasKovas/netctl-tray"
@@ -9,7 +9,7 @@ license=('MIT')
 makedepends=('cargo')
 depends=('libnotify'
 		 'qt5-base')
-source=("https://github.com/PonasKovas/netctl-tray/archive/master.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/PonasKovas/netctl-tray/archive/${pkgver}.tar.gz")
 md5sums=('e3fccdf6d9a1bdc3ea3802438c251b4b')
 
 build () {
