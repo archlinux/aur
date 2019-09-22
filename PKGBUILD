@@ -18,7 +18,7 @@ makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam' 'libelf'
              'meson' 'libseccomp' 'pcre2' 'audit' 'kexec-tools' 'libxkbcommon'
              'bash-completion')
 options=('strip' '!distcc' '!ccache')
-source=('git+https://github.com/cdown/systemd#branch=dogfooding'
+source=('git+https://github.com/cdown/systemd#branch=cdowntest'
         '0001-Use-Arch-Linux-device-access-groups.patch'
         'initcpio-hook-udev'
         'initcpio-install-systemd'

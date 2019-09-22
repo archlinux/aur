@@ -37,7 +37,7 @@ pkgbase = systemd-cdown-git
 	options = strip
 	options = !distcc
 	options = !ccache
-	source = git+https://github.com/cdown/systemd#branch=dogfooding
+	source = git+https://github.com/cdown/systemd#branch=cdowntest
 	source = 0001-Use-Arch-Linux-device-access-groups.patch
 	source = initcpio-hook-udev
 	source = initcpio-install-systemd
