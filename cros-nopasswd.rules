@@ -1,0 +1,7 @@
+/* Allow users in wheel group to run commands without authentication */
+polkit.addRule(function(action, subject) {
+    if (action.id == "org.freedesktop.policykit.exec" && 
+        subject.isInGroup("wheel")) {
+        return polkit.Result.YES;
+    }
+});

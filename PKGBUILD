@@ -1,6 +1,6 @@
 _pkgname=cros-container-guest-tools
 pkgname=${_pkgname}-git
-pkgver=r198.48dd2aa
+pkgver=r203.43213c8
 pkgrel=1
 pkgdesc="Guest tools for the Crostini containers on ChromeOS"
 arch=('any')
@@ -8,13 +8,14 @@ license=('custom')
 depends=('openssh' 'xdg-utils' 'xkeyboard-config' 'pulseaudio' 'xxd' 'packagekit' 'dbus')
 install=cros-container-guest-tools.install
 url="https://chromium.googlesource.com/chromiumos/containers/cros-container-guest-tools"
-source=("git+${url}" 'cros-sftp-conditions.conf' 'cros-garcon-conditions.conf' 'cros-locale.sh' 'cros-garcon.hook' 'cros-logind-override.conf')
+source=("git+${url}" 'cros-sftp-conditions.conf' 'cros-garcon-conditions.conf' 'cros-locale.sh' 'cros-garcon.hook' 'cros-logind-override.conf' 'cros-nopasswd.rules' )
 sha1sums=('SKIP'
           '0827ce6d673949a995be2d69d4974ddd9bdf16f1'
           'd326cd35dcf150f9f9c8c7d6336425ec08ad2433'
           '8586cf72dacdcca82022519467065f70fe4a3294'
           '9a68893cadf9190e99cadc4c781ba43e45104b1e'
-          '0c21f6c85ecbe8f822c378c7e4d5b3165e56eb3a')
+          '0c21f6c85ecbe8f822c378c7e4d5b3165e56eb3a'
+          '089ba58bc504146b29035a8efe70045eb2495fb5')
 
 pkgver() {
 	cd ${srcdir}/${_pkgname}
@@ -35,7 +36,7 @@ package() {
 
 	### cros-adapta -> included into cros-container-guest-tools.install
 
-#   Uncomment after https://bugs.archlinux.org/task/58701 is fixed
+#	Uncomment after https://bugs.archlinux.org/task/58701 is fixed
 #
 #	mkdir -p ${pkgdir}/usr/share/themes
 #	ln -sf /opt/google/cros-containers/cros-adapta ${pkgdir}/usr/share/themes/CrosAdapta
@@ -107,21 +108,24 @@ package() {
 	sed -i '$ s|$|\nEnvironment="LIBGL_DRIVERS_PATH=/opt/google/cros-containers/lib"|' ${srcdir}/${_pkgname}/cros-sommelier-config/cros-sommelier-x-override.conf
 
 	install -m644 -D ${srcdir}/${_pkgname}/cros-sommelier-config/cros-sommelier-override.conf \
-					 ${pkgdir}/usr/lib/systemd/user/sommelier@0.service.d/cros-sommelier-override.conf
+		${pkgdir}/usr/lib/systemd/user/sommelier@0.service.d/cros-sommelier-override.conf
 	install -m644 -D ${srcdir}/${_pkgname}/cros-sommelier-config/cros-sommelier-override.conf \
-					 ${pkgdir}/usr/lib/systemd/user/sommelier@1.service.d/cros-sommelier-override.conf
+		${pkgdir}/usr/lib/systemd/user/sommelier@1.service.d/cros-sommelier-override.conf
 	install -m644 -D ${srcdir}/${_pkgname}/cros-sommelier-config/cros-sommelier-low-density-override.conf \
-					 ${pkgdir}/usr/lib/systemd/user/sommelier@1.service.d/cros-sommelier-low-density-override.conf
+		${pkgdir}/usr/lib/systemd/user/sommelier@1.service.d/cros-sommelier-low-density-override.conf
 	install -m644 -D ${srcdir}/${_pkgname}/cros-sommelier-config/cros-sommelier-x-override.conf \
-					 ${pkgdir}/usr/lib/systemd/user/sommelier-x@0.service.d/cros-sommelier-x-override.conf
+		${pkgdir}/usr/lib/systemd/user/sommelier-x@0.service.d/cros-sommelier-x-override.conf
 	install -m644 -D ${srcdir}/${_pkgname}/cros-sommelier-config/cros-sommelier-x-override.conf \
-					 ${pkgdir}/usr/lib/systemd/user/sommelier-x@1.service.d/cros-sommelier-x-override.conf
+		${pkgdir}/usr/lib/systemd/user/sommelier-x@1.service.d/cros-sommelier-x-override.conf
 	install -m644 -D ${srcdir}/${_pkgname}/cros-sommelier-config/cros-sommelier-low-density-override.conf \
-					 ${pkgdir}/usr/lib/systemd/user/sommelier-x@1.service.d/cros-sommelier-low-density-override.conf
+		${pkgdir}/usr/lib/systemd/user/sommelier-x@1.service.d/cros-sommelier-low-density-override.conf
 
 	### cros-sudo-config
 
 	install -m440 -D ${srcdir}/${_pkgname}/cros-sudo-config/10-cros-nopasswd ${pkgdir}/etc/sudoers.d/10-cros-nopasswd
+
+	# same rule as 10-cros-nopasswd.pkla but written using polkit rules syntax
+	install -m644 -D ${srcdir}/cros-nopasswd.rules ${pkgdir}/usr/share/polkit-1/rules.d/cros-nopasswd.rules
 
 	# replace sudo group with wheel group for no password sudo access
 	sed -i 's/%sudo/%wheel/1' ${pkgdir}/etc/sudoers.d/10-cros-nopasswd

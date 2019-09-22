@@ -1,6 +1,6 @@
 pkgbase = cros-container-guest-tools-git
 	pkgdesc = Guest tools for the Crostini containers on ChromeOS
-	pkgver = r198.48dd2aa
+	pkgver = r203.43213c8
 	pkgrel = 1
 	url = https://chromium.googlesource.com/chromiumos/containers/cros-container-guest-tools
 	install = cros-container-guest-tools.install
@@ -19,12 +19,14 @@ pkgbase = cros-container-guest-tools-git
 	source = cros-locale.sh
 	source = cros-garcon.hook
 	source = cros-logind-override.conf
+	source = cros-nopasswd.rules
 	sha1sums = SKIP
 	sha1sums = 0827ce6d673949a995be2d69d4974ddd9bdf16f1
 	sha1sums = d326cd35dcf150f9f9c8c7d6336425ec08ad2433
 	sha1sums = 8586cf72dacdcca82022519467065f70fe4a3294
 	sha1sums = 9a68893cadf9190e99cadc4c781ba43e45104b1e
 	sha1sums = 0c21f6c85ecbe8f822c378c7e4d5b3165e56eb3a
+	sha1sums = 089ba58bc504146b29035a8efe70045eb2495fb5
 
 pkgname = cros-container-guest-tools-git
 
