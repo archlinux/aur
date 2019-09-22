@@ -13,6 +13,7 @@ pkgbase = sat-cagou-hg
 	depends = xsel
 	depends = python2-kivy-garden
 	depends = sat-media-hg
+	depends = python2-pycryptodome
 	options = !emptydirs
 	source = hg+https://repos.goffi.org/cagou
 	md5sums = SKIP
