@@ -2,9 +2,9 @@
 # Contributor: Milo Gilad <myl0gcontact@gmail.com>
 
 pkgname=bitwarden
-pkgver=1.15.2
-pkgrel=4
-_jslibcommit='6372d2410424e5ef04acd962598d242d2bce905e'
+pkgver=1.16.2
+pkgrel=1
+_jslibcommit='929dd8415dcd69032e545b20f75c1c8abaad0e3a'
 pkgdesc='Bitwarden Desktop Application'
 arch=('x86_64')
 url='https://github.com/bitwarden/desktop'
@@ -17,8 +17,8 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bitwarden/desktop/archi
         "jslib-${_jslibcommit}.tar.gz::https://github.com/bitwarden/jslib/archive/${_jslibcommit}.tar.gz"
         "${pkgname}.sh"
         "${pkgname}.desktop")
-sha512sums=('e7a3894c454c7b4f0d136de2d874dd49745c77e5745fc437f38ffff47e0df8ccab8938a053358aa88906017996fd02fddc12ff5d3339237a031a11ca5ae4cad6'
-            '1f88e73f05acdf84a83ede5e9ed778fe4f3f183d7256c7a348938a3e1f97d74d11348f71cd066921892a0cb4929cf9e00a61065986cc4d793d4621ae48878c68'
+sha512sums=('de9ba7f46a78bae2e47c01589fef254f9b98ae8b2b19d1b6f7bf981a4779d4cbe1d746c459f69a67b61318469629df0633b186401733f1c2b147e4c622043761'
+            '8a379aa256f207370f395ff451f0c40964195de8c167fbfb32925ede6b94260eb0c48387fb7a8b605e8ed974c13deb50a9f5013276d251f5e631438ee7578afc'
             '72e86cb727ad0223937ad0fc95867e1485fa5180e5ed28010f732bc3fe7e562750c88c8b54d47cfa6fbbbc573c489961f1e024f7cd8a356c905650fc56a3c224'
             '05b771e72f1925f61b710fb67e5709dbfd63855425d2ef146ca3770b050e78cb3933cffc7afb1ad43a1d87867b2c2486660c79fdfc95b3891befdff26c8520fd')
 
@@ -69,7 +69,7 @@ package() {
   done
 
   install -dm755 "${pkgdir}/usr/bin"
-  install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}-desktop"
+  install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/bitwarden-desktop"
 
   install -Dm644 "${srcdir}"/${pkgname}.desktop "${pkgdir}"/usr/share/applications/${pkgname}.desktop
 }
