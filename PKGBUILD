@@ -1,10 +1,9 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
-_blender=$(pacman -Sddp --print-format %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
 pkgname=blender-plugin-animation-nodes
 name=animation_nodes
 pkgver=2.0
-pkgrel=4
-pkgdesc="Node based visual scripting system designed for motion graphics in Blender."
+pkgrel=5
+pkgdesc="Node based visual scripting system designed for motion graphics in Blender. (blender 2.7 version)"
 arch=(i686 x86_64)
 url="https://github.com/JacquesLucke/animation_nodes"
 license=('GPL')
@@ -18,7 +17,7 @@ md5sums=('a5e8d144323c4302b2dab8dca1b61b7d'
 
 prepare() {
   cd ${srcdir}/${name}-${pkgver}
-  #patch -Np1 -i ${srcdir}/fix-colision-with-git-package.patch
+# patch -Np1 -i ${srcdir}/fix-colision-with-git-package.patch
 }
 
 build() {
@@ -27,7 +26,9 @@ build() {
 }
 
 package() {
-  depends+=(blender)
+# _blender=$(pacman -Sddp --print-format %v blender-2.7|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=)')
+  depends+=(blender-2.7)
+  _blender="2.79"
   cd ${srcdir}
   addons="$pkgdir/usr/share/blender/${_blender}/scripts/addons"
   install -dm755 ${addons}/${name}
