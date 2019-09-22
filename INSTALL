@@ -1,0 +1,7 @@
+post_install() {
+  systemctl daemon-reload && systemctl enable -f --now mousemapper.service
+}
+
+pre_remove() {
+  systemctl daemon-reload && systemctl disable -f --now mousemapper.service
+}
