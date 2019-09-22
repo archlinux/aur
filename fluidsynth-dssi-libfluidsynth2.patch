@@ -1,0 +1,36 @@
+diff --unified --recursive --text fluidsynth-dssi-1.0.0.orig/src/fluidsynth-dssi.c fluidsynth-dssi-1.0.0.new/src/fluidsynth-dssi.c
+--- fluidsynth-dssi-1.0.0.orig/src/fluidsynth-dssi.c	2008-11-16 09:41:35.000000000 -0800
++++ fluidsynth-dssi-1.0.0.new/src/fluidsynth-dssi.c	2019-09-22 13:03:54.789171736 -0700
+@@ -167,7 +167,7 @@
+     fsd_sfont_t *sfont;
+     int palloc;
+     fluid_sfont_t *fluid_sfont;
+-    fluid_preset_t preset;
++    fluid_preset_t *preset;
+ 
+     /* soundfont already loaded? */
+     sfont = fsd_find_loaded_soundfont(path);
+@@ -206,8 +206,8 @@
+         return NULL;
+     }
+     fluid_sfont = fluid_synth_get_sfont_by_id(fsd_synth.fluid_synth, sfont->sfont_id);
+-    fluid_sfont->iteration_start(fluid_sfont);
+-    while (fluid_sfont->iteration_next(fluid_sfont, &preset)) {
++    fluid_sfont_iteration_start(fluid_sfont);
++    while (preset = fluid_sfont_iteration_next(fluid_sfont)) {
+         if (sfont->preset_count == palloc) {
+             palloc *= 2;
+             sfont->presets = (DSSI_Program_Descriptor *)realloc(sfont->presets,
+@@ -219,9 +219,9 @@
+                 return NULL;
+             }
+         }
+-        sfont->presets[sfont->preset_count].Bank = preset.get_banknum(&preset);
+-        sfont->presets[sfont->preset_count].Program = preset.get_num(&preset);
+-        sfont->presets[sfont->preset_count].Name = preset.get_name(&preset);
++        sfont->presets[sfont->preset_count].Bank = fluid_preset_get_banknum(preset);
++        sfont->presets[sfont->preset_count].Program = fluid_preset_get_num(preset);
++        sfont->presets[sfont->preset_count].Name = fluid_preset_get_name(preset);
+         sfont->preset_count++;
+     }
+ 
