@@ -12,6 +12,29 @@
  
  # Header directory for the running kernel
  ifdef LINUXINCLUDE
+@@ -98,6 +98,13 @@ auto-build: $(DRIVER_KO)
+ $(DRIVER): $(DRIVER_KO)
+ 	if [ $< -nt $@ ] || [ ! -e $@ ] ; then cp -f $< $@; fi
+ 
++# Use SUBDIRS on 2.x, 3.x, 4.x.  Use M on newer kernels.
++ifeq ($(filter-out 2 3 4,$(firstword $(subst ., ,$(VM_UNAME)))),)
++DIRVAR := SUBDIRS
++else
++DIRVAR := M
++endif
++
+ #
+ # Define a setup target that gets built before the actual driver.
+ # This target may not be used at all, but if it is then it will be defined
+@@ -107,7 +114,7 @@ prebuild:: ;
+ postbuild:: ;
+ 
+ $(DRIVER_KO): prebuild
+-	$(MAKE) -C $(BUILD_DIR) SUBDIRS=$$PWD SRCROOT=$$PWD/$(SRCROOT) \
++	$(MAKE) -C $(BUILD_DIR) $(DIRVAR)=$$PWD SRCROOT=$$PWD/$(SRCROOT) \
+ 	  MODULEBUILDDIR=$(MODULEBUILDDIR) modules
+ 	$(MAKE) -C $$PWD SRCROOT=$$PWD/$(SRCROOT) \
+ 	  MODULEBUILDDIR=$(MODULEBUILDDIR) postbuild
 --- a/vmnet/userif.c
 +++ b/vmnet/userif.c
 @@ -137,16 +137,21 @@
@@ -67,30 +90,3 @@
                                          &recvClusterPage,
                                          &recvClusterCount)) < 0) {
        goto error_free;
-From 8ba37a5023f939ba8d2e0d91b916ff442b1c18dd Mon Sep 17 00:00:00 2001
-From: Michal Kubecek <mkubecek@suse.cz>
-Date: Mon, 31 Dec 2018 00:05:42 +0100
-Subject: [PATCH] modules: replace SUBDIRS with M
-
-Since commit 0126be38d988 ("kbuild: announce removal of SUBDIRS if used")
-in v5.0-rc1, using SUBDIRS when building out of tree modules produces
-a deprecation warning. As M used to work since pretty much ever, use it
-unconditionally.
----
- vmmon-only/Makefile | 2 +-
- vmnet-only/Makefile | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/vmnet-only/Makefile b/vmnet-only/Makefile
-index caab6b9..c2fc51f 100644
---- a/vmnet-only/Makefile
-+++ b/vmnet-only/Makefile
-@@ -111,7 +111,7 @@ prebuild:: ;
- postbuild:: ;
- 
- $(DRIVER_KO): prebuild
--	$(MAKE) -C $(BUILD_DIR) SUBDIRS=$$PWD SRCROOT=$$PWD/$(SRCROOT) \
-+	$(MAKE) -C $(BUILD_DIR) M=$$PWD SRCROOT=$$PWD/$(SRCROOT) \
- 	  MODULEBUILDDIR=$(MODULEBUILDDIR) modules
- 	$(MAKE) -C $$PWD SRCROOT=$$PWD/$(SRCROOT) \
- 	  MODULEBUILDDIR=$(MODULEBUILDDIR) postbuild

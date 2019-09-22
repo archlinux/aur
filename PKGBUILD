@@ -6,17 +6,24 @@
 
 #_enable_macOS_guests=y
 
-# CAUTION: Run macOS on a non Apple computer may be forbidden in your country.
+# CAUTION: Running macOS on VMware Workstation on non Apple computer is forbidden by
+# Apple and VMware EULAs.
 # Source of the patch: https://github.com/DrDonk/unlocker
-# Forum: http://www.insanelymac.com/forum/topic/303311-workstation-1112-player-712-fusion-78-and-esxi-6-mac-os-x-unlocker-2
+# Forum: https://www.insanelymac.com/forum/topic/335757-macos-unlocker-v30-for-vmware-workstation/
 ############################################################################
+
+# vmware-keymaps dependency is needed to avoid some conflicts when you install
+# this package with vmware-horizon-client. If you don't plan to install
+# vmware-horizon-client and don't want to add this dependency, you can
+# uncomment the line below:
+#_remove_vmware_keymaps_dependency=y
 
 #PKGEXT=.pkg.tar
 pkgname=vmware-workstation14
 pkgver=14.1.7
 _buildver=12989993
 _pkgver=${pkgver}_${_buildver}
-pkgrel=2
+pkgrel=3
 pkgdesc='The industry standard for running multiple operating systems as virtual machines on a single Linux PC.'
 arch=(x86_64)
 url='https://www.vmware.com/products/workstation-for-linux.html'
@@ -34,13 +41,13 @@ provides=(
   vmware-ovftool
 )
 depends=(
-  vmware-keymaps
   dkms
   ncurses5-compat-libs
   fuse2
   gtk3 # for gtk-query-settings binary
   gtkmm3
   libcanberra
+  libaio
   pcsclite
   hicolor-icon-theme
   # needed to replace internal libs:
@@ -68,7 +75,7 @@ backup=(
 source=(
   "https://download3.vmware.com/software/wkst/file/VMware-Workstation-Full-${_pkgver/_/-}.${CARCH}.bundle"
 
-  'bootstrap'
+  'vmware-bootstrap'
   'vmware-vix-bootstrap'
   'config'
   'pam.d-vmware-authd'
@@ -98,7 +105,7 @@ sha256sums=(
 
   '12e7b16abf8d7e858532edabb8868919c678063c566a6535855b194aac72d55e'
   'da1698bf4e73ae466c1c7fc93891eba4b9c4581856649635e6532275dbfea141'
-  'd9a5f8b919d52aa2f279d8eaf0bb495780eb9fd8bbc2c58bba223cdca78cc991'
+  'dc52138eb01171207b761131f1ef8cbc33d838ff61644d70f5d1fa61f2469a8a'
   'd50aa0a3fe94025178965d988e18d41eb60aa1ce2b28ee6e3ca15edeabfa2ca7'
   '8e4d08668a66be79a900521792b39c16a026cc90659241edee80b64e701bfbcd'
   'de71ada1f5d5132fa75646a4f35cac2e50c54f250c315461633719c4b9cb3614'
@@ -118,11 +125,16 @@ sha256sums=(
 
   '05e26d8b21d190ebabb7f693998114d9d5991d9dfb71acb4d990293a65b6b487'
   '6ce902b1dab8fc69be253abd8e79017011985eca850ff7acc7282f9ab668e35d'
-  '42d2576a758d961662856c31db0eb9144f3465672e98325a8b6e23ea0f5a4a30'
-  'fb63d2a1f8fb25ba76ddac740447849dce55f9a82041d8ad82448bfdc3adf3f4'
+  '410cb17dead645dacb1d35c6fedf6ca8de5294117f929a69740a8df462c8a95c'
+  '9503ab7064fe7b63f18dfbc061e6246e0af26f01812e39f6d778a169dd93dd13'
 )
 options=(!strip emptydirs)
 
+if [ -z "$_remove_vmware_keymaps_dependency" ]; then
+depends+=(
+  vmware-keymaps
+)
+fi
 
 _isoimages=(freebsd linux linuxPreGlibc25 netware solaris windows winPre2k winPreVista)
 
@@ -137,14 +149,14 @@ makedepends+=(
 )
 
 source+=(
-  "https://softwareupdate.vmware.com/cds/vmw-desktop/fusion/${_vmware_fusion_ver/_//}/packages/com.vmware.fusion.tools.darwinPre15.zip.tar"
-  "https://softwareupdate.vmware.com/cds/vmw-desktop/fusion/${_vmware_fusion_ver/_//}/packages/com.vmware.fusion.tools.darwin.zip.tar"
+  "darwinPre15-tools-${_vmware_fusion_ver}.zip.tar::https://softwareupdate.vmware.com/cds/vmw-desktop/fusion/${_vmware_fusion_ver/_//}/packages/com.vmware.fusion.tools.darwinPre15.zip.tar"
+  "darwin-tools-${_vmware_fusion_ver}.zip.tar::https://softwareupdate.vmware.com/cds/vmw-desktop/fusion/${_vmware_fusion_ver/_//}/packages/com.vmware.fusion.tools.darwin.zip.tar"
   'unlocker.py'
 )
 sha256sums+=(
   '195313791f2c2cf880b0ba6c9d130e40ab6729335c0980fcc40df4209c1ed52b'
   'e36fb99a56a65d2c4d82168c8adb1ed19a9a7aaf75807c667c79a79f4968740a'
-  '29e0b0db9c0296ab81eee543803c4bd430e2c69c76e33492910e17280da1c05c'
+  'ecf6d9186f109ec420287bd327e1f1f407de8e4b9e3faa23828bcf903f6246c6'
 )
 
 _fusion_isoimages=(darwin darwinPre15)
@@ -186,7 +198,9 @@ if [ -n "$_enable_macOS_guests" ]; then
   for isoimage in ${_fusion_isoimages[@]}
   do
     unzip -q com.vmware.fusion.tools.$isoimage.zip
-    rm manifest.plist
+    install -Dm 644 "$srcdir/payload/$isoimage.iso" "$srcdir/fusion-isoimages/$isoimage.iso"
+    install -Dm 644 "$srcdir/payload/$isoimage.iso.sig" "$srcdir/fusion-isoimages/$isoimage.iso.sig"
+    rm -rf payload manifest.plist
   done
 
   sed -i -e "s|/usr/lib/vmware/|${pkgdir}/usr/lib/vmware/|" "$srcdir/unlocker.py"
@@ -283,9 +297,11 @@ package() {
   done
 
   install -Dm 644 "vmware-workstation/doc/EULA" "$pkgdir/usr/share/licenses/$pkgname/VMware Workstation - EULA.txt"
-  install -Dm 644 "vmware-workstation/doc"/*open_source_licenses.txt "$pkgdir/usr/share/licenses/$pkgname"
-  mv "$pkgdir/usr/lib/vmware-ovftool/vmware.eula" "$pkgdir/usr/share/licenses/$pkgname/VMware OVF Tool component for Linux - EULA.txt"
-  rm "$pkgdir/usr/lib/vmware-ovftool"/{vmware-eula.rtf,open_source_licenses.txt,manifest.xml}
+  install -Dm 644 "$pkgdir/usr/lib/vmware-ovftool/vmware.eula" "$pkgdir/usr/share/licenses/$pkgname/VMware OVF Tool - EULA.txt"
+  install -Dm 644 "vmware-workstation/doc"/open_source_licenses.txt "$pkgdir/usr/share/licenses/$pkgname/VMware Workstation open source license.txt"
+  install -Dm 644 "vmware-workstation/doc"/ovftool_open_source_licenses.txt "$pkgdir/usr/share/licenses/$pkgname/VMware OVF Tool open source license.txt"
+  install -Dm 644 "vmware-vix-core"/open_source_licenses.txt "$pkgdir/usr/share/licenses/$pkgname/VMware VIX open source license.txt"
+  rm "$pkgdir/usr/lib/vmware-ovftool"/{vmware.eula,vmware-eula.rtf,open_source_licenses.txt,manifest.xml}
 
   install -Dm 755 "$srcdir/configure-initscript.sh" "$pkgdir/usr/lib/vmware-installer/$vmware_installer_version/bin/configure-initscript.sh"
 
@@ -293,12 +309,15 @@ package() {
 
   install -Dm 644 vmware-player-app/lib/isoimages/tools-key.pub "$pkgdir/usr/lib/vmware/isoimages/tools-key.pub"
 
-  install -Dm 644 vmware-vmx/extra/modules.xml "$pkgdir/usr/lib/vmware/modules/modules.xml"
-  install -Dm 644 vmware-installer/bootstrap "$pkgdir/etc/vmware-installer/bootstrap"
-  install -Dm 644 "$srcdir/vmware-vix-bootstrap" "$pkgdir/etc/vmware-vix/bootstrap"
-  install -Dm 644 "$srcdir"/{bootstrap,config} "$pkgdir/etc/vmware"
+  install -Dm 644 vmware-vmx/extra/modules.xml "$pkgdir"/usr/lib/vmware/modules/modules.xml
+  install -Dm 644 vmware-installer/bootstrap "$pkgdir"/etc/vmware-installer/bootstrap
+  install -Dm 644 "$srcdir"/vmware-vix-bootstrap "$pkgdir"/etc/vmware-vix/bootstrap
+  install -Dm 644 "$srcdir"/vmware-bootstrap "$pkgdir"/etc/vmware/bootstrap
+  install -Dm 644 "$srcdir"/config "$pkgdir"/etc/vmware/config
 
-  rm -r "$pkgdir/usr/lib/vmware/xkeymap" # these files are now provided by vmware-keymaps package
+if [ -z "$_remove_vmware_keymaps_dependency" ]; then
+  rm -r "$pkgdir/usr/lib/vmware/xkeymap" # these files are provided by vmware-keymaps package
+fi
 
   for hostd_file in config datastores environments proxy vmAutoStart; do
     install -Dm 644 "$srcdir/$hostd_file.xml" "$pkgdir/etc/vmware/hostd/$hostd_file.xml"
@@ -427,8 +446,8 @@ if [ -n "$_enable_macOS_guests" ]; then
 
   for isoimage in ${_fusion_isoimages[@]}
   do
-    install -Dm 644 "$srcdir/payload/$isoimage.iso" "$pkgdir/usr/lib/vmware/isoimages/$isoimage.iso"
-    install -Dm 644 "$srcdir/payload/$isoimage.iso.sig" "$pkgdir/usr/lib/vmware/isoimages/$isoimage.iso.sig"
+    install -Dm 644 "$srcdir/fusion-isoimages/$isoimage.iso" "$pkgdir/usr/lib/vmware/isoimages/$isoimage.iso"
+    install -Dm 644 "$srcdir/fusion-isoimages/$isoimage.iso.sig" "$pkgdir/usr/lib/vmware/isoimages/$isoimage.iso.sig"
   done
 fi
 
@@ -441,6 +460,11 @@ fi
         -e 's/if "$BINDIR"\/vmware-modconfig --appname=.*/if true ||/' \
         -i "$pkgdir/usr/bin/$program"
   done
+
+  # Add StartupWMClass attribute to desktop files
+  sed -i '/^StartupNotify=.*/a StartupWMClass=vmware' "$pkgdir/usr/share/applications/vmware-workstation.desktop"
+  sed -i '/^StartupNotify=.*/a StartupWMClass=vmplayer' "$pkgdir/usr/share/applications/vmware-player.desktop"
+  sed -i '/^StartupNotify=.*/a StartupWMClass=vmware-netcfg' "$pkgdir/usr/share/applications/vmware-netcfg.desktop"
 
   # to solve bugs with incompatibles library versions:
   #ln -sf /usr/lib/libz.so.1 "$pkgdir/usr/lib/vmware/lib/libz.so.1/"
