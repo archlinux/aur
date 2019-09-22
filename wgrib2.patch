@@ -1,6 +1,6 @@
---- makefile.orig	2017-12-29 16:14:43.000000000 +0100
-+++ makefile	2018-12-13 18:21:27.746506129 +0100
-@@ -93,8 +93,8 @@
+--- makefile.orig	2019-02-07 18:53:47.000000000 +0100
++++ makefile	2019-09-22 17:13:59.812083455 +0200
+@@ -101,8 +101,8 @@
  # export COMP_SYS=intel_linux
  #
  # can uncomment following two lines to use gcc/gfortran
@@ -11,7 +11,7 @@
  #
  # for OS-X: uncomment line for makefile -f scripts/makefile.darwin
  #
-@@ -107,21 +107,21 @@
+@@ -115,22 +115,22 @@
  
  
  # Warning do not set both USE_NETCDF3 and USE_NETCDF4 to one
@@ -22,8 +22,10 @@
  USE_REGEX=1
  USE_TIGGE=1
 -USE_MYSQL=0
+-USE_IPOLATES=3
 +USE_MYSQL=1
- USE_IPOLATES=1
++USE_IPOLATES=1
+ USE_SPECTRAL=0
 -USE_UDF=0
 +USE_UDF=1
  USE_OPENMP=1
@@ -40,29 +42,36 @@
  USE_PNG=1
  USE_JASPER=1
  USE_AEC=1
-@@ -210,8 +210,8 @@
+@@ -222,9 +222,11 @@
+ ifeq ($(USE_IPOLATES),1)
  #   for HWRF iplib:=${lib}/libipolate_hwrf.a
  #   for HWRF wLDFLAGS+=-lipolate_hwrf
- #  normal IPOLATES
+-   ipdir:=${cwd}/iplib.v3.0.0
 -   iplib:=${lib}/libipolate.a
 -   wLDFLAGS+=-lipolate
 +   iplib:=../iplib_hwrf/libipolate.a
 +   wLDFLAGS+=-L../../iplib_hwrf -lipolate
-    a:=$(shell echo "\#define USE_IPOLATES" >> ${CONFIG_H})
-    a:=$(shell echo "\#define IPOLATES_LIB \"`basename ${ipdir}`\"" >> ${CONFIG_H})
- else
-@@ -281,8 +281,8 @@
++   #ipdir:=${cwd}/iplib.v3.0.0
++   #iplib:=${lib}/libipolate.a
++   #wLDFLAGS+=-lipolate
+ else ifeq ($(USE_IPOLATES),3)
+    ipdir:=${cwd}/ip2lib_d
+    iplib=${lib}/libip2_d.a
+@@ -302,9 +304,11 @@
+       ifneq "$(GFORTLIBDIR)" './'
            wLDFLAGS+=-L$(GFORTLIBDIR)
        endif
++      wFFLAGS+=$(CFLAGS) -fPIC
++      wCPPFLAGS+=$(CPPFLAGS) -DGFORTRAN -DACCEPT_USE_OF_DEPRECATED_PROJ_API_H
        wLDFLAGS+=-lgfortran
 -      wCPPFLAGS+=-DGFORTRAN
--      wFFLAGS+=-O2
-+      wCPPFLAGS+=$(CPPFLAGS) -DGFORTRAN
-+      wFFLAGS+=$(CFLAGS) -fPIC
+-      wFFLAGS+=-c -O2
++#      wCPPFLAGS+=-DGFORTRAN
++#      wFFLAGS+=-c -O2
+       FTN_REAL8:="-fdefault-real-8 -fdefault-double-8"
     endif
     ifeq ($(USE_OPENMP),1)
-       a:=$(shell echo "\#define USE_OPENMP" >> ${CONFIG_H})
-@@ -406,28 +406,27 @@
+@@ -435,28 +439,27 @@
  
  g2cdir:=${cwd}/g2clib-1.4.0
  ifeq ($(USE_G2CLIB),1)
@@ -101,7 +110,7 @@
     a:=$(shell echo "\#define USE_PROJ4" >> ${CONFIG_H})
  else
     a:=$(shell echo "//\#define USE_PROJ4" >> ${CONFIG_H})
-@@ -437,10 +436,9 @@
+@@ -466,10 +469,9 @@
  
  jasperdir=${cwd}/jasper-1.900.1
  ifeq ($(USE_JASPER),1)
@@ -115,7 +124,7 @@
     a:=$(shell echo "\#define USE_JASPER" >> ${CONFIG_H})
  else
     a:=$(shell echo "//\#define USE_JASPER" >> ${CONFIG_H})
-@@ -451,8 +449,8 @@
+@@ -480,8 +482,8 @@
  aecdir=${cwd}/libaec-1.0.2
  ifeq ($(USE_AEC),1)
     aecsrc=libaec-1.0.2.tar.gz
@@ -126,26 +135,30 @@
     a:=$(shell echo "\#define USE_AEC \"${aecsrc}\"" >> ${CONFIG_H})
  else
     a:=$(shell echo "//\#define USE_AEC" >> ${CONFIG_H})
-@@ -472,12 +470,12 @@
- hdf5dir:=${cwd}/hdf5-1.8.19
- netcdf4dir:=${cwd}/netcdf-4.4.1.1
+@@ -509,11 +511,17 @@
+ hdf5dir:=${cwd}/hdf5-1.10.4
+ netcdf4dir:=${cwd}/netcdf-4.6.1
  ifeq ($(USE_NETCDF4),1)
--   netcdf4src=netcdf-4.4.1.1.tar.gz
+-   netcdf4src=netcdf-4.6.1.tar.gz
 -   netcdf4lib:=${lib}/libnetcdf.a
--   hdf5src:=hdf5-1.8.19.tar.gz
+-   hdf5src:=hdf5-1.10.4.tar.gz
 -   hdf5lib:=${lib}/libhdf5.a
 -   wLDFLAGS+=-lnetcdf -lhdf5_hl -lhdf5 -ldl
--#   wCPPFLAGS+=-I${netcdf4dir}/include -I${hdf5dir}/src -I${hdf5dir}/hl/src
 +   netcdf4src=
 +   n4lib:=/usr/lib/libnetcdf.so
 +   h5:=
 +   h5lib:=
 +   wLDFLAGS+=`nc-config --libs`
 +   wCPPFLAGS+=`nc-config --cflags`
++#   netcdf4src=netcdf-4.6.1.tar.gz
++#   netcdf4lib:=${lib}/libnetcdf.a
++#   hdf5src:=hdf5-1.10.4.tar.gz
++#   hdf5lib:=${lib}/libhdf5.a
++#   wLDFLAGS+=-lnetcdf -lhdf5_hl -lhdf5 -ldl
+ #   wCPPFLAGS+=-I${netcdf4dir}/include -I${hdf5dir}/src -I${hdf5dir}/hl/src
     a:=$(shell echo "\#define USE_NETCDF4" >> ${CONFIG_H})
- else
-    a:=$(shell echo "//\#define USE_NETCDF4" >> ${CONFIG_H})
-@@ -526,18 +524,16 @@
+    a:=$(shell echo "\#define HDF5 \"${hdf5src}\"" >> ${CONFIG_H})
+@@ -573,18 +581,16 @@
  
  pngdir=${cwd}/libpng-1.2.57
  ifeq ($(USE_PNG),1)
@@ -168,10 +181,16 @@
  else
     a:=$(shell echo "//\#define USE_PNG" >> ${CONFIG_H})
  endif
-@@ -594,97 +590,6 @@
- 	tar -xvf tmpj.tar
- 	rm tmpj.tar
+@@ -638,106 +644,6 @@
+ 	export CPPFLAGS="${wCPPFLAGS}" && export FFLAGS="${wFFLAGS}" && cd c_api && ${MAKE}
+ 	cd lib && ${MAKE}
  
+-${jasperdir}:
+-	cp ${jsrc}  tmpj.tar.gz
+-	gunzip -n -f tmpj.tar.gz
+-	tar -xvf tmpj.tar
+-	rm tmpj.tar
+-
 -${jlib}:	${jasperdir}
 -	cd ${jasperdir} && export CC=${CCjasper} && ./configure --without-x --disable-libjpeg --disable-opengl --prefix=${cwd} && ${MAKE} -j 1 check install
 -
@@ -194,12 +213,13 @@
 -#       for OSX
 -#	export LDFLAGS="-L${lib}" && cd "${pngdir}" && export CPPFLAGS="${wCPPFLAGS}" && ${MAKE} -f scripts/makefile.darwin
 -#	for everybody else
--	export LDFLAGS="-L${lib}" && cd "${pngdir}" && export CFLAGS="-DPNG_USER_WIDTH_MAX=200000000L -I../include" && ./configure --disable-shared --prefix=${cwd} && ${MAKE} check install
+-	export LDFLAGS="-L${lib}" && cd "${pngdir}" && export CFLAGS="-DPNG_USER_WIDTH_MAX=200000000L -I${cwd}/include" && ./configure --disable-shared --prefix=${cwd} && ${MAKE} check install
 -
 -${zdir}:
 -	cp ${zsrc} tmpz.tar.gz
 -	gunzip -f tmpz.tar.gz
 -	tar -xvf tmpz.tar
+-	rm tmpz.tar
 -
 -${zlib}:	${zdir}
 -	cd ${zdir} && export CFLAGS="${wCPPFLAGS}" && ./configure --prefix=${cwd} --static && ${MAKE} install
@@ -224,7 +244,7 @@
 -	gunzip -f tmpproj4.tar.gz
 -	tar -xvf tmpproj4.tar
 -	rm tmpproj4.tar
--	cd ${proj4} && ./configure --disable-shared --prefix=${cwd} && ${MAKE} check install
+-	cd ${proj4dir} && ./configure --disable-shared --prefix=${cwd} && ${MAKE} check install
 -
 -${netcdf3dir}:
 -	cp ${netcdf3src} tmpn.tar.gz
@@ -236,7 +256,7 @@
 -	cd ${netcdf3dir} && export CPPFLAGS="${netcdf3CPPFLAGS}" && ./configure --enable-c-only --prefix=${cwd} && ${MAKE} check install
 -
 -${netcdf4src}:
--	$(error ERROR, get netcdf4 source by "wget ftp://ftp.unidata.ucar.edu/pub/netcdf/netcdf-4.4.1.1.tar.gz" )
+-	$(error ERROR, get netcdf4 source by "wget ftp://ftp.unidata.ucar.edu/pub/netcdf/netcdf-4.6.1.tar.gz" )
 -
 -${netcdf4dir}:	${netcdf4src}
 -	cp ${netcdf4src} tmpn4.tar.gz
@@ -245,10 +265,10 @@
 -	rm tmpn4.tar
 -
 -${netcdf4lib}:	${zlib} ${netcdf4dir} ${hdf5lib}
--	cd "${netcdf4dir}" && export CPPFLAGS="${wCPPFLAGS}" && export LDFLAGS="-L${lib}" && export LIBS="-lhdf5 -ldl" && ./configure --disable-fortran --disable-cxx --disable-dap --enable-netcdf-4 --prefix=${cwd} --disable-shared && ${MAKE} install
+-	cd "${netcdf4dir}" && export CPPFLAGS="${netcdf4CPPFLAGS}" && export LDFLAGS="-L${lib}" && export LIBS="-lhdf5 -ldl" && ./configure --disable-fortran --disable-cxx --disable-dap --enable-netcdf-4 --prefix=${cwd} --disable-shared && ${MAKE} install
 -
 -${hdf5src}:
--	$(error ERROR, get hdf5 source by "wget https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-1.8/hdf5-1.8.19/src/hdf5-1.8.19.tar.gz" )
+-	$(error ERROR, get hdf5 source by "wget https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-1.10/hdf5-1.10.4/src/hdf5-1.10.4.tar.gz" )
 -
 -${hdf5dir}:	${hdf5src}
 -	cp ${hdf5src} tmph5.tar.gz
@@ -259,9 +279,11 @@
 -${hdf5lib}:	${hdf5dir}
 -	cd "${hdf5dir}" && export CFLAGS="${hdf5CFLAGS}" && export LDFLAGS="${LDFLAGS}" && ./configure --disable-shared --with-zlib=$z --prefix=${cwd} && ${MAKE} all check install
 -
--
 -${iplib}:
--	cd "${ipdir}" && export FFLAGS="${wFFLAGS}" && ${MAKE} && cp libipolate.a ${iplib}
+-	cd "${ipdir}" && export FFLAGS="${wFFLAGS}" && export FTN_REAL8=${FTN_REAL8}  && ${MAKE} && cp $(notdir ${iplib}) ${iplib}
+-
+-${spectrallib}:
+-	cd "${spectraldir}" && export FFLAGS="${wFFLAGS}" && export FTN_REAL8=${FTN_REAL8}  && ${MAKE} && cp $(notdir ${spectrallib}) ${spectrallib}
 -
  aux_progs/gmerge:	aux_progs/gmerge.c		
  	cd aux_progs && ${MAKE} -f gmerge.make
