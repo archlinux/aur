@@ -4,15 +4,21 @@
 
 pkgname=migrate
 pkgver=4.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Database migration handling"
 url="https://github.com/golang-migrate/migrate"
 arch=("x86_64")
 license=("MIT")
-source_x86_64=("https://github.com/golang-migrate/migrate/releases/download/v${pkgver}/migrate.linux-amd64.tar.gz")
-sha256sums_x86_64=("bf68db05bf8490c7960dc6ce5d2e60462a42baec207859282e8663f447ab31dd")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/golang-migrate/migrate/archive/v$pkgver.tar.gz")
+sha256sums=("f7f07e240bc2d0afbcafc83f46eef0136ceb678ced4ece87ed619e901993c569")
+makedepends=("go")
+
+build() {
+  cd "$srcdir/$pkgname-$pkgver"
+  make build-cli VERSION=$pkgver
+}
 
 package() {
   install -d "${pkgdir}/usr/bin"
-  mv "${srcdir}/migrate.linux-amd64" "${pkgdir}/usr/bin/migrate"
+  mv "$srcdir/$pkgname-$pkgver/cli/build/$pkgname.linux-amd64" "$pkgdir/usr/bin/$pkgname"
 }
