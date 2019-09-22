@@ -12,7 +12,7 @@ pkgbase=boost
 pkgname=('boost-libs' 'boost')
 pkgver=1.71.0
 _boostver=${pkgver//./_}
-pkgrel=1
+pkgrel=2
 pkgdesc='Free peer-reviewed portable C++ source libraries'
 url='https://www.boost.org/'
 arch=('x86_64')
@@ -66,8 +66,11 @@ build() {
    sed -e '/using python/ s@;@: /usr/include/python${PYTHON_VERSION/3*/${PYTHON_VERSION}m} ;@' \
       -i bootstrap.sh
 
-   ./bootstrap.sh --with-toolset=gcc --with-icu --with-python=/usr/bin/python3 \
-      --with-libraries=python
+   ./bootstrap.sh \
+     --with-toolset=gcc \
+     --with-icu \
+     --with-python=/usr/bin/python3 \
+     --with-libraries=python
 
    "${_stagedir}"/bin/b2 clean
    "${_stagedir}"/bin/b2 \
@@ -101,12 +104,14 @@ package_boost() {
 
    install -d "${pkgdir}"/usr/lib
    cp -a "${_stagedir}"/lib/*.a "${pkgdir}"/usr/lib/
+   cp -a "${_stagedir}"/lib/cmake "${pkgdir}"/usr/lib/
 
    install -Dm644 "${srcdir}/"${pkgbase}_${_boostver}/LICENSE_1_0.txt \
       "${pkgdir}"/usr/share/licenses/boost/LICENSE_1_0.txt
 
    install -Dm644 "${_stagedir}"/python3/lib/libboost_*.a \
       "${pkgdir}"/usr/lib/
+   cp -a "${_stagedir}"/python3/lib/cmake/* "${pkgdir}"/usr/lib/cmake/
 
    ln -s /usr/bin/b2 "$pkgdir"/usr/bin/bjam
 }
@@ -135,6 +140,7 @@ package_boost-libs() {
    cp -a "${_stagedir}"/lib "${pkgdir}"/usr
    cp -a "${_stagedir}"/python3/lib/libboost_* "${pkgdir}"/usr/lib
    rm "${pkgdir}"/usr/lib/*.a
+   rm -r "${pkgdir}"/usr/lib/cmake
 
    # https://github.com/boostorg/python/issues/203#issuecomment-391477685
    for _lib in python numpy; do
