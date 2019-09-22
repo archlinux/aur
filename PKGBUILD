@@ -6,7 +6,7 @@
 # Contributor: Christopher Reimer <vdr4arch at creimer dot net>
 
 pkgname=mingw-w64-poco
-pkgver=1.9.3
+pkgver=1.9.4
 _pkgver=${pkgver/_/}
 pkgrel=1
 pkgdesc="C++ class libraries for network-centric, portable applications, complete edition with debug libraries (mingw-w64)"
@@ -16,7 +16,7 @@ license=('custom:boost')
 depends=('mingw-w64-libmariadbclient' 'mingw-w64-openssl' 'mingw-w64-unixodbc')
 makedepends=('mingw-w64-cmake')
 source=("https://pocoproject.org/releases/poco-${_pkgver%p?}/poco-${_pkgver}-all.tar.bz2")
-sha256sums=('888acb0582cde176bbceac208aa24532f13e04b0c3929036f7cb9b872e4cb61f')
+sha256sums=('815f3ce6cee0b7f8bef7db4ed0421714521d6895255d24277853bf96d2d21533')
 options=(!strip staticlibs !buildflags)
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
@@ -26,8 +26,6 @@ build() {
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-cmake \
-      -DCMAKE_INSTALL_PREFIX=/usr/${_arch} \
-      -DCMAKE_BUILD_TYPE=Release \
       -DENABLE_PAGECOMPILER=FALSE \
       -DENABLE_PAGECOMPILER_FILE2PAGE=FALSE \
       ..
