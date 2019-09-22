@@ -1,7 +1,7 @@
 pkgbase = wps-office
 	pkgdesc = Kingsoft Office (WPS Office) is an office productivity suite
 	pkgver = 11.1.0.8865
-	pkgrel = 2
+	pkgrel = 3
 	url = http://wps-community.org/
 	install = wps-office.install
 	arch = x86_64
@@ -24,6 +24,7 @@ pkgbase = wps-office
 	optdepends = pango: for complex (right-to-left) text support
 	optdepends = curl: An URL retrieval utility and library
 	optdepends = ttf-wps-fonts: Symbol fonts required by wps-office
+	optdepends = ttf-ms-fonts: Microsft Fonts recommended for wps-office
 	optdepends = wps-office-fonts: FZ TTF fonts provided by wps community
 	conflicts = kingsoft-office
 	options = !emptydirs
