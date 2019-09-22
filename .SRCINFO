@@ -1,0 +1,12 @@
+pkgbase = ttf-courier-prime-code
+	pkgdesc = Code-optimized Sans for programmers
+	pkgver = 20190922
+	pkgrel = 1
+	url = https://quoteunquoteapps.com/courierprime
+	arch = any
+	provides = ttf-courier-prime-code
+	source = https://quoteunquoteapps.com/courierprime/downloads/courier-prime-code.zip
+	sha256sums = c400b6addeddef7c26a9943f847a8584c83d8bb775cd35da2dcd41c6ad98d827
+
+pkgname = ttf-courier-prime-code
+
