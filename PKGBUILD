@@ -1,7 +1,7 @@
 # Maintainer: Ponas <mykolas.peteraitis@gmail.com>
 pkgname="netctl-tray"
 pkgver=0.1.1
-pkgrel=7
+pkgrel=8
 pkgdesc="A lightweight netctl tray app with notifications"
 arch=('any')
 url="https://github.com/PonasKovas/netctl-tray"
