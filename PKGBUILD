@@ -3,7 +3,7 @@
 # Contributor/Base PKGBUILD: Doug Newgard <scimmia at archlinux dot info>
 
 pkgname=vivaldi-widevine
-pkgdesc="A browser plugin designed for the viewing of premium video content, standalone for vivaldi"
+pkgdesc="A browser plugin designed for the viewing of premium video content, standalone for Vivaldi"
 pkgver=4.10.1503.4
 _chrome_ver=77.0.3865.90
 pkgrel=1
