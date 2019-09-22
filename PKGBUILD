@@ -1,39 +1,18 @@
-# vim: ts=2 sts=2 sw=2 et ft=sh
+
+# Maintainer: James Bulmer <me@nekinie.com>
 # Maintainer: Victor Häggqvist <aur a snilius d com>
 
 pkgname=migrate
-
-pkgver=v3.3.0.r3.g6070aa8
+pkgver=4.6.2
 pkgrel=1
-pkgdesc="Database migration handling in Golang"
+pkgdesc="Database migration handling"
 url="https://github.com/golang-migrate/migrate"
-license=('MIT')
-arch=('x86_64' 'i686')
-makedepends=('go', 'dep')
-options=('!strip' '!emptydirs')
-depends=()
-makedepends=()
-
-source=(git://github.com/golang-migrate/migrate.git)
-sha512sums=('SKIP')
-
-pkgver() {
-    cd "$pkgname"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-build() {
-    GOPATH="$srcdir/gopath"
-    mkdir -p "$GOPATH/src/github.com/golang-migrate"
-    mv "$srcdir/migrate" "$GOPATH/src/github.com/golang-migrate"
-    cd "$GOPATH/src/github.com/golang-migrate/migrate"
-    dep ensure -v
-    cd $srcdir
-    go install -v github.com/golang-migrate/migrate/cli
-}
+arch=("x86_64")
+license=("MIT")
+source_x86_64=("https://github.com/golang-migrate/migrate/releases/download/v${pkgver}/migrate.linux-amd64.tar.gz")
+sha256sums_x86_64=("bf68db05bf8490c7960dc6ce5d2e60462a42baec207859282e8663f447ab31dd")
 
 package() {
-    GOPATH="$srcdir/gopath"
-    install -Dm755 "$GOPATH/bin/cli" "$pkgdir/usr/bin/$pkgname"
-    install -Dm644 "$GOPATH/src/github.com/golang-migrate/migrate/LICENSE" "$pkgdir/usr/share/licenses/migrate/LICENSE"
+  install -d "${pkgdir}/usr/bin"
+  mv "${srcdir}/migrate.linux-amd64" "${pkgdir}/usr/bin/migrate"
 }
