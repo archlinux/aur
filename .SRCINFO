@@ -1,0 +1,14 @@
+pkgbase = xmouseless-git
+	pkgdesc = Control the mouse with your keyboard - fast and simple.
+	pkgver = r28.f3a7697
+	pkgrel = 1
+	url = https://github.com/jbensmann/xmouseless
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = libxtst
+	source = git+https://github.com/jbensmann/xmouseless
+	md5sums = SKIP
+
+pkgname = xmouseless-git
+
