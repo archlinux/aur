@@ -24,7 +24,7 @@ build() {
   cd converse.js
   rm -rf dist
   make build
-  gzip -vk9 dist/converse.min.js* \
+  gzip -vfk9 dist/converse.min.js* \
     dist/converse.min.css* \
     dist/webfonts/*.svg \
     dist/locales/*.js* \
