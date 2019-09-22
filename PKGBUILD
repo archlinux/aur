@@ -5,11 +5,11 @@ _branch=master
 _use_gh_api=true
 _gh_api_url="https://api.github.com/repos/${_orgname}/${_pkgname}"
 pkgname=${_pkgname,,}-git
-pkgver=0.6.0.r0.g28b0b30
+pkgver=0.6.0.r10.g83ae9d7
 pkgrel=1
 pkgdesc='Program to show and manipulate GPS tracks'
 arch=(x86_64)
-url='https://bourgeoislab.wordpress.com/gpxlab/'
+url='https://github.com/BourgeoisLab/GPXLab'
 license=('GPL3')
 depends=('qt5-base')
 makedepends=('qt5-tools')
@@ -50,17 +50,12 @@ build() {
   sed -i "s/\(VERSION = \).*/\1${pkgver}/" GPXLab/GPXLab.pro
 
   lrelease GPXLab/GPXLab.pro
-  qmake GPXLab.pro
+  qmake PREFIX=/usr GPXLab.pro
   make
 }
 
 package() {
   cd ${_pkgname}-${_branch}
 
-  install -Dm755 bin/GPXLab ${pkgdir}/usr/bin/${pkgname//-git}
-  install -Dm644 GPXLab/locale/*.qm -t ${pkgdir}/usr/share/${pkgname//-git}/translations
-  install -Dm644 doc/gpxlab.png ${pkgdir}/usr/share/pixmaps/${pkgname//-git}.png
-  install -Dm644 pkg/gpxlab.desktop ${pkgdir}/usr/share/applications/${pkgname//-git}.desktop
-  install -Dm644 pkg/gpxlab.xml ${pkgdir}/usr/share/mime/packages/${pkgname//-git}.xml
-  install -Dm644 pkg/appdata.xml ${pkgdir}/usr/share/metainfo/${pkgname//-git}.appdata.xml
+  make INSTALL_ROOT="${pkgdir}" install
 }
