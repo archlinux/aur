@@ -1,14 +1,14 @@
 pkgbase = wpa_supplicant_gui
-	pkgdesc = A Qt frontend to wpa_supplicant
-	pkgver = 2.6
+	pkgdesc = A Qt frontend for interacting with wpa_supplicant
+	pkgver = 2.9
 	pkgrel = 1
-	url = http://hostap.epitest.fi/wpa_supplicant
+	url = https://w1.fi/wpa_supplicant/
 	arch = x86_64
 	license = GPL
 	depends = qt5-base
 	depends = wpa_supplicant
-	source = http://hostap.epitest.fi/releases/wpa_supplicant-2.6.tar.gz
-	sha256sums = b4936d34c4e6cdd44954beba74296d964bc2c9668ecaa5255e499636fe2b1450
+	source = https://w1.fi/releases/wpa_supplicant-2.9.tar.gz
+	sha256sums = fcbdee7b4a64bea8177973299c8c824419c413ec2e3a95db63dd6a5dc3541f17
 
 pkgname = wpa_supplicant_gui
 
