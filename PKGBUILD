@@ -7,6 +7,7 @@
 
 _game="forge-1.11.2"
 _server_root="/srv/forge-1.11.2"
+
 _minecraft_ver=1.11.2
 _pkgver=${_minecraft_ver}-13.20.1.2386
 
