@@ -1,7 +1,8 @@
 [Trigger]
-Type = Package
+Type = File
+Operation = Install
 Operation = Upgrade
-Target = linux
+Target = usr/lib/initcpio/*
 
 [Action]
 Description = Generating linux.efi...
