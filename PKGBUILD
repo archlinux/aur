@@ -1,7 +1,7 @@
 # Maintainer: Ali Mousavi <ali.mousavi@gmail.com>
 _npmname=gatsby-cli
 pkgname=nodejs-$_npmname
-pkgver=2.7.7
+pkgver=2.7.49
 pkgrel=1
 pkgdesc="The Gatsby command line interface"
 arch=(any)
@@ -11,11 +11,12 @@ depends=('nodejs')
 makedepends=('npm' 'jq')
 source=("https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz")
 noextract=($_npmname-$pkgver.tgz)
-md5sums=('75a02d4004298a4d7d247da3361a0d93')
+md5sums=('e3d54348bee2a3e25be8168a40c2d2d9')
 
 package() {
     npm install -g --cache $srcdir/npm-cache --user root --prefix $pkgdir/usr $srcdir/$_npmname-$pkgver.tgz
     find "$pkgdir"/usr -type d -exec chmod 755 {} +
+    chown -R root:root "$pkgdir"
 
     # Remove references to $pkgdir
     find "$pkgdir" -type f -name package.json -print0 | xargs -0 sed -i "/_where/d"
@@ -26,5 +27,9 @@ package() {
     jq '.|=with_entries(select(.key|test("_.+")|not))' "$pkgjson" > "$tmppackage"
     mv "$tmppackage" "$pkgjson"
     chmod 644 "$pkgjson"
+
+    # Install license file
+    mkdir -p "$pkgdir/usr/share/licenses/$pkgdir"
+    mv "$pkgdir/usr/lib/node_modules/$_npmname/LICENSE" "$pkgdir/usr/share/licenses/$pkgdir/LICENSE"
 }
 
