@@ -1,15 +1,15 @@
 pkgbase = emacs-symbols-mode-git
 	pkgdesc = GNU Emacs major mode for listing symbols from object files
 	pkgver = 0.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/stefanhusmann/emacs-symbols-mode
 	arch = any
 	license = GPL3
 	makedepends = git
 	depends = emacs
-	provides = emacs-symbols-mode-git%-git
-	conflicts = emacs-symbols-mode-git%-git
-	source = git+https://github.com/stefanhusmann/emacs-symbols-mode.git
+	provides = emacs-symbols-mode
+	conflicts = emacs-symbols-mode
+	source = git+https://gitlab.com/stefanhusmann/emacs-symbols-mode.git
 	md5sums = SKIP
 
 pkgname = emacs-symbols-mode-git
