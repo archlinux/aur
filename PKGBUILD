@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
 pkgname=guiscrcpy-git
 pkgver=v1.11.r1.4c39ba3
-pkgrel=1
+pkgrel=2
 pkgdesc="A full fledged GUI integration for the most award winning open-source Android screen mirroring system -- scrcpy"
 arch=('i686' 'x86_64')
 url="https://srevinsaju.github.io/guiscrcpy"
@@ -16,7 +16,7 @@ source=('git+https://github.com/srevinsaju/guiscrcpy.git'
         "${pkgname%-git}.desktop"
         "${pkgname%-git}.sh")
 sha256sums=('SKIP'
-            '11d0720e3b4675be95a26e0583cb4bb0ee79ab6f48df4a2df21a2b0917737448'
+            '8d89b87fb87fe070df99cfa4b0005e9b33c6aea04a9f3f40a97a6ecc3930b9a4'
             '7d85c9d18ee989efa9cec44924294a5775c00a0d1ca6c369fb43a216e1d6f19f')
 
 pkgver() {
