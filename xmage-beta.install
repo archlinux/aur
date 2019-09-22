@@ -1,0 +1,20 @@
+post_install() {
+	echo
+	echo "==> xmage-beta's files are located in /usr/share/xmage-beta"
+	echo "==>" 
+	echo "==> xmage-beta will automatically increase the (default)"
+	echo "==> amount of RAM available to both the client"
+	echo "==> and the server from 512MB to 1024MB"
+	echo "==> If you wish to change the amount of RAM available"
+	echo "==> to xmage-beta, edit /bin/mage-client-beta or /bin/mage-server-beta"
+	echo "==> and change the 1024 in '-Xmx1024m' to the amount"
+	echo "==> of RAM(in MB) you wish to make available"
+	echo
+}
+
+post_upgrade() {
+	echo
+	echo "==> Release notes can be found at"
+	echo "==> https://github.com/magefree/mage/commits/master"
+	echo
+}

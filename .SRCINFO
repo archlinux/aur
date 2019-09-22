@@ -1,0 +1,20 @@
+pkgbase = xmage-beta
+	pkgdesc = Java-based program for playing Magic:The Gathering, including client and server
+	pkgver = 1.4.38.dev_2019_09_21_06_22
+	pkgrel = 0
+	url = http://xmage.today
+	install = xmage-beta.install
+	arch = any
+	license = MIT
+	makedepends = detox
+	makedepends = wget
+	optdepends = wmname: change window manager name for compatibility with certain WMs
+	source = http://xmage.today/files/mage-full_1.4.38.dev_2019-09-21_06-22.zip
+	source = https://raw.githubusercontent.com/magefree/mage/master/LICENSE.txt
+	source = http://xmage.today/java/jre-8u201-linux-x64.tar.gz
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 12c745fbb8735bf450b8c6ba6f649bebe19915f05742975e443bdc8566170352
+
+pkgname = xmage-beta
+
