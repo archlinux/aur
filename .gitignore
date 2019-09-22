@@ -2,4 +2,4 @@
 /*.tar.gz
 /pkg
 /src
-/wayland-mouse-mapper
+/wayland-mouse-mapper-git-*
