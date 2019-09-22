@@ -1,14 +1,14 @@
 # Maintainer: Adam Brunnmeier <adam.brunnmeier@gmail.com>
 pkgname=wl-clipboard-git
 pkgver=2.0.0_beta2+5.ga60a0a468c
-pkgrel=1
+pkgrel=2
 pkgdesc="Command-line copy/paste utilities for Wayland"
 arch=('i686' 'x86_64')
 url="https://github.com/bugaevc/wl-clipboard"
 license=('GPL')
 depends=('wayland' 'xdg-utils' 'mailcap')
 makedepends=('git' 'meson' 'wayland-protocols')
-provides=("${pkgname%-git}")
+provides=("${pkgname%-git}=${pkgver%+*}")
 conflicts=("${pkgname%-git}")
 source=("git+https://github.com/bugaevc/wl-clipboard")
 md5sums=('SKIP')
