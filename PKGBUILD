@@ -1,6 +1,6 @@
 # Maintainer: Adam Brunnmeier <adam.brunnmeier@gmail.com>
 pkgname=wl-clipboard-git
-pkgver=r80.48c2aed
+pkgver=2.0.0_beta2+5.ga60a0a468c
 pkgrel=1
 pkgdesc="Command-line copy/paste utilities for Wayland"
 arch=('i686' 'x86_64')
@@ -15,7 +15,8 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --tags --abbrev=10 HEAD |
+		sed 's/^v//; s/-/+/; s/-/./'
 }
 
 build() {
