@@ -6,7 +6,7 @@ arch=("any")
 license=("GPL")
 depends=('systemd' 'linux')
 source=(systemd-efi.hook)
-md5sums=('3dc361232f8ff15126172486e557acb9')
+md5sums=('010e8917566d765b93442ac1de91586a')
 
 package() {
     install -m755 -d "${pkgdir}/usr/share/libalpm/hooks"
