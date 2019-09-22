@@ -3,8 +3,8 @@
 # Maintainer: Vesa Kaihlavirta <vegai@iki.fi>
 
 pkgname=pwsafe
-pkgver=20170908
-_commit=c3cc2ec031812ab33f0dab72a8d8b336ca486de0
+pkgver=20181220
+_commit=1dbcfd01a502d1579a80c208662add64b4090818
 pkgrel=1
 pkgdesc="A commandline program for managing encrypted password databases"
 arch=('x86_64')
