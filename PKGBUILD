@@ -26,7 +26,7 @@ check() {
 
 package() {
   cd "${pkgname}-${pkgver}"
-  python setup.py install -O1 --root="${pkgdir}"
+  python setup.py install -O1 --root="${pkgdir}" --skip-build
 }
 
 # vim:set ts=2 sw=2 et:
