@@ -1,6 +1,6 @@
 # Maintainer: Bruce Zhang
 pkgname=listen1-desktop
-pkgver=2.5.0
+pkgver=2.5.1
 pkgrel=1
 pkgdesc="one for all free music in china (Build from source)"
 arch=('x86_64' 'i686')
@@ -14,7 +14,7 @@ source=(
 	"$pkgname-$pkgver.src.tar.gz::https://github.com/listen1/listen1_desktop/archive/v$pkgver.tar.gz"
 	"git://github.com/listen1/listen1_chrome_extension.git"
 )
-sha256sums=('5745a1872cbcc29cd6f458be7c73add641ec5f276c3877c19e0c84dd7aba3659'
+sha256sums=('86ba4aa7f2e00555a48eea02f915f277fabce9b5cbbc2be9faf7df71cbdfb999'
             'SKIP')
 
 prepare() {
