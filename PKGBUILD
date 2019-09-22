@@ -6,17 +6,24 @@
 
 #_enable_macOS_guests=y
 
-# CAUTION: Run macOS on a non Apple computer may be forbidden in your country.
+# CAUTION: Running macOS on VMware Workstation on non Apple computer is forbidden by
+# Apple and VMware EULAs.
 # Source of the patch: https://github.com/DrDonk/unlocker
-# Forum: http://www.insanelymac.com/forum/topic/303311-workstation-1112-player-712-fusion-78-and-esxi-6-mac-os-x-unlocker-2
+# Forum: https://www.insanelymac.com/forum/topic/335757-macos-unlocker-v30-for-vmware-workstation/
 ############################################################################
+
+# vmware-keymaps dependency is needed to avoid some conflicts when you install
+# this package with vmware-horizon-client. If you don't plan to install
+# vmware-horizon-client and don't want to add this dependency, you can
+# uncomment the line below:
+#_remove_vmware_keymaps_dependency=y
 
 #PKGEXT=.pkg.tar
 pkgname=vmware-workstation12
 pkgver=12.5.9
 _buildver=7535481
 _pkgver=${pkgver}_${_buildver}
-pkgrel=9
+pkgrel=10
 pkgdesc='The industry standard for running multiple operating systems as virtual machines on a single Linux PC.'
 arch=(x86_64)
 url='https://www.vmware.com/products/workstation-for-linux.html'
@@ -34,7 +41,6 @@ provides=(
   vmware-ovftool
 )
 depends=(
-  vmware-keymaps
   dkms
   ncurses5-compat-libs
   fuse2
@@ -68,7 +74,7 @@ backup=(
 source=(
   "https://download3.vmware.com/software/wkst/file/VMware-Workstation-Full-${_pkgver/_/-}.${CARCH}.bundle"
 
-  'bootstrap'
+  'vmware-bootstrap'
   'vmware-vix-bootstrap'
   'config'
   'pam.d-vmware-authd'
@@ -98,7 +104,7 @@ sha256sums=(
 
   '12e7b16abf8d7e858532edabb8868919c678063c566a6535855b194aac72d55e'
   'da1698bf4e73ae466c1c7fc93891eba4b9c4581856649635e6532275dbfea141'
-  '04cf8f4f19f8aa2b298b0c4f4929488dfd05aad108d2f87b8587666da236cc64'
+  '8e3a6302ed8798a6b14780be41dbc05dd4cfbda88c87b97df1c2bea960e15db7'
   'd50aa0a3fe94025178965d988e18d41eb60aa1ce2b28ee6e3ca15edeabfa2ca7'
   '8e4d08668a66be79a900521792b39c16a026cc90659241edee80b64e701bfbcd'
   'b94959a11b28e51b541321be0588190eb10825e9ff55cbd16eb01483a839a69f'
@@ -118,11 +124,16 @@ sha256sums=(
 
   '05e26d8b21d190ebabb7f693998114d9d5991d9dfb71acb4d990293a65b6b487'
   '6ce902b1dab8fc69be253abd8e79017011985eca850ff7acc7282f9ab668e35d'
-  '030c9147ee1c6ab18a5c526e954fd25faade4beb084e692f55251a916cfbb2ac'
-  'fc2c3623b76da9c7a368509e66d9baef077eab8980537c0d40fd0a019c7ef833'
+  '9329c1bcbad1782ba6701bebaa5ab7b9056d76c42a477c31475d68ddf95a77c2'
+  'bcf6c161bea6b51867118922b60606d9a2a9721c6ed7f85493574ba549361cfe'
 )
 options=(!strip emptydirs)
 
+if [ -z "$_remove_vmware_keymaps_dependency" ]; then
+depends+=(
+  vmware-keymaps
+)
+fi
 
 _isoimages=(freebsd linux linuxPreGlibc25 netware solaris windows winPre2k winPreVista)
 
@@ -137,14 +148,14 @@ makedepends+=(
 )
 
 source+=(
-  "https://softwareupdate.vmware.com/cds/vmw-desktop/fusion/${_vmware_fusion_ver/_//}/packages/com.vmware.fusion.tools.darwinPre15.zip.tar"
-  "https://softwareupdate.vmware.com/cds/vmw-desktop/fusion/${_vmware_fusion_ver/_//}/packages/com.vmware.fusion.tools.darwin.zip.tar"
+  "darwinPre15-tools-${_vmware_fusion_ver}.zip.tar::https://softwareupdate.vmware.com/cds/vmw-desktop/fusion/${_vmware_fusion_ver/_//}/packages/com.vmware.fusion.tools.darwinPre15.zip.tar"
+  "darwin-tools-${_vmware_fusion_ver}.zip.tar::https://softwareupdate.vmware.com/cds/vmw-desktop/fusion/${_vmware_fusion_ver/_//}/packages/com.vmware.fusion.tools.darwin.zip.tar"
   'unlocker.py'
 )
 sha256sums+=(
   '78aaa6ba65d178d6242ad73b7e2e552ec707798ce5f4925a0adebf30f844dc17'
   '6327a76c2503f56d8bc67279f289ed4bb53e236d965ad78c0fcf7ee9e2bbb6c6'
-  '29e0b0db9c0296ab81eee543803c4bd430e2c69c76e33492910e17280da1c05c'
+  'ecf6d9186f109ec420287bd327e1f1f407de8e4b9e3faa23828bcf903f6246c6'
 )
 
 _fusion_isoimages=(darwin darwinPre15)
@@ -186,7 +197,9 @@ if [ -n "$_enable_macOS_guests" ]; then
   for isoimage in ${_fusion_isoimages[@]}
   do
     unzip -q com.vmware.fusion.tools.$isoimage.zip
-    rm manifest.plist
+    install -Dm 644 "$srcdir/payload/$isoimage.iso" "$srcdir/fusion-isoimages/$isoimage.iso"
+    install -Dm 644 "$srcdir/payload/$isoimage.iso.sig" "$srcdir/fusion-isoimages/$isoimage.iso.sig"
+    rm -rf payload manifest.plist
   done
 
   sed -i -e "s|/usr/lib/vmware/|${pkgdir}/usr/lib/vmware/|" "$srcdir/unlocker.py"
@@ -282,9 +295,11 @@ package() {
 
   install -Dm 644 "vmware-player-app/doc/LearnMore.txt" "$pkgdir/usr/share/licenses/$pkgname/Privacy.txt"
   install -Dm 644 "vmware-workstation/doc/EULA" "$pkgdir/usr/share/licenses/$pkgname/VMware Workstation - EULA.txt"
-  install -Dm 644 "vmware-workstation/doc"/*open_source_licenses.txt "$pkgdir/usr/share/licenses/$pkgname"
-  mv "$pkgdir/usr/lib/vmware-ovftool/vmware.eula" "$pkgdir/usr/share/licenses/$pkgname/VMware OVF Tool component for Linux - EULA.txt"
-  rm "$pkgdir/usr/lib/vmware-ovftool"/{vmware-eula.rtf,open_source_licenses.txt,manifest.xml}
+  install -Dm 644 "$pkgdir/usr/lib/vmware-ovftool/vmware.eula" "$pkgdir/usr/share/licenses/$pkgname/VMware OVF Tool - EULA.txt"
+  install -Dm 644 "vmware-workstation/doc"/open_source_licenses.txt "$pkgdir/usr/share/licenses/$pkgname/VMware Workstation open source license.txt"
+  install -Dm 644 "vmware-workstation/doc"/ovftool_open_source_licenses.txt "$pkgdir/usr/share/licenses/$pkgname/VMware OVF Tool open source license.txt"
+  install -Dm 644 "vmware-vix-core"/open_source_licenses.txt "$pkgdir/usr/share/licenses/$pkgname/VMware VIX open source license.txt"
+  rm "$pkgdir/usr/lib/vmware-ovftool"/{vmware.eula,vmware-eula.rtf,open_source_licenses.txt,manifest.xml}
 
   install -Dm 755 "$srcdir/configure-initscript.sh" "$pkgdir/usr/lib/vmware-installer/$vmware_installer_version/bin/configure-initscript.sh"
 
@@ -292,12 +307,15 @@ package() {
 
   install -Dm 644 vmware-player-app/lib/isoimages/tools-key.pub "$pkgdir/usr/lib/vmware/isoimages/tools-key.pub"
 
-  install -Dm 644 vmware-vmx/extra/modules.xml "$pkgdir/usr/lib/vmware/modules/modules.xml"
-  install -Dm 644 vmware-installer/bootstrap "$pkgdir/etc/vmware-installer/bootstrap"
-  install -Dm 644 "$srcdir/vmware-vix-bootstrap" "$pkgdir/etc/vmware-vix/bootstrap"
-  install -Dm 644 "$srcdir"/{bootstrap,config} "$pkgdir/etc/vmware"
+  install -Dm 644 vmware-vmx/extra/modules.xml "$pkgdir"/usr/lib/vmware/modules/modules.xml
+  install -Dm 644 vmware-installer/bootstrap "$pkgdir"/etc/vmware-installer/bootstrap
+  install -Dm 644 "$srcdir"/vmware-vix-bootstrap "$pkgdir"/etc/vmware-vix/bootstrap
+  install -Dm 644 "$srcdir"/vmware-bootstrap "$pkgdir"/etc/vmware/bootstrap
+  install -Dm 644 "$srcdir"/config "$pkgdir"/etc/vmware/config
 
-  rm -r "$pkgdir/usr/lib/vmware/xkeymap" # these files are now provided by vmware-keymaps package
+if [ -z "$_remove_vmware_keymaps_dependency" ]; then
+  rm -r "$pkgdir/usr/lib/vmware/xkeymap" # these files are provided by vmware-keymaps package
+fi
 
   for hostd_file in config datastores environments proxy vmAutoStart; do
     install -Dm 644 "$srcdir/$hostd_file.xml" "$pkgdir/etc/vmware/hostd/$hostd_file.xml"
@@ -429,8 +447,8 @@ if [ -n "$_enable_macOS_guests" ]; then
 
   for isoimage in ${_fusion_isoimages[@]}
   do
-    install -Dm 644 "$srcdir/payload/$isoimage.iso" "$pkgdir/usr/lib/vmware/isoimages/$isoimage.iso"
-    install -Dm 644 "$srcdir/payload/$isoimage.iso.sig" "$pkgdir/usr/lib/vmware/isoimages/$isoimage.iso.sig"
+    install -Dm 644 "$srcdir/fusion-isoimages/$isoimage.iso" "$pkgdir/usr/lib/vmware/isoimages/$isoimage.iso"
+    install -Dm 644 "$srcdir/fusion-isoimages/$isoimage.iso.sig" "$pkgdir/usr/lib/vmware/isoimages/$isoimage.iso.sig"
   done
 fi
 
@@ -443,6 +461,11 @@ fi
         -e 's/if "$BINDIR"\/vmware-modconfig --appname=.*/if true ||/' \
         -i "$pkgdir/usr/bin/$program"
   done
+
+  # Add StartupWMClass attribute to desktop files
+  sed -i '/^StartupNotify=.*/a StartupWMClass=vmware' "$pkgdir/usr/share/applications/vmware-workstation.desktop"
+  sed -i '/^StartupNotify=.*/a StartupWMClass=vmplayer' "$pkgdir/usr/share/applications/vmware-player.desktop"
+  sed -i '/^StartupNotify=.*/a StartupWMClass=vmware-netcfg' "$pkgdir/usr/share/applications/vmware-netcfg.desktop"
 
   # use system font rendering
   ln -sf /usr/lib/libfreetype.so.6 "$pkgdir/usr/lib/vmware/lib/libfreetype.so.6/"
