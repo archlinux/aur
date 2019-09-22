@@ -2,7 +2,7 @@
 # Maintainer: Maxime "pep" Buquet <archlinux@bouah.net>
 
 pkgname=(conversejs-git conversejs-epiphany-git)
-pkgver=4.0.4.r35.g795d8e0f0
+pkgver=5.0.3.r15.gcd5dacbe2
 pkgrel=1
 arch=('any')
 url="https://conversejs.org/"
