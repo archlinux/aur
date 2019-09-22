@@ -4,7 +4,7 @@
 
 pkgname='budgie-screenshot-applet'
 pkgver='0.4.3.r0.gd92b06c'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='A Budgie applet for taking and uploading screenshots to Imgur and Imagebin.'
 arch=('i686' 'x86_64')
 url="https://github.com/cybre/${pkgname}"
