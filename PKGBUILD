@@ -7,7 +7,7 @@
 #       - https://github.com/Sude-/lgogdownloader
 
 pkgname='gog-jotun'
-pkgver='20190430_29317'
+pkgver='20190912'
 pkgrel=1
 pkgdesc='Jotun is a hand—drawn action—exploration game set in Norse mythology.'
 url='http://jotungame.com/'
@@ -17,13 +17,11 @@ arch=('i686' 'x86_64')
 source=(
   "${pkgname}"
   "${pkgname}.desktop"
-  "file://jotun_${pkgver}.sh"
+  "file://jotun_${pkgver:6:2}_${pkgver:4:2}_${pkgver:0:4}_32415.sh"
 )
-sha256sums=(
-  '8a99b6c941c309af11a3d251280562d0729dad74667dabe5d654530aa9064410'
-  'c68e6416957174c6194b4d38d773b122a635a8e4579b69c995c8f2709cb77840'
-  '0ca6c3941e0bec757c4b2306f1800fa7591b5305520025ab34646adbaf828912'
-)
+sha256sums=('8a99b6c941c309af11a3d251280562d0729dad74667dabe5d654530aa9064410'
+            'c68e6416957174c6194b4d38d773b122a635a8e4579b69c995c8f2709cb77840'
+            '160dcd29253349b0f84c0a03d49fe41cd50319f58ce48df025135733c16c779b')
 
 package() {
   install -d "${pkgdir}/opt/${pkgname}/"
