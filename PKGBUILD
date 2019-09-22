@@ -1,10 +1,10 @@
 # Maintainer: Tom Wadley <tom@tomwadley.net>
 
 pkgname=nvm-git
-pkgver=0.34.0.r13.ge1bb44f
-pkgrel=2
+pkgver=0.34.0.r43.g3cc9525
+pkgrel=1
 pkgdesc="Node Version Manager - Simple bash script to manage multiple active node.js versions (git sources)"
-url="https://github.com/creationix/nvm"
+url="https://github.com/nvm-sh/nvm"
 arch=('any')
 license=('MIT')
 optdepends=('bash: bash completion')
@@ -12,7 +12,7 @@ makedepends=('git')
 conflicts=('nvm')
 provides=('nvm')
 install="${pkgname}.install"
-source=("$pkgname::git+https://github.com/creationix/nvm.git"
+source=("$pkgname::git+https://github.com/nvm-sh/nvm.git"
         "init-nvm.sh"
         "install-nvm-exec")
 sha256sums=('SKIP'
