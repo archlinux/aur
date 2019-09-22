@@ -12,12 +12,13 @@ url="https://www.libsdl.org"
 license=('MIT')
 depends=('lib32-glibc' 'lib32-libxext' 'lib32-libxrender' 'lib32-libx11' 'lib32-libgl'
          'lib32-libxcursor' 'sdl2')
-makedepends=('gcc-multilib' 'lib32-alsa-lib' 'lib32-mesa' 'lib32-libpulse' 'lib32-libxrandr'
+makedepends=('lib32-alsa-lib' 'lib32-mesa' 'lib32-libpulse' 'lib32-libxrandr'
              'lib32-libxinerama' 'lib32-wayland' 'lib32-libxkbcommon' 'wayland-protocols'
-             'lib32-libxss' 'cmake' 'jack' 'lib32-tslib')
+             'lib32-libxss' 'cmake' 'lib32-tslib' 'mercurial')
 optdepends=('lib32-alsa-lib: ALSA audio driver'
             'lib32-libpulse: PulseAudio audio driver'
-            'lib32-jack: JACK audio driver')
+            'lib32-jack: JACK audio driver'
+            'jack: JACK audio support')
 provides=(lib32-sdl2)
 conflicts=(lib32-sdl2)
 source=("hg+http://hg.libsdl.org/SDL#branch=default")
@@ -35,24 +36,27 @@ pkgver() {
 }
 
 prepare() {
-  cd SDL
+  
+  if [[ -d build ]]; then
+    rm -rf build
+  fi
+  mkdir build
 
-  sed -i 's|lib/cmake|lib32/cmake|' CMakeLists.txt
+  #fix libdir
+  sed -i 's|lib/cmake|lib32/cmake|' SDL/CMakeLists.txt
 
   # Don't try to link against ibus
-  sed -i '/pkg_search_module.*ibus-1.0/d' CMakeLists.txt
-
-  mkdir build
+  sed -i '/pkg_search_module.*ibus-1.0/d' SDL/CMakeLists.txt
 }
 
 build() {
-  cd SDL/build
+  cd build
 
   export CC='gcc -m32'
   export CXX='g++ -m32'
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
 
-  cmake .. \
+  cmake ../SDL \
       -DCMAKE_INSTALL_PREFIX=/usr \
       -DLIB_SUFFIX=32 \
       -DSDL_STATIC=OFF \
@@ -70,9 +74,8 @@ build() {
 }
 
 package() {
-  cd SDL/build
-
-  make DESTDIR="${pkgdir}" install
+  
+  make DESTDIR="${pkgdir}"  -C build install
   rm -rf "${pkgdir}"/usr/{bin,include,share}
 
   sed -i "s/libSDL2\.a/libSDL2main.a/g" "$pkgdir"/usr/lib32/cmake/SDL2/SDL2Targets-noconfig.cmake
