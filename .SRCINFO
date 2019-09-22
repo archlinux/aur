@@ -1,0 +1,12 @@
+pkgbase = migrate-bin
+	pkgdesc = Database migration handling
+	pkgver = 4.6.2
+	pkgrel = 1
+	url = https://github.com/golang-migrate/migrate
+	arch = x86_64
+	license = MIT
+	source_x86_64 = https://github.com/golang-migrate/migrate/releases/download/v4.6.2/migrate.linux-amd64.tar.gz
+	sha256sums_x86_64 = bf68db05bf8490c7960dc6ce5d2e60462a42baec207859282e8663f447ab31dd
+
+pkgname = migrate-bin
+
