@@ -14,7 +14,7 @@ install="INSTALL"
 
 package() {
 
-  install -D -t "$pkgdir/usr/bin"                "$srcdir/$pkgname-$pkgver/mousemapper.sh"
+  install -D -t "$pkgdir/usr/bin"                "$srcdir/$pkgname-$pkgver/mousemapper"
   install -D -t "$pkgdir/usr/lib/systemd/system" "$srcdir/$pkgname-$pkgver/mousemapper.service"
 
 }
