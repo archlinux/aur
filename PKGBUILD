@@ -4,12 +4,12 @@
 pkgname=wpa_supplicant_gui
 _pkgname=${pkgname%_gui}
 pkgver=2.9
-pkgrel=1
+pkgrel=2
 pkgdesc="A Qt frontend for interacting with wpa_supplicant"
 url="https://w1.fi/wpa_supplicant/"
 arch=('x86_64')
 depends=('qt5-base' 'wpa_supplicant')
-license=('GPL')
+license=('BSD')
 source=("https://w1.fi/releases/${_pkgname}-${pkgver}.tar.gz")
 sha256sums=('fcbdee7b4a64bea8177973299c8c824419c413ec2e3a95db63dd6a5dc3541f17')
 

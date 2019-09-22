@@ -1,10 +1,10 @@
 pkgbase = wpa_supplicant_gui
 	pkgdesc = A Qt frontend for interacting with wpa_supplicant
 	pkgver = 2.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://w1.fi/wpa_supplicant/
 	arch = x86_64
-	license = GPL
+	license = BSD
 	depends = qt5-base
 	depends = wpa_supplicant
 	source = https://w1.fi/releases/wpa_supplicant-2.9.tar.gz
