@@ -1,6 +1,6 @@
 # Maintainer: Bruce Zhang <zttt183525594@gmail.com>
 pkgname=devhub
-pkgver=0.93.0
+pkgver=0.95.1
 pkgrel=1
 pkgdesc="TweetDeck for GitHub - Android, iOS, Web & Desktop"
 arch=('x86_64' 'i686')
@@ -13,7 +13,7 @@ optdepends=('kde-cli-tools: file deletion support (kioclient5)'
             'xdg-utils: open URLs with desktop default (xdg-email, xdg-open)')
 makedepends=('yarn' 'jq' 'moreutils')
 source=("$pkgname-$pkgver.src.tar.gz::https://github.com/devhubapp/devhub/archive/v$pkgver.tar.gz")
-sha256sums=('286b79686e63b57d77a345d7324db84e0918543a6d59e8ae1f7dc2ea3393da5c')
+sha256sums=('980e598adfff1fedd3259ab4d8dbf0ce561a9536fdbe6fd8406be43849a74683')
 provides=("devhub")
 
 prepare() {
