@@ -1,0 +1,6 @@
+v0.4.3
+======
+ - Budgie 10.4 support
+ - S/FTP provider
+ - Added option to directly save to clipboard
+ - Show upload progress

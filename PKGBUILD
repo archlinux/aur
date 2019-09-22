@@ -4,7 +4,7 @@
 
 pkgname='budgie-screenshot-applet'
 pkgver='0.4.3'
-pkgrel='3'
+pkgrel='4'
 pkgdesc='A Budgie applet for taking and uploading screenshots to Imgur and Imagebin.'
 arch=('i686' 'x86_64')
 url="https://github.com/cybre/${pkgname}"
@@ -17,6 +17,7 @@ source=("git+${url}.git#tag=v${pkgver}"
 sha256sums=('SKIP'
             '328a13065e28d8d5a8ae623ebb0e5fb3341df5aa082d5d3dfc0630d9abda5704'
             '8c92ea4fb70a76c08337c5aa414669db9a043a197227c7ad6a4c2fda735d8871')
+changelog='CHANGELOG'
 
 pkgver () {
   cd ${pkgname}
@@ -31,11 +32,11 @@ prepare () {
   patch -p1 < "${srcdir}/${source[2]}"
 }
 
-build() {
+build () {
   arch-meson ${pkgname} build
   ninja -C build
 }
 
-package() {
+package () {
   DESTDIR="${pkgdir}" ninja -C build install
 }
