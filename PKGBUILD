@@ -1,16 +1,17 @@
-# Maintainer: Timofey Titovets <nefelim4ag@gmail.com>
+# Maintainer: Kuan-Yen Chou <kuanyenchou@gmail.com>
+# Contributor: Timofey Titovets <nefelim4ag@gmail.com>
 
 pkgname=leagueoflegends-git
-pkgver=0.13.r25.g0b05e62
+pkgver=v0.9.18.r0.ge4a040d
 pkgrel=1
-pkgdesc="League Of Legends: Install/Run wrapper"
+pkgdesc="League of Legends helper script"
 arch=('any')
-url="https://github.com/Nefelim4ag/League-Of-Legends"
+url="https://github.com/kyechou/leagueoflegends"
 license=('GPL3')
-depends=('wine' 'winetricks' 'bash' 'lib32-gnutls' 'lib32-libldap'
+depends=('wine-lol' 'winetricks' 'bash' 'lib32-gnutls' 'lib32-libldap'
          'lib32-openal' 'lib32-libpulse' 'wget')
 conflicts=('leagueoflegends')
-source=("$pkgname"::'git+https://github.com/Nefelim4ag/League-Of-Legends.git#branch=master')
+source=("$pkgname"::'git+https://github.com/kyechou/leagueoflegends.git')
 md5sums=('SKIP')
 
 pkgver() {
