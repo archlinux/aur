@@ -1,7 +1,9 @@
 # Maintainer: Nitroretro <nitroretro@protonmail.com>
-# Contributor: Gordian Edenhofer <gordian.edenhofer@gmail.com>
-# Contributor: Philip Abernethy <chais.z3r0@gmail.com>
-# Contributor: sowieso <sowieso@dukun.de>
+
+# Based on the `minecraft-server` AUR package by:
+## Maintainer: Gordian Edenhofer <gordian.edenhofer@gmail.com>
+## Contributor: Philip Abernethy <chais.z3r0@gmail.com>
+## Contributor: sowieso <sowieso@dukun.de>
 
 _game="forge-1.12.2"
 _server_root="/srv/forge-1.12.2"
