@@ -1,6 +1,6 @@
-_game="forge-1.8.9"
-_user="forge-1-8-9"
-_server_root="/srv/forge-1.8.9"
+_game="forge-1.7.10"
+_user="forge-1-7-10"
+_server_root="/srv/forge-1.7.10"
 
 post_install() {
 	getent group "${_user}" &>/dev/null
