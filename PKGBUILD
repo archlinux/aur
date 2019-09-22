@@ -1,6 +1,6 @@
 pkgname=systemd-efi-pacman-hook
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Pacman hook to upgrade Linux EFI after systemd upgrade and Linux."
 arch=("any")
 license=("GPL")
