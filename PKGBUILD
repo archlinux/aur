@@ -3,8 +3,8 @@
 
 pkgname='vkcube-git'
 pkgdesc='Demo cube app for Vulkan (git version)'
-pkgver=r122.868ad83
-pkgrel=2
+pkgver=r123.504059b
+pkgrel=1
 url='https://github.com/krh/vkcube'
 arch=('i686' 'x86_64')
 license=('MIT')
