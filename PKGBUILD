@@ -6,7 +6,7 @@
 
 _pkgname=qt5-base
 pkgname=$_pkgname-git
-pkgver=5.12.0.r981.g481db443d5
+pkgver=5.13.1.r1450.g139240ac67
 pkgrel=1
 arch=("i686" "x86_64")
 url='https://qt-project.org/'
@@ -16,7 +16,7 @@ depends=('libjpeg-turbo' 'xcb-util-keysyms' 'libgl' 'fontconfig'
          'xcb-util-wm' 'libxrender' 'libxi' 'sqlite' 'xcb-util-image' 'icu'
          'tslib' 'libinput' 'libsm' 'libxkbcommon-x11' 'libproxy')
 makedepends=('mtdev' 'libfbclient' 'libmariadbclient' 'sqlite' 'unixodbc' 'postgresql-libs' 'alsa-lib' 'gst-plugins-base-libs'
-             'gtk3' 'libpulse' 'cups' 'freetds' 'git')
+             'gtk3' 'libpulse' 'cups' 'freetds' 'git' 'vulkan-headers')
 optdepends=('qt5-svg: to use SVG icon themes'
             'postgresql-libs: PostgreSQL driver'
             'libmariadbclient: MariaDB driver'
