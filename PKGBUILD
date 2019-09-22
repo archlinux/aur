@@ -2,7 +2,7 @@
 
 pkgbase=swift-language
 pkgname=(swift swift-lldb)
-_swiftver=5.0.3-RELEASE
+_swiftver=5.1-RELEASE
 pkgver=${_swiftver//-RELEASE/}
 pkgrel=1
 pkgdesc="The Swift programming language and debugger"
@@ -30,22 +30,24 @@ source=(
     "swift-compiler-rt-${_swiftver}.tar.gz::https://github.com/apple/swift-compiler-rt/archive/swift-${_swiftver}.tar.gz"
     "swift-integration-tests-${_swiftver}.tar.gz::https://github.com/apple/swift-integration-tests/archive/swift-${_swiftver}.tar.gz"
     "glibc-includes.patch"
+    "repl_swift-dl.patch"
 )
-sha256sums=('b94bf54b6b6d228a7af2f8eae1202336272cd6502f16f056a82ef36f60539194'
-            '6ae9492980e358628ae8d081fdaa7828d28353eae238456e13963d2a578f47fb'
-            'fa81a3ff208bf447f62a5f90135a3d943d9ccf09e3b04ed88ac48b706121fb25'
-            '7ff1a064cbf6e905f070a06aaebf7a4ec8787ce2a0b73c5858b584325c58b957'
-            'e34d9ccb2a336e51151c82e3725e9e559519833179279f3b53afa16d27fac65b'
-            'ff540419d333ff09d96807a701dd5a500b220a9bb167c7842d7ec814893b3261'
-            '2e2e450ce6e0d58644b5021f3354ef38e0fc3ef01a7068c1ea034467b5035dd4'
-            '207ec9e61ebe725b7015c47d9c92d8360bb7867cb11f6e836d1563dd317447e4'
-            '98da54196141a94e961b38455464bf646aba9e48b24e88f7afacf4a12d454523'
-            '121993ab9c29b8997cf606e62fe9579309b49cd22e21b017bba2e67a16e7b513'
-            '25ed4ca444c869b059f3cd7a623653e3050252354ab6490996b2100c250b9576'
-            '9a5779b181f1a1146134f233f45d7f9d9643f749dc4c61e76300951b6596b778'
-            '89ca34493703c168f86a3eff9d88e8042113819a82941bd5ae5ac1a083c28ba7'
-            'f0a2931337d1966630340d5093c4d75ac5330ee5ac45f31bdbe77fe555b4ea4f'
-            '6a94de9adbdc4182b297e0011a68c9387fd25864dcb4386654218c8c530032c2')
+sha256sums=('04cbf97859cc691840a2c18354329e12f051226758b99f4a025d0bcca99ed4df'
+            '3ed973401d62a9610c8d9be8afbb28d04f50340a773be48af6965033e80e0411'
+            '3d704763df8e17af5559839484c29681c19e16e9801734c33cd4e12ffaba6cdf'
+            'f1f383106fd3589bc9566225015cfa88e671231f9e8695773f0012a93f9853c6'
+            'cf5a1dfe5d6fbfaaa26bc4b98c2033c48c513d06b9a1d5ae7180871d144caa0c'
+            'ca01ed89c886565155cd55129fa1d27d7486df031a409b2709f90937d4f81349'
+            'f0c6fdb8a81a9d422fbc47dc9e6408556b25198f50a0fddcb3aeccdaff56bcfd'
+            'cbd228619d1172f7f6d38983f0419226baa1cfbecc6afac891856fcb46ba4920'
+            '830d79d777841c28c6b270083c3fd305bc1ba736086ad9790dee1673a23a6aee'
+            'adaaec994d18067a49596b0720b0c163da3a1915f20a619221834292b0e2af68'
+            '9176e1334e2b8b6715c4d071be1337554438096b9f29d62f90aecfb5230148fa'
+            'da24d299eecc10e7d4b40a24e0700ca2f73da622795ecf6f4a5da4d33c486662'
+            'f2eb728ce1d4be21bb0e8bf7e099b6654a45ce8ff8dee6050e868822d7bbcd95'
+            'faad37015993a8713d10fd281e17d8bf308196c8cc4ecc45dc962e22141718cf'
+            '6a94de9adbdc4182b297e0011a68c9387fd25864dcb4386654218c8c530032c2'
+            '0b2dcb80d9f5cd987a6750b88dc71823980c47dcc711a993e71a496fd73d4e5e')
 
 prepare() {
     # Use python2 where appropriate
@@ -79,6 +81,9 @@ prepare() {
 
     # Fix wrong glibc include paths in glibc module map
     ( cd swift && patch -p1 -i "$srcdir/glibc-includes.patch" )
+
+    # repl_swift requires -ldl
+    ( cd lldb && patch -p1 -i "$srcdir/repl_swift-dl.patch" )
 }
 
 _common_build_params=(
