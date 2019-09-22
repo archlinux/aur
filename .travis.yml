@@ -54,7 +54,7 @@ arch:
 # Update PKGBUILD and push changes to AUR
   - ./update.PKGBUILD
   - |
-     deps_update=$(git diff .SRCINFO|grep -oP "^\+\tdepends = \K.*") && \
+     deps_update=$(git diff .SRCINFO|grep -oP "^\+\tdepends = \K.*") && [[ "$TRAVIS_EVENT_TYPE" =~ "push|cron" ]] && \
      ( . PKGBUILD
        git checkout master
        git config user.name "Travis"
