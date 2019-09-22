@@ -23,28 +23,22 @@ pkgver() {
 build() {
   cd converse.js
   rm -rf dist
-  rm -f css/converse*
-  make dev
-  make dist/converse.min.js
-  make css/converse.min.css
-  rm -v css/converse.css
+  make build
   gzip -vk9 dist/converse.min.js* \
-    css/converse.min.css \
-    css/images/*.svg \
-    fonts/*.svg \
-    locale/*/LC_MESSAGES/converse.json
+    dist/converse.min.css* \
+    dist/webfonts/*.svg \
+    dist/locales/*.js* \
+    dist/locales/dayjs/*.js*
 }
 
 package_conversejs-git() {
   pkgdesc='Web-based XMPP/Jabber chat client written in javascript'
 
   cd converse.js
-  install -dm755 "$pkgdir"/usr/share/webapps/converse.js/
+  install -dm755 "$pkgdir"/usr/share/webapps/converse.js/images
   cp -r dist "$pkgdir"/usr/share/webapps/converse.js/
-  cp -r css "$pkgdir"/usr/share/webapps/converse.js/
-  cp -r locale "$pkgdir"/usr/share/webapps/converse.js/
   cp -r sounds "$pkgdir"/usr/share/webapps/converse.js/
-  cp -r fonts "$pkgdir"/usr/share/webapps/converse.js/
+  cp -r images/favicon.ico "$pkgdir"/usr/share/webapps/converse.js/images/
 
   install -Dm644 fullscreen.html "$pkgdir"/usr/share/webapps/converse.js/
 }
