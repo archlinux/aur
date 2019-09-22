@@ -7,7 +7,7 @@ pkgdesc="Alpine Package Keeper - package manager for alpine"
 license=('Apache')
 url="https://pkgs.alpinelinux.org/package/edge/main/x86/apk-tools-static"
 arch=('any')
-source=("apk-tools-static.tgz::http://dl-cdn.alpinelinux.org/alpine/edge/main/${CARCH}/apk-tools-static-${pkgver}-r${pkgrel}.apk"
+source=("apk-tools-static.tgz::http://dl-cdn.alpinelinux.org/alpine/edge/main/$(uname -m)/apk-tools-static-${pkgver}-r${pkgrel}.apk"
 )
 sha512sums=("SKIP")
 
