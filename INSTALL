@@ -1,17 +1,11 @@
-pre_install() {
-  systemctl disable -f --now mousemapper.service || true
-  rm -rf /usr/bin/mousemapper.sh /usr/lib/systemd/system/mousemapper.service"
-}
-
 post_install() {
   systemctl daemon-reload && systemctl enable -f --now mousemapper.service
 }
 
 pre_upgrade() {
   systemctl disable -f --now mousemapper.service || true
-  rm -rf /usr/bin/mousemapper.sh /usr/lib/systemd/system/mousemapper.service"
 }
 
 pre_remove() {
-  systemctl daemon-reload && systemctl disable -f --now mousemapper.service
+  systemctl daemon-reload && systemctl disable -f --now mousemapper.service || true
 }
