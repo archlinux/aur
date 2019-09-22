@@ -6,7 +6,7 @@
 
 _pkgbase=milkytracker
 pkgname=milkytracker-git
-pkgver=v1.0.0.r109.g119b9d7
+pkgver=v1.02.00.r25.gfd607a3
 pkgrel=1
 pkgdesc='Fast Tracker II inspired music tracker'
 arch=('x86_64' 'i686')
@@ -15,8 +15,8 @@ license=('GPL3')
 provides=("$_pkgbase")
 conflicts=("$_pkgbase")
 depends=('sdl2' 'alsa-lib' 'zlib' 'gcc-libs' 'lhasa' 'zziplib' 'rtaudio' 'rtmidi')
-makedepends=('jack-audio-connection-kit' 'gendesk' 'cmake')
-optdepends=('jack-audio-connection-kit: JACK audio support')
+makedepends=('jack' 'gendesk' 'cmake')
+optdepends=('jack: JACK audio support')
 options=('docs' '!strip')
 install="${_pkgbase}.install"
 source=("${_pkgbase}::git+https://github.com/Deltafire/MilkyTracker.git"
