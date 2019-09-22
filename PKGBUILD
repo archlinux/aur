@@ -1,7 +1,7 @@
 # Maintainer: Mohd Lee <faulty.lee+aur@gmail.com>
 # Contributor: Ricardo Band <email@ricardo.band>
 pkgname=storageexplorer
-pkgver=1.9.0
+pkgver=1.10.1
 pkgrel=1
 pkgdesc="Microsoft Azure Storage Explorer is a standalone app from Microsoft that allows you to easily work with Azure Storage data on Windows, macOS and Linux."
 arch=(x86_64)
@@ -10,27 +10,27 @@ license=('unknown')
 depends=('gnome-keyring' 'libgnome-keyring' 'libsecret' 'gconf' 'gcc' 'dotnet-runtime')
 provides=('storageexplorer')
 changelog=
-source=("StorageExplorer-linux-x64.tar.gz::https://go.microsoft.com/fwlink/?LinkId=722418"
+source=("Linux.StorageExplorer.tar.gz::https://github.com/microsoft/AzureStorageExplorer/releases/download/V$pkgver/Linux.StorageExplorer.tar.gz"
         "storageexplorer.desktop")
-sha256sums=('1ae970ff09eb8d5db9cf7e44aae73ae23cfecd399c5285dee1f4d8eac20db287'
+sha256sums=('eb94cced3588cf2a9312a068b94326e4a72078a9ac0012b59200b613c339ba52'
             '0cc2d608894c17d8b3e76f7dd98d73314447d4435a7378d944d4c6ea948d0bf4')
 
 package() {
     install -dm 755 "${pkgdir}/opt/StorageExplorer/"
-    install -m 644 "blink_image_resources_200_percent.pak" "${pkgdir}/opt/StorageExplorer/"
-    install -m 644 "content_resources_200_percent.pak" "${pkgdir}/opt/StorageExplorer/"
-    install -m 644 "content_shell.pak" "${pkgdir}/opt/StorageExplorer/"
+    install -m 644 "chrome_100_percent.pak" "${pkgdir}/opt/StorageExplorer/"
+    install -m 644 "chrome_200_percent.pak" "${pkgdir}/opt/StorageExplorer/"
     install -m 644 "icudtl.dat" "${pkgdir}/opt/StorageExplorer/"
+    install -m 644 "libEGL.so" "${pkgdir}/opt/StorageExplorer/"
     install -m 644 "libffmpeg.so" "${pkgdir}/opt/StorageExplorer/"
-    install -m 644 "libnode.so" "${pkgdir}/opt/StorageExplorer/"
+    install -m 644 "libGLESv2.so" "${pkgdir}/opt/StorageExplorer/"
     cp -r "locales" "${pkgdir}/opt/StorageExplorer/"
     install -m 644 "natives_blob.bin" "${pkgdir}/opt/StorageExplorer/"
-    install -m 644 "pdf_viewer_resources.pak" "${pkgdir}/opt/StorageExplorer/"
     cp -r "resources" "${pkgdir}/opt/StorageExplorer/"
+    install -m 644 "resources.pak" "${pkgdir}/opt/StorageExplorer/"
     install -m 644 "snapshot_blob.bin" "${pkgdir}/opt/StorageExplorer/"
     install -m 755 "StorageExplorer" "${pkgdir}/opt/StorageExplorer/"
-    install -m 644 "ui_resources_200_percent.pak" "${pkgdir}/opt/StorageExplorer/"
-    install -m 644 "views_resources_200_percent.pak" "${pkgdir}/opt/StorageExplorer/"
+    cp -r "swiftshader" "${pkgdir}/opt/StorageExplorer/"
+    install -m 644 "v8_context_snapshot.bin" "${pkgdir}/opt/StorageExplorer/"
 
     install -dm 755 "${pkgdir}/usr/bin"
     ln -s "/opt/StorageExplorer/StorageExplorer" "${pkgdir}/usr/bin/StorageExplorer"
