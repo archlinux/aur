@@ -4,7 +4,7 @@
 pkgname=cross-mips-elf-binutils
 _pkgname=binutils
 _target="mips-elf"
-pkgver=2.28
+pkgver=2.32
 pkgrel=1
 pkgdesc="A set of programs to assemble and manipulate binary and object files for the MIPS architecture"
 url="http://www.gnu.org/software/binutils/"
@@ -12,7 +12,7 @@ arch=('i686' 'x86_64')
 license=('GPL')
 depends=('zlib')
 source=("ftp://ftp.gnu.org/gnu/binutils/${_pkgname}-${pkgver}.tar.bz2")
-sha256sums=('6297433ee120b11b4b0a1c8f3512d7d73501753142ab9e2daa13c5a3edd32a72')
+sha256sums=('de38b15c902eb2725eac6af21183a5f34ea4634cb0bcef19612b50e5ed31072d')
 _sysroot="/usr/lib/cross-${_target}"
 
 prepare() {
