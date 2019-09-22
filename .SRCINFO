@@ -1,0 +1,13 @@
+pkgbase = systemd-efi-pacman-hook
+	pkgdesc = Pacman hook to upgrade Linux EFI after systemd upgrade and Linux.
+	pkgver = 1
+	pkgrel = 1
+	arch = any
+	license = GPL
+	depends = systemd
+	depends = linux
+	source = systemd-efi.hook
+	md5sums = 3dc361232f8ff15126172486e557acb9
+
+pkgname = systemd-efi-pacman-hook
+
