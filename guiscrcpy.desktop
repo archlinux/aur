@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=guiscrcpy
 Comment=GUI for scrcpy
-Exec=python /opt/guiscrcpy/__main__.py
+Exec=python /usr/lib/python3.7/site-packages/guiscrcpy/__main__.py
 Terminal=false
 Icon=/opt/guiscrcpy/ui/guiscrcpy_logo.png
 Type=Application
