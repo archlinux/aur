@@ -1,0 +1,7 @@
+/obfs4proxy-bin-*
+/obfs4proxy-org-*
+/src/
+/pkg/
+pkg/
+src/
+files.tar.xz
