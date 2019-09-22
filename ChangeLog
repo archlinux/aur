@@ -1,3 +1,20 @@
+4.5.16 (2019-09-18 13:45:00)
+
+    Adds IPA file loader (note: ciphered IPA taken from the AppStore will still be ciphered, obviously...),
+    Fixes an issue with contextual right mouse menu not targeting the right document,
+    Fixes memory leaks.
+
+4.5.15 (2019-09-05 12:03:03)
+
+    Fixes an UI issue with right click menu where the target document was not properly selected,
+    Improves the C preprocessor, adding directives like #elif,
+    Adds parsing of extended Objective-C category fields.
+
+4.5.14 (2019-08-13 17:22:09)
+
+    Adds support for Intel HEX file format,
+    Fixes a graphical issue on files with a segment beginning at address 0.
+
 4.5.13 (2019-07-08 15:04:21)
 
     Fixes a crash when using "po" and "expr" LLDB commands in the debugger panel,
