@@ -2,15 +2,15 @@
 
 pkgname=netsurf-fb
 pkgver=3.9
-pkgrel=2
+pkgrel=3
 pkgdesc='Lightweight and fast web browser'
 arch=(x86_64 i686)
 url=https://www.netsurf-browser.org/
 license=(MIT GPL2)
 depends=(curl glibc 'libdom>=0.4.0' libjpeg libnsfb 'libnsutils=0.0.5-4' \
 	libpng libsvgtiny 'libutf8proc>=2.4.0' libwebp openssl)
-makedepends=(check coreutils gcc gzip 'libcss>=0.9.0' 'libnsbmp>=0.1.5' \
-	'libnsgif>=0.2.1' make 'nsgenbind>=0.7' patch words xxd)
+makedepends=(check 'libcss>=0.9.0' 'libnsbmp>=0.1.5' 'libnsgif>=0.2.1' \
+	'nsgenbind>=0.7' words xxd)
 _download_uri=https://download.netsurf-browser.org/netsurf/releases/source
 source=(
 	$_download_uri/netsurf-$pkgver-src.tar.gz
