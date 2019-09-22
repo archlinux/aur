@@ -1,7 +1,7 @@
 pkgbase = systemd-efi-pacman-hook
 	pkgdesc = Pacman hook to upgrade Linux EFI after systemd upgrade and Linux.
 	pkgver = 1
-	pkgrel = 2
+	pkgrel = 3
 	arch = any
 	license = GPL
 	depends = systemd
