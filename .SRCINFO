@@ -1,0 +1,16 @@
+pkgbase = freqtweak-git
+	pkgdesc = Audio Effect Processor and Spectrum Analyzer
+	pkgver = r15.d420533
+	pkgrel = 1
+	url = https://github.com/essej/freqtweak
+	arch = i686
+	arch = x86_64
+	depends = wxgtk
+	depends = fftw
+	depends = jack
+	depends = libsigcpp1.2
+	source = freqtweak-git::git+https://github.com/essej/freqtweak.git
+	sha256sums = SKIP
+
+pkgname = freqtweak-git
+
