@@ -1,7 +1,7 @@
 # Maintainer: Ponas <mykolas.peteraitis@gmail.com>
 pkgname="netctl-tray"
 pkgver=0.1.1
-pkgrel=6
+pkgrel=7
 pkgdesc="A lightweight netctl tray app with notifications"
 arch=('any')
 url="https://github.com/PonasKovas/netctl-tray"
@@ -14,13 +14,13 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/PonasKovas/netctl-tray/
 md5sums=('4086c2f9ffc1cc2c6f0b677424ccd1bd')
 
 build () {
-  cd "$srcdir/$pkgname-master"
+  cd "$srcdir/$pkgname-$pkver"
   RUSTUP_TOOLCHAIN=stable \
     cargo build --release --locked
 }
 
 package() {
-  cd "$srcdir/$pkgname-master"
+  cd "$srcdir/$pkgname-$pkver"
   install -Dm755 target/release/netctl-tray "${pkgdir}/usr/bin/netctl-tray"
   install -Dm755 scripts/netctltray "${pkgdir}/etc/netctl/hooks/netctltray"
   install -d "${pkgdir}/usr/share/netctl-tray/"
