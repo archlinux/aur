@@ -1,6 +1,6 @@
 # Maintainer: dszryan <9117127+dszryan@users.noreply.github.com>
 pkgver=0.1
-pkgname=wayland-mouse-mapper
+pkgname=wayland-mouse-mapper-git
 pkgrel=1
 pkgdesc="Maps mouse buttons to keys in wayland, configured to swap workspaces under gnome"
 url="https://github.com/dszryan/$pkgname"
