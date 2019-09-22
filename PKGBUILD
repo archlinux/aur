@@ -1,4 +1,4 @@
-# Maintainer: Omar Ahmad <omar.squircleart@gmail.com>
+# Maintainer: Omar Emara <mail@OmarEmara.dev>
 pkgname=blender-plugin-animation-nodes-git
 pkgver=2.1.4.r5317.a80fc659
 pkgrel=1
@@ -8,7 +8,6 @@ url="https://github.com/JacquesLucke/animation_nodes"
 license=('GPL')
 depends=('blender' 'python-numpy')
 makedepends=('sed' 'cython')
-conflicts=('blender-plugin-animation-nodes')
 source=('git+https://github.com/JacquesLucke/animation_nodes.git#branch=blender2.8')
 md5sums=('SKIP')
 

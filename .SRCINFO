@@ -9,7 +9,6 @@ pkgbase = blender-plugin-animation-nodes-git
 	makedepends = cython
 	depends = blender
 	depends = python-numpy
-	conflicts = blender-plugin-animation-nodes
 	source = git+https://github.com/JacquesLucke/animation_nodes.git#branch=blender2.8
 	md5sums = SKIP
 
