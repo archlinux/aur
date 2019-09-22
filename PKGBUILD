@@ -91,7 +91,7 @@ package() {
   mv "${guix_publish_default}" "${guix_publish_upstream}"
 
   # Generate default systemd service files from upstream ones by fixing paths
-  local guix_profile_root="/var/guix/profiles/per-user/root/guix-profile"
+  local guix_profile_root="/var/guix/profiles/per-user/root/current-guix"
   sed -e "s|^ExecStart=${guix_profile_root}/bin|ExecStart=/usr/bin|" \
       -e "s|^Description=\(.*\)|Description=\1 (default)|" \
       -e "/^Environment=/d" "${guix_daemon_upstream}" \
