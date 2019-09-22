@@ -12,7 +12,7 @@ arch=('x86_64')
 url='https://www.widevine.com/'
 license=('custom')
 depends=('gcc-libs' 'glib2' 'glibc' 'nspr' 'nss')
-provides=("chromium-widevine-dev=$pkgver" "vivaldi-widevine=$pkgver")
+provides=("chromium-widevine-dev=$pkgver")
 conflicts=('chromium-widevine-dev')
 options=('!strip')
 source=("chrome-eula_text-$_license_date.html::https://www.google.com/intl/en/chrome/privacy/eula_text.html"
