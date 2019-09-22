@@ -14,13 +14,13 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/PonasKovas/netctl-tray/
 md5sums=('4086c2f9ffc1cc2c6f0b677424ccd1bd')
 
 build () {
-  cd "$srcdir/$pkgname-$pkver"
+  cd "$srcdir/$pkgname-$pkgver"
   RUSTUP_TOOLCHAIN=stable \
     cargo build --release --locked
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkver"
+  cd "$srcdir/$pkgname-$pkgver"
   install -Dm755 target/release/netctl-tray "${pkgdir}/usr/bin/netctl-tray"
   install -Dm755 scripts/netctltray "${pkgdir}/etc/netctl/hooks/netctltray"
   install -d "${pkgdir}/usr/share/netctl-tray/"
