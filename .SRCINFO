@@ -18,7 +18,7 @@ pkgbase = persepolis
 	depends = sound-theme-freedesktop
 	depends = youtube-dl
 	depends = ffmpeg
-	optdepends = adwaita-qt5: for using adwaita style in GTK based Desktops.
+	optdepends = adwaita-qt: for using adwaita style in GTK based Desktops.
 	source = persepolis-3.2.0.tar.gz::https://github.com/persepolisdm/persepolis/archive/3.2.0.tar.gz
 	sha256sums = d27cf2a4e02b0fbe79b1903ca0ab32a6007493d51a8201443a8febb566750acd
 
