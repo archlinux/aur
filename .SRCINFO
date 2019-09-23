@@ -8,6 +8,7 @@ pkgbase = darkmod
 	license = BSD
 	license = CCPL
 	makedepends = git
+	makedepends = unzip
 	depends = curl
 	depends = glew
 	depends = libjpeg-turbo

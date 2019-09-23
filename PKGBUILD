@@ -17,7 +17,7 @@ source=("git+${SourcePath}.git")
 md5sums=("SKIP")
 
 depends=("curl" "glew" "libjpeg-turbo" "libpng" "libpng12" "libpulse" "libxxf86vm" "openal")
-makedepends=("git")
+makedepends=("git" "unzip")
 
 
 build () {
