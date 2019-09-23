@@ -1,6 +1,6 @@
 pkgbase = fmit
 	pkgdesc = Free Music Instrument Tuner
-	pkgver = 1.2.6
+	pkgver = 1.2.13
 	pkgrel = 1
 	url = https://github.com/gillesdegottex/fmit
 	arch = i686
@@ -13,8 +13,8 @@ pkgbase = fmit
 	depends = qt5-svg
 	depends = portaudio
 	depends = hicolor-icon-theme
-	source = fmit-1.2.6.tar.gz::https://github.com/gillesdegottex/fmit/archive/v1.2.6.tar.gz
-	sha512sums = 4ed6be980a433fa247b05de4913774b939c7da4191d98331991ad0fbe37bc62b17f4a052f1d510fe1b4d02c7c429f006398b1b0563564c35313cb4e38be5c6b3
+	source = fmit-1.2.13.tar.gz::https://github.com/gillesdegottex/fmit/archive/v1.2.13.tar.gz
+	sha512sums = 2d4b48632f45d643d29d79f6cb978aa647b16e4236bf5f6297716d6fb7b8a47a9268a5b3c718c3f7e914d6b372df7e74575673798190fa581e70818b0128340f
 
 pkgname = fmit
 
