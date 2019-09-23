@@ -1,3 +1,4 @@
+# Last Packager: liolok <aur@liolok.com>
 # Maintainer: Thanos Apostolou <thanosapostolou@outlook.com>
 
 pkgname=gnome-shell-extension-custom-hot-corners
