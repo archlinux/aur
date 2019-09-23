@@ -4,7 +4,7 @@ pkgname="truepolyglot"
 pkgdesc="Create polyglot files that are valid PDF and ZIP at the same time. See POC||GTFO 07."
 
 pkgver=1.6.2
-pkgrel=2
+pkgrel=3
 
 arch=("any")
 url="https://github.com/ansemjo/$pkgname"
@@ -17,11 +17,11 @@ provides=($pkgname)
 conflicts=($pkgname)
 
 # temporary patch until setup.py is merged upstream
-commit="de76ac3bb1d9a3fc5c5009d1059f7bcd21355c00"
+commit="3940758a9e70c9670865e307b015216c3383c63a"
 source=("${url}/archive/${commit}.tar.gz")
 
 #source=("${url}/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=("eb8a392b0e401eb41fca8a3061afb7d7d05f9a1615715178dd1d48e756b0022c")
+sha256sums=("fa5018eedef9831a039116845df6e2b20be8e71992e12e56def02d87ff27be69")
 
 build() {
   #cd "${pkgname}-${pkgver}"
