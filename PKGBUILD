@@ -9,7 +9,7 @@ license=("GPLv3")
 depends=("python" "python-requests")
 makedepends=("python-setuptools" "python-requests")
 source=("https://gitlab.com/cryzed/hydrus-api/-/archive/v${pkgver}/hydrus-api-v${pkgver}.tar.gz")
-sha512sums=('a5b35bcde34de65fa690a199cc653540607fbf6728bfc001305584562f636c3156537d7b0edee55617cdda6ae914f5fff532cbf588d1fe043c0d0f3edb328af8')
+sha512sums=('2dfa60b06925c6103e98eade00387e73d56e0caac3bf101fa2196f227a559e78a678cdc9ebb2234eedd8c06dee5c02f79e635fa9dcd6744f643168c7470b4b60')
 
 build() {
     cd "${srcdir}/hydrus-api-v${pkgver}"
