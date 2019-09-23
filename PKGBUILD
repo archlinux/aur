@@ -6,7 +6,7 @@ conflicts=("${pkgname}")
 
 arch=("x86_64")
 pkgver=2.07.1.1569189034
-pkgrel=2
+pkgrel=3
 
 pkgdesc="First person forgery stealth game"
 license=("GPL3" "BSD" "CCPL")
