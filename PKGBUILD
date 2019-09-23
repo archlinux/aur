@@ -1,7 +1,7 @@
 # Maintainer: Nick Skelsey <nskelsey+zz@gmail.com>
 pkgname=zeek
-pkgver=3.1.0.112
-pkgrel=6
+pkgver=3.1.0.dev131.g916491e2b
+pkgrel=1
 pkgdesc="A network analysis framework"
 arch=('x86_64')
 url="https://www.zeek.org/index.html"
@@ -11,6 +11,10 @@ makedepends=("cmake")
 source=("git+https://github.com/zeek/zeek")
 md5sums=("SKIP")
 
+pkgver() {
+    cd "$srcdir/zeek"
+    git describe --always | sed 's/^v//;s/dev-/dev/;s/-/./g'
+}
 
 build() {
     cd "$srcdir/zeek"

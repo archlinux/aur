@@ -1,7 +1,7 @@
 pkgbase = zeek
 	pkgdesc = A network analysis framework
-	pkgver = 3.1.0.112
-	pkgrel = 6
+	pkgver = 3.1.0.dev131.g916491e2b
+	pkgrel = 1
 	url = https://www.zeek.org/index.html
 	arch = x86_64
 	license = BSD
