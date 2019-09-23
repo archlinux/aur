@@ -2,8 +2,8 @@
 # Contributor: Bennett Piater <bennett at piater dot name>
 
 pkgname=doctl
-pkgver=1.30.0
-pkgrel=3
+pkgver=1.31.2
+pkgrel=1
 pkgdesc='A command line tool for DigitalOcean services'
 arch=('i686' 'x86_64')
 url='https://github.com/digitalocean/doctl'
@@ -15,7 +15,6 @@ source=("git+https://github.com/digitalocean/${pkgname}.git")
 prepare() {
   cd "${srcdir}/${pkgname}"
   git checkout "v${pkgver}"
-  git checkout master scripts/_build.sh
 }
 
 build() {
