@@ -1,0 +1,14 @@
+pkgbase = zkl
+	pkgdesc = The zkl programming language
+	pkgver = 1.14.3
+	pkgrel = 1
+	url = http://www.zenkinetic.com/zkl.html
+	arch = any
+	license = zlib/libpng
+	makedepends = unzip
+	makedepends = clang
+	source = zkl_vm_src.zip::http://www.zenkinetic.com/Documents/zkl_vm_src.zip
+	md5sums = 27bba465bf1004d132e2a911f89f3ec9
+
+pkgname = zkl
+
