@@ -1,6 +1,6 @@
 # Maintainer: Ben Edwards <ben@artfuldodge.io>
 pkgname=web3j
-pkgver=4.2.0
+pkgver=4.5.4
 pkgrel=1
 pkgdesc='A lightweight, reactive, type safe Java and Android library for integrating with nodes on Ethereum blockchains'
 arch=('any')
@@ -11,7 +11,7 @@ source=('web3j'
         "https://github.com/web3j/web3j/releases/download/v${pkgver}/web3j-${pkgver}.tar"
         "https://github.com/web3j/web3j/releases/download/v${pkgver}/web3j-${pkgver}.tar.asc")
 sha256sums=('410a2c96c3dfcf1db1a3db0de346e25334b7b8b817bece714559845f21a65a57'
-            'c01532cc5937007a7df1b2074972cb44b4ebeb4f32b923cca3c009b10b57049d'
+            'cf3247890be08a56f439da7e48ae36a9ef57ee829e70b4d34a469f6f59b393c5'
             'SKIP')
 validpgpkeys=('8756C4F765C9AC3CB6B85D62379CE192D401AB61')
 package() {
