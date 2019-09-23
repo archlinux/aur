@@ -20,11 +20,17 @@ depends=(
 )
 conflicts=('pristine-tar-git')
 checkdepends=('shunit2' 'diffoscope')
-source=(http://ftp.debian.org/debian/pool/main/p/${pkgname}/${pkgname}_${pkgver}.tar.xz)
-sha256sums=('97e5ddcc3e59f7956c9ace6b73beebb8854411c2978a9c106c806696a509a2a1')
+source=(
+  http://ftp.debian.org/debian/pool/main/p/${pkgname}/${pkgname}_${pkgver}.tar.xz
+  remove-sys-cpuaffinity-dep.patch
+)
+sha256sums=('97e5ddcc3e59f7956c9ace6b73beebb8854411c2978a9c106c806696a509a2a1'
+            '0c7a2f1c941c7f3b9acb7219822ffda62df8beea5059f8ccc403a43d6cb83b52')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
+
+  patch -p1 < "$startdir/remove-sys-cpuaffinity-dep.patch"
 
   export PATH=/usr/bin/core_perl:$PATH
 

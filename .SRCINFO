@@ -16,7 +16,9 @@ pkgbase = pristine-tar
 	depends = xz
 	conflicts = pristine-tar-git
 	source = http://ftp.debian.org/debian/pool/main/p/pristine-tar/pristine-tar_1.47.tar.xz
+	source = remove-sys-cpuaffinity-dep.patch
 	sha256sums = 97e5ddcc3e59f7956c9ace6b73beebb8854411c2978a9c106c806696a509a2a1
+	sha256sums = 0c7a2f1c941c7f3b9acb7219822ffda62df8beea5059f8ccc403a43d6cb83b52
 
 pkgname = pristine-tar
 

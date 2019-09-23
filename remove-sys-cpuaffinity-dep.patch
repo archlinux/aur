@@ -1,0 +1,26 @@
+--- a/pristine-xz
++++ b/pristine-xz
+@@ -80,7 +80,6 @@ use Pristine::Tar::Delta;
+ use Pristine::Tar::Formats;
+ use File::Basename qw/basename/;
+ use IO::Handle;
+-use Sys::CpuAffinity;
+ 
+ my @supported_xz_programs = qw(xz pixz);
+ 
+@@ -255,12 +254,9 @@ sub predict_xz_args {
+     # xz writes sizes in block headers if and only if run with multiple threads
+     # (even when --block-size or --block-list is specified)
+     if ($xz->{summary}->{size_in_blocks} eq 'yes') {
+-      # All -T values >1 produce the same output.
+-      # 0 behaves the same as 1 on single core systems.
+-      # Use as many threads as we have CPU affinities, with a minimum of 2.
+-      my @affinities = Sys::CpuAffinity::getAffinity($$);
+-      my $threads = @affinities > 2 ? @affinities : 2;
+-      push @$common, "-T$threads";
++      # Note: All values >1 produce the same output.
++      #       Careful, 0 behaves the same as 1 on single core systems.
++      push @$common, '-T2'
+     }
+   }
+   my $possible_args = [];
