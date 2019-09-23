@@ -33,7 +33,7 @@ source=(AMDVLK-$pkgname-$pkgver.tar.gz::https://github.com/GPUOpen-Drivers/AMDVL
         SPIRV-Tools-$pkgname-$pkgver.tar.gz::https://github.com/KhronosGroup/SPIRV-Tools/archive/${_spirvtools_commit}.tar.gz
         glslang-$pkgname-$pkgver.tar.gz::https://github.com/KhronosGroup/glslang/archive/${_glslang_commit}.tar.gz
         SPIRV-Headers-$pkgname-$pkgver.tar.gz::https://github.com/KhronosGroup/SPIRV-Headers/archive/${_spirvheaders_commit}.tar.gz
-        MetroHash-$pkgname-$pkgver.tar.gz::https://github.com/GPUOpen-Drivers/metrohash/archive/${_metrohash_commit}.tar.gz
+        MetroHash-$pkgname-$pkgver.tar.gz::https://github.com/GPUOpen-Drivers/MetroHash/archive/${_metrohash_commit}.tar.gz
         CWPack-$pkgname-$pkgver.tar.gz::https://github.com/GPUOpen-Drivers/CWPack/archive/${_cwpack_commit}.tar.gz)
   
 sha256sums=('383d43ddcff3295bb8dc85bce2a376fbde9f2aa3535be9e4dbf67f745c40ff41'
@@ -58,7 +58,7 @@ prepare() {
   ln -sf ${srcdir}/SPIRV-Tools-${_spirvtools_commit} ${srcdir}/spvgen/external/SPIRV-tools
   ln -sf ${srcdir}/SPIRV-Headers-${_spirvheaders_commit} ${srcdir}/spvgen/external/SPIRV-tools/external/SPIRV-Headers
   ln -sf ${srcdir}/glslang-${_glslang_commit} ${srcdir}/spvgen/external/glslang
-  ln -sf ${srcdir}/MetroHash-${_metrohash_commit} ${srcdir}/metrohash
+  ln -sf ${srcdir}/MetroHash-${_metrohash_commit} ${srcdir}/MetroHash
   ln -sf ${srcdir}/CWPack-${_metrohash_commit} ${srcdir}/CWPack
 
   #remove -Werror to build with gcc9 
@@ -71,7 +71,7 @@ build() {
   cmake -H. -Bbuilds/Release64 \
     -DCMAKE_BUILD_TYPE=Release \
     -DBUILD_WAYLAND_SUPPORT=On \
-    -DXGL_METROHASH_PATH=${srcdir}/metrohash \
+    -DXGL_METROHASH_PATH=${srcdir}/MetroHash \
     -DXGL_CWPACK_PATH=${srcdir}/CWPack \
     -G Ninja
     
