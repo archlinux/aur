@@ -8,12 +8,12 @@
 
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-rt-lts       # Build kernel with a different name
-_pkgver=4.19.59
-_rtpatchver=rt24
+_pkgver=4.19.72
+_rtpatchver=rt25
 pkgver=${_pkgver}_${_rtpatchver}
 pkgrel=1
 arch=('x86_64')
-url="https://git.archlinux.org/linux.git/log/?h=v$_srcver"
+url="https://wiki.linuxfoundation.org/realtime/start"
 license=('GPL2')
 makedepends=('bc' 'git' 'inetutils' 'kmod' 'libelf' 'xmlto')
 options=('!strip')
@@ -38,13 +38,13 @@ validpgpkeys=(
   '5ED9A48FC54C0A22D1D0804CEBC26CDB5A56DE73'  # Steven Rostedt
   'E644E2F1D45FA0B2EAA02F33109F098506FF0B14'  # Thomas Gleixner
 )
-sha256sums=('b8b41825d439de0587031eb8c659c5eb4970a5be5bfda1868661016c52c8b35b'
+sha256sums=('f9fcb6b3bd29115ac55fc154e300c3dce2044502732f6842ad6c25e6f9f51f6d'
             'SKIP'
-            '59756ebd634a951a8f74c3639257439104aaea2c635485c15f775d526b70fa64'
+            'ef5150a4c30c0342bf5e21e3ed8832a688ee6d871e1017ff43f46eb51aaa9453'
             'SKIP'
             '75aa8dd708ca5a0137fbf7cddc9cafefe6aac6b8e0638c06c156d412d05af4bc'
             '67aed9742e4281df6f0bd18dc936ae79319fee3763737f158c0e87a6948d100d'
-            'c0b43b9a7090edaea7b003fcd4ca66de70cb4123c52311587c9f587e8814835b'
+            'e5a6ac3346c359353b3a7491bb77637870328a4bf3f3d57bf434a29b72632600'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
