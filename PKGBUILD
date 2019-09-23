@@ -25,7 +25,7 @@ source=(AMDVLK-$pkgname-$pkgver.tar.gz::https://github.com/GPUOpen-Drivers/AMDVL
         xgl-$pkgname-$pkgver.tar.gz::https://github.com/GPUOpen-Drivers/xgl/archive/${_xgl_commit}.tar.gz
         pal-$pkgname-$pkgver.tar.gz::https://github.com/GPUOpen-Drivers/pal/archive/${_pal_commit}.tar.gz
         llvm-$pkgname-$pkgver.tar.gz::https://github.com/GPUOpen-Drivers/llvm/archive/${_llvm_commit}.tar.gz
-        MetroHash-$pkgname-$pkgver.tar.gz::https://github.com/GPUOpen-Drivers/metrohash/archive/${_metrohash_commit}.tar.gz
+        MetroHash-$pkgname-$pkgver.tar.gz::https://github.com/GPUOpen-Drivers/MetroHash/archive/${_metrohash_commit}.tar.gz
         CWPack-$pkgname-$pkgver.tar.gz::https://github.com/GPUOpen-Drivers/CWPack/archive/${_cwpack_commit}.tar.gz)
   
 sha256sums=('383d43ddcff3295bb8dc85bce2a376fbde9f2aa3535be9e4dbf67f745c40ff41'
@@ -42,7 +42,7 @@ prepare() {
   ln -sf ${srcdir}/pal-${_pal_commit} ${srcdir}/pal
   ln -sf ${srcdir}/llpc-${_llpc_commit} ${srcdir}/llpc
   ln -sf ${srcdir}/llvm-${_llvm_commit} ${srcdir}/llvm
-  ln -sf ${srcdir}/MetroHash-${_metrohash_commit} ${srcdir}/metrohash
+  ln -sf ${srcdir}/MetroHash-${_metrohash_commit} ${srcdir}/MetroHash
   ln -sf ${srcdir}/CWPack-${_metrohash_commit} ${srcdir}/CWPack
   
   #remove -Werror to build with gcc9 
@@ -60,7 +60,7 @@ build() {
     -DLLVM_TARGET_ARCH:STRING=i686 \
     -DLLVM_DEFAULT_TARGET_TRIPLE="i686-pc-linux-gnu" \
     -DBUILD_WAYLAND_SUPPORT=On \
-    -DXGL_METROHASH_PATH=${srcdir}/metrohash \
+    -DXGL_METROHASH_PATH=${srcdir}/MetroHash \
     -DXGL_CWPACK_PATH=${srcdir}/CWPack \
     -G Ninja
     
