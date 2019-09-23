@@ -15,7 +15,7 @@ md5sums=("SKIP")
 build() {
     cd "$srcdir/zeek"
     git submodule update --init --recursive
-    ./configure --disable-auxtools --disable-python --disable-broker-tests --disable-zeekctl
+    ./configure --prefix=/usr --disable-auxtools --disable-python --disable-broker-tests --disable-zeekctl
     make
 }
 
