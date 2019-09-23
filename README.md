@@ -20,6 +20,7 @@ Just keep in mind that this tool is not to promote illegal downloading or illega
 
 <h2>Versions</h2>
 <ul>
+  <li>2.0.6 – Bug fix with database packetsize (Replace Chars) and some minor other bug fixes</li>
   <li>2.0.5 – Bug fix similar named files<br>
   <li>2.0.4 – Bug fixes and some new features<br>
     – Fixed counter bug in list found episodes<br>
