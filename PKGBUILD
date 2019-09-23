@@ -1,7 +1,7 @@
 # Maintainer: Bruce Zhang
 pkgname=gridea
 pkgver=0.8.3
-pkgrel=1
+pkgrel=2
 pkgdesc="静态博客写作客户端"
 arch=('x86_64' 'i686')
 url="https://gridea.dev/"
@@ -13,7 +13,7 @@ sha256sums=('9105e8843759f3ab63460b3fd503bf519444930b0a5db4d760e4388d33cf309d')
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver"
-    electronDist="\/usr\/lib\/electron4"
+    electronDist="\/usr\/lib\/electron"
     sed -i "/asar: false,/c\asar: false,linux: {target: ['dir']}, electronDist: '$electronDist'," vue.config.js
     yarn
 }
