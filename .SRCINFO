@@ -78,4 +78,3 @@ pkgname = pamac-tray-appindicator-src
 	provides = pamac-tray-appindicator=9.0.0rc
 	conflicts = pamac-tray-appindicator
 	conflicts = pamac-tray-appindicator-git
-
