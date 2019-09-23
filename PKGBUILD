@@ -10,7 +10,14 @@ pkgdesc="Tool to regenerate a pristine upstream tarball using only a small binar
 arch=('i686' 'x86_64')
 url="https://salsa.debian.org/debian/pristine-tar"
 license=('GPL')
-depends=('perl' 'xdelta' 'xdelta3')
+depends=(
+  pbzip2
+  perl
+  pixz
+  xdelta
+  xdelta3
+  xz
+)
 conflicts=('pristine-tar-git')
 checkdepends=('shunit2' 'diffoscope')
 source=(http://ftp.debian.org/debian/pool/main/p/${pkgname}/${pkgname}_${pkgver}.tar.xz)
