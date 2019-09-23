@@ -1,0 +1,14 @@
+pkgbase = borg-import-git
+	pkgdesc = Import backups from some other backup software into borg
+	pkgver = 1
+	pkgrel = 1
+	url = https://borgbackup.github.io/
+	arch = x86_64
+	license = BSD
+	depends = borg
+	depends = fakeroot
+	source = borg-import::git+https://github.com/borgbackup/borg-import.git
+	sha256sums = SKIP
+
+pkgname = borg-import-git
+
