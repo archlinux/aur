@@ -8,7 +8,7 @@ pkgbase = gtk-theme-inspire-ui
 	depends = gtk3
 	depends = gtk-engine-murrine
 	source = https://github.com/feren-OS/Inspire-Icon-Theme/archive/master.zip
-	md5sums = 42bce84947876e9370f320370e74adc8
+	md5sums = ecf732c38eeeb7bc6117751f1002005c
 
 pkgname = gtk-theme-inspire-ui
 
