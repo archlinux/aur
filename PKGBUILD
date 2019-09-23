@@ -20,7 +20,7 @@ depends=(
 	'python-yaml'
 	'python-decorator'
 	'python-censys'
-	'python-gevents'
+	'python-gevent'
 	'python-grequests'
 )
 makedepends=('git' 'bash')
