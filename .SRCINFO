@@ -1,7 +1,7 @@
 pkgbase = mackerel-check-plugins-git
 	pkgdesc = Check Plugins for monitoring written in golang
 	pkgver = 0.31.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mackerelio/go-check-plugins
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,6 @@ pkgbase = mackerel-check-plugins-git
 	license = Apache
 	makedepends = git
 	makedepends = go
-	makedepends = jq
 	provides = mackerel-check-plugins
 	conflicts = mackerel-check-plugins
 	source = mackerel-check-plugins-git::git+https://github.com/mackerelio/go-check-plugins.git
