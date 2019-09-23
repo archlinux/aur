@@ -1,6 +1,6 @@
 pkgbase = parsedmarc
 	pkgdesc = Python package and CLI for parsing aggregate and forensic DMARC reports
-	pkgver = 6.5.4
+	pkgver = 6.6.1
 	pkgrel = 1
 	url = https://domainaware.github.io/parsedmarc
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = parsedmarc
 	depends = python-urllib3<1.25
 	depends = python-urllib3>=1.21.1
 	depends = python-requests>=2.2.16.0
-	depends = python-publicsuffix2
+	depends = python-publicsuffix2>=2.20190812
 	depends = python-xmltodict>=0.12.0
 	depends = python-geoip2>=2.9.0
 	depends = python-imapclient>=2.1.0
@@ -25,23 +25,22 @@ pkgbase = parsedmarc
 	depends = python-elasticsearch-dsl<7.0.0
 	depends = python-elasticsearch-dsl>=6.3.1
 	depends = python-kafka>=1.4.4
-	depends = python-mailsuite>=1.1.0
-	depends = python-nose
-	depends = python-pygments
-	depends = flake8
-	depends = python-collective-checkdocs
-	depends = python-jinja
-	depends = python-packaging
-	depends = python-imagesize
-	depends = python-sphinx-alabaster-theme
-	depends = python-babel
+	depends = python-mailsuite>=1.3.0
+	depends = python-nose>=1.3.7
+	depends = flake8>=3.7.8
+	depends = python-collective-checkdocs>=0.2
+	depends = python-jinja>=2.10.1
+	depends = python-packaging>=19.1
+	depends = python-imagesize>=1.1.0
+	depends = python-sphinx-alabaster-theme>=0.7.12
+	depends = python-babel>=2.7.0
 	depends = rstcheck>=3.3.1
-	depends = python-sphinx
-	depends = python-sphinx_rtd_theme
-	depends = python-wheel
-	depends = python-codecov
-	source = parsedmarc-6.5.4.tar.gz::https://github.com/domainaware/parsedmarc/archive/6efec4e6334bff28f7fd4ee89932d08307a70289.tar.gz
-	sha512sums = a8ef754b9838c794afcffbf35620f48f83bf6aa7ebab1f2521bcc26cd481ae9761d80333fa2a67462993d1c30bc76293acf44ec2908b82390def1bd8a442070e
+	depends = python-sphinx>=1.0.5
+	depends = python-sphinx_rtd_theme>=0.4.3
+	depends = python-wheel>=0.33.6
+	depends = python-codecov>=2.0.15
+	source = parsedmarc-6.6.1.tar.gz::https://github.com/domainaware/parsedmarc/archive/7d7a3e0919bbe32aad59e516b4b0dd6ec9fdfc15.tar.gz
+	sha512sums = e2e074fd3b076ce1f5069e339e51b0db305fb6184c67b69aaa185f5ff10310eb2b103fdd8ce123d72dfe020b6646f146526ff8c4574f6095daeb950b16e6ac4f
 
 pkgname = parsedmarc
 
