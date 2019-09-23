@@ -3,9 +3,9 @@
 # Helpful url: https://radarr.aeonlucid.com/v1/update/aphrodite/changes?os=linux
 
 pkgname="radarr-aphrodite"
-pkgver="2.0.0.2051"
-_shortstupidfuckingrandomnumber="53"
-_longstupidfuckingrandomnumber="7287C0FED16AEEDAA3ECB82696C3F79CFB00946FB9C80D779AD686783B5FCC1502"
+pkgver="2.0.0.2067"
+_shortstupidfuckingrandomnumber="69"
+_longstupidfuckingrandomnumber="47116811CBA99DF4745DB93CEFACE597A880B304997912A478F943CBF6C145D602"
 pkgrel=1
 pkgdesc="Movie download automation for usenet and torrents."
 arch=(any)
@@ -30,7 +30,7 @@ source=("Radarr.aphrodite.${pkgver}.linux.tar.gz::https://dev.azure.com/Radarr/R
         'radarr.tmpfiles'
         'radarr.sysusers')
 
-sha512sums=('411ec4312600369c410074a83aec050259c0d1eabb66a52104df6ad31a8e2a465af258d5782155da069e1905ae0530d69c328f8b8d62535eb4ac41f4a41ea664'
+sha512sums=('b72ef35a1d25dc3798d9da5bc611d045f61955a65ae44fc9d53f7a090824db998c38c54f192cc6945309ae064c1fd8e75d789b56c14d8007344aaee76e8de4af'
             '4c064051c7592529a7ed41c4fdd6381b5e9ace938608f9e271aa4126194db456e85b7602d8e13718efcc4c40d66f82a338199cb6fd924177ad23154090e48da3'
             'e0d55353f0bf89f826eb7eb9ee26c3e3f38bd46a8884135139536ae220c0c531d5df486bc3b50f580679f9607bb4b7bfb9f29998609dc966fbfb8e1809834650'
             'c1ee3925eced182ea7fffa55a6dc2a4e099ccf18636fc237ef0a2fc9517a38cfc2a819ae5a7bc546b63e383506f9f47e89454a71e34106c579d7454d71b2299e')
