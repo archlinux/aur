@@ -1,6 +1,12 @@
 # Maintainer: David Birks <david@tellus.space>
 # Contributor: Tobias Frilling <tobias@frilling-online.de>
 # Contributor: Joseph Kern <timetrap AT gmail DOT com>
+# package modding by g99
+
+
+#   ./utimer -t 3       #  will show a 3 seconds countdown.  for whoever needing such stuff
+
+
 
 pkgname=utimer
 pkgver=0.4

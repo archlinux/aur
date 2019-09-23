@@ -1,0 +1,28 @@
+Usage:
+  utimer [OPTION…] [ARGUMENTS] - command-line "timer" which features a timer, a countdown and a stopwatch
+
+ µTimer (or "utimer", pronounced as "micro-timer") is a multifunction timer (command-line only).
+
+ The main features are:
+	- a timer (e.g. count from 0 to 4 minutes),
+	- a countdown (e.g. count from 10 minutes down to 0),
+	- a stopwatch.
+
+ µTimer always exits after the timer or countdown are done counting. This can be useful for using countdowns in scripts, for example. The stopwatch, which is not concerned, needs to be stopped manually using 'q'.
+
+Help Options:
+  -h, --help                     Show help options
+
+Application Options:
+  -t, --timer=TIMELENGTH         count from 0 to TIMELENGTH and then exit (e.g. utimer -t 31m27s300ms)
+  -c, --countdown=TIMELENGTH     count from TIMELENGTH down to 0 and exit (e.g. utimer -c 30d9h50s)
+  -s, --stopwatch                start the stopwatch. Use 'Q' key to quit
+  -v, --verbose                  Verbose output
+  -q, --quiet                    Quiet output
+  --quit-with-success            When hitting 'q' to end the program, exit with a SUCCESS exit status (0)
+  -L, --limits                   Show the limits of µTimer (Maximum time length, Accuracy...)
+  --version                      Display the current version of µTimer
+  -d, --debug                    Debug output
+
+
+Report any bug to: https://bugs.launchpad.net/utimer (bugs@utimer.codealpha.net)
