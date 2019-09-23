@@ -1,0 +1,16 @@
+pkgbase = joycond-git
+	pkgdesc = Userspace daemon to combine joy-cons from the hid-joycon kernel driver
+	pkgver = r31.a7dcddd
+	pkgrel = 1
+	url = https://github.com/DanielOgorchock/joycond
+	arch = any
+	license = GPL3
+	makedepends = cmake
+	makedepends = git
+	provides = joycond-git
+	conflicts = joycond-git
+	source = git+https://github.com/DanielOgorchock/joycond.git
+	md5sums = SKIP
+
+pkgname = joycond-git
+
