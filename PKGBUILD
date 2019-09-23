@@ -1,7 +1,7 @@
 # Maintainer: Julien Savard <juju@juju2143.ca>
 pkgname=x16-docs-git
-pkgver=r32.2f77157
-pkgrel=2
+pkgver=r33.6fee76f
+pkgrel=1
 pkgdesc="Documentation not found in other packages for The 8-Bit Guy's Commander X16"
 arch=('any')
 url="http://commanderx16.com/"
@@ -18,8 +18,10 @@ options=()
 install=
 changelog=
 source=("git+https://github.com/commanderx16/x16-docs.git"
-	"https://raw.githubusercontent.com/commanderx16/x16-emulator/master/github-pandoc.css")
+	"https://raw.githubusercontent.com/commanderx16/x16-emulator/master/github-pandoc.css"
+	"https://raw.githubusercontent.com/commanderx16/x16-emulator/master/mdtohtml.lua")
 md5sums=('SKIP'
+         'SKIP'
          'SKIP')
 
 pkgver() {
@@ -29,7 +31,7 @@ pkgver() {
 
 build() {
 	cd "${pkgname%-git}"
-	pandoc --from gfm --to html -c github-pandoc.css --standalone --metadata pagetitle="Commander X16 Programmer's Reference Guide" Commander\ X16\ Programmer\'s\ Reference\ Guide.md --output Programmer\'s\ Reference\ Guide.html
+	pandoc --from gfm --to html -c github-pandoc.css --standalone --metadata pagetitle="Commander X16 Programmer's Reference Guide" Commander\ X16\ Programmer\'s\ Reference\ Guide.md --output Programmer\'s\ Reference\ Guide.html --lua-filter=../mdtohtml.lua
 	pandoc --from gfm --to html -c github-pandoc.css --standalone --metadata pagetitle="VERA Programmer's Reference.md" VERA\ Programmer\'s\ Reference.md --output VERA\ Programmer\'s\ Reference.html
 }
 
