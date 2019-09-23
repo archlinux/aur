@@ -1,7 +1,7 @@
 pkgbase = pamac
 	pkgdesc = A Package Manager based on libalpm with AUR and Appstream support
-	pkgver = 8.0.4
-	pkgrel = 7
+	pkgver = 9.0.0rc
+	pkgrel = 1
 	url = https://gitlab.manjaro.org/applications/pamac
 	arch = x86_64
 	license = GPL3
@@ -26,10 +26,8 @@ pkgbase = pamac
 	depends = archlinux-appstream-data
 	depends = git
 	options = !emptydirs
-	source = pamac-8.0.4-7.tar.gz::https://gitlab.manjaro.org/applications/pamac/-/archive/fab7bdaa96e4d29f2b2581d97e5e54cb965d6f42/pamac-common-fab7bdaa96e4d29f2b2581d97e5e54cb965d6f42.tar.gz
-	source = vala-compat.patch::https://gitlab.manjaro.org/applications/pamac/commit/fddd7715e23a7199db9498cfee2efecad62074ef.patch
-	sha256sums = 298e6695ca937040c2af55dddf39a447eb66b14891c1d261ce9a784d5152fd18
-	sha256sums = 98b06d11dbf5d63d3982c9c155f3d3eefa5dbbd003be31549f13b92dc194cb71
+	source = pamac-9.0.0rc-1.tar.gz::https://gitlab.manjaro.org/applications/pamac/-/archive/cf51d1aa15419589c24405e3eb593328ea0b914e/pamac-common-cf51d1aa15419589c24405e3eb593328ea0b914e.tar.gz
+	sha256sums = 6c67cb09dc401e13d1ba01db2671cdbbc28782f0e29e105d72d283c686edeb35
 
 pkgname = pamac-common
 	install = pamac-common.install
@@ -46,7 +44,7 @@ pkgname = pamac-common
 	depends = appstream-glib
 	depends = archlinux-appstream-data
 	depends = git
-	provides = pamac-common=8.0.4
+	provides = pamac-common=9.0.0rc
 	conflicts = pamac<=7.3.4-2
 	conflicts = pamac-aur
 	conflicts = pamac-common
@@ -54,7 +52,7 @@ pkgname = pamac-common
 
 pkgname = pamac-cli-src
 	depends = pamac-common
-	provides = pamac-cli=8.0.4
+	provides = pamac-cli=9.0.0rc
 	conflicts = pamac<=7.3.4-2
 	conflicts = pamac-aur
 	conflicts = pamac-cli
@@ -65,9 +63,9 @@ pkgname = pamac-gtk
 	depends = vte3>=0.38
 	depends = gtk3>=3.22
 	depends = pamac-tray-appindicator-src
-	provides = pamac=8.0.4-7
-	provides = pamac=8.0.4-7
-	provides = pamac-gtk=8.0.4
+	provides = pamac=9.0.0rc-1
+	provides = pamac=9.0.0rc-1
+	provides = pamac-gtk=9.0.0rc
 	conflicts = pamac
 	conflicts = pamac-aur
 	conflicts = pamac-gtk
@@ -77,7 +75,7 @@ pkgname = pamac-tray-appindicator-src
 	pkgdesc = Tray icon using appindicator which fits better in KDE
 	depends = pamac-gtk
 	depends = libappindicator-gtk3
-	provides = pamac-tray-appindicator=8.0.4
+	provides = pamac-tray-appindicator=9.0.0rc
 	conflicts = pamac-tray-appindicator
 	conflicts = pamac-tray-appindicator-git
 

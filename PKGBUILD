@@ -5,10 +5,10 @@
 
 pkgbase=pamac
 pkgname=('pamac-common' 'pamac-cli-src' 'pamac-gtk' 'pamac-tray-appindicator-src')
-_pkgver=8.0.4
-pkgver=8.0.4
-pkgrel=7
-_commit=fab7bdaa96e4d29f2b2581d97e5e54cb965d6f42
+_pkgver=9.0.0
+pkgver=9.0.0rc
+pkgrel=1
+_commit=cf51d1aa15419589c24405e3eb593328ea0b914e
 pkgdesc="A Package Manager based on libalpm with AUR and Appstream support"
 arch=('x86_64')
 url="https://gitlab.manjaro.org/applications/pamac"
@@ -20,16 +20,13 @@ makedepends=('gettext' 'meson' 'vala>=0.36.6' 'libappindicator-gtk3' 'gobject-in
 options=(!emptydirs)
 
 source=(#"pamac-$pkgver-$pkgrel.tar.gz::$url/-/archive/v$pkgver/pamac-v$pkgver.tar.gz")
-        "pamac-$pkgver-$pkgrel.tar.gz::$url/-/archive/$_commit/$pkgname-$_commit.tar.gz"
-        'vala-compat.patch::https://gitlab.manjaro.org/applications/pamac/commit/fddd7715e23a7199db9498cfee2efecad62074ef.patch')
-sha256sums=('298e6695ca937040c2af55dddf39a447eb66b14891c1d261ce9a784d5152fd18'
-            '98b06d11dbf5d63d3982c9c155f3d3eefa5dbbd003be31549f13b92dc194cb71')
+        "pamac-$pkgver-$pkgrel.tar.gz::$url/-/archive/$_commit/$pkgname-$_commit.tar.gz")
+sha256sums=('6c67cb09dc401e13d1ba01db2671cdbbc28782f0e29e105d72d283c686edeb35')
 
 prepare() {
   mv "$srcdir/pamac-$_commit" "$srcdir/pamac-v$_pkgver"
   cd "$srcdir/pamac-v$_pkgver"
   # patches here
-  patch -Np1 -i ../vala-compat.patch
 
   # adjust version string
   sed -i -e "s|\"$_pkgver\"|\"$pkgver-$pkgrel\"|g" src/version.vala
