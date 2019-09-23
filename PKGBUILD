@@ -5,7 +5,7 @@ pkgdesc="golded-plus Fidonet Mail Reader/Editor"
 arch=('i686' 'x86_64')
 url="http://bbconf.sourceforge.net/"
 license=('GPL2')
-source=("${pkgname}::git+https://github.com/golded-plus/golded-plus.git"  "ncurses.diff" "geline.diff" "gedlnx")
+source=("${pkgname}::git+https://github.com/golded-plus/golded-plus.git"  "ncurses.diff" "geline.diff" "gedlnx" "widescreen.diff")
 makedepends=('git' 'gcc' 'make' 'glibc' 'groff')
 depends=('screen' 'xorg-luit' 'ncurses-nonwide')
 provides=('golded-plus')
@@ -26,6 +26,8 @@ prepare() {
     #cp -rfv "${srcdir}/gclang.cpp" golded3/
     patch -p0 -i "${srcdir}/ncurses.diff"
     patch -p0 -i "${srcdir}/geline.diff"
+    patch -p0 -i "${srcdir}/widescreen.diff"
+
     iconv -c -f cp866 -t utf8 docs/rusfaq.txt |  sed 2s/cp866/utf-8/ >docs/rusfaq.utf8
     iconv -c -f cp866 -t utf8 docs/notework.rus |  sed 2s/cp866/utf-8/ >docs/notework_rus.utf8
     iconv -c -f cp866 -t koi8-r docs/rusfaq.txt |  sed 2s/cp866/koi8/ >docs/rusfaq.koi8
@@ -75,4 +77,5 @@ package() {
 md5sums=('SKIP'
          'd2936c6d185c1309b4741bfb9d57fe4b'
          '808200388757918784f7ed1a64f9d89d'
-         '970bedc97a73656bf80da18e03af991d')
+         '970bedc97a73656bf80da18e03af991d'
+         '86c1c88eb64ee281f1805f287735b0a6')
