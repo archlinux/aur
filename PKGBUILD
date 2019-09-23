@@ -1,7 +1,7 @@
 # Maintainer: Ponas <mykolas.peteraitis@gmail.com>
 pkgname="netctl-tray"
 pkgver=0.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight netctl tray app with notifications"
 arch=('any')
 url="https://github.com/PonasKovas/netctl-tray"
@@ -29,5 +29,5 @@ package() {
   install -Dm755 scripts/disconnect "${pkgdir}/usr/share/netctl-tray/disconnect"
   install -Dm644 assets/* "${pkgdir}/usr/share/netctl-tray/"
   install -dm0750 "${pkgdir}/usr/share/polkit-1/rules.d/"
-  install -Dm0750 scripts/netctl-tray.rules "${pkgdir}/usr/share/polkit-1/rules.d/01-netctltray.rules"
+  install -Dm0644 scripts/netctl-tray.rules "${pkgdir}/usr/share/polkit-1/rules.d/netctltray.rules"
 }
