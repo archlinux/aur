@@ -1,37 +1,37 @@
 # Maintainer: Jean Lucas <jean@4ray.co>
 
 pkgname=checkdmarc
-pkgver=4.2.1
-_commit=5147834805841593ab217a92044e0aceb6b92a08
+pkgver=4.2.4
+_commit=c99abc9370bee3dd1abc4fd28e78b09d00a328eb # Untagged release
 pkgrel=1
 pkgdesc='Parser for SPF and DMARC DNS records'
 arch=(any)
 url=https://domainaware.github.io/checkdmarc
 license=(Apache)
 depends=('python-dnspython>=1.16.0'
-         python-expiringdict
-         python-pyleri
-         python-publicsuffix2
-         python-requests
-         python-timeout-decorator
-         python-nose
-         python-pygments
-         flake8
-         python-doc8
-         python-collective-checkdocs
-         python-jinja
-         python-packaging
-         python-imagesize
-         python-sphinx-alabaster-theme
-         python-babel
+         'python-expiringdict>=1.1.4'
+         'python-pyleri>=1.3.2'
+         'python-publicsuffix2>=2.20190812'
+         'python-requests>=2.21.0'
+         'python-timeout-decorator>=0.4.1'
+         'python-nose>=1.3.7'
+         'python-pygments>=2.3.1'
+         'flake8>=3.7.8'
+         'python-doc8>=0.8.0'
+         'python-collective-checkdocs>=0.2'
+         'python-jinja>=2.10.1'
+         'python-packaging>=19.1'
+         'python-imagesize>=1.1.0'
+         'python-sphinx-alabaster-theme>=0.7.12'
+         'python-babel>=2.7.0'
          'rstcheck>=3.3.1'
-         python-sphinx
-         python-sphinx_rtd_theme
-         python-wheel
-         python-codecov)
+         'python-sphinx>=1.0.5'
+         'python-sphinx_rtd_theme>=0.4.3'
+         'python-wheel>=0.33.6'
+         'python-codecov>=2.0.15')
 makedepends=(python-setuptools)
 source=($pkgname-$pkgver.tar.gz::https://github.com/domainaware/$pkgname/archive/$_commit.tar.gz)
-sha512sums=('f5d4ed8171a5900e840abaea2cf0f6989f2bb63f6b3520f4352b0381b265024a0f2892b0a8f2f2ea7f27d4a9853998fc48aa40565a94a17d6d10c17944005067')
+sha512sums=('2ec1f79caddcb510d537b3942337ffe140d1e84a9b17a61d5d189a49fcb668ec5ae4b1eceab5b609e8cf463cfbe52c5f18897c8eef0e6fca82b0305887837209')
 
 build() {
   cd $pkgname-$_commit
