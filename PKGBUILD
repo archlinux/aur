@@ -2,8 +2,7 @@
 
 pkgname=monolith
 pkgver=2.0.16
-_commit=02b717ae54b0974ec0181c797214f3c176e9c0e8 # Upstream does not tag releases - cherry-pick has release version in commit message
-pkgrel=1
+pkgrel=2
 pkgdesc='CLI to save web pages as single HTML files'
 arch=(i686 x86_64)
 url=https://github.com/Y2Z/monolith
@@ -12,16 +11,16 @@ depends=(openssl)
 makedepends=(cargo)
 provides=(monolith)
 conflicts=(monolith)
-source=($pkgname-$pkgver.tar.gz::$url/archive/$_commit.tar.gz)
-sha512sums=('48d9e09a0e9a42a9c0e22c36c42fc06f8c84179a0bc353b101cd72102fb3cc0874f5ae89604056255c9d537d747fca80b1ad8f40eab4bb67d882755225a04938')
+source=($pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz)
+sha512sums=('33f554cde4305ae9d01461edd7fadf16aba2ad6bd57f3af321a847314621006c11fb338ebce347c24d9cdc840d49dee89ba134c6c2a6a8bac3e0ac98be489a19')
 
 build() {
-  cd $pkgname
+  cd $pkgname-$pkgver
   cargo build --release
 }
 
 package() {
-  cd $pkgname
+  cd $pkgname-$pkgver
   install -D target/release/monolith -t "$pkgdir"/usr/bin
   install -Dm 644 README.md -t "$pkgdir"/usr/share/doc/$pkgname
   install -Dm 644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
