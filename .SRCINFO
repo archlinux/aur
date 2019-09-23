@@ -1,6 +1,6 @@
 pkgbase = python-talos
 	pkgdesc = Talos radically changes the ordinary Keras workflow by fullyautomating hyperparameter tuning and model evaluation. Talos exposes Keras functionality entirely and there is no new syntax or templates to learn.
-	pkgver = 0.4.9
+	pkgver = 0.6.3
 	pkgrel = 1
 	url = https://github.com/autonomio/talos/
 	arch = any
@@ -17,8 +17,8 @@ pkgbase = python-talos
 	depends = python-chances
 	depends = python-astetik
 	depends = python-kerasplotlib
-	source = https://files.pythonhosted.org/packages/74/26/c44a51af579835c873e878b99c68fcba08107cdfc22d72ac4ecbc027f158/talos-0.4.9.tar.gz
-	sha256sums = 623f0bfe33f1429453913cf64eabbf5cd34d3147781013f8824fb3888d6ad8fd
+	source = https://files.pythonhosted.org/packages/1d/df/c352679af3259829dafa7d55f2d3e9fca201c848351cb3c841a062df001c/talos-0.6.3.tar.gz
+	sha256sums = 24deb5d8d9c6f10374b49ce113474f25ca6741dd4797b092aa53a2b7f0dc4093
 
 pkgname = python-talos
 
