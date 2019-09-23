@@ -22,3 +22,27 @@ pkgname = python2-configshell-fb
 	provides = python2-configshell
 	conflicts = python2-configshell
 
+pkgbase = python-configshell-fb
+	pkgdesc = python framework for building simple CLI applications (free branch)
+	pkgver = 1.1.26
+	pkgrel = 1
+	url = https://github.com/open-iscsi/configshell-fb
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = https://github.com/open-iscsi/configshell-fb/archive/v1.1.26.tar.gz
+	sha512sums = 25e5b4ee812a51c99eed4d039ac8bab883218a674ff27f9eee4604d133b592574f4829ead9cb1aba4d2aca873f5414ad4ca55979c6d4eadaa9a802b1d563494d
+
+pkgname = python-configshell-fb
+	depends = python-pyparsing
+	depends = python-urwid
+	provides = python-configshell
+	conflicts = python-configshell
+
+pkgname = python2-configshell-fb
+	depends = python2-pyparsing
+	depends = python2-urwid
+	provides = python2-configshell
+	conflicts = python2-configshell
+
