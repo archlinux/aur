@@ -1,0 +1,17 @@
+pkgbase = befstools-git
+	pkgdesc = utilities to hande BeOS file systems in Linux
+	pkgver = 0.2.r14.g2e8c6dc
+	pkgrel = 1
+	url = https://github.com/luisbg/befstools
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = make
+	makedepends = autoconf
+	depends = systemd-libs
+	provides = befstools
+	source = git+https://github.com/luisbg/befstools.git
+	sha512sums = SKIP
+
+pkgname = befstools-git
+
