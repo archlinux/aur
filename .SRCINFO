@@ -1,6 +1,6 @@
 pkgbase = carla-bridges
-	pkgdesc = Carla All Bridges
-	pkgver = 4981.3afdf1f2
+	pkgdesc = Carla All Bridges (Stable Branch)
+	pkgver = 4991.88ae3fed
 	pkgrel = 1
 	url = http://kxstudio.sf.net/carla
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = carla-bridges
 	provides = carla-bridges
 	conflicts = carla-bridges-win32
 	conflicts = carla-bridges-win64
-	source = carla-bridges::git+https://github.com/falkTX/Carla.git
+	source = carla-bridges::git+https://github.com/falkTX/Carla.git#branch=develop
 	md5sums = SKIP
 
 pkgname = carla-bridges
