@@ -1,42 +1,39 @@
 # Maintainer: heliochronix <heliochronix@gmail.com>
 
 pkgname=gr-satellites-git
-pkgver=r278.0bf6918
+pkgver=r319.3aeba2a
 pkgrel=1
 pkgdesc="gr-satellites decoder blocks for GNURadio"
 arch=('x86_64' 'aarch64')
 url="https://github.com/daniestevez/gr-satellites"
+branch="gnuradio38"
 license=('GPL3')
-depends=('gnuradio' 'boost-libs' 'python2-construct>=2.8')
+depends=('gnuradio' 'boost-libs' 'python-construct>=2.8' 'python-requests')
 optdepends=('feh: For realtime image decoders'
             'doxygen: For document generation')
 makedepends=('git' 'cmake' 'libfec' 'swig' 'boost')
-provides=('gr-satellites')
-conflicts=('gr-satellites')
-source=("git+$url.git")
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("git+$url.git#branch=$branch")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd gr-satellites
-
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd "$srcdir/${pkgname%-git}"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  sed -i 's/env python$/env python2/g' gr-satellites/python/*
+	mkdir -p "$srcdir/${pkgname%-git}/build"
+	cd "$srcdir/${pkgname%-git}/build"
 
-  mkdir -p gr-satellites/build
-  cd gr-satellites/build
+	cmake .. \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_BUILD_TYPE=Release
 
-  cmake .. \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=Release
-
-  make
+	make
 }
 
 package() {
-  cd gr-satellites/build
-
-  make DESTDIR="$pkgdir" install
+	cd "$srcdir/${pkgname%-git}/build"
+	make DESTDIR="$pkgdir/" install
 }
