@@ -1,6 +1,6 @@
 # Maintainer: Kilian Guillaume "cafehaine" <kilian dot guillaume at gmail dot com>
 pkgname=almond
-pkgrel=1
+pkgrel=2
 pkgver=0.8.1
 pkgdesc="A scala kernel for Jupyter"
 arch=('x86_64')
@@ -13,6 +13,7 @@ md5sums=('SKIP')
 
 package() {
 	cd "$srcdir"
+	chmod +x ../almond
 	COURSIER_CACHE=$(pwd)/.coursier-cache ./almond --install --jupyter-path "$pkgdir/usr/share/jupyter/kernels/"
 }
 
