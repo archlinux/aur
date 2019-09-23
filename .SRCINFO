@@ -1,13 +1,13 @@
 pkgbase = gnome-shell-extension-sound-output-device-chooser
 	pkgdesc = Sound Input & Output Device Chooser.
-	pkgver = 17
+	pkgver = 24
 	pkgrel = 1
 	url = https://github.com/kgshank/gse-sound-output-device-chooser
 	arch = any
 	license = GPL
 	depends = gnome-shell
-	source = gnome-shell-extension-sound-output-device-chooser-17.tar.gz::https://github.com/kgshank/gse-sound-output-device-chooser/archive/3.30.0.17.tar.gz
-	md5sums = 7f32ce146b708485ded15d5c394776b5
+	source = gnome-shell-extension-sound-output-device-chooser-24.tar.gz::https://github.com/kgshank/gse-sound-output-device-chooser/archive/24.tar.gz
+	md5sums = 3eb69f4b4e2edb0e785201cd71ab573c
 
 pkgname = gnome-shell-extension-sound-output-device-chooser
 
