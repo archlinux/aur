@@ -15,5 +15,7 @@ md5sums=('ecf732c38eeeb7bc6117751f1002005c')
 package() {
 	cd $srcdir
 	mkdir -p $pkgdir/usr/share/themes
-	cp -r ${_pkgname}/feren* $pkgdir/usr/share/themes
+    cd ${_pkgname}
+    for f in *\ * ; do mv -v "${f}" "${f// /_}"; done
+	cp -r feren* $pkgdir/usr/share/themes
 }
