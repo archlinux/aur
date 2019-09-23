@@ -1,6 +1,6 @@
 # Maintainer: Ponas <mykolas.peteraitis@gmail.com>
 pkgname="netctl-tray"
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="A lightweight netctl tray app with notifications"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('libnotify'
 		 'qt5-base'
      'polkit')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/PonasKovas/netctl-tray/archive/${pkgver}.tar.gz")
-md5sums=('2f5e9409484bb474fdbe5ff691b1c603')
+md5sums=('293e4cef8a30ab61c595a297dbdd145d')
 
 build () {
   cd "$srcdir/$pkgname-$pkgver"
@@ -28,5 +28,6 @@ package() {
   install -Dm755 scripts/connect "${pkgdir}/usr/share/netctl-tray/connect"
   install -Dm755 scripts/disconnect "${pkgdir}/usr/share/netctl-tray/disconnect"
   install -Dm644 assets/* "${pkgdir}/usr/share/netctl-tray/"
-  install -Dm750 scripts/netctl-tray.rules "${pkgdir}/usr/share/polkit-1/rules.d/netctl-tray.rules"
+  install -dm0750 "${pkgdir}/usr/share/polkit-1/rules.d/"
+  install -Dm0750 scripts/netctl-tray.rules "${pkgdir}/usr/share/polkit-1/rules.d/01-netctltray.rules"
 }
