@@ -1,8 +1,8 @@
-# Maintainer: Mikael Blomstrand <mbloms ÅT kth DÖT se>
+# Maintainer: Mikael Blomstrand <mikael ÅT mbloms DÖT se>
 # Contributor: Jendrik Wenke <jendrikwenke+aur at gmail dot com>
 
 pkgname=scala-dotty
-pkgver=0.17.0
+pkgver=0.18.1
 pkgrel=1
 pkgdesc='Research compiler that will become Scala 3'
 arch=('any')
@@ -10,8 +10,8 @@ url='http://dotty.epfl.ch'
 license=('BSD')
 depends=('java-environment>=8' 'java-environment<=11')
 source=("https://github.com/lampepfl/dotty/releases/download/${pkgver}/dotty-${pkgver}.tar.gz")
-sha1sums=('00a5ec1881efb49584164d6b3773543fe2d07350')
-sha256sums=('258f3b49601c6f409bac8c62591fe389b5a4990a88bb25f235d989a944ffa63e')
+sha1sums=('e2d6138f087327a7d82416d183ec52640fc61e55')
+sha256sums=('a9e102d8289b6367e737a523691f6ecfe01e1834719f8682f7f1d4cc3c33efed')
 
 package() {
        install -d "${pkgdir}/usr/bin" "${pkgdir}/usr/share/scala-dotty/bin"
