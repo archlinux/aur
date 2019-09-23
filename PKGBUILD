@@ -9,6 +9,7 @@ _xgl_commit=331558e93794068a786bf699d3fe23bb11bac021
 _pal_commit=68b57dba33a4d922e8f1ef1b3781c2f659ffbd1c
 _llvm_commit=9bc5dd4450a6361faf5c5661056a7ee494fad830
 _metrohash_commit=2b6fee002db6cc92345b02aeee963ebaaf4c0e2f
+_cwpack_commit=b601c88aeca7a7b08becb3d32709de383c8ee428
 
 pkgdesc='Open-source Vulkan driver for AMD Radeon™ graphics adapters (32 Bit)'
 arch=(x86_64)
@@ -24,14 +25,16 @@ source=(AMDVLK-$pkgname-$pkgver.tar.gz::https://github.com/GPUOpen-Drivers/AMDVL
         xgl-$pkgname-$pkgver.tar.gz::https://github.com/GPUOpen-Drivers/xgl/archive/${_xgl_commit}.tar.gz
         pal-$pkgname-$pkgver.tar.gz::https://github.com/GPUOpen-Drivers/pal/archive/${_pal_commit}.tar.gz
         llvm-$pkgname-$pkgver.tar.gz::https://github.com/GPUOpen-Drivers/llvm/archive/${_llvm_commit}.tar.gz
-        MetroHash-$pkgname-$pkgver.tar.gz::https://github.com/GPUOpen-Drivers/metrohash/archive/${_metrohash_commit}.tar.gz)
+        MetroHash-$pkgname-$pkgver.tar.gz::https://github.com/GPUOpen-Drivers/metrohash/archive/${_metrohash_commit}.tar.gz
+        CWPack-$pkgname-$pkgver.tar.gz::https://github.com/GPUOpen-Drivers/CWPack/archive/${_cwpack_commit}.tar.gz)
   
 sha256sums=('383d43ddcff3295bb8dc85bce2a376fbde9f2aa3535be9e4dbf67f745c40ff41'
             'abe541ef6cd4fa3ca1eaab52412caa29e2adedec0fab40894aef88d33deee584'
             '939a2cf69d840e01da8b3e69f5ffe1f852f9d2919cdbc8aa4ade7cff7ac56906'
             '7648ca7761b588b6025f8fe16fcf4216bf7e1fe53c6568377f5cca98feca9627'
             'efbde2752044ec74d522c160899491105dbc77bb8a08ff64c274d2b94a6916d1'
-            'e8ecf026584dd953e39c3abba2eb04d28b28ed4577482ee70265f0d421fef398')
+            'e8ecf026584dd953e39c3abba2eb04d28b28ed4577482ee70265f0d421fef398'
+            '58ca397f33d62bcfecaecd89eb4ad466a6c33e1c619e5cf742822074f1f7d664')
             
 prepare() {
   ln -sf ${srcdir}/AMDVLK-v-${pkgver} ${srcdir}/AMDVLK
@@ -40,6 +43,7 @@ prepare() {
   ln -sf ${srcdir}/llpc-${_llpc_commit} ${srcdir}/llpc
   ln -sf ${srcdir}/llvm-${_llvm_commit} ${srcdir}/llvm
   ln -sf ${srcdir}/MetroHash-${_metrohash_commit} ${srcdir}/metrohash
+  ln -sf ${srcdir}/CWPack-${_metrohash_commit} ${srcdir}/CWPack
   
   #remove -Werror to build with gcc9 
   sed -i "s/-Werror//g" $srcdir/pal/shared/gpuopen/cmake/AMD.cmake
@@ -57,6 +61,7 @@ build() {
     -DLLVM_DEFAULT_TARGET_TRIPLE="i686-pc-linux-gnu" \
     -DBUILD_WAYLAND_SUPPORT=On \
     -DXGL_METROHASH_PATH=${srcdir}/metrohash \
+    -DXGL_CWPACK_PATH=${srcdir}/CWPack \
     -G Ninja
     
   ninja -C builds/Release
