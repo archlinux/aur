@@ -7,9 +7,9 @@
 
 pkgname=pdfchain
 pkgver=0.4.4.2
-pkgrel=4
+pkgrel=5
 pkgdesc='A graphical user interface for the PDF toolkit'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='http://pdfchain.sourceforge.net/'
 license=('GPL3')
 depends=(

@@ -1,9 +1,8 @@
 pkgbase = pdfchain
 	pkgdesc = A graphical user interface for the PDF toolkit
 	pkgver = 0.4.4.2
-	pkgrel = 4
+	pkgrel = 5
 	url = http://pdfchain.sourceforge.net/
-	arch = i686
 	arch = x86_64
 	license = GPL3
 	depends = gcc-libs
