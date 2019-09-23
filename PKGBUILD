@@ -1,7 +1,7 @@
 # Maintainer: Julien Savard <juju@juju2143.ca>
 pkgname=x16-emulator-git
 pkgver=r31.r2.g6bf9d9e
-pkgrel=1
+pkgrel=2
 pkgdesc="An emulator for The 8-Bit Guy's Commander X16"
 arch=('x86_64')
 url="http://commanderx16.com/"
@@ -33,7 +33,7 @@ prepare() {
 
 build() {
 	cd "${pkgname%-git}"
-	make
+	make WITH_YM2151=1
 	pandoc --from gfm --to html -c github-pandoc.css --standalone --metadata pagetitle="X16 Emulator" README.md --output README.html
 }
 
