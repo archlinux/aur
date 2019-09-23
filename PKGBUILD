@@ -50,8 +50,15 @@ prepare() {
 }
 
 build() {
-  cd xgl
+  # Package needs -fno-plt so we'll add it in case someone uses non-default build flags.. would it be better to add !buildflags option?
+  # -mno-avx fixes crashes that occur with some configs
+  export CFLAGS="$CFLAGS -fno-plt -mno-avx"
+  export CXXFLAGS="$CXXFLAGS -fno-plt -mno-avx"
+  export LDFLAGS="$LDFLAGS -z now" 
+  
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
+  
+  cd xgl
   
   cmake -H. -Bbuilds/Release \
     -DCMAKE_C_FLAGS=-m32 \
