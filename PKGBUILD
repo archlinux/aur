@@ -20,6 +20,8 @@ depends=(
 	'python-yaml'
 	'python-decorator'
 	'python-censys'
+	'python-gevents'
+	'python-grequests'
 )
 makedepends=('git' 'bash')
 provides=("${pkgname}")
