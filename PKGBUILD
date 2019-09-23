@@ -26,10 +26,8 @@ pkgver() {
 prepare() {
     cd "$srcdir/$pkgname"
 
-    sed -i 's DATA="${DATA}/icons-in-terminal/" DATA="/usr/share/icons-in-terminal/" ' bootstrap
+    sed -i 's DATA="${DATA}/icons-in-terminal/" DATA="/usr/share/icons-in-terminal" ' bootstrap
     ./bootstrap
-
-    export CC=clang CXX=clang++
 
     # potential fix if icons are cropped
     #local file
@@ -41,12 +39,13 @@ prepare() {
     # Execute this line _only_ if your terminal doesn't support true colours
     # https://gist.github.com/XVilka/8346728#now-supporting-truecolour
     #export CFLAGS=-DNO_TRUE_COLOURS=1
+
+    export CC=clang CXX=clang++
+    ./configure
 }
 
 build() {
     cd "$srcdir/$pkgname"
-
-    ./configure
     make
 }
 
