@@ -1,9 +1,9 @@
 # Maintainer: Ponas <mykolas.peteraitis@gmail.com>
 pkgname=snake
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple lightweight terminal snake game"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/PonasKovas/snake"
 license=('MIT')
 makedepends=('cargo')
