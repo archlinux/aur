@@ -10,8 +10,9 @@ license=('Apache')
 makedepends=('git' 'go')
 depends=('pam')
 provides=('fscrypt')
-source=('git://github.com/google/fscrypt.git')
-sha256sums=('SKIP')
+source=('git://github.com/google/fscrypt.git' 'pam_config')
+sha256sums=('SKIP'
+            'ae6ceaefc6d936c95a9b7a3f925111ffb946e6fd0152373247f1d40132f05aef')
 
 pkgver() {
 	cd "${srcdir}/fscrypt"
@@ -34,4 +35,5 @@ package() {
 	cd "${srcdir}/fscrypt"
 	make PREFIX="${pkgdir}/usr" install
 	install -Dm644 README.md "${pkgdir}/usr/share/fscrypt/README.md"
+	install -Dm644 ../pam_config "${pkgdir}/etc/pam.d/fscrypt"
 }

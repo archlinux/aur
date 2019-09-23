@@ -11,7 +11,9 @@ pkgbase = fscrypt-git
 	depends = pam
 	provides = fscrypt
 	source = git://github.com/google/fscrypt.git
+	source = pam_config
 	sha256sums = SKIP
+	sha256sums = ae6ceaefc6d936c95a9b7a3f925111ffb946e6fd0152373247f1d40132f05aef
 
 pkgname = fscrypt-git
 
