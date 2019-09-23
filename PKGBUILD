@@ -4,13 +4,13 @@ pkgname="truepolyglot"
 pkgdesc="Create polyglot files that are valid PDF and ZIP at the same time. See POC||GTFO 07."
 
 pkgver=1.6.2
-pkgrel=3
+pkgrel=4
 
 arch=("any")
 url="https://github.com/ansemjo/$pkgname"
 license=("UNLICENSE")
 
-depends=("python")
+depends=("python" "python-pypdf2")
 makedepends=("python-setuptools")
 
 provides=($pkgname)
