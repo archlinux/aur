@@ -4,8 +4,8 @@
 # you also find the URL of a binary repository.
 
 pkgname=bento4
-pkgver=1.5.1.624
-_pkgverstr=1.5.1-624
+pkgver=1.5.1.628
+_pkgverstr=1.5.1-628
 pkgrel=1
 pkgdesc='C++ class library and tools designed to read and write ISO-MP4 files'
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ license=('GPL')
 makedepends=('cmake')
 optdepends=('python')
 source=("https://github.com/axiomatic-systems/Bento4/archive/v${_pkgverstr}.tar.gz")
-sha256sums=('eda725298e77df83e51793508a3a2640eabdfda1abc8aa841eca69983de83a4c')
+sha256sums=('e6fce0b1015698ff2f4f99e81c516ec042b351de052c885da7f82aebda56b65a')
 
 build() {
   cd "${srcdir}/Bento4-${_pkgverstr}"
