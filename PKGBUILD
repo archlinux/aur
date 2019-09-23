@@ -3,7 +3,7 @@ pkgbase=qpmx
 pkgname=(qpmx qpmx-gitsource qpmx-qpmsource)
 group=qpmx-full
 pkgver=1.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A frontend for qpm, to provide source and build caching"
 arch=('i686' 'x86_64')
 url="https://github.com/Skycoder42/$pkgname"
@@ -12,9 +12,11 @@ depends=('qt5-base' 'qt5-jsonserializer')
 makedepends=('qt5-tools' 'git')
 _pkgfqn=$pkgname-$pkgver
 source=("$_pkgfqn::git+https://github.com/Skycoder42/$pkgname.git#tag=$pkgver"
+        "jsonserializer.patch"
         "$pkgname.rule"
         "plugin.rule")
 sha256sums=('SKIP'
+            '9aea1f15a4ca3f7a42bbc15d2e837a65c4fff6b4d991352a935a18513a6abd35'
             '13f2e499671cb094ff244946b733a8e6898152fe60c77cb93bef1e1a19ffbd0e'
             'a7f6099680d692285332ae7db3cf1414f4d664ceccb701d45ac73ecaa08a65dc')
 
@@ -35,6 +37,7 @@ prepare() {
   git_submod_rm submodules/qpmx-sample-package
 
   git submodule update --init --recursive
+  git apply ../jsonserializer.patch
 }
 
 build() {

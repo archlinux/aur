@@ -1,0 +1,17 @@
+diff --git a/qpmx/qpmxformat.h b/qpmx/qpmxformat.h
+index 0555c28..7c869f9 100644
+--- a/qpmx/qpmxformat.h
++++ b/qpmx/qpmxformat.h
+@@ -189,4 +189,12 @@ Q_DECLARE_METATYPE(QpmxDevAlias)
+ Q_DECLARE_METATYPE(QpmxUserFormat)
+ Q_DECLARE_METATYPE(QpmxCacheFormat)
+ 
++inline uint qHash(const QpmxDependency &, uint seed) { return seed; }
++inline uint qHash(const QpmxFormatLicense &, uint seed) { return seed; }
++inline uint qHash(const QpmxFormat &, uint seed) { return seed; }
++inline uint qHash(const QpmxDevDependency &, uint seed) { return seed; }
++inline uint qHash(const QpmxDevAlias &, uint seed) { return seed; }
++inline uint qHash(const QpmxUserFormat &, uint seed) { return seed; }
++inline uint qHash(const QpmxCacheFormat &, uint seed) { return seed; }
++
+ #endif // QPMXFORMAT_H

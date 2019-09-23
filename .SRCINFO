@@ -1,7 +1,7 @@
 pkgbase = qpmx
 	pkgdesc = A frontend for qpm, to provide source and build caching
 	pkgver = 1.6.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Skycoder42/qpmx
 	arch = i686
 	arch = x86_64
@@ -11,9 +11,11 @@ pkgbase = qpmx
 	depends = qt5-base
 	depends = qt5-jsonserializer
 	source = qpmx-1.6.0::git+https://github.com/Skycoder42/qpmx.git#tag=1.6.0
+	source = jsonserializer.patch
 	source = qpmx.rule
 	source = plugin.rule
 	sha256sums = SKIP
+	sha256sums = 9aea1f15a4ca3f7a42bbc15d2e837a65c4fff6b4d991352a935a18513a6abd35
 	sha256sums = 13f2e499671cb094ff244946b733a8e6898152fe60c77cb93bef1e1a19ffbd0e
 	sha256sums = a7f6099680d692285332ae7db3cf1414f4d664ceccb701d45ac73ecaa08a65dc
 
