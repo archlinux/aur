@@ -1,9 +1,9 @@
 [Desktop Entry]
 Name=guiscrcpy
-Comment=GUI for scrcpy
-Exec=python /usr/lib/python3.7/site-packages/guiscrcpy/__main__.py
+Comment=Your PC is your Android Device
+Exec=guiscrcpy
 Terminal=false
-Icon=/usr/lib/python3.7/site-packages/guiscrcpy/ui/guiscrcpy_logo.png
+Icon=guiscrcpy
 Type=Application
 Categories=Utility
 StartupNotify=false
