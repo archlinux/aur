@@ -1,7 +1,7 @@
 pkgbase = evelauncher
 	pkgdesc = Unofficial Eve Online Launcher.
 	pkgver = 1548102
-	pkgrel = 1
+	pkgrel = 2
 	url = https://forums.eveonline.com/t/eve-launcher-for-linux/7286
 	arch = any
 	license = custom
@@ -18,7 +18,7 @@ pkgbase = evelauncher
 	source = icon.png
 	source = evelauncher.sh
 	md5sums = 6292c4155c4ceaac97dd186a62772461
-	md5sums = 2150407bf15ea647a0854c0c9df4c887
+	md5sums = 251749f620075212991b997e98c39366
 	md5sums = ecd3b7d8dd554f8106045e1d78a885c6
 	md5sums = e133d2aaf8d35fb1438d0b97072dd630
 
