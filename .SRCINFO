@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-nordvpn-connect-git
 	pkgdesc = Unofficial Gnome-Shell Extension to provide a GUI for the official NordVPN CLI Tool.
-	pkgver = r109.6d48e84
+	pkgver = r114.7916195
 	pkgrel = 1
 	url = https://github.com/AlexPoilrouge/NordVPN-connect
 	arch = any
