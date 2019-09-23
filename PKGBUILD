@@ -4,13 +4,13 @@
 pkgname=kube-prompt
 pkgver=1.0.8
 _gitrev=eed9b10
-pkgrel=1
+pkgrel=2
 license=('MIT')
 pkgdesc='An interactive kubernetes client featuring auto-complete using go-prompt'
 arch=("i686" "x86_64" "aarch64" "arm7h")
 url='https://github.com/c-bata/kube-prompt'
 depends=('kubectl')
-makedepends=('git' 'go-pie')
+makedepends=('git' 'go')
 provides=("$pkgname")
 conflicts=("${pkgname}-git")
 source=("$pkgname::$url/archive/v$pkgver.tar.gz")
