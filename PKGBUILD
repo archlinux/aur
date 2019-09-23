@@ -13,6 +13,7 @@ _spirvtools_commit=9702d47c6fe4cefbc55f905b0e9966452124b6c2
 _spirvheaders_commit=123dc278f204f8e833e1a88d31c46d0edf81d4b2
 _glslang_commit=22683b409e6df419da940df561b24b4b5d8ab90a
 _metrohash_commit=2b6fee002db6cc92345b02aeee963ebaaf4c0e2f
+_cwpack_commit=b601c88aeca7a7b08becb3d32709de383c8ee428
 
 pkgdesc='Open-source Vulkan driver for AMD Radeon™ graphics adapters'
 arch=('x86_64')
@@ -32,7 +33,8 @@ source=(AMDVLK-$pkgname-$pkgver.tar.gz::https://github.com/GPUOpen-Drivers/AMDVL
         SPIRV-Tools-$pkgname-$pkgver.tar.gz::https://github.com/KhronosGroup/SPIRV-Tools/archive/${_spirvtools_commit}.tar.gz
         glslang-$pkgname-$pkgver.tar.gz::https://github.com/KhronosGroup/glslang/archive/${_glslang_commit}.tar.gz
         SPIRV-Headers-$pkgname-$pkgver.tar.gz::https://github.com/KhronosGroup/SPIRV-Headers/archive/${_spirvheaders_commit}.tar.gz
-        MetroHash-$pkgname-$pkgver.tar.gz::https://github.com/GPUOpen-Drivers/metrohash/archive/${_metrohash_commit}.tar.gz)
+        MetroHash-$pkgname-$pkgver.tar.gz::https://github.com/GPUOpen-Drivers/metrohash/archive/${_metrohash_commit}.tar.gz
+        CWPack-$pkgname-$pkgver.tar.gz::https://github.com/GPUOpen-Drivers/CWPack/archive/${_cwpack_commit}.tar.gz)
   
 sha256sums=('383d43ddcff3295bb8dc85bce2a376fbde9f2aa3535be9e4dbf67f745c40ff41'
             'abe541ef6cd4fa3ca1eaab52412caa29e2adedec0fab40894aef88d33deee584'
@@ -43,7 +45,8 @@ sha256sums=('383d43ddcff3295bb8dc85bce2a376fbde9f2aa3535be9e4dbf67f745c40ff41'
             '64820fab5f07b9525ae09afb7bd5c6cd2c898da41026f6517e83e67547bb659c'
             '627699304b84e638e3c40bc39bef8caddb68badd857a4415ced1b371760a20d8'
             'ca0a9c788e4b02c452f4df13657dff6fce93b23e71faa3366d2a828dcbe5a335'
-            'e8ecf026584dd953e39c3abba2eb04d28b28ed4577482ee70265f0d421fef398')
+            'e8ecf026584dd953e39c3abba2eb04d28b28ed4577482ee70265f0d421fef398'
+            '58ca397f33d62bcfecaecd89eb4ad466a6c33e1c619e5cf742822074f1f7d664')
             
 prepare() {
   ln -sf ${srcdir}/AMDVLK-v-${pkgver} ${srcdir}/AMDVLK
@@ -56,6 +59,7 @@ prepare() {
   ln -sf ${srcdir}/SPIRV-Headers-${_spirvheaders_commit} ${srcdir}/spvgen/external/SPIRV-tools/external/SPIRV-Headers
   ln -sf ${srcdir}/glslang-${_glslang_commit} ${srcdir}/spvgen/external/glslang
   ln -sf ${srcdir}/MetroHash-${_metrohash_commit} ${srcdir}/metrohash
+  ln -sf ${srcdir}/CWPack-${_metrohash_commit} ${srcdir}/CWPack
 
   #remove -Werror to build with gcc9 
   sed -i "s/-Werror//g" $srcdir/pal/shared/gpuopen/cmake/AMD.cmake
@@ -68,6 +72,7 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DBUILD_WAYLAND_SUPPORT=On \
     -DXGL_METROHASH_PATH=${srcdir}/metrohash \
+    -DXGL_CWPACK_PATH=${srcdir}/CWPack \
     -G Ninja
     
   msg "build amdvlk64.so"
