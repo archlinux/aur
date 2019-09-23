@@ -1,4 +1,5 @@
 # Maintainer: Hork <aliyuchang33@outlook.com>
+# Maintainer: Leroy.H.Y <admin@lhy0403.top>
 
 pkgname=qv2ray
 pkgver=1.3.6.1
