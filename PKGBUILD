@@ -10,7 +10,7 @@ license=(GPL3)
 depends=(libgranite.so gtk3)
 makedepends=(vala meson ninja)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/artemanufrij/imageburner/archive/${pkgver}.tar.gz")
-sha256sums=('97143eb0330d8156bbb55153d33e7abead105b4647067347de01f32dbafddc5d')
+sha256sums=('cba3c9817c02b34fef949be0076190ee48d43fa96ef316a89d7f931653dd86b1')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
