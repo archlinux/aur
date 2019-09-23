@@ -3,10 +3,10 @@
 _gitname="bpkg"
 pkgname="${_gitname}-git"
 pkgver=0.3.1.0.g66ffdf2
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight bash package manager"
 arch=("any")
-url="https://bpkg.io"
+url="http://www.bpkg.sh/"
 license=("MIT")
 depends=("bash")
 makedepends=("git")
