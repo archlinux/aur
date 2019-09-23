@@ -1,6 +1,6 @@
 pkgbase=python-hydrus
 pkgname=("python-hydrus")
-pkgver=11
+pkgver=1.11.4
 pkgrel=1
 pkgdesc="Python module implementing the Hydrus API."
 arch=("any")
