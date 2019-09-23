@@ -24,7 +24,7 @@ makePackage () {
 	nice="nice --adjustment=19"
 	ionice="ionice -c2 -n7"
 
-	PKGEXT='.pkg.tar.gz' ${nice} ${ionice} makepkg --force
+	silently "makePackage" "PKGEXT='.pkg.tar.gz' ${nice} ${ionice} makepkg --force"
 }
 
 
