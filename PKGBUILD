@@ -5,8 +5,8 @@ provides=("${pkgname}")
 conflicts=("${pkgname}")
 
 arch=("x86_64")
-pkgver=2.07.1.1569189034
-pkgrel=3
+pkgver=2.07.1.1569199378
+pkgrel=1
 
 pkgdesc="First person forgery stealth game"
 license=("GPL3" "BSD" "CCPL")

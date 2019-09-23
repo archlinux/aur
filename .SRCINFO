@@ -1,7 +1,7 @@
 pkgbase = darkmod
 	pkgdesc = First person forgery stealth game
-	pkgver = 2.07.1.1569189034
-	pkgrel = 3
+	pkgver = 2.07.1.1569199378
+	pkgrel = 1
 	url = http://www.thedarkmod.com
 	arch = x86_64
 	license = GPL3

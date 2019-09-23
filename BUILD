@@ -10,7 +10,7 @@ mainFunction () {
 
 buildPackage () {
 	removeBuildFiles
-	echoOnError "buildPackage" "makepkg --force"
+	makePackage
 	removeBuildFiles
 }
 
@@ -20,27 +20,37 @@ changeToThisProgramDir () {
 }
 
 
-echoOnError () {
-	function="${1}"
-	command="${2}"
-    error=$(eval "${command}" 2>&1 >"/dev/null")
+makePackage () {
+	if [ -f "/usr/share/pigz" ]; then
+		pigzVar="COMPRESSGZ=(pigz -c -f -n)"
+	fi
 
-    if [ ${?} -ne 0 ]; then
-        echo "${function}: ${error}" >&2
-        exit 1
-    fi
+	config="PKGEXT='.pkg.tar.gz' ${pigzVar}"
+	silently "makePackage" "${config} makepkg --force"
 }
 
 
 removeBuildFiles () {
 	name=$(variableInFile "Name" "PKGBUILD")
 	folders="pkg src ${name}"
-	echoOnError "removeBuildFiles" "rm --recursive --force ${folders}"
+	silently "removeBuildFiles" "rm --recursive --force ${folders}"
+}
+
+
+silently () {
+	function="${1}"
+	command="${2}"
+	error=$(eval "${command}" 2>&1 >"/dev/null")
+
+	if [ ${?} -ne 0 ]; then
+		echo "${function}: ${error}" >&2
+		exit 1
+	fi
 }
 
 
 updateInfoFile () {
-	echoOnError "updateInfoFile" "makepkg --printsrcinfo > .SRCINFO"
+	silently "updateInfoFile" "makepkg --printsrcinfo > .SRCINFO"
 }
 
 
