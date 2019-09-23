@@ -6,10 +6,10 @@
 pkgname=python2-simpleparse
 _pkgname=SimpleParse
 pkgver=2.1.1a2
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple and fast parser generator"
 arch=('i686' 'x86_64')
-url="https://simpleparse.sourceforge.net"
+url="http://simpleparse.sourceforge.net"
 license=('custom')
 depends=('python2')
 makedepends=('python2-setuptools')
