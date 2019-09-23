@@ -1,9 +1,9 @@
 pkgbase = netctl-tray
 	pkgdesc = A lightweight netctl tray app with notifications
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/PonasKovas/netctl-tray
-	arch = any
+	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	depends = libnotify

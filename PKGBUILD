@@ -1,9 +1,9 @@
 # Maintainer: Ponas <mykolas.peteraitis@gmail.com>
 pkgname="netctl-tray"
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight netctl tray app with notifications"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/PonasKovas/netctl-tray"
 license=('MIT')
 makedepends=('cargo')
