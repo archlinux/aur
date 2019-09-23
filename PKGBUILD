@@ -2,14 +2,13 @@
 # Maintainer: Matthew Sexton <wsdmatty (at) gmail (dot) com>
 # Contributor: Lorenz Wellmer
 pkgname=clockify-desktop
-pkgver=1.5.6
-pkgrel=2
+pkgver=1.5.8
+pkgrel=1
 pkgdesc="Truly free time tracker for teams, Desktop App"
 arch=('x86_64')
 url="https://clockify.me"
 license=('custom')
-depends=('alsa-lib' 'atk' 'at-spi2-atk' 'cairo' 'dbus' 'desktop-file-utils' 'electron' 'expat' 'fontconfig' 'gconf' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libappindicator-gtk2' 'libcups' 'libnotify' 'libx11' 'libxcb' 'libxcomposite' 'libxcursor' 'libxdamage' 'libxext' 'libxfixes' 'libxi' 'libxrandr' 'libxrender' 'libxss' 'libxtst' 'nspr' 'nss' 'pango')
-options=('!strip' '!emptydirs')
+depends=('gtk3' 'libxss' 'nss')
 source=("https://clockify.me/downloads/Clockify_Setup.deb")
 sha256sums=('f36bb4f339ed30e08882a37dc12a2f8c46c06e4b3eace1c6a55a6383a071cf77')
 
@@ -18,7 +17,7 @@ package(){
 	# Extract package data
 	tar xf data.tar.xz -C "${pkgdir}"
 	install -dm755 "${pkgdir}/usr/bin"
-	ln -sf "${pkgdir}/opt/Clockify/clockify" "${pkgdir}/usr/bin/clockify"
+	ln -sf "/opt/Clockify/clockify" "${pkgdir}/usr/bin/clockify"
 	install -D -m644 "${pkgdir}/opt/Clockify/LICENSES.chromium.html" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
 }
