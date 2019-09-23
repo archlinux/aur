@@ -5,7 +5,7 @@
 
 _pkgname=efl
 pkgname=$_pkgname-git
-pkgver=1.22.99.62619.g01d6683e32
+pkgver=1.23.0.63655.g7dcce72eb7
 pkgrel=1
 pkgdesc="Enlightenment Foundation Libraries - Development version"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -62,9 +62,7 @@ build() {
 
   rm -rf build
   meson --prefix=/usr \
-    -Dopengl=es-egl \
     -Dfb=true \
-    -Dtslib=false \
     -Ddrm=true \
     -Dwl=true \
     -Dnetwork-backend=connman \
