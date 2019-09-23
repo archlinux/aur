@@ -5,7 +5,7 @@ pkgdesc="All fonts available in Google products"
 url="https://github.com/google/fonts"
 license=("Apache" "custom:SIL Open Font License 1.1" "custom:Ubuntu Font License 1.0")
 
-pkgver=2019.08
+pkgver=2019.09
 pkgrel=1
 arch=("any")
 source=(git+"${url}".git)

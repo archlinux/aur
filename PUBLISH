@@ -15,24 +15,24 @@ changeToThisProgramDir () {
 }
 
 
-echoOnError () {
-	function="${1}"
-	command="${2}"
-    error=$(eval "${command}" 2>&1 >"/dev/null")
-
-    if [ ${?} -ne 0 ]; then
-        echo "${function}: ${error}" >&2
-        exit 1
-    fi
-}
-
-
 publish () {
 	summary="${1}"
 
-	echoOnError "publish: add" "git add ."
+	silently "publish: add" "git add ."
 	git commit --message="${summary}" 2>&1 >"/dev/null"
-	echoOnError "publish: push" "git push"
+	silently "publish: push" "git push"
+}
+
+
+silently () {
+	function="${1}"
+	command="${2}"
+	error=$(eval "${command}" 2>&1 >"/dev/null")
+
+	if [ ${?} -ne 0 ]; then
+		echo "${function}: ${error}" >&2
+		exit 1
+	fi
 }
 
 
@@ -46,7 +46,7 @@ summary () {
 
 
 updateInfoFile () {
-	echoOnError "updateInfoFile" "makepkg --printsrcinfo > .SRCINFO"
+	silently "updateInfoFile" "makepkg --printsrcinfo > .SRCINFO"
 }
 
 
