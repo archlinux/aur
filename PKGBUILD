@@ -51,7 +51,7 @@ _major=5.3
 _minor=1
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/sirlucjan/bfq-mq-lucjan"
 license=('GPL2')
@@ -71,8 +71,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
         "${_lucjanpath}/${_bfq_path}/${_bfq_patch}"
         "${_gcc_path}/${_gcc_patch}"
-        "${_lucjanpath}/arch-patches-sep/0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch"
-        "${_lucjanpath}/arch-patches-sep/0002-ZEN-Add-CONFIG-for-unprivileged_userns_clone.patch"
+        "${_lucjanpath}/arch-patches-v2/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
          # the main kernel config files
         'config'
          # pacman hook for depmod
@@ -381,8 +380,7 @@ sha512sums=('7aa3dbcd17fe373f8bd0b463c78db668ebbf4830e3c4227726161accec4e11ece94
             'SKIP'
             'bd4c498d69dbeecf92aa7d879162d2666195b2948aa093ad19d05b50bff95e13c54b7fb46e1c0babcea7bf10dbe356c102c9ec3b77fd27917c0c9fdb928b39df'
             '2eb574fbfac6e334d3b06e52e466dbf8e88034515729b6571990b10f75a0fe2a52f188615405c5a695b5820669e595deead44d7961a97c5872359be3435fdf63'
-            'd66837934c6012aaf26ff63390102b6adba5e1a05dfd86b3a9d1a186c029f97283bf539931c43f66ec37a2993dfcfd6899421cce8258b494c95650904a67643a'
-            'd066e58cb7fc27ac5bff9699d01af1798a28dd11354b346d1171e098c80a08cf68c3fdea6e145fb47a2059ca7a8fef632bc0ad85262087caf579ed46482847bb'
+            '8aac877c0dfcd6796bc217572c8b8c6473ab6b5b15b7cca0e7c0f4e7cbb7080557d32fd045e6608d8acbf98cf7c16834ed0c5de2ce9d9d5dfa0194d055642276'
             '6fee4057f327631109acd846d13f40dfef3613b0aadd41e762cef91c3a294bcec9844b936dd411528ff21d0872bd18a0a905ec8a4b4555e4df9aaa1e20728e9d'
             '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
             '2718b58dbbb15063bacb2bde6489e5b3c59afac4c0e0435b97fe720d42c711b6bcba926f67a8687878bd51373c9cf3adb1915a11666d79ccb220bf36e0788ab7'
