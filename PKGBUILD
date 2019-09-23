@@ -3,13 +3,13 @@
 
 pkgname=('sat-tmp-hg')
 _realname=sat_tmp
-pkgver=0.7.r61.1245269f9aab
+pkgver=0.7.r69.0721b6254c9e
 _version=0.7
 pkgrel=1
 pkgdesc="sat_tmp aims to temporary store files needed by Salut-a-toi (sat). These monkey patchs are not merged upstream yet. For now, only wokkel is impacted."
 url="https://salut-a-toi.org/"
 arch=('any')
-depends=('python2' 'python2-wokkel')
+depends=('python' 'python-wokkel-git')
 makedepends=('mercurial')
 provides=('sat-tmp')
 conflicts=('sat-tmp')
@@ -25,10 +25,10 @@ pkgver() {
 
 build() {
   cd $_realname
-  python2 setup.py build
+  python setup.py build
 }
 
 package(){
   cd $_realname
-  python2 setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
