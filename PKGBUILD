@@ -1,8 +1,8 @@
 # Maintainer: Jean Lucas <jean@4ray.co>
 
 pkgname=python-mailsuite
-pkgver=1.2.1
-_commit=4f87324970a0340107ab96639596b67493e96244 # Upstream does not tag releases - cherry-pick is release version plus updated documentation
+pkgver=1.3.0
+_commit=92dfacb8a4cd5f0fc6e0cd59d056d8aface4bef0 # Untagged release + changelog fix
 pkgrel=1
 pkgdesc='Python package to make receiving, parsing, and sending email easier'
 arch=(any)
@@ -28,7 +28,7 @@ depends=('python-imapclient>=2.1.0'
          python-codecov)
 makedepends=(python-setuptools)
 source=($pkgname-$pkgver.tar.gz::https://github.com/seanthegeek/mailsuite/archive/$_commit.tar.gz)
-sha512sums=('9f95702c6cb0a25262e6243e307b04bc901b45665083d8bbbbbb56336817f501a4f0af207269bda6f9eb8995e4e69852c6d75f31d744a4e3c373f30916cde961')
+sha512sums=('799a044de4e11906032acc94c67265a43314ad4eb07ab40feb1370e16c0a7125dbfb45b8967cd879270d663fc0139499dc19ea6833866cda8927193d36f66d99')
 
 build() {
   cd mailsuite-$_commit
