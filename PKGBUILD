@@ -4,8 +4,8 @@
 
 pkgname=mullvad-vpn-beta
 _pkgname=mullvad-vpn
-pkgver=2019.8.beta
-_pkgver=2019.8-beta1
+pkgver=2019.8.stable
+_pkgver=2019.8
 pkgrel=1
 pkgdesc="VPN Client for Mullvad.net (latest/beta release)."
 _github_url="https://github.com/mullvad/mullvadvpn-app"
@@ -20,7 +20,7 @@ validpgpkeys=("A1198702FC3E0A09A9AE5B75D5A1D4F266DE8DDF")
 source=("https://github.com/mullvad/mullvadvpn-app/releases/download/${_pkgver}/MullvadVPN-${_pkgver}_${arch}.rpm"
         "https://github.com/mullvad/mullvadvpn-app/releases/download/${_pkgver}/MullvadVPN-${_pkgver}_${arch}.rpm.asc")
 
-md5sums=('dea2371a1ee12e5be89ece922aa3b4be'
+md5sums=('e1c7ad82a8cfe126bb0175d820752086'
          'SKIP')
 
 install=$pkgname.install
