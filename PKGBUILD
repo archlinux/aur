@@ -12,6 +12,7 @@ license=('GPL')
 depends=('qt5-declarative' 'xorg-xauth' 'xorg-server')
 makedepends=('extra-cmake-modules' 'python-docutils' 'qt5-tools')
 backup=('usr/share/sddm/scripts/Xsetup'
+        'usr/share/sddm/scripts/Xstop'
         'etc/pam.d/sddm')
 provides=('display-manager')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz"
