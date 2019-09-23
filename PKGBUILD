@@ -1,8 +1,8 @@
 # Maintainer: Jean Lucas <jean@4ray.co>
 
 pkgname=opencorsairlink-testing
-pkgver=0+r217+ga858acd
-_commit=a858acdd65bcf9662ad914dd55513ed18bb0cfa9
+pkgver=0+r219+g99e1d72
+_commit=99e1d72fa5a0f6230f9b8805de663319f3e8f4fd
 pkgrel=1
 pkgdesc='Status and control utility for Corsair Link products (testing branch)'
 arch=(i686 x86_64)

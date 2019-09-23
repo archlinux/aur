@@ -1,6 +1,6 @@
 pkgbase = opencorsairlink-testing
 	pkgdesc = Status and control utility for Corsair Link products (testing branch)
-	pkgver = 0+r217+ga858acd
+	pkgver = 0+r219+g99e1d72
 	pkgrel = 1
 	url = https://github.com/audiohacked/OpenCorsairLink
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = opencorsairlink-testing
 	depends = libusb
 	provides = opencorsairlink
 	conflicts = opencorsairlink
-	source = git+https://github.com/audiohacked/OpenCorsairLink#commit=a858acdd65bcf9662ad914dd55513ed18bb0cfa9
+	source = git+https://github.com/audiohacked/OpenCorsairLink#commit=99e1d72fa5a0f6230f9b8805de663319f3e8f4fd
 	sha512sums = SKIP
 
 pkgname = opencorsairlink-testing
