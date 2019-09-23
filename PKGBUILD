@@ -1,15 +1,15 @@
 # Maintainer: Tom Wadley <tom@tomwadley.net>
 
 pkgname=buildnotify-git
-pkgver=1.0.4.r5.g3a9bb0d
+pkgver=2.0.0.r1.g01a3349
 pkgrel=1
 pkgdesc="A system tray based build status notification app for cctray.xml feeds"
 arch=('any')
 url="https://github.com/anaynayak/buildnotify"
 license=('GPL3')
-depends=('python2' 'python2-pyqt5' 'python2-pytz' 'python2-dateutil')
-optdepends=('python2-keyring: keyring support')
-makedepends=('git' 'python2-setuptools')
+depends=('python' 'python-pytz' 'python-pyqt5' 'python-dateutil' 'python-requests')
+optdepends=('python-keyring: keyring support')
+makedepends=('git' 'python-setuptools')
 conflicts=('buildnotify' 'buildnotify-hg')
 provides=('buildnotify')
 replaces=('buildnotify-hg')
@@ -18,7 +18,7 @@ sha256sums=('SKIP')
 
 _installmodule() {
   pushd "${srcdir}/buildnotify"
-  /usr/bin/python2 setup.py install --root="${pkgdir}/" --optimize=1
+  /usr/bin/python3 setup.py install --root="${pkgdir}/" --optimize=1
   popd
 }
 
