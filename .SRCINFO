@@ -1,0 +1,26 @@
+pkgbase = xdg-utils-terminal-true
+	pkgdesc = A fork of xdg-utils with Terminal=true support
+	pkgver = r772.4aa0178
+	pkgrel = 1
+	url = https://github.com/krystiancha/xdg-utils/
+	arch = any
+	license = MIT
+	makedepends = docbook-xsl
+	makedepends = lynx
+	makedepends = xmlto
+	makedepends = git
+	depends = sh
+	depends = xorg-xset
+	optdepends = kde-cli-tools: for KDE Plasma5 support in xdg-open
+	optdepends = exo: for Xfce support in xdg-open
+	optdepends = xorg-xprop: for Xfce support in xdg-open
+	optdepends = pcmanfm: for LXDE support in xdg-open
+	optdepends = perl-file-mimeinfo: for generic support in xdg-open
+	optdepends = perl-net-dbus: Perl extension to dbus used in xdg-screensaver
+	optdepends = perl-x11-protocol: Perl X11 protocol used in xdg-screensaver
+	conflicts = xdg-utils
+	source = xdg-utils-terminal-true::git+https://github.com/krystiancha/xdg-utils.git#commit=4aa0178de7f0e65430fb12fa1b711a064f48ef5c
+	sha256sums = SKIP
+
+pkgname = xdg-utils-terminal-true-git
+
