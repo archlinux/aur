@@ -5,7 +5,7 @@
 pkgbase=dotnet-core-preview
 pkgname=('dotnet-host-preview' 'dotnet-runtime-preview' 'aspnet-runtime-preview' 'dotnet-sdk-preview')
 pkgver=3.0.0+100+rc1.014190
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://www.microsoft.com/net/core'
 license=('MIT')
@@ -23,7 +23,7 @@ sha256sums=('4429853c24e054cd8ec0e471a41682da591888b9652d24021c761c0ba6be8d7f'
 
 package_dotnet-host-preview() {
   pkgdesc='A generic driver for the .NET Core Command Line Interface (preview)'
-  provides=('dotnet-host')
+  provides=("dotnet-host=${pkgver%+*}")
   conflicts=('dotnet-host')
 
   install -dm 755 "${pkgdir}"/{opt/dotnet,usr/share/licenses/dotnet-host-preview}
@@ -37,8 +37,7 @@ package_dotnet-runtime-preview() {
   depends=('dotnet-host-preview' 'icu' 'krb5' 'libunwind' 'openssl' 'zlib'
            'libcurl.so')
   optdepends=('lttng-ust: CoreCLR tracing')
-  provides=('dotnet-runtime-3.0')
-  conflicts=('dotnet-runtime-3.0')
+  provides=("dotnet-runtime=${pkgver%+*}")
 
   install -dm 755 "${pkgdir}"/{opt/dotnet/shared,usr/share/licenses}
   cp -dr --no-preserve='ownership' shared/Microsoft.NETCore.App "${pkgdir}"/opt/dotnet/shared/
@@ -48,8 +47,7 @@ package_dotnet-runtime-preview() {
 package_aspnet-runtime-preview() {
   pkgdesc='The ASP.NET Core runtime (preview)'
   depends=('dotnet-runtime-preview')
-  provides=('aspnet-runtime-3.0')
-  conflicts=('aspnet-runtime-3.0')
+  provides=("aspnet-runtime=${pkgver%+*}")
 
   install -dm 755 "${pkgdir}"/{opt/dotnet/shared,usr/share/licenses}
   cp -dr --no-preserve='ownership' shared/Microsoft.AspNetCore.App "${pkgdir}"/opt/dotnet/shared/
@@ -59,8 +57,7 @@ package_aspnet-runtime-preview() {
 package_dotnet-sdk-preview() {
   pkgdesc='The .NET Core SDK (preview)'
   depends=('dotnet-runtime-preview')
-  provides=('dotnet-sdk-3.0')
-  conflicts=('dotnet-sdk-3.0')
+  provides=("dotnet-sdk=${pkgver%+*}")
 
   install -dm 755 "${pkgdir}"/{opt/dotnet,usr/share/licenses}
   cp -dr --no-preserve='ownership' packs sdk templates "${pkgdir}"/opt/dotnet/

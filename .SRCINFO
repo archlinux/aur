@@ -1,6 +1,6 @@
 pkgbase = dotnet-core-preview
 	pkgver = 3.0.0+100+rc1.014190
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.microsoft.com/net/core
 	arch = x86_64
 	license = MIT
@@ -24,7 +24,7 @@ pkgbase = dotnet-core-preview
 
 pkgname = dotnet-host-preview
 	pkgdesc = A generic driver for the .NET Core Command Line Interface (preview)
-	provides = dotnet-host
+	provides = dotnet-host=3.0.0+100
 	conflicts = dotnet-host
 
 pkgname = dotnet-runtime-preview
@@ -37,18 +37,15 @@ pkgname = dotnet-runtime-preview
 	depends = zlib
 	depends = libcurl.so
 	optdepends = lttng-ust: CoreCLR tracing
-	provides = dotnet-runtime-3.0
-	conflicts = dotnet-runtime-3.0
+	provides = dotnet-runtime=3.0.0+100
 
 pkgname = aspnet-runtime-preview
 	pkgdesc = The ASP.NET Core runtime (preview)
 	depends = dotnet-runtime-preview
-	provides = aspnet-runtime-3.0
-	conflicts = aspnet-runtime-3.0
+	provides = aspnet-runtime=3.0.0+100
 
 pkgname = dotnet-sdk-preview
 	pkgdesc = The .NET Core SDK (preview)
 	depends = dotnet-runtime-preview
-	provides = dotnet-sdk-3.0
-	conflicts = dotnet-sdk-3.0
+	provides = dotnet-sdk=3.0.0+100
 
