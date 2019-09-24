@@ -28,5 +28,5 @@ package() {
 	cd "$pkgdir/" || exit
 	mkdir -p usr/local/bin
 	ln -s "/opt/jrnl-venv-bin/venv/bin/jrnl" "$pkgdir/usr/local/bin/jrnl"
-	sed -i "1s/.*/#!/opt/jrnl-venv-bin/venv/bin/python/" "opt/jrnl-venv-bin/venv/bin/jrnl"
+	sed -i "1s/.*/#!\/opt\/jrnl-venv-bin\/venv\/bin\/python/" "opt/jrnl-venv-bin/venv/bin/jrnl"
 }
