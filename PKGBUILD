@@ -2,13 +2,13 @@
 # Contributor: Florian Hahn <flo@fhahn.com>
 
 pkgname=neovim-git
-pkgver=0.4.0.r23.gafd576ee9
+pkgver=0.4.0.r56.g0ab7da856
 pkgrel=1
 pkgdesc='Fork of Vim aiming to improve user experience, plugins, and GUIs.'
 arch=('i686' 'x86_64' 'armv7h' 'armv6h')
 url='https://neovim.io'
 license=('custom:neovim')
-depends=('jemalloc' 'libluv' 'libtermkey' 'libuv' 'luajit' 'libvterm>=0.1.git5' 'msgpack-c' 'unibilium')
+depends=('libluv' 'libtermkey' 'libuv' 'luajit' 'libvterm>=0.1.git5' 'msgpack-c' 'unibilium')
 makedepends=('cmake' 'git' 'gperf' 'lua51-mpack' 'lua51-lpeg')
 optdepends=('python2-neovim: for Python 2 plugin support (see :help provider-python)'
             'python-neovim: for Python 3 plugin support (see :help provider-python)'
@@ -33,7 +33,6 @@ build() {
   cmake -G 'Unix Makefiles' \
         -DCMAKE_BUILD_TYPE=RelWithDebInfo \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DENABLE_JEMALLOC=ON \
         ..
   make
 }
