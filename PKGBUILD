@@ -27,5 +27,6 @@ package() {
 	cp -r "$srcdir/jrnl-venv-bin" "$pkgdir/opt/jrnl-venv-bin"
 	cd "$pkgdir/" || exit
 	mkdir -p usr/local/bin
-	ln -s "$prgdir/opt/jrnl-venv-bin/venv/bin/jrnl" "$pkgdir/usr/local/bin/jrnl"
+	ln -s "/opt/jrnl-venv-bin/venv/bin/jrnl" "$pkgdir/usr/local/bin/jrnl"
+	sed -i "1s/.*/#!/opt/jrnl-venv-bin/venv/bin/python/" "opt/jrnl-venv-bin/venv/bin/jrnl"
 }
