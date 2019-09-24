@@ -2,12 +2,12 @@
 
 pkgname=plata-theme
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A Gtk+ theme based on Material Design Refresh'
 arch=('any')
 url='https://gitlab.com/tista500/plata-theme'
 license=('CCPL' 'GPL2')
-makedepends=('git' 'inkscape' 'libxml2' 'parallel' 'sassc' 'zip')
+makedepends=('git' 'inkscape' 'libxml2' 'parallel' 'sassc' 'zip' 'marco')
 optdepends=('gtk-engine-murrine: for gtk2 themes'
             'ttf-roboto: Recommended font')
 source=("git+https://gitlab.com/tista500/plata-theme.git#tag=${pkgver}")
@@ -21,7 +21,6 @@ build() {
     --enable-parallel \
     --enable-plank \
     --enable-telegram \
-    --disable-mate \
     --enable-airforsteam
   make
 }
