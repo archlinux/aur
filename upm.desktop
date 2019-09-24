@@ -1,8 +1,0 @@
-[Desktop Entry]
-Name=upm
-Comment=Universal Password Manager
-Type=Application
-Icon=upm
-Exec=upm %f
-Terminal=false
-Categories=Application;Utility;Java;
