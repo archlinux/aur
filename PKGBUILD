@@ -1,7 +1,7 @@
 # Contributor: tuftedocelot <tuftedocelot@fastmail.fm>
 
 pkgname=('python-filterpy' 'python2-filterpy')
-pkgver=0.1.5
+pkgver=1.4.5
 pkgrel=1
 pkgdesc='Kalman filtering and optimal estimation library in Python.'
 arch=('any')
@@ -9,7 +9,7 @@ url='https://github.com/rlabbe/filterpy'
 license=('MIT')
 makedepends=('python-setuptools' 'python-numpy' 'python-scipy' 'python-matplotlib')
 source=("https://github.com/rlabbe/filterpy/archive/$pkgver.tar.gz")
-sha256sums=('13f083c0898f507a4725d1e026867089ff248fc8e736da6e74d00512ae65d008')
+sha256sums=('fc371ad800ca5a5ff8b8352894a09c353b794ccc8b813c03d5187df451ccef3a')
 
 package_python-filterpy() {
   cd "$srcdir"/filterpy-$pkgver
