@@ -1,0 +1,19 @@
+pkgbase = qalculate-gtk-git
+	pkgdesc = GTK frontend for libqalculate
+	pkgver = r387.ac03bc3
+	pkgrel = 1
+	url = https://qalculate.github.io/
+	arch = x86_64
+	license = GPL
+	makedepends = intltool
+	makedepends = rarian
+	depends = libqalculate
+	depends = gtk3
+	optdepends = yelp: for displaying the help
+	provides = qalculate-gtk-git
+	conflicts = qalculate-gtk-git
+	source = git+https://github.com/Qalculate/qalculate-gtk.git
+	md5sums = SKIP
+
+pkgname = qalculate-gtk-git
+
