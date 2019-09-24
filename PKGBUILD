@@ -9,7 +9,7 @@ arch=("any")
 url="http://archiva.apache.org/"
 license=("Apache")
 depends=("java-runtime-headless>=7")
-source=("http://www.us.apache.org/dist/archiva/$pkgver/binaries/apache-archiva-$pkgver-bin.tar.gz"
+source=("https://www.apache.org/dist/archiva/$pkgver/binaries/apache-archiva-$pkgver-bin.tar.gz"
         "archiva.service")
 md5sums=('597aeb9f42e634ae58256fb99997040f'
          'd741d8899541001f6ab062b2772428e4')
