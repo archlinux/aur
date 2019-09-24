@@ -1,4 +1,4 @@
-From 1fd38e9b4726d0db9a769176a6464d6a2ae83237 Mon Sep 17 00:00:00 2001
+From 40e1b18877127d29970a19c95932ec60a3974e66 Mon Sep 17 00:00:00 2001
 From: Paul Gideon Dann <pdgiddie@gmail.com>
 Date: Tue, 9 Aug 2016 15:02:53 +0100
 Subject: [PATCH 3/4] Apply subpixel rendering in Cairo Backend
@@ -191,10 +191,10 @@ index 68927636..c21229a7 100644
    glyphs = nullptr;
    if (use_show_text_glyphs) {
 diff --git a/poppler/Gfx.cc b/poppler/Gfx.cc
-index a9b93b61..c84a09d5 100644
+index 47627ad3..d48a4b0c 100644
 --- a/poppler/Gfx.cc
 +++ b/poppler/Gfx.cc
-@@ -4610,6 +4610,47 @@ void Gfx::doImage(Object *ref, Stream *str, bool inlineImg) {
+@@ -4603,6 +4603,47 @@ void Gfx::doImage(Object *ref, Stream *str, bool inlineImg) {
    error(errSyntaxError, getPos(), "Bad image parameters");
  }
  
@@ -295,5 +295,5 @@ index 01f056f9..d6547a79 100644
    Object getAnnotsObject(XRef *xrefA = nullptr) { return annotsObj.fetch(xrefA ? xrefA : xref); }
    // Add a new annotation to the page
 -- 
-2.22.0
+2.23.0
 

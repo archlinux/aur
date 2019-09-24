@@ -1,4 +1,4 @@
-From caf6c676532d5767f7d52d589f2d1569f2554af9 Mon Sep 17 00:00:00 2001
+From ca21442edf7ec79c8662f6cfadc2fb8b882a9092 Mon Sep 17 00:00:00 2001
 From: Paul Gideon Dann <pdgiddie@gmail.com>
 Date: Wed, 4 Apr 2018 16:36:56 +0100
 Subject: [PATCH 1/4] Cairo backend added to Qt5 wrapper
@@ -12,7 +12,7 @@ Subject: [PATCH 1/4] Cairo backend added to Qt5 wrapper
  5 files changed, 95 insertions(+), 1 deletion(-)
 
 diff --git a/qt5/src/CMakeLists.txt b/qt5/src/CMakeLists.txt
-index e3b60fcb..a32b6799 100644
+index ca1f2478..af19e065 100644
 --- a/qt5/src/CMakeLists.txt
 +++ b/qt5/src/CMakeLists.txt
 @@ -8,6 +8,11 @@ include_directories(
@@ -39,7 +39,7 @@ index e3b60fcb..a32b6799 100644
 +  )
 +endif(HAVE_CAIRO)
  add_library(poppler-qt5 ${poppler_qt5_SRCS})
- set_target_properties(poppler-qt5 PROPERTIES VERSION 1.20.0 SOVERSION 1)
+ set_target_properties(poppler-qt5 PROPERTIES VERSION 1.21.0 SOVERSION 1)
  if(MINGW AND BUILD_SHARED_LIBS)
 @@ -45,6 +57,9 @@ if(MINGW AND BUILD_SHARED_LIBS)
      set_target_properties(poppler-qt5 PROPERTIES SUFFIX "-${POPPLER_QT5_SOVERSION}${CMAKE_SHARED_LIBRARY_SUFFIX}")
@@ -66,7 +66,7 @@ index 81db4eaf..635e44f9 100644
      }
  
 diff --git a/qt5/src/poppler-page.cc b/qt5/src/poppler-page.cc
-index bf1f8889..592da057 100644
+index c4d00a6b..92aa0e8a 100644
 --- a/qt5/src/poppler-page.cc
 +++ b/qt5/src/poppler-page.cc
 @@ -48,6 +48,7 @@
@@ -168,10 +168,10 @@ index bf1f8889..592da057 100644
    return false;
  }
 diff --git a/qt5/src/poppler-qt5.h b/qt5/src/poppler-qt5.h
-index ebbc456a..37adf71a 100644
+index 847671ea..117efa1e 100644
 --- a/qt5/src/poppler-qt5.h
 +++ b/qt5/src/poppler-qt5.h
-@@ -1144,7 +1144,8 @@ delete it;
+@@ -1151,7 +1151,8 @@ delete it;
  	*/
  	enum RenderBackend {
  	    SplashBackend,   ///< Splash backend
@@ -198,5 +198,5 @@ index 5abcbc45..99c12b9f 100644
  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${Qt5Gui_EXECUTABLE_COMPILE_FLAGS}")
  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${Qt5Xml_EXECUTABLE_COMPILE_FLAGS}")
 -- 
-2.22.0
+2.23.0
 
