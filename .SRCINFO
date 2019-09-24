@@ -1,0 +1,15 @@
+pkgbase = ovpnsplit
+	pkgdesc = OpenVPN config file splitter for NetworkManager UI
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/dolanor/ovpnsplit/
+	arch = x86_64
+	arch = i686
+	license = unknown
+	source_x86_64 = ovpnsplit-0.2.0::https://github.com/dolanor/ovpnsplit/releases/download/v0.2.0/ovpnsplit.x64
+	md5sums_x86_64 = SKIP
+	source_i686 = ovpnsplit-0.2.0::https://github.com/dolanor/ovpnsplit/releases/download/v0.2.0/ovpnsplit.386
+	md5sums_i686 = SKIP
+
+pkgname = ovpnsplit
+
