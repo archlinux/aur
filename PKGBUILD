@@ -1,5 +1,4 @@
-#Maintainer: Carlos Franke <carlos_franke at carlosfranke dot net>
-#Contributor: Kyle Keen <keenerd@gmail.com>
+#Maintainer: Liam Timms <timms5000@gmail.com>
 
 _pkgname=neurdflib
 pkgname=python-$_pkgname
