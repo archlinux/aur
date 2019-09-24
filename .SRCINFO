@@ -9,7 +9,6 @@ pkgbase = vita3k-git
 	makedepends = cmake
 	makedepends = git
 	makedepends = python2
-	makedepends = rsync
 	depends = sdl2
 	provides = vita3k
 	conflicts = vita3k

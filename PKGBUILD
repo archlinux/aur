@@ -13,7 +13,6 @@ makedepends=(
 	'cmake'
 	'git'
 	'python2'
-	'rsync'
 )
 depends=(
 	'sdl2'
