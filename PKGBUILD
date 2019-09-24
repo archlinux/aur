@@ -1,0 +1,37 @@
+
+pkgname=arduino-avr-core-rc
+pkgver=1.8.1
+pkgrel=1
+pkgdesc="Arduino AVR core with upstream avr-gcc and avrdude -- stable and release candidates"
+arch=('any')
+url="https://github.com/arduino/ArduinoCore-avr"
+license=('GPL')
+provides=('arduino-avr-core')
+conflicts=('arduino-avr-core')
+depends=('avrdude' 'avr-gcc' 'avr-libc')
+options=(!strip !emptydirs)
+source=("https://github.com/arduino/ArduinoCore-avr/archive/1.8.1.tar.gz"
+        "platform.patch")
+sha512sums=('47743c97eda889294a0abe0839989800e8ba64be4278a14acf9fc76afc142f0c46ef8c13350dae552ad4ad042576ede209ef3f413f8e6c50c8565ec8b4152e27'
+            '34bdd71d8796682ddd1a57e4ef38b2dc4557656f32528af3caa96e6d6f803b6982b9edf044294c2af9478c5ca3dbb6567faa6d24aa97228173e38f7a139b3b68')
+validpgpkeys=('326567C1C6B288DF32CB061A95FA6F43E21188C4') # Arduino Packages <support@arduino.cc>
+
+prepare()
+{
+    # Prepare arduino avr core to be used with internal avr-gcc
+    cd "${srcdir}/ArduinoCore-avr-${pkgver}"
+
+    # Update version in patchfile, then apply it
+    sed -i "s/^version=.*/ version=${pkgver}/" "${srcdir}/platform.patch"
+    patch -Np1 -i "${srcdir}/platform.patch"
+
+    # Remove elf files
+    find . -name "*.elf" -type f -exec rm -f {} \;
+    find . -name "*.a" -type f -exec rm -f {} \;
+}
+
+package() {
+    # Copy archlinux arduino avr core
+    install -dm755 "${pkgdir}/usr/share/arduino/hardware/archlinux-arduino"
+    cp -a "${srcdir}/ArduinoCore-avr-${pkgver}" "${pkgdir}/usr/share/arduino/hardware/archlinux-arduino"
+}
