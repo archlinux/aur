@@ -2,7 +2,7 @@
 
 pkgname=python2-ws4py
 _ghname=WebSocket-for-Python
-pkgver=0.4.2
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="WebSocket library for Python"
 arch=('any')
@@ -16,7 +16,7 @@ optdepends=('python2-cherrypy: CherryPy server'
 conflicts=('python2-ws4py-git')
 provides=('python2-ws4py')
 source=("https://github.com/Lawouach/${_ghname}/archive/${pkgver}.tar.gz")
-md5sums=('620019d917d1b6adcf0cff017b19b119')
+md5sums=('7fe98bebe2f86ce461805b04b29bf1da')
 
 package() {
   cd "$srcdir/${_ghname}-${pkgver}"
