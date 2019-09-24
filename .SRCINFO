@@ -1,0 +1,13 @@
+pkgbase = gpup
+	pkgdesc = A command to upload photos and movies to your Google Photos Library
+	pkgver = 1.6.1
+	pkgrel = 1
+	url = https://github.com/int128/gpup
+	arch = x86_64
+	license = Apache
+	makedepends = go-pie
+	source = https://github.com/int128/gpup/archive/1.6.1.tar.gz
+	sha256sums = c36490c8ecb0f1b68d4e5947a45a03398f376d666f8037e6be43dd7bf95f901d
+
+pkgname = gpup
+
