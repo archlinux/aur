@@ -62,10 +62,10 @@ _enable_acs_override="y"
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
-_major=5.2
-_minor=17
+_major=5.3
+_minor=1
 _srcname=linux-${_major}
-_clr=${_major}.11-830
+_clr=${_major}.1-838
 pkgbase=linux-clear
 pkgver=${_major}.${_minor}
 pkgrel=1
@@ -105,7 +105,7 @@ prepare() {
         echo "$_kernelname" > localversion.20-pkgname
 
     ### Add Clearlinux patches
-        for i in $(grep '^Patch' ${srcdir}/clearlinux/linux.spec | grep -Ev '^Patch0125' | sed -n 's/.*: //p'); do
+        for i in $(grep '^Patch' ${srcdir}/clearlinux/linux.spec | grep -Ev '^Patch0123' | sed -n 's/.*: //p'); do
         msg2 "Applying patch ${i}..."
         patch -Np1 -i "$srcdir/clearlinux/${i}"
         done
@@ -332,9 +332,9 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha256sums=('54ad66f672e1a831b574f5e704e8a05f1e6180a8245d4bdd811208a6cb0ac1e7'
+sha256sums=('78f3c397513cf4ff0f96aa7d09a921d003e08fa97c09e0bb71d88211b40567b2'
             'SKIP'
-            'c8d37e6f32f724af78e65253bd03e65ea8303560156b3b17740a613d44b6e7cb'
+            '84cf9ac904a4af41c23b1830ea98872e43f014fe7daba3e295e45e7381024d34'
             'SKIP'
             '8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5'
             'dbf4ac4b873ce6972e63b78d74ddba18f2701716163bb7f4b4fe5e909346a6e1'
