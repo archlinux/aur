@@ -10,7 +10,7 @@ pkgbase = python-prov
 	depends = python-dateutil
 	depends = python-six
 	depends = python-pydot
-	depends = python-rdflib
+	depends = python-neurdflib
 	source = python-prov-1.5.2.tar.gz::https://github.com/trungdong/prov/archive/1.5.2.tar.gz
 	sha1sums = 9a774a50cc5245b0dea3c4837986d1c2555a89c6
 
