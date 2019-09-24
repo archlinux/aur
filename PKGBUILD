@@ -3,7 +3,7 @@
 _target=sh-elf
 pkgname=$_target-newlib
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 _upstream_ver=$pkgver
 pkgdesc='A C standard library implementation intended for use on embedded systems (SuperH)'
 arch=(any)
@@ -11,7 +11,7 @@ url='http://www.sourceware.org/newlib/'
 license=(BSD)
 makedepends=($_target-gcc)
 options=(!emptydirs !strip)
-source=(ftp://sourceware.org/pub/newlib/newlib-$_upstream_ver.tar.gz)
+source=(https://sourceware.org/pub/newlib/newlib-$_upstream_ver.tar.gz)
 sha256sums=('fb4fa1cc21e9060719208300a61420e4089d6de6ef59cf533b57fe74801d102a')
 
 build() {
@@ -22,10 +22,12 @@ build() {
   ../newlib-$_upstream_ver/configure \
     --target=$_target \
     --prefix=/usr \
-    --disable-newlib-supplied-syscalls \
-    --disable-nls \
     --enable-newlib-io-long-long \
-    --enable-newlib-register-fini
+    --enable-newlib-io-c99-formats \
+    --enable-newlib-register-fini \
+    --enable-newlib-retargetable-locking \
+    --disable-newlib-supplied-syscalls \
+    --disable-nls
   make
 
 }
