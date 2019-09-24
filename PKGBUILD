@@ -18,8 +18,8 @@ conflicts=('libnvidia-container')
 
 source=("https://nvidia.github.io/libnvidia-container/centos7/$CARCH/${_pkgname}1-${pkgver}-1.$CARCH.rpm"
         "https://nvidia.github.io/libnvidia-container/centos7/$CARCH/${_pkgname}-devel-${pkgver}-1.$CARCH.rpm")
-sha256sums=('add6a40c4f112bc13a3f6640dc26b6495ae6441058f57804463bdf23f16f2d8f'
-            '588edc96d038bcb83a2eca0fdb625226acc7da6960b765c76795dda4aceb12e4')
+sha256sums=('52c1965472786eaf147d1a44979e8630dc0298eda4c40ae85d6bf041f9217472'
+            '058ce71df31966642709a08e0b9f9b8f6a57478881bc6aa42070e2c3fbb5e621')
 
 package() {
   cd "$srcdir"
