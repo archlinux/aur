@@ -7,6 +7,8 @@ pkgdesc="Arduino prototyping platform SDK -- stable and release candidates"
 arch=('x86_64')
 url="https://github.com/arduino/Arduino"
 license=('GPL' 'LGPL')
+conflicts=('arduino')
+provides=('arduino')
 depends=('gtk2' 'desktop-file-utils' 'shared-mime-info' 'java-runtime>=8' 'arduino-builder')
 makedepends=('java-environment>=8' 'ant' 'unzip')
 optdepends=('arduino-docs: Offline documentation for arduino'
