@@ -1,7 +1,7 @@
 pkgbase = gitin
 	pkgdesc = Commit/branch/workdir explorer for git
 	pkgver = 0.2.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/isacikgoz/gitin
 	arch = x86_64
 	license = BSD
@@ -9,6 +9,7 @@ pkgbase = gitin
 	makedepends = git
 	makedepends = cmake
 	depends = libgit2=1:0.27.8
+	depends = libgit2-glib=0.27.8
 	source = gitin-0.2.3.tar.gz::https://github.com/isacikgoz/gitin/archive/v0.2.3.tar.gz
 	source = libgit2-0.27.8.tar.gz::https://github.com/libgit2/libgit2/archive/v0.27.8.tar.gz
 	sha256sums = 65bc6f56ef9c8527763ef72d4a334238dbcb60ce2962c319af169236f136b39e

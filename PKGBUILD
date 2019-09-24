@@ -1,12 +1,12 @@
 # Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
 pkgname=gitin
 pkgver=0.2.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Commit/branch/workdir explorer for git"
 arch=('x86_64')
 url="https://github.com/isacikgoz/gitin"
 license=('BSD')
-depends=('libgit2=1:0.27.8')
+depends=('libgit2=1:0.27.8' 'libgit2-glib=0.27.8')
 makedepends=('go-pie' 'git' 'cmake')
 _lg2ver=0.27.8
 source=("$pkgname-$pkgver.tar.gz::https://github.com/isacikgoz/$pkgname/archive/v$pkgver.tar.gz"
