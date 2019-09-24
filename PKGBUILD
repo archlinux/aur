@@ -2,12 +2,12 @@
 
 pkgname=splitpath
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Safely split paths in many ways'
 arch=('x86_64')
 url="https://github.com/dino-/splitpath"
 license=('ISC')
-depends=()
+depends=(fuse2)
 makedepends=()
 # This software comes as an AppImage, auto-stripping by the AUR tools breaks it
 options=(!strip)
