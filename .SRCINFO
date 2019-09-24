@@ -1,6 +1,6 @@
 pkgbase = openmsx-catapult-git
 	pkgdesc = Front-end for openMSX: the MSX emulator that aims for perfection.
-	pkgver = 948.d1af24c
+	pkgver = 949.6dd2ef9
 	pkgrel = 1
 	url = http://openmsx.org
 	arch = i686
