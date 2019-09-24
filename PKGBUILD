@@ -2,7 +2,7 @@
 
 pkgname=amdvlk
 pkgver=2019.Q3.6
-pkgrel=1
+pkgrel=2
 
 _llpc_commit=ec210a78b6a280b00fb1765dd588c3970b6dc818
 _xgl_commit=2cb5558b94c5dc839e093cb439057a1802426c8e
@@ -12,7 +12,7 @@ _spvgen_commit=2f31d1170e8a12a66168b23235638c4bbc43ecdc
 _spirvtools_commit=9702d47c6fe4cefbc55f905b0e9966452124b6c2
 _spirvheaders_commit=63d4d272f6e5b3cb9bb2bb50718a886a3eef4dab
 _glslang_commit=3aac2d44b20d2fcedfbded41ca3cfa932b90ae6f
-_metrohash_commit=690a521d9beb2e1050cc8f273fdabc13b31bf8f6
+_metrohash_commit=2b6fee002db6cc92345b02aeee963ebaaf4c0e2f
 _cwpack_commit=b601c88aeca7a7b08becb3d32709de383c8ee428
 
 pkgdesc='Open-source Vulkan driver for AMD Radeon™ graphics adapters'
@@ -45,7 +45,7 @@ sha256sums=('1970d7cdf31e564c7a98737442fc7ed3593da24fb7e4dabe26ec120017aa0538'
             '64820fab5f07b9525ae09afb7bd5c6cd2c898da41026f6517e83e67547bb659c'
             'f128ff27d185fbf7fadb5d498d9f2ca265d5e046025fa262d725dfaa2ab2c030'
             'b3df84c2ea1854ce6004c77348f22ccaa554af44bd1fc1a2e4b4954003aff17a'
-            'a5c1e77efd593853ee93a8f168fb7826baae52ca56df1d46f9ccde3d4e1f6c12'
+            'e8ecf026584dd953e39c3abba2eb04d28b28ed4577482ee70265f0d421fef398'
             '58ca397f33d62bcfecaecd89eb4ad466a6c33e1c619e5cf742822074f1f7d664')
             
 prepare() {
