@@ -1,7 +1,7 @@
 # Maintainer: Michael Yeatts <mwyeatts at gmail dot com>
 
 pkgname=lightning-app
-pkgver=0.5.6
+pkgver=0.5.7
 pkgrel=1
 pkgdesc="Lightning Network Desktop Wallet"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=()
 _appname="Lightning-linux-x86_64v${pkgver}-alpha.AppImage"
 source=("https://github.com/lightninglabs/lightning-app/releases/download/v${pkgver}-alpha/${_appname}")
 noextract=()
-sha512sums=('8cfd170e71e6e7aaf4ded9b8edb289263a6c70d55e9251f98ab416626c5530be6a89d475dcb1d91a26c627267f1df5573d0da0a9be608f5baeb2fdd29886f58d')
+sha512sums=('38530b0c6a973a83f1ab0221106a04295a5bdfd4d78daf1d8825d10dcc539308478e1cfaeb985be335f34ffdbe5db8cfec4c62c557d27ce64261288cff986b30')
 validpgpkeys=()
 
 prepare() {

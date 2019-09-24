@@ -1,12 +1,12 @@
 pkgbase = lightning-app
 	pkgdesc = Lightning Network Desktop Wallet
-	pkgver = 0.5.6
+	pkgver = 0.5.7
 	pkgrel = 1
 	url = https://github.com/lightninglabs/lightning-app
 	arch = x86_64
 	license = GPL
-	source = https://github.com/lightninglabs/lightning-app/releases/download/v0.5.6-alpha/Lightning-linux-x86_64v0.5.6-alpha.AppImage
-	sha512sums = 8cfd170e71e6e7aaf4ded9b8edb289263a6c70d55e9251f98ab416626c5530be6a89d475dcb1d91a26c627267f1df5573d0da0a9be608f5baeb2fdd29886f58d
+	source = https://github.com/lightninglabs/lightning-app/releases/download/v0.5.7-alpha/Lightning-linux-x86_64v0.5.7-alpha.AppImage
+	sha512sums = 38530b0c6a973a83f1ab0221106a04295a5bdfd4d78daf1d8825d10dcc539308478e1cfaeb985be335f34ffdbe5db8cfec4c62c557d27ce64261288cff986b30
 
 pkgname = lightning-app
 
