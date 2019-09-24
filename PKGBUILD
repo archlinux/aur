@@ -2,7 +2,7 @@
 # Contributer: ArielAxionL <i at axionl dot me>
 pkgname=qv2ray-dev-git
 pkgver=1.3.7.1.r0.g75e5e18
-pkgrel=1
+pkgrel=2
 pkgdesc="Qt cross platform v2ray GUI client (Dev branch build release)"
 arch=('x86_64')
 url="https://github.com/lhy0403/Qv2ray"
@@ -11,6 +11,7 @@ depends=('qt5-base' 'hicolor-icon-theme')
 makedepends=('git' 'make' 'qt5-tools')
 optdepends=('v2ray' 'v2ray-domain-list-community' 'v2ray-geoip')
 provides=('qv2ray')
+conflicts=('qv2ray')
 source=("${pkgname}::git+https://github.com/lhy0403/Qv2ray#branch=dev")
 sha512sums=('SKIP')
 
