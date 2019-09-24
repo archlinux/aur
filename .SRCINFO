@@ -6,6 +6,7 @@ pkgbase = forge-server-1.5.2
 	install = forge-server-1.5.2.install
 	arch = any
 	license = custom
+	makedepends = unzip
 	depends = java-runtime-headless=8
 	depends = screen
 	depends = sudo
