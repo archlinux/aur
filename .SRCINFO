@@ -1,7 +1,7 @@
 pkgbase = bauh-staging
 	pkgdesc = Free non-official GUI for Flatpak / Snap / AUR applications management (staging: it is a testing branch which receives updates frequently and may not be working properly)
 	pkgver = 0.6.0.RC
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/vinifmor/bauh
 	arch = any
 	license = zlib/libpng
@@ -14,13 +14,16 @@ pkgbase = bauh-staging
 	depends = python-colorama
 	optdepends = flatpak: to install Flatpaks
 	optdepends = snapd: to install Snaps
-	optdepends = git: to downgrade AUR packages
 	optdepends = pacman: to install AUR packages
 	optdepends = wget: to install AUR packages
+	optdepends = git: to downgrade AUR packages
+	optdepends = aria2c: faster AUR source downloads
+	optdepends = ccache: can improve AUR packages compilation speed
+	optdepends = breeze: for KDE Plasma main theme be available
 	provides = bauh
 	conflicts = bauh
-	source = https://github.com/vinifmor/bauh/archive/0d2770296c04459f4095ff15457314e1139c8353.tar.gz
-	sha512sums = beca5f0be248e4757242fd7be43a490102a0c7f8f830b1b469d7327078d8fb4b73339ec08551f31f8d6e520e5855f84f1b3a46fc2b48d2c379a8b45e7f19e81a
+	source = https://github.com/vinifmor/bauh/archive/497b70181f0b09f801c217f4b697ec4f8ef4cd12.tar.gz
+	sha512sums = 5c3a2728d4918e5fdc8e154b29f563feee987e3bc691d3dde505c54505f3ddfa16a4a78dbe6db6e321a4f4a5ad247a1caedc4c05371d66c31416965e4bd1824e
 
 pkgname = bauh-staging
 

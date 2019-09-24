@@ -2,26 +2,34 @@
 
 pkgname=bauh-staging
 pkgver=0.6.0.RC
-pkgrel=4
+pkgrel=5
+_commit="497b70181f0b09f801c217f4b697ec4f8ef4cd12"
 pkgdesc="Free non-official GUI for Flatpak / Snap / AUR applications management (staging: it is a testing branch which receives updates frequently and may not be working properly)"
 arch=('any')
 url="https://github.com/vinifmor/bauh"
 license=('zlib/libpng')
 depends=('python' 'python-pip' 'python-pyqt5' 'python-requests' 'python-colorama')
-optdepends=('flatpak: to install Flatpaks' 'snapd: to install Snaps' 'git: to downgrade AUR packages' 'pacman: to install AUR packages' 'wget: to install AUR packages')
+optdepends=('flatpak: to install Flatpaks' 
+            'snapd: to install Snaps' 
+            'pacman: to install AUR packages' 
+            'wget: to install AUR packages' 
+            'git: to downgrade AUR packages'
+            'aria2c: faster AUR source downloads'
+            'ccache: can improve AUR packages compilation speed' 
+            'breeze: for KDE Plasma main theme be available')
 makedepends=('git' 'python-setuptools')
 provides=("bauh")
 conflicts=('bauh')
-source=("${url}/archive/0d2770296c04459f4095ff15457314e1139c8353.tar.gz")
-sha512sums=('beca5f0be248e4757242fd7be43a490102a0c7f8f830b1b469d7327078d8fb4b73339ec08551f31f8d6e520e5855f84f1b3a46fc2b48d2c379a8b45e7f19e81a')
+source=("${url}/archive/${_commit}.tar.gz")
+sha512sums=('5c3a2728d4918e5fdc8e154b29f563feee987e3bc691d3dde505c54505f3ddfa16a4a78dbe6db6e321a4f4a5ad247a1caedc4c05371d66c31416965e4bd1824e')
 
 build() {
-  cd "${srcdir}/bauh-0d2770296c04459f4095ff15457314e1139c8353"
+  cd "${srcdir}/bauh-${_commit}"
   python3 setup.py build
 }
 
 package() {
-  cd "${srcdir}/bauh-0d2770296c04459f4095ff15457314e1139c8353"
+  cd "${srcdir}/bauh-${_commit}"
   python3 setup.py install --root="$pkgdir" --optimize=1 || return 1
   python3 aur/panel_entry.py
   python3 aur/tray_entry.py
