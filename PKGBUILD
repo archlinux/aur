@@ -5,7 +5,7 @@
 
 pkgname=activinspire
 pkgver=2.17.68075
-pkgrel=0
+pkgrel=1
 pkgdesc="Presentation Software for use with Promethean Hardware products."
 arch=('x86_64')
 url="https://support.prometheanworld.com/product/activinspire"
@@ -16,9 +16,11 @@ optdepends=('bin32-jre: For using the equation editor'
             'activtools: Tools for Promethean hardware, e.g. calibration or systray monitor')
 source=("http://activsoftware.co.uk/linux/repos/ubuntu/pool/non-oss/a/activinspire/activinspire_${pkgver}-1.amd64_amd64.deb"
         "inspire.sh"
+	    "activityplayer.sh"
         "com.ubuntu.user-interface.gschema.xml")
 md5sums=('59e02cb9f8cd7636507cb4255a7268ec'
          '21ff8944ba388a6b5aab894839745132'
+         '5222bd85f84f45cd1ebc6ccece49d586'
          'e0f2c4078eadd00de8f28159b273e576')
 
 package() {
@@ -31,19 +33,13 @@ package() {
  bsdtar -C "$pkgdir" --exclude=./inspire --exclude=./var --exclude=./etc -xf data.tar.gz
 
  # Use /opt instead of /usr/local/bin for binaries to match Arch packaging standards for large self-contained packages.
- mkdir "$pkgdir"/opt
- ## These are the binaries.
+ install -dm0755 "$pkgdir"/opt
  mv "$pkgdir"/usr/local/bin/activsoftware "$pkgdir"/opt/
- ## This is just a start script, so it can be put into bin alongside inspire.sh.
- install -dm0755 "$pkgdir"/usr/bin
- mv "$pkgdir"/usr/local/bin/activityplayer "$pkgdir"/usr/bin/activityplayer
- rmdir "$pkgdir"/usr/local/bin
- rmdir "$pkgdir"/usr/local
+ rm -r "$pkgdir"/usr/local
  # Because we just changed the paths, now we need to fix the absolute paths that Promethean uses in their files.
  sed -i "s%/usr/local/bin%/usr/bin%" "$pkgdir"/usr/share/applications/activsoftware.desktop
  sed -i "s%/usr/local/bin%/usr/bin%" "$pkgdir"/usr/share/applications/activplayer.desktop
  sed -i "s%/usr/local/bin%/opt%" "$pkgdir"/opt/activsoftware/workbench/activdashboard.sh
- sed -i "s%/usr/local/bin%/opt%" "$pkgdir"/usr/bin/activityplayer
 
  #  Install com.ubuntu.user-interface schema need to launch ActivInspire.
  mkdir "$pkgdir"/usr/share/glib-2.0
@@ -53,8 +49,10 @@ package() {
  # ActivInspire ships with functionality to disable compositing. This should really be handled by the users WM configuration, so we remove that.
  rm "$pkgdir"/usr/share/applications/activsoftware-nc.desktop
 
- # The upstream launch script for ActivInspire only works with Ubuntu, so we replace it with our own.
+ # The upstream launch scripts only work with Ubuntu, so we replace them with our own.
+ install -dm0755 "$pkgdir"/usr/bin
  install -Dm755 inspire.sh "$pkgdir"/usr/bin/inspire
+ install -Dm755 activityplayer.sh "$pkgdir"/usr/bin/activityplayer
 
  # This software attempts to create a lockfile in /var/Promethean/ActivInspire, the path is hardcoded.
  # Since it is started by the user, this directory needs to be world-writable, even if that's a bad idea.
