@@ -1,0 +1,32 @@
+pkgbase = neon-knights-tint2
+	pkgdesc = Tint2rc templates with vivid colors.
+	pkgver = 0.9
+	pkgrel = 1
+	url = https://www.opencode.net/ju1464/Neon_Knights_Themes
+	arch = any
+	groups = neon-knights-themes
+	license = GPL3
+	optdepends = xfce4-appfinder
+	optdepends = volumeicon
+	source = https://www.opencode.net/ju1464/Neon_Knights_Themes/-/archive/master/Neon_Knights_Themes-master.tar.bz2
+	md5sums = 46fab31e31af5c41342ac8b3b119c51d
+	sha256sums = b81ad32d031e32a09760f6667ecf02a95a124bb2b04e1237462a26f987fb37d8
+
+pkgname = neon-knights-tint2-blue
+	pkgdesc = Template at /etc/neon-knights-tint2-blue/NeonKnightsBlue.tint2rc
+
+pkgname = neon-knights-tint2-green
+	pkgdesc = Template at /etc//NeonKnightsGreen.tint2rc
+
+pkgname = neon-knights-tint2-orange
+	pkgdesc = Template at /etc//NeonKnightsOrange.tint2rc
+
+pkgname = neon-knights-tint2-red
+	pkgdesc = Template at /etc//NeonKnightsRed.tint2rc
+
+pkgname = neon-knights-tint2-violet
+	pkgdesc = Template at /etc//NeonKnightsViolet.tint2rc
+
+pkgname = neon-knights-tint2-yellow
+	pkgdesc = Template at /etc//NeonKnightsYellow.tint2rc
+

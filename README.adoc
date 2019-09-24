@@ -1,0 +1,43 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+= Neon Knights Themes - Tint2
+
+[quote]
+Dark gtk themes with vivid colors. Includes Gnome Shell and Unity.
+
+This package includes:
+....
+neon-knights-tint2-blue 0.1
+neon-knights-tint2-green 0.1
+neon-knights-tint2-orange 0.1
+neon-knights-tint2-red 0.1
+neon-knights-tint2-violet 0.1
+neon-knights-tint2-yellow 0.1
+....
+
+Upstream URLs:
+
+- https://www.pling.com/p/1322640/[Pling]
+- https://www.opencode.net/ju1464/Neon_Knights_Themes/-/archive/master/Neon_Knights_Themes-master.tar.bz2[Source tar.bz2]
+- https://www.opencode.net/ju1464/Neon_Knights_Themes.git[Repository]
+
+== Copying
+
+Please refer to link:CREDITS[CREDITS] (copied from upstream) for
+detailed authorial information on package sources.
+
+=== The PKGBUILD
+
+`Copyright (c) 2019 Elias Yuan, GPLv3.0+`
+
+Please refer to link:COPYING[COPYING], or contact
+<mailto:cecilelias.yuan@gmail.com[cecilelias.yuan@gmail.com]>.
+
+This script is free software: you can redistribute it and/or modify it
+under the terms of the GNU General Public License as published by the
+Free Software Foundation, either version 3 of the License, or (at your
+option) any later version.
+
+This script is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details.
