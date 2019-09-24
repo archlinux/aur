@@ -1,6 +1,6 @@
 # Maintainer: Nick Skelsey <nskelsey+zb@gmail.com>
 pkgname=zeek-broker
-pkgver=1.1.2.49
+pkgver=1.2.0.40.gb5aa189
 pkgrel=1
 pkgdesc="The message passing interface for pub/sub brokering with zeek"
 arch=('x86_64')
@@ -17,9 +17,14 @@ prepare() {
     git submodule update --init --recursive
 }
 
+pkgver() {
+    cd "$srcdir/broker"
+    git describe --always | sed 's/^v//;s/dev-/dev/;s/-/./g'
+}
+
 build() {
     cd "$srcdir/broker"
-    ./configure --disable-python --disable-docs --disable-tests --enable-debug
+    ./configure --prefix=/usr --disable-python --disable-docs --disable-tests
     make -j7
 }
 
