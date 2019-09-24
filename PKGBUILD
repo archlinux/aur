@@ -3,7 +3,7 @@
 pkgname=navi
 pkgdesc="An interactive cheatsheet tool for the command-line"
 pkgver=0.9.0
-pkgrel=2
+pkgrel=3
 arch=("any")
 url="https://github.com/denisidoro/navi"
 license=("AGPL-3.0")
