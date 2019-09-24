@@ -3,12 +3,12 @@
 pkgbase=msbuild
 pkgname=('msbuild' 'msbuild-sdkresolver')
 pkgver=16.3+xamarinxplat.2019.08.08.00.55
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://github.com/mono/msbuild"
 license=('MIT')
 depends=('mono>=6.0.0')
-makedepends=('unzip' 'dotnet-host-preview' 'dotnet-sdk-preview')
+makedepends=('unzip' 'dotnet-host>=3.0.0' 'dotnet-sdk>=3.0.0')
 source=("https://download.mono-project.com/sources/msbuild/msbuild-${pkgver}.tar.xz"
         'copy_hostfxr.patch'
         'fix_bashisms.patch'

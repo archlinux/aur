@@ -1,12 +1,12 @@
 pkgbase = msbuild
 	pkgver = 16.3+xamarinxplat.2019.08.08.00.55
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/mono/msbuild
 	arch = x86_64
 	license = MIT
 	makedepends = unzip
-	makedepends = dotnet-host-preview
-	makedepends = dotnet-sdk-preview
+	makedepends = dotnet-host>=3.0.0
+	makedepends = dotnet-sdk>=3.0.0
 	depends = mono>=6.0.0
 	source = https://download.mono-project.com/sources/msbuild/msbuild-16.3+xamarinxplat.2019.08.08.00.55.tar.xz
 	source = copy_hostfxr.patch
