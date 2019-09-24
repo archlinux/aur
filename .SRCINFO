@@ -1,0 +1,14 @@
+pkgbase = jrnl-venv-bin
+	pkgdesc = Collect your thoughts and notes without leaving the command line.
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://jrnl.sh/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = python
+	depends = python-virtualenv
+	depends = python-pip
+
+pkgname = jrnl-venv-bin
+
