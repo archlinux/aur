@@ -1,0 +1,4 @@
+pkg
+src
+terraformer-linux-amd64
+*.tar*
