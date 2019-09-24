@@ -1,0 +1,15 @@
+pkgbase = tk_theme
+	pkgdesc = A library to allow Tkabber docking in the system tray.
+	pkgver = 23
+	pkgrel = 1
+	url = http://tkabber.jabber.ru
+	arch = x86_64
+	license = custom
+	depends = tk
+	depends = libxpm
+	depends = libxmu
+	source = http://tkabber.jabber.ru/files/other/Tk_Theme-23.tgz
+	sha256sums = 0c03694dc89db26d3596a24c8f918bf4d50d7f2b37cf9e1e5c60d2c40ddcdaf0
+
+pkgname = tk_theme
+
