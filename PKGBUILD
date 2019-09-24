@@ -2,7 +2,7 @@
 
 pkgname=haskell-mock
 pkgver=3.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Great Haskell tool to transform text"
 url="https://git.eisfunke.com/software/mock"
 license=("custom:WTFPL")
@@ -10,7 +10,7 @@ arch=("x86_64")
 depends=("haskell-array" "haskell-base" "haskell-binary" "haskell-bytestring" "haskell-deepseq" "haskell-ghc-prim" "haskell-hashable" "haskell-integer-gmp" "haskell-random" "haskell-text" "haskell-time")
 makedepends=("ghc" "haskell-hpack")
 source=("${pkgname}-${pkgver}.tar.gz::https://git.eisfunke.com/software/mock/-/archive/v${pkgver}.tar.gz")
-sha256sums=("6edbc02f09db2107bd61c468c2ddd549e4d4ba5f9dcba79da320c2ed14b5c106")
+sha256sums=("5d202393aeae7b33775b498fb10235c33c28f3b66d00126a4b145035a84bf395")
 
 
 build() {
