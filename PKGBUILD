@@ -1,7 +1,7 @@
 # Maintainer: Tomislav Ivek <tomislav.ivek@gmail.com>
 
 pkgname=('python-node-semver')
-pkgver=0.6.1
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="python version of node-semver"
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=()
 makedepends=('python-setuptools')
 source=(https://github.com/podhmo/python-semver/archive/$pkgver.tar.gz)
-sha512sums=('d1f406d6e82f02c3e0eb0f4e1506279b00e7f31875f45bfbd7f87e6777b46676003bb7b39241bdeae616c6506dd85c60e61217460c55dd5079ea87cd818cd6bc')
+sha512sums=('9e11af16ce7a9a7f2aacd77ff14c8aa574e62bc27f902860b97fda5cc8ee19f54118e90ca39241741da657b87ec2653239b0c4255570ffe4d1ad49e2c9484e74')
 
 build() {
   cd "$srcdir/python-semver-$pkgver"
