@@ -1,10 +1,10 @@
 pkgbase = python-neurdflib
-	pkgdesc = Temporary conveince package from Nipype waiting for merge into the primary rdflib repo
+	pkgdesc = Temporary package from nipype waiting for merge into the primary rdflib repo
 	pkgver = 5.0.0.post1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/RDFLib/rdflib/pull/649
 	arch = any
-	license = GPL3
+	license = BSD
 	depends = python
 	provides = python-rdflib
 	conflicts = python-rdflib
