@@ -1,0 +1,30 @@
+pkgbase = neon-knights-gnome
+	pkgdesc = Dark GNOME themes with vivid colors.
+	pkgver = 0.9
+	pkgrel = 1
+	url = https://www.opencode.net/ju1464/Neon_Knights_Themes
+	arch = any
+	groups = neon-knights-themes
+	license = GPL3
+	source = https://www.opencode.net/ju1464/Neon_Knights_Themes/-/archive/master/Neon_Knights_Themes-master.tar.bz2
+	md5sums = 46fab31e31af5c41342ac8b3b119c51d
+	sha256sums = b81ad32d031e32a09760f6667ecf02a95a124bb2b04e1237462a26f987fb37d8
+
+pkgname = neon-knights-gnome-blue
+	pkgdesc = Dark GNOME theme with vivid blue accents.
+
+pkgname = neon-knights-gnome-green
+	pkgdesc = Dark GNOME theme with vivid green accents.
+
+pkgname = neon-knights-gnome-orange
+	pkgdesc = Dark GNOME theme with vivid orange accents.
+
+pkgname = neon-knights-gnome-red
+	pkgdesc = Dark GNOME theme with vivid red accents.
+
+pkgname = neon-knights-gnome-violet
+	pkgdesc = Dark GNOME theme with vivid violet accents.
+
+pkgname = neon-knights-gnome-yellow
+	pkgdesc = Dark GNOME theme with vivid yellow accents.
+
