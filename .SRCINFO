@@ -1,6 +1,6 @@
 pkgbase = cctbx-bin
 	pkgdesc = The Computational Crystallography Toolbox (cctbx)
-	pkgver = 1820
+	pkgver = 1902
 	pkgrel = 1
 	url = https://cci.lbl.gov/cctbx_docs/index.html
 	arch = x86_64
@@ -8,10 +8,10 @@ pkgbase = cctbx-bin
 	makedepends = fakechroot
 	depends = python2
 	depends = libpng15
-	noextract = cctbx-installer-dev-1820-intel-linux-2.6-x86_64-centos6.tar.gz
+	noextract = cctbx-installer-dev-1902-intel-linux-2.6-x86_64-centos6.tar.gz
 	options = !strip
-	source = http://cci.lbl.gov/cctbx_build/dev-1820/cctbx-installer-dev-1820-intel-linux-2.6-x86_64-centos6.tar.gz
-	sha1sums = be0cf59d329a7603403ecaeafa1e453849e388f8
+	source = http://cci.lbl.gov/cctbx_build/dev-1902/cctbx-installer-dev-1902-intel-linux-2.6-x86_64-centos6.tar.gz
+	sha1sums = 8046536794285436a088f410a2bbe5931123ba99
 
 pkgname = cctbx-bin
 
