@@ -2,23 +2,21 @@
 
 pkgname=python-flake8-docstrings
 _pkgname=flake8-docstrings
-pkgver=1.3.0
-_commit=343a54020815e526100f747b7b391fd5b08c92ea
-pkgrel=2
+pkgver=1.4.0
+pkgrel=1
 pkgdesc="A plugin to flake8 to include checks provided by pydocstyle"
 arch=('any')
 url="https://gitlab.com/pycqa/flake8-docstrings"
 license=('MIT')
 depends=('flake8' 'python-pydocstyle' 'python-flake8-polyfill')
 makedepends=('python-setuptools')
-source=("https://gitlab.com/pycqa/$_pkgname/-/archive/$_commit/$_pkgname-$_commit.tar.gz")
-sha256sums=('be225a2f0b2a5a19f6c9b688fe493d533dce1f2bcb92787932ff9a940ccb9e5f')
+source=(""https://gitlab.com/pycqa/$_pkgname/-/archive/$pkgver/$_pkgname-$pkgver.tar.gz"")
+sha256sums=('ba81e9fdc83266b4341bd385e42f834b4b2b001dbfb9deda3fc608d65b347361')
 
 package() {
-  cd "$_pkgname-$_commit"
+  cd "$_pkgname-$pkgver"
 
   python setup.py install --root="$pkgdir/" --optimize=1
 
   install -Dm 644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-
