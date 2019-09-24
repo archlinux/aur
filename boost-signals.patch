@@ -1,0 +1,12 @@
+--- CMakeLists.txt	2019-09-23 15:58:44.273534387 +0800
++++ CMakeLists.txt.patch	2019-09-23 15:59:23.280408275 +0800
+@@ -14,7 +14,7 @@
+         )
+ 
+ 
+-find_package(Boost REQUIRED COMPONENTS signals)
++find_package(Boost REQUIRED COMPONENTS)
+ 
+ catkin_package(
+     CATKIN_DEPENDS
+

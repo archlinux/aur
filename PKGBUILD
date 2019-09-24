@@ -6,7 +6,7 @@ pkgname='ros-kinetic-fake-localization'
 pkgver='1.14.2'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-kinetic-rospy
@@ -38,8 +38,15 @@ depends=(${ros_depends[@]})
 
 # Tarball version (faster download)
 _dir="navigation-release-release-kinetic-fake_localization-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/navigation-release/archive/release/kinetic/fake_localization/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('03d6633f9bf6e69a26f672b0e26d5f9d9bd94a9e13a1190a3f9f7b74a1364956')
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/navigation-release/archive/release/kinetic/fake_localization/${pkgver}-${_pkgver_patch}.tar.gz"
+        boost-signals.patch)
+sha256sums=('03d6633f9bf6e69a26f672b0e26d5f9d9bd94a9e13a1190a3f9f7b74a1364956'
+            '628f535fb481bfbe278af66fdee58511c85db117b4f084a3100e57125a7acfbe')
+
+prepare() {
+  cd "${srcdir}/${_dir}"
+  patch -i "${srcdir}/boost-signals.patch" # https://bitbucket.org/osrf/gazebo/issues/2577/boost-signals-library-removed-in-boost-169
+}
 
 build() {
   # Use ROS environment variables
