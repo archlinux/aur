@@ -3,7 +3,7 @@
 _fontname=spleen
 
 pkgname=bdf-spleen
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Monospaced bitmap fonts"
 arch=('any')
@@ -14,7 +14,7 @@ source=(
   "https://github.com/fcambus/spleen/releases/download/${pkgver}/spleen-${pkgver}.tar.gz"
 )
 sha256sums=(
-  '13bc2918c56de8d542204186de3425837ad8041c651c351de354b961956b4df2'
+  '77639c5a007c1e915aabf1faf9dd2434ccef9ab9e1a49b1ab04527fa9a4742f9'
 )
 
 package() {
