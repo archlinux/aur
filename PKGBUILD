@@ -1,7 +1,7 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=gst-plugins-openh264
 _pkgname=gst-plugins-bad
-pkgver=1.16.0
+pkgver=1.16.1
 pkgrel=1
 pkgdesc="GStreamer open-source multimedia framework OpenH264 plugins"
 url="https://gstreamer.freedesktop.org/"
@@ -9,13 +9,11 @@ arch=(x86_64)
 license=(LGPL)
 depends=(gst-plugins-base-libs openh264)
 makedepends=(meson)
-_commit=5fde70bb63a1cbf6f734fb2429e74ffb53126217  # tags/1.16.0^0
+_commit=c3c54aad2d45fb246a9b9e8a5e05488c15c27173  # tags/1.16.1^0
 source=("git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-bad.git#commit=$_commit"
-        gst-common::git+https://gitlab.freedesktop.org/gstreamer/common.git
-        "https://gitlab.freedesktop.org/gstreamer/gst-plugins-bad/commit/d2f6facbfb89f13a891e710b44e1561570de006a.patch")
+        gst-common::git+https://gitlab.freedesktop.org/gstreamer/common.git)
 sha256sums=('SKIP'
-            'SKIP'
-            'df6ed6eca92a3ca49a0c98ca3ea2390a66801923d6dacb25765861a66e1fb14c')
+            'SKIP')
 
 pkgver() {
   cd $_pkgname
@@ -28,8 +26,6 @@ prepare() {
   git submodule init
   git config --local submodule.common.url "$srcdir/gst-common"
   git submodule update
-
-  patch -Np1 < ../d2f6facbfb89f13a891e710b44e1561570de006a.patch
 }
 
 build() {
