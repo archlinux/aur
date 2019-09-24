@@ -1,6 +1,6 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-gst-libav
-pkgver=1.16.0
+pkgver=1.16.1
 pkgrel=1
 pkgdesc="GStreamer Multimedia Framework ffmpeg Plugin (mingw-w64)"
 arch=(any)
@@ -11,7 +11,7 @@ makedepends=('mingw-w64-meson' 'yasm')
 options=('!strip' '!buildflags' 'staticlibs')
 
 source=("${url}src/gst-libav/gst-libav-${pkgver}.tar.xz")
-sha256sums=('dfac119043a9cfdcacd7acde77f674ab172cf2537b5812be52f49e9cddc53d9a')
+sha256sums=('e8a5748ae9a4a7be9696512182ea9ffa6efe0be9b7976916548e9d4381ca61c4')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -32,7 +32,6 @@ package() {
   for _arch in ${_architectures}; do
     DESTDIR="${pkgdir}" ninja -C "${srcdir}/gst-libav-${pkgver}/build-${_arch}" install
   done
-
 }
 
 # vim: ts=2 sw=2 et:
