@@ -1,0 +1,19 @@
+pkgbase = lexbor-git
+	pkgdesc = Web browser engine library with no extra dependencies.
+	pkgver = 0.2.0.r56.gf56cb7f
+	pkgrel = 1
+	url = https://lexbor.com/
+	arch = x86_64
+	license = APACHE
+	makedepends = cmake
+	makedepends = git
+	makedepends = make
+	depends = glibc
+	provides = lexbor
+	conflicts = lexbor
+	options = staticlibs
+	source = git+https://github.com/lexbor/lexbor.git
+	md5sums = SKIP
+
+pkgname = lexbor-git
+
