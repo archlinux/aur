@@ -2,14 +2,14 @@
 
 pkgname=qvault
 pkgver=0.2.7
-pkgrel=2
+pkgrel=3
 pkgdesc="An open source, fully transparent and extremely secure password manager"
 arch=('any')
 url="https://qvault.io"
-options=('!strip')
 license=('MIT')
-depends=('electron' 'yarn' 'npm')
-source=("https://github.com/Q-Vault/qvault/archive/v${pkgver}.tar.gz"
+depends=('electron')
+makedepends=('yarn' 'npm')
+source=("${pkgname}-${pkgver}::https://github.com/Q-Vault/qvault/archive/v${pkgver}.tar.gz"
 	'qvault.desktop'
 	'qvault'
 	'electron.patch'
@@ -32,14 +32,15 @@ build() {
 }
 
 package() {
-	mkdir -p $pkgdir/usr/{bin,share/applications}
+	mkdir -p $pkgdir/usr/{bin,share/{applications,licenses}}
 	cd "$pkgname-$pkgver"
 
 	mv build/{icon,qvault}.png
 	mv release/linux-unpacked/resources/{app,qvault}.asar
 
-	install -m755 "$srcdir/qvault" $pkgdir/usr/bin
-	install -m644 "$srcdir/$pkgname-$pkgver/build/qvault.png" $pkgdir/usr/share/applications
-	install -m644 "$srcdir/qvault.desktop" $pkgdir/usr/share/applications
-	install -m644 "$srcdir/$pkgname-$pkgver/release/linux-unpacked/resources/qvault.asar" $pkgdir/usr/share/
+	install -m755 "$srcdir/qvault" "$pkgdir/usr/bin"
+	install -Dm644 "$srcdir/$pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -m644 "$srcdir/$pkgname-$pkgver/build/qvault.png" "$pkgdir/usr/share/applications"
+	install -m644 "$srcdir/qvault.desktop" "$pkgdir/usr/share/applications"
+	install -m644 "$srcdir/$pkgname-$pkgver/release/linux-unpacked/resources/qvault.asar" "$pkgdir/usr/share/"
 }
