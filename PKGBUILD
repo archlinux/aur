@@ -3,7 +3,7 @@
 pkgbase=ivre-git
 _pkgname=ivre
 pkgname=('ivre-git' 'ivre-web-git' 'ivre-docs-git' 'python-ivre-git' 'python2-ivre-git')
-pkgver=0.9.13.dev142
+pkgver=0.9.13.dev204
 pkgrel=1
 pkgdesc='Network recon framework based on Nmap, Masscan, Zeek (Bro), Argus, Netflow,...'
 arch=('any')
@@ -97,6 +97,7 @@ package_ivre-web-git() {
   rm -r "$pkgdir/usr/bin" "$pkgdir/usr/lib" \
      "$pkgdir/usr/share/doc" \
      "$pkgdir/usr/share/ivre/bro" \
+     "$pkgdir/usr/share/ivre/zeek" \
      "$pkgdir/usr/share/ivre/data" \
      "$pkgdir/usr/share/ivre/docker" \
      "$pkgdir/usr/share/ivre/geoip" \
