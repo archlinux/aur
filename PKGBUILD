@@ -2,7 +2,7 @@
 
 _target=msp430-elf
 pkgname="${_target}-gdb"
-pkgver=8.3
+pkgver=8.3.1
 pkgrel=1
 pkgdesc="The GNU Debugger for the ${_target} target."
 arch=('x86_64' 'x86')
@@ -11,7 +11,7 @@ license=('GPL')
 groups=('devel')
 depends=("python" "readline")
 source=("http://ftp.gnu.org/gnu/gdb/gdb-${pkgver}.tar.xz")
-sha256sums=('802f7ee309dcc547d65a68d61ebd6526762d26c3051f52caebe2189ac1ffd72e')
+sha256sums=('1e55b4d7cdca7b34be12f4ceae651623aa73b2fd640152313f9f66a7149757c4')
 
 
 prepare() {

@@ -1,6 +1,6 @@
 pkgbase = msp430-elf-gdb
 	pkgdesc = The GNU Debugger for the msp430-elf target.
-	pkgver = 8.3
+	pkgver = 8.3.1
 	pkgrel = 1
 	url = https://www.gnu.org/software/gdb/download/
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = msp430-elf-gdb
 	license = GPL
 	depends = python
 	depends = readline
-	source = http://ftp.gnu.org/gnu/gdb/gdb-8.3.tar.xz
-	sha256sums = 802f7ee309dcc547d65a68d61ebd6526762d26c3051f52caebe2189ac1ffd72e
+	source = http://ftp.gnu.org/gnu/gdb/gdb-8.3.1.tar.xz
+	sha256sums = 1e55b4d7cdca7b34be12f4ceae651623aa73b2fd640152313f9f66a7149757c4
 
 pkgname = msp430-elf-gdb
 
