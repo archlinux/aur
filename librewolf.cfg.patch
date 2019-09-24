@@ -164,5 +164,5 @@ index d7a6ff6..ee15dca 100644
 -lockPref("xpinstall.signatures.required", false);
 +defaultPref("xpinstall.signatures.required", true);
 +
-+#11/#68, sounds reasonable
++// #11/#68, sounds reasonable
 +defaultPref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
