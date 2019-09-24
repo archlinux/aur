@@ -1,0 +1,16 @@
+pkgbase = parallel-redox-git
+	pkgdesc = A Parallel implementation for Redox, based on Ion.
+	pkgver = .r0.9427863
+	pkgrel = 1
+	url = https://gitlab.redox-os.org/redox-os/parallel
+	arch = x86_64
+	license = GPL3
+	makedepends = cargo
+	makedepends = git
+	provides = parallel-redox
+	conflicts = parallel-redox
+	source = parallel-redox-git::git+https://gitlab.redox-os.org/redox-os/parallel
+	sha1sums = SKIP
+
+pkgname = parallel-redox-git
+
