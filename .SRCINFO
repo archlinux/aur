@@ -1,25 +1,31 @@
 pkgbase = activinspire
 	pkgdesc = Presentation Software for use with Promethean Hardware products.
-	pkgver = 2.15.67911
+	pkgver = 2.17.68075
 	pkgrel = 0
 	url = https://support.prometheanworld.com/product/activinspire
 	arch = x86_64
 	license = unknown
 	depends = lib32-libxmu
 	depends = lib32-gst-plugins-base
+	depends = lib32-libjpeg-turbo
 	depends = lib32-libjpeg6-turbo
 	depends = lib32-libxrender
 	depends = lib32-libgl
 	depends = lib32-fontconfig
 	depends = lib32-openssl-1.0
 	depends = lib32-nss
+	depends = lib32-libxcomposite
+	depends = lib32-libxcursor
+	depends = lib32-dbus
 	optdepends = bin32-jre: For using the equation editor
 	optdepends = activdriver: Driver for Promethean hardware
 	optdepends = activtools: Tools for Promethean hardware, e.g. calibration or systray monitor
-	source = http://activsoftware.co.uk/linux/repos/ubuntu/pool/non-oss/a/activinspire/activinspire_2.15.67911-1.amd64_amd64.deb
+	source = http://activsoftware.co.uk/linux/repos/ubuntu/pool/non-oss/a/activinspire/activinspire_2.17.68075-1.amd64_amd64.deb
 	source = inspire.sh
-	md5sums = de5a3c8345b59de44bdd946ad2d1541a
-	md5sums = ff6607cc18a27e2535b8475f5f0db09d
+	source = com.ubuntu.user-interface.gschema.xml
+	md5sums = 59e02cb9f8cd7636507cb4255a7268ec
+	md5sums = 21ff8944ba388a6b5aab894839745132
+	md5sums = e0f2c4078eadd00de8f28159b273e576
 
 pkgname = activinspire
 
