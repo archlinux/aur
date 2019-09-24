@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+SCRIPT_DIR=/usr/share/navi
+${SCRIPT_DIR}/navi "$@"
