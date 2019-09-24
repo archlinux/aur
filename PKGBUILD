@@ -3,7 +3,7 @@
 
 pkgname=amdpowerprofiler-dkms
 pkgver=8.00
-pkgrel=1
+pkgrel=2
 pkgdesc="AMD Power Profiler Driver (DKMS)"
 arch=('x86_64')
 license=('custom')
@@ -30,9 +30,9 @@ if [ ! -f ${PWD}/${_archive} ]; then
 fi
 
 source=("local://${_archive}"
-        local://powerprofilerdriver_8_fix.patch
-        local://amdpowerprofiler-load
-        local://amdpowerprofiler-load.service
+        "powerprofilerdriver_8_fix.patch"
+        "amdpowerprofiler-load"
+        "amdpowerprofiler-load.service"
         )
 
 sha256sums=('f2b7cabd95d7d59a3c66d8908d23efce716143d9d60e7b66f4edd46b8b5ed33a'
