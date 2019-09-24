@@ -2,7 +2,7 @@
 
 pkgname=qvault
 pkgver=0.2.7
-pkgrel=4
+pkgrel=5
 pkgdesc="An open source, fully transparent and extremely secure password manager"
 arch=('any')
 url="https://qvault.io"
@@ -32,7 +32,9 @@ build() {
 }
 
 package() {
-	mkdir -p "$pkgdir/usr/{bin,share/{applications,licenses}}"
+	mkdir -p "$pkgdir/usr/bin/"
+	mkdir -p "$pkgdir/usr/share/applications"
+	mkdir -p "$pkgdir/usr/share/licenses"
 	cd "$pkgname-$pkgver"
 
 	mv build/{icon,qvault}.png
