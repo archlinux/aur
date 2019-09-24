@@ -1,0 +1,51 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+= Neon Knights Themes - Folder Icons
+
+[quote]
+____
+These are not a complete icon theme, these are only folder icons.
+
+These icons has as inherits breeze-dark, elementary, elementary-xfce, and gnome, so it is convenient to have some of these icon themes installed on your computer for proper operation.
+
+If you want to use these folders with other icon theme, simply open the index.theme file and change the inherits by icons you want.
+
+If you want to use these folders with the breeze icons in a light theme, open the index.theme file and change breeze-dark for breeze in the inherits.
+____
+
+This package includes:
+....
+neon-knights-icons-blue 20190905
+neon-knights-icons-green 20190905
+neon-knights-icons-orange 20190905
+neon-knights-icons-red 20190905
+neon-knights-icons-violet 20190905
+neon-knights-icons-yellow 20190905
+....
+
+Upstream URLs:
+
+- https://www.pling.com/p/1313081/[Pling]
+- https://www.opencode.net/ju1464/Neon_Knights_Themes/-/archive/master/Neon_Knights_Themes-master.tar.bz2[Source tar.bz2]
+- https://www.opencode.net/ju1464/Neon_Knights_Themes.git[Repository]
+
+== Copying
+
+Please refer to link:CREDITS[CREDITS] (copied from upstream) for
+detailed authorial information on package sources.
+
+=== The PKGBUILD
+
+`Copyright (c) 2019 Elias Yuan, GPLv3.0+`
+
+Please refer to link:COPYING[COPYING], or contact
+<mailto:cecilelias.yuan@gmail.com[cecilelias.yuan@gmail.com]>.
+
+This script is free software: you can redistribute it and/or modify it
+under the terms of the GNU General Public License as published by the
+Free Software Foundation, either version 3 of the License, or (at your
+option) any later version.
+
+This script is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details.

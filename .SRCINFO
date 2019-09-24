@@ -1,0 +1,30 @@
+pkgbase = neon-knights-icons
+	pkgdesc = Bright and colorful folders icons. Not a complete icon set.
+	pkgver = 20190905
+	pkgrel = 1
+	url = https://www.opencode.net/ju1464/Neon_Knights_Themes
+	arch = any
+	groups = neon-knights-themes
+	license = GPL3
+	source = https://www.opencode.net/ju1464/Neon_Knights_Themes/-/archive/master/Neon_Knights_Themes-master.tar.bz2
+	md5sums = 46fab31e31af5c41342ac8b3b119c51d
+	sha256sums = b81ad32d031e32a09760f6667ecf02a95a124bb2b04e1237462a26f987fb37d8
+
+pkgname = neon-knights-icons-blue
+	pkgdesc = Bright blue folders icons. Not a complete icon set.
+
+pkgname = neon-knights-icons-green
+	pkgdesc = Bright green folders icons. Not a complete icon set.
+
+pkgname = neon-knights-icons-orange
+	pkgdesc = Bright orange folders icons. Not a complete icon set.
+
+pkgname = neon-knights-icons-red
+	pkgdesc = Bright red folders icons. Not a complete icon set.
+
+pkgname = neon-knights-icons-violet
+	pkgdesc = Bright violet folders icons. Not a complete icon set.
+
+pkgname = neon-knights-icons-yellow
+	pkgdesc = Bright yellow folders icons. Not a complete icon set.
+
