@@ -3,15 +3,15 @@
 # Release Code Name: Franklin
 
 pkgname=lbry-app-bin
-pkgver=0.35.4
+pkgver=0.35.7
 pkgrel=1
 pkgdesc='The LBRY app built using electron'
 arch=('x86_64')
 url='https://lbry.io/'
 license=('MIT')
 depends=('nodejs' 'npm' 'gnome-keyring' 'gconf')
-source=('https://github.com/lbryio/lbry-desktop/releases/download/v0.35.4/LBRY_0.35.4.deb')
-sha256sums=('d1200bd513662cc09a3a8543ecc95e8c650b293710aa6488dba762fa4895a0e7')
+source=('https://github.com/lbryio/lbry-desktop/releases/download/v0.35.7/LBRY_0.35.7.deb')
+sha256sums=('3639a348fe4a93c292703545f1e9f3ef3f5d6eb55fd8daed8116e157677f7cd1')
 
 package() {
     tar -xf "$srcdir/data.tar.xz" -C "$pkgdir"
