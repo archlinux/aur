@@ -1,6 +1,6 @@
 # Maintainer: Giusy Margarita <kurmikon at libero dot it>
 
-_relver=1.1.8
+_relver=1.1.9
 
 pkgname=korla-icon-theme-git
 pkgver=$_relver
@@ -12,8 +12,8 @@ license=("GPL3")
 depends=("gtk-update-icon-cache")
 optdepends=(
     "hicolor-icon-theme: fallback Freedesktop.org Hicolor icon theme"
-    "breeze-icons: fallback Breeze icon theme"
-    "gnome-icon-theme: fallback Gnome icon theme")
+    "breeze-icons: fallback Breeze icon theme for Plasma Desktop"
+    "gnome-icon-theme: fallback Gnome icon theme for Gnome Desktop")
 makedepends=("git")
 provides=("korla-icon-theme")
 conflicts=("korla-icon-theme")
