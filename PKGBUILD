@@ -1,24 +1,24 @@
-# Maintainer: ghost <i at ghosts dot work>
+# Maintainer: schard <mail at richard dash neumann period de>
 pkgname=obs-gnome-screencast
-pkgver=0.0.9
+pkgver=0.0.10
 pkgrel=1
 pkgdesc="GNOME Screen Cast OBS Studio plugin, supports Wayland"
 arch=('any')
-url="https://github.com/fzwoch/$pkgname"
+url="https://github.com/fzwoch/${pkgname}"
 license=('GPL-2')
 depends=('gnome-shell'
          'obs-studio')
 makedepends=('meson')
 optdepends=()
-source=("https://github.com/fzwoch/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('E2599E30AD55E1FCB2ABED85DF29630045397FD532DEE8AA61F97CE05AFB5186')
+source=("https://github.com/fzwoch/${pkgname}/archive/v${pkgver}.tar.gz")
+sha256sums=('f452670c0ffee3b08296370e7cfe6ac2b442588942b96c78e0b1bf05f09b6e49')
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "${pkgname}-${pkgver}"
   meson --buildtype=release build 
   ninja -C build 
 }
 
 package() {
-  sudo cp "$pkgname-$pkgver/build/gnome-screencast.so" /usr/lib/obs-plugins/
+  install -Dm 644 "${pkgname}-${pkgver}/build/gnome-screencast.so" "${pkgdir}/usr/lib/obs-plugins/gnome-screencast.so"
 }
