@@ -17,6 +17,10 @@ src = "PKGBUILD"
 search = 'pkgver="{current_version}"'
 
 [[before_commit]]
+name = "Check pkgrel is 1"
+cmd = "grep pkgrel=1 PKGBUILD"
+
+[[before_commit]]
 name = "Update source md5sum"
 cmd = "updpkgsums"
 
