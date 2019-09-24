@@ -2,14 +2,14 @@
 
 pkgname=qvault
 pkgver=0.2.7
-pkgrel=3
+pkgrel=4
 pkgdesc="An open source, fully transparent and extremely secure password manager"
 arch=('any')
 url="https://qvault.io"
 license=('MIT')
 depends=('electron')
 makedepends=('yarn' 'npm')
-source=("${pkgname}-${pkgver}::https://github.com/Q-Vault/qvault/archive/v${pkgver}.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Q-Vault/qvault/archive/v${pkgver}.tar.gz"
 	'qvault.desktop'
 	'qvault'
 	'electron.patch'
@@ -32,7 +32,7 @@ build() {
 }
 
 package() {
-	mkdir -p $pkgdir/usr/{bin,share/{applications,licenses}}
+	mkdir -p "$pkgdir/usr/{bin,share/{applications,licenses}}"
 	cd "$pkgname-$pkgver"
 
 	mv build/{icon,qvault}.png
