@@ -1,0 +1,11 @@
+[Unit]
+Description=AMD Power Profiler kernel module
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/amdpowerprofiler-load --load
+ExecStop=/usr/bin/amdpowerprofiler-load --unload
+RemainAfterExit=true
+
+[Install]
+WantedBy=multi-user.target

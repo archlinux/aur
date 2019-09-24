@@ -1,0 +1,21 @@
+pkgbase = amdpowerprofiler-dkms
+	pkgdesc = AMD Power Profiler Driver (DKMS)
+	pkgver = 8.00
+	pkgrel = 1
+	url = https://developer.amd.com/amd-uprof/
+	install = amdpowerprofiler-dkms.install
+	arch = x86_64
+	license = custom
+	depends = dkms
+	optdepends = amduprof: AMD μProf includes the source of this driver
+	source = local://AMDPowerProfilerDriverSource.tar.gz
+	source = local://powerprofilerdriver_8_fix.patch
+	source = local://amdpowerprofiler-load
+	source = local://amdpowerprofiler-load.service
+	sha256sums = f2b7cabd95d7d59a3c66d8908d23efce716143d9d60e7b66f4edd46b8b5ed33a
+	sha256sums = c8330adf5815ebf2e440264b83245258780f9ff3674cd1a038f4d70f54f1eaf4
+	sha256sums = be4dd22642ef97c9e2f85aebe7e8f9c9198fc18f195ee6cc3a091560050b3a7d
+	sha256sums = 7ee0f1b579302714789b43d096e94b549be1d3714112d7809fc93ae632206be6
+
+pkgname = amdpowerprofiler-dkms
+

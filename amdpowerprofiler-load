@@ -1,0 +1,61 @@
+#!/bin/sh
+MODULE_NAME=AMDPowerProfiler
+
+create_proc_entry () {
+    # Check if the module is loaded 
+    if [ -f /proc/${MODULE_NAME}/device ] 
+    then
+        # Module is loaded, create the device node
+        VER=`cat /proc/${MODULE_NAME}/device`
+        if [[ ! -a /dev/${MODULE_NAME} ]]
+        then
+            mknod /dev/${MODULE_NAME} -m 666 c $VER 0
+            if [ $? -ne 0 ] ; then
+                echo "ERROR: AMD Power Profiler module initialization failed while creating device node." 
+                exit 1
+            fi
+        fi
+    else
+        echo "ERROR: AMD Power Profiler module is not loaded correctly." 
+        exit 1
+    fi
+}
+
+clean_proc_entry() {
+	if [[ -a /dev/${MODULE_NAME} ]]
+	then
+		rm -R /dev/${MODULE_NAME}
+		if [ $? -ne 0 ] ; then
+			echo "ERROR: AMD Power Profiler module cleanup failed while removing the device node." 
+			exit 1
+		fi
+	fi
+}
+
+root_check() {
+	if [ "${UID}" != "0" ]; then
+		echo "Please execute this script with root permission."
+		exit 1
+	fi
+}
+
+fail() {
+	echo $1
+	exit $2
+}
+
+root_check
+if [ "$1" = "" ]; then
+	printf "${MODULE_NAME} module loader
+Usage:
+	--load		Load the module and create the required device node
+	--unload	Unload the module and clean the device node
+
+"
+elif [ "$1" = "--unload" ]; then
+	rmmod AMDPowerProfiler || fail "ERROR: AMD Power Profiler driver are still in use or not loaded yet." 1
+	clean_proc_entry
+elif [ "$1" = "--load" ]; then
+	modprobe AMDPowerProfiler || fail "ERROR: Can't load AMD Power Profiler driver." 1
+	create_proc_entry
+fi

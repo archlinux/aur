@@ -1,0 +1,4 @@
+post_install() {
+	printf $(tput setaf 6 ; tput bold)"You can enable AMD Profiler Driver by enabling amdprofilerdriver-load service:\n"$(tput sgr0)
+	printf $(tput setaf 6 ; tput bold)"systemctl enable amdprofilerdriver-load"$(tput sgr0)
+}
