@@ -4,7 +4,7 @@ _name="luxcorerender"
 
 pkgname=blender-plugin-${_name}
 pkgver=2.2
-_rel="beta3"
+_rel="rc1"
 [ -n "${_rel}" ] && _pkgver=${pkgver}${_rel} && pkgver+=".${_rel}" || _pkgver=${pkgver}
 epoch=1
 pkgrel=1
@@ -14,7 +14,7 @@ url="https://luxcorerender.org/"
 license=('GPL')
 conflicts=(luxblend25 luxblend25-hg)
 source=("https://github.com/LuxCoreRender/BlendLuxCore/archive/blendluxcore_v${_pkgver}.tar.gz")
-sha256sums=('40a4727c2aa20cc610b00a0860ccd735cac39e658c157cb6a57fd630164369e3')
+sha256sums=('efe1e82350939cd7ce8689f75334dbf16401dac3bcc603430ba0ffedbe954a00')
 
 package() {
   depends=(blender luxcorerender)
