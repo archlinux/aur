@@ -19,7 +19,7 @@ pkgbase = gr-satellites-git
 	optdepends = doxygen: For document generation
 	provides = gr-satellites
 	conflicts = gr-satellites
-	source = git+https://github.com/daniestevez/gr-satellites.git#branch=gnuradio38
+	source = git+https://github.com/daniestevez/gr-satellites.git#branch=maint-3.8
 	sha256sums = SKIP
 
 pkgname = gr-satellites-git

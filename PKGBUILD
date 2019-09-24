@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="gr-satellites decoder blocks for GNURadio"
 arch=('x86_64' 'aarch64')
 url="https://github.com/daniestevez/gr-satellites"
-branch="gnuradio38"
+branch="maint-3.8"
 license=('GPL3')
 depends=('gnuradio' 'boost-libs' 'python-construct>=2.8' 'python-requests')
 optdepends=('feh: For realtime image decoders'
