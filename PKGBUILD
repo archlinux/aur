@@ -47,9 +47,11 @@ prepare() {
 
 	cd "${srcdir}/ghdl"
 
+	# Note : Add --enable-openieee to use free (but not complete) implementation of IEEE VHDL libs
 	./configure \
 		--prefix=/usr \
 		--with-gcc="${srcdir}/gcc" \
+		--enable-libghdl \
 		--enable-synth
 
 	make copy-sources
@@ -144,17 +146,15 @@ package() {
 	# Install VHDL libraries and runtime
 	cd "${srcdir}/ghdl"
 	make DESTDIR="${pkgdir}" install
-	# Install library for synthesis
-	make DESTDIR="${pkgdir}" install.libghdlsynth
 
 	# Remove gcc-specific files, keep only what is related to ghdl
 	cd "${pkgdir}"
+	rm -rf "usr/include/libiberty"
 	rm -rf "usr/share/"{locale,man}
 	find "usr/lib" \
 		-maxdepth 1 -mindepth 1 \
 		-not -name 'gcc' \
 		-not -name '*ghdl*' \
-		-not -name 'libiberty*' \
 		-exec rm -rf {} +
 	find "usr/lib/gcc/${_machine}/${_version}" \
 		-maxdepth 1 -mindepth 1 -not -name 'ghdl*' \
