@@ -1,6 +1,6 @@
 pkgbase = java-openjfx-ea-bin
-	pkgdesc = Java OpenJFX 13 Early-Access Build.
-	pkgver = 13rc2
+	pkgdesc = Java OpenJFX 14 Early-Access Build.
+	pkgver = 14rc1
 	pkgrel = 1
 	url = https://openjfx.io/
 	arch = x86_64
@@ -11,10 +11,10 @@ pkgbase = java-openjfx-ea-bin
 	depends = webkit2gtk
 	depends = ffmpeg
 	depends = qt5-base
-	source = https://download2.gluonhq.com/openjfx/13/openjfx-13-rc+2_linux-x64_bin-sdk.zip
-	source = https://download2.gluonhq.com/openjfx/13/openjfx-13-rc+2_linux-x64_bin-jmods.zip
-	sha256sums = 12533c55f844e3522503144c2eb16223792ac9e56e9e7e91600af5fccb11aafd
-	sha256sums = 63aab423ddddf87b49f857dc923e19dc5c27ee8f2186a95697ef9a309f8b41bb
+	source = https://download2.gluonhq.com/openjfx/14/openjfx-14-ea+1_linux-x64_bin-sdk.zip
+	source = https://download2.gluonhq.com/openjfx/14/openjfx-14-ea+1_linux-x64_bin-jmods.zip
+	sha256sums = 9e60fff5fe550b3a7d97c39be0239764582647f5e1ba143ba44bef94cab7b441
+	sha256sums = 827e49f70c4269f73eaf3a2aab51222679da839f4b76d35f928c2ed8730268b9
 
 pkgname = java-openjfx-ea-bin
 
