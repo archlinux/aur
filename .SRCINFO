@@ -1,0 +1,21 @@
+pkgbase = libva-v4l2-request-git
+	pkgdesc = LibVA implementation for the Linux Video4Linux2 Request API
+	pkgver = 2019.03.r7.g7f359be
+	pkgrel = 1
+	url = https://github.com/bootlin/libva-v4l2-request
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = LGPL2.1
+	license = MIT
+	makedepends = meson
+	depends = libva>=2.1.0
+	depends = libdrm>=2.4.52
+	source = libva-v4l2-request-git::git+https://github.com/bootlin/libva-v4l2-request.git
+	sha256sums = SKIP
+
+pkgname = libva-v4l2-request-git
+
