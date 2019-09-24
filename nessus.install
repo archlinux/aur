@@ -51,7 +51,25 @@ post_install() {
 
   echo " - See https://wiki.archlinux.org/index.php/Nessus for documentation."
   echo
+  echo "### License Agreement ###"
+  echo "Please read the License Agreement at /usr/share/licenses/nessus/LICENSE"
+  echo "because it was automatically accepted for you in order to provide an"
+  echo "automatic install."
+  echo "By using Nessus you wil agree with the License Terms."
+  echo "If you don't agree with the License please uninstall nessus."
+  echo
   ldconfig
+}
+
+post_upgrade() {
+  echo
+  echo "### License Agreement ###"
+  echo "Please read the License Agreement at /usr/share/licenses/nessus/LICENSE"
+  echo "because it was automatically accepted for you in order to provide an"
+  echo "automatic install."
+  echo "By using Nessus you wil agree with the License Terms."
+  echo "If you don't agree with the License please uninstall nessus."
+  echo
 }
 
 pre_remove() {
