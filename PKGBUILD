@@ -3,7 +3,11 @@
 pkgname="jrnl-venv-bin"
 pkgver="2.0.0"
 pkgrel="1"
+<<<<<<< HEAD
 pkgdesc="Collect your thoughts and notes without leaving the command line."
+=======
+pkgdesc="Collect your thoughts and notes without leaving the command line. [installed inside a virtualenv]"
+>>>>>>> 2.0.0-1
 arch=('i686' 'x86_64')
 url="https://jrnl.sh/"
 license=('MIT')

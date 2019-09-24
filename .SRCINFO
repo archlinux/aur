@@ -1,5 +1,5 @@
 pkgbase = jrnl-venv-bin
-	pkgdesc = Collect your thoughts and notes without leaving the command line.
+	pkgdesc = Collect your thoughts and notes without leaving the command line. [installed inside a virtualenv]
 	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://jrnl.sh/
@@ -11,4 +11,3 @@ pkgbase = jrnl-venv-bin
 	depends = python-pip
 
 pkgname = jrnl-venv-bin
-
