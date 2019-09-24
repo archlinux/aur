@@ -24,25 +24,21 @@ pkgbase = arduino-rc
 	options = !strip
 	source = arduino-rc-1.8.10.tar.xz::https://github.com/arduino/Arduino/releases/download/1.8.10/arduino-1.8.10.tar.xz
 	source = arduino-rc-1.8.10.tar.xz.asc::https://github.com/arduino/Arduino/releases/download/1.8.10/arduino-1.8.10.tar.xz.asc
-	source = https://github.com/arduino-libraries/WiFi101-FirmwareUpdater-Plugin/releases/download/v0.10.6/WiFi101-Updater-ArduinoIDE-Plugin-0.10.6.zip
-	source = https://github.com/arduino-libraries/WiFi101-FirmwareUpdater-Plugin/releases/download/v0.10.6/WiFi101-Updater-ArduinoIDE-Plugin-0.10.6.zip.asc
+	source = https://github.com/arduino-libraries/WiFi101-FirmwareUpdater-Plugin/releases/download/v0.10.9/WiFi101-Updater-ArduinoIDE-Plugin-0.10.9.zip
 	source = https://downloads.arduino.cc/libastylej-2.05.1-4.zip
 	source = https://downloads.arduino.cc/libastylej-2.05.1-4.zip.asc
 	source = https://downloads.arduino.cc/liblistSerials/liblistSerials-1.4.2.zip
 	source = https://downloads.arduino.cc/liblistSerials/liblistSerials-1.4.2.zip.asc
 	source = arduino.sh
-	source = avr-core.patch
 	validpgpkeys = 326567C1C6B288DF32CB061A95FA6F43E21188C4
 	sha512sums = 7ab27c4a0b7dc5b6e264360fcb90bac9c5a67a2297c241ecd672fe75aff8145ed2372741d6dfc571cf1074ee6105c2fe5f7dff64ed0db5df987c1f06ab34aeb8
 	sha512sums = SKIP
-	sha512sums = 9ddece48bf5c2c73b8e95b7e017894b7ed9341dafbe37fd4bffd6faa65def29b7578e5860b4dfbfac0a3f738c3907d2073891d47f57b41b416c9a7d068f57af1
-	sha512sums = SKIP
+	sha512sums = 7227ca0b9017afab3e93d5f7d074b8c2fa2e2a93d8e6a310c8f1497330e4ea5c4f5927be59e7129634503733b2527aa1ce2791266cd7f21b8ce039ce2fe40f33
 	sha512sums = 92ecaf24c64aaefafffe7bcdb6ae327f61dc6b9952546cb8cfad51aa1d01be7e1f5c33138f1bd2cd7cd466820ea991e0e5ad3cca62de7a543971aacbe33b06ac
 	sha512sums = SKIP
 	sha512sums = 80f27ef196a205dc512f0aebb426765f2536a00059a633929bbdcfea81d7fb9fec31b27322c534a3e5953240a2906e89914562b0be0649053206a1941f659b58
 	sha512sums = SKIP
 	sha512sums = d10fae26d9f7c162c8c46e15c2d8d98a222a05c69463e2646e8e12f5b32e8c2673d4684ea01adc81d5da9c7f4edab2e4f83b77214b6fe24b232a1590f62ced2f
-	sha512sums = 98acc50198334cd2e9c91a1265d9bacd95998bb2a1926141e94311defc0ef77c24e3653c77591055ee5695b7fb8cefd1b12c339a9d0167d4ae8581b2f780f0ef
 
 pkgname = arduino-rc
 
