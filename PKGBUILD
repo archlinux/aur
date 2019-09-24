@@ -18,7 +18,7 @@ options=()
 
 pkgver() {
     cd "${srcdir}"
-    opam init -a --disable-sandboxing 1>&2 && opam update 1>&2
+    opam init -a --disable-sandboxing 1>/dev/null 2>/dev/null && opam update 1>/dev/null 2>/dev/null
     opam list ${_pkgname} --columns=version | awk '/^[^#]/{print}' | sort -V | tail -n 1
 }
 
