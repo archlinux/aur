@@ -1,0 +1,14 @@
+pkgbase = python2-dominate
+	pkgdesc = Python library for creating and manipulating HTML documents
+	pkgver = 2.4.0
+	pkgrel = 1
+	url = https://github.com/Knio/dominate
+	arch = any
+	license = LGPL3
+	checkdepends = python2-pytest-runner
+	makedepends = python2-setuptools
+	source = python2-dominate-2.4.0.tar.gz::https://github.com/Knio/dominate/archive/2.4.0.tar.gz
+	sha512sums = 93b721762175f14339d5b027af59d8475485b2674c019990bdc0989067448f4b74350d16b19c396ee2e514822930e821675f8bbab96e03be3e5899dd95a86ee4
+
+pkgname = python2-dominate
+
