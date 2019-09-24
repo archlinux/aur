@@ -1,18 +1,21 @@
 pkgbase = golangci-lint-bin
 	pkgdesc = Linters Runner for Go. 5x faster than gometalinter. (Binary)
-	pkgver = 1.18.0
+	pkgver = 1.19.0
 	pkgrel = 1
 	url = https://github.com/golangci/golangci-lint
 	arch = x86_64
 	arch = i686
+	arch = aarch64
 	license = GPL3
 	provides = golangci-lint
 	conflicts = golangci-lint
 	conflicts = golangci-lint-git
-	source_x86_64 = https://github.com/golangci/golangci-lint/releases/download/v1.18.0/golangci-lint-1.18.0-linux-amd64.tar.gz
-	sha512sums_x86_64 = 38265fe573fb405319fb0fc68177db4cb84a929f9065540cfff487030d5d15c923a7d593f135326c8820dccad8bb1d365475c62deba0a128234c678c0c049646
-	source_i686 = https://github.com/golangci/golangci-lint/releases/download/v1.18.0/golangci-lint-1.18.0-linux-386.tar.gz
-	sha512sums_i686 = 5d08850e599325dbd99099d983545ebabb857447a1697cca9ecafe71d176499cafd426e475bcdeb4639d88caef627bbeec5c25433866592dfd4ab4b938eda3c5
+	source_x86_64 = https://github.com/golangci/golangci-lint/releases/download/v1.19.0/golangci-lint-1.19.0-linux-amd64.tar.gz
+	sha512sums_x86_64 = 65a71890ca5731567f68e399690ae55454c35e35b0299162469ac80145084e6ead801648d528410d3d76ff9b63289f5a518bbebce90252a147e9ae45a7333cff
+	source_i686 = https://github.com/golangci/golangci-lint/releases/download/v1.19.0/golangci-lint-1.19.0-linux-386.tar.gz
+	sha512sums_i686 = c6efd5fcd64440be1c1482ba4d6470ae46c43cd76350d93e8ab5b7c6de2138bfeefa998e2de126fdc513d75c93d7382be5285f003ee5cb29b2d05611a6748d04
+	source_aarch64 = https://github.com/golangci/golangci-lint/releases/download/v1.19.0/golangci-lint-1.19.0-linux-arm64.tar.gz
+	sha512sums_aarch64 = 0c9bf8f00fe8e95dc02365ce7094c7bd2a590fc444a92563cf21e4bcd5a11d0740844a27cc0ce885bf4a50e55b8a183ac4b4d2a040ed2b7a000aac9965ca1e3a
 
 pkgname = golangci-lint-bin
 
