@@ -5,4 +5,4 @@ if [[ ! (-r /proc/sys/kernel/unprivileged_userns_clone && $(< /proc/sys/kernel/u
     FLAG="--class=dissenter-browser --no-sandbox"
 fi
 
-exec "/opt/gab/dissenter/dissenter-browser" $@ $FLAG 
+exec "/opt/dissenter.com/dissenter/dissenter-browser" $@ $FLAG 
