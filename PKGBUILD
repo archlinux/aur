@@ -15,4 +15,12 @@ package() {
   cd $pkgname-$pkgver
   install -d "$pkgdir"/boot/grub/themes/arch-leap
   install -m644 TRADEMARKS theme/* "$pkgdir"/boot/grub/themes/arch-leap/
+  msg ''
+  msg '========================================'
+  msg 'Installation:'
+  msg 'Set GRUB_THEME=\"/boot/grub/themes/arch-leap/theme.txt\" in your /etc/default/grub'
+  msg 'Preffered resolution: GRUB_GFXMODE=1024x768'
+  msg 'After editing, run # grub-mkconfig -o /boot/grub/grub.cfg'
+  msg '========================================'
+  msg ''
 }
