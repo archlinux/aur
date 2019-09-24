@@ -2,17 +2,24 @@
 
 pkgname=bim
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Inspired by Vim, originally written for ToaruOS'
 arch=('x86_64')
 license=('ISC')
 url='https://github.com/klange/bim'
-depends=('gcc')
-source=("https://github.com/klange/bim/archive/v${pkgver}.tar.gz")
+source=(${pkgname}-${pkgver}.tar.gz::"https://github.com/klange/bim/archive/v${pkgver}.tar.gz")
 sha256sums=('c67b8bd79b890a15a2986a5c8e7409de8a58aee612f39938783830b9141dd43a')
 
-package() {
+build() {
 	cd "$srcdir/$pkgname-$pkgver"
 	make
-	make DESTDIR=${pkgdir} install
+}
+
+package() {
+	mkdir -p "$pkgdir/usr/share/licenses"
+
+	cd "$srcdir/$pkgname-$pkgver"
+	make DESTDIR="${pkgdir}" install
+
+	install -Dm644 "$srcdir/$pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
