@@ -4,7 +4,7 @@
 # `touch $HOME/.local/share/appimagekit/no_desktopintegration`
 
 pkgname=ankama-launcher
-pkgver=2.10.0
+pkgver=2.10.5
 pkgrel=1
 pkgdesc='A multi-game portal for all Ankama games.'
 url='https://www.ankama.com/en/launcher'
@@ -20,7 +20,7 @@ source_i686=("${pkgname}-${pkgver}-i386.AppImage::https://ankama.akamaized.net/z
 source_x86_64=("${pkgname}-${pkgver}-x86_64.AppImage::https://ankama.akamaized.net/zaap/installers/production/Ankama%20Launcher-Setup-x86_64.AppImage")
 md5sums=('7a78ebe882f8044746b83e1adf827640')
 md5sums_i686=('43582538704d96540145186ea8626e1b')
-md5sums_x86_64=('75dec288a8a22bb97c1018ec18fa64c6')
+md5sums_x86_64=('be3f6589fa6f62ff097fa0c58ec0aa89')
 
 [[ "$CARCH" == "i686" ]] && LARCH='i386'
 [[ "$CARCH" == "x86_64" ]] && LARCH='x86_64'
