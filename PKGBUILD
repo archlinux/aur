@@ -2,13 +2,13 @@
 
 pkgname=lib32-amdvlk
 pkgver=2019.Q3.6
-pkgrel=1
+pkgrel=2
 
 _llpc_commit=ec210a78b6a280b00fb1765dd588c3970b6dc818
 _xgl_commit=2cb5558b94c5dc839e093cb439057a1802426c8e
 _pal_commit=88d997710b4e405f3a8e3fd60a38afee9e3e77e2
 _llvm_commit=1fc1a7d4248b4749c3df21eb48f7ae97b6cddf74
-_metrohash_commit=690a521d9beb2e1050cc8f273fdabc13b31bf8f6
+_metrohash_commit=2b6fee002db6cc92345b02aeee963ebaaf4c0e2f
 _cwpack_commit=b601c88aeca7a7b08becb3d32709de383
 
 pkgdesc='Open-source Vulkan driver for AMD Radeon™ graphics adapters (32 Bit)'
@@ -33,7 +33,7 @@ sha256sums=('1970d7cdf31e564c7a98737442fc7ed3593da24fb7e4dabe26ec120017aa0538'
             'fb9a6a497f488a3d9682b51ec9d615199b2f6770446b9cec47bd6a7c81278269'
             '063f3446339a42b08128b4acb5b74e846a0bb5ebd9d3aae3feec5011a1797f1d'
             '06104277583082701ca55c28093005919eead930fe93b8737e8e444628100535'
-            'a5c1e77efd593853ee93a8f168fb7826baae52ca56df1d46f9ccde3d4e1f6c12'
+            'e8ecf026584dd953e39c3abba2eb04d28b28ed4577482ee70265f0d421fef398'
             '58ca397f33d62bcfecaecd89eb4ad466a6c33e1c619e5cf742822074f1f7d664')
             
 prepare() {
@@ -55,7 +55,7 @@ build() {
   export CFLAGS="$CFLAGS -fno-plt -mno-avx"
   export CXXFLAGS="$CXXFLAGS -fno-plt -mno-avx"
   export LDFLAGS="$LDFLAGS -z now" 
-  
+ 
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
   
   cd xgl
