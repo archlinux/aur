@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Exec=/usr/bin/qvault
+Name=QVault
+Comment=QVault password manager
+Icon=/usr/share/applications/qvault.png
+Terminal=false
+Categories=Utility;Security;
