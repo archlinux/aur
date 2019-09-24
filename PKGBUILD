@@ -1,6 +1,6 @@
 # Maintainer: Daniel Peukert <dan.peukert@gmail.com>
 pkgname='mongodb-compass-beta'
-pkgver='1.20.0beta.1'
+pkgver='1.20.0beta.4'
 pkgrel='1'
 pkgdesc='The official GUI for MongoDB (beta version)'
 arch=('x86_64')
@@ -9,11 +9,11 @@ license=('custom')
 depends=('electron3' 'libsecret')
 optdepends=('gnome-keyring')
 source=(
-	'https://downloads.mongodb.com/compass/beta/mongodb-compass-beta-1.20.0-beta.1.x86_64.rpm'
+	'https://downloads.mongodb.com/compass/beta/mongodb-compass-beta-1.20.0-beta.4.x86_64.rpm'
 	'launch.sh'
 )
 sha256sums=(
-	'0c877d342612f012d515f145f402db95dfec7e3edd2abf8511f0076ca3a04238'
+	'1c4d2faae4a072fc46492410d67032debfb6c405290d0ad3098d10d0119a9ebc'
 	'd56977ccd11620ed69c5471170640c451ae1635a5d498a1ea41585d36ac9e7d3'
 )
 
