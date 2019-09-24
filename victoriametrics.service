@@ -1,0 +1,14 @@
+[Unit]
+Description=Fast, cost-effective and scalable time series database
+Documentation=https://victoriametrics.github.io/
+After=network.target
+Require=network.target
+
+[Service]
+User=victoriametrics
+Group=victoriametrics
+EnvironmentFile=/etc/default/victoriametrics
+ExecStart=/usr/bin/victoriametrics $ARGS
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,1 @@
+ARGS="-storageDataPath /var/lib/victoriametrics/"

@@ -1,0 +1,14 @@
+post_install() {
+	getent group victoriametrics >/dev/null || groupadd -r victoriametrics
+	getent passwd victoriametrics >/dev/null || useradd -d /var/lib/victoriametrics -g victoriametrics -r -M -s /bin/nologin victoriametrics
+	chown -R victoriametrics:victoriametrics /var/lib/victoriametrics /etc/default/victoriametrics
+	echo '*** You can adjust settings at /etc/default/victoriametrics'
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_remove() {
+	userdel victoriametrics
+}
