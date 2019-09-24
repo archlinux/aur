@@ -1,0 +1,30 @@
+pkgbase = neon-knights-xfwm4
+	pkgdesc = Dark Xfwm4 themes with vivid colors.
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://www.opencode.net/ju1464/Neon_Knights_Themes
+	arch = any
+	groups = neon-knights-themes
+	license = GPL3
+	source = https://www.opencode.net/ju1464/Neon_Knights_Themes/-/archive/master/Neon_Knights_Themes-master.tar.bz2
+	md5sums = 46fab31e31af5c41342ac8b3b119c51d
+	sha256sums = b81ad32d031e32a09760f6667ecf02a95a124bb2b04e1237462a26f987fb37d8
+
+pkgname = neon-knights-xfwm4-blue
+	pkgdesc = Dark Xfwm4 theme with vivid blue accents.
+
+pkgname = neon-knights-xfwm4-green
+	pkgdesc = Dark Xfwm4 theme with vivid green accents.
+
+pkgname = neon-knights-xfwm4-orange
+	pkgdesc = Dark Xfwm4 theme with vivid orange accents.
+
+pkgname = neon-knights-xfwm4-red
+	pkgdesc = Dark Xfwm4 theme with vivid red accents.
+
+pkgname = neon-knights-xfwm4-violet
+	pkgdesc = Dark Xfwm4 theme with vivid violet accents.
+
+pkgname = neon-knights-xfwm4-yellow
+	pkgdesc = Dark Xfwm4 theme with vivid yellow accents.
+
