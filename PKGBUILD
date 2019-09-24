@@ -1,14 +1,15 @@
-# Maintainer: marazmista <marazmista@gmail.com>
+# Maintainer: marazmista <marazmista@tuta.io>
 
 pkgname=radeon-profile-daemon-git
 pkgbase=radeon-profile-daemon-git
-pkgver=20190124.r6.g05bdb90
+pkgver=20190603.r0.g7923bd6
 pkgrel=1
 pkgdesc="System daemon for radeon-profile"
 url="http://github.com/marazmista/radeon-profile-daemon"
 arch=('i686' 'x86_64')
 license=('GPL2')
 depends=('qt5-base' 'radeon-profile')
+makedepends=('git')
 optdepends=('xf86-video-ati: radeon driver'
 	    'xf86-video-amdgpu: amdgpu driver')
 provides=('radeon-profile-daemon')
