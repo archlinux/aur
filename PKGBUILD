@@ -8,8 +8,8 @@
 # to the depends and delete "no-g15" in the configure line below
 
 pkgname=mumble-git
-pkgver=2019.04.09
-_pkgver=1.3.0
+pkgver=2019.09.22
+_pkgver=1.4.0
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='A voice chat application similar to TeamSpeak'
