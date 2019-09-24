@@ -2,7 +2,7 @@
 
 pkgname=gr-satellites-git
 pkgver=r319.3aeba2a
-pkgrel=1
+pkgrel=2
 pkgdesc="gr-satellites decoder blocks for GNURadio"
 arch=('x86_64' 'aarch64')
 url="https://github.com/daniestevez/gr-satellites"
