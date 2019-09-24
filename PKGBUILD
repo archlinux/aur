@@ -20,6 +20,7 @@ url="https://minecraftforge.net/"
 license=('custom')
 depends=('java-runtime-headless=8' 'screen' 'sudo' 'bash' 'awk' 'sed')
 optdepends=("tar: needed in order to create world backups" "netcat: required in order to suspend an idle server")
+makedepends=('unzip')
 backup=("etc/conf.d/${_game}")
 install="${pkgname}.install"
 source=("${_game}-${_pkgver}-installer.jar"::"https://files.minecraftforge.net/maven/net/minecraftforge/forge/${_pkgver}/forge-${_pkgver}-installer.jar"
