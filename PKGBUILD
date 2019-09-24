@@ -2,7 +2,7 @@
 
 pkgname=gnome-shell-extension-cpupower-git
 _gitname=cpupower
-pkgver=r113.5c6809d
+pkgver=r116.e55687d
 pkgrel=1
 pkgdesc="Gnome-Shell Extension for intel-pstate driver"
 arch=('any')
