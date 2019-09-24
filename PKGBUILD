@@ -2,7 +2,7 @@
  
 _realname='xrgears'
 pkgname="$_realname-git"
-pkgver=1.0.0.2.00a41d9
+pkgver=1.0.0.4.5d6e498
 pkgrel=1
 pkgdesc='An OpenXR example using Vulkan for rendering.'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url='https://gitlab.freedesktop.org/monado/demos/xrgears'
 depends=('openxr-loader' 'vulkan-icd-loader')
 provides=("$_realname="$pkgver)
 conflicts=("$_realname")
-makedepends=('meson' 'git' 'glslang' 'vulkan-headers' 'openxr-headers' 'vim')
+makedepends=('meson' 'git' 'glslang' 'vulkan-headers' 'openxr-headers' 'vim' 'glm')
 license=('MIT')
 options=('debug' '!strip')
 
