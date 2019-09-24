@@ -3,7 +3,7 @@
 pkgname=pdk
 # https://puppet-pdk.s3.amazonaws.com/pdk/1.7.1.0/repos/deb/xenial/PC1/pdk_1.7.1.0-1xenial_amd64.deb
 _ubuntu_release=bionic
-pkgver=1.12.0.0
+pkgver=1.13.0.0
 _pkgver="${pkgver}-1${_ubuntu_release}"
 
 pkgrel=1
@@ -12,7 +12,7 @@ arch=('x86_64')
 url='https://github.com/puppetlabs/pdk'
 options=(staticlibs !strip)
 source=("http://apt.puppetlabs.com/pool/${_ubuntu_release}/puppet6/p/pdk/pdk_${_pkgver}_amd64.deb")
-md5sums=('76e35a7e972984c780c6ad3f7b476b1c')
+md5sums=('c5e460ef3d22eac7f68b55f03977ac79')
 
 package() {
   tar xJf data.tar.xz
