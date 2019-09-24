@@ -1,6 +1,6 @@
 pkgbase = vita3k-git
 	pkgdesc = Experimental PlayStation Vita emulator
-	pkgver = r1241.74c50634
+	pkgver = r1255.daff95ff
 	pkgrel = 1
 	url = https://vita3k.org/
 	arch = x86_64
@@ -21,9 +21,9 @@ pkgbase = vita3k-git
 	source = git+https://github.com/Vita3K/vita-toolchain.git
 	source = git+https://github.com/jonasmr/microprofile.git
 	source = git+https://github.com/tcbrindle/sdl2-cmake-scripts.git
-	source = git+https://github.com/gabime/spdlog.git#branch=v1.x
+	source = git+https://github.com/gabime/spdlog.git
 	source = git+https://github.com/nothings/stb.git
-	source = git+https://github.com/tronkko/dirent.git#branch=v1.23
+	source = git+https://github.com/tronkko/dirent.git
 	source = git+https://github.com/B-Con/crypto-algorithms.git
 	source = git+https://github.com/ocornut/imgui.git
 	source = git+https://github.com/google/googletest.git

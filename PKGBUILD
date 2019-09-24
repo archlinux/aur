@@ -2,7 +2,7 @@
 # Contributor: aimileus < $(echo YWltaWxpdXNAcHJvdG9ubWFpbC5jb20K | base64 -d)
 _pkgname=vita3k
 pkgname=${_pkgname}-git
-pkgver=r1241.74c50634
+pkgver=r1255.daff95ff
 pkgrel=1
 pkgdesc="Experimental PlayStation Vita emulator"
 arch=('x86_64')
@@ -29,9 +29,9 @@ source=(
 	"git+https://github.com/Vita3K/vita-toolchain.git"
 	"git+https://github.com/jonasmr/microprofile.git"
 	"git+https://github.com/tcbrindle/sdl2-cmake-scripts.git"
-	"git+https://github.com/gabime/spdlog.git#branch=v1.x"
+	"git+https://github.com/gabime/spdlog.git"
 	"git+https://github.com/nothings/stb.git"
-	"git+https://github.com/tronkko/dirent.git#branch=v1.23"
+	"git+https://github.com/tronkko/dirent.git"
 	"git+https://github.com/B-Con/crypto-algorithms.git"
 	"git+https://github.com/ocornut/imgui.git"
 	"git+https://github.com/google/googletest.git"
@@ -125,20 +125,20 @@ build() {
 	cd build-linux
 	cmake .. -DUSE_DISCORD_RICH_PRESENCE=OFF
 
-	make VERBOSE=1 UNICORN_QEMU_FLAGS="--python=/usr/bin/python2"
+	make UNICORN_QEMU_FLAGS="--python=/usr/bin/python2"
 }
 
 package() {
 	cd "${_pkgname}"
 
-	install -d -m 755 "${pkgdir}/opt/"
 	install -d -m 755 "${pkgdir}/usr/bin/"
+	install -d -m 755 "${pkgdir}/opt/vita3k/"
 
-	# 777 permissions are sadly needed for now for it to work because vita3k
-	# creates a log file in the same directory as the binary
-	rsync -rtl --perms --chmod=777 "build-linux/bin/" "${pkgdir}/opt/vita3k"
+	cp -r "build-linux/bin/"* "${pkgdir}/opt/vita3k/"
 	ln -s "/opt/vita3k/Vita3K" "${pkgdir}/usr/bin/vita3k"
 
+	# This folder needs 777 permissions because vita3k creates a log file
+	chmod 777 "${pkgdir}/opt/vita3k/"
+
 	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-    install -Dm644 "COPYING.txt" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING.txt"
 }
