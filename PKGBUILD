@@ -40,7 +40,7 @@ prepare() {
 	pip install --upgrade autobuild
 
 	autobuild configure -A 64 -c ReleaseFS_open -- -DLL_TESTS:BOOL=FALSE
-    cd indra/newview
+#    cd indra/newview
 #	patch -Np0 -i "$srcdir/dontTarSelf.patch"
 }
 
