@@ -1,0 +1,15 @@
+pkgbase = python2-argon2
+	pkgdesc = Bindings for the argon2 password hasher
+	pkgver = 0.1.10
+	pkgrel = 1
+	url = https://github.com/flamewow/argon2_py
+	arch = any
+	license = unknown
+	makedepends = python2-setuptools
+	depends = python2
+	source = https://files.pythonhosted.org/packages/source/a/argon2/argon2-0.1.10.tar.gz
+	sha256sums = 523a3d3b88f3a46244b4976a6ca81994705848538bbe9e41426ea54ccb75eb90
+
+pkgname = python2-argon2
+	depends = python2
+
