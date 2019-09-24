@@ -1,7 +1,7 @@
 # Maintainer: Lev Levitsky <levlev@mail.ru>
 pkgbase="percolator-git"
 pkgname=('percolator-git' 'percolator-converters-git' 'elude-git')
-pkgver=3.02.01.r8.gf97ae1d
+pkgver=3.04
 pkgrel=1
 pkgdesc="Software for postprocessing of shotgun proteomics data + format converters + Elude tool"
 url="http://percolator.ms/"
@@ -9,10 +9,8 @@ license=('Apache')
 depends=('xerces-c' 'sqlite' 'libtirpc-compat' 'boost')
 arch=('x86_64')
 makedepends=('git' 'xsd' 'cmake' 'zlib')
-source=('source::git+https://github.com/percolator/percolator'
-        'percolator.patch')
-md5sums=('SKIP'
-         '53c592a9db82da8474907a617ea688fb')
+source=('source::git+https://github.com/percolator/percolator')
+md5sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/source"
@@ -21,7 +19,6 @@ pkgver() {
 
 prepare() {
     cd "${srcdir}/source"
-    patch -p1 -i "$srcdir/${pkgname%-git}.patch"
     cd "$BUILDDIR"
     for d in "${pkgname[@]}"; do
         mkdir "${d%-git}"
@@ -36,10 +33,10 @@ build() {
     echo "------------------------"
     echo "Running cmake for percolator ..."
     echo "................................"
-    cmake -DTARGET_ARCH=x86_64 -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DXML_SUPPORT=ON "${srcdir}/source"
+    cmake -DTARGET_ARCH=x86_64 -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DXML_SUPPORT=ON -DCMAKE_PREFIX_PATH="/usr/include;/usr/lib" -DCMAKE_CXX_FLAGS="-l tirpc" "${srcdir}/source"
     echo "Running make for percolator ..."
     echo "..............................."
-    make
+    make -j 4
     echo "------------------------"
     echo "Building converters ..."
     echo "------------------------"
@@ -49,7 +46,7 @@ build() {
     cmake -DTARGET_ARCH=x86_64 -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release "${srcdir}/source/src/converters"
     echo "Running make for percolator-converters ..."
     echo ".........................................."
-    make
+    make -j 4
     echo "------------------------"
     echo "Building Elude ..."
     echo "------------------------"
@@ -59,7 +56,7 @@ build() {
     cmake -DTARGET_ARCH=x86_64 -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release "${srcdir}/source/src/elude_tool"
     echo "Running make for elude ..."
     echo ".........................."
-    make
+    make -j 4
 }
 
 package_percolator-git() {
