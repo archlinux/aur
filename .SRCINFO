@@ -1,0 +1,20 @@
+pkgbase = arduino-builder-rc
+	pkgdesc = A command line tool for compiling Arduino sketches -- stable and release candidates
+	pkgver = 1.4.7
+	pkgrel = 1
+	url = https://github.com/arduino/arduino-builder
+	arch = x86_64
+	license = GPL
+	makedepends = go
+	makedepends = git
+	makedepends = unzip
+	depends = arduino-ctags
+	optdepends = arduino-avr-core: AVR core with upstream avr-gcc and avrdude
+	optdepends = arduino-cli: Arduino command line interface
+	provides = arduino-builder
+	conflicts = arduino-builder
+	source = https://github.com/arduino/arduino-builder/archive/1.4.7.tar.gz
+	sha512sums = 7550a8ec97e20ce88f519a33158df575c76b2de133d57db0323453f04a0bbe8484030f80e71fdcd095127289e53bcd635a056eb32845b7a7203003be2f5a9ab7
+
+pkgname = arduino-builder-rc
+
