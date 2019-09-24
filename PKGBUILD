@@ -12,17 +12,23 @@ source=("git+https://github.com/Austcool-Walker/macbuntu-theme.git")
 sha512sums=('SKIP')
 
 prepare() {
-chmod -v +x ${BUILDDIR}/makepkg
+#mv -v  ${BUILDDIR}/PKGBUILD ${BUILDDIR}/PKGBUILD2
+cd macbuntu-theme
+#cp -v PKGBUILD ${BUILDDIR}/PKGBUILD
+}
+
+build() {
+cd macbuntu-theme
+makepkg -sfi
+
 }
 
 package() {
-cd macbuntu-theme
-${BUILDDIR}/makepkg -sfi
-
+echo "no package to make"
 }
 
 finalize() {
-cd macbuntu-theme
-cp -v -R *.pkg.tar* ${BUILDDIR}/
+cd ${srcdir}/macbuntu-theme
+cp -v -R *.tar* ${BUILDDIR}/
 
 }
