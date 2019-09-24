@@ -1,48 +1,39 @@
 # Maintainer: tuftedocelot@fastmail.fm
 _pkgname=yubioath-desktop
 pkgname=yubico-${_pkgname}-git
-pkgver=1061
+pkgver=1170
 pkgrel=1
 pkgdesc="Crossplatform graphical user interface to generate one-time passwords."
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://developers.yubico.com/yubioath-desktop/"
-license=('GPL')
-depends=('pcsclite' 'ccid' 'python-pyotherside' 'yubikey-manager' 'qt5-quickcontrols')
-makedepends=('swig' 'qt5-svg' 'git')
-validpgpkeys=('8D0B4EBA9345254BCEC0E843514F078FF4AB24C3') # Dag Heyman <dag@yubico.com>
-source=("git+https://github.com/Yubico/yubioath-desktop.git"
-'git+https://github.com/thp/pyotherside.git'
-'git+https://github.com/Yubico/yubikey-manager.git'
-'git+https://github.com/qtproject/qt-solutions')
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
+license=('BSD')
+depends=('pcsclite' 'ccid' 'python-pyotherside' 'yubikey-manager>=3.1.0' 'qt5-quickcontrols2' 'qt5-declarative')
+makedepends=('swig' 'qt5-svg' 'libffi' 'openssl' 'qt5-base' 'git')
+validpgpkeys=('8D0B4EBA9345254BCEC0E843514F078FF4AB24C3' # Dag Heyman <dag@yubico.com>
+              '57A9DEED4C6D962A923BB691816F3ED99921835E' # Emil Lundberg <emil@yubico.com>
+              )
+source=("git+https://github.com/Yubico/yubioath-desktop.git?signed")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd ${_pkgname}
-  git rev-list --count HEAD
-}
+    cd "${_pkgname}"
 
-prepare() {
-  cd "${srcdir}/${_pkgname}"
-
-  git config --file=.gitmodules submodule.vendor/pyotherside.url ../pyotherside/
-  git config --file=.gitmodules submodule.vendor/yubikey-manager.url ../yubikey-manager/
-  git config --file=.gitmodules submodule.ykman-gui/vendor/qt-solutions.url ../qt-solutions/
-
-  git submodule init
-  git submodule update
+    git rev-list --count HEAD
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}"
+  cd "${_pkgname}"
 
-  qmake-qt5 -makefile -nocache
+  qmake-qt5 QMAKE_CFLAGS_RELEASE="${CFLAGS}" QMAKE_CXXFLAGS_RELEASE="${CXXFLAGS}" QMAKE_LFLAGS_RELEASE="${LDFLAGS}"
   make
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}"
+  cd "${_pkgname}"
 
   make INSTALL_ROOT="${pkgdir}/" install
   install -D -m0644 resources/yubioath-desktop.desktop "${pkgdir}/usr/share/applications/yubioath-desktop.desktop"
   install -D -m0644 resources/icons/yubioath.png "${pkgdir}/usr/share/pixmaps/yubioath.png"
+  install -D -m0644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }
+
