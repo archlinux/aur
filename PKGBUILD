@@ -8,17 +8,24 @@ arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/malfunkt/arpfox"
 license=('MIT')
 depends=('libpcap')
-makedepends=('go')
+makedepends=('go-pie')
 provides=("arpfox")
 conflicts=("arpfox")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/malfunkt/arpfox/archive/v${pkgver}.tar.gz")
 sha256sums=('50f151a0b8bcd309e77e7d9f83b1badaf14ba085f8fc85d5e23c0d1923c2550e')
 
+prepare() {
+  export GO111MODULE=on
+}
+
 build() {
-  go get github.com/malfunkt/arpfox
+  cd "${pkgname}-${pkgver}"
+  go build
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  make VERSION=$pkgver DESTDIR="$pkgdir" PREFIX=/usr install
+  cd "${pkgname}-${pkgver}"
+
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dsm755 arpfox "${pkgdir}/usr/bin/arpfox"
 }
