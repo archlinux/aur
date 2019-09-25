@@ -1,0 +1,19 @@
+pkgbase = rpcs3-git-bin
+	pkgdesc = Open-source Sony Playstation 3 Emulator (binary AppImage)
+	pkgver = 0.0.7
+	pkgrel = 1
+	url = https://rpcs3.net
+	arch = x86_64
+	license = GPL2
+	depends = ffmpeg
+	depends = glew
+	depends = openal
+	depends = qt5-declarative
+	depends = vulkan-icd-loader
+	provides = rpcs3
+	conflicts = rpcs3
+	noextract = rpcs3-latest.AppImage
+	options = !strip
+
+pkgname = rpcs3-git-bin
+
