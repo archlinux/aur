@@ -1,7 +1,7 @@
 # Maintainer: Andy Botting <andy@andybotting.com>
 
 pkgname=python-magnumclient
-pkgver='2.14.0'
+pkgver='2.15.0'
 pkgrel='1'
 pkgdesc='Python client library for Magnum'
 arch=('any')
@@ -16,7 +16,7 @@ checkdepends=('bandit' 'python-fixtures' 'python-openstackclient'
               'python-oslotest' 'python-osprofiler' 'python-stestr'
               'python-testscenarios' 'python-testtools' 'python-mock')
 source=("https://github.com/openstack/$pkgname/archive/$pkgver.tar.gz")
-sha512sums=('75e197d3899b58969f81f50be3ea705099fbb798e125d71a925ed38811377f4280dc3a88ddaf3c9b3be94c652f9ff8dd2ba4ae20e081335ceee9d139789579e0')
+sha512sums=('4fe448c70e21ff4614b9848aa00a9f7945075ab74334b3dc98f9da42671dc395c11ff6d1407f4eb6f4bbf18a9040bc959e320671b5e8a109e667e94a6033b691')
 
 export PBR_VERSION=$pkgver
 
