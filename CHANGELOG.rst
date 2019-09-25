@@ -1,6 +1,16 @@
 Changelog for package base ``barrier``
 ======================================
 
+2.3.1-1 - 2019-09-25
+--------------------
+
+- Updated to upstream release 2.3.1_.
+
+  Upstream release notes since version 2.1.2_:
+
+  * Fixes for the international US keyboard (2.3.1_)
+  * Misc. Fixes and Improvements (2.3.0_)
+
 2.1.2-2 - 2018-12-29
 --------------------
 
@@ -38,4 +48,6 @@ the actual version number shown by the Barrier programs is ``2.2.0``.
 
 .. _2.1.1: https://github.com/debauchee/barrier/releases/tag/v2.1.1
 .. _2.1.2: https://github.com/debauchee/barrier/releases/tag/v2.1.2
+.. _2.3.0: https://github.com/debauchee/barrier/releases/tag/v2.3.0
+.. _2.3.1: https://github.com/debauchee/barrier/releases/tag/v2.3.1
 .. _issue 49: https://github.com/debauchee/barrier/issues/49
