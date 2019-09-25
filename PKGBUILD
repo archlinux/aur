@@ -1,7 +1,7 @@
 # Maintainer: Zanny <lordzanny@gmail.com>
 
 pkgname=krita-beta
-pkgver=4.2.6
+pkgver=4.2.7
 _subver=beta1
 pkgrel=1
 pkgdesc="Edit and paint images - beta release"
@@ -15,7 +15,7 @@ optdepends=()
 provides=(krita)
 conflicts=(krita)
 source=("https://download.kde.org/unstable/krita/$pkgver-$_subver/krita-$pkgver-$_subver.tar.xz")
-sha256sums=('2df128a8dab6cbae66e20e49dca56d8843043619ac0a95216db708b2babe5107')
+sha256sums=('7ee233dd7002e428896db76dac02ba61d6e816a86bcf0b2004b5c81ef76f5f7a')
 
 prepare() {
   mkdir -p build
