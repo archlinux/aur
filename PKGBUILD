@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
 pkgname=gammy-git
-pkgver=0.9.42.r96.0da193b
+pkgver=0.9.47.r0.0da193b
 pkgrel=1
 pkgdesc="Automatic screen brightness tool."
 arch=('x86_64')
@@ -17,7 +17,7 @@ sha256sums=('SKIP'
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+	printf "%s" "$(git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {
