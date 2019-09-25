@@ -1,0 +1,19 @@
+pkgbase = pdlist-git
+	pkgdesc = A passive subdomain finder
+	pkgver = r28.b7b449e
+	pkgrel = 1
+	url = https://github.com/gnebbia/pdlist
+	arch = any
+	license = BSD
+	makedepends = git
+	depends = python
+	depends = python-setuptools
+	depends = python-requests
+	depends = python-dnsdumpster-api
+	provides = pdlist
+	conflicts = pdlist
+	source = git+https://github.com/gnebbia/pdlist.git
+	md5sums = SKIP
+
+pkgname = pdlist-git
+
