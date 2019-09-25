@@ -1,7 +1,7 @@
 # Maintainer: Luis Pérez <luis.perez@protonmail.com>
 pkgname=dockle-bin
 _pkgname=dockle
-pkgver=0.1.15
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Container Image Linter for Security, Helping build the Best-Practice Docker Image, Easy to start"
 arch=(x86_64)
