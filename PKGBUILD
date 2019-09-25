@@ -1,7 +1,7 @@
 # Maintainer: oi_wtf <brainpower at mailbox dot org>
 
 pkgname=ashuffle
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Automatic library-wide shuffle for mpd."
 url="https://github.com/joshkunz/ashuffle"
@@ -12,15 +12,12 @@ depends=("libmpdclient")
 makedepends=("meson")
 
 source=("https://github.com/joshkunz/ashuffle/archive/v${pkgver}/ashuffle-${pkgver}.tar.gz")
-sha256sums=("2916e8744b46cac45f769a59e01516afd2531508c9d5070efd60de5b953ca5cf")
+sha256sums=("7b1ce117568de33e26bcc762c0fba8c1a487952d93668358d10ae0dd52d5c487")
 
 build() {
   cd "ashuffle-${pkgver}"
 
-  arch-meson builddir \
-    -Dtidy_mode=true
-  # disabling tests because the tarball is missing t/libtap/tap.c
-  # See: https://github.com/joshkunz/ashuffle/issues/37
+  arch-meson builddir
 
   ninja -C builddir
 }
