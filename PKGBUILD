@@ -28,17 +28,23 @@ source+=("houdini_y.sfs::http://dl.android-x86.org/houdini/7_y/houdini.sfs"
 # libhoudini
 source+=("https://github.com/Rprop/libhoudini/raw/master/4.0.8.45720/system/lib/libhoudini.so")
 
-noextract=('android_amd64.img'
-           "${_OPENGAPPS_FILE}"
-           'houdini_y.sfs'
-           'houdini_z.sfs'
-           'libhoudini.so')
+noextract=("${_OPENGAPPS_FILE}")
 md5sums=('26874452a6521ec2e37400670d438e33'
-         '01f556fabcb9115592f9e5cf5292084b'
-         '9042cab80cd6e59420b1ff6340094bfd'
+         'SKIP'
+         'SKIP'
          '7ebf618b1af94a02322d9f2d2610090b'
          '5ca37e1629edb7d13b18751b72dc98ad'
          '205ef556ceb5f3dbcb9c309773a47fc9')
+         
+prepare() {
+	# verify OpenGApps against provided md5 file
+	if [ `md5sum "${_OPENGAPPS_FILE}" | awk '{print $1}'` = `cat "${_OPENGAPPS_FILE}".md5 | awk '{print $1}'` ] 
+	then
+		echo 'OpenGApps md5sums passed'
+	else
+		echo 'WARNING: OpenGApps md5sums failed!'
+	fi
+}
 
 build () {
 	cd "${srcdir}"
