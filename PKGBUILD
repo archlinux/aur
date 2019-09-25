@@ -1,9 +1,8 @@
 # Maintainer: Erhad Husovic <xdaemonx[at]protonmail[dot]ch>
 
 pkgname=blink
-_reponame=blink-qt
 pkgver=3.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A state of the art, easy to use SIP client'
 arch=('any')
 url='http://icanblink.com'
@@ -24,24 +23,24 @@ depends=('icu'
 optdepends=('python2-service-identity: for TLS certificate hostname verification'
             'x11vnc: for screen sharing')
 
-source=("https://github.com/XdaemonX/blink-qt/releases/download/${pkgver}/release-${pkgver}.tar.gz")
-sha512sums=('d492ef03c61facc6f1351f90a82ff0f3927b6a16ee6d6ac0799441dd7616a8c47b751acca65f25f9bea7efac878ae94d7facd81b26eb65e341a106692478238b')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/AGProjects/blink-qt/archive/release-${pkgver}.tar.gz")
+sha256sums=('911d5232beb2b8638d26314ef9ab0831c67731bd5bd219c84668f30f3c849b4b')
 
 
 build() {
-  cd ${srcdir}/${_reponame}-release-${pkgver}
+  cd "${srcdir}/${pkgname}-qt-release-${pkgver}"
   python2 setup.py build
 }
 
 package() {
-  cd ${srcdir}/${_reponame}-release-${pkgver}
+  cd "${srcdir}/${pkgname}-qt-release-${pkgver}"
   python2 setup.py install --root="${pkgdir}"
 
   # license
   install -Dm644 LICENSE \
-    ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   # desktop file
-  install -Dm644 ${srcdir}/${_reponame}-release-${pkgver}/debian/${pkgname}.desktop \
-    ${pkgdir}/usr/share/applications/${pkgname}.desktop
+  install -Dm644 "${srcdir}/${pkgname}-qt-release-${pkgver}/debian/${pkgname}.desktop" \
+    "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 }
