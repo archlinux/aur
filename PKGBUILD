@@ -2,8 +2,8 @@
 
 pkgbase=phpstorm
 pkgname=(phpstorm phpstorm-jre)
-pkgver=2019.2.2b192.6603.42
-pkgrel=3
+pkgver=2019.2.3b192.6817.20
+pkgrel=1
 pkgdesc='Lightweight and Smart PHP IDE'
 arch=('x86_64' 'i686')
 license=('Commercial')
@@ -12,7 +12,7 @@ makedepends=('rsync')
 options=('!strip')
 source=(https://download.jetbrains.com/webide/PhpStorm-${pkgver%b*}.tar.gz
         jetbrains-phpstorm.desktop)
-sha512sums=('25979367e999ad7c5fd7f1c9763156370d52f36bf41d911969f33f2e32bf11a87792b091feab474b43039e64433c10c7ca6704868b0f152041d92c297ad7ba31'
+sha512sums=('2b0f47c26f664fc05ebdb1f6b8e7fc38dd9f7fba1a0717936ca35cc63febd345fb573b1b004ccb89ddccaf3f755cd22d70de7954a199749be03f3f67255898f0'
             'b10edd04a7d48641bec7a9e23037510b426acb5a3059267b2081ec0fce41272d8de413f0b4c1dddd3387bb0ce330c48b3f7894f4817973cd6d32a74a14af3528')
 
 pkgver() {
@@ -34,7 +34,7 @@ package_phpstorm() {
 
   ln -s "/opt/${pkgbase}/bin/${pkgbase}.sh" "${pkgdir}/usr/bin/${pkgbase}"
   install -D -m 644 "${srcdir}/jetbrains-${pkgbase}.desktop" "${pkgdir}/usr/share/applications/"
-  install -D -m 644 "${pkgdir}/opt/${pkgbase}/bin/${pkgbase}.png" "${pkgdir}/usr/share/pixmaps/${pkgbase}.png"
+  install -D -m 644 "${pkgdir}/opt/${pkgbase}/bin/${pkgbase}.svg" "${pkgdir}/usr/share/pixmaps/${pkgbase}.svg"
 }
 
 package_phpstorm-jre() {
