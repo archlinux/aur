@@ -4,7 +4,7 @@ _target="msp430-elf"
 pkgname=${_target}-gcc
 pkgver=9.2.0
 _islver=0.21
-pkgrel=1
+pkgrel=2
 pkgdesc="The GNU Compiler Collection for the ${_target} target."
 arch=(i686 x86_64)
 license=('GPL' 'LGPL')
@@ -14,6 +14,7 @@ options=('staticlibs' '!buildflags' '!libtool' '!emptydirs' 'zipman' 'docs' '!st
 conflicts=("${_target}-gcc-stage1")
 replaces=("${_target}-gcc-stage1")
 provides=("${_target}-gcc-stage1")
+optdepends=("${_target}-libstdc++: C++ standard library support")
 source=(http://isl.gforge.inria.fr/isl-${_islver}.tar.xz
         ftp://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.xz)
 sha256sums=('777058852a3db9500954361e294881214f6ecd4b594c00da5eee974cd6a54960'
@@ -48,7 +49,7 @@ build() {
     --target=${_target} \
     --host=$CHOST \
     --build=$CHOST \
-    --disable-shared \
+    --enable-shared \
     --disable-nls \
     --disable-threads \
     --enable-languages=c,c++ \
@@ -61,7 +62,8 @@ build() {
     --disable-libgomp \
     --disable-libssp \
     --enable-interwork \
-    --enable-addons
+    --enable-addons \
+    --enable-lto
 
   make all-gcc all-target-libgcc
 }
