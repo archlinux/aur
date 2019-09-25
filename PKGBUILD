@@ -16,13 +16,20 @@ provides=(popcorntime)
 conflicts=(popcorntime popcorntime-ce)
 options=(!strip)
 source=(git+https://github.com/popcorn-official/popcorn-desktop#branch=development
-        popcorntime.desktop)
+        popcorntime.desktop
+        nwjs-patch.diff)
 sha512sums=('SKIP'
-            'abf5d406467422168944244b95eac0d2c23ca4140cd803afeea852e9a15a5176a019a5772be919234fe01ceec0d8d135158900e828144b0079018015662f7dcd')
+            'abf5d406467422168944244b95eac0d2c23ca4140cd803afeea852e9a15a5176a019a5772be919234fe01ceec0d8d135158900e828144b0079018015662f7dcd'
+            '4749e7e521b0e784a956231baccb0841a0f28a7f7415d6e47f24ba3138e4fe88c2e6d9defcd10acbe86718a42a6b99dcbddaa20d95df584c71ad2ad653a180cf')
 
 pkgver() {
   cd popcorn-desktop
   echo $(git tag)+r$(git rev-list --count HEAD)+g$(git rev-parse --short HEAD)
+}
+
+prepare() {
+  cd popcorn-desktop
+  patch -p1 --binary < "$srcdir/nwjs-patch.diff"
 }
 
 build() {
