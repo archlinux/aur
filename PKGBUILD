@@ -1,7 +1,7 @@
 # Maintainer: Adrien Prost-Boucle <adrien.prost-boucle@laposte.net>
 
 pkgname=ghdl-llvm-git
-pkgver=0.37dev.git20190907
+pkgver=0.37dev.git20190925
 pkgrel=1
 arch=('any')
 pkgdesc='VHDL simulator - LLVM back-end'
@@ -10,7 +10,7 @@ license=('GPLv2')
 
 provides=('ghdl')
 conflicts=('ghdl' 'ghdl-gcc-git' 'ghdl-mcode-git')
-makedepends=('gcc-ada' 'git' 'llvm<9' 'clang<9')
+makedepends=('gcc-ada' 'git' 'llvm' 'clang')
 
 source=(
 	"ghdl::git://github.com/ghdl/ghdl.git"
@@ -33,9 +33,11 @@ pkgver() {
 build() {
 	cd "${srcdir}/ghdl"
 
+	# Note : Add --enable-openieee to use free (but not complete) implementation of IEEE VHDL libs
 	./configure \
 		--prefix=/usr/ \
 		--with-llvm-config \
+		--enable-libghdl \
 		--enable-synth
 
 	make
@@ -46,6 +48,10 @@ package() {
 
 	make DESTDIR="${pkgdir}" install
 
-	# Install library for synthesis
-	make DESTDIR="${pkgdir}" install.libghdlsynth
+	# In case it does not exist, create symlink libghdl.so
+	local _gso=`ls "${pkgdir}/usr/lib/" | grep -e '^libghdl-.*\.so$' | head -n 1`
+	if [[ -n "$_gso" ]] ; then
+		ln -s "$_gso" "${pkgdir}/usr/lib/libghdl.so"
+	fi
+
 }
