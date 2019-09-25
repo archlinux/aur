@@ -119,10 +119,10 @@ package_systemd-cdown-git() {
   pkgdesc="system and service manager (git version)"
   license=('GPL2' 'LGPL2.1')
   depends=('acl' 'bash' 'cryptsetup' 'dbus' 'iptables' 'kbd' 'kmod' 'hwids' 'libcap'
-           'libgcrypt' 'systemd-cdown-libs' 'libidn2' 'libidn2.so' 'lz4' 'pam' 'libelf'
+           'libgcrypt' 'systemd-libs' 'libidn2' 'libidn2.so' 'lz4' 'pam' 'libelf'
            'libseccomp' 'util-linux' 'xz' 'pcre2' 'audit')
   provides=("${_pkgbase}=$pkgver" 'nss-myhostname' "systemd-tools=$pkgver" "udev=$pkgver")
-  replaces=('nss-myhostname' 'systemd-cdown-tools' 'udev')
+  replaces=('nss-myhostname' 'systemd-tools' 'udev')
   conflicts=("${_pkgbase}" 'nss-myhostname' 'systemd-tools' 'udev')
   optdepends=('libmicrohttpd: remote journald capabilities'
               'quota-tools: kernel-level quota management'
