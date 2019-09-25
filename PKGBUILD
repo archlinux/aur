@@ -47,7 +47,7 @@ _1k_HZ_ticks=
 ### Do not edit below this line unless you know what you're doing
 
 pkgbase=linux-next-git
-pkgver=20190919.r0.geb2f12732f67
+pkgver=20190924.r0.g9e88347dedd8
 _srcname=linux-next
 pkgrel=1
 arch=('x86_64')
@@ -61,8 +61,7 @@ _lucjanver=5.3
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_lucjanver}"
 
 source=("git://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git"
-        "${_lucjanpath}/arch-patches-sep/0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch"
-        "${_lucjanpath}/arch-patches-sep/0002-ZEN-Add-CONFIG-for-unprivileged_userns_clone.patch"
+        "${_lucjanpath}/arch-patches-v2/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
          # the main kernel config files
         'config'
          # pacman hook for depmod
@@ -372,8 +371,7 @@ for _p in "${pkgname[@]}"; do
 done
 
 sha512sums=('SKIP'
-            'd66837934c6012aaf26ff63390102b6adba5e1a05dfd86b3a9d1a186c029f97283bf539931c43f66ec37a2993dfcfd6899421cce8258b494c95650904a67643a'
-            'd066e58cb7fc27ac5bff9699d01af1798a28dd11354b346d1171e098c80a08cf68c3fdea6e145fb47a2059ca7a8fef632bc0ad85262087caf579ed46482847bb'
+            '8aac877c0dfcd6796bc217572c8b8c6473ab6b5b15b7cca0e7c0f4e7cbb7080557d32fd045e6608d8acbf98cf7c16834ed0c5de2ce9d9d5dfa0194d055642276'
             '257df4fb23b8c8413f7d8735fdb49e8eca7702d80a5134edad35bc8cd04a7e5bd47290f16f5838bf5e10e227713c1c5b74694a0aa18225d0158f54d0daa809dd'
             '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
             '2718b58dbbb15063bacb2bde6489e5b3c59afac4c0e0435b97fe720d42c711b6bcba926f67a8687878bd51373c9cf3adb1915a11666d79ccb220bf36e0788ab7'
