@@ -3,12 +3,11 @@
 pkgname=anbox-image-gapps
 pkgver=2018.07.19
 pkgrel=11
-pkgdesc="Android image for running in Anbox, with Opengapps and houdini"
+pkgdesc="Android image for running in Anbox, with OpenGApps and houdini"
 arch=('x86_64')
 url="https://anbox.io"
 license=('custom')
 makedepends=('curl' 'lzip' 'squashfs-tools' 'unzip')
-optdepends=('anbox-bridge: Enable network for anbox.')
 provides=('anbox-image')
 conflicts=('anbox-image')
 
@@ -20,24 +19,26 @@ _OPENGAPPS_RELEASEDATE="$(curl -s https://api.github.com/repos/opengapps/x86_64/
 _OPENGAPPS_FILE="open_gapps-x86_64-7.1-mini-${_OPENGAPPS_RELEASEDATE}.zip"
 _OPENGAPPS_URL="https://downloads.sourceforge.net/project/opengapps/x86_64/${_OPENGAPPS_RELEASEDATE}/${_OPENGAPPS_FILE}"
 source+=("${_OPENGAPPS_URL}")
+source+=("${_OPENGAPPS_URL}.md5")
 
 # houdini
 source+=("houdini_y.sfs::http://dl.android-x86.org/houdini/7_y/houdini.sfs"
-	"houdini_z.sfs::http://dl.android-x86.org/houdini/7_z/houdini.sfs")
+         "houdini_z.sfs::http://dl.android-x86.org/houdini/7_z/houdini.sfs")
 
 # libhoudini
 source+=("https://github.com/Rprop/libhoudini/raw/master/4.0.8.45720/system/lib/libhoudini.so")
 
 noextract=('android_amd64.img'
-	"${_OPENGAPPS_FILE}"
-	'houdini_y.sfs'
-	'houdini_z.sfs'
-	'libhoudini.so')
-sha256sums=('6b04cd33d157814deaf92dccf8a23da4dc00b05ca6ce982a03830381896a8cca'
-            '908bd6ce12c5685b92a8c21ff7879a84d529b929d63d169bfcafa194d65f4b0a'
-            '56fd08c448840578386a71819c07139122f0af39f011059ce728ea0f3c60b665'
-            '7eedc42015e6fb84a11a406a099241efccc20d4e020d476335a5fdb6e69a33d2'
-            '2d15d126e46ea933a92fcc6dd30ad2c93d063af322fc1ba84aaa4f3e75d84e68')
+           "${_OPENGAPPS_FILE}"
+           'houdini_y.sfs'
+           'houdini_z.sfs'
+           'libhoudini.so')
+md5sums=('26874452a6521ec2e37400670d438e33'
+         '01f556fabcb9115592f9e5cf5292084b'
+         '9042cab80cd6e59420b1ff6340094bfd'
+         '7ebf618b1af94a02322d9f2d2610090b'
+         '5ca37e1629edb7d13b18751b72dc98ad'
+         '205ef556ceb5f3dbcb9c309773a47fc9')
 
 build () {
 	cd "${srcdir}"
