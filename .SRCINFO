@@ -6,6 +6,7 @@ pkgbase = icecream
 	install = icecream.install
 	arch = x86_64
 	license = GPL2
+	makedepends = docbook2x
 	depends = bash
 	depends = libcap-ng
 	depends = libarchive

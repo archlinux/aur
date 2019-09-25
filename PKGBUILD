@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc="takes compile jobs from your build and distributes it to remote machines allowing a parallel build on several machines."
 url="http://en.opensuse.org/Icecream"
 license=('GPL2')
-makedepends=('')
+makedepends=('docbook2x')
 depends=('bash' 'libcap-ng' 'libarchive' 'lzo' 'zstd')
 provides=('icecream')
 optdepends=('icecream-sundae: A commandline monitor for Icecream'
@@ -36,7 +36,7 @@ build() {
   cd "$srcdir/$pkgname-$pkgver"
 
   ./autogen.sh
-  ./configure --prefix=/usr/lib/icecream --enable-shared --disable-static --without-man
+  ./configure --prefix=/usr/lib/icecream --enable-shared --disable-static --mandir=/usr/share/man
   make
 }
 
