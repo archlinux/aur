@@ -3,13 +3,13 @@
 pkgname=zcash
 pkgver=2.0.7_3
 _commit=e3983afc03d256813662aa2cb07fbe1a05b9ab05
-pkgrel=1
+pkgrel=2
 pkgdesc='Permissionless financial system employing zero-knowledge security'
 arch=('x86_64')
 url='https://z.cash/'
 license=('MIT')
 depends=('boost-libs' 'libevent' 'qpid-proton' 'zeromq')
-makedepends=('boost' 'cmake' 'git' 'gmock' 'python' 'rust' 'wget')
+makedepends=('boost' 'cmake' 'git' 'gmock' 'python' 'rustup' 'wget')
 checkdepends=('python2-pyblake2' 'python2-pyzmq' 'python2-qpid-proton')
 source=("git+https://github.com/zcash/zcash.git#commit=${_commit}"
         'libsnark-no-gtest.patch'
@@ -38,6 +38,9 @@ prepare() {
 
 build() {
     cd ${pkgname}
+
+    # Temporary, due to llvm-libs 9 being in [staging]
+    rustup update stable
 
     cd depends
     rust_crates=(
