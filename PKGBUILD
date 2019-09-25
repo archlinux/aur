@@ -12,6 +12,7 @@ url='https://code-industry.net/free-pdf-editor/'
 arch=('i686' 'x86_64')
 license=('custom')
 conflicts=('masterpdfeditor-qt4')
+install="${pkgname}.install"
 source=('masterpdfeditor.desktop')
 source_i686=("http://code-industry.net/public/master-pdf-editor-${pkgver}_i386.tar.gz")
 source_x86_64=("http://code-industry.net/public/master-pdf-editor-${pkgver}_qt5.amd64.tar.gz")

@@ -1,0 +1,6 @@
+post_install() {
+  echo '0.0.0.0 get.code-industry.net' >> /etc/hosts
+}
+post_remove() {
+  sed -i '/get\.code-industry\.net/d' /etc/hosts
+}

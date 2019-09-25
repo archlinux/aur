@@ -3,6 +3,7 @@ pkgbase = masterpdfeditor-free
 	pkgver = 4.3.89
 	pkgrel = 1
 	url = https://code-industry.net/free-pdf-editor/
+	install = masterpdfeditor-free.install
 	arch = i686
 	arch = x86_64
 	license = custom
