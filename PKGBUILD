@@ -1,13 +1,15 @@
 # Maintainer: Antony Lee <anntzer dot lee at gmail dot com>
 pkgname=snapgene-viewer
-pkgver=4.3.8
 pkgrel=1
 pkgdesc='Software for plasmid mapping, primer design, and restriction site analysis'
 arch=('x86_64')
 url='http://www.snapgene.com/products/snapgene_viewer/'
 license=('custom')
-source=("snapgene_viewer_${pkgver}_linux.rpm::https://www.snapgene.com/local/targets/viewer_download.php?os=linux_rpm&majorRelease=latest&minorRelease=latest")
-sha512sums=('8142e9224e6352712b7e9c80699439e39cc098f0af6556ca589b74be34de1b34abfe067fd8c9ffd176bf7c21f0f5ce8b302757d91ba968ea60cad86b95f6cfdd')
+_dlurl=("https://www.snapgene.com/local/targets/viewer_download.php?os=linux_rpm&majorRelease=latest&minorRelease=latest")
+_filename=$(curl --silent --head --location "$_dlurl" | grep -Po 'filename=".*"' | cut -d'"' -f2)
+pkgver="$(grep -Po '[0-9]([0-9]|\.)+[0-9]' <<< "$_filename")"
+source=("$_filename::$_dlurl")
+sha512sums=('7163cf178114073bba9d8e55c2afa56c1571b38ae5595328f8e141aec2af305f5883b8b198c9619093d153b383445147c5c246b3541d3584b9ab36610125c70f')
 
 package() {
     cd "$pkgdir"
