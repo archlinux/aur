@@ -1,0 +1,23 @@
+pkgbase = gwenhywfar-git
+	pkgdesc = OS abstraction functions for various projects
+	pkgver = 4.99.17rc1+3+g31fbb242
+	pkgrel = 1
+	url = https://www.aquamaniac.de/rdm/projects/gwenhywfar
+	arch = x86_64
+	arch = i686
+	license = LGPL
+	makedepends = git
+	makedepends = gtk3
+	makedepends = qt5-base
+	depends = gnutls
+	depends = libgcrypt
+	depends = openssl
+	optdepends = gtk3: for the GTK3 UI
+	optdepends = qt5-base: for the Qt5 UI
+	provides = gwenhywfar
+	conflicts = gwenhywfar
+	source = git+https://git.aquamaniac.de/git/gwenhywfar
+	sha256sums = SKIP
+
+pkgname = gwenhywfar-git
+
