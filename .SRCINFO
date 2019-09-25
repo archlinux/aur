@@ -36,8 +36,10 @@ pkgbase = popcorntime-git
 	options = !strip
 	source = git+https://github.com/popcorn-official/popcorn-desktop#branch=development
 	source = popcorntime.desktop
+	source = nwjs-patch.diff
 	sha512sums = SKIP
 	sha512sums = abf5d406467422168944244b95eac0d2c23ca4140cd803afeea852e9a15a5176a019a5772be919234fe01ceec0d8d135158900e828144b0079018015662f7dcd
+	sha512sums = 4749e7e521b0e784a956231baccb0841a0f28a7f7415d6e47f24ba3138e4fe88c2e6d9defcd10acbe86718a42a6b99dcbddaa20d95df584c71ad2ad653a180cf
 
 pkgname = popcorntime-git
 
