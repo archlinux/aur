@@ -162,4 +162,11 @@ package() {
 	find "usr/bin" "usr/share/info" \
 		-maxdepth 1 -mindepth 1 -not -name 'ghdl*' \
 		-exec rm -rf {} +
+
+	# In case it does not exist, create symlink libghdl.so
+	local _gso=`ls "${pkgdir}/usr/lib/" | grep -e '^libghdl-.*\.so$' | head -n 1`
+	if [[ -n "$_gso" ]] ; then
+		ln -s "$_gso" "${pkgdir}/usr/lib/libghdl.so"
+	fi
+
 }
