@@ -40,7 +40,6 @@ build() {
     -gcflags "all=-trimpath=$GOPATH" \
     -asmflags "all=-trimpath=$GOPATH" \
     -ldflags "-extldflags $LDFLAGS" \
-    -gccgoflags "$CFLAGS $LDFLAGS" \
     -v .
 
     chmod -R 744 "$GOPATH"
@@ -61,6 +60,9 @@ package() {
 
 	# Install main tool
 	install -Dm755 "arduino-cli" "${pkgdir}/usr/bin/arduino-cli"
+
+	# Install
+	install -Dm644 -t "${pkgdir}/usr/share/arduino/hardware/" "${srcdir}/${pkgname//-rc}-${_tagver}/legacy/builder/hardware/platform.keys.rewrite.txt"	
 
 	# Install platform.txt files
 	#install -Dm644 -t "${pkgdir}/usr/share/arduino/hardware/" "${srcdir}"/build/src/github.com/arduino/arduino-cli/hardware/*
