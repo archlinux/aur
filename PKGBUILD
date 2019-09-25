@@ -1,7 +1,7 @@
 # Maintainer: Erhad Husovic <xdaemonx@protonmail.ch>
 
 pkgname=qvault
-pkgver=0.2.8
+pkgver=0.2.9
 pkgrel=1
 pkgdesc="An open source, fully transparent and extremely secure password manager"
 arch=('any')
@@ -12,23 +12,20 @@ makedepends=('yarn' 'npm')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Q-Vault/qvault/archive/v${pkgver}.tar.gz"
 	'qvault.desktop'
 	'qvault'
-	'electron.patch'
 	)
-sha256sums=('4d90ae6f0a576f576d576a5d93377941185007f0eff748baa7344e1c14023276'
-	'SKIP'
+sha256sums=('ddf3bf60153d8540e0863e51471d87b85591d2650655e45b568d42109dab35b7'
 	'SKIP'
 	'SKIP')
 
 prepare() {
 	cd "$pkgname-$pkgver"
-	patch -p1 -i ../electron.patch
 	sed -i 's/mainWindow.webContents.openDevTools()/\/\/ &/' main.js
-	yarn install
 }
 
 build() {
 	cd "$pkgname-$pkgver"
-	yarn release -l dir -c.electronVersion
+	chmod u+x scripts/archLinuxRelease.sh
+	yarn release-arch-linux
 }
 
 package() {
