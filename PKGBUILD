@@ -5,7 +5,7 @@
 
 pkgname=pistache-git
 _name=${pkgname%-git}
-pkgver=1030.399d04e
+pkgver=1047.0c21c85
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='Modern and elegant HTTP and REST framework for C++'
@@ -45,5 +45,4 @@ check() {
 package() {
   cd "${srcdir}/${_name}"
   make DESTDIR="${pkgdir}" install
-  mv ${pkgdir}/usr/lib{64,}
 }
