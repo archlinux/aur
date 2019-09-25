@@ -1,0 +1,13 @@
+pkgbase = libparsifal
+	pkgdesc = A a validating XML 1.0 parser written in ANSI C
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = http://www.saunalahti.fi/~samiuus/toni/xmlproc/
+	arch = x86_64
+	license = custom:public domain
+	depends = glibc
+	source = http://www.saunalahti.fi/~samiuus/toni/xmlproc/libparsifal-1.1.0.tar.gz
+	md5sums = bee876fe8390cc835c4970047e38525d
+
+pkgname = libparsifal
+
