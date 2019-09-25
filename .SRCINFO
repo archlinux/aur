@@ -1,0 +1,14 @@
+pkgbase = chainweb-miner
+	pkgdesc = Miner for the Kadena Public Blockchain (Chainweb).
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://kadena.io/
+	arch = x86_64
+	license = BSD 3-Clause
+	depends = gmp
+	depends = rocksdb-release
+	source = https://github.com/kadena-io/chainweb-node/releases/download/testnet-v3/chainweb-miner-testnet-v3-archlinux.zip
+	md5sums = c6e7482b8ad5f71524d04d5a4cab5612
+
+pkgname = chainweb-miner
+
