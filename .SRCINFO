@@ -1,7 +1,7 @@
 pkgbase = gst-rtsp-server
 	pkgdesc = RTSP server library based on GStreamer
 	pkgver = 1.16.1
-	pkgrel = 2
+	pkgrel = 1
 	url = https://gstreamer.freedesktop.org/modules/gst-rtsp-server.html
 	arch = i686
 	arch = x86_64

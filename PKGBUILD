@@ -2,7 +2,7 @@
 # Co-Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
 pkgname=gst-rtsp-server
 pkgver=1.16.1
-pkgrel=2
+pkgrel=1
 pkgdesc="RTSP server library based on GStreamer"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h')
 url="https://gstreamer.freedesktop.org/modules/gst-rtsp-server.html"
