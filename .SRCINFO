@@ -5,6 +5,7 @@ pkgbase = diceware-auto
 	url = https://github.com/dino-/diceware-auto
 	arch = x86_64
 	license = ISC
+	depends = fuse2
 	options = !strip
 	source = https://github.com/dino-/diceware-auto/releases/download/1.2/diceware-auto-1.2-x86_64.AppImage
 	sha256sums = a2893c26bd59dbbaa4cd760c4dfe805c6d45dee0b801993c32cdf84352d602ff

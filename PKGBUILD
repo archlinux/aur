@@ -2,12 +2,12 @@
 
 pkgname=diceware-auto
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Randomly generate Diceware passphrases'
 arch=('x86_64')
 url="https://github.com/dino-/diceware-auto"
 license=('ISC')
-depends=()
+depends=('fuse2')
 makedepends=()
 # This software comes as an AppImage, auto-stripping by the AUR tools breaks it
 options=(!strip)
