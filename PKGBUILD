@@ -1,7 +1,7 @@
 # Maintainer: Donald Webster <fryfrog@gmail.com>
 
 pkgname=polyglot
-pkgver=2.2.1
+pkgver=2.2.3
 pkgrel=1
 pkgdesc='A python library built which abstracts out all ISY 5.0 Node Server APIs.'
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -24,9 +24,9 @@ source=('polyglot.service'
 sha256sums=('584e9fba9d818c1301ac0364f9a6bd9c4061a21ae691c47ee0fe989d4ad897c4'
             'b0fe8bc8f8eb63c267f81b55101789ed18e908c9ea43fc8299d05e879605e26c'
             '728783fb5152baf655131ad1427d1c2524a6f7d76a3664c070c4f0f5df443728')
-sha256sums_x86_64=('ba8d6f6e4089c7ccd6487c5b2325a672524c3b5e6b4a5ce877a4c96a9b519a1f')
-sha256sums_armv7h=('959307719a4103bb1058808799f18b011e35613d0c31e877fa41a683eaaeaab3')
-sha256sums_aarch64=('959307719a4103bb1058808799f18b011e35613d0c31e877fa41a683eaaeaab3')
+sha256sums_x86_64=('6ab61f500bd3aac9c95ee70998d9b160e126f710a5ea170e1ce69a35b2a6de64')
+sha256sums_armv7h=('6defc4fe9883278712f9ca818f6d1b82847a8bfc07884c9cf9674259f2887a36')
+sha256sums_aarch64=('6defc4fe9883278712f9ca818f6d1b82847a8bfc07884c9cf9674259f2887a36')
 
 
 package() {
