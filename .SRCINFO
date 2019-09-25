@@ -1,7 +1,7 @@
 pkgbase = ashuffle
 	pkgdesc = Automatic library-wide shuffle for mpd.
-	pkgver = 1.2.0
-	pkgrel = 2
+	pkgver = 2.0.0
+	pkgrel = 1
 	url = https://github.com/joshkunz/ashuffle
 	arch = x86_64
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = ashuffle
 	license = MIT
 	makedepends = meson
 	depends = libmpdclient
-	source = https://github.com/joshkunz/ashuffle/archive/v1.2.0/ashuffle-1.2.0.tar.gz
-	sha256sums = 132b21fc83db7683f6a5aa7cafbe1246678fabbd44e97b734cb5397fa4d8f726
+	source = https://github.com/joshkunz/ashuffle/archive/v2.0.0/ashuffle-2.0.0.tar.gz
+	sha256sums = 2916e8744b46cac45f769a59e01516afd2531508c9d5070efd60de5b953ca5cf
 
 pkgname = ashuffle
 
