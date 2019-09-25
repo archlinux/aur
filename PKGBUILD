@@ -1,7 +1,7 @@
 # Maintainer: Wesley Moore <wes@wezm.net>
 
 pkgname=pastel
-pkgver=0.5.3
+pkgver=0.6.1
 pkgrel=1
 pkgdesc='A command-line tool to generate, analyze, convert and manipulate colors'
 arch=('x86_64')
@@ -11,13 +11,13 @@ depends=()
 conflicts=('pastel-git')
 makedepends=('rust' 'cargo')
 source=("$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('0850e37b92b8d2f5a396d5b9114a21a64dce5c6cce736039151c800f35abaa1e')
+sha256sums=('ece0004d725133bcf552bbfe5508c087513eb52f6c363fbad6eeb9c74769a932')
 
 
 build() {
   cd "$pkgname-$pkgver"
   export SHELL_COMPLETIONS_DIR="$PWD/completions"
-  cargo build --release
+  cargo build --release --locked
 }
 
 package() {
