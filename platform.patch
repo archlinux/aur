@@ -1,0 +1,36 @@
+diff -aur avr/platform.txt avr.new/platform.txt
+--- avr/platform.txt	2016-09-21 10:05:40.000000000 +0200
++++ avr.new/platform.txt	2016-10-08 16:52:00.513630471 +0200
+@@ -5,7 +5,7 @@
+ # For more info:
+ # https://github.com/arduino/Arduino/wiki/Arduino-IDE-1.5---3rd-party-Hardware-specification
+
+-name=Arduino SAMD (32-bits ARM Cortex-M0+) Boards
++name=Arch Linux Arduino SAMD (32-bits ARM Cortex-M0+) Boards
+ version=1.8.3
+
+ # Compile variables
+@@ -18,14 +18,14 @@
+ compiler.warning_flags.all=-Wall -Wextra -Wno-expansion-to-defined
+
+-compiler.path={runtime.tools.arm-none-eabi-gcc-7-2017q4.path}/bin/
++compiler.path=/usr/bin/
+ compiler.c.cmd=arm-none-eabi-gcc
+ compiler.c.flags=-mcpu={build.mcu} -mthumb -c -g -Os {compiler.warning_flags} -std=gnu11 -ffunction-sections -fdata-sections -nostdlib --param max-inline-insns-single=500 -MMD
+ compiler.c.elf.cmd=arm-none-eabi-g++
+ compiler.c.elf.flags=-Os -Wl,--gc-sections -save-temps
+ compiler.S.cmd=arm-none-eabi-gcc
+ compiler.S.flags=-c -g -x assembler-with-cpp -MMD
+ compiler.cpp.cmd=arm-none-eabi-g++
+-compiler.cpp.flags=-mcpu={build.mcu} -mthumb -c -g -Os {compiler.warning_flags} -std=gnu++11 -ffunction-sections -fdata-sections -fno-threadsafe-statics -nostdlib --param max-inline-insns-single=500 -fno-rtti -fno-exceptions -MMD
++compiler.cpp.flags=-mcpu={build.mcu} -mthumb -c -g -Os {compiler.warning_flags} -std=gnu++11 -ffunction-sections -fdata-sections -fno-threadsafe-statics -nostdlib --param max-inline-insns-single=500 -fno-rtti -fno-exceptions -MMD -fno-devirtualize -fno-use-cxa-atexit
+ compiler.ar.cmd=arm-none-eabi-ar
+ compiler.ar.flags=rcs
+ compiler.objcopy.cmd=arm-none-eabi-objcopy
+@@ -91,7 +91,7 @@
+ # AVRDUDE
+ #
+-tools.avrdude.path={runtime.tools.avrdude.path}
++tools.avrdude.path=/
+ tools.avrdude.cmd={path}/bin/avrdude
+ tools.avrdude.config.path={path}/etc/avrdude.conf
