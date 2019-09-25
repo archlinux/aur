@@ -2,7 +2,7 @@
 
 pkgname=blink
 pkgver=3.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc='A state of the art, easy to use SIP client'
 arch=('any')
 url='http://icanblink.com'
@@ -23,6 +23,7 @@ depends=('icu'
 optdepends=('python2-service-identity: for TLS certificate hostname verification'
             'x11vnc: for screen sharing')
 
+	  # https://github.com/AGProjects/blink-qt/archive/release-3.2.0.tar.gz
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/AGProjects/blink-qt/archive/release-${pkgver}.tar.gz")
 sha256sums=('911d5232beb2b8638d26314ef9ab0831c67731bd5bd219c84668f30f3c849b4b')
 
