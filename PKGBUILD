@@ -3,8 +3,8 @@
 _lua_version=5.3
 
 pkgname=fennel
-_pkgver='0.2.1-2'
-pkgver=0.2.1_2
+_pkgver='0.3.0'
+pkgver=0.3.0
 pkgrel=2
 pkgdesc="A Lua Lisp language"
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=('lua')
 provides=(fennel)
 conflicts=(fennel)
 source=("fennel-${_pkgver}.tar.gz::https://github.com/bakpakin/Fennel/archive/${_pkgver}.tar.gz")
-sha512sums=('cd09af8b0902ec56023a00695d83c149a0176106ad638d74edc8d44c9149047bf3bd7feb067617a410837e6650dc180df6cbdfaf1f37b499497964bcd09c66f4')
+sha512sums=('eaaf516b51e32838d6ff85d8fe056265ea855ddd48b5b5159803330921825ada26b70c5503380f40abb73b073627d96f1bc0161c8a69e89ed2be92c32cdecb70')
 
 package() {
 	cd "$srcdir/Fennel-${_pkgver}"
