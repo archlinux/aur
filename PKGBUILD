@@ -1,6 +1,6 @@
-# Maintainer: Adrián Laviós <adrian@lavios.eu>
+# Maintainer: John Fawkes
 pkgname=dnscrypt-proxy-git
-pkgver=2.0.9.r3.g0cca203
+pkgver=2.0.27.r9.bd23ddaa
 pkgrel=1
 pkgdesc="A flexible DNS proxy, with support for modern encrypted DNS protocols such as DNSCrypt v2 and DNS-over-HTTP/2."
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -19,6 +19,9 @@ pkgver() {
 }
 
 prepare() {
+  cd ../
+  cp dnscrypt-proxy.service "$srcdir/dnscrypt-proxy/dnscrypt-proxy"
+  cp dnscrypt-proxy.socket "$srcdir/dnscrypt-proxy/dnscrypt-proxy"
   cd "$srcdir/dnscrypt-proxy/dnscrypt-proxy"
   sed -i 's|\['\''127\.0\.0\.1:53'\'', '\''\[::1\]:53'\''\]|\[\]|g' example-dnscrypt-proxy.toml
   sed -i 's|'\''dnscrypt-proxy\.log'\''|'\''/var/log/dnscrypt-proxy/dnscrypt-proxy\.log'\''|g' example-dnscrypt-proxy.toml
@@ -59,8 +62,8 @@ package() {
   install -Dm644 "example-cloaking-rules.txt" "$pkgdir/usr/share/doc/dnscrypt-proxy/example-cloaking-rules.txt"
   install -Dm644 "example-whitelist.txt" "$pkgdir/usr/share/doc/dnscrypt-proxy/example-whitelist.txt"
   
-  install -Dm644 "../systemd/dnscrypt-proxy.service" "$pkgdir/usr/lib/systemd/system/dnscrypt-proxy.service"
-  install -Dm644 "../systemd/dnscrypt-proxy.socket" "$pkgdir/usr/lib/systemd/system/dnscrypt-proxy.socket"
+  install -Dm644 "dnscrypt-proxy.service" "$pkgdir/usr/lib/systemd/system/dnscrypt-proxy.service"
+  install -Dm644 "dnscrypt-proxy.socket" "$pkgdir/usr/lib/systemd/system/dnscrypt-proxy.socket"
     
   install -Dm644 "../LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 }
