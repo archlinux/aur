@@ -11,6 +11,7 @@ pkgbase = xmrig-donateless
 	depends = libuv
 	depends = libmicrohttpd
 	depends = openssl
+	depends = hwloc
 	optdepends = monero: wallet
 	conflicts = xmrig-bin
 	conflicts = xmrig
