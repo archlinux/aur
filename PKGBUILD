@@ -1,8 +1,9 @@
-# Maintainer: Vinicius Moreira
+# Maintainer: bauh developers <bauh4linux@gmail.com>
 
 pkgname=bauh
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
+_commit="dae9befefcd7c22598be718f09c0ecc2b6970141"
 pkgdesc="Free graphical interface to manage Flatpak, Snaps and AUR applications / packages"
 arch=('any')
 url="https://github.com/vinifmor/bauh"
@@ -17,16 +18,16 @@ optdepends=('flatpak: for Flatpak support'
             'ccache: can improve AUR packages compilation speed ( optional )' 
             'breeze: for KDE Plasma main theme be available ( optional )')
 makedepends=('git' 'python-setuptools')
-source=("${url}/archive/${pkgver}.tar.gz")
-sha512sums=('461ac61344ed1b3834ac84a1ff725fa16f8c13f0998b03e4c2290ad2bd6a8f5bda908d8c711758a91523d99d5d5540e4d74588c91410eace3e0b632fabc49240')
+source=("${url}/archive/${_commit}.tar.gz")
+sha512sums=('93ef993fd77ed67d4cbad80c50706f0a6d4e8221dded24016c18ff6dd13bc1ec538db481a9d82fdfded531eaa8c789eeebd9574819a3da8743d02fd319b1d0a1')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/bauh-${_commit}"
   python3 setup.py build
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/bauh-${_commit}"
   python3 setup.py install --root="$pkgdir" --optimize=1 || return 1
   python3 aur/panel_entry.py
   python3 aur/tray_entry.py
