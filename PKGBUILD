@@ -1,6 +1,6 @@
 # Maintainer: Igor Deyashkin <igor_deyawka@mail.ru>
 pkgname="medivia"
-pkgver="2.5.1"
+pkgver="2.9.2"
 pkgrel=0
 pkgdesc="Client for medivia.online mmorpg server."
 arch=('i686' 'x86_64')
@@ -17,14 +17,24 @@ source=("$pkgname-$pkgver.tar.gz::https://medivia.online/uploads/downloads/mediv
 noextract=("$pkgname-$pkgver.tar.gz")
 
 # autofill using updpkgsums
-md5sums=('8fdf6590b0c430dccf3f0bf7f32e34bc'
+md5sums=('a15fe61553e4d26656c393cde0897291'
          '2791be26444cdf1b14d8a49736a6bbb9')
 
 prepare() {
     mkdir -p "$pkgname-$pkgver"
     bsdtar -xzf "$pkgname-$pkgver.tar.gz" -C "$pkgname-$pkgver"
 
-    chrpath -d "$pkgname-$pkgver/medivia"
+    # Rpath of the binary is "RPATH=$ORIGIN:/usr/local/lib:" and I replace it for just "RPATH=$ORIGIN" because we need
+    # $ORIGIN to search for the libfmod.so.11 included in the package in the executable directory.
+
+    # scottmada [explained](https://www.lexaloffle.com/bbs/?pid=29296#p) this:
+    # > It means the binary looks for lib files in this directory before anywhere else. This is not a huge issue, as
+    # > ArchLinux do not use this directory normally, but as this directory is meant for system-wide libraries installed
+    # > by the user, a conflict could occur if the user would install there their own version of glibc (or malicious
+    # > software there). A simple fix would be to delete the RPATH from the binary using "chrpath" or "patchelf"
+    # > commands, after the build, but before the release. The /usr/local/lib is insecure and don't
+
+    chrpath -r '$ORIGIN' "$pkgname-$pkgver/medivia"
 }
 
 package() {
