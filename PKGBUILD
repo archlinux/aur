@@ -1,7 +1,7 @@
 # Maintainer: Sven-Hendrik Haase <svenstaro@gmail.com>
 
 pkgname=proxyboi
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="A super simple reverse proxy with TLS support"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/svenstaro/proxyboi"
 license=(MIT)
 makedepends=(cargo)
 source=(https://github.com/svenstaro/proxyboi/archive/${pkgver}.tar.gz)
-sha512sums=('84daf7a488d6a6e9bcdff44193c9d058126ee9b2b48afbbe019ca19ec24b7ed722a71618f6ad8b6cfa691c9cb8a77acdeded64259bea1a7eb02db88a21682cbd')
+sha512sums=('2f5e7870a3aef0f157598fe726f0d09e3aaf90278d44a4bb771e61c4cca1243b7030abdb704ac70a5169d4489fab9c0c1a954c39a5ab77f816763fa8a5402d29')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
