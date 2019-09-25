@@ -1,7 +1,7 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 pkgname=goproxy
 pkgver=8.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A high performance HTTP, HTTPS, websocket, TCP, UDP, Secure DNS, Socks5 proxy server"
 arch=('x86_64')
 url="https://github.com/snail007/goproxy"
