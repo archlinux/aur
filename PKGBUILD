@@ -1,37 +1,34 @@
 # Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
 
 pkgname=aravis
-pkgver=0.6.4
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="A vision library for genicam-based cameras"
 url="https://wiki.gnome.org/Projects/Aravis"
 arch=('x86_64')
 license=('LGPL2')
 depends=('gtk3' 'libnotify' 'gst-plugins-base-libs' 'audit' 'libusb')
-makedepends=('intltool' 'gtk-doc' 'gobject-introspection' 'appstream-glib')
+makedepends=('meson' 'gtk-doc' 'gobject-introspection' 'appstream-glib')
 source=("https://download.gnome.org/sources/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.xz")
-sha256sums=('b595a4724da51d0fdb71f2b6e2f1e12f328e423155c3e84607ee2ce704f516bd')
+sha256sums=('a399b2269328a3ad94d31f31fbdb8243dd81dd9c250dd73a4a2a5d405d9397fb')
+
+prepare() {
+    cd "$pkgname-$pkgver"
+    # https://github.com/AravisProject/aravis/issues/297
+    sed -i '/Exec=/s/arv-viewer$/arv-viewer-0.8/' viewer/data/arv-viewer.desktop.in.in
+    # https://github.com/AravisProject/aravis/issues/298
+    sed -i "/-DARAVIS_LOCALE_DIR/s/('prefix'),/& 'share', /" viewer/meson.build
+}
 
 build() {
-  cd $pkgname-$pkgver
-  ./configure --prefix=/usr \
-              --enable-appstream-util \
-              --enable-packet-socket \
-              --enable-gst-plugin \
-              --enable-gtk-doc \
-              --enable-usb \
-              --enable-viewer \
-              --enable-zlib-pc \
-              --disable-gst-0.10-plugin
-  make
+    arch-meson $pkgname-$pkgver build
+    ninja -C build
 }
 
 check() {
-  cd $pkgname-$pkgver
-  make -k check
+    ninja test -C build
 }
 
 package() {
-  cd $pkgname-$pkgver
-  make DESTDIR="$pkgdir" install
+    DESTDIR="$pkgdir" ninja -C build install
 }
