@@ -1,7 +1,7 @@
 pkgbase = bluez-utils-compat
 	pkgdesc = Development and debugging utilities for the bluetooth protocol stack. Includes deprecated tools.
-	pkgver = 5.50
-	pkgrel = 6.2
+	pkgver = 5.51
+	pkgrel = 1
 	url = http://www.bluez.org/
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,9 @@ pkgbase = bluez-utils-compat
 	arch = arm
 	arch = aarch64
 	license = GPL2
+	makedepends = dbus
 	makedepends = libical
+	makedepends = systemd
 	makedepends = alsa-lib
 	makedepends = ell
 	depends = dbus
@@ -26,15 +28,13 @@ pkgbase = bluez-utils-compat
 	conflicts = bluez-hcitool
 	replaces = bluez-hcidump
 	replaces = bluez<=4.101
-	source = https://www.kernel.org/pub/linux/bluetooth/bluez-5.50.tar.xz
-	source = https://www.kernel.org/pub/linux/bluetooth/bluez-5.50.tar.sign
+	source = https://www.kernel.org/pub/linux/bluetooth/bluez-5.51.tar.xz
+	source = https://www.kernel.org/pub/linux/bluetooth/bluez-5.51.tar.sign
 	source = refresh_adv_manager_for_non-LE_devices.diff::https://git.archlinux.org/svntogit/packages.git/plain/trunk/refresh_adv_manager_for_non-LE_devices.diff?h=packages/bluez
-	source = btpclient_signal.patch
 	validpgpkeys = E932D120BC2AEC444E558F0106CA9F5D1DCF2659
-	sha256sums = 5ffcaae18bbb6155f1591be8c24898dc12f062075a40b538b745bfd477481911
-	sha256sums = SKIP
-	sha256sums = ae195834cdc9d3d1961ae3c49da6381c820883a5af580e61aebed05a3e911d48
-	sha256sums = 6bb00213ff4d04b60105ff563df77b91590b22a730eb44de67a005d8e65413ec
+	sha512sums = 8b14eea98f541b981162abce728e0f917654ad3c990721ec398fe41bdd68069fe55ff64b61bc3c3b9f813facf42c995b07619f6d5d153965de27154b1a7b578f
+	sha512sums = SKIP
+	sha512sums = c6ef673956963725edc52d667648e51df5b99f820e87705096b4b9338e8a4540722e734f1e8e67998c2fbbefec30645ff1fa064789c8a858f770d1214399561d
 
 pkgname = bluez-utils-compat
 

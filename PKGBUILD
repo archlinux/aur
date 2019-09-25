@@ -6,8 +6,8 @@
 
 pkgname='bluez-utils-compat'
 _pkgbase='bluez'
-pkgver=5.50
-pkgrel=6.2
+pkgver=5.51
+pkgrel=1
 url="http://www.bluez.org/"
 arch=('i686' 'x86_64' 'mips64el' 'armv6h' 'armv7h' 'arm' 'aarch64')
 license=('GPL2')
@@ -18,20 +18,18 @@ optdepends=('ell: for btpclient')
 conflicts=('bluez-hcidump' 'bluez-utils' 'bluez-hcitool')
 provides=('bluez-hcidump' 'bluez-utils' 'bluez-hcitool')
 replaces=('bluez-hcidump' 'bluez<=4.101')
-source=("https://www.kernel.org/pub/linux/bluetooth/${_pkgbase}-${pkgver}.tar."{xz,sign}
-        'refresh_adv_manager_for_non-LE_devices.diff::https://git.archlinux.org/svntogit/packages.git/plain/trunk/refresh_adv_manager_for_non-LE_devices.diff?h=packages/bluez'
-        'btpclient_signal.patch')
+makedepends=('dbus' 'libical' 'systemd' 'alsa-lib' 'ell')
+source=(https://www.kernel.org/pub/linux/bluetooth/"${_pkgbase}-${pkgver}".tar.{xz,sign}
+        'refresh_adv_manager_for_non-LE_devices.diff::https://git.archlinux.org/svntogit/packages.git/plain/trunk/refresh_adv_manager_for_non-LE_devices.diff?h=packages/bluez')
 # see https://www.kernel.org/pub/linux/bluetooth/sha256sums.asc
-sha256sums=('5ffcaae18bbb6155f1591be8c24898dc12f062075a40b538b745bfd477481911'
+sha512sums=('8b14eea98f541b981162abce728e0f917654ad3c990721ec398fe41bdd68069fe55ff64b61bc3c3b9f813facf42c995b07619f6d5d153965de27154b1a7b578f'
             'SKIP'
-            'ae195834cdc9d3d1961ae3c49da6381c820883a5af580e61aebed05a3e911d48'
-            '6bb00213ff4d04b60105ff563df77b91590b22a730eb44de67a005d8e65413ec')
+            'c6ef673956963725edc52d667648e51df5b99f820e87705096b4b9338e8a4540722e734f1e8e67998c2fbbefec30645ff1fa064789c8a858f770d1214399561d')
 validpgpkeys=('E932D120BC2AEC444E558F0106CA9F5D1DCF2659') # Marcel Holtmann <marcel@holtmann.org>
 
 prepare() {
   cd "${_pkgbase}-${pkgver}"
   patch -Np1 -i ../refresh_adv_manager_for_non-LE_devices.diff
-  patch -Np2 -r- -i ../btpclient_signal.patch
 }
 
 build() {
@@ -53,10 +51,11 @@ build() {
   make
 }
 
-#check() {
-#  cd "${_pkgbase}-${pkgver}"
+check() {
+  cd "${_pkgbase}-${pkgver}"
+  # tests segfault and hang
 #  make check || /bin/true # https://bugzilla.kernel.org/show_bug.cgi?id=196621
-#}
+}
 
 package() {
   cd "${_pkgbase}-${pkgver}"
@@ -70,9 +69,6 @@ package() {
     install -Dm755 "${srcdir}/${_pkgbase}-${pkgver}"/tools/$filename "${pkgdir}"/usr/bin/$filename
   done
 
-  # add gatttool usefulbdaddr with Bluetooth 4.0LE 
-  install -Dm755 "${srcdir}/${_pkgbase}-${pkgver}"/attrib/gatttool "${pkgdir}"/usr/bin/gatttool
-  
   # libbluetooth.so* are part of libLTLIBRARIES and binPROGRAMS targets
   #make DESTDIR=${pkgdir} uninstall-libLTLIBRARIES
   #rmdir ${pkgdir}/usr/lib
