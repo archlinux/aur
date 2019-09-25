@@ -1,7 +1,7 @@
 pkgbase = python-heatclient
 	pkgdesc = Python client library for Heat
-	pkgver = 1.17.0
-	pkgrel = 3
+	pkgver = 1.18.0
+	pkgrel = 1
 	url = https://docs.openstack.org/python-heatclient/
 	arch = any
 	license = Apache
@@ -28,8 +28,8 @@ pkgbase = python-heatclient
 	depends = python-requests
 	depends = python-six
 	depends = python-openstackclient
-	source = https://github.com/openstack/python-heatclient/archive/1.17.0.tar.gz
-	sha512sums = fb16f17e1313d1897291fdb4f72641a5e288283a96d88813421f12546e540ffe3a184cd0ec39f9f5acf9aa2f036dc3449ead0269b916c571ee1ec00c152202f9
+	source = https://github.com/openstack/python-heatclient/archive/1.18.0.tar.gz
+	sha512sums = b778e034bb80823642758fac167b30cf78a3c78dcc3bb99007c051012052b176a8faf4da26917004c21277b9db42c63dbbb9be4f50b5487fd4d6127e3dc78256
 
 pkgname = python-heatclient
 

@@ -1,8 +1,8 @@
 # Maintainer: Andy Botting <andy@andybotting.com>
 
 pkgname=python-heatclient
-pkgver=1.17.0
-pkgrel=3
+pkgver='1.18.0'
+pkgrel='1'
 pkgdesc='Python client library for Heat'
 arch=('any')
 url="https://docs.openstack.org/$pkgname/"
@@ -16,7 +16,7 @@ checkdepends=('python-fixtures' 'python-requests-mock' 'python-mock'
               'python-openstackclient' 'python-stestr' 'python-testrepository'
               'python-testscenarios' 'python-mox3')
 source=("https://github.com/openstack/$pkgname/archive/$pkgver.tar.gz")
-sha512sums=('fb16f17e1313d1897291fdb4f72641a5e288283a96d88813421f12546e540ffe3a184cd0ec39f9f5acf9aa2f036dc3449ead0269b916c571ee1ec00c152202f9')
+sha512sums=('b778e034bb80823642758fac167b30cf78a3c78dcc3bb99007c051012052b176a8faf4da26917004c21277b9db42c63dbbb9be4f50b5487fd4d6127e3dc78256')
 
 export PBR_VERSION=$pkgver
 
