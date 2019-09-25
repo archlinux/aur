@@ -4,7 +4,7 @@
 
 _pkgname=AppImageLauncher
 pkgname=appimagelauncher-git
-pkgver=r760.6ce8449
+pkgver=r848.adae2d6
 pkgrel=1
 pkgdesc="A Helper application for running and integrating AppImages."
 arch=('x86_64')
@@ -86,6 +86,8 @@ build() {
         -DUSE_SYSTEM_XZ=ON \
         -DUSE_SYSTEM_LIBARCHIVE=ON \
         -DBUILD_TESTING=OFF
+  make libappimage libappimageupdate libappimageupdate-qt
+  cmake .
   make
 }
 
