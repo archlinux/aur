@@ -5,12 +5,12 @@
 
 pkgname=activinspire
 pkgver=2.17.68075
-pkgrel=1
+pkgrel=2
 pkgdesc="Presentation Software for use with Promethean Hardware products."
 arch=('x86_64')
 url="https://support.prometheanworld.com/product/activinspire"
 license=('unknown')
-depends=(lib32-libxmu lib32-gst-plugins-base lib32-libjpeg-turbo lib32-libjpeg6-turbo lib32-libxrender lib32-libgl lib32-fontconfig lib32-openssl-1.0 lib32-nss lib32-libxcomposite lib32-libxcursor lib32-dbus)
+depends=(lib32-libxmu lib32-gst-plugins-base lib32-libjpeg-turbo lib32-libjpeg6-turbo lib32-libxrender lib32-libgl lib32-fontconfig lib32-openssl-1.0 lib32-nss lib32-libxcomposite lib32-libxcursor lib32-libxtst lib32-dbus)
 optdepends=('bin32-jre: For using the equation editor'
             'activdriver: Driver for Promethean hardware'
             'activtools: Tools for Promethean hardware, e.g. calibration or systray monitor')

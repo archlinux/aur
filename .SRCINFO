@@ -1,7 +1,7 @@
 pkgbase = activinspire
 	pkgdesc = Presentation Software for use with Promethean Hardware products.
 	pkgver = 2.17.68075
-	pkgrel = 1
+	pkgrel = 2
 	url = https://support.prometheanworld.com/product/activinspire
 	arch = x86_64
 	license = unknown
@@ -16,6 +16,7 @@ pkgbase = activinspire
 	depends = lib32-nss
 	depends = lib32-libxcomposite
 	depends = lib32-libxcursor
+	depends = lib32-libxtst
 	depends = lib32-dbus
 	optdepends = bin32-jre: For using the equation editor
 	optdepends = activdriver: Driver for Promethean hardware
