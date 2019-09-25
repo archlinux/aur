@@ -15,7 +15,6 @@ pkgbase = gnome-network-displays
 	depends = networkmanager
 	depends = python-gobject
 	depends = x264
-	provides = gnome-screencast
 	replaces = gnome-screencast
 	source = https://github.com/benzea/gnome-network-displays/archive/v0.90.1.tar.gz
 	sha256sums = d0fe4d6bf76761f1ea5eb9598fb168ba6e0da3616fa7027b9cd2b86cdab97459
