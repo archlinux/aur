@@ -1,12 +1,12 @@
 pkgname=mingw-w64-python37-bin
 pkgver=3.7.4
 _pybasever=37
-pkgrel=1
+pkgrel=2
 pkgdesc="Next generation of the python high-level scripting language (native MSVC version) (mingw-w64)"
 arch=('any')
 license=('PSF')
 url="http://www.python.org/"
-depends=('mingw-w64-crt')
+depends=('mingw-w64-openssl')
 optdepends=('mingw-w64-wine: runtime support')
 makedepends=('mingw-w64-tools' 'mingw-w64-binutils')
 options=('staticlibs' '!buildflags' '!strip')
@@ -63,4 +63,6 @@ package() {
     pushd "$pkgdir"/usr/${_arch}/bin/
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
   done
+  # hashlib links to libcrypto-1_1.dll, but mingw-w64-openssl provides libcrypto-1_1-x64.dll on x86_64
+  cp /usr/x86_64-w64-mingw32/bin/libcrypto-1_1-x64.dll "$pkgdir"/usr/x86_64-w64-mingw32/bin/libcrypto-1_1.dll
 }
