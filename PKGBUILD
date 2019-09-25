@@ -14,7 +14,7 @@ source=('git+https://github.com/T4d3o/Plymouth-lite.git'
         'initcpio_install')
 md5sums=('SKIP'
          '86dcab222ab4be45fc96d2792ff91809'
-         'e13f4e22ee8e28eef85028c9307bfc3f')
+         '4e9d360bbd7b14e097401e7b83f7b682')
 
 pkgver() {
   cd Plymouth-lite

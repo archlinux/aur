@@ -8,7 +8,7 @@ build() {
 
 help() {
   cat <<HELPEOF
-This hook shows plymouth-lite image
+This hook shows image during boot using plymouth-lite
+(https://github.com/T4d3o/Plymouth-lite).
 HELPEOF
 }
-
