@@ -1,4 +1,4 @@
-From 1a25d1eb6a0a38f27d62f3d872079156e3542d62 Mon Sep 17 00:00:00 2001
+From 865e16ef4709771d15e9250f0aa7d9c711c4018e Mon Sep 17 00:00:00 2001
 From: Maksim Sisov <msisov@igalia.com>
 Date: Fri, 26 Jul 2019 04:56:22 +0000
 Subject: [PATCH 4/6] [ozone/wayland]: Extract window management methods to own

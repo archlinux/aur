@@ -1,4 +1,4 @@
-From 3ab4f4ab9266f273b5846a518f9a50c3c455ae78 Mon Sep 17 00:00:00 2001
+From ae8d566f4048db9fff5208b5f007116eee92f289 Mon Sep 17 00:00:00 2001
 From: Maksim Sisov <msisov@igalia.com>
 Date: Thu, 8 Aug 2019 11:47:41 +0000
 Subject: [PATCH 5/6] [ozone/wayland] Do not use possibly blocking dispatch API

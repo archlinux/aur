@@ -1,4 +1,4 @@
-From e58ed0f56e9ffbee6222b9b8b3f62be4acde72ac Mon Sep 17 00:00:00 2001
+From 37571af91e60eb9b4514cffbc475f41f58face01 Mon Sep 17 00:00:00 2001
 From: Maksim Sisov <msisov@igalia.com>
 Date: Thu, 8 Aug 2019 11:32:57 +0000
 Subject: [PATCH 3/6] [ozone/wayland] Stop using wl_display_roundtrip

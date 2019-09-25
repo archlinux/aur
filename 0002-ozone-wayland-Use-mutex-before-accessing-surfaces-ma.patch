@@ -1,4 +1,4 @@
-From 296c7b4e9935aaed1d05d32416043a03f67e268d Mon Sep 17 00:00:00 2001
+From db0fa61b59ab9cb131c3e9167fad1529f951e492 Mon Sep 17 00:00:00 2001
 From: Maksim Sisov <msisov@igalia.com>
 Date: Mon, 5 Aug 2019 16:14:47 +0300
 Subject: [PATCH 2/6] [ozone/wayland] Use mutex before accessing surfaces map.

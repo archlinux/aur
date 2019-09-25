@@ -5,7 +5,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium-ozone
-pkgver=77.0.3865.75
+pkgver=77.0.3865.90
 pkgrel=1
 _launcher_ver=6
 _meta_browser_sha=38b36f421f8d984c7004c9d9a6d514ed2fb6cf8e
@@ -41,8 +41,9 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         0002-ozone-wayland-Use-mutex-before-accessing-surfaces-ma.patch
         0003-ozone-wayland-Stop-using-wl_display_roundtrip.patch
         0004-ozone-wayland-Extract-window-management-methods-to-o.patch
-        0005-ozone-wayland-Do-not-use-possibly-blocking-dispatch-.patch)
-sha256sums=('eb952ff241e719cbdcc2aae1832ecc1dd2263736ab38ee1dbf88ac9120119789'
+        0005-ozone-wayland-Do-not-use-possibly-blocking-dispatch-.patch
+        0006-ozone-wayland-Implement-CreateNativePixmapAsync.patch)
+sha256sums=('004cfdb1df74847bea8659bcaf8e039d51fe1101d42b6cf1c6cc346073fdefc3'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
             'd87957d01be9fb59faf5fde523eb87a8256605b1533171416b7a56bfcbd6d056'
             '33a5bcd1df2cc7aa7467fa882790ef143a4497d2b704c9e1ea86c8ede90c2d90'
@@ -53,11 +54,12 @@ sha256sums=('eb952ff241e719cbdcc2aae1832ecc1dd2263736ab38ee1dbf88ac9120119789'
             '0f7ba6882844542a7226b419dfefc5b6a16b5b7882698bd773b5ee9148aa6e87'
             'd081f2ef8793544685aad35dea75a7e6264a2cb987ff3541e6377f4a3650a28b'
             '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1'
-            '333a4ecac50f1f2a2545132dc97bd22ccb1a0623bd5a5d86487327e8ee6fde3d'
-            '5d1e93f1930a53d2cee7d7cff94b4aba3a91dc15e13f667ce56956b2d08222cc'
-            '19dc0c5b521ad252b75a42cad254ced431f790bb71d1c048eb748a65e29aeb69'
-            'd0ed9879427db1412b679c2ab0ff4da83698f6dfe389080d272ec85716478b43'
-            '465dbcefbe8b01d242491bb527da8ecb466654262162b9bdc96bbf13ee8b864f')
+            'f22ee87b16f9b06acd1f37081fbb24fb442a5c90278416f67dcd5bc6e0e93e02'
+            'd6a03dfc515df07da8172adec53d77b161b41d0a541193a94319e814bbe564b0'
+            '25b9a7ee019db07b5870b2933d112ddd51faf6412b22a6eaa5457c2d3da485c3'
+            '3d85dd53a412f1d7bda4f4be092ac8dab19c623c6510b9b34e0e6010bf3b67a4'
+            'a6cafead21891ebe24cc9535d4d83edba1794830a4aeebebccd9a7f6c036a15c'
+            'f89da9c31ef6bf900535e71272791e27a1977d215424cb6eb79e8c1f8f94dceb')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
@@ -107,6 +109,7 @@ _bugfix_patches=(
   '0003-ozone-wayland-Stop-using-wl_display_roundtrip.patch'
   '0004-ozone-wayland-Extract-window-management-methods-to-o.patch'
   '0005-ozone-wayland-Do-not-use-possibly-blocking-dispatch-.patch'
+  '0006-ozone-wayland-Implement-CreateNativePixmapAsync.patch'
 )
 
 prepare() {
