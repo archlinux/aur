@@ -1,12 +1,12 @@
 pkgbase = latex2e-help-texinfo
 	pkgdesc = Inofficial LaTeX2e Reference Manual in info format
-	pkgver = 2018_07_03
+	pkgver = 2018_10_15
 	pkgrel = 1
 	url = https://ctan.org/pkg/latex2e-help-texinfo
 	arch = any
 	license = custom
 	source = http://mirrors.ctan.org/info/latex2e-help-texinfo.zip
-	sha256sums = 23f731f59c45d0771b3ef1cbb32831c428307497ffaa3a9d8c12fd070d7aa549
+	sha256sums = e790527dea5cccc6ed369598591385832fe4e47b38630e6cd70685555373c939
 
 pkgname = latex2e-help-texinfo
 
