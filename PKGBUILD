@@ -15,7 +15,7 @@ arch=('x86_64')
 depends=('gnutls' 'libutil-linux')
 makedepends=('cmake')
 install="${pkgname}.install"
-source=("http://taskwarrior.org/download/${pkgname}-${pkgver}.tar.gz"
+source=("https://taskwarrior.org/download/${pkgname}-${pkgver}.tar.gz"
         "${pkgname}.sysusers.conf")
 
 sha512sums=('df2349c354258fd1b014b1a9c78f68dc10c9e5a48357e282e8a760cf4e4aaf4d36486796ad094ee2b050e7506195b778e3316c90ef543a2f8242de313daa13aa'
