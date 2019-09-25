@@ -1,0 +1,18 @@
+pkgbase = python-dnsdumpster-api-git
+	pkgdesc = Python API for dnsdumpster.com
+	pkgver = 0.2.r26.geda15d6
+	pkgrel = 1
+	url = https://github.com/PaulSec/API-dnsdumpster.com
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = python
+	depends = python-requests
+	depends = python-beautifulsoup4
+	provides = python-dnsdumpster-api
+	conflicts = python-dnsdumpster-api
+	source = git+https://github.com/PaulSec/API-dnsdumpster.com.git
+	md5sums = SKIP
+
+pkgname = python-dnsdumpster-api-git
+
