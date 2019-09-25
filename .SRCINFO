@@ -7,7 +7,6 @@ pkgbase = guiscrcpy-git
 	arch = x86_64
 	license = GPL3
 	makedepends = git
-	makedepends = python-setuptools
 	depends = scrcpy
 	depends = python-pyqt5
 	depends = python-psutil
