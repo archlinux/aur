@@ -18,7 +18,7 @@ package()
   install -Dm755 "sharps-talking-clock.sh" "$pkgdir/usr/bin/sharps-talking-clock"
  install -d "$pkgdir/usr/share/sounds/sharps-talking-clock"
   install -Dm644 "README.md" "$pkgdir/usr/share/sharps-talking-clock/README.md"
-  for i in 00 {1..20} alarm am announcement hour{1,2} its o pm ; do
+  for i in 00 {1..20} 30 40 50 alarm am announcement hour{1,2} its o pm ; do
     install -m644 "${srcdir}/${pkgname}/sounds/${i}.ogg" "${pkgdir}/usr/share/sounds/sharps-talking-clock/"
 done
   }
