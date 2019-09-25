@@ -1,7 +1,7 @@
 # Maintainer: C. Dominik Bódi <dominik.bodi@dominikbodi.de>
 pkgname=mandos-server
 _srcname=mandos
-pkgver=1.7.0
+pkgver=1.8.9
 pkgrel=1
 pkgdesc="unlock LUKS encrypted drives remotely - server component"
 arch=(any)
@@ -29,12 +29,12 @@ install=mandos.install
 source=("http://httpredir.debian.org/debian/pool/main/m/mandos/mandos_$pkgver.orig.tar.gz"
         'series'
 	'fix_makefile.patch')
-sha256sums=('37f145c575d4b49eaa2d0b6ed8067d1e4687f7fa3927b6154f7a5d7907ba947a'
+sha256sums=('9bec9f41b429fe9f554092719127b710a379003641d17aeb01189eb51dcf3deb'
             'd5d2d190799efdc4ecba1221a405983a3e770b085f055c1c156199436836dc47'
-            'e51e3db7faa66af3bc307c7a2503b2b23d702896a5027660a01d3cc2e4dedb1b')
+            '26ede8999354df4a1697e697d317c2f9e90c532ca849888d544c1905847ef1e5')
 
 prepare() {
-        mkdir "$_srcname-$pkgver/patches"
+        mkdir -p "$_srcname-$pkgver/patches"
 	cp series "$_srcname-$pkgver/patches/"
 	cp fix_makefile.patch "$_srcname-$pkgver/patches/"
 	cd "$_srcname-$pkgver"
