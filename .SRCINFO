@@ -1,7 +1,7 @@
 pkgbase = diceware-auto
 	pkgdesc = Randomly generate Diceware passphrases
 	pkgver = 1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dino-/diceware-auto
 	arch = x86_64
 	license = ISC
