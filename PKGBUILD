@@ -2,7 +2,7 @@
 
 pkgname=qvault
 pkgver=0.2.9
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source, fully transparent and extremely secure password manager"
 arch=('any')
 url="https://qvault.io"
@@ -16,11 +16,6 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Q-Vault/qvault/archive/
 sha256sums=('ddf3bf60153d8540e0863e51471d87b85591d2650655e45b568d42109dab35b7'
 	'SKIP'
 	'SKIP')
-
-prepare() {
-	cd "$pkgname-$pkgver"
-	sed -i 's/mainWindow.webContents.openDevTools()/\/\/ &/' main.js
-}
 
 build() {
 	cd "$pkgname-$pkgver"

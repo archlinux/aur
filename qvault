@@ -1,2 +1,2 @@
 #!/bin/bash
-exec electron "/usr/share/qvault.asar" "$@"
+exec env ELECTRON_IS_DEV=0 electron "/usr/share/qvault.asar" "$@"
