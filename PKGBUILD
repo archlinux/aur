@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=rirc-git
-pkgver=r304.5c01735
+pkgver=r862.cfe33d9
 pkgrel=1
 epoch=
 pkgdesc="A terminal IRC client in C."
@@ -8,8 +8,8 @@ arch=('i686' 'x86_64')
 url="https://github.com/rcr/rirc"
 license=('MIT')
 groups=()
-depends=('')
-makedepends=('git')
+depends=()
+makedepends=('git' 'gperf')
 optdepends=()
 checkdepends=()
 provides=()
