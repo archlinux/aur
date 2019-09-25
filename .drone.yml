@@ -1,0 +1,98 @@
+kind: pipeline
+name: arch-bce-packages
+
+steps:
+- name: build
+  image: archlinux/base
+  pull: always
+  volumes:
+    - name: build-products
+      path: /tmp/products
+  commands:
+    - echo -e "[mbp]\nServer = https://packages.aunali1.com/archlinux/\$repo/\$arch" >> /etc/pacman.conf
+    - pacman --noconfirm -Syyu
+    - pacman-key --init
+    - pacman-key --populate archlinux
+    - pacman-key --recv-keys 7F9B8FC29F78B339
+    - pacman-key --lsign-key 7F9B8FC29F78B339
+    - pacman --noconfirm --needed -S base-devel sudo linux-mbp linux-mbp-headers
+    - useradd builduser -m
+    - passwd -d builduser
+    - printf 'builduser ALL=(ALL) ALL\n' | tee -a /etc/sudoers # passwordless sudo
+    - chown -R builduser:builduser ./
+    - sudo -u builduser bash -c 'makepkg -s --noconfirm'
+    - ls -lah *.pkg.tar.xz
+    - mv *.pkg.tar.xz /tmp/products
+  when:
+    event: tag
+
+- name: sign
+  image: plugins/gpgsign
+  volumes:
+    - name: build-products
+      path: /tmp/products
+  settings:
+    key:
+      from_secret: signing_key
+    passphrase:
+      from_secret: signing_key_password
+    files:
+      - /tmp/products/*
+    armor: false
+    detach_sign: true
+  when:
+    event: tag
+
+- name: publish-server
+  image: appleboy/drone-scp
+  volumes:
+    - name: build-products
+      path: /tmp/products
+  settings:
+    host: tel.aunali1.com
+    username:
+      from_secret: ingress_user
+    key:
+      from_secret: ingress_key
+    port: 22
+    rm: true
+    strip_components: 2
+    target: /srv/ftp/ingress/mbp
+    source:
+      - /tmp/products/*
+  when:
+    event: tag
+
+- name: update-repo
+  image: appleboy/drone-ssh
+  volumes:
+    - name: build-products
+      path: /tmp/products
+  settings:
+    host: tel.aunali1.com
+    username:
+      from_secret: ingress_user
+    key:
+      from_secret: ingress_key
+    port: 22
+    script:
+      - ./update_mbp_repo_bce.sh
+  when:
+    event: tag
+
+- name: publish-github
+  image: plugins/github-release
+  volumes:
+    - name: build-products
+      path: /tmp/products
+  settings:
+    api_key:
+      from_secret: github_token
+    files: /tmp/products/*
+    prerelease: yes
+  when:
+    event: tag
+
+volumes:
+- name: build-products
+  temp: {}
