@@ -3,9 +3,8 @@
 
 # Maintainer: Yang Niao <ksmt4699 at gmail dot com>
 pkgname=sldc
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
-epoch=
 pkgdesc="sldc is SereneLinux Container for its developer."
 arch=("x86_64")
 url="https://github.com/locareen/sldc"
@@ -13,8 +12,8 @@ license=('GPL')
 groups=("sld")
 depends=('xorg-xhost' 'qemu')
 makedepends=('zstd')
-source=("https://github.com/locareen/sldc/releases/download/1.0/$pkgname-$pkgver.tar.zst")
-md5sums=("cea62056912a157ccad32e2524d3b79c")
+source=("https://github.com/locareen/sldc/releases/download/${pkgver}/$pkgname-$pkgver.tar.zst")
+md5sums=("6855af5fa9b489acfe6d60d23d6a5f09")
 package() {
         rm $pkgname-$pkgver.tar.zst
         mkdir -p ${pkgdir}/usr/bin

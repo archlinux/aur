@@ -1,6 +1,6 @@
 pkgbase = sldc
 	pkgdesc = sldc is SereneLinux Container for its developer.
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://github.com/locareen/sldc
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = sldc
 	makedepends = zstd
 	depends = xorg-xhost
 	depends = qemu
-	source = https://github.com/locareen/sldc/releases/download/1.0/sldc-1.0.tar.zst
-	md5sums = cea62056912a157ccad32e2524d3b79c
+	source = https://github.com/locareen/sldc/releases/download/1.1/sldc-1.1.tar.zst
+	md5sums = 6855af5fa9b489acfe6d60d23d6a5f09
 
 pkgname = sldc
 
