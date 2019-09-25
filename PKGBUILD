@@ -29,5 +29,5 @@ package() {
 	cp -r "${pkgname%-git}/"* "$pkgdir/opt/${pkgname%-git}/"
 	install -Dm755 "$srcdir/${pkgname%-git}.sh" "$pkgdir/usr/bin/${pkgname%-git}"
 	install -Dm644 "$srcdir/${pkgname%-git}.desktop" "$pkgdir/usr/share/applications/${pkgname%-git}.desktop"
-	install -Dm644 "installers/linux/icons/${pkgname%-git}_logo.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
+	install -Dm644 "installers/linux/icons/${pkgname%-git}_logo.png" "$pkgdir/usr/share/pixmaps/${pkgname%-git}.png"
 }
