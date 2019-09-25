@@ -59,7 +59,7 @@ index 0000000..3935e1c
 +    startService() {
 +        this._started = true;
 +        var _this = this;
-+        var events = ['next', 'previous', 'pause', 'stop', 'play'];
++        var events = ['next', 'previous', 'pause', 'play'];
 +        events.forEach(function (eventName) {
 +            _this.player.on(eventName, (arg) => {
 +                if (arg === -1) {
@@ -101,7 +101,7 @@ index 0000000..3935e1c
 +        this.player.metadata = {
 +            'xesam:title': title,
 +            'xesam:album': album,
-+            'xesam:artist': artist,
++            'xesam:artist': [ artist ],
 +            'mpris:artUrl': albumArt
 +        }
 +        if (state === 'playing') {
