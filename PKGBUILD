@@ -1,12 +1,12 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgname='wlroots-git'
-pkgver=0.6.0.r70.g58b25848
+pkgver=0.7.0.r8.g020a33e0
 pkgrel=1
 license=('custom:MIT')
 pkgdesc='Modular Wayland compositor library'
 url='https://github.com/swaywm/wlroots'
 arch=('x86_64')
-provides=('wlroots')
+provides=("wlroots=${pkgver%%.r*}")
 conflicts=('wlroots')
 options=('debug' '!strip')
 depends=('libcap' 'systemd' 'wayland' 'opengl-driver' 'libxcb'
