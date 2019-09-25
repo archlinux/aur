@@ -1,18 +1,19 @@
 # Maintainer: Manuel Coenen <manuel.coenen@gmail.com>
 pkgname=duetwebserver-bin
-pkgver=1.1.0.0
-pkgrel=2
+pkgver=1.1.1.0
+pkgrel=1
 pkgdesc="Optional web server for Duet 3 series"
 arch=('armv7h')
 url="https://github.com/chrishamm/DuetSoftwareFramework"
 license=('GPL3')
-provides=('duetwebserver')
-conflicts=('duetwebserver')
-depends=('duetcontrolserver>=1.0.3.1' 'duetruntime>=1.0.3.1' 'duetwebcontrol' 'duetsd')
+provides=("duetwebserver=${pkgver}")
+conflicts=("duetwebserver")
+depends=('duetcontrolserver>=1.0.3.0' 'duetruntime<=1.1.0.0')
+optdepends=('duetwebcontrol' 'duetsd')
 options=(!strip staticlibs)
 backup=('opt/dsf/conf/http.json')
-source=("https://pkg.duet3d.com/dists/stable/armv7/binary-armhf/duetwebserver_${pkgver}.deb")
-sha256sums=('ae78d32abacb54087e8c3f6e488e09b982324e23340bf0aabf375c4ab033562a')
+source=("https://pkg.duet3d.com/dists/stable/armv7/binary-armhf/duetwebserver_${pkgver}_armhf.deb")
+sha256sums=('71950bc47a67741dbd01a01088e07c3ea821ea859e0b63d1c8bc40c68583d84c')
 
 prepare() {
     tar -xf data.tar.xz
