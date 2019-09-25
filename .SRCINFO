@@ -1,6 +1,6 @@
 pkgbase = disk-test
 	pkgdesc = Block device read-write test utility written in bash
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://eomanis.duckdns.org/permshare/disk-test/
 	arch = any
@@ -13,8 +13,8 @@ pkgbase = disk-test
 	depends = pv
 	depends = sed
 	depends = util-linux
-	source = https://eomanis.duckdns.org/permshare/disk-test/disk-test-0.2.0.tar.gz
-	sha384sums = 0e90c7dc26bfc45b3b0c3876e30747f3e92e9303d9922c647dc1da67e8ffa46d2b39bdba2d38ea0d05394f35ffd65474
+	source = https://eomanis.duckdns.org/permshare/disk-test/disk-test-0.2.1.tar.gz
+	sha384sums = df0f56085da8817f91b893cf6992e6669d6f4610d90eda36acd7174a112b4a623914757e06dfbce7ce9ece062e5c67ba
 
 pkgname = disk-test
 
