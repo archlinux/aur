@@ -6,11 +6,12 @@
 pkgname=ferdi-git
 _pkgver=5.3.4
 pkgver=${_pkgver//-/_}
-pkgrel=2
+pkgrel=3
 pkgdesc='Free messaging app for services like WhatsApp, Slack, Messenger and many more. fork removing the non-skippable app delay frequently inviting you to buy a licence'
 arch=(x86_64 i686)
-url='https://github.com/kytwb/ferdi'
+url='https://github.com/getferdi/ferdi'
 license=(Apache)
+conflicts=('ferdi')
 depends=(electron4)
 makedepends=(expac git npm python2)
 source=("git+https://github.com/kytwb/ferdi/"
