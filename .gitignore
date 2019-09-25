@@ -1,0 +1,11 @@
+# Ignore everything
+*
+
+# Except
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!atlauncher
+!atlauncher.desktop
+!atlauncher.png
+
