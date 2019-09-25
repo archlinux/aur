@@ -1,0 +1,378 @@
+From 881f0b54f4ae6b06e03781c9d82b7f49454a1cff Mon Sep 17 00:00:00 2001
+From: Joseph Donofry <joedonofry@gmail.com>
+Date: Thu, 4 Jul 2019 21:20:19 -0400
+Subject: [PATCH] Fix deprecated function call issues with Qt 5.13
+
+---
+ src/RoomInfoListItem.cpp           |  4 ++--
+ src/TypingDisplay.cpp              |  2 +-
+ src/Utils.cpp                      |  9 +++++++--
+ src/dialogs/ImageOverlay.cpp       |  5 ++++-
+ src/main.cpp                       |  5 ++++-
+ src/notifications/ManagerLinux.cpp |  2 +-
+ src/timeline/TimelineItem.cpp      |  6 ++++--
+ src/timeline/TimelineItem.h        |  8 ++++++++
+ src/timeline/widgets/AudioItem.cpp |  2 +-
+ src/timeline/widgets/FileItem.cpp  |  2 +-
+ src/timeline/widgets/ImageItem.cpp |  2 +-
+ src/ui/DropShadow.h                | 22 +++++++++++++---------
+ src/ui/InfoMessage.cpp             |  4 ++--
+ src/ui/Painter.h                   |  6 ++++--
+ 14 files changed, 53 insertions(+), 26 deletions(-)
+
+diff --git a/src/RoomInfoListItem.cpp b/src/RoomInfoListItem.cpp
+index f17b383..d6a4f78 100644
+--- a/src/RoomInfoListItem.cpp
++++ b/src/RoomInfoListItem.cpp
+@@ -182,7 +182,7 @@ RoomInfoListItem::paintEvent(QPaintEvent *event)
+ 
+                 QFont tsFont;
+                 tsFont.setPointSizeF(tsFont.pointSizeF() * 0.9);
+-                const int msgStampWidth = QFontMetrics(tsFont).width(lastMsgInfo_.timestamp) + 4;
++                const int msgStampWidth = QFontMetrics(tsFont).horizontalAdvance(lastMsgInfo_.timestamp) + 4;
+ 
+                 // We use the full width of the widget if there is no unread msg bubble.
+                 const int bottomLineWidthLimit = (unreadMsgCount_ > 0) ? msgStampWidth : 0;
+@@ -211,7 +211,7 @@ RoomInfoListItem::paintEvent(QPaintEvent *event)
+                         p.setFont(QFont{});
+                         p.drawText(QPoint(2 * wm.padding + wm.iconSize, bottom_y), userName);
+ 
+-                        int nameWidth = QFontMetrics(QFont{}).width(userName);
++                        int nameWidth = QFontMetrics(QFont{}).horizontalAdvance(userName);
+ 
+                         p.setFont(QFont{});
+ 
+diff --git a/src/TypingDisplay.cpp b/src/TypingDisplay.cpp
+index 11313ad..97aeb26 100644
+--- a/src/TypingDisplay.cpp
++++ b/src/TypingDisplay.cpp
+@@ -69,7 +69,7 @@ TypingDisplay::paintEvent(QPaintEvent *)
+         text_ = fm.elidedText(text_, Qt::ElideRight, (double)(width() * 0.75));
+ 
+         QPainterPath path;
+-        path.addRoundedRect(QRectF(0, 0, fm.width(text_) + 2 * LEFT_PADDING, height()), 3, 3);
++        path.addRoundedRect(QRectF(0, 0, fm.horizontalAdvance(text_) + 2 * LEFT_PADDING, height()), 3, 3);
+ 
+         p.fillPath(path, backgroundColor());
+         p.drawText(region, Qt::AlignVCenter, text_);
+diff --git a/src/Utils.cpp b/src/Utils.cpp
+index f8fdfaf..65fc8f0 100644
+--- a/src/Utils.cpp
++++ b/src/Utils.cpp
+@@ -3,6 +3,8 @@
+ #include <QApplication>
+ #include <QComboBox>
+ #include <QDesktopWidget>
++#include <QGuiApplication>
++#include <QScreen>
+ #include <QSettings>
+ #include <QTextDocument>
+ #include <QXmlStreamReader>
+@@ -229,8 +231,10 @@ utils::scaleImageToPixmap(const QImage &img, int size)
+         if (img.isNull())
+                 return QPixmap();
+ 
++        // Deprecated in 5.13: const double sz =
++        //  std::ceil(QApplication::desktop()->screen()->devicePixelRatioF() * (double)size);
+         const double sz =
+-          std::ceil(QApplication::desktop()->screen()->devicePixelRatioF() * (double)size);
++          std::ceil(QGuiApplication::primaryScreen()->devicePixelRatio() * (double)size);
+         return QPixmap::fromImage(
+           img.scaled(sz, sz, Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
+ }
+@@ -461,7 +465,8 @@ utils::centerWidget(QWidget *widget, QWidget *parent)
+                 return;
+         }
+ 
+-        widget->move(findCenter(QApplication::desktop()->screenGeometry()));
++        // Deprecated in 5.13: widget->move(findCenter(QApplication::desktop()->screenGeometry()));
++        widget->move(findCenter(QGuiApplication::primaryScreen()->geometry()));
+ }
+ 
+ void
+diff --git a/src/dialogs/ImageOverlay.cpp b/src/dialogs/ImageOverlay.cpp
+index dbf5bbe..dd9cd03 100644
+--- a/src/dialogs/ImageOverlay.cpp
++++ b/src/dialogs/ImageOverlay.cpp
+@@ -17,7 +17,9 @@
+ 
+ #include <QApplication>
+ #include <QDesktopWidget>
++#include <QGuiApplication>
+ #include <QPainter>
++#include <QScreen>
+ 
+ #include "dialogs/ImageOverlay.h"
+ 
+@@ -39,7 +41,8 @@ ImageOverlay::ImageOverlay(QPixmap image, QWidget *parent)
+         setAttribute(Qt::WA_DeleteOnClose, true);
+         setWindowState(Qt::WindowFullScreen);
+ 
+-        screen_ = QApplication::desktop()->availableGeometry();
++        // Deprecated in 5.13: screen_ = QApplication::desktop()->availableGeometry();
++        screen_ = QGuiApplication::primaryScreen()->availableGeometry();
+ 
+         move(QApplication::desktop()->mapToGlobal(screen_.topLeft()));
+         resize(screen_.size());
+diff --git a/src/main.cpp b/src/main.cpp
+index 0c196a3..bd7560d 100644
+--- a/src/main.cpp
++++ b/src/main.cpp
+@@ -21,10 +21,12 @@
+ #include <QDir>
+ #include <QFile>
+ #include <QFontDatabase>
++#include <QGuiApplication>
+ #include <QLabel>
+ #include <QLibraryInfo>
+ #include <QMessageBox>
+ #include <QPoint>
++#include <QScreen>
+ #include <QSettings>
+ #include <QStandardPaths>
+ #include <QTranslator>
+@@ -72,7 +74,8 @@ registerSignalHandlers()
+ QPoint
+ screenCenter(int width, int height)
+ {
+-        QRect screenGeometry = QApplication::desktop()->screenGeometry();
++        // Deprecated in 5.13: QRect screenGeometry = QApplication::desktop()->screenGeometry();
++        QRect screenGeometry = QGuiApplication::primaryScreen()->geometry();
+ 
+         int x = (screenGeometry.width() - width) / 2;
+         int y = (screenGeometry.height() - height) / 2;
+diff --git a/src/notifications/ManagerLinux.cpp b/src/notifications/ManagerLinux.cpp
+index d3901c5..1d9f97d 100644
+--- a/src/notifications/ManagerLinux.cpp
++++ b/src/notifications/ManagerLinux.cpp
+@@ -142,7 +142,7 @@ operator<<(QDBusArgument &arg, const QImage &image)
+         int channels = i.isGrayscale() ? 1 : (i.hasAlphaChannel() ? 4 : 3);
+         arg << i.depth() / channels;
+         arg << channels;
+-        arg << QByteArray(reinterpret_cast<const char *>(i.bits()), i.byteCount());
++        arg << QByteArray(reinterpret_cast<const char *>(i.bits()), i.sizeInBytes());
+         arg.endStructure();
+         return arg;
+ }
+diff --git a/src/timeline/TimelineItem.cpp b/src/timeline/TimelineItem.cpp
+index d23dbf4..74686a8 100644
+--- a/src/timeline/TimelineItem.cpp
++++ b/src/timeline/TimelineItem.cpp
+@@ -690,7 +690,9 @@ TimelineItem::generateUserName(const QString &user_id, const QString &displaynam
+         userName_->setToolTipDuration(1500);
+         userName_->setAttribute(Qt::WA_Hover);
+         userName_->setAlignment(Qt::AlignLeft | Qt::AlignTop);
+-        userName_->setFixedWidth(QFontMetrics(userName_->font()).width(userName_->text()));
++        // width deprecated in 5.13:
++        // userName_->setFixedWidth(QFontMetrics(userName_->font()).width(userName_->text()));
++        userName_->setFixedWidth(QFontMetrics(userName_->font()).horizontalAdvance(userName_->text()));
+ 
+         // Set the user color asynchronously if it hasn't been generated yet,
+         // otherwise this will just set it.
+@@ -915,4 +917,4 @@ TimelineItem::openRawMessageViewer() const
+                             "failed to serialize event ({}, {})", room_id, event_id);
+                   }
+           });
+-}
+\ No newline at end of file
++}
+diff --git a/src/timeline/TimelineItem.h b/src/timeline/TimelineItem.h
+index 7bf6a07..00f26f2 100644
+--- a/src/timeline/TimelineItem.h
++++ b/src/timeline/TimelineItem.h
+@@ -28,6 +28,8 @@
+ 
+ #include <QtConcurrent>
+ 
++#include "mtx/events.hpp"
++
+ #include "AvatarProvider.h"
+ #include "RoomInfoListItem.h"
+ #include "Utils.h"
+@@ -273,6 +275,7 @@ private:
+ 
+         QString replaceEmoji(const QString &body);
+         QString event_id_;
++        mtx::events::MessageType message_type_;
+         QString room_id_;
+ 
+         DescInfo descriptionMsg_;
+@@ -342,6 +345,11 @@ TimelineItem::setupWidgetLayout(Widget *widget, const Event &event, bool withSen
+ {
+         init();
+ 
++        //if (event.type == mtx::events::EventType::RoomMessage) {
++        //        message_type_ = mtx::events::getMessageType(event.content.msgtype);
++        //}
++        // TODO: Fix this.
++        message_type_ = mtx::events::MessageType::Unknown;
+         event_id_         = QString::fromStdString(event.event_id);
+         const auto sender = QString::fromStdString(event.sender);
+ 
+diff --git a/src/timeline/widgets/AudioItem.cpp b/src/timeline/widgets/AudioItem.cpp
+index 7233217..8cc2ba8 100644
+--- a/src/timeline/widgets/AudioItem.cpp
++++ b/src/timeline/widgets/AudioItem.cpp
+@@ -163,7 +163,7 @@ AudioItem::resizeEvent(QResizeEvent *event)
+ 
+         QFontMetrics fm(font);
+         const int computedWidth = std::min(
+-          fm.width(text_) + 2 * IconRadius + VerticalPadding * 2 + TextPadding, (double)MaxWidth);
++          fm.horizontalAdvance(text_) + 2 * IconRadius + VerticalPadding * 2 + TextPadding, (double)MaxWidth);
+ 
+         resize(computedWidth, Height);
+ 
+diff --git a/src/timeline/widgets/FileItem.cpp b/src/timeline/widgets/FileItem.cpp
+index e97554e..903fc4b 100644
+--- a/src/timeline/widgets/FileItem.cpp
++++ b/src/timeline/widgets/FileItem.cpp
+@@ -154,7 +154,7 @@ FileItem::resizeEvent(QResizeEvent *event)
+ 
+         QFontMetrics fm(font);
+         const int computedWidth = std::min(
+-          fm.width(text_) + 2 * IconRadius + VerticalPadding * 2 + TextPadding, (double)MaxWidth);
++          fm.horizontalAdvance(text_) + 2 * IconRadius + VerticalPadding * 2 + TextPadding, (double)MaxWidth);
+ 
+         resize(computedWidth, Height);
+ 
+diff --git a/src/timeline/widgets/ImageItem.cpp b/src/timeline/widgets/ImageItem.cpp
+index 4ee9e42..79a66c4 100644
+--- a/src/timeline/widgets/ImageItem.cpp
++++ b/src/timeline/widgets/ImageItem.cpp
+@@ -192,7 +192,7 @@ ImageItem::paintEvent(QPaintEvent *event)
+         if (image_.isNull()) {
+                 QString elidedText = metrics.elidedText(text_, Qt::ElideRight, max_width_ - 10);
+ 
+-                setFixedSize(metrics.width(elidedText), fontHeight);
++                setFixedSize(metrics.horizontalAdvance(elidedText), fontHeight);
+ 
+                 painter.setFont(font);
+                 painter.setPen(QPen(QColor(66, 133, 244)));
+diff --git a/src/ui/DropShadow.h b/src/ui/DropShadow.h
+index b7ba198..d322fb4 100644
+--- a/src/ui/DropShadow.h
++++ b/src/ui/DropShadow.h
+@@ -30,7 +30,11 @@ public:
+                 gradient.setStart(right0);
+                 gradient.setFinalStop(right1);
+                 painter.setBrush(QBrush(gradient));
+-                painter.drawRoundRect(
++                // Deprecated in 5.13: painter.drawRoundRect(
++                //  QRectF(QPointF(width - margin * radius, margin), QPointF(width, height - margin)),
++                //  0.0,
++                //  0.0);
++                painter.drawRoundedRect(
+                   QRectF(QPointF(width - margin * radius, margin), QPointF(width, height - margin)),
+                   0.0,
+                   0.0);
+@@ -41,7 +45,7 @@ public:
+                 gradient.setStart(left0);
+                 gradient.setFinalStop(left1);
+                 painter.setBrush(QBrush(gradient));
+-                painter.drawRoundRect(
++                painter.drawRoundedRect(
+                   QRectF(QPointF(margin * radius, margin), QPointF(0, height - margin)), 0.0, 0.0);
+ 
+                 // Top
+@@ -50,7 +54,7 @@ public:
+                 gradient.setStart(top0);
+                 gradient.setFinalStop(top1);
+                 painter.setBrush(QBrush(gradient));
+-                painter.drawRoundRect(
++                painter.drawRoundedRect(
+                   QRectF(QPointF(width - margin, 0), QPointF(margin, margin)), 0.0, 0.0);
+ 
+                 // Bottom
+@@ -59,7 +63,7 @@ public:
+                 gradient.setStart(bottom0);
+                 gradient.setFinalStop(bottom1);
+                 painter.setBrush(QBrush(gradient));
+-                painter.drawRoundRect(
++                painter.drawRoundedRect(
+                   QRectF(QPointF(margin, height - margin), QPointF(width - margin, height)),
+                   0.0,
+                   0.0);
+@@ -71,7 +75,7 @@ public:
+                 gradient.setFinalStop(bottomright1);
+                 gradient.setColorAt(endPosition1, end);
+                 painter.setBrush(QBrush(gradient));
+-                painter.drawRoundRect(QRectF(bottomright0, bottomright1), 0.0, 0.0);
++                painter.drawRoundedRect(QRectF(bottomright0, bottomright1), 0.0, 0.0);
+ 
+                 // BottomLeft
+                 QPointF bottomleft0(margin, height - margin);
+@@ -80,7 +84,7 @@ public:
+                 gradient.setFinalStop(bottomleft1);
+                 gradient.setColorAt(endPosition1, end);
+                 painter.setBrush(QBrush(gradient));
+-                painter.drawRoundRect(QRectF(bottomleft0, bottomleft1), 0.0, 0.0);
++                painter.drawRoundedRect(QRectF(bottomleft0, bottomleft1), 0.0, 0.0);
+ 
+                 // TopLeft
+                 QPointF topleft0(margin, margin);
+@@ -89,7 +93,7 @@ public:
+                 gradient.setFinalStop(topleft1);
+                 gradient.setColorAt(endPosition1, end);
+                 painter.setBrush(QBrush(gradient));
+-                painter.drawRoundRect(QRectF(topleft0, topleft1), 0.0, 0.0);
++                painter.drawRoundedRect(QRectF(topleft0, topleft1), 0.0, 0.0);
+ 
+                 // TopRight
+                 QPointF topright0(width - margin, margin);
+@@ -98,12 +102,12 @@ public:
+                 gradient.setFinalStop(topright1);
+                 gradient.setColorAt(endPosition1, end);
+                 painter.setBrush(QBrush(gradient));
+-                painter.drawRoundRect(QRectF(topright0, topright1), 0.0, 0.0);
++                painter.drawRoundedRect(QRectF(topright0, topright1), 0.0, 0.0);
+ 
+                 // Widget
+                 painter.setBrush(QBrush("#FFFFFF"));
+                 painter.setRenderHint(QPainter::Antialiasing);
+-                painter.drawRoundRect(
++                painter.drawRoundedRect(
+                   QRectF(QPointF(margin, margin), QPointF(width - margin, height - margin)),
+                   radius,
+                   radius);
+diff --git a/src/ui/InfoMessage.cpp b/src/ui/InfoMessage.cpp
+index e9de20c..b18a80c 100644
+--- a/src/ui/InfoMessage.cpp
++++ b/src/ui/InfoMessage.cpp
+@@ -22,7 +22,7 @@ InfoMessage::InfoMessage(QString msg, QWidget *parent)
+         initFont();
+ 
+         QFontMetrics fm{font()};
+-        width_  = fm.width(msg_) + HPadding * 2;
++        width_  = fm.horizontalAdvance(msg_) + HPadding * 2;
+         height_ = fm.ascent() + 2 * VPadding;
+ 
+         setFixedHeight(height_ + 2 * HMargin);
+@@ -64,7 +64,7 @@ DateSeparator::DateSeparator(QDateTime datetime, QWidget *parent)
+         msg_ = datetime.toString(fmt);
+ 
+         QFontMetrics fm{font()};
+-        width_  = fm.width(msg_) + HPadding * 2;
++        width_  = fm.horizontalAdvance(msg_) + HPadding * 2;
+         height_ = fm.ascent() + 2 * VPadding;
+ 
+         setFixedHeight(height_ + 2 * HMargin);
+diff --git a/src/ui/Painter.h b/src/ui/Painter.h
+index 8de3965..8feed17 100644
+--- a/src/ui/Painter.h
++++ b/src/ui/Painter.h
+@@ -20,8 +20,10 @@ public:
+         void drawTextRight(int x, int y, int outerw, const QString &text, int textWidth = -1)
+         {
+                 QFontMetrics m(fontMetrics());
+-                if (textWidth < 0)
+-                        textWidth = m.width(text);
++                if (textWidth < 0) {
++                        // deprecated in 5.13:      textWidth = m.width(text);
++                        textWidth = m.horizontalAdvance(text);
++                }
+                 drawText((outerw - x - textWidth), y + m.ascent(), text);
+         }
+ 
+-- 
+2.23.0
+

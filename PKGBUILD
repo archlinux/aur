@@ -9,12 +9,17 @@ arch=('x86_64' 'i686')
 url="https://github.com/Nheko-Reborn/nheko"
 license=('GPL3')
 depends=('qt5-multimedia' 'qt5-svg' 'hicolor-icon-theme' 'lmdb' 'cmark' 'mtxclient')
-makedepends=('cmake' 'boost' 'qt5-tools' 'nlohmann-json' 'lmdbxx' 'spdlog' 'tweeny')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/Nheko-Reborn/nheko/archive/v$pkgver.tar.gz")
-sha512sums=('782673a3ae642029307517798e5be96cf0473cd4261af891988a35dfeb5e2e724d2c034407f62addd2e15973d287d11c6590d70cca739c705354cb0151536470')
+makedepends=('cmake' 'boost' 'qt5-tools' 'nlohmann-json' 'lmdbxx' 'spdlog' 'tweeny'
+             'fmt') # https://bugs.archlinux.org/task/63907
+source=("$pkgname-$pkgver.tar.gz::https://github.com/Nheko-Reborn/nheko/archive/v$pkgver.tar.gz"
+        "0001-Fix-deprecated-function-call-issues-with-Qt-5.13.patch")
+sha512sums=('782673a3ae642029307517798e5be96cf0473cd4261af891988a35dfeb5e2e724d2c034407f62addd2e15973d287d11c6590d70cca739c705354cb0151536470'
+            'a20e5a3a152a22525bc1a0563f210bc8ed4f4d988342f20e1960b9530fdc0ca90539847719bbc9abf7802a0cd4af99f41b84641cd0bb5881dc1a9d160e224c2e')
 
 prepare() {
   mkdir -p build
+  cd $pkgname-$pkgver
+  patch -Np1 < ../0001-Fix-deprecated-function-call-issues-with-Qt-5.13.patch
 }
 
 build() {
@@ -22,6 +27,8 @@ build() {
   cmake ../$pkgname-$pkgver \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib
+  # The compilation takes up a *lot* of RAM (over 10GB with 6 threads)
+  # Adjust your MAKEFLAGS in /etc/makepkg.conf or add e.g. a "-j3" flag to the make command
   make
 }
 
