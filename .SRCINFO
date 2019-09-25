@@ -1,7 +1,7 @@
 pkgbase = systemd-cdown-git
 	pkgdesc = systemd (git version)
 	pkgver = 243.r129.g82d1264048
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.github.com/systemd/systemd
 	arch = x86_64
 	makedepends = acl
