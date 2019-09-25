@@ -1,27 +1,27 @@
-# Maintainer: Vinicius Moreira <vinicius_fmoreira@hotmail.com>
+# Maintainer: bauh developers <bauh4linux@gmail.com>
 
 pkgname=bauh-staging
 pkgver=0.6.0.RC
-pkgrel=5
-_commit="497b70181f0b09f801c217f4b697ec4f8ef4cd12"
-pkgdesc="Free non-official GUI for Flatpak / Snap / AUR applications management (staging: it is a testing branch which receives updates frequently and may not be working properly)"
+pkgrel=6
+_commit="e95a523566f2c3439bc766f6992378cf23cf1c88"
+pkgdesc="Free non-official graphical interface to manage Flatpak, Snaps and AUR applications / packages (staging: it is a testing branch which receives updates frequently and may not be working properly)"
 arch=('any')
 url="https://github.com/vinifmor/bauh"
 license=('zlib/libpng')
 depends=('python' 'python-pip' 'python-pyqt5' 'python-requests' 'python-colorama')
-optdepends=('flatpak: to install Flatpaks' 
-            'snapd: to install Snaps' 
-            'pacman: to install AUR packages' 
-            'wget: to install AUR packages' 
-            'git: to downgrade AUR packages'
-            'aria2c: faster AUR source downloads'
-            'ccache: can improve AUR packages compilation speed' 
-            'breeze: for KDE Plasma main theme be available')
+optdepends=('flatpak: for Flatpak support' 
+            'snapd: for Snap support' 
+            'pacman: for AUR support' 
+            'wget: for AUR support' 
+            'git: to downgrade AUR packages ( optional )'
+            'aria2c: faster AUR source downloads ( optional )'
+            'ccache: can improve AUR packages compilation speed ( optional )' 
+            'breeze: for KDE Plasma main theme be available ( optional )')
 makedepends=('git' 'python-setuptools')
 provides=("bauh")
 conflicts=('bauh')
 source=("${url}/archive/${_commit}.tar.gz")
-sha512sums=('5c3a2728d4918e5fdc8e154b29f563feee987e3bc691d3dde505c54505f3ddfa16a4a78dbe6db6e321a4f4a5ad247a1caedc4c05371d66c31416965e4bd1824e')
+sha512sums=('96457dc8b815c598003d8aba2b5f92f8c31a7853c91b73bf305da9047e73c3cbef2da35dd286051af85489cb8942d798f434fb95ac5e760ae1babbe8eff1eb4a')
 
 build() {
   cd "${srcdir}/bauh-${_commit}"
