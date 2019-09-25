@@ -8,7 +8,7 @@ url="https://github.com/arduino/ArduinoCore-samd"
 license=('GPL')
 provides=('arduino-samd-core')
 conflicts=('arduino-samd-core')
-depends=('avrdude' 'avr-gcc' 'avr-libc')
+depends=('avrdude' 'avr-gcc' 'avr-libc') ## this needs to be fixed to include arm compiler
 options=(!strip !emptydirs)
 source=("https://github.com/arduino/ArduinoCore-samd/archive/${pkgver}.tar.gz"
         "platform.patch")
