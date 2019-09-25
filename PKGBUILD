@@ -5,19 +5,19 @@
 
 pkgbase=systemd-cdown-git
 _pkgbase=systemd
-pkgname=('systemd-cdown-git' 'libsystemd-cdown-git' 'systemd-resolvconf-cdown-git' 'systemd-sysvcompat-cdown-git')
-pkgdesc="systemd (cdown git version)"
-pkgver=235.7842
+pkgname=('systemd-cdown-git' 'systemd-cdown-libs-git' 'systemd-cdown-resolvconf-git' 'systemd-cdown-sysvcompat-git')
+pkgdesc="systemd (git version)"
+pkgver=243.r129.g82d1264048
 pkgrel=1
 arch=('x86_64')
-url='https://www.github.com/cdown/systemd'
+url='https://www.github.com/systemd/systemd'
 makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam' 'libelf'
              'intltool' 'iptables' 'kmod' 'libcap' 'libidn2' 'libgcrypt'
              'libmicrohttpd' 'libxslt' 'util-linux' 'linux-api-headers'
              'python-lxml' 'quota-tools' 'shadow' 'gnu-efi-libs' 'git'
              'meson' 'libseccomp' 'pcre2' 'audit' 'kexec-tools' 'libxkbcommon'
              'bash-completion')
-options=('strip' '!distcc' '!ccache')
+options=('!strip')
 source=('git+https://github.com/cdown/systemd#branch=cdowntest'
         '0001-Use-Arch-Linux-device-access-groups.patch'
         'initcpio-hook-udev'
@@ -28,15 +28,15 @@ source=('git+https://github.com/cdown/systemd#branch=cdowntest'
         'splash-arch.bmp'::'https://git.archlinux.org/svntogit/packages.git/plain/trunk/splash-arch.bmp?h=packages/systemd'
         'systemd-user.pam'
         'systemd-hook'
-        'systemd-binfmt.hook'
-        'systemd-catalog.hook'
-        'systemd-daemon-reload.hook'
-        'systemd-hwdb.hook'
-        'systemd-sysctl.hook'
-        'systemd-sysusers.hook'
-        'systemd-tmpfiles.hook'
-        'systemd-udev-reload.hook'
-        'systemd-update.hook')
+        '20-systemd-sysusers.hook'
+        '30-systemd-binfmt.hook'
+        '30-systemd-catalog.hook'
+        '30-systemd-daemon-reload.hook'
+        '30-systemd-hwdb.hook'
+        '30-systemd-sysctl.hook'
+        '30-systemd-tmpfiles.hook'
+        '30-systemd-udev-reload.hook'
+        '30-systemd-update.hook')
 sha512sums=('SKIP'
             '9348683829190628e25b7b3300fd880c426d555bde330d5fc5150a9a54b3ad9d4d1f2e69ea1dc6d6f086693dacc53c5af30f1fa7ad9b479791fd77bcdafa430e'
             'f0d933e8c6064ed830dec54049b0a01e27be87203208f6ae982f10fb4eddc7258cb2919d594cbfb9a33e74c3510cfd682f3416ba8e804387ab87d1a217eb4b73'
@@ -46,13 +46,13 @@ sha512sums=('SKIP'
             'c416e2121df83067376bcaacb58c05b01990f4614ad9de657d74b6da3efa441af251d13bf21e3f0f71ddcb4c9ea658b81da3d915667dc5c309c87ec32a1cb5a5'
             '5a1d78b5170da5abe3d18fdf9f2c3a4d78f15ba7d1ee9ec2708c4c9c2e28973469bc19386f70b3cf32ffafbe4fcc4303e5ebbd6d5187a1df3314ae0965b25e75'
             'b90c99d768dc2a4f020ba854edf45ccf1b86a09d2f66e475de21fe589ff7e32c33ef4aa0876d7f1864491488fd7edb2682fc0d68e83a6d4890a0778dc2d6fe19'
-            '6b82386fc20619eefa911cd9cdac8efbd0c7137bba4955e8ae75a0ea378d19dbfccc1f7bde6684f03e5f2badefa4abf20623153d88a170d14499167319586db7'
+            '869dab2b1837c964add4019bb402e24e52dbb7f009850ca69fcc5deddd923eeb98eb8ee38601f6e31531f30322472fe7df09af84df27f0467708406c55885323'
+            '08a590d08043a21f30f04252164b94df972b1ff1022a0469d6aef713e14484a3a037cce290a2a582851e6fac3e64add69d6cc8fc130bbeeaea08626ebf3e1763'
             '5a6b6beef8c31c79018884d948de840f4d3dfb07d9a87081ebf65e2b8fe595bc8c96dbd7742920ccf948c233213ed0026abc913650cefd77ad90c6f8c89bddb8'
             '4cff2ebd962e26e2f516d8b4ac45c839dbfa54dd0588b423c224a328b9f7c62306ca7b2f6cb55240c564caf9972d5bcd2e0efaf2de49d64729aeb3bc1560c9eb'
             '872de70325e9798f0b5a77e991c85bd2ab6de24d9b9ba4e35002d2dd5df15f8b30739a0042a624776177ffc14a838cde7ee98622016ed41df3efda9a659730b2'
             '471342b8d0e05533908cda5d6a906050a51e3181beda1239e91d717029ee40a9eaed714996a445417d87c4e31b7f8522a665de176077fe0536d538369594996d'
             'da783e3bfc6469b92dee4064a13e2b427520d3d96b57c95a4e07aaca3e844d95210a8b16122b022080f5452d65096f274dd1c1467725bbdb2e40ef304b78774a'
-            '08a590d08043a21f30f04252164b94df972b1ff1022a0469d6aef713e14484a3a037cce290a2a582851e6fac3e64add69d6cc8fc130bbeeaea08626ebf3e1763'
             '577e33a1c50b4b41157a67f64162b035dd0c4a541e19cee55a100048bdb50cb2c82852741b1372989a0fe4c4782ba477522747fcc81d72aed99b3db512a86447'
             'e4a9d7607fe93daf1d45270971c8d8455c4bfc2c0bea8bcad05aeb89847edee23cd1a41073a72042622acf417018fe254f5bfc137604fe2c71292680bf67a1c2'
             '209b01b044877cc986757fa4009a92ea98f480306c2530075d153203c3cd2b3afccab6aacc1453dee8857991e04270572f1700310705d7a0f4d5bed27fab8c67')
@@ -64,13 +64,9 @@ prepare() {
 }
 
 pkgver() {
-  local version count
-
   cd "$_pkgbase"
-
-  version="$(git describe --abbrev=0 --tags)"
-  count="$(git rev-list --count ${version}..)"
-  printf '%s.%s' "${version#v}" "${count}"
+  # cutting off 'foo-' prefix that presents in the git tag
+  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -90,10 +86,13 @@ build() {
   )
 
   local _meson_options=(
+    -Dversion-tag="${pkgver}-${pkgrel}-arch"
+
     -Dgnu-efi=true
     -Dima=false
     -Dlibidn2=true
     -Dlz4=true
+    -Dman=true
 
     -Ddbuspolicydir=/usr/share/dbus-1/system.d
     -Ddefault-hierarchy=hybrid
@@ -106,28 +105,28 @@ build() {
     -Dsysvinit-path=
     -Dsysvrcnd-path=
   )
-  
+
   arch-meson "$_pkgbase" build "${_meson_options[@]}"
 
   ninja -C build
 }
 
-# check() {
-#   meson test -C build
-# }
+check() {
+  meson test -C build
+}
 
 package_systemd-cdown-git() {
   pkgdesc="system and service manager (git version)"
   license=('GPL2' 'LGPL2.1')
   depends=('acl' 'bash' 'cryptsetup' 'dbus' 'iptables' 'kbd' 'kmod' 'hwids' 'libcap'
-           'libgcrypt' 'libsystemd' 'libidn2' 'lz4' 'pam' 'libelf' 'libseccomp'
-           'util-linux' 'xz' 'pcre2' 'audit')
-  provides=("${_pkgbase}=$pkgver" 'nss-myhostname' "systemd-tools=$pkgver" "udev=$pkgver")
-  replaces=("${_pkgbase}" 'nss-myhostname' 'systemd-tools' 'udev')
-  conflicts=("${_pkgbase}" 'nss-myhostname' 'systemd-tools' 'udev')
+           'libgcrypt' 'systemd-cdown-libs' 'libidn2' 'libidn2.so' 'lz4' 'pam' 'libelf'
+           'libseccomp' 'util-linux' 'xz' 'pcre2' 'audit')
+  provides=("${_pkgbase}=$pkgver" 'nss-myhostname' "systemd-cdown-tools=$pkgver" "udev=$pkgver")
+  replaces=('nss-myhostname' 'systemd-cdown-tools' 'udev')
+  conflicts=("${_pkgbase}" 'nss-myhostname' 'systemd-cdown-tools' 'udev')
   optdepends=('libmicrohttpd: remote journald capabilities'
               'quota-tools: kernel-level quota management'
-              'systemd-sysvcompat-cdown-git: symlink package to provide sysvinit binaries'
+              'systemd-cdown-sysvcompat-git: symlink package to provide sysvinit binaries'
               'polkit: allow administration as unprivileged user'
               'curl: machinectl pull-tar and pull-raw')
   backup=(etc/pam.d/systemd-user
@@ -136,25 +135,23 @@ package_systemd-cdown-git() {
           etc/systemd/journal-remote.conf
           etc/systemd/journal-upload.conf
           etc/systemd/logind.conf
+          etc/systemd/networkd.conf
+          etc/systemd/resolved.conf
+          etc/systemd/sleep.conf
           etc/systemd/system.conf
           etc/systemd/timesyncd.conf
-          etc/systemd/resolved.conf
           etc/systemd/user.conf
           etc/udev/udev.conf)
   install=systemd.install
 
   DESTDIR="$pkgdir" meson install -C build
 
-  # don't write units to /etc by default. some of these will be re-enabled on
-  # post_install.
-  rm -rv "$pkgdir"/etc/systemd/system/*
-
   # we'll create this on installation
   rmdir "$pkgdir"/var/log/journal/remote
 
-  # runtime libraries shipped with libsystemd
-  install -d -m0755 libsystemd
-  mv "$pkgdir"/usr/lib/lib{nss,systemd,udev}*.so* libsystemd
+  # runtime libraries shipped with systemd-libs
+  install -d -m0755 systemd-libs
+  mv "$pkgdir"/usr/lib/lib{nss,systemd,udev}*.so* systemd-libs
 
   # manpages shipped with systemd-sysvcompat
   rm "$pkgdir"/usr/share/man/man8/{halt,poweroff,reboot,runlevel,shutdown,telinit}.8
@@ -166,11 +163,12 @@ package_systemd-cdown-git() {
   rm "$pkgdir"/usr/{bin/resolvconf,share/man/man1/resolvconf.1}
 
   # avoid a potential conflict with [core]/filesystem
-  rm "$pkgdir"/usr/share/factory/etc/nsswitch.conf
-  sed -i '/^C \/etc\/nsswitch\.conf/d' "$pkgdir"/usr/lib/tmpfiles.d/etc.conf
+  rm "$pkgdir"/usr/share/factory/etc/{issue,nsswitch.conf}
+  sed -i -e '/^C \/etc\/nsswitch\.conf/d' \
+    -e '/^C \/etc\/issue/d' "$pkgdir"/usr/lib/tmpfiles.d/etc.conf
 
   # add back tmpfiles.d/legacy.conf, normally omitted without sysv-compat
-  install -m0644 $_pkgbase/tmpfiles.d/legacy.conf "$pkgdir"/usr/lib/tmpfiles.d
+  install -m0644 "$_pkgbase"/tmpfiles.d/legacy.conf "$pkgdir"/usr/lib/tmpfiles.d
 
   # ship default policy to leave services disabled
   echo 'disable *' >"$pkgdir"/usr/lib/systemd/system-preset/99-default.preset
@@ -202,25 +200,24 @@ package_systemd-cdown-git() {
   install -D -m0644 systemd-user.pam "$pkgdir"/etc/pam.d/systemd-user
 }
 
-package_libsystemd-cdown-git() {
-  pkgdesc="systemd client libraries (git version)"
+package_systemd-cdown-libs-git() {
+  pkgdesc='systemd client libraries (git version)'
   depends=('glibc' 'libcap' 'libgcrypt' 'lz4' 'xz')
-  license=('GPL2')
-  provides=('libsystemd' 'libsystemd.so' 'libudev.so')
+  license=('LGPL2.1')
+  provides=('systemd-cdown-libs' 'libsystemd' 'libsystemd.so' 'libudev.so')
+  conflicts=('systemd-cdown-libs' 'libsystemd')
   replaces=('libsystemd')
-  conflicts=('libsystemd')
 
   install -d -m0755 "$pkgdir"/usr
-  mv libsystemd "$pkgdir"/usr/lib
+  mv systemd-libs "$pkgdir"/usr/lib
 }
 
-package_systemd-resolvconf-cdown-git() {
-  pkgdesc='systemd resolvconf replacement (git version)'
-  license=('GPL2')
+package_systemd-cdown-resolvconf-git() {
+  pkgdesc='systemd resolvconf replacement (for use with systemd-resolved, git version)'
+  license=('LGPL2.1')
   depends=("${pkgbase}")
-  provides=('systemd-resolvconf' 'openresolv' 'resolvconf')
-  replaces=('systemd-resolvconf')
-  conflicts=('systemd-resolvconf' 'openresolv')
+  provides=('systemd-cdown-resolvconf' 'openresolv' 'resolvconf')
+  conflicts=('systemd-cdown-resolvconf' 'openresolv')
 
   install -d -m0755 "$pkgdir"/usr/bin
   ln -s resolvectl "$pkgdir"/usr/bin/resolvconf
@@ -230,13 +227,12 @@ package_systemd-resolvconf-cdown-git() {
 }
 
 
-package_systemd-sysvcompat-cdown-git() {
+package_systemd-cdown-sysvcompat-git() {
   pkgdesc='sysvinit compat for systemd (git version)'
   license=('GPL2')
-  provides=('systemd-sysvcompat')
-  replaces=('systemd-sysvcompat')
-  conflicts=('systemd-sysvcompat' 'sysvinit')
   depends=("${pkgbase}")
+  provides=('systemd-cdown-sysvcompat')
+  conflicts=('systemd-cdown-sysvcompat' 'sysvinit')
 
   install -D -m0644 -t "$pkgdir"/usr/share/man/man8 \
     build/man/{telinit,halt,reboot,poweroff,runlevel,shutdown}.8

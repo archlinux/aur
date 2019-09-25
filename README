@@ -1,4 +1,7 @@
 This is *usually* the same as systemd-git, except for when I have patches
 pending, in which case my dogfooding branch also contains those.
 
-s/-git/-cdown-git/ and changing the URL is most of the work.
+---
+
+1. change pkgname array + functions + depends/provides/etc (%s/systemd-/systemd-cdown-/gc)
+2. change git url
