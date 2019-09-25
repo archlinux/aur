@@ -1,15 +1,16 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=lsd2dsl-git
-pkgver=0.3.0.r1.g95b90ae
+pkgver=0.4.1.r26.gf7bce9c
 pkgrel=1
 epoch=
-pkgdesc="ABBYY Lingvo dictionaries decompiler, supports the Lingvo x5 and x6 formats."
+pkgdesc="A decompiler for ABBYY Lingvo’s and Duden proprietary dictionaries."
 arch=('i686' 'x86_64')
-url="https://github.com/nongeneric/lsd2dsl"
-license=('unknown')
+url='https://github.com/nongeneric/lsd2dsl'
+url='https://rcebits.com/lsd2dsl/index.html'
+license=('MIT')
 groups=()
 depends=('libzip' 'boost' 'qt5-base' 'libvorbis' 'libsndfile')
-makedepends=('git' 'cmake')
+makedepends=('git' 'cmake>=3.14')
 optdepends=()
 checkdepends=()
 provides=('lsd2dsl')
@@ -23,6 +24,11 @@ source=("$pkgname::git+https://github.com/nongeneric/lsd2dsl.git")
 noextract=()
 md5sums=('SKIP')
 
+prepare() {
+  cd "$srcdir/$pkgname"
+  sed -i 's/-Werror //' CMakeLists.txt
+}
+
 pkgver() {
   cd "$srcdir/$pkgname"
   git describe --tags | sed -E 's/([^-]*-g)/r\1/;s/-/./g;s/^v//'
@@ -34,10 +40,16 @@ build() {
   make
 }
 
+check() {
+  cd "$srcdir/$pkgname/tests"
+  ./tests
+}
+
 package() {
   cd "$srcdir/$pkgname"
-  install -Dm755 lsd2dsl $pkgdir/usr/bin/lsd2dsl
-  install -m755 qtgui/lsd2dsl-qtgui $pkgdir/usr/bin/lsd2dsl-qtgui
+  install -Dm755 console/lsd2dsl $pkgdir/usr/bin/lsd2dsl
+  install -m755 gui/lsd2dsl-qtgui $pkgdir/usr/bin/lsd2dsl-qtgui
   install -Dm644 README.md $pkgdir/usr/share/doc/${pkgname%-*}/README.md
+  install -Dm644 LICENSE $pkgdir/usr/share/licenses/${pkgname%-*}/LICENSE
 }
 
