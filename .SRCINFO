@@ -1,6 +1,6 @@
 pkgbase = bear-git
-	pkgdesc = tool to generate compilation database for clang tooling
-	pkgver = 1.4.48.g3e0e1ad
+	pkgdesc = Tool to generate compilation database for clang tooling
+	pkgver = r492.c3c3537
 	pkgrel = 1
 	url = https://github.com/rizsotto/Bear
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = bear-git
 	depends = python>=2.7
 	provides = bear
 	conflicts = bear
-	source = bear::git+https://github.com/rizsotto/Bear.git
+	source = bear-git::git+https://github.com/rizsotto/Bear.git
 	sha1sums = SKIP
 
 pkgname = bear-git
