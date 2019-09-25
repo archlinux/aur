@@ -5,7 +5,7 @@
 pkgname=ungoogled-chromium
 pkgver=77.0.3865.90
 _rev=1
-_archver=f90b8eb7fbc9d46d145089edeae7cb33ebd92d77
+_archver=19c53c4ce8a6b674500cf94dacafde41ba98cbf0
 pkgrel=${_rev}
 _launcher_ver=6
 pkgdesc="A lightweight approach to removing Google web service dependency"
@@ -33,7 +33,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
 sha256sums=('004cfdb1df74847bea8659bcaf8e039d51fe1101d42b6cf1c6cc346073fdefc3'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
             '268114f594d101d6d3b15e5eacfb60229681d66b86fcff085e0dcffe689d8124'
-            'd61cbeb58fa3ee51bc14852284982e378005cc98cdcdd6250386183ef00a0666')
+            'c70c5d3e92d64fc40e2f81e53fcf62099159ad8972d65853afb3f27e966a544d')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
