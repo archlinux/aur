@@ -4,16 +4,16 @@
 _servicename=verify_file
 pkgname=obs-service-$_servicename
 pkgver=0.1.1
-_pkgrel=23.1
-pkgrel=1
+_pkgrel=2.8
+pkgrel=2
 pkgdesc='An OBS source service: verify files'
 arch=(any)
 url='https://github.com/openSUSE/'
 license=(MIT)
 depends=(obs-build)
 # Sources are only available on OBS or as source rpm - unfortunately there's no github repo
-source=("https://download.opensuse.org/source/distribution/openSUSE-current/repo/oss/suse/src/$pkgname-$pkgver-$_pkgrel.src.rpm")
-sha512sums=('f4e466bab574ece06808b872cb2c270b22bd0809cbd14def90e6b9355e353cd31a95b1178f13a11ba26f0c92381ef5a71e28c14fa9853bac1e4f2928e6a694ae')
+source=("http://download.opensuse.org/repositories/openSUSE:/Factory/standard/src/$pkgname-$pkgver-$_pkgrel.src.rpm")
+sha512sums=('1bfd6a8c8638224e5fdb44651f451886cc30f91f37818e1e1a0f4a4d17d758131d0d9a2ddb670946efa5882ba10d1c2c0d045a73cd623c63b843324332a7213c')
 
 package() {
     install -Dm755 $_servicename "$pkgdir"/usr/lib/obs/service/$_servicename
