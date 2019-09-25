@@ -33,15 +33,16 @@ prepare(){
 }
 
 build() {
-	export GOPATH="$srcdir"/gopath
-	cd "$GOPATH"/src/github.com/arduino/arduino-cli
-	
-	go build \
-		-buildmode=pie \
-		-gcflags "all=-trimpath=$GOPATH" \
-		-asmflags "all=-trimpath=$GOPATH" \
-		-ldflags "-extldflags $LDFLAGS" \
-		-v .
+  export GOPATH="$srcdir"/gopath
+  cd "$GOPATH"/src/github.com/arduino/arduino-cli
+  go build \
+    -buildmode=pie \
+    -gcflags "all=-trimpath=$GOPATH" \
+    -asmflags "all=-trimpath=$GOPATH" \
+    -ldflags "-extldflags $LDFLAGS" \
+    -v .
+
+    chmod -R 744 "$GOPATH"
 }
 
 #check() {
