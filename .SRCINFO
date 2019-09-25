@@ -107,11 +107,11 @@ pkgname = systemd-cdown-git
 	optdepends = curl: machinectl pull-tar and pull-raw
 	provides = systemd=243.r129.g82d1264048
 	provides = nss-myhostname
-	provides = systemd-cdown-tools=243.r129.g82d1264048
+	provides = systemd-tools=243.r129.g82d1264048
 	provides = udev=243.r129.g82d1264048
 	conflicts = systemd
 	conflicts = nss-myhostname
-	conflicts = systemd-cdown-tools
+	conflicts = systemd-tools
 	conflicts = udev
 	replaces = nss-myhostname
 	replaces = systemd-cdown-tools
@@ -138,11 +138,11 @@ pkgname = systemd-cdown-libs-git
 	depends = libgcrypt
 	depends = lz4
 	depends = xz
-	provides = systemd-cdown-libs
+	provides = systemd-libs
 	provides = libsystemd
 	provides = libsystemd.so
 	provides = libudev.so
-	conflicts = systemd-cdown-libs
+	conflicts = systemd-libs
 	conflicts = libsystemd
 	replaces = libsystemd
 
@@ -150,17 +150,17 @@ pkgname = systemd-cdown-resolvconf-git
 	pkgdesc = systemd resolvconf replacement (for use with systemd-resolved, git version)
 	license = LGPL2.1
 	depends = systemd-cdown-git
-	provides = systemd-cdown-resolvconf
+	provides = systemd-resolvconf
 	provides = openresolv
 	provides = resolvconf
-	conflicts = systemd-cdown-resolvconf
+	conflicts = systemd-resolvconf
 	conflicts = openresolv
 
 pkgname = systemd-cdown-sysvcompat-git
 	pkgdesc = sysvinit compat for systemd (git version)
 	license = GPL2
 	depends = systemd-cdown-git
-	provides = systemd-cdown-sysvcompat
-	conflicts = systemd-cdown-sysvcompat
+	provides = systemd-sysvcompat
+	conflicts = systemd-sysvcompat
 	conflicts = sysvinit
 

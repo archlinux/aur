@@ -121,9 +121,9 @@ package_systemd-cdown-git() {
   depends=('acl' 'bash' 'cryptsetup' 'dbus' 'iptables' 'kbd' 'kmod' 'hwids' 'libcap'
            'libgcrypt' 'systemd-cdown-libs' 'libidn2' 'libidn2.so' 'lz4' 'pam' 'libelf'
            'libseccomp' 'util-linux' 'xz' 'pcre2' 'audit')
-  provides=("${_pkgbase}=$pkgver" 'nss-myhostname' "systemd-cdown-tools=$pkgver" "udev=$pkgver")
+  provides=("${_pkgbase}=$pkgver" 'nss-myhostname' "systemd-tools=$pkgver" "udev=$pkgver")
   replaces=('nss-myhostname' 'systemd-cdown-tools' 'udev')
-  conflicts=("${_pkgbase}" 'nss-myhostname' 'systemd-cdown-tools' 'udev')
+  conflicts=("${_pkgbase}" 'nss-myhostname' 'systemd-tools' 'udev')
   optdepends=('libmicrohttpd: remote journald capabilities'
               'quota-tools: kernel-level quota management'
               'systemd-cdown-sysvcompat-git: symlink package to provide sysvinit binaries'
@@ -204,8 +204,8 @@ package_systemd-cdown-libs-git() {
   pkgdesc='systemd client libraries (git version)'
   depends=('glibc' 'libcap' 'libgcrypt' 'lz4' 'xz')
   license=('LGPL2.1')
-  provides=('systemd-cdown-libs' 'libsystemd' 'libsystemd.so' 'libudev.so')
-  conflicts=('systemd-cdown-libs' 'libsystemd')
+  provides=('systemd-libs' 'libsystemd' 'libsystemd.so' 'libudev.so')
+  conflicts=('systemd-libs' 'libsystemd')
   replaces=('libsystemd')
 
   install -d -m0755 "$pkgdir"/usr
@@ -216,8 +216,8 @@ package_systemd-cdown-resolvconf-git() {
   pkgdesc='systemd resolvconf replacement (for use with systemd-resolved, git version)'
   license=('LGPL2.1')
   depends=("${pkgbase}")
-  provides=('systemd-cdown-resolvconf' 'openresolv' 'resolvconf')
-  conflicts=('systemd-cdown-resolvconf' 'openresolv')
+  provides=('systemd-resolvconf' 'openresolv' 'resolvconf')
+  conflicts=('systemd-resolvconf' 'openresolv')
 
   install -d -m0755 "$pkgdir"/usr/bin
   ln -s resolvectl "$pkgdir"/usr/bin/resolvconf
@@ -231,8 +231,8 @@ package_systemd-cdown-sysvcompat-git() {
   pkgdesc='sysvinit compat for systemd (git version)'
   license=('GPL2')
   depends=("${pkgbase}")
-  provides=('systemd-cdown-sysvcompat')
-  conflicts=('systemd-cdown-sysvcompat' 'sysvinit')
+  provides=('systemd-sysvcompat')
+  conflicts=('systemd-sysvcompat' 'sysvinit')
 
   install -D -m0644 -t "$pkgdir"/usr/share/man/man8 \
     build/man/{telinit,halt,reboot,poweroff,runlevel,shutdown}.8
