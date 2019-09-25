@@ -17,7 +17,6 @@ pkgbase = gnome-network-displays-git
 	depends = python-gobject
 	depends = x264
 	provides = gnome-network-displays
-	provides = gnome-screencast
 	conflicts = gnome-network-displays
 	replaces = gnome-screencast
 	source = git+https://github.com/benzea/gnome-network-displays
