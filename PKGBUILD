@@ -13,7 +13,7 @@ md5sums=('1b0fb4fbf3abfe65b4ed7123b6be6101')
 prepare() {
   cd $srcdir/$pkgname-$pkgver
   find . -name '*.go' | xargs -L1 sed -i -e 's,"proxy/,"github.com/snail007/goproxy/,g'
-  [[ -f go.mod ]] || go mod init
+  [[ -f go.mod ]] || go mod init github.com/snail007/goproxy
 }
 
 build() {
