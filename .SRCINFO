@@ -1,0 +1,23 @@
+pkgbase = tinyfecvpn
+	pkgdesc = A Lightweight VPN with Build-in Forward Error Correction Support
+	pkgver = 20180820.0
+	pkgrel = 1
+	url = https://github.com/wangyu-/tinyfecVPN
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = make
+	makedepends = gcc
+	source = tinyfecvpn-20180820.0::git://github.com/wangyu-/tinyfecvpn.git#tag=20180820.0
+	source = conf.json
+	source = runtinyfecvpn
+	source = tinyfecvpn.install
+	source = tinyvpn.service
+	sha256sums = SKIP
+	sha256sums = 86a54964f05ab480251b3906c9618d3818a0f2b3d6ec8a0ec62c125a108439e8
+	sha256sums = 1c9c91528e075cc19b1d1293a1b1ba2d82f8159412d759b5f05e9ea1ec3ba58d
+	sha256sums = 645393e08311063a81e91ab7972768c5059f29f601ac5b7858242066f29928f2
+	sha256sums = 00d71040044b979d2576487c29a550b6134482577ce2a553807caa0ad9bd5413
+
+pkgname = tinyfecvpn
+

@@ -1,0 +1,13 @@
+[Unit]
+Description=tinyfecVPN service
+After=network.target
+Wants=network.target
+
+[Service]
+Type=simple
+PIDFile=/var/run/tinyvpn.pid
+ExecStart=/usr/bin/runtinyvpn
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,11 @@
+{
+    "mode": "client",
+    "key": "passwd",
+    "fec": [
+        20,
+        5
+    ],
+    "fec-mode": 0,
+    "server": "1.1.1.1",
+    "port": 5001
+}
