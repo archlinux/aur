@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Generic Macro Deck
+Comment=
+Exec=generic-macro-deck
+Terminal=false
+Type=Application
+Icon=generic-macro-deck
+Categories=Utility
+StartupWMClass=GenericMacroDeck
