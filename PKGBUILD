@@ -17,7 +17,7 @@ prepare() {
     # https://github.com/AravisProject/aravis/issues/297
     sed -i '/Exec=/s/arv-viewer$/arv-viewer-0.8/' viewer/data/arv-viewer.desktop.in.in
     # https://github.com/AravisProject/aravis/issues/298
-    sed -i "/-DARAVIS_LOCALE_DIR/s/('prefix'),/& 'share', /" viewer/meson.build
+    sed -i "/-DARAVIS_LOCALE_DIR/s/('prefix'),/& 'share',/" viewer/meson.build
 }
 
 build() {
