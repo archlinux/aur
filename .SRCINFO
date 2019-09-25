@@ -1,14 +1,16 @@
 pkgbase = dex-icon-theme
 	pkgdesc = Samsung Galaxy S8 like icon theme for KDE
-	pkgver = 0.5
+	pkgver = 20190421
 	pkgrel = 1
-	url = https://store.kde.org/p/1197856/
+	url = https://github.com/ishovkun/Dex
 	arch = any
 	license = LGPL3
+	makedepends = git
 	depends = breeze-icons
+	depends = gtk-update-icon-cache
 	options = !strip
-	source = dex-icon-theme-0.5.tar.gz::https://dl.opendesktop.org/api/files/downloadfile/id/1512168280/s/cd5638d28fe1577ba10fcbadb1df67fa/t/1519222259/u//kde.tar.gz
-	sha256sums = 20312b445d3ccfc818743bb00e1507972b1e0ef9d03a02fbe47b533e82c84477
+	source = dex-icon-theme::git+https://github.com/ishovkun/Dex.git#commit=88dec457bd3abc4e7f685c0f078d53ff0d1ca7f2
+	sha256sums = SKIP
 
 pkgname = dex-icon-theme
 

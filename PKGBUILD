@@ -2,18 +2,21 @@
 # Contributor:
 
 pkgname=dex-icon-theme
-pkgver=0.5
+pkgver=20190421
 pkgrel=1
 pkgdesc="Samsung Galaxy S8 like icon theme for KDE"
-url="https://store.kde.org/p/1197856/"
+url="https://github.com/ishovkun/Dex"
 arch=('any')
 license=('LGPL3')
-depends=('breeze-icons')
+depends=('breeze-icons' 'gtk-update-icon-cache')
+makedepends=(git)
 options=('!strip')
-source=("$pkgname-$pkgver.tar.gz::https://dl.opendesktop.org/api/files/downloadfile/id/1512168280/s/cd5638d28fe1577ba10fcbadb1df67fa/t/1519222259/u//kde.tar.gz")
-sha256sums=('20312b445d3ccfc818743bb00e1507972b1e0ef9d03a02fbe47b533e82c84477')
+_commit=88dec457bd3abc4e7f685c0f078d53ff0d1ca7f2
+source=("$pkgname::git+$url.git#commit=${_commit}")
+sha256sums=('SKIP')
 
 package() {
+  cd "$pkgname"
   rm ./Dex*/{AUTHORS,LICENSE}
   find -type f -name '* *' -delete
   find -type f -name '.directory' -delete
