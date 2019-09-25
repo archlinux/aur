@@ -8,14 +8,18 @@ arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('MIT')
 depends=('retroarch' 'retroarch-assets-xmb' 'xorg-server' 'xorg-xinit' 'xorg-xset' 'unclutter')
 install='retroarch-standalone.install'
-source=('retroarch-standalone.service'
-        'retroarch-standalone.sysuser'
-        'retroarch-standalone.cfg'
-        'retroarch-standalone.xinitrc')
-md5sums=('8dd1a467e961630eff4f1d532fe7763a'
-         'dff58d483453816a80dcdbc8d272e8b8'
-         'a897371b2a33a591b37b5a773883ad35'
-         '18cf6ff2630df1eb7bb9819332c6ab38')
+source=(
+  'retroarch-standalone.service'
+  'retroarch-standalone.sysuser'
+  'retroarch-standalone.cfg'
+  'retroarch-standalone.xinitrc'
+)
+sha256sums=(
+  '5efc1dcc2d220a33f0d53d6abe4538227f434ff2a00f5165bb209cf6e0bae4a3'
+  '5e757f5279e349a6d0b775a493ab845a7cabdd7d68c946dffdf02868fc3806b2'
+  '4c56ad43f3a5f209b4f3fb433b9ce4e0573b032cee21e587f912d6bc1d851423'
+  '4eb68b4b61e812d7047cf52ebd14c590637bb2b0594b13a288134a827a8429c1'
+)
 
 package() {
   # Copy autorun script
