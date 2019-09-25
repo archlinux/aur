@@ -11,8 +11,8 @@ source=('git://github.com/ArisuOngaku/generic_macro_deck.git'
 md5sums=('SKIP' 'SKIP' 'SKIP')
 provides=('generic-macro-deck')
 conflicts=('generic-macro-deck')
-depends=('xorg-xinput')
-makedepends=('electron' 'yarn' 'npm')
+depends=('electron' 'xorg-xinput')
+makedepends=('yarn' 'npm')
 
 prepare() {
   cd "$srcdir/generic_macro_deck" || exit 1
