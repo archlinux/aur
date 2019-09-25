@@ -13,12 +13,11 @@ sha256sums=('f452670c0ffee3b08296370e7cfe6ac2b442588942b96c78e0b1bf05f09b6e49')
 
 
 build() {
-    cd "${pkgname}-${pkgver}"
-    meson --buildtype=release build 
-    ninja -C build 
+    meson --buildtype=release --prefix=/usr "${pkgname}-${pkgver}" "${pkgname}-${pkgver}/build"
+    ninja -C "${pkgname}-${pkgver}/build"
 }
 
 
 package() {
-    install -Dm 644 "${pkgname}-${pkgver}/build/gnome-screencast.so" "${pkgdir}/usr/lib/obs-plugins/gnome-screencast.so"
+    DESTDIR="${pkgdir}" ninja -C "${pkgname}-${pkgver}/build" install
 }
