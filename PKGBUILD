@@ -2,7 +2,7 @@
 
 pkgbase=ivre
 pkgname=('ivre' 'ivre-web' 'ivre-docs' 'python-ivre' 'python2-ivre')
-pkgver=0.9.13
+pkgver=0.9.14
 pkgrel=1
 pkgdesc='Network recon framework based on Nmap, Masscan, Zeek (Bro), Argus, Netflow,...'
 arch=('any')
@@ -10,7 +10,7 @@ url='https://ivre.rocks/'
 license=('GPL3')
 source=("https://files.pythonhosted.org/packages/source/${pkgname:0:1}/$pkgname/$pkgname-$pkgver.tar.gz"
         "https://raw.githubusercontent.com/cea-sec/$pkgname/v$pkgver/pkg/apache/ivre.conf")
-sha512sums=('58d4ff1a6ddef512ea447916ab658fa3f20527e91c58cb249e84b27c57101db8aa944e7089a3df3a60dba6cc2e3a3799622ef4cee6756445240fed16d4af6098'
+sha512sums=('de98769da9a3e664c687193292e91a51441dbe04345c94b62fa7f74e01dd55468ea1f4ebf117300abe69ee699b49dbbbbf921dead2620b823bb27f45a32fc5bb'
             '9db82963976ed0134c88ca779ab2d8ac92fdaf5eff8f6e6c47014b56f92cb78313acd6b6ddee8de13de6c3ae8a2988f216a659496f16b756836475a9b774b0c5')
 
 prepare() {
@@ -53,7 +53,7 @@ package_ivre() {
      "$pkgdir/usr/share/ivre/dokuwiki" \
      "$pkgdir/usr/share/ivre/web"
 
-  install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" doc/LICENSE*
+  install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" doc/license*
 }
 
 package_ivre-docs() {
@@ -63,6 +63,8 @@ package_ivre-docs() {
 
   python setup.py install --root="$pkgdir" --prefix=/usr --optimize=1
 
+  cp README.md "$pkgdir/usr/share/doc/ivre/"
+  mv "$pkgdir/usr/share/ivre/web/static/doc" "$pkgdir/usr/share/doc/ivre/html"
   rm -r "$pkgdir/usr/bin" "$pkgdir/usr/lib" \
      "$pkgdir/usr/share/ivre" \
      "$pkgdir/etc/bash_completion.d"
@@ -83,6 +85,7 @@ package_ivre-web() {
   rm -r "$pkgdir/usr/bin" "$pkgdir/usr/lib" \
      "$pkgdir/usr/share/doc" \
      "$pkgdir/usr/share/ivre/bro" \
+     "$pkgdir/usr/share/ivre/zeek" \
      "$pkgdir/usr/share/ivre/data" \
      "$pkgdir/usr/share/ivre/docker" \
      "$pkgdir/usr/share/ivre/geoip" \
@@ -90,7 +93,7 @@ package_ivre-web() {
      "$pkgdir/usr/share/ivre/nmap_scripts" \
      "$pkgdir/etc/bash_completion.d"
 
-  install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" doc/LICENSE*
+  install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" doc/license*
   install -Dm0644 "$srcdir/ivre.conf" "$pkgdir/etc/httpd/conf/extra/ivre.conf"
 }
 
@@ -99,6 +102,8 @@ package_python-ivre() {
   optdepends=('python-py2neo: experimental flow analysis (Neo4j backend)'
               'python-sqlalchemy: experimental PostgreSQL & SQLite backends'
               'python-psycopg2: experimental PostgreSQL backend'
+              'python-elasticsearch: experimental Elasticsearch backend'
+              'python-elasticsearch-dsl: experimental Elasticsearch backend'
               'python-pillow: trim screenshots on insertion'
               'tesseract: extract words from screenshots on insertion'
               'python-pycryptodome: extract data from public keys ("ivre getmoduli")'
@@ -118,7 +123,7 @@ package_python-ivre() {
      "$pkgdir/usr/share" \
      "$pkgdir/etc/bash_completion.d"
 
-  install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" doc/LICENSE*
+  install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" doc/license*
 }
 
 package_python2-ivre() {
@@ -126,6 +131,8 @@ package_python2-ivre() {
   optdepends=('python2-py2neo: experimental flow analysis (Neo4j backend)'
               'python2-sqlalchemy: experimental PostgreSQL & SQLite backends'
               'python2-psycopg2: experimental PostgreSQL backend'
+              'python2-elasticsearch: experimental Elasticsearch backend'
+              'python2-elasticsearch-dsl: experimental Elasticsearch backend'
               'python2-pillow: trim screenshots on insertion'
               'tesseract: extract words from screenshots on insertion'
               'python2-pycryptodome: extract data from public keys ("ivre getmoduli")'
@@ -145,6 +152,6 @@ package_python2-ivre() {
      "$pkgdir/usr/share" \
      "$pkgdir/etc/bash_completion.d"
 
-  install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" doc/LICENSE*
+  install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" doc/license*
 }
 
