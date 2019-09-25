@@ -2,6 +2,7 @@
 # Contributor: Pieter Goetschalckx <3.14.e.ter [at] gmail [dot] com>
 # Contributor: Eric Engestrom <aur [at] engestrom [dot] ch>
 # Contributor: Attila Bukor <r1pp3rj4ck [at] w4it [dot] eu>
+# Contributor: FirstAirBender <noblechuk5 [at] web [dot] de>
 
 pkgname=popcorntime-git
 pkgver=0.3.10+r6429+g1537575b
