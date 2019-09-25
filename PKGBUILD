@@ -22,6 +22,7 @@ prepare(){
 
   mkdir -p "$GOPATH"/src/github.com/arduino
   ln -rTsf "${pkgname//-rc}-$pkgver" "$GOPATH"/src/github.com/arduino/arduino-builder
+  #cp -a "${pkgname//-rc}-$pkgver" "$GOPATH"/src/github.com/arduino/arduino-builder
   cd "$GOPATH"/src/github.com/arduino/arduino-builder
 
   export GO111MODULE=on
@@ -40,13 +41,15 @@ build() {
 		-asmflags "all=-trimpath=$GOPATH" \
 		-ldflags "-extldflags $LDFLAGS" \
 		-v .
+
+	chmod -R 744 "$GOPATH"
 }
 
-check() {
-	# Test will download ~1GB of testfiles
-	cd "$GOPATH"/src/github.com/arduino/arduino-builder
-	go test -v -timeout 60m .
-}
+#check() {
+#	# Test will download ~1GB of testfiles
+#	cd "$GOPATH"/src/github.com/arduino/arduino-builder
+#	go test -v -timeout 60m .
+#}
 
 package() {
 	# Fix platform.txt for arch arduino-ctags
