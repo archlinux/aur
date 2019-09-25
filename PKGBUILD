@@ -1,8 +1,8 @@
 # Maintainer: Nicola Squartini <tensor5@gmail.com>
 
 pkgname=electron4
-pkgver=4.2.10
-_commit=4e4c7527c63fcf27dffaeb58bde996b8d859c0ed
+pkgver=4.2.11
+_commit=530bf8b69a9364e0aa24f5c851df401abfb40eb0
 _chromiumver=69.0.3497.128
 pkgrel=1
 pkgdesc='Build cross platform desktop apps with web technologies'
