@@ -1,7 +1,7 @@
 # Maintainer: Adrien Prost-Boucle <adrien.prost-boucle@laposte.net>
 
 pkgname=ghdl-mcode-git
-pkgver=0.37dev.git20190907
+pkgver=0.37dev.git20190925
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='VHDL simulator - mcode back-end'
@@ -33,7 +33,11 @@ pkgver() {
 build() {
 	cd "${srcdir}/ghdl"
 
-	./configure --prefix=/usr/ --enable-synth
+	# Note : Add --enable-openieee to use free (but not complete) implementation of IEEE VHDL libs
+	./configure \
+		--prefix=/usr/ \
+		--enable-libghdl \
+		--enable-synth
 
 	make
 
@@ -43,7 +47,11 @@ package() {
 	cd "${srcdir}/ghdl"
 
 	make DESTDIR="${pkgdir}" install
-	# Install library for synthesis
-	make DESTDIR="${pkgdir}" install.libghdlsynth
+
+	# In case it does not exist, create symlink libghdl.so
+	local _gso=`ls "${pkgdir}/usr/lib/" | grep -e '^libghdl-.*\.so$' | head -n 1`
+	if [[ -n "$_gso" ]] ; then
+		ln -s "$_gso" "${pkgdir}/usr/lib/libghdl.so"
+	fi
 
 }
