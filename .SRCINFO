@@ -16,6 +16,7 @@ pkgbase = arduino-rc
 	depends = shared-mime-info
 	depends = java-runtime>=8
 	depends = arduino-builder
+	depends = arduino-cli-rc
 	optdepends = arduino-docs: Offline documentation for arduino
 	optdepends = arduino-avr-core: AVR core with upstream avr-gcc and avrdude
 	optdepends = python2: Intel Galileo Board installation

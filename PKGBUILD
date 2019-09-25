@@ -9,7 +9,7 @@ url="https://github.com/arduino/Arduino"
 license=('GPL' 'LGPL')
 conflicts=('arduino')
 provides=('arduino')
-depends=('gtk2' 'desktop-file-utils' 'shared-mime-info' 'java-runtime>=8' 'arduino-builder')
+depends=('gtk2' 'desktop-file-utils' 'shared-mime-info' 'java-runtime>=8' 'arduino-builder' 'arduino-cli-rc')
 makedepends=('java-environment>=8' 'ant' 'unzip')
 optdepends=('arduino-docs: Offline documentation for arduino'
             'arduino-avr-core: AVR core with upstream avr-gcc and avrdude'
@@ -70,6 +70,8 @@ package() {
     # https://github.com/arduino/ctags/issues/12
     # https://github.com/arduino/Arduino/issues/5538
     # https://github.com/arduino/listSerialPortsC/issues/9
+
+    
 
     # Arduino-builder
     # https://bugs.archlinux.org/task/52377
