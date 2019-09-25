@@ -1,6 +1,6 @@
 pkgbase = mitalk
 	pkgdesc = MiTalk Messenger
-	pkgver = 4.0.79
+	pkgver = 4.0.84
 	pkgrel = 1
 	url = http://www.miliao.com/
 	arch = x86_64
@@ -13,8 +13,8 @@ pkgbase = mitalk
 	depends = nss
 	depends = libxss
 	depends = xorg-xrandr
-	source = https://s1.zb.mi.com/miliao/apk/miliao/7.4/MiTalk_4.0.79.deb
-	md5sums = 5864af1efd7596ea9eb4bfcfd6661d26
+	source = https://s1.zb.mi.com/miliao/apk/miliao/7.4/MiTalk_4.0.84.deb
+	md5sums = 8a723b831695ae47d4ee322a5f52bc5d
 
 pkgname = mitalk
 
