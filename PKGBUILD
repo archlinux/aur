@@ -1,4 +1,5 @@
-# Maintainer: Dmitri Goutnik <dg@syrec.org>
+# Maintainer: Michael Beaumont <mjboamail@gmail.com>
+# URL: https://github.com/michaelbeaumont/aur-packages
 
 pkgname=sops
 pkgver=3.4.0
