@@ -1,0 +1,14 @@
+pkgbase = sharps-talking-clock
+	pkgdesc = CLI version of the old Sharps talking clock
+	pkgver = 1
+	pkgrel = 1
+	url = https://stormdragon.tk
+	arch = any
+	license = WTFPL
+	depends = bash
+	depends = sox
+	source = https://stormdragon.tk/downloads/sharps-talking-clock.tar.xz
+	sha512sums = f5e366fb38798cdbd67099ade455d870c1703993ea1d8144ef47eb9c377c04ffbc52065d72203fe5325f60528c8378a3104ae8be4c515231777f96192993e44d
+
+pkgname = sharps-talking-clock
+
