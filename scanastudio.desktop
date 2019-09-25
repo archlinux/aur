@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=ScanaStudio
+Comment=Electronic signal analysis software
+GenericName=Electronic signal analysis software
+Exec=/opt/scanastudio/ScanaStudio
+Icon=ScanaStudio.png
+Terminal=false
+Categories=Development;IDE;Utility;
+MimeType=application/x-ScanaStudio;
