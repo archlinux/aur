@@ -40,6 +40,7 @@ build() {
 		-gcflags "all=-trimpath=$GOPATH" \
 		-asmflags "all=-trimpath=$GOPATH" \
 		-ldflags "-extldflags $LDFLAGS" \
+		-gccgoflags "$CFLAGS $LDFLAGS" \
 		-v .
 
 	chmod -R 744 "$GOPATH"
