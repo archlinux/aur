@@ -11,7 +11,7 @@ makedepends=()
 provides=('dockle')
 conflicts=('dockle')
 source=("https://github.com/goodwithtech/dockle/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux-64bit.tar.gz")
-sha256sums=("99ccbe3b629945878e99c1e82f1a708c1cdec71335628f8d9472118f69c225ef")
+sha256sums=("a2eb187b07671dd61b160bbf182f7d45528872bbe10d98f06153da1f70e56538")
 
 package() {
 	install -Dm755 "${srcdir}/dockle" "${pkgdir}/usr/bin/dockle"
