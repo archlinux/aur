@@ -1,7 +1,7 @@
 # Maintainer: Andy Botting <andy@andybotting.com>
 
 pkgname=python-osprofiler
-pkgver='2.8.1'
+pkgver='2.8.2'
 pkgrel='1'
 pkgdesc='Library for cross-project profiling library'
 arch=('any')
@@ -14,7 +14,7 @@ checkdepends=('python-mock' 'python-stestr' 'python-ddt'
               'python-testrepository' 'python-testtools' 'python-elasticsearch'
               'python-pymongo' 'python-redis' 'python-docutils' 'bandit')
 source=("https://github.com/openstack/osprofiler/archive/$pkgver.tar.gz")
-sha512sums=('33229d45caaa4ef085433d1475a1bcbd678d2c8b2c1e619fe75032ba7744f6108e08c54177609417ed4e0fd1ed784a4de4c91454925961a96be22086fe4444e0')
+sha512sums=('bcf64f30d1b7acc92bfd233a6d1ced6cabea61edab0bfc0c50ed33d28fd8a61cacda28797c33ed4a70b05ea7ddf431156b20aa28dd69ce60adee42f2600668ec')
 
 export PBR_VERSION=$pkgver
 
