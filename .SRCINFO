@@ -1,24 +1,23 @@
 pkgbase = guayadeque
 	pkgdesc = Lightweight music player
-	pkgver = 0.4.5
-	pkgrel = 2
+	pkgver = 0.4.6
+	pkgrel = 1
 	url = http://guayadeque.org/
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = cmake
-	depends = curl
-	depends = libgpod
-	depends = taglib
 	depends = wxsqlite3
+	depends = wxgtk3
+	depends = webkit2gtk
+	depends = taglib
 	depends = gst-plugins-base
-	optdepends = gst-plugins-good: Support for PulseAudio and additional file formats
-	optdepends = gst-plugins-bad: Support for additional file formats
-	optdepends = gst-plugins-ugly: Support for additional file formats
-	optdepends = gst-libav: Support for additional file formats
-	optdepends = gvfs: Support for external devices
-	source = guayadeque-0.4.5.tar.gz::https://github.com/anonbeat/guayadeque/archive/v0.4.5.tar.gz
-	sha256sums = a0c4eb9f0eb42e701880a1d196e847d68a3b443716a6240389fbfafef3f5d19c
+	depends = gst-plugins-good
+	optdepends = gst-libav: additional codecs
+	optdepends = gst-plugins-bad: additional codecs
+	optdepends = gst-plugins-ugly: additional codecs
+	source = guayadeque-0.4.6.tar.gz::https://github.com/anonbeat/guayadeque/archive/v0.4.6.tar.gz
+	sha256sums = 3c0d782c6f4aa511c7a635a78742542d130d1a13e20648db886ccfce4e1b9d4f
 
 pkgname = guayadeque
 
