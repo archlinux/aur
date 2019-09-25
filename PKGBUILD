@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
 pkgname=guiscrcpy-git
-pkgver=v1.11.r1.4c39ba3
-pkgrel=4
+pkgver=v1.11.r15.2983e79
+pkgrel=1
 pkgdesc="A full fledged GUI integration for the most award winning open-source Android screen mirroring system -- scrcpy"
 arch=('i686' 'x86_64')
 url="https://srevinsaju.github.io/guiscrcpy"
@@ -15,22 +15,18 @@ source=('git+https://github.com/srevinsaju/guiscrcpy.git'
         "${pkgname%-git}.desktop"
         "${pkgname%-git}.sh")
 sha256sums=('SKIP'
-            'a97ede5e1f363df0b3960c7cfbfdff69e8c2b2c39ef0abc522d5ff5ecb04061b'
-            '7d85c9d18ee989efa9cec44924294a5775c00a0d1ca6c369fb43a216e1d6f19f')
+            'b9f2925be19119950b8fa5099ff81c7368e51f1973d6f2528abe702087e6e5e0'
+            '21a9e0f6a38db03cbe84d6498519bd79d66796f47cd6a738133f38a45ea4bb42')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
 	printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
-build() {
-	cd "$srcdir/${pkgname%-git}"
-	python setup.py build
-}
-
 package() {
 	cd "$srcdir/${pkgname%-git}"
-	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+	install -d "$pkgdir/opt/${pkgname%-git}"
+	cp -r "${pkgname%-git}/"* "$pkgdir/opt/${pkgname%-git}/"
 	install -Dm755 "$srcdir/${pkgname%-git}.sh" "$pkgdir/usr/bin/${pkgname%-git}"
 	install -Dm644 "$srcdir/${pkgname%-git}.desktop" "$pkgdir/usr/share/applications/${pkgname%-git}.desktop"
 	install -Dm644 "installers/linux/icons/${pkgname%-git}_logo.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
