@@ -3,7 +3,7 @@
 
 pkgbase=tensorflow-git
 pkgname=(tensorflow-git tensorflow-cuda-git python-tensorflow-git python-tensorflow-cuda-git)
-pkgver=1.15.0+rc1+581+gfdf4b54d40
+pkgver=1.15.0+rc1+582+g71cc471b2d
 pkgrel=1
 pkgdesc="Library for computation using data flow graphs for scalable machine learning"
 url="https://tensorflow.org/"
@@ -155,8 +155,8 @@ package_tensorflow-git() {
 package_tensorflow-cuda-git() {
   pkgdesc="Library for computation using data flow graphs for scalable machine learning (with CUDA)"
   depends+=(cuda cudnn nccl)
-  conflicts=(tensorflow)
-  provides=(tensorflow)
+  conflicts=(tensorflow-cuda)
+  provides=(tensorflow-cuda)
 
   cd ${srcdir}/tensorflow-cuda
   _package tmpcuda
@@ -172,8 +172,8 @@ package_python-tensorflow-git() {
 package_python-tensorflow-cuda-git() {
   pkgdesc="Library for computation using data flow graphs for scalable machine learning (with CUDA)"
   depends+=(tensorflow-cuda python-termcolor python-astor python-gast python-numpy cuda cudnn python-pycuda python-protobuf absl-py nccl python-h5py python-keras-applications python-keras-preprocessing python-tensorflow-estimator)
-  conflicts=(python-tensorflow)
-  provides=(python-tensorflow)
+  conflicts=(python-tensorflow-cuda)
+  provides=(python-tensorflow-cuda)
 
   cd ${srcdir}/tensorflow-cuda
   _python_package tmpcuda

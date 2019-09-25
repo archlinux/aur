@@ -1,6 +1,6 @@
 pkgbase = tensorflow-git
 	pkgdesc = Library for computation using data flow graphs for scalable machine learning
-	pkgver = 1.15.0+rc1+531+g68546bb7a3
+	pkgver = 1.15.0+rc1+582+g71cc471b2d
 	pkgrel = 1
 	url = https://tensorflow.org/
 	arch = x86_64
@@ -36,8 +36,8 @@ pkgname = tensorflow-cuda-git
 	depends = cuda
 	depends = cudnn
 	depends = nccl
-	provides = tensorflow
-	conflicts = tensorflow
+	provides = tensorflow-cuda
+	conflicts = tensorflow-cuda
 
 pkgname = python-tensorflow-git
 	depends = c-ares
@@ -71,6 +71,6 @@ pkgname = python-tensorflow-cuda-git
 	depends = python-keras-applications
 	depends = python-keras-preprocessing
 	depends = python-tensorflow-estimator
-	provides = python-tensorflow
-	conflicts = python-tensorflow
+	provides = python-tensorflow-cuda
+	conflicts = python-tensorflow-cuda
 
