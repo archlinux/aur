@@ -3,7 +3,7 @@
 # Contributor: Rafael Fontenelle <rafaelff@gnome.org>
 pkgname=odadrawingsexplorer
 _pkgname=ODADrawingsExplorer
-pkgver=20.5.0.0
+pkgver=20.8.0.0
 pkgrel=1
 pkgdesc="Application for the visualization of CAD drawing files (supersedes Teigha Viewer)"
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('custom')
 depends=('qt5-base' 'libxfixes' 'libgl' 'libxkbcommon-x11' 'bash' 'hicolor-icon-theme')
 replaces=('teighaviewer-qt5')
 source=("${pkgname}-x86_64-${pkgver}.deb::https://download.opendesign.com/guestfiles/${_pkgname}/${_pkgname}_QT5_lnxX64_4.7dll.deb")
-sha256sums=('8ea5c4aa52e315e73702dd829e897b3d4567ecfd9d9517d10e4bdc2ff761aca9')
+sha256sums=('a5601999d67a76b0343697930e2882be56101340e5d8c497c6aca7e018f280dd')
 
 prepare() {
   rm -rf ${pkgname}-${pkgver}

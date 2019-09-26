@@ -1,6 +1,6 @@
 pkgbase = odadrawingsexplorer
 	pkgdesc = Application for the visualization of CAD drawing files (supersedes Teigha Viewer)
-	pkgver = 20.5.0.0
+	pkgver = 20.8.0.0
 	pkgrel = 1
 	url = https://www.opendesign.com/guestfiles/oda_drawings_explorer
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = odadrawingsexplorer
 	depends = bash
 	depends = hicolor-icon-theme
 	replaces = teighaviewer-qt5
-	source = odadrawingsexplorer-x86_64-20.5.0.0.deb::https://download.opendesign.com/guestfiles/ODADrawingsExplorer/ODADrawingsExplorer_QT5_lnxX64_4.7dll.deb
-	sha256sums = 8ea5c4aa52e315e73702dd829e897b3d4567ecfd9d9517d10e4bdc2ff761aca9
+	source = odadrawingsexplorer-x86_64-20.8.0.0.deb::https://download.opendesign.com/guestfiles/ODADrawingsExplorer/ODADrawingsExplorer_QT5_lnxX64_4.7dll.deb
+	sha256sums = a5601999d67a76b0343697930e2882be56101340e5d8c497c6aca7e018f280dd
 
 pkgname = odadrawingsexplorer
 
