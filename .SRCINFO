@@ -1,0 +1,12 @@
+pkgbase = xcursor-simple-colorful
+	pkgver = 19.0
+	pkgrel = 1
+	url = https://github.com/ooxxvv/simple-colorful
+	arch = any
+	license = GPL3
+	makedepends = gawk
+	source = https://github.com/ooxxvv/simple-colorful/archive/19.0.tar.gz
+	sha512sums = 6c500e40ea6bd970a95ebc8968bdca2a5dca477e868f9db5f443bcb41e25e444468397c33a62ce4822a936e45a6e3927eb8afcd11d4a9d3407c1f695b0aed997
+
+pkgname = xcursor-simple-colorful
+
