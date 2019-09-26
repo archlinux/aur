@@ -2,23 +2,22 @@
 
 pkgname=ldfpcfix
 pkgver=1.0
-pkgrel=3
-pkgdesc='Binary patch /usr/bin/ld to quiet the "contains output sections" warning that appears when compiling with fpc'
-arch=('any')
+pkgrel=4
+pkgdesc='Silence the "contains output sections" warning from /usr/bin/ld'
+arch=(any)
 url='https://github.com/xyproto/ldfpcfix'
 license=('MIT')
-makedepends=('go' 'git')
+makedepends=(go git)
 source=("git+https://github.com/xyproto/ldfpcfix#tag=v$pkgver")
-sha256sums=('SKIP')
+sha256sums=(SKIP)
 
 build() {
-  cd "$pkgname"
-
+  cd $pkgname
   go build
 }
 
 package() {
-  install -Dm755 "$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
+  install -Dm755 $pkgname/$pkgname "$pkgdir/usr/bin/$pkgname"
 }
 
 # vim: ts=2 sw=2 et:
