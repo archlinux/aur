@@ -1,6 +1,6 @@
 pkgbase = shadow-beta
 	pkgdesc = Shadow launcher
-	pkgver = 4.7.30
+	pkgver = 4.8.2
 	pkgrel = 1
 	url = http://shadow.tech
 	install = shadow-beta.install
@@ -31,9 +31,10 @@ pkgbase = shadow-beta
 	depends = ttf-dejavu
 	depends = libxss
 	depends = libsndio-61-compat
+	depends = gnome-keyring
 	provides = shadow-beta
 	source = https://update.shadow.tech/launcher/preprod/linux/ubuntu_18.04/ShadowBeta.zip
-	md5sums = ca271df371d718f228a5b9b488932432
+	md5sums = 037f85a1ac1c1ddd7d55ee5d0106b565
 
 pkgname = shadow-beta
 
