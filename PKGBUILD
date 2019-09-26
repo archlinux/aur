@@ -2,13 +2,13 @@
 # Contributor: Masoud <mpoloton@gmail.com>
 
 pkgname=python-nibabel
-pkgver=2.4.0
+pkgver=2.5.1
 pkgrel=1
 pkgdesc='Python library for reading and writing of some common neuroimaging file formats'
 arch=('x86_64') #i686 not tested
 url='http://nipy.org/nibabel/index.html'
 license=('MIT' 'BSD')
-depends=('python' 'python-numpy>=1.7.1' 'python-six>=1.3')
+depends=('python' 'python-numpy>=1.12')
 # building documentation may not work properly, since authors tell to use sphinx <=1.5.6, because "Sphinx >= 1.6 breaks the math_dollar extension"
 makedepends=('python-setuptools') 							#('python-sphinx' 'python-numpydoc' 'python-matplotlib>=1.3')
 # checkdepends=('python-nose' 'python-mock')
@@ -16,7 +16,7 @@ optdepends=('python-scipy: for full SPM-ANALYZE support' 'python-pydicom: (>=0.9
 	'python-pillow: for PNG conversion in DICOMFS' 'python-indexed-gzip')
 install=
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nipy/nibabel/archive/$pkgver.tar.gz")
-md5sums=('de457e9a7ae923182eda950e8f10a904')
+sha512sums=('49de1a42113e64a56336e02f3143588b574c7b063b10b892ee125048451be701955e505bd1d51183327e2ee221f8364005fdd9fa7d256343113ab6ca1994820d')
 
 build() 
 {
