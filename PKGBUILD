@@ -1,13 +1,13 @@
 # Maintainer: Daniel Plank <tyrolyean@gmx.at>
 pkgname=electric
-pkgver=9.08a
-pkgrel=2
+pkgver=9.08b
+pkgrel=1
 pkgdesc="a sophisticated electrical CAD system for the design of \
         integrated circuits"
 arch=(any)
 url="https://www.gnu.org/software/electric/"
 license=('GPL')
-depends=('java-environment<=8')
+depends=('java-environment<=8' 'bash')
 makedepends=('svn' 'java-environment-openjdk<=8' 'apache-ant')
 provides=(gnu-electric)
 source=("svn://svn.savannah.gnu.org/electric"
