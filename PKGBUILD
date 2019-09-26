@@ -37,7 +37,7 @@ package() {
   #install python service
   cd "${srcdir}/${pkgname}/src"
   #pip install -e . --install-option="--prefix=${pkgdir}" --no-deps
-  python setup.py install --root="$pkgdir/"
+  python setup.py develop --root="$pkgdir/"
 
   #install service files
   cd "${srcdir}"/"${pkgname}"/scripts/
