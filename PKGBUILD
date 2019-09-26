@@ -16,9 +16,15 @@ depends=(
         'python-pylast'
         'python-requests'
         'python-requests-cache'
+        'python-tqdm'
         )
 source=("git+https://github.com/dbeley/${pkgname%-git}")
 md5sums=("SKIP")
+
+build() {
+  cd "${pkgname%-git}"
+  python setup.py build
+}
 
 package() {
   cd "${pkgname%-git}"

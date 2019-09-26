@@ -12,6 +12,7 @@ pkgbase = lastfm_cg-git
 	depends = python-pylast
 	depends = python-requests
 	depends = python-requests-cache
+	depends = python-tqdm
 	provides = lastfm_cg
 	conflicts = lastfm_cg
 	source = git+https://github.com/dbeley/lastfm_cg
