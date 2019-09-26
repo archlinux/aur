@@ -1,7 +1,7 @@
 pkgbase = plymouth-lite-rbp-git
 	pkgdesc = Plymouth-lite patched and ready for Raspberry Pi
 	pkgver = r10.76e20e8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/T4d3o/Plymouth-lite
 	arch = armv7h
 	license = GPL2

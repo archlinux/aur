@@ -1,7 +1,7 @@
 # Maintainer: Sergey Slipchenko <faergeek@gmail.com>
 pkgname=plymouth-lite-rbp-git
 pkgver=r10.76e20e8
-pkgrel=2
+pkgrel=3
 pkgdesc="Plymouth-lite patched and ready for Raspberry Pi"
 arch=('armv7h')
 url="https://github.com/T4d3o/Plymouth-lite"
@@ -32,8 +32,6 @@ package() {
   cd Plymouth-lite
 
   make DESTDIR="$pkgdir/" install
-  mkdir -p $pkgdir/usr/lib/systemd/system/
-  install -Dm0644 systemd/* $pkgdir/usr/lib/systemd/system/
   install -Dm0644 "${srcdir}"/initcpio_hook "${pkgdir}"/usr/lib/initcpio/hooks/plymouth-lite
   install -Dm0644 "${srcdir}"/initcpio_install "${pkgdir}"/usr/lib/initcpio/install/plymouth-lite
 }
