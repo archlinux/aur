@@ -3,7 +3,7 @@
 
 pkgname=nushell
 cargoname=nu
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=4
 makedepends=('rust-nightly' 'cargo')
 depends=('openssl' 'zlib')
@@ -13,7 +13,7 @@ pkgdesc="A shell for the GitHub era"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nushell/nushell/archive/$pkgver.tar.gz")
 url="http://nushell.sh"
 license=('MIT')
-sha256sums=('5bce8cdb33a6580ff15214322bc66945c0b4d93375056865ad30e0415fece3de')
+sha256sums=('0151f1a09b76c83b7e20932e5e3b0d3af41d32a7862e070ef1b3d5f1163b2876')
 
 build() {
   return 0
@@ -25,7 +25,7 @@ package() {
   cargo +nightly install \
     --no-track \
 	--locked \
-	--features rawkey,clipboard \
+	--all-features \
 	--root "${pkgdir}"/usr \
 	--path "./" \
 	-Z install-upgrade
