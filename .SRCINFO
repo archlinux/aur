@@ -1,6 +1,6 @@
 pkgbase = biicode
 	pkgdesc = Simple C/C++ file-based dependency manager
-	pkgver = 3.4
+	pkgver = 3.5
 	pkgrel = 1
 	url = https://github.com/biicode/biicode/
 	arch = i686
@@ -10,9 +10,14 @@ pkgbase = biicode
 	makedepends = git
 	depends = cmake
 	depends = zlib
-	depends = glibc
 	depends = sqlite
 	depends = python2-pmw
+	depends = python2-pymongo
+	depends = python2-yaml
+	depends = python2-graph
+	depends = python2-colorama
+	depends = python2-jinja
+	depends = python2-pyserial
 	options = !strip
 	source = git+https://github.com/adamnovak/biicode.git#commit=e94d973be22550b45f1ddf7dc3e2da817ebd86e3
 	sha256sums = SKIP
