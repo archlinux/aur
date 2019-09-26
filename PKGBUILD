@@ -14,7 +14,7 @@ noextract=()
 sha256sums=("SKIP")
 
 pkgver() {
-  cd "$pkgname"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
