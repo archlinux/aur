@@ -3,14 +3,14 @@
 pkgname=st-ckyln-git
 _pkgname=st
 pkgrel=1
-pkgver=v20190626.3.gcc6bc9b
+pkgver=v20190926
 pkgdesc="Simple Terminal from suckless.org (Fork)"
 url="https://git.ckyln.com/st"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 license=('MIT')
 depends=('libxft')
 makedepends=('git')
-source=('git+https://git.ckyln.com/st')
+source=('git://git.ckyln.com/st')
 md5sums=('SKIP')
 
 provides=('st')
