@@ -1,7 +1,7 @@
 # Maintainer: Thomas Roos (Roosted7) <mail [at] thomasroos [dot] nl>
 
 pkgname=aliza
-pkgver=1.48.10.9
+pkgver=1.48.23.1
 pkgrel=1
 pkgdesc="Medical Imaging. Open 2D, 3D and 4D images in DICOM, MetaIO, Nifti, Nrrd and other formats, incl. Meshes in VTK, OBJ and STL formats. Filters, segmentation, front-end for registration with Elastix and many more features."
 arch=('x86_64')
@@ -10,8 +10,8 @@ license=('custom')
 depends=('qt4')
 # depends=('dropbox' 'libx11' 'libxt' 'qt4' 'zlib')
 options=('!emptydirs')
-source=("aliza_$pkgver.deb::https://drive.google.com/uc?authuser=0&id=1Xki-1eYLgsGrXwgNzWPFlAxhL0Xuvm1o&export=download")
-sha512sums=('650b0c751aa6ea1f6da4be0a70cae9a75626c6eaad592231fb71aab926d8bc3607d7e4028634a8df2949537e48c9e9f359a362142a7cbb02419c8da8bbb06b6b')
+source=("aliza_$pkgver.deb::https://drive.google.com/uc?authuser=0&id=17KKCvurRW-PMOLOxukKUGMJt2C7Ky1lX&export=download")
+sha512sums=('fcda0c295f3799478d1d33f5f28dfe22f26e1c86872c66bc5bc2e22966e09d385c57246a4c89163fb6877ca7840946bb22f7f3b27206011a10d94c8c0bd01e27')
 
 package(){
 
