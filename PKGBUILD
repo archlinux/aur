@@ -2,7 +2,7 @@
 
 _pkgname=pfetch
 pkgname=$_pkgname-git
-pkgver=0
+pkgver=r142.6218551
 pkgrel=1
 pkgdesc="A pretty system information tool written in POSIX sh."
 arch=(any)
