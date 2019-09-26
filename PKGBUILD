@@ -1,7 +1,7 @@
 # Maintainer: morpheusthewhite <zffromGerace@hotmail.it>
 
 pkgname=nordpy
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="An application with gui to connect automatically to the recommended NordVPN server"
 arch=('any')
