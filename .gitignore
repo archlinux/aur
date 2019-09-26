@@ -1,0 +1,4 @@
+/pkg/
+/src/
+/k3rmit/
+*.tar.xz
