@@ -5,7 +5,7 @@
 
 # Maintainer: CarsonGraham <carson42g@gmail.com>
 pkgname=gumbocoin
-pkgver=0.1.8
+pkgver=0.1.9
 pkgrel=1
 epoch=
 pkgdesc="The cli client"
@@ -49,5 +49,4 @@ package() {
 	mkdir "$pkgdir/opt/gumbocoin"
 	install "./cli/build/libs/cli-1.0-all.jar" "$pkgdir/opt/gumbocoin/gumbocoin.jar"
 }
-
-md5sums=('929bd436bbacda3b718ccb3f5c576587')
+md5sums=('efad67995e27438f2cc28b8d7a1e4409')

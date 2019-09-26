@@ -1,14 +1,14 @@
 pkgbase = gumbocoin
 	pkgdesc = The cli client
-	pkgver = 0.1.8
+	pkgver = 0.1.9
 	pkgrel = 1
 	url = gumbocoin.com
 	arch = any
 	license = GPL
 	depends = java-runtime-common
-	source = gumbocoin-0.1.8.tar.gz::https://github.com/gumbocoin/Gumbocoin/archive/v0.1.8.tar.gz
+	source = gumbocoin-0.1.9.tar.gz::https://github.com/gumbocoin/Gumbocoin/archive/v0.1.9.tar.gz
 	validpgpkeys = BB881A11F78A79D93FAB707D67D77A4726CF8D6F
-	md5sums = 929bd436bbacda3b718ccb3f5c576587
+	md5sums = efad67995e27438f2cc28b8d7a1e4409
 
 pkgname = gumbocoin
 
