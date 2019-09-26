@@ -1,6 +1,8 @@
 pkgbase = firefox-secure-proxy-git
+	pkgdesc = Standalone wrapper for Firefox Secure Proxy
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
+	url = https://github.com/Snawoot/firefox-secure-proxy
 	arch = x86_64
 	license = MIT
 	makedepends = git
