@@ -1,0 +1,15 @@
+pkgbase = firefox-secure-proxy-git
+	pkgver = 0.1.0
+	pkgrel = 1
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python-setuptools
+	depends = python-pyoidc
+	depends = python-defusedxml
+	source = firefox-secure-proxy-git-0.1.0::git://github.com/Snawoot/firefox-secure-proxy.git
+	sha256sums = SKIP
+
+pkgname = firefox-secure-proxy-git
+
