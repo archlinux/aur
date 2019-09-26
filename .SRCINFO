@@ -1,6 +1,6 @@
 pkgbase = k3rmit-git
 	pkgdesc = A VTE-based terminal emulator that aims to be simple, fast and effective.
-	pkgver = 1.6
+	pkgver = 1.7.r0.g868250a
 	pkgrel = 1
 	url = https://github.com/orhun/k3rmit
 	arch = any
@@ -8,6 +8,8 @@ pkgbase = k3rmit-git
 	makedepends = cmake
 	depends = gtk3>=3.18.9
 	depends = vte3>=0.42.5
+	provides = k3rmit
+	conflicts = k3rmit
 	source = git://github.com/orhun/k3rmit.git
 	sha256sums = SKIP
 
