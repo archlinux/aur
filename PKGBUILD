@@ -6,6 +6,7 @@ _pkgname=FTL
 _servicename=pihole-FTL
 pkgver=4.3.1
 pkgrel=3
+_now=`date +%N`
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc="The Pi-hole FTL engine"
 url="https://github.com/pi-hole/FTL"
@@ -17,7 +18,7 @@ provides=('dnsmasq')
 install=$pkgname.install
 backup=('etc/pihole/pihole-FTL.conf' 'etc/pihole/pihole-FTL.db')
 source=("https://github.com/pi-hole/FTL/archive/v$pkgver.tar.gz"
-        "https://raw.githubusercontent.com/max72bra/pi-hole-ftl-archlinux-customization/master/arch-ftl-$pkgver.patch"
+        arch-ftl-$pkgver-$_now.patch::"https://raw.githubusercontent.com/max72bra/pi-hole-ftl-archlinux-customization/master/arch-ftl-$pkgver.patch"
         "nettle35.patch"
         "$pkgname.tmpfile"
         "$pkgname.service"
@@ -34,7 +35,7 @@ md5sums=('1c0df5fa42e7f7b89c7e704fdc1b5154'
 prepare() {
   cd "$srcdir"/"$_pkgname"-"$pkgver"
   patch -Np1 -i ../nettle35.patch
-  patch -Np1 -i ../arch-ftl-$pkgver.patch
+  patch -Np1 -i ../arch-ftl-$pkgver-$_now.patch
 }
 
 build() {
