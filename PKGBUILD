@@ -1,10 +1,14 @@
 _basepkgname=mathoid
 pkgname="mediawiki-${_basepkgname}"
 pkgver=0.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Service for creating MathML and SVGs"
-source=("https://github.com/wikimedia/${_basepkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('946cf8a5e0826e8f4631228f8147412905a195de277c5c8f889d8e6e91a72177')
+source=("https://github.com/wikimedia/${_basepkgname}/archive/v${pkgver}.tar.gz"
+        "sysusers.d"
+        "service")
+sha256sums=('946cf8a5e0826e8f4631228f8147412905a195de277c5c8f889d8e6e91a72177'
+            '8b7c4852d37545ed1e728fc90e0662d8bb22c440b818543163c644ed3177afff'
+            '1dfec8ec5021197089c73719805389be4ef74312e55971d5f93d4fab4dfd0f4c')
 arch=("any")
 url="https://www.mediawiki.org/wiki/${_basepkgname}"
 license=('Apache')
@@ -32,4 +36,7 @@ package() {
     # npm gives ownership of ALL FILES to build user
     # https://bugs.archlinux.org/task/63396
     chown -R root:root "$pkgdir"
+
+    install -Dm644 ../service "${pkgdir}/usr/lib/systemd/system/${_basepkgname}.service"
+    install -Dm644 ../sysusers.d "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
 }
