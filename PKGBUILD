@@ -2,7 +2,7 @@
 
 _pkgname=treesheets
 pkgname=$_pkgname-git
-pkgver=r262.d0b4b60
+pkgver=r264.245f9d8
 pkgrel=1
 pkgdesc='The ultimate replacement for spreadsheets, mind mappers, outliners, PIMs, text editors and small databases'
 url='http://treesheets.com'
