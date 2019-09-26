@@ -1,0 +1,24 @@
+pkgbase = beast-git
+	pkgdesc = Digital synthesizer and music creation system (in development).
+	pkgver = r9082.ddddc1e05
+	pkgrel = 1
+	url = https://github.com/tim-janik/beast
+	arch = x86_64
+	license = LGPL
+	makedepends = gcc
+	makedepends = libgnomecanvas
+	makedepends = libvorbis
+	makedepends = flac
+	makedepends = libmad
+	makedepends = npm
+	makedepends = fluidsynth
+	makedepends = python-pandocfilters
+	provides = beast
+	provides = beast-git
+	conflicts = beast
+	conflicts = beast-git
+	source = git+https://github.com/tim-janik/beast
+	md5sums = SKIP
+
+pkgname = beast-git
+
