@@ -9,12 +9,12 @@ pkgver=${_pkgver//-/_}
 pkgrel=3
 pkgdesc='Free messaging app for services like WhatsApp, Slack, Messenger and many more. fork removing the non-skippable app delay frequently inviting you to buy a licence'
 arch=(x86_64 i686)
-url='https://github.com/getferdi/ferdi'
+url='https://getferdi.com/'
 license=(Apache)
 conflicts=('ferdi')
 depends=(electron4)
 makedepends=(expac git npm python2)
-source=("git+https://github.com/kytwb/ferdi/"
+source=('git://github.com/getferdi/ferdi.git'
         'ferdi.desktop'
         'ferdi.sh')
 sha512sums=('SKIP'
@@ -28,6 +28,8 @@ prepare() {
 
   # Small patching
   cd ferdi
+  git submodule update --init --recursive
+
 
   # Prevent ferdi from being launched in dev mode
   sed -i "s|export const isDevMode = .*|export const isDevMode = false;|g" \
@@ -41,7 +43,6 @@ prepare() {
 
   # Adjust node-sass version to avoid build issues
   npm install "node-sass@4.12.0"
-
   # Prepare the packages for building
 }
 
@@ -52,6 +53,7 @@ build() {
   export npm_config_cache="$srcdir"/npm_cache
   export PATH="$srcdir/ferdi/node_modules/.bin:$srcdir/python2_path:$PATH"
 
+  
   npm install lerna
   lerna bootstrap
  
@@ -61,7 +63,6 @@ build() {
 
 package() {
   cd ferdi
-
   # Install the .asar files
   install -dm 755 "$pkgdir"/usr/lib/ferdi
   cp -r --no-preserve=ownership --preserve=mode out/linux-unpacked/resources "$pkgdir"/usr/lib/ferdi/
