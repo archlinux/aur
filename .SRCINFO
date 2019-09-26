@@ -16,12 +16,12 @@ pkgbase = signal
 	depends = openssl-1.0
 	conflicts = signal-desktop-beta-bin
 	conflicts = signal-desktop-bin
-	source = signal-1.27.3.tar.gz::https://github.com/signalapp/Signal-Desktop/archive/v1.27.3.tar.gz
+	source = signal-git-repo::git+https://github.com/signalapp/Signal-Desktop.git#tag=v1.27.3
 	source = signal.sh
 	source = signal.desktop
 	source = signal-tray.desktop
 	source = openssl-linking.patch
-	sha512sums = 2b9f2776524313b237f1b5da56a8891959e7100b20dc80c58fa2f8895d809dc9db04d932e09c382bd5c9143d0fd0acab8aa59bf08ef76a397af2bff48c0a2762
+	sha512sums = SKIP
 	sha512sums = 3525e8c0090feb7ea40a9a070bb5a089c0564346a88c7f8fbff1c6f7c779a24d9d77bdd43ad5a4dfd677fdaa4ad3cbd9b9a65e26bd1ff9453ba13b7dd95317a1
 	sha512sums = a264bfc7a4a7aac747daa588a2acbf1eddfd201bc795f0fbc18460a9b25f4460f364124e227a527fec22631cd84bc9e190f9f4978069e9c119eb556b9ff2d327
 	sha512sums = ced228d19303abe951c55f7874004cb9e4cd062dbda48c7ea80b0a6fb9adf5716a37164c01c9921a91f00653b0737fed80e3c5e684b0f3bcec375c265d6d8e5c

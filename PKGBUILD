@@ -16,19 +16,19 @@ makedepends=('python' 'python2' 'npm' 'yarn' 'git' 'nodejs>=12')
 conflicts=('signal-desktop-beta-bin' 'signal-desktop-bin')
 arch=('i686' 'x86_64')
 url='https://github.com/signalapp/Signal-Desktop'
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/signalapp/Signal-Desktop/archive/v${pkgver}.tar.gz"
+source=("${pkgname}-git-repo::git+https://github.com/signalapp/Signal-Desktop.git#tag=v${pkgver}"
         "${pkgname}.sh"
         "${pkgname}.desktop"
         "${pkgname}-tray.desktop"
         "openssl-linking.patch")
-sha512sums=('2b9f2776524313b237f1b5da56a8891959e7100b20dc80c58fa2f8895d809dc9db04d932e09c382bd5c9143d0fd0acab8aa59bf08ef76a397af2bff48c0a2762'
+sha512sums=('SKIP'
             '3525e8c0090feb7ea40a9a070bb5a089c0564346a88c7f8fbff1c6f7c779a24d9d77bdd43ad5a4dfd677fdaa4ad3cbd9b9a65e26bd1ff9453ba13b7dd95317a1'
             'a264bfc7a4a7aac747daa588a2acbf1eddfd201bc795f0fbc18460a9b25f4460f364124e227a527fec22631cd84bc9e190f9f4978069e9c119eb556b9ff2d327'
             'ced228d19303abe951c55f7874004cb9e4cd062dbda48c7ea80b0a6fb9adf5716a37164c01c9921a91f00653b0737fed80e3c5e684b0f3bcec375c265d6d8e5c'
             '05efc65a78b2006f3ffdd728dd5a96923ee9c909a3707833f8d55935c18e507051aabdbefff270bb2c58d7f151147966b550c9bbc2a115dae177f51955720482')
 
 prepare() {
-  cd "Signal-Desktop-${pkgver}"
+  cd "${pkgname}-git-repo"
 
   # Allow higher node versions
   sed -i 's/"node": "/&>=/' package.json
@@ -41,7 +41,7 @@ prepare() {
 }
 
 build() {
-  cd "Signal-Desktop-${pkgver}"
+  cd "${pkgname}-git-repo"
 
   # Build Signal
   yarn generate
@@ -49,7 +49,7 @@ build() {
 }
 
 package() {
-  cd "Signal-Desktop-${pkgver}"
+  cd "${pkgname}-git-repo"
 
   install -dm 755 "${pkgdir}/usr/lib/${pkgname}"
   cp -r release/linux-unpacked/resources "${pkgdir}/usr/lib/${pkgname}/"
