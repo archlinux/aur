@@ -1,7 +1,7 @@
 pkgbase = sac-compiler-weekly
 	pkgdesc = The compiler (sac2c) of the Single-Assignment C programming language (weekly build)
 	pkgver = 1.3.3.359
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.sac-home.org/
 	arch = x86_64
 	license = custom:SAC
@@ -13,10 +13,10 @@ pkgbase = sac-compiler-weekly
 	provides = sac-compiler
 	conflicts = sac-compiler
 	replaces = sac-compiler
-	source = http://www.sac-home.org/packages/weekly/Linux/1.3.3-359-1/full/sac2c-1.3.3-MijasCosta-359-g856d44-omnibus.tar.gz
+	source = http://www.sac-home.org/packages/weekly/Linux/1.3.3-359-2/full/sac2c-1.3.3-MijasCosta-359-g856d44-omnibus.tar.gz
 	source = LICENSE.txt
 	source = Makefile
-	sha256sums = c10fc1ea6cde6d9ec98456187b64f1c77eeffbc73fea33d91546b2e6a10cdf16
+	sha256sums = fc7251afa9676394faca8436679f8ab37841f32b374bb965469234f53d281c47
 	sha256sums = c7d6d43ee20a247fcdce954274f9ffd419bd92644af9ce09929b7bef54a33398
 	sha256sums = eb965cc10ff6d032627429b87c553c2eb962d92753a8e30cfebdf699d1f5504a
 
