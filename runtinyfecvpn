@@ -1,0 +1,44 @@
+#!/usr/bin/python
+import subprocess
+import json
+
+CONF_FILE = "/etc/tinyfecvpn/conf.json"
+BIN = "/usr/bin/tinyvpn"
+
+def main():
+    f = open(CONF_FILE)
+    conf = json.load(f)
+    cmd_args = []
+    cmd_args.append(BIN)
+    opts = ("key", "sub-net", "tun-dev", "fec", "timeout", "mode", "fec-mode", "report", "keep-reconnect", "mtu"
+            "jitter", "interval", "random-drop", "disable-obscure", "log-level")
+
+    if conf["mode"] == "server":
+        cmd_args.append("-s")
+        cmd_args.append("-l")
+        cmd_args.append(str(conf["server"]) + ":" + str(conf["port"]))
+    elif conf["mode"] == "client":
+        cmd_args.append("-c")
+        cmd_args.append("-r")
+        cmd_args.append(str(conf["server"]) + ":" + str(conf["port"]))
+
+    for key, value in conf.items():
+        if key == "fec":
+            cmd_args.append("--fec")
+            cmd_args.append(str(value[0]) + ":" + str(value[1]))
+        elif key == "fec-mode":
+            cmd_args.append("--mode")
+            cmd_args.append(str(value))
+        elif key in ("mode", "server", "port"):
+            pass
+        elif key in opts:
+            cmd_args.append("--" + key)
+            cmd_args.append(str(value))
+        else:
+            raise ValueError("Invalid conif")
+    
+    subprocess.run(cmd_args)
+
+
+if __name__ == "__main__":
+    main()

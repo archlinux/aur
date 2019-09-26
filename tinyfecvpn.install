@@ -1,0 +1,18 @@
+post_install() {
+        systemctl --quiet daemon-reload
+        systemctl --quiet preset tinyvpn.service
+}
+
+post_upgrade() {
+        systemctl --quiet daemon-reload
+        systemd-tmpfiles --create tinyvpn.conf
+        systemctl --quiet try-restart tinyvpn.service
+}
+
+pre_remove() {
+        systemctl --quiet --no-reload disable --now tinyvpn.service
+}
+
+post_remove() {
+        systemctl --quiet daemon-reload
+}
