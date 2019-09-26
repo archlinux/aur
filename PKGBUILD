@@ -2,7 +2,7 @@
 
 pkgname=tinyfecvpn
 pkgver=20180820.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Lightweight VPN with Build-in Forward Error Correction Support"
 arch=('x86_64')
 url="https://github.com/wangyu-/tinyfecVPN"

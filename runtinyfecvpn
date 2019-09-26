@@ -1,7 +1,7 @@
 #!/usr/bin/python
 import subprocess
 
-CONF_FILE = "/etc/tinyfecvpn/conf.json")
+CONF_FILE = "/etc/tinyfecvpn/conf.json"
 BIN = "/usr/bin/tinyvpn"
 
 def main():
