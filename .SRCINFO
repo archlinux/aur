@@ -1,0 +1,16 @@
+pkgbase = python2-graph
+	pkgdesc = A library for working with graphs in Python.
+	pkgver = 1.8.5
+	pkgrel = 1
+	url = https://github.com/shoobx/python-graph
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python2
+	makedepends = python2-setuptools
+	depends = python2
+	source = python2-graph-1.8.5::git+https://github.com/Shoobx/python-graph#commit=943ebbad7fa8e1ad69a37ef64bf525032077b8b9
+	sha512sums = SKIP
+
+pkgname = python2-graph
+
