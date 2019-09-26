@@ -1,0 +1,12 @@
+pkgbase = amduprof-meta
+	pkgdesc = Meta package for installing the AMD μProf and AMD Power Profiler kernel module (DKMS)
+	pkgver = 3.1.35
+	pkgrel = 1
+	url = https://developer.amd.com/amd-uprof/
+	arch = x86_64
+	license = custom
+	depends = amduprof
+	depends = amdpowerprofiler-dkms
+
+pkgname = amduprof-meta
+
