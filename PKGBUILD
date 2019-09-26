@@ -2,7 +2,7 @@
 
 _pkgname=i3lock-fancy-rapid
 pkgname=$_pkgname-git
-pkgver=r13.80467db
+pkgver=r16.b2c87d4
 pkgrel=1
 pkgdesc="A faster implementation of i3lock-fancy"
 arch=('x86_64')
@@ -16,12 +16,6 @@ sha512sums=('SKIP')
 pkgver() {
   cd "$pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd "$pkgname"
-  git submodule init
-  git submodule update
 }
 
 build() {
