@@ -1,0 +1,19 @@
+pkgbase = aqbanking-git
+	pkgdesc = A library for online banking and financial applications
+	pkgver = 5.99.35beta
+	pkgrel = 1
+	url = https://www.aquamaniac.de/rdm/projects/aqbanking
+	arch = x86_64
+	arch = i686
+	license = GPL
+	depends = gwenhywfar-git
+	depends = ktoblzcheck
+	depends = libofx
+	provides = aqbanking
+	conflicts = aqbanking
+	options = !makeflags
+	source = git+https://git.aquamaniac.de/git/aqbanking
+	sha256sums = SKIP
+
+pkgname = aqbanking-git
+
