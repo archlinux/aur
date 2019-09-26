@@ -1,6 +1,6 @@
-commit 35cb4e638d6b3f807c2cf3806faedf5e59f2821b
+commit d39d0ebd0c93dc5a589b81dc8909db8fc64baafd
 Author: Narrat <autumn-wind@web.de>
-Date:   Mon May 8 21:12:37 2017 +0200
+Date:   Thu Sep 26 21:01:53 2019 +0200
 
     Add support for mimeo
 
@@ -39,7 +39,7 @@ index 6db58ad..70b539a 100644
      open_generic "${mailto}"
      ;;
 diff --git a/scripts/xdg-mime.in b/scripts/xdg-mime.in
-index 034d0ef..7352799 100644
+index 034d0ef..88c0ae3 100644
 --- a/scripts/xdg-mime.in
 +++ b/scripts/xdg-mime.in
 @@ -95,6 +95,16 @@ info_gnome()
@@ -48,7 +48,7 @@ index 034d0ef..7352799 100644
  
 +info_mimeo()
 +{
-+    mimeo -m "$1"
++    mimeo -m "$1" | awk 'FNR == 2 {print}' | cut -d' ' -f3
 +    if [ $? -eq 0 ]; then
 +        exit_success
 +    else
