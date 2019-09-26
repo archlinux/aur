@@ -1,0 +1,16 @@
+pkgbase = trinitrotoluol-git
+	pkgdesc = A software for managing your supporters and your mailings)
+	pkgver = 55
+	pkgrel = 1
+	url = https://tambi-soft.github.io
+	arch = any
+	makedepends = git
+	depends = qt5-base
+	depends = qt5-multimedia
+	depends = qt5-svg
+	depends = ffmpeg
+	source = trinitrotoluol::git+https://github.com/tambi-soft/trinitrotoluol.git
+	sha256sums = SKIP
+
+pkgname = trinitrotoluol-git
+
