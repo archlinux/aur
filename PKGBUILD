@@ -1,4 +1,4 @@
-# Maintainer: LinRuoshui <lin.ruohshoei@gmail.com>
+# Maintainer: linrs <LinRs at users.noreply.github.com>
 # Contributor: Mike Swanson <mikeonthecomputer@gmail.com>
 # Contributor: Jacob Emmert-Aronson <jacob at mlaronson dot com>
 # Contributor: Rene Schoebel <schoebel.r at gmail dot com>
@@ -17,7 +17,7 @@ pkgname=fs2_open
 _pkgname=fs2open
 pkgver=3.8.0
 _pkgver=3_8_0 # Upstream's url/dirs
-pkgrel=1
+pkgrel=2
 pkgdesc="An enhancement of the FreeSpace 2 engine"
 url="http://scp.indiegames.us"
 arch=('i686' 'x86_64')
@@ -28,6 +28,7 @@ depends=('doxygen' 'libjpeg' 'libpng' 'libtheora' 'libvorbis'
 optdepends=('fs2_open-mediavps: extensive audiovisual enhancements'
 	    'fs2_open-data: extensive retail data'
 	    'wxlauncher: cross-platform fs2 launcher')
+makedepends=('cmake')
 install=$pkgname.install
 source=("https://github.com/scp-fs2open/fs2open.github.com/releases/download/release_${_pkgver}/${pkgname}_${_pkgver}-source-Unix.tar.gz"
         'fs2_open'

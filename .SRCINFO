@@ -1,12 +1,13 @@
 pkgbase = fs2_open
 	pkgdesc = An enhancement of the FreeSpace 2 engine
 	pkgver = 3.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://scp.indiegames.us
 	install = fs2_open.install
 	arch = i686
 	arch = x86_64
 	license = custom:fs2_open
+	makedepends = cmake
 	depends = doxygen
 	depends = libjpeg
 	depends = libpng
