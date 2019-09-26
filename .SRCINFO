@@ -1,7 +1,7 @@
 pkgbase = libbiosig
 	pkgdesc = Reading and writing routines for different biosignal data formats
 	pkgver = 1.9.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://biosig.sourceforge.net/
 	arch = i686
 	arch = x86_64

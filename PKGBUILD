@@ -1,7 +1,7 @@
 # Maintainer: Clemens Brunner <clemens dot brunner at gmail dot com>
 pkgname=libbiosig
 pkgver=1.9.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Reading and writing routines for different biosignal data formats"
 arch=('i686' 'x86_64')
 url="http://biosig.sourceforge.net/"
@@ -29,11 +29,12 @@ build() {
 
 package() {
   mkdir -p "$pkgdir/usr/include"
-  mkdir -p "$pkgdir/usr/lib"
+  mkdir -p "$pkgdir/usr/lib/pkgconfig"
   cp "$srcdir/biosig4c++-$pkgver/biosig.h" "$pkgdir/usr/include/"
   cp "$srcdir/biosig4c++-$pkgver/biosig-dev.h" "$pkgdir/usr/include/"
   cp "$srcdir/biosig4c++-$pkgver/physicalunits.h" "$pkgdir/usr/include/"
   cp "$srcdir/biosig4c++-$pkgver/gdftime.h" "$pkgdir/usr/include/"
   cp "$srcdir/biosig4c++-$pkgver/libbiosig.a" "$pkgdir/usr/lib/"
   cp "$srcdir/biosig4c++-$pkgver/libbiosig.so" "$pkgdir/usr/lib/"
+  cp "$srcdir/biosig4c++-$pkgver/libbiosig.pc" "$pkgdir/usr/lib/pkgconfig/"
 }
