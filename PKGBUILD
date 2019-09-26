@@ -26,5 +26,4 @@ pkgver() {
 
 package () {
             install -Dm755 "$srcdir/$_pkgname/playcheck.sh" "$pkgdir/usr/bin/cavapify"
-            msg2 "Start cavapify with 'cavapify & cava'"
 }
