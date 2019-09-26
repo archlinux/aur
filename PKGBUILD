@@ -170,7 +170,7 @@ package() {
     cp out/Default/icudtl.dat "$pkgdir/usr/lib/chromium/"
   fi
 
-  for size in 22 24 48 64 128 256; do
+  for size in 24 48 64 128 256; do
     install -Dm644 "chrome/app/theme/chromium/product_logo_$size.png" \
       "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/chromium.png"
   done
