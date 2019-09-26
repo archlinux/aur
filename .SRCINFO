@@ -1,0 +1,26 @@
+pkgbase = appcontroller-git
+	pkgdesc = controller
+	pkgver = 8.0.1
+	pkgrel = 1
+	url = https://gerrit.automotivelinux.org/gerrit/#/admin/projects/src/libafb-helpers
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = make
+	makedepends = lua
+	makedepends = app-framework-binder
+	makedepends = cmake-afb-template
+	makedepends = afb-helpers
+	depends = systemd
+	depends = json-c
+	depends = lua
+	depends = app-framework-binder
+	depends = afb-helpers
+	provides = appcontroller
+	conflicts = appcontroller
+	source = appcontroller::git+https://gerrit.automotivelinux.org/gerrit/src/libappcontroller
+	md5sums = SKIP
+
+pkgname = appcontroller-git
+
