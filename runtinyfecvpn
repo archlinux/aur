@@ -20,7 +20,7 @@ def main():
     elif conf["mode"] == "client":
         cmd_args.append("-c")
         cmd_args.append("-r")
-        cmd_args.append(str(conf["server"]) + ":" + str(onf["port"]))
+        cmd_args.append(str(conf["server"]) + ":" + str(conf["port"]))
 
     for key, value in conf.items():
         if key == "fec":

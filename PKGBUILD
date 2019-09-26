@@ -16,7 +16,7 @@ source=("${pkgname}-${pkgver}::git://github.com/wangyu-/tinyfecvpn.git#tag=${pkg
 noextract=()
 sha256sums=('SKIP'
             "86a54964f05ab480251b3906c9618d3818a0f2b3d6ec8a0ec62c125a108439e8"
-	    "b102b4d6e01ca26771b3cd14fe8d371a29b2bcfade6851d29a76e6dfa107901e"
+            "d7d68946248f702be0fe941ea15149236f05d0c7563a0c5074b00c5cc861542b"
             "645393e08311063a81e91ab7972768c5059f29f601ac5b7858242066f29928f2"
             "00d71040044b979d2576487c29a550b6134482577ce2a553807caa0ad9bd5413")
 
