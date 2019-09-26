@@ -1,7 +1,7 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=python-aiopg
-pkgver=0.16.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="PostgreSQL driver for asyncio"
 arch=(any)
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python-psycopg2')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/a/aiopg/aiopg-$pkgver.tar.gz")
-sha256sums=('b2812b582a5b9b4a8dc070f0abf08766f0f20dabc7ceaebdaad03b1bf5a1a3c5')
+sha256sums=('32da3c9c73c248c715883fbb0876d66015d9fb6b4946058eb9fd40e86cfff9b4')
 
 build() {
     cd "$srcdir"/aiopg-$pkgver
