@@ -1,0 +1,43 @@
+--- ladish-ladish-1.orig/wscript	2011-12-19 10:05:10.000000000 -0600
++++ ladish-ladish-1/wscript	2019-09-06 11:53:28.076982572 -0500
+@@ -149,7 +149,7 @@
+ 
+     conf.env['LIB_EXPAT'] = ['expat']
+ 
+-    build_gui = True
++    build_gui = False
+ 
+     if build_gui and not conf.check_cfg(
+         package = 'glib-2.0',
+@@ -596,20 +596,20 @@
+     bld.install_files('${PREFIX}/bin', 'ladish_control', chmod=0755)
+ 
+     # 'Desktop' file (menu entry, icon, etc)
+-    bld.install_files('${PREFIX}/share/applications/', 'gui/gladish.desktop', chmod=0644)
++    # bld.install_files('${PREFIX}/share/applications/', 'gui/gladish.desktop', chmod=0644)
+ 
+     # Icons
+-    icon_sizes = ['16x16', '22x22', '24x24', '32x32', '48x48', '256x256']
+-    for icon_size in icon_sizes:
+-        bld.path.ant_glob('art/' + icon_size + '/apps/*.png')
+-        bld.install_files('${PREFIX}/share/icons/hicolor/' + icon_size + '/apps/', 'art/' + icon_size + '/apps/gladish.png')
+-
+-    status_images = []
+-    for status in ["down", "unloaded", "started", "stopped", "warning", "error"]:
+-        status_images.append("art/status_" + status + ".png")
++    # icon_sizes = ['16x16', '22x22', '24x24', '32x32', '48x48', '256x256']
++    # for icon_size in icon_sizes:
++    #     bld.path.ant_glob('art/' + icon_size + '/apps/*.png')
++    #     bld.install_files('${PREFIX}/share/icons/hicolor/' + icon_size + '/apps/', 'art/' + icon_size + '/apps/gladish.png')
++
++    # status_images = []
++    # for status in ["down", "unloaded", "started", "stopped", "warning", "error"]:
++    #     status_images.append("art/status_" + status + ".png")
+ 
+-    bld.install_files('${DATA_DIR}', status_images)
+-    bld.install_files('${DATA_DIR}', "art/ladish-logo-128x128.png")
++    # bld.install_files('${DATA_DIR}', status_images)
++    # bld.install_files('${DATA_DIR}', "art/ladish-logo-128x128.png")
+     bld.install_files('${DATA_DIR}', ["AUTHORS", "README", "NEWS"])
+     bld.install_as('${DATA_DIR}/COPYING', "gpl2.txt")
+ 
