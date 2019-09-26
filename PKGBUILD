@@ -3,7 +3,7 @@
 _pkgname=cavapify
 pkgname=$_pkgname-git
 pkgver=0
-pkgrel=1
+pkgrel=2
 pkgdesc="Script that will automatically change the color of the cava visualizer bars according to the color of the current album art of any media player that implements the MPRIS D-Bus Interface Specification."
 arch=(any)
 url="https://github.com/elmo-space/$_pkgname"
