@@ -1,6 +1,6 @@
 pkgbase = python-dugong
 	pkgdesc = A Python HTTP 1.1 client library designed for RESTful protocols.
-	pkgver = 3.7.4
+	pkgver = 3.7.5
 	pkgrel = 1
 	url = https://github.com/python-dugong/python-dugong
 	arch = any
@@ -9,8 +9,7 @@ pkgbase = python-dugong
 	depends = python
 	depends = python-setuptools
 	options = !emptydirs
-	source = https://github.com/python-dugong/python-dugong/archive/release-3.7.4.tar.gz
-	md5sums = 65f532949d149899b64dfc9da33596f3
+	source = https://github.com/python-dugong/python-dugong/archive/release-3.7.5.tar.gz
+	md5sums = 973c8af853e5bf5b087335341c887fe7
 
 pkgname = python-dugong
-
