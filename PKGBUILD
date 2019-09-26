@@ -12,7 +12,7 @@ _srcname=${pkgbase}
 _kernel_rel=5.5
 _branch=drm-next-${_kernel_rel}-wip
 _kernelname=${pkgbase#linux}
-pkgver=5.4.858307.73cdff347343
+pkgver=5.5.858368.49255d331c23
 pkgrel=1
 arch=(x86_64)
 url='https://cgit.freedesktop.org/~agd5f/linux/'
@@ -29,17 +29,14 @@ source=("${pkgbase}::git://people.freedesktop.org/~agd5f/linux#branch=${_branch}
   linux.preset   # standard config files for mkinitcpio ramdisk
 )
 sha256sums=('SKIP'
-            '659f13ca424866539664bffc189a3939d068848c38005bf8c57b7e82e11e64bb'
+            '3390c9937264bf3bcb577a947b61ca8b4547913b5c0fb7bc6eb232cbb2f4fcd9'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 pkgver() {
   cd "${_srcname}"
-  local version="$(grep \^VERSION Makefile|cut -d"=" -f2|cut -d" " -f2)"
-  local patch="$(grep \^PATCHLEVEL Makefile|cut -d"=" -f2|cut -d" " -f2)"
-  patch=$(( $patch + 1 ))
 
-  echo $version.$patch.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  echo ${_kernel_rel}.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 _kernelname=${pkgbase#linux}
