@@ -1,6 +1,6 @@
 # Maintainer: navigaid <navigaid@gmail.com>
 pkgname=yaegi
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc='Yaegi is Another Elegant Go Interpreter'
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
@@ -8,7 +8,7 @@ url='https://github.com/containous/yaegi'
 license=('Apache')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/containous/yaegi/archive/v${pkgver}.tar.gz")
-md5sums=('27d46688701f3e452cc5397b83719ec0')
+md5sums=('1e1aa3c80a89ae7612263c83149bff85')
 
 build() {
   cd ${pkgname}-${pkgver}
