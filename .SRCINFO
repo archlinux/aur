@@ -1,17 +1,17 @@
 pkgbase = mindustry-server
 	pkgdesc = Server of a sandbox tower defense game written in Java
-	pkgver = 95
+	pkgver = 96
 	pkgrel = 1
 	url = https://github.com/Anuken/Mindustry
 	arch = any
 	license = GPL3
 	depends = java-runtime=8
-	noextract = mindustry-server-95.jar
-	source = mindustry-server-95.jar::https://github.com/Anuken/Mindustry/releases/download/v95/server-release.jar
+	noextract = mindustry-server-96.jar
+	source = mindustry-server-96.jar::https://github.com/Anuken/Mindustry/releases/download/v96/server-release.jar
 	source = mindustry-server.sh
 	source = mindustry-server.png
 	source = mindustry-server.desktop
-	md5sums = acc086b1b62005a12147060dc1103950
+	md5sums = 7903f091205471d15b54d23a27973d61
 	md5sums = 60eaa447ed6bbb47a183b2118d7b3010
 	md5sums = 2b7f48f1045810ce9892b337a00bb021
 	md5sums = ec0696cd2866f50b4469e9ea0613473f
