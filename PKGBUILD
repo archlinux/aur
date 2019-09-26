@@ -2,7 +2,7 @@
 
 pkgname=gwenhywfar-git
 pkgver=4.99.17rc1+3+g31fbb242
-pkgrel=1
+pkgrel=2
 pkgdesc="OS abstraction functions for various projects"
 arch=(x86_64 i686)
 url=https://www.aquamaniac.de/rdm/projects/gwenhywfar
@@ -31,5 +31,5 @@ build() {
 }
 
 package() {
-  make DESTDIR="$pkgdir" install
+  make DESTDIR=$pkgdir install
 }
