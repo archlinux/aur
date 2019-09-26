@@ -1,6 +1,6 @@
 pkgbase = repetier-server
 	pkgdesc = repetier server component
-	pkgver = 0.92.0
+	pkgver = 0.92.3
 	pkgrel = 1
 	url = https://www.repetier-server.com/
 	install = repetier-server.install
@@ -14,14 +14,14 @@ pkgbase = repetier-server
 	depends = systemd
 	provides = repetier-server
 	conflicts = repetier-host
-	source_i686 = http://download.repetier.com/files/server/debian-intel32/Repetier-Server-0.92.0-Linux.deb
-	sha256sums_i686 = 4fa641835cb1663f0ec5fef70419bf0bdd15859fcc5cb4699e0060a584ce608e
-	source_x86_64 = http://download.repetier.com/files/server/debian-amd64/Repetier-Server-0.92.0-Linux.deb
-	sha256sums_x86_64 = 2228aed451066985accb88e911fa35cad4cdc940b630e1880937efaf75e5c08c
-	source_armv7h = http://download.repetier.com/files/server/debian-armhf/Repetier-Server-0.92.0-Linux.deb
-	sha256sums_armv7h = 3e7adc61794c8986ad85e568a943530700d2a8d99f4657bd0289cd457f4df8d6
-	source_aarch64 = http://download.repetier.com/files/server/debian-arm64hf/Repetier-Server-0.92.0-Linux.deb
-	sha256sums_aarch64 = fb173a5cba75e2f4c1988b77c70ccb8df1662b31092ab6bc816ccde09df408a8
+	source_i686 = http://download.repetier.com/files/server/debian-intel32/Repetier-Server-0.92.3-Linux.deb
+	sha256sums_i686 = 3728b3cb0b9f6c6c277419a4bc16d55b99a0f678967d36a90de3e8cc3b8a52d7
+	source_x86_64 = http://download.repetier.com/files/server/debian-amd64/Repetier-Server-0.92.3-Linux.deb
+	sha256sums_x86_64 = a8c86568adab7d02db231ffcac3875054e92e6c0ceabb9cfd44e9584c6686c19
+	source_armv7h = http://download.repetier.com/files/server/debian-armhf/Repetier-Server-0.92.3-Linux.deb
+	sha256sums_armv7h = a8d4f11c6d3a423186860e92b810d449386ee9bd4acdc1a2120b40d17ffacfbb
+	source_aarch64 = http://download.repetier.com/files/server/debian-arm64hf/Repetier-Server-0.92.3-Linux.deb
+	sha256sums_aarch64 = d7b5fb63bbb61280b825ec8aea183939fbcc10f3fff332cdd227425b5f33cf0f
 
 pkgname = repetier-server
 
