@@ -1,17 +1,20 @@
 # Maintainer: copygirl <copygirl@mcft.net>
 pkgname=vintagestory
-pkgver=1.10.9
+# _pkgver is separate to allow specifying pre-release versions such as "-rc.1".
+# makepkg doesn't support hyphens in pkgver. They'll be replaced by underscores.
+_pkgver=1.10.15
+pkgver=${_pkgver//-/_}
 pkgrel=1
 pkgdesc="An in-development indie sandbox game about innovation and exploration"
 arch=("any")
 url="https://www.vintagestory.at/"
 license=("custom")
 depends=("mono" "opengl-driver" "openal")
-source=("https://cdn.vintagestory.at/gamefiles/stable/vs_archive_$pkgver.tar.gz"
-#       "https://account.vintagestory.at/files/stable/vs_archive_$pkgver.tar.gz" (alternative source)
+source=("https://cdn.vintagestory.at/gamefiles/stable/vs_archive_$_pkgver.tar.gz"
+#       "https://account.vintagestory.at/files/stable/vs_archive_$_pkgver.tar.gz" (alternative source)
         "vintagestory.desktop"
         "vintagestory.sh")
-md5sums=("92f47ac3933e3dab9c823a3d6f8a9d39"
+md5sums=("de04e205e5aea4e6d1987ee9f218ef67"
          "ab6680c4499b58b14aa36acc2ab4038a"
          "da232b56f48e047ec60791bb7d8b6398")
 
