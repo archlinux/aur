@@ -48,13 +48,13 @@ _use_current=
 pkgbase=linux-rt-bfq
 # pkgname=('linux-rt-bfq' 'linux-rt-bfq-headers' 'linux-rt-bfq-docs')
 _major=5.2
-_minor=14
-_rtver=7
+_minor=17
+_rtver=8
 _rtpatchver=rt${_rtver}
 pkgver=${_major}.${_minor}.${_rtpatchver}
 _pkgver=${_major}.${_minor}
 _srcname=linux-${_pkgver}
-pkgrel=3
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/sirlucjan/bfq-mq-lucjan"
 license=('GPL2')
@@ -80,7 +80,6 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "${_lucjanpath}/${_bfq_path}/${_bfq_patch}"
         "${_gcc_path}/${_gcc_patch}"
         "${_lucjanpath}/arch-patches-v4/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-v4/0002-Btrfs-fix-unwritten-extent-buffers-and-hangs-on-futu.patch"
          # the main kernel config files
         'config'
          # pacman hook for depmod
@@ -385,15 +384,14 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('a27fcabaeef23de4d57a716438ced451e98503b8215dac746ec8452ea5f1d2a61491bca1720ff6c998cce86083d5277e5d184cbb41b1c83c6083e6740847da69'
+sha512sums=('87ab9e1b78905f854ffdbbee6cbb5506381960432b9bdc0ad922c1a01437886a43398d1cac334dae3817ba006d0b2b6b34b444436176220b30c1156a324c4968'
             'SKIP'
-            'dab9695f2c1ca6065cdaaf982a3a24d6378abd51aeebcdc6b7e677c2b1d86816e2566679aaeadac3ab4793afa1d8a63af767f2b831489b3c4e1fc513214cccd2'
+            '3e56f9dc44f6755bf43ca40c13f84c90e7aa35d45a839a8f6f18cae120a7fae127015645a2e30b4aa4fd992177142b9c452e6c5eb3689cd8d20f795d93397929'
             'SKIP'
             'a57192d2989ff816e32970d86320f331be013b2c1d4a236565f33ef41b4092352e7dc560f97a39191d8c5eca8514f646fddc14a1c0168265ca3a470e7a41a2ea'
             '91e9486d36d30e539e2879f9fa377c4a3d98aa15af8cceed6e28a2fbe9b2f5696183483b342d60a01b636346324a99902e36039ee36d6b65a143378f9cc2be5f'
             '2eb574fbfac6e334d3b06e52e466dbf8e88034515729b6571990b10f75a0fe2a52f188615405c5a695b5820669e595deead44d7961a97c5872359be3435fdf63'
             '77c306f87358a2609c902051aade621492b53f8ffce21c1d04255e04a019b5f6799cfd2a5ce24265d2274d54c945559760534f0c0a2e2eb7a62eeed93ff2dc88'
-            '0f255ed1f55768de0e1006d44b0bbfef174ebce8a85de7f79402b3d47f1c53a30cd23e85c97ca591a6727a2bcbf62fa9f5c13bd23c25f2a9b9bcfe2ec4310e07'
             '8f6cdf859cf1c712749de734bb9ad5769ff03e2c426cdc3adad8db91adc447e8ca050d7752b30108363330e4b6ad881330c4dbcfdf357e87c6848dae409ef1f4'
             '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
             '2718b58dbbb15063bacb2bde6489e5b3c59afac4c0e0435b97fe720d42c711b6bcba926f67a8687878bd51373c9cf3adb1915a11666d79ccb220bf36e0788ab7'
