@@ -1,0 +1,17 @@
+pkgbase = python-beep-downloader-git
+	pkgdesc = Beep downloader
+	pkgver = r11.1e85665
+	pkgrel = 1
+	url = https://github.com/edomora97/beep-downloader
+	arch = any
+	license = MPL2
+	makedepends = python-setuptools
+	depends = python
+	depends = python-colorama
+	depends = python-requests
+	depends = python-beautifulsoup4
+	source = git+https://github.com/edomora97/beep-downloader.git
+	sha1sums = SKIP
+
+pkgname = python-beep-downloader-git
+
