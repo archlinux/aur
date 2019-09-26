@@ -1,0 +1,8 @@
+107c107
+< 		/usr/local/curl/lib/libcurl.a \
+---
+> 		-lcurl \
+126c126
+< 		/usr/local/curl/lib/libcurl.a \
+---
+> 		-lcurl \
