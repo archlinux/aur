@@ -2,7 +2,7 @@
 
 pkgname=plata-theme
 pkgver=0.9.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A Gtk+ theme based on Material Design Refresh'
 arch=('any')
 url='https://gitlab.com/tista500/plata-theme'
@@ -20,8 +20,7 @@ build() {
     --prefix='/usr' \
     --enable-parallel \
     --enable-plank \
-    --enable-telegram \
-    --enable-airforsteam
+    --enable-telegram
   make
 }
 
