@@ -1,9 +1,9 @@
-# $Id$
-# Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
+# Maintainer: Ali Molaei <ali dot molaei at protonmail dot com>
+# Contributor: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 
 pkgname=shabnam-fonts
 pkgver=5.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A beautiful Persian font based on Vazir font."
 url="https://github.com/rastikerdar/shabnam-font"
 arch=(any)

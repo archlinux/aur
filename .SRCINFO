@@ -1,7 +1,7 @@
 pkgbase = shabnam-fonts
 	pkgdesc = A beautiful Persian font based on Vazir font.
 	pkgver = 5.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rastikerdar/shabnam-font
 	arch = any
 	license = OFL
