@@ -2,9 +2,9 @@
 
 pkgname=octoprint
 pkgver=1.3.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Responsive web interface for controlling a 3D printer (RepRap, Ultimaker, ...)"
-arch=(x86_64 armv6h armv7h)
+arch=(any)
 url="http://octoprint.org/"
 license=('AGPL3')
 depends=(
