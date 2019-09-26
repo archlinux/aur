@@ -1,48 +1,47 @@
-# Maintainer: ahrs <Forward dot to at hotmail dot co dot uk>
-pkgname=('python-pulse-control-git' 'python2-pulse-control-git')
-pkgver=r155.7ff0cc1
+# Maintainer: TankMissile <alecfeldman at disroot dot org>
+# Contributor: ahrs <forward dot to at hotmail dot co dot uk>
+
+_pkgname="python-pulse-control-git"
+_pkgname2="python2-pulse-control-git"
+pkgname=($_pkgname $_pkgname2)
+pkgver=r193.344b6b6
 pkgrel=1
-pkgdesc="Python bindings for pulseaudio"
-arch=('any')
-url="https://github.com/mk-fg/${pkgname%-git}"
-makedepends=('python' 'python2' 'python-setuptools' 'python2-setuptools')
-license=('MIT')
-source=("${pkgname}::git+https://github.com/mk-fg/${pkgname%-git}.git")
-md5sums=('SKIP')
+pkgdesc="Python high-level interface and ctypes-based bindings for PulseAudio (git version)."
+url="http://github.com/mk-fg/${_pkgname%-git}"
+license=("MIT")
+arch=("any")
+makedepends=("python-setuptools" "python2-setuptools")
+source=("$_pkgname::git+https://github.com/mk-fg/${_pkgname%-git}.git")
+md5sums=("SKIP")
 
 pkgver() {
-  cd "${srcdir}/python-pulse-control-git"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd $_pkgname
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+	cp -r $_pkgname $_pkgname2
 }
 
 build() {
-  cp -r python-pulse-control-git python2-pulse-control-git
-
-  cd python-pulse-control-git
-  python ./setup.py build
-
-  cd ../python2-pulse-control-git
-  python2 ./setup.py build
+	cd $_pkgname
+	python setup.py build
+	cd ../$_pkgname2
+	python2 setup.py build
 }
 
 package_python-pulse-control-git() {
-  depends=('python' 'pulseaudio')
-  provides=('python-pulse-control')
-  conflicts=('python-pulse-control')
-
-  cd python-pulse-control-git
-
-  python setup.py install --root="$pkgdir" --optimize=1
+	depends=("python" "pulseaudio")
+	provides=("python-pulse-control")
+	conflicts=("python-pulse-control")
+	cd $_pkgname
+	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
 
 package_python2-pulse-control-git() {
-  depends=('python2' 'pulseaudio')
-  provides=('python2-pulse-control')
-  conflicts=('python2-pulse-control')
-
-  cd python2-pulse-control-git
-
-  python2 setup.py install --root="$pkgdir" --optimize=1
+	depends=("python2" "pulseaudio")
+	provides=("python2-pulse-control")
+	conflicts=("python2-pulse-control")
+	cd $_pkgname2
+	python2 setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
-
-
