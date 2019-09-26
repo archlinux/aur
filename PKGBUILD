@@ -8,7 +8,7 @@ arch=('any')
 url="http://lab.gilest.ro/ethoscope"
 license=('GPL3')
 makedepends=('git' 'gcc-fortran' 'rsync' 'wget' 'fping' ) #'base-devel'?
-depends=('ntp' 'openssh' 'mariadb' 'dnsmasq' 'avahi' 'python-pip' 'python-ifaddr' 'python-numpy' 'python-bottle' 'python-pyserial' 'python-mysql-connector' 'python-netifaces' 'python-cherrypy' 'python-eventlet' 'python-gitpython'  'python-dnspython' 'python-greenlet' 'python-monotonic' 'python-bjoern' 'python-zeroconf')
+depends=('ntp' 'openssh' 'mariadb' 'dnsmasq' 'avahi' 'python-setuptools' 'python-pip' 'python-ifaddr' 'python-numpy' 'python-bottle' 'python-pyserial' 'python-mysql-connector' 'python-netifaces' 'python-cherrypy' 'python-eventlet' 'python-gitpython'  'python-dnspython' 'python-greenlet' 'python-monotonic' 'python-zeroconf')#  'python-bjoern' )
 provides=('ethoscope')
 install="ethoscope-node.install"
 source=("$pkgname::git+https://github.com/gilestrolab/ethoscope.git")
@@ -41,7 +41,7 @@ package() {
   #install python service
   cd "${srcdir}/${pkgname}/node_src"
   #pip install -e . --install-option="--prefix=${pkgdir}" --no-deps
-  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  python setup.py develop --root="$pkgdir/" --optimize=1 --skip-build
 
   #install service files
   cd "${srcdir}"/"${pkgname}"/scripts/
