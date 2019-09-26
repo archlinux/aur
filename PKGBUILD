@@ -4,13 +4,13 @@
 pkgname=ladish-no-gui
 srcname=ladish
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Session management system for JACK. (No gladish)"
 arch=('x86_64')
 url="https://github.com/LADI/ladish"
 license=('GPL2')
 depends=('dbus-glib' 'jack' 'python2')
-optdepends=('aj2midid: aj2midid proxy')
+optdepends=('a2jmidid: a2jmidid proxy')
 makedepends=('intltool')
 provides=('lash' 'ladish')
 conflicts=('lash' 'ladish')

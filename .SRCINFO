@@ -1,7 +1,7 @@
 pkgbase = ladish-no-gui
 	pkgdesc = Session management system for JACK. (No gladish)
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/LADI/ladish
 	arch = x86_64
 	license = GPL2
@@ -9,7 +9,7 @@ pkgbase = ladish-no-gui
 	depends = dbus-glib
 	depends = jack
 	depends = python2
-	optdepends = aj2midid: aj2midid proxy
+	optdepends = a2jmidid: a2jmidid proxy
 	provides = lash
 	provides = ladish
 	conflicts = lash
