@@ -4,7 +4,7 @@ pkgver=1.2.3
 pkgrel=1
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-pkgdesc="Convert spotify/deezer/text playlists to youtube urls or audio/video files"
+pkgdesc="Convert spotify/deezer/text playlists to youtube urls and/or download audio/video files."
 arch=('any')
 url="https://github.com/dbeley/${pkgname%-git}"
 license=('MIT')
@@ -22,8 +22,13 @@ depends=(
 source=("git+https://github.com/dbeley/${pkgname%-git}")
 md5sums=("SKIP")
 
+build() {
+  cd "${pkgname%-git}"
+  python setup.py build
+}
+
 package() {
   cd "${pkgname%-git}"
-  python setup.py install --prefix=/usr --root="$pkgdir/" --optimize=1
+  python setup.py install --prefix=/usr --root="$pkgdir/" --optimize=1 --skip-build
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
