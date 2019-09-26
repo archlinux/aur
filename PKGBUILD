@@ -1,15 +1,15 @@
 # Maintainer: ConfuZzled <theconfuzzleddude@gmail.com>
 pkgname='lunar-magic'
-pkgver=3.04
-pkgrel=5
+pkgver=3.10
+pkgrel=6
 pkgdesc='Level editor for Super Mario World'
-url='https://fusoya.eludevisibility.org/lm/download/lm304.zip'
+url='https://fusoya.eludevisibility.org/lm/index.html'
 arch=(any)
 depends=(wine)
 makedepends=(unzip)
-source=(https://fusoya.eludevisibility.org/lm/download/lm304.zip lunar-magic lunar-magic.desktop lunar-magic.png)
-noextract=('lm304.zip')
-md5sums=('fb29c6e5a64f569df5716052b5439aad'
+source=(https://fusoya.eludevisibility.org/lm/download/lm310.zip lunar-magic lunar-magic.desktop lunar-magic.png)
+noextract=('lm310.zip')
+md5sums=('2b813d9433e5d86610b44590993f6fed'
          'b962597de58d7341a7b5fbacc264f933'
          '21524585562254d81b837b13e2012e2e'
          '2d08cd1860ee8cc1bf82bcc0dca4ba70')
@@ -19,7 +19,7 @@ license=('custom')
 package() {
   cd $srcdir
   install -d -m755 $pkgdir/usr/share/lunar-magic
-  unzip lm304.zip -d $pkgdir/usr/share/lunar-magic
+  unzip lm310.zip -d $pkgdir/usr/share/lunar-magic
   sed -n '/The Lunar Magic Mario/,/ use or presence./p' $pkgdir/usr/share/lunar-magic/readme.txt >> LICENSE
 
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
