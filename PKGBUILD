@@ -19,10 +19,10 @@
 
 pkgname=fs2_open-data
 pkgver=1.20
-pkgrel=6
+pkgrel=7
 pkgdesc="FreeSpace 2 retail data for fs2_open"
 arch=('any')
-url="http://www.gog.com/en/gamecard/freespace_2"
+url="https://www.gog.com/game/freespace_2"
 license=('custom:freespace2')
 makedepends=('icoutils' 'innoextract' 'recode')
 PKGEXT=".pkg.tar"
@@ -30,12 +30,12 @@ PKGEXT=".pkg.tar"
 prepare() {
   # Could possibly support older versions of the GOG installer too,
   # but it's worth it to have the latest version.
-  local _gog_md5="2870b98722a1e56a360e3a959019e678"
-  local _gog_exe="setup_freespace2_2.0.0.8.exe"
+  local _gog_sha256="6070befe0e041aa80c824593ac3ed2430ea18eb14aba6bdb1704fd375786c707"
+  local _gog_exe="setup_freespace_2_1.20.exe"
   if [ -f ../$_gog_exe ]; then
-    echo "GOG installer detected; checking md5sum ..."
-    if ! echo "$_gog_md5 ../$_gog_exe" | md5sum -c --status; then
-      error "Invalid md5sum; verify your download and try again."
+    echo "GOG installer detected; checking sha256sum ..."
+    if ! echo "$_gog_sha256 ../$_gog_exe" | sha256sum -c --status; then
+      error "Invalid sha256sum; verify your download and try again."
       return 1
     else
       ln -s ../$_gog_exe .
