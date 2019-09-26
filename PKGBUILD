@@ -3,8 +3,8 @@
 
 pkgname=nahid-fonts
 pkgver=0.3.0
-pkgrel=1
-pkgdesc="A beautiful Persian font based on Vazir font."
+pkgrel=2
+pkgdesc="A Persian (Farsi) Font."
 url="https://github.com/rastikerdar/nahid-font"
 arch=(any)
 license=('OFL')
