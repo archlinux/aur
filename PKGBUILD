@@ -55,5 +55,5 @@ package() {
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   # install empty directory to prevent xdg-desktop-menu install *.desktop to fail, see FS#33316
-  install -dm755 $pkgdir/usr/share/desktop-directories
+  install -dm755 "$pkgdir"/usr/share/desktop-directories
 }
