@@ -25,5 +25,5 @@ pkgver() {
 }
 
 package () {
-            install -Dm755 "$srcdir/$_pkgname/playcheck.sh" "$pkgdir/usr/bin/cavapify.sh"
+            install -Dm755 "$srcdir/$_pkgname/playcheck.sh" "$pkgdir/usr/bin/playcheck.sh"
 }
