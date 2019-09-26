@@ -1,7 +1,7 @@
 # Maintainer: Leo Mao <leomaoyw at gmail dot com>
 pkgname=python-pot
 _pkgname=POT
-pkgver=0.5.1
+pkgver=0.6.0
 pkgrel=2
 pkgdesc="Python Optimal Transport"
 _github="rflamary/POT"
@@ -16,7 +16,7 @@ optdepends=(
 )
 makedepends=('python' 'python-setuptools' 'cython')
 source=("https://github.com/rflamary/POT/archive/$pkgver.tar.gz")
-md5sums=('a0aaad1c3163f2e14c11da3ee7a1a801')
+md5sums=('8af56ddc9b6ef9eb887a013160652cb5')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
