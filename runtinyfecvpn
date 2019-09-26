@@ -12,9 +12,13 @@ def main():
     opts = ("key", "sub-net", "tun-dev", "fec", "timeout", "mode", "fec-mode", "report", "keep-reconnect", "mtu"
             "jitter", "interval", "random-drop", "disable-obscure", "log-level")
 
-    if conf["mode"] = "client":
+    if conf["mode"] == "server":
         cmd_args.append("-s")
         cmd_args.append("-l")
+        cmd_args.append(conf["server"] + ":" + conf["port"])
+    elif conf["mode"] == "client":
+        cmd_args.append("-c")
+        cmd_args.append("-r")
         cmd_args.append(conf["server"] + ":" + conf["port"])
 
     for key, value in conf.items():
