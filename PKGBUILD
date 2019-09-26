@@ -1,20 +1,20 @@
-# Maintainer: Bernhard Walle <bernhard@bwalle.de>
+# Maintainer: George Rawlinson <george@rawlinson.net.nz>
+# Contributor: Bernhard Walle <bernhard@bwalle.de>
 
 pkgname=cram
-pkgver=0.6
+pkgver=0.7
 pkgrel=1
-pkgdesc="Cram is a functional testing framework for command line applications "
+pkgdesc="functional testing framework for command line applications"
 arch=('any')
 url="https://bitheap.org/cram/"
-license=('GPL')
+license=('GPL2')
 depends=('python')
 options=(!emptydirs)
-source=("https://bitheap.org/cram/${pkgname}-${pkgver}.tar.gz")
-md5sums=('3808e3e7812c68ca962c4db9abac9069')
-sha256sums=('5508187940cf6acafa9538446c007428e7ebd413c17b5320505f08fa0bf267ca')
+source=("${pkgname}-${pkgver}.tar.gz::https://bitheap.org/cram/${pkgname}-${pkgver}.tar.gz")
+sha512sums=('9fa57e504abac8fd15bf5ff4a74405cb7acd10fd4c797adee87052a4f1c4e975bbc0f4219afd9485358b2c2939b48b3ffe538ae2abc6eea71e0ba8b458d50103')
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$pkgname-$pkgver"
   python setup.py install --root="$pkgdir/" --optimize=1
 }
 
