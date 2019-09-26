@@ -43,6 +43,7 @@ prepare() {
 		echo 'OpenGApps md5sums passed'
 	else
 		echo 'WARNING: OpenGApps md5sums failed!'
+		exit 1
 	fi
 }
 
