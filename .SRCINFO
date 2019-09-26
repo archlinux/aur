@@ -7,6 +7,8 @@ pkgbase = boogrocha
 	license = GPL3
 	makedepends = git
 	makedepends = go
+	provides = bgc
+	conflicts = bgc
 	source = boogrocha::git+https://github.com/sidusio/boogrocha.git
 	sha256sums = SKIP
 
