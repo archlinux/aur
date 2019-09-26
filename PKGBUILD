@@ -3,13 +3,13 @@
 
 pkgname=vdhcoapp
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Companion application for Video DownloadHelper browser add-on"
 arch=('x86_64')
 url="https://github.com/mi-g/vdhcoapp"
 license=('GPL2')
 depends=('ffmpeg')
-makedepends=('gulp' 'npm')
+makedepends=('gulp' 'nodejs-lts-dubnium' 'npm')
 options=(!strip)
 source=($pkgname-$pkgver.tar.gz::https://github.com/mi-g/vdhcoapp/archive/v${pkgver}.tar.gz
         vdhcoapp.patch
