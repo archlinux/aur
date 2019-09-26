@@ -1,39 +1,34 @@
-# versionurl=https://cdn.download.clearlinux.org/current/latest
-contenturl=https://cdn.download.clearlinux.org/update
-manifest_file=Manifest.linux-dev
-kernel_manifest_file=Manifest.kernel-native
-package_file=pack-linux-dev-from-0.tar
-
+pkgdesc="Header files and scripts for clear linux ${pkgver} kernel and modules"
+url="https://clearlinux.org/node/15538"
 pkgname=linux-clear-headers-bin
-arch=('x86_64')
-
-version=31090
-kernel_version="5.3.1-838.native"
-
+# check org.clearlinux.native.X.Y.Z in Manifest
 pkgver="5.3.1"
 pkgrel="838"
+# use in case we need to update the Arch package without incrementing pkgrel
+epoch=0
+arch=('x86_64')
+license=('GPL2')
+provides=("linux-headers=${pkgver}" "linux-clear-headers=${pkgver}")
+conflicts=("linux-clear-headers")
+options=('!strip')
 
-prepare() {
-    # version=$(curl $versionurl)
-    # echo $version > version
-    curl -O $contenturl/$version/$manifest_file
-    curl -O $contenturl/$version/$kernel_manifest_file
-    # kernel_version=$(cat $kernel_manifest_file | sed -n -re "s/^F.b.[[:space:]]+[a-f0-9]+[[:space:]]+$version[[:space:]]+\/usr\/lib\/kernel\/cmdline-(.*)$/\1/p")
-    # echo $kernel_version > kernel_version
-}
-# pkgver() {
-#     cat kernel_version | sed -r "s/\-/\./g"
-# }
+# see: https://cdn.download.clearlinux.org/current/latest
+_clear_version=31090
+_kernel_version="${pkgver}-${pkgrel}.native"
+# see: Manifest.linux-dev
+_config_hash="f6efca16992c75907569a4707f0556222a23e8bc04bfe3711949dde3b41b55ad"
+
+source=("https://cdn.download.clearlinux.org/update/${_clear_version}/Manifest.linux-dev"
+        "https://cdn.download.clearlinux.org/update/${_clear_version}/pack-linux-dev-from-0.tar"
+        "https://cdn.download.clearlinux.org/update/${_clear_version}/files/${_config_hash}.tar")
+sha256sums=('9755f5c067ac6827d5d45d02a79b0c9b1bf866514fab40dbe79cad9debbdab18'
+            '9c9181f28eb528e0231e14d9dee5b2681effdc53f713ab9100da4762c553f7ea'
+            'b00d6f2abc046c7e2058a3a0c88c56969e3d628b09e5a32a6e9e9d6399ed7d2d')
+
 build() {
-    # varsion=$(cat version)
-    # kernel_version=$(cat kernel_version)
-    files=$(cat $manifest_file | sed -n -re "s/^[FL]...[[:space:]]+([a-f0-9]+)[[:space:]]+$version[[:space:]]+\/usr\/lib\/(modules.*build.*)$/\1 \2/p")
-    config=$(cat $kernel_manifest_file | sed -n -re "s/^F.b.[[:space:]]+([a-f0-9]+)[[:space:]]+$version[[:space:]]+\/usr\/lib\/kernel\/config.*$/\1/p")
-    map=$(cat $manifest_file | sed -n -re "s/^F.b.[[:space:]]+([a-f0-9]+)[[:space:]]+$version[[:space:]]+\/usr\/lib\/kernel\/System.map.*$/\1/p")
-
-    mkdir unpacked
-    curl -O $contenturl/$version/$package_file
-    tar -xf $package_file -C unpacked
+    local files=$(sed -n -re "s/^[FL]...[[:space:]]+([a-f0-9]+)[[:space:]]+$_clear_version[[:space:]]+\/usr\/lib\/(modules.*build.*)$/\1 \2/p" Manifest.linux-dev)
+    local config=$(sed -n -re "s/^F.b.[[:space:]]+([a-f0-9]+)[[:space:]]+$_clear_version[[:space:]]+\/usr\/lib\/kernel\/config.*$/\1/p" Manifest.linux-dev)
+    local map=$(sed -n -re "s/^F.b.[[:space:]]+([a-f0-9]+)[[:space:]]+$_clear_version[[:space:]]+\/usr\/lib\/kernel\/System.map.*$/\1/p" Manifest.linux-dev)
 
     is_path=0
     filename=''
@@ -43,28 +38,16 @@ build() {
         else
             mkdir -p $line
             rmdir $line
-            cp -P unpacked/staged/$filename $line
+            cp -P staged/$filename $line
         fi
         is_path=$(($is_path ^ 1))
     done
 
-    rm modules/$kernel_version/build/.config
-    curl -O $contenturl/$version/files/$config.tar
-    tar -xf $config.tar
-    mv $config modules/$kernel_version/build/.config
-    rm $config.tar
+    mv $config modules/$_kernel_version/build/.config
 
-    rm modules/$kernel_version/build/System.map
-    mv unpacked/staged/$map modules/$kernel_version/build/System.map
-
-    rm $package_file
-    rm -rf unpacked
+    mv staged/${map} modules/$_kernel_version/build/System.map
 }
 package() {
-    pkgdesc="Header files and scripts for clear linux ${pkgver} kernel and modules"
-    provides=("linux-headers=${pkgver}" "linux-clear-headers=${pkgver}")
-    conflicts=("linux-clear-headers")
-    options=('!strip')
     mkdir -p $pkgdir/usr/lib
     cp -Pr modules $pkgdir/usr/lib
 }
