@@ -1,11 +1,14 @@
 pkgbase = pixivdeck-bin
-	pkgdesc = pixiv client for Desktop like TweetDeck
+	pkgdesc = pixiv client for Desktop
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/akameco/PixivDeck
 	arch = x86_64
 	license = MIT
-	depends = electron
+	depends = gconf
+	depends = libnotify
+	depends = libxtst
+	depends = libxss
 	provides = pixivdeck
 	conflicts = pixivdeck
 	source = https://github.com/akameco/PixivDeck/releases/download/v1.4.0/PixivDeck_1.4.0_amd64.deb

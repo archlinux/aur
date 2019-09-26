@@ -1,11 +1,11 @@
 pkgname=pixivdeck-bin
 pkgver=1.4.0
-pkgrel=1
-pkgdesc="pixiv client for Desktop like TweetDeck"
+pkgrel=2
+pkgdesc="pixiv client for Desktop"
 arch=("x86_64")
 url="https://github.com/akameco/PixivDeck"
 license=("MIT")
-depends=("electron")
+depends=("gconf" "libnotify" "libxtst" "libxss")
 provides=("pixivdeck")
 conflicts=("pixivdeck")
 source=("https://github.com/akameco/PixivDeck/releases/download/v$pkgver/PixivDeck_${pkgver}_amd64.deb" "license")
