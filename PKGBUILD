@@ -1,7 +1,7 @@
 # Maintainer: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
 pkgname=zig-dev-static
-pkgver=0.4.0+ceec2393
+pkgver=0.4.0+dc3c4197
 pkgrel=1
 pkgdesc="robust, optimal, and maintainable programming language"
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=(
   "https://ziglang.org/builds/zig-linux-x86_64-${pkgver}.tar.xz"
 )
 sha256sums=(
-  'c52a69ee920a6c218c4ec7cf79ab12122e0a4f8a849aa789e54962e51033752e'
+  '437f3575b9aa32b4ea114d79d899e0d6de949d8dab387ca4792dd942fa96d22b'
 )
 
 package() {
