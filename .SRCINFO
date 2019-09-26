@@ -1,0 +1,25 @@
+pkgbase = cadence-claudia
+	pkgdesc = JACK toolbox for audio production. (With claudia)
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://kxstudio.linuxaudio.org/Applications:Cadence
+	arch = x86_64
+	license = GPL2
+	depends = hicolor-icon-theme
+	depends = jack
+	depends = ladish
+	depends = python-dbus
+	depends = python-pyqt5
+	depends = qt5-svg
+	optdepends = a2jmidid: ALSA to JACK MIDI bridge
+	optdepends = jack_capture: recording via Cadence-Render
+	optdepends = pulseaudio-jack: PulseAudio to JACK bridge
+	optdepends = python-rdflib: LADSPA-RDF support in Carla
+	optdepends = zita-ajbridge: ALSA to JACK bridge
+	provides = cadence
+	conflicts = cadence
+	source = cadence-0.9.0.tar.gz::https://github.com/falkTX/Cadence/archive/v0.9.0.tar.gz
+	sha512sums = 381c9c57c1d96452a91969e134420d63ef06f5ec144050779d0a06a1098e8ed1693c70165b6640e04acc448d382e717e71ead1b29ba5043f0668675850cad7d1
+
+pkgname = cadence-claudia
+
