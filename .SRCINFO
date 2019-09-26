@@ -1,6 +1,6 @@
 pkgbase = hydrapaper-git
 	pkgdesc = Wallpaper manager with multimonitor support for GNOME
-	pkgver = 1.9.3.r1.gdf98815
+	pkgver = 1.9.5.r1.gfd82008
 	pkgrel = 1
 	url = https://gitlab.com/gabmus/hydrapaper
 	arch = any
