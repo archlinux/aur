@@ -4,6 +4,7 @@ pkgname=pi-hole-standalone
 _pkgname=pi-hole
 pkgver=4.3.2
 pkgrel=3
+_now=`date +%N`
 pkgdesc='The Pi-hole is an advertising-aware DNS/Web server. Arch alteration for standalone PC.'
 arch=('any')
 license=('EUPL-1.1')
@@ -15,7 +16,7 @@ backup=('etc/pihole/whitelist.txt' 'etc/pihole/blacklist.txt'
 'etc/dnsmasq.d/01-pihole.conf')
 
 source=(https://github.com/$_pkgname/$_pkgname/archive/v$pkgver.tar.gz
-	"https://raw.githubusercontent.com/max72bra/pi-hole-standalone-archlinux-customization/master/arch-server-core-$pkgver.patch"
+	arch-server-core-$pkgver-$_now.patch::"https://raw.githubusercontent.com/max72bra/pi-hole-standalone-archlinux-customization/master/arch-server-core-$pkgver.patch"
 	dnsmasq.include
 	$_pkgname-gravity.service
 	$_pkgname-gravity.timer
@@ -32,7 +33,7 @@ md5sums=('33ea26a46937a0b5d20037639eb0ee34'
 
 prepare() {
   cd "$srcdir"/"$_pkgname"-"$pkgver"
-  patch -Np1 -i "$srcdir"/arch-server-core-$pkgver.patch
+  patch -Np1 -i "$srcdir"/arch-server-core-$pkgver-$_now.patch
 }
 
 package() {
