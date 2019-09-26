@@ -24,6 +24,6 @@ md5sums=("SKIP")
 
 package() {
   cd "${pkgname%-git}"
-  python setup.py install --prefix=/usr --root="$pkgdir/" --optimize=1 --skip-build
+  python setup.py install --prefix=/usr --root="$pkgdir/" --optimize=1
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
