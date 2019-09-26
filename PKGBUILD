@@ -1,15 +1,15 @@
-# Maintainer: Brendan Szymanski <brendan.szymanski1@gmail.com>
+# Maintainer: Brendan Szymanski <bscubed@pm.me>
 
 _pkgname=yuzu
 pkgname=$_pkgname-canary-git
-pkgver=r12432.6fcd9379e
+pkgver=r12673.3d81e936b
 pkgrel=1
 pkgdesc="An experimental open-source Nintendo Switch emulator/debugger"
 arch=('i686' 'x86_64')
 url="https://github.com/yuzu-emu/yuzu-canary"
 license=('GPL2')
 depends=('shared-mime-info' 'desktop-file-utils' 'sdl2' 'qt5-base' 'qt5-multimedia' 'qt5-tools' 'libxkbcommon-x11')
-makedepends=('git' 'cmake' 'python')
+makedepends=('git' 'cmake' 'python2')
 optdepends=('qt5-wayland: for Wayland support')
 source=("$_pkgname::git+https://github.com/yuzu-emu/yuzu-canary")
 md5sums=('SKIP')
