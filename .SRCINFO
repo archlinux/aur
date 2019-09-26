@@ -1,5 +1,5 @@
 pkgbase = python-prov
-	pkgdesc = A library for W3C Provenance Data Model supporting PROV-JSON, PROV-XML and PROV-O (RDF)
+	pkgdesc = A library for W3C Provenance Data Model supporting PROV-JSON, PROV-XML and PROV-O RDF
 	pkgver = 1.5.2
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/prov/
@@ -10,7 +10,7 @@ pkgbase = python-prov
 	depends = python-dateutil
 	depends = python-six
 	depends = python-pydot
-	depends = python-neurdflib
+	depends = python-rdflib
 	source = python-prov-1.5.2.tar.gz::https://github.com/trungdong/prov/archive/1.5.2.tar.gz
 	sha1sums = 9a774a50cc5245b0dea3c4837986d1c2555a89c6
 
