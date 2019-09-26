@@ -1,8 +1,4 @@
-# Upstream name of extension:
-_extname=Mathoid
-# Lowercase variant, without suffix and prefix
-_basepkgname="${_extname,,}"
-
+_basepkgname=mathoid
 pkgname="mediawiki-${_basepkgname}"
 pkgver=0.7.1
 pkgrel=1
@@ -10,7 +6,7 @@ pkgdesc="Service for creating MathML and SVGs"
 source=("https://github.com/wikimedia/${_basepkgname}/archive/v${pkgver}.tar.gz")
 sha256sums=('946cf8a5e0826e8f4631228f8147412905a195de277c5c8f889d8e6e91a72177')
 arch=("any")
-url="https://www.mediawiki.org/wiki/$_extname"
+url="https://www.mediawiki.org/wiki/${_basepkgname}"
 license=('Apache')
 depends=('nodejs' 'librsvg')  # preq xmldom dom-compare bluebird service-runner bunyan js-yaml swagger-router mock-express-response texvcinfo speech-rule-engine svgo
 makedepends=('npm' 'jq')
