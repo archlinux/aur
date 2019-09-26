@@ -2,7 +2,7 @@
 # Contributor: bartus ( aur\at\bartus.33mail.com )
 
 pkgname=makepkg-optimize
-pkgver=12
+pkgver=13
 pkgrel=1
 pkgdesc='Supplemental build and packaging optimizations for makepkg'
 arch=('any')
@@ -11,7 +11,7 @@ url='https://wiki.archlinux.org/index.php/Makepkg-optimize'
 conflicts=(makepkg-optimize{,2} pacman-buildenv_ext-git)
 replaces=('makepkg-optimize2' pacman-buildenv_ext-git)
 depends=('pacman-git')
-optdepends=('upx' 'optipng' 'nodejs-svgo')
+optdepends=('upx' 'optipng' 'nodejs-svgo' 'openmp')
 backup=(etc/makepkg-optimize.conf)
 _buildenv=({pgo,ZZ-lto,graphite,rice}.sh.in)
 _executable=({upx,optipng,svgo}-exec.sh.in)
@@ -21,23 +21,23 @@ source=(${_buildenv[@]}
         ${_executable[@]}
         ${_tidy[@]}
         ${_conf[@]})
-sha1sums=('dae91a563dd767f3e3059240009b40106aadbc35'
-          '7a0118bc4fef1e136211a8b28af731344df30f67'
-          '17b601c832b4af263d6ebdc894ee3ef59f9ee8b4'
-          '891c616c4f2414c503ea88ed60242e67677d88da'
+sha1sums=('a9af81c30f57b7db6a9a52796d79399a4e754791'
+          '3e512ce1dfacc1163ca1ebec3d6821b499498174'
+          'd7a3801037333c582dba976db27cf8896bc1b401'
+          'c99d9cb49dd31924a1cb298bcfe142cef31a9fd3'
           'a893c32f2a3fff8b279025ec60f0c3d88143dc1e'
           '9270b5e33d4508a959688a10c20dec3732763937'
           '34a33b47a8b667f9dc810737c0f598660b962d4c'
           '68292bac87e22885069330dbdc198e13be88ab95'
           '5801de7cd6e2bd462b7e051aa3aa818a30dc7af5'
           '368342c7891345bdbcc4c21e79aa4840ab5b76b9'
-          'f7da4e29ea24c85870ff0e55864f7bafbce7ad8f'
+          '4d11331aeff1c1ec3de3759710acc060769ef274'
           '83a6d62b19184cac1de02c957cd4ea7bbdac9ddb'
           'dea4d727d81ac040846555e59ac7c34eb0978233'
-          '202d11e49a611bb400029512cf159a0f8645a6db'
+          'eef21d80145bf64133206beba26fd7fab5a8f5bc'
           '2e2cd8c680a86518652543fda9092bf2ab594660'
           '981eab856abb43c5e093620cdf4d8bfa2d690805'
-          '8775a34738b8c19238bcedd41180bf113049ed41'
+          '540ce964ef6f3bdda1d7b7fd6297866b1ee895b1'
           'efb3ed7d7d5516259709149d7bcd6ec208c07593'
           '1fc8035e64b739e20c70fbb4eaa5cb7aa1c63c90'
           '5d0cde13b50641371e4ec4d813d6b2dfae493889'
