@@ -13,7 +13,6 @@ optdepends=(
   'kubectl: check cluster status'
   'kubectl-bin: check cluster status - binary package'
 )
-conflicts=('kubernetes-helm-bin')
 license=('Apache')
 source=("https://get.helm.sh/helm-v${pkgver}-${_betaver}-linux-amd64.tar.gz")
 sha256sums=('23705380590bdb3e70e1bc8649fe1c90a75905bdc12ae6e6f6a9c16db9801594')
