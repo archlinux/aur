@@ -1,12 +1,12 @@
 pkgbase = python-drizzlepac-doc
 	pkgdesc = Documentation for DrizzlePac
-	pkgver = 3.0.4
+	pkgver = 3.0.5
 	pkgrel = 1
 	url = http://www.stsci.edu/scientific-community/software/drizzlepac.html
 	arch = i686
 	arch = x86_64
 	license = BSD
-	makedepends = python-drizzlepac=3.0.4
+	makedepends = python-drizzlepac=3.0.5
 	makedepends = graphviz
 	makedepends = python-numpydoc
 	makedepends = python-sphinx_rtd_theme
@@ -14,8 +14,8 @@ pkgbase = python-drizzlepac-doc
 	makedepends = python-sphinx-automodapi
 	makedepends = python-ci_watson
 	makedepends = texlive-latexextra
-	source = https://github.com/spacetelescope/drizzlepac/archive/3.0.4.tar.gz
-	md5sums = 0d84a887002a7570094f3cc48ec11e76
+	source = https://github.com/spacetelescope/drizzlepac/archive/3.0.5.tar.gz
+	md5sums = 00abb7bb702aca33142725fbc8976adc
 
 pkgname = python-drizzlepac-doc
 
