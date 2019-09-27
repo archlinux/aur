@@ -1,5 +1,5 @@
 # Maintainer: dszryan <9117127+dszryan@users.noreply.github.com>
-pkgver=0.1
+pkgver=0.2
 pkgname=wayland-mouse-mapper-git
 pkgrel=1
 pkgdesc="Maps mouse buttons to keys in wayland, configured to swap workspaces under gnome"
@@ -10,7 +10,7 @@ makedepends=('git')
 depends=('libinput>=1.14.1' 'evemu>=2.7.0')
 source=("${pkgname}-${pkgver}::git+https://github.com/dszryan/$pkgname.git")
 md5sums=('SKIP')
-install="INSTALL"
+install="${pkgname}.install"
 
 package() {
 
