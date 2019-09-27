@@ -1,7 +1,7 @@
 # Maintainer: Sergio de la Cruz <sergiod dot lc at gmail dot com>
 
 pkgname=brother-hl2280dw
-pkgver=2.0.4_2
+pkgver=2.1.0_1
 pkgrel=1
 pkgdesc="Brother HL-2280DW CUPS Driver"
 arch=('i686' 'x86_64')
@@ -9,11 +9,9 @@ url='http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/index.html'
 license=('GPL')
 depends=('a2ps' 'cups')
 source=("http://www.brother.com/pub/bsc/linux/dlf/hl2280dwlpr-2.1.0-1.i386.rpm"
-        "http://www.brother.com/pub/bsc/linux/dlf/cupswrapperHL2280DW-${pkgver//_/-}.i386.rpm"
-        "HL2280DW.ppd.patch")
+        "http://www.brother.com/pub/bsc/linux/dlf/cupswrapperHL2280DW-${pkgver//_/-}.i386.rpm")
 md5sums=('efa44d4acc0e62633e2d742e445b811a'
-         'b687b69f530275de86d71cbc46352413'
-         'de9cee3fed4afb1ee7f5516b5bac9f25')
+         'b687b69f530275de86d71cbc46352413')
 
 if [[ "$CARCH" == "x86_64" ]]; then
   depends+=('lib32-glibc')
@@ -29,7 +27,7 @@ package() {
   sed -i -e 's#/usr/local#/usr/share#' "$srcdir/usr/local/Brother/Printer/HL2280DW/lpd/filterHL2280DW"
 
   mkdir -p "$srcdir/usr/share/cups/model/"
-  
+
   # Run the install script to extract the PPD file
   . "${_cupswrapperFile}"
 
@@ -39,9 +37,6 @@ package() {
 
   # Change the PPD description to match other listing for Brother printers in CUPS
   sed -i -e 's/Brother HL2280DW for CUPS/Brother HL-2280DW/' "$srcdir/usr/share/cups/model/HL2280DW.ppd"
-
-  # Add margin correction (alignmargins output: https://wiki.linuxfoundation.org/en/OpenPrinting/Database/CUPSDocumentation)
-  patch "$srcdir/usr/share/cups/model/HL2280DW.ppd" < "$srcdir/HL2280DW.ppd.patch"
 
   # Replace references to $srcdir
   sed -i -e "s#$srcdir/usr#/usr#" "$srcdir/usr/lib/cups/filter/brlpdwrapperHL2280DW"
