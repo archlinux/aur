@@ -13,7 +13,7 @@ provides=('diagrammer')
 conflicts=('diagrammer')
 depends=('java-environment')
 makedepends=('mill' 'git')
-source=('git+https://github.com/sequencer/diagrammer#branch=mill_fix')
+source=('git+https://github.com/freechipsproject/diagrammer.git')
 md5sums=('SKIP')
 
 pkgver() {
