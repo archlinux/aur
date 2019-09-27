@@ -1,7 +1,7 @@
 # Maintainer: osch <oliver@luced.de>
 pkgname=surge-synthesizer
-pkgver=1.6.2
-scmver=1.6.2
+pkgver=1.6.2.1
+scmver=1.6.2.1
 pkgrel=1
 pkgdesc="Surge Synthesizer plugin"
 arch=('x86_64')
