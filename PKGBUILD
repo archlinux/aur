@@ -2,7 +2,7 @@
 
 pkgname=tinyfecvpn
 pkgver=20180820.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A Lightweight VPN with Build-in Forward Error Correction Support"
 arch=('x86_64')
 url="https://github.com/wangyu-/tinyfecVPN"
@@ -16,7 +16,7 @@ source=("${pkgname}-${pkgver}::git://github.com/wangyu-/tinyfecvpn.git#tag=${pkg
 noextract=()
 sha256sums=('SKIP'
             "86a54964f05ab480251b3906c9618d3818a0f2b3d6ec8a0ec62c125a108439e8"
-            "d7d68946248f702be0fe941ea15149236f05d0c7563a0c5074b00c5cc861542b"
+	    "be76c06962fdf06a7d8c7ced6eadd703207aaba5d3761d9c9dc55322ff451534"
             "645393e08311063a81e91ab7972768c5059f29f601ac5b7858242066f29928f2"
 	    "f7a46223bd04ed6e5552aee14079c6ae9165796da41d38b7e98af7914583d4ef")
 

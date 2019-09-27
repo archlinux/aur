@@ -29,6 +29,9 @@ def main():
         elif key == "fec-mode":
             cmd_args.append("--mode")
             cmd_args.append(str(value))
+        elif key == "key":
+            cmd_args.append("-k")
+            cmd_args.append(str(value))
         elif key in ("mode", "server", "port"):
             pass
         elif key in opts:
