@@ -19,7 +19,7 @@ source=("$pkgname-$pkgver.zip::https://github.com/brave/brave-browser/releases/d
         "$pkgname.desktop"
         "braveAbout.png")
 options=(!strip)
-sha512sums=('20a06da2be4e9d053664da0638042dfae18a9b88cd9e7aa1a7409d2948ef8be0288fc05b72d6bec871ecf0cfff92a39199b103a00f9dc3cb106392aadcec893c'
+sha512sums=('e2908c83459a79138b6f6522e4b8f3fc2856db3504d8e9b28a935d901ef0bf6ba6ed370d1bc5708631946078c2d3c45fcb73a41cd86654e5530105f15ec2d61c'
             'b8823586fead21247c8208bd842fb5cd32d4cb3ca2a02339ce2baf2c9cb938dfcb8eb7b24c95225ae625cd0ee59fbbd8293393f3ed1a4b45d13ba3f9f62a791f'
             '047bedb0ce6876e9a61cc36db066f760fee9d949f771a83a97783e9a8a434c729dfdefababad6105e1d0556ce8a4bbaeb7b244a5be4bd9fa417be5a82dff0888'
             '539a729fc0ec84d104ffda3ec94f9e5c908ca7269f61414bccff2c47ebcc845dd6c871b7013e4735686ee4fc7793d8add334ad87415effe91706823eae4fb68b'
