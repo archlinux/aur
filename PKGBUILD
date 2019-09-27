@@ -4,14 +4,14 @@
 _plasma=false
 
 pkgname=optimus-manager-qt-git
-pkgver=1.3.0.r0.gdf1fa13
+pkgver=1.3.3.r0.gc5ebb8d
 pkgrel=1
 pkgdesc="A Qt interface for Optimus Manager that allows to configure and switch GPUs on Optimus laptops using the tray menu"
 arch=('x86_64')
 url="https://github.com/Shatur95/optimus-manager-qt"
 license=('GPL3')
 depends=('qt5-base' 'optimus-manager>=1.0')
-makedepends=('qt5-tools' 'git')
+makedepends=('qt5-tools' 'libxrandr' 'git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("git+https://github.com/Shatur95/optimus-manager-qt")
