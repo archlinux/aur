@@ -3,7 +3,7 @@
 _pkgname=diagrammer
 _sbtver=2.12.7
 pkgname=diagrammer-git
-pkgver=r80.aa501ef
+pkgver=r81.18bae5b
 pkgrel=1
 pkgdesc='Provides dot visualizations of chisel/firrtl circuites'
 arch=('any')
@@ -12,11 +12,9 @@ license=('BSD')
 provides=('diagrammer')
 conflicts=('diagrammer')
 depends=('java-environment')
-makedepends=('sbt' 'git')
-source=('git+https://github.com/sequencer/diagrammer#branch=mill_fix'
-       'diagrammer.sh')
-md5sums=('SKIP'
-         '73a883d13e66eae2255be88ae6eeab3f')
+makedepends=('mill' 'git')
+source=('git+https://github.com/sequencer/diagrammer#branch=mill_fix')
+md5sums=('SKIP')
 
 pkgver() {
   cd $srcdir/$_pkgname
@@ -26,13 +24,12 @@ pkgver() {
 
 build(){
   cd $srcdir/$_pkgname
-  mill "$_pkgname[$_sbtver].assembly"
+  mill "$_pkgname.assembly"
 }
 
 package() {
-  install -d "$pkgdir"/usr/share/licenses/"$_pkgname"
-  install -d "$pkgdir"/usr/bin
-  install -Dm755 $srcdir/$_pkgname.sh $pkgdir/usr/bin/$_pkgname
-  install -Dm755 $srcdir/$_pkgname/out/$_pkgname/$_sbtver/assembly/dest/out.jar $pkgdir/usr/share/scala/$_pkgname/$_pkgname.jar
+  install -d $pkgdir/usr/share/licenses/$_pkgname
+  install -d $pkgdir/usr/bin
+  install -Dm755 $srcdir/$_pkgname/out/$_pkgname/$_sbtver/assembly/dest/out.jar $pkgdir/usr/bin/$_pkgname
   install -Dm644 $srcdir/$_pkgname/LICENSE.txt $pkgdir/usr/share/licenses/$_pkgname/LICENSE.txt
 }
