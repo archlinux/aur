@@ -56,13 +56,13 @@ _BATCH_MODE=n # enable batch mode
 ##
 
 _major=5
-_minor=2
+_minor=3
 #_patchlevel=0
 #_subversion=1
 _basekernel=${_major}.${_minor}
 _srcname=linux-${_basekernel}
 pkgbase=linux-pf
-_pfrel=8
+_pfrel=1
 _kernelname=-pf
 _pfpatchhome="https://github.com/pfactum/pf-kernel/compare"
 _pfpatchname="v$_major.$_minor...v$_major.$_minor-pf$_pfrel.diff"
