@@ -5,7 +5,7 @@
 
 pkgname=emby-server-beta
 pkgver=4.3.0.10
-pkgrel=1
+pkgrel=2
 _ffmpeg_ver=2019_04_09
 _ffdetect_ver=4.0.3
 pkgdesc='Bring together your videos, music, photos, and live television'
@@ -44,7 +44,7 @@ makedepends=('ffnvcodec-headers8.1'
              'nasm')
 provides=('emby-server')
 conflicts=('emby-server')
-source=("https://github.com/MediaBrowser/Emby.Releases/releases/download/${pkgver}/embyserver-netframework_${pkgver}.zip"
+source=("https://github.com/MediaBrowser/Emby.Releases/releases/download/${pkgver}/embyserver-netcore_${pkgver}.zip"
         "https://mediabrowser.github.io/embytools/ffmpeg-${_ffmpeg_ver}.tar.gz"
         "https://mediabrowser.github.io/embytools/ffdetect_${_ffdetect_ver}_x64.tar.xz"
         'emby-server'

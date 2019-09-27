@@ -1,7 +1,7 @@
 pkgbase = emby-server-beta
 	pkgdesc = Bring together your videos, music, photos, and live television
 	pkgver = 4.3.0.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://emby.media
 	arch = x86_64
 	license = custom
@@ -39,7 +39,7 @@ pkgbase = emby-server-beta
 	conflicts = emby-server
 	noextract = license.docx
 	backup = etc/conf.d/emby-server
-	source = https://github.com/MediaBrowser/Emby.Releases/releases/download/4.3.0.10/embyserver-netframework_4.3.0.10.zip
+	source = https://github.com/MediaBrowser/Emby.Releases/releases/download/4.3.0.10/embyserver-netcore_4.3.0.10.zip
 	source = https://mediabrowser.github.io/embytools/ffmpeg-2019_04_09.tar.gz
 	source = https://mediabrowser.github.io/embytools/ffdetect_4.0.3_x64.tar.xz
 	source = emby-server
