@@ -3,7 +3,7 @@
 # Contributor: Zhengyu Xu <xzy3186@gmail.com>
 
 pkgname=insync-nautilus
-pkgver=3.0.19.40421
+pkgver=3.0.20.40428
 pkgrel=1
 pkgdesc="Python extension and icons for integrating Insync with Nautilus"
 arch=('any')
@@ -12,7 +12,7 @@ license=('custom:insync')
 depends=('insync' 'nautilus' 'python2-nautilus')
 options=(!strip)
 source=("https://d2t3ff60b2tol4.cloudfront.net/builds/${pkgname}_${pkgver}_all.deb")
-sha512sums=('d71f1b25a93c8289617915cc1acbb3022dad85b66ea8a201d4c4e78e30f8a1a851737f2b006c6309d6780564e182fbbcab0950f319f8242e1813cbfe93bd0742')
+sha512sums=('d5da3a685143dd07603ef26191b0a50ad1a2ea42bb8b6ff15cd8143479308a6b18577d1a5680a110592088831f48e920697ce0199d95a54120e7468a0fd6d927')
 
 prepare() {
 	tar xvf data.tar.gz
