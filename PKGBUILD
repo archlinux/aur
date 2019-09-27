@@ -4,8 +4,8 @@
 
 set -u
 pkgname='uhubctl'
-pkgver='2.0.0'
-pkgrel='2'
+pkgver='2.1.0'
+pkgrel='1'
 pkgdesc='control USB per-port power switching on smart USB hubs'
 arch=('x86_64')
 _github='mvp'
@@ -15,7 +15,7 @@ depends=('libusb>=1.0.12')
 _verwatch=("https://github.com/${_github}/${pkgname}/releases.atom" "\s\+<title>${pkgname}\sv*\([0-9\.]\+\)</title>.*" 'f')
 _srcdir="${pkgname}-${pkgver}"
 source=("${pkgname}-${pkgver}.tgz::https://github.com/${_github}/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('4c31278b2c03e5be5a696c3088bc86cf2557a70e00f697799c163aba18e3c40e')
+sha256sums=('227fdd541067b84eaa0e15cdc171458a56de7591f7a1deaff3e6d42d2809450b')
 
 prepare() {
   set -u
