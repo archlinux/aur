@@ -1,8 +1,8 @@
 [Unit]
-Description=Renew Let’s Encrypt certificats monthly
+Description=Renew Let’s Encrypt certificats daily
 
 [Timer]
-OnCalendar=monthly
+OnCalendar=daily
 RandomizedDelaySec=12h
 Persistent=true
 
