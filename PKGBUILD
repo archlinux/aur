@@ -11,7 +11,7 @@ url="http://github.com/mk-fg/${_pkgname%-git}"
 license=("MIT")
 arch=("any")
 makedepends=("python-setuptools" "python2-setuptools")
-source=("$_pkgname::git+https://github.com/mk-fg/${_pkgname%-git}.git")
+source=("$_pkgname::git+$url.git")
 md5sums=("SKIP")
 
 pkgver() {
