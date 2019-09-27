@@ -4,7 +4,7 @@
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo at gmail dot com>
 
 pkgname=geary-git
-pkgver=r5013.b153755d
+pkgver=r5046.41b72d59
 pkgrel=1
 pkgdesc="An email application built around conversations, for the GNOME 3 desktop."
 arch=(i686 x86_64)
@@ -19,7 +19,7 @@ conflicts=('geary')
 source=('git+https://gitlab.gnome.org/GNOME/geary.git'
         'force-system-libhandy.patch')
 sha256sums=('SKIP'
-            '3817bad616f8187c45d47101b62f2dcc5172717dfbf91892e81d88905e2406cf')
+            'e55e842557f68c3630a2ad1fa19b09bbaf0d1bdeb556650dd9065794cdc80de9')
 
 pkgver() {
 	cd "$srcdir/geary"

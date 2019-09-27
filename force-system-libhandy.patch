@@ -1,16 +1,17 @@
-diff --u a/meson.build b/meson.build
+diff --git a/meson.build b/meson.build
+index 98d4527f..d4015e7e 100644
 --- a/meson.build
 +++ b/meson.build
-@@ -88,7 +88,7 @@ iso_codes = dependency('iso-codes')
+@@ -88,7 +88,7 @@ gthread = dependency('gthread-2.0', version: '>=' + target_glib)
+ iso_codes = dependency('iso-codes')
  javascriptcoregtk = dependency('javascriptcoregtk-4.0', version: '>=' + target_webkit)
  json_glib = dependency('json-glib-1.0', version: '>= 1.0')
- libcanberra = dependency('libcanberra', version: '>= 0.28')
 -libhandy = dependency('libhandy-0.0', version: '>= 0.0.9', required: false)
 +libhandy = dependency('libhandy-0.0', version: '>= 0.0.9')
  libmath = cc.find_library('m')
+ libpeas = dependency('libpeas-1.0', version: '>= 1.24.0')
  libsecret = dependency('libsecret-1', version: '>= 0.11')
- libsoup = dependency('libsoup-2.4', version: '>= 2.48')
-@@ -108,26 +108,6 @@ if not enchant.found()
+@@ -109,26 +109,6 @@ if not enchant.found()
    enchant = dependency('enchant', version: '>=1.6')
  endif
  
