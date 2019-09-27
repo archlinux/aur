@@ -1,0 +1,24 @@
+pkgbase = beef-git
+	pkgdesc = The Browser Exploitation Framework
+	pkgver = 20190926.d6972adf
+	pkgrel = 1
+	url = http://beefproject.com/
+	install = beef-git.install
+	arch = x86_64
+	license = GPLv2
+	makedepends = git
+	depends = ruby
+	depends = ruby-bundler
+	depends = sqlite
+	depends = nodejs
+	source = beef-git::git+https://github.com/beefproject/beef.git
+	source = https://geolite.maxmind.com/download/geoip/database/GeoLite2-City.tar.gz
+	source = beef-git.install
+	source = beef-git.sh
+	sha256sums = SKIP
+	sha256sums = 417e0c0c5f0b7004373e9bd6a232e6befc5be50fc6f4f5c7b9bf19b15fe3ee68
+	sha256sums = 3c70f6d41cf6454ffedd58c9ab6c498578e72f0e46a35c032053cad88efe9b7c
+	sha256sums = cf7585979b47269576aaf915d923ae2b7e2fcf0d64fff1ec702763fad13a3d51
+
+pkgname = beef-git
+
