@@ -1,0 +1,3 @@
+post_install() {
+    echo "alias h3='HELM_HOME=$HOME/.helm3 /usr/bin/helm3'" >> /etc/bash.bashrc
+}
