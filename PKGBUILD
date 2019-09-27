@@ -1,7 +1,7 @@
 # Maintainer: Bleuzen <supgesu at gmail dot com>
 
 pkgname=proaudio-meta
-pkgver=2019.08.31
+pkgver=2019.09.27
 pkgrel=1
 pkgdesc="Metapackage for most useful audio production software"
 arch=("x86_64")
@@ -20,10 +20,7 @@ depends=("jack2"
          "pulseeffects"
          "helm"
          "zynaddsubfx"
-         "drumkv1"
-         "padthv1"
-         "samplv1"
-         "synthv1"
+         "drumkv1" "padthv1" "samplv1" "synthv1"
          "avldrums.lv2"
          "geonkick"
          "swh-plugins"
@@ -39,4 +36,4 @@ depends=("jack2"
          "dpf-plugins"
          "dragonfly-reverb"
          "noise-repellent"
-         "guitarix2")
+         "guitarix2" "gxplugins.lv2")
