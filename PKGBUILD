@@ -16,7 +16,7 @@ replaces=()
 options=()
 source=("https://gitlab.com/inivation/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
 noextract=()
-sha256sums=('7c770056f76b0e8ae9079ed7c6a9cc03706d0f3b70b6605c0de5b769ee3567d8')
+sha256sums=('155e6e86f7b2bd315e701d0fac627b8f42d615bf25a2f44823330351de9d3520')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
