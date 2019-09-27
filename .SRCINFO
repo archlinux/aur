@@ -1,0 +1,34 @@
+pkgbase = python-slycot
+	pkgdesc = Python wrapper for selected SLICOT routines, notably including solvers for Riccati, Lyapunov and Sylvester equations.
+	pkgver = 0.3.5.0
+	pkgrel = 1
+	url = http://github.com/python-control/Slycot
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = cmake
+	makedepends = gcc-fortran
+	makedepends = lapack
+	makedepends = python-scikit-build>=0.8.1
+	makedepends = python2-scikit-build>=0.8.1
+	makedepends = python-nose
+	makedepends = python2-nose
+	makedepends = python-coverage
+	makedepends = python2-coverage
+	makedepends = python2-configparser
+	depends = python-numpy
+	depends = python2-numpy
+	provides = python-slycot
+	conflicts = python-slycot-git
+	source = https://files.pythonhosted.org/packages/source/s/slycot/slycot-0.3.5.0.tar.gz
+	sha256sums = cad98d5ea4f0a034cf398c39189f587620a0b03f1d4b71e77cd622a327f13adf
+
+pkgname = python-slycot
+	depends = python-numpy
+	conflicts = python-slycot-git
+
+pkgname = python2-slycot
+	depends = python2-numpy
+	conflicts = python2-slycot-git
+
