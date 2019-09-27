@@ -3,7 +3,7 @@
 pkgname=beef-git
 _pkgname=beef
 pkgver=20190926.d6972adf
-pkgrel=1
+pkgrel=2
 pkgdesc="The Browser Exploitation Framework"
 arch=('x86_64')
 url="http://beefproject.com/"
