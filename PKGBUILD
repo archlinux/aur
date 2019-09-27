@@ -3,7 +3,7 @@ _orgname=OpenOrienteering
 _pkgname=mapper
 pkgname=${_orgname,,}-${_pkgname}
 pkgver=0.8.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Map drawing program from OpenOrienteering'
 arch=('i686' 'x86_64')
 url='https://www.openorienteering.org/apps/mapper/'
@@ -27,6 +27,7 @@ build() {
   cmake ..                      \
     -DCMAKE_BUILD_TYPE=Release  \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_CXX_FLAGS="-DACCEPT_USE_OF_DEPRECATED_PROJ_API_H" \
     -DLICENSING_PROVIDER=arch   \
     -DMapper_PACKAGE_NAME=${pkgname} \
     -Wno-dev
