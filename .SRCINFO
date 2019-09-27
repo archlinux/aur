@@ -5,6 +5,7 @@ pkgbase = tad-git
 	url = https://marlam.de/tad/
 	arch = x86_64
 	license = MIT
+	makedepends = cmake
 	makedepends = git
 	depends = ffmpeg
 	depends = hdf5

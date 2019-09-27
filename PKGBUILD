@@ -8,31 +8,31 @@ arch=('x86_64')
 url="https://marlam.de/tad/"
 license=('MIT')
 depends=('ffmpeg' 'hdf5' 'libjpeg' 'libpng' 'libtiff')
-makedepends=('git')
+makedepends=('cmake' 'git')
 provides=('tad')
 conflicts=('tad')
 source=('git+https://git.marlam.de/git/tad.git')
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/tad"
-	git describe --long --tags | sed 's/tad-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$srcdir/tad"
+  git describe --long --tags | sed 's/tad-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-	cd "$srcdir/tad"
+  cd "$srcdir/tad"
   mkdir build
   cd build
   cmake -DCMAKE_INSTALL_PREFIX=/usr ..
 }
 
 build() {
-	cd "$srcdir/tad/build"
+  cd "$srcdir/tad/build"
   make
 }
 
 package() {
-	cd "$srcdir/tad/build"
+  cd "$srcdir/tad/build"
   make DESTDIR="$pkgdir" install
   install -Dm644 ../LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
