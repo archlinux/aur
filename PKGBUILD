@@ -1,6 +1,6 @@
 # Maintainer: Bruce Zhang
 pkgname=postman
-pkgver=7.7.3
+pkgver=7.8.0
 pkgrel=1
 pkgdesc='Build, test, and document your APIs faster'
 arch=('x86_64')
@@ -11,7 +11,7 @@ provides=('postman')
 conflicts=('postman-bin')
 options=('!strip')
 source_x86_64=(
-  "$pkgname-$pkgver-x86_64.src.tar.gz::https://dl.pstmn.io/download/version/$pkgver/linux64"
+  "$pkgname-$pkgver-x86_64.orig.tar.gz::https://dl.pstmn.io/download/version/$pkgver/linux64"
 )
 source=(
   "EULA.pdf::https://www.getpostman.com/terms/Postman_EULA_May_2018.pdf"
@@ -21,7 +21,7 @@ source=(
 sha256sums=('bbc2f4a8db8fa55d854f7fe4a41339dd02522b7e77879fc7b6796819bceb9a33'
             'cf4b62b0fccdec77a24abc350a03082a521fc1bc533feb1781e83a4a170424b2'
             '25045b9c1748b29a359017d7cd0052d62798d9217900c1db94edf259ed1592ac')
-sha256sums_x86_64=('2d402aa96c43f2a8e0f8228648c7321e14215dbff1abe5dd8f020360f7599dda')
+sha256sums_x86_64=('e2c571675e8dc98ebdb77c1bdbafc8a2d51c60a408ef552f8e84b5baa8655901')
 
 package() {
   cd "$srcdir/Postman/app/resources/app"
