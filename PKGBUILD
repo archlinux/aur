@@ -4,7 +4,7 @@
 
 set -u
 pkgname='miller'
-pkgver='5.4.0'
+pkgver='5.6.2'
 pkgrel='1'
 pkgdesc='sed, awk, cut, join, and sort for name-indexed data such as CSV and tabular JSON.'
 arch=('x86_64' 'i686')
@@ -14,9 +14,9 @@ depends=('glibc')
 makedepends=('make' 'gcc' 'flex' 'ctags' 'valgrind' 'asciidoc' 'autoconf')
 _verwatch=("${url}/releases" ".*/mlr-\([0-9.]\+\)\.tar\.gz.*" 'f') # mlr RSS is filled with everything but releases
 _srcdir="mlr-${pkgver}"
-source=("${url}/releases/download/${pkgver}/mlr-${pkgver}.tar.gz")
+source=("${url}/releases/download/v${pkgver}/mlr-${pkgver}.tar.gz")
 #source[0]='https://github.com/johnkerl/miller/archive/master.tar.gz'; _srcdir='miller-master'
-sha256sums=('d9a7ed10a1a5e71082c33d489f77ab9caba6e6c4f9bf0f6c3958201b64974f7e')
+sha256sums=('29b69cf8d0051688aeba3f6998d9b69baea1c9d0a2c14fef56cdb6fa03110eab')
 
 prepare() {
   set -u
