@@ -36,7 +36,6 @@ source=("evelauncher.desktop"
         "evewinetricks"
         "evebackup.desktop"
         "evebackup"
-        "qt.conf"
         "build_installer.sh"
         "setup.sh.in"
         "eve-icons.tar.gz"
@@ -83,13 +82,12 @@ package() {
         cp ${srcdir}/evesetup.shlib ${pkgdir}/opt/${pkgname}/lib
         cp -r ${srcdir}/icons ${pkgdir}/usr/share/
         rm -rf ${srcdir}/evelauncher/resources/ ${srcdir}/evelauncher/plugins/
-        rm -f ${srcdir}/evelauncher/*Qt* ${srcdir}/evelauncher/libcrypto*
+        rm -f ${srcdir}/evelauncher/*[Qq]t* ${srcdir}/evelauncher/libcrypto*
         rm -f ${srcdir}/evelauncher/libicu* ${srcdir}/evelauncher/libssl*
         rm -f ${srcdir}/evelauncher/libpng* ${srcdir}/evelauncher/libxcb*
         cp -f ${srcdir}/evelauncher.sh.real ${srcdir}/evelauncher/evelauncher.sh
         chmod 0755 ${srcdir}/evelauncher/*
         chmod 0644 ${srcdir}/evelauncher/*.qm ${srcdir}/evelauncher/errorpage/*
-        cp -pf ${srcdir}/qt.conf ${srcdir}/evelauncher
         ln -sf evelauncher.sh ${srcdir}/evelauncher/LogLite.sh
         ln -sf libgpr.so.6.0.0 ${srcdir}/evelauncher/libgpr.so
         ln -sf libgpr.so.6.0.0 ${srcdir}/evelauncher/libgpr.so.6
@@ -116,9 +114,8 @@ sha256sums=('ce85defa2698ea72e88221d72424fb953f86836494ecc0e4006f41ec89682af4'
             'f438c7002eaf8e1186a838ac2e803242b7a2c98a22cf49622eb4a64cf4b202ec'
             '04c102d6db1bb8d4159c41f32ec0aa95846c0fb519841a3c1428ab20c850e9cf'
             '25c84d6823badf7c04dd316857b144b614a917943baeb8dc769b27cd029071ff'
-            '2520a9b19f2827fa2634ea2acae3a6f61e73aada1af0eb2029e95709f0c8927d'
             '498c21e2ab8ef8e789d5d99265678a2784e6d0ddbd407a520e107412fd8bfd0d'
-            '70a9f99442527fbefa9767582e20232b7c7f5241fd635a036d3beac746e61733'
+            '03b2a29f146a0ff83fc263e149dce309665626e161328598411da97e0ebab104'
             '69b98d923c08c6fb035c0c6905ec5e9c73273b694f8f3497777d44597dbe63e3'
             '762db1df07dfcf526fe634b4b589a08e8affefb2f79f02cff2624c70e0820422'
             '47accd49b64d624c6a6dee42952f8627aaabdd315fad85ef037507745d393f1a'
