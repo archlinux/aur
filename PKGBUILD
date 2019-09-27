@@ -2,14 +2,14 @@
 
 _name="pylatex"
 pkgname="python-${_name}-git"
-pkgver=1.3.0.r701.4839531
-pkgrel=1
+pkgver=1.3.1.r721.ae3e591
+pkgrel=2
 pkgdesc="A Python library for creating LaTeX files (git version)"
 arch=("any")
 url="https://jeltef.github.io/PyLaTeX/"
 license=("MIT")
-depends=("python")
-makedepends=("git")
+depends=("python-ordered-set")
+makedepends=("git" "python-setuptools")
 optdepends=("python-numpy" "python-matplotlib" "python-quantities")
 provides=("python-${_name}")
 conflicts=("python-${_name}")
