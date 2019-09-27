@@ -3,7 +3,7 @@ pkgbase=python-drizzlepac
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=3.0.4
+pkgver=3.0.5
 pkgrel=1
 pkgdesc="AstroDrizzle for HST images"
 arch=('i686' 'x86_64')
@@ -30,7 +30,7 @@ makedepends=('python-setuptools'
 #checkdepends=('python-pytest-remotedata' 'python-nose' 'python-ci_watson' 'python-crds')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         "https://raw.githubusercontent.com/spacetelescope/drizzlepac/master/LICENSE.txt")
-md5sums=('6f2224f9dd8dc6eaaf8d837962f6a026'
+md5sums=('66e1bb48229b853c3053d42534d5abf8'
          'b45bee901c15ab7e1ac3e5e3626d535d')
 _pyver=$(python -V | cut -c 8-10)
 
