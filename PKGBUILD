@@ -2,7 +2,7 @@
 
 pkgname=tinyfecvpn
 pkgver=20180820.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A Lightweight VPN with Build-in Forward Error Correction Support"
 arch=('x86_64')
 url="https://github.com/wangyu-/tinyfecVPN"
@@ -27,12 +27,12 @@ prepare() {
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    make amd64
+    make nolimit 
 }
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    install -D -m 755 tinyvpn_amd64 "${pkgdir}/usr/bin/tinyvpn"
+    install -D -m 755 tinyvpn "${pkgdir}/usr/bin/tinyvpn"
     cd "${srcdir}"
     install -D -m 644 tinyvpn.service "${pkgdir}/usr/lib/systemd/system/tinyvpn.service"
     install -D -m 644 conf.json "${pkgdir}/usr/share/doc/tinyfecvpn/conf.json"
