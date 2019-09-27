@@ -5,7 +5,7 @@
 
 pkgname=zfs-utils
 pkgver=0.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Userspace utilities for the Zettabyte File System."
 arch=("i686" "x86_64")
 url="https://zfsonlinux.org/"
@@ -59,7 +59,8 @@ package() {
     # Remove uneeded files
     rm -r "${pkgdir}"/etc/init.d
     rm -r "${pkgdir}"/etc/sudoers.d #???
-    rm -r "${pkgdir}"/usr/lib/dracut
+    # We're experimenting with dracut in [extra], so start installing this.
+    #rm -r "${pkgdir}"/usr/lib/dracut
     rm -r "${pkgdir}"/usr/lib/modules-load.d
     rm -r "${pkgdir}"/usr/share/initramfs-tools
     rm -r "${pkgdir}"/usr/share/zfs
