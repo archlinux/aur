@@ -1,4 +1,4 @@
-# $Id$
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 # Contributor: Balló György <ballogyor+arch at gmail dot com>
 
 pkgname=crusta
@@ -30,9 +30,9 @@ build() {
 
 package() {
 	cd $_pkgname-$pkgver
-	install -Dm755 $pkgname/crusta "$pkgdir/usr/bin/crusta"
-	install -Dm644 $pkgname/res/drawables/icon.svg "$pkgdir/usr/share/pixmaps/crusta.svg"
-	install -Dm644 Crusta.desktop "$pkgdir/usr/share/applications/crusta.desktop"
-	install -dm755 "$pkgdir/usr/share/crusta/"
-	cp -r 3rd_party sidepanel speeddial "$pkgdir/usr/share/crusta/"
+	install -Dm755 $pkgname/crusta "$pkgdir"/usr/bin/crusta
+	install -Dm644 $pkgname/res/drawables/icon.svg "$pkgdir"/usr/share/pixmaps/crusta.svg
+	install -Dm644 Crusta.desktop "$pkgdir"/usr/share/applications/crusta.desktop
+	install -dm755 "$pkgdir"/usr/share/crusta/
+	cp -r 3rd_party sidepanel speeddial "$pkgdir"/usr/share/crusta/
 }
