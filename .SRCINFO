@@ -1,0 +1,10 @@
+pkgbase = gopherjs
+	pkgver = 1.13
+	pkgrel = 1
+	arch = any
+	makedepends = go
+	source = git+https://github.com/gopherjs/gopherjs#branch=go1.13
+	md5sums = SKIP
+
+pkgname = gopherjs
+

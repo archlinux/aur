@@ -1,0 +1,8 @@
+/gopherjs
+/src
+/pkg
+*.tar
+*.gz
+*.xz
+*.txz
+*.tgz
