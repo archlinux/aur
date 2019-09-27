@@ -1,12 +1,12 @@
 pkgbase = kustomize-bin
 	pkgdesc = Customization of Kubernetes YAML configurations
-	pkgver = 3.2.0
+	pkgver = 3.2.1
 	pkgrel = 1
 	url = https://github.com/kubernetes-sigs/kustomize
 	arch = x86_64
 	license = Apache
-	source = https://github.com/kubernetes-sigs/kustomize/releases/download/v3.2.0/kustomize_3.2.0_linux_amd64
-	sha256sums = 7db89e32575d81393d5d84f0dc6cbe444457e61ce71af06c6e6b7b6718299c22
+	source = https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv3.2.1/kustomize_kustomize.v3.2.1_linux_amd64
+	sha256sums = a91b38778945e8a63fe70bc7522703a94c1d572d5dcee245e96647359e1fd04b
 
 pkgname = kustomize-bin
 
