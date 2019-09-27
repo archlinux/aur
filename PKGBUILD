@@ -9,7 +9,7 @@ set -u
 _pkgname=lynx
 pkgname="${_pkgname}-current"
 _basever='2.9.0'
-pkgver="${_basever}dev.1"
+pkgver="${_basever}dev.4"
 pkgrel='1'
 pkgdesc='A text browser for the World Wide Web (current development version)'
 arch=('i686' 'x86_64')
@@ -25,7 +25,7 @@ _verwatch=("http://invisible-mirror.net/archives/lynx/tarballs/?C=M;O=D" "${_pkg
 #_srcdir="lynx${_basever//./-}"
 _srcdir="lynx${pkgver}"
 source=("http://invisible-mirror.net/archives/lynx/tarballs/${_pkgname}${pkgver}.tar.bz2") #{,.asc})
-sha256sums=('a907afa7c9cfc38cc7c6b4ce5d5ff6d2ae2bfd4497230e831567c0d506caecb9')
+sha256sums=('043aaf753de917687094bc80c37db93390904b573c13e82dbd1756de4c00af00')
 #validpgpkeys=('0AFD1FFEEA2EA063B959ACDA5DDF8FB7688E31A6')
 
 _configure() {
