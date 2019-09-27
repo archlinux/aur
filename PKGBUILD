@@ -1,7 +1,7 @@
 # Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _cranname=callr
-_cranver=3.3.1
+_cranver=3.3.2
 pkgname=r-${_cranname}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -12,7 +12,7 @@ license=('GPL3')
 depends=('r' 'r-processx' 'r-r6')
 optdepends=('r-cliapp' 'r-covr' 'r-crayon' 'r-pingr' 'r-ps' 'r-testthat' 'r-withr')
 source=("http://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('c42a80f6cd6cb4c628977b5ce8533f98')
+md5sums=('b9241e4c8c3b90d40734161680543374')
 
 build(){
     cd "${srcdir}"
