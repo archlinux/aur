@@ -1,12 +1,12 @@
 post_install() {
   echo
   echo "Default username and password in use! "
-  echo "Change the beef.credentials.passwd in /etc/beef-xss/config.yaml"
+  echo "Change the beef.credentials.passwd in /usr/share/beef/config.yaml"
   echo
 }
 
 # post_remove(){
-#   rm -rf /etc/beef-xss
+#   rm -rf /usr/share/beef
 # }
 
 # vim: ts=2 sw=2 et:

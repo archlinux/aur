@@ -19,8 +19,8 @@ source=("${pkgname}::git+${_url}.git"
 install=${pkgname}.install
 sha256sums=('SKIP'
   '417e0c0c5f0b7004373e9bd6a232e6befc5be50fc6f4f5c7b9bf19b15fe3ee68'
-  '3c70f6d41cf6454ffedd58c9ab6c498578e72f0e46a35c032053cad88efe9b7c'
-  'cf7585979b47269576aaf915d923ae2b7e2fcf0d64fff1ec702763fad13a3d51')
+  'ba866d77f4dfd95685a34ca7a00482dc35f20b7101e1c9de5975e776341c6653'
+  '98d72df13e4f61271afd623070a5e81c9edf2e5b4f39d71b45f3279e255649a0')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
@@ -45,13 +45,13 @@ build() {
 }
 
 package() {
-  # cp -r src/beef-git/* pkg/etc/beef
-  install -d "${pkgdir}/etc/${_pkgname}"
-  cp -r "${srcdir}/${pkgname}"/* "${pkgdir}/etc/${_pkgname}"
+  # cp -r src/beef-git/* pkg/usr/share/beef
+  install -d "${pkgdir}/usr/share/${_pkgname}"
+  cp -r "${srcdir}/${pkgname}" "${pkgdir}/usr/share/${_pkgname}"
 
   # update vendor path
-  install -d "${pkgdir}/etc/${_pkgname}/.bundle"
-  install -Dm644 "${srcdir}/${pkgname}/.bundle/config" "${pkgdir}/etc/${_pkgname}/.bundle/config"
+  install -d "${pkgdir}/usr/share/${_pkgname}/.bundle"
+  install -Dm644 "${srcdir}/${pkgname}/.bundle/config" "${pkgdir}/usr/share/${_pkgname}/.bundle/config"
 
   install -Dm755 "${pkgname}.sh" "${pkgdir}/usr/bin/beef"
 
