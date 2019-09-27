@@ -1,8 +1,8 @@
 # Maintainer Pol Marcet Sardà <polmarcetsarda@gmail.com>
 
 pkgname=doomseeker
-pkgver=r2478.c4537370dc5c
-pkgrel=3
+pkgver=1.3.r15.g782b9fe6
+pkgrel=1
 epoch=1
 pkgdesc="A cross-platform Doom server browser"
 arch=(i686 x86_64)
@@ -10,21 +10,21 @@ url="https://doomseeker.drdteam.org/"
 license=("LGPL")
 
 depends=('zlib' 'bzip2' 'qt5-tools' 'qt5-base' 'qt5-multimedia')
-makedepends=('cmake' 'mercurial')
+makedepends=('cmake' 'git')
 optdepends=('qt4: A cross-platform application and UI framework'
             'zandronum: GZDoom fork supporting client/server multiplayer'
             'odamex: Classic client/server multiplayer fork'
             'chocolate-doom: Doom source port accurately reproducing the original DOS versions of Doom'
             'srb2: A 3D Sonic fan game based off of Doom Legacy (aka "Sonic Robo Blast 2")')
 
-source=("doomseeker::hg+https://bitbucket.org/Doomseeker/doomseeker-hg#tag=1.3"
-        "doomseeker-blobs::hg+https://bitbucket.org/Doomseeker/doomseeker-blobs-hg#revision=91033f61f0c3")
+source=("doomseeker::git+https://bitbucket.org/Doomseeker/doomseeker#commit=782b9fe6"
+        "doomseeker-blobs::git+https://bitbucket.org/Doomseeker/doomseeker-blobs#commit=f8057ce1")
 sha256sums=('SKIP'
             'SKIP')
 
 pkgver() {
   cd "$pkgname"
-  printf "r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
