@@ -1,8 +1,8 @@
 # Maintainer: loathingkernel <loathingkernel @at gmail .dot com>
 
 pkgname=d9vk-mingw-git
-_tag=0.20
-pkgver=r2933.d112de83
+_tag=0.21
+pkgver=0.21.r0.ed797f8f7
 pkgrel=1
 pkgdesc="A d3d9 to vk layer based off DXVK's codebase, mingw version"
 arch=('x86_64')
