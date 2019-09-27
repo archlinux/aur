@@ -2,13 +2,13 @@
 
 pkgname=xd-torrent
 pkgver=0.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc='An I2P BitTorrent client'
 arch=('x86_64')
 url='https://xd-torrent.github.io/'
 license=('MIT')
 depends=('glibc')
-makedepends=('git' 'go')
+makedepends=('go')
 backup=('etc/xd.conf')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/majestrate/XD/archive/v${pkgver}.tar.gz"
         '010-xd-torrent-fix-webui-target.patch'
@@ -38,7 +38,7 @@ sha256sums=('90ad43883f9eb792e17054e8563a6260238c4ab513fa5a637be2d520d9b24b2a'
             '2817f5eb6e204dd8e37fb4963a9b60d958ae063c6f082c41f92760802ea99530')
 
 prepare() {
-    # fix the 'webui' target to not compile a second time at 'make install'
+    # fix the 'webui' target for not compiling a second time at 'make install'
     patch -d "XD-${pkgver}" -Np1 -i "${srcdir}/010-xd-torrent-fix-webui-target.patch"
     
     # use -trimpath and Arch Linux LDFLAGS
