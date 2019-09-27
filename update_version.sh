@@ -20,6 +20,7 @@ git checkout develop
 VER=$(git describe --tags --long --always)
 VER=${VER/-/.r}
 VER=${VER/-/.}
+VER=${VER#v}
 
 COMMIT=$(git rev-parse HEAD)
 
