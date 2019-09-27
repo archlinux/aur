@@ -4,7 +4,7 @@
 
 pkgname=bishop
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Command-line utility for visualizing data using The Drunken Bishop algorithm"
 arch=('x86_64')
 url="https://github.com/AbsurdlySuspicious/bishop.rs"
@@ -19,12 +19,6 @@ _tar="$pkgname.tar.gz"
 source=("$_tar"::"https://github.com/AbsurdlySuspicious/bishop.rs/archive/app_0.2.0.tar.gz")
 sha256sums=('1e04aa21572bbce8f71c38fca8eba56dc49645dd2072012997f1f005307276bf')
 
-
-prepare() {
-  rm -rf "$srcdir/$_src"
-  bsdtar -xf "$srcdir/$_tar"
-}
-
 check() {
   cd "$srcdir/$_src"
   cargo test --all --release --locked
@@ -36,6 +30,6 @@ build() {
 }
 
 package() {
-  install -Dm755 -t "$pkgdir/usr/bin" "$srcdr/$_src/target/release/$pkgname"
+  install -Dm755 -t "$pkgdir/usr/bin" "$srcdir/$_src/target/release/$pkgname"
 }
 

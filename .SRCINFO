@@ -1,7 +1,7 @@
 pkgbase = bishop
 	pkgdesc = Command-line utility for visualizing data using The Drunken Bishop algorithm
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AbsurdlySuspicious/bishop.rs
 	arch = x86_64
 	license = MIT
