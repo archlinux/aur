@@ -23,7 +23,6 @@ build() {
 	pwd
 	ls -al
 	cd "$_name"
-	./bootstrap.sh
 	./configure --prefix=/usr
 	make
 }
