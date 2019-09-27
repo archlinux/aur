@@ -54,7 +54,7 @@ else
 pkgname="${_pyver}-${_pybase}-git"
 _pyverother='python'
 fi
-pkgver=1.16.166.r6991.g03e9a5955
+pkgver=1.16.248.r7496.gcfbe398db
 # Generally when this version changes, the version of botocore also changes
 pkgrel=1
 pkgdesc='Universal Command Line Interface for Amazon Web Services awscli'
@@ -89,7 +89,7 @@ depends=("${_pyver}" "${_pydepends[@]}")
 makedepends=("${_pyver}" "${_pyver}-distribute") # same as python-setuptools
 options=('!emptydirs' '!strip')
 source=("${_pybase}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('eb1e9b80c1380f06ea5e01ebbe5759f2184f60435735b54273c7576cdc7e22c2')
+sha256sums=('000bc49d5bbab420fae22ef5f9d7732e4e834e08e240e32fa1357809b06c61b4')
 
 if [ "${pkgname%-git}" != "${pkgname}" ]; then # this is easily done with case
   _srcdir="${_pybase}"
