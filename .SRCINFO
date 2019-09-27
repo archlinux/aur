@@ -1,16 +1,15 @@
 pkgbase = kubedecode-git
 	pkgdesc = Kubedecode decodes all parts of a Kubernetes secret, no more copypasting!
-	pkgver = 1.5
+	pkgver = r16.3a13928
 	pkgrel = 1
 	url = https://github.com/mschmidt291/kubedecode
 	arch = any
 	license = MIT
-	makedepends = bash
 	makedepends = git
 	depends = kubectl
-	provides = kubedecode-git
-	conflicts = kubedecode-git
-	source = https://github.com/mschmidt291/kubedecode/archive/v1.5.tar.gz
+	provides = kubedecode
+	conflicts = kubedecode
+	source = kubedecode::git+https://github.com/mschmidt291/kubedecode.git
 	sha1sums = SKIP
 
 pkgname = kubedecode-git
