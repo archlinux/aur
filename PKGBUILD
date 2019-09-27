@@ -1,8 +1,8 @@
 # Maintainer: Albakham <contact@geber.ga>
 
 pkgname=domain-expiration-git
-pkgver=r4.75c369c
-pkgrel=2
+pkgver=r15.a23fe61
+pkgrel=1
 pkgdesc="Checks the expiration dates of domains."
 arch=('any')
 url="https://gitnet.fr/deblan/domain-expiration"
