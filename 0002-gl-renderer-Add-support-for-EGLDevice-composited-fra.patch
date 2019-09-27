@@ -1,7 +1,7 @@
 From 418000cc187e0ae6c9ab076f0e743cae669e053d Mon Sep 17 00:00:00 2001
 From: "Miguel A. Vico" <mvicomoya@nvidia.com>
 Date: Mon, 2 May 2016 16:34:01 +0200
-Subject: [PATCH 2/6] gl-renderer: Add support for EGLDevice composited frame
+Subject: [PATCH 2/8] gl-renderer: Add support for EGLDevice composited frame
  presentation
 X-NVConfidentiality: public
 

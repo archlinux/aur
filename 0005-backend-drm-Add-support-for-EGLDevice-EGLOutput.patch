@@ -1,7 +1,7 @@
 From 3a9b0e9def60f81b6f550df29a0dbe26fc07aa05 Mon Sep 17 00:00:00 2001
 From: "Miguel A. Vico" <mvicomoya@nvidia.com>
 Date: Mon, 26 Aug 2019 09:48:49 -0700
-Subject: [PATCH 5/6] backend-drm: Add support for EGLDevice+EGLOutput
+Subject: [PATCH 5/8] backend-drm: Add support for EGLDevice+EGLOutput
 X-NVConfidentiality: public
 
 As previously stated, EGLDevice and EGLOutput will provide means

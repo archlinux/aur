@@ -1,7 +1,7 @@
 From ef918a27b0134d44d680c2cd034a1b50a87edc3e Mon Sep 17 00:00:00 2001
 From: "Miguel A. Vico" <mvicomoya@nvidia.com>
 Date: Thu, 29 Mar 2018 00:15:49 -0700
-Subject: [PATCH 3/6] gl-renderer: Add EGL client support for EGLStream frame
+Subject: [PATCH 3/8] gl-renderer: Add EGL client support for EGLStream frame
  presentation
 X-NVConfidentiality: public
 
