@@ -1,0 +1,16 @@
+pkgbase = fsverity-utils-git
+	pkgdesc = A userspace utility for fs-verity
+	pkgver = 0.0.r50.2151209
+	pkgrel = 1
+	url = https://git.kernel.org/pub/scm/linux/kernel/git/ebiggers/fsverity-utils.git
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = git
+	depends = openssl
+	provides = fsverity-utils
+	source = git+https://git.kernel.org/pub/scm/linux/kernel/git/ebiggers/fsverity-utils.git
+	sha256sums = SKIP
+
+pkgname = fsverity-utils-git
+
