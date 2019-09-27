@@ -21,12 +21,10 @@ changeToThisProgramDir () {
 
 
 makePackage () {
-	if [ -f "/usr/share/pigz" ]; then
-		pigzVar="COMPRESSGZ=(pigz -c -f -n)"
-	fi
+	nice="nice --adjustment=19"
+	ionice="ionice -c2 -n7"
 
-	config="PKGEXT='.pkg.tar.gz' ${pigzVar}"
-	silently "makePackage" "${config} makepkg --force"
+	silently "makePackage" "PKGEXT='.pkg.tar.gz' ${nice} ${ionice} makepkg --force"
 }
 
 
