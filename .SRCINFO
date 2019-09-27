@@ -1,6 +1,6 @@
 pkgbase = qnotero
 	pkgdesc = A Qt application which provides access to your Zotero references
-	pkgver = 2.0.1
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = https://github.com/ealbiter/qnotero
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = qnotero
 	optdepends = python-levenshtein: for integration with gnote
 	provides = gnotero
 	replaces = gnotero
-	source = https://github.com/ealbiter/qnotero/archive/v2.0.1.tar.gz
-	sha256sums = 8f280a432ae732360d742627e56872e79fbaa769f09c2e76c17cb170dc3be71f
+	source = https://github.com/ealbiter/qnotero/archive/v2.1.1.tar.gz
+	sha256sums = 0029465e3f1c131a0eaa797b31fffc2460838c9bb95824884cda6d1ec90e27f9
 
 pkgname = qnotero
 
