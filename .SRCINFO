@@ -1,0 +1,20 @@
+pkgbase = tad-git
+	pkgdesc = Library and tools to handle data arrays in C++
+	pkgver = 0.2.r6.g66a1ec6
+	pkgrel = 1
+	url = https://marlam.de/tad/
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = ffmpeg
+	depends = hdf5
+	depends = libjpeg
+	depends = libpng
+	depends = libtiff
+	provides = tad
+	conflicts = tad
+	source = git+https://git.marlam.de/git/tad.git
+	sha256sums = SKIP
+
+pkgname = tad-git
+
