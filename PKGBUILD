@@ -1,17 +1,16 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 
 #_fragment="#tag=blendluxcore_v2.1beta2"
-_blender=$(pacman -Sddp --print-format %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
 _name="luxcorerender"
+_ver_tag="blendluxcore_v2.2rc1"
 
 pkgname=blender-plugin-${_name}-git
-pkgver=2.1beta3.r0.g3a66d89
+pkgver=2.2rc1.r9.gc1bb9e8
 pkgrel=1
 pkgdesc="LuxCoreRender exporter plugin for Blender"
 arch=('any')
 url="https://luxcorerender.org/"
 license=('GPL')
-depends=(blender luxcorerender)
 makedepends=(git)
 conflicts=(luxblend25 luxblend25-hg blend-plugin-luxcorerender)
 provides=(blender-plugin-luxcorerender)
@@ -20,11 +19,13 @@ md5sums=("SKIP")
 
 pkgver() {
   cd ${srcdir}/${_name}
-#  printf %s.r%s.g%s $_pkgver $(git rev-list blendluxcore_v2.0..HEAD --count) $(git log --pretty=format:'%h' -n 1)
-  git describe --long --tags | sed 's/^blendluxcore_v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  [ -v _ver_tag ] && printf %s.r%s.g%s ${_ver_tag#blendluxcore_v} $(git rev-list ${_ver_tag}..HEAD --count) $(git log --pretty=format:'%h' -n 1) \
+                  || git describe --long --tags | sed 's/^blendluxcore_v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
+_blender=$(pacman -Sddp --print-format %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
+depends=(blender luxcorerender)
   cd ${srcdir}/${_name}
   install -d -m755 ${pkgdir}/usr/share/blender/${_blender}/scripts/addons
   cp -a ${srcdir}/${_name}/ ${pkgdir}/usr/share/blender/${_blender}/scripts/addons
