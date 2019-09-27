@@ -9,7 +9,7 @@ pkgdesc="A library for W3C Provenance Data Model supporting PROV-JSON, PROV-XML 
 arch=('any')
 url='https://pypi.python.org/pypi/prov/'
 license=('MIT')
-depends=('python-lxml' 'python-networkx' 'python-dateutil' 'python-six' 'python-pydot' 'python-neurdflib')
+depends=('python-lxml' 'python-networkx' 'python-dateutil' 'python-six' 'python-pydot' 'python-rdflib')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/trungdong/${_pypiname}/archive/${pkgver}.tar.gz")
 sha1sums=('462034925acbcd458b2e5b45063bf4a2a5a97c4d')
 
