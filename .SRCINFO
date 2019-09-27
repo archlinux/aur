@@ -1,14 +1,14 @@
 pkgbase = pkghist
 	pkgdesc = Query your pacman logs
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/herzrasen/pkghist
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = rust
-	source = pkghist-0.1.0.tar.gz::https://github.com/herzrasen/pkghist/archive/v0.1.0.tar.gz
-	sha1sums = 2387685edfd6868d0a4e817b24dac1e519b5a26d
+	source = pkghist-0.1.1.tar.gz::https://github.com/herzrasen/pkghist/archive/v0.1.1.tar.gz
+	sha1sums = bfcf7b60d700a7860c072f8e24856418e9788a6a
 
 pkgname = pkghist
 
