@@ -4,7 +4,7 @@
 # Contributor: Daniel Seymour <dannyseeless@gmail.com>
 
 pkgname=emby-server-beta
-pkgver=4.3.0.8
+pkgver=4.3.0.10
 pkgrel=1
 _ffmpeg_ver=2019_04_09
 _ffdetect_ver=4.0.3
@@ -44,7 +44,7 @@ makedepends=('ffnvcodec-headers8.1'
              'nasm')
 provides=('emby-server')
 conflicts=('emby-server')
-source=("https://github.com/MediaBrowser/Emby.Releases/releases/download/${pkgver}/embyserver-netcore_${pkgver}.zip"
+source=("https://github.com/MediaBrowser/Emby.Releases/releases/download/${pkgver}/embyserver-netframework_${pkgver}.zip"
         "https://mediabrowser.github.io/embytools/ffmpeg-${_ffmpeg_ver}.tar.gz"
         "https://mediabrowser.github.io/embytools/ffdetect_${_ffdetect_ver}_x64.tar.xz"
         'emby-server'
@@ -55,7 +55,7 @@ source=("https://github.com/MediaBrowser/Emby.Releases/releases/download/${pkgve
         'license.docx')
 noextract=(license.docx)
 backup=('etc/conf.d/emby-server')
-sha256sums=('fe0768bc240a2f5287190b5e806229c10fb84f9a219cfd6f393caea032562ac4'
+sha256sums=('18c49459cf1f00e9e39046baf726ab2931ababef1b4fee976f1bf7b5d0783524'
             'd2081fd92e92ee90561c91edbd28ccba4beb1d72bdd38cd94c338726020e2e62'
             '85697071cb6412d244fc6dd76f3561b6a42d7556ef20f26a702542b58198f0c7'
             'e2185a5f4810726cb57fcc6d9bdbde1854069f08f163be58cb3cef1154b8e2a7'
