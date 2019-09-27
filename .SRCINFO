@@ -1,6 +1,6 @@
 pkgbase = wayland-mouse-mapper-git
 	pkgdesc = Maps mouse buttons to keys in wayland, configured to swap workspaces under gnome
-	pkgver = 0.2
+	pkgver = 0.3
 	pkgrel = 1
 	url = https://github.com/dszryan/wayland-mouse-mapper-git
 	install = wayland-mouse-mapper-git.install
@@ -9,7 +9,7 @@ pkgbase = wayland-mouse-mapper-git
 	makedepends = git
 	depends = libinput>=1.14.1
 	depends = evemu>=2.7.0
-	source = wayland-mouse-mapper-git-0.2::git+https://github.com/dszryan/wayland-mouse-mapper-git.git
+	source = wayland-mouse-mapper-git-0.3::git+https://github.com/dszryan/wayland-mouse-mapper-git.git
 	md5sums = SKIP
 
 pkgname = wayland-mouse-mapper-git
