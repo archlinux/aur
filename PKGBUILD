@@ -1,4 +1,4 @@
-# Maintainer :  Kr1ss <kr1ss.x@yandex.com>
+# Maintainer  : Kr1ss $(sed s/\+/./g\;s/\-/@/ <<<\<kr1ss+x-yandex+com\>)
 # Contributor : Olivier Le Moal <mail at olivierlemoal dot fr>
 # Contributor : Dawid Wrobel <cromo@klej.net>
 # Contributor : Sébastien Duquette <ekse.0x@gmail.com>
@@ -7,9 +7,9 @@
 pkgname=wfuzz-git
 pkgver() {
   cd "${pkgname/-git}"
-  git describe --tags | sed 's/v//;s/-/.dev/;s/-.\+//'
+  git describe --long --tags | sed 's/v//;s/-/.r/;s/-g/./'
 }
-pkgver=2.3.4.dev94
+pkgver=2.4.r0.05c8a6f
 pkgrel=1
 
 pkgdesc='Web application fuzzer - python3 build of the dev branch'
@@ -23,22 +23,12 @@ makedepends=('python-mock' 'python-netaddr' 'python-pip' 'python-sphinx' 'git' '
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 
-source=("git+$url.git#branch=dev"
-        'setup.patch.sig'
-        'setup.patch')
-sha256sums=('SKIP'
-            'SKIP'
-            'fe63e8013e4fb647decd53e7c625798df74d0d6163b26c5e2a4bc77e3245727b')
-validpgpkeys=('7A194E3F7A8F867BEA8A5339023F078862ACFE50')
-
-prepare() {
-  cd "${pkgname/-git}"
-  # since configparser is included in CPython 3, we don't require it any longer
-  patch -Np1 -i ../setup.patch
-}
+source=("git+$url.git")
+sha256sums=('SKIP')
 
 build() {
   cd "${pkgname/-git}/docs"
+
   python conf.py
   make SPHINXOPTS='-Q -j auto' man html
 }
