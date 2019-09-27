@@ -1,6 +1,6 @@
 pkgbase = metag-git
 	pkgdesc = Ncurses audio tag editor with support of regex
-	pkgver = 20190918
+	pkgver = 20190927
 	pkgrel = 1
 	url = https://git.ache.one/metag
 	arch = any
@@ -14,4 +14,5 @@ pkgbase = metag-git
 	md5sums = SKIP
 
 pkgname = metag-git
-
+ depends = readline
+ depends = taglib

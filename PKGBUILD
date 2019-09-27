@@ -1,7 +1,7 @@
 # Maintainer: ache <ache@ache.one>
 
 pkgname=metag-git
-pkgver=20190124
+pkgver=20190927
 pkgrel=1
 pkgdesc="Ncurses audio tag editor with support of regex"
 arch=("any")
