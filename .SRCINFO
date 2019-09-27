@@ -1,0 +1,15 @@
+pkgbase = ttf-cascadia-code-git
+	pkgdesc = A fun, new monospaced font that includes programming ligatures.
+	pkgver = 1909.16.r9.g93d0c1f
+	pkgrel = 1
+	url = https://github.com/microsoft/cascadia-code
+	arch = any
+	license = custom
+	makedepends = git
+	provides = ttf-cascadia-code=1909.16.r9.g93d0c1f
+	conflicts = ttf-cascadia-code
+	source = git+https://github.com/microsoft/cascadia-code.git
+	sha256sums = SKIP
+
+pkgname = ttf-cascadia-code-git
+
