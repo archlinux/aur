@@ -1,6 +1,6 @@
 pkgbase = surge-synthesizer-bin
 	pkgdesc = Surge Synthesizer plugin
-	pkgver = 1.6.2
+	pkgver = 1.6.2.1
 	pkgrel = 1
 	url = https://surge-synthesizer.github.io
 	arch = x86_64
@@ -23,8 +23,8 @@ pkgbase = surge-synthesizer-bin
 	options = !strip
 	options = !libtool
 	options = !emptydirs
-	source = https://github.com/surge-synthesizer/releases/releases/download/1.6.2/Surge-linux-x64-1.6.2.deb
-	md5sums = 925e98965114436a38c867918c173dd3
+	source = https://github.com/surge-synthesizer/releases/releases/download/1.6.2.1/Surge-linux-x64-1.6.2.1.deb
+	md5sums = 6f9e4053a813fc1aa52e02ca99bf5c0a
 
 pkgname = surge-synthesizer-bin
 
