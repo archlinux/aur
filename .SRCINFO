@@ -1,13 +1,23 @@
 pkgbase = wtfutil-bin
 	pkgdesc = Personal information dashboard for your terminal
 	pkgver = 0.22.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wtfutil.com
+	arch = i686
 	arch = x86_64
-	license = MIT
+	arch = aarch64
+	arch = armv6h
+	license = MPL2
+	provides = wtfutil
 	conflicts = wtfutil
+	source_i686 = https://github.com/wtfutil/wtf/releases/download/v0.22.0/wtf_0.22.0_linux_386.tar.gz
+	sha256sums_i686 = fa48d85db54ee8005de6a25109e09138374cb90e8d0814f2d42ebd65322bd0fd
 	source_x86_64 = https://github.com/wtfutil/wtf/releases/download/v0.22.0/wtf_0.22.0_linux_amd64.tar.gz
 	sha256sums_x86_64 = 73d9761f34d6b5c157bf16a11442176f03d9e1fd7595923042d87a47a2fcd53f
+	source_aarch64 = https://github.com/wtfutil/wtf/releases/download/v0.22.0/wtf_0.22.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 310a8203c9fce0202b1132cafdee593909ce3a58b13c13995ca9e61e6eaffb4d
+	source_armv6h = https://github.com/wtfutil/wtf/releases/download/v0.22.0/wtf_0.22.0_linux_armv6.tar.gz
+	sha256sums_armv6h = 4520e8182b3e8b58173e395615e1c91ef9765d5e8457720c95731a7aa2aca47f
 
 pkgname = wtfutil-bin
 
