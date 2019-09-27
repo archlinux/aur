@@ -1,6 +1,6 @@
 pkgbase = guiscrcpy-git
 	pkgdesc = A full fledged GUI integration for the most award winning open-source Android screen mirroring system -- scrcpy
-	pkgver = v1.11.r15.2983e79
+	pkgver = 1.11.r16.4ce6699
 	pkgrel = 1
 	url = https://srevinsaju.github.io/guiscrcpy
 	arch = i686

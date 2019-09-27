@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
 pkgname=guiscrcpy-git
-pkgver=v1.11.r15.2983e79
+pkgver=1.11.r16.4ce6699
 pkgrel=1
 pkgdesc="A full fledged GUI integration for the most award winning open-source Android screen mirroring system -- scrcpy"
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ sha256sums=('SKIP'
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-	printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+	printf "%s" "$(git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 package() {
