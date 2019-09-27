@@ -15,12 +15,19 @@ git clone ${REPO} ${WORKDIR}
 
 # Fetch version information
 pushd ${WORKDIR}
-VER=$(FULL=1 bash contrib/semver/version.sh | sed 's/^v//')
+git checkout develop
+
+VER=$(git describe --tags --long --always)
+VER=${VER/-/.r}
+VER=${VER/-/.}
+
+COMMIT=$(git rev-parse HEAD)
 
 # Replace version in PKGBUILD
 popd
 sed -i \
 	-e "s/^pkgver=.*$/pkgver=${VER}/" \
+	-e "s/^_commit=.*$/_commit=${COMMIT}/" \
 	PKGBUILD
 
 # Check for real updates
