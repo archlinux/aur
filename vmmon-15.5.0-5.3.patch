@@ -1,0 +1,232 @@
+diff --git vmmon-only/Makefile vmmon-only/Makefile
+index f859c8c..7616899 100644
+--- vmmon-only/Makefile
++++ vmmon-only/Makefile
+@@ -136,9 +136,6 @@ ifdef VMX86_DEBUG
+ CC_OPTS += -DVMX86_DEBUG
+ endif
+ 
+-# Add Spectre options when available
+-CC_OPTS += $(call vm_check_gcc,-mindirect-branch=thunk -mindirect-branch-register,)
+-
+ include $(SRCROOT)/Makefile.kernel
+ 
+ else
+diff --git vmmon-only/Makefile.kernel vmmon-only/Makefile.kernel
+index 385068d..a2e5911 100644
+--- vmmon-only/Makefile.kernel
++++ vmmon-only/Makefile.kernel
+@@ -31,7 +31,7 @@ $(DRIVER)-y := $(subst $(SRCROOT)/, , $(patsubst %.c, %.o, \
+ 		$(SRCROOT)/bootstrap/*.c)))
+ 
+ clean:
+-	rm -rf $(wildcard $(DRIVER).mod.c $(DRIVER).ko .tmp_versions \
++	rm -rf $(wildcard $(DRIVER).mod.c $(DRIVER).ko .tmp_versions .cache.mk \
+ 		Module.symvers Modules.symvers Module.markers modules.order \
+ 		$(foreach dir,linux/ common/ vmcore/ bootstrap/ \
+ 		./,$(addprefix $(dir),.*.cmd .*.o.flags *.o)))
+diff --git vmmon-only/common/task.c vmmon-only/common/task.c
+index e23c0f0..97ac667 100644
+--- vmmon-only/common/task.c
++++ vmmon-only/common/task.c
+@@ -2307,12 +2307,23 @@ TaskSwitchToMonitor(VMCrossPage *crosspage)
+    {
+       uint64 raxGetsWiped, rcxGetsWiped;
+ 
++#ifdef CALL_NOSPEC
++      __asm__ __volatile__(CALL_NOSPEC
++                           : "=a" (raxGetsWiped),
++                             "=c" (rcxGetsWiped)
++                           : "0" (codePtr),
++                             "1" (crosspage),
++                             THUNK_TARGET(codePtr)
++                           : "rdx", "r8", "r9", "r10", "r11", "cc", "memory");
++#else
+       __asm__ __volatile__("call *%%rax"
+                            : "=a" (raxGetsWiped),
+                              "=c" (rcxGetsWiped)
+                            : "0" (codePtr),
+                              "1" (crosspage)
+                            : "rdx", "r8", "r9", "r10", "r11", "cc", "memory");
++#endif
++
+    }
+ #elif defined(_MSC_VER)
+    /*
+diff --git vmmon-only/include/compat_poll.h vmmon-only/include/compat_poll.h
+new file mode 100644
+index 0000000..562cdb6
+--- /dev/null
++++ vmmon-only/include/compat_poll.h
+@@ -0,0 +1,30 @@
++#ifndef __COMPAT_POLL_H__
++#define __COMPAT_POLL_H__
++
++#include <linux/poll.h>
++
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(4, 18, 0))
++
++#ifndef __poll_t
++typedef unsigned int __poll_t;
++#endif
++
++static inline __poll_t compat_vfs_poll(struct file *file,
++				       struct poll_table_struct *pt)
++{
++	if (unlikely(!file->f_op->poll))
++		return DEFAULT_POLLMASK;
++	return file->f_op->poll(file, pt);
++}
++
++#else
++
++static inline __poll_t compat_vfs_poll(struct file *file,
++				       struct poll_table_struct *pt)
++{
++	return vfs_poll(file, pt);
++}
++
++#endif
++
++#endif /* __COMPAT_POLL_H__ */
+diff --git vmmon-only/include/vm_assert.h vmmon-only/include/vm_assert.h
+index 74cbc2f..38e2f04 100644
+--- vmmon-only/include/vm_assert.h
++++ vmmon-only/include/vm_assert.h
+@@ -67,6 +67,7 @@ extern "C" {
+ #if defined (VMKPANIC) 
+ #include "vmk_assert.h"
+ #else /* !VMKPANIC */
++#include <linux/kernel.h>
+ #define _ASSERT_PANIC(name) \
+            Panic(_##name##Fmt "\n", __FILE__, __LINE__)
+ #define _ASSERT_PANIC_BUG(bug, name) \
+@@ -107,7 +108,7 @@ NORETURN void Panic_NoSave(const char *fmt, ...) PRINTF_DECL(1, 2);
+ } while(0)
+ 
+ #else
+-NORETURN void Panic(const char *fmt, ...) PRINTF_DECL(1, 2);
++#define Panic panic
+ #endif
+ 
+ void LogThrottled(uint32 *count, const char *fmt, ...) PRINTF_DECL(2, 3);
+diff --git vmmon-only/include/x86_basic_defs.h vmmon-only/include/x86_basic_defs.h
+index bd1f870..7829524 100644
+--- vmmon-only/include/x86_basic_defs.h
++++ vmmon-only/include/x86_basic_defs.h
+@@ -35,6 +35,8 @@
+ #define INCLUDE_ALLOW_VMCORE
+ #include "includeCheck.h"
+ 
++#include <asm/processor-flags.h>
++
+ #define X86_MAX_INSTR_LEN  15   /* Max byte length of an x86 instruction. */
+ 
+ #define NUM_IDT_VECTORS 256
+@@ -75,7 +77,9 @@
+ #define CR3_PDB_MASK   0xfffff000
+ #define CR3_IGNORE     0xFFF
+ #define PAE_CR3_IGNORE 0x1F
++#ifndef CR3_PCID_MASK
+ #define CR3_PCID_MASK  0xFFF
++#endif
+ #define CR3_NO_FLUSH   (1ULL << 63)
+ 
+ #define CR4_VME        0x00000001
+diff --git vmmon-only/include/x86msr.h vmmon-only/include/x86msr.h
+index 469ee63..aadd542 100644
+--- vmmon-only/include/x86msr.h
++++ vmmon-only/include/x86msr.h
+@@ -24,6 +24,7 @@
+ 
+ #ifndef _X86MSR_H_
+ #define _X86MSR_H_
++#include <asm/msr-index.h>
+ #define INCLUDE_ALLOW_USERLEVEL
+ #define INCLUDE_ALLOW_VMX
+ 
+@@ -129,7 +130,9 @@ MSRQuery;
+ 
+ #define MSR_PRED_CMD_IBPB                         (1UL << 0)
+ 
++#ifndef MSR_MISC_FEATURES_ENABLES
+ #define MSR_MISC_FEATURES_ENABLES            0x140
++#endif
+ 
+ /* Intel Core Architecture and later: use only architected counters. */
+ #define IA32_MSR_PERF_CAPABILITIES                   0x345
+@@ -469,7 +472,9 @@ typedef enum {
+ #define MSR_K7_HWCR_SSEDIS         0x00008000ULL // Disable SSE bit
+ #define MSR_K7_HWCR_MONMWAITUSEREN 0x00000400ULL // Enable MONITOR/MWAIT CPL>0
+ #define MSR_K7_HWCR_TLBFFDIS       0x00000040ULL // Disable TLB Flush Filter
++#ifndef MSR_K7_HWCR_SMMLOCK
+ #define MSR_K7_HWCR_SMMLOCK        0x00000001ULL // Lock SMM environment
++#endif
+ 
+ #ifndef MSR_K8_SYSCFG
+ #define MSR_K8_SYSCFG        0xc0010010
+@@ -628,7 +633,9 @@ typedef enum {
+ #define MSR_HYPERV_GUESTOSID_OS_WINNT_DERIVATIVE 4ULL
+ 
+ /* MSR for forcing RTM abort to recover PMC3 (see PR 2333817) */
++#ifndef MSR_TSX_FORCE_ABORT
+ #define MSR_TSX_FORCE_ABORT                      0x0000010f
++#endif
+ #define MSR_TSX_FORCE_ABORT_RTM_BIT_INDEX        0
+ 
+ /*
+@@ -682,7 +689,11 @@ typedef unsigned char MTRRType;
+ /*
+  * MISC_FEATURES_ENABLES bits
+  */
++#ifdef MSR_MISC_FEATURES_ENABLES_CPUID_FAULT
++#define MSR_MISC_FEATURES_ENABLES_CPUID_FAULTING MSR_MISC_FEATURES_ENABLES_CPUID_FAULT
++#else
+ #define MSR_MISC_FEATURES_ENABLES_CPUID_FAULTING 1
++#endif
+ 
+ 
+ 
+diff --git vmmon-only/linux/driver.c vmmon-only/linux/driver.c
+index a1fb92b..e8c23b7 100644
+--- vmmon-only/linux/driver.c
++++ vmmon-only/linux/driver.c
+@@ -957,7 +957,7 @@ LinuxDriverReadTSC(void *data,   // OUT: TSC values
+  *-----------------------------------------------------------------------------
+  */
+ 
+-__attribute__((always_inline)) static Bool
++__always_inline static Bool
+ LinuxDriverSyncReadTSCs(uint64 *delta) // OUT: TSC max - TSC min
+ {
+    TSCDelta tscDelta;
+@@ -1533,7 +1533,7 @@ LinuxDriver_Ioctl(struct file *filp,    // IN:
+       }
+ 
+    case IOCTL_VMX86_WRITE_PAGE: {
+-#if VMX86_DEVEL
++#ifdef VMX86_DEVEL
+          VMMReadWritePage req;
+ 
+          retval = HostIF_CopyFromUser(&req, ioarg, sizeof req);
+diff --git vmmon-only/linux/hostif.c vmmon-only/linux/hostif.c
+index f3a96a8..1e1be1a 100644
+--- vmmon-only/linux/hostif.c
++++ vmmon-only/linux/hostif.c
+@@ -74,6 +74,7 @@
+ 
+ #include "pgtbl.h"
+ #include "versioned_atomic.h"
++#include "compat_poll.h"
+ 
+ #if !defined(CONFIG_HIGH_RES_TIMERS)
+ #error CONFIG_HIGH_RES_TIMERS required for acceptable performance
+@@ -2575,7 +2576,7 @@ HostIF_SemaphoreWait(VMDriver *vm,   // IN:
+ 
+       poll_initwait(&table);
+       current->state = TASK_INTERRUPTIBLE;
+-      mask = file->f_op->poll(file, &table.pt);
++      mask = compat_vfs_poll(file, &table.pt);
+       if (!(mask & (POLLIN | POLLERR | POLLHUP))) {
+          vm->vmhost->vcpuSemaTask[vcpuid] = current;
+          schedule_timeout(timeoutms * HZ / 1000);  // convert to Hz
