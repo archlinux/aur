@@ -17,7 +17,7 @@
 #
 pkgbase="zfs-linux"
 pkgname=("zfs-linux" "zfs-linux-headers")
-_zfsver="0.8.1"
+_zfsver="0.8.2"
 _kernelver="5.3.1.arch1-1"
 _extramodules="5.3.1-arch1-1-ARCH"
 
@@ -26,22 +26,10 @@ pkgrel=1
 makedepends=("linux-headers=${_kernelver}")
 arch=("x86_64")
 url="https://zfsonlinux.org/"
-source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-${_zfsver}/zfs-${_zfsver}.tar.gz"
-        "linux-5.3-compat-rw_semaphore-owner.patch"
-        "linux-5.3-compat-retire-rw_tryupgrade.patch"
-        "linux-5.3-compat-Makefile-subdir-m-no-longer-supported.patch")
-sha256sums=("0af79fde44b7b8ecb94d5166ce2e4fff7409c20ed874c2d759db92909e6c2799"
-            "c65c950abda42fb91fb99c6c916a50720a522c53e01a872f9310a4719bae9e2a"
-            "19f798a29c00874874751880f1146c5849b8ebdb6233d8ae923f9fdd4661de19"
-            "6c4627875dd1724f64a196ea584812c99635897dc31cb23641f308770289059a")
+source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-${_zfsver}/zfs-${_zfsver}.tar.gz")
+sha256sums=("47608e257c8ecebb918014ef1da6172c3a45d990885891af18e80f5cc28beab8")
 license=("CDDL")
 depends=("kmod" "zfs-utils=${_zfsver}" "linux=${_kernelver}")
-prepare() {
-    cd "${srcdir}/zfs-${_zfsver}"
-    patch -Np1 -i ${srcdir}/linux-5.3-compat-rw_semaphore-owner.patch
-    patch -Np1 -i ${srcdir}/linux-5.3-compat-retire-rw_tryupgrade.patch
-    patch -Np1 -i ${srcdir}/linux-5.3-compat-Makefile-subdir-m-no-longer-supported.patch
-}
 
 build() {
     cd "${srcdir}/zfs-${_zfsver}"
