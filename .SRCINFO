@@ -1,0 +1,19 @@
+pkgbase = diagrammer-git
+	pkgdesc = Provides dot visualizations of chisel/firrtl circuites
+	pkgver = r80.aa501ef
+	pkgrel = 1
+	url = https://github.com/freechipsproject/diagrammer/
+	arch = any
+	license = BSD
+	makedepends = sbt
+	makedepends = git
+	depends = java-environment
+	provides = diagrammer
+	conflicts = diagrammer
+	source = git+https://github.com/sequencer/diagrammer#branch=mill_fix
+	source = diagrammer.sh
+	md5sums = SKIP
+	md5sums = 73a883d13e66eae2255be88ae6eeab3f
+
+pkgname = diagrammer-git
+
