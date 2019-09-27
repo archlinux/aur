@@ -8,7 +8,7 @@ url="https://github.com/arduino/ArduinoCore-samd"
 license=('GPL')
 provides=('arduino-samd-core')
 conflicts=('arduino-samd-core')
-depends=('avrdude' 'avr-gcc' 'avr-libc') ## this needs to be fixed to include arm compiler
+depends=('arduino-ctags') ## this needs to be fixed to include the analogs to: avrdude, avr-gcc and avr-libc
 options=(!strip !emptydirs)
 source=("https://github.com/arduino/ArduinoCore-samd/archive/${pkgver}.tar.gz"
         "platform.patch")
@@ -21,10 +21,12 @@ prepare()
     mv "ArduinoCore-samd-${pkgver}" ${pkgname//-rc}-${pkgver} 
     cd "${srcdir}/${pkgname//-rc}-${pkgver}"
     
-
     # Update version in patchfile, then apply it
     sed -i "s/^version=.*/ version=${pkgver}/" "${srcdir}/platform.patch"
     patch -Np1 -i "${srcdir}/platform.patch"
+
+    echo "tools.ctags.path=/usr/bin" >> platform.txt
+    echo "tools.ctags.cmd.path={path}/arduino-ctags" >> platform.txt
 
     # Remove elf files
     find . -name "*.elf" -type f -exec rm -f {} \;
