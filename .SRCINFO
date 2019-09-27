@@ -5,6 +5,7 @@ pkgbase = qv-git
 	url = https://marlam.de/qv/
 	arch = x86_64
 	license = MIT
+	makedepends = cmake
 	makedepends = git
 	depends = tad
 	depends = qt5-base
