@@ -19,10 +19,10 @@ _tar="$pkgname.tar.gz"
 source=("$_tar"::"https://github.com/AbsurdlySuspicious/bishop.rs/archive/app_0.2.0.tar.gz")
 sha256sums=('1e04aa21572bbce8f71c38fca8eba56dc49645dd2072012997f1f005307276bf')
 
-check() {
-  cd "$srcdir/$_src"
-  cargo test --all --release --locked
-}
+# check() {
+#   cd "$srcdir/$_src"
+#   cargo test --all --release --locked
+# }
 
 build() {
   cd "$srcdir/$_src"
