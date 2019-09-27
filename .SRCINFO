@@ -1,0 +1,16 @@
+pkgbase = python2-walrus
+	pkgdesc = Lightweight Python utilities for working with Redis
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/coleifer/walrus
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-distribute
+	depends = python
+	depends = python-redis
+	source = https://github.com/coleifer/walrus/archive/0.8.0.tar.gz
+	md5sums = ebecc6ad4ce567b03c8376446d52a234
+
+pkgname = python2-walrus
+
