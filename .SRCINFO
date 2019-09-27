@@ -1,6 +1,6 @@
 pkgbase = python-liquidctl-rc
-	pkgdesc = Cross-platform tool and drivers for liquid coolers and other devices, RC release
-	pkgver = 1.2.0rc4
+	pkgdesc = Cross-platform tool and drivers for liquid coolers and other devices (include RCs)
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/jonasmalacofilho/liquidctl
 	arch = any
@@ -13,8 +13,8 @@ pkgbase = python-liquidctl-rc
 	depends = python-appdirs
 	provides = python-liquidctl
 	conflicts = python-liquidctl
-	source = https://files.pythonhosted.org/packages/source/l/liquidctl/liquidctl-1.2.0rc4.tar.gz
-	sha256sums = da136da290fa1873d29285c5e01147423e1ada8529982ef360b77f753aef375d
+	source = https://files.pythonhosted.org/packages/source/l/liquidctl/liquidctl-1.2.0.tar.gz
+	sha256sums = ad8c03c0695620fedaec11e7a8286bb5d4da18ba0c71e55888bfa06f8f7d7529
 
 pkgname = python-liquidctl-rc
 

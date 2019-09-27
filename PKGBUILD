@@ -1,10 +1,10 @@
-# Maintainer: Fabio Loli
-# Contributor: Jonas Malaco <jonas@protocubo.io>
+# Maintainer: Jonas Malaco <jonas@protocubo.io>
+# Contributor: Fabio Loli
 # Contributor: Adam Rutkowski
 pkgname=python-liquidctl-rc
-pkgver=1.2.0rc4
+pkgver=1.2.0
 pkgrel=1
-pkgdesc="Cross-platform tool and drivers for liquid coolers and other devices, RC release"
+pkgdesc="Cross-platform tool and drivers for liquid coolers and other devices (include RCs)"
 arch=(any)
 url="https://github.com/jonasmalacofilho/liquidctl"
 license=(GPL3)
@@ -13,7 +13,7 @@ makedepends=()
 provides=(python-liquidctl)
 conflicts=(python-liquidctl)
 source=("https://files.pythonhosted.org/packages/source/l/liquidctl/liquidctl-${pkgver}.tar.gz")
-sha256sums=('da136da290fa1873d29285c5e01147423e1ada8529982ef360b77f753aef375d')
+sha256sums=('ad8c03c0695620fedaec11e7a8286bb5d4da18ba0c71e55888bfa06f8f7d7529')
 
 build() {
   cd "${srcdir}/liquidctl-${pkgver}"
