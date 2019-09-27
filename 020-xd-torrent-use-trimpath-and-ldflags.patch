@@ -1,0 +1,47 @@
+commit a6bbfa764557ea51a5b3e5f997dd908359c90c37
+Author: Daniel Bermond <danielbermond@gmail.com>
+Date:   Fri Sep 27 17:36:52 2019 +0000
+
+    Makefile: Use -trimpath and system wide LDFLAGS
+    
+    -trimpath strips the build path from binaries, which is
+    important for reproducible builds.
+    
+    Use system wide LDFLAGS to conform with the binary
+    security standards of the host system, if any.
+    
+    Signed-off-by: Daniel Bermond <danielbermond@gmail.com>
+
+diff --git a/Makefile b/Makefile
+index fdb90f9..5870621 100644
+--- a/Makefile
++++ b/Makefile
+@@ -51,16 +51,16 @@ build: $(CLI)
+ assets: $(ASSETS)
+ 
+ $(GO_ASSETS):
+-	GOPATH=$(REPO) $(GO) build -o $(GO_ASSETS) -v github.com/jessevdk/go-assets-builder
++	GOPATH=$(REPO) $(GO) build -gcflags "all=-trimpath=$${PWD}" -asmflags "all=-trimpath=$${PWD}" -o $(GO_ASSETS) -v github.com/jessevdk/go-assets-builder
+ 
+ $(ASSETS): $(GO_ASSETS) $(WEBUI_CORE)
+ 	$(GO_ASSETS) -p assets -s $(WEBUI_PREFIX) -o $(ASSETS) $(WEB_FILES)
+ 
+ $(XD): $(ASSETS)
+-	GOPATH=$(REPO) $(GO) build -a -ldflags "-X xd/lib/version.Git=$(GIT_VERSION)" -tags='$(TAGS)' -o $(XD)
++	GOPATH=$(REPO) $(GO) build -gcflags "all=-trimpath=$${PWD}" -asmflags "all=-trimpath=$${PWD}" -a -ldflags "-X xd/lib/version.Git=$(GIT_VERSION) -s -w -extldflags '${LDFLAGS}'" -tags='$(TAGS)' -o $(XD)
+ 
+ dev: $(ASSETS)
+-	GOPATH=$(REPO) $(GO) build -race -v -a -ldflags "-X xd/lib/version.Git=$(GIT_VERSION)" -tags='$(TAGS)' -o $(XD)
++	GOPATH=$(REPO) $(GO) build -gcflags "all=-trimpath=$${PWD}" -asmflags "all=-trimpath=$${PWD}" -race -v -a -ldflags "-X xd/lib/version.Git=$(GIT_VERSION) -s -w -extldflags '${LDFLAGS}'" -tags='$(TAGS)' -o $(XD)
+ 
+ $(CLI): $(XD)
+ 	$(RM) $(CLI)
+@@ -94,7 +94,7 @@ $(WEBUI_CORE): $(WEBUI_LOGO)
+ webui: $(WEBUI_CORE)
+ 
+ no-webui:
+-	GOPATH=$(REPO) $(GO) build -ldflags "-X xd/lib/version.Git=$(GIT_VERSION)" -o $(XD)
++	GOPATH=$(REPO) $(GO) build -gcflags "all=-trimpath=$${PWD}" -asmflags "all=-trimpath=$${PWD}" -ldflags "-X xd/lib/version.Git=$(GIT_VERSION) -s -w -extldflags '${LDFLAGS}'" -o $(XD)
+ 
+ install: $(XD) $(CLI)
+ 	$(MKDIR) $(PREFIX)/bin

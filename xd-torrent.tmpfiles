@@ -1,0 +1,2 @@
+d /var/lib/xd 0700 xd xd - - -
+L /var/lib/xd/xd.conf - - - - /etc/xd.conf
