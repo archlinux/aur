@@ -1,13 +1,13 @@
 # Maintainer: Clemens Brunner <clemens dot brunner at gmail dot com>
 pkgname=python-biosig
 pkgver=1.9.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Python module for reading and writing routines for different biosignal data formats"
 arch=('i686' 'x86_64')
 url="http://biosig.sourceforge.net/"
 license=('GPL')
 groups=()
-depends=('libbiosig')
+depends=('libbiosig' 'python-numpy' 'python-pkgconfig')
 makedepends=()
 optdepends=()
 provides=()
