@@ -3,7 +3,7 @@
 # Contributor: Mister.Bubbles <http://crbserver.net>
 # Contributor: daemonTutorials <http://www.daemon-tuts.de>
 pkgname=wii-u-gc-adapter
-pkgver=0.0.32
+pkgver=0.0.38
 pkgrel=1
 pkgdesc="Tool for using the Wii U GameCube Adapter on Linux"
 arch=('i686' 'x86_64')
