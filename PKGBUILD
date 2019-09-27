@@ -1,7 +1,7 @@
 # Maintainer: c0re100 <c0rehusky@gmail.com> - https://husky.dev
 
 pkgname=qbittorrent-enhanced-nox-git
-pkgver=4.1.7.1.r0.gcc77d2e13
+pkgver=4.1.8.1.r0.g92d4a7507
 pkgrel=1
 pkgdesc="A bittorrent client powered by C++, Qt5 and the good libtorrent library (Enhanced Edition)"
 arch=('arm' 'armv6h' 'armv7h' 'aarch64' 'i686' 'x86_64')
