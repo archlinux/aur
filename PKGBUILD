@@ -146,18 +146,26 @@ if [ -n "$_enable_macOS_guests" ]; then
 _vmware_fusion_ver=11.5.0_14634996
 # List of VMware Fusion versions: https://softwareupdate.vmware.com/cds/vmw-desktop/fusion/
 
+_unlocker_ver=3.0.2
+_efi_unlocker_ver=1.0.0
+
 makedepends+=(
   python2
   unzip
+  uefitool-git
 )
 
 source+=(
   "VMware-Fusion-${_vmware_fusion_ver/_/-}.zip.tar::https://softwareupdate.vmware.com/cds/vmw-desktop/fusion/${_vmware_fusion_ver/_//}/core/com.vmware.fusion.zip.tar"
-  'unlocker.py'
+  "unlocker-${_unlocker_ver}.py::https://raw.githubusercontent.com/DrDonk/unlocker/${_unlocker_ver}/unlocker.py"
+  'unlocker.patch'
+  "efi-unlocker-patch-${_efi_unlocker_ver}.txt::https://raw.githubusercontent.com/DrDonk/efi-unlocker/${_efi_unlocker_ver}/patches.txt"
 )
 sha256sums+=(
   'ed819604cb9c0f204e377f16b8678103467d2cf4a50129932e2b1a9a000ad8cf'
-  'ecf6d9186f109ec420287bd327e1f1f407de8e4b9e3faa23828bcf903f6246c6'
+  '29e0b0db9c0296ab81eee543803c4bd430e2c69c76e33492910e17280da1c05c'
+  'd0b16c21246468869ae26cc33d64eb2790c2e9446702a40916770c9d634ef03d'
+  '392c1effcdec516000e9f8ffc97f2586524d8953d3e7d6f2c5f93f2acd809d91'
 )
 
 _fusion_isoimages=(darwin darwinPre15)
@@ -203,6 +211,8 @@ if [ -n "$_enable_macOS_guests" ]; then
   done
   rm -rf __MACOSX payload manifest.plist preflight postflight
 
+  cp "$srcdir/unlocker-${_unlocker_ver}.py" "$srcdir/unlocker.py"
+  patch -Np1 < unlocker.patch
   sed -i -e "s|/usr/lib/vmware/|${pkgdir}/usr/lib/vmware/|" "$srcdir/unlocker.py"
 fi
 }
@@ -457,6 +467,13 @@ if [ -n "$_enable_macOS_guests" ]; then
   for isoimage in ${_fusion_isoimages[@]}
   do
     install -Dm 644 "$srcdir/fusion-isoimages/$isoimage.iso" "$pkgdir/usr/lib/vmware/isoimages/$isoimage.iso"
+  done
+
+  msg "Patching EFI firmwares to remove the check for server versions"
+  _efi_arch=(32 64)
+  for arch in ${_efi_arch[@]}
+  do
+    uefipatch "$pkgdir/usr/lib/vmware/roms/EFI${arch}.ROM" "$srcdir/efi-unlocker-patch-${_efi_unlocker_ver}.txt" -o "$pkgdir/usr/lib/vmware/roms/EFI${arch}.ROM" > /dev/null
   done
 fi
 
