@@ -12,8 +12,8 @@
 
 pkgname=lib32-mesa-aco-git
 pkgdesc="Mesa with the ACO compiler patchset, git version"
-pkgver=19.3.0_devel.20190919.b738bf06917
-pkgrel=4
+pkgver=19.3.0_devel.20190927.d0ed7ce952c
+pkgrel=5
 arch=('x86_64')
 makedepends=('python-mako' 'lib32-libxml2' 'lib32-libx11' 'xorgproto'
              'lib32-gcc-libs' 'lib32-libvdpau' 'lib32-libelf' 'git' 'lib32-libgcrypt' 'lib32-systemd'
@@ -35,13 +35,14 @@ url="https://www.mesa3d.org"
 license=('custom')
 source=('mesa-aco::git+https://github.com/daniel-schuermann/mesa'
         'LICENSE'
-        'llvm32.native')
-md5sums=('SKIP'
-         '5c65a0fe315dd347e09b1f2826a1df5a'
-         '6b4a19068a323d7f90a3d3cd315ed1f9')
+        'llvm32.native'
+        'glvnd-1.patch'
+        'glvnd-2.patch')
 sha512sums=('SKIP'
             '25da77914dded10c1f432ebcbf29941124138824ceecaf1367b3deedafaecabc082d463abcfa3d15abff59f177491472b505bcb5ba0c4a51bb6b93b4721a23c2'
-            'c7dbb390ebde291c517a854fcbe5166c24e95206f768cc9458ca896b2253aabd6df12a7becf831998721b2d622d0c02afdd8d519e77dea8e1d6807b35f0166fe')
+            'c7dbb390ebde291c517a854fcbe5166c24e95206f768cc9458ca896b2253aabd6df12a7becf831998721b2d622d0c02afdd8d519e77dea8e1d6807b35f0166fe'
+            'd3a58aaafbdab6e47207327bd519d4af20e39253e04e093be511df3495851d1e405959dfa78930e047846dc735178081e48a41148289e1b70242d877d9a4d129'
+            '70a9f75a6fed2f6e4828f491bc6a3a18daf9dc1bbc9d6d400c39902dddcba0671112c23b1ed5e8ebdc54e344235064e907b166c0dcfe80699a8d71bbb5decdd9')
 
 # NINJAFLAGS is an env var used to pass commandline options to ninja
 # NOTE: It's your responbility to validate the value of $NINJAFLAGS. If unsure, don't set it.
@@ -107,7 +108,13 @@ prepare() {
     if [  -d _build ]; then
         rm -rf _build
     fi
+
+    cd "$srcdir"/mesa-aco
+    # Cherry-picks that haven't made it to the ACO branch yet to fix the .pc file situation with glvnd/egl
+    patch -Np1 -i "$srcdir"/glvnd-1.patch
+    patch -Np1 -i "$srcdir"/glvnd-2.patch
 }
+
 build () {
     export CC="gcc -m32"
     export CXX="g++ -m32"
@@ -162,11 +169,6 @@ package() {
   rm -rf "$pkgdir"/usr/share/glvnd/
   rm -rf "$pkgdir"/usr/share/drirc.d/
   rm -rf "$pkgdir"/usr/share/vulkan/explicit_layer.d/
-
-  # drop egl.pc -- upstream mesa has dropped this to fix confusion over who should provide it (conclusion: libglvnd),
-  # but as of 7/23 the ACO upstream doesn't have that patch.  Drop it now so we don't conflict with the libglvnd
-  # provider, next ACO rebase should remove this file when they pick up c7831b604063
-  rm -f "$pkgdir"/usr/lib32/pkgconfig/egl.pc
 
   # indirect rendering
   ln -s /usr/lib32/libGLX_mesa.so.0 "${pkgdir}/usr/lib32/libGLX_indirect.so.0"
