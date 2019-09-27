@@ -1,7 +1,7 @@
 # Maintainer: Husam Bilal <me@husam.dev>
 
 pkgname=clipman
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="A simple clipboard manager for Wayland"
 url="https://github.com/yory8/clipman"
@@ -10,7 +10,7 @@ makedepends=("go-pie")
 provides=("clipman")
 license=("GPL3")
 arch=("x86_64" "i686")
-md5sums=("75555908a3507333b1d58977b56269a6")
+md5sums=("5ba342d7420f90214418c389a465e451")
 source=("https://github.com/yory8/${pkgname}/archive/v${pkgver}.tar.gz")
 
 build() {
