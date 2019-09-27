@@ -8,10 +8,12 @@ pkgbase = mesms-git
 	makedepends = git
 	makedepends = readline
 	makedepends = ncurses
+  optdepends = gammu
 	provides = mesms
 	conflicts = mesms
 	source = mesms::git+https://git.ache.one/mesms
 	md5sums = SKIP
 
 pkgname = mesms-git
-
+  depends = readline
+  depends = ncurses

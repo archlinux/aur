@@ -8,6 +8,7 @@ arch=("any")
 url="https://git.ache.one/mesms"
 license=('GPL3')
 makedepends=('git' 'readline' 'ncurses')
+optdepends=('gammu')
 provides=("mesms")
 source=("mesms::git+https://git.ache.one/mesms")
 
