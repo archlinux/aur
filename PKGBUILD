@@ -1,29 +1,30 @@
 # Maintainer: Alan Witkowski <alan.witkowski+aur@gmail.com>
 pkgname=choria
-pkgver=0.4.2
+pkgver=0.5.0
+pkgbuild=r1666
 pkgrel=1
-pkgdesc="a 2D MMORPG that's all about grinding and doing chores."
+pkgdesc="Finally, an MMORPG that's all about grinding and doing chores."
 arch=('i686' 'x86_64')
 url="https://github.com/jazztickets/choria"
 license=('GPL3')
-depends=('gcc-libs' 'irrlicht' 'sqlite')
+depends=('gcc-libs' 'sdl2' 'sdl2_image' 'openal' 'libvorbis' 'libogg' 'freetype2' 'lua' 'glm' 'sqlite' 'jsoncpp' 'tinyxml2' 'zlib')
 makedepends=('cmake')
-source=("https://github.com/jazztickets/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}-src.tar.gz")
+source=("https://github.com/jazztickets/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}${pkgbuild}-src.tar.gz")
 
-sha256sums=('28f794394d2bdbff9b3c97f1cf16de2f9dffb84551f6f685d0d2110782efc172')
+sha256sums=('88d70627bebec61a4978ba5e701cb8679b9fcfdcf564f348e1f6ce7fcdfa44c7')
 
 prepare() {
-	cd $srcdir/$pkgname-$pkgver
+	cd $srcdir/$pkgname-$pkgver$pkgbuild
 }
 
 build() {
-	cd $srcdir/$pkgname-$pkgver
+	cd $srcdir/$pkgname-$pkgver$pkgbuild
 	cmake -DCMAKE_INSTALL_PREFIX=/usr .
 	make
 }
 
 package() {
-	cd "$srcdir/$pkgname-$pkgver"
+	cd "$srcdir/$pkgname-$pkgver$pkgbuild"
 	make DESTDIR="$pkgdir/" install
 
 	# remove standard license
