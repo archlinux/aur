@@ -2,7 +2,7 @@
 
 pkgname=rtl88x2bu-cilynx-dkms-git
 _pkgbase=rtl88x2bu
-pkgver=5.3.1.r32.3aecc50
+pkgver=5.3.1.r39.eece063
 _pkgver=5.3.1
 pkgrel=1
 pkgdesc="Kernel module for Realtek rtl88x2bu WiFi chipset"
