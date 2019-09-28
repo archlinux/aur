@@ -5,7 +5,7 @@
 
 pkgname=insync
 pkgver=3.0.20.40428
-pkgrel=3
+pkgrel=4
 _dist=buster
 pkgdesc="An unofficial Google Drive client that runs on Linux, with support for various desktops"
 url="https://www.insynchq.com/downloads"
@@ -34,4 +34,6 @@ package() {
    cp -rp usr ${pkgdir}/
    install -Dm644 ../insync@.service ${pkgdir}/usr/lib/systemd/system/insync@.service
    install -Dm644 ../insync.service ${pkgdir}/usr/lib/systemd/user/insync.service
+   install -dm755  ${pkgdir}/usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/2.10.0
+   ln -s /usr/lib/gdk-pixbuf-2.0/2.10.0/loaders.cache ${pkgdir}/usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders.cache
 }
