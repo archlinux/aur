@@ -10,6 +10,10 @@ pkgbase = linux-bcachefs-git
 	makedepends = bc
 	makedepends = libelf
 	makedepends = git
+	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
+	makedepends = graphviz
+	makedepends = imagemagick
 	options = !strip
 	source = git+https://github.com/koverstreet/bcachefs#branch=master
 	source = git+https://github.com/graysky2/kernel_gcc_patch

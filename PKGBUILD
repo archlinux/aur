@@ -12,7 +12,7 @@ _makenconfig=
 # Optionally select a sub architecture by number if building in a clean chroot
 # Leaving this entry blank will require user interaction during the build
 # which will cause a failure to build if using makechrootpkg. Note that the
-# generic (default) option is 27.
+# generic (default) option is 30.
 #
 # Note - the march=native option is unavailable by this method, use the nconfig
 # and manually select it.
@@ -35,27 +35,27 @@ _makenconfig=
 #  16. Intel Nehalem (MNEHALEM)
 #  17. Intel Westmere (MWESTMERE)
 #  18. Intel Silvermont (MSILVERMONT)
-#  19. Intel Sandy Bridge (MSANDYBRIDGE)
-#  20. Intel Ivy Bridge (MIVYBRIDGE)
-#  21. Intel Haswell (MHASWELL)
-#  22. Intel Broadwell (MBROADWELL)
-#  23. Intel Skylake (MSKYLAKE)
-#  24. Intel Skylake X (MSKYLAKEX)
-#  25. Intel Cannon Lake (MCANNONLAKE)
-#  26. Intel Ice Lake (MICELAKE)
-#  27. Generic-x86-64 (GENERIC_CPU)
-#  28. Native optimizations autodetected by GCC (MNATIVE)
+#  19. Intel Goldmont (MGOLDMONT)
+#  20. Intel Goldmont Plus (MGOLDMONTPLUS)
+#  21. Intel Sandy Bridge (MSANDYBRIDGE)
+#  22. Intel Ivy Bridge (MIVYBRIDGE)
+#  23. Intel Haswell (MHASWELL)
+#  24. Intel Broadwell (MBROADWELL)
+#  25. Intel Skylake (MSKYLAKE)
+#  26. Intel Skylake X (MSKYLAKEX)
+#  27. Intel Cannon Lake (MCANNONLAKE)
+#  28. Intel Ice Lake (MICELAKE)
+#  29. Intel Cascade Lake (MCASCADELAKE)
+#  30. Generic-x86-64 (GENERIC_CPU)
+#  31. Native optimizations autodetected by GCC (MNATIVE)
 _subarch=
 
-# Compile ONLY probed modules
-# Build in only the modules that you currently have probed in your system VASTLY
-# reducing the number of modules built and the build time.
-#
-# WARNING - ALL modules must be probed BEFORE you begin making the pkg!
-#
+# Compile ONLY used modules to VASTLY reduce the number of modules built
+# and the build time.
+# 
 # To keep track of which modules are needed for your specific system/hardware,
 # give module_db script a try: https://aur.archlinux.org/packages/modprobed-db
-# This PKGBUILD will call it directly to probe all the modules you have logged!
+# This PKGBUILD read the database kept if it exists
 #
 # More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
 _localmodcfg=
@@ -74,6 +74,10 @@ makedepends=(
     bc
     libelf
     git
+    python-sphinx
+    python-sphinx_rtd_theme
+    graphviz
+    imagemagick
 )
 options=('!strip')
 
@@ -157,17 +161,16 @@ prepare() {
     ### Optionally load needed modules for the make localmodconfig
     # See https://aur.archlinux.org/packages/modprobed-db
     if [ -n "$_localmodcfg" ]; then
-        msg "If you have modprobed-db installed, running it in recall mode now"
-        if [ -e /usr/bin/modprobed-db ]; then
-            [[ -x /usr/bin/sudo ]] || {
-            echo "Cannot call modprobe with sudo. Install sudo and configure it to work with this user."
-            exit 1; }
-            sudo /usr/bin/modprobed-db recall
-            make localmodconfig
+        if [ -f $HOME/.config/modprobed.db ]; then
+            msg2 "Running Steven Rostedt's make localmodconfig now"
+            make LSMOD=$HOME/.config/modprobed.db localmodconfig
+        else
+            msg2 "No modprobed.db data found"
+            exit
         fi
     fi
 
-    # do not run "make olddefconfig" as it sets default options
+    # do not run 'make olddefconfig' as it sets default options
     yes "" | make config >/dev/null
 
     make -s kernelrelease > ../version
@@ -181,7 +184,7 @@ prepare() {
 
 build() {
     cd $_reponame
-    make bzImage modules
+    make bzImage modules htmldocs
 }
 
 _package() {
@@ -347,6 +350,18 @@ _package-docs() {
     msg2 "Installing documentation..."
     mkdir -p "$builddir"
     cp -t "$builddir" -a Documentation
+
+    msg2 "Removing doctrees..."
+    rm -r "$builddir/Documentation/output/.doctrees"
+
+    msg2 "Moving HTML docs..."
+    local src dst
+    while read -rd '' src; do
+        dst="$builddir/Documentation/${src#$builddir/Documentation/output/}"
+        mkdir -p "${dst%/*}"
+        mv "$src" "$dst"
+        rmdir -p --ignore-fail-on-non-empty "${src%/*}"
+    done < <(find "$builddir/Documentation/output" -type f -print0)
 
     msg2 "Adding symlink..."
     mkdir -p "$pkgdir/usr/share/doc"
