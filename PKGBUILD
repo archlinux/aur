@@ -9,14 +9,8 @@ license=('custom')
 depends=('rvgl-bin')
 optdepends=('rvgl-loadlevel: custom load screens'
             'rvgl-music: music for levels')
-source=("https://distribute.re-volt.io/packs/io_tracks.zip"
-        "https://distribute.re-volt.io/releases/io_tracks.txt")
-sha256sums=('5aa5fa144df5b981964ba2489ba0dcb2b5785e54949952ee03acbe4a66db416f'
-            'SKIP')
-
-pkgver() {
-    cat io_tracks.txt
-}
+source=("$pkgname-$pkgver.zip::https://distribute.re-volt.io/packs/io_tracks.zip")
+sha256sums=('5aa5fa144df5b981964ba2489ba0dcb2b5785e54949952ee03acbe4a66db416f')
 
 package() {
     # remove conflicting file from moved bonus track

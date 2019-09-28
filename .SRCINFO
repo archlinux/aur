@@ -8,10 +8,8 @@ pkgbase = rvgl-tracks
 	depends = rvgl-bin
 	optdepends = rvgl-loadlevel: custom load screens
 	optdepends = rvgl-music: music for levels
-	source = https://distribute.re-volt.io/packs/io_tracks.zip
-	source = https://distribute.re-volt.io/releases/io_tracks.txt
+	source = rvgl-tracks-19.0630.zip::https://distribute.re-volt.io/packs/io_tracks.zip
 	sha256sums = 5aa5fa144df5b981964ba2489ba0dcb2b5785e54949952ee03acbe4a66db416f
-	sha256sums = SKIP
 
 pkgname = rvgl-tracks
 
