@@ -2,8 +2,8 @@
 
 _npmname=web-ext
 pkgname=nodejs-$_npmname
-pkgver=3.1.1
-pkgrel=1
+pkgver=3.2.0
+pkgrel=2
 pkgdesc='A command line tool to help build, run, and test web extensions'
 arch=(any)
 url='https://developer.mozilla.org/en-US/Add-ons/WebExtensions'
@@ -20,6 +20,9 @@ prepare() {
   cd "$srcdir"
   # -build for running webpack and tests, and the original for actual packaging
   cp -r $_npmname{,-build}
+
+  # Chromium tests are flaky
+  rm -v $_npmname-build/tests/unit/test-extension-runners/test.chromium.js
 }
 
 build() {
