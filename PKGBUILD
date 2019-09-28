@@ -4,8 +4,8 @@
 # Contributor: midgard <arch dot midgard "at symbol" janmaes "youknowwhat" com>
 
 pkgname=libdart
-pkgver=6.9.1
-pkgrel=3
+pkgver=6.9.2
+pkgrel=1
 pkgdesc="Dynamic Animation and Robotics Toolkit"
 arch=('i686' 'x86_64')
 url="https://dartsim.github.io"
@@ -27,7 +27,7 @@ optdepends=('bullet: Bullet collision detection support'
 makedepends=('cmake')
 _name=dart
 source=(https://github.com/dartsim/${_name}/archive/v${pkgver}.tar.gz)
-sha256sums=('9e2954aaf2d4538a7e4aab5188f1061c3e216c8c0b72483c2d0b9e814525acd1')
+sha256sums=('7d46d23c04d74d3b78331f9fa7deb5ab32fd4b0c03b93548cd84a2d67771d816')
 
 _buildtype="Release"
 
