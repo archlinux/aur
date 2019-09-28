@@ -1,15 +1,15 @@
 # Maintainer: Sander Vrijders <sander.vrijders@ugent.be>
 pkgname=ouroboros-git
-pkgver=0.11.0.r0.g2e9665b
+pkgver=0.15.2.r0.gd6bd976
 pkgrel=1
-pkgdesc="Inter-Process Communications (IPC) subsystem for POSIX operating systems"
+pkgdesc="A completely decentralized packet network"
 arch=('x86_64' 'i686' 'arm')
 license=('GPL2' 'LGPL2.1' 'BSD')
 depends=('protobuf-c')
 makedepends=('git' 'fakeroot' 'cmake')
 optdepends=('libgcrypt' 'openssl' 'fuse' 'dnsutils' 'swig')
-source=("git+https://ouroboros.ilabt.imec.be/git/ouroboros")
-url="https://ouroboros.ilabt.imec.be"
+source=("git+https://ouroboros.rocks/git/ouroboros")
+url="https://ouroboros.rocks"
 noextract=()
 md5sums=('SKIP')
 _gitname=ouroboros
