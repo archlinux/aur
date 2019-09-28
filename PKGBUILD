@@ -2,8 +2,8 @@
 # Contributor: dmerej <d.merej@gmail.com>
 
 pkgname=hollywood
-pkgver=1.14
-pkgrel=2
+pkgver=1.18
+pkgrel=1
 
 pkgdesc="Fill your console with Hollywood melodrama technobabble."
 
@@ -39,8 +39,8 @@ source=(
 )
 
 md5sums=(
-  '457c69f0f3ae790bf0c868477d36425f'
-  'cc4ce13f8e8d31252db5a0750bb538f6'
+  '9a2650afc330172ec5dec0dc3bcd438b'
+  '2b2cc260d86e1b27a2de6d886f0fdb84'
   '65d3616852dbf7b1a6d4b53b00626032'
 )
 
