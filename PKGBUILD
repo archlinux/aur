@@ -1,15 +1,16 @@
 # Maintainer: Daniel M. Capella <polyzen@archlinux.org>
 
 pkgname=xandikos-git
-pkgver=0.0.11.r22.g7ae6ecd
+pkgver=0.1.0.r35.gc73be18
 pkgrel=1
 pkgdesc='Lightweight yet complete CardDAV/CalDAV server that backs onto a Git repository'
 arch=('any')
 url=https://www.xandikos.org/
 license=('GPL3')
-depends=('python-defusedxml' 'python-dulwich' 'python-icalendar' 'python-jinja')
+depends=('python-aiohttp' 'python-defusedxml' 'python-dulwich' 'python-icalendar' 'python-jinja')
 makedepends=('git' 'python-setuptools')
-optdepends=('uwsgi-plugin-python: to run in production')
+optdepends=('python-prometheus_client: for metrics'
+            'uwsgi-plugin-python: to run in production')
 provides=('xandikos')
 conflicts=('xandikos')
 source=('git+https://www.jelmer.uk/code/xandikos/')
