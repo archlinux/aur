@@ -1,6 +1,6 @@
 # Maintainer: Julien Savard <juju@juju2143.ca>
 pkgname=x16-rom-git
-pkgver=r31.r1.g46d0117
+pkgver=r32.r0.g179b121
 pkgrel=1
 pkgdesc="ROM files for The 8-Bit Guy's Commander X16"
 arch=('any')
@@ -28,14 +28,14 @@ pkgver() {
 
 build() {
 	cd "${pkgname%-git}"
-	make
+	_pkgver1=${pkgver#r}
+	make PRERELEASE_VERSION=${_pkgver1%%[^0-9]*}
 	pandoc --from gfm --to html -c github-pandoc.css --standalone --metadata pagetitle="X16 KERNAL/BASIC/DOS ROM" README.md --output KERNAL-BASIC.html
 }
 
 package() {
 	cd "${pkgname%-git}"
 	install -Dm644 rom.bin "$pkgdir/usr/share/${pkgname%-git}/rom.bin"
-	install -Dm644 rom-c64.bin "$pkgdir/usr/share/${pkgname%-git}/rom-c64.bin"
 	install -Dm644 ../github-pandoc.css "$pkgdir/usr/share/doc/${pkgname%-git}/github-pandoc.css"
 	install -Dm644 KERNAL-BASIC.html "$pkgdir/usr/share/doc/${pkgname%-git}/KERNAL-BASIC.html"
 }
