@@ -1,0 +1,14 @@
+pkgbase = python-deadsimplekv
+	pkgdesc = A simple key-value store with caching for Python
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/beardog108/deadsimplekv
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/2f/3e/183d7f11d2fda4c5fb3f3cfd5a13452e1de499f5666b9345750d9325201a/deadsimplekv-0.2.0.tar.gz
+	md5sums = a1975f53658fd53af1522f0e84cccd8e
+
+pkgname = python-deadsimplekv
+
