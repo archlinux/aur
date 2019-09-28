@@ -6,7 +6,6 @@
 import os  # native OS support
 import shutil  # high-level file operations support
 import glob  # support globbing *
-import time  # sleep/wake command support
 import sys  # import sytem functions
 
 # Golbal Variables
@@ -28,4 +27,3 @@ for i in glob.glob("*.vst3"):  # check for all files with a .vst3 extension
         os.symlink(currentdir + vstname + extso, vstdir + vstname + extso)  # generate link for vst bridge
     else:
         os.symlink(currentdir + vstname + extso, vstdir + vstname + extso)  # generate link for vst bridge
-    time.sleep(0.5)  # sleep for half a second
