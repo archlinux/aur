@@ -1,0 +1,14 @@
+pkgbase = python-unpaddedbase32
+	pkgdesc = A library to use base32 without padding in Python
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/beardog108/python-unpaddedbase32
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/b7/91/581a95d8ebd42000a962832999b933a1b3f3a904b30fae2c1c2b3abc958a/unpaddedbase32-0.1.0.tar.gz
+	md5sums = 19045dd217804ac4b20a7cc666b21ab8
+
+pkgname = python-unpaddedbase32
+
