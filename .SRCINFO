@@ -1,0 +1,16 @@
+pkgbase = mx44
+	pkgdesc = 4 x 4 phase and amplitude crossmodulating synthesizer
+	pkgver = 2
+	pkgrel = 1
+	url = https://web.archive.org/web/20190205234526/http://web.comhem.se/luna/
+	arch = x86_64
+	license = GPL2
+	depends = gtk2
+	depends = jack
+	source = mx44::https://web.archive.org/web/20160730161851if_/http://web.comhem.se/luna/Mx44.2.tar.gz
+	source = mx44.patch
+	md5sums = 8e532c78d79e189fe5b6e2dd10acf0e2
+	md5sums = d897856c49d9bc589b430b3fe3292c2a
+
+pkgname = mx44
+

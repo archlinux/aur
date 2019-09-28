@@ -1,0 +1,22 @@
+diff --unified --recursive --text Mx44.2.orig/src/Makefile Mx44.2.new/src/Makefile
+--- Mx44.2.orig/src/Makefile	2019-09-28 09:43:44.649744513 +0200
++++ Mx44.2.new/src/Makefile	2019-09-28 10:39:07.452949539 +0200
+@@ -4,8 +4,8 @@
+ 
+ PREFIX		= /usr/local/
+ 
+-DATADIR		= $(PREFIX)share/Mx44/
+-BINDIR		= $(PREFIX)bin/
++DATADIR		= $(DESTDIR)$(PREFIX)/share/Mx44/
++BINDIR		= $(DESTDIR)$(PREFIX)/bin/
+ 
+ DIR		= Mx44.2
+ 
+@@ -42,6 +42,7 @@
+ 	$(CC) -c $(FLAGS) $<
+ 
+ install: $(TARGET)
++	install -d $(BINDIR)
+ 	install $(TARGET) $(BINDIR)
+ 	install -d $(DATADIR)
+ 	install -t $(DATADIR) ../data/mx44patch
