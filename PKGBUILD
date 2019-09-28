@@ -9,7 +9,7 @@ pkgname=(fastgcc)
 pkgver=9.2.0
 _majorver=${pkgver:0:1}
 _islver=0.21
-pkgrel=3
+pkgrel=4
 pkgdesc='experimental gcc supporting faster compilation'
 arch=(x86_64)
 license=(GPL LGPL FDL custom)
@@ -172,7 +172,6 @@ package_fastgcc() {
     make -C $CHOST/$lib DESTDIR="$pkgdir" install-toolexeclibLTLIBRARIES
   done
 
-  make -C $CHOST/libobjc DESTDIR="$pkgdir" install-libs
   make -C $CHOST/libstdc++-v3/po DESTDIR="$pkgdir" install
 
   for lib in libgomp \
