@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=mpv-build-git
-pkgver=v0.29.0.655.g257534ed18
+pkgver=v0.29.0.747.gc7d0a8f58e
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 (uses statically linked ffmpeg). (GIT version)"
 arch=('x86_64')
@@ -133,7 +133,6 @@ prepare() {
     '--enable-libsmbclient'
     '--enable-openal'
     '--enable-sdl2'
-    '--enable-zsh-comp'
     )
 
 if [ ${_enable_cuda} = "1" ]; then
