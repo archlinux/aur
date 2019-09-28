@@ -1,7 +1,7 @@
 pkgbase = ferdi-git
 	pkgdesc = Free messaging app for services like WhatsApp, Slack, Messenger and many more. fork removing the non-skippable app delay frequently inviting you to buy a licence
 	pkgver = 5.3.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://getferdi.com/
 	arch = x86_64
 	arch = i686
@@ -10,14 +10,16 @@ pkgbase = ferdi-git
 	makedepends = git
 	makedepends = npm
 	makedepends = python2
-	depends = electron4
+	depends = electron
 	conflicts = ferdi
 	source = git://github.com/getferdi/ferdi.git
+	source = git://github.com/getferdi/recipes.git
 	source = ferdi.desktop
 	source = ferdi.sh
 	sha512sums = SKIP
-	sha512sums = e09649fd9daa2b8391ae7a60e3f81c056269d71afc22fe891c89611eb6c927a2b3b9e0bc69aeb859d75bb8bc7a104197d9f956345bd227a5ac995ef93a2bb68c
-	sha512sums = 54586148db4c1df88099485beae49f7a069fdcbca35ebb4fb3df3a15963f295712d8d9dfeddb1402b3676447eb2e9ea07b28808b0c611fca72617e32777ea7e8
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
 
 pkgname = ferdi-git
 

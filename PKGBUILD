@@ -6,20 +6,22 @@
 pkgname=ferdi-git
 _pkgver=5.3.4
 pkgver=${_pkgver//-/_}
-pkgrel=3
+pkgrel=4
 pkgdesc='Free messaging app for services like WhatsApp, Slack, Messenger and many more. fork removing the non-skippable app delay frequently inviting you to buy a licence'
 arch=(x86_64 i686)
 url='https://getferdi.com/'
 license=(Apache)
 conflicts=('ferdi')
-depends=(electron4)
+depends=(electron)
 makedepends=(expac git npm python2)
 source=('git://github.com/getferdi/ferdi.git'
+        'git://github.com/getferdi/recipes.git'
         'ferdi.desktop'
         'ferdi.sh')
 sha512sums=('SKIP'
-            'e09649fd9daa2b8391ae7a60e3f81c056269d71afc22fe891c89611eb6c927a2b3b9e0bc69aeb859d75bb8bc7a104197d9f956345bd227a5ac995ef93a2bb68c'
-            '54586148db4c1df88099485beae49f7a069fdcbca35ebb4fb3df3a15963f295712d8d9dfeddb1402b3676447eb2e9ea07b28808b0c611fca72617e32777ea7e8')
+            'SKIP'
+            'SKIP'
+            'SKIP')
 
 prepare() {
   # Prepare Python 2 for later
@@ -27,9 +29,13 @@ prepare() {
   ln -s `which python2` python2_path/python
 
   # Small patching
-  cd ferdi
+  cd ferdi/recipes
+  git submodule init
+  git config submodule.recipes.url $srcdir/recipes
+  
   git submodule update --init --recursive
 
+  cd ..
 
   # Prevent ferdi from being launched in dev mode
   sed -i "s|export const isDevMode = .*|export const isDevMode = false;|g" \
@@ -37,13 +43,8 @@ prepare() {
   sed -i "s|import isDevMode from 'electron-is-dev'|export const isDevMode = false|g" \
     src/index.js
 
-  # Adjust the electron version to use when building
-  electron_version="`expac %v electron4 | cut -d'-' -f1`"
-  sed -i "s|\(\s\+\"electron4\":\).*,|\1 \"$electron_version\",|" package.json
-
   # Adjust node-sass version to avoid build issues
   npm install "node-sass@4.12.0"
-  # Prepare the packages for building
 }
 
 build() {
@@ -53,10 +54,9 @@ build() {
   export npm_config_cache="$srcdir"/npm_cache
   export PATH="$srcdir/ferdi/node_modules/.bin:$srcdir/python2_path:$PATH"
 
-  
   npm install lerna
   lerna bootstrap
- 
+
   gulp build
   electron-builder --linux dir
 }
@@ -64,14 +64,14 @@ build() {
 package() {
   cd ferdi
   # Install the .asar files
-  install -dm 755 "$pkgdir"/usr/lib/ferdi
-  cp -r --no-preserve=ownership --preserve=mode out/linux-unpacked/resources "$pkgdir"/usr/lib/ferdi/
+  install -Dm 755 out/linux-unpacked/resources/app.asar "$pkgdir/usr/lib/ferdi/resources/app.asar"
 
   # Install icon
-  install -Dm 644 "$srcdir"/ferdi.desktop "$pkgdir"/usr/share/applications/ferdi.desktop
-  install -Dm 644 build-helpers/images/icon.png "$pkgdir"/usr/share/icons/ferdi.png
+  install -Dm 644 "$srcdir/ferdi.desktop" "$pkgdir/usr/share/applications/ferdi.desktop"
+  install -Dm 644 build-helpers/images/icon.png "$pkgdir/usr/share/icons/ferdi.png"
 
   # Install run script
-  install -Dm 755 "$srcdir"/ferdi.sh "$pkgdir"/usr/bin/ferdi
+  install -Dm 755 "$srcdir/ferdi.sh" "$pkgdir/usr/bin/ferdi"
 }
+
 
