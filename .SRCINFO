@@ -1,0 +1,16 @@
+pkgbase = lib32-glpk
+	pkgdesc = GNU Linear Programming Kit : solve LP, MIP and other problems.
+	pkgver = 4.65
+	pkgrel = 2
+	url = https://www.gnu.org/software/glpk/glpk.html
+	arch = x86_64
+	license = GPL
+	makedepends = gcc-multilib
+	depends = lib32-gmp
+	source = https://ftp.gnu.org/gnu/glpk/glpk-4.65.tar.gz
+	source = glpk-remove-warnings.patch
+	sha1sums = d9b607a9cf3a25b754a0cd9a842ea5043f8604db
+	sha1sums = 6f4e904c5dc88a8b43391e030496644d77e39163
+
+pkgname = lib32-glpk
+

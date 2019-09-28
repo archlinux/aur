@@ -1,0 +1,19 @@
+--- glpk-4.65/src/draft/glpios03.c.orig	2018-08-18 07:02:32.165492793 +0000
++++ glpk-4.65/src/draft/glpios03.c	2018-08-18 07:03:47.775715038 +0000
+@@ -920,13 +920,10 @@
+ #if 0
+       ((glp_iocp *)T->parm)->msg_lev = GLP_MSG_DBG;
+ #endif
+-#if 1 /* 16/III-2016 */
++#if 1 /* 01/III-2018 */
+       if (((glp_iocp *)T->parm)->flip)
+-#if 0 /* 20/I-2018 */
+-         xprintf("WARNING: LONG-STEP DUAL SIMPLEX WILL BE USED\n");
+-#else
+-         xprintf("Long-step dual simplex will be used\n");
+-#endif
++         if (T->parm->msg_lev >= GLP_MSG_ALL)
++            xprintf("Long-step dual simplex will be used\n");
+ #endif
+       /* on entry to the B&B driver it is assumed that the active list
+          contains the only active (i.e. root) subproblem, which is the
