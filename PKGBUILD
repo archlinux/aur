@@ -1,6 +1,6 @@
 # Maintainer: Karl-Felix Glatzer <karl.glatzer@gmx.de>
 pkgname=mingw-w64-orc
-pkgver=0.4.29
+pkgver=0.4.30
 pkgrel=1
 pkgdesc="Optimized Inner Loop Runtime Compiler (mingw-w64)"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('mingw-w64-crt')
 makedepends=('mingw-w64-gcc' 'mingw-w64-meson' 'wine' 'git')
 options=('!strip' '!buildflags' '!libtool' 'staticlibs')
 #source=(https://gstreamer.freedesktop.org/data/src/orc/orc-${pkgver}.tar.xz{,.asc}
-_commit=3d3889025bdbd9ca54565edfb3936c5a29316cff  # tags/0.4.29^0
+_commit=ec359cbad8b554985b1b38c665b9db01ef29619a  # tags/0.4.30^0
 source=("git+https://gitlab.freedesktop.org/gstreamer/orc.git#commit=$_commit"
         meson_i686-w64-mingw32
         meson_x86_64-w64-mingw32)
@@ -40,7 +40,7 @@ check() {
     cp "${srcdir}/orc/build-${_arch}/orc/liborc"*.dll .
     cp "${srcdir}/orc/build-${_arch}/orc-test/liborc-test"*.dll .
 
-    meson test
+    meson test --print-errorlogs
   done
 }
 
