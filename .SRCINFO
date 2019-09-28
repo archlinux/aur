@@ -1,0 +1,17 @@
+pkgbase = python-potr
+	pkgdesc = Pure python OTR implementation without libotr
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/afflux/pure-python-otr
+	arch = any
+	license = LGPL
+	checkdepends = python-nose
+	checkdepends = python-rednose
+	makedepends = python-setuptools
+	depends = python
+	depends = python-crypto
+	source = python-potr-1.0.2.tar.gz::https://github.com/afflux/pure-python-otr/archive/1.0.2.tar.gz
+	sha512sums = e35f6ea7db64af92a966b22857a1a670a1c930aa01a1bc88d5ba7e4ba62100808c193fbccbbde4d29039610a383b374c95a090fd98b208890c721e01bba87fb8
+
+pkgname = python-potr
+
