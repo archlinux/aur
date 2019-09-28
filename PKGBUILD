@@ -1,4 +1,4 @@
-# Maintainer: Jonas Witschel <diabonas at gmx dot de>
+# Maintainer: Jonas Witschel <diabonas@archlinux.org>
 pkgname=tpm2-totp-git
 pkgver=0.1.0.r73.a144c27
 pkgrel=1
