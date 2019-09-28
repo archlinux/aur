@@ -1,0 +1,18 @@
+pkgbase = heluxup
+	pkgdesc = heluxup makes it easy to upgrade HelmRelease objects in a flux control respository.
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/ekeih/heluxup
+	arch = any
+	license = GPL
+	makedepends = python-setuptools
+	depends = python
+	depends = python-click
+	depends = python-ruamel-yaml
+	depends = python-semver
+	depends = python-urllib3
+	source = https://files.pythonhosted.org/packages/source/h/heluxup/heluxup-0.1.2.tar.gz
+	sha256sums = 966d5f7a12aae5a1e34078b3f785ddd7756ca0ad3ad3415cdd1a2e480c372051
+
+pkgname = heluxup
+
