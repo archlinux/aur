@@ -6,7 +6,7 @@ url='https://wiki.ros.org/qt_gui_cpp'
 pkgname='ros-melodic-qt-gui-cpp'
 pkgver='0.3.11'
 arch=('any')
-pkgrel=3
+pkgrel=4
 license=('BSD')
 
 ros_makedepends=(
@@ -33,6 +33,8 @@ ros_depends=(
 depends=(
 	${ros_depends[@]}
 	tinyxml
+    sip
+    python-sip
 )
 
 _dir="qt_gui_core-${pkgver}/qt_gui_cpp"
