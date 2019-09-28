@@ -1,0 +1,14 @@
+pkgbase = python-streamedrequests
+	pkgdesc = A library for streaming http GET or POST requests' responses
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/beardog108/streamedrequests
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/91/af/673dde1d1bacac873197ce12405eaba5efe0b305e76b7b8fee58a05b5aba/streamedrequests-1.0.0.tar.gz
+	md5sums = 40a48d25c8885d36baa4291f8b91e706
+
+pkgname = python-streamedrequests
+
