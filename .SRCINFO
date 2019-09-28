@@ -22,7 +22,8 @@ pkgbase = mesa-git
 	makedepends = wayland-protocols
 	makedepends = meson
 	makedepends = ninja
-	makedepends = llvm-minimal-git
+	makedepends = llvm=8.0.1
+	makedepends = clang=8.0.1
 	depends = libdrm
 	depends = libxxf86vm
 	depends = libxdamage
@@ -35,7 +36,7 @@ pkgbase = mesa-git
 	depends = lm_sensors
 	depends = libclc
 	depends = glslang
-	depends = llvm-libs-minimal-git
+	depends = llvm-libs=8.0.1
 	optdepends = opengl-man-pages: for the OpenGL API man pages
 	provides = mesa=19.3.0_devel.115749.336b021d36f-2
 	provides = vulkan-intel=19.3.0_devel.115749.336b021d36f-2
