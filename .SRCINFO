@@ -1,0 +1,29 @@
+pkgbase = grandorgue-svn
+	pkgdesc = svn-version of the Virtual Pipe Organ Software GrandOrgue
+	pkgver = r2330
+	pkgrel = 1
+	url = https://svn.code.sf.net/p/ourorgan/svn/trunk/
+	arch = i686
+	arch = x86_64
+	license = GPL2+
+	makedepends = gcc
+	makedepends = cmake
+	makedepends = subversion
+	makedepends = docbook-xsl
+	makedepends = zip
+	makedepends = po4a
+	makedepends = gettext
+	depends = fftw
+	depends = wavpack
+	depends = wxgtk2
+	depends = alsa-lib
+	depends = libglvnd
+	depends = jack
+	depends = zlib
+	depends = libsystemd
+	replaces = grandorgue-git
+	source = grandorgue-svn::svn+https://svn.code.sf.net/p/ourorgan/svn/trunk/
+	md5sums = SKIP
+
+pkgname = grandorgue-svn
+
