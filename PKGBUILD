@@ -12,8 +12,8 @@
 
 pkgbase=linux-libre         # Build stock kernel
 #pkgbase=linux-libre-custom # Build kernel with a different name
-_srcbasever=5.2-gnu
-_srcver=5.2.5-gnu
+_srcbasever=5.3-gnu
+_srcver=5.3.1-gnu
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -23,7 +23,8 @@ _srcname=linux-${_srcbasever%-*}
 _archpkgver=${_srcver%-*}
 pkgver=${_srcver//-/_}
 pkgrel=1
-rcnrel=armv7-x3
+rcnver=5.3
+rcnrel=armv7-x8
 arch=(i686 x86_64 armv7h)
 url='https://linux-libre.fsfla.org/'
 license=(GPL2)
@@ -52,11 +53,7 @@ source=(
   0002-fix-Atmel-maXTouch-touchscreen-support.patch
 
   # Arch's custom linux patches
-  0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
-  0002-ZEN-Add-CONFIG-for-unprivileged_userns_clone.patch
-  0003-iwlwifi-mvm-disable-TX-AMSDU-on-older-NICs.patch
-  0004-iwlwifi-Add-support-for-SAR-South-Korea-limitation.patch
-  0005-netfilter-nf_tables-fix-module-autoload-for-redir.patch
+  0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
 )
 source_armv7h=(
   # armv7h patches, put in the source_armv7h variable just for a more comfortable loop patching
@@ -65,7 +62,7 @@ source_armv7h=(
   # Note: For stability reasons, AUFS has been removed in the RCN patch.
   # We are supporting AUFS in linux-libre-pck through PCK patch.
   # See https://wiki.parabola.nu/PCK for further details.
-  "https://repo.parabola.nu/other/rcn-libre/patches/${_srcver%-*}/rcn-libre-${_srcver%-*}-$rcnrel.patch"{,.sig}
+  "https://repo.parabola.nu/other/rcn-libre/patches/${rcnver}/rcn-libre-${rcnver}-$rcnrel.patch"{,.sig}
 
   # Arch Linux ARM patches
   0001-ARM-atags-add-support-for-Marvell-s-u-boot.patch
@@ -76,14 +73,15 @@ source_armv7h=(
   0006-set-default-cubietruck-led-triggers.patch
   0007-exynos4412-odroid-set-higher-minimum-buck2-regulator.patch
   0008-ARM-dove-enable-ethernet-on-D3Plug.patch
+  0009-USB-Armory-MkII-support.patch
 )
 validpgpkeys=(
   '474402C8C582DAFBE389C427BCB7CF877E7D47A7' # Alexandre Oliva
   '6DB9C4B4F0D8C0DC432CF6E4227CA7C556B2BA78' # David P.
 )
-sha512sums=('3359b0a10ac04243399a1b0aa84f6c09e3c1914880be19a7e931189da92900ca77e467e7ab5c296a03d2ff0ab3238ec75b13fd41bd2796049b63e71f6896900e'
+sha512sums=('85d83c973ef96ab414354414da70ab3e1c3df19c3088458498cec1594952878b7967a8988bd9e36d4e728cc573a36e6eac056dbcab2f9aa742f18cbb4fb3164f'
             'SKIP'
-            '9b35cbb7b1b7ef851a0fb9531ade4360487a75723d8bd9ebfd064b54d3b9697741d60b4b38dca15317e1b1f11d403c830d8f85b663bae56615f1b361eedeae35'
+            'f58ba041868ef3475ca3b4ad2943ed2df3da17e4eadb6597131e9903a95b734d4df22d096e7cf66d30778e88c9e799512b2e3f51119c997dc2b7a766c104bcc2'
             'SKIP'
             '13cb5bc42542e7b8bb104d5f68253f6609e463b6799800418af33eb0272cc269aaa36163c3e6f0aacbdaaa1d05e2827a4a7c4a08a029238439ed08b89c564bb3'
             'SKIP'
@@ -91,9 +89,9 @@ sha512sums=('3359b0a10ac04243399a1b0aa84f6c09e3c1914880be19a7e931189da92900ca77e
             'SKIP'
             '267295aa0cea65684968420c68b32f1a66a22d018b9d2b2c1ef14267bcf4cb68aaf7099d073cbfefe6c25c8608bdcbbd45f7ac8893fdcecbf1e621abdfe9ecc1'
             'SKIP'
-            '174f1b3bc887fb5e244c4990f0b63366d15c25b2c19ba89b1f50c894232e6b8517dd9f6b51bd4325250e604fe34d9c2d2cb5383d7717ddcaedd2a9806b719b3f'
-            'ed182e126545a45fb9aaa8e689be8a9b0a0092426b3d354176b1e5197734d1c4a20549b1d5254dc1da79d0ee981d4eaf0414ce359ac4d029ea1c4b0e6fa87c16'
-            '27fdc0085318c0ebb1ffe29fd25d258c3ad2c14e3b3c9c4f6eba5ab44e3aca0bfacf90aad2ca66c24896579796b4b731da149ffdd831eab92871e89f96951e84'
+            '6c61262cba5577497163e7e50dac899215b039d152d932b8717d7faa68f2cbfc179a5a1003ff229338c35c673ddd4e3f46372d5f998b466ac89edf31298aa8a7'
+            'de52a005c82ca9589b61d3c3ac2fed777e1759d8c7c4982edf3d98a2f5fcc3c567bcb1ff39d33b5ca389f4b128f16550a92e5f16392f1ce47cffe549cb58a83b'
+            'ea3a3813a6ad8ad18436b6010b60b855b9b89257cd959d8629643c6954c2607fa944566fe0368dc626aab11f3fa6a442a85e38f3fb1ea7ddc549509a87429a5c'
             '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
             '2718b58dbbb15063bacb2bde6489e5b3c59afac4c0e0435b97fe720d42c711b6bcba926f67a8687878bd51373c9cf3adb1915a11666d79ccb220bf36e0788ab7'
             '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
@@ -102,21 +100,18 @@ sha512sums=('3359b0a10ac04243399a1b0aa84f6c09e3c1914880be19a7e931189da92900ca77e
             '143dea30c6da00e504c99984a98a0eb2411f558fcdd9dfa7f607d6c14e9e7dffff9cb00121d9317044b07e3e210808286598c785ee854084b993ec9cb14d8232'
             '02af4dd2a007e41db0c63822c8ab3b80b5d25646af1906dc85d0ad9bb8bbf5236f8e381d7f91cf99ed4b0978c50aee37cb9567cdeef65b7ec3d91b882852b1af'
             'b8fe56e14006ab866970ddbd501c054ae37186ddc065bb869cf7d18db8c0d455118d5bda3255fb66a0dde38b544655cfe9040ffe46e41d19830b47959b2fb168'
-            '38e1e19ac2536ffc0d9d6ea953597734151fc319e48fe7223618b51f362f504bf8164c7a439285063a1f81210928ea1d7524630d0e8c41bdcf3de221ead1e34f'
-            '20392a6552f39f40919597af3ad767c66f265ccb7ba8c38ee9122de8e1c4ff43285864f9535bef9ad8cca76918ab38bc1fb4db265cd45ccfdb3849e30b198a64'
-            'ac7220d35b9a0e9765aba42458702b23dfe5065e56dff1456a131ead2b165e2dd316548078a23641ebadd35dec8428b250c83d1f21fb1572728ceefe2096d699'
-            '00dceecb6b4a8da2deb757118a0a203d91926183bb42539d518ff2e2903b2750dc77f73f3f2e33aa13e1ec0578b05ad12d9828fd5d3a02caf9ca479f5e2f8db9'
-            '06738961d1c87b8f3bf6409dace1c8b99c0bd1a8c64d5070e2c88a23191401292b7c6dca018df76213451cdae2d3e7edc80b94ccfaa17986e5d2196cecfa9113')
-sha512sums_armv7h=('dda9e03327dffb6425ec981f4e548802357f9e148d6cb7fa0e9fd8b95548144bfab8e3b15f7ac3cbf73c2d3ec3dcb380ca018b79b125832fd52bfd12662c0943'
+            '2ff49b3e5ee3ca61494cfcd6e3ba5dc31d8b625a193f5c5f24aca55d91cbd60a91897bbf6953e172acc596e72b033b3eeb6041380efd52d90a3c832db563cbf4')
+sha512sums_armv7h=('610d522b0c9d466f42edf2d8afa8725e1cd9cf9d38bd6a9dfdfec357e632acdd371e056d7e0c5169d116c7b5f1ecdfd1c39da62a52755ac85e46025424ffbee9'
                    'SKIP'
-                   'cd064ca844aa2f0f1e4157ce7a7607850d7c4b531f5b8336d75ce2f49d3a76e09f1e41ebd712b942357068028896dd7f55d037f5c01367c5cd8297c98920e7dc'
-                   '066a9e3dca09e5dee2e4f852c1c446f9ccf0a8ebd1effedf9b11492be2ea4bf48b3cffdde809749e8602bb6d6af129c4087d97cb1158df89ad9e0b7eb6aa00d8'
-                   'c8a8bf3e17d301325ab870130218df71f8114fbb389c687f4747e9b4f11596ac1b17b97ebf34d3e1f76f065a938ff08b01b16360e9c14345f7985372171e5c10'
-                   'c2707250bb31c7f2b2f4d2955231b3d3fe86bd2e7347c6f44fa56dc591559d2824cd166c7c9624ef12e1446d286ce1485c722b37d6b02357504eed273af67e99'
-                   '3901b0eec723e2312811ef609d68696ff1ec7119efd43ca56f7f70b9f6663f0ea958b87c6b43b05b006bdb489166ab0c7e7da810d0918cc2f9c54a314b2cd2fc'
-                   '9d09755113b771b31ec95c26eed5f13122a1bdcb962099df71da0b1eba94d6bac1d09c0404f538a7ffa3f64172951db1f33a210a6db2534cb35a1bad6dd6bcdb'
-                   '565cd932a8a35822431d03f03219a9cf9ff289afd1c25e20e93eb7b69d614122af0407e4a1ed93b4f124f27af924042461ee99b9bc7ac43caec079e7eb8afa45'
-                   'cb74edfc1cdb504a74c3b4ccad4f13a0e9ea7ab96ab9b87d35880d8dc8f54a8697cb2689201c8d5b3810802e0fd967193b64b7e6357ea07d369c72e066e43c87')
+                   '9724026836feefa67acb9644acf3ee89d465734af50b6637b8232b705c6259035d485cd1a1f0f08d189921eb75ad095b3e1f7f7e5e0e52302352c453f03ac820'
+                   '41f9f7d58bb29311e09dd58105d173fb2e2a955c0e7d632bc8788c2f0a803a45281dfd2be1712d6ec93b58b9f440f3f8398f234bd7ded1c49b1c33b328478203'
+                   '9d29a3d22aae6533d048280f3a1bf1cc325e1c1304268b6d129a29e1d74c105c55077306e6350105a9445e2a1de621cb6759b71177badbaa0e384e9800427acf'
+                   'c7b99f64d148b7ef140d3621b3d3fa922739f2a393ce99038d0dd539d0bb8e2e3ffe92ccbc3fe9d8dea5f3f4ddc433eb6ddd9d46939f04f38cd82ee32f5d53ec'
+                   '618d84d26338dfeb15c88fc6d9d7c68d0151f50e000032b2d21d30d05ec62f2d36ef5a50d3671e4e9777a2db6c40d71878a9fcc89420fbe9f59e7e30406c9064'
+                   '464d1622fd79d7f6811799bd27e16204979db3c372e03aae8285fbff584d39928d7ddb5da8139f4ce535c70406fcf73cc20dd44ffe83fd7cda36ca915fb0b931'
+                   '114067bfafa63bbb3aef73d05909b520355a757d15aa2ce07c6bfeae200192282782980b3d8963c0d984cf0c410d2613639444dffe21007ae6a7359be6a5ff76'
+                   'c1191d35ef8ce8ffaa817e952916dfe5fff45758c13394bb3fc7eba7376fd2cdc94ef32a2a54d431d8258da10fa7ce2284b092b6871e9b357b71ac0144a655b8'
+                   'e8e73026ac02645b5914ac97bfada4c94f48e490331a28960ee5939feb18dc5630831748cdd210b27d91590322cf564d3265feee9a8246a373cc117cd520c10d')
 
 _kernelname=${pkgbase#linux}
 _replacesarchkernel=("${_replacesarchkernel[@]/\%/${_kernelname}}")
