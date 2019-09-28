@@ -1,0 +1,14 @@
+pkgbase = local-by-flywheel
+	pkgdesc = A program to create a local WordPress development environment.
+	pkgver = 5.0.5
+	pkgrel = 1
+	url = https://localbyflywheel.com/
+	arch = x86_64
+	license = freemium
+	makedepends = rpmextract
+	options = emptydirs
+	source = https://local-by-flywheel-flywheel.netdna-ssl.com/releases/5-0-5/local-5-0-5-linux.rpm
+	md5sums = 72d65076cf89ba3d65e3a75a69e8fe65
+
+pkgname = local-by-flywheel
+
