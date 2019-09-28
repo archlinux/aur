@@ -1,11 +1,13 @@
 # Maintainer: Amos Onn <amosonn at gmail dot com>
+# Maintainer: Blair Bonnett <blair dot bonnett @ gmail dot com>
+
 pkgname=python-distributed
 _pkgname=distributed
-pkgver=2.4.0
+pkgver=2.5.1
 pkgrel=1
-pkgdesc="A python library for distributed computation."
+pkgdesc="Python library for distributed computing"
 arch=('any')
-depends=('python>=3.5' 'python-click>=6.6' 'python-cloudpickle>=0.2.2' 
+depends=('python>=3.5' 'python-click>=6.6' 'python-cloudpickle>=0.2.2'
 'python-dask>=2' 'python-msgpack' 'python-psutil>=5.0'
 'python-sortedcontainers>2.0.1' 'python-tblib' 'python-toolz>=0.7.4'
 'python-tornado>=5' 'python-zict>=0.1.3' 'python-yaml')
@@ -21,13 +23,13 @@ optdepends=(
 'python-paramiko' 'python-ipywidgets' # crick, hdfs-3
 )
 url="http://distributed.readthedocs.org/en/stable/"
-license=('BSD-3-clause')
-source=(https://codeload.github.com/dask/distributed/tar.gz/$pkgver)
-sha256sums=('2e1e37713df8dd89aac644d0cbac0aa73aead6d91cd7b6f5a55706f32789c051')
+license=('BSD')
+source=("$pkgver.tar.gz::https://codeload.github.com/dask/distributed/tar.gz/$pkgver")
+sha256sums=('b9c0534ccb725d52457afea7a6d0a069b8a1f493ed7e001a4dea1e0f89645128')
 
 package() {
-  cd $srcdir/$_pkgname-$pkgver
-  python setup.py install --root=$pkgdir || return 1
-  install -d $pkgdir/usr/share/licenses/$pkgname
-  install LICENSE.txt $pkgdir/usr/share/licenses/$pkgname/COPYING
+  cd "$srcdir/$_pkgname-$pkgver"
+  python setup.py install --root="$pkgdir" --optimize=1 || return 1
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  install LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname"
 }
