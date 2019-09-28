@@ -1,4 +1,4 @@
-# Maintainer: Jonas Witschel <diabonas at gmx dot de>
+# Maintainer: Jonas Witschel <diabonas@archlinux.org>
 # Contributor: Hexchain Tong <i at hexchain dot org>
 pkgname=tpm2-tools-git
 pkgver=4.0.r45.af53407d
