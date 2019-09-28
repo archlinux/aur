@@ -9,7 +9,7 @@ pkgname=(fastgcc)
 pkgver=9.2.0
 _majorver=${pkgver:0:1}
 _islver=0.21
-pkgrel=2
+pkgrel=3
 pkgdesc='experimental gcc supporting faster compilation'
 arch=(x86_64)
 license=(GPL LGPL FDL custom)
@@ -163,8 +163,6 @@ package_fastgcc() {
   rm -f "$pkgdir/$_libdir/libgcc_eh.a"
 
   for lib in libatomic \
-             libgfortran \
-             libgo \
              libgomp \
              libitm \
              libquadmath \
