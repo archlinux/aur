@@ -1,19 +1,44 @@
 post_install() {
-  ln -sf /opt/latvia-eid/lib/otlv-pkcs11.so /usr/lib
-  ln -sf /opt/latvia-eid/bin/otlv-pintool /usr/bin
+  rm -fr /usr/share/pixmaps/otlv-pintool.xpm
+  rm -fr /usr/share/applications/otlv-pintool.desktop
+  rm -fr /opt/latvia-eid/share/doc/Latvia-eID-Middleware
+  rm -fr /opt/latvia-eid/share/Latvia-eID-Middleware
+  rm -fr /opt/latvia-eid/bin/otlv-pintool
+  rm -fr /opt/latvia-eid/lib/libotlv*
+  rm -fr /opt/latvia-eid/lib/onepin-otlv*
+  rm -fr /opt/latvia-eid/lib/otlv*
+  rm -fr /opt/latvia-eid/lib/pkcs11/onepin-otlv*
+  rm -fr /opt/latvia-eid/lib/pkcs11/otlv*
+  ln -sf /opt/latvia-eid/lib/eidlv-pkcs11.so /usr/lib
+  ln -sf /opt/latvia-eid/lib/eidlv-pkcs11.so /usr/lib/otlv-pkcs11.so
+  ln -sf /opt/latvia-eid/bin/eidlv-pintool /usr/bin
+  ln -sf /opt/latvia-eid/bin/opensc-asn1 /usr/bin/eidlv-opensc-asn1
+  ln -sf /opt/latvia-eid/bin/opensc-explorer /usr/bin/eidlv-opensc-explorer
+  ln -sf /opt/latvia-eid/bin/opensc-tool /usr/bin/eidlv-opensc-tool
+  ln -sf /opt/latvia-eid/bin/pkcs11-tool /usr/bin/eidlv-pkcs11-tool
+  ln -sf /opt/latvia-eid/bin/pkcs15-crypt /usr/bin/eidlv-pkcs15-crypt
+  ln -sf /opt/latvia-eid/bin/pkcs15-tool /usr/bin/eidlv-pkcs15-tool
   mkdir -p /usr/lib/pkcs11
-  ln -sf ../otlv-pkcs11.so /usr/lib/pkcs11/.
-  ln -sf /opt/latvia-eid/share/doc/Latvia-eID-Middleware/otlv-pintool.xpm /usr/share/pixmaps/.
-  ln -sf /opt/latvia-eid/share/doc/Latvia-eID-Middleware/otlv-pintool.desktop /usr/share/applications/.
+  ln -sf ../eidlv-pkcs11.so /usr/lib/pkcs11/.
+  ln -sf ../eidlv-pkcs11.so /usr/lib/pkcs11/otlv-pkcs11.so
+  ln -sf /opt/latvia-eid/share/doc/latvia-eid/eidlv-pintool.xpm /usr/share/pixmaps/.
+  ln -sf /opt/latvia-eid/share/doc/latvia-eid/eidlv-pintool.desktop /usr/share/applications/.
   /sbin/ldconfig /opt/latvia-eid/lib
   /sbin/ldconfig /usr/lib/pkcs11
   /sbin/ldconfig
 }
 
-post_remove() {
+pre_remove() {
+  rm -f /usr/lib/eidlv-pkcs11.so
+  rm -f /usr/lib/pkcs11/eidlv-pkcs11.so
   rm -f /usr/lib/otlv-pkcs11.so
   rm -f /usr/lib/pkcs11/otlv-pkcs11.so
-  rm -f /usr/bin/otlv-pintool
-  rm -f /usr/share/pixmaps/otlv-pintool.xpm
-  rm -f /usr/share/applications/otlv-pintool.desktop
+  rm -f /usr/bin/eidlv-pintool
+  rm -f /usr/bin/eidlv-opensc-explorer
+  rm -f /usr/bin/eidlv-opensc-tool
+  rm -f /usr/bin/eidlv-pkcs11-tool
+  rm -f /usr/bin/eidlv-pkcs15-crypt
+  rm -f /usr/bin/eidlv-pkcs15-tool
+  rm -f /usr/share/pixmaps/eidlv-pintool.xpm
+  rm -f /usr/share/applications/eidlv-pintool.desktop
 }

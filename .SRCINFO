@@ -1,7 +1,7 @@
 pkgbase = latvia-eid-middleware
 	pkgdesc = Middleware for using Latvia-eid smart cards
 	pkgver = 2.0.4
-	pkgrel = 2
+	pkgrel = 4
 	url = https://www.eparaksts.lv
 	install = middleware.install
 	arch = x86_64

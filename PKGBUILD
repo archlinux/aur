@@ -1,7 +1,7 @@
 # Maintainer: Māris Vilks <kaaposc@gmail.com>
 pkgname=latvia-eid-middleware
 pkgver=2.0.4
-pkgrel=2
+pkgrel=4
 pkgdesc="Middleware for using Latvia-eid smart cards"
 arch=('x86_64')
 url="https://www.eparaksts.lv"
