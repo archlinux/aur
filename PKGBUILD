@@ -1,8 +1,9 @@
-# Previous Maintainer: Hilton Medeiros <medeiros.hilton@gmail.com>
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
+# Contributor: Hilton Medeiros <medeiros.hilton@gmail.com>
+
 pkgname=angelscript
-pkgver=2.33.0
-pkgrel=2
+pkgver=2.34.0
+pkgrel=1
 pkgdesc="An extremely flexible cross-platform scripting library."
 arch=('i686' 'x86_64')
 url="http://angelcode.com/angelscript/"
@@ -10,7 +11,7 @@ license=('custom:ZLIB')
 depends=('gcc-libs')
 source=("http://angelcode.com/angelscript/sdk/files/${pkgname}_${pkgver}.zip"
         LICENSE)
-sha512sums=('eaf972ecf965fe4f72e55755f5e796499018e918f93cfd835b1ca20f9338e299e8dbd707240341eef81ae920f07d2280646151f515f5990a62550689445c86f0'
+sha512sums=('c26dba452ab52c300da9c95fde8398acf4840cbc0e653ededf978d4a3e942cfe5b77292c74c49dc0279250a27cfd324c696c49d139a97c844b2a1eead9aae2f4'
             '523a6ded94dab26ebc1fc5ed39346b950afea1dae1a51c5f262242de1ad86ce921d462b430825bd7a0ca7bb2d501b85e60f39732c3e1d948e1f0182cc9c691a1')
 
 build() {
