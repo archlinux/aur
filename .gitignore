@@ -1,4 +1,5 @@
 *.pkg.tar*
+*.deb
 pkg/
 src/
 MatterControl/
