@@ -1,4 +1,4 @@
-# Maintainer: Jonas Witschel <diabonas at gmx dot de>
+# Maintainer: Jonas Witschel <diabonas@archlinux.org>
 pkgname=jose-git
 pkgver=10.r8.028eab5
 pkgrel=1
