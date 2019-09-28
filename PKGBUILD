@@ -1,4 +1,4 @@
-# Maintainer: Jonas Witschel <diabonas at gmx dot de>
+# Maintainer: Jonas Witschel <diabonas@archlinux.org>
 pkgname=tpm2-pytss-git
 pkgver=r4.d28d577
 pkgrel=1
