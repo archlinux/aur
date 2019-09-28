@@ -1,0 +1,12 @@
+pkgbase = quasselsearch-git
+	pkgdesc = Search your sqlite based quassel core from the command line.
+	pkgver = r9.e853905
+	pkgrel = 1
+	url = https://github.com/karan42/quasselsearch
+	arch = any
+	license = GPL2
+	source = git+https://github.com/karan42/quasselsearch.git
+	md5sums = SKIP
+
+pkgname = quasselsearch-git
+
