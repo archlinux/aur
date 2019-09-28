@@ -1,4 +1,4 @@
-# Maintainer: Jonas Witschel <diabonas at gmx dot de>
+# Maintainer: Jonas Witschel <diabonas@archlinux.org>
 pkgname=tang
 pkgver=7
 pkgrel=2
