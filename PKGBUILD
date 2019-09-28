@@ -5,7 +5,7 @@
 pkgbase=pipewire-gstfree
 _pkgbase=pipewire
 pkgname=(pipewire-gstfree pipewire-gstfree-docs)
-pkgver=0.2.6+1+g37613b67
+pkgver=0.2.7
 pkgrel=1
 pkgdesc="Server and user space API to deal with multimedia pipelines. packaged without gstreamer dependencies"
 url="https://pipewire.org"
@@ -15,7 +15,7 @@ depends=(sbc ffmpeg rtkit)
 makedepends=(git meson doxygen graphviz xmltoman valgrind)
 conflicts=(pipewire)
 provides=(pipewire)
-_commit=37613b67ba52b5ad4e81d7ea38adc04027d9f9e5  # master
+_commit=14c11c0fe4d366bad4cfecdee97b6652ff9ed63d  # tags/0.2.7
 source=("git+https://github.com/PipeWire/pipewire#commit=$_commit")
 sha256sums=('SKIP')
 

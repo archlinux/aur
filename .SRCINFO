@@ -1,6 +1,6 @@
 pkgbase = pipewire-gstfree
 	pkgdesc = Server and user space API to deal with multimedia pipelines. packaged without gstreamer dependencies
-	pkgver = 0.2.6+1+g37613b67
+	pkgver = 0.2.7
 	pkgrel = 1
 	url = https://pipewire.org
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = pipewire-gstfree
 	depends = rtkit
 	provides = pipewire
 	conflicts = pipewire
-	source = git+https://github.com/PipeWire/pipewire#commit=37613b67ba52b5ad4e81d7ea38adc04027d9f9e5
+	source = git+https://github.com/PipeWire/pipewire#commit=14c11c0fe4d366bad4cfecdee97b6652ff9ed63d
 	sha256sums = SKIP
 
 pkgname = pipewire-gstfree
