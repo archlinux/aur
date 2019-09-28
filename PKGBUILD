@@ -8,14 +8,8 @@ arch=('any')
 license=('custom')
 depends=('rvgl-bin')
 conflicts=('rvgl-soundtrack')
-source=("https://distribute.re-volt.io/packs/soundtrack_orig.zip"
-        "https://distribute.re-volt.io/releases/soundtrack_orig.txt")
-sha256sums=('75ab81ba477495841939ea14ee3200adb0f8cb91ef0e54b9964dc0da8b7f1475'
-            'SKIP')
-
-pkgver() {
-    cat soundtrack_orig.txt
-}
+source=("$pkgname-$pkgver.zip::https://distribute.re-volt.io/packs/soundtrack_orig.zip")
+sha256sums=('75ab81ba477495841939ea14ee3200adb0f8cb91ef0e54b9964dc0da8b7f1475')
 
 package() {
     find redbook -type f -exec \
