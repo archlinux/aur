@@ -1,6 +1,6 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname=ttf-twemoji
-pkgver=12.1.2
+pkgver=12.1.3
 pkgrel=1
 _fedrel=1.fc32
 pkgdesc="Twitter Emoji for everyone."
@@ -12,7 +12,7 @@ provides=('emoji-font')
 install="$pkgname.install"
 source=("https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/x86_64/os/Packages/t/twitter-twemoji-fonts-${pkgver}-${_fedrel}.noarch.rpm"
         "75-twemoji.conf")
-sha256sums=('e37150c10a4db145b327da91cfcf6f94af984743fea4acd6051332d033ce6459'
+sha256sums=('72cd68686675d795f37163ffcdb31be1b0d3664e1d4fbcfc5d3e2a9262db9c2d'
             'fe8a61709b0f262e84224fdedd86bbf0175b191079e2eb5a3a03a30a4ed449ea')
 
 package() {
