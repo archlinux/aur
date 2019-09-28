@@ -1,0 +1,14 @@
+pkgbase = lib32-ppl
+	pkgdesc = Parma Polyhedra Library
+	pkgver = 1.2
+	pkgrel = 2
+	url = http://icps.u-strasbg.fr/people/bastoul/public_html/development/openscop/index.html
+	arch = x86_64
+	license = BSD
+	makedepends = gcc-multilib
+	depends = lib32-gmp
+	source = https://www.bugseng.com/products/ppl/download/ftp/releases/1.2/ppl-1.2.tar.xz
+	sha256sums = 691f0d5a4fb0e206f4e132fc9132c71d6e33cdda168470d40ac3cf62340e9a60
+
+pkgname = lib32-ppl
+
