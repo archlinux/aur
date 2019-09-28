@@ -1,0 +1,14 @@
+pkgbase = lib32-osl
+	pkgdesc = OpenScop Library
+	pkgver = 0.9.2
+	pkgrel = 2
+	url = http://icps.u-strasbg.fr/people/bastoul/public_html/development/openscop/index.html
+	arch = x86_64
+	license = BSD
+	makedepends = gcc-multilib
+	depends = lib32-gmp
+	source = https://github.com/periscop/openscop/releases/download/0.9.2/osl-0.9.2.tar.gz
+	md5sums = 21b88885dd315da02b3b054c2ce1032e
+
+pkgname = lib32-osl
+
