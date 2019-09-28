@@ -1,25 +1,28 @@
-# Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
+# Maintainer: Nahuel Gomez Castro <nahual_gomca@outlook.com.ar>
+# Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
 
-pkgname=dynamic-wallpaper-editor
-pkgver=1.11.0
-pkgrel=1
-pkgdesc='Dynamic Wallpaper Editor'
-arch=(any)
-url='https://github.com/maoschanz/dynamic-wallpaper-editor'
-depends=(python hicolor-icon-theme)
-license=(GPL3)
-makedepends=(meson ninja)
-source=("$pkgname-$pkgver.tar.gz::https://github.com/maoschanz/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('0e34de690bdd969bdccf44a4fd82b544507d0b8afbd1e32339090a658704bf84')
+pkgname='dynamic-wallpaper-editor'
+pkgver='2.2.1'
+pkgrel='1'
+pkgdesc="A little utility for creation or edition of GNOME desktop's XML wallpapers"
+arch=('x86_64')
+url="https://github.com/maoschanz/${pkgname}"
+license=('GPL3')
+depends=('python' 'hicolor-icon-theme')
+makedepends=('meson' 'git')
+source=("git+${url}.git#tag=${pkgver}")
+sha256sums=('SKIP')
 
-build() {
-  mkdir -p build
-  arch-meson build $pkgname-$pkgver -D werror=false -D b_ndebug=true
+pkgver () {
+  cd ${pkgname}
+  git describe --tags | sed 's/-/.r/; s/-/./'
+}
+
+build () {
+  arch-meson ${pkgname} build
   ninja -C build
 }
 
-package() {
-  DESTDIR="$pkgdir" ninja -C build install
+package () {
+  DESTDIR="${pkgdir}" ninja -C build install
 }
-
-# vim: ts=2 sw=2 et
