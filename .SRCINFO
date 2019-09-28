@@ -1,0 +1,17 @@
+pkgbase = lpairs2
+	pkgdesc = A classical memory game
+	pkgver = 2.1
+	pkgrel = 1
+	url = http://lgames.sourceforge.net/LPairs/
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	depends = sdl2
+	depends = sdl2_ttf
+	depends = sdl2_image
+	depends = sdl2_mixer
+	source = http://prdownloads.sourceforge.net/lgames/lpairs2-2.1.tar.gz
+	sha256sums = df92980e73d63a334fbbdc33f405af481028d6d7550e8ec8d93371b711394518
+
+pkgname = lpairs2
+
