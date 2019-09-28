@@ -1,7 +1,7 @@
 # Maintainer: Inochi Amaoto <libraryindexsky@gmail.com>
 
 pkgname=mpv-full-build-git
-pkgver=0.29.0.r668.g4c4d7a64c6
+pkgver=0.29.0.r747.gc7d0a8f58e
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 with all possible libs (uses statically linked ffmpeg with all possible libs). (GIT version )"
 arch=('x86_64')
@@ -361,7 +361,6 @@ prepare() {
     '--enable-xv'
     '--enable-zimg'
     '--enable-zlib'
-    '--enable-zsh-comp'
   )
 
     # '--enable-vaapi-glx'
@@ -371,6 +370,7 @@ prepare() {
     # '--enable-libsmbclient'
     # '--enable-avresample'
 
+    # '--enable-zsh-comp'
     # '--enable-audio-input'
     # '--enable-dvdread'
     # '--enable-libv4l2'
