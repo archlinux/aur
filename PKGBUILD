@@ -5,7 +5,7 @@
 pkgname=xf86-video-intel-git
 _pkgname=xf86-video-intel
 pkgver=2.99.917+892+gc6cb1b19
-pkgrel=1
+pkgrel=2
 epoch=1
 arch=(x86_64)
 url="https://01.org/linuxgraphics"
@@ -38,10 +38,6 @@ pkgver() {
 
 build() {
   cd $pkgname
-
-  # fix external monitor - FS#58895
-  # https://bugs.freedesktop.org/show_bug.cgi?id=100086
-  patch -Np1 -i ../0001-SNA-fix-PRIME-output-support-since-xserver-1.20.patch
 
   NOCONFIGURE=1 ./autogen.sh
 
