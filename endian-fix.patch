@@ -1,0 +1,10 @@
+--- module.hpp.old	2019-09-28 13:24:21.148153374 -0500
++++ module.hpp	2019-09-28 13:23:55.294215002 -0500
+@@ -37,6 +37,7 @@
+ static int do_numpy_import( )
+ {
+     import_array( );
++    return NULL;
+ }
+ #else
+ static void do_numpy_import( )
