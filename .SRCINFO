@@ -1,0 +1,26 @@
+pkgbase = chiaki-git
+	pkgdesc = Unofficial PlayStation 4 remote play client
+	pkgver = 1.0.3.r29.g01f746e
+	pkgrel = 1
+	url = https://github.com/thestr4ng3r/chiaki.git
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = python-protobuf
+	depends = qt5-base
+	depends = qt5-multimedia
+	depends = qt5-svg
+	depends = sdl2
+	depends = opus
+	depends = ffmpeg
+	depends = openssl
+	depends = gcc-libs
+	provides = compton
+	conflicts = compton
+	source = git+https://github.com/thestr4ng3r/chiaki.git
+	md5sums = SKIP
+
+pkgname = chiaki-git
+
