@@ -3,12 +3,12 @@
 pkgname=beef-git
 _pkgname=beef
 pkgver=20190926.d6972adf
-pkgrel=2
+pkgrel=3
 pkgdesc="The Browser Exploitation Framework"
 arch=('x86_64')
 url="http://beefproject.com/"
 _url="https://github.com/beefproject/beef"
-license=('GPLv2')
+license=('GPL2')
 depends=('ruby' 'ruby-bundler' 'sqlite' 'nodejs')
 makedepends=('git')
 source=("${pkgname}::git+${_url}.git"
@@ -19,7 +19,7 @@ source=("${pkgname}::git+${_url}.git"
 install=${pkgname}.install
 sha256sums=('SKIP'
   '417e0c0c5f0b7004373e9bd6a232e6befc5be50fc6f4f5c7b9bf19b15fe3ee68'
-  'ba866d77f4dfd95685a34ca7a00482dc35f20b7101e1c9de5975e776341c6653'
+  'c68c4369c27992d1d3dae817c9933a555e7975956dae46e3fcfb3fc665dcf785'
   '98d72df13e4f61271afd623070a5e81c9edf2e5b4f39d71b45f3279e255649a0')
 
 pkgver() {
@@ -36,18 +36,13 @@ build() {
     echo
   fi
 
-  # Remove Gemfile.lock
-  if [ -f Gemfile.lock ]; then
-    rm Gemfile.lock
-  fi
-
   bundle${RUBYSUFFIX} install --without test development --path vendor/bundle
 }
 
 package() {
   # cp -r src/beef-git/* pkg/usr/share/beef
   install -d "${pkgdir}/usr/share/${_pkgname}"
-  cp -r "${srcdir}/${pkgname}" "${pkgdir}/usr/share/${_pkgname}"
+  cp -r "${srcdir}/${pkgname}"/* "${pkgdir}/usr/share/${_pkgname}"
 
   # update vendor path
   install -d "${pkgdir}/usr/share/${_pkgname}/.bundle"

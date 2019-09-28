@@ -1,8 +1,6 @@
 post_install() {
-  echo
   echo "Default username and password in use! "
   echo "Change the beef.credentials.passwd in /usr/share/beef/config.yaml"
-  echo
 }
 
 # post_remove(){
