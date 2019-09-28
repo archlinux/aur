@@ -6,8 +6,8 @@ After=local-fs.target network.target
 Environment=DISPLAY=:0
 Type=oneshot
 RemainAfterExit=yes
-ExecStart=/usr/bin/insync-headless start
-ExecStop=/usr/bin/insync-headless quit
+ExecStart=/usr/bin/insync start
+ExecStop=/usr/bin/insync quit
 
 [Install]
 WantedBy=default.target

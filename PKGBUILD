@@ -4,10 +4,9 @@
 # Contributor: Zhengyu Xu <xzy3186@gmail.com>
 
 pkgname=insync
-pkgver=3.0.19
-_pkgver=40421
-_dist=bionic
+pkgver=3.0.20.40428
 pkgrel=1
+_dist=bionic
 pkgdesc="An unofficial Google Drive client that runs on Linux, with support for various desktops"
 url="https://www.insynchq.com/downloads"
 license=('custom:insync')
@@ -28,8 +27,8 @@ arch=('x86_64')
 source=('insync@.service' 'insync.service')
 md5sum=('fbf05bead8c90d5fd18a1ba14147acf7'
 	    '7d416b57ed52fe3daf71bae1af563657')
-source=("http://s.insynchq.com/builds/${pkgname}_${pkgver}.${_pkgver}-${_dist}_amd64.deb")
-sha256sums=('906a8f37103afc3e181cf129bf31041ff6c813d84a48baf8592034554c51d11b')
+source=("http://s.insynchq.com/builds/${pkgname}_${pkgver}-${_dist}_amd64.deb")
+sha256sums=('a158bab06ba154e2bfcdfc8f5e6404c70893e90ee1aafe0bfd434dadf0c9b77f')
 package() {
    tar xf data.tar.gz
    cp -rp usr ${pkgdir}/
