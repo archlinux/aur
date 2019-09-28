@@ -1,4 +1,4 @@
-# Maintainer: Jonas Witschel <diabonas at gmx dot de>
+# Maintainer: Jonas Witschel <diabonas@archlinux.org>
 pkgname=tpm2-tss-engine-git
 pkgver=1.0.0.r28.ae7d7e1
 pkgrel=1
