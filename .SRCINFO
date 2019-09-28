@@ -1,0 +1,14 @@
+pkgbase = lib32-mpfr
+	pkgdesc = Multiple-precision floating-point library
+	pkgver = 4.0.2
+	pkgrel = 1
+	url = https://www.mpfr.org/
+	arch = x86_64
+	license = LGPL
+	makedepends = gcc-multilib
+	depends = lib32-gmp
+	source = https://www.mpfr.org/mpfr-4.0.2/mpfr-4.0.2.tar.xz
+	sha256sums = 1d3be708604eae0e42d578ba93b390c2a145f17743a744d8f3f8c2ad5855a38a
+
+pkgname = lib32-mpfr
+
