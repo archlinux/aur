@@ -1,6 +1,6 @@
 pkgname='heluxup'
 _name='heluxup'
-pkgver='0.1.3'
+pkgver='0.2.0'
 pkgrel=1
 pkgdesc="heluxup makes it easy to upgrade HelmRelease objects in a flux control respository."
 url="https://github.com/ekeih/heluxup"
@@ -9,7 +9,7 @@ makedepends=('python-setuptools')
 license=('GPL')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('d436bbed2782cb070eb55f4787524b10b63694e83cc62005691b32771a308506')
+sha256sums=('27b7b5f609491d084411623c9623caf34371887b12120e8c64575c66e948a187')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
