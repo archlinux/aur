@@ -1,7 +1,7 @@
 # Maintainer: Alexander Kjäll <alexander.kjall@gmail.com>
 pkgname=ripasso-git
 pkgrelname=ripasso
-pkgver=149
+pkgver=181
 pkgrel=1
 pkgdesc="A password manager that uses the file format of the standard unix password manager 'pass', implemented in rust."
 url="https://github.com/cortex/ripasso/"
@@ -15,7 +15,7 @@ md5sums=('SKIP')
 
 build() {
     cd "$pkgrelname" || exit 1
-    cargo build -p ripasso-cursive --release
+    cargo build -p ripasso-cursive -p ripasso-man --release
 }
 
 pkgver() {
@@ -25,5 +25,10 @@ pkgver() {
 
 package() {
     cd "$pkgrelname" || exit 1
-    install -Dm4555 "$srcdir/$pkgrelname/target/release/ripasso-cursive" "$pkgdir/usr/bin/$pkgrelname-cursive"
+    $srcdir/$pkgrelname/target/release/ripasso-man > $srcdir/$pkgrelname/ripasso-cursive.1
+    rm -f $srcdir/$pkgrelname/ripasso-cursive.1.gz
+    gzip $srcdir/$pkgrelname/ripasso-cursive.1
+    mkdir -p "$pkgdir/usr/share/man/man1/"
+    install -Dm0644 "$srcdir/$pkgrelname/ripasso-cursive.1.gz" "$pkgdir/usr/share/man/man1/"
+    install -Dm0555 "$srcdir/$pkgrelname/target/release/ripasso-cursive" "$pkgdir/usr/bin/$pkgrelname-cursive"
 }
