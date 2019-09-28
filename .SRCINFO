@@ -1,0 +1,17 @@
+pkgbase = yzkof-gm-arcade-international
+	pkgdesc = Play retro games with or against any other player in the world.
+	pkgver = 0.9
+	pkgrel = 1
+	url = http://www.yzkof.com/
+	arch = any
+	license = custom
+	makedepends = gendesk
+	makedepends = rsync
+	makedepends = icoutils
+	depends = wine
+	depends = lib32-mpg123
+	source = yzkof-gm-arcade-international.zip::https://xiaou-game.oss-cn-hangzhou.aliyuncs.com/GM%20ARCADE_V09.zip
+	md5sums = SKIP
+
+pkgname = yzkof-gm-arcade-international
+
