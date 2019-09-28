@@ -1,18 +1,33 @@
 pkgbase = lightzone
 	pkgdesc = A professional photo browser and editor, like Aperture or Lightroom
-	pkgver = 4.1.8
-	pkgrel = 2
+	pkgver = 4.1.9
+	pkgrel = 1
 	url = http://lightzoneproject.org/
 	arch = x86_64
 	license = custom:BSD-3-Clause
-	depends = jre7-openjdk
+	makedepends = java-environment=8
+	makedepends = ant
+	makedepends = autoconf
+	makedepends = gcc
+	makedepends = make
+	makedepends = git
+	makedepends = libx11
+	makedepends = pkg-config
+	makedepends = rsync
+	makedepends = javahelp2
+	makedepends = lcms2
+	makedepends = libjpeg-turbo
+	makedepends = libtiff
+	depends = java-runtime=8
 	depends = javahelp2
 	depends = lcms2
 	depends = libjpeg-turbo
 	depends = libtiff
 	depends = libxml2
-	source = https://download.opensuse.org/repositories/home:/ktgw0316:/LightZone/Arch_Extra/x86_64/lightzone-4.1.8-0-x86_64.pkg.tar.xz
-	md5sums = 563a2a43982c88d1c9be7b56f20cb124
+	provides = lightzone
+	conflicts = lightzone-git
+	source = https://github.com/ktgw0316/LightZone/archive/4.1.9.zip
+	md5sums = e95d9afbe7fc517d1bc79d6d2264b1b7
 
 pkgname = lightzone
 

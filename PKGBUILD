@@ -1,31 +1,73 @@
-# Maintainer: <trash@ps3zone.org>
-# Contributer: Rikles <style.boubou@gmail.com>
-# Contributer: N30N <archlinux@alunamation.com>
+# Maintainer: alexisph@gmail.com
+# Contributor: <trash@ps3zone.org>
+# Contributor: Rikles <style.boubou@gmail.com>
+# Contributor: N30N <archlinux@alunamation.com>
 
 pkgname="lightzone"
-pkgver=4.1.8
-pkgrel=2
+pkgver=4.1.9
+pkgrel=1
 pkgdesc="A professional photo browser and editor, like Aperture or Lightroom"
 url="http://lightzoneproject.org/"
 license=("custom:BSD-3-Clause")
 arch=("x86_64")
-depends=('jre7-openjdk'
-         'javahelp2'
-         'lcms2'
-         'libjpeg-turbo'
-         'libtiff'
-         'libxml2')
+conflicts=('lightzone-git')
+provides=('lightzone')
+depends=('java-runtime=8'
+    'javahelp2'
+    'lcms2'
+    'libjpeg-turbo'
+    'libtiff'
+    'libxml2')
+makedepends=('java-environment=8'
+    'ant'
+    'autoconf'
+    'gcc'
+    'make'
+    'git'
+    'libx11'
+    'pkg-config'
+    'rsync'
+    'javahelp2'
+    'lcms2'
+    'libjpeg-turbo'
+    'libtiff')
 
-source=("https://download.opensuse.org/repositories/home:/ktgw0316:/LightZone/Arch_Extra/x86_64/${pkgname}-${pkgver}-0-x86_64.pkg.tar.xz")
-md5sums=('563a2a43982c88d1c9be7b56f20cb124')
+source=("https://github.com/ktgw0316/LightZone/archive/${pkgver}.zip")
+md5sums=('e95d9afbe7fc517d1bc79d6d2264b1b7')
+
+# https://github.com/Aries85/LightZone/issues/218#issuecomment-357868376
+MAKEFLAGS="-j1"
 
 build() {
-  cd "${srcdir}"
-  tar -I xz -xf lightzone-4.1.8-0-x86_64.pkg.tar.xz
+  cd "${srcdir}/LightZone-${pkgver}/"
+  if [ -d /usr/lib/jvm/java-8-jdk ]; then
+    export JAVA_HOME=/usr/lib/jvm/java-8-jdk
+  else
+    export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
+  fi
+
+  ant -f linux/build.xml jar
 }
 
 package() {
-  cd "${srcdir}"
-  # Install
-  cp -dr --no-preserve=ownership ./usr "${pkgdir}"/
+  cd "${srcdir}/LightZone-${pkgver}/"
+
+  _libexecdir=/usr/lib
+  install -dm 0755 "${pkgdir}/${_libexecdir}/${pkgname}"
+  cp -pHR linux/products/*.so "${pkgdir}/${_libexecdir}/${pkgname}"
+  _javadir=/usr/share/java
+  install -dm 0755 "${pkgdir}/${_javadir}/${pkgname}"
+  cp -pH lightcrafts/products/dcraw_lz "${pkgdir}/${_javadir}/${pkgname}"
+  cp -pH lightcrafts/products/LightZone-forkd "${pkgdir}/${_javadir}/${pkgname}"
+  cp -pHR linux/products/*.jar "${pkgdir}/${_javadir}/${pkgname}"
+
+  # create icons and shortcuts
+  _datadir=/usr/share
+  install -dm 0755 "${pkgdir}/${_datadir}/applications"
+  install -m 644 linux/products/lightzone.desktop "${pkgdir}/${_datadir}/applications/"
+  cp -pHR linux/icons "${pkgdir}/${_datadir}/"
+
+  _bindir=/usr/bin
+  install -dm 0755 "${pkgdir}/${_bindir}"
+  install -m 755 "linux/products/${pkgname}" "${pkgdir}/${_bindir}"
 }
