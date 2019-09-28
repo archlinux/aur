@@ -1,0 +1,25 @@
+pkgbase = aud2u
+	pkgdesc = Create your own hybrid bootable pendrive from iso made by 'archsysback' or 'archuseriso'
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/toxin265/aud2u
+	arch = any
+	groups = system
+	license = GPL
+	makedepends = xz
+	depends = refind-efi
+	depends = syslinux
+	depends = gptfdisk
+	depends = util-linux
+	depends = dosfstools
+	depends = parted
+	depends = cdrtools
+	depends = ntfs-3g
+	depends = zenity
+	provides = aud2u
+	conflicts = aud2u
+	source = https://raw.githubusercontent.com/toxin265/aud2u/master/aud2u.tar.xz
+	md5sums = 6cb94e2eb781781b48454d6e84e0d2e8
+
+pkgname = aud2u
+
