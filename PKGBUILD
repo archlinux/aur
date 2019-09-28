@@ -1,6 +1,6 @@
 # Maintainer: Jonas Witschel <diabonas@archlinux.org>
 pkgname=luksmeta-git
-pkgver=9.r2.fe3e941
+pkgver=9.r4.dc5601b
 pkgrel=1
 pkgdesc='Library for storing metadata in the LUKSv1 header'
 arch=('x86_64')
@@ -10,10 +10,8 @@ depends=('cryptsetup')
 makedepends=('git' 'asciidoc')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("git+$url.git"
-        'fix.test-luksmeta.patch')
-sha512sums=('SKIP'
-            '674574292ecc9912d63b90db9ffa7c3f862226424d308a6612d769943edde44086268bdcb7a8f8d26b954b881189090520400d49cb14b454537e9f9ea8c3f560')
+source=("git+$url.git")
+sha512sums=('SKIP')
 
 pkgver() {
 	cd "${pkgname%-git}"
@@ -22,10 +20,6 @@ pkgver() {
 
 prepare() {
 	cd "${pkgname%-git}"
-
-	# https://github.com/latchset/luksmeta/issues/9
-	patch --strip=1 --input="$srcdir/fix.test-luksmeta.patch"
-
 	autoreconf --install --force
 }
 

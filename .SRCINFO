@@ -1,6 +1,6 @@
 pkgbase = luksmeta-git
 	pkgdesc = Library for storing metadata in the LUKSv1 header
-	pkgver = 9.r2.fe3e941
+	pkgver = 9.r4.dc5601b
 	pkgrel = 1
 	url = https://github.com/latchset/luksmeta
 	arch = x86_64
@@ -11,9 +11,7 @@ pkgbase = luksmeta-git
 	provides = luksmeta
 	conflicts = luksmeta
 	source = git+https://github.com/latchset/luksmeta.git
-	source = fix.test-luksmeta.patch
 	sha512sums = SKIP
-	sha512sums = 674574292ecc9912d63b90db9ffa7c3f862226424d308a6612d769943edde44086268bdcb7a8f8d26b954b881189090520400d49cb14b454537e9f9ea8c3f560
 
 pkgname = luksmeta-git
 
