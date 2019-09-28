@@ -1,7 +1,7 @@
 pkgbase = fastgcc
 	pkgdesc = experimental gcc supporting faster compilation
 	pkgver = 9.2.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://gcc.gnu.org
 	arch = x86_64
 	license = GPL

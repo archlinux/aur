@@ -9,7 +9,7 @@ pkgname=(fastgcc)
 pkgver=9.2.0
 _majorver=${pkgver:0:1}
 _islver=0.21
-pkgrel=4
+pkgrel=5
 pkgdesc='experimental gcc supporting faster compilation'
 arch=(x86_64)
 license=(GPL LGPL FDL custom)
@@ -92,8 +92,8 @@ build() {
 package_fastgcc() {
   depends=('binutils>=2.28' libmpc)
   groups=('base-devel')
-  provides=(gcc gcc-libs)
-  replaces=(gcc gcc-libs)
+  provides=('gcc' 'gcc-libs')
+  replaces=('gcc' 'gcc-libs')
   options+=(staticlibs)
 
   cd gcc-build
