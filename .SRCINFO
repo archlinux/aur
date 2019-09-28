@@ -1,7 +1,7 @@
 pkgbase = kubernetes-helm-git
 	pkgdesc = A tool to manage Kubernetes charts - helm3 (no tiller)
 	pkgver = 3.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/helm/helm
 	install = kubernetes-helm-git.install
 	arch = x86_64

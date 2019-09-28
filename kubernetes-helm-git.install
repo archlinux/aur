@@ -1,3 +1,8 @@
 post_install() {
-    echo "alias h3='HELM_HOME=$HOME/.helm3 /usr/bin/helm3'" >> /etc/bash.bashrc
+
+    echo -e "\n\nPut the following in you shell config.\n\tmkdir -p $HOME/.helm3\n\talias h3='HELM_HOME=$HOME/.helm3 /usr/bin/helm3'\n"
+}
+
+post_upgrade() {
+	post_install
 }
