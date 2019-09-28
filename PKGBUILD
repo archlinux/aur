@@ -149,9 +149,6 @@ package_fastgcc() {
   install -Dm755 "$srcdir/c89" "$pkgdir/usr/bin/c89"
   install -Dm755 "$srcdir/c99" "$pkgdir/usr/bin/c99"
 
-  # install the libstdc++ man pages
-  make -C $CHOST/libstdc++-v3/doc DESTDIR="$pkgdir" doc-install-man
-
   # byte-compile python libraries
   python -m compileall "$pkgdir/usr/share/gcc-${pkgver%%+*}/"
   python -O -m compileall "$pkgdir/usr/share/gcc-${pkgver%%+*}/"
