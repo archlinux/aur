@@ -1,0 +1,23 @@
+Description: Use pkg-config to determine FFmpeg linker flags
+
+Author: Andreas Cadhalpun <Andreas.Cadhalpun@googlemail.com>
+Last-Update: <2014-08-11>
+
+--- a/cmake/FindFFmpeg.cmake
++++ b/cmake/FindFFmpeg.cmake
+@@ -17,11 +17,13 @@
+ 
+ # avcodec
+ find_path(AVCODEC_INCLUDE_DIR libavcodec/avcodec.h PATHS ${AVCODEC_INCLUDE_DIRS})
+-find_library(AVCODEC_LIBRARY avcodec PATHS ${AVCODEC_LIBRARY_DIRS})
++string(REPLACE "-l" "" avc_name "${AVCODEC_LIBRARIES}")
++find_library(AVCODEC_LIBRARY ${avc_name} avcodec PATHS ${AVCODEC_LIBRARY_DIRS})
+ 
+ # avutil
+ find_path(AVUTIL_INCLUDE_DIR libavutil/avutil.h PATHS ${AVUTIL_INCLUDE_DIRS})
+-find_library(AVUTIL_LIBRARY avutil PATHS ${AVUTIL_LIBRARY_DIRS})
++string(REPLACE "-l" "" avu_name "${AVUTIL_LIBRARIES}")
++find_library(AVUTIL_LIBRARY ${avu_name} avutil PATHS ${AVUTIL_LIBRARY_DIRS})
+ 
+ if(AVCODEC_INCLUDE_DIR AND AVCODEC_LIBRARY)
+ 	set(AVCODEC_FOUND TRUE)

@@ -1,0 +1,27 @@
+The current definitions wrongly assume the only 64-bit architecture is
+x86-64. Use the __ILP64__, __LP64__ and __LLP64__ to correctly define
+the size of a long and of pointer.
+
+Ideally long, intptr_t and uintptr_t should be used directly but there
+might be a (portability ?) reason why it is not the case.
+
+--- a/winpr/include/winpr/wtypes.h
++++ b/winpr/include/winpr/wtypes.h
+@@ -37,7 +37,7 @@
+ #define __int32 int
+ #define __int64 long long
+ 
+-#if __x86_64__
++#if __ILP64__ || __LP64__
+ #define __int3264 __int64
+ #else
+ #define __int3264 __int32
+@@ -136,7 +136,7 @@ typedef void *PVOID64, *LPVOID64;
+ typedef const void *LPCVOID;
+ typedef unsigned short WORD, *PWORD, *LPWORD;
+ 
+-#if __x86_64__
++#if __ILP64__ || __LP64__ || __LLP64__
+ typedef __int64 INT_PTR;
+ typedef unsigned __int64 UINT_PTR;
+ #else

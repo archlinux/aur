@@ -1,0 +1,67 @@
+The RDP file buffers contain little endian UTF-16, but all the wcs* and
+UTF conversion functions use the WCHAR type and assume native endian.
+Convert the buffer to little endian on big endian machines.
+
+--- a/client/common/file.c
++++ b/client/common/file.c
+@@ -42,6 +42,18 @@
+ 
+ #include <winpr/crt.h>
+ 
++#if defined(WIN32) || defined(WIN64)
++  #ifndef __LITTLE_ENDIAN
++    #define __LITTLE_ENDIAN 1234
++    #define __BIG_ENDIAN    4321
++  #endif
++  #ifndef __BYTE_ORDER
++    #define __BYTE_ORDER __LITTLE_ENDIAN
++  #endif
++#else
++  #include <endian.h>
++#endif
++
+ #define DEBUG_CLIENT_FILE	1
+ 
+ static BYTE BOM_UTF16_LE[2] = { 0xFF, 0xFE };
+@@ -364,7 +376,8 @@
+ 
+ BOOL freerdp_client_parse_rdp_file_buffer_unicode(rdpFile* file, BYTE* buffer, size_t size)
+ {
+-	int length;
++	int i, length;
++	BYTE* bufferne;
+ 	WCHAR* line;
+ 	WCHAR* type;
+ 	WCHAR* context;
+@@ -372,7 +385,19 @@
+ 	WCHAR *beg, *end;
+ 	WCHAR *name, *value;
+ 
+-	line = wcstok_s((WCHAR*) buffer, CR_LF_STR_W, &context);
++#if __BYTE_ORDER == __BIG_ENDIAN
++	/* Convert the buffer from little endian to native endian */
++	bufferne = (BYTE*) malloc(size);
++	for (i = 0; i < size / 2; i++)
++	{
++		bufferne[i*2]  = buffer[i*2 + 1];
++		bufferne[i*2 + 1]  = buffer[i*2];
++	}
++#else
++	bufferne = buffer;
++#endif
++
++	line = wcstok_s((WCHAR*) bufferne, CR_LF_STR_W, &context);
+ 
+ 	while (line != NULL)
+ 	{
+@@ -425,6 +450,10 @@
+ 		line = wcstok_s(NULL, CR_LF_STR_W, &context);
+ 	}
+ 
++#if __BYTE_ORDER == __BIG_ENDIAN
++	free(bufferne);
++#endif
++
+ 	return TRUE;
+ }
+ 

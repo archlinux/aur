@@ -1,0 +1,13 @@
+Description: Fix linking against UDEV libraries
+Author: Alex 'AdUser' Z <ad_user@runbox.com>
+
+--- a/channels/urbdrc/client/libusb/CMakeLists.txt	2016-01-26 15:25:32.979436442 +1000
++++ b/channels/urbdrc/client/libusb/CMakeLists.txt	2016-01-26 15:25:45.767436886 +1000
+@@ -39,6 +39,7 @@
+ set(${MODULE_PREFIX}_LIBS ${${MODULE_PREFIX}_LIBS}
+     ${DBUS_GLIB_LIBRARIES}
+     ${UUID_LIBRARIES}
++    ${UDEV_LIBRARIES}
+     ${LIBUSB_1_LIBRARIES}
+     )
+ 

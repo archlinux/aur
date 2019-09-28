@@ -1,0 +1,14 @@
+Description: fixup libusb subchannel to use libusb_debug, not urbdrc_debug
+Author: Lionel Elie Mamane <lionel@mamane.lu>
+
+--- freerdp-1.1.0~git20140921.1.440916e+dfsg1.orig/channels/urbdrc/client/libusb/libusb_udevman.c
++++ freerdp-1.1.0~git20140921.1.440916e+dfsg1/channels/urbdrc/client/libusb/libusb_udevman.c
+@@ -550,7 +550,7 @@ static void urbdrc_udevman_parse_addin_a
+ 
+ 		CommandLineSwitchCase(arg, "dbg")
+ 		{
+-			urbdrc_debug = 0;
++			libusb_debug = 0;
+ 		}
+ 		CommandLineSwitchCase(arg, "dev")
+ 		{

@@ -1,0 +1,48 @@
+Description: Ensure the _aligned_meminfo pointer itself is sufficiently aligned
+Author: James Clarke <jrtc27@jrtc27.com>
+
+--- a/winpr/libwinpr/crt/alignment.c
++++ b/winpr/libwinpr/crt/alignment.c
+@@ -73,15 +73,20 @@ void* _aligned_offset_malloc(size_t size
+ 	if (alignment < sizeof(void*))
+ 		alignment = sizeof(void*);
+ 
+-	/* malloc size + alignment to make sure we can align afterwards */
+-	tmpptr = malloc(size + alignment + sizeof(struct _aligned_meminfo));
++	/* malloc size + alignment to make sure we can align afterwards.
++	 * Include an extra sizeof(void*) to ensure there's always space to align
++	 * ameminfo downwards, in case malloc doesn't align to sizeof(void*). This
++	 * could be dropped if there was a portable way to get alignof(struct
++	 * _aligned_meminfo), but instead we have to overestimate with
++	 * sizeof(void*). */
++	tmpptr = malloc(size + alignment + sizeof(struct _aligned_meminfo) + sizeof(void*));
+ 	if (!tmpptr)
+ 		return NULL;
+ 
+ 
+-	memptr = (void *)((((size_t)((PBYTE)tmpptr + alignment + offset + sizeof(struct _aligned_meminfo)) & ~(alignment - 1)) - offset));
++	memptr = (void *)((((size_t)((PBYTE)tmpptr + alignment + offset + sizeof(struct _aligned_meminfo) + sizeof(void*)) & ~(alignment - 1)) - offset));
+ 
+-	ameminfo = (struct _aligned_meminfo *) (((size_t)((PBYTE)memptr - sizeof(struct _aligned_meminfo))));
++	ameminfo = (struct _aligned_meminfo *) (((size_t)((PBYTE)memptr - sizeof(struct _aligned_meminfo))) & ~(sizeof(void*)-1));
+ 	ameminfo->base_addr = tmpptr;
+ 	ameminfo->size = size;
+ 
+@@ -107,7 +112,7 @@ void* _aligned_offset_realloc(void* memb
+ 	if (!newmem)
+ 		return NULL;
+ 
+-	ameminfo = (struct _aligned_meminfo *) (((size_t)((PBYTE)memblock - sizeof(struct _aligned_meminfo))));
++	ameminfo = (struct _aligned_meminfo *) (((size_t)((PBYTE)memblock - sizeof(struct _aligned_meminfo))) & ~(sizeof(void*)-1));
+ 	memcpy(newmem, memblock, ameminfo->size);
+ 	_aligned_free(memblock);
+ 	return newmem;
+@@ -129,7 +134,7 @@ void _aligned_free(void* memblock)
+ 	if (!memblock)
+ 		return;
+ 
+-	ameminfo = (struct _aligned_meminfo *) (((size_t)((PBYTE)memblock - sizeof(struct _aligned_meminfo))));
++	ameminfo = (struct _aligned_meminfo *) (((size_t)((PBYTE)memblock - sizeof(struct _aligned_meminfo))) & ~(sizeof(void*)-1));
+ 
+ 	free(ameminfo->base_addr);
+ }

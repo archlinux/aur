@@ -1,0 +1,71 @@
+Description: Make include path configurable for multi-arch installation targets
+Author: Mike Gabriel <mike.gabriel@das-netzkwerkteam.de>
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -398,6 +398,7 @@
+ # Path to put plugins
+ 
+ set(FREERDP_LIBRARY_PATH "${CMAKE_INSTALL_LIBDIR}")
++set(FREERDP_INCLUDE_PATH "${CMAKE_INSTALL_INCLUDEDIR}")
+ 
+ set(FREERDP_PLUGIN_PATH "${CMAKE_INSTALL_LIBDIR}/freerdp")
+ set(FREERDP_ADDIN_PATH "${FREERDP_PLUGIN_PATH}")
+@@ -408,6 +409,7 @@
+ # Include directories
+ include_directories(${CMAKE_CURRENT_BINARY_DIR})
+ include_directories(${CMAKE_CURRENT_BINARY_DIR}/include)
++include_directories(${CMAKE_CURRENT_BINARY_DIR}/${CMAKE_INSTALL_INCLUDEDIR})
+ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
+ 
+ # Configure files
+--- a/freerdp.pc.in
++++ b/freerdp.pc.in
+@@ -1,7 +1,7 @@
+ prefix=@CMAKE_INSTALL_PREFIX@
+ exec_prefix=@CMAKE_INSTALL_PREFIX@
+ libdir=@CMAKE_INSTALL_FULL_LIBDIR@
+-includedir=@CMAKE_INSTALL_PREFIX@/include
++includedir=@CMAKE_INSTALL_PREFIX@/@CMAKE_INSTALL_INCLUDEDIR@
+ 
+ Name: FreeRDP
+ Description: A free remote desktop protocol client
+--- b/winpr/include/CMakeLists.txt
++++ b/winpr/include/CMakeLists.txt
+@@ -16,4 +16,4 @@
+ # limitations under the License.
+ 
+ file(GLOB WINPR_HEADERS "winpr/*.h")
+-install(FILES ${WINPR_HEADERS} DESTINATION include/winpr COMPONENT headers)
++install(FILES ${WINPR_HEADERS} DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/winpr COMPONENT headers)
+--- a/include/CMakeLists.txt
++++ b/include/CMakeLists.txt
+@@ -20,16 +20,16 @@
+ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/freerdp/version.h.in ${CMAKE_CURRENT_BINARY_DIR}/freerdp/version.h)
+ 
+ file(GLOB FREERDP_HEADERS "freerdp/*.h")
+-install(FILES ${FREERDP_HEADERS} DESTINATION include/freerdp COMPONENT headers)
+-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/freerdp/version.h DESTINATION include/freerdp COMPONENT headers)
++install(FILES ${FREERDP_HEADERS} DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/freerdp COMPONENT headers)
++install(FILES ${CMAKE_CURRENT_BINARY_DIR}/freerdp/version.h DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/freerdp COMPONENT headers)
+ 
+-install(DIRECTORY freerdp/cache DESTINATION include/freerdp COMPONENT headers FILES_MATCHING PATTERN "*.h")
+-install(DIRECTORY freerdp/codec DESTINATION include/freerdp COMPONENT headers FILES_MATCHING PATTERN "*.h")
+-install(DIRECTORY freerdp/crypto DESTINATION include/freerdp COMPONENT headers FILES_MATCHING PATTERN "*.h")
+-install(DIRECTORY freerdp/gdi DESTINATION include/freerdp COMPONENT headers FILES_MATCHING PATTERN "*.h")
+-install(DIRECTORY freerdp/locale DESTINATION include/freerdp COMPONENT headers FILES_MATCHING PATTERN "*.h")
+-install(DIRECTORY freerdp/rail DESTINATION include/freerdp COMPONENT headers FILES_MATCHING PATTERN "*.h")
+-install(DIRECTORY freerdp/utils DESTINATION include/freerdp COMPONENT headers FILES_MATCHING PATTERN "*.h")
+-install(DIRECTORY freerdp/client DESTINATION include/freerdp COMPONENT headers FILES_MATCHING PATTERN "*.h")
+-install(DIRECTORY freerdp/server DESTINATION include/freerdp COMPONENT headers FILES_MATCHING PATTERN "*.h")
+-install(DIRECTORY freerdp/channels DESTINATION include/freerdp COMPONENT headers FILES_MATCHING PATTERN "*.h")
++install(DIRECTORY freerdp/cache DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/freerdp COMPONENT headers FILES_MATCHING PATTERN "*.h")
++install(DIRECTORY freerdp/codec DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/freerdp COMPONENT headers FILES_MATCHING PATTERN "*.h")
++install(DIRECTORY freerdp/crypto DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/freerdp COMPONENT headers FILES_MATCHING PATTERN "*.h")
++install(DIRECTORY freerdp/gdi DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/freerdp COMPONENT headers FILES_MATCHING PATTERN "*.h")
++install(DIRECTORY freerdp/locale DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/freerdp COMPONENT headers FILES_MATCHING PATTERN "*.h")
++install(DIRECTORY freerdp/rail DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/freerdp COMPONENT headers FILES_MATCHING PATTERN "*.h")
++install(DIRECTORY freerdp/utils DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/freerdp COMPONENT headers FILES_MATCHING PATTERN "*.h")
++install(DIRECTORY freerdp/client DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/freerdp COMPONENT headers FILES_MATCHING PATTERN "*.h")
++install(DIRECTORY freerdp/server DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/freerdp COMPONENT headers FILES_MATCHING PATTERN "*.h")
++install(DIRECTORY freerdp/channels DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/freerdp COMPONENT headers FILES_MATCHING PATTERN "*.h")

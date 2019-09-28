@@ -1,0 +1,242 @@
+Description: Hide internal functions
+ They are only used in the test suite and via function pointers. There is no
+ need to expose them via the public ABI of libfreerdp-primitives and
+ libfreerdp-codec.
+Author: Sebastian Ramacher <sramacher@debian.org>
+Last-Update: 2014-08-17
+
+--- /dev/null
++++ b/libfreerdp/codec/codec_internal.h
+@@ -0,0 +1,14 @@
++#ifdef __GNUC__
++# pragma once
++#endif
++
++#ifndef __CODEC_INTERNAL_H_INCLUDED__
++#define __CODEC_INTERNAL_H_INCLUDED__
++
++#if __GNUC__ >= 4
++	#define CODEC_HIDDEN   __attribute__ ((visibility("hidden")))
++#else
++	#define CODEC_HIDDEN
++#endif
++
++#endif /* !__CODEC_INTERNAL_H_INCLUDED__ */
+--- a/libfreerdp/codec/nsc_sse2.h
++++ b/libfreerdp/codec/nsc_sse2.h
+@@ -21,8 +21,9 @@
+ #define __NSC_SSE2_H
+ 
+ #include <freerdp/codec/nsc.h>
++#include "codec_internal.h"
+ 
+-void nsc_init_sse2(NSC_CONTEXT* context);
++CODEC_HIDDEN void nsc_init_sse2(NSC_CONTEXT* context);
+ 
+ #ifdef WITH_SSE2
+  #ifndef NSC_INIT_SIMD
+--- a/libfreerdp/codec/rfx_neon.c
++++ b/libfreerdp/codec/rfx_neon.c
+@@ -51,7 +51,7 @@
+ 	while(buf < buf_end);
+ }
+ 
+-void
++static void
+ rfx_quantization_decode_NEON(INT16 * buffer, const UINT32 * quantization_values)
+ {
+ 	rfx_quantization_decode_block_NEON(buffer, 4096, 5);
+@@ -242,7 +242,7 @@
+ 	rfx_dwt_2d_decode_block_vert_NEON(l_dst, h_dst, buffer, subband_width);
+ }
+ 
+-void rfx_dwt_2d_decode_NEON(INT16 * buffer, INT16 * dwt_buffer)
++static void rfx_dwt_2d_decode_NEON(INT16 * buffer, INT16 * dwt_buffer)
+ {
+ 	rfx_dwt_2d_decode_block_NEON(buffer + 3840, dwt_buffer, 8);
+ 	rfx_dwt_2d_decode_block_NEON(buffer + 3072, dwt_buffer, 16);
+--- a/libfreerdp/codec/rfx_neon.h
++++ b/libfreerdp/codec/rfx_neon.h
+@@ -21,8 +21,9 @@
+ #define __RFX_NEON_H
+ 
+ #include <freerdp/codec/rfx.h>
++#include "codec_internal.h"
+ 
+-void rfx_init_neon(RFX_CONTEXT * context);
++CODEC_HIDDEN void rfx_init_neon(RFX_CONTEXT * context);
+ 
+ #ifndef RFX_INIT_SIMD
+  #if defined(WITH_NEON)
+--- a/libfreerdp/codec/rfx_sse2.h
++++ b/libfreerdp/codec/rfx_sse2.h
+@@ -21,8 +21,9 @@
+ #define __RFX_SSE2_H
+ 
+ #include <freerdp/codec/rfx.h>
++#include "codec_internal.h"
+ 
+-void rfx_init_sse2(RFX_CONTEXT* context);
++CODEC_HIDDEN void rfx_init_sse2(RFX_CONTEXT* context);
+ 
+ #ifdef WITH_SSE2
+  #ifndef RFX_INIT_SIMD
+--- a/libfreerdp/primitives/prim_alphaComp_opt.c
++++ b/libfreerdp/primitives/prim_alphaComp_opt.c
+@@ -45,7 +45,7 @@
+ #ifdef WITH_SSE2
+ #if !defined(WITH_IPP) || defined(ALL_PRIMITIVES_VERSIONS)
+ 
+-pstatus_t sse2_alphaComp_argb(
++PRIMITIVES_HIDDEN pstatus_t sse2_alphaComp_argb(
+ 	const BYTE *pSrc1,  INT32 src1Step,
+ 	const BYTE *pSrc2,  INT32 src2Step,
+ 	BYTE *pDst,  INT32 dstStep,
+@@ -196,7 +196,7 @@
+ 
+ #ifdef WITH_IPP
+ /* ------------------------------------------------------------------------- */
+-pstatus_t ipp_alphaComp_argb(
++PRIMITIVES_HIDDEN pstatus_t ipp_alphaComp_argb(
+ 	const BYTE *pSrc1,  INT32 src1Step,
+ 	const BYTE *pSrc2,  INT32 src2Step,
+ 	BYTE *pDst,  INT32 dstStep,
+--- a/libfreerdp/primitives/prim_colors_opt.c
++++ b/libfreerdp/primitives/prim_colors_opt.c
+@@ -66,7 +66,7 @@
+ #endif /* DO_PREFETCH */
+ 
+ /*---------------------------------------------------------------------------*/
+-pstatus_t sse2_yCbCrToRGB_16s16s_P3P3(
++PRIMITIVES_HIDDEN pstatus_t sse2_yCbCrToRGB_16s16s_P3P3(
+ 	const INT16 *pSrc[3],
+ 	int srcStep,
+ 	INT16 *pDst[3],
+@@ -206,7 +206,7 @@
+ /* The encodec YCbCr coeffectients are represented as 11.5 fixed-point
+  * numbers. See the general code above.
+  */
+-pstatus_t sse2_RGBToYCbCr_16s16s_P3P3(
++PRIMITIVES_HIDDEN pstatus_t sse2_RGBToYCbCr_16s16s_P3P3(
+ 	const INT16 *pSrc[3],
+ 	int srcStep,
+ 	INT16 *pDst[3],
+@@ -359,7 +359,7 @@
+ #define XMM_ALL_ONES \
+ 	_mm_set1_epi32(0xFFFFFFFFU)
+ 
+-pstatus_t sse2_RGBToRGB_16s8u_P3AC4R(
++PRIMITIVES_HIDDEN pstatus_t sse2_RGBToRGB_16s8u_P3AC4R(
+ 	const INT16 *pSrc[3],	/* 16-bit R,G, and B arrays */
+ 	INT32 srcStep,			/* bytes between rows in source data */
+ 	BYTE *pDst,				/* 32-bit interleaved ARGB (ABGR?) data */
+@@ -440,7 +440,7 @@
+ 
+ /*---------------------------------------------------------------------------*/
+ #ifdef WITH_NEON
+-pstatus_t neon_yCbCrToRGB_16s16s_P3P3(
++PRIMITIVES_HIDDEN pstatus_t neon_yCbCrToRGB_16s16s_P3P3(
+ 	const INT16 *pSrc[3],
+ 	int srcStep,
+ 	INT16 *pDst[3],
+--- a/libfreerdp/primitives/prim_internal.h
++++ b/libfreerdp/primitives/prim_internal.h
+@@ -27,6 +27,11 @@
+ 
+ #include <freerdp/primitives.h>
+ 
++#if __GNUC__ >= 4
++	#define PRIMITIVES_HIDDEN   __attribute__ ((visibility("hidden")))
++#else
++	#define PRIMITIVES_HIDDEN
++#endif
+ 
+ /* Use lddqu for unaligned; load for 16-byte aligned. */
+ #define LOAD_SI128(_ptr_) \
+--- a/libfreerdp/primitives/prim_set_opt.c
++++ b/libfreerdp/primitives/prim_set_opt.c
+@@ -36,7 +36,7 @@
+ /* ========================================================================= */
+ #ifdef WITH_SSE2
+ # if !defined(WITH_IPP) || defined(ALL_PRIMITIVES_VERSIONS)
+-pstatus_t sse2_set_8u(
++PRIMITIVES_HIDDEN pstatus_t sse2_set_8u(
+ 	BYTE val,
+ 	BYTE *pDst,
+ 	INT32 len)
+@@ -103,7 +103,7 @@
+ /* ------------------------------------------------------------------------- */
+ #ifdef WITH_SSE2
+ # if !defined(WITH_IPP) || defined(ALL_PRIMITIVES_VERSIONS)
+-pstatus_t sse2_set_32u(
++PRIMITIVES_HIDDEN pstatus_t sse2_set_32u(
+ 	UINT32 val,
+ 	UINT32 *pDst,
+ 	INT32 len)
+@@ -174,7 +174,7 @@
+ }
+ 
+ /* ------------------------------------------------------------------------- */
+-pstatus_t sse2_set_32s(
++PRIMITIVES_HIDDEN pstatus_t sse2_set_32s(
+ 	INT32 val,
+ 	INT32 *pDst,
+ 	INT32 len)
+@@ -187,7 +187,7 @@
+ 
+ #ifdef WITH_IPP
+ /* ------------------------------------------------------------------------- */
+-pstatus_t ipp_wrapper_set_32u(
++PRIMITIVES_HIDDEN pstatus_t ipp_wrapper_set_32u(
+ 	UINT32 val,
+ 	UINT32 *pDst,
+ 	INT32 len)
+--- a/libfreerdp/primitives/prim_sign_opt.c
++++ b/libfreerdp/primitives/prim_sign_opt.c
+@@ -32,7 +32,7 @@
+ 
+ #ifdef WITH_SSE2
+ /* ------------------------------------------------------------------------- */
+-pstatus_t ssse3_sign_16s(
++PRIMITIVES_HIDDEN pstatus_t ssse3_sign_16s(
+ 	const INT16 *pSrc,
+ 	INT16 *pDst,
+ 	INT32 len)
+--- a/libfreerdp/primitives/prim_templates.h
++++ b/libfreerdp/primitives/prim_templates.h
+@@ -20,6 +20,8 @@
+ #ifndef __PRIM_TEMPLATES_H_INCLUDED__
+ #define __PRIM_TEMPLATES_H_INCLUDED__
+ 
++#include "prim_internal.h"
++
+ /* These are prototypes for SSE (potentially NEON) routines that do a 
+  * simple SSE operation over an array of data.  Since so much of this
+  * code is shared except for the operation itself, these prototypes are
+@@ -44,7 +46,7 @@
+  * SCD = Source, Constant, Destination
+  */
+ #define SSE3_SCD_ROUTINE(_name_, _type_, _fallback_, _op_, _slowWay_) \
+-pstatus_t _name_(const _type_ *pSrc, INT32 val, _type_ *pDst, INT32 len) \
++PRIMITIVES_HIDDEN pstatus_t _name_(const _type_ *pSrc, INT32 val, _type_ *pDst, INT32 len) \
+ { \
+ 	int shifts; \
+ 	UINT32 offBeatMask; \
+@@ -188,7 +190,7 @@
+  * PRE = preload xmm0 with the constant.
+  */
+ #define SSE3_SCD_PRE_ROUTINE(_name_, _type_, _fallback_, _op_, _slowWay_) \
+-pstatus_t _name_(const _type_ *pSrc, _type_ val, _type_ *pDst, INT32 len) \
++PRIMITIVES_HIDDEN pstatus_t _name_(const _type_ *pSrc, _type_ val, _type_ *pDst, INT32 len) \
+ { \
+ 	int shifts; \
+ 	UINT32 offBeatMask; \
+@@ -293,7 +295,7 @@
+  * SSD = Source1, Source2, Destination
+  */
+ #define SSE3_SSD_ROUTINE(_name_, _type_, _fallback_, _op_, _slowWay_) \
+-pstatus_t _name_(const _type_ *pSrc1, const _type_ *pSrc2, _type_ *pDst, INT32 len) \
++PRIMITIVES_HIDDEN pstatus_t _name_(const _type_ *pSrc1, const _type_ *pSrc2, _type_ *pDst, INT32 len) \
+ { \
+ 	int shifts; \
+ 	UINT32 offBeatMask; \

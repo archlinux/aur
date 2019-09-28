@@ -1,0 +1,13 @@
+--- a/channels/tsmf/client/ffmpeg/tsmf_ffmpeg.c	2019-06-10 12:32:12.499771340 +0300
++++ b/channels/tsmf/client/ffmpeg/tsmf_ffmpeg.c	2019-06-10 12:55:29.606403855 +0300
+@@ -206,8 +206,8 @@
+ 		}
+ 	}
+ 
+-	if (mdecoder->codec->capabilities & CODEC_CAP_TRUNCATED)
+-		mdecoder->codec_context->flags |= CODEC_FLAG_TRUNCATED;
++	if (mdecoder->codec->capabilities & AV_CODEC_CAP_TRUNCATED)
++		mdecoder->codec_context->flags |= AV_CODEC_FLAG_TRUNCATED;
+ 
+ 	return TRUE;
+ }

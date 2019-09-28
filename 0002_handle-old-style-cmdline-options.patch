@@ -1,0 +1,64 @@
+From 85856224f63cd6e356a386f096156ff85e2f64e9 Mon Sep 17 00:00:00 2001
+From: Bernhard Miklautz <bernhard.miklautz@thincast.com>
+Date: Tue, 10 Mar 2015 13:10:39 +0100
+Subject: [PATCH] settings: handle collection_add in detection case
+
+Command line detection is run with dummy settings where not everything
+is allocated. Collections (device, dynamic channel and static
+channel) didn't handle this case properly.
+
+(cherry picked from commit e9985c20938954f7df8f57b43c30c74c9d480dde)
+
+Conflicts:
+    client/common/test/TestClientCmdLine.c
+---
+ client/common/test/TestClientCmdLine.c | 5 +++++
+ libfreerdp/common/settings.c           | 9 +++++++++
+ 2 files changed, 14 insertions(+)
+
+--- a/client/common/test/TestClientCmdLine.c
++++ b/client/common/test/TestClientCmdLine.c
+@@ -108,6 +108,11 @@
+ 	char* cmd22[] = { "xfreerdp", "-g", "1920x1200", "-d", "domain", "-u", "username", "-D", "-a", "16", "--plugin", "rdpsnd", "--plugin", "rdpdr", "--data", "disk:media:/home/username/media/", "--", "-x", "l", "--rfx", "--ignore-certificate", "--plugin", "cliprdr", "some.host.name.com"};
+ 	TESTCASE_SUCCESS(cmd22);
+ 
++#if 0
++	char* cmd23[] = {"xfreerdp -z --plugin cliprdr --plugin rdpsnd --data alsa latency:100 -- --plugin rdpdr --data disk:w7share:/home/w7share -- --plugin drdynvc --data tsmf:decoder:gstreamer -- -u test host.example.com"};
++	TESTCASE(cmd23, COMMAND_LINE_STATUS_PRINT);
++#endif
++
+ 	return 0;
+ }
+ 
+--- a/libfreerdp/common/settings.c
++++ b/libfreerdp/common/settings.c
+@@ -135,6 +135,9 @@
+ 
+ void freerdp_device_collection_add(rdpSettings* settings, RDPDR_DEVICE* device)
+ {
++	if (!settings->DeviceArray)
++		return;
++
+ 	if (settings->DeviceArraySize < (settings->DeviceCount + 1))
+ 	{
+ 		settings->DeviceArraySize *= 2;
+@@ -204,6 +207,9 @@
+ 
+ void freerdp_static_channel_collection_add(rdpSettings* settings, ADDIN_ARGV* channel)
+ {
++	if (!settings->StaticChannelArray)
++		return;
++
+ 	if (settings->StaticChannelArraySize < (settings->StaticChannelCount + 1))
+ 	{
+ 		settings->StaticChannelArraySize *= 2;
+@@ -252,6 +258,9 @@
+ 
+ void freerdp_dynamic_channel_collection_add(rdpSettings* settings, ADDIN_ARGV* channel)
+ {
++	if (!settings->DynamicChannelArray)
++		return;
++
+ 	if (settings->DynamicChannelArraySize < (settings->DynamicChannelCount + 1))
+ 	{
+ 		settings->DynamicChannelArraySize *= 2;

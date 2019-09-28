@@ -1,0 +1,38 @@
+From 3ba81cbd5a59434f3053665e9fc4a432afd0db20 Mon Sep 17 00:00:00 2001
+From: Bernhard Miklautz <bernhard.miklautz@shacknet.at>
+Date: Thu, 10 Aug 2017 09:31:21 +0200
+Subject: [PATCH 1/1] enable TLS 1+
+
+Currently TLS version 1.0 is used implicitly by using the TLSv1_method.
+To be able to also use TLS 1.1 and later use SSLv23_client_method
+instead. To make sure SSLv2 or SSLv3 isn't used disable them.
+
+cherry-picked from aa80f63b4ab19101cbdc376f7e0613ed410fee11
+---
+ libfreerdp/crypto/tls.c | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+--- a/libfreerdp/crypto/tls.c
++++ b/libfreerdp/crypto/tls.c
+@@ -102,7 +102,7 @@
+ 	int connection_status;
+ 	char *hostname;
+ 
+-	tls->ctx = SSL_CTX_new(TLSv1_client_method());
++	tls->ctx = SSL_CTX_new(SSLv23_client_method());
+ 
+ 	if (tls->ctx == NULL)
+ 	{
+@@ -141,6 +141,12 @@
+ 	 */
+ 	options |= SSL_OP_DONT_INSERT_EMPTY_FRAGMENTS;
+ 
++	/**
++	 * disable SSLv2 and SSLv3
++	 */
++	options |= SSL_OP_NO_SSLv2;
++	options |= SSL_OP_NO_SSLv3;
++
+ 	SSL_CTX_set_options(tls->ctx, options);
+ 
+ 	tls->ssl = SSL_new(tls->ctx);

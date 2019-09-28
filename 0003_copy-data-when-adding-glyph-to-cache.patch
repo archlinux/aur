@@ -1,0 +1,106 @@
+From daea54925b2e8c7606eb22e65ab6b2397306363b Mon Sep 17 00:00:00 2001
+From: Bernhard Miklautz <bmiklautz@thinstuff.at>
+Date: Tue, 24 Sep 2013 23:25:18 +0200
+Subject: [PATCH] core/glyph: copy data when adding glyph to cache
+
+fixes #2439
+
+(cherry picked from commit c99d9ee72bae06d19a15cce46eb4f3230a97f296)
+---
+ libfreerdp/cache/glyph.c | 15 +++++----------
+ libfreerdp/core/orders.c |  4 ++--
+ libfreerdp/core/update.c |  2 ++
+ 3 files changed, 9 insertions(+), 12 deletions(-)
+
+--- a/libfreerdp/cache/glyph.c
++++ b/libfreerdp/cache/glyph.c
+@@ -279,7 +279,7 @@
+ 	if (y == -32768)
+ 		y = fast_glyph->bkTop;
+ 
+-	if (fast_glyph->cbData > 1)
++	if (fast_glyph->cbData > 1 && NULL != fast_glyph->glyphData.aj)
+ 	{
+ 		/* got option font that needs to go into cache */
+ 		glyph_data = &fast_glyph->glyphData;
+@@ -290,7 +290,8 @@
+ 		glyph->cx = glyph_data->cx;
+ 		glyph->cy = glyph_data->cy;
+ 		glyph->cb = glyph_data->cb;
+-		glyph->aj = glyph_data->aj;
++		glyph->aj = malloc(glyph_data->cb);
++		CopyMemory(glyph->aj, glyph_data->aj, glyph->cb);
+ 		Glyph_New(context, glyph);
+ 
+ 		glyph_cache_put(cache->glyph, fast_glyph->cacheId, fast_glyph->data[0], glyph);
+@@ -370,16 +371,14 @@
+ 
+ 	if (index > glyph_cache->glyphCache[id].number)
+ 	{
+-		fprintf(stderr, "invalid glyph cache index: %d in cache id: %d\n", index, id);
++		fprintf(stderr, "index %d out of range for cache id: %d\n", index, id);
+ 		return NULL;
+ 	}
+ 
+ 	glyph = glyph_cache->glyphCache[id].entries[index];
+ 
+ 	if (glyph == NULL)
+-	{
+-		fprintf(stderr, "invalid glyph at cache index: %d in cache id: %d\n", index, id);
+-	}
++		fprintf(stderr, "no glyph found at cache index: %d in cache id: %d\n", index, id);
+ 
+ 	return glyph;
+ }
+@@ -420,9 +419,7 @@
+ 	*size = (BYTE) glyph_cache->fragCache.entries[index].size;
+ 
+ 	if (fragment == NULL)
+-	{
+ 		fprintf(stderr, "invalid glyph fragment at index:%d\n", index);
+-	}
+ 
+ 	return fragment;
+ }
+@@ -437,9 +434,7 @@
+ 	glyph_cache->fragCache.entries[index].size = size;
+ 
+ 	if (prevFragment != NULL)
+-	{
+ 		free(prevFragment);
+-	}
+ }
+ 
+ void glyph_cache_register_callbacks(rdpUpdate* update)
+--- a/libfreerdp/core/orders.c
++++ b/libfreerdp/core/orders.c
+@@ -485,9 +485,7 @@
+ 		Stream_Write_UINT8(s, byte);
+ 	}
+ 	else
+-	{
+ 		return FALSE;
+-	}
+ 
+ 	return TRUE;
+ }
+@@ -1670,6 +1668,8 @@
+ 			if (Stream_GetRemainingLength(s) < glyph->cb)
+ 				return FALSE;
+ 
++			if (glyph->aj)
++				free(glyph->aj);
+ 			glyph->aj = (BYTE*) malloc(glyph->cb);
+ 			Stream_Read(s, glyph->aj, glyph->cb);
+ 		}
+--- a/libfreerdp/core/update.c
++++ b/libfreerdp/core/update.c
+@@ -1596,6 +1596,8 @@
+ 
+ 		free(update->primary->polyline.points);
+ 		free(update->primary->polygon_sc.points);
++		if (NULL != update->primary->fast_glyph.glyphData.aj)
++			free(update->primary->fast_glyph.glyphData.aj);
+ 		free(update->primary);
+ 
+ 		free(update->secondary);

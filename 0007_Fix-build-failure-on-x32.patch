@@ -1,0 +1,32 @@
+>From 15d5037df438e60f2c5439184dbe7ea232cbd100 Mon Sep 17 00:00:00 2001
+From: Adam Borowski <kilobyte@angband.pl>
+Date: Thu, 29 Jan 2015 05:50:12 +0100
+Subject: [PATCH] Fix build failure on x32.
+
+Unlike i386, x32 can't accept -march=i686 but wants -fPIC, same as amd64
+(both are x86_64 ABIs after all).  Thus, check for the __x86_64__ define
+instead of pointer width.
+---
+ CMakeLists.txt | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -33,6 +33,7 @@
+ # Include cmake modules
+ include(CheckIncludeFiles)
+ include(CheckLibraryExists)
++include(CheckSymbolExists)
+ include(CheckStructHasMember)
+ include(CMakeDetermineSystem)
+ include(FindPkgConfig)
+@@ -112,7 +113,8 @@
+ # Compiler-specific flags
+ if(CMAKE_COMPILER_IS_GNUCC)
+ 	if(CMAKE_SYSTEM_PROCESSOR MATCHES "x86_64" OR CMAKE_SYSTEM_PROCESSOR MATCHES "i686")
+-		if(CMAKE_SIZEOF_VOID_P EQUAL 8)
++		CHECK_SYMBOL_EXISTS(__x86_64__ "" IS_X86_64)
++		if(IS_X86_64)
+ 			set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fPIC")
+ 		else()
+ 			set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -march=i686")

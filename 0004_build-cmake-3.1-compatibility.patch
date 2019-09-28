@@ -1,0 +1,78 @@
+From 1b663ceffe51008af7ae9749e5b7999b2f7d6698 Mon Sep 17 00:00:00 2001
+From: Bernhard Miklautz <bernhard.miklautz@shacknet.at>
+Date: Fri, 12 Dec 2014 18:26:45 +0100
+Subject: [PATCH] build: cmake 3.1 compatibility
+
+* fix problem with REMOVE_DUPLICATES on undefined lists
+* since 3.1 file(GLOB FILEPATHS RELATIVE .. returns single / instead of // as
+  previously - necessary adoptions for regex and matches done. Should
+	work with all cmake versions.
+
+Tested with 3.1.0-rc3
+
+Origin: upstream, https://github.com/FreeRDP/FreeRDP/commit/1b663ceffe51008af7ae9749e5b7999b2f7d6698?diff=unified
+
+diff --git a/channels/CMakeLists.txt b/channels/CMakeLists.txt
+index d9e8402..006e50f 100644
+--- a/channels/CMakeLists.txt
++++ b/channels/CMakeLists.txt
+@@ -202,8 +202,8 @@ set(FILENAME "ChannelOptions.cmake")
+ file(GLOB FILEPATHS RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "*/${FILENAME}")
+ 
+ foreach(FILEPATH ${FILEPATHS})
+-	if(${FILEPATH} MATCHES "^([^/]*)//${FILENAME}")
+-		string(REGEX REPLACE "^([^/]*)//${FILENAME}" "\\1" DIR ${FILEPATH})
++	if(${FILEPATH} MATCHES "^([^/]*)/+${FILENAME}")
++		string(REGEX REPLACE "^([^/]*)/+${FILENAME}" "\\1" DIR ${FILEPATH})
+ 		set(CHANNEL_OPTION)
+ 		include(${FILEPATH})
+ 		if(${CHANNEL_OPTION})
+diff --git a/channels/client/CMakeLists.txt b/channels/client/CMakeLists.txt
+index fc42466..a78cdeb 100644
+--- a/channels/client/CMakeLists.txt
++++ b/channels/client/CMakeLists.txt
+@@ -30,7 +30,9 @@ set(${MODULE_PREFIX}_SRCS
+ 	${CMAKE_CURRENT_SOURCE_DIR}/channels.c
+ 	${CMAKE_CURRENT_SOURCE_DIR}/channels.h)
+ 
++if(CHANNEL_STATIC_CLIENT_ENTRIES)
+ list(REMOVE_DUPLICATES CHANNEL_STATIC_CLIENT_ENTRIES)
++endif()
+ 
+ foreach(STATIC_ENTRY ${CHANNEL_STATIC_CLIENT_ENTRIES})
+ 	foreach(STATIC_MODULE ${CHANNEL_STATIC_CLIENT_MODULES})
+diff --git a/third-party/CMakeLists.txt b/third-party/CMakeLists.txt
+index 09b1fd4..610f35e 100644
+--- a/third-party/CMakeLists.txt
++++ b/third-party/CMakeLists.txt
+@@ -22,11 +22,11 @@
+ file(GLOB all_valid_subdirs RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "*/CMakeLists.txt")
+ 
+ foreach(dir ${all_valid_subdirs})
+-	if(${dir} MATCHES "^([^/]*)//CMakeLists.txt")
+-		string(REGEX REPLACE "^([^/]*)//CMakeLists.txt" "\\1" dir_trimmed ${dir})
++	if(${dir} MATCHES "^([^/]*)/+CMakeLists.txt")
++		string(REGEX REPLACE "^([^/]*)/+CMakeLists.txt" "\\1" dir_trimmed ${dir})
+ 		message(STATUS "Adding third-party component ${dir_trimmed}")
+ 		add_subdirectory(${dir_trimmed})
+ 	endif()
+ endforeach(dir)
+ 
+-set(THIRD_PARTY_INCLUDES ${THIRD_PARTY_INCLUDES} PARENT_SCOPE)
+\ No newline at end of file
++set(THIRD_PARTY_INCLUDES ${THIRD_PARTY_INCLUDES} PARENT_SCOPE)
+diff --git a/winpr/libwinpr/CMakeLists.txt b/winpr/libwinpr/CMakeLists.txt
+index fdb2bda..7e1603b 100644
+--- a/winpr/libwinpr/CMakeLists.txt
++++ b/winpr/libwinpr/CMakeLists.txt
+@@ -32,8 +32,8 @@ set(FILENAME "ModuleOptions.cmake")
+ file(GLOB FILEPATHS RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "*/${FILENAME}")
+ 
+ foreach(FILEPATH ${FILEPATHS})
+-	if(${FILEPATH} MATCHES "^([^/]*)//${FILENAME}")
+-		string(REGEX REPLACE "^([^/]*)//${FILENAME}" "\\1" ${MODULE_PREFIX}_SUBMODULE ${FILEPATH})
++	if(${FILEPATH} MATCHES "^([^/]*)/+${FILENAME}")
++		string(REGEX REPLACE "^([^/]*)/+${FILENAME}" "\\1" ${MODULE_PREFIX}_SUBMODULE ${FILEPATH})
+ 		set(${MODULE_PREFIX}_SUBMODULES ${${MODULE_PREFIX}_SUBMODULES} ${${MODULE_PREFIX}_SUBMODULE})
+ 	endif()
+ endforeach(FILEPATH)

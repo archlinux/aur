@@ -1,0 +1,15 @@
+Description: CPU types arm64 and armhf need to be linked with -fPIC.
+Author: Mike Gabriel <mike.gabriel@das-netzwerkteam.de>
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -118,6 +118,9 @@
+ 			set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -march=i686")
+ 		endif()
+ 	endif()
++	if (CMAKE_SYSTEM_PROCESSOR STREQUAL "armv7l" OR CMAKE_SYSTEM_PROCESSOR STREQUAL "aarch64")
++		set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fPIC")
++	endif()
+ 	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall")
+ 	CHECK_C_COMPILER_FLAG (-Wno-unused-result Wno-unused-result)
+ 	if(Wno-unused-result)

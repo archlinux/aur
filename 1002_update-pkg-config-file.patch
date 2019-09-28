@@ -1,0 +1,16 @@
+Description: Add missing -lfreerdp-client
+Author: Sebastian Ramacher <sramacher@debian.org>
+Last-Update: 2014-08-17
+
+diff --git a/freerdp.pc.in b/freerdp.pc.in
+index 59e2b44..70288dd 100644
+--- a/freerdp.pc.in
++++ b/freerdp.pc.in
+@@ -8,6 +8,6 @@ Description: A free remote desktop protocol client
+ URL: http://www.freerdp.com/
+ Version: @FREERDP_VERSION_FULL@
+ Requires: 
+-Libs: -L${libdir} -lfreerdp-cache -lfreerdp-codec -lfreerdp-core -lfreerdp-crypto -lfreerdp-gdi -lfreerdp-locale -lfreerdp-rail -lfreerdp-utils -lwinpr-sspi -lwinpr-rpc -lwinpr-utils
++Libs: -L${libdir} -lfreerdp-cache -lfreerdp-codec -lfreerdp-client -lfreerdp-core -lfreerdp-crypto -lfreerdp-gdi -lfreerdp-locale -lfreerdp-rail -lfreerdp-utils -lwinpr-sspi -lwinpr-rpc -lwinpr-utils
+ Cflags: -I${includedir}
+ 

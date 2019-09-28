@@ -1,0 +1,102 @@
+The testsuite stores the expected result in little endian UTF-16, while
+all the functions UTF conversion functions use the WCHAR type and assume
+native endian. Convert the expected results to little endian on big
+endian machines.
+
+--- a/winpr/libwinpr/crt/test/TestUnicodeConversion.c
++++ b/winpr/libwinpr/crt/test/TestUnicodeConversion.c
+@@ -4,6 +4,18 @@
+ #include <winpr/error.h>
+ #include <winpr/windows.h>
+ 
++#if defined(WIN32) || defined(WIN64)
++  #ifndef __LITTLE_ENDIAN
++    #define __LITTLE_ENDIAN 1234
++    #define __BIG_ENDIAN    4321
++  #endif
++  #ifndef __BYTE_ORDER
++    #define __BYTE_ORDER __LITTLE_ENDIAN
++  #endif
++#else
++  #include <endian.h>
++#endif
++
+ /* Letters */
+ 
+ static BYTE c_cedilla_UTF8[] = "\xC3\xA7\x00";
+@@ -108,6 +120,22 @@
+ 	}
+ }
+ 
++void utf16_le_to_ne(BYTE *data, int length)
++{
++#if __BYTE_ORDER == __BIG_ENDIAN
++	int i;
++
++	for (i = 0; i < length / 2; i++)
++	{
++		BYTE c;
++
++		c = data[i * 2];
++		data[i * 2] = data[i * 2 + 1];
++		data[i * 2 + 1] = c;
++	}
++#endif
++}
++
+ int convert_utf8_to_utf16(BYTE* lpMultiByteStr, BYTE* expected_lpWideCharStr, int expected_cchWideChar)
+ {
+ 	int length;
+@@ -247,6 +275,7 @@
+ 	/* Letters */
+ 
+ 	printf("Letters\n");
++	utf16_le_to_ne(c_cedilla_UTF16, sizeof(c_cedilla_UTF16));
+ 
+ 	if (convert_utf8_to_utf16(c_cedilla_UTF8, c_cedilla_UTF16, c_cedilla_cchWideChar) < 1)
+ 		return -1;
+@@ -257,6 +286,8 @@
+ 	/* English */
+ 
+ 	printf("English\n");
++	utf16_le_to_ne(en_Hello_UTF16, sizeof(en_Hello_UTF16));
++	utf16_le_to_ne(en_HowAreYou_UTF16, sizeof(en_HowAreYou_UTF16));
+ 
+ 	if (convert_utf8_to_utf16(en_Hello_UTF8, en_Hello_UTF16, en_Hello_cchWideChar) < 1)
+ 		return -1;
+@@ -271,6 +302,8 @@
+ 	/* French */
+ 
+ 	printf("French\n");
++	utf16_le_to_ne(fr_Hello_UTF16, sizeof(fr_Hello_UTF16));
++	utf16_le_to_ne(fr_HowAreYou_UTF16, sizeof(fr_HowAreYou_UTF16));
+ 
+ 	if (convert_utf8_to_utf16(fr_Hello_UTF8, fr_Hello_UTF16, fr_Hello_cchWideChar) < 1)
+ 		return -1;
+@@ -285,6 +318,8 @@
+ 	/* Russian */
+ 
+ 	printf("Russian\n");
++	utf16_le_to_ne(ru_Hello_UTF16, sizeof(ru_Hello_UTF16));
++	utf16_le_to_ne(ru_HowAreYou_UTF16, sizeof(ru_HowAreYou_UTF16));
+ 
+ 	if (convert_utf8_to_utf16(ru_Hello_UTF8, ru_Hello_UTF16, ru_Hello_cchWideChar) < 1)
+ 		return -1;
+@@ -299,6 +334,8 @@
+ 	/* Arabic */
+ 
+ 	printf("Arabic\n");
++	utf16_le_to_ne(ar_Hello_UTF16, sizeof(ar_Hello_UTF16));
++	utf16_le_to_ne(ar_HowAreYou_UTF16, sizeof(ar_HowAreYou_UTF16));
+ 
+ 	if (convert_utf8_to_utf16(ar_Hello_UTF8, ar_Hello_UTF16, ar_Hello_cchWideChar) < 1)
+ 		return -1;
+@@ -313,6 +350,8 @@
+ 	/* Chinese */
+ 
+ 	printf("Chinese\n");
++	utf16_le_to_ne(ch_Hello_UTF16, sizeof(ch_Hello_UTF16));
++	utf16_le_to_ne(ch_HowAreYou_UTF16, sizeof(ch_HowAreYou_UTF16));
+ 
+ 	if (convert_utf8_to_utf16(ch_Hello_UTF8, ch_Hello_UTF16, ch_Hello_cchWideChar) < 1)
+ 		return -1;

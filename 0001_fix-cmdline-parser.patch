@@ -1,0 +1,360 @@
+Description: Command line parser fixes.
+Author: Bernhard Miklautz <bernhard.miklautz@shacknet.at>
+Abstract:
+ The command line parser had serveral problems when old style syntax
+ was used.
+
+diff --git a/client/common/cmdline.c b/client/common/cmdline.c
+index 3d0cc2d..34064ea 100644
+--- a/client/common/cmdline.c
++++ b/client/common/cmdline.c
+@@ -421,7 +421,7 @@ char** freerdp_command_line_parse_comma_separated_values(char* list, int* count)
+ 	int index;
+ 	int nCommas;
+ 
+-	nArgs = nCommas = 0;
++	nCommas = 0;
+ 
+ 	for (index = 0; list[index]; index++)
+ 		nCommas += (list[index] == ',') ? 1 : 0;
+@@ -915,8 +915,13 @@ BOOL freerdp_client_detect_command_line(int argc, char** argv, DWORD* flags)
+ 	*flags |= COMMAND_LINE_SIGIL_DASH | COMMAND_LINE_SIGIL_DOUBLE_DASH;
+ 	*flags |= COMMAND_LINE_SIGIL_ENABLE_DISABLE;
+ 
+-	if (windows_cli_count > posix_cli_count)
++	if (posix_cli_status <= COMMAND_LINE_STATUS_PRINT)
++		return compatibility;
++
++	/* Check, if this may be windows style syntax... */
++	if ((windows_cli_count && (windows_cli_count >= posix_cli_count)) || (windows_cli_status <= COMMAND_LINE_STATUS_PRINT))
+ 	{
++		windows_cli_count = 1;
+ 		*flags = COMMAND_LINE_SEPARATOR_COLON;
+ 		*flags |= COMMAND_LINE_SIGIL_SLASH | COMMAND_LINE_SIGIL_PLUS_MINUS;
+ 	}
+@@ -1020,8 +1025,7 @@ int freerdp_client_parse_command_line_arguments(int argc, char** argv, rdpSettin
+ 				freerdp_client_command_line_pre_filter, freerdp_client_command_line_post_filter);
+ 	}
+ 
+-
+-	arg = CommandLineFindArgumentA(args, "v");
++	CommandLineFindArgumentA(args, "v");
+ 
+ 	arg = args;
+ 
+diff --git a/client/common/compatibility.c b/client/common/compatibility.c
+index 788b413..c7177c2 100644
+--- a/client/common/compatibility.c
++++ b/client/common/compatibility.c
+@@ -118,18 +118,25 @@ void freerdp_client_old_parse_hostname(char* str, char** ServerHostname, UINT32*
+ 
+ int freerdp_client_old_process_plugin(rdpSettings* settings, ADDIN_ARGV* args)
+ {
++	int args_handled = 0;
+ 	if (strcmp(args->argv[0], "cliprdr") == 0)
+ 	{
++		args_handled++;
+ 		settings->RedirectClipboard = TRUE;
+ 		fprintf(stderr, "--plugin cliprdr -> +clipboard\n");
+ 	}
+ 	else if (strcmp(args->argv[0], "rdpdr") == 0)
+ 	{
++		args_handled++;
++		if (args->argc < 2)
++			return 1;
++
+ 		if ((strcmp(args->argv[1], "disk") == 0) ||
+ 			(strcmp(args->argv[1], "drive") == 0))
+ 		{
+ 			freerdp_addin_replace_argument(args, "disk", "drive");
+ 			freerdp_client_add_device_channel(settings, args->argc - 1, &args->argv[1]);
++			args_handled++;
+ 		}
+ 		else if (strcmp(args->argv[1], "printer") == 0)
+ 		{
+@@ -152,15 +159,29 @@ int freerdp_client_old_process_plugin(rdpSettings* settings, ADDIN_ARGV* args)
+ 	}
+ 	else if (strcmp(args->argv[0], "drdynvc") == 0)
+ 	{
++		args_handled++;
++		if (args->argc < 2)
++			return args_handled;
++
+ 		freerdp_client_add_dynamic_channel(settings, args->argc - 1, &args->argv[1]);
+ 	}
+ 	else if (strcmp(args->argv[0], "rdpsnd") == 0)
+ 	{
+-		freerdp_addin_replace_argument_value(args, args->argv[1], "sys", args->argv[1]);
++		args_handled++;
++		if (args->argc > 2)
++		{
++			args_handled++;
++			freerdp_addin_replace_argument_value(args, args->argv[1], "sys", args->argv[1]);
++		}
+ 		freerdp_client_add_static_channel(settings, args->argc, args->argv);
+ 	}
+ 	else if (strcmp(args->argv[0], "rail") == 0)
+ 	{
++		args_handled++;
++		if (args->argc < 2)
++			return 1;
++
++		args_handled++;
+ 		settings->RemoteApplicationProgram = _strdup(args->argv[1]);
+ 	}
+ 	else
+@@ -168,14 +189,12 @@ int freerdp_client_old_process_plugin(rdpSettings* settings, ADDIN_ARGV* args)
+ 		freerdp_client_add_static_channel(settings, args->argc, args->argv);
+ 	}
+ 
+-	return 1;
++	return args_handled;
+ }
+ 
+ int freerdp_client_old_command_line_pre_filter(void* context, int index, int argc, LPCSTR* argv)
+ {
+-	rdpSettings* settings;
+-
+-	settings = (rdpSettings*) context;
++	rdpSettings* settings = (rdpSettings*) context;
+ 
+ 	if (index == (argc - 1))
+ 	{
+@@ -191,6 +210,8 @@ int freerdp_client_old_command_line_pre_filter(void* context, int index, int arg
+ 				return -1;
+ 			}
+ 			freerdp_client_old_parse_hostname((char*) argv[index], &settings->ServerHostname, &settings->ServerPort);
++
++			return 1;
+ 		}
+ 		else
+ 		{
+@@ -215,20 +236,18 @@ int freerdp_client_old_command_line_pre_filter(void* context, int index, int arg
+ 			return -1;
+ 
+ 		args = (ADDIN_ARGV*) malloc(sizeof(ADDIN_ARGV));
+-		args->argv = (char**) malloc(sizeof(char*) * 5);
++		args->argv = (char**) calloc(argc, sizeof(char*));
+ 		args->argc = 1;
+ 
+-		args->argv[0] = _strdup(argv[t]);
+-
+ 		if ((index < argc - 1) && strcmp("--data", argv[index + 1]) == 0)
+ 		{
+ 			i = 0;
+ 			index += 2;
+-			args->argc = 1;
+ 
+ 			while ((index < argc) && (strcmp("--", argv[index]) != 0))
+ 			{
+ 				args->argc = 1;
++				args->argv[0] = _strdup(argv[t]);
+ 
+ 				for (j = 0, p = (char*) argv[index]; (j < 4) && (p != NULL); j++)
+ 				{
+@@ -250,8 +269,12 @@ int freerdp_client_old_command_line_pre_filter(void* context, int index, int arg
+ 
+ 					if (p != NULL)
+ 					{
+-						length = p - a;
+-						args->argv[j + 1] = malloc(length + 1);
++						p = strchr(p, ':');
++					}
++					if (p != NULL)
++					{
++						length = (int) (p - a);
++						args->argv[j + 1] = (char*) malloc(length + 1);
+ 						CopyMemory(args->argv[j + 1], a, length);
+ 						args->argv[j + 1][length] = '\0';
+ 						p++;
+@@ -264,20 +287,33 @@ int freerdp_client_old_command_line_pre_filter(void* context, int index, int arg
+ 					args->argc++;
+ 				}
+ 
+-				if (settings->instance)
++				if (settings)
+ 				{
+ 					freerdp_client_old_process_plugin(settings, args);
+ 				}
++				for (i = 0; i < args->argc; i++)
++					free(args->argv[i]);
++				memset(args->argv, 0, argc * sizeof(char*));
+ 
++				for (i = 0; i < args->argc; i++)
++					free(args->argv[i]);
++				memset(args->argv, 0, argc * sizeof(char*));
+ 				index++;
+ 				i++;
+ 			}
+-		} else {
+-				if (settings->instance)
+-				{
+-					freerdp_client_old_process_plugin(settings, args);
+-				}
+ 		}
++		else
++		{
++			if (settings)
++			{
++				args->argv[0] = _strdup(argv[t]);
++				freerdp_client_old_process_plugin(settings, args);
++				free (args->argv[0]);
++			}
++		}
++
++		free(args->argv);
++		free(args);
+ 
+ 		return (index - old_index);
+ 	}
+diff --git a/client/common/test/CMakeLists.txt b/client/common/test/CMakeLists.txt
+index b68ac11..06c2c46 100644
+--- a/client/common/test/CMakeLists.txt
++++ b/client/common/test/CMakeLists.txt
+@@ -6,7 +6,9 @@ set(${MODULE_PREFIX}_DRIVER ${MODULE_NAME}.c)
+ 
+ set(${MODULE_PREFIX}_TESTS
+ 	TestClientRdpFile.c
+-	TestClientChannels.c)
++	TestClientChannels.c
++	TestClientCmdLine.c
++	)
+ 
+ create_test_sourcelist(${MODULE_PREFIX}_SRCS
+ 	${${MODULE_PREFIX}_DRIVER}
+@@ -15,11 +17,16 @@ create_test_sourcelist(${MODULE_PREFIX}_SRCS
+ add_executable(${MODULE_NAME} ${${MODULE_PREFIX}_SRCS})
+ 
+ set(${MODULE_PREFIX}_LIBS ${${MODULE_PREFIX}_LIBS} freerdp-client)
++set_complex_link_libraries(VARIABLE ${MODULE_PREFIX}_LIBS MONOLITHIC ${MONOLITHIC_BUILD}
++		MODULE freerdp
++		MODULES freerdp-core)
+ 
+ target_link_libraries(${MODULE_NAME} ${${MODULE_PREFIX}_LIBS})
+ 
+ set_target_properties(${MODULE_NAME} PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${TESTING_OUTPUT_DIRECTORY}")
+ 
++
++
+ foreach(test ${${MODULE_PREFIX}_TESTS})
+ 	get_filename_component(TestName ${test} NAME_WE)
+ 	add_test(${TestName} ${TESTING_OUTPUT_DIRECTORY}/${MODULE_NAME} ${TestName})
+diff --git a/client/common/test/TestClientCmdLine.c b/client/common/test/TestClientCmdLine.c
+new file mode 100644
+index 0000000..66fb662
+--- /dev/null
++++ b/client/common/test/TestClientCmdLine.c
+@@ -0,0 +1,113 @@
++#include <freerdp/client.h>
++#include <freerdp/client/cmdline.h>
++#include <freerdp/settings.h>
++#include <winpr/cmdline.h>
++#include <winpr/spec.h>
++
++#define TESTCASE(cmd, expected_return) status = freerdp_client_parse_command_line_arguments(ARRAYSIZE(cmd), cmd, settings); \
++   if (status != expected_return) { \
++      printf("Test argument %s failed\n", #cmd); \
++       return -1; \
++    }
++
++#define TESTCASE_SUCCESS(cmd) status = freerdp_client_parse_command_line_arguments(ARRAYSIZE(cmd), cmd, settings); \
++   if (status < 0) { \
++     printf("Test argument %s failed\n", #cmd); \
++     return -1; \
++   }
++
++int TestClientCmdLine(int argc, char* argv[])
++{
++	int status;
++	rdpSettings* settings = freerdp_settings_new(0);
++
++	char* cmd1[] = {"xfreerdp", "--help"};
++	TESTCASE(cmd1, COMMAND_LINE_STATUS_PRINT_HELP);
++
++	char* cmd2[] = {"xfreerdp", "/help"};
++	TESTCASE(cmd2, COMMAND_LINE_STATUS_PRINT_HELP);
++
++	char* cmd3[] = {"xfreerdp", "-help"};
++	TESTCASE(cmd3, COMMAND_LINE_STATUS_PRINT_HELP);
++
++	char* cmd4[] = {"xfreerdp", "--version"};
++	TESTCASE(cmd4, COMMAND_LINE_STATUS_PRINT_VERSION);
++
++	char* cmd5[] = {"xfreerdp", "/version"};
++	TESTCASE(cmd5, COMMAND_LINE_STATUS_PRINT_VERSION);
++
++	char* cmd6[] = {"xfreerdp", "-version"};
++	TESTCASE(cmd6, COMMAND_LINE_STATUS_PRINT_VERSION);
++
++	char* cmd7[] = {"xfreerdp", "test.freerdp.com"};
++	TESTCASE_SUCCESS(cmd7);
++
++	char* cmd8[] = {"xfreerdp", "-v", "test.freerdp.com"};
++	TESTCASE_SUCCESS(cmd8);
++
++	char* cmd9[] = {"xfreerdp", "--v", "test.freerdp.com"};
++	TESTCASE_SUCCESS(cmd9);
++
++	char* cmd10[] = {"xfreerdp", "/v:test.freerdp.com"};
++	TESTCASE_SUCCESS(cmd10);
++
++	char* cmd11[] = {"xfreerdp", "--plugin", "rdpsnd", "--plugin", "rdpdr", "--data", "disk:media:/tmp", "--", "test.freerdp.com" };
++	TESTCASE_SUCCESS(cmd11);
++
++	char* cmd12[] = {"xfreerdp", "/sound", "/drive:media:/tmp", "/v:test.freerdp.com" };
++	TESTCASE_SUCCESS(cmd12);
++
++	// password gets overwritten therefore it need to be writeable
++	char* cmd13[6] = {"xfreerdp", "-u", "test", "-p", "test", "test.freerdp.com"};
++	cmd13[4] = malloc(5);
++	strncpy(cmd13[4], "test", 4);
++	TESTCASE_SUCCESS(cmd13);
++	free(cmd13[4]);
++
++	char* cmd14[] = {"xfreerdp", "-u", "test", "-p", "test", "-v", "test.freerdp.com"};
++	cmd14[4] = malloc(5);
++	strncpy(cmd14[4], "test", 4);
++	TESTCASE_SUCCESS(cmd14);
++	free(cmd14[4]);
++
++	char* cmd15[] = {"xfreerdp", "/u:test", "/p:test", "/v:test.freerdp.com"};
++	cmd15[2] = malloc(7);
++	strncpy(cmd15[2], "/p:test", 6);
++	TESTCASE_SUCCESS(cmd15);
++	free(cmd15[2]);
++
++#if 0
++	char* cmd16[] = {"xfreerdp", "-invalid"};
++	TESTCASE(cmd16, COMMAND_LINE_ERROR_NO_KEYWORD);
++
++	char* cmd17[] = {"xfreerdp", "--invalid"};
++	TESTCASE(cmd17, COMMAND_LINE_ERROR_NO_KEYWORD);
++#endif
++
++	char* cmd18[] = {"xfreerdp", "/kbd-list"};
++	TESTCASE(cmd18, COMMAND_LINE_STATUS_PRINT);
++
++	char* cmd19[] = {"xfreerdp", "/monitor-list"};
++	TESTCASE(cmd19, COMMAND_LINE_STATUS_PRINT);
++
++	/* 
++	 * Faulty command misses -- after data and the data for disk is incorrect
++	 * This tests was added because it caused a segfault
++	 * The command line is "valid" but disk isn't initialized correctly 
++	 */
++	char* cmd20[] = { "xfreerdp", "-g", "1920x1200", "-d", "domain", "-u", "username", "-D", "-a", "16", "--plugin", "rdpsnd", "--plugin", "rdpdr", "-data", "disk", "media", "/home/username/media/", "-x", "l", "--rfx", "--ignore-certificate", "--plugin", "cliprdr", "some.host.name.com"};
++	TESTCASE_SUCCESS(cmd20);
++
++	/* Command misses -- for data */
++	char* cmd21[] = { "xfreerdp", "-g", "1920x1200", "-d", "domain", "-u", "username", "-D", "-a", "16", "--plugin", "rdpsnd", "--plugin", "rdpdr", "--data", "disk:media:/home/username/media/", "-x", "l", "--rfx", "--ignore-certificate", "--plugin", "cliprdr", "xxx"};
++	TESTCASE_SUCCESS(cmd21);
++	if (settings->ServerHostname && !strcmp(settings->ServerHostname, "xxx")){
++		printf("cmd21 problem - hostname shoudn't be set because -- is missing after data (status %d - %s)", status, settings->ServerHostname);
++		return -1;
++	}
++	char* cmd22[] = { "xfreerdp", "-g", "1920x1200", "-d", "domain", "-u", "username", "-D", "-a", "16", "--plugin", "rdpsnd", "--plugin", "rdpdr", "--data", "disk:media:/home/username/media/", "--", "-x", "l", "--rfx", "--ignore-certificate", "--plugin", "cliprdr", "some.host.name.com"};
++	TESTCASE_SUCCESS(cmd22);
++
++	return 0;
++}
++

@@ -1,0 +1,14 @@
+Description: Fix spelling of "occurred" in an error msg."
+Author: Mike Gabriel <mike.gabriel@das-netzwerkteam.de>
+
+--- a/channels/urbdrc/client/urbdrc_main.c
++++ b/channels/urbdrc/client/urbdrc_main.c
+@@ -648,7 +648,7 @@
+ 			}
+ 			else
+ 			{
+-				fprintf(stderr, "No Device from receive_device(). An error occured.\n");
++				fprintf(stderr, "No Device from receive_device(). An error occurred.\n");
+ 			}
+ 		}
+ 	}

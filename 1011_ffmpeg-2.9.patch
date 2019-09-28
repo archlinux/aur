@@ -1,0 +1,69 @@
+Description: Replace deprecated FFmpeg API
+Author: Andreas Cadhalpun <Andreas.Cadhalpun@googlemail.com>
+Last-Update: <2015-11-02>
+
+--- freerdp-1.1.0~git20140921.1.440916e+dfsg1.orig/channels/tsmf/client/ffmpeg/tsmf_ffmpeg.c
++++ freerdp-1.1.0~git20140921.1.440916e+dfsg1/channels/tsmf/client/ffmpeg/tsmf_ffmpeg.c
+@@ -107,7 +107,7 @@ static BOOL tsmf_ffmpeg_init_video_strea
+ 	mdecoder->codec_context->time_base.den = media_type->SamplesPerSecond.Numerator;
+ 	mdecoder->codec_context->time_base.num = media_type->SamplesPerSecond.Denominator;
+ 
+-	mdecoder->frame = avcodec_alloc_frame();
++	mdecoder->frame = av_frame_alloc();
+ 
+ 	return TRUE;
+ }
+@@ -342,7 +342,7 @@ static BOOL tsmf_ffmpeg_decode_video(ITS
+ 			mdecoder->codec_context->width, mdecoder->codec_context->height);
+ 		mdecoder->decoded_data = malloc(mdecoder->decoded_size);
+ 		ZeroMemory(mdecoder->decoded_data, mdecoder->decoded_size);
+-		frame = avcodec_alloc_frame();
++		frame = av_frame_alloc();
+ 		avpicture_fill((AVPicture*) frame, mdecoder->decoded_data,
+ 			mdecoder->codec_context->pix_fmt,
+ 			mdecoder->codec_context->width, mdecoder->codec_context->height);
+@@ -351,7 +351,7 @@ static BOOL tsmf_ffmpeg_decode_video(ITS
+ 			mdecoder->codec_context->pix_fmt,
+ 			mdecoder->codec_context->width, mdecoder->codec_context->height);
+ 
+-		av_free(frame);
++		av_frame_free(&frame);
+ 	}
+ 
+ 	return ret;
+@@ -412,7 +412,7 @@ static BOOL tsmf_ffmpeg_decode_audio(ITS
+ 			(int16_t*) dst, &frame_size, src, src_size);
+ #else
+ 		{
+-			AVFrame* decoded_frame = avcodec_alloc_frame();
++			AVFrame* decoded_frame = av_frame_alloc();
+ 			int got_frame = 0;
+ 			AVPacket pkt;
+ 			av_init_packet(&pkt);
+@@ -427,7 +427,7 @@ static BOOL tsmf_ffmpeg_decode_audio(ITS
+ 				memcpy(dst, decoded_frame->data[0], frame_size);
+ 			}
+ 			
+-			av_free(decoded_frame);
++			av_frame_free(&decoded_frame);
+ 		}
+ #endif
+ 		if (len <= 0 || frame_size <= 0)
+@@ -501,7 +501,7 @@ static UINT32 tsmf_ffmpeg_get_decoded_fo
+ 
+ 	switch (mdecoder->codec_context->pix_fmt)
+ 	{
+-		case PIX_FMT_YUV420P:
++		case AV_PIX_FMT_YUV420P:
+ 			return RDP_PIXFMT_I420;
+ 
+ 		default:
+@@ -532,7 +532,7 @@ static void tsmf_ffmpeg_free(ITSMFDecode
+ 	TSMFFFmpegDecoder* mdecoder = (TSMFFFmpegDecoder*) decoder;
+ 
+ 	if (mdecoder->frame)
+-		av_free(mdecoder->frame);
++		av_frame_free(&mdecoder->frame);
+ 
+ 	if (mdecoder->decoded_data)
+ 		free(mdecoder->decoded_data);

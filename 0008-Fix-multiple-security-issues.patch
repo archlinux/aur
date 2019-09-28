@@ -1,0 +1,756 @@
+From 03ab68318966c3a22935a02838daaea7b7fbe96c Mon Sep 17 00:00:00 2001
+From: Bernhard Miklautz <bernhard.miklautz@thincast.com>
+Date: Thu, 27 Jul 2017 13:24:37 +0200
+Subject: [PATCH] Fix multiple security issues
+
+Fix the following issues identified by the CISCO TALOS project:
+
+* TALOS-2017-0336 CVE-2017-2834
+* TALOS-2017-0337 CVE-2017-2835
+* TALOS-2017-0338 CVE-2017-2836
+* TALOS-2017-0339 CVE-2017-2837
+* TALOS-2017-0340 CVE-2017-2838
+* TALOS-2017-0341 CVE-2017-2839
+
+Backported based on commit 8292b4558f0684065ce1f58db7783cc426099223.
+---
+ libfreerdp/core/capabilities.c |  4 +--
+ libfreerdp/core/certificate.c  | 18 ++++++++-----
+ libfreerdp/core/certificate.h  |  2 +-
+ libfreerdp/core/connection.c   | 17 ++++++------
+ libfreerdp/core/gcc.c          | 60 ++++++++++++++++++++++++------------------
+ libfreerdp/core/info.c         |  4 +--
+ libfreerdp/core/license.c      | 39 ++++++++++++++++++++-------
+ libfreerdp/core/mcs.c          | 17 +++++++++---
+ libfreerdp/core/nego.c         |  8 +++---
+ libfreerdp/core/peer.c         |  4 +--
+ libfreerdp/core/rdp.c          | 37 ++++++++++++++++++++------
+ libfreerdp/core/rdp.h          |  4 +--
+ libfreerdp/core/security.c     | 12 ++++-----
+ libfreerdp/core/security.h     | 12 ++++-----
+ libfreerdp/core/surface.c      |  2 +-
+ libfreerdp/core/tpkt.c         | 22 ++++++++++++----
+ libfreerdp/core/tpkt.h         |  2 +-
+ libfreerdp/core/transport.c    |  6 ++++-
+ 18 files changed, 174 insertions(+), 96 deletions(-)
+
+diff --git a/libfreerdp/core/capabilities.c b/libfreerdp/core/capabilities.c
+index 4d69b4e..0e3b0de 100644
+--- a/libfreerdp/core/capabilities.c
++++ b/libfreerdp/core/capabilities.c
+@@ -3341,12 +3341,12 @@ BOOL rdp_recv_get_active_header(rdpRdp* rdp, wStream* s, UINT16* pChannelId)
+ 
+ 	if (rdp->settings->DisableEncryption)
+ 	{
+-		if (!rdp_read_security_header(s, &securityFlags))
++		if (!rdp_read_security_header(s, &securityFlags, &length))
+ 			return FALSE;
+ 
+ 		if (securityFlags & SEC_ENCRYPT)
+ 		{
+-			if (!rdp_decrypt(rdp, s, length - 4, securityFlags))
++			if (!rdp_decrypt(rdp, s, length, securityFlags))
+ 			{
+ 				fprintf(stderr, "rdp_decrypt failed\n");
+ 				return FALSE;
+diff --git a/libfreerdp/core/certificate.c b/libfreerdp/core/certificate.c
+index 6a28ab3..9a36abe 100644
+--- a/libfreerdp/core/certificate.c
++++ b/libfreerdp/core/certificate.c
+@@ -327,10 +327,10 @@ static BOOL certificate_process_server_public_key(rdpCertificate* certificate, w
+ 	UINT32 keylen;
+ 	UINT32 bitlen;
+ 	UINT32 datalen;
+-	UINT32 modlen;
+ 
+ 	if (Stream_GetRemainingLength(s) < 20)
+ 		return FALSE;
++
+ 	Stream_Read(s, magic, 4);
+ 
+ 	if (memcmp(magic, "RSA1", 4) != 0)
+@@ -343,12 +343,16 @@ static BOOL certificate_process_server_public_key(rdpCertificate* certificate, w
+ 	Stream_Read_UINT32(s, bitlen);
+ 	Stream_Read_UINT32(s, datalen);
+ 	Stream_Read(s, certificate->cert_info.exponent, 4);
+-	modlen = keylen - 8;
+ 
+-	if (Stream_GetRemainingLength(s) < modlen + 8)	// count padding
++	if ((keylen <= 8) || (Stream_GetRemainingLength(s) < keylen))
+ 		return FALSE;
+-	certificate->cert_info.ModulusLength = modlen;
++
++	certificate->cert_info.ModulusLength = keylen - 8;
+ 	certificate->cert_info.Modulus = malloc(certificate->cert_info.ModulusLength);
++
++	if (!certificate->cert_info.Modulus)
++		return FALSE;
++
+ 	Stream_Read(s, certificate->cert_info.Modulus, certificate->cert_info.ModulusLength);
+ 	/* 8 bytes of zero padding */
+ 	Stream_Seek(s, 8);
+@@ -500,7 +504,7 @@ BOOL certificate_read_server_proprietary_certificate(rdpCertificate* certificate
+ 
+ BOOL certificate_read_server_x509_certificate_chain(rdpCertificate* certificate, wStream* s)
+ {
+-	int i;
++	UINT32 i;
+ 	UINT32 certLength;
+ 	UINT32 numCertBlobs;
+ 	BOOL ret;
+@@ -513,7 +517,7 @@ BOOL certificate_read_server_x509_certificate_chain(rdpCertificate* certificate,
+ 
+ 	certificate->x509_cert_chain = certificate_new_x509_certificate_chain(numCertBlobs);
+ 
+-	for (i = 0; i < (int) numCertBlobs; i++)
++	for (i = 0; i < numCertBlobs; i++)
+ 	{
+ 		if (Stream_GetRemainingLength(s) < 4)
+ 			return FALSE;
+@@ -562,7 +566,7 @@ BOOL certificate_read_server_x509_certificate_chain(rdpCertificate* certificate,
+  * @param length certificate length
+  */
+ 
+-int certificate_read_server_certificate(rdpCertificate* certificate, BYTE* server_cert, int length)
++int certificate_read_server_certificate(rdpCertificate* certificate, BYTE* server_cert, size_t length)
+ {
+ 	wStream* s;
+ 	UINT32 dwVersion;
+diff --git a/libfreerdp/core/certificate.h b/libfreerdp/core/certificate.h
+index 5008bb4..fb818f5 100644
+--- a/libfreerdp/core/certificate.h
++++ b/libfreerdp/core/certificate.h
+@@ -50,7 +50,7 @@ void certificate_free_x509_certificate_chain(rdpX509CertChain* x509_cert_chain);
+ 
+ BOOL certificate_read_server_proprietary_certificate(rdpCertificate* certificate, wStream* s);
+ BOOL certificate_read_server_x509_certificate_chain(rdpCertificate* certificate, wStream* s);
+-int certificate_read_server_certificate(rdpCertificate* certificate, BYTE* server_cert, int length);
++int certificate_read_server_certificate(rdpCertificate* certificate, BYTE* server_cert, size_t length);
+ 
+ rdpCertificate* certificate_new(void);
+ void certificate_free(rdpCertificate* certificate);
+diff --git a/libfreerdp/core/connection.c b/libfreerdp/core/connection.c
+index 9c4c3d7..7e6b2bd 100644
+--- a/libfreerdp/core/connection.c
++++ b/libfreerdp/core/connection.c
+@@ -77,19 +77,18 @@ BOOL rdp_client_connect(rdpRdp* rdp)
+ 
+ 	if (settings->GatewayEnabled)
+ 	{
+-        char* user;
++		char* user = NULL;
+ 		char* domain;
+ 		char* cookie;
+-        int user_length = 0;
++		int user_length = 0;
+ 		int domain_length;
+ 		int cookie_length;
+ 
+-
+-        if (settings->Username)
+-        {
+-            user = settings->Username;
+-            user_length = strlen(settings->Username);
+-        }
++		if (settings->Username)
++		{
++			user = settings->Username;
++			user_length = strlen(settings->Username);
++		}
+ 
+ 		if (settings->Domain)
+ 			domain = settings->Domain;
+@@ -365,7 +364,7 @@ static BOOL rdp_server_establish_keys(rdpRdp* rdp, wStream* s)
+ 		return FALSE;
+ 	}
+ 
+-	if (!rdp_read_security_header(s, &sec_flags))
++	if (!rdp_read_security_header(s, &sec_flags, NULL))
+ 		return FALSE;
+ 
+ 	if ((sec_flags & SEC_EXCHANGE_PKT) == 0)
+diff --git a/libfreerdp/core/gcc.c b/libfreerdp/core/gcc.c
+index 316f4f9..27def74 100644
+--- a/libfreerdp/core/gcc.c
++++ b/libfreerdp/core/gcc.c
+@@ -830,6 +830,7 @@ BOOL gcc_read_server_security_data(wStream* s, rdpSettings* settings)
+ 
+ 	if (Stream_GetRemainingLength(s) < 8)
+ 		return FALSE;
++
+ 	Stream_Read_UINT32(s, settings->EncryptionMethods); /* encryptionMethod */
+ 	Stream_Read_UINT32(s, settings->EncryptionLevel); /* encryptionLevel */
+ 
+@@ -844,43 +845,50 @@ BOOL gcc_read_server_security_data(wStream* s, rdpSettings* settings)
+ 
+ 	if (Stream_GetRemainingLength(s) < 8)
+ 		return FALSE;
++
+ 	Stream_Read_UINT32(s, settings->ServerRandomLength); /* serverRandomLen */
+ 	Stream_Read_UINT32(s, settings->ServerCertificateLength); /* serverCertLen */
+ 
+-	if (Stream_GetRemainingLength(s) < settings->ServerRandomLength + settings->ServerCertificateLength)
++	if (settings->ServerRandomLength == 0 || settings->ServerCertificateLength == 0)
+ 		return FALSE;
+ 
+-	if (settings->ServerRandomLength > 0)
+-	{
+-		/* serverRandom */
+-		settings->ServerRandom = (BYTE*) malloc(settings->ServerRandomLength);
+-		Stream_Read(s, settings->ServerRandom, settings->ServerRandomLength);
+-	}
+-	else
+-	{
++	if (Stream_GetRemainingLength(s) < settings->ServerRandomLength)
+ 		return FALSE;
+-	}
+ 
+-	if (settings->ServerCertificateLength > 0)
+-	{
+-		/* serverCertificate */
+-		settings->ServerCertificate = (BYTE*) malloc(settings->ServerCertificateLength);
+-		Stream_Read(s, settings->ServerCertificate, settings->ServerCertificateLength);
++	/* serverRandom */
++	settings->ServerRandom = (BYTE*) malloc(settings->ServerRandomLength);
++	if (!settings->ServerRandom)
++		return FALSE;
++	Stream_Read(s, settings->ServerRandom, settings->ServerRandomLength);
+ 
+-		certificate_free(settings->RdpServerCertificate);
+-		settings->RdpServerCertificate = certificate_new();
+-		data = settings->ServerCertificate;
+-		length = settings->ServerCertificateLength;
++	/* serverCertificate */
++	if(Stream_GetRemainingLength(s) < settings->ServerCertificateLength)
++		goto out_fail1;
++	settings->ServerCertificate = (BYTE*) malloc(settings->ServerCertificateLength);
++	if (!settings->ServerCertificate)
++		goto out_fail1;
+ 
+-		if (certificate_read_server_certificate(settings->RdpServerCertificate, data, length) < 1)
+-			return FALSE;
+-	}
+-	else
+-	{
+-		return FALSE;
+-	}
++	Stream_Read(s, settings->ServerCertificate, settings->ServerCertificateLength);
++	certificate_free(settings->RdpServerCertificate);
++	settings->RdpServerCertificate = certificate_new();
++	if (!settings->RdpServerCertificate)
++		goto out_fail2;
++
++	data = settings->ServerCertificate;
++	length = settings->ServerCertificateLength;
++
++	if (certificate_read_server_certificate(settings->RdpServerCertificate, data, length) < 1)
++		goto out_fail2;
+ 
+ 	return TRUE;
++
++	out_fail2:
++		free(settings->ServerCertificate);
++		settings->ServerCertificate = NULL;
++	out_fail1:
++		free(settings->ServerRandom);
++		settings->ServerRandom = NULL;
++		return FALSE;
+ }
+ 
+ static const BYTE initial_signature[] =
+diff --git a/libfreerdp/core/info.c b/libfreerdp/core/info.c
+index 11435ef..7717731 100644
+--- a/libfreerdp/core/info.c
++++ b/libfreerdp/core/info.c
+@@ -441,7 +441,7 @@ BOOL rdp_recv_client_info(rdpRdp* rdp, wStream* s)
+ 	if (!rdp_read_header(rdp, s, &length, &channelId))
+ 		return FALSE;
+ 
+-	if (!rdp_read_security_header(s, &securityFlags))
++	if (!rdp_read_security_header(s, &securityFlags, &length))
+ 		return FALSE;
+ 
+ 	if ((securityFlags & SEC_INFO_PKT) == 0)
+@@ -457,7 +457,7 @@ BOOL rdp_recv_client_info(rdpRdp* rdp, wStream* s)
+ 
+ 		if (securityFlags & SEC_ENCRYPT)
+ 		{
+-			if (!rdp_decrypt(rdp, s, length - 4, securityFlags))
++			if (!rdp_decrypt(rdp, s, length, securityFlags))
+ 			{
+ 				fprintf(stderr, "rdp_decrypt failed\n");
+ 				return FALSE;
+diff --git a/libfreerdp/core/license.c b/libfreerdp/core/license.c
+index 88d039e..40bb150 100644
+--- a/libfreerdp/core/license.c
++++ b/libfreerdp/core/license.c
+@@ -240,12 +240,12 @@ BOOL license_recv(rdpLicense* license, wStream* s)
+ 		return FALSE;
+ 	}
+ 
+-	if (!rdp_read_security_header(s, &securityFlags))
++	if (!rdp_read_security_header(s, &securityFlags, &length))
+ 		return FALSE;
+ 
+ 	if (securityFlags & SEC_ENCRYPT)
+ 	{
+-		if (!rdp_decrypt(license->rdp, s, length - 4, securityFlags))
++		if (!rdp_decrypt(license->rdp, s, length, securityFlags))
+ 		{
+ 			fprintf(stderr, "rdp_decrypt failed\n");
+ 			return FALSE;
+@@ -474,25 +474,41 @@ BOOL license_read_product_info(wStream* s, PRODUCT_INFO* productInfo)
+ 
+ 	Stream_Read_UINT32(s, productInfo->cbCompanyName); /* cbCompanyName (4 bytes) */
+ 
+-	if (Stream_GetRemainingLength(s) < productInfo->cbCompanyName + 4)
++	/* Name must be > 0, but there is no upper limit defined, use UINT32_MAX */
++	if ((productInfo->cbCompanyName < 2) || (productInfo->cbCompanyName % 2 != 0))
++		return FALSE;
++
++	if (Stream_GetRemainingLength(s) < productInfo->cbCompanyName)
+ 		return FALSE;
+ 
+ 	productInfo->pbCompanyName = (BYTE*) malloc(productInfo->cbCompanyName);
++	if (!productInfo->pbCompanyName)
++		return FALSE;
+ 	Stream_Read(s, productInfo->pbCompanyName, productInfo->cbCompanyName);
+ 
++	if (Stream_GetRemainingLength(s) < 4)
++		goto out_fail;
++
+ 	Stream_Read_UINT32(s, productInfo->cbProductId); /* cbProductId (4 bytes) */
+ 
++	if ((productInfo->cbProductId < 2) || (productInfo->cbProductId % 2 != 0))
++		goto out_fail;
++
+ 	if (Stream_GetRemainingLength(s) < productInfo->cbProductId)
+-	{
+-		free(productInfo->pbCompanyName);
+-		productInfo->pbCompanyName = NULL;
+-		return FALSE;
+-	}
++		goto out_fail;
+ 
+ 	productInfo->pbProductId = (BYTE*) malloc(productInfo->cbProductId);
+-	Stream_Read(s, productInfo->pbProductId, productInfo->cbProductId);
++	if (!productInfo->pbProductId)
++		goto out_fail;
+ 
++	Stream_Read(s, productInfo->pbProductId, productInfo->cbProductId);
+ 	return TRUE;
++
++	out_fail:
++		free(productInfo->pbCompanyName);
++		productInfo->pbCompanyName = NULL;
++		return FALSE;
++
+ }
+ 
+ /**
+@@ -796,7 +812,10 @@ BOOL license_read_platform_challenge_packet(rdpLicense* license, wStream* s)
+ 
+ 	/* EncryptedPlatformChallenge */
+ 	license->EncryptedPlatformChallenge->type = BB_ANY_BLOB;
+-	license_read_binary_blob(s, license->EncryptedPlatformChallenge);
++
++	if (!license_read_binary_blob(s, license->EncryptedPlatformChallenge))
++		return FALSE;
++
+ 	license->EncryptedPlatformChallenge->type = BB_ENCRYPTED_DATA_BLOB;
+ 
+ 	if (Stream_GetRemainingLength(s) < 16)
+diff --git a/libfreerdp/core/mcs.c b/libfreerdp/core/mcs.c
+index d5ea089..16cf88e 100644
+--- a/libfreerdp/core/mcs.c
++++ b/libfreerdp/core/mcs.c
+@@ -197,7 +197,8 @@ BOOL mcs_read_domain_mcspdu_header(wStream* s, enum DomainMCSPDU* domainMCSPDU,
+ 	BYTE choice;
+ 	enum DomainMCSPDU MCSPDU;
+ 
+-	*length = tpkt_read_header(s);
++	if (!tpkt_read_header(s, length))
++		return FALSE;
+ 
+ 	if (!tpdu_read_data(s, &li))
+ 		return FALSE;
+@@ -332,8 +333,13 @@ BOOL mcs_recv_connect_initial(rdpMcs* mcs, wStream* s)
+ 	UINT16	li;
+ 	int length;
+ 	BOOL upwardFlag;
++	UINT16 tlength;
++
++	if (!mcs || !s)
++		return FALSE;
+ 
+-	tpkt_read_header(s);
++	if (!tpkt_read_header(s, &tlength))
++		return FALSE;
+ 
+ 	if (!tpdu_read_data(s, &li))
+ 		return FALSE;
+@@ -504,8 +510,13 @@ BOOL mcs_recv_connect_response(rdpMcs* mcs, wStream* s)
+ 	BYTE result;
+ 	UINT16 li;
+ 	UINT32 calledConnectId;
++	UINT16 tlength;
+ 
+-	tpkt_read_header(s);
++	if (!mcs || !s)
++		return FALSE;
++
++	if (!tpkt_read_header(s, &tlength))
++		return FALSE;
+ 
+ 	if (!tpdu_read_data(s, &li))
+ 		return FALSE;
+diff --git a/libfreerdp/core/nego.c b/libfreerdp/core/nego.c
+index 6148e86..bc77eb3 100644
+--- a/libfreerdp/core/nego.c
++++ b/libfreerdp/core/nego.c
+@@ -506,9 +506,7 @@ int nego_recv(rdpTransport* transport, wStream* s, void* extra)
+ 	UINT16 length;
+ 	rdpNego* nego = (rdpNego*) extra;
+ 
+-	length = tpkt_read_header(s);
+-
+-	if (length == 0)
++	if (!tpkt_read_header(s, &length) || length == 0)
+ 		return -1;
+ 
+ 	if (!tpdu_read_connection_confirm(s, &li))
+@@ -582,8 +580,10 @@ BOOL nego_read_request(rdpNego* nego, wStream* s)
+ 	BYTE li;
+ 	BYTE c;
+ 	BYTE type;
++	UINT16 length;
+ 
+-	tpkt_read_header(s);
++	if (!tpkt_read_header(s, &length))
++		return FALSE;
+ 
+ 	if (!tpdu_read_connection_request(s, &li))
+ 		return FALSE;
+diff --git a/libfreerdp/core/peer.c b/libfreerdp/core/peer.c
+index eb4ad60..b9bad7e 100644
+--- a/libfreerdp/core/peer.c
++++ b/libfreerdp/core/peer.c
+@@ -179,12 +179,12 @@ static int peer_recv_tpkt_pdu(freerdp_peer* client, wStream* s)
+ 
+ 	if (rdp->settings->DisableEncryption)
+ 	{
+-		if (!rdp_read_security_header(s, &securityFlags))
++		if (!rdp_read_security_header(s, &securityFlags, &length))
+ 			return -1;
+ 
+ 		if (securityFlags & SEC_ENCRYPT)
+ 		{
+-			if (!rdp_decrypt(rdp, s, length - 4, securityFlags))
++			if (!rdp_decrypt(rdp, s, length, securityFlags))
+ 			{
+ 				fprintf(stderr, "rdp_decrypt failed\n");
+ 				return -1;
+diff --git a/libfreerdp/core/rdp.c b/libfreerdp/core/rdp.c
+index 1a4704d..bb35bd9 100644
+--- a/libfreerdp/core/rdp.c
++++ b/libfreerdp/core/rdp.c
+@@ -77,13 +77,17 @@ static const char* const DATA_PDU_TYPE_STRINGS[] =
+  * @param flags security flags
+  */
+ 
+-BOOL rdp_read_security_header(wStream* s, UINT16* flags)
++BOOL rdp_read_security_header(wStream* s, UINT16* flags, UINT16* length)
+ {
+ 	/* Basic Security Header */
+-	if (Stream_GetRemainingLength(s) < 4)
++	if (Stream_GetRemainingLength(s) < 4 || (length && (*length < 4)))
+ 		return FALSE;
+ 	Stream_Read_UINT16(s, *flags); /* flags */
+ 	Stream_Seek(s, 2); /* flagsHi (unused) */
++
++	if (length)
++		*length -= 4;
++
+ 	return TRUE;
+ }
+ 
+@@ -249,6 +253,9 @@ BOOL rdp_read_header(rdpRdp* rdp, wStream* s, UINT16* length, UINT16* channel_id
+ 			return FALSE;
+ 	}
+ 
++	if (*length < 8)
++		return FALSE;
++
+ 	if (*length - 8 > Stream_GetRemainingLength(s))
+ 		return FALSE;
+ 
+@@ -273,8 +280,12 @@ BOOL rdp_read_header(rdpRdp* rdp, wStream* s, UINT16* length, UINT16* channel_id
+ 	if (Stream_GetRemainingLength(s) < 5)
+ 		return FALSE;
+ 
+-	per_read_integer16(s, &initiator, MCS_BASE_CHANNEL_ID); /* initiator (UserId) */
+-	per_read_integer16(s, channel_id, 0); /* channelId */
++	if (!per_read_integer16(s, &initiator, MCS_BASE_CHANNEL_ID)) /* initiator (UserId) */
++		return FALSE;
++
++	if (!per_read_integer16(s, channel_id, 0)) /* channelId */
++		return FALSE;
++
+ 	Stream_Seek(s, 1); /* dataPriority + Segmentation (0x70) */
+ 
+ 	if (!per_read_length(s, length)) /* userData (OCTET_STRING) */
+@@ -701,16 +712,20 @@ BOOL rdp_recv_out_of_sequence_pdu(rdpRdp* rdp, wStream* s)
+  * @param length int
+  */
+ 
+-BOOL rdp_decrypt(rdpRdp* rdp, wStream* s, int length, UINT16 securityFlags)
++BOOL rdp_decrypt(rdpRdp* rdp, wStream* s, INT32 length, UINT16 securityFlags)
+ {
+ 	BYTE cmac[8];
+ 	BYTE wmac[8];
+ 
++	if (!rdp || !s || length < 0)
++		return FALSE;
++
+ 	if (rdp->settings->EncryptionMethods == ENCRYPTION_METHOD_FIPS)
+ 	{
+ 		UINT16 len;
+ 		BYTE version, pad;
+ 		BYTE* sig;
++		INT64 padLength;
+ 
+ 		if (Stream_GetRemainingLength(s) < 12)
+ 			return FALSE;
+@@ -723,6 +738,10 @@ BOOL rdp_decrypt(rdpRdp* rdp, wStream* s, int length, UINT16 securityFlags)
+ 		Stream_Seek(s, 8);	/* signature */
+ 
+ 		length -= 12;
++		padLength = length - pad;
++
++		if (length <= 0 || padLength <= 0)
++			return FALSE;
+ 
+ 		if (!security_fips_decrypt(Stream_Pointer(s), length, rdp))
+ 		{
+@@ -741,11 +760,13 @@ BOOL rdp_decrypt(rdpRdp* rdp, wStream* s, int length, UINT16 securityFlags)
+ 		return TRUE;
+ 	}
+ 
+-	if (Stream_GetRemainingLength(s) < 8)
++	if (Stream_GetRemainingLength(s) < sizeof(wmac))
+ 		return FALSE;
+ 
+ 	Stream_Read(s, wmac, sizeof(wmac));
+ 	length -= sizeof(wmac);
++	if (length <= 0)
++		return FALSE;
+ 
+ 	if (!security_decrypt(Stream_Pointer(s), length, rdp))
+ 		return FALSE;
+@@ -795,12 +816,12 @@ static int rdp_recv_tpkt_pdu(rdpRdp* rdp, wStream* s)
+ 
+ 	if (rdp->settings->DisableEncryption)
+ 	{
+-		if (!rdp_read_security_header(s, &securityFlags))
++		if (!rdp_read_security_header(s, &securityFlags, &length))
+ 			return -1;
+ 
+ 		if (securityFlags & (SEC_ENCRYPT | SEC_REDIRECTION_PKT))
+ 		{
+-			if (!rdp_decrypt(rdp, s, length - 4, securityFlags))
++			if (!rdp_decrypt(rdp, s, length, securityFlags))
+ 			{
+ 				fprintf(stderr, "rdp_decrypt failed\n");
+ 				return -1;
+diff --git a/libfreerdp/core/rdp.h b/libfreerdp/core/rdp.h
+index fc73026..7bcfc27 100644
+--- a/libfreerdp/core/rdp.h
++++ b/libfreerdp/core/rdp.h
+@@ -160,7 +160,7 @@ struct rdp_rdp
+ 	BOOL deactivation_reactivation;
+ };
+ 
+-BOOL rdp_read_security_header(wStream* s, UINT16* flags);
++BOOL rdp_read_security_header(wStream* s, UINT16* flags, UINT16* length);
+ void rdp_write_security_header(wStream* s, UINT16 flags);
+ 
+ BOOL rdp_read_share_control_header(wStream* s, UINT16* length, UINT16* type, UINT16* channel_id);
+@@ -202,6 +202,6 @@ void rdp_free(rdpRdp* rdp);
+ #define DEBUG_RDP(fmt, ...) DEBUG_NULL(fmt, ## __VA_ARGS__)
+ #endif
+ 
+-BOOL rdp_decrypt(rdpRdp* rdp, wStream* s, int length, UINT16 securityFlags);
++BOOL rdp_decrypt(rdpRdp* rdp, wStream* s, INT32 length, UINT16 securityFlags);
+ 
+ #endif /* __RDP_H */
+diff --git a/libfreerdp/core/security.c b/libfreerdp/core/security.c
+index 5684528..dc9b2fc 100644
+--- a/libfreerdp/core/security.c
++++ b/libfreerdp/core/security.c
+@@ -475,7 +475,7 @@ BOOL security_key_update(BYTE* key, BYTE* update_key, int key_len)
+ 	return TRUE;
+ }
+ 
+-BOOL security_encrypt(BYTE* data, int length, rdpRdp* rdp)
++BOOL security_encrypt(BYTE* data, size_t length, rdpRdp* rdp)
+ {
+ 	if (rdp->encrypt_use_count >= 4096)
+ 	{
+@@ -490,7 +490,7 @@ BOOL security_encrypt(BYTE* data, int length, rdpRdp* rdp)
+ 	return TRUE;
+ }
+ 
+-BOOL security_decrypt(BYTE* data, int length, rdpRdp* rdp)
++BOOL security_decrypt(BYTE* data, size_t length, rdpRdp* rdp)
+ {
+ 	if (rdp->rc4_decrypt_key == NULL)
+ 		return FALSE;
+@@ -507,7 +507,7 @@ BOOL security_decrypt(BYTE* data, int length, rdpRdp* rdp)
+ 	return TRUE;
+ }
+ 
+-void security_hmac_signature(const BYTE* data, int length, BYTE* output, rdpRdp* rdp)
++void security_hmac_signature(const BYTE* data, size_t length, BYTE* output, rdpRdp* rdp)
+ {
+ 	BYTE buf[20];
+ 	BYTE use_count_le[4];
+@@ -522,20 +522,20 @@ void security_hmac_signature(const BYTE* data, int length, BYTE* output, rdpRdp*
+ 	memmove(output, buf, 8);
+ }
+ 
+-BOOL security_fips_encrypt(BYTE* data, int length, rdpRdp* rdp)
++BOOL security_fips_encrypt(BYTE* data, size_t length, rdpRdp* rdp)
+ {
+ 	crypto_des3_encrypt(rdp->fips_encrypt, length, data, data);
+ 	rdp->encrypt_use_count++;
+ 	return TRUE;
+ }
+ 
+-BOOL security_fips_decrypt(BYTE* data, int length, rdpRdp* rdp)
++BOOL security_fips_decrypt(BYTE* data, size_t length, rdpRdp* rdp)
+ {
+ 	crypto_des3_decrypt(rdp->fips_decrypt, length, data, data);
+ 	return TRUE;
+ }
+ 
+-BOOL security_fips_check_signature(const BYTE* data, int length, const BYTE* sig, rdpRdp* rdp)
++BOOL security_fips_check_signature(const BYTE* data, size_t length, const BYTE* sig, rdpRdp* rdp)
+ {
+ 	BYTE buf[20];
+ 	BYTE use_count_le[4];
+diff --git a/libfreerdp/core/security.h b/libfreerdp/core/security.h
+index ffcebdf..c6b6038 100644
+--- a/libfreerdp/core/security.h
++++ b/libfreerdp/core/security.h
+@@ -37,12 +37,12 @@ void security_mac_signature(rdpRdp *rdp, const BYTE* data, UINT32 length, BYTE*
+ void security_salted_mac_signature(rdpRdp *rdp, const BYTE* data, UINT32 length, BOOL encryption, BYTE* output);
+ BOOL security_establish_keys(const BYTE* client_random, rdpRdp* rdp);
+ 
+-BOOL security_encrypt(BYTE* data, int length, rdpRdp* rdp);
+-BOOL security_decrypt(BYTE* data, int length, rdpRdp* rdp);
++BOOL security_encrypt(BYTE* data, size_t length, rdpRdp* rdp);
++BOOL security_decrypt(BYTE* data, size_t length, rdpRdp* rdp);
+ 
+-void security_hmac_signature(const BYTE* data, int length, BYTE* output, rdpRdp* rdp);
+-BOOL security_fips_encrypt(BYTE* data, int length, rdpRdp* rdp);
+-BOOL security_fips_decrypt(BYTE* data, int length, rdpRdp* rdp);
+-BOOL security_fips_check_signature(const BYTE* data, int length, const BYTE* sig, rdpRdp* rdp);
++void security_hmac_signature(const BYTE* data, size_t length, BYTE* output, rdpRdp* rdp);
++BOOL security_fips_encrypt(BYTE* data, size_t length, rdpRdp* rdp);
++BOOL security_fips_decrypt(BYTE* data, size_t length, rdpRdp* rdp);
++BOOL security_fips_check_signature(const BYTE* data, size_t length, const BYTE* sig, rdpRdp* rdp);
+ 
+ #endif /* __SECURITY_H */
+diff --git a/libfreerdp/core/surface.c b/libfreerdp/core/surface.c
+index 992a3dd..15b2257 100644
+--- a/libfreerdp/core/surface.c
++++ b/libfreerdp/core/surface.c
+@@ -85,7 +85,7 @@ int update_recv_surfcmds(rdpUpdate* update, UINT32 size, wStream* s)
+ {
+ 	BYTE* mark;
+ 	UINT16 cmdType;
+-	UINT32 cmdLength;
++	UINT32 cmdLength = 0;
+ 
+ 	while (size > 2)
+ 	{
+diff --git a/libfreerdp/core/tpkt.c b/libfreerdp/core/tpkt.c
+index 5689d62..900e288 100644
+--- a/libfreerdp/core/tpkt.c
++++ b/libfreerdp/core/tpkt.c
+@@ -81,25 +81,37 @@ BOOL tpkt_verify_header(wStream* s)
+  * @return length
+  */
+ 
+-UINT16 tpkt_read_header(wStream* s)
++BOOL tpkt_read_header(wStream* s, UINT16* length)
+ {
+ 	BYTE version;
+-	UINT16 length;
++
++	if (Stream_GetRemainingLength(s) < 1)
++		return FALSE;
+ 
+ 	Stream_Peek_UINT8(s, version);
+ 
+ 	if (version == 3)
+ 	{
++		UINT16 len;
++
++		if (Stream_GetRemainingLength(s) < 4)
++			return FALSE;
++
+ 		Stream_Seek(s, 2);
+-		Stream_Read_UINT16_BE(s, length);
++		Stream_Read_UINT16_BE(s, len);
++
++		if (len < 4)
++			return FALSE;
++
++		*length = len;
+ 	}
+ 	else
+ 	{
+ 		/* not a TPKT header */
+-		length = 0;
++		*length = 0;
+ 	}
+ 
+-	return length;
++	return TRUE;
+ }
+ 
+ /**
+diff --git a/libfreerdp/core/tpkt.h b/libfreerdp/core/tpkt.h
+index af984c1..9b51749 100644
+--- a/libfreerdp/core/tpkt.h
++++ b/libfreerdp/core/tpkt.h
+@@ -28,7 +28,7 @@
+ #define TPKT_HEADER_LENGTH	4
+ 
+ BOOL tpkt_verify_header(wStream* s);
+-UINT16 tpkt_read_header(wStream* s);
++BOOL tpkt_read_header(wStream* s, UINT16* length);
+ void tpkt_write_header(wStream* s, UINT16 length);
+ 
+ #endif /* __TPKT_H */
+diff --git a/libfreerdp/core/transport.c b/libfreerdp/core/transport.c
+index 0f29c6c..bc45dc8 100644
+--- a/libfreerdp/core/transport.c
++++ b/libfreerdp/core/transport.c
+@@ -673,7 +673,11 @@ int transport_check_fds(rdpTransport** ptransport)
+ 				return 0;
+ 			}
+ 
+-			length = tpkt_read_header(transport->ReceiveBuffer);
++			if (!tpkt_read_header(transport->ReceiveBuffer, &length))
++			{
++				fprintf(stderr, "transport_check_fds: problem reading tpkt header.\n");
++				return -1;
++			}
+ 		}
+ 		else if (nla_verify_header(transport->ReceiveBuffer))
+ 		{
+-- 
+2.1.4
+

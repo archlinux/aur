@@ -1,0 +1,29 @@
+From 603a6378fffd43a67e14ead860bcf9196be6979e Mon Sep 17 00:00:00 2001
+From: Hardening <rdp.effort@gmail.com>
+Date: Wed, 7 May 2014 16:12:38 +0200
+Subject: [PATCH] Fix null certificate that is not an error
+
+v2: Backported to 1.1.0~git20140921.1.440916e+dfsg1-5 by Mike Gabriel <mike.gabriel@das-netzwerkteam.de>
+---
+ libfreerdp/core/certificate.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+--- a/libfreerdp/core/certificate.c
++++ b/libfreerdp/core/certificate.c
+@@ -568,15 +568,12 @@
+ 	UINT32 dwVersion;
+ 	int status = 1;
+ 
+-	if (length < 1)
++	if (length < 4)
+ 	{
+ 		DEBUG_CERTIFICATE("null server certificate\n");
+ 		return 0;
+ 	}
+ 
+-	if (length < 4)
+-		return -1;
+-
+ 	s = Stream_New(server_cert, length);
+ 
+ 	Stream_Read_UINT32(s, dwVersion); /* dwVersion (4 bytes) */
