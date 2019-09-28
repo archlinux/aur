@@ -3,7 +3,7 @@
 pkgname=fdroidcl
 _name="${pkgname}"
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="F-Droid desktop client"
 url="https://github.com/mvdan/${_name}"
 license=('BSD')
@@ -13,19 +13,14 @@ makedepends=('git' 'go')
 source=("git+${url}#tag=v${pkgver}")
 sha1sums=('SKIP')
 
-prepare() {
-	cd "${srcdir}"
-	mkdir -p "src/mvdan.cc"
-	mv "${_name}" "src/mvdan.cc/${_name}"
-}
-
 build() {
-	cd "${srcdir}/src/mvdan.cc/${_name}"
-	GOPATH="${srcdir}" go build -ldflags='-s -w'
+	cd "${srcdir}/${_name}"
+	GO111MODULE=on go build -trimpath -ldflags='-s -w'
 }
 
 package() {
-	cd "${srcdir}/src/mvdan.cc/${_name}"
+	cd "${srcdir}/${_name}"
 	install -Dm755 "${_name}" "${pkgdir}/usr/bin/${_name}"
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 contrib/completion/zsh/_fdroidcl "${pkgdir}/usr/share/zsh/vendor-completions/_fdroidcl"
 }
