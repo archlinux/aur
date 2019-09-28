@@ -12,7 +12,7 @@ pkgbase = xtrkcad
 	makedepends = gettext
 	provides = xtrkcad
 	conflicts = xtrkcad
-	source = http://sourceforge.net/projects/xtrkcad-fork/files/XTrackCad/Version%204.3.0/xtrkcad-source-5.1.1-1.tar.gz
+	source = http://sourceforge.net/projects/xtrkcad-fork/files/XTrackCad/Version%205.1.2/xtrkcad-source-5.1.2a.tar.gz
 	sha256sums = 3295c97b8e6c3db13c97184167891bed41a1751cfba2f2f02b22403f5dca0b13
 
 pkgname = xtrkcad
