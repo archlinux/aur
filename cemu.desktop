@@ -8,4 +8,5 @@ Encoding=UTF-8
 Icon=/usr/share/pixmaps/cemu.xpm
 Categories=Game;
 Terminal=false
-StartupNotify=false
+StartupNotify=true
+StartupWMClass=cemu.exe
