@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Sengi
+Comment=Mastodon & Pleroma Multi-account Desktop Client
+Exec=sengi
+Terminal=false
+Type=Application
+Icon=sengi
+StartupWMClass=Sengi
+X-AppImage-Version=0.16.2
+Categories=Internet;
