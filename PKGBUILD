@@ -2,12 +2,17 @@
 
 pkgname=python-numpy-quaternion
 pkgver=2019.7.23.15.26.49
-pkgrel=2
+pkgrel=3
 pkgdesc="Add built-in support for quaternions to NumPy"
 url="https://github.com/moble/quaternion"
 arch=('x86_64')
 license=('MIT')
-depends=('python-numpy>=1.3')
+depends=('python-numpy>=1.13' 'python-scipy')
+optdepends=(
+  "python-numba: speedup of numerical functions"
+)
+makedepends=('python-setuptools')
+checkdepends=('python-pytest')
 source=(
   "https://files.pythonhosted.org/packages/source/n/numpy-quaternion/numpy-quaternion-$pkgver.tar.gz"
 )
@@ -17,11 +22,17 @@ sha256sums=(
 
 build() {
     cd "numpy-quaternion-$pkgver"
-    package_version=${pkgver} python setup.py build
+    package_version="$pkgver" python setup.py build
+}
+
+check() {
+    cd "numpy-quaternion-$pkgver"
+    PYVER=$(python -c 'import sys; print("{}.{}".format(*sys.version_info[:2]))')
+    PYTHONPATH="$PWD/build/lib.linux-$CARCH-$PYVER" pytest
 }
 
 package() {
     cd "numpy-quaternion-$pkgver"
-    package_version=${pkgver} python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+    package_version="$pkgver" python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
