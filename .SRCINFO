@@ -1,6 +1,6 @@
 pkgbase = trojan-git
 	pkgdesc = An unidentifiable mechanism that helps you bypass GFW
-	pkgver = r379.6169972
+	pkgver = r390.efd93f5
 	pkgrel = 1
 	url = https://github.com/trojan-gfw/trojan
 	arch = x86_64
@@ -8,6 +8,7 @@ pkgbase = trojan-git
 	checkdepends = openssl
 	checkdepends = python
 	checkdepends = curl
+	checkdepends = netcat
 	makedepends = git
 	makedepends = cmake
 	makedepends = boost
