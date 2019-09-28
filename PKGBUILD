@@ -1,4 +1,4 @@
-# Maintainer: Jonas Witschel <diabonas at gmx dot de>
+# Maintainer: Jonas Witschel <diabonas@archlinux.org>
 # Contributor: hexchain <i at hexchain.org>
 pkgname=tpm2-abrmd-git
 pkgver=2.2.0.r7.ac2a5a4
