@@ -6,7 +6,6 @@ pkgdesc="A program to create a local WordPress development environment."
 arch=('x86_64')
 url="https://localbyflywheel.com/"
 license=('freemium')
-depends=('')
 makedepends=('rpmextract')
 options=('emptydirs')
 source=("https://local-by-flywheel-flywheel.netdna-ssl.com/releases/5-0-5/local-5-0-5-linux.rpm")
