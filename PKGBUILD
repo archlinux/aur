@@ -7,7 +7,7 @@ pkgname='ros-melodic-cv-bridge'
 pkgver='1.13.0'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -40,8 +40,15 @@ depends=(
 )
 
 _dir="vision_opencv-${pkgver}/cv_bridge"
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-perception/vision_opencv/archive/${pkgver}.tar.gz")
-sha256sums=('c8db35dbb6b470cdedb45195f725bc2cfda7f0dc3155e16a5a37e4b48e29fa59')
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-perception/vision_opencv/archive/${pkgver}.tar.gz"
+  "endian-fix.patch")
+sha256sums=('c8db35dbb6b470cdedb45195f725bc2cfda7f0dc3155e16a5a37e4b48e29fa59'
+  'bc06dbe12f26015c6bce73b2c95123851415d5662c17ef87267737dd433bb22b')
+
+prepare() {
+  cd "${srcdir}/${_dir}"
+  patch -uN src/module.hpp ../../../endian-fix.patch || return 1
+}
 
 build() {
 	# Use ROS environment variables.
