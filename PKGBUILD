@@ -2,14 +2,14 @@
 
 pkgname=brother-hl2280dw
 pkgver=2.1.0_1
-pkgrel=1
+pkgrel=2
 pkgdesc="Brother HL-2280DW CUPS Driver"
 arch=('i686' 'x86_64')
 url='http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/index.html'
 license=('GPL')
 depends=('a2ps' 'cups')
-source=("http://www.brother.com/pub/bsc/linux/dlf/hl2280dwlpr-2.1.0-1.i386.rpm"
-        "http://www.brother.com/pub/bsc/linux/dlf/cupswrapperHL2280DW-${pkgver//_/-}.i386.rpm")
+source=("http://www.brother.com/pub/bsc/linux/dlf/hl2280dwlpr-${pkgver//_/-}.i386.rpm"
+        "http://www.brother.com/pub/bsc/linux/dlf/cupswrapperHL2280DW-2.0.4-2.i386.rpm")
 md5sums=('efa44d4acc0e62633e2d742e445b811a'
          'b687b69f530275de86d71cbc46352413')
 
