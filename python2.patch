@@ -1,0 +1,8 @@
+diff --git a/bin/termcolors b/bin/termcolors
+index 1d6de0d..e8f91a6 100755
+--- a/bin/termcolors
++++ b/bin/termcolors
+@@ -1,2 +1,2 @@
+ #!/bin/sh
+-python -m termcolors $@
++python2 -m termcolors $@
