@@ -22,7 +22,7 @@ pkgbase = lib32-mesa-git
 	makedepends = meson
 	makedepends = lib32-libva
 	makedepends = lib32-libxrandr
-	makedepends = lib32-llvm-minimal-git
+	makedepends = lib32-llvm=8.0.1
 	depends = mesa-git
 	depends = lib32-gcc-libs
 	depends = lib32-libdrm
@@ -34,7 +34,7 @@ pkgbase = lib32-mesa-git
 	depends = lib32-libunwind
 	depends = lib32-lm_sensors
 	depends = glslang
-	depends = lib32-llvm-libs-minimal-git
+	depends = lib32-llvm-libs=8.0.1
 	optdepends = opengl-man-pages: for the OpenGL API man pages
 	provides = lib32-mesa=19.3.0_devel.115749.336b021d36f-1
 	provides = lib32-vulkan-intel=19.3.0_devel.115749.336b021d36f-1
