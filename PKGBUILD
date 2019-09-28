@@ -17,8 +17,8 @@
 #
 pkgbase="zfs-linux-hardened-git"
 pkgname=("zfs-linux-hardened-git" "zfs-linux-hardened-git-headers")
-_commit='73d7820bba26dd61085cb6dd8348ebf0bb41b951'
-_zfsver="2019.09.22.r5413.g73d7820bb"
+_commit='7bb0c294688ed121477536d7b4a7031c78a5706a'
+_zfsver="2019.09.27.r5421.g7bb0c2946"
 _kernelver="5.2.17.a-1"
 _extramodules="5.2.17.a-1-hardened"
 
@@ -27,14 +27,8 @@ pkgrel=1
 makedepends=("linux-hardened-headers=${_kernelver}" "git")
 arch=("x86_64")
 url="https://zfsonlinux.org/"
-source=("git+https://github.com/zfsonlinux/zfs.git#commit=${_commit}"
-        "linux-5.3-compat-rw_semaphore-owner.patch"
-        "linux-5.3-compat-retire-rw_tryupgrade.patch"
-        "linux-5.3-compat-Makefile-subdir-m-no-longer-supported.patch")
-sha256sums=("SKIP"
-            "c65c950abda42fb91fb99c6c916a50720a522c53e01a872f9310a4719bae9e2a"
-            "19f798a29c00874874751880f1146c5849b8ebdb6233d8ae923f9fdd4661de19"
-            "6c4627875dd1724f64a196ea584812c99635897dc31cb23641f308770289059a")
+source=("git+https://github.com/zfsonlinux/zfs.git#commit=${_commit}")
+sha256sums=("SKIP")
 license=("CDDL")
 depends=("kmod" "zfs-utils-git=${_zfsver}" "linux-hardened=${_kernelver}")
 
