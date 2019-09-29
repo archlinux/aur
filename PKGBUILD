@@ -1,5 +1,6 @@
 pkgname=chromium-vaapi-bin
 pkgver=77.0.3865.90
+_pkgrel=1
 pkgrel=2
 pkgdesc='Chromium with VA-API support to enable hardware acceleration, pre-compiled'
 url='https://www.chromium.org/Home'
@@ -23,7 +24,7 @@ optdepends=('pepper-flash: support for Flash content'
             'chromium-widevine: for viewing premium video content')
 
 validpgpkeys=('EB4F9E5A60D32232BB52150C12C87A28FEAC6B20')
-source=("https://pkgbuild.com/~maximbaz/repo/chromium-vaapi-${pkgver}-${pkgrel}-${arch}.pkg.tar.xz"{,.sig})
+source=("https://pkgbuild.com/~maximbaz/repo/chromium-vaapi-${pkgver}-${_pkgrel}-${arch}.pkg.tar.xz"{,.sig})
 sha256sums=('30e1ba6ccc106305a67297e512b10f8fd5b1c7701bf2279a53924ef7e8b82240'
             'SKIP')
 
