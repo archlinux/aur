@@ -17,9 +17,9 @@ source=(http://downloads.sourceforge.net/project/mirageiv.berlios/${pkgname}-${p
         exif.patch
         exif.c)
 install=$pkgname.install
-md5sums=('3a0cdb4efd445f85bc29a1ab7ff8a579'
-         '1eed664ef628970a7dd16c4d471c6a24'
-         '16285505d2dea76e2ab3e9159fafd8ce')
+sha256sums=('6b5b0011f41daec3653c464e47fd225e52b741fcad8870960e0a94662a2fdda7'
+            'a669be216365c84bc1f4dc3d08ee97ed0b0eee083c0293004a3f2772f9e177bd'
+            '6c680c8dd8a323ceeee7492e4c7db0280fd7fe2df1c4ed0b13bc9c4f3d6d8917')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
