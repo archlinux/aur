@@ -2,8 +2,8 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=avro-c
-pkgver=1.8.2
-pkgrel=3
+pkgver=1.9.1
+pkgrel=1
 pkgdesc="C bindings for Avro data serialization framework"
 arch=('i686' 'x86_64')
 depends=('jansson' 'snappy' 'xz' 'zlib')
@@ -13,7 +13,7 @@ optdepends=('asciidoc: build with documentation'
 url="https://github.com/apache/avro"
 license=('Apache')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/apache/avro/tar.gz/release-$pkgver)
-sha256sums=('19040889f2c822445b6ccf14e6f13ccf2d7851458790ae1539a2688d21c76ae0')
+sha256sums=('e382ac6685544ae9539084793ac0a4ffd377ba476ea756439625552e14d212b0')
 
 build() {
   cd "$srcdir/avro-release-$pkgver/lang/c"
