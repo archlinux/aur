@@ -9,7 +9,7 @@ url=https://www.xandikos.org/
 license=('GPL3')
 depends=('python-aiohttp' 'python-defusedxml' 'python-dulwich' 'python-icalendar' 'python-jinja')
 makedepends=('git' 'python-setuptools')
-optdepends=('python-prometheus_client: for metrics'
+optdepends=('python-prometheus_client: for metrics with regular server (not uWSgi)'
             'uwsgi-plugin-python: to run in production')
 provides=('xandikos')
 conflicts=('xandikos')
