@@ -1,6 +1,6 @@
 pkgbase = twmn-git
 	pkgdesc = A notification system for tiling window managers
-	pkgver = 187.80f4883
+	pkgver = 190.861a323
 	pkgrel = 1
 	url = https://github.com/sboli/twmn
 	arch = any
@@ -16,9 +16,7 @@ pkgbase = twmn-git
 	provides = notification-daemon
 	conflicts = twmn
 	source = twmn::git+https://github.com/sboli/twmn.git
-	source = werror-fix.patch
 	sha256sums = SKIP
-	sha256sums = 65aad59c679620071433864329c00486bfdd7ec3ae70cb34f7bab14f1f5fd54d
 
 pkgname = twmn-git
 

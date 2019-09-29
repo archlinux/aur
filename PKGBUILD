@@ -4,7 +4,7 @@
 
 _name=twmn
 pkgname="${_name}-git"
-pkgver=187.80f4883
+pkgver=190.861a323
 pkgrel=1
 pkgdesc="A notification system for tiling window managers"
 arch=('any')
@@ -14,10 +14,8 @@ provides=('notification-daemon')
 depends=('qt5-base' 'qt5-x11extras' 'boost-libs>=1.46' 'libxext' 'libxkbcommon-x11')
 makedepends=('git' 'pkg-config' 'boost>=1.46')
 conflicts=('twmn')
-source=("${_name}::git+https://github.com/sboli/${_name}.git"
-        'werror-fix.patch')
-sha256sums=('SKIP'
-            '65aad59c679620071433864329c00486bfdd7ec3ae70cb34f7bab14f1f5fd54d')
+source=("${_name}::git+https://github.com/sboli/${_name}.git")
+sha256sums=('SKIP')
 
 pkgver() {
    cd "${_name}"
@@ -26,7 +24,7 @@ pkgver() {
 
 prepare() {
    cd "${_name}"
-   patch -p1 < "${srcdir}/werror-fix.patch"
+   sed -i 's/-Werror//g' twmnd/twmnd.pro
 }
 
 build() {
