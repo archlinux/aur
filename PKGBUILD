@@ -13,6 +13,8 @@ source=(git+https://github.com/klzgrad/naiveproxy.git)
 optdepends=("ccache: Speed up compilation")
 backup=(etc/naiveproxy/config.json)
 md5sums=('SKIP')
+provides=('naiveproxy')
+conflicts=('naiveproxy' 'naiveproxy-bin')
 
 pkgver(){
   cd ${srcdir}/${_pkgname}
