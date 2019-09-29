@@ -9,7 +9,7 @@ url='https://github.com/klzgrad/naiveproxy'
 license=('BSD')
 depends=('nspr' 'nss')
 makedepends=('git' 'ninja' 'cmake' 'docker')
-source=("${pkgname}.tar.gz::https://github.com/klzgrad/naiveproxy/archive/v${pkgver}-${pkgrel}.tar.gz"
+source=("${pkgname}-${pkgver}-${pkgrel}.tar.gz::https://github.com/klzgrad/naiveproxy/archive/v${pkgver}-${pkgrel}.tar.gz"
         "build_x86.sh")
 md5sums=('SKIP'
          '665ed2cf07bd64361865ceb71a3ba34e')
