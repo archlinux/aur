@@ -1,4 +1,4 @@
 /pkg
 /src
-yacreader-bin*.tar*
-yacreader.rpm
+*.tar*
+*.rpm
