@@ -1,0 +1,20 @@
+pkgbase = ros-melodic-rosauth
+	pkgdesc = ROS - Server Side tools for Authorization and Authentication of ROS Clients
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://wiki.ros.org/rosauth
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-catkin
+	makedepends = ros-melodic-roscpp
+	makedepends = ros-melodic-message-generation
+	makedepends = openssl
+	depends = ros-melodic-message-generation
+	depends = ros-melodic-roscpp
+	source = ros-melodic-rosauth-1.0.1.tar.gz::https://github.com/GT-RAIL/rosauth/archive/1.0.1.tar.gz
+	sha256sums = afa1e29ed21b9481b622b2a72f314765ee90a4ecaabef3e8825227f92ff5675b
+
+pkgname = ros-melodic-rosauth
+
