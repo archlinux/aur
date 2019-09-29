@@ -55,7 +55,7 @@ source=("https://github.com/MediaBrowser/Emby.Releases/releases/download/${pkgve
         'license.docx')
 noextract=(license.docx)
 backup=('etc/conf.d/emby-server')
-sha256sums=('18c49459cf1f00e9e39046baf726ab2931ababef1b4fee976f1bf7b5d0783524'
+sha256sums=('734d0c6f69b7c394bb2bd2f4c2ed48115657c6fe21039a378f76c9350d0b0793'
             'd2081fd92e92ee90561c91edbd28ccba4beb1d72bdd38cd94c338726020e2e62'
             '85697071cb6412d244fc6dd76f3561b6a42d7556ef20f26a702542b58198f0c7'
             'e2185a5f4810726cb57fcc6d9bdbde1854069f08f163be58cb3cef1154b8e2a7'
