@@ -1,6 +1,6 @@
 pkgbase = fbc-git
 	pkgdesc = FreeBASIC Compiler (Development version)
-	pkgver = 1.06
+	pkgver = 1.08
 	pkgrel = 1
 	url = http://www.freebasic.net
 	arch = i686
