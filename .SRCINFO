@@ -1,14 +1,16 @@
-pkgbase = python-btrfs
-	pkgdesc = Python Btrfs
-	pkgver = 11
+pkgbase = python-btrfs-git
+	pkgdesc = Python Btrfs module
+	pkgver = 11.r19.gbe20b2f
 	pkgrel = 1
 	url = https://github.com/knorrie/python-btrfs
 	arch = any
-	license = GPL2
+	license = LGPL3
 	makedepends = git
 	depends = python
-	source = python-btrfs::git://github.com/knorrie/python-btrfs.git#tag=v11
-	md5sums = SKIP
+	provides = python-btrfs
+	conflicts = python-btrfs
+	source = git+https://github.com/knorrie/python-btrfs.git#branch=develop
+	sha256sums = SKIP
 
-pkgname = python-btrfs
+pkgname = python-btrfs-git
 
