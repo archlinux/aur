@@ -1,29 +1,35 @@
 # Maintainer: orhun <github.com/orhun>
 
-_pkg=god
 pkgname=god-git
 pkgdesc="Utility for simplifying the Git usage"
-pkgver=1.5
+pkgver=1.6.r0.g2794dc3
 pkgrel=1
 arch=('any')
 url="https://github.com/orhun/god"
 license=('GPL3')
 depends=('git')
-makedepends=('go>=1.7')
-source=('git://github.com/orhun/god.git')
+makedepends=('go')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=('git://github.com/orhun/god.git#branch=master')
 sha256sums=('SKIP')
 
+pkgver() {
+  cd "$srcdir/${pkgname%-git}"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 build() {
-  cd $_pkg
+  cd "$srcdir/${pkgname%-git}"
   go get -d ./...
   go build \
     -gcflags "all=-trimpath=$PWD" \
     -asmflags "all=-trimpath=$PWD" \
     -ldflags "-extldflags $LDFLAGS" \
-    -o $_pkg .
+    -o "${pkgname%-git}" .
 }
 
 package() {
-  cd $_pkg
-  install -Dm755 $_pkg $pkgdir/usr/local/bin/$_pkg
+  cd "$srcdir/${pkgname%-git}"
+  install -Dm755 "${pkgname%-git}" "$pkgdir/usr/local/bin/${pkgname%-git}"
 }
