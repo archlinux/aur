@@ -1,6 +1,6 @@
 pkgbase = elementary-wallpapers-git
 	pkgdesc = Collection of wallpapers for elementary OS
-	pkgver = r107.fa02e89
+	pkgver = r112.6c81141
 	pkgrel = 1
 	url = https://github.com/elementary/wallpapers
 	arch = any
