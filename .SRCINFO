@@ -1,6 +1,6 @@
 pkgbase = worker
 	pkgdesc = A file manager for the X Window System
-	pkgver = 4.0.1
+	pkgver = 4.1.0
 	pkgrel = 1
 	url = http://www.boomerangsworld.de/worker
 	arch = i686
@@ -11,11 +11,11 @@ pkgbase = worker
 	depends = gcc-libs
 	depends = libx11
 	depends = file
-	source = http://www.boomerangsworld.de/cms/worker/downloads/worker-4.0.1.tar.bz2
-	source = http://www.boomerangsworld.de/cms/worker/downloads/worker-4.0.1.tar.bz2.asc
+	source = http://www.boomerangsworld.de/cms/worker/downloads/worker-4.1.0.tar.bz2
+	source = http://www.boomerangsworld.de/cms/worker/downloads/worker-4.1.0.tar.bz2.asc
 	validpgpkeys = F9299EE90A729029E71AF26B667132D0FBC52B37
-	sha512sums = b697dca488d582851da80673e0aed808560310af6c065dfab2cf9452d5e8b5fa26962d2825865916538efa3cf6089cc8712df286dd09f38847bea2799ceb0184
-	sha512sums = 12c392fa7084f60f9cb096b83f1ed1234cc892f580e3e0f12125f28f29753fecf334a9881d164eca8b943cc173eab6c447eb784d12c02a9f2be880d3e86df3bd
+	sha512sums = fd0ee679692fcfcc5b5e2ecd04d24285cde4971201d740b441e77aa995796737a25dcacf66e8b85f911e990cbdc2ab1bb05a0765d7d059759889f9f672af275e
+	sha512sums = abc71b6fd638bb5a8ea125052aadba19e01433fce9c70070d71fccbdf205080b9658be98093635cc0bdd2a5097ad741f55b56e50ec8eef86832696ca558396cb
 
 pkgname = worker
 

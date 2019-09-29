@@ -3,7 +3,7 @@
 # Contributor: Kevin Piche <kevin@archlinux.org>
 
 pkgname=worker
-pkgver=4.0.1
+pkgver=4.1.0
 pkgrel=1
 pkgdesc="A file manager for the X Window System"
 arch=('i686' 'x86_64')
@@ -13,8 +13,8 @@ depends=('avfs' 'gcc-libs' 'libx11' 'file')
 makedepends=('libxt')
 source=(http://www.boomerangsworld.de/cms/${pkgname}/downloads/${pkgname}-${pkgver}.tar.bz2
         http://www.boomerangsworld.de/cms/${pkgname}/downloads/${pkgname}-${pkgver}.tar.bz2.asc)
-sha512sums=('b697dca488d582851da80673e0aed808560310af6c065dfab2cf9452d5e8b5fa26962d2825865916538efa3cf6089cc8712df286dd09f38847bea2799ceb0184'
-            '12c392fa7084f60f9cb096b83f1ed1234cc892f580e3e0f12125f28f29753fecf334a9881d164eca8b943cc173eab6c447eb784d12c02a9f2be880d3e86df3bd')
+sha512sums=('fd0ee679692fcfcc5b5e2ecd04d24285cde4971201d740b441e77aa995796737a25dcacf66e8b85f911e990cbdc2ab1bb05a0765d7d059759889f9f672af275e'
+            'abc71b6fd638bb5a8ea125052aadba19e01433fce9c70070d71fccbdf205080b9658be98093635cc0bdd2a5097ad741f55b56e50ec8eef86832696ca558396cb')
 validpgpkeys=('F9299EE90A729029E71AF26B667132D0FBC52B37') # Ralf Hoffmann
 
 build() {
@@ -30,7 +30,7 @@ build() {
   # To bypass the pthread bug, the LDFLAGS is set here explicit until
   # the bug is solved. See here for more detail and progress:
   # https://sourceforge.net/p/workerfm/mailman/message/34136485/
-  CPPFLAGS="-O0 -std=gnu++11" LDFLAGS=-pthread ./configure --enable-xft --prefix=/usr --disable-cxx-check
+  CPPFLAGS="-O0 -std=gnu++14" LDFLAGS=-pthread ./configure --enable-xft --prefix=/usr --disable-cxx-check
 
   make
 }
