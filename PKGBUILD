@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond < gmail-com: danielbermond >
 
 pkgname=mpv-full-git
-pkgver=0.29.1.r663.g94bfe83355
+pkgver=0.29.1.r764.gc833c095d7
 pkgrel=1
 pkgdesc='A free, open source, and cross-platform media player (git version with all possible libs)'
 arch=('x86_64')
@@ -68,11 +68,11 @@ build() {
         --disable-pdf-build \
         \
         --enable-cplugins \
-        --enable-zsh-comp \
         --enable-test \
         --disable-clang-database \
         \
         --disable-android \
+        --disable-tvos \
         --disable-egl-android \
         --disable-swift \
         --disable-uwp \
