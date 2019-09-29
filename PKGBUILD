@@ -3,7 +3,7 @@
 # Contributor: Leonard König <leonard.r.koenig at googlemail dot com>
 
 pkgname=endless-sky
-pkgver=0.9.9
+pkgver=0.9.10
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://endless-sky.github.io/"
@@ -14,7 +14,7 @@ optdepends=('endless-sky-high-dpi: high resolution graphics assets'
 license=('GPL3' 'CCPL' 'custom:public domain')
 pkgdesc="A space exploration and combat game similar to Escape Velocity"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/endless-sky/endless-sky/archive/v${pkgver}.tar.gz")
-sha512sums=('3e46ffea3f15b276a837b1e53b416a48564a578dc009055b35704060bf8e63df4eef368814cf75da80448e2b942a0b40212555d29286a78f22c1c877661def6d')
+sha512sums=('4dcfb1a18ccff4121bc365a9c0eb829a19b0ea11c84ecd51f1b331305eeb7391a81f7b7874fb4e316d358e792dddf817a7903085672110c2d64d209e9899b8d9')
 
 build() {
   cd $pkgname-$pkgver
