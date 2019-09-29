@@ -6,7 +6,7 @@ pkgdesc="Tool that limits bandwidth of devices on the same network without acces
 arch=('x86_64')
 url="https://github.com/bitbrute/evillimiter"
 license=('MIT')
-depends=('python3')
+depends=('python3' 'python-terminaltables' 'python-tqdm' 'python-netaddr')
 makedepends=('python-setuptools')
 source=(
 https://github.com/bitbrute/evillimiter/archive/v${pkgver}.tar.gz
