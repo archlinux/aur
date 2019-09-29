@@ -1,2 +1,2 @@
 #!/bin/sh
-/opt/jabref/bin/JabRefMain "$@"
+/opt/jabref/bin/JabRef "$@"
