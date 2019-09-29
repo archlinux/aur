@@ -4,10 +4,10 @@
 
 pkgname=xboxdrv
 pkgver=0.8.8
-pkgrel=4
+pkgrel=5
 pkgdesc='Userspace gamepad driver for Linux'
 url='http://pingus.seul.org/~grumbel/xboxdrv'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 license=('GPL3')
 depends=('libx11' 'dbus-glib' 'libusb' 'python2-dbus' 'systemd')
 makedepends=('scons' 'boost' 'pkg-config' 'libx11' 'python')
@@ -27,8 +27,7 @@ prepare() {
   cd ${pkgname}-${pkgver}
   sed 's|python|python2|g' -i examples/*.py
   patch -p1 < "${srcdir}/fix-60-sec-delay.patch"
-  # activate this patch when scons gets switched back to py3
-  # patch -p1 < "${srcdir}/scons-py3.patch"
+  patch -p1 < "${srcdir}/scons-py3.patch"
 }
 
 build() {
