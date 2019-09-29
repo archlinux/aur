@@ -3,7 +3,7 @@
 # Maintainer: Netanel Shine <netanel at archlinux.org.il>
 
 pkgname=kernelshark-git
-pkgver=1.0.r0.gf97e28a
+pkgver=1.0.r34.gd448481
 pkgrel=1
 pkgdesc="GUI frontend for trace-cmd based Linux kernel Ftrace captures"
 arch=('x86_64' 'aarch64')
@@ -18,6 +18,11 @@ source=(
   "git://git.kernel.org/pub/scm/utils/trace-cmd/trace-cmd.git"
 )
 sha256sums=("SKIP")
+
+# 2019-09-29 - kernelshark builds a stub copy of tracecmd libraries first,
+# they must be finished before the second stage tries to find them for use
+# during autoconf. We can't build in parallel at this time.
+options=('!makeflags')
 
 pkgver() {
   cd "$srcdir/trace-cmd"
