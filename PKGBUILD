@@ -17,11 +17,11 @@ md5sums_i686=('af2fb6e993648426244f40ae47c39ccc')
 
 # Icon and desktop file
 source=(
-	"https://raw.githubusercontent.com/yhatt/marp/master/images/marp.png"
+	"marp.png"
 	"marp.desktop"
 )
 md5sums=(
-	'095ab0c670c1d311be1b066e416efed3'
+	'3d4ce6c7fa71611763d8d690788086f2'
 	'734a3e3bd102ee9de4bc78d25008a92d'
 )
 
