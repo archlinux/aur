@@ -11,10 +11,10 @@ source=("${pkgname}-${pkgver}.jar::https://github.com/Anuken/Mindustry/releases/
         "${pkgname}.sh"
         "${pkgname}.png"
         "${pkgname}.desktop")
-md5sums=('7903f091205471d15b54d23a27973d61'
-         '60eaa447ed6bbb47a183b2118d7b3010'
-         '2b7f48f1045810ce9892b337a00bb021'
-         'ec0696cd2866f50b4469e9ea0613473f')
+sha256sums=('a861e31217cc32e289739c99dec025b64c907a4cb182e1b4f0826499a6a911c4'
+            '679727847ba70773cee4f902114345e095b27f425aa00c4d3860d247705ed1f0'
+            'b4ca7e8083ab1d5e63601a63378211c9def97333324e6c9b48acf4cfb83fa9e8'
+            'cb149233b1a91e4dd951103568beea31078b96dc8615609cffd7eadbbccc6672')
 noextract=("${pkgname}-${pkgver}.jar")
 
 package() {
