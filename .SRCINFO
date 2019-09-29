@@ -1,13 +1,13 @@
 pkgbase = ansible-bundler
-	pkgdesc = Bundles Ansible playbooks and dependancies into a single binary.
-	pkgver = 1.1.0
+	pkgdesc = Turn Ansible playbooks into executable files
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://github.com/kriansa/ansible-bundler
 	arch = any
-	license = BSD
+	license = custom:BSD
 	depends = ansible
-	source = https://github.com/kriansa/ansible-bundler/archive/v1.1.0.tar.gz
-	sha256sums = a6e52b3cfa12a59defcb7ba5aed0709bb131c534a43c3a25106855f8b056748e
+	source = https://github.com/kriansa/ansible-bundler/archive/v1.7.0.tar.gz
+	sha256sums = fcd8854956cc2f575016a2dbf2aac66002b7be76ee32820104eeaa99928b4655
 
 pkgname = ansible-bundler
 

@@ -1,27 +1,24 @@
-# Maintainer: Jameson Pugh <imntreal@gmail.com>
+# Maintainer: Daniel Pereira <daniel@garajau.com.br>
 
 pkgname=ansible-bundler
-pkgver=1.1.0
+pkgver=1.7.0
 pkgrel=1
-pkgdesc="Bundles Ansible playbooks and dependancies into a single binary."
-arch=('any')
+pkgdesc="Turn Ansible playbooks into executable files"
 url="https://github.com/kriansa/ansible-bundler"
-license=('BSD')
-depends=('ansible')
+arch=(any)
+license=(custom:BSD)
+depends=(ansible)
 source=("https://github.com/kriansa/ansible-bundler/archive/v${pkgver}.tar.gz")
-sha256sums=('a6e52b3cfa12a59defcb7ba5aed0709bb131c534a43c3a25106855f8b056748e')
+sha256sums=(fcd8854956cc2f575016a2dbf2aac66002b7be76ee32820104eeaa99928b4655)
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"  
-
+  cd "$pkgname-$pkgver" || exit 1
   make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"  
+  cd "$pkgname-$pkgver" || exit 1
 
   install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   cp -r build/pkg/* "$pkgdir"
 }
-
-# vim:set ts=2 sw=2 et:
