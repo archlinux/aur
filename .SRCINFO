@@ -1,0 +1,16 @@
+pkgbase = jenkinsfile-runner-git
+	pkgdesc = A command line tool to run Jenkinsfile
+	pkgver = r281.552a0a2
+	pkgrel = 1
+	url = https://github.com/jenkinsci/jenkinsfile-runner.git
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = maven
+	depends = java-runtime-headless=8
+	conflicts = jenkinsfile-runner
+	source = jenkinsfile-runner::git+https://github.com/jenkinsci/jenkinsfile-runner.git
+	md5sums = SKIP
+
+pkgname = jenkinsfile-runner-git
+
