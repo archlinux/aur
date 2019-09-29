@@ -1,0 +1,19 @@
+pkgbase = mms-git
+	pkgdesc = Graphical Micromouse simulator
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/mackorone/mms
+	arch = any
+	license = MIT
+	makedepends = gendesk
+	depends = qt5-base
+	depends = hicolor-icon-theme
+	source = git+https://github.com/mackorone/mms.git
+	source = git+https://github.com/micromouseonline/mazefiles.git
+	source = icon.png
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = f3145780df5e9e693895a0a955f5b34a
+
+pkgname = mms-git
+
