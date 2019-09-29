@@ -4,13 +4,13 @@
 
 pkgname=insync-caja
 pkgver=3.0.13.40201
-pkgrel=1
+pkgrel=2
 pkgdesc="Caja integration for insync"
 url="https://www.insynchq.com/downloads"
 license=('custom:insync')
 options=(!strip)
 arch=('any')
-depends=("insync")
+depends=("insync" "mate-common" "python-caja")
 source=("${pkgname}-${pkgver}.deb::http://s.insynchq.com/builds/${pkgname}_${pkgver}_all.deb")
 sha256sums=('3d909a7c811cffa07d795bdf9cd45ecce9ba20f5fd70d08cb17b27ffddc417fa')
 noextract=("${pkgname}-${pkgver}.deb")

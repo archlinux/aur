@@ -1,11 +1,13 @@
 pkgbase = insync-caja
 	pkgdesc = Caja integration for insync
 	pkgver = 3.0.13.40201
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.insynchq.com/downloads
 	arch = any
 	license = custom:insync
 	depends = insync
+	depends = mate-common
+	depends = python-caja
 	noextract = insync-caja-3.0.13.40201.deb
 	options = !strip
 	source = insync-caja-3.0.13.40201.deb::http://s.insynchq.com/builds/insync-caja_3.0.13.40201_all.deb
