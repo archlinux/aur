@@ -1,6 +1,6 @@
 pkgbase = ft2-clone
 	pkgdesc = A portable Fasttracker II clone written in C
-	pkgver = b168
+	pkgver = 1.00
 	pkgrel = 1
 	url = https://16-bits.org/ft2.php
 	arch = x86_64
