@@ -1,7 +1,7 @@
 # Contributor: Max Devaine <max@devaine.cz>
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=openvsp-git
-pkgver=r3975.bc8a5674
+pkgver=r4008.37f78684
 pkgrel=1
 pkgdesc='OpenVSP allows the user to create a 3D model of an aircraft defined by
          common engineering parameters.'
@@ -69,7 +69,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${_name}/SuperProject/build/OpenVSP-prefix/src/OpenVSP-build/_CPack_Packages/Linux/ZIP/OpenVSP-3.17.1-Linux"
+  cd "${srcdir}/${_name}/SuperProject/build/OpenVSP-prefix/src/OpenVSP-build/_CPack_Packages/Linux/ZIP/OpenVSP-3.18.0-Linux"
 
   msg "Installing files"
 
