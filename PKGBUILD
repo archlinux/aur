@@ -2,12 +2,12 @@
 
 pkgbase=geoipdatabase_reloaded
 pkgver=1.2019.09
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://dev.maxmind.com/geoip/geoip2/geolite2/"
 license=('Creative Commons Attribution-ShareAlike 4.0 International License')
 makedepends=('python2')
-depends=('geoip_reloaded')
+depends=('geoip')
 
 # We all love colors. Stop pretending you don't.
 BRED="\033[1;31m"
