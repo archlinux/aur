@@ -13,7 +13,7 @@ pkgbase = mms-git
 	source = icon.png
 	md5sums = SKIP
 	md5sums = SKIP
-	md5sums = f3145780df5e9e693895a0a955f5b34a
+	md5sums = 6c1e374d6af11b5a472970ac9ddad0c8
 
 pkgname = mms-git
 
