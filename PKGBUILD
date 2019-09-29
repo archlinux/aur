@@ -1,7 +1,8 @@
 # Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
+# Contributor: iboyperson <tjquillan at gmail dot com>
 pkgname=tldr++
 pkgver=0.6.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Community driven man pages improved with smart user interaction"
 arch=('any')
 url="https://isacikgoz.me/tldr"
@@ -22,14 +23,19 @@ prepare() {
 	dep ensure
 }
 
-
 build() {
 	export GOPATH="$srcdir"/gopath
 	cd "gopath/src/github.com/isacikgoz/${pkgname%++}"
-	go install -v
+
+	go build \
+		-gcflags "all=-trimpath=${PWD}" \
+		-asmflags "all=-trimpath=${PWD}" \
+		-ldflags "-extldflags ${LDFLAGS}" \
+			-o $pkgname .
 }
 
 package() {
-	install -Dm755 "$srcdir/gopath/bin/${pkgname%++}" "$pkgdir/usr/bin/${pkgname%++}"
-	install -Dm644 "${pkgname%++}-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	cd "gopath/src/github.com/isacikgoz/${pkgname%++}"
+	install -Dm755 "$pkgname" "$pkgdir/usr/bin/${pkgname%++}"
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
