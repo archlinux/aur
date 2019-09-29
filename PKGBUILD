@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=libretro-bsnes-hd-git
-pkgver=r1090.3a2f757e
+pkgver=r1091.3a2f757e
 pkgrel=1
 pkgdesc='Super Nintendo Entertainment System cores'
 arch=('x86_64')
@@ -27,7 +27,7 @@ build() {
   #for p in accuracy balanced performance; do
   #  make profile=${p} target="libretro"
   #done
-  make target="libretro"
+  make target="libretro" binary=library
 }
 
 package() {
