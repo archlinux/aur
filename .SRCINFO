@@ -1,6 +1,6 @@
 pkgbase = zerynth-studio
 	pkgdesc = A powerful IDE for embedded programming in Python that enables the IoT
-	pkgver = 2.3.1
+	pkgver = 2.3.2
 	pkgrel = 1
 	url = https://www.zerynth.com/zerynth-studio/
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = zerynth-studio
 	depends = libxss
 	noextract = zerynth.tar.xz
 	options = !strip
-	source = http://download.zerynth.com/installer/zerynth.tar.xz
+	source = https://downloads.zerynth.com/zerynth.tar.xz
 	source = zerynth-studio.sh
 	source = zerynth-studio.desktop
-	md5sums = SKIP
+	md5sums = cad56e5e0a1b04b1220004470c7e08b1
 	md5sums = 566bd15aa6acedd409673ab634ab1148
 	md5sums = 6cc82b387ddbee922b8e246efa5a6b97
 

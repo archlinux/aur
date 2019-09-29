@@ -2,7 +2,7 @@
 
 pkgname=zerynth-studio
 _archivename=${pkgname%%-studio}.tar.xz
-pkgver=2.3.1
+pkgver=2.3.2
 pkgrel=1
 pkgdesc="A powerful IDE for embedded programming in Python that enables the IoT"
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="https://www.zerynth.com/zerynth-studio/"
 license=('COMMERCIAL')
 depends=('gconf' 'libxss')
 options=(!strip)
-source=("http://download.zerynth.com/installer/${_archivename}"
+source=("https://downloads.zerynth.com/${_archivename}"
 	"$pkgname.sh"
 "$pkgname.desktop")
 noextract=("${_archivename}")
@@ -37,6 +37,6 @@ package() {
 	chmod +44 -R "$pkgdir/opt/$pkgname/"
 }
 
-md5sums=('SKIP'
+md5sums=('cad56e5e0a1b04b1220004470c7e08b1'
 	'566bd15aa6acedd409673ab634ab1148'
 '6cc82b387ddbee922b8e246efa5a6b97')
