@@ -7,12 +7,12 @@
 
 pkgname=lib32-fluidsynth
 _name=fluidsynth
-pkgver=2.0.6
+pkgver=2.0.7
 pkgrel=1
 pkgdesc='A real-time software synthesizer based on the SoundFont 2 specifications'
 arch=('x86_64')
 url="https://www.fluidsynth.org/"
-license=('LGPL')
+license=('LGPL2.1')
 depends=(
   fluidsynth
   lib32-alsa-lib
@@ -31,7 +31,7 @@ makedepends=(
 )
 optdepends=('pulseaudio: PulseAudio sound support')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/${_name}/${_name}/archive/v${pkgver}.tar.gz")
-sha256sums=('e97e63c1045e102465f1aa848f9d712c5528c58685b8d40062e4aaf6af7edb75')
+sha256sums=('b68876d24c7fb34575ffa389bcfe8e61a24f1cf1da8ec6c3b2053efde98d0320')
 
 prepare() {
   cd "${_name}-${pkgver}"
