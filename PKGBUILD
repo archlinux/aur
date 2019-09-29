@@ -26,7 +26,7 @@ package () {
   install -m644 "${srcdir}${icons_dir}/${pkgname}.png" "${pkgdir}${icons_dir}/${pkgname}.png"
 
   install -d "${pkgdir}/usr/bin"
-  cp "${srcdir}/opt/Loginized/loginized" "${pkgdir}/usr/bin/loginized"
+  ln -s "${pkgdir}/opt/Loginized/loginized" "${pkgdir}/usr/bin/loginized"
   chmod 755 "${pkgdir}/usr/bin/loginized"
 
 }
