@@ -1,6 +1,6 @@
-diff -ruN recode-3.7/build-aux/ltmain.sh patched/build-aux/ltmain.sh
---- recode-3.7/build-aux/ltmain.sh	2016-02-08 00:39:37.000000000 +0100
-+++ patched/build-aux/ltmain.sh	2018-10-04 00:12:57.345230558 +0200
+diff -ruN recode-3.7.6/build-aux/ltmain.sh patched/build-aux/ltmain.sh
+--- recode-3.7.6/build-aux/ltmain.sh	2016-02-08 00:39:37.000000000 +0100
++++ patched/build-aux/ltmain.sh	2019-10-03 12:41:04.095081265 +0200
 @@ -7766,6 +7766,12 @@
  	    deplibs="$deplib $deplibs"
  	    continue
@@ -14,10 +14,10 @@ diff -ruN recode-3.7/build-aux/ltmain.sh patched/build-aux/ltmain.sh
  	  case $linkmode in
  	  lib)
  	    # Linking convenience modules into shared libraries is allowed,
-diff -ruN recode-3.7/configure patched/configure
---- recode-3.7/configure	2018-01-30 21:56:07.000000000 +0100
-+++ patched/configure	2018-10-03 22:55:29.800468024 +0200
-@@ -7725,7 +7725,8 @@
+diff -ruN recode-3.7.6/configure patched/configure
+--- recode-3.7.6/configure	2019-09-13 14:25:04.000000000 +0200
++++ patched/configure	2019-10-03 12:41:04.101747962 +0200
+@@ -7736,7 +7736,8 @@
    # Base MSYS/MinGW do not provide the 'file' command needed by
    # func_win32_libid shell function, so use a weaker test based on 'objdump',
    # unless we find 'file', for example because we are cross-compiling.
@@ -27,10 +27,10 @@ diff -ruN recode-3.7/configure patched/configure
      lt_cv_deplibs_check_method='file_magic ^x86 archive import|^x86 DLL'
      lt_cv_file_magic_cmd='func_win32_libid'
    else
-diff -ruN recode-3.7/configure.ac patched/configure.ac
---- recode-3.7/configure.ac	2018-01-30 21:19:50.000000000 +0100
-+++ patched/configure.ac	2018-10-03 22:51:03.225688695 +0200
-@@ -86,5 +86,13 @@
+diff -ruN recode-3.7.6/configure.ac patched/configure.ac
+--- recode-3.7.6/configure.ac	2019-09-13 14:23:45.000000000 +0200
++++ patched/configure.ac	2019-10-03 12:41:04.101747962 +0200
+@@ -113,5 +113,13 @@
  AM_GNU_GETTEXT(external)
  AM_XGETTEXT_OPTION([--from-code=UTF-8])
  
@@ -44,9 +44,9 @@ diff -ruN recode-3.7/configure.ac patched/configure.ac
 +
  AC_OUTPUT(Makefile contrib/Makefile doc/Makefile lib/Makefile
            po/Makefile.in src/Makefile tests/Makefile tests/setup.py)
-diff -ruN recode-3.7/m4/libtool.m4 patched/m4/libtool.m4
---- recode-3.7/m4/libtool.m4	2016-02-08 00:39:37.000000000 +0100
-+++ patched/m4/libtool.m4	2018-10-03 22:55:28.410443103 +0200
+diff -ruN recode-3.7.6/m4/libtool.m4 patched/m4/libtool.m4
+--- recode-3.7.6/m4/libtool.m4	2016-02-08 00:39:37.000000000 +0100
++++ patched/m4/libtool.m4	2019-10-03 12:41:04.105081310 +0200
 @@ -3480,7 +3480,8 @@
    # Base MSYS/MinGW do not provide the 'file' command needed by
    # func_win32_libid shell function, so use a weaker test based on 'objdump',
@@ -57,15 +57,15 @@ diff -ruN recode-3.7/m4/libtool.m4 patched/m4/libtool.m4
      lt_cv_deplibs_check_method='file_magic ^x86 archive import|^x86 DLL'
      lt_cv_file_magic_cmd='func_win32_libid'
    else
-diff -ruN recode-3.7/src/Makefile.am patched/src/Makefile.am
---- recode-3.7/src/Makefile.am	2018-01-30 20:18:23.000000000 +0100
-+++ patched/src/Makefile.am	2018-10-03 22:51:03.225688695 +0200
-@@ -56,7 +56,7 @@
+diff -ruN recode-3.7.6/src/Makefile.am patched/src/Makefile.am
+--- recode-3.7.6/src/Makefile.am	2019-10-03 12:40:49.388359567 +0200
++++ patched/src/Makefile.am	2019-10-03 12:42:03.622156896 +0200
+@@ -54,7 +54,7 @@
  librecode_la_SOURCES = charname.c combine.c fr-charname.c iconv.c \
  names.c outer.c recode.c request.c strip-pool.c task.c $(ALL_STEPS) \
  $(include_HEADERS) $(noinst_HEADERS) $(H_STEPS)
--librecode_la_LDFLAGS = -version-info 0:0:0
-+librecode_la_LDFLAGS = @LIBRECODE_LDFLAGS@ -version-info 0:0:0
+-librecode_la_LDFLAGS = -version-info $(VERSION_INFO)
++librecode_la_LDFLAGS = @LIBRECODE_LDFLAGS@ -version-info $(VERSION_INFO)
  librecode_la_LIBADD = ../lib/libgnu.la libmerged.la
  
  libmerged_la_SOURCES = merged.c
