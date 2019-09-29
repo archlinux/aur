@@ -1,4 +1,4 @@
-pkgbase = opentx-companion
+pkgbase = opentx-companion22
 	pkgdesc = EEPROM Editor for OpenTX RC transmitter firmwares
 	pkgver = 2.2.4
 	pkgrel = 1
@@ -35,5 +35,5 @@ pkgbase = opentx-companion
 	sha256sums = 9d669cf723e98b7be5463538b0590ae7776b3b866a423cceeb30ba9840748c64
 	sha256sums = baec8d907bc468771c6c425a47bcdb2ed291bdfadedc9a14884158d28e70814a
 
-pkgname = opentx-companion
+pkgname = opentx-companion22
 
