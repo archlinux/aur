@@ -1,0 +1,15 @@
+pkgbase = qsvgstyle
+	pkgdesc = Themeable SVG style for KDE Plasma
+	pkgver = 20190706
+	pkgrel = 1
+	url = https://github.com/DexterMagnific/QSvgStyle
+	arch = x86_64
+	license = GPL2
+	makedepends = qt5-tools
+	depends = qt5-x11extras
+	depends = qt5-svg
+	source = qsvgstyle::git+https://github.com/DexterMagnific/QSvgStyle.git
+	md5sums = SKIP
+
+pkgname = qsvgstyle
+
