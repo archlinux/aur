@@ -1,0 +1,5 @@
+v2.3
+====
+Add the ability to search among pictures, fix a memory leak, improve the
+automatic duration setting, make the window easier to resize, and update
+translations.
