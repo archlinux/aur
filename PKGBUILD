@@ -3,7 +3,7 @@
 # Contributor: Emanuel Fontelles ("emanuelfontelles") <emanuelfontelles@hotmail.com>
 
 pkgname=apache-spark
-pkgver=2.4.3
+pkgver=2.4.4
 pkgrel=1
 pkgdesc="fast and general engine for large-scale data processing"
 arch=('any')
@@ -26,7 +26,7 @@ source=("https://archive.apache.org/dist/spark/spark-${pkgver}/spark-${pkgver}-b
         'spark-daemon-run.sh'
         'run-master.sh'
         'run-slave.sh')
-sha1sums=('7b2f1be5c4ccec86c6d2b1e54c379b7af7a5752a'
+sha1sums=('53f99ba8c5a68c941dd17d45393a6040dd0b46c8'
           'ac71d12070a9a10323e8ec5aed4346b1dd7f21c6'
           'a191e4f8f7f8bbc596f4fadfb3c592c3efbc4fc0'
           '3fa39d55075d4728bd447692d648053c9f6b07ec'
