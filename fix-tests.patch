@@ -1,0 +1,40 @@
+test_quaternion_absolute() and test_quaternion_norm(): use np.allclose
+for comparison to avoid failing with a small floating-point error.
+
+test_as_spherical_coords(): the input values for varphi are on [0, 2pi]
+but the returned values are calculated with np.arctan2 and are on [-pi,
+pi]. Add 2*pi to negative return values to allow comparison.
+---
+ test/test_quaternion.py | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/test/test_quaternion.py b/test/test_quaternion.py
+index 0aaea58..26a58bb 100644
+--- a/test/test_quaternion.py
++++ b/test/test_quaternion.py
+@@ -425,6 +425,7 @@ def test_as_spherical_coords(Rs):
+                      for i in range(5000)]
+     for vartheta, varphi in random_angles:
+         vartheta2, varphi2 = quaternion.as_spherical_coords(quaternion.from_spherical_coords(vartheta, varphi))
++        varphi2 = (varphi2 + 2*np.pi) if varphi2 < 0 else varphi2
+         assert abs(vartheta - vartheta2) < 1e-12, ((vartheta, varphi), (vartheta2, varphi2))
+         assert abs(varphi - varphi2) < 1e-12, ((vartheta, varphi), (vartheta2, varphi2))
+     # Now test that arbitrary rotors rotate z to the appropriate location
+@@ -582,7 +583,7 @@ def test_quaternion_absolute(Qs):
+     for q, a in [(Qs[q_0], 0.0), (Qs[q_1], 1.0), (Qs[x], 1.0), (Qs[y], 1.0), (Qs[z], 1.0),
+                  (Qs[Q], np.sqrt(Qs[Q].w ** 2 + Qs[Q].x ** 2 + Qs[Q].y ** 2 + Qs[Q].z ** 2)),
+                  (Qs[Qbar], np.sqrt(Qs[Q].w ** 2 + Qs[Q].x ** 2 + Qs[Q].y ** 2 + Qs[Q].z ** 2))]:
+-        assert q.abs() == a
++        assert np.allclose(q.abs(), a)
+ 
+ 
+ def test_quaternion_norm(Qs):
+@@ -596,7 +597,7 @@ def test_quaternion_norm(Qs):
+     for q, a in [(Qs[q_0], 0.0), (Qs[q_1], 1.0), (Qs[x], 1.0), (Qs[y], 1.0), (Qs[z], 1.0),
+                  (Qs[Q], Qs[Q].w ** 2 + Qs[Q].x ** 2 + Qs[Q].y ** 2 + Qs[Q].z ** 2),
+                  (Qs[Qbar], Qs[Q].w ** 2 + Qs[Q].x ** 2 + Qs[Q].y ** 2 + Qs[Q].z ** 2)]:
+-        assert q.norm() == a
++        assert np.allclose(q.norm(), a)
+ 
+ 
+ # Unary quaternion returners
