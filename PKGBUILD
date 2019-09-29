@@ -21,7 +21,7 @@ options=('emptydirs')
 depends=('xz' 'zlib' 'bzip2' 'perl')
 makedepends=('perl-io-string' 'perl-timedate' 'git')
 checkdepends=('perl-io-string' 'perl-test-pod')
-source=("$pkgname::git+https://anonscm.debian.org/git/dpkg/dpkg.git#commit=$_commit")
+source=("$pkgname::git+https://salsa.debian.org/dpkg-team/dpkg.git#commit=$_commit")
 sha256sums=('SKIP')
 
 pkgver() {

@@ -16,7 +16,7 @@ pkgbase = dpkg
 	depends = bzip2
 	depends = perl
 	options = emptydirs
-	source = dpkg::git+https://anonscm.debian.org/git/dpkg/dpkg.git#commit=edd4b837356860fe3c5f83c0eca88c452a1cc8c8
+	source = dpkg::git+https://salsa.debian.org/dpkg-team/dpkg.git#commit=edd4b837356860fe3c5f83c0eca88c452a1cc8c8
 	sha256sums = SKIP
 
 pkgname = dpkg
