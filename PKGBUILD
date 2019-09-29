@@ -1,7 +1,10 @@
-# Maintainer: Dimitrios Vogiatzis <me@dimtree.net>
+# Maintainer: Kyle Sferrazza <kyle.sferrazza@gmail.com>
+# Contributor: Dimitrios Vogiatzis <me@dimtree.net>
 
 pkgname=python-plexapi
-pkgver=3.0.6
+_name="PlexAPI"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/pkkid/python-plexapi/archive/$pkgver.tar.gz")
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="Python bindings for the Plex API."
 arch=('any')
@@ -11,11 +14,10 @@ depends=('python-requests'
          'python-tqdm'
          'python-websocket-client')
 makedepends=()
-source=("$pkgname-$pkgver.tar.gz::https://github.com/pkkid/python-plexapi/archive/$pkgver.tar.gz")
-sha256sums=('d43947afb640d47a12525fea24c9d9e1afc80e7fbc7991666184bd942dae130d')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+sha256sums=('4044876f354b6b93737f704e41910c5a5537e000ad9d4dc79b4ded7bc9e9ce4d')
 
 package() {
-    cd "$pkgname-$pkgver"
+    cd "$_name-$pkgver"
     python ./setup.py install --root="$pkgdir/" --prefix=/usr --optimize=1
-    install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
