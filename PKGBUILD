@@ -4,7 +4,7 @@
 # 
 # Use with care, I accept no responsibility what so ever.
 pkgname=('opentx-companion')
-pkgver=2.2.4
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="EEPROM Editor for OpenTX RC transmitter firmwares"
 arch=('x86_64')
@@ -17,23 +17,14 @@ provides=('companion')
 conflicts=('companion' 'companion9x-svn')
 source=("https://github.com/opentx/opentx/archive/$pkgver.tar.gz"
 "installprefix.patch"
-"ref_issue.patch"
 )
-#"qt5_modules.patch"
 sha256sums=(
-    'abc5bced1f04e436882d5c36abc7cf53d4e17aa67db9df2b43dc036a2656141b'
-    '9d669cf723e98b7be5463538b0590ae7776b3b866a423cceeb30ba9840748c64'
-    'baec8d907bc468771c6c425a47bcdb2ed291bdfadedc9a14884158d28e70814a'
+    'fe77f4f181473d2739f969ffdeb67c809f4985f1b9b75756cb69bd9e653ee563'
+    'ffe1e86925ecb4f42e0fc96edddf61f85fea8b3da041a0634fff19434c618b5b'
 )
-    #'30fd1396a47bfc250780786e52447547aafcf934c6fe1775e4301fa3c7185be2'
 
 build() {
   patch $srcdir/opentx-$pkgver/tools/build-companion-release.sh $startdir/installprefix.patch
-  pushd $srcdir/opentx-$pkgver/
-  patch -p1 < $startdir/ref_issue.patch
-  popd
-#  cd $srcdir/opentx-$pkgver
-#  patch -t -p 1 < $startdir/qt5_modules.patch
   $srcdir/opentx-$pkgver/tools/build-companion-release.sh $srcdir/opentx-$pkgver dummy
 }
 
@@ -42,7 +33,7 @@ package() {
   cd $srcdir/build
   make -j`nproc` DESTDIR=$pkgdir/ install
   cd $pkgdir/usr/share/applications
-  sed -i -e 's/Categories=Application/Categories=Development;/' companion22.desktop
-  sed -i -e 's/Categories=Application/Categories=Development;/' simulator22.desktop
+  sed -i -e 's/Categories=Application/Categories=Development;/' companion23.desktop
+  sed -i -e 's/Categories=Application/Categories=Development;/' simulator23.desktop
 }
 
