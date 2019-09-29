@@ -1,6 +1,6 @@
 # Maintainer: Agorgianitis Loukas <agorglouk@gmail.com>
 pkgname=glslviewer-git
-pkgver=r551.4858c45
+pkgver=r753.8a4f4d7
 pkgrel=1
 pkgdesc="Live GLSL coding render for MacOS and Linux"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ conflicts=("${pkgname%-VCS}")
 source=("$pkgname::git+https://github.com/patriciogonzalezvivo/glslViewer"
         'floating_wm_workaround.patch')
 md5sums=('SKIP'
-         'dd0001eb24fdf2cd1f49e83b25ba2fd7')
+         '20c838d28b2390c9dd6fa3491c920edc')
 
 pkgver() {
     cd "$srcdir/${pkgname%-VCS}"
