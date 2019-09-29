@@ -1,0 +1,17 @@
+pkgbase = tex-math-millennial
+	pkgdesc = A math accompaniment for New Century Schoolbook (for texlive)
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://www.math.ucdenver.edu/~hartkes/computer/latex/latex.php
+	install = tex-math-millennial.install
+	arch = any
+	license = custom
+	depends = texlive-core
+	depends = texlive-fontsextra
+	source = http://www.math.ucdenver.edu/~hartkes/computer/latex/Millennial-20110819.tar.bz2
+	source = tex-math-millennial.maps
+	sha1sums = cc124a2dca39d4627a72fe74d0c131e3ea65bf40
+	sha1sums = 201b2d7967085b8c84a6268a2bc2a5c095b35a19
+
+pkgname = tex-math-millennial
+
