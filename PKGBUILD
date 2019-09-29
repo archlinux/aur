@@ -8,8 +8,8 @@
 
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-rt       # Build kernel with a different name
-_pkgver=5.2.14
-_rtpatchver=rt7
+_pkgver=5.2.17
+_rtpatchver=rt9
 pkgver="${_pkgver}_${_rtpatchver}"
 pkgrel=1
 arch=('x86_64')
@@ -29,7 +29,6 @@ source=(
   ${pkgbase}.preset   # standard config files for mkinitcpio ramdisk
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
   0002-ZEN-Add-CONFIG-for-unprivileged_userns_clone.patch
-  0003-Btrfs-fix-unwritten-extent-buffers-and-hangs-on-futu.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -39,17 +38,16 @@ validpgpkeys=(
   '5ED9A48FC54C0A22D1D0804CEBC26CDB5A56DE73'  # Steven Rostedt
   'E644E2F1D45FA0B2EAA02F33109F098506FF0B14'  # Thomas Gleixner
 )
-sha256sums=('c64d36477fee6a864a734ec417407768e60040a13f144c33208fa9622fd0ce8c'
+sha256sums=('7b3b8ad09ea936b4216dd02c5fc2ef39c8f58935d0a81ab9690f0fc451102df9'
             'SKIP'
-            '33b5123ab190e8b525149ac416787e2c3325269d34350dc2045dd68ba1f95154'
+            '6d71b5d2cbb6f002c6d6a3cb4efb356707b6ec0abf52e3d12ba09d5636968da0'
             'SKIP'
-            'e1214bcad1f31c83d3688874865e3bce034eca0ec37a5248fbfd856fe32b16dc'
+            '9313ea36000691b9a88a6c9600df730987092a9701ac4b7186c5cac7965cb680'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '75aa8dd708ca5a0137fbf7cddc9cafefe6aac6b8e0638c06c156d412d05af4bc'
-            '187fa8d9a6c5777a8930dcecfafdd9d6e9095d4bf96ec060e756fb7c6a88b74d'
-            'a4802ecb2b75bb1711f050a0370bcc38754478170ed1bebe9aa89d1572762590')
+            '187fa8d9a6c5777a8930dcecfafdd9d6e9095d4bf96ec060e756fb7c6a88b74d')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-ARCH}
