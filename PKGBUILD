@@ -3,14 +3,14 @@
 # Contributor: der_fenix <derfenix@gmail.com>
 
 pkgname=rhvoice-git
-pkgver=0.7.1.r14.92c9eec
+pkgver=1.0.0.r4.d96020c
 pkgrel=1
 pkgdesc="Free and open source speech synthesizer for Russian and other languages. Git version"
 arch=('x86_64')
 url="https://github.com/Olga-Yakovleva/RHVoice"
 license=('GPL3')
 depends=('libpulse')
-makedepends=('git' 'scons')
+makedepends=('git' 'scons' 'python-lxml')
 optdepends=('rhvoice-dictionary-git: extended russian dictionary'
 	'speech-dispatcher: for speech-dispatcher module support'
 	'portaudio: for portaudio backend'
