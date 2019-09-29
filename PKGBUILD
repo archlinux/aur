@@ -1,15 +1,19 @@
-# Maintainer: Darren Wu <$(base64 --decode <<<'ZGFycmVuMTk5NzA4MTBAZ21haWwuY29tCg==')>
+# Maintainer: Darren Ng <$(base64 --decode <<<'ZGFycmVuMTk5NzA4MTBAZ21haWwuY29tCg==')>
 # Thanks: Jared Casper <jaredcasper@gmail.com>
 # Thanks: Kyle Keen <keenerd@gmail.com>
 # Thanks: Markus Koch <CClassicVideos@aol.com>
 # Thanks: Thomas Dziedzic < gostrc at gmail >
 
+# https://git.archlinux.org/svntogit/community.git/tree/trunk/PKGBUILD?h=packages/gtkwave
+# https://salsa.debian.org/electronics-team/gtkwave/blob/master/debian/rules
+
 pkgname=gtkwave-tcl
-pkgver=3.3.100
+pkgver=3.3.101
 pkgrel=1
 pkgdesc='A wave viewer which reads LXT, LXT2, VZT, GHW, FST and VCD/EVCD files (with Tcl/Tk support)'
 arch=('x86_64')
-url='http://gtkwave.sourceforge.net'
+# code https://sourceforge.net/projects/gtkwave/
+url='http://gtkwave.sourceforge.net' # https unavailable
 license=('GPL' 'custom:MIT' 'custom')
 depends=(
   'bzip2'
@@ -38,9 +42,9 @@ source=("http://gtkwave.sourceforge.net/${pkgname%-tcl}-${pkgver}.tar.gz"
         "http://gtkwave.sourceforge.net/${pkgname%-tcl}.pdf"
         "gtkwave.install")
 
-md5sums=('0fb05e0e043b08e6f829b89e1511f502'
+md5sums=('e301b74745d6696623272ca9e7e62ea0'
          'SKIP'
-         'ccbede6bf65569f5688f5254389eec53')
+         '5c404e6a86f1c209344a5d7d2fa07753')
 
 build() {
   cd "$srcdir/${pkgname%-tcl}-${pkgver}"
@@ -88,5 +92,6 @@ package() {
   mkdir -p "$pkgdir/usr/share/doc/gtkwave"
   install -D -m644 "$srcdir/gtkwave.pdf" \
     "$pkgdir/usr/share/doc/gtkwave/gtkwave.pdf"
-}
 
+  mv -v "$pkgdir/usr/share/gtkwave/gtkwave.odt" "$pkgdir/usr/share/doc/gtkwave/gtkwave.odt"
+}
