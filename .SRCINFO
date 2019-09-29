@@ -1,0 +1,16 @@
+pkgbase = naiveproxy-git
+	pkgdesc = Make a fortune quietly
+	pkgver = r33.7929e0850
+	pkgrel = 1
+	url = https://github.com/klzgrad/naiveproxy
+	arch = x86_64
+	license = BSD
+	depends = nspr
+	depends = nss
+	optdepends = ccache: Speed up compilation
+	backup = etc/naiveproxy/config.json
+	source = git+https://github.com/klzgrad/naiveproxy.git
+	md5sums = SKIP
+
+pkgname = naiveproxy-git
+
