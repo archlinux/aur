@@ -13,6 +13,8 @@ source=( ${_pkgname}-${pkgver}-${pkgrel}.tar.gz::https://github.com/klzgrad/naiv
 optdepends=("ccache: Speed up compilation")
 backup=(etc/naiveproxy/config.json)
 md5sums=('363c754508462732e7d77b415bc8fbe3')
+provides=('naiveproxy')
+conflicts=('naiveproxy' 'naiveproxy-git')
 
 package(){
   pushd ${srcdir}/${_pkgname}-v${pkgver}-${pkgrel}-linux
