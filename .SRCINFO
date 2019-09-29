@@ -1,0 +1,20 @@
+pkgbase = materia-theme-solid-git
+	pkgdesc = upstream git package for the Material Design-like flat theme for GTK3, GTK2, Metacity, and GNOME-Shell.
+	pkgver = r1147.79b7ae34
+	pkgrel = 1
+	url = https://github.com/tyzoid/materia-theme
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = sassc
+	depends = gtk3>=3.22
+	depends = gtk-engine-murrine
+	depends = gnome-themes-extra
+	provides = materia-theme
+	conflicts = materia-theme
+	conflicts = materia-theme-git
+	source = materia-theme-solid-git::git+https://github.com/tyzoid/materia-theme.git
+	sha256sums = SKIP
+
+pkgname = materia-theme-solid-git
+
