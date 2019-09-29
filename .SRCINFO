@@ -1,5 +1,5 @@
 pkgbase = libtd
-	pkgdesc = Cross-platform library for building Telegram clients
+	pkgdesc = TDLib (Telegram Database library) is a cross-platform library for building Telegram clients
 	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://core.telegram.org/tdlib
