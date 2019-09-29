@@ -9,7 +9,7 @@ pkgname=(fastgcc)
 pkgver=9.2.0
 _majorver=${pkgver:0:1}
 _islver=0.21
-pkgrel=6
+pkgrel=7
 pkgdesc='experimental gcc supporting faster compilation'
 arch=(x86_64)
 license=(GPL LGPL FDL custom)
@@ -17,8 +17,6 @@ url='https://gcc.gnu.org'
 makedepends=(binutils libmpc python)
 checkdepends=(inetutils)
 options=(!emptydirs)
-provides=('gcc' 'gcc-libs')
-replaces=('gcc' 'gcc-libs')
 source=(https://ftp.gnu.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz
         http://isl.gforge.inria.fr/isl-${_islver}.tar.xz
         c89 c99)
@@ -95,6 +93,8 @@ package_fastgcc() {
   depends=('binutils>=2.28' libmpc)
   groups=('base-devel')
   options+=(staticlibs)
+  conflicts=(gcc 'gcc-libs')
+  provides=(gcc 'gcc-libs')
 
   cd gcc-build
 
