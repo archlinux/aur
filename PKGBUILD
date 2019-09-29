@@ -3,7 +3,8 @@
 # Contributer: Arnaud
 # 
 # Use with care, I accept no responsibility what so ever.
-pkgname=('opentx-companion')
+# # pinned package. For those that wish to remain on 2.2 branch
+pkgname=('opentx-companion22')
 pkgver=2.2.4
 pkgrel=1
 pkgdesc="EEPROM Editor for OpenTX RC transmitter firmwares"
