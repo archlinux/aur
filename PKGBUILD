@@ -9,7 +9,7 @@ pkgver=2.07.1.1569232582
 pkgrel=1
 
 pkgdesc="First person forgery stealth game"
-license=("GPL3" "BSD" "CCPL")
+license=("GPL3" "BSD" "CCPL:by-nc-sa")
 url="http://www.thedarkmod.com"
 
 SourcePath="https://gitlab.com/es20490446e/darkmod-linux-packager"
