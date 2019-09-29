@@ -2,14 +2,14 @@
 
 pkgname=navi
 pkgdesc="An interactive cheatsheet tool for the command-line"
-pkgver=0.10.1
+pkgver=0.10.3
 pkgrel=1
 arch=("any")
 url="https://github.com/denisidoro/navi"
 license=("AGPL-3.0")
 depends=('fzf')
 source=("https://github.com/denisidoro/navi/archive/v${pkgver}.tar.gz")
-sha512sums=('6c9251c38956bee54b025f4ae5e8574fa45000523dbfe2cdbac0a702166b8344760d78cf4a6e93dc1426d0622830666de47111fa340b29f56416ace9a80012a2')
+sha512sums=('8a67b8c37f3ccba41b3d2d137fb51852bcc4b51340f34921a8debbaf0b1b2fd9382529b20d5415b48fa38a3456807682844444561566619f6c65ca4a4c44cbfb')
 
 package() {
     install -d "${pkgdir}/opt/${pkgname}"
