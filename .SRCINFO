@@ -1,0 +1,19 @@
+pkgbase = arizona
+	pkgdesc = Fast and lightweight audio streaming client for Icecast internet radios
+	pkgver = 0.12
+	pkgrel = 1
+	url = https://github.com/tlpr/arizona
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = pkgconf
+	makedepends = make
+	makedepends = clang
+	depends = mariadb-clients
+	depends = libshout
+	depends = json-c
+	source = arizona-0.12.zip::https://github.com/tlpr/arizona/archive/318412592ed93243670db87acd3ed549afe45b25.zip
+	md5sums = 0891baaa5892c48b3beeeabeb295051e
+
+pkgname = arizona
+
