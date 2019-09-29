@@ -3,7 +3,7 @@
 # Contributor:  Marcin Wieczorek <marcin  AT  marcin  DOT  co>
 
 pkgname=tmsu-git
-pkgver=0.6.1
+pkgver=0.7.4
 pkgrel=1
 
 pkgdesc='Tag your files and access them through a virtual filesystem'
@@ -26,6 +26,7 @@ pkgver() {
 build() {
   export GOPATH=/tmp
 
+  go get -u golang.org/x/crypto/blake2b
   go get -u github.com/mattn/go-sqlite3
   go get -u github.com/hanwen/go-fuse/fuse
 
