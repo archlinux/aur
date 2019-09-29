@@ -14,16 +14,10 @@ provides=('chipmachine')
 conflicts=('chipmachine')
 source=("git+https://github.com/sasq64/chipmachine.git"
         "git+https://github.com/sasq64/apone.git"
-        "git+https://github.com/sasq64/musicplayer.git"
-        "chipmachine-rpath.patch"
-        "apone-cmake.patch"
-        "musicplayer-cmake.patch")
-sha256sums=('SKIP'
+        "git+https://github.com/sasq64/musicplayer.git")
+sha512sums=('SKIP'
             'SKIP'
-            'SKIP'
-            '87c5c9e1686b512a31b12204c800eab6b576fdcbec29f51737d0387a58a90fe4'
-            '82ac668d5f66059ac5b7e1d8e2ae20c38bbbd8471c4d3d1be6d9165f781b7eca'
-            '62540b754f09016166b9e005c6ac68af2049d216e431e7452a1594e22d6a2578')
+            'SKIP')
 
 pkgver() {
   cd chipmachine
@@ -31,12 +25,11 @@ pkgver() {
 }
 
 prepare() {
-   mkdir -p build
-   # remove insecure rpath
-   patch -p0 -i chipmachine-rpath.patch
-   # fix build with cmake >= 3.14.0
-   patch -p0 -i apone-cmake.patch
-   patch -p0 -i musicplayer-cmake.patch
+  mkdir -p build
+  # remove insecure rpath
+  sed -i '/link_directories(\/usr\/local\/lib.*/d' chipmachine/CMakeLists.txt
+  # fix linking errors with cmake >= 3.14.0
+  sed -i '/target_link_libraries(uade PRIVATE ws2_32)/d' musicplayer/plugins/uadeplugin/CMakeLists.txt
 }
 
 build() {
