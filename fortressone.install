@@ -1,0 +1,3 @@
+post_install() {
+  sudo ln -s /usr/lib/libpcre.so /usr/lib/libpcre.so.3
+}

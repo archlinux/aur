@@ -1,0 +1,16 @@
+diff --git a/fortressone.desktop b/fortressone.desktop
+--- a/fortressone.desktop
++++ b/fortressone.desktop
+@@ -2,9 +2,9 @@
+ Version=1.0
+ Name=FortressOne
+ Comment=QuakeWorld Team Fortress
+-Exec=INSTALL_DIR/fortressone-linux-x86_64 -basedir INSTALL_DIR
+-Icon=INSTALL_DIR/logo.png
++Exec=/usr/bin/fortressone -basedir /usr/share/fortressone
++Icon=/usr/share/pixmaps/fortressone.png
+ Terminal=false
+ Type=Application
+ Categories=Game
+-StartupWMClass=fortressone-linux-x86_64
++StartupWMClass=fortressone

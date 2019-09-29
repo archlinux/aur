@@ -1,0 +1,12 @@
+pkg/
+src/
+*.pkg.tar.xz
+*.log
+linux-installer/
+fortressone
+fragfile.dat
+sb.zip
+fortressone.pk3
+pak0.pak
+pak0.pk3
+client-configs/
