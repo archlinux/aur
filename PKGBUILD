@@ -1,18 +1,18 @@
-# Maintainer: Mark Weiman <mark dot weiman at markzz dot com>
+# Maintainer: Erik Dubois <erik.dubois@gmail.com>
+# Previous maintainer: Mark Weiman <mark dot weiman at markzz dot com>
 # Contributor: Zhengyu Xu <xzy3186@gmail.com>
 
 pkgname=insync-caja
-pkgver=1.3.12.36116
+pkgver=3.0.13.40201
 pkgrel=1
 pkgdesc="Caja integration for insync"
 url="https://www.insynchq.com/downloads"
 license=('custom:insync')
 options=(!strip)
 arch=('any')
-
-depends=("insync" "python2-caja")
-source=("${pkgname}-${pkgver}.deb::http://s.insynchq.com/builds/${pkgname}_${pkgver}-precise_all.deb")
-sha256sums=('20265da0b2fe16d5352f79a066d7a8659f35f838e75177c3592d47df229184b3')
+depends=("insync")
+source=("${pkgname}-${pkgver}.deb::http://s.insynchq.com/builds/${pkgname}_${pkgver}_all.deb")
+sha256sums=('3d909a7c811cffa07d795bdf9cd45ecce9ba20f5fd70d08cb17b27ffddc417fa')
 noextract=("${pkgname}-${pkgver}.deb")
 
 package() {
