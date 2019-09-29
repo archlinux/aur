@@ -13,7 +13,7 @@ source=('git+https://github.com/mackorone/mms.git'
     'icon.png')
 md5sums=('SKIP'
     'SKIP'
-    'f3145780df5e9e693895a0a955f5b34a')
+    '6c1e374d6af11b5a472970ac9ddad0c8')
 _name='mms'
 _categories='Simulator'
 
