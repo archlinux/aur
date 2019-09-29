@@ -1,8 +1,9 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=texinfo-git
-pkgver=6.7.r2.gf24d61f311
+pkgver=6.6.r277.g7286af71f2
 pkgrel=1
+epoch=1
 pkgdesc="GNU documentation system for on-line information and printed output"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/texinfo/"
