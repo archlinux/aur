@@ -1,7 +1,7 @@
 # Maintainer: YaYPIXXO <viggo@lekdorf.com>
 pkgname=loginized
 pkgver=1.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Gnome GDM Login Theme Manager."
 arch=('x86_64')
 url="https://github.com/juhaku/loginized"
