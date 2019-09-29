@@ -9,9 +9,11 @@ provides=('chromium' 'chromium-vaapi')
 conflicts=('chromium' 'chromium-vaapi')
 
 depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
-         'ttf-font' 'systemd' 'dbus' 'libpulse' 'pciutils' 'json-glib'
-         'desktop-file-utils' 'hicolor-icon-theme' 'libva' 'pipewire')
+         'ttf-font' 'systemd' 'dbus' 'libpulse' 'pciutils' 'json-glib' 'libva'
+         'desktop-file-utils' 'hicolor-icon-theme')
+
 optdepends=('pepper-flash: support for Flash content'
+            'pipewire: WebRTC desktop sharing under Wayland'
             'kdialog: needed for file dialogs in KDE'
             'gnome-keyring: for storing passwords in GNOME keyring'
             'kwallet: for storing passwords in KWallet'
