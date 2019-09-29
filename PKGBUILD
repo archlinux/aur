@@ -9,7 +9,7 @@ pkgname=(fastgcc)
 pkgver=9.2.0
 _majorver=${pkgver:0:1}
 _islver=0.21
-pkgrel=7
+pkgrel=8
 pkgdesc='experimental gcc supporting faster compilation'
 arch=(x86_64)
 license=(GPL LGPL FDL custom)
@@ -82,6 +82,8 @@ build() {
       --disable-cet \
       --disable-ld \
       --enable-gold
+
+  sed -i "s|-O2|-Ofast|g" Makefile
 
   make
 
