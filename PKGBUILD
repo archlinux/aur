@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-crypt-jwt'
-pkgver='0.024'
+pkgver='0.025'
 pkgrel='1'
 pkgdesc="JSON Web Token (JWT, JWS, JWE) as defined by RFC7519, RFC7515, RFC7516"
 arch=('any')
@@ -11,10 +11,10 @@ options=('!emptydirs')
 depends=('perl-cryptx>=0.034' 'perl-json-maybexs>=1.003005' 'perl>=5.006')
 makedepends=()
 url='https://metacpan.org/release/Crypt-JWT'
-source=('https://cpan.metacpan.org/authors/id/M/MI/MIK/Crypt-JWT-0.024.tar.gz')
-md5sums=('ca6d05a560a8100a1b3efb4f8684055d')
-sha512sums=('7900b14a7ee5c9234130a048bb47d7ccee235210efd39090406a46fd0948f92a833c3641caa75422779e4d68d696d4d90fac365795cf06a87b10e326dd7bbcbe')
-_distdir="Crypt-JWT-0.024"
+source=('https://cpan.metacpan.org/authors/id/M/MI/MIK/Crypt-JWT-0.025.tar.gz')
+md5sums=('1057f0fed5a2e85305a86bc0ad6b4c1b')
+sha512sums=('dea85ea2fd0b340c3a99c8c1f422e1df7993f655371374849f8b92817fa6f4716b00cc44f208936608f7de0755c627df8f082a40da6847829412c5a28a585883')
+_distdir="Crypt-JWT-0.025"
 
 build() {
   export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                      \
