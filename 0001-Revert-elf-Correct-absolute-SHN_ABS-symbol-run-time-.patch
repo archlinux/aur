@@ -1,4 +1,4 @@
-From 7d0f675e8f8a21ccfb2b153194edeb5094425fa7 Mon Sep 17 00:00:00 2001
+From 962eb3d555c0d95d704922032c4750b468818e4e Mon Sep 17 00:00:00 2001
 From: Eli Schwartz <eschwartz@archlinux.org>
 Date: Fri, 28 Sep 2018 05:19:46 +0000
 Subject: [PATCH] Revert "elf: Correct absolute (SHN_ABS) symbol run-time
@@ -18,7 +18,7 @@ This reverts commit e7feec374c635b6a29d65c39ae5e1855528fed39.
  delete mode 100644 elf/tst-absolute-sym.c
 
 diff --git a/elf/Makefile b/elf/Makefile
-index d470e41402..2ff8fe3d7f 100644
+index 8f962991a3..98d531ae3a 100644
 --- a/elf/Makefile
 +++ b/elf/Makefile
 @@ -190,7 +190,7 @@ tests += restest1 preloadtest loadfail multiload origtest resolvfail \
@@ -40,18 +40,18 @@ index d470e41402..2ff8fe3d7f 100644
  		tst-audit13mod1 tst-sonamemove-linkmod1 \
  		tst-sonamemove-runmod1 tst-sonamemove-runmod2
 diff --git a/elf/dl-addr.c b/elf/dl-addr.c
-index 9d285d76a7..0dd7d1dde9 100644
+index e48795871b..482704e77f 100644
 --- a/elf/dl-addr.c
 +++ b/elf/dl-addr.c
-@@ -59,7 +59,6 @@ determine_info (const ElfW(Addr) addr, struct link_map *match, Dl_info *info,
- 		     we can omit that test here.  */
+@@ -60,7 +60,6 @@ determine_info (const ElfW(Addr) addr, struct link_map *match, Dl_info *info,
+ 		  symndx = ELF_MACHINE_HASH_SYMIDX (match, hasharr);
  		  if ((symtab[symndx].st_shndx != SHN_UNDEF
  		       || symtab[symndx].st_value != 0)
 -		      && symtab[symndx].st_shndx != SHN_ABS
  		      && ELFW(ST_TYPE) (symtab[symndx].st_info) != STT_TLS
  		      && DL_ADDR_SYM_MATCH (match, &symtab[symndx],
  					    matchsym, addr)
-@@ -92,7 +91,6 @@ determine_info (const ElfW(Addr) addr, struct link_map *match, Dl_info *info,
+@@ -91,7 +90,6 @@ determine_info (const ElfW(Addr) addr, struct link_map *match, Dl_info *info,
  	    && ELFW(ST_TYPE) (symtab->st_info) != STT_TLS
  	    && (symtab->st_shndx != SHN_UNDEF
  		|| symtab->st_value != 0)
@@ -61,7 +61,7 @@ index 9d285d76a7..0dd7d1dde9 100644
  	  matchsym = (ElfW(Sym) *) symtab;
 diff --git a/elf/tst-absolute-sym-lib.c b/elf/tst-absolute-sym-lib.c
 deleted file mode 100644
-index e0becab58e..0000000000
+index 2493d76ca5..0000000000
 --- a/elf/tst-absolute-sym-lib.c
 +++ /dev/null
 @@ -1,25 +0,0 @@
@@ -81,7 +81,7 @@ index e0becab58e..0000000000
 -
 -   You should have received a copy of the GNU Lesser General Public
 -   License along with the GNU C Library; if not, see
--   <http://www.gnu.org/licenses/>.  */
+-   <https://www.gnu.org/licenses/>.  */
 -
 -extern char absolute;
 -
@@ -92,7 +92,7 @@ index e0becab58e..0000000000
 -}
 diff --git a/elf/tst-absolute-sym-lib.lds b/elf/tst-absolute-sym-lib.lds
 deleted file mode 100644
-index fcb990116a..0000000000
+index e71d53e2a3..0000000000
 --- a/elf/tst-absolute-sym-lib.lds
 +++ /dev/null
 @@ -1,19 +0,0 @@
@@ -112,12 +112,12 @@ index fcb990116a..0000000000
 -
 -   You should have received a copy of the GNU Lesser General Public
 -   License along with the GNU C Library; if not, see
--   <http://www.gnu.org/licenses/>.  */
+-   <https://www.gnu.org/licenses/>.  */
 -
 -"absolute" = 0x55aa;
 diff --git a/elf/tst-absolute-sym.c b/elf/tst-absolute-sym.c
 deleted file mode 100644
-index c641f7ecdf..0000000000
+index 4af1554929..0000000000
 --- a/elf/tst-absolute-sym.c
 +++ /dev/null
 @@ -1,38 +0,0 @@
@@ -137,7 +137,7 @@ index c641f7ecdf..0000000000
 -
 -   You should have received a copy of the GNU Lesser General Public
 -   License along with the GNU C Library; if not, see
--   <http://www.gnu.org/licenses/>.  */
+-   <https://www.gnu.org/licenses/>.  */
 -
 -#include <support/check.h>
 -#include <support/support.h>
@@ -160,10 +160,10 @@ index c641f7ecdf..0000000000
 -
 -#include <support/test-driver.c>
 diff --git a/sysdeps/generic/ldsodefs.h b/sysdeps/generic/ldsodefs.h
-index b1fc5c31f9..41f3415e6c 100644
+index f3ba13ee68..556eb7be66 100644
 --- a/sysdeps/generic/ldsodefs.h
 +++ b/sysdeps/generic/ldsodefs.h
-@@ -72,8 +72,7 @@ typedef struct link_map *lookup_t;
+@@ -89,8 +89,7 @@ typedef struct link_map *lookup_t;
     if non-NULL.  Don't check for NULL map if MAP_SET is TRUE.  */
  #define SYMBOL_ADDRESS(map, ref, map_set)				\
    ((ref) == NULL ? 0							\
