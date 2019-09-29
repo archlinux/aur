@@ -3,7 +3,7 @@
 pkgname=naiveproxy-git
 _pkgname=naiveproxy
 pkgdesc='Make a fortune quietly'
-pkgver=r33.7929e0850
+pkgver=77.0.3865.90.r33.7929e0850
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/klzgrad/naiveproxy'
@@ -16,7 +16,7 @@ md5sums=('SKIP')
 
 pkgver(){
   cd ${srcdir}/${_pkgname}
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "%s.r%s.%s" "$(cat CHROMIUM_VERSION)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build(){
