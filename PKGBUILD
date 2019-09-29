@@ -1,15 +1,14 @@
 # Maintainer: Khorne <khorne AT khorne DOT me>
 pkgname=drone
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Drone is a Continuous Delivery platform built on Docker, written in Go - OSS variant"
 arch=('x86_64')
 url="https://drone.io"
 license=('Apache')
 makedepends=('go' 'git')
-#source=("$pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/v$pkgver.tar.gz")
-source=("$pkgname-$pkgver::git+https://github.com/$pkgname/$pkgname.git#commit=3a7ae654fc66b41ec1ecdfbcf23e8b4262c3cb24")
-md5sums=('SKIP')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/v$pkgver.tar.gz")
+sha256sums=('975db851efc3673d64477611cd0ef372321bcbe15aa917a1cb553bd533a13aea')
 
 build() {
     cd "$pkgname-$pkgver"
