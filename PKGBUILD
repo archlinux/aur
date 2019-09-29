@@ -4,7 +4,7 @@ url='https://wiki.ros.org/rosbridge_server'
 pkgname='ros-melodic-rosbridge-server'
 pkgver='0.11.3'
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -29,7 +29,7 @@ depends=(
 	${ros_depends[@]}
     python-autobahn
     python-backports.ssl
-    python-tornado
+    python-tornado=4
     python-twisted
 )
 
