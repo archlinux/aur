@@ -5,75 +5,53 @@ url='https://moveit.ros.org'
 pkgname='ros-melodic-moveit-core'
 pkgver='1.0.2'
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
-ros_makedepends=(ros-melodic-eigen-stl-containers
-  ros-melodic-octomap-msgs
-  ros-melodic-trajectory-msgs
-  ros-melodic-moveit-msgs
-  ros-melodic-roslib
-  ros-melodic-kdl-parser
-  ros-melodic-geometry-msgs
-  ros-melodic-urdf
-  ros-melodic-random-numbers
-  ros-melodic-rostime
-  ros-melodic-srdfdom
-  ros-melodic-octomap
-  ros-melodic-visualization-msgs
-  ros-melodic-sensor-msgs
-  ros-melodic-geometric-shapes
-  ros-melodic-catkin
-  ros-melodic-eigen-conversions
-  ros-melodic-std-msgs
-  ros-melodic-shape-msgs
-  ros-melodic-tf2-eigen
-  ros-melodic-fcl
-  ros-melodic-moveit-resources)
-makedepends=('cmake' 'ros-build-tools'
+ros_makedepends=(
+)
+
+makedepends=(
+  'cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
+  pkg-config
+)
+
+ros_depends=(
+  ros-melodic-eigen-stl-containers
+  ros-melodic-geometric-shapes
+  ros-melodic-geometry-msgs
+  ros-melodic-kdl-parser
+  ros-melodic-urdf
+  ros-melodic-moveit-msgs
+  ros-melodic-octomap
+  ros-melodic-octomap-msgs
+  ros-melodic-random-numbers
+  ros-melodic-roslib
+  ros-melodic-rostime
+  ros-melodic-rosconsole
+  ros-melodic-sensor-msgs
+  ros-melodic-shape-msgs
+  ros-melodic-srdfdom
+  ros-melodic-std-msgs
+  ros-melodic-tf2-eigen
+  ros-melodic-tf2-geometry-msgs
+  ros-melodic-trajectory-msgs
+  ros-melodic-visualization-msgs
+  ros-melodic-xmlrpcpp
+)
+
+depends=(
+  ${ros_depends[@]}
   eigen
   urdfdom-headers
   assimp
   console-bridge
   boost
   urdfdom
-  pkg-config)
+  fcl
+)
 
-ros_depends=(ros-melodic-eigen-stl-containers
-  ros-melodic-octomap-msgs
-  ros-melodic-trajectory-msgs
-  ros-melodic-moveit-msgs
-  ros-melodic-std-msgs
-  ros-melodic-kdl-parser
-  ros-melodic-geometry-msgs
-  ros-melodic-urdf
-  ros-melodic-random-numbers
-  ros-melodic-rostime
-  ros-melodic-srdfdom
-  ros-melodic-octomap
-  ros-melodic-visualization-msgs
-  ros-melodic-sensor-msgs
-  ros-melodic-geometric-shapes
-  ros-melodic-eigen-conversions
-  ros-melodic-fcl
-  ros-melodic-tf2-eigen
-  ros-melodic-moveit-resources)
-depends=(${ros_depends[@]}
-  eigen
-  urdfdom-headers
-  assimp
-  console-bridge
-  boost
-  urdfdom)
-
-# Git version (e.g. for debugging)
-# _tag=release/melodic/moveit_core/${pkgver}-${_pkgver_patch}
-# _dir=${pkgname}
-# source=("${_dir}"::"git+https://github.com/ros-gbp/moveit-release.git"#tag=${_tag})
-# sha256sums=('6178568b18b13a3570a8ae85c404227e1e3fbd57250b23d7d705795c2463be57')
-
-# Tarball version (faster download)
 _dir="moveit-${pkgver}/moveit_core"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-planning/moveit/archive/${pkgver}.tar.gz")
 sha256sums=('b8194308c57dbe34bbb729cfccb30d1113af3a54a90a2cfb49482142d1044ea4')
