@@ -1,6 +1,6 @@
 # Maintainer: Giacomo Comitti <dev@gcomit.com>
 pkgname=mktree
-pkgver=0.3.1
+pkgver=0.3.2
 _pkgname="_${pkgname}"
 pkgrel=1
 pkgdesc="Simple tool for creating directory trees in one shot"
