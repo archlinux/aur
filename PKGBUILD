@@ -7,7 +7,7 @@ pkgdesc="Crystal Launcher is a unofficial launcher for Minecraft that has own pa
 arch=('any')
 url="https://crystal-launcher.net/"
 license=('CCPL')
-depends=('java-runtime' 'openal' 'java-openjfx')
+depends=('jdk8-openjdk' 'openal' 'java8-openjfx')
 makedepends=('unzip')
 provides=('crystallauncher')
 
@@ -19,7 +19,7 @@ source=("http://main.crystal-launcher.pl/releases/other/CrystalLauncher.jar"
 noextract=('jar')
 
 
-md5sums=('SKIP'
+md5sums=('5a1ad091cd288d88c4132d8d9a616a00'
          '39650fe38b376bcd45090640fa867cc3'
          '4724472411e932b005f1b0d66a47f14e'
          '1fc2ef4be5729d96f9928af152fc1763')
