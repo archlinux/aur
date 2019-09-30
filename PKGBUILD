@@ -1,8 +1,8 @@
-# Maintainer: kitsunyan <`echo a2l0c3VueWFuQGFpcm1haWwuY2MK | base64 -d`>
+# Maintainer: Marko Korhonen <reekymarko@reekynet.com>
 
 pkgname=drawio-desktop
 pkgver=12.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Diagram drawing application built on web technology'
 arch=('x86_64')
 url='https://github.com/jgraph/drawio'
