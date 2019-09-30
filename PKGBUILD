@@ -25,6 +25,7 @@ depends=(
 )
 optdepends=(
     'lua51-basexx: experimental_dot_auth module',
+    'lua51-cqueues: http and dns64 module, policy.rpz() function',
     'lua51-http: http module',
     'lua51-filesystem: prefill module',
     'lua51-psl: policy.slice_randomize_psl() function',
