@@ -3,12 +3,12 @@
 _pkgname=kapp
 pkgname=${_pkgname}-git
 pkgver=r193.b0d6b82
-pkgrel=2
+pkgrel=3
 pkgdesc='kapp is a simple deployment tool focused on the concept of "Kubernetes application"'
 url="https://get-kapp.io/"
 license=('Apache')
 arch=('x86_64')
-makedepends=('go' 'ytt>=0.17.0')
+makedepends=('go-pie' 'ytt>=0.17.0')
 source=("git+https://github.com/k14s/${_pkgname}/")
 sha256sums=('SKIP')
 provides=("kapp")
