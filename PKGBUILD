@@ -4,13 +4,14 @@
 
 pkgname=nftables-git
 pkgver=0.9.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Netfilter tables userspace tools'
 arch=(i686 x86_64)
 url='https://netfilter.org/projects/nftables/'
 license=('GPL2')
 depends=(libmnl libnftnl-git gmp readline ncurses jansson)
 makedepends=(asciidoc git bison flex)
+backup=('etc/nftables.conf')
 provides=(nftables)
 conflicts=(nftables)
 source=(git://git.netfilter.org/nftables
