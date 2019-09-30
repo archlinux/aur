@@ -18,5 +18,4 @@ package() {
     cp -r --target-directory=$pkgdir/usr/share/webapps/nextcloud/apps/ $srcdir/$_releasename
 }
 
-sha256sums=('d1490505ef27e8fb19d81318c140321fa05ee2f45ff6b534d96d0d2559645934')
 sha256sums=('9194bf1d9c7bf80deccfcb522c67b70d962aefd2cb2011aceadbc91c3cd54a9a')
