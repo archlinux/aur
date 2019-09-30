@@ -8,7 +8,7 @@
 
 pkgname=blender-2.8-git
 _fragment="#branch=master"
-pkgver=2.81.r90901.04ef62177fb
+pkgver=2.81.r90914.ddb157999ee
 pkgrel=1
 pkgdesc="Development version of Blender 2.8 branch"
 arch=('i686' 'x86_64')
@@ -18,8 +18,7 @@ depends=('alembic' 'libgl' 'python' 'python-numpy' 'openjpeg' 'desktop-file-util
          'openvdb' 'opencollada' 'opensubdiv' 'openshadinglanguage' 'libtiff' 'libpng')
 makedepends=('git' 'cmake' 'boost' 'mesa' 'llvm')
 ((DISABLE_NINJA)) ||  makedepends+=('ninja')
-((DISABLE_CUDA)) && optdepends=('cuda: CUDA support in Cycles') || makedepends+=('cuda')
-((ENABLE_OPTIX)) && ! ((DISABLE_CUDA)) && makedepends+=('optix>=7.0')
+((DISABLE_CUDA)) && optdepends=('cuda: CUDA support in Cycles') || makedepends+=('cuda' 'optix>=7.0')
 provides=('blender-2.81')
 conflicts=('blender-2.81')
 license=('GPL')
@@ -70,7 +69,8 @@ build() {
   _CUDA_PKG=`pacman -Qq cuda 2>/dev/null` || true
   if [ "$_CUDA_PKG" != "" ] && ! ((DISABLE_CUDA)) ; then
       _EXTRAOPTS=( -DWITH_CYCLES_CUDA_BINARIES=ON
-                   -DCUDA_TOOLKIT_ROOT_DIR=/opt/cuda)
+                   -DCUDA_TOOLKIT_ROOT_DIR=/opt/cuda
+                   -DOPTIX_ROOT_DIR=/opt/optix )
       if [ -v _cuda_capability ]; then
         _EXTRAOPTS+=(-DCYCLES_CUDA_BINARIES_ARCH=$(IFS=';'; echo "${_cuda_capability[*]}";))
       fi
@@ -79,8 +79,6 @@ build() {
         [ -L "/usr/lib/ccache/bin/$_cuda_gcc" ] && _CMAKE_FLAGS+=( -DCUDA_HOST_COMPILER=/usr/lib/ccache/bin/$_cuda_gcc )
       fi
   fi
-  
-  ((ENABLE_OPTIX)) && _EXTRAOPTS+=( -DOPTIX_ROOT_DIR="/opt/optix" )
 
   ((DISABLE_NINJA)) && generator="Unix Makefiles" || generator="Ninja"
   cmake -G "$generator" "$srcdir/blender" \
