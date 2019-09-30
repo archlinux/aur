@@ -1,7 +1,7 @@
 pkgbase = baikal
 	pkgdesc = Lightweight CalDAV+CardDAV server
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://sabre.io/baikal/
 	install = baikal.install
 	arch = any
@@ -13,8 +13,10 @@ pkgbase = baikal
 	options = !strip
 	source = https://github.com/fruux/Baikal/releases/download/0.6.0/baikal-0.6.0.zip
 	source = baikal.install
+	source = Fixed-getcontenttype-being-null.patch::https://github.com/sabre-io/dav/commit/7badab41ca48b2705426907d533aca374ba6401f.patch
 	sha1sums = 47398b00cad4330bfac9df8abc03df896e2d206f
 	sha1sums = deb948e61c3cd8d6ad560321f78c0b288f7a6210
+	sha1sums = 955a7957e013b6f643d53b5d6c648c52d42550b9
 
 pkgname = baikal
 
