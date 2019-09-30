@@ -1,5 +1,5 @@
 pkgname=mingw-w64-paraview
-_majordotminor=5.6
+_majordotminor=5.7
 pkgver=${_majordotminor}.0
 _pkgver=${pkgver}
 pkgrel=1
@@ -7,21 +7,19 @@ pkgdesc='Parallel Visualization Application using VTK (mingw-w64)'
 arch=('any')
 url='http://www.paraview.org'
 license=('custom')
-depends=('mingw-w64-qt5-xmlpatterns' 'mingw-w64-qt5-tools' 'mingw-w64-boost' 'mingw-w64-glew' 'mingw-w64-expat'  'mingw-w64-freetype2'  'mingw-w64-libjpeg'  'mingw-w64-libxml2' 'mingw-w64-libtheora' 'mingw-w64-libpng' 'mingw-w64-libtiff' 'mingw-w64-zlib' 'mingw-w64-jsoncpp' 'mingw-w64-pugixml' 'mingw-w64-hdf5' 'mingw-w64-lz4' 'mingw-w64-cgns' 'mingw-w64-netcdf-cxx-legacy' 'mingw-w64-double-conversion' 'mingw-w64-protobuf')
-makedepends=('mingw-w64-cmake' 'mingw-w64-eigen' 'mingw-w64-wine' 'mingw-w64-pegtl' 'protobuf')
+depends=('mingw-w64-qt5-xmlpatterns' 'mingw-w64-qt5-tools' 'mingw-w64-boost' 'mingw-w64-glew' 'mingw-w64-freetype2' 'mingw-w64-libxml2' 'mingw-w64-libtiff' 'mingw-w64-jsoncpp' 'mingw-w64-hdf5' 'mingw-w64-lz4' 'mingw-w64-proj' 'mingw-w64-cgns' 'mingw-w64-netcdf' 'mingw-w64-double-conversion' 'mingw-w64-protobuf')
+makedepends=('mingw-w64-cmake' 'mingw-w64-eigen' 'mingw-w64-utf8cpp' 'mingw-w64-wine' 'protobuf')
 options=('!buildflags' '!strip' 'staticlibs')
-source=("http://paraview.org/files/v${_majordotminor}/ParaView-v${_pkgver}.tar.gz"
-        "compile-tools.patch")
-sha256sums=('cb8c4d752ad9805c74b4a08f8ae6e83402c3f11e38b274dba171b99bb6ac2460'
-            'ea4211078f1e1d7d2bb999861d81fbcb0cc6176844fead431c473035e94bd4bb')
+source=("http://paraview.org/files/v${_majordotminor}/ParaView-v${_pkgver}.tar.gz")
+sha256sums=('8d39889668c10e4890a9bd3775675af981cf919a56b8d3a2397347308375d5e6')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
   cd "${srcdir}/ParaView-v${_pkgver}"
-
-  # cannot be modified upstream, see https://gitlab.kitware.com/paraview/paraview/merge_requests/1716
-  patch -p1 -i "${srcdir}/compile-tools.patch"
+  cd VTK
+  curl -L https://gitlab.kitware.com/vtk/vtk/merge_requests/5734.patch | patch -p1
+  curl -L https://gitlab.kitware.com/vtk/vtk/merge_requests/5925.patch | patch -p1
 }
 
 build() {
@@ -29,22 +27,19 @@ build() {
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-cmake \
-    -DCMAKE_RULE_MESSAGES=OFF \
-    -DPARAVIEW_INSTALL_DEVELOPMENT_FILES=ON \
-    -DPARAVIEW_ENABLE_PYTHON=OFF \
-    -DPARAVIEW_ENABLE_EMBEDDED_DOCUMENTATION=OFF \
-    -DPARAVIEW_USE_VTKM=OFF \
-    -DVTK_USE_SYSTEM_LIBRARIES=ON \
-    -DVTK_USE_SYSTEM_QTTESTING=OFF \
-    -DVTK_USE_SYSTEM_XDMF2=OFF \
-    -DVTK_USE_SYSTEM_GL2PS=OFF \
-    -DVTK_USE_SYSTEM_LIBHARU=OFF \
-    -DHDF5_ROOT=/usr/${_arch}/ ..
+      -DPARAVIEW_INSTALL_DEVELOPMENT_FILES=ON \
+      -DPARAVIEW_ENABLE_PYTHON=OFF \
+      -DPARAVIEW_ENABLE_EMBEDDED_DOCUMENTATION=OFF \
+      -DPARAVIEW_USE_VTKM=OFF \
+      -DPARAVIEW_PLUGINS_DEFAULT=OFF \
+      -DPARAVIEW_USE_EXTERNAL=ON \
+      -DVTK_MODULE_USE_EXTERNAL_VTK_gl2ps=OFF \
+      -DVTK_MODULE_USE_EXTERNAL_VTK_libharu=OFF \
+      ..
     make
     popd
   done
 }
-
 
 package() {
   for _arch in ${_architectures}; do
