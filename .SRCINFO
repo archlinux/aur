@@ -1,6 +1,6 @@
 pkgbase = ttf-iosevka-term-slab
 	pkgdesc = A slender monospace typeface. Shape: default
-	pkgver = 2.3.0
+	pkgver = 2.3.1
 	pkgrel = 1
 	url = https://be5invis.github.io/Iosevka/
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = ttf-iosevka-term-slab
 	depends = fontconfig
 	depends = xorg-font-utils
 	conflicts = ttf-iosevka-pack
-	source = https://github.com/be5invis/Iosevka/releases/download/v2.3.0/06-iosevka-term-slab-2.3.0.zip
-	source = ttf-iosevka-term-slab-2.3.0-1-LICENSE.md::https://raw.githubusercontent.com/be5invis/Iosevka/master/LICENSE.md
-	sha256sums = db4dccbd95252a252c7711e2cae01b59f25095ce168f6f71477b8a33a714be2b
+	source = https://github.com/be5invis/Iosevka/releases/download/v2.3.1/06-iosevka-term-slab-2.3.1.zip
+	source = ttf-iosevka-term-slab-2.3.1-1-LICENSE.md::https://raw.githubusercontent.com/be5invis/Iosevka/master/LICENSE.md
+	sha256sums = 6a4bf138635cac1ed83e295b74a333b9ae313590d14cf600a7cca6bae5032021
 	sha256sums = ecfd74a1d6749bf509cee122870da0186bccfae446e3f6bc5faff253577ab000
 
 pkgname = ttf-iosevka-term-slab
