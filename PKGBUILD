@@ -4,7 +4,7 @@
 _pkgname='istio'
 pkgname="${_pkgname}-bin"
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='An open platform to connect, manage, and secure microservices'
 arch=('x86_64')
 url='https://istio.io'
@@ -15,7 +15,7 @@ makedepends=()
 conflicts=("${_pkgname}")
 
 source=("https://github.com/istio/istio/releases/download/${pkgver}/istio-${pkgver}-linux.tar.gz")
-sha256sums=('1a5aa78a150247dd4539611134a82c5ca887afc8056e397dd4ed128cb145c7ef')
+sha256sums=('72cf2a931dd20509ea21bdceb16d8330d53d7e236e1a26fffc24a54404998389')
 
 package() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
