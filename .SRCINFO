@@ -1,6 +1,6 @@
 pkgbase = cbatticon-gtk2
-	pkgdesc = Lightweight and fast battery icon that sits in your system tray
-	pkgver = 1.6.7
+	pkgdesc = Lightweight battery icon for the system tray (gtk2)
+	pkgver = 1.6.9
 	pkgrel = 1
 	url = https://github.com/valr/cbatticon
 	arch = x86_64
@@ -8,10 +8,10 @@ pkgbase = cbatticon-gtk2
 	license = GPL2
 	depends = libnotify
 	depends = gtk2
-	provides = cbatticon
+	provides = cbatticon=1.6.9-1
 	conflicts = cbatticon
-	source = cbatticon-1.6.7.tar.gz::https://github.com/valr/cbatticon/archive/1.6.7.tar.gz
-	sha256sums = d0c33320a8e4421ade0f3cfaf3548a6f620ebc275339019cb5ff1ed87c2256e8
+	source = cbatticon-1.6.9.tar.gz::https://github.com/valr/cbatticon/archive/1.6.9.tar.gz
+	sha256sums = ba870df67fda30d23a252b7e8091093417d59e505ba8911dcc09b80c876f4a2c
 
 pkgname = cbatticon-gtk2
 
