@@ -2,51 +2,53 @@
 # Contributor: fishburn <frankthefishburn@gmail.com>
 
 pkgname=fsl
-pkgver=6.0.1
-pkgrel=2
+pkgver=6.0.2
+pkgrel=1
 pkgdesc="A comprehensive library of analysis tools for FMRI, MRI and DTI brain imaging data"
 arch=("x86_64")
 url="http://www.fmrib.ox.ac.uk/fsl/"
 license=(custom)
-depends=(gd libxml2 libxml++2.6 gsl libpng nlopt newmat tcl tk zlib python glu boost-libs vtk sqlite python3 fslpy bc)
+depends=(gd libxml2 libxml++2.6 gsl libpng nlopt newmat tcl tk zlib python glu boost-libs vtk sqlite python3 fslpy bc openblas)
 makedepends=(boost fftw)
 optdepends=(cuda)
 source=("http://www.fmrib.ox.ac.uk/fsldownloads/fsl-${pkgver}-sources.tar.gz"
         "http://www.fmrib.ox.ac.uk/fsldownloads/fsl-${pkgver}-feeds.tar.gz"
-        "externallibs.mk"
-	    "systemvars.mk"
+	"buildSettings.mk"
         "imcp"
-	    "imglob"
-	    "immv"
-	    "001-use_distribution_environment.patch"
-	    "002-fix_meldata_usage_of_ifstream.patch"
-	    "003-fix_fsl_exec_empty_errorCode.patch")
+	"imglob"
+	"immv"
+	"001-use_distribution_environment.patch"
+	"002-fix_meldata_usage_of_ifstream.patch"
+	"003-fix_fsl_exec_empty_errorCode.patch"
+	"004-fix_missing_LIB_PROB.patch")
 
-sha256sums=('ccab9709239340299b0ca034cb00d6ce0170b9e0d075b3adb55c556feacfb2da'
-	        '91aa756d5a052702cc68e41bcc9a64ba7c7f8853feb215d5a44eeb710c4a0fd0'
-	        'e3345af9d3a1bca157c3a5700c63c4d0e01da3cec525f8ffb8f1a04b048aeff1'
-            '326c73cf0fb07ef9436ec31dda00f1e77488949152aa908b50aa4059701b2984'
+sha256sums=('c118b351c6cedb441af7e1b9d194cf344505ff53b417063f697b86305a908afd'
+	    '53c885e01881d50ff8db230c849f98fcb9ca5139c5215cfca4f901e5cad66eee'
+	    'e73d3b7289981c95581d9378c2a39694bc0fcdf7170c5defc864a47871e98df1'
             'c61f185fbe7e297c4518e96377aa5ff4852f90eda0dbb9ae8edc5e24735e14ad'
-	        '7a1039cdc38b4d728f14efce3b0fda0cadc7bfcd3432556c3f3113985bf2720a'
-	        'b6f61a6d5672b6684f19150f6e21ded1bd04ec6415dcf07a32291e4002bfa5d8'
-	        'b59921d9b76c07da6c775d63d5fe99ca5069a15827aa7a3d44c2e5eb6f3638d6'
-	        '13d4cf35343e7a73bc2534c94b1b0d4db41c338d374e6982091e4cf7a421d420'
-	        '64b4ccefa63a3cf920b185dd52e94b918c24f2cedaebcec8efb767bd80a6418a')
+	    '7a1039cdc38b4d728f14efce3b0fda0cadc7bfcd3432556c3f3113985bf2720a'
+	    'b6f61a6d5672b6684f19150f6e21ded1bd04ec6415dcf07a32291e4002bfa5d8'
+	    '8c85234f03d3cd226f84fd1aa446e46a8f00c2c6ae3cc7fefedc1e48ffc61daa'
+	    '13d4cf35343e7a73bc2534c94b1b0d4db41c338d374e6982091e4cf7a421d420'
+	    '64b4ccefa63a3cf920b185dd52e94b918c24f2cedaebcec8efb767bd80a6418a'
+	    'adea0372f42026e72e385f1bec19ecc8cffa46de1f617271f14c9345c6b83c04')
 
 prepare() {
 	cd "${srcdir}"
 	export FSLDIR="${srcdir}/fsl"
 	. "${FSLDIR}/etc/fslconf/fsl.sh"
 	export FSLMACHTYPE=$(${FSLDIR}/etc/fslconf/fslmachtype.sh)
+        # We only create this dir to keep 'build' from complaining
 	mkdir "${FSLDIR}/config/${FSLMACHTYPE}"
-	# Use config linux_64-gcc4.8 as template
-	cp "${srcdir}"/{externallibs.mk,systemvars.mk} "${FSLDIR}/config/${FSLMACHTYPE}"
+	cp "${srcdir}"/buildSettings.mk "${FSLDIR}"/config/
 
 	# Apply patches
-	patch -Np1 -i "${srcdir}/001-use_distribution_environment.patch"
-	patch -Np1 -i "${srcdir}/002-fix_meldata_usage_of_ifstream.patch"
+	patch -Np1 -i "${srcdir}"/001-use_distribution_environment.patch
+	patch -Np1 -i "${srcdir}"/002-fix_meldata_usage_of_ifstream.patch
 	# From https://www.jiscmail.ac.uk/cgi-bin/webadmin?A2=fsl;e8fa48c1.1501
-	patch -Np1 -i "${srcdir}/003-fix_fsl_exec_empty_errorCode.patch"
+	patch -Np1 -i "${srcdir}"/003-fix_fsl_exec_empty_errorCode.patch
+	# I'm not sure why -L${LIB_PROB} is missing in some Makefiles 
+	patch -Np1 -i "${srcdir}"/004-fix_missing_LIB_PROB.patch
 
 	# Insert makepkg build flags into configuration
 	sed -i '0,/${AccumulatedIncFlags}/{s^${AccumulatedIncFlags}^& '"${CFLAGS}"'^}' "${srcdir}/fsl/config/common/vars.mk"
