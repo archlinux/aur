@@ -1,6 +1,6 @@
 pkgbase = jellyfin-git
 	pkgdesc = The Free Software Media Browser
-	pkgver = 10.3.7.r360.gee637e8fec
+	pkgver = 10.3.7.r489.g7203f463f4
 	pkgrel = 1
 	url = https://github.com/jellyfin/jellyfin
 	arch = i686
@@ -11,7 +11,6 @@ pkgbase = jellyfin-git
 	makedepends = dotnet-sdk
 	depends = dotnet-runtime
 	depends = ffmpeg
-	depends = imagemagick
 	depends = sqlite
 	provides = jellyfin
 	conflicts = jellyfin

@@ -3,13 +3,13 @@
 # Contributor: Daniel Seymour <dannyseeless@gmail.com>
 
 pkgname=jellyfin-git
-pkgver=10.3.7.r360.gee637e8fec
+pkgver=10.3.7.r489.g7203f463f4
 pkgrel=1
 pkgdesc='The Free Software Media Browser'
 arch=('i686' 'x86_64' 'armv6h')
 url='https://github.com/jellyfin/jellyfin'
 license=('GPL2')
-depends=('dotnet-runtime' 'ffmpeg' 'imagemagick' 'sqlite')
+depends=('dotnet-runtime' 'ffmpeg' 'sqlite')
 makedepends=('git' 'dotnet-sdk')
 provides=('jellyfin')
 conflicts=('jellyfin')
@@ -35,9 +35,7 @@ pkgver() {
 
 prepare() {
   cd jellyfin
-  git submodule init
-  git config submodule.MediaBrowser.WebDashboard/jellyfin-web.url "$srcdir"/jellyfin-web
-  git submodule update --remote
+  ln -sf "$srcdir"/jellyfin-web/src ./MediaBrowser.WebDashboard/jellyfin-web
 }
 
 build(){
