@@ -4,14 +4,15 @@
 # toolchain build order: linux-api-headers->glibc->binutils->gcc->binutils->glibc
 
 pkgname=linux-api-headers
-pkgver=5.1
+pkgver=5.3.1
 pkgrel=1
 pkgdesc='Kernel headers sanitized for use in userspace'
 arch=(any)
 url='https://www.gnu.org/software/libc'
 license=(GPL2)
+makedepends=('rsync')
 source=(https://www.kernel.org/pub/linux/kernel/v${pkgver:0:1}.x/linux-${pkgver}.tar.{xz,sign})
-md5sums=('15fbdff95ff98483069ac6e215b9f4f9'
+md5sums=('4c68633ce304b8fbc7be2d3452060c11'
          'SKIP')
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886'   # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E')  # Greg Kroah-Hartman
@@ -29,7 +30,4 @@ package() {
 
   # use headers from libdrm
   rm -r "$pkgdir/usr/include/drm"
-  
-  # clean-up unnecessary files generated during install
-  find "$pkgdir" \( -name .install -o -name ..install.cmd \) -delete
 }
