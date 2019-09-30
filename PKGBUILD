@@ -1,6 +1,6 @@
 pkgname=esp-open-sdk-git
-pkgver=201910010531
-pkgrel=1
+pkgver=1
+pkgrel=14
 pkgdesc="Free and open (as much as possible) integrated SDK for ESP8266 chips"
 arch=("i686" "x86_64")
 url="https://github.com/pfalcon/esp-open-sdk"
