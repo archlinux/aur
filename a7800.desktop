@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=A7800
+Comment=A7800 is a fork of the MAME Atari 7800 driver
+Exec=a7800-starter.sh
+Icon=a7800
+Terminal=false
+Categories=Games;

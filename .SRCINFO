@@ -1,0 +1,33 @@
+pkgbase = a7800
+	pkgdesc = A7800 is a fork of the MAME Atari 7800 driver, with several enhancements added (ProSystem)
+	pkgver = 188_03
+	pkgrel = 1
+	url = http://7800.8bitdev.org/index.php/A7800_Emulator
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = custom:MAME License
+	makedepends = nasm
+	makedepends = python
+	makedepends = glm
+	makedepends = libxinerama
+	depends = sdl2_ttf
+	depends = qt5-base
+	depends = lua
+	depends = libutf8proc
+	depends = pugixml
+	depends = portmidi
+	depends = portaudio
+	source = http://7800.8bitdev.org/images/a/aa/A7800.188-03.Src.zip
+	source = http://7800.8bitdev.org/resources/assets/78008bitdevlogo.png
+	source = a7800-starter.sh
+	source = a7800.desktop
+	sha256sums = b1d512d4096956e2bc2a645c715dbbda283b76ece23cdd8b607815a1b1b4fbc5
+	sha256sums = b89310a46a5305c41f8dfb63e915aaa1e12ea74209cd6fcf7ec3e4753067ff73
+	sha256sums = 0abdcca941d241158ad009958675f6576518cbf6b85cf9fae3386dc146649d0b
+	sha256sums = 06b0773ebd2795fb15c9380449f6464c03414f514c6f5e5aeb25835bed000ddb
+
+pkgname = a7800
+
