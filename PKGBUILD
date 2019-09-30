@@ -25,7 +25,7 @@ build() {
 
 package() {
   cd "$pkgname-$pkgver/squashfs-root"
-  install -Dm755 "usr/bin/rx" "$pkgdir/usr/bin/rx"
-  install -Dm644 "usr/share/applications/rx.desktop" "$pkgdir/usr/share/applications/rx.desktop"
-  install -Dm644 "usr/share/icons/hicolor/128x128/apps/rx.png" "$pkgdir/usr/share/pixmaps/rx.png"
+  install -Dm755 "usr/bin/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
+  install -Dm644 "usr/share/applications/$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
+  install -Dm644 "usr/share/icons/hicolor/128x128/apps/$_pkgname.png" "$pkgdir/usr/share/pixmaps/$_pkgname.png"
 }
