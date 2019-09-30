@@ -3,9 +3,9 @@
 
 pkgname=telegraf-bin
 pkgver=1.12.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source agent for collecting metrics and data on the system; Binary release"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/influxdata/telegraf"
 license=('MIT')
 conflicts=('telegraf')
@@ -16,6 +16,7 @@ source_i686=("https://dl.influxdata.com/telegraf/releases/telegraf-${pkgver}_lin
 source_x86_64=("https://dl.influxdata.com/telegraf/releases/telegraf-${pkgver}_linux_amd64.tar.gz")
 source_armv6h=("https://dl.influxdata.com/telegraf/releases/telegraf-${pkgver}_linux_armhf.tar.gz")
 source_armv7h=("https://dl.influxdata.com/telegraf/releases/telegraf-${pkgver}_linux_armhf.tar.gz")
+source_aarch64=("https://dl.influxdata.com/telegraf/releases/telegraf-${pkgver}_linux_arm64.tar.gz")
 source=('telegraf.sysusers' 'telegraf.tmpfiles' 'LICENSE')
 
 md5sums=('58cc9edf8fbf07e7d3a0357db78121b1'
@@ -25,6 +26,7 @@ md5sums_i686=('da5ffba06604f234fb15e343a1be115e')
 md5sums_x86_64=('0240ba1a1d6bfcb2ec4d17fbd2a15777')
 md5sums_armv6h=('2ea3f28438452a6172a8c3d65076f601')
 md5sums_armv7h=('2ea3f28438452a6172a8c3d65076f601')
+md5sums_aarch64=('1b4b79cc695fc30425e11e0ba5b0ab0a')
 
 package() {
   cd $srcdir

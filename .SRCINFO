@@ -1,13 +1,14 @@
 pkgbase = telegraf-bin
 	pkgdesc = An open source agent for collecting metrics and data on the system; Binary release
 	pkgver = 1.12.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/influxdata/telegraf
 	install = telegraf.install
 	arch = i686
 	arch = x86_64
 	arch = armv6h
 	arch = armv7h
+	arch = aarch64
 	license = MIT
 	conflicts = telegraf
 	backup = etc/telegraf/telegraf.conf
@@ -25,5 +26,7 @@ pkgbase = telegraf-bin
 	md5sums_armv6h = 2ea3f28438452a6172a8c3d65076f601
 	source_armv7h = https://dl.influxdata.com/telegraf/releases/telegraf-1.12.2_linux_armhf.tar.gz
 	md5sums_armv7h = 2ea3f28438452a6172a8c3d65076f601
+	source_aarch64 = https://dl.influxdata.com/telegraf/releases/telegraf-1.12.2_linux_arm64.tar.gz
+	md5sums_aarch64 = 1b4b79cc695fc30425e11e0ba5b0ab0a
 
 pkgname = telegraf-bin
