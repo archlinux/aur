@@ -2,11 +2,11 @@
 # Maintainer:  skydrome <skydrome@protonmail.com>
 
 #_branch=maint-0.4.1 # stable
-#_with_rust=1
+_with_rust=1
 #_malloc=jemalloc # tcmalloc
 
 pkgname=tor-git
-pkgver=0.4.1.2.alpha.r449.g4b1
+pkgver=0.4.2.1.alpha.r83.gff57b
 pkgrel=1
 pkgdesc="An anonymizing overlay network (development version)"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')

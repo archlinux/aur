@@ -1,6 +1,6 @@
 pkgbase = tor-git
 	pkgdesc = An anonymizing overlay network (development version)
-	pkgver = 0.4.1.2.alpha.r449.g4b1
+	pkgver = 0.4.2.1.alpha.r83.gff57b
 	pkgrel = 1
 	url = http://www.torproject.org
 	install = tor.install
@@ -10,6 +10,7 @@ pkgbase = tor-git
 	arch = armv7h
 	license = BSD
 	makedepends = asciidoc
+	makedepends = rust
 	depends = openssl>=1.1.1
 	depends = libevent
 	depends = libseccomp
