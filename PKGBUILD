@@ -3,12 +3,12 @@
 pkgname=python-sigmatools
 _pkgname=sigma
 pkgver=0.12.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Generic Signature Format for SIEM Systems"
 arch=('any')
 url="https://github.com/Neo23x0/sigma"
 license=('LGPL3')
-depends=('python' 'python-yaml' 'python-argparse' 'python-urllib3' 'python-pymisp')
+depends=('python-yaml' 'python-argparse' 'python-urllib3' 'python-pymisp')
 makedepends=('python-setuptools')
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
 # Package "python-pymisp" is temporarily not in AUR, you can use BlackArch's PKGBUILD
@@ -31,10 +31,7 @@ build() {
 package() {
   cd "${_pkgname}-${pkgver}"/tools
   python setup.py install --root="${pkgdir}" --skip-build
-
-  # Remove ${pkgdir}usr/etc
-  cp -r "${pkgdir}/usr/etc/" "${pkgdir}"
-  rm -rfv "${pkgdir}/usr/etc"
+  mv "${pkgdir}/usr/etc/" "${pkgdir}"
 
   # Update License
   install -Dm 644 "${srcdir}/${_pkgname}-${pkgver}/LICENSE.LGPL.txt" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"

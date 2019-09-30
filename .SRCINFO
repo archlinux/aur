@@ -1,12 +1,11 @@
 pkgbase = python-sigmatools
 	pkgdesc = Generic Signature Format for SIEM Systems
 	pkgver = 0.12.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Neo23x0/sigma
 	arch = any
 	license = LGPL3
 	makedepends = python-setuptools
-	depends = python
 	depends = python-yaml
 	depends = python-argparse
 	depends = python-urllib3
