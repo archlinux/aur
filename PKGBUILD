@@ -1,7 +1,6 @@
-#Maintainer: Sam Bazley <sambazley@protonmail.com>
 pkgname=esp-open-sdk-git
-pkgver=1
-pkgrel=13
+pkgver=201910010531
+pkgrel=1
 pkgdesc="Free and open (as much as possible) integrated SDK for ESP8266 chips"
 arch=("i686" "x86_64")
 url="https://github.com/pfalcon/esp-open-sdk"
@@ -11,8 +10,10 @@ provides=("esp-open-sdk")
 conflicts=("esp-open-sdk")
 options=("!strip" "!buildflags" "!makeflags")
 
-source=("git+https://github.com/pfalcon/esp-open-sdk.git")
-md5sums=("SKIP")
+source=("git+https://github.com/pfalcon/esp-open-sdk.git"
+	"https://raw.githubusercontent.com/thierer/esp-open-sdk/master/1000-gdb-python-3-7.patch")
+md5sums=("SKIP"
+	"133effcb81ac2ac8190388af00fe631f")
 
 pkgver() {
     cd esp-open-sdk
@@ -29,6 +30,8 @@ prepare() {
         < "$startdir"/crosstool-config-overrides.patch
     patch examples/blinky/Makefile < "$startdir"/blinky_Makefile.patch
     patch crosstool-NG/configure.ac < "$startdir"/crosstool_NG_configure.patch
+    mkdir -p crosstool-NG/local-patches/gdb/7.10
+    cp "$srcdir"/1000-gdb-python-3-7.patch crosstool-NG/local-patches/gdb/7.10
 }
 
 build() {
