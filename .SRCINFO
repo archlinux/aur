@@ -1,0 +1,14 @@
+pkgbase = kde5-wallpaper-daynight-git
+	pkgdesc = A script that allows users to change their wallpaper in KDE Plasma based on the time of day.
+	pkgver = git
+	pkgrel = 1
+	url = https://github.com/ResinDrake/kde5-wallpaper-daynight
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = bash
+	source = git://github.com/ResinDrake/kde5-wallpaper-daynight.git
+	md5sums = SKIP
+
+pkgname = kde5-wallpaper-daynight-git
+
