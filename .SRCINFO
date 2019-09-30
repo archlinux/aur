@@ -1,0 +1,19 @@
+pkgbase = r-maps
+	pkgdesc = Draw Geographical Maps
+	pkgver = 3.3.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=maps
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = r
+	optdepends = r-mapproj>=1.2.0
+	optdepends = r-mapdata>=2.3.0
+	optdepends = r-sp
+	optdepends = r-maptools
+	optdepends = r-rnaturalearth
+	source = http://cran.r-project.org/src/contrib/maps_3.3.0.tar.gz
+	md5sums = 3656020f104dab8d39642b87dba09330
+
+pkgname = r-maps
+
