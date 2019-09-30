@@ -30,15 +30,14 @@ index c33bb201b884..13a2d6b2d047 100644
  {
  	struct pci_dev *pdev = to_pci_dev(dev);
  	struct nvme_dev *ndev = pci_get_drvdata(pdev);
-+	struct nvme_ctrl *ctrl = &ndev->ctrl;
+	struct nvme_ctrl *ctrl = &ndev->ctrl;
 +
-+	if (!(pm_suspend_via_s2idle() && (ctrl->quirks & NVME_QUIRK_NO_DISABLE)))
++	if (!(pm_suspend_default_s2idle() && (ctrl->quirks & NVME_QUIRK_NO_DISABLE)))
 +		nvme_dev_disable(ndev, true);
+ 	int ret = -EBUSY;
  
--	nvme_dev_disable(ndev, true);
- 	return 0;
- }
- 
+	ndev->last_ps = U32_MAX;
+
 @@ -3002,6 +3006,8 @@
  		.driver_data = NVME_QUIRK_LIGHTNVM, },
 	{ PCI_DEVICE(0x10ec, 0x5762),   /* ADATA SX6000LNP */

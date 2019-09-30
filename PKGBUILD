@@ -7,7 +7,7 @@
 
 pkgbase=linux-hynix               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
-_srcver=5.2.13-arch1
+_srcver=5.3.1-arch1
 pkgver=${_srcver//-/.}
 pkgrel=1
 arch=(x86_64)
@@ -34,12 +34,12 @@ validpgpkeys=(
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            '013defd92c7530724105f323a22ae484cfc4a9053bbdc8eb2260134d873d7d86'
+            '166ee15de54cd8385ed12599cf8402009df5e5c59e961e0547c7745fa385b6a2'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             'dbc9d913a2d41c7809b99cf86ad63d3f4eb2e4d10ab3f6564203e4a21803b98f'
-            'a3de6337e49936a16af2c85098e9793e5015b3bb58d73be264d7a479b1f11144')
+            '13d0a2f48ae12f8663b7de23eda5bfbce56641bdd4cf16b1b21678ea14db7fd3')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-ARCH}
@@ -88,7 +88,7 @@ build() {
 }
 
 _package() {
-  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules with patches for Hynix SSDs from https://bugs.launchpad.net/ubuntu/+source/linux/+bug/1801875"
+  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules"
   [[ $pkgbase = linux ]] && groups=(base)
   depends=(coreutils linux-firmware kmod mkinitcpio)
   optdepends=('crda: to set the correct wireless channels of your country')
