@@ -1,8 +1,8 @@
-# Maintainer: Maxim Kraev <maxim.kraev@gmail.com>
+\# Maintainer: Maxim Kraev <maxim.kraev@gmail.com>
 
 pkgname=ifcplugin
-pkgver=2.0.6.0
-pkgrel=1
+pkgver=3.0.7.0
+pkgrel=2
 _ubuntuver=raring
 _ubunturel=1
 pkgdesc="Crypto Interface Web Browser Plugin for https://gosuslugi.ru"
@@ -11,18 +11,25 @@ url="https://esia.gosuslugi.ru"
 license=('unknown')
 depends=(pcsc-tools glibc acsccid)
 conflicts=()
+
+# 690ef5300f03eae34a76c3e0d424ca7bb857d4fe1dafd0b901a6a010b31f046f  /home/eri/Downloads/IFCPlugin-i386.deb
+# 2f5736ea87c90833fb372ccc8d0f58795546cb08ee2663b53503f92778c206e4  /home/eri/Downloads/IFCPlugin-x86_64.deb
+# 090d81c342f04104cf9a9678b98010f70abc311098d5c3f3e7d3572c3c15afe0fcedfe9ef5be46158182748ec27d3f1a6d5e26e54af9fce19cfcc04c29025239  /home/eri/Downloads/IFCPlugin-i386.deb
+# c89fef2c82903baa7b6d9bd9df2beefa844427db709a4a9ddd97184cfffd2ba18a0df3ead7cfcb14cb3d234cc7cf78197b75759a95a127162d199e8689f24d94  /home/eri/Downloads/IFCPlugin-x86_64.deb
+
+
 if [[ "$CARCH" == "i686" ]]; then
   source=("https://ds-plugin.gosuslugi.ru/plugin/htdocs/plugin/IFCPlugin-i386.deb")
-  sha512sums=('1d6dbfda3e826ea0b632c29691fd71242373a6238832b947ade5343f7315aeb24b824571dff9907b7ea05d78a0e8e091c87f47c2626f6cc77f69d9b5a9723226')
+  sha512sums=('090d81c342f04104cf9a9678b98010f70abc311098d5c3f3e7d3572c3c15afe0fcedfe9ef5be46158182748ec27d3f1a6d5e26e54af9fce19cfcc04c29025239')
 else
   source=("https://ds-plugin.gosuslugi.ru/plugin/htdocs/plugin/IFCPlugin-x86_64.deb")
-  sha512sums=('b7d50ddc35c1e0b81f564b08a8cb58d903fcbf003dab91c02e5db2404dd6493e25b7c7cb2061b8d112ab4c0109d482855c438a479e328d7fe5ebda830c5af510')
+  sha512sums=('c89fef2c82903baa7b6d9bd9df2beefa844427db709a4a9ddd97184cfffd2ba18a0df3ead7cfcb14cb3d234cc7cf78197b75759a95a127162d199e8689f24d94')
 fi
 install=ifcplugin.install
 
 package() {
   cd "$srcdir"
-  bsdtar -xf data.tar.gz -C "$pkgdir"
+  bsdtar -xf data.tar.xz -C "$pkgdir"
 
   sed -i "s/ifd-ccid.bundle/ifd-acsccid.bundle/g" $pkgdir/etc/update_ccid_boundle/update_ccid_boundle.sh
 
