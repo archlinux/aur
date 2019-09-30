@@ -1,7 +1,7 @@
 # Maintainer: Fredy García <frealgagu at gmail dot com>
 
 pkgname=flutter-beta
-pkgver=1.9.1.hotfix.2
+pkgver=1.9.1.hotfix.4
 pkgrel=1
 pkgdesc="A new mobile app SDK to help developers and designers build modern mobile apps for iOS and Android."
 arch=("x86_64")
@@ -32,7 +32,7 @@ source=(
   "${pkgname%-beta}.csh"
 )
 sha256sums=(
-  "92dfde210903901d261527c1e01bd7bf6f2178a4aa0a4b00db43ddd6bd5f84c2"
+  "75ea5c18aa30e935b188e1f1b31df1f0fb2211e164604257bc4421b1e07bf9c0"
   "1dea1952d386c43948b9970382c2da5b65b7870684b8ad2ad89124e873aa485a"
   "7ef10d753cfaac52d243549764a793f44f8284a1f4b11715ccd2fa915b026a6f"
 )
