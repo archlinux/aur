@@ -1,26 +1,20 @@
 pkgbase = gss-ntlmssp
 	pkgdesc = A GSSAPI Mechanism that implements NTLMSSP
-	pkgver = 0.7.0
-	pkgrel = 2
-	url = https://github.com/simo5/gss-ntlmssp
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://pagure.io/gssntlmssp
 	arch = i686
 	arch = x86_64
 	license = custom
-	depends = autoconf
-	depends = automake
-	depends = docbook-xsl
-	depends = doxygen
-	depends = findutils
+	makedepends = docbook-xsl
+	makedepends = doxygen
+	makedepends = git
 	depends = krb5
-	depends = libtool
-	depends = libxml2
-	depends = libxslt
 	depends = libunistring
-	depends = m4
-	depends = perl-extutils-pkgconfig
+	depends = libwbclient
 	depends = openssl
-	source = https://launchpad.net/ubuntu/+archive/primary/+files/gss-ntlmssp_0.7.0.orig.tar.gz
-	sha512sums = 43fc9e57c00e74be3c6954b3f43677e176f6284a543917533d7e427dff98810f1547336cdc240e5f9161f62975803f4b39c925a429c6c669202267da99e3d841
+	source = git+https://pagure.io/gssntlmssp.git#commit=75e3840fc7d7471235a8e1edaf114b0ba735e377
+	sha256sums = SKIP
 
 pkgname = gss-ntlmssp
 

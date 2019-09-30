@@ -1,27 +1,36 @@
 pkgname=gss-ntlmssp
-pkgver=0.7.0
-pkgrel=2
+pkgver=0.8.0
+pkgrel=1
 pkgdesc="A GSSAPI Mechanism that implements NTLMSSP"
 arch=(i686 x86_64)
-url="https://github.com/simo5/gss-ntlmssp"
+url="https://pagure.io/gssntlmssp"
 license=(custom)
-depends=('autoconf' 'automake' 'docbook-xsl' 'doxygen' 'findutils' 'krb5' 'libtool' 'libxml2' 'libxslt' 'libunistring' 'm4' 'perl-extutils-pkgconfig' 'openssl')
-source=("https://launchpad.net/ubuntu/+archive/primary/+files/gss-ntlmssp_${pkgver}.orig.tar.gz")
-sha512sums=('43fc9e57c00e74be3c6954b3f43677e176f6284a543917533d7e427dff98810f1547336cdc240e5f9161f62975803f4b39c925a429c6c669202267da99e3d841')
+depends=(krb5 libunistring libwbclient openssl)
+makedepends=(docbook-xsl doxygen git)
+_commit=75e3840fc7d7471235a8e1edaf114b0ba735e377
+source=("git+https://pagure.io/gssntlmssp.git#commit=$_commit")
+sha256sums=('SKIP')
 
 prepare() {
-  cd "${srcdir}/gssntlmssp-${pkgver}"
+  cd gssntlmssp
   autoreconf -f -i
 }
 
+pkgver() {
+  cd gssntlmssp
+  git describe --tags | sed "s/^v//; s/-/.r/; s/-/./"
+}
+
 build() {
-  cd "${srcdir}/gssntlmssp-${pkgver}"
+  cd gssntlmssp
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "${srcdir}/gssntlmssp-${pkgver}"
-  make DESTDIR="${pkgdir}" install
+  cd gssntlmssp
+  make DESTDIR="$pkgdir" install
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
+
+# vim: ts=2:sw=2:et
