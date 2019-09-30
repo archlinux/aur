@@ -1,22 +1,30 @@
-pkgname=nemo-megasync
-pkgver=2.9.2
-pkgrel=1
+# Maintainer: ValHue <vhuelamo at gmail dot com>
+#
+# Contributor: Pival81 <pival801 at gmail dot com>
+#
+pkgname="nemo-megasync"
+pkgver="4.0.2"
+pkgrel="1"
 pkgdesc="MEGASync extension for the Nemo file browser"
-arch=('x86_64' 'i686')
-url="https://github.com/Pival81/nemo-megasync"
-license=('custom')
-depends=('nemo' 'megasync')
-install=nemo-megasync.install
-source=("https://github.com/Pival81/nemo-megasync/archive/2.9.2.tar.gz")
-md5sums=("bb98b774bd1871ac1baaeeaa7edb6d1b")
+arch=('i686' 'x86_64')
+url="https://mega.co.nz/#sync"
+license=('custom:The Clarified Artistic License')
+depends=('hicolor-icon-theme' 'nemo' 'megasync')
+provides=("${pkgname}")
+
+source=("https://mega.nz/linux/MEGAsync/Debian_10.0/${pkgname}_${pkgver}.orig.tar.gz")
+
+sha256sums=('d28819affd647b1fe4aab74022fa23279a36e800b11570998636387e2c4fabac')
+
+install="${pkgname}.install"
 
 prepare() {
-	export DESKTOP_DESTDIR=$pkgdir/usr
+    export DESKTOP_DESTDIR=${pkgdir}/usr
 }
 
 build() {
 	cd "${pkgname}-${pkgver}"
-	qmake-qt4 
+	qmake-qt5 
 	make
 }
 
@@ -31,3 +39,5 @@ package() {
 	ln -s "libMEGAShellExtNemo.so.1.0.0" "libMEGAShellExtNemo.so.1.0"
 	rm -rf "${pkgdir}/usr/share/icons/hicolor/icon-theme.cache"
 }
+
+# vim:set ts=4 sw=4 ft=sh et syn=sh:
