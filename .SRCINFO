@@ -1,15 +1,15 @@
 pkgbase = ttf-iosevka-ss07
 	pkgdesc = A slender monospace typeface. Shape: Monaco
-	pkgver = 2.3.0
+	pkgver = 2.3.1
 	pkgrel = 1
 	url = https://be5invis.github.io/Iosevka/
 	arch = any
 	license = custom:OFL
 	depends = fontconfig
 	depends = xorg-font-utils
-	source = https://github.com/be5invis/Iosevka/releases/download/v2.3.0/iosevka-ss07-2.3.0.zip
-	source = ttf-iosevka-ss07-2.3.0-1-LICENSE.md::https://raw.githubusercontent.com/be5invis/Iosevka/master/LICENSE.md
-	sha256sums = c96e48184b43912f5502afca3be39e54f7ea7d72848aabf74e3586d443053c76
+	source = https://github.com/be5invis/Iosevka/releases/download/v2.3.1/iosevka-ss07-2.3.1.zip
+	source = ttf-iosevka-ss07-2.3.1-1-LICENSE.md::https://raw.githubusercontent.com/be5invis/Iosevka/master/LICENSE.md
+	sha256sums = 50d9fba63739b7db9ad778ddd0db3a20fb72e000cdd2167a91ff99eca20b85a4
 	sha256sums = ecfd74a1d6749bf509cee122870da0186bccfae446e3f6bc5faff253577ab000
 
 pkgname = ttf-iosevka-ss07
