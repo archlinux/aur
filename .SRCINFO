@@ -1,0 +1,21 @@
+pkgbase = python-analyzemft-git
+	pkgdesc = Analyze the $MFT from a NTFS filesystem.
+	pkgver = 20180318.64c71d7
+	pkgrel = 1
+	url = https://github.com/dkovar/analyzeMFT
+	arch = any
+	license = CPL
+	makedepends = git
+	makedepends = python2-setuptools
+	makedepends = python-setuptools
+	source = analyzeMFT::git+https://github.com/dkovar/analyzeMFT.git
+	source = python3.patch
+	md5sums = SKIP
+	md5sums = 700954e4751b1e2128448a278d69a6d4
+
+pkgname = python-analyzemft-git
+	depends = python
+
+pkgname = python2-analyzemft-git
+	depends = python2
+

@@ -1,0 +1,6 @@
+analyzeMFT/
+pkg/
+src/
+*.log
+*.pkg.tar.xz
+*.tar.gz
