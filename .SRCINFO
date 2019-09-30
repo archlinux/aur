@@ -1,14 +1,14 @@
 pkgbase = electrumx
 	pkgdesc = Server implementation for the Electrum wallet
-	pkgver = 1.12.0
-	pkgrel = 2
+	pkgver = 1.13.0
+	pkgrel = 1
 	url = https://github.com/kyuupichan/electrumx
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = leveldb
 	depends = python>=3.6
-	depends = python-aiorpcx>=0.18.1
+	depends = python-aiorpcx>=0.18.3
 	depends = python-aiorpcx<0.19.0
 	depends = python-attrs
 	depends = python-plyvel
@@ -18,11 +18,11 @@ pkgbase = electrumx
 	optdepends = bitcoin-daemon: Bitcoin core headless P2P node
 	optdepends = electrum: Bitcoin thin client
 	backup = etc/electrumx/electrumx.conf
-	source = electrumx-1.12.0.tar.gz::https://codeload.github.com/kyuupichan/electrumx/tar.gz/1.12.0
+	source = electrumx-1.13.0.tar.gz::https://codeload.github.com/kyuupichan/electrumx/tar.gz/1.13.0
 	source = electrumx.conf
 	source = electrumx.service
 	source = electrumx.sysusers
-	sha256sums = a27e8f503feaaad17f8ce7ab13bb33428a468b6beb13e041706a069f541364f8
+	sha256sums = 8dc7cf5b15fe48c5abbadc5c12b5bf25ca8bd5d10f4d781ca9613004fe8d4b50
 	sha256sums = ca05f8e8cf01c5074376df75a6691c1aea74cf278244f86ac838900cad9547fb
 	sha256sums = ece0696dc82e0159d9a266834e6e9e1e518caa68e6f145d262b291e1fc09d67e
 	sha256sums = 761a21723d21348d598be96655e6de4827b2fcff93270895303e82670e0532f1
