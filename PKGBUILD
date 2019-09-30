@@ -2,7 +2,7 @@
 # Contributor: Balló György <ballogyor+arch at gmail dot com>
 
 pkgname=mate-menu
-pkgver=19.10.1
+pkgver=19.10.2
 pkgrel=1
 pkgdesc="Advanced menu for MATE Panel, a fork of MintMenu"
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL')
 depends=('mate-panel' 'python-configobj' 'python-gobject' 'python-pyinotify' 'python-xdg' 'python-xlib' 'xdg-utils' 'python-setproctitle' 'mate-menus' 'python-unidecode')
 makedepends=('python-distutils-extra' 'python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ubuntu-mate/mate-menu/archive/$pkgver.tar.gz")
-sha256sums=('52e5c8ea9c441cb46b2d454e0315c71511260eec09ceeacadca63454c81775c3')
+sha256sums=('29b3a0d81d59e7cc77ca1a5bc0fb304dd2c9ce4b7d11f864fb22cbdd2ebc8276')
 
 package() {
   cd $pkgname-$pkgver
