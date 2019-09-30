@@ -21,7 +21,7 @@ changelog=$_pkgname.changelog
 source=(https://github.com/Mystro256/xsensors/archive/$pkgver.tar.gz
 	remove-unused-variables.patch
 	replace-deprecated-gtk.patch)
-sha512sums=('34f038b192f3cecb2e7587e19c4837b795a2705e6d0e9ea2bd3ead6d3259a1dded364fcfc70fa5e37d64f32c879e1dd9c6e43dcf32fa9aeb73ee5cc49bf290a4'
+sha512sums=('e1ac7107b978bf9b392b0ecb13e49f49c8efebb228a9c6781a519b128f467d0346d35632646f20a036fdc34ea3ee86440c7be5a3285d922f8afbf051e9cfdcc8'
             'ec81d48f16fb0b9b425247e3e2c56ef6f71acb8da5228bc72438aa33da86e2beb8d4d88c6e1ea8aa95e9db4b19a8939410b6693be61eba4e469686e20108adff'
             '008ea330c74b7f373cd637e3fc57e8ce2a9e8271f517d569be251c86f87593db081622b6df3f2970b741f407d51f4f348fe0dc102927d7289b0309288c3a70f6')
 
@@ -50,6 +50,3 @@ package() {
   install -Dm644 "$srcdir/xsensors.desktop" \
     "$pkgdir/usr/share/applications/xsensors.desktop"
 }
-sha512sums=('e1ac7107b978bf9b392b0ecb13e49f49c8efebb228a9c6781a519b128f467d0346d35632646f20a036fdc34ea3ee86440c7be5a3285d922f8afbf051e9cfdcc8'
-            'ec81d48f16fb0b9b425247e3e2c56ef6f71acb8da5228bc72438aa33da86e2beb8d4d88c6e1ea8aa95e9db4b19a8939410b6693be61eba4e469686e20108adff'
-            '008ea330c74b7f373cd637e3fc57e8ce2a9e8271f517d569be251c86f87593db081622b6df3f2970b741f407d51f4f348fe0dc102927d7289b0309288c3a70f6')
