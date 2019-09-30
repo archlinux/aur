@@ -4,7 +4,7 @@
 
 pkgname=kwin-scripts-tiling
 _pkgname=kwin-script-tiling
-pkgver=2.2
+pkgver=2.3
 pkgrel=1
 pkgdesc="Tiling script for kwin"
 arch=('any')
@@ -12,7 +12,7 @@ url="https://store.kde.org/content/show.php?content=161151"
 license=('GPL2')
 depends=('kwin')
 source=("https://github.com/kwin-scripts/kwin-tiling/archive/v${pkgver}.tar.gz")
-sha512sums=('56384fd344cea314570e14afb3c066073c3b43f83205ddad578ee89593268132b529109de01e232da7d79c24de052e3613aba942e4482d2e3b0e505bfac84012')
+sha512sums=('8e501f0a72f3779aebef935acc2fe9da746f109082340df30506ac880886a88f800de2c159ad8c391fb49d8866a51ebaa6d0e14eeb4038a1f215e28ccb215b54')
 
 package() {
   install -d "${pkgdir}/usr/share/kwin/scripts/${_pkgname}"
