@@ -1,6 +1,6 @@
 pkgbase = linux-clear-current
 	pkgver = 5.3.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/clearlinux-pkgs/linux-current
 	arch = x86_64
 	license = GPL2
@@ -15,7 +15,7 @@ pkgbase = linux-clear-current
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.3.tar.xz
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.3.tar.sign
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.3.1.xz
-	source = clearlinux-current::git+https://github.com/clearlinux-pkgs/linux-current.git#tag=5.3.1-10
+	source = clearlinux-current::git+https://github.com/clearlinux-pkgs/linux-current.git#tag=5.3.1-11
 	source = enable_additional_cpu_optimizations-20190822.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20190822.tar.gz
 	source = 60-linux.hook
 	source = 90-linux.hook
