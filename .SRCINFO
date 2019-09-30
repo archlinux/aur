@@ -3,8 +3,13 @@ pkgbase = naiveproxy-git
 	pkgver = 77.0.3865.90.r33.7929e0850
 	pkgrel = 1
 	url = https://github.com/klzgrad/naiveproxy
-	arch = x86_64
+	arch = any
 	license = BSD
+	makedepends = clang
+	makedepends = lld
+	makedepends = gn
+	makedepends = unzip
+	makedepends = python2
 	depends = nspr
 	depends = nss
 	optdepends = ccache: Speed up compilation
@@ -13,7 +18,9 @@ pkgbase = naiveproxy-git
 	conflicts = naiveproxy-bin
 	backup = etc/naiveproxy/config.json
 	source = git+https://github.com/klzgrad/naiveproxy.git
+	source = build.sh
 	md5sums = SKIP
+	md5sums = 39e64c1967684ff2966eedc2f2d8decf
 
 pkgname = naiveproxy-git
 

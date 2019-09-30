@@ -5,14 +5,17 @@ _pkgname=naiveproxy
 pkgdesc='Make a fortune quietly'
 pkgver=77.0.3865.90.r33.7929e0850
 pkgrel=1
-arch=('x86_64')
+arch=('any')
 url='https://github.com/klzgrad/naiveproxy'
 license=('BSD')
 depends=('nspr' 'nss')
-source=(git+https://github.com/klzgrad/naiveproxy.git)
+source=('git+https://github.com/klzgrad/naiveproxy.git'
+	'build.sh')
+makedepends=("clang" "lld" "gn" "unzip" "python2")
 optdepends=("ccache: Speed up compilation")
 backup=(etc/naiveproxy/config.json)
-md5sums=('SKIP')
+md5sums=('SKIP'
+         '39e64c1967684ff2966eedc2f2d8decf')
 provides=('naiveproxy')
 conflicts=('naiveproxy' 'naiveproxy-bin')
 
@@ -22,18 +25,15 @@ pkgver(){
 }
 
 build(){
-  pushd ${srcdir}/${_pkgname}/src
-  ./get-clang.sh
-  ./build.sh
-  popd
+  cd ${srcdir}/${_pkgname}/src
+  env EXTRA_FLAGS='clang_base_path="" clang_use_chrome_plugins=false clang_use_default_sample_profile=false' ../../build.sh
 }
 
 package(){
-  pushd ${srcdir}/${_pkgname}
+  cd ${srcdir}/${_pkgname}
   install -Dm755 src/out/Release/naive ${pkgdir}/usr/bin/naiveproxy
   install -Dm644 src/config.json ${pkgdir}/etc/naiveproxy/config.json
   install -Dm644 README.md ${pkgdir}/usr/share/doc/naiveproxy/README.md
   install -Dm644 USAGE.txt ${pkgdir}/usr/share/doc/naiveproxy/USAGE.txt
   install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/naiveproxy/LICENSE
-  popd
 }
