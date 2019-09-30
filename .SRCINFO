@@ -1,6 +1,6 @@
 pkgbase = tutanota-desktop-linux
 	pkgdesc = Official Tutanota email client
-	pkgver = 3.59.16
+	pkgver = 3.59.17
 	pkgrel = 1
 	url = https://tutanota.com/blog/posts/desktop-clients/
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = tutanota-desktop-linux
 	depends = zenity
 	provides = tutanota-desktop-linux
 	conflicts = tutanota-desktop-linux
-	noextract = tutanota-desktop-linux-3.59.16.AppImage
+	noextract = tutanota-desktop-linux-3.59.17.AppImage
 	options = !strip
-	source = tutanota-desktop-linux-3.59.16.AppImage::https://mail.tutanota.com/desktop/tutanota-desktop-linux.AppImage
-	sha512sums = b5f887cd66fc3f9d571d8a9f8b25f8b044f2243e327aa56246c53fdb1a02c2abe9e1b88344e219f3c7a7585856b0589982de65150e571f8b3723d69f8aafb039
+	source = tutanota-desktop-linux-3.59.17.AppImage::https://mail.tutanota.com/desktop/tutanota-desktop-linux.AppImage
+	sha512sums = f4963dd04a55b2ee3ef6d2145ba329a2ee148ef41f240c5ca9970e953e14afc64cfbe2ae5ed445052874146b4e148e386b4c47fa1ac635c5bb6e0b70b84eb896
 
 pkgname = tutanota-desktop-linux
 
