@@ -1,15 +1,15 @@
 pkgbase = ttf-iosevka-ss02
 	pkgdesc = A slender monospace typeface. Shape: Anonymous Pro
-	pkgver = 2.3.0
+	pkgver = 2.3.1
 	pkgrel = 1
 	url = https://be5invis.github.io/Iosevka/
 	arch = any
 	license = custom:OFL
 	depends = fontconfig
 	depends = xorg-font-utils
-	source = https://github.com/be5invis/Iosevka/releases/download/v2.3.0/iosevka-ss02-2.3.0.zip
-	source = ttf-iosevka-ss02-2.3.0-1-LICENSE.md::https://raw.githubusercontent.com/be5invis/Iosevka/master/LICENSE.md
-	sha256sums = d5f0cd9d160cd95181b9edd40bbd12e9a9475bbd241ad97bcb10eaef3c2798f5
+	source = https://github.com/be5invis/Iosevka/releases/download/v2.3.1/iosevka-ss02-2.3.1.zip
+	source = ttf-iosevka-ss02-2.3.1-1-LICENSE.md::https://raw.githubusercontent.com/be5invis/Iosevka/master/LICENSE.md
+	sha256sums = 7b8d834f234d6ae8df3108c1f6ab3d04d09ca0cb9cc8e82a617b436dbe3cc437
 	sha256sums = ecfd74a1d6749bf509cee122870da0186bccfae446e3f6bc5faff253577ab000
 
 pkgname = ttf-iosevka-ss02
