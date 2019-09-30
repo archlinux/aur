@@ -1,13 +1,13 @@
 pkgbase = dummyhttp
 	pkgdesc = Super simple HTTP server that replies a fixed body with a fixed response code
-	pkgver = 0.3.1
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/svenstaro/dummyhttp
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
-	source = https://github.com/svenstaro/dummyhttp/archive/0.3.1.tar.gz
-	sha512sums = 48ba1441d03dea61543f2c178ba5e125e51b40401d168dcdb9cb374b764fd7e34e8b25a5b124dc76945780fb70f4964ff4107fa013b33335024f2593d6654a36
+	source = https://github.com/svenstaro/dummyhttp/archive/0.4.0.tar.gz
+	sha512sums = a5dcde56164049dfbd3ff16f619c7663ca88208a387f7f818ff570e855826bd9a92ac8abf35cd014d94db2392d0c368b4f9c6393f246289cd4a76a69662801d6
 
 pkgname = dummyhttp
 
