@@ -1,9 +1,8 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 # Maintainer: Mantas M. <grawity@gmail.com>
-
 pkgname=sssd-nosmb
 _pkgname=sssd
-pkgver=2.2.0
+pkgver=2.2.2
 pkgrel=1
 pkgdesc="System Security Services Daemon"
 arch=('x86_64' 'i686')
@@ -34,8 +33,8 @@ makedepends=(
 #  'systemd'
 )
 source=("https://releases.pagure.org/SSSD/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha512sums=('9ebd8784e1f0c72cb808bbc153c0b0aa9bf507938f78336a260073a89b49350dc2c6172653509738ea7a50bb9da596725e1d6c92f99c7a03308aa42f6378dbbb')
-provides=("$_pkgname=$pkgver")
+sha512sums=('4cce8fdbcc05d1469dad5ba987cb0f9bc33702b37f85e8e248975461bb50b0740fec92ff213bdb640b506405be7ead936ff253ab02d4a27205ddf20cc0e54801')
+provides=("$_pkgname=$pkgver-$pkgrel")
 conflicts=($_pkgname)
 
 

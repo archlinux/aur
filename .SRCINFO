@@ -1,6 +1,6 @@
 pkgbase = sssd-nosmb
 	pkgdesc = System Security Services Daemon
-	pkgver = 2.2.0
+	pkgver = 2.2.2
 	pkgrel = 1
 	url = https://pagure.io/SSSD/sssd
 	arch = x86_64
@@ -23,10 +23,10 @@ pkgbase = sssd-nosmb
 	depends = glib2
 	depends = nfsidmap
 	depends = jansson
-	provides = sssd=2.2.0
+	provides = sssd=2.2.2-1
 	conflicts = sssd
-	source = https://releases.pagure.org/SSSD/sssd/sssd-2.2.0.tar.gz
-	sha512sums = 9ebd8784e1f0c72cb808bbc153c0b0aa9bf507938f78336a260073a89b49350dc2c6172653509738ea7a50bb9da596725e1d6c92f99c7a03308aa42f6378dbbb
+	source = https://releases.pagure.org/SSSD/sssd/sssd-2.2.2.tar.gz
+	sha512sums = 4cce8fdbcc05d1469dad5ba987cb0f9bc33702b37f85e8e248975461bb50b0740fec92ff213bdb640b506405be7ead936ff253ab02d4a27205ddf20cc0e54801
 
 pkgname = sssd-nosmb
 
