@@ -3,8 +3,7 @@
 
 _pkgname=bspwm
 pkgname=${_pkgname}-git
-epoch=1
-pkgver=0.9.6.r1.g8cac004
+pkgver=0.9.9.r3.gdf7c6cc
 pkgrel=1
 pkgdesc='A tiling window manager based on binary space partitioning'
 arch=('i686' 'x86_64')
@@ -12,11 +11,16 @@ url="https://github.com/baskerville/${_pkgname}"
 license=('custom:BSD')
 depends=('bash' 'xcb-util' 'xcb-util-wm' 'xcb-util-keysyms')
 makedepends=('git')
-optdepends=('sxhkd-git: to define keyboard and pointer bindings' 'bar-aint-recursive: for the example panel' 'xtitle-git: for the example panel' 'sutils-git: for the example panel' 'terminus-font: for the example panel')
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
+optdepends=('sxhkd-git: to define keyboard and pointer bindings'
+	    'bar-aint-recursive: for the example panel'
+	    'xtitle-git: for the example panel'
+	    'sutils-git: for the example panel'
+	    'terminus-font: for the example panel'
+	    'python3: for some scripting examples')
 source=("$pkgname::git://github.com/baskerville/${_pkgname}.git")
 md5sums=('SKIP')
+provides=("${_pkgname}=${pkgver%%.r*}-${pkgrel}")
+conflicts=("${_pkgname}")
 
 #pkgver() {
 #    cd "$srcdir/$_pkgname"
