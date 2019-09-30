@@ -4,6 +4,10 @@ post_install() {
     chmod -R o=u /opt/metashape-pro
     chmod -R g-w /opt/metashape-pro
     chmod -R o-w /opt/metashape-pro
+    chmod -R g=u /usr/share/licenses/metashape-pro/licenses
+    chmod -R o=u /usr/share/licenses/metashape-pro/licenses
+    chmod -R g-w /usr/share/licenses/metashape-pro/licenses
+    chmod -R o-w /usr/share/licenses/metashape-pro/licenses
 	echo "Run the following command to activate the product"
 	echo
 	echo "sudo /opt/metashape-pro/metashape.sh --activate 11111-22222-33333-44444-55555"
