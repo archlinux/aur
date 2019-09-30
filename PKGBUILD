@@ -1,6 +1,6 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=ttf-iosevka-extended
-pkgver=2.3.0
+pkgver=2.3.1
 pkgrel=1
 pkgdesc='Experimental, extended, monospace family of Iosevka.'
 arch=('any')
@@ -10,7 +10,7 @@ depends=('fontconfig' 'xorg-font-utils')
 conflicts=('ttf-iosevka-pack')
 source=("https://github.com/be5invis/Iosevka/releases/download/v${pkgver}/experimental-iosevka-etoile-${pkgver}.zip"
         "${pkgname}-${pkgver}-${pkgrel}-LICENSE.md::https://raw.githubusercontent.com/be5invis/Iosevka/master/LICENSE.md")
-sha256sums=('1844aa8221f91f5171ebe8f1b60b156179bef7752fec22848b588d897e523be1'
+sha256sums=('7661fc628cf6a451ce9173463d6cbe505c1594fb94ae661bfd5094e9d96c43a7'
             'ecfd74a1d6749bf509cee122870da0186bccfae446e3f6bc5faff253577ab000')
 
 package() {
