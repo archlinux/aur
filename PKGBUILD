@@ -65,4 +65,5 @@ package() {
   done
   # hashlib links to libcrypto-1_1.dll, but mingw-w64-openssl provides libcrypto-1_1-x64.dll on x86_64
   cp /usr/x86_64-w64-mingw32/bin/libcrypto-1_1-x64.dll "$pkgdir"/usr/x86_64-w64-mingw32/bin/libcrypto-1_1.dll
+  cp /usr/x86_64-w64-mingw32/bin/libssl-1_1-x64.dll "$pkgdir"/usr/x86_64-w64-mingw32/bin/libssl-1_1.dll
 }
