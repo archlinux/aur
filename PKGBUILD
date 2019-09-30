@@ -8,7 +8,7 @@ pkgdesc="Two factor U2F provider for Nextcloud"
 arch=('any')
 url="https://github.com/nextcloud/twofactor_u2f"
 license=('AGPL')
-depends=('nextcloud>=16.0')
+depends=('nextcloud>=17.0')
 makedepends=()
 options=('!strip')
 source=("${_releasename}-${pkgver}.tar.gz"::"${url}/releases/download/v${pkgver}/${_releasename}.tar.gz")
