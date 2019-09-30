@@ -1,0 +1,18 @@
+post_install() {
+    # Set the correct permission
+    chmod -R g=u /opt/metashape-pro
+    chmod -R o=u /opt/metashape-pro
+    chmod -R g-w /opt/metashape-pro
+    chmod -R o-w /opt/metashape-pro
+	echo "Run the following command to activate the product"
+	echo
+	echo "sudo /opt/metashape-pro/metashape.sh --activate 11111-22222-33333-44444-55555"
+	echo
+	echo "NOTE: the number after "--activate" is your node-locked license"
+	echo
+}
+
+pre_remove() {
+    echo "Deactivating the product..."
+	/opt/metashape-pro/metashape.sh --deactivate 2>/dev/null
+}
