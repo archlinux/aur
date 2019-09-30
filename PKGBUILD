@@ -1,4 +1,4 @@
-\# Maintainer: Maxim Kraev <maxim.kraev@gmail.com>
+# Maintainer: Maxim Kraev <maxim.kraev@gmail.com>; Stepanov Aleksandr <sa@eri.su>
 
 pkgname=ifcplugin
 pkgver=3.0.7.0
