@@ -2,7 +2,7 @@
 # Maintainer: Jamie Magee <jamie dot magee at gmail dot com>
 pkgname=java-openjdk-ea-bin
 _majorver=14
-_buildver=15
+_buildver=16
 pkgver=${_majorver}b${_buildver}
 pkgrel=1
 pkgdesc="Java OpenJDK ${_majorver} Early-Access Build."
@@ -19,7 +19,7 @@ provides=(
   "java-runtime-headless-openjdk=${_majorver}"
 )
 source=("https://download.java.net/java/early_access/jdk${_majorver}/${_buildver}/GPL/openjdk-${_majorver}-ea+${_buildver}_linux-x64_bin.tar.gz")
-sha256sums=('1a2df8ff2afba4988a8056b37bb548c84b76d2b96f6933bc1c5a807764af481c')
+sha256sums=('659b3e5d5708f3896dae0e7fb5f19a7ac94d037b2cb49d77272ad05583e5c069')
 
 _jvmdir=usr/lib/jvm/java-${_majorver}-openjdk
 
