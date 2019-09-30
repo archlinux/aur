@@ -7,15 +7,10 @@ pkgbase = python-txtorcon
 	license = MIT
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
+	depends = python-geoip
+	depends = python-twisted
 	source = txtorcon-19.1.0.tar.gz::https://github.com/meejah/txtorcon/archive/v19.1.0.tar.gz
 	sha512sums = 749cc25b1e62998a72b36535b1b2c29045a6098312f582c9e12334a28c49fd608616bab0ef6de39921ab2ea8a69f95cd1bf5c224eeb4c873f1d9062643ec5eb9
 
-pkgname = python2-txtorcon
-	depends = python2-geoip
-	depends = python2-ipaddress
-	depends = python2-twisted
-
 pkgname = python-txtorcon
-	depends = python-geoip
-	depends = python-twisted
 
