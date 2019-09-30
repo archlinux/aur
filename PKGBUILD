@@ -63,7 +63,6 @@ package() {
     pushd "$pkgdir"/usr/${_arch}/bin/
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
   done
-  # hashlib links to libcrypto-1_1.dll, but mingw-w64-openssl provides libcrypto-1_1-x64.dll on x86_64
-  cp /usr/x86_64-w64-mingw32/bin/libcrypto-1_1-x64.dll "$pkgdir"/usr/x86_64-w64-mingw32/bin/libcrypto-1_1.dll
-  cp /usr/x86_64-w64-mingw32/bin/libssl-1_1-x64.dll "$pkgdir"/usr/x86_64-w64-mingw32/bin/libssl-1_1.dll
+  # hashlib links to libcrypto-1_1.dll on both i686 and x86_64, but mingw-w64-openssl provides libcrypto-1_1-x64.dll on x86_64
+  install -m755 "${srcdir}"/Python-${pkgver}/build-x86_64-w64-mingw32/{libssl-1_1.dll,libcrypto-1_1.dll} "$pkgdir"/usr/x86_64-w64-mingw32/bin
 }
