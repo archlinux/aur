@@ -56,7 +56,8 @@ arch=('x86_64')
 url="https://github.com/dolohow/uksm"
 license=('GPL2')
 options=('!strip')
-makedepends=('kmod' 'inetutils' 'bc' 'libelf')
+makedepends=('kmod' 'inetutils' 'bc' 'libelf' 'python-sphinx' 'python-sphinx_rtd_theme'
+             'graphviz' 'imagemagick')
 _lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/${_major}"
 #_lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_major}"
 #_uksm_path="https://raw.githubusercontent.com/sirlucjan/uksm/master/v5.x"
@@ -122,7 +123,7 @@ prepare() {
 			# modprobe configs
 			zcat /proc/config.gz > ./.config
 		else
-			warning "You kernel was not compiled with IKCONFIG_PROC!"
+			warning "Your kernel was not compiled with IKCONFIG_PROC!"
 			warning "You cannot read the current config!"
 			warning "Aborting!"
 			exit
@@ -189,7 +190,7 @@ prepare() {
 build() {
   cd ${_srcname}
 
-  make bzImage modules
+  make bzImage modules htmldocs
 }
 
 _package() {
@@ -346,6 +347,18 @@ _package-docs() {
   mkdir -p "$builddir"
   cp -t "$builddir" -a Documentation
 
+  msg2 "Removing doctrees..."
+  rm -r "$builddir/Documentation/output/.doctrees"
+
+  msg2 "Moving HTML docs..."
+  local src dst
+  while read -rd '' src; do
+    dst="$builddir/Documentation/${src#$builddir/Documentation/output/}"
+    mkdir -p "${dst%/*}"
+    mv "$src" "$dst"
+    rmdir -p --ignore-fail-on-non-empty "${src%/*}"
+  done < <(find "$builddir/Documentation/output" -type f -print0)
+  
   msg2 "Adding symlink..."
   mkdir -p "$pkgdir/usr/share/doc"
   ln -sr "$builddir/Documentation" "$pkgdir/usr/share/doc/$pkgbase"
