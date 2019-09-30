@@ -1,9 +1,10 @@
 # Maintainer: Oleg Shparber <oleg@zealdocs.org>
 
 _appname=zeal
+_builddir=build
 
 pkgname=${_appname}-git
-pkgver=0.6.1.r84.g99d2cee
+pkgver=0.6.1.r86.g9a394d3
 pkgrel=1
 pkgdesc="A simple documentation browser"
 arch=('i686' 'x86_64')
@@ -20,21 +21,15 @@ pkgver() {
     git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-    mkdir -p build
-}
-
 build() {
-    cd build
-
-    cmake -G Ninja \
+    cmake -G Ninja -B "${_builddir}" \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=RelWithDebInfo \
         "${srcdir}/${_appname}"
 
-    ninja
+    cmake --build "${_builddir}"
 }
 
 package() {
-    DESTDIR="${pkgdir}" ninja -C build install
+    cmake --install "${_builddir}" --prefix "${pkgdir}/usr"
 }
