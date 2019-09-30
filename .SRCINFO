@@ -1,6 +1,6 @@
 pkgbase = reddio
 	pkgdesc = a command-line interface for Reddit written in POSIX sh
-	pkgver = 0.3
+	pkgver = 0.4
 	pkgrel = 1
 	url = https://gitlab.com/aaronNG/reddio
 	arch = any

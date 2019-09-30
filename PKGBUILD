@@ -1,6 +1,6 @@
 # Maintainer: Nikola Hadžić <nikola@firemail.cc>
 pkgname="reddio"
-pkgver=0.3
+pkgver=0.4
 pkgrel=1
 epoch=
 pkgdesc="a command-line interface for Reddit written in POSIX sh"
