@@ -1,0 +1,22 @@
+diff --git a/sigma2misp b/sigma2misp
+--- a/sigma2misp
++++ b/sigma2misp
+@@ -4,8 +4,8 @@
+ import argparse
+ import pathlib
+ import urllib3
++import pymisp
+ urllib3.disable_warnings()
+-from pymisp import PyMISP
+ 
+ def create_new_event():
+     return misp.new_event(info=args.info)["Event"]["id"]
+@@ -37,7 +37,7 @@ if args.recursive:
+ else:
+     paths = [ pathlib.Path(sigma) for sigma in args.sigma ]
+ 
+-misp = PyMISP(args.url, args.key, args.insecure)
++misp = pymisp(args.url, args.key, args.insecure)
+ if args.event:
+     eventid = misp.get(args.event)["Event"]["id"]
+ 
