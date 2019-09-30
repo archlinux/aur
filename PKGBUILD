@@ -1,9 +1,9 @@
 # $Id$
-# Maintainer: Cobalt Space <cobaltspace at protonmail dot com>
-# Contributor: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
+# Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
+# Contributor: Cobalt Space <cobaltspace at protonmail dot com>
 pkgname=fedora-wallpapers
-pkgver=30
-pkgrel=2
+pkgver=31
+pkgrel=1
 pkgdesc="The default Wallpapers for Fedora, from fedora 8 (Werewolf) to fedora 30."
 arch=("any")
 url="https://fedoraproject.org/wiki/Wallpapers"
@@ -20,6 +20,7 @@ depends=("beefy-miracle-backgrounds"
   "f28-backgrounds"
   "f29-backgrounds"
   "f30-backgrounds"
+  "f31-backgrounds"
   "fedorainfinity-backgrounds"
   "goddard-backgrounds"
   "heisenbug-backgrounds"
