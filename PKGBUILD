@@ -3,7 +3,7 @@
 
 pkgname=signal-desktop-bin
 pkgver=1.27.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Private messaging from your desktop'
 arch=('x86_64')
 url='https://github.com/signalapp/Signal-Desktop'
@@ -22,6 +22,9 @@ package() {
 
   # fix permissions in 1.9.0+ (Some directories have now 775; changing them back to 755)
   find "${pkgdir}" -type d -not -perm 755 -exec chmod 755 {} \;
+
+  # fix crash on some systems due https://github.com/signalapp/Signal-Desktop/issues/3536
+  chmod 4755 "${pkgdir}/opt/Signal/chrome-sandbox"
 
   # install symbolic link in /usr/bin
   install -d -m755 "${pkgdir}/usr/bin"
