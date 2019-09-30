@@ -4,16 +4,15 @@
 # Contributor: Rene Pärts <rene87@hot.ee>
 pkgname=libp11-git
 _pkgname=libp11
-pkgver=0.4.6.r3.g429db5c
+pkgver=0.4.10.r10.g109261f
 pkgrel=1
-epoch=1
 pkgdesc="A library implementing a small layer on top of the PKCS11 API"
 arch=('i686' 'x86_64')
 url="https://github.com/OpenSC/OpenSC/wiki"
 license=('LGPL')
 makedepends=('git')
 depends=('openssl')
-provides=($_pkgname 'engine_pkcs11')
+provides=("$_pkgname=${pkgver%%.r*}-${pkgrel}" 'engine_pkcs11')
 conflicts=($_pkgname)
 source=("$pkgname::git+https://github.com/OpenSC/libp11.git")
 md5sums=('SKIP')
