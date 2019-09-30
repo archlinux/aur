@@ -1,5 +1,5 @@
 pkgname=gss-ntlmssp
-pkgver=0.8.0
+pkgver=0.8.0.r3.g2251a72
 pkgrel=1
 pkgdesc="A GSSAPI Mechanism that implements NTLMSSP"
 arch=(i686 x86_64)
@@ -7,7 +7,7 @@ url="https://pagure.io/gssntlmssp"
 license=(custom)
 depends=(krb5 libunistring libwbclient openssl)
 makedepends=(docbook-xsl doxygen git)
-_commit=75e3840fc7d7471235a8e1edaf114b0ba735e377
+_commit=2251a7224f488ac20604b6a12ccfe30d99170ef2
 source=("git+https://pagure.io/gssntlmssp.git#commit=$_commit")
 sha256sums=('SKIP')
 
