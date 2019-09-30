@@ -1,6 +1,6 @@
 # Maintainer: tercean <cg@zknt.org>
 pkgname=sengi-appimage
-pkgver=0.16.2
+pkgver=0.17.0
 pkgrel=1
 pkgdesc='Mastodon & Pleroma Multi-account Desktop Client'
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
     )
 noextract=("${_appimage}")
 sha256sums=(
-    'a2fc5d58ed1d4fbd203b0ec8dd6a8d5b754e20afa91d90ebf89592aa34959ba8'
+    'b8d6c029313e4023b87718daa2d845b721921c0e1af780b1f2dc461fb824dcdd'
     'SKIP'
     'SKIP'
     )
