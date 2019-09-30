@@ -2,7 +2,7 @@
 
 pkgname=nextcloud-app-totp
 _releasename=twofactor_totp
-pkgver=3.0.1
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="Two factor TOTP provider for nextcloud"
 arch=('any')
@@ -19,3 +19,4 @@ package() {
 }
 
 sha256sums=('d1490505ef27e8fb19d81318c140321fa05ee2f45ff6b534d96d0d2559645934')
+sha256sums=('9194bf1d9c7bf80deccfcb522c67b70d962aefd2cb2011aceadbc91c3cd54a9a')
