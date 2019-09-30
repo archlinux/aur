@@ -1,0 +1,102 @@
+From 9890b086aeb90abca685acebb1be15b4f43e731a Mon Sep 17 00:00:00 2001
+From: axionl <i@axionl.me>
+Date: Mon, 30 Sep 2019 17:26:50 +0800
+Subject: [PATCH 305/305] build for Arch Linux
+
+---
+ icons/Qv2ray.desktop | 2 +-
+ src/Qv2rayBase.h     | 2 +-
+ src/QvUtils.cpp      | 6 ++++++
+ src/QvUtils.h        | 1 +
+ src/main.cpp         | 6 +++---
+ 5 files changed, 12 insertions(+), 5 deletions(-)
+
+diff --git a/icons/Qv2ray.desktop b/icons/Qv2ray.desktop
+index 9099a41..55e9655 100755
+--- a/icons/Qv2ray.desktop
++++ b/icons/Qv2ray.desktop
+@@ -3,6 +3,6 @@ Type=Application
+ Keywords=Internet;VPN;Proxy;v2ray;Qt;
+ Categories=Network;Qt;
+ Icon=Qv2ray
+-Exec=/opt/Qv2ray/bin/Qv2ray
++Exec=/usr/bin/qv2ray
+ Name=Qv2ray
+ Comment=Cross-platform v2ray GUI Client in Qt.
+diff --git a/src/Qv2rayBase.h b/src/Qv2rayBase.h
+index 30ef28a..4f1e0f8 100644
+--- a/src/Qv2rayBase.h
++++ b/src/Qv2rayBase.h
+@@ -20,7 +20,7 @@
+ #define QV2RAY_V2RAY_CORE_PATH (QV2RAY_V2RAY_CORE_DIR_PATH + "v2ray.exe")
+ #else
+ // macOS and Linux....
+-#define QV2RAY_V2RAY_CORE_PATH (QV2RAY_V2RAY_CORE_DIR_PATH + "v2ray")
++#define QV2RAY_V2RAY_CORE_PATH (Qv2ray::Utils::GetVCorePath())
+ #endif
+ 
+ #define QV2RAY_CONNECTION_FILE_EXTENSION ".qv2ray.json"
+diff --git a/src/QvUtils.cpp b/src/QvUtils.cpp
+index 97b5e76..aba8d39 100644
+--- a/src/QvUtils.cpp
++++ b/src/QvUtils.cpp
+@@ -7,6 +7,7 @@ namespace Qv2ray
+     {
+         static Qv2rayConfig GlobalConfig;
+         static QString ConfigDirPath;
++        static QString VCorePath;
+         void SetGlobalConfig(Qv2rayConfig conf)
+         {
+             GlobalConfig = conf;
+@@ -25,6 +26,11 @@ namespace Qv2ray
+             return ConfigDirPath;
+         }
+ 
++        QString GetVCorePath() {
++            VCorePath = "/usr/bin/v2ray";
++            return VCorePath;
++        }
++
+         void SetConfigDirPath(const QString *path)
+         {
+             ConfigDirPath = *path;
+diff --git a/src/QvUtils.h b/src/QvUtils.h
+index 938e945..71a5db6 100644
+--- a/src/QvUtils.h
++++ b/src/QvUtils.h
+@@ -20,6 +20,7 @@ namespace Qv2ray
+ 
+         void SetConfigDirPath(const QString *path);
+         QString GetConfigDirPath();
++        QString GetVCorePath();
+ 
+         void SetGlobalConfig(Qv2rayConfig conf);
+         Qv2rayConfig GetGlobalConfig();
+diff --git a/src/main.cpp b/src/main.cpp
+index 19dc3bb..9b963be 100644
+--- a/src/main.cpp
++++ b/src/main.cpp
+@@ -38,7 +38,7 @@ bool initQv()
+         //
+         // These below genenrated very basic global config.
+         Qv2rayBasicInboundsConfig inboundSetting = Qv2rayBasicInboundsConfig("127.0.0.1", 1080, 8000);
+-        Qv2rayConfig conf = Qv2rayConfig("zh-CN", QV2RAY_V2RAY_CORE_DIR_PATH.toStdString(), 4, inboundSetting);
++        Qv2rayConfig conf = Qv2rayConfig("zh-CN", "/etc/v2ray/", 4, inboundSetting);
+         //
+         // Save initial config.
+         SetGlobalConfig(conf);
+@@ -88,9 +88,9 @@ int main(int argc, char *argv[])
+     //
+ #ifdef QT_DEBUG
+     LOG("DEBUG", "============================== This is a debug build, many features are not stable enough. ==============================")
+-    QString configPath = QDir::homePath() + "/.qv2ray_debug";
++    QString configPath = QDir::homePath() + "/.config/qv2ray_debug";
+ #else
+-    QString configPath = QDir::homePath() + "/.qv2ray";
++    QString configPath = QDir::homePath() + "/.config/qv2ray";
+ #endif
+     SetConfigDirPath(&configPath);
+     QDirIterator it(":/translations");
+-- 
+2.23.0
+

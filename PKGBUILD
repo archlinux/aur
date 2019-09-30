@@ -7,13 +7,15 @@ pkgdesc="Qt cross platform v2ray GUI client (Dev branch build release)"
 arch=('x86_64')
 url="https://github.com/lhy0403/Qv2ray"
 license=('GPL3')
-depends=('qt5-base' 'hicolor-icon-theme')
-makedepends=('git' 'make' 'qt5-tools')
+depends=('qt5-base' 'hicolor-icon-theme' 'grpc' 'v2ray')
+makedepends=('git' 'make' 'qt5-tools' 'protobuf')
 optdepends=('v2ray' 'v2ray-domain-list-community' 'v2ray-geoip')
 provides=('qv2ray')
 conflicts=('qv2ray')
-source=("${pkgname}::git+https://github.com/lhy0403/Qv2ray#branch=dev")
-sha512sums=('SKIP')
+source=("${pkgname}::git+https://github.com/lhy0403/Qv2ray#branch=dev"
+        "0001-build-for-Arch-Linux.patch")
+sha512sums=('SKIP'
+            '71a321ed94eba421a19b3689f93faa4da3a56438a06823bc6560e2aa078ac0f453db31e815c22185252dddcf0bae8704588ce1865a4611a08fee501c6484d686')
 
 pkgver() {
     cd ${pkgname}
@@ -22,9 +24,8 @@ pkgver() {
 
 prepare() {
     cd "${pkgname}"
-    sed -i "s/Exec=\/opt\/Qv2ray\/bin\/Qv2ray/Exec=\/usr\/bin\/qv2ray/g" icons/Qv2ray.desktop
-    sed -i "s/\/.qv2ray_debug/\/.config\/qv2ray_debug/g" src/main.cpp
-    sed -i "s/\/.qv2ray/\/.config\/qv2ray/g" src/main.cpp
+    sh -c "tools/grpc_gen.sh"
+    patch -Np1 -i "${srcdir}/0001-build-for-Arch-Linux.patch"
 }
 
 build() {

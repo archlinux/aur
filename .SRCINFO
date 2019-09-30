@@ -8,15 +8,20 @@ pkgbase = qv2ray-dev-git
 	makedepends = git
 	makedepends = make
 	makedepends = qt5-tools
+	makedepends = protobuf
 	depends = qt5-base
 	depends = hicolor-icon-theme
+	depends = grpc
+	depends = v2ray
 	optdepends = v2ray
 	optdepends = v2ray-domain-list-community
 	optdepends = v2ray-geoip
 	provides = qv2ray
 	conflicts = qv2ray
 	source = qv2ray-dev-git::git+https://github.com/lhy0403/Qv2ray#branch=dev
+	source = 0001-build-for-Arch-Linux.patch
 	sha512sums = SKIP
+	sha512sums = 71a321ed94eba421a19b3689f93faa4da3a56438a06823bc6560e2aa078ac0f453db31e815c22185252dddcf0bae8704588ce1865a4611a08fee501c6484d686
 
 pkgname = qv2ray-dev-git
 
