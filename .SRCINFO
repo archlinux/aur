@@ -22,7 +22,8 @@ pkgbase = esp-open-sdk-git
 	options = !buildflags
 	options = !makeflags
 	source = git+https://github.com/pfalcon/esp-open-sdk.git
+	source = https://raw.githubusercontent.com/thierer/esp-open-sdk/master/1000-gdb-python-3-7.patch
 	md5sums = SKIP
+	md5sums = 133effcb81ac2ac8190388af00fe631f
 
 pkgname = esp-open-sdk-git
-
