@@ -2,12 +2,13 @@
 
 pkgname=python-pytest-metadata
 pkgver=1.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Pytest plugin for accessing test session metadata"
 url="https://github.com/pytest-dev/pytest-metadata"
 arch=('any')
 license=('MPL2')
-depends=('python-pytest>=2.9.0')
+depends=('python-pytest')
+makedepends=('python-setuptools')
 source=(
   "https://files.pythonhosted.org/packages/source/p/pytest-metadata/pytest-metadata-$pkgver.tar.gz"
 )
@@ -18,6 +19,11 @@ sha256sums=(
 build() {
     cd "pytest-metadata-$pkgver"
     python setup.py build
+}
+
+check() {
+    cd "pytest-metadata-$pkgver"
+    pytest -v
 }
 
 package() {
