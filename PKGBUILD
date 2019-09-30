@@ -1,28 +1,30 @@
-# $Id: PKGBUILD 96760 2013-09-04 10:17:31Z spupykin $
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 # Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Maintainer: dorphell <dorphell@archlinux.org>
-
 pkgname=xlockmore-blank
 _pkgname=xlockmore
-pkgver=5.47
+pkgver=5.58
 pkgrel=1
 pkgdesc="screen saver / locker for the X Window System - blank only"
 arch=(i686 x86_64)
 license=('BSD')
-depends=(libxinerama mesa freetype2 libxpm libxmu glu)
+depends=(freetype2 gtk2 libxpm pam libxmu glu)
 optdepends=('fortune-mod')
-provides=("$_pkgname")
-conflicts=("$_pkgname" "$_pkgname-nomotif")
-url="http://www.tux.org/~bagleyd/xlockmore.html"
+makedepends=(mesa)
+url="http://sillycycle.com/xlockmore.html"
 options=('!makeflags')
-source=(http://www.tux.org/~bagleyd/xlock/xlockmore-$pkgver.tar.xz
+install=xlockmore.install
+validpgpkeys=('1B79C8478F236DCDADC0D6ACCF159707377919AE')
+DLAGENTS=('http::/usr/bin/curl --user-agent Firefox -fLC - --retry 3 --retry-delay 3 -o %o %u')
+source=(http://sillycycle.com/xlock/xlockmore-$pkgver.tar.xz
 	LICENSE)
-md5sums=('d059df32d1673ce5a434a98a49606f3b'
-         'a64afab4283f53972a6702c2e59850d7')
+sha256sums=('fc9f81773afef0dc7e3e62defbad4056d8d16af9ba8208eeec73d1b2970e41ed'
+            'f9f41a5590c5c3ee9780f6013d9f03c229674e8d72e086b22f07c399be0f5b39')
+provides=("$_pkgname=$pkgver-$pkgrel")
+conflicts=("$_pkgname" "${_pkgname}-nomotif")
 
 build() {
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "$srcdir"/$_pkgname-$pkgver
   ./configure --prefix=/usr --disable-setuid \
 	      --enable-appdefaultdir=/usr/share/X11/app-defaults \
 	      --enable-pam --with-gtk2 --without-esound --without-ftgl \
@@ -32,11 +34,12 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "$srcdir"/$_pkgname-$pkgver
 
-  make xapploaddir="$pkgdir/usr/share/X11/app-defaults" \
-       mandir="$pkgdir/usr/man/man1" \
-       prefix="$pkgdir/usr" install
-  install -D -m644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  mv "$pkgdir/usr/man" "$pkgdir/usr/share/"
+  make xapploaddir="$pkgdir"/usr/share/X11/app-defaults \
+       mandir="$pkgdir"/usr/man/man1 \
+       prefix="$pkgdir"/usr install
+  install -Dm0644 etc/xlock.pamd "${pkgdir}"/etc/pam.d/xlock
+  install -Dm0644 ../LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  mv "$pkgdir"/usr/man "$pkgdir"/usr/share/
 }

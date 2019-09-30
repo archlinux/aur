@@ -1,0 +1,4 @@
+post_install() {
+	echo "You may want to install xorg-fonts-100dpi/xorg-fonts-75dpi and other font packages"
+	echo "Check particular xlock mode documentation"
+}
