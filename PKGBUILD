@@ -1,7 +1,7 @@
 # Maintainer: architekton <architekton350@gmail.com>
 
 pkgname=amass
-pkgver=3.0.25
+pkgver=3.1.10
 pkgrel=1
 pkgdesc="In-depth subdomain enumeration written in Go"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/OWASP/Amass"
 license=('Apache')
 makedepends=('go' 'git')
 source=(Amass-$pkgver.tar.gz::https://github.com/OWASP/Amass/archive/v${pkgver}.tar.gz)
-sha512sums=('67c409aa7c9f2eec50f57c41231516e3b10564081a39cd578282fc06232b48703d3309ed07e10077351d13442d240b34203bb4677ba6211300ceecfaa92eae06')
+sha512sums=('119fee4de63dbf10df5a4604682e54a0809f0b97231547f2804938518ccf783e678b0d70c7daaa9a3ffb74955e4ed3b7b9cfcbbcdd09ca901a5d015b4923af3d')
 
 
 prepare() {
@@ -44,7 +44,7 @@ package() {
 
   install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 
-  cp -a --no-preserve=ownership "$GOPATH/src/github.com/OWASP/Amass/"{wordlists/,examples/} "${pkgdir}/usr/share/${pkgname}"
+  cp -a --no-preserve=ownership "$GOPATH/src/github.com/OWASP/Amass/examples/" "${pkgdir}/usr/share/${pkgname}"
 
-  chmod 644 "${pkgdir}/usr/share/${pkgname}/"{wordlists/*,examples/*}
+  chmod 644 "${pkgdir}/usr/share/${pkgname}/examples/"*
 }
