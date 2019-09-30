@@ -1,4 +1,5 @@
-# Maintainer: archlinux.info:tdy
+# Maintainer: GhostApple <lifeibiren@gmail.com>
+# Contributor: archlinux.info:tdy
 # Contributor: Laurent Carlier <lordheavym@gmail.com>
 
 pkgname=wxpython2.8
@@ -8,7 +9,7 @@ pkgdesc="A wxWidgets GUI toolkit for Python"
 arch=(i686 x86_64)
 license=(custom:wxWindows)
 url=http://www.wxpython.org
-depends=(wxgtk2.8 wxpython python2)
+depends=(wxgtk2.8 python2)
 makedepends=(mesa glu)
 install=$pkgname.install
 source=(http://downloads.sourceforge.net/wxpython/wxPython-src-$pkgver.tar.bz2
@@ -23,8 +24,8 @@ sha256sums=(1f3f153d9f1504c6ce2d2c4b23e940b8f58b81f4cba35cda1a5bb31142243cd0
 prepare() {
   cd wxPython-src-$pkgver
   patch -Np1 -i ../wxGTK-collision.patch
-  patch -Np0 -i ../../wxpython-cairo.patch
-  patch -Np0 -i ../../wxpython-fpb_default_style.patch
+  patch -Np0 -i ../wxpython-cairo.patch
+  patch -Np0 -i ../wxpython-fpb_default_style.patch
   find . -type f -exec sed -i 's/env python/&2/' '{}' \;
 
   export WXPORT=gtk2
@@ -40,12 +41,12 @@ build() {
     --with-libtiff=sys --disable-precomp-headers
 
   cd wxPython
-  python2 setup.py build
+  python2 setup.py build WX_CONFIG=$WX_CONFIG
 }
 
 package() {
   cd wxPython-src-$pkgver/wxPython
-  python2 setup.py install --root="$pkgdir"
+  python2 setup.py install --root="$pkgdir" WX_CONFIG=$WX_CONFIG
   install ../docs/licence.txt -m 644 -Dt "$pkgdir"/usr/share/licenses/$pkgname/
 
   rm -rf "$pkgdir"/usr/bin
