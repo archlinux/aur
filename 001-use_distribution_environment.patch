@@ -37,30 +37,26 @@
  
  export FSLTCLSH FSLWISH 
  
---- a/fsl/extras/build	2016-11-15 15:30:21.000000000 +0100
-+++ b/fsl/extras/build	2018-11-25 14:10:48.382885194 +0100
-@@ -96,21 +96,20 @@
- 	BUILDICONV=1
+--- a/fsl/extras/build  2019-09-29 14:50:57.966635464 +0200
++++ b/fsl/extras/build  2019-09-29 14:53:48.906589517 +0200
+@@ -96,21 +96,12 @@
+        BUILDICONV=1
      fi
  fi
 -PROJECTS="tcl tk"
-+PROJECTS=""
- if [ ${BUILDZLIB} -eq 1 ]; then
+-if [ ${BUILDZLIB} -eq 1 ]; then
 -  PROJECTS="${PROJECTS} zlib"
-+  PROJECTS="${PROJECTS}"
- fi
+-fi
 -PROJECTS="${PROJECTS} libpng"
-+PROJECTS="${PROJECTS}"
- if [ ${BUILDICONV} -eq 1 ]; then
+-if [ ${BUILDICONV} -eq 1 ]; then
 -  PROJECTS="${PROJECTS} libiconv"
-+  PROJECTS="${PROJECTS}"
- fi
+-fi
 -PROJECTS="${PROJECTS} libgd libgdc libprob libcprob newmat cprob newran fftw"
--PROJECTS="${PROJECTS} boost libxml2-2.9.2 libxml++-2.34.0 libsqlite libnlopt ../include/armawrap/dummy_newmat"
+-PROJECTS="${PROJECTS} boost libxml2-2.9.2 libxmlpp libsqlite libnlopt ../include/armawrap/dummy_newmat"
 +PROJECTS="${PROJECTS} libgdc libprob libcprob cprob newran ../include/armawrap/dummy_newmat"
  for projname in $PROJECTS; do
      if [ -d $FSLESRCDIR/$projname ] ; then
-        buildIt $FSLESRCDIR $projname 1 
+        buildIt $FSLESRCDIR $projname 1
      elif [ "$projname" = "boost" -a -d ${FSLEXTINC}/boost/boost ]; then
 -       buildIt $FSLEXTINC boost 0
 +       buildIt $FSLEXTINC 0
