@@ -1,28 +1,29 @@
-#Maintainer: Nils Czernia <nils[at]czserver.de>
+#Maintainer: Nico Suarez <nicodoggie@gmail.com>
+#Contributor: freaknils <nils[AT]czserver.de>
 
-pkgname=hamsket-bin
+pkgname=hamsket-nightly-bin
 _pkgname=hamsket
-pkgver=0.5.19
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='Forked Free and Open Source messaging and emailing app that combines common web applications into one'
 arch=('x86_64')
 depends=('alsa-lib' 'bash' 'desktop-file-utils' 'gconf' 'gtk2' 'libnotify' 'libxtst' 'libxss' 'nss')
 provides=('hamsket')
-conflicts=('rambox' 'rambox-os-git' 'rambox-bin' 'ramboxpro-bin' 'rambox-os-bin' 'rambox-os')
+conflicts=('rambox' 'rambox-os-git' 'rambox-bin' 'ramboxpro-bin' 'rambox-os-bin' 'rambox-os' 'hamsket-bin')
 url='https://github.com/TheGoddessInari/hamsket'
 license=('GPL3')
-source=("$_pkgname.tar.gz::https://github.com/TheGoddessInari/hamsket/releases/download/$pkgver/Rambox-$pkgver.tar.gz"
+source=("$_pkgname.tar.gz::https://github.com/TheGoddessInari/hamsket/releases/download/nightly/$_pkgname-$pkgver.tar.gz"
         "${_pkgname}.desktop"
         "${_pkgname}.png")
-sha256sums=('b5086d826ab4f4f417599f7e84e630808292b7cfef28252c165bff69dab26ff6'
-            '688c911beb23d63234b29b912a744644957cffe944c6cdd068bd5c55423ae98c'
+sha256sums=('90873de96455c29e5766718f1240151a988b893a1eda6a97f9de8a3695785892'
+            '18ecd40929511a7083a690ed77690571b2160200298bf589e8818aad97317f27'
             '0bf4d0c849ad6151f77b346fea0424fab910f434378f9890b16fd15a32a10064')
 
 package() {
     install -d ${pkgdir}/{opt/hamsket,usr/{bin,share/pixmaps}}
 
-    cp -R ${srcdir}/Rambox-${pkgver}/* ${pkgdir}/opt/${_pkgname}/
-    ln -rs ${pkgdir}/opt/${_pkgname}/rambox ${pkgdir}/usr/bin/rambox
+    cp -R ${srcdir}/hamsket-${pkgver}/* ${pkgdir}/opt/${_pkgname}/
+    ln -rs ${pkgdir}/opt/${_pkgname}/hamsket ${pkgdir}/usr/bin/hamsket
     chmod 4755 ${pkgdir}/opt/${_pkgname}/chrome-sandbox
 
     install -Dm644 $srcdir/${_pkgname}.png ${pkgdir}/usr/share/pixmaps/${_pkgname}.png
