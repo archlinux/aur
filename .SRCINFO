@@ -21,6 +21,7 @@ pkgbase = knot-resolver
 	depends = luajit
 	depends = systemd
 	optdepends = lua51-basexx: experimental_dot_auth module,
+	optdepends = lua51-cqueues: http and dns64 module, policy.rpz() function,
 	optdepends = lua51-http: http module,
 	optdepends = lua51-filesystem: prefill module,
 	optdepends = lua51-psl: policy.slice_randomize_psl() function,
