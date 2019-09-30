@@ -15,7 +15,7 @@ depends=('gtk2' 'desktop-file-utils')
 makedepends=('pkgconfig' 'intltool')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=(http://homepages.ihug.co.nz/~trmusson/stuff/$_pkgname-$pkgver.tar.gz
+source=(https://ftp.gnu.org/gnu/$_pkgname/$_pkgname-$pkgver.tar.gz
         $_pkgname.desktop)
 md5sums=('dbef00c5e9dd1fb3463b08044be7ae8e'
          'af92506581c1aae70e3845a66a983f22')
