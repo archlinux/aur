@@ -2,7 +2,7 @@
 # Maintainer: Michael Taboada <michael@2mb.solutions>
                                                                                                                                                                 
 pkgname="barnard-git"
-pkgver=r61.f4ba60f
+pkgver=r90.c9876db
 pkgrel=1
 epoch=1
 pkgdesc="A command line mumble client."
@@ -12,6 +12,7 @@ license=('GPL2')
 depends=('openal' 'opus')
 makedepends=('git' 'go-pie')
 source=("barnard::git+https://github.com/bmmcginty/barnard.git")
+install="${pkgname}.install"
 sha512sums=('SKIP')
 
   prepare(){
@@ -38,14 +39,15 @@ build() {
                                                                                                                                                                 
 package() {
   mkdir -p "$pkgdir/usr/bin"
+  mkdir -p "$pkgdir/usr/share/barnard"
   mkdir -p "$pkgdir/usr/share/doc/barnard"
   install -p -m755 "$srcdir/gopath/bin/barnard" "$pkgdir/usr/bin"
   install -p -m755 "$srcdir/barnard/barnard-ui" "$pkgdir/usr/bin"
+  install -p -m755 "$srcdir/barnard/extras/barnard-sound.sh" "$pkgdir/usr/share/barnard/barnard-sound.sh"
   install -p -m644 "$srcdir/barnard/README.md" "$pkgdir/usr/share/doc/barnard"
                                                                                                                                                                 
   #mkdir -p "$pkgdir/$GOPATH"
   #cp -Rv --preserve=timestamps "$srcdir/"{src,pkg} "$pkgdir/$GOPATH"
-                                                                                                                                                                
 }
                                                                                                                                                                 
 # vim:set ts=2 sw=2 et:

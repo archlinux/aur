@@ -1,0 +1,15 @@
+_alert() {
+cat << 'EOF'
+For alerts and sound options, install the sox package and add the following line to your ~/.barnard.yaml:
+notifycommand: /usr/share/barnard/barnard-sound.sh "%event" "%who" "%what"
+make sure to edit the sound script to use youre preferred settings.
+EOF
+}
+
+post_install() {
+    _alert
+}
+
+post_upgrade() {
+    _alert
+}

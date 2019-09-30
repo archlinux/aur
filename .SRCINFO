@@ -1,9 +1,10 @@
 pkgbase = barnard-git
 	pkgdesc = A command line mumble client.
-	pkgver = r61.f4ba60f
+	pkgver = r90.c9876db
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/bmmcginty/barnard
+	install = barnard-git.install
 	arch = aarch64
 	arch = armv7h
 	arch = x86_64
