@@ -1,6 +1,6 @@
 pkgbase = petsc-git
 	pkgdesc = Portable, extensible toolkit for scientific computation
-	pkgver = 20190205
+	pkgver = 20190929
 	pkgrel = 1
 	url = https://www.mcs.anl.gov/petsc/
 	install = petsc.install
@@ -18,7 +18,7 @@ pkgbase = petsc-git
 	depends = hdf5
 	provides = petsc
 	conflicts = petsc
-	source = petsc::git+https://bitbucket.org/petsc/petsc#branch=maint
+	source = petsc::git+https://gitlab.com/petsc/petsc#branch=maint
 	source = patch.diff
 	sha256sums = SKIP
 	sha256sums = fdf016437dd94f33316e734e35858476aeea1ca0f3ab4d0ee36029b016498de7

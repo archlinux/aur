@@ -1,7 +1,7 @@
 # Maintainer: Lucas H. Gabrielli <heitzmann at gmail dot com>
 
 pkgname=petsc-git
-pkgver=20190205
+pkgver=20190929
 pkgrel=1
 _config=linux-c-opt
 pkgdesc="Portable, extensible toolkit for scientific computation"
@@ -13,7 +13,7 @@ license=('BSD')
 depends=('python2' 'openmpi' 'boost' 'lapack' 'fftw' 'hdf5')
 makedepends=('gcc' 'gcc-fortran' 'cmake')
 install=petsc.install
-source=(petsc::git+https://bitbucket.org/petsc/petsc#branch=maint
+source=(petsc::git+https://gitlab.com/petsc/petsc#branch=maint
         patch.diff)
 sha256sums=('SKIP'
             'fdf016437dd94f33316e734e35858476aeea1ca0f3ab4d0ee36029b016498de7')
