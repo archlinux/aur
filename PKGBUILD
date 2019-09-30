@@ -1,15 +1,18 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 pkgname=python2-emcee
-pkgver=2.2.1
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Kick ass affine-invariant ensemble MCMC sampling"
 arch=('any')
-url="http://emcee.readthedocs.io/en/stable/"
+url="http://emcee.readthedocs.io/"
 license=('MIT')
-depends=('python2' 'python2-numpy')
+depends=('python2-numpy')
+optdepends=('python2-tqdm: For progress bars'
+            'python2-h5py: For HDF5 backend')
 makedepends=('python2-setuptools')
+checkdepends=('python2-pytest' 'python2-scipy' 'python2-h5py')
 source=("https://files.pythonhosted.org/packages/source/e/emcee/emcee-${pkgver}.tar.gz")
-md5sums=('cd3f7a6ff6a8124fed86afeea69b9cac')
+md5sums=('4424318732c500a1d4db1b71e3eea7cf')
 
 build () {
     cd ${srcdir}/emcee-${pkgver}
@@ -20,7 +23,7 @@ build () {
 check(){
     cd ${srcdir}/emcee-${pkgver}
 
-    python2 setup.py test
+    pytest2
 }
 
 package() {
