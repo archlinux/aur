@@ -1,7 +1,7 @@
 # Maintainer: Hans-Nikolai Viessmann <hv15 AT hw.ac.uk>
 _pkgname=xmrig
 pkgname=${_pkgname}-bin
-pkgver=3.1.3
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="Monero cryptocurrency CPU miner, HTTP API enabled, with default donation level"
 arch=('x86_64')
@@ -13,8 +13,8 @@ install=${_pkgname}.install
 changelog=CHANGELOG.md
 source=("https://github.com/xmrig/xmrig/releases/download/v${pkgver}/${_pkgname}-${pkgver}-xenial-x64.tar.gz"
         "https://raw.githubusercontent.com/xmrig/xmrig/v${pkgver}/README.md")
-md5sums=('37dd2724e117d28a1746a65ea151c98a'
-         'a4b1025bec3a89ff8cb4da85addddae1')
+md5sums=('2b34abd3ae6ef972cf93ce21f2271624'
+         '235bfe69c7da21e6df5e6a87742a2a11')
 
 package() {
 	cd "${_pkgname}-$pkgver"
