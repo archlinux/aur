@@ -11,11 +11,11 @@ license=('BSD')
 depends=('nspr' 'nss')
 source=('git+https://github.com/klzgrad/naiveproxy.git'
 	'build.sh')
-makedepends=("clang" "lld" "gn" "unzip" "python2")
+makedepends=("clang" "lld" "gn" "unzip" "python2" "llvm")
 optdepends=("ccache: Speed up compilation")
 backup=(etc/naiveproxy/config.json)
 md5sums=('SKIP'
-         '39e64c1967684ff2966eedc2f2d8decf')
+         '97aa54a097b10d2de82e026ba927e9e8')
 provides=('naiveproxy')
 conflicts=('naiveproxy' 'naiveproxy-bin')
 
@@ -26,7 +26,7 @@ pkgver(){
 
 build(){
   cd ${srcdir}/${_pkgname}/src
-  env EXTRA_FLAGS='clang_base_path="" clang_use_chrome_plugins=false clang_use_default_sample_profile=false' ../../build.sh
+  ../../build.sh
 }
 
 package(){

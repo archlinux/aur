@@ -10,6 +10,7 @@ pkgbase = naiveproxy-git
 	makedepends = gn
 	makedepends = unzip
 	makedepends = python2
+	makedepends = llvm
 	depends = nspr
 	depends = nss
 	optdepends = ccache: Speed up compilation
@@ -20,7 +21,7 @@ pkgbase = naiveproxy-git
 	source = git+https://github.com/klzgrad/naiveproxy.git
 	source = build.sh
 	md5sums = SKIP
-	md5sums = 39e64c1967684ff2966eedc2f2d8decf
+	md5sums = 97aa54a097b10d2de82e026ba927e9e8
 
 pkgname = naiveproxy-git
 

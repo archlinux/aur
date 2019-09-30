@@ -64,6 +64,14 @@ if [ "$(uname)" = Linux ]; then
     ozone_platform_headless=true'
 fi
 
+# use system clang
+# disable clang plugins
+# build without afdo.prof
+flags="$flags"'
+  clang_base_path=""
+  clang_use_chrome_plugins=false
+  clang_use_default_sample_profile=false'
+
 rm -rf "./$out"
 mkdir -p out
 
