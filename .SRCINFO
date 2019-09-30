@@ -1,0 +1,13 @@
+pkgbase = r-formula
+	pkgdesc = Extended Model Formulas
+	pkgver = 1.2.3
+	pkgrel = 1
+	url = https://cran.r-project.org/package=Formula
+	arch = any
+	license = GPL3
+	depends = r
+	source = http://cran.r-project.org/src/contrib/Formula_1.2-3.tar.gz
+	md5sums = 861ccadaeca8b1fd16ec6857cc3dcb5b
+
+pkgname = r-formula
+
