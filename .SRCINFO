@@ -10,7 +10,6 @@ pkgbase = wxpython2.8
 	makedepends = mesa
 	makedepends = glu
 	depends = wxgtk2.8
-	depends = wxpython
 	depends = python2
 	source = http://downloads.sourceforge.net/wxpython/wxPython-src-2.8.12.1.tar.bz2
 	source = wxGTK-collision.patch
