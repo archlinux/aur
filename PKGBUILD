@@ -4,9 +4,9 @@ _name="luxcorerender"
 
 pkgname=blender-plugin-${_name}
 pkgver=2.2
-_rel="rc1"
+#_rel="rc1"
 [ -n "${_rel}" ] && _pkgver=${pkgver}${_rel} && pkgver+=".${_rel}" || _pkgver=${pkgver}
-epoch=1
+epoch=2
 pkgrel=1
 pkgdesc="LuxCoreRender exporter plugin for Blender"
 arch=('any')
@@ -14,7 +14,7 @@ url="https://luxcorerender.org/"
 license=('GPL')
 conflicts=(luxblend25 luxblend25-hg)
 source=("https://github.com/LuxCoreRender/BlendLuxCore/archive/blendluxcore_v${_pkgver}.tar.gz")
-sha256sums=('efe1e82350939cd7ce8689f75334dbf16401dac3bcc603430ba0ffedbe954a00')
+sha256sums=('92c2a1669f23bca58b3bef324676d1849775d996c96b8c35af1a97a0fed4e27e')
 
 package() {
   depends=(blender luxcorerender)

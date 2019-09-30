@@ -1,15 +1,15 @@
 pkgbase = blender-plugin-luxcorerender
 	pkgdesc = LuxCoreRender exporter plugin for Blender
-	pkgver = 2.2.rc1
+	pkgver = 2.2
 	pkgrel = 1
-	epoch = 1
+	epoch = 2
 	url = https://luxcorerender.org/
 	arch = any
 	license = GPL
 	conflicts = luxblend25
 	conflicts = luxblend25-hg
-	source = https://github.com/LuxCoreRender/BlendLuxCore/archive/blendluxcore_v2.2rc1.tar.gz
-	sha256sums = efe1e82350939cd7ce8689f75334dbf16401dac3bcc603430ba0ffedbe954a00
+	source = https://github.com/LuxCoreRender/BlendLuxCore/archive/blendluxcore_v2.2.tar.gz
+	sha256sums = 92c2a1669f23bca58b3bef324676d1849775d996c96b8c35af1a97a0fed4e27e
 
 pkgname = blender-plugin-luxcorerender
 	depends = blender
