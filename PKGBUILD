@@ -2,7 +2,7 @@
 # Maintainer: Swift Geek
 pkgname=bluez-git
 _pkgname=bluez
-pkgver=5.50.r295.g9e6da22ed
+pkgver=5.51.r1.gf82256202
 pkgrel=1
 epoch=1
 pkgdesc="Libraries and tools for the Bluetooth protocol stack"
@@ -10,7 +10,7 @@ pkgdesc="Libraries and tools for the Bluetooth protocol stack"
 url="http://www.bluez.org/"
 arch=('i686' 'x86_64')
 license=('GPL2')
-depends=('libical' 'libdbus' 'glib2')
+depends=('libical' 'libdbus' 'glib2' 'alsa-lib' 'ell' 'json-c')
 optdepends=('cups: CUPS backend')
 makedepends=('git')
 conflicts=($_pkgname
@@ -22,14 +22,13 @@ conflicts=($_pkgname
 	   $_pkgname-hcidump
            'obexd-client'
 	   'obexd-server')
-provides=($_pkgname=${pkgver%%.r*}
-          $_pkgname-utils
-	  $_pkgname-libs
-	  $_pkgname-cups
-	  $_pkgname-hid2hci
-	  $_pkgname-plugins)
-backup=('etc/bluetooth/main.conf'
-	'etc/dbus-1/system.d/bluetooth.conf')
+provides=($_pkgname=${pkgver%%.r*}-${pkgrel}
+          $_pkgname-utils=${pkgver%%.r*}-${pkgrel}
+	  $_pkgname-libs=${pkgver%%.r*}-${pkgrel}
+	  $_pkgname-cups=${pkgver%%.r*}-${pkgrel}
+	  $_pkgname-hid2hci=${pkgver%%.r*}-${pkgrel}
+	  $_pkgname-plugins=${pkgver%%.r*}-${pkgrel})
+backup=('etc/bluetooth/main.conf')
 source=("$pkgname::git://git.kernel.org/pub/scm/bluetooth/bluez.git"
 	bluetooth.modprobe)
 md5sums=('SKIP'
@@ -53,13 +52,25 @@ build() {
     --sysconfdir=/etc \
     --localstatedir=/var \
     --libexecdir=/usr/lib \
+    --with-dbusconfdir=/usr/share \
+    --enable-external-ell \
+    --enable-btpclient \
+    --enable-midi \
     --enable-sixaxis \
+    --enable-mesh \
     --enable-experimental \
     --enable-manpages \
     --enable-library # this is deprecated
   make
 }
   
+check() {
+  cd $pkgname
+  # tests segfault and hang
+#  make check || /bin/true # https://bugzilla.kernel.org/show_bug.cgi?id=196621
+}
+
+
 package() {
   cd $pkgname
   make DESTDIR="${pkgdir}" install
