@@ -2,7 +2,7 @@
 # Contributor: Jesse Jaara <jesse.jaara@gmail.com>
 
 pkgname=ldraw-parts-library
-pkgver=20190901
+pkgver=20190902
 pkgrel=1
 pkgdesc="A collection of LDraw-format CAD files representing many of LEGO bricks produced"
 arch=(any)
@@ -32,7 +32,7 @@ package() {
   install -D -m755 ../ldraw-parts-library.sh "${pkgdir}/etc/profile.d/ldraw-parts-library.sh"
 }
 
-md5sums=('63a9c82ee0632803ebc296a5e93ff925'
+md5sums=('25f296b995857f317ef876a44e84cb7f'
          '97d6deee4b8b7171708b458b7908a02c'
          '2acda6add7ed39994a710bd70aa96fc1'
          '8fca376070b84bea4d4c42c736a378de')
