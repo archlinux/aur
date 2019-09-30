@@ -1,17 +1,17 @@
 # Maintainer: Simon Perry <aur [at] sanxion [dot] net>
 
 pkgname=pyspy
-pkgver=0.4
-pkgrel=3
+pkgver=0.5.1
+pkgrel=1
 _distname="PySpy-${pkgver}"
 pkgdesc="A simple EVE Online character intel tool"
 arch=('any')
 url="https://github.com/WhiteRusssian/PySpy"
 license=('MIT')
-depends=('python' 'python-wxpython' 'python-pyperclip' 'xclip')
+depends=('python' 'python-requests' 'python-wxpython' 'python-pyperclip')
 optdepends=()
 source=(${url}/archive/v$pkgver.tar.gz pyspy.desktop pyspy-start.sh)
-sha256sums=('e4cf55987c14a61a477c0bc932da858f99976bac16b744782f52242b73d6be04'
+sha256sums=('d20f061a6afff18942e05d47f555a37a3ce7ce14d772dc0afcf949a1d999c7c7'
             '35dd408ec9b397ca3d024b193e2fe4340b87b56a109d099de966bce1331e0744'
             '94b02643d89613e8b491a815fc4f4044d4349ed95a451025cac40dc40f313881')
 
