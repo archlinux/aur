@@ -1,6 +1,6 @@
 pkgbase = stone-soup-tiles-git
 	pkgdesc = Community maintained variant of Linley's Dungeon Crawl (tiles) - git version
-	pkgver = 0.24.a0.r639.gb70a11d811
+	pkgver = 0.24.a0.r720.gbbc45b03fd
 	pkgrel = 1
 	url = http://crawl.develz.org
 	arch = i686
