@@ -1,0 +1,45 @@
+pkgbase = r-metr
+	pkgdesc = Tools for Easier Analysis of Meteorological Fields
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=metR
+	arch = any
+	license = GPL3
+	depends = r
+	depends = r-checkmate
+	depends = r-curl
+	depends = r-data.table
+	depends = r-digest
+	depends = r-dplyr
+	depends = r-fields
+	depends = r-formula
+	depends = r-formula.tools
+	depends = r-ggplot2>=3.0.0
+	depends = r-gridextra
+	depends = r-gtable
+	depends = r-lubridate
+	depends = r-maps
+	depends = r-maptools
+	depends = r-memoise
+	depends = r-plyr
+	depends = r-rcurl
+	depends = r-scales
+	depends = r-sp
+	depends = r-stringr
+	depends = r-purrr
+	optdepends = r-covr
+	optdepends = r-irlba
+	optdepends = r-knitr
+	optdepends = r-ncdf4
+	optdepends = r-pkgdown
+	optdepends = r-reshape2
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	optdepends = r-udunits2
+	optdepends = r-vdiffr
+	optdepends = r-viridis
+	source = http://cran.r-project.org/src/contrib/metR_0.4.0.tar.gz
+	md5sums = 9b2f4b69fca2c1e18473574824878657
+
+pkgname = r-metr
+
