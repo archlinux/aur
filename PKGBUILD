@@ -2,10 +2,10 @@
 
 #_fragment="#tag=blendluxcore_v2.1beta2"
 _name="luxcorerender"
-_ver_tag="blendluxcore_v2.2rc1"
+_ver_tag="blendluxcore_v2.2"
 
 pkgname=blender-plugin-${_name}-git
-pkgver=2.2rc1.r9.gc1bb9e8
+pkgver=2.2.r1.gd34992e
 pkgrel=1
 pkgdesc="LuxCoreRender exporter plugin for Blender"
 arch=('any')
@@ -24,7 +24,7 @@ pkgver() {
 }
 
 package() {
-_blender=$(pacman -Sddp --print-format %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
+_blender=$(pacman -Sddp --print-format %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=)')
 depends=(blender luxcorerender)
   cd ${srcdir}/${_name}
   install -d -m755 ${pkgdir}/usr/share/blender/${_blender}/scripts/addons
