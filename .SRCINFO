@@ -1,0 +1,16 @@
+pkgbase = r-formula.tools
+	pkgdesc = Programmatic Utilities for Manipulating Formulas, Expressions, Calls, Assignments and Other R Objects
+	pkgver = 1.7.1
+	pkgrel = 1
+	url = https://cran.r-project.org/package=formula.tools
+	arch = any
+	license = GPL2
+	depends = r
+	depends = r-operator.tools>=1.4.0
+	optdepends = r-magrittr
+	optdepends = r-testthat
+	source = http://cran.r-project.org/src/contrib/formula.tools_1.7.1.tar.gz
+	md5sums = ab6ac9a593b99ef94148b2c908abc07d
+
+pkgname = r-formula.tools
+
