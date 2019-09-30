@@ -1,45 +1,46 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Contributor: Alad Wenter <alad@archlinux.org>
+# Contributor: Christian Hesse <mail@eworm.de>
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 # Contributor: Daniel Plaza <daniel.plaza.espi@gmail.com>
-
 pkgname=pcsclite-nopy
 _pkgname=pcsclite
-pkgver=1.8.23
-pkgrel=3
+pkgver=1.8.25
+pkgrel=1
 pkgdesc="PC/SC Architecture smartcard middleware library (no python)"
 arch=('x86_64' 'i686')
 url='https://pcsclite.apdu.fr/'
 license=('BSD')
-depends=('libsystemd')
+depends=('systemd')
 makedepends=('pkg-config' 'python')
 optdepends=('python: to use pcsc-spy tool')
 options=('!docs')
 validpgpkeys=('F5E11B9FFE911146F41D953D78A1B4DFE8F9C57E') # Ludovic Rousseau <rousseau@debian.org>
 source=("https://pcsclite.apdu.fr/files/pcsc-lite-${pkgver}.tar.bz2")
-sha256sums=('5a27262586eff39cfd5c19aadc8891dd71c0818d3d629539bd631b958be689c9')
-provides=($_pkgname=$pkgver)
+sha256sums=('d76d79edc31cf76e782b9f697420d3defbcc91778c3c650658086a1b748e8792')
+provides=($_pkgname=$pkgver-$pkgrel)
 conflicts=($_pkgname)
 
 build() {
-  cd "${srcdir}/pcsc-lite-${pkgver}"
+  cd "pcsc-lite-$pkgver"
 
-  ./configure --prefix=/usr \
-              --sbindir=/usr/bin \
-              --sysconfdir=/etc \
-              --enable-filter \
-              --enable-ipcdir=/run/pcscd \
-              --enable-libudev \
-              --enable-usbdropdir=/usr/lib/pcsc/drivers \
-              --with-systemdsystemunitdir=/usr/lib/systemd/system
+  ./configure \
+    --prefix=/usr \
+    --sbindir=/usr/bin \
+    --sysconfdir=/etc \
+    --enable-filter \
+    --enable-ipcdir=/run/pcscd \
+    --enable-libudev \
+    --enable-usbdropdir=/usr/lib/pcsc/drivers \
+    --with-systemdsystemunitdir=/usr/lib/systemd/system
 
   make
 }
 
 package() {
-  cd "${srcdir}/pcsc-lite-${pkgver}"
+  cd "pcsc-lite-$pkgver"
+  make DESTDIR="$pkgdir" install
 
-  make DESTDIR="${pkgdir}" install
-
-  install -D -m644 ${srcdir}/pcsc-lite-${pkgver}/COPYING ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
-  install -d ${pkgdir}/usr/lib/pcsc/drivers
+  install -D -m644 "$srcdir/pcsc-lite-$pkgver/COPYING" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -d "$pkgdir/usr/lib/pcsc/drivers"
 }
