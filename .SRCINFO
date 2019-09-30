@@ -1,11 +1,12 @@
 pkgbase = pkgtop
 	pkgdesc = Interactive package manager & resource monitor (stable version)
 	pkgver = 2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/keylo99/pkgtop
 	arch = any
 	license = GPL3
 	makedepends = go
+	makedepends = git
 	provides = pkgtop
 	conflicts = pkgtop-git
 	source = pkgtop-2.0.zip::https://github.com/keylo99/pkgtop/archive/2.0.zip

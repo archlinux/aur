@@ -4,11 +4,11 @@
 pkgname=pkgtop
 pkgdesc="Interactive package manager & resource monitor (stable version)"
 pkgver=2.0
-pkgrel=2
+pkgrel=3
 arch=('any')
 url="https://github.com/keylo99/pkgtop"
 license=('GPL3')
-makedepends=('go')
+makedepends=('go' 'git')
 provides=("${pkgname}")
 conflicts=("${pkgname}-git")
 source=("${pkgname}-${pkgver}.zip::https://github.com/keylo99/${pkgname}/archive/${pkgver}.zip")
