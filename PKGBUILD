@@ -1,4 +1,4 @@
-# Author: mosra <mosra@centrum.cz>
+# Author: XiLENCE <admin@linux-scout.de>
 pkgname=kubedecode-git
 _pkgname=kubedecode
 pkgver=r16.3a13928
