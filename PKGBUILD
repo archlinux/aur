@@ -7,8 +7,9 @@ pkgname=dwarffortress-ironhand
 _pkgname=dwarffortress
 pkgver=0.44.12
 _pkgver=44_12
+_fuckcommit=c39fecafa9d15670cfcf7e3b1a09cae45842a2fb
 pkgrel=1
-tilesetver=44.11
+_tilesetver=44.11
 pkgdesc="A single-player fantasy game in which you build a dwarven outpost or play an adventurer in a randomly generated world"
 arch=('x86_64' 'i686')
 url="http://www.bay12games.com/dwarves/"
@@ -22,14 +23,16 @@ options=('!strip' '!buildflags')
 install=${_pkgname}.install
 # I made a fucking github repo with the sole purpose of unfucking df a bit
 # We try to compile whatever little bit of df is open source
-source=("dwarffortress-unfuck-$pkgver.tar.gz::https://github.com/svenstaro/dwarf_fortress_unfuck/archive/$pkgver.tar.gz"
+#source=("dwarffortress-unfuck-$pkgver.tar.gz::https://github.com/svenstaro/dwarf_fortress_unfuck/archive/$pkgver.tar.gz"
+source=("dwarffortress-unfuck-$pkgver.zip::https://github.com/svenstaro/dwarf_fortress_unfuck/archive/$_fuckcommit.zip"
         dwarffortress
         dwarffortress.desktop
         "Ironhand_44_12A.zip::http://dffd.bay12games.com/download.php?id=13283&f=Ironhand_44_12A.zip"
         dwarffortress.png)
 source_x86_64=(http://www.bay12games.com/dwarves/df_"${_pkgver}"_linux.tar.bz2)
 source_i686=(http://www.bay12games.com/dwarves/df_"${_pkgver}"_linux32.tar.bz2)
-sha256sums=('2d509739df22277dec9c0dc3f7fa9351c9844c7a2027b143e22ceb2b48c7e301'
+# sha256sums=('2d509739df22277dec9c0dc3f7fa9351c9844c7a2027b143e22ceb2b48c7e301'
+sha256sums=('347d06b2d3a9f7d4a83d7081d81f69fdf2e94f2611e561c29490cf026aae5cc6'
             '211eaec6559d4fd5c08341dbed1f27bfab997a57bdf61fd268f9940e244652c5'
             'e79e3d945c6cc0da58f4ca30a210c7bf1bc3149fd10406d1262a6214eb40445a'
             '4be4188e87188f43e55d030a833cf28aacde17e5d9d66461c9e8ab5bc3dfe17a'
@@ -42,7 +45,8 @@ provides=("dwarffortress=$pkgver")
 
 build() {
   # shellcheck disable=2154
-  cd "$srcdir"/dwarf_fortress_unfuck-"$pkgver" || exit
+  # cd "$srcdir"/dwarf_fortress_unfuck-"$pkgver" || exit
+  cd "$srcdir"/dwarf_fortress_unfuck-"$_fuckcommit" || exit
   cmake .
   make
 }
@@ -59,7 +63,8 @@ package() {
   find "$pkgdir"/opt/"$_pkgname" -type f -exec chmod 644 {} +
 
   install -Dm755 "$srcdir"/df_linux/libs/Dwarf_Fortress "$pkgdir"/opt/"$_pkgname"/libs/Dwarf_Fortress
-  install -Dm755 "$srcdir"/dwarf_fortress_unfuck-"$pkgver"/libgraphics.so "$pkgdir"/opt/"$_pkgname"/libs/libgraphics.so
+  # install -Dm755 "$srcdir"/dwarf_fortress_unfuck-"$pkgver"/libgraphics.so "$pkgdir"/opt/"$_pkgname"/libs/libgraphics.so
+  install -Dm755 "$srcdir"/dwarf_fortress_unfuck-"$_fuckcommit"/libgraphics.so "$pkgdir"/opt/"$_pkgname"/libs/libgraphics.so
   install -Dm755 "$srcdir"/dwarffortress "$pkgdir"/usr/bin/"$_pkgname"
 
   # No idea why we need this. Really. This isn't being loaded dynamically, it's not linked and
