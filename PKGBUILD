@@ -1,38 +1,35 @@
-# Maintainer: Doug Newgard <scimmia at archlinux dot info>
-# Contributor: Lucas De Marchi <lucas.de.marchi@gmail.com
-# Contributor: Anton Bazhenov <anton.bazhenov at gmail>
-# Contributor: Igor Scabini <furester at gmail.com>
+# Maintainer: Andrew Sun <adsun701 at gmail dot com>
+# Contributor: Doug Newgard <scimmia at archlinux dot info>
+# Contributor: Lucas De Marchi <lucas dot de dot marchi at gmail dot com
+# Contributor: Anton Bazhenov <anton dot bazhenov at gmail>
+# Contributor: Igor Scabini <furester at gmail dot com>
 
 pkgname=lightmediascanner
-pkgver=0.5.1
-pkgrel=2
+pkgver=0.5.2
+pkgrel=1
 pkgdesc="Lightweight library to scan media"
 arch=('i686' 'x86_64')
 url="https://github.com/profusion/lightmediascanner"
 license=('LGPL')
 depends=('sqlite' 'libmp4v2' 'ffmpeg' 'file')
-source=("https://github.com/profusion/lightmediascanner/archive/release_$pkgver.tar.gz"
-        'https://github.com/profusion/lightmediascanner/commit/7c4aaa0616f7cb61f838191928d2c75023d342be.patch')
-sha256sums=('d08434b957eb8b4e2d84cb081406ce86af20113a30f9d0d097e32b7a667f1174'
-            '5d69e7498e85af9b5582a1941b416df1d293305862ad6ff7331701b29cc96094')
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/profusion/lightmediascanner/archive/release_$pkgver.tar.gz")
+sha256sums=('bf17c9aafd98aa89fe7abe1d45701b6cac574f36149d1d6c5d9636d1d98a42bc')
 
 prepare() {
-  cd $pkgname-release_$pkgver
-
-  patch -p1 -i ../7c4aaa0616f7cb61f838191928d2c75023d342be.patch
+  cd $srcdir/$pkgname-release_$pkgver
+  NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
-  cd $pkgname-release_$pkgver
+  cd $srcdir/$pkgname-release_$pkgver
 
-  ./autogen.sh \
+  ./configure \
     --prefix=/usr
 
   make
 }
 
 package() {
-  cd $pkgname-release_$pkgver
-
+  cd $srcdir/$pkgname-release_$pkgver
   make DESTDIR="$pkgdir" install
 }
