@@ -1,0 +1,10 @@
+[Desktop Entry]
+Exec=/opt/portfolio-performance-bin/portfolio/PortfolioPerformance
+Icon=visual-studio-code
+Terminal=false
+Type=Application
+Name=Portfolio Performance
+Comment=A simple tool to calculate the overall performance of an investment portfolio.
+MimeType=text/plain;inode/directory;
+StartupNotify=true
+

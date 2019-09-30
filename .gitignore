@@ -1,0 +1,5 @@
+src
+pkg
+portfolio*.tar*
+.idea
+.DS_Store
