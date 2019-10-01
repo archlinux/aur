@@ -18,7 +18,11 @@ package() {
     mkdir -p $pkgdir/usr/bin
     mkdir -p $pkgdir/usr/include
     mkdir -p $pkgdir/share/man/man1
+    mkdir -p $pkgdir/usr/share/applications
+    mkdir -p $pkgdir/usr/share/icons
     cp ../start $pkgdir/opt/mfcoin/start
+    cp ../mfcoin.desktop $pkgdir/usr/share/applications
+    cp ../mfcoin.svg $pkgdir/usr/share/icons
     cd $(ls -d */)
     cp -R ./bin ./utxo_snapshot ./genesis-reg.dat ./genesis-test.dat ./genesis.dat $pkgdir/opt/mfcoin/
     chmod 755 $pkgdir/opt/mfcoin/bin/* $pkgdir/opt/mfcoin/start

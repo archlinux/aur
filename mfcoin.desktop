@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Name=MFCoin Core
+Comment=Official desktop application for MFCoin cryptocurrency management
+TryExec=/usr/bin/mfcoin-qt
+Exec=/usr/bin/mfcoin-qt
+Icon=mfcoin
+Terminal=false
+StartupWMClass=mfcoin-qt
+Type=Application
+Categories=Network;Qt;Financial
+Keywords=mfc;coin;mfcoin;crypto;cryptocurrency;
