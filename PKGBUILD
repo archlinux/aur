@@ -3,9 +3,9 @@
 _pkgname=polybar-spotify
 pkgname=${_pkgname}-git
 pkgver=r32.50cfd6b
-pkgrel=1
+pkgrel=2
 pkgdesc='This is a module that shows the current song playing and its primary artist on Spotify.'
-arch=('x86_64')
+arch=(any)
 url=https://github.com/Jvanrhijn/${_pkgname}
 license=('MIT')
 makedepends=(git)
