@@ -51,7 +51,7 @@ _major=5.3
 _minor=2
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/dolohow/uksm"
 license=('GPL2')
@@ -71,7 +71,11 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
         "${_uksm_path}/${_uksm_patch}"
         "${_gcc_path}/${_gcc_patch}"
-        "${_lucjanpath}/arch-patches-v2/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v3-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v3-sep/0002-ipv6-Properly-check-reference-count-flag-before-taki.patch"
+        "${_lucjanpath}/arch-patches-v3-sep/0003-ipv6-do-not-free-rt-if-FIB_LOOKUP_NOREF-is-set-on-su.patch"
+        "${_lucjanpath}/arch-patches-v3-sep/0004-iwlwifi-fw-don-t-send-GEO_TX_POWER_LIMIT-command-to-.patch"
+        "${_lucjanpath}/arch-patches-v3-sep/0005-Bluetooth-hidp-Fix-assumptions-on-the-return-value-o.patch"
          # the main kernel config files
         'config'
          # pacman hook for depmod
@@ -380,7 +384,11 @@ sha512sums=('73e4c5e788be9a60e01a428bfcbb8e93b47da3f49cbeea4ab22cd9d1bfc56ca5830
             'SKIP'
             'b0a5fd9934cb3878ea6cb6563443fa83158f97ca1467a31b0269617d93b609ca84fb62cf3c96eadf6659f59a39cf91f71d9f174f7e222eac89aa0d1ae7de42f7'
             '2eb574fbfac6e334d3b06e52e466dbf8e88034515729b6571990b10f75a0fe2a52f188615405c5a695b5820669e595deead44d7961a97c5872359be3435fdf63'
-            '8aac877c0dfcd6796bc217572c8b8c6473ab6b5b15b7cca0e7c0f4e7cbb7080557d32fd045e6608d8acbf98cf7c16834ed0c5de2ce9d9d5dfa0194d055642276'
+            '0a6ea7e15f64611ae9d8ed372c5b31d28956f72c05a9010d57d48c9c17c78d3d41db8222d35fff53b05973fab4c960d764182c78aa428f082587d18e6f8c41fa'
+            '5ba6491d76864ccb84a7b8378b6f1780384dca2e1702ab87ecaef363504a57f829d2bdc3d631c59bedddec37713fd6b404859a0375009789253f05984da45193'
+            '3fbccc17ea28992b283d2ebec292ad2ed91fef7f522e9a61dd1990f2c67ce120d0419f6c7997afac2e30dd5cdec7f689e7a816d755c0cbf81c1598d9f1464936'
+            '482ae33b4bc1431e9ff2f72e24b2034a1ecbc53f9977030ece69dd3cfc2d9392d1e2a8b3c810d717060787f041998d1c4c2f5dc99a688c00d796b915734cf422'
+            'cb79480128c6ce6138367c56a462ea51cb81af4b56163f3f46fae4fde60e1d065f81492dce35e3041ffea5e290c3306b7679d5165b9806cb5235bd9cf295d576'
             '9676a783cffa863abee3abd56e2ebb2da7a89f105b690ab308b1da486c650f0603811e8c8c68d5773704052c0a89af68ae9b33f27d7e1096071bd26542f15336'
             '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
             '2718b58dbbb15063bacb2bde6489e5b3c59afac4c0e0435b97fe720d42c711b6bcba926f67a8687878bd51373c9cf3adb1915a11666d79ccb220bf36e0788ab7'
