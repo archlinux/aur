@@ -1,24 +1,40 @@
 # Maintainer: George C. Privon <accounts5 at privon dot com>
+# Maintainer: Astro Benzene <universebenzene at sina dot com>
 
-_pyname=emcee
-pkgname=python-$_pyname
-pkgver=2.2.1
+pkgbase=python-emcee
+_pyname=${pkgbase#python-}
+pkgname=("python-${_pyname}")
+pkgver=3.0.0
 pkgrel=1
-pkgdesc='Kick ass affine-invariant ensemble MCMC sampling'
-url="http://dan.iel.fm/emcee"
+pkgdesc="Kick ass affine-invariant ensemble MCMC sampling"
+arch=('i686' 'x86_64')
+url="http://emcee.readthedocs.io/"
 depends=('python-numpy')
-license=('BSD')
-arch=('any')
-source=("https://github.com/dfm/emcee/archive/v$pkgver.tar.gz")
-md5sums=('5958687736cf6296a9c632e46337ac5e')
+optdepends=('python-tqdm: For progress bars'
+            'python-h5py: For HDF5 backend'
+            'python-emcee-doc: Documentations for emcee')
+license=('MIT')
+makedepends=('python-setuptools')
+checkdepends=('python-pytest' 'python-scipy' 'python-h5py')
+source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
+md5sums=('4424318732c500a1d4db1b71e3eea7cf')
 
 build() {
-  cd $srcdir/$_pyname-$pkgver
-  python setup.py build
+    cd ${srcdir}/${_pyname}-${pkgver}
+
+    python setup.py build
+}
+
+check(){
+    cd ${srcdir}/${_pyname}-${pkgver}
+
+    pytest
 }
 
 package() {
-  cd $srcdir/$_pyname-$pkgver
-  python setup.py install --root="$pkgdir" --optimize=1 
-  install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    cd ${srcdir}/${_pyname}-${pkgver}
+
+    install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -D -m644 README.rst -t "${pkgdir}/usr/share/doc/${pkgname}"
+    python setup.py install --root=${pkgdir} --prefix=/usr --optimize=1
 }
