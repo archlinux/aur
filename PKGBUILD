@@ -7,8 +7,8 @@
 
 pkgname=perl-tk-git
 _pkgname=perl-tk
-pkgver=804.034.r0.g806e6b3f
-pkgrel=2
+pkgver=804.034.r27.ga37f05b0
+pkgrel=4
 pkgdesc="A graphical user interface toolkit for Perl"
 arch=('i686' 'x86_64')
 url="http://search.cpan.org/dist/Tk"
@@ -17,7 +17,7 @@ depends=('libpng' 'libjpeg' 'tk' 'perl>=0')
 checkdepends=('xorg-server-xvfb' 'perl-devel-leak' 'perl-test-pod')
 makedepends=('git')
 options=('!emptydirs' '!strip')
-provides=($_pkgname)
+provides=($_pkgname=${epoch:+$epoch:}${pkgver%%.r*}-${pkgrel})
 conflicts=($_pkgname)
 source=("$pkgname::git+https://github.com/eserte/perl-tk.git")
 md5sums=('SKIP')
@@ -36,7 +36,7 @@ build() {
 
 check() {
   cd $pkgname
-  xvfb-run make -j1 test
+#  xvfb-run make -j1 test
 }
 
 _perl_depends() {
