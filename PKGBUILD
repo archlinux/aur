@@ -3,9 +3,9 @@
 
 pkgname=lizzie-git
 _pkgname=lizzie
-pkgver=0.6.r84.gfca35c2
-_pkgver=0.6
-pkgrel=2
+pkgver=0.7.r4.g0c1232c
+_pkgver=0.7
+pkgrel=1
 pkgdesc="Analysis interface for Leela Zero"
 arch=('x86_64')
 url="https://github.com/featurecat/lizzie"

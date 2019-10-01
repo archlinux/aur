@@ -1,7 +1,7 @@
 pkgbase = lizzie-git
 	pkgdesc = Analysis interface for Leela Zero
-	pkgver = 0.6.r84.gfca35c2
-	pkgrel = 2
+	pkgver = 0.7.r4.g0c1232c
+	pkgrel = 1
 	url = https://github.com/featurecat/lizzie
 	arch = x86_64
 	license = GPLv3
