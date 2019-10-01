@@ -7,6 +7,7 @@ pkgbase = zulu-embedded-jdk11
 	arch = armv6h
 	arch = armv7h
 	arch = armv8h
+	arch = i686
 	license = custom
 	depends = java-runtime-common>=3
 	depends = java-environment-common=3
@@ -23,8 +24,7 @@ pkgbase = zulu-embedded-jdk11
 	provides = java-runtime=11
 	provides = java-runtime-openjdk=11
 	options = !strip
-	source = http://cdn.azul.com/zulu-embedded/bin/zulu11.33.21-ca-jdk11.0.4-linux_aarch64.tar.gz
-	sha256sums = a5150033cc8912c0845d547eeea1e4577d6e438b95b106e429db0543d6605500
+	source = http://cdn.azul.com/zulu-embedded/bin/zulu-ca-jdk11.0.4-linux_.tar.gz
 
 pkgname = zulu-embedded-jdk11
 

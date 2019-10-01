@@ -4,7 +4,7 @@ pkgname=zulu-embedded-jdk11
 pkgver=11.0.4
 pkgrel=1
 pkgdesc='Zulu Embedded is a certified build of OpenJDK for Armv8/v7/v6 devices.'
-arch=('armv6h' 'armv7h' 'armv8h')
+arch=('armv6h' 'armv7h' 'armv8h' 'i686')
 url='https://www.azul.com/products/zulu-embedded'
 license=('custom')
 install=jdk.install
@@ -21,20 +21,22 @@ provides=(
 )
 
 case "$CARCH" in
-    arm*)
-        _JARCH='aarch32hf'
-        _zulu_build=11.33.21
+    armv?h) _arch='aarch32hf'
+        _build=11.33.21
         sha256sums=('5e7e76a46fe1cf614ddfd7efc3b139ace7ba3fb552a4d9bd5b4ea31dc28494a3')
         ;;
-    aarch64)
-        _JARCH='aarch64'
-        _zulu_build=11.33.21
+    aarch64) _arch='aarch64'
+        _build=11.33.21
         sha256sums=('a5150033cc8912c0845d547eeea1e4577d6e438b95b106e429db0543d6605500')
         ;;
+    i686)
+        _build=13.27.9
+        sha256sums=('cf08df04c7e86e4f0547418ca8e162593e36784b11b811e9ccadd0801aa75656')
+		source=("https://cdn.azul.com/zulu/bin/zulu${_build}-ca-jdk13-linux_i686.tar.gz")
 esac
 
-_archive="zulu${_zulu_build}-ca-jdk${pkgver}-linux_${_JARCH}"
-source=("http://cdn.azul.com/zulu-embedded/bin/${_archive}.tar.gz")
+_archive="zulu${_build}-ca-jdk${pkgver}-linux_${_arch}"
+source=(${source:-"http://cdn.azul.com/zulu-embedded/bin/${_archive}.tar.gz"})
 
 _jvmdir="/usr/lib/jvm/zulu-embedded-11"
 
