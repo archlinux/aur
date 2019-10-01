@@ -1,6 +1,6 @@
 # Contributor: Stéphane Graber <stgraber AT ubuntu DOT com>
 # Maintainer: graysky <graysky AT archlinux DOT us>
-# Maintainer: edacval <edacval AT gmail DOT com
+# Maintainer: edacval <edacval AT gmail DOT com>
 
 # append "_cached=y" to makepkg params for use cached source files from your GOPATH
 [[ $_cached ]] && [[ $GOPATH ]] && export _oldgo="${_oldgo:-${GOPATH}:}"
