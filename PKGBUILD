@@ -4,20 +4,22 @@
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=webkit2gtk-unstable
-pkgver=2.26.0
+pkgver=2.26.1
 pkgrel=1
 pkgdesc="GTK Web content engine library"
 arch=(x86_64)
 url="https://webkitgtk.org/"
 license=(custom)
-depends=(libxt libxslt enchant geoclue2 gst-plugins-base-libs libsecret
-         libwebp harfbuzz-icu gtk3 libnotify hyphen woff2 openjpeg2)
-makedepends=(gperf gobject-introspection ruby cmake python ninja)
-optdepends=('gst-plugins-base: free media decoding'
+depends=(libxt libxslt enchant gst-plugins-base-libs libsecret libwebp openjpeg2
+         harfbuzz-icu gtk3 libnotify hyphen woff2 libwpe wpebackend-fdo
+         bubblewrap xdg-dbus-proxy)
+makedepends=(gperf gobject-introspection ruby gtk-doc cmake python geoclue ninja)
+optdepends=('geoclue: Geolocation support'
+            'gst-plugins-base: free media decoding'
             'gst-plugins-good: media decoding'
             'gst-libav: nonfree media decoding')
 source=(https://webkitgtk.org/releases/webkitgtk-${pkgver}.tar.xz{,.asc})
-sha256sums=('d210c0ecd1a89a22c9f8f1f450334f3489c5c50159b3a5e14dd93d5f349dcced'
+sha256sums=('6b4b21801d2b1008422a1075dbd6fb4ae8b5127503faf657cf9671289d9cd155'
             'SKIP')
 validpgpkeys=('D7FCF61CF9A2DEAB31D81BD3F3D322D0EC4582C3'
               '5AA3BC334FD7E3369E7C77B291C559DBE4C9123B')
@@ -32,10 +34,9 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_SKIP_RPATH=ON \
+    -DENABLE_GTKDOC=ON \
     -DLIBEXEC_INSTALL_DIR=/usr/lib \
-    -DLIB_INSTALL_DIR=/usr/lib \
-    -DENABLE_BUBBLEWRAP_SANDBOX=NO \
-    -DUSE_WPE_RENDERER=OFF \
+    -DLIB_INSTALL_DIR=/usr/lib
 
   cmake --build build
 }
