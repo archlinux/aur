@@ -2,8 +2,8 @@
 # Contributor: pavanjadhaw <pavanjadhaw96@gmail.com>
 _pkgname=betterlockscreen
 pkgname=${_pkgname}-git
-pkgver=r98.d877b69
-pkgrel=2
+pkgver=r109.82d1a72
+pkgrel=1
 pkgdesc="A simple lock script for i3lock-color"
 arch=('any')
 url="https://github.com/pavanjadhaw/${_pkgname}"
