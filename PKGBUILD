@@ -3,14 +3,15 @@
 
 pkgname=seaview
 pkgver=4.7
-pkgrel=1
+pkgrel=2
 pkgdesc="GUI for multiple sequence alignment and molecular phylogeny"
 arch=('x86_64')
 url="http://doua.prabi.fr/software/seaview"
 license=('GPL3')
 depends=('shared-mime-info' 'fltk')
 optdepends=('clustal-omega: alignment'
-            'muscle: alignment')
+            'muscle: alignment'
+			'gblocks-bin: select blocks of evolutionarily conserved sites')
 source=("ftp://pbil.univ-lyon1.fr/pub/mol_phylogeny/$pkgname/archive/${pkgname}_${pkgver}.tar.gz"
         'seaview.desktop'
         'seaview.sharedmimeinfo')
