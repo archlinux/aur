@@ -47,7 +47,7 @@ archlinux:
   - ccache -s
   - exit $_makepkg_return
 script:
-- "curl -s https://raw.githubusercontent.com/bartoszek/arch-travis/base64-encode/arch-travis.sh| bash"
+- "curl -s https://raw.githubusercontent.com/bartoszek/arch-travis/master/arch-travis.sh| bash"
 - "echo pacman pkg cache size: $(du -h ~/.pkg-cache|cut -f1) in $(ls ~/.pkg-cache|wc -l) files"
 
 #deploy:
