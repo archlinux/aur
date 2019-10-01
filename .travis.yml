@@ -18,9 +18,10 @@ env:
 services:
 - docker
 
-arch:
+archlinux:
   mount:
   - ~/.ccache:~/.ccache
+  - ~/path with spaces:~/path with spaces
   - ~/.pkg-cache:/var/cache/pacman/pkg
   repos:
   - bartus=https://github.com/bartoszek/AUR-repo/raw/master
