@@ -1,9 +1,6 @@
 # Contributor: Stéphane Graber <stgraber AT ubuntu DOT com>
 # Maintainer: graysky <graysky AT archlinux DOT us>
-# Maintainer: edacval <edacval AT gmail DOT com
-
-# append "_cached=y" to makepkg params for use cached source files from your GOPATH
-[[ $_cached ]] && [[ $GOPATH ]] && export _oldgo="${_oldgo:-${GOPATH}:}"
+# Maintainer: edacval <edacval AT gmail DOT com>
 
 _pkgname=distrobuilder
 _url=github.com/lxc/$_pkgname
@@ -32,13 +29,12 @@ prepare() {
   git clone -s "$srcdir"/$_pkgname "${srcdir}"/gosrc/src/$_url
   cd "${srcdir}"/gosrc/src/$_url
   gofmt -s -w -l .
-  GOPATH="${_oldgo:-}${srcdir}"/gosrc go get -v -d ./...
+  GOPATH="${srcdir}"/gosrc go get -v -d ./...
 }
 
 build() {
   cd "${srcdir}"/gosrc/src/$_url/$_pkgname
-  GOCACHE=/tmp/makepkg/$pkgname/gocache
-  GOPATH="${_oldgo:-}${srcdir}"/gosrc go build -v -trimpath -ldflags '-s -w' -o $_pkgname .
+  GOPATH="${srcdir}"/gosrc go build -v -trimpath -ldflags '-s -w' -o $_pkgname .
 }
 
 package() {
