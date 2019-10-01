@@ -2,7 +2,7 @@
 pkgname=xping-git
 pkgrelname=xping
 pkgver=195
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple ping program continiously probing multiple hosts using icmp-echo"
 url="https://github.com/martintopholm/xping"
 arch=('x86_64')
