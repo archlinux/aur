@@ -1,6 +1,6 @@
 pkgbase = radsecproxy
 	pkgdesc = a generic RADIUS proxy that in addition to to usual RADIUS UDP transport, also supports TLS (RadSec), as well as RADIUS over TCP and DTLS
-	pkgver = 1.8.0
+	pkgver = 1.8.1
 	pkgrel = 1
 	url = https://radsecproxy.github.io/
 	arch = i686
@@ -9,11 +9,11 @@ pkgbase = radsecproxy
 	depends = openssl
 	optdepends = freeradius: radius server
 	backup = etc/radsecproxy/radsecproxy.conf
-	source = https://github.com/radsecproxy/radsecproxy/releases/download/1.8.0/radsecproxy-1.8.0.tar.gz
-	source = https://github.com/radsecproxy/radsecproxy/releases/download/1.8.0/radsecproxy-1.8.0.tar.gz.asc
+	source = https://github.com/radsecproxy/radsecproxy/releases/download/1.8.1/radsecproxy-1.8.1.tar.gz
+	source = https://github.com/radsecproxy/radsecproxy/releases/download/1.8.1/radsecproxy-1.8.1.tar.gz.asc
 	source = radsecproxy.service
 	validpgpkeys = 210FA7FB28E45779777BAA1C5963D59C3D68633B
-	sha256sums = 29a6bc336cfff2762071d7349d8fae25d117e5e186c4343351d2de6020b9be78
+	sha256sums = c6f9380f049818e71c129ee9bdfa20c8e0e3a13ca1c806643e0d44c310914e63
 	sha256sums = SKIP
 	sha256sums = 3cc1e1a5746e4bd543d2646c6a3b444de05f38d29ca7408a1f5382ab34366cf8
 
