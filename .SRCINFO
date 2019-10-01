@@ -1,0 +1,14 @@
+pkgbase = haskell-parsec-permutation
+	pkgdesc = Applicative permutation parser for Parsec intended as a replacement
+	pkgver = 0.1.2.0
+	pkgrel = 1
+	url = https://github.com/h/parsec-permutation
+	arch = x86_64
+	license = BSD
+	makedepends = ghc
+	depends = ghc-libs
+	source = https://hackage.haskell.org/packages/archive/parsec-permutation/0.1.2.0/parsec-permutation-0.1.2.0.tar.gz
+	sha512sums = 25fdbd6246ad093173fbbc8ef7f8d6805b429bcd4ed6afeb3c482b07a848d2f206301642db8edf68915a3fe184e56af2166efde3970681a08361f5384a667d2d
+
+pkgname = haskell-parsec-permutation
+
