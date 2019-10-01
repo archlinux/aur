@@ -15,7 +15,7 @@ makedepends=("clang" "lld" "ninja" "gn" "python2" "gcc" "llvm")
 optdepends=("ccache: Speed up compilation")
 backup=(etc/naiveproxy/config.json)
 md5sums=('SKIP'
-         '97aa54a097b10d2de82e026ba927e9e8')
+         '21772e7e4492a42c4a5dd015b3787be0')
 provides=('naiveproxy')
 conflicts=('naiveproxy' 'naiveproxy-bin')
 

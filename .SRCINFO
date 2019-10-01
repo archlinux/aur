@@ -22,7 +22,7 @@ pkgbase = naiveproxy-git
 	source = git+https://github.com/klzgrad/naiveproxy.git
 	source = build.sh
 	md5sums = SKIP
-	md5sums = 97aa54a097b10d2de82e026ba927e9e8
+	md5sums = 21772e7e4492a42c4a5dd015b3787be0
 
 pkgname = naiveproxy-git
 
