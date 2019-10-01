@@ -2,7 +2,7 @@
 
 pkgname=hunter
 pkgver=1.3.4
-pkgrel=2
+pkgrel=3
 pkgdesc='ranger-like file browser written in Rust'
 arch=(i686 x86_64)
 url=https://github.com/rabite0/hunter
@@ -19,6 +19,7 @@ optdepends=('gst-plugins-good: media support'
             'highlight: syntax highlighting'
             'libarchive: archive support'
             'p7zip: archive support'
+            'atool: archive support'
             'w3m: HTML support'
             'links: HTML support'
             'elinks: HTML support'

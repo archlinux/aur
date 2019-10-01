@@ -1,7 +1,7 @@
 pkgbase = hunter
 	pkgdesc = ranger-like file browser written in Rust
 	pkgver = 1.3.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/rabite0/hunter
 	arch = i686
 	arch = x86_64
@@ -19,6 +19,7 @@ pkgbase = hunter
 	optdepends = highlight: syntax highlighting
 	optdepends = libarchive: archive support
 	optdepends = p7zip: archive support
+	optdepends = atool: archive support
 	optdepends = w3m: HTML support
 	optdepends = links: HTML support
 	optdepends = elinks: HTML support
