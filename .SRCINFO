@@ -20,9 +20,7 @@ pkgbase = zulu-embedded-jdk11
 	depends = giflib
 	depends = libelf
 	provides = java-environment=11
-	provides = java-environment-openjdk=11
 	provides = java-runtime=11
-	provides = java-runtime-openjdk=11
 	options = !strip
 	source = http://cdn.azul.com/zulu-embedded/bin/zulu-ca-jdk11.0.4-linux_.tar.gz
 

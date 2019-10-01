@@ -9,15 +9,11 @@ url='https://www.azul.com/products/zulu-embedded'
 license=('custom')
 install=jdk.install
 options=(!strip)
-
+provides=("java-environment=11" "java-runtime=11")
 depends=(
     'java-runtime-common>=3' 'java-environment-common=3'
     'ca-certificates-utils' 'nss' 'libjpeg-turbo' 'lcms2' 'libnet' 'freetype2'
     'giflib' 'libelf'
-)
-provides=(
-    "java-environment=11" "java-environment-openjdk=11"
-    "java-runtime=11" "java-runtime-openjdk=11"
 )
 
 case "$CARCH" in
@@ -33,6 +29,7 @@ case "$CARCH" in
         _build=13.27.9
         sha256sums=('cf08df04c7e86e4f0547418ca8e162593e36784b11b811e9ccadd0801aa75656')
 		source=("https://cdn.azul.com/zulu/bin/zulu${_build}-ca-jdk13-linux_i686.tar.gz")
+        provides=("java-environment=13" "java-runtime=13")
 esac
 
 _archive="zulu${_build}-ca-jdk${pkgver}-linux_${_arch}"
