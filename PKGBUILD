@@ -2,13 +2,13 @@
 
 pkgname=esearch
 _pkgdirname="pacman-$pkgname"
-pkgver=1.5.2
+pkgver=2.1.6
 pkgrel=1
 pkgdesc="Replacement for both pacman -Ss and pacman -Si"
 arch=('x86_64')
 url="https://github.com/KLZ-0/pacman-esearch"
 license=('MIT')
-makedepends=('git' 'cmake')
+makedepends=('git' 'cmake' 'gcc')
 source=("git+https://github.com/KLZ-0/pacman-esearch#branch=master")
 
 md5sums=('SKIP')
