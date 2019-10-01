@@ -1,0 +1,25 @@
+pkgbase = python-aigpy
+	pkgdesc = Python Common Lib
+	pkgver = 2019.9.20.2
+	pkgrel = 1
+	url = https://pypi.org/project/aigpy
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = https://files.pythonhosted.org/packages/06/8d/46ca89b991b15bfc28c9f44ca620be6fc3fe50c627a0f4316385e1b81474/aigpy-2019.9.20.2.tar.gz
+	sha256sums = ad7f4e1a8fad7ca7f0efdcc79d7ed256b38521d9a07ca4c784e4143909036857
+
+pkgname = python-aigpy
+	depends = python
+	depends = python-requests
+	depends = python-colorama
+	depends = python-mutagen
+
+pkgname = python2-aigpy
+	depends = python2
+	depends = python2-requests
+	depends = python2-colorama
+	depends = python2-mutagen
+	depends = python2-futures
+
