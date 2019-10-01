@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
 pkgname=guiscrcpy-git
-pkgver=1.11.r16.4ce6699
+pkgver=1.11.r19.d112ac4
 pkgrel=1
 pkgdesc="A full fledged GUI integration for the most award winning open-source Android screen mirroring system -- scrcpy"
 arch=('i686' 'x86_64')
@@ -8,7 +8,8 @@ url="https://srevinsaju.github.io/guiscrcpy"
 license=('GPL3')
 depends=('scrcpy' 'python-pyqt5' 'python-psutil' 'python-qdarkstyle')
 makedepends=('git')
-optdepends=('python-pystray: for developers')
+optdepends=('python-pystray: for developers'
+            'usbaudio: AOA audio, deprecated since Android 8.0')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/srevinsaju/guiscrcpy.git'
