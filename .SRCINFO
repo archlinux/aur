@@ -1,0 +1,20 @@
+pkgbase = python-libconfigparser
+	pkgdesc = backport of configparser from Python 3
+	pkgver = 4.0.2
+	pkgrel = 1
+	url = https://github.com/jaraco/configparser
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = configparser-4.0.2.tar.gz::https://files.pythonhosted.org/packages/16/4f/48975536bd488d3a272549eb795ac4a13a5f7fcdc8995def77fbef3532ee/configparser-4.0.2.tar.gz
+	source = https://raw.githubusercontent.com/jaraco/configparser/master/LICENSE
+	sha256sums = c7d282687a5308319bf3d2e7706e575c635b0a470342641c93bea0ea3b5331df
+	sha256sums = a55e2ffe9b44998e621d51d8c094bed09acc4b5236ee73d7df395a33ba3c18fd
+
+pkgname = python-libconfigparser
+	depends = python
+
+pkgname = python2-libconfigparser
+	depends = python2
+
