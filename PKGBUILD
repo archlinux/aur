@@ -4,14 +4,13 @@
 # Contributor: damir <damir@archlinux.org>
 
 pkgname=x11vnc-git
-pkgver=0.9.14.r524.gcb88cb2
+pkgver=0.9.16.r12.g97d632c
 pkgrel=1
+epoch=1
 pkgdesc='VNC server for real X displays'
 url="https://LibVNC.github.io"
 arch=('i686' 'x86_64')
 license=('GPL')
-provides=('x11vnc')
-conflicts=('x11vnc')
 depends=('cairo' 'libxcursor' 'libxcomposite' 'libvncserver-git' 'libxtst' 'libxinerama' 'libxdamage' 'libxrandr' 'avahi')
 makedepends=('git' 'autoconf-archive')
 optdepends=('tk: GUI support'
@@ -22,10 +21,12 @@ source=("$pkgname::git+https://github.com/LibVNC/x11vnc.git"
 	"x11vnc.service")
 sha1sums=('SKIP'
           '9e3838c8dcd4e0a20ab7808937375476cf191318')
+provides=("x11vnc=${epoch:+$epoch:}${pkgver%%.r*}-${pkgrel}")
+conflicts=("x11vnc")
 
 pkgver() {
   cd $pkgname
-  printf "0.9.14.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed -E 's,^[^0-9]*,,;s,([^-]*-g),r\1,;s,-,.,g'
 }
 
 prepare() {

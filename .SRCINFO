@@ -1,7 +1,8 @@
 pkgbase = x11vnc-git
 	pkgdesc = VNC server for real X displays
-	pkgver = 0.9.14.r524.gcb88cb2
+	pkgver = 0.9.16.r12.g97d632c
 	pkgrel = 1
+	epoch = 1
 	url = https://LibVNC.github.io
 	arch = i686
 	arch = x86_64
@@ -21,7 +22,7 @@ pkgbase = x11vnc-git
 	optdepends = net-tools: -auth guess
 	optdepends = xf86-video-dummy: Xdummy script
 	optdepends = java-environment: java-applet support
-	provides = x11vnc
+	provides = x11vnc=1:0.9.16-1
 	conflicts = x11vnc
 	source = x11vnc-git::git+https://github.com/LibVNC/x11vnc.git
 	source = x11vnc.service
