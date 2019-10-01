@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=DevHub
+Comment=TweetDeck for GitHub - Android, iOS, Web & Desktop
+Exec=/opt/devhub/devhub %U
+Terminal=false
+Type=Application
+Icon=devhub
+Categories=Utility;Development;
+MimeType=x-scheme-handler/devhub;
