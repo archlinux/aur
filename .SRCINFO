@@ -3,7 +3,6 @@ pkgbase = mfcoin-bin
 	pkgver = 3.0.0
 	pkgrel = 0
 	url = https://mfcoin.net/
-	install = mfcoin.install
 	arch = x86_64
 	license = GPL3
 	depends = libevent>=2.1.8
@@ -14,9 +13,7 @@ pkgbase = mfcoin-bin
 	depends = freetype2>=2.7.1
 	depends = protobuf
 	source_x86_64 = https://github.com/MFrcoin/MFCoin/releases/download/v.3.0.0.0/mfcoin-linux.01.10.19.zip
-	source_x86_64 = mfcoin.install
 	sha256sums_x86_64 = f25db13c2a6abf30294e2d2c7ceaf8db0fa0313e4777f24014d95ed69496472b
-	sha256sums_x86_64 = b03fb0e7f61820a11c030dc4ec627b7d618cb8e71f5983e2b9e18a77903e6701
 
 pkgname = mfcoin-bin
 
