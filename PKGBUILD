@@ -52,10 +52,10 @@ _muqss_disable=
 _major=5.2
 _srcname=linux-${_major}
 _lqxpatchname=liquorix-package
-_lqxpatchrel=26
+_lqxpatchrel=27
 _lqxpatchver=${_lqxpatchname}-${_major}-${_lqxpatchrel}
 pkgbase=linux-lqx
-pkgver=5.2.17_2
+pkgver=5.2.18_1
 pkgrel=1
 arch=('x86_64')
 url="http://liquorix.net/"
@@ -361,7 +361,7 @@ done
 
 sha512sums=('5a28f8a34c4e0470617f5638b7112e6252109b78f23b1eed484a228530970c7ef5c130d6e5a09cf25ea2f6a0329602dcc1ec66ce893182e15b27d99bd228789c'
             'SKIP'
-            '19d2c18c5d729fef275687388b7b6bf8211b0d809beb7e397e8e0404a67c26e323a3160a7f9b1b7cb440a495c3d61f65fb69dd2afab0a742c28fd310e2063332'
+            '67a8e000787e5cdae1697f0b7b641b5dffcd6b661da09bea12a8f73083278f86a98231802be9f882c31fe8b5ace4f7546da93f9ec7f999055f7eac73fb1fd02a'
             '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
             '2718b58dbbb15063bacb2bde6489e5b3c59afac4c0e0435b97fe720d42c711b6bcba926f67a8687878bd51373c9cf3adb1915a11666d79ccb220bf36e0788ab7'
             '8742e2eed421e2f29850e18616f435536c12036ff793f5682a3a8c980cf5dbfc88d17fd9539c87de15d9e4663dc3190f964f18a4722940465437927b6052abbf'
