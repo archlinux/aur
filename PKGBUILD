@@ -1,6 +1,6 @@
 # Maintainer: Axel Lehmann <lehmann at cs dot uni-freiburg do de>
 pkgname=wharfer-git
-pkgver=v0.5.2.r0.gb29374c
+pkgver=v0.5.3.r0.ge30c81f
 pkgrel=1
 pkgdesc='wrapper around docker'
 arch=('x86_64')

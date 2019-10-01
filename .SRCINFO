@@ -1,6 +1,6 @@
 pkgbase = wharfer-git
 	pkgdesc = wrapper around docker
-	pkgver = v0.5.2.r0.gb29374c
+	pkgver = v0.5.3.r0.ge30c81f
 	pkgrel = 1
 	url = https://github.com/ad-freiburg/wharfer
 	arch = x86_64
