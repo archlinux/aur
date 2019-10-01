@@ -1,13 +1,13 @@
 pkgbase = proxyboi
 	pkgdesc = A super simple reverse proxy with TLS support
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/svenstaro/proxyboi
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
-	source = https://github.com/svenstaro/proxyboi/archive/0.3.0.tar.gz
-	sha512sums = 2f5e7870a3aef0f157598fe726f0d09e3aaf90278d44a4bb771e61c4cca1243b7030abdb704ac70a5169d4489fab9c0c1a954c39a5ab77f816763fa8a5402d29
+	source = https://github.com/svenstaro/proxyboi/archive/0.4.0.tar.gz
+	sha512sums = a5700ae3afc536dac20457f64c7b3bb98636516bec3f8ff48165ba2c6b4a76edeb9c0895ae2a0954c24bb4c0189a912a1d32000f03c83033e6a201c052065637
 
 pkgname = proxyboi
 
