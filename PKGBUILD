@@ -1,6 +1,4 @@
 # Maintainer: WorMzy Tykashi <wormzy.tykashi@gmail.com>
-# Contributor: OK100 <ok100 at lavabit dot com>
-# Contributor: Valère Monseur <valere dot monseur at ymail dot com>
 
 pkgname=chiaki-git
 _gitname=chiaki
@@ -12,8 +10,6 @@ url="https://github.com/thestr4ng3r/chiaki.git"
 license=('GPL3')
 depends=('qt5-base' 'qt5-multimedia' 'qt5-svg' 'sdl2' 'opus' 'ffmpeg' 'openssl' 'gcc-libs')
 makedepends=('git' 'cmake' 'python-protobuf')
-provides=('compton')
-conflicts=('compton')
 source=(git+"${url}")
 md5sums=("SKIP")
 

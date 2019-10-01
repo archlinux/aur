@@ -17,8 +17,6 @@ pkgbase = chiaki-git
 	depends = ffmpeg
 	depends = openssl
 	depends = gcc-libs
-	provides = compton
-	conflicts = compton
 	source = git+https://github.com/thestr4ng3r/chiaki.git
 	md5sums = SKIP
 
