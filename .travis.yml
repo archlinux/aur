@@ -17,7 +17,7 @@ cache:
 services:
 - docker
 
-arch:
+archlinux:
   mount:
   - ~/.ccache:~/.ccache
   - ~/.pkg-cache:/var/cache/pacman/pkg
