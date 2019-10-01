@@ -1,0 +1,21 @@
+pkgbase = osu-mime
+	pkgdesc = Provides MIME types for osu! file formats
+	pkgver = 0.1
+	pkgrel = 1
+	install = osu-mime.install
+	arch = any
+	license = AGPL3
+	makedepends = librsvg
+	makedepends = imagemagick
+	depends = xdg-utils
+	depends = shared-mime-info
+	depends = desktop-file-utils
+	source = https://raw.githubusercontent.com/ppy/osu-web/master/public/images/layout/osu-logo-triangles.svg
+	source = https://raw.githubusercontent.com/ppy/osu-web/master/public/images/layout/osu-logo-white.svg
+	source = osu-file-extensions.xml
+	sha256sums = e1aeaf9b81fa88e9b2b32d7f7c357a3f27c88df775fc19c1e4b65add9da7a1af
+	sha256sums = 5ef601206caf4d37cc028ccc3fd826af7b9810968c72f31a233c0eed920bae46
+	sha256sums = 53235dddeadccad6a09eb251eac6357813a08440eb03e5410cdb470eba78b65f
+
+pkgname = osu-mime
+
