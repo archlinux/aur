@@ -1,7 +1,7 @@
 pkgbase = python-aigpy
 	pkgdesc = Python Common Lib
 	pkgver = 2019.9.20.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/aigpy
 	arch = any
 	license = MIT
@@ -15,12 +15,14 @@ pkgbase = python-aigpy
 pkgname = python-aigpy
 	depends = python
 	depends = python-requests
+	depends = python-libconfigparser
 	depends = python-colorama
 	depends = python-mutagen
 
 pkgname = python2-aigpy
 	depends = python2
 	depends = python2-requests
+	depends = python2-libconfigparser
 	depends = python2-colorama
 	depends = python2-mutagen
 	depends = python2-futures

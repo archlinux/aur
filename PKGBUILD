@@ -3,7 +3,7 @@
 pkgname=('python-aigpy' 'python2-aigpy')
 _pkgname=aigpy
 pkgver=2019.9.20.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Python Common Lib"
 arch=('any')
 url="https://pypi.org/project/aigpy"
@@ -33,6 +33,7 @@ package_python-aigpy() {
   depends=(
     'python'
     'python-requests'
+    'python-libconfigparser'
     'python-colorama'
     'python-mutagen'
   )
@@ -45,6 +46,7 @@ package_python2-aigpy() {
   depends=(
     'python2'
     'python2-requests'
+    'python2-libconfigparser'
     'python2-colorama'
     'python2-mutagen'
     'python2-futures'
