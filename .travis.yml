@@ -53,7 +53,7 @@ archlinux:
   - |
      [ "$TRAVIS" == "true" ] && TRAVIS=1 || TRAVIS=0
 # Build
-  - 'echo "Travis initialization time:      $travis_uptime"'
+  - 'echo "Travis initialization time:      $travis_uptime seconds"'
   - "arch_uptime=$(cut -d' ' -f1 /proc/uptime|cut -d'.' -f1)"
   - 'echo "Arch-Travis initialization time: $((arch_uptime-travis_uptime)) seconds"'
   - ccache -s
