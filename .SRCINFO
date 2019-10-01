@@ -1,6 +1,6 @@
-pkgbase = go-luks-suspend
+pkgbase = go-luks-suspend-git
 	pkgdesc = Encrypt LUKS volumes on system suspend
-	pkgver = 1.4.3
+	pkgver = 1.4.3.c077dcc
 	pkgrel = 1
 	url = https://github.com/guns/go-luks-suspend
 	install = install
@@ -12,10 +12,9 @@ pkgbase = go-luks-suspend
 	depends = mkinitcpio
 	conflicts = arch-luks-suspend
 	conflicts = arch-luks-suspend-git
-	source = https://github.com/guns/go-luks-suspend/archive/v1.4.3.tar.gz
-	sha1sums = 538f846e2dc67e7a946951ab421568658b50b27d
-	sha256sums = 2060919b8a2bf9f3a3420bf6a8032424dde7038dac46d6ec3d8c360896254c5e
-	sha512sums = f1be7905516fc428b1a188eaf1400c074d617cf4c0435fb86be463a5abc79b7f6977af2ea1b66173777e8bdf19b4ae47f47695d50a4e3a7bd00d2aefd1b37a06
+	conflicts = go-luks-suspend
+	source = go-luks-suspend::git+https://github.com/guns/go-luks-suspend#branch=luks2
+	md5sums = SKIP
 
-pkgname = go-luks-suspend
+pkgname = go-luks-suspend-git
 
