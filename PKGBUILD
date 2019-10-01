@@ -1,7 +1,7 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=lsd2dsl-git
 pkgver=0.4.1.r26.gf7bce9c
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A decompiler for ABBYY Lingvo’s and Duden proprietary dictionaries."
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url='https://rcebits.com/lsd2dsl/index.html'
 license=('MIT')
 groups=()
 depends=('libzip' 'boost' 'qt5-base' 'libvorbis' 'libsndfile')
-makedepends=('git' 'cmake>=3.14')
+makedepends=('git' 'cmake>=3.14' 'gtest')
 optdepends=()
 checkdepends=()
 provides=('lsd2dsl')
