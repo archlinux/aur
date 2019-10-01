@@ -15,7 +15,7 @@ cache:
 services:
 - docker
 
-arch:
+archlinux:
   mount:
   - ~/.ccache:~/.ccache
   - ~/.cache/yay:~/.cache/yay
