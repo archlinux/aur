@@ -3,7 +3,7 @@
 pkgname=chiaki-git
 _gitname=chiaki
 pkgver=1.0.3.r29.g01f746e
-pkgrel=1
+pkgrel=2
 pkgdesc="Unofficial PlayStation 4 remote play client"
 arch=(i686 x86_64)
 url="https://github.com/thestr4ng3r/chiaki.git"
