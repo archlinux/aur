@@ -69,7 +69,7 @@ script:
 - 'echo "Travis initialization time: $travis_uptime seconds"'
 - '[ ! -f ~/.pkg-cache/NVIDIA-OptiX-SDK-7.0.0-linux64.sh ] && curl "https://developer.download.nvidia.com/designworks/optix/secure/7.0.0/ga/NVIDIA-OptiX-SDK-7.0.0-linux64.sh?A6U4SqtA1SUcdIQfJy-aPSwpaze2wwZkszN9pjQtd0jJmyTXqTOcL6dL4_iFYK-PYjDMeyeTjDTuCAeqEs52DyKXfZkl1pDWFtClMExc7RVzuyHfj7EiSACDo78jtZrnpGe3ZIpfGLXGDHqtcGAEHegyxkb0yPDwXuUytHjtYhuY_g" > ~/.pkg-cache/NVIDIA-OptiX-SDK-7.0.0-linux64.sh || true'
 # assume caching out will take the same amount of time as caching in those making build time equal to 50 minutes minus two time current uptime.
-- "curl -s https://raw.githubusercontent.com/bartoszek/arch-travis/base64-encode/arch-travis.sh| timeout $((50*60-2*travis_uptime)) bash"
+- "curl -s https://raw.githubusercontent.com/bartoszek/arch-travis/master/arch-travis.sh| timeout $((50*60-2*travis_uptime)) bash"
 - "echo pacman pkg cache size: $(du -h ~/.pkg-cache|cut -f1) in $(ls ~/.pkg-cache|wc -l) files"
 
 #deploy:
