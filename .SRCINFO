@@ -1,6 +1,6 @@
 pkgbase = upower-git
 	pkgdesc = Abstraction for enumerating power devices, listening to device events and querying history and statistics
-	pkgver = 0.99.7.r14.g0e6cc20
+	pkgver = 0.99.11.r1.gc742d55
 	pkgrel = 1
 	url = http://upower.freedesktop.org
 	arch = i686
@@ -17,7 +17,7 @@ pkgbase = upower-git
 	depends = dbus-glib
 	depends = libimobiledevice
 	depends = libgudev
-	provides = upower=0.99.7.r14.g0e6cc20
+	provides = upower=0.99.11-1
 	conflicts = upower
 	backup = etc/UPower/UPower.conf
 	source = upower-git::git://anongit.freedesktop.org/upower
