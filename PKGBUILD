@@ -6,19 +6,20 @@
 # Contributor: ava1ar <mail(at)ava1ar(dot)me>
 # Contributor: Albert Westra <odsseywestra(at)gmail(dot)com>
 # Maintainer: Darren Wu <$(base64 --decode <<<'ZGFycmVuMTk5NzA4MTBAZ21haWwuY29tCg==')>
+# Co-Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
 
 pkgname=lastpass-pocket
 pkgver=4.1.20
-pkgrel=2
+pkgrel=3
 pkgdesc="Backup and offline access for LastPass"
 arch=('x86_64')
 url="https://lastpass.com"
 license=('custom:LastPass')
 options=('!strip')
-depends=('ca-certificates' 'openssl' 'libldap' 'libidn' 'gtk2' 'libpng12' 'librtmp0')
+depends=('ca-certificates' 'openssl-1.0' 'libldap' 'libidn' 'gtk2' 'libpng12' 'librtmp0')
 source=('lastpass.desktop'
-	      'lastpass.png'
-	      "pocket_x64_${pkgver}.tar.bz2::https://download.cloud.lastpass.com/pocket/pocket_x64.tar.bz2")
+        'lastpass.png'
+        "pocket_x64_${pkgver}.tar.bz2::https://download.cloud.lastpass.com/pocket/pocket_x64.tar.bz2")
 sha1sums=('4e8258a93d2a72c86abc916fee1faab0d34fc8a7'
           '043994fdbb2af48eadb17e2ffe48a9a1652c297b'
           '893ec51711f1030ed575b895fef145982124496d')
