@@ -1,0 +1,26 @@
+pkgbase = python-aigpy-git
+	pkgdesc = Python Common Lib
+	pkgver = 20190925.fc958ab
+	pkgrel = 1
+	url = https://github.com/yaronzz/AIGPY
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = aigpy::git+https://github.com/yaronzz/AIGPY.git
+	sha256sums = SKIP
+
+pkgname = python-aigpy-git
+	depends = python
+	depends = python-requests
+	depends = python-colorama
+	depends = python-mutagen
+
+pkgname = python2-aigpy-git
+	depends = python2
+	depends = python2-requests
+	depends = python2-colorama
+	depends = python2-mutagen
+	depends = python2-futures
+
