@@ -1,3 +1,4 @@
+# Maintainer: James Thomas <jgtcode@protonmail.com>
 
 pkgname=borg-import-git
 _pkgname=borg-import
