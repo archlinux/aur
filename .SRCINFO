@@ -1,13 +1,13 @@
 pkgbase = fsharp-bin
 	pkgdesc = The F# Compiler, Core Library & Tools (Xamarin binary build)
-	pkgver = 4.5
+	pkgver = 4.5.0
 	pkgrel = 1
 	url = http://fsharp.org/
 	arch = any
 	license = MIT
 	depends = mono
 	depends = msbuild-stable
-	provides = fsharp
+	provides = fsharp=4.5.0
 	conflicts = fsharp
 	noextract = fsharp_4.5-0xamarin9+ubuntu1804b1_all.deb
 	noextract = libfsharp-core4.5-cil_4.5-0xamarin9+ubuntu1804b1_all.deb
