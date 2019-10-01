@@ -80,4 +80,7 @@ export DEPOT_TOOLS_WIN_TOOLCHAIN=0
 
 gn gen "$out" --args="$flags" --script-executable=$python2
 
+cp -v /usr/lib/gcc/$(gcc -dumpmachine)/$(gcc -dumpversion)/crtbeginS.o "$out"
+cp -v /usr/lib/gcc/$(gcc -dumpmachine)/$(gcc -dumpversion)/crtendS.o "$out"
+
 ninja -C "$out" naive

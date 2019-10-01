@@ -11,7 +11,7 @@ license=('BSD')
 depends=('nspr' 'nss')
 source=('git+https://github.com/klzgrad/naiveproxy.git'
 	'build.sh')
-makedepends=("clang" "lld" "gn" "unzip" "python2" "llvm")
+makedepends=("clang" "lld" "ninja" "gn" "python2" "gcc" "llvm")
 optdepends=("ccache: Speed up compilation")
 backup=(etc/naiveproxy/config.json)
 md5sums=('SKIP'
