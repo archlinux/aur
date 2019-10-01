@@ -6,8 +6,8 @@
 pkgname=ferdi-git
 _pkgver=5.3.4
 pkgver=${_pkgver//-/_}
-pkgrel=4
-pkgdesc='Free messaging app for services like WhatsApp, Slack, Messenger and many more. fork removing the non-skippable app delay frequently inviting you to buy a licence'
+pkgrel=5
+pkgdesc='Free messaging app for services like WhatsApp, Slack, Messenger and many more. Hard fork of Franz'
 arch=(x86_64 i686)
 url='https://getferdi.com/'
 license=(Apache)
@@ -64,14 +64,17 @@ build() {
 package() {
   cd ferdi
   # Install the .asar files
-  install -Dm 755 out/linux-unpacked/resources/app.asar "$pkgdir/usr/lib/ferdi/resources/app.asar"
+  install -Dm 755 out/linux-unpacked/resources/app.asar "$pkgdir"/usr/lib/ferdi/resources/app.asar
+  install -dm755 "$pkgdir"/usr/lib/ferdi/resources/app.asar.unpacked/recipes/
+  cp -dr --no-preserve=ownership "$srcdir"/recipes "$pkgdir"/usr/lib/ferdi/resources/app.asar.unpacked/
+  chmod -R 755 "$pkgdir"/usr/lib/ferdi/resources/app.asar.unpacked/
 
   # Install icon
-  install -Dm 644 "$srcdir/ferdi.desktop" "$pkgdir/usr/share/applications/ferdi.desktop"
-  install -Dm 644 build-helpers/images/icon.png "$pkgdir/usr/share/icons/ferdi.png"
+  install -Dm 644 "$srcdir"/ferdi.desktop "$pkgdir"/usr/share/applications/ferdi.desktop
+  install -Dm 644 build-helpers/images/icon.png "$pkgdir"/usr/share/icons/ferdi.png
 
   # Install run script
-  install -Dm 755 "$srcdir/ferdi.sh" "$pkgdir/usr/bin/ferdi"
+  install -Dm 755 "$srcdir"/ferdi.sh "$pkgdir"/usr/bin/ferdi
 }
 
 
