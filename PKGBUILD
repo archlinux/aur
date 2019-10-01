@@ -2,7 +2,7 @@
 # Contributor: Daan De Meyer <daan.j.demeyer@gmail.com>
 
 pkgname=reproc
-pkgver=8.0.1
+pkgver=9.0.0
 pkgrel=1
 pkgdesc='Cross-platform library that simplifies working with external CLI applications from C and C++'
 arch=('x86_64')
@@ -10,7 +10,7 @@ url='https://github.com/DaanDeMeyer/reproc'
 license=('MIT')
 makedepends=('cmake' 'gcc')
 source=("${url}/archive/v${pkgver}".tar.gz)
-sha256sums=('83163ca185676b9a7cc08d97ef9173d9e7b17582e3e9fec5907d1de737a3d1c5')
+sha256sums=('a3d9cadbfa22028405521e497793fd483852847056da9ed5728fae776eb427c3')
 
 build() {
   cmake \
