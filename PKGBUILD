@@ -8,7 +8,7 @@
 pkgname=qaac-wine
 _pkgname=qaac
 pkgver=2.68
-pkgrel=1
+pkgrel=2
 pkgdesc="QuickTime AAC/ALAC encoder (wine version)"
 arch=('x86_64')
 url="https://sites.google.com/site/qaacpage/"
@@ -18,11 +18,13 @@ makedepends=('p7zip')
 source=("https://github.com/nu774/qaac/releases/download/v${pkgver}/qaac_${pkgver}.zip"
         "iTunes64Setup.exe::https://www.apple.com/itunes/download/win64"
         "https://raw.githubusercontent.com/nu774/qaac/master/COPYING"
-        "https://www.apple.com/legal/sla/docs/iTunesWindows.pdf")
+        "https://www.apple.com/legal/sla/docs/iTunesWindows.pdf"
+        "wrapper.sh")
 sha256sums=('8067826564d182a239a2347b40d52369c4a378b7df7918bd156138bf904168d0'
             'SKIP'
             'SKIP'
-            'SKIP')
+            'SKIP'
+            '23a807d100b96cd2b1a618a044583101a521de6d79e29330fed7a9f600501823')
 
 build() {
     cd "${srcdir}"
@@ -45,10 +47,11 @@ package() {
     for f in ASL.dll CoreAudioToolbox.dll CoreFoundation.dll $LIBICUDT_NAME libdispatch.dll libicuin.dll libicuuc.dll objc.dll; do
         install -Dm644 "AppleApplicationSupport64/x64_AppleApplicationSupport_${f}" "${pkgdir}/usr/lib/qaac/${f}"
     done
+    install -Dm755 wrapper.sh "${pkgdir}/usr/lib/qaac/wrapper.sh"
 
     mkdir -p "${pkgdir}/usr/bin"
-    ln -s "../lib/qaac/qaac64.exe" "${pkgdir}/usr/bin/qaac"
-    ln -s "../lib/qaac/refalac64.exe" "${pkgdir}/usr/bin/refalac"
+    ln -s ../lib/qaac/wrapper.sh "${pkgdir}/usr/bin/qaac"
+    ln -s ../lib/qaac/wrapper.sh "${pkgdir}/usr/bin/refalac"
 
     mkdir -p "${pkgdir}/usr/share/licenses/qaac"
     install -Dm644 "COPYING" "${pkgdir}/usr/share/licenses/qaac/COPYING"
