@@ -1,0 +1,11 @@
+--- a/docs/tutorials/parallel.rst	2019-09-30 22:37:34.000000000 +0800
++++ b/docs/tutorials/parallel.rst	2019-10-01 15:24:02.945541070 +0800
+@@ -195,7 +195,7 @@
+         print(end - start)
+     """)
+     
+-    mpi_time = !mpiexec -n {ncpu} python script.py
++    #mpi_time = !mpiexec -n {ncpu} python script.py
+     mpi_time = float(mpi_time[0])
+     print("MPI took {0:.1f} seconds".format(mpi_time))
+     print("{0:.1f} times faster than serial".format(serial_time / mpi_time))
