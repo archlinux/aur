@@ -1,8 +1,79 @@
 diff --git a/bin/termcolors b/bin/termcolors
-index 1d6de0d..e8f91a6 100755
 --- a/bin/termcolors
 +++ b/bin/termcolors
 @@ -1,2 +1,2 @@
- #!/bin/sh
+-#!/bin/sh
 -python -m termcolors $@
++#!/usr/bin/bash
 +python2 -m termcolors $@
+diff --git a/termcolors.py b/termcolors.py
+--- a/termcolors.py
++++ b/termcolors.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ import sys
+ 
+ # highlights a string with the given color
+@@ -27,7 +27,7 @@ def _highlight(text = ' *** ', fg = None, bg = None):
+ 	return '\033[%dm\033[%dm%s\033[0m' % (fg_esc, bg_esc, text)
+ 
+ def _print_short():
+-	print ''
++	print('')
+ 
+ 	for f in range(2):
+ 		row = '  '
+@@ -35,26 +35,26 @@ def _print_short():
+ 			row += _highlight(text='   ', fg = b, bg = b)
+ 			row += _highlight(text='   ', fg = b + 8, bg = b + 8)
+ 			row += '  '
+-		print row
++		print(row)
+ 
+-	print ''
++	print('')
+ 
+ def _print_palette():
+-	print ''
++	print('')
+ 
+ 	row = ' '*5
+ 	for b in range(8):
+ 		row += _highlight(text=' %2s ' % b, fg = b)
+ 		row += _highlight(text=' %2s ' % (b + 8), fg = b + 8)
+ 		row += '  '
+-	print row
++	print(row)
+ 
+ 	row = ' '*5
+ 	for b in range(8):
+ 		row += _highlight(text='    ', fg = b, bg = b)
+ 		row += _highlight(text='    ', fg = b + 8, bg = b + 8)
+ 		row += '  '
+-	print row
++	print(row)
+ 
+ 	for f in range(16):
+ 		row = _highlight(text=' %2s  ' % f, fg = f)
+@@ -63,9 +63,9 @@ def _print_palette():
+ 			row += _highlight(text=' %2s ' % f, fg = f, bg = b)
+ 			row += _highlight(text=' %2s ' % f, fg = f, bg = b + 8)
+ 			row += '  '
+-		print row
++		print(row)
+ 
+-	print ''
++	print('')
+ 
+ def main(args):
+ 	if len(args) == 0:
+@@ -73,7 +73,7 @@ def main(args):
+ 	elif args[0] in ('-s', '--short'):
+ 		_print_short()
+ 	else:
+-		print 'Usage: termcolors [-s|--short]'
++		print('Usage: termcolors [-s|--short]')
+ 
+ if __name__ == '__main__':
+ 	main(sys.argv[1:])

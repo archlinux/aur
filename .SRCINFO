@@ -1,20 +1,22 @@
 pkgbase = python-termcolors
 	pkgdesc = A Python script to show off your beautiful terminal palette
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/scizzorz/termcolors
-	arch = x86_64
+	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
 	source = python-termcolors-0.1.0.tar.gz::https://github.com/scizzorz/termcolors/archive/v0.1.0.tar.gz
 	source = python2.patch
 	source = python.patch
-	md5sums = fc2249cf55752db81bf86ea5e7a2cdad
-	md5sums = 7d159998a6b049eb51e4051f0dca9bf2
-	md5sums = 313949661feb29e7ef016fb36da89fab
+	sha256sums = 2ca59c092bc063ac298110e1b96a4af25bd14692be4f5959c162b86a386cfd3b
+	sha256sums = d1dd71acbd26a8646d9ba4f4c5baba168fcf6ae0fb645cbcfcbf39ec3de44fc2
+	sha256sums = 89bdb486d1af665de573ef3e2dc64c2622f9645f0928112fe036459cb9a30e07
 
 pkgname = python-termcolors
+	depends = python
 
 pkgname = python2-termcolors
+	depends = python2
 

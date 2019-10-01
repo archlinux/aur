@@ -1,5 +1,4 @@
 diff --git a/termcolors.py b/termcolors.py
-index 0f5421a..cda61ba 100755
 --- a/termcolors.py
 +++ b/termcolors.py
 @@ -27,7 +27,7 @@ def _highlight(text = ' *** ', fg = None, bg = None):
