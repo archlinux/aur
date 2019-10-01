@@ -31,7 +31,7 @@ prepare() {
 build() {
   cd rocksdb-$pkgver
   make clean
-  DEBUG_LEVEL=0 make shared_lib sst_dump db_bench -j4
+  DISABLE_WARNING_AS_ERROR=1 DEBUG_LEVEL=0 make shared_lib sst_dump db_bench -j4
 }
 
 #check() {
