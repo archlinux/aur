@@ -4,7 +4,7 @@
 # Contributor: "donaldtrump" [AUR]
 
 pkgname=osu-lazer
-pkgver=2019.910.0
+pkgver=2019.930.0
 pkgrel=1
 
 dotnet_version=2.2
@@ -40,13 +40,21 @@ build()
 {
     cd "osu-$pkgver"
 
+
+    if [[ $(dotnet --version) == 3.0* ]];
+    then
+        output="./osu.Desktop/bin/Release/netcoreapp$dotnet_version/linux-x64"
+    else
+        output="./bin/Release/netcoreapp$dotnet_version/linux-x64"
+    fi
+
     dotnet publish          osu.Desktop                 \
         --framework         netcoreapp$dotnet_version   \
         --configuration     Release                     \
         --runtime           linux-x64                   \
         --self-contained    false                       \
-        /property:Version=$pkgver                       \
-        --output            ./bin/Release/netcoreapp$dotnet_version/linux-x64
+        --output            $output                     \
+        /property:Version=$pkgver
 }
 
 package()
@@ -71,7 +79,7 @@ package()
     # Compiled binaries
     cd "$srcdir/osu-$pkgver/osu.Desktop/bin/Release/netcoreapp$dotnet_version/linux-x64"
     mkdir -p "$pkgdir/usr/lib/$pkgname"
-    mv x86_64/* .
+    mv $CARCH/* .
     for binary in *.so *.dll *.json *.pdb; do
         install -m755 "$binary" "$pkgdir/usr/lib/$pkgname/$binary"
     done
