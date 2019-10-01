@@ -1,23 +1,23 @@
-# $Id: PKGBUILD 280689 2016-11-14 07:42:25Z bpiotrowski $
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 # Contributor: Sébastien Luttringer
-
 pkgname=quagga-git
 _pkgname=quagga
-pkgver=1.1.0.r95.gc876b0b2
-pkgrel=2
+pkgver=1.2.4.r0.gddece197
+pkgrel=1
 pkgdesc='BGP/OSPF/ISIS/RIP/RIPNG routing daemon suite (FPM enabled) git version'
-arch=('i686' 'x86_64')
+arch=('x86_64' 'i686')
 url='http://www.quagga.net'
 license=('GPL2')
-provides=($_pkgname=1.2.0)
+provides=($_pkgname=${epoch:+$epoch:}${pkgver%%.r*}-${pkgrel})
 conflicts=($_pkgname)
 depends=('libcap' 'libnl' 'net-snmp' 'readline' 'ncurses' 'perl' 'c-ares')
+makedepends=('git')
 options=('!buildflags')
 validpgpkeys=('C1B5C3ED3000F2BFCD66F3B76FE57CA8C1A4AEA6') # Quagga Release Signing Key
-source=("$pkgname::git+https://github.com/Quagga/$_pkgname.git"
+source=("$pkgname::git+https://github.com/Quagga/$_pkgname.git#tag=quagga-1.2.4"
         'quagga.sysusers'
         'quagga.tmpfiles'
+        'babeld.service'
         'bgpd.service'
         'isisd.service'
         'ospf6d.service'
@@ -26,17 +26,18 @@ source=("$pkgname::git+https://github.com/Quagga/$_pkgname.git"
         'ripd.service'
         'ripngd.service'
         'zebra.service')
-md5sums=('SKIP'
-         '286c545efadcc7b463eb603c25473cb4'
-         '9dfa2f649a2c83a2e52f5f89dec3b167'
-         'cc90c234aac9098c5132d653037d5269'
-         '67d0ada0f3000b9a86351798786c5256'
-         '6e2569ef339838aa41375e913a8e19ce'
-         '260f5fcf9b53ef201a8fb34e7ea90457'
-         'af6571185d6a6a6e1f070c7be0e4333a'
-         'b6e3549d780355914ae8edd43e15630a'
-         '72dd63c49fdaea41729a4318d0fbac79'
-         '577f1e7caeea31d910f2dc29c28ada7d')
+sha512sums=('SKIP'
+            '722ef24de4834ab80ebdace0de4aa50ea76d2d4ecc5c51092f1975fd08a9b187986058eeaa2242fe6f4a3967f08806cba8070f2e318bfc9193cb0e83b7464a43'
+            '82938833f885985fdd3ecb2683e0b7dec853fbe1938f5778fcde0efb58dd329603f32b1e9ce53e6da8c1219c5ede74c0dbfbc98da150227cc6e1020a4e1ca556'
+            'ed54cd975564709c2c17181883e0b72eca6f516034ca3761d4d117089884a3411438375dd5653db7e65357f7544c367c3ad11799b7e7a2875ba113d372e7dc63'
+            '912215eaf757a2acb8fa55bac430805f98be0e9ed12b03a5eae71df8931bdf322d7ba26729bfc2d780de5399da1a43e9b5061ded0fbe1bfce8d8107fae9d4830'
+            '9914897b89fb4c85eee86fdecc18497bc021e2343852d1b9d6148fdb1f1c0e5b2cd28c82626bf2b747af581eb859635aaa0f5e8147887d36c3070133de9668c0'
+            'b13742656ef0071f4edb523a5d3a2b832960d463fc78a8f375484f5184284202e442156621c70655af02f00b8fecec720e441be60e35d07161de3610e53f998b'
+            '4e5cc34d4534fb70bf6674244bffc7f789fc24450ab3614366f0a750450cdfa47aac09399d1a5c4e64faa98be46701f15b8db72897c34d1518e044d25a920837'
+            '29cda79d9d4be2acf3fba5dcc4a692c4784b5b5674a6948138254b0ea54596891f26273f1a44307d8baccd23ed99754f96909f75132bd657459583f3f7ccc05d'
+            'a630e11cf447ebf4a8a55849e61d0c75de60c79247fd80954085b39b22660e2ec34537f2f2d9ce15bfa0fc89bb2acd5e3f156f70dc63c9eb608fb2cee6b36ae3'
+            '8e5608da659dd2da9b708dd1b140ba3c240679797f1a1ee82494db24996303448c664215bdeb2ce58ea801162b6918bddf72366df3546151cd930e6428a1f5d4'
+            '68baa888e1c12706c28ee6a6176e9a37f0a05bd8b14e648746b987a03bacb1c801e246b9820cf59508290e9e5ba42954fe3aae3355dd325fcf54b25e119a6156')
 
 pkgver() {
   cd $pkgname
@@ -76,8 +77,8 @@ build() {
     --enable-user=quagga \
     --enable-group=quagga \
     --enable-configfile-mask=0640 \
-    --enable-logfile-mask=0640 \
-    --enable-fpm
+    --enable-fpm \
+    --enable-logfile-mask=0640
   make V=0
 }
 
@@ -93,7 +94,7 @@ package() {
   # systemd
   cd "$srcdir"
   install -d -m 755 "$pkgdir"/usr/lib/{systemd/system,tmpfiles.d,sysusers.d}
-  for _d in zebra ripd ripngd bgpd ospfd ospf6d isisd pimd; do
+  for _d in zebra ripd ripngd bgpd ospfd ospf6d isisd babeld pimd; do
     install -D -m 644 $_d.service "$pkgdir/usr/lib/systemd/system/$_d.service"
   done
   install -D -m 644 $_pkgname.tmpfiles "$pkgdir/usr/lib/tmpfiles.d/$_pkgname.conf"
