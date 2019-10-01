@@ -1,8 +1,8 @@
 pkgbase = thonny
 	pkgdesc = Python IDE for beginners.
-	pkgver = 3.2.0
+	pkgver = 3.2.1
 	pkgrel = 1
-	url = http://thonny.cs.ut.ee/
+	url = http://thonny.org
 	arch = any
 	license = MIT
 	depends = openssl
@@ -16,8 +16,8 @@ pkgbase = thonny
 	depends = python-jedi
 	depends = tcl
 	depends = tk
-	source = https://github.com/thonny/thonny/releases/download/v3.2.0/thonny-3.2.0-x86_64.tar.gz
-	sha256sums = dba7d27be4e5bd5690a719a0c95016561ba2172d619b588080afc1ee486b3d46
+	source = https://github.com/thonny/thonny/releases/download/v3.2.1/thonny-3.2.1-x86_64.tar.gz
+	sha256sums = e7c2ffa6172418273116e18b5b61e2c7c0462a46730916c8ef63bb7c6c5ad065
 
 pkgname = thonny
 
