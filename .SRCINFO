@@ -18,7 +18,7 @@ pkgbase = fluxus-git
 	depends = racket
 	provides = fluxus
 	conflicts = fluxus
-	source = git://gitlab.com/defaultxr/fluxus.git
+	source = fluxus::git+https://gitlab.com/nebogeo/fluxus.git
 	md5sums = SKIP
 
 pkgname = fluxus-git
