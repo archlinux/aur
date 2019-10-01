@@ -8,9 +8,11 @@ post_install() {
     chmod -R o=u /usr/share/licenses/metashape-pro/licenses
     chmod -R g-w /usr/share/licenses/metashape-pro/licenses
     chmod -R o-w /usr/share/licenses/metashape-pro/licenses
+	echo "The launcher is called agisoft-metashape-pro"
+	echo
 	echo "Run the following command to activate the product"
 	echo
-	echo "sudo /opt/metashape-pro/metashape.sh --activate 11111-22222-33333-44444-55555"
+	echo "sudo agisoft-metashape-pro --activate 11111-22222-33333-44444-55555"
 	echo
 	echo "NOTE: the number after "--activate" is your node-locked license"
 	echo
