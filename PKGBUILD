@@ -63,7 +63,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck
-_srcver=5.2.17-arch1
+_srcver=5.2.18-arch1
 pkgver=${_srcver%-*}
 pkgrel=1
 _ckpatchversion=1
@@ -89,7 +89,7 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('7b3b8ad09ea936b4216dd02c5fc2ef39c8f58935d0a81ab9690f0fc451102df9'
+sha256sums=('6d090f866c9739403f78b08470209d1e825c44ce5dbaa237a4a2c8c6609dca60'
             'SKIP'
             '42e2bc6a7d8439b3a6fe4084d1349077472e0a6831d8a39edda46824a5f0987b'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
@@ -134,8 +134,11 @@ prepare() {
   sed -i -re "s/^(.EXTRAVERSION).*$/\1 = /" "../${_ckpatch}"
 
   msg2 "Patching with ck patchset..."
+
+  # fix ck1 patchset for 5.2.18
+  sed -i -e '/^-CFLAGS/ s,+=,:=,' -i -e '/^+CFLAGS/ s,+=,:=,' ../"${_ckpatch}"
   patch -Np1 -i ../"${_ckpatch}"
-  
+
   # https://github.com/graysky2/kernel_gcc_patch
   msg2 "Applying enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v4.13+.patch ..."
   patch -Np1 -i "$srcdir/kernel_gcc_patch-$_gcc_more_v/enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v4.13+.patch"
