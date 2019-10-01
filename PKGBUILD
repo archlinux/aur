@@ -4,7 +4,7 @@
 
 pkgname=plecs-blockset
 _pkgname="plecs-blockset"
-pkgver=v4.3.1
+pkgver=v4.3.3
 pkgrel=1
 pkgdesc="PLECS integration into MATLAB/Simulink (license needed / 30-days free trial)"
 url='http://www.plexim.com/de/products/plecs_blockset'
@@ -15,17 +15,17 @@ provides=('plecs-blockset')
 depends=('qt4' 'ncurses5-compat-libs' 'zlib')
 makedepends=('coreutils')
 
-source=("plecs-blockset.desktop" "plecs-blockset.png" "plecs-blockset.sh" "$pkgname-$pkgver-x86_64.tar.gz::https://www.plexim.com/sites/default/files/packages/plecs-blockset-4-3-1_linux64.tar.gz")
+source=("plecs-blockset.desktop" "plecs-blockset.png" "plecs-blockset.sh" "$pkgname-$pkgver-x86_64.tar.gz::https://www.plexim.com/sites/default/files/packages/plecs-blockset-4-3-3_linux64.tar.gz")
 
 md5sums=('381be723bc77af74c5aca5f070d5925c'
          '8ed62f1ce2de47c761c9244531dc154e'
          'fa37afb26f11e1dd331e886eb175a2ef'
-         'a0b6cccbd9014ecb2547b242ea5ac910')
+         '51e31e045e7c8dbf9ea016c862a1997f')
          
 sha1sums=('ad2dcabb5ef5c51d48809df6645d4c0b74aabe6e'
           'e1d9007695acbf40ce55b47f3724c4de8b5ac270'
           'fc44048d6defd161e850bb18bdc132b3dcee6242'
-          'bdf8f2b437db87adc693d4d3007c85c2f370bd66')
+          '4b4975f2ce79987e3bd6e7ff0adf535f47c6be43')
 
 package() {
     # install icon
