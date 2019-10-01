@@ -1,0 +1,22 @@
+pkgbase = kcm-lookandfeel-standalone-git
+	pkgdesc = Standalone version of the KIO job manager
+	pkgver = r332.2d03247
+	pkgrel = 1
+	url = https://github.com/sandsmark/kcm-lookandfeel-standalone
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = extra-cmake-modules
+	makedepends = git
+	depends = kinit
+	depends = kio
+	depends = kdbusaddons
+	depends = ki18n
+	provides = kcm-lookandfeel-standalone
+	conflicts = kcm-lookandfeel-standalone
+	conflicts = plasma-workspace
+	source = git+https://github.com/sandsmark/kcm-lookandfeel-standalone.git
+	md5sums = SKIP
+
+pkgname = kcm-lookandfeel-standalone-git
+
