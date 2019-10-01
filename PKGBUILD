@@ -1,14 +1,14 @@
 # Maintainer: Zoltan Guba <zoltan dot guba at gubamm dot hu>
 
 pkgname=aud2u
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Create your own hybrid bootable pendrive from iso made by 'archsysback' or 'archuseriso'"
 arch=('any')
 url="https://github.com/toxin265/aud2u"
 license=('GPL')
 groups=(system)
-depends=(refind-efi syslinux gptfdisk util-linux dosfstools parted cdrtools ntfs-3g zenity)
+depends=(refind-efi syslinux gptfdisk util-linux dosfstools parted cdrtools ntfs-3g zenity nocache)
 makedepends=(xz)
 provides=(aud2u)
 conflicts=(aud2u)
