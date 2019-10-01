@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=osu!
+MimeType=application/x-osu-skin;application/x-osu-replay;application/x-osu-archive;
+Exec=/usr/lib/osu-mime/osu-wine start /ProgIDOpen osu! %f
+NoDisplay=true
+StartupNotify=true
+Icon=osu!
