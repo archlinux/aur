@@ -1,0 +1,21 @@
+pkgbase = python-libffmpeg
+	pkgdesc = ffmpeg python package
+	pkgver = 1.4
+	pkgrel = 1
+	url = https://pypi.org/project/ffmpeg
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = https://files.pythonhosted.org/packages/f0/cc/3b7408b8ecf7c1d20ad480c3eaed7619857bf1054b690226e906fdf14258/ffmpeg-1.4.tar.gz
+	sha256sums = 6931692c890ff21d39938433c2189747815dca0c60ddc7f9bb97f199dba0b5b9
+
+pkgname = python-libffmpeg
+	depends = ffmpeg
+	depends = python
+	depends = python2
+
+pkgname = python2-libffmpeg
+	depends = ffmpeg
+	depends = python2
+
