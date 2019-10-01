@@ -15,7 +15,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/$_pkgdirname"
-    echo $(grep "define VERSION" src/main.cpp | cut -d'"' -f 2)
+    echo $(grep "define VERSION" src/main.c | cut -d'"' -f 2)
 }
 
 build() {
