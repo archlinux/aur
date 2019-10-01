@@ -2,13 +2,13 @@
 # Co-Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
 pkgname=gst-rtsp-server
 pkgver=1.16.1
-pkgrel=2
+pkgrel=3
 pkgdesc="RTSP server library based on GStreamer"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h')
 url="https://gstreamer.freedesktop.org/modules/gst-rtsp-server.html"
 license=('LGPL')
 makedepends=('meson')
-depends=("gst-plugins-base>=$pkgver")
+depends=("gst-plugins-base>=$pkgver" "gst-plugins-bad>=$pkgver")
 source=("https://gstreamer.freedesktop.org/src/$pkgname/$pkgname-$pkgver.tar.xz"{,.asc})
 sha256sums=('b0abacad2f86f60d63781d2b24443c5668733e8b08664bbef94124906d700144'
             'SKIP')
