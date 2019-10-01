@@ -1,0 +1,15 @@
+pkgbase = touchpad-toggle-xinput
+	pkgdesc = script to toggle the touchpad on and off using xinput
+	pkgver = 1
+	pkgrel = 1
+	arch = any
+	license = custom:none
+	depends = bash
+	depends = grep
+	depends = sed
+	depends = xorg-xinput
+	source = touchpad-toggle
+	md5sums = e7da7000606cc3ae49ed7781ad00ae56
+
+pkgname = touchpad-toggle-xinput
+
