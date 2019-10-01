@@ -42,6 +42,7 @@ pkgbase = firefox-appmenu
 	optdepends = pulseaudio: Audio support
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = hunspell-en_US: Spell checking, American English
+	provides = firefox=69.0.1
 	options = !emptydirs
 	options = !makeflags
 	options = !strip
