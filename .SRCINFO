@@ -1,5 +1,5 @@
 pkgbase = linux-bcachefs-git
-	pkgver = 5.2.17.arch1
+	pkgver = 5.2.18.arch1
 	pkgrel = 1
 	url = https://github.com/koverstreet/bcachefs
 	arch = x86_64
@@ -39,18 +39,18 @@ pkgname = linux-bcachefs-git
 	depends = mkinitcpio
 	depends = bcachefs-tools-git
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = linux-bcachefs-git=5.2.17.arch1
+	provides = linux-bcachefs-git=5.2.18.arch1
 	backup = etc/mkinitcpio.d/linux-bcachefs-git.preset
 
 pkgname = linux-bcachefs-git-headers
 	pkgdesc = Header files and scripts for building modules for Linux-bcachefs-git kernel ~ featuring Kent Overstreet's bcachefs filesystem
-	depends = linux-bcachefs-git=5.2.17.arch1
-	provides = linux-bcachefs-git-headers=5.2.17.arch1
-	provides = linux-headers=5.2.17.arch1
+	depends = linux-bcachefs-git=5.2.18.arch1
+	provides = linux-bcachefs-git-headers=5.2.18.arch1
+	provides = linux-headers=5.2.18.arch1
 
 pkgname = linux-bcachefs-git-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-bcachefs-git kernel ~ featuring Kent Overstreet's bcachefs filesystem
-	depends = linux-bcachefs-git=5.2.17.arch1
-	provides = linux-bcachefs-git-docs=5.2.17.arch1
-	provides = linux-docs=5.2.17.arch1
+	depends = linux-bcachefs-git=5.2.18.arch1
+	provides = linux-bcachefs-git-docs=5.2.18.arch1
+	provides = linux-docs=5.2.18.arch1
 

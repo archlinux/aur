@@ -61,7 +61,7 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-bcachefs-git
-_srcver_tag=5.2.17-arch1
+_srcver_tag=5.2.18-arch1
 pkgver=${_srcver_tag//-/.}
 pkgrel=1
 arch=(x86_64)
@@ -137,10 +137,6 @@ prepare() {
     # https://git.archlinux.org/linux.git/commit/?h=v5.1.16-arch1&id=7e6c7c0d56e1342b9ad5d8071736a5851d1ae1c7
     # ZEN: Add CONFIG for unprivileged_userns_clone
     git cherry-pick de96c660ed1f470fed317e987444634cb6287d57
-
-    # https://git.archlinux.org/linux.git/commit/?h=v5.2.14-arch2&id=45fc8773f47b7cbe56caab0e14abf26d1e044e63
-    # Btrfs: fix unwritten extent buffers and hangs on future writeback attempts
-    # git cherry-pick 45fc8773f47b7cbe56caab0e14abf26d1e044e63
     
     msg2 "Fixing EXTRAVERSION..."
     sed -i 's/EXTRAVERSION =/EXTRAVERSION = -arch1/g' "$srcdir/$_reponame/Makefile"
