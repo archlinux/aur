@@ -1,0 +1,6 @@
+LICENSE.LGPL.txt
+*.log
+pkg/
+src/
+*.pkg.tar.xz
+*.tar.gz
