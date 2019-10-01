@@ -1,0 +1,16 @@
+pkgbase = crlibm-git
+	pkgdesc = A portable, efficient, correctly rounded mathematical library.
+	pkgver = r708.eb30637
+	pkgrel = 1
+	url = https://github.com/taschini/crlibm
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = glibc
+	provides = crlibm
+	conflicts = crlibm
+	source = git+https://github.com/taschini/crlibm.git
+	md5sums = SKIP
+
+pkgname = crlibm-git
+
