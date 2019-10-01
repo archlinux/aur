@@ -1,0 +1,14 @@
+pkgbase = analyzemft
+	pkgdesc = Analyze the $MFT from a NTFS filesystem.
+	pkgver = 2.0.19
+	pkgrel = 1
+	url = https://pypi.org/project/analyzeMFT
+	arch = any
+	license = CPL
+	makedepends = python2-setuptools
+	depends = python2
+	source = https://files.pythonhosted.org/packages/2e/a9/9c6ad02f88918c868b737c69eea9e775fbf96dd1c72444e1f1e7534740b8/analyzeMFT-2.0.19.tar.gz
+	sha256sums = e7bce450b58767bab48c55e7dbee8557ff142309581d24789d9510a1f3cade58
+
+pkgname = analyzemft
+
