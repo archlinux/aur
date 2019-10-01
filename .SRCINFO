@@ -1,6 +1,6 @@
 pkgbase = xorg-xdm-xlogin-git
 	pkgdesc = X Display Manager
-	pkgver = 1.1.12.48.g027536f
+	pkgver = 1.1.12.r48.g027536f
 	pkgrel = 1
 	url = https://github.com/bbidulock/xdm
 	arch = i686
@@ -19,8 +19,8 @@ pkgbase = xorg-xdm-xlogin-git
 	depends = libxft
 	depends = systemd
 	optdepends = slim-xdm: for separate greeter
-	provides = xorg-xdm
-	provides = xorg-xdm-xlogin
+	provides = xorg-xdm=1.1.12-1
+	provides = xorg-xdm-xlogin=1.1.12-1
 	conflicts = xorg-xdm
 	conflicts = xorg-xdm-xlogin
 	conflicts = xorg-xdm-git

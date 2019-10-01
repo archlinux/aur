@@ -2,7 +2,7 @@
 # Contributor: Alexander Baldeck <alexander@archlinux.org>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 pkgname=xorg-xdm-xlogin-git
-pkgver=1.1.12.48.g027536f
+pkgver=1.1.12.r48.g027536f
 pkgrel=1
 pkgdesc="X Display Manager"
 arch=(i686 x86_64)
@@ -11,18 +11,18 @@ url="https://github.com/bbidulock/xdm"
 license=('custom')
 depends=('libbsd' 'pam' 'libxaw' 'libxinerama' 'xorg-xrdb' 'xorg-sessreg' 'libxft' 'systemd')
 optdepends=('slim-xdm: for separate greeter')
-provides=('xorg-xdm' 'xorg-xdm-xlogin')
-conflicts=('xorg-xdm' 'xorg-xdm-xlogin' 'xorg-xdm-git')
 makedepends=('git' 'pkgconfig' 'xorg-util-macros' 'xtrans')
 backup=(etc/X11/xdm/Xaccess etc/X11/xdm/Xresources etc/X11/xdm/Xservers etc/X11/xdm/xdm-config etc/pam.d/xdm etc/pam.d/greeter etc/X11/xdm/Xsetup_0 etc/X11/xdm/Xsession)
 source=("$pkgname::git+https://github.com/bbidulock/xdm.git"
 	xdm.pam)
 sha256sums=('SKIP'
             'e8c4c5fd3b801a390d201166fd1fb9730e78a5c62928768103b870b6bd980ea0')
+provides=("xorg-xdm=${pkgver%%.r*}-${pkgrel}" "xorg-xdm-xlogin=${pkgver%%.r*}-${pkgrel}")
+conflicts=("xorg-xdm" "xorg-xdm-xlogin" "xorg-xdm-git")
 
 pkgver() {
   cd $pkgname
-  git describe | sed 's,xdm-,,;s,-,.,g'
+  git describe --long --tags | sed -E 's,^[^0-9]*,,;s,([^-]*-g),r\1,;s,-,.,g'
 }
 
 build() {
