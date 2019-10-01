@@ -3,7 +3,7 @@
 # Contributor: Bartosz Feński <fenio@debian.org>
 
 pkgname=dh-make
-pkgver=2.201901
+pkgver=2.201902
 pkgrel=1
 pkgdesc="Tool that converts source archives into Debian package source"
 arch=('any')
@@ -11,7 +11,7 @@ url="http://packages.debian.org/sid/dh-make"
 license=('GPL')
 depends=('dpkg' 'make' 'python')
 source=(https://deb.debian.org/debian/pool/main/d/${pkgname}/${pkgname}_${pkgver}.tar.xz)
-sha256sums=('c4c248fd1fea21e6d8869f73ef122bf0233df713d6004583e69946dc023d33ff')
+sha256sums=('f19a9d52f657db577798acf7b8411fe82b2ede3093ad6487cad8821cb5819e98')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
