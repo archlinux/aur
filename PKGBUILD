@@ -1,24 +1,25 @@
 # Maintainer: Siddhartha <dev@sdht.in>
 
 pkgname=zotero-git
-pkgver=r10416.f38ae9425
+pkgver=r10550.a9c10309f
 pkgrel=1
 pkgdesc='Zotero is a free, easy-to-use tool to help you collect, organize, cite, and share your research sources.'
 arch=('x86_64')
 url='http://www.zotero.org'
 license=('GPL3')
 depends=('dbus-glib' 'gtk3' 'nss' 'libxt')
-makedepends=('npm' 'wget' 'zip' 'unzip' 'python2' 'python' 'rsync')
+makedepends=('npm' 'wget' 'zip' 'unzip' 'python2' 'python' 'rsync' 'git')
 conflicts=('zotero')
-replaces=('zotero')
+provides=('zotero')
 _src_dir_1=zotero-client
 _src_dir_2=zotero-build
 _src_dir_3=zotero-standalone-build
-source=(
+source=(zotero.desktop
     "${_src_dir_1}::git+https://github.com/zotero/zotero"
     "${_src_dir_2}::git+https://github.com/zotero/zotero-build"
     "${_src_dir_3}::git+https://github.com/zotero/zotero-standalone-build")
-sha256sums=('SKIP' 'SKIP' 'SKIP')
+sha256sums=('2e700ebe97d332a894be80d232b037b0117d84b38c5fa99dffc727cb10918228'
+            'SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
     cd ${_src_dir_1}
@@ -50,7 +51,7 @@ package() {
     install -dDm755 "$pkgdir"/usr/{bin,lib/zotero}
     mv "$builddir"/* "$pkgdir"/usr/lib/zotero
     ln -s /usr/lib/zotero/zotero "$pkgdir"/usr/bin/zotero
-    install -Dm644 "$pkgdir"/usr/lib/zotero/zotero.desktop "$pkgdir"/usr/share/applications/zotero.desktop
+    install -Dm644 "$srcdir"/zotero.desktop "$pkgdir"/usr/share/applications/zotero.desktop
     # Copy zotero icons to a standard location
     install -Dm644 "$pkgdir"/usr/lib/zotero/chrome/icons/default/default16.png "$pkgdir"/usr/share/icons/hicolor/16x16/apps/zotero.png
     install -Dm644 "$pkgdir"/usr/lib/zotero/chrome/icons/default/default32.png "$pkgdir"/usr/share/icons/hicolor/32x32/apps/zotero.png
