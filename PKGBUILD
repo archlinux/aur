@@ -1,7 +1,7 @@
 # Maintainer: Kyle Keen <keenerd@gmail.com>
 pkgname=spectrwm-git
 _gitname=spectrwm
-pkgver=20161209
+pkgver=3.2.0.r28.g64bee8a
 pkgrel=1
 pkgdesc="A minimalistic dynamic tiling window manager that tries to stay out of the way."
 arch=('i686' 'x86_64')
@@ -10,8 +10,6 @@ license=('custom:ISC')
 depends=('dmenu' 'xcb-util' 'xcb-util-wm' 'xcb-util-keysyms' 'libxrandr' 'libxft' 'libxcursor' 'terminus-font')
 backup=(etc/spectrwm.conf)
 replaces=('scrotwm')
-conflicts=('scrotwm' 'spectrwm')
-provides=('scrotwm' 'spectrwm')
 makedepends=('git' 'libxt')
 optdepends=('scrot: screenshots'
             'xlockmore: screenlocking')
@@ -21,10 +19,12 @@ source=('git+https://github.com/conformal/spectrwm'
 md5sums=('SKIP'
          'a67cfe51079481e5b0eab1ad371379e3'
          '950d663692e1da56e0ac864c6c3ed80e')
+provides=('scrotwm' "spectrwm=${epoch:+$epoch:}${pkgver%%.r*}-${pkgrel}")
+conflicts=('scrotwm' 'spectrwm')
 
 pkgver() {
     cd "$_gitname"
-    git show -s --format="%ci" HEAD | sed -e 's/-//g' -e 's/ .*//'
+    git describe --long --tags | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/[-_]/./g'
 }
 
 prepare() {
@@ -47,9 +47,8 @@ package() {
   cd ..
   install -Dm644 spectrwm.conf "$pkgdir/etc/spectrwm.conf"
   install -Dm755 screenshot.sh "$pkgdir/usr/share/spectrwm/screenshot.sh"
-  cd ../..
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm755 baraction.sh "$pkgdir/usr/share/spectrwm/baraction.sh"
+  install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm755 ../baraction.sh "$pkgdir/usr/share/spectrwm/baraction.sh"
 
   #ln -s /usr/lib/libswmhack.so.0.0 "$pkgdir/usr/lib/libswmhack.so.0"
   #ln -s /usr/lib/libswmhack.so.0.0 "$pkgdir/usr/lib/libswmhack.so"
