@@ -13,7 +13,7 @@ depends=('ode' 'fftw' 'liblo' 'glew' 'jack' 'freeglut' 'openal' 'racket')
 makedepends=('git' 'python2-scons')
 provides=('fluxus')
 conflicts=('fluxus')
-source=('fluxus::git+https://gitlab.com/defaultxr/fluxus.git')
+source=('fluxus::git+https://gitlab.com/nebogeo/fluxus.git')
 md5sums=('SKIP')
 
 # pkgver() {
