@@ -22,6 +22,7 @@ pkgbase = linux-hynix
 	source = linux.preset
 	source = v2-1-2-pci-prevent-sk-hynix-nvme-from-entering-D3.patch
 	source = v2-2-2-nvme-add-quirk-to-not-call-disable-function-when-suspending.patch
+	source = HID-Increase-maximum-report-size-allowed-by-hid_field_extract.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = 8218F88849AAC522E94CF470A5E9288C4FA415FA

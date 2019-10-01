@@ -27,6 +27,7 @@ source=(
   linux.preset   # standard config files for mkinitcpio ramdisk
   v2-1-2-pci-prevent-sk-hynix-nvme-from-entering-D3.patch
   v2-2-2-nvme-add-quirk-to-not-call-disable-function-when-suspending.patch
+  HID-Increase-maximum-report-size-allowed-by-hid_field_extract.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -39,7 +40,8 @@ sha256sums=('SKIP'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             'dbc9d913a2d41c7809b99cf86ad63d3f4eb2e4d10ab3f6564203e4a21803b98f'
-            '13d0a2f48ae12f8663b7de23eda5bfbce56641bdd4cf16b1b21678ea14db7fd3')
+            '13d0a2f48ae12f8663b7de23eda5bfbce56641bdd4cf16b1b21678ea14db7fd3'
+            '0e965b2554c6467fd3610967f7df0484d8a9db851d9f16b95a3c4b4448411507')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-ARCH}
