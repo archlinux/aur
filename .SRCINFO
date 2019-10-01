@@ -1,0 +1,17 @@
+pkgbase = gaol-git
+	pkgdesc = GAOL (not Just Another Interval Arithmetic Library) is a C++ Interval Arithmetic Library that offers all operators required by interval constraint solvers.
+	pkgver = r6.6e6cd9a
+	pkgrel = 1
+	url = https://gitlab.univ-nantes.fr/goualard-f/gaol
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cppunit
+	depends = crlibm-git
+	provides = gaol
+	conflicts = gaol
+	source = git+https://gitlab.univ-nantes.fr/goualard-f/gaol.git
+	md5sums = SKIP
+
+pkgname = gaol-git
+
