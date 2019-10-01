@@ -1,13 +1,12 @@
 pkgbase = tidal-dl
 	pkgdesc = Tidal Music Download
 	pkgver = 1.1.0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/yaronzz/Tidal-Media-Downloader
 	arch = any
 	license = Apache
 	makedepends = python-setuptools
 	depends = python-aigpy
-	depends = python-libconfigparser
 	depends = python-requests
 	depends = python-libffmpeg
 	depends = python-pycryptodome
