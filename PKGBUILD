@@ -1,6 +1,6 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 pkgname=firestorm-bin
-pkgver=6.2.4.57588
+pkgver=6.3.2.58052
 pkgrel=1
 pkgdesc="Firestorm is a feature-packed third-party viewer for Second Life."
 url="http://www.firestormviewer.org/"
@@ -20,17 +20,15 @@ optdepends=(
   'nvidia-libgl: for NVIDIA support'
   'nvidia-utils: for NVIDIA support')
 install=firestorm.install
-source=("https://downloads.firestormviewer.org/linux/Phoenix_Firestorm-releasex64_x86_64_$pkgver.tar.xz"
-        0001-firestorm-libgl-path.patch
+source=("https://downloads.firestormviewer.org/linux/Phoenix_Firestorm-Releasex64_x86_64_$pkgver.tar.xz"
         firestorm.desktop
         firestorm.launcher)
-sha512sums=('8643868a5343d23f2a18a4dda66c674c8aca9b9704950911b4290ed80ff70f8f839f037d3b22e2aa6b335bebdd94153bdc78f4d7dee17847b3354be9e86f7350'
-            '760dc097786275f4d60f9562e22d16b20151c4918cea89508bbe0b649d62b5158326d97086958acd1948c0cbb2f6693d2ac75224487b98729098b99936d0c57a'
+sha512sums=('c87acf9974d12c8d2f63825256313f34d3ba9f78a5e44b03294ee0385f1e3762bee3123006cf302b9e93f604bd73839971785133e502672c25b8249044f3c96a'
             'aaebbd7376e98ce267b99d1b86efb75c5515047ba127e42810b4560361841ee9e00eb20b7939371f6f0076642f51cec7e3d3881cfb9fd8de55e0888c9059c41d'
             'c84fc42b0e3edded09a57a8c9a38d64ee57bc60e72fa7d1fc98f0dd292f0428314f53907010da666f123067f951584ae8d36e1cbfaf31fff3aae02b2ed79fdf6')
 
 prepare() {
-  mv "$srcdir/Phoenix_Firestorm-releasex64_x86_64_$pkgver" "$srcdir/firestorm"
+  mv "$srcdir/Phoenix_Firestorm-Releasex64_x86_64_$pkgver" "$srcdir/firestorm"
 
   cd "firestorm"
   for patch in ../*.patch; do
