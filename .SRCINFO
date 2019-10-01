@@ -1,0 +1,20 @@
+pkgbase = captain-ballard
+	pkgdesc = Watch your .git directories periodically and reports the latest changes. (Github version)
+	pkgver = 1.0.0.r1.g44f8951
+	pkgrel = 1
+	url = https://github.com/LinArcX/captain-ballard
+	arch = any
+	license = GPL-3.0
+	makedepends = git
+	makedepends = cmake
+	makedepends = pkgconf
+	makedepends = glib
+	depends = gtk3
+	depends = sqlite
+	depends = libgit2
+	depends = libappindicator-gtk3
+	source = captain-ballard::git+https://github.com/LinArcX/captain-ballard.git
+	sha256sums = SKIP
+
+pkgname = captain-ballard
+
