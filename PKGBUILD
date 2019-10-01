@@ -3,7 +3,7 @@
 
 pkgname=sops
 pkgver=3.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Editor of encrypted files that supports YAML, JSON and BINARY formats'
 arch=('i686' 'x86_64')
 url='https://github.com/mozilla/sops'
@@ -28,7 +28,7 @@ build() {
 
 check() {
   cd src/go.mozilla.org/sops
-  env GOPATH="${srcdir}" go test
+  env GO111MODULE=on GOPATH="${srcdir}" go test
 }
 
 package() {
