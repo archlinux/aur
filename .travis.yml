@@ -11,7 +11,7 @@ cache:
 services:
 - docker
 
-arch:
+archlinux:
   repos:
 # - papyros=http://dash.papyros.io/repos/$repo/$arch
   - bartus=https://github.com/bartoszek/AUR-repo/raw/master
