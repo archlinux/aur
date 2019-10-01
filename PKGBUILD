@@ -10,7 +10,7 @@ url="https://pypi.org/project/analyzeMFT"
 license=('CPL')
 depends=('python2')
 makedepends=('python2-setuptools')
-source=(  "https://files.pythonhosted.org/packages/2e/a9/9c6ad02f88918c868b737c69eea9e775fbf96dd1c72444e1f1e7534740b8/${_pkgname}-${pkgver}.tar.gz")
+source=("https://files.pythonhosted.org/packages/2e/a9/9c6ad02f88918c868b737c69eea9e775fbf96dd1c72444e1f1e7534740b8/${_pkgname}-${pkgver}.tar.gz")
 sha256sums=('e7bce450b58767bab48c55e7dbee8557ff142309581d24789d9510a1f3cade58')
 
 build() {
