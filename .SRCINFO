@@ -1,8 +1,8 @@
 pkgbase = filament
 	pkgdesc = A real-time physically based engine
-	pkgver = 1.3.2
+	pkgver = 1.4.0
 	pkgrel = 1
-	url = https://github.com/google/filament/tree/v1.3.2
+	url = https://github.com/google/filament/tree/v1.4.0
 	arch = x86_64
 	license = Apache
 	makedepends = cmake
@@ -12,8 +12,8 @@ pkgbase = filament
 	depends = mesa
 	depends = libxi
 	conflicts = mono
-	source = https://github.com/google/filament/archive/v1.3.2.tar.gz
-	sha256sums = 75bbe67157e90e02b07d56915101052029b9ee95bc0db4d4ba77de5801c6c608
+	source = https://github.com/google/filament/archive/v1.4.0.tar.gz
+	sha256sums = 3ad75e33e92751f78767750fee06bac03c19c52092da3d3403b327dbb5206c5b
 
 pkgname = filament
 
