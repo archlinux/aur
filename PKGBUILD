@@ -2,7 +2,7 @@
 
 pkgname=teleport
 pkgver=4.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern SSH server for teams managing distributed infrastructure"
 arch=('x86_64' 'arm')
 url="https://gravitational.com/teleport"
@@ -41,11 +41,16 @@ sha256sums_arm=(
     )
 options=(!strip)
 
+backup=('etc/teleport/teleport.yaml')
+
 package() {
     mkdir -p "${pkgdir}/usr/lib/systemd/system" "${pkgdir}/usr/bin"
     mkdir -p "${pkgdir}/etc/teleport"
-    install -m644 -t "${pkgdir}/usr/lib/systemd/system/" teleport.service
+
     install -m644 -t "${pkgdir}/etc/teleport/" teleport.yaml
+
+    install -m644 -t "${pkgdir}/usr/lib/systemd/system/" teleport.service
+
     cd "${srcdir}/teleport"
     install -m755 -t "${pkgdir}/usr/bin/" teleport tctl tsh
     # no man pages, docs or web assets in release tarball
