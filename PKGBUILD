@@ -10,6 +10,7 @@ license=(WTFPL)
 depends=(xdg-utils gst-plugins-base-libs libsixel)
 makedepends=(git rustup gst-plugins-bad)
 optdepends=('gst-plugins-good: media support'
+            'gst-plugins-bad: media support'
             'gst-plugins-ugly: media support'
             'gst-libav: media support'
             'nerd-fonts-complete: supported icon pack'
@@ -17,12 +18,14 @@ optdepends=('gst-plugins-good: media support'
             'highlight: syntax highlighting'
             'libarchive: archive support'
             'p7zip: archive support'
+            'atool: archive support'
             'w3m: HTML support'
             'links: HTML support'
             'elinks: HTML support'
             'lynx: HTML support'
             'poppler: PDF support'
-            'mupdf-tools: PDF support')
+            'mupdf-tools: PDF support'
+            'fzf: default file finder')
 provides=(hunter)
 conflicts=(hunter)
 source=(git+$url#branch=holy)
