@@ -1,32 +1,30 @@
-# Maintainer: Ivan Wu <2967948168@qq.com>
-pkgname=adblock2privoxy
-pkgver=1.4.2
+# Maintainer: Andrew Sun <adsun701 at gmail dot com>
+# Contributor: Ivan Wu <2967948168 at qq dot com>
+
+_hkgname=adblock2privoxy
+pkgname=$_hkgname
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Convert adblock config files to privoxy format"
-arch=('i686' 'x86_64')
-url="https://projects.zubr.me/wiki/adblock2privoxy"
+arch=('x86_64')
+url="https://github.com/essandess/adblock2privoxy"
 license=('GPL')
-depends=('zlib' 'gmp')
-makedepends=('stack')
-source=("http://hackage.haskell.org/package/$pkgname-$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('eb04789e8fc785607f70658870c1b53d') #generate with 'makepkg -g'
-
-prepare() {
-  cd "$srcdir"/$pkgname-$pkgver
-  stack setup
-  stack install cabal-install
-}
+depends=('ghc-libs' 'haskell-case-insensitive' 'haskell-http-conduit' 'haskell-missingh' 'haskell-network' 'haskell-network-uri' 'haskell-parsec-permutation' 'haskell-old-locale' 'haskell-strict')
+makedepends=('ghc')
+options=('!emptydirs')
+source=("https://hackage.haskell.org/package/$pkgname-$pkgver/$pkgname-$pkgver.tar.gz")
+sha256sums=('064f501995eef83146ed49ccf83856faee8ab7e6e1fd70013d8bb1e12a3a1411')
 
 build() {
-  cd "$srcdir"/$pkgname-$pkgver
-  stack build --only-dependencies
-  stack exec --no-ghc-package-path runhaskell -- Setup.hs configure --user --prefix=/usr --package-db=clear --package-db=global --package-db="$(stack path --snapshot-pkg-db)" --package-db="$(stack path --local-pkg-db)" --docdir=/usr/share/doc/$pkgname --datasubdir=""
-  stack exec --no-ghc-package-path runhaskell -- Setup.hs build
+    cd $srcdir/$_hkgname-$pkgver
+    runhaskell Setup configure -O --enable-shared --enable-executable-dynamic --disable-library-vanilla \
+        --prefix=/usr --docdir=/usr/share/doc/$pkgname \
+        --dynlibdir=/usr/lib --libsubdir=\$compiler/site-local/\$pkgid
+    runhaskell Setup build
 }
 
 package() {
-  cd "$srcdir"/$pkgname-$pkgver
-  stack exec --no-ghc-package-path runhaskell -- Setup.hs copy --destdir=$pkgdir
+    cd $srcdir/$_hkgname-$pkgver
+    runhaskell Setup copy --destdir="$pkgdir"
+    rm -f "${pkgdir}/usr/share/doc/${pkgname}/LICENSE"
 }
-
-# vim:set ts=2 sw=2 et:
