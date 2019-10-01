@@ -24,7 +24,7 @@ sha256sums=('c3d5378f8b6be64c3fefab77eecd86b5357dfd9dbb941bd620b6083ae350417f'
 build() {
   cd "${_pkgname}-${pkgver}"
 
-  lazbuild "${_pkgname}.lpi" --lazarusdir=/usr/lib/lazarus --widgetset=${_ws}
+  lazbuild "${_pkgname}.lpi" --verbose --lazarusdir=/usr/lib/lazarus --widgetset=${_ws}
 }
 
 package() {
