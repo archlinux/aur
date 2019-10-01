@@ -5,13 +5,13 @@ pkgname=srb2kart
 pkgver=1.1
 _dataver=1.1
 _patchver=1.1
-pkgrel=2
+pkgrel=3
 pkgdesc='A kart racing mod based on the 3D Sonic the Hedgehog fangame Sonic Robo Blast 2, based on a modified version of Doom Legacy.'
 arch=('i686' 'x86_64')
 license=('GPL2')
 url='https://mb.srb2.org/showthread.php?t=43708'
 depends=('sdl2' 'sdl2_mixer' 'libpng' 'libgme' "srb2kart-data>=$_dataver")
-makedepends=('mesa' 'glu')
+makedepends=('mesa' 'glu' 'git')
 makedepends_i686=('nasm')
 options=(!buildflags) # In a perfect world, and perfect codebase, this wouldn't be required
 source=("git+https://github.com/STJr/Kart-Public.git#tag=v$pkgver"
