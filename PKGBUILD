@@ -1,6 +1,6 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 pkgname=wikidata-cli
-pkgver=7.5.4
+pkgver=8.0.0
 pkgrel=1
 pkgdesc="The command-line interface to Wikidata"
 arch=(any)
@@ -25,4 +25,4 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-sha256sums=('d2247c532360501d62e9208ab65393c37a4c9968da8f7d7fc805540179bff0b2')
+sha256sums=('b47ca7c36d2b0c21085cb1d2a386df65dfa5649abd6fcde22270a9e6286d1985')
