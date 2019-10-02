@@ -1,7 +1,7 @@
 # Maintainer: ResinDrake <resin@resindrake.net>
 pkgname=kde5-wallpaper-daynight-git
 _pkgname=kde5-wallpaper-daynight
-pkgver=v19_10_02_b
+pkgver=19.10.02.b.r0.g0bc26b8
 pkgrel=1
 pkgdesc="A script that allows users to change their wallpaper in KDE Plasma based on the time of day."
 url="https://github.com/ResinDrake/kde5-wallpaper-daynight"
@@ -16,7 +16,11 @@ md5sums=('SKIP')
 
 pkgver() {
  	cd "${srcdir}/${_pkgname}"
- 	git describe
+ 	git describe --tags --long | sed '
+        s/^v//
+        s/\([^-]*-g\)/r\1/
+        y/-/./
+    '
 }
 
 package() {
