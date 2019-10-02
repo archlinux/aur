@@ -1,0 +1,36 @@
+diff --git a/ZombieTrackerGPS.pro b/ZombieTrackerGPS.pro
+index a2775d3..ca9a48d 100644
+--- a/ZombieTrackerGPS.pro
++++ b/ZombieTrackerGPS.pro
+@@ -94,7 +94,7 @@ unix {
+ 
+     INSTALL_ROOT=$$(INSTALL_ROOT) # use env variable if set
+     isEmpty(INSTALL_ROOT) {
+-       INSTALL_ROOT = /usr/local
++       INSTALL_ROOT = /usr
+     }
+ 
+     INCLUDEPATH += $$clean_path($$_PRO_FILE_PWD_/../libldutils)
+@@ -108,7 +108,7 @@ unix {
+     CONFIG(debug, debug|release) {
+         LIBS += -lldutilsd
+     } else {
+-        LIBS += -lldutils
++        LIBS += -lldutils -lmarblewidget-qt5
+     }
+ 
+     manpage.path     = $${INSTALL_ROOT}/share/man/man1
+@@ -135,10 +135,10 @@ unix {
+     }
+ 
+     # point the desktop Icon: to the installed icon
+-    finalroot        = $${INSTALL_ROOT}
++    finalroot        = $(INSTALL_ROOT)
+     finalroot        ~= s:.*build/:/:
+-    desktop.path     = $${INSTALL_ROOT}/share/applications
+-    desktop.commands = sed -e "s:Icon=.*:Icon=$${finalroot}/share/$${TARGET}/$${TARGET}.png:" $${PWD}/data/desktop/$${TARGET}.desktop > $${desktop.path}/$${TARGET}.desktop
++    desktop.path     = $(INSTALL_ROOT)/usr/share/applications
++    desktop.commands = sed -e "s:Icon=.*:Icon=$${finalroot}/usr/share/$${TARGET}/$${TARGET}.png:" $${PWD}/data/desktop/$${TARGET}.desktop > $${desktop.path}/$${TARGET}.desktop
+ 
+     target.path   = $${INSTALL_ROOT}/bin
+     INSTALLS += target sharedoc manpage desktop docs
