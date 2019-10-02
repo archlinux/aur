@@ -42,6 +42,6 @@ package() {
 
     make INSTALL_ROOT="${pkgdir}/usr" install
 
-    install -m755 -d "${pkgdir}/usr/share/licenses/${_pkgname}"
-    install -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+    install -m755 -d "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
