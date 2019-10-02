@@ -8,7 +8,7 @@ pkgbase = zola-bin
 	provides = zola
 	conflicts = zola
 	source = https://github.com/getzola/zola/releases/download/v0.9.0/zola-v0.9.0-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = a7083afca536d89f4c1da7f2fb0c49cbf04c30384029d2dc46144485b9118c3c
+	sha256sums = e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 
 pkgname = zola-bin
 

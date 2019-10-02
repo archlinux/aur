@@ -9,7 +9,7 @@ provides=('zola')
 conflicts=('zola')
 
 source=("https://github.com/getzola/zola/releases/download/v${pkgver}/${pkgname/-bin}-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('a7083afca536d89f4c1da7f2fb0c49cbf04c30384029d2dc46144485b9118c3c')
+sha256sums=('e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
 
 package() {
   install -Dm755 "${srcdir}/${pkgname/-bin}" "${pkgdir}/usr/bin/${pkgname/-bin}"
