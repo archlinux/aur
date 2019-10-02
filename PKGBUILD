@@ -1,7 +1,7 @@
 # Maintainer: Nate Levesque <public@thenaterhood.com>
 # Comaintainer : Erik Dubois <erik.dubois@gmail.com>
 # Contributor: Vlad M. <vlad@archlinux.net>
-# Contributor: Zhengyu Xu <xzy3186@gmail.com>
+# Contributor: Zhengyu Xu <xzy3186@gmail.com> 
 
 pkgname=insync
 pkgver=3.0.20.40428
