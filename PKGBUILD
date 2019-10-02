@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Neef <aur AT gehaxelt DOT IN>
 pkgbase=theharvester-git
 pkgname=theharvester-git
-pkgver=3.0.6.r421.g9f7811d
+pkgver=3.0.6.r770.g2711882
 pkgrel=1
 pkgdesc="A tool for gathering e-mail accounts, subdomain names, virtual hosts, open ports/ banners, and employee names from different public sources (search engines, pgp key servers)."
 arch=('any')
@@ -22,6 +22,7 @@ depends=(
 	'python-censys'
 	'python-gevent'
 	'python-grequests'
+	'python-aiodns'
 )
 makedepends=('git' 'bash')
 provides=("${pkgname}")

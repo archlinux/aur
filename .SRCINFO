@@ -22,6 +22,7 @@ pkgbase = theharvester-git
 	depends = python-censys
 	depends = python-gevent
 	depends = python-grequests
+	depends = python-aiodns
 	provides = theharvester-git
 	conflicts = theharvester-git
 	source = theharvester-git::git+https://github.com/laramies/theHarvester.git
