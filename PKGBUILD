@@ -6,7 +6,7 @@ pkgbase=linux-rc
 pkgrel=1
 _srcname=linux-5.3
 _major=5.3
-_minor=1
+_minor=2
 _minorc=$((_minor+1))
 _rcver=1
 _rcpatch=patch-${_major}.${_minorc}-rc${_rcver}
@@ -24,23 +24,22 @@ source=(
   60-linux.hook  # pacman hook for depmod
   90-linux.hook  # pacman hook for initramfs regeneration
   linux.preset   # standard config files for mkinitcpio ramdisk
-  0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
-  0002-ZEN-Add-CONFIG-for-unprivileged_userns_clone.patch
-  # Arch-Linux-kernel-vx.xx.x-arch1.patch is not needed for rc1
+  0002-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
+  0006-Bluetooth-hidp-Fix-assumptions-on-the-return-value-o.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('0e71b34c9b9c515124127abff20be90201099ed741be12cccd62bb2d132475f3'
-            '9890b5a909d316211d045a95f5f0680e39749f2319cb26d7cd067efaa692f858'
+sha256sums=('33dcfeec3d0bc076850e8ec6fecf2eda155d4573008405003a815ef18e9cdb7f'
+            '361f9c953bb5ca7dbc922c3f698170523667f6a2f43961ffb88fa47b6b10fc6b'
             'SKIP'
             '166ee15de54cd8385ed12599cf8402009df5e5c59e961e0547c7745fa385b6a2'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            '702840a04a8f08bec4688865ae41303dfc9f8c173c8dc10bfa4ffe12fce562a5'
-            '187fa8d9a6c5777a8930dcecfafdd9d6e9095d4bf96ec060e756fb7c6a88b74d')
+            '57146472c25c492d723e9f74d13c3e5ea01080156890c463be50d0f9d07496cc'
+            'c03f15d61b4de37665ee972793cac2f9090546a3d52c375d6a434604a76b0fb6')
 
 _kernelname=${pkgbase#linux}
 
