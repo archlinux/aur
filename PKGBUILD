@@ -48,17 +48,19 @@ package_dotnet-host-bin() {
   install -Dm 755 "${srcdir}"/dotnet.sh "${pkgdir}"/usr/bin/dotnet
 }
 
-package_dotnet-runtime-bin() {
-  pkgdesc='The .NET Core runtime (binary)'
-  depends=('dotnet-host-preview' 'icu' 'krb5' 'libunwind' 'openssl' 'zlib'
-           'libcurl.so')
-  optdepends=('lttng-ust: CoreCLR tracing')
-  provides=("dotnet-runtime=${pkgver%+*}")
 
-  install -dm 755 "${pkgdir}"/{opt/dotnet/shared,usr/share/licenses}
-  cp -dr --no-preserve='ownership' shared/Microsoft.NETCore.App "${pkgdir}"/opt/dotnet/shared/
-  ln -s dotnet-host "${pkgdir}"/usr/share/licenses/dotnet-runtime
-}
+# runtime-bin already exists in aur, but incomplete
+#package_dotnet-runtime-bin() {
+#  pkgdesc='The .NET Core runtime (binary)'
+#  depends=('dotnet-host-preview' 'icu' 'krb5' 'libunwind' 'openssl' 'zlib'
+#           'libcurl.so')
+#  optdepends=('lttng-ust: CoreCLR tracing')
+#  provides=("dotnet-runtime=${pkgver%+*}")
+
+#  install -dm 755 "${pkgdir}"/{opt/dotnet/shared,usr/share/licenses}
+#  cp -dr --no-preserve='ownership' shared/Microsoft.NETCore.App "${pkgdir}"/opt/dotnet/shared/
+#  ln -s dotnet-host "${pkgdir}"/usr/share/licenses/dotnet-runtime
+#}
 
 package_aspnet-runtime-bin() {
   pkgdesc='The ASP.NET Core runtime (binary)'
