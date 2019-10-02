@@ -16,11 +16,17 @@ md5sums=('SKIP')
 
 pkgver() {
  	cd "${srcdir}/${_pkgname}"
- 	printf git describe
+ 	git describe
 }
 
 package() {
 	cd "${srcdir}/${_pkgname}"
-	./INSTALL.sh "$pkgdir"
+	mkdir -p "${pkgdir}/usr/bin/"
+	mkdir -p "${pkgdir}/etc/systemd/system/"
+	mkdir -p "${pkgdir}/etc/default/daynight/"
+
+	install -Dm755 wallpaper "${pkgdir}/usr/bin/"
+	install -Dm644 daynight@.* "${pkgdir}/etc/systemd/system/"
+	install -Dm644 daynightrc "${pkgdir}/etc/default/daynight/"
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
