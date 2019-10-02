@@ -2,9 +2,9 @@
 # Contributor: smcdougall <simon at sjmcdougall dot com>
 
 pkgname=gnome-shell-extension-multi-monitors-add-on-git
-pkgver=r82.d72eb2d
+pkgver=r83.9a0c58e
 pkgrel=1
-pkgdesc="Updated for Gnome 3.32. Adds panels and thumbnails for additional monitors. Settings changes are applied in dynamic fashion, no restart needed."
+pkgdesc="Updated for Gnome 3.34. Adds panels and thumbnails for additional monitors. Settings changes are applied in dynamic fashion, no restart needed."
 arch=('any')
 url="https://github.com/spin83/multi-monitors-add-on"
 source=("${pkgname}::git+https://github.com/spin83/multi-monitors-add-on.git#branch=master")
