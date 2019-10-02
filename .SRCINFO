@@ -1,0 +1,21 @@
+pkgbase = libflame-git
+	pkgdesc = High-performance object-based library for DLA computations
+	pkgver = r78.b0936fbe
+	pkgrel = 1
+	url = https://github.com/flame/libflame
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = make
+	makedepends = gcc
+	depends = blas
+	depends = lapack
+	provides = libflame
+	conflicts = libflame
+	options = staticlibs
+	source = libflame-git::git+https://github.com/flame/libflame.git
+	sha1sums = SKIP
+
+pkgname = libflame-git
+
