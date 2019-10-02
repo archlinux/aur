@@ -1,0 +1,57 @@
+pkgbase = dotnet-core-bin
+	pkgver = 3.0.100
+	pkgrel = 1
+	url = https://www.microsoft.com/net/core
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = clang
+	makedepends = cmake
+	makedepends = curl
+	makedepends = git
+	makedepends = icu
+	makedepends = krb5
+	makedepends = libunwind
+	makedepends = lldb
+	makedepends = llvm
+	makedepends = lttng-ust
+	makedepends = openssl
+	makedepends = zlib
+	options = staticlibs
+	source_x86_64 = https://download.visualstudio.microsoft.com/download/pr/886b4a4c-30af-454b-8bec-81c72b7b4e1f/d1a0c8de9abb36d8535363ede4a15de6/dotnet-sdk-3.0.100-linux-x64.tar.gz
+	source_x86_64 = dotnet.sh
+	sha512sums_x86_64 = 766da31f9a0bcfbf0f12c91ea68354eb509ac2111879d55b656f19299c6ea1c005d31460dac7c2a4ef82b3edfea30232c82ba301fb52c0ff268d3e3a1b73d8f7
+	sha512sums_x86_64 = 0a9b174c8ae01009c7054cdd1463ded77bd85e5840cdcf15adc872db1ac5ca4d25a4b383d75ba7819ea9d89926c90edfe85f13144610b3e4a44b0b48f8efc17c
+	source_armv7h = https://download.visualstudio.microsoft.com/download/pr/8ddb8193-f88c-4c4b-82a3-39fcced27e91/b8e0b9bf4cf77dff09ff86cc1a73960b/dotnet-sdk-3.0.100-linux-arm.tar.gz
+	source_armv7h = dotnet.sh
+	sha512sums_armv7h = c81dddb0b2db8e29762f222f8dc15b8f3fdf939226c4015d2d919b8faaece503c7bbe0ceeec3e8dc27ad9ca29d027bb1164ac9901f7bbf9c5e4a793e4111d45d
+	sha512sums_armv7h = 0a9b174c8ae01009c7054cdd1463ded77bd85e5840cdcf15adc872db1ac5ca4d25a4b383d75ba7819ea9d89926c90edfe85f13144610b3e4a44b0b48f8efc17c
+
+pkgname = dotnet-host-bin
+	pkgdesc = A generic driver for the .NET Core Command Line Interface (binary)
+	provides = dotnet-host=3.0.100
+	conflicts = dotnet-host
+
+pkgname = dotnet-runtime-bin
+	pkgdesc = The .NET Core runtime (binary)
+	depends = dotnet-host-preview
+	depends = icu
+	depends = krb5
+	depends = libunwind
+	depends = openssl
+	depends = zlib
+	depends = libcurl.so
+	optdepends = lttng-ust: CoreCLR tracing
+	provides = dotnet-runtime=3.0.100
+
+pkgname = aspnet-runtime-bin
+	pkgdesc = The ASP.NET Core runtime (binary)
+	depends = dotnet-runtime-bin
+	provides = aspnet-runtime=3.0.100
+
+pkgname = dotnet-sdk-bin
+	pkgdesc = The .NET Core SDK (binary)
+	depends = dotnet-runtime-bin
+	provides = dotnet-sdk=3.0.100
+
