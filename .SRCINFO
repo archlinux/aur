@@ -1,14 +1,14 @@
 pkgbase = wordpress-plugin-jetpack
 	pkgdesc = Traffic analysis, security and performance enhancements for Wordpress
-	pkgver = 7.7.2
+	pkgver = 7.8
 	pkgrel = 1
 	url = https://wordpress.org/plugins/jetpack
 	arch = any
 	license = unknown
 	depends = wordpress
 	options = !strip
-	source = wordpress-plugin-jetpack-7.7.2.tar.gz::https://downloads.wordpress.org/plugin/jetpack.7.7.2.zip
-	sha512sums = 3d8ab15e633e402b8ef286a8806e449a822ab3856b71e93c369084da4a62ab16f4d07a258a2fdacaa88b50a524a0ca5f4a3f5e8e4b444661f426b69f8fb36974
+	source = wordpress-plugin-jetpack-7.8.tar.gz::https://downloads.wordpress.org/plugin/jetpack.7.8.zip
+	sha512sums = 662aa5cc2f4915a1a13b1122bb4883033ef2170d74cf48ad287d131f26cb10bdba3ea2a331add032cb089a120419d1553189b9be3cd5de413470369da1f3a27e
 
 pkgname = wordpress-plugin-jetpack
 
