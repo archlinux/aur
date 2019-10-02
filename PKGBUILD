@@ -15,7 +15,7 @@ _enable_libsyncthing=${MINGW_W64_SYNCTHING_TRAY_JS_PROVIDER:-ON}
 _reponame=syncthingtray
 pkgname=mingw-w64-syncthingtray
 _name=${pkgname#mingw-w64-}
-pkgver=0.10.0
+pkgver=0.10.1
 pkgrel=1
 arch=('any')
 pkgdesc='Tray application for Syncthing (mingw-w64)'
@@ -30,8 +30,8 @@ makedepends=('mingw-w64-gcc' 'mingw-w64-cmake' 'mingw-w64-qt5-tools' 'ffmpeg')
 [[ $_enable_libsyncthing == ON ]] && makedepends+=('git' 'go')
 url="https://github.com/Martchus/${_reponame}"
 source=("${_name}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-[[ $_enable_libsyncthing == ON ]] && source+=("syncthing::git+https://github.com/Martchus/syncthing.git#branch=libsyncthing3")
-sha256sums=('89a87dc6eb38fcb75f22cb696257300603bdfda460732db4deb545dab19d6942'
+[[ $_enable_libsyncthing == ON ]] && source+=("syncthing::git+https://github.com/Martchus/syncthing.git#branch=libsyncthing-latest")
+sha256sums=('7b9674479a6c4a144f7ed4e00b8e39e96671702a89ed9a1c74555a687ff37b7d'
             'SKIP')
 options=(!buildflags staticlibs !strip !emptydirs)
 
@@ -44,10 +44,16 @@ _configurations=()
 prepare() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
 
+  # ensure path where the libsyncthing Git submodule would be cloned into exists
   mkdir -p 'libsyncthing/go/src/github.com/syncthing'
   pushd 'libsyncthing/go/src/github.com/syncthing'
-  #[[ -d syncthing ]] && rm -r syncthing
+
+  # delete empty sub directory of the Git submodule present in the archive from GitHub
+  [[ -d syncthing ]] && rm -r syncthing
+
+  # link libsyncthing repo where the Git submodule would have been cloned into
   ln -sf "$srcdir/syncthing" .
+
   popd
 }
 
