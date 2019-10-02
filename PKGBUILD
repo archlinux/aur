@@ -6,6 +6,7 @@ pkgdesc="Phtogrammetric processing of digital images and 3D spatial data generat
 arch=('x86_64')
 url="https://www.agisoft.com/"
 license=('custom:Agisoft EULA' 'custom')
+makedepends=('imagemagick')
 provides=('agisoft-metashape-pro' 'agisoft-network-monitor' 'agisoft-viewer')
 options=('!strip')
 install=$pkgname.install
@@ -79,14 +80,24 @@ Categories=Science;ImageProcessing" > "$srcdir/agisoft-viewer.desktop"
 </mime-info>' > "$srcdir/agisoft-mime.xml"
 
     # Create 128x128 application icons
-    base64 -d "$srcdir/agisoft-metashape-pro-icon-encoded.txt" > "$srcdir/agisoft-metashape-pro.png"
-    base64 -d "$srcdir/agisoft-network-monitor-icon-encoded.txt" > "$srcdir/agisoft-network-monitor.png"
-    base64 -d "$srcdir/agisoft-viewer-icon-encoded.txt" > "$srcdir/agisoft-viewer.png"
+    base64 -d "$srcdir/agisoft-metashape-pro-icon-encoded.txt" > "$srcdir/agisoft-metashape-pro_128.png"
+    base64 -d "$srcdir/agisoft-network-monitor-icon-encoded.txt" > "$srcdir/agisoft-network-monitor_128.png"
+    base64 -d "$srcdir/agisoft-viewer-icon-encoded.txt" > "$srcdir/agisoft-viewer_128.png"
     
     # Create 128x128 mime icons
-    base64 -d "$srcdir/agisoft-psx-mime-icon-encoded.txt" > "$srcdir/application-agisoft-psx.png"
-    base64 -d "$srcdir/agisoft-psz-mime-icon-encoded.txt" > "$srcdir/application-agisoft-psz.png"
-    base64 -d "$srcdir/agisoft-3dv-mime-icon-encoded.txt" > "$srcdir/application-agisoft-3dv.png"
+    base64 -d "$srcdir/agisoft-psx-mime-icon-encoded.txt" > "$srcdir/application-agisoft-psx_128.png"
+    base64 -d "$srcdir/agisoft-psz-mime-icon-encoded.txt" > "$srcdir/application-agisoft-psz_128.png"
+    base64 -d "$srcdir/agisoft-3dv-mime-icon-encoded.txt" > "$srcdir/application-agisoft-3dv_128.png"
+    
+    # Create icons for other resolutions
+    for _res in 16 32 48 64; do
+        convert "$srcdir/agisoft-metashape-pro_128.png" -resize ${_res}x${_res} "$srcdir/agisoft-metashape-pro_${_res}.png"
+        convert "$srcdir/agisoft-network-monitor_128.png" -resize ${_res}x${_res} "$srcdir/agisoft-network-monitor_${_res}.png"
+        convert "$srcdir/agisoft-viewer_128.png" -resize ${_res}x${_res} "$srcdir/agisoft-viewer_${_res}.png"
+        convert "$srcdir/application-agisoft-psx_128.png" -resize ${_res}x${_res} "$srcdir/application-agisoft-psx_${_res}.png"
+        convert "$srcdir/application-agisoft-psz_128.png" -resize ${_res}x${_res} "$srcdir/application-agisoft-psz_${_res}.png"
+        convert "$srcdir/application-agisoft-3dv_128.png" -resize ${_res}x${_res} "$srcdir/application-agisoft-3dv_${_res}.png"
+    done
 }
 
 package() {
@@ -112,14 +123,16 @@ package() {
 	mv "${srcdir}/agisoft-mime.xml" "${pkgdir}/usr/share/mime/packages"
 	
 	# Move icons
-	mkdir -p "${pkgdir}/usr/share/icons/hicolor/128x128/apps/"
-	mkdir -p "${pkgdir}/usr/share/icons/hicolor/128x128/mimetypes/"
-	mv "$srcdir/agisoft-metashape-pro.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/"
-	mv "$srcdir/agisoft-network-monitor.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/"
-	mv "$srcdir/agisoft-viewer.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/"
-	mv "$srcdir/application-agisoft-psx.png" "${pkgdir}/usr/share/icons/hicolor/128x128/mimetypes/"
-	mv "$srcdir/application-agisoft-psz.png" "${pkgdir}/usr/share/icons/hicolor/128x128/mimetypes/"
-	mv "$srcdir/application-agisoft-3dv.png" "${pkgdir}/usr/share/icons/hicolor/128x128/mimetypes/"
+	for _res in 16x16 32x32 48x48 64x64 128x128; do
+	    mkdir -p "${pkgdir}/usr/share/icons/hicolor/${_res}/apps/"
+	    mkdir -p "${pkgdir}/usr/share/icons/hicolor/${_res}/mimetypes/"
+	    mv "$srcdir/agisoft-metashape-pro_${_res/x*}.png" "${pkgdir}/usr/share/icons/hicolor/${_res}/apps/agisoft-metashape-pro.png"
+	    mv "$srcdir/agisoft-network-monitor_${_res/x*}.png" "${pkgdir}/usr/share/icons/hicolor/${_res}/apps/agisoft-network-monitor.png"
+	    mv "$srcdir/agisoft-viewer_${_res/x*}.png" "${pkgdir}/usr/share/icons/hicolor/${_res}/apps/agisoft-viewer.png"
+	    mv "$srcdir/application-agisoft-psx_${_res/x*}.png" "${pkgdir}/usr/share/icons/hicolor/${_res}/mimetypes/application-agisoft-psx.png"
+	    mv "$srcdir/application-agisoft-psz_${_res/x*}.png" "${pkgdir}/usr/share/icons/hicolor/${_res}/mimetypes/application-agisoft-psz.png"
+	    mv "$srcdir/application-agisoft-3dv_${_res/x*}.png" "${pkgdir}/usr/share/icons/hicolor/${_res}/mimetypes/application-agisoft-3dv"
+    done
 	
 	# Create symbolic link in /usr/bin
 	mkdir -p "${pkgdir}/usr/bin"

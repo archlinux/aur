@@ -7,6 +7,7 @@ pkgbase = metashape-pro
 	arch = x86_64
 	license = custom:Agisoft EULA
 	license = custom
+	makedepends = imagemagick
 	provides = agisoft-metashape-pro
 	provides = agisoft-network-monitor
 	provides = agisoft-viewer
