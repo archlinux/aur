@@ -1,32 +1,25 @@
 pkgbase = redshift-wayland-git
-	pkgdesc = Adjusts the color temperature of your screen (with Wayland patches)
-	pkgver = 1.11.r158.gab3a34c
-	pkgrel = 2
-	url = https://github.com/jonls/redshift
-	arch = i686
+	pkgdesc = Adjusts the color temperature of your screen according to your surroundings.
+	pkgver = 1.12.r25.g7da875d
+	pkgrel = 1
+	url = http://jonls.dk/redshift/
 	arch = x86_64
 	license = GPL3
 	makedepends = intltool
 	makedepends = python
-	makedepends = git
 	depends = geoclue2
 	depends = libdrm
+	depends = libxcb
 	depends = libxxf86vm
 	depends = wayland
-	depends = python
-	depends = glib2
-	depends = hicolor-icon-theme
 	optdepends = python-gobject: for redshift-gtk
 	optdepends = python-xdg: for redshift-gtk
-	optdepends = librsvg: for redshift-gtk
-	optdepends = weston: supporting wayland environment
-	optdepends = sway-git: supporting wayland environment
-	optdepends = orbital-git: supporting wayland environment
+	optdepends = gtk3: for redshift-gtk
 	provides = redshift
 	provides = redshift-sway-git
 	conflicts = redshift
 	conflicts = redshift-sway-git
-	source = redshift::git+https://github.com/breznak/redshift.git#branch=Lourens-Rich-master
+	source = redshift::git+https://github.com/minus7/redshift.git#branch=wayland
 	md5sums = SKIP
 
 pkgname = redshift-wayland-git
