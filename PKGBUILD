@@ -1,8 +1,8 @@
-# Maintainer: Jan Cholasta <grubber at grubber cz>
+# Maintainer: Marko Korhonen <reekymarko at reekynet.com>
 # Based on Fedora python-yubico.spec
 
 pkgname=python-yubico
-pkgver=1.3.2
+pkgver=1.3.3
 pkgrel=1
 pkgdesc="Pure-python library for interacting with Yubikeys"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python-pyusb>=1.0.0')
 makedepends=('python-setuptools')
 checkdepends=('python-nose')
 source=("https://github.com/Yubico/python-yubico/archive/python-yubico-$pkgver.tar.gz")
-sha256sums=('3fd3779cdc39a0347e7a0af0923ebfcf5b4feacca6034a1072a03cb18113ed3a')
+sha256sums=('fa5c7b40322b31899060b65831a95429c5bbe1c1c800f95cb4b5ff00655523fe')
 
 build() {
     cd "python-yubico-python-yubico-$pkgver"
