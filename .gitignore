@@ -3,7 +3,6 @@
 
 # Whitelist:
 !.SRCINFO
-!.gitignore
 !PKGBUILD
 !borgmatic.install
-!borgmatic.service.patch
+!NEWS

@@ -1,19 +1,27 @@
 post_install() {
-  echo "    WARNING: If you are updating from a 1.0.x release you should run:"
-  echo ""
-  echo "            sudo upgrade-borgmatic-config"
-  echo ""
-  echo "        to convert your config from ini to yaml format."
-  echo "        For more information: https://torsion.org/borgmatic/"
+	cat <<-EOT
+
+		    WARNING: If you are updating from a 1.0.x release you should run:
+
+		            sudo upgrade-borgmatic-config
+
+		        convert your config from ini to yaml format.
+		        more information: https://torsion.org/borgmatic/
+
+	EOT
 }
 
 post_upgrade() {
-  echo "    WARNING: If you are updating from a 1.0.x release you should run:"
-  echo ""
-  echo "            sudo upgrade-borgmatic-config"
-  echo ""
-  echo "        To convert your config from ini to yaml format."
-  echo "        For more information: https://torsion.org/borgmatic/"
+  [ "${2%.*}" != "1.0" ] || cat <<-EOT
+
+		    WARNING: You are updating from a 1.0.x release. Please run:
+
+		            sudo upgrade-borgmatic-config
+
+		        convert your config from ini to yaml format.
+		        more information: https://torsion.org/borgmatic/
+
+	EOT
 }
 
-# vim: ts=2 sw=2 et:
+# vim: ts=2 sw=2 noet:

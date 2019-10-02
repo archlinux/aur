@@ -1,9 +1,10 @@
 pkgbase = borgmatic
 	pkgdesc = Simple, configuration-driven backup software for servers and workstations
-	pkgver = 1.3.17
+	pkgver = 1.3.23
 	pkgrel = 1
 	url = https://torsion.org/borgmatic/
 	install = borgmatic.install
+	changelog = NEWS
 	arch = any
 	license = GPL3
 	makedepends = python-setuptools
@@ -11,10 +12,8 @@ pkgbase = borgmatic
 	depends = python-colorama
 	depends = python-pykwalify
 	depends = python-ruamel-yaml
-	source = borgmatic-1.3.17.tar.gz::https://projects.torsion.org/witten/borgmatic/archive/1.3.17.tar.gz
-	source = borgmatic.install
-	sha256sums = 15e04b9e4234ebf329d46973d77e02392b0f85848d599aa4d491de76a89ad8f7
-	sha256sums = 2862763feea83e3ee0fb65c9f3fec648312486cd8ab48cd7cac70a7bb742b55b
+	source = https://projects.torsion.org/witten/borgmatic/archive/1.3.23.tar.gz
+	sha256sums = 12e9c91504efd39e7af8b7be6b5f18cef583b8d2f8be8873ecb7d8bf615d6251
 
 pkgname = borgmatic
 

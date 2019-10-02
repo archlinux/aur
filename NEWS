@@ -1,0 +1,447 @@
+1.3.23
+ * #174: More detailed error alerting via runtime context available in "on_error" hook.
+
+1.3.22
+ * #144: When backups to one of several repositories fails, keep backing up to the other
+   repositories and report errors afterwards.
+
+1.3.21
+ * #192: User-defined hooks for global setup or cleanup that run before/after all actions. See the
+   documentation for more information:
+   https://torsion.org/borgmatic/docs/how-to/add-preparation-and-cleanup-steps-to-backups/
+
+1.3.20
+ * #205: More robust sample systemd service: boot delay, network dependency, lowered CPU/IO
+   priority, etc.
+ * #221: Fix "borgmatic create --progress" output so that it updates on the console in real-time.
+
+1.3.19
+ * #219: Fix visibility of "borgmatic prune --stats" output.
+
+1.3.18
+ * #220: Fix regression of argument parsing for default actions.
+
+1.3.17
+ * #217: Fix error with "borgmatic check --only" command-line flag with "extract" consistency check.
+
+1.3.16
+ * #210: Support for Borg check --verify-data flag via borgmatic "data" consistency check.
+ * #210: Override configured consistency checks via "borgmatic check --only" command-line flag.
+ * When generating sample configuration with generate-borgmatic-config, add a space after each "#"
+   comment indicator.
+
+1.3.15
+ * #208: Fix for traceback when the "checks" option has an empty value.
+ * #209: Bypass Borg error about a moved repository via "relocated_repo_access_is_ok" option in
+   borgmatic storage configuration section.
+ * #213: Reorder arguments passed to Borg to fix duplicate directories when using Borg patterns.
+ * #214: Fix for hook erroring with exit code 1 not being interpreted as an error.
+
+1.3.14
+ * #204: Do not treat Borg warnings (exit code 1) as failures.
+ * When validating configuration files, require strings instead of allowing any scalar type.
+
+1.3.13
+ * #199: Add note to documentation about using spaces instead of tabs for indentation, as YAML does
+   not allow tabs.
+ * #203: Fix compatibility with ruamel.yaml 0.16.x.
+ * If a "prefix" option in borgmatic's configuration has an empty value (blank or ""), then disable
+   default prefix.
+
+1.3.12
+ * Only log to syslog when run from a non-interactive console (e.g. a cron job).
+ * Remove unicode byte order mark from syslog output so it doesn't show up as a literal in rsyslog
+   output. See discussion on #197.
+
+1.3.11
+ * #193: Pass through several "borg list" and "borg info" flags like --short, --format, --sort-by,
+   --first, --last, etc. via borgmatic command-line flags.
+ * Add borgmatic info --repository and --archive command-line flags to display info for individual
+   repositories or archives.
+ * Support for Borg --noatime, --noctime, and --nobirthtime flags via corresponding options in
+   borgmatic configuration location section.
+
+1.3.10
+ * #198: Fix for Borg create error output not showing up at borgmatic verbosity level zero.
+
+1.3.9
+ * #195: Switch to command-line actions as more traditional sub-commands, e.g. "borgmatic create",
+   "borgmatic prune", etc. However, the classic dashed options like "--create" still work!
+
+1.3.8
+ * #191: Disable console color via "color" option in borgmatic configuration output section.
+
+1.3.7
+ * #196: Fix for unclear error message for invalid YAML merge include.
+ * #197: Don't color syslog output.
+ * Change default syslog verbosity to show errors only.
+
+1.3.6
+ * #53: Log to syslog in addition to existing console logging. Add --syslog-verbosity flag to
+   customize the log level. See the documentation for more information:
+   https://torsion.org/borgmatic/docs/how-to/inspect-your-backups/
+ * #178: Look for .yml configuration file extension in addition to .yaml.
+ * #189: Set umask used when executing hooks via "umask" option in borgmatic hooks section.
+ * Remove Python cache files before each Tox run.
+ * Add #borgmatic Freenode IRC channel to documentation.
+ * Add Borg/borgmatic hosting providers section to documentation.
+ * Add files for building documentation into a Docker image for web serving.
+ * Upgrade project build server from Drone 0.8 to 1.1.
+ * Build borgmatic documentation during continuous integration.
+ * We're nearly at 500 ★s on GitHub. We can do this!
+
+1.3.5
+ * #153: Support for various Borg directory environment variables (BORG_CONFIG_DIR, BORG_CACHE_DIR,
+   etc.) via options in borgmatic's storage configuration.
+ * #177: Fix for regression with missing verbose log entries.
+
+1.3.4
+ * Part of #125: Color borgmatic (but not Borg) output when using an interactive terminal.
+ * #166: Run tests for all installed versions of Python.
+ * #168: Update README with continuous integration badge.
+ * #169: Automatically sort Python imports in code.
+ * Document installing borgmatic with pip install --user instead of a system Python install.
+ * Get more reproducible builds by pinning the versions of pip and tox used to run tests.
+ * Factor out build/test configuration from tox.ini file.
+
+1.3.3
+ * Add validate-borgmatic-config command, useful for validating borgmatic config generated by
+   configuration management or even edited by hand.
+
+1.3.2
+ * #160: Fix for hooks executing when using --dry-run. Now hooks are skipped during a dry run.
+
+1.3.1
+ * #155: Fix for invalid JSON output when using multiple borgmatic configuration files.
+ * #157: Fix for seemingly random filename ordering when running through a directory of
+   configuration files.
+ * Fix for empty JSON output when using --create --json.
+ * Now capturing Borg output only when --json flag is used. Previously, borgmatic delayed Borg
+   output even without the --json flag.
+
+1.3.0
+ * #148: Configuration file includes and merging via "!include" tag to support reuse of common
+   options across configuration files.
+
+1.2.18
+ * #147: Support for Borg create/extract --numeric-owner flag via "numeric_owner" option in
+   borgmatic's location section.
+
+1.2.17
+ * #140: List the files within an archive via --list --archive option.
+
+1.2.16
+ * #119: Include a sample borgmatic configuration file in the documentation.
+ * #123: Support for Borg archive restoration via borgmatic --extract command-line flag.
+ * Refactor documentation into multiple separate pages for clarity and findability.
+ * Organize options within command-line help into logical groups.
+ * Exclude tests from distribution packages.
+
+1.2.15
+ * #127: Remove date echo from schema example, as it's not a substitute for real logging.
+ * #132: Leave exclude_patterns glob expansion to Borg, since doing it in borgmatic leads to
+   confusing behavior.
+ * #136: Handle and format validation errors raised during argument parsing.
+ * #138: Allow use of --stats flag when --create or --prune flags are implied.
+
+1.2.14
+ * #103: When generating sample configuration with generate-borgmatic-config, document the defaults
+   for each option.
+ * #116: When running multiple configuration files, attempt all configuration files even if one of
+   them errors. Log a summary of results at the end.
+ * Add borgmatic --version command-line flag to get the current installed version number.
+
+1.2.13
+ * #100: Support for --stats command-line flag independent of --verbosity.
+ * #117: With borgmatic --init command-line flag, proceed without erroring if a repository already
+   exists.
+
+1.2.12
+ * #110: Support for Borg repository initialization via borgmatic --init command-line flag.
+ * #111: Update Borg create --filter values so a dry run lists files to back up.
+ * #113: Update README with link to a new/forked Docker image.
+ * Prevent deprecated --excludes command-line option from being used.
+ * Refactor README a bit to flow better for first-time users.
+ * Update README with a few additional borgmatic packages (Debian and Ubuntu).
+
+1.2.11
+ * #108: Support for Borg create --progress via borgmatic command-line flag.
+
+1.2.10
+ * #105: Support for Borg --chunker-params create option via "chunker_params" option in borgmatic's
+   storage section.
+
+1.2.9
+ * #102: Fix for syntax error that occurred in Python 3.5 and below.
+ * Make automated tests support running in Python 3.5.
+
+1.2.8
+ * #73: Enable consistency checks for only certain repositories via "check_repositories" option in
+   borgmatic's consistency configuration. Handy for large repositories that take forever to check.
+ * Include link to issue tracker within various command output.
+ * Run continuous integration tests on a matrix of Python and Borg versions.
+
+1.2.7
+ * #98: Support for Borg --keep-secondly prune option.
+ * Use Black code formatter and Flake8 code checker as part of running automated tests.
+ * Add an end-to-end automated test that actually integrates with Borg.
+ * Set up continuous integration for borgmatic automated tests on projects.evoworx.org.
+
+1.2.6
+ * Fix generated configuration to also include a "keep_daily" value so pruning works out of the
+   box.
+
+1.2.5
+ * #57: When generating sample configuration with generate-borgmatic-config, comment out all
+   optional configuration so as to streamline the initial configuration process.
+
+1.2.4
+ * Fix for archive checking traceback due to parameter mismatch.
+
+1.2.3
+ * #64, #90, #92: Rewrite of logging system. Now verbosity flags passed to Borg are derived from
+   borgmatic's log level. Note that the output of borgmatic might slightly change.
+ * Part of #80: Support for Borg create --read-special via "read_special" option in borgmatic's
+   location configuration.
+ * #87: Support for Borg create --checkpoint-interval via "checkpoint_interval" option in
+   borgmatic's storage configuration.
+ * #88: Fix declared pykwalify compatibility version range in setup.py to prevent use of ancient
+   versions of pykwalify with large version numbers.
+ * #89: Pass --show-rc option to Borg when at highest verbosity level.
+ * #94: Support for Borg --json option via borgmatic command-line to --create archives.
+
+1.2.2
+ * #85: Fix compatibility issue between pykwalify and ruamel.yaml 0.15.52, which manifested in
+   borgmatic as a pykwalify RuleError.
+
+1.2.1
+ * Skip before/after backup hooks when only doing --prune, --check, --list, and/or --info.
+ * #71: Support for XDG_CONFIG_HOME environment variable for specifying alternate user ~/.config/
+   path.
+ * #74, #83: Support for Borg --json option via borgmatic command-line to --list archives or show
+   archive --info in JSON format, ideal for programmatic consumption.
+ * #38, #76: Upgrade ruamel.yaml compatibility version range and fix support for Python 3.7.
+ * #77: Skip non-"*.yaml" config filenames in /etc/borgmatic.d/ so as not to parse backup files,
+   editor swap files, etc.
+ * #81: Document user-defined hooks run before/after backup, or on error.
+ * Add code style guidelines to the documention.
+
+1.2.0
+ * #61: Support for Borg --list option via borgmatic command-line to list all archives.
+ * #61: Support for Borg --info option via borgmatic command-line to display summary information.
+ * #62: Update README to mention other ways of installing borgmatic.
+ * Support for Borg --prefix option for consistency checks via "prefix" option in borgmatic's
+   consistency configuration.
+ * Add introductory screencast link to documentation.
+ * #59: Ignore "check_last" and consistency "prefix" when "archives" not in consistency checks.
+ * #60: Add "Persistent" flag to systemd timer example.
+ * #63: Support for Borg --nobsdflags option to skip recording bsdflags (e.g. NODUMP, IMMUTABLE) in
+   archive.
+ * #69: Support for Borg prune --umask option using value of existing "umask" option in borgmatic's
+   storage configuration.
+ * Update tox.ini to only assume Python 3.x instead of Python 3.4 specifically.
+ * Add ~/.config/borgmatic/config.yaml to default configuration path probing.
+ * Document how to develop on and contribute to borgmatic.
+
+1.1.15
+ * Support for Borg BORG_PASSCOMMAND environment variable to read a password from an external file.
+ * Fix for Borg create error when using borgmatic's --dry-run and --verbosity options together.
+   Work-around for behavior introduced in Borg 1.1.3: https://github.com/borgbackup/borg/issues/3298
+ * #55: Fix for missing tags/releases on Gitea and GitHub project hosting.
+ * #56: Support for Borg --lock-wait option for the maximum wait for a repository/cache lock.
+ * #58: Support for using tilde in exclude_patterns to reference home directory.
+
+1.1.14
+ * #49: Fix for typo in --patterns-from option.
+ * #47: Support for Borg --dry-run option via borgmatic command-line.
+
+1.1.13
+ * #54: Fix for incorrect consistency check flags passed to Borg when all three checks ("repository",
+   "archives", and "extract") are specified in borgmatic configuration.
+ * #48: Add "local_path" to configuration for specifying an alternative Borg executable path.
+ * #49: Support for Borg experimental --patterns-from and --patterns options for specifying mixed
+   includes/excludes.
+ * Moved issue tracker from Taiga to integrated Gitea tracker at
+   https://projects.torsion.org/witten/borgmatic/issues
+
+1.1.12
+ * #46: Declare dependency on pykwalify 1.6 or above, as older versions yield "Unknown key: version"
+   rule errors.
+ * Support for Borg --keep-minutely prune option.
+
+1.1.11
+ * #26: Add "ssh_command" to configuration for specifying a custom SSH command or options.
+ * Fix for incorrect /etc/borgmatic.d/ configuration path probing on macOS. This problem manifested
+   as an error on startup: "[Errno 2] No such file or directory: '/etc/borgmatic.d'".
+
+1.1.10
+ * Pass several Unix signals through to child processes like Borg. This means that Borg now properly
+   shuts down if borgmatic is terminated (e.g. due to a system suspend).
+ * #30: Support for using tilde in repository paths to reference home directory.
+ * #43: Support for Borg --files-cache option for setting the files cache operation mode.
+ * #45: Support for Borg --remote-ratelimit option for limiting upload rate.
+ * Log invoked Borg commands when at highest verbosity level.
+
+1.1.9
+ * #17, #39: Support for user-defined hooks before/after backup, or on error.
+ * #34: Improve clarity of logging spew at high verbosity levels.
+ * #30: Support for using tilde in source directory path to reference home directory.
+ * Require "prefix" in retention section when "archive_name_format" is set. This is to avoid
+   accidental pruning of archives with a different archive name format. For similar reasons, default
+   "prefix" to "{hostname}-" if not specified.
+ * Convert main source repository from Mercurial to Git.
+ * Update dead links to Borg documentation.
+
+1.1.8
+ * #40: Fix to make /etc/borgmatic/config.yaml optional rather than required when using the default
+   config paths.
+
+1.1.7
+
+ * #29: Add "archive_name_format" to configuration for customizing archive names.
+ * Fix for traceback when "exclude_from" value is empty in configuration file.
+ * When pruning, make highest verbosity level list archives kept and pruned.
+ * Clarification of Python 3 pip usage in documentation.
+
+1.1.6
+
+ * #13, #36: Support for Borg --exclude-from, --exclude-caches, and --exclude-if-present options.
+
+1.1.5
+
+ * #35: New "extract" consistency check that performs a dry-run extraction of the most recent
+   archive.
+
+1.1.4
+
+ * #18: Added command-line flags for performing a borgmatic run with only pruning, creating, or
+   checking enabled. This supports use cases like running consistency checks from a different cron
+   job with a different frequency, or running pruning with a different verbosity level.
+
+1.1.3
+
+ * #15: Support for running multiple config files in /etc/borgmatic.d/ from a single borgmatic run.
+ * Fix for generate-borgmatic-config writing config with invalid one_file_system value.
+
+1.1.2
+
+ * #33: Fix for passing check_last as integer to subprocess when calling Borg.
+
+1.1.1
+
+ * Part of #33: Fix for upgrade-borgmatic-config converting check_last option as a string instead of
+   an integer.
+ * Fix for upgrade-borgmatic-config erroring when consistency checks option is not present.
+
+1.1.0
+
+ * Switched config file format to YAML. Run upgrade-borgmatic-config to upgrade.
+ * Added generate-borgmatic-config command for initial config creation.
+ * Dropped Python 2 support. Now Python 3 only.
+ * #19: Fix for README mention of sample files not included in package.
+ * #23: Sample files for triggering borgmatic from a systemd timer.
+ * Support for backing up to multiple repositories.
+ * To free up space, now pruning backups prior to creating a new backup.
+ * Enabled test coverage output during tox runs.
+ * Added logo.
+
+1.0.3
+
+ * #22: Fix for verbosity flag not actually causing verbose output.
+
+1.0.2
+
+ * #21: Fix for traceback when remote_path option is missing.
+
+1.0.1
+
+ * #20: Support for Borg's --remote-path option to use an alternate Borg
+   executable. See sample/config.
+
+1.0.0
+
+ * Attic is no longer supported, as there hasn't been any recent development on
+   it. Dropping Attic support will allow faster iteration on Borg-specific
+   features. If you're still using Attic, this is a good time to switch to Borg!
+ * Project renamed from atticmatic to borgmatic. See the borgmatic README for
+   information on upgrading.
+
+0.1.8
+
+ * Fix for handling of spaces in source_directories which resulted in backup up everything.
+ * Fix for broken links to Borg documentation.
+ * At verbosity zero, suppressing Borg check stderr spew about "Checking segments".
+ * Support for Borg --one-file-system.
+ * Support for Borg create --umask.
+ * Support for file globs in source_directories.
+
+0.1.7
+
+ * #12: Fixed parsing of punctuation in configuration file.
+ * Better error message when configuration file is missing.
+
+0.1.6
+
+ * #10: New configuration option for the encryption passphrase.
+ * #11: Support for Borg's new archive compression feature.
+
+0.1.5
+
+ * Changes to support release on PyPI. Now pip installable by name!
+
+0.1.4
+
+ * Adding test that setup.py version matches release version.
+
+0.1.3
+
+ * #2: Add support for "borg check --last N" to Borg backend.
+
+0.1.2
+
+ * As a convenience to new users, allow a missing default excludes file.
+ * New issue tracker, linked from documentation.
+
+0.1.1
+
+ * Adding borgmatic cron example, and updating documentation to refer to it.
+
+0.1.0
+
+ * New "borgmatic" command to support Borg backup software, a fork of Attic.
+
+0.0.7
+
+ * Flag for multiple levels of verbosity: some, and lots.
+ * Improved mocking of Python builtins in unit tests.
+
+0.0.6
+
+ * New configuration section for customizing which Attic consistency checks run, if any.
+
+0.0.5
+
+ * Fixed regression with --verbose output being buffered. This means dropping the helpful error
+   message introduced in 0.0.4.
+
+0.0.4
+
+ * Now using tox to run tests against multiple versions of Python in one go.
+ * Helpful error message about how to create a repository if one is missing.
+ * Troubleshooting section with steps to deal with broken pipes.
+ * Nosetests config file (setup.cfg) with defaults.
+
+0.0.3
+
+ * After pruning, run attic's consistency checks on all archives.
+ * Integration tests for argument parsing.
+ * Documentation updates about repository encryption.
+
+0.0.2
+
+ * Configuration support for additional attic prune flags: keep_within, keep_hourly, keep_yearly,
+   and prefix.
+
+0.0.1
+
+ * Initial release.
