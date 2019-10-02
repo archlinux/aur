@@ -10,7 +10,7 @@ mainFunction () {
 
 buildPackage () {
 	removeBuildFiles
-	echoOnError "buildPackage" "makepkg --force"
+	makePackage
 	removeBuildFiles
 }
 
@@ -20,27 +20,35 @@ changeToThisProgramDir () {
 }
 
 
-echoOnError () {
-	function="${1}"
-	command="${2}"
-    error=$(eval "${command}" 2>&1 >"/dev/null")
+makePackage () {
+	nice="nice --adjustment=19"
+	ionice="ionice -c2 -n7"
 
-    if [ ${?} -ne 0 ]; then
-        echo "${function}: ${error}" >&2
-        exit 1
-    fi
+	silently "makePackage" "PKGEXT='.pkg.tar.gz' ${nice} ${ionice} makepkg --force"
 }
 
 
 removeBuildFiles () {
 	name=$(variableInFile "Name" "PKGBUILD")
 	folders="pkg src ${name}"
-	echoOnError "removeBuildFiles" "rm --recursive --force ${folders}"
+	silently "removeBuildFiles" "rm --recursive --force ${folders}"
+}
+
+
+silently () {
+	function="${1}"
+	command="${2}"
+	error=$(eval "${command}" 2>&1 >"/dev/null")
+
+	if [ ${?} -ne 0 ]; then
+		echo "${function}: ${error}" >&2
+		exit 1
+	fi
 }
 
 
 updateInfoFile () {
-	echoOnError "updateInfoFile" "makepkg --printsrcinfo > .SRCINFO"
+	silently "updateInfoFile" "makepkg --printsrcinfo > .SRCINFO"
 }
 
 

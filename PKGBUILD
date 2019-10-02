@@ -1,27 +1,29 @@
 #! /bin/bash
-#  (GPL3+) Alberto Salvia Novella (es20490446e.wordpress.com)
 
 Name="QSyncthingTray"
 LowercaseName=$(echo "${Name,,}")
 pkgname="${LowercaseName}-git"
+
 pkgver=r421.11936bc
-pkgrel=1
-pkgdesc="Syncs files among devices, and shows the sync status on a tray icon. Version with the latest unreleased improvements."
+pkgrel=2
 arch=("i686" "x86_64")
-url="https://github.com/sieren/QSyncthingTray"
+
+pkgdesc="Syncs files among devices, and shows the sync status on a tray icon. Version with the latest unreleased improvements."
 license=("LGPL3")
+
+url="https://github.com/sieren/QSyncthingTray"
+source=("git+${url}.git" "${LowercaseName}.desktop")
+md5sums=("SKIP" "SKIP")
+
 makedepends=("cmake" "git")
 depends=("qt5-location" "qt5-webengine" "startup-settings-git" "syncthing")
 provides=("${LowercaseName}")
 conflicts=("${LowercaseName}")
-source=("git+${url}.git" "${LowercaseName}.desktop")
-md5sums=("SKIP" "SKIP")
 
 
 pkgver() {
-	cd "${srcdir}/${Name}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-	echo
+	cd "${Name}"
+	printf "r%s.%s\n" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 
@@ -42,9 +44,11 @@ package() {
 	mkdir --parents "${pkgdir}/usr/share/applications"
 
 	mv "${srcdir}/${Name}/build/${Name}" "${pkgdir}/usr/bin/${LowercaseName}"
-	mv "${srcdir}/${Name}/resources/images/Icon1024.png" "${pkgdir}/usr/share/pixmaps/${LowercaseName}.png"
-	mv "${srcdir}/${LowercaseName}.desktop" "${pkgdir}/usr/share/applications/${LowercaseName}.desktop"
+	cp "${srcdir}/${Name}/resources/images/Icon1024.png" "${pkgdir}/usr/share/pixmaps/${LowercaseName}.png"
+	cp "${srcdir}/${LowercaseName}.desktop" "${pkgdir}/usr/share/applications/${LowercaseName}.desktop"
 
+	find "${pkgdir}" -type d -exec chmod u=rwx,g=rx,o=rx {} \;
+	find "${pkgdir}" -type f -exec chmod u=rw,g=r,o=r {} \;
 	chmod +x "${pkgdir}/usr/bin/${LowercaseName}"
 }
 
