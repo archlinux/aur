@@ -3,7 +3,7 @@
 
 pkgname=mp3tag
 pkgver=2.98
-pkgrel=1
+pkgrel=2
 pkgdesc="The universal tag editor."
 arch=('i686' 'x86_64')
 url="https://www.mp3tag.de/en/"
@@ -15,11 +15,11 @@ source=(mp3tag
         mp3tag.desktop
         mp3tag.png
         "https://download.mp3tag.de/mp3tagv${pkgver/./}setup.exe")
-sha256sums=('85b17e667aeff9325e0021b0f319ac70dc0a6da29ce5ce85c2391da990b4a01b'
+sha256sums=('3fdcabf91b5ec50373d3aaeaf653611613aed39d94d17af50bb6f5a85afff586'
             '18967b634e69d8ccb08383d42a49ced3c0b11c632649a15c3a6a55e3a27f62e9'
             'bc0c7b8a7a9f9ee92dfe2f1880ef5d91920473713b5d60e4afa361d69a446798'
             'a3e09f7cda34bc31b3b5b1d7cf2010c3b17847c141ef5a074472eb72f760f6bf'
-            '39fad93915f43af3cf69b61f1735837fdfd8a36c9e00765d795a0e397df06bc3')
+            '85b17e667aeff9325e0021b0f319ac70dc0a6da29ce5ce85c2391da990b4a01b')
 options=('!strip')
 
 package() {
