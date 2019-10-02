@@ -2,7 +2,7 @@
 
 _pkgname=peasy
 pkgname="${_pkgname}-git"
-pkgver=0.6.r137.3c8a558
+pkgver=0.8.r146.b3d43ff
 pkgrel=1
 pkgdesc="A plugin for Geany  which allows to load other plugins written in Python or Lua (Git version)"
 url="https://github.com/kugel-/peasy/"
@@ -28,6 +28,7 @@ prepare() {
   cd "${srcdir}/${_pkgname}"
 
   ./autogen.sh
+  sed -i -e 's/@install_sh@/install/g' po/Makefile.in.in
 }
 build() {
   cd "${srcdir}/${_pkgname}"
