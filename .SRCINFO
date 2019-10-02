@@ -33,18 +33,6 @@ pkgname = dotnet-host-bin
 	provides = dotnet-host=3.0.100
 	conflicts = dotnet-host
 
-pkgname = dotnet-runtime-bin
-	pkgdesc = The .NET Core runtime (binary)
-	depends = dotnet-host-preview
-	depends = icu
-	depends = krb5
-	depends = libunwind
-	depends = openssl
-	depends = zlib
-	depends = libcurl.so
-	optdepends = lttng-ust: CoreCLR tracing
-	provides = dotnet-runtime=3.0.100
-
 pkgname = aspnet-runtime-bin
 	pkgdesc = The ASP.NET Core runtime (binary)
 	depends = dotnet-runtime-bin

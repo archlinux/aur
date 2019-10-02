@@ -1,7 +1,7 @@
 # Maintainer: Attila Greguss <floyd0122[at]gmail[dot]com>
 
 pkgbase=dotnet-core-bin
-pkgname=('dotnet-host-bin' 'dotnet-runtime-bin' 'aspnet-runtime-bin' 'dotnet-sdk-bin')
+pkgname=('dotnet-host-bin' 'aspnet-runtime-bin' 'dotnet-sdk-bin')
 pkgver=3.0.100
 pkgrel=1
 arch=('x86_64' 'armv7h' 'aarch64')
