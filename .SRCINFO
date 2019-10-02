@@ -1,0 +1,22 @@
+pkgbase = dotnet-sdk-bin
+	pkgdesc = The .NET Core SDK (binary version)
+	pkgver = 3.0.100
+	pkgrel = 1
+	url = https://dotnet.microsoft.com/download/dotnet-core
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	depends = dotnet-runtime-bin
+	provides = dotnet-sdk
+	conflicts = dotnet-sdk-2.0
+	conflicts = dotnet-sdk
+	conflicts = dotnet-sdk-rc
+	options = staticlibs
+	source_x86_64 = https://download.visualstudio.microsoft.com/download/pr/886b4a4c-30af-454b-8bec-81c72b7b4e1f/d1a0c8de9abb36d8535363ede4a15de6/dotnet-sdk-3.0.100-linux-x64.tar.gz
+	sha512sums_x86_64 = 766da31f9a0bcfbf0f12c91ea68354eb509ac2111879d55b656f19299c6ea1c005d31460dac7c2a4ef82b3edfea30232c82ba301fb52c0ff268d3e3a1b73d8f7
+	source_armv7h = https://download.visualstudio.microsoft.com/download/pr/8ddb8193-f88c-4c4b-82a3-39fcced27e91/b8e0b9bf4cf77dff09ff86cc1a73960b/dotnet-sdk-3.0.100-linux-arm.tar.gz
+	sha512sums_armv7h = c81dddb0b2db8e29762f222f8dc15b8f3fdf939226c4015d2d919b8faaece503c7bbe0ceeec3e8dc27ad9ca29d027bb1164ac9901f7bbf9c5e4a793e4111d45d
+
+pkgname = dotnet-sdk-bin
+
