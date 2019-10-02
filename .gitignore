@@ -1,0 +1,6 @@
+# ignore build files
+rainloop-*.zip
+*.pkg.tar.xz
+*.sig
+src/
+pkg/
