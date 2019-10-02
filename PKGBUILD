@@ -1,4 +1,5 @@
-# Maintainer: John Jenkins <twodopeshaggy@gmail.com>
+# Maintainer: Yauhen Kirylau <actionless.loveless+aur@gmail.com>
+# Contributor: John Jenkins <twodopeshaggy@gmail.com>
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 _pkgname=vulture
 pkgname=python-vulture
