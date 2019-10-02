@@ -1,7 +1,7 @@
 pkgbase = postgresql-jdbc
 	pkgdesc = The official JDBC driver for PostgreSQL. Contains JDBC 4.0, 4.1 & 4.2 drivers.
 	pkgver = 42.2.8
-	pkgrel = 1
+	pkgrel = 2
 	url = http://jdbc.postgresql.org/
 	arch = any
 	license = Custom: BSD
@@ -10,12 +10,12 @@ pkgbase = postgresql-jdbc
 	noextract = postgresql-jdbc-42.2.8.jdbc41.jar
 	noextract = postgresql-jdbc-42.2.8.jdbc42.jar
 	source = LICENSE
-	source = postgresql-jdbc-42.2.8.jdbc4.jar::http://jdbc.postgresql.org/download/postgresql-42.2.8.jre6.jar
-	source = postgresql-jdbc-42.2.8.jdbc41.jar::http://jdbc.postgresql.org/download/postgresql-42.2.8.jre7.jar
-	source = postgresql-jdbc-42.2.8.jdbc42.jar::http://jdbc.postgresql.org/download/postgresql-42.2.8.jar
+	source = postgresql-jdbc-42.2.8.jdbc4.jar::https://search.maven.org/remotecontent?filepath=org/postgresql/postgresql/42.2.8.jre6/postgresql-42.2.8.jre6.jar
+	source = postgresql-jdbc-42.2.8.jdbc41.jar::https://search.maven.org/remotecontent?filepath=org/postgresql/postgresql/42.2.8.jre7/postgresql-42.2.8.jre7.jar
+	source = postgresql-jdbc-42.2.8.jdbc42.jar::https://search.maven.org/remotecontent?filepath=org/postgresql/postgresql/42.2.8/postgresql-42.2.8.jar
 	md5sums = da7e6f8b26deefe7c03b391454732a0d
-	md5sums = d41d8cd98f00b204e9800998ecf8427e
-	md5sums = d41d8cd98f00b204e9800998ecf8427e
+	md5sums = 05c2859d59f6f9910c046c12ea275d43
+	md5sums = 477d03fe0cbc941f322c60c0a78bbe98
 	md5sums = e6dcc1898639407bf530b7a34e870b55
 
 pkgname = postgresql-jdbc
