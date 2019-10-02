@@ -1,9 +1,10 @@
-# Maintainer: jerry73204 <jerry73204@gmail.com>
+# Maintainer: Roberto Hueso < robertohueso96 at gmail dot com >
+# Former Maintainer: jerry73204 <jerry73204@gmail.com>
 # Former Maintainer: Govind Gopakumar < govind.93 at gmail dot com>
 # Former Maintainer: Daniel Wallace <danielwallace at gtmanfred dot com>
 pkgname=mlpack
-pkgver=3.1.1
-pkgrel=2
+pkgver=3.2.1
+pkgrel=1
 pkgdesc='a scalable c++ machine learning library'
 arch=('x86_64')
 url="http://www.mlpack.org"
@@ -17,14 +18,19 @@ depends=(
   'python-numpy'
   'python-pandas>=0.15.0'
 )
+
+optdepends=(
+  'openmp: parallel computation support'
+)
+
 makedepends=(
-  'cmake>=2.8.5'
+  'cmake>=3.3.2'
   'txt2man'
   'python-setuptools'
   'python-pytest-runner'
 )
 source=("http://www.mlpack.org/files/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('a9901ea93655790fa66d55b52eb7a901754b6fedcc25b3258fd52709d2135e63')
+sha256sums=('3fa25157a0a6e91fd5ba223ebd911e5d86c0664d969ea3f7768d823448562f36')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -32,6 +38,8 @@ build() {
   cmake \
       -D CMAKE_INSTALL_PREFIX="${pkgdir}/usr" \
       -D BUILD_PYTHON_BINDINGS=ON \
+      -D BUILD_TESTS=OFF \
+      -D USE_OPENMP=ON \
       .
   make
 }
