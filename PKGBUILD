@@ -1,8 +1,9 @@
-# Maintainer :  Kr1ss $(echo \<kr1ss+x-yandex+com\>|sed s/\+/./g\;s/\-/@/)
-# Contributor : Alexander Görtz <aur@nyloc.de>
-# Contributor : Dan Beste <dan.ray.beste@gmail.com>
-# Contributor : Julien Nicoulaud <julien dot nicoulaud at gmail dot com>
-# Contributor : stef204 <https://aur.archlinux.org/account/stef204>
+# Maintainer :    Kr1ss $(echo \<kr1ss+x-yandex+com\>|sed s/\+/./g\;s/\-/@/)
+# Co-Maintainer : Daniel M. Capella <polyzen@archlinux.org>
+# Contributor :   Alexander Görtz <aur@nyloc.de>
+# Contributor :   Dan Beste <dan.ray.beste@gmail.com>
+# Contributor :   Julien Nicoulaud <julien dot nicoulaud at gmail dot com>
+# Contributor :   stef204 <https://aur.archlinux.org/account/stef204>
 
 
 pkgname=borgmatic
