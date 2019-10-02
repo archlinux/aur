@@ -1,0 +1,19 @@
+pkgbase = notestorm-git
+	pkgdesc = Extremely powerful and easy note taking app for the CLI written in bash
+	pkgver = r12.76f7e5d
+	pkgrel = 1
+	url = https://gitlab.com/stormdragon2976/notestorm
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = bash
+	depends = dialog
+	depends = w3m
+	optdepends = gnupg: Encrypted notes support
+	provides = notestorm
+	conflicts = notestorm
+	source = git+https://gitlab.com/stormdragon2976/notestorm.git
+	md5sums = SKIP
+
+pkgname = notestorm-git
+
