@@ -52,7 +52,7 @@ package_dotnet-host-bin() {
 # runtime-bin already exists in aur, but incomplete
 #package_dotnet-runtime-bin() {
 #  pkgdesc='The .NET Core runtime (binary)'
-#  depends=('dotnet-host-preview' 'icu' 'krb5' 'libunwind' 'openssl' 'zlib'
+#  depends=('dotnet-host-bin' 'icu' 'krb5' 'libunwind' 'openssl' 'zlib'
 #           'libcurl.so')
 #  optdepends=('lttng-ust: CoreCLR tracing')
 #  provides=("dotnet-runtime=${pkgver%+*}")
