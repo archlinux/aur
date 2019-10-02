@@ -2,7 +2,7 @@
 # Contributor: Johannes Löthberg <johannes@kyriasis.com>
 
 pkgname=matrix-synapse-git
-pkgver=1.2.1.r145.gd1b5b055b
+pkgver=1.4.0rc1.r45.ga5166e4d5
 pkgrel=1
 
 pkgdesc="Matrix reference homeserver"
@@ -21,7 +21,7 @@ depends=('python-jsonschema' 'python-twisted' 'python-service-identity'
          'python-phonenumbers' 'python-prometheus_client'
          'python-attrs' 'python-netaddr' 'python-sortedcontainers'
          'python-treq' 'python-psutil' 'python-sdnotify' 'python-jinja'
-         'python-bleach' 'python-psutil'
+         'python-bleach' 'python-psutil' 'python-typing-extensions'
          'systemd')
 makedepends=('git')
 checkdepends=('python-lxml' 'python-mock' 'python-parameterized')

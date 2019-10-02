@@ -1,6 +1,6 @@
 pkgbase = matrix-synapse-git
 	pkgdesc = Matrix reference homeserver
-	pkgver = 1.2.1.r145.gd1b5b055b
+	pkgver = 1.4.0rc1.r45.ga5166e4d5
 	pkgrel = 1
 	url = https://github.com/matrix-org/synapse
 	install = synapse.install
@@ -42,6 +42,7 @@ pkgbase = matrix-synapse-git
 	depends = python-jinja
 	depends = python-bleach
 	depends = python-psutil
+	depends = python-typing-extensions
 	depends = systemd
 	optdepends = python-psycopg2: PostgreSQL support
 	optdepends = python-lxml: URL previewing
