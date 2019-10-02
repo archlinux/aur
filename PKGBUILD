@@ -1,5 +1,4 @@
 #! /bin/bash
-#  (GPL3+) Alberto Salvia Novella (es20490446e.wordpress.com)
 
 Publisher="tarassh"
 pkgname="fairy-wallet"
