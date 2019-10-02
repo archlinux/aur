@@ -7,7 +7,7 @@ pkgbase = jcal-git
 	license = GPL3
 	makedepends = git
 	provides = jcal
-	source = git://github.com/fzerorubigd/jcal.git
+	source = git://github.com/persiancal/jcal.git
 	md5sums = SKIP
 
 pkgname = jcal-git
