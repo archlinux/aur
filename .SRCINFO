@@ -1,6 +1,6 @@
 pkgbase = r-pkgconfig
 	pkgdesc = Set R package configuration options on a per-package basis.
-	pkgver = 2.0.2
+	pkgver = 2.0.3
 	pkgrel = 1
 	url = https://cran.r-project.org/package=pkgconfig
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = r-pkgconfig
 	optdepends = r-covr
 	optdepends = r-testthat
 	optdepends = r-disposables
-	source = http://cran.r-project.org/src/contrib/pkgconfig_2.0.2.tar.gz
-	md5sums = 65742ce8a9e6d167f5c4181a61ca7ff2
+	source = http://cran.r-project.org/src/contrib/pkgconfig_2.0.3.tar.gz
+	md5sums = 7b9ca1d45d941238381cb55d13ff4d68
 
 pkgname = r-pkgconfig
 
