@@ -1,0 +1,12 @@
+pkgbase = ttf-sarala-git
+	pkgdesc = Humanist sans serif conceived to be a web font with nice legibility at normal text sizes. Based on Telex Regular free font.
+	pkgver = r39.7779e0c
+	pkgrel = 1
+	url = https://github.com/huertatipografica/sarala
+	arch = any
+	license = OFL
+	source = git+https://github.com/huertatipografica/sarala.git
+	md5sums = SKIP
+
+pkgname = ttf-sarala-git
+
