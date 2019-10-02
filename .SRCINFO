@@ -6,6 +6,7 @@ pkgbase = aocc
 	install = aocc.install
 	arch = x86_64
 	license = custom
+	depends = ncurses5-compat-libs
 	depends = env-modules
 	options = staticlibs
 	options = !strip

@@ -10,7 +10,7 @@ license=('custom')
 url="https://developer.amd.com/amd-aocc/"
 source=("local://aocc-compiler-${pkgver}.tar" "local://modulefile")
 options=('staticlibs' '!strip' 'libtool')
-depends=('env-modules')
+depends=('ncurses5-compat-libs' 'env-modules')
 install=aocc.install
 md5sums=("09d64260794b40901c77504317fbd0ad" "SKIP")
 
@@ -21,8 +21,8 @@ package() {
 
 	# modulefile
 	cp modulefile ${pkgdir}/opt/aocc
-	mkdir -p ${pkgdir}/etc/modules/modulefiles/
-	ln -s /opt/aocc/modulefile ${pkgdir}/etc/modules/modulefiles/aocc
+	mkdir -p ${pkgdir}${MODULESHOME}/modulefiles/
+	ln -s /opt/aocc/modulefile ${pkgdir}${MODULESHOME}/modulefiles/aocc
 
 	# Not needed
 	rm ${pkgdir}/opt/aocc/install.sh
