@@ -22,7 +22,7 @@ pkgname=(
   "$pkgbase" kodi-bin-devel kodi-wayland-devel kodi-gbm-devel
   kodi-eventclients-devel kodi-tools-texturepacker-devel kodi-dev-devel
 )
-pkgver=18.5pre6
+pkgver=18.5pre8
 _major=18.4
 pkgrel=1
 arch=('x86_64')
@@ -80,10 +80,12 @@ source=(
   000-fix.building.with.mariadb.patch::https://github.com/wsnipex/xbmc/commit/cd20c8eb8a0394db1f028b118c4ca9b91b7e746a.patch
   001-PR16596.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16596.patch
   002-PR16627.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16627.patch
-  003-PR16634.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16634.patch
+  003-PR16643.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16643.patch
   004-PR16553.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16553.patch
   005-PR16670.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16670.patch
   006-PR16676.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16676.patch
+#  007-PR16077.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16077.patch
+  008-PR16673.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16673.patch
 )
 noextract=(
   "libdvdcss-$_libdvdcss_version.tar.gz"
@@ -108,10 +110,11 @@ sha256sums=('bf2be186d8ae5b5377e43c06a538012bb9f51a0e98f8244b70a401006861d110'
             '849daf1d5b081ef6d0e428bbc7d448799fc43a8ac9e79cd7513de0eb5a91b0bb'
             'd5eead90e570a96d4ed947e7d671cf7b1794fca12c3b834f45a9628fe1a8e9ab'
             '0cea951df699da5281a99c1280de0f5256b5e5087f89dc62aecf2d6584e4bf79'
-            '730cf6d96c121208cd6e7cb4719d540dd51c41ccf8a6acc8eb12d18936ea915b'
+            '2c9eb63e1a1a9bee966b1cf7a31aac40275ba3a7c96bb72604d1fbbf1fd66629'
             '1f79fe93b4b42739a89e99b9076ccbc5934539a046512c22e7a0a78d1e90b402'
             '8e88385024428c83775c5ec4f6bc0033ad7e9b70b5fca16f1122f5e74c28f3ec'
-            '2e24678534abd4442edf06e3eb4dc4aa61222511927e01fa9c510ce9c5c0e405')
+            '2e24678534abd4442edf06e3eb4dc4aa61222511927e01fa9c510ce9c5c0e405'
+            '2db519f89d8892051a2ebf57e5a8871cb439388d19cf03e183b7d7dbe51feb36')
 
 prepare() {
   # force python 'binary' as python2
