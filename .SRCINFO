@@ -1,15 +1,15 @@
 pkgbase = lib32-libcap-ng
 	pkgdesc = Library making programming with POSIX capabilities easier than traditional libcap (32-bit)
-	pkgver = 0.7.9
-	pkgrel = 3
-	url = http://people.redhat.com/sgrubb/libcap-ng/
+	pkgver = 0.7.10
+	pkgrel = 1
+	url = https://people.redhat.com/sgrubb/libcap-ng/
 	arch = x86_64
 	license = LGPL2.1
-	makedepends = lib32-gcc-libs
+	makedepends = gcc-multilib
 	depends = lib32-glibc
 	depends = libcap-ng
-	source = libcap-ng-0.7.9.tar.gz::https://github.com/stevegrubb/libcap-ng/archive/v0.7.9.tar.gz
-	sha512sums = eae256b57af37c1170ee372ab9a6af927826a7b7b92f00c68010afbb32893fc265414ecf28f52e912a41609b4ca5e1295363db88dac9c60ea04bd20a1dfeef83
+	source = libcap-ng-0.7.10.tar.gz::https://github.com/stevegrubb/libcap-ng/archive/v0.7.10.tar.gz
+	sha512sums = 371dc1c1f6e2999ef4b4173e12338e9a794e9f48bd5ce8fb4d0c05884cff277ecf24f51e4b300487f9b5f52d93de7eeb1542ebb49c82226d06dd44fa76092367
 
 pkgname = lib32-libcap-ng
 
