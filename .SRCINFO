@@ -1,7 +1,7 @@
 pkgbase = gvls-git
 	pkgdesc = GNOME Vala Language Server
-	pkgver = 0.10.2+42+g065a4bc
-	pkgrel = 2
+	pkgver = 0.10.2+65+gb8cfdb7
+	pkgrel = 1
 	url = https://gitlab.gnome.org/esodan/gvls
 	arch = i686
 	arch = x86_64
@@ -17,7 +17,9 @@ pkgbase = gvls-git
 	provides = gvls
 	conflicts = gvls
 	source = git+https://gitlab.gnome.org/esodan/gvls.git
+	source = fix-valadoc-icon-dir.patch
 	sha256sums = SKIP
+	sha256sums = f56f8cc2b42ef491f6f2088b313e6d34d7bfe307b81990f842d2f6e8df829196
 
 pkgname = gvls-git
 
