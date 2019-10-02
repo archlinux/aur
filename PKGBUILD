@@ -61,7 +61,7 @@ _localmodcfg=
 
 pkgbase=linux-mainline-bcachefs
 _srcver_tag=5.3
-pkgver=v5.3
+pkgver=v5.3.2
 pkgrel=1
 arch=(x86_64)
 url="https://github.com/koverstreet/bcachefs"
@@ -112,72 +112,72 @@ _kernelname=${pkgbase#linux}
 : ${_kernelname:=-ARCH}
 
 pkgver() {
-  cd upstream
+  cd ../upstream
   git fetch --tags &> /dev/null
- _srcver_tag=$(git tag | grep v${_srcver_tag} | grep -v '-' | sort -t. -k 1,1n -k 2,2n -k 3,3n | tail -n1)
+
+  cd ../src/upstream
+  git fetch --tags &> /dev/null
+
+  _srcver_tag=$(git tag | grep v${_srcver_tag} | grep -v '-' | sort -t. -k 1,1n -k 2,2n -k 3,3n | tail -n1)
 # [ -z "$_srcver_tag" ] &&
 #   _srcver_tag=$(git tag | grep v${_srcver_tag} | grep '-' | tail -n1)
-msg2 "${_srcver_tag}"
+  msg2 $_srcver_tag
   echo "${_srcver_tag}" | sed 's/-/_/'
 }
 
 actual_prepare() {
-    _srcver_tag=$(echo $pkgver | sed 's/_/-/')
-    msg2 "Latest tag found: ${_srcver_tag}"
+  _srcver_tag=$(echo $pkgver | sed 's/_/-/')
 
-    cd ${_reponame}
-    export EDITOR=true
-    git remote add upstream ../upstream || true
-    git fetch --tags upstream
-    if ! git merge ${_srcver_tag}
-      then if ! git diff --name-only --diff-filter=U | xargs git checkout --theirs
-        then git diff --name-only --diff-filter=U |
-        while read line
-        do sleep 0.1; if ! git checkout --theirs $line
-          then sleep 0.1; git rm $line
-          fi
-        done
+  cd upstream
+  git fetch --tags
+  cd ..
+
+  cd ${_reponame}
+
+  export EDITOR=true
+  git remote add upstream ../upstream || true
+  git fetch --tags upstream
+
+  git rebase ${_srcver_tag}
+
+  msg2 "Setting version..."
+  scripts/setlocalversion --save-scmversion
+  echo "-$pkgrel" > localversion.10-pkgrel
+  echo "$_kernelname" > localversion.20-pkgname
+
+  msg2 "Setting config..."
+  cp ../config .config
+
+  if [ -n "$_subarch" ]; then
+      yes "$_subarch" | make oldconfig
+  else
+      yes '
+' | make prepare
+  fi
+
+  ### Optionally load needed modules for the make localmodconfig
+  # See https://aur.archlinux.org/packages/modprobed-db
+  if [ -n "$_localmodcfg" ]; then
+      msg "If you have modprobed-db installed, running it in recall mode now"
+      if [ -e /usr/bin/modprobed-db ]; then
+          [[ -x /usr/bin/sudo ]] || {
+          echo "Cannot call modprobe with sudo. Install sudo and configure it to work with this user."
+          exit 1; }
+          sudo /usr/bin/modprobed-db recall
+          make localmodconfig
       fi
     fi
 
-    msg2 "Setting version..."
-    scripts/setlocalversion --save-scmversion
-    echo "-$pkgrel" > localversion.10-pkgrel
-    echo "$_kernelname" > localversion.20-pkgname
+  # do not run `make olddefconfig` as it sets default options
+  yes "" | make config >/dev/null
 
-    msg2 "Setting config..."
-    cp ../config .config
+  make -s kernelrelease > ../version
+  msg2 "Prepared %s version %s" "$pkgbase" "$(<../version)"
 
-    if [ -n "$_subarch" ]; then
-        yes "$_subarch" | make oldconfig
-    else
-        yes '
-' | make prepare
-    fi
+  [[ -z "$_makenconfig" ]] || make menuconfig
 
-    ### Optionally load needed modules for the make localmodconfig
-    # See https://aur.archlinux.org/packages/modprobed-db
-    if [ -n "$_localmodcfg" ]; then
-        msg "If you have modprobed-db installed, running it in recall mode now"
-        if [ -e /usr/bin/modprobed-db ]; then
-            [[ -x /usr/bin/sudo ]] || {
-            echo "Cannot call modprobe with sudo. Install sudo and configure it to work with this user."
-            exit 1; }
-            sudo /usr/bin/modprobed-db recall
-            make localmodconfig
-        fi
-    fi
-
-    # do not run `make olddefconfig` as it sets default options
-    yes "" | make config >/dev/null
-
-    make -s kernelrelease > ../version
-    msg2 "Prepared %s version %s" "$pkgbase" "$(<../version)"
-
-    [[ -z "$_makenconfig" ]] || make menuconfig
-
-    # save configuration for later reuse
-    cat .config > "${startdir}/config.last"
+  # save configuration for later reuse
+  cat .config > "${startdir}/config.last"
 }
 
 build() {
