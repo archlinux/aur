@@ -1,10 +1,11 @@
 pkgbase = atlauncher-git
 	pkgdesc = A Launcher for Minecraft which integrates multiple different ModPacks to allow you to download and install ModPacks easily and quickly.
 	pkgver = 3.2.3.7.r521.g6d2f1d14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://atlauncher.com/
 	arch = any
 	license = GPL3
+	makedepends = git
 	makedepends = java-environment=8
 	makedepends = gradle
 	depends = java-runtime=8
