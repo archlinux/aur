@@ -1,6 +1,6 @@
 pkgbase = kmdr-cli
 	pkgdesc = The CLI tool for explaining commands from your terminal
-	pkgver = 0.1.35
+	pkgver = 0.1.36
 	pkgrel = 1
 	url = https://kmdr.sh
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = kmdr-cli
 	depends = nodejs
 	provides = kmdr
 	conflicts = kmdr
-	source = kmdr-cli-0.1.35.tar.gz::https://github.com/ediardo/kmdr-cli/archive/v0.1.35.tar.gz
-	sha256sums = 1b1570fe374289a276e4cea55df2ed69e5cf790cbd5dc7b3a42e6eb4b8e94030
+	source = kmdr-cli-0.1.36.tar.gz::https://github.com/ediardo/kmdr-cli/archive/v0.1.36.tar.gz
+	sha256sums = 775dd7ec9a6fbe17ece0e5900ee414428c0fec200e72c5dfe337ae8806f3053f
 
 pkgname = kmdr-cli
 
