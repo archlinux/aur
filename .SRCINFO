@@ -1,0 +1,27 @@
+pkgbase = python-parfive
+	pkgdesc = A HTTP and FTP parallel file downloader
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://parfive.readthedocs.io/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	checkdepends = python-pytest-localserver
+	makedepends = python-setuptools
+	makedepends = python-sphinx-astropy
+	makedepends = python-aiohttp
+	makedepends = python-tqdm
+	makedepends = graphviz
+	makedepends = python-sunpy-sphinx-theme
+	source = https://files.pythonhosted.org/packages/source/p/parfive/parfive-1.0.0.tar.gz
+	md5sums = 093d52b99263398e902c70a1f128f3ca
+
+pkgname = python-parfive
+	depends = python>=3.5
+	depends = python-tqdm
+	depends = python-aiohttp
+	optdepends = python-parfive-doc: Documentation for Parfive
+
+pkgname = python-parfive-doc
+	pkgdesc = Documentation for Python Parfive
+
