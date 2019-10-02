@@ -28,9 +28,9 @@ script:
 - "curl -s https://raw.githubusercontent.com/mikkeloscar/arch-travis/master/arch-travis.sh | bash"
 - "ls $(pwd)"
 
-deploy:
-  provider: script
-  script: bash .travis_deploy.sh
-  on:
-    branch: master
-  skip_cleanup: true
+#deploy:
+#  provider: script
+#  script: bash .travis_deploy.sh
+#  on:
+#    branch: master
+#  skip_cleanup: true
