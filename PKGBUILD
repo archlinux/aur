@@ -5,13 +5,13 @@
 
 pkgname=atlauncher-git
 pkgver=3.2.3.7.r521.g6d2f1d14
-pkgrel=1
+pkgrel=2
 pkgdesc="A Launcher for Minecraft which integrates multiple different ModPacks to allow you to download and install ModPacks easily and quickly."
 arch=(any)
 url="https://atlauncher.com/"
 license=('GPL3')
 depends=('java-runtime=8' 'openal' 'sh')
-makedepends=('java-environment=8' 'gradle')
+makedepends=('git' 'java-environment=8' 'gradle')
 provides=('atlauncher')
 conflicts=('atlauncher')
 
