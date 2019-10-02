@@ -7,14 +7,14 @@
 
 pkgname=v8
 pkgver=7.8.279.12
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast and modern Javascript engine used in Google Chrome."
 arch=('i686' 'x86_64')
 url="https://v8.dev"
 license=('BSD')
 depends=('readline' 'icu')
 makedepends=('clang' 'clang-tools-extra' 'python2' 'python2-colorama' 'python2-pylint' 'python2-lazy-object-proxy' 'python2-singledispatch' 'python2-wrapt' 'ninja' 'git' 'wget')
-conflicts=('v8-3.14' 'v8-3.15' 'v8-3.20' 'v8-static-gyp' 'v8-static-gyp-5.4')
+conflicts=('v8-3.14' 'v8-3.14-bin' 'v8-3.15' 'v8-3.20' 'v8-6.7-static' 'v8-6.8' 'v8-r' 'v8-static-gyp' 'v8-static-gyp-5.4')
 source=("depot_tools::git+https://chromium.googlesource.com/chromium/tools/depot_tools.git"
         "v8.pc"
         "v8_libbase.pc"
