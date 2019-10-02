@@ -2,14 +2,16 @@
 # Submitter: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 pkgname=blender-git
 pkgver=84454.690478027bd
-pkgrel=1
+pkgrel=2
 pkgdesc="A fully integrated 3D graphics creation suite (development)"
 arch=('i686' 'x86_64')
 url="http://blender.org/"
 depends=('libgl' 'python' 'desktop-file-utils' 'hicolor-icon-theme'
          'ffmpeg' 'fftw' 'openal' 'freetype2' 'libxi' 'openimageio' 'opencolorio'
          'openshadinglanguage' 'libtiff' 'libpng' 'python-numpy')
-optdepends=('cuda: CUDA support in Cycles')
+optdepends=('cuda: CUDA support in Cycles'
+            'optix: OptiX support in Cycles'
+            'oidn: Intel Open Image Denoise support in compositing')
 makedepends=('git' 'cmake' 'boost' 'mesa')
 provides=('blender')
 conflicts=('blender')
@@ -36,6 +38,21 @@ if [ "$_CUDA_PKG" != "" ]; then
                 -DCUDA_TOOLKIT_ROOT_DIR=/opt/cuda"
 fi
 
+# check for optix
+_OPTIX_PKG=`pacman -Qq optix 2>/dev/null` || true
+if [ "$_OPTIX_PKG" != "" ]; then
+    _EXTRAOPTS="$_EXTRAOPTS \
+    -DWITH_CYCLES_DEVICE_OPTIX=ON \
+    -DOPTIX_ROOT_DIR=/opt/optix"
+fi
+
+# check for open image denoise
+_OIDN_PKG=`pacman -Qq oidn 2>/dev/null` || true
+if [ "$_OIDN_PKG" != "" ]; then
+    _EXTRAOPTS="$_EXTRAOPTS \
+    -DWITH_OPENIMAGEDENOISE=ON"
+fi
+
 pkgver() {
   cd "$srcdir/blender"
   printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -57,8 +74,6 @@ build() {
         -DPYTHON_NUMPY_PATH=/usr/lib/python3.7/site-packages \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DWITH_INSTALL_PORTABLE=OFF \
-        -DWITH_GAMEENGINE=ON \
-        -DWITH_PLAYER=ON \
         -DWITH_OPENCOLORIO=ON \
         -DWITH_FFTW3=ON \
         -DWITH_SYSTEM_GLEW=ON \
