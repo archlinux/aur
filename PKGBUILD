@@ -1,4 +1,5 @@
 # Maintainer: Victor Dmitriyev <mrvvitek@gmail.com>
+# Maintainer: alexisph@gmail.com
 # Contributor: eolianoe <eolianoe [at] gmail [DoT] com>
 # Contributor: Alucryd <alucryd at gmail dot com>
 # Contributor: Stefan Husmann <stefan-husmann at t-online dot de>
@@ -6,7 +7,7 @@
 
 pkgname=javahelp2
 pkgver=2.0.05.r90
-pkgrel=4
+pkgrel=5
 # manual versioning
 source=("${pkgname}::git+https://github.com/javaee/javahelp.git#commit=3ca862d8626096770598a3a256886d205246f4a4")
 sha256sums=('SKIP')
@@ -14,7 +15,7 @@ pkgdesc="Java based help system"
 arch=('any')
 url="https://javaee.github.io/javahelp/"
 license=('custom' 'CDDL' 'GPL2')
-makedepends=('apache-ant' 'git')
+makedepends=('apache-ant' 'git' 'jdk8-openjdk')
 depends=('java-runtime')
 
 build(){
@@ -23,7 +24,7 @@ build(){
     # > In JDK 9 and going forward, javac will use a "one + three back" policy of supported source and target options.
     # NOTE: I just hope, that it'll compile right.
     local java_ver="$(javac -version 2>&1 | sed -e 's/^javac\s\+\([0-9]\+\.[0-9]\+\).*$/\1/g')"
-    ant -Djavac.source="$java_ver" -Djavac.target="$java_ver" release
+    JAVA_HOME=/usr/lib/jvm/java-8-openjdk ant release
 }
 
 package() {
