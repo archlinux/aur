@@ -1,0 +1,21 @@
+pkgbase = qtcreator-meson-plugin-git
+	pkgdesc = Meson build system integration for Qt Creator
+	pkgver = r114.7fd2aa8
+	pkgrel = 1
+	url = https://github.com/qtcreator-meson-plugin/qtcreator-meson-plugin
+	arch = i686
+	arch = x86_64
+	groups = qt
+	groups = qt5
+	license = MIT
+	makedepends = git
+	makedepends = qtcreator-src
+	depends = qtcreator
+	optdepends = meson
+	provides = qtcreator-meson-plugin
+	conflicts = qtcreator-meson-plugin
+	source = qtcreator-meson-plugin::git+https://github.com/qtcreator-meson-plugin/qtcreator-meson-plugin.git
+	sha256sums = SKIP
+
+pkgname = qtcreator-meson-plugin-git
+
