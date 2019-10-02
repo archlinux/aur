@@ -1,9 +1,9 @@
 # Maintainer: bauh developers <bauh4linux@gmail.com>
 
 pkgname=bauh
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
-pkgdesc="Free graphical interface to manage Flatpak, Snaps and AUR applications / packages"
+pkgdesc="Graphical interface to manage Flatpak, Snaps and AUR applications"
 arch=('any')
 url="https://github.com/vinifmor/bauh"
 license=('zlib/libpng')
@@ -18,7 +18,7 @@ optdepends=('flatpak: for Flatpak support'
             'breeze: for KDE Plasma main theme be available ( optional )')
 makedepends=('git' 'python-setuptools')
 source=("${url}/archive/${pkgver}.tar.gz")
-sha512sums=('ae8acad051befad5436f90ffa11368a3acc960d3a50308ab5b7a9c605fd1350882ba77b169f3a085c1d316d960e71132f3807a036f02a46f43ba7333246d87d7')
+sha512sums=('9046ae82630c6fea51afde4b1133c6006a64584ad9f4c7085df07e15360e97a3df6f261b7d59300180289f35193631cc7c12d99c5d3b281a6ad069ba7a0ee4dc')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
