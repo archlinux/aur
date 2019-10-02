@@ -10,8 +10,8 @@ depends=('mingw-w64-dlfcn' 'mingw-w64-llvm')
 options=('staticlibs' '!strip' '!buildflags')
 validpgpkeys=(71C4B75620BC75708B4BDB254C95FAAB3EB073EC  # Dylan Baker <dylan@pnwbakers.com>
               A5CC9FEC93F2F837CB044912336909B6B25FADFA) # Juan A. Suarez Romero <jasuarez@igalia.com>
-source=(https://mesa.freedesktop.org/archive/mesa-${pkgver}.tar.xz{,.sig} py3k.patch)
-sha256sums=('b060caa2a00f856431160ff7377d0e8f58f2aa48c16ee5a9e265ebdccb10852a' SKIP SKIP)
+source=(https://mesa.freedesktop.org/archive/mesa-${pkgver}.tar.xz{,.sig})
+sha256sums=('b060caa2a00f856431160ff7377d0e8f58f2aa48c16ee5a9e265ebdccb10852a' SKIP)
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -19,7 +19,7 @@ prepare () {
   cd "${srcdir}"/mesa-${pkgver}
 
   # https://gitlab.freedesktop.org/mesa/mesa/merge_requests/2127
-  patch -p1 -i "${srcdir}"/py3k.patch
+  curl -L https://gitlab.freedesktop.org/mesa/mesa/merge_requests/2127.patch | patch -p1
 
   # libLLVMSupport.a: undefined reference to `compressBound' (only with static llvm)
   sed -i "s|'LLVMSupport',|'LLVMSupport', 'z',|g" scons/llvm.py

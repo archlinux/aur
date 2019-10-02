@@ -15,11 +15,9 @@ pkgbase = mingw-w64-mesa
 	options = !buildflags
 	source = https://mesa.freedesktop.org/archive/mesa-19.2.0.tar.xz
 	source = https://mesa.freedesktop.org/archive/mesa-19.2.0.tar.xz.sig
-	source = py3k.patch
 	validpgpkeys = 71C4B75620BC75708B4BDB254C95FAAB3EB073EC
 	validpgpkeys = A5CC9FEC93F2F837CB044912336909B6B25FADFA
 	sha256sums = b060caa2a00f856431160ff7377d0e8f58f2aa48c16ee5a9e265ebdccb10852a
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = mingw-w64-mesa
