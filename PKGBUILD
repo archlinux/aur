@@ -21,5 +21,5 @@ build() {
 package() {
     cd "${srcdir}"
     install -dm0755 "$pkgdir/usr/lib/R/library"
-    cp -a -no-preserve=ownership "$_cranname" "$pkgdir/usr/lib/R/library"
+    cp -a --no-preserve=ownership "$_cranname" "$pkgdir/usr/lib/R/library"
 }
