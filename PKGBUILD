@@ -10,7 +10,7 @@ pkgdesc="A Qt interface for Optimus Manager that allows to configure and switch 
 arch=('x86_64')
 url="https://github.com/Shatur95/optimus-manager-qt"
 license=('GPL3')
-depends=('qt5-base' 'optimus-manager>=1.0')
+depends=('qt5-base' 'qt5-x11extras' 'optimus-manager>=1.0')
 makedepends=('qt5-tools' 'libxrandr' 'git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")

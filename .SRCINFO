@@ -9,6 +9,7 @@ pkgbase = optimus-manager-qt-git
 	makedepends = libxrandr
 	makedepends = git
 	depends = qt5-base
+	depends = qt5-x11extras
 	depends = optimus-manager>=1.0
 	provides = optimus-manager-qt
 	conflicts = optimus-manager-qt
