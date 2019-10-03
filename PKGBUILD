@@ -2,15 +2,15 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname=f24-backgrounds
 pkgver=24.1.2
-pkgrel=7
-_rhver="${pkgver}-6.fc30"
+pkgrel=8
+_rhver="${pkgver}-7.fc31"
 pkgdesc="Fedora 24 backgrounds."
 arch=("i686" "x86_64")
 url="https://fedoraproject.org/wiki/F24_Artwork"
 license=("CC-BY-SA")
 _rhlink="https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages"
 source=("${_rhlink}/f/${pkgname}-${_rhver}.src.rpm")
-sha256sums=('ffaa8648d4e486beb303383561ada8ff23f133fc43e13680391542efde2704d8')
+sha256sums=('55725eb84d48c642658846de779307a5e36dca691b952dbce37d3b4eb9e9ef5c')
 
 prepare()  {
   tar -xvJf ./${pkgname}-${pkgver}.tar.xz
