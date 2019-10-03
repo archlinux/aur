@@ -13,7 +13,7 @@ pkgdesc="A Qt interface for Optimus Manager that allows to configure and switch 
 arch=('x86_64')
 url="https://github.com/Shatur95/optimus-manager-qt"
 license=('GPL3')
-depends=('qt5-base' 'optimus-manager>=1.2')
+depends=('qt5-base' 'qt5-x11extras' 'optimus-manager>=1.2')
 makedepends=('qt5-tools' 'libxrandr')
 source=($pkgname-$pkgver.tar.gz::"https://github.com/Shatur95/optimus-manager-qt/archive/$pkgver.tar.gz"
         SingleApplication-$_singleapplication.tar.gz::"https://github.com/itay-grudev/SingleApplication/archive/$_singleapplication.tar.gz")
