@@ -1,15 +1,15 @@
 # Maintainer: Javier Tiá <javier dot tia at gmail dot com>
 
 pkgname=bic
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc='A C interpreter and API explorer'
 arch=('i686' 'x86_64')
 url='https://github.com/hexagonal-sun/bic'
 makedepends=('gcc' 'automake' 'expect' 'flex' 'autoconf' 'm4' 'libtool' 'readline' 'pkgconf' 'gmp' 'autoconf-archive')
 license=('GPL2')
-source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=('0c8cae8884d58ed89b1166aee93e22e961fc49b0d6781b027a5b0368ef0ab10a')
+source=("${url}/archive/v${pkgver}.tar.gz")
+sha256sums=('228aee5efe5d569628492d44dff4327d17ad615d60c3a1cf6e645020be30f271')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
