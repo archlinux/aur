@@ -1,7 +1,7 @@
 # Maintainer: GrapheneX Team <graphenex.project@protonmail.com>
 
 pkgname=graphenex
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Automated System Hardening Framework"
 url="https://github.com/grapheneX/grapheneX"
@@ -9,8 +9,8 @@ depends=('python')
 makedepends=('python3')
 license=('GPLv3')
 arch=('any')
-source=('https://files.pythonhosted.org/packages/d5/22/27812b316cceac297933f9cfb9d76e1c4481fd49138756eb8aaa6d51a21b/graphenex-1.2.0.tar.gz')
-md5sums=('44bdbf8dcd024c9ecb8eb1cf5d800eef')
+source=('https://files.pythonhosted.org/packages/04/46/a10adbcbdbe68121b6c46ab87dbe00c847ee9b3c36859dd7d9a4c5cfb376/graphenex-1.2.1.tar.gz')
+md5sums=('3a22b94387a2c4bc17b9b85c5e8e326c')
 
 build() {
     cd $srcdir/graphenex-$pkgver
