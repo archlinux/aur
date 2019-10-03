@@ -1,20 +1,19 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
-
 pkgname=java-openjfx-bin
-_majorver=11
-pkgver=11.0.2
-pkgrel=3
-pkgdesc="Java OpenJFX ${_majorver} client application platform."
+_majorver=13
+pkgver=13
+pkgrel=1
+pkgdesc="Java OpenJFX ${_majorver} client application platform (Gluon build)."
 arch=('x86_64')
 url='https://openjfx.io/'
 license=('GPL2')
 depends=('ffmpeg' 'gstreamer' "java-environment>=${_majorver}" 'libxtst' 'qt5-base' 'webkit2gtk')
-provides=("java-openjfx=$pkgver")
-conflicts=("java-openjfx")
+provides=("java-openjfx=${pkgver}")
+conflicts=("java-openjfx=${pkgver}")
 source=("https://download2.gluonhq.com/openjfx/${pkgver}/openjfx-${pkgver}_linux-x64_bin-sdk.zip"
         "https://download2.gluonhq.com/openjfx/${pkgver}/openjfx-${pkgver}_linux-x64_bin-jmods.zip")
-sha256sums=('40ef06cd50ea535d45403d9c44e9cb405b631c547734b5b50a6cb7b222293f97'
-            'c6cabb90575f001cf81d917002b69f3d40a084fb3b450ab2364289e5ef1862ca')
+sha256sums=('6f2d1ed4678615d909546b2b4a88f710fd7367bb78a0d7c195ee4645a4c7efc5'
+            'cf14074968bfa07ba075662ea6f60db8208ac50776f619c274afe51b581d9954')
 
 _jvmdir=usr/lib/jvm/java-${_majorver}-openjdk
 
