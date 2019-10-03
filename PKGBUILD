@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
-# Maintainer: Elias Yuan <cecilelias.yuan@gmail.com>
+# Contributor: Elias Yuan <cecilelias.yuan@gmail.com>
 pkgname=('neon-knights-xfwm4-blue' 'neon-knights-xfwm4-green' 'neon-knights-xfwm4-orange' 'neon-knights-xfwm4-red' 'neon-knights-xfwm4-violet' 'neon-knights-xfwm4-yellow')
 _theme=('Neon_Knights_Blue' 'Neon_Knights_Green' 'Neon_Knights_Orange' 'Neon_Knights_Red' 'Neon_Knights_Violet' 'Neon_Knights_Yellow')
 _de="Xfwm4"
