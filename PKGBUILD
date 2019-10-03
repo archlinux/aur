@@ -4,7 +4,7 @@
 pkgname=fedora-wallpapers
 pkgver=31
 pkgrel=1
-pkgdesc="The default Wallpapers for Fedora, from fedora 8 (Werewolf) to fedora 30."
+pkgdesc="The default Wallpapers for Fedora, from Fedora 8 (Werewolf) to Fedora 31."
 arch=("any")
 url="https://fedoraproject.org/wiki/Wallpapers"
 license=("CC-BY-SA")
