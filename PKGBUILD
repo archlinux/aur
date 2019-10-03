@@ -1,4 +1,5 @@
-pkgdesc="Header files and scripts for clear linux ${pkgver} kernel and modules"
+# Maintainer: Alan Orth <aorth@mjanja.ch>
+pkgdesc="Header files and scripts for Clear Linux ${pkgver} kernel and modules"
 url="https://clearlinux.org/node/15538"
 pkgname=linux-clear-headers-bin
 # check org.clearlinux.native.X.Y.Z in Manifest

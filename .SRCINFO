@@ -1,5 +1,5 @@
 pkgbase = linux-clear-headers-bin
-	pkgdesc = Header files and scripts for clear linux kernel and modules
+	pkgdesc = Header files and scripts for Clear Linux kernel and modules
 	pkgver = 5.3.2
 	pkgrel = 844
 	epoch = 0
