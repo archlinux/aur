@@ -1,7 +1,7 @@
 # Maintainer: Andrzej Giniewicz <gginiu@gmail.com>
 
 pkgname='python-traitsui'
-pkgver=6.1.2
+pkgver=6.1.3
 pkgrel=1
 pkgdesc="Traits-capable user interfaces"
 arch=('any')
@@ -10,18 +10,15 @@ license=('BSD')
 depends=('python-pyface')
 makedepends=('python-setuptools')
 source=("traitsui-${pkgver}.tar.gz::https://github.com/enthought/traitsui/archive/${pkgver}.tar.gz")
-sha256sums=('53a6f176bfab9d94035ef77dceb467539b712f147f4d8ae4cf6cd22244f219d3')
+sha256sums=('476159eafbeac48dc4741b2a3a371dd21ba68665cfd4b17fd88f6df9db2e1a47')
 
 build() {
   cd "$srcdir"/traitsui-$pkgver
-
   python setup.py build
 }
 
 package() {
   cd "$srcdir"/traitsui-$pkgver
-
   python setup.py install --root="$pkgdir"/ --optimize=1
-
   install -D LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
