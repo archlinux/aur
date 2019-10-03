@@ -3,7 +3,7 @@
 
 pkgname=slf4j
 pkgver=1.7.28
-pkgrel=1
+pkgrel=2
 pkgdesc="A successor to the log4j project."
 arch=('any')
 url="http://www.slf4j.org"
