@@ -44,6 +44,7 @@ pkgver() {
 }
 
 build() {
+    export NINJA_STATUS="[%p | %f<%r<%u | %cbps ] "
     ninja -C "${srcdir}/build"
 }
 
