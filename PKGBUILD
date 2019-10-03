@@ -6,7 +6,7 @@
 _jqueryver=1.9.1
 pkgname=etherpad-lite
 pkgver=1.7.5
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Lightweight fork of etherpad based on javascript"
 arch=(any)
@@ -22,7 +22,9 @@ optdepends=('sqlite: to use sqlite as databse'
             'tidy: improve quality of exported pads')
 conflicts=('etherpad-lite-git')
 backup=("etc/${pkgname}/settings.json"
-        "etc/${pkgname}/credentials.json")
+        "etc/${pkgname}/credentials.json"
+        "etc/${pkgname}/APIKEY.txt"
+        "etc/${pkgname}/SESSIONKEY.txt")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ether/${pkgname}/archive/${pkgver}.tar.gz"
         "jquery-${_jqueryver}.js::https://code.jquery.com/jquery-${_jqueryver}.js"
         "${pkgname}-sysusers.conf"
@@ -38,83 +40,92 @@ prepare() {
   cd "${pkgname}-${pkgver}"
   # create needed initializing file
   touch src/.ep_initialized
-
   # write dirty.db to StateDirectory by default
   sed -i 's/var\/dirty.db/\/var\/lib\/etherpad-lite\/dirty.db/g' \
     settings.json.template
-
+  # create empty APIKEY.txt, SESSIONKEY.txt and credentials.json
+  touch {APIKEY,SESSIONKEY}.txt credentials.json
   # create needed symlink because setup is weird
   mkdir -v node_modules && cd node_modules
   ln -vs ../src "ep_${pkgname}"
 }
 
 build() {
-    cd "${pkgname}-${pkgver}"
-
-    # generating html documentation
-    node bin/doc/generate doc/index.md --format=html \
-      --template=doc/template.html > documentation.html
-
+  cd "${pkgname}-${pkgver}"
+  # generating html documentation
+  node bin/doc/generate doc/index.md --format=html \
+    --template=doc/template.html > documentation.html
+  (
     cd src
     # required node modules
     npm install --cache "${srcdir}/npm-cache"
+    npm audit || echo "npm audit output might return non-zero"
+  )
+  find . -type f \
+          \( \
+         -iname '*.1' -o \
+         -iname '*.5' -o \
+         -iname '*.7' -o \
+         -iname '*info' -o \
+         -iname '*.py' -o \
+         -iname '*samples' \
+         \) \
+         -delete
+  find . -type d \
+          \( \
+         -iname '*/man' -o \
+         -iname '*/man1' -o \
+         -iname '*/man5' -o \
+         -iname '*/man7' \
+         \) \
+         -delete
 }
 
 package() {
   cd "${pkgname}-${pkgver}"
   # install initialization file
-  install -t "${pkgdir}/usr/share/${pkgname}/src/" \
-    -vDm 644 "src/.ep_initialized"
-
+  install -vDm 644 "src/.ep_initialized" \
+    -t "${pkgdir}/usr/share/${pkgname}/src/"
   # node modules
-  mv -v node_modules "${pkgdir}/usr/share/${pkgname}/"
-
+  cp -av node_modules "${pkgdir}/usr/share/${pkgname}/"
   # protect configuration directory with restrictive permission
   install -vdm 755 "${pkgdir}/etc/${pkgname}"
   install -vdm 755 "${pkgdir}/etc/${pkgname}/no-skin"
-
   # custom js and css templates
   install -t "${pkgdir}/etc/${pkgname}/no-skin" \
     -vDm 644 "src/static/skins/no-skin/"*.{css,js}
   rm -rv src/static/skins/no-skin/
-
   # move sources
-  mv -v src/* "${pkgdir}/usr/share/${pkgname}/src/"
-
+  cp -av src/* "${pkgdir}/usr/share/${pkgname}/src/"
   # symlink directory for custom css and js
   ln -vs "/etc/${pkgname}/no-skin/" \
     "${pkgdir}/usr/share/${pkgname}/src/static/skins/"
-
-  # symlink needed files (not yet created)
+  #jquery
+  install -vDm 644 "${srcdir}/jquery-${_jqueryver}.js" \
+    "${pkgdir}/usr/share/${pkgname}/src/static/js/jquery.js"
+  # configuration
+  install -vDm 640 settings.json.template \
+    "${pkgdir}/etc/${pkgname}/settings.json"
+  install -vDm 640 credentials.json \
+    -t "${pkgdir}/etc/${pkgname}"
+  install -vDm 640 {APIKEY,SESSIONKEY}.txt \
+    -t "${pkgdir}/etc/${pkgname}"
+  # symlink configuration files
+  ln -vs "/etc/${pkgname}/credentials.json" \
+    "${pkgdir}/usr/share/${pkgname}/credentials.json"
   ln -vs "/etc/${pkgname}/SESSIONKEY.txt" \
     "${pkgdir}/usr/share/${pkgname}/SESSIONKEY.txt"
   ln -vs "/etc/${pkgname}/APIKEY.txt" \
     "${pkgdir}/usr/share/${pkgname}/APIKEY.txt"
-
-  #jquery
-  install -vDm 644 "${srcdir}/jquery-${_jqueryver}.js" \
-    "${pkgdir}/usr/share/${pkgname}/src/static/js/jquery.js"
-
-  # configuration
-  install -vDm 644 settings.json.template \
-    "${pkgdir}/etc/${pkgname}/settings.json"
-  # create and symlink an empty credentials file
-  touch "${pkgdir}/etc/${pkgname}/credentials.json"
-  ln -vs "/etc/${pkgname}/credentials.json" \
-    "${pkgdir}/usr/share/${pkgname}/credentials.json"
-
   # systemd service
   install -vDm 644 "${srcdir}/${pkgname}.service" \
     "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
-
   # systemd-sysusers
   install -vDm 644 "${srcdir}/${pkgname}-sysusers.conf" \
     "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
-
   # systemd-tmpfiles
   install -vDm 644 "${srcdir}/${pkgname}-tmpfiles.conf" \
     "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
-
   # documentation
   install -t "${pkgdir}/usr/share/doc/${pkgname}/" \
     -vDm 644 {CHANGELOG,CONTRIBUTING,README}.md \

@@ -1,7 +1,7 @@
 pkgbase = etherpad-lite
 	pkgdesc = Lightweight fork of etherpad based on javascript
 	pkgver = 1.7.5
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = http://etherpad.org
 	arch = any
@@ -18,6 +18,8 @@ pkgbase = etherpad-lite
 	conflicts = etherpad-lite-git
 	backup = etc/etherpad-lite/settings.json
 	backup = etc/etherpad-lite/credentials.json
+	backup = etc/etherpad-lite/APIKEY.txt
+	backup = etc/etherpad-lite/SESSIONKEY.txt
 	source = etherpad-lite-1.7.5.tar.gz::https://github.com/ether/etherpad-lite/archive/1.7.5.tar.gz
 	source = jquery-1.9.1.js::https://code.jquery.com/jquery-1.9.1.js
 	source = etherpad-lite-sysusers.conf
