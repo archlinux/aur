@@ -2,8 +2,8 @@
 
 pkgname=f28-backgrounds
 pkgver=28.1.5
-pkgrel=2
-_rhver="2.fc30"
+pkgrel=3
+_rhver="3.fc31"
 pkgdesc="Fedora 28 backgrounds."
 arch=("i686" "x86_64")
 url="https://fedoraproject.org/wiki/F28_Artwork"
@@ -27,4 +27,4 @@ package() {
     make install DESTDIR="${pkgdir}"
 }
 
-md5sums=('08c4c010333f6b0a1fbbefd7ad041da5')
+md5sums=('fdfefed91f981143e5708e2bde7638eb')

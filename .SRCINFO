@@ -1,13 +1,13 @@
 pkgbase = f28-backgrounds
 	pkgdesc = Fedora 28 backgrounds.
 	pkgver = 28.1.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://fedoraproject.org/wiki/F28_Artwork
 	arch = i686
 	arch = x86_64
 	license = CC-BY-SA
-	source = https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages/f/f28-backgrounds-28.1.5-2.fc30.src.rpm
-	md5sums = 08c4c010333f6b0a1fbbefd7ad041da5
+	source = https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages/f/f28-backgrounds-28.1.5-3.fc31.src.rpm
+	md5sums = fdfefed91f981143e5708e2bde7638eb
 
 pkgname = f28-backgrounds
 
