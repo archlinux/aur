@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=s-git
-pkgver=r183.09fb935
+pkgver=r373.bce10d1
 pkgrel=1
 epoch=
 pkgdesc="Open a web search in your terminal."
@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/zquestz/s"
 license=('MIT')
 groups=()
-depends=('')
+depends=()
 makedepends=('git' 'go')
 optdepends=()
 checkdepends=()
