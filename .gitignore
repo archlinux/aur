@@ -1,0 +1,6 @@
+*.pkg.tar.xz
+src/
+pkg/
+*.git/
+blender/
+
