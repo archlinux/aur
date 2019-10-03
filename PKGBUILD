@@ -1,10 +1,11 @@
+# Maitainer: Andrew Rabert <ar@nullsum.net>
+# Contributor: Stefan Tatschner <stefan@rumpelsepp.org>
 # Contributor: Ian Beringer <ian@ianberinger.com>
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
-# Maitainer: Andrew Rabert <ar@nullsum.net>
 
 pkgname=lf
 pkgver=13
-pkgrel=1
+pkgrel=2
 license=('MIT')
 pkgdesc="A terminal file manager inspred by ranger written in Go"
 depends=("glibc")
