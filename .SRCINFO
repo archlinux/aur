@@ -1,0 +1,17 @@
+pkgbase = gitlab-monitor
+	pkgdesc = A web-based monitor dashboard for GitLab CI
+	pkgver = 1.7
+	pkgrel = 1
+	url = https://github.com/timoschwarzer/gitlab-monitor
+	arch = any
+	license = MIT
+	makedepends = npm
+	makedepends = nodejs-lts-dubnium
+	makedepends = git
+	makedepends = yarn
+	makedepends = python
+	source = -1.7.tar.gz::https://github.com/timoschwarzer/gitlab-monitor/archive/1.7.tar.gz
+	sha256sums = 4ec412b3dacfb0c9ebe8dd295c3db448a0426ef87f1902dcf9ccf9729a942dfd
+
+pkgname = gitlab-monitor
+
