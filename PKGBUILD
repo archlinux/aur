@@ -1,8 +1,8 @@
-# Maintainer: Karl-Felix Glatzer <karl.glatzer@gmx.de>
+# Maintainer: Karl-Felix Glatzer <karl[dot]glatzer[at]gmx[dot]de>
 
 pkgname=mingw-w64-fribidi
-pkgver=1.0.5
-pkgrel=4
+pkgver=1.0.7
+pkgrel=1
 pkgdesc="A Free Implementation of the Unicode Bidirectional Algorithm (mingw-w64)"
 arch=('any')
 license=('LGPL')
@@ -10,7 +10,7 @@ url="http://fribidi.org"
 depends=('mingw-w64-crt')
 options=('!strip' '!buildflags' '!libtool' 'staticlibs')
 makedepends=('mingw-w64-gcc' 'mingw-w64-meson' 'mingw-w64-wine' 'git')
-_commit=5b6a16e8da12ae7ff482fbfa5a17b72bd518418f  # tags/v1.0.5^0
+_commit=aac3845708969b9c4bc2874edc4950123595b1b4  # tags/v1.0.7
 source=("git+https://github.com/fribidi/fribidi#commit=$_commit"
         "testrunnerwine.patch")
 sha256sums=('SKIP'
@@ -36,7 +36,7 @@ check() {
   export NEED_WINE=1
   for _arch in ${_architectures}; do
     cp ${srcdir}/fribidi/build-${_arch}/lib/*.dll ${srcdir}/fribidi/build-${_arch}/bin/
-    WINEDEBUG=-all meson test -C ${srcdir}/fribidi/build-${_arch}
+    WINEDEBUG=-all meson test -C ${srcdir}/fribidi/build-${_arch} --print-errorlogs
   done
 }
 
