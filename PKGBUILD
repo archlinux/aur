@@ -1,7 +1,7 @@
 # Maintainer: noraj <printf %s 'YWxleGFuZHJlLnphbm5pQGV1cm9wZS5jb20='|base64 -d>
 
 pkgname=rabid
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 pkgdesc='A CLI tool and library allowing to simply decode all kind of BigIP cookies.'
 arch=('any')
@@ -11,7 +11,7 @@ depends=('ruby' 'ruby-bundler' 'libxslt')
 conflicts=('rabid-git')
 provides=('rabid')
 source=("https://github.com/Orange-Cyberdefense/$pkgname/archive/v$pkgver.tar.gz")
-sha512sums=('e33c4c9713643fed9c81ff287b3befd826af3b52b7af714c6ac3a92cec937029ae806d49ab6ca47111ebb8b6a4522e7c11e838053e6a041de3aae902a7e409f5')
+sha512sums=('dde0f3997bbe35877629b771343806b1f4daffaafe4b4e8e750ef7868cb5e70342532aae0b17d232febc01f790e4b2d9d994815d13d0dc2d7c3910c9920952e7')
 install="$pkgname.install"
 
 package() {
