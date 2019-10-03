@@ -1,6 +1,6 @@
 pkgbase = dns-over-https
 	pkgdesc = Client and server software to query DNS over HTTPS, using Google DNS-over-HTTPS protocol
-	pkgver = 2.0.1
+	pkgver = 2.1.2
 	pkgrel = 1
 	url = https://github.com/m13253/dns-over-https
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = dns-over-https
 	license = MIT
 	makedepends = go
 	makedepends = git
-	source = https://github.com/m13253/dns-over-https/archive/v2.0.1.tar.gz
-	sha256sums = 240115da99d54333bda85f785648778cbc1a647f6de9ad0dfb261e0e1cde72be
+	source = https://github.com/m13253/dns-over-https/archive/v2.1.2.tar.gz
+	sha256sums = b94c57adc888d0bc773137d9f9b01bb459ed8832a2129e0096a3b0ccf7053615
 
 pkgname = dns-over-https-client
 	provides = dns-over-https-client
