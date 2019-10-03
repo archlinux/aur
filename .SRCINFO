@@ -1,6 +1,6 @@
 pkgbase = cewe-fotobuch
 	pkgdesc = an offline client for creating photobooks, uploading and ordering them at cewe.de
-	pkgver = 6.4.4
+	pkgver = 6.4.5
 	pkgrel = 1
 	url = http://www.cewe.de/
 	install = cewe-fotobuch.install
