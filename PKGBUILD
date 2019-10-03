@@ -2,15 +2,15 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname=f23-backgrounds
 pkgver=23.1.0
-pkgrel=5
-_rhver="${pkgver}-7.fc30"
+pkgrel=6
+_rhver="${pkgver}-8.fc31"
 pkgdesc="Fedora 23 backgrounds."
 arch=("i686" "x86_64")
-url="https://fedoraproject.org/wiki/Wallpapers#Fedora_23"
+url="https://fedoraproject.org/wiki/F23_Artwork"
 license=("CC-BY-SA")
 _rhlink="https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages"
 source=("${_rhlink}/f/${pkgname}-${_rhver}.src.rpm")
-sha256sums=('059da4291da28494f3f113b90dc803fd1be0fa45d70219827a58c0ad0aa0d742')
+sha256sums=('4163ec7392999d53d3d3d4f3ed58026b6aa34b115e67b171a6e63e5c88768397')
 
 prepare()  {
   tar -xvJf ./${pkgname}-${pkgver}.tar.xz
