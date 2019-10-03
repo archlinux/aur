@@ -1,0 +1,209 @@
+X32_DIR=linux_32
+X64_DIR=linux_64
+LOG_DIR="/etc/cryptoplugin/log-dir"
+LOG_FILE="$LOG_DIR/cryptoplugin.log"
+
+# Install plugin for mozilla
+install_mozilla() {
+  echo "mkdir -p $1" >> $LOG_FILE
+  mkdir -p $1
+
+  echo "dd if=$INST_DIR/$LIB_FILE bs=1 count=$SIZE_LIB skip=2 of=$1/libnpcryptoplugin.so" >> $LOG_FILE
+  dd if=$INST_DIR/$LIB_FILE bs=1 count=$SIZE_LIB skip=2 of=$1/libnpcryptoplugin.so > /dev/null 2>&1
+  chmod 0644 $1/libnpcryptoplugin.so
+
+  echo "dd if=$INST_DIR/$BIN_FILE bs=1 count=$SIZE_BIN skip=2 of=$1/nmcryptoplugin" >> $LOG_FILE
+  dd if=$INST_DIR/$BIN_FILE bs=1 count=$SIZE_BIN skip=2 of=$1/nmcryptoplugin  > /dev/null 2>&1
+  chmod 0755 $1/nmcryptoplugin
+}
+
+# Install plugin for Google Chrome
+install_nmapi() {
+  echo "mkdir -p $1" >> $LOG_FILE
+  mkdir -p $1
+
+  echo "cp -f $INST_DIR/$2 $1" >> $LOG_FILE
+  cp -f $INST_DIR/$2 $1
+}
+
+# Remove plugin for mozilla
+remove_mozilla() {
+  echo "Remove mozilla in dir $1" >> $LOG_FILE
+
+  if [ -f "$1/$LIB_FILE" ]; then
+        echo "rm -f $1/$LIB_FILE" >> $LOG_FILE
+        rm -f $1/$LIB_FILE
+  fi
+
+  if [ -f "$1/$BIN_FILE" ]; then
+        echo "rm -f $1/$BIN_FILE" >> $LOG_FILE
+        rm -f $1/$BIN_FILE
+  fi
+}
+
+post_install() {
+
+    # Create log.
+    mkdir -p $LOG_DIR
+
+    echo "Install cryptoplugin." >> $LOG_FILE
+    date >> $LOG_FILE
+
+    HOST_CPU=`uname -m`
+    case $HOST_CPU in
+      i[3456]86) CPU=x32 ;;
+      x86_64) CPU=x64 ;;
+      *)
+        echo Detected unsupported CPU: $HOST_CPU
+        print_supported_platform
+        exit 1 ;;
+    esac
+
+    echo "Host type: $HOST_CPU." >> $LOG_FILE
+
+    # The file NPAPI plugin
+    case $CPU in
+      x32) LIB_FILE=$X32_DIR/libnpcryptoplugin.so ;;
+      x64) LIB_FILE=$X64_DIR/libnpcryptoplugin.so ;;
+    esac
+    echo "Lib NPAPI: $LIB_FILE" >> $LOG_FILE
+
+    # The file NMAPI plugin
+    case $CPU in
+      x32) BIN_FILE=$X32_DIR/nmcryptoplugin ;;
+      x64) BIN_FILE=$X64_DIR/nmcryptoplugin ;;
+    esac
+    echo "Bin NMAPI: $BIN_FILE" >> $LOG_FILE
+
+    # The file manifest NMAPI
+    MANIFEST_FILE="com.privatbank.cryptoplugin.json"
+    echo "Manifest: $MANIFEST_FILE" >> $LOG_FILE
+
+    # The installation directory
+    INST_DIR="/usr/lib/cryptoplugin"
+    echo "Install dir: $INST_DIR" >> $LOG_FILE
+
+    echo "Find and remove local install." >> $LOG_FILE
+
+    find /home/*/.mozilla/ -name nmcryptoplugin >> $LOG_FILE || true
+    find /home/*/.mozilla/ -name libnpcryptoplugin.so >> $LOG_FILE || true
+    find /home/*/.mozilla/ -name com.privatbank.cryptoplugin.json >> $LOG_FILE || true
+    find /home/*/.config/ -name com.privatbank.cryptoplugin.json >> $LOG_FILE || true
+
+    find /home/*/.mozilla/ -name nmcryptoplugin -delete || true
+    find /home/*/.mozilla/ -name libnpcryptoplugin.so -delete || true
+    find /home/*/.mozilla/ -name com.privatbank.cryptoplugin.json -delete || true
+    find /home/*/.config/ -name com.privatbank.cryptoplugin.json -delete || true
+
+    #Policy governs the access confined processes have to files. (Create files)
+    setsebool -P unconfined_mozilla_plugin_transition 0 > /dev/null 2>&1 || true
+
+    # The installation directory of plugin Google Chrome
+    CHROME_DIR="/etc/opt/chrome/native-messaging-hosts"
+    echo "Chrome dir: $CHROME_DIR" >> $LOG_FILE
+
+    # The installation directory of plugin Google Chrome
+    MOZILLA_DIR="/usr/lib/mozilla/native-messaging-hosts"
+    echo "Mozilla dir: $MOZILLA_DIR" >> $LOG_FILE
+
+    # The installation directory of plugin Chromium"
+    CHROMIUM_DIR="/etc/chromium/native-messaging-hosts"
+    echo "Chromium dir: $CHROMIUM_DIR" >> $LOG_FILE
+
+    SIZE_LIB=$(wc -c $INST_DIR/$LIB_FILE | sed 's/ .*//g')
+    SIZE_BIN=$(wc -c $INST_DIR/$BIN_FILE | sed 's/ .*//g')
+
+    # Install plugin for mozilla
+    if [ -d "/usr/lib64" ]; then
+      install_mozilla "/usr/lib64/mozilla/plugins"
+    fi
+
+    install_mozilla "/usr/lib/mozilla/plugins"
+
+    # Install plugin for Google Chrome
+    install_nmapi "$CHROME_DIR" "$MANIFEST_FILE"
+    install_nmapi "$CHROMIUM_DIR" "$MANIFEST_FILE"
+    install_nmapi "$MOZILLA_DIR" "mozilla/$MANIFEST_FILE"
+
+    # Install firefox extension
+    echo "mkdir -p /usr/lib/firefox-addons/extensions" >> $LOG_FILE
+    mkdir -p /usr/lib/firefox-addons/extensions
+    echo "cp -f $INST_DIR/mozilla/cryptoplugin_ext_id@privatbank.ua.xpi /usr/lib/firefox-addons/extensions" >> $LOG_FILE
+    cp -f $INST_DIR/mozilla/cryptoplugin_ext_id@privatbank.ua.xpi /usr/lib/firefox-addons/extensions
+
+    # Kill NM API process
+    PID_NM=$(echo $(pidof nmcryptoplugin))
+    echo "Find pid $PID_NM" >> $LOG_FILE
+
+    if [ "$PID_NM" != "" ]; then
+      echo "kill $PID_NM" >> $LOG_FILE
+      kill $PID_NM
+    fi
+
+    echo "Install cryptoplugin finish." >> $LOG_FILE
+
+}
+
+pre_remove() {
+
+    # Create log.
+    LOG_DIR="/etc/cryptoplugin/log-dir"
+    LOG_FILE="$LOG_DIR/cryptoplugin.log"
+    mkdir -p $LOG_DIR
+
+    echo "PostUninstall cryptoplugin." >> $LOG_FILE
+    date >> $LOG_FILE
+
+    # The file NPAPI plugin
+    LIB_FILE="libnpcryptoplugin.so"
+    echo "Lib NPAPI: $LIB_FILE" >> $LOG_FILE
+
+    # The file NMAPI plugin
+    BIN_FILE="nmcryptoplugin"
+    echo "Bin NMAPI: $BIN_FILE" >> $LOG_FILE
+
+    # The file manifest NMAPI
+    MANIFEST_FILE="com.privatbank.cryptoplugin.json"
+    echo "Manifest: $MANIFEST_FILE" >> $LOG_FILE
+
+    # The installation directory
+    INST_DIR="/usr/lib/cryptoplugin"
+    echo "Install dir: $INST_DIR" >> $LOG_FILE
+
+    # The installation directory of plugin Google Chrome
+    CHROME_DIR="/etc/opt/chrome/native-messaging-hosts"
+    echo "Chrome dir: $CHROME_DIR" >> $LOG_FILE
+
+    # The installation directory of plugin Mozilla
+    MOZILLA_DIR="/usr/lib/mozilla/native-messaging-hosts"
+    echo "Mozilla dir: $MOZILLA_DIR" >> $LOG_FILE
+
+    # The installation directory of plugin Chromium
+    CHROMIUM_DIR="/etc/chromium/native-messaging-hosts"
+    echo "Chromium dir: $CHROMIUM_DIR" >> $LOG_FILE
+
+    # The installation directory of plugin Mozilla Firefox
+    if [ -d "/usr/lib64" ]; then
+            remove_mozilla "/usr/lib64/mozilla/plugins"
+    fi
+
+    remove_mozilla "/usr/lib/mozilla/plugins"
+
+    # Remove plugin Google Chrome
+    echo "rm -f $CHROME_DIR/$MANIFEST_FILE" >> $LOG_FILE
+    rm -f $CHROME_DIR/$MANIFEST_FILE
+
+    # Remove plugin Mozilla
+    echo "rm -f $MOZILLA_DIR/$MANIFEST_FILE" >> $LOG_FILE
+    rm -f $MOZILLA_DIR/$MANIFEST_FILE
+
+    echo "rm -f /usr/lib/firefox-addons/extensions/cryptoplugin_ext_id@privatbank.ua.xpi" >> $LOG_FILE
+    rm -f /usr/lib/firefox-addons/extensions/cryptoplugin_ext_id@privatbank.ua.xpi
+
+    # Remove plugin Chromium
+    echo "rm -f $CHROMIUM_DIR/$MANIFEST_FILE" >> $LOG_FILE
+    rm -f $CHROMIUM_DIR/$MANIFEST_FILE
+
+    echo "Uninstall cryptoplugin finish." >> $LOG_FILE
+
+}
