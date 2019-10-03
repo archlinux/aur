@@ -1,0 +1,24 @@
+pkgbase = bic
+	pkgdesc = A C interpreter and API explorer
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/hexagonal-sun/bic
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = gcc
+	makedepends = automake
+	makedepends = expect
+	makedepends = flex
+	makedepends = autoconf
+	makedepends = m4
+	makedepends = libtool
+	makedepends = readline
+	makedepends = pkgconf
+	makedepends = gmp
+	makedepends = autoconf-archive
+	source = https://github.com/hexagonal-sun/bic/archive/0.9.0.tar.gz
+	sha256sums = 0c8cae8884d58ed89b1166aee93e22e961fc49b0d6781b027a5b0368ef0ab10a
+
+pkgname = bic
+
