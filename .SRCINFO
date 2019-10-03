@@ -1,0 +1,15 @@
+pkgbase = vue-cli-plugin-pwa
+	pkgdesc = PWA plugin for the vue CLI
+	pkgver = 3.11.0
+	pkgrel = 1
+	url = https://cli.vuejs.org
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	depends = vue-cli
+	options = !strip
+
+pkgname = vue-cli-plugin-pwa
+
