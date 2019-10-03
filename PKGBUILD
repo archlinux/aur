@@ -1,8 +1,8 @@
 _cranname=chron
-_cranver=2.3-53
+_cranver=2.3-54
 pkgname=r-$_cranname
-pkgver=2.3.53
-pkgrel=3
+pkgver=2.3.54
+pkgrel=1
 pkgdesc="Chronological objects which can handle dates and times."
 url="http://cran.r-project.org/web/packages/${_cranname}/index.html"
 arch=('x86_64')
@@ -16,4 +16,4 @@ package() {
     cd ${srcdir}
     R CMD INSTALL ${_cranname} -l ${pkgdir}/usr/lib/R/library
 }
-md5sums=('7e5d7d7de3bc988f58fd2e8314ae88dc')
+md5sums=('896064867fcf32f40f21f7317217f420')
