@@ -22,7 +22,7 @@ build() {
   mv ${_srcname} ${GOPATH}/src
   cd ${GOPATH}/src/${_srcname}
   go get
-  version=r$pkgver ./gen/build.sh
+  version=r$pkgver ./gen/build.sh -trimpath
 }
 
 package() {
