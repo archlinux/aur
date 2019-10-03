@@ -20,11 +20,19 @@ pkgver() {
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+	cd "$srcdir/${pkgname%-git}"
+    sed 's/throw\s*(.*)/throw()/g' -i gaol/gaol_allocator.h
+    sed 's/throw\s*(.*)/throw()/g' -i gaol/gaol_interval.h
+    sed 's/throw\s*(.*)/throw()/g' -i gaol/gaol_interval2f.h
+    sed 's/throw\s*(.*)/throw()/g' -i gaol/gaol_interval2f.cpp
+    sed 's/throw\s*(.*)/throw()/g' -i gaol/gaol_interval.cpp
+    sed 's/throw\s*(.*)/throw()/g' -i gaol/gaol_interval_sse.cpp
+}
+
 build() {
 	cd "$srcdir/${pkgname%-git}"
     ./configure --prefix=/usr  --with-mathlib=crlibm
-    #find . -type f -name Makefile -exec sed -i "s+oldincludedir = /usr/include+oldincludedir = ${pkgdir}/usr/include+g" {} +
-    #find . -type f -name Makefile -exec sed -i "includedir = /usr/include+includedir = ${pkgdir}/usr/include+g" {} +
 	make
 }
 
