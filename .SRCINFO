@@ -1,17 +1,18 @@
 pkgbase = rabid
 	pkgdesc = A CLI tool and library allowing to simply decode all kind of BigIP cookies.
-	pkgver = 0.0.1
+	pkgver = 0.0.3
 	pkgrel = 1
 	url = https://orange-cyberdefense.github.io/rabid/
+	install = rabid.install
 	arch = any
 	license = MIT
-	makedepends = rubygems
 	depends = ruby
-	depends = ruby-paint
-	depends = ruby-docopt
-	noextract = rabid-0.0.1.gem
-	source = https://rubygems.org/downloads/rabid-0.0.1.gem
-	sha512sums = f3aafe6620540d5a3b7ba5263761abd929067702b6354263783787c3893177f004a1a8efdc586d63f149ff6ce9a5ce600f8f2527860908c5ede54119cb8930a0
+	depends = ruby-bundler
+	depends = libxslt
+	provides = rabid
+	conflicts = rabid-git
+	source = https://github.com/Orange-Cyberdefense/rabid/archive/v0.0.3.tar.gz
+	sha512sums = e33c4c9713643fed9c81ff287b3befd826af3b52b7af714c6ac3a92cec937029ae806d49ab6ca47111ebb8b6a4522e7c11e838053e6a041de3aae902a7e409f5
 
 pkgname = rabid
 
