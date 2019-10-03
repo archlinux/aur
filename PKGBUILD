@@ -3,15 +3,15 @@
 # Contributor: Frederic Bezies <fredbezies at gmail dot com>
 pkgname=heisenbug-backgrounds
 pkgver=20.0.0
-pkgrel=5
-_rhver="${pkgver}-9.fc30"
+pkgrel=6
+_rhver="${pkgver}-10.fc31"
 pkgdesc="Fedora 20 (Heisenbug) backgrounds."
 arch=("i686" "x86_64")
 url="https://fedoraproject.org/wiki/Wallpapers#Fedora_20"
 license=("CC-BY-SA")
 _rhlink="https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages"
 source=("${_rhlink}/h/${pkgname}-${_rhver}.src.rpm")
-sha256sums=('c4d3109a2e79c358148ea3194e4b1afe3154e947f780145092d1154d15eaa851')
+sha256sums=('31efc9bb4afe96451675035be7959a67e558403f37bc3c87a0a75b53474ede20')
 
 prepare()  {
   tar -xvJf ./${pkgname}-${pkgver}.tar.xz
