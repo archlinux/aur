@@ -1,0 +1,14 @@
+pkgbase = keycat
+	pkgdesc = Random string generator
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/SusmithKrishnan/kcat
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	source = keycat::git+https://github.com/SusmithKrishnan/keycat.git
+	md5sums = SKIP
+
+pkgname = keycat
+
