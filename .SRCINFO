@@ -1,7 +1,7 @@
 pkgbase = monopticon
 	pkgdesc = Ethernet traffic visualizer for zeek
-	pkgver = 0.1.0
-	pkgrel = 2
+	pkgver = 0.3.0
+	pkgrel = 1
 	url = https://github.com/nskelsey/monopticon
 	arch = x86_64
 	license = GPL
@@ -10,6 +10,7 @@ pkgbase = monopticon
 	depends = magnum-git
 	depends = corrade-git
 	depends = magnum-integration
+	depends = magnum-plugin-git
 	depends = imgui-src
 	source = git+https://github.com/nskelsey/monopticon
 	md5sums = SKIP
