@@ -1,0 +1,3 @@
+#! /usr/bin/env sh
+xset dpms force off
+betterlockscreen -l -t "$(whoami)" &

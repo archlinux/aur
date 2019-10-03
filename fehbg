@@ -1,0 +1,12 @@
+#! /usr/bin/env bash
+
+if [ "$1" != "" ]; then
+    USER="$1"
+fi
+
+f=$(cat /home/$USER/.fehbg 2> /dev/null || exit 1)
+
+if [ "$f" == "" ]; then
+    exit 1
+fi
+echo $f | grep \' | cut -d \' -f2

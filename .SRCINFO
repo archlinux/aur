@@ -1,0 +1,12 @@
+pkgbase = betterautolock
+	pkgdesc = betterlockscreen administration and suspend service
+	pkgver = 0.1
+	pkgrel = 0
+	arch = any
+	license = gpl
+	depends = feh
+	depends = betterlockscreen
+	replaces = xlock
+
+pkgname = betterautolock
+

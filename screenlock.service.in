@@ -1,0 +1,13 @@
+[Unit]
+Description=Bloqueia a tela ao suspender
+After=sleep.target
+
+[Service]
+User=lucas59356
+Type=forking
+Environment=DISPLAY=:0
+ExecStart=/usr/bin/xlock
+
+[Install]
+WantedBy=sleep.target
+
