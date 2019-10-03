@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
-# Maintainer: Elias Yuan <cecilelias.yuan@gmail.com>
+# Contributor: Elias Yuan <cecilelias.yuan@gmail.com>
 pkgname=('neon-knights-cinnamon-blue' 'neon-knights-cinnamon-green' 'neon-knights-cinnamon-orange' 'neon-knights-cinnamon-red' 'neon-knights-cinnamon-violet' 'neon-knights-cinnamon-yellow')
 _theme=('Neon_Knights_Blue_Cinnamon' 'Neon_Knights_Green_Cinnamon' 'Neon_Knights_Orange_Cinnamon' 'Neon_Knights_Red_Cinnamon' 'Neon_Knights_Violet_Cinnamon' 'Neon_Knights_Yellow_Cinnamon')
 _de="Cinnamon"
