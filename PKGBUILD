@@ -16,17 +16,17 @@ sha256sums=('fe99ed9785fbdc606835139c0c52c854b32b1f1449ba83567a115b21d2e882f4')
 _srcname=${pkgname}-r$pkgver
 
 build() {
-  export GOPATH=${srcdir}
-  mkdir -p ${GOPATH}/src
-  rm -rf ${GOPATH}/src/${_srcname} 
-  mv ${_srcname} ${GOPATH}/src
-  cd ${GOPATH}/src/${_srcname}
+  export GOPATH="${srcdir}"
+  mkdir -p "${GOPATH}/src"
+  rm -rf "${GOPATH}/src/${_srcname}"
+  mv "${_srcname}" "${GOPATH}/src"
+  cd "${GOPATH}/src/${_srcname}"
   go get
   version=r$pkgver ./gen/build.sh -trimpath
 }
 
 package() {
-  cd ${GOPATH}/src/${_srcname}
+  cd "${GOPATH}/src/${_srcname}"
   install -Dm755 ./lf "${pkgdir}"/usr/bin/lf
   install -Dm644 ./LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
   install -Dm644 ./README.md "${pkgdir}"/usr/share/doc/${pkgname}/README.md
