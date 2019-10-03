@@ -8,6 +8,7 @@ pkgbase = lf
 	arch = x86_64
 	license = MIT
 	makedepends = go
+	depends = glibc
 	source = lf-r13.tar.gz::https://github.com/gokcehan/lf/archive/r13.tar.gz
 	sha256sums = fe99ed9785fbdc606835139c0c52c854b32b1f1449ba83567a115b21d2e882f4
 
