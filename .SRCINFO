@@ -1,7 +1,7 @@
 pkgbase = mesa-git
 	pkgdesc = an open-source implementation of the OpenGL specification, git version
-	pkgver = 19.3.0_devel.115749.336b021d36f
-	pkgrel = 2
+	pkgver = 19.3.0_devel.115858.cdc331c6f9f
+	pkgrel = 1
 	url = https://www.mesa3d.org
 	arch = x86_64
 	license = custom
@@ -22,8 +22,7 @@ pkgbase = mesa-git
 	makedepends = wayland-protocols
 	makedepends = meson
 	makedepends = ninja
-	makedepends = llvm=8.0.1
-	makedepends = clang=8.0.1
+	makedepends = llvm-minimal-git
 	depends = libdrm
 	depends = libxxf86vm
 	depends = libxdamage
@@ -31,19 +30,19 @@ pkgbase = mesa-git
 	depends = libelf
 	depends = libomxil-bellagio
 	depends = libunwind
-	depends = libglvnd12
+	depends = libglvnd
 	depends = wayland
 	depends = lm_sensors
 	depends = libclc
 	depends = glslang
-	depends = llvm-libs=8.0.1
+	depends = llvm-libs-minimal-git
 	optdepends = opengl-man-pages: for the OpenGL API man pages
-	provides = mesa=19.3.0_devel.115749.336b021d36f-2
-	provides = vulkan-intel=19.3.0_devel.115749.336b021d36f-2
-	provides = vulkan-radeon=19.3.0_devel.115749.336b021d36f-2
-	provides = vulkan-mesa-layer=19.3.0_devel.115749.336b021d36f-2
-	provides = libva-mesa-driver=19.3.0_devel.115749.336b021d36f-2
-	provides = mesa-vdpau=19.3.0_devel.115749.336b021d36f-2
+	provides = mesa=19.3.0_devel.115858.cdc331c6f9f-1
+	provides = vulkan-intel=19.3.0_devel.115858.cdc331c6f9f-1
+	provides = vulkan-radeon=19.3.0_devel.115858.cdc331c6f9f-1
+	provides = vulkan-mesa-layer=19.3.0_devel.115858.cdc331c6f9f-1
+	provides = libva-mesa-driver=19.3.0_devel.115858.cdc331c6f9f-1
+	provides = mesa-vdpau=19.3.0_devel.115858.cdc331c6f9f-1
 	provides = vulkan-driver
 	provides = opencl-
 	provides = opengl-driver
