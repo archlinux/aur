@@ -9,14 +9,14 @@
 
 _srcname=TensorRT
 _cudaver=10.1
-_cudnnver=7.5
+_cudnnver=7.6
 _graphsurgeonver=0.4.1
-_uffver=0.6.3
-_ubuntuver=18.04.2
+_uffver=0.6.5
+_ubuntuver=18.04
 
 pkgname=tensorrt
-pkgver=5.1.5.0
-pkgrel=2
+pkgver=6.0.1.5
+pkgrel=1
 pkgdesc='A platform for high-performance deep learning inference (needs registration at upstream URL and manual download)'
 arch=('x86_64')
 url='https://developer.nvidia.com/tensorrt/'
@@ -28,7 +28,7 @@ optdepends=('python-numpy: for tensorflow, graphsurgeon and uff python modules'
 makedepends=('poppler' 'unzip')
 options=('!strip')
 source=("file://${_srcname}-${pkgver}.Ubuntu-${_ubuntuver}.${CARCH}-gnu.cuda-${_cudaver}.cudnn${_cudnnver}.tar.gz")
-sha256sums=('d247fd1270ea20bda896fdd8dff6ae320b981addfa071c3a1246b7c27023e011')
+sha256sums=('e20b7bd051cdd448c5690a30ba01e83b0a0855edc4012107c0af01fde5b4037a')
 
 prepare() {
     cd "${_srcname}-${pkgver}/python"
@@ -40,8 +40,8 @@ prepare() {
     cd ../uff
     unzip -oqq "uff-${_uffver}-py2.py3-none-any.whl"
     
-    cd ../doc
-    pdftotext -layout TensorRT-License.pdf
+    cd ../doc/pdf
+    pdftotext -layout TensorRT-SLA.pdf
 }
 
 package() {
@@ -72,10 +72,10 @@ package() {
     cp -a uff/uff "${pkgdir}/usr/lib/python${_pythonver}/site-packages"
     
     # documentation
-    install -D -m644 doc/TensorRT-Developer-Guide.pdf -t "${pkgdir}/usr/share/doc/${pkgname}"
-    cp -a doc/{html,python} "${pkgdir}/usr/share/doc/${pkgname}"
+    install -D -m644 doc/pdf/TensorRT-Developer-Guide.pdf -t "${pkgdir}/usr/share/doc/${pkgname}"
+    cp -a doc/{cpp,python} "${pkgdir}/usr/share/doc/${pkgname}"
     
     # license
-    install -D -m644 doc/TensorRT-License.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -D -m644 doc/pdf/TensorRT-SLA.txt  "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -D -m644 doc/Acknowledgements.txt "${pkgdir}/usr/share/licenses/${pkgname}/ACKNOWLEDGEMENTS"
 }
