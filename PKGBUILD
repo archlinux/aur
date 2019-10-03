@@ -27,7 +27,7 @@ build() {
 
 package() {
   cd ${GOPATH}/src/${_srcname}
-  install -Dm755 lf-r$pkgver "${pkgdir}"/usr/bin/lf
+  install -Dm755 ./lf "${pkgdir}"/usr/bin/lf
   install -Dm644 ./LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
   install -Dm644 ./README.md "${pkgdir}"/usr/share/doc/${pkgname}/README.md
 }
