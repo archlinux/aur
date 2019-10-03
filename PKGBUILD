@@ -1,7 +1,7 @@
 # Maintainer: grimsock <lord.grimsock at gmail dot com>
 
 pkgname=graphwalker
-pkgver=4.0.0
+pkgver=3.4.2
 pkgrel=3
 pkgdesc="Model-Based testing tool built in Java"
 arch=('any')
