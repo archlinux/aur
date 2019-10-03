@@ -4,7 +4,7 @@
 
 pkgname=php56-composer
 epoch=1
-pkgver=1.2.1
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="Dependency Manager for PHP 5.6"
 arch=('any')
@@ -24,7 +24,7 @@ sha256sums=(
 )
 
 prepare() {
-    wget https://raw.githubusercontent.com/composer/getcomposer.org/1b137f8bf6db3e79a38a5bc45324414a6b1f9df2/web/installer -O - -q | php56 -- --quiet
+    wget https://raw.githubusercontent.com/composer/getcomposer.org/master/web/installer -O - -q | php56 -- --quiet
 
     cd ${srcdir}/${pkgname}
 
