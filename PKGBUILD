@@ -3,7 +3,7 @@
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
 pkgbase=linux-rc
-pkgrel=1
+pkgrel=2
 _srcname=linux-5.3
 _major=5.3
 _minor=2
@@ -34,7 +34,7 @@ validpgpkeys=(
 sha256sums=('33dcfeec3d0bc076850e8ec6fecf2eda155d4573008405003a815ef18e9cdb7f'
             '361f9c953bb5ca7dbc922c3f698170523667f6a2f43961ffb88fa47b6b10fc6b'
             'SKIP'
-            '166ee15de54cd8385ed12599cf8402009df5e5c59e961e0547c7745fa385b6a2'
+            '89c1d6cf6c935ccda0d43236eb716a313f7989a9251bd61796ca12286a08ca5b'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
