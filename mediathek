@@ -1,6 +1,0 @@
-#!/bin/sh -e
-if [ -d "/usr/lib/jvm/java-11-openjdk/bin" ]; then
-    export PATH=/usr/lib/jvm/java-11-openjdk/bin:$PATH
-fi
-cd /opt/mediathek
-java -jar MediathekView.jar "$@"
