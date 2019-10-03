@@ -2,15 +2,15 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname=f25-backgrounds
 pkgver=25.1.1
-pkgrel=4
-_rhver="${pkgver}-7.fc30"
+pkgrel=5
+_rhver="${pkgver}-8.fc31"
 pkgdesc="Fedora 25 backgrounds."
 arch=("i686" "x86_64")
 url="https://fedoraproject.org/wiki/F25_Artwork"
 license=("CC-BY-SA")
 _rhlink="https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages"
 source=("${_rhlink}/f/${pkgname}-${_rhver}.src.rpm")
-sha256sums=('202ad6cc73f9bb0eb155fa6951f4021439c82ed93f1a95b3a6cfecdca5346f2e')
+sha256sums=('0952fe3763f21e3877668edbebeb606684c0c82fc47d8f9c45bce799c6ebd8a6')
 
 prepare()  {
   tar -xvJf ./${pkgname}-${pkgver}.tar.xz

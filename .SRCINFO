@@ -1,13 +1,13 @@
 pkgbase = f25-backgrounds
 	pkgdesc = Fedora 25 backgrounds.
 	pkgver = 25.1.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://fedoraproject.org/wiki/F25_Artwork
 	arch = i686
 	arch = x86_64
 	license = CC-BY-SA
-	source = https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages/f/f25-backgrounds-25.1.1-7.fc30.src.rpm
-	sha256sums = 202ad6cc73f9bb0eb155fa6951f4021439c82ed93f1a95b3a6cfecdca5346f2e
+	source = https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages/f/f25-backgrounds-25.1.1-8.fc31.src.rpm
+	sha256sums = 0952fe3763f21e3877668edbebeb606684c0c82fc47d8f9c45bce799c6ebd8a6
 
 pkgname = f25-backgrounds
 
