@@ -8,6 +8,7 @@ pkgver=13
 pkgrel=2
 license=('MIT')
 pkgdesc="A terminal file manager inspred by ranger written in Go"
+depends=('glibc')
 makedepends=('go')
 arch=('armv7h' 'i686' 'x86_64')
 url="https://github.com/gokcehan/lf"
