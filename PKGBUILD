@@ -2,7 +2,7 @@
 
 pkgname=qtum-core
 pkgver=0.18.1
-pkgrel=6
+pkgrel=7
 pkgdesc="Qtum Core is a Smart Contracts blockchain platform which makes use of UTXO and Proof of Stake."
 arch=('x86_64')
 url="https://qtum.org"
@@ -17,12 +17,16 @@ conflicts=('qtum-cli' 'qtum-daemon' 'qtum-tx' 'qtum-qt')
 build() {
  cd "$srcdir/qtum-mainnet-ignition-v$pkgver"
  git clone --recursive https://github.com/qtumproject/cpp-eth-qtum.git src/cpp-ethereum 
+ 
+ make -C depends 
+DEPENDS="$srcdir/qtum-mainnet-ignition-v$pkgver/depends/x86_64-pc-linux-gnu"
+
  ./autogen.sh
-  ./configure \
-    --prefix=/usr/ \
-    --with-incompatible-bdb \
+  ./configure --prefix=$DEPENDS \
 
   make
+
+
 }
 
 package() {
