@@ -1,0 +1,35 @@
+--- a/src/convert_recode.c
++++ b/src/convert_recode.c
+@@ -101,7 +101,8 @@ convert_recode(File *file,
+       return ERR_IOFAIL;
+     file->buffer->pos = 0;
+ 
+-    if ((tempfile = file_temporary(file->buffer, 1)) == NULL
++    /* We do not unlink tempfile, because we want to reopen it later */
++    if ((tempfile = file_temporary(file->buffer, 0)) == NULL
+         || file_seek(file, 0, SEEK_SET) != 0) {
+       file_free(tempfile);
+       return ERR_IOFAIL;
+@@ -112,9 +113,20 @@ convert_recode(File *file,
+     task->fail_level = enca_recode_fail_level;
+     task->abort_level = RECODE_SYSTEM_ERROR;
+     task->input.name = NULL;
+-    task->input.file = file->stream;
+     task->output.name = NULL;
+-    task->output.file = tempfile->stream;
++    /* recode_perform_task closes given streams, so we need to duplicate them */
++    task->input.file = fopen(file->name, "rb");
++    if (task->input.file == NULL) {
++        fprintf(stderr, "failed to reopen `%s'\n", file->name);
++        file_free(tempfile);
++        return ERR_IOFAIL;
++    }
++    task->output.file = fopen(tempfile->name, "wb");
++    if (task->input.file == NULL) {
++        fprintf(stderr, "failed to reopen `%s'\n", tempfile->name);
++        file_free(tempfile);
++        return ERR_IOFAIL;
++    }
+ 
+     /* Now run conversion original -> temporary file. */
+     success = recode_perform_task(task);
