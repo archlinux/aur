@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
-# Maintainer: Elias Yuan <cecilelias.yuan@gmail.com>
+# Contributor: Elias Yuan <cecilelias.yuan@gmail.com>
 pkgname=('neon-knights-tint2-blue' 'neon-knights-tint2-green' 'neon-knights-tint2-orange' 'neon-knights-tint2-red' 'neon-knights-tint2-violet' 'neon-knights-tint2-yellow')
 _theme=('NeonKnightsBlue' 'NeonKnightsGreen' 'NeonKnightsOrange' 'NeonKnightsRed' 'NeonKnightsViolet' 'NeonKnightsYellow')
 _de="Tint2"
