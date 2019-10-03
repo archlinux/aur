@@ -3,7 +3,7 @@
 
 _pkgname=libglvnd
 pkgname=$_pkgname-git
-pkgver=1.1.1.r10.g396433b
+pkgver=1.2.0.r2.g879a453
 pkgrel=1
 pkgdesc="The GL Vendor-Neutral Dispatch library"
 arch=('x86_64')
@@ -25,8 +25,7 @@ pkgver() {
 build() {
   cd $_pkgname
   ./autogen.sh
-  ./configure \
-    --prefix=/usr \
+  ./configure --prefix=/usr \
     --disable-headers
   make
 }
@@ -37,9 +36,6 @@ package() {
 
   cd $_pkgname
   make DESTDIR="$pkgdir" install
-
-  # These files are in mesa package
-  rm "$pkgdir"/usr/lib/pkgconfig/{egl,gl,glesv1_cm,glesv2}.pc
-
+  
   install -Dm644 ../LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
