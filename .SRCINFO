@@ -1,0 +1,26 @@
+pkgbase = spotifyd-full-git
+	pkgdesc = A spotify playing daemon (all features enabled)
+	pkgver = 0.2.17.7.g8a82bec
+	pkgrel = 1
+	url = https://github.com/Spotifyd/spotifyd
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = GPL3
+	makedepends = git
+	makedepends = cargo
+	makedepends = libpulse
+	makedepends = dbus
+	depends = libpulse
+	depends = portaudio
+	provides = spotifyd
+	conflicts = spotifyd
+	conflicts = spotifyd-pulseaudio
+	conflicts = spotifyd-git
+	conflicts = spotifyd-bin
+	conflicts = spotifyd-pulseaudio-git
+	source = spotifyd::git+https://github.com/Spotifyd/spotifyd
+	sha256sums = SKIP
+
+pkgname = spotifyd-full-git
+
