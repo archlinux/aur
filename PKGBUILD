@@ -3,7 +3,7 @@
 
 _pkgname=lib32-libglvnd
 pkgname=$_pkgname-git
-pkgver=1.1.1.r10.g396433b
+pkgver=1.2.0.r2.g879a453
 pkgrel=1
 pkgdesc="The GL Vendor-Neutral Dispatch library"
 arch=('x86_64')
@@ -27,11 +27,10 @@ build() {
 
   cd libglvnd
   ./autogen.sh
-  ./configure \
-    --prefix=/usr \
-    --disable-headers \
+  ./configure --prefix=/usr \
     --libdir=/usr/lib32/ \
-    --build=i686-unknown-linux-gnu
+    --build=i686-unknown-linux-gnu \
+    --disable-headers
   make
 }
 
@@ -43,9 +42,6 @@ package() {
   make DESTDIR="$pkgdir" install
 
   rm -r "$pkgdir"/usr/include
-  
-  # These files are in lib32-mesa package
-  rm "$pkgdir"/usr/lib32/pkgconfig/{egl,gl,glesv1_cm,glesv2}.pc
 
   mkdir -p "$pkgdir"/usr/share/licenses
   ln -s libglvnd-git "$pkgdir"/usr/share/licenses/$pkgname
