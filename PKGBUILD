@@ -91,7 +91,6 @@ package() {
 	_modelid=`find ${srcdir}/cnijfilter-source-${_pkgver} -type f -name cif${_model}.conf -path '*[\d]*' -printf '%P' \
 		| gawk -F/ '{print $1}'`
 	[ -n "${_modelid}" ] || return 1
-	_libdir=$(_getlibdir)
 
 	for dir in ppd cnijfilter printui lgmon cngpijmon libs cngpij pstocanonij backend backendnet cngpijmon/cnijnpr; do
 		cd "${srcdir}/cnijfilter-source-${_pkgver}/${dir}"
