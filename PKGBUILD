@@ -1,7 +1,7 @@
-# Maintainer : Karl-Felix Glatzer <karl.glatzer@gmx.de>
+# Maintainer : Karl-Felix Glatzer <karl[dot]glatzer[at]gmx[dot]de>
 
 pkgname=mingw-w64-ffmpeg
-pkgver=4.1.4
+pkgver=4.2.1
 pkgrel=1
 epoch=1
 pkgdesc="Complete solution to record, convert and stream audio and video (mingw-w64)"
@@ -20,6 +20,7 @@ depends=(
   'mingw-w64-lame'
   'mingw-w64-libass'
   'mingw-w64-libbluray'
+  'mingw-w64-dav1d'
   'mingw-w64-libmodplug'
   'mingw-w64-libsoxr'
   'mingw-w64-libtheora'
@@ -41,14 +42,23 @@ depends=(
 )
 options=(!strip !buildflags staticlibs)
 makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config' 'git' 'yasm')
-source=("git+https://git.ffmpeg.org/ffmpeg.git#tag=n${pkgver}"
+#source=("git+https://git.ffmpeg.org/ffmpeg.git#tag=n${pkgver}"
+source=(git+https://git.ffmpeg.org/ffmpeg.git#tag=cbb3c9497549f8856d8cd37ac63af1406a784e58
         configure.patch)
 sha256sums=('SKIP'
             '3cec5d47cd190cc9cf7969b2c2c94690d7b15ffb5d7147bdd4e60eecb0991eed')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
+pkgver() {
+  cd ffmpeg
+
+  git describe --tags | sed 's/^n//'
+}
+
 prepare() {
   cd ffmpeg
+
+  git cherry-pick -n dc0806dd25882f41f6085c8356712f95fded56c7
 
   patch -Np1 -i ../configure.patch
 }
@@ -73,6 +83,7 @@ build() {
       --enable-libaom \
       --enable-libass \
       --enable-libbluray \
+      --enable-libdav1d \
       --enable-libfreetype \
       --enable-libfribidi \
       --enable-libgsm \
