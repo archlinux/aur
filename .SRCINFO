@@ -1,0 +1,14 @@
+pkgbase = ttf-noble-scarlet
+	pkgdesc = Microsoft's new Chinese font in Windows Insider 17063
+	pkgver = 11.3.0
+	pkgrel = 1
+	url = https://www.zhihu.com/question/67196637
+	arch = any
+	license = custom
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = https://blog.deartanker.com/wp-content/uploads/win/NewMicrosoftYaHei.11.3.0.zip
+	md5sums = aa1bf102e5e7a35f035996b78438f26a
+
+pkgname = ttf-noble-scarlet
+
