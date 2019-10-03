@@ -1,8 +1,8 @@
 # Maintainer: Bruce Zhang
 pkgname=petal
 _name=Petal
-pkgver=2.20.0
-pkgrel=2
+pkgver=2.22.0
+pkgrel=1
 pkgdesc="Douban.FM Client With Extra - - - 一个简洁的豆瓣FM客户端"
 arch=('x86_64' 'i686')
 url="https://ilime.github.io/Petal/"
@@ -12,7 +12,7 @@ makedepends=('yarn' 'jq' 'moreutils')
 provides=('petal')
 conflicts=('petal-bin')
 source=("$pkgname-$pkgver.src.tar.gz::https://github.com/ilime/Petal/archive/v$pkgver.tar.gz")
-sha256sums=('f99c9d37982dd8f87d0d59d82b2a8db108c1c847af572586fafe5bcd5203fc3f')
+sha256sums=('02e0d794cc7f56583767fd77ba8a087607b875b2c2b3abd8a447836a1aa740d1')
 
 prepare() {
 	cd "$srcdir/$_name-$pkgver"
@@ -37,7 +37,8 @@ build() {
 		yarn build:electron:prod && yarn build
 	fi
 	cp -r build app/build
-	yarn dist:electron --dir
+	# Temperarily fix build script
+	./node_modules/.bin/electron-builder --linux --dir
 	rm -r app/build
 }
 
