@@ -12,7 +12,7 @@ pkgdesc='Hierarchical note taking application featuring rich text and syntax hig
 arch=('any')
 url='https://www.giuspen.com/cherrytree/'
 license=('GPL3')
-depends=('pygtksourceview2' 'python2-dbus')
+depends=('python2-gtksourceview2' 'python2-dbus')
 optdepends=('python2-pyenchant: for spell checking support'
             'p7zip: for password protection support')
 source=(https://www.giuspen.com/software/$pkgname-$pkgver.tar.xz)
