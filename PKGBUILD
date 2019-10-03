@@ -12,10 +12,10 @@ makedepends=('git' 'go' 'python' 'python-virtualenv')
 depends=('glibc')
 source=('datadog-agent.sysusers'
         'datadog-agent.tmpfiles'
-		'datadog-agent.service')
+        'datadog-agent.service')
 sha512sums=('SKIP'
             'SKIP'
-			'SKIP')
+            'SKIP')
 _repo="src/github.com/DataDog/datadog-agent"
 
 prepare () {
