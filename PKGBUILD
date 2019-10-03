@@ -3,9 +3,9 @@
 pkgname=jdk-jetbrains
 _major=11
 _minor=0.4
-_build=462.3
+_build=494.1
 pkgver=${_major}.${_minor}b${_build}
-pkgrel=2
+pkgrel=1
 pkgdesc="OpenJDK development kit with some fixes and enhancements by JetBrains"
 arch=('x86_64')
 url="https://bintray.com/jetbrains/intellij-jdk"
@@ -16,7 +16,7 @@ provides=("java-runtime=$_major"         "java-runtime-headless=$_major"     "ja
 replaces=('intellij-jdk' 'jdk-jetbrains')
 _zipname="jbrsdk-${_major}_${_minor//./_}-linux-x64-b${_build}.tar.gz"
 source=("${_zipname}::https://bintray.com/jetbrains/intellij-jbr/download_file?file_path=${_zipname}")
-sha256sums=('41db9190b1053bb0b3a408d117e52874f9e56982aafa0316f863d836634a9cc9')
+sha512sums=('8f81e1efa8f7eee79e3f246b5f67f80b079661243721ce1464df12b0b7e14a6bd73883c27f1ef68716abc3e59a2d5b4fd9991b79b85b06abf9c8a308bc6e56ed')
 
 package() {
     rm "${srcdir}/${_zipname}"
