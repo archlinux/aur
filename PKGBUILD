@@ -2,7 +2,7 @@
 
 _pkgname=yuzu
 pkgname=$_pkgname-canary-git
-pkgver=r12686.21e9363fe
+pkgver=r12736.98fd1ecb7
 pkgrel=1
 pkgdesc="An experimental open-source Nintendo Switch emulator/debugger"
 arch=('i686' 'x86_64')
@@ -57,4 +57,8 @@ check() {
 package() {
 	cd "$srcdir/$_pkgname/build"
 	make DESTDIR="$pkgdir/" install
+	
+	# Temporary fix until yuzu fixes the zlib and libzip patch
+	cd "$pkgdir/usr"
+	rm -rf include lib lib64 share/man share/pkgconfig
 }
