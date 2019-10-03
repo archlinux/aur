@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
-# Maintainer: Elias Yuan <cecilelias.yuan@gmail.com>
+# Contributor: Elias Yuan <cecilelias.yuan@gmail.com>
 pkgname=('neon-knights-gnome-blue' 'neon-knights-gnome-green' 'neon-knights-gnome-orange' 'neon-knights-gnome-red' 'neon-knights-gnome-violet' 'neon-knights-gnome-yellow')
 _theme=('Neon_Knights_Blue' 'Neon_Knights_Green' 'Neon_Knights_Orange' 'Neon_Knights_Red' 'Neon_Knights_Violet' 'Neon_Knights_Yellow')
 _de="GTK_Gnome"
