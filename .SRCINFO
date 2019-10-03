@@ -1,5 +1,5 @@
 pkgbase = linux-clear-bin
-	pkgdesc = clear linux kernel and modules in binary
+	pkgdesc = Clear Linux kernel and modules in binary
 	pkgver = 5.3.2
 	pkgrel = 844
 	epoch = 0

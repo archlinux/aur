@@ -1,4 +1,5 @@
-pkgdesc="clear linux kernel and modules in binary"
+# Maintainer: Alan Orth <aorth@mjanja.ch>
+pkgdesc="Clear Linux kernel and modules in binary"
 url="https://clearlinux.org/node/15538"
 pkgname=linux-clear-bin
 # check org.clearlinux.native.X.Y.Z in Manifest
