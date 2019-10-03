@@ -1,12 +1,12 @@
 pkgbase = python-panwid
 	pkgdesc = A collection of widgets for urwid
 	pkgver = 0.2.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tonycpsu/panwid
 	arch = any
 	license = LGPL2.1
-	depends = python-urwid
-	depends = python-urwid_utils>=0.1.2
+	makedepends = python-setuptools
+	depends = python-urwid_utils
 	depends = python-six
 	depends = python-raccoon
 	depends = python-blist
