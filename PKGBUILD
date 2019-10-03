@@ -10,7 +10,7 @@ _pkgname=${pkgname%-git}
 provides=(gimp)
 conflicts=(gimp)
 epoch=2
-pkgver=2.99.1.r3759.8edb75d78f
+pkgver=2.99.1.r3918.4be4d828ad
 pkgrel=1
 pkgdesc="GNU Image Manipulation Program (non-conflicting git version)"
 arch=('i686' 'x86_64')
@@ -42,7 +42,7 @@ makedepends=('git' 'gutenprint>=5.0.0' 'intltool>=0.40.1'
              'alsa-lib>=1.0.0' 'libxslt' 'glib-networking'
              'alsa-lib' 'curl' 'ghostscript' 'libxpm' 'webkit2gtk'
              'libheif' 'libwebp' 'libmng' 'iso-codes' 'aalib' 'zlib'
-             'gjs' 'python-gobject' 'luajit'
+             'gjs' 'python-gobject' 'luajit' 'meson' 'xorg-server-xvfb'
              )
 checkdepends=('xorg-server-xvfb')
 optdepends=('gutenprint: for sophisticated printing only as gimp has built-in cups print support'
@@ -66,49 +66,28 @@ sha512sums=('SKIP'
             '6f33d57f242fa8ce04b65e06a712bd54677306a45b22cb853fbe348089cd4673bd4ed91073074fe067166fe8951c370f8bbbc386783e3ed5170d52e9062666fe')
 
 pkgver() {
-  cd $srcdir/$_pkgname
+  cd ${srcdir}/${_pkgname}
   printf %s.%s.%s.r%s.%s $(grep -oP 'gimp_(major|minor|micro)_version\], \[\K[0-9]{1,2}' configure.ac) $(git rev-list $(git describe --abbrev=0)..HEAD --count) $(git log --pretty=format:'%h' -n 1)
 }
 
 prepare() {
-  cd $_pkgname
-
-  _mypaintver=$(echo /usr/lib/libmypaint-*.so | grep -o -E '\-[0-9]+(\.[0-9]+)*' | head -1)
-  sed -i "s|\\(libmypaint\\)\\( >= libmypaint_required_version\\)|\\1${_mypaintver}\\2|g" configure.ac
-
-  ./autogen.sh \
-  	--prefix=/usr \
-  	--sysconfdir=/etc \
-  	--libexecdir=/usr/bin \
-  	--enable-mp \
-  	--enable-gimp-console \
-  	--enable-gimp-remote \
-  	--enable-python \
-  	--enable-gtk-doc \
-  	--with-gif-compression=lzw \
-  	--with-libcurl \
-  	--with-openexr
-
-  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+  export CFLAGS CXXFLAGS LDFLAGS
+  mkdir "${srcdir}/build" -p
+  meson "${srcdir}/${_pkgname}"\
+        "${srcdir}/build"\
+        --prefix=/usr
 }
 
 build() {
-  cd $_pkgname
-
-  PYTHONPATH=/usr/share/glib-2.0:$PYTHONPATH make
+  export NINJA_STATUS="[%p | %f<%r<%u | %cbps ] "
+  ninja -C "${srcdir}/build"
 }
 
-#check() {
-#  cd $_pkgname
-#
-#  xvfb-run make check
-#  xvfb-run make distcheck
-#}
+check() {
+  ninja -C "${srcdir}/build" test
+}
 
 package() {
-  cd $_pkgname
-
-  make DESTDIR="$pkgdir" install
-
-  install -Dm 644 "$srcdir"/linux.gpl "$pkgdir"/usr/share/gimp/2.99/palettes/Linux.gpl
+  DESTDIR="${pkgdir}" ninja -C "${srcdir}/build" install
+  install -Dm 644 "${srcdir}/linux.gpl" "${pkgdir}/usr/share/gimp/2.99/palettes/Linux.gpl"
 }
