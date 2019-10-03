@@ -8,8 +8,8 @@
 # Contributor: Jason Chu <jason@archlinux.org>
 
 pkgname=python-git
-pkgver=3.9.0a0.r104747.38f44b4a4ad
-pkgrel=1
+pkgver=3.9.0a0.r105547.3e04cd268e
+pkgrel=2
 _pybasever=3.9
 pkgdesc="Next generation of the python high-level scripting language"
 arch=('x86_64')
@@ -39,7 +39,7 @@ prepare() {
   cd cpython
 
   # FS#59997
-  patch -p1 -i ../0001-compileall-Fix-ddir-when-recursing.patch
+  # patch -p1 -i ../0001-compileall-Fix-ddir-when-recursing.patch
 
   # FS#23997
   sed -i -e "s|^#.* /usr/local/bin/python|#!/usr/bin/python|" Lib/cgi.py
@@ -91,7 +91,7 @@ check() {
 
   LD_LIBRARY_PATH="${srcdir}/cpython":${LD_LIBRARY_PATH} \
   LC_CTYPE=en_US.UTF-8 xvfb-run -s "-screen 0 1280x720x24 -ac +extension GLX" -a -n "$servernum" \
-    "${srcdir}/cpython/python" -m test.regrtest -w -uall -x test_ttk_guionly -j -1
+    "${srcdir}/cpython/python" -m test.regrtest -w -uall -x test_ttk_guionly -j -1 -v
 }
 
 package() {
