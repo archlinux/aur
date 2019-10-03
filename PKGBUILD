@@ -6,30 +6,31 @@
 #see the last line and an example were I removed Liberation fonts since they are contained in other packages.
 
 pkgname=opensiddur-hebrew-fonts
-pkgver=1.18.5
-pkgrel=4
+pkgver=1.18.6
+pkgrel=1
 pkgdesc="The Open Siddur Project's open-source Unicode Hebrew font pack. 
 Open-source licensed Unicode fonts in: Hebrew, Latin, Greek, Cyrillic, Arabic, and Amharic."
 
 url="https://github.com/aharonium/fonts"
 arch=(any)
-license=('GPL 3.0'
+license=('GPL3'
           'GPL-FE'
-          'OFL'
+          'custom:OFL'
           'APACHE'
           'UBL'
           'LPPL'
-          'GPL 2.0')
+          'GPL2')
 depends=('fontconfig' 'xorg-fonts-alias' 'xorg-font-utils' 'xorg-fonts-encodings')
 
 #Confling packages whos fonts are contained in oppensiddur-hebrew-fonts
 conflicts=('culmus'
-           'ttf-sil-ezra')
+           'ttf-sil-ezra'
+           'ttf-symbola')
            
-_sha=03548778f3299c52ad1f92405e8a5bad993dcee5
+_sha=4cfe884b21bcc7d57b53eb276476b9f916e0a4b3
 _zipname="$pkgname-$pkgver"
 source=("$_zipname.zip::https://github.com/aharonium/fonts/archive/$_sha.zip")
-sha256sums=('6ea21bd339f9baa8e1c0added7f85b995ff299025d23d771ba8568ab873febd2')
+sha256sums=('b7c064c7ff5d90debc6e21b6657fd1d75a551025e769f6a6ea958bc37ea1f71e')
 
 prepare() {
 	find "${srcdir}" -type f ! -perm 644 -exec chmod 644 {} +
@@ -50,6 +51,9 @@ package() {
    
  #remove Liberation to prevent conflict
   find "${pkgdir}" -type f -name "Liberation*" -exec rm "{}" ";"
+  
+ #install custom licences
+  install -Dm644 "${srcdir}/fonts-${_sha}/LICENSES.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
  #remove other font families buy running:
  # find "${pkgdir}" -type f -name "<font-family>*" -exec rm "{}" ";"
