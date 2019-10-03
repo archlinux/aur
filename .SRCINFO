@@ -1,6 +1,6 @@
 pkgbase = telegram-desktop-udf-patched
 	pkgdesc = Telegram Desktop client with several personal patches
-	pkgver = 1.8.8
+	pkgver = 1.8.9
 	pkgrel = 1
 	url = https://desktop.telegram.org/
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = telegram-desktop-udf-patched
 	optdepends = ttf-opensans: default Open Sans font family
 	provides = telegram-desktop
 	conflicts = telegram-desktop
-	source = tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#tag=v1.8.8
+	source = tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#tag=v1.8.9
 	source = libtgvoip::git+https://github.com/telegramdesktop/libtgvoip
 	source = variant::git+https://github.com/mapbox/variant
 	source = Catch2::git+https://github.com/catchorg/Catch2.git
@@ -39,6 +39,7 @@ pkgbase = telegram-desktop-udf-patched
 	source = Use-system-wide-font.patch::https://git.archlinux.org/svntogit/community.git/plain/telegram-desktop/repos/community-x86_64/Use-system-wide-font.patch
 	source = tdesktop_lottie_animation_qtdebug.patch::https://git.archlinux.org/svntogit/community.git/plain/telegram-desktop/repos/community-x86_64/tdesktop_lottie_animation_qtdebug.patch
 	source = revert-private-headers.patch::https://github.com/telegramdesktop/tdesktop/commit/b9d3ba621eb8af638af46c6b3cfd7a8330bf0dd5.patch
+	source = range-v3-0.9-pr6501.patch
 	source = always_delete_for_everyone.patch
 	source = always_clear_history_for_everyone.patch
 	source = always_pin_without_notify.patch
@@ -60,6 +61,7 @@ pkgbase = telegram-desktop-udf-patched
 	sha512sums = ce6be003220267bac5483caf8302b492e1581892bc36d35a61236ebf9f9d766b8bd2159557a1c36256aa85f461797a38bfaae57b12da7a72101b21c0b17ed653
 	sha512sums = a83b80668b2dc2cc77c857069fdb45b487793fda01ad8a63bab66c6a1c71e5d032050e4ec7efb5b4c3216badc5377c856ef1f4a59c2e02b24ee53b1d83124bf3
 	sha512sums = e25dc1c54d6001a7a3740c6cee40a12a2313a3fd2e41986268f0ee5d9d8bf2d34812f539efb0eb5d26d3f263b2e4a7849016711532bf215aa9ff38da30175557
+	sha512sums = fd05506cc7408b4b23f83e6432324362f8bf04842e4f42531c269350c44d63b582be9e457f3dcbf29b0dc32b58a482597c12ae9c1cda8a85c700e55ca1ef37db
 	sha512sums = e88fa96024efc6176c818d0a46684e0ee1fb3a7bdadb323ad3b29f736209c80b6c31b135cf84389e7e2bbd614e57b241e4437c94b6fd114e73cfc418bf130015
 	sha512sums = 4a7e9de924bbf32fb4cd24ffa2764bcf49e0540bba649829b180da20a62810d4a21ebf11529d4eca22c9ceaa93b434ca3fbfd0b636795f8109ea4e1eddbff8f3
 	sha512sums = b4eeeb4b2801f3edcc7423f28403b1dfabd3f3869425e4f102a2a4554bde93e63bd73d2d4dbf3e5748ce831b570e441d3917f532fc5cceac1ee5e8fd0832cb30
