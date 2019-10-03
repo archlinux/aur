@@ -1,6 +1,6 @@
 pkgbase = dotnet-core-bin
 	pkgver = 3.0.100
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.microsoft.com/net/core
 	arch = x86_64
 	arch = armv7h
@@ -32,6 +32,18 @@ pkgname = dotnet-host-bin
 	pkgdesc = A generic driver for the .NET Core Command Line Interface (binary)
 	provides = dotnet-host=3.0.100
 	conflicts = dotnet-host
+
+pkgname = dotnet-runtime-bin
+	pkgdesc = The .NET Core runtime (binary)
+	depends = dotnet-host-bin
+	depends = icu
+	depends = krb5
+	depends = libunwind
+	depends = openssl
+	depends = zlib
+	depends = libcurl.so
+	optdepends = lttng-ust: CoreCLR tracing
+	provides = dotnet-runtime=3.0.100
 
 pkgname = aspnet-runtime-bin
 	pkgdesc = The ASP.NET Core runtime (binary)
