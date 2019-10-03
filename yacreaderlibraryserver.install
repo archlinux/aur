@@ -1,0 +1,3 @@
+post_install() {
+  echo "Run 'systemctl --user enable yacreaderlibraryserver' to run the headless server as a systemd service."
+}
