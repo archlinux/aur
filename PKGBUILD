@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
-# Maintainer: Elias Yuan <cecilelias.yuan@gmail.com>
+# Contributor: Elias Yuan <cecilelias.yuan@gmail.com>
 pkgname=('neon-knights-icons-blue' 'neon-knights-icons-green' 'neon-knights-icons-orange' 'neon-knights-icons-red' 'neon-knights-icons-violet' 'neon-knights-icons-yellow')
 _theme=('Neon-Knights-Blue-Folders' 'Neon-Knights-Green-Folders' 'Neon-Knights-Orange-Folders' 'Neon-Knights-Red-Folders' 'Neon-Knights-Violet-Folders' 'Neon-Knights-Yellow-Folders')
 _de="icons"
