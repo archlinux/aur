@@ -1,13 +1,13 @@
 pkgbase = constantine-backgrounds
 	pkgdesc = Fedora 12 (Constantine) backgrounds.
 	pkgver = 12.1.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://fedoraproject.org/wiki/Wallpapers#Fedora_12
 	arch = i686
 	arch = x86_64
 	license = CC-BY-SA
-	source = https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages/c/constantine-backgrounds-12.1.1-16.fc30.src.rpm
-	sha256sums = 12156239480749d23e1424fcce4190f625df958ae55780a0651b94901cd5bb4e
+	source = https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages/c/constantine-backgrounds-12.1.1-17.fc31.src.rpm
+	sha256sums = 7da1233dd820428df6d5de390b1917d892685e32bac42a1734985563e3916b99
 
 pkgname = constantine-backgrounds
 
