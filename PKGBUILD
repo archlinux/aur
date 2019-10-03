@@ -2,7 +2,7 @@
 
 pkgname=datadog-puppy
 pkgver=6.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight (Pythonless) Datadog Agent'
 arch=('any')
 provides=('datadog-agent')
@@ -40,7 +40,7 @@ build () {
 package () {
   _repodir="$srcdir/$_repo"
   _agentdir="$_repodir/bin/agent"
-  _distdir="$agentdir/dist"
+  _distdir="$_agentdir/dist"
 
   install -D -m644 "$srcdir/datadog-agent.sysusers" "$pkgdir/usr/lib/sysusers.d/datadog-agent.conf"
   install -D -m644 "$srcdir/datadog-agent.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/datadog-agent.conf"
