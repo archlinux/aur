@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Name=MuWire
+Comment=I2P file sharing program
+Path=/usr/bin
+Exec=muwire
+Icon=muwire.png
+Terminal=false
+StartupNotify=false
+Type=Application
+Categories=Application;Network;FileTransfer;P2P;
