@@ -9,16 +9,18 @@
 
 _pkgname=gegl
 pkgname="${_pkgname}-git"
-pkgver=0.4.17.r9794.ae8b3e7ca
+pkgver=0.4.17.r9806.592a7db44
 pkgrel=1
 pkgdesc="Graph based image processing framework"
 arch=('i686' 'x86_64')
 url="https://www.gegl.org"
 license=('GPL3' 'LGPL3')
-depends=('babl>=0.1.72' 'libspiro' 'json-glib')
-makedepends=('git' 'meson' 'intltool' 'python' 'ruby' 'lua'
+depends=('babl>=0.1.72' 'libspiro' 'json-glib' 'sdl2') #'mrg'
+makedepends=('git' 'meson' 'intltool' 'python' 'ruby' 'luajit'
              'libraw' 'openexr' 'ffmpeg' 'librsvg' 'jasper'
-             'libtiff' 'suitesparse' 'gobject-introspection')
+             'libtiff' 'libnsgif' 'exiv2' 'libgexiv2' 'lensfun'
+             'vala' 'python-gobject'
+             'suitesparse' 'gobject-introspection')
 optdepends=('openexr: for using the openexr plugin'
             'ffmpeg: for using the ffmpeg plugin'
             'librsvg: for using the svg plugin'
@@ -26,8 +28,11 @@ optdepends=('openexr: for using the openexr plugin'
             'jasper: for using the jasper plugin'
             'libraw: raw plugin'
             'suitesparse: matting-levin plugin'
-            'lua: lua plugin')
-provides=("gegl=$pkgver")
+            'luajit: lua plugin'
+            'libgexiv2: for image metadata'
+            'lensfun: for lens distortion'
+            'libnsgif: gif plugin')
+provides=("gegl=${pkgver%%.r*}")
 conflicts=('gegl')
 options=(!libtool)
 source=('git+https://gitlab.gnome.org/GNOME/gegl.git')
@@ -54,6 +59,7 @@ pkgver() {
 }
 
 build() {
+    export NINJA_STATUS="[%p | %f<%r<%u | %cbps ] "
     ninja -C "${srcdir}/build"
 }
 

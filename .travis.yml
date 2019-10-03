@@ -24,6 +24,7 @@ archlinux:
   - ccache
   - moreutils
   - babl-git
+# - mrg-git
   before_install:
 # 1.Override `package-cleanup.hook` to preserve cache for travis.
 # 2.Enable ccache
