@@ -34,8 +34,6 @@ prepare() {
 	}
 
 build() {
-	_libdir=$(_getlibdir)
-
 	## Compile and install ${_model} stuff
 	# ppd file
 	cd "${srcdir}/cnijfilter-source-${_pkgver}/ppd"
