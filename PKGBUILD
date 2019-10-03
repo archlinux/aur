@@ -1,8 +1,8 @@
 # Maintainer: aereaux <aidan@jmad.org>
 _pkgname=meli
 pkgname=${_pkgname}-git
-pkgver=pre.alpha.0.0.1.r3.g1e72901
-pkgrel=3
+pkgver=pre.alpha.0.3.2.r5.gcd761b3
+pkgrel=2
 pkgdesc="Experimental terminal mail client aiming for configurability and extensibility with sane defaults."
 arch=("x86_64")
 url="https://meli.delivery/"
@@ -24,17 +24,18 @@ pkgver() {
 build() {
   cd "$_pkgname"
 
-  cargo build --release #--locked
+  make
 }
 
-check() {
-  cd "$_pkgname"
-
-  cargo test --release --locked
-}
+# TODO: Right now the makefile does not have a check target
+#check() {
+#  cd "$_pkgname"
+#
+#  cargo test --release --locked
+#}
 
 package() {
   cd "$_pkgname"
 
-  install -Dm 755 target/release/${_pkgname} -t "${pkgdir}/usr/bin"
+  make PREFIX=/usr DESTDIR="$pkgdir/" install
 }
