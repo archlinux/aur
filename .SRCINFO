@@ -1,7 +1,7 @@
 pkgbase = haveged-git
 	pkgdesc = A simple entropy daemon
-	pkgver = 1.9.2.r0.g2b60a12
-	pkgrel = 2
+	pkgver = 1.9.8.r0.g8cd0266
+	pkgrel = 1
 	url = http://www.issihosts.com/haveged/
 	arch = i686
 	arch = x86_64
@@ -12,8 +12,6 @@ pkgbase = haveged-git
 	conflicts = haveged
 	options = staticlibs
 	source = git+https://github.com/jirka-h/haveged.git
-	source = haveged.service::https://git.archlinux.org/svntogit/packages.git/plain/trunk/haveged.service?h=packages/haveged
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = haveged-git

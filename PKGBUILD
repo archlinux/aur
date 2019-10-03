@@ -1,8 +1,8 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=haveged-git
-pkgver=1.9.2.r0.g2b60a12
-pkgrel=2
+pkgver=1.9.8.r0.g8cd0266
+pkgrel=1
 pkgdesc="A simple entropy daemon"
 arch=('i686' 'x86_64')
 url="http://www.issihosts.com/haveged/"
@@ -12,10 +12,8 @@ makedepends=('git')
 provides=('haveged')
 conflicts=('haveged')
 options=('staticlibs')
-source=("git+https://github.com/jirka-h/haveged.git"
-        "haveged.service::https://git.archlinux.org/svntogit/packages.git/plain/trunk/haveged.service?h=packages/haveged")
-sha256sums=('SKIP'
-            'SKIP')
+source=("git+https://github.com/jirka-h/haveged.git")
+sha256sums=('SKIP')
 
 
 pkgver() {
@@ -29,7 +27,9 @@ build() {
 
   autoreconf -fi
   ./configure \
-    --prefix="/usr" --bindir="/usr/bin" --sbindir="/usr/bin"
+    --prefix="/usr" \
+    --bindir="/usr/bin" \
+    --sbindir="/usr/bin"
   make
 }
 
@@ -44,5 +44,5 @@ package() {
 
   make DESTDIR="$pkgdir" install
 
-  install -Dm644 "$srcdir/haveged.service" "$pkgdir/usr/lib/systemd/system/haveged.service"
+  install -Dm644 "init.d/service.fedora" "$pkgdir/usr/lib/systemd/system/haveged.service"
 }
