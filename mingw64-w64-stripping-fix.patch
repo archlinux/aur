@@ -1,0 +1,28 @@
+diff -ruN dav1d-0.4.0/src/meson.build patched/src/meson.build
+--- dav1d-0.4.0/src/meson.build 2019-08-05 16:29:38.000000000 +0200
++++ patched/src/meson.build     2019-10-03 17:12:58.752740719 +0200
+@@ -134,13 +134,18 @@
+         )
+ 
+         if dav1d_bitdepths.contains('8')
++            # Prevent error while stripping with mingw (no sections in 32 bit x86 cdef.asm)
++            if host_machine.cpu_family().startswith('x86_64')
++                libdav1d_sources_asm += files(
++                    'x86/cdef.asm',
++                    'x86/ipred.asm',
++                    'x86/itx.asm',
++                    'x86/loopfilter.asm',
++                    'x86/looprestoration.asm',
++                    'x86/mc.asm')
++            endif
++
+             libdav1d_sources_asm += files(
+-                'x86/cdef.asm',
+-                'x86/ipred.asm',
+-                'x86/itx.asm',
+-                'x86/loopfilter.asm',
+-                'x86/looprestoration.asm',
+-                'x86/mc.asm',
+                 'x86/cdef_sse.asm',
+                 'x86/ipred_ssse3.asm',
+                 'x86/itx_ssse3.asm',
