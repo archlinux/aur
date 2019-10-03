@@ -1,0 +1,14 @@
+pkgbase = xerox-phaser-6022
+	pkgdesc = Xerox Phaser 6022 color laser printer driver
+	pkgver = 1.0.21
+	pkgrel = 1
+	url = https://www.support.xerox.com/support/phaser-6022/downloads
+	arch = any
+	license = custom
+	makedepends = rpmextract
+	depends = cups
+	source = http://download.support.xerox.com/pub/drivers/6022/drivers/linux/pt_BR/Xerox-Phaser-6022-1.0-21.noarch.zip
+	sha256sums = fbd0740a3ed090df34dd98b8ec5475d4dbc653ef5006c68fb6ac391970ace480
+
+pkgname = xerox-phaser-6022
+
