@@ -1,14 +1,31 @@
 pkgbase = spack
 	pkgdesc = A flexible package manager for supercomputer that supports multiple versions, configurations, platforms, and compilers.
 	pkgver = 0.12.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://spack.io/
 	arch = i686
 	arch = x86_64
 	license = MIT
 	depends = python
+	depends = polkit
+	optdepends = env-modules-tcl
+	optdepends = lmod
 	source = https://github.com/spack/spack/archive/v0.12.1.tar.gz
+	source = spack.sysusers
+	source = spack.tmpfiles
+	source = spack.pkaction
+	source = spack.pkrules
+	source = spack.sh
+	source = spack.csh
+	source = spack.binsh
 	sha256sums = 511d131b0d0abfe23b9feb84f9464fe654a6e0e4f3064ec026bba58116a074fc
+	sha256sums = e6d46e8f5140b4e86596d38f23af379d9adce8e9afc66f800571d7a4d9211e19
+	sha256sums = 0eafdac44fc1379a98ee43e0def665cecded2b6182b0a2ae1754247155244fa8
+	sha256sums = c9d79463721f5006ae6129e175ca8038bb13b9beb9b584a890662110fcf0579a
+	sha256sums = 7f593b7f9289972ae83ad11e0dd3281faf1c56bffa0428dd69641b36b8b94356
+	sha256sums = 163202be92788f98283d1b0b7c365d736a1675b16ef91f27d2a58617f17030f7
+	sha256sums = 7fb67101a9095a05006862e478cedf1a5771725ae2c8420c248e1ad5d3b504e2
+	sha256sums = a82a14f51519f8f3ea594845e5f9bf61988f3ba79d55099409acd7730debb6a0
 
 pkgname = spack
 

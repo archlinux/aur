@@ -1,0 +1,7 @@
+/* Allow users in spack group to use spack feature requiring root without authentication */
+polkit.addRule(function(action, subject) {
+    if (( action.id == "org.archlinux.pkexec.spack") &&
+        subject.isInGroup("spack")) {
+        return polkit.Result.YES;
+    }
+});
