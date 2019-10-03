@@ -1,13 +1,14 @@
 pkgbase = sandsifter-git
 	pkgdesc = The x86 processor fuzzer
 	pkgver = r53.4ae3e6e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rigred/sandsifter
 	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = git
 	depends = python2-capstone
+	depends = elfutils
 	provides = sandsifter
 	conflicts = sandsifter
 	source = sandsifter::git+https://github.com/rigred/sandsifter

@@ -2,13 +2,12 @@
 _pkgname=sandsifter
 pkgname="${_pkgname}-git"
 pkgver=r53.4ae3e6e
-pkgrel=1
+pkgrel=2
 pkgdesc="The x86 processor fuzzer"
 arch=("i686" "x86_64")
 url="https://github.com/rigred/${_pkgname}"
 license=('BSD')
-groups=()
-depends=(python2-capstone)
+depends=('python2-capstone' 'elfutils')
 makedepends=('git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
