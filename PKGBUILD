@@ -3,7 +3,7 @@
 
 pkgname=firefox-ubuntu-bin
 _pkgname=firefox
-pkgver=69.0.1
+pkgver=69.0.2
 pkgrel=1
 _ubuntuver="$pkgver+build1-0ubuntu0.19.04.1_amd64"
 pkgdesc="Standalone web browser from mozilla.org with Ubuntu patches (binary)"
@@ -32,14 +32,11 @@ provides=('firefox' 'firefox-ubuntu')
 conflicts=('firefox' 'firefox-ubuntu')
 
 source=("http://ppa.launchpad.net/ubuntu-mozilla-security/ppa/ubuntu/pool/main/f/firefox/firefox_$_ubuntuver.deb")
-sha256sums=('1119937d60e7e5bbda5b4e47cf398ce7e09aa0e853b8f5f1c62b141c4a287b5b')
+sha256sums=('a9c623230a80adc4f2941d62e8ca10d0f3308d719e8bd15a9297760798e413c6')
 
 prepare() {
 	# Don't extract copyright files, which are included in the licenses package
 	tar -xvf data.tar.xz --exclude=usr/share/doc
-	# UBUNTU_MENUPROXY=0 is a requirement for global menus
-	# https://github.com/rilian-la-te/vala-panel-appmenu/issues/125
-	sed -i 's|Exec=firefox|Exec=env UBUNTU_MENUPROXY=0 firefox|' usr/share/applications/firefox.desktop
 }
 
 package() {
