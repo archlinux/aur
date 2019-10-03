@@ -1,9 +1,9 @@
 # Mantainer: Josh Hoffer <hoffer dot joshua at gmail dot com>
 pkgname=proton
 # Upstream version
-_pkgver='4.11-3'
+_pkgver='4.11-6'
 # Arch - no hyphens
-pkgver=4.11.3
+pkgver=4.11.6
 pkgrel=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components"
 arch=('x86_64')
@@ -11,7 +11,7 @@ url="https://github.com/ValveSoftware/Proton/"
 license=('BSD')
 groups=()
 depends=(
-	'wine-valve-git'
+	'wine-valve'
 	'python2'
 	'openvr-git'
 )
@@ -97,4 +97,4 @@ package() {
 	install -m644 build/vrclient.win64/vrclient_x64/vrclient_x64.dll.fake $pkgdir/usr/lib/wine/fakedlls/vrclient_x64.dll
 }
 
-md5sums=('4479f4924f3da015032f4fac92270a02')
+md5sums=('2a0d75d83b61f9c11d74d7bec4ddcbd8')
