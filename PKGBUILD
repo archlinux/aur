@@ -2,7 +2,7 @@
 pkgbase=yaru
 pkgname=('yaru-sound-theme' 'yaru-gtk-theme' 'yaru-gnome-shell-theme' 'yaru-icon-theme' 'yaru-session')
 pkgver=19.10.4
-pkgrel=1
+pkgrel=2
 _tag=19.10.4
 pkgdesc="Yaru default ubuntu theme"
 arch=(any)
@@ -24,7 +24,7 @@ build() {
 package_yaru-sound-theme() {
   pkgdesc="Yaru default ubuntu sound theme"  
 
-  DESTDIR="$pkgdir" ninja -C build install
+  DESTDIR="$pkgdir" ninja -C build install 2>&1 >> install.log
   rm -r "$pkgdir/usr/share/glib-2.0"
   rm -r "$pkgdir/usr/share/xsessions"
   rm -r "$pkgdir/usr/share/wayland-sessions"
@@ -37,7 +37,7 @@ package_yaru-gtk-theme() {
   pkgdesc="Yaru default ubuntu gtk theme"  
   depends=("gtk3" "gdk-pixbuf2" "gtk-engine-murrine" "gnome-themes-extra")
   
-  DESTDIR="$pkgdir" ninja -C build install
+  DESTDIR="$pkgdir" ninja -C build install 2>&1 >> install.log
   rm -r "$pkgdir/usr/share/glib-2.0"
   rm -r "$pkgdir/usr/share/xsessions"
   rm -r "$pkgdir/usr/share/wayland-sessions"
@@ -50,7 +50,7 @@ package_yaru-gnome-shell-theme() {
   pkgdesc="Yaru default ubuntu gnome shell theme"  
   depends=("gnome-shell" "yaru-session")
   
-  DESTDIR="$pkgdir" ninja -C build install
+  DESTDIR="$pkgdir" ninja -C build install 2>&1 >> install.log
   rm -r "$pkgdir/usr/share/glib-2.0"
   rm -r "$pkgdir/usr/share/xsessions"
   rm -r "$pkgdir/usr/share/wayland-sessions"
@@ -63,7 +63,7 @@ package_yaru-icon-theme() {
   pkgdesc="Yaru default ubuntu icon theme"  
   depends=("hicolor-icon-theme" "gtk-update-icon-cache" "librsvg" "humanity-icon-theme")
 
-  DESTDIR="$pkgdir" ninja -C build install
+  DESTDIR="$pkgdir" ninja -C build install 2>&1 >> install.log
   rm -r "$pkgdir/usr/share/glib-2.0"
   rm -r "$pkgdir/usr/share/xsessions"
   rm -r "$pkgdir/usr/share/wayland-sessions"
@@ -76,7 +76,7 @@ package_yaru-session() {
   pkgdesc="Yaru session"
   depends=("gnome-shell")
 
-  DESTDIR="$pkgdir" ninja -C build install
+  DESTDIR="$pkgdir" ninja -C build install 2>&1 >> install.log
   rm -r "$pkgdir/usr/share/sounds"
   rm -r "$pkgdir/usr/share/themes"
   rm -r "$pkgdir/usr/share/gnome-shell"
