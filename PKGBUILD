@@ -2,12 +2,13 @@
 
 pkgname=python-urwid_utils
 pkgver=0.1.2
-pkgrel=1
-pkgdesc="A collection of simple, straightforward, but extensible utilities for the urwid package"
+pkgrel=2
+pkgdesc="Simple, straightforward, but extensible utilities for the urwid package"
 url="https://github.com/tonycpsu/urwid_utils"
 arch=('any')
 license=('MIT')
 depends=('python-urwid')
+makedepends=('python-setuptools')
 source=(
   "https://github.com/tonycpsu/urwid_utils/archive/v$pkgver.tar.gz"
   "https://raw.githubusercontent.com/tonycpsu/urwid_utils/master/LICENSE"
@@ -22,8 +23,13 @@ build() {
     python setup.py build
 }
 
+check() {
+    cd "urwid_utils-$pkgver"
+    python setup.py test
+}
+
 package() {
     cd "urwid_utils-$pkgver"
-    python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+    python setup.py install --root="$pkgdir/" --prefix=/usr --optimize=1 --skip-build
     install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

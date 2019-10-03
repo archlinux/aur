@@ -1,10 +1,11 @@
 pkgbase = python-urwid_utils
-	pkgdesc = A collection of simple, straightforward, but extensible utilities for the urwid package
+	pkgdesc = Simple, straightforward, but extensible utilities for the urwid package
 	pkgver = 0.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tonycpsu/urwid_utils
 	arch = any
 	license = MIT
+	makedepends = python-setuptools
 	depends = python-urwid
 	source = https://github.com/tonycpsu/urwid_utils/archive/v0.1.2.tar.gz
 	source = https://raw.githubusercontent.com/tonycpsu/urwid_utils/master/LICENSE
