@@ -5,21 +5,25 @@
 # For more information about DPS being obsolete please visit:
 # http://www.x.org/releases/X11R7.7/doc/xorg-docs/graphics/dps.html
 
-# NOTE (2):
+# NOTE (2): linking to ghostscript libs (gslib) is disabled due to
+# security issues. ImageMagick will call 'gs' executable directly
+# instead. See: https://bugs.archlinux.org/task/62171
+
+# NOTE (3):
 # change font directories in build() to match yours:
 #   - deJaVu and GhostScript font directories are the default ones
 #   - Windows font directory is set according to a Wiki example
 
-_commit='fe13879b6e00afd2e9a7f2c8a1e33d9c39c8ee9d'
+_commit='dfdb6a98316f870cc56318e6222ae738f6fd7b04'
 _qdepth='32'
 
 pkgbase=imagemagick-full
 pkgname=('imagemagick-full' 'imagemagick-full-doc')
 _srcname=ImageMagick
-pkgver=7.0.8.61
+pkgver=7.0.8.67
 pkgrel=1
 arch=('x86_64')
-pkgdesc="An image viewing/manipulation program (Q${_qdepth} HDRI with all libs and features)"
+pkgdesc="An image viewing/manipulation program (Q${_qdepth} HDRI with all features)"
 url='https://www.imagemagick.org/'
 license=('custom')
 makedepends=(
@@ -27,41 +31,25 @@ makedepends=(
         'git' 'perl' 'jbigkit' 'opencl-headers' 'glu' 'ghostpcl' 'ghostxps'
         'zstd' 'chrpath'
         'lcms2' 'libraqm' 'liblqr' 'fftw' 'libxml2' 'fontconfig' 'freetype2' 'libxext'
-        'libx11' 'bzip2' 'zlib' 'libltdl' 'jemalloc' 'djvulibre' 'libraw' 'graphviz'
-        'openexr' 'libheif' 'openjpeg2' 'libjpeg-turbo' 'xz' 'glib2' 'pango' 'cairo'
-        'libpng' 'ghostscript' 'ming' 'librsvg' 'libtiff' 'libwebp' 'libwmf' 'ocl-icd'
-        'gsfonts' 'ttf-dejavu' 'perl'
+        'libx11' 'bzip2' 'zlib' 'libltdl' 'jemalloc' 'djvulibre' 'gperftools' 'libraw'
+        'graphviz' 'openexr' 'libheif' 'openjpeg2' 'libjpeg-turbo' 'xz' 'glib2' 'pango'
+        'cairo' 'libpng' 'ghostscript' 'ming' 'librsvg' 'libtiff' 'libwebp' 'libwmf'
+        'ocl-icd' 'gsfonts' 'ttf-dejavu' 'perl'
     # AUR:
         'pstoedit-nomagick' 'autotrace-nomagick' 'flif' 'libfpx' 'libumem-git'
 )
 source=("git+https://github.com/ImageMagick/ImageMagick.git#commit=${_commit}"
-        'imagemagick-full-security-fix.patch'
-        'arch-fonts.diff'
-        'imagemagick-full-disable-avaraging-tests.patch')
+        'arch-fonts.diff')
 sha256sums=('SKIP'
-            'e2453381d283c33107194fa791d6b9b2c4c1856afb936d4fa010c05aaebe538e'
-            'a85b744c61b1b563743ecb7c7adad999d7ed9a8af816650e3ab9321b2b102e73'
-            '2ff7366526a705b195074438266064fb1d347552707bf7bbca739d5eb0c65db9')
+            'a85b744c61b1b563743ecb7c7adad999d7ed9a8af816650e3ab9321b2b102e73')
 
 prepare() {
     cd "$_srcname"
     
     mkdir -p docpkg/usr/share
     
-    # 1) workaround for ghostscript security issues:
-    #      https://bugs.archlinux.org/task/59778
-    # 2) security fix:
-    #      https://www.imagemagick.org/discourse-server/viewtopic.php?f=4&t=29588
-    #      https://imagetragick.com/
-    patch -Np1 -i "${srcdir}/imagemagick-full-security-fix.patch"
-    
     # fix up typemaps to match Arch Linux packages, where possible
     patch -Np1 -i "${srcdir}/arch-fonts.diff"
-    
-    # disable a test that is failing
-    ## https://github.com/ImageMagick/ImageMagick/issues/1570
-    ## https://github.com/ImageMagick/ImageMagick/issues/1576
-    patch -Np1 -i "${srcdir}/imagemagick-full-disable-avaraging-tests.patch"
     
     # fix for 'sh: gitversion.sh: command not found' during autoreconf
     sed -i 's|(gitversion|(./gitversion|' configure.ac
@@ -90,6 +78,7 @@ build() {
         --with-perl \
         --with-perl-options='INSTALLDIRS=vendor' \
         --with-jemalloc \
+        --with-tcmalloc \
         --with-umem \
         --with-bzlib \
         --with-x \
@@ -104,7 +93,7 @@ build() {
         --with-fontconfig \
         --with-freetype \
         --with-raqm \
-        --with-gslib \
+        --without-gslib \
         --with-gvc \
         --with-heic \
         --with-jbig \
@@ -139,10 +128,8 @@ build() {
 
 check() (
     cd "$_srcname"
-    
     ulimit -n 4096
-    sed -e '/validate-formats/d' -i Makefile # these fail due to the security patch
-    
+    sed -e '/validate-formats/d' -i Makefile
     make check
 )
 
@@ -152,10 +139,10 @@ package_imagemagick-full() {
     depends=(
         # official repositories:
             'lcms2' 'libraqm' 'liblqr' 'fftw' 'libxml2' 'fontconfig' 'freetype2' 'libxext'
-            'libx11' 'bzip2' 'zlib' 'libltdl' 'jemalloc' 'djvulibre' 'libraw' 'graphviz'
-            'openexr' 'libheif' 'openjpeg2' 'libjpeg-turbo' 'xz' 'glib2' 'pango' 'cairo'
-            'libpng' 'ghostscript' 'ming' 'librsvg' 'libtiff' 'libwebp' 'libwmf' 'ocl-icd'
-            'gsfonts' 'ttf-dejavu' 'perl'
+            'libx11' 'bzip2' 'zlib' 'libltdl' 'jemalloc' 'gperftools' 'djvulibre' 'libraw'
+            'graphviz' 'openexr' 'libheif' 'openjpeg2' 'libjpeg-turbo' 'xz' 'glib2' 'pango'
+            'cairo' 'libpng' 'ghostscript' 'ming' 'librsvg' 'libtiff' 'libwebp' 'libwmf'
+            'ocl-icd' 'gsfonts' 'ttf-dejavu' 'perl'
         # AUR:
             'pstoedit-nomagick' 'autotrace-nomagick' 'flif' 'libfpx' 'libumem-git'
     )
@@ -177,6 +164,9 @@ package_imagemagick-full() {
     
     # split docs
     mv "${pkgdir}/usr/share/doc" docpkg/usr/share/
+    
+    # harden security policy: https://bugs.archlinux.org/task/62785
+    sed -e '/<\/policymap>/i \ \ <policy domain="delegate" rights="none" pattern="gs" \/>' -i "${pkgdir}/etc/ImageMagick-7/policy.xml"
     
     install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
     install -D -m644 NOTICE  -t "${pkgdir}/usr/share/licenses/${pkgname}"

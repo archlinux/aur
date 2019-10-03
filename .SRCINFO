@@ -1,6 +1,6 @@
 pkgbase = imagemagick-full
-	pkgdesc = An image viewing/manipulation program (Q32 HDRI with all libs and features)
-	pkgver = 7.0.8.61
+	pkgdesc = An image viewing/manipulation program (Q32 HDRI with all features)
+	pkgver = 7.0.8.67
 	pkgrel = 1
 	url = https://www.imagemagick.org/
 	arch = x86_64
@@ -28,6 +28,7 @@ pkgbase = imagemagick-full
 	makedepends = libltdl
 	makedepends = jemalloc
 	makedepends = djvulibre
+	makedepends = gperftools
 	makedepends = libraw
 	makedepends = graphviz
 	makedepends = openexr
@@ -54,14 +55,10 @@ pkgbase = imagemagick-full
 	makedepends = flif
 	makedepends = libfpx
 	makedepends = libumem-git
-	source = git+https://github.com/ImageMagick/ImageMagick.git#commit=fe13879b6e00afd2e9a7f2c8a1e33d9c39c8ee9d
-	source = imagemagick-full-security-fix.patch
+	source = git+https://github.com/ImageMagick/ImageMagick.git#commit=dfdb6a98316f870cc56318e6222ae738f6fd7b04
 	source = arch-fonts.diff
-	source = imagemagick-full-disable-avaraging-tests.patch
 	sha256sums = SKIP
-	sha256sums = e2453381d283c33107194fa791d6b9b2c4c1856afb936d4fa010c05aaebe538e
 	sha256sums = a85b744c61b1b563743ecb7c7adad999d7ed9a8af816650e3ab9321b2b102e73
-	sha256sums = 2ff7366526a705b195074438266064fb1d347552707bf7bbca739d5eb0c65db9
 
 pkgname = imagemagick-full
 	depends = lcms2
@@ -77,6 +74,7 @@ pkgname = imagemagick-full
 	depends = zlib
 	depends = libltdl
 	depends = jemalloc
+	depends = gperftools
 	depends = djvulibre
 	depends = libraw
 	depends = graphviz
@@ -105,9 +103,9 @@ pkgname = imagemagick-full
 	depends = libfpx
 	depends = libumem-git
 	optdepends = imagemagick-full-doc: manual and API docs
-	provides = imagemagick=7.0.8.61
-	provides = libmagick=7.0.8.61
-	provides = libmagick-full=7.0.8.61
+	provides = imagemagick=7.0.8.67
+	provides = libmagick=7.0.8.67
+	provides = libmagick-full=7.0.8.67
 	conflicts = imagemagick
 	conflicts = libmagick
 	replaces = libmagick-full
@@ -125,8 +123,8 @@ pkgname = imagemagick-full
 	backup = etc//type-ghostscript.xml
 
 pkgname = imagemagick-full-doc
-	pkgdesc = An image viewing/manipulation program (Q32 HDRI with all libs and features) (manual and API docs)
+	pkgdesc = An image viewing/manipulation program (Q32 HDRI with all features) (manual and API docs)
 	arch = any
-	provides = imagemagick-doc=7.0.8.61
+	provides = imagemagick-doc=7.0.8.67
 	conflicts = imagemagick-doc
 
