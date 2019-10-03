@@ -1,8 +1,8 @@
 # Maintainer: Fredrick Brennan <copypaste@kittens.ph>
 # Submitter: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 pkgname=blender-git
-pkgver=84454.690478027bd
-pkgrel=2
+pkgver=2.81.r90990.a1f16ba67fc
+pkgrel=1
 pkgdesc="A fully integrated 3D graphics creation suite (development)"
 arch=('i686' 'x86_64')
 url="http://blender.org/"
@@ -31,6 +31,11 @@ source=('git://git.blender.org/blender.git' \
 md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
          '47e5bbe93fc221066882947211ff7812')
 
+pkgver() {
+  cd "$srcdir/blender"
+  printf "%s.r%s.%s" "$(grep -Po "BLENDER_VERSION \K[0-9]{3}" source/blender/blenkernel/BKE_blender_version.h|sed 's/./&./1')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
 # determine whether we can precompile CUDA kernels
 _CUDA_PKG=`pacman -Qq cuda 2>/dev/null` || true
 if [ "$_CUDA_PKG" != "" ]; then
@@ -52,11 +57,6 @@ if [ "$_OIDN_PKG" != "" ]; then
     _EXTRAOPTS="$_EXTRAOPTS \
     -DWITH_OPENIMAGEDENOISE=ON"
 fi
-
-pkgver() {
-  cd "$srcdir/blender"
-  printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
 
 prepare() {
   cd "$srcdir/blender"
