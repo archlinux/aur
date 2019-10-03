@@ -2,15 +2,15 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname=leonidas-backgrounds
 pkgver=11.0.0
-pkgrel=5
-_rhver="${pkgver}-16.fc30"
+pkgrel=6
+_rhver="${pkgver}-17.fc31"
 pkgdesc="Fedora 11 (Leonidas) backgrounds."
 arch=("i686" "x86_64")
 url="https://fedoraproject.org/wiki/Wallpapers#Fedora_11"
 license=("CC-BY-SA")
 _rhlink="https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages"
 source=("${_rhlink}/l/${pkgname}-${_rhver}.src.rpm")
-sha256sums=('c98a8c02ebb87d680df1bfc6c73b2683b1c3443cb6e3b4cdb70e56e76ebf8259')
+sha256sums=('68aacd63c004ad6ba797f848ee6d5759a82cd0233046e261d5229f1687e16763')
 
 prepare()  {
   tar -xv --lzma -f ./${pkgname}-${pkgver}.tar.lzma
