@@ -1,6 +1,6 @@
 pkgbase = linux-bfq
 	pkgver = 5.3.2
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/sirlucjan/bfq-mq-lucjan
 	arch = x86_64
 	license = GPL2
@@ -47,10 +47,10 @@ pkgname = linux-bfq
 	pkgdesc = The Linux-bfq kernel and modules with the BFQ-dev
 	install = linux.install
 	depends = coreutils
-	depends = linux-firmware
-	depends = mkinitcpio>=0.7
+	depends = kmod
+	depends = initramfs
 	optdepends = crda: to set the correct wireless channels of your country
-	optdepends = modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig
+	optdepends = linux-firmware: firmware images needed for some devices
 	backup = etc/mkinitcpio.d/linux-bfq.preset
 
 pkgname = linux-bfq-headers
