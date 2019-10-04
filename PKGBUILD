@@ -1,6 +1,6 @@
 pkgname=mingw-w64-mesa
 pkgver=19.2.0
-pkgrel=2
+pkgrel=1
 pkgdesc="An open-source implementation of the OpenGL specification (mingw-w64)"
 arch=('any')
 url="https://www.mesa3d.org/"
