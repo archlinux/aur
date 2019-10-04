@@ -1,7 +1,7 @@
 # Maintainer: Inochi Amaoto <libraryindexsky@gmail.com>
 
 pkgname=mpv-full-build-git
-pkgver=0.29.0.r747.gc7d0a8f58e
+pkgver=0.29.0.r804.gfd7aff7a9d
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 with all possible libs (uses statically linked ffmpeg with all possible libs). (GIT version )"
 arch=('x86_64')
@@ -46,6 +46,7 @@ depends=(
          'libgme'
          'libiec61883'
          'libmodplug'
+         'libmysofa'
          'libomxil-bellagio'
          'libplacebo'
          'libpng'
@@ -106,23 +107,6 @@ depends=(
 
          # AUR:
          'chromaprint-fftw'
-         'codec2'
-         'davs2'
-         'flite1-patched'
-         'kvazaar'
-         'libilbc'
-         'libklvanc-git'
-         'libmysofa-git'
-         'libopenmpt-svn'
-         'mujs'
-         'openh264'
-         'rockchip-mpp'
-         'rsound'
-         'shine'
-         'spirv-cross'
-         'vo-amrwbenc'
-         'xavs'
-         'xavs2'
          )
 license=('GPL2' 'GPL3' 'LGPL3' 'LGPL2.1' 'BSD' 'custom')
 url='http://mpv.io'
@@ -139,15 +123,32 @@ makedepends=(
              'ffnvcodec-headers'
              )
 optdepends=(
+            'codec2: Additional libcodec2 support for ffmpeg'
             'cuda: mpv ffmpeg nvcc and libnpp support'
+            'davs2: Additional libdavs2 support for ffmpeg'
+            'flite1-patched: Additional libflite support for ffmpeg'
+            'libilbc: Additional libilbc support for ffmpeg'
+            'libklvanc-git: Additional libklvanc support for ffmpeg'
+            'libopenmpt: Additional libopenmpt support for ffmpeg'
+            'kvazaar: Additional libkvazaar support for ffmpeg'
             'mpv-bash-completion-git: Additional completion definitions for Bash users'
+            'mujs: Additional libmujs support for mpv'
             'nvidia-utils: for hardware accelerated video decoding with CUDA'
+            'openh264: Additional libopenh264 support for ffmpeg'
+            'rockchip-mpp: Additional rkmpp support for ffmpeg'
+            'rsound: Additional rsound support for mpv'
+            'shine: Additional libshine support for ffmpeg'
+            'spirv-cross: Additional spirv support for mpv'
+            'tensorflow: mpv ffmpeg DNN module backend'
+            'vo-amrwbenc: Additional libvo-amrwbenc support for ffmpeg'
+            'xavs: Additional libxavs support for ffmpeg'
+            'xavs2: Additional libxavs2 support for ffmpeg'
             'youtube-dl: Another way to view youtuve videos with mpv'
             'zsh-completions: Additional completion definitions for Zsh users'
-            'tensorflow: mpv ffmpeg DNN module backend'
             )
-provides=('mpv' 'mpv-git' 'mpv-build-git')
-conflicts=('mpv' 'mpv-git' 'mpv-build-git')
+provides=('mpv' 'mpv-git' 'mpv-build-git' 'mpv-full-git')
+conflicts=('mpv' 'mpv-git' 'mpv-build-git' 'mpv-full-git')
+replaces=('mpv' 'mpv-git' 'mpv-build-git' 'mpv-full-git')
 options=('!emptydirs')
 source=('git+https://github.com/mpv-player/mpv-build.git'
         'git+https://github.com/mpv-player/mpv.git'
@@ -169,12 +170,61 @@ backup=('etc/mpv/encoding-profiles.conf')
 # MPV_NO_CHECK_OPT_DEPEND=yes makepkg -sif
 
 if [ -z ${MPV_NO_CHECK_OPT_DEPEND+yes} ]; then
-  if [ -f /usr/lib/libvapoursynth.so ]; then
-    depends+=('vapoursynth')
+  if [ -f /usr/lib/libcodec2.so ]; then
+    depends+=('codec2')
+  fi
+  if [ -f /usr/lib/libdavs2.so ]; then
+    depends+=('davs2')
+  fi
+  if [ -f /usr/lib/libflite_cmu_time_awb.so ]; then
+    depends+=('flite1-patched')
+  fi
+  if [ -f /usr/lib/libklvanc.so ]; then
+    depends+=('libklvanc')
+  fi
+  if [ -f /usr/lib/libkvazaar.so ]; then
+    depends+=('kvazaar')
+  fi
+  if [ -f /usr/lib/libilbc.so ]; then
+    depends+=('libilbc')
+  fi
+  if [ -f /usr/lib/libopenmpt.so ]; then
+    depends+=('libopenmpt')
+  fi
+  if [ -f /usr/lib/libmujs.so ]; then
+    depends+=('mujs')
+  fi
+  if [ -f /usr/lib/libopenh264.so ]; then
+    depends+=('openh264')
+  fi
+  if [ -f /usr/lib/librockchip_mpp.so ]; then
+    depends+=('rockchip-mpp')
+  fi
+  if [ -f /usr/lib/librsound.so ]; then
+    depends+=('rsound')
+  fi
+  if [ -f /usr/lib/libspirv-cross-c-shared.so ]; then
+    depends+=('spirv-cross')
+  fi
+  if [ -f /usr/lib/libshine.so ]; then
+    depends+=('shine')
   fi
   if [ -f /usr/lib/libtensorflow.so ]; then
     depends+=('tensorflow')
   fi
+  if [ -f /usr/lib/libvapoursynth.so ]; then
+    depends+=('vapoursynth')
+  fi
+  if [ -f /usr/lib/libvo-amrwbenc.so ]; then
+    depends+=('vo-amrwbenc')
+  fi
+  if [ -f /usr/lib/libxavs.so ]; then
+    depends+=('xavs')
+  fi
+  if [ -f /usr/lib/libxavs2.so ]; then
+    depends+=('xavs2')
+  fi
+
   if [ -d /opt/cuda ]; then
     makedepends+=('cuda')
     depends+=('cuda')
@@ -221,36 +271,27 @@ prepare() {
     '--enable-libcaca'
     '--enable-libcdio'
     '--enable-libcelt'
-    '--enable-libcodec2'
-    '--enable-libdavs2'
     '--enable-libdc1394'
     '--enable-libdrm'
     '--enable-libfdk-aac'
-    '--enable-libflite'
     '--enable-libfreetype'
     '--enable-libfribidi'
     '--enable-libgme'
     '--enable-libgsm'
     '--enable-libiec61883'
-    '--enable-libilbc'
     '--enable-libjack'
-    '--enable-libklvanc'
-    '--enable-libkvazaar'
     '--enable-liblensfun'
     '--enable-libmodplug'
     '--enable-libmp3lame'
     '--enable-libmysofa'
     '--enable-libopencore-amrnb'
     '--enable-libopencore-amrwb'
-    '--enable-libopenh264'
     '--enable-libopenjpeg'
-    '--enable-libopenmpt'
     '--enable-libopus'
     '--enable-libpulse'
     '--enable-librsvg'
     '--enable-librtmp'
     '--enable-librubberband'
-    '--enable-libshine'
     '--enable-libsnappy'
     '--enable-libsoxr'
     '--enable-libspeex'
@@ -261,15 +302,12 @@ prepare() {
     '--enable-libtwolame'
     '--enable-libv4l2'
     '--enable-libvidstab'
-    '--enable-libvo-amrwbenc'
     '--enable-libvorbis'
     '--enable-libvpx'
     '--enable-libwavpack'
     '--enable-libwebp'
     '--enable-libx264'
     '--enable-libx265'
-    '--enable-libxavs'
-    '--enable-libxavs2'
     '--enable-libxcb'
     '--enable-libxcb-shape'
     '--enable-libxcb-shm'
@@ -288,7 +326,6 @@ prepare() {
     '--enable-openal'
     '--enable-opencl'
     '--enable-opengl'
-    '--enable-rkmpp'
     '--enable-sdl2'
     '--enable-sndio'
     '--enable-v4l2-m2m'
@@ -339,12 +376,10 @@ prepare() {
     '--enable-openal'
     '--enable-plain-gl'
     '--enable-pulse'
-    '--enable-rsound'
     '--enable-rubberband'
     '--enable-sdl2'
     '--enable-shaderc'
     '--enable-sndio'
-    '--enable-spirv-cross'
     '--enable-uchardet'
     '--enable-vaapi'
     '--enable-vaapi-drm'
@@ -381,19 +416,68 @@ prepare() {
   local _ffmpeg_cflags=''
   local _ffmpeg_ldflags=''
   if [ -z ${MPV_NO_CHECK_OPT_DEPEND+yes} ]; then
+    if [ -f /usr/lib/libcodec2.so ]; then
+      _ffmpeg_options+=('--enable-libcodec2')
+    fi
+    if [ -f /usr/lib/libdavs2.so ]; then
+      _ffmpeg_options+=('--enable-libdavs2')
+    fi
+    if [ -f /usr/lib/libflite_cmu_time_awb.so ]; then
+      _ffmpeg_options+=('--enable-libflite')
+    fi
+    if [ -f /usr/lib/libklvanc.so ]; then
+      _ffmpeg_options+=('--enable-libklvanc')
+    fi
+    if [ -f /usr/lib/libkvazaar.so ]; then
+      _ffmpeg_options+=('--enable-libkvazaar')
+    fi
+    if [ -f /usr/lib/libilbc.so ]; then
+      _ffmpeg_options+=('--enable-libilbc')
+    fi
+    if [ -f /usr/lib/libopenmpt.so ]; then
+      _ffmpeg_options+=('--enable-libopenmpt')
+    fi
+    # if [ -f /usr/lib/libmujs.so ]; then
+    #   _mpv_options+=('mujs')
+    # fi
+    if [ -f /usr/lib/libopenh264.so ]; then
+      _ffmpeg_options+=('--enable-libopenh264')
+    fi
+    if [ -f /usr/lib/librockchip_mpp.so ]; then
+      _ffmpeg_options+=('--enable-rkmpp')
+    fi
+    if [ -f /usr/lib/librsound.so ]; then
+      _mpv_options+=('--enable-rsound')
+    fi
+    if [ -f /usr/lib/libspirv-cross-c-shared.so ]; then
+      _mpv_options+=('--enable-spirv-cross')
+    fi
+    if [ -f /usr/lib/libshine.so ]; then
+      _ffmpeg_options+=('--enable-libvo-amrwbenc')
+    fi
+    if [ -f /usr/lib/libtensorflow.so ]; then
+      _ffmpeg_options+=('--enable-libtensorflow')
+      _ffmpeg_options+=('--extra-cflags=-I/usr/include/tensorflow')
+    fi
     if [ -f /usr/lib/libvapoursynth.so ]; then
       _mpv_options+=('--enable-vapoursynth')
     fi
+    if [ -f /usr/lib/libvo-amrwbenc.so ]; then
+      _ffmpeg_options+=('--enable-libvo-amrwbenc')
+    fi
+    if [ -f /usr/lib/libxavs.so ]; then
+      _ffmpeg_options+=('--enable-libxavs')
+    fi
+    if [ -f /usr/lib/libxavs2.so ]; then
+      _ffmpeg_options+=('--enable-libxavs2')
+    fi
+
     if [ -d /opt/cuda ]; then
       _ffmpeg_options+=('--enable-cuda-nvcc')
       _ffmpeg_options+=('--enable-libnpp')
       _ffmpeg_options+=('--extra-cflags=-I/opt/cuda/include')
       _ffmpeg_options+=('--extra-ldflags=-L/opt/cuda/lib64')
       _mpv_options+=('--enable-cuda-hwaccel')
-    fi
-    if [ -f /usr/lib/libtensorflow.so ]; then
-      _ffmpeg_options+=('--enable-libtensorflow')
-      _ffmpeg_options+=('--extra-cflags=-I/usr/include/tensorflow')
     fi
   fi
 
