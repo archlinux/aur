@@ -1,4 +1,4 @@
-# Maintainer: Nenad Stojanovikj <aur-web@nenad.dev>
+# Maintainer: Nenad Stojanovikj <me+aur@nenad.dev>
 # Previous maintainer: David Stark <david@starkers.org>
 
 pkgname=saml2aws
