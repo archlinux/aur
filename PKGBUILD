@@ -1,6 +1,6 @@
 pkgname=python-pdbpp
 _realname=pdbpp
-pkgver=0.10.0
+pkgver=0.10.2
 pkgrel=1
 pkgdesc="pdb++, a drop-in replacement for pdb"
 arch=(any)
@@ -10,7 +10,7 @@ depends=('python' 'python-fancycompleter' 'python-pygments')
 optdepends=('python-pyrepl-hg')
 options=(!emptydirs)
 source=("https://pypi.python.org/packages/source/p/$_realname/$_realname-$pkgver.tar.gz")
-md5sums=('2833ad812c473dd6c40bbcff3171bd49')
+sha256sums=('73ff220d5006e0ecdc3e2705d8328d8aa5ac27fef95cc06f6e42cd7d22d55eb8')
 
 package() {
   cd "$srcdir/$_realname-$pkgver"
