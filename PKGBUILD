@@ -42,11 +42,6 @@ build() {
 	./waf build
 }
 
-# check() {
-# 	cd "${srcdir}/${_reponame}"
-# 	./waf check
-# }
-
 package() {
 	cd "${srcdir}/${_pkgname}"
 	./waf install --destdir="${pkgdir}"
