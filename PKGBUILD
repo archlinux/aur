@@ -2,7 +2,7 @@
 
 pkgname=drawio-desktop
 pkgver=12.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Diagram drawing application built on web technology'
 arch=('x86_64')
 url='https://github.com/jgraph/drawio'
@@ -44,7 +44,7 @@ package() {
   mkdir -p "$pkgdir/usr/bin"
   printf '%s\n' \
   '#!/bin/sh' \
-  'exec electron /usr/lib/draw.io "$@" > /dev/null 2> /dev/null' \
+  'exec electron /usr/lib/draw.io "$@"' \
   > "$pkgdir/usr/bin/draw.io"
   chmod a+x "$pkgdir/usr/bin/draw.io"
 
