@@ -1,4 +1,4 @@
-# Maitainer: Andrew Rabert <ar@nullsum.net>
+# Maintainer: Andrew Rabert <ar@nullsum.net>
 # Contributor: Stefan Tatschner <stefan@rumpelsepp.org>
 # Contributor: Ian Beringer <ian@ianberinger.com>
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
