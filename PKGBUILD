@@ -198,6 +198,7 @@ build() {
 
 _package() {
     pkgdesc="The ${pkgbase/linux/Linux} kernel and modules with the AUFS"
+    depends=('coreutils' 'kmod' 'initramfs')
     optdepends=('crda: to set the correct wireless channels of your country'
                 'linux-firmware: firmware images needed for some devices')
     backup=("etc/mkinitcpio.d/$pkgbase.preset")
