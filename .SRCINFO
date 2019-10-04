@@ -1,5 +1,5 @@
 pkgbase = linux-next-git
-	pkgver = 20191003.r0.g2521ffab5375
+	pkgver = 20191004.r0.g311ef88adfa3
 	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = x86_64
@@ -33,10 +33,10 @@ pkgname = linux-next-git
 	pkgdesc = The Linux-next-git kernel and modules
 	install = linux.install
 	depends = coreutils
-	depends = linux-firmware
-	depends = mkinitcpio>=0.7
+	depends = kmod
+	depends = initramfs
 	optdepends = crda: to set the correct wireless channels of your country
-	optdepends = modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig
+	optdepends = linux-firmware: firmware images needed for some devices
 	backup = etc/mkinitcpio.d/linux-next-git.preset
 
 pkgname = linux-next-git-headers
