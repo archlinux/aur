@@ -2,17 +2,17 @@
 _pkgname=wootility
 pkgname=${_pkgname}-appimage
 pkgver=3.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Utility for configuring Wooting keyboards (binary AppImage version)'
 arch=('x86_64')
 url='https://wooting.io/wootility'
 license=('unknown')
 makedepends=('p7zip')
-optdepends=('no-appimage-desktop-integration: Stop AppImage system integration dialogue')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 options=(!strip)
 _appimage="${_pkgname}-${pkgver}-x86_64.AppImage"
+install=$pkgname.install
 source=("https://s3.eu-west-2.amazonaws.com/wooting-update/wootility-linux-latest/${_appimage}"
         '70-wooting.rules')
 noextract=("${_appimage}")
