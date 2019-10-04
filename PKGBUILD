@@ -22,7 +22,7 @@ optdepends=(
   "ttf-fira-mono: Recommended monospace font"
   "ttf-roboto-slab: Recommended font for documents"
 )
-source=("http://ppa.launchpad.net/system76/pop/ubuntu/pool/main/p/pop-gnome-shell-theme/pop-gnome-shell-theme_${pkgver}~${_timestamp}~19.10~${_commit}_all.deb")
+source=("http://ppa.launchpad.net/system76/pop/ubuntu/pool/main/p/pop-gtk-theme/pop-gnome-shell-theme_${pkgver}~${_timestamp}~19.10~${_commit}_all.deb")
 sha256sums=('1b38e6edaa7cb059dc7c95803c6817d13d7741698ab72fecd3468ce3906e5808')
 
 package() {
