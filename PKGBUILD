@@ -1,6 +1,6 @@
 # Maintainer: Sebastian Wolf <fatmike303 at gmail dot com>
 pkgname=ttf-c64
-pkgver=1.2
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="The best available C64 TrueType representation to date"
 arch=('any')
@@ -9,7 +9,7 @@ license=('http://style64.org/c64-truetype/license')
 depends=('fontconfig' 'xorg-font-utils')
 source=(http://style64.org/file/C64_TrueType_v${pkgver}-STYLE.zip)
 install=$pkgname.install
-md5sums=('b4e97f5c33671a2dc88a22b16b67b232')
+sha256sums=('b630ff545df6fed324bd9b6dc7336b7b93e8777668f45cbb3679561f9960ef2d')
 
 package() {
 #	mkdir -p $pkgdir/usr/share/fonts/TTF
