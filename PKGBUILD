@@ -2,7 +2,7 @@
 
 pkgname=btrfs-snapshot-git
 _srcname=btrfs-snapshot
-pkgver=1.0.0.r0.gdf33f43
+pkgver=1.0.2.r0.g2604a49
 pkgrel=1
 pkgdesc="Tool for creating btrfs snapshots"
 arch=('any')
@@ -18,16 +18,22 @@ pkgver() {
     git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
+prepare() {
+    cd "${_srcname}"
+    sed -e 's|\(^_f_parseopts\)=.*|\1=/usr/lib/btrfs-snapshot/parseopts|' \
+        -e "s|%VERSION%|${pkgver}|g" \
+        -i btrfs-snapshot
+}
+
 package() {
     cd "${_srcname}"
 
-    sed \
-        -e 's|\(^_f_parseopts\)=.*|\1=/usr/lib/btrfs-snapshot/parseopts|' \
-        -i btrfs-snapshot.sh
-    install -Dm755 btrfs-snapshot.sh "${pkgdir}"/usr/bin/btrfs-snapshot
+    install -dm755 "${pkgdir}"/usr/{bin,lib/{btrfs-snapshot,systemd/system}}
 
-    install -dm644 "${pkgdir}"/usr/lib/btrfs-snapshot
-    install -Dt ${pkgdir}/usr/lib/systemd/system -m644 systemd/*
+    install -Dm755 btrfs-snapshot "${pkgdir}"/usr/bin/btrfs-snapshot
+    install -Dm644 parseopts "${pkgdir}"/usr/lib/btrfs-snapshot/parseopts
+
+    install -Dt ${pkgdir}/usr/lib/systemd/system -m644 systemd/btrfs-snapshot@.{service,timer}
 }
 
 # vim: set ts=4 sw=4 et:
