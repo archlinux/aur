@@ -1,14 +1,14 @@
 # Maintainer: Fredrick Brennan <copypaste@kittens.ph>
 # Submitter: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 pkgname=blender-git
-pkgver=2.81.r90990.a1f16ba67fc
+pkgver=2.81.r91059.f35bfbb25ea
 pkgrel=1
 pkgdesc="A fully integrated 3D graphics creation suite (development)"
 arch=('i686' 'x86_64')
 url="http://blender.org/"
-depends=('libgl' 'python' 'desktop-file-utils' 'hicolor-icon-theme'
+depends=('alembic' 'libgl' 'python' 'desktop-file-utils' 'hicolor-icon-theme' 'openjpeg'
          'ffmpeg' 'fftw' 'openal' 'freetype2' 'libxi' 'openimageio' 'opencolorio'
-         'openshadinglanguage' 'libtiff' 'libpng' 'python-numpy')
+         'openvdb' 'opencollada' 'opensubdiv' 'openshadinglanguage' 'libtiff' 'libpng' 'python-numpy')
 optdepends=('cuda: CUDA support in Cycles'
             'optix: OptiX support in Cycles'
             'oidn: Intel Open Image Denoise support in compositing')
@@ -35,6 +35,8 @@ pkgver() {
   cd "$srcdir/blender"
   printf "%s.r%s.%s" "$(grep -Po "BLENDER_VERSION \K[0-9]{3}" source/blender/blenkernel/BKE_blender_version.h|sed 's/./&./1')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
+
+ _pyver=$(python -c "from sys import version_info; print(\"%d.%d\" % (version_info[0],version_info[1]))")
 
 # determine whether we can precompile CUDA kernels
 _CUDA_PKG=`pacman -Qq cuda 2>/dev/null` || true
@@ -71,15 +73,16 @@ build() {
   cd "$srcdir/blender-build"
 
   cmake "$srcdir/blender" \
-        -DPYTHON_NUMPY_PATH=/usr/lib/python3.7/site-packages \
+        -C${srcdir}/blender/build_files/cmake/config/blender_release.cmake \
         -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_BUILD_TYPE=Release \
         -DWITH_INSTALL_PORTABLE=OFF \
         -DWITH_OPENCOLORIO=ON \
         -DWITH_FFTW3=ON \
         -DWITH_SYSTEM_GLEW=ON \
         -DWITH_CODEC_FFMPEG=ON \
         -DWITH_PYTHON_INSTALL=OFF \
-        -DPYTHON_VERSION=3.7m \
+        -DPYTHON_VERSION=${_pyver} \
         -DWITH_MOD_OCEANSIM=ON \
         $_EXTRAOPTS
   make
