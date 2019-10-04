@@ -1,8 +1,8 @@
-pkgbase = ndn-tools-git
-	pkgdesc = ndn-tools is a collection of basic tools for Named Data Networking
-	pkgver = ndn.tools.0.6.4.r23.g11c6991
+pkgbase = ndn-traffic-generator-git
+	pkgdesc = This tool is designed to generate Interest and Data traffic in an NDN network
+	pkgver = r46.d2ef9a7
 	pkgrel = 1
-	url = https://github.com/named-data/ndn-tools
+	url = https://github.com/named-data/ndn-traffic-generator
 	arch = any
 	license = GPL
 	makedepends = git
@@ -14,10 +14,10 @@ pkgbase = ndn-tools-git
 	makedepends = openssl>=1.0.2
 	depends = ndn-cxx
 	depends = boost
-	provides = ndn-tools
-	conflicts = ndn-tools
-	source = git+https://github.com/named-data/ndn-tools.git
+	provides = ndn-traffic-generator
+	conflicts = ndn-traffic-generator
+	source = git+https://github.com/named-data/ndn-traffic-generator.git
 	sha256sums = SKIP
 
-pkgname = ndn-tools-git
+pkgname = ndn-traffic-generator-git
 

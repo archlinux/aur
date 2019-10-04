@@ -1,10 +1,10 @@
 # Maintainer: Filippo Berto <berto.f@protonmail.com>
-_pkgname=ndn-tools
+_pkgname=ndn-traffic-generator
 pkgname=${_pkgname}-git
-pkgver=ndn.tools.0.6.4.r0.g6cc1dfb
+pkgver=r46.d2ef9a7
 pkgrel=1
 # epoch=
-pkgdesc="ndn-tools is a collection of basic tools for Named Data Networking"
+pkgdesc="This tool is designed to generate Interest and Data traffic in an NDN network"
 arch=("any")
 url="https://github.com/named-data/${_pkgname}"
 license=('GPL')
@@ -26,7 +26,6 @@ validpgpkeys=()
 
 prepare() {
 	cd "${srcdir}/${_pkgname}"
-	git checkout `git describe --tags --abbrev=0`
 	git submodule update --init
 	# Run the initial configuration
 	./waf configure
@@ -34,7 +33,7 @@ prepare() {
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
-	git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
