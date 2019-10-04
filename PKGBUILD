@@ -2,7 +2,7 @@
 
 pkgname=btrfs-snapshot-git
 _srcname=btrfs-snapshot
-pkgver=1.0.2.r0.g2604a49
+pkgver=1.0.2.r1.g4dd6670
 pkgrel=1
 pkgdesc="Tool for creating btrfs snapshots"
 arch=('any')
@@ -21,7 +21,7 @@ pkgver() {
 prepare() {
     cd "${_srcname}"
     sed -e 's|\(^_f_parseopts\)=.*|\1=/usr/lib/btrfs-snapshot/parseopts|' \
-        -e "s|%VERSION%|${pkgver}|g" \
+        -e "s|VERSION|${pkgver}|g" \
         -i btrfs-snapshot
 }
 
