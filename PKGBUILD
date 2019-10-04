@@ -3,7 +3,7 @@
 pkgbase=vimix-kde-git
 _gitname=vimix-kde
 pkgname=('vimix-kde-git' 'kvantum-theme-vimix-git')
-pkgver=20.0826e30
+pkgver=23.0b832b4
 pkgrel=1
 pkgdesc="Vimix kde is a flat Design theme for KDE Plasma desktop"
 arch=('any')
