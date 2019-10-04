@@ -1,7 +1,7 @@
 # Maintainer: Lucas H. Gabrielli <heitzmann at gmail dot com>
 
 pkgname=slepc-git
-pkgver=20190113
+pkgver=20191004
 pkgrel=1
 pkgdesc="Scalable library for Eigenvalue problem computations"
 provides=(slepc)
@@ -73,7 +73,7 @@ package() {
 	#rm -f "${_dest_dir}/lib/slepc/conf/make.log"
 
 	# install licence (even though there is no such word as licenses)
-  install -Dm 644 ${_build_dir}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+  install -Dm 644 ${_build_dir}/LICENSE.md ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md
 
 	mkdir -p "${pkgdir}/etc/profile.d"
 	echo "export SLEPC_DIR=${_install_dir}" > "${pkgdir}/etc/profile.d/slepc.sh"

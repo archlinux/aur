@@ -1,6 +1,6 @@
 pkgbase = slepc-git
 	pkgdesc = Scalable library for Eigenvalue problem computations
-	pkgver = 20190113
+	pkgver = 20191004
 	pkgrel = 1
 	url = http://www.grycap.upv.es/slepc
 	install = slepc.install
