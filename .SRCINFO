@@ -1,6 +1,6 @@
 pkgbase = linux-rt-bfq
 	pkgver = 5.2.17.rt9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sirlucjan/bfq-mq-lucjan
 	arch = x86_64
 	license = GPL2
@@ -49,10 +49,10 @@ pkgname = linux-rt-bfq
 	pkgdesc = The Linux-rt-bfq kernel and modules with the RT patch.
 	install = linux.install
 	depends = coreutils
-	depends = linux-firmware
-	depends = mkinitcpio>=0.7
+	depends = kmod
+	depends = initramfs
 	optdepends = crda: to set the correct wireless channels of your country
-	optdepends = modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig
+	optdepends = linux-firmware: firmware images needed for some devices
 	backup = etc/mkinitcpio.d/linux-rt-bfq.preset
 
 pkgname = linux-rt-bfq-headers
