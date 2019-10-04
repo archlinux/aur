@@ -1,0 +1,13 @@
+pkgbase = icingaweb2-module-ipl
+	pkgdesc = The Icinga PHP library for Icinga Web 2
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = http://www.icinga.org
+	arch = any
+	license = GPL
+	depends = icingaweb2
+	source = https://github.com/Icinga/icingaweb2-module-ipl/archive/v0.3.0.tar.gz
+	sha256sums = 2dc82adfd995c45d01f1d136d9eed8d8f1a942a97aacc52476402f750e1d3808
+
+pkgname = icingaweb2-module-ipl
+
