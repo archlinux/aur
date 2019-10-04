@@ -2,7 +2,7 @@
 
 _gemname=rails-html-sanitizer
 pkgname=ruby-$_gemname
-pkgver=1.0.4
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='HTML sanitization for Rails applications'
 arch=(any)
@@ -12,7 +12,7 @@ depends=(ruby ruby-loofah)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('99cbc3d267856f6731663e654140be298393b1ee966027efab5dbcd44ade67bf')
+sha256sums=('386f7b52a3c7a436ae2faa9886da3e5dc1b06c7ac90a9c58a1781d35eaef9c46')
 
 package() {
     local _gemdir="$(ruby -e'puts Gem.default_dir')"
