@@ -1,0 +1,12 @@
+[Unit]
+Description=Mercure - Server-sent live updates
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/mercure
+User=mercure
+Group=mercure
+RuntimeDirectory=mercure
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,15 @@
+pkgbase = mercure
+	pkgdesc = Server-sent live updates: protocol and reference implementation
+	pkgver = 0.6.2
+	pkgrel = 1
+	url = https://mercure.rocks
+	arch = i686
+	arch = x86_64
+	license = AGPL-3.0
+	source_i686 = mercure-0.6.2_i686::https://github.com/dunglas/mercure/releases/download/v0.6.2/mercure_0.6.2_Linux_i386.tar.gz
+	sha256sums_i686 = 7dd0dabb10e38eb0bce5fcc9905b6bc2d8e8753cd43a34d5a7060df8cfacb1b9
+	source_x86_64 = mercure-0.6.2_x86_64::https://github.com/dunglas/mercure/releases/download/v0.6.2/mercure_0.6.2_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 0cd0c6307f4f9eec9922c84e1f3a42226d398a9466998d225562deea23bf11cc
+
+pkgname = mercure
+

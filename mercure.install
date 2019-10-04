@@ -1,0 +1,25 @@
+post_install() {
+  if [[ -z $(getent group mercure) ]]; then
+    groupadd mercure
+  fi
+
+  if [[ -z $(getent passwd mercure) ]]; then
+    useradd -c 'Mercure' -g mercure -d / -s /usr/bin/nologin mercure
+  fi
+
+  passwd -l mercure > /dev/null
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  if [[ -n $(getent passwd mercure) ]]; then
+    userdel mercure
+  fi
+
+  if [[ -n $(getent group mercure) ]]; then
+    groupdel mercure
+  fi
+}
