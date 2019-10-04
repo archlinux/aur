@@ -1,8 +1,9 @@
 # Maintainer: robertfoster
 # Contributor: Robert Booster > booster.devel@gmail.com
+
 pkgbase=python-gmusicapi
 pkgname=('python2-gmusicapi' 'python-gmusicapi')
-pkgver="12.1.0"
+pkgver="12.1.1"
 pkgrel=1
 pkgdesc="An unofficial client library for Google Music"
 arch=('any')
@@ -32,4 +33,4 @@ package_python-gmusicapi() {
 	python setup.py install --root="$pkgdir" --optimize=1
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-md5sums=('b1e21ab4f4662d72fc525f7d72243f10')
+md5sums=('3ec1bd2da0520e5531a4ac6ee7331571')
