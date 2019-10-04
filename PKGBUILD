@@ -18,8 +18,8 @@ source=("https://github.com/openembedded/bitbake/archive/${pkgver}.tar.gz")
 md5sums=('750aad7ff997a1c206f4a59f1785b7ea')
 
 check() {
-    cd ${pkgbase}-${pkgver}/bin
-    PYTHONPATH="${srcdir}/${pkgbase}-${pkgver}/lib" python ./bitbake-selftest
+    cd "${pkgbase}-${pkgver}/bin"
+    PYTHONPATH="${srcdir}/${pkgbase}-${pkgver}/lib" PATH="${PATH}:${srcdir}/${pkgbase}-${pkgver}/bin" python ./bitbake-selftest
 }
 
 package_bitbake() {
@@ -35,7 +35,7 @@ package_bitbake() {
     )
     install=bitbake.install
 
-    cd ${pkgbase}-${pkgver}
+    cd "${pkgbase}-${pkgver}"
 
     install -d "${pkgdir}/usr/bin"
     install bin/bitbake* "${pkgdir}/usr/bin"
@@ -49,7 +49,7 @@ package_bitbake() {
 }
 
 package_bitbake-vim() {
-    cd ${pkgbase}-${pkgver}
+    cd "${pkgbase}-${pkgver}"
 
     install -d "${pkgdir}/usr/share"
     cp -Ra contrib/vim "${pkgdir}/usr/share"
