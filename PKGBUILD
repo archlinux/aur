@@ -12,7 +12,7 @@ license=('MIT')
 depends=('zlib')
 options=(!strip)
 source_x86_64=("${pkgname}-${pkgver}.AppImage::https://github.com/LN-Zap/zap-desktop/releases/download/v${_ver}/Zap-linux-x86_64-v${_ver}.AppImage"
-               "https://raw.githubusercontent.com/LN-Zap/zap-desktop/v0.5.2-beta/LICENSE"
+               "https://raw.githubusercontent.com/LN-Zap/zap-desktop/v${_ver}/LICENSE"
               )
 noextract=("${pkgname}-${pkgver}.AppImage")
 sha256sums_x86_64=('f42e08a2b87f4e192aa8cc67cb7c5d001dc1262fbb0e541600e4bf7dda45b8b2'
