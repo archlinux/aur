@@ -6,7 +6,7 @@ pkgdesc="Ethernet traffic visualizer for zeek"
 arch=('x86_64')
 url="https://github.com/nskelsey/monopticon"
 license=('GPL')
-depends=("zeek-broker" "zeek" "magnum-git" "corrade-git" "magnum-integration" "magnum-plugin-git" "imgui-src")
+depends=("zeek-broker" "zeek" "magnum-git" "corrade-git" "magnum-integration" "magnum-plugins-git" "imgui-src")
 source=("git+https://github.com/nskelsey/monopticon")
 md5sums=('SKIP')
 
