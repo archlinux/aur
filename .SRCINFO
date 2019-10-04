@@ -1,19 +1,15 @@
 pkgbase = matcha-gtk-theme
 	pkgdesc = A flat design themes for GNOME, MATE, Openbox, Unity, XFCE, Budgie
-	pkgver = 20190605
+	pkgver = 2019_10_03
 	pkgrel = 1
-	url = https://www.gnome-look.org/p/1187179
+	url = https://github.com/vinceliuice/matcha
 	arch = any
 	license = GPL3
 	depends = gtk-engine-murrine
 	depends = gtk-engines
 	depends = gtk3
-	source = https://dl.opendesktop.org/api/files/download/id/1559729670/s/1632a24201b0b62b0a6278ba4de58a24431fd6a17024eded98edb6c9d0a6d9f1cb724516ae3f2a16fdd76f896de656f072a129d9413be375e82871cbd8fdd04b/t/1560014414/lt/download/Matcha-sea.tar.xz
-	source = https://dl.opendesktop.org/api/files/download/id/1559728977/s/1632a24201b0b62b0a6278ba4de58a24431fd6a17024eded98edb6c9d0a6d9f1cb724516ae3f2a16fdd76f896de656f072a129d9413be375e82871cbd8fdd04b/t/1560014414/lt/download/Matcha-azul.tar.xz
-	source = https://dl.opendesktop.org/api/files/download/id/1559729711/s/1632a24201b0b62b0a6278ba4de58a24431fd6a17024eded98edb6c9d0a6d9f1cb724516ae3f2a16fdd76f896de656f072a129d9413be375e82871cbd8fdd04b/t/1560014414/lt/download/Matcha-aliz.tar.xz
-	sha256sums = 4099b09e80c7df60de0a99862903c1082e1ae7cc726a89916316f8b5f55f6347
-	sha256sums = a2cd4048e495a1bf7d7277f2deedca1bb3fa7d33c7ca46ad282859399e30a070
-	sha256sums = 928e0e4b0caee0e9d158353fe962bdc89949e0a06b46f458aeec30c2d6a678e9
+	source = https://github.com/vinceliuice/matcha/archive/2019-10-03.tar.gz
+	sha256sums = b32b3fbadcfdbee3ac6ed2c44c260da7dbf8f9ba8b9f42fa56f2e000a3a8542c
 
 pkgname = matcha-gtk-theme
 
