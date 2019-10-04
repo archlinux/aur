@@ -2,8 +2,9 @@
 # Maintainer: Jan de Groot <jgc@archlinux.org>
 
 pkgname=librsvg-git
-pkgver=2.41.0.r3.gec3353e
-pkgrel=2
+_pkgname=librsvg
+pkgver=2.46.0.r79.g4df27786
+pkgrel=1
 pkgdesc="A SVG viewing library"
 arch=(i686 x86_64)
 license=('LGPL')
@@ -12,11 +13,11 @@ makedepends=('intltool' 'gobject-introspection' 'vala' 'python2' 'git' 'cargo' '
 optdepends=('gtk3: to run rsvg-view-3 viewer')
 options=('!emptydirs')
 url="https://live.gnome.org/LibRsvg"
-install=librsvg.install
-provides=('librsvg')
-conflicts=('librsvg')
-source=("$pkgname::git://git.gnome.org/librsvg")
+install=$_pkgname.install
+source=("$pkgname::git+https://gitlab.gnome.org/GNOME/$_pkgname.git")
 sha256sums=('SKIP')
+provides=("${_pkgname}=${pkgver%%.r*}-${pkgrel}")
+conflicts=("${_pkgname}")
 
 pkgver() {
   cd $pkgname
