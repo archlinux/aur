@@ -1,6 +1,6 @@
 pkgbase = linux-bcachefs-git
 	pkgver = 5.2.18.arch1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/koverstreet/bcachefs
 	arch = x86_64
 	license = GPL2
@@ -34,11 +34,11 @@ pkgname = linux-bcachefs-git
 	pkgdesc = The Linux-bcachefs-git kernel and modules ~ featuring Kent Overstreet's bcachefs filesystem
 	install = linux.install
 	depends = coreutils
-	depends = linux-firmware
 	depends = kmod
-	depends = mkinitcpio
+	depends = initramfs
 	depends = bcachefs-tools-git
 	optdepends = crda: to set the correct wireless channels of your country
+	optdepends = linux-firmware: firmware images needed for some devices
 	provides = linux-bcachefs-git=5.2.18.arch1
 	backup = etc/mkinitcpio.d/linux-bcachefs-git.preset
 

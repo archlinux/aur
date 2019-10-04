@@ -63,7 +63,7 @@ _localmodcfg=
 pkgbase=linux-bcachefs-git
 _srcver_tag=5.2.18-arch1
 pkgver=${_srcver_tag//-/.}
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 url="https://github.com/koverstreet/bcachefs"
 license=(GPL2)
@@ -187,12 +187,14 @@ _package() {
     pkgdesc="The ${pkgbase/linux/Linux} kernel and modules $_pkgdesc_extra"
     depends=(
         coreutils
-        linux-firmware
         kmod
-        mkinitcpio
+        initramfs
         bcachefs-tools-git
     )
-    optdepends=("crda: to set the correct wireless channels of your country")
+    optdepends=(
+        "crda: to set the correct wireless channels of your country"
+        "linux-firmware: firmware images needed for some devices"
+    )
     provides=("$pkgbase=$pkgver")
     backup=("etc/mkinitcpio.d/$pkgbase.preset")
     install=linux.install
@@ -207,6 +209,9 @@ _package() {
     # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
     install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
     install -Dm644 "$modulesdir/vmlinuz" "$pkgdir/boot/vmlinuz-$pkgbase"
+
+    # Used by mkinitcpio to name the kernel
+    echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
     msg2 "Installing modules..."
     make INSTALL_MOD_PATH="$pkgdir/usr" modules_install
