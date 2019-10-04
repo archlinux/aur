@@ -1,0 +1,15 @@
+pkgbase = aurrpkgs-git
+	pkgdesc = Manage AUR R packages
+	pkgver = r8.86048fb
+	pkgrel = 1
+	url = https://github.com/dvdesolve/aurrpkgs
+	arch = any
+	license = GPL3
+	depends = python>=3.2.0
+	provides = aurrpkgs
+	conflicts = aurrpkgs
+	source = aurrpkgs-git::git+https://github.com/dvdesolve/aurrpkgs.git
+	sha1sums = SKIP
+
+pkgname = aurrpkgs-git
+
