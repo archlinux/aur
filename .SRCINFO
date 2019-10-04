@@ -1,13 +1,12 @@
 pkgbase = btrfs-snapshot-git
 	pkgdesc = Tool for creating btrfs snapshots
 	pkgver = 1.1.0.r0.g276df17
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/YHNdnzj/btrfs-snapshot
 	arch = any
 	license = MIT
 	depends = bash
 	depends = btrfs-progs
-	optdepends = systemd: Daily create snapshots
 	source = git+https://github.com/YHNdnzj/btrfs-snapshot.git
 	md5sums = SKIP
 
