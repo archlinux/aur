@@ -1,6 +1,6 @@
 pkgbase = btrfs-snapshot-git
 	pkgdesc = Tool for creating btrfs snapshots
-	pkgver = 1.1.r0.g276df17
+	pkgver = 1.1.0.r0.g276df17
 	pkgrel = 1
 	url = https://github.com/YHNdnzj/btrfs-snapshot
 	arch = any
