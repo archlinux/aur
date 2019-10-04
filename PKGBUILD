@@ -7,7 +7,7 @@ pkgdesc='Music downloader for usenet and torrents.'
 arch=(any)
 url='https://github.com/lidarr/Lidarr'
 license=('GPL3')
-depends=('mono' 'libmediainfo' 'sqlite' 'chromaprint')
+depends=('mono' 'sqlite' 'chromaprint')
 optdepends=('sabnzbd: usenet downloader'
             'nzbget: usenet downloader'
             'transmission-cli: torrent downloader (CLI and daemon)'
