@@ -2,7 +2,7 @@
 # Previous maintainer: David Stark <david@starkers.org>
 
 pkgname=saml2aws
-pkgver=2.16.0
+pkgver=2.17.0
 _build=${pkgver}
 pkgrel=1
 pkgdesc="CLI tool which enables you to login and retrieve AWS temporary credentials using a SAML IDP"
@@ -12,7 +12,7 @@ license=("MIT")
 conflicts=()
 
 source_x86_64=("https://github.com/Versent/saml2aws/releases/download/v${pkgver}/saml2aws_${pkgver}_linux_amd64.tar.gz")
-md5sums_x86_64=("58f69c59b6fcd76bffed662eb2d80ac4")
+md5sums_x86_64=("06f5418db28da406dda31f2fc345edce")
 
 package() {
     install -d ${pkgdir}/usr/bin
