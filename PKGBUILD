@@ -3,9 +3,9 @@
 
 pkgbase=bcc
 pkgname=('bcc' 'bcc-tools' 'python-bcc' 'python2-bcc')
-pkgver=0.10.0
-_libbpf_commit='59a6415'
-pkgrel=2
+pkgver=0.11.0
+_libbpf_commit='1a26b51'
+pkgrel=1
 pkgdesc='BPF Compiler Collection'
 arch=('x86_64')
 url='https://github.com/iovisor/bcc'
@@ -14,8 +14,8 @@ makedepends=('cmake' 'clang>=3.7.0' 'llvm>=3.7.0' 'flex' 'bison' 'python' 'pytho
 checkdepends=('netperf' 'iperf')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/iovisor/${pkgname}/archive/v${pkgver}.tar.gz"
 	"libbpf-${_libbpf_commit}.tar.gz"::"https://github.com/libbpf/libbpf/archive/${_libbpf_commit}.tar.gz")
-sha512sums=('92ba0f57d22af610ac81661526fed8bec80d502bcbc8aa5048ba7c50911247c020832db23afdcf9b555b142cd387c228cf7baa0ddc94067165403e362227f235'
-            '9a1f15a3b459bd7528456756d2a6d0165ea26e2e66c03f9625627efc4cde187e2a28b7fcbc52a8649b7f8003be9ba99ba3b8f73d4f0ff1276d57e8e46c039e34')
+sha512sums=('4854a5a15a89a8bd3a10daa6f0e831428316751280902cbdc74f3c6f78263ee1c58521ae9125804e72fec6482702818a5fec781436400640627e4b7c2fc189fb'
+            '6b28817fe9e7b77a9fea7999318486f3bd0cfa8d59d4bba728e88487118aa45a4bd0c36400c52549f17806faa2faff93ce0cfbb68c500b8ba98d327790e0d6c6')
 
 prepare() {
 	# Move git-submodule into right place without invoking git
