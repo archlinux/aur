@@ -15,6 +15,7 @@ pkgbase = mate-meta-dev
 	depends = marco-dev
 	depends = mate-applets-dev
 	depends = mate-backgrounds-dev
+	depends = mate-common-dev
 	depends = mate-control-center-dev
 	depends = mate-desktop-dev
 	depends = mate-icon-theme-dev
