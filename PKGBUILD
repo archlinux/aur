@@ -3,16 +3,16 @@
 pkgbase=python-control
 pkgname=('python2-control' 'python-control')
 pkgver=0.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Implements basic operations for analysis and design of feedback control systems in Python"
 arch=('any')
 license=('BSD')
 url="https://github.com/python-control/python-control"
 depends=('python-scipy'
          'python-matplotlib')
-optdepends=('python-slycot-git: matrix equation support, model simplification tools, and state feedback')
+optdepends=('python-slycot: matrix equation support, model simplification tools, and state feedback')
 makedepends=('python-setuptools' 'python2-setuptools')
-checkdepends=('python-nose' 'python2-nose' 'python-slycot-git')
+checkdepends=('python-nose' 'python2-nose' 'python-slycot')
 options=('staticlibs')
 source=("https://github.com/python-control/python-control/archive/${pkgver}.tar.gz"
         "LICENSE")
