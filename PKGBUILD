@@ -14,7 +14,7 @@ sha256sums=('36d5952124f14fc7606f90496bc4cd59d6323c7cf5667b5ff6ec809d327ed0ef'
             '330273cec48faaa726768c42ed837aca0ad91776d4a004f70b703bf4d59e3658')
 
 package() {
-  mv "${pkgname}.jar?responder=releaseDownload&release=${pkgver}" "${pkgname}.jar"
+  mv "fitnesse-${pkgver}.jar" "${pkgname}.jar"
   install -Dm 644 "${srcdir}/${pkgname}.jar" "${pkgdir}/usr/share/java/${pkgname}/${pkgname}.jar"
 
   install -Dm 755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
