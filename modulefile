@@ -1,0 +1,25 @@
+#%Module1.0
+#
+# Created by Darjan Krijan <darjan_krijan@gmx.de>
+#
+
+set MODULE     "aocl"
+set BASE_DIR   "/opt"
+set VERSION    "2.0"
+set AOCL_ROOT  "$BASE_DIR/$MODULE"
+set AOCL_TEXT  "AMD Optimizing CPU Libraries"
+
+append-path  PKG_CONFIG_PATH  $AOCL_ROOT/pkgconfig
+
+module-whatis  "$AOCL_TEXT version $VERSION"
+
+proc ModulesHelp {} {
+	global AOCL_TEXT
+	puts stderr "This module sets up the environment for $AOCL_TEXT"
+	puts stderr "by adapting the following environment variables:"
+	puts stderr "PATH"
+	puts stderr "LIBRARY_PATH"
+	puts stderr "LD_LIBRARY_PATH"
+	puts stderr "C_INCLUDE_PATH"
+	puts stderr "CPLUS_INCLUDE_PATH"
+}
