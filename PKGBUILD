@@ -1,7 +1,7 @@
 # Maintainer: Jonas Schürmann <jonasschuermann@aol.de>
 # Contributor: Matt Bray <mattjbray@gmail.com>
 pkgname=elm-format-bin
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
 epoch=
 pkgdesc="Format Elm source code according to a standard set of rules based on the official Elm Style Guide."
@@ -24,9 +24,9 @@ source=("https://github.com/avh4/elm-format/releases/download/${pkgver}/elm-form
         "https://github.com/avh4/elm-format/releases/download/${pkgver}/elm-format-${pkgver}-linux-x64.tgz.asc"
         "LICENSE-${pkgver}::https://raw.githubusercontent.com/avh4/elm-format/${pkgver}/LICENSE")
 noextract=()
-md5sums=('366c584a6bb551fd8c5ecfd62109ea1e'
+md5sums=('dadd9125a66350fcc0ad523e3f21b233'
          'SKIP'
-         '66f2ab57c97494e29cc93d062395eb5f')
+         '547aa901ebac3bd013c6579006dca1eb')
 validpgpkeys=('C3B74EE9EBC8412DFEE1FECE11357FB6FDD7BEC0')
 
 package() {
