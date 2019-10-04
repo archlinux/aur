@@ -23,6 +23,6 @@ package() {
     cd "$srcdir/$pkgname"
 
     install -d -m755 "$pkgdir/usr/share/fonts/misc"
-    install -D -m644 *.pcf "$pkgdir/usr/share/fonts/misc"
+    install -D -m644 *.otb "$pkgdir/usr/share/fonts/misc"
     install -D -m644 LICENSE "$pkgdir/usr/share/licences/$pkgname/LICENSE"
 }
