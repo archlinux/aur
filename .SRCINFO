@@ -5,7 +5,6 @@ pkgbase = editorconfig-core-lua
 	url = https://github.com/editorconfig/editorconfig-core-lua
 	arch = any
 	license = custom:BSD
-	makedepends = git
 	makedepends = cmake
 	depends = lua
 	depends = editorconfig-core-c
