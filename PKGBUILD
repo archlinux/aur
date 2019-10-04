@@ -1,7 +1,7 @@
 # Maintainer: David Parrish <daveparrish@tutanota.com>
 
 pkgname=zap-desktop-appimage
-pkgver=0.5.2_beta
+pkgver=0.5.3_beta
 # Actual version used by project
 _ver=${pkgver//_/-}
 pkgrel=1
@@ -15,7 +15,7 @@ source_x86_64=("${pkgname}-${pkgver}.AppImage::https://github.com/LN-Zap/zap-des
                "https://raw.githubusercontent.com/LN-Zap/zap-desktop/v0.5.2-beta/LICENSE"
               )
 noextract=("${pkgname}-${pkgver}.AppImage")
-sha256sums_x86_64=('431ce50ddfe422b6d4ddc608855642c0cc361d9c30ae926b7159e01c33fc05be'
+sha256sums_x86_64=('f42e08a2b87f4e192aa8cc67cb7c5d001dc1262fbb0e541600e4bf7dda45b8b2'
                    'c7779cd186930fa9bd4d900b2243b3302f01cd593ac19098bbeb123c8ebf9d72')
 
 package() {
