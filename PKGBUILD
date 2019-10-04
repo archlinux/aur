@@ -1,6 +1,6 @@
 # Maintainer: Daniel Peukert <dan.peukert@gmail.com>
 pkgname='mongodb-compass-readonly-beta'
-pkgver='1.20.0beta.5'
+pkgver='1.20.0beta.7'
 pkgrel='1'
 pkgdesc='The official GUI for MongoDB - Readonly Edition (beta version)'
 arch=('x86_64')
@@ -9,11 +9,11 @@ license=('custom')
 depends=('electron3' 'libsecret')
 optdepends=('gnome-keyring')
 source=(
-	'https://downloads.mongodb.com/compass/beta/mongodb-compass-readonly-beta-1.20.0-beta.5.x86_64.rpm'
+	'https://downloads.mongodb.com/compass/beta/mongodb-compass-readonly-beta-1.20.0-beta.7.x86_64.rpm'
 	'launch.sh'
 )
 sha256sums=(
-	'553e0730c6677d454a49507f63efae490782a8e529b0ecb436f6f7fd9c2901ff'
+	'ed7e0073ac6517ce4f9112766d7eb906dda45e43949959b790444f6f58d5e386'
 	'3b624e8b0982ca1418da7b30bca2d52ccee22831de93d9c7b8f87a49791e8e73'
 )
 
