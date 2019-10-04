@@ -2,14 +2,14 @@
 
 pkgbase=petrified
 pkgname=('petrified' 'petrified-systemd')
-pkgver=2.0.2
+pkgver=2.0.3
 pkgrel=1
 arch=('any')
 url="https://gitlab.com/troyengel/petrified"
 license=('GPL3')
 options=('emptydirs')
 source=("https://gitlab.com/troyengel/petrified/-/archive/v${pkgver}/petrified-v${pkgver}.tar.gz")
-sha256sums=('b60d1e0b45f3da33b3f89f0eff9711bfe4be28abd5529c0ee2140293e33fc08c')
+sha256sums=('bb01029abc7796d2dd824f88beb2da05fb8da10ceb3ec7a0c1682631d670fc27')
 
 package_petrified() {
   pkgdesc="Bash client to update dynamic DNS at freedns.afraid.org"
