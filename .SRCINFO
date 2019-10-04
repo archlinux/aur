@@ -1,6 +1,6 @@
 pkgbase = ykdl-git
 	pkgdesc = a video downloader focus on China mainland video sites.
-	pkgver = 1.6.3.r73.e47c5a5
+	pkgver = 1.6.3.r122.53ace3d
 	pkgrel = 1
 	url = https://github.com/zhangn1985/ykdl
 	arch = any
