@@ -54,7 +54,7 @@ _rtpatchver=rt${_rtver}
 pkgver=${_major}.${_minor}.${_rtpatchver}
 _pkgver=${_major}.${_minor}
 _srcname=linux-${_pkgver}
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://github.com/sirlucjan/bfq-mq-lucjan"
 license=('GPL2')
@@ -208,7 +208,8 @@ _package() {
     pkgdesc="The ${pkgbase/linux/Linux} kernel and modules with the RT patch."
     depends=('coreutils' 'kmod' 'initramfs')
     optdepends=('crda: to set the correct wireless channels of your country'
-                'linux-firmware: firmware images needed for some devices')
+                'linux-firmware: firmware images needed for some devices'
+                'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig')
     backup=("etc/mkinitcpio.d/${pkgbase}.preset")
     install=linux.install
 
