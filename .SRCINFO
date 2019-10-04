@@ -1,21 +1,22 @@
 pkgbase = meld-git
 	pkgdesc = Visual diff and merge tool
-	pkgver = 3.19.1.6.g23b6fea8
+	pkgver = 3.20.0.465.gc931d532
 	pkgrel = 1
 	url = http://meldmerge.org/
 	install = meld.install
 	arch = any
 	license = GPL
+	makedepends = meson
 	makedepends = intltool
 	makedepends = gnome-doc-utils
 	makedepends = git
 	makedepends = itstool
 	depends = python>=3.3
-	depends = gtk3>=3.6
-	depends = glib2>=2.36
-	depends = python-gobject>=3.14
-	depends = pygobject-devel>=3.14
-	depends = gtksourceview3>=3.14
+	depends = gtk3>=3.20
+	depends = glib2>=2.48
+	depends = python-gobject>=3.30
+	depends = pygobject-devel>=3.30
+	depends = gtksourceview4>=4.0.0
 	depends = python-cairo>=1.10.0-6
 	optdepends = python-dbus: open a new tab in an already running instance
 	provides = meld

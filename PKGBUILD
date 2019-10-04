@@ -1,22 +1,26 @@
-# Maintainer: Jason Edson <jason@oceighty.co>
+# Maintainer: Jason Edson <jaysonedson@gmail.com>
 
 _pkgname=meld
 pkgname=$_pkgname-git
-pkgver=3.20.0.350.gb6d17fe6
+pkgver=3.20.0.465.gc931d532
 pkgrel=1
-_realver=3.19.1
+_realver=3.21.0
 pkgdesc='Visual diff and merge tool'
 arch=('any')
 url='http://meldmerge.org/'
 license=('GPL')
 depends=('python>=3.3'
-        'gtk3>=3.6'
-	'glib2>=2.36'
-	'python-gobject>=3.14'
-	'pygobject-devel>=3.14'
-	'gtksourceview3>=3.14'
-        'python-cairo>=1.10.0-6')
-makedepends=('intltool' 'gnome-doc-utils' 'git' 'itstool')
+         'gtk3>=3.20'
+         'glib2>=2.48'
+         'python-gobject>=3.30'
+         'pygobject-devel>=3.30'
+         'gtksourceview4>=4.0.0'
+         'python-cairo>=1.10.0-6')
+makedepends=('meson'
+             'intltool'
+             'gnome-doc-utils'
+             'git'
+             'itstool')
 optdepends=('python-dbus: open a new tab in an already running instance')
 conflicts=('meld' 'meld-dev')
 provides=('meld')
@@ -26,24 +30,21 @@ source=("git+https://github.com/GNOME/meld.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
-  git describe --always | sed 's|-|.|g'
+    cd "$srcdir/$_pkgname"
+    git describe --always | sed 's|-|.|g'
 }
 
 prepare() {
-  cd "$srcdir/$_pkgname"
+    cd "$srcdir/$_pkgname"
 }
 
 build() {
-  cd "$srcdir/$_pkgname"
-  python3 setup.py build
+    cd "$srcdir/$_pkgname"
+    arch-meson build -D docs=true
+    ninja -C build
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
-  python3 setup.py \
-  	--no-update-icon-cache --no-compile-schemas install \
-  	--prefix=/usr \
-  	--root="${pkgdir}" \
-  	--optimize=1
+    cd "$srcdir/$_pkgname"
+    DESTDIR="${pkgdir}" meson install -C build
 }
