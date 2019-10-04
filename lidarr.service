@@ -5,7 +5,7 @@ After=syslog.target network.target
 [Service]
 User=lidarr
 Group=lidarr
-ExecStart=/usr/bin/mono --debug /usr/lib/lidarr/Lidarr.exe -nobrowser -data=/var/lib/lidarr
+ExecStart=/usr/lib/lidarr/Lidarr -nobrowser -data=/var/lib/lidarr
 Type=simple
 TimeoutStopSec=20
 
