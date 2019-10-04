@@ -1,6 +1,6 @@
 # Maintainer: Bogdan Sinitsyn <bogdan.sinitsyn@gmail.com>
 pkgname=web-media-controller-mpris-git
-pkgver=r88.6dc99a5
+pkgver=r91.573b8dd
 pkgrel=2
 pkgdesc="MPRIS proxy for usage with Web Media Controller on GNU/Linux "
 arch=('i686' 'x86_64')
@@ -12,8 +12,7 @@ depends=(
 )
 makedepends=(
   git
-  cmake
-  python
+  meson
 )
 optdepends=(
   'firefox: could be controlled with this tool'
@@ -37,24 +36,19 @@ pkgver() {
 prepare() {
   cd "$srcdir/${pkgname%-git}"
 
-  mkdir -p build
+  meson build --buildtype release
 }
 
 build() {
   cd "$srcdir/${pkgname%-git}"
 
-  cd build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release ..
-  make
+  ninja -C build
 }
 
 package() {
   cd "$srcdir/${pkgname%-git}"
 
-  cd build
-  make DESTDIR="$pkgdir/" install
-
-  cd ..
+  DESTDIR="$pkgdir" ninja -C build install
   install -m 755 -d "$pkgdir/usr/share/licenses/$pkgname"
   install -m 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname"
 }

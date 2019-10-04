@@ -1,14 +1,13 @@
 pkgbase = web-media-controller-mpris-git
 	pkgdesc = MPRIS proxy for usage with Web Media Controller on GNU/Linux
-	pkgver = r88.6dc99a5
+	pkgver = r91.573b8dd
 	pkgrel = 2
 	url = https://github.com/f1u77y/wmc-mpris
 	arch = i686
 	arch = x86_64
 	license = custom:Unlicense
 	makedepends = git
-	makedepends = cmake
-	makedepends = python
+	makedepends = meson
 	depends = glib2
 	depends = json-glib
 	optdepends = firefox: could be controlled with this tool
