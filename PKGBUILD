@@ -1,14 +1,14 @@
 # Maintainer: lesto <lestofante88@gmail.com>
 pkgname=pacman-parallelizer
-pkgver=5
-pkgrel=2
+pkgver=6
+pkgrel=1
 pkgdesc="A minimal package downloader for pacman, using aria2"
 arch=(any)
 url="https://github.com/lestofante/PacmanParallelizer"
 license=('GPL3')
 depends=('aria2' 'pacman-contrib')
 source=("pp.sh")
-md5sums=('b7303091ecd5cdce68f91c95625253eb')
+md5sums=('773509405b5da7d79a3fb6985e35836d')
 
 build() {
 	cd "$srcdir"

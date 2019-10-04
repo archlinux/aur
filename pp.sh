@@ -48,7 +48,7 @@ for pkgNameAndVersion in "${packageList[@]}"; do
 	
 	aria2c -c $downloadList -d "$pacmanCahceDir" &> /dev/null &
 	pidTmp=($!)
-	pidToWait+=$pidTmp
+	pidToWait+=($pidTmp)
 	pidToWaitStr+=" $pidTmp"
 	
 	running=$(jobs |wc -l)
@@ -64,7 +64,7 @@ done
 echo "all download started, waiting for completition ${pidToWaitStr}"
 
 for pid in "${pidToWait[@]}"; do
-	wait -n
+	wait $pid
 	# do something when a job completes
 done
 
