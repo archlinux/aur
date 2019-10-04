@@ -1,17 +1,17 @@
 # Maintainer: Timur Kiyivinski <timur@linux.com>
 # CoMaintainer: Kenneth Cremeans <kcrem@hfhosting.us>
-# Release Code Name: Franklin
+# Release Code Name: Galileo
 
 pkgname=lbry-app-bin
-pkgver=0.35.7
+pkgver=0.36.0
 pkgrel=1
 pkgdesc='The LBRY app built using electron'
 arch=('x86_64')
 url='https://lbry.io/'
 license=('MIT')
 depends=('nodejs' 'npm' 'gnome-keyring' 'gconf')
-source=('https://github.com/lbryio/lbry-desktop/releases/download/v0.35.7/LBRY_0.35.7.deb')
-sha256sums=('3639a348fe4a93c292703545f1e9f3ef3f5d6eb55fd8daed8116e157677f7cd1')
+source=('https://github.com/lbryio/lbry-desktop/releases/download/v0.36.0/LBRY_0.36.0.deb')
+sha256sums=('8b0160150683410a2eb9c415fa2a7dac2ab555c854083a0aed4a417fb440c345')
 
 package() {
     tar -xf "$srcdir/data.tar.xz" -C "$pkgdir"
