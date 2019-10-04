@@ -26,8 +26,6 @@ _opt_features=(
   #x11
   #wayland
 
-  #shaderc # preferred SPIR-V compiler; available from AUR
-
   #uchardet
   #rubberband
 
@@ -98,7 +96,7 @@ for feature in "${_opt_features[@]}"; do
     wayland)
       depends+=('wayland' 'libxkbcommon')
       ;;
-    shaderc|uchardet|rubberband)
+    uchardet|rubberband)
       depends+=("$feature")
       ;;
     dvbin)
