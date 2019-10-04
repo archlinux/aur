@@ -1,7 +1,7 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 
 pkgname=reposurgeon
-pkgver=3.47
+pkgver=3.48
 pkgrel=1
 pkgdesc="Performs surgery on version control repositories."
 arch=('x86_64')
@@ -19,7 +19,7 @@ optdepends=('bitkeeper'
             'src'
             'subversion')
 source=("https://gitlab.com/esr/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('cb621ffda7c08873ae68135f9888dca801dc9ba919f539c5fd7bf863256d9eba8f86bc76e68bcc640178f8a8eb404b30c8ea0fb158bd18114a888c0a953b41fe')
+sha512sums=('fec3a59593dc65bf1d7a933202f66debce75c3aef144c1c9e7ffef674b735d05fcdccfa22f2401d67fd578431cf95a46900387e6abc559002c270203a9ef7a3f')
 
 prepare() {
   cd "$pkgbase-$pkgver"
@@ -32,8 +32,7 @@ prepare() {
     fi
   done
 
-  GOPATH="$srcdir/go" go get -d ./go-repocutter
-  GOPATH="$srcdir/go" go get -d ./go-reposurgeon
+  GOPATH="$srcdir/go" go get -d -u
 }
 
 build() {
