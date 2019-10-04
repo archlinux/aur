@@ -2,7 +2,7 @@
 
 pkgname=datadog-puppy
 pkgver=6.13.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Lightweight (Pythonless) Datadog Agent'
 arch=('any')
 provides=('datadog-agent')
