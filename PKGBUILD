@@ -6,7 +6,7 @@
 
 pkgname=navit
 pkgver=0.5.3
-pkgrel=4
+pkgrel=5
 pkgdesc="Modular turn-by-turn car navigation system"
 arch=('x86_64')
 url="https://www.navit-project.org/"
@@ -27,6 +27,7 @@ prepare() {
 
 build() {
   cd $pkgname-$pkgver
+  export CFLAGS="$CFLAGS -I/usr/include/harfbuzz"
   cmake -DCMAKE_INSTALL_PREFIX=/usr -DSAMPLE_MAP=FALSE -DDISABLE_QT=TRUE
   make
 }
