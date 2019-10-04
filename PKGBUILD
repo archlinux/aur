@@ -3,7 +3,7 @@
 
 pkgname='pop-gnome-shell-theme-bin'
 pkgver='5.0.0'
-pkgrel=1
+pkgrel=2
 _timestamp=1570056483
 _commit=bf228c2
 pkgdesc='System76 Pop GNOME Shell Theme'
@@ -29,6 +29,10 @@ package() {
   cd "${srcdir}"
   
   tar -xJC "${pkgdir}" -f data.tar.xz
+  mkdir -p ${pkgdir}/usr/share/themes/Pop/gnome-shell
+  mkdir -p ${pkgdir}/usr/share/themes/Pop-dark/gnome-shell
+  cp -r ${pkgdir}/usr/share/gnome-shell/theme/Pop/* ${pkgdir}/usr/share/themes/Pop/gnome-shell/
+  mv ${pkgdir}/usr/share/gnome-shell/theme/Pop/* ${pkgdir}/usr/share/themes/Pop-dark/gnome-shell/
 }
 
 # vim: ts=2 sw=2 et:
