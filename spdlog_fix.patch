@@ -1,0 +1,14 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index fda60b7..8493e8f 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -399,7 +399,8 @@ set(COMMON_LIBS
+     Qt5::Svg
+     Qt5::Concurrent
+     Qt5::Multimedia
+-    nlohmann_json::nlohmann_json)
++    nlohmann_json::nlohmann_json
++    spdlog::spdlog)
+ 
+ if(APPVEYOR_BUILD)
+     set(NHEKO_LIBS ${COMMON_LIBS} lmdb)
