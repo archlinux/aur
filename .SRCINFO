@@ -9,6 +9,7 @@ pkgbase = editorconfig-core-lua-git
 	makedepends = cmake
 	depends = lua
 	depends = editorconfig-core-c
+	conflicts = editorconfig-core-lua
 	source = editorconfig-core-lua-git::git+https://github.com/editorconfig/editorconfig-core-lua
 	md5sums = SKIP
 

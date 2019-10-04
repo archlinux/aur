@@ -1,6 +1,7 @@
 # Maintainer: Frank Seifferth <frankseifferth@posteo.net>
 pkgname=editorconfig-core-lua-git
 _pkgname=editorconfig-core-lua
+conflicts=('editorconfig-core-lua')
 pkgver=latest
 pkgrel=1
 pkgdesc="EditorConfig Core bindings for Lua"
