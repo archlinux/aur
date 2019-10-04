@@ -1,8 +1,8 @@
 # Maintainer: Filippo Berto <berto.f@protonmail.com>
 _pkgname=ndn-tools
 pkgname=${_pkgname}-git
-pkgver=ndn.tools.0.6.4.r23.g11c6991
-pkgrel=1
+pkgver=ndn.tools.0.6.4.r0.g6cc1dfb
+pkgrel=2
 # epoch=
 pkgdesc="ndn-tools is a collection of basic tools for Named Data Networking"
 arch=("any")
@@ -26,7 +26,7 @@ validpgpkeys=()
 
 prepare() {
 	cd "${srcdir}/${_pkgname}"
-	git checkout `g describe --tags --abbrev=0`
+	git checkout `git describe --tags --abbrev=0`
 	git submodule update --init
 	# Run the initial configuration
 	./waf configure
