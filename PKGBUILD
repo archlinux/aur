@@ -10,7 +10,6 @@ _opt_features=(
   #dvd
   #cd
   #smb
-  #libarchive
 
   # Lua is automatically detected, so you don't need to enable these if you
   # already have it installed. If you have both lua52 and luajit installed, mpv
@@ -47,7 +46,7 @@ _opt_features=(
 
 pkgname=mpv-git
 _gitname=mpv
-pkgver=0.29.0_802_gdefc8f359c
+pkgver=0.29.0_804_gfd7aff7a9d
 pkgrel=1
 _waf_version=2.0.9
 pkgdesc='Video player based on MPlayer/mplayer2 (git version)'
@@ -84,10 +83,6 @@ for feature in "${_opt_features[@]}"; do
     smb)
       depends+=('smbclient')
       _opt_extra_flags+=('--enable-libsmbclient')
-      ;;
-    libarchive)
-      depends+=('libarchive')
-      _opt_extra_flags+=('--enable-libarchive')
       ;;
     lua)
       depends+=('lua52')
