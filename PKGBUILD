@@ -19,7 +19,7 @@ depends=('avahi' 'bullet' 'curl' 'fontconfig' 'fribidi'
          'shared-mime-info' 'ttf-font' 'scim' 'libibus' 'glib2'
          'wayland' 'wayland-protocols' 'libxkbcommon-x11'
          'pulseaudio')
-makedepends=('git' 'meson' 'ninja' 'pkgconf' 'gcc' 'binutils' 'fakeroot' 'python2')
+makedepends=('git' 'meson' 'ninja' 'pkgconf' 'gcc' 'binutils' 'fakeroot' 'python2' 'procps-ng')
 optdepends=('geoclue: For elocation'
             'gst-plugins-base: Video and thumbnail codecs'
             'gst-plugins-good: Video and thumbnail codecs'

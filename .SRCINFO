@@ -1,6 +1,6 @@
 pkgbase = efl-git
 	pkgdesc = Enlightenment Foundation Libraries - Development version
-	pkgver = 1.22.99.62619.g01d6683e32
+	pkgver = 1.23.0.63655.g7dcce72eb7
 	pkgrel = 1
 	url = http://www.enlightenment.org
 	arch = i686
@@ -22,6 +22,7 @@ pkgbase = efl-git
 	makedepends = binutils
 	makedepends = fakeroot
 	makedepends = python2
+	makedepends = procps-ng
 	depends = avahi
 	depends = bullet
 	depends = curl
@@ -48,7 +49,6 @@ pkgbase = efl-git
 	depends = mesa
 	depends = openjpeg2
 	depends = poppler
-	depends = wayland
 	depends = shared-mime-info
 	depends = ttf-font
 	depends = scim
@@ -66,10 +66,10 @@ pkgbase = efl-git
 	optdepends = gst-libav: Video and thumbnails with ffmpeg/libav
 	optdepends = libreoffice: Office document thumbnails
 	optdepends = python2: Compare Eina benchmarks
-	provides = efl=1.22.99.62619.g01d6683e32
-	provides = elementary=1.22.99.62619.g01d6683e32
-	provides = elementary-git=1.22.99.62619.g01d6683e32
-	provides = evas_generic_loaders=1.22.99.62619.g01d6683e32
+	provides = efl=1.23.0.63655.g7dcce72eb7
+	provides = elementary=1.23.0.63655.g7dcce72eb7
+	provides = elementary-git=1.23.0.63655.g7dcce72eb7
+	provides = evas_generic_loaders=1.23.0.63655.g7dcce72eb7
 	conflicts = efl
 	conflicts = elementary
 	conflicts = elementary-git
