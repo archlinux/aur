@@ -2,8 +2,8 @@
 _reponame=NFD
 _pkgname=ndn-nfd
 pkgname=${_pkgname}-git
-pkgver=NFD.0.6.6.r37.g606d5ddc
-pkgrel=2
+pkgver=NFD.0.6.6.r0.g65c494ac
+pkgrel=1
 # epoch=
 pkgdesc="NFD is a network forwarder that implements and evolves together with the Named Data Networking (NDN) protocol"
 arch=("any")
@@ -27,7 +27,7 @@ validpgpkeys=()
 
 prepare() {
 	cd "${srcdir}/${_reponame}"
-	git checkout `g describe --tags --abbrev=0`
+	git checkout `git describe --tags --abbrev=0`
 	git submodule update --init
 	# Run the initial configuration
 	./waf configure
