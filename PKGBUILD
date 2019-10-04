@@ -1,11 +1,11 @@
 # Maintainer: Bogdan Sinitsyn <bogdan.sinitsyn@gmail.com>
 pkgname=web-media-controller-mpris-git
-pkgver=r68.e657bec
-pkgrel=1
+pkgver=r88.6dc99a5
+pkgrel=2
 pkgdesc="MPRIS proxy for usage with Web Media Controller on GNU/Linux "
 arch=('i686' 'x86_64')
 url="https://github.com/f1u77y/wmc-mpris"
-license=('GPL3')
+license=('custom:Unlicense')
 depends=(
   glib2
   json-glib
@@ -53,6 +53,10 @@ package() {
 
   cd build
   make DESTDIR="$pkgdir/" install
+
+  cd ..
+  install -m 755 -d "$pkgdir/usr/share/licenses/$pkgname"
+  install -m 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname"
 }
 
 # vim:set ts=2 sw=2 et:
