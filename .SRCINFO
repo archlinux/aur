@@ -1,0 +1,15 @@
+pkgbase = aaflib
+	pkgdesc = An implementation of the mathematical construct of affine arithmetics in C++.
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://aaflib.sourceforge.net
+	arch = x86_64
+	license = LGPL
+	makedepends = cmake
+	depends = gcc-libs
+	options = staticlibs
+	source = https://github.com/foolnotion/aaflib/archive/v0.1.tar.gz
+	sha256sums = b85948197bbc90acb3ce768cce3997b8936f3d5fb9e2124af6fdd84fb775f03a
+
+pkgname = aaflib
+
