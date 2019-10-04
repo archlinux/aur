@@ -67,7 +67,7 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-pds
-_srcver_tag=5.3.2-arch1
+_srcver_tag=5.3.2-arch2
 pkgver=${_srcver_tag//-/.}
 pkgrel=1
 arch=(x86_64)
@@ -113,7 +113,7 @@ validpgpkeys=(
 )
 sha512sums=('SKIP'
             'SKIP'
-            '99415e75fbc23626e27946461cf047a07fe2dda46fcb24fe251fbb8fd93da46e264ba29c50700ca6aef1f1c58e36eb8cccfd8130cbba48eba23f79c6d2186d89'
+            '123862129e35063c9cf0b74925e346a7ddaa01ca129dd15bfa4497859cf2bcdd1e6c13aabfbbf544c120f2630e53aac014a5e4f7aeeb932c918c64bd2f993a68'
             '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
             '2718b58dbbb15063bacb2bde6489e5b3c59afac4c0e0435b97fe720d42c711b6bcba926f67a8687878bd51373c9cf3adb1915a11666d79ccb220bf36e0788ab7'
             '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
@@ -200,12 +200,14 @@ _package() {
     pkgdesc="The ${pkgbase/linux/Linux} kernel and modules $_pkgdesc_extra"
     depends=(
         coreutils
-        linux-firmware
         kmod
-        mkinitcpio
+        initramfs
         thrash-protect
     )
-    optdepends=("crda: to set the correct wireless channels of your country")
+    optdepends=(
+        "crda: to set the correct wireless channels of your country"
+        "linux-firmware: firmware images needed for some devices"
+    )
     provides=("$pkgbase=$pkgver")
     backup=("etc/mkinitcpio.d/$pkgbase.preset")
     install=linux.install
@@ -220,6 +222,9 @@ _package() {
     # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
     install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
     install -Dm644 "$modulesdir/vmlinuz" "$pkgdir/boot/vmlinuz-$pkgbase"
+
+    # Used by mkinitcpio to name the kernel
+    echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
     msg2 "Installing modules..."
     make INSTALL_MOD_PATH="$pkgdir/usr" modules_install
