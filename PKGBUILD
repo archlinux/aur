@@ -2,10 +2,10 @@
 
 pkgname=nginx-mainline-mod-lua
 pkgver=0.10.13
-pkgrel=7
+pkgrel=8
 
 _modname="${pkgname#nginx-mainline-mod-}"
-_nginxver=1.17.3
+_nginxver=1.17.4
 
 pkgdesc='Lua script engine module for mainline nginx'
 arch=('i686' 'x86_64')
