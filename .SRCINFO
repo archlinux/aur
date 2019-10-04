@@ -1,7 +1,7 @@
 pkgbase = pyfan
 	pkgdesc = Fan control utilising hwmon and pid
 	pkgver = 1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.harting.dev/IdleGandalf/PyFan
 	arch = any
 	license = GPL
