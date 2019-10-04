@@ -14,7 +14,7 @@ license=(MIT)
 depends=(ruby ruby-activesupport ruby-actionpack ruby-thor)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
-sha1sums=('65a58cf19eb8999720c8699107ffe0911b83ecd6')
+sha256sums=('6809bcd17a17259e707fe2f5437b043566ea0e5131010b9fd195112141f062f0')
 
 package() {
     local _gemdir="$(ruby -e'puts Gem.default_dir')"
