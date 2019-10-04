@@ -31,6 +31,7 @@ sha512sums=('b33c205acb507898952a61eb2e5cc7fd73abf99efd3201cc6e7b8af6774764b9077
             'ffd466960527256d8de1d9887d90d4da87486eff062950c46cbc4fd4af1ef89e7d5c070ef1e649b23a95fbab15651e289fd5bdc6d34649e4a6ecdf2f6da06622')
 
 package() {
+  rm -rf "${srcdir}/Lidarr/Lidarr.Update"
   install -d -m 755 "${pkgdir}/usr/lib/lidarr"
   cp -dpr --no-preserve=ownership "${srcdir}/Lidarr/"* "${pkgdir}/usr/lib/lidarr"
   chmod -R a=,a+rX,u+w ${pkgdir}/usr/lib/lidarr/
