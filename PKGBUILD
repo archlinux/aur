@@ -2,7 +2,7 @@
 
 pkgname=fitnesse-standalone
 pkgver=20190716
-pkgrel=1
+pkgrel=2
 pkgdesc="The fully integrated standalone wiki and acceptance testing framework"
 arch=('any')
 url="http://www.fitnesse.org/"

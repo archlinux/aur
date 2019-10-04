@@ -1,7 +1,7 @@
 pkgbase = fitnesse-standalone
 	pkgdesc = The fully integrated standalone wiki and acceptance testing framework
 	pkgver = 20190716
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.fitnesse.org/
 	arch = any
 	license = CPL
