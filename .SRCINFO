@@ -6,7 +6,6 @@ pkgbase = lidarr
 	arch = any
 	license = GPL3
 	depends = mono
-	depends = libmediainfo
 	depends = sqlite
 	depends = chromaprint
 	optdepends = sabnzbd: usenet downloader
