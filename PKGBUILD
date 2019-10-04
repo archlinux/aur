@@ -36,10 +36,7 @@ sha256sums=('e2baed5e3ec1c1804813a173313101c9fabb4921da09aa42ca0197ff371246d4'
             'a436a979ca3a9e78bdc410bd0027d97956bfa8d2d4f2b7bdf3f7d2ed199dd6a8')
 
 package() {
-  cd "$srcdir"
-
-  install -d -m 755 "${pkgdir}/var/lib/sonarr"
-
+  rm -rf "${srcdir}/Sonarr/Sonarr.Update"
   install -d -m 755 "${pkgdir}/usr/lib/sonarr"
   cp -dpr --no-preserve=ownership "${srcdir}/Sonarr/"* "${pkgdir}/usr/lib/sonarr"
 
