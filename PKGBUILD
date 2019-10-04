@@ -56,7 +56,7 @@ _lqxpatchrel=27
 _lqxpatchver=${_lqxpatchname}-${_major}-${_lqxpatchrel}
 pkgbase=linux-lqx
 pkgver=5.2.18_1
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="http://liquorix.net/"
 license=('GPL2')
@@ -191,8 +191,9 @@ build() {
 
 _package() {
     pkgdesc="A desktop oriented kernel and modules with Liquorix patches"
-    depends=('coreutils' 'linux-firmware' 'mkinitcpio>=0.7')
-    optdepends=('crda: to set the correct wireless channels of your country' 'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig')
+    depends=('coreutils' 'kmod' 'initramfs')
+    optdepends=('crda: to set the correct wireless channels of your country'
+                'linux-firmware: firmware images needed for some devices')
     backup=("etc/mkinitcpio.d/$pkgbase.preset")
     install=linux.install
 
@@ -207,6 +208,9 @@ _package() {
   install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
   install -Dm644 "$modulesdir/vmlinuz" "$pkgdir/boot/vmlinuz-$pkgbase"
 
+  # Used by mkinitcpio to name the kernel
+  echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
+  
   msg2 "Installing modules..."
   make INSTALL_MOD_PATH="$pkgdir/usr" modules_install
 
