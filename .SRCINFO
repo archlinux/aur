@@ -1,12 +1,13 @@
 pkgbase = grub2-theme-vimix-git
 	pkgdesc = Grub2 theme Vimix
-	pkgver = 20190211
+	pkgver = 2019.10.01.r1.g9b431ca
 	pkgrel = 1
 	url = https://github.com/vinceliuice/grub2-themes/tree/master/grub-theme-vimix
 	install = grub2-theme-vimix-git.install
 	arch = any
 	license = GPLv3
 	makedepends = git
+	makedepends = sed
 	depends = grub
 	conflicts = grub2-theme-vimix
 	source = grub2-theme-vimix-git::git+https://github.com/vinceliuice/grub2-themes.git

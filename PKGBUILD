@@ -1,29 +1,42 @@
-# Maintainer: Alireza Ayinmehr <alireza.darksun@gmail.com>
+# Maintainer: mads256h <mads256h(at)gmail(dot)com>
+# Contributor: Alireza Ayinmehr <alireza.darksun@gmail.com>
 # Contributor: wenLiangcan <boxeed at gmail dot com>
 # Contributor: se7enday(87635645#qq.com)
 # I'm going to sleep. I'll work on it tomorrow.
 pkgname=grub2-theme-vimix-git
-pkgver=20190211
+pkgver=2019.10.01.r1.g9b431ca
 pkgrel=1
 pkgdesc="Grub2 theme Vimix"
-url='https://github.com/vinceliuice/grub2-themes/tree/master/grub-theme-vimix'
+url='https://github.com/vinceliuice/grub2-themes/'
 arch=('any')
 license=('GPLv3')
 depends=('grub')
-makedepends=('git')
+makedepends=('git' 'sed')
 install=${pkgname}.install
 source=("${pkgname}"::"git+https://github.com/vinceliuice/grub2-themes.git")
 conflicts=('grub2-theme-vimix')
 md5sums=('SKIP')
+_theme="Vimix"
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
-    git log -1 --format='%cd' --date=short | tr -d -- '-'
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
-    cd "${srcdir}/${pkgname}/grub-theme-vimix/"
-    find ./Vimix/ -type f -exec install -Dm644 {} \
-        "${pkgdir}/boot/grub/themes/{}" \;
+    cd "${srcdir}/${pkgname}/common"
+    for file in *; do
+        install -Dm644 "${file}" "${pkgdir}/boot/grub/themes/${_theme}/${file}"
+    done
+
+    cd "${srcdir}/${pkgname}"
+    install -Dm644 "backgrounds/1080p/background-${_theme,,}.jpg" "${pkgdir}/boot/grub/themes/${_theme}/background.jpg"
+
+    install -dm644 "assets/assets-white/icons" "${pkgdir}/boot/grub/themes/${_theme}/icons"
+
+    cd "${srcdir}/${pkgname}/assets/assets-white/select"
+    for file in *.png; do
+        install -m644 "${file}" "${pkgdir}/boot/grub/themes/${_theme}/${file}"
+    done
 }
 
