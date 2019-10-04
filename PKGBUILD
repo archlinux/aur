@@ -5,12 +5,13 @@ pkgname="lidarr-netcore"
 pkgver=0.7.1.1522
 _shortstupidfuckingrandomnumber="752"
 _longstupidfuckingrandomnumber="32054F08365A4D1A92B45895249F04B17BD922E4F365C6E00DA7EAE8C6AC692302"
-pkgrel=2
+pkgrel=3
 pkgdesc="Music downloader for usenet and torrents."
 arch=(any)
 url="https://github.com/lidarr/Lidarr"
 license=("GPL3")
-depends=('mono' 'libmediainfo' 'sqlite' 'chromaprint')
+depends=('sqlite' 'chromaprint')
+options=('!strip' 'staticlibs')
 optdepends=('sabnzbd: usenet downloader'
             'nzbget: usenet downloader'
             'transmission-cli: torrent downloader (CLI and daemon)'

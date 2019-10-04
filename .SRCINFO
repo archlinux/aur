@@ -1,12 +1,10 @@
 pkgbase = lidarr-netcore
 	pkgdesc = Music downloader for usenet and torrents.
 	pkgver = 0.7.1.1522
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/lidarr/Lidarr
 	arch = any
 	license = GPL3
-	depends = mono
-	depends = libmediainfo
 	depends = sqlite
 	depends = chromaprint
 	optdepends = sabnzbd: usenet downloader
@@ -22,6 +20,8 @@ pkgbase = lidarr-netcore
 	optdepends = libgdiplus: provides a gdi+ compatible api
 	provides = lidarr
 	conflicts = lidarr
+	options = !strip
+	options = staticlibs
 	source = Lidarr.develop.0.7.1.1522.linux.tar.gz::https://dev.azure.com/Lidarr/Lidarr/_apis/build/builds/752/artifacts?artifactName=Packages&fileId=32054F08365A4D1A92B45895249F04B17BD922E4F365C6E00DA7EAE8C6AC692302&fileName=Lidarr.develop.0.7.1.1522.linux.tar.gz
 	source = lidarr.service
 	source = lidarr.tmpfiles
