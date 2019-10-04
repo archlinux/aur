@@ -7,12 +7,12 @@ _changes=76
 _commit=gfc43
 _sac_version="1.3.3-359-2"
 pkgver="${_version}.${_changes}"
-pkgrel=1
+pkgrel=2
 pkgdesc='The standard library for the Single-Assignment C programming language (weekly build)'
 arch=('x86_64')
 url='http://www.sac-home.org/'
 license=('custom:SAC')
-depends=("sac-compiler-weekly==1.3.3.359")
+depends=("sac-compiler-weekly==1.3.3.359-2")
 provides=('sac-stdlib')
 replaces=('sac-stdlib')
 conflicts=('sac-stdlib')
