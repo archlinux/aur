@@ -4,42 +4,45 @@
 # Contributor: Flamelab <panosfilip@gmail.com
 
 pkgname=gnome-shell-performance
-pkgver=3.34.0+148+g506b75fc7
+_pkgname=gnome-shell
+pkgver=3.34.0+163+g6a6d66486
 pkgrel=1
-pkgdesc="Next generation desktop shell | Attempt to improve the performance by non-upstreamed patches"
+epoch=1
+pkgdesc="Next generation desktop shell"
 url="https://wiki.gnome.org/Projects/GnomeShell"
 arch=(x86_64)
 license=(GPL2)
-depends=(accountsservice gcr 'gjs>=2:1.58' gnome-bluetooth upower gnome-session gnome-settings-daemon
+depends=(accountsservice gcr gjs gnome-bluetooth upower gnome-session gnome-settings-daemon
          gnome-themes-extra gsettings-desktop-schemas libcanberra-pulse libcroco libgdm libsecret
-         mutter-performance nm-connection-editor unzip gstreamer libibus gnome-autoar)
-makedepends=(gtk-doc gnome-control-center 'evolution-data-server>=3.34' gobject-introspection git meson
+         mutter nm-connection-editor unzip gstreamer libibus gnome-autoar)
+makedepends=(gtk-doc gnome-control-center evolution-data-server gobject-introspection git meson
              sassc asciidoc)
 optdepends=('gnome-control-center: System settings'
             'evolution-data-server: Evolution calendar integration')
 groups=(gnome)
 provides=(gnome-shell gnome-shell=$pkgver)
 conflicts=(gnome-shell)
-install="$pkgname.install"
-_commit=506b75fc7f3a1beeee6141ccb8edb6731c45cc6a  # master
-source=("$pkgname::git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=$_commit"
-        "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git")
+install=gnome-shell-performance.install
+_commit=6a6d66486d3326457260f8d1e4b9937d9396c7c6  # master
+source=("git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=$_commit"
+        "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git"
+        739.patch)
 sha256sums=('SKIP'
-            'SKIP')
+            'SKIP'
+            '26c2e9672833e09ff63e314f477897bf67c89fd9769c6b4b73d7300b16afd932')
 
 pkgver() {
-  cd $pkgname
+  cd $_pkgname
   git describe --tags | sed 's/-/+/g'
 }
 
 prepare() {
-  cd $pkgname
+  cd $_pkgname
 
   ### Adding and fetching remotes providing the selected merge-requests
 
-  git remote add verde https://gitlab.gnome.org/verdre/gnome-shell.git || true
-  git fetch verde
-
+  # git remote add verde https://gitlab.gnome.org/verdre/gnome-shell.git || true
+  # git fetch verde
 
   ### Merge Requests
 
@@ -67,13 +70,19 @@ prepare() {
 
   # Empty, because all patches are merged to master as of now
 
+  # https://gitlab.gnome.org/GNOME/gnome-shell/issues/1641
+  git apply -3 ../739.patch
+
+  # Un-broke workspaces
+  git revert ff9bb5399b1d22fceaf00c9fc8e0058f24af96cc --no-commit
+
   git submodule init
   git config --local submodule.subprojects/gvc.url "$srcdir/libgnome-volume-control"
   git submodule update
 }
-
+  
 build() {
-  arch-meson $pkgname build -D gtk_doc=true
+  arch-meson $_pkgname build -D gtk_doc=true
   ninja -C build
 }
 
