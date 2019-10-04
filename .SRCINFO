@@ -1,6 +1,6 @@
 pkgbase = linux-uksm
 	pkgver = 5.3.2
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/dolohow/uksm
 	arch = x86_64
 	license = GPL2
@@ -51,6 +51,7 @@ pkgname = linux-uksm
 	depends = initramfs
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
+	optdepends = modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig
 	backup = etc/mkinitcpio.d/linux-uksm.preset
 
 pkgname = linux-uksm-headers
