@@ -1,14 +1,14 @@
 pkgbase = gnome-shell-extension-workspaces-to-dock
 	pkgdesc = Gnome shell extension, Workspaces to Dock, Transform Gnome Shell's overview workspaces into an intelligent dock.
-	pkgver = 51_3.32
+	pkgver = 52_3.34
 	pkgrel = 1
 	url = https://github.com/passingthru67/workspaces-to-dock
 	arch = any
 	license = GPL3
-	depends = gnome-shell>=3.32
+	depends = gnome-shell>=3.34
 	conflicts = gnome-shell-extension-workspaces-to-dock-git
-	source = https://github.com/passingthru67/workspaces-to-dock/archive/workspaces-to-dock.v51_3.32.tar.gz
-	sha256sums = e6da3d9798c99e3072ead9662c6dab126dbf4a864a3330e0271391096c1c2ad5
+	source = https://github.com/passingthru67/workspaces-to-dock/archive/workspaces-to-dock.v52_334.tar.gz
+	sha256sums = cda2690138b28d0cee579b84d68dab4e82dc0ab656a9e2ae79e82976af1a3c3d
 
 pkgname = gnome-shell-extension-workspaces-to-dock
 
