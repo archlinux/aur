@@ -1,0 +1,14 @@
+pkgbase = ndefpack
+	pkgdesc = A pack of tools for creating EasyFlash cartridge images
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://csdb.dk/release/?id=109269
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = fltk
+	source = http://sourceforge.net/projects/ndefpack/files/ndefpack-1.0.1.tar.gz
+	sha256sums = 03c0feedac206912e3210474a30860a3130f1b01d618b4b32de11d8230ab4937
+
+pkgname = ndefpack
+
