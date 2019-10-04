@@ -2,15 +2,15 @@
 _pkgname=ndn-cxx
 pkgname=${_pkgname}-git
 pkgver=ndn.cxx.0.6.6.r46.g5e494c0c
-pkgrel=2
+pkgrel=3
 # epoch=
 pkgdesc="Library implementing Named Data Networking (NDN) primitives that can be used to write various NDN applications"
 arch=("any")
 url="https://github.com/named-data/${_pkgname}"
 license=('GPL')
 groups=()
-depends=()
-makedepends=('git' 'gcc' 'python' 'boost' 'pkgconf' 'sqlite' 'openssl>=1.0.2')
+depends=('boost')
+makedepends=('git' 'gcc' 'python' 'pkgconf' 'sqlite' 'openssl>=1.0.2')
 checkdepends=()
 optdepends=()
 provides=("${_pkgname}")
