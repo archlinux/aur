@@ -1,8 +1,8 @@
 # Maintainer: Giorgio Gilestro <giorgio at gilest.ro>
 
 pkgname=ethoscope-node
-pkgver=r1702.g1c43fc3
-pkgrel=6
+pkgver=r1704.g6d72a77
+pkgrel=2
 pkgdesc="A platform for monitoring animal behaviour in real time from a raspberry pi"
 arch=('any')
 url="http://lab.gilest.ro/ethoscope"
@@ -41,7 +41,7 @@ package() {
   #install python service
   cd "${srcdir}/${pkgname}/node_src"
   #pip install -e . --install-option="--prefix=${pkgdir}" --no-deps
-  python setup.py develop --root="$pkgdir/" --optimize=1 --skip-build
+  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 
   #install service files
   cd "${srcdir}"/"${pkgname}"/scripts/
