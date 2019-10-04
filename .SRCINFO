@@ -1,7 +1,7 @@
 pkgbase = lib32-yaml-cpp
 	pkgdesc = YAML parser and emitter in C++, written around the YAML 1.2 spec (32-bits)
-	pkgver = 0.6.2
-	pkgrel = 2
+	pkgver = 0.6.3
+	pkgrel = 1
 	url = https://github.com/jbeder/yaml-cpp
 	arch = x86_64
 	license = MIT
