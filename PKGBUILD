@@ -2,29 +2,25 @@
 
 pkgname=cherry-font-git
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='cherry, yet another bitmap font'
 url=https://github.com/turquoise-hexagon/cherry
 source=("$pkgname::git+https://github.com/turquoise-hexagon/cherry")
 licence=('MIT')
 arch=('any')
-makedepends=('git' 'xorg-font-utils')
+makedepends=('git' 'fonttosfnt')
 install="$pkgname.install"
 md5sums=('SKIP')
 sha256sums=('SKIP')
 
-build ()
-{
-    cd "$srcdir/$pkgname" || exit
+build() {
+    cd "$srcdir/$pkgname"
 
-    for b in *.bdf; do
-        bdftopcf -o "${b/.bdf/.pcf}" "$b"
-    done
+    ./make.sh
 }
 
-package ()
-{
-    cd "$srcdir/$pkgname" || exit
+package() {
+    cd "$srcdir/$pkgname"
 
     install -d -m755 "$pkgdir/usr/share/fonts/misc"
     install -D -m644 *.pcf "$pkgdir/usr/share/fonts/misc"

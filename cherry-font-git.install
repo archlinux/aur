@@ -1,5 +1,4 @@
-update_font_cache ()
-{
+update_font_cache() {
     echo 'updating font cache...'
     fc-cache -f
     mkfontscale /usr/share/fonts/misc
@@ -7,6 +6,6 @@ update_font_cache ()
     echo 'done.'
 }
 
-post_install () { update_font_cache; }
-post_upgrade () { update_font_cache; }
-post_remove  () { update_font_cache; }
+post_install() { update_font_cache; }
+post_upgrade() { update_font_cache; }
+post_remove()  { update_font_cache; }
