@@ -1,7 +1,7 @@
 # Maintainer: Frederik “Freso” S. Olesen <freso.dk@gmail.com>
 pkgname=boxtron-git
 _pkgname="${pkgname%-git}"
-pkgver=0.5.0.r2.e4bf54e
+pkgver=0.5.2.r3.9f10193
 pkgrel=1
 pkgdesc='Compatibility tool to run DOS games on Steam through native Linux DOSBox – NOTE: Won’t work as intended until next Steam beta cycle!'
 arch=('i686' 'x86_64')

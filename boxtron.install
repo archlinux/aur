@@ -1,11 +1,7 @@
 post_install() {
-  echo 'NOTE: This Steam compatibility tool will not get picked up properly'
-  echo 'NOTE: by Steam until the next Steam beta cycle; see'
-  echo 'NOTE: https://github.com/ValveSoftware/steam-for-linux/issues/6310#issuecomment-511630263'
-  echo 'NOTE:'
-  echo 'NOTE: If you want to use this until Steam recognises this natively,'
-  echo 'NOTE: you can make a symlink like this to have your Steam find it:'
-  echo 'NOTE: ln -s /usr/share/steam/compatibilitytools.d/boxtron-git ~/.local/share/Steam/compatibilitytools.d/boxtron-git'
+  echo 'NOTE: You need to participate in the Steam client beta for this'
+  echo 'NOTE: compatibility tool to get picked up properly. See'
+  echo 'NOTE: https://support.steampowered.com/kb_article.php?ref=7021-EIAH-8669'
 }
 
 post_upgrade() {
