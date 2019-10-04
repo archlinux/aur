@@ -1,4 +1,4 @@
-# Maintainer: Bogdan Sinitsyn <bogdan.sinitsyn@gmail.com>
+# Maintainer: Bogdan Sinitsyn <f1u77y@yandex.ru>
 pkgname=web-media-controller-mpris-git
 pkgver=r91.573b8dd
 pkgrel=2
