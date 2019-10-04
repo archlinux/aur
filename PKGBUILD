@@ -2,8 +2,8 @@
 
 pkgname=adwm-git
 _pkgname=adwm
-pkgver=0.7.8.r0.g800df77
-pkgrel=2
+pkgver=0.7.9.r0.g6afb774
+pkgrel=1
 pkgdesc="Advanced dynamic window manager for X"
 arch=('i686' 'x86_64')
 url="http://github.com/bbidulock/$_pkgname"
