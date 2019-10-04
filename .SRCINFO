@@ -1,0 +1,17 @@
+pkgbase = kmswpc-git
+	pkgdesc = KDE-multiscreen-wallpaper-cutter: a Bash script to split an image according to current monitors setup.
+	pkgver = r2.4d87e4a
+	pkgrel = 1
+	url = https://github.com/tharrrk/KDE-multiscreen-wallpaper-cutter
+	arch = any
+	license = APACHE
+	makedepends = git
+	depends = xorg-xrandr
+	depends = imagemagick
+	provides = kmswpc
+	conflicts = kmswpc
+	source = kmswpc::git+https://github.com/tharrrk/KDE-multiscreen-wallpaper-cutter
+	md5sums = SKIP
+
+pkgname = kmswpc-git
+
