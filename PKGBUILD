@@ -5,7 +5,7 @@ pkgname="lidarr-netcore"
 pkgver=0.7.1.1522
 _shortstupidfuckingrandomnumber="752"
 _longstupidfuckingrandomnumber="32054F08365A4D1A92B45895249F04B17BD922E4F365C6E00DA7EAE8C6AC692302"
-pkgrel=3
+pkgrel=4
 pkgdesc="Music downloader for usenet and torrents."
 arch=(any)
 url="https://github.com/lidarr/Lidarr"
@@ -38,6 +38,7 @@ sha512sums=('797a30a21de3810f536bf45908492722ee790b5c4766aef29c99b0f91008a6d8814
             'ffd466960527256d8de1d9887d90d4da87486eff062950c46cbc4fd4af1ef89e7d5c070ef1e649b23a95fbab15651e289fd5bdc6d34649e4a6ecdf2f6da06622')
 
 package() {
+  rm -rf "${srcdir}/Lidarr/Lidarr.Update"
   install -d -m 755 "${pkgdir}/usr/lib/lidarr"
   cp -dpr --no-preserve=ownership "${srcdir}/Lidarr/"* "${pkgdir}/usr/lib/lidarr"
   chmod -R a=,a+rX,u+w "${pkgdir}/usr/lib/lidarr/"

@@ -1,7 +1,7 @@
 pkgbase = lidarr-netcore
 	pkgdesc = Music downloader for usenet and torrents.
 	pkgver = 0.7.1.1522
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/lidarr/Lidarr
 	arch = any
 	license = GPL3
