@@ -56,7 +56,7 @@ _lqxpatchrel=27
 _lqxpatchver=${_lqxpatchname}-${_major}-${_lqxpatchrel}
 pkgbase=linux-lqx
 pkgver=5.2.18_1
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="http://liquorix.net/"
 license=('GPL2')
@@ -193,7 +193,8 @@ _package() {
     pkgdesc="A desktop oriented kernel and modules with Liquorix patches"
     depends=('coreutils' 'kmod' 'initramfs')
     optdepends=('crda: to set the correct wireless channels of your country'
-                'linux-firmware: firmware images needed for some devices')
+                'linux-firmware: firmware images needed for some devices'
+                'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig')
     backup=("etc/mkinitcpio.d/$pkgbase.preset")
     install=linux.install
 
