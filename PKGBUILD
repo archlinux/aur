@@ -2,7 +2,7 @@
 # Contributor: Sergey Malkin  <adresatt@gmail.com>
 
 pkgname=nemu-git
-pkgver=2.2.0r1.g0ee41db
+pkgver=2.2.1.r46.g3fdaa1c
 pkgrel=1
 pkgdesc="ncurses interface for QEMU"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
-  git describe | tr -d v |sed 's+-+r+' | tr - .
+  git describe | tr -d v |sed 's+-+.r+' | tr - .
 }
 
 build() {
