@@ -1,7 +1,7 @@
 pkgbase = mfcoin-bin
 	pkgdesc = MFCoin is a digital currency and blockchain service platform.
 	pkgver = 3.0.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://mfcoin.net/
 	arch = x86_64
 	license = GPL3
@@ -12,8 +12,8 @@ pkgbase = mfcoin-bin
 	depends = expat>=2.2.0
 	depends = freetype2>=2.7.1
 	depends = protobuf
-	source_x86_64 = https://github.com/MFrcoin/MFCoin/releases/download/v.3.0.0.0/mfcoin-linux.01.10.19.zip
-	sha256sums_x86_64 = f25db13c2a6abf30294e2d2c7ceaf8db0fa0313e4777f24014d95ed69496472b
+	source_x86_64 = https://github.com/MFrcoin/MFCoin/releases/download/v.3.0.0.1/mfcoin-linux.05.10.19.zip
+	sha256sums_x86_64 = 852423d7b44c83ffd172386176bf48df5f2d400410cab36315ddbc55844fe004
 
 pkgname = mfcoin-bin
 

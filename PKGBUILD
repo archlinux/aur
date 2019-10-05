@@ -1,13 +1,14 @@
 pkgname=mfcoin-bin
 pkgver=3.0.0
-pkgrel=0
+pkgrel=1
+reldate='05.10.19'
 pkgdesc="MFCoin is a digital currency and blockchain service platform."
 arch=('x86_64')    
 depends=("libevent>=2.1.8" "qt5-base" "dbus>=1.10.14" "miniupnpc>=2.0.20170509" "expat>=2.2.0" "freetype2>=2.7.1" "protobuf")
 url="https://mfcoin.net/"
 license=('GPL3')
-source_x86_64=("https://github.com/MFrcoin/MFCoin/releases/download/v.${pkgver}.${pkgrel}/mfcoin-linux.01.10.19.zip")
-sha256sums_x86_64=('f25db13c2a6abf30294e2d2c7ceaf8db0fa0313e4777f24014d95ed69496472b')
+source_x86_64=("https://github.com/MFrcoin/MFCoin/releases/download/v.${pkgver}.${pkgrel}/mfcoin-linux.${reldate}.zip")
+sha256sums_x86_64=('852423d7b44c83ffd172386176bf48df5f2d400410cab36315ddbc55844fe004')
 
 _link() {
     ln -s /opt/mfcoin/start $pkgdir/usr/bin/mfcoin$1
