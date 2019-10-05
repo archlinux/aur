@@ -1,6 +1,6 @@
 # Maintainer: Michael Schubert <mschu.dev at gmail>
 pkgname=python2-mahotas
-pkgver=1.4.5
+pkgver=1.4.7
 pkgrel=1
 pkgdesc='A set of functions for image processing in Python'
 arch=('i686' 'x86_64')
@@ -9,8 +9,8 @@ license=('GPL')
 depends=('python2-numpy')
 makedepends=('python2-distribute')
 optdepends=('python2-scipy' 'python2-matplotlib' 'freeimage')
-source=("https://github.com/luispedro/mahotas/archive/v$pkgver.tar.gz")
-sha256sums=('79ab44d6fa9b013d9cc59a9cb32c118ace508f15c56e34a1ca76b6a895afd07c')
+source=($pkgname.tar.gz::https://github.com/luispedro/mahotas/archive/v$pkgver.tar.gz)
+sha256sums=('d545906bc9b5f021ed0460435f89b87d6e67c86a8bff82604d1de0606458856a')
 
 build() {
   cd "$srcdir/mahotas-$pkgver"
