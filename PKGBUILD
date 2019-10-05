@@ -1,5 +1,5 @@
 pkgname=adios2
-pkgver=2.4.0
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="Next generation of ADIOS developed in the Exascale Computing Program"
 license=('Apache')
@@ -8,7 +8,7 @@ url="https://adios2.readthedocs.io/en/latest/index.html"
 depends=('libpng' 'zfp' 'hdf5' 'zeromq' 'libfabric' 'blosc' 'python' 'sz')
 makedepends=('cmake')
 source=("https://github.com/ornladios/ADIOS2/archive/v$pkgver.tar.gz")
-sha256sums=('50ecea04b1e41c88835b4b3fd4e7bf0a0a2a3129855c9cc4ba6cf6a1575106e2')
+sha256sums=('7c8ff3bf5441dd662806df9650c56a669359cb0185ea232ecb3578de7b065329')
 
 prepare () {
   cd ADIOS2-$pkgver
