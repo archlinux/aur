@@ -1,4 +1,4 @@
-# Maintainer: johnnybash <jb at wachenzell dot org>
+# Maintainer: johnnybash <jb at wachenzell dot org> PGP 0xd126e2910543de2d
 # Contributor: Alex Talker <alextalker at openmailbox dot org>
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 # Contributor: Alexander Suhoverhov <cy at ngs dot ru>
