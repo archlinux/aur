@@ -1,15 +1,15 @@
 # Maintainer: Michael Schubert <mschu.dev at gmail>
 pkgname=python2-easydev
 _pkgname=${pkgname#python2-}
-pkgver=0.9.29
+pkgver=0.9.38
 pkgrel=1
 pkgdesc="Provides utilities that are of general usage for the development of Python packages"
 arch=('any')
 license=('GPL')
 depends=('python2-sphinx')
 url="https://pypi.python.org/pypi/$_pkgname"
-source=("https://pypi.io/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-md5sums=('36be9352f38956aaa4bd9ca0a097082f')
+source=($pkgname.tar.gz::https://github.com/cokelaer/easydev/archive/$pkgver.tar.gz)
+sha256sums=('4e817d1bea2197b1bc8b147ac8888bbec084f74ad0b5be8bc4750df5f44a90b5')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
