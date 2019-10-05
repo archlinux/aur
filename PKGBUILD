@@ -1,5 +1,4 @@
-# Maintainer: Uladzimir Panasiuk <v.s.panasyuk+AUR(at)gmail.com>
-#https://download3.ebz.epson.net/dsc/f/03/00/09/83/32/2d16f4c778bd92af086aaf80854826ed1976cc1b/epson-printer-utility_1.1.0-1lsb3.2_amd64.deb
+# Maintainer: Lukas Michel
 pkgname=epson-printer-utility
 pkgver=1.1.0
 pkgrel=1
