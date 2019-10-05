@@ -3,7 +3,7 @@
 pkgbase='python-rospkg'
 pkgname=('python-rospkg')
 _module='rospkg'
-pkgver='1.1.9'
+pkgver='1.1.10'
 pkgrel=1
 pkgdesc="ROS package library"
 url="http://wiki.ros.org/rospkg"
@@ -12,8 +12,8 @@ conflicts=('python2-rospkg')
 makedepends=('python-setuptools')
 license=('BSD')
 arch=('any')
-source=("https://files.pythonhosted.org/packages/10/69/cc50592ac6784a2d409307f5fc904f036fc613adc2eaf9d33f7c5c32c7ed/rospkg-1.1.9.tar.gz")
-sha256sums=('00038593f36435dddbe01dfa6ac066246e181a824394806b27418e7ad8dc754e')
+source=("https://files.pythonhosted.org/packages/15/4e/ab22127ba3564220d1008e03fe06865b51354761276b3dfe2fb9b219cd1d/rospkg-1.1.10.tar.gz")
+sha256sums=('f39f8b553a8524b1bf796a66c14b0466d2e7ac3ab8e933c1b3493e0bb8ca2cde')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
