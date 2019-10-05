@@ -1,6 +1,6 @@
 pkgbase = blender-git
 	pkgdesc = A fully integrated 3D graphics creation suite (development)
-	pkgver = 2.81.r91059.f35bfbb25ea
+	pkgver = 2.81.r91063.ab519b91b2c
 	pkgrel = 1
 	url = http://blender.org/
 	install = blender.install
@@ -11,6 +11,7 @@ pkgbase = blender-git
 	makedepends = cmake
 	makedepends = boost
 	makedepends = mesa
+	makedepends = llvm
 	depends = alembic
 	depends = libgl
 	depends = python

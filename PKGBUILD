@@ -1,7 +1,7 @@
 # Maintainer: Fredrick Brennan <copypaste@kittens.ph>
 # Submitter: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 pkgname=blender-git
-pkgver=2.81.r91059.f35bfbb25ea
+pkgver=2.81.r91063.ab519b91b2c
 pkgrel=1
 pkgdesc="A fully integrated 3D graphics creation suite (development)"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('alembic' 'libgl' 'python' 'desktop-file-utils' 'hicolor-icon-theme' 'o
 optdepends=('cuda: CUDA support in Cycles'
             'optix: OptiX support in Cycles'
             'oidn: Intel Open Image Denoise support in compositing')
-makedepends=('git' 'cmake' 'boost' 'mesa')
+makedepends=('git' 'cmake' 'boost' 'mesa' 'llvm')
 provides=('blender')
 conflicts=('blender')
 license=('GPL')
