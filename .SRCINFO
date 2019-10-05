@@ -47,6 +47,8 @@ pkgname = dotnet-runtime-2.1
 
 pkgname = aspnet-runtime-2.1
 	pkgdesc = The ASP.NET Core runtime version 2.1
+	arch = x86_64
+	arch = armv7h
 	depends = dotnet-runtime=2.1.13
 	provides = aspnet-runtime=2.1.13
 

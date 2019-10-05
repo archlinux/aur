@@ -48,6 +48,7 @@ package_dotnet-runtime-2.1() {
 }
 
 package_aspnet-runtime-2.1() {
+  arch=('x86_64' 'armv7h')
   pkgdesc='The ASP.NET Core runtime version 2.1'
   depends=('dotnet-runtime=2.1.13')
   provides=("aspnet-runtime=${pkgver%+*}")
