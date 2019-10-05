@@ -1,7 +1,7 @@
 pkgbase = linux-pds
-	pkgver = 5.3.2.arch2
+	pkgver = 5.3.4.arch1
 	pkgrel = 1
-	url = https://git.archlinux.org/linux.git/log/?h=v5.3.2-arch2
+	url = https://git.archlinux.org/linux.git/log/?h=v5.3.4-arch1
 	arch = x86_64
 	license = GPL2
 	makedepends = xmlto
@@ -15,7 +15,7 @@ pkgbase = linux-pds
 	makedepends = graphviz
 	makedepends = imagemagick
 	options = !strip
-	source = git+https://git.archlinux.org/linux?signed#tag=v5.3.2-arch2
+	source = git+https://git.archlinux.org/linux?signed#tag=v5.3.4-arch1
 	source = git+https://github.com/graysky2/kernel_gcc_patch
 	source = config
 	source = 60-linux.hook
@@ -44,18 +44,18 @@ pkgname = linux-pds
 	depends = thrash-protect
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
-	provides = linux-pds=5.3.2.arch2
+	provides = linux-pds=5.3.4.arch1
 	backup = etc/mkinitcpio.d/linux-pds.preset
 
 pkgname = linux-pds-headers
 	pkgdesc = Header files and scripts for building modules for Linux-pds kernel ~ featuring Alfred Chen's PDS CPU scheduler, rebased by TkG
-	depends = linux-pds=5.3.2.arch2
-	provides = linux-pds-headers=5.3.2.arch2
-	provides = linux-headers=5.3.2.arch2
+	depends = linux-pds=5.3.4.arch1
+	provides = linux-pds-headers=5.3.4.arch1
+	provides = linux-headers=5.3.4.arch1
 
 pkgname = linux-pds-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-pds kernel ~ featuring Alfred Chen's PDS CPU scheduler, rebased by TkG
-	depends = linux-pds=5.3.2.arch2
-	provides = linux-pds-docs=5.3.2.arch2
-	provides = linux-docs=5.3.2.arch2
+	depends = linux-pds=5.3.4.arch1
+	provides = linux-pds-docs=5.3.4.arch1
+	provides = linux-docs=5.3.4.arch1
 
