@@ -1,7 +1,7 @@
 pkgbase = java-openjdk-bin
 	pkgdesc = Java OpenJDK 13 Oracle Build.
 	pkgver = 13b33
-	pkgrel = 1
+	pkgrel = 2
 	url = http://jdk.java.net/13
 	arch = x86_64
 	license = GPL2
@@ -14,12 +14,12 @@ pkgbase = java-openjdk-bin
 	provides = java-runtime-openjdk=13
 	provides = java-runtime-headless=13
 	provides = java-runtime-headless-openjdk=13
-	conflicts = java-environment=13
-	conflicts = java-environment-openjdk=13
-	conflicts = java-runtime=13
-	conflicts = java-runtime-openjdk=13
-	conflicts = java-runtime-headless=13
-	conflicts = java-runtime-headless-openjdk=13
+	conflicts = jdk-openjdk>=13
+	conflicts = jre-openjdk>=13
+	conflicts = jre-openjdk-headless>=13
+	conflicts = jdk13-openjdk
+	conflicts = jre13-openjdk
+	conflicts = jre13-openjdk-headless
 	source = openjdk-13_33_linux-x64_bin.tar.gz::https://download.java.net/java/GA/jdk13/5b8a42f3905b406298b72d750b6919f6/33/GPL/openjdk-13_linux-x64_bin.tar.gz
 	sha256sums = 5f547b8f0ffa7da517223f6f929a5055d749776b1878ccedbd6cc1334f4d6f4d
 

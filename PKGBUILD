@@ -3,7 +3,7 @@ pkgname=java-openjdk-bin
 _majorver=13
 _buildver=33
 pkgver=${_majorver}b${_buildver}
-pkgrel=1
+pkgrel=2
 pkgdesc="Java OpenJDK ${_majorver} Oracle Build."
 arch=('x86_64')
 url="http://jdk.java.net/${_majorver}"
@@ -18,12 +18,12 @@ provides=(
   "java-runtime-headless-openjdk=${_majorver}"
 )
 conflicts=(
-  "java-environment=${_majorver}" 
-  "java-environment-openjdk=${_majorver}"
-  "java-runtime=${_majorver}" 
-  "java-runtime-openjdk=${_majorver}"
-  "java-runtime-headless=${_majorver}"
-  "java-runtime-headless-openjdk=${_majorver}"
+  "jdk-openjdk>=${_majorver}"
+  "jre-openjdk>=${_majorver}"
+  "jre-openjdk-headless>=${_majorver}"
+  "jdk${_majorver}-openjdk"
+  "jre${_majorver}-openjdk"
+  "jre${_majorver}-openjdk-headless"
 )
 
 source=("openjdk-${_majorver}_${_buildver}_linux-x64_bin.tar.gz::https://download.java.net/java/GA/jdk${_majorver}/5b8a42f3905b406298b72d750b6919f6/${_buildver}/GPL/openjdk-${_majorver}_linux-x64_bin.tar.gz")
