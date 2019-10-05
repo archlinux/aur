@@ -2,7 +2,7 @@
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=grip
-pkgver=3.10.2
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="A cd-player and ripper for the Gnome desktop"
 arch=('i686' 'x86_64')
@@ -11,12 +11,12 @@ url="http://sourceforge.net/projects/grip/"
 depends=('vte' 'curl' 'libgnomeui' 'id3lib' 'cdparanoia')
 optdepends=('yelp: to display the help and notices')
 source=(http://downloads.sourceforge.net/sourceforge/${pkgname}/${pkgname}-${pkgver}.tar.gz)
-sha1sums=('614d2993d54ca170f31d746c780bc24c39776757')
+sha1sums=('07e849ff7553f9a4ad5d7808a0f66623a6a2541e')
 
 build() {
   cd ${pkgname}-${pkgver}
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
-  make
+  make CPPFLAGS="-Wno-deprecated-declarations"
 }
 
 package() {
