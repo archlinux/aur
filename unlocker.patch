@@ -2,7 +2,7 @@ diff --git a/unlocker.py b/unlocker.py
 index decbc51..0f9d3f6 100755
 --- a/unlocker.py
 +++ b/unlocker.py
-@@ -44,6 +44,7 @@ Offset  Length  Struct Type Description
+@@ -44,6 +44,7 @@
  from __future__ import print_function
  import codecs
  import os
@@ -10,7 +10,7 @@ index decbc51..0f9d3f6 100755
  import struct
  import sys
  
-@@ -55,7 +56,10 @@ if sys.version_info < (2, 7):
+@@ -55,7 +56,11 @@
  if sys.platform == 'win32' \
          or sys.platform == 'cli':
      # noinspection PyUnresolvedReferences
@@ -19,10 +19,11 @@ index decbc51..0f9d3f6 100755
 +        from winreg import *
 +    else:
 +        from _winreg import *
++
  
  
  def bytetohex(data):
-@@ -301,9 +305,10 @@ def patchbase(name):
+@@ -301,9 +306,10 @@ def patchbase(name):
      f = open(name, 'r+b')
  
      # Entry to search for in GOS table
@@ -36,7 +37,7 @@ index decbc51..0f9d3f6 100755
  
      # Read file into string variable
      base = f.read()
-@@ -311,11 +316,8 @@ def patchbase(name):
+@@ -311,19 +317,14 @@ def patchbase(name):
      # Loop through each entry and set top bit
      # 0xBE --> 0xBF (WKS 12)
      # 0x3E --> 0x3F (WKS 14)
@@ -50,9 +51,10 @@ index decbc51..0f9d3f6 100755
          f.seek(offset + 32)
          flag = ord(f.read(1))
          flag = set_bit(flag, 0)
-@@ -323,7 +325,6 @@ def patchbase(name):
+-        flag = chr(flag)
          f.seek(offset + 32)
-         f.write(flag)
+-        f.write(flag)
++        f.write(bytes([flag]))
          print('GOS Patched flag @: ' + hex(offset))
 -        offset += 40
  
