@@ -12,7 +12,7 @@ _tinydir_commit=3aae922
 
 pkgname=natron
 _pkgname=Natron
-pkgver=2.3.15_rc.8
+pkgver=2.3.15_rc.10
 _pkgver=${pkgver//_/-}
 pkgrel=1
 pkgdesc="Open source compositing software. Node-graph based. Similar in functionalities to Adobe After Effects and Nuke by The Foundry."
@@ -29,9 +29,9 @@ source=("$_pkgname-$_pkgver.tar.gz::https://github.com/NatronGitHub/Natron/archi
         "openfx-$_openfx_commit.tar.gz::https://github.com/NatronGitHub/openfx/tarball/$_openfx_commit"
         "SequenceParsing-$_SequenceParsing_commit.tar.gz::https://github.com/NatronGitHub/SequenceParsing/tarball/$_SequenceParsing_commit"
         "tinydir-$_tinydir_commit.tar.gz::https://github.com/NatronGitHub/tinydir/tarball/$_tinydir_commit"
-        "OpenColorIO-Configs-$_pkgname-v${pkgver%.??*}.tar.gz::https://github.com/NatronGitHub/OpenColorIO-Configs/archive/$_pkgname-v${pkgver%.??*}.tar.gz"
+        "OpenColorIO-Configs-$_pkgname-v${pkgver%.??_*}.tar.gz::https://github.com/NatronGitHub/OpenColorIO-Configs/archive/$_pkgname-v${pkgver%.??_*}.tar.gz"
         "config.pri")
-sha512sums=('1cf70e8d2200c93bd065cc9653fc44c744b903d9d5f4b0536a8a2d0d481e664d63a5c06e354dc61dee5d5fda07a3577a21451d46572596915ae62052946650c4'
+sha512sums=('8fe4d7edab285427df86782beefc77d6faa26534afcef81adbbebef82869547401b6981715d74590b032f9d11ead9e8dc01ce29d5a15979ea133ad23a3d09c34'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -48,7 +48,7 @@ prepare() {
     rm -rf OpenColorIO-Configs
   fi
   
-  mv "$srcdir/OpenColorIO-Configs-Natron-v${pkgver%.??*}" \
+  mv "$srcdir/OpenColorIO-Configs-Natron-v${pkgver%.??_*}" \
      "$srcdir/$_pkgname-$_pkgver/OpenColorIO-Configs"
 
   rm -rf OpenColorIO-Configs/aces*
