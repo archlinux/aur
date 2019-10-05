@@ -2,7 +2,7 @@
 
 pkgname=ultracopier
 _pkgname="$(echo "$pkgname" | sed 's/.*/\u&/')"
-pkgver=2.0.4.6
+pkgver=2.0.4.7
 pkgrel=1
 pkgdesc="Ultracopier is free and open source software licensed under GPL3 that acts as a replacement for files copy dialogs. Main features include: play/pause, speed limitation, on-error resume, error/collision management"
 url="https://ultracopier.first-world.info/"
@@ -11,21 +11,24 @@ license=('GPL3')
 depends=('qt5-base' 'qt5-multimedia')
 makedepends=('qt5-tools')
 provides=('ultracopier')
-commit=8bdb3a4117cae565994494f9ea3298e7538b6fdb
+commit=25ff5c5cc5b735bd523bb93325b2160d99664769
 source=("$pkgname-$pkgver.zip"::"https://github.com/alphaonex86/Ultracopier/archive/$commit.zip")
-sha512sums=('f4cf8ac96c298bd8b8b44ae4cbef6478b28a97b9c91cfd23a0c12c05e05c8b252a9ac9ad3896414d3d02b3497400de8cbb5d9f73449f53c09bb4a4909508fa54')
+sha512sums=('7767532a4cbf7eb6f8cda80667108c55cb3efaa439ea1e939a68fa1e7f8d057bd86c49b1b63b787b3e312db0a8013194a1a5b28485310b2dcb09147596f47370')
 
 prepare() {
 	cd "$srcdir/$_pkgname-$commit"
-	find -name "Variable.h" -exec sed -i "s/#define ULTRACOPIER_DEBUG/\/\/#define ULTRACOPIER_DEBUG/g" {} \;
-	find -name "Variable.h" -exec sed -i "s/#define ULTRACOPIER_PLUGIN_DEBUG/\/\/#define ULTRACOPIER_PLUGIN_DEBUG/g" {} \;
-	find -name "Variable.h" -exec sed -i "s/#define ULTRACOPIER_PLUGIN_DEBUG_WINDOW/\/\/#define ULTRACOPIER_PLUGIN_DEBUG_WINDOW/g" {} \;
+	find -name "Variable.h" -exec sed -i "s/#define ULTRACOPIER_DEBUG/\/\/\#define ULTRACOPIER_DEBUG/g" {} \;
+	find -name "Variable.h" -exec sed -i "s/#define ULTRACOPIER_PLUGIN_DEBUG/\/\/\#define ULTRACOPIER_PLUGIN_DEBUG/g" {} \;
+	find -name "Variable.h" -exec sed -i "s/#define ULTRACOPIER_PLUGIN_DEBUG_WINDOW/\/\/\#define ULTRACOPIER_PLUGIN_DEBUG_WINDOW/g" {} \;
 	find ./ -name '*.ts' -exec lrelease {} \;
 }
 
 build() {
 	cd "$srcdir/$_pkgname-$commit"
-	qmake ultracopier.pro
+	qmake ultracopier.pro \
+		QMAKE_CFLAGS="${CFLAGS}" \
+		QMAKE_CXXFLAGS="${CXXFLAGS}" \
+		QMAKE_LFLAGS="${LDFLAGS}"
 	make
 }
 
