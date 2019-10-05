@@ -7,8 +7,10 @@ post_install () {
   echo "  /usr/share/vimrc/install_awesome_parameterized.sh /usr/share/vimrc --all"
   echo "To turn on persistent undo:"
   echo "  mkdir -p ~/.vim_runtime/temp_dirs/undodir"
-  echo "To add your own configs:"
-  echo "  Append ~/.vim_runtime/my_configs.vim or ~/.vimrc"
+  echo "To add your own configs for your own user:"
+  echo "  Append ~/.vimrc"
+  echo "To add your own configs for all users:"
+  echo "  Append /usr/share/vimrc/my_configs.vim"
         
 }
 
