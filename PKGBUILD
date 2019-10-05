@@ -134,7 +134,10 @@ ac_add_options --disable-gamepad
 
 # Enable wanted features
 ac_add_options --enable-jemalloc
-ac_add_options --enable-stylo=build
+
+# Stylo doesn't compile with Rust 1.38 (needs newer cssparser)
+ac_add_options --disable-stylo
+
 ac_add_options --with-pthreads
 ac_add_options --enable-strip
 ac_add_options --enable-startup-notification
