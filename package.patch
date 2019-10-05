@@ -1,15 +1,11 @@
-diff -aur -bZwB -x .git xeus-0.11.0.old/CMakeLists.txt xeus-0.11.0/CMakeLists.txt
---- xeus-0.11.0.old/CMakeLists.txt	2018-03-25 09:33:11.000929782 -0400
-+++ xeus-0.11.0/CMakeLists.txt	2018-03-25 09:34:42.577890245 -0400
-@@ -129,9 +129,9 @@
- target_include_directories(xeus PUBLIC $<BUILD_INTERFACE:${XEUS_INCLUDE_DIR}>
-                                        $<INSTALL_INTERFACE:include>)
- target_link_libraries(xeus
--                      PUBLIC cppzmq
-+                      PUBLIC zmq
-                       PUBLIC nlohmann_json::nlohmann_json
-                       PUBLIC xtl
--                      PRIVATE cryptopp-static)
-+                      PRIVATE cryptopp)
-
- if(NOT MSVC)
+--- old/CMakeLists.txt	2019-09-10 11:07:54.000000000 -0400
++++ CMakeLists.txt	2019-09-30 17:31:38.300168873 -0400
+@@ -198,7 +198,7 @@
+     )
+     target_link_libraries(
+         ${target_name}
+-        PUBLIC cppzmq
++        PUBLIC zmq
+         PUBLIC nlohmann_json::nlohmann_json
+         PUBLIC xtl
+     )
