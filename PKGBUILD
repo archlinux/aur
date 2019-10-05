@@ -9,16 +9,19 @@ pkgdesc="A modular plugin host for JACK and LV2."
 arch=('i686' 'x86_64')
 url="http://drobilla.net/software/${_pkgname}/"
 license=('GPL')
-depends=('alsa-lib' 'ganv>=1.5.0' 'jack' 'lilv>=0.21.5' 'lv2>=1.15.4' 'portaudio'
-         'raul>=0.8.10' 'suil>=0.8.7' 'serd>=0.30' 'sord>=0.12.0')
-makedepends=('python2')
+depends=('alsa-lib' 'ganv>=1.5.0' 'jack' 'lilv>=0.21.5' 'lv2>=1.15.4'
+         'portaudio' 'python-rdflib' 'raul>=0.8.10' 'suil>=0.8.7' 'serd>=0.30'
+         'sord>=0.12.0')
+makedepends=('git')
 optdepends=(
     'lv2-plugins: various useful LV2 plug-in packages'
 )
 provides=("${_pkgname}" "${_pkgname}=${pkgver//.r*/}")
 conflicts=("${_pkgname}")
-source=("${_pkgname}::git+http://git.drobilla.net/cgit.cgi/ingen.git/")
-md5sums=('SKIP')
+source=("${_pkgname}::git+http://git.drobilla.net/cgit.cgi/ingen.git/"
+        "ingen-ingenish-python3.diff")
+md5sums=('SKIP'
+         '210743fd775951fb9e8641b13541e097')
 
 
 pkgver() {
@@ -30,17 +33,25 @@ pkgver() {
   echo "${ver}.r${rev}.${githash}"
 }
 
+prepare() {
+  cd "$srcdir/${_pkgname}"
+
+  # Fix 'does not look like a valid URI' warning
+  # and decode command responses.
+  patch -p1 -N -r - -i "${srcdir}/ingen-ingenish-python3.diff"
+}
+
 build() {
   cd "$srcdir/${_pkgname}"
 
-  python2 waf configure --prefix=/usr
-  python2 waf build
+  python waf configure --prefix=/usr
+  python waf build
 }
 
 package() {
   cd "$srcdir/${_pkgname}"
 
-  python2 waf install --destdir="$pkgdir/"
+  python waf install --destdir="$pkgdir/"
 }
 
 # vim:set ts=2 sw=2 et:

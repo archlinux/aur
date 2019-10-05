@@ -6,13 +6,14 @@ pkgbase = ingen-git
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = python2
+	makedepends = git
 	depends = alsa-lib
 	depends = ganv>=1.5.0
 	depends = jack
 	depends = lilv>=0.21.5
 	depends = lv2>=1.15.4
 	depends = portaudio
+	depends = python-rdflib
 	depends = raul>=0.8.10
 	depends = suil>=0.8.7
 	depends = serd>=0.30
@@ -22,7 +23,9 @@ pkgbase = ingen-git
 	provides = ingen=0.5.1
 	conflicts = ingen
 	source = ingen::git+http://git.drobilla.net/cgit.cgi/ingen.git/
+	source = ingen-ingenish-python3.diff
 	md5sums = SKIP
+	md5sums = 210743fd775951fb9e8641b13541e097
 
 pkgname = ingen-git
 
