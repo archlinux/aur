@@ -1,6 +1,6 @@
 pkgbase = brave
 	pkgdesc = A web browser that stops ads and trackers by default
-	pkgver = 0.68.142
+	pkgver = 0.69.132
 	pkgrel = 1
 	url = https://www.brave.com/download
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = brave
 	optdepends = cups: Printer support
 	optdepends = pepper-flash: Adobe Flash support
 	optdepends = libgnome-keyring: Enable GNOME keyring support
-	source = git+https://github.com/brave/brave-browser.git#tag=v0.68.142
+	source = git+https://github.com/brave/brave-browser.git#tag=v0.69.132
 	source = chromium-vaapi-fix.patch
 	source = chromium-widevine.patch
 	source = chromium-skia-harmony.patch
