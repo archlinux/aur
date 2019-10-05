@@ -1,0 +1,15 @@
+pkgbase = chibu
+	pkgdesc = Create Hybrid ISO Bootable USB
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/neurobin/chibu
+	arch = any
+	license = BSD
+	depends = python
+	depends = systemd
+	depends = syslinux
+	source = https://github.com/neurobin/chibu/archive/release.tar.gz
+	md5sums = SKIP
+
+pkgname = chibu
+
