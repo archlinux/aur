@@ -25,3 +25,7 @@ package()
 	cd "${srcdir}/${_pkgname}-${pkgver}/src"
 	install -D -m755 acme ${pkgdir}/usr/bin/acme
 }
+
+#
+# EOF
+#
