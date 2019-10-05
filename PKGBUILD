@@ -1,7 +1,7 @@
 # Maintainer: Klaus Fröhlich <arch@sclause.net>
 
 pkgname=grandorgue-svn
-pkgver=0.3.1.r2330
+pkgver=r2330
 pkgrel=1
 pkgdesc='svn-version of the Virtual Pipe Organ Software GrandOrgue'
 arch=('i686' 'x86_64')
