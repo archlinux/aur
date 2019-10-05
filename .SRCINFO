@@ -1,6 +1,6 @@
 pkgbase = python-distributed
 	pkgdesc = Python library for distributed computing
-	pkgver = 2.5.1
+	pkgver = 2.5.2
 	pkgrel = 1
 	url = http://distributed.readthedocs.org/en/stable/
 	arch = any
@@ -35,8 +35,8 @@ pkgbase = python-distributed
 	optdepends = python-h5py
 	optdepends = python-paramiko
 	optdepends = python-ipywidgets
-	source = https://codeload.github.com/dask/distributed/tar.gz/2.5.1
-	sha256sums = b9c0534ccb725d52457afea7a6d0a069b8a1f493ed7e001a4dea1e0f89645128
+	source = 2.5.2.tar.gz::https://codeload.github.com/dask/distributed/tar.gz/2.5.2
+	sha256sums = 4701f1ca503786a71dcf8a2cb29d91ca97c255f092c622b4e2d68b2e60ad1d8a
 
 pkgname = python-distributed
 
