@@ -142,21 +142,25 @@ _vmware_fusion_ver=7.1.3_3204469
 # List of VMware Fusion versions: https://softwareupdate.vmware.com/cds/vmw-desktop/fusion/
 
 _unlocker_ver=3.0.2
+_efi_unlocker_ver=1.0.0
 
 makedepends+=(
   python
   unzip
+  uefitool-git
 )
 
 source+=(
   "darwin-tools-${_vmware_fusion_ver}.zip.tar::https://softwareupdate.vmware.com/cds/vmw-desktop/fusion/${_vmware_fusion_ver/_//}/packages/com.vmware.fusion.tools.darwin.zip.tar"
   "unlocker-${_unlocker_ver}.py::https://raw.githubusercontent.com/DrDonk/unlocker/${_unlocker_ver}/unlocker.py"
   'unlocker.patch'
+  "efi-unlocker-patch-${_efi_unlocker_ver}.txt::https://raw.githubusercontent.com/DrDonk/efi-unlocker/${_efi_unlocker_ver}/patches.txt"
 )
 sha256sums+=(
   '09711e59f708576d2fb09c464ebbb52806cb7f850cb3d5bbeea634fa58fb6c86'
   '29e0b0db9c0296ab81eee543803c4bd430e2c69c76e33492910e17280da1c05c'
   '4fb4a7914aee656df170e35b3ef952aaaa2ed10161e560dfa097688861127b1d'
+  '392c1effcdec516000e9f8ffc97f2586524d8953d3e7d6f2c5f93f2acd809d91'
 )
 
 _fusion_isoimages=(darwin)
@@ -451,6 +455,20 @@ if [ -n "$_enable_macOS_guests" ]; then
   do
     install -Dm 644 "$srcdir/fusion-isoimages/$isoimage.iso" "$pkgdir/usr/lib/vmware/isoimages/$isoimage.iso"
     install -Dm 644 "$srcdir/fusion-isoimages/$isoimage.iso.sig" "$pkgdir/usr/lib/vmware/isoimages/$isoimage.iso.sig"
+  done
+
+  msg "Patching EFI firmwares to remove the check for server versions"
+  _efi_arch=(32 64)
+  for arch in ${_efi_arch[@]}
+  do
+    objcopy "$pkgdir"/usr/lib/vmware/bin/vmware-vmx -O binary -j efi${arch} --set-section-flags efi${arch}=a efi${arch}.rom.Z
+    perl -e 'use Compress::Zlib; my $v; read STDIN, $v, '$(stat -c%s "./efi${arch}.rom.Z")'; $v = uncompress($v); print $v;' < efi${arch}.rom.Z > efi${arch}.rom
+
+    uefipatch efi${arch}.rom "$srcdir/efi-unlocker-patch-${_efi_unlocker_ver}.txt" -o efi${arch}.rom > /dev/null
+
+    perl -e 'use Compress::Zlib; my $v; read STDIN, $v, '$(stat -c%s "./efi${arch}.rom")'; $v = compress($v); print $v;' < efi${arch}.rom > efi${arch}.rom.Z
+    objcopy "$pkgdir"/usr/lib/vmware/bin/vmware-vmx --update-section efi${arch}=efi${arch}.rom.Z
+    rm efi${arch}.rom efi${arch}.rom.Z
   done
 fi
 
