@@ -22,3 +22,12 @@ pre_remove() {
     echo "Deactivating the product..."
 	/opt/metashape-pro/metashape.sh --deactivate 2>/dev/null
 }
+
+post_remove() {
+    rm -rf /opt/metashape-pro
+    echo "The users data were kept at the below locations"
+    echo
+    echo "$HOME/.agisoft"
+    echo "$HOME/.config/Agisoft"
+    echo "$HOME/.local/share/Agisoft"
+}
