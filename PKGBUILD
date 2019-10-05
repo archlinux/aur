@@ -50,7 +50,6 @@ depends=(
   # needed to replace internal libs:
   fontconfig
   freetype2
-  #zlib
 )
 optdepends=(
   'linux-headers: build modules against Arch kernel'
@@ -142,18 +141,22 @@ if [ -n "$_enable_macOS_guests" ]; then
 _vmware_fusion_ver=7.1.3_3204469
 # List of VMware Fusion versions: https://softwareupdate.vmware.com/cds/vmw-desktop/fusion/
 
+_unlocker_ver=3.0.2
+
 makedepends+=(
-  python2
+  python
   unzip
 )
 
 source+=(
   "darwin-tools-${_vmware_fusion_ver}.zip.tar::https://softwareupdate.vmware.com/cds/vmw-desktop/fusion/${_vmware_fusion_ver/_//}/packages/com.vmware.fusion.tools.darwin.zip.tar"
-  'unlocker.py'
+  "unlocker-${_unlocker_ver}.py::https://raw.githubusercontent.com/DrDonk/unlocker/${_unlocker_ver}/unlocker.py"
+  'unlocker.patch'
 )
 sha256sums+=(
   '09711e59f708576d2fb09c464ebbb52806cb7f850cb3d5bbeea634fa58fb6c86'
-  'ecf6d9186f109ec420287bd327e1f1f407de8e4b9e3faa23828bcf903f6246c6'
+  '29e0b0db9c0296ab81eee543803c4bd430e2c69c76e33492910e17280da1c05c'
+  '4fb4a7914aee656df170e35b3ef952aaaa2ed10161e560dfa097688861127b1d'
 )
 
 _fusion_isoimages=(darwin)
@@ -200,6 +203,8 @@ if [ -n "$_enable_macOS_guests" ]; then
     rm -rf payload manifest.plist
   done
 
+  cp "$srcdir/unlocker-${_unlocker_ver}.py" "$srcdir/unlocker.py"
+  patch -Np1 < unlocker.patch
   sed -i -e "s|/usr/lib/vmware/|${pkgdir}/usr/lib/vmware/|" "$srcdir/unlocker.py"
 fi
 }
@@ -259,7 +264,6 @@ package() {
     vmware-vix-lib-Workstation1100andvSphere600/lib/Workstation-11.0.0-and-vSphere-6.0.0 \
     vmware-vix-core/lib/* \
     "$pkgdir/usr/lib/vmware-vix"
-  #cp vmware-vix-core/vix-perl.tar.nogz "$pkgdir/usr/lib/vmware-vix/vix-perl.tar.gz"
 
   cp -r \
     vmware-vix-core/doc/* \
@@ -441,7 +445,7 @@ fi
 
 if [ -n "$_enable_macOS_guests" ]; then
   msg "Patching VMware for macOS guest support"
-  python2 "$srcdir/unlocker.py" > /dev/null
+  python "$srcdir/unlocker.py" > /dev/null
 
   for isoimage in ${_fusion_isoimages[@]}
   do
@@ -468,7 +472,4 @@ fi
   # use system font rendering
   ln -sf /usr/lib/libfreetype.so.6 "$pkgdir/usr/lib/vmware/lib/libfreetype.so.6/"
   ln -sf /usr/lib/libfontconfig.so.1 "$pkgdir/usr/lib/vmware/lib/libfontconfig.so.1/" # avoid a conflict with fontconfig when VMWARE_USE_SHIPPED_LIBS is defined
-
-  # to solve bugs with incompatibles library versions:
-  #ln -sf /usr/lib/libz.so.1 "$pkgdir/usr/lib/vmware/lib/libz.so.1/"
 }
