@@ -2,18 +2,20 @@
 
 pkgname=btrfs-snapshot-git
 _srcname=btrfs-snapshot
-pkgver=1.1.0.r0.g276df17
-pkgrel=2
+pkgver=1.1.1.r0.g10e6e4a
+pkgrel=1
 pkgdesc="Tool for creating btrfs snapshots"
 arch=('any')
 url="https://github.com/YHNdnzj/btrfs-snapshot"
 license=('MIT')
 depends=('bash' 'btrfs-progs')
-source=("git+https://github.com/YHNdnzj/$_srcname.git")
+makedepends=('git')
+source=("git+${url}.git")
 md5sums=('SKIP')
 
 pkgver() {
     cd "${_srcname}"
+
     git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
