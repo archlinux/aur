@@ -1,4 +1,5 @@
-# Maintainer: Lukas Michel
+# Maintainer: Lukas Michel <lgm(dot)aur(at)outlook(dot)de
+# Contributor: Uladzimir Panasiuk <v.s.panasyuk+AUR(at)gmail.com>
 pkgname=epson-printer-utility
 pkgver=1.1.0
 pkgrel=1
