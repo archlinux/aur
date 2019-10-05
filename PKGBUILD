@@ -1,10 +1,10 @@
-# Maintainer: Andrew Sun <adsun701@gmail.com>
-# Contributor: napa3um <napa3um@gmail.com>
-# Contributor: Filip Brcic <brcha@gna.org>
+# Maintainer: Andrew Sun <adsun701 at gmail dot com>
+# Contributor: napa3um <napa3um at gmail dot com>
+# Contributor: Filip Brcic <brcha at gna dot org>
 
 pkgname=mingw-w64-sqlite
-_amalgamationver=3290000
-pkgver=3.29.0
+_amalgamationver=3300000
+pkgver=3.30.0
 pkgrel=1
 pkgdesc="A C library that implements an SQL database engine (mingw-w64)"
 arch=('any')
@@ -13,9 +13,9 @@ depends=('mingw-w64-crt')
 makedepends=('mingw-w64-configure' 'mingw-w64-pdcurses' 'mingw-w64-readline')
 options=('!buildflags' '!strip' 'staticlibs')
 license=('custom:Public Domain')
-url="http://www.sqlite.org/"
-source=("http://www.sqlite.org/2019/sqlite-autoconf-${_amalgamationver}.tar.gz")
-sha256sums=('8e7c1e2950b5b04c5944a981cb31fffbf9d2ddda939d536838ebc854481afd5b')
+url="https://www.sqlite.org/"
+source=("https://www.sqlite.org/2019/sqlite-autoconf-${_amalgamationver}.tar.gz")
+sha256sums=('e0a8cf4c7a87455e55e10413d16f358ca121ccec687fe1301eac95e2d340fc58')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
