@@ -1,7 +1,7 @@
 # Maintainer: Attila Greguss <floyd0122[at]gmail[dot]com>
 
 pkgbase=dotnet-core-bin
-pkgname=('dotnet-host-bin' 'dotnet-runtime-bin' 'dotnet-sdk-bin')
+pkgname=('dotnet-host-bin' 'aspnet-runtime-bin' 'dotnet-runtime-bin' 'dotnet-sdk-bin')
 pkgver=3.0.100
 pkgrel=4
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -44,16 +44,15 @@ package_dotnet-runtime-bin() {
   ln -s dotnet-host-bin "${pkgdir}"/usr/share/licenses/dotnet-runtime-bin
 }
 
-#package_aspnet-runtime-bin() {
-#  arch=('x86_64' 'armv7h')
-#  pkgdesc='The ASP.NET Core runtime (binary)'
-#  depends=('dotnet-runtime=3.0.100')
-#  provides=("aspnet-runtime=${pkgver%+*}")
+package_aspnet-runtime-bin() {
+  pkgdesc='The ASP.NET Core runtime (binary)'
+  depends=('dotnet-runtime=3.0.100')
+  provides=("aspnet-runtime=${pkgver%+*}")
 
-#  install -dm 755 "${pkgdir}"/{opt/dotnet/shared,usr/share/licenses}
-#  cp -dr --no-preserve='ownership' shared/Microsoft.AspNetCore.App "${pkgdir}"/opt/dotnet/shared/
-#  ln -s dotnet-host-bin "${pkgdir}"/usr/share/licenses/aspnet-runtime-bin
-#}
+  install -dm 755 "${pkgdir}"/{opt/dotnet/shared,usr/share/licenses}
+  cp -dr --no-preserve='ownership' shared/Microsoft.AspNetCore.App "${pkgdir}"/opt/dotnet/shared/
+  ln -s dotnet-host-bin "${pkgdir}"/usr/share/licenses/aspnet-runtime-bin
+}
 
 package_dotnet-sdk-bin() {
   pkgdesc='The .NET Core SDK (binary)'

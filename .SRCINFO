@@ -33,6 +33,11 @@ pkgname = dotnet-host-bin
 	provides = dotnet-host=3.0.100
 	conflicts = dotnet-host
 
+pkgname = aspnet-runtime-bin
+	pkgdesc = The ASP.NET Core runtime (binary)
+	depends = dotnet-runtime=3.0.100
+	provides = aspnet-runtime=3.0.100
+
 pkgname = dotnet-runtime-bin
 	pkgdesc = The .NET Core runtime (binary)
 	depends = dotnet-host>=3.0.100
