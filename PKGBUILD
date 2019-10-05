@@ -7,7 +7,7 @@
 
 pkgname=mutter-performance
 pkgver=3.34.0+47+g105a3f757
-pkgrel=1
+pkgrel=2
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -116,6 +116,13 @@ prepare() {
   # Status: 2
   # Comment:
   git_cp_by_msg '!724' 'clutter/stage: Add API to get_next_presentation_time' 'clutter/master-clock-default: Sync timelines to hardware vsync'
+
+  # Title: clutter/actor: Mark implicit transitions as remove-on-complete
+  # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/828
+  # Type: 3
+  # Status: 2
+  # Comment:
+  git cherry-pick -n f74812d3
 }
 
 build() {
