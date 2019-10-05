@@ -1,7 +1,7 @@
 pkgbase = wl-clipboard-git
 	pkgdesc = Command-line copy/paste utilities for Wayland
-	pkgver = 2.0.0_beta2+5.ga60a0a468c
-	pkgrel = 2
+	pkgver = 2.0.0
+	pkgrel = 1
 	url = https://github.com/bugaevc/wl-clipboard
 	arch = i686
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = wl-clipboard-git
 	depends = wayland
 	depends = xdg-utils
 	depends = mailcap
-	provides = wl-clipboard=2.0.0_beta2
+	provides = wl-clipboard=2.0.0
 	conflicts = wl-clipboard
-	source = https://github.com/bugaevc/wl-clipboard
+	source = git+https://github.com/bugaevc/wl-clipboard
 	md5sums = SKIP
 
 pkgname = wl-clipboard-git
