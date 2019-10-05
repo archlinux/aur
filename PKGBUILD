@@ -142,20 +142,24 @@ if [ -n "$_enable_macOS_guests" ]; then
 _vmware_fusion_ver=8.5.10_7527438
 # List of VMware Fusion versions: https://softwareupdate.vmware.com/cds/vmw-desktop/fusion/
 
+_unlocker_ver=3.0.2
+
 makedepends+=(
-  python2
+  python
   unzip
 )
 
 source+=(
   "darwinPre15-tools-${_vmware_fusion_ver}.zip.tar::https://softwareupdate.vmware.com/cds/vmw-desktop/fusion/${_vmware_fusion_ver/_//}/packages/com.vmware.fusion.tools.darwinPre15.zip.tar"
   "darwin-tools-${_vmware_fusion_ver}.zip.tar::https://softwareupdate.vmware.com/cds/vmw-desktop/fusion/${_vmware_fusion_ver/_//}/packages/com.vmware.fusion.tools.darwin.zip.tar"
-  'unlocker.py'
+  "unlocker-${_unlocker_ver}.py::https://raw.githubusercontent.com/DrDonk/unlocker/${_unlocker_ver}/unlocker.py"
+  'unlocker.patch'
 )
 sha256sums+=(
   '78aaa6ba65d178d6242ad73b7e2e552ec707798ce5f4925a0adebf30f844dc17'
   '6327a76c2503f56d8bc67279f289ed4bb53e236d965ad78c0fcf7ee9e2bbb6c6'
-  'ecf6d9186f109ec420287bd327e1f1f407de8e4b9e3faa23828bcf903f6246c6'
+  '29e0b0db9c0296ab81eee543803c4bd430e2c69c76e33492910e17280da1c05c'
+  '4fb4a7914aee656df170e35b3ef952aaaa2ed10161e560dfa097688861127b1d'
 )
 
 _fusion_isoimages=(darwin darwinPre15)
@@ -202,6 +206,8 @@ if [ -n "$_enable_macOS_guests" ]; then
     rm -rf payload manifest.plist
   done
 
+  cp "$srcdir/unlocker-${_unlocker_ver}.py" "$srcdir/unlocker.py"
+  patch -Np1 < unlocker.patch
   sed -i -e "s|/usr/lib/vmware/|${pkgdir}/usr/lib/vmware/|" "$srcdir/unlocker.py"
 fi
 }
@@ -443,7 +449,7 @@ fi
 
 if [ -n "$_enable_macOS_guests" ]; then
   msg "Patching VMware for macOS guest support"
-  python2 "$srcdir/unlocker.py" > /dev/null
+  python "$srcdir/unlocker.py" > /dev/null
 
   for isoimage in ${_fusion_isoimages[@]}
   do
