@@ -1,13 +1,13 @@
 # Maintainer: LinArcx <linarcx@gmail.com>
 
 pkgname='kindd-git'
-pkgver=1.0.0.r3.g09bfebb
+pkgver=2.0.1.r0.g35eb576
 pkgrel=1
 pkgdesc=" A Kindful dd gui written in qt quick. (Github version)"
 arch=('any')
 url="https://github.com/LinArcX/Kindd"
 license=('GPL-3.0')
-depends=('polkit' 'qt5-quickcontrols2' 'qt5-quickcontrols' 'qt5-graphicaleffects' 'qt-svg')
+depends=('polkit' 'qt5-quickcontrols2' 'qt5-quickcontrols' 'qt5-graphicaleffects' 'qt5-svg')
 makedepends=('git' 'qt5-base')
 source=("${pkgname}::git+https://github.com/LinArcX/Kindd.git")
 sha256sums=('SKIP')
