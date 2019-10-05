@@ -1,0 +1,4 @@
+/pkg/
+/src/
+com.google.inject_*.jar
+eclipse-*-any.pkg.tar.xz
