@@ -34,6 +34,7 @@ source=("git+https://github.com/MrAlex94/Waterfox.git#commit=$_commit"
         "australis-photon.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-beta/patches/australis-photon.patch"
         "pocket.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-beta/patches/pocket.patch"
         "silence_crash_reporter.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-beta/patches/silence_crash_reporter.patch"
+        "rust_1.38.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-beta-kde/patches/rust_1.38.patch"
         )
 sha256sums=('SKIP'
             'f3efe9ae00e229fade337413243769da05268ad98046ccd2aecbdc511b007dbe'
@@ -46,7 +47,8 @@ sha256sums=('SKIP'
             '0850a8a8dea9003c67a8ee1fa5eb19a6599eaad9f2ad09db753b74dc5048fdbc'
             '48506e0483ec1f645425ee7b83f44e8c36cfe2495fe25b4131ed831912003104'
             '2c59d72ce943ecdda01e93e1452b9fcc94cfae129830a1e6e9c1fced47f78e04'
-            'aac778c9c34dc0bd38c7f60b3a308481d64716d208211119404e955ed17633fc')
+            'aac778c9c34dc0bd38c7f60b3a308481d64716d208211119404e955ed17633fc'
+            'cf87e4af66aedd85b72434ed65e3e063d08e7d32b47b9dd44d9a6f2bcf4f81cc')
 
 prepare() {
 
@@ -57,6 +59,7 @@ prepare() {
   patch -Np1 -i ../australis-photon.patch
   patch -Np1 -i ../pocket.patch
   patch -Np1 -i ../silence_crash_reporter.patch
+  patch -Np1 -i ../rust_1.38.patch
 
   cat >.mozconfig <<END
 export CC=clang

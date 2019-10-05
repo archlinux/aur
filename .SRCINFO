@@ -65,6 +65,7 @@ pkgbase = waterfox-beta-kde
 	source = australis-photon.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-beta/patches/australis-photon.patch
 	source = pocket.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-beta/patches/pocket.patch
 	source = silence_crash_reporter.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-beta/patches/silence_crash_reporter.patch
+	source = rust_1.38.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-beta-kde/patches/rust_1.38.patch
 	sha256sums = SKIP
 	sha256sums = f3efe9ae00e229fade337413243769da05268ad98046ccd2aecbdc511b007dbe
 	sha256sums = 3961c09993c442df97832866ddaea5bcc1ade1313beb313b5ceba60166933016
@@ -77,6 +78,7 @@ pkgbase = waterfox-beta-kde
 	sha256sums = 48506e0483ec1f645425ee7b83f44e8c36cfe2495fe25b4131ed831912003104
 	sha256sums = 2c59d72ce943ecdda01e93e1452b9fcc94cfae129830a1e6e9c1fced47f78e04
 	sha256sums = aac778c9c34dc0bd38c7f60b3a308481d64716d208211119404e955ed17633fc
+	sha256sums = cf87e4af66aedd85b72434ed65e3e063d08e7d32b47b9dd44d9a6f2bcf4f81cc
 
 pkgname = waterfox-beta-kde
 
