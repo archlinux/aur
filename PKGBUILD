@@ -89,7 +89,6 @@ build() {
         -DWITH_SYSTEM_GLEW=ON \
         -DWITH_PYTHON_INSTALL=OFF \
         -DPYTHON_VERSION=${_pyver} \
-        -DWITH_LLVM=ON \
         ${_EXTRAOPTS[@]}
   export NINJA_STATUS="[%p | %f<%r<%u | %cbps ] "
   ((DISABLE_NINJA)) && make -j$(nproc) || ninja -d stats
