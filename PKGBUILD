@@ -6,7 +6,7 @@
 # Contributor: Laszlo Papp <djszapi @ gmail at com>
 
 pkgname=neovim-nerdtree
-pkgver=5.0.0
+pkgver=6.1.1
 _scriptid=17123
 pkgrel=1
 pkgdesc='Tree explorer plugin for navigating the filesystem'
