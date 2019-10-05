@@ -4,32 +4,38 @@
 # Contributor: Ilkka Laukkanen <ilkka.s.laukkanen@gmail.com>
 
 pkgname=stgit
-pkgver=0.19
-pkgrel=2
+pkgver=0.20
+pkgrel=1
 pkgdesc="Pushing/popping patches to/from a stack on top of Git, similar to Quilt"
 url="http://www.procode.org/stgit/"
 arch=('any')
-license=('GPL')
+license=('GPL2')
 depends=('python' 'git')
 makedepends=('xmlto' 'asciidoc')
 source=(
-  "git+https://github.com/ctmarinas/stgit.git#tag=v${pkgver}"
+  "https://github.com/ctmarinas/stgit/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
 )
-sha256sums=('SKIP')
+sha256sums=('ef5043fb6c7445a17cb10db4b9b14ce3368117e1b360de17795810b5356ce606')
 
 build() {
-  cd "$srcdir"/$pkgname
+  cd "${pkgname}-${pkgver}"
   make doc
 }
 
 package() {
-  cd "$srcdir"/$pkgname
-  python setup.py install --root="$pkgdir" --prefix=/usr
-  chmod 644 "$pkgdir"/usr/share/stgit/{completion/stgit-completion.bash,contrib/stgbashprompt.sh}
+  cd "${pkgname}-${pkgver}"
+  python setup.py install --root="${pkgdir}" --prefix=/usr
+  chmod 644 "${pkgdir}/usr/share/stgit/contrib/stgbashprompt.sh"
 
-  mkdir -p "$pkgdir"/usr/share/bash-completion/completions
-  cp "$pkgdir"/usr/share/stgit/completion/stgit-completion.bash "$pkgdir"/usr/share/bash-completion/completions/stg
+  mkdir -p "${pkgdir}/usr/share/bash-completion/completions"
+  mkdir -p "${pkgdir}/usr/share/zsh/site-functions"
+  mkdir -p "${pkgdir}/usr/share/fish/vendor_completions.d"
+
+  ln -s "/usr/share/stgit/completion/stgit.bash" "${pkgdir}/usr/share/bash-completion/completions/stg"
+  ln -s "/usr/share/stgit/completion/stgit.zsh" "${pkgdir}/usr/share/zsh/site-functions/_stg"
+  ln -s "/usr/share/stgit/completion/stg.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/stg.fish"
+
   for manpage in ./Documentation/*.1; do
-    install -D -m644 $manpage "$pkgdir"/usr/share/man/man1/$(basename $manpage)
+    install -D -m644 "${manpage}" "${pkgdir}/usr/share/man/man1/$(basename $manpage)"
   done
 }
