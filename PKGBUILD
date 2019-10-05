@@ -45,6 +45,7 @@ package_dotnet-runtime-bin() {
 }
 
 package_aspnet-runtime-bin() {
+  arch=('x86_64' 'armv7h')
   pkgdesc='The ASP.NET Core runtime (binary)'
   depends=('dotnet-runtime=3.0.100')
   provides=("aspnet-runtime=${pkgver%+*}")

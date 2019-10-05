@@ -47,6 +47,8 @@ pkgname = dotnet-runtime-bin
 
 pkgname = aspnet-runtime-bin
 	pkgdesc = The ASP.NET Core runtime (binary)
+	arch = x86_64
+	arch = armv7h
 	depends = dotnet-runtime=3.0.100
 	provides = aspnet-runtime=3.0.100
 
