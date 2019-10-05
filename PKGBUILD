@@ -146,18 +146,18 @@ _efi_unlocker_ver=1.0.0
 
 makedepends+=(
   python
-  unzip
+  dmg2dir
   uefitool-git
 )
 
 source+=(
-  "darwin-tools-${_vmware_fusion_ver}.zip.tar::https://softwareupdate.vmware.com/cds/vmw-desktop/fusion/${_vmware_fusion_ver/_//}/packages/com.vmware.fusion.tools.darwin.zip.tar"
+  "https://download3.vmware.com/software/fusion/file/VMware-Fusion-${_vmware_fusion_ver/_/-}.dmg"
   "unlocker-${_unlocker_ver}.py::https://raw.githubusercontent.com/DrDonk/unlocker/${_unlocker_ver}/unlocker.py"
   'unlocker.patch'
   "efi-unlocker-patch-${_efi_unlocker_ver}.txt::https://raw.githubusercontent.com/DrDonk/efi-unlocker/${_efi_unlocker_ver}/patches.txt"
 )
 sha256sums+=(
-  '09711e59f708576d2fb09c464ebbb52806cb7f850cb3d5bbeea634fa58fb6c86'
+  '9ba3e002cc2ed3d3adc96b8b748d49c72069acac35f0fcc71ceaa7729895da17'
   '29e0b0db9c0296ab81eee543803c4bd430e2c69c76e33492910e17280da1c05c'
   '4fb4a7914aee656df170e35b3ef952aaaa2ed10161e560dfa097688861127b1d'
   '392c1effcdec516000e9f8ffc97f2586524d8953d3e7d6f2c5f93f2acd809d91'
@@ -199,13 +199,13 @@ prepare() {
     --extract "$extracted_dir"
 
 if [ -n "$_enable_macOS_guests" ]; then
+  dmg2dir -q --tmp="$srcdir/dmg2dir" --overwrite-dir --overwrite-img VMware-Fusion-${_vmware_fusion_ver/_/-}.dmg
   for isoimage in ${_fusion_isoimages[@]}
   do
-    unzip -q com.vmware.fusion.tools.$isoimage.zip
-    install -Dm 644 "$srcdir/payload/$isoimage.iso" "$srcdir/fusion-isoimages/$isoimage.iso"
-    install -Dm 644 "$srcdir/payload/$isoimage.iso.sig" "$srcdir/fusion-isoimages/$isoimage.iso.sig"
-    rm -rf payload manifest.plist
+    install -Dm 644 "$srcdir/VMware-Fusion-${_vmware_fusion_ver/_/-}/VMware Fusion/VMware Fusion.app/Contents/Library/isoimages/$isoimage.iso" "$srcdir/fusion-isoimages/$isoimage.iso"
+    install -Dm 644 "$srcdir/VMware-Fusion-${_vmware_fusion_ver/_/-}/VMware Fusion/VMware Fusion.app/Contents/Library/isoimages/$isoimage.iso.sig" "$srcdir/fusion-isoimages/$isoimage.iso.sig"
   done
+  rm -rf "$srcdir/dmg2dir"
 
   cp "$srcdir/unlocker-${_unlocker_ver}.py" "$srcdir/unlocker.py"
   patch -Np1 < unlocker.patch
