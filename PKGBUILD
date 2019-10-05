@@ -98,6 +98,14 @@ Categories=Science;ImageProcessing" > "$srcdir/agisoft-viewer.desktop"
         convert "$srcdir/application-agisoft-psz_128.png" -resize ${_res}x${_res} "$srcdir/application-agisoft-psz_${_res}.png"
         convert "$srcdir/application-agisoft-3dv_128.png" -resize ${_res}x${_res} "$srcdir/application-agisoft-3dv_${_res}.png"
     done
+    
+    # Create executables for /usr/bin
+    echo "#!/bin/bash
+/opt/$pkgname/metashape.sh \$@" > "$srcdir/agisoft-metashape-pro"
+    echo "#!/bin/bash
+/opt/$pkgname/monitor.sh \$@" > "$srcdir/agisoft-network-monitor"
+    echo "#!/bin/bash
+/opt/$pkgname/viewer.sh \$@" > "$srcdir/agisoft-viewer"
 }
 
 package() {
@@ -133,4 +141,9 @@ package() {
 	    mv "$srcdir/application-agisoft-psz_${_res/x*}.png" "${pkgdir}/usr/share/icons/hicolor/${_res}/mimetypes/application-agisoft-psz.png"
 	    mv "$srcdir/application-agisoft-3dv_${_res/x*}.png" "${pkgdir}/usr/share/icons/hicolor/${_res}/mimetypes/application-agisoft-3dv"
     done
+    
+    # Create executables in /usr/bin
+    install -Dm755 "$srcdir/agisoft-metashape-pro" "$pkgdir/usr/bin/agisoft-metashape-pro"
+    install -Dm755 "$srcdir/agisoft-network-monitor" "$pkgdir/usr/bin/agisoft-network-monitor"
+    install -Dm755 "$srcdir/agisoft-viewer" "$pkgdir/usr/bin/agisoft-viewer"
 }
