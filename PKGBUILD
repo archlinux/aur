@@ -4,7 +4,7 @@
 # Contributor: Artem Sereda <overmind88 at gmail dot com>
 #
 pkgname="flacon"
-pkgver="5.4.0"
+pkgver="5.5.1"
 pkgrel="1"
 pkgdesc="An Audio File Encoder. Extracts audio tracks from an audio CD image to separate tracks."
 arch=('i686' 'x86_64')
@@ -25,7 +25,7 @@ optdepends=('flac: For FLAC support'
 conflicts=('flacon-git')
 provides=("${pkgname}")
 source=("https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('000eacf4528906dfe0adc1c21aedcb57bf4300e56e37150173d3a23acc8fe19f')
+sha256sums=('bdeac2268536c790ede8928156c7a35019dd05ed1b16f04238394a238950d287')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
