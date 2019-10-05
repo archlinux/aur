@@ -1,2 +1,0 @@
-#!/bin/bash
-exec electron --app=/usr/lib/trello "$@"
