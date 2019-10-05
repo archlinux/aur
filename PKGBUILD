@@ -59,7 +59,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=4.19
-_minor=76
+_minor=77
 _srcname=linux-${_major}
 _clr=${_major}.71-77
 pkgbase=linux-clear-lts2018
@@ -114,13 +114,14 @@ prepare() {
 CONFIG_MODULE_COMPRESS=y\
 # CONFIG_MODULE_COMPRESS_GZIP is not set\
 CONFIG_MODULE_COMPRESS_XZ=y|' ./.config
-        sed -i "s|# CONFIG_ACPI_REV_OVERRIDE_POSSIBLE is not set|CONFIG_ACPI_REV_OVERRIDE_POSSIBLE=y|g" ./.config
-        sed -i "s|# CONFIG_HIBERNATION is not set|CONFIG_HIBERNATION=y|g" ./.config
-        sed -i "s|# CONFIG_FRAMEBUFFER_CONSOLE_DEFERRED_TAKEOVER is not set|CONFIG_FRAMEBUFFER_CONSOLE_DEFERRED_TAKEOVER=y|g" ./.config
-        sed -i "s|CONFIG_RT_GROUP_SCHED=y|# CONFIG_RT_GROUP_SCHED is not set|g" ./.config
-        sed -i "s|# CONFIG_DELL_SMBIOS_SMM is not set|CONFIG_DELL_SMBIOS_SMM=y|g" ./.config
-        sed -i "s|CONFIG_MODULE_SIG_FORCE=y|# CONFIG_MODULE_SIG_FORCE is not set|g" ./.config
-        sed -i "s|# CONFIG_NET_SCH_CAKE is not set|CONFIG_NET_SCH_CAKE=m|g" ./.config
+
+        scripts/config --enable CONFIG_ACPI_REV_OVERRIDE_POSSIBLE \
+                       --enable CONFIG_HIBERNATION \
+                       --enable CONFIG_FRAMEBUFFER_CONSOLE_DEFERRED_TAKEOVER \
+                       --enable CONFIG_DELL_SMBIOS_SMM \
+                       --undefine CONFIG_RT_GROUP_SCHED \
+                       --undefine CONFIG_MODULE_SIG_FORCE \
+                       --module CONFIG_NET_SCH_CAKE
 
         make olddefconfig
 
@@ -327,7 +328,7 @@ done
 
 sha256sums=('0c68f5655528aed4f99dae71a5b259edc93239fa899e2df79c055275c21749a1'
             'SKIP'
-            'eade564136310b38596ed33ebffb69f73d5d4c2c5885b9d0aa933ba214889d08'
+            'de3473cf607e2ca144e51b4a70ba81667bbd05eaf08252469e90fa43dab8064f'
             'SKIP'
             '8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
