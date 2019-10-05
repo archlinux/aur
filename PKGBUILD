@@ -133,10 +133,4 @@ package() {
 	    mv "$srcdir/application-agisoft-psz_${_res/x*}.png" "${pkgdir}/usr/share/icons/hicolor/${_res}/mimetypes/application-agisoft-psz.png"
 	    mv "$srcdir/application-agisoft-3dv_${_res/x*}.png" "${pkgdir}/usr/share/icons/hicolor/${_res}/mimetypes/application-agisoft-3dv"
     done
-	
-	# Create symbolic link in /usr/bin
-	mkdir -p "${pkgdir}/usr/bin"
-	ln -s "/opt/${pkgname}/metashape.sh" "${pkgdir}/usr/bin/agisoft-metashape-pro"
-	ln -s "/opt/${pkgname}/monitor.sh" "${pkgdir}/usr/bin/agisoft-network-monitor"
-	ln -s "/opt/${pkgname}/viewer.sh" "${pkgdir}/usr/bin/agisoft-viewer"
 }

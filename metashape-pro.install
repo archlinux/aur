@@ -12,7 +12,7 @@ post_install() {
 	echo
 	echo "Run the following command to activate the product"
 	echo
-	echo "sudo agisoft-metashape-pro --activate 11111-22222-33333-44444-55555"
+	echo "sudo /opt/metashape-pro/metashape.sh --activate 11111-22222-33333-44444-55555"
 	echo
 	echo "NOTE: the number after "--activate" is your node-locked license"
 	echo
