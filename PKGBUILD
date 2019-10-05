@@ -1,5 +1,5 @@
 pkgname=zfp
-pkgver=0.5.4
+pkgver=0.5.5
 pkgrel=1
 pkgdesc="Library for compressed numerical array"
 arch=('x86_64')
@@ -8,7 +8,7 @@ license=('BSD')
 depends=('gcc-libs')
 makedepends=('cmake')
 source=("https://github.com/LLNL/zfp/releases/download/$pkgver/zfp-$pkgver.tar.gz")
-sha256sums=('746e17aaa401c67dcffd273d6e6f95c76adfbbd5cf523dcad56d09e9d3b71196')
+sha256sums=('fdf7b948bab1f4e5dccfe2c2048fd98c24e417ad8fb8a51ed3463d04147393c5')
 
 build() {
   cd "$srcdir/zfp-$pkgver"
