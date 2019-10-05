@@ -15,6 +15,7 @@ pkgbase = sherlock-git
 	depends = python-requests-futures
 	depends = python-soupsieve
 	depends = python-stem
+	depends = python-torrequest
 	source = sherlock-git::git+https://github.com/sherlock-project/sherlock.git
 	source = sherlock.sh
 	sha256sums = SKIP

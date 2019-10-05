@@ -17,6 +17,7 @@ depends=(
   'python-requests-futures'
   'python-soupsieve'
   'python-stem'
+  'python-torrequest'
 )
 makedepends=('git')
 source=(
