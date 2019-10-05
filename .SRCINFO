@@ -7,7 +7,7 @@ pkgbase = vmware-workstation14
 	arch = x86_64
 	license = custom
 	makedepends = sqlite
-	makedepends = python2
+	makedepends = python
 	makedepends = unzip
 	makedepends = uefitool-git
 	depends = dkms
@@ -93,7 +93,7 @@ pkgbase = vmware-workstation14
 	sha256sums = 195313791f2c2cf880b0ba6c9d130e40ab6729335c0980fcc40df4209c1ed52b
 	sha256sums = e36fb99a56a65d2c4d82168c8adb1ed19a9a7aaf75807c667c79a79f4968740a
 	sha256sums = 29e0b0db9c0296ab81eee543803c4bd430e2c69c76e33492910e17280da1c05c
-	sha256sums = d0b16c21246468869ae26cc33d64eb2790c2e9446702a40916770c9d634ef03d
+	sha256sums = 4fb4a7914aee656df170e35b3ef952aaaa2ed10161e560dfa097688861127b1d
 	sha256sums = 392c1effcdec516000e9f8ffc97f2586524d8953d3e7d6f2c5f93f2acd809d91
 
 pkgname = vmware-workstation14

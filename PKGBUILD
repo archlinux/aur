@@ -50,8 +50,6 @@ depends=(
   libaio
   pcsclite
   hicolor-icon-theme
-  # needed to replace internal libs:
-  #zlib
 )
 optdepends=(
   'linux-headers: build modules against Arch kernel'
@@ -147,7 +145,7 @@ _unlocker_ver=3.0.2
 _efi_unlocker_ver=1.0.0
 
 makedepends+=(
-  python2
+  python
   unzip
   uefitool-git
 )
@@ -163,7 +161,7 @@ sha256sums+=(
   '195313791f2c2cf880b0ba6c9d130e40ab6729335c0980fcc40df4209c1ed52b'
   'e36fb99a56a65d2c4d82168c8adb1ed19a9a7aaf75807c667c79a79f4968740a'
   '29e0b0db9c0296ab81eee543803c4bd430e2c69c76e33492910e17280da1c05c'
-  'd0b16c21246468869ae26cc33d64eb2790c2e9446702a40916770c9d634ef03d'
+  '4fb4a7914aee656df170e35b3ef952aaaa2ed10161e560dfa097688861127b1d'
   '392c1effcdec516000e9f8ffc97f2586524d8953d3e7d6f2c5f93f2acd809d91'
 )
 
@@ -390,8 +388,7 @@ fi
     vmware-vmblock-fuse \
     vmware-vprobe \
     vmware-wssc-adminTool \
-    vmware-zenity \
-    #vmware-unity-helper
+    vmware-zenity
   do
     ln -s /usr/lib/vmware/bin/appLoader "$pkgdir/usr/lib/vmware/bin/$link"
   done
@@ -452,7 +449,7 @@ fi
 
 if [ -n "$_enable_macOS_guests" ]; then
   msg "Patching VMware for macOS guest support"
-  python2 "$srcdir/unlocker.py" > /dev/null
+  python "$srcdir/unlocker.py" > /dev/null
 
   for isoimage in ${_fusion_isoimages[@]}
   do
@@ -482,7 +479,4 @@ fi
   sed -i '/^StartupNotify=.*/a StartupWMClass=vmware' "$pkgdir/usr/share/applications/vmware-workstation.desktop"
   sed -i '/^StartupNotify=.*/a StartupWMClass=vmplayer' "$pkgdir/usr/share/applications/vmware-player.desktop"
   sed -i '/^StartupNotify=.*/a StartupWMClass=vmware-netcfg' "$pkgdir/usr/share/applications/vmware-netcfg.desktop"
-
-  # to solve bugs with incompatibles library versions:
-  #ln -sf /usr/lib/libz.so.1 "$pkgdir/usr/lib/vmware/lib/libz.so.1/"
 }
