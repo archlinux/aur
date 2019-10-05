@@ -4,8 +4,8 @@
 # Contributor: Joerie de Gram <j.de.gram@gmail.com>
 # Contributor: bender02 at archlinux dot us
 pkgname=aespipe
-pkgver=2.4e
-pkgrel=2
+pkgver=2.4f
+pkgrel=1
 pkgdesc="Encrypts data from stdin to stdout"
 arch=('i686' 'x86_64' 'armv7h')
 url="http://loop-aes.sourceforge.net"
@@ -20,8 +20,7 @@ sha384sums=('SKIP' 'SKIP') # We use GPG for verification instead.
 
 build() {
   cd "$srcdir/$pkgname-v$pkgver"
-  # https://git.buildroot.org/buildroot/commit/?id=00ecd72c28f103fc7d166f718db81a8b6c4919fa
-  ./configure LDFLAGS="-no-pie" --prefix=/usr
+  ./configure --prefix=/usr
   make
 }
 
