@@ -1,14 +1,14 @@
 pkgbase = btrfs-snapshot
 	pkgdesc = Tool for creating btrfs snapshots
-	pkgver = 1.2.0
-	pkgrel = 2
+	pkgver = 1.2.1
+	pkgrel = 1
 	url = https://github.com/YHNdnzj/btrfs-snapshot
 	arch = any
 	license = MIT
 	depends = bash
 	depends = btrfs-progs
-	source = https://github.com/YHNdnzj/btrfs-snapshot/archive/1.2.0.tar.gz
-	sha256sums = fb7205dbcd514b208f0df49d76835f6b7282f169be40ac2dccc2d9a3d9435789
+	source = https://github.com/YHNdnzj/btrfs-snapshot/archive/1.2.1.tar.gz
+	sha256sums = 055727fba0ca5ecb6e72103d3447818a583a0b5e918c3a5a403a1f35ba5fd722
 
 pkgname = btrfs-snapshot
 
