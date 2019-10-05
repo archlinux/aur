@@ -11,7 +11,7 @@ index 3f8dd62..ed5726a 100644
  from sage.env import CREMONA_MINI_DATA_DIR, CREMONA_LARGE_DATA_DIR, SAGE_SHARE
  from sage.misc.all import walltime
  
-@@ -843,7 +843,7 @@ class MiniCremonaDatabase(SQLDatabase):
+@@ -847,7 +847,7 @@ class MiniCremonaDatabase(SQLDatabase):
              if N < self.largest_conductor():
                  message = "There is no elliptic curve with label " + label \
                      + " in the database"
@@ -20,7 +20,7 @@ index 3f8dd62..ed5726a 100644
                  message = "There is no elliptic curve with label " + label \
                      + " in the currently available databases"
              else:
-@@ -1695,7 +1695,7 @@ def CremonaDatabase(name=None,mini=None,set_global=None):
+@@ -1705,7 +1705,7 @@ def CremonaDatabase(name=None,mini=None,set_global=None):
      if name is None and not set_global:
          return _db
      if set_global and name is None:

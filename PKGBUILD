@@ -7,51 +7,54 @@
 
 pkgbase=sagemath-git
 pkgname=(sagemath-git sagemath-jupyter-git)
-pkgver=8.9.beta8.r0.g4583b4056e
+pkgver=9.0.beta0.r0.g533fd5d6cd
 pkgrel=1
-pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab"
+pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab (experimental Python 3 version)"
 arch=(x86_64)
 url="http://www.sagemath.org"
 license=(GPL)
-depends=(ipython2 palp brial cliquer maxima-ecl gfan sympow nauty python2-rpy2 python2-fpylll python2-psutil python2-cypari2
-  python2-matplotlib python2-scipy python2-sympy python2-networkx python2-pillow python2-pplpy python2-future
-  gap flintqs lcalc lrcalc arb eclib zn_poly gd python2-cvxopt pynac linbox m4rie rubiks pari-galdata pari-seadata-small planarity rankwidth tachyon
+depends=(ipython palp brial cliquer maxima-ecl gfan sympow nauty python-rpy2 python-fpylll python-psutil python-cypari2
+  python-matplotlib python-scipy python-sympy python-networkx python-pillow python-pplpy python-future python-sphinx
+  gap flintqs lcalc lrcalc arb eclib zn_poly gd python-cvxopt pynac-python3 linbox m4rie rubiks pari-galdata pari-seadata-small planarity rankwidth tachyon
   sage-data-combinatorial_designs sage-data-elliptic_curves sage-data-graphs sage-data-polytopes_db sage-data-conway_polynomials
   iml libgiac libhomfly libbraiding symmetrica three.js)
-optdepends=('cython2: to compile cython code' 'python2-pkgconfig: to compile cython code'
-  'jmol: 3D plots' 'sage-notebook: Flask notebook interface (deprecated)'
-  'sagemath-doc: HTML documentation' 'python2-igraph: igraph backend for graph theory'
+optdepends=('cython: to compile cython code' 'python-pkgconfig: to compile cython code'
+  'jmol: alternative 3D plot engine' 'sagemath-doc: HTML documentation' 'python-igraph: igraph backend for graph theory'
   'coin-or-cbc: COIN backend for numerical computations' 'coin-or-csdp: for computing Lovász theta-function of graphs'
   'buckygen: for generating fullerene graphs' 'plantri: for generating some classes of graphs' 'benzene: for generating fusenes and benzenoids'
   'ffmpeg: to export animations to video' 'imagemagick: to show animations'
   'coxeter: Coxeter groups implementation'
   'lrs: Algorithms for linear reverse search used in game theory and for computing volume of polytopes'
-  'libfes: exhaustive search of solutions for boolean equations' 'python2-pynormaliz: Normaliz backend for polyhedral computations'
-  'latte-integrale: integral point count in polyhedra' 'python2-jupymake: polymake backend for polyhedral computations'
+  'libfes: exhaustive search of solutions for boolean equations' 'python-pynormaliz: Normaliz backend for polyhedral computations'
+  'latte-integrale: integral point count in polyhedra' 'python-jupymake: polymake backend for polyhedral computations'
   'shared_meataxe: faster matrix arithmetic over finite fields' 'openblas: faster linear algebra'
   'sirocco: for computing the fundamental group of the complement of a plane curve' 'primecount: faster prime_pi implementation'
-  'dot2tex: for displaying some diagrams' 'cryptominisat5: SAT solver' 'python2-pycosat: picosat SAT solver'
-  'python2-pip: to install optional packages with sage -pip')
-makedepends=(cython2 boost ratpoints python2-jinja coin-or-cbc sirocco
-  mcqd coxeter bliss tdlib python2-pkgconfig shared_meataxe libfes primecount git)
+  'dot2tex: for displaying some diagrams' 'cryptominisat5: SAT solver' 'python-pycosat: picosat SAT solver'
+  'python-pip: to install optional packages with sage -pip')
+makedepends=(cython boost ratpoints python-jinja coin-or-cbc sirocco
+  mcqd coxeter bliss tdlib python-pkgconfig shared_meataxe libfes primecount git)
 source=(git://git.sagemath.org/sage.git#branch=develop
         package.patch
         latte-count.patch
-        sagemath-python3-notebook.patch
         test-optional.patch
         fes02.patch
         sagemath-cremona.patch
         sagemath-singular-4.1.2.patch
-        sagemath-ecl-sigfpe.patch)
+        sagemath-ecl-sigfpe.patch
+        sagemath-ipython7.patch
+        sagemath-rpy-3.patch
+        sagemath-mathjax-dir.patch)
 sha256sums=('SKIP'
             '328e45e78065b5f6527174bda48cfff6828acbf107c2535b0a9a92c3ceb35842'
             '1a82372a96ffd5e6d475b0e620935967ce5eb9b4484607d39da90824a77b07c4'
-            'e554cdf689100c787a5fbcb7fe281cd68bef081e08bd58df8be1d113a4665d7e'
             '1f2a34e15bf732ec8687c467a52e897615505dc3ddd792d811e8b6a7e19f1517'
             '7fcb52e96935dccb0f958d37c2f4e3918392480b9af53e08562f6cba6c68cb94'
-            '5281e5c715ff14ffa4003f643a508863ca58efb9e083cece81928f78810dc525'
+            '937074fa7a8a4e2aba9ea77ec622fe937985a1a9176c48460d51325ee877a4f5'
             '961bfb5694b67d425d21240d71490cb71714b5207c23448c89be0966512ff8f9'
-            'a42f3b152b1aedb8abf16bc70971419919d1fe30328574e7fef8305f9d07d938')
+            'a42f3b152b1aedb8abf16bc70971419919d1fe30328574e7fef8305f9d07d938'
+            '1336f8ce3ef2fbc7531da90b60b83cf8b7713cbf726cff6fdbbd30f085c31074'
+            '9062b412595e81a5ca560a5ae789f8b7318981689cb8d076b30d8c54a4fc4495'
+            '388cd321fb8b73ae839bf2c150f7dd26ba34b0f6845f9761184db1dd5086b697')
 
 pkgver() {
   cd sage
@@ -68,8 +71,10 @@ prepare(){
   patch -p0 -i ../test-optional.patch
 # use correct latte-count binary name
   patch -p1 -i ../latte-count.patch
-# make 'sage -notebook=jupyter' work with our python3 jupyter-notebook package
-  patch -p1 -i ../sagemath-python3-notebook.patch
+# Support IPython 7
+  patch -p1 -i ../sagemath-ipython7.patch
+# Adapt to rpy 3.0 changes
+  patch -p1 -i ../sagemath-rpy-3.patch
 
 # Upstream patches  
 # fix build against libfes 0.2 http://trac.sagemath.org/ticket/15209
@@ -80,11 +85,11 @@ prepare(){
   patch -p1 -i ../sagemath-singular-4.1.2.patch
 # Fix SIGFPE crashes with ecl 16.1.3 https://trac.sagemath.org/ticket/22191
   patch -p1 -i ../sagemath-ecl-sigfpe.patch
+# Don't hardcode mathjax path https://trac.sagemath.org/ticket/28547
+  patch -p1 -i ../sagemath-mathjax-dir.patch
 
-# use python2
-  sed -e 's|sage-python23|python2|' -e 's|#!/usr/bin/env python\b|#!/usr/bin/env python2|' -i src/bin/*
-  sed -e 's|exec ipython\b|exec ipython2|' -e 's|cygdb|cygdb2|g' -i src/bin/sage
-  sed -e "s|'cython'|'cython2'|" -i src/bin/sage-cython
+  sed -e 's|sage-python23|python|' -i src/bin/*
+  sed -e 's|$SAGE_PYTHON3|yes|' -i src/bin/sage
 }
 
 build() {
@@ -94,11 +99,11 @@ build() {
          SAGE_ROOT="$PWD" \
          SAGE_SRC="$PWD" \
          SAGE_NUM_THREADS=10
-  python2 setup.py build
+  python setup.py build
 }
 
 package_sagemath-git() {
-  optdepends+=('sagemath-jupyter: Jupyter kernel')
+  optdepends+=('sagemath-jupyter-git: Jupyter kernel')
   conflicts=(sagemath)
   provides=(sagemath)
 
@@ -107,7 +112,8 @@ package_sagemath-git() {
   export SAGE_ROOT="$PWD" \
          SAGE_LOCAL="/usr" \
          SAGE_EXTCODE="$PWD"/ext
-  python2 setup.py install --root="$pkgdir" --optimize=1
+
+  python setup.py install --root="$pkgdir" --optimize=1
 
   mkdir -p "$pkgdir"/usr/bin
   cp bin/{sage,math-readline} "$pkgdir"/usr/bin
@@ -121,11 +127,12 @@ package_sagemath-git() {
   mkdir -p "$pkgdir"/usr/share/sage
   cp -r ext "$pkgdir"/usr/share/sage
   
+  _pythonpath=`python -c "from sysconfig import get_path; print(get_path('platlib'))"`
 # Remove sage_setup
-  rm -r "$pkgdir"/usr/lib/python2.7/site-packages/sage_setup
+  rm -r "$pkgdir"/$_pythonpath/sage_setup
 # Install tests
-  cp -r sage/doctest/tests "$pkgdir"/usr/lib/python2.7/site-packages/sage/doctest
-  cp -r sage/tests/books "$pkgdir"/usr/lib/python2.7/site-packages/sage/tests
+  cp -r sage/doctest/tests "$pkgdir"/$_pythonpath/sage/doctest
+  cp -r sage/tests/books "$pkgdir"/$_pythonpath/sage/tests
 
 # Split jupyter kernel
   rm -r "$pkgdir"/usr/share/jupyter
@@ -133,15 +140,14 @@ package_sagemath-git() {
 
 package_sagemath-jupyter-git() {
   pkgdesc='Jupyter kernel for SageMath'
-  depends=(sagemath python2-jupyter_client python2-ipywidgets jsmol)
-  optdepends=('sage-notebook-exporter: convert flask notebooks to Jupyter')
+  depends=(sagemath python-jupyter_client python-ipywidgets jsmol)
 
   cd sage/src
 
   export SAGE_ROOT="$PWD" \
-         SAGE_LOCAL="/usr"
-  python2 -c "from sage.repl.ipython_kernel.install import SageKernelSpec; SageKernelSpec.update(prefix='$pkgdir/usr')"
-
+         SAGE_LOCAL="/usr" \
+         MATHJAX_DIR="/usr/share/mathjax2"
+  python -c "from sage.repl.ipython_kernel.install import SageKernelSpec; SageKernelSpec.update(prefix='$pkgdir/usr')"
 # fix symlinks to assets
   for _i in $(ls ext/notebook-ipython); do
     rm "$pkgdir"/usr/share/jupyter/kernels/sagemath/$_i
