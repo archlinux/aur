@@ -2,7 +2,7 @@
 
 pkgname=sherlock-git
 pkgver=20191002.d8290d5
-pkgrel=2
+pkgrel=3
 pkgdesc="Find usernames across social networks"
 arch=('any')
 url="https://github.com/sherlock-project/sherlock"
@@ -34,7 +34,7 @@ pkgver() {
 package() {
   install -Dm755 "${srcdir}/sherlock.sh" "${pkgdir}/usr/bin/sherlock"
   install -Dm644 "${srcdir}/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/sherlock/LICENSE"
-  cp -r "${srcdir}/${pkgname}" "${pkgdir}/usr/share/"
+  cp -r "${srcdir}/${pkgname}" "${pkgdir}/usr/share/sherlock"
 }
 
 # vim:set ts=2 sw=2 et:
