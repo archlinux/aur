@@ -1,20 +1,20 @@
 pkgbase = r-later
-	pkgdesc = Utilities for Delaying Function Execution
-	pkgver = 0.8.0
+	pkgdesc = Utilities for Scheduling Functions to Execute Later with Event Loops
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=later
 	arch = i686
 	arch = x86_64
-	license = GPL3
+	license = GPL
 	depends = r
-	depends = r-rcpp
+	depends = r-rcpp>=0.12.9
 	depends = r-rlang
 	depends = r-bh
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = http://cran.r-project.org/src/contrib/later_0.8.0.tar.gz
-	md5sums = 71feec14ef4f2297a6289458e10d0544
+	source = http://cran.r-project.org/src/contrib/later_1.0.0.tar.gz
+	md5sums = bc8f2d7a016270f60204f1ba1f2c3519
 
 pkgname = r-later
 
