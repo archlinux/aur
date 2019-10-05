@@ -3,8 +3,6 @@
 
 pkgname="lidarr-netcore"
 pkgver=0.7.1.1522
-_shortstupidfuckingrandomnumber="752"
-_longstupidfuckingrandomnumber="32054F08365A4D1A92B45895249F04B17BD922E4F365C6E00DA7EAE8C6AC692302"
 pkgrel=4
 pkgdesc="Music downloader for usenet and torrents."
 arch=(any)
@@ -27,7 +25,7 @@ optdepends=('sabnzbd: usenet downloader'
 provides=('lidarr')
 conflicts=('lidarr')
 
-source=("Lidarr.develop.${pkgver}.linux.tar.gz::https://dev.azure.com/Lidarr/Lidarr/_apis/build/builds/${_shortstupidfuckingrandomnumber}/artifacts?artifactName=Packages&fileId=${_longstupidfuckingrandomnumber}&fileName=Lidarr.develop.${pkgver}.linux.tar.gz"
+source=("Lidarr.dotnet-core-${pkgver}.linux-core-x64.tar.gz::https://services.lidarr.audio/v1/update/netcore/updatefile?version=${pkgver}&os=linux&runtime=netcore&arch=x64"
         'lidarr.service'
         'lidarr.tmpfiles'
         'lidarr.sysusers')

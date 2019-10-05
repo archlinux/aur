@@ -22,7 +22,7 @@ pkgbase = lidarr-netcore
 	conflicts = lidarr
 	options = !strip
 	options = staticlibs
-	source = Lidarr.develop.0.7.1.1522.linux.tar.gz::https://dev.azure.com/Lidarr/Lidarr/_apis/build/builds/752/artifacts?artifactName=Packages&fileId=32054F08365A4D1A92B45895249F04B17BD922E4F365C6E00DA7EAE8C6AC692302&fileName=Lidarr.develop.0.7.1.1522.linux.tar.gz
+	source = Lidarr.dotnet-core-0.7.1.1522.linux-core-x64.tar.gz::https://services.lidarr.audio/v1/update/netcore/updatefile?version=0.7.1.1522&os=linux&runtime=netcore&arch=x64
 	source = lidarr.service
 	source = lidarr.tmpfiles
 	source = lidarr.sysusers
