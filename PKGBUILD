@@ -59,7 +59,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=4.14
-_minor=146
+_minor=147
 _srcname=linux-${_major}
 _clr=${_major}.144-63
 pkgbase=linux-clear-lts2017
@@ -114,10 +114,11 @@ prepare() {
 CONFIG_MODULE_COMPRESS=y\
 # CONFIG_MODULE_COMPRESS_GZIP is not set\
 CONFIG_MODULE_COMPRESS_XZ=y|' ./.config
-        sed -i "s|# CONFIG_CRYPTO_USER is not set|CONFIG_CRYPTO_USER=m|g" ./.config
-        sed -i "s|# CONFIG_ACPI_REV_OVERRIDE_POSSIBLE is not set|CONFIG_ACPI_REV_OVERRIDE_POSSIBLE=y|g" ./.config
-        sed -i "s|# CONFIG_HIBERNATION is not set|CONFIG_HIBERNATION=y|g" ./.config
-        sed -i "s|CONFIG_RT_GROUP_SCHED=y|# CONFIG_RT_GROUP_SCHED is not set|g" ./.config
+
+        scripts/config --enable CONFIG_ACPI_REV_OVERRIDE_POSSIBLE \
+                       --enable CONFIG_HIBERNATION \
+                       --undefine CONFIG_RT_GROUP_SCHED \
+                       --undefine CONFIG_MODULE_SIG_FORCE
 
         make olddefconfig
 
@@ -324,7 +325,7 @@ done
 
 sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'SKIP'
-            '0ffb06662715d09adee123b77a73e576de6962b473ac3dafeded4b0e46aaab07'
+            'b9c1058216baa9a6e7c25c818ed85b3480426469525207e009068b6ed904d840'
             'SKIP'
             '8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
