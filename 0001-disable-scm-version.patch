@@ -1,0 +1,12 @@
+diff --git a/scripts/setlocalversion b/scripts/setlocalversion
+index 71f39410691b..f76b0bbc6f5d 100755
+--- a/scripts/setlocalversion
++++ b/scripts/setlocalversion
+@@ -31,6 +31,7 @@ fi
+ 
+ scm_version()
+ {
++	return
+ 	local short
+ 	short=false
+ 
