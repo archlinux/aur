@@ -2,14 +2,14 @@
 
 pkgname=btrfs-snapshot
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool for creating btrfs snapshots"
 arch=('any')
 url="https://github.com/YHNdnzj/btrfs-snapshot"
 license=('MIT')
 depends=('bash' 'btrfs-progs')
 source=("$url/archive/$pkgver.tar.gz")
-sha256sums=('b9361f4c8bdcfa60936ddd09f7b36cb47bdd7d796fa90f8eaf798e4b7e69a3b9')
+sha256sums=('fb7205dbcd514b208f0df49d76835f6b7282f169be40ac2dccc2d9a3d9435789')
 
 package() {
     cd "$pkgname-$pkgver"
