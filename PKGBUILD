@@ -3,9 +3,9 @@
 
 pkgname='pop-gtk-theme-bin'
 pkgver='5.0.0'
-pkgrel=3
-_timestamp=1570056483
-_commit=bf228c2
+pkgrel=4
+_timestamp=1570207623
+_commit=69f31e7
 pkgdesc='System76 Pop GTK+ Theme'
 arch=('any')
 url='https://github.com/pop-os/gtk-theme'
@@ -31,14 +31,14 @@ optdepends=(
 	"ttf-roboto-slab: Recommended font for documents"
 )
 source=("http://ppa.launchpad.net/system76/pop/ubuntu/pool/main/p/pop-gtk-theme/pop-gtk-theme_${pkgver}~${_timestamp}~19.10~${_commit}_all.deb")
-sha256sums=('48bb55be6f514065a85deedcb9852a509a4f1cfffeb5cf6e58fdcbfd2c2f7cf0')
+sha256sums=('829057173dcb387f0744d39f1f7221c46d1f41577f0cb53ff222d9ce4ed26cf6')
 
 package() {
   cd "${srcdir}"
   
   tar -xJC "${pkgdir}" -f data.tar.xz
-  rm -r "$pkgdir/usr/share/themes/Pop/gnome-shell"
-  rm -r "$pkgdir/usr/share/themes/Pop-dark/gnome-shell"
+  rm -r "${pkgdir}/usr/share/themes/Pop/gnome-shell"
+  rm -r "${pkgdir}/usr/share/themes/Pop-dark/gnome-shell"
 }
 
 # vim: ts=2 sw=2 et:
