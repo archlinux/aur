@@ -6,6 +6,7 @@ pkgbase = acme-upstream
 	arch = i686
 	arch = x86_64
 	license = GPL
+	provides = acme
 	conflicts = acme
 	conflicts = acme-git
 	source = https://github.com/uffejakobsen/acme/archive/0.96.4.tar.gz

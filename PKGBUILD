@@ -12,6 +12,7 @@ source=(https://github.com/uffejakobsen/acme/archive/0.96.4.tar.gz)
 license=('GPL')
 md5sums=('ca1c9d912135dd195fd418843220ebc2')
 #depends=('glibc')
+provides=('acme')
 conflicts=('acme' 'acme-git')
 
 build()
