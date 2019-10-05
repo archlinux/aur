@@ -1,7 +1,7 @@
 # Maintainer: Per Osbäck <per@osbeck.com>
 
 pkgname=terraform-provider-cloudflare
-pkgver=1.16.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Terraform provider for Cloudflare"
 url="https://github.com/terraform-providers/terraform-provider-cloudflare"
@@ -10,18 +10,14 @@ license=("MPL")
 makedepends=("go" "git")
 _gourl="github.com/terraform-providers"
 source=("https://github.com/terraform-providers/terraform-provider-cloudflare/archive/v$pkgver.tar.gz")
-sha256sums=('72e3f37f71914fbedfc55814247af4f3d69aa12eaccba3b5b7e67dca0d0ded59')
+sha256sums=('8bb0ca5afe0ed78dfbd6c3e2b2cc440713aa108403261b047d7b149fc2a1c7f5')
 
-prepare() {
-    mkdir -p "$srcdir/src/$_gourl"
-    rm -rf "${srcdir}/src/$_gourl/$pkgname"
-    mv -f "$pkgname-$pkgver" "$srcdir/src/$_gourl/$pkgname"
-    cd "$srcdir/src/$_gourl/$pkgname"
-}
 
 build() {
-    cd "$srcdir/src/$_gourl/$pkgname"
-    GOPATH="$srcdir" PATH="$srcdir/bin:$PATH" make build
+#    cd "$srcdir/src/$_gourl/$pkgname"
+    cd "$srcdir/$pkgname-$pkgver"
+    GOPATH="$srcdir" PATH="$srcdir/bin:$PATH" go get
+    GOPATH="$srcdir" PATH="$srcdir/bin:$PATH" go build
 }
 
 package() {
