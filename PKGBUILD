@@ -12,7 +12,6 @@ sha256sums=('7c8ff3bf5441dd662806df9650c56a669359cb0185ea232ecb3578de7b065329')
 
 prepare () {
   cd ADIOS2-$pkgver
-  sed -i "s|ZLIB_LIBRARY NAMES zlib|ZLIB_LIBRARY NAMES z zlib|g" cmake/FindSZ.cmake
 }
 
 build() {
