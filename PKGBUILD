@@ -1,41 +1,30 @@
 # Maintainer: Eric Berquist <eric dot berquist at gmail dot com>
 
 _name="cclib"
-pkgbase="python-${_name}-git"
-pkgname=("python-${_name}-git" "python2-${_name}-git")
-pkgver=1.5.4.r2295.1e3f6c58
+pkgname="python-${_name}-git"
+pkgver=1.6.2.r2833.5605bdd9
 pkgrel=1
 pkgdesc="A library for parsing and interpreting the results of computational chemistry packages. (git version)"
 arch=("any")
 url="http://cclib.github.io"
-license=("LGPL")
-makedepends=("git")
+license=("BSD-3-Clause")
+makedepends=("python-setuptools" "git")
+depends=("python-numpy" "python-packaging")
+optdepends=('python-openbabel: for generating `OBMol`s of results'
+            'python-biopython: for generating `BioPython.Atom`s of parsed results'
+            'python-pandas: for generating DataFrames of parsed results'
+            'python-periodictable: for calculating properties of nuclear configurations'
+            'python-scipy: for calculating properties of nuclear configurations')
+provides=("python-${_name}")
+conflicts=("python-${_name}")
 source=("git+https://github.com/${_name}/${_name}")
-sha256sums=('SKIP')
+md5sums=('SKIP')
 
-package_python-cclib-git() {
-  depends=("python" "python-numpy")
-  provides=("python-cclib")
-  conflicts=("python-cclib")
+
+package() {
   cd "${srcdir}/${_name}"
   python setup.py install --root="${pkgdir}" --optimize=1
-  find "${pkgdir}" -name "*.pyc" -delete
-  find "${pkgdir}" -type d -empty -delete
-}
-
-package_python2-cclib-git() {
-  depends=("python2" "python2-numpy")
-  provides=("python2-cclib")
-  conflics=("python2-cclib")
-  cd "${srcdir}/${_name}"
-  python2 setup.py install --root="${pkgdir}" --optimize=1
-  find "${pkgdir}" -name "*.pyc" -delete
-  find "${pkgdir}" -type d -empty -delete
-  # Keep /usr/bin driver scripts, but not the default name.
-  cd "${pkgdir}/usr/bin"
-  for i in $(ls); do
-    mv "${i}" "${i}2"
-  done
+  install -D -m644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
 
 pkgver() {
