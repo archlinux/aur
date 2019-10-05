@@ -15,10 +15,14 @@ source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz"
 md5sums=('240a08003fc090c2a03cc21e4075afa8')
 
 build(){
-    R CMD INSTALL xfun_"$_cranver".tar.gz -l "$srcdir"
+    cd "${srcdir}"
+
+    R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l $srcdir
 }
 
 package() {
-    install -d "$pkgdir"/usr/lib/R/library
-    cp -a --no-preserve=ownership xfun "$pkgdir"/usr/lib/R/library
+    cd "${srcdir}"
+
+    install -dm0755 "$pkgdir/usr/lib/R/library"
+    cp -a --no-preserve=ownership "$_cranname" "$pkgdir/usr/lib/R/library"
 }
