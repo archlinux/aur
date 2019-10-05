@@ -1,10 +1,18 @@
 [Unit]
 Description=Pi-hole FTLDNS engine
+After=network.target
 
 [Service]
+User=pihole
+Group=pihole
 PIDFile=/run/pihole-ftl/pihole-FTL.pid
+ExecStartPre=/bin/chown -R pihole:pihole /etc/pihole
 ExecStart=/usr/bin/pihole-FTL no-daemon
+ExecReload=/bin/kill -USR1 $MAINPID
 Restart=on-failure
+TimeoutStopSec=5s
+PermissionsStartOnly=true
+AmbientCapabilities=CAP_NET_BIND_SERVICE CAP_NET_RAW CAP_NET_ADMIN
      
 [Install]
 WantedBy=multi-user.target
