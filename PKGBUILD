@@ -1,7 +1,7 @@
 # Maintainer: Götz Christ <goetzchrist@gmail.com>
 pkgname=interception-k2k-git
 _realname=interception-k2k
-pkgver=0.0.0.r6.0b3dfc1
+pkgver=0.0.0.r19.b0bfc82
 pkgrel=1
 pkgdesc="Unofficial plugin for Interception Tools (caps2esc, tab2altgr) - patched"
 arch=(x86_64)
@@ -21,7 +21,9 @@ pkgver() {
 
 prepare() {
     cd ${srcdir}/${pkgname}
-    sed -e '/KEY_SPACE/ s|^\/*|// |' -i tap-rules.h.in
+    rm -rf config && mkdir config
+    cp -r example/interception-pipe0 config/interception-k2k
+    sed -e '/KEY_SPACE/ s|^\/*|// |' -i config/interception-k2k/tap-rules.h.in
 }
 
 build() {
@@ -31,6 +33,6 @@ build() {
 
 package() {
     cd ${srcdir}
-    install -D -m0755 ${pkgname}/$_realname "$pkgdir/usr/bin/${_realname}"
+    install -D -m0755 ${pkgname}/out/$_realname "$pkgdir/usr/bin/${_realname}"
     install -D -m0644 udevmon.yaml "$pkgdir/usr/share/doc/${_realname}/udevmon.example.yaml"
 }
