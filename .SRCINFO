@@ -1,0 +1,24 @@
+pkgbase = sherlock-git
+	pkgdesc = Find usernames across social networks
+	pkgver = 20191002.d8290d5
+	pkgrel = 1
+	url = https://github.com/sherlock-project/sherlock
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python-beautifulsoup4
+	depends = python-certifi
+	depends = python-colorama
+	depends = python-lxml
+	depends = python-pysocks
+	depends = python-requests
+	depends = python-requests-futures
+	depends = python-soupsieve
+	depends = python-stem
+	source = sherlock::git+https://github.com/sherlock-project/sherlock.git
+	source = sherlock.sh
+	sha256sums = SKIP
+	sha256sums = a50fa6f5b78be38e0cb63fd6069df971d27a3ee31bf699af254d6cc869cb2151
+
+pkgname = sherlock-git
+
