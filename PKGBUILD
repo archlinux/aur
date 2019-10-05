@@ -1,9 +1,8 @@
 # Maintainer: peeweep <peeweep at 0x0 dot ee>
 
 pkgname=sherlock-git
-_pkgname=sherlock
 pkgver=20191002.d8290d5
-pkgrel=1
+pkgrel=2
 pkgdesc="Find usernames across social networks"
 arch=('any')
 url="https://github.com/sherlock-project/sherlock"
@@ -21,21 +20,21 @@ depends=(
 )
 makedepends=('git')
 source=(
-  "${_pkgname}::git+${url}.git"
+  "${pkgname}::git+${url}.git"
   "sherlock.sh"
 )
 sha256sums=('SKIP'
-  'a50fa6f5b78be38e0cb63fd6069df971d27a3ee31bf699af254d6cc869cb2151')
+  '45bb5034d63681f3e0f0d12f868465024a473b12b2751b00e968fcb7a935497c')
 
 pkgver() {
-  cd "${srcdir}/${_pkgname}"
+  cd "${srcdir}/${pkgname}"
   git log -1 --format='%cd.%h' --date=short | tr -d -
 }
 
 package() {
-  install -Dm755 "${srcdir}/sherlock.sh" "${pkgdir}/usr/bin/sherlock.sh"
-  cp -r "${srcdir}/${_pkgname}" "${pkgdir}/usr/share/${_pkgname}"
-  install -Dm644 "${srcdir}/${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  install -Dm755 "${srcdir}/sherlock.sh" "${pkgdir}/usr/bin/sherlock"
+  install -Dm644 "${srcdir}/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/sherlock/LICENSE"
+  cp -r "${srcdir}/${pkgname}" "${pkgdir}/usr/share/"
 }
 
 # vim:set ts=2 sw=2 et:

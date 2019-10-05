@@ -1,2 +1,2 @@
 #!/usr/bin/bash
-python ../sherlock/sherlock.py "$@"
+python /usr/share/sherlock/sherlock.py "$@"
