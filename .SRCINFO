@@ -1,6 +1,6 @@
 pkgbase = jetbrains-mps
 	pkgdesc = JetBrains Meta Programming System
-	pkgver = 2019.2.2
+	pkgver = 2019.2.3
 	pkgrel = 1
 	url = http://www.jetbrains.com/mps/index.html
 	arch = any
@@ -13,8 +13,8 @@ pkgbase = jetbrains-mps
 	depends = alsa-lib
 	optdepends = python: support for scripts like restart.py
 	optdepends = ffmpeg0.10: Multimedia plugin
-	source = https://download.jetbrains.com/mps/2019.2/MPS-2019.2.2.tar.gz
-	sha256sums = 1f740b365886f336c61876c8d85ee1059555231b1e8464297eb1afd14de8c01c
+	source = https://download.jetbrains.com/mps/2019.2/MPS-2019.2.3.tar.gz
+	sha256sums = e48cb94787816f53fb7a1e80075ac295cb0c5b7391187d8a5298b6285581f097
 
 pkgname = jetbrains-mps
 
