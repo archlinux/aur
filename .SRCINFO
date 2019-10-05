@@ -1,0 +1,16 @@
+pkgbase = qmk
+	pkgdesc = CLI tool for customizing supported mechanical keyboards.
+	pkgver = 0.0.14
+	pkgrel = 1
+	url = https://qmk.fm/
+	arch = any
+	license = GPL
+	makedepends = python-setuptools
+	depends = python-appdirs
+	depends = python-argcomplete
+	depends = python-colorama
+	source = https://files.pythonhosted.org/packages/source/q/qmk/qmk-0.0.14.tar.gz
+	md5sums = ba195b6cc301874a93c52a3815c64068
+
+pkgname = qmk
+
