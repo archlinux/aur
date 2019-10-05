@@ -3,14 +3,15 @@
 pkgname=btrfs-snapshot-git
 _srcname=btrfs-snapshot
 pkgver=1.1.1.r0.g10e6e4a
-pkgrel=2
+pkgrel=3
 pkgdesc="Tool for creating btrfs snapshots"
 arch=('any')
 url="https://github.com/YHNdnzj/btrfs-snapshot"
 license=('MIT')
 depends=('bash' 'btrfs-progs')
 makedepends=('git')
-provides=('btrfs-snapshot=1.1.1')
+provides=('btrfs-snapshot')
+conflicts=('btrfs-snapshot')
 source=("git+${url}.git")
 md5sums=('SKIP')
 
