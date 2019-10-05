@@ -1,14 +1,14 @@
 pkgbase = eclipse-rcp-source
 	pkgdesc = RCP sources for Eclipse IDE
-	pkgver = 4.11
+	pkgver = 4.13
 	pkgrel = 1
 	url = http://eclipse.org/platform/
 	arch = any
 	license = EPL
 	depends = eclipse>=4.3.0
 	options = !strip
-	source = https://www.eclipse.org/downloads/download.php?file=/eclipse/downloads/drops4/R-4.11-201903070500/org.eclipse.rcp.source-4.11.zip&r=1
-	sha256sums = 64fdefb1b1fbbbd7761a919c4f48966ed705a536c8668e7ab7a8b8213dd1e243
+	source = https://www.eclipse.org/downloads/download.php?file=/eclipse/downloads/drops4/R-4.13-201909161045/org.eclipse.rcp.source-4.13.zip&r=1
+	sha256sums = 51eba88050b02cc126f94aeaaaf30e1cdc6224cf2bef0d7464d4e3d712766fe6
 
 pkgname = eclipse-rcp-source
 
