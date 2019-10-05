@@ -1,7 +1,7 @@
 # Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgname=glib-networking
-pkgver=2.62.0
+pkgver=2.62.1
 pkgrel=1
 pkgdesc="Network extensions for GLib"
 url="https://gitlab.gnome.org/GNOME/glib-networking"
@@ -11,7 +11,7 @@ depends=(glib2 libproxy gnutls gsettings-desktop-schemas)
 makedepends=(meson git openssl)
 checkdepends=(ca-certificates)
 optdepends=('openssl: Alternative backend')
-_commit=99aaecc6bfef6118efcd1b39475a7f8ed831551c  # tags/2.62.0^0
+_commit=5d29b897639a2a16fa294ab9f68ec8111f5daf5f  # tags/2.62.1^0
 source=("git+https://gitlab.gnome.org/GNOME/glib-networking.git#commit=$_commit")
 sha256sums=('SKIP')
 
