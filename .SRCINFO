@@ -9,6 +9,7 @@ pkgbase = vmware-workstation12
 	makedepends = sqlite
 	makedepends = python
 	makedepends = unzip
+	makedepends = uefitool-git
 	depends = dkms
 	depends = ncurses5-compat-libs
 	depends = fuse2
@@ -66,6 +67,7 @@ pkgbase = vmware-workstation12
 	source = darwin-tools-8.5.10_7527438.zip.tar::https://softwareupdate.vmware.com/cds/vmw-desktop/fusion/8.5.10/7527438/packages/com.vmware.fusion.tools.darwin.zip.tar
 	source = unlocker-3.0.2.py::https://raw.githubusercontent.com/DrDonk/unlocker/3.0.2/unlocker.py
 	source = unlocker.patch
+	source = efi-unlocker-patch-1.0.0.txt::https://raw.githubusercontent.com/DrDonk/efi-unlocker/1.0.0/patches.txt
 	sha256sums = d099c048a33e58e05a5b247a2fc216e5178eb35097ed3e3836de52c6388121c3
 	sha256sums = 12e7b16abf8d7e858532edabb8868919c678063c566a6535855b194aac72d55e
 	sha256sums = da1698bf4e73ae466c1c7fc93891eba4b9c4581856649635e6532275dbfea141
@@ -92,6 +94,7 @@ pkgbase = vmware-workstation12
 	sha256sums = 6327a76c2503f56d8bc67279f289ed4bb53e236d965ad78c0fcf7ee9e2bbb6c6
 	sha256sums = 29e0b0db9c0296ab81eee543803c4bd430e2c69c76e33492910e17280da1c05c
 	sha256sums = 4fb4a7914aee656df170e35b3ef952aaaa2ed10161e560dfa097688861127b1d
+	sha256sums = 392c1effcdec516000e9f8ffc97f2586524d8953d3e7d6f2c5f93f2acd809d91
 
 pkgname = vmware-workstation12
 
