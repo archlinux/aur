@@ -3,8 +3,6 @@
 
 pkgname="lidarr-develop"
 pkgver=0.7.1.1476
-_shortstupidfuckingrandomnumber="700"
-_longstupidfuckingrandomnumber="5CB322AB9719BBA216ED2BD4EA398D79A0596DB028AD62182AAE14A97318EE7D02"
 pkgrel=1
 pkgdesc="Music downloader for usenet and torrents."
 arch=(any)
@@ -26,7 +24,7 @@ optdepends=('sabnzbd: usenet downloader'
 provides=('lidarr')
 conflicts=('lidarr')
 
-source=("Lidarr.develop.${pkgver}.linux.tar.gz::https://dev.azure.com/Lidarr/Lidarr/_apis/build/builds/${_shortstupidfuckingrandomnumber}/artifacts?artifactName=Packages&fileId=${_longstupidfuckingrandomnumber}&fileName=Lidarr.develop.${pkgver}.linux.tar.gz"
+source=("Lidarr.develop.${pkgver}.linux.tar.gz::https://services.lidarr.audio/v1/update/nightly/updatefile?version=${pkgver}&os=linux"
         'lidarr.service'
         'lidarr.tmpfiles'
         'lidarr.sysusers')

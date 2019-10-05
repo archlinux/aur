@@ -21,7 +21,7 @@ pkgbase = lidarr-develop
 	optdepends = libgdiplus: provides a gdi+ compatible api
 	provides = lidarr
 	conflicts = lidarr
-	source = Lidarr.develop.0.7.1.1476.linux.tar.gz::https://dev.azure.com/Lidarr/Lidarr/_apis/build/builds/700/artifacts?artifactName=Packages&fileId=5CB322AB9719BBA216ED2BD4EA398D79A0596DB028AD62182AAE14A97318EE7D02&fileName=Lidarr.develop.0.7.1.1476.linux.tar.gz
+	source = Lidarr.develop.0.7.1.1476.linux.tar.gz::https://services.lidarr.audio/v1/update/nightly/updatefile?version=0.7.1.1476&os=linux
 	source = lidarr.service
 	source = lidarr.tmpfiles
 	source = lidarr.sysusers
