@@ -4,7 +4,7 @@ _pkgname2=spyder
 _pkgname3=spyder3
 pkgbase=$_pkgname2-git
 pkgname=($_pkgname2-git $_pkgname3-git)
-pkgver=4.0.0b3.r251.g859825153
+pkgver=4.0.0b5.r205.g1d8fd370e
 pkgrel=1
 arch=('any')
 url="https://www.spyder-ide.org/"
@@ -12,7 +12,7 @@ license=('MIT')
 makedepends=('python2-sphinx' 'python2-setuptools' 
              'python-sphinx' 'python-setuptools'
              'git')
-source=($_pkgname2::git://github.com/spyder-ide/spyder.git)
+source=($_pkgname2::git+https://github.com/spyder-ide/spyder.git)
 md5sums=('SKIP')
 
 pkgver() {
@@ -54,6 +54,7 @@ package_spyder-git() {
            'python2-pyflakes'
            'python2-pygments'
            'python2-pylint'
+           'python2-pympler'
            'python2-pyqt5'
            'python2-pyzmq'
            'python2-qtawesome'
@@ -106,6 +107,7 @@ package_spyder3-git() {
            'python-pyflakes'
            'python-pygments'
            'python-pylint'
+           'python-pympler'
            'python-pyqt5'
            'python-pyzmq'
            'python-qdarkstyle'
