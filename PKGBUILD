@@ -2,12 +2,12 @@
 # Contributor: Hugo Courtial <hugo [at] courtial [not colon] me>
 # Contributor: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
-_openfx_misc_commit=9db7c40
-_openfx_commit=f5f4139
-_openfx_supportext_commit=961aabd
+_openfx_misc_commit=8fd1303
+_openfx_commit=cc363a7
+_openfx_supportext_commit=6f7cdfe
 
 pkgname=openfx-misc
-pkgver=2.3.15_rc.8
+pkgver=2.3.15_rc.10
 pkgrel=1
 arch=('i686' 'pentium4' 'x86_64')
 pkgdesc="Miscellaneous OpenFX plugins"
