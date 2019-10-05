@@ -1,0 +1,16 @@
+pkgbase = python-torrequest
+	pkgdesc = Simple Python interface for HTTP(s) requests over Tor
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://pypi.org/project/torrequest
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-pysocks
+	depends = python-requests
+	depends = python-stem
+	source = https://files.pythonhosted.org/packages/a3/d2/00538e47a2c80979231313c346a0abc3927c7b230d69eb923bb5b221ec62/torrequest-0.1.0.tar.gz
+	sha256sums = 3745d4ea3ffda98d7a034363c787adb37aab77bdab40094a4d937392cd4dae82
+
+pkgname = python-torrequest
+
