@@ -21,6 +21,9 @@ sha512sums_armv7h=('12717f5b37d689eaba49fc9c3c40a8fac097022390c19d348b388456e738
 sha512sums_aarch64=('42b77b1aa2533c03199884cdd0520777054b662be27d0e27b993bcceadff0d426b76cd6d5426a64b5634543d9f14436cdb15bb54e043fdff444eaec8fcdc2ac7')
 sha512sums_x86_64=('8601ec68fa8978c5a08a696cc69f5e0aa9dabf274bade40e2fd9ded2e563f2cc7a1cb418a95c9b52e1fa9b6c4a30993be68cb3b6bbda4598c57b37ec9ce992ad')
 
+# Versioning details for dependencies
+# https://docs.microsoft.com/en-us/dotnet/core/versions/#versioning-details
+
 package_dotnet-host-2.1() {
   pkgdesc='A generic driver for the .NET Core Command Line Interface version 2.1'
   provides=("dotnet-host=${pkgver%+*}")
