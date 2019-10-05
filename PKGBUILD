@@ -2,13 +2,14 @@
 
 pkgname=clutter-gst
 pkgver=3.0.27
-pkgrel=1
+pkgrel=2
 pkgdesc="GStreamer bindings for clutter"
 url="https://gitlab.gnome.org/GNOME/clutter-gst"
 arch=(x86_64)
 license=(LGPL)
 depends=(clutter gst-plugins-base-libs libxdamage libgudev gdk-pixbuf2)
-makedepends=(gobject-introspection gtk-doc git)
+makedepends=(gobject-introspection gtk-doc git gst-plugins-good)
+optdepends=("gst-plugins-good: Video camera capture")
 _commit=01a461da1bdb3b29edd2d198b877ec0765af1f39  # tags/3.0.27^0
 source=("git+https://gitlab.gnome.org/GNOME/clutter-gst.git#commit=$_commit")
 sha256sums=('SKIP')
