@@ -1,6 +1,6 @@
 pkgbase = python2-codepy
 	pkgdesc = A C/C++ metaprogramming toolkit for Python
-	pkgver = 2013.1.2
+	pkgver = 2019.1
 	pkgrel = 1
 	url = http://mathema.tician.de/software/codepy
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python2-codepy
 	makedepends = python2-pytools
 	depends = python2-cgen
 	optdepends = boost-libs: Using generated C++ bindings without CUDA
-	source = http://pypi.python.org/packages/source/c/codepy/codepy-2013.1.2.tar.gz
-	md5sums = 257e0c14a4bdd60cb58f8b775c2db395
+	source = https://github.com/inducer/codepy/archive/v2019.1.tar.gz
+	sha256sums = c73c7457060419fe6f579b25d51e13c7e7ba01b405e8e36b069cdfa3477a5587
 
 pkgname = python2-codepy
 
