@@ -38,11 +38,11 @@
 # please use the official OpenSSH distribution instead.
 
 pkgname=openssh-hpn
-_openssh_ver=7.9p1
-_hpn_ver=hpn14v17
-_pkgver=`sed -e 's/\./_/' -e 's/p/_P/' <<< ${_openssh_ver}`
+_openssh_ver=8.0p1
+_hpn_ver=hpn14v18
+_pkgver="`sed -e 's/\./_/' -e 's/p/_P/' <<< ${_openssh_ver}`_new"
 pkgver="${_openssh_ver}.${_hpn_ver}"
-pkgrel=3
+pkgrel=2
 pkgdesc='A Secure SHell server/client fork with High Performance patches included'
 url='https://www.psc.edu/index.php/hpn-ssh/'
 license=('custom:BSD')
@@ -59,6 +59,7 @@ conflicts=('openssh'
 source=("https://github.com/rapier1/openssh-portable/archive/hpn-${_pkgver}.tar.gz"
         'http://www.eworm.de/download/linux/openssh-tests-scp.patch'
         'openssl11.patch'
+        'hpn14v18-banner.patch'
         'sshdgenkeys.service'
         'sshd@.service'
         'sshd.service'
@@ -68,9 +69,10 @@ backup=('etc/ssh/ssh_config'
         'etc/ssh/sshd_config'
         'etc/pam.d/sshd')
 
-sha256sums=('8025dd92a3247d75fe5a81297e30ff273412a00b0525d6f0fe4e97555b329c28'
+sha256sums=('3648a3f3497814478104fdece2ce667887d66d99b1f246c55c5741ee524610f1'
             '007a8888855570296c36716df18e986b7265c283e8fc8f6dfd4b3c411905fdb3'
             '6c6deb799fc918b4d90899d664a23b3a99e2973d61b5a2cf68e1ea9a6604ca9a'
+            '57bb8c4800afc5314ad1f3ac24bc838f1f63c626171d3c5ad4b843bfef2391fe'
             'ff3cbdd0e59ff7dac4dc797d5c0f2b1db4117ddbb49d52f1c4f1771961903878'
             '69cc2abaaae0aa8071b8eac338b2df725f60ce73381843179b74eaac78ba7f1d'
             'c5ed9fa629f8f8dbf3bae4edbad4441c36df535088553fe82695c52d7bde30aa'
