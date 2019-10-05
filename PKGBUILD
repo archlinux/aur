@@ -81,13 +81,6 @@ prepare() {
   #   3. Fix: Regression/bug fix only available in master (not backported).
   #   4. Cleanup: Code styling improvement, function deprecation, rearrangement...
 
-  # Title: clutter/stage: Only queue compressible events
-  # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/711
-  # Type: 1
-  # Status: 2
-  # Comment: Replaces !168
-  git_cp_by_msg '!711' 'clutter/device-manager-evdev: Update device modifiers before queuing' 'clutter/stage: Only queue compressible events'
-
   # Title: Resource scale computation optimizations
   # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/493
   # Type: 1
@@ -104,20 +97,6 @@ prepare() {
   # Status: 2
   git_cp_by_msg '!575' 'clutter/stage: Add an API for shallow relayouts' 'clutter/actor: Use the new shallow relayout API'
 
-  # Title: WIP: renderer-native: Accept frames without ever blocking
-  # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/73
-  # Type: 1
-  # Status: 1
-  # Comment: Might be replaced: https://gitlab.gnome.org/GNOME/mutter/merge_requests/73#note_544784
-  # git cherry-pick -n 35ec0eaf^..202530c9
-
-  # Title: core: Only trigger MetaWorkspace::window-* on toplevel window types
-  # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/701
-  # Type: 1
-  # Status: 2
-  # Comment:
-  git cherry-pick -n d7f799bf
-
   # Title: clutter-stage-cogl: Use regions
   # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/692
   # Type: 1
@@ -130,13 +109,6 @@ prepare() {
   # Type: 1
   # Status: 1
   # git_cp_by_msg '!429' 'clutter/stage-cogl: Add method to check if ongoing repaint is clipped' 'clutter/stage: Use a device-manager method to update input devices'
-
-  # Title: Remove pending_swaps counter
-  # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/719
-  # Type: 1
-  # Status: 2
-  # Comment:
-  git_cp_by_msg '!719' 'clutter/stage-cogl: Remove pending_swaps counter'
 
   # Title: Sync timelines to hardware vsync
   # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/724
