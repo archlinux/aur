@@ -1,7 +1,7 @@
 # Maintainer: Attila Greguss <floyd0122[at]gmail[dot]com>
 
 pkgbase=dotnet-core-2.1
-pkgname=('dotnet-host-2.1' 'dotnet-runtime-2.1' 'aspnet-runtime-2.1' 'dotnet-sdk-2.1')
+pkgname=('dotnet-host-2.1' 'dotnet-runtime-2.1' 'dotnet-sdk-2.1')
 pkgver=2.1.13
 pkgrel=1
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -47,16 +47,16 @@ package_dotnet-runtime-2.1() {
   ln -s dotnet-host-2.1 "${pkgdir}"/usr/share/licenses/dotnet-runtime-2.1
 }
 
-package_aspnet-runtime-2.1() {
-  arch=('x86_64' 'armv7h')
-  pkgdesc='The ASP.NET Core runtime version 2.1'
-  depends=('dotnet-runtime=2.1.13')
-  provides=("aspnet-runtime=${pkgver%+*}")
+#package_aspnet-runtime-2.1() {
+#  arch=('x86_64' 'armv7h')
+#  pkgdesc='The ASP.NET Core runtime version 2.1'
+#  depends=('dotnet-runtime=2.1.13')
+#  provides=("aspnet-runtime=${pkgver%+*}")
 
-  install -dm 755 "${pkgdir}"/{opt/dotnet/shared,usr/share/licenses}
-  cp -dr --no-preserve='ownership' shared/Microsoft.AspNetCore.App "${pkgdir}"/opt/dotnet/shared/
-  ln -s dotnet-host-2.1 "${pkgdir}"/usr/share/licenses/aspnet-runtime-2.1
-}
+#  install -dm 755 "${pkgdir}"/{opt/dotnet/shared,usr/share/licenses}
+#  cp -dr --no-preserve='ownership' shared/Microsoft.AspNetCore.App "${pkgdir}"/opt/dotnet/shared/
+#  ln -s dotnet-host-2.1 "${pkgdir}"/usr/share/licenses/aspnet-runtime-2.1
+#}
 
 package_dotnet-sdk-2.1() {
   pkgdesc='The .NET Core SDK version 2.1'

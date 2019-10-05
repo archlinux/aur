@@ -45,13 +45,6 @@ pkgname = dotnet-runtime-2.1
 	optdepends = lttng-ust: CoreCLR tracing
 	provides = dotnet-runtime=2.1.13
 
-pkgname = aspnet-runtime-2.1
-	pkgdesc = The ASP.NET Core runtime version 2.1
-	arch = x86_64
-	arch = armv7h
-	depends = dotnet-runtime=2.1.13
-	provides = aspnet-runtime=2.1.13
-
 pkgname = dotnet-sdk-2.1
 	pkgdesc = The .NET Core SDK version 2.1
 	depends = dotnet-runtime=2.1.13
