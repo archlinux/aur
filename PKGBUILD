@@ -1,8 +1,8 @@
 # Maintainer: BrLi <brli at chakralinux dot org>
 
 pkgname=zettlr
-pkgver=1.4.1
-pkgrel=3
+pkgver=1.4.2
+pkgrel=1
 pkgdesc="A markdown editor for writing academic texts and taking notes"
 arch=('x86_64')
 url="https://www.zettlr.com"
@@ -16,6 +16,7 @@ source=($pkgname::git+https://github.com/Zettlr/Zettlr.git#tag=v$pkgver)
 sha1sums=(SKIP)
 
 prepare() {
+    # Add some close-to-complete translations
     cd $srcdir/$pkgname/scripts
     sed "s/'fr-FR'/'fr-FR','ja-JP','zh-CN','es-ES','ru-RU'/" -i refresh-language.js
 }
@@ -43,7 +44,7 @@ package() {
 
     # Remove unneeded addin
     find $pkgdir/$_destdir -name "fonts" -exec rm -rfv {} +
-    find $pkgdir/$_destdir -name ".gitignore" -or -name ".eslintrc.json" -or -name ".npmignore" -or -name "fonts" -exec rm -rfv {} +
+    find $pkgdir/$_destdir -name ".gitignore" -or -name ".eslintrc.json" -or -name ".npmignore" -exec rm -rfv {} +
 
     install -Dm755 /dev/stdin $pkgdir/usr/bin/$pkgname <<END
 #!/bin/bash
