@@ -1,7 +1,7 @@
 # Maintainer: Patrick McCarty <pnorcks at gmail dot com>
 
 pkgname=abireport
-pkgver=1.0.6
+pkgver=1.0.7
 pkgrel=1
 pkgdesc="Tool to create ABI reports from ELF binaries in packaging"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ optdepends=('rpm-org: extract rpm files'
             'dpkg: extract deb files'
             'unzip: extract eopkg files')
 source=("https://github.com/clearlinux/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('60beb805335302f999c32bda62f56afd6971f27499580fece84fe4d6bb9cb653')
+sha256sums=('c46c46bff3dc873cb84a66c639c38b2df14f095d95a4bb77e3b96904b8219399')
 
 build() {
   cd "$pkgname-$pkgver"
