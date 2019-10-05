@@ -7,7 +7,6 @@ pkgrel=1
 pkgdesc="A syntax-highlighting pager for git"
 arch=('any')
 url="https://github.com/dandavison/delta"
-##TODO: check
 license=('custom')
 depends=()
 provides=('delta-diff')
