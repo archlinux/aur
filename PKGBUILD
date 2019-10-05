@@ -13,8 +13,8 @@ depends=('gcc>=5.2' 'bash-completion>=1.18.' 'gcc-libs>=3.0' 'hicolor-icon-theme
 conflicts=('synergy' 'synergy2' 'synergy2-beta')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install 
-source_x86_64=("https://binaries.symless.com/v2.0.12/debian/synergy_2.0.12.beta~b74%2B0b61673b_amd64.deb" "https://gist.githubusercontent.com/JAicewizard/a70388a3a7c52fef21299f961a652364/raw/95f597b0ea42321efa4a0f2395fc84b0fdaf8084/synergy.service")
-sha512sums_x86_64=("bd6b20abdf50dac7a475551de8def90ce1a53245adc879ed989873dfbe9b4bfbb4ba4d523745ef39db37d3bec5c80942e9051bfba8b9dd03c7db3dfacd0edbc4" "8527f4d1dbeead91d694221711a2f64f585c12657fd081f6e3f8c1ed751159d42fdacfac5234a5d039fb911d006acd9924b1413de3054ca05bba8321c094811a")
+source_x86_64=("https://binaries.symless.com/v2.0.12/synergy_2.0.12.beta_b1705%2Be5daaeda_amd64.deb" "https://gist.githubusercontent.com/JAicewizard/a70388a3a7c52fef21299f961a652364/raw/95f597b0ea42321efa4a0f2395fc84b0fdaf8084/synergy.service")
+sha512sums_x86_64=("fbe3d9da48d848bb4becc6235b963d3e1d3d2ad16c434dcfaa3d0cba272424f524970c569162d0b2e62cb06861169be522a57bda15db454e5963687756b160a2" "8527f4d1dbeead91d694221711a2f64f585c12657fd081f6e3f8c1ed751159d42fdacfac5234a5d039fb911d006acd9924b1413de3054ca05bba8321c094811a")
 
 package(){
 	# Extract package data
