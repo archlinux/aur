@@ -5,7 +5,6 @@ pkgver=r337.01caed5
 pkgrel=1
 pkgdesc='dnsmasq, bind and unbound zone files to be used in DNS based AD Blockers'
 url='https://github.com/oznu/dns-zone-blacklist'
-license=('MIT')
 arch=('any')
 optdepends=('unbound' 'bind' 'dnsmasq')
 source=('git+https://github.com/oznu/dns-zone-blacklist.git')
