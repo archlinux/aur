@@ -1,6 +1,6 @@
 # Maintainer: Kartik Mohta <kartikmohta@gmail.com>
 pkgname=gtsam
-pkgver=4.0.0
+pkgver=4.0.2
 pkgrel=2
 pkgdesc="A library of C++ classes that implement smoothing and mapping (SAM) in\
   robotics and vision, using factor graphs and Bayes networks as the underlying\
@@ -12,19 +12,13 @@ depends=('boost-libs')
 makedepends=('boost' 'cmake')
 optdepends=('intel-tbb: Use Intel TBB to accelerate computations (add this to the depends section of the PKGBUILD and rebuild the package)'
             'intel-mkl: Use Intel MKL to accelerate computations (add this to the depends section of the PKGBUILD and rebuild the package)')
-source=("https://github.com/borglab/gtsam/archive/4.0.0.tar.gz"
-        "subgraphbuilder-sampler.patch"
-        "partialpriorfactor.patch"
+source=("https://github.com/borglab/${pkgname}/archive/${pkgver}.tar.gz"
         "rename-included-libmetis.patch")
-md5sums=('570b079b0a755952797c9bf5a772a309'
-         'ad70d7c962a9d797337418a5d993133d'
-         'bbb8909e15ae38c217fa1b6b9ee4147e'
+md5sums=('6f5689c5c060d6cb29fe7c49b05e1571'
          '63093f474f5574e8dd3e300289dab47f')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  patch -p1 -i ../subgraphbuilder-sampler.patch
-  patch -p1 -i ../partialpriorfactor.patch
   patch -p1 -i ../rename-included-libmetis.patch
 }
 

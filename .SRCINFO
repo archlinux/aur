@@ -1,6 +1,6 @@
 pkgbase = gtsam
 	pkgdesc = A library of C++ classes that implement smoothing and mapping (SAM) in robotics and vision, using factor graphs and Bayes networks as the underlying computing paradigm rather than sparse matrices.
-	pkgver = 4.0.0
+	pkgver = 4.0.2
 	pkgrel = 2
 	url = https://gtsam.org/
 	arch = x86_64
@@ -11,13 +11,9 @@ pkgbase = gtsam
 	depends = boost-libs
 	optdepends = intel-tbb: Use Intel TBB to accelerate computations (add this to the depends section of the PKGBUILD and rebuild the package)
 	optdepends = intel-mkl: Use Intel MKL to accelerate computations (add this to the depends section of the PKGBUILD and rebuild the package)
-	source = https://github.com/borglab/gtsam/archive/4.0.0.tar.gz
-	source = subgraphbuilder-sampler.patch
-	source = partialpriorfactor.patch
+	source = https://github.com/borglab/gtsam/archive/4.0.2.tar.gz
 	source = rename-included-libmetis.patch
-	md5sums = 570b079b0a755952797c9bf5a772a309
-	md5sums = ad70d7c962a9d797337418a5d993133d
-	md5sums = bbb8909e15ae38c217fa1b6b9ee4147e
+	md5sums = 6f5689c5c060d6cb29fe7c49b05e1571
 	md5sums = 63093f474f5574e8dd3e300289dab47f
 
 pkgname = gtsam
