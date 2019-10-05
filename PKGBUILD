@@ -42,7 +42,7 @@ _openssh_ver=8.0p1
 _hpn_ver=hpn14v18
 _pkgver="`sed -e 's/\./_/' -e 's/p/_P/' <<< ${_openssh_ver}`_new"
 pkgver="${_openssh_ver}.${_hpn_ver}"
-pkgrel=2
+pkgrel=3
 pkgdesc='A Secure SHell server/client fork with High Performance patches included'
 url='https://www.psc.edu/index.php/hpn-ssh/'
 license=('custom:BSD')
@@ -90,6 +90,7 @@ build() {
   fi
   # https://gitweb.gentoo.org/repo/gentoo.git/commit/?id=371794f20c7eb2b88cae2619b6fa3444452aafb4
   patch -Np1 < ${srcdir}/openssl11.patch
+  patch -Np1 < ${srcdir}/hpn14v18-banner.patch
   autoreconf -fi
 
   ./configure \
