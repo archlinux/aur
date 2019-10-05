@@ -1,0 +1,23 @@
+pkgbase = drogon-git
+	pkgdesc = A C++14/17 based HTTP web application framework running on Linux/macOS/Unix
+	pkgver = 1.0.0.beta8.r1.gf999899
+	pkgrel = 1
+	url = https://github.com/an-tao/drogon
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	depends = mariadb
+	depends = postgresql
+	depends = libpqxx
+	depends = sqlite
+	depends = jsoncpp
+	depends = util-linux
+	depends = c-ares
+	provides = drogon
+	source = drogon-git::git+https://github.com/an-tao/drogon.git
+	source = trantor::git+https://github.com/an-tao/trantor.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = drogon-git
+
