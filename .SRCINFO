@@ -1,0 +1,13 @@
+pkgbase = delta-diff-git
+	pkgdesc = A syntax-highlighting pager for git
+	pkgver = r.319.f89300a
+	pkgrel = 1
+	url = https://github.com/dandavison/delta
+	arch = any
+	license = custom
+	provides = delta-diff
+	source = git+https://github.com/dandavison/delta.git
+	md5sums = SKIP
+
+pkgname = delta-diff-git
+
