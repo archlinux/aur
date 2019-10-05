@@ -34,7 +34,7 @@ package_dotnet-host-bin() {
 
 package_dotnet-runtime-bin() {
   pkgdesc='The .NET Core runtime (binary)'
-  depends=('dotnet-host-bin' 'icu' 'krb5' 'libunwind' 'openssl' 'zlib'
+  depends=('dotnet-host>=3.0.100' 'icu' 'krb5' 'libunwind' 'openssl' 'zlib'
            'libcurl.so')
   optdepends=('lttng-ust: CoreCLR tracing')
   provides=("dotnet-runtime=${pkgver%+*}")
@@ -46,7 +46,7 @@ package_dotnet-runtime-bin() {
 
 package_aspnet-runtime-bin() {
   pkgdesc='The ASP.NET Core runtime (binary)'
-  depends=('dotnet-runtime-bin')
+  depends=('dotnet-runtime=3.0.100')
   provides=("aspnet-runtime=${pkgver%+*}")
 
   install -dm 755 "${pkgdir}"/{opt/dotnet/shared,usr/share/licenses}
@@ -56,7 +56,7 @@ package_aspnet-runtime-bin() {
 
 package_dotnet-sdk-bin() {
   pkgdesc='The .NET Core SDK (binary)'
-  depends=('dotnet-runtime-bin')
+  depends=('dotnet-runtime=3.0.100')
   provides=("dotnet-sdk=${pkgver%+*}")
 
   install -dm 755 "${pkgdir}"/{opt/dotnet,usr/share/licenses}

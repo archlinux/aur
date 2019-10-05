@@ -35,7 +35,7 @@ pkgname = dotnet-host-bin
 
 pkgname = dotnet-runtime-bin
 	pkgdesc = The .NET Core runtime (binary)
-	depends = dotnet-host-bin
+	depends = dotnet-host>=3.0.100
 	depends = icu
 	depends = krb5
 	depends = libunwind
@@ -47,11 +47,11 @@ pkgname = dotnet-runtime-bin
 
 pkgname = aspnet-runtime-bin
 	pkgdesc = The ASP.NET Core runtime (binary)
-	depends = dotnet-runtime-bin
+	depends = dotnet-runtime=3.0.100
 	provides = aspnet-runtime=3.0.100
 
 pkgname = dotnet-sdk-bin
 	pkgdesc = The .NET Core SDK (binary)
-	depends = dotnet-runtime-bin
+	depends = dotnet-runtime=3.0.100
 	provides = dotnet-sdk=3.0.100
 
