@@ -2,12 +2,12 @@
 
 pkgname=photoname
 pkgver=4.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Rename JPEG photo files based on shoot date'
 arch=('x86_64')
 url="https://github.com/dino-/photoname"
 license=('ISC')
-depends=()
+depends=('fuse2')
 makedepends=()
 # This software comes as an AppImage, auto-stripping by the AUR tools breaks it
 options=(!strip)
