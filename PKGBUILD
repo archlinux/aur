@@ -2,20 +2,20 @@
 # Contributor: Hugo Courtial <hugo [at] courtial [not colon] me>
 # Contributor: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
-_openfx_io_commit=644df5d
-_openfx_commit=f5f4139
-_openfx_supportext_commit=961aabd
+_openfx_io_commit=60096b7
+_openfx_commit=cc363a7
+_openfx_supportext_commit=6f7cdfe
 _SequenceParsing_commit=977e36f
 _tinydir_commit=3aae922
 
 pkgname=openfx-io
-pkgver=2.3.15_rc.7
-pkgrel=2
+pkgver=2.3.15_rc.10
+pkgrel=1
 arch=('i686' 'pentium4' 'x86_64')
 pkgdesc="A set of Readers/Writers plugins written using the OpenFX standard"
 url="https://github.com/NatronGitHub/openfx-io"
 license=('GPL')
-depends=('ffmpeg' 'libraw' 'openimageio' 'seexpr1')
+depends=('ffmpeg' 'openimageio' 'seexpr1-2')
 source=("openfx-io_$_openfx_io_commit.tar.gz::https://github.com/NatronGitHub/openfx-io/tarball/$_openfx_io_commit"
         "openfx_$_openfx_commit.tar.gz::https://github.com/NatronGitHub/openfx/tarball/$_openfx_commit"
         "openfx-supportext_$_openfx_supportext_commit.tar.gz::https://github.com/NatronGitHub/openfx-supportext/tarball/$_openfx_supportext_commit"
