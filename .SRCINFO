@@ -1,12 +1,12 @@
 pkgbase = argocd-bin
 	pkgdesc = Declarative continuous deployment for Kubernetes.
-	pkgver = 1.1.2
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/argoproj/argo-cd
 	arch = x86_64
 	license = Apache
-	source = argocd_1.1.2::https://github.com/argoproj/argo-cd/releases/download/v1.1.2/argocd-linux-amd64
-	sha256sums = f186759409f7a3fe6ea6633b8d14ead7b16815b84981ba79fc1dd048f77d7f45
+	source = argocd_1.2.0::https://github.com/argoproj/argo-cd/releases/download/v1.2.0/argocd-linux-amd64
+	sha256sums = fa2e96b5117cb5325b753f5df5585864aac97165d61c01e304d740955a112601
 
 pkgname = argocd-bin
 
