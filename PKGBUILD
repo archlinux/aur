@@ -1,4 +1,5 @@
-# Maintainer: Jeff Henson <jeff at henson dot io>
+# Maintainer: Alejandro Fernandez Huguet <https://github.com/RinsedSloth>
+# Contributor: Jeff Henson <jeff at henson dot io>
 
 pkgname=protonvpn-cli-git
 pkgver=r158.9072bab
