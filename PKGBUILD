@@ -171,8 +171,10 @@ build() {
 
 _package() {
     pkgdesc="Clearlinux lts2017 kernel and modules"
-    depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
-    optdepends=('crda: to set the correct wireless channels of your country' 'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig')
+    depends=('coreutils' 'kmod' 'initramfs')
+    optdepends=('crda: to set the correct wireless channels of your country'
+                'linux-firmware: firmware images needed for some devices'
+                'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig')
     provides=('WIREGUARD-MODULE')
     backup=("etc/mkinitcpio.d/${pkgbase}.preset")
     install=linux.install
@@ -187,6 +189,9 @@ _package() {
     # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
     install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
     install -Dm644 "$modulesdir/vmlinuz" "$pkgdir/boot/vmlinuz-$pkgbase"
+
+    # Used by mkinitcpio to name the kernel
+    echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
     msg2 "Installing modules..."
     make INSTALL_MOD_PATH="$pkgdir/usr" modules_install
