@@ -1,0 +1,27 @@
+# Maintainer: Uffe Jakobsen <uffe_|_at_|_starion_|_dot_|_dk>
+pkgname=acme-upstream
+_pkgname=acme
+pkgver=0.96.4
+pkgrel=1
+pkgdesc="Cross-assembler for MOS 6502, 65C02 and 65816 CPUs - SourceForge upstream release"
+arch=('i686' 'x86_64')
+url="https://sourceforge.net/projects/acme-crossass/"
+source=(https://github.com/uffejakobsen/acme/archive/0.96.4.tar.gz)
+#url="http://www.esw-heim.tu-clausthal.de/~marco/smorbrod/acme"
+#source=(http://www.esw-heim.tu-clausthal.de/~marco/smorbrod/${pkgname}/current/${_pkgname}${pkgver}src.tar.bz2)
+license=('GPL')
+md5sums=('ca1c9d912135dd195fd418843220ebc2')
+#depends=('glibc')
+conflicts=('acme-git')
+
+build()
+{
+	cd "${srcdir}/${_pkgname}-${pkgver}/src"
+	make || return 1
+}
+
+package()
+{
+	cd "${srcdir}/${_pkgname}-${pkgver}/src"
+	install -D -m755 acme ${pkgdir}/usr/bin/acme
+}

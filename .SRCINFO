@@ -1,0 +1,14 @@
+pkgbase = acme-upstream
+	pkgdesc = Cross-assembler for MOS 6502, 65C02 and 65816 CPUs - SourceForge upstream release
+	pkgver = 0.96.4
+	pkgrel = 1
+	url = https://sourceforge.net/projects/acme-crossass/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	conflicts = acme-git
+	source = https://github.com/uffejakobsen/acme/archive/0.96.4.tar.gz
+	md5sums = ca1c9d912135dd195fd418843220ebc2
+
+pkgname = acme-upstream
+
