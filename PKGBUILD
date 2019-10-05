@@ -3,8 +3,8 @@
 # Contributor: Jesus Jerez <jerezmoreno@gmail.com>
 
 pkgname=eclipse-pde
-pkgver=4.11
-_buildTime=201903070500
+pkgver=4.13
+_buildTime=201909161045
 pkgrel=1
 pkgdesc='Plug-in Development Environment Binary for Eclipse IDE'
 url="http://www.eclipse.org/pde/"
@@ -13,10 +13,12 @@ license=('EPL')
 depends=('eclipse-rcp-source')
 makedepends=('java-environment-common')
 options=(!strip)
+# https://download.eclipse.org/eclipse/downloads/
+# https://download.eclipse.org/eclipse/downloads/drops4/R-4.13-201909161045/
 source=(
 	"http://www.mirrorservice.org/sites/download.eclipse.org/eclipseMirror/eclipse/downloads/drops4/R-${pkgver}-${_buildTime}/org.eclipse.pde-${pkgver}.zip"
 )
-sha256sums=('a5a33cb24ed05fbc4d79fe39ac962b1636b5cb9a481bc5836f892f8d09307dba')
+sha256sums=('99f88e26c9dcf4a1aee30fb8f7b124ad811d2dcbd91a3fa4040a20cca1e80c83')
 
 package() {
   _dest=${pkgdir}/usr/lib/eclipse/dropins/${pkgname/eclipse-}/eclipse
