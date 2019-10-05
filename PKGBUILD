@@ -37,6 +37,8 @@
 # If security is paramount for you or in case of any doubt,
 # please use the official OpenSSH distribution instead.
 
+# This package should probably follow chutzpah@gentoo's patches in the future
+
 pkgname=openssh-hpn
 _openssh_ver=8.0p1
 _hpn_ver=hpn14v18
