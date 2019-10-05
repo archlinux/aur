@@ -62,7 +62,7 @@ _minor=3
 _basekernel=${_major}.${_minor}
 _srcname=linux-${_basekernel}
 pkgbase=linux-pf
-_pfrel=1
+_pfrel=2
 _kernelname=-pf
 _pfpatchhome="https://github.com/pfactum/pf-kernel/compare"
 _pfpatchname="v$_major.$_minor...v$_major.$_minor-pf$_pfrel.diff"
@@ -652,12 +652,12 @@ eval "package_linux-pf${LCPU+-$LCPU}() {
      }"
 
 
-sha256sums=('54ad66f672e1a831b574f5e704e8a05f1e6180a8245d4bdd811208a6cb0ac1e7'
+sha256sums=('78f3c397513cf4ff0f96aa7d09a921d003e08fa97c09e0bb71d88211b40567b2'
             'c405c700b2cb06c4ec805b7e327d0b66416395995519281194a8293da69b398a'
             '4b9502063c18dc36bec65bd0e52b9b6eefb1e26d39e1385cee6cffe0cf679572'
             '8d809b8a587f21a810ae385284855dec3c9cec0558f7ae957a91e8029386e930'
             '82d660caa11db0cd34fd550a049d7296b4a9dcd28f2a50c81418066d6e598864'
-            'b3a1d7b9794349a366ebde62bb944296aeddc62a755552e010c5dfb53cc596e8'
+            '88c03eaa3ac14757bf946bf6da1396cfb1de4cdeacf231f81ce4dcbf28caa0a7'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21')
 # vim:set ts=2 sw=2 tw=0 et:
