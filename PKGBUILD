@@ -6,7 +6,7 @@
 # Contributor: Michael Kanis <mkanis_at_gmx_dot_de>
 
 pkgname=mutter-performance
-pkgver=3.34.0+30+gb5775e3d8
+pkgver=3.34.0+47+g105a3f757
 pkgrel=1
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -22,7 +22,7 @@ provides=(mutter mutter-781835-workaround)
 conflicts=(mutter)
 replaces=(mutter-781835-workaround)
 groups=(gnome)
-_commit=b5775e3d85235418fc12c2024a54863d49acf02d  # master
+_commit=105a3f757a31299ed4eaafa0615e1fcd0b4ffeec  # master
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit")
 sha256sums=('SKIP')
 
