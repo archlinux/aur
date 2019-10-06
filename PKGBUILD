@@ -8,7 +8,7 @@ pkgdesc="Textual Modeling Framework for Eclipse IDE"
 arch=('any')
 url="https://projects.eclipse.org/projects/modeling.tmf.xtext"
 license=('EPL')
-depends=('eclipse-emf')
+depends=('eclipse-m2t-xpand')
 options=('!strip')
 # http://download.eclipse.org/modeling/tmf/xtext/downloads/drops/
 source=(
