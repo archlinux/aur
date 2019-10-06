@@ -7,7 +7,7 @@
 
 pkgname=opennebula
 _unstable_pkg=opennebula-unstable
-pkgver=5.8.2
+pkgver=5.8.5
 pkgrel=1
 pkgdesc="Virtual management infrastructure as a service (IaaS) toolkit for cloud computing (NOTE: Read the PKGBUILD!)"
 arch=('i686' 'x86_64')
@@ -34,6 +34,7 @@ makedepends=('xmlrpc-c'
              'scons'
              'mariadb'
              'libmariadbclient'
+             'libvncserver' # needed to build sunstone
              'npm' # needed to build sunstone
              'grunt-cli' # needed to build sunstone
              'bower') # needed to build sunstone
@@ -104,8 +105,9 @@ source=("https://github.com/OpenNebula/one/archive/release-${pkgver}.tar.gz"
         'chown_fix.patch'
         'set_locations.patch'
         'fix_kvm_emulator.patch'
-        'opennebula.install')
-md5sums=('680c606a7b3256ae2042f7177b14ef85'
+        'opennebula.install'
+        'scons_python3.patch')
+md5sums=('8c277bcb2f851621a189c28891c51be1'
          '69c4374554ae689c44b0ef8c0a31b911'
          '74bc0a908441063a44cb134449564db1'
          'f207636bd04a621f20b14a37c6ad49b7'
@@ -118,7 +120,8 @@ md5sums=('680c606a7b3256ae2042f7177b14ef85'
          'cd272404aba91a27cf89ce22364e51b4'
          'bab6415dd2437c6dfdadad90efedeff3'
          '680931b4555ea25a17ea8c20b382d175'
-         'd6fd565c86ea40001c618689f18a222d')
+         'd6fd565c86ea40001c618689f18a222d'
+         '8fd54ddb28ae34a75425cff104fdca64')
 
 prepare() {
   cd "one-release-${pkgver}"
@@ -129,6 +132,13 @@ prepare() {
   patch < "${srcdir}/chown_fix.patch"
   patch < "${srcdir}/set_locations.patch"
   patch -p0 < "${srcdir}/fix_kvm_emulator.patch"
+  # Fix for scons with python3 https://github.com/OpenNebula/one/issues/3584
+  patch  -p1 < "${srcdir}/scons_python3.patch"
+  # Patch npm package versions to support node 12
+  # grunt-sass version
+  sed -i 's/1.2.1/2.1.0/' "${srcdir}/one-release-${pkgver}/src/sunstone/public/package.json"
+  # node-sass
+  sed -i 's/3.10.1/4.12.0/' "${srcdir}/one-release-${pkgver}/src/sunstone/public/package.json"
   # As we install from the github release sources we need to build sunstone as well.
   # To do that we need the npm environment set up
   # https://docs.opennebula.org/5.4/integration/references/sunstone_dev.html#sunstone-dev
