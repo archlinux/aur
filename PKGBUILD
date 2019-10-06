@@ -2,7 +2,7 @@
 _name=xvfbwrapper
 pkgname=python-xvfbwrapper
 pkgver=0.2.9
-pkgrel=2
+pkgrel=3
 pkgdesc="Manage headless displays with Xvfb (X virtual framebuffer)"
 arch=('any')
 url="https://github.com/cgoldberg/xvfbwrapper"
@@ -24,7 +24,8 @@ build() {
 
 check() {
   cd "$pkgname-$pkgver"
-  PYTHONPATH=${srcdir}/${pkgname}-${pkgver}/build:${PYTHONPATH} py.test
+  export PYTHONPATH="build:${PYTHONPATH}"
+  py.test
 }
 
 package_python-xvfbwrapper() {
