@@ -11,7 +11,7 @@ pkgbase=linux-rt       # Build kernel with a different name
 _pkgver=5.2.17
 _rtpatchver=rt9
 pkgver="${_pkgver}_${_rtpatchver}"
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://git.archlinux.org/linux.git/log/?h=v$_srcver"
 license=('GPL2')
