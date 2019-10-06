@@ -12,14 +12,14 @@
 
 pkgname=mesa-aco-git
 pkgdesc="Mesa with the ACO compiler patchset, git version"
-pkgver=19.3.0_devel.20190927.d0ed7ce952c
-pkgrel=4
+pkgver=19.3.0_devel.20191004.6c3bad5214b
+pkgrel=5
 arch=('x86_64')
 makedepends=('git' 'python-mako' 'xorgproto'
               'libxml2' 'libx11'  'libvdpau' 'libva' 'elfutils' 'libomxil-bellagio' 'libxrandr'
               'ocl-icd' 'vulkan-icd-loader' 'libgcrypt'  'wayland' 'wayland-protocols' 'meson' 'ninja')
 depends=('libdrm' 'libxxf86vm' 'libxdamage' 'libxshmfence' 'libelf'
-         'libomxil-bellagio' 'libunwind' 'libglvnd' 'wayland' 'lm_sensors' 'libclc' 'glslang')
+         'libomxil-bellagio' 'libunwind' 'libglvnd>=1.2' 'wayland' 'lm_sensors' 'libclc' 'glslang')
 optdepends=('opengl-man-pages: for the OpenGL API man pages')
 provides=("mesa=$pkgver-$pkgrel"
           "mesa-git=$pkgver-$pkgrel"
@@ -40,14 +40,10 @@ url="https://www.mesa3d.org"
 license=('custom')
 source=('mesa-aco::git+https://github.com/daniel-schuermann/mesa'
         'LICENSE'
-        'glvnd-1.patch'
-        'glvnd-2.patch'
 )
 
 sha512sums=('SKIP'
             '25da77914dded10c1f432ebcbf29941124138824ceecaf1367b3deedafaecabc082d463abcfa3d15abff59f177491472b505bcb5ba0c4a51bb6b93b4721a23c2'
-            'd3a58aaafbdab6e47207327bd519d4af20e39253e04e093be511df3495851d1e405959dfa78930e047846dc735178081e48a41148289e1b70242d877d9a4d129'
-            '70a9f75a6fed2f6e4828f491bc6a3a18daf9dc1bbc9d6d400c39902dddcba0671112c23b1ed5e8ebdc54e344235064e907b166c0dcfe80699a8d71bbb5decdd9'
 )
 
 
@@ -111,10 +107,6 @@ prepare() {
     if [  -d _build ]; then
         rm -rf _build
     fi
-    cd "$srcdir"/mesa-aco
-    # Cherry-picks that haven't made it to the ACO branch yet to fix the .pc file situation with glvnd/egl
-    patch -Np1 -i "$srcdir"/glvnd-1.patch
-    patch -Np1 -i "$srcdir"/glvnd-2.patch
 }
 
 build () {
