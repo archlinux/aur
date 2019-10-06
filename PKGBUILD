@@ -2,12 +2,12 @@
 # Contributor: Vlad M. <vlad@archlinux.net>
 # Contributor: Zhengyu Xu <xzy3186@gmail.com>
 
-pkgname=insync
+pkgname=insync1
 pkgver=1.5.7
 _pkgver=37371
 _dist=artful
 pkgrel=3
-pkgdesc="An unofficial Google Drive client that runs on Linux, with support for various desktops"
+pkgdesc="An unofficial Google Drive client that runs on Linux, with support for various desktops (version 1.5.7)"
 url="https://www.insynchq.com/downloads"
 license=('custom:insync')
 options=(!strip)
@@ -24,6 +24,7 @@ depends=('xdg-utils'
          'libxcomposite')
 optdepends=(
 )
+conflicts=('insync')
 arch=('x86_64')
 source=('insync@.service' 'insync.service')
 sha256sums=('cf276c1dbf1592ea63a21c2d61c75f7ad6ec3b13e87b3aaa331e9c14799f4598'
@@ -31,7 +32,7 @@ sha256sums=('cf276c1dbf1592ea63a21c2d61c75f7ad6ec3b13e87b3aaa331e9c14799f4598'
 #sha256sums_i686=('ce89fba3ea1b89b104011400543e1e86c95d01193f150a2e6fdfa4116adf4674')
 sha256sums_x86_64=('233eda7594b2f0101c50163779218b6c256416406ca4e3b81efce97e325e67f1')
 #source_i686=("http://s.insynchq.com/builds/${pkgname}_${pkgver}.${_pkgver}-${_dist}_i386.deb")
-source_x86_64=("http://s.insynchq.com/builds/${pkgname}_${pkgver}.${_pkgver}-${_dist}_amd64.deb")
+source_x86_64=("http://s.insynchq.com/builds/insync_${pkgver}.${_pkgver}-${_dist}_amd64.deb")
 package() {
    tar xf data.tar.gz
    cp -rp usr ${pkgdir}/
