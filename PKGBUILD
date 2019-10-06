@@ -1,5 +1,4 @@
-# Original: Daniel Bermond < gmail-com: danielbermond > https://aur.archlinux.org/packages/ffmpeg-full-git
-# Maintainer: Bruno Filipe < gmail-com: bmilreu >
+# Maintainer: Marko Korhonen <reekymarko at reekynet.com>
 
 pkgname=ffmpeg-amd-full-git
 _srcname=ffmpeg
