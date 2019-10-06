@@ -4,7 +4,7 @@
 # Maintainer: Steven Allen <steven@stebalien.com>
 
 pkgname=pithos
-pkgver=1.4.1
+pkgver=1.5.0
 pkgrel=1
 pkgdesc='Native Pandora Radio client'
 arch=('any')
@@ -22,7 +22,7 @@ source=(
   "https://github.com/pithos/pithos/releases/download/${pkgver}/pithos-${pkgver}.tar.xz"{,.asc}
   "systemd.service"
 )
-sha256sums=('ebc30213ae85716d5a57e30b912f083b2fdb374a793d5adfec00a064fdfc165c'
+sha256sums=('61e2a778252358519979ea53ab9fb9dd10a9554d24f3e249560bc4971f386133'
             'SKIP'
             '6d29178697384fb046d9d25c6c2482f353a4484ec4f0a5b9080d1a26aa24f839')
 
