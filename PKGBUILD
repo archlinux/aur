@@ -1,4 +1,5 @@
 # Maintainer: Nick Cao <nickcao@nichi.co>
+# Maintainer: hexchain <richard0053@gmail.com>
 pkgname=dptf
 pkgver=8.4.10401
 pkgrel=5
