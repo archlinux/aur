@@ -1,0 +1,16 @@
+pkgbase = mustream-git
+	pkgdesc = A quick 'hack' to stream any music (from spotify) through the command line.
+	pkgver = r38.f0d6c02
+	pkgrel = 1
+	url = https://github.com/belkadev/mustream
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = spotify
+	depends = bash
+	provides = mustream
+	source = mustream::git+https://github.com/belkadev/mustream.git
+	md5sums = SKIP
+
+pkgname = mustream-git
+
