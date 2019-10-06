@@ -1,54 +1,5 @@
 pkgbase = r-testthat
 	pkgdesc = Unit Testing for R
-	pkgver = 2.1.1
-	pkgrel = 1
-	url = https://cran.r-project.org/package=testthat
-	arch = x86_64
-	license = MIT
-	depends = r
-	depends = r-cli
-	depends = r-crayon
-	depends = r-digest
-	depends = r-magrittr
-	depends = r-praise
-	depends = r-r6>=2.2.0
-	depends = r-rlang
-	depends = r-withr>=2.0.0
-	optdepends = r-covr
-	optdepends = r-devtools
-	optdepends = r-knitr
-	optdepends = r-rmarkdown
-	optdepends = r-usethis
-	optdepends = r-xml2
-	source = https://cran.r-project.org/src/contrib/testthat_2.1.1.tar.gz
-	md5sums = 329062cb31384b33e1717a3366fb6440
-
-pkgname = r-testthat
-
-pkgbase = r-testthat
-	pkgdesc = Unit Testing for R
-	pkgver = 2.2.1
-	pkgrel = 1
-	url = https://cran.r-project.org/package=testthat
-	arch = x86_64
-	license = MIT
-	depends = r>=3.1
-	depends = r-cli
-	depends = r-crayon>=1.3.4
-	depends = r-digest
-	depends = r-evaluate
-	depends = r-magrittr
-	depends = r-praise
-	depends = r-r6>=2.2.0
-	depends = r-rlang>=0.3.0
-	depends = r-withr>=2.0.0
-	source = https://cran.r-project.org/src/contrib/testthat_2.2.1.tar.gz
-	md5sums = b0ee8c0485ccf7b9e68108c87d8d1b16
-
-pkgname = r-testthat
-
-pkgbase = r-testthat
-	pkgdesc = Unit Testing for R
 	pkgver = 2.2.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=testthat
