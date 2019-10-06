@@ -5,8 +5,8 @@
 
 pkgname=librewolf
 _pkgname=LibreWolf
-pkgver=69.0.1
-pkgrel=2
+pkgver=69.0.2
+pkgrel=1
 pkgdesc="Community-maintained fork of Librefox: a privacy and security-focused browser"
 arch=(x86_64)
 license=(MPL GPL LGPL)
@@ -25,11 +25,13 @@ options=(!emptydirs !makeflags !strip)
 source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz
         $pkgname.desktop
         $pkgname.cfg.patch
+        "no-relinking.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/no-relinking.patch?h=packages/firefox"
         "git+https://gitlab.com/${pkgname}-community/browser/common.git"
         "git+https://gitlab.com/${pkgname}-community/settings.git")
-sha256sums=('f5f2f592b8296812d43244d6a50c0c57ad11a5324db8e4e79749545482b79033'
+sha256sums=('2904ef954626d2a7f320670ccb7cb5d9060610f091c94190a6cbee14aa2cd82e'
             '0471d32366c6f415f7608b438ddeb10e2f998498c389217cdd6cc52e8249996b'
             'e03332f0e865949df5af9c231a364e9e1068fca0439621b98c2d4160d93e674f'
+            '2dc9d1aa5eb7798c89f46478f254ae61e4122b4d1956d6044426288627d8a014'
             'SKIP'
             'SKIP')
 prepare() {
@@ -38,6 +40,10 @@ prepare() {
 
   mkdir mozbuild
   cd firefox-$pkgver
+
+  # TODO: do we need this for our LibreWolf ~uild?
+  # Avoid relinking during buildsymbols
+  patch -Np1 -i ../no-relinking.patch
 
   # NOTE:
   # unlock some prefs I deem worthy of keeping unlocked or slightly less restricted
@@ -51,7 +57,7 @@ prepare() {
   # patch -Np1 -i ${srcdir}/${pkgname}.cfg.patch
   # cd ${srcdir}/firefox-$pkgver
 
-  cat >.mozconfig <<END
+  cat >../mozconfig <<END
 ac_add_options --enable-application=browser
 
 # This supposedly speeds up compilation (We test through dogfooding anyway)
@@ -63,10 +69,10 @@ ac_add_options --enable-release
 ac_add_options --enable-hardening
 ac_add_options --enable-optimize
 ac_add_options --enable-rust-simd
-ac_add_options --enable-lto
-export MOZ_PGO=1
-export CC=clang
-export CXX=clang++
+# ac_add_options --enable-lto
+# export MOZ_PGO=1
+export CC='clang --target=x86_64-unknown-linux-gnu'
+export CXX='clang++ --target=x86_64-unknown-linux-gnu'
 export AR=llvm-ar
 export NM=llvm-nm
 export RANLIB=llvm-ranlib
@@ -127,8 +133,49 @@ build() {
   # LTO needs more open files
   ulimit -n 4096
 
-  # optional: use fewer cores when building
-  xvfb-run -a -n 97 -s "-screen 0 1600x1200x24" ./mach build
+  # -fno-plt with cross-LTO causes obscure LLVM errors
+  # LLVM ERROR: Function Import: link error
+  CFLAGS="${CFLAGS/-fno-plt/}"
+  CXXFLAGS="${CXXFLAGS/-fno-plt/}"
+
+  # Do 3-tier PGO
+  msg2 "Building instrumented browser..."
+  cat >.mozconfig ../mozconfig - <<END
+ac_add_options --enable-profile-generate
+END
+  ./mach build
+
+  msg2 "Profiling instrumented browser..."
+  ./mach package
+  LLVM_PROFDATA=llvm-profdata \
+    JARLOG_FILE="$PWD/jarlog" \
+    xvfb-run -a -n 92 -s "-screen 0 1600x1200x24" \
+    ./mach python build/pgo/profileserver.py
+
+  if ! compgen -G '*.profraw' >&2; then
+    error "No profile data produced."
+    return 1
+  fi
+
+  if [[ ! -s jarlog ]]; then
+    error "No jar log produced."
+    return 1
+  fi
+
+  msg2 "Removing instrumented browser..."
+  ./mach clobber
+
+  msg2 "Building optimized browser..."
+  # xvfb-run -a -n 97 -s "-screen 0 1600x1200x24" ./mach build
+  cat >.mozconfig ../mozconfig - <<END
+ac_add_options --enable-lto=cross
+ac_add_options --enable-profile-use
+ac_add_options --with-pgo-profile-path=${PWD@Q}
+ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
+END
+  ./mach build
+
+  msg2 "Building symbol archive..."
   ./mach buildsymbols
 }
 
