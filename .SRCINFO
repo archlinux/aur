@@ -50,6 +50,7 @@ pkgbase = efl-git
 	depends = openjpeg2
 	depends = poppler
 	depends = shared-mime-info
+	depends = mailcap
 	depends = ttf-font
 	depends = scim
 	depends = libibus

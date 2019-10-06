@@ -16,7 +16,7 @@ depends=('avahi' 'bullet' 'curl' 'fontconfig' 'fribidi'
          'libpulse' 'libspectre' 'libraw' 'librsvg' 'libwebp' 'libxcomposite'
          'libxcursor' 'libxinerama' 'libxkbcommon' 'libxp' 'libxrandr'
          'libxss' 'libunwind' 'mesa' 'openjpeg2' 'poppler'
-         'shared-mime-info' 'ttf-font' 'scim' 'libibus' 'glib2'
+         'shared-mime-info' 'mailcap' 'ttf-font' 'scim' 'libibus' 'glib2'
          'wayland' 'wayland-protocols' 'libxkbcommon-x11'
          'pulseaudio')
 makedepends=('git' 'meson' 'ninja' 'pkgconf' 'gcc' 'binutils' 'fakeroot' 'python2' 'procps-ng')
