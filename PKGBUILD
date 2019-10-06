@@ -1,7 +1,7 @@
 # Maintainer: Felipe Martin <me@fmartingr.com>
 
 pkgname="jrnl-venv-bin"
-pkgver="2.0.0"
+pkgver="2.0.1"
 pkgrel="1"
 pkgdesc="Collect your thoughts and notes without leaving the command line. [installed inside a virtualenv to prevent depedencies directly on the system]"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ prepare() {
 	cd "$srcdir/jrnl-venv-bin" || exit
 	python3 -m venv venv
 	source venv/bin/activate
-	pip install jrnl
+	pip install jrnl==2.0.1
 }
 
 package() {

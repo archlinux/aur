@@ -1,6 +1,6 @@
 pkgbase = jrnl-venv-bin
 	pkgdesc = Collect your thoughts and notes without leaving the command line. [installed inside a virtualenv to prevent depedencies directly on the system]
-	pkgver = 2.0.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://jrnl.sh/
 	arch = i686
