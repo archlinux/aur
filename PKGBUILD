@@ -2,7 +2,7 @@
 
 _appname=hyperspace
 pkgname="$_appname-bin"
-pkgver='1.0.0_beta5'
+pkgver='1.0.0_beta7'
 pkgrel=1
 pkgdesc='The fluffiest client for the fediverse'
 arch=(x86_64)
@@ -10,7 +10,7 @@ url='https://hyperspace.marquiskurt.net/'
 license=(Apache)
 depends=(gconf libappindicator-gtk3 libnotify libxss libxtst nss)
 source=("https://github.com/hyperspacedev/hyperspace/releases/download/${pkgver//_/}/hyperspace_${pkgver//_/-}_amd64.deb")
-sha256sums=('f89dbf4664d7c249e521f19991db7cf2808e1489cdd3e99a9ebcd5e7c7246d64')
+sha256sums=('816b21714e8f5eaf8c888e14a2b6670d32eb7684cdfda29f49690600d7df86a1')
 
 build() {                                                                                                                                                                                                                           
   cd $srcdir                                                                                                                                                                                                                        
