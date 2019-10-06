@@ -1,99 +1,388 @@
 # Maintainer: Chris Severance aur.severach aATt spamgourmet dott com
 # Contributor: Libernux <dutchman55@gmx.com>
 
+_brinf=(
+[DCP-135C]
+PRN_CUP_RPM=dcp135ccupswrapper-1.0.1-1.i386.rpm
+PRN_CUP_DEB=dcp135ccupswrapper-1.0.1-1.i386.deb
+PRN_LPD_RPM=dcp135clpr-1.0.1-1.i386.rpm
+PRN_LPD_DEB=dcp135clpr-1.0.1-1.i386.deb
+PRINTERNAME=DCP135C
+SCANNER_DRV=brscan2
+SCANKEY_DRV=brscan-skey
+)
+_brinf+=(
+REQUIRE32LIB=yes
+)
+
+_opt_DEB=0
+
 set -u
-pkgname='brother-dcp135c'
-pkgver='1.0.1'
+_brotheru='DCP-135C'
+_brotherl="${_brotheru,,}"     # mfc-0000dw
+_brotherlnd="${_brotherl//-/}" # mfc0000dw
+_brotherund="${_brotheru//-/}" # MFC0000DW
+_brotherxnd="${_brotherlnd}"   # upper or lower as required by scripts
+pkgname="brother-${_brotherlnd}"
+pkgver='1.0.1_1'
 pkgrel='1'
-pkgdesc="LPR and CUPS driver for the Brother DCP135C"
+pkgdesc="LPR and CUPS driver for the Brother ${_brotheru} printer"
 arch=('i686' 'x86_64')
-url='http://solutions.brother.com/linux/en_us/'
-license=('custom:brother commercial license')
-depends=('cups')
-depends_x86_64=('lib32-glibc')
+url='https://support.brother.com/g/s/id/linux/en/'
+license=('GPL' 'custom')
+depends=('cups' 'ghostscript' 'psutils' 'a2ps' 'sed' 'grep')
+# We look at the scripts and find these programs from which we decide on the depends above.
+# gs: lpr rendering
+# pdf2ps: cups rendering
+# a2ps: rendering ascii text files
+# (no) pstops: pdf resizing
+# psnup: printing n-up pages
+# sed grep awk
+# https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=670055
+# Printing a text file fails when Liberation is the only TrueType font available
+#depends+=('perl') # cupswrapper
+optdepends=(
+  'ttf-dejavu: printing text files from lpr'
+)
 options=('!strip')
+#install="${pkgname}.install"
+#_brsource="brother_${_brotherlnd}_GPL_source_${pkgver//_/-}"
+_dlf='http://www.brother.com/pub/bsc/linux'
+_inf="${_brotherlnd}-${pkgver}.inf"
 source=(
-  "http://www.brother.com/pub/bsc/linux/dlf/dcp135clpr-${pkgver}-${pkgrel}.i386.rpm"
-  "http://www.brother.com/pub/bsc/linux/dlf/dcp135ccupswrapper-${pkgver}-${pkgrel}.i386.rpm"
+  "${_inf}::${_dlf}/infs/${_brotherund}"
+  #"http://download.brother.com/welcome/dlf101201/${_brsource}.tar.gz"
   '0001-Brother-BRDocument-Extras.patch'
   'cupswrapper-license.txt'
   'lpr-license.txt'
 )
-md5sums=('395026a5438b03be521d309f38b4132b'
-         '82477f63f298bca32374450de6393270'
+md5sums=('a8d144b04f1e6355038edd2cace7fdde'
          '68905bfd1200f23090cff7838be4f697'
          '97ad0cffd216059e9d1d3121899d8646'
-         '5e87a3dc0f3e3438c088eda0f3565f0d')
-sha256sums=('aab731af656be017042d5f934d99fa5592e86db8b4141cfd5a614a0b6d3122de'
-            '327b3b0d443b1dcb6facabb47e84be0883125166fba6c2e95635a526de0f2639'
+         '5e87a3dc0f3e3438c088eda0f3565f0d'
+         '82477f63f298bca32374450de6393270'
+         '395026a5438b03be521d309f38b4132b')
+sha256sums=('ca0e11d5f6f893d481333671474d95111670f9c2626f20e992810f3c83bf2d74'
             'fed3534b802b622b2e54ef929aae4a899c6737ed00ef6a15e35a879a143dc609'
             '2c6aa6a641332e5c87e971ac2a8beae13b059747bdba331bbd515914770d72d9'
-            '9d85a8aafdaac8fac80e04234ad2acf5642bbf0b91ee582d2a89519a55f6dd67')
+            '9d85a8aafdaac8fac80e04234ad2acf5642bbf0b91ee582d2a89519a55f6dd67'
+            '327b3b0d443b1dcb6facabb47e84be0883125166fba6c2e95635a526de0f2639'
+            'aab731af656be017042d5f934d99fa5592e86db8b4141cfd5a614a0b6d3122de')
+
+_mismatch=0
+_brverchk() {
+  local _ver="$1"
+  _ver="${_ver%.*}"
+  _ver="${_ver%.*}"
+  local _vb="${_ver%-*}"
+  _vb="${_vb%-*}-"
+  _ver="${_ver#${_vb}}"
+  local _pv="$2"
+  if [ -z "${_pv}" ]; then
+    _pv="$3"
+  fi
+  if [ -z "${_pv}" ]; then
+    _pv="$4"
+  fi
+  if [ "${_ver}" != "${_pv//_/-}" ]; then
+    echo "Version mismatch: ${_ver} ${_pv//_/-}" 1>&2
+    _mismatch=$((_mismatch+1))
+  fi
+}
+
+_procinf() {
+  local _fd _fvar _fval
+  for _fd in "${_brinf[@]}"; do
+    _fvar="${_fd%%=*}="
+    _fval="${_fd##*=}"
+    if [ ! -z "${_fval}" ]; then
+      case "${_fvar}" in
+      '['*);;
+      PRN_CUP_RPM=)
+        _brverchk "${_fval}" "${_cuprpmver:-}" "${_cupver:-}" "${pkgver}"
+        if [ "${_opt_DEB}" -eq 0 ]; then
+          source+=("${_dlf}/packages/${_fval}")
+        fi
+      ;;
+      PRN_CUP_DEB=)
+        _brverchk "${_fval}" "${_cupdebver:-}" "${_cupver:-}" "${pkgver}"
+        if [ "${_opt_DEB}" -ne 0 ]; then
+          source+=("${_dlf}/packages/${_fval}")
+        fi
+      ;;
+      PRN_LPD_RPM=)
+        _brverchk "${_fval}" "${_lprrpmver:-}" "${_lprver:-}" "${pkgver}"
+        if [ "${_opt_DEB}" -eq 0 ]; then
+          source+=("${_dlf}/packages/${_fval}")
+        fi
+      ;;
+      PRN_LPD_DEB=)
+        _brverchk "${_fval}" "${_lprdebver:-}" "${_lprver:-}" "${pkgver}"
+        if [ "${_opt_DEB}" -ne 0 ]; then
+          source+=("${_dlf}/packages/${_fval}")
+        fi
+      ;;
+      PRN_DRV_RPM=)
+        _brverchk "${_fval}" "" "" "${pkgver}"
+        if [ "${_opt_DEB}" -eq 0 ]; then
+          source+=("${_dlf}/packages/${_fval}")
+        fi
+      ;;
+      PRN_DRV_DEB=)
+        _brverchk "${_fval}" "" "" "${pkgver}"
+        if [ "${_opt_DEB}" -ne 0 ]; then
+          source+=("${_dlf}/packages/${_fval}")
+        fi
+      ;;
+      REQUIRE32LIB=)
+        if [ "${_fval}" = 'yes' ]; then
+          depends_x86_64+=('lib32-glibc')
+        fi
+      ;;
+      PRINTERNAME=);;
+      SCANNER_DRV=)optdepends+=("${_fval}: Scanner support");;
+      SCANKEY_DRV=)optdepends+=("${_fval}: Scanner button support");;
+      *) echo "Unrecognized line: ${_fd}" 1>&2; exit 1;;
+      esac
+    fi
+  done
+  test "${_mismatch}" -eq 0 || exit 1
+}
+_procinf
+unset -f _procinf _brverchk
+unset _mismatch _brinf
+
+# Must be same length as
+#         'Brother'
+_conflict='brother'
+
+prepare() {
+  set -u
+
+  shopt -s nullglob
+  local _deb
+  local _debn=1
+  for _deb in *.deb; do
+    local _dx="debextract.${_debn}"
+    mkdir "${_dx}"
+    bsdtar -C "${_dx}" -xf "${_deb}"
+    bsdtar -C "${_dx}" -xf "${_dx}"/control.tar.?z
+    bsdtar -xf "${_dx}"/data.tar.?z
+    rm "${_dx}"/*.tar.?z
+    _debn=$((_debn+1))
+  done
+  shopt -u nullglob
+
+  # Do not Install in '/usr/local'. Does not apply to all Brother models.
+  # This may modify binary blobs which only
+  # works when the old and new strings are exactly the same length.
+  if [ -d 'usr/local' ]; then
+    install -d 'usr/share'
+    mv 'usr/local/Brother' "usr/share/${_conflict}"
+    rmdir 'usr/local'
+    sed -e "s:/usr/local/Brother:/usr/share/${_conflict}:g" -i $(grep -lare '/usr/local/Brother' ./)
+  fi
+
+  # setup cups-directories, some installers create these for us
+  install -d 'usr/lib/cups/filter'
+  install -d 'usr/share/cups/model'
+  #install -d 'usr/share/ppd' # For cups we don't need the ppd file here.
+
+  # /etc/printcap is managed by cups
+  find . -type 'f' -name 'setupPrintcap*' -delete
+
+  set +u
+}
 
 build() {
   set -u
 
-  # do not install in '/usr/local'
-  if [ -d "${srcdir}/usr/local/Brother" ]; then
-    install -d "${srcdir}/usr/share"
-    mv "${srcdir}/usr/local/Brother/" "${srcdir}/usr/share/brother"
-    rm -rf "${srcdir}/usr/local"
-    sed -e 's|/usr/local/Brother|/usr/share/brother|g' -i $(grep -lre '/usr/local/Brother' ./)
-  fi
+  #local _basedir="opt/brother/Printers/${_brotherxnd}"
+  #local _basedir="usr/share/${_conflict}"
+  local _basedir="usr/share/${_conflict}/Printer/${_brotherxnd}"
+  shopt -s nullglob
+  local _wrapper_source=("${_basedir}/cupswrapper/cupswrapper${_brotherxnd}"*)
+  shopt -u nullglob
+  test "${#_wrapper_source[@]}" -eq 1 || echo "${}"
+  _wrapper_source="${_wrapper_source[0]}"
+  test -x "${_wrapper_source}" || echo "${}"
+  echo "Wrapper source: ${_wrapper_source}"
 
-  # setup cups-directories
-  install -d "${srcdir}/usr/share/cups/model"
-  install -d "${srcdir}/usr/lib/cups/filter"
+  shopt -s nullglob
+  local _brcupsconf=("${_basedir}/cupswrapper"/brcupscon*); test "${#_brcupsconf[@]}" -eq 1 || echo "${}"
+  shopt -u nullglob
+  _brcupsconf="${_brcupsconf[0]}"
+  if [ ! -z "${_brsource:-}" ]; then
+    shopt -s nullglob
+    local _makedir=("${_brsource}/brcupsconf"*)
+    shopt -u nullglob
+    test "${#_makedir[@]}" -eq 1 || echo "${}"
+    _makedir="${_makedir[0]}"
+    test -d "${_makedir}" || echo "${}"
 
-  # go to the cupswrapper directory and find the source file from wich to generate a ppd- and wrapper-file
-  cd "$(find . -type 'd' -name 'cupswrapper')"
-  local _wrapper_source=(cupswrapper*)
-  if [ "${#_wrapper_source[@]}" -eq 1 ]; then
-    _wrapper_source="${_wrapper_source[0]}"
-    sed -e '/^\/etc\/init.d\/cups/d' \
-        -e '/^sleep/d' \
-        -e '/^lpadmin/d' \
-        -e 's|/usr|${srcdir}/usr|g' \
-        -e 's|/opt|${srcdir}/opt|g' \
-        -e 's|/model/Brother|/model|g' \
-        -e 's|lpinfo|echo|g' \
-        -e 's| \$errorcode| \\$errorcode|g' \
-        -e "/grep 'Nup=/"' s|`|\\&|g' \
-      -i "${_wrapper_source}"
-    srcdir="${srcdir}" \
-    sh -x -e -u "./${_wrapper_source}" -i
-    rm "${_wrapper_source}"
-    cd "${srcdir}"
-    local _lpdwrapper=('usr/lib/cups/filter'/*lpdwrapper*)
-    if [ "${#_lpdwrapper[@]}" -eq 1 ]; then
-      _lpdwrapper="${_lpdwrapper[0]}"
-      sed -e 's|${srcdir}||' \
-          -e "s|${srcdir}||" \
-        -i "${_lpdwrapper}"
+    # Source is available for the cups binary, not the lpr binaries so we can't
+    # get away from multilib. Any usage of /opt is hardcoded into some binaries
+    # for which we can't find an equal length replacement so we can't easily get
+    # rid of that either.
+    pushd "${_makedir}" > /dev/null
+    if [ -s 'Makefile' ]; then
+      'ma''ke' -s
+      cp -p 'brcupsconfig' "${srcdir}/${_brcupsconf}"
+    else
+      # gcc options are pulled from other Brother makefiles.
+      gcc -pipe -Wall -W -O2 -s -o "${srcdir}/${_brcupsconf}" "brcupsconfig.c"
+    fi
+    popd > /dev/null
 
-      local _ppd=(usr/share/cups/model/*.ppd)
-      if [ "${#_ppd[@]}" -eq 1 ]; then
-        _ppd="${_ppd[@]}"
-        #cp -p "${_ppd}"{,.orig}; false
-        # diff -pNau5 brdcp135c.ppd{.orig,} > '0001-Brother-BRDocument-Extras.patch'
-        patch -d 'usr/share/cups/model' -Nup0 -i "${srcdir}/0001-Brother-BRDocument-Extras.patch"
-      fi
+    # Use the wrapper from the source file if available
+    pushd "${_brsource}" > /dev/null
+    [ -d 'scripts' ] && cd 'scripts'
+    [ -d 'SCRIPT' ] && cd 'SCRIPT'
+    [ -d 'cupswrapper' ] && cd 'cupswrapper'
+    shopt -s nullglob
+    local _wr2=("cupswrapper${_brotherxnd}"*)
+    shopt -u nullglob
+    if [ "${#_wr2[@]}" -eq 1 ]; then
+      rm "${srcdir}/${_wrapper_source}"
+      _wrapper_source="${_brsource}/${PWD#*/${_brsource}/}/${_wr2[0]}"
+      unset _wr2
+      set +u; msg2 "Alternate wrapper ${_wrapper_source}"; set -u
+    fi
+    popd >/dev/null
+
+    # Use the ppd supplied in the source
+    shopt -s nullglob
+    local _altppd=("${_brsource}"/[Pp][Pp][Dd]/)
+    shopt -u nullglob
+    if [ "${#_altppd[@]}" -eq 1 ]; then
+      _altppd="${_altppd[0]}"
+      local _altppdn="brother_${_brotherxnd}_printer_en.ppd"
+      mv "${_altppd}/${_altppdn}" "${_basedir}/cupswrapper/"
+      chmod 644 "${_basedir}/cupswrapper"/*.ppd
+      set +u; msg2 "Alternate ppd ${_altppdn}"; set -u
     fi
   fi
-  cd "${srcdir}"
 
-  # /etc/printcap is managed by cups
-  rm "$(find "${srcdir}" -type 'f' -name 'setupPrintcap*')"
-  set +u
+  # Some Brother installers create files here
+  mkdir -p 'var/tmp'
+
+  # Fix lpr driver.
+  true sed -e '# Fix sbin reference' \
+      -e 's:/sbin/:/bin/:g' \
+      -e '#Fix hash bang' \
+      -e 's:#/bin/sh:#!/bin/sh:g' \
+    -i "${_basedir}/lpd/psconvertij2"
+
+  # Fix page shifted off center that affects some printers
+  # Letter prints off center shifted down and right with PaperType=A4
+  # I can only test printing A4 on Letter paper. A4 appears to print correctly with PaperType=Letter
+  sed -e 's:^\(PaperType\)=.\+$:\1=Letter:g' -i "${_basedir}/inf/br${_brotherxnd}rc"
+
+  # Modify the installer so we can finish the install here in PKGBUILD.
+  # cp -p "${_wrapper_source}" "${_wrapper_source}.Arch" # debug: diff compare with Total Commander
+  sed -e '# Install to _srcdir. Some folders may not apply to this model.' \
+      -e '# quick fix for path that needs to be double quoted' \
+      -e "s:'/usr/share/ppd':"'"/usr/share/ppd":g' \
+      -e 's:/usr:"${_srcdir}"&:g' \
+      -e 's:/opt:"${_srcdir}"&:g' \
+      -e 's:/var:"${_srcdir}"&:g' \
+      -e 's:/etc:"${_srcdir}"&:g' \
+      -e '# Remove unwanted srcdir from the generated files' \
+      -e '/^cat <<ENDOFPPDFILE/,/^ENDOFPPDFILE/ s:"${_srcdir}"::g' \
+      -e '/^cat <<!ENDOFWFILTER/,/^!ENDOFWFILTER!/ s:"${_srcdir}"::g' \
+      -e '# Remove extra quotes where path was already quoted' \
+      -e 's:""\${_srcdir}":"${_srcdir}:g' \
+      -e '#s:/model/Brother:/model:g' \
+      -e "# Stop the Install script after the files are generated. cups doesn't require a reload to see the printer driver." \
+      -e 's:^sleep.*$:exit 0 # & #Arch Linux Compatible:g' \
+      -e '# not using set -u allows bugs like this to slip by' \
+      -e '/Nup=/ s:`:\\`:g' \
+      -e '# Fix a forgotten escape script error' \
+      -e 's: \$errorcode: \\$errorcode:g' \
+      -e '# This printer requires the permissions fix that isnt multi user compatible.' \
+      -e "s:/usr/local/Brother:/usr/share/${_conflict}:g" \
+    -i "${_wrapper_source}"
+  grep -lqe '#Arch Linux Compatible$' "${_wrapper_source}" || echo "${}"
+  test -f "${_wrapper_source}.Arch" && echo "${}" # Halt for debugging
+  # Generate PPD and wrapper. Use sh -x to debug
+  # Possible bug: copying to /usr/share/ppd is disabled.
+  _srcdir="${srcdir}" \
+  sh -u -e "${_wrapper_source}" -i
+
+  #local _ppdir='usr/share/cups/model/Brother'
+  local _ppdir='usr/share/cups/model'
+  chmod 644 "${_ppdir}"/*.ppd # Some installers make ppd executable
+
+  # nurfz commented on 2019-10-03 11:58
+  #cp -p "${_ppd}"{,.orig}; false
+  # diff -pNau5 brdcp135c.ppd{.orig,} > '0001-Brother-BRDocument-Extras.patch'
+  patch -d "${_ppdir}" -Nup0 -i "${srcdir}/0001-Brother-BRDocument-Extras.patch"
+
+  rm -rf 'var'
+
+  #local _wrapgen="${_basedir}/cupswrapper/brother_lpdwrapper_${_brotherxnd}"
+  local _wrapgen="usr/lib/cups/filter/brlpdwrapper${_brotherxnd}"
+  #local _wrapgen="usr/lib/cups/filter/brother_lpdwrapper_${_brotherxnd}"
+  test -s "${_wrapgen}" || echo "${}"
+
+  # Remove srcdir from the generated wrapper file.
+  # No paths in the generated ppd.
+  sed -e '# Remove the /home/... variety' \
+      -e "s:${srcdir}::" \
+    -i "${_wrapgen}"
+
+  # Ensure all paths were removed
+  grep -qFe $'${_srcdir}\n'"${srcdir}" "${_wrapgen}" && echo "${}"
+
+  # We did everything in the installer so we can get rid of it.
+  rm "${_wrapper_source}"
+
+  # Misnamed printer does not sort or autodetect properly
+  # sed -e "s:Brother ${_brotherund} :Brother ${_brotheru} :g" -i "${_ppdir}"/*.ppd
+
+  # Check to see if the lpd wrapper is referenced by the ppd
+  # Check to see if our compiled code is referenced by the lpd wrapper
+  local _nppdfound=0
+  local _ncodefound=0
+  local _lwrapper
+  for _lwrapper in 'usr/lib/cups/filter'/*; do
+    if grep -q "$(basename "${_lwrapper}")" "${_ppdir}"/*.ppd; then
+      _nppdfound=$((_nppdfound+1))
+    fi
+    if grep -q "${_brcupsconf##*/}" "${_lwrapper}"; then
+      _ncodefound=$((_ncodefound+1))
+    fi
+  done
+  test "${_nppdfound}" -ne 0 || echo "${}"
+  test "${_ncodefound}" -ne 0 || echo "${}"
+  set  +u
 }
 
 package() {
   set -u
-  cp -pR "${srcdir}/usr" "${pkgdir}"
-  if [ -d "${srcdir}/opt" ]; then
-    cp -pR "${srcdir}/opt" "${pkgdir}"
+
+  local _dir
+  # /var/spool is not used anywhere in this package. Maybe it's needed for non cups lprng.
+  for _dir in 'usr' 'opt'; do # 'var'
+    if [ -d "${srcdir}/${_dir}" ]; then
+      cp -pR "${srcdir}/${_dir}" "${pkgdir}"
+    fi
+  done
+
+  # Ensure we got a ppd and a filter for CUPS
+  test ! -z "$(find "${pkgdir}/usr/share/cups/model" -type 'f' -name '*.ppd')" || echo "${}"
+  test ! -z "$(find "${pkgdir}/usr/lib/cups/filter/" '(' -type 'f' -o -type 'l' ')')" || echo "${}"
+
+  # Ensure there are no forbidden paths
+  ! grep -alqr "/sbin" "${pkgdir}" || echo "${}"
+  ! grep -alqr "/usr/tmp" "${pkgdir}" || echo "${}"
+
+  if [ ! -z "${_brsource:-}" ]; then
+    install -Dpm644 <(sed -e 's:\r::g' "${_brsource}/Copying") "${pkgdir}/usr/share/licenses/${pkgname}/cupswrapper-licence.txt"
+  else
+    install -Dpm644 'cupswrapper-license.txt' -t "${pkgdir}/usr/share/licenses/${pkgname}/"
   fi
-  install -Dpm644 'cupswrapper-license.txt' 'lpr-license.txt' -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+  install -Dpm644 'lpr-license.txt' -t "${pkgdir}/usr/share/licenses/${pkgname}/"
   set +u
 }
 set +u
