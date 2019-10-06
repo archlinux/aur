@@ -1,11 +1,11 @@
-# Maintainer: erik-pro <aarnaarn2@gmail.com>
+# Maintainer: alex19EP <aarnaarn2@gmail.com>
 # Maintainer: vantu5z <vantu5z@mail.ru>
 # Contributor: der_fenix <derfenix@gmail.com>
 
 pkgname=rhvoice-git
 pkgver=1.0.0.r4.d96020c
 pkgrel=1
-pkgdesc="Free and open source speech synthesizer for Russian and other languages. Git version"
+pkgdesc="Free and open source speech synthesizer for Russian and other languages. (development version)"
 arch=('x86_64')
 url="https://github.com/Olga-Yakovleva/RHVoice"
 license=('GPL3')
