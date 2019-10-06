@@ -1,0 +1,19 @@
+pkgbase = silkaj
+	pkgdesc = Powerfull, lightweight, and multi-platform command line client written with Python for Duniter’s currencies
+	pkgver = 0.7.3
+	pkgrel = 1
+	url = https://git.duniter.org/clients/python/silkaj
+	arch = any
+	license = GPL3
+	depends = python
+	depends = python-click
+	depends = python-ipaddress
+	depends = python-texttable
+	depends = python-tabulate
+	depends = python-pynacl
+	provides = duniterpy
+	source = https://git.duniter.org/clients/python/silkaj/-/archive/0.7.3/silkaj-v0.7.3.tar.gz
+	sha1sums = 9ea958666a86c9e2c83953d2685c456b72628e67
+
+pkgname = silkaj
+
