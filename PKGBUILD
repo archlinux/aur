@@ -1,5 +1,4 @@
-# Original: Daniel Bermond < gmail-com: danielbermond > https://aur.archlinux.org/packages/mpv-full-git
-# Maintainer: Bruno Filipe < gmail-com: bmilreu >
+# Maintainer: Marko Korhonen <reekymarko at reekynet.com>
 
 pkgname=mpv-amd-full-git
 _srcname=mpv
