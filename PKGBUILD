@@ -1,4 +1,4 @@
-# Maintainer: erik-pro <aarnaarn2@gmail.com>
+# Maintainer: alex19EP <aarnaarn2@gmail.com>
 # Contributor: Kelly Prescott <kprescott@coolip.net>
 # Contributor: Chris Brannon <chris@the-brannons.com>
 # Contributor: Jan de Groot <jgc@archlinux.org>
@@ -7,16 +7,16 @@
 pkgname=brltty-minimal
 pkgver=6.0
 pkgrel=2
-pkgdesc="Braille display driver for Linux/Unix. minimal version"
+pkgdesc="Braille display driver for Linux/Unix (minimal version)"
 arch=(x86_64)
-url="http://brltty.com"
+url="http://brltty.app"
 license=(GPL LGPL)
 depends=('gpm' 'icu' 'liblouis')
 conflicts=('brltty')
 provides=('brltty')
 backup=(etc/brltty.conf)
 options=('!emptydirs')
-source=(http://brltty.com/archive/brltty-$pkgver.tar.xz
+source=(https://brltty.app/archive/brltty-$pkgver.tar.xz
 	brltty.service)
 sha512sums=('07344fa902ad169967ca39d19b09dfea24e698011031dd63dce3eb997a4cb86622ee9427b216976b3ef60e5cbabb710a621621447c6bfa2313748fc1a1cf4b06'
             '5da854db7612b7fcc1f1a8da0825e19509158041ceedbefc7649d220fd94a17c11044985abfc435b65a8b795c19dd2d16ff05f59641e57805f710b76570a5af4')
