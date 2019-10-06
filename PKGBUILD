@@ -2,13 +2,13 @@
 pkgname=openhantek6022-git
 _gitname=OpenHantek6022
 pkgver=v2.15
-pkgrel=1
+pkgrel=2
 pkgdesc="A DSO software for Hantek USB digital signal oscilloscopes 6022BE / BL."
 arch=('i686' 'x86_64')
 url=https://github.com/OpenHantek/OpenHantek6022
 license=('GPL3')
 depends=('fftw' 'qt5-base')
-makedepends=('git' 'cmake' 'make' 'sed' 'binutils' 'gcc' 'gendesk')
+makedepends=('git' 'cmake' 'make' 'sed' 'binutils' 'gcc' 'gendesk' 'qt5-tools')
 conflicts=(openhantek6022 openhantek openhantek-git)
 provides=(openhantek6022)
 source=('git+https://github.com/OpenHantek/OpenHantek6022.git')
