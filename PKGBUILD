@@ -5,14 +5,15 @@
 
 pkgname=grive
 pkgver=0.5.0
-pkgrel=14
+pkgrel=15
 pkgdesc="An open source Linux client for Google Drive with support for the new Drive REST API and partial sync"
 arch=('i686' 'x86_64')
 url='https://github.com/vitalif/grive2'
 license=('GPL2')
 depends=('yajl' 'curl' 'libgcrypt' 'boost-libs' 'gcc-libs' 'json-c' 'expat')
-optdepends=("cppunit: unit tests"
-	"binutils: backtrace and libiberty")
+optdepends=("inotify-tools: scheduled syncs and syncs on file change events"
+    "cppunit: unit tests"
+    "binutils: backtrace and libiberty")
 makedepends=('cmake' 'boost')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/vitalif/grive2/archive/v${pkgver}.tar.gz")
 sha512sums=('d564d674c4318e156677e919509a8e0f8d92f78ec4a5b250083eb99db572aeacab98def2e0ef65f59d8e1bff268256996e74800ce4ddd036d72fed4af1163085')
