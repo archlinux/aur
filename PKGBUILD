@@ -24,6 +24,5 @@ build() {
     make -e 'BUILD=./tmp/gp'
 }
 package() {
-    mkdir -p "$pkgdir/usr/bin"
-    cp "${_pkgname}/src/tmp/gp/gp" "$pkgdir/usr/bin/"
+    install -Dm755  "${_pkgname}/src/tmp/gp/gp" "$pkgdir/usr/bin/gp"
 }
