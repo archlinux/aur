@@ -2,7 +2,7 @@
 
 pkgname=reposurgeon
 pkgver=3.48
-pkgrel=1
+pkgrel=2
 pkgdesc="Performs surgery on version control repositories."
 arch=('x86_64')
 url="http://www.catb.org/esr/$pkgname/"
@@ -32,7 +32,7 @@ prepare() {
     fi
   done
 
-  GOPATH="$srcdir/go" go get -d -u
+  GOPATH="$srcdir/go" go get -d -u all
 }
 
 build() {
