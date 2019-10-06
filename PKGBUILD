@@ -9,7 +9,6 @@
 
 pkgname=eclipse-emf
 pkgver=2.19
-_reldate=201605260356
 pkgrel=2
 pkgdesc="EMF and XSD frameworks for the Eclipse platform"
 arch=('any')
