@@ -3,7 +3,7 @@
 pkgname=eclipse-m2t-xpand
 pkgver=2.2.0
 _buildtime=R201605260315
-pkgrel=2
+pkgrel=3
 pkgdesc='Model to Text Xpand for Eclipse IDE'
 url="https://projects.eclipse.org/projects/modeling.m2t.xpand"
 arch=('any')
@@ -19,7 +19,7 @@ sha256sums=('90a217c3231dbcab6773cb0470557c7ae760d73b15a3c430895cdebf79bacf08')
 
 package() {
   # remove features and plug-ins containing sources
-  rm features/*.source_*
+#  rm features/*.source_*
   rm plugins/*.source_*
   # remove gz files
   rm plugins/*.pack.gz

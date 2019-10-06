@@ -1,7 +1,7 @@
 pkgbase = eclipse-m2t-xpand
 	pkgdesc = Model to Text Xpand for Eclipse IDE
 	pkgver = 2.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://projects.eclipse.org/projects/modeling.m2t.xpand
 	arch = any
 	license = EPL
