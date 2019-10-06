@@ -1,4 +1,4 @@
-# Maintainer: NexAdn
+# Maintainer: networkjanitor <networkjanitor@xyooz.net>
 pkgname=obs-input-overlay-bin
 pkgver="v4.8"
 _obsver=19.0.3
