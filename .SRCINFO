@@ -1,0 +1,14 @@
+pkgbase = libred
+	pkgdesc = Solar elevation and blackbody colour calculation library for C
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/maandree/libred
+	arch = i686
+	arch = x86_64
+	license = ISC
+	makedepends = sed
+	source = https://github.com/maandree/libred/archive/1.0.tar.gz
+	sha256sums = 1a176a88e9c21ef507401b1da6ea05f4b73872e8eda8022e97e119afaa1192cc
+
+pkgname = libred
+
