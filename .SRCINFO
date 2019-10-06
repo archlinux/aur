@@ -1,6 +1,6 @@
 pkgbase = trellis-cli
 	pkgdesc = A CLI to manage Trellis projects.
-	pkgver = 0.6.1
+	pkgver = 0.6.2
 	pkgrel = 1
 	url = https://github.com/roots/trellis-cli
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = trellis-cli
 	arch = aarch64
 	license = MIT
 	depends = go-pie>=1.11
-	source = trellis-cli-0.6.1.tar.gz::https://github.com/roots/trellis-cli/archive/v0.6.1.tar.gz
-	sha1sums = 1b512c209c7b3115c52dcfbdf066d44a7bb51306
+	source = trellis-cli-0.6.2.tar.gz::https://github.com/roots/trellis-cli/archive/v0.6.2.tar.gz
+	sha1sums = 4548a62b7ea346ab8885e8c59cefd4e52c06c70a
 
 pkgname = trellis-cli
 

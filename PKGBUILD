@@ -1,7 +1,7 @@
 # Maintainer: Daniel Roe <daniel@concision.co.uk>
 # Maintainer: Austin Pray <austin@austinpray.com>
 pkgname=trellis-cli
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 pkgdesc="A CLI to manage Trellis projects."
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
@@ -11,7 +11,7 @@ depends=(
     'go-pie>=1.11'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/roots/trellis-cli/archive/v${pkgver}.tar.gz")
-sha1sums=('1b512c209c7b3115c52dcfbdf066d44a7bb51306')
+sha1sums=('4548a62b7ea346ab8885e8c59cefd4e52c06c70a')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
