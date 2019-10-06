@@ -3,7 +3,7 @@
 pkgname=eclipse-tmf-xtext
 pkgver=2.19.0
 _buildtime=R201909021322
-pkgrel=1
+pkgrel=2
 pkgdesc="Textual Modeling Framework for Eclipse IDE"
 arch=('any')
 url="https://projects.eclipse.org/projects/modeling.tmf.xtext"
