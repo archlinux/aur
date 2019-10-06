@@ -1,19 +1,20 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
+# shellcheck disable=SC2034
 pkgname=luxcorerender-git
-pkgver=2.2alpha1.r11.gb1b91b90f
+pkgver=2.2alpha1.r471.g6fbe988eb
 pkgrel=1
-pkgdesc="LuxCoreRender: a physically correct, unbiased rendering engine."
+pkgdesc="Physically correct, unbiased rendering engine."
 arch=('x86_64')
 url="https://www.luxcorerender.org/"
 license=('Apache')
-depends=(openimageio boost-libs blosc embree glfw-x11 gtk3 oidn opencl-icd-loader)
+depends=(oidn openimageio boost-libs blosc embree glfw-x11 gtk3 opencl-icd-loader)
 optdepends=("opencl-driver: for gpu acceleration"
             "pyside2: for pyluxcoretools gui")
 makedepends=(boost git doxygen cmake pyside2-tools opencl-headers)
 conflicts=(luxrays-hg luxcorerender)
 provides=(luxrays luxcorerender)
 options=('!buildflags')
-source=("git+https://github.com/LuxCoreRender/LuxCore.git"
+source=("git+https://github.com/LuxCoreRender/LuxCore.git${_fragment}"
         "python.patch"
         "glfw.patch"
         "boost016900_serialization.patch"
@@ -36,6 +37,7 @@ prepare() {
 }
 
 build() {
+  _pyver=$(python -c "from sys import version_info; print(\"%d%d\" % (version_info[0],version_info[1]))")
   cd ${srcdir}/LuxCore
   mkdir -p build && cd build
   ((TRAVIS)) && {
@@ -46,7 +48,7 @@ build() {
   msg "cflags=\"$CFLAGS\""
   msg "cxxflags=\"$CXXFLAGS\""
 
-  cmake -DPYTHON_V=3 ..
+  cmake -DPYTHON_V=${_pyver} ..
   make
 }
 
