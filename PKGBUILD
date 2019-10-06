@@ -25,7 +25,7 @@ pkgver() {
 }
 
 package() {
-	cd "$_gitname"
+  cd "$_gitname/$_gitname"
   python install.py --root="$pkgdir/" --optimize=1
   install -D LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
