@@ -5,30 +5,27 @@
 
 # Maintainer: Thayne McCombs <astrothayne@gmail.com>
 pkgname=dart-sass
-pkgver=1.22.12
+pkgver=1.23.0
 pkgrel=1
 pkgdesc="Sass makes CSS fun again (canonical implementation)"
-arch=(any)
+arch=(x86_64)
 url="http://sass-lang.com/"
 license=('MIT')
-depends=(dart bash)
+depends=(dart)
 provides=('sass')
 conflicts=('ruby-sass')
 source=("https://github.com/sass/$pkgname/archive/$pkgver.tar.gz" "sass.sh")
-sha256sums=('f3343eeb653f330d3bc1ccf53bce48f7539d1099fee42fa51eb0401d69e1e1f8'
-            'c3e819565846dba5e7dc855e1e3a8988c3fca782fac47858396604ae8e438567')
+sha256sums=('a495c811fbc01208eb2bfa1f7ddffca845502c44cb7d6f06073ac6dd2840786b'
+            '33c9cea95e4a4d03eb184f7f18ef817e31eb6b136bdf4e7aed49f1ea51b1a431')
 
 build() {
   cd "$pkgname-$pkgver"
-  pub get
-  # Create snapshot
-  # This doesn't use the grinder script so it is compatible with dart 2
-  dart --snapshot=sass.snapshot --snapshot-kind=app-jit bin/sass.dart tool/app-snapshot-input.scss > /dev/null
+  pub run grinder native-executable
 }
 
 package() {
   install -D -m755 sass.sh "$pkgdir/usr/bin/sass"
   cd "$pkgname-$pkgver"
-  install -D -m644 sass.snapshot "$pkgdir/usr/lib/sass/app.snapshot"
+  install -D -m644 build/sass.dart.native "$pkgdir/usr/lib/sass/app.snapshot"
   install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
