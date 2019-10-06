@@ -6,7 +6,7 @@ pkgver=0.1.0
 _vdrapi=2.4.1
 pkgrel=23
 pkgdesc="Displays information about background processes"
-url="http://projects.vdr-developer.org/projects/plg-undelete"
+url="http://www.vdr-wiki.de/wiki/index.php/Bgprocess-plugin"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
 depends=('gcc-libs' "vdr-api=${_vdrapi}")
