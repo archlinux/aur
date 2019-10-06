@@ -3,7 +3,7 @@ pkgname=luxcorerender
 pkgver=2.2
 #_rel="rc1"
 [ -n "${_rel}" ] && _pkgver=${pkgver}${_rel} && pkgver+=".${_rel}" || _pkgver=${pkgver}
-pkgrel=1
+pkgrel=2
 epoch=2
 pkgdesc="LuxCoreRender is a physically correct, unbiased rendering engine."
 arch=('x86_64')
@@ -34,9 +34,10 @@ prepare() {
 }
 
 build() {
+  _pyver=$(python -c "from sys import version_info; print(\"%d%d\" % (version_info[0],version_info[1]))")
   cd ${srcdir}/LuxCore-${pkgname}_v${_pkgver}
   mkdir -p build && cd build
-  cmake -DPYTHON_V=3 ..
+  cmake -DPYTHON_V=${_pyver} ..
   make
 }
 
