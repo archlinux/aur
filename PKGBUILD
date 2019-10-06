@@ -2,7 +2,7 @@
 
 pkgname=btrfs-snapshot
 pkgver=1.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Tool for creating btrfs snapshots"
 arch=('any')
 url="https://github.com/YHNdnzj/btrfs-snapshot"
@@ -23,8 +23,8 @@ package() {
 
     install -Dt "${pkgdir}"/usr/lib/systemd/system -m644 systemd/btrfs-snapshot@.{service,timer}
 
-    install -Dm644 README.md "${pkgdir}/usr/share/doc/${_srcname}/README.md"
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_srcname}/LICENSE"
+    install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 # vim: set ts=4 sw=4 et:
