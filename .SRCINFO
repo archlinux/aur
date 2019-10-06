@@ -1,7 +1,7 @@
 pkgbase = ttf-sarasa-slab
 	pkgdesc = Mono-slab variants for Sarasa Gothic
 	pkgver = 0.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/CyanoHao/Sarasa-Alternatives
 	arch = any
 	license = custom: SIL

@@ -2,7 +2,7 @@
 
 pkgname=ttf-sarasa-slab
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Mono-slab variants for Sarasa Gothic"
 arch=('any')
 url="https://github.com/CyanoHao/Sarasa-Alternatives"
@@ -14,7 +14,7 @@ md5sums=('43734d64c6339cee1119990e508d60c9'
          '8ff57183e6df3ffbe6248fa831090a5f')
 
 package() {
-	install -d "${pkgdir}/usr/share/fonts/TTC"
-	install -m644 "${srcdir}/${_winver}/"*.ttc "${pkgdir}/usr/share/fonts/TTC"
+	install -d "${pkgdir}/usr/share/fonts/${pkgname:4}"
+	install -m644 "${srcdir}/"*.ttc "${pkgdir}/usr/share/fonts/${pkgname:4}"
 	install -Dm644 "${srcdir}/"LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
