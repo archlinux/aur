@@ -1,12 +1,12 @@
 pkgbase = eclipse-m2t-xpand
 	pkgdesc = Model to Text Xpand for Eclipse IDE
 	pkgver = 2.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://projects.eclipse.org/projects/modeling.m2t.xpand
 	arch = any
 	license = EPL
 	makedepends = java-environment-common
-	depends = eclipse-orbit-com-google-inject
+	depends = eclipse-emft-mwe
 	options = !strip
 	source = https://download.eclipse.org//modeling/m2t/xpand/downloads/drops/2.2.0/R201605260315/m2t-xpand-Update-2.2.0.zip
 	sha256sums = 90a217c3231dbcab6773cb0470557c7ae760d73b15a3c430895cdebf79bacf08

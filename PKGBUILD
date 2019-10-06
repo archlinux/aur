@@ -3,12 +3,12 @@
 pkgname=eclipse-m2t-xpand
 pkgver=2.2.0
 _buildtime=R201605260315
-pkgrel=1
+pkgrel=2
 pkgdesc='Model to Text Xpand for Eclipse IDE'
 url="https://projects.eclipse.org/projects/modeling.m2t.xpand"
 arch=('any')
 license=('EPL')
-depends=('eclipse-orbit-com-google-inject')
+depends=('eclipse-emft-mwe')
 makedepends=('java-environment-common')
 options=(!strip)
 # https://download.eclipse.org//modeling/m2t/xpand/downloads/drops/2.2.0/R201605260315/m2t-xpand-Update-2.2.0.zip
@@ -18,6 +18,11 @@ source=(
 sha256sums=('90a217c3231dbcab6773cb0470557c7ae760d73b15a3c430895cdebf79bacf08')
 
 package() {
+  # remove features and plug-ins containing sources
+  rm features/*.source_*
+  rm plugins/*.source_*
+  # remove gz files
+  rm plugins/*.pack.gz
   _dest=${pkgdir}/usr/lib/eclipse/dropins/${pkgname/eclipse-}/eclipse
   install -d $_dest
   # remove feature sources
