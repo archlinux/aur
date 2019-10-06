@@ -1,0 +1,16 @@
+pkgbase = ttf-mukta
+	pkgdesc = A Unicode compliant, versatile, contemporary, humanist, mono-linear typeface available in seven weights, supporting Devanagari, Gujarati, Tamil and Latin scripts
+	pkgver = 2.538
+	pkgrel = 1
+	url = https://github.com/EkType/Mukta
+	arch = any
+	license = custom: SIL Open Font License 1.1
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = https://github.com/EkType/Mukta/releases/download/2.538/Mukta.Font.Family.2.538.zip
+	source = https://raw.githubusercontent.com/EkType/Mukta/master/Copyright.txt
+	md5sums = 2c4090880bcf845231e9d86de644f395
+	md5sums = ddbd4545d2f8243fa2aabc4d5fbf477a
+
+pkgname = ttf-mukta
+
