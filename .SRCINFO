@@ -1,8 +1,9 @@
 pkgbase = repmgr
 	pkgdesc = repmgr is an open-source tool suite for managing replication and failover in a cluster of PostgreSQL servers.
 	pkgver = 4.4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://repmgr.org/
+	install = repmgr.install
 	arch = any
 	license = GPL
 	makedepends = autoconf
