@@ -2,7 +2,7 @@
 # Maintainer: asdf12303116  <a675750333@gmail.com>
 
 pkgname=clash-dev-git
-pkgver=20190930.r278.50d2e08
+pkgver=20191005.r279.d3c50cf
 pkgrel=1
 pkgdesc="A rule based proxy in Go."
 arch=('x86_64')
