@@ -2,11 +2,12 @@
 
 pkgname=repmgr
 pkgver=4.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="repmgr is an open-source tool suite for managing replication and failover in a cluster of PostgreSQL servers."
 arch=('any')
 url="https://repmgr.org/"
 license=('GPL')
+install=$pkgname.install
 depends=('postgresql-libs')
 makedepends=('autoconf' 'postgresql' 'clang' 'llvm')
 source=(https://repmgr.org/download/repmgr-$pkgver.tar.gz)
@@ -22,3 +23,4 @@ package() {
 	cd "$pkgname-$pkgver"
 	make DESTDIR="$pkgdir/" install
 }
+

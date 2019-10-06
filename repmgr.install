@@ -1,0 +1,4 @@
+post_upgrade() {
+        echo "Don't forget to run 'ALTER EXTENSION repmgr UPDATE' on repmgr DB, after restarting postgresql!"
+}
+
