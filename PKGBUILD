@@ -2,15 +2,14 @@
 
 pkgname=jrnl-git
 _gitname=jrnl
-pkgver=0
+pkgver=0.r775.350f0a1
 pkgrel=1
 pkgdesc="A simple command line journal application that stores your journal in a plain text file"
 arch=('any')
 url="https://jrnl.sh/"
 license=('MIT')
-depends=('python-asteval' 'python-dateutil' 'python-keyring' 'python-keyrings-alt' 'python-parsedatetime' \
-         'python-pytz' 'python-tzlocal' 'python-pyaml' 'python-six' 'python-passlib' 'python-xdg' 'python-cryptography')
-makedepends=('git')
+depends=('python')
+makedepends=('git' 'poetry')
 conflicts=("jrnl")
 source=("git+https://github.com/maebert/jrnl.git")
 
@@ -25,7 +24,12 @@ pkgver() {
 }
 
 package() {
-  cd "$_gitname/$_gitname"
-  python install.py --root="$pkgdir/" --optimize=1
+  cd "$_gitname"
+  make install
   install -D LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
+	
+  mkdir -p $pkgdir/usr/bin/
+  touch $pkgdir/usr/bin/jrnl
+  echo "$HOME/.cache/pypoetry/virtualenvs/jrnl*/bin/jrnl" > $pkgdir/usr/bin/jrnl
+  chmod +x $pkgdir/usr/bin/jrnl
 }
