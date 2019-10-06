@@ -4,7 +4,7 @@
 
 pkgname=gns3-server
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='GNS3 network simulator, Server package'
 arch=('x86_64')
 url='https://github.com/GNS3/gns3-server'
@@ -27,12 +27,6 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$pkgname@.service")
 sha256sums=('92f08c149246c41065b32acc134a71887fc94af336d853b85d7f95852ff7aac3'
             'b43f0ead963a06e613d3303d2c66372b57f46c750b3d6df20eb99c11078de65f')
-
-prepare() {
-    cd "$pkgname-$pkgver"
-    sed -i -e '/^async-timeout<3\.0\.0/d' requirements.txt
-    echo 'async-timeout>=3.0.0' >> requirements.txt
-}
 
 build() {
     cd "$pkgname-$pkgver"
