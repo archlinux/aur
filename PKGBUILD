@@ -2,11 +2,12 @@
 # Contributor: Kurobac <kurobac(at)foxmail(dot)com>
 
 _pkgbase=alx-wol
-_kernel_tag=5.3.1-arch1
+_kernel_tag=5.3.4-arch1
 pkgname=${_pkgbase}-dkms
 pkgver=5
-pkgrel=1
+pkgrel=2
 pkgdesc="The alx kernel module with a patch enabling WoL applied"
+url="https://bugzilla.kernel.org/show_bug.cgi?id=61651"
 license=("GPL")
 arch=('i686' 'x86_64')
 depends=('glibc' 'dkms')

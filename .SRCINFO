@@ -1,7 +1,8 @@
 pkgbase = alx-wol-dkms
 	pkgdesc = The alx kernel module with a patch enabling WoL applied
 	pkgver = 5
-	pkgrel = 1
+	pkgrel = 2
+	url = https://bugzilla.kernel.org/show_bug.cgi?id=61651
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -10,12 +11,12 @@ pkgbase = alx-wol-dkms
 	optdepends = linux-headers: Needed for build the module for Arch kernel
 	optdepends = linux-lts-headers: Needed for build the module for LTS Arch kernel
 	optdepends = linux-zen-headers: Needed for build the module for ZEN Arch kernel
-	source = alx.h::https://git.archlinux.org/linux.git/plain/drivers/net/ethernet/atheros/alx/alx.h?h=v5.3.1-arch1
-	source = ethtool.c::https://git.archlinux.org/linux.git/plain/drivers/net/ethernet/atheros/alx/ethtool.c?h=v5.3.1-arch1
-	source = hw.c::https://git.archlinux.org/linux.git/plain/drivers/net/ethernet/atheros/alx/hw.c?h=v5.3.1-arch1
-	source = hw.h::https://git.archlinux.org/linux.git/plain/drivers/net/ethernet/atheros/alx/hw.h?h=v5.3.1-arch1
-	source = main.c::https://git.archlinux.org/linux.git/plain/drivers/net/ethernet/atheros/alx/main.c?h=v5.3.1-arch1
-	source = reg.h::https://git.archlinux.org/linux.git/plain/drivers/net/ethernet/atheros/alx/reg.h?h=v5.3.1-arch1
+	source = alx.h::https://git.archlinux.org/linux.git/plain/drivers/net/ethernet/atheros/alx/alx.h?h=v5.3.4-arch1
+	source = ethtool.c::https://git.archlinux.org/linux.git/plain/drivers/net/ethernet/atheros/alx/ethtool.c?h=v5.3.4-arch1
+	source = hw.c::https://git.archlinux.org/linux.git/plain/drivers/net/ethernet/atheros/alx/hw.c?h=v5.3.4-arch1
+	source = hw.h::https://git.archlinux.org/linux.git/plain/drivers/net/ethernet/atheros/alx/hw.h?h=v5.3.4-arch1
+	source = main.c::https://git.archlinux.org/linux.git/plain/drivers/net/ethernet/atheros/alx/main.c?h=v5.3.4-arch1
+	source = reg.h::https://git.archlinux.org/linux.git/plain/drivers/net/ethernet/atheros/alx/reg.h?h=v5.3.4-arch1
 	source = 000-enable-alx-wol.patch
 	source = Kbuild
 	source = dkms.conf
