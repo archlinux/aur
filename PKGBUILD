@@ -4,7 +4,7 @@
 
 pkgname=mosh
 pkgver=1.3.2
-pkgrel=8
+pkgrel=9
 pkgdesc='Mobile shell, surviving disconnects with local echo and line editing'
 arch=(x86_64)
 url='https://mosh.org/'
@@ -18,7 +18,7 @@ sha512sums=('SKIP')
 build() {
   cd $pkgname
   ./autogen.sh
-  ./configure --prefix=/usr --enable-ufw --sysconfdir=/etc
+  ./configure --enable-ufw --prefix=/usr --sysconfdir=/etc
   make
 }
 
