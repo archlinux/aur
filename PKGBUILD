@@ -1,6 +1,6 @@
 # $Id$
-# Maintainer: Kaushal M <kshlmster@gmail.com>
-# Contributor: zer0def <zer0def@github>
+# Maintainer: zer0def <zer0def@github>
+# Contributor: Kaushal M <kshlmster@gmail.com>
 
 pkgbase=kata-containers
 pkgname=(kata-runtime kata-proxy kata-shim kata-ksm-throttler kata-containers-image kata-linux-container)
