@@ -3,7 +3,7 @@
 
 pkgname=mpv-amd-full-git
 _srcname=mpv
-pkgver=0.29.1.r102.g8b6064de76
+pkgver=0.29.1.r811.g2b19a7c964
 pkgrel=2
 pkgdesc='A free, open source, and cross-platform media player (git version with all possible libs for AMD only)'
 arch=('i686' 'x86_64')
@@ -53,22 +53,17 @@ build() {
         --prefix='/usr' \
         --progress \
         --confdir='/etc/mpv' \
-        \
         --disable-lgpl \
         --enable-libmpv-shared \
         --disable-libmpv-static \
         --disable-static-build \
         --disable-debug-build \
-        \
         --enable-manpage-build \
         --disable-html-build \
         --disable-pdf-build \
-        \
         --enable-cplugins \
-        --enable-zsh-comp \
         --disable-test \
         --disable-clang-database \
-        \
         --disable-android \
         --disable-swift \
         --disable-uwp \
@@ -81,18 +76,15 @@ build() {
         --enable-libass-osd \
         --enable-zlib \
         --enable-libbluray \
-        --enable-dvdread \
         --enable-dvdnav \
         --enable-cdda \
         --enable-uchardet \
         --enable-rubberband \
         --enable-lcms2 \
         --enable-vapoursynth \
-        --enable-vapoursynth-lazy \
         --enable-libarchive \
         --enable-libavdevice \
         --lua='52arch' \
-        \
         --enable-sdl2 \
         --enable-oss-audio \
         --enable-rsound \
@@ -105,7 +97,6 @@ build() {
         --disable-coreaudio \
         --disable-audiounit \
         --disable-wasapi \
-        \
         --disable-cocoa \
         --enable-drm \
         --enable-drmprime \
@@ -131,33 +122,23 @@ build() {
         --enable-vaapi-x11 \
         --enable-vaapi-wayland \
         --enable-vaapi-drm \
-        --enable-vaapi-glx \
         --enable-vaapi-x-egl \
         --enable-caca \
         --enable-jpeg \
         --disable-direct3d \
         --enable-shaderc \
-        --enable-crossc \
         --disable-d3d11 \
         --disable-rpi \
         --disable-ios-gl \
         --enable-plain-gl \
-        --disable-mali-fbdev \
         --enable-gl \
         --enable-vulkan \
-        \
         --disable-videotoolbox-gl \
         --disable-d3d-hwaccel \
         --disable-d3d9-hwaccel \
         --disable-gl-dxinterop-d3d9 \
         --disable-cuda-hwaccel \
-        \
-        --enable-tv \
-        --enable-tv-v4l2 \
-        --enable-libv4l2 \
-        --enable-audio-input \
         --enable-dvbin \
-        \
         --disable-apple-remote \
         --disable-macos-touchbar \
         --disable-macos-cocoa-cb
