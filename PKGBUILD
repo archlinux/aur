@@ -18,9 +18,8 @@ pkgdesc="Enlightenment window manager - Development version"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="http://www.enlightenment.org"
 license=('BSD')
-depends=('efl-git' 'xcb-util-keysyms' 'udisks2' 'wayland'
+depends=('efl-git' 'udisks2' 'wayland' 'bluez-libs'
          'xorg-server-xwayland' 'bluez' 'pulseaudio' 'connman' 'bc')
-  [[ ! $(pacman -T bluez-libs) ]] && depends+=('bluez-libs') #l2ping support in enlightenment_sys is detected at build time
 makedepends=('git' 'meson' 'ninja' 'pkgconf' 'gcc' 'binutils' 'fakeroot')
 optdepends=('acpid: power events on laptop lid close - almost essential for any ACPI based system like intel'
             'gdb: create backtraces on crash - needed for getting backtraces at crash time in ~/.e-crashdump.txt'
