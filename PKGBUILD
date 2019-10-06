@@ -74,7 +74,7 @@ pkgname=('linux-pf')
 pkgdesc="Linux kernel and modules with the pf-kernel patch (uksm, PDS)."
 pkgname=('linux-pf' 'linux-pf-headers' 'linux-pf-preset-default')
 pkgver=${_basekernel}.${_pfrel}
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="https://gitlab.com/post-factum/pf-kernel/wikis/README"
 license=('GPL2')
@@ -653,8 +653,8 @@ eval "package_linux-pf${LCPU+-$LCPU}() {
 
 
 sha256sums=('78f3c397513cf4ff0f96aa7d09a921d003e08fa97c09e0bb71d88211b40567b2'
-            'c405c700b2cb06c4ec805b7e327d0b66416395995519281194a8293da69b398a'
-            '4b9502063c18dc36bec65bd0e52b9b6eefb1e26d39e1385cee6cffe0cf679572'
+            '7d09d1d79a4ecb82502b4483cf989ede3f643e05613de45e12563dfe85d80423'
+            '6231477d4f1fd31eb6c8d7052ad084af75d8c2af0eb54c7913ba8b033be174f2'
             '8d809b8a587f21a810ae385284855dec3c9cec0558f7ae957a91e8029386e930'
             '82d660caa11db0cd34fd550a049d7296b4a9dcd28f2a50c81418066d6e598864'
             '88c03eaa3ac14757bf946bf6da1396cfb1de4cdeacf231f81ce4dcbf28caa0a7'
