@@ -2,7 +2,7 @@
 
 pkgname=chisel-tunnel
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast TCP tunnel over HTTP"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/jpillora/chisel"
@@ -23,6 +23,11 @@ md5sums_arm=('8f5a59b2b3d84ff8ed075695a912e0c7')
 md5sums_armv6h=('8f5a59b2b3d84ff8ed075695a912e0c7')
 md5sums_armv7h=('8f5a59b2b3d84ff8ed075695a912e0c7')
 md5sums_aarch64=('8f5a59b2b3d84ff8ed075695a912e0c7')
+
+prepare() {
+  # Temporary, until this bug gets fixed: https://bugs.astron.com/view.php?id=112
+  zcat "chisel_${pkgver}_$CARCH.gz" > "chisel_${pkgver}_$CARCH"
+}
 
 package() {
   install -D -m755 "chisel_${pkgver}_$CARCH" "$pkgdir/usr/bin/chisel"
