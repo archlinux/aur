@@ -6,7 +6,6 @@ pkgdesc="Evaluate code in a running Guile process"
 arch=('x86_64')
 url="https://github.com/alezost/guile-daemon"
 license=('GPL')
-depends=('')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
