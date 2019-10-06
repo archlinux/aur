@@ -3,8 +3,8 @@
 
 pkgname=ffmpeg-amd-full-git
 _srcname=ffmpeg
-pkgver=4.2.r92502.gd290bb0c54
-pkgrel=2
+pkgver=4.3.r95223.ga27c0781dd
+pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features for AMD; git version)'
 arch=('i686' 'x86_64')
 url='https://www.ffmpeg.org/'
@@ -171,10 +171,10 @@ build() {
         --enable-zlib \
         --enable-libdrm \
         --enable-omx \
-        --enable-omx-rpi \
         --enable-v4l2-m2m \
         --enable-vaapi \
-        --enable-vdpau
+        --enable-vdpau \
+		--extra-cflags='-I/usr/include/tensorflow'
         
     make
     make tools/qt-faststart

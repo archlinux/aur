@@ -1,7 +1,7 @@
 pkgbase = ffmpeg-amd-full-git
 	pkgdesc = Complete solution to record, convert and stream audio and video (all possible features for AMD; git version)
-	pkgver = 4.2.r92502.gd290bb0c54
-	pkgrel = 2
+	pkgver = 4.3.r95223.ga27c0781dd
+	pkgrel = 1
 	url = https://www.ffmpeg.org/
 	arch = i686
 	arch = x86_64
