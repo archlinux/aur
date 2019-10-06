@@ -17,6 +17,7 @@ pkgbase = openhantek6022-git
 	depends = qt5-base
 	provides = openhantek6022
 	conflicts = openhantek6022
+	conflicts = openhantek
 	source = git+https://github.com/OpenHantek/OpenHantek6022.git
 	md5sums = SKIP
 
