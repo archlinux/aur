@@ -1,7 +1,7 @@
 # Maintainer: Darryl Pogue <darryl@dpogue.ca>
 
 pkgname="gplugin"
-pkgver=0.28.0
+pkgver=0.28.1
 pkgrel=1
 arch=('i868' 'x86_64')
 pkgdesc="A GObject based library that implements a reusable plugin system"
@@ -9,6 +9,7 @@ license=("LGPL2")
 url="https://bitbucket.org/gplugin/gplugin"
 depends=("gtk3")
 makedepends=("meson"
+             "mercurial"
              "gcc"
              "gobject-introspection"
              "pkg-config"

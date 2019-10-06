@@ -1,12 +1,13 @@
 pkgbase = gplugin
 	pkgdesc = A GObject based library that implements a reusable plugin system
-	pkgver = 0.28.0
+	pkgver = 0.28.1
 	pkgrel = 1
 	url = https://bitbucket.org/gplugin/gplugin
 	arch = i868
 	arch = x86_64
 	license = LGPL2
-	makedepends = cmake
+	makedepends = meson
+	makedepends = mercurial
 	makedepends = gcc
 	makedepends = gobject-introspection
 	makedepends = pkg-config
@@ -16,7 +17,7 @@ pkgbase = gplugin
 	options = strip
 	options = !debug
 	options = staticlibs
-	source = gplugin::hg+https://bitbucket.org/gplugin/gplugin#tag=v0.27
+	source = gplugin::hg+https://bitbucket.org/gplugin/gplugin#tag=v0.28.1
 	sha256sums = SKIP
 
 pkgname = gplugin
