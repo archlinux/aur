@@ -7,8 +7,8 @@ arch=('any')
 url='https://github.com/ryanoasis/nerd-fonts'
 license=('MIT')
 makedepends=('fontconfig' 'xorg-mkfontscale' 'xorg-mkfontdir')
-source=("https://github.com/ryanoasis/nerd-fonts/releases/download/$pkgver/ProFont.zip"
-        "https://raw.githubusercontent.com/ryanoasis/nerd-fonts/$pkgver/LICENSE")
+source=("https://github.com/ryanoasis/nerd-fonts/releases/download/v$pkgver/ProFont.zip"
+        "https://raw.githubusercontent.com/ryanoasis/nerd-fonts/v$pkgver/LICENSE")
 sha256sums=('a82de4b5d5322bbe21ba3aed4520d7f2f3da72280a4caf005fb3d2787b36d325'
             'd2a29823384e9194a87936ccad495c764c2ef733b29bfa6f72a1d65803ce02e5')
 
