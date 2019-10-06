@@ -1,7 +1,7 @@
-From 231fa7e96a122c8a11078b48fbe9db3334db9fe4 Mon Sep 17 00:00:00 2001
+From b33eb7f826287b0952624123ef88c4b7aa27d0da Mon Sep 17 00:00:00 2001
 From: Dan Elkouby <streetwalkermc@gmail.com>
 Date: Fri, 6 Sep 2019 14:06:44 +0300
-Subject: [PATCH 6/7] Bluetooth: hidp: Fix assumptions on the return value of
+Subject: [PATCH 2/3] Bluetooth: hidp: Fix assumptions on the return value of
  hidp_send_message
 
 hidp_send_message was changed to return non-zero values on success,

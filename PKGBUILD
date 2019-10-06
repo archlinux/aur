@@ -3,10 +3,10 @@
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
 pkgbase=linux-rc
-pkgrel=2
+pkgrel=1
 _srcname=linux-5.3
 _major=5.3
-_minor=2
+_minor=4
 _minorc=$((_minor+1))
 _rcver=1
 _rcpatch=patch-${_major}.${_minorc}-rc${_rcver}
@@ -24,22 +24,22 @@ source=(
   60-linux.hook  # pacman hook for depmod
   90-linux.hook  # pacman hook for initramfs regeneration
   linux.preset   # standard config files for mkinitcpio ramdisk
-  0002-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-  0006-Bluetooth-hidp-Fix-assumptions-on-the-return-value-o.patch
+  0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
+  0002-Bluetooth-hidp-Fix-assumptions-on-the-return-value-o.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('33dcfeec3d0bc076850e8ec6fecf2eda155d4573008405003a815ef18e9cdb7f'
-            '361f9c953bb5ca7dbc922c3f698170523667f6a2f43961ffb88fa47b6b10fc6b'
+sha256sums=('1b11c86d3e6024688b2c8191954b3a263c54ce15b79f008d7192a6ce178cc3c0'
+            '19541dbb3e0e6ca3acb4e7d6bb95a0af44a9607d2cb3e50c2d3f8894d95b246e'
             'SKIP'
-            '89c1d6cf6c935ccda0d43236eb716a313f7989a9251bd61796ca12286a08ca5b'
+            '7d09d1d79a4ecb82502b4483cf989ede3f643e05613de45e12563dfe85d80423'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            '57146472c25c492d723e9f74d13c3e5ea01080156890c463be50d0f9d07496cc'
-            'c03f15d61b4de37665ee972793cac2f9090546a3d52c375d6a434604a76b0fb6')
+            '1594f81f1b1ed4f3d474aaa2ebfc03623fc0168d0243d1654c250fb7b32ad5d7'
+            'd81560f2dd07755d5d51dc1d0d2ee5d4a107c12a13f5d0a021411385813ae7dd')
 
 _kernelname=${pkgbase#linux}
 
@@ -85,8 +85,9 @@ build() {
 _package() {
   pkgdesc="The release candidate kernel and modules"
   [[ $pkgbase = linux ]] && groups=(base)
-  depends=(coreutils linux-firmware kmod mkinitcpio)
-  optdepends=('crda: to set the correct wireless channels of your country')
+  depends=(coreutils kmod initramfs)
+  optdepends=('crda: to set the correct wireless channels of your country'
+              'linux-firmware: firmware images needed for some devices')
   backup=("etc/mkinitcpio.d/$pkgbase.preset")
   install=linux.install
 
@@ -100,6 +101,9 @@ _package() {
   # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
   install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
   install -Dm644 "$modulesdir/vmlinuz" "$pkgdir/boot/vmlinuz-$pkgbase"
+
+  # Used by mkinitcpio to name the kernel
+  echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   msg2 "Installing modules..."
   make INSTALL_MOD_PATH="$pkgdir/usr" modules_install
