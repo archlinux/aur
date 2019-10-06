@@ -9,11 +9,16 @@ arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 url="https://github.com/RedisLabsModules/$_pkgname"
 license=('AGPL-3.0')
 depends=('redis' 'cmake')
-makedepends=('git')
+makedepends=('git' 'peg')
 conflicts=('redis-graph')
 source=("git+$url")
 install=$pkgname.install
 sha256sums=("SKIP")
+
+prepare() {
+	cd "$_pkgname"
+	git submodule update --init --recursive
+}
 
 pkgver() {
 	cd "$_pkgname"

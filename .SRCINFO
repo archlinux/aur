@@ -10,6 +10,7 @@ pkgbase = redis-graph-git
 	arch = armv7h
 	license = AGPL-3.0
 	makedepends = git
+	makedepends = peg
 	depends = redis
 	depends = cmake
 	conflicts = redis-graph
