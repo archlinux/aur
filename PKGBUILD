@@ -10,7 +10,7 @@ license=('BSD-3')
 depends=('python' 'python-numpy' 'python-scipy' 'python-asteval' 'python-uncertainties')
 makedepends=(python-setuptools)
 source=(https://github.com/lmfit/lmfit-py/archive/${pkgver}.tar.gz)
-sha256sums=('4a175d4967fae218695178a750119bbabaec2a7b1dc66201b14ecb830c937f30')
+sha256sums=('1d71b748aa5a0cfbeef7d6829a59c8a2c24d9240ed36f9f25574793ac5225fae')
 
 build() {
   cd "$srcdir/lmfit-py-$pkgver"
