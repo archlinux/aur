@@ -1,7 +1,7 @@
 # Maintainer: Gabriel Guldner <gabriel at guldner dot eu>
 
 pkgname=git-interactive-rebase-tool
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='Native cross platform full feature terminal based sequence editor for git interactive rebase. Written in Rust using ncurses.'
 arch=('x86_64')
@@ -18,8 +18,14 @@ prepare() {
   git checkout tags/$pkgver
   git clean -dfx
 }
+
 build() {
   cd $pkgname
+
+  if [ $(rustup default > /dev/null 2>&1; echo $?) -ne 0 ]; then
+    rustup default stable
+  fi
+
   cargo build --release
 }
 
