@@ -1,16 +1,16 @@
 # Maintainer: razer <razer[at]neuf[dot]fr>
 pkgname=python-pylint-plugin-utils
 _pypi_pkgname=pylint-plugin-utils
-pkgver=0.5
-pkgrel=1
+pkgver=0.6
+pkgrel=0
 pkgdesc="Utilities and helpers for writing Pylint plugins"
 arch=('any')
 url="https://github.com/landscapeio/pylint-plugin-utils"
 license=('GPL2')
 depends=('python')
 makedepends=('python-setuptools' 'python-pylint')
-source=("https://pypi.io/packages/source/p/pylint-plugin-utils/${_pypi_pkgname}-${pkgver}.tar.gz")
-sha256sums=('8d9e31d5ea8b7b0003e1f0f136b44a5235896a32e47c5bc2ef1143e9f6ba0b74')
+source=("https://pypi.io/packages/source/p/${_pypi_pkgname}/${_pypi_pkgname}-${pkgver}.tar.gz")
+sha256sums=('57625dcca20140f43731311cd8fd879318bf45a8b0fd17020717a8781714a25a')
 
 build() {
   cd "${_pypi_pkgname}-${pkgver}"
