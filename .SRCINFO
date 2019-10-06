@@ -1,7 +1,7 @@
 pkgbase = eclipse-swtbot
 	pkgdesc = SWT UI Testing for Eclipse IDE
 	pkgver = 2.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://projects.eclipse.org/projects/technology.swtbot
 	arch = any
 	license = EPL
