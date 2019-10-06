@@ -1,0 +1,15 @@
+--- brdcp135c.ppd.orig	2019-10-05 16:31:37.047572690 -0400
++++ brdcp135c.ppd	2019-10-05 16:31:59.037733891 -0400
+@@ -224,11 +224,11 @@
+ *OpenUI *BRDocument/ Image Type: PickOne
+ *OrderDependency: 21 AnySetup *BRDocument
+ *DefaultBRDocument: Photo
+ *BRDocument Photo/Photo: ""
+ *BRDocument Graphics/Graphics: ""
+-*BRDocument custom/custom: ""
++*BRDocument Extras/Extras: ""
+ *CloseUI: *BRDocument
+ 
+ *%=== Color Matching ================================
+ *OpenUI *BRColorMatching/Color Matching: PickOne
+ *OrderDependency: 22 AnySetup *BRColorMatching
