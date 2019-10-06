@@ -1,0 +1,4 @@
+post_install() {
+    echo ">> julius-game requires a copy of the original Caesar III. The binary will ask for game directory on first start."
+}
+

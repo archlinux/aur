@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Exec=julius-game
+Icon=julius-game256
+Type=Application
+Categories=Game;StrategyGame;
+Name=Julius (Caesar III)
+StartupNotify=false
+Terminal=false 
