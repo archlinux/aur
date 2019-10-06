@@ -1,0 +1,15 @@
+pkgbase = guile-daemon-git
+	pkgdesc = Evaluate code in a running Guile process
+	pkgver = v0.1.2.r0.006e46f
+	pkgrel = 1
+	url = https://github.com/alezost/guile-daemon
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	provides = guile-daemon
+	conflicts = guile-daemon
+	source = git+https://github.com/alezost/guile-daemon.git
+	md5sums = SKIP
+
+pkgname = guile-daemon-git
+
