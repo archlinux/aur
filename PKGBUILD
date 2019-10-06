@@ -3,12 +3,12 @@
 pkgname=eclipse-emft-mwe
 pkgver=2.11.0
 _buildtime=R201906111547
-pkgrel=2
+pkgrel=3
 pkgdesc="Model Workflow Engine plug-in for Eclipse IDE"
 arch=('any')
 url="https://www.eclipse.org/modeling/emft/"
 license=('EPL')
-depends=('eclipse-emf')
+depends=('eclipse-emf' 'eclipse-orbit-com-google-inject')
 options=('!strip')
 # http://www.eclipse.org/modeling/download.php?file=/modeling/emft/mwe/downloads/drops/2.11.0/R201906111547/emft-mwe-2-lang-Update-2.11.0.zip
 source=(
