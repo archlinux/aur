@@ -1,6 +1,6 @@
 # Maintainer: Aanok <aanok.aur@gmail.com>
 pkgname='jftui-git'
-pkgver=v0.1.r1.g43712ab
+pkgver=v0.1.2
 pkgrel=1
 pkgdesc="TUI client for Jellyfin based on mpv"
 arch=('x86_64')
@@ -9,7 +9,6 @@ license=('Unlicense')
 makedepends=('git' 'gcc' 'pkg-config' 'make')
 depends=('mpv' 'yajl' 'curl')
 provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
 source=('git+https://github.com/Aanok/jftui.git')
 md5sums=('SKIP')
 
