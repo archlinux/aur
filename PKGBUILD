@@ -2,8 +2,10 @@
 # Contributor: florianbw <florian.bw@gmail.com>
 # vim:set ts=2 sw=2 et:
 
+SVJOUR3VER=240419
+
 pkgname=latex-template-springer
-pkgver=20180122
+pkgver=20191006
 pkgrel=1
 pkgdesc="Springer templates for LNCS proceedings (llncs), monographs (svmono), multiauthor volumes (svmult), journals (svjour3), and other lecture notes (svmultln)"
 arch=('any')
@@ -22,12 +24,13 @@ install=texlive.install
 source=(ftp://ftp.springernature.com/cs-proceeding/llncs/llncs2e.zip
 http://www.springer.com/cda/content/document/cda_downloaddocument/svmult.zip
 http://www.springer.com/cda/content/document/cda_downloaddocument/svmono.zip
-http://static.springer.com/sgw/documents/468198/application/zip/LaTeX_DL_468198_220118.zip)
+http://static.springer.com/sgw/documents/468198/application/zip/LaTeX_DL_468198_${SVJOUR3VER}.zip)
 
 package() {
   for _SVJOUR3 in readme.txt svjour3.cls usrguid3.pdf svglov3.clo template.tex; do
-    install -m 0644 -D ${srcdir}/${_SVJOUR3} ${pkgdir}/usr/share/texmf-dist/tex/latex/svjour3/${_SVJOUR3}
+    install -m 0644 -D ${srcdir}/LaTeX_DL_468198_${SVJOUR3VER}/${_SVJOUR3} ${pkgdir}/usr/share/texmf-dist/tex/latex/svjour3/${_SVJOUR3}
   done
+  install -m 0644 -D ${srcdir}/LaTeX_DL_468198_${SVJOUR3VER}/spphys.bst ${pkgdir}/usr/share/texmf-dist/bibtex/bst/springer/spphys.bst
 
   for _SVMONO in instruct.pdf quickstart.pdf refguide.pdf styles/* templates/*; do
     [[ ${_SVMONO} == *"/*" ]] && install -m 755 -d ${pkgdir}/usr/share/texmf-dist/tex/latex/svmono/${_SVMONO#/*}
@@ -42,9 +45,8 @@ package() {
   for _LLNCS in readme.txt llncs.cls llncsdoc.pdf; do
     install -m 0644 -D ${srcdir}/${_LLNCS} ${pkgdir}/usr/share/texmf-dist/tex/latex/llncs/${_LLNCS}
   done
-
-  install -m 0644 -D ${srcdir}/spphys.bst ${pkgdir}/usr/share/texmf-dist/bibtex/bst/springer/spphys.bst
   install -m 0644 -D ${srcdir}/splncs04.bst ${pkgdir}/usr/share/texmf-dist/bibtex/bst/springer/splncs04.bst
+
   find ${pkgdir}/usr/share/texmf-dist/tex/latex/ -name \*.bst -exec mv {} ${pkgdir}/usr/share/texmf-dist/bibtex/bst/springer/ \;
   # XXX: BSTs have disappeared from the latest version of svmono... Go figure...
   #mv ${pkgdir}/usr/share/texmf-dist/tex/latex/svmono/*.bst \
@@ -54,4 +56,4 @@ package() {
 md5sums=('SKIP'
          'SKIP'
          'SKIP'
-         'SKIP')
+         '24a19fb349ad5a7d26f75070fd58e628')
