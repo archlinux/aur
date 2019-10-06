@@ -1,0 +1,11 @@
+--- pyifbabel-0.4/setup.py	2014-10-26 22:03:54.000000000 +0100
++++ pyifbabel-0.4/setup.py.new	2019-10-07 00:30:12.965982013 +0200
+@@ -24,7 +24,7 @@
+ import os.path
+
+ if platform.system() == 'Linux':
+-    doc_dir = '/usr/local/share/doc/pyifbabel'
++    doc_dir = '/usr/share/doc/pyifbabel'
+ else:
+     try:
+         from win32com.shell import shellcon, shell
