@@ -7,8 +7,8 @@ pkgdesc='Native cross platform full feature terminal based sequence editor for g
 arch=('x86_64')
 url='https://github.com/MitMaro/git-interactive-rebase-tool'
 license=('ISC')
-depends=('git')
-makedepends=('rust' 'cargo')
+depends=('rust')
+makedepends=('git' 'rust' 'cargo')
 install=$pkgname.install
 sha256sums=('SKIP')
 source=('git+https://github.com/MitMaro/git-interactive-rebase-tool.git')
@@ -22,8 +22,10 @@ prepare() {
 build() {
   cd $pkgname
 
-  if [ $(rustup default > /dev/null 2>&1; echo $?) -ne 0 ]; then
-    rustup default stable
+  if [ $(which rustup > /dev/null 2>&1; echo $?) -eq 0 ]; then
+    if [ $(rustup default > /dev/null 2>&1; echo $?) -ne 0 ]; then
+      rustup default stable
+    fi
   fi
 
   cargo build --release

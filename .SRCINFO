@@ -6,9 +6,10 @@ pkgbase = git-interactive-rebase-tool
 	install = git-interactive-rebase-tool.install
 	arch = x86_64
 	license = ISC
+	makedepends = git
 	makedepends = rust
 	makedepends = cargo
-	depends = git
+	depends = rust
 	source = git+https://github.com/MitMaro/git-interactive-rebase-tool.git
 	sha256sums = SKIP
 
