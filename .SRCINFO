@@ -1,0 +1,18 @@
+pkgbase = git-interactive-rebase-tool-git
+	pkgdesc = Native full feature terminal based sequence editor for interactive git rebase
+	pkgver = 1.1.0.r243.ab379e3
+	pkgrel = 1
+	url = https://github.com/MitMaro/git-interactive-rebase-tool
+	install = git-interactive-rebase-tool.install
+	arch = x86_64
+	license = custom:ISC
+	makedepends = rust
+	depends = git
+	provides = git-interactive-rebase-tool
+	conflicts = git-interactive-rebase-tool
+	options = zipman
+	source = git+https://github.com/MitMaro/git-interactive-rebase-tool.git
+	sha256sums = SKIP
+
+pkgname = git-interactive-rebase-tool-git
+
