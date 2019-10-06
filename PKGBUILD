@@ -1,4 +1,4 @@
-# Maintainer: erik-pro <aarnaarn2@gmail.com>
+# Maintainer: alex19EP <aarnaarn2@gmail.com>
 # Contributor: Steve Holmes <steve.holmes88@gmail.com>
 # Contributor: William Rea <sillywilly@gmail.com>
 
