@@ -1,6 +1,6 @@
 # Maintainer: Nick Cao <nickcao@nichi.co>
 pkgname=arch-prime-git
-pkgver=0.9.3.r4.ge4347f6
+pkgver=0.9.4.r0.ged63ff8
 pkgver() {
   cd ArchPrime
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
@@ -19,5 +19,6 @@ md5sums=('SKIP')
 package() {
         install -dm 755 "${pkgdir}"/etc/prime/conf/
         cp -r --no-preserve='ownership,mode' "${srcdir}"/ArchPrime/conf/* "${pkgdir}"/etc/prime/conf/
-	install -Dm755 "${srcdir}"/ArchPrime/prime-select.sh "${pkgdir}"/usr/bin/prime-select
+	install -Dm755 "${srcdir}"/ArchPrime/prime-select "${pkgdir}"/usr/bin/prime-select
+	install -Dm755 "${srcdir}"/ArchPrime/prime-run "${pkgdir}"/usr/bin/prime-run
 }
