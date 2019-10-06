@@ -4,7 +4,7 @@
 # - veger 
 pkgname=capt-src
 pkgver=2.71
-pkgrel=1
+pkgrel=2
 pkgdesc="Canon CAPT Printer Driver for Linux. Compiled from source code."
 arch=('i686' 'x86_64')
 url='http://support-asia.canon-asia.com/'
@@ -29,6 +29,8 @@ prepare() {
 
     # Enables compilation
     sed -i 's@#include <cups/cups.h>@#include <cups/cups.h>\n#include <cups/ppd.h>@' "${_capt_dir}/statusui/src/ppapdata.c"
+    # Enables captstatusui - Thanks to kaztai
+    sed -i 's@#include <cups/cups.h>@#include <cups/cups.h>\n#include <cups/ppd.h>@' "${_capt_dir}/statusui/src/uimain.c"
 }
 
 _build_cndrvcups_common() {
