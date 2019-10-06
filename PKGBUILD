@@ -9,7 +9,7 @@ url="https://github.com/maandree/libred"
 license=('ISC')
 depends=()
 makedepends=(sed)
-source=($url/archive/$pkgver.tar.gz)
+source=(libred-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
 sha256sums=(1a176a88e9c21ef507401b1da6ea05f4b73872e8eda8022e97e119afaa1192cc)
 
 
