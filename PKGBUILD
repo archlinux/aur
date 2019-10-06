@@ -4,12 +4,12 @@ DLAGENTS=("https::/usr/bin/curl -k -o %o %u")
 
 pkgname=openframeworks
 pkgver=0.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source C++ toolkit for creative coding."
 url="http://openframeworks.cc/"
 arch=('x86_64')
 license=('MIT')
-depends=('make' 'pkg-config' 'gcc' 'openal' 'python-lxml' 'glew' 'freeglut' 'freeimage' 'gstreamer' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-bad' 'gst-plugins-ugly' 'gst-libav' 'opencv' 'libxcursor' 'assimp' 'boost' 'mpg123' 'rtaudio' 'uriparser')
+depends=('make' 'pkg-config' 'gcc' 'openal' 'python-lxml' 'glew' 'glfw' 'pugixml' 'freeglut' 'freeimage' 'gstreamer' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-bad' 'gst-plugins-ugly' 'gst-libav' 'opencv' 'libxcursor' 'assimp' 'boost' 'mpg123' 'rtaudio' 'uriparser')
 optdepends=('qtcreator' 'xterm')
 options=(!strip)
 install=openframeworks.install
