@@ -1,6 +1,6 @@
 # Maintainer: Daniel Schopf <schopf.dan at gmail dot com>
 pkgname=kim-api
-pkgver=2.1.2
+pkgver=2.1.3
 pkgrel=1
 pkgdesc="Online framework for reliable, reproducible and portable molecular simulations"
 arch=("i686" "x86_64")
@@ -9,9 +9,9 @@ license=('CDDL')
 depends=(bash)
 makedepends=(cmake gcc-libs)
 install=$pkgname.install
-source=(https://s3.openkim.org/kim-api/kim-api-2.1.2.txz
+source=(https://s3.openkim.org/kim-api/kim-api-${pkgver}.txz
 	Fix-Doxygen-command-error.patch)
-sha512sums=('b00a2ca30d635967e2ea3b4c6419c725d18fb699c021810a74e05b438df4397e7739a40f85be2a5a545b4a0927ac29dfc040093886189b5baf54b1a89b691e3c'
+sha512sums=('efbc0214234b43a65ed40d23d8faa5264ac1dbd056e9e340548ea7ee5dc530f9cfb2d85a1d9d47fba9dfc7aa660a8ec20374daf4aa8ee605e7c097ae2a12512d'
             '0063cb18884a19d15261e910cc9877ff319f9c1b428023d736e34b5271f254a7eaca9b90033f80af560199e1fe363523da6afb4ee35a05af76b2760039a94cbd')
 
 prepare() {
