@@ -8,7 +8,7 @@ pkgdesc="Target Platform DSL plug-in for Eclipse IDE"
 arch=('any')
 url="https://github.com/mbarbero/fr.obeo.releng.targetplatform"
 license=('EPL1.0')
-depends=(eclipse-tmf-xtext eclipse-m2t-xpand)
+depends=('eclipse-tmf-xtext')
 options=('!strip')
 # https://download.eclipse.org/cbi/tpd/3.0.0-SNAPSHOT/
 source=(

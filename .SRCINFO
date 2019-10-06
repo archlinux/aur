@@ -6,7 +6,6 @@ pkgbase = eclipse-tpd
 	arch = any
 	license = EPL1.0
 	depends = eclipse-tmf-xtext
-	depends = eclipse-m2t-xpand
 	options = !strip
 	source = https://download.eclipse.org/cbi/tpd/3.0.0-SNAPSHOT/org.eclipse.cbi.targetplatform-3.0.0.201902111444.zip
 	sha256sums = 3e754e44fd0c1b4d2b68e3d3bdd41c040fc14c9639946dc911d4ec8e17c6ab79
