@@ -1,5 +1,5 @@
 pkgbase = linux-aarch64-raspberrypi
-	pkgver = 4.19.76.r791997.g7a54e45c03bc
+	pkgver = 4.19.76.r791998.gf1da5f42022d
 	pkgrel = 2
 	url = https://github.com/raspberrypi/linux
 	arch = aarch64
@@ -24,7 +24,7 @@ pkgbase = linux-aarch64-raspberrypi
 	md5sums = SKIP
 	md5sums = e2a36c16f036506f55cd2a211d5808a8
 	md5sums = b8a3b7cc32a8786114e29c41636979fc
-	md5sums = e99e54e43761358cab79364a3206994e
+	md5sums = b6364a9a82d48aae40e32417ab322aa5
 	md5sums = 41cb5fef62715ead2dd109dbea8413d6
 	md5sums = ce6c81ad1ad1f8b333fd6077d47abdaf
 	md5sums = 3dc88030a8f2f5a5f97266d99b149f77

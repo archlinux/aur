@@ -1,13 +1,29 @@
-diff --git a/arch/arm/boot/dts/bcm2837-rpi-3-b.dts b/arch/arm/boot/dts/bcm2837-rpi-3-b.dts
-index 67c01b62b588..36a58e866b2f 100644
---- a/arch/arm/boot/dts/bcm2837-rpi-3-b.dts
-+++ b/arch/arm/boot/dts/bcm2837-rpi-3-b.dts
-@@ -104,3 +104,21 @@
-        status = "okay";
-        bus-width = <4>;
+diff --git a/arch/arm/boot/dts/bcm2837-rpi-3-b-plus.dts b/arch/arm/boot/dts/bcm2837-rpi-3-b-plus.dts
+index 3d5f4ada9a2f..fec39e42fd3e 100644
+--- a/arch/arm/boot/dts/bcm2837-rpi-3-b-plus.dts
++++ b/arch/arm/boot/dts/bcm2837-rpi-3-b-plus.dts
+@@ -108,3 +108,37 @@
+ 	pinctrl-0 = <&uart1_gpio14>;
+ 	status = "okay";
  };
 +
++&gpio {
++        spi0_pins: spi0_pins {
++                brcm,pins = <9 10 11>;
++                brcm,function = <4>; /* alt0 */
++        };
++
++        spi0_cs_pins: spi0_cs_pins {
++                brcm,pins = <8 7>;
++                brcm,function = <1>; /* output */
++        };
++};
++
 +&spi {
++        pinctrl-names = "default";
++        pinctrl-0 = <&spi0_pins &spi0_cs_pins>;
++        cs-gpios = <&gpio 8 1>, <&gpio 7 1>;
++
 +        spidev0: spidev@0{
 +                compatible = "spidev";
 +                reg = <0>;      /* CE0 */
@@ -23,4 +39,46 @@ index 67c01b62b588..36a58e866b2f 100644
 +                #size-cells = <0>;
 +                spi-max-frequency = <125000000>;
 +        };
++};
+diff --git a/arch/arm/boot/dts/bcm2837-rpi-3-b.dts b/arch/arm/boot/dts/bcm2837-rpi-3-b.dts
+index 67c01b62b588..6c2e7ec3b6b4 100644
+--- a/arch/arm/boot/dts/bcm2837-rpi-3-b.dts
++++ b/arch/arm/boot/dts/bcm2837-rpi-3-b.dts
+@@ -104,3 +104,37 @@
+ 	status = "okay";
+ 	bus-width = <4>;
+ };
++
++&gpio {
++	spi0_pins: spi0_pins {
++		brcm,pins = <9 10 11>;
++		brcm,function = <4>; /* alt0 */
++	};
++
++	spi0_cs_pins: spi0_cs_pins {
++		brcm,pins = <8 7>;
++		brcm,function = <1>; /* output */
++	};
++};
++
++&spi {
++	pinctrl-names = "default";
++	pinctrl-0 = <&spi0_pins &spi0_cs_pins>;
++	cs-gpios = <&gpio 8 1>, <&gpio 7 1>;
++
++	spidev0: spidev@0{
++		compatible = "spidev";
++		reg = <0>;	/* CE0 */
++		#address-cells = <1>;
++		#size-cells = <0>;
++		spi-max-frequency = <125000000>;
++	};
++
++	spidev1: spidev@1{
++		compatible = "spidev";
++		reg = <1>;	/* CE1 */
++		#address-cells = <1>;
++		#size-cells = <0>;
++		spi-max-frequency = <125000000>;
++	};
 +};

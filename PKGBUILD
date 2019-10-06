@@ -7,7 +7,7 @@ pkgbase=linux-aarch64-raspberrypi
 _srcname=linux-4.19
 _kernelname=${pkgbase#linux}
 _desc="AArch64 kernel for RaspberryPi 3"
-pkgver=4.19.76.r791997.g7a54e45c03bc
+pkgver=4.19.76.r791998.gf1da5f42022d
 pkgrel=2
 arch=('aarch64')
 url="https://github.com/raspberrypi/linux"
@@ -24,7 +24,7 @@ source=("${_srcname}::git+https://github.com/raspberrypi/linux.git#branch=rpi-4.
 md5sums=('SKIP'
          'e2a36c16f036506f55cd2a211d5808a8'
          'b8a3b7cc32a8786114e29c41636979fc'
-         'e99e54e43761358cab79364a3206994e'
+         'b6364a9a82d48aae40e32417ab322aa5'
          '41cb5fef62715ead2dd109dbea8413d6'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
          '3dc88030a8f2f5a5f97266d99b149f77')
