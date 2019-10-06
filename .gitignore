@@ -1,5 +1,6 @@
 /pkg
 /src
-*.tar
-*.tar.xz
 *.tbz2
+*.tar.bz2
+*.tar
+*.pkg.tar*
