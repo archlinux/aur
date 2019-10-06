@@ -2,8 +2,8 @@
 
 pkgname=btrfs-snapshot-git
 _srcname=btrfs-snapshot
-pkgver=1.2.1.r0.ge2fcc88
-pkgrel=2
+pkgver=1.3.0.r0.g5f35fb2
+pkgrel=1
 pkgdesc="Tool for creating btrfs snapshots"
 arch=('any')
 url="https://github.com/YHNdnzj/btrfs-snapshot"
