@@ -1,0 +1,18 @@
+pkgbase = markdown-electron
+	pkgdesc = Electron version of Markdown app
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/JP1016/Markdown-Electron
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = npm
+	makedepends = jq
+	makedepends = moreutils
+	depends = electron
+	provides = markdown-electron
+	source = markdown-electron-1.src.tar.gz::https://github.com/JP1016/Markdown-Electron/archive/1.tar.gz
+	sha256sums = 47a1b8de58eafae21e5ecfc99553036e2d172fee26323950eb74a24c36e744d6
+
+pkgname = markdown-electron
+
