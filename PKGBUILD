@@ -23,7 +23,7 @@ pkgname=vmware-workstation12
 pkgver=12.5.9
 _buildver=7535481
 _pkgver=${pkgver}_${_buildver}
-pkgrel=10
+pkgrel=11
 pkgdesc='The industry standard for running multiple operating systems as virtual machines on a single Linux PC.'
 arch=(x86_64)
 url='https://www.vmware.com/products/workstation-for-linux.html'
@@ -452,7 +452,7 @@ fi
   rm -r "$pkgdir/usr/lib/vmware/modules/source"
 
 if [ -n "$_enable_macOS_guests" ]; then
-  msg "Patching VMware for macOS guest support"
+  msg "Patching VMware to enable macOS guest support"
   python "$srcdir/unlocker.py" > /dev/null
 
   for isoimage in ${_fusion_isoimages[@]}
@@ -461,7 +461,7 @@ if [ -n "$_enable_macOS_guests" ]; then
     install -Dm 644 "$srcdir/fusion-isoimages/$isoimage.iso.sig" "$pkgdir/usr/lib/vmware/isoimages/$isoimage.iso.sig"
   done
 
-  msg "Patching EFI firmwares to remove the check for server versions"
+  msg "Patching EFI firmwares to disable macOS server checking"
   _efi_arch=(32 64)
   for arch in ${_efi_arch[@]}
   do
