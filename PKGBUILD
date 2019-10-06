@@ -2,10 +2,10 @@
 
 # Maintainer: Manuel Reimer <manuel.reimer@gmx.de>
 pkgname=vdr-tvguide
-pkgver=1.2.9
+pkgver=1.2.11
 epoch=1
 _vdrapi=2.4.1
-pkgrel=2
+pkgrel=1
 pkgdesc="highly customizable 2D EPG viewer plugin."
 url="https://gitlab.com/kamel5/tvguide"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
@@ -16,7 +16,7 @@ _plugname=${pkgname//vdr-/}
 source=("https://gitlab.com/kamel5/$_plugname/-/archive/v$pkgver/$_plugname-v$pkgver.tar.bz2"
         "50-$_plugname.conf")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
-md5sums=('2ea0e418e4706764e64d34ca09ab134f'
+md5sums=('550c291c4faef2f780eaa00563368566'
          '3caf2313b8794eaa525af664a7208b7a')
 
 build() {
