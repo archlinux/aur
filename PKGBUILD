@@ -2,11 +2,11 @@
 # original PKGBUILD by tsujigiri <helge@rausch.io>
 _pkgname=vcvrack
 pkgname=${_pkgname}-bin
-pkgver=1.1.4
+pkgver=1.1.5
 pkgrel=1
 pkgdesc='Open-source virtual modular synthesizer'
 url='https://vcvrack.com/'
-license=('BSD')
+license=('GPL3')
 arch=(x86_64)
 provides=('vcvrack')
 conflicts=('vcvrack')
@@ -14,7 +14,7 @@ depends=('gtk2' 'alsa-lib' 'libglvnd')
 optdepends=('jack')
 source=("https://vcvrack.com/downloads/Rack-$pkgver-lin.zip"
         vcvrack)
-sha256sums=('da6a9c4a0cdd98893a0932762c011a4fb370c37640051f33a3299e0556c6ea30'
+sha256sums=('b3e8a90204955c79f8585c2bb32e9987bf2dd221ca44be58552d3bce709f7955'
             'd98a5e0c8d811aa9edf0040570e5363da712d676b46e82b2c64e8aad4b876417')
 
 package() {
