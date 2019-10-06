@@ -18,6 +18,7 @@ pkgbase = openhantek6022-git
 	provides = openhantek6022
 	conflicts = openhantek6022
 	conflicts = openhantek
+	conflicts = openhantek-git
 	source = git+https://github.com/OpenHantek/OpenHantek6022.git
 	md5sums = SKIP
 
