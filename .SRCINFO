@@ -1,0 +1,16 @@
+pkgbase = guile-xosd-git
+	pkgdesc = Guile bindings for libxosd
+	pkgver = v0.2.1.r3.8ece6bd
+	pkgrel = 1
+	url = https://github.com/alezost/guile-xosd
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = xosd
+	provides = guile-xosd
+	conflicts = guile-xosd
+	source = git+https://github.com/alezost/guile-xosd.git
+	md5sums = SKIP
+
+pkgname = guile-xosd-git
+
