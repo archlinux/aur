@@ -7,7 +7,7 @@ pkgdesc="Virtual MIDI keyboard that uses JACK MIDI."
 arch=('x86_64' 'i686')
 url="http://jack-keyboard.sourceforge.net/"
 license=('BSD')
-depends=('jack' 'gtk2')
+depends=('jack' 'gtk2' 'pango')
 makedepends=(cmake)
 optdepends=('lash: integrate with lash session management') # TODO what?
 options=(makeflags buildflags)
@@ -25,6 +25,8 @@ prepare() {
     else
         LASH_FLAG="False"
     fi
+    # hack around: https://gitlab.kitware.com/cmake/cmake/issues/19531
+    export CFLAGS="${CFLAGS} $(pkg-config --cflags gtk+-2.0)"
     cmake ../ -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DLashEnable=${LASH_FLAG}
 }
 
