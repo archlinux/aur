@@ -1,7 +1,7 @@
-pkgbase = rom-properties-all
+pkgbase = rom-properties
 	pkgdesc = ROM Properties Page shell extension meta package
 	pkgver = 1.4.3
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/GerbilSoft/rom-properties
 	arch = x86_64
 	license = GPL2
@@ -15,19 +15,6 @@ pkgbase = rom-properties-all
 	depends = glibc
 	source = rom-properties-1.4.3.tar.gz::https://github.com/GerbilSoft/rom-properties/archive/v1.4.3.tar.gz
 	sha256sums = 21e2ac5e4f90a8b64837f8aaeac401e4a14ad1a6a8ba604c16f10182f3617655
-
-pkgname = rom-properties-all
-	depends = rom-properties-docs
-	depends = rom-properties-cli
-	depends = rom-properties-gnome
-	depends = rom-properties-gtk3-common
-	depends = rom-properties-kde5
-	depends = rom-properties-lang
-	depends = rom-properties-mate
-	depends = rom-properties-stub
-	depends = rom-properties-thumbnailer-dbus
-	depends = rom-properties-xdg
-	depends = rom-properties-xfce
 
 pkgname = rom-properties-docs
 	pkgdesc = ROM Properties Page shell extension documentation
@@ -117,6 +104,7 @@ pkgname = rom-properties-thumbnailer-dbus
 
 pkgname = rom-properties-xdg
 	pkgdesc = ROM Properties Page shell extension MIME files
+	depends = rom-properties-xfce
 
 pkgname = rom-properties-xfce
 	pkgdesc = ROM Properties Page shell extension for XFCE (GTK+ 3.x)

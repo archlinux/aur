@@ -1,20 +1,5 @@
 # Maintainer: Darvin Delgado <dnmodder@gmail.com>
-_pkgname=rom-properties
-pkgbase=rom-properties-all
-pkgname=(
-	'rom-properties-all'
-	'rom-properties-docs'
-	'rom-properties-cli'
-	'rom-properties-gnome'
-	'rom-properties-gtk3-common'
-	'rom-properties-kde5'
-	'rom-properties-lang'
-	'rom-properties-mate'
-	'rom-properties-stub'
-	'rom-properties-thumbnailer-dbus'
-	'rom-properties-xdg'
-	'rom-properties-xfce'
-)
+pkgbase=rom-properties
 pkgver=1.4.3
 pkgrel=4
 pkgdesc="ROM Properties Page shell extension meta package"
@@ -23,128 +8,128 @@ url="https://github.com/GerbilSoft/rom-properties"
 license=('GPL2')
 depends=('zlib' 'tinyxml2' 'nettle' 'libpng' 'curl' 'libjpeg-turbo' 'glibc')
 makedepends=('cmake')
-source=("$_pkgname-$pkgver.tar.gz::https://github.com/GerbilSoft/rom-properties/archive/v$pkgver.tar.gz")
+source=("$pkgbase-$pkgver.tar.gz::https://github.com/GerbilSoft/rom-properties/archive/v$pkgver.tar.gz")
 sha256sums=('21e2ac5e4f90a8b64837f8aaeac401e4a14ad1a6a8ba604c16f10182f3617655')
 
 prepare() {
-	cd "$_pkgname-$pkgver"
+	cd "$pkgbase-$pkgver"
 	mkdir build
 }
 
 build() {
-	cd "$_pkgname-$pkgver/build"
+	cd "$pkgbase-$pkgver/build"
 	cmake -DUSE_INTERNAL_XML=False -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr ..
 	make
 }
 
-package_rom-properties-all() {
-	depends=(
-		'rom-properties-docs' 'rom-properties-cli' 'rom-properties-gnome'
-		'rom-properties-gtk3-common' 'rom-properties-kde5' 'rom-properties-lang'
-		'rom-properties-mate' 'rom-properties-stub' 'rom-properties-thumbnailer-dbus'
-		'rom-properties-xdg' 'rom-properties-xfce'
-	)
-}
-
-package_rom-properties-docs() {
+_package-docs() {
 	pkgdesc="ROM Properties Page shell extension documentation"
 
-	cd "$_pkgname-$pkgver/build/doc"
+	cd "$pkgbase-$pkgver/build/doc"
 
 	make DESTDIR="$pkgdir" install
 }
 
-package_rom-properties-cli() {
+_package-cli() {
 	pkgdesc="ROM Properties Page shell extension (command line version)"
 	depends=('rom-properties-docs' 'zlib' 'tinyxml2' 'nettle' 'libpng' 'curl' 'libjpeg-turbo' 'glibc')
 	optdepends=("rom-properties-lang: localization")
 
-	cd "$_pkgname-$pkgver/build/src/rpcli"
+	cd "$pkgbase-$pkgver/build/src/rpcli"
 
 	make DESTDIR="$pkgdir" install
 }
 
-package_rom-properties-gnome() {
+_package-gnome() {
 	pkgdesc="ROM Properties Page shell extension for GNOME"
 	depends=('rom-properties-docs' 'rom-properties-gtk3-common' 'rom-properties-stub' 'libnautilus-extension' 'cairo' 'gtk3' 'glib2' 'zlib' 'tinyxml2' 'nettle' 'libpng' 'curl' 'libjpeg-turbo' 'glibc')
 	optdepends=('rom-properties-lang: localization')
 
-	cd "$_pkgname-$pkgver/build/src/gtk/gnome"
+	cd "$pkgbase-$pkgver/build/src/gtk/gnome"
 
 	make DESTDIR="$pkgdir" install
 }
 
-package_rom-properties-gtk3-common() {
+_package-gtk3-common() {
 	pkgdesc="ROM Properties Page shell extension (common files for GNOME and MATE)"
 	depends=('rom-properties-stub')
 	optdepends=('rom-properties-lang: localization')
 
-	cd "$_pkgname-$pkgver/build/src/gtk"
+	cd "$pkgbase-$pkgver/build/src/gtk"
 
 	make DESTDIR="$pkgdir" install/local
 }
 
-package_rom-properties-kde5() {
+_package-kde5() {
 	pkgdesc="ROM Properties Page shell extension for KDE 5"
 	depends=('kio' 'kfilemetadata' 'kwidgetsaddons' 'qt5-base' 'kcoreaddons' 'zlib' 'tinyxml2' 'nettle' 'libpng' 'curl' 'libjpeg-turbo' 'glibc')
 	optdepends=('rom-properties-lang: localization')
 
-	cd "$_pkgname-$pkgver/build/src/kde"
+	cd "$pkgbase-$pkgver/build/src/kde"
 
 	make DESTDIR="$pkgdir" install
 }
 
-package_rom-properties-lang() {
+_package-lang() {
 	pkgdesc="ROM Properties Page shell extension language files"
 
-	cd "$_pkgname-$pkgver/build/locale"
+	cd "$pkgbase-$pkgver/build/locale"
 
 	make DESTDIR="$pkgdir" install
 }
 
-package_rom-properties-mate() {
+_package-mate() {
 	pkgdesc="ROM Properties Page shell extension for GNOME"
 	depends=('rom-properties-docs' 'rom-properties-gtk3-common' 'rom-properties-stub' 'caja' 'cairo' 'gtk3' 'glib2' 'zlib' 'tinyxml2' 'nettle' 'libpng' 'curl' 'libjpeg-turbo' 'glibc')
 	optdepends=('rom-properties-lang: localization')
 
-	cd "$_pkgname-$pkgver/build/src/gtk/mate"
+	cd "$pkgbase-$pkgver/build/src/gtk/mate"
 
 	make DESTDIR="$pkgdir" install
 }
 
-package_rom-properties-stub() {
+_package-stub() {
 	pkgdesc="ROM Properties Page shell extension (stub executable)"
 	optdepends=('rom-properties-lang: localization')
 
-	cd "$_pkgname-$pkgver/build/src/rp-stub"
+	cd "$pkgbase-$pkgver/build/src/rp-stub"
 
 	make DESTDIR="$pkgdir" install
 }
 
-package_rom-properties-thumbnailer-dbus() {
+_package-thumbnailer-dbus() {
 	pkgdesc="ROM Properties Page shell extension (D-Bus Thumbnailer service for XFCE)"
 	depends=('rom-properties-docs' 'thunar' 'glib2')
 	optdepends=("rom-properties-lang: localization")
 
-	cd "$_pkgname-$pkgver/build/src/gtk/thumbnailer-dbus"
+	cd "$pkgbase-$pkgver/build/src/gtk/thumbnailer-dbus"
 
 	make DESTDIR="$pkgdir" install
 }
 
-package_rom-properties-xdg() {
+_package-xdg() {
 	pkgdesc="ROM Properties Page shell extension MIME files"
+	depends=('rom-properties-xfce')
 
-	cd "$_pkgname-$pkgver/build/xdg"
+	cd "$pkgbase-$pkgver/build/xdg"
 
 	make DESTDIR="$pkgdir" install
 }
 
-package_rom-properties-xfce() {
+_package-xfce() {
 	pkgdesc="ROM Properties Page shell extension for XFCE (GTK+ 3.x)"
 	depends=('rom-properties-docs' 'rom-properties-thumbnailer-dbus' 'thunar' 'cairo' 'gtk3' 'glib2' 'zlib' 'tinyxml2' 'nettle' 'libpng' 'curl' 'libjpeg-turbo' 'glibc')
 	optdepends=("rom-properties-lang: localization")
 
-	cd "$_pkgname-$pkgver/build/src/gtk/xfce3"
+	cd "$pkgbase-$pkgver/build/src/gtk/xfce3"
 
 	make DESTDIR="$pkgdir" install
 }
+
+pkgname=("$pkgbase-docs" "$pkgbase-cli" "$pkgbase-gnome" "$pkgbase-gtk3-common" "$pkgbase-kde5" "$pkgbase-lang" "$pkgbase-mate" "$pkgbase-stub" "$pkgbase-thumbnailer-dbus" "$pkgbase-xdg" "$pkgbase-xfce")
+for _p in "${pkgname[@]}"; do
+  eval "package_$_p() {
+    $(declare -f "_package${_p#$pkgbase}")
+    _package${_p#$pkgbase}
+  }"
+done
