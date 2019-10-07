@@ -1,0 +1,53 @@
+diff --git a/Makefile b/Makefile
+index b361a63..78798ca 100644
+--- a/Makefile
++++ b/Makefile
+@@ -24,7 +24,7 @@ LIBRARY_OBJECT = $(LIBRARY_NAME).so.$(VERSION)
+ INSTALL_TARGET = install_shared
+ LIBRARY_DEPENDENCY =
+ TEST_PROGRAM_LFLAGS = -l$(SHORT_LIBRARY_NAME)
+-CFLAGS_LIB = $(CFLAGS) -fPIC -fvisibility=hidden -DDST_SHARED -DDST_SHARED_EXPORTS
++CFLAGS_LIB = $(CFLAGS) -fPIC -DDST_SHARED -DDST_SHARED_EXPORTS
+ CFLAGS_TEST = $(CFLAGS)
+ else
+ # Static or static debug version.
+@@ -73,27 +73,27 @@ install : $(INSTALL_TARGET) install_headers
+ install_headers : $(LIBRARY_HEADER_FILES)
+ 	@for x in $(LIBRARY_HEADER_FILES); do \
+ 	echo Installing $(HEADER_FILE_INSTALL_DIR)/$$x.; \
+-	install -m 0644 $$x $(HEADER_FILE_INSTALL_DIR)/$$x; done
++	install -Dm 0644 $$x $(HEADER_FILE_INSTALL_DIR)/$$x; done
+ 
+ install_shared : $(LIBRARY_OBJECT)
+-	install -m 0644 $(LIBRARY_OBJECT) $(SHARED_LIB_DIR)/$(LIBRARY_OBJECT)
+-	ln -sf $(SHARED_LIB_DIR)/$(LIBRARY_OBJECT) $(SHARED_LIB_DIR)/$(LIBRARY_NAME).so
++	install -Dm 0644 $(LIBRARY_OBJECT) $(SHARED_LIB_DIR)/$(LIBRARY_OBJECT)
++	ln -srf $(SHARED_LIB_DIR)/$(LIBRARY_OBJECT) $(SHARED_LIB_DIR)/$(LIBRARY_NAME).so
+ 
+ install_static : $(LIBRARY_OBJECT)
+-	install -m 0644 $(LIBRARY_OBJECT) $(STATIC_LIB_DIR)/$(LIBRARY_OBJECT)
++	install -Dm 0644 $(LIBRARY_OBJECT) $(STATIC_LIB_DIR)/$(LIBRARY_OBJECT)
+ 
+ install-programs : detex-view detex-convert
+-	install -m 0755 detex-view $(PROGRAM_INSTALL_DIR)/detex-view
+-	install -m 0755 detex-convert $(PROGRAM_INSTALL_DIR)/detex-convert
++	install -Dm 0755 detex-view $(PROGRAM_INSTALL_DIR)/detex-view
++	install -Dm 0755 detex-convert $(PROGRAM_INSTALL_DIR)/detex-convert
+ 
+-detex-validate : validate.o $(LIBRARY_OBJECT)
+-	gcc validate.o -o detex-validate $(LIBRARY_OBJECT) $(LIBRARY_LIBS) `pkg-config --libs gtk+-3.0`
++detex-validate : validate.o $(LIBRARY_DEPENDENCY)
++	gcc validate.o -o detex-validate $(TEST_PROGRAM_LFLAGS) $(LIBRARY_LIBS) `pkg-config --libs gtk+-3.0`
+ 
+-detex-view : detex-view.o $(LIBRARY_OBJECT)
+-	gcc detex-view.o -o detex-view $(LIBRARY_OBJECT) $(LIBRARY_LIBS) `pkg-config --libs gtk+-3.0`
++detex-view : detex-view.o $(LIBRARY_DEPENDENCY)
++	gcc detex-view.o -o detex-view $(TEST_PROGRAM_LFLAGS) $(LIBRARY_LIBS) `pkg-config --libs gtk+-3.0`
+ 
+-detex-convert : detex-convert.o png.o $(LIBRARY_OBJECT)
+-	gcc detex-convert.o png.o -o detex-convert $(LIBRARY_OBJECT) $(LIBRARY_LIBS) `pkg-config --libs libpng`
++detex-convert : detex-convert.o png.o $(LIBRARY_DEPENDENCY)
++	gcc detex-convert.o png.o -o detex-convert $(TEST_PROGRAM_LFLAGS) $(LIBRARY_LIBS) `pkg-config --libs libpng`
+ 
+ clean :
+ 	rm -f $(LIBRARY_MODULE_OBJECTS)

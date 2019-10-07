@@ -1,0 +1,20 @@
+pkgbase = detex-convert-git
+	pkgdesc = Convert and decompress uncompressed and compressed texture files (KTX, DDS, raw)
+	pkgver = 0.1.2alpha2.r7.g0a7d38c
+	pkgrel = 1
+	url = https://github.com/inequation/detex
+	arch = x86_64
+	license = ISC
+	makedepends = git
+	depends = detex-git=0.1.2alpha2.r7.g0a7d38c
+	depends = gtk3
+	depends = libpng
+	provides = detex-convert=0.1.2alpha2.r7.g0a7d38c
+	conflicts = detex-convert
+	source = shared.patch
+	source = detex-convert::git+https://github.com/inequation/detex
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = detex-convert-git
+
