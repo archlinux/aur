@@ -1,6 +1,6 @@
 pkgbase = waterfox-git
 	pkgdesc = 64-Bit optimized Firefox fork, no data collection, allows unsigned extensions
-	pkgver = 56.2.14+d516ab77b8af
+	pkgver = 56.3+4e300fc5cebf
 	pkgrel = 1
 	url = https://www.waterfoxproject.org/
 	install = waterfox.install
@@ -39,13 +39,13 @@ pkgbase = waterfox-git
 	depends = hunspell
 	depends = sqlite
 	depends = ttf-font
-	provides = waterfox=56.2.14+d516ab77b8af
+	provides = waterfox=56.3+4e300fc5cebf
 	conflicts = waterfox
 	conflicts = waterfox-bin
 	options = !emptydirs
 	options = !makeflags
 	options = !strip
-	source = git://github.com/MrAlex94/Waterfox
+	source = git://github.com/MrAlex94/Waterfox#branch=classic
 	source = mozconfig
 	source = waterfox.desktop
 	source = vendor.js

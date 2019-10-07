@@ -3,7 +3,7 @@
 # Contributor: <jnbek1972 at gmail dot com>
 # Contributor: <raku at rakutiki.tv>
 pkgname=waterfox-git
-pkgver=56.2.14+d516ab77b8af
+pkgver=56.3+4e300fc5cebf
 pkgrel=1
 pkgdesc="64-Bit optimized Firefox fork, no data collection, allows unsigned extensions"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ provides=("waterfox=$pkgver")
 conflicts=('waterfox' 'waterfox-bin')
 install=waterfox.install
 options=('!emptydirs' '!makeflags' '!strip')
-source=(git://github.com/MrAlex94/Waterfox
+source=(git://github.com/MrAlex94/Waterfox#branch=classic
         mozconfig
         waterfox.desktop
         vendor.js)
