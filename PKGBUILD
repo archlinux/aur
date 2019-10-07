@@ -1,7 +1,7 @@
 # Maintainer: KingofToasters <dev at sgregoratto dot me>
 pkgname=age-git
 pkgver=r5.0940f18
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple and secure encryption based on UNIX-style composability."
 url="https://github.com/FiloSottile/age"
 license=('custom: BSD')
@@ -33,6 +33,6 @@ check() {
 }
 
 package() {
-  install -Dm755 "${pkgname%-git}/cmd/age/age" "${pkgdir}/usr/bin/${pkgname%-git}/age"
+  install -Dm755 "${pkgname%-git}/cmd/age/age" "${pkgdir}/usr/bin/${pkgname%-git}"
   install -Dm644 "${pkgname%-git}/LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENCE"
 }
