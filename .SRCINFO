@@ -1,7 +1,7 @@
 pkgbase = qv2ray-dev-git
 	pkgdesc = Qt cross platform v2ray GUI client (Dev branch build release)
-	pkgver = 1.3.7.1.r0.g75e5e18
-	pkgrel = 2
+	pkgver = 1.3.8.0.r0.g5135091
+	pkgrel = 1
 	url = https://github.com/lhy0403/Qv2ray
 	arch = x86_64
 	license = GPL3
