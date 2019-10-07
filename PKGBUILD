@@ -15,8 +15,8 @@ backup=('etc/miredo/miredo.conf'
         'etc/miredo/miredo-server.conf'
         'etc/miredo/client-hook')
 validpgpkeys=('9480583353E334D2F03FE80CC3EC6DBEDD6D12BD')	# Rémi Denis-Courmont
-#source=("http://www.remlab.net/files/${pkgname}/${pkgname}-${pkgver}.tar.xz"{,'.asc'})
-source=("git+http://git.remlab.net/git/miredo.git#commit=${_commit}")
+#source=("https://www.remlab.net/files/${pkgname}/${pkgname}-${pkgver}.tar.xz"{,'.asc'})
+source=("git+https://git.remlab.net/git/miredo.git#commit=${_commit}")
 sha512sums=('SKIP')
 
 pkgver() {
