@@ -22,12 +22,13 @@ pkgver() {
 }
 
 build() {
-	GOPATH="$srcdir" go get -fix -v -x ${_gourl}
+    cd "$_gitname"
+    go build -trimpath -ldflags "-extldflags $LDFLAGS" .
 }
 
 package() {
 	mkdir -p "$pkgdir/usr/bin"
-	install -p -m755 "$srcdir/bin/"* "$pkgdir/usr/bin"
+	install -p -m755 "$srcdir/$_gitname/$_gitname" "$pkgdir/usr/bin"
 
 	# Package license (if available)
 	for f in LICENSE COPYING LICENSE.* COPYING.*; do
