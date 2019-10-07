@@ -1,27 +1,19 @@
-
-_plugin_name=image-block
-_plugin_version=2.1
-_plugin_id=5613
+pkgname=firefox-extension-image-block
+pkgver=5.0
 pkgdesc="Image Block adds a toggle button that conditionally blocks/allows loading of images on webpages."
-license=('LGPL')
-
-pkgname=firefox-extension-$_plugin_name
-pkgver=$_plugin_version
 pkgrel=1
+_file=1086368
 arch=('any')
-url="https://addons.mozilla.org/firefox/addon/$_plugin_id"
+url="https://addons.mozilla.org/firefox/addon/5613"
+license=('LGPL')
 depends=("firefox")
-source=("https://addons.cdn.mozilla.net/user-media/addons/${_plugin_id}/imageblock-${pkgver}-fx.xpi")
-sha256sums=('2d75151da2aedd81c415c1da439e7bdbe823abab9a85ccd3f578a2828a415765')
+source=("https://addons.mozilla.org/firefox/downloads/file/${_file}/image_block-5.0-fx.xpi")
+sha256sums=('5b6dc4ae8be10d5224d1179e9de7eac140f29fc64f0e1e60bb766c03bb94ac8f')
 
 package() {
-  cd $srcdir
-  emid=$(sed -n '/.*<em:id>\(.*\)<\/em:id>.*/{s//\1/p;q}' install.rdf) || return 1
-  local dstdir=$pkgdir/usr/lib/firefox/browser/extensions/${emid}
-  install -d $dstdir
-  sed -i 's#<em:maxVersion>.*</em:maxVersion>#<em:maxVersion>50</em:maxVersion>#' install.rdf
-  rm *.xpi
-  mv * $dstdir
+  _extension_id="imageblock@hemantvats.com"
+  _extension_dest="${pkgdir}/usr/lib/firefox/browser/extensions/${_extension_id}"
+  install -Dm644 "${srcdir}"/image_block-${pkgver}-fx.xpi "${_extension_dest}.xpi"
 }
 
 
