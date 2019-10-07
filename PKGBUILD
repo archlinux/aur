@@ -42,11 +42,6 @@ pkgver() {
 build() {
 	cd ${srcdir}/${pkgname}
 
-	# python2 fixes
-	for file in zim/inc/xdot.py; do
-		sed -i 's_#!/usr/bin/env python_#!/usr/bin/env python2_' $file
-	done
-
 	sed -i 's|\t\tinstall_class.run(self)|&\n\t\treturn None|' setup.py
 }
 
