@@ -1,0 +1,18 @@
+pkgbase = age-git
+	pkgdesc = A simple and secure encryption based on UNIX-style composability.
+	pkgver = r5.0940f18
+	pkgrel = 1
+	url = https://github.com/FiloSottile/age
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = custom: BSD
+	makedepends = go-pie
+	makedepends = git
+	provides = age
+	source = age::git+https://github.com/FiloSottile/age
+	sha256sums = SKIP
+
+pkgname = age-git
+
