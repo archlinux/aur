@@ -1,0 +1,23 @@
+pkgbase = python-beniget
+	pkgdesc = A static analyzer for Python2 and Python3 code
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://beniget.readthedocs.io/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = python-beniget-0.2.0.tar.gz::https://files.pythonhosted.org/packages/source/b/beniget/beniget-0.2.0.tar.gz
+	sha256sums = 4495fb8ef0e99f9291c751856e3cc0695115e7936acc54717a3f620ab331b247
+
+pkgname = python-beniget
+	depends = python
+	depends = python-gast
+	provides = python-beniget
+
+pkgname = python2-beniget
+	depends = python2
+	depends = python2-gast
+	provides = python2-beniget
+
