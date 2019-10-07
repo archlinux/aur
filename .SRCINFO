@@ -1,0 +1,19 @@
+pkgbase = android-x86-64-lcms2
+	pkgdesc = Small-footprint color management engine, version 2 (android)
+	pkgver = 2.9
+	pkgrel = 1
+	url = http://www.littlecms.com
+	arch = any
+	license = MIT
+	makedepends = android-configure
+	depends = android-ndk
+	depends = android-x86-64-libtiff
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://downloads.sourceforge.net/sourceforge/lcms/lcms2-2.9.tar.gz
+	sha256sums = 48c6fdf98396fa245ed86e622028caf49b96fa22f3e5734f853f806fbc8e7d20
+
+pkgname = android-x86-64-lcms2
+
