@@ -1,5 +1,5 @@
 pkgbase = linux-clear-lts2017
-	pkgver = 4.14.147
+	pkgver = 4.14.148
 	pkgrel = 1
 	url = https://github.com/clearlinux-pkgs/linux-lts2017
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = linux-clear-lts2017
 	options = !strip
 	source = https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.14.tar.xz
 	source = https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.14.tar.sign
-	source = https://cdn.kernel.org/pub/linux/kernel/v4.x/patch-4.14.147.xz
+	source = https://cdn.kernel.org/pub/linux/kernel/v4.x/patch-4.14.148.xz
 	source = linux-clear-lts2017::git+https://github.com/clearlinux-pkgs/linux-lts2017.git#tag=4.14.144-63
 	source = enable_additional_cpu_optimizations-20190822.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20190822.tar.gz
 	source = 60-linux.hook
@@ -24,7 +24,7 @@ pkgbase = linux-clear-lts2017
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7
 	sha256sums = SKIP
-	sha256sums = b9c1058216baa9a6e7c25c818ed85b3480426469525207e009068b6ed904d840
+	sha256sums = d338e0836d501be75e547b8009c6736cc4bf182b53ccb9cd77ee6251e50cd223
 	sha256sums = SKIP
 	sha256sums = 8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5
 	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
