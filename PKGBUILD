@@ -1,0 +1,31 @@
+# Maintainer: Jean Lucas <jean@4ray.co>
+
+pkgname=spotify-tui-git
+_pkgname=spotify-tui
+pkgver=0.4.0+r12+g4365b99
+pkgrel=1
+pkgdesc='Spotify for the terminal written in Rust (git)'
+arch=(i686 x86_64)
+url=https://github.com/Rigellute/spotify-tui
+license=(MIT)
+depends=(openssl)
+makedepends=(git cargo)
+source=(git+$url)
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $_pkgname
+  git describe --tags | sed 's#v##;s#-#+#g;s#+#+r#'
+}
+
+build() {
+  cd $_pkgname
+  cargo build --locked --release
+}
+
+package() {
+  cd $_pkgname
+  install -D target/release/spt -t "$pkgdir"/usr/bin
+  install -Dm 644 README.md -t "$pkgdir"/usr/share/doc/$_pkgname
+  install -Dm 644 LICENSE -t "$pkgdir"/usr/share/licenses/$_pkgname
+}
