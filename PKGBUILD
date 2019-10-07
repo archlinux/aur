@@ -8,7 +8,7 @@
 
 _rubyver=2.4
 pkgname=ruby2.4
-pkgver=${_rubyver}.7
+pkgver=${_rubyver}.8
 pkgdesc='An object-oriented language for quick and easy programming'
 pkgrel=1
 arch=(x86_64)
@@ -18,8 +18,14 @@ depends=(gdbm openssl libffi libyaml gmp zlib)
 optdepends=('tk: for Ruby/TK')
 makedepends=(doxygen graphviz ttf-dejavu tk)
 options=(!emptydirs)
-source=(https://cache.ruby-lang.org/pub/ruby/${pkgver:0:3}/ruby-${pkgver}.tar.xz)
-sha512sums=('df637c5803ddd83f759e9c24b0e7ca1f6cae7c7b353409583d92dbffece0d9d02b48905d6552327a1522a4a37d4e2d22c6c11bd991383835be35e2f31739d649')
+source=(https://cache.ruby-lang.org/pub/ruby/${pkgver:0:3}/ruby-${pkgver}.tar.xz https://github.com/ruby/ruby/commit/6c721bd44f0d6818c2df361485ebdc49c75ca913.diff)
+sha512sums=('5f51a8312c23c1c2bfbb9c59efbd789492a4a7e4b1d4e7764db6eaaa542008e814b40817f10825e22c7fa8715fb9187be5d09b06128da211559b3601785937ea'
+            'bad495dab70ab33f46d33324d57227c6f02cb9c581cbbdcbddcab2c84439e52e7ee9606214c998f6462293ef9e7b7f5ca241c5efa384aace2619fcc61a771e6d')
+
+prepare() {
+  cd ruby-${pkgver}
+  patch -p1 < ../6c721bd44f0d6818c2df361485ebdc49c75ca913.diff
+}
 
 build() {
   cd ruby-${pkgver}
