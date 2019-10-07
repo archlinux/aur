@@ -51,7 +51,7 @@ _major=5.3
 _minor=5
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/sirlucjan/bfq-mq-lucjan"
 license=('GPL2')
@@ -280,9 +280,6 @@ _package-headers() {
 
   # add xfs and shmem for bfq building
   mkdir -p "$builddir"/{fs/xfs,mm}
-
-  # ???
-  mkdir "$builddir/.tmp_versions"
 
   msg2 "Installing headers..."
   cp -t "$builddir" -a include
