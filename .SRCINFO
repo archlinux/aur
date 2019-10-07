@@ -1,19 +1,18 @@
 pkgbase = jftui-git
 	pkgdesc = TUI client for Jellyfin based on mpv
 	pkgver = v0.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Aanok/jftui
 	arch = x86_64
 	license = Unlicense
 	makedepends = git
 	makedepends = gcc
-	makedepends = pkg-config
+	makedepends = pkgconf
 	makedepends = make
 	depends = mpv
 	depends = yajl
 	depends = curl
 	provides = jftui
-	options = !strip
 	source = git+https://github.com/Aanok/jftui.git
 	md5sums = SKIP
 
