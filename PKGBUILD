@@ -4,7 +4,7 @@
 
 pkgbase=linux-zen           # Build stock -zen kernel
 #pkgbase=linux-custom       # Build kernel with a different name
-_srcver=5.3.4-zen1
+_srcver=5.3.5-zen1
 pkgver=${_srcver//-/.}
 pkgrel=1
 arch=(x86_64)
@@ -69,7 +69,6 @@ build() {
 
 _package() {
   pkgdesc="The ${pkgbase/linux/Linux} kernel and modules"
-  [[ $pkgbase = linux ]] && groups=(base)
   depends=(coreutils kmod initramfs)
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
@@ -145,9 +144,6 @@ _package-headers() {
 
   # add xfs and shmem for aufs building
   mkdir -p "$builddir"/{fs/xfs,mm}
-
-  # ???
-  mkdir "$builddir/.tmp_versions"
 
   msg2 "Installing headers..."
   cp -t "$builddir" -a include
