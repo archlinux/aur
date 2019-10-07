@@ -3,7 +3,7 @@
 
 pkgname=blis-git
 pkgver=0.6.0.r55.g171f1006
-pkgrel=1
+pkgrel=2
 pkgdesc="BLAS-like Library Instantiation Software framework by the Science of High-Performance Computing Group"
 arch=('x86_64')
 license=('custom:BSD')
@@ -23,7 +23,10 @@ pkgver() {
 
 build() {
   cd "${pkgname%-git}"
-  CFLAGS+=" -fPIC" ./configure -p "${pkgdir}"/usr x86_64
+  CFLAGS+=" -fPIC" ./configure --prefix=/usr \
+	 --enable-static \
+	 --enable-shared \
+	 --enable-threading=openmp auto
   make BLIS_ENABLE_DYNAMIC_BUILD:=yes
 }
 
