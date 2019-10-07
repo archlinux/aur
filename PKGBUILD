@@ -62,8 +62,8 @@ _localmodcfg=
 
 pkgbase=linux-bcachefs-git
 _srcver_tag=5.2.20-arch1
-pkgver=${_srcver_tag//-/.}
-pkgrel=2
+pkgver=5.2.20.arch1.r844549.5bfe85789782
+pkgrel=1
 arch=(x86_64)
 url="https://github.com/koverstreet/bcachefs"
 license=(GPL2)
@@ -111,6 +111,11 @@ sha512sums=('SKIP'
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-ARCH}
+
+pkgver() {
+    cd "$_reponame"
+    printf "%s.r%s.%s" "${_srcver_tag//-/.}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 prepare() {
     cd $_reponame
