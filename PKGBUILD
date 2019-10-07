@@ -3,7 +3,7 @@
 # original code by Sunday87: https://bbs.archlinux.org/viewtopic.php?pid=1253365#p1253365
 
 pkgname=texlive-most-doc
-pkgver=20190919
+pkgver=20191007
 pkgrel=1
 pkgdesc="Most TeXLive documentation"
 url="http://tug.org/texlive/"
@@ -13,6 +13,10 @@ optdepends=('texlive-bin: The texdoc program and some more documentation')
 makedepends=('rsync')
 install='texlive-most-doc.install'
 options=('!strip'  '!purge')
+
+pkgver() {
+  date -I | tr -d '-'
+}
 
 build() {
   mkdir -p "$srcdir/usr/share/texmf-dist"
