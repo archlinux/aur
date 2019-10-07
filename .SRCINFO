@@ -1,14 +1,14 @@
 pkgbase = ttf-cascadia-code
 	pkgdesc = This is a fun, new monospaced font that includes programming ligatures and is designed to enhance the modern look and feel of the Windows Terminal
-	pkgver = 1909.16
+	pkgver = 1910.04
 	pkgrel = 1
 	url = https://github.com/microsoft/cascadia-code
 	arch = any
 	license = custom:OFL-1.1
 	depends = fontconfig
 	depends = xorg-font-utils
-	source = https://github.com/microsoft/cascadia-code/releases/download/v1909.16/Cascadia.ttf
-	source = https://github.com/microsoft/cascadia-code/raw/v1909.16/LICENSE
+	source = https://github.com/microsoft/cascadia-code/releases/download/v1910.04/Cascadia.ttf
+	source = https://github.com/microsoft/cascadia-code/raw/v1910.04/LICENSE
 	md5sums = be4424ae2b9025062ed0ef751ed23afb
 	md5sums = d7c8ce104cefae86ac6fbc55bf0e3f82
 

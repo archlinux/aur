@@ -1,7 +1,7 @@
 # Maintainer: Franklyn Tackitt <franklyn@tackitt.net>
 
 pkgname=ttf-cascadia-code
-pkgver=1909.16
+pkgver=1910.04
 pkgrel=1
 pkgdesc="This is a fun, new monospaced font that includes programming ligatures and is designed to enhance the modern look and feel of the Windows Terminal"
 arch=('any')
