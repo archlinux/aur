@@ -2,7 +2,7 @@
 
 _pkgname=windows10-icon-theme
 pkgname=${_pkgname}-git
-pkgver=r6.10d3203
+pkgver=r10.e9fc3d1
 pkgrel=1
 pkgdesc="Windows 10 icon theme"
 arch=('any')
