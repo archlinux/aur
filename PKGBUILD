@@ -1,34 +1,33 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=artanis
-pkgver=0.3.2
-pkgrel=3
+pkgver=0.4
+pkgrel=1
 pkgdesc="A fast monolithic web-framework of Scheme"
 url="http://web-artanis.com/"
 depends=('guile')
-makedepends=('git')
+makedepends=('git' 'texlive-core')
 arch=('x86_64')
 license=('LGPL')
-source=("git+https://gitlab.com/NalaGinrut/artanis.git#commit=d38a713b58b261d9322a2b2b7af4def2801b684f")
-sha256sums=('SKIP')
-tions=('!strip')
+source=(https://ftp.gnu.org/gnu/$pkgname/$pkgname-$pkgver.tar.gz)
+sha1sums=('2dbc10425287c129b4e666cf47baeeb0b5373253')
+options=('!strip')
 
 build() {
-  cd $pkgname
-  ./autogen.sh
+  cd $pkgname-$pkgver
   GUILE_EFFECTIVE_VERSION=2.2 ./configure --prefix=/usr
   make
   make docs
 }
 
 check() {
-  cd $pkgname
+  cd $pkgname-$pkgver
   export GUILE_LOAD_PATH=$GUILE_LOAD_PATH:.
   guile -c '(display (@ (artanis artanis) artanis-version))'
 }
 
 package() {
-  cd $pkgname
+  cd $pkgname-$pkgver
   make DESTDIR="$pkgdir" install
   #repair
   install -Dm755 "$pkgdir"/bin/art "$pkgdir"/usr/bin/art
