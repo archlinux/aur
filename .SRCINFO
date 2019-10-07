@@ -1,0 +1,18 @@
+pkgbase = gedit-markdownpreview-git
+	pkgdesc = Show side by side preview of markdown files
+	pkgver = r25.d30ccef
+	pkgrel = 1
+	url = https://github.com/aliva/gedit-markdownpreview
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = gedit
+	depends = python-markdown
+	optdepends = pymdown-extensions
+	provides = gedit-markdownpreview
+	conflicts = gedit-markdownpreview
+	source = git+https://github.com/aliva/gedit-markdownpreview
+	sha256sums = SKIP
+
+pkgname = gedit-markdownpreview-git
+
