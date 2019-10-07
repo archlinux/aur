@@ -1,7 +1,7 @@
 pkgbase = pretty-git-prompt
 	pkgdesc = Pretty git status for your shell prompt
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/TomasTomecek/pretty-git-prompt
 	arch = any
 	license = MIT
