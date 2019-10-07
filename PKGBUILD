@@ -7,8 +7,8 @@ pkgdesc="PLTable is a Python library designed to make it quick and easy to repre
 arch=('any')
 url='https://github.com/platomav/PLTable'
 license=('BSD')
-depends=('python')
-makedepends=('git' 'python' 'python-setuptools')
+depends=()
+makedepends=('git' 'python-setuptools')
 conflicts=('python-prettytable')
 source=("$pkgname::git+https://github.com/platomav/PLTable")
 sha256sums=('SKIP')
@@ -31,5 +31,5 @@ package() {
     # Install python packages to $pkgdir
     python setup.py install --root ${pkgdir}
 
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname%-*}/LICENSE"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
