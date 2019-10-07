@@ -15,7 +15,7 @@ md5sums=('755e32f8ae429f1c546fdeee7c28c92e')
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
-  ./configure --prefix=${pkgdir}/usr
+  ./configure --prefix="${pkgdir}/usr"
   sed -e "s|mandir = \$(exec_prefix)/man/man1|mandir = \$(exec_prefix)/share/man/man1|" -i Makefile
   make
 }
@@ -24,6 +24,6 @@ package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
   make install
-  mkdir -p ${pkgdir}/usr/share/licenses/${pkgname}/
-  sed -n '2,31p' "${srcdir}/${pkgname}-${pkgver}/xplot.c" > ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+  mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}/"
+  sed -n '2,31p' "${srcdir}/${pkgname}-${pkgver}/xplot.c" > "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
