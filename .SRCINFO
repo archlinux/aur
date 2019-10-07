@@ -10,7 +10,7 @@ pkgbase = r-cran-rinside
 	depends = r
 	depends = r-rcpp
 	source = http://cran.r-project.org/src/contrib/RInside_0.2.15.tar.gz
-	md5sums = fc72761e22b1f597433eb53d6eb122ff
+	md5sums = 3b8c13dc53c6958c1f82c0a25dd6c211
 
 pkgname = r-cran-rinside
 
