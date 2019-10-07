@@ -1,10 +1,10 @@
 pkgbase = clean-lang-bin
 	pkgdesc = Clean is a general purpose, pure and lazy functional programming language.
 	pkgver = 3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://clean.cs.ru.nl
 	arch = x86_64
-	license = custom:CLEAN
+	license = custom
 	depends = glibc
 	provides = clean-lang
 	conflicts = clean-lang

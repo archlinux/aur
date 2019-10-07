@@ -2,11 +2,11 @@
 
 pkgname=clean-lang-bin
 pkgver=3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Clean is a general purpose, pure and lazy functional programming language."
 arch=('x86_64')
 url="https://clean.cs.ru.nl"
-license=('custom:CLEAN')
+license=('custom')
 depends=('glibc')
 conflicts=('clean-lang')
 provides=('clean-lang')
@@ -24,6 +24,14 @@ package() {
     chmod go+r "$pkgdir/usr/bin/BatchBuild" "$pkgdir/usr/bin/clm" \
         "$pkgdir/usr/bin/htoclean" "$pkgdir/usr/lib/exe/cg" \
         "$pkgdir/usr/lib/exe/cocl" "$pkgdir/usr/lib/exe/linker"
+
+    # remove empty dir
+    rmdir "$pkgdir/usr/Temp"
+
+    # add missing binaries
+    install -Dm755 "bin/cpm" "$pkgdir/usr/bin/cpm"
+    install -Dm755 "bin/patch_bin" "$pkgdir/usr/bin/patch_bin"
+    install -Dm755 "bin/BatchBuild" "$pkgdir/usr/bin/BatchBuild"
 
     # install license
     install -Dm644 CleanLicenseConditions.txt "$pkgdir/usr/share/licenses/${pkgname}/CleanLicenseConditions.txt"
