@@ -1,0 +1,17 @@
+pkgbase = detex-git
+	pkgdesc = Library for manipulation of texture formats such as BC1/DXT1/S3TC, BC2-BC3, BC4/RGTC1, BC5/RGTC2, BC6 (BPTC_FLOAT), BC7 (BPTC), ETC1 and the ETC2 family, loading of KTX and DDS files
+	pkgver = 0.1.2alpha2.r7.g0a7d38c
+	pkgrel = 1
+	url = https://github.com/inequation/detex
+	arch = x86_64
+	license = ISC
+	makedepends = git
+	provides = detex=0.1.2alpha2.r7.g0a7d38c
+	conflicts = detex
+	source = shared.patch
+	source = detex::git+https://github.com/inequation/detex
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = detex-git
+
