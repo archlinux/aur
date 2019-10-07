@@ -1,7 +1,7 @@
 pkgbase = rom-properties-all
 	pkgdesc = ROM Properties Page shell extension meta package
 	pkgver = 1.4.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/GerbilSoft/rom-properties
 	arch = x86_64
 	license = GPL2
