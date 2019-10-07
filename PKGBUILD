@@ -15,7 +15,7 @@ optdepends=('mlocate: pacdiff'
             'findutils: pacdiff')
 provides=("$_gitname")
 conflicts=("$_gitname")
-source=("git+https://git.archlinux.org/pacman-contrib.git")
+source=('git+https://git.archlinux.org/pacman-contrib.git')
 sha512sums=('SKIP')
 
 pkgver() {
