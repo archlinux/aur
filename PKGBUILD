@@ -3,8 +3,8 @@
 # Contributor: Tim Meusel <tim@bastelfreak.de>
 
 pkgname=libwhereami
-pkgver=0.3.0
-pkgrel=3
+pkgver=0.3.1
+pkgrel=1
 pkgdesc='Library to report hypervisor information from inside a VM'
 arch=('x86_64')
 url='https://github.com/puppetlabs/libwhereami'
@@ -16,7 +16,7 @@ makedepends=('boost' 'cmake' 'rapidjson' 'curl')
 checkdepends=('python')
 provides=('libwhereami.so')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha512sums=('6ba398b7c2889d41757e5cc77be1e6b86c3ad3cec59432adb5debb39d37ee1b01aa12871944d27c5af7e5abff9f1b8e59d43f16730b91fb39212ec83967cc2c8')
+sha512sums=('89c54a945264130be0a1d662ee7e1d8756bfa84a603066fb78848049e3972d15ab5849161ca38380a45f7559dc59ed492fc6ea948ac3604096f66c6990582071')
 
 build() {
   cd ${pkgname}-${pkgver}
