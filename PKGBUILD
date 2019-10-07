@@ -16,7 +16,7 @@ pkgname=(
 	'rom-properties-xfce'
 )
 pkgver=1.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="ROM Properties Page shell extension meta package"
 arch=('x86_64')
 url="https://github.com/GerbilSoft/rom-properties"

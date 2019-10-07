@@ -1,7 +1,7 @@
 pkgbase = rom-properties-all
 	pkgdesc = ROM Properties Page shell extension meta package
 	pkgver = 1.4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/GerbilSoft/rom-properties
 	arch = x86_64
 	license = GPL2
@@ -13,7 +13,7 @@ pkgbase = rom-properties-all
 	depends = curl
 	depends = libjpeg-turbo
 	depends = glibc
-	source = rom-properties-all-1.4.3.tar.gz::https://github.com/GerbilSoft/rom-properties/archive/v1.4.3.tar.gz
+	source = rom-properties-1.4.3.tar.gz::https://github.com/GerbilSoft/rom-properties/archive/v1.4.3.tar.gz
 	sha256sums = 21e2ac5e4f90a8b64837f8aaeac401e4a14ad1a6a8ba604c16f10182f3617655
 
 pkgname = rom-properties-all
