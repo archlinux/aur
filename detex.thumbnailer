@@ -1,0 +1,4 @@
+[Thumbnailer Entry]
+TryExec=detex-thumbnailer
+Exec=detex-thumbnailer %s %i %o
+MimeType=image/x-dds;image/ktx;

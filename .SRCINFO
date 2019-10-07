@@ -1,0 +1,17 @@
+pkgbase = detex-thumbnailer
+	pkgdesc = Thumbnailer for DDS (DirectDraw Surface) and KTX (Khronos Texture) files supporting BC7, ETC1, ETC2 & more
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/inequation/detex
+	arch = x86_64
+	license = ISC
+	depends = detex-convert
+	depends = xdg-utils
+	depends = gdk-pixbuf2
+	source = detex.thumbnailer
+	source = detex-thumbnailer
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = detex-thumbnailer
+

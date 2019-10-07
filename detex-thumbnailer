@@ -1,0 +1,12 @@
+#!/bin/sh -e
+tmpdir="$(mktemp -d)"
+trap '{ rm -r "$tmpdir"; }' EXIT
+mime="$(xdg-mime query filetype "$2")"
+type="${mime#*/}"
+if [ "$type" == "x-dds" ]; then type=dds; fi
+# detex-convert requires the extension to be accurate
+input="$tmpdir/input.$type"
+output="$tmpdir/output.png"
+ln -s "$2" "$input"
+detex-convert "$input" "$output"
+gdk-pixbuf-thumbnailer -s "$1" "$output" "$3"
