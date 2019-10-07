@@ -67,7 +67,7 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-pds
-_srcver_tag=5.3.4-arch1
+_srcver_tag=5.3.5-arch1
 pkgver=${_srcver_tag//-/.}
 pkgrel=1
 arch=(x86_64)
@@ -286,9 +286,6 @@ _package-headers() {
 
     # add xfs and shmem for aufs building
     mkdir -p "$builddir"/{fs/xfs,mm}
-
-    # ???
-    mkdir "$builddir/.tmp_versions"
 
     msg2 "Installing headers..."
     cp -t "$builddir" -a include
