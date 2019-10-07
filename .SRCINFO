@@ -1,0 +1,14 @@
+pkgbase = dumpasm-git
+	pkgdesc = compile semicolon seperated assembly instructions and hexdump
+	pkgver = 4.a294cba
+	pkgrel = 1
+	url = https://github.com/jonay2000/dumpasm-git
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = binutils
+	source = dumpasm::git://github.com/jonay2000/dumpasm.git
+	md5sums = SKIP
+
+pkgname = dumpasm-git
+
