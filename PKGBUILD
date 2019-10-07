@@ -1,7 +1,7 @@
 # Maintainer: Attila Greguss <floyd0122[at]gmail[dot]com>
 
 pkgbase=dotnet-core-bin
-pkgname=('dotnet-host-bin' 'aspnet-runtime-bin' 'dotnet-runtime-bin' 'dotnet-sdk-bin')
+pkgname=('dotnet-host-bin' 'aspnet-runtime-bin' 'dotnet-runtime-bin')
 pkgver=3.0.0
 pkgrel=5
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -54,12 +54,12 @@ package_aspnet-runtime-bin() {
   ln -s dotnet-host-bin "${pkgdir}"/usr/share/licenses/aspnet-runtime-bin
 }
 
-package_dotnet-sdk-bin() {
-  pkgdesc='The .NET Core SDK (binary)'
-  depends=('dotnet-runtime=3.0.0')
-  provides=("dotnet-sdk=3.0.100")
+#package_dotnet-sdk-bin() {
+#  pkgdesc='The .NET Core SDK (binary)'
+#  depends=('dotnet-runtime=3.0.0')
+#  provides=("dotnet-sdk=3.0.100")
 
-  install -dm 755 "${pkgdir}"/{opt/dotnet,usr/share/licenses}
-  cp -dr --no-preserve='ownership' packs sdk templates "${pkgdir}"/opt/dotnet/
-  ln -s dotnet-host-bin "${pkgdir}"/usr/share/licenses/dotnet-sdk-bin
-}
+#  install -dm 755 "${pkgdir}"/{opt/dotnet,usr/share/licenses}
+#  cp -dr --no-preserve='ownership' packs sdk templates "${pkgdir}"/opt/dotnet/
+#  ln -s dotnet-host-bin "${pkgdir}"/usr/share/licenses/dotnet-sdk-bin
+#}

@@ -50,8 +50,3 @@ pkgname = dotnet-runtime-bin
 	optdepends = lttng-ust: CoreCLR tracing
 	provides = dotnet-runtime=3.0.0
 
-pkgname = dotnet-sdk-bin
-	pkgdesc = The .NET Core SDK (binary)
-	depends = dotnet-runtime=3.0.0
-	provides = dotnet-sdk=3.0.100
-
