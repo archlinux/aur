@@ -8,7 +8,7 @@ arch=('any')
 url="https://github.com/YHNdnzj/btrfs-snapshot"
 license=('MIT')
 depends=('bash' 'btrfs-progs')
-source=("${url}/archive/${pkgver}.tar.gz")
+source=("$url/archive/$pkgver.tar.gz")
 sha256sums=('7aed2dff1399873bce62812e35840499d95fb320fba44c37ceb3e2cfeed8bf9e')
 
 package() {
