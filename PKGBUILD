@@ -61,7 +61,7 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-bcachefs-git
-_srcver_tag=5.2.18-arch1
+_srcver_tag=5.2.20-arch1
 pkgver=${_srcver_tag//-/.}
 pkgrel=2
 arch=(x86_64)
