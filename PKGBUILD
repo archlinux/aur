@@ -2,7 +2,7 @@
 
 _pkgname=windows10-gtk-theme
 pkgname=${_pkgname}-git
-pkgver=2.1.1.r2.g73ef769
+pkgver=3.1.r1.ga72b81e
 pkgrel=1
 pkgdesc="Windows 10 GTK theme"
 arch=('any')
