@@ -3,7 +3,7 @@
 
 pkgname=rstudio-desktop-git
 _gitname=rstudio
-pkgver=1.2.5001.r1358
+pkgver=1.2.5001.r1361
 _gwtver=2.8.2
 _ginver=2.1.2
 pkgrel=1
@@ -11,8 +11,8 @@ pkgdesc="A powerful and productive integrated development environment (IDE) for 
 arch=('i686' 'x86_64')
 url="https://www.rstudio.com/products/rstudio/"
 license=('AGPL3')
-depends=('boost1.69-libs' 'r>=2.11.1' hunspell-en_US mathjax pandoc clang qt5-sensors qt5-svg qt5-webengine qt5-xmlpatterns)
-makedepends=(git 'cmake>=3.1.0' 'boost1.69' desktop-file-utils jdk8-openjdk apache-ant unzip openssl libcups pam patchelf wget)
+depends=('boost-libs' 'r>=2.11.1' hunspell-en_US mathjax pandoc clang qt5-sensors qt5-svg qt5-webengine qt5-xmlpatterns)
+makedepends=(git 'cmake>=3.1.0' 'boost' desktop-file-utils jdk8-openjdk apache-ant unzip openssl libcups pam patchelf wget)
 optdepends=('git: for git support'
             'subversion: for subversion support'
             'openssh-askpass: for a git ssh access')
@@ -62,6 +62,7 @@ build() {
           -DCMAKE_INSTALL_PREFIX=/usr/lib/rstudio \
           -DRSTUDIO_USE_SYSTEM_BOOST=yes \
           -DQT_QMAKE_EXECUTABLE=/usr/bin/qmake \
+          -DBoost_NO_BOOST_CMAKE=ON \
           -DRSTUDIO_BUNDLE_QT=FALSE ..
 }
 
