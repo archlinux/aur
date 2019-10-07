@@ -1,7 +1,7 @@
 pkgbase = rom-properties-all
 	pkgdesc = ROM Properties Page shell extension meta package
 	pkgver = 1.4.3
-	pkgrel = 5
+	pkgrel = 7
 	url = https://github.com/GerbilSoft/rom-properties
 	arch = x86_64
 	license = GPL2
@@ -13,8 +13,21 @@ pkgbase = rom-properties-all
 	depends = curl
 	depends = libjpeg-turbo
 	depends = glibc
-	source = rom-properties-all-1.4.3.tar.gz::https://github.com/GerbilSoft/rom-properties/archive/v1.4.3.tar.gz
+	source = rom-properties-1.4.3.tar.gz::https://github.com/GerbilSoft/rom-properties/archive/v1.4.3.tar.gz
 	sha256sums = 21e2ac5e4f90a8b64837f8aaeac401e4a14ad1a6a8ba604c16f10182f3617655
+
+pkgname = rom-properties-all
+	depends = rom-properties-docs
+	depends = rom-properties-cli
+	depends = rom-properties-stub
+	depends = rom-properties-gtk3-common
+	depends = rom-properties-thumbnailer-dbus
+	depends = rom-properties-xfce
+	depends = rom-properties-xdg
+	depends = rom-properties-mate
+	depends = rom-properties-gnome
+	depends = rom-properties-kde5
+	depends = rom-properties-lang
 
 pkgname = rom-properties-docs
 	pkgdesc = ROM Properties Page shell extension documentation
