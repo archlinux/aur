@@ -1,6 +1,6 @@
 # Maintainer: Matt/ilikenwf <parwok@gmail.com>
 pkgname=waterfox-alpha-git
-pkgver=68.0b1+ab1960eee616
+pkgver=68.0+150863514609
 pkgrel=1
 pkgdesc="More private and optimized Firefox fork. Alpha (gecko68) branch. CREATES SEPARATE PROFILE"
 arch=('i686' 'x86_64')
@@ -20,13 +20,13 @@ provides=()
 conflicts=('waterfox-alpha-bin')
 install=waterfox-alpha.install
 options=('!emptydirs' '!makeflags' '!strip')
-source=(git://github.com/MrAlex94/Waterfox#branch=gecko68
+source=(git://github.com/MrAlex94/Waterfox#branch=current
         mozconfig
         waterfox-alpha.desktop
         ignore_bad_validator.patch
         vendor.js)
 sha512sums=('SKIP'
-            'b63bfbce4cceef1751f9332d3e9583aa58c1df5b3cd09ce7be9803cdbaf321fdd98c8aa81b5a4b4e9c61814748a2b8a977c241427e1d7d07a0774d32bef59f2d'
+            'cd3c1b67a8989cb33d7ec882b209f7048922d85fd35c0f871ab4a125af83505cd6ead822a9d6b8fe929e8d71088c4f0fb89d87a73efb4f7c7a304cd9c3685966'
             'a133c3667bc11b3d19b6a1c9379f0112eca6a59df4096f476e480782de7fd395784de935c6c19b16051a4d5507b0c7f020cb35728f5a4dceb60474a931525673'
             'ab2aced2e371afad317ab3ffb3e8161c457f022327e182d426aa2ba4142112060225ced4610eb2525e1c739a4e56ad4e7cf78cc102232cf01cf06d0224a9c09d'
             'd927e5e882115c780aa0d45034cb1652eaa191d95c15013639f9172ae734245caae070018465d73fdf86a01601d08c9e65f28468621422d799fe8451e6175cb7')
