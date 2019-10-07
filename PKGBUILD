@@ -59,7 +59,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=4.19
-_minor=77
+_minor=78
 _srcname=linux-${_major}
 _clr=${_major}.71-77
 pkgbase=linux-clear-lts2018
@@ -328,7 +328,7 @@ done
 
 sha256sums=('0c68f5655528aed4f99dae71a5b259edc93239fa899e2df79c055275c21749a1'
             'SKIP'
-            'de3473cf607e2ca144e51b4a70ba81667bbd05eaf08252469e90fa43dab8064f'
+            'e31c62ca9cb4e0a4c56d2ad44fc5271ed49c0517651adea58cec0a4b732f9b30'
             'SKIP'
             '8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
