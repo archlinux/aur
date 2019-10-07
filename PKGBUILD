@@ -1,7 +1,8 @@
 # Maintainer: Darvin Delgado <dnmodder@gmail.com>
-pkgbase=rom-properties
+_pkgbase=rom-properties
+pkgbase=rom-properties-all
 pkgver=1.4.3
-pkgrel=4
+pkgrel=5
 pkgdesc="ROM Properties Page shell extension meta package"
 arch=('x86_64')
 url="https://github.com/GerbilSoft/rom-properties"
@@ -126,10 +127,10 @@ _package-xfce() {
 	make DESTDIR="$pkgdir" install
 }
 
-pkgname=("$pkgbase-docs" "$pkgbase-cli" "$pkgbase-gnome" "$pkgbase-gtk3-common" "$pkgbase-kde5" "$pkgbase-lang" "$pkgbase-mate" "$pkgbase-stub" "$pkgbase-thumbnailer-dbus" "$pkgbase-xdg" "$pkgbase-xfce")
+pkgname=("$_pkgbase-docs" "$_pkgbase-cli" "$_pkgbase-gnome" "$_pkgbase-gtk3-common" "$_pkgbase-kde5" "$_pkgbase-lang" "$_pkgbase-mate" "$_pkgbase-stub" "$_pkgbase-thumbnailer-dbus" "$_pkgbase-xdg" "$_pkgbase-xfce")
 for _p in "${pkgname[@]}"; do
   eval "package_$_p() {
-    $(declare -f "_package${_p#$pkgbase}")
-    _package${_p#$pkgbase}
+    $(declare -f "_package${_p#$_pkgbase}")
+    _package${_p#$_pkgbase}
   }"
 done
