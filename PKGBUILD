@@ -3,17 +3,19 @@
 
 _gitname=pacman-contrib
 pkgname=pacman-contrib-git
-pkgver=1.1.0.r24.g4e2273e
+pkgver=1.2.0.r1.g21449e3
 pkgrel=1
-pkgdesc='pacman contributions'
-url=https://git.archlinux.org/pacman-contrib.git
+pkgdesc='Contributed scripts and tools for pacman systems'
+url=https://git.archlinux.org/pacman-contrib.git/about/
 arch=('x86_64')
 license=('GPL')
-depends=('bash' 'pacman' 'perl')
+depends=('fakeroot' 'pacman' 'perl')
 makedepends=('asciidoc' 'git')
+optdepends=('mlocate: pacdiff'
+            'findutils: pacdiff')
 provides=("$_gitname")
 conflicts=("$_gitname")
-source=("git+$url")
+source=("git+https://git.archlinux.org/pacman-contrib.git")
 sha512sums=('SKIP')
 
 pkgver() {
@@ -24,10 +26,12 @@ pkgver() {
 build() {
   cd $_gitname
   ./autogen.sh
-  ./configure --prefix=/usr --sysconfdir=/etc \
-    --localstatedir=/var --enable-git-version \
-    --with-vim-dir=/usr/share/vim/vimfiles
-  make V=1
+  ./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --localstatedir=/var \
+    --enable-git-version
+  make
 }
 
 check() {
