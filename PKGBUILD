@@ -9,13 +9,13 @@ pkgver() {
     "$(git tag -l | grep -P '.+\..+\.\d+' | sed -r 's/([0-9\.]+)(-.+)?/\1/g' | sort -Vr | sed 1q)" \
     "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-pkgver=1.1.0.r243.ab379e3
+pkgver=1.1.0.r244.0074a99
 pkgrel=1
 
-pkgdesc='Native full feature terminal based sequence editor for interactive git rebase'
+pkgdesc='An improved sequence editor for interactive git-rebase'
 arch=('x86_64')
-url="https://github.com/MitMaro/${pkgname%-git}"
-license=('custom:ISC')
+url=https://gitrebasetool.mitmaro.ca/
+license=('GPL3')
 
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -26,7 +26,8 @@ makedepends=('rust')
 options=('zipman')
 
 install="${pkgname%-git}.install"
-source=("git+$url.git")
+changelog=CHANGELOG.md
+source=("git+https://github.com/MitMaro/${pkgname%-git}.git")
 sha256sums=('SKIP')
 
 build() {
@@ -41,10 +42,10 @@ build() {
 
 package() {
   cd "${pkgname%-git}"
-  install -dm755 "$pkgdir"/usr/{bin,share/{man/man1,licenses/"${pkgname%-git}"}}
+  install -dm755 "$pkgdir"/usr/{bin,share/{doc,man/man1,licenses/"${pkgname%-git}"}}
   install -m755 target/release/interactive-rebase-tool -t"$pkgdir/usr/bin/"
-  install -m644 src/interactive-rebase-tool.1 -t"$pkgdir/usr/share/man/man1/"
-  install -m644 LICENSE -t"$pkgdir/usr/share/licenses/${pkgname%-git}/"
+  install -m644 {README,CHANGELOG,CODE_OF_CONDUCT}.md  -t"$pkgdir/usr/share/doc/"
+  install -m644 src/interactive-rebase-tool.1          -t"$pkgdir/usr/share/man/man1/"
 }
 
 
