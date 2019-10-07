@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Kubeman
+Comment=The Hero that Kubernetes deserves
+Exec=kubeman
+Terminal=false
+Type=Application
+Icon=kubeman
+StartupWMClass=kubeman
+X-AppImage-Version=0.5.0
+Categories=Internet;

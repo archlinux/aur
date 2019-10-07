@@ -1,0 +1,21 @@
+pkgbase = kubeman-appimage
+	pkgdesc = The Hero that Kubernetes deserves (kubernetes management GUI)
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/walmartlabs/kubeman
+	arch = x86_64
+	license = Apache
+	depends = fuse
+	provides = kubeman
+	conflicts = kubeman
+	noextract = kubeman.0.5.0.appimage
+	options = !strip
+	source = kubeman.0.5.0.appimage::https://github.com/walmartlabs/kubeman/releases/download/0.5.0/kubeman.0.5.0.appimage
+	source = kubeman.desktop
+	source = kubeman.png
+	sha256sums = 1f64e92422e85fe57b396c955c5e2ce845635809ece8d15f663af778e9113134
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = kubeman-appimage
+
