@@ -1,0 +1,24 @@
+From 29c50a0c211a62ada8070cb1d031d438b4a2e02e Mon Sep 17 00:00:00 2001
+From: Nikolay Korotkiy <sikmir@gmail.com>
+Date: Fri, 23 Nov 2018 22:39:29 +0300
+Subject: [PATCH 1/1] Expand tilde in path
+
+---
+ src/conf.py | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/conf.py b/src/conf.py
+index 63af205..24a649c 100755
+--- a/src/conf.py
++++ b/src/conf.py
+@@ -104,6 +104,7 @@ def __defaultImgFont():
+ 
+ 
+ def abspath(path, related_home):
++    path = os.path.expanduser(path)
+     return path if os.path.isabs(path) else os.path.join(related_home, path)
+ 
+ 
+-- 
+2.23.0
+

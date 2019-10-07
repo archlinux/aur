@@ -1,11 +1,10 @@
 # Maintainer: Po-An,Yang(Antonio) <yanganto@gmail.com>
 # Co-Maintainer: Nikolay Korotkiy <sikmir@gmail.com>
 _orgname=dayanuyim
-
 _pkgname=GisEditor
 pkgname=${_pkgname,,}
 pkgver=0.27
-pkgrel=2
+pkgrel=3
 pkgdesc='A gis editor for .gpx .gdb and download maps source'
 arch=('any')
 url='https://github.com/dayanuyim/GisEditor'
@@ -14,11 +13,16 @@ depends=('gpsbabel' 'python-pmw' 'python-pillow' 'python-numpy' 'python-cycler' 
 optdepends=('ttf-arphic-ukai' )
 provides=("${pkgname}=${pkgver}")
 conflicts=(${pkgname}-git)
-source=("https://github.com/${_orgname}/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('c5ae9f85b6c668dbe2a493353cd274df5117a06adaa9fbd88eb3cfcaaeb41ad9')
+source=("https://github.com/${_orgname}/${_pkgname}/archive/v${pkgver}.tar.gz"
+        '0001-Expand-tilde-in-path.patch')
+sha256sums=('c5ae9f85b6c668dbe2a493353cd274df5117a06adaa9fbd88eb3cfcaaeb41ad9'
+            '4387b1954dc7fa8a1a7b79731f62baaa8d65abfe046e2311100c92bc4d4fdff8')
 
 prepare() {
   cd ${_pkgname}-${pkgver}
+
+  # See https://github.com/dayanuyim/GisEditor/pull/16
+  patch -p1 < ../0001-Expand-tilde-in-path.patch
 
   cat << EOF > $pkgname
 #!/bin/sh
