@@ -1,14 +1,14 @@
 # Maintainer: Karl-Felix Glatzer <karl.glatzer@gmx.de>
 pkgname=mingw-w64-recode
 pkgver=3.7.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Converts files between various character sets and usages (mingw-w64)"
 arch=('any')
 url='https://github.com/rrthomas/recode'
 license=('GPL3' 'LGPL3')
 depends=('mingw-w64-crt' 'mingw-w64-gettext')
 options=('!strip' '!buildflags' 'staticlibs')
-makedepends=('mingw-w64-gcc' 'mingw-w64-configure' 'python')
+makedepends=('mingw-w64-gcc' 'mingw-w64-configure' 'mingw-w64-wine' 'python' 'help2man')
 source=("https://github.com/rrthomas/recode/releases/download/v${pkgver}/recode-${pkgver}.tar.gz"
         "autotools.patch"
         "help2man.patch")
