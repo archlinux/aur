@@ -1,16 +1,16 @@
 # Maintainer: Kyle <kyle@gmx.ca>
 pkgname=espeak-ng-git
 _gitname=espeak-ng
-pkgver=1.49.1.490.g8f0dae6a # determined from git origin
+pkgver=0.0 # determined from git origin
 pkgrel=1
 pkgdesc="Next generation open source speech synthesizer based on Espeak (git version)"
 arch=('aarch64' 'armv6h' 'armv7h' 'i686' 'x86_64')
 url="https://github.com/espeak-ng/espeak-ng"
 license=('GPL3')
-depends=(gcc-libs pcaudiolib-git)
+depends=(gcc-libs pcaudiolib)
 optdepends=()
-makedepends=('git')
-provides=(espeak)
+makedepends=('git' 'ruby-ronn')
+provides=(espeak=${pkgver})
 conflicts=(espeak espeak-test)
 source=('git+https://github.com/espeak-ng/espeak-ng.git')
 md5sums=('SKIP')
