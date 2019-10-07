@@ -3,7 +3,7 @@
 pkgname=pup-git
 _gitname="pup"
 _gourl="github.com/ericchiang/pup"
-pkgver=r97.b058f91
+pkgver=r102.681d7bb
 pkgrel=1
 epoch=1
 pkgdesc="Parsing HTML at the command line"

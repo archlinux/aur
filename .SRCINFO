@@ -1,11 +1,10 @@
 pkgbase = pup-git
 	pkgdesc = Parsing HTML at the command line
-	pkgver = r97.b058f91
+	pkgver = r102.681d7bb
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/EricChiang/pup
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = MIT
 	makedepends = git
 	makedepends = go
