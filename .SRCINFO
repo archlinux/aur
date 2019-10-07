@@ -8,7 +8,7 @@ pkgbase = sddm-chinese-painting-theme
 	depends = sddm
 	depends = qt5-graphicaleffects
 	source = https://github.com/fralonra/sddm-chinese-painting-theme/archive/v0.1.2.tar.gz
-	md5sums = 5490b1aa9ccdb5364650b07bb875c748
+	md5sums = 0d4950a6e19595a93da377cf39e282ea
 
 pkgname = sddm-chinese-painting-theme
 
