@@ -1,24 +1,38 @@
-# Maintainer: nblock <nblock [/at\] archlinux DOT us>
-# Contributor: Hugo Osvaldo Barrera <hugo@barrera.io>
-# Contributor: xduugu
+#Maintainer: elvirolo <elvirolo@posteo.net>
 
+_name=icalendar
 pkgname=python2-icalendar
-_pkgname=icalendar
-pkgver=3.11.3
+pkgver=4.0.3
 pkgrel=1
-pkgdesc='A parser/generator of iCalendar files (RFC 2445)'
+pkgdesc="A parser/generator of iCalendar files (RFC 2445) (Python2 version)"
 arch=('any')
-url='http://pypi.python.org/pypi/icalendar/'
+url="https://github.com/collective/icalendar"
 license=('BSD')
-depends=('python2' 'python2-pytz' 'python2-dateutil')
+depends=('python2-dateutil' 'python2-pytz')
 makedepends=('python2-setuptools')
-source=(https://pypi.python.org/packages/7f/0b/f13fa6ec05f44c13014ab7d7dd2ffae349c94d71151a311a8c5e7198b0a8/${_pkgname}-${pkgver}.tar.gz)
-md5sums=('8480bbe6339fc2b8b997c1d899e6f76c')
-sha256sums=('6317d716563c41ca44b4694458f0a94734e35bb8c708994eb4503c8638d5d220')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
+sha256sums=('07c2447a1d44cbb27c90b8c6a5c98e890cc1853c6223e2a52195cddec26c6356')
 
-package() {
-  cd "$srcdir/${_pkgname}-$pkgver"
-  python2 setup.py install --root="$pkgdir" --optimize=1
+build() {
+  cd "${_name}-${pkgver}"
+  python2 setup.py build
 }
 
-# vim:set ts=2 sw=2 et:
+check() {
+  cd "${_name}-${pkgver}"
+  python2 -m unittest discover src
+}
+
+package() {
+  cd "${_name}-${pkgver}"
+  python2 setup.py install --skip-build \
+    --optimize=1 \
+    --prefix=/usr \
+    --root="${pkgdir}"
+# Remove the icalendar binary, which conflicts with the one included in the python-icalendar package
+  rm $pkgdir/usr/bin/icalendar                                      
+  install -t "${pkgdir}/usr/share/doc/${pkgname}/" \
+    -vDm 644 {CHANGES,CONTRIBUTING,README}.rst
+  install -vDm 644 LICENSE.rst \
+    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
