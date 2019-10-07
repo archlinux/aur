@@ -1,8 +1,8 @@
 pkgbase = python-beniget
 	pkgdesc = A static analyzer for Python2 and Python3 code
 	pkgver = 0.2.0
-	pkgrel = 1
-	url = https://beniget.readthedocs.io/
+	pkgrel = 2
+	url = https://github.com/serge-sans-paille/beniget
 	arch = i686
 	arch = x86_64
 	license = BSD

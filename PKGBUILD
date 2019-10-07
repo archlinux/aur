@@ -3,10 +3,10 @@
 pkgbase=python-beniget
 pkgname=('python-beniget' 'python2-beniget')
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A static analyzer for Python2 and Python3 code"
 arch=('i686' 'x86_64')
-url="https://beniget.readthedocs.io/"
+url="https://github.com/serge-sans-paille/beniget"
 license=('BSD')
 makedepends=('python-setuptools' 'python2-setuptools')
 _name=${pkgbase#python-}
