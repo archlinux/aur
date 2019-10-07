@@ -16,7 +16,7 @@ pkgname=(
 	'rom-properties-xfce'
 )
 pkgver=1.4.3
-pkgrel=2
+pkgrel=3
 pkgdesc="ROM Properties Page shell extension meta package"
 arch=('x86_64')
 url="https://github.com/GerbilSoft/rom-properties"
@@ -66,8 +66,8 @@ package_rom-properties-cli() {
 
 package_rom-properties-gnome() {
 	pkgdesc="ROM Properties Page shell extension for GNOME"
-	depends=("rom-properties-docs" "rom-properties-gtk3-common" "rom-properties-stub" "libnautilus-extension" "cairo" "gtk3" "glib2")
-	optdepends=("rom-properties-lang: localization")
+	depends=('rom-properties-docs' 'rom-properties-gtk3-common' 'rom-properties-stub' 'libnautilus-extension' 'cairo' 'gtk3' 'glib2' 'zlib' 'tinyxml2' 'nettle' 'libpng' 'curl' 'libjpeg-turbo' 'glibc')
+	optdepends=('rom-properties-lang: localization')
 
 	cd "$_pkgname-$pkgver/build/src/gtk/gnome"
 
@@ -76,8 +76,8 @@ package_rom-properties-gnome() {
 
 package_rom-properties-gtk3-common() {
 	pkgdesc="ROM Properties Page shell extension (common files for GNOME and MATE)"
-	depends=("rom-properties-stub")
-	optdepends=("rom-properties-lang: localization")
+	depends=('rom-properties-stub')
+	optdepends=('rom-properties-lang: localization')
 
 	cd "$_pkgname-$pkgver/build/src/gtk"
 
@@ -86,8 +86,8 @@ package_rom-properties-gtk3-common() {
 
 package_rom-properties-kde5() {
 	pkgdesc="ROM Properties Page shell extension for KDE 5"
-	depends=("kio" "kfilemetadata" "kwidgetsaddons" "qt5-base" "qt5-tools" "kcoreaddons" "extra-cmake-modules")
-	optdepends=("rom-properties-lang: localization")
+	depends=('kio' 'kfilemetadata' 'kwidgetsaddons' 'qt5-base' 'kcoreaddons' 'zlib' 'tinyxml2' 'nettle' 'libpng' 'curl' 'libjpeg-turbo' 'glibc')
+	optdepends=('rom-properties-lang: localization')
 
 	cd "$_pkgname-$pkgver/build/src/kde"
 
@@ -104,8 +104,8 @@ package_rom-properties-lang() {
 
 package_rom-properties-mate() {
 	pkgdesc="ROM Properties Page shell extension for GNOME"
-	depends=("rom-properties-docs" "rom-properties-gtk3-common" "rom-properties-stub" "caja" "cairo" "gtk3" "glib2")
-	optdepends=("rom-properties-lang: localization")
+	depends=('rom-properties-docs' 'rom-properties-gtk3-common' 'rom-properties-stub' 'caja' 'cairo' 'gtk3' 'glib2' 'zlib' 'tinyxml2' 'nettle' 'libpng' 'curl' 'libjpeg-turbo' 'glibc')
+	optdepends=('rom-properties-lang: localization')
 
 	cd "$_pkgname-$pkgver/build/src/gtk/mate"
 
@@ -114,7 +114,7 @@ package_rom-properties-mate() {
 
 package_rom-properties-stub() {
 	pkgdesc="ROM Properties Page shell extension (stub executable)"
-	optdepends=("rom-properties-lang: localization")
+	optdepends=('rom-properties-lang: localization')
 
 	cd "$_pkgname-$pkgver/build/src/rp-stub"
 
@@ -123,7 +123,7 @@ package_rom-properties-stub() {
 
 package_rom-properties-thumbnailer-dbus() {
 	pkgdesc="ROM Properties Page shell extension (D-Bus Thumbnailer service for XFCE)"
-	depends=("rom-properties-docs" "thunar" "glib2")
+	depends=('rom-properties-docs' 'thunar' 'glib2')
 	optdepends=("rom-properties-lang: localization")
 
 	cd "$_pkgname-$pkgver/build/src/gtk/thumbnailer-dbus"
@@ -141,7 +141,7 @@ package_rom-properties-xdg() {
 
 package_rom-properties-xfce() {
 	pkgdesc="ROM Properties Page shell extension for XFCE (GTK+ 3.x)"
-	depends=("rom-properties-docs" "rom-properties-thumbnailer-dbus" "thunar" "cairo" "gtk3" "glib2")
+	depends=('rom-properties-docs' 'rom-properties-thumbnailer-dbus' 'thunar' 'cairo' 'gtk3' 'glib2' 'zlib' 'tinyxml2' 'nettle' 'libpng' 'curl' 'libjpeg-turbo' 'glibc')
 	optdepends=("rom-properties-lang: localization")
 
 	cd "$_pkgname-$pkgver/build/src/gtk/xfce3"
