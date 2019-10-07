@@ -27,13 +27,14 @@ build() {
 }
 
 package() {
+    cd "$_gitname"
 	mkdir -p "$pkgdir/usr/bin"
 	install -p -m755 "$srcdir/$_gitname/$_gitname" "$pkgdir/usr/bin"
 
 	# Package license (if available)
 	for f in LICENSE COPYING LICENSE.* COPYING.*; do
-		if [ -e "$srcdir/src/$_gourl/$f" ]; then
-			install -Dm644 "$srcdir/src/$_gourl/$f" \
+		if [ -e "$f" ]; then
+			install -Dm644 "$f" \
 				"$pkgdir/usr/share/licenses/$_gitname/$f"
 		fi
 	done
