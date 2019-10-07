@@ -1,0 +1,104 @@
+pkgbase = rom-properties-all
+	pkgdesc = ROM Properties Page shell extension meta package
+	pkgver = 1.4.3
+	pkgrel = 1
+	url = https://github.com/GerbilSoft/rom-properties
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	depends = zlib
+	depends = tinyxml2
+	depends = nettle
+	depends = libpng
+	depends = curl
+	depends = libjpeg-turbo
+	depends = glibc
+	source = rom-properties-all-1.4.3.tar.gz::https://github.com/GerbilSoft/rom-properties/archive/v1.4.3.tar.gz
+	sha256sums = 21e2ac5e4f90a8b64837f8aaeac401e4a14ad1a6a8ba604c16f10182f3617655
+
+pkgname = rom-properties-all
+	depends = rom-properties-docs
+	depends = rom-properties-cli
+	depends = rom-properties-gnome
+	depends = rom-properties-gtk3-common
+	depends = rom-properties-kde5
+	depends = rom-properties-lang
+	depends = rom-properties-mate
+	depends = rom-properties-stub
+	depends = rom-properties-thumbnailer-dbus
+	depends = rom-properties-xdg
+	depends = rom-properties-xfce
+
+pkgname = rom-properties-docs
+	pkgdesc = ROM Properties Page shell extension documentation
+
+pkgname = rom-properties-cli
+	pkgdesc = ROM Properties Page shell extension (command line version)
+	depends = rom-properties-docs
+	optdepends = rom-properties-lang: localization
+
+pkgname = rom-properties-gnome
+	pkgdesc = ROM Properties Page shell extension for GNOME
+	depends = rom-properties-docs
+	depends = rom-properties-gtk3-common
+	depends = rom-properties-stub
+	depends = libnautilus-extension
+	depends = cairo
+	depends = gtk3
+	depends = glib2
+	optdepends = rom-properties-lang: localization
+
+pkgname = rom-properties-gtk3-common
+	pkgdesc = ROM Properties Page shell extension (common files for GNOME and MATE)
+	depends = rom-properties-stub
+	optdepends = rom-properties-lang: localization
+
+pkgname = rom-properties-kde5
+	pkgdesc = ROM Properties Page shell extension for KDE 5
+	depends = kio
+	depends = kfilemetadata
+	depends = kwidgetsaddons
+	depends = qt5-base
+	depends = qt5-tools
+	depends = kcoreaddons
+	depends = extra-cmake-modules
+	optdepends = rom-properties-lang: localization
+
+pkgname = rom-properties-lang
+	pkgdesc = ROM Properties Page shell extension language files
+
+pkgname = rom-properties-mate
+	pkgdesc = ROM Properties Page shell extension for GNOME
+	depends = rom-properties-docs
+	depends = rom-properties-gtk3-common
+	depends = rom-properties-stub
+	depends = caja
+	depends = cairo
+	depends = gtk3
+	depends = glib2
+	optdepends = rom-properties-lang: localization
+
+pkgname = rom-properties-stub
+	pkgdesc = ROM Properties Page shell extension (stub executable)
+	optdepends = rom-properties-lang: localization
+
+pkgname = rom-properties-thumbnailer-dbus
+	pkgdesc = ROM Properties Page shell extension (D-Bus Thumbnailer service for XFCE)
+	depends = rom-properties-docs
+	depends = thunar
+	depends = glib2
+	optdepends = rom-properties-lang: localization
+
+pkgname = rom-properties-xdg
+	pkgdesc = ROM Properties Page shell extension MIME files
+
+pkgname = rom-properties-xfce
+	pkgdesc = ROM Properties Page shell extension for XFCE (GTK+ 3.x)
+	depends = rom-properties-docs
+	depends = rom-properties-thumbnailer-dbus
+	depends = thunar
+	depends = cairo
+	depends = gtk3
+	depends = glib2
+	optdepends = rom-properties-lang: localization
+
