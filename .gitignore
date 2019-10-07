@@ -1,3 +1,5 @@
 /src/
 /pkg/
 /nautilus/
+*.pkg.tar
+*.pkg.tar.xz
