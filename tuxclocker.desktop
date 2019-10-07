@@ -1,0 +1,10 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Type=Application
+Name=Tuxclocker
+Comment=GPU overclocking utility
+Exec=tuxclocker
+Icon=tuxclocker
+Terminal=false
+Categories=Utility;
+Keywords=overclock;amdgpu;nvidia;
