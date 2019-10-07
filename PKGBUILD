@@ -6,7 +6,7 @@
 
 pkgname=impressive
 pkgver=0.12.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A fancy PDF presentation program (previously known as KeyJNote)'
 arch=('any')
 url='http://impressive.sourceforge.net'

@@ -1,7 +1,7 @@
 pkgbase = impressive
 	pkgdesc = A fancy PDF presentation program (previously known as KeyJNote)
 	pkgver = 0.12.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://impressive.sourceforge.net
 	arch = any
 	license = GPL2
