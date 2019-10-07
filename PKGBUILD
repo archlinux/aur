@@ -7,9 +7,8 @@ pkgdesc='The .NET Core SDK (binary version)'
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://dotnet.microsoft.com/download/dotnet-core'
 license=('MIT')
-depends=('dotnet-runtime-bin')
+depends=('dotnet-runtime=3.0.0')
 options=('staticlibs')
-conflicts=('dotnet-sdk' 'dotnet-sdk-rc' 'dotnet-sdk-preview')
 provides=('dotnet-sdk=3.0.100')
 source_armv7h=('https://download.visualstudio.microsoft.com/download/pr/8ddb8193-f88c-4c4b-82a3-39fcced27e91/b8e0b9bf4cf77dff09ff86cc1a73960b/dotnet-sdk-3.0.100-linux-arm.tar.gz')
 source_aarm64=('https://download.visualstudio.microsoft.com/download/pr/cbc83a0e-895c-4959-99d9-21cd11596e64/b0e59c2ba2bd3ef0f592acbeae7ab27d/dotnet-sdk-3.0.100-linux-arm64.tar.gz')
@@ -20,6 +19,6 @@ sha512sums_x86_64=('766da31f9a0bcfbf0f12c91ea68354eb509ac2111879d55b656f19299c6e
 
 package() {
   install -dm 755 "${pkgdir}"/{opt/dotnet,usr/share/licenses}
-  cp -dr --no-preserve='ownership' sdk "${pkgdir}"/opt/dotnet/
-  ln -s dotnet-runtime "${pkgdir}"/usr/share/licenses/dotnet-sdk
+  cp -dr --no-preserve='ownership' packs sdk templates "${pkgdir}"/opt/dotnet/
+  ln -s dotnet-host-bin "${pkgdir}"/usr/share/licenses/dotnet-sdk-bin
 }

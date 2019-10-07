@@ -7,11 +7,8 @@ pkgbase = dotnet-sdk-bin
 	arch = armv7h
 	arch = aarch64
 	license = MIT
-	depends = dotnet-runtime-bin
-	provides = dotnet-sdk
-	conflicts = dotnet-sdk-2.0
-	conflicts = dotnet-sdk
-	conflicts = dotnet-sdk-rc
+	depends = dotnet-runtime=3.0.0
+	provides = dotnet-sdk=3.0.100
 	options = staticlibs
 	source_x86_64 = https://download.visualstudio.microsoft.com/download/pr/886b4a4c-30af-454b-8bec-81c72b7b4e1f/d1a0c8de9abb36d8535363ede4a15de6/dotnet-sdk-3.0.100-linux-x64.tar.gz
 	sha512sums_x86_64 = 766da31f9a0bcfbf0f12c91ea68354eb509ac2111879d55b656f19299c6ea1c005d31460dac7c2a4ef82b3edfea30232c82ba301fb52c0ff268d3e3a1b73d8f7
