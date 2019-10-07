@@ -3,12 +3,13 @@
 
 pkgname=biglybt
 pkgver=2.1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Feature-filled Bittorrent client based on the Azureus project"
 arch=('x86_64')
 url="https://www.biglybt.com/"
 license=('GPL3')
-depends=('desktop-file-utils' 'xdg-user-dirs' 'java-runtime>=9')
+depends=('desktop-file-utils' 'xdg-user-dirs' 'java-runtime>=8')
+optdepends=('jna' 'libappindicator-gtk3' 'ttf-dejavu')
 options=('!strip')
 install=$pkgname.install
 source=("GitHub_BiglyBT_Installer_$pkgver.sh::https://github.com/BiglySoftware/BiglyBT/releases/download/v$pkgver/GitHub_BiglyBT_Installer.sh")
