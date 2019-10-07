@@ -10,7 +10,7 @@ license=('ISC')
 depends=(libcoopgamma libred)
 makedepends=(libcoopgamma libclut libred)
 source=($pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
-sha256sums=(60e123f824273b5137f98784bb3632c128d9f108448df93420cb5ba2c0450cc6)
+sha256sums=(897fa91982279c0119f6d0ef49952ebe34f56b81ee2874de4d0a94338a98b337)
 
 
 build() {
