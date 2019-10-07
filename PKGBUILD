@@ -8,7 +8,7 @@ url=https://github.com/tridactyl/tridactyl
 arch=('any')
 license=('Apache')
 groups=('firefox-addons')
-makedepends=('git' 'yarn')
+makedepends=('git' 'node-gyp' 'python' 'yarn')
 source=("git+$url.git")
 sha512sums=('SKIP')
 
