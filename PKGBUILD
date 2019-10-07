@@ -2,7 +2,7 @@
 # Contributor: drakkan <nicola.murino at gmail dot com>
 pkgname=sftpgo-git
 _pkgname=sftpgo
-pkgver=r95.dc5eeb5
+pkgver=r145.557831f
 pkgrel=1
 pkgdesc='Full featured and highly configurable SFTP server'
 arch=('i686' 'x86_64')
@@ -38,6 +38,8 @@ package() {
   install -Dm755 sftpgo "$pkgdir/usr/bin/${_pkgname}"
   install -Dm 644 init/${_pkgname}.service -t "${pkgdir}/usr/lib/systemd/system"
   install -Dm 644 sftpgo.json -t "${pkgdir}/etc/${_pkgname}"
+  cp -r templates "${pkgdir}/etc/${_pkgname}/"
+  cp -r static "${pkgdir}/etc/${_pkgname}/"
   install -d "${pkgdir}/usr/share/doc/${_pkgname}"
   cp -r sql "${pkgdir}/usr/share/doc/${_pkgname}/"
   install -Dm 644 README.md "${pkgdir}"/usr/share/doc/${_pkgname}/README.md
