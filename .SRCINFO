@@ -1,0 +1,21 @@
+pkgbase = blis-openmp-git
+	pkgdesc = BLAS-like Library Instantiation Software Framework (with OpenMP support)
+	pkgver = r1719.171f1006
+	pkgrel = 1
+	url = https://github.com/flame/blis
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = make
+	makedepends = gcc
+	makedepends = python
+	provides = blis
+	conflicts = blis
+	conflicts = blis-git
+	options = staticlibs
+	source = blis-openmp-git::git+https://github.com/flame/blis.git
+	sha1sums = SKIP
+
+pkgname = blis-openmp-git
+
