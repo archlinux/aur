@@ -1,23 +1,23 @@
 # Maintainer: Oystein Sture <oysstu (at) gmail (dot) com>
 # Contributor: 
 pkgname=python-tensorflow-probability
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Probabilistic reasoning and statistical analysis in TensorFlow"
 url="https://github.com/tensorflow/probability"
 arch=('any')
 license=('APACHE')
-depends=('python-tensorflow' 'python-numpy' 'python-six')
+depends=('python-tensorflow' 'python-numpy' 'python-six' 'python-decorator' 'python-cloudpickle' 'python-gast>=0.2.0' 'python-gast<0.3.0')
 makedepends=('python-setuptools')
-source=("https://github.com/tensorflow/probability/archive/v${pkgver::-2}.tar.gz")
-sha256sums=('aa938dfb84e68e1f645a5543ed2e7eeb2bdc260f751e5a4e8434b25062b7a25f')
+source=("https://github.com/tensorflow/probability/archive/${pkgver}.tar.gz")
+sha256sums=('f6049549f6d6b82962523a6bf61c40c1d0c7ac685f209c0084a6da81dd78181d')
 
 build() {
-  cd "${srcdir}"/probability-${pkgver::-2}
+  cd "${srcdir}"/probability-${pkgver}
   python setup.py build
 }
 
 package() {
-  cd "${srcdir}"/probability-${pkgver::-2}
+  cd "${srcdir}"/probability-${pkgver}
   python setup.py install --root=${pkgdir} --optimize=1 --skip-build
 }
