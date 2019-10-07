@@ -35,6 +35,13 @@ pkgname = rom-properties-docs
 pkgname = rom-properties-cli
 	pkgdesc = ROM Properties Page shell extension (command line version)
 	depends = rom-properties-docs
+	depends = zlib
+	depends = tinyxml2
+	depends = nettle
+	depends = libpng
+	depends = curl
+	depends = libjpeg-turbo
+	depends = glibc
 	optdepends = rom-properties-lang: localization
 
 pkgname = rom-properties-gnome
