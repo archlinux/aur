@@ -1,14 +1,14 @@
 # Maintainer: Quentin Bourgeois <quentin+archlinux@bourgeois.eu>
 #
-# See view-source:https://addons.mozilla.org/en-US/firefox/addon/mooltipass-extension/versions/
-# and look for <p class="install-button">
-# https://addons.mozilla.org/firefox/downloads/file/1030833/mooltipass_extension-1.6.2-an+fx-linux.xpi?src=version-history
+# Open firefox to get the install link rendered
+# Select the packaged version and inspect the "add to Firefox"
+# https://addons.mozilla.org/firefox/downloads/file/3391144/mooltipass_extension-1.7.3-fx.xpi
 _extension_name='mooltipass_extension'
 _extension_id='{da36041e-5ce1-4c8a-9dc5-406cc98f0a23}'
-_extension_dirname=1030833
-_extension_suffix=-an+fx-linux
+_extension_dirname=3391144
+_extension_suffix=-fx
 pkgname="firefox-extension-mooltipass"
-pkgver=1.6.2
+pkgver=1.7.3
 pkgrel=1
 pkgdesc='Retrieve and store Mooltipass credentials easily from websites.'
 license=('custom:MIT')
@@ -18,7 +18,7 @@ depends=('firefox'
          'moolticute')
 source=("${pkgname}-${pkgver}${_extension_suffix}.xpi::""https://addons.mozilla.org/firefox/downloads/file/${_extension_dirname}/${_extension_name}-${pkgver}${_extension_suffix}.xpi"
         'LICENSE')
-sha256sums=('f67fb81ef3db30f28200ce114f3e35ea2b89222d1f512deafcfba8598ad8e789'
+sha256sums=('bbfd570df3179cb13b3c612c35591eb0965eeac7051db90e9ab422432009044a'
             '2af680c39ef493fb82830356d1d3df1acb5a06033cba2dec7a19e21caa77a866')
 noextract=("${pkgname}-${pkgver}${_extension_suffix}.xpi")
 
