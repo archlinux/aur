@@ -1,0 +1,18 @@
+pkgbase = kget-integrator
+	pkgdesc = Integrate KGet Download Manager with Google Chrome, Chromium, Vivaldi, Opera and Firefox
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/NicolasGuilloux/KGet-Integrator
+	arch = any
+	license = GPL3
+	depends = python3
+	depends = kget
+	optdepends = kget-integrator-chrome: native messaging hosts for Google Chrome
+	optdepends = kget-integrator-chromium: native messaging hosts for Chromium and Vivaldi
+	optdepends = kget-integrator-opera: native messaging hosts for Opera
+	optdepends = kget-integrator-firefox: native messaging hosts for Firefox
+	source = kget-integrator-1.1.1::https://raw.githubusercontent.com/NicolasGuilloux/KGet-Integrator/v1.1.1/kget-integrator
+	md5sums = 29eb300bc60522c676b2ef466bfc6bb6
+
+pkgname = kget-integrator
+
