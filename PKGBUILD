@@ -11,16 +11,16 @@ depends=('fontconfig' 'xorg-font-utils')
 noextract=()
 
 source=(
-  "https://github.com/microsoft/cascadia-code/releases/download/v${pkgver}/Cascadia.ttf"
-  "https://github.com/microsoft/cascadia-code/raw/v${pkgver}/LICENSE"
+  "Cascadia-${pkgver}.ttf::https://github.com/microsoft/cascadia-code/releases/download/v${pkgver}/Cascadia.ttf"
+  "LICENSE-${pkgver}::https://github.com/microsoft/cascadia-code/raw/v${pkgver}/LICENSE"
 )
-md5sums=('be4424ae2b9025062ed0ef751ed23afb'
+md5sums=('0b829211bece38273358495d85497632'
          'd7c8ce104cefae86ac6fbc55bf0e3f82')
 
 
 package() {
   cd "$srcdir"
   
-  install -Dm644 "Cascadia.ttf" "${pkgdir}/usr/share/fonts/TTF/Cascadia.ttf"
-  install -Dm644 "LICENSE"      "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "Cascadia-${pkgver}.ttf" "${pkgdir}/usr/share/fonts/TTF/Cascadia.ttf"
+  install -Dm644 "LICENSE-${pkgver}"      "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
