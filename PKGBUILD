@@ -17,7 +17,7 @@ source=('git://github.com/EricChiang/pup.git')
 md5sums=('SKIP')
 
 pkgver() {
-  cd $_gitname
+  cd "$_gitname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
