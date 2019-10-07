@@ -12,7 +12,7 @@ pkgdesc="A WYSIWYG text editor that aims at bringing the concept of a wiki to th
 arch=(any)
 license=('GPL' 'PerlArtistic')
 url="http://zim-wiki.org/"
-depends=('python2')
+depends=('python')
 conflicts=('zim')
 replaces=('zim')
 optdepends=('bzr: Version Control plugin'
@@ -24,7 +24,7 @@ optdepends=('bzr: Version Control plugin'
             'lilypond: Insert Score plugin'
             'mercurial: Version Control plugin'
             'pygtksourceview2: Source View plugin'
-            'python2-gtkspell: Spell Checker plugin'
+            'python-gtkspell: Spell Checker plugin'
             'r: Insert GNU R Plot plugin'
             'scrot: Insert Screenshot plugin'
             'texlive-bin: Insert Equation plugin'
@@ -48,5 +48,5 @@ build() {
 package() {
 	cd ${srcdir}/${pkgname}
 
-	python2 setup.py install --root=${pkgdir} --optimize=1
+	python setup.py install --root=${pkgdir} --optimize=1
 }
