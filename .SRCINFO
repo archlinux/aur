@@ -1,6 +1,6 @@
 pkgbase = rstudio-server-git
 	pkgdesc = A new integrated development environment (IDE) for R programming language
-	pkgver = v1.2.1330.r1180.g655da0f077
+	pkgver = v1.2.5001.r1361.g5b19513f7e
 	pkgrel = 1
 	url = http://www.rstudio.org/
 	install = rstudio-server-git.install

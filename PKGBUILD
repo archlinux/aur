@@ -8,7 +8,7 @@
 #
 pkgname=rstudio-server-git
 _gitname="rstudio"
-pkgver=v1.2.1330.r1180.g655da0f077
+pkgver=v1.2.5001.r1361.g5b19513f7e
 _gwtver=2.8.2
 _ginver=2.1.2
 _clangver=3.8.0
@@ -77,7 +77,7 @@ build() {
   cd "${srcdir}/$_gitname/build"
   # Configure cmake 
   #cmake -DRSTUDIO_TARGET=Server -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/lib/rstudio-server -DCMAKE_DL_LIBRARIES=/usr/lib64/libdl.so -DCMAKE_LIBR_DOC_DIR=/usr/share/doc/R -DCMAKE_LIBR_EXECUTABLE=/usr/bin/R -DCMAKE_LIBR_HOME=/usr/lib64/R -DCMAKE_LIBR_INCLUDE_DIRS=/usr/include/R -DCMAKE_LIBR_CORE_LIBRARY=usr/lib64/R/lib/libR.so  -DRSTUDIO_USE_SYSTEM_BOOST=Yes ..
-  cmake -DRSTUDIO_TARGET=Server -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/lib/rstudio-server -DRSTUDIO_USE_SYSTEM_BOOST=yes ..
+  cmake -DRSTUDIO_TARGET=Server -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/lib/rstudio-server -DRSTUDIO_USE_SYSTEM_BOOST=yes -DBoost_NO_BOOST_CMAKE=ON ..
 
 }
 
