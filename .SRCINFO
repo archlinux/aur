@@ -4,7 +4,6 @@ pkgbase = skywire
 	pkgrel = 1
 	url = https://github.com/skycoin/skywire
 	arch = any
-	makedepends = dep
 	makedepends = git
 	makedepends = go
 	makedepends = gcc

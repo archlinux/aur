@@ -10,7 +10,7 @@ pkgrel=1
 arch=('any')
 url="https://${pkggopath}"
 license=()
-makedepends=(dep git go gcc)
+makedepends=(git go gcc)
 provides=('skywire')
 conflicts=('skywire-mainnet')
 source=("git+${url}.git#branch=${BRANCH:-master}")
