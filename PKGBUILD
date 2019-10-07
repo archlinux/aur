@@ -23,16 +23,16 @@ url="https://github.com/GerbilSoft/rom-properties"
 license=('GPL2')
 depends=('zlib' 'tinyxml2' 'nettle' 'libpng' 'curl' 'libjpeg-turbo' 'glibc')
 makedepends=('cmake')
-source=("rom-properties-$pkgver.tar.gz::https://github.com/GerbilSoft/rom-properties/archive/v$pkgver.tar.gz")
+source=("$_pkgname-$pkgver.tar.gz::https://github.com/GerbilSoft/rom-properties/archive/v$pkgver.tar.gz")
 sha256sums=('21e2ac5e4f90a8b64837f8aaeac401e4a14ad1a6a8ba604c16f10182f3617655')
 
 prepare() {
-	cd "rom-properties-$pkgver"
+	cd "$_pkgname-$pkgver"
 	mkdir build
 }
 
 build() {
-	cd "rom-properties-$pkgver/build"
+	cd "$_pkgname-$pkgver/build"
 	cmake -DUSE_INTERNAL_XML=False -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr ..
 	make
 }
@@ -49,7 +49,7 @@ package_rom-properties-all() {
 package_rom-properties-docs() {
 	pkgdesc="ROM Properties Page shell extension documentation"
 
-	cd "rom-properties-$pkgver/build/doc"
+	cd "$_pkgname-$pkgver/build/doc"
 
 	make DESTDIR="$pkgdir" install
 }
@@ -59,7 +59,7 @@ package_rom-properties-cli() {
 	depends=("rom-properties-docs")
 	optdepends=("rom-properties-lang: localization")
 
-	cd "rom-properties-$pkgver/build/src/rpcli"
+	cd "$_pkgname-$pkgver/build/src/rpcli"
 
 	make DESTDIR="$pkgdir" install
 }
@@ -69,7 +69,7 @@ package_rom-properties-gnome() {
 	depends=("rom-properties-docs" "rom-properties-gtk3-common" "rom-properties-stub" "libnautilus-extension" "cairo" "gtk3" "glib2")
 	optdepends=("rom-properties-lang: localization")
 
-	cd "rom-properties-$pkgver/build/src/gtk/gnome"
+	cd "$_pkgname-$pkgver/build/src/gtk/gnome"
 
 	make DESTDIR="$pkgdir" install
 }
@@ -79,7 +79,7 @@ package_rom-properties-gtk3-common() {
 	depends=("rom-properties-stub")
 	optdepends=("rom-properties-lang: localization")
 
-	cd "rom-properties-$pkgver/build/src/gtk"
+	cd "$_pkgname-$pkgver/build/src/gtk"
 
 	make DESTDIR="$pkgdir" install/local
 }
@@ -89,7 +89,7 @@ package_rom-properties-kde5() {
 	depends=("kio" "kfilemetadata" "kwidgetsaddons" "qt5-base" "qt5-tools" "kcoreaddons" "extra-cmake-modules")
 	optdepends=("rom-properties-lang: localization")
 
-	cd "rom-properties-$pkgver/build/src/kde"
+	cd "$_pkgname-$pkgver/build/src/kde"
 
 	make DESTDIR="$pkgdir" install
 }
@@ -97,7 +97,7 @@ package_rom-properties-kde5() {
 package_rom-properties-lang() {
 	pkgdesc="ROM Properties Page shell extension language files"
 
-	cd "rom-properties-$pkgver/build/locale"
+	cd "$_pkgname-$pkgver/build/locale"
 
 	make DESTDIR="$pkgdir" install
 }
@@ -107,7 +107,7 @@ package_rom-properties-mate() {
 	depends=("rom-properties-docs" "rom-properties-gtk3-common" "rom-properties-stub" "caja" "cairo" "gtk3" "glib2")
 	optdepends=("rom-properties-lang: localization")
 
-	cd "rom-properties-$pkgver/build/src/gtk/mate"
+	cd "$_pkgname-$pkgver/build/src/gtk/mate"
 
 	make DESTDIR="$pkgdir" install
 }
@@ -116,7 +116,7 @@ package_rom-properties-stub() {
 	pkgdesc="ROM Properties Page shell extension (stub executable)"
 	optdepends=("rom-properties-lang: localization")
 
-	cd "rom-properties-$pkgver/build/src/rp-stub"
+	cd "$_pkgname-$pkgver/build/src/rp-stub"
 
 	make DESTDIR="$pkgdir" install
 }
@@ -126,7 +126,7 @@ package_rom-properties-thumbnailer-dbus() {
 	depends=("rom-properties-docs" "thunar" "glib2")
 	optdepends=("rom-properties-lang: localization")
 
-	cd "rom-properties-$pkgver/build/src/gtk/thumbnailer-dbus"
+	cd "$_pkgname-$pkgver/build/src/gtk/thumbnailer-dbus"
 
 	make DESTDIR="$pkgdir" install
 }
@@ -134,7 +134,7 @@ package_rom-properties-thumbnailer-dbus() {
 package_rom-properties-xdg() {
 	pkgdesc="ROM Properties Page shell extension MIME files"
 
-	cd "rom-properties-$pkgver/build/xdg"
+	cd "$_pkgname-$pkgver/build/xdg"
 
 	make DESTDIR="$pkgdir" install
 }
@@ -144,7 +144,7 @@ package_rom-properties-xfce() {
 	depends=("rom-properties-docs" "rom-properties-thumbnailer-dbus" "thunar" "cairo" "gtk3" "glib2")
 	optdepends=("rom-properties-lang: localization")
 
-	cd "rom-properties-$pkgver/build/src/gtk/xfce3"
+	cd "$_pkgname-$pkgver/build/src/gtk/xfce3"
 
 	make DESTDIR="$pkgdir" install
 }
