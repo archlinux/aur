@@ -1,9 +1,10 @@
 [Desktop Entry]
+Version=1.0
 Type=Application
-Name=Signal Private Messenger
-GenericName=Messenger
-Comment=Private messaging from your desktop
+Name=Signal
+Comment=Electron application that links with Signal on mobile
+Exec=signal-desktop
 Icon=signal-desktop
-Exec=signal-desktop --use-tray-icon
-Categories=Network;Messenger;
+Categories=Network;InstantMessenging;
 StartupNotify=true
+Terminal=false

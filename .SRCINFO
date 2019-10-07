@@ -1,35 +1,23 @@
 pkgbase = signal-desktop
-	pkgdesc = Private messaging from your desktop
-	pkgver = 1.3.0
+	pkgdesc = Electron application that links with Signal on mobile
+	pkgver = 1.27.3
 	pkgrel = 1
-	url = https://github.com/WhisperSystems/Signal-Desktop
-	install = signal-desktop.install
-	arch = any
+	url = https://signal.org
+	arch = x86_64
 	license = GPL3
-	makedepends = git
-	makedepends = npm
-	makedepends = python2
 	makedepends = yarn
-	depends = alsa-lib
-	depends = fontconfig
-	depends = gconf
-	depends = gtk2
-	depends = libnotify
-	depends = libxtst
-	depends = libxss
-	depends = nss
-	optdepends = gnome-shell-extension-topicons-plus
+	makedepends = git
+	makedepends = python2
+	makedepends = nodejs>=12
+	makedepends = npm
+	makedepends = python
+	makedepends = openssl-1.0
+	depends = electron
 	conflicts = signal
-	conflicts = signal-desktop-bin
-	conflicts = signal-desktop-beta
-	source = git+https://github.com/WhisperSystems/Signal-Desktop.git#tag=v1.3.0
+	source = signal-desktop-1.27.3.tar.gz::https://github.com/signalapp/Signal-Desktop/archive/v1.27.3.tar.gz
 	source = signal-desktop.desktop
-	source = signal-desktop
-	source = signal-desktop.install
-	sha256sums = SKIP
-	sha256sums = 2287a32ed2ad8772fab02b7ec3bda185c6e85263f7b6b62595b66535ba8687b0
-	sha256sums = 235711732657fab3a6c420bd975bb02ed8757d5e741b563490c0bc74ea1182b9
-	sha256sums = 882ffedd0b319705271c113f21f7cecf76b28f581fa5aa4e9ca63f447d072655
+	sha512sums = 2b9f2776524313b237f1b5da56a8891959e7100b20dc80c58fa2f8895d809dc9db04d932e09c382bd5c9143d0fd0acab8aa59bf08ef76a397af2bff48c0a2762
+	sha512sums = 394a6db18a7bfc073e7a4e708d8a97716cf292810948a4fd28ec152e2f2318d7fd75457161707fa79cc28b5ac12ea6f66028417078c48dfbd939741263b5496f
 
 pkgname = signal-desktop
 
