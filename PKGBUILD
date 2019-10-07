@@ -2,8 +2,8 @@
 
 pkgname=i2c-piix4-aura-dkms
 _pkgbase=${pkgname%-dkms}
-pkgver=1
-pkgrel=4
+pkgver=5.3.4
+pkgrel=1
 pkgdesc="The i2c-piix4 kernel driver, patched to be used with OpenAuraSDK: https://gitlab.com/CalcProgrammer1/OpenAuraSDK"
 arch=('x86_64')
 url="https://bugzilla.kernel.org/show_bug.cgi?id=202587"
@@ -15,7 +15,7 @@ source=("https://raw.githubusercontent.com/torvalds/linux/master/drivers/i2c/bus
         'Makefile'
 	'90-i2c-aura.rules'
 	'i2c-aura.conf')
-md5sums=('fbcf970b45eeb4f1c51b2eddd6503edf'
+md5sums=('26cff2ae6e3a2356fefe1c698ce16e77'
          'be2def5b9080bdbde94631043fb9575e'
          'dadbad0c5a8bec3ff66161d3f150bbb7'
          '55c9591930d320e3f9912d315c4682ba'
