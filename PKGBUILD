@@ -56,7 +56,7 @@ package_rom-properties-docs() {
 
 package_rom-properties-cli() {
 	pkgdesc="ROM Properties Page shell extension (command line version)"
-	depends=("rom-properties-docs")
+	depends=('rom-properties-docs' 'zlib' 'tinyxml2' 'nettle' 'libpng' 'curl' 'libjpeg-turbo' 'glibc')
 	optdepends=("rom-properties-lang: localization")
 
 	cd "$_pkgname-$pkgver/build/src/rpcli"
