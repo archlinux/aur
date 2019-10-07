@@ -17,8 +17,8 @@ source=('git://github.com/EricChiang/pup.git')
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$_gitname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "$_gitname"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
@@ -28,14 +28,14 @@ build() {
 
 package() {
     cd "$_gitname"
-	mkdir -p "$pkgdir/usr/bin"
-	install -p -m755 "$srcdir/$_gitname/$_gitname" "$pkgdir/usr/bin"
+    mkdir -p "$pkgdir/usr/bin"
+    install -p -m755 "$srcdir/$_gitname/$_gitname" "$pkgdir/usr/bin"
 
-	# Package license (if available)
-	for f in LICENSE COPYING LICENSE.* COPYING.*; do
-		if [ -e "$f" ]; then
-			install -Dm644 "$f" \
-				"$pkgdir/usr/share/licenses/$_gitname/$f"
-		fi
-	done
+    # Package license (if available)
+    for f in LICENSE COPYING LICENSE.* COPYING.*; do
+        if [ -e "$f" ]; then
+            install -Dm644 "$f" \
+                "$pkgdir/usr/share/licenses/$_gitname/$f"
+        fi
+    done
 }
