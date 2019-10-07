@@ -28,8 +28,7 @@ build() {
 
 package() {
     cd "$_gitname"
-    mkdir -p "$pkgdir/usr/bin"
-    install -p -m755 "$srcdir/$_gitname/$_gitname" "$pkgdir/usr/bin"
+    install -Dm755 "$srcdir/$_gitname/$_gitname" "$pkgdir/usr/bin/$_gitname"
 
     # Package license (if available)
     for f in LICENSE COPYING LICENSE.* COPYING.*; do
