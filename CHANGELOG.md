@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) 
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## [Unreleased] - 2019-08-15
+## [Unreleased] - 2019-10-07
 
 ### Added
 - Support for 256-color terminals
@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Fixed
 - Missing ncursesw dependency listing for deb build
 - Performance issue with show commit
+- Visual mode index error when changing action or swapping lines
 
 ### Removed
 - Unused `errorColor` configuration
