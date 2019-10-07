@@ -1,0 +1,29 @@
+pkgbase = kget-integrator-browsers
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/NicolasGuilloux/KGet-Integrator
+	arch = any
+	license = GPL3
+	depends = kget-integrator
+	source = kget-chrome-1.1.1::https://raw.githubusercontent.com/NicolasGuilloux/KGet-Integrator/v1.1.1/Conf/com.kgetdm.chrome.json
+	source = kget-firefox-1.1.1::https://raw.githubusercontent.com/NicolasGuilloux/KGet-Integrator/v1.1.1/Conf/com.kgetdm.firefox.json
+	md5sums = 4029bede327a730ad3cbdeca07426eb1
+	md5sums = a3f781f4d06312c4aae24bbf0d6de1e4
+
+pkgname = kget-integrator-chrome
+	pkgdesc = Configuration to connect Google Chrome with kget-integrator
+	optdepends = google-chrome: the browser
+
+pkgname = kget-integrator-chromium
+	pkgdesc = Configuration to connect Chromium with kget-integrator
+	optdepends = chromium: the browser
+
+pkgname = kget-integrator-opera
+	pkgdesc = Configuration to connect Opera with kget-integrator
+	optdepends = opera-beta: the browser beta version
+	optdepends = opera-developer: the browser developer version
+
+pkgname = kget-integrator-firefox
+	pkgdesc = Configuration to connect Firefox with kget-integrator
+	optdepends = firefox: the browser
+
