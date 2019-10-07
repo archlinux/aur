@@ -1,7 +1,7 @@
 pkgbase = wine-osu
 	pkgdesc = A compatibility layer for running Windows programs - Staging branch, optimized for audio low latency on osu! (by ThePooN)
 	pkgver = 3.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://blog.thepoon.fr/osuLinuxAudioLatency/
 	arch = x86_64
 	license = LGPL
