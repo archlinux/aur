@@ -4,7 +4,7 @@
 
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-fsync       # Build kernel with a different name
-_srcver=5.2.14-arch1
+_srcver=5.3.5-arch1
 pkgver=${_srcver//-/.}
 pkgrel=1
 arch=(x86_64)
@@ -23,7 +23,6 @@ source=(
   90-linux.hook  # pacman hook for initramfs regeneration
   linux.preset   # standard config files for mkinitcpio ramdisk
   futex-wait-multiple-5.2.1.patch # futex-wait-multiple patchset w/opcode 31 for proton-4.11+ testing (aka fsync)
-  futex-Consolidate-duplicated-timer-setup-code.patch # 5.3 cleanup patch required for patchset
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -31,12 +30,11 @@ validpgpkeys=(
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            'e0d0f140128a8574217701e61e874a0a108f3b8cd0f6e35d8b16afe897999f8e'
+            '7d09d1d79a4ecb82502b4483cf989ede3f643e05613de45e12563dfe85d80423'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            'b8a9225b4b5cbabac26398d11cc26566e4407d150dacb92f3411c9bb8cc23942'
-            '6aebfbe06e19207b80d06f382b5e0625958ff2db5719b98844d6de620c195be4')
+            'b8a9225b4b5cbabac26398d11cc26566e4407d150dacb92f3411c9bb8cc23942')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-ARCH}
@@ -73,9 +71,9 @@ build() {
 
 _package() {
   pkgdesc="The ${pkgbase/linux/Linux} kernel and modules, including the futex-wait-multiple patchset for testing with Proton fsync"
-  [[ $pkgbase = linux ]] && groups=(base)
-  depends=(coreutils linux-firmware kmod mkinitcpio)
-  optdepends=('crda: to set the correct wireless channels of your country')
+  depends=(coreutils kmod initramfs)
+  optdepends=('crda: to set the correct wireless channels of your country'
+              'linux-firmware: firmware images needed for some devices')
   backup=("etc/mkinitcpio.d/$pkgbase.preset")
   install=linux.install
 
@@ -89,6 +87,9 @@ _package() {
   # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
   install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
   install -Dm644 "$modulesdir/vmlinuz" "$pkgdir/boot/vmlinuz-$pkgbase"
+
+  # Used by mkinitcpio to name the kernel
+  echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   msg2 "Installing modules..."
   make INSTALL_MOD_PATH="$pkgdir/usr" modules_install
@@ -145,9 +146,6 @@ _package-headers() {
 
   # add xfs and shmem for aufs building
   mkdir -p "$builddir"/{fs/xfs,mm}
-
-  # ???
-  mkdir "$builddir/.tmp_versions"
 
   msg2 "Installing headers..."
   cp -t "$builddir" -a include
