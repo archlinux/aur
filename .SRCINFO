@@ -1,6 +1,6 @@
 pkgbase = dumpasm-git
 	pkgdesc = compile semicolon seperated assembly instructions and hexdump
-	pkgver = 4.a294cba
+	pkgver = 5.2576b42
 	pkgrel = 1
 	url = https://github.com/jonay2000/dumpasm-git
 	arch = x86_64
