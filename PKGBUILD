@@ -2,7 +2,7 @@
 _pkgbase=rom-properties
 pkgbase=rom-properties-all
 pkgver=1.4.3
-pkgrel=6
+pkgrel=7
 pkgdesc="ROM Properties Page shell extension meta package"
 arch=('x86_64')
 url="https://github.com/GerbilSoft/rom-properties"
