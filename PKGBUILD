@@ -2,7 +2,7 @@
 _pkgbase=rom-properties
 pkgbase=rom-properties-all
 pkgver=1.4.3
-pkgrel=7
+
 pkgdesc="ROM Properties Page shell extension meta package"
 arch=('x86_64')
 url="https://github.com/GerbilSoft/rom-properties"
@@ -131,7 +131,7 @@ _package-xfce() {
 	make DESTDIR="$pkgdir" install
 }
 
-pkgname=("$_pkgbase-all" "$_pkgbase-docs" "$_pkgbase-cli" "$_pkgbase-gnome" "$_pkgbase-gtk3-common" "$_pkgbase-kde5" "$_pkgbase-lang" "$_pkgbase-mate" "$_pkgbase-stub" "$_pkgbase-thumbnailer-dbus" "$_pkgbase-xdg" "$_pkgbase-xfce")
+
 for _p in "${pkgname[@]}"; do
   eval "package_$_p() {
     $(declare -f "_package${_p#$_pkgbase}")
