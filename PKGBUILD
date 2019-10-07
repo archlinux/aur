@@ -3,8 +3,8 @@
 
 pkgname=xplanet-svn
 _pkgname=xplanet
-pkgver=20170111.209
-pkgrel=1
+pkgver=20190922.213
+pkgrel=2
 pkgdesc='Renders an image of the earth into the X root window'
 url='http://xplanet.sourceforge.net/'
 arch=('i686' 'x86_64' 'armv7h')
@@ -27,12 +27,14 @@ pkgver() {
 prepare() {
 	cd "${srcdir}/${_pkgname}"
 	patch -p1 <"${srcdir}/giflib.patch"
+	sed 's: -I`$FREETYPE_CONFIG --prefix`/include::g' -i acinclude.m4
 	aclocal && autoconf && automake --add-missing
 }
 
 build() {
 	cd "${srcdir}/${_pkgname}"
-	./configure --prefix=/usr --with-freetype
+	export FREETYPE_CONFIG="/usr/bin/pkg-config freetype2"
+	./configure --prefix=/usr
 	make
 }
 
