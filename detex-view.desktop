@@ -1,0 +1,13 @@
+[Desktop Entry]
+Name=Detex Viewer
+Name[en_US]=Detex Viewer
+GenericName=Texture viewer
+GenericName[en_US]=Texture viewer
+Comment=DDS & KTX texture viewer
+Exec=detex-view %f
+Terminal=false
+Type=Application
+Icon=image-viewer
+Categories=Graphics;2DGraphics;Viewer;
+MimeType=image/x-dds;image/ktx;
+NoDisplay=true
