@@ -1,7 +1,7 @@
 pkgbase = age-git
 	pkgdesc = A simple and secure encryption based on UNIX-style composability.
 	pkgver = r5.0940f18
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/FiloSottile/age
 	arch = i686
 	arch = x86_64
