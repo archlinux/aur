@@ -9,6 +9,7 @@ cache:
   directories:
   - ~/.ccache
   - ~/.pkg-cache
+  - ~/.cache/yay
   - blender-addons-contrib.git
   - blender-addons.git
   - blender-dev-tools.git
@@ -22,6 +23,7 @@ archlinux:
   mount:
   - ~/.ccache:~/.ccache
   - ~/.pkg-cache:/var/cache/pacman/pkg
+  - ~/.cache/yay:~/.cache/yay
   repos:
 # - bartus=https://github.com/bartoszek/AUR-repo/raw/master
   packages:
@@ -46,8 +48,7 @@ archlinux:
      sudo sed -i '/^COMPRESSXZ/s/\xz/xz -T 2/' /etc/makepkg.conf
      sudo sed -i '$a   CFLAGS="$CFLAGS -w"'   /etc/makepkg.conf
      sudo sed -i '$a CXXFLAGS="$CXXFLAGS -w"' /etc/makepkg.conf
-     mkdir -p ~/.cache/yay/optix
-     cp /var/cache/pacman/pkg/NVIDIA-OptiX-SDK-7.0.0-linux64.sh ~/.cache/yay/optix
+     mkdir -p ~/.cache/yay/optix && cp /var/cache/pacman/pkg/NVIDIA-OptiX-SDK-7.0.0-linux64.sh ~/.cache/yay/optix
   script:
 # Normalize TRAVIS variable
   - |
