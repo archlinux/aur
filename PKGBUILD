@@ -1,7 +1,7 @@
 # Maintainer: Warinyourself <warinyourself | gmail>
 
 pkgname=lightdm-webkit-theme-osmos
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="A sleek, customizable Archlinux theme for lightdm."
 arch=('any')
