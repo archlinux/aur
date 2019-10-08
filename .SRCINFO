@@ -1,8 +1,8 @@
 pkgbase = ros-melodic-geometric-shapes
 	pkgdesc = ROS - This package contains generic definitions of geometric shapes and bodies.
-	pkgver = 0.6.1
+	pkgver = 0.6.1r
 	pkgrel = 2
-	url = http://ros.org/wiki/geometric_shapes
+	url = http://wiki.ros.org/geometric_shapes
 	arch = any
 	license = BSD
 	makedepends = cmake
