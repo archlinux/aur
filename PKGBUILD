@@ -4,13 +4,13 @@
 
 pkgname=jellyfin
 pkgver=10.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='The Free Software Media System'
 arch=('i686' 'x86_64' 'armv6h')
 url='https://github.com/jellyfin/jellyfin'
 license=('GPL2')
 depends=('dotnet-runtime' 'ffmpeg' 'sqlite')
-makedepends=('dotnet-sdk')
+makedepends=('dotnet-sdk' 'yarn')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jellyfin/jellyfin/archive/v$pkgver.tar.gz"
         "jellyfin-web-$pkgver.tar.gz::https://github.com/jellyfin/jellyfin-web/archive/v$pkgver.tar.gz"
         'jellyfin.conf'
@@ -25,14 +25,14 @@ sha512sums=('4c8105338908f479590b8eebc2048175a5b843f047f6963ee6afd518a89698437d6
             '6fc2638e6ec4b1ee0240e17815c91107b694e5fde72c1bc7956c83067bbeacb632de899b86837e47a0ec04288131b15c20746373b45e0669c8976069a55d627a'
             '45a62b62d97b9a83289d4dfde684163b1bcf340c1921fb958e5a701812c61b392901841940c67e5fa5148783277d5b4dc65ba01d3a22e8f855ea62154ad9be33')
 
-prepare() {
-  cd $pkgname-$pkgver
-
-  cp -r "$srcdir"/jellyfin-web-$pkgver/src MediaBrowser.WebDashboard/jellyfin-web
-}
-
 build(){
-  cd $pkgname-$pkgver
+  cd jellyfin-web-$pkgver
+
+  yarn install
+
+  cp -r dist/. "$srcdir"/jellyfin-$pkgver/MediaBrowser.WebDashboard/jellyfin-web
+
+  cd ../jellyfin-$pkgver
 
   # Disable dotnet telemetry
   export DOTNET_CLI_TELEMETRY_OPTOUT=1

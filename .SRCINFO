@@ -1,13 +1,14 @@
 pkgbase = jellyfin
 	pkgdesc = The Free Software Media System
 	pkgver = 10.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jellyfin/jellyfin
 	arch = i686
 	arch = x86_64
 	arch = armv6h
 	license = GPL2
 	makedepends = dotnet-sdk
+	makedepends = yarn
 	depends = dotnet-runtime
 	depends = ffmpeg
 	depends = sqlite
