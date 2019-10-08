@@ -12,6 +12,11 @@ pkgbase = mfcoin-bin
 	depends = expat>=2.2.0
 	depends = freetype2>=2.7.1
 	depends = protobuf
+	provides = mfcoin
+	provides = mfcoin-daemon
+	conflicts = mfcoin-cli
+	conflicts = mfcoin-git
+	conflicts = mfcoin-cli-git
 	source_x86_64 = https://github.com/MFrcoin/MFCoin/releases/download/v.3.0.0.1/mfcoin-linux.05.10.19.zip
 	sha256sums_x86_64 = 852423d7b44c83ffd172386176bf48df5f2d400410cab36315ddbc55844fe004
 

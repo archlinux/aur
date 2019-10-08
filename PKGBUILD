@@ -1,6 +1,8 @@
 pkgname=mfcoin-bin
 pkgver=3.0.0
 pkgrel=1
+provides=('mfcoin' 'mfcoin-daemon')
+conflicts=('mfcoin-cli' 'mfcoin-git' 'mfcoin-cli-git')
 reldate='05.10.19'
 pkgdesc="MFCoin is a digital currency and blockchain service platform."
 arch=('x86_64')    
