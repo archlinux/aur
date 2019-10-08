@@ -2,7 +2,7 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=wordpress-plugin-wp-statistics
-pkgver=12.6.9
+pkgver=12.6.10
 pkgrel=1
 pkgdesc="Anti spam plugin"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('wordpress')
 makedepends=()
 options=('!strip')
 source=("${pkgname}-${pkgver}.tar.gz::https://downloads.wordpress.org/plugin/wp-statistics.${pkgver}.zip")
-sha512sums=('67d8cde74aae8f663f4b53993176d8ce2c26507fb2a0fc2a5860ec63751cbe3f55c36b2856aeb626053b460d42de009ee3dd989ad4f5baf728430b716a073bed')
+sha512sums=('14b01f86924cb20d625c96d5d042e93625a03bc337cd2ea8e65ebcccfa3f8005e541b804c030ac3bff0f1b4f0a5efdb841fbc5c095ca4e899aec6b6030f3e4ae')
 
 package() {
   install -d "${pkgdir}/usr/share/webapps/wordpress/wp-content/plugins"
