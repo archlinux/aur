@@ -1,8 +1,8 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 # shellcheck disable=SC2034
 pkgname=luxcorerender-git
-_fragment="#branch=blender2.80" #last working
-pkgver=2.2alpha1.r423.gce80403e5
+#_fragment="#branch=blender2.80" #last working
+pkgver=2.2alpha1.r490.g294637fbd
 pkgrel=1
 pkgdesc="Physically correct, unbiased rendering engine."
 arch=('x86_64')

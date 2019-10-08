@@ -1,6 +1,6 @@
 pkgbase = luxcorerender-git
 	pkgdesc = Physically correct, unbiased rendering engine.
-	pkgver = 2.2alpha1.r423.gce80403e5
+	pkgver = 2.2alpha1.r490.g294637fbd
 	pkgrel = 1
 	url = https://www.luxcorerender.org/
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = luxcorerender-git
 	conflicts = luxrays-hg
 	conflicts = luxcorerender
 	options = !buildflags
-	source = git+https://github.com/LuxCoreRender/LuxCore.git#branch=blender2.80
+	source = git+https://github.com/LuxCoreRender/LuxCore.git
 	source = python.patch
 	source = glfw.patch
 	source = boost016900_serialization.patch
