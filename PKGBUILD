@@ -23,7 +23,7 @@ source=("git+https://github.com/anthraxx/linux-hardened#branch=${_gitbranch}?sig
 )
 replaces=('linux-grsec')
 sha256sums=('SKIP'
-            '66428e31326e373868fbfe9bd67b54b3f81ef7accf303f388637bba43a0965c6'
+            '63feccba3f160c368c694f6a8fed4d8caa2c2a62cf73c7de28ab5fe276fe9923'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
