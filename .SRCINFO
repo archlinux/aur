@@ -1,0 +1,20 @@
+pkgbase = espanso-git
+	pkgdesc = Cross-platform Text Expander written in Rust
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://espanso.org/
+	install = espanso-git.install
+	arch = x86_64
+	license = GPL3
+	makedepends = rust
+	makedepends = git
+	depends = xdotool
+	depends = xclip
+	depends = libxtst
+	source = espanso::git+https://github.com/federico-terzi/espanso.git
+	source = service
+	sha512sums = SKIP
+	sha512sums = 5eb7b751e9432c7dde71da1f0c8c459b33a6a15d3a81aa21cbaa251b7b2cdddc47da9a0ab22215a9fb063ecdd8123c86c8f96459e627fd6daff4e690ff1a6df2
+
+pkgname = espanso-git
+
