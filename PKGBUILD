@@ -11,7 +11,7 @@ license=('BSD')
 depends=('python2' 'python2-setuptools')
 options=(!emptydirs)
 source=("https://pagekite.net/pk/src/$_pkgname-$pkgver.tar.gz")
-sha256sums=('9b4125e85379b6573426df7ac02712026555ca1616d512fabb381c10764aa54b')
+sha256sums=('781106b3bc09e131c8eb01525fc4c5871f87504e7065cf55ade032d8c6400470')
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver"
