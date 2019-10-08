@@ -7,7 +7,7 @@ pkgdesc="A sandbox tower defense game written in Java"
 arch=("any")
 url="https://github.com/Anuken/Mindustry"
 license=("GPL3")
-depends=("java-runtime=8")
+depends=("java-runtime=8" "sh")
 # provides=(${_pkgname})
 replaces=(${_pkgname})
 conflicts=(${_pkgname})

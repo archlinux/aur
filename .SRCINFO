@@ -6,6 +6,7 @@ pkgbase = mindustry-bin
 	arch = any
 	license = GPL3
 	depends = java-runtime=8
+	depends = sh
 	conflicts = mindustry
 	replaces = mindustry
 	noextract = mindustry-bin-96.jar
