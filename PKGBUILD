@@ -26,8 +26,6 @@ build() {
     cd build
     cmake -DCMAKE_INSTALL_PREFIX=/usr "../${_gitname}"
     make
-    cd "${srcdir}"
-    echo "0.$(git log -1 --format="%cd" --date=short | tr -d '-').$(git rev-list --count HEAD).$(git log -1 --format="%h")"
 }
 
 package() {

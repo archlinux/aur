@@ -1,6 +1,6 @@
 pkgbase = wayland-log-reader-git
 	pkgdesc = Application for navigating and making sense of WAYLAND_DEBUG log output
-	pkgver = 20180629.17.c2430c9
+	pkgver = 0.20191008.20.ed02317
 	pkgrel = 1
 	url = https://github.com/johanhelsing/wayland-log-reader
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = wayland-log-reader-git
 	arch = armv7h
 	license = GPL3
 	makedepends = git
-	makedepends = qbs
+	makedepends = cmake
 	depends = qt5-base
 	depends = qt5-quickcontrols2
 	source = wayland-log-reader-git::git://github.com/johanhelsing/wayland-log-reader.git#branch=master
