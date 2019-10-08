@@ -9,8 +9,8 @@ url="https://github.com/Warinyourself/lightdm-webkit-theme-osmos"
 license=('GPL3')
 depends=('lightdm' 'lightdm-webkit2-greeter>=2.2.3')
 install='lightdm-webkit-theme-osmos.install'
-source=("https://github.com/Warinyourself/lightdm-webkit-theme-osmos/releases/download/$pkgver/lightdm-webkit-theme-osmos-$pkgver.tar.gz")
-md5sums=('46b2b754d3542cb3a51be20743d320ed')
+source=("$url/archive/$pkgver.tar.gz")
+md5sums=('e106fbbadd9caff09e34440a158e6fb9')
 
 package() {
   cd "$pkgdir"
