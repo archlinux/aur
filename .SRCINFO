@@ -1,0 +1,19 @@
+pkgbase = hamster-time-tracker2
+	pkgdesc = Time tracking application that helps you to keep track on how much time you have spent during the day on activities you choose to track
+	pkgver = 2.2.2
+	pkgrel = 3
+	url = https://github.com/projecthamster/hamster
+	arch = any
+	license = GPL
+	makedepends = intltool
+	makedepends = gnome-doc-utils
+	depends = python-dbus
+	depends = python-cairo
+	depends = python-gobject
+	depends = python-xdg
+	depends = desktop-file-utils
+	source = https://github.com/projecthamster/hamster/archive/v2.2.2.tar.gz
+	md5sums = 980ddf4ceef842da255bda37914f971d
+
+pkgname = hamster-time-tracker2
+
