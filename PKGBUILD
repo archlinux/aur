@@ -7,7 +7,7 @@ arch=('any')
 url="http://bahai-education.org/ocean"
 license=('custom')
 makedepends=('p7zip')
-source=('http://bahai-education.org/sites/default/files/uploadfiles/Ocean.dmg')
+source=('https://ipfs.io/ipfs/QmQ55jyyUbTWVCT8zUEZtQD2PGKJzkBkJpF4ztxgqdi39q/Ocean.dmg')
 noextract=('Ocean.dmg')
 md5sums=('54e727a44371f2e33cb945100f11861a')
 

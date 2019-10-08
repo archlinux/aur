@@ -1,13 +1,13 @@
 pkgbase = ocean-data
 	pkgdesc = The library data of the Ocean religious writings tool
-	pkgver = 0.2
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = http://bahai-education.org/ocean
 	arch = any
 	license = custom
 	makedepends = p7zip
 	noextract = Ocean.dmg
-	source = http://bahai-education.org/sites/default/files/uploadfiles/Ocean.dmg
+	source = https://ipfs.io/ipfs/QmQ55jyyUbTWVCT8zUEZtQD2PGKJzkBkJpF4ztxgqdi39q/Ocean.dmg
 	md5sums = 54e727a44371f2e33cb945100f11861a
 
 pkgname = ocean-data
