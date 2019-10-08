@@ -4,13 +4,13 @@
 pkgname=eekboard-gtk2
 _pkgname=eekboard
 pkgver=1.0.8
-pkgrel=4
+pkgrel=5
 pkgdesc='Yet Another Virtual Keyboard for Gnome. http://blog.du-a.org/?cat=9'
 arch=(i686 x86_64)
 url='https://github.com/ueno/eekboard'
 license=(GPL3)
-depends=('gtk2' 'libxklavier' 'libcanberra')
-makedepends=('intltool' 'gtk-doc')
+depends=('gtk2' 'libxklavier' 'libcanberra' 'dconf')
+makedepends=('intltool' 'gtk-doc' 'gnome-common' 'gobject-introspection')
 optdepends=('ibus' 'clutter-gtk')
 provides=($_pkgname)
 conflicts=($_pkgname)
