@@ -2,7 +2,7 @@
 pkgname="listen-moe-desktop-git"
 _pkgname="listen-moe-desktop"
 __pkgname="desktop-app"
-pkgver=0.2.3.r0.g7395915
+pkgver=0.2.6.r1.g4da59ce
 pkgrel=1
 pkgdesc="Official LISTEN.moe Desktop Client"
 arch=('x86_64')
