@@ -1,6 +1,6 @@
 # Maintainer: Alejandro Fernandez Huguet <https://github.com/RinsedSloth>
 pkgname=qmk
-pkgver=0.0.14
+pkgver=0.0.15
 pkgrel=1
 pkgdesc="CLI tool for customizing supported mechanical keyboards."
 arch=('any')
@@ -10,10 +10,16 @@ depends=(
 	'python-appdirs'
 	'python-argcomplete'
 	'python-colorama'
+	'python-hjson'
+	'dfu-programmer'
+	'avrdude'
+	'dfu-util'
+	'avr-gcc'
+	'arm-none-eabi-gcc'
 	)
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/q/qmk/qmk-${pkgver}.tar.gz")
-md5sums=("ba195b6cc301874a93c52a3815c64068")
+md5sums=("96a8b50debdf13c8929f904c911a6be6")
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 	python setup.py build
