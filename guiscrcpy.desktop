@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=guiscrcpy
 Comment=Your PC is your Android Device
-Exec=python /opt/guiscrcpy/__main__.py
+Exec=guiscrcpy
 Terminal=false
 Icon=guiscrcpy
 Type=Application
