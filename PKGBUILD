@@ -3,7 +3,7 @@
 pkgname=visual-studio-code-bin
 _pkgname=visual-studio-code
 pkgver=1.38.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Visual Studio Code (vscode): Editor for building and debugging modern web and cloud applications (official binary version)"
 arch=('x86_64')
 url="https://code.visualstudio.com/"
@@ -14,13 +14,10 @@ depends=(fontconfig libxtst gtk3 python cairo alsa-lib nss gcc-libs libnotify li
 optdepends=('glib2: Needed for move to trash functionality'
             'libdbusmenu-glib: Needed for KDE global menu')
 source=(code_x64_${pkgver}.tar.gz::https://vscode-update.azurewebsites.net/${pkgver}/linux-x64/stable
-               ${_pkgname}.desktop ${_pkgname}-url-handler.desktop
-               code.png
-               )
+               ${_pkgname}.desktop ${_pkgname}-url-handler.desktop)
 sha256sums=('589b28d957d811d4b08cbb900270937719af6044ffc6219c813f6282c5efaaf3'
             '488592034dd5f979083bbd80788d33e253bb3ac3e52d50faee80e715a924a212'
-            '727adaf263801462744c65bc0fad1b64ab31b3c96ed1a11e5b61bffbd5d71bc7'
-            '7537330cec94b308feaa9bb66db45b5554b8379ec7dce83990521d2860bca4b2')
+            '727adaf263801462744c65bc0fad1b64ab31b3c96ed1a11e5b61bffbd5d71bc7')
 package() {
   _pkg=VSCode-linux-x64
 
@@ -37,9 +34,4 @@ package() {
 
   cp -r "${srcdir}/${_pkg}/"* "${pkgdir}/opt/${_pkgname}" -R
   ln -s /opt/${_pkgname}/bin/code "${pkgdir}"/usr/bin/code
-  
-  # XFCE bug workaround
-  # see https://aur.archlinux.org/packages/visual-studio-code-bin/#comment-692211
-  mkdir -p "${pkgdir}/usr/share/icons/hicolor/512x512/apps"
-  install -m644 "${srcdir}/code.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/visual-studio-code.png"
 }
