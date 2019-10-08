@@ -2,7 +2,7 @@
 # Contributor: Yegorius <yegorius at domic dot us>
 pkgname=station
 pkgver=1.52.1
-pkgrel=1
+pkgrel=2
 pkgdesc='The one app to rule them all'
 arch=('x86_64')
 url='https://getstation.com/'
@@ -14,8 +14,8 @@ source=(
 sha256sums=('0113589ff2749f08241ecb4a1f25e53ca9d45a7dde0e1dc63cfbe773b6798067')
 
 prepare() {
-    chmod u+x ./Station-${pkgver}.AppImage
-    ./Station-${pkgver}.AppImage --appimage-extract
+    chmod u+x ./Station-${pkgver}-x86_64.AppImage
+    ./Station-${pkgver}-x86_64.AppImage --appimage-extract
 }
 
 package() {

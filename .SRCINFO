@@ -1,7 +1,7 @@
 pkgbase = station
 	pkgdesc = The one app to rule them all
 	pkgver = 1.52.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://getstation.com/
 	arch = x86_64
 	license = MIT
