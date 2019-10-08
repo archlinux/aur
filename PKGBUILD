@@ -1,9 +1,9 @@
 # Maintainer: David Vogt <dave at winged dot ch>
-# This PKGBUILD is maintained at https://github.com/winged/aur-packages
+# Maintainer: Danilo Bargen <aur at dbrgn dot ch>
 
 pkgname=fahrplan
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A SBB/CFF/FFS (Swiss railway) commandline based timetable client"
 url="https://github.com/dbrgn/fahrplan"
 depends=(
@@ -14,13 +14,18 @@ depends=(
     'python-texttable>0.8.6'
 )
 
-# texttable<0.9,>=0.8.6
-
 makedepends=('python3')
 license=('GPLv3')
 arch=('any')
-source=("https://github.com/dbrgn/fahrplan/archive/v$pkgver.tar.gz")
-sha256sums=('adb1a5d27ecbba538a64ba4c74ff084466e8d983643e49c8791ea22a6cd21c72')
+source=(
+  "https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz"
+  "https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz.asc"
+)
+sha256sums=(
+  '4b6e1844579e458d29a7b436b92360e3e9c45708921117f90aab9e5533974c0b'
+  'SKIP'
+)
+validpgpkeys=('EA456E8BAF0109429583EED83578F667F2F3A5FA')
 
 if [ -n "$VIRTUAL_ENV" ]; then
   echo "Warning: You're building within a virtualenv. Use"
@@ -30,12 +35,12 @@ fi
 
 
 build() {
-    cd $srcdir/fahrplan-$pkgver
+    cd "$srcdir/$pkgname-$pkgver/"
     python setup.py build
 }
 
 package() {
-    cd $srcdir/fahrplan-$pkgver
+    cd "$srcdir/$pkgname-$pkgver/"
     sed -i -e 's/texttable.*/texttable>=0.9/' requirements.txt
-    python setup.py install --root="$pkgdir" --optimize=1
+    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
