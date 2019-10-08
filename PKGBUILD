@@ -1,27 +1,28 @@
 # Contributor: Christopher Arndt <chris@chrisarndt.de>
 # Contributor: Luis Pablo Gasparotto <lpgasparotto at gmail dot com>
 # Contributor: Phillip Fynan <pfynan@gmail.com>
-# Maintainer: Peter Sutton <foxxy@foxdogstudios.com>
+# Maintainer: Peter Sutton <peter@foxdogstudios.com>
 
-_pkgver_year=2017
-_pkgver_month=06
-_pkgver_day=10
+_pkgver_year=2019
+_pkgver_month=08
+_pkgver_day=11
 
 pkgname=abcmidi
 pkgver="${_pkgver_year}${_pkgver_month}${_pkgver_day}"
 pkgrel=2
 pkgdesc="A set of tools for converting ABC files to MIDI files and vice versa, as well as other small utilities"
-url="http://abc.sourceforge.net/abcMIDI/"
+url="https://ifdo.ca/~seymour/runabc/top.html"
 license=('GPL')
 depends=()
 makedepends=()
 changelog=ChangeLog
-source=("https://github.com/leesavide/abcmidi/archive/abcMIDI-${_pkgver_year}.${_pkgver_month}.${_pkgver_day}.tar.gz")
+source=("https://ifdo.ca/~seymour/runabc/abcMIDI-${_pkgver_year}.${_pkgver_month}.${_pkgver_day}.zip")
 arch=(x86_64)
-sha256sums=('a58cd9815447a8a54fe7525f8aa083489b27d8a03b355a71352df11f1a98f008')
+sha256sums=('e59d790174f4aa77d49715fca820d9fb9bc084221ad06342c873ef12f2389595')
 
 build() {
-    cd "$srcdir"/abcmidi*
+    cd "$srcdir"/abcmidi
+    ./configure
     make
 }
 
