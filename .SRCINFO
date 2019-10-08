@@ -1,6 +1,6 @@
 pkgbase = docker-bin
 	pkgdesc = Pack, ship and run any application as a lightweight container, using official binaries
-	pkgver = 19.03.2
+	pkgver = 19.03.3
 	pkgrel = 1
 	url = https://www.docker.com/
 	arch = x86_64
@@ -25,11 +25,11 @@ pkgbase = docker-bin
 	conflicts = docker-ce
 	conflicts = docker-git
 	options = !strip
-	source = https://download.docker.com/linux/static/edge/x86_64/docker-19.03.2.tgz
-	source = https://github.com/docker/docker-ce/archive/v19.03.2.tar.gz
+	source = https://download.docker.com/linux/static/edge/x86_64/docker-19.03.3.tgz
+	source = https://github.com/docker/docker-ce/archive/v19.03.3.tar.gz
 	source = docker.sysusers
-	md5sums = 7f2abbb89d0572b8e72e1efdbdf37180
-	md5sums = a5950e5ec1a41eca3b2c943e11f72f55
+	md5sums = 998b9dff6fac4d936cbb775f15010c87
+	md5sums = 079c6ca494c1114cecaf505767026412
 	md5sums = 9a8b2744db23b14ca3cd350fdf73c179
 
 pkgname = docker-bin
