@@ -1,12 +1,13 @@
 # Maintainer: Vaporeon <vaporeon@vaporeon.io>
 pkgname=punes-git
-pkgver=r981.ba21823a
+pkgver=r1103.d23cc6bc
 pkgrel=1
 pkgdesc="Nintendo Entertaiment System emulator"
 arch=('i686' 'x86_64')
 url="http://forums.nesdev.com/viewtopic.php?t=6928"
 license=('GPL2')
 depends=('qt5-base' 'qt5-svg' 'alsa-lib' 'hicolor-icon-theme' 'desktop-file-utils' 'nvidia-cg-toolkit')
+makedepends=('automake' 'git' 'qt5-tools')
 conflicts=('punes')
 provides=('punes')
 source=("git+https://github.com/punesemu/puNES.git")
