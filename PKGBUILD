@@ -3,14 +3,14 @@
 pkgname=visual-studio-code-bin
 _pkgname=visual-studio-code
 pkgver=1.38.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Visual Studio Code (vscode): Editor for building and debugging modern web and cloud applications (official binary version)"
 arch=('x86_64')
 url="https://code.visualstudio.com/"
 license=('custom: commercial')
 provides=('code')
 conflicts=('code')
-depends=(fontconfig libxtst gtk3 python cairo alsa-lib nss gcc-libs libnotify libxss 'glibc>=2.28-4' lsof)
+depends=(fontconfig libxtst gtk3 python cairo alsa-lib nss gcc-libs libnotify libxss 'glibc>=2.28-4' lsof which)
 optdepends=('glib2: Needed for move to trash functionality'
             'libdbusmenu-glib: Needed for KDE global menu')
 source=(code_x64_${pkgver}.tar.gz::https://vscode-update.azurewebsites.net/${pkgver}/linux-x64/stable
