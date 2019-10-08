@@ -2,7 +2,7 @@
 # Contributor: Nicky D
 
 pkgname=firestorm
-pkgver=r57588.7b5a98fba31f
+pkgver=r58052.381d04b870a5
 pkgrel=1
 pkgdesc="Firestorm is FOSS where you can build & share Virtual Reality (VR) in OpenSim/SecondLife (P2P). Meet people in 3D! Source build."
 arch=('i686' 'x86_64')
