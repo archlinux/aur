@@ -1,0 +1,42 @@
+diff -Naurp a/Makefile b/Makefile
+--- a/Makefile	2019-10-06 02:30:46.000000000 +0000
++++ b/Makefile	2019-10-06 02:33:04.606325701 +0000
+@@ -18,10 +18,10 @@ else
+ 	BOOST_SUFFIX = -mt
+ endif
+ 
+-INCFLAGS = -I$(LIBI2PD_PATH) -I$(LIBI2PD_CLIENT_PATH) -I$(I2PD_PATH)
++INCFLAGS = -I/usr/include/i2pd
+ CXXFLAGS = $(FLAGS)
+ LDFLAGS = 
+-LIBS = $(I2PD_PATH)/libi2pd.a -lboost_system$(BOOST_SUFFIX) -lboost_date_time$(BOOST_SUFFIX) -lboost_filesystem$(BOOST_SUFFIX) -lboost_program_options$(BOOST_SUFFIX) -lssl -lcrypto -lz
++LIBS = -li2pd -lboost_system$(BOOST_SUFFIX) -lboost_date_time$(BOOST_SUFFIX) -lboost_filesystem$(BOOST_SUFFIX) -lboost_program_options$(BOOST_SUFFIX) -lssl -lcrypto -lz
+ 
+ ifeq ($(UNAME),Linux)
+ 	LIBS += -lrt -lpthread
+@@ -76,15 +76,13 @@ offlinekeys: $(OBJECTS)
+ b33address: $(OBJECTS)
+ 	$(CXX) -o b33address b33address.o $(LDFLAGS) $(LIBS)
+ 
+-$(OBJECTS): libi2pd.a
+-
+ .SUFFIXES:
+ .SUFFIXES:	.c .cc .C .cpp .o
+ 
+ $(I2PD_LIB):
+ 	$(MAKE) -C $(I2PD_PATH) mk_obj_dir $(I2PD_LIB)
+ 
+-%.o: %.cpp libi2pd.a
++%.o: %.cpp
+ 	$(CXX) -o $@ -c $(CXXFLAGS) $(INCFLAGS) $<
+ 
+ count:
+@@ -100,7 +98,7 @@ clean-bin:
+ 	rm -f keyinfo keygen famtool regaddr regaddr_3ld routerinfo i2pbase64 vain offlinekeys b33address
+ 
+ 
+-clean: clean-i2pd clean-obj clean-bin
++clean: clean-obj clean-bin
+ 
+ .PHONY: all
+ .PHONY: count
