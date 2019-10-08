@@ -2,14 +2,14 @@
 
 pkgname=pantheon-qq-default-settings-git
 pkgver=r376.7a753ce
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/elementary/default-settings'
 license=('GPL')
 groups=('pantheon-qq' 'pantheon-unstable')
 makedepends=('git' 'meson')
 pkgdesc='Default settings for Pantheon derivatives'
-depends=('elementary-icon-theme' 'gtk-theme-elementary-git'
+depends=('elementary-icon-theme' 'gtk-theme-elementary'
          'gnome-themes-standard' ttf-{droid,opensans,roboto})
 optdepends=('elementary-wallpapers-git')
 groups=(pantheon-qq)

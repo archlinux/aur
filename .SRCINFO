@@ -1,7 +1,7 @@
 pkgbase = pantheon-qq-default-settings-git
 	pkgdesc = Default settings for Pantheon derivatives
 	pkgver = r376.7a753ce
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/elementary/default-settings
 	arch = any
 	groups = pantheon-qq
@@ -9,7 +9,7 @@ pkgbase = pantheon-qq-default-settings-git
 	makedepends = git
 	makedepends = meson
 	depends = elementary-icon-theme
-	depends = gtk-theme-elementary-git
+	depends = gtk-theme-elementary
 	depends = gnome-themes-standard
 	depends = ttf-droid
 	depends = ttf-opensans
