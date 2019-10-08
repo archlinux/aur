@@ -63,7 +63,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck
-_srcver=5.2.19-arch1
+_srcver=5.2.20-arch1
 pkgver=${_srcver%-*}
 pkgrel=1
 _ckpatchversion=1
@@ -89,7 +89,7 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('de98e4c28e08cd992c3aadc32450b3fa738b6101c509093192bb344f4f41b18a'
+sha256sums=('b121e2497cb6d1752f8f041f1385a72edf9fcf273cb505250e0c0135bb56ad69'
             'SKIP'
             '42e2bc6a7d8439b3a6fe4084d1349077472e0a6831d8a39edda46824a5f0987b'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
@@ -182,8 +182,9 @@ _package() {
   pkgdesc="The ${pkgbase/linux/Linux} kernel and modules with the ck1 patchset featuring MuQSS CPU scheduler"
   #_Kpkgdesc="The ${pkgbase/linux/Linux} kernel and modules with the ck1 patchset featuring MuQSS CPU scheduler"
   #pkgdesc="${_Kpkgdesc}"
-  depends=(coreutils linux-firmware kmod mkinitcpio)
-  optdepends=('crda: to set the correct wireless channels of your country')
+  depends=(coreutils kmod initramfs)
+  optdepends=('crda: to set the correct wireless channels of your country'
+              'linux-firmware: firmware images needed for some devices')
   provides=("linux-ck=${pkgver}")
   backup=("etc/mkinitcpio.d/$pkgbase.preset")
   install=linux.install
