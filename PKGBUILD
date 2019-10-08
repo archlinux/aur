@@ -2,7 +2,7 @@
 pkgdesc='Wayfire Configuration Manager'
 pkgname=wcm
 pkgver=0.3
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 url=https://wayfire.org
 license=(custom:MIT)
@@ -21,4 +21,5 @@ build ()
 package ()
 {
 	DESTDIR="${pkgdir}" ninja -C build install
+	install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "${pkgname}-${pkgver}/LICENSE"
 }
