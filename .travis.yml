@@ -66,7 +66,9 @@ script:
 - "export travis_uptime=$(cut -d' ' -f1 /proc/uptime|cut -d'.' -f1)"
 - 'echo "Travis initialization time: $travis_uptime seconds"'
 # assume caching out will take the same amount of time as caching in those making build time equal to 50 minutes minus two time current uptime.
-- "curl -s https://raw.githubusercontent.com/bartoszek/arch-travis/master/arch-travis.sh| timeout $((50*60-2*travis_uptime)) bash"
+# detect no cache in and assume 5min cache out time.
+- "[ $travis_uptime -le 60 ] && cache_out_time=300 || cache_out_time=$travis_uptime"
+- "curl -s https://raw.githubusercontent.com/bartoszek/arch-travis/master/arch-travis.sh| timeout $((50*60-travis_uptime-cache_out_time)) bash"
 - "echo pacman pkg cache size: $(du -h ~/.pkg-cache|cut -f1) in $(ls ~/.pkg-cache|wc -l) files"
 
 #deploy:
