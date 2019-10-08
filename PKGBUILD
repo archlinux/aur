@@ -6,6 +6,6 @@ pkgdesc="Deprecated, see mindustry-server-bin"
 arch=("any")
 
 package() {
-  echo "This package was renamed to ${pkgname}-bin"
+  error "This package was renamed to ${pkgname}-bin"
   return 1
 }
