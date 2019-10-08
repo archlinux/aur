@@ -1,0 +1,26 @@
+pkgbase = python-spotdl
+	pkgdesc = Download songs from YouTube using Spotify song URLs or playlists with albumart and meta-tags.
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://github.com/ritiek/spotify-downloader
+	arch = any
+	license = MIT
+	depends = python-setuptools
+	depends = ffmpeg
+	depends = python-lyricwikia
+	depends = python-yaml
+	depends = python-pathlib
+	depends = youtube-dl
+	depends = python-spotipy
+	depends = python-beautifulsoup4
+	depends = python-logzero
+	depends = python-mutagen
+	depends = python-unicode-slugify
+	depends = python-pafy
+	depends = python-appdirs
+	depends = python-titlecase
+	source = https://pypi.io/packages/source/s/spotdl/spotdl-1.2.2.tar.gz
+	sha512sums = dd422d00e399f04b0f3c9ea1cfa8c26fef948bcf672a60292d573dcbde9ae3ae6b415206259efffb1e2a14c92093cfae27c4ef759c496b07f07432ba362d06a7
+
+pkgname = python-spotdl
+
