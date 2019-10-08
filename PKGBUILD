@@ -8,12 +8,12 @@
 
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-rt       # Build kernel with a different name
-_pkgver=5.2.17
-_rtpatchver=rt9
+_pkgver=5.2.19
+_rtpatchver=rt10
 pkgver="${_pkgver}_${_rtpatchver}"
-pkgrel=2
+pkgrel=1
 arch=('x86_64')
-url="https://git.archlinux.org/linux.git/log/?h=v$_srcver"
+url="https://wiki.linuxfoundation.org/realtime/start"
 license=('GPL2')
 makedepends=('bc' 'git' 'inetutils' 'kmod' 'libelf' 'xmlto')
 options=('!strip')
@@ -38,11 +38,11 @@ validpgpkeys=(
   '5ED9A48FC54C0A22D1D0804CEBC26CDB5A56DE73'  # Steven Rostedt
   'E644E2F1D45FA0B2EAA02F33109F098506FF0B14'  # Thomas Gleixner
 )
-sha256sums=('7b3b8ad09ea936b4216dd02c5fc2ef39c8f58935d0a81ab9690f0fc451102df9'
+sha256sums=('de98e4c28e08cd992c3aadc32450b3fa738b6101c509093192bb344f4f41b18a'
             'SKIP'
-            '6d71b5d2cbb6f002c6d6a3cb4efb356707b6ec0abf52e3d12ba09d5636968da0'
+            'b4c46ac16b58f84ad458571e5da34389b0b32ab6e1f023f7157428115a937b5d'
             'SKIP'
-            '9313ea36000691b9a88a6c9600df730987092a9701ac4b7186c5cac7965cb680'
+            'c9607aa2a69f6a1ef74ecf66f45215fcb83054f1d691bb9ace510931f6e7063e'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
@@ -91,7 +91,8 @@ _package() {
   pkgdesc="The ${pkgbase/linux/Linux} kernel and modules"
   [[ $pkgbase = linux ]] && groups=(base)
   depends=(coreutils linux-firmware kmod mkinitcpio)
-  optdepends=('crda: to set the correct wireless channels of your country')
+  optdepends=('crda: to set the correct wireless channels of your country'
+              'linux-firmware: firmware images needed for some devices')
   backup=("etc/mkinitcpio.d/$pkgbase.preset")
   install=${pkgbase}.install
 
