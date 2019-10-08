@@ -5,16 +5,16 @@
 # NOTE: If you plan on using the usbblaster make sure you are member of the plugdev group.
 #
 pkgname=quartus-free
-_mainver=18.1
+_mainver=19.1
 # Keep dot in _patchver
 _patchver=.0
-_buildver=625
-_basever=.0.614
+_buildver=670
+_basever=.0.670
 pkgver=${_mainver}${_patchver}.${_buildver}
 pkgrel=1
 pkgdesc="Quartus Prime Lite Edition design software for Altera FPGA's"
 arch=('x86_64')
-url="https://dl.altera.com/?edition=lite"
+url="http://fpgasoftware.intel.com/?edition=lite"
 license=('custom')
 
 _alteradir="/opt/altera/${_mainver}"
@@ -30,7 +30,7 @@ makedepends=('patchelf')
 
 source=("http://download.altera.com/akdlm/software/acdsinst/${_mainver}std${_patchver/.0/}/${_buildver}/ib_tar/Quartus-lite-${pkgver}-linux.tar"
         'quartus.sh' 'quartus.desktop' 'modelsim-ase.desktop' '51-usbblaster.rules')
-sha256sums=('abf4018d972c9de3b53117cbfce84f6fc7888f45db169978f993f0c1684ad3fd'
+sha256sums=('3546e90f6496b17c3c3e3e8582a3991940ad73ed112740428864460cfab6e40a'
             '2a3d61e6f01aa16c9d3ddd40e9741b9fd080496db5437530b4e38faf6771c1ed'
             'f8ba2a84c6f7551bb4ab62d17f77e2814c70871ddb15f0276f1bf89cc6c674b8'
             'a37738de447c50ca7bfe856466bd9567850ccf45ac6c3f0a6e63ef5bb863645f'
@@ -40,7 +40,8 @@ options=(!strip !debug) # Stripping will takes ages, I'd avoid it
 PKGEXT=".pkg.tar" # Same for compression
 
 package() {
-    echo "Notice: Requires around 34GB of free space during package building!"
+    echo "Notice: Requires around 24GB of free space during package building!"
+    echo "Notice: The package file also requires around 16GB of free space"
     echo "Extracting install binaries and scripts from downloaded tar..."
 
     DISPLAY="" bash ./setup.sh --mode unattended --unattendedmodeui none --accept_eula 1 --installdir "${pkgdir}${_alteradir}"
@@ -56,7 +57,7 @@ package() {
     for prog in quartus/linux64/{lmutil,lmgrd}; do
         patchelf --set-interpreter /lib64/ld-linux-x86-64.so.2 "${pkgdir}${_alteradir}/${prog}"
     done
-    for prog in ip/altera/mentor_vip_ae/common/linux{,_x86_64}/mgls/bin/lmgrd modelsim_ase/linuxaloem/{mgls/bin/,}{lmutil,lmgrd}; do
+    for prog in modelsim_ase/linuxaloem/{mgls/bin/,}{lmutil,lmgrd}; do
         patchelf --set-interpreter /lib/ld-linux.so.2 "${pkgdir}${_alteradir}/${prog}"
     done
 
