@@ -1,6 +1,6 @@
 pkgbase = icinga2-git
 	pkgdesc = An open source host, service and network monitoring program
-	pkgver = 2.10.3.r292.ge2df11520
+	pkgver = 2.11.0.r23.g06296175e
 	pkgrel = 1
 	url = http://www.icinga.org
 	install = icinga2-git.install
