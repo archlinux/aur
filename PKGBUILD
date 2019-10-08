@@ -8,7 +8,7 @@ _android_arch=x86-64
 
 pkgname=android-${_android_arch}-qt5
 pkgver=5.13.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Qt 5 for Android"
 arch=('any')
 url='https://www.qt.io'
@@ -33,7 +33,8 @@ depends=('java-runtime-headless-openjdk<=8'
          'android-sdk-platform-tools'
          "android-${_android_arch}-zlib"
          "android-${_android_arch}-libpng"
-         "android-${_android_arch}-libjpeg-turbo")
+         "android-${_android_arch}-libjpeg-turbo"
+         "android-${_android_arch}-openssl")
 groups=('android-qt5')
 
 case "$_android_arch" in
@@ -133,6 +134,7 @@ build() {
         -system-zlib
         -system-libpng
         -system-libjpeg
+        -openssl-runtime
         -qt-freetype
         -android-arch ${ANDROID_ABI}
         -android-ndk-platform ${ANDROID_NDK_PLATFORM}
