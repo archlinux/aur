@@ -1,6 +1,6 @@
 pkgbase = pgi-compilers
 	pkgdesc = PGI compilers and tools (Community Edition)
-	pkgver = 18.10
+	pkgver = 194
 	pkgrel = 1
 	url = https://www.pgroup.com/products/community.htm
 	arch = x86_64
@@ -8,10 +8,10 @@ pkgbase = pgi-compilers
 	makedepends = bash
 	depends = gtk2
 	options = !strip
-	source = file://pgilinux-2018-1810-x86-64.tar.gz
+	source = file://pgilinux-2019-194-x86-64.tar.gz
 	source = https://www.pgroup.com/doc/LICENSE.txt
 	source = pgi-compilers.sh
-	md5sums = 0e1598c05aa8faeb84e351c0f68274c3
+	md5sums = 47b3fa40170eef9e091632d1611fa0bb
 	md5sums = 4b126b6494c776016accd8ffbd0be51d
 	md5sums = 5591f7344c4ec974db4be9ad35a80b3b
 

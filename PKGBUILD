@@ -1,8 +1,9 @@
-# Maintainer: eolianoe <eolianoe [at] gmail [DoT] com>
+# Maintainer: Rohit Goswami <rohit.goswami@aol.com>
+# Contributor: eolianoe <eolianoe [at] gmail [DoT] com>
 
 pkgname=pgi-compilers
-_release='18.10'
-_REL_VERSION='2018'
+_release='194'
+_REL_VERSION='2019'
 pkgver=${_release}
 pkgrel=1
 pkgdesc='PGI compilers and tools (Community Edition)'
@@ -14,7 +15,7 @@ makedepends=('bash')
 source=("file://pgilinux-${_REL_VERSION}-${_release//./}-x86-64.tar.gz"
         "https://www.pgroup.com/doc/LICENSE.txt"
         "pgi-compilers.sh")
-md5sums=('0e1598c05aa8faeb84e351c0f68274c3'
+md5sums=('47b3fa40170eef9e091632d1611fa0bb'
          '4b126b6494c776016accd8ffbd0be51d'
          '5591f7344c4ec974db4be9ad35a80b3b')
 options=(!strip)
