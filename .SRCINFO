@@ -1,0 +1,13 @@
+pkgbase = img4lib-git
+	pkgdesc = Deal with img4 files in a decent manner
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/xerub/img4lib
+	arch = x86_64
+	license = unknown
+	depends = openssl-1.0
+	source = git+https://github.com/xerub/img4lib.git
+	sha512sums = SKIP
+
+pkgname = img4lib-git
+
