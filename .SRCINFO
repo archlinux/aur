@@ -1,6 +1,6 @@
 pkgbase = zulip-desktop-git
 	pkgdesc = Real-time team chat based on the email threading model (git)
-	pkgver = 4.0.0+r2+gf8d93cf
+	pkgver = 4.0.0+r19+gdae7089
 	pkgrel = 1
 	url = https://zulipchat.com
 	arch = i686
@@ -9,16 +9,14 @@ pkgbase = zulip-desktop-git
 	makedepends = git
 	makedepends = npm
 	makedepends = python2
-	makedepends = typescript
 	depends = libxkbfile
 	depends = gtk3
 	depends = libxss
 	depends = nss
 	provides = zulip-desktop
 	conflicts = zulip-desktop
-	conflicts = zulip-desktop-bin
 	source = git+https://github.com/zulip/zulip-desktop
-	source = zulip.desktop
+	source = zulip-desktop.desktop
 	sha512sums = SKIP
 	sha512sums = 7696a6874d17957f99452452723ae1a6b32b6814b018361a71ed1fe0191e1c6da6f3ad693e2e279615e74f687c380ff2f6dab8b69fcd82476e8f33b56a6b4cb5
 
