@@ -1,18 +1,17 @@
-# Maintainer: Timothy Redaelli <timothy.redaelli@gmail.com>
+# Maintainer: Dominic Brekau <aur@dominic.brekau.de>
+# Contributor: Timothy Redaelli <timothy.redaelli@gmail.com>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 
 pkgname=ucommon
 pkgver=7.0.0
-pkgrel=1
-pkgdesc="A light-weight C++ library to facilitate using C++ design patterns"
+pkgrel=2
+pkgdesc='GNU Common C++ is a class framework that was specifically designed for telephony applications.'
 arch=('i686' 'x86_64')
-url="http://www.gnutelephony.org/index.php/GNU_uCommon_C++"
+url='https://www.gnu.org/software/commoncpp/'
 license=('LGPL3')
 depends=('gnutls')
-source=("http://ftp.gnu.org/pub/gnu/commoncpp/$pkgname-$pkgver.tar.gz"{,.sig})
-md5sums=('90468af8f6692f0b6576189927414a39'
-         'SKIP')
-validpgpkeys=('5CF995AAD5CC1E4079F76C38B1732A9CB37C87BA')
+source=("https://ftp.gnu.org/gnu/commoncpp/$pkgname-$pkgver.tar.gz")
+sha256sums=('6ac9f76c2af010f97e916e4bae1cece341dc64ca28e3881ff4ddc3bc334060d7')
 
 build() {
   cd ${pkgname}-${pkgver}
