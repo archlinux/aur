@@ -12,11 +12,15 @@ arch=('i686' 'x86_64')
 url="http://www.perforce.com"
 license=('custom:p4')
 source=(LICENSE)
-source_x86_64=("http://www.perforce.com/downloads/perforce/r${pkgver:2:4}/bin.linux26x86_64/${pkgname}")
-source_i686=("http://www.perforce.com/downloads/perforce/r${pkgver:2:4}/bin.linux26x86/${pkgname}")
+source_x86_64=("http://www.perforce.com/downloads/perforce/r${pkgver:2:4}/bin.linux26x86_64/${pkgname}"{,.asc})
+source_i686=("http://www.perforce.com/downloads/perforce/r${pkgver:2:4}/bin.linux26x86/${pkgname}"{,.asc})
 sha256sums=('c4ed3aef62b1bbf2d16ce4cceb65dc49ab9635b38e2fed0a595fe259283a9f32')
-sha256sums_i686=('a7271486b0a97a006ec005c84229f4c050b582c46c7f514a242a24eed5508015')
-sha256sums_x86_64=('b5a9d586eef4421c88a4e5bc062c847982c3496286a51e4716869d3cd33edf06')
+sha256sums_i686=('SKIP' 'SKIP')
+sha256sums_x86_64=('SKIP' 'SKIP')
+
+# Perforce Software (Package Signing) <support+packaging@perforce.com>
+validpgpkeys=('7123CB760FF18869'
+              'E58131C0AEA7B082C6DC4C937123CB760FF18869')
 
 build() {
   return 0
