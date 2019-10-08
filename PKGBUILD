@@ -1,7 +1,7 @@
 # Maintainer: Knut Ahlers <knut at ahlers dot me>
 
 pkgname=dust
-pkgver=0.3.1
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="du + rust = dust. Like du but more intuitive"
 url="https://github.com/bootandy/dust"
@@ -9,7 +9,7 @@ makedepends=('cargo')
 arch=('i686' 'x86_64')
 license=('Apache')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/bootandy/$pkgname/archive/v$pkgver.tar.gz")
-sha512sums=('abac2aa78deefa16f991d8f4ba91e7d717fb1d8559d5f030d962c7c967e19501a4b78c1d19d43cbe4b4aa3429102dab891076375084196abd55844b2c0bf6dfb')
+sha512sums=('add53c3c5ba20bcabdd7c4746d7c72a3a259337b12bf0b5c8f25685254f61de61cc5dba9e68fbf4d327e3b5dec2aa39a73932f6e4d585c7f2b4fbbefda4dba3b')
 
 build() {
 	cd "$pkgname-$pkgver"
