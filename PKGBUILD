@@ -6,7 +6,7 @@ _orgname=dfandrich
 _pkgname=gpscorrelate
 _branch=master
 pkgname=${_pkgname}-git
-pkgver=r159.c0ce55b
+pkgver=r175.f6401ff
 pkgrel=1
 pkgdesc='GPS Photo Correlation; Writes location data to EXIF tags using GPX files (command line and GTK interface).'
 arch=('x86_64')
@@ -28,7 +28,7 @@ pkgver() {
 
 build() {
   cd ${_pkgname}-${_branch}
-  make prefix=/usr CFLAGS=-DENABLE_NLS GTK=3
+  make prefix=/usr CFLAGS=-DENABLE_NLS
 }
 
 check() {
