@@ -41,7 +41,7 @@ prepare() {
 
 	autobuild configure -A 64 -c ReleaseFS_open -- -DLL_TESTS:BOOL=FALSE
 	cd indra/newview
-	patch -Np0 -i "$srcdir/dontTarSelf.patch"
+#	patch -Np0 -i "$srcdir/dontTarSelf.patch"
 }
 
 build() {
