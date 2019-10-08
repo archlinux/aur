@@ -12,6 +12,9 @@ sha1sums=('bd4edf5510968bd5c9c2bce0deb4c048b7ddf966')
 makedepends=(qt5-base)
 depends=(vulkan-icd-loader qt5-base qt5-x11extras)
 
+#HACK: github doesn't package submodules, so we need to manually fetch the vulkan headers
+makedepends+=(git)
+
 prepare() {
   if [ -d build ]
   then
@@ -19,6 +22,14 @@ prepare() {
     msg2 "If you want to perform a clean build, please delete $(realpath build)"
     return
   fi
+
+  #HACK: github doesn't package submodules...
+  git clone --depth 1 https://github.com/KhronosGroup/Vulkan-Headers \
+    VulkanCapsViewer-$pkgver/Vulkan-Headers
+
+  #HACK: the last commit of 2.02 explicitely breaks the build; probably wasn't intended to be pushed out
+  sed 's#"/Vulkan-Headers/include"#"./Vulkan-Headers/include"#' \
+    -i VulkanCapsViewer-$pkgver/vulkanCapsViewer.pro
 
   mkdir build
   cd build
