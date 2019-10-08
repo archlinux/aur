@@ -1,0 +1,18 @@
+pkgbase = wcm
+	pkgdesc = Wayfire Configuration Manager
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://wayfire.org
+	arch = x86_64
+	license = custom:MIT
+	makedepends = wayland-protocols
+	makedepends = meson
+	makedepends = ninja
+	depends = wf-config>=0.3
+	depends = libxml2
+	depends = gtkmm3
+	source = https://github.com/WayfireWM/wcm/archive/v0.3.tar.gz
+	sha512sums = e997d1b0f707cca2d170bc82667fdacd8489eff629931e3af1c03ac2be5461f07c81b54930561b0baaf10f5e632f0939247344ffeedf3c3eef8f03cb74b2fd0d
+
+pkgname = wcm
+
