@@ -1,11 +1,11 @@
 pkgbase = seahub
 	pkgdesc = The web frontend for seafile server
-	pkgver = 7.0.4
+	pkgver = 7.0.5
 	pkgrel = 1
 	url = https://github.com/haiwen/seahub
 	arch = any
 	license = Apache
-	depends = seafile-server>=7.0.4
+	depends = seafile-server>=7.0.5
 	depends = python2-dateutil
 	depends = python2-memcached
 	depends = python2-chardet
@@ -29,15 +29,16 @@ pkgbase = seahub
 	depends = python2-django-webpack-loader
 	depends = python2-cas
 	depends = python2-django-picklefield
-	depends = xmlsec
+	depends = python2-futures
 	depends = python2-social-auth-core
+	depends = xmlsec
 	optdepends = mysql-python: MySQL support
 	optdepends = python2-wsgidav-seafile: Webdav support
 	optdepends = python2-django-pylibmc: Memcached support
 	optdepends = ffmpeg: For video thumbnails
 	options = !strip
-	source = seahub-7.0.4-server.tar.gz::https://github.com/haiwen/seahub/archive/v7.0.4-server.tar.gz
-	sha256sums = 222311e4c30aa9a56e30bc9f4d98b8db9589a6ba8d1b22443b529c6e876c7efd
+	source = seahub-7.0.5-server.tar.gz::https://github.com/haiwen/seahub/archive/v7.0.5-server.tar.gz
+	sha256sums = 950f15d7156f67d592969b02fc691e1c00dc393002f393c3fe6eef9fe831b034
 
 pkgname = seahub
 

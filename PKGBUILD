@@ -4,7 +4,7 @@
 # Contributor: Aaron Lindsay <aaron@aclindsay.com>
 
 pkgname=seahub
-pkgver=7.0.4
+pkgver=7.0.5
 pkgrel=1
 pkgdesc='The web frontend for seafile server'
 arch=('any')
@@ -35,8 +35,9 @@ depends=(
     'python2-django-webpack-loader'
     'python2-cas'
     'python2-django-picklefield'
-    'xmlsec'  # dep missing for python2-dm.xmlsec.binding
+    'python2-futures'
     'python2-social-auth-core'
+    'xmlsec'  # dep missing for python2-dm.xmlsec.binding
 )
 optdepends=(
     'mysql-python: MySQL support'
@@ -45,7 +46,7 @@ optdepends=(
     'ffmpeg: For video thumbnails'
 )
 source=("$pkgname-$pkgver-server.tar.gz::$url/archive/v$pkgver-server.tar.gz")
-sha256sums=('222311e4c30aa9a56e30bc9f4d98b8db9589a6ba8d1b22443b529c6e876c7efd')
+sha256sums=('950f15d7156f67d592969b02fc691e1c00dc393002f393c3fe6eef9fe831b034')
 options=('!strip')
 
 prepare() {
