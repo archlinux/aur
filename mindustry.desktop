@@ -1,9 +1,0 @@
-[Desktop Entry]
-Version=1.0
-Type=Application
-Name=Mindustry
-Comment=A sandbox tower defense game
-Exec=/usr/bin/mindustry
-Icon=/usr/share/pixmaps/mindustry.png
-Categories=Game;
-Terminal=false
