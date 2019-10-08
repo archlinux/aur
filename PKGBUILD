@@ -1,5 +1,6 @@
 # Maintainer: Dmytro Meleshko <dmytro.meleshko@gmail.com>
-pkgname=mindustry
+_pkgname=mindustry
+pkgname=${_pkgname}-bin
 pkgver=96
 pkgrel=1
 pkgdesc="A sandbox tower defense game written in Java"
@@ -7,6 +8,9 @@ arch=("any")
 url="https://github.com/Anuken/Mindustry"
 license=("GPL3")
 depends=("java-runtime=8")
+# provides=(${_pkgname})
+replaces=(${_pkgname})
+conflicts=(${_pkgname})
 source=("${pkgname}-${pkgver}.jar::https://github.com/Anuken/Mindustry/releases/download/v${pkgver}/Mindustry.jar"
         "${pkgname}.desktop"
         "${pkgname}.png"
@@ -18,8 +22,8 @@ sha256sums=('30d1f984c6924af1d22f7317819a42042393488ca53e7ceed509bab74f70304d'
 noextract=("${pkgname}-${pkgver}.jar")
 
 package() {
-  install -Dm755 "${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-  install -Dm644 "${pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-  install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-  install -Dm755 "${pkgname}-${pkgver}.jar" "${pkgdir}/usr/share/java/${pkgname}/Mindustry.jar"
+  install -Dm755 "${pkgname}.sh" "${pkgdir}/usr/bin/${_pkgname}"
+  install -Dm644 "${pkgname}.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
+  install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+  install -Dm755 "${pkgname}-${pkgver}.jar" "${pkgdir}/usr/share/java/${_pkgname}/Mindustry.jar"
 }
