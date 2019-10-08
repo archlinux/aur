@@ -1,7 +1,7 @@
 pkgbase = p4
 	pkgdesc = Perforce command line client
 	pkgver = 2019.1.1845410
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.perforce.com
 	arch = i686
 	arch = x86_64

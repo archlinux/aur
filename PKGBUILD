@@ -5,7 +5,7 @@
 
 pkgname=p4
 pkgver=2019.1.1845410
-pkgrel=1
+pkgrel=2
 pkgdesc="Perforce command line client"
 depends=('glibc')
 arch=('i686' 'x86_64')
