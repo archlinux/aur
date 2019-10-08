@@ -2,7 +2,7 @@
 # Contributor: Nicky D
 
 pkgname=firestorm-nightly
-pkgver=r58033+.b8f0dbe8b60e+
+pkgver=r58066:1d46aa92e740
 pkgrel=1
 pkgdesc="Firestorm is FOSS where you can build & share Virtual Reality (VR) in OpenSim/SecondLife (P2P). Meet people in 3D! Source build."
 arch=('i686' 'x86_64')
