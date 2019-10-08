@@ -2,7 +2,7 @@
 # Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
 
 pkgname=nextcloud-app-social
-pkgver=0.2.6
+pkgver=0.2.101
 pkgrel=1
 pkgdesc="federated social network"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('nextcloud>=16.0.0')
 makedepends=()
 options=('!strip')
 source=("$pkgname-$pkgver.tgz::https://github.com/nextcloud/social/releases/download/v$pkgver/social-$pkgver.tar.gz")
-sha256sums=('7fd7db966ab826b9a7bf70b915cfef20c7a16fec841be35af07945ed0c904653')
+sha256sums=('4f0e25d368e470f1ea61c50c2e83a1487be048dc74a0cce497faf64b29446f02')
 
 package() {
   install -d "${pkgdir}"/usr/share/webapps/nextcloud/apps
