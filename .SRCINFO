@@ -1,0 +1,16 @@
+pkgbase = python2-ms-ivy
+	pkgdesc = Tool for specifying, modeling, implementing and verifying protcols.
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://pypi.org/project/ms-ivy
+	arch = any
+	license = LGPLv3
+	makedepends = python2-pip
+	depends = python2
+	depends = python2-ply
+	depends = python2-tarjan
+	source = https://files.pythonhosted.org/packages/55/5d/9141919ef2d066bdfbac2862be9e17f8ffd2730f765eca2596772a688bb0/ms_ivy-0.3-py2-none-manylinux1_x86_64.whl
+	sha256sums = 92b5f022e0f47bbf8d83ce397bb5c7197d65d934441f6bc2b50859595d1f92ae
+
+pkgname = python2-ms-ivy
+
