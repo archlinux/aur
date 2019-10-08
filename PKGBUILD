@@ -2,7 +2,7 @@
 # Helpful url: https://services.lidarr.audio/v1/update/netcore?version=0.0.0.0&os=linux&runtime=netcore&arch=x64
 
 pkgname="lidarr-netcore"
-pkgver=0.7.1.1522
+pkgver=0.7.1.1530
 pkgrel=4
 pkgdesc="Music downloader for usenet and torrents."
 arch=(any)
@@ -30,7 +30,7 @@ source=("Lidarr.dotnet-core-${pkgver}.linux-core-x64.tar.gz::https://services.li
         'lidarr.tmpfiles'
         'lidarr.sysusers')
 
-sha512sums=('797a30a21de3810f536bf45908492722ee790b5c4766aef29c99b0f91008a6d8814d51c5a7ab30031b6094fd19544282d3c906c7e49ec7188a7eddc29ea4031f'
+sha512sums=('17b96f48d4f0085109d2885947997d66939d28bc3830c68a77fcb612a8eb57d829c08359ac78422718ef09e1c5d1b1589652bb4e954c8184699e390617750e01'
             '11bd4fc0021f813477f199d649f9cc98605d0538b9fc2cc4484e43ae84d924c24105436fc7b601d6b4fe516279b77e6b8bc8c7077fb3a3560b4bf1503018aee9'
             'e40ce79a3e1741e7e06312797e652a85d199bd6d719ef953ea8c3c030756ee44e202956ac9e13cff17fac38312c27398f457f79923a7d0f56bd563a69af6ab63'
             'ffd466960527256d8de1d9887d90d4da87486eff062950c46cbc4fd4af1ef89e7d5c070ef1e649b23a95fbab15651e289fd5bdc6d34649e4a6ecdf2f6da06622')
