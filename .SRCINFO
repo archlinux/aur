@@ -1,6 +1,6 @@
 pkgbase = igb
 	pkgdesc = Driver for Intel ethernet network connection
-	pkgver = 5.3.5.36
+	pkgver = 5.3.5.39
 	pkgrel = 1
 	url = https://sourceforge.net/projects/e1000/files/igb%20stable/
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = igb
 	makedepends = linux-headers>=2.6.30
 	makedepends = xz
 	depends = linux>=2.6.30
-	source = igb-5.3.5.36-src.tar.gz::https://downloads.sourceforge.net/project/e1000/igb%20stable/5.3.5.36/igb-5.3.5.36.tar.gz
-	sha256sums = 87f69e85235443ced50b9f87f01e574b7cc620089a02ba2223e0be438e50fda6
+	source = igb-5.3.5.39-src.tar.gz::https://downloads.sourceforge.net/project/e1000/igb%20stable/5.3.5.39/igb-5.3.5.39.tar.gz
+	sha256sums = 47e9f9b95d1f7c86351826f6dc9ecc5445a3d8cedfce5691d38327109bdaf0bd
 
 pkgname = igb
 
