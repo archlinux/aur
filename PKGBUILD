@@ -3,13 +3,13 @@
 # Contributor: Daniel Seymour <dannyseeless@gmail.com>
 
 pkgname=jellyfin
-pkgver=10.3.7
+pkgver=10.4.0
 pkgrel=1
 pkgdesc='The Free Software Media System'
 arch=('i686' 'x86_64' 'armv6h')
 url='https://github.com/jellyfin/jellyfin'
 license=('GPL2')
-depends=('dotnet-runtime' 'ffmpeg' 'imagemagick' 'sqlite')
+depends=('dotnet-runtime' 'ffmpeg' 'sqlite')
 makedepends=('dotnet-sdk')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jellyfin/jellyfin/archive/v$pkgver.tar.gz"
         "jellyfin-web-$pkgver.tar.gz::https://github.com/jellyfin/jellyfin-web/archive/v$pkgver.tar.gz"
@@ -18,8 +18,8 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/jellyfin/jellyfin/archive/v
         'jellyfin.sysusers'
         'jellyfin.tmpfiles')
 backup=('etc/conf.d/jellyfin')
-sha512sums=('c36461a24157d4718bcc689d2a3a7782eeee5ae7271e61f6c9116c56e1d78e66393d906ef9fa28c1dd4179bfbb1d458bbc1117301fc02bc602e1c670a250cb3b'
-            '9105dda8996673e58e50502d743e605400571bc8da099a93c72d799f9cf3a9ad916cc823a7f92ca5e4e62d095b00934ca6dc0114047c0b6b902e3b15397ffa31'
+sha512sums=('4c8105338908f479590b8eebc2048175a5b843f047f6963ee6afd518a89698437d68708e58af40c598f011091ef62d5ba42e02c637048b44200267b09e6e4f7f'
+            '2b19e2d96d9b5262aa93790bbd931a66cb94553d2d7d049c71cb2e28104c7167e514768ba4e79b8b694c70254cd6be9bc5d8beed540b2d10a35f169095851ddc'
             '2aa97a1a7a8a447171b59be3e93183e09cbbc32c816843cc47c6777b9aec48bd9c1d9d354f166e0b000ad8d2e94e6e4b0559aa52e5c159abbc103ed2c5afa3f0'
             '99d02080b1b92e731250f39ddd13ceca7129d69d0c05e0939620cbc3f499a9574668c63fa889704a4905560888131e980d7ab1fbcc5837b04d33ce26daa9d42b'
             '6fc2638e6ec4b1ee0240e17815c91107b694e5fde72c1bc7956c83067bbeacb632de899b86837e47a0ec04288131b15c20746373b45e0669c8976069a55d627a'
@@ -28,7 +28,7 @@ sha512sums=('c36461a24157d4718bcc689d2a3a7782eeee5ae7271e61f6c9116c56e1d78e66393
 prepare() {
   cd $pkgname-$pkgver
 
-  cp -r "$srcdir"/jellyfin-web-$pkgver/. MediaBrowser.WebDashboard/jellyfin-web
+  cp -r "$srcdir"/jellyfin-web-$pkgver/src MediaBrowser.WebDashboard/jellyfin-web
 }
 
 build(){
