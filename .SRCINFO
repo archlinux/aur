@@ -1,12 +1,11 @@
 pkgbase = kindd
 	pkgdesc = A Kindful dd gui written in qt quick
 	pkgver = 2.0.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/LinArcX/Kindd
 	arch = any
 	license = GPL3
 	depends = polkit
-	depends = qt5-multimedia
 	depends = qt5-quickcontrols
 	depends = qt5-quickcontrols2
 	depends = qt5-graphicaleffects
