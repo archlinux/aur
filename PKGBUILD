@@ -4,8 +4,8 @@
 _gitname=vala-lint
 _author=elementary
 pkgname=("${_gitname}-git")
-pkgver=r38.ba98020
-pkgrel=2
+pkgver=r73.7ee0a16
+pkgrel=1
 pkgdesc="Check code-style of Vala code files"
 arch=('i686' 'x86_64')
 url="https://github.com/${_author}/${_gitname}"
