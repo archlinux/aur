@@ -3,12 +3,12 @@
 
 pkgname=img4tool-git
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool for manipulating IMG4, IM4M and IM4P files"
 arch=('x86_64')
 url="https://github.com/tihmstar/img4tool"
 license=('LGPL3')
-makedepends=('lzfse')
+makedepends=('lzfse' 'libplist')
 source=("git+https://github.com/tihmstar/img4tool.git")
 sha512sums=('SKIP')
 
@@ -20,5 +20,5 @@ build() {
 
 package() {
   cd "${srcdir}/img4tool"
-  make PREFIX="/usr" DESTDIR="${pkgdir}" install
+  make prefix="/usr" DESTDIR="${pkgdir}" install
 }
