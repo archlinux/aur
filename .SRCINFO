@@ -1,0 +1,18 @@
+pkgbase = otf-inconsolata-lgc-markup
+	pkgdesc = Based on Inconsolata LGC. Slightly modified for markup languages such as LaTeX, Asciidoc, or markdown.
+	pkgver = 1.00
+	pkgrel = 1
+	url = http://bdtechconcepts.com/Inconsolata-LGC-Markup-Font.html
+	install = otf-inconsolata-lgc-markup.install
+	arch = any
+	license = custom:OFL
+	depends = fontconfig
+	source = https://fontlibrary.org/assets/downloads/inconsolata-lgc-markup/11723591be7ecb75419dd8e3b3fd7ece/inconsolata-lgc-markup.zip
+	source = 45-inconsolata-lgc-markup.conf
+	source = 90-non-tt-inconsolata-lgc-markup.conf
+	sha1sums = 57cdab400c3b496d3bf8e015a68f87dbbb89133d
+	sha1sums = 732efcb262f05c792549bbddfb30f43312f9bd55
+	sha1sums = edb285b90d4a33ae2637af89267978f4039880ef
+
+pkgname = otf-inconsolata-lgc-markup
+
