@@ -1,0 +1,15 @@
+pkgbase = libaffa
+	pkgdesc = A C++ affine arithmetic library for GNU/Linux.
+	pkgver = 0.9.6
+	pkgrel = 1
+	url = http://savannah.nongnu.org/projects/libaffa
+	arch = x86_64
+	license = LGPL
+	makedepends = cmake
+	depends = gcc-libs
+	options = staticlibs
+	source = https://github.com/foolnotion/libaffa/archive/v0.9.6.tar.gz
+	sha256sums = e520282f520a07a94a6a5bb18bb5b2b6432082f72daf0c1d23b58e24120f045a
+
+pkgname = libaffa
+
