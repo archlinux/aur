@@ -33,13 +33,11 @@ archlinux:
   - cuda
   - moreutils
   - oidn
-  - optix
   before_install:
 # 1.Override `package-cleanup.hook` to preserve cache for travis.
 # 2.Enable ccache
 # 3.Multithreaded build and compress
 # 4.Suppress all gcc warnings
-# 5.Put optix in yay cache
   - |
      sudo mkdir /etc/pacman.d/hooks/
      sudo ln -s /dev/null /etc/pacman.d/hooks/package-cleanup.hook
@@ -48,7 +46,6 @@ archlinux:
      sudo sed -i '/^COMPRESSXZ/s/\xz/xz -T 2/' /etc/makepkg.conf
      sudo sed -i '$a   CFLAGS="$CFLAGS -w"'   /etc/makepkg.conf
      sudo sed -i '$a CXXFLAGS="$CXXFLAGS -w"' /etc/makepkg.conf
-     mkdir -p ~/.cache/yay/optix && cp /var/cache/pacman/pkg/NVIDIA-OptiX-SDK-7.0.0-linux64.sh ~/.cache/yay/optix
   script:
 # Normalize TRAVIS variable
   - |
@@ -60,7 +57,7 @@ archlinux:
   - ccache -s
   - ccache -z
 # set timeout to 50m minus current uptime, minus travis cache in time, minus 60 second buffer for arch-travis cleanup.
-  - timeout $((50*60-arch_uptime-travis_uptime-60)) makepkg -s --noconfirm > >(ts -s '%.T'); _makepkg_return=$?
+  - timeout $((50*60-arch_uptime-travis_uptime-60)) makepkg -s --noconfirm DISABLE_OPTIX=1 > >(ts -s '%.T'); _makepkg_return=$?
   - sudo pacman -Sc --noconfirm
   - ccache -s
   - ccache -z
@@ -68,10 +65,6 @@ archlinux:
 script:
 - "export travis_uptime=$(cut -d' ' -f1 /proc/uptime|cut -d'.' -f1)"
 - 'echo "Travis initialization time: $travis_uptime seconds"'
-#- 'curl -Ls "https://developer.download.nvidia.com/designworks/optix/secure/7.0.0/ga/NVIDIA-OptiX-SDK-7.0.0-linux64.sh?LOhihLF99zzm6EAXMViu7GfZXfW8lN6IaQ-KhJwHgWx1-tIBMUjiwjPKBvB_585iVoKU9spDrpIHyyWnb9AarWCf2Kgv5nwpJfg9ai4DbsTRYtEmFfTSCo04t0idjs6Wfh-dtfbbrkAHIF_1vx5AvrS5DeQCt2jbLxKADQ8WOm9qpw" > ~/.pkg-cache/NVIDIA-OptiX-SDK-7.0.0-linux64.sh'
-#- 'chmod -w ~/.pkg-cache/NVIDIA-OptiX-SDK-7.0.0-linux64.sh'
-#- 'du -h ~/.pkg-cache/NVIDIA-OptiX-SDK-7.0.0-linux64.sh'
-- 'head ~/.pkg-cache/NVIDIA-OptiX-SDK-7.0.0-linux64.sh'
 # assume caching out will take the same amount of time as caching in those making build time equal to 50 minutes minus two time current uptime.
 - "curl -s https://raw.githubusercontent.com/bartoszek/arch-travis/master/arch-travis.sh| timeout $((50*60-2*travis_uptime)) bash"
 - "echo pacman pkg cache size: $(du -h ~/.pkg-cache|cut -f1) in $(ls ~/.pkg-cache|wc -l) files"

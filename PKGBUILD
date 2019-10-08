@@ -18,7 +18,7 @@ depends=('alembic' 'libgl' 'python' 'python-numpy' 'openjpeg' 'desktop-file-util
          'openvdb' 'opencollada' 'opensubdiv' 'openshadinglanguage' 'libtiff' 'libpng')
 makedepends=('git' 'cmake' 'boost' 'mesa' 'llvm')
 ((DISABLE_NINJA)) ||  makedepends+=('ninja')
-((DISABLE_CUDA)) && optdepends=('cuda: CUDA support in Cycles') || makedepends+=('cuda' 'optix>=7.0')
+((DISABLE_CUDA)) && optdepends=('cuda: CUDA support in Cycles') || { makedepends+=('cuda') ; ((DISABLE_OPTIX)) || makedepends+=('optix>=7.0'); }
 provides=('blender-2.81')
 conflicts=('blender-2.81')
 license=('GPL')
