@@ -1,7 +1,7 @@
 pkgbase = ccrtp
 	pkgdesc = An implementation of RTP, the real-time transport protocol from the IETF
 	pkgver = 2.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gnu.org/software/ccrtp/
 	install = ccrtp.install
 	arch = i686
@@ -11,9 +11,7 @@ pkgbase = ccrtp
 	depends = ucommon>=6.2.2
 	depends = libgcrypt
 	source = http://ftp.gnu.org/gnu/ccrtp/ccrtp-2.1.2.tar.gz
-	source = http://ftp.gnu.org/gnu/ccrtp/ccrtp-2.1.2.tar.gz.sig
-	md5sums = e6792cbd8b705901c205a509bd7f812f
-	md5sums = SKIP
+	sha256sums = f035ca0e1b5d37b78e358f07a25b05c5cdaf2c85c4b31cf29f6be17f288a349e
 
 pkgname = ccrtp
 
