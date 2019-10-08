@@ -1,14 +1,16 @@
 pkgbase = wf-shell-git
 	pkgdesc = GTK3-based panel for the Wayfire compositor
-	pkgver = r63.3cff8dc
+	pkgver = r127.5593eab
 	pkgrel = 1
 	url = https://wayfire.org
 	arch = x86_64
 	license = custom:MIT
+	makedepends = wayland
 	makedepends = wayland-protocols
 	makedepends = meson
 	makedepends = ninja
 	makedepends = git
+	makedepends = gobject-introspection
 	depends = wf-config
 	depends = gtkmm3
 	provides = wf-shell-git

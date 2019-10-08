@@ -1,6 +1,4 @@
-/*.log
-/*.tar
-/*.tar.*
-/src/
-/pkg/
-/wf-shell-git/
+*
+!/PKGBUILD
+!/.SRCINFO
+!/.gitignore
