@@ -1,8 +1,9 @@
 # Maintainer: Jonathan Wright <jon@than.io>
 
 _pkg=tflint
+pkgname=${_pkg}-bin
 pkgver=0.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A linter for Terraform code"
 arch=('x86_64')
 url="https://github.com/wata727/${_pkg}"
