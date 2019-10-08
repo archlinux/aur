@@ -2,22 +2,29 @@
 
 pkgname=python-matplotlib-pgfutils
 pkgdesc="Utilities for generating PGF figures from Matplotlib"
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
-url="https://github.com/bcbnz/matplotlib-pgfutils"
+url="https://matplotlib-pgfutils.readthedocs.io/"
 arch=('any')
 depends=('python-matplotlib>=1.2')
+checkdepends=('python-pytest' 'python-pytest-cov' 'texlive-core')
 license=('BSD')
 source=("https://github.com/bcbnz/matplotlib-pgfutils/archive/v${pkgver}.tar.gz")
-sha256sums=("b67b22a7f7ea0663082168e2ab3c81094630e1134d983b950359b71e35a6cc29")
+sha256sums=("4c52a06c2e06b7ec4faef67d834a339f3b3fe35c00a1180b7f1e2d098fa5eba0")
 
 build() {
     cd "matplotlib-pgfutils-${pkgver}"
     python setup.py build
 }
 
+check() {
+    cd "matplotlib-pgfutils-${pkgver}"
+    pytest
+}
+
 package() {
     cd "matplotlib-pgfutils-${pkgver}"
     python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
