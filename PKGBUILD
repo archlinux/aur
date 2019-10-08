@@ -1,7 +1,7 @@
 # Maintainer: Maxime Vincent (maximevince) <maxime [dot] vince [at] gmail [dot] com>
 
 pkgname=radare2-cutter-ghidra
-pkgver=1.9.r1209.gb4535227
+pkgver=1.9.0.r23.gb11ba240
 pkgrel=1
 pkgdesc='A Qt and C++ GUI for radare2 reverse engineering framework with Python and Ghidra support'
 url='https://github.com/radareorg/cutter'
@@ -18,7 +18,7 @@ md5sums=('SKIP')
 pkgver() {
   cd ${pkgname}
   # Remove 'v' prefix on tags; prefix revision with 'r'; replace all '-' with '.'
-  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags 2>/dev/null | sed 's/[^[:digit:]]*\(.\+\)-\([[:digit:]]\+\)-g\([[:xdigit:]]\{7\}\)/\1.r\2.g\3/;t;q1'
 }
 
 prepare() {
