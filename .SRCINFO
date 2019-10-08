@@ -9,7 +9,7 @@ pkgbase = lightdm-webkit-theme-osmos
 	depends = lightdm
 	depends = lightdm-webkit2-greeter>=2.2.3
 	source = https://github.com/Warinyourself/lightdm-webkit-theme-osmos/archive/1.0.4.tar.gz
-	md5sums = 46b2b754d3542cb3a51be20743d320ed
+	md5sums = e106fbbadd9caff09e34440a158e6fb9
 
 pkgname = lightdm-webkit-theme-osmos
 
