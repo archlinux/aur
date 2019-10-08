@@ -1,0 +1,15 @@
+pkgbase = git-delta
+	pkgdesc = A syntax-highlighting pager for git
+	pkgver = 0.0.12
+	pkgrel = 1
+	url = https://github.com/dandavison/delta
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	depends = git
+	replaces = delta-diff
+	source = https://github.com/dandavison/delta/archive/0.0.12.tar.gz
+	sha256sums = ca15401c59da7dca4ff2bb8d07b3612e171351fce834bcf12a6edeb19195b58e
+
+pkgname = git-delta
+
