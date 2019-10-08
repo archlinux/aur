@@ -5,9 +5,9 @@
 
 pkgname=firefox-appmenu
 _pkgname=firefox
-pkgver=69.0.1
+pkgver=69.0.2
 pkgrel=1
-pkgdesc="Standalone web browser from mozilla.org"
+pkgdesc="Firefox from extra with appmenu patch"
 arch=(x86_64)
 license=(MPL GPL LGPL)
 url="https://www.mozilla.org/firefox/"
@@ -25,11 +25,13 @@ provides=("firefox=$pkgver")
 conflict=("firefox")
 options=(!emptydirs !makeflags !strip)
 source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz{,.asc}
+        no-relinking.patch
         0001-Use-remoting-name-for-GDK-application-names.patch
         $_pkgname.desktop firefox-symbolic.svg
         unity-menubar.patch)
-sha256sums=('f5f2f592b8296812d43244d6a50c0c57ad11a5324db8e4e79749545482b79033'
+sha256sums=('2904ef954626d2a7f320670ccb7cb5d9060610f091c94190a6cbee14aa2cd82e'
             'SKIP'
+            '2dc9d1aa5eb7798c89f46478f254ae61e4122b4d1956d6044426288627d8a014'
             'ab07ab26617ff76fce68e07c66b8aa9b96c2d3e5b5517e51a3c3eac2edd88894'
             'e466789015e15be9409b7a7044353674ca6aa0f392e882217f90c79821fe2630'
             '9a1a572dc88014882d54ba2d3079a1cf5b28fa03c5976ed2cb763c93dabbd797'
@@ -52,6 +54,9 @@ prepare() {
   mkdir mozbuild
   cd firefox-$pkgver
 
+  # Avoid relinking during buildsymbols
+  patch -Np1 -i ../no-relinking.patch
+
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1530052
   patch -Np1 -i ../0001-Use-remoting-name-for-GDK-application-names.patch
 
@@ -61,7 +66,7 @@ prepare() {
   echo -n "$_google_api_key" >google-api-key
   echo -n "$_mozilla_api_key" >mozilla-api-key
 
-  cat >.mozconfig <<END
+  cat >../mozconfig <<END
 ac_add_options --enable-application=browser
 
 ac_add_options --prefix=/usr
@@ -69,10 +74,8 @@ ac_add_options --enable-release
 ac_add_options --enable-hardening
 ac_add_options --enable-optimize
 ac_add_options --enable-rust-simd
-ac_add_options --enable-lto
-export MOZ_PGO=1
-export CC=clang
-export CXX=clang++
+export CC='clang --target=x86_64-unknown-linux-gnu'
+export CXX='clang++ --target=x86_64-unknown-linux-gnu'
 export AR=llvm-ar
 export NM=llvm-nm
 export RANLIB=llvm-ranlib
@@ -116,16 +119,55 @@ build() {
   # LTO needs more open files
   ulimit -n 4096
 
+  # -fno-plt with cross-LTO causes obscure LLVM errors
+  # LLVM ERROR: Function Import: link error
+  CFLAGS="${CFLAGS/-fno-plt/}"
+  CXXFLAGS="${CXXFLAGS/-fno-plt/}"
+
+  # Do 3-tier PGO
+  msg2 "Building instrumented browser..."
+  cat >.mozconfig ../mozconfig - <<END
+ac_add_options --enable-profile-generate
+END
+  ./mach build
+
+  msg2 "Profiling instrumented browser..."
+  ./mach package
+  LLVM_PROFDATA=llvm-profdata \
+    JARLOG_FILE="$PWD/jarlog" \
+    xvfb-run -a -n 92 -s "-screen 0 1600x1200x24" \
+    ./mach python build/pgo/profileserver.py
+
+  if ! compgen -G '*.profraw' >&2; then
+    error "No profile data produced."
+    return 1
+  fi
+
+  if [[ ! -s jarlog ]]; then
+    error "No jar log produced."
+    return 1
+  fi
+
+  msg2 "Removing instrumented browser..."
+  ./mach clobber
+
   msg2 "Building optimized browser..."
-  xvfb-run -a -n 97 -s "-screen 0 1600x1200x24" ./mach build
+  cat >.mozconfig ../mozconfig - <<END
+ac_add_options --enable-lto=cross
+ac_add_options --enable-profile-use
+ac_add_options --with-pgo-profile-path=${PWD@Q}
+ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
+END
+  ./mach build
+
   msg2 "Building symbol archive..."
   ./mach buildsymbols
 }
 
+
 package() {
   cd firefox-$pkgver
   DESTDIR="$pkgdir" ./mach install
-  find . -name '*crashreporter-symbols-full.zip' -exec cp -fvt "$startdir" {} +
 
   _vendorjs="$pkgdir/usr/lib/$_pkgname/browser/defaults/preferences/vendor.js"
   install -Dm644 /dev/stdin "$_vendorjs" <<END
@@ -180,6 +222,15 @@ END
   # https://bugzilla.mozilla.org/show_bug.cgi?id=658850
   ln -srf "$pkgdir/usr/bin/$_pkgname" \
     "$pkgdir/usr/lib/$_pkgname/firefox-bin"
+
+
+  if [[ -f "$startdir/.crash-stats-api.token" ]]; then
+    find . -name '*crashreporter-symbols-full.zip' -exec \
+      "$startdir/upload-symbol-archive" "$startdir/.crash-stats-api.token" {} +
+  else
+    find . -name '*crashreporter-symbols-full.zip' -exec \
+      cp -fvt "$startdir" {} +
+  fi
 }
 
 # vim:set sw=2 et:
