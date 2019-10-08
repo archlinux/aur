@@ -3,12 +3,13 @@
 pkgname=mitie-git
 _pkgname=MITIE
 pkgrel=1
-pkgver=r5148.15bed499
+pkgver=r5150.832cbd6f
 pkgdesc="MITIE: library and tools for information extraction"
 arch=('i686' 'x86_64')
 url="https://github.com/mit-nlp/MITIE"
 license=('Boost Software License')
 depends=('openblas')
+makedepends=('git' 'cmake')
 source=("git+https://github.com/mit-nlp/${_pkgname}")
 sha256sums=(SKIP)
 provides=('mitie')
