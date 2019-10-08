@@ -4,7 +4,7 @@
 
 pkgname=nvidia-ck
 pkgver=435.21
-pkgrel=8
+pkgrel=9
 epoch=2
 _extramodules=extramodules-ck
 _pkgdesc="NVIDIA drivers for linux-ck."
