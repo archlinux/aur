@@ -1,4 +1,4 @@
-From 0c9e53b5ad462bd25bd245495567b6eb4ece7c70 Mon Sep 17 00:00:00 2001
+From fc34114172d60f65ae7f4c663513ae37e0c3ebf2 Mon Sep 17 00:00:00 2001
 From: Debarshi Ray <debarshir@gnome.org>
 Date: Mon, 12 May 2014 14:57:18 +0200
 Subject: [PATCH 01/18] Restore transparency
@@ -206,7 +206,7 @@ index 684da49afeb9..00aed8f53b78 100644
  
  static void
 diff --git a/src/terminal-window.c b/src/terminal-window.c
-index 19198f49f7b5..5ba767c5fc87 100644
+index 040fc4f4d71a..e1dca4a23bd0 100644
 --- a/src/terminal-window.c
 +++ b/src/terminal-window.c
 @@ -2125,6 +2125,8 @@ terminal_window_init (TerminalWindow *window)
@@ -234,7 +234,7 @@ index 19198f49f7b5..5ba767c5fc87 100644
 2.23.0
 
 
-From 1ace3ae8beb3a72d70fefe2eaf83500c9747c49c Mon Sep 17 00:00:00 2001
+From b554bcd63783e10a2051d80f995a7dccdd282d38 Mon Sep 17 00:00:00 2001
 From: Lars Uebernickel <lars.uebernickel@canonical.com>
 Date: Wed, 28 May 2014 14:11:02 +0200
 Subject: [PATCH 02/18] window: Make the drawing robust across all themes
@@ -254,7 +254,7 @@ https://bugzilla.gnome.org/show_bug.cgi?id=730016
  1 file changed, 21 insertions(+)
 
 diff --git a/src/terminal-window.c b/src/terminal-window.c
-index 5ba767c5fc87..cdd69f9f4f52 100644
+index e1dca4a23bd0..525af2e80c1b 100644
 --- a/src/terminal-window.c
 +++ b/src/terminal-window.c
 @@ -1979,6 +1979,26 @@ terminal_window_realize (GtkWidget *widget)
@@ -296,7 +296,7 @@ index 5ba767c5fc87..cdd69f9f4f52 100644
 2.23.0
 
 
-From dc0922ed8ad2111977efe2580890cbf42b51abb6 Mon Sep 17 00:00:00 2001
+From 3f72661d1b1690be201fdf0b55cab13c67163cad Mon Sep 17 00:00:00 2001
 From: "Owen W. Taylor" <otaylor@fishsoup.net>
 Date: Fri, 13 Nov 2015 15:16:42 +0100
 Subject: [PATCH 03/18] screen, window: Extra padding around transparent
@@ -388,7 +388,7 @@ index 00aed8f53b78..ffa7b3239cae 100644
  terminal_screen_button_press (GtkWidget      *widget,
                                GdkEventButton *event)
 diff --git a/src/terminal-window.c b/src/terminal-window.c
-index cdd69f9f4f52..6028ca8700d7 100644
+index 525af2e80c1b..87d6d92ccdd7 100644
 --- a/src/terminal-window.c
 +++ b/src/terminal-window.c
 @@ -1985,15 +1985,21 @@ terminal_window_draw (GtkWidget *widget,
@@ -423,7 +423,7 @@ index cdd69f9f4f52..6028ca8700d7 100644
 2.23.0
 
 
-From 4d9ce084d8c99c3e2eda24f21d0b8d23ded14206 Mon Sep 17 00:00:00 2001
+From 0cbcb0ceaaf5e82160a3cdc928a402d285377510 Mon Sep 17 00:00:00 2001
 From: Debarshi Ray <debarshir@gnome.org>
 Date: Mon, 27 Feb 2017 16:53:51 +0100
 Subject: [PATCH 04/18] screen: Silence -Wunused variable
@@ -449,7 +449,7 @@ index ffa7b3239cae..6cb3e20c4f42 100644
 2.23.0
 
 
-From 14e4f8e7126f22c014a79dc4889ed7a484c53c95 Mon Sep 17 00:00:00 2001
+From d6d6d29ac8961f5014db5bb7505d33d09a8cfab3 Mon Sep 17 00:00:00 2001
 From: Debarshi Ray <debarshir@gnome.org>
 Date: Tue, 17 Feb 2015 17:06:17 +0100
 Subject: [PATCH 13/18] Restore translations for setting a title and
@@ -991,10 +991,10 @@ index 644df82363f1..cd862feb50c0 100644
  #: ../src/profile-preferences.glade.h:74
  msgid "_Update login records when command is launched"
 diff --git a/po/da.po b/po/da.po
-index 26947a7a6fa1..441bb5ce0e73 100644
+index f0a55df987d5..e1014bfb18b5 100644
 --- a/po/da.po
 +++ b/po/da.po
-@@ -2298,3 +2298,15 @@ msgstr ""
+@@ -2312,3 +2312,15 @@ msgstr ""
  #: ../src/terminal-window.c:3256
  msgid "C_lose Window"
  msgstr "_Luk vindue"
@@ -1144,10 +1144,10 @@ index 6c9e0cd73d63..db4aa891dd45 100644
  #: ../src/gnome-terminal.glade2.h:87
  msgid "_Update login records when command is launched"
 diff --git a/po/en_GB.po b/po/en_GB.po
-index c9999e204f33..dfbff85bf907 100644
+index 4d5bef4fa4f4..fc605c21b66c 100644
 --- a/po/en_GB.po
 +++ b/po/en_GB.po
-@@ -2796,8 +2796,8 @@ msgstr "C_lose Window"
+@@ -2690,8 +2690,8 @@ msgstr "C_lose Window"
  #~ msgid "Default size:"
  #~ msgstr "Default size:"
  
@@ -1158,7 +1158,7 @@ index c9999e204f33..dfbff85bf907 100644
  
  #~ msgid "When terminal commands set their o_wn titles:"
  #~ msgstr "When terminal commands set their o_wn titles:"
-@@ -2814,8 +2814,8 @@ msgstr "C_lose Window"
+@@ -2708,8 +2708,8 @@ msgstr "C_lose Window"
  #~ msgid "_Unlimited"
  #~ msgstr "_Unlimited"
  
@@ -1169,7 +1169,7 @@ index c9999e204f33..dfbff85bf907 100644
  
  #~ msgid "Switch to Tab 3"
  #~ msgstr "Switch to Tab 3"
-@@ -2856,8 +2856,8 @@ msgstr "C_lose Window"
+@@ -2750,8 +2750,8 @@ msgstr "C_lose Window"
  #~ msgid "_Input Methods"
  #~ msgstr "_Input Methods"
  
@@ -1180,7 +1180,7 @@ index c9999e204f33..dfbff85bf907 100644
  
  #~ msgid "Add or Remove Terminal Encodings"
  #~ msgstr "Add or Remove Terminal Encodings"
-@@ -3552,8 +3552,8 @@ msgstr "C_lose Window"
+@@ -3446,8 +3446,8 @@ msgstr "C_lose Window"
  #~ msgid "Background image _scrolls"
  #~ msgstr "Background image _scrolls"
  
@@ -1288,10 +1288,10 @@ index 6d71f53e5005..2ef191d5d6e3 100644
 +msgid "Transparent background"
 +msgstr "Atzeko plano gardena"
 diff --git a/po/fa.po b/po/fa.po
-index 1b88db42b00d..3c549a41bec6 100644
+index 0337bfc40a74..089f9aa2520c 100644
 --- a/po/fa.po
 +++ b/po/fa.po
-@@ -2658,8 +2658,8 @@ msgstr "_بستن پنجره"
+@@ -2631,8 +2631,8 @@ msgstr "_بستن پنجره"
  #~ msgid "Use custom default terminal si_ze"
  #~ msgstr "استفاده از اندازه‌ی _سفارشی پایانه‌ی پیش‌فرض"
  
@@ -1302,7 +1302,7 @@ index 1b88db42b00d..3c549a41bec6 100644
  
  #~ msgid "When terminal commands set their o_wn titles:"
  #~ msgstr "وقتی که فرمان‌های پایانه عنوان‌های _خودشان را تنظیم می‌کنند:"
-@@ -2673,8 +2673,8 @@ msgstr "_بستن پنجره"
+@@ -2646,8 +2646,8 @@ msgstr "_بستن پنجره"
  #~ msgid "_Unlimited"
  #~ msgstr "_نامحدود"
  
@@ -1313,7 +1313,7 @@ index 1b88db42b00d..3c549a41bec6 100644
  
  #~ msgid "Switch to Tab 3"
  #~ msgstr "تعویض به زبانه‌ی ۳"
-@@ -2715,5 +2715,8 @@ msgstr "_بستن پنجره"
+@@ -2688,5 +2688,8 @@ msgstr "_بستن پنجره"
  #~ msgid "_Input Methods"
  #~ msgstr "روش‌های _ورودی"
  
@@ -1677,11 +1677,11 @@ index 41bbbe3f1eb6..4b89d0f76328 100644
 +msgid "Set Title"
 +msgstr "Atur Judul"
 diff --git a/po/it.po b/po/it.po
-index c62d53d1c988..2b9028608286 100644
+index d4a31c1c8b13..fe2766ebaa06 100644
 --- a/po/it.po
 +++ b/po/it.po
-@@ -2327,3 +2327,15 @@ msgstr ""
- #: ../src/terminal-window.c:3246
+@@ -2340,3 +2340,15 @@ msgstr ""
+ #: ../src/terminal-window.c:3256
  msgid "C_lose Window"
  msgstr "Chiudi _finestra"
 +
@@ -1697,10 +1697,10 @@ index c62d53d1c988..2b9028608286 100644
 +msgid "Set Title"
 +msgstr "Imposta titolo"
 diff --git a/po/ja.po b/po/ja.po
-index b42e552761f9..2c88593bb28e 100644
+index 4332b6badc34..6513d5e18ad0 100644
 --- a/po/ja.po
 +++ b/po/ja.po
-@@ -2524,3 +2524,15 @@ msgstr "ウィンドウを閉じる(_L)"
+@@ -2541,3 +2541,15 @@ msgstr "ウィンドウを閉じる(_L)"
  
  #~ msgid "_Add or Remove…"
  #~ msgstr "追加/削除(_A)…"
