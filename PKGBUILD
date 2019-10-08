@@ -9,7 +9,7 @@
 
 _pkgname=synergy
 pkgname=$_pkgname-git
-pkgver=20181026.r3292.660cc5d1
+pkgver=20190903.r3294.ca35737a
 pkgrel=1
 pkgdesc='Share a single mouse and keyboard between multiple computers'
 url='http://synergy-foss.org'
@@ -58,9 +58,11 @@ package() {
 
   # Install binary
   cd $_pkgname
+  install -Dm755 bin/${_pkgname} "$pkgdir/usr/bin/${_pkgname}"
   install -Dm755 bin/${_pkgname}c "$pkgdir/usr/bin/${_pkgname}c"
+  install -Dm755 bin/${_pkgname}d "$pkgdir/usr/bin/${_pkgname}d"
   install -Dm755 bin/${_pkgname}s "$pkgdir/usr/bin/${_pkgname}s"
-  install -Dm755 bin/${_pkgname}-core "$pkgdir/usr/bin/${_pkgname}-core"
+  install -Dm755 bin/syntool "$pkgdir/usr/bin/syntool"
 
   # Install config
   install -Dm644 doc/$_pkgname.conf.example "$pkgdir/etc/$_pkgname.conf.example"
