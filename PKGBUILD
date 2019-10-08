@@ -1,7 +1,7 @@
 # Maintainer: Sergey Slipchenko <faergeek@gmail.com>
 
 pkgname=retroarch-rbp
-pkgver=1.7.8
+pkgver=1.7.9.2
 pkgrel=1
 pkgdesc='Reference frontend for the libretro API (Raspberry Pi)'
 arch=(armv7h)
@@ -44,7 +44,7 @@ source=(
   sysusers.conf
   tmpfiles.conf
 )
-sha256sums=('cb11b4dababce19e957c0dac589782395c1d7d0938750fb534c90cdc71a7d5af'
+sha256sums=('1cb88c3e2e8a04a21e2e6a14b7b7a7eb2748d18e629e5e2063ca7a1a9a7dabb5'
             '7857cff30c45721b66666828ca9edbb2923817c6c64591be3f58fe019277103e'
             '2e0fd9b160f66ed69630d562ecc0c7db06802d6373305e951f5ffecbdfc93cfb'
             'd4e4a5ac6c961eafb3edfc28186f75e471dc81e308791d57cfccae4f43de4dae'
