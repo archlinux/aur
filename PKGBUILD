@@ -6,8 +6,8 @@
 # Contributor: Michael Kanis <mkanis_at_gmx_dot_de>
 
 pkgname=mutter-performance
-pkgver=3.34.0+47+g105a3f757
-pkgrel=2
+pkgver=3.34.0+78+gb5f50028f
+pkgrel=1
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -22,7 +22,7 @@ provides=(mutter mutter-781835-workaround)
 conflicts=(mutter)
 replaces=(mutter-781835-workaround)
 groups=(gnome)
-_commit=105a3f757a31299ed4eaafa0615e1fcd0b4ffeec  # master
+_commit=b5f50028f268827f9c3465fb23eb03d0b6e4422b  # master
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit")
 sha256sums=('SKIP')
 
@@ -116,13 +116,6 @@ prepare() {
   # Status: 2
   # Comment:
   git_cp_by_msg '!724' 'clutter/stage: Add API to get_next_presentation_time' 'clutter/master-clock-default: Sync timelines to hardware vsync'
-
-  # Title: clutter/actor: Mark implicit transitions as remove-on-complete
-  # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/828
-  # Type: 3
-  # Status: 2
-  # Comment:
-  git cherry-pick -n f74812d3
 }
 
 build() {
