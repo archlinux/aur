@@ -62,7 +62,7 @@ _localmodcfg=
 
 pkgbase=linux-bcachefs-git
 _srcver_tag=5.2.20-arch1
-pkgver=5.2.20.arch1.r844549.5bfe85789782
+pkgver=5.2.20.arch1.r844550.2df3501f6873
 pkgrel=1
 arch=(x86_64)
 url="https://github.com/koverstreet/bcachefs"
@@ -130,19 +130,24 @@ prepare() {
     # git pull --no-edit -s recursive -X ours upstream_stable v${_srcver_tag//-arch*/}
     git pull --no-edit upstream_stable v${_srcver_tag//-arch*/}
 
+    # https://github.com/koverstreet/bcachefs/issues/74
+    git revert --no-edit c785529bebceeaf38db8ebf9b50ff3a173fb18c6
+    # https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/commit/?h=v5.2.1&id=c785529bebceeaf38db8ebf9b50ff3a173fb18c6
+    # block: fix .bi_size overflow    
+
     msg2 "Adding patches from Arch Linux kernel repository..."
     git remote add arch_stable "https://git.archlinux.org/linux.git" || true
     # git pull --no-edit arch_stable "v$_srcver_tag"
     git fetch arch_stable v5.2.14-arch2
 
+    git cherry-pick 7097880bd7857294d2b91084a35d2211cef7dd8b
     # https://git.archlinux.org/linux.git/commit/?h=v5.1.16-arch1&id=fd0f4757ded3627edc883650941a26a21e435a7d
     # add sysctl to disallow unprivileged CLONE_NEWUSER by default
-    git cherry-pick 7097880bd7857294d2b91084a35d2211cef7dd8b
 
+    git cherry-pick de96c660ed1f470fed317e987444634cb6287d57
     # https://git.archlinux.org/linux.git/commit/?h=v5.1.16-arch1&id=7e6c7c0d56e1342b9ad5d8071736a5851d1ae1c7
     # ZEN: Add CONFIG for unprivileged_userns_clone
-    git cherry-pick de96c660ed1f470fed317e987444634cb6287d57
-    
+
     msg2 "Fixing EXTRAVERSION..."
     sed -i 's/EXTRAVERSION =/EXTRAVERSION = -arch1/g' "$srcdir/$_reponame/Makefile"
 
