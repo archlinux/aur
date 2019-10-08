@@ -3,7 +3,7 @@
 
 pkgname=libkolabxml
 pkgver=1.1.6
-pkgrel=11
+pkgrel=12
 pkgdesc="Kolab XML Format Schema Definitions Library"
 url='https://www.kolab.org/'
 arch=('x86_64')
@@ -21,9 +21,9 @@ prepare() {
 build() {
   cd build
   cmake ../${pkgname}-${pkgver} \
-    -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DBUILD_TESTS=OFF
+    -DBUILD_TESTS=OFF \
+    -DBoost_NO_BOOST_CMAKE=ON
   make
 }
 
