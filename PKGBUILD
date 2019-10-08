@@ -3,11 +3,11 @@
 
 pkgname=img4lib-git
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Deal with img4 files in a decent manner"
 arch=('x86_64')
 url="https://github.com/xerub/img4lib"
-depends=('openssl-1.0')
+depends=('openssl-1.0' 'lzfse')
 license=('unknown')
 source=("git+https://github.com/xerub/img4lib.git")
 sha512sums=('SKIP')
