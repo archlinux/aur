@@ -3,7 +3,7 @@
 
 pkgname=nodejs-decktape
 _npmname=decktape
-pkgver=2.9.3
+pkgver=2.10.0
 pkgrel=1
 pkgdesc='PDF exporter for HTML presentation frameworks'
 arch=('any')
