@@ -1,14 +1,14 @@
 # Maintainer: Johan Klokkhammer Helsing <johanhelsing@gmail.com>
 
 pkgname=wayland-log-reader-git
-pkgver=0.20180629.17.c2430c9
+pkgver=0.20191008.20.ed02317
 pkgrel=1
 pkgdesc="Application for navigating and making sense of WAYLAND_DEBUG log output"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='https://github.com/johanhelsing/wayland-log-reader'
 license=('GPL3')
 depends=('qt5-base' 'qt5-quickcontrols2')
-makedepends=('git' 'qbs')
+makedepends=('git' 'cmake')
 
 _gitroot="git://github.com/johanhelsing/wayland-log-reader.git"
 _gitbranch=master
@@ -17,19 +17,20 @@ source=("${_gitname}::${_gitroot}#branch=${_gitbranch}")
 md5sums=('SKIP')
 
 pkgver() {
-	cd ${srcdir}/${_gitname}
-	echo "0.$(git log -1 --format="%cd" --date=short | tr -d '-').$(git rev-list --count HEAD).$(git log -1 --format="%h")"
+    cd "${srcdir}/${_gitname}"
+    echo "0.$(git log -1 --format="%cd" --date=short | tr -d '-').$(git rev-list --count HEAD).$(git log -1 --format="%h")"
 }
 
 build() {
-	cd ${srcdir}/${_gitname}
-	qbs setup-toolchains --type gcc /usr/bin/g++ gcc
-	qbs setup-qt /usr/bin/qmake-qt5 qt5
-	qbs config profiles.qt5.baseProfile gcc
-	qbs build --no-install -d build profile:qt5
+    mkdir -p build
+    cd build
+    cmake -DCMAKE_INSTALL_PREFIX=/usr "../${_gitname}"
+    make
+    cd "${srcdir}"
+    echo "0.$(git log -1 --format="%cd" --date=short | tr -d '-').$(git rev-list --count HEAD).$(git log -1 --format="%h")"
 }
 
 package() {
-	cd ${srcdir}/${_gitname}
-	qbs install -d build --no-build --install-root $pkgdir -v profile:qt5
+    cd build
+    make DESTDIR="${pkgdir}" install
 }
