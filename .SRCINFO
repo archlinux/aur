@@ -15,6 +15,7 @@ pkgbase = openvpn-rrf
 	optdepends = easy-rsa: easy CA and certificate handling
 	optdepends = pam: authenticate via PAM
 	provides = openvpn
+	conflicts = openvpn
 	source = https://swupdate.openvpn.net/community/releases/openvpn-2.4.7.tar.gz
 	source = https://swupdate.openvpn.net/community/releases/openvpn-2.4.7.tar.gz.asc
 	source = recursive-routing-fix.patch

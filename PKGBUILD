@@ -13,6 +13,7 @@ optdepends=('easy-rsa: easy CA and certificate handling'
 makedepends=('systemd' 'patch')
 provides=('openvpn')
 license=('custom')
+conflicts=('openvpn')
 validpgpkeys=('F554A3687412CFFEBDEFE0A312F5F7B42F2B01E7') # OpenVPN - Security Mailing List <security@openvpn.net>
 source=("https://swupdate.openvpn.net/community/releases/openvpn-${pkgver}.tar.gz"{,.asc} "recursive-routing-fix.patch")
 sha256sums=('73dce542ed3d6f0553674f49025dfbdff18348eb8a25e6215135d686b165423c'
@@ -41,7 +42,7 @@ build() {
 check() {
   cd "${srcdir}"/openvpn-${pkgver}
 
-  make check
+  make
 }
 
 package() {
