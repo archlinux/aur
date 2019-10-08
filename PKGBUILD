@@ -2,7 +2,7 @@
 # Contributor: Danny Bautista <pyrolagus@gmail.com>
 
 pkgname=ghidra-git
-pkgver=9.0.4+r862+g74be8446
+pkgver=9.0.4+r1250+g04f7366a
 _d2j=2.0
 _yajsw=12.12
 _hfsx=0.21
@@ -13,7 +13,7 @@ url=https://www.nsa.gov/ghidra
 _git=https://github.com/NationalSecurityAgency/ghidra
 license=(Apache)
 provides=(ghidra)
-conflicts=(ghidra ghidra-bin)
+conflicts=(ghidra)
 depends=('java-environment>=11' bash hicolor-icon-theme)
 makedepends=(git gradle unzip fop)
 source=(git+$_git
@@ -42,7 +42,7 @@ pkgver() {
 prepare() {
   # HFSExplorer isn't archived in a folder, so let's make one to extract it into
   mkdir hfsx
-  unzip -d hfsx hfsexplorer-${_hfsx/./_}-bin.zip
+  unzip hfsexplorer-${_hfsx/./_}-bin.zip -d hfsx
 
   cd ghidra
 
@@ -91,13 +91,13 @@ package() {
   mv "$pkgdir"/opt/ghidra{_${_appver}_${_relname},}
 
   ln -s /opt/ghidra/ghidraRun "$pkgdir"/usr/bin/ghidra
-  ln -s /opt/ghidra/support/analyzeHeadless "$pkgdir"/usr/bin/ghidra-analyzeHeadless
+  ln -s /opt/ghidra/support/analyzeHeadless "$pkgdir"/usr/bin/ghidra-headless
+
+  install -Dm 644 LICENSE -t "$pkgdir"/usr/share/licenses/ghidra
 
   install -Dm 644 ../ghidra.desktop -t "$pkgdir"/usr/share/applications
   for i in 16 24 32 40 48 64 128 256; do
     install -Dm 644 Ghidra/Framework/Generic/src/main/resources/images/GhidraIcon$i.png \
       "$pkgdir"/usr/share/icons/hicolor/${i}x${i}/apps/ghidra.png
   done
-
-  install -Dm 644 LICENSE -t "$pkgdir"/usr/share/licenses/ghidra
 }
