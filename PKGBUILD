@@ -10,7 +10,7 @@ depends=(gcc-libs)
 makedepends=(cmake)
 options=('staticlibs')
 source=("https://github.com/foolnotion/aaflib/archive/v$pkgver.tar.gz")
-sha256sums=(b85948197bbc90acb3ce768cce3997b8936f3d5fb9e2124af6fdd84fb775f03a)
+sha256sums=(5dbbf503e9c664fa90e71ce903fd165d1ab56c59ee99f50e4e088694946abf48  )
 
 build() {
 	cd "$pkgname-$pkgver"
