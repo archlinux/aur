@@ -3,7 +3,7 @@
 
 pkgname="mp3diags-unstable"
 pkgver="1.5.01"
-pkgrel=1
+pkgrel=2
 pkgdesc="Identify issues with your MP3 files, fix those issues and make other changes"
 url="http://mp3diags.sourceforge.net/"
 license=("GPL")
@@ -19,17 +19,13 @@ build() {
 	./AdjustMt.sh
 	qmake-qt5
 	make
-	./MakeTranslations.sh
-    strip bin/MP3Diags-unstable
+        strip bin/MP3Diags-unstable
 }
 
 package() {
     cd "${srcdir}/MP3Diags-unstable-${pkgver}"
-	mkdir -p "${pkgdir}/usr/bin" "${pkgdir}/usr/share/applications" "${pkgdir}/usr/local/share/mp3diags-unstable/translations"
+	mkdir -p "${pkgdir}/usr/bin" "${pkgdir}/usr/share/applications"
 	install -p -m755 "bin/MP3Diags-unstable" "${pkgdir}/usr/bin/"
-	install -p -m644 "src/translations/mp3diags_cs.qm" "${pkgdir}/usr/local/share/mp3diags-unstable/translations"
-	install -p -m644 "src/translations/mp3diags_de_DE.qm" "${pkgdir}/usr/local/share/mp3diags-unstable/translations"
-	install -p -m644 "src/translations/mp3diags_fr_FR.qm" "${pkgdir}/usr/local/share/mp3diags-unstable/translations"
 	install -p -m644 "desktop/MP3Diags-unstable.desktop" "${pkgdir}/usr/share/applications/"
     
 	for i in "16" "22" "24" "32" "36" "40" "48"; do
