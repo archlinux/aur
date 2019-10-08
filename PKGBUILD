@@ -6,15 +6,15 @@
 
 pkgname=zulip-desktop
 pkgver=4.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Real-time team chat based on the email threading model'
 arch=(i686 x86_64)
 url=https://zulipchat.com
 license=(Apache)
 depends=(libxkbfile gtk3 libxss nss)
-makedepends=(npm python2 typescript)
+makedepends=(npm python2)
 source=($pkgname-$pkgver.tar.gz::https://github.com/zulip/$pkgname/archive/v$pkgver.tar.gz
-        zulip.desktop)
+        $pkgname.desktop)
 sha512sums=('4cbdbc73d09ac50599cba460eccd0b72c901b68a00d4995b9bc16f0f980715155cafc1f14a5d1ab5a97672c5413679ce96f38212f7e0935df85b1c0f1e3465ec'
             '7696a6874d17957f99452452723ae1a6b32b6814b018361a71ed1fe0191e1c6da6f3ad693e2e279615e74f687c380ff2f6dab8b69fcd82476e8f33b56a6b4cb5')
 
@@ -31,11 +31,11 @@ package() {
   cp -a dist/linux-unpacked "$pkgdir"/usr/lib/$pkgname
   ln -s /usr/lib/$pkgname/zulip "$pkgdir"/usr/bin
 
-  install -Dm 644 ../zulip.desktop -t "$pkgdir"/usr/share/applications
+  install -Dm 644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
+
+  install -Dm 644 ../$pkgname.desktop -t "$pkgdir"/usr/share/applications
   for i in 16 24 32 48 64 96 128 256 512; do
     install -Dm 644 build/icons/${i}x${i}.png \
       "$pkgdir"/usr/share/icons/hicolor/${i}x${i}/apps/zulip.png
   done
-
-  install -Dm 644 LICENSE -t "$pkgdir"/usr/share/licenses/zulip-desktop
 }
