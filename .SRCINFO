@@ -1,7 +1,7 @@
 pkgbase = android-x86-qt5
 	pkgdesc = Qt 5 for Android
 	pkgver = 5.13.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.qt.io
 	install = android-x86-qt5.install
 	arch = any
@@ -29,6 +29,7 @@ pkgbase = android-x86-qt5
 	depends = android-x86-zlib
 	depends = android-x86-libpng
 	depends = android-x86-libjpeg-turbo
+	depends = android-x86-openssl
 	optdepends = android-google-apis-x86: AVD support
 	optdepends = android-x86-system-image: AVD support
 	options = !strip
