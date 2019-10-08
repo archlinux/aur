@@ -1,5 +1,6 @@
 /src/
 /pkg/
 /qtextpad/
+qtextpad-*.tar.gz
 *.pkg.tar.xz
 *.src.tar.gz

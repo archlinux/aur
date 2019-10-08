@@ -1,6 +1,6 @@
 pkgbase = qtextpad
 	pkgdesc = Lightweight cross-platform text editor using KF5's syntax highlighting repository.
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://github.com/zrax/qtextpad
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = qtextpad
 	makedepends = cmake
 	depends = syntax-highlighting
 	depends = file
-	source = git+https://github.com/zrax/qtextpad#tag=1.0
-	sha256sums = SKIP
+	source = qtextpad-1.1.tar.gz::https://github.com/zrax/qtextpad/archive/1.1.tar.gz
+	sha256sums = f5c8e9235c53753e4b8c2e0f24ea6028ef3098c0f4ef9786c9d4ab3dd3236b29
 
 pkgname = qtextpad
 
