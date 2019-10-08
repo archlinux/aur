@@ -1,0 +1,14 @@
+pkgbase = python-tarjan
+	pkgdesc = Python implementation of Tarjan’s algorithm
+	pkgver = 0.2.3.2
+	pkgrel = 1
+	url = https://pypi.org/project/tarjan
+	arch = any
+	license = LGPLv3
+	makedepends = python-setuptools
+	depends = python
+	source = tarjan-0.2.3.2::https://pypi.python.org/packages/source/t/tarjan/tarjan-0.2.3.2.tar.gz
+	sha256sums = cffa9147e3bb80d60e72a3c692dd53145e19b14bc68b4452b5a5ee1a4cff9c6d
+
+pkgname = python-tarjan
+
