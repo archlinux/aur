@@ -1,0 +1,16 @@
+pkgbase = kv-git
+	pkgdesc = A C++ Library for Verified Numerical Computation
+	pkgver = r65.bf8bd29
+	pkgrel = 1
+	url = https://github.com/mskashi/kv
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = boost
+	provides = kv
+	conflicts = kv
+	source = git+https://github.com/mskashi/kv.git
+	md5sums = SKIP
+
+pkgname = kv-git
+
