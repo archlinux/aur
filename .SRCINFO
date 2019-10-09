@@ -1,0 +1,21 @@
+pkgbase = android-x86-64-libxml2
+	pkgdesc = XML parsing library, version 2 (android)
+	pkgver = 2.9.9
+	pkgrel = 1
+	url = http://www.xmlsoft.org/
+	arch = any
+	license = LGPL
+	makedepends = android-configure
+	depends = android-ndk
+	depends = android-x86-64-libiconv
+	depends = android-x86-64-zlib
+	depends = android-x86-64-xz
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = http://xmlsoft.org/sources/libxml2-2.9.9.tar.gz
+	sha256sums = 94fb70890143e3c6549f265cee93ec064c80a84c42ad0f23e85ee1fd6540a871
+
+pkgname = android-x86-64-libxml2
+
