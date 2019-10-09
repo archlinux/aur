@@ -4,11 +4,11 @@
 pkgname=go4
 _Pkgname=Go4
 pkgver=5.3.2
-pkgrel=1
+pkgrel=3
 pkgdesc='Object-oriented system (GSI Object Oriented On-line Off-line system) based on ROOT'
 arch=('x86_64')
-depends=('root' 'qt4')
-url="https://www.gsi.de/en/work/research/electronics/data_processing/data_analysis/the_go4_home_page.htm"
+depends=('root' 'qt5-base')
+url="https://www.gsi.de/en/work/research/experiment_electronics/data_processing/data_analysis/the_go4_home_page.htm"
 license=('GPL')
 source=("http://web-docs.gsi.de/~go4/download/go4-${pkgver}.tar.gz")
 sha256sums=('eca243e519bf5903fee8e47f9fdbab0713075d4eb2ea14eb805946938cb544bf')
@@ -26,6 +26,11 @@ prepare() {
   sed -i 's#\$(GO4TOPPATH)#$(DESTDIR)/&#g' Makefile
 
   sed -i 's#QMAKE_CXXFLAGS=#& -std=c++17#g' Makefile.config
+
+  # The line INCPATH in src/go4-5.3.2/qt4/Go4UserGUI/Makefile.qt does
+  # not include respect USERGUI4_QFLAGS = GO4INCDIR=../../include
+  cp ./qt4/Go4GUI/QGo4Widget.h     ./qt4/Go4UserGUI/
+  cp ./qt4/Go4QtRoot/QRootCanvas.h ./qt4/Go4UserGUI/
 }
 
 build() {
@@ -37,7 +42,14 @@ build() {
   ##
   #  rpath=false seemed to reduce que volume of warnings with ROOT6
   ##
-  make prefix=/usr withqt=4 GO4_OS=Linux rpath=false withdabc=yes nodepend=1 debug=1 all || return 1
+  make prefix=/usr \
+       withqt=5 \
+       GO4_OS=Linux \
+       rpath=true \
+       withdabc=yes \
+       debug=1 \
+       nodepend=1 \
+       all || return 1
 
 }
 
