@@ -2,12 +2,12 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 pkgname=astrometry.net
 pkgver=0.78
-pkgrel=2
+pkgrel=3
 pkgdesc="Automatic recognition of astronomical images"
 arch=('i686' 'x86_64')
 url="http://astrometry.net/"
 license=("GPL")
-depends=('bzip2' 'cairo' 'libpng' 'libjpeg-turbo' 'python-astropy' 'netpbm' 'cfitsio' 'gsl' 'swig' 'wcslib<6.3')
+depends=('bzip2' 'cairo' 'libpng' 'libjpeg-turbo' 'python-astropy' 'netpbm' 'cfitsio' 'gsl' 'swig')
 backup=(etc/astrometry.cfg)
 install=astrometry.net.install
 source=("http://astrometry.net/downloads/astrometry.net-${pkgver}.tar.gz")
