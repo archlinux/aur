@@ -4,7 +4,7 @@
 # Contributor: Tim Meusel <tim@bastelfreak.de>
 
 pkgname=pacemaker
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="advanced, scalable high-availability cluster resource manager"
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ optdepends=('pssh: for use with some tools'
 install=${pkgname}.install
 source=("https://github.com/ClusterLabs/$pkgname/archive/Pacemaker-$pkgver.tar.gz"
         'crm_report.in')
-sha512sums=('e24a80301f7f62fcbe6978d3c626ddbed5e5e11416657b20e965a84c786d8fa681f76e4b7dd6ec696c289e2aa9bcca897b4ad85ed24fbb39aa130ac958109d03'
+sha512sums=('e23f38e02aea0aefdfff44a61036397882bf4019e32b5f7e24f2b53af9454e4dbd4b52879134d5005f6754fdde9f2391dcc6fb51d3142b92ec2444295d4bd544'
             '09a80f5579db9016dcbba759ee9b661aea24ed7c98906939d5e50befb344c693652a9634ab804a91bfedeeeb69ce5ab87f30d2ed356bfefd9cdc67669a1cce64')
 
 prepare() {
