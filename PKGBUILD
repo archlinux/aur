@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=bibstuff  
 pkgver=1.3.102
-pkgrel=1
+pkgrel=2
 pkgdesc="Collection of python2 scripts and modules for interacting with BibTeX style databases of citation references"
 url="http://dschwilk.github.io/bibstuff"
 arch=('any')
@@ -19,7 +19,7 @@ prepare() {
   
 package() {
   cd $pkgname
-  python2 setup.py install --root="$pkgdir"
+  python setup.py install --root="$pkgdir"
 
   # copying license information
   install -D -m644 license.txt "$pkgdir"/usr/share/licenses/$pkgname/license.txt

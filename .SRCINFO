@@ -1,7 +1,7 @@
 pkgbase = bibstuff
 	pkgdesc = Collection of python2 scripts and modules for interacting with BibTeX style databases of citation references
 	pkgver = 1.3.102
-	pkgrel = 1
+	pkgrel = 2
 	url = http://dschwilk.github.io/bibstuff
 	arch = any
 	license = MIT
