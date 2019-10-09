@@ -1,5 +1,6 @@
 # Maintainer: David Vogt <dave at winged dot ch>
 # Maintainer: Danilo Bargen <aur at dbrgn dot ch>
+# PGP key: https://keybase.io/dbrgn
 
 pkgname=fahrplan
 pkgver=1.1.2
