@@ -9,26 +9,24 @@
 
 pkgname=tea-qt
 pkgver=48.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Powerful text editor for Linux and *BSD."
 arch=('x86_64')
 url="http://semiletov.org/tea/"
 license=('GPL')
-depends=('qt5-base' 'qt5-declarative' 'gcc-libs' 'aspell' 'hunspell')
+depends=('qt5-base' 'qt5-declarative' 'gcc-libs' 'aspell' 'hunspell' 'poppler-qt5' 'djvulibre' 'desktop-file-utils')
+makedepends=('cmake')
 source=(https://github.com/psemiletov/tea-qt/archive/$pkgver.tar.gz)
 md5sums=(2637cbd126d97ae491ce2375074ca691)
 
 build() {
-  cd "${srcdir}/tea-qt-${pkgver}"
-  export LANG="en_US.UTF-8"
-  export LC_ALL="en_US.UTF-8"
-  qmake-qt5
+  mkdir -p "${srcdir}/tea-qt-${pkgver}/b"
+  cd "${srcdir}/tea-qt-${pkgver}/b"
+  cmake .. -DCMAKE_INSTALL_PREFIX=/usr
   make
 }
 
 package(){
-  cd "${srcdir}/tea-qt-${pkgver}"
-  export LANG="en_US.UTF-8"
-  export LC_ALL="en_US.UTF-8"
-  make INSTALL_ROOT="${pkgdir}" install
+  cd "${srcdir}/tea-qt-${pkgver}/b"
+  make DESTDIR="$pkgdir" install
 }
