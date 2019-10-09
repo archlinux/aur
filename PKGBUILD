@@ -1,6 +1,6 @@
 # Maintainer: Sebastian Schweizer <sebastian@schweizer.tel>
 pkgname=z3-java
-pkgver=4.8.5
+pkgver=4.8.6
 pkgrel=1
 pkgdesc="A high-performance theorem prover (with java bindings)"
 arch=('i686' 'x86_64')
@@ -11,11 +11,11 @@ makedepends=('python' 'java-environment')
 optdepends=('java-runtime: bindings for java')
 provides=("z3=$pkgver")
 conflicts=('z3')
-source=("https://github.com/Z3Prover/z3/archive/Z3-$pkgver.tar.gz")
-sha256sums=('4e8e232887ddfa643adb6a30dcd3743cb2fa6591735fbd302b49f7028cdc0363')
+source=("https://github.com/Z3Prover/z3/archive/z3-$pkgver.tar.gz")
+sha256sums=('37922fa5085170cad6504498d9758fb63c61d5cb5b68689c11a6c5e84f0311b3')
 
 build() {
-  cd "$srcdir/z3-Z3-$pkgver"
+  cd "$srcdir/z3-z3-$pkgver"
   python scripts/mk_make.py --java
   cd build
   make
@@ -29,7 +29,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/z3-Z3-$pkgver/build"
+  cd "$srcdir/z3-z3-$pkgver/build"
   make install DESTDIR="$pkgdir"
   install -Dm644 ../LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
