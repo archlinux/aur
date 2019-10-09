@@ -1,6 +1,6 @@
 pkgbase = trillian
 	pkgdesc = A commercial, multi-protocol and cross-platform IM client
-	pkgver = 6.1.0.5
+	pkgver = 6.2.0.1
 	pkgrel = 1
 	url = https://www.trillian.im
 	install = trillian.install
@@ -14,9 +14,10 @@ pkgbase = trillian
 	depends = libpulse
 	depends = libxss
 	depends = librsvg
+	depends = libsecret
 	optdepends = libappindicator-gtk3: tray icon support
-	source_x86_64 = https://www.trillian.im/get/linux/6.1/trillian_6.1.0.5_amd64.deb
-	sha256sums_x86_64 = 4758bf1a1dea06730dbc2c6952cad22ecd1a2ed722a030a2cd1e6584b9e97d42
+	source_x86_64 = https://www.trillian.im/get/linux/6.2/trillian_6.2.0.1_amd64.deb
+	sha256sums_x86_64 = f73c785663c8cea1974fb28486813035cd2514290e477a0c69d4e820d2c7ad04
 
 pkgname = trillian
 
