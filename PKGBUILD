@@ -3,7 +3,7 @@ pkgbase=qt5-autoupdater
 pkgname=(qt5-autoupdater qt5-autoupdater-qtifw qt5-autoupdater-packagekit qt5-autoupdater-doc)
 group=qt5-autoupdater-full
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Qt library to automatically check for updates and install them"
 arch=('i686' 'x86_64')
 url="https://github.com/Skycoder42/QtAutoUpdater"
@@ -34,7 +34,9 @@ build() {
 package_qt5-autoupdater() {
   cd build/src/autoupdatercore
   make INSTALL_ROOT="$pkgdir" install
-  cd ../autoupdaterwidgets
+  cd ../plugins/updater/qwebquery
+  make INSTALL_ROOT="$pkgdir" install
+  cd ../../../autoupdaterwidgets
   make INSTALL_ROOT="$pkgdir" install
   cd ../imports
   make INSTALL_ROOT="$pkgdir" install
