@@ -1,0 +1,40 @@
+pkgbase = qt5-autoupdater
+	pkgdesc = A Qt library to automatically check for updates and install them
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://github.com/Skycoder42/QtAutoUpdater
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = qt5-tools
+	makedepends = packagekit-qt5
+	makedepends = qdep
+	makedepends = python
+	makedepends = doxygen
+	makedepends = graphviz
+	depends = qt5-base
+	depends = qt5-quickcontrols2
+	optdepends = repkg: Automatically rebuild the package on dependency updates
+	source = qt5-autoupdater-3.0.0::git+https://github.com/Skycoder42/QtAutoUpdater.git#tag=3.0.0
+	source = qt5-autoupdater.rule
+	source = subpkg.rule
+	sha256sums = SKIP
+	sha256sums = 53d4064bdd7387926f655be81326b0b56b5a1b4abd895a870466d02456594cbf
+	sha256sums = c1650aebcb7175bf4b163573205801df4637180aaf3583703338546bb66dbca6
+
+pkgname = qt5-autoupdater
+
+pkgname = qt5-autoupdater-qtifw
+	depends = qt5-autoupdater
+	optdepends = 
+
+pkgname = qt5-autoupdater-packagekit
+	depends = qt5-autoupdater
+	depends = packagekit-qt5
+	optdepends = 
+
+pkgname = qt5-autoupdater-doc
+	depends = qt5-autoupdater
+	optdepends = 
+
