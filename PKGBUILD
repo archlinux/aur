@@ -3,7 +3,7 @@
 
 pkgname="lidarr-netcore"
 pkgver=0.7.1.1530
-pkgrel=4
+pkgrel=5
 pkgdesc="Music downloader for usenet and torrents."
 arch=(any)
 url="https://github.com/lidarr/Lidarr"
@@ -36,7 +36,12 @@ sha512sums=('17b96f48d4f0085109d2885947997d66939d28bc3830c68a77fcb612a8eb57d829c
             'ffd466960527256d8de1d9887d90d4da87486eff062950c46cbc4fd4af1ef89e7d5c070ef1e649b23a95fbab15651e289fd5bdc6d34649e4a6ecdf2f6da06622')
 
 package() {
+  # Update environment isn't needed.
   rm -rf "${srcdir}/Lidarr/Lidarr.Update"
+
+  # The fpcalc binary comes from chromaprint.
+  rm -rf "${srcdir}/Lidarr/fpcalc"
+  
   install -d -m 755 "${pkgdir}/usr/lib/lidarr"
   cp -dpr --no-preserve=ownership "${srcdir}/Lidarr/"* "${pkgdir}/usr/lib/lidarr"
   chmod -R a=,a+rX,u+w "${pkgdir}/usr/lib/lidarr/"
