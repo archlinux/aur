@@ -1,0 +1,35 @@
+1.0.7-2
+    Add CHANGELOG to .tar.gz releases
+
+1.0.7-1
+    Add version (`-v`,`--version`) flag to display current version of wtwitch
+    Updated man page
+    Changed format of man page from asciidoc to scdoc
+
+1.0.6-1
+    Added debug option (-d) and updated man page
+
+1.0.5-1
+    Fixed an issue where wtwitch would not approve subscriptions to offline streamers (an issue with the new Twitch API!) (https://gitlab.com/krathalan/wtwitch/issues/3)
+
+1.0.4-1
+    Moved to new Twitch API (helix) as old API (kraken) is being shut down
+
+1.0.3-1
+    Fixed bug where jq would try to write to a nonexistent config file
+
+1.0.2-1
+    Fix reverted locale patch
+    Add wayland support for mpv
+
+1.0.1-2
+    Fix typo in man page and embolden options in examples
+
+1.0.1-1
+    Add patch from nycko123 that fixes the check option (-c,--check) for locales other than en-US (https://gitlab.com/krathalan/wtwitch/issues/1)
+
+1.0.0-2
+    Add missing Twitch API key
+
+1.0.0-1
+    First release

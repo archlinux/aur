@@ -3,11 +3,12 @@
 # General package information
 pkgname=wtwitch
 pkgver=1.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Terminal user interface for Twitch"
 url="https://gitlab.com/krathalan/wtwitch"
 license=("GPL3")
 arch=("any")
+changelog="CHANGELOG"
 
 # Dependencies
 depends=("jq" "streamlink" "wget")
