@@ -7,6 +7,8 @@ arch=('x86_64')
 url="https://clipto.pro"
 license=('custom')
 depends=('libxss' 'nss' 'gtk3')
+provides=("${pkgname%-bin}")
+conflicts=("${pkgname%-bin}")
 source=("https://github.com/clipto-pro/Desktop/releases/download/v$pkgver/${pkgname%-bin}-$pkgver.AppImage"
         "${pkgname%-bin}")
 sha256sums=('09aea8285424e4c9f625db011492247ec80856e9aa30f64b5211c47fe829b58b'
