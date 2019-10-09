@@ -1,3 +1,4 @@
+# Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 # Maintainer: Guillaume Alaux <guillaume@archlinux.org>
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: William Gathoye <william + archlinux at gathoye dot be>
@@ -13,9 +14,16 @@ pkgname=(
   java-openjfx-doc
   java-openjfx-src
 )
-pkgver=12.0.2.u1
-pkgrel=2
-pkgdesc='Java OpenJFX 12 client application platform (open-source implementation of JavaFX)'
+_majorver=13
+_minorver=0
+_securityver=0
+_updatever=14
+#pkgver=${_majorver}.${_minorver}.${_securityver}.u${_updatever}
+pkgver=${_majorver}.u${_updatever}
+#_hg_tag=jdk-${_majorver}.${_minorver}.${_securityver}+${_updatever}
+_hg_tag=${_majorver}+${_updatever}
+pkgrel=1
+pkgdesc="Java OpenJFX ${_majorver} client application platform (open-source implementation of JavaFX)"
 arch=(x86_64)
 url=https://wiki.openjdk.java.net/display/OpenJFX/Main
 license=(custom)
@@ -26,12 +34,13 @@ makedepends=(
   cmake
   ffmpeg
   freetype2
+  gradle
   gdk-pixbuf2
   glib2
   gperf
   gtk2
   gtk3
-  java-environment-openjdk=12
+  java-environment-openjdk=11
   libgl
   libx11
   libxtst
@@ -44,15 +53,13 @@ makedepends=(
   zip
 )
 source=(
-  https://hg.openjdk.java.net/openjfx/12-dev/rt/archive/${pkgver//.u/+}.tar.bz2
+  ${pkgbase}-${_hg_tag}::https://hg.openjdk.java.net/openjfx/${_majorver}-dev/rt/archive/${_hg_tag}.tar.bz2
   gradle.properties
-  https://services.gradle.org/distributions/gradle-4.8-bin.zip
   java-openjfx-flags.patch
   java-openjfx-no-xlocale.patch
 )
-sha256sums=('7d5a8d64892764659ff2f79353b93b09729d8377d981d374a4022cd5497d69ea'
+sha256sums=('9958e615818c526250c36059ae6ba0c7523e192193c8b5d5ca672ebcd498f1ca'
             '2622aa35d733cc69f4421f1cd053bf425e89f93141cb52c9f016a9b425fc0cb6'
-            'f3e29692a8faa94eb0b02ebf36fa263a642b3ae8694ef806c45c345b8683f1ba'
             'e76f202e8163a9a6e02138987bfc344a66f70aa30b8b699c6bdb41eec31c1465'
             '220c63396561867a6d07ae81b6390160d8f91502587e4873998e3b7a83793a1c')
 
@@ -62,12 +69,13 @@ prepare() {
   ln -sf ../gradle.properties .
   patch -Np1 -i ../java-openjfx-flags.patch
   patch -Np1 -i ../java-openjfx-no-xlocale.patch
+  sed 's|, "-Werror"||g' -i buildSrc/linux.gradle
 }
 
 build() {
   cd rt-${pkgver//.u/+}
 
-  ../gradle-4.8/bin/gradle zips
+  gradle zips
 }
 
 package_java-openjfx() {
@@ -79,7 +87,7 @@ package_java-openjfx() {
     glib2
     gtk2
     gtk3
-    java-runtime-openjdk=12
+    java-runtime-openjdk=${_majorver}
     libavcodec.so
     libavformat.so
     libfreetype.so
@@ -96,10 +104,10 @@ package_java-openjfx() {
 
   cd rt-${pkgver//.u/+}
 
-  install -dm 755  "${pkgdir}"/usr/{lib/jvm/java-12-openjfx,share/licenses}
-  cp -dr --no-preserve=ownership build/sdk/lib "${pkgdir}"/usr/lib/jvm/java-12-openjfx/
-  rm "${pkgdir}"/usr/lib/jvm/java-12-openjfx/lib/src.zip
-  cp -dr --no-preserve=ownership build/jmods "${pkgdir}"/usr/lib/jvm/java-12-openjfx/
+  install -dm 755  "${pkgdir}"/usr/{lib/jvm/java-${_majorver}-openjdk,share/licenses}
+  cp -dr --no-preserve=ownership build/sdk/lib "${pkgdir}"/usr/lib/jvm/java-${_majorver}-openjdk/
+  rm "${pkgdir}"/usr/lib/jvm/java-${_majorver}-openjdk/lib/src.zip
+  cp -dr --no-preserve=ownership build/jmods "${pkgdir}"/usr/lib/jvm/java-${_majorver}-openjdk/
   cp -dr --no-preserve=ownership build/sdk/legal "${pkgdir}"/usr/share/licenses/java-openjfx
 }
 
@@ -114,8 +122,8 @@ package_java-openjfx-doc() {
 package_java-openjfx-src() {
   cd rt-${pkgver//.u/+}
 
-  install -dm 755  "${pkgdir}"/usr/{lib/jvm/java-12-openjfx,share/licenses}
-  install -m 644 build/sdk/lib/src.zip "${pkgdir}"/usr/lib/jvm/java-12-openjfx/javafx-src.zip
+  install -dm 755  "${pkgdir}"/usr/{lib/jvm/java-${_majorver}-openjdk,share/licenses}
+  install -m 644 build/sdk/lib/src.zip "${pkgdir}"/usr/lib/jvm/java-${_majorver}-openjdk/javafx-src.zip
   ln -s java-openjfx "${pkgdir}"/usr/share/licenses/java-openjfx-src
 }
 
