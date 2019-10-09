@@ -1,6 +1,6 @@
 # Maintainer: Dominik Schrempf <dominik.schrempf@gmail.com>
 pkgname=nextcloud-systemd-timers
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 epoch=
 pkgdesc="Systemd services and timers for Nextcloud background jobs (see Nextcloud Arch Wiki entry)."
@@ -28,7 +28,7 @@ source=("nextcloud-cron.service"
         "nextcloud-files-scan-all.service"
         "nextcloud-files-scan-all.timer")
 sha256sums=('7fe27aa2ef2a034cf19a02571cefd1f6b40dd64fa48abda3ed0c82e2181f12c1'
-            'b6ab6077a56e38b03e2ba669750aedc9cb84685f4cca7e9f3e9067f76d80c2a8'
+            'a7db3a28abfee48393bd70dc71e9abf813130169229f2a35b072cc11dbd09863'
             'bfaa2602d78f097c95e76d150423f83779384a737d41502bd8067b8f663b436f'
             '56e3cab181040101be05d4b7723825f7b0c082c34403e42c6f0934c6474a6a43'
             '18913873bf889f8b4d8bc2109d313fed02e523c86519ca96285640bf965732d5'
