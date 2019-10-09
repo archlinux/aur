@@ -4,7 +4,7 @@
 
 pkgname='yandex-disk-indicator'
 pkgver=1.11.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Panel indicator (GUI) for YandexDisk CLI client for Linux."
 arch=('i686' 'x86_64')
 url="https://github.com/slytomcat/${pkgname}/"
