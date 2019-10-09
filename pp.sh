@@ -46,7 +46,7 @@ for pkgNameAndVersion in "${packageList[@]}"; do
 		fi
 	done
 	
-	aria2c -c $downloadList -d "$pacmanCahceDir" &> /dev/null &
+	aria2c -c $downloadList --connect-timeout=1 -s $maxMirrorForDownload -t 1 -d "$pacmanCahceDir" &> /dev/null &
 	pidTmp=($!)
 	pidToWait+=($pidTmp)
 	pidToWaitStr+=" $pidTmp"
@@ -61,11 +61,12 @@ for pkgNameAndVersion in "${packageList[@]}"; do
 done
 
 #now wait for all remaining jobs
-echo "all download started, waiting for completition ${pidToWaitStr}"
+echo "all download started, waiting for completition of pids: ${pidToWaitStr}"
 
 for pid in "${pidToWait[@]}"; do
+	echo "waiting for pid $pid"
 	wait $pid
-	# do something when a job completes
+	echo "$pid completed"
 done
 
 if [[ $# -gt 0 ]]; then
