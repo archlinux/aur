@@ -1,7 +1,8 @@
+# Maintainer: Maxim Kurnosenko <asusx2@mail.ru>
+# Contributor: Zack Emmert <zemmert@fastmail.com>
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 # Former Maintainer: sundar_ima <feedback.multibootusb@gmail.com>
 # Former Maintainer: Angel_Caido <geussepe at gmail dot com>
-# Maintainer: Zack Emmert <zemmert@fastmail.com>
 
 pkgname=multibootusb
 pkgver=9.2.0
