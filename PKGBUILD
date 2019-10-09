@@ -19,4 +19,4 @@ package() {
   npm install --user root -g --prefix "$pkgdir/usr" $_npmname@$pkgver
   # rmdir "${pkgdir}/usr/etc"
 }
-md5sums=('78bdb144708443fa27bdb1087509fd49')
+md5sums=('155ac0d666f8dea448f56eefc2a0618f')
