@@ -1,9 +1,0 @@
-[Desktop Entry]
-Type=Application
-Version=0.1
-Name=Hyperium Installer
-Comment=Official installer for Hyperium Minecraft Client
-Path=/opt/hyperium-installer/
-Exec=hyperium-installer
-Terminal=false
-Categories=Java;Games;

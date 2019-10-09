@@ -6,13 +6,10 @@ pkgdesc="Official installer for Hyperium Minecraft Client"
 arch=(any)
 url="https://hyperium.cc"
 license=('All Rights Reserved')
-depends=('jre8-openjdk'
-         'java8-openjfx')
+depends=('java-runtime')
 source=("${pkgname}.sh"
-        "${pkgname}.desktop"
         "https://cdn.discordapp.com/attachments/595634170336641045/631183200345129001/Hyperium_1.1.jar")
 sha1sums=('eb818afbdc093ca17a26c678a127a24ac70ae37c'
-          '630f2d0dfcc34c3839056d97ccc41809928e29ff'
           'a9c727341f0049ba19553a0d1d8bb3a37656091f')
 noextract=("Hyperium_1.1.jar")
 
@@ -24,7 +21,6 @@ package() {
 
   install -m755 $pkgname.sh "$pkgdir/opt/hyperium-installer/"
   install -m644 *.jar "$pkgdir/opt/hyperium-installer/"
-  install -Dm644 $pkgname.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
 
   ln -s "/opt/hyperium-installer/Hyperium_1.1.jar" "$pkgdir/opt/hyperium-installer/${pkgname}.jar"
   ln -s "/opt/hyperium-installer/$pkgname.sh" "$pkgdir/usr/bin/hyperium-installer"
