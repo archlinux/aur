@@ -1,8 +1,8 @@
 # Maintainer: Gabriel Morrison Lima Dantas <gabrielmldantas@gmail.com>
 # Contributor: Aleksey Kamenskikh <aleksey.kamenskikh@gmail.com>
 pkgname=mssql-server
-pkgver=14.0.3223.3
-_prodver=${pkgver}-15
+pkgver=14.0.3238.1
+_prodver=${pkgver}-19
 pkgrel=1
 pkgdesc="Microsoft SQL Server for Linux"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=(python2-configparser numactl sssd 'openssl-1.0>=1.0.2.l')
 source=("https://packages.microsoft.com/rhel/7/mssql-server-2017/${pkgname}-${_prodver}.x86_64.rpm"
         "openssl_version_workaround.service")
 
-sha256sums=('7176728e2e4e07d630d4daf06f1f465e1cc76e2cc13fd8e6f9f767e08c9609fe'
+sha256sums=('cedc65fb122520eb7e8e7bc90057a5a6b813d41ded416fecf0534e9cd0f80d6b'
             'ef29e36c5303feef18f671b9ef4a62b00c4a90dfe0c8496e390f3d623772f1c3')
 
 install=$pkgname.install
@@ -29,6 +29,4 @@ package() {
   # workaround for SQL Server OpenSSL version problems (see https://stackoverflow.com/a/57453901)
   ln -s /usr/lib/openssl-1.0/libssl.so opt/mssql/lib/libssl.so
   ln -s /usr/lib/openssl-1.0/libcrypto.so opt/mssql/lib/libcrypto.so
-  install -d -m 0755 etc/systemd/system/mssql-server.service.d
-  install -m 0644 $srcdir/openssl_version_workaround.service etc/systemd/system/mssql-server.service.d/openssl_version_workaround.service
 }
