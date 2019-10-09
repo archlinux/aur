@@ -5,9 +5,8 @@
 
 pkgname=gnome-shell-performance
 _pkgname=gnome-shell
-pkgver=3.34.0+163+g6a6d66486
+pkgver=3.34.0+175+g3d39b32a0
 pkgrel=1
-epoch=1
 pkgdesc="Next generation desktop shell"
 url="https://wiki.gnome.org/Projects/GnomeShell"
 arch=(x86_64)
@@ -23,17 +22,32 @@ groups=(gnome)
 provides=(gnome-shell gnome-shell=$pkgver)
 conflicts=(gnome-shell)
 install=gnome-shell-performance.install
-_commit=6a6d66486d3326457260f8d1e4b9937d9396c7c6  # master
+_commit=3d39b32a0b65da23d3e6e1513bd7388afdf0e87a  # master
 source=("git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=$_commit"
-        "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git"
-        739.patch)
+        "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git")
 sha256sums=('SKIP'
-            'SKIP'
-            '26c2e9672833e09ff63e314f477897bf67c89fd9769c6b4b73d7300b16afd932')
+            'SKIP')
 
 pkgver() {
   cd $_pkgname
   git describe --tags | sed 's/-/+/g'
+}
+
+hash_of() {
+  git log --oneline --all | grep "$1" | tail -n 1 | awk '{print $1}'
+}
+
+git_cp_by_msg() {
+  # Comment: Saren found a way to fetch hash based on commit name. It's controversial but might be interesting to create a function to call for each MR to not have to update the hash at each>
+  h_first=$(hash_of "$2")
+  if [[ -n "$3" ]]; then
+    h_last=$(hash_of "$3")
+    echo "Found $h_first^$h_last for $1"
+    git cherry-pick -n -Xtheirs $h_first^..$h_last
+  else
+    echo "Found $h_first for $1"
+    git cherry-pick -n -Xtheirs $h_first
+  fi
 }
 
 prepare() {
@@ -41,8 +55,11 @@ prepare() {
 
   ### Adding and fetching remotes providing the selected merge-requests
 
+  git cherry-pick --abort || true
   # git remote add verde https://gitlab.gnome.org/verdre/gnome-shell.git || true
   # git fetch verde
+  git remote add 3v1n0 https://gitlab.gnome.org/3v1n0/gnome-shell || true
+  git fetch 3v1n0
 
   ### Merge Requests
 
@@ -68,13 +85,12 @@ prepare() {
   #   3. Fix: Regression/bug fix only available in master (not backported).
   #   4. Cleanup: Code styling improvement, function deprecation, rearrangement...
 
-  # Empty, because all patches are merged to master as of now
-
-  # https://gitlab.gnome.org/GNOME/gnome-shell/issues/1641
-  git apply -3 ../739.patch
-
-  # Un-broke workspaces
-  git revert ff9bb5399b1d22fceaf00c9fc8e0058f24af96cc --no-commit
+  # Title: St theme: use css instance data 
+  # URL: https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/536
+  # Type: 2
+  # Status: 3
+  # Comment: Crash fix for st_theme_get_custom_stylesheets
+  git_cp_by_msg '!536' 'st-theme: Use CRStyleSheet app_data instead of hash map' 'st-theme: Use glib auto free/ptr features'
 
   git submodule init
   git config --local submodule.subprojects/gvc.url "$srcdir/libgnome-volume-control"
