@@ -2,7 +2,7 @@
 
 _plug=readmpls
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r3.1.g2a0f835
+pkgver=r4.0.g205f816
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -11,7 +11,9 @@ license=('GPL3')
 depends=('libbluray.so'
          'vapoursynth'
          )
-makedepends=('git')
+makedepends=('git'
+             'meson'
+             )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/HomeOfVapourSynthEvolution/VapourSynth-ReadMpls.git")
@@ -24,21 +26,18 @@ pkgver() {
 
 prepare() {
   mkdir -p build
-
-  cd "${_plug}"
-  ./autogen.sh
 }
 
 build() {
   cd build
-  ../"${_plug}"/configure \
-    --prefix=/usr \
-    --libdir=/usr/lib/vapoursynth
+  arch-meson "../${_plug}" \
+    --buildtype=release \
+    --libdir /usr/lib/vapoursynth
 
-  make
+  ninja
 }
 
 package(){
-  make -C build DESTDIR="${pkgdir}" install
-  install -Dm644 "${_plug}/README.md" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
+  DESTDIR="${pkgdir}" ninja -C build install
+    install -Dm644 "${_plug}/README.md" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
 }
