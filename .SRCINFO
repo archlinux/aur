@@ -1,6 +1,6 @@
 pkgbase = unlock-netease-music-git
 	pkgdesc = Revive unavailable songs for Netease Cloud Music
-	pkgver = 0.19.0.r0.ge35b6b9
+	pkgver = 0.20.0.r0.g3de1af9
 	pkgrel = 1
 	url = https://github.com/nondanee/UnblockNeteaseMusic
 	arch = i686
