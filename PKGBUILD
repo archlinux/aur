@@ -3,7 +3,7 @@
 pkgorg='humanoid-path-planner'
 pkgname=('hpp-fcl' 'hpp-fcl-docs')
 pkgver=1.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="An extension of the Flexible Collision Library"
 arch=('i686' 'x86_64')
 url="https://github.com/$pkgorg/$pkgname"
@@ -17,6 +17,8 @@ validpgpkeys=('9B1A79065D2F2B806C8A5A1C7D2ACDAF4653CF28' 'A031AD35058955293D54DE
 
 build() {
     cd "$pkgbase-$pkgver"
+
+    sed -i 's/OCTOMAP_INCLUDE_DIRS AND OCTOMAP_LIBRARY_DIRS/OCTOMAP_FOUND/' CMakeLists.txt
 
     cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib .
     make
