@@ -2,7 +2,7 @@
 # Contributor: qaz <fkxxyz@163.com>
 
 pkgname=spacman
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A Package Management Tool with Whitelist Package List."
 arch=('any')
