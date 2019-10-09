@@ -1,6 +1,6 @@
 pkgbase = python-xnatpy
 	pkgdesc = A new XNAT client that exposes XNAT objects/functions as python objects/functions.
-	pkgver = 0.3.18
+	pkgver = 0.3.21
 	pkgrel = 1
 	url = https://bitbucket.org/bigr_erasmusmc/xnatpy
 	arch = any
@@ -10,10 +10,11 @@ pkgbase = python-xnatpy
 	depends = python-progressbar
 	depends = python-six
 	depends = python-sphinx_rtd_theme
+	depends = python-requests
 	replaces = xnatpy
 	options = !emptydirs
-	source = https://bitbucket.org/bigr_erasmusmc/xnatpy/get/0.3.18.tar.bz2
-	sha256sums = b97210137808a177771de20c401ec0f0cbb7956704ec69ffda2bde027aa53bc0
+	source = https://bitbucket.org/bigr_erasmusmc/xnatpy/get/0.3.21.tar.bz2
+	sha256sums = 5f56ee622802ff4844c90fa39a646b9f43d621c709fbbed888ffb6b96d8c3289
 
 pkgname = python-xnatpy
 
