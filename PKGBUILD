@@ -2,12 +2,12 @@
 _pyname=poliastro
 pkgname=python-${_pyname}-doc
 pkgver=0.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Documentation for Python poliastro module"
 arch=('i686' 'x86_64')
 url="http://docs.poliastro.space/"
 license=('MIT')
-makedepends=("python-${_pyname}=${pkgver}" 'pandoc' 'python-pandas' 'python-beautifulsoup4' 'python-plotly>=4.0.0' 'python-nbsphinx' 'python-numba' 'python-sphinx_rtd_theme' 'python-sphinx-notfound-page' 'python-astroquery' 'wcslib<6.3')
+makedepends=("python-${_pyname}=${pkgver}" 'pandoc' 'python-pandas' 'python-beautifulsoup4' 'python-plotly>=4.0.0' 'python-nbsphinx' 'python-numba' 'python-sphinx_rtd_theme' 'python-sphinx-notfound-page' 'python-astroquery' 'graphviz')
 source=("https://github.com/poliastro/poliastro/archive/v${pkgver}.tar.gz"
         'nbsphinx_errors.patch')
 md5sums=('9b1c416a28ace5633ffd54a8d0aaaf09'

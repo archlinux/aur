@@ -1,7 +1,7 @@
 pkgbase = python-poliastro-doc
 	pkgdesc = Documentation for Python poliastro module
 	pkgver = 0.13.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://docs.poliastro.space/
 	arch = i686
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = python-poliastro-doc
 	makedepends = python-sphinx_rtd_theme
 	makedepends = python-sphinx-notfound-page
 	makedepends = python-astroquery
-	makedepends = wcslib<6.3
+	makedepends = graphviz
 	source = https://github.com/poliastro/poliastro/archive/v0.13.0.tar.gz
 	source = nbsphinx_errors.patch
 	md5sums = 9b1c416a28ace5633ffd54a8d0aaaf09
