@@ -16,12 +16,12 @@ provides=("st")
 conflicts=("st")
 
 build() {
-	cd $srcdir/${_pkgname}
+	cd $srcdir/${_pkgname}-${pkgver}
 	make
 }
 
 package() {
-	cd ${_pkgname}
+	cd $srcdir/${_pkgname}-${pkgver}
 	make PREFIX=/usr DESTDIR="${pkgdir}" install
 	install -Dm644 LICENSE "${pkgdir}/usr/share/doc/${pkgname}/LICENSE"
 	install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
