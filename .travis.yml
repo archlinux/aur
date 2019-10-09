@@ -7,8 +7,6 @@ branches:
 
 cache:
   directories:
-  - ~/.ccache
-  - ~/.pkg-cache
   - blender-addons-contrib.git
   - blender-addons.git
   - blender-dev-tools.git
@@ -19,15 +17,7 @@ services:
 - docker
 
 archlinux:
-  mount:
-  - ~/.ccache:~/.ccache
-  - ~/.pkg-cache:/var/cache/pacman/pkg
-  repos:
-# - bartus=https://github.com/bartoszek/AUR-repo/raw/master
   packages:
-  - ccache
-  - ccache-ext
-# drop cuda to prevent timout (50m per job).
   - cuda
   - moreutils
   - oidn
@@ -40,9 +30,6 @@ archlinux:
 # 4.Suppress all gcc warnings
 # 5.Put optix in yay cache
   - |
-     sudo mkdir /etc/pacman.d/hooks/
-     sudo ln -s /dev/null /etc/pacman.d/hooks/package-cleanup.hook
-     sudo sed -i '/^BUILDENV/s/\!ccache/ccache/' /etc/makepkg.conf
      sudo sed -i '/#MAKEFLAGS=/c MAKEFLAGS="-j2"' /etc/makepkg.conf
      sudo sed -i '/^COMPRESSXZ/s/\xz/xz -T 2/' /etc/makepkg.conf
      sudo sed -i '$a   CFLAGS="$CFLAGS -w"'   /etc/makepkg.conf
@@ -57,13 +44,9 @@ archlinux:
   - 'echo "Travis initialization time:      $travis_uptime seconds"'
   - "arch_uptime=$(cut -d' ' -f1 /proc/uptime|cut -d'.' -f1)"
   - 'echo "Arch-Travis initialization time: $((arch_uptime-travis_uptime)) seconds"'
-  - ccache -s
-  - ccache -z
 # set timeout to 50m minus current uptime, minus travis cache in time, minus 60 second buffer for arch-travis cleanup.
   - makepkg -s --noconfirm; _makepkg_return=$?
   - sudo pacman -Sc --noconfirm
-  - ccache -s
-  - ccache -z
   - exit $_makepkg_return
 script:
 - "export travis_uptime=$(cut -d' ' -f1 /proc/uptime|cut -d'.' -f1)"
@@ -71,8 +54,6 @@ script:
 #- '[ ! -f ~/.pkg-cache/NVIDIA-OptiX-SDK-7.0.0-linux64.sh ] && curl -Ls "https://developer.download.nvidia.com/designworks/optix/secure/7.0.0/ga/NVIDIA-OptiX-SDK-7.0.0-linux64.sh?LOhihLF99zzm6EAXMViu7GfZXfW8lN6IaQ-KhJwHgWx1-tIBMUjiwjPKBvB_585iVoKU9spDrpIHyyWnb9AarWCf2Kgv5nwpJfg9ai4DbsTRYtEmFfTSCo04t0idjs6Wfh-dtfbbrkAHIF_1vx5AvrS5DeQCt2jbLxKADQ8WOm9qpw" > ~/.pkg-cache/NVIDIA-OptiX-SDK-7.0.0-linux64.sh || true'
 #- 'du -h ~/.pkg-cache/NVIDIA-OptiX-SDK-7.0.0-linux64.sh'
 # assume caching out will take the same amount of time as caching in those making build time equal to 50 minutes minus two time current uptime.
-- "curl -s https://raw.githubusercontent.com/bartoszek/arch-travis/master/arch-travis.sh| bash"
-- "echo pacman pkg cache size: $(du -h ~/.pkg-cache|cut -f1) in $(ls ~/.pkg-cache|wc -l) files"
 
 #deploy:
 #  on:
