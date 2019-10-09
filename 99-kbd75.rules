@@ -1,0 +1,2 @@
+# KBD75 programming rules
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="03eb", ATTRS{idProduct}=="2ff4", GROUP="users", MODE="0666"
