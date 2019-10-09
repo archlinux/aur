@@ -1,7 +1,7 @@
 pkgbase = ms-teams
-	pkgdesc = Microsoft Teams for Linux is your chat-centered workspace in Office 365
+	pkgdesc = Microsoft Teams for Linux is your chat-centered workspace in Office 365. Currently *only for insiders* on linux.
 	pkgver = 1.2.00.26154
-	pkgrel = 1
+	pkgrel = 2
 	url = https://teams.microsoft.com/start
 	install = ms-teams.install
 	arch = x86_64
@@ -27,7 +27,7 @@ pkgbase = ms-teams
 	options = !emptydirs
 	options = !strip
 	source = teams-insiders_1.2.00.26154_amd64.deb::https://packages.microsoft.com/repos/ms-teams/pool/main/t/teams-insiders/teams-insiders_1.2.00.26154_amd64.deb
-	sha256sums = 7b657b54b1ba185b038c9d5e9dfe2bc5678f162971e0007cdb3fecfa6ec6f931
+	sha256sums = 012c006ca65d639ee7188689195239d1c320d070cd884f696f0420494ba51bae
 
 pkgname = ms-teams
 

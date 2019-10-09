@@ -2,8 +2,8 @@
 
 pkgname=ms-teams
 pkgver=1.2.00.26154
-pkgrel=1
-pkgdesc="Microsoft Teams for Linux is your chat-centered workspace in Office 365"
+pkgrel=2
+pkgdesc="Microsoft Teams for Linux is your chat-centered workspace in Office 365. Currently *only for insiders* on linux."
 arch=('x86_64')
 url="https://teams.microsoft.com/start"
 #license=('custom:ms-teams')
