@@ -2,12 +2,12 @@
 
 pkgname=('conan')
 pkgver=1.19.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A distributed, open source, C/C++ package manager."
 arch=('any')
 url="https://conan.io"
 license=('MIT')
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'patch' 'fakeroot')
 depends=('python-pyjwt>=1.4.0'
          'python-requests>=2.8.1'
          'python-colorama>=0.3.3'
@@ -29,7 +29,7 @@ depends=('python-pyjwt>=1.4.0'
          'python-dateutil>=2.7.0')
 source=("https://github.com/conan-io/conan/archive/${pkgver}.tar.gz" "arch-reqs.patch")
 
- prepare() {
+prepare() {
   cd $pkgname-$pkgver
   patch -Np1 -i "${srcdir}/arch-reqs.patch"
  }
