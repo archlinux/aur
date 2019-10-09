@@ -2,7 +2,7 @@
 
 pkgname='starship-bin'
 pkgdesc='The cross-shell prompt for astronauts'
-pkgver='0.21.0'
+pkgver='0.22.0'
 pkgrel='1'
 arch=('x86_64')
 url='https://starship.rs/'
