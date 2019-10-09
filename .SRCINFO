@@ -1,6 +1,6 @@
 pkgbase = midish
 	pkgdesc = Command line-based midi sequencer and filter
-	pkgver = 1.2.2
+	pkgver = 1.3.0
 	pkgrel = 1
 	epoch = 1
 	url = http://www.midish.org
@@ -9,8 +9,8 @@ pkgbase = midish
 	license = BSD
 	depends = alsa-lib
 	depends = readline
-	source = http://www.midish.org/midish-1.2.2.tar.gz
-	md5sums = cee6e60e73ad6deec87220048e2a3afd
+	source = http://www.midish.org/midish-1.3.0.tar.gz
+	md5sums = 1a0af00c13391ca92767b7ca9f569d43 *midish-1.3.0.tar.gz
 
 pkgname = midish
 
