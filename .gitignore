@@ -1,0 +1,5 @@
+pkg/
+src/
+lgi-*.tar.gz
+lua51-lgi-*.pkg.tar.xz
+lua51-lgi-*.src.tar.gz

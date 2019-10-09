@@ -1,0 +1,18 @@
+pkgbase = lua51-lgi
+	pkgdesc = Lua 5.1 bindings for GObject using gobject-introspection library
+	pkgver = 0.9.2
+	pkgrel = 1
+	url = https://github.com/pavouk/lgi
+	arch = x86_64
+	license = MIT
+	makedepends = gobject-introspection
+	depends = glibc
+	depends = glib2
+	depends = libffi
+	depends = lua51
+	depends = gobject-introspection-runtime
+	source = lgi-0.9.2.tar.gz::https://github.com/pavouk/lgi/archive/0.9.2.tar.gz
+	sha512sums = 755a96b78530f42da6d4e2664f8e37cb07a356419e7e6448003c3f841c9d98ad18b851715d9eb203ea7eb27b13ec46223fa8a1c90a99fd12960ce85b0a695335
+
+pkgname = lua51-lgi
+
