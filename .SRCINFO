@@ -11,8 +11,9 @@ pkgbase = oracle-sqldeveloper
 	depends = java-environment<=11
 	depends = bash
 	depends = perl
-        depends = java-openjfx
 	optdepends = ksh
+        optdepends = java8-openjfx
+        optdepends = java11-openjfx
 	source = manual://sqldeveloper-19.2.0.206.2117-no-jre.zip
 	source = oracle-sqldeveloper.desktop
 	source = oracle-sqldeveloper.sh

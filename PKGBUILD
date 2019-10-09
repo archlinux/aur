@@ -15,8 +15,10 @@ pkgdesc="A graphical tool for database development"
 arch=('any')
 url="http://www.oracle.com/technetwork/developer-tools/sql-developer/downloads/index.html"
 license=('custom:OTN')
-depends=('java-environment>=8' 'java-environment<=11' 'bash' 'perl' 'java-openjfx')
-optdepends=('ksh')
+depends=('java-environment>=8' 'java-environment<=11' 'bash' 'perl')
+optdepends=('ksh'
+  'java8-openjfx: Required to run the application with JDK8'
+  'java11-openjfx: Required to run the application with JDK11')
 source=(manual://sqldeveloper-$pkgver-no-jre.zip
         oracle-sqldeveloper.desktop
         oracle-sqldeveloper.sh
@@ -43,6 +45,7 @@ package() {
   install -Dm644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
   install -Dm644 "$srcdir/LICENSE"          "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
+  msg "To run the application you need to have java8-openjfx or java11-openjfx depending on the JDK version you will be using."
   msg "You will need to set JAVA_HOME or run this package for the first time from the console to set the jdk path."
 }
 
