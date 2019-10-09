@@ -1,0 +1,15 @@
+pkgbase = liboffsetfinder64-git
+	pkgdesc = i64bit offsetfinder. It finds offsets, patches, parses Mach-O and even supports IMG4
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/tihmstar/liboffsetfinder64
+	arch = x86_64
+	license = unknown
+	makedepends = libplist
+	source = git+https://github.com/tihmstar/liboffsetfinder64.git
+	source = libgeneral.patch
+	sha512sums = SKIP
+	sha512sums = 8e055ce5021bc983e0a3bc459728b6035842f5a46706e4f047f22e0c55a7eeaf2a0581e904f9342b3baff34c394a7b7db644c474f7e59548f133e256e79ce695
+
+pkgname = liboffsetfinder64-git
+

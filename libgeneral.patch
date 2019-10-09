@@ -1,0 +1,13 @@
+diff --git a/include/libgeneral/macros.h b/include/libgeneral/macros.h
+index f97576f..c770354 100644
+--- a/include/libgeneral/macros.h
++++ b/include/libgeneral/macros.h
+@@ -72,6 +72,8 @@
+ #   define reterror(errstr ...) throw tihmstar::EXPECTIONNAME(__LINE__, __FILE__, errstr)
+ #   define retcustomerror(custom_except,errstr ...) throw tihmstar::custom_except(__LINE__, __FILE__, errstr)
+ #   define doassure(cond,code) do {if (!(cond)){(code);assure(cond);}} while(0)
++#   define retcustomassure(cond,custom_except,errstr) do {if(!(cond)){retcustomerror(custom_except, errstr);}} while(0)
++#   define customassure(cond,custom_except) do {if(!(cond)){retcustomerror(custom_except, "customassure");}} while(0)
+ //mach assures
+ //#   define assureMach(kernRet) if (kernRet) throw tihmstar::EXPECTIONNAME(__LINE__, __FILE__, "assure failed")
+ #   define assureMachclean(kernRet) do {if (kernRet){clean();assureMach(kernRet);}} while(0)
