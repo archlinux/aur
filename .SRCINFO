@@ -1,7 +1,7 @@
 pkgbase = jobber
 	pkgdesc = jobber
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://dshearer.github.io/jobber/
 	install = .install
 	arch = x86_64

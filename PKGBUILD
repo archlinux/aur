@@ -2,7 +2,7 @@
 # Contributer: Alex Garcia <thekyz@gmail.com>
 pkgname=jobber
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc='jobber'
 arch=('x86_64')

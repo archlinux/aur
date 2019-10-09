@@ -4,6 +4,7 @@ pre_install() {
 }
 post_install() {
 	echo ":: Starting systemd jobber";
+	systemctl daemon-reload;
 	systemctl start jobber;
 }
 
