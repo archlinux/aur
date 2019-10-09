@@ -2,7 +2,7 @@
 
 pkgname=booth-git
 _pkgname=booth
-pkgver=1.0.r141.g72e4793
+pkgver=1.0.r174.gce9f821
 pkgrel=1
 pkgdesc="RAFT cluster ticket manager for pacemaker"
 arch=('i686' 'x86_64')

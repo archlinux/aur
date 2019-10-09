@@ -1,6 +1,6 @@
 pkgbase = booth-git
 	pkgdesc = RAFT cluster ticket manager for pacemaker
-	pkgver = 1.0.r141.g72e4793
+	pkgver = 1.0.r174.gce9f821
 	pkgrel = 1
 	url = https://github.com/ClusterLabs/booth/
 	arch = i686
