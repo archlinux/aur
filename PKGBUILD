@@ -2,7 +2,7 @@
 
 _npmname=pandiff
 pkgname=nodejs-"$_npmname"
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='Prose diffs for any document format supported by Pandoc'
 arch=('any')
@@ -12,7 +12,7 @@ depends=('nodejs' 'npm' 'pandoc')
 optdepends=()
 source=("https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz")
 noextract=("${source[@]##*/}")
-sha256sums=('c0ed3023241a27286cd8f7ce9388d456d39517cb65647565027abdb50f8d99f5')
+sha256sums=('2ca38a951203aabdea1b198289e531562c7ee5ca00eda9e42012a4bf10a4978c')
 
 package() {
   npm install -g --prefix "$pkgdir/usr" "${source[@]##*/}"
