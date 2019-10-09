@@ -1,13 +1,9 @@
 ## arg 1:  the new package version
 pre_install() {
-    useradd -M jobber_client
+    if [ -z $(id -u agw 2>/dev/null) ]; then useradd -M jobber_client; else echo ":: user jobber_client already exsists"; fi
 }
-
-## arg 1:  the new package version
 post_install() {
-    chmod 04755 /usr/bin/jobber
-    chown jobber_client:root /usr/bin/jobber
-    chmod 0755 /usr/lib/jobber/jobberd
-    chown root:root /usr/lib/jobber/jobberd
+	echo ":: Starting systemd jobber";
+	systemctl start jobber;
 }
 
