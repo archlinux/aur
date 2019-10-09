@@ -2,8 +2,8 @@
 # Maintainer: Danilo Bargen <aur at dbrgn dot ch>
 
 pkgname=fahrplan
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.1.2
+pkgrel=1
 pkgdesc="A SBB/CFF/FFS (Swiss railway) commandline based timetable client"
 url="https://github.com/dbrgn/fahrplan"
 depends=(
@@ -22,7 +22,7 @@ source=(
   "https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz.asc"
 )
 sha256sums=(
-  '4b6e1844579e458d29a7b436b92360e3e9c45708921117f90aab9e5533974c0b'
+  'da0835ae6ee1aefe64f92b82f8a9df7f313e41ec5e429985961a7a9294e24b6c'
   'SKIP'
 )
 validpgpkeys=('EA456E8BAF0109429583EED83578F667F2F3A5FA')
