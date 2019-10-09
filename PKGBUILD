@@ -6,12 +6,12 @@ _module="$_name"
 
 pkgname=("python-$_module" "python2-$_module")
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A support library for building plugins systems in Python."
 arch=("any")
 url="http://pluginbase.pocoo.org/"
 license=("BSD")
-makedepends=("python-setuptools" "python2-setuptools")
+makedepends=("python-setuptools" "python2-setuptools" "fakeroot")
 source=("https://github.com/mitsuhiko/pluginbase/archive/$pkgver.tar.gz")
 sha256sums=('ab0e5fc405f1d28abe99724943ad54b5e7fb1c2f6b1519f0942e2074e6c8c22a')
 
