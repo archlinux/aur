@@ -1,0 +1,17 @@
+pkgbase = deepin-dock-plugin-netspeedandsysteminfo
+	pkgdesc = A plugin for deepin dock, Displays Current Netspeed and General SystemInfo
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Bearbobs/deepin-dock-plugin-netspeedandsysteminfo
+	arch = x86_64
+	makedepends = git
+	makedepends = qt5-base
+	makedepends = qt5-tools
+	makedepends = dtkcore
+	depends = deepin-dock
+	depends = pacman-contrib
+	source = deepin-dock-plugin-netspeedandsysteminfo-1.0.0.tar.gz::https://github.com/Bearbobs/deepin-dock-plugin-netspeedandsystemInfo/archive/1.0.0.tar.gz
+	md5sums = 3a6dc585c2bcfd73dcf37da2f413b1fd
+
+pkgname = deepin-dock-plugin-netspeedandsysteminfo
+
