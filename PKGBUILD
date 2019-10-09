@@ -1,8 +1,11 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 # shellcheck disable=SC2034
-pkgname=luxcorerender-git
-#_fragment="#branch=blender2.80" #last working
-pkgver=2.2alpha1.r490.g294637fbd
+_name="luxcorerender"
+_ver_tag="luxcorerender_v2.2"
+{ IFS='.'; read _ver_major _ver_minor; ((_ver_minor++)); unset IFS; } <<<${_ver_tag#luxcorerender_v}
+pkgname=${_name}-git
+pkgver=2.3.r80.gc68d73748
+epoch=2
 pkgrel=1
 pkgdesc="Physically correct, unbiased rendering engine."
 arch=('x86_64')
@@ -13,9 +16,9 @@ optdepends=("opencl-driver: for gpu acceleration"
             "pyside2: for pyluxcoretools gui")
 makedepends=(boost git doxygen cmake pyside2-tools opencl-headers)
 conflicts=(luxrays-hg luxcorerender)
-provides=(luxrays luxcorerender)
+provides=(luxrays luxcorerender=${epoch}:${_ver_major}.${_ver_minor})
 options=('!buildflags')
-source=("git+https://github.com/LuxCoreRender/LuxCore.git${_fragment}"
+source=("${_name}::git+https://github.com/LuxCoreRender/LuxCore.git${_fragment}"
         "python.patch"
         "glfw.patch"
         "boost016900_serialization.patch"
@@ -26,21 +29,20 @@ md5sums=('SKIP'
          '52f097678654151e2b5427d271a7e69d')
 
 pkgver() {
-  cd ${srcdir}/LuxCore
-#  git describe --long --tags | sed 's/^luxcorerender_v//;s/beta/\.beta/;;s/\([^-]*-g\)/r\1/;s/-/./g'
-  printf "%s.r%d.g%s" "2.2alpha1" $(git rev-list --count luxcorerender_v2.2alpha1..HEAD) $(git log --pretty=format:'%h' -n 1)
-} 
+  cd ${srcdir}/${_name}
+  [ -v _ver_tag ] && printf %d.%d.r%s.g%s $_ver_major $_ver_minor $(git rev-list ${_ver_tag}..HEAD --count) $(git log --pretty=format:'%h' -n 1) \
+                  || git describe --long --tags | sed 's/^luxcorerender_v//;s/beta/\.beta/;;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 
 prepare() {
-  cd ${srcdir}/LuxCore
+  cd ${srcdir}/${_name}
   git apply -v ${srcdir}/*.patch
 }
 
 build() {
   _pyver=$(python -c "from sys import version_info; print(\"%d%d\" % (version_info[0],version_info[1]))")
-  cd ${srcdir}/LuxCore
-  mkdir -p build && cd build
+  mkdir -p ${srcdir}/build && cd ${srcdir}/build
   ((TRAVIS)) && {
     suppress_warnings="-Wno-implicit-fallthrough -Wno-class-memaccess"
     CFLAGS="$CFLAGS $suppress_warnings"
@@ -49,17 +51,17 @@ build() {
   msg "cflags=\"$CFLAGS\""
   msg "cxxflags=\"$CXXFLAGS\""
 
-  cmake -DPYTHON_V=${_pyver} ..
+  cmake -DPYTHON_V=${_pyver} ${srcdir}/${_name}
   make
 }
 
 package() {
-  cd ${srcdir}/LuxCore/build
+  cd ${srcdir}/build
 
   install -d -m755 ${pkgdir}/usr/{bin,include,lib}
   install -m755 bin/* ${pkgdir}/usr/bin
   install -m644 lib/* ${pkgdir}/usr/lib
-  cp -a ../include ${pkgdir}/usr
+  cp -a ${srcdir}/${_name}/include ${pkgdir}/usr
   for file in ${pkgdir}/usr/include/*/*.in; do mv $file ${file%.in}; done
 
   # install pyluxcore to the Python search path
