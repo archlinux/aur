@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="https://gitlab.com/severinkaderli/talk-cli"
 license=('MIT')
 makedepends=('cargo' 'git')
-conflicts=('rom-manager')
+conflicts=('talk-cli')
 source=('git+https://gitlab.com/severinkaderli/talk-cli')
 md5sums=('SKIP')
 
