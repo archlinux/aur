@@ -1,14 +1,14 @@
 pkgbase = scanastudio
 	pkgdesc = ScanaStudio is a software for Ikalogic logic analyzers
 	pkgver = 4.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.ikalogic.com/
 	arch = x86_64
 	license = unknown
 	depends = libftd2xx>=1.4.8
 	source = https://cdn.ikalogic.com/dist/scanastudio/package/ScanaStudio.tar.bz2
 	source = scanastudio.desktop
-	sha256sums = b9f8cf8f231510e8c800a25d1ad7f9a502f5af9df22ba773f48a9c7eedcf1b65
+	sha256sums = 4ce937a534ff8ad8d4b18c1e8fab6888b8d1b6fcd0367668d29c449de0ab6448
 	sha256sums = abb172b2fa0f00380c9c34b5ce51ae35b7434e93da127c23336bf9de81b49957
 
 pkgname = scanastudio
