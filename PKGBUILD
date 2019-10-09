@@ -7,7 +7,7 @@ pkgbase=bitbake
 pkgname=('bitbake' 'bitbake-vim')
 _github_url="https://github.com/openembedded/bitbake"
 pkgver=1.44.0
-pkgrel=1
+pkgrel=2
 _pythonver=3.7
 pkgdesc='Build tool executing tasks and managing metadata.'
 arch=('any')
@@ -37,12 +37,14 @@ package_bitbake() {
 
     cd "${pkgbase}-${pkgver}"
 
+    find . -iname "*.log" -delete
     install -d "${pkgdir}/usr/bin"
     install bin/bitbake* "${pkgdir}/usr/bin"
 
     install -d "${pkgdir}/usr/lib/python${_pythonver}/site-packages"
     cp -Ra lib/bb "${pkgdir}/usr/lib/python${_pythonver}/site-packages"
     cp -Ra lib/prserv "${pkgdir}/usr/lib/python${_pythonver}/site-packages"
+    cp -Ra lib/hashserv "${pkgdir}/usr/lib/python${_pythonver}/site-packages"
 
     install -d "${pkgdir}/usr/share/man/man1"
     install doc/bitbake.1 "${pkgdir}/usr/share/man/man1"
