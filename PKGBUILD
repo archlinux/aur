@@ -2,7 +2,7 @@
 # Maintainer: Sean V Kelley <seanvk@posteo.de>
 
 pkgname=clr-power-tweaks
-pkgver=202
+pkgver=203
 pkgrel=1
 pkgdesc="Power Tweaks -- adjusts runtime kernel options for optimal power and performance"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('glibc')
 options=('!emptydirs')
 changelog=
 source=($url/archive/$pkgver.tar.gz)
-sha256sums=('23ca6a8ab7dd063ce97d614e75e2f1f0b00728cb2ffb1b24046e9a6ea6efbe65')
+sha256sums=('09ed9582c977a8fb455f8895de7d90d9655fc0b06b5ef90da840797f17cc587d')
 
 build() {
 	export LD_RUN_PATH='$ORIGIN/lib/'
