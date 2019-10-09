@@ -1,0 +1,83 @@
+. $topsrcdir/browser/config/mozconfig
+export CC=clang
+export CXX=clang++
+export AR=llvm-ar
+export NM=llvm-nm
+export RANLIB=llvm-ranlib
+
+export CPPFLAGS=""
+export CXXFLAGS=""
+export CFLAGS=""
+
+# a bit of extra hardening and optimization, edit to your tastes
+export LDFLAGS="-Wl,-O3,--no-omagic,--sort-common,--as-needed,--relax,-z,norelro,-z,combreloc,-z,global,-z,noexecstack,-z,now"
+ac_add_options --enable-optimize="-O3 -march=native -mtune=native -fcolor-diagnostics -w -fstack-protector-strong -fcf-protection=full -Wp,-D_GLIBCXX_ASSERTIONS -fno-plt"
+
+ac_add_options --target=x86_64-pc-linux-gnu
+mk_add_options AUTOCLOBBER=1
+mk_add_options MOZ_MAKE_FLAGS=-j6
+
+ac_add_options --enable-strip
+ac_add_options --enable-hardening
+
+ac_add_options --prefix=/usr
+ac_add_options --libdir=/opt
+
+ac_add_options --enable-rust-simd # on x86 requires SSE2
+
+ac_add_options --enable-release
+ac_add_options --enable-application=browser
+ac_add_options --enable-eme=widevine
+
+ac_add_options --with-app-name=waterfox
+ac_add_options --with-app-basename=Waterfox
+ac_add_options --with-branding=browser/branding/unofficial
+ac_add_options --with-distribution-id=org.waterfoxproject
+
+ac_add_options --enable-startup-notification
+ac_add_options --enable-pulseaudio
+ac_add_options --enable-alsa
+
+# library and chrome format
+ac_add_options --enable-chrome-format=omni
+ac_add_options --x-libraries=/usr/lib
+
+# System libraries
+ac_add_options --with-system-nspr
+ac_add_options --with-system-nss
+ac_add_options --with-system-jpeg
+ac_add_options --with-system-zlib
+ac_add_options --with-system-bz2
+ac_add_options --with-system-png
+ac_add_options --with-system-libevent
+ac_add_options --with-system-libvpx
+ac_add_options --with-system-icu
+ac_add_options --enable-system-hunspell
+ac_add_options --enable-system-sqlite
+ac_add_options --enable-system-ffi
+
+# system cairo without layers acceleration may result in choppy video playback
+ac_add_options --enable-system-cairo
+ac_add_options --enable-system-pixman
+ac_add_options --enable-default-toolkit=cairo-gtk3
+
+# Features
+ac_add_options --disable-stylo
+ac_add_options --disable-libproxy
+ac_add_options --disable-crashreporter
+ac_add_options --disable-js-shell
+ac_add_options --disable-maintenance-service
+ac_add_options --disable-updater
+ac_add_options --disable-verify-mar
+ac_add_options --disable-webspeech
+ac_add_options --disable-necko-wifi
+ac_add_options --disable-webrtc
+ac_add_options --disable-tests
+ac_add_options --disable-gamepad
+ac_add_options --disable-mobile-optimize
+ac_add_options --disable-debug
+ac_add_options --disable-debug-symbols
+ac_add_options --disable-profiling
+ac_add_options --disable-signmar
+
+# vim:set ft=sh:
