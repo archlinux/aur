@@ -28,7 +28,7 @@ archlinux:
   - ccache
   - ccache-ext
 # drop cuda to prevent timout (50m per job).
-# - cuda
+  - cuda
   - moreutils
   - oidn
 # Dora otix as downloading behind auth-wall is to painful :(
@@ -60,7 +60,7 @@ archlinux:
   - ccache -s
   - ccache -z
 # set timeout to 50m minus current uptime, minus travis cache in time, minus 60 second buffer for arch-travis cleanup.
-  - timeout $((50*60-arch_uptime-travis_uptime-60)) makepkg -s --noconfirm > >(ts -s '%.T'); _makepkg_return=$?
+  - makepkg -s --noconfirm; _makepkg_return=$?
   - sudo pacman -Sc --noconfirm
   - ccache -s
   - ccache -z
@@ -71,7 +71,7 @@ script:
 #- '[ ! -f ~/.pkg-cache/NVIDIA-OptiX-SDK-7.0.0-linux64.sh ] && curl -Ls "https://developer.download.nvidia.com/designworks/optix/secure/7.0.0/ga/NVIDIA-OptiX-SDK-7.0.0-linux64.sh?LOhihLF99zzm6EAXMViu7GfZXfW8lN6IaQ-KhJwHgWx1-tIBMUjiwjPKBvB_585iVoKU9spDrpIHyyWnb9AarWCf2Kgv5nwpJfg9ai4DbsTRYtEmFfTSCo04t0idjs6Wfh-dtfbbrkAHIF_1vx5AvrS5DeQCt2jbLxKADQ8WOm9qpw" > ~/.pkg-cache/NVIDIA-OptiX-SDK-7.0.0-linux64.sh || true'
 #- 'du -h ~/.pkg-cache/NVIDIA-OptiX-SDK-7.0.0-linux64.sh'
 # assume caching out will take the same amount of time as caching in those making build time equal to 50 minutes minus two time current uptime.
-- "curl -s https://raw.githubusercontent.com/bartoszek/arch-travis/master/arch-travis.sh| timeout $((50*60-2*travis_uptime)) bash"
+- "curl -s https://raw.githubusercontent.com/bartoszek/arch-travis/master/arch-travis.sh| bash"
 - "echo pacman pkg cache size: $(du -h ~/.pkg-cache|cut -f1) in $(ls ~/.pkg-cache|wc -l) files"
 
 #deploy:
