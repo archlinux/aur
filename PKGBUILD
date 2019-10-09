@@ -4,14 +4,14 @@ _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
 pkgver=0.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A python package for managing the World Coordinate System (WCS) of astronomical data"
 arch=('i686' 'x86_64')
 url="http://gwcs.readthedocs.io/"
 license=('BSD')
-makedepends=('python-setuptools' 'python-astropy' 'python-astropy-helpers>=3.1' 'wcslib<6.3')
+makedepends=('python-setuptools' 'python-astropy' 'python-astropy-helpers>=3.1')
 #'python-sphinx-astropy')
-checkdepends=('python-asdf' 'python-pytest-astropy')
+#checkdepends=('python-asdf' 'python-pytest-astropy')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 md5sums=('ad2ea19d776f9c4c76c2f62710b958ba')
 
@@ -29,14 +29,14 @@ build() {
 #   python setup.py build_docs
 }
 
-check() {
-    cd ${srcdir}/${_pyname}-${pkgver}
-
-    python setup.py test
-}
+#check() {
+#    cd ${srcdir}/${_pyname}-${pkgver}
+#
+#    python setup.py test
+#}
 
 package_python-gwcs() {
-    depends=('python' 'python-numpy>=1.7' 'python-astropy>=1.2' 'python-asdf' 'wcslib<6.3')
+    depends=('python' 'python-numpy>=1.7' 'python-astropy>=1.2' 'python-asdf')
 #   optdepends=('python-gwcs-doc: Documentation for Python-GWCS')
 #               'python-pytest-astropy: For testing')
     cd ${srcdir}/${_pyname}-${pkgver}
