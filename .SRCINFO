@@ -1,7 +1,7 @@
 pkgbase = waterfox-classic-git
 	pkgdesc = 64-Bit optimized Firefox fork, no data collection, allows unsigned extensions
 	pkgver = 56.3+4e300fc5cebf
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.waterfoxproject.org/
 	install = waterfox-classic.install
 	arch = i686
