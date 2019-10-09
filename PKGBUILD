@@ -10,7 +10,7 @@
 
 pkgname=wesnoth-1.10
 pkgver=1.10.7+dev
-pkgrel=6
+pkgrel=7
 pkgdesc="Turn-based strategy game on a fantasy world (for old replays)"
 arch=('i686' 'x86_64')
 url="https://www.wesnoth.org"
@@ -74,7 +74,7 @@ build() {
       -DENABLE_OMP=ON \
       -DENABLE_DESKTOP_ENTRY=OFF \
       -Wno-dev # silence cmake warnings
-  make -j 4
+  make    # -j 4
 }
 
 # Note: the manpages are first installed to the same place which other wesnoth
