@@ -3,7 +3,7 @@
 
 pkgname=asofe
 pkgver=2.0.6
-_commit=5ee2b1fc285f0aecb962c381e0806a70e43567fe
+_commit=c355c41e9736d9b500340afbf5ff0e649ec17d2e
 pkgrel=1
 pkgdesc='Permissionless financial system employing zero-knowledge security'
 arch=('x86_64')
