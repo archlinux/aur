@@ -2,7 +2,7 @@
 # Maintainer: Arthur Zamarin <arthurzam@gmail.com> 
 
 pkgname=clib
-pkgver='1.8.1'
+pkgver=1.11.2
 pkgrel=1
 pkgdesc="C package manager-ish"
 arch=(i686 x86_64)
@@ -10,7 +10,14 @@ url="https://github.com/clibs/clib"
 license=('MIT')
 depends=('curl')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/clibs/clib/archive/$pkgver.tar.gz")
-sha512sums=('45cf50bd4d676e904d10ceddf0784ef687d4ce2eeb16447a8e8d6694396bcaf5dc3dd8e72fc4a67651f064d772983b4ccd0e9d8b3a3cc46108f1303dab6e4832')
+sha512sums=('1ddb1a33ef55f756bbf669237c07ec7d246f725e2739935b67296fd7840d50c11b7fa695125f8a42af057c480a4e80575435bf1034e4c2e00fe682908e212f85')
+
+prepare () {
+  cat >> "$srcdir/$pkgname-$pkgver/Makefile" <<-EOF
+	CFLAGS += ${CFLAGS}
+	LDFLAGS += ${LDFLAGS} -Wl,--as-needed
+	EOF
+}
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
