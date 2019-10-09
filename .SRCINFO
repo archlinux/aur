@@ -1,0 +1,17 @@
+pkgbase = st-ckyln
+	pkgdesc = Simple Terminal from suckless.org (Fork)
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://git.ckyln.com/st
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = libxft
+	provides = st
+	conflicts = st
+	source = https://git.ckyln.com/archives/st/st-1.0.tar.gz
+	md5sums = b6a3c8585373004eee790c63af30f113
+
+pkgname = st-ckyln
+
