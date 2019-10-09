@@ -2,8 +2,8 @@
 # Last images added on 2019-01-03
 
 pkgname="trougnouf-backgrounds"
-pkgver=1.7
-pkgrel=2
+pkgver=1.8
+pkgrel=1
 pkgdesc='Wallpapers created by User:Trougnouf, with gnome integration and transitions built-in'
 url='https://commons.wikimedia.org/wiki/User:Trougnouf'
 _url='https://commons.wikimedia.org/wiki/Special:Redirect/file/'
@@ -25,11 +25,19 @@ _images=(
 	'Street_art_in_the_tunnel_at_Rue_des_Tanneurs_under_the_railway_(Brussels,_Belgium).jpg'
 	'Tunnel_Belliard,_coming_out_on_Rue_de_la_Loi.jpg'
 	'Container_cranes_at_the_MPET-_MSC_PSA_European_Terminal_in_Port_of_Antwerp_(Kieldrecht,_Belgium)_during_the_sunset_civil_twilight_(DSCF3901).jpg'
-	'Parc_Tenreuken_looking_South_from_the_West_side_during_the_sunset_civil_twilight,_Auderghem,_Belgium_(DSCF3745,DSCF3746-b1).jpg'
-	'Beginning_of_Grande_Randonnée_en_Haute_Ardennes,_BE.jpg'
-	'Garden_of_Kunstberg_viewed_from_Mont_des_Arts_during_nautical_twilight_(DSCF1028).jpg'
-	'Antwerpen-Centraal_railway_station_platform_21,_Belgium_(DSCF4760).jpg'
+	'Common loons swimming in Swan Lake (DSCF3780).jpg'  # 18h09
+	'Beginning_of_Grande_Randonnée_en_Haute_Ardennes,_BE.jpg'  # 19h55 to 20h25 = 30 minutes
+	'Garden_of_Kunstberg_viewed_from_Mont_des_Arts_during_nautical_twilight_(DSCF1028).jpg'  # 20h25 to 20h55 = 30 minutes
+	'Reflected trees over Babcock Lake (DSCF3423).jpg'  # 20h55 to 21h01 = 6min
+	'Isaac Lake during golden hour, moments before a storm (DSCF2631).jpg'  # 21h01
+	'Civil twilight sunset over Sandy Lake (DSCF2996).jpg'  # 21h44
+	'Nautical twilight sunset over Sandy Lake (DSCF3005).jpg'  # 22h24
+	'Antwerpen-Centraal_railway_station_platform_21,_Belgium_(DSCF4760).jpg'  # 22h46 to 23h49 = 63 minutes
+	'Campsite 38 in Bowron Lake Provincial Park at night (DSCF3026).jpg'  # 23h49
 	)
+	
+# missing:
+# Moose in Bowron Lake Provincial Park, BC (DSCF3986).jpg 20h30
 
 _stimes=(
 	8100 # 10h16 to 12h31 = 135 minutes
@@ -44,11 +52,16 @@ _stimes=(
 	840 # 16h21 to 16h35 = 14 minutes
 	2460 # 16h35 to 17h16 = 41 minutes
 	1920 # 17h16 to 17h48 = 32 minutes
-	1080 # 17h48 to 18h06 = 18 minutes
-	6540 # 18h06 to 19h55 = 109 minutes
+	1260 # 17h48 to 18h09 = 21 minutes
+	6360 # 18h09 to 19h55 = 106m
 	1800 # 19h55 to 20h25 = 30 minutes
-	8460 # 20h25 to 22h46 = 141 minutes
-	41400 # 22h46 to 10h16 = 690 minutes
+	1800 # 20h25 to 20h55 = 30 minutes
+	360 # 20h55 to 21h01 = 6min
+	2580 # 21h01 to 21h44 = 43min
+	2400 # 21h44 to 22h24 = 40min
+	1320 # 22h24 to 22h46 = 22min
+	3780 # 22h46 to 23h49 = 63 minutes
+	37620 # 23h49 to 10h16 = 627 min
 )
 	
 sha256sums=('60da898f8fb43491594e7466f44294db43795d61de124f590eb2be2d42ea208a'
@@ -64,10 +77,15 @@ sha256sums=('60da898f8fb43491594e7466f44294db43795d61de124f590eb2be2d42ea208a'
 	'cf08f4598bd569eb8df860a83fd44110f5a25282e508732e924de1c3fab581c2'
 	'0f7fed8930d452f4355d1f9026aeedcc74587a7344c9758959de0b329fa08e5e'
 	'21ca6228fa574de64975fb48306d59e98f345fcd75a2c5571d89216fa3ba8aa6'
-	'f8fc6e64a19fab1aa6a7c676ef7eb6978abed3a115e5d3a73bd2a6a583195651'
+	'64534906ebe5d086aa5a0d96eb53e188290cface9689a56f2730ecb3927212b0'
 	'514845799c8e44b4faaeda29420cb0f2de708ed722f99ce10627704a8d6d6328'
 	'c609f60318d57135e43314a81ff5a95c9b8290190d18bb5cb0d720f1616b9f4a'
-	'3411929c2eb43edbc190dbb694f32b8257b13f953278f39e54a70178ca035e1c')
+	'01bd043afb615dd379cf22ee353812ac976b92641d91b4af32d5a169bbd4665c'
+	'fbc2c154ab04039f256652085d5bad99672af1b6026647f56fc69cc04ebe2fe3'
+	'47c6e369285bce4e526bfd3f3a73ed11b715665a76ba6f6c14f6679f43da155d'
+	'a0731a8b1a523ed5734a402e5ce32ffec2c1655fda10010e4a6ee6785cd4a211'
+	'3411929c2eb43edbc190dbb694f32b8257b13f953278f39e54a70178ca035e1c'
+	'0957fdc226e9bbab8c6ef46192021a0f59f5506d0d120310d44edc168000d08f')
 
 source=("${_images[@]/#/${_url}}")
 
