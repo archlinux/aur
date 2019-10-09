@@ -4,7 +4,7 @@ _pkgsrcname=pyvenv
 _pkgmaintainer=jorgenschaefer
 _pkgdestdirname=pyvenv
 _versionprefix=v
-pkgver=1.20
+pkgver=1.21
 pkgrel=1
 pkgdesc="Python virtual environment interface for Emacs"
 pkgname=emacs-${_pkgdestdirname}
@@ -13,7 +13,7 @@ url="https://github.com/${_pkgmaintainer}/${_pkgsrcname}"
 license=('GPL3')
 depends=('emacs')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/${_pkgmaintainer}/${_pkgsrcname}/archive/${_versionprefix}${pkgver}.tar.gz")
-sha256sums=('5bc16a9ca08ff0a533db40a2395f7b9c1e69d6eb92cbc1dcc4ec42a2060b09d7')
+sha256sums=('03de0692cbc4402972183e0dafc7c0596effb30b11f85f30a5e251d2df5e42c1')
 install=${pkgname}.install
 
 build() {
