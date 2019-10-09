@@ -5,7 +5,7 @@
 
 pkgname=pacemaker1.1-git
 _pkgname=pacemaker
-pkgver=1.1.19.rc1.r12.g15ea58519
+pkgver=1.1.21.r170.g5a452afbc
 pkgrel=1
 pkgdesc="advanced, scalable high-availability cluster resource manager (1.1 series)"
 arch=('i686' 'x86_64')
