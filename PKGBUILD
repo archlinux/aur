@@ -1,16 +1,16 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=crmsh
-pkgver=3.0.4
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="Command-line interface for high-availability cluster management on GNU/Linux systems"
 arch=('any')
 url="https://github.com/ClusterLabs/${pkgname}/"
 license=('GPL2')
-makedepends=('asciidoc' 'python2-setuptools')
-depends=('python' 'python2' 'python2-parallax' 'python2-lxml' 'python2-yaml' 'python2-dateutil' 'gawk' 'csync2')
+makedepends=('asciidoc' 'python-setuptools')
+depends=('python' 'python-parallax' 'python-lxml' 'python-yaml' 'python-dateutil' 'gawk' 'csync2')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ClusterLabs/$pkgname/archive/$pkgver.tar.gz")
-md5sums=('026ba8a8bbeb17dc965e5bf806fb1109')
+sha512sums=('d64f802d031201cb85434180ec4fb622a4dd8fc9196d367df815c202b43a9d180fb4a074b80bfbf99ceeb2a260f57dd35f262092e3abd00febbae844d3a68425')
 
 prepare() {
   cd ${pkgname}-${pkgver}
@@ -19,7 +19,7 @@ prepare() {
 
 build() {
   cd ${pkgname}-${pkgver}
-  ./configure PYTHON=python2 \
+  ./configure PYTHON=python \
               --prefix=/usr \
               --libdir=/usr/lib \
               --sbindir=/usr/bin \
