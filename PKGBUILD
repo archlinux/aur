@@ -1,4 +1,4 @@
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Poscat <poscat@mail.poscat.moe>
 # Contributor: Thomas Dziedzic < gostrc at gmail >
 # Contributor: garion < garion @ mailoo.org >
 # Contributor: leemars
@@ -9,7 +9,7 @@ pkgrel=13
 pkgdesc='IBus qt library and IBus qt input method plugin'
 arch=('x86_64')
 license=('LGPL')
-url='http://ibus.googlecode.com'
+url='https://github.com/ibus/ibus-qt'
 depends=('qt4' 'ibus' 'icu')
 makedepends=('cmake' 'doxygen' 'git')
 source=("git+https://github.com/ibus/ibus-qt.git#tag=$pkgver")
