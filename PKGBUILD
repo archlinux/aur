@@ -1,7 +1,7 @@
 # Maintainer: Alejandro Fernandez Huguet <https://github.com/RinsedSloth>
 pkgname=qmk
 pkgver=0.0.15
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI tool for customizing supported mechanical keyboards."
 arch=('any')
 url="https://qmk.fm/"
@@ -15,6 +15,7 @@ depends=(
 	'avrdude'
 	'dfu-util'
 	'avr-gcc'
+	'avr-libc'
 	'arm-none-eabi-gcc'
 	)
 makedepends=('python-setuptools')
