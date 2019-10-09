@@ -69,6 +69,7 @@ pkg_name_ver="${pkgname}-${pkgver//_/-}"
 prepare()
 {
   cd "${srcdir}/${pkg_name_ver}"
+  patch -p0 < "${startdir}/CMakeLists.txt.patch"
 }
 
 
