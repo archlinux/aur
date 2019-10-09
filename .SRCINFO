@@ -22,7 +22,7 @@ pkgbase = godot-mono
 	makedepends = rsync
 	makedepends = nuget
 	depends = mono>=5.18.0
-	depends = msbuild-stable
+	depends = msbuild
 	depends = dotnet-sdk
 	provides = godot-mono
 	conflicts = godot-mono-bin

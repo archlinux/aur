@@ -5,7 +5,7 @@ pkgdesc="An advanced, feature packed, multi-platform 2D and 3D game engine."
 arch=('i686' 'x86_64')
 url="https://godotengine.org/"
 license=('MIT')
-depends=('mono>=5.18.0' 'msbuild-stable' 'dotnet-sdk')
+depends=('mono>=5.18.0' 'msbuild' 'dotnet-sdk')
 makedepends=(
     'scons>=3.0' 
     'libxcursor' 
