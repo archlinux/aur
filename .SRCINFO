@@ -1,0 +1,16 @@
+pkgbase = handyoutliner-bin
+	pkgdesc = The goal of this program is to make easier and faster the process of creating bookmarks for DjVu and PDF documents.
+	pkgver = 1.1.6.3
+	pkgrel = 1
+	url = http://handyoutlinerfo.sourceforge.net/
+	arch = x86_64
+	license = GPL
+	depends = djvulibre
+	depends = mono
+	source = https://prdownloads.sourceforge.net/sourceforge/handyoutlinerfo/handyoutliner_1.1.6.3.zip
+	source = handyoutliner.desktop
+	md5sums = 51a3b3411103564b762605d8bcb17be4
+	md5sums = 55f5c8fa377de829f10632a2d518d06d
+
+pkgname = handyoutliner-bin
+
