@@ -9,8 +9,8 @@ pkgbase = hyperium-installer
 	noextract = Hyperium_1.1.jar
 	source = hyperium-installer.sh
 	source = https://cdn.discordapp.com/attachments/595634170336641045/631183200345129001/Hyperium_1.1.jar
-	sha1sums = eb818afbdc093ca17a26c678a127a24ac70ae37c
-	sha1sums = a9c727341f0049ba19553a0d1d8bb3a37656091f
+	sha256sums = 50bc9d881659a463e7834aa588b7a1d811c6ad62274ba99dc9fa8ce9d258710a
+	sha256sums = 7b462c17f6ab1b0bb7abb4f093d5d625e5c30055f05387d7a1ae91ae70d24cae
 
 pkgname = hyperium-installer
 
