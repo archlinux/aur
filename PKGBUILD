@@ -5,14 +5,14 @@ _name="luxcorerender"
 _ver_tag="blendluxcore_v2.2"
 
 pkgname=blender-plugin-${_name}-git
-pkgver=2.2.r1.gd34992e
+pkgver=2.2.r3.gd23ab33
 pkgrel=1
 pkgdesc="LuxCoreRender exporter plugin for Blender"
 arch=('any')
 url="https://luxcorerender.org/"
 license=('GPL')
 makedepends=(git)
-conflicts=(luxblend25 luxblend25-hg blend-plugin-luxcorerender)
+conflicts=(luxblend25 luxblend25-hg blender-plugin-luxcorerender)
 provides=(blender-plugin-luxcorerender)
 source=("${_name}::git+https://github.com/LuxCoreRender/BlendLuxCore.git${_fragment}")
 md5sums=("SKIP")
@@ -24,9 +24,8 @@ pkgver() {
 }
 
 package() {
-_blender=$(pacman -Sddp --print-format %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=)')
-depends=(blender luxcorerender)
-  cd ${srcdir}/${_name}
+  depends=('blender>=2.80' 'luxcorerender>2:2.2')
+  _blender=$(pacman -Sddp --print-format %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=)')
   install -d -m755 ${pkgdir}/usr/share/blender/${_blender}/scripts/addons
   cp -a ${srcdir}/${_name}/ ${pkgdir}/usr/share/blender/${_blender}/scripts/addons
   # change the search path in exporter so it finds pylux in its new location :(previous solution was much better, what happen to blendlux )

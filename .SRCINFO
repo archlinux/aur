@@ -1,6 +1,6 @@
 pkgbase = blender-plugin-luxcorerender-git
 	pkgdesc = LuxCoreRender exporter plugin for Blender
-	pkgver = 2.2.r1.gd34992e
+	pkgver = 2.2.r3.gd23ab33
 	pkgrel = 1
 	url = https://luxcorerender.org/
 	arch = any
@@ -9,11 +9,11 @@ pkgbase = blender-plugin-luxcorerender-git
 	provides = blender-plugin-luxcorerender
 	conflicts = luxblend25
 	conflicts = luxblend25-hg
-	conflicts = blend-plugin-luxcorerender
+	conflicts = blender-plugin-luxcorerender
 	source = luxcorerender::git+https://github.com/LuxCoreRender/BlendLuxCore.git
 	md5sums = SKIP
 
 pkgname = blender-plugin-luxcorerender-git
-	depends = blender
-	depends = luxcorerender
+	depends = blender>=2.80
+	depends = luxcorerender>2:2.2
 
