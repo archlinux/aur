@@ -9,6 +9,7 @@ pkgbase = aisleriot-git
 	makedepends = libkdegames
 	makedepends = gnome-common
 	makedepends = git
+	makedepends = meson
 	depends = guile
 	depends = gtk3
 	depends = qt5-svg

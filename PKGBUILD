@@ -11,7 +11,7 @@ license=('GPL')
 depends=('guile' 'gtk3' 'qt5-svg')
 provides=('aisleriot')
 conflicts=('aisleriot')
-makedepends=('appdata-tools' 'libkdegames' 'gnome-common' 'git')
+makedepends=('appdata-tools' 'libkdegames' 'gnome-common' 'git' 'meson')
 optdepends=('pysolfc: PySol card sets'
             'pysolfc-cardsets: PySol card sets')
 options=('!strip' '!emptydirs')
