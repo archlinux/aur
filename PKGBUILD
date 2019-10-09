@@ -1,7 +1,7 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 _pyname=astropy
 pkgname=python-${_pyname}-doc
-pkgver=3.2.1
+pkgver=3.2.2
 pkgrel=1
 pkgdesc="Documentation for AstroPy"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="http://www.astropy.org"
 license=('BSD')
 makedepends=("python-${_pyname}=${pkgver}" 'python-yaml' 'python-pillow' 'python-astropy-helpers>=3.1' 'graphviz' 'python-scikit-image' 'python-pytest' 'python-sphinx-astropy')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('ee0a185e8b9065ea9ebd860a651af2ee')
+md5sums=('d493f018dc1c0df421d92fd6790c6e8a')
 
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -27,6 +27,7 @@ package() {
 
     install -d -m755 "${pkgdir}/usr/share/doc/${pkgname%-doc}"
     cp -a html "${pkgdir}/usr/share/doc/${pkgname%-doc}"
+    install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" ../../LICENSE.rst
     install -m644 -t "${pkgdir}/usr/share/doc/${pkgname%-doc}/html/_static" ../_static/*
     install -m644 -t "${pkgdir}/usr/share/doc/${pkgname%-doc}/html/_images" ../_static/*
 }
