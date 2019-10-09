@@ -8,7 +8,7 @@ pkgbase = godot-mono-bin
 	license = MIT
 	depends = mono>=5.18.0
 	depends = dotnet-sdk
-	depends = msbuild-stable
+	depends = msbuild
 	provides = godot-mono-bin
 	conflicts = godot-mono
 	source = godot-mono.desktop

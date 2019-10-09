@@ -8,7 +8,7 @@ url="https://www.godotengine.org"
 license=('MIT')
 provides=("godot-mono-bin")
 conflicts=("godot-mono")
-depends=("mono>=5.18.0" "dotnet-sdk" "msbuild-stable")
+depends=("mono>=5.18.0" "dotnet-sdk" "msbuild")
 source=("godot-mono.desktop" "icons.tar.gz")
 source_i686=("$pkgname-$pkgver-i686.zip::https://downloads.tuxfamily.org/godotengine/"$pkgver"/mono/Godot_v"$pkgver"-stable_mono_x11_32.zip")
 source_x86_64=("$pkgname-$pkgver-x86_64.zip::https://downloads.tuxfamily.org/godotengine/"$pkgver"/mono/Godot_v"$pkgver"-stable_mono_x11_64.zip")
