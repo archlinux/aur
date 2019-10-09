@@ -10,7 +10,7 @@ services:
 
 archlinux:
   packages:
-  - cuda
+# - cuda
   - moreutils
   - oidn
 # Dora otix as downloading behind auth-wall is to painful :(
