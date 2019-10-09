@@ -1,7 +1,7 @@
 # Maintainer: Wesley Moore <wes@wezm.net>
 pkgname=tootle
 pkgver=0.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="GTK3 client for Mastodon"
 arch=('x86_64')
 url="https://github.com/bleakgrey/tootle"
@@ -22,4 +22,5 @@ build() {
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   DESTDIR="${pkgdir}/" ninja -C build install
+  ln -s "/usr/bin/com.github.bleakgrey.tootle" "${pkgdir}/usr/bin/tootle"
 }
