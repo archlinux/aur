@@ -2,7 +2,7 @@
 
 pkgname=fence-agents-git
 _pkgname=fence-agents
-pkgver=4.2.1.r0.gb0626a42
+pkgver=4.5.1.r3.g311c5126
 pkgrel=1
 pkgdesc="OCF fence agents for rgmanager and pacemaker"
 arch=('i686' 'x86_64')
