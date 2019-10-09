@@ -1,8 +1,8 @@
 pkgbase = atril-gtk2
 	pkgdesc = MATE document viewer (GTK2 version)
 	pkgver = 1.16.1
-	pkgrel = 4
-	url = http://mate-desktop.org
+	pkgrel = 5
+	url = https://mate-desktop.org
 	arch = i686
 	arch = x86_64
 	groups = mate-extra-gtk2
@@ -22,7 +22,7 @@ pkgbase = atril-gtk2
 	optdepends = webkitgtk2: ePub support (not recommended)
 	provides = atril
 	conflicts = atril
-	source = http://pub.mate-desktop.org/releases/1.16/atril-1.16.1.tar.xz
+	source = https://pub.mate-desktop.org/releases/1.16/atril-1.16.1.tar.xz
 	sha1sums = 7a05ec3e856335ce6a49a97f545ab401d9221f6e
 
 pkgname = atril-gtk2

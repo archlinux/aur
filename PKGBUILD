@@ -5,9 +5,9 @@ _ver=1.16
 _pkgbase=atril
 pkgname=(${_pkgbase}-gtk2)
 pkgver=${_ver}.1
-pkgrel=4
+pkgrel=5
 pkgdesc="MATE document viewer (GTK2 version)"
-url="http://mate-desktop.org"
+url="https://mate-desktop.org"
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('djvulibre' 'libspectre' 'libgxps' 'mathjax' 'poppler-glib')
@@ -18,7 +18,7 @@ optdepends=('caja: Document Properties extension'
 groups=('mate-extra-gtk2')
 conflicts=("${_pkgbase}")
 provides=("${_pkgbase}")
-source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
+source=("https://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
 sha1sums=('7a05ec3e856335ce6a49a97f545ab401d9221f6e')
 
 prepare() {
