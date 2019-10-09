@@ -46,7 +46,7 @@ script:
 #- '[ ! -f ~/.pkg-cache/NVIDIA-OptiX-SDK-7.0.0-linux64.sh ] && curl -Ls "https://developer.download.nvidia.com/designworks/optix/secure/7.0.0/ga/NVIDIA-OptiX-SDK-7.0.0-linux64.sh?LOhihLF99zzm6EAXMViu7GfZXfW8lN6IaQ-KhJwHgWx1-tIBMUjiwjPKBvB_585iVoKU9spDrpIHyyWnb9AarWCf2Kgv5nwpJfg9ai4DbsTRYtEmFfTSCo04t0idjs6Wfh-dtfbbrkAHIF_1vx5AvrS5DeQCt2jbLxKADQ8WOm9qpw" > ~/.pkg-cache/NVIDIA-OptiX-SDK-7.0.0-linux64.sh || true'
 #- 'du -h ~/.pkg-cache/NVIDIA-OptiX-SDK-7.0.0-linux64.sh'
 # assume caching out will take the same amount of time as caching in those making build time equal to 50 minutes minus two time current uptime.
-
+- "curl -s https://raw.githubusercontent.com/bartoszek/arch-travis/master/arch-travis.sh| bash"
 #deploy:
 #  on:
 #    branch: master
