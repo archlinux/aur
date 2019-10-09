@@ -1,0 +1,17 @@
+pkgbase = youtube_extract-git
+	pkgdesc = Extract metadata for all videos from a youtube channel into a csv file.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/dbeley/youtube_extract
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-setuptools
+	depends = youtube-dl
+	provides = youtube_extract
+	conflicts = youtube_extract
+	source = git+https://github.com/dbeley/youtube_extract
+	md5sums = SKIP
+
+pkgname = youtube_extract-git
+
