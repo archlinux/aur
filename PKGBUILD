@@ -6,7 +6,7 @@
 # Contributor: Michael Kanis <mkanis_at_gmx_dot_de>
 
 pkgname=mutter-performance
-pkgver=3.34.0+78+gb5f50028f
+pkgver=3.34.0+82+g65cc8c1ea
 pkgrel=1
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -22,7 +22,7 @@ provides=(mutter mutter-781835-workaround)
 conflicts=(mutter)
 replaces=(mutter-781835-workaround)
 groups=(gnome)
-_commit=b5f50028f268827f9c3465fb23eb03d0b6e4422b  # master
+_commit=65cc8c1ea2e6462349355142f17992101ef634ce  # master
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit")
 sha256sums=('SKIP')
 
@@ -52,7 +52,6 @@ prepare() {
   cd $pkgname
 
   ### Adding and fetching remotes providing the selected merge-requests
-
   git cherry-pick --abort || true
   git remote add vanvugt https://gitlab.gnome.org/vanvugt/mutter.git || true
   git fetch vanvugt
@@ -116,6 +115,17 @@ prepare() {
   # Status: 2
   # Comment:
   git_cp_by_msg '!724' 'clutter/stage: Add API to get_next_presentation_time' 'clutter/master-clock-default: Sync timelines to hardware vsync'
+
+
+  # By the way, the commit "backends/x11: Do not reload keymap on new keyboard notifications"
+  # has been reverted because it introduces #822 for certain keyboards in attempt to fix #398. 
+  # If you use stenography software or play hardcore rhythm games like Lunatic Rave 2/osumania, 
+  # you should revert the revert for that commit. 
+  if [ -f "$HOME/.i_dont_use_multiple_keyboard_layouts" ]; then
+    echo "OK, you dont use multiple keyboard layouts"
+    git revert ce86f90efbaa51522ba14c5b4cad933c2106de42 --no-commit
+  fi
+
 }
 
 build() {
