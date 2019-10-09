@@ -1,6 +1,6 @@
 # Maintainer: Jasper Van der Jeugt <jasper@fugue.co>
 pkgname=patat-bin
-pkgver='0.8.2.5'
+pkgver='0.8.4.0'
 pkgrel=1
 pkgdesc="Terminal-based presentations using Pandoc"
 arch=('x86_64')
@@ -8,8 +8,8 @@ url="https://github.com/jaspervdj/patat"
 license=('GPL2')
 depends=('gmp' 'glibc')
 makedepends=()
-source=("https://github.com/jaspervdj/patat/releases/download/v0.8.2.5/patat-v0.8.2.5-linux-x86_64.tar.gz")
-md5sums=('61ec305ab06f0453c072bd41d98423a8')
+source=("https://github.com/jaspervdj/patat/releases/download/v$pkgver/patat-v$pkgver-linux-x86_64.tar.gz")
+md5sums=('f5c082b5c9cd28c252054b19c396df7b')
 options=('!strip')
 
 package() {
