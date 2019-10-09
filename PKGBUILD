@@ -3,13 +3,13 @@
 pkgname=nightcode
 _name=Nightcode
 pkgver=2.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An IDE that bundles a smart editor, the Leiningen and Boot build tools, and a home screen with quick access to the Clojure cheatsheet and REPL."
 arch=('any')
 url="https://sekao.net/nightcode/"
 license=('custom')
 makedepends=('clojure')
-depends=('jdk-openjdk' 'java-openjfx')
+depends=('jdk-openjdk')
 conflicts=('nightcode-git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/oakes/${_name}/archive/${pkgver}.tar.gz"
         "nightcode.desktop")

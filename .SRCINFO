@@ -1,13 +1,12 @@
 pkgbase = nightcode
 	pkgdesc = An IDE that bundles a smart editor, the Leiningen and Boot build tools, and a home screen with quick access to the Clojure cheatsheet and REPL.
 	pkgver = 2.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sekao.net/nightcode/
 	arch = any
 	license = custom
 	makedepends = clojure
 	depends = jdk-openjdk
-	depends = java-openjfx
 	conflicts = nightcode-git
 	noextract = nightcode.desktop
 	source = nightcode-2.8.1.tar.gz::https://github.com/oakes/Nightcode/archive/2.8.1.tar.gz
