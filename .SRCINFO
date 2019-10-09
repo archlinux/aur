@@ -1,6 +1,6 @@
 pkgbase = pacemaker-git
 	pkgdesc = advanced, scalable high-availability cluster resource manager
-	pkgver = 2.0.0.r0.g8cf3fe749
+	pkgver = 2.0.2.r2.gb8b45a80d
 	pkgrel = 1
 	url = https://github.com/ClusterLabs/pacemaker/
 	install = pacemaker.install
