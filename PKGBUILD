@@ -8,6 +8,7 @@ arch=('x86_64' 'armv7h' 'aarch64')
 url='https://dotnet.microsoft.com/download/dotnet-core'
 license=('MIT')
 depends=('dotnet-runtime=3.0.0')
+optdepends=('aspnet-runtime=3.0.0: ASP.NET build support')
 options=('staticlibs')
 provides=('dotnet-sdk=3.0.100')
 source_armv7h=('https://download.visualstudio.microsoft.com/download/pr/8ddb8193-f88c-4c4b-82a3-39fcced27e91/b8e0b9bf4cf77dff09ff86cc1a73960b/dotnet-sdk-3.0.100-linux-arm.tar.gz')

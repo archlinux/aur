@@ -8,6 +8,7 @@ pkgbase = dotnet-sdk-bin
 	arch = aarch64
 	license = MIT
 	depends = dotnet-runtime=3.0.0
+	optdepends = aspnet-runtime=3.0.0: ASP.NET build support
 	provides = dotnet-sdk=3.0.100
 	options = staticlibs
 	source_x86_64 = https://download.visualstudio.microsoft.com/download/pr/886b4a4c-30af-454b-8bec-81c72b7b4e1f/d1a0c8de9abb36d8535363ede4a15de6/dotnet-sdk-3.0.100-linux-x64.tar.gz
