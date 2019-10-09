@@ -1,12 +1,12 @@
 pkgbase = emacs-buttercup
 	pkgdesc = Behavior-driven development framework for testing Emacs Lisp code
-	pkgver = 1.17
+	pkgver = 1.18
 	pkgrel = 1
 	url = https://github.com/jorgenschaefer/emacs-buttercup
 	arch = any
 	license = GPL
-	source = emacs-buttercup-1.17.tar.gz::https://github.com/jorgenschaefer/emacs-buttercup/archive/v1.17.tar.gz
-	sha256sums = c22fb290068548f737c4febdc9ccad8a9b612ebba9f768528b805f639053a3f6
+	source = emacs-buttercup-1.18.tar.gz::https://github.com/jorgenschaefer/emacs-buttercup/archive/v1.18.tar.gz
+	sha256sums = 2ea7eedf39ef0dd4219a9e018db81cbc438703a9f097e8f5cc9559a567cfa10c
 
 pkgname = emacs-buttercup
 
