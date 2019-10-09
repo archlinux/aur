@@ -3,7 +3,7 @@ pkgbase = waterfox-classic-git
 	pkgver = 56.3+4e300fc5cebf
 	pkgrel = 1
 	url = https://www.waterfoxproject.org/
-	install = waterfox.install
+	install = waterfox-classic.install
 	arch = i686
 	arch = x86_64
 	license = MPL
@@ -48,11 +48,11 @@ pkgbase = waterfox-classic-git
 	options = !strip
 	source = git://github.com/MrAlex94/Waterfox#branch=classic
 	source = mozconfig
-	source = waterfox.desktop
+	source = waterfox-classic.desktop
 	source = vendor.js
 	sha512sums = SKIP
-	sha512sums = d8e145693bc67337d9bd60d75bacefdd082af044a02000dc3442e407e8b4b6ab868ba286dfb298bd24f374de09d682973fef2505dc25ed4a73c0d921b54a2546
-	sha512sums = 93937770fa66d63f69c6283ed1f19ac83b9c9c4f5cc34e79d11ac31676462be9f7f37bcd35e785ceb8c7d234a09236d1f26b21e551b622854076fb21bcda44d3
+	sha512sums = d5e30e4bcabc7c609d3d5e4defb4a466fd457099f4a4cad986694396f7ec16936d79e06ee9465de070fd98e5f5be562b8c2cb475e3dc669e30f585318ab66751
+	sha512sums = de2ae1fa6d515da03026277ff30ee23935922ed26baa296334fbc088da9e924f0755dd123150c26a3b272f03198d0b283371852e0e1b9f3f6ff80cbbf1846dee
 	sha512sums = d927e5e882115c780aa0d45034cb1652eaa191d95c15013639f9172ae734245caae070018465d73fdf86a01601d08c9e65f28468621422d799fe8451e6175cb7
 
 pkgname = waterfox-classic-git

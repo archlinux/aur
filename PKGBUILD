@@ -16,15 +16,15 @@ makedepends=('unzip' 'zip' 'diffutils' 'python2' 'yasm' 'mesa' 'imake' 'gconf'
              'xorg-server-xvfb' 'libpulse' 'inetutils' 'autoconf2.13' 'clang' 'llvm' 'cargo')
 provides=("waterfox=$pkgver")
 conflicts=('waterfox' 'waterfox-bin' 'waterfox-git')
-install=waterfox.install
+install=waterfox-classic.install
 options=('!emptydirs' '!makeflags' '!strip')
 source=(git://github.com/MrAlex94/Waterfox#branch=classic
         mozconfig
-        waterfox.desktop
+        waterfox-classic.desktop
         vendor.js)
 sha512sums=('SKIP'
-            'd8e145693bc67337d9bd60d75bacefdd082af044a02000dc3442e407e8b4b6ab868ba286dfb298bd24f374de09d682973fef2505dc25ed4a73c0d921b54a2546'
-            '93937770fa66d63f69c6283ed1f19ac83b9c9c4f5cc34e79d11ac31676462be9f7f37bcd35e785ceb8c7d234a09236d1f26b21e551b622854076fb21bcda44d3'
+            'd5e30e4bcabc7c609d3d5e4defb4a466fd457099f4a4cad986694396f7ec16936d79e06ee9465de070fd98e5f5be562b8c2cb475e3dc669e30f585318ab66751'
+            'de2ae1fa6d515da03026277ff30ee23935922ed26baa296334fbc088da9e924f0755dd123150c26a3b272f03198d0b283371852e0e1b9f3f6ff80cbbf1846dee'
             'd927e5e882115c780aa0d45034cb1652eaa191d95c15013639f9172ae734245caae070018465d73fdf86a01601d08c9e65f28468621422d799fe8451e6175cb7')
             
 # don't compress the package - we're just going to uncompress during install in a moment
@@ -60,28 +60,28 @@ package() {
   mkdir -p "$pkgdir"
   DESTDIR="$pkgdir" make -f client.mk install
 
-  install -Dm644 ../vendor.js "$pkgdir/opt/waterfox/browser/defaults/preferences/vendor.js"
+  install -Dm644 ../vendor.js "$pkgdir/opt/waterfox-classic/browser/defaults/preferences/vendor.js"
 
   for i in 16 32 48; do
       install -Dm644 "$srcdir/Waterfox/obj-x86_64-pc-linux-gnu/dist/waterfox/browser/chrome/icons/default/default$i.png" \
-        "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/waterfox.png"
+        "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/waterfox-classic.png"
   done
 
   install -Dm644 "$srcdir/Waterfox/obj-x86_64-pc-linux-gnu/dist/waterfox/browser/chrome/icons/default/default128.png" \
-    "$pkgdir/usr/share/icons/hicolor/64x64/apps/waterfox.png"
+    "$pkgdir/usr/share/icons/hicolor/64x64/apps/waterfox-classic.png"
   install -Dm644 "$srcdir/Waterfox/obj-x86_64-pc-linux-gnu/dist/waterfox/browser/chrome/icons/default/default128.png" \
-    "$pkgdir/usr/share/icons/hicolor/128x128/apps/waterfox.png"
+    "$pkgdir/usr/share/icons/hicolor/128x128/apps/waterfox-classic.png"
   install -Dm644 browser/branding/unofficial/content/about-logo.png \
-    "$pkgdir/usr/share/icons/hicolor/192x192/apps/waterfox.png"
+    "$pkgdir/usr/share/icons/hicolor/192x192/apps/waterfox-classic.png"
   install -Dm644 browser/branding/unofficial/content/about-logo@2x.png \
-    "$pkgdir/usr/share/icons/hicolor/384x384/apps/waterfox.png"
+    "$pkgdir/usr/share/icons/hicolor/384x384/apps/waterfox-classic.png"
 
-  install -Dm644 ../waterfox.desktop \
-    "$pkgdir/usr/share/applications/waterfox.desktop"
+  install -Dm644 ../waterfox-classic.desktop \
+    "$pkgdir/usr/share/applications/waterfox-classic.desktop"
 
   # Use system-provided dictionaries
-  rm -rf "$pkgdir"/opt/waterfox/{dictionaries,hyphenation}
-  ln -s /usr/share/hunspell "$pkgdir/opt/waterfox"
-  ln -s /usr/share/hyphen "$pkgdir/opt/waterfox"
+  rm -rf "$pkgdir"/opt/waterfox-classic/{dictionaries,hyphenation}
+  ln -s /usr/share/hunspell "$pkgdir/opt/waterfox-classic"
+  ln -s /usr/share/hyphen "$pkgdir/opt/waterfox-classic"
 }
 
