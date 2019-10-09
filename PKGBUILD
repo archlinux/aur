@@ -1,15 +1,15 @@
 # Maintainer: James P. Harvey <jamespharvey20 at gmail dot com>
 
 pkgname=fabtests
-pkgver=1.8.0
+pkgver=1.8.1
 pkgrel=1
 pkgdesc='OpenFabrics Alliance high performance fabric library tests using libfabric'
 arch=('x86_64' 'i686')
 url='https://www.openfabrics.org/index.php/overview.html'
 license=('GPL2' 'BSD')
 depends=('libfabric' 'bash' 'ruby')
-source=("https://github.com/ofiwg/libfabric/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('4b9af18c9c7c8b28eaeac4e6e9148bd2ea7dc6b6f00f8e31c90a6fc536c5bb6c')
+source=("https://github.com/ofiwg/libfabric/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.bz2")
+sha256sums=('e9005d8fe73ca3849c872649c29811846bd72a62f897ecab73a08c7a9514f37b')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
