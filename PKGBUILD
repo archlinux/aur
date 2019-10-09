@@ -2,8 +2,8 @@
 
 pkgname=mstflint-inband
 _pkgname=mstflint
-pkgver=4.12.0.1
-_pkgver=4.12.0-1
+pkgver=4.13.0.1
+_pkgver=4.13.0-1
 pkgrel=1
 pkgdesc='OpenFabrics Alliance firmware burning application for Mellanox HCA/NIC cards (with inband support)'
 arch=('x86_64' 'i686')
@@ -13,8 +13,6 @@ depends=('python' 'sqlite')
 makedepends=('git' 'infiniband-diags')
 source=("git+https://github.com/Mellanox/${_pkgname}#tag=v${_pkgver}")
 sha256sums=('SKIP')
-# Prevent: strip:./usr/lib/libreg_access.a(libtools_layouts.a): Unable to recognise the format of file: file format not recognized
-options=(!strip)
 
 #The release tarballs cannot be used cleanly on Arch
 #Reported upstream: https://github.com/Mellanox/mstflint/issues/6
