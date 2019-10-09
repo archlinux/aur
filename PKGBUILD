@@ -6,7 +6,7 @@
 
 pkgname=slack-desktop-dark
 pkgver=4.0.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Slack Desktop (Beta) for Linux, with dark theme patch"
 arch=('x86_64')
 url="https://slack.com/downloads"
@@ -17,7 +17,7 @@ makedepends=('asar')
 optdepends=('gnome-keyring')
 conflicts=('slack-desktop')
 source=("https://downloads.slack-edge.com/linux_releases/${pkgname%-dark}-${pkgver}-amd64.deb"
-        "https://raw.githubusercontent.com/caiceA/slack-raw/b1c2c4d/slack-4"
+        "slack-4-${pkgver}-${pkgrel}::https://raw.githubusercontent.com/caiceA/slack-raw/b1c2c4d/slack-4"
         "darkify_slack.js"
         "${pkgname}.patch")
 noextract=("${pkgname%-dark}-${pkgver}-amd64.deb")
@@ -53,8 +53,8 @@ package() {
     # of our function from being commented out
     echo "" >> $file
     head -n $((lineno - 1)) darkify_slack.js >> $file
-	sed -i -e '/\\E/d' -e 's/939393/ffffff/' slack-4
-    cat slack-4 >> $file
+	sed -i -e '/\\E/d' -e 's/939393/ffffff/' slack-4-${pkgver}-${pkgrel}
+    cat slack-4-${pkgver}-${pkgrel} >> $file
     tail -n +$((lineno + 1)) darkify_slack.js >> $file
 
     # Repack with the theme change
