@@ -17,7 +17,7 @@ source=("https://github.com/LuxCoreRender/BlendLuxCore/archive/blendluxcore_v${_
 sha256sums=('92c2a1669f23bca58b3bef324676d1849775d996c96b8c35af1a97a0fed4e27e')
 
 package() {
-  depends=(blender luxcorerender)
+  depends=('blender>=2.80' 'luxcorerender>2:2.2')
   _blender=$(pacman -Sddp --print-format %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=)')
   install -d -m755 ${pkgdir}/usr/share/blender/${_blender}/scripts/addons
   cp -a ${srcdir}/BlendLuxCore-blendluxcore_v${_pkgver} ${pkgdir}/usr/share/blender/${_blender}/scripts/addons/${_name}

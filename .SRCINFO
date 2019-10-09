@@ -12,6 +12,6 @@ pkgbase = blender-plugin-luxcorerender
 	sha256sums = 92c2a1669f23bca58b3bef324676d1849775d996c96b8c35af1a97a0fed4e27e
 
 pkgname = blender-plugin-luxcorerender
-	depends = blender
-	depends = luxcorerender
+	depends = blender>=2.80
+	depends = luxcorerender>2:2.2
 
