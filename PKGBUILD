@@ -2,16 +2,16 @@
 # Maintainer: Peter Severin <peter@wireframesketcher.com>
 
 pkgname=wireframesketcher
-pkgver=6.1.0
+pkgver=6.2.0
 pkgrel=1
 pkgdesc="WireframeSketcher, wireframing tool for professionals (Trial)"
 arch=('x86_64')
-url="http://wireframesketcher.com"
-_watch=('http://wireframesketcher.com/version')
+url="https://wireframesketcher.com"
+_watch=('https://wireframesketcher.com/version')
 license=('nonfree')
 depends=('gtk3' 'webkit2gtk')
 source_x86_64=("http://cdn.wireframesketcher.com/studio/dist/WireframeSketcher-${pkgver}_amd64.deb")
-sha512sums_x86_64=('38818fa0ac4e4961f8284ee643ee03f857020f5484660aef6ace4260261723b75c18886ceb9af1bc73578ad5e0a198ba020f5077c58a8995e8af8d32f0167e30')
+sha512sums_x86_64=('5e4e04de25ab8a79e4d3e2b3de07af2195dc279ca3af182c378655331f520a57a52fce31678d6d9eec3efc872c38f7266d5755be9d7d2d6f1fe91a683bf16378')
 
 package () {
     cd $srcdir
