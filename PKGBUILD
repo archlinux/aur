@@ -43,14 +43,6 @@ prepare() {
 build() {
   _pyver=$(python -c "from sys import version_info; print(\"%d%d\" % (version_info[0],version_info[1]))")
   mkdir -p ${srcdir}/build && cd ${srcdir}/build
-  ((TRAVIS)) && {
-    suppress_warnings="-Wno-implicit-fallthrough -Wno-class-memaccess"
-    CFLAGS="$CFLAGS $suppress_warnings"
-    CXXFLAGS="$CXXFLAGS $suppress_warnings"
-  }
-  msg "cflags=\"$CFLAGS\""
-  msg "cxxflags=\"$CXXFLAGS\""
-
   cmake -DPYTHON_V=${_pyver} ${srcdir}/${_name}
   make
 }
