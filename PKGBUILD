@@ -1,5 +1,5 @@
-# $Id$
-# Maintainer: Marco A Rojas <marco.rojas@zentek.com.mx>
+# Maintainer: Maxim Kurnosenko <asusx2@mail.ru>
+# Contributor: Marco A Rojas <marco.rojas@zentek.com.mx>
 
 pkgname=kannel
 PACKAGE=gateway
@@ -33,7 +33,7 @@ md5sums=('0048dab467931eb8472c31d5e1257401'
          'e4bac33d1ff8dc6947f5850c6fe3d6b0')
 
 build() {
-  cd ${srcdir}/${PACKAGE}-${pkgver}  
+  cd ${srcdir}/${PACKAGE}-${pkgver}
   ./configure --prefix=/usr/local --mandir=/usr/local/man --enable-start-stop-daemon --with-mysql --with-sqlite3 --with-pgsql --with-redis
   make || return 1
 }
