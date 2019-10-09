@@ -7,7 +7,7 @@
 
 pkgname=caddy-git
 _pkgname=caddy
-pkgver=20190424.15fecbc1
+pkgver=20191008.be2fdb6a
 pkgrel=1
 pkgdesc='HTTP/2 Web Server with Automatic HTTPS'
 url='https://caddyserver.com/'
