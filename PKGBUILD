@@ -3,7 +3,7 @@
 
 pkgname=linux-akulm
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Pacman hooks to have loadable modules after pacman -Syu"
 arch=('any')
 url="https://github.com/bebehei/akulm"
@@ -29,7 +29,7 @@ package() {
 	cd "${srcdir}"
 
 	for hook in akulm-pre akulm-post; do
-		install -Dm644 "${hook}.hook" "${pkgdir}/usr/share/libalpm/hooks/${hook}.hook"
+		install -Dm644 "${hook}.hook" "${pkgdir}/usr/share/libalpm/hooks/00-${hook}.hook"
 	done
 
 	install -Dm644 "akulm.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/akulm.conf"

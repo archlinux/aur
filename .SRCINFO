@@ -1,7 +1,7 @@
 pkgbase = linux-akulm
 	pkgdesc = Pacman hooks to have loadable modules after pacman -Syu
 	pkgver = 0.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bebehei/akulm
 	arch = any
 	license = GPL3
