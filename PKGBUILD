@@ -1,7 +1,7 @@
 # Maintainer: Chih-Hsuan Yen <yan12125@gmail.com>
 
 pkgname=pulse-secure
-pkgver=9.1r1.0_b21
+pkgver=9.1r2.0_b69
 pkgrel=1
 pkgdesc='Pulse Connect Secure (PCS) Client'
 arch=(x86_64)
@@ -11,11 +11,11 @@ depends=(gcc-libs libgnome-keyring)
 source=(pulseUi.sh
         EULA.txt
         PulseClient-Arch.patch)
-source_x86_64=("http://ccnet.ntu.edu.tw/vpn/Download/ps-pulse-linux-${pkgver/_/-}-centos-rhel-64-bit-installer.rpm")
+source_x86_64=("https://www.rz.uni-osnabrueck.de/fileadmin/user_upload/VPN/Software/ps-pulse-linux-${pkgver/_/-}-centos-rhel-64-bit-installer.rpm")
 md5sums=('d81155461e2666c2b9d669c1b76f85fe'
          '261848a28201e5386ec4bf587473a48b'
          '0799902854ece4473d2a23c67c089630')
-md5sums_x86_64=('024763e452f7216a29fb293b2366236e')
+md5sums_x86_64=('0facca1171787222b3f1450384fb32ea')
 optdepends=('webkitgtk: for pulseUi frontend'
             'psmisc: for pulsesvc -K')
 conflicts=(pulse-connect-secure)
