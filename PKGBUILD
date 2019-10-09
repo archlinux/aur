@@ -1,7 +1,7 @@
 # Maintainer: Matt/ilikenwf <parwok@gmail.com>
 pkgname=waterfox-current-git
 pkgver=68.0+150863514609
-pkgrel=1
+pkgrel=2
 pkgdesc="More private and optimized Firefox fork. Alpha (gecko68) branch. CREATES SEPARATE PROFILE"
 arch=('i686' 'x86_64')
 license=('MPL')
@@ -26,7 +26,7 @@ source=(git://github.com/MrAlex94/Waterfox#branch=current
         ignore_bad_validator.patch
         vendor.js)
 sha512sums=('SKIP'
-            'f6ca5e367d15471b1b7d2e2f8d442fd5bb3e6d0371c5875bc3217a5392ccaf98bba8db9cdf7f012922cfb58e706c9fe635b7c49a9a7640bfe6c623f574beb996'
+            '3f60ea9724faddcd6e73f7f4819d7d4b997077262cb8daeb0f3e5b8f64bca840c0ff965a56ae4e808da746f8e9b800d64922534eeaff01a64361d1bdc1d11155'
             'acd1a8ea32747dcd3df976c64408bb01d06f30af399f8625f43930d6a8b64a76a00af08aca9cd525c74ee3f2e58f6a49b57bab9a8b6ec0e1497f27122a41b82a'
             'ab2aced2e371afad317ab3ffb3e8161c457f022327e182d426aa2ba4142112060225ced4610eb2525e1c739a4e56ad4e7cf78cc102232cf01cf06d0224a9c09d'
             'd927e5e882115c780aa0d45034cb1652eaa191d95c15013639f9172ae734245caae070018465d73fdf86a01601d08c9e65f28468621422d799fe8451e6175cb7')
