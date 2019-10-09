@@ -1,4 +1,5 @@
-# Mantainer: RonaldMcDaddy <wannes.demeyer@protonmail.com>
+# Maintainer: Maxim Kurnosenko <asusx2@mail.ru>
+# Contributor: RonaldMcDaddy <wannes.demeyer@protonmail.com>
 # Contributor: Tinh Truong <xuantinh at gmail dot com>
 # Contributor: Cedric Sougne <cedric@sougne.name>
 # Contributor: untseac
