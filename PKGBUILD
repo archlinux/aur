@@ -1,6 +1,6 @@
-# $Id: PKGBUILD 266875 2017-11-15 14:29:11Z foutrelis $
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
-# Maintainer: Ben Mazer <blm@groknil.org>
+# Maintainer: Maxim Kurnosenko <asusx2@mail.ru>
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Contributor: Ben Mazer <blm@groknil.org>
 
 pkgname=adns-python
 pkgver=1.2.1
