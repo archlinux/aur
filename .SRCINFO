@@ -1,6 +1,6 @@
 pkgbase = minisatip-git
 	pkgdesc = SAT>IP server, tested with DVB-S, DVB-S2, DVB-T, DVB-T2, DVB-C, DVB-C2, ATSC and ISDB-T cards (experimental)
-	pkgver = 0.7.16_g8fbcffa
+	pkgver = 1.0.2.r3.g5dc22e4
 	pkgrel = 1
 	url = https://minisatip.org
 	install = minisatip.install
