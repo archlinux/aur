@@ -7,7 +7,7 @@
 
 pkgname=mapnik-git
 _pkgname=mapnik
-pkgver=3.0.20.1032.ge80dd063b
+pkgver=3.0.20.1046.gfdf60044c
 pkgrel=1
 pkgdesc="Free Toolkit for developing mapping applications. Above all Mapnik is about rendering beautiful maps (git version)"
 arch=('i686' 'x86_64')

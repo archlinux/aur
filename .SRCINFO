@@ -8,9 +8,9 @@ pkgbase = mapnik-git
 	arch = x86_64
 	license = LGPL
 	makedepends = scons
-	makedepends = boost
+	makedepends = boost<=1.69
 	makedepends = git
-	depends = boost-libs
+	depends = boost-libs<=1.69
 	depends = icu
 	depends = libpng
 	depends = libjpeg
