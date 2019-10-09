@@ -1,6 +1,6 @@
 pkgbase = lucky
-	pkgdesc = A Crystal web framework that catches bugs for you, runs incredibly fast, and helps you write code that lasts.
-	pkgver = 0.17.0
+	pkgdesc = A web framework written in Crystal
+	pkgver = 0.18.0
 	pkgrel = 1
 	url = https://luckyframework.org/
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = lucky
 	depends = crystal
 	depends = shards
 	conflicts = lucky-git
-	source = lucky_cli-0.17.0.tar.gz::https://github.com/luckyframework/lucky_cli/archive/v0.17.0.tar.gz
-	sha256sums = d9d49c38a73065cc799b80c7c30bda5ad846ddd8693d10f276696ae14a07e07e
+	source = lucky_cli-0.18.0.tar.gz::https://github.com/luckyframework/lucky_cli/archive/v0.18.0.tar.gz
+	sha256sums = cf3168acae10fc79141b0a7c1baf87672f0c4c81c31768a94e62ade0f3faf812
 
 pkgname = lucky
 
