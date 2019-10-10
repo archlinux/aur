@@ -1,5 +1,5 @@
 #!/bin/sh
-cd /usr/share/java/jrommanager
+cd /usr/share/java/jrommanager-bin
 OPT=-Xmx1g
 which grep >/dev/null
 if [ $? -eq 0 ]; then
