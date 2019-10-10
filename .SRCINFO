@@ -1,6 +1,6 @@
 pkgbase = gtk-theme-shades-of-gray
 	pkgdesc = A dark GTK-theme (GNOME, Cinnamon, Xfce, Openbox) in 7 color variants with themes for Firefox and Thunderbird.
-	pkgver = 1.1.9
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/WernerFP/Shades-of-gray-theme
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = gtk-theme-shades-of-gray
 	optdepends = gtk-engines: for gtk2 themes
 	conflicts = gtk-theme-shades-of-gray
 	replaces = gtk-theme-shades-of-gray-git
-	source = https://github.com/WernerFP/Shades-of-gray-theme/archive/1.1.9.tar.gz
-	md5sums = aefdaca740198f98276e4d118d4e4477
+	source = https://github.com/WernerFP/Shades-of-gray-theme/archive/1.2.0.tar.gz
+	md5sums = a4c4fe277c6919b0f17d94e872ac1b71
 
 pkgname = gtk-theme-shades-of-gray
 
