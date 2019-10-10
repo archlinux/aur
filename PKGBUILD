@@ -2,7 +2,7 @@
 
 pkgname=nkit
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A Nintendo ToolKit that can Recover and Preserve Wii and GameCube disc images'
 arch=('x86_64')
 url='http://wiki.gbatemp.net/wiki/NKit'
@@ -29,7 +29,7 @@ package() {
   install -m755 -d "${pkgdir}/usr/bin"
   for exe in *exe;
   do
-    echo "mono /usr/lib/nkit/$exe \$@" > "${pkgdir}/usr/bin/${exe:0:-4}"
+    echo "mono /usr/lib/nkit/$exe \"\$@\"" > "${pkgdir}/usr/bin/${exe:0:-4}"
     chmod 755 "${pkgdir}/usr/bin/${exe:0:-4}"
   done
 }

@@ -1,7 +1,7 @@
 pkgbase = nkit
 	pkgdesc = A Nintendo ToolKit that can Recover and Preserve Wii and GameCube disc images
 	pkgver = 1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://wiki.gbatemp.net/wiki/NKit
 	arch = x86_64
 	license = MIT
