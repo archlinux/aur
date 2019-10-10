@@ -1,5 +1,5 @@
 pkgname=wofi-hg
-pkgver=r0.212598d693a9
+pkgver=r57.15a802c4f55f
 pkgrel=1
 pkgdesc="Rofi-like wlroots launcher"
 arch=('x86_64')
