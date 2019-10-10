@@ -14,7 +14,7 @@ pkgbase = renderdoc-git
 	depends = qt5-svg
 	depends = qt5-x11extras
 	depends = xcb-util-keysyms
-	provides = renderdoc
+	provides = renderdoc=1.5
 	conflicts = renderdoc
 	source = https://github.com/baldurk/renderdoc
 	source = renderdoc.desktop

@@ -14,7 +14,7 @@ source=("git+https://github.com/baldurk/renderdoc"
 sha256sums=('SKIP'
             'eab4941dc17fbbdcb9e34a698c3b304d212be54956daeb0c3b1cf5b7f2b00984')
 conflicts=('renderdoc')
-provides=('renderdoc')
+provides=("renderdoc=${pkgver%+*}")
 
 pkgver() {
   cd "${srcdir}"/renderdoc
