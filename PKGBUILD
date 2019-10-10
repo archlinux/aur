@@ -1,18 +1,28 @@
 # Maintainer: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
 pkgname=uvicorn
-pkgver=0.3.21
-pkgrel=2
+pkgver=0.9.0
+pkgrel=1
 pkgdesc="The lightning-fast ASGI server."
 arch=('any')
 url="https://www.uvicorn.org/"
 license=('BSD')
-depends=('python>=3.5' 'python-click' 'python-h11'
-         'python-httptools>=0.0.11' 'python-uvloop' 'python-websockets>=6.0')
+depends=(
+  'python>=3.6'
+  'python-click>=7.0'
+  'python-h11>=0.8.0'
+  'python-httptools>=0.0.13'
+  'python-uvloop'
+  'python-websockets>=8.0'
+)
 makedepends=('python-setuptools')
 options=(!emptydirs)
-source=("https://github.com/encode/uvicorn/archive/${pkgver}.tar.gz")
-sha256sums=('f333d74f94a4a82fb723ac19b207647f65269ee46dc3e31f7322f3fe6e176d6d')
+source=(
+  "https://github.com/encode/uvicorn/archive/${pkgver}.tar.gz"
+)
+sha256sums=(
+  '19bbd258074c1cc077aee3f4d458c671e3b0f2f3efaa938b552d0dbd34197ab6'
+)
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
