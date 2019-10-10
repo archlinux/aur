@@ -9,8 +9,7 @@ url="https://github.com/Anuken/Mindustry"
 license=("GPL3")
 depends=("java-runtime=8" "sh" "hicolor-icon-theme")
 makedepends=("libicns")
-# provides=(${_pkgname})
-replaces=(${_pkgname})
+provides=(${_pkgname})
 conflicts=(${_pkgname})
 source=("${pkgname}-${pkgver}.jar::https://github.com/Anuken/Mindustry/releases/download/v${pkgver}/Mindustry.jar"
         "${pkgname}.icns::https://github.com/Anuken/Mindustry/raw/master/core/assets/icons/icon.icns"
@@ -34,5 +33,4 @@ package() {
   done
   install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
   install -Dm755 "${pkgname}-${pkgver}.jar" "${pkgdir}/usr/share/java/${_pkgname}/Mindustry.jar"
-
 }

@@ -9,8 +9,8 @@ pkgbase = mindustry-bin
 	depends = java-runtime=8
 	depends = sh
 	depends = hicolor-icon-theme
+	provides = mindustry
 	conflicts = mindustry
-	replaces = mindustry
 	noextract = mindustry-bin-96.jar
 	source = mindustry-bin-96.jar::https://github.com/Anuken/Mindustry/releases/download/v96/Mindustry.jar
 	source = mindustry-bin.icns::https://github.com/Anuken/Mindustry/raw/master/core/assets/icons/icon.icns
