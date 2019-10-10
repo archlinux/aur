@@ -1,0 +1,12 @@
+pkgbase = passp
+	pkgdesc = Password management system
+	pkgver = 1
+	pkgrel = 1
+	url = http://samuellando.com
+	arch = any
+	license = GPL
+	source = http://samuellando.com/passp-1.tar.gz
+	sha256sums = b472da4783986c3d2b95d4beffc833c968ed3ce0d6a048914e6907d1c883268e
+
+pkgname = passp
+
