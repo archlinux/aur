@@ -9,7 +9,7 @@ arch=(any)
 url="https://github.com/caffeine-ng/caffeine-ng"
 license=(GPL3)
 depends=(python-gobject python-xdg python-dbus python-docopt python-ewmh gtk3
-         libnotify python-setproctitle python-wheel)
+         libnotify python-setproctitle python-wheel python-pulse-control)
 optdepends=("libindicator-gtk3: AppIndictor support.")
 conflicts=(caffeine caffeine-bzr caffeine-oneclick caffeine-systray)
 provides=(caffeine caffeine-bzr caffeine-oneclick caffeine-systray)
