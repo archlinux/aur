@@ -1,8 +1,8 @@
 # Maintainer: grufo <madmurphy333@gmail.com>
 
-pkgname='libconfini-git'
 _libname='libconfini'
-pkgver='r136.f95e562'
+pkgname="${_libname}-git"
+pkgver='r137.b75032f'
 pkgrel=1
 pkgdesc='Yet another INI parser'
 arch=('i686' 'x86_64')
@@ -23,7 +23,7 @@ pkgver() {
 prepare() {
 
 	cd "${srcdir}/${_libname}"
-	./autogen.sh --prefix=/usr
+	./bootstrap --prefix=/usr
 
 }
 
@@ -31,13 +31,6 @@ build() {
 
 	cd "${srcdir}/${_libname}"
 	make
-
-}
-
-check() {
-
-	cd "${srcdir}/${_libname}"
-	make check
 
 }
 
