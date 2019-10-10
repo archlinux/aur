@@ -1,0 +1,16 @@
+pkgbase = ofmc-bin
+	pkgdesc = Open-Source Fixed-Point Model-Checker
+	pkgver = 2018
+	pkgrel = 1
+	url = http://www.imm.dtu.dk/~samo/
+	arch = x86_64
+	license = BSD
+	depends = gmp
+	depends = libffi
+	provides = ofmc=2018
+	conflicts = ofmc
+	source = http://www.imm.dtu.dk/~samo/ofmc-2018.zip
+	md5sums = 25dbffa5e0f8da90fa6b28d943b09965
+
+pkgname = ofmc-bin
+
