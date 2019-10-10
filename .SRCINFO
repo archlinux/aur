@@ -34,6 +34,8 @@ pkgbase = mitmproxy-git
 	depends = python-parver
 	depends = python-protobuf>=3.6.0
 	depends = python-brotli>=1.0
+	depends = python-zstandard>=0.11.0
+	depends = python-publicsuffix2>=2.20190812
 	provides = mitmproxy
 	conflicts = mitmproxy
 	source = git+https://github.com/mitmproxy/mitmproxy.git

@@ -1,5 +1,3 @@
-pkg/
-src/
-mitmproxy/
-*.tar.gz
-*.tar.xz
+/pkg/
+/src/
+/mitmproxy*
