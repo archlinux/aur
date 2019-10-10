@@ -1,0 +1,14 @@
+pkgbase = igetnonce-git
+	pkgdesc = igetnonce
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/tihmstar/igetnonce
+	arch = x86_64
+	license = unknown
+	makedepends = libimobiledevice
+	makedepends = libirecovery-git
+	source = git+https://github.com/tihmstar/igetnonce.git
+	sha512sums = SKIP
+
+pkgname = igetnonce-git
+
