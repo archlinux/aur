@@ -1,7 +1,7 @@
 pkgbase = veloren
 	pkgdesc = An open-world, open-source multiplayer voxel RPG
-	pkgver = 0.3.0
-	pkgrel = 8
+	pkgver = 0.4.0
+	pkgrel = 1
 	url = https://veloren.net/
 	arch = x86_64
 	arch = i686
@@ -20,7 +20,7 @@ pkgbase = veloren
 	noextract = veloren-voxygen.desktop
 	noextract = voxygen.png
 	options = !strip
-	source = veloren::git+https://gitlab.com/veloren/veloren.git#tag=v0.3.0
+	source = veloren::git+https://gitlab.com/veloren/veloren.git#tag=v0.4.0
 	source = veloren-voxygen.desktop
 	source = voxygen.png
 	sha512sums = SKIP
