@@ -1,0 +1,16 @@
+pkgbase = perl-www-useragent-random
+	pkgdesc = WWW::UserAgent::Random - Perl extension to generate random User Agent
+	pkgver = 0.03
+	pkgrel = 1
+	url = https://metacpan.org/release/WWW-UserAgent-Random
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	options = !emptydirs
+	options = purge
+	source = https://www.cpan.org/modules/by-module/WWW/MCANTONI/WWW-UserAgent-Random-0.03.tar.gz
+	sha256sums = f139adef8863ecd8091db5ebb20842a896c5e6c9911741b81d6adc7f999b6f99
+
+pkgname = perl-www-useragent-random
+
