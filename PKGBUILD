@@ -11,7 +11,7 @@ pkgbase=linux-rt-lts       # Build kernel with a different name
 _pkgver=4.19.72
 _rtpatchver=rt25
 pkgver=${_pkgver}_${_rtpatchver}
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://wiki.linuxfoundation.org/realtime/start"
 license=('GPL2')
@@ -91,7 +91,8 @@ _package() {
   pkgdesc="The ${pkgbase/linux/Linux} kernel and modules"
   [[ $pkgbase = linux ]] && groups=(base)
   depends=(coreutils linux-firmware kmod mkinitcpio)
-  optdepends=('crda: to set the correct wireless channels of your country')
+  optdepends=('crda: to set the correct wireless channels of your country'
+              'linux-firmware: firmware images needed for some devices')
   backup=("etc/mkinitcpio.d/$pkgbase.preset")
   install=${pkgbase}.install
 
