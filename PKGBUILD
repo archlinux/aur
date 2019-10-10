@@ -17,10 +17,12 @@ optdepends=(
 )
 source=(
   'https://github.com/sasha-alias/sqltabs/releases/download/v1.0.0/sqltabs.linux.tar.gz'
+  'https://raw.githubusercontent.com/sasha-alias/sqltabs/master/LICENSE'
   'sqltabs.desktop'
 )
 sha256sums=(
   '67e15b5d8ed5e2baa176ac650b394c1f0fdeb6dc6e0e493f1ef3acc1569c1c82'
+  '8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903'
   '64639df2a4ac4c55faafcfae5a83829d5914205b92e7e755973197172cc3531e'
 )
 package() {
@@ -37,8 +39,11 @@ package() {
   install -d "${_target}"
   install -d "${pkgdir}/usr/share/applications"
   install -d "${pkgdir}/usr/share/icons"
+  install -d "${pkgdir}/usr/share/licenses/${_pkgname}"
 
   install -m644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+  install -m644 "${srcdir}/${_pkg}/logo.png" "${pkgdir}/usr/share/icons/${_pkgname}.png"
+  install -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 
   cp -r "${srcdir}/${_pkg}"/* "${_target}" -R
 }
