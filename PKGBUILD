@@ -2,7 +2,7 @@
 
 pkgname=octant
 pkgdesc='A tool for developers to understand how applications run on a Kubernetes cluster'
-pkgver=0.5.1
+pkgver=0.7.0
 pkgrel=1
 arch=('x86_64')
 license=('Apache')
@@ -10,7 +10,7 @@ url='https://github.com/vmware/octant'
 depends=('kubectl')
 makedepends=('go' 'npm')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/vmware/octant/archive/v$pkgver.tar.gz")
-sha256sums=('29d43f526f79ee20f97688b28598f6281c405de46e56938822a9e189a6651621')
+sha256sums=('b82f7fc7ba39d651d2764135685c784756f5dd58adcbe4bde2a332ffd0179219')
 
 build() {
   cd $pkgname-$pkgver
