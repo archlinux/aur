@@ -32,19 +32,19 @@ package() {
 
 	install -Dm644 "$pkgname.sysusers" "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
 
-	install -Dm644 "server-skeleton-$pkgver/$pkgname.ini.example" "$pkgdir/etc/$pkgname/$pkgname.ini"
+	install -Dm644 "server-$pkgver/$pkgname.ini.example" "$pkgdir/etc/$pkgname/$pkgname.ini"
 	sed -i "s@secret.txt@/var/lib/$pkgname/secret.txt@;s@db.sqlite3@/var/lib/$pkgname/db.sqlite3@" "$pkgdir/etc/$pkgname/$pkgname.ini"
 
-	install -Dm644 "server-skeleton-$pkgver/README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
-	mv "server-skeleton-$pkgver/example-configs" "$pkgdir/usr/share/doc/$pkgname/"
-	rm -f "server-skeleton-$pkgver/README.md"
+	install -Dm644 "server-$pkgver/README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
+	mv "server-$pkgver/example-configs" "$pkgdir/usr/share/doc/$pkgname/"
+	rm -f "server-$pkgver/README.md"
 
-	install -Dm644 "server-skeleton-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	rm -f "server-skeleton-$pkgver/LICENSE"
+	install -Dm644 "server-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	rm -f "server-$pkgver/LICENSE"
 
-	rm -f "server-skeleton-$pkgver/icon.svg"
+	rm -f "server-$pkgver/icon.svg"
 
-	cp -r "server-skeleton-$pkgver" "$pkgdir/usr/lib/$pkgname"
+	cp -r "server-$pkgver" "$pkgdir/usr/lib/$pkgname"
 
 	install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
 	chmod +x "$pkgdir/usr/bin/etesync-server"
