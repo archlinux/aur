@@ -1,9 +1,10 @@
 # Maintainer: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
-_srcname=googleapis-common-protos
+_name=googleapis-common-protos
+_sha256sum=e61b8ed5e36b976b487c6e7b15f31bb10c7a0ca7bd5c0e837f4afab64b53a0c6
 
 pkgname=python-googleapis-common-protos
-pkgver=1.5.6
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Common protobufs used in Google APIs"
 arch=('any')
@@ -13,21 +14,24 @@ depends=(
   'python-protobuf>=3.6.0'
 )
 makedepends=('python-setuptools')
+optdepends=(
+  'python-grpcio>=1.0.0: for grpc support'
+)
 options=(!emptydirs)
 source=(
-  "https://files.pythonhosted.org/packages/61/29/1549f61917eadd11650e42b78b4afcfe9cb467157af4510ab8cb59535f14/googleapis-common-protos-${pkgver}.tar.gz"
+  "https://files.pythonhosted.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz"
 )
 sha256sums=(
-  '6de6de98e895f4266caefa768778533bdea98abbead6972d35c8a0f57409eea2'
+  "${_sha256sum}"
 )
 
 build() {
-  cd "${srcdir}/${_srcname}-${pkgver}"
+  cd "${srcdir}/${_name}-${pkgver}"
   python setup.py build
 }
 
 package() {
-  cd "${srcdir}/${_srcname}-${pkgver}"
+  cd "${srcdir}/${_name}-${pkgver}"
   python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
   install -Dm644 README.rst "${pkgdir}/usr/share/doc/${pkgname}/README.rst"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
