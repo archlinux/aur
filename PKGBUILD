@@ -1,0 +1,44 @@
+# Maintainer: Tom Carrio <tom@carrio.dev>
+
+pkgname=sqltabs-bin
+_pkgname=sqltabs
+pkgver=1.0.0
+pkgrel=1
+pkgdesc="Rich SQL client for Postgresql, MySQL, MS SQL, Amazon Redshift, Google Firebase (Firestore)"
+arch=('x86_64')
+url="https://www.sqltabs.com"
+license=('GPLv3')
+provides=('sqltabs')
+conflicts=('sqltabs')
+depends=('perl')
+optdepends=(
+  'nvm'
+  'node>=10'
+)
+source=(
+  'https://github.com/sasha-alias/sqltabs/releases/download/v1.0.0/sqltabs.linux.tar.gz'
+  'sqltabs.desktop'
+)
+sha256sums=(
+  '67e15b5d8ed5e2baa176ac650b394c1f0fdeb6dc6e0e493f1ef3acc1569c1c82'
+  '64639df2a4ac4c55faafcfae5a83829d5914205b92e7e755973197172cc3531e'
+)
+package() {
+  _pkg=sqltabs-linux-x64
+  _target="${pkgdir}/opt/${_pkgname}/"
+
+  nodeVersion="$(node -v | perl -lape 's/^v(\d+)\.\d+\.\d+.*$/$1/')"
+  if [ -z "$nodeVersion" ] || [ $nodeVersion -lt 10 ]
+  then
+    echo "SQLTabs requires Node version 10 or higher"
+    exit 1
+  fi
+
+  install -d "${_target}"
+  install -d "${pkgdir}/usr/share/applications"
+  install -d "${pkgdir}/usr/share/icons"
+
+  install -m644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+
+  cp -r "${srcdir}/${_pkg}"/* "${_target}" -R
+}

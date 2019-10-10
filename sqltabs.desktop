@@ -1,0 +1,11 @@
+[Desktop Entry]
+Exec=/opt/sqltabs/sqltabs %f
+Icon=sqltabs
+Terminal=false
+Type=Application
+Name=SQLTabs
+Comment=Rich SQL client for Postgresql, MySQL, MS SQL, Amazon Redshift, Google Firebase (Firestore)
+Categories=Database;IDE;Utility
+MimeType=text/plain
+StartupNotify=true
+StartupWMClass=sqltabs
