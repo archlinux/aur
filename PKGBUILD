@@ -5,8 +5,8 @@
 _gitname=JRomManager
 pkgbase=jrommanager-bin
 pkgname=jrommanager-bin
-pkgver=2.1.0
-pkgrel=7
+pkgver=2.2.0
+pkgrel=1
 pkgdesc='A Rom Manager entirely written in Java and released under GPL v2'
 arch=('any')
 license=('GPL-2')
@@ -33,8 +33,7 @@ package() {
 }
 
 # makepkg -g >> PKGBUILD
-
-md5sums=('799efe09c7f03a53ff7449dca50e4c71'
+md5sums=('4bf660e743b26086d78cd436c36b65b0'
          'feb8697e8eea362a9b6ba5947975dc4c'
          'aa359e0e6eedc95e172355b83b2c6235'
          '33c717e50d5db9ca115bf063313bf1df')
