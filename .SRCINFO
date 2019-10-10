@@ -1,0 +1,17 @@
+pkgbase = ofmcgui
+	pkgdesc = A graphical interface for the Open-Source Fixed-Point Model-Checker (OFMC)
+	pkgver = r7.efd86ae
+	pkgrel = 1
+	url = https://github.com/ulfur88/OFMCGUI
+	arch = x86_64
+	license = unknown
+	depends = java-runtime>=12
+	depends = java-openjfx>=12
+	depends = ofmc>=2018
+	source = git+https://github.com/ulfur88/OFMCGUI.git#commit=efd86ae
+	source = ofmcgui.sh
+	md5sums = SKIP
+	md5sums = 424d976c1a21b6bf18ce7d18aad5b1d7
+
+pkgname = ofmcgui
+
