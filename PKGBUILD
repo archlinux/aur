@@ -2,7 +2,7 @@
 
 pkgname=nbfc-git
 pkgver=1.6.3.r19.g175d92a
-pkgrel=1
+pkgrel=2
 pkgdesc='Cross-platform fan control service for notebooks (Development version)'
 arch=('i686' 'x86_64')
 url='https://github.com/hirschmann/nbfc'
@@ -10,9 +10,8 @@ conflicts=('nbfc-beta' 'nbfc')
 license=("GPL3")
 install=${pkgname}.install
 depends=("mono")
-makedepends=('ncurses<=6.0-4')
+makedepends=('ncurses<=6.0-4' 'nuget' 'git')
 provides=('nbfc' 'ec-probe')
-makedepends=('nuget')
 source=("${pkgname}::git+https://github.com/hirschmann/nbfc.git"
         "nbfc"
         "ec-probe")  
