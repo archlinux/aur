@@ -1,8 +1,27 @@
 pkgbase = mindustry
-	pkgdesc = Deprecated, see mindustry-bin
 	pkgver = 96
-	pkgrel = 2
+	pkgrel = 3
+	url = https://github.com/Anuken/Mindustry
 	arch = any
+	license = GPL3
+	makedepends = libicns
+	depends = java-environment=8
+	depends = sh
+	depends = hicolor-icon-theme
+	source = mindustry-96.tar.gz::https://github.com/Anuken/Mindustry/archive/v96.tar.gz
+	source = mindustry.desktop
+	source = mindustry.sh
+	source = mindustry-server.desktop
+	source = mindustry-server.sh
+	sha256sums = be34a38aac8c732636ae5132747c93992b6e2ba4191d4ad8d206e59554fa22aa
+	sha256sums = e5fd49ed3456c53e91b834cb388956e3f9ded4e2c880352d36cf9c2246ca0f0b
+	sha256sums = 938f5f9f636379402ba0bb9a53345de499f4f3fd50f232b31605129dcf4ea6c9
+	sha256sums = 053030932334f40145e927f6c7e9ebf01bd28ddd1e7b9fba6234b51cc83ad241
+	sha256sums = 679727847ba70773cee4f902114345e095b27f425aa00c4d3860d247705ed1f0
 
 pkgname = mindustry
+	pkgdesc = A sandbox tower defense game written in Java
+
+pkgname = mindustry-server
+	pkgdesc = Server of a sandbox tower defense game written in Java
 
