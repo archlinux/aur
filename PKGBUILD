@@ -4,9 +4,9 @@
 pkgname=ruby-neovim
 _gemname=${pkgname#ruby-}
 pkgver=0.8.1
-pkgrel=1
-pkgdesc='Ruby client for Neovim'
-url='https://github.com/alexgenco/neovim-ruby'
+pkgrel=2
+pkgdesc='Ruby bindings for Neovim'
+url='https://github.com/neovim/neovim-ruby'
 arch=('any')
 license=('MIT')
 depends=('neovim' 'ruby' 'ruby-msgpack>=1.1' 'ruby-multi_json')
