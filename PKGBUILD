@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
 pkgname=gnome-network-displays
 pkgver=0.90.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Miracast implementation for GNOME"
 arch=('any')
 url="https://github.com/benzea/gnome-network-displays"
