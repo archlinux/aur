@@ -6,7 +6,7 @@ pkgbase=linux-rc
 pkgrel=1
 _srcname=linux-5.3
 _major=5.3
-_minor=4
+_minor=5
 _minorc=$((_minor+1))
 _rcver=1
 _rcpatch=patch-${_major}.${_minorc}-rc${_rcver}
@@ -31,8 +31,8 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('1b11c86d3e6024688b2c8191954b3a263c54ce15b79f008d7192a6ce178cc3c0'
-            '19541dbb3e0e6ca3acb4e7d6bb95a0af44a9607d2cb3e50c2d3f8894d95b246e'
+sha256sums=('1f0130d7f4985e0066ef9403bbd6e2e1c9d440c58155aeb21024a75eef3b8bfa'
+            '80ed8c5cfc298fdbccbd69f8b919c12b11d8b54d8c20f08fc8c3b1840d1e53f0'
             'SKIP'
             '7d09d1d79a4ecb82502b4483cf989ede3f643e05613de45e12563dfe85d80423'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
@@ -84,7 +84,6 @@ build() {
 
 _package() {
   pkgdesc="The release candidate kernel and modules"
-  [[ $pkgbase = linux ]] && groups=(base)
   depends=(coreutils kmod initramfs)
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
@@ -160,9 +159,6 @@ _package-headers() {
 
   # add xfs and shmem for aufs building
   mkdir -p "$builddir"/{fs/xfs,mm}
-
-  # ???
-  mkdir "$builddir/.tmp_versions"
 
   msg2 "Installing headers..."
   cp -t "$builddir" -a include
