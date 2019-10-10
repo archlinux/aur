@@ -8,12 +8,13 @@ pkgbase = squawk
 	license = GPL3
 	makedepends = cmake>=3.3
 	makedepends = imagemagick
+	makedepends = qt5-tools
 	depends = hicolor-icon-theme
 	depends = desktop-file-utils
 	depends = lmdb
 	depends = qxmpp>=1.0.0
 	source = squawk-0.0.5.tar.gz
-	sha1sums = 461aee46378c62c3f316e648d8c765794ef62f33
+	sha256sums = 12bfc517574387257a82143d8970ec0d8d434ccd32f7ac400355ed5fa18192ab
 
 pkgname = squawk
 

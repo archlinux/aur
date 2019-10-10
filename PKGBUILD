@@ -7,13 +7,13 @@ arch=('i686' 'x86_64')
 url="https://git.macaw.me/blue/squawk"
 license=('GPL3')
 depends=('hicolor-icon-theme' 'desktop-file-utils' 'lmdb' 'qxmpp>=1.0.0')
-makedepends=('cmake>=3.3' 'imagemagick')
+makedepends=('cmake>=3.3' 'imagemagick' 'qt5-tools')
 source=("$pkgname-$pkgver.tar.gz")
-sha1sums=('461aee46378c62c3f316e648d8c765794ef62f33')
+sha256sums=('12bfc517574387257a82143d8970ec0d8d434ccd32f7ac400355ed5fa18192ab')
 build() {
         cd "$srcdir/squawk"
-        cmake . -D SYSTEM_QXMPP:BOOL=True -D CMAKE_INSTALL_PREFIX=/usr -G Ninja
-        cmake --build .
+        cmake . -D CMAKE_INSTALL_PREFIX=/usr 
+        cmake --build . -j $nproc
 }
 package() {
         cd "$srcdir/squawk"
