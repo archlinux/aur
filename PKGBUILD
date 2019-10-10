@@ -6,13 +6,13 @@
 pkgname=({freedm,freedoom1,freedoom2}-git)
 pkgbase=freedoom-git
 pkgdesc="Free game data files for Doom gaming engines"
-pkgver=0.11.r467.gcec9c625
+pkgver=0.12.0.r2.ga9afb194
 pkgrel=1
 epoch=1
 arch=('any')
 url="http://freedoom.github.io/"
 license=('BSD')
-makedepends=('git' 'python-pillow' 'deutex-git' 'python' 'python-virtualenv' 'asciidoc')
+makedepends=('asciidoc' 'deutex' 'python' 'python-pillow')
 source=(git+https://github.com/freedoom/freedoom.git)
 sha256sums=(SKIP)
 
@@ -30,22 +30,19 @@ package_freedm-git() {
   provides=('freedoom' 'freedm')
 
   cd "$srcdir/freedoom"
-  make DESTDIR="$pkgdir" prefix=/usr install-freedm
-  install -Dm644 COPYING.adoc "$pkgdir"/usr/share/licenses/freedm/COPYING
+  make prefix=/usr DESTDIR="$pkgdir" install-freedm
 }
 
 package_freedoom1-git() {
   provides=('freedoom' 'freedoom1')
 
   cd "$srcdir/freedoom"
-  make DESTDIR="$pkgdir" prefix=/usr install-freedoom1
-  install -Dm644 COPYING.adoc "$pkgdir"/usr/share/licenses/freedoom1/COPYING
+  make prefix=/usr DESTDIR="$pkgdir" install-freedoom1
 }
 
 package_freedoom2-git() {
   provides=('freedoom' 'freedoom2')
 
   cd "$srcdir/freedoom"
-  make DESTDIR="$pkgdir" prefix=/usr install-freedoom2
-  install -Dm644 COPYING.adoc "$pkgdir"/usr/share/licenses/freedoom2/COPYING
+  make prefix=/usr DESTDIR="$pkgdir" install-freedoom2
 }
