@@ -1,6 +1,6 @@
 pkgbase = dolphin-meld
 	pkgdesc = KDE File Manager, using Meld rather than Kompare
-	pkgver = 19.08.1
+	pkgver = 19.08.2
 	pkgrel = 1
 	url = https://kde.org/applications/system/dolphin/
 	arch = x86_64
@@ -22,14 +22,14 @@ pkgbase = dolphin-meld
 	optdepends = meld: file comparisons
 	optdepends = konsole: terminal panel
 	optdepends = purpose: share context menu
-	provides = dolphin=19.08.1
-	conflicts = dolphin=19.08.1
-	source = https://download.kde.org/stable/applications/19.08.1/src/dolphin-19.08.1.tar.xz
-	source = https://download.kde.org/stable/applications/19.08.1/src/dolphin-19.08.1.tar.xz.sig
+	provides = dolphin=19.08.2
+	conflicts = dolphin=19.08.2
+	source = https://download.kde.org/stable/applications/19.08.2/src/dolphin-19.08.2.tar.xz
+	source = https://download.kde.org/stable/applications/19.08.2/src/dolphin-19.08.2.tar.xz.sig
 	source = dolphin-meld.patch
 	validpgpkeys = CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7
 	validpgpkeys = F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87
-	sha256sums = a612dac0cf50301af46ad5fa29aad630bb33a8a4bd416a4d6023b65fb00f25cc
+	sha256sums = 0c56515737fc0f96020b3c157a93023095d1a1e23637e7670e068c6c286bbc3b
 	sha256sums = SKIP
 	sha256sums = 13107b72348bd7eea5665196dc4a37c21bff131bbc8457efe77ef8c3e9450c7b
 
