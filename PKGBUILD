@@ -1,6 +1,6 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=ttf-iosevka-etoile
-pkgver=2.3.1
+pkgver=2.3.2
 pkgrel=1
 pkgdesc='Experimental, quasi-proportional, slab-serif family of Iosevka.'
 arch=('any')
@@ -10,7 +10,7 @@ depends=('fontconfig' 'xorg-font-utils')
 conflicts=('ttf-iosevka-pack')
 source=("https://github.com/be5invis/Iosevka/releases/download/v${pkgver}/experimental-iosevka-etoile-${pkgver}.zip"
         "${pkgname}-${pkgver}-${pkgrel}-LICENSE.md::https://raw.githubusercontent.com/be5invis/Iosevka/master/LICENSE.md")
-sha256sums=('7661fc628cf6a451ce9173463d6cbe505c1594fb94ae661bfd5094e9d96c43a7'
+sha256sums=('8023e2ae6ec6d468a0e168b2403ec983eac60526910e1577e9756f801e2aa303'
             'ecfd74a1d6749bf509cee122870da0186bccfae446e3f6bc5faff253577ab000')
 
 package() {
