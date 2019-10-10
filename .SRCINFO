@@ -1,6 +1,6 @@
 pkgbase = telepresence
 	pkgdesc = Local development against a remote Kubernetes or OpenShift cluster
-	pkgver = 0.101
+	pkgver = 0.102
 	pkgrel = 1
 	url = https://github.com/telepresenceio/telepresence
 	arch = x86_64
@@ -13,8 +13,8 @@ pkgbase = telepresence
 	depends = torsocks
 	depends = python
 	depends = python-setuptools
-	source = telepresence-0.101::https://github.com/telepresenceio/telepresence/archive/0.101.tar.gz
-	sha256sums = 5a2962f46e82fafcbe9e665b6e0f6212ca750aafabdfbcb763e8f914b46ccc74
+	source = telepresence-0.102::https://github.com/telepresenceio/telepresence/archive/0.102.tar.gz
+	sha256sums = f5b5a7da8504dbfdcee9c25baaad3c9c06671a483918245391400e2ed20885e0
 
 pkgname = telepresence
 
