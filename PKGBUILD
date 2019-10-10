@@ -2,8 +2,8 @@
 pkgbase=python-photutils
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.7
-pkgrel=2
+pkgver=0.7.1
+pkgrel=1
 pkgdesc="Astropy Affiliated package for image photometry utilities"
 arch=('i686' 'x86_64')
 url="http://photutils.readthedocs.io/"
@@ -17,7 +17,7 @@ makedepends=('cython>=0.28'
              'graphviz')
 checkdepends=('python-pytest-astropy')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('c07cf28421ecda2c6f3a72cecb5033f8')
+md5sums=('493fb6157d8a076f0cc7620a845d8d3c')
 
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -59,6 +59,7 @@ package_python-photutils-doc() {
     pkgdesc="Documentation for Python Photutils module"
     cd ${srcdir}/${_pyname}-${pkgver}/docs/_build
 
+    install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" ../../LICENSE.rst
     install -d -m755 "${pkgdir}/usr/share/doc/${pkgbase}"
     cp -a html "${pkgdir}/usr/share/doc/${pkgbase}"
 }
