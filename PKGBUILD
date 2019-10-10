@@ -1,8 +1,8 @@
 ## Maintainer: AudioLinux  <audiolinux AT fastmail DOT fm>
 
 pkgname=hqplayer-network-audio-daemon
-_debpkgver=3.5.6-40
-pkgver=3.5.6
+_debpkgver=3.6.0-42
+pkgver=3.6.0
 pkgrel=1
 pkgdesc="Signalyst Network Audio Daemon"
 arch=('x86_64')
