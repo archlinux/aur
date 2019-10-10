@@ -6,8 +6,8 @@ pkgbase = mindustry-server-bin
 	arch = any
 	license = GPL3
 	depends = java-runtime=8
+	provides = mindustry-server
 	conflicts = mindustry-server
-	replaces = mindustry-server
 	noextract = mindustry-server-bin-96.jar
 	source = mindustry-server-bin-96.jar::https://github.com/Anuken/Mindustry/releases/download/v96/server-release.jar
 	source = mindustry-server-bin.sh

@@ -8,8 +8,7 @@ arch=("any")
 url="https://github.com/Anuken/Mindustry"
 license=("GPL3")
 depends=("java-runtime=8")
-# provides=(${_pkgname})
-replaces=(${_pkgname})
+provides=(${_pkgname})
 conflicts=(${_pkgname})
 source=("${pkgname}-${pkgver}.jar::https://github.com/Anuken/Mindustry/releases/download/v${pkgver}/server-release.jar"
         "${pkgname}.sh"
