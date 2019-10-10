@@ -1,0 +1,20 @@
+pkgbase = python-objection
+	pkgdesc = runtime mobile exploration
+	pkgver = 1.7.5
+	pkgrel = 1
+	url = https://github.com/sensepost/objection
+	arch = any
+	license = GPLv3
+	makedepends = python-setuptools
+	depends = python
+	depends = python-flask
+	depends = python-click
+	depends = python-frida
+	depends = python-frida-tools
+	depends = python-tabulate
+	depends = python-prompt_toolkit
+	source = https://github.com/sensepost/objection/archive/1.7.5.tar.gz
+	sha256sums = f3caee908f98e3ed2fe5c4e1555c2a85e371aadde8d273b033f5bcbd52617419
+
+pkgname = python-objection
+
