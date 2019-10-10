@@ -1,23 +1,41 @@
-# Maintainer: Marcin Mielniczuk <marmistrz@inboxalias.com>
+# Alpine Maintainer: Natanael Copa <ncopa@alpinelinux.org>
+# Maintainer: Clar Fon <them@lightdark.xyz>
 
-pkgname=abuild
-pkgver=3.2.0_rc1
+pkgname="abuild"
+pkgver=3.4.0
+_ver=${pkgver%_git*}
 pkgrel=1
-pkgdesc="Build script to build Alpine packages"
-arch=('i686' 'x86_64')
-url="https://alpinelinux.org"
-license=('GPL2')
-makedepends=('git')
-source=("git+https://git.alpinelinux.org/cgit/abuild#tag=v${pkgver}")
-sha1sums=("SKIP")
+pkgdesc="Script to build Alpine Packages"
+url="https://git.alpinelinux.org/cgit/abuild/"
+arch=("i686" "x86_64")
+license=("GPL2")
+makedepends=("zlib" "pkgconfig")
+depends=("glibc" "pax-utils" "openssl" "apk-tools" "attr" "tar" "pkgconf" "lzip" "curl"
+"bubblewrap" "gettext" "git")
+opt_depends=("perl: for cpan resolver"
+             "perl-libwww: for cpan resolver"
+             "perl-json: for cpan resolver"
+             "perl-module-build-tiny: for cpan resolver"
+             "perl-lwp-protocol-https: for cpan resolver"
+             "ruby: for gem resolver"
+             "ruby-augeas: for gem resolver")
+pkggroups="abuild"
+source=("https://dev.alpinelinux.org/archive/$pkgname/$pkgname-$_ver.tar.xz")
+sha512sums=("0ddf1cef2e79628a4de06015ba217432711ee76751ccc487fd3b1af9cae37ed1b8c5afdc0b916322472314ccee8a6d1c17ccb5b55f6eebfb54444199d2281d3e")
+
+prepare() {
+	cd "$srcdir/$pkgname-$_ver"
+	sed -i -e "/^CHOST=/s/=.*/=$CARCH/" abuild.conf
+}
+
 build() {
-    cd "${srcdir}/${pkgname}"
-    sed -i "s_/bin/ash_/bin/bash_g" abuild.in
-    make
+	cd "$srcdir/$pkgname-$_ver"
+	make VERSION="$pkgver-r$pkgrel"
 }
 
 package() {
-    cd "${srcdir}/${pkgname}"
-    make install DESTDIR="$pkgdir"
+	cd "$srcdir/$pkgname-$_ver"
+	make install VERSION="$pkgver-r$pkgrel" DESTDIR="$pkgdir"
+	install -m 644 abuild.conf "$pkgdir"/etc/abuild.conf
+	install -d -m 775 -o nobody -g nobody "$pkgdir"/var/cache/distfiles
 }
-

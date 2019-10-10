@@ -1,14 +1,27 @@
 pkgbase = abuild
-	pkgdesc = Build script to build Alpine packages
-	pkgver = 3.2.0_rc1
+	pkgdesc = Script to build Alpine Packages
+	pkgver = 3.4.0
 	pkgrel = 1
-	url = https://alpinelinux.org
+	url = https://git.alpinelinux.org/cgit/abuild/
 	arch = i686
 	arch = x86_64
 	license = GPL2
-	makedepends = git
-	source = git+https://git.alpinelinux.org/cgit/abuild#tag=v3.2.0_rc1
-	sha1sums = SKIP
+	makedepends = zlib
+	makedepends = pkgconfig
+	depends = glibc
+	depends = pax-utils
+	depends = openssl
+	depends = apk-tools
+	depends = attr
+	depends = tar
+	depends = pkgconf
+	depends = lzip
+	depends = curl
+	depends = bubblewrap
+	depends = gettext
+	depends = git
+	source = https://dev.alpinelinux.org/archive/abuild/abuild-3.4.0.tar.xz
+	sha512sums = 0ddf1cef2e79628a4de06015ba217432711ee76751ccc487fd3b1af9cae37ed1b8c5afdc0b916322472314ccee8a6d1c17ccb5b55f6eebfb54444199d2281d3e
 
 pkgname = abuild
 
