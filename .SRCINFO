@@ -1,0 +1,19 @@
+pkgbase = ipwndfu-linushenze-git
+	pkgdesc = Open-source jailbreaking tool for many iOS devices
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/LinusHenze/ipwndfu_public
+	arch = x86_64
+	license = GPL3
+	makedepends = python2
+	source = git+https://github.com/LinusHenze/ipwndfu_public.git
+	source = ipwndfu.sh
+	source = ipwnrecovery.sh
+	source = ibootpatcher.sh
+	sha512sums = SKIP
+	sha512sums = fc3cadfd5b8b04cb411f3d30e86f7db731a0521ad114dabacbcc0e1d883145b93e39645ae3e50db5c1ffeb773d71f4c41b6fa3098317ca3dc3b0be03e2049ef0
+	sha512sums = 9589ceb40fcf43f7922d20500c6851e5e59c91c7ae8cea7d45b4acbf8368f9397666da3394ecac3f9ad955889a820fd3ce6911a646288ee936cf6b94c13a188d
+	sha512sums = 2eedf2828955f56ed7534e8fe24b47160fc2ea5a62dffbda1c4180859b1689b074a740deea1d8ea62d05ba8043ccc5e4bd9d2bd772882cfb056e0e52dd54980a
+
+pkgname = ipwndfu-linushenze-git
+
