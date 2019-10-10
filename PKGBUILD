@@ -1,30 +1,28 @@
-# Maintainer: mdraw.gh at gmail dot com
+# Contributor: mdraw.gh at gmail dot com
+# Maintainer: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
-pkgname=('python-httptools')
-pkgver='0.0.11'
+_name=httptools
+_sha256sum=e00cbd7ba01ff748e494248183abc6e153f49181169d8a3d41bb49132ca01dfc
+
+pkgname='python-httptools'
+pkgver='0.0.13'
 pkgrel=1
-pkgdesc='Fast HTTP parser'
+pkgdesc='A collection of framework independent HTTP protocol utils.'
 arch=('i686' 'x86_64')
 url='https://github.com/MagicStack/httptools'
 license=('MIT')
-makedepends=('python-setuptools' 'cython' 'http-parser')
-source=("https://github.com/MagicStack/httptools/archive/v${pkgver}.tar.gz"
-        '0001-setup.py-Use-Cython-directly.patch'
-        '0002-use-system-http_parser.patch')
-sha256sums=('23a03747de13c060deb52f97ee0f62b21d5cf8c772fe73d5652978ea6130b2df'
-            'f32dd7a31a858ec52c4ed7559a7dc358fb03702160bf388c7dbd4ad5802524d4'
-            '42e9d6041eb5c5fece89596e9ca2b5dc718aceda5892eb3144d0bd849633b10a')
+depends=('python')
+makedepends=('python-setuptools')
+source=(
+  "https://files.pythonhosted.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz"
+)
+sha256sums=(
+  "${_sha256sum}"
+)
 
-prepare() {
-    cd "${srcdir}/httptools-${pkgver}"
-    patch -p1 -i "${srcdir}/0001-setup.py-Use-Cython-directly.patch"
-    patch -p1 -i "${srcdir}/0002-use-system-http_parser.patch"
-    sed -e "/include_package_data=True/d" -i setup.py
-}
-
-package_python-httptools() {
-    depends=('python' 'http-parser')
-    cd "${srcdir}/httptools-${pkgver}"
-    python setup.py install --root="${pkgdir}" --optimize=1
-    install -Dm0644 'LICENSE' "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+package() {
+  cd "${srcdir}/httptools-${pkgver}"
+  python setup.py install --root="${pkgdir}" --optimize=1
+  install -Dm0644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -Dm0644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
