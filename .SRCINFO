@@ -13,6 +13,7 @@ pkgbase = python-objection
 	depends = python-frida-tools
 	depends = python-tabulate
 	depends = python-prompt_toolkit
+	depends = python-delegator
 	source = https://github.com/sensepost/objection/archive/1.7.5.tar.gz
 	sha256sums = f3caee908f98e3ed2fe5c4e1555c2a85e371aadde8d273b033f5bcbd52617419
 
