@@ -1,7 +1,7 @@
 pkgbase = theshell-blueprint
 	pkgdesc = Desktop Shell that gets out of your way
 	pkgver = 8.1b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vicr123/theshell
 	arch = x86_64
 	license = GPL3
@@ -22,6 +22,7 @@ pkgbase = theshell-blueprint
 	depends = kscreen
 	depends = ts-bt
 	depends = ts-bugreport
+	depends = pulseaudio-qt
 	optdepends = alsa-utils: for volume controls
 	conflicts = ts-startsession
 	replaces = ts-startsession

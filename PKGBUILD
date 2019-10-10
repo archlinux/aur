@@ -2,7 +2,7 @@
 # Maintainer: Victor Tran <vicr12345 at gmail dot com>
 pkgname=theshell-blueprint
 pkgver=8.1b
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop Shell that gets out of your way"
 arch=("x86_64")
 url="https://github.com/vicr123/theshell"
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('kwidgetsaddons' 'xdg-utils' 'wmctrl' 'kwin' 
 'networkmanager' 'xorg-xbacklight' 'redshift' 
 'libcups' 'qt5-base' 'ts-qtplatform' 'qt5-charts'
-'qt5-location' 'kscreen' 'ts-bt' 'ts-bugreport')
+'qt5-location' 'kscreen' 'ts-bt' 'ts-bugreport' 'pulseaudio-qt')
 optdepends=('alsa-utils: for volume controls')
 makedepends=('git' 'qt5-tools')
 conflicts=('ts-startsession')
