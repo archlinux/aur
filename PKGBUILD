@@ -1,6 +1,5 @@
-# Maintainer: Felix Seidel <felix@seidel.me>
-# Maintainer: Claudia Pellegrino <aur@cpellegrino.de>
-# Contributor: Liu Yuxuan <betsu@yahoo.com>
+# Maintainer: slurpee <aur@lylat.io>
+# Contributors: Felix Seidel, Claudia Pellegrino, Liu Yuxuan
 
 pkgname=1password-cli
 pkgver=0.6.2
