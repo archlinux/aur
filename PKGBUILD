@@ -6,15 +6,15 @@ pkgdesc="Miracast implementation for GNOME"
 arch=('any')
 url="https://github.com/benzea/gnome-network-displays"
 license=('GPL3')
-depends=('appstream-glib' 'desktop-file-utils' 'faac' 'gst-plugins-ugly' 'gst-rtsp-server' 'libpulse' 'networkmanager' 'python-gobject' 'x264')
-makedepends=('meson')
+depends=('gtk3' 'faac' 'gst-plugins-ugly' 'gst-rtsp-server' 'libpulse' 'libnm' 'python-gobject' 'x264')
+makedepends=('meson' 'appstream-glib')
 replaces=('gnome-screencast')
-source=("https://github.com/benzea/$pkgname/archive/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/benzea/$pkgname/archive/v$pkgver.tar.gz")
 sha256sums=('d0fe4d6bf76761f1ea5eb9598fb168ba6e0da3616fa7027b9cd2b86cdab97459')
 
 build() {
 	cd "$pkgname-$pkgver"
-	meson . build --prefix /usr
+	meson --prefix /usr --buildtype=plain . build
 	ninja -C build
 }
 
