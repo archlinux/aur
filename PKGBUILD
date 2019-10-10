@@ -20,7 +20,8 @@ pkgname='bios-lenovo-thinkserver-ts140'
 #pkgver='20180315.CWA'
 #pkgver='20180711.CZA'
 #pkgver='20181016.D0A'
-pkgver='20190329.D3A'
+#pkgver='20190329.D3A'
+pkgver='20190703.D7A'
 pkgrel='1'
 pkgdesc='BIOS update for Lenovo ThinkServer ts140 ts440' # ts240 ts540 The website claims less models than the enclosed readme
 arch=('i686' 'x86_64')
@@ -44,9 +45,9 @@ _ver="${_ver,,}"
 source=("https://download.lenovo.com/pccbbs/thinkservers/bios_me_ts140-240-440-540_fbkt${_ver}_bioslinux32.txt")
 source_i686=("https://download.lenovo.com/pccbbs/thinkservers/bios_me_ts140-240-440-540_fbkt${_ver}_bioslinux32.tgz")
 source_x86_64=("https://download.lenovo.com/pccbbs/thinkservers/bios_me_ts140-240-440-540_fbkt${_ver}_bioslinux64.tgz")
-sha256sums=('8f73f884948af67f4011002663140a3e5796a9996ae15dd8006b555eed909e0c')
-sha256sums_i686=('afa03c3d009f37c75c657408b4d2a09e6bf0a843d5008106aa6f646f8a65307c')
-sha256sums_x86_64=('9d4208b3a70ba1c4e009e61c9ede3b591b746984d5a047a67fd17cbf2a3c8dba')
+sha256sums=('f5202cd5f1ab92bd7c37f6550b42b9d4510320a46fd9168820be2e8d8e2211db')
+sha256sums_i686=('6687dc194fb69232df647cc08ff9188b137e2a209b5fb9784e1ce92862f6ddf3')
+sha256sums_x86_64=('0dc1174dd13d89f425ee27a19a7c062e05d09f950acce67bfd3b0daa9ef1ff5e')
 
 declare -gA _srcdir=(['i686']='BIOSLinux32' ['x86_64']='BIOSLinux64')
 declare -gA _exe=(['i686']='afulnx_26_32' ['x86_64']='afulnx_26_64')
