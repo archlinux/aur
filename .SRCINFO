@@ -1,13 +1,13 @@
 pkgbase = terraformer
 	pkgdesc = CLI tool to generate terraform files from existing infrastructure (reverse Terraform)
-	pkgver = 0.8.1
+	pkgver = 0.8.2
 	pkgrel = 1
 	url = https://github.com/GoogleCloudPlatform/terraformer
 	arch = x86_64
 	license = Apache
 	provides = terraformer
-	source = https://github.com/GoogleCloudPlatform/terraformer/releases/download/0.8.1/terraformer-linux-amd64
-	sha256sums = 06059f9434a26b9b8a07bdb94bb5cf3ce903074ac536ac12a02d2d2ffa39ad24
+	source = https://github.com/GoogleCloudPlatform/terraformer/releases/download/0.8.2/terraformer-linux-amd64
+	sha256sums = dcc39afde53bdffe6a60ec0c49d9fb1d8ed6947d863e18a5198dfeba25358ff4
 
 pkgname = terraformer
 
