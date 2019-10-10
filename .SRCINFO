@@ -9,7 +9,7 @@ pkgbase = libconfini
 	conflicts = libconfini-git
 	conflicts = libconfini-bin
 	source = https://github.com/madmurphy/libconfini/archive/1.10.3.tar.gz
-	sha256sums = 3239648e630422c1b4ff460a8e775c58ecc565d7e05c18a1baa08b5ab20990e3
+	sha256sums = 74703f7ba97546a5a06c3a520cca15c24523c17fa407d0b52a758660e7583553
 
 pkgname = libconfini
 
