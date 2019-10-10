@@ -2,7 +2,7 @@
 pkgname=linuxkit-git
 _pkgname=linuxkit
 pkgver=0.7.r190.gafff608c4
-pkgrel=1
+pkgrel=2
 pkgdesc="A toolkit for building secure, portable and lean operating systems for containers - git version"
 arch=('x86_64')
 url="https://github.com/linuxkit/linuxkit"
