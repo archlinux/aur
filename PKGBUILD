@@ -9,7 +9,7 @@
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-rt       # Build kernel with a different name
 _pkgver=5.2.19
-_rtpatchver=rt10
+_rtpatchver=rt11
 pkgver="${_pkgver}_${_rtpatchver}"
 pkgrel=1
 arch=('x86_64')
@@ -40,7 +40,7 @@ validpgpkeys=(
 )
 sha256sums=('de98e4c28e08cd992c3aadc32450b3fa738b6101c509093192bb344f4f41b18a'
             'SKIP'
-            'b4c46ac16b58f84ad458571e5da34389b0b32ab6e1f023f7157428115a937b5d'
+            '0a5d1cdc545891d7d0baa52ef9d92f45dcf5c9d216fae61eae128b328f9559ca'
             'SKIP'
             'c9607aa2a69f6a1ef74ecf66f45215fcb83054f1d691bb9ace510931f6e7063e'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
