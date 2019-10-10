@@ -6,9 +6,6 @@ pkgdesc='Instant Remote Support and Remote Desktop'
 arch=('x86_64')
 url='https://wayk.devolutions.net'
 license=('non-free')
-#options=()
-#provides=()
-#conflicts=()
 install=${pkgname}.install
 depends=('gtk3' 'libappindicator3' 'libxext' 'libxcursor' 'libxrandr' 'libxfixes' 'libxtst' 'libxinerama' 'glibc' 'cairo' 'glib2' 'pango' 'libx11' 'libxdamage')
 optdepends=('libnotify')
@@ -16,7 +13,7 @@ source=("https://cdn.devolutions.net/download/Linux/Wayk/${pkgver}/wayk-now_${pk
 sha256sums=('2f8114ff98d290805a2ca0ade23ec3a2dcb41516732af52377a6afaceb690270')
 
 prepare() {
-    tar -xf data.tar.xz -C ${srcdir}
+    tar -xf data.tar.xz -C "${srcdir}"
 }
 
 package() {
