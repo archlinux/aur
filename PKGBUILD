@@ -17,7 +17,7 @@ depends=(
         'zlib' 'vapoursynth' 'sndio' 'openal' 'vulkan-icd-loader' 'shaderc'
         
     # AUR:
-        'mujs' 'rsound' 'crossc'
+        'mujs' 'rsound' 'spirv-cross'
 )
 makedepends=('git' 'mesa' 'python-docutils' 'ladspa' 'vulkan-headers'
              'wayland-protocols')
@@ -97,6 +97,7 @@ build() {
         --disable-audiounit \
         --disable-wasapi \
         --disable-cocoa \
+		--enable-spirv-cross \
         --enable-drm \
         --enable-drmprime \
         --enable-gbm \
