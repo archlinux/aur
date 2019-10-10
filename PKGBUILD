@@ -8,7 +8,7 @@ url='https://github.com/tpm2-software/tpm2-totp'
 license=('BSD')
 depends=('qrencode' 'tpm2-tss')
 makedepends=('git' 'autoconf-archive' 'doxygen' 'pandoc' 'plymouth')
-checkdepends=('ibm-sw-tpm2' 'iproute2' 'oath-toolkit' 'procps-ng' 'psmisc' 'tpm2-tools')
+checkdepends=('ibm-sw-tpm2' 'iproute2' 'oath-toolkit' 'procps-ng' 'tpm2-tools')
 optdepends=('initramfs: initramfs hooks to display the TOTP during boot'
             'plymouth: display the TOTP during boot using plymouth messages')
 provides=("${pkgname%-git}")

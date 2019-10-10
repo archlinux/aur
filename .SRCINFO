@@ -9,7 +9,6 @@ pkgbase = tpm2-totp-git
 	checkdepends = iproute2
 	checkdepends = oath-toolkit
 	checkdepends = procps-ng
-	checkdepends = psmisc
 	checkdepends = tpm2-tools
 	makedepends = git
 	makedepends = autoconf-archive
