@@ -2,7 +2,7 @@
 # Maintainer: Eric Schulte <eschulte@grammatech.com>
 _srcname=gtirb-pprinter
 pkgname=gtirb-pprinter-git
-pkgver=v0.1.1.r65.g3529870
+pkgver=v0.1.1.r179.gdb92eca
 pkgrel=1
 pkgdesc="Pretty printer from GTIRB to assembly code"
 arch=('x86_64')
@@ -22,17 +22,7 @@ pkgver() {
 
 build() {
     cd "$_srcname/"
-    # Build Source
-    if [ -f /usr/include/boost/program_options.hpp ];then
-      FLAGS="-DCMAKE_INSTALL_PREFIX=/usr -DGTIRB_PPRINTER_USE_SYSTEM_BOOST=ON"
-    else
-      FLAGS="-DCMAKE_INSTALL_PREFIX=/usr"
-    fi
-    # CFLAGS="-march=x86-64 -mtune=generic -O2 -pipe -fno-plt"
-    # CXXFLAGS="-march=x86-64 -mtune=generic -O2 -pipe -fno-plt"
-    # LDFLAGS="-Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now"
-    # CFLAGS="" CXXFLAGS="" LDFLAGS="" cmake . -Bbuild $FLAGS
-    cmake ./ -Bbuild
+    cmake ./ -Bbuild -DCMAKE_INSTALL_PREFIX=/usr
     cmake --build build
     # Build Docs
     cmake doc/doxy/ -Bbuild-doc
