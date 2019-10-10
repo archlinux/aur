@@ -1,23 +1,23 @@
-# Maintainer: Hugo Posnic <hugo.posnic@gmail.com>
-# Author: Hugo Posnic <hugo.posnic@gmail.com>
-# Author: Nathan Seva <nathan.seva@outlook.fr>
+# Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
 pkgname=imeditor
-pkgver=0.7
+pkgver=0.9.3
 pkgrel=1
 pkgdesc="Simple & versatile image editor."
 arch=("any")
-url="https://github.com/ImEditor/ImEditor"
-license=("GPL")
-depends=("python" "python-setuptools" "python-pillow" "gtk3")
-source=("$url/archive/$pkgver.tar.gz")
-md5sums=("ec01586f616e4db3bc84d5e0d8756fab")
+url="https://imeditor.github.io"
+license=('GPL3')
+depends=('gtk3' 'python-pillow')
+makedepends=('meson' 'appstream-glib')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/ImEditor/ImEditor/archive/$pkgver.tar.gz")
+sha256sums=('50d82c3e01d5ca0ff36d0b989c8d38b42b9de62176960ac7acca0b117aa2602d')
 
 build() {
-    cd "$srcdir/ImEditor-$pkgver"
-    python setup.py build
+	cd "ImEditor-$pkgver"
+	meson --prefix /usr --buildtype=plain _build
+	ninja -C _build
 }
 
 package() {
-    cd "$srcdir/ImEditor-$pkgver"
-    python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
+	cd "ImEditor-$pkgver"
+	DESTDIR="$pkgdir" ninja -C _build install
 }
