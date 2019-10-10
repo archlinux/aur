@@ -1,7 +1,7 @@
 pkgbase = librewolf
 	pkgdesc = Community-maintained fork of Librefox: a privacy and security-focused browser
 	pkgver = 69.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://LibreWolf.gitlab.io
 	arch = x86_64
 	license = MPL

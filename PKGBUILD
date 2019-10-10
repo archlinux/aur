@@ -6,7 +6,7 @@
 pkgname=librewolf
 _pkgname=LibreWolf
 pkgver=69.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Community-maintained fork of Librefox: a privacy and security-focused browser"
 arch=(x86_64)
 license=(MPL GPL LGPL)
