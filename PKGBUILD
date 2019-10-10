@@ -1,7 +1,7 @@
 # Maintainer: whight
 
 pkgname="pulse-sms"
-pkgver="3.5.0"
+pkgver="4.0.1"
 pkgrel=1
 pkgdesc="A native desktop implementation of Pulse"
 arch=('x86_64')
@@ -13,14 +13,13 @@ source=(
     "https://github.com/klinker24/messenger-desktop/releases/download/v${pkgver}/pulse-sms-${pkgver}-amd64.deb"
 )
 sha512sums=(
-    "12d75137c126def626e671fe59b3401718b74d5b95dc655644913d7adc261682b226646e8f29d68ddbc4dfeb049606bcb5aa14c23ef65133305ee09057c9580a"
+    "5fd527aab54c438baf4c9a50a8aea8e4452e1c8d4584f6495e3066a7be7040bf05e908a9db36761b8cddb52cf874f2564d5da7f6e0faae35cc016b0a468787b0"
 )
 
 package() {
     tar -xf data.tar.xz -C "$pkgdir"
     mv "${pkgdir}/opt/Pulse SMS/" "${pkgdir}/opt/${pkgname}"
-    chmod 4755 "${pkgdir}/opt/${pkgname}/chrome-sandbox"
-    sed -i -e '4s/Pulse\ SMS/pulse-sms/' "${pkgdir}/usr/share/applications/pulse-sms.desktop"
+    sed -i -e '3s/Pulse\ SMS/pulse-sms/' "${pkgdir}/usr/share/applications/pulse-sms.desktop"
 
     # install alias in /usr/bin
     mkdir "${pkgdir}/usr/bin"
