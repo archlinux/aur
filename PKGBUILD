@@ -1,6 +1,6 @@
 # Maintainer: Bjoern Franke <bjo+aur@schafweide.org>
 pkgname=vorta
-pkgver=0.6.22
+pkgver=0.6.23
 pkgrel=1
 pkgdesc="A GUI for BorgBackup"
 arch=('any')
@@ -12,7 +12,7 @@ options=(!emptydirs)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/borgbase/$pkgname/archive/v$pkgver.zip"
         "vorta32.png"
         "vorta.desktop")
-sha256sums=('35664ebb35610560813dbefba316be8963f4614b8ab1ae48697704ecaa485246'
+sha256sums=('55a9eb7c79cb04b6df312879e7fb21de5d96f10100be47e947bbc2be8141bef6'
             'ff944c741a291f4d38cac97906376e4afa851f54f46d6de00f6fd92c4ad273f9'
             '6bd09fed495b0173c2fc0bdb42dde417c3ed3f2d4025927afa3826cf1205372d')
 
