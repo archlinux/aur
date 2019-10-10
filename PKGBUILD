@@ -4,13 +4,13 @@
 pkgname="abuild"
 pkgver=3.4.0
 _ver=${pkgver%_git*}
-pkgrel=1
+pkgrel=2
 pkgdesc="Script to build Alpine Packages"
 url="https://git.alpinelinux.org/cgit/abuild/"
 arch=("i686" "x86_64")
 license=("GPL2")
 makedepends=("zlib" "pkgconfig")
-depends=("glibc" "pax-utils" "openssl" "apk-tools" "attr" "tar" "pkgconf" "lzip" "curl"
+depends=("dash" "glibc" "pax-utils" "openssl" "apk-tools" "attr" "tar" "pkgconf" "lzip" "curl"
 "bubblewrap" "gettext" "git")
 opt_depends=("perl: for cpan resolver"
              "perl-libwww: for cpan resolver"
@@ -36,6 +36,9 @@ build() {
 package() {
 	cd "$srcdir/$pkgname-$_ver"
 	make install VERSION="$pkgver-r$pkgrel" DESTDIR="$pkgdir"
+	for bin in "$pkgdir"/usr/bin/*; do
+		sed -e "1s|#!/bin/ash|#!/bin/dash|" -i "$bin"
+	done
 	install -m 644 abuild.conf "$pkgdir"/etc/abuild.conf
 	install -d -m 775 -o nobody -g nobody "$pkgdir"/var/cache/distfiles
 }
