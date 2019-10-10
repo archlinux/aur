@@ -26,6 +26,8 @@ build() {
 package() {
   cd "$srcdir/objection-$pkgver/"
   python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  cd "${pkgdir}"
+  find . -name tests | xargs rm -rf
 }
 
 # vim:ts=2:sw=2:et:
