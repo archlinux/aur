@@ -1,12 +1,12 @@
 pkgbase = mockingbot
 	pkgdesc = A prototyping & collaboration tool.墨刀/modao/MockingBot
-	pkgver = 0.7.1
+	pkgver = 0.7.6
 	pkgrel = 1
 	url = https://mockingbot.com/downloads
 	arch = x86_64
 	license = custom
 	depends = gconf
-	source = https://s3.cn-north-1.amazonaws.com.cn/modao/linux/MockingBot_amd64.deb
+	source = https://cdn.modao.cc/linux/mockingbot_0.7.6_amd64.deb
 	sha512sums = SKIP
 
 pkgname = mockingbot
