@@ -1,13 +1,13 @@
 # Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
 pkgname=gnome-network-displays-git
-pkgver=0.90.1.0.g731239a
+pkgver=0.90.1.11.gfff0649
 pkgrel=1
 pkgdesc="Miracast implementation for GNOME"
 arch=('any')
 url="https://github.com/benzea/gnome-network-displays"
 license=('GPL3')
-depends=('appstream-glib' 'desktop-file-utils' 'faac' 'gst-plugins-ugly' 'gst-rtsp-server' 'libpulse' 'networkmanager' 'python-gobject' 'x264')
-makedepends=('git' 'meson')
+depends=('gtk3' 'faac' 'gst-plugins-ugly' 'gst-rtsp-server' 'libpulse' 'libnm' 'python-gobject' 'x264')
+makedepends=('git' 'meson' 'appstream-glib')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 replaces=('gnome-screencast')
@@ -21,7 +21,7 @@ pkgver() {
 
 build() {
 	cd "${pkgname%-git}"
-	meson . build --prefix /usr
+	meson --prefix /usr --buildtype=plain . build
 	ninja -C build
 }
 
