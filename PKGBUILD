@@ -1,27 +1,36 @@
-# Maintainer: Simon Tunnat <simon+aur@tunn.at>
-# Previous maintainer: anekos <anekos@snca.net>
-pkgname=growl-for-linux
-pkgver=0.8.2
-pkgrel=2
-pkgdesc="Growl for Linux"
+# Maintainer: David Stearns <David@DavidStearns.us>
+# Contributor: Simon Tunnat <simon+aur@tunn.at>
+# Contributor: anekos <anekos@snca.net>
+pkgname=growl-for-linux-git
+pkgver=r4.edac6d9
+pkgrel=1
+pkgdesc="Growl for Linux - git release"
 url="http://mattn.github.com/growl-for-linux/"
 arch=('i686' 'x86_64')
 license=('BSD')
 depends=('git' 'openssl' 'curl' 'gtk2' 'sqlite3' 'dbus-glib' 'desktop-file-utils')
 optdepends=('libnotify')
 makedepends=()
-conflicts=('growl-for-linux-git')
+conflicts=('growl-for-linux')
 replaces=()
 backup=()
 options=('!libtool')
 
 
-source=("$pkgname-$pkgver.tar.gz::https://github.com/mattn/growl-for-linux/archive/${pkgver}.tar.gz")
-md5sums=('4beb35833241e44406b5da4d7ba4463f')
-dirname="growl-for-linux-${pkgver}"
+source=("growl-for-linux-git::git+https://github.com/mattn/growl-for-linux.git#branch=master")
+md5sums=('SKIP')
+_dirname="growl-for-linux-git"
+
+pkgver() {
+	cd "$_pkgbase"
+	( set -o pipefail
+	  git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+	  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	)
+}
 
 build () {
-  cd "$srcdir/$dirname"
+  cd "$srcdir/$_dirname"
 
   export LDFLAGS="$LDFLAGS -lgmodule-2.0 -lgthread-2.0"
   export LIBNOTIFY_LIBS="-lnotify"
