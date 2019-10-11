@@ -1,4 +1,4 @@
-# Maintainer: johnnybash <jb at wachenzell dot org> PGP 0xd126e2910543de2d
+# Maintainer: johnnybash <jb at wachenzell dot org> PGP D126E2910543DE2D
 
 pkgname=ldapadmin
 pkgver=1.8.3
