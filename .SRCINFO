@@ -1,4 +1,4 @@
-pkgbase = mozc-neologd-ut+ut2
+pkgbase = fcitx-mozc-neologd-ut+ut2
 	pkgver = 2.23.2815.102.20190911.1
 	pkgrel = 1
 	url = https://osdn.net/users/utuhiro/pf/utuhiro/files/
