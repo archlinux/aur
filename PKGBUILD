@@ -3,21 +3,21 @@
 # Contributor: Christian Wygoda <accounts@wygoda.net>
 
 pkgname=ossim
-_pkgname=Islamorada
-pkgver=2.5.2
+_pkgname=Miami
+pkgver=2.9.2
 pkgrel=1
 pkgdesc="OSSIM is a powerful suite of geospatial libraries and applications used to process imagery, maps, terrain, and vector data."
 url="http://www.ossim.org"
 license=('LGPL')
 arch=('i686' 'x86_64')
 depends=('freetype2' 'gdal' 'libgeotiff' 'libjpeg' 'libtiff' 'openthreads' 'openjpeg'  'doxygen' 
-'hdf5-cpp-fortran' 'minizip' 'expat' 'ffmpeg' 'qt4' 'podofo' 'liblas' 'bzip2' 'freetype2' 'pdal')
+'hdf5-cpp-fortran' 'minizip' 'expat' 'ffmpeg' 'qt4' 'podofo' 'bzip2' 'freetype2' 'pdal')
 makedepends=('cmake')
 optdepends=( 'java-environment-common' 'openmpi' 'gpstk-bin' )
 source=(https://github.com/ossimlabs/ossim/archive/${_pkgname}-${pkgver}.tar.gz
         ossim.sh )
 install=ossim.install
-md5sums=('e84888cdf1d0d0435f790dfc65469e60'
+md5sums=('350d86418f43e977743e42a9d68cc2b5'
          'cb85c216a099b10f057cddeeae4a57fb')
 
 build() {
