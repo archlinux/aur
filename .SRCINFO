@@ -11,6 +11,7 @@ pkgbase = qtfm-git
 	depends = ffmpeg
 	depends = hicolor-icon-theme
 	depends = imagemagick
+	provides = qtfm
 	conflicts = qtfm
 	source = qtfm::git+https://github.com/rodlie/qtfm.git#branch=master
 	md5sums = SKIP
