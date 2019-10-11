@@ -1,7 +1,7 @@
 # Maintainer: Gaël PORTAY <gael.portay@gmail.com>
 
 pkgname=dosh
-pkgver=1.6
+pkgver=1.7
 pkgrel=1
 pkgdesc='Docker shell'
 arch=('any')
@@ -11,7 +11,7 @@ depends=('docker')
 makedepends=('asciidoctor')
 checkdepends=('shellcheck')
 source=("https://github.com/gportay/$pkgname/archive/$pkgver.tar.gz")
-md5sums=('33673c1fb370c691b75850cab671488e')
+md5sums=('58170baefc8008e7fe2dc6e3486ff27e')
 
 build() {
 	cd "$pkgname-$pkgver"
@@ -25,8 +25,6 @@ check() {
 
 package() {
 	cd "$pkgname-$pkgver"
-	install -D -m 755 dosh "$pkgdir/usr/bin/dosh"
-	install -D -m 644 dosh.1.gz "$pkgdir/usr/share/man/man1/dosh.1.gz"
-	install -D -m 644 bash-completion "$pkgdir/usr/share/bash-completion/completions/dosh"
+	make DESTDIR="$pkgdir" PREFIX="/usr" install
 	install -D -m 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
