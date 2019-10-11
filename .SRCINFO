@@ -1,0 +1,17 @@
+pkgbase = ruby-faraday-0.15
+	pkgdesc = HTTP/REST API client library.
+	pkgver = 0.15.4
+	pkgrel = 1
+	url = https://github.com/lostisland/faraday
+	arch = any
+	license = MIT
+	makedepends = ruby-rdoc
+	depends = ruby
+	depends = ruby-multipart-post
+	noextract = faraday-0.15.4.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/faraday-0.15.4.gem
+	sha512sums = e63bf8a84dfd6a945c7172fe48197f9b022f4d9d8aa63712e249475202eb8e6e070683fe8f0816b1f72d945f3280fed4104b4c6956e2853dc4d13e718be1f23b
+
+pkgname = ruby-faraday-0.15
+
