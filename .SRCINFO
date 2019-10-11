@@ -1,7 +1,7 @@
 pkgbase = linux-zen-vfio
-	pkgver = 5.2.14.zen1
+	pkgver = 5.3.5.zen1
 	pkgrel = 1
-	url = https://github.com/zen-kernel/zen-kernel/commits/v5.2.14-zen1
+	url = https://github.com/zen-kernel/zen-kernel/commits/v5.3.5-zen1
 	arch = x86_64
 	license = GPL2
 	makedepends = xmlto
@@ -15,7 +15,7 @@ pkgbase = linux-zen-vfio
 	makedepends = graphviz
 	makedepends = imagemagick
 	options = !strip
-	source = zen-kernel::git+https://github.com/zen-kernel/zen-kernel?signed#tag=v5.2.14-zen1
+	source = zen-kernel::git+https://github.com/zen-kernel/zen-kernel?signed#tag=v5.3.5-zen1
 	source = config
 	source = 60-linux.hook
 	source = 90-linux.hook
@@ -26,12 +26,12 @@ pkgbase = linux-zen-vfio
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = 8218F88849AAC522E94CF470A5E9288C4FA415FA
 	sha256sums = SKIP
-	sha256sums = 3650ffdd3e3f2b21c2abb28d1f9906e2b8a705ec283ad75ea04df34a6142cda9
+	sha256sums = 76c675d70259538e0a09bdf6ff9eab51eeced1569c8c38afb39fb4c959be2dd8
 	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
 	sha256sums = c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636
 	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
 	sha256sums = dbf4ac4b873ce6972e63b78d74ddba18f2701716163bb7f4b4fe5e909346a6e1
-	sha256sums = afb4c025d1180c1c8d9419910910f44755a4aefc711c2f0d4fee374d6b33e0d5
+	sha256sums = 3d711ad5eda51c42b20575a66683cd416fe7a02a3162d8a7107f2b2c82d328ce
 
 pkgname = linux-zen-vfio
 	pkgdesc = The Linux-zen-vfio kernel and modules

@@ -1,7 +1,7 @@
 # Maintainer: Shayne Hartford<shayneehartford@gmail.com>
 
 pkgbase=linux-zen-vfio
-_srcver=5.2.14-zen1
+_srcver=5.3.5-zen1
 pkgver=${_srcver//-/.}
 pkgrel=1
 arch=(x86_64)
@@ -28,12 +28,12 @@ validpgpkeys=(
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            '3650ffdd3e3f2b21c2abb28d1f9906e2b8a705ec283ad75ea04df34a6142cda9'
+            '76c675d70259538e0a09bdf6ff9eab51eeced1569c8c38afb39fb4c959be2dd8'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             'dbf4ac4b873ce6972e63b78d74ddba18f2701716163bb7f4b4fe5e909346a6e1'
-            'afb4c025d1180c1c8d9419910910f44755a4aefc711c2f0d4fee374d6b33e0d5')
+            '3d711ad5eda51c42b20575a66683cd416fe7a02a3162d8a7107f2b2c82d328ce')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-ARCH}
