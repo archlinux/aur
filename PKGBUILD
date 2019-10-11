@@ -12,7 +12,5 @@ source=("${url}/releases/download/${pkgver}/${_binary}")
 sha256sums=(dcc39afde53bdffe6a60ec0c49d9fb1d8ed6947d863e18a5198dfeba25358ff4)
 
 package() {
-	chmod +x "${_binary}"
-	mkdir -p "${pkgdir}/usr/bin"
-	mv "${_binary}" "${pkgdir}/usr/bin/terraformer"
+	install -D -m 755 "${_binary}" "${pkgdir}/usr/bin/terraformer"
 }
