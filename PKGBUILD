@@ -3,7 +3,7 @@
 _gemname=fastlane
 pkgname=$_gemname
 pkgver=2.133.0
-pkgrel=4
+pkgrel=5
 pkgdesc='The easiest way to automate beta deployments and releases for your iOS and Android apps'
 arch=(any)
 url='https://fastlane.tools'
@@ -30,7 +30,8 @@ depends=(
   # 'ruby-highline<2' 'ruby-highline>=1.7.2'
   ruby-highline-1
   'ruby-json<3'
-  'ruby-jwt>=2.1' 'ruby-jwt<2.2'
+  # 'ruby-jwt>=2.1' 'ruby-jwt<2.2'
+  ruby-jwt-2.1
   # 'ruby-mini_magick>=4.9.4' 'ruby-mini_magicl<5'
   ruby-mini_magick-4
   # 'ruby-multipart-post>=2' 'ruby-multipart-post<2.1'
