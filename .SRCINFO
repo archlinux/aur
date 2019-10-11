@@ -1,6 +1,6 @@
 pkgbase = chromium-no-extras
 	pkgdesc = Chromium without hangout services, widevine, pipewire, or chromedriver
-	pkgver = 77.0.3865.90
+	pkgver = 77.0.3865.120
 	pkgrel = 1
 	url = https://www.chromium.org/Home
 	install = chromium.install
@@ -52,9 +52,9 @@ pkgbase = chromium-no-extras
 	optdepends = kdialog: needed for file dialogs in KDE
 	optdepends = gnome-keyring: for storing passwords in GNOME keyring
 	optdepends = kwallet: for storing passwords in KWallet
-	provides = chromium=77.0.3865.90
+	provides = chromium=77.0.3865.120
 	conflicts = chromium
-	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-77.0.3865.90.tar.xz
+	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-77.0.3865.120.tar.xz
 	source = chromium-launcher-6.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v6.tar.gz
 	source = include-memory-in-one_euro_filter.h.patch
 	source = link-against-harfbuzz-subset.patch
@@ -64,7 +64,7 @@ pkgbase = chromium-no-extras
 	source = chromium-system-zlib.patch
 	source = chromium-widevine.patch
 	source = chromium-skia-harmony.patch
-	sha256sums = 004cfdb1df74847bea8659bcaf8e039d51fe1101d42b6cf1c6cc346073fdefc3
+	sha256sums = d792f9b09b1dcfd64e68f47a611c540dd1383dd9abd78ca1e06b2a7e2ff06af8
 	sha256sums = 04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1
 	sha256sums = 33a5bcd1df2cc7aa7467fa882790ef143a4497d2b704c9e1ea86c8ede90c2d90
 	sha256sums = ab986e4b723dfcedab1bc8dcada07526facae28a8a7ff3345f658532c1d99987
