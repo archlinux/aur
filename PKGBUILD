@@ -1,8 +1,9 @@
-# Maintainer: Randy Ramos <rramos1295 \at\ gmail \dot\ com>
+# Maintainer: Logan Magee <mageelog@gmail.com>
+# Contributor: Randy Ramos <rramos1295@gmail.com>
 
 pkgname='responder'
-pkgver=2.3.3.9
-pkgrel=2
+pkgver=2.3.4.0
+pkgrel=1
 pkgdesc='A LLMNR, NBT-NS and MDNS poisoner, with built-in HTTP/SMB/MSSQL/FTP/LDAP rogue authentication server supporting NTLMv1/NTLMv2/LMv2, Extended Security NTLMSSP and Basic HTTP authentication'
 arch=('any')
 depends=('python2')
@@ -12,7 +13,7 @@ license=('GPL3')
 source=("https://github.com/lgandx/$pkgname/archive/v$pkgver.tar.gz"
 	'responder.sh'
 	'responder.patch')
-sha256sums=('fd9412211d8680740f02bece9e1ce05d518208fe96caba262330fe7c8756a08c'
+sha256sums=('0956736d36b2e04f356be6332d4cf52602ff661a95a0f0bbde681ffe3d54d134'
             '658d17f895ad48a47babf885176a8a4e891219c7fd7d53141a1dbdbbaa0b9374'
             'd200ddf84e1a0ad691ecc708f4c3e495793dd1c246ded3cd777daf4fe1d75753')
 
