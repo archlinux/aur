@@ -6,7 +6,7 @@
 
 pkgname=asymptote-git
 epoch=2
-pkgver=2.50.git4.g43b43ae8
+pkgver=2.59.git
 pkgrel=1
 pkgdesc="A vector graphics language (like metapost)"
 arch=('i686' 'x86_64')
@@ -25,7 +25,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd ${pkgname%-git}
-  git describe --tags|sed s+git-+.git+|tr - .
+  git describe --tags|sed s+git+.git+|tr - .
 }
 
 prepare() {
