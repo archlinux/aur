@@ -1,7 +1,7 @@
 # Maintainer: hashworks <mail@hashworks.net>
 pkgname=terraformer
 pkgver=0.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI tool to generate terraform files from existing infrastructure (reverse Terraform)"
 license=('Apache')
 arch=('x86_64')
