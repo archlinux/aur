@@ -1,6 +1,6 @@
 pkgbase = majsoul-plus
 	pkgdesc = Majsoul browser, with more features
-	pkgver = 2.0.0b7
+	pkgver = 2.0.0b8
 	pkgrel = 1
 	url = https://github.com/MajsoulPlus/majsoul-plus
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = majsoul-plus
 	makedepends = imagemagick
 	depends = electron
 	conflicts = majsoul-plus-bin
-	source = https://github.com/MajsoulPlus/majsoul-plus/archive/v2.0.0-beta.7.tar.gz
-	sha256sums = acbb8d13d460f86c37d55d856cc97709206a741c8661a835f2430ac4848d0733
+	source = https://github.com/MajsoulPlus/majsoul-plus/archive/v2.0.0-beta.8.tar.gz
+	sha256sums = 2c51c25cd0ec1c01c0543270d2769d1751516c7877ce4cd81bede10e2d0b57d6
 
 pkgname = majsoul-plus
 
