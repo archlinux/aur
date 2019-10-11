@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=mujs-git
-pkgver=r451.5c337af
+pkgver=r615.14dc935
 pkgrel=1
 epoch=
 pkgdesc="A lightweight Javascript interpreter designed for embedding in other software to extend them with scripting capabilities."
@@ -9,7 +9,7 @@ url="http://mujs.com/"
 license=('AGPL3')
 categories=()
 groups=()
-depends=('')
+depends=()
 makedepends=('git')
 optdepends=()
 checkdepends=()
