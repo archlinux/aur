@@ -1,11 +1,11 @@
 _pkgname=cros-container-guest-tools
 pkgname=${_pkgname}-git
-pkgver=r208.41a43ea
+pkgver=r209.2c07dfa
 pkgrel=1
 pkgdesc="Guest tools for the Crostini containers on ChromeOS"
 arch=('any')
 license=('custom')
-depends=('openssh' 'xdg-utils' 'xkeyboard-config' 'pulseaudio' 'xxd' 'packagekit' 'dbus')
+depends=('openssh' 'xdg-utils' 'xkeyboard-config' 'pulseaudio' 'xxd' 'packagekit' 'dbus' 'xorg-xdpyinfo')
 install=cros-container-guest-tools.install
 url="https://chromium.googlesource.com/chromiumos/containers/cros-container-guest-tools"
 source=("git+${url}" 'cros-sftp-conditions.conf' 'cros-garcon-conditions.conf' 'cros-locale.sh' 'cros-garcon.hook' 'cros-logind-override.conf' 'cros-nopasswd.rules' )
