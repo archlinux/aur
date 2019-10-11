@@ -1,7 +1,7 @@
 pkgbase = julius-game
 	pkgdesc = Open source re-implementation of Caesar III (Original copy required)
 	pkgver = 1.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/bvschaik/julius
 	install = julius-game.install
 	arch = i686

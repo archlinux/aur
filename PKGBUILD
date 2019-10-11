@@ -3,7 +3,7 @@
 _pkgname=julius
 pkgname=$_pkgname-game
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Open source re-implementation of Caesar III (Original copy required)"
 arch=('i686' 'x86_64')
 url="https://github.com/bvschaik/julius"
@@ -34,8 +34,8 @@ build() {
 package() {
     install -Dm755 "$srcdir/$_pkgname-$pkgver/$_pkgname" "$pkgdir/usr/bin/$pkgname"
     install -Dm644 "$srcdir/$_pkgname-$pkgver/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    install -Dm664 "$srcdir/$_pkgname-$pkgver/res/julius_48.png" "$pkgdir/usr/share/pixmaps/julius_48.png"
-    install -Dm664 "$srcdir/$_pkgname-$pkgver/res/julius_256.png" "$pkgdir/usr/share/pixmaps/julius_256.png"
-    install -Dm664 "$srcdir/$_pkgname-$pkgver/res/julius_512.png" "$pkgdir/usr/share/pixmaps/julius_512.png"
+    install -Dm664 "$srcdir/$_pkgname-$pkgver/res/julius_48.png" "$pkgdir/usr/share/pixmaps/${pkgname}48.png"
+    install -Dm664 "$srcdir/$_pkgname-$pkgver/res/julius_256.png" "$pkgdir/usr/share/pixmaps/${pkgname}256.png"
+    install -Dm664 "$srcdir/$_pkgname-$pkgver/res/julius_512.png" "$pkgdir/usr/share/pixmaps/${pkgname}512.png"
     install -Dm664 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
