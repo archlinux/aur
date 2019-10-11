@@ -1,7 +1,7 @@
 pkgbase = wesnoth-1.4
 	pkgdesc = Turn-based strategy game on a fantasy world (for old replays)
 	pkgver = 1.4.7+dev
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.wesnoth.org
 	install = wesnoth-1.4.install
 	arch = i686

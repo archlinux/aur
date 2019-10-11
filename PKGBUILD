@@ -5,7 +5,7 @@
 
 pkgname=wesnoth-1.4
 pkgver=1.4.7+dev
-pkgrel=1
+pkgrel=2
 pkgdesc="Turn-based strategy game on a fantasy world (for old replays)"
 arch=('i686' 'x86_64')
 url="https://www.wesnoth.org"
@@ -69,7 +69,7 @@ build() {
   # below, and edit the start command in the file wesnothd-1.4.service.
 
   ./autogen.sh --with-freetype-prefix=/usr/lib --prefix=/usr --with-preferences-dir=.local/share/wesnoth/1.4 --program-suffix=-1.4 --with-datadir-name=wesnoth-1.4 --docdir=/usr/share/doc/wesnoth-1.4 --disable-desktop-entry --enable-editor --enable-server --with-fifodir=/run/wesnothd-1.4 CXXFLAGS=-w
-  make -j4
+  make
 }
 
 # These commands have to be run with root privileges.
