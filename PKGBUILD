@@ -64,7 +64,7 @@ _srcname=linux-${_major}
 _clr=${_major}.71-77
 pkgbase=linux-clear-lts2018
 pkgver=${_major}.${_minor}
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux-lts2018"
 license=('GPL2')
@@ -78,7 +78,6 @@ source=(
   "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
   '60-linux.hook'  # pacman hook for depmod
   '90-linux.hook'  # pacman hook for initramfs regeneration
-  '99-linux.hook'  # pacman hook for remove initramfs
   'linux.preset'   # standard config files for mkinitcpio ramdisk
 )
 
@@ -222,8 +221,6 @@ _package() {
         "$pkgdir/usr/share/libalpm/hooks/60-${pkgbase}.hook"
     sed "$subst" ../90-linux.hook | install -Dm644 /dev/stdin \
         "$pkgdir/usr/share/libalpm/hooks/90-${pkgbase}.hook"
-    sed "$subst" ../99-linux.hook | install -Dm644 /dev/stdin \
-        "$pkgdir/usr/share/libalpm/hooks/99-${pkgbase}.hook"
 
     msg2 "Fixing permissions..."
     chmod -Rc u=rwX,go=rX "$pkgdir"
@@ -325,7 +322,6 @@ sha256sums=('0c68f5655528aed4f99dae71a5b259edc93239fa899e2df79c055275c21749a1'
             '8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5'
             '452b8d4d71e1565ca91b1bebb280693549222ef51c47ba8964e411b2d461699c'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
-            'ed9d35cb7d7bd829ff6253353efa5e2d119820fe4f4310aea536671f5e4caa37'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 
 validpgpkeys=(
