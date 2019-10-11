@@ -1,10 +1,10 @@
 # Maintainer : David Beley <dbeley@protonmail.com>
 pkgname=ypc-git
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-pkgdesc="Convert spotify/deezer/text playlists to youtube urls and/or download audio/video files."
+pkgdesc="Convert spotify/deezer/text albums/playlists to youtube urls and/or download audio/video files."
 arch=('any')
 url="https://github.com/dbeley/${pkgname%-git}"
 license=('MIT')
