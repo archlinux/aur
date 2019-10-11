@@ -1,6 +1,6 @@
 pkgbase = qv2ray-dev-git
 	pkgdesc = Qt cross platform v2ray GUI client (Dev branch build release)
-	pkgver = 1.3.8.0.r0.g5135091
+	pkgver = 1.3.8.0.r0.g4179cf2
 	pkgrel = 1
 	url = https://github.com/lhy0403/Qv2ray
 	arch = x86_64
@@ -9,6 +9,8 @@ pkgbase = qv2ray-dev-git
 	makedepends = make
 	makedepends = qt5-tools
 	makedepends = protobuf
+	makedepends = which
+	makedepends = gcc
 	depends = qt5-base
 	depends = hicolor-icon-theme
 	depends = grpc
@@ -19,9 +21,9 @@ pkgbase = qv2ray-dev-git
 	provides = qv2ray
 	conflicts = qv2ray
 	source = qv2ray-dev-git::git+https://github.com/lhy0403/Qv2ray#branch=dev
-	source = 0001-build-for-Arch-Linux.patch
+	source = 0001-build_for_archlinux.patch
 	sha512sums = SKIP
-	sha512sums = 71a321ed94eba421a19b3689f93faa4da3a56438a06823bc6560e2aa078ac0f453db31e815c22185252dddcf0bae8704588ce1865a4611a08fee501c6484d686
+	sha512sums = cc07b885e5f2885b28ba1c4401421f676b7808054367b8ac053e023782d496511776c8abf7aeaccba6603abd1046efbb222e59f1ec88306255623ff6744e4f84
 
 pkgname = qv2ray-dev-git
 

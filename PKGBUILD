@@ -1,21 +1,22 @@
 # Maintainer: Hork <aliyuchang33@outlook.com>
 # Contributer: ArielAxionL <i at axionl dot me>
 pkgname=qv2ray-dev-git
-pkgver=1.3.8.0.r0.g5135091
+pkgver=1.3.8.0.r0.g4179cf2
 pkgrel=1
 pkgdesc="Qt cross platform v2ray GUI client (Dev branch build release)"
 arch=('x86_64')
 url="https://github.com/lhy0403/Qv2ray"
 license=('GPL3')
 depends=('qt5-base' 'hicolor-icon-theme' 'grpc' 'v2ray')
-makedepends=('git' 'make' 'qt5-tools' 'protobuf')
+makedepends=('git' 'make' 'qt5-tools' 'protobuf' 'which' 'gcc')
 optdepends=('v2ray' 'v2ray-domain-list-community' 'v2ray-geoip')
 provides=('qv2ray')
 conflicts=('qv2ray')
 source=("${pkgname}::git+https://github.com/lhy0403/Qv2ray#branch=dev"
-        "0001-build-for-Arch-Linux.patch")
+        "0001-build_for_archlinux.patch")
+
 sha512sums=('SKIP'
-            '71a321ed94eba421a19b3689f93faa4da3a56438a06823bc6560e2aa078ac0f453db31e815c22185252dddcf0bae8704588ce1865a4611a08fee501c6484d686')
+            'cc07b885e5f2885b28ba1c4401421f676b7808054367b8ac053e023782d496511776c8abf7aeaccba6603abd1046efbb222e59f1ec88306255623ff6744e4f84')
 
 pkgver() {
     cd ${pkgname}
@@ -25,7 +26,7 @@ pkgver() {
 prepare() {
     cd "${pkgname}"
     sh -c "tools/grpc_gen.sh"
-    patch -Np1 -i "${srcdir}/0001-build-for-Arch-Linux.patch"
+    patch -Np1 -i "${srcdir}/0001-build_for_archlinux.patch"
 }
 
 build() {

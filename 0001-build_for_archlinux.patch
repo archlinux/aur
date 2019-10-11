@@ -1,7 +1,7 @@
-From 9890b086aeb90abca685acebb1be15b4f43e731a Mon Sep 17 00:00:00 2001
+From 2eb569cdb4675853bba79aae0dedfb265a6fca2c Mon Sep 17 00:00:00 2001
 From: axionl <i@axionl.me>
-Date: Mon, 30 Sep 2019 17:26:50 +0800
-Subject: [PATCH 305/305] build for Arch Linux
+Date: Fri, 11 Oct 2019 10:32:04 +0800
+Subject: [PATCH 341/341] build_for_Arch_Linux.patch
 
 ---
  icons/Qv2ray.desktop | 2 +-
@@ -12,19 +12,19 @@ Subject: [PATCH 305/305] build for Arch Linux
  5 files changed, 12 insertions(+), 5 deletions(-)
 
 diff --git a/icons/Qv2ray.desktop b/icons/Qv2ray.desktop
-index 9099a41..55e9655 100755
+index 500efca..b22109b 100755
 --- a/icons/Qv2ray.desktop
 +++ b/icons/Qv2ray.desktop
 @@ -3,6 +3,6 @@ Type=Application
  Keywords=Internet;VPN;Proxy;v2ray;Qt;
  Categories=Network;Qt;
  Icon=Qv2ray
--Exec=/opt/Qv2ray/bin/Qv2ray
+-Exec=Qv2ray
 +Exec=/usr/bin/qv2ray
  Name=Qv2ray
- Comment=Cross-platform v2ray GUI Client in Qt.
+ Comment=Cross platform v2ray Qt GUI Client.
 diff --git a/src/Qv2rayBase.h b/src/Qv2rayBase.h
-index 30ef28a..4f1e0f8 100644
+index 30ef28a..27680a3 100644
 --- a/src/Qv2rayBase.h
 +++ b/src/Qv2rayBase.h
 @@ -20,7 +20,7 @@
@@ -37,7 +37,7 @@ index 30ef28a..4f1e0f8 100644
  
  #define QV2RAY_CONNECTION_FILE_EXTENSION ".qv2ray.json"
 diff --git a/src/QvUtils.cpp b/src/QvUtils.cpp
-index 97b5e76..aba8d39 100644
+index ddd63bb..5532fc8 100644
 --- a/src/QvUtils.cpp
 +++ b/src/QvUtils.cpp
 @@ -7,6 +7,7 @@ namespace Qv2ray
@@ -61,7 +61,7 @@ index 97b5e76..aba8d39 100644
          {
              ConfigDirPath = *path;
 diff --git a/src/QvUtils.h b/src/QvUtils.h
-index 938e945..71a5db6 100644
+index 2ade639..79e1916 100644
 --- a/src/QvUtils.h
 +++ b/src/QvUtils.h
 @@ -20,6 +20,7 @@ namespace Qv2ray
@@ -73,7 +73,7 @@ index 938e945..71a5db6 100644
          void SetGlobalConfig(Qv2rayConfig conf);
          Qv2rayConfig GetGlobalConfig();
 diff --git a/src/main.cpp b/src/main.cpp
-index 19dc3bb..9b963be 100644
+index 1b940b1..5115bd3 100644
 --- a/src/main.cpp
 +++ b/src/main.cpp
 @@ -38,7 +38,7 @@ bool initQv()
@@ -85,7 +85,7 @@ index 19dc3bb..9b963be 100644
          //
          // Save initial config.
          SetGlobalConfig(conf);
-@@ -88,9 +88,9 @@ int main(int argc, char *argv[])
+@@ -89,9 +89,9 @@ int main(int argc, char *argv[])
      //
  #ifdef QT_DEBUG
      LOG("DEBUG", "============================== This is a debug build, many features are not stable enough. ==============================")
@@ -96,7 +96,7 @@ index 19dc3bb..9b963be 100644
 +    QString configPath = QDir::homePath() + "/.config/qv2ray";
  #endif
      SetConfigDirPath(&configPath);
-     QDirIterator it(":/translations");
+     auto langs = getFileList(QDir(":/translations"));
 -- 
 2.23.0
 
