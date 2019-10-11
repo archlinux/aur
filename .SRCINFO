@@ -1,0 +1,15 @@
+pkgbase = notion-app-enhanced
+	pkgdesc = The all-in-one workspace for your notes and tasks
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://www.notion.so/desktop
+	arch = x86_64
+	license = Proprietary
+	makedepends = yarn
+	makedepends = imagemagick
+	depends = electron>=6.0
+	source = notion-app-enhanced::git+https://gitlab.kokakiwi.net/kokakiwi/notion-app-enhanced.git
+	sha256sums = SKIP
+
+pkgname = notion-app-enhanced
+
