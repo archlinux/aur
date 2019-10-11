@@ -1,6 +1,6 @@
 # Maintainer: Ckat <ckat@teknik.io>
 pkgname=fuf
-pkgver=0.2
+pkgver=0.4.20
 pkgrel=1
 pkgdesc='Fairly Usable cli Filebrowser.'
 arch=('any')
@@ -12,7 +12,7 @@ conflicts=('fuf-git')
 provides=('fuf')
 install=fuf.install
 source=("https://github.com/Ckath/fuf/archive/v$pkgver.tar.gz")
-md5sums=('2aa04994f9e7c9212921a0d7e2e74d82')
+md5sums=('1af6b08ba747790638b037f654efb994')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -24,5 +24,6 @@ package() {
   install -Dm755 fuf "$pkgdir/usr/bin/fuf"
   install -Dm755 scripts/open "$pkgdir/usr/lib/$pkgname/open"
   install -Dm755 scripts/preview "$pkgdir/usr/lib/$pkgname/preview"
-  
+  install -Dm644 completions/bash/fuf "$pkgdir/usr/share/bash-completion/completions/fuf"
+  install -Dm644 completions/zsh/_fuf "$pkgdir/usr/share/zsh/site-functions/_fuf"
 }

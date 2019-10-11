@@ -1,6 +1,6 @@
 pkgbase = fuf
 	pkgdesc = Fairly Usable cli Filebrowser.
-	pkgver = 0.2
+	pkgver = 0.4.20
 	pkgrel = 1
 	url = https://github.com/ckath/fuf
 	install = fuf.install
@@ -10,8 +10,8 @@ pkgbase = fuf
 	optdepends = w3m: image previews
 	provides = fuf
 	conflicts = fuf-git
-	source = https://github.com/Ckath/fuf/archive/v0.2.tar.gz
-	md5sums = 2aa04994f9e7c9212921a0d7e2e74d82
+	source = https://github.com/Ckath/fuf/archive/v0.4.20.tar.gz
+	md5sums = 1af6b08ba747790638b037f654efb994
 
 pkgname = fuf
 
