@@ -1,8 +1,8 @@
 # Maintainer: Emanuele 'Lele aka eldios' Calo' <xeldiosx@gmail.com>
 
 pkgname=teleport
-pkgver=4.1.0
-pkgrel=4
+pkgver=4.1.1
+pkgrel=1
 pkgdesc="Modern SSH server for teams managing distributed infrastructure"
 arch=('x86_64' 'arm')
 url="https://gravitational.com/teleport"
@@ -15,7 +15,7 @@ source_x86_64=(
     "teleport.yaml"
     )
 sha256sums_x86_64=(
-    '4ce838239170d8b6b6498b817ee271f9443811bfe069f5a79950cbbdc7b6791e'
+    'ed201e7a84ccfa7d32f77ef5626ed7f1c38bd0f6fd629c787d9c1731177504e3'
     '0cc7b68844d4926d30f2cee4bb6cec67436a95219cf1ba84954aaa34942229f9'
     '3b26c48a1ade6feea6658a663fe5db7210df24a191816ce95939dc0eddefa0bc'
     )
@@ -25,7 +25,7 @@ source_arm=(
     "teleport.yaml"
     )
 sha256sums_arm=(
-    '6ba88b731dc4aa66f864318e705623a3ce1aabb888a17058852799419c75ecc1'
+    'cd4eac1b0b8e7e51c5c1fc2a89f4f7266c7da070438bbe0261c51ba62b2f4163'
     '0cc7b68844d4926d30f2cee4bb6cec67436a95219cf1ba84954aaa34942229f9'
     '3b26c48a1ade6feea6658a663fe5db7210df24a191816ce95939dc0eddefa0bc'
     )
