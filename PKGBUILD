@@ -2,7 +2,7 @@
 
 _gemname=google-cloud-core
 pkgname=ruby-${_gemname}
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="google-cloud-core is the internal shared library for google-cloud-ruby."
 arch=('any')
@@ -17,7 +17,7 @@ license=('MIT')
 source=(
   "https://rubygems.org/downloads/${_gemname}-${pkgver}.gem"
 )
-sha256sums=('45627cccef12e1faf1a0635e3442275169c065468bb596e4e2cd48fc8628163f')
+sha256sums=('fe57280c7277c4204be374c7a41f5a911b1345d5a9cce871d3fce71052c87d91')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
