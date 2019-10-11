@@ -5,26 +5,25 @@
 pkgbase=bbswitch
 pkgname=(bbswitch bbswitch-dkms)
 pkgver=0.8
-pkgrel=257
+pkgrel=258
 pkgdesc="Kernel module allowing to switch dedicated graphics card on Optimus laptops"
 arch=('x86_64')
 url="http://github.com/Bumblebee-Project/bbswitch"
 license=('GPL')
 depends=('linux')
 makedepends=('linux-headers')
-_extramodules=extramodules-ARCH
 source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/Bumblebee-Project/bbswitch/archive/v${pkgver}.tar.gz")
 md5sums=('5b116b31ace3604ddf9d1fc1f4bc5807')
 
 build() {
   cd ${pkgbase}-${pkgver}
-  _kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
-  make KDIR=/lib/modules/${_kernver}/build
+  make KDIR=/usr/src/linux
 }
 
 package_bbswitch() {
   cd ${pkgbase}-${pkgver}
-  install -Dt "${pkgdir}/usr/lib/modules/${_extramodules}" -m644 *.ko
+  _extradir="/usr/lib/modules/$(</usr/src/linux/version)/extramodules"
+  install -Dt "${pkgdir}${_extradir}" -m644 *.ko
   find "${pkgdir}" -name '*.ko' -exec xz {} +
 }
 
