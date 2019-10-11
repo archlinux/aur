@@ -3,13 +3,13 @@
 
 
 pkgname=ustreamer
-pkgver=1.6
+pkgver=1.7
 pkgrel=1
 pkgdesc="Lightweight and fast MJPG-HTTP streamer"
 url="https://github.com/pikvm/ustreamer"
 license=(GPL)
 arch=(i686 x86_64 armv6h armv7h)
-depends=(libjpeg libevent libutil-linux)
+depends=(libjpeg libevent libutil-linux libbsd)
 # optional: raspberrypi-firmware for OMX encoder
 # optional: wiringpi for GPIO support
 makedepends=(gcc make)
