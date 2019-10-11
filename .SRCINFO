@@ -1,0 +1,21 @@
+pkgbase = r-lifecycle
+	pkgdesc = Manage the lifecycle of your exported functions with shared conventions, documentation badges, and non-invasive deprecation warnings.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=lifecycle
+	arch = i686
+	arch = x86_64
+	license = GPL-3
+	depends = r>=3.2
+	depends = r-glue
+	depends = r-rlang>=0.4.0
+	optdepends = r-covr
+	optdepends = r-crayon
+	optdepends = r-knitr
+	optdepends = r-markdown
+	optdepends = r-testthat
+	source = http://cran.r-project.org/src/contrib/lifecycle_0.1.0.tar.gz
+	md5sums = a039f080eb1dc67a40ce92ddced20cac
+
+pkgname = r-lifecycle
+
