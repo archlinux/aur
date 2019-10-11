@@ -1,5 +1,5 @@
 1.0.7-2
-    Add CHANGELOG to .tar.gz releases
+    Add CHANGELOG to AUR releases
 
 1.0.7-1
     Add version (`-v`,`--version`) flag to display current version of wtwitch
