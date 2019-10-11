@@ -87,7 +87,7 @@ _kernelname=${pkgbase#linux}
 : ${_kernelname:=-aufs}
 
 prepare() {
-    cd ${_srcname}
+    cd $_srcname
 
     ### Setting version
         msg2 "Setting version..."
@@ -187,7 +187,7 @@ prepare() {
 }
 
 build() {
-  cd ${_srcname}
+  cd $_srcname
 
   make bzImage modules htmldocs
 }
@@ -244,7 +244,6 @@ _package() {
   msg2 "Fixing permissions..."
   chmod -Rc u=rwX,go=rX "$pkgdir"
 }
-
 
 _package-headers() {
    pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel"
