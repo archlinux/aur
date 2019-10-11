@@ -1,0 +1,35 @@
+pkgbase = hostapd-noscan
+	pkgdesc = IEEE 802.11 AP, IEEE 802.1X/WPA/WPA2/EAP/RADIUS Authenticator (with "noscan" patch)
+	pkgver = 2.9
+	pkgrel = 1
+	url = https://w1.fi/hostapd/
+	arch = x86_64
+	arch = i686
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = BSD
+	depends = glibc
+	depends = libnl
+	depends = openssl
+	depends = sqlite
+	provides = hostapd
+	conflicts = hostapd
+	backup = etc/hostapd/hostapd.accept
+	backup = etc/hostapd/hostapd.conf
+	backup = etc/hostapd/hostapd.deny
+	backup = etc/hostapd/hostapd.eap_user
+	backup = etc/hostapd/hostapd.radius_clients
+	backup = etc/hostapd/hostapd.vlan
+	backup = etc/hostapd/hostapd.wpa_psk
+	source = https://w1.fi/releases/hostapd-2.9.tar.gz
+	source = config
+	source = hostapd.service
+	source = hostapd-noscan.patch
+	sha256sums = 881d7d6a90b2428479288d64233151448f8990ab4958e0ecaca7eeb3c9db2bd7
+	sha256sums = 87445203a518864e704b85fa970d90940e9a5d9b401ceb802d11caab6c07a495
+	sha256sums = d9a8b44915ed71211f27533b9b075e22423d2fab27013f5ca89f1eec150459b2
+	sha256sums = f2a57f118d5884bdc5eaba3828545742775e763eade4837668f8cd3dec8bb812
+
+pkgname = hostapd-noscan
+
