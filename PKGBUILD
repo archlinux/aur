@@ -2,7 +2,7 @@
 # Contributor: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 
 pkgname=samim-fonts
-pkgver=4.0.1
+pkgver=4.0.2
 pkgrel=1
 pkgdesc="A beautiful Persian font based on Vazir font."
 url="https://github.com/rastikerdar/samim-font"
@@ -13,7 +13,7 @@ provides=('ttf-samim' "$pkgname")
 conflicts=('ttf-samim' "$pkgname")
 replaces=('ttf-samim')
 source=("${pkgname}-${pkgver}.zip::${url}/releases/download/v${pkgver}/samim-font-v${pkgver}.zip")
-sha256sums=('b669264b0c081a5eb32450af1841e278ff3c188c317f3e07c82e239fb23efc98')
+sha256sums=('18f07b60191d1f9ff8b93b322de2490ac4ba2f7b10c5dcdce9d4caa329769918')
 
 package() {
   install -Dt "${pkgdir}/usr/share/fonts/${pkgname%-fonts}" -m644 ./{,**/}*.ttf
