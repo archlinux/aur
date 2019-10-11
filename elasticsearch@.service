@@ -1,39 +1,66 @@
 [Unit]
-Description=Elasticsearch
+Description=Elasticsearch %I
 Documentation=http://www.elastic.co
 Wants=elasticsearch-keystore@%I.service
-Wants=network.target
+Wants=network-online.target
 After=elasticsearch-keystore@%I.service
-After=network.target
+After=network-online.target
 
 [Service]
-Type=forking
+Type=notify
 RuntimeDirectory=elasticsearch
+PrivateTmp=true
+Environment=ES_HOME=/usr/share/elasticsearch
+Environment=ES_PATH_CONF=/etc/elasticsearch/%I
+Environment=PID_DIR=/run/elasticsearch
+Environment=ES_SD_NOTIFY=true
+EnvironmentFile=-/etc/sysconfig/elasticsearch
 PIDFile=/run/elasticsearch/%I.pid
 
-Environment=JAVA_HOME=/usr/lib/jvm/default-runtime
-EnvironmentFile=-/etc/default/elasticsearch
-Environment=ES_PATH_CONF=/etc/elasticsearch/%I
-Environment=ES_TMPDIR=/tmp
-
-PrivateTmp=true
 WorkingDirectory=/usr/share/elasticsearch
 
 User=elasticsearch
 Group=elasticsearch
 
-ExecStart=/usr/share/elasticsearch/bin/elasticsearch -d \
-            -p /run/elasticsearch/%I.pid
+PermissionsStartOnly=true
+ExecStartPre=/usr/share/elasticsearch/bin/elasticsearch-keystore upgrade
 
-LimitNOFILE=65536
+ExecStart=/usr/share/elasticsearch/bin/elasticsearch -p ${PID_DIR}/%I.pid --quiet
+
+# StandardOutput is configured to redirect to journalctl since
+# some error messages may be logged in standard output before
+# elasticsearch logging system is initialized. Elasticsearch
+# stores its logs in /var/log/elasticsearch and does not use
+# journalctl by default. If you also want to enable journalctl
+# logging, you can simply remove the "quiet" option from ExecStart.
+StandardOutput=journal
+StandardError=inherit
+
+# Specifies the maximum file descriptor number that can be opened by this process
+LimitNOFILE=65535
+
+# Specifies the maximum number of processes
 LimitNPROC=4096
+
+# Specifies the maximum size of virtual memory
 LimitAS=infinity
+
+# Specifies the maximum file size
 LimitFSIZE=infinity
 
-Restart=on-failure
-KillMode=process
-SendSIGKILL=no
+# Disable timeout logic and wait until process is stopped
 TimeoutStopSec=0
+
+# SIGTERM signal is used to stop the Java process
+KillSignal=SIGTERM
+
+# Send the signal only to the JVM rather than its control group
+KillMode=process
+
+# Java process is never killed
+SendSIGKILL=no
+
+# When a JVM receives a SIGTERM signal it exits with code 143
 SuccessExitStatus=143
 
 [Install]

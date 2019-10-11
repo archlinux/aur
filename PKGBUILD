@@ -29,13 +29,13 @@ source=(
 )
 sha256sums=('b712ced4a7feae46c3f966d52ac24f1b3418ee3ffbf0495a97f27ccf40878873'
             'ff530bf9440364955e9f38b5c5cc0782da1b1ac1c54870b162b7ded81e56eebc'
-            'de3842935b6ef9cb8a05dc18334112f534dccc2292e36052df942a92de7e66db'
-            '13090c1d23ae0a21bf6f0f1d1da795d38972f1674b20c3d2d32f54311aa99094'
+            'dd8b20f822ad8c66b9fc54faf2763ff10a24ca661f49d1799e1b86b5e2e785af'
+            'ed24c03e7fa2339fe6077c68a48be66d36fe778435f050dd73d7990563b3e98e'
             'bac40d87acaa5bee209ceb6dfa253009a072e9243fe3b94be42fb5cd44727d6f'
             '22a78a165a810608188faea6f2b0b381f27b1e9d60126c3b3e729124540589a8'
             'b3feb1e9c7e7ce6b33cea6c727728ed700332aae942ca475c3bcc1d56b9f113c'
             '815f6a39db6f54bb40750c382ffbdc298d2c4c187ee8ea7e2f855923e2ff354b'
-            '3173e3efa429507e6329f518699a072dfd442d9b5da7c62452a55f82334dd2b5'
+            '0a344d779c550de324bfda385896caf0d728563751c176127b63ebf2354abee0'
             'bb74e5fb8bc28f2125e015395ab05bea117b72bfc6dadbca827694b362ee0bf8')
 
 backup=('etc/elasticsearch/elasticsearch.yml'
@@ -56,7 +56,8 @@ prepare() {
 
 package() {
   cd "$pkgdir"
-  install -dm750 etc/elasticsearch{,/scripts}
+  install -dm2750 etc/elasticsearch
+  install -dm750 etc/elasticsearch/scripts
   install -dm755 {usr/share,var/lib,var/log}/elasticsearch
   install -dm755 usr/bin
 
