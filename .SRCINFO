@@ -1,11 +1,10 @@
 pkgbase = artanis
 	pkgdesc = A fast monolithic web-framework of Scheme
 	pkgver = 0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://web-artanis.com/
 	arch = x86_64
 	license = LGPL
-	makedepends = git
 	makedepends = texlive-core
 	depends = guile
 	options = !strip

@@ -2,11 +2,11 @@
 
 pkgname=artanis
 pkgver=0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast monolithic web-framework of Scheme"
 url="http://web-artanis.com/"
 depends=('guile')
-makedepends=('git' 'texlive-core')
+makedepends=('texlive-core')
 arch=('x86_64')
 license=('LGPL')
 source=(https://ftp.gnu.org/gnu/$pkgname/$pkgname-$pkgver.tar.gz)
