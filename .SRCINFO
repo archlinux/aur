@@ -1,15 +1,15 @@
 pkgbase = ruby-jwt
 	pkgdesc = JSON Web Token implementation in Ruby
-	pkgver = 2.1.0
-	pkgrel = 3
+	pkgver = 2.2.1
+	pkgrel = 1
 	url = http://github.com/jwt/ruby-jwt
 	arch = any
 	license = MIT
 	depends = ruby
-	noextract = jwt-2.1.0.gem
+	noextract = jwt-2.2.1.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/jwt-2.1.0.gem
-	sha1sums = 85efcdeb24418ca3f4d82ad8d2a2f267c92d73d8
+	source = https://rubygems.org/downloads/jwt-2.2.1.gem
+	sha1sums = 383136036dc768c7dcae69f2722ef23c9efbbc15
 
 pkgname = ruby-jwt
 
