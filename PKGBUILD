@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=svt-vp9
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Scalable Video Technology VP9 encoder'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('BSD')
 depends=('gcc-libs')
 makedepends=('cmake' 'nasm')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/OpenVisualCloud/SVT-VP9/archive/v${pkgver}.tar.gz")
-sha256sums=('a38ea33d86b7e56219a8d2d10ba8acaf545a84e72545f72a0d53de346dff2b0f')
+sha256sums=('4a39258fd1f97190b1e1e8d5f38db7aea5367dad764d36b45a552558877de29a')
 
 prepare() {
     mkdir -p "SVT-VP9-${pkgver}/Build/linux/None"

@@ -1,6 +1,6 @@
 pkgbase = svt-vp9
 	pkgdesc = Scalable Video Technology VP9 encoder
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/OpenVisualCloud/SVT-VP9/
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = svt-vp9
 	makedepends = cmake
 	makedepends = nasm
 	depends = gcc-libs
-	source = svt-vp9-0.1.0.tar.gz::https://github.com/OpenVisualCloud/SVT-VP9/archive/v0.1.0.tar.gz
-	sha256sums = a38ea33d86b7e56219a8d2d10ba8acaf545a84e72545f72a0d53de346dff2b0f
+	source = svt-vp9-0.1.1.tar.gz::https://github.com/OpenVisualCloud/SVT-VP9/archive/v0.1.1.tar.gz
+	sha256sums = 4a39258fd1f97190b1e1e8d5f38db7aea5367dad764d36b45a552558877de29a
 
 pkgname = svt-vp9
 
