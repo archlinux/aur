@@ -7,7 +7,7 @@ pkgdesc="runtime mobile exploration"
 arch=('any')
 url=https://github.com/sensepost/objection
 license=('GPLv3')
-depends=(python python-flask python-click python-frida python-frida-tools python-tabulate python-prompt_toolkit python-delegator)
+depends=(python python-flask python-click python-frida python-frida-tools python-tabulate python-prompt_toolkit python-delegator nodejs)
 makedepends=('python-setuptools')
 source=(https://github.com/sensepost/objection/archive/${pkgver}.tar.gz)
 sha256sums=('f3caee908f98e3ed2fe5c4e1555c2a85e371aadde8d273b033f5bcbd52617419')
@@ -20,14 +20,17 @@ prepare() {
 build() {
   cd "$srcdir/objection-$pkgver/"
   python setup.py build
-}
 
+  cd agent
+  npm install
+}
 
 package() {
   cd "$srcdir/objection-$pkgver/"
   python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
   cd "${pkgdir}"
   find . -name tests | xargs rm -rf
+  cp "${srcdir}/objection-${pkgver}/objection/agent.js" "$(find . -name objection -type d)/."
 }
 
 # vim:ts=2:sw=2:et:
