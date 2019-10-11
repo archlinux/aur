@@ -1,8 +1,8 @@
 # Maintainer: changwoo
-# Contributor: OctopusET
+# Maintainer: OctopusET
 pkgname=hunspell-ko
 pkgver=0.7.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Korean dictionary for hunspell"
 arch=('any')
 url='http://code.google.com/p/spellcheck-ko'
