@@ -1,4 +1,9 @@
 2019-09-04 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 4.0.4.3-1:
+    ASF's default logging was enhanced to follow ${currentdir}, which results in log.txt and logs directory respecting used --path, as opposed to always being in the program's directory. If you're using custom logging config, you might want to reflect this change.
+    Latest ASF-ui with new features, improvements and bugfixes.
+    Usual amount of other core improvements, optimizations and bugfixes.
+2019-09-04 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 4.0.4.2-1:
     Improved MatchActively feature, ASF will now also match Fair bots when deemed appropriate (ref: #1375, #1377).
     Added AssumeWalletKeyOnBadActivationCode option to bot's RedeemingPreferences, as well as AssumeWalletKey r^ command options in regards to Steam wallet code changes (ref: #1358).
