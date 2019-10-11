@@ -1,0 +1,2 @@
+# avrispmkII programmer rules (https://www.microchip.com/DevelopmentTools/ProductDetails/PartNO/ATAVRISP2)
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="03eb", ATTRS{idProduct}=="2104", GROUP="users", MODE="0666"
