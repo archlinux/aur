@@ -1,4 +1,4 @@
-pkgbase = ruby-multipart-post
+pkgbase = ruby-multipart-post-2.0
 	pkgdesc = A multipart form post accessory for Net::HTTP.
 	pkgver = 2.0.0
 	pkgrel = 1
@@ -6,10 +6,11 @@ pkgbase = ruby-multipart-post
 	arch = any
 	license = MIT
 	depends = ruby
+	provides = ruby-multipart-post=2.0.0
 	noextract = multipart-post-2.0.0.gem
 	options = !emptydirs
 	source = https://rubygems.org/downloads/multipart-post-2.0.0.gem
 	sha1sums = 15f1fee5557716868726ec23f389938e7957bf63
 
-pkgname = ruby-multipart-post
+pkgname = ruby-multipart-post-2.0
 

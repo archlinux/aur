@@ -2,12 +2,12 @@
 # Maintainer: Rhys Davies <rhys@johnguant.com>
 
 _gemname=multipart-post
-pkgname=ruby-$_gemname
+pkgname=ruby-$_gemname-2.0
 pkgver=2.0.0
 pkgrel=1
 pkgdesc='A multipart form post accessory for Net::HTTP.'
 arch=(any)
-provides=(ruby-multipart-post=$pkgver)
+provides=(ruby-$_gemname=$pkgver)
 url='https://github.com/nicksieger/multipart-post'
 license=(MIT)
 depends=(ruby)
