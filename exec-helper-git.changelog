@@ -2,6 +2,40 @@ Changelog
 =========
 
 
+0.4.1 (2019-10-08)
+------------------
+
+New
+~~~
+- CI: Added CI for build + installer through AppVeyor. [Bart Verhagen]
+- Usr: Windows version now searches .windows.exec-helper in the
+  directory tree. [Bart Verhagen]
+- Usr: Building documentation can now be switched on or off anywhere.
+  Doxygen is no longer required if all documentation is switched off.
+  [Bart Verhagen]
+- Usr: Github Markdown and Doxygen share the same page sources now.
+  Added simple example to README. [Bart Verhagen]
+
+  Is should now be much easier for interested new users to understand what exec-helper does
+- Usr: Patterns are now also replaced in environment keys and values.
+  [Bart Verhagen]
+- Usr: Added feature documentation and tests on setting fixed values for
+  the environment in the configuration. [Bart Verhagen]
+- Usr: Changed microsoft-gsl-git dependency to more generic microsoft-
+  gsl one. [Bart Verhagen]
+- Usr: Added Windows build and installer. [Bart Verhagen]
+- CI: Rescheduled projects within same stage in order to optimize CI
+  throughput time. [Bart Verhagen]
+- Usr: Added feature documentation and tests for the command line help
+  and version option. [Bart Verhagen]
+- CI: Optimized build context for the jobs in the build-image stage.
+  [Bart Verhagen]
+
+Fix
+~~~
+- CI: Fixed provider for microsoft-gsl for CI. [Bart Verhagen]
+
+
 0.4.0 (2018-12-20)
 ------------------
 

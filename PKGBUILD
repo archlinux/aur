@@ -1,7 +1,7 @@
 # Maintainer: Bart Verhagen <barrie.verhagen@gmail.com>
 pkgname=('exec-helper-git' 'exec-helper-git-docs')
 pkgbase='exec-helper-git'
-pkgver=0.4.0_0_gde0cb04
+pkgver=0.4.1_0_g00a582a
 pkgrel=1
 epoch=
 pkgdesc="How To Get Coffee In Peace: a shell meta-wrapper"
@@ -10,7 +10,7 @@ url="https://github.com/bverhagen/exec-helper"
 license=('GPL3')
 groups=()
 depends=(yaml-cpp boost-libs)
-makedepends=(cmake boost make doxygen graphviz git pkg-config microsoft-gsl-git lsb-release)
+makedepends=(cmake boost make doxygen graphviz git pkg-config microsoft-gsl lsb-release)
 checkdepends=(catch2 rapidcheck)
 optdepends=()
 provides=()
@@ -19,8 +19,8 @@ replaces=()
 backup=()
 options=()
 install=
-changelog=exec-helper.changelog
-source=('exec-helper::git+https://github.com/bverhagen/exec-helper.git#commit=de0cb04beee38af0ffef7d9988d56727e14bc0d4')
+changelog=exec-helper-git.changelog
+source=('exec-helper-git::git+https://github.com/bverhagen/exec-helper.git#commit=00a582a51caf832ec57bb1422a8c6acaf2e8de0a')
 noextract=()
 validpgpkeys=()
 
@@ -34,11 +34,11 @@ pkgver() {
 
 build() {
     _system_description=$(lsb_release --description --short | sed 's/"//g')
-    _source_version=0.4.0_0_gde0cb04
+    _source_version=0.4.1_0_g00a582a
     _release_version="($_system_description) $_source_version"
     _copyright="Copyright (c) $(date +'%Y') Bart Verhagen"
 
-    _git_dir='exec-helper'
+    _git_dir="exec-helper-git"
     _exec_helper_build_targets=('exec-helper' 'docs-man')
     _exec_helper_docs_build_targets=('docs-html')
 
@@ -55,7 +55,8 @@ check() {
     make --directory "$_build_dir" --jobs ${_nb_of_cores} ${_exec_helper_test_targets[@]}
 
     _install_dir="$pkgdir/usr/"
-    PATH="${PWD}/$_build_dir/src/applications:${PWD}/$_build_dir/test/base-utils/application/:$PATH" "$_build_dir/test/integration/exec-helper-integration-test"
+    cd $_build_dir
+    PATH="${PWD}/src/applications:${PWD}/test/base-utils/application/:$PATH" "test/integration/exec-helper-integration-test"
 }
 
 package_exec-helper-git() {
