@@ -3,10 +3,10 @@
 _gemname=jwt
 pkgname=ruby-$_gemname-2.1
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='JSON Web Token implementation in Ruby'
 arch=(any)
-provider=(ruby-$_gemname=$pkgver)
+provides=(ruby-$_gemname=$pkgver)
 url='http://github.com/jwt/ruby-jwt'
 license=(MIT)
 depends=(ruby)
