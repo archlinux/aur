@@ -10,7 +10,7 @@ license=('GPL3')
 depends=(gcc-libs pcaudiolib)
 optdepends=()
 makedepends=('git' 'ruby-ronn')
-provides=("espeak" "espeak-ng=${pkgver}")
+provides=("espeak-ng=${pkgver}")
 conflicts=(espeak espeak-test)
 source=('git+https://github.com/espeak-ng/espeak-ng.git')
 md5sums=('SKIP')
@@ -18,7 +18,7 @@ md5sums=('SKIP')
 pkgver() {
   cd $_gitname
   # Use the tag of the last commit
-  git describe --always | sed -e 's|v||' -e 's|-|.|g'
+  printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {
