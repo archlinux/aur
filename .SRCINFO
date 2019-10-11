@@ -1,0 +1,25 @@
+pkgbase = pavucontrol-compact-git
+	pkgdesc = A GTK volume control for PulseAudio. Compact fork.
+	pkgver = 33bc9f4
+	pkgrel = 1
+	url = http://freedesktop.org/software/pulseaudio/pavucontrol/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = intltool
+	makedepends = lynx
+	depends = gtkmm3
+	depends = libcanberra-pulse
+	optdepends = pulseaudio
+	provides = pavucontrol
+	provides = pavucontrol-git
+	provides = pavucontrol-compact-git
+	conflicts = pavucontrol
+	conflicts = pavucontrol-git
+	conflicts = pavucontrol-compact-git
+	source = git://github.com/rafalcieslak/pavucontrol
+	sha256sums = SKIP
+
+pkgname = pavucontrol-compact-git
+
