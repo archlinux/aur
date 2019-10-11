@@ -5,28 +5,44 @@
 
 pkgname=libspatialite-devel
 _pkgname=libspatialite
-pkgver=5.0.0
-_pkgver=5.0.0-beta0
+pkgver=r960.a02cd88
 pkgrel=1
 pkgdesc="SQLite extension to support spatial data types and operations. Development version"
 arch=('x86_64')
 url="https://www.gaia-gis.it/fossil/libspatialite"
 license=('MPL' 'GPL' 'LGPL')
-depends=('geos' 'libfreexl' 'libxml2' 'proj' 'sqlite' 'librttopo-devel')
-provides=(libspatialite)
-replaces=(libspatialite)
-source=(http://www.gaia-gis.it/gaia-sins/libspatialite-sources/libspatialite-$_pkgver.tar.gz)
-sha256sums=('caacf5378a5cfab9b8e98bb361e2b592e714e21f5c152b795df80d0ab1da1c42')
+depends=('geos' 'libfreexl' 'libxml2' 'proj' 'sqlite' 'librttopo')
+makedepends=('fossil')
+conflicts=('libspatialite')
+provides=('libspatialite')
+replaces=('libspatialite')
+
+prepare() {
+  mkdir -p $_pkgname
+  cd $_pkgname
+
+  fossil clone https://www.gaia-gis.it/fossil/libspatialite libspatialite.fossil
+  fossil open libspatialite.fossil
+}
+
+pkgver() {
+  cd $_pkgname
+
+  _hash=$(fossil info | sed -n 's/checkout: *\([0-9a-z]*\).*/\1/p' | cut -c 1-7)
+  _revision=$(fossil info | sed -n 's/check-ins: *\(.*\)/\1/p')
+  printf "r%s.%s" "$_revision" "$_hash"
+}
+
 
 build() {
-  cd "${srcdir}"/$_pkgname-$_pkgver
+  cd $_pkgname
 
   ./configure --prefix=/usr --enable-libxml2 --enable-librttopo
-  make
+  make -j2
 }
 
 package() {
-  cd "${srcdir}"/$_pkgname-$_pkgver
+  cd $_pkgname
 
   make DESTDIR="${pkgdir}" install
 }
