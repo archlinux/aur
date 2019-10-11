@@ -2,7 +2,7 @@
 
 _gemname=fastlane
 pkgname=$_gemname
-pkgver=2.126.0
+pkgver=2.133.0
 pkgrel=1
 pkgdesc='The easiest way to automate beta deployments and releases for your iOS and Android apps'
 arch=(any)
@@ -19,9 +19,9 @@ depends=(
   'ruby-dotenv>=2.1.1' 'ruby-dotenv<3'
   'ruby-emoji_regex>=0.1' 'ruby-emoji_regex<2'
   'ruby-excon>=0.45' 'ruby-excon<1'
-  'ruby-faraday>=0.9' 'ruby-faraday<1'
+  'ruby-faraday<0.16'
   'ruby-faraday-cookie_jar>=0.0.6' 'ruby-faraday-cookie_jar<0.1'
-  'ruby-faraday-middleware>=0.9' 'ruby-faraday-middleware<1'
+  'ruby-faraday-middleware<0.16'
   'ruby-fastimage>=2.1' 'ruby-fastimage<3'
   'ruby-gh_inspector>=1.1.2' 'ruby-gh_inspector<2'
   'ruby-google-api-client>=0.21.2' 'ruby-google-api-client<0.24'
@@ -29,15 +29,16 @@ depends=(
   # 'ruby-highline<2' 'ruby-highline>=1.7.2'
   ruby-highline-1
   'ruby-json<3'
-  # 'ruby-mini_magick<4.6' 'ruby-mini_magick>=4.5.1'
   'ruby-jwt>=2.1' 'ruby-jwt<2.2'
-  ruby-mini_magick-4.5
+  # 'ruby-mini_magick>=4.9.4' 'ruby-mini_magicl<5'
+  ruby-mini_magick-4
   'ruby-multipart-post>=2' 'ruby-multipart-post<2.1'
   'ruby-multi_xml>=0.5' 'ruby-multi_xml<1'
   'ruby-plist>=3.1' 'ruby-plist<4'
   # 'ruby-public_suffix>=2' 'ruby-public_suffix<2.1'
   ruby-public_suffix-2
-  'ruby-rubyzip>=1.2.2' 'ruby-rubyzip<2'
+  # 'ruby-rubyzip>=1.3' 'ruby-rubyzip<2'
+  ruby-rubyzip-1
   'ruby-security=0.1.3'
   'ruby-simctl>=1.6.3' 'ruby-simctl<1.7'
   'ruby-slack-notifier>=2' 'ruby-slack-notifier<3'
@@ -54,7 +55,7 @@ makedepends=(ruby-rdoc)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('d711990e6059e54574e0addd374d554d55002fd1')
+sha1sums=('cfd2382b1024ab80c95253265f68451a16ee3228')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
