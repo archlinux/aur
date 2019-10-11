@@ -2,7 +2,7 @@
 
 pkgname=v2ray-rules-git
 pkgver=r6.32b35fd
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple script for v2ray to set up a transparent proxy."
 arch=('x86_64')
 url="https://github.com/poscat0x04/v2ray-rules"
@@ -10,6 +10,7 @@ license=('MIT')
 provides=("v2ray-rules")
 conflicts=()
 makedepends=('git')
+depends=('nftables' 'python')
 source=("${pkgname}::git://github.com/poscat0x04/v2ray-rules")
 noextract=()
 sha256sums=('SKIP')
