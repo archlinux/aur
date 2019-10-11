@@ -1,0 +1,18 @@
+pkgbase = ruby-rubyzip-1
+	pkgdesc = rubyzip is a ruby module for reading and writing zip files
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/rubyzip/rubyzip
+	arch = any
+	license = BSD
+	license = 2-CLAUSE
+	makedepends = ruby-rdoc
+	depends = ruby
+	provides = ruby-rubyzip=1.3.0
+	noextract = rubyzip-1.3.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/rubyzip-1.3.0.gem
+	sha1sums = 21fb7d9976f0968f9e981618f5734c330b130cc7
+
+pkgname = ruby-rubyzip-1
+
