@@ -4,9 +4,9 @@ pkgdesc="ROS - 3D visualization tool for ROS."
 url='https://wiki.ros.org/rviz'
 
 pkgname='ros-melodic-rviz'
-pkgver='1.13.3'
+pkgver='1.13.5'
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD, Creative Commons')
 
 ros_makedepends=(
@@ -90,7 +90,7 @@ depends=(
 
 _dir="rviz-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/rviz/archive/${pkgver}.tar.gz")
-sha256sums=('c9d9f1e64246e61754ca1a44344e6e258026d660bd0d5ec1969b040fc6cbf629')
+sha256sums=('ec97e11644c10f7d968109d24015a752daf4a20fe463c067c5d6a369c876f3b3')
 
 build() {
 	# Use ROS environment variables.
@@ -118,15 +118,7 @@ build() {
 		-DPYTHON_BASENAME=.cpython-37m \
 		-DSETUPTOOLS_DEB_LAYOUT=OFF
 
-	make || {
-	# Replace $$[QT_INSTALL_LIBS] with hardcoded /usr/lib/ for proper linking
-	# Fix courtesy of astier:
-	#  https://aur.archlinux.org/packages/ros-melodic-rviz/#comment-698298
-	# Relevant upstream issue:
-	#  https://github.com/ros-visualization/rviz/issues/1382
-	sed -i 's/$$\[QT_INSTALL_LIBS\]/\/usr\/lib/' ${srcdir}/build/devel/bin/sip/rviz_sip/Makefile
 	make
-	}
 }
 
 package() {
