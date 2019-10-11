@@ -9,7 +9,7 @@
 
 pkgname=wesnoth-1.8
 pkgver=1.8.6+dev
-pkgrel=5
+pkgrel=6
 pkgdesc="Turn-based strategy game on a fantasy world (for old replays)"
 arch=('i686' 'x86_64')
 url="https://www.wesnoth.org"
