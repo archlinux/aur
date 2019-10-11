@@ -5,7 +5,7 @@
 # Contributor: Thomas Baechler <thomas at archlinux dot org>
 
 pkgbase=linux-covolunablu-gaming
-_srcver=5.3.4-arch1
+_srcver=5.3.5-arch1
 pkgver=${_srcver//-/.}
 pkgrel=1
 arch=(x86_64)
@@ -31,7 +31,7 @@ source=(
   90-linux.hook  # pacman hook for initramfs regeneration
   linux.preset   # standard config files for mkinitcpio ramdisk
   bfq-default.patch
-  'https://raw.githubusercontent.com/ValveSoftware/steamos_kernel/bbc8608755da42e7494c00dce24a636007972def/drivers/input/joystick/xpad.c'
+  'https://raw.githubusercontent.com/ValveSoftware/steamos_kernel/865a07956db55120d69876a202ce0fa35f46b218/drivers/input/joystick/xpad.c'
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -45,7 +45,7 @@ sha256sums=('SKIP'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             # -- covolunablu-gaming patches --
             '834c051bfa7e94678c6c48fe13be0931f7ef6c00547e8bc3e735c318296917dd'
-            '24cd09c5eea6b7de311f9ae273a784f5a2c04d47f864825da4f8c6f8cf89620e'
+            'da4ea29ba0a1d02bd14b6c33aadeb71fd6ac543f36d3e8b64c7f0acf2d8262fc'
 )
 
 _kernelname=${pkgbase#linux}
@@ -86,7 +86,6 @@ build() {
 
 _package() {
   pkgdesc="The ${pkgbase/linux/Linux} kernel and modules"
-  [[ $pkgbase = linux ]] && groups=(base)
   depends=(coreutils kmod initramfs)
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
@@ -162,9 +161,6 @@ _package-headers() {
 
   # add xfs and shmem for aufs building
   mkdir -p "$builddir"/{fs/xfs,mm}
-
-  # ???
-  mkdir "$builddir/.tmp_versions"
 
   msg2 "Installing headers..."
   cp -t "$builddir" -a include
