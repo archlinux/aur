@@ -1,7 +1,7 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=o
-pkgver=2.1.3
+pkgver=2.1.5
 pkgrel=1
 pkgdesc='Small, fast and very limited text editor'
 arch=(x86_64)
