@@ -3,7 +3,7 @@
 _gemname=fastlane
 pkgname=$_gemname
 pkgver=2.133.0
-pkgrel=1
+pkgrel=2
 pkgdesc='The easiest way to automate beta deployments and releases for your iOS and Android apps'
 arch=(any)
 url='https://fastlane.tools'
@@ -19,7 +19,8 @@ depends=(
   'ruby-dotenv>=2.1.1' 'ruby-dotenv<3'
   'ruby-emoji_regex>=0.1' 'ruby-emoji_regex<2'
   'ruby-excon>=0.45' 'ruby-excon<1'
-  'ruby-faraday<0.16'
+  # 'ruby-faraday<0.16'
+  ruby-faraday-0.15
   'ruby-faraday-cookie_jar>=0.0.6' 'ruby-faraday-cookie_jar<0.1'
   'ruby-faraday-middleware<0.16'
   'ruby-fastimage>=2.1' 'ruby-fastimage<3'
