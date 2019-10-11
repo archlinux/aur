@@ -2,14 +2,14 @@
 pkgname=java-openjfx-bin
 _majorver=13
 pkgver=13
-pkgrel=2
+pkgrel=3
 pkgdesc="Java OpenJFX ${_majorver} client application platform (Gluon build)."
 arch=('x86_64')
 url='https://openjfx.io/'
 license=('GPL2')
 depends=('ffmpeg' 'gstreamer' "java-environment>=${_majorver}" 'libxtst' 'qt5-base' 'webkit2gtk')
 provides=("java-openjfx=${_majorver}")
-conflicts=("java-openjfx=${_majorver}" "java${_majorver}-openjfx")
+conflicts=("java-openjfx>=${_majorver}" "java${_majorver}-openjfx")
 source=("https://download2.gluonhq.com/openjfx/${pkgver}/openjfx-${pkgver}_linux-x64_bin-sdk.zip"
         "https://download2.gluonhq.com/openjfx/${pkgver}/openjfx-${pkgver}_linux-x64_bin-jmods.zip")
 sha256sums=('6f2d1ed4678615d909546b2b4a88f710fd7367bb78a0d7c195ee4645a4c7efc5'
