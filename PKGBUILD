@@ -21,5 +21,7 @@ build() {
 
 package() {
   cd "$srcdir/hunspell-dict-ko-$pkgver"
-  make VERSION=$pkgver DESTDIR="$pkgdir" PREFIX=/usr
+  install -dm755 "${pkgdir}"/usr/share/hunspell
+  cp -p ko.aff "${pkgdir}"/usr/share/hunspell/ko_KR.aff
+  cp -p ko.dic "${pkgdir}"/usr/share/hunspell/ko_KR.dic
 }
