@@ -4,9 +4,9 @@ pkgdesc="ROS - qt_gui_cpp provides the foundation for C++-bindings for qt_gui an
 url='https://wiki.ros.org/qt_gui_cpp'
 
 pkgname='ros-melodic-qt-gui-cpp'
-pkgver='0.3.11'
+pkgver='0.3.14'
 arch=('any')
-pkgrel=4
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -39,7 +39,7 @@ depends=(
 
 _dir="qt_gui_core-${pkgver}/qt_gui_cpp"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/qt_gui_core/archive/${pkgver}.tar.gz")
-sha256sums=('708873d6b5a2e4543435e8a1a2349de8eb41937aaf78b9dbcbe08b4a1dc12da2')
+sha256sums=('fa81135cbec45a4c9832ebe45abe53c3dedb0efbb0da715b269cff50601b18d4')
 
 build() {
 	# Use ROS environment variables.
@@ -64,13 +64,7 @@ build() {
 		-DPYTHON_BASENAME=.cpython-37m \
 		-DSETUPTOOLS_DEB_LAYOUT=OFF
 
-	make || {
-	# Replace $$[QT_INSTALL_LIBS] with hardcoded /usr/lib/ for proper linking
-	# Relevant issue:
-	#  https://github.com/ros-melodic-arch/ros-melodic-qt-gui-cpp/issues/4
-	sed -i 's/$$\[QT_INSTALL_LIBS\]/\/usr\/lib/' ${srcdir}/build/sip/qt_gui_cpp_sip/Makefile
 	make
-	}
 }
 
 package() {

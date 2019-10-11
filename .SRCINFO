@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-qt-gui-cpp
 	pkgdesc = ROS - qt_gui_cpp provides the foundation for C++-bindings for qt_gui and creates bindings for every generator available.
-	pkgver = 0.3.11
-	pkgrel = 4
+	pkgver = 0.3.14
+	pkgrel = 1
 	url = https://wiki.ros.org/qt_gui_cpp
 	arch = any
 	license = BSD
@@ -19,8 +19,8 @@ pkgbase = ros-melodic-qt-gui-cpp
 	depends = tinyxml
 	depends = sip
 	depends = python-sip
-	source = ros-melodic-qt-gui-cpp-0.3.11.tar.gz::https://github.com/ros-visualization/qt_gui_core/archive/0.3.11.tar.gz
-	sha256sums = 708873d6b5a2e4543435e8a1a2349de8eb41937aaf78b9dbcbe08b4a1dc12da2
+	source = ros-melodic-qt-gui-cpp-0.3.14.tar.gz::https://github.com/ros-visualization/qt_gui_core/archive/0.3.14.tar.gz
+	sha256sums = fa81135cbec45a4c9832ebe45abe53c3dedb0efbb0da715b269cff50601b18d4
 
 pkgname = ros-melodic-qt-gui-cpp
 
