@@ -1,15 +1,15 @@
 pkgbase = ruby-claide
 	pkgdesc = A small command-line interface framework.
-	pkgver = 1.0.2
-	pkgrel = 3
+	pkgver = 1.0.3
+	pkgrel = 1
 	url = https://github.com/CocoaPods/CLAide
 	arch = any
 	license = MIT
 	depends = ruby
-	noextract = claide-1.0.2.gem
+	noextract = claide-1.0.3.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/claide-1.0.2.gem
-	sha1sums = 5000b0f440d8066093af4e6f530cb64b6aa1148a
+	source = https://rubygems.org/downloads/claide-1.0.3.gem
+	sha1sums = 0d0d9b957ab56e85a5bbca333e9dde80e62e8c0e
 
 pkgname = ruby-claide
 
