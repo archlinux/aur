@@ -63,7 +63,7 @@ _enable_acs_override="y"
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.3
-_minor=5
+_minor=6
 _srcname=linux-${_major}
 _clr=${_major}.1-843
 pkgbase=linux-clear
@@ -268,9 +268,6 @@ _package-headers() {
     # add xfs and shmem for aufs building
     mkdir -p "$builddir"/{fs/xfs,mm}
 
-    # ???
-    mkdir "$builddir/.tmp_versions"
-
     msg2 "Installing headers..."
     cp -t "$builddir" -a include
     cp -t "$builddir/arch/x86" -a arch/x86/include
@@ -340,7 +337,7 @@ done
 
 sha256sums=('78f3c397513cf4ff0f96aa7d09a921d003e08fa97c09e0bb71d88211b40567b2'
             'SKIP'
-            '9423172192dfe42d9c9c52013653e87a6d23554abce70174491dd7b8d73c5d7c'
+            'f6fe83628dc0f6cceb0ac184715099eed4b0a671b5df9d1df9b0df1169fde868'
             'SKIP'
             '8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5'
             'dbf4ac4b873ce6972e63b78d74ddba18f2701716163bb7f4b4fe5e909346a6e1'
