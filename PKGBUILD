@@ -4,19 +4,19 @@
 
 pkgbase=kata-containers
 pkgname=(kata-runtime kata-proxy kata-shim kata-ksm-throttler kata-containers-image kata-linux-container)
-pkgver="1.8.2"
+pkgver="1.8.3"
 pkgrel=1
 pkgdesc="Lightweight virtual machines for containers"
 arch=(x86_64)
 url="https://katacontainers.io"
 license=('Apache')
 
-__runtime_suffix="-5.1"
-__proxy_suffix="-5.1"
-__shim_suffix="-5.1"
-__ksm_throttler_suffix="-5.1"
-__img_suffix="-5.1"
-__linux_container_ver="4.19.73.51-5.1"
+__runtime_suffix="-7.1"
+__proxy_suffix="-7.1"
+__shim_suffix="-7.1"
+__ksm_throttler_suffix="-7.1"
+__img_suffix="-7.1"
+__linux_container_ver="4.19.75.44-7.1"
 
 __runtime_rpm="kata-runtime-${pkgver}${__runtime_suffix}.x86_64.rpm"
 __proxy_bin_rpm="kata-proxy-bin-${pkgver}${__proxy_suffix}.x86_64.rpm"
@@ -50,12 +50,12 @@ noextract=(
   $__linux_container_rpm
 )
 
-sha256sums=('739b8f6079bdf0f3e2ba0496f50f714fb140fd230a3b0956ba4eeb83e0c279b0'
-            '4369d7c0832b39389066f89c621fe17cfe9f69eb057fccdcf5ce9b08b4426275'
-            '9c5fa95e669a692d5148b474155faf23974db3e1ef1357a214d941c0d7973922'
-            'd6ba15fb2e9abcaf44bb52029f0b33526f058485a8a6efcdd089089324e33db1'
-            '7ae71646442ab88fec1dbd2123cf9d3a90c05759fbb721eb75111a591efd4dc4'
-            'e6b6a10a8951c6b4761f24142b1e7f340ee77c16f614135905de6671b382fa5f')
+sha256sums=('0ee09da5ab5314cf83bc3ba3f9cc684b931b98e0cea6d494274178ddaa4acb3a'
+            'b478b3fa0682fc7d43dbad45854b1f8143c8c524de0a5cf822a84542d90faf24'
+            'c7ee1ccb5d40cbbcc5519d61ffa94804c41e0182b7418adfb26d67ffb65c689d'
+            'd4533389c0406e6acfc27445dd56ba93b01bf0b8ee4500affc3ee05959410358'
+            '3c88560c3248e0f2ae81fbdda62227251bd2aa2ccfce57a4ce0606d33d3d4616'
+            '96d42d423b0d04c23572e26b7a51ae26a9253ec0782bbf1434ee5c510d23996f')
 
 __extract_into_dir() {
   archive=$1
