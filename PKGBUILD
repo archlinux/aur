@@ -2,7 +2,7 @@
 
 pkgname=dosh
 pkgver=1.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Docker shell'
 arch=('any')
 url="https://github.com/gportay/$pkgname"
@@ -15,7 +15,7 @@ md5sums=('58170baefc8008e7fe2dc6e3486ff27e')
 
 build() {
 	cd "$pkgname-$pkgver"
-	make doc
+	make doc SHELL="/bin/sh"
 }
 
 check() {
@@ -25,6 +25,6 @@ check() {
 
 package() {
 	cd "$pkgname-$pkgver"
-	make DESTDIR="$pkgdir" PREFIX="/usr" install
+	make DESTDIR="$pkgdir" PREFIX="/usr" install install-doc
 	install -D -m 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
