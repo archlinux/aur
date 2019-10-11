@@ -9,7 +9,7 @@
 
 _pkgname=bleachbit
 pkgname=bleachbit-git
-pkgver=r4154.0d437691
+pkgver=r4794.a6eed643
 pkgrel=1
 pkgdesc='Deletes unneeded files to free disk space and maintain privacy.'
 url='https://www.bleachbit.org/'
@@ -17,7 +17,7 @@ license=('GPL3')
 source=('git://github.com/bleachbit/bleachbit.git')
 sha256sums=('SKIP')
 arch=('any')
-depends=('pygtk')
+depends=('pygtk' 'python2-gobject')
 optdepends=('cleanerml-git: Bonus cleaner pack')
 makedepends=('git')
 conflicts=('bleachbit')
@@ -30,5 +30,5 @@ pkgver() {
 
 package() {
   cd ${srcdir}/${_pkgname}
-  make prefix=/usr DESTDIR="$pkgdir" PYTHON=python2 install
+  make prefix=/usr DESTDIR="$pkgdir" install
 }

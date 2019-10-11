@@ -1,12 +1,13 @@
 pkgbase = bleachbit-git
 	pkgdesc = Deletes unneeded files to free disk space and maintain privacy.
-	pkgver = r4154.0d437691
+	pkgver = r4794.a6eed643
 	pkgrel = 1
 	url = https://www.bleachbit.org/
 	arch = any
 	license = GPL3
 	makedepends = git
 	depends = pygtk
+	depends = python2-gobject
 	optdepends = cleanerml-git: Bonus cleaner pack
 	provides = bleachbit
 	conflicts = bleachbit
