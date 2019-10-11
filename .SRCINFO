@@ -1,0 +1,16 @@
+pkgbase = goenv-git
+	pkgdesc = Like pyenv and rbenv, but for Go.
+	pkgver = r1724.0cbe222
+	pkgrel = 1
+	url = https://github.com/syndbg/goenv
+	arch = i686
+	arch = x86_64
+	license = MIT
+	options = !libtool
+	options = docs
+	options = strip
+	source = git://github.com/syndbg/goenv.git
+	md5sums = SKIP
+
+pkgname = goenv-git
+
