@@ -1,6 +1,6 @@
 pkgbase = spatialite-gui-devel
 	pkgdesc = spatialite-gui is an open source Graphical User Interface (GUI) tool supporting SpatiaLite. Development version
-	pkgver = 2.1.0
+	pkgver = r230.0942f54
 	pkgrel = 1
 	url = https://www.gaia-gis.it/fossil/spatialite_gui/index
 	arch = x86_64
@@ -8,14 +8,13 @@ pkgbase = spatialite-gui-devel
 	license = GPLv3
 	depends = libspatialite-devel
 	depends = librasterlite2-devel
-	depends = virtualpg2-devel
+	depends = virtualpg-devel
 	depends = wxgtk
 	depends = openjpeg2
 	depends = libiconv
+	provides = spatialite-gui
 	conflicts = spatialite-gui
 	replaces = spatialite-gui
-	source = http://www.gaia-gis.it/gaia-sins/spatialite-gui-sources/spatialite_gui-2.1.0-beta0.tar.gz
-	md5sums = f06289fa547e596d9c01c23c5e1722ec
 
 pkgname = spatialite-gui-devel
 
