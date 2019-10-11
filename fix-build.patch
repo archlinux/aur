@@ -1,11 +1,11 @@
 diff -ura package.orig/electron-builder.json package.new/electron-builder.json
---- package.orig/electron-builder.json	2019-08-10 11:52:54.445603209 +0200
-+++ package.new/electron-builder.json	2019-08-10 11:56:04.277391817 +0200
-@@ -76,12 +76,10 @@
+--- package.orig/electron-builder.json	2019-10-11 21:15:47.916614387 +0200
++++ package.new/electron-builder.json	2019-10-11 21:25:14.248408458 +0200
+@@ -78,12 +78,10 @@
  		],
  		"artifactName": "rocketchat-${version}-${arch}.${ext}"
  	},
-+	"electronDist": "/usr/lib/electron4",
++	"electronDist": "/usr/lib/electron",
  	"linux": {
  		"target": [
 -			"tar.gz",
@@ -16,21 +16,27 @@ diff -ura package.orig/electron-builder.json package.new/electron-builder.json
  		],
  		"executableName": "rocketchat-desktop",
  		"category": "GNOME;GTK;Network;InstantMessaging",
-diff -ura package.orig/tasks/release.js package.new/tasks/release.js
---- package.orig/tasks/release.js	2019-08-10 11:52:54.482270211 +0200
-+++ package.new/tasks/release.js	2019-08-10 11:55:33.283760108 +0200
-@@ -16,6 +16,14 @@
- 	await build({ publish, x64, linux: [], c: { productName: 'rocketchat' } });
- });
+diff -ura package.orig/gulpfile.js package.new/gulpfile.js
+--- package.orig/gulpfile.js	2019-10-11 21:15:47.917614395 +0200
++++ package.new/gulpfile.js	2019-10-11 21:31:05.716040749 +0200
+@@ -65,6 +65,20 @@
+ 	c: { productName: 'rocketchat' },
+ }));
  
-+gulp.task('release:linux-x64', async() => {
-+	await build({ publish: 'never', x64, linux: [], c: { productName: 'rocketchat' } });
-+});
++task('release:linux-x64', () => build({
++	publish: 'never',
++	x64: true,
++	linux: [],
++	c: { productName: 'rocketchat' },
++}));
 +
-+gulp.task('release:linux-ia32', async() => {
-+	await build({ publish: 'never', ia32, linux: [], c: { productName: 'rocketchat' } });
-+});
++task('release:linux-ia32', () => build({
++	publish: 'never',
++	ia32: true,
++	linux: [],
++	c: { productName: 'rocketchat' },
++}));
 +
- gulp.task('release:win32', async () => {
- 	const publish = getEnv() === 'production' ? 'onTagOrDraft' : 'never';
- 	await build({ publish, x64, ia32, win: [] });
+ task('release:win32', () => build({
+ 	publish: NODE_ENV === 'production' ? 'onTagOrDraft' : 'never',
+ 	x64: true,
