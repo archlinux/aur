@@ -6,9 +6,10 @@
 
 pkgname=ruby-faraday-0.15
 pkgver=0.15.4
-pkgrel=2
+pkgrel=3
 pkgdesc='HTTP/REST API client library.'
 arch=('any')
+provides=(ruby-faraday=$pkgver)
 url='https://github.com/lostisland/faraday'
 license=('MIT')
 depends=(
