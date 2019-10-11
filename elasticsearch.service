@@ -24,7 +24,7 @@ Group=elasticsearch
 PermissionsStartOnly=true
 ExecStartPre=/usr/share/elasticsearch/bin/elasticsearch-keystore upgrade
 
-ExecStart=/usr/share/elasticsearch/bin/elasticsearch -p ${PID_DIR}/elasticsearch.pid --quiet
+ExecStart=/usr/share/elasticsearch/bin/elasticsearch -p ${PID_DIR}/elasticsearch.pid
 
 # StandardOutput is configured to redirect to journalctl since
 # some error messages may be logged in standard output before

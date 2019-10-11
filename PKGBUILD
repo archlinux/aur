@@ -16,7 +16,7 @@ provides=('elasticsearch')
 conflicts=('elasticsearch')
 relpkgname=elasticsearch
 source=(
-  "https://artifacts.elastic.co/downloads/$relpkgname/$relpkgname-$pkgver-linux-x86_64.tar.gz"
+  "https://artifacts.elastic.co/downloads/$relpkgname/$relpkgname-$pkgver-x86_64.rpm"
   elasticsearch-env
   elasticsearch.service
   elasticsearch@.service
@@ -27,10 +27,10 @@ source=(
   elasticsearch-tmpfile.conf
   elasticsearch.default
 )
-sha256sums=('b712ced4a7feae46c3f966d52ac24f1b3418ee3ffbf0495a97f27ccf40878873'
-            'ff530bf9440364955e9f38b5c5cc0782da1b1ac1c54870b162b7ded81e56eebc'
-            'dd8b20f822ad8c66b9fc54faf2763ff10a24ca661f49d1799e1b86b5e2e785af'
-            'ed24c03e7fa2339fe6077c68a48be66d36fe778435f050dd73d7990563b3e98e'
+sha256sums=('1bfae41734c77af3bc66084ac0cc04add1190f9311b045d3c184ea7b3e688334'
+            '830bf17a9e1f88a8d6152899af2674571ecace88e202e484b56bf24f67d96e10'
+            '8ddd205b147f7d6904e6d6c5e32290d0bda0602b0de67d20e2107fd853391cc7'
+            '873cc91d35e7239e32bc04044e4a429220d85bea18a69a71efe188d6987039da'
             'bac40d87acaa5bee209ceb6dfa253009a072e9243fe3b94be42fb5cd44727d6f'
             '22a78a165a810608188faea6f2b0b381f27b1e9d60126c3b3e729124540589a8'
             'b3feb1e9c7e7ce6b33cea6c727728ed700332aae942ca475c3bcc1d56b9f113c'
@@ -44,13 +44,10 @@ backup=('etc/elasticsearch/elasticsearch.yml'
         'etc/default/elasticsearch')
 
 prepare() {
-  cd "$srcdir"/$relpkgname-$pkgver
-
-  find bin -type f \( -name \*.bat -o -name \*.exe \) -delete
-  find bin -type f \( -name \*.jar -o -name \*-env \) -exec chmod a-x {} +
-  find bin -type f ! -name \*.jar -exec \
+  cd "$srcdir"
+  find usr/share/elasticsearch/bin -type f ! -name \*.jar -exec \
     sed -r 's;source .*/(.*)-env;source /usr/share/elasticsearch/\1-env;' -i {} +
-  find bin -type f -name "elasticsearch-*" ! -name elasticsearch-bin -exec \
+  find usr/share/elasticsearch/bin -type f -name "elasticsearch-*" ! -name elasticsearch-bin -exec \
     sed 's/`dirname "$0"`/$(dirname "$(realpath "$0")")/' -i {} +
 }
 
@@ -61,21 +58,20 @@ package() {
   install -dm755 {usr/share,var/lib,var/log}/elasticsearch
   install -dm755 usr/bin
 
-  cd "$srcdir"/$relpkgname-$pkgver
-  install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  cp -R bin lib modules plugins "$pkgdir"/usr/share/elasticsearch/
-
-  cd config
-  for conf in *; do
-    install -Dm644 "$conf" "$pkgdir/etc/elasticsearch/$conf"
+  cd "$srcdir"
+  install -Dvm644 usr/share/elasticsearch/LICENSE.txt \
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  for conf in etc/elasticsearch/*; do
+    install -Dm644 "$conf" "$pkgdir/$conf"
   done
+  cp -R usr/share/elasticsearch/{bin,lib,modules,plugins} "$pkgdir"/usr/share/elasticsearch
 
-  cd ..
-  mv bin/elasticsearch-env .
+  cd "$pkgdir"/usr/share/elasticsearch
+  rm -rf bin/elasticsearch-env
+
   find bin/ -type f -name elasticsearch-\* ! -name elasticsearch-cli -exec \
     ln -s ../share/elasticsearch/{} "$pkgdir"/usr/{} \;
 
-  cd "$pkgdir"/usr/share/elasticsearch
   ln -s ../../../var/log/elasticsearch logs
   ln -s ../../../var/lib/elasticsearch data
 
