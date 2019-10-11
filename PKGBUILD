@@ -30,5 +30,6 @@ package() {
   install -Dm755 fuf "$pkgdir/usr/bin/fuf"
   install -Dm755 scripts/open "$pkgdir/usr/lib/${pkgname%-git}/open"
   install -Dm755 scripts/preview "$pkgdir/usr/lib/${pkgname%-git}/preview"
-  
+  install -Dm644 completions/bash/fuf "$pkgdir/usr/share/bash-completion/completions/fuf"
+  install -Dm644 completions/zsh/_fuf "$pkgdir/usr/share/zsh/site-functions/_fuf"
 }
