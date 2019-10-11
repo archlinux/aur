@@ -4,15 +4,15 @@
 
 pkgbase="ptpython"
 pkgname=("ptpython" "ptpython2")
-pkgver="2.0.4"
-pkgrel="3"
+pkgver="2.0.5"
+pkgrel="1"
 pkgdesc="Python REPL build on top of prompt_toolkit"
 arch=("any")
 url="https://github.com/jonathanslenders/ptpython"
 license=("BSD")
 makedepends=("python-setuptools" "python2-setuptools")
 source=("https://files.pythonhosted.org/packages/source/${pkgbase:0:1}/$pkgbase/$pkgbase-$pkgver.tar.gz")
-sha256sums=('ebe9d68ea7532ec8ab306d4bdc7ec393701cd9bbd6eff0aa3067c821f99264d4')
+sha256sums=('e6e6d581b0a6f64dd4fe19f034a99013a898d08df378a41b45f017a4eff0c95c')
 
 prepare() {
     cp -a "${srcdir}/${pkgbase}-${pkgver}" "${srcdir}/${pkgbase}2-${pkgver}"
