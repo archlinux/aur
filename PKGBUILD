@@ -2,7 +2,7 @@
 # Contributor: Daniel M. Capella <polyzen@archlinux.org>
 
 pkgname=devhub
-pkgver=0.96.0
+pkgver=0.97.0
 pkgrel=1
 pkgdesc="TweetDeck for GitHub - Android, iOS, Web & Desktop"
 arch=('x86_64' 'i686')
@@ -16,7 +16,7 @@ optdepends=('kde-cli-tools: file deletion support (kioclient5)'
 makedepends=('yarn' 'jq' 'moreutils' 'npm')
 source=("$pkgname-$pkgver.src.tar.gz::https://github.com/devhubapp/devhub/archive/v$pkgver.tar.gz"
         "$pkgname.desktop")
-sha256sums=('d066cad4248349ae4c4b7a1775d71123083f15029f1cd6d154606981933d1179'
+sha256sums=('080cebaf2e8c10598fc7ed847b61165a957b8b1eb35be5789e012cebe41d1fdf'
             '71673ee2f197ea85bee73976006d7832a8573cea403cd086407d3494c457380f')
 
 prepare() {
