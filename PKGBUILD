@@ -44,7 +44,7 @@ build() {
   -DWITH_OGR=ON  \
   -DWITH_SQLITE=ON
 
-  make -j4
+  make 
 }
 
 package() {
