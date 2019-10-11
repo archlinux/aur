@@ -9,7 +9,7 @@
 
 pkgname=wesnoth-1.6
 pkgver=1.6.5+dev
-pkgrel=1
+pkgrel=2
 pkgdesc="Turn-based strategy game on a fantasy world (for old replays)"
 arch=('i686' 'x86_64')
 url="https://www.wesnoth.org"
@@ -70,7 +70,7 @@ build() {
       -Wno-dev \
       -DCMAKE_CXX_FLAGS="$CXXFLAGS -ansi -w" \
       -DCMAKE_C_FLAGS="$CFLAGS -ansi -w"
-  make -j 4
+  make
 }
 
 # Note: the manpages are first installed to the same place which other wesnoth
