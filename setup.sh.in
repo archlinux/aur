@@ -98,6 +98,7 @@ build_lib() {
     find ./ -maxdepth 1 -type f -exec strip -s {} 2>/dev/null \;
     echo "done."
     printf "\nRepack evelauncher-$elver.tar.gz..."
+    touch ./*
     cd ../
     rm evelauncher-$elver.tar.gz
     tar czf evelauncher-$elver.tar.gz evelauncher/

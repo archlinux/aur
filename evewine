@@ -4,10 +4,10 @@
 
 check_wine
 
-if [ -x "$WINEPATH/${0#*eve}" ] ;then
-    WINECMD=$WINEPATH/${0#*eve}
+if [ -x "$WINEPATH/${0##*eve}" ] ;then
+    WINECMD=$WINEPATH/${0##*eve}
 else
-    WINECMD=$CUSTOMWP\ ${0#*eve}
+    WINECMD=$CUSTOMWP\ ${0##*eve}
 fi
 
 env WINEPREFIX=$WINEPREFIX \
