@@ -1,0 +1,13 @@
+pkgbase = lf-extras
+	pkgdesc = extras for lf, the file manager
+	pkgver = 13
+	pkgrel = 2
+	url = https://github.com/gokcehan/lf
+	arch = any
+	license = MIT
+	depends = lf
+	source = lf-r13.tar.gz::https://github.com/gokcehan/lf/archive/r13.tar.gz
+	md5sums = 4d4617d3ac534b707b14f14fb0c08b53
+
+pkgname = lf-extras
+
