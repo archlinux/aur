@@ -1,6 +1,6 @@
 pkgbase = mapcache
 	pkgdesc = A server that implements tile caching to speed up access to WMS layers
-	pkgver = 1.6.1
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://www.mapserver.org/mapcache/
 	arch = i686
@@ -19,8 +19,8 @@ pkgbase = mapcache
 	optdepends = riak
 	provides = mapcache
 	conflicts = mapcache
-	source = http://download.osgeo.org/mapserver/mapcache-1.6.1.tar.gz
-	md5sums = 94ef5f820f5d0607c2f42e9fe841e9b4
+	source = http://download.osgeo.org/mapserver/mapcache-1.8.0.tar.gz
+	md5sums = e6cdc6a088038c7f49903b8dc42008c2
 
 pkgname = mapcache
 
