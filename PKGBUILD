@@ -2,7 +2,7 @@
 # Contributor: Andrej Gelenberg <andrej.gelenberg@udo.edu>
 pkgname="lcdtest"
 pkgver=1.18
-pkgrel=1
+pkgrel=2
 pkgdesc="A utility to display LCD monitor test patterns."
 arch=('i686' 'x86_64')
 url="http://www.brouhaha.com/~eric/software/lcdtest/"
