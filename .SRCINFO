@@ -1,0 +1,15 @@
+pkgbase = phoneboard
+	pkgdesc = Phoneboard is an app that will help you repairing phones!
+	pkgver = 1.6.2
+	pkgrel = 1
+	url = https://phoneboard.co/
+	arch = x86_64
+	license = unknown
+	provides = phoneboard
+	conflicts = phoneboard
+	options = !strip
+	source = https://github.com/Phoneboard/phoneboard/releases/download/v1.6.2/Phoneboard-v1.6.2-x86_64.AppImage
+	sha512sums = 0bdfe6f0d761ef08e89f271704508386590127d7baf05f589a9c796f98f9193305ae657c27ad2e94b633b5e2d325035e509b188e172b3ae2176e0e54cef2a85f
+
+pkgname = phoneboard
+
