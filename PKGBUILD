@@ -4,12 +4,12 @@
 
 pkgname=belle-sip-git
 _pkgname=belle-sip
-pkgver=1.6.3.r222.g99dda3d
+pkgver=1.6.3.r232.g9bdb28c
 pkgrel=1
 pkgdesc="A Voice-over-IP phone"
 arch=('x86_64')
 url="https://github.com/BelledonneCommunications/belle-sip/"
-license=('GPL')
+license=('GPL3')
 depends=('avahi' 'bctoolbox-git' 'gcc-libs' 'zlib')
 makedepends=('cmake' 'git')
 provides=("belle-sip=$pkgver")
@@ -29,7 +29,8 @@ build() {
         -DCMAKE_INSTALL_LIBDIR=/usr/lib \
         -DENABLE_STATIC=NO \
         -DENABLE_MDNS=YES \
-        -DENABLE_STRICT=YES .
+        -DENABLE_STRICT=YES \
+        -DENABLE_TESTS=NO .
   make
 }
 

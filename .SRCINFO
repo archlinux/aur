@@ -1,17 +1,17 @@
 pkgbase = belle-sip-git
 	pkgdesc = A Voice-over-IP phone
-	pkgver = 1.6.3.r222.g99dda3d
+	pkgver = 1.6.3.r232.g9bdb28c
 	pkgrel = 1
 	url = https://github.com/BelledonneCommunications/belle-sip/
 	arch = x86_64
-	license = GPL
+	license = GPL3
 	makedepends = cmake
 	makedepends = git
 	depends = avahi
 	depends = bctoolbox-git
 	depends = gcc-libs
 	depends = zlib
-	provides = belle-sip=1.6.3.r222.g99dda3d
+	provides = belle-sip=1.6.3.r232.g9bdb28c
 	conflicts = belle-sip
 	options = !emptydirs
 	source = git+https://github.com/BelledonneCommunications/belle-sip.git
