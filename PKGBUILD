@@ -2,8 +2,8 @@
 
 _gemname=signet
 pkgname=ruby-$_gemname
-pkgver=0.11.0
-pkgrel=2
+pkgver=0.12.0
+pkgrel=1
 pkgdesc='Signet is an OAuth 1.0 / OAuth 2.0 implementation.'
 arch=(any)
 url='https://github.com/google/signet/'
@@ -18,7 +18,7 @@ depends=(
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('b09b93b4c575174283c27e2fd16ee7df3f8713da')
+sha1sums=('e912eb98d64d93cc56a03818dbe3b14136430894')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
