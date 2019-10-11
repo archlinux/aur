@@ -39,7 +39,7 @@ build () {
 }
 
 package () {
-  cd "$srcdir/$dirname"
+  cd "$srcdir/$_dirname"
   echo $PWD
   make install DESTDIR="$pkgdir" prefix=/usr
 }
