@@ -1,6 +1,6 @@
 pkgbase = saga-gis
 	pkgdesc = A Geographic Information System (GIS) software with immense capabilities for geodata processing and analysis.
-	pkgver = 7.0.0
+	pkgver = 7.4.0
 	pkgrel = 1
 	url = http://www.saga-gis.org
 	arch = i686
@@ -18,8 +18,8 @@ pkgbase = saga-gis
 	optdepends = vigra
 	optdepends = liblas
 	optdepends = libharu
-	source = https://sourceforge.net/projects/saga-gis/files/SAGA - 7/SAGA - 7.0.0/saga-7.0.0.tar.gz
-	md5sums = 4768278bf3f7f68a5a55c3f8e8ce6e50
+	source = https://sourceforge.net/projects/saga-gis/files/SAGA - 7/SAGA - 7.4.0/saga-7.4.0.tar.gz
+	md5sums = 23ee793e28c5bd8a0488f0cb6bef59bb
 
 pkgname = saga-gis
 
