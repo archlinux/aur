@@ -8,7 +8,7 @@ _major=5.3
 _minor=6
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc="User mode Linux kernel and modules"
 arch=('x86_64')
 license=('GPL2')
@@ -52,8 +52,8 @@ prepare() {
   cp ../config .config
   yes "" | make ARCH=um config >/dev/null
 
-  make ARCH=um kernelrelease > ../version
-  msg2 "Prepared %s version %s" "$pkgbase" "$(<../version)"
+  make ARCH=um kernelrelease > version
+  msg2 "Prepared %s version %s" "$pkgbase" "$(<version)"
 
   msg2 "Save configuration for later reuse"
   cat .config > "${startdir}/config.last"
@@ -75,9 +75,8 @@ _package() {
 
 _package-modules() {
   
-  local kernver="$(<version)"
-
   cd ${_srcname}
+  local kernver="$(<version)"
   #  make ARCH=um INSTALL_MOD_PATH="${pkgdir}/usr" modules_install
   make ARCH=um INSTALL_MOD_PATH="${pkgdir}/usr" _modinst_
   rm -f $pkgdir/usr/lib/modules/${kernver}/{source,build}
