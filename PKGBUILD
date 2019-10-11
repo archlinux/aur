@@ -61,8 +61,8 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-bcachefs-git
-_srcver_tag=5.2.20-arch1
-pkgver=5.2.20.arch1.r844550.2df3501f6873
+_srcver_tag=5.2.21-arch1
+pkgver=5.2.21.arch1.r844571.5e3567bd1f52
 pkgrel=1
 arch=(x86_64)
 url="https://github.com/koverstreet/bcachefs"
@@ -105,7 +105,7 @@ validpgpkeys=(
 sha512sums=('SKIP'
             'SKIP'
             'd9519955c66275dbb8a1b056eb799b97387fab4cadb96de3a400cef7ec39f6a3ad0228c6deb24401f4ad65ffb6ed6173b27f453a1edf9c5e2a36c3a46851d4a8'
-            '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
+            '6b57a66b870b2f525e2dedd8f224b89474fd4ec6ea18484b0a67a1a2b9a4fc95d025cac181504406ea42a35d6c1b184c0d4e38c92815022935fc55746c69c7c1'
             '2718b58dbbb15063bacb2bde6489e5b3c59afac4c0e0435b97fe720d42c711b6bcba926f67a8687878bd51373c9cf3adb1915a11666d79ccb220bf36e0788ab7'
             '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf')
 
@@ -179,8 +179,8 @@ prepare() {
     # do not run 'make olddefconfig' as it sets default options
     yes "" | make config >/dev/null
 
-    make -s kernelrelease > ../version
-    msg2 "Prepared %s version %s" "$pkgbase" "$(<../version)"
+    make -s kernelrelease > version
+    msg2 "Prepared %s version %s" "$pkgbase" "$(<version)"
 
     [[ -z "$_makenconfig" ]] || make nconfig
 
@@ -209,10 +209,9 @@ _package() {
     backup=("etc/mkinitcpio.d/$pkgbase.preset")
     install=linux.install
 
+    cd $_reponame 
     local kernver="$(<version)"
     local modulesdir="$pkgdir/usr/lib/modules/$kernver"
-
-    cd $_reponame 
 
     msg2 "Installing boot image..."
     # systemd expects to find the kernel here to allow hibernation
@@ -226,13 +225,6 @@ _package() {
     msg2 "Installing modules..."
     make INSTALL_MOD_PATH="$pkgdir/usr" modules_install
 
-    # a place for external modules,
-    # with version file for building modules and running depmod from hook
-    local extramodules="extramodules$_kernelname"
-    local extradir="$pkgdir/usr/lib/modules/$extramodules"
-    install -Dt "$extradir" -m644 ../version
-    ln -sr "$extradir" "$modulesdir/extramodules"
-
     # remove build and source links
     rm "$modulesdir"/{source,build}
 
@@ -241,7 +233,6 @@ _package() {
     local subst="
         s|%PKGBASE%|$pkgbase|g
         s|%KERNVER%|$kernver|g
-        s|%EXTRAMODULES%|$extramodules|g
     "
 
     # hack to allow specifying an initially nonexisting install file
@@ -268,12 +259,12 @@ _package-headers() {
         "linux-headers=$pkgver"
     )
 
+    cd $_reponame
     local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
-    cd $_reponame
-
     msg2 "Installing build files..."
-    install -Dt "$builddir" -m644 Makefile .config Module.symvers System.map vmlinux
+    install -Dt "$builddir" -m644 .config Makefile Module.symvers System.map \
+        localversion.* version vmlinux
     install -Dt "$builddir/kernel" -m644 kernel/Makefile
     install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
     cp -t "$builddir" -a scripts
@@ -283,9 +274,6 @@ _package-headers() {
 
     # add xfs and shmem for aufs building
     mkdir -p "$builddir"/{fs/xfs,mm}
-
-    # ???
-    mkdir "$builddir/.tmp_versions"
 
     msg2 "Installing headers..."
     cp -t "$builddir" -a include
@@ -340,7 +328,7 @@ _package-headers() {
 
     msg2 "Adding symlink..."
     mkdir -p "$pkgdir/usr/src"
-    ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase-$pkgver"
+    ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 
     msg2 "Fixing permissions..."
     chmod -Rc u=rwX,go=rX "$pkgdir"
@@ -354,9 +342,8 @@ _package-docs() {
         "linux-docs=$pkgver"
     )
 
-    local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
-
     cd $_reponame
+    local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
     msg2 "Installing documentation..."
     mkdir -p "$builddir"

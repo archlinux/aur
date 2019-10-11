@@ -1,5 +1,5 @@
 pkgbase = linux-bcachefs-git
-	pkgver = 5.2.20.arch1.r844550.2df3501f6873
+	pkgver = 5.2.21.arch1.r844571.5e3567bd1f52
 	pkgrel = 1
 	url = https://github.com/koverstreet/bcachefs
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = linux-bcachefs-git
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = d9519955c66275dbb8a1b056eb799b97387fab4cadb96de3a400cef7ec39f6a3ad0228c6deb24401f4ad65ffb6ed6173b27f453a1edf9c5e2a36c3a46851d4a8
-	sha512sums = 7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a
+	sha512sums = 6b57a66b870b2f525e2dedd8f224b89474fd4ec6ea18484b0a67a1a2b9a4fc95d025cac181504406ea42a35d6c1b184c0d4e38c92815022935fc55746c69c7c1
 	sha512sums = 2718b58dbbb15063bacb2bde6489e5b3c59afac4c0e0435b97fe720d42c711b6bcba926f67a8687878bd51373c9cf3adb1915a11666d79ccb220bf36e0788ab7
 	sha512sums = 2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf
 
@@ -39,18 +39,18 @@ pkgname = linux-bcachefs-git
 	depends = bcachefs-tools-git
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
-	provides = linux-bcachefs-git=5.2.20.arch1.r844550.2df3501f6873
+	provides = linux-bcachefs-git=5.2.21.arch1.r844571.5e3567bd1f52
 	backup = etc/mkinitcpio.d/linux-bcachefs-git.preset
 
 pkgname = linux-bcachefs-git-headers
 	pkgdesc = Header files and scripts for building modules for Linux-bcachefs-git kernel ~ featuring Kent Overstreet's bcachefs filesystem
-	depends = linux-bcachefs-git=5.2.20.arch1.r844550.2df3501f6873
-	provides = linux-bcachefs-git-headers=5.2.20.arch1.r844550.2df3501f6873
-	provides = linux-headers=5.2.20.arch1.r844550.2df3501f6873
+	depends = linux-bcachefs-git=5.2.21.arch1.r844571.5e3567bd1f52
+	provides = linux-bcachefs-git-headers=5.2.21.arch1.r844571.5e3567bd1f52
+	provides = linux-headers=5.2.21.arch1.r844571.5e3567bd1f52
 
 pkgname = linux-bcachefs-git-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-bcachefs-git kernel ~ featuring Kent Overstreet's bcachefs filesystem
-	depends = linux-bcachefs-git=5.2.20.arch1.r844550.2df3501f6873
-	provides = linux-bcachefs-git-docs=5.2.20.arch1.r844550.2df3501f6873
-	provides = linux-docs=5.2.20.arch1.r844550.2df3501f6873
+	depends = linux-bcachefs-git=5.2.21.arch1.r844571.5e3567bd1f52
+	provides = linux-bcachefs-git-docs=5.2.21.arch1.r844571.5e3567bd1f52
+	provides = linux-docs=5.2.21.arch1.r844571.5e3567bd1f52
 
