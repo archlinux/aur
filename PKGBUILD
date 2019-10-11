@@ -6,7 +6,7 @@
 #   french pkgbuild here: https://git.deparis.io/pkgbuilds/tree/cliqz_work/PKGBUILD?id=17ec1716c90dd08
 pkgname=cliqz
 _pkgname=browser-f
-pkgver=1.29.0
+pkgver=1.29.2
 pkgrel=1
 _cqzchannel=release
 _cqzbuildid=$(curl -s "http://repository.cliqz.com.s3.amazonaws.com/dist/${_cqzchannel}/${pkgver}/lastbuildid")
@@ -25,7 +25,7 @@ optdepends=('hunspell-en_US: Spell checking, American English')
 conflicts=(cliqz-bin)
 source=("https://github.com/cliqz-oss/browser-f/archive/$pkgver.tar.gz"
         '0001-Use-remoting-name-for-GDK-application-names.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0001-Use-remoting-name-for-GDK-application-names.patch?h=packages/firefox&id=3dac00b6aefd97b66f13af0ad8761a3765094368')
-sha256sums=('10850fa992b8d1cac92bb8f0c06148248a0fb1568d36a408768420b20248d0f6'
+sha256sums=('dd63c2d435501614ad46df7d934362284f591144cacea6b06dd1b95be1203481'
             'ab07ab26617ff76fce68e07c66b8aa9b96c2d3e5b5517e51a3c3eac2edd88894')
 options=(!emptydirs !makeflags !strip)
 
@@ -91,8 +91,8 @@ export MOZ_APP_NAME=cliqz
 export MOZ_APP_DISPLAYNAME=Cliqz
 export MOZ_APP_REMOTINGNAME=Cliqz
 export MOZ_PGO=1
-export CC=clang
-export CXX=clang++
+export CC='clang --target=x86_64-unknown-linux-gnu'
+export CXX='clang++ --target=x86_64-unknown-linux-gnu'
 export AR=llvm-ar
 export NM=llvm-nm
 export RANLIB=llvm-ranlib
