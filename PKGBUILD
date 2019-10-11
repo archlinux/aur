@@ -2,7 +2,7 @@
 
 _gemname=google-cloud-env
 pkgname=ruby-${_gemname}
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="google-cloud-env provides information on the Google Cloud Platform hosting environment."
 arch=('any')
@@ -17,7 +17,7 @@ license=('MIT')
 source=(
   "https://rubygems.org/downloads/${_gemname}-${pkgver}.gem"
 )
-sha256sums=('6d654f94af0ca42578c8fc0557a5b0ed74f141a84422e8357778798885d74548')
+sha256sums=('271f0233cf6a14964f3d3b91a98e30b6bf31be71ecb15830e85f9ad18736c0fa')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"

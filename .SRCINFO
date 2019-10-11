@@ -1,6 +1,6 @@
 pkgbase = ruby-google-cloud-env
 	pkgdesc = google-cloud-env provides information on the Google Cloud Platform hosting environment.
-	pkgver = 1.2.0
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://rubygems.org/gems/google-cloud-env
 	arch = any
@@ -8,10 +8,10 @@ pkgbase = ruby-google-cloud-env
 	depends = ruby
 	depends = ruby-faraday>=0.11
 	depends = ruby-faraday<1
-	noextract = google-cloud-env-1.2.0.gem
+	noextract = google-cloud-env-1.2.1.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/google-cloud-env-1.2.0.gem
-	sha256sums = 6d654f94af0ca42578c8fc0557a5b0ed74f141a84422e8357778798885d74548
+	source = https://rubygems.org/downloads/google-cloud-env-1.2.1.gem
+	sha256sums = 271f0233cf6a14964f3d3b91a98e30b6bf31be71ecb15830e85f9ad18736c0fa
 
 pkgname = ruby-google-cloud-env
 
