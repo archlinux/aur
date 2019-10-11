@@ -1,7 +1,7 @@
 # Maintainer: Zhanibek Adilbekov <zhanibek.adilbekov@pm.me>
 pkgname=zeebe-modeler
-pkgver=0.6.2
-pkgrel=2
+pkgver=0.7.0
+pkgrel=1
 pkgdesc="Desktop Application for modeling Zeebe Workflows with BPMN"
 arch=('x86_64')
 url="https://github.com/zeebe-io/zeebe-modeler"
@@ -11,18 +11,13 @@ makedepends=('tar')
 install=$pkgname.install
 source=(
 	"$pkgname-$pkgver.tar.gz::https://github.com/zeebe-io/zeebe-modeler/releases/download/v$pkgver/zeebe-modeler-$pkgver-linux-x64.tar.gz"
-	"$pkgname.patch"
 	"$pkgname.install")
-
-prepare() {
-	cd "$srcdir/$pkgname-$pkgver-linux-x64"
-	patch --strip=1 --input=$srcdir/$pkgname.patch
-}
 
 package() {
 	install -d $pkgdir/opt/$pkgname
 	cp -R $srcdir/$pkgname-$pkgver-linux-x64/* $pkgdir/opt/$pkgname
+	install -dm755 "${pkgdir}/usr/bin"
+	ln -s /opt/$pkgname/zeebe-modeler $pkgdir/usr/bin/zeebe-modeler
 }
-md5sums=('892b48eacdc2693180f731f484d12470'
-         'd997b6d6c3831e0eb8a87b0ae59aa730'
-         '615f2fe722cc5b3eea9c9ea9d22bdafd')
+md5sums=('cfc5f46910b27dc505b718bf480df1a7'
+	'615f2fe722cc5b3eea9c9ea9d22bdafd')
