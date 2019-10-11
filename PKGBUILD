@@ -131,7 +131,6 @@ prepare() {
 		fi
 	fi
 
-	
     ### Optionally set tickrate to 1000
 	if [ -n "$_1k_HZ_ticks" ]; then
 		msg2 "Setting tick rate to 1k..."
