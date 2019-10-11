@@ -4,12 +4,12 @@
 
 pkgname=gkrellm-volume
 pkgver=2.1.13
-pkgrel=5
+pkgrel=6
 pkgdesc="A volume control plugin for gkrellm2"
 arch=('i686' 'x86_64')
 depends=('gkrellm' 'gtk2')
 license=('GPL')
-source=(http://gkrellm.luon.net/files/$pkgname-$pkgver.tar.gz)
+source=(http://www.minix3.org/pkgsrc/distfiles/local/3.4.0/$pkgname-$pkgver.tar.gz)
 url="http://gkrellm.luon.net/volume.phtml"
 md5sums=('d9f4c36d7fdf9c9f755c99f742b573c4')
 
