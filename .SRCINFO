@@ -1,0 +1,16 @@
+pkgbase = git-journal
+	pkgdesc = The Git Commit Message and Changelog Generation Framework
+	pkgver = 1.8.1
+	pkgrel = 1
+	url = https://github.com/saschagrunert/git-journal
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = cargo
+	provides = git-journal
+	conflicts = git-journal
+	source = https://github.com/saschagrunert/git-journal/archive/1.8.1.tar.gz
+	sha256sums = 1941a47668d024979eaeedc1c484b55be2786ff111d4189a6a2e50b29554394e
+
+pkgname = git-journal
+
