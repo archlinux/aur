@@ -1,4 +1,4 @@
-*.pkg.tar
+*pkg.tar.xz
 psalm.phar
 /src/
 /pkg/
