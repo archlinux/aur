@@ -1,12 +1,14 @@
 pkgbase = quiche
-	pkgdesc = quiche is an implementation of the QUIC transport protocol and HTTP/3 as specified by the IETF
+	pkgdesc = an implementation of the QUIC transport protocol and HTTP/3 as specified by the IETF
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cloudflare/quiche
 	arch = x86_64
 	license = custom:BSD
-	makedepends = rust
+	makedepends = cmake
 	makedepends = git
+	makedepends = go
+	makedepends = rust
 	depends = gcc-libs
 	source = https://github.com/cloudflare/quiche/archive/0.1.0.tar.gz
 	source = git+https://boringssl.googlesource.com/boringssl#branch=chromium-stable
