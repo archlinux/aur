@@ -2,7 +2,7 @@
 
 pkgname=ruby-excon
 _gemname=excon
-pkgver=0.64.0
+pkgver=0.67.0
 pkgrel=1
 pkgdesc="EXtended http(s) CONnections"
 arch=('any')
