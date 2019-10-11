@@ -12,8 +12,7 @@ _dicver=20190911
 _revision=1
 
 _pkgbase=mozc
-pkgbase=fcitx-mozc-neologd-ut+ut2
-pkgname=mozc-neologd-ut+ut2
+pkgname=fcitx-mozc-neologd-ut+ut2
 true && pkgname=('mozc-neologd-ut+ut2' 'fcitx-mozc-neologd-ut+ut2')
 pkgver=${_mozcver}.${_dicver}.${_revision}
 pkgrel=1
