@@ -6,7 +6,7 @@ pkgver() {
   cd "$srcdir/${pkgname%-git}"
   printf 'r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-pkgver=r675.g24ce11c
+pkgver=r685.gb66fb80
 pkgrel=1
 
 pkgdesc='A simple interface to auto-configure neomutt and isync with safe passwords'
@@ -18,7 +18,7 @@ provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 
 makedepends=('git')
-depends=('neomutt' 'isync' 'msmtp' 'pass')
+depends=('neomutt' 'isync' 'msmtp' 'notmuch-runtime' 'pass')
 optdepends=('imagemagick: view images inside of the neomutt TUI'
             'w3m: view HTML email and images inside of the neomutt TUI'
             'lynx: view HTML email inside of the neomutt TUI'
@@ -28,6 +28,8 @@ optdepends=('imagemagick: view images inside of the neomutt TUI'
             'abook: contact store and tab completion'
             'cronie: auto-sync mails - alt.: fcron'
             'fcron: auto-sync mails - alt.: cronie'
+            'libnotify: enable desktop notifications about new mail'
+            'dunst: enable desktop notifications about new mail'
             'pam-gnupg: automatically unlock gpg keys at session login')
 
 options=('zipman')
@@ -42,5 +44,6 @@ package() {
   make DESTDIR="$pkgdir" -s install
   install -Dm644 -t "$pkgdir/usr/share/doc/${pkgname%-git}/" README.md
 }
+
 
 # vim: ts=2 sw=2 et ft=PKGBUILD:
