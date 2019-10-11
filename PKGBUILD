@@ -1,8 +1,8 @@
 # Maintainer: Betül Ünlü < betulunlu0018 ~at~ gmail ~dot~ com >
 
 pkgname="emojicode"
-pkgver=0.9
-pkgrel=2
+pkgver=1.0.beta.1
+pkgrel=1
 pkgdesc="An open-source, full-blown programming language consisting of emojis"
 arch=('i686' 'x86_64')
 url="https://emojicode.org"
@@ -13,8 +13,7 @@ depends=(
 )
 makedepends=(
     "gcc>=7.2"
-    "llvm7"
-    "llvm-libs"
+    "llvm"
     "cmake>=3.5.1"
     "ninja"
 )
@@ -26,13 +25,13 @@ optdepends=(
     "yarn: for package support and allegro"
     "allegro: for graphics support"
 )
-source=("${pkgname}::git+https://github.com/emojicode/emojicode#tag=v${pkgver}")
+
+# FIXME: versioning after stable
+source=("${pkgname}::git+https://github.com/emojicode/emojicode#tag=v1.0-beta.1")
 md5sums=("SKIP")
 
 build() {
     cd "${srcdir}/${pkgname}"
-
-    sed -i 's/7.0/7.1/' Compiler/CMakeLists.txt
 
     mkdir -p build
     cd build
@@ -59,8 +58,8 @@ package() {
     cd "${srcdir}/${pkgname}/build"
     ninja dist
 
-    # FIXME: this .0 is temporary, revert it on the first minor version release
-    cd "Emojicode-${pkgver}.0-Linux-${CARCH}"
+    # FIXME: versioning ugh
+    cd "Emojicode-1.0-beta.1-Linux-${CARCH}"
 
     install -Dm755 "emojicodec" "${pkgdir}/usr/bin/emojicodec"
 

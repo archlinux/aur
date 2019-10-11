@@ -1,7 +1,7 @@
 pkgbase = emojicode
 	pkgdesc = An open-source, full-blown programming language consisting of emojis
-	pkgver = 0.9
-	pkgrel = 2
+	pkgver = 1.0.beta.1
+	pkgrel = 1
 	url = https://emojicode.org
 	arch = i686
 	arch = x86_64
@@ -9,15 +9,14 @@ pkgbase = emojicode
 	checkdepends = python>=3.5.2
 	checkdepends = ninja
 	makedepends = gcc>=7.2
-	makedepends = llvm7
-	makedepends = llvm-libs
+	makedepends = llvm
 	makedepends = cmake>=3.5.1
 	makedepends = ninja
 	depends = ncurses
 	depends = zlib
 	optdepends = yarn: for package support and allegro
 	optdepends = allegro: for graphics support
-	source = emojicode::git+https://github.com/emojicode/emojicode#tag=v0.9
+	source = emojicode::git+https://github.com/emojicode/emojicode#tag=v1.0-beta.1
 	md5sums = SKIP
 
 pkgname = emojicode
