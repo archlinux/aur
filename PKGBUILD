@@ -6,12 +6,15 @@
 
 pkgname=ruby-faraday-0.15
 pkgver=0.15.4
-pkgrel=1
+pkgrel=2
 pkgdesc='HTTP/REST API client library.'
 arch=('any')
 url='https://github.com/lostisland/faraday'
 license=('MIT')
-depends=('ruby' 'ruby-multipart-post')
+depends=(
+  'ruby'
+  'ruby-multipart-post>=1.2' 'ruby-multipart-post<3'
+)
 makedepends=('ruby-rdoc')
 options=('!emptydirs')
 source=("https://rubygems.org/downloads/faraday-$pkgver.gem")
