@@ -4,7 +4,7 @@ _name="luxcorerender"
 _ver_tag="luxcorerender_v2.2"
 { IFS='.'; read _ver_major _ver_minor; ((_ver_minor++)); unset IFS; } <<<${_ver_tag#luxcorerender_v}
 pkgname=${_name}-git
-pkgver=2.3.r80.gc68d73748
+pkgver=2.3.r90.ged325009a
 epoch=2
 pkgrel=1
 pkgdesc="Physically correct, unbiased rendering engine."
@@ -23,10 +23,10 @@ source=("${_name}::git+https://github.com/LuxCoreRender/LuxCore.git${_fragment}"
         "glfw.patch"
         "boost016900_serialization.patch"
         )
-md5sums=('SKIP'
-         '8e2fd7337fe6afaf5b2801426837f600'
-         'e2a20172b7b7ac92a7002b6218afe327'
-         '52f097678654151e2b5427d271a7e69d')
+sha256sums=('SKIP'
+            '92bf04a12ce6a1f559eb3b129e324e0349e3b9f8da1976dae6e16704a031b359'
+            '4e04c3eb653f00d2389aff8e7fda2d244e258cbca3a22e32c13388a3984e4bb1'
+            '495d183aef045e53ec8c53aa08cdcc082fb4e69ccb0857693cb0cf2684db0760')
 
 pkgver() {
   cd ${srcdir}/${_name}
