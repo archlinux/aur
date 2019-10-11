@@ -68,7 +68,7 @@ _srcname=linux-${_major}
 _clr=${_major}.1-843
 pkgbase=linux-clear
 pkgver=${_major}.${_minor}
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux"
 license=('GPL2')
@@ -84,7 +84,6 @@ source=(
   'add-acs-overrides.patch::https://aur.archlinux.org/cgit/aur.git/plain/add-acs-overrides.patch?h=linux-vfio'
   '60-linux.hook'  # pacman hook for depmod
   '90-linux.hook'  # pacman hook for initramfs regeneration
-  '99-linux.hook'  # pacman hook for remove initramfs
   'linux.preset'   # standard config files for mkinitcpio ramdisk
 )
 
@@ -234,8 +233,6 @@ _package() {
         "$pkgdir/usr/share/libalpm/hooks/60-${pkgbase}.hook"
     sed "$subst" ../90-linux.hook | install -Dm644 /dev/stdin \
         "$pkgdir/usr/share/libalpm/hooks/90-${pkgbase}.hook"
-    sed "$subst" ../99-linux.hook | install -Dm644 /dev/stdin \
-        "$pkgdir/usr/share/libalpm/hooks/99-${pkgbase}.hook"
 
     msg2 "Fixing permissions..."
     chmod -Rc u=rwX,go=rX "$pkgdir"
@@ -335,7 +332,6 @@ sha256sums=('78f3c397513cf4ff0f96aa7d09a921d003e08fa97c09e0bb71d88211b40567b2'
             'dbf4ac4b873ce6972e63b78d74ddba18f2701716163bb7f4b4fe5e909346a6e1'
             '452b8d4d71e1565ca91b1bebb280693549222ef51c47ba8964e411b2d461699c'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
-            'ed9d35cb7d7bd829ff6253353efa5e2d119820fe4f4310aea536671f5e4caa37'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 
 validpgpkeys=(

@@ -1,6 +1,6 @@
 pkgbase = linux-clear
 	pkgver = 5.3.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/clearlinux-pkgs/linux
 	arch = x86_64
 	license = GPL2
@@ -20,7 +20,6 @@ pkgbase = linux-clear
 	source = add-acs-overrides.patch::https://aur.archlinux.org/cgit/aur.git/plain/add-acs-overrides.patch?h=linux-vfio
 	source = 60-linux.hook
 	source = 90-linux.hook
-	source = 99-linux.hook
 	source = linux.preset
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
@@ -32,7 +31,6 @@ pkgbase = linux-clear
 	sha256sums = dbf4ac4b873ce6972e63b78d74ddba18f2701716163bb7f4b4fe5e909346a6e1
 	sha256sums = 452b8d4d71e1565ca91b1bebb280693549222ef51c47ba8964e411b2d461699c
 	sha256sums = c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636
-	sha256sums = ed9d35cb7d7bd829ff6253353efa5e2d119820fe4f4310aea536671f5e4caa37
 	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
 
 pkgname = linux-clear
