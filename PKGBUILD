@@ -37,8 +37,8 @@ pkgver() {
 build() {
   cd $_pkgname
 
-  ./configure --prefix=/usr --enable-libxml2 --enable-rttopo
-  make 
+  ./configure --prefix=/usr --enable-libxml2 --enable-rttopo --enable-gcp
+  make
 }
 
 package() {
