@@ -1,15 +1,16 @@
 [Unit]
 Description=Mini SAT>IP server
-After=network.target
-Wants=oscam.service
+After=network-online.target
+Wants=network-online.target oscam.service
 
 [Service]
 User=minisatip
 Group=minisatip
-WorkingDirectory=/var/lib/minisatip
 Type=simple
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+RuntimeDirectory=libmcli
 EnvironmentFile=-/etc/conf.d/minisatip
-ExecStart=/usr/bin/minisatip -f $SERVER_ARGS
+ExecStart=/usr/bin/minisatip -f -R /usr/share/minisatip/html $SERVER_ARGS
 
 [Install]
 WantedBy=multi-user.target
