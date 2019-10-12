@@ -1,0 +1,16 @@
+pkgbase = emacs-eterm-256color
+	pkgdesc = Customizable 256 colors for emacs term and ansi-term
+	pkgver = 0.3.13
+	pkgrel = 1
+	url = https://github.com/atomontage/eterm-256color
+	arch = any
+	license = GPL
+	makedepends = emacs
+	makedepends = ncurses
+	depends = emacs-xterm-color
+	depends = emacs-f
+	source = emacs-eterm-256color-0.3.13.tar.gz::https://github.com/dieggsy/eterm-256color/archive/0.3.13.tar.gz
+	md5sums = 629f112e52d32bd7bcfc8de741025fa1
+
+pkgname = emacs-eterm-256color
+
