@@ -1,6 +1,6 @@
 pkgbase = geiser-git
 	pkgdesc = Emacs environment to hack in Scheme, version from git
-	pkgver = 0.10.28.gdcf754c
+	pkgver = 0.10.r87.g846b23d
 	pkgrel = 1
 	url = http://www.nongnu.org/geiser/
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = geiser-git
 	depends = emacs
 	provides = geiser
 	conflicts = geiser
-	source = git+https://gitlab.com/jaor/geiser.git
-	md5sums = SKIP
+	source = git://git.sv.gnu.org/geiser.git
+	sha256sums = SKIP
 
 pkgname = geiser-git
 
