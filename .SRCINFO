@@ -1,7 +1,7 @@
 pkgbase = dart-sass
 	pkgdesc = Sass makes CSS fun again (canonical implementation)
 	pkgver = 1.23.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://sass-lang.com/
 	arch = x86_64
 	license = MIT

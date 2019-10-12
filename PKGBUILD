@@ -6,7 +6,7 @@
 # Maintainer: Thayne McCombs <astrothayne@gmail.com>
 pkgname=dart-sass
 pkgver=1.23.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Sass makes CSS fun again (canonical implementation)"
 arch=(x86_64)
 url="http://sass-lang.com/"
@@ -20,6 +20,7 @@ sha256sums=('a495c811fbc01208eb2bfa1f7ddffca845502c44cb7d6f06073ac6dd2840786b'
 
 build() {
   cd "$pkgname-$pkgver"
+  pub get
   pub run grinder native-executable
 }
 
