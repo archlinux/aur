@@ -1,0 +1,16 @@
+pkgbase = python2-spyder-kernels
+	pkgdesc = Jupyter Kernels for the Spyder console
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = https://github.com/spyder-ide/spyder-kernels/
+	arch = any
+	license = MIT
+	makedepends = python2
+	makedepends = python2-setuptools
+	depends = python2-ipykernel
+	depends = python2-cloudpickle
+	source = python-spyder-kernels-0.5.2.tar.gz::https://github.com/spyder-ide/spyder-kernels/archive/v0.5.2.tar.gz
+	sha256sums = 861b7547ef407e1a02f315a9f54fe55fe21b516e6d40b7be0df524a85baf664e
+
+pkgname = python2-spyder-kernels
+
