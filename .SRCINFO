@@ -1,0 +1,13 @@
+pkgbase = emacs-xterm-color
+	pkgdesc = Emacs ANSI control sequence to text-property translator
+	pkgver = 1.9
+	pkgrel = 1
+	url = https://github.com/atomontage/xterm-color
+	arch = any
+	license = GPL
+	makedepends = emacs
+	source = emacs-xterm-color-1.9.tar.gz::https://github.com/atomontage/xterm-color/archive/1.9.tar.gz
+	md5sums = c34d6af56269615bf4a8068fa55eabd6
+
+pkgname = emacs-xterm-color
+
