@@ -2,8 +2,8 @@
 # Contributor: Wyatt J. Brown <sushidudeteam at gmail dot com>
 # shellcheck disable=SC2034,SC2148,SC2154
 pkgname=all-repository-fonts
-pkgver=20190710
-pkgrel=2
+pkgver=20191011
+pkgrel=1
 pkgdesc='Meta package for all fonts in the official repositories.'
 arch=('any')
 url='https://aur.archlinux.org/packages/all-repository-fonts/'
@@ -29,6 +29,7 @@ depends=('adobe-source-code-pro-fonts'
          'font-bh-ttf'
          'font-bitstream-speedo'
          'font-mathematica'
+         'gentium-plus-font'
          'gnu-free-fonts'
          'gsfonts'
          'noto-fonts'
@@ -36,15 +37,15 @@ depends=('adobe-source-code-pro-fonts'
          'noto-fonts-emoji'
          'noto-fonts-extra'
          'opendesktop-fonts'
-		 'otf-cormorant'
-		 'otf-fantasque-sans-mono'
-		 'otf-fira-code'
+         'otf-cormorant'
+         'otf-fantasque-sans-mono'
+         'otf-fira-code'
          'otf-fira-mono'
          'otf-fira-sans'
-		 'otf-font-awesome'
+         'otf-font-awesome'
          'otf-ipafont'
-		 'otf-latin-modern'
-		 'otf-latinmodern-math'
+         'otf-latin-modern'
+         'otf-latinmodern-math'
          'otf-overpass'
          'powerline-fonts'
          'tamsyn-font'
@@ -57,16 +58,15 @@ depends=('adobe-source-code-pro-fonts'
          'ttf-bitstream-vera'
          'ttf-caladea'
          'ttf-carlito'
-		 'ttf-cormorant'
+         'ttf-cormorant'
          'ttf-croscore'
          'ttf-dejavu'
          'ttf-droid'
          'ttf-fantasque-sans-mono'
-		 'ttf-fira-code'
+         'ttf-fira-code'
          'ttf-fira-mono'
          'ttf-fira-sans'
-		 'ttf-font-awesome'
-         'ttf-gentium'
+         'ttf-font-awesome'
          'ttf-hack'
          'ttf-hanazono'
          'ttf-hannom'
@@ -101,6 +101,6 @@ sha256sums=('3b4773abb04074e08b55e3c4ca3fddd8e040bec671b835d3850c582b7d884149')
 
 package()
 {
-	cd "$srcdir" || exit
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    cd "$srcdir" || exit
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
