@@ -1,7 +1,7 @@
 pkgbase = amdvlk
 	pkgdesc = Open-source Vulkan driver for AMD Radeon™ graphics adapters
 	pkgver = 2019.Q3.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/GPUOpen-Drivers
 	arch = x86_64
 	license = MIT
@@ -32,7 +32,7 @@ pkgbase = amdvlk
 	source = SPIRV-Headers-amdvlk-2019.Q3.6.tar.gz::https://github.com/KhronosGroup/SPIRV-Headers/archive/63d4d272f6e5b3cb9bb2bb50718a886a3eef4dab.tar.gz
 	source = MetroHash-amdvlk-2019.Q3.6.tar.gz::https://github.com/GPUOpen-Drivers/MetroHash/archive/2b6fee002db6cc92345b02aeee963ebaaf4c0e2f.tar.gz
 	source = CWPack-amdvlk-2019.Q3.6.tar.gz::https://github.com/GPUOpen-Drivers/CWPack/archive/b601c88aeca7a7b08becb3d32709de383c8ee428.tar.gz
-	sha256sums = 1970d7cdf31e564c7a98737442fc7ed3593da24fb7e4dabe26ec120017aa0538
+	sha256sums = 9afb90b56c3c1213c97ef3364b1d31d0e85a81469c861b43dc389af5672c6331
 	sha256sums = 88ae1c7d465e6313c324e2802ffa024fc3e1ed588ac4b48170c736fea9181e93
 	sha256sums = fb9a6a497f488a3d9682b51ec9d615199b2f6770446b9cec47bd6a7c81278269
 	sha256sums = 063f3446339a42b08128b4acb5b74e846a0bb5ebd9d3aae3feec5011a1797f1d

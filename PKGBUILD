@@ -2,7 +2,7 @@
 
 pkgname=amdvlk
 pkgver=2019.Q3.6
-pkgrel=2
+pkgrel=3
 
 _llpc_commit=ec210a78b6a280b00fb1765dd588c3970b6dc818
 _xgl_commit=2cb5558b94c5dc839e093cb439057a1802426c8e
@@ -36,7 +36,7 @@ source=(AMDVLK-$pkgname-$pkgver.tar.gz::https://github.com/GPUOpen-Drivers/AMDVL
         MetroHash-$pkgname-$pkgver.tar.gz::https://github.com/GPUOpen-Drivers/MetroHash/archive/${_metrohash_commit}.tar.gz
         CWPack-$pkgname-$pkgver.tar.gz::https://github.com/GPUOpen-Drivers/CWPack/archive/${_cwpack_commit}.tar.gz)
   
-sha256sums=('1970d7cdf31e564c7a98737442fc7ed3593da24fb7e4dabe26ec120017aa0538'
+sha256sums=('9afb90b56c3c1213c97ef3364b1d31d0e85a81469c861b43dc389af5672c6331'
             '88ae1c7d465e6313c324e2802ffa024fc3e1ed588ac4b48170c736fea9181e93'
             'fb9a6a497f488a3d9682b51ec9d615199b2f6770446b9cec47bd6a7c81278269'
             '063f3446339a42b08128b4acb5b74e846a0bb5ebd9d3aae3feec5011a1797f1d'
