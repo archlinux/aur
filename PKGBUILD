@@ -1,15 +1,18 @@
 # Maintainer: ava1ar <mail(at)ava1ar(dot)me>
-# Maintainer: Corey Hinshaw <coreyhinshaw(at)gmail(dot)com>
+# Maintainer: Corey Hinshaw <corey(at)electrickite(dot)org>
 
 pkgname=system76-driver
-pkgver=19.04.9
+pkgver=19.04.18
 pkgrel=1
-pkgdesc="System76 Driver provides drivers, restore, and regression support for System76 computers"
+pkgdesc="Universal driver for System76 computers"
 arch=('any')
 url="https://github.com/pop-os/system76-driver"
 license=('GPL')
 install="${pkgname}.install"
 depends=(
+  'at'
+  'dmidecode'
+  'firmware-manager'
 	'python>=3.6'
 	'python-cffi'
 	'python-dbus'
@@ -18,33 +21,32 @@ depends=(
 	'python-pynacl'
 	'python-systemd'
 	'python-xlib'
-	'dmidecode'
-	'at'
 	'system76-dkms'
 	'system76-firmware-daemon')
 makepdepends=(
 	'python-pyflakes')
 optdepends=(
-	'grub: To apply kernel boot time parameters'
 	'gtk3: To launch System76 driver and firmware GUI'
 	'pm-utils: For power management features'
 	'polkit: Run System76 Driver GUI from application menu'
 	'pulseaudio: To apply microphone fix'
 	'system76-io-dkms: Enable System76 I/O daughterboard'
+  'system76-oled: Control brightness on OLED displays'
+  'system76-power: System76 Power Management'
 	'xorg-xhost: To enable GUI applications on Wayland'
 	'xorg-xbacklight: To use the backlight service')
 source=(
 	"https://github.com/pop-os/${pkgname}/archive/${pkgver}.tar.gz"
 	'galu1.patch'
 	'gtk.patch'
-	'cli.patch'
-	'wayland.patch')
+  'cli.patch'
+  'wayland.patch')
 sha1sums=(
-  '393cf7fafbb559ceb2898fdec3b8d04bb1df4798'
+  'dff733cf140c62c1dcd189c387430a7b78d3b5bb'
   'ddc85f9b062eb89c2c6fef0c6d7c68a28f419760'
   '45b4601ed3d9d80a01d5179628b1502caa9d7e6f'
   '916e0eeda26e00bd0372c1ffc7c5368cda9d46a1'
-  'a64fdf31128e41f02a04b6960b64e2f1eee7fc02')
+  '4825b80d13555742c30d197e4de56638eef162e6')
 
 
 build() {
@@ -72,10 +74,7 @@ package() {
 	# Install daemons and executables
 	install -m755 -D system76-daemon ${pkgdir}/usr/lib/${pkgname}/system76-daemon
 	install -m755 -D system76-backlight-daemon ${pkgdir}/usr/lib/${pkgname}/system76-backlight-daemon
-	install -m755 -D system76-firmware-dialog ${pkgdir}/usr/lib/${pkgname}/system76-firmware-dialog
 	install -m755 -D system76-driver-pkexec ${pkgdir}/usr/bin/system76-driver-pkexec
-	install -m755 -D system76-firmware ${pkgdir}/usr/bin/system76-firmware
-	install -m755 -D system76-firmware-pkexec ${pkgdir}/usr/bin/system76-firmware-pkexec
 
 	# Install systemd unit files
 	# Note: system76-driver* service files shortened to system76*
@@ -85,11 +84,9 @@ package() {
 	# Install scripts and configuration
 	install -m755 -D system76-nm-restart ${pkgdir}/usr/lib/${pkgname}/system76-nm-restart
 	install -m644 -D com.system76.pkexec.system76-driver.policy ${pkgdir}/usr/share/polkit-1/actions/com.system76.pkexec.system76-driver.policy
-	install -m644 -D com.system76.pkexec.system76-firmware.policy ${pkgdir}/usr/share/polkit-1/actions/com.system76.pkexec.system76-firmware.policy
 
-	# Install desktop shortcuts
+	# Install application launchers
 	install -m644 -D system76-driver-backlight.desktop ${pkgdir}/usr/share/applications/system76-backlight.desktop
-	install -m644 -D system76-firmware.desktop ${pkgdir}/usr/share/applications/system76-firmware.desktop
 
 	# Create /var/lib/system76-driver directory for brightness settings saving
 	install -m755 -d ${pkgdir}/var/lib/${pkgname}
