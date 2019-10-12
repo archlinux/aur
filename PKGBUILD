@@ -12,6 +12,7 @@ url="https://github.com/alerque/lua-cldr"
 license=('MIT')
 depends=('lua')
 makedepends=('luarocks')
+conflicts=('lua-cldr')
 source=("git://github.com/alerque/cldr-lua.git#branch=$_branch")
 sha256sums=('SKIP')
 
