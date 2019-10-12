@@ -1,7 +1,7 @@
 pkgbase = python2-qtawesome
 	pkgdesc = Iconic fonts in PyQt and PySide applications
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/spyder-ide/qtawesome/
 	arch = any
 	license = MIT

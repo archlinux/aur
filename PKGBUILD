@@ -3,7 +3,7 @@
 pkgname=python2-qtawesome
 _pkgname='qtawesome'
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Iconic fonts in PyQt and PySide applications'
 arch=('any')
 url="https://github.com/spyder-ide/${_pkgname}/"
@@ -18,7 +18,7 @@ build() {
   python2 setup.py build
 }
 
-package_python2-qtawesome() {
+package() {
   cd "${_pkgname}-${pkgver}"
   python2 setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
   # Install license file
