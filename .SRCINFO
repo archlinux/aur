@@ -1,0 +1,22 @@
+pkgbase = python-jenkins-git
+	pkgdesc = Python API for managing jobs and nodes in a Jenkins CI instance
+	pkgver = r291.1749d4d
+	pkgrel = 1
+	url = https://opendev.org/jjb/python-jenkins/
+	arch = any
+	license = BSD
+	makedepends = git
+	makedepends = python-setuptools
+	makedepends = grep
+	depends = python
+	depends = python-six
+	depends = python-pbr
+	depends = python-requests
+	depends = python-multi_key_dict
+	provides = python-jenkins
+	conflicts = python-jenkins
+	source = python-jenkins-git-r291.1749d4d::git+https://opendev.org/jjb/python-jenkins/
+	md5sums = SKIP
+
+pkgname = python-jenkins-git
+
