@@ -5,7 +5,7 @@
 
 pkgname=nvidia-beta
 pkgver=435.21
-pkgrel=1
+pkgrel=2
 pkgdesc="NVIDIA drivers for Arch's official 'linux' package (beta version)"
 arch=('x86_64')
 url='https://www.nvidia.com/'
@@ -30,22 +30,19 @@ prepare() {
     sh "${_pkg}.run" --extract-only
     
     # fix https://bugs.archlinux.org/task/62142
-    cd "$_pkg"
-    patch -Np1 -i "${srcdir}/FS62142.patch"
+    patch -d "$_pkg" -Np1 -i "${srcdir}/FS62142.patch"
 }
 
 build() {
-    cd "${_pkg}/kernel"
-    
-    local _kernver
-    _kernver="$(cat "/usr/lib/modules/${_extramodules}/version")"
-    
-    printf '%s\n' "  -> Building Nvidia module for ${_kernver}..."
-    make SYSSRC="/usr/lib/modules/${_kernver}/build" module
+    printf '%s\n' "  -> Building Nvidia module for $(</usr/src/linux/version)..."
+    make -C "${_pkg}/kernel" SYSSRC='/usr/src/linux' module
 }
 
 package() {
-    install -D -m644 "${_pkg}/kernel/"nvidia{,-drm,-modeset,-uvm}.ko -t "${pkgdir}/usr/lib/modules/${_extramodules}"
+    local _extradir
+     _extradir="/usr/lib/modules/$(</usr/src/linux/version)/extramodules"
+    
+    install -D -m644 "${_pkg}/kernel/"nvidia{,-drm,-modeset,-uvm}.ko -t "${pkgdir}${_extradir}"
     
     find "$pkgdir" -name '*.ko' -exec gzip -n {} +
     
