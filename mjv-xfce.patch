@@ -1,0 +1,36 @@
+diff --git a/McOS-MJV-XFCE-Edition-2.3/gtk-3.0/gtk.css b/McOS-MJV-XFCE-Edition-2.3/gtk-3.0/gtk.css
+index 524990b..d737176 100644
+--- a/McOS-MJV-XFCE-Edition-2.3/gtk-3.0/gtk.css
++++ b/McOS-MJV-XFCE-Edition-2.3/gtk-3.0/gtk.css
+@@ -12179,7 +12179,7 @@ checkbutton label:not(:only-child):last-child{
+ .xfce4-panel.background button {
+ 
+   background-image: none;
+-  background-color: #ffffff;
++  background-color: transparent;
+   border-radius: 0;
+   border: none;
+   box-shadow: none;
+
+diff --git a/McOS-MJV-Dark-XFCE-Edition-2.3/gtk-3.0/gtk.css b/McOS-MJV-Dark-XFCE-Edition-2.3/gtk-3.0/gtk.css
+index bab8785..6a67d68 100644
+--- a/McOS-MJV-Dark-XFCE-Edition-2.3/gtk-3.0/gtk.css
++++ b/McOS-MJV-Dark-XFCE-Edition-2.3/gtk-3.0/gtk.css
+@@ -11780,7 +11780,7 @@ headerbar .linked:not(.vertical):not(.path-bar) > button:only-child {
+ 
+ .xfce4-panel.background {
+ 
+-  background-color: #2c2b2c;
++  background-color: #3f4042;
+   color: #dddddd;
+   text-shadow: text-shadow: 0px 1px alpha(#000000, 0.40),0 -1px alpha(#ffffff, 0.04),-1px  0px alpha(#ffffff, 0.04);
+   font-weight: normal; }
+@@ -11788,7 +11788,7 @@ headerbar .linked:not(.vertical):not(.path-bar) > button:only-child {
+ .xfce4-panel.background button {
+ 
+   background-image: none;
+-  background-color: #2c2b2c;
++  background-color: transparent;
+   border-radius: 0;
+   border: none;
+   box-shadow: none;

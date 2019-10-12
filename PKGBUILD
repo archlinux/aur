@@ -4,19 +4,20 @@ pkgname=mcos-mjv-xfce-edition
 _pkgname=McOS-MJV-XFCE-Edition
 pkgver=2.3r5.6435c39
 _pkgver=2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="It's GTK2,GTK3,XFCE4,NOTIFYD theme Mac OS created PaulXFCE"
 arch=('any')
 url="https://github.com/paullinuxthemer/McOS-MJV-XFCE-Edition"
 license=('GPL2')
 depends=('gtk-engine-murrine')
-replaces=(mcos-mjv-xfce-edition)
-conflicts=(mcos-mjv-gtk-theme)
+replaces=('mcos-mjv-gtk-theme')
+conflicts=('mcos-mjv-gtk-theme')
 makedepends=('git')
+source=("${_pkgname}::git+https://github.com/paullinuxthemer/${_pkgname}" "mjv-xfce.patch")
 
-source=("${_pkgname}::git+https://github.com/paullinuxthemer/${_pkgname}")
+sha512sums=('SKIP'
+            '8d0ce73a9f0766f069006cd40c956503f93725632c43b7032ef1ab8654c6c1101cee791a5ecef5872c3bee931b339529f65c83f95550412a22b5e66176cc65e2')
 
-sha512sums=('SKIP')
 
 pkgver() {
   cd "${_pkgname}"
@@ -24,19 +25,21 @@ pkgver() {
   echo "2.3r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
-package(){
 
-	cd "${srcdir}/${_pkgname}"
-	mv McOS-MJV-Dark-XFCE-Edition-"${_pkgver}" McOS-MJV-Dark-Xfce
-	mv "${_pkgname}"-"${_pkgver}" McOS-MJV-Xfce
-	install -d "${pkgdir}/usr/share/themes"
-	cp -r 'McOS-MJV-Dark-Xfce' "${pkgdir}"/usr/share/themes/
-	cp -r 'McOS-MJV-Xfce' "${pkgdir}"/usr/share/themes/
-	install -D -m644 "${srcdir}"/"${_pkgname}"/LICENSE "${pkgdir}"/usr/share/licenses/"${_pkgname}"/LICENSE
-	install -D -m644 "${srcdir}"/"${_pkgname}"/README.md "${pkgdir}"/usr/share/doc/"${_pkgname}"/'README.md'
-
-	sed -i 's!  background-color: #2c2b2c;!  background-color: #3f4042;!' "$pkgdir"/usr/share/themes/McOS-MJV-Dark-Xfce/gtk-3.0/gtk.css
-
-	rm -r "${pkgdir}"/usr/share/themes/{McOS-MJV-Dark-Xfce,McOS-MJV-Xfce}/{'READ ME','COPYING'}
-
+prepare() {
+  cd "${srcdir}/${_pkgname}"
+  patch -Np1 -i "${srcdir}"/mjv-xfce.patch
 }
+
+
+package(){
+  cd "${srcdir}/${_pkgname}"
+    mv McOS-MJV-Dark-XFCE-Edition-"${_pkgver}" McOS-MJV-Dark-Xfce
+    mv "${_pkgname}"-"${_pkgver}" McOS-MJV-Light-Xfce
+    install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" {'README.md','McOS-MJV-Light-Xfce/READ ME'}
+    rm -r */{'READ ME','COPYING'}
+    install -d "${pkgdir}/usr/share/themes"
+    cp -r {'McOS-MJV-Dark-Xfce','McOS-MJV-Light-Xfce'} "${pkgdir}"/usr/share/themes/
+}
+
