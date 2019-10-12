@@ -1,4 +1,4 @@
-pkgbase = salahtime-c
+pkgbase = salahtime
 	pkgdesc = A small command line application written in Go that displays the Islamic prayer times for Europe/Copenhagen
 	pkgver = v1.0.3
 	pkgrel = 1
@@ -8,5 +8,5 @@ pkgbase = salahtime-c
 	source = https://github.com/unixsheikh/salahtime/archive/v1.0.3.zip
 	md5sums = da49a81ceb2f5fcba070b3e550299345
 
-pkgname = salahtime-c
+pkgname = salahtime
 

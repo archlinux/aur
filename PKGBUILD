@@ -1,6 +1,6 @@
 # Maintainer: Unix Sheikh <unixsheikh at protonmail dot com>
 
-pkgname=salahtime-c
+pkgname=salahtime
 pkgver=v1.0.3
 pkgrel=1
 url="https://github.com/unixsheikh/salahtime-c"
@@ -12,7 +12,7 @@ source=("https://github.com/unixsheikh/salahtime/archive/v1.0.3.zip")
 md5sums=('da49a81ceb2f5fcba070b3e550299345')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname-c-$pkgver"
   make CC=gcc
 }
 
