@@ -1,0 +1,19 @@
+pkgbase = paperbackup-git
+	pkgdesc = Create a pdf with barcodes to backup text files on paper. Designed to backup ASCII-armored GnuPG and SSH key files and ciphertext.
+	pkgver = r27.7c3f064
+	pkgrel = 1
+	url = https://github.com/intra2net/paperbackup
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-pillow
+	depends = python-pyx
+	depends = python-qrencode
+	depends = enscript
+	depends = ghostscript
+	depends = zbar
+	source = git+https://github.com/intra2net/paperbackup
+	md5sums = SKIP
+
+pkgname = paperbackup-git
+
