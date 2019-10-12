@@ -1,0 +1,16 @@
+pkgbase = python2-qtawesome
+	pkgdesc = Iconic fonts in PyQt and PySide applications
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/spyder-ide/qtawesome/
+	arch = any
+	license = MIT
+	makedepends = python2
+	makedepends = python2-setuptools
+	depends = python2-six
+	depends = python2-qtpy
+	source = python-qtawesome-0.6.0.tar.gz::https://github.com/spyder-ide/qtawesome/archive/v0.6.0.tar.gz
+	sha256sums = 573192ceb76f79f384e8cfb2d5e69ad63ae97cb89711d5e1d2a9373eb6cc2067
+
+pkgname = python2-qtawesome
+
