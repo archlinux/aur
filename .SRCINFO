@@ -1,12 +1,13 @@
 pkgbase = ubports-installer-git
 	pkgdesc = A simple tool to install Ubuntu Touch on UBports devices
 	pkgver = 0.3.2_beta.r6.g15ed833
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ubports/ubports-installer
 	arch = any
 	license = GPL3
 	makedepends = git
 	makedepends = jq
+	makedepends = moreutils
 	makedepends = npm
 	depends = android-tools
 	depends = android-udev

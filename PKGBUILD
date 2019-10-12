@@ -1,13 +1,13 @@
 # Maintainer: Matthias Lisin <ml@visu.li>
 pkgname=ubports-installer-git
 pkgver=0.3.2_beta.r6.g15ed833
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple tool to install Ubuntu Touch on UBports devices'
 arch=(any)
 url='https://github.com/ubports/ubports-installer'
 license=('GPL3')
 depends=('android-tools' 'android-udev' 'electron4')
-makedepends=('git' 'jq' 'npm')
+makedepends=('git' 'jq' 'moreutils' 'npm')
 provides=('ubports-installer')
 conflicts=('ubports-installer')
 source=("$pkgname::git+${url}.git"
@@ -29,7 +29,7 @@ prepare() {
     local version="$(sed s/^v// $dist/version)"
 
     cd "$pkgname"
-    local i; for i in ${source[@]}; do
+    for i in ${source[@]}; do
         case ${i%::*} in
             *.patch)
                 msg2 "Applying ${i}"
@@ -46,6 +46,13 @@ prepare() {
         buildconfig-generic.json.orig > buildconfig-generic.json
 
     npm uninstall --no-audit --cache "$srcdir/npm-cache" electron{-packager,-view-renderer} spectron
+
+    # Removing local references
+    for module in he sshpk; do
+        local target="node_modules/${module}/package.json"
+        msg2 "Removing local references from ${target}"
+        jq 'del(.man)' "$target" | sponge "$target"
+    done
 }
 
 build() {
