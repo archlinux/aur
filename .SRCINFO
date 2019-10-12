@@ -1,0 +1,17 @@
+pkgbase = python2-qtpy
+	pkgdesc = Provides an uniform layer to support PyQt5, PyQt4 and PySide with a single codebase
+	pkgver = 1.9.0
+	pkgrel = 1
+	url = https://github.com/spyder-ide/qtpy/
+	arch = any
+	license = MIT
+	makedepends = python2
+	makedepends = python2-setuptools
+	depends = python2
+	optdepends = python2-pyqt5: Qt5 Python bindings
+	optdepends = python2-pyqtwebengine: Qt5-WebEngine python bindings
+	source = python-qtpy-1.9.0.tar.gz::https://github.com/spyder-ide/qtpy/archive/v1.9.0.tar.gz
+	sha256sums = a6783acab8f7f7b04026c7da19c65bf904d69629d06d951cb7b9344468270c5b
+
+pkgname = python2-qtpy
+
