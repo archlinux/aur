@@ -1,0 +1,25 @@
+pkgbase = pdftk-git
+	pkgdesc = Command-line tool for working with PDFs
+	pkgver = 3.0.0.r62.a1b9815
+	pkgrel = 1
+	url = https://gitlab.com/pdftk-java/pdftk
+	arch = any
+	license = GPL
+	checkdepends = java-hamcrest
+	checkdepends = junit
+	checkdepends = junit-system-rules
+	checkdepends = poppler
+	makedepends = git
+	makedepends = ant
+	depends = bcprov
+	depends = java-commons-lang
+	depends = java-runtime-headless
+	provides = pdftk
+	conflicts = pdftk
+	source = git+https://gitlab.com/pdftk-java/pdftk.git
+	source = pdftk.sh
+	sha512sums = SKIP
+	sha512sums = 439c397472012d71c8e782a75819a7a950474c387b7050bbd5aa2f849d1dbe29423accf3f8e17d18436ba32eb4f76072df5b4f85caebd853df1e75c131631988
+
+pkgname = pdftk-git
+
