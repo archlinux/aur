@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Hyperspace
+Comment=The new beautiful, fluffy client for Mastodon
+Exec=hyperspace
+Terminal=false
+Type=Application
+Icon=hyperspace
+StartupWMClass=hyperspace
+X-AppImage-Version=1.0.0
+Categories=Internet;
