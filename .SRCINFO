@@ -1,12 +1,12 @@
 pkgbase = opensmtpd-libressl
 	pkgdesc = OpenSMTPD built against LibreSSL
 	pkgver = 6.4.2p1
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.opensmtpd.org/
 	arch = i686
 	arch = x86_64
 	license = BSD
-	depends = libressl-side
+	depends = libressl
 	depends = libevent
 	depends = pam
 	depends = libasr

@@ -6,12 +6,12 @@
 
 pkgname=opensmtpd-libressl
 pkgver=6.4.2p1
-pkgrel=3
+pkgrel=4
 pkgdesc='OpenSMTPD built against LibreSSL'
 arch=('i686' 'x86_64')
 url="http://www.opensmtpd.org/"
 license=('BSD')
-depends=('libressl-side' 'libevent' 'pam' 'libasr')
+depends=('libressl' 'libevent' 'pam' 'libasr')
 provides=('smtp-server' 'smtp-forwarder' 'opensmtpd')
 conflicts=('smtp-server' 'smtp-forwarder' 'opensmtpd')
 backup=("etc/smtpd/smtpd.conf" "etc/smtpd/aliases")
