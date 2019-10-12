@@ -1,8 +1,0 @@
-[Unit]
-Description=Espanso daemon
-
-[Service]
-ExecStart=/usr/bin/espanso daemon
-
-[Install]
-WantedBy=default.target
