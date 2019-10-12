@@ -22,7 +22,7 @@ sha256sums=('4fea147de6cfa4ee083a1cecf24a13230045cbca816667df6f5674a654da0b7b'
             'c024851f4c87580b4f764c88f630d77a28794338d0b43947e68939afb146bc0a'
             '964d23e5fa473bd1a78bed4213d0a546a253541e0b82337dc5929c3719bbe020'
             'bcb546b71c94fcec80cdde9a4c56df6b35f17ce3619db1bd051f446a3b5adaf0'
-            '4885e2fc7b427954be32e1e8a7271b47623e2bb8af06c3ccde797952fe969604'
+            'e6fcb1cc6e89fe88c7a6028b88f3de0690bf8d57a771a31dfbff568ce903222f'
             '8a8a42fd38c6fc5a5f9523620ce7e794355ceec5d71c93a7cee378c9a5b3d8ec')
 
 prepare() {
@@ -51,7 +51,7 @@ prepare() {
 
     # Monkeypatch MPRIS D-Bus interface
     patch -p1 < "$srcdir/0001-MPRIS-interface.patch"
-    tar -xvf "$srcdir/extra_node_modules.tar.xz"
+    tar -xvf "$srcdir/node_modules.tar.xz"
 
     cd ..
     asar pack app app.asar

@@ -17,14 +17,14 @@ pkgbase = deezer
 	source = menu-bar.patch
 	source = oauth.patch
 	source = 0001-MPRIS-interface.patch
-	source = https://github.com/SibrenVasse/deezer/raw/mpris/extra_node_modules.tar.xz
+	source = https://github.com/SibrenVasse/deezer/raw/mpris/node_modules.tar.xz
 	sha256sums = 4fea147de6cfa4ee083a1cecf24a13230045cbca816667df6f5674a654da0b7b
 	sha256sums = f8a5279239b56082a5c85487b0c261fb332623f27dac3ec8093458b8c55d8d99
 	sha256sums = c024851f4c87580b4f764c88f630d77a28794338d0b43947e68939afb146bc0a
 	sha256sums = 964d23e5fa473bd1a78bed4213d0a546a253541e0b82337dc5929c3719bbe020
 	sha256sums = bcb546b71c94fcec80cdde9a4c56df6b35f17ce3619db1bd051f446a3b5adaf0
-	sha256sums = 4885e2fc7b427954be32e1e8a7271b47623e2bb8af06c3ccde797952fe969604
-	sha256sums = b9343921a4896027798597058149b9666f0782eddf8c2436291397ec5631a742
+	sha256sums = e6fcb1cc6e89fe88c7a6028b88f3de0690bf8d57a771a31dfbff568ce903222f
+	sha256sums = 8a8a42fd38c6fc5a5f9523620ce7e794355ceec5d71c93a7cee378c9a5b3d8ec
 
 pkgname = deezer
 
