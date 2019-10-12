@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=utmp-git
-pkgver=0.r6.f9178df
+pkgver=r19.694c4dd
 pkgrel=1
 epoch=
 pkgdesc="A small program which updates the utmp record of the current tty."
@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="http://git.suckless.org/utmp/"
 license=('MIT')
 groups=()
-depends=('')
+depends=()
 makedepends=('git')
 optdepends=()
 checkdepends=()
