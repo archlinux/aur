@@ -1,5 +1,5 @@
 # Wildfly Application Server package set up for systemd
-# Maintainer: Nathaniel Stickney <nstickney@gmail.com>
+# Maintainer: Stick <stick at stma dot is>
 # Contributor: Holger Rauch <holger dot rauch at posteo dot de>
 # Contributor: Zdenek Obst <zdenek dot obst at gmail dot com>
 # shellcheck disable=2034
@@ -7,7 +7,7 @@
 _pkg=wildfly
 pkgname="${_pkg}"-systemd
 pkgver=18.0.0.Final
-pkgrel=1
+pkgrel=2
 
 pkgdesc='Wildfly Application Server with upstream systemd integration'
 arch=('any')
