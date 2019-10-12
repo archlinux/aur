@@ -18,7 +18,7 @@ _source="icpbr_certs-${pkgver}-${pkgrel}"
 
 prepare() {
     rm -rf "$_source" && mkdir "$_source"
-    unzip -q "$_source.zip" -d "$_source"
+    unzip "$_source.zip" -d "$_source"
 }
 
 package() {
@@ -29,5 +29,5 @@ package() {
     mv "$cert" "icp_br.${cert//' '/'_'}"
   done
   install -d -m0755 "$pkgdir/usr/share/ca-certificates/trust-source/anchors"
-  install -vm0644 *.crt "$pkgdir/usr/share/ca-certificates/trust-source/anchors"
+  install -m0644 *.crt "$pkgdir/usr/share/ca-certificates/trust-source/anchors"
 }
