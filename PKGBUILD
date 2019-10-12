@@ -6,13 +6,14 @@
 pkgbase=virtualbox-modules-lqx
 pkgname=('virtualbox-host-modules-lqx')
 pkgver=6.0.12
-pkgrel=2
+pkgrel=1
 arch=('x86_64')
 url='http://virtualbox.org'
 license=('GPL')
 makedepends=('linux-lqx-headers' "virtualbox-host-dkms>=$pkgver" 'dkms')
 
-_kernver="$(</usr/src/linux/version)"
+_extramodules=extramodules-lqx
+_kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
 
 build() {
 	# dkms need modification to be run as user
@@ -38,3 +39,7 @@ package_virtualbox-host-modules-lqx() {
         printf "vboxdrv\nvboxpci\nvboxnetadp\nvboxnetflt\n" |
         install -Dm644 /dev/stdin "$pkgdir/usr/lib/modules-load.d/virtualbox-host-modules-lqx.conf"
 }
+
+
+
+
