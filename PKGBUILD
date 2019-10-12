@@ -1,6 +1,6 @@
 # Maintainer: Unix Sheikh <unixsheikh at protonmail dot com>
 
-pkgname=salahtime
+pkgname=salahtime-c
 pkgver=v1.0.3
 pkgrel=1
 url="https://github.com/unixsheikh/salahtime-c"
