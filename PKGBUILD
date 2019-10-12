@@ -6,7 +6,7 @@
 pkgbase=virtualbox-modules-aufs
 pkgname=('virtualbox-host-modules-aufs')
 pkgver=6.0.12
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 url='http://virtualbox.org'
 license=('GPL')
@@ -28,8 +28,8 @@ package_virtualbox-host-modules-aufs() {
 	provides=("VIRTUALBOX-HOST-MODULES")
 	depends=('linux-aufs>=5.3' 'linux-aufs<5.4')
 	
-	cd "dkms/vboxhost/${pkgver}_OSE/$_kernver/$CARCH/module"
-        install -Dt "$pkgdir/usr/lib/modules/$_extramodules" -m644 *
+	cd "/var/lib/dkms/vboxhost/${pkgver}_OSE/$_kernver/$CARCH/module"
+        install -Dt "$pkgdir/usr/lib/modules/$_kernver/extramodules" -m0644 *
 
         # compress each module individually
         find "$pkgdir" -name '*.ko' -exec gzip -n {} +
