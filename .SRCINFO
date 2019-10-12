@@ -1,6 +1,6 @@
 pkgbase = networkmanager-git
 	pkgdesc = Network Management daemon
-	pkgver = 1.19.1.r23059.g19bf820de
+	pkgver = 1.21.2.r24206.gbb4b74959
 	pkgrel = 1
 	url = http://www.gnome.org/projects/NetworkManager
 	arch = i686
@@ -10,6 +10,7 @@ pkgbase = networkmanager-git
 	checkdepends = libx11
 	checkdepends = python-dbus
 	makedepends = dnsmasq
+	makedepends = mobile-broadband-provider-info
 	makedepends = meson
 	makedepends = ninja
 	makedepends = intltool
@@ -71,6 +72,7 @@ pkgbase = networkmanager-git
 
 pkgname = networkmanager-git
 	depends = iproute2
+	depends = mobile-broadband-provider-info
 	depends = polkit
 	depends = wpa_supplicant
 	depends = libsoup

@@ -11,7 +11,7 @@
 pkgbase=networkmanager-git
 _gitname=NetworkManager
 pkgname=(networkmanager-git libnm-git)
-pkgver=1.19.1.r23059.g19bf820de
+pkgver=1.21.2.r24206.gbb4b74959
 pkgrel=1
 pkgdesc="Network Management daemon"
 arch=(i686 x86_64)
@@ -21,7 +21,7 @@ depends=(dbus-glib libmm-glib libndp libnewt libnl libsoup libteam libutil-linux
     nss polkit wpa_supplicant)
 checkdepends=(libx11 python-dbus)
 _pppver=2.4.7
-makedepends=(dnsmasq meson ninja intltool dhclient openresolv iptables gobject-introspection gtk-doc "ppp=$_pppver" modemmanager
+makedepends=(dnsmasq mobile-broadband-provider-info  meson ninja intltool dhclient openresolv iptables gobject-introspection gtk-doc "ppp=$_pppver" modemmanager
               iproute2 nss polkit wpa_supplicant libsoup systemd libgudev
              libnewt libndp libteam vala perl-yaml python-gobject git vala jansson bluez-libs
              glib2-docs)
@@ -60,8 +60,9 @@ build() {
     local meson_args=(
         -D more_logging=false \
         -D more_warnings=false \
-        -D more_asserts=no
-        -D bluez5_dun=true \
+        -D more_asserts=no \
+        -D bluez5_dun=false \
+        -D ebpf=true \
         -D ibft=true \
         -D docs=true \
         -D introspection=true \
@@ -95,15 +96,16 @@ build() {
         -D systemd_journal=true \
         -D systemdsystemunitdir=/usr/lib/systemd/system \
         -D udev_dir=/usr/lib/udev \
-        -D iwd=true
-        -D selinux=false
+        -D iwd=true \
+        -D selinux=false \
+        -D qt=false
       )
       arch-meson NetworkManager build "${meson_args[@]}"
 }
 
-check() {
-  meson test -C build --print-errorlogs
-}
+#check() {
+#  meson test -C build --print-errorlogs
+#}
 
 _pick() {
   local p="$1" f d; shift
@@ -116,7 +118,7 @@ _pick() {
 }
 
 package_networkmanager-git() {
-   depends=(iproute2 polkit wpa_supplicant libsoup openresolv libnewt libndp libteam curl bluez-libs libpsl audit)
+   depends=(iproute2 mobile-broadband-provider-info polkit wpa_supplicant libsoup openresolv libnewt libndp libteam curl bluez-libs libpsl audit)
     optdepends=('dnsmasq: connection sharing'
     'bluez: Bluetooth support'
     'openresolv: resolvconf support'
@@ -131,8 +133,8 @@ package_networkmanager-git() {
 
   install -dm700 "$pkgdir/etc/NetworkManager/system-connections"
   install -d "$pkgdir"/etc/NetworkManager/{conf,dnsmasq}.d
-  install -m644 ../NetworkManager.conf "$pkgdir/etc/NetworkManager/"
-  install -Dm644 ../20-connectivity.conf \
+  install -m644 $srcdir/NetworkManager.conf "$pkgdir/etc/NetworkManager/"
+  install -Dm644 $srcdir/20-connectivity.conf \
     "$pkgdir/usr/lib/NetworkManager/conf.d/20-connectivity.conf"
 
   _pick libnm "$pkgdir"/usr/include/libnm
