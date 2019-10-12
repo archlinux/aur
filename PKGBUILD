@@ -1,8 +1,8 @@
 # Maintainer: Javier Tiá <javier dot tia at gmail dot com>
 
 pkgname=clang+llvm-binaries
-pkgver=5.0.1
-_name="clang+llvm-${pkgver}-x86_64-linux-gnu-Fedora27"
+pkgver=9.0.0
+_name="clang+llvm-${pkgver}-${CARCH}-pc-linux-gnu"
 pkgrel=1
 pkgdesc='Clang and LLVM Pre-Built Binaries'
 arch=('x86_64')
@@ -10,14 +10,12 @@ url='http://llvm.org/'
 license=('custom:University of Illinois/NCSA Open Source License')
 options=('!strip' 'libtool' 'staticlibs')
 # conflicts=('clang' 'clang-analyze' 'clang-tools-extra' 'llvm')
+depends=('z3')
 install="${pkgname}".install
 source=("${url}/releases/${pkgver}/${_name}.tar.xz"
-        "${url}/releases/${pkgver}/${_name}.tar.xz.sig"
         "clang+llvm-binaries.conf")
-sha256sums=('6c9c81cdcac89d179e0b03810c37370db6d033ccbb6b5e9d864af573f58f7890'
-            'SKIP'
+sha256sums=('616c5f75418c88a72613b6d0a93178028f81357777226869ea6b34c23d08a12d'
             'f283a326962a77447bcb562fe2c4a81ca556ae2ffaacc35375207fd378574ccd')
-validpgpkeys=('11E521D646982372EB577A1F8F0871F202119294') # Tom Stellard <tom@stellard.net>
 
 prepare() {
   cd "${srcdir}/${_name}"
@@ -35,4 +33,4 @@ package() {
   mv "${pkgdir}/usr/local/share/man" "${pkgdir}/usr/local/man"
 }
 
-# vim:set ts=2 sw=2 ft=sh et:
+# vim:set ts=2 sw=2 h et:
