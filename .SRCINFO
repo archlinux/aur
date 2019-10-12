@@ -1,19 +1,14 @@
 pkgbase = nvidia-ck
-	pkgdesc = NVIDIA drivers for linux-ck.
 	pkgver = 435.21
-	pkgrel = 10
+	pkgrel = 11
 	epoch = 2
 	url = https://www.nvidia.com/
 	arch = x86_64
 	license = custom
 	makedepends = nvidia-utils=435.21
 	makedepends = libglvnd
+	makedepends = linux-ck
 	makedepends = linux-ck-headers
-	depends = linux-ck
-	depends = libgl
-	depends = nvidia-utils=435.21
-	conflicts = nvidia-340xx-ck
-	conflicts = nvidia-390xx-ck
 	options = !strip
 	source = https://us.download.nvidia.com/XFree86/Linux-x86_64/435.21/NVIDIA-Linux-x86_64-435.21.run
 	source = fs62142.patch
@@ -21,4 +16,17 @@ pkgbase = nvidia-ck
 	sha256sums = 24a3082688ee4d60d27f601d535b1e6ced7537b46cc83fc9bb6da0f76e07e017
 
 pkgname = nvidia-ck
+	pkgdesc = NVIDIA drivers for linux-ck.
+	depends = dkms
+	depends = nvidia-utils=435.21
+	depends = libglvnd
+
+pkgname = nvidia-ck-dkms
+	pkgdesc = NVIDIA drivers for linux-ck.
+	depends = dkms
+	depends = nvidia-utils=435.21
+	depends = libglvnd
+	optdepends = linux-ck: Build the module for ck kernel
+	provides = nvidia=435.21
+	conflicts = nvidia-ck
 
