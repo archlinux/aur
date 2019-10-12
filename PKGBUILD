@@ -1,10 +1,10 @@
 # Maintainer: Unix Sheikh <unixsheikh at protonmail dot com>
 
 pkgname=salahtime
-pkgver=v1.0.3
+pkgver=1.0.3
 pkgrel=1
-url="https://github.com/unixsheikh/salahtime-c"
-pkgdesc="A small command line application written in Go that displays the Islamic prayer times for Europe/Copenhagen"
+url="https://github.com/unixsheikh/salahtime"
+pkgdesc="A small command line application written in C that displays the Islamic prayer times for Europe/Copenhagen"
 arch=('any')
 license=('The Unlicense')
 
@@ -12,7 +12,7 @@ source=("https://github.com/unixsheikh/salahtime/archive/v1.0.3.zip")
 md5sums=('da49a81ceb2f5fcba070b3e550299345')
 
 build() {
-  cd "$srcdir/$pkgname-c-$pkgver"
+  cd "$srcdir/$pkgname-$pkgver"
   make CC=gcc
 }
 
