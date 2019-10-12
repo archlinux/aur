@@ -1,0 +1,12 @@
+diff -Naur motif-2.3.8.orig/configure motif-2.3.8/configure
+--- motif-2.3.8.orig/configure	2017-12-05 13:49:56.000000000 +0100
++++ motif-2.3.8/configure	2019-10-13 00:50:51.795036742 +0200
+@@ -11144,7 +11144,7 @@
+   # This implies no fast_install, which is unacceptable.
+   # Some rework will be needed to allow for fast_install
+   # before this can be enabled.
+-  hardcode_into_libs=yes
++  hardcode_into_libs=no
+ 
+   # Ideally, we could use ldconfig to report *all* directores which are
+   # searched for libraries, however this is still not possible.  Aside from not
