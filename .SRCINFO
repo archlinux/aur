@@ -1,6 +1,6 @@
 pkgbase = ubports-installer-git
 	pkgdesc = A simple tool to install Ubuntu Touch on UBports devices
-	pkgver = 0.2.5_beta.r0.gc52cea5
+	pkgver = 0.3.2_beta.r6.g15ed833
 	pkgrel = 1
 	url = https://github.com/ubports/ubports-installer
 	arch = any
@@ -16,13 +16,11 @@ pkgbase = ubports-installer-git
 	source = ubports-installer-git::git+https://github.com/ubports/ubports-installer.git
 	source = ubports-installer
 	source = ubports-installer.desktop
-	source = remove-electron-sudo.patch
-	source = remove-update-check.patch
+	source = disable-update-check.patch
 	sha512sums = SKIP
-	sha512sums = 4dcaa46e0b1563269fdc29c87cb456218734baf683683a662f3bd03ac38a6527c4f9a6d8b746a732eac7bb6b8be0cbd7fdbb7ddf515d0aa5d32f67b5540564a0
-	sha512sums = 5370dae98ea52ef6d1a6d35cc15774687457836cc7a74538d32279617db329f215989863f15ed46d3aba7e384d703161a1cf6ae92101d88c8efa1445464bea59
-	sha512sums = 419c08304996aee1cb05dc59d1b88900bff77711ad58d7d627912c90337ea9d4af98c25e516dd5ecc2c418fdacc2ec043714efc19553d1427e090e6f001c2ec7
-	sha512sums = d3afd645a6f0c6addd824d1b708501b5f6606bcba848c175ce19d14f43b07baebf5c63045e56f5a62cba543eda32afc5df79c3e35ae5e8dc68f0e89658b3833b
+	sha512sums = e746e844f013c85f9ef6db7163b08e34745c48de2f94f096c582e6aa89b6cde54a91eca23e2eea0e0d6cb20f2582a0e33456c2503be45d6632bb0e02eb5b4cf1
+	sha512sums = efb0da575db03326f56a8bb589f3f5f543a4ae23b471658555bb030bcc1c1625ba2aafd15f26fac41425b3b0bde4cf176740d92aafd5853d5ce1da2b946686e8
+	sha512sums = 027f2085245135b3aff6e5340b00be55199161d7409788cd800028518c8e03a365c7b5cac762b817e3f71f8d719fdd6bb546807fcda5e64ef6ef11adca4a5c02
 
 pkgname = ubports-installer-git
 

@@ -1,6 +1,6 @@
 # Maintainer: Matthias Lisin <ml@visu.li>
 pkgname=ubports-installer-git
-pkgver=0.2.5_beta.r0.gc52cea5
+pkgver=0.3.2_beta.r6.g15ed833
 pkgrel=1
 pkgdesc='A simple tool to install Ubuntu Touch on UBports devices'
 arch=(any)
@@ -13,13 +13,11 @@ conflicts=('ubports-installer')
 source=("$pkgname::git+${url}.git"
         ubports-installer
         ubports-installer.desktop
-        remove-electron-sudo.patch
-        remove-update-check.patch)
+        disable-update-check.patch)
 sha512sums=('SKIP'
-            '4dcaa46e0b1563269fdc29c87cb456218734baf683683a662f3bd03ac38a6527c4f9a6d8b746a732eac7bb6b8be0cbd7fdbb7ddf515d0aa5d32f67b5540564a0'
-            '5370dae98ea52ef6d1a6d35cc15774687457836cc7a74538d32279617db329f215989863f15ed46d3aba7e384d703161a1cf6ae92101d88c8efa1445464bea59'
-            '419c08304996aee1cb05dc59d1b88900bff77711ad58d7d627912c90337ea9d4af98c25e516dd5ecc2c418fdacc2ec043714efc19553d1427e090e6f001c2ec7'
-            'd3afd645a6f0c6addd824d1b708501b5f6606bcba848c175ce19d14f43b07baebf5c63045e56f5a62cba543eda32afc5df79c3e35ae5e8dc68f0e89658b3833b')
+            'e746e844f013c85f9ef6db7163b08e34745c48de2f94f096c582e6aa89b6cde54a91eca23e2eea0e0d6cb20f2582a0e33456c2503be45d6632bb0e02eb5b4cf1'
+            'efb0da575db03326f56a8bb589f3f5f543a4ae23b471658555bb030bcc1c1625ba2aafd15f26fac41425b3b0bde4cf176740d92aafd5853d5ce1da2b946686e8'
+            '027f2085245135b3aff6e5340b00be55199161d7409788cd800028518c8e03a365c7b5cac762b817e3f71f8d719fdd6bb546807fcda5e64ef6ef11adca4a5c02')
 
 pkgver() {
     cd "$pkgname"
@@ -27,28 +25,32 @@ pkgver() {
 }
 
 prepare() {
-    local cache="$srcdir/npm-cache"
     local dist=/usr/lib/electron4
     local version="$(sed s/^v// $dist/version)"
 
-    for i in *.patch; do
-        patch -p1 -d "$pkgname" < "$i"
+    cd "$pkgname"
+    local i; for i in ${source[@]}; do
+        case ${i%::*} in
+            *.patch)
+                msg2 "Applying ${i}"
+                patch -p1 -i "$srcdir/${i}"
+                ;;
+        esac
     done
 
-    cd "$pkgname"
+    # Set electronDist and current electronVersion
+    mv -v buildconfig-generic.json buildconfig-generic.json.orig
     jq '.electronDist = $dist | .electronVersion = $version' \
         --arg dist "$dist" \
         --arg version "$version" \
-        buildconfig-generic.json > new-buildconfig.json
-    mv new-buildconfig.json buildconfig-generic.json
+        buildconfig-generic.json.orig > buildconfig-generic.json
 
-    npm uninstall --no-audit --cache "$cache" electron{-packager,-sudo,-view-renderer} spectron
-    npm install --no-audit --cache "$cache" electron@"$version"
+    npm uninstall --no-audit --cache "$srcdir/npm-cache" electron{-packager,-view-renderer} spectron
 }
 
 build() {
     cd "$pkgname"
-    node build.js --os linux --package dir --no-platform-tools
+    node build.js --no-platform-tools --os linux --package dir
 }
 
 package() {
