@@ -5,12 +5,12 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=heirloom-devtools-cvs
 pkgver=2011.06.22
-pkgrel=4
+pkgrel=5
 arch=('i686' 'x86_64')
 pkgdesc="The Heirloom Development tools (yacc, lex, make ...) derived from original UNIX tools."
 url="http://heirloom.sourceforge.net/devtools.html"
 license=('custom:berkeley' 'custom:"caldera"' 'custom:"opensolaris"')
-depends=('heirloom-sh-cvs')
+depends=('heirloom-sh-cvs' 'libtirpc-compat')
 makedepends=('cvs')
 source=('000-config.diff')
 md5sums=('2585f68fb07fef84cfd4bacbe2bbc1ab')
@@ -28,7 +28,7 @@ prepare() {
 
 build() {
   cd "$srcdir/${pkgname%-*}"
-  make
+  make CPPFLAGS='-fpermissive'
 }
 
 package() {
