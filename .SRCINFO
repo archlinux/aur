@@ -1,10 +1,11 @@
 pkgbase = crusta
 	pkgdesc = Blazingly fast full feature web browser with unique features
 	pkgver = 1.4.3.1
-	pkgrel = 1
-	url = http://crustabrowser.com/
+	pkgrel = 2
+	url = https://github.com/Crusta/CrustaBrowser
 	arch = x86_64
 	license = GPL3
+	makedepends = qt5-charts
 	depends = qt5-speech
 	depends = qt5-svg
 	depends = qt5-webengine
