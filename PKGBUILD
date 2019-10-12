@@ -4,7 +4,7 @@
 
 pkgname=nvidia-beta-all
 pkgver=435.21
-pkgrel=1
+pkgrel=2
 pkgdesc='NVIDIA drivers for all kernels on the system (beta version)'
 arch=('x86_64')
 url='https://www.nvidia.com/'
@@ -30,7 +30,7 @@ prepare() {
     # create a build directory for each installed kernel
     local _kernel
     local -a _kernels
-    mapfile -t _kernels < <(find /usr/lib/modules/extramodules-*/version -exec cat {} +)
+    mapfile -t _kernels < <(find /usr/lib/modules/*/build/version -exec cat {} +)
     for _kernel in "${_kernels[@]}"
     do
         cp -a kernel "kernel-${_kernel}"
@@ -47,7 +47,7 @@ prepare() {
 build() {
     local _kernel
     local -a _kernels
-    mapfile -t _kernels < <(find /usr/lib/modules/extramodules-*/version -exec cat {} +)
+    mapfile -t _kernels < <(find /usr/lib/modules/*/build/version -exec cat {} +)
     
     for _kernel in "${_kernels[@]}"
     do
@@ -59,16 +59,13 @@ build() {
 }
 
 package() {
-    local _dir
     local _kernel
-    local -a _kerndirs
-    mapfile -t -d '' _kerndirs < <(find /usr/lib/modules -maxdepth 1 -type d -name 'extramodules-*' -print0)
+    local -a _kerndels
+    mapfile -t _kernels < <(find /usr/lib/modules/*/build/version -exec cat {} +)
     
-    for _dir in "${_kerndirs[@]}"
+    for _kernel in "${_kernels[@]}"
     do
-        _kernel="$(cat "${_dir}/version")"
-        
-        install -D -m644 "${_pkg}/kernel-${_kernel}/"nvidia{,-drm,-modeset,-uvm}.ko -t "${pkgdir}/${_dir}"
+        install -D -m644 "${_pkg}/kernel-${_kernel}/"nvidia{,-drm,-modeset,-uvm}.ko -t "${pkgdir}/usr/lib/modules/${_kernel}/extramodules"
         
         find "$pkgdir" -name '*.ko' -exec gzip -n {} +
     done
