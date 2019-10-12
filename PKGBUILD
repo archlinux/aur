@@ -1,7 +1,7 @@
 # Maintainer: Slash <youremail@domain.com>
 
 pkgname=weechat-poljar-matrix-git
-pkgver=r685.f5f08cb
+pkgver=r690.b26dc83
 pkgrel=1
 pkgdesc="Python plugin for Weechat to communicate over the Matrix protocol"
 arch=('any')
@@ -13,6 +13,7 @@ depends=('python-aiohttp' 'python-atomicwrites' 'python-attrs' 'python-future' '
 makedepends=('git')
 provides=('weechat-poljar-matrix')
 conflicts=('weechat-poljar-matrix')
+install='weechat-poljar-matrix-git.install'
 source=('weechat-matrix::git+https://github.com/poljar/weechat-matrix.git')
 md5sums=('SKIP')
 

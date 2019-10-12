@@ -1,0 +1,24 @@
+
+post_install() {
+    echo "In order to use this plugin after installation, you'll need to run the following commands as the user that is running weechat:"
+    echo ""
+    echo "    $ ln -s /usr/lib/weechat/python/matrix/   ~/.weechat/python/"
+    echo "    $ ln -s /usr/lib/weechat/python/matrix.py ~/.weechat/python/"
+    echo ""
+    echo "If you want the script to be loaded on start-up, you'll also need to symlink it into the autoload folder:"
+    echo ""
+    echo "    $ ln -s /usr/lib/weechat/python/matrix.py ~/.weechat/python/autoload/"
+    echo ""
+}
+
+post_upgrade() {
+    echo "In order to use this plugin after installation, you'll need to run the following commands as the user that is running weechat:"
+    echo ""
+    echo "    $ ln -s /usr/lib/weechat/python/matrix/   ~/.weechat/python/"
+    echo "    $ ln -s /usr/lib/weechat/python/matrix.py ~/.weechat/python/"
+    echo ""
+    echo "If you want the script to be loaded on start-up, you'll also need to symlink it into the autoload folder:"
+    echo ""
+    echo "    $ ln -s /usr/lib/weechat/python/matrix.py ~/.weechat/python/autoload/"
+    echo ""
+}
