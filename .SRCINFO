@@ -1,0 +1,15 @@
+pkgbase = lua-fluent-git
+	pkgdesc = Lua implementation of Project Fluent.
+	pkgver = 0.0.4.r58.ge093976
+	pkgrel = 1
+	url = https://github.com/alerque/lua-fluent
+	arch = any
+	license = MIT
+	makedepends = luarocks
+	depends = lua
+	conflicts = lua-fluent
+	source = git://github.com/alerque/fluent-lua.git#branch=master
+	sha256sums = SKIP
+
+pkgname = lua-fluent-git
+
