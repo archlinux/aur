@@ -9,7 +9,7 @@ pkgname=('nvidia-full-beta'
          'lib32-nvidia-utils-full-beta'
          'lib32-opencl-nvidia-full-beta')
 pkgver=435.21
-pkgrel=2
+pkgrel=3
 pkgdesc="Full NVIDIA driver package for Arch's official 'linux' package (drivers, utilities, and libraries) (beta version)"
 arch=('x86_64')
 url='https://www.nvidia.com/'
@@ -49,23 +49,17 @@ prepare() {
     [ -d "$_pkg" ] && rm -rf "$_pkg"
     printf '%s\n' "  -> Self-Extracting ${_pkg}.run..."
     sh "${_pkg}.run" --extract-only
-    cd "${_pkg}"
-    bsdtar -xf nvidia-persistenced-init.tar.bz2
+    bsdtar -C "$_pkg" -xf "${_pkg}/nvidia-persistenced-init.tar.bz2"
     
-    patch -Np1 -i "${srcdir}/nvidia-settings-full-beta-change-desktop-paths.patch"
+    patch -d "$_pkg" -Np1 -i "${srcdir}/nvidia-settings-full-beta-change-desktop-paths.patch"
     
     # fix https://bugs.archlinux.org/task/62142
-    patch -Np1 -i "${srcdir}/FS62142.patch"
+    patch -d "$_pkg" -Np1 -i "${srcdir}/FS62142.patch"
 }
 
 build() {
-    cd "${_pkg}/kernel"
-    
-    local _kernver
-    _kernver="$(cat "/usr/lib/modules/${_extramodules}/version")"
-    
-    printf '%s\n' "  -> Building Nvidia module for ${_kernver}..."
-    make SYSSRC="/usr/lib/modules/${_kernver}/build" module
+    printf '%s\n' "  -> Building Nvidia module for $(</usr/src/linux/version)..."
+    make -C "${_pkg}/kernel" SYSSRC='/usr/src/linux' module
 }
 
 package_nvidia-full-beta() {
@@ -73,7 +67,10 @@ package_nvidia-full-beta() {
     provides=("nvidia=${pkgver}" "nvidia-beta=${pkgver}")
     conflicts=('nvidia')
     
-    install -D -m644 "${_pkg}/kernel/"nvidia{,-drm,-modeset,-uvm}.ko -t "${pkgdir}/usr/lib/modules/${_extramodules}"
+    local _extradir
+     _extradir="/usr/lib/modules/$(</usr/src/linux/version)/extramodules"
+    
+    install -D -m644 "${_pkg}/kernel/"nvidia{,-drm,-modeset,-uvm}.ko -t "${pkgdir}${_extradir}"
     
     find "$pkgdir" -name '*.ko' -exec gzip -n {} +
     
