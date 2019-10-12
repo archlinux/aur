@@ -2,7 +2,7 @@
 # Based on the 'community/openttd' PKGBUILD by: Vesa Kaihlavirta <vegai@iki.fi>
 
 pkgname=openttd-jgrpp
-pkgver=0.31.5
+pkgver=0.32.0
 pkgrel=1
 pkgdesc="OpenTTD with JGR's patch pack."
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url='http://www.tt-forums.net/viewtopic.php?f=33&t=73469'
 license=('GPL')
 depends=('libpng' 'sdl' 'icu' 'fontconfig' 'lzo' 'hicolor-icon-theme' 'desktop-file-utils' 'tar' 'fluidsynth')
 source=("https://github.com/JGRennison/OpenTTD-patches/archive/jgrpp-${pkgver}.tar.gz")
-sha256sums=('d6a3a844d9d9d54dfc532bfcf0cdc092d9b0a3c4ee934062285c8e3cdd423f07')
+sha256sums=('c0596bb1d7efa2ba1108763f765a8344828941d8ffc9fbcd721ab9c2472fb814')
 
 _dirname=OpenTTD-patches-jgrpp
 
@@ -24,7 +24,7 @@ build() {
     --data-dir=share/${pkgname} \
     --install-dir=${pkgdir} \
     --doc-dir=share/doc/${pkgname} \
-	--with-fluidsynth \
+    --with-fluidsynth \
     --menu-name="OpenTTD (JGR Patch Pack)" \
     --personal-dir=.${pkgname}
 
