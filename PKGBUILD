@@ -1,4 +1,4 @@
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: Sefa Eyeoglu <contact@scrumplex.net>
 
 _pkgname=espanso
 pkgname=${_pkgname}-bin
