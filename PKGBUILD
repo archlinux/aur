@@ -1,7 +1,7 @@
 # Maintainer: Mort Yao <soi@mort.ninja>
 
 pkgname=mathcomp-git
-pkgver=20170913
+pkgver=20191007
 pkgrel=1
 pkgdesc="The Mathematical Components Library for the Coq system."
 url="https://math-comp.github.io/math-comp/"
@@ -28,5 +28,5 @@ build() {
 package() {
   cd "$srcdir/$pkgname/mathcomp"
 
-  make DSTROOT="$pkgdir/usr/lib/coq/" install
+  make DSTROOT="$pkgdir" install
 }
