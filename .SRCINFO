@@ -1,0 +1,17 @@
+pkgbase = chezmoi-git
+	pkgdesc = Manage your dotfiles across multiple machines
+	pkgver = 1.7.0.r2.g688bc14
+	pkgrel = 1
+	url = https://github.com/twpayne/chezmoi
+	arch = x86_64
+	license = MIT
+	makedepends = go-pie
+	makedepends = git
+	depends = glibc
+	provides = chezmoi
+	conflicts = chezmoi
+	source = chezmoi-git::git+https://github.com/twpayne/chezmoi
+	sha256sums = SKIP
+
+pkgname = chezmoi-git
+
