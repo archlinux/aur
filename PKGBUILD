@@ -10,8 +10,10 @@ makedepends=('git' 'go')
 provides=('dnscrypt-proxy')
 conflicts=('dnscrypt-proxy')
 backup=('etc/dnscrypt-proxy/dnscrypt-proxy.toml')
-source=('git+https://github.com/jedisct1/dnscrypt-proxy.git')
-sha512sums=('SKIP')
+source=('git+https://github.com/jedisct1/dnscrypt-proxy.git'
+        dnscrypt-proxy.{service,socket})
+sha512sums=('SKIP'
+'aa871927bbc37d0c629e75a39cbfe50ce6062a19d7fe5b61895c604d6a480ba8f484cf207943c6ee7bf2dc3c7799d8f7a2b1ea5c8e586920c97730a7c503985e'           '56a56e87032da9316b392b0613124b0743673041596c717005541ae9b3994c7fc16c02497ea773d321f45d8e0f9ea8fda00783062cef4d5c8277b5b6f7cb10d5')
 
 pkgver() {
   cd "$srcdir/dnscrypt-proxy"
@@ -19,9 +21,9 @@ pkgver() {
 }
 
 prepare() {
-  cd ../
-  cp dnscrypt-proxy.service "$srcdir/dnscrypt-proxy/dnscrypt-proxy"
-  cp dnscrypt-proxy.socket "$srcdir/dnscrypt-proxy/dnscrypt-proxy"
+  cd "$srcdir/dnscrypt-proxy"
+  cp ../dnscrypt-proxy.service "$srcdir/dnscrypt-proxy/dnscrypt-proxy"
+  cp ../dnscrypt-proxy.socket "$srcdir/dnscrypt-proxy/dnscrypt-proxy"
   cd "$srcdir/dnscrypt-proxy/dnscrypt-proxy"
   sed -i 's|\['\''127\.0\.0\.1:53'\'', '\''\[::1\]:53'\''\]|\[\]|g' example-dnscrypt-proxy.toml
   sed -i 's|'\''dnscrypt-proxy\.log'\''|'\''/var/log/dnscrypt-proxy/dnscrypt-proxy\.log'\''|g' example-dnscrypt-proxy.toml
