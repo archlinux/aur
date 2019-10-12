@@ -9,7 +9,7 @@ arch=('any')
 license=('The Unlicense')
 
 source=("https://github.com/unixsheikh/salahtime/archive/1.0.3.zip")
-md5sums=('da49a81ceb2f5fcba070b3e550299345')
+md5sums=('c25847c8933dab65d6bb4ab69dfd77a6')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
