@@ -1,7 +1,7 @@
 pkgbase = bluej
 	pkgdesc = An integrated Java environment specifically designed for introductory teaching
-	pkgver = 4.2.1
-	pkgrel = 5
+	pkgver = 4.2.2
+	pkgrel = 1
 	url = https://www.bluej.org
 	arch = any
 	license = GPL2
@@ -15,11 +15,11 @@ pkgbase = bluej
 	depends = java-runtime=11
 	depends = java-environment=11
 	depends = java11-openjfx
-	noextract = BlueJ-linux-421.deb
-	source = https://www.bluej.org/download/files/BlueJ-linux-421.deb
+	noextract = BlueJ-linux-422.deb
+	source = https://www.bluej.org/download/files/BlueJ-linux-422.deb
 	source = bluej
 	source = bluej.desktop
-	sha256sums = 66ae3834680a8b32f874c26d8ac74d468c416e6fa8180f6dd06d65a624267bb5
+	sha256sums = 5c2241f2208e98fcf9aad7c7a282bcf16e6fd543faa5fdb0b99b34d1023113c3
 	sha256sums = e5cefa44b07500d979a5bfa2a5ee29dfb6bedfd990375cf46ea2ef6becb6656b
 	sha256sums = d48f47e2a16cef483ded299e37016a5172829303fc6ac43cab486049e9f61711
 

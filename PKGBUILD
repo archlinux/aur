@@ -7,8 +7,8 @@
 # Contributor: zerathidune <zerathidune @ gmail . com>
 
 pkgname=bluej
-pkgver=4.2.1
-pkgrel=5
+pkgver=4.2.2
+pkgrel=1
 pkgdesc="An integrated Java environment specifically designed for introductory teaching"
 arch=('any')
 url="https://www.${pkgname}.org"
@@ -18,7 +18,7 @@ source=("https://www.${pkgname}.org/download/files/BlueJ-linux-${pkgver//.}.deb"
         "${pkgname}"
         "${pkgname}.desktop")
 noextract=("BlueJ-linux-${pkgver//.}.deb")
-sha256sums=('66ae3834680a8b32f874c26d8ac74d468c416e6fa8180f6dd06d65a624267bb5'
+sha256sums=('5c2241f2208e98fcf9aad7c7a282bcf16e6fd543faa5fdb0b99b34d1023113c3'
             'e5cefa44b07500d979a5bfa2a5ee29dfb6bedfd990375cf46ea2ef6becb6656b'
             'd48f47e2a16cef483ded299e37016a5172829303fc6ac43cab486049e9f61711')
 
