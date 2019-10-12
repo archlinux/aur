@@ -4,7 +4,7 @@
 
 pkgname=mastodon
 pkgver=3.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Self-hosted social media and network server based on ActivityPub and OStatus'
 arch=(x86_64)
 url=https://joinmastodon.org
@@ -60,6 +60,7 @@ package() {
   # Put the config file in /etc and link to it
   touch "$pkgdir"/etc/mastodon.conf
   ln -s /etc/mastodon.conf "$pkgdir"/var/lib/mastodon/.env.production
+  ln -s /usr/bin/node "$pkgdir"/var/lib/mastodon/node
   
   install -Dm 644 mastodon.target -t "$pkgdir"/usr/lib/systemd/system
   install -Dm 644 mastodon.sysusers.d "$pkgdir"/usr/lib/sysusers.d/mastodon.conf
