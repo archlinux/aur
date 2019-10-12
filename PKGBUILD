@@ -1,8 +1,8 @@
 # Maintainer: BrainDamage
 pkgname="comic-dl"
 pkgver=2019.05.26
-pkgrel=1
-pkgdesc="A library of tools for reading, writing, and processing WFDB signals and annotations"
+pkgrel=2
+pkgdesc="Comic-dl is a command line tool to download Comics and Manga from various Manga and Comic sites easily."
 arch=(any)
 url="https://github.com/Xonshiz/comic-dl"
 license=("MIT")
