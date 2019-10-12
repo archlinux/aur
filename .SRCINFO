@@ -1,18 +1,15 @@
 pkgbase = nvidia-390xx-ck
 	pkgdesc = NVIDIA drivers for linux-ck, 390xx legacy branch.
 	pkgver = 390.129
-	pkgrel = 10
+	pkgrel = 11
 	url = https://www.nvidia.com/
 	arch = x86_64
 	license = custom
 	makedepends = nvidia-390xx-utils=390.129
 	makedepends = libglvnd
+	makedepends = linux-ck
 	makedepends = linux-ck-headers
-	depends = linux-ck
-	depends = libglvnd
-	depends = nvidia-390xx-utils=390.129
-	conflicts = nvidia-340xx-ck
-	conflicts = nvidia-ck
+	conflicts = nvidia
 	options = !strip
 	source = https://us.download.nvidia.com/XFree86/Linux-x86_64/390.129/NVIDIA-Linux-x86_64-390.129-no-compat32.run
 	source = kernel-4.16.patch
@@ -20,4 +17,18 @@ pkgbase = nvidia-390xx-ck
 	sha256sums = 622ac792ec200b2239cb663c0010392118b78c9904973d82cd261165c16d6385
 
 pkgname = nvidia-390xx-ck
+	pkgdesc = NVIDIA drivers for linux-ck, 390xx legacy branch.
+	depends = linux-ck
+	depends = nvidia-390xx-utils=390.129
+	depends = libglvnd
+
+pkgname = nvidia-390xx-ck-dkms
+	pkgdesc = NVIDIA driver sources for linux-ck, 390xx legacy branch
+	depends = dkms
+	depends = nvidia-390xx-utils=390.129
+	depends = libglvnd
+	optdepends = linux-ck-headers: Build the module for ck kernel
+	provides = nvidia-390xx=390.129
+	conflicts = nvidia
+	conflicts = nvidia-390xx
 
