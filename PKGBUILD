@@ -4,17 +4,17 @@ pkgname=lua-cldr
 pkgver=0.0.0
 _rockname=cldr
 _rockrel=0
-pkgrel=1
+pkgrel=2
 pkgdesc="Unicode CLDR data and Lua interface."
 arch=('any')
-url="https://github.com/alerque/lua-cldr"
+url="https://github.com/alerque/cldr-lua"
 license=('MIT')
 depends=('lua')
 makedepends=('luarocks')
-source=("https://raw.githubusercontent.com/alerque/cldr-lua/$pkgver/$_rockname-scm-$_rockrel.rockspec")
-sha256sums=('15688e20d9754b17a9b9d3239e885b32263f0a179f3b4fb5d3173b21c43cd821')
+source=("https://raw.githubusercontent.com/alerque/cldr-lua/master/rockspecs/$_rockname-$pkgver-$_rockrel.rockspec")
+sha256sums=('616ea4ce725b919fc307e2297a7fe2c092749a19602175cf465e76ce2faadeb2')
 
 package() {
-  luarocks --tree="$pkgdir/usr" install --deps-mode=none "$_rockname-scm-$_rockrel.rockspec"
+  luarocks --tree="$pkgdir/usr" install --deps-mode=none "$_rockname-$pkgver-$_rockrel.rockspec"
   find "$pkgdir/usr" -name manifest -delete
 }
