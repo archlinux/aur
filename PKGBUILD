@@ -7,7 +7,7 @@
 
 pkgbase=sagemath-git
 pkgname=(sagemath-git sagemath-jupyter-git)
-pkgver=9.0.beta0.r0.g533fd5d6cd
+pkgver=9.0.beta1.r0.g0f20b37ca8
 pkgrel=1
 pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab"
 arch=(x86_64)
@@ -42,8 +42,7 @@ source=(git://git.sagemath.org/sage.git#branch=develop
         sagemath-singular-4.1.2.patch
         sagemath-ecl-sigfpe.patch
         sagemath-ipython7.patch
-        sagemath-rpy-3.patch
-        sagemath-mathjax-dir.patch)
+        sagemath-rpy-3.patch)
 sha256sums=('SKIP'
             '328e45e78065b5f6527174bda48cfff6828acbf107c2535b0a9a92c3ceb35842'
             '1a82372a96ffd5e6d475b0e620935967ce5eb9b4484607d39da90824a77b07c4'
@@ -53,8 +52,7 @@ sha256sums=('SKIP'
             '961bfb5694b67d425d21240d71490cb71714b5207c23448c89be0966512ff8f9'
             'a42f3b152b1aedb8abf16bc70971419919d1fe30328574e7fef8305f9d07d938'
             '1336f8ce3ef2fbc7531da90b60b83cf8b7713cbf726cff6fdbbd30f085c31074'
-            '9062b412595e81a5ca560a5ae789f8b7318981689cb8d076b30d8c54a4fc4495'
-            '388cd321fb8b73ae839bf2c150f7dd26ba34b0f6845f9761184db1dd5086b697')
+            '9062b412595e81a5ca560a5ae789f8b7318981689cb8d076b30d8c54a4fc4495')
 
 pkgver() {
   cd sage
@@ -75,6 +73,8 @@ prepare(){
   patch -p1 -i ../sagemath-ipython7.patch
 # Adapt to rpy 3.0 changes
   patch -p1 -i ../sagemath-rpy-3.patch
+# Fix mathjax path
+  sed -e 's|mathjax|mathjax2|g' -i src/sage/env.py
 
 # Upstream patches  
 # fix build against libfes 0.2 http://trac.sagemath.org/ticket/15209
@@ -85,8 +85,6 @@ prepare(){
   patch -p1 -i ../sagemath-singular-4.1.2.patch
 # Fix SIGFPE crashes with ecl 16.1.3 https://trac.sagemath.org/ticket/22191
   patch -p1 -i ../sagemath-ecl-sigfpe.patch
-# Don't hardcode mathjax path https://trac.sagemath.org/ticket/28547
-  patch -p1 -i ../sagemath-mathjax-dir.patch
 
   sed -e 's|sage-python23|python|' -i src/bin/*
   sed -e 's|$SAGE_PYTHON3|yes|' -i src/bin/sage
@@ -140,7 +138,8 @@ package_sagemath-git() {
 
 package_sagemath-jupyter-git() {
   pkgdesc='Jupyter kernel for SageMath'
-  depends=(sagemath python-jupyter_client python-ipywidgets jsmol)
+  depends=(sagemath python-jupyter_client python-ipywidgets)
+  optdepends=('jsmol: alternative 3D plot engine')
 
   cd sage/src
 
