@@ -2,7 +2,7 @@
 # Contributor: Tiago Brait <tiagobrait AT gmail DOT com>
 
 pkgname=ca-certificates-icp_br
-pkgver=20190823
+pkgver=20191010
 pkgrel=1
 pkgdesc="Brazilian government Certification Authorities"
 arch=('any')
@@ -11,14 +11,18 @@ license=('unknown')
 depends=('ca-certificates-utils')
 makedepends=('unzip')
 source=("icpbr_certs-${pkgver}-${pkgrel}.zip::http://acraiz.icpbrasil.gov.br/credenciadas/CertificadosAC-ICP-Brasil/ACcompactado.zip")
-sha512sums=('540a9b6d77def3c04d00eeff44007df63abc20fc62cfb0c542adc0ce28ebdc2de4eb16a99f82c7b1404406a738044f987b80c4d4faab68bcad17a59f823af5d4')
+sha512sums=('a48401fefc961218f3a16b803cfc2ea97df50d39358dcd06e7b94c31a08248a25ced82421604e3e5fe9d683b7db4c975199d4f0fd061b0f924eb62f7a1081983')
+noextract=("icpbr_certs-${pkgver}-${pkgrel}.zip")
+
+_source="icpbr_certs-${pkgver}-${pkgrel}"
 
 prepare() {
-    mv ACcompactado icpbr_certs-${pkgver}-${pkgrel}
+    rm -rf "$_source" && mkdir "$_source"
+    unzip -q "$_source.zip" -d "$_source"
 }
 
 package() {
-  cd icpbr_certs-${pkgver}-${pkgrel}
+  cd "$_source"
 
   find * -print0 | while read -d $'\0' cert; do
       # Edit filenames removing whitespaces and prepending 'icp_br'
