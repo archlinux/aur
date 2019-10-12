@@ -9,7 +9,7 @@ pkgname=('nvidia-full-beta-all'
          'lib32-nvidia-utils-full-beta-all'
          'lib32-opencl-nvidia-full-beta-all')
 pkgver=435.21
-pkgrel=2
+pkgrel=3
 pkgdesc='Full NVIDIA driver package for all kernels on the system (drivers, utilities and libraries) (beta version)'
 arch=('x86_64')
 url='https://www.nvidia.com/'
@@ -55,7 +55,7 @@ prepare() {
     # create a build directory for each installed kernel
     local _kernel
     local -a _kernels
-    mapfile -t _kernels < <(find /usr/lib/modules/extramodules-*/version -exec cat {} +)
+    mapfile -t _kernels < <(find /usr/lib/modules/*/build/version -exec cat {} +)
     for _kernel in "${_kernels[@]}"
     do
         cp -a kernel "kernel-${_kernel}"
@@ -72,7 +72,7 @@ prepare() {
 build() {
     local _kernel
     local -a _kernels
-    mapfile -t _kernels < <(find /usr/lib/modules/extramodules-*/version -exec cat {} +)
+    mapfile -t _kernels < <(find /usr/lib/modules/*/build/version -exec cat {} +)
     
     for _kernel in "${_kernels[@]}"
     do
@@ -88,16 +88,13 @@ package_nvidia-full-beta-all() {
     provides=("nvidia=${pkgver}" "nvidia-beta=${pkgver}")
     conflicts=('nvidia')
     
-    local _dir
     local _kernel
-    local -a _kerndirs
-    mapfile -t -d '' _kerndirs < <(find /usr/lib/modules -maxdepth 1 -type d -name 'extramodules-*' -print0)
+    local -a _kernels
+    mapfile -t _kernels < <(find /usr/lib/modules/*/build/version -exec cat {} +)
     
-    for _dir in "${_kerndirs[@]}"
+    for _kernel in "${_kernels[@]}"
     do
-        _kernel="$(cat "${_dir}/version")"
-        
-        install -D -m644 "${_pkg}/kernel-${_kernel}/"nvidia{,-drm,-modeset,-uvm}.ko -t "${pkgdir}/${_dir}"
+        install -D -m644 "${_pkg}/kernel-${_kernel}/"nvidia{,-drm,-modeset,-uvm}.ko -t "${pkgdir}/usr/lib/modules/${_kernel}/extramodules"
         
         find "$pkgdir" -name '*.ko' -exec gzip -n {} +
     done
