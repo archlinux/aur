@@ -1,9 +1,9 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=o
-pkgver=2.1.5
+pkgver=2.2.1
 pkgrel=1
-pkgdesc='Small, fast and very limited text editor'
+pkgdesc='Small, fast and limited text editor'
 arch=(x86_64)
 url='https://github.com/xyproto/o'
 license=(MIT)
