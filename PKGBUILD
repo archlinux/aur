@@ -8,7 +8,7 @@ pkgdesc="A small command line application written in C that displays the Islamic
 arch=('any')
 license=('The Unlicense')
 
-source=("https://github.com/unixsheikh/salahtime/archive/v1.0.3.zip")
+source=("https://github.com/unixsheikh/salahtime/archive/1.0.3.zip")
 md5sums=('da49a81ceb2f5fcba070b3e550299345')
 
 build() {
