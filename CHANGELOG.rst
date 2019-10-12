@@ -1,6 +1,12 @@
 Changelog for package base ``barrier``
 ======================================
 
+2.3.2-1 - 2019-10-12
+--------------------
+
+- Updated to upstream release 2.3.2_, for which there is no upstream
+  changelog available (apart from the VCS history).
+
 2.3.1-1 - 2019-09-25
 --------------------
 
@@ -50,4 +56,5 @@ the actual version number shown by the Barrier programs is ``2.2.0``.
 .. _2.1.2: https://github.com/debauchee/barrier/releases/tag/v2.1.2
 .. _2.3.0: https://github.com/debauchee/barrier/releases/tag/v2.3.0
 .. _2.3.1: https://github.com/debauchee/barrier/releases/tag/v2.3.1
+.. _2.3.2: https://github.com/debauchee/barrier/releases/tag/v2.3.2
 .. _issue 49: https://github.com/debauchee/barrier/issues/49

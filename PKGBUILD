@@ -1,7 +1,7 @@
 # Maintainer: Tilman BLUMENBACH <tilman+aur AT ax86 DOT net>
 
 pkgname=(barrier barrier-headless)
-pkgver=2.3.1
+pkgver=2.3.2
 pkgrel=1
 pkgdesc="Open-source KVM software based on Synergy"
 url="https://github.com/debauchee/barrier"
@@ -115,4 +115,4 @@ package_barrier-headless() {
     done
 }
 
-sha256sums=('adf6df33a4a07e05784e825a2549ff22fe288aa184f1caee2c2ffddb2cbcf249')
+sha256sums=('6b92a70c5f4d625065842d133386982ec2ad1db2a809af47e46ab8ce2acd39b5')
