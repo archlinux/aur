@@ -4,7 +4,7 @@
 # This package is built according to the AUR Go packaging guidelines:
 # https://wiki.archlinux.org/index.php/Go_package_guidelines
 pkgname=mage
-pkgver=1.8.0
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="A Make/rake-like build tool using Go"
 arch=("x86_64")
