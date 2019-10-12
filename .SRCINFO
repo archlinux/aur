@@ -1,0 +1,18 @@
+pkgbase = mtftar-git
+	pkgdesc = A tool for translating a MTF stream to a TAR stream.
+	pkgver = 14.6b0a4e1
+	pkgrel = 1
+	url = https://github.com/sjmurdoch/mtftar
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = make
+	makedepends = gcc
+	depends = glibc
+	provides = mtftar
+	conflicts = mtftar
+	source = git+https://github.com/sjmurdoch/mtftar.git
+	md5sums = SKIP
+
+pkgname = mtftar-git
+
