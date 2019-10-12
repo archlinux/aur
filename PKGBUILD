@@ -4,7 +4,7 @@
 
 pkgbase=gdm-prime
 pkgname=(gdm-prime libgdm-prime)
-pkgver=3.34.0
+pkgver=3.34.1
 pkgrel=1
 url="https://wiki.gnome.org/Projects/GDM"
 arch=(x86_64)
@@ -12,7 +12,7 @@ license=(GPL)
 depends=(gnome-shell gnome-session upower xorg-xrdb xorg-server xorg-xhost)
 makedepends=(yelp-tools gobject-introspection git docbook-xsl)
 checkdepends=(check)
-_commit=7c8950d94de854a227d2aa0eda82d3145f529a61  # tags/3.34.0^0
+_commit=80e010198217284d3cf52e8b334862a80b00cbd1  # tags/3.34.1^0
 source=("git+https://gitlab.gnome.org/GNOME/gdm.git#commit=$_commit"
         0001-Xsession-Don-t-start-ssh-agent-by-default.patch
         0002-pam-arch-Don-t-check-greeter-account-for-expiry.patch

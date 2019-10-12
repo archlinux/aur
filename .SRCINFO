@@ -1,5 +1,5 @@
 pkgbase = gdm-prime
-	pkgver = 3.34.0
+	pkgver = 3.34.1
 	pkgrel = 1
 	url = https://wiki.gnome.org/Projects/GDM
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = gdm-prime
 	depends = xorg-xrdb
 	depends = xorg-server
 	depends = xorg-xhost
-	source = git+https://gitlab.gnome.org/GNOME/gdm.git#commit=7c8950d94de854a227d2aa0eda82d3145f529a61
+	source = git+https://gitlab.gnome.org/GNOME/gdm.git#commit=80e010198217284d3cf52e8b334862a80b00cbd1
 	source = 0001-Xsession-Don-t-start-ssh-agent-by-default.patch
 	source = 0002-pam-arch-Don-t-check-greeter-account-for-expiry.patch
 	source = 0003-pam-arch-Restrict-greeter-service-to-the-gdm-user.patch
