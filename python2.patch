@@ -1,0 +1,17 @@
+diff -Naur spyder-3.2.0.orig/scripts/spyder spyder-3.2.0/scripts/spyder
+--- spyder-3.2.0.orig/scripts/spyder	2017-07-24 05:03:40.000000000 +0200
++++ spyder-3.2.0/scripts/spyder	2017-08-12 21:22:11.230212853 +0200
+@@ -1,3 +1,3 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ from spyder.app import start
+ start.main()
+diff -Naur spyder-3.2.0.orig/spyder/app/restart.py spyder-3.2.0/spyder/app/restart.py
+--- spyder-3.2.0.orig/spyder/app/restart.py	2017-07-24 05:03:40.000000000 +0200
++++ spyder-3.2.0/spyder/app/restart.py	2017-08-12 21:22:11.230212853 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ # -*- coding: utf-8 -*-
+ #
+ # Copyright © Spyder Project Contributors

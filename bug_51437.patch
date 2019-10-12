@@ -1,0 +1,35 @@
+diff -Naur spyder-3.3.1.orig/scripts/spyder.desktop spyder-3.3.1/scripts/spyder.desktop
+--- spyder-3.3.1.orig/scripts/spyder.desktop	2018-08-11 23:31:15.000000000 +0200
++++ spyder-3.3.1/scripts/spyder.desktop	2018-08-12 00:36:03.890345817 +0200
+@@ -1,12 +1,11 @@
+ [Desktop Entry]
+ Type=Application
+ Version=1.0
+-Name=Spyder
+-GenericName=Spyder
+-Comment=The Scientific Python Development Environment
+-Icon=spyder
+-TryExec=spyder
+-Exec=spyder %F
++Name=Spyder for Python 2.x
++Comment=The Scientific Python Development Environment - Python 2
++Icon=spyder2
++TryExec=spyder2
++Exec=spyder2 %F
+ Terminal=false
+ MimeType=text/x-python;
+ Categories=Development;Science;IDE;Qt;
+diff -Naur spyder-3.3.1.orig/setup.py spyder-3.3.1/setup.py
+--- spyder-3.3.1.orig/setup.py	2018-08-11 23:31:15.000000000 +0200
++++ spyder-3.3.1/setup.py	2018-08-12 00:37:27.851154407 +0200
+@@ -88,8 +88,8 @@
+                           ('share/icons', ['img_src/spyder3.png']),
+                           ('share/metainfo', ['scripts/spyder3.appdata.xml'])]
+         else:
+-            data_files = [('share/applications', ['scripts/spyder.desktop']),
+-                          ('share/icons', ['img_src/spyder.png'])]
++            data_files = [('share/applications', ['scripts/spyder2.desktop']),
++                          ('share/icons', ['img_src/spyder2.png'])]
+     elif os.name == 'nt':
+         data_files = [('scripts', ['img_src/spyder.ico',
+                                    'img_src/spyder_reset.ico'])]

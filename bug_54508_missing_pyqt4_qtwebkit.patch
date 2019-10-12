@@ -1,0 +1,24 @@
+diff -Naur spyder-3.1.4.orig/scripts/spyder spyder-3.1.4/scripts/spyder
+--- spyder-3.1.4.orig/scripts/spyder	2017-04-24 02:30:23.000000000 +0200
++++ spyder-3.1.4/scripts/spyder	2017-07-09 18:47:22.072698407 +0200
+@@ -1,3 +1,8 @@
+ #!/usr/bin/env python
++
++# Forced QT API to pyqt5 (see https://bugs.archlinux.org/task/54508)
++import os
++os.environ['QT_API'] = 'pyqt5'
++
+ from spyder.app import start
+ start.main()
+diff -Naur spyder-3.1.4.orig/scripts/spyder3 spyder-3.1.4/scripts/spyder3
+--- spyder-3.1.4.orig/scripts/spyder3	2017-04-24 02:30:23.000000000 +0200
++++ spyder-3.1.4/scripts/spyder3	2017-07-09 18:47:27.659425267 +0200
+@@ -1,3 +1,8 @@
+ #! /usr/bin/python3
++
++# Forced QT API to pyqt5 (see https://bugs.archlinux.org/task/54508)
++import os
++os.environ['QT_API'] = 'pyqt5'
++
+ from spyder.app import start
+ start.main()
