@@ -6,7 +6,7 @@
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-libfdk-aac
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Fraunhofer FDK AAC codec library (mingw-w64)"
 arch=('any')
@@ -16,7 +16,7 @@ depends=('mingw-w64-crt')
 makedepends=('mingw-w64-configure')
 options=('!strip' 'staticlibs' '!buildflags')
 source=("https://downloads.sourceforge.net/opencore-amr/fdk-aac-${pkgver}.tar.gz")
-sha256sums=('f7d6e60f978ff1db952f7d5c3e96751816f5aef238ecf1d876972697b85fd96c')
+sha256sums=('840133aa9412153894af03b27b03dde1188772442c316a4ce2a24ed70093f271')
 
 build() {
   cd "${srcdir}/fdk-aac-${pkgver}"
