@@ -1,6 +1,6 @@
 pkgbase = imcompressor
 	pkgdesc = Simple & lossless image compressor.
-	pkgver = 0.3
+	pkgver = 0.5
 	pkgrel = 1
 	url = https://github.com/Huluti/ImCompressor
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = imcompressor
 	depends = python
 	depends = mozjpeg
 	depends = jpegoptim
-	source = imcompressor-0.3.tar.gz::https://github.com/Huluti/ImCompressor/archive/0.3.tar.gz
-	sha256sums = f63a510046783ddff4f1558769caa30aad0564ff7b0ca1c0ea79ca55569559fe
+	source = imcompressor-0.5.tar.gz::https://github.com/Huluti/ImCompressor/archive/0.5.tar.gz
+	sha256sums = 16bd02e0746023ad510e5baede94f093c419ec1881aaaaa9c7a79f5bd6a19bcc
 
 pkgname = imcompressor
 

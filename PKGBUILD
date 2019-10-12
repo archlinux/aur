@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
 pkgname=imcompressor
-pkgver=0.3
+pkgver=0.5
 pkgrel=1
 pkgdesc="Simple & lossless image compressor."
 arch=('any')
@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('gtk3' 'python' 'mozjpeg' 'jpegoptim')
 makedepends=('meson' 'appstream-glib')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Huluti/ImCompressor/archive/$pkgver.tar.gz")
-sha256sums=('f63a510046783ddff4f1558769caa30aad0564ff7b0ca1c0ea79ca55569559fe')
+sha256sums=('16bd02e0746023ad510e5baede94f093c419ec1881aaaaa9c7a79f5bd6a19bcc')
 
 build() {
 	cd "ImCompressor-$pkgver"
