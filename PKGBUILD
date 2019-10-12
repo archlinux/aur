@@ -2,7 +2,7 @@
 
 _pkgname=espanso
 pkgname=${_pkgname}-bin
-pkgver=0.2.4
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Cross-platform Text Expander written in Rust"
 arch=(x86_64)
@@ -13,13 +13,17 @@ provides=($_pkgname)
 conflicts=($_pkgname)
 install="${pkgname}.install"
 source=("https://github.com/federico-terzi/espanso/releases/download/v${pkgver}/espanso-linux.tar.gz"
-        "service")
-sha512sums=('070f24812ca8b6eab63725845c5b2680a52d2f8946f108d381fe841ad50c227cf891a1a18a8da150f4392df94a7eebf43fa5deeec7683e010ba6c6bc020ad0bf'
-            '5eb7b751e9432c7dde71da1f0c8c459b33a6a15d3a81aa21cbaa251b7b2cdddc47da9a0ab22215a9fb063ecdd8123c86c8f96459e627fd6daff4e690ff1a6df2')
+        "https://raw.githubusercontent.com/federico-terzi/espanso/v${pkgver}/src/res/linux/systemd.service")
+sha512sums=('99c75ac409e441314fdd361929fc1b3b8555fa14e9ecc257a09e02c14736407831a1b4177a9f7516abf56edc43f752e7f388f0ae9e6ea7622e28171274a7af2c'
+            '8f30ebc5dbb633f9cdd464765df38e6ef3fa008ba6d2fa83d66eed992a9e2c8be41fadbeb1d3048738078357bb72c78663900b5970f5061a0175c72cd5053dad')
 
+
+prepare() {
+    sed -i "s|{{{espanso_path}}}|/usr/bin/espanso|g" "systemd.service"
+}
 
 package() {
 
     install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-    install -Dm644 "service" "${pkgdir}/usr/lib/systemd/user/${_pkgname}.service"
+    install -Dm644 "systemd.service" "${pkgdir}/usr/lib/systemd/user/${_pkgname}.service"
 }
