@@ -16,8 +16,10 @@ depends=('python-appdirs'
 )
 replaces=('python-radicale-storage-etesync')
 makedepends=('python-setuptools')
-source=("https://pypi.org/packages/source/e/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('2265f6b52c90da755936623a7b5d778838cb92fdf35d5927e03bdd9cfe80c7b8d4da0163b1da5f3f9e09f9b4907b8be99cbff975c6408ed8694a6e6ecc146ce5')
+source=("https://pypi.org/packages/source/e/${pkgname}/${pkgname}-${pkgver}.tar.gz"
+        "etesync-dav.service")
+sha512sums=('2265f6b52c90da755936623a7b5d778838cb92fdf35d5927e03bdd9cfe80c7b8d4da0163b1da5f3f9e09f9b4907b8be99cbff975c6408ed8694a6e6ecc146ce5'
+            'SKIP')
 
 build() {
   cd "${pkgname}-${pkgver}"
@@ -32,5 +34,9 @@ package() {
     --root="${pkgdir}"
   install -t "${pkgdir}/usr/share/doc/${pkgname}" \
     -vDm644 {DESCRIPTION.rst,README.md}
+
+# FIXME: replace with the one in the etesync-dav repo once released
+  mkdir -p "${pkgdir}/usr/lib/systemd/user/"
+  install -Dm644 ../etesync-dav.service "${pkgdir}/usr/lib/systemd/user/"
 }
 

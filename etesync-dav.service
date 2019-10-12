@@ -1,0 +1,9 @@
+[Unit]
+Description=Cal/CardDAV frontend for Etesync
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/etesync-dav
+
+[Install]
+WantedBy=default.target
