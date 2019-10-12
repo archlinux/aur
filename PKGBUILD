@@ -3,14 +3,14 @@
 
 pkgname=bombono-dvd
 pkgver=1.2.4
-pkgrel=3
+pkgrel=4
 pkgdesc="DVD authoring program with nice and clean GUI"
 arch=('i686' 'x86_64')
 url="http://www.bombono.org"
 license=('GPL')
 depends=('gtk2' 'gtkmm' 'mjpegtools' 'ffmpeg' 'libdvdread' 'dvdauthor' \
          'dvd+rw-tools' 'twolame' 'libxml++2.6' 'boost' 'enca' 'cdrkit')
-makedepends=('scons')
+makedepends=('python2-scons')
 optdepends=('gvfs: web browser integration')
 conflicts=('bombono-dvd-git')
 source=("https://github.com/muravjov/${pkgname}/archive/${pkgver}.tar.gz"
@@ -65,12 +65,12 @@ prepare() {
 
 build() {
   cd "${pkgname}-${pkgver}"
-  scons  PREFIX="/usr" DESTDIR="$pkgdir" CPPFLAGS="-std=c++14 -DBOOST_SYSTEM_NO_DEPRECATED -DBOOST_FILESYSTEM_NO_DEPRECATED -DBOOST_FILESYSTEM_VERSION=3" USE_EXT_BOOST=1
+  scons2  PREFIX="/usr" DESTDIR="$pkgdir" CPPFLAGS="-std=c++14 -DBOOST_SYSTEM_NO_DEPRECATED -DBOOST_FILESYSTEM_NO_DEPRECATED -DBOOST_FILESYSTEM_VERSION=3" USE_EXT_BOOST=1
 }
 
 package() {
   cd "${pkgname}-${pkgver}"
 
-  scons PREFIX="/usr" DESTDIR="$pkgdir" install
+  scons2 PREFIX="/usr" DESTDIR="$pkgdir" install
 }
 
