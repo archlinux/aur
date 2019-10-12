@@ -1,0 +1,14 @@
+pkgbase = python2-gudev
+	pkgdesc = Python binding to the GUDev udev helper library
+	pkgver = 147.2
+	pkgrel = 8
+	url = https://github.com/nzjrs/python-gudev
+	arch = x86_64
+	license = LGPL3
+	makedepends = python2-gobject2
+	depends = libgudev
+	source = python2-gudev-147.2.tar.gz::https://github.com/nzjrs/python-gudev/archive/147.2.tar.gz
+	sha512sums = aabb342ee944805d4038040242d45f49c9a13d0b92cb435394e9851cab99b6a55e2d7c65cb6291903e8482ccabfce552660520df69919635d20846d8db099583
+
+pkgname = python2-gudev
+
