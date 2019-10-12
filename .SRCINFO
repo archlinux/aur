@@ -1,7 +1,7 @@
 pkgbase = dnscrypt-proxy-git
 	pkgdesc = A flexible DNS proxy, with support for modern encrypted DNS protocols such as DNSCrypt v2 and DNS-over-HTTP/2.
-	pkgver = 2.0.27.r9.bd23ddaa
-	pkgrel = 2
+	pkgver = 2.0.27.r10.99e56a4
+	pkgrel = 3
 	url = https://github.com/jedisct1/dnscrypt-proxy
 	arch = i686
 	arch = x86_64
