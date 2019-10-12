@@ -1,0 +1,13 @@
+pkgbase = emacs-a
+	pkgdesc = Clojure Parser for Emacs Lisp
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/plexus/a.el
+	arch = any
+	license = GPL3
+	depends = emacs
+	source = emacs-a-0.1.1.tar.gz::https://github.com/plexus/a.el/archive/v0.1.1.tar.gz
+	sha256sums = 2998451375103630ceac2e3b8adc4522855aa890874b632e586632434dbd66a1
+
+pkgname = emacs-a
+
