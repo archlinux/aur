@@ -2,7 +2,7 @@
 pkgname=phoneboard
 pkgver=1.6.2
 pkgrel=1
-pkgdesc='Phoneboard is an app that will help you repairing phones!'
+pkgdesc='an app that will help you repairing phones!'
 arch=('x86_64')
 url='https://phoneboard.co/'
 license=('unknown')
