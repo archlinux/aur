@@ -6,10 +6,8 @@
 
 pkgname=broadcom-wl-ck
 pkgver=6.30.223.271
-pkgrel=161
+pkgrel=162
 _pkgdesc='Broadcom 802.11abgn hybrid Linux networking device driver for linux-ck.'
-_extramodules="extramodules-ck"
-_kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
 pkgdesc="${_pkgdesc}"
 arch=('x86_64')
 url='https://www.broadcom.com/support/download-search/?pf=Wireless+LAN+Infrastructure'
@@ -43,6 +41,10 @@ sha256sums=('5f79774d5beec8f7636b59c0fb07a03108eef1e3fd3245638b20858c714144be'
             '4e73e50653bb612946edd34bf31ca5a0b80f632d47a08766ae6042880927c98d'
             'b4aca51ac5ed20cb79057437be7baf3650563b7a9d5efc515f0b9b34fbb9dc32')
 
+# default is 'linux' substitute custom name here
+_kernelname=linux-ck
+_kernver="$(</usr/src/$_kernelname/version)"
+
 prepare() {
   patch -Np1 -i "$srcdir/001-null-pointer-fix.patch"
   patch -Np1 -i "$srcdir/002-rdtscl.patch"
@@ -59,13 +61,14 @@ prepare() {
 }
 
 build() {
-  make -C /usr/lib/modules/"${_kernver}"/build M=`pwd`
+  make -C "/usr/src/$_kernelname" M=`pwd`
 }
 
 package() {
-  install -Dm644 wl.ko "${pkgdir}/usr/lib/modules/${_extramodules}/wl.ko"
+  install -Dm644 wl.ko "${pkgdir}/usr/lib/modules/$_kernver/extramodules/wl.ko"
+
   # makepkg does not do this automatically for this pkg so do it here
-  gzip "${pkgdir}/usr/lib/modules/${_extramodules}/wl.ko"
+  gzip "${pkgdir}/usr/lib/modules/$_kernver/extramodules/wl.ko"
   install -Dm644 lib/LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 modprobe.d "${pkgdir}/usr/lib/modprobe.d/broadcom-wl_ck.conf"
 }
