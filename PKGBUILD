@@ -35,7 +35,8 @@ build() {
   cmake . \
   -DCMAKE_INSTALL_PREFIX:PATH=/usr \
   -DCMAKE_INSTALL_LIBDIR:PATH=lib \
-  -DUSE_PYTHON=ON
+  -DUSE_PYTHON=ON \
+  -DUSE_PYTHON27_COMPONENT=ON
   make
 }
 
