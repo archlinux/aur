@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-material-shell-git
 	pkgdesc = GNOME Shell Extension Material Shell
-	pkgver = 0+243+gd7ca487
+	pkgver = r243.d7ca487
 	pkgrel = 5
 	url = https://github.com/PapyElGringo/material-shell
 	arch = any
