@@ -1,14 +1,14 @@
 pkgbase = hyperspace-appimage
 	pkgdesc = The new beautiful, fluffy client for Mastodon
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://hyperspace.marquiskurt.net
 	arch = x86_64
 	license = custom:NPL
 	depends = fuse
 	provides = hyperspace
 	conflicts = hyperspace
-	noextract = Hengi-1.0.0.AppImage
+	noextract = Hyperspace-1.0.0.AppImage
 	options = !strip
 	source = Hyperspace-1.0.0.AppImage::https://github.com/hyperspacedev/hyperspace/releases/download/v1.0.0/Hyperspace-1.0.0.AppImage
 	source = https://github.com/hyperspacedev/hyperspace/raw/v1.0.0/LICENSE

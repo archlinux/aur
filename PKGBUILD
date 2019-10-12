@@ -1,7 +1,7 @@
 # Maintainer: tercean <cg@zknt.org>
 pkgname=hyperspace-appimage
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='The new beautiful, fluffy client for Mastodon'
 arch=('x86_64')
 url='https://hyperspace.marquiskurt.net'
@@ -10,7 +10,7 @@ provides=('hyperspace')
 conflicts=('hyperspace')
 depends=('fuse')
 options=(!strip)
-_appimage="Hengi-${pkgver}.AppImage"
+_appimage="Hyperspace-${pkgver}.AppImage"
 source=(
     "Hyperspace-${pkgver}.AppImage::https://github.com/hyperspacedev/hyperspace/releases/download/v${pkgver}/Hyperspace-${pkgver}.AppImage"
     "https://github.com/hyperspacedev/hyperspace/raw/v${pkgver}/LICENSE"
