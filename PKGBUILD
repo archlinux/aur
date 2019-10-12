@@ -1,7 +1,7 @@
 # Maintainer: Sibren Vasse <arch@sibrenvasse.nl>
 # Contributor: Ilya Gulya <ilyagulya@gmail.com>
 pkgname="deezer"
-pkgver=4.17.1
+pkgver=4.17.10
 pkgrel=1
 pkgdesc="A proprietary music streaming service"
 arch=('any')
@@ -16,14 +16,14 @@ source=("$pkgname-$pkgver-setup.exe::https://www.deezer.com/desktop/download/art
         menu-bar.patch
         oauth.patch
         0001-MPRIS-interface.patch
-        https://github.com/SibrenVasse/deezer/raw/mpris/extra_node_modules.tar.xz)
-sha256sums=('ecd86a109554e2ce9ff830a23868fede2f1badb342a3c04a1d8076540468f68a'
+        https://github.com/SibrenVasse/deezer/raw/mpris/node_modules.tar.xz)
+sha256sums=('4fea147de6cfa4ee083a1cecf24a13230045cbca816667df6f5674a654da0b7b'
             'f8a5279239b56082a5c85487b0c261fb332623f27dac3ec8093458b8c55d8d99'
             'c024851f4c87580b4f764c88f630d77a28794338d0b43947e68939afb146bc0a'
             '964d23e5fa473bd1a78bed4213d0a546a253541e0b82337dc5929c3719bbe020'
             'bcb546b71c94fcec80cdde9a4c56df6b35f17ce3619db1bd051f446a3b5adaf0'
-            'b3b46159e4906caf9ac3a94d0973e84ab7f1304dfa5c853140e5193371e95c95'
-            'b9343921a4896027798597058149b9666f0782eddf8c2436291397ec5631a742')
+            '4885e2fc7b427954be32e1e8a7271b47623e2bb8af06c3ccde797952fe969604'
+            '8a8a42fd38c6fc5a5f9523620ce7e794355ceec5d71c93a7cee378c9a5b3d8ec')
 
 prepare() {
     # Extract app from installer

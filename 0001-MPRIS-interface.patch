@@ -1,46 +1,54 @@
-diff --git a/app/js/main/App/index.js b/app/js/main/App/index.js
-index 94631c5..1026110 100644
+diff --git a/app/main.js b/app/main.js
+index caf4699..5e88d7d 100644
 --- a/app/main.js
 +++ b/app/main.js
-@@ -2436,6 +2436,7 @@
-               main_SchemeHandler.handleSchemeFromOpenUrl(url),
+@@ -2636,6 +2636,7 @@
+         this.ipc.send(constants.c, control);
+       }
+       isSupportedSMTC() {
++        return true;
+         return (
+           !Object(utils.h)(constants.l) &&
+           Object(utils.i)({
+@@ -3216,6 +3217,7 @@
+               services_SchemeHandler.handleSchemeFromOpenUrl(url),
                event.preventDefault();
            }),
 +          external_electron_.app.commandLine.appendSwitch('disable-features', 'MediaSessionService');
            external_electron_.app.on("ready", () => {
              external_electron_log_default.a.debug("App is ready"),
-               main_AutoUpdater.init();
+               services_AutoUpdater.init(),
 diff --git a/node_modules/electron-media-service/src/index.js b/node_modules/electron-media-service/src/index.js
-index f4bdbe6..6171945 100644
+index 301db0d..9677e7c 100644
 --- a/node_modules/electron-media-service/src/index.js
 +++ b/node_modules/electron-media-service/src/index.js
-@@ -14,6 +14,10 @@ switch (process.platform) {
-       module.exports = require('./win32');
-     break;
-   }
-+  case 'linux': {
-+      module.exports = require('./linux');
-+    break;
-+  }
-   default: {
-     break;
-   }
-diff --git a/node_modules/electron-media-service/src/linux/index.js b/node_modules/electron-media-service/src/linux/index.js
-new file mode 100644
-index 0000000..3935e1c
---- /dev/null
-+++ b/node_modules/electron-media-service/src/linux/index.js
-@@ -0,0 +1,82 @@
+@@ -5,7 +5,8 @@ if (process.platform === 'darwin' && semver.satisfies(os.release(), '>=18.0.0'))
+   module.exports = require('./darwin');
+ } else if (process.platform === 'win32' && semver.satisfies(os.release(), '>=10.0.0')) { // WIN 10 or supp
+   module.exports = require('./win32');
+-}
+-else {
++} else if (process.platform === 'linux') {
++  module.exports = require('./linux');
++} else {
+   module.exports = require('./NullService');
+ }
+--- /dev/null	2019-10-12 21:52:32.461829196 +0200
++++ b/node_modules/electron-media-service/src/linux/index.js	2019-10-12 22:23:11.969848536 +0200
+@@ -0,0 +1,98 @@
 +const { EventEmitter } = require('events');
 +const mpris = require('mpris-service');
 +
 +class MediaService extends EventEmitter {
 +    constructor() {
++        console.log("INITIALIZING LINUX MEDIA SERVICE");
 +        super();
 +        this.player = mpris({
 +                            name: 'deezer',
++                            desktopEntry: 'deezer',
 +                            identity: 'Deezer desktop client',
-+                            supportedInterfaces: ['player']
++                            supportedInterfaces: ['player'],
++                            supportedUriSchemes: ['deezer']
 +                        });
 +        this.player.canRaise = false;
 +        this.player.canQuit = false;
@@ -87,27 +95,40 @@ index 0000000..3935e1c
 +        return this._started;
 +    }
 +
-+    setMetaData({
-+        currentTime,
-+        duration,
-+        title,
-+        artist,
-+        album,
-+        albumArt,
-+        id,
-+        state
-+    }) {
++    setMetaData(metaData) {
 +        this._requireStart();
-+        this.player.metadata = {
-+            'xesam:title': title,
-+            'xesam:album': album,
-+            'xesam:artist': [ artist ],
-+            'mpris:artUrl': albumArt
++
++        const {
++            title,
++            artist,
++            album,
++            albumArt,
++            state,
++            hasPrev,
++            hasNext
++        } = metaData;
++
++        if (typeof title !== 'undefined' &&
++                typeof album !== 'undefined' &&
++                typeof artist !== 'undefined') {
++            this.player.metadata = {
++                'mpris:trackid': this.player.objectPath('track/0'),
++                'xesam:title': title ,
++                'xesam:album': album,
++                'xesam:artist': [ artist ]
++            }
 +        }
-+        if (state === 'playing') {
-+            this.player.playbackStatus = 'Playing';
-+        } else {
-+            this.player.playbackStatus = 'Stopped';
++
++        if (typeof hasPrev !== 'undefined') {
++            this.player.canGoPrevious = hasPrev;
++        }
++
++        if (typeof hasNext !== 'undefined') {
++            this.player.canGoNext = hasNext
++        }
++
++        if (typeof state !== 'undefined') {
++            this.player.playbackStatus = state === 'playing' ? 'Playing' : 'Paused';
 +        }
 +    }
 +}
