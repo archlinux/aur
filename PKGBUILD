@@ -1,11 +1,12 @@
 # Maintainer: BrainDamage
 pkgname="comic-dl"
 pkgver=2019.05.26
-pkgrel=2
+pkgrel=3
 pkgdesc="Comic-dl is a command line tool to download Comics and Manga from various Manga and Comic sites easily."
 arch=(any)
 url="https://github.com/Xonshiz/comic-dl"
 license=("MIT")
+optdepends=('phantomjs: to access some sites')
 depends=("python" "python-tqdm" "python-requests" "python-cfscrape" "python-clint" "img2pdf" "python-colorama")
 sha256sums=('31cfc7b2d9e200ad2790b9b22f2bd69a1cea4817957d394bf3907838d3567eb0')
 source=("https://github.com/Xonshiz/comic-dl/archive/$pkgver.tar.gz")
