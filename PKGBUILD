@@ -7,7 +7,7 @@
 # installation.
 
 pkgname=jabref-git
-pkgver=5.0alpha.r162.g74fb8bcbd3
+pkgver=5.0alpha.r269.g2e796e998a
 pkgrel=1
 pkgdesc="GUI frontend for BibTeX, written in Java -- built from git"
 arch=('any')
@@ -30,9 +30,13 @@ pkgver() {
   git describe --tags | sed 's+-alpha-+alpha.r+'|cut -c2-|tr - .
 }
 
-build() {
+prepare() {
   cd ${pkgname%-git}
   ./gradlew assemble
+}
+
+build() {
+  cd ${pkgname%-git}
   ./gradlew jlink
 }
 
