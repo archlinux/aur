@@ -1,6 +1,6 @@
 pkgbase = icglue
 	pkgdesc = a Tcl-Library for scripted HDL generation
-	pkgver = 3.4
+	pkgver = 4.0
 	pkgrel = 1
 	url = https://icglue.org
 	arch = i686
@@ -13,8 +13,8 @@ pkgbase = icglue
 	depends = tcl
 	depends = pkg-config
 	optdepends = nagelfar: for vim syntastics functionality
-	source = icglue-3.4.tar.gz::https://github.com/icglue/icglue/archive/v3.4.tar.gz
-	sha256sums = 9b6085bfd979a7328060f9b386135fc8e6e3c4d0ab75d9dc1380dcfb65fb6f33
+	source = icglue-4.0.tar.gz::https://github.com/icglue/icglue/archive/v4.0.tar.gz
+	sha256sums = 69e0593bfae0206b542ae08160fe5b2746e60caabbe9dd003ecd98cd5da79138
 
 pkgname = icglue
 
