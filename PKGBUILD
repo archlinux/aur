@@ -5,7 +5,7 @@
 
 pkgbase='transgui'
 pkgname=("${pkgbase}-qt" "${pkgbase}-gtk")
-pkgver='5.17.0'
+pkgver='5.18.0'
 pkgrel='1'
 pkgdesc='A feature rich cross platform Transmission BitTorrent client. Faster and has more functionality than the built-in web GUI.'
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ license=("GPL")
 makedepends=('lazarus' 'qt5pas' 'gtk2')
 source=("${url}/archive/v${pkgver}.tar.gz"
         "${pkgbase}.desktop")
-sha256sums=('c3d5378f8b6be64c3fefab77eecd86b5357dfd9dbb941bd620b6083ae350417f'
+sha256sums=('d1cbb16eb35d41e76f4a171a3887053899e8dc6a1124afc21615b5038ea60d78'
             '6c1723e084bd4afc908957e005dea60f919b42426d82cbcdee89239c64c6093d')
 
 prepare() {
