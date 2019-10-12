@@ -4,13 +4,13 @@
 
 pkgname=nvidia-ck
 pkgver=435.21
-pkgrel=9
+pkgrel=10
 epoch=2
 _extramodules=extramodules-ck
 _pkgdesc="NVIDIA drivers for linux-ck."
 pkgdesc="$_pkgdesc"
 arch=('x86_64')
-url="http://www.nvidia.com/"
+url="https://www.nvidia.com/"
 depends=('linux-ck' 'libgl' "nvidia-utils=${pkgver}")
 makedepends=("nvidia-utils=${pkgver}" 'libglvnd' 'linux-ck-headers')
 conflicts=('nvidia-340xx-ck' 'nvidia-390xx-ck')
@@ -19,10 +19,14 @@ conflicts=('nvidia-340xx-ck' 'nvidia-390xx-ck')
 license=('custom')
 options=('!strip')
 _pkg="NVIDIA-Linux-x86_64-${pkgver}"
-source=("http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/${_pkg}.run"
+source=("https://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/${_pkg}.run"
         fs62142.patch)
 sha256sums=('fac7c02ccd35c7043f4e1add0224a7380d0bd1e4aa15ca6bc3012c758ec1776c'
             '24a3082688ee4d60d27f601d535b1e6ced7537b46cc83fc9bb6da0f76e07e017')
+
+# default is 'linux' substitute custom name here
+_kernelname=linux-ck
+_kernver="$(</usr/src/$_kernelname/version)"
 
 prepare() {
     sh "${_pkg}.run" --extract-only
@@ -33,13 +37,13 @@ prepare() {
 }
 
 build() {
-	_kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
 	cd "${_pkg}"/kernel
-	make SYSSRC=/usr/lib/modules/"${_kernver}/build" module
+  make SYSSRC=/usr/src/"$_kernelname" module
 }
 
 package() {
-  install -Dt "${pkgdir}/usr/lib/modules/${_extramodules}" -m644 \
+  _extradir="/usr/lib/modules/$_kernver/extramodules"
+  install -Dt "${pkgdir}${_extradir}" -m644 \
     "${srcdir}/${_pkg}/kernel"/nvidia{,-modeset,-drm,-uvm}.ko
 
   find "${pkgdir}" -name '*.ko' -exec gzip -n {} +

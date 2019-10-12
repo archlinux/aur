@@ -1,9 +1,9 @@
 pkgbase = nvidia-ck
 	pkgdesc = NVIDIA drivers for linux-ck.
 	pkgver = 435.21
-	pkgrel = 9
+	pkgrel = 10
 	epoch = 2
-	url = http://www.nvidia.com/
+	url = https://www.nvidia.com/
 	arch = x86_64
 	license = custom
 	makedepends = nvidia-utils=435.21
@@ -15,7 +15,7 @@ pkgbase = nvidia-ck
 	conflicts = nvidia-340xx-ck
 	conflicts = nvidia-390xx-ck
 	options = !strip
-	source = http://us.download.nvidia.com/XFree86/Linux-x86_64/435.21/NVIDIA-Linux-x86_64-435.21.run
+	source = https://us.download.nvidia.com/XFree86/Linux-x86_64/435.21/NVIDIA-Linux-x86_64-435.21.run
 	source = fs62142.patch
 	sha256sums = fac7c02ccd35c7043f4e1add0224a7380d0bd1e4aa15ca6bc3012c758ec1776c
 	sha256sums = 24a3082688ee4d60d27f601d535b1e6ced7537b46cc83fc9bb6da0f76e07e017
