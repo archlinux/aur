@@ -1,8 +1,8 @@
 pkgbase = jrebel
-	pkgdesc = JRebel is a JVM-plugin that makes it possible for Java developers to instantly see any code change made to an app without redeploying.
-	pkgver = 2018.2.4
+	pkgdesc = Reload code changes instantly
+	pkgver = 2019.2.0
 	pkgrel = 1
-	url = http://zeroturnaround.com/software/jrebel/
+	url = http://jrebel.com/software/jrebel/
 	install = jrebel.install
 	arch = i686
 	arch = x86_64
@@ -11,11 +11,11 @@ pkgbase = jrebel
 	provides = jrebel
 	backup = etc/profile.d/jrebel.sh
 	backup = etc/profile.d/jrebel.csh
-	source = jrebel-2018.2.4-nosetup.zip::https://dl.zeroturnaround.com/?token=dba1428bc6209374ea3cd4ae312661e58333b47a
+	source = jrebel-2019.2.0-nosetup.zip::https://dl.zeroturnaround.com/?token=485695336bbbe9d300d7463138c08729a621554e
 	source = jrebel.csh
 	source = jrebel.install
 	source = jrebel.sh
-	sha256sums = 0e246b4c757e103d8d410563a7673446e9589b938cf6f990a69b7089e8b6509b
+	sha256sums = a3c81630c15e49c4021bd4c56e328f455e066d30e86a9dce84da9d41b3cf78bc
 	sha256sums = 7dbc38b6bfc45a037620bd8a21583e00308d53311285c98215b660efdb007431
 	sha256sums = 7616bc4c74f15c49c25c9db78aa0490a2cb88e37fe848c9e866c11ea16d0ad66
 	sha256sums = d1a5193a071eeedb4d5e96a0eb90aaa4f7daad0cdfbe54ff9c89967c50634635
