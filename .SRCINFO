@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-camera-calibration-parsers
 	pkgdesc = ROS - camera_calibration_parsers contains routines for reading and writing camera calibration parameters.
 	pkgver = 1.11.13
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wiki.ros.org/camera_calibration_parsers
 	arch = any
 	license = BSD
@@ -21,7 +21,9 @@ pkgbase = ros-melodic-camera-calibration-parsers
 	depends = boost
 	depends = yaml-cpp
 	source = ros-melodic-camera-calibration-parsers-1.11.13.tar.gz::https://github.com/ros-perception/image_common/archive/1.11.13.tar.gz
+	source = boost-fix.patch
 	sha256sums = 32a2e07724dec6eaaace21eae006274436d70d40bfe205249438570275c43cac
+	sha256sums = 85b506e095b95e6382b816625e798444c83e77f52eef8c98ed0182ef59d326d4
 
 pkgname = ros-melodic-camera-calibration-parsers
 
