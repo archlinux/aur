@@ -1,17 +1,20 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=regoth-git
-pkgver=0.4.357.r1599.65c72f0
+pkgver=r533.e080948
 pkgrel=1
 epoch=
-pkgdesc="OpenSource-Reimplementation of the zEngine, used by the game 'Gothic'"
+pkgdesc="Reimplementation of Gothic I and II using modern technologies."
 arch=('i686' 'x86_64')
-url="https://github.com/REGoth-project/REGoth"
-license=('GPLv3')
+url="https://github.com/REGoth-project/REGoth-bs"
+url="https://regoth-project.github.io/REGoth-bs"
+license=('MIT')
 categories=()
 groups=()
 depends=('gcc>=6')
+depends=(physfs libx11 libxcursor libxi icu mesa freeglut libxrandr)
 makedepends=('git' 'cmake')
-optdepends=()
+optdepends=('doxygen: for documentation'
+            'plantuml: for documentation')
 checkdepends=()
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
@@ -20,34 +23,37 @@ backup=()
 options=()
 changelog=
 install="${pkgname%-*}".install
-source=("$pkgname::git+https://github.com/REGoth-project/REGoth.git")
+source=("$pkgname::git+https://github.com/REGoth-project/REGoth-bs.git")
 noextract=()
 md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$pkgname"
-  printf "%s.r%s.%s" "$(git describe --tags | sed -E 's/([^-]*-g)/r\1/;s/-/./g;s/^nightly.//')" \
-                     "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd "$srcdir/$pkgname"
+  git submodule update --init --recursive
 }
 
 build() {
   cd "$srcdir/$pkgname"
-  git submodule update --init --recursive
+  rm -rf build
   mkdir build
   cd build
-  cmake -DCMAKE_BUILD_TYPE=Release ..
-  make -j$(grep -c ^processor /proc/cpuinfo)
+  cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo ..
+  cmake --build . --parallel $(nproc)
 }
 
 package() {
   cd "$srcdir/$pkgname/build/bin"
-  mkdir -p $pkgdir/usr/{bin,share/${pkgname%-*}/}
-  for i in altonegen makehrtf openal-info REGoth write_sf2; do
-    install -Dm755 $i "$pkgdir/usr/share/${pkgname%-*}/$i"
+  mkdir -p $pkgdir/usr/{bin,lib}
+  for i in *; do
+    install -Dm755 $i "$pkgdir/usr/bin/$i"
   done
-  ln -rs $pkgdir/usr/share/${pkgname%-*}/REGoth $pkgdir/usr/bin/REGoth
-  cp -r shaders $pkgdir/usr/share/${pkgname%-*}/
+  cp -r ../lib/lib* $pkgdir/usr/lib
   install -Dm644 ../../README.md $pkgdir/usr/share/doc/${pkgname%-*}/README.md
-  install -Dm644 ../../LICENSE.md $pkgdir/usr/share/licenses/${pkgname%-*}/LICENSE
+  install -Dm644 ../../LICENSE $pkgdir/usr/share/licenses/${pkgname%-*}/LICENSE
 }
 
