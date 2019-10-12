@@ -1,20 +1,15 @@
 pkgbase = python-nexusformat
 	pkgdesc = Provides an API to open, create, and manipulate NeXus data.
-	pkgver = 0.4.17
+	pkgver = 0.4.20
 	pkgrel = 1
 	url = https://github.com/nexpy/nexusformat
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
-	source = https://github.com/nexpy/nexusformat/archive/v0.4.17.tar.gz
-	md5sums = 4e4ad30a5e377c71925d5e942a6ebdcf
-
-pkgname = python-nexusformat
 	depends = python-numpy
 	depends = python-h5py
+	source = https://github.com/nexpy/nexusformat/archive/v0.4.20.tar.gz
+	md5sums = 3597830bb33bb272f1e507fc373de7c6
 
-pkgname = python2-nexusformat
-	depends = python2-numpy
-	depends = python2-h5py
+pkgname = python-nexusformat
 
