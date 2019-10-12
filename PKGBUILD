@@ -1,17 +1,17 @@
-# Maintainer: Chris <christopher.r.mullins g-mail>
-# Contributor: geosam <samuelmesa@linuxmail.org>
+# Maintainer: Samuel Mesa <samuelmesa@gmail.com>
+# Contributor: Chris <christopher.r.mullins g-mail>
 # Contributor: Andrzej Giniewicz <gginiu@gmail.com>
 # Contributor: Thomas Dziedzic < gostrc at gmail >
 # Contributor: joel schaerer <joel.schaerer@laposte.net>
 
-pkgname=insight-toolkit
-pkgver=5.0.1
-pkgrel=12
+pkgname=itk4
+pkgver=4.13.2
+pkgrel=1
 pkgdesc='Cross-platform system that provides developers with an extensive suite of software tools for image analysis'
 arch=('i686' 'x86_64')
 url='http://www.itk.org/'
 license=('APACHE')
-depends=('fftw' 'libjpeg-turbo' 'libpng' 'zlib' 'libtiff' 'gdcm' 'expat' 'hdf5-cpp-fortran' 'gtest' 'eigen')
+depends=('fftw' 'libjpeg-turbo' 'libpng' 'zlib' 'libtiff' 'gdcm' 'expat' 'hdf5-cpp-fortran' 'gtest')
 optdepends=('python2: build python wrapping'
             'ruby'
             'tcl: build tcl wrapping (currently not supported)'
@@ -23,10 +23,22 @@ optdepends=('python2: build python wrapping'
             'clang: for swig'
 	    'castxml-git: for ITK')
 makedepends=('cmake')
-source=("https://github.com/InsightSoftwareConsortium/ITK/releases/download/v${pkgver}/InsightToolkit-${pkgver}.tar.gz")
-sha512sums=('f36613ff72c513ded3d32504f71308a94fe75555cf9fd22b77485d1375601f6e1f1539cc5ac82a9e1e229bcf514a88ccb55122a7dfc74a6ae1b6604aa70bd814')
+conflicts=('insight-toolkit')
+provides=('insight-toolkit')
+replaces=('insight-toolkit')
+
+source=("fix_vlc_gcc9.patch" "http://downloads.sourceforge.net/project/itk/itk/${pkgver:0:4}/InsightToolkit-${pkgver}.tar.xz")
+sha512sums=('4f9edeed47e6017bfd3abff69d8b9fa7a7d5088216c1511cd94a3aaeb7a211ed072f33b16faafe4803b668ad9f63a7afdd3899402ff46e9c5bc7720b0ecab983'
+            '7ddca802d0c4ee644eb58e621d8cb7c4b75247ceb86a559aeae9160d2456bbbbecb0a23738a0e7617c23bdfd35d5bf9adbf83bba07d6f86b067d25ee520435aa')
 
 _usepython=false
+
+
+prepare() {
+ cd "$srcdir"
+ patch -Np0 -i fix_vlc_gcc9.patch
+}
+
 
 build() {
   cd "$srcdir"
@@ -45,7 +57,7 @@ build() {
     -DITK_USE_SYSTEM_PNG:BOOL=ON \
     -DITK_USE_SYSTEM_ZLIB:BOOL=ON \
     -DITK_USE_SYSTEM_TIFF:BOOL=ON \
-    -DITK_USE_SYSTEM_GDCM:BOOL=ON \
+    -DITK_USE_SYSTEM_GDCM:BOOL=OFF \
     -DITK_LEGACY_SILENT:BOOL=ON \
     $( $_usepython && echo "-DITK_WRAP_PYTHON:BOOL=ON") \
     $( $_usepython && echo "-DModule_ITKReview:BOOL=OFF") \

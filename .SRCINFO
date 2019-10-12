@@ -1,7 +1,7 @@
-pkgbase = insight-toolkit
+pkgbase = itk4
 	pkgdesc = Cross-platform system that provides developers with an extensive suite of software tools for image analysis
-	pkgver = 5.0.1
-	pkgrel = 12
+	pkgver = 4.13.2
+	pkgrel = 1
 	url = http://www.itk.org/
 	arch = i686
 	arch = x86_64
@@ -16,7 +16,6 @@ pkgbase = insight-toolkit
 	depends = expat
 	depends = hdf5-cpp-fortran
 	depends = gtest
-	depends = eigen
 	optdepends = python2: build python wrapping
 	optdepends = ruby
 	optdepends = tcl: build tcl wrapping (currently not supported)
@@ -27,8 +26,13 @@ pkgbase = insight-toolkit
 	optdepends = castxml-git: for wrapping and docs
 	optdepends = clang: for swig
 	optdepends = castxml-git: for ITK
-	source = https://github.com/InsightSoftwareConsortium/ITK/releases/download/v5.0.1/InsightToolkit-5.0.1.tar.gz
-	sha512sums = f36613ff72c513ded3d32504f71308a94fe75555cf9fd22b77485d1375601f6e1f1539cc5ac82a9e1e229bcf514a88ccb55122a7dfc74a6ae1b6604aa70bd814
+	provides = insight-toolkit
+	conflicts = insight-toolkit
+	replaces = insight-toolkit
+	source = fix_vlc_gcc9.patch
+	source = http://downloads.sourceforge.net/project/itk/itk/4.13/InsightToolkit-4.13.2.tar.xz
+	sha512sums = 4f9edeed47e6017bfd3abff69d8b9fa7a7d5088216c1511cd94a3aaeb7a211ed072f33b16faafe4803b668ad9f63a7afdd3899402ff46e9c5bc7720b0ecab983
+	sha512sums = 7ddca802d0c4ee644eb58e621d8cb7c4b75247ceb86a559aeae9160d2456bbbbecb0a23738a0e7617c23bdfd35d5bf9adbf83bba07d6f86b067d25ee520435aa
 
-pkgname = insight-toolkit
+pkgname = itk4
 

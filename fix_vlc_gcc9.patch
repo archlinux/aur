@@ -1,0 +1,21 @@
+--- InsightToolkit-4.13.2/Modules/ThirdParty/VNL/src/vxl/vcl/vcl_compiler.h.cp
++++ InsightToolkit-4.13.2/Modules/ThirdParty/VNL/src/vxl/vcl/vcl_compiler.h
+@@ -96,6 +96,17 @@
+ #   define VCL_GCC_81
+ #  else
+ #   define VCL_GCC_80
++#  endif
++# elif (__GNUC__==9)
++#  define VCL_GCC_9
++#  if (__GNUC_MINOR__ > 2 )
++#   define VCL_GCC_93
++#  elif (__GNUC_MINOR__ > 1 )
++#   define VCL_GCC_92
++#  elif (__GNUC_MINOR__ > 0 )
++#   define VCL_GCC_91
++#  else
++#   define VCL_GCC_90
+ #  endif
+ # else
+ #  error "Dunno about this gcc"
+
