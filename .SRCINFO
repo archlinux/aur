@@ -1,0 +1,15 @@
+pkgbase = python2-cloudpickle
+	pkgdesc = Extended pickling support for Python 2.x objects
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://github.com/cloudpipe/cloudpickle
+	arch = any
+	license = BSD
+	makedepends = python2-setuptools
+	depends = python2-setuptools
+	options = !emptydirs
+	source = https://pypi.io/packages/source/c/cloudpickle/cloudpickle-1.2.2.tar.gz
+	sha256sums = 922401d7140e133253ff5fab4faa4a1166416066453a783b00b507dca93f8859
+
+pkgname = python2-cloudpickle
+
