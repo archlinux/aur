@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Axe
+Comment=Axe P2P Cryptocurrency
+Comment[fr]=Axe, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=Axe, eşten eşe kriptografik sanal para birimi
+Exec=axe-qt %u
+Terminal=false
+Type=Application
+Icon=axe256
+MimeType=x-scheme-handler/axe;
+Categories=Office;Finance;
