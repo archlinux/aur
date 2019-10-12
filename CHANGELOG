@@ -1,35 +1,35 @@
-1.0.7-2
+1.0.7-2 (October 9, 2019)
     Add CHANGELOG to AUR releases
 
-1.0.7-1
+1.0.7-1 (October 8, 2019)
     Add version (`-v`,`--version`) flag to display current version of wtwitch
     Updated man page
     Changed format of man page from asciidoc to scdoc
 
-1.0.6-1
+1.0.6-1 (September 9, 2019)
     Added debug option (-d) and updated man page
 
-1.0.5-1
+1.0.5-1 (September 8, 2019)
     Fixed an issue where wtwitch would not approve subscriptions to offline streamers (an issue with the new Twitch API!) (https://gitlab.com/krathalan/wtwitch/issues/3)
 
-1.0.4-1
+1.0.4-1 (August 21, 2019)
     Moved to new Twitch API (helix) as old API (kraken) is being shut down
 
-1.0.3-1
+1.0.3-1 (June 27, 2019)
     Fixed bug where jq would try to write to a nonexistent config file
 
-1.0.2-1
+1.0.2-1 (June 23, 2019)
     Fix reverted locale patch
     Add wayland support for mpv
 
-1.0.1-2
+1.0.1-2 (June 23, 2019)
     Fix typo in man page and embolden options in examples
 
-1.0.1-1
+1.0.1-1 (June 22, 2019)
     Add patch from nycko123 that fixes the check option (-c,--check) for locales other than en-US (https://gitlab.com/krathalan/wtwitch/issues/1)
 
-1.0.0-2
+1.0.0-2 (June 22, 2019)
     Add missing Twitch API key
 
-1.0.0-1
+1.0.0-1 (June 22, 2019)
     First release
