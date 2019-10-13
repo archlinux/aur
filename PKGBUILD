@@ -1,8 +1,8 @@
 # Maintainer: GordonGR <ntheo1979@gmail.com>
 
 pkgname=singularityviewer-alpha
-pkgver=1.8.7.7766
-_pkgver=1_8_7_7766
+pkgver=1.8.7.7883
+_pkgver=1_8_7_7883
 pkgrel=1
 pkgdesc="An exciting client for Second Life (secondlife) and OpenSim (opensimulator), which combines the look and feel of Viewer 1.23 with the latest and greatest of available technology. (nighly builds)"
 url="http://www.singularityviewer.org/"
@@ -21,10 +21,10 @@ conflicts=("singularityviewer" "singularityviewer-test")
 replaces=("singularityviewer-test")
 provides=("singularityviewer")
 
-source=("http://singu.virtual-nexus.xyz/files/Singularity_Test_${_pkgver}_x86_64.tar.xz"
+source=("https://bitbucket.org/router_gray/singularityviewer/downloads/Singularity_Alpha_${_pkgver}_x86_64.tar.xz"
 	"singularityviewer.desktop"
 	"singularityviewer.launcher")
-md5sums=('97ea2a93e2b896a1b7bdefc6f5b6e454'
+md5sums=('53de4b63680cd4103642f124e6218851'
          'ff7aa34dcd7548e3acdb3c2d44ae6604'
          'eb596f5cf7b6f2d0c55c0082fb99a905')
 
@@ -32,7 +32,7 @@ package() {
 cd $srcdir
 
 # Rename Data Directory
-mv Singularity_Test_${_pkgver}_x86_64 singularityviewer
+mv Singularity_Alpha_${_pkgver}_x86_64 singularityviewer
 
 # Remove old libraries
 #cd $srcdir
