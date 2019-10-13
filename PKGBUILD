@@ -1,41 +1,40 @@
-# Maintainer: Karol "Kenji Takahashi" Woźniak <kenji.sx>
 # Contributor: SanskritFritz (gmail)
-
+# Contributor: Karol "Kenji Takahashi" Woźniak <kenji.sx>
+# Maintainer: aksr <aksr at t-com dot me>
 pkgname=copyq-git
-pkgver=20151130
+pkgver=r4773.2217511c
 pkgrel=1
+epoch=1
 pkgdesc="Clipboard manager with searchable and editable history."
 url="https://github.com/hluk/CopyQ"
 arch=('i686' 'x86_64')
 license=('GPL3')
-depends=('libxtst' 'qt5-script' 'hicolor-icon-theme' 'desktop-file-utils')
+depends=('hicolor-icon-theme' 'libxtst' 'qt5-script' 'qt5-svg' 'qt5-x11extras' 'desktop-file-utils')
+makedepends=('git' 'cmake' 'qt5-tools')
 optdepends=('copyq-plugin-itemweb-git')
-makedepends=('cmake' 'git' 'qt5-tools' 'qt5-svg')
 provides=('copyq')
 conflicts=('copyq')
-source=("${pkgname}::git+https://github.com/hluk/CopyQ.git")
+source=("$pkgname::git+https://github.com/hluk/CopyQ.git")
 md5sums=('SKIP')
-install=copyq.install
+install=
 
 pkgver() {
-    cd ${srcdir}/${pkgname}
-    git log -1 --format="%cd" --date=short | tr -d '-'
+  cd "$srcdir/$pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-    mkdir -p ${srcdir}/${pkgname}/build
-    cd ${srcdir}/${pkgname}/build
-    cmake \
+  cd "$srcdir/$pkgname"
+  mkdir -p build
+  cd build
+  cmake -DCMAKE_INSTALL_PREFIX=/usr \
         -DWITH_WEBKIT=0 \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DWITH_QT5=TRUE \
-        ${srcdir}/${pkgname}
-    make
+        -DWITH_QT5=TRUE $srcdir/$pkgname
+  make
 }
 
 package() {
-    cd ${srcdir}/${pkgname}/build
-    make DESTDIR="${pkgdir}" install
+  cd "$srcdir/$pkgname/build"
+  make DESTDIR="$pkgdir" install
 }
 
-# vim:set ts=4 sw=4 et:
