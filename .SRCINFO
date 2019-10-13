@@ -1,7 +1,7 @@
 pkgbase = therion
 	pkgdesc = Cave surveying: processes survey data and generates maps or 3D models of caves
 	pkgver = 5.4.4
-	pkgrel = 4
+	pkgrel = 5
 	url = http://therion.speleo.sk
 	changelog = CHANGELOG
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = therion
 	depends = webkitgtk2
 	depends = wxgtk
 	depends = zlib
-	source = http://github.com/therion/therion/archive/v${pkgver}.tar.gz
+	source = http://github.com/therion/therion/archive/v5.4.4.tar.gz
 	source = loch_vtk7.patch
 	source = make_install.patch
 	source = therion_ini.patch

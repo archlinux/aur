@@ -2,9 +2,9 @@
 # Contributor: detrito <detrito at inventati dot org>
 # Contributor: Thomas Holder <thomas at thomas-holder dot de>
 
-pkgname=therion
-pkgver=5.4.4
-pkgrel=4
+pkgname='therion'
+pkgver='5.4.4'
+pkgrel='5'
 pkgdesc="Cave surveying: processes survey data and generates maps or 3D models of caves"
 arch=('x86_64' 'i686')
 url="http://therion.speleo.sk"
@@ -36,7 +36,7 @@ makedepends=(
 )
 
 source=(
-	'http://github.com/therion/therion/archive/v${pkgver}.tar.gz'
+	"http://github.com/therion/therion/archive/v${pkgver}.tar.gz"
 	'loch_vtk7.patch'
 	'make_install.patch'
 	'therion_ini.patch'

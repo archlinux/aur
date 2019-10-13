@@ -9,3 +9,6 @@
 # 5.4.4-4
 - removed unnecessary quoting in PKGBUILD
 
+# 5.4.4-5
+- finally fixing quoting in PKGBUILD
+
