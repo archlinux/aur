@@ -1,0 +1,15 @@
+pkgbase = groovyserv
+	pkgdesc = Groovy startup acceralator
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/kobo/groovyserv
+	arch = x86_64
+	license = Apache
+	makedepends = go-pie
+	makedepends = gradle
+	makedepends = unzip
+	source = https://github.com/kobo/groovyserv/archive/v1.2.0.tar.gz
+	sha512sums = 25f87571271317ff7e4ed05dc52eaaf04500f58cabf60f8d35c3d8fc9b0c3a7fce9be4f1e6585b3689cef21bf9b621b98ebce4de8ad927869636ce4f1557b229
+
+pkgname = groovyserv
+
