@@ -5,7 +5,7 @@ After=network.target network-online.target nss-lookup.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/acmed --foregroung --log-syslog --log-level=info
+ExecStart=/usr/bin/acmed --foreground --log-syslog --log-level=info
 
 [Install]
 WantedBy=multi-user.target
