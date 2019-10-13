@@ -2,8 +2,8 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-jedi
-pkgver=0.2.7
-pkgrel=5
+pkgver=0.2.8
+pkgrel=1
 pkgdesc="Python auto-completion for Emacs"
 url="https://github.com/tkf/emacs-jedi"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('emacs' 'python-jedi' 'emacs-auto-complete' 'emacs-epc' 'emacs-python-e
 makedepends=('git')
 provides=('emacs-jedi')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/tkf/emacs-jedi/archive/v$pkgver.tar.gz")
-sha256sums=('adb41035a57bf8edf0d1a2fc309e0c7577e1f797a6e325ae68c1ec6d316c4d9b')
+sha256sums=('f97884ef3016146a0f0323e23b348066a253cbe780f03e952a209fd96aa4bcd9')
 
 build() {
   cd emacs-jedi-$pkgver

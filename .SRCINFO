@@ -1,7 +1,7 @@
 pkgbase = emacs-jedi
 	pkgdesc = Python auto-completion for Emacs
-	pkgver = 0.2.7
-	pkgrel = 5
+	pkgver = 0.2.8
+	pkgrel = 1
 	url = https://github.com/tkf/emacs-jedi
 	arch = any
 	license = GPL3
@@ -13,8 +13,8 @@ pkgbase = emacs-jedi
 	depends = emacs-python-environment
 	depends = python-virtualenv
 	provides = emacs-jedi
-	source = emacs-jedi-0.2.7.tar.gz::https://github.com/tkf/emacs-jedi/archive/v0.2.7.tar.gz
-	sha256sums = adb41035a57bf8edf0d1a2fc309e0c7577e1f797a6e325ae68c1ec6d316c4d9b
+	source = emacs-jedi-0.2.8.tar.gz::https://github.com/tkf/emacs-jedi/archive/v0.2.8.tar.gz
+	sha256sums = f97884ef3016146a0f0323e23b348066a253cbe780f03e952a209fd96aa4bcd9
 
 pkgname = emacs-jedi
 
