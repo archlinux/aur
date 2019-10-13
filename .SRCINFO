@@ -1,13 +1,15 @@
 pkgbase = almond
 	pkgdesc = A scala kernel for Jupyter
 	pkgver = 0.8.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://almond.sh/
 	arch = x86_64
 	license = BSD
 	depends = jupyter
 	depends = scala
 	source = https://github.com/almond-sh/almond/releases/download/v0.8.1/almond
+	source = kernel.json
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = almond

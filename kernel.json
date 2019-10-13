@@ -1,0 +1,13 @@
+{
+  "language" : "scala",
+  "display_name" : "Scala",
+  "argv" : [
+    "java",
+    "-jar",
+    "/usr/share/jupyter/kernels/scala/launcher.jar",
+    "--jupyter-path",
+    "/usr/share/jupyter/kernels/",
+    "--connection-file",
+    "{connection_file}"
+  ]
+}
