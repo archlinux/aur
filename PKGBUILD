@@ -38,7 +38,6 @@ check() {
 }
 
 package() {
-    ls
     mkdir -p "$pkgdir/usr/share/craftos"
 	cp -R craftos2-rom-$pkgver/* "$pkgdir/usr/share/craftos/"
 }
