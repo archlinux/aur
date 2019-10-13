@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=libpki
-pkgver=0.8.9
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Provides an easy-to-use PKI library for PKI enabled application development"
 arch=('i686' 'x86_64')
@@ -13,18 +13,18 @@ source=("http://prdownloads.sourceforge.net/project/openca/$pkgname/releases/v$p
 
 
 build() {
-    cd "$srcdir/$pkgname-$pkgver"
-    export OPENSSL_LIBS="-L/usr/lib/openssl-1.0"
-    export OPENSSL_CFLAGS="-I/usr/include/openssl-1.0"
-    ./configure --prefix=/usr --libdir=/usr/lib --
-    make
+	cd "$srcdir/$pkgname-$pkgver"
+	export OPENSSL_LIBS="-L/usr/lib/openssl-1.0"
+	export OPENSSL_CFLAGS="-I/usr/include/openssl-1.0"
+	./configure --prefix=/usr --libdir=/usr/lib --
+	make
 
 }
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver"
-    make DESTDIR="$pkgdir" install
-    mv $pkgdir/usr/etc $pkgdir/
+	cd "$srcdir/$pkgname-$pkgver"
+	make DESTDIR="$pkgdir" install
+	mv $pkgdir/usr/etc $pkgdir/
 }
 
-md5sums=('b7ef3253b87ab3dac612d7afa0b445b6')
+md5sums=('e20391ae5e632bb0af005d9d4c3caa14')
