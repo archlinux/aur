@@ -23,11 +23,14 @@ depends=(${ros_depends[@]}
   eigen)
 
 _dir="ompl-${pkgver}"
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ompl/ompl/archive/${pkgver}.tar.gz")
-sha256sums=('ad3e8e2201772de5e689ba1eee2d845bea1c7f3cdf08de6d282583fbe699856c')
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ompl/ompl/archive/${pkgver}.tar.gz"
+	"boost-fix.patch")
+sha256sums=('ad3e8e2201772de5e689ba1eee2d845bea1c7f3cdf08de6d282583fbe699856c'
+ 	    '41a66f47adc11165278f27c2c565e7e0b37d406c45794383ab8fe1ed6a13cadc')
 
 prepare() {
-  cd ${srcdir}
+  cd ${srcdir}/${_dir}
+  patch -uN demos/PlannerData.cpp ../../boost-fix.patch || return 1
 }
 
 build() {
