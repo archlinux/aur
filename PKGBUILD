@@ -13,7 +13,7 @@ build() {
   cd "$srcdir/nppcrypt-1.0.1.6"
   find src -type f -print0 | xargs -0 sed -i \
       's/\(^\|[^a-zA-Z0-9_]\)crypt::/\1nppcrypt::/g; s/namespace crypt/namespace nppcrypt/g'
-  sed -i '35 a .NOTPARALLEL:\n' GNUmakefile
+  sed -i 's/^all:.*/all:/g; s/@make/$(MAKE)/g; 34 a \\t$(MAKE) info\n\t$(MAKE) directories\n\t$(MAKE) $(CRYPTOPP)\n\t$(MAKE) bin/$(SUBDIR)/$(TARGET)\n' GNUmakefile
   make
 }
 
