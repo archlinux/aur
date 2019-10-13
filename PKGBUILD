@@ -2,7 +2,7 @@
 # Maintainer: Antoine Damhet <xdbob@lse.epita.fr>
 
 _pkgname=brightnessctl
-pkgname=${_pkgname}-git
+pkgname=${_pkgname}-sd-git
 pkgver=0.4.r11.g53a906b
 pkgrel=1
 pkgdesc="Lightweight brightness control tool"

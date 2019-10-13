@@ -1,4 +1,4 @@
-pkgbase = brightnessctl-git
+pkgbase = brightnessctl-sd-git
 	pkgdesc = Lightweight brightness control tool
 	pkgver = 0.4.r11.g53a906b
 	pkgrel = 1
@@ -13,5 +13,5 @@ pkgbase = brightnessctl-git
 	source = git://github.com/Hummer12007/brightnessctl
 	sha256sums = SKIP
 
-pkgname = brightnessctl-git
+pkgname = brightnessctl-sd-git
 
