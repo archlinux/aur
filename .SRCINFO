@@ -1,6 +1,6 @@
 pkgbase = wiringpi-git
 	pkgdesc = Arduino wiring-like library written in C for RaspberryPi.
-	pkgver = 107.8d188fa
+	pkgver = 136.093e0a1
 	pkgrel = 1
 	url = http://wiringpi.com/
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = wiringpi-git
 	license = LGPL3
 	makedepends = git
 	conflicts = wiringpi
-	source = git://git.drogon.net/wiringPi
+	source = git://github.com/WiringPi/WiringPi
 	md5sums = SKIP
 
 pkgname = wiringpi-git

@@ -1,7 +1,7 @@
 # Maintainer: Ranuka Perera <random -at- sawrc.com>
 pkgname=wiringpi-git
-_gitname=wiringPi
-pkgver=107.8d188fa
+_gitname=WiringPi
+pkgver=136.093e0a1
 pkgrel=1
 pkgdesc="Arduino wiring-like library written in C for RaspberryPi."
 url="http://wiringpi.com/"
@@ -9,7 +9,7 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=('LGPL3')
 makedepends=('git')
 conflicts=('wiringpi')
-source=('git://git.drogon.net/wiringPi')
+source=('git://github.com/WiringPi/WiringPi')
 md5sums=('SKIP')
 
 pkgver() {
