@@ -1,0 +1,21 @@
+pkgbase = kodi-addon-pvr-waipu
+	pkgdesc = Waipu.tv PVR Plugin for Kodi
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/peak3d/pvr.waipu
+	arch = any
+	groups = kodi
+	license = GPL
+	makedepends = cmake
+	makedepends = git
+	depends = kodi
+	depends = kodi-addon-script-module-inputstreamhelper
+	provides = kodi-addon-pvr-waipu
+	conflicts = kodi-addon-pvr-waipu
+	source = https://github.com/flubshi/pvr.waipu/archive/0.2.0-Leia.tar.gz
+	source = https://github.com/xbmc/xbmc/archive/18.4-Leia.tar.gz
+	sha256sums = 9884c0a7c5f040c44b16ac3de0dad2fdca506ecc382c86a32fdc7a41b258b6c9
+	sha256sums = bf2be186d8ae5b5377e43c06a538012bb9f51a0e98f8244b70a401006861d110
+
+pkgname = kodi-addon-pvr-waipu
+
