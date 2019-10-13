@@ -3,7 +3,7 @@
 
 pkgname=jlink-systemview
 pkgver=2.52d
-pkgrel=8
+pkgrel=9
 epoch=5
 pkgdesc="Segger SystemView for Linux"
 arch=('i686' 'x86_64')
@@ -29,7 +29,6 @@ package(){
 
     # Match package placement from their .deb, in /opt
     install -dm755 "${pkgdir}/opt/SEGGER/SystemView" \
-            "${pkgdir}/opt/SEGGER/SystemView/Target" \
             "${pkgdir}/usr/share/licenses/${pkgname}" \
             "${pkgdir}/usr/bin/" \
             "${pkgdir}/usr/share/doc/${pkgname}/" \
