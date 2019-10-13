@@ -6,7 +6,7 @@
 
 _pkgbase=mpd
 pkgname=${_pkgbase}-youtube-dl
-pkgver=0.21.5
+pkgver=0.21.15
 pkgrel=1
 pkgdesc='mpd fork with youtube support'
 url='https://github.com/MusicPlayerDaemon/MPD/pull/223'
@@ -22,19 +22,18 @@ depends=('audiofile' 'avahi' 'curl' 'faad2' 'ffmpeg' 'fluidsynth' 'icu' 'jack'
 optdepends=('youtube-dl: youtube and other streaming site support')
 makedepends=('boost' 'meson' 'python-sphinx')
 validpgpkeys=('0392335A78083894A4301C43236E8A58C6DB4512')
-#source=("https://www.musicpd.org/download/${_pkgbase}/${pkgver}/${_pkgbase}-${pkgver}.tar.xz"{,.sig}
 source=("https://www.musicpd.org/download/${_pkgbase}/${pkgver%.*}/${_pkgbase}-${pkgver}.tar.xz"{,.sig}
         'tmpfiles.d'
         'sysusers.d'
         'conf'
-        'youtube-dl.patch::https://github.com/MusicPlayerDaemon/MPD/compare/master...arcnmx:ytdl.patch')
+        "youtube-dl-$pkgver.patch::https://github.com/MusicPlayerDaemon/MPD/compare/v$pkgver...arcnmx:ytdl.patch")
 backup=('etc/mpd.conf')
 
 prepare() {
 	cd "${srcdir}/${_pkgbase}-${pkgver}"
 	rm -fr build
 	install -d build
-	patch -Np1 < "${srcdir}/youtube-dl.patch"
+	patch -Np1 < "${srcdir}/youtube-dl-$pkgver.patch"
 }
 
 build() {
@@ -69,9 +68,9 @@ package() {
 }
 
 # makepkg -g >> PKGBUILD
-sha256sums=('2ea9f0eb3a7bdae5d705adf4e8ec45ef38b5b9ddf133f32b8926dd4e205b0ef9'
+sha256sums=('4595adba2d8aa80b5a912bbb5185578abac3623ccc7e4897286993e4650a5022'
             'SKIP'
             '2faa85c12449a5b3ca422ff1c1fa06d057c7e262a74bfa6298c914a92d6f2e7a'
             '0b74c6e5db08daab3091dc15a6b0c75210ba2f9e98fa074f6cfd605a461056b6'
             'f40f68205834ca53cea3372e930bfe6c2f9ecc9df3b1605df2fec63a658b2e03'
-            'e92383b3441115d614389008a707c6a6e62cb82649447cc752928e546b7672f6')
+            '0809f7adfdffed166c83d46b879337e789f36eba2d1561ce7eb1ec558e2b1776')

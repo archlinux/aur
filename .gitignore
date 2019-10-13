@@ -3,4 +3,4 @@
 /*.xz
 /*.xz.sig
 /*.pkg.*
-/youtube-dl.patch
+/youtube-dl*.patch
