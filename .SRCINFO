@@ -1,19 +1,21 @@
 pkgbase = edb-debugger-git
 	pkgdesc = EDB (Evan's Debugger) is a binary mode debugger with the goal of having usability on par with OllyDbg. Git version
-	pkgver = 1.0.0.r368.gf1b6efe8
+	pkgver = 1.0.0.r370.g6a87b68f
 	pkgrel = 1
-	url = http://www.codef00.com/projects#debugger
-	arch = i686
+	url = https://www.codef00.com/projects#debugger
 	arch = x86_64
 	license = GPL2
 	makedepends = boost>=1.35.0
-	depends = qt5-base
 	depends = capstone
+	depends = desktop-file-utils
+	depends = graphviz
+	depends = hicolor-icon-theme
+	depends = qt5-svg
 	depends = qt5-xmlpatterns
 	source = git+https://github.com/eteran/edb-debugger.git
 	source = edb.desktop
 	sha256sums = SKIP
-	sha256sums = af1d0eae06544fbca7a9af2e2f55dc472324abf28402652e88d3b62c1882a132
+	sha256sums = 1d3bc1c8a6c5d08d0b627f03b926e5645e9b4ca0c70282e06585f181251990f3
 
 pkgname = edb-debugger-git
 
