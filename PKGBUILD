@@ -32,7 +32,7 @@ makedepends=(
   'libbluray' 'libcdio' 'libcec' 'libgl' 'mariadb-libs' 'libmicrohttpd'
   'libmodplug' 'libmpeg2' 'libnfs' 'libplist' 'libpulse' 'libva'
   'libvdpau' 'libxrandr' 'libxslt' 'lirc' 'lzo' 'mesa' 'nasm'
-  'python2-pycryptodome' 'python2-pillow' 'python2-pybluez' 'python2-simplejson'
+  'python-pycryptodomex' 'python-pillow' 'python-pybluez' 'python-simplejson'
   'shairplay' 'smbclient' 'taglib' 'tinyxml' 'swig'
   'upower' 'giflib' 'rapidjson' 'ghostscript' 'git'
   # wayland
@@ -101,11 +101,6 @@ pkgver() {
 }
 
 prepare() {
-  # force python 'binary' as python2
-  [[ -d "$srcdir/path" ]] && rm -rf "$srcdir/path"
-  mkdir "$srcdir/path"
-  ln -s /usr/bin/python2 "$srcdir/path/python"
-
   [[ -d kodi-build-x11 ]] && rm -rf kodi-build-x11
   mkdir kodi-build-x11
   [[ -d kodi-build-wayland ]] && rm -rf kodi-build-wayland
@@ -208,14 +203,14 @@ build() {
 package_kodi-git() {
   pkgdesc="A software media player and entertainment hub for digital media (master branch)"
   depends=(
-    'desktop-file-utils' 'hicolor-icon-theme' 'mesa' 'python2-pycryptodome'
-    'python2-pillow' 'python2-simplejson' 'xorg-xdpyinfo' 'shairplay'
+    'desktop-file-utils' 'hicolor-icon-theme' 'mesa' 'python-pycryptodomex'
+    'python-pillow' 'python-simplejson' 'xorg-xdpyinfo' 'shairplay'
     "$pkgbase-bin"
   )
   optdepends=(
     'afpfs-ng: Apple shares support'
     'bluez: Blutooth support'
-    'python2-pybluez: Bluetooth support'
+    'python-pybluez: Bluetooth support'
     'libplist: AirPlay support'
     'pulseaudio: PulseAudio support'
     'upower: Display battery level'
@@ -238,11 +233,6 @@ package_kodi-git() {
      -P cmake_install.cmake
   done
 
-  # python2 is being used
-  cd "$pkgdir"
-  grep -lR '#!.*python' * | \
-    while read file; do sed -s 's/\(#!.*python\)/\12/g' -i "$file"; done
-
   # remove x11 binaries
   rm "$pkgdir/usr/lib/kodi/"{kodi-x11,kodi-xrandr}
 }
@@ -256,7 +246,7 @@ package_kodi-git-bin() {
   depends=(
     'bluez-libs' 'curl' 'lcms2' 'libass' 'libbluray' 'libcdio' 'libcec'
     'libmicrohttpd' 'libnfs' 'libpulse' 'libva' 'libvdpau' 'libxrandr'
-    'libxslt' 'lirc' 'mariadb-libs' 'python2' 'smbclient' 'taglib'
+    'libxslt' 'lirc' 'mariadb-libs' 'python' 'smbclient' 'taglib'
     'tinyxml' "$pkgbase"
   )
 
@@ -275,7 +265,7 @@ package_kodi-git-wayland() {
   depends=(
     'bluez-libs' 'curl' 'lcms2' 'libass' 'libbluray' 'libcdio' 'libcec'
     'libmicrohttpd' 'libnfs' 'libpulse' 'libva' 'libxkbcommon' 'libxslt'
-    'lirc' 'mariadb-libs' 'python2' 'smbclient' 'taglib' 'tinyxml'
+    'lirc' 'mariadb-libs' 'python' 'smbclient' 'taglib' 'tinyxml'
     'waylandpp' "$pkgbase"
   )
 
@@ -293,7 +283,7 @@ package_kodi-git-gbm() {
   depends=(
     'bluez-libs' 'curl' 'lcms2' 'libass' 'libbluray' 'libcdio' 'libcec'
     'libinput' 'libmicrohttpd' 'libnfs' 'libpulse' 'libva' 'libxkbcommon'
-    'libxslt' 'lirc' 'mariadb-libs' 'python2' 'smbclient' 'taglib'
+    'libxslt' 'lirc' 'mariadb-libs' 'python' 'smbclient' 'taglib'
     'tinyxml' "$pkgbase"
   )
 
@@ -308,7 +298,7 @@ package_kodi-git-eventclients() {
   pkgdesc="Kodi Event Clients (master branch)"
   provides=("kodi-eventclients=${pkgver}")
   conflicts=('kodi-eventclients')
-  optdepends=('python2: most eventclients are implemented in python2')
+  optdepends=('python: most eventclients are implemented in python')
 
   _components=(
     'kodi-eventclients-common'
@@ -325,11 +315,6 @@ package_kodi-git-eventclients() {
       -DCMAKE_INSTALL_COMPONENT="$_cmp" \
       -P cmake_install.cmake
   done
-
-  # python2 is being used
-  cd "$pkgdir"
-  grep -lR '#!.*python' * | \
-    while read file; do sed -s 's/\(#!.*python\)/\12/g' -i "$file"; done
 }
 
 # kodi-tools-texturepacker
@@ -386,9 +371,4 @@ package_kodi-git-dev() {
       -DCMAKE_INSTALL_COMPONENT="$_cmp" \
       -P cmake_install.cmake
   done
-
-  # python2 is being used
-  cd "$pkgdir"
-  grep -lR '#!.*python' * | \
-    while read file; do sed -s 's/\(#!.*python\)/\12/g' -i "$file"; done
 }
