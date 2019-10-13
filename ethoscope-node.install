@@ -14,7 +14,7 @@ post_install() {
     
     #installing python module
     cd /opt/ethoscope-node/node_src/
-    python setup.py install
+    python setup.py develop
     
     echo "enabling NODE specific systemd service files"
     systemctl enable ethoscope_node.service ethoscope_update_node.service ethoscope_backup.service ethoscope_video_backup.service 
