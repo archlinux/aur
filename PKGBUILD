@@ -2,14 +2,14 @@
 # Maintainer: Zeph <zeph33@gmail.com>
 # https://gitlab.manjaro.org/packages/extra/pamac
 pkgname=pamac-cli
-pkgver=8.0.4
-pkgrel=2
+pkgver=9.0.0
+pkgrel=1
 _pkgfixver=$pkgver
 
 #_pkgvercommit=v$pkgver
-_pkgvercommit='fddd7715e23a7199db9498cfee2efecad62074ef'
-sha256sums=('a6c9f4f182497bd08ea223a46e3b4ee86facfa37649d38e0fb15d29be41bb1b0'
-            '732512829081cb979a01087a8d8ec2a578e6555ed4f67af998537f6707d8bcaf')
+_pkgvercommit='881953f28aade1676b88a6423a89e46214464127'
+sha256sums=('b07f4413bada7a0ad057428cd3daf37489e664b3e17bb6ef25216b22e0a29eff'
+            'd930fc889338cb50f6da36ddce3006946c69f6323b7b801d035c516b575ebc5d')
 
 pkgdesc="Pamac cli frontend for libalpm"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -41,14 +41,16 @@ build() {
   meson --prefix=/usr --sysconfdir=/etc
 
   # build
-  ninja src/pamac
+  ninja
 }
 
 package() {
   cd "$srcdir/pamac-$_pkgvercommit/builddir"
-  install -Dm755 "src/pamac" "$pkgdir/usr/bin/pamac"
-  install -Dm755 "src/libpamac.so" "$pkgdir/usr/lib/libpamac.so"
-
-
+  DESTDIR="$pkgdir" ninja install
+  # clean graphic files
+  rm -rf "$pkgdir/etc/xdg"
+  rm -rf "$pkgdir/usr/share/applications"
+  rm -rf "$pkgdir/usr/share/dbus-1/services"
+  rm -rf "$pkgdir/usr/share/gnome-shell"
+  rm -rf "$pkgdir/usr/share/icons"
 }
-# vim:set ts=2 sw=2 et:
