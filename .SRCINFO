@@ -1,0 +1,36 @@
+pkgbase = broadcom-wl-ck-dkms
+	pkgdesc = Broadcom 802.11 Linux STA wireless driver
+	pkgver = 6.30.223.271
+	pkgrel = 1
+	url = https://www.broadcom.com/support/download-search/?pf=Wireless+LAN+Infrastructure
+	install = broadcom-wl-ck-dkms.install
+	arch = x86_64
+	license = custom
+	depends = dkms
+	source = broadcom-wl-ck-dkms.conf
+	source = dkms.conf.in
+	source = 001-null-pointer-fix.patch
+	source = 002-rdtscl.patch
+	source = 003-linux47.patch
+	source = 004-linux48.patch
+	source = 005-debian-fix-kernel-warnings.patch
+	source = 006-linux411.patch
+	source = 007-linux412.patch
+	source = 008-linux415.patch
+	source = 009-fix_mac_profile_discrepancy.patch
+	source = https://docs.broadcom.com/docs-and-downloads/docs/linux_sta/hybrid-v35_64-nodebug-pcoem-6_30_223_271.tar.gz
+	sha256sums = b97bc588420d1542f73279e71975ccb5d81d75e534e7b5717e01d6e6adf6a283
+	sha256sums = f1df2aa45416b4ac61ea1501602bd1f205a416e1bf1664f23b3761a84d035b26
+	sha256sums = 32e505a651fdb9fd5e4870a9d6de21dd703dead768c2b3340a2ca46671a5852f
+	sha256sums = 4ea03f102248beb8963ad00bd3e36e67519a90fa39244db065e74038c98360dd
+	sha256sums = 30ce1d5e8bf78aee487d0f3ac76756e1060777f70ed1a9cf95215c3a52cfbe2e
+	sha256sums = 09d709df0c764118ca43117f5c096163d9669a28170da8476d4b8211bd225d2e
+	sha256sums = 2306a59f9e7413f35a0669346dcd05ef86fa37c23b566dceb0c6dbee67e4d299
+	sha256sums = 5bc12cb57712e6a944dff1c90de50135c2508085d8497ab99284ccccdb35c32b
+	sha256sums = a3d13e8abb96ad440dbfae29acae82d31d1ced2ea62052f1efb2c3c4add347ce
+	sha256sums = 08c24157cf3b93b60e67e600d1d90223447361990df09acfb00281d79813d167
+	sha256sums = 4e73e50653bb612946edd34bf31ca5a0b80f632d47a08766ae6042880927c98d
+	sha256sums = 5f79774d5beec8f7636b59c0fb07a03108eef1e3fd3245638b20858c714144be
+
+pkgname = broadcom-wl-ck-dkms
+

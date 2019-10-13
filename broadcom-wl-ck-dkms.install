@@ -1,0 +1,16 @@
+post_install() {
+  cat<<EOF
+
+To load the new module, run the following commands as root:
+
+  rmmod b43 b43legacy bcm43xx bcma brcm80211 brcmfmac brcmsmac ssb wl
+  modprobe wl
+
+Or just reboot the system.
+
+EOF
+}
+
+post_upgrade() {
+  post_install $1
+}
