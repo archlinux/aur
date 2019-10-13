@@ -1,0 +1,13 @@
+pkgbase = nppcrypt
+	pkgdesc = Cryptography plugin from Nodepad++
+	pkgver = 1.0.1.6
+	pkgrel = 1
+	url = https://github.com/jeanpaulrichter/nppcrypt
+	arch = i686
+	arch = x86_64
+	provides = nppcrypt
+	source = https://github.com/jeanpaulrichter/nppcrypt/archive/1.0.1.6.zip
+	sha256sums = 7f74192269ba70683cad15c49634090efc1ffeb4fdcd249e5f86a213f85928b2
+
+pkgname = nppcrypt
+
