@@ -2,8 +2,8 @@
 # Maintainer: Nikolay Kuzin <develnk@gmail.com>
 
 pkgname=asofe
-pkgver=2.0.6_1
-_commit=1be9a53fdfb7f264a64a90bfb90625e53e7db1ef
+pkgver=2.0.7_1
+_commit=42bc6484bf6cbf93e0f73b29d7f5a5c772af02c1
 pkgrel=1
 pkgdesc='Permissionless financial system employing zero-knowledge security'
 arch=('x86_64')
