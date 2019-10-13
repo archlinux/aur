@@ -1,4 +1,4 @@
-# Maintainer: Davide Depau <davide@depau.eu>
+# Maintainer: Antoine Damhet <xdbob@lse.epita.fr>
 
 _pkgname=brightnessctl
 pkgname=${_pkgname}-git
