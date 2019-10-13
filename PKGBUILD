@@ -3,11 +3,11 @@
 pkgbase=octopi-notifier-qt5
 pkgname=('octopi-notifier-qt5')
 pkgver=0.9.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Notifier for Octopi using Qt5 libs"
 pkggit=octopi
-_gitcommit=d76eb8b1c861ece83b4f3178559e2e5253258c76
-_gitsha256='532db1f04c36ec24d4e661c572b0cbf86e9b8bb973161dec4bb605e0309b7d2c'
+_gitcommit=87b0a8e7afe9127602e2ba03c88c4f84d62980ac
+_gitsha256='ec37a0ffd8a19c29c905a0ffe2dfc3ee5bff0804c6a33d405e5443882ee3c657'
 arch=('i686' 'x86_64')
 url="http://octopiproject.wordpress.com"
 license=('GPL2')
