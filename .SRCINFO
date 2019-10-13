@@ -1,0 +1,17 @@
+pkgbase = matchbox-window-manager-git
+	pkgdesc = A pretty much unique X window manager with a classic PDA management policy
+	pkgver = 1.2
+	pkgrel = 4
+	url = http://matchbox-project.org/
+	arch = any
+	license = GPL
+	depends = libmatchbox
+	depends = startup-notification
+	depends = libpng
+	depends = libsm
+        depends = gconf
+	source = matchbox-window-manager::git+https://git.yoctoproject.org/git/matchbox-window-manager.git
+	sha256sums = SKIP
+
+pkgname = matchbox-window-manager-git
+
