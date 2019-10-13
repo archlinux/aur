@@ -6,20 +6,32 @@
 
 pkgsubn=https-everywhere
 pkgname=${pkgsubn}-chrome-git
-pkgver=64806.7885b8871c
-pkgrel=1
+pkgver=66380.17bc164712
+pkgrel=2
 pkgdesc="Chrome/Chromium extension to use HTTPS whenever possible - git/dev"
 arch=('any')
 url='https://www.eff.org/https-everywhere'
 license=('GPL')
 makedepends=(git perl python36 python-lxml libxml2 vim zip rsync)
-source=("git+https://github.com/EFForg/${pkgsubn}.git")
-sha512sums=('SKIP')
+depends=(chromium)
+source=(
+    "git+https://github.com/EFForg/${pkgsubn}.git"
+    "git+https://github.com/EFForg/${pkgsubn}-lib-wasm.git"
+    "git+https://git.torproject.org/translation.git"
+)
+sha512sums=(SKIP SKIP SKIP)
 
 pkgver() {
 	cd "${srcdir}/${pkgsubn}"
 	local ver="$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 	printf "%s" "${ver//-/.}"
+}
+prepare() {
+    cd "${srcdir}/${pkgsubn}"
+    git submodule init
+    git config submodule.lib-wasm.url  "${srcdir}/${pkgsubn}-lib-wasm"
+    git config submodule.translate.url "${srcdir}/translation"
+    git submodule update
 }
 build() {
 	cd "${srcdir}/${pkgsubn}"
