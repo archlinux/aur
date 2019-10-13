@@ -1,0 +1,16 @@
+pkgbase = jupiter
+	pkgdesc = RISC-V RV32 Assembler and Runtime Simulator
+	pkgver = 3.1
+	pkgrel = 1
+	url = https://github.com/andrescv/Jupiter
+	arch = i686
+	arch = x86_64
+	makedepends = zip
+	makedepends = coreutils
+	depends = gvfs
+	provides = jupiter
+	source = https://github.com/andrescv/Jupiter/releases/download/v3.1/Jupiter-3.1-linux.zip
+	sha256sums = 0016ecdf5568151c1b099a5ca0ce1b2578a73bdd60bf290010f1752b3875093f
+
+pkgname = jupiter
+
