@@ -5,13 +5,13 @@
 
 # Modifications to use source from git master
 # Maintainer: James P. Harvey <jamespharvey20 at gmail dot com>
-#    * This PKGBUILD as closely as possible matches core's gcc 8.2.1+20181127-1
+#    * This PKGBUILD as closely as possible matches core's gcc 9.2.0
 
 # toolchain build order: linux-api-headers->glibc->binutils->gcc->binutils->glibc
 # NOTE: libtool requires rebuilt with each new gcc version
 
 pkgname=(gcc-git gcc-libs-git gcc-fortran-git gcc-objc-git gcc-ada-git gcc-go-git lib32-gcc-libs-gitb)
-pkgver=10.0.0.r168510.4fd009e9ec30
+pkgver=10.0.0.r172005.fcab78b9b34
 _majorver=${pkgver%%.*}
 #this is set after pkgver() runs!  (Thanks makepkg!)
 _basever=${pkgver%%.r*}
@@ -20,13 +20,13 @@ pkgrel=1
 pkgdesc='The GNU Compiler Collection (git version)'
 arch=(x86_64)
 license=(GPL LGPL FDL custom)
-url='http://gcc.gnu.org'
+url='https://gcc.gnu.org'
 makedepends=(binutils libmpc gcc-ada doxygen lib32-glibc lib32-gcc-libs python git)
 checkdepends=(dejagnu inetutils)
 options=(!emptydirs)
 #source=(https://ftp.gnu.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz{,.sig}
-source=(git+https://gcc.gnu.org/git/gcc.git
-        http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2
+source=(git+https://gcc.gnu.org/git/gcc.git#commit=fcab78b9
+        https://isl.gforge.inria.fr/isl-${_islver}.tar.bz2
         c89 c99)
 validpgpkeys=(F3691687D867B81B51CE07D9BBE43771487328A9  # bpiotrowski@archlinux.org
               86CFFCA918CF3AF47147588051E8B148A9999C34  # evangelos@foutrelis.com
@@ -333,7 +333,7 @@ package_gcc-ada-git() {
 package_gcc-go-git() {
   pkgdesc='Go front-end for GCC (git version)'
   depends=("gcc=$pkgver-$pkgrel")
-  provides=("go=1.10.1" gcc-go-multilib gcc-go=${pkgver}-${pkgrel})
+  provides=("go=1.12.2" gcc-go-multilib gcc-go=${pkgver}-${pkgrel})
   conflicts=(go gcc-go)
 
   cd gcc-build
