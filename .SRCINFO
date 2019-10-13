@@ -1,7 +1,7 @@
 pkgbase = realrtcw
 	pkgdesc = A mod that brings some realism to the classic Wolfenstein game. You can expect ruthless AI, new weapons and rebalanced gameplay
-	pkgver = 2.21
-	pkgrel = 2
+	pkgver = 3.0
+	pkgrel = 1
 	url = http://www.moddb.com/mods/realrtcw-realism-mod
 	install = realrtcw.install
 	arch = i686
@@ -9,6 +9,7 @@ pkgbase = realrtcw
 	license = GPL
 	makedepends = cmake
 	makedepends = unzip
+	makedepends = innoextract
 	depends = iortcw-data
 	depends = freetype2
 	depends = sdl2
@@ -17,21 +18,22 @@ pkgbase = realrtcw
 	depends = opusfile
 	depends = libogg
 	depends = zlib
-	noextract = realrtcw2.21.zip
-	noextract = hdpack2.2.zip
-	source = https://github.com/wolfetplayer/RealRTCW/archive/2.21.tar.gz
-	source = https://wolffiles.de/filebase/RtCW/Mods/realrtcw2.21.zip
-	source = http://www.wolfenstein-files.de/rtcw/mods/hdpack2.2.zip
+	source = https://github.com/wolfetplayer/RealRTCW/archive/3.0.tar.gz
+	source = https://wolffiles.de/filebase/RtCW/Mods/RealRTCW.zip
 	source = realrtcw-sp.launcher
 	source = realrtcw-sp.desktop
-	md5sums = 088b535c3bade4acf18a57df5b23b683
-	md5sums = eedef619c657f3465e448ae0968fe265
-	md5sums = 800b2b4f9166a46198c093f9c6365bf3
+	md5sums = a3eff16d3851e1bf5b391501afa4663e
+	md5sums = 031b4228e632a8f31143bf38e8ea7394
 	md5sums = 7e3991e5f331662419ad1ed04e49366c
 	md5sums = 5fcd49cca83f7bba0d75c6b4b5801f95
 
 pkgname = realrtcw
 
 pkgname = realrtcw-hdpack
-	pkgdesc = HD Textures for RealRTCW Mod
+	pkgdesc = RTCW Vanilla textures upscaled by AI. This is for those who prefer original style and atmosphere of the game.
+
+pkgname = realrtcw-splatterladder
+	pkgdesc = Splatterladder RtCW HD Pack: an amazing pack with true HD textures made by WolfRTCW.
+	conflicts = realrtcw-hdpack
+	replaces = realrtcw-hdpack
 
