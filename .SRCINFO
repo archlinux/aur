@@ -1,0 +1,14 @@
+pkgbase = amuletml-bin
+	pkgdesc = The Amulet programming language
+	pkgver = 0.4.0.0
+	pkgrel = 1
+	url = https://hydraz.semi.works/amulet/
+	arch = x86_64
+	license = BSD
+	provides = amuletml
+	conflicts = amuletml
+	source = https://hydraz.semi.works/amulet/install-amulet.sh
+	md5sums = 73b8390cf7974c38dcfd850d7810f0c4
+
+pkgname = amuletml-bin
+
