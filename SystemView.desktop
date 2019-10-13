@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Systemview
+Comment=Segger SystemView for Linux
+Exec=/usr/bin/SystemView
+Icon=SystemView.svg
+Terminal=false
+StartupNotify=false
+Categories=Development
+Name=SystemView

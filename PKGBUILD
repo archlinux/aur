@@ -3,7 +3,7 @@
 
 pkgname=jlink-systemview
 pkgver=2.52d
-pkgrel=5
+pkgrel=6
 epoch=5
 pkgdesc="Segger SystemView for Linux"
 arch=('i686' 'x86_64')
@@ -34,7 +34,10 @@ package(){
             "${pkgdir}/opt/SEGGER/SystemView/Target" \
             "${pkgdir}/usr/share/licenses/${pkgname}" \
             "${pkgdir}/usr/bin/" \
-            "${pkgdir}/usr/share/doc/${pkgname}/"
+            "${pkgdir}/usr/share/doc/${pkgname}/" \
+            "${pkgdir}/usr/share/pixmaps" \
+            "${pkgdir}/usr/share/applications"
+
 
     cd ${srcdir}/SystemView
 
@@ -52,4 +55,10 @@ package(){
     for f in Doc/*; do
         ln -s /opt/SEGGER/SystemView/"$f" "${pkgdir}/usr/share/doc/${pkgname}"
     done
+
+    # Install desktop entry
+    install -Dm644 "../SystemView.desktop" "${pkgdir}/usr/share/applications/SystemView.desktop"
+    install -Dm644 "../SystemView.svg" "${pkgdir}/usr/share/pixmaps/SystemView.png"
+
+
 }
