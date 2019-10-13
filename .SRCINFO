@@ -12,6 +12,7 @@ pkgbase = ros-melodic-moveit-kinematics
 	makedepends = ros-melodic-catkin
 	makedepends = ros-melodic-pluginlib
 	makedepends = ros-melodic-moveit-ros-planning
+	makedepends = ros-melodic-moveit-resources
 	makedepends = eigen
 	depends = ros-melodic-moveit-core
 	depends = ros-melodic-actionlib

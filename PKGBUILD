@@ -12,7 +12,8 @@ ros_makedepends=(ros-melodic-moveit-core
   ros-melodic-actionlib
   ros-melodic-catkin
   ros-melodic-pluginlib
-  ros-melodic-moveit-ros-planning)
+  ros-melodic-moveit-ros-planning
+  ros-melodic-moveit-resources)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   eigen)
