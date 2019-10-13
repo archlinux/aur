@@ -8,9 +8,7 @@ pkgbase = traccar-bin
 	license = APACHE
 	depends = java-runtime
 	source = https://github.com/tananaev/traccar/releases/download/v4.6/traccar-linux-64-4.6.zip
-	source = traccar.service
 	md5sums = c1a640673052a99aff4956b90a23ab47
-	md5sums = 3e230b1b98fb5d0ae71ee08ab96a7c92
 
 pkgname = traccar-bin
 
