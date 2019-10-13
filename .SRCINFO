@@ -1,0 +1,17 @@
+pkgbase = mingw-w64-z3
+	pkgdesc = High-performance theorem prover (mingw-w64)
+	pkgver = 4.8.6
+	pkgrel = 1
+	url = https://github.com/Z3Prover/z3
+	arch = any
+	license = MIT
+	makedepends = mingw-w64-cmake
+	depends = mingw-w64-gmp
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = https://github.com/Z3Prover/z3/archive/z3-4.8.6.tar.gz
+	sha512sums = d338413274a3d11a9e9287202989df9da4c31e095c14428a418d4019e9f86c0e2b681c519d2d0bcbb4cd99a722a2539006f5c86ade568b1ee208545b142369f1
+
+pkgname = mingw-w64-z3
+
