@@ -1,18 +1,16 @@
 pkgbase = osu-handler
 	pkgdesc = Provides a handler for osu! file formats
-	pkgver = 0.1
+	pkgver = 0.2
 	pkgrel = 1
 	install = osu-handler.install
 	arch = any
-	license = AGPL3
+	license = GPL3
 	depends = osu-mime
 	depends = desktop-file-utils
-	depends = python
-	depends = libnotify
-	source = osu-wine.py
+	source = git+https://github.com/openglfreak/osu-handler-wine.git
 	source = osu-file-extensions-handler.desktop
-	sha256sums = a2b57b360c508dc195bd8b1fd95c69b8f007ec3a22eda894d8ac234356ff8d44
-	sha256sums = b629d7f99652bb96bc8f381dde7e455ba66fc1b69b472ee7762b7f5a1f641dc8
+	sha256sums = SKIP
+	sha256sums = 43f9ce9166b90f1aa47a48f0eab26131274cfaf17dcfe5964ebdb757632c95fb
 
 pkgname = osu-handler
 
