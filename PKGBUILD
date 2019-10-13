@@ -3,7 +3,7 @@
 
 _pkgname=brightnessctl
 pkgname=${_pkgname}-git
-pkgver=0.4.r9.g4500f76
+pkgver=0.4.r11.g53a906b
 pkgrel=1
 pkgdesc="Lightweight brightness control tool"
 arch=('i686' 'x86_64')
@@ -22,12 +22,12 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_pkgname"
-  make PREFIX=/usr
+  make PREFIX=/usr ENABLE_SYSTEMD=1
 }
 
 package() {
   cd "$srcdir/$_pkgname"
-  make DESTDIR="$pkgdir" UDEVDIR=/usr/lib/udev/rules.d install
+  make DESTDIR="$pkgdir" INSTALL_UDEV_RULES=0 install
   mkdir -p $pkgdir/usr/share/licenses/$pkgname
   install -m 0644 LICENSE $pkgdir/usr/share/licenses/$pkgname/
 }
