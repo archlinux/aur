@@ -28,5 +28,7 @@ build() {
 package() {
   cd "$srcdir/$_pkgname"
   make DESTDIR="$pkgdir" UDEVDIR=/usr/lib/udev/rules.d install
+  mkdir -p $pkgdir/usr/share/licenses/$pkgname
+  install -m 0644 LICENSE $pkgdir/usr/share/licenses/$pkgname/
 }
 
