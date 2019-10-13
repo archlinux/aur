@@ -1,0 +1,16 @@
+pkgbase = silently-git
+	pkgdesc = Silences a command output except on error, so its correct operation is self supervised (aka jidoka)
+	pkgver = r5.3a67f98
+	pkgrel = 1
+	url = https://gitlab.com/es20490446e/silently
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = bash
+	provides = silently
+	conflicts = silently
+	source = git+https://gitlab.com/es20490446e/silently.git
+	md5sums = SKIP
+
+pkgname = silently-git
+
