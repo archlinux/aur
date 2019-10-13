@@ -10,6 +10,7 @@ arch=('i686' 'x86_64')
 url='https://github.com/Hummer12007/brightnessctl'
 license=('MIT')
 makedepends=('git' 'pkg-config')
+depends=('systemd-libs>=243')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("git://github.com/Hummer12007/$_pkgname")
