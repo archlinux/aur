@@ -3,6 +3,7 @@ src/
 *.swp
 *.pkg.tar.xz
 *.tar.gz
+*.tar
 
 DSView/
 

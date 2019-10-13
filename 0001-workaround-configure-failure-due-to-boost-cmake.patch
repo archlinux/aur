@@ -1,0 +1,26 @@
+From bd4a58104007309a6bbf8b52d508232098d86438 Mon Sep 17 00:00:00 2001
+From: Cody P Schafer <dev@codyps.com>
+Date: Sun, 13 Oct 2019 12:22:39 -0400
+Subject: [PATCH] workaround configure failure due to boost cmake
+
+---
+ DSView/CMakeLists.txt | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/DSView/CMakeLists.txt b/DSView/CMakeLists.txt
+index 1a844a4..1787889 100755
+--- a/DSView/CMakeLists.txt
++++ b/DSView/CMakeLists.txt
+@@ -24,6 +24,9 @@ cmake_minimum_required(VERSION 2.8.6)
+ include(FindPkgConfig)
+ include(GNUInstallDirs)
+ 
++# workaround 'Imported target "Boost::filesystem" includes non-existent
++# path "/include"' error
++set(Boost_NO_BOOST_CMAKE TRUE)
+ set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/CMake")
+ 
+ project(DSView)
+-- 
+2.23.0
+

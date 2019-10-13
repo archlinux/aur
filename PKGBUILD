@@ -3,7 +3,7 @@
 # Maintainer: Cody Schafer <aur@codyps.com>
 
 pkgname=dsview
-pkgver=0.99
+pkgver=1.01
 pkgrel=1
 pkgdesc="Client software that supports the DreamSourceLab logic analyzer"
 arch=('i686' 'x86_64')
@@ -13,21 +13,25 @@ depends=('boost-libs' 'qt5-base' "libsigrokdecode4dsl=${pkgver}" "libsigrok4dsl=
 makedepends=('boost')
 
 source=(
-  "DSView-$pkgver.tar.gz::https://github.com/DreamSourceLab/DSView/archive/${pkgver}.tar.gz"
+  "DSView-$pkgver.tar.gz::https://github.com/DreamSourceLab/DSView/archive/v${pkgver}.tar.gz"
   'udev.rules'
   'dsview.desktop'
+  '0001-workaround-configure-failure-due-to-boost-cmake.patch'
 )
-sha384sums=('9f92432c1721d5e39b343029955c95203bf9cf051095956175e7315e0471bbc01c8ba85708ed3eb085a7cf75932adb6c'
+sha384sums=('b8bf646f8c599cb8adfa2ab1363f36592a1ecb10b819617cecc970ac7a30b8d5ef912e9af5c1d55a9282478d8a55b80e'
             'cb8d28e4f0e20d81bccb7f81d3c2df9df13e13a45556bce9cbf0303f12d23564271bcc6afacf6a2801114dec50000729'
-            'cd0519be1288c319e9803fa376058635cf61b33b7c84540b095edd293f3ba9875009a5b7d054b5b6f1bbace8c179560d')
+            '832521f6e13705d7abc99a94ab2a6cb8e1d8087444cdc283b9adc9ec2011da9a16242994af2ba6f339c7e455ba5df4ad'
+            '338763e008464bebb1f11e62d3a4839d7af43c800f772be6d51a345f6e1e83fa4d5929c1e4b363dd9af2073dda420821')
 
 _wdir() {
   cd "$srcdir/DSView-$pkgver/DSView"
 }
 
 prepare() {
-  _wdir
-  sed -i 's#install(FILES icons/logo.png DESTINATION share/${PROJECT_NAME} RENAME logo.png)##; 
+  cd "$srcdir/DSView-$pkgver"
+  patch -Np1 -i "$srcdir"/'0001-workaround-configure-failure-due-to-boost-cmake.patch'
+  cd DSView
+  sed -i 's#install(FILES icons/logo.png DESTINATION share/${PROJECT_NAME} RENAME logo.png)##;
           s#install(FILES DreamSourceLab.rules DESTINATION /etc/udev/rules.d/)##' \
     CMakeLists.txt
   cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_SKIP_RPATH=1 .
@@ -47,9 +51,7 @@ package() {
   install -Dm644 "$srcdir/dsview.desktop" "$pkgdir/usr/share/applications/dsview.desktop"
   install -Dm644 "$srcdir/udev.rules" "$pkgdir/usr/lib/udev/rules.d/20-dsview.rules"
 
-  for i in 16 32 48 64 128 256; do
-    install -Dm644 icons/logo_${i}.png "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/${pkgname}.png"
-  done
+  install -Dm644 icons/logo.png "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${pkgname}.png"
 }
 
 # vim:set ts=2 sw=2 et:

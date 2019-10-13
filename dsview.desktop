@@ -1,5 +1,6 @@
 [Desktop Entry]
 Exec=DSView
 Name=DSView
+Comment=GUI Program for DreamSourceLab USB-based Instruments
 Type=Application
 Categories=Development
