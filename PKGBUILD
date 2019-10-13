@@ -10,6 +10,7 @@ url="https://public-inbox.org"
 license=('AGPL')
 depends=(perl perl-timedate perl-digest-sha perl-email-mime perl-plack perl-uri)
 options=('!emptydirs' purge)
+# The build system fails if there is no git repo.
 source=("$pkgname::git+https://public-inbox.org/#tag=v$_pkgver")
 md5sums=('SKIP')
 
@@ -21,6 +22,7 @@ build() {
   make
 }
 
+# Got tired to figure out the dependencies…
 # check() {
 #   cd "$srcdir/$pkgname"
 #   unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
