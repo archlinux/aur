@@ -1,6 +1,6 @@
 pkgname='generic-macro-deck'
-pkgver=1.0.0
-pkgrel=4
+pkgver=1.0.1
+pkgrel=1
 pkgdesc='Turn any keyboard into a macro board'
 arch=('x86_64')
 url='https://gitlab.com/ArisuOngaku/genericmacrodeck'
