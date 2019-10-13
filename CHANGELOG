@@ -6,3 +6,6 @@
 - created this CHANGELOG
 - updated package description
 
+# 5.4.4-4
+- removed unnecessary quoting in PKGBUILD
+
