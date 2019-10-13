@@ -4,7 +4,7 @@
 #               Lara Maia, Padfoot, Jorge Barroso, carstene1ns, Sebastian Lau
 
 pkgname=plymouth-git
-pkgver=0.9.4.r113.g566af35
+pkgver=0.9.4.r205.geae3768
 pkgrel=1
 pkgdesc="A graphical boot splash screen with kernel mode-setting support (Development version)"
 url="https://www.freedesktop.org/wiki/Software/Plymouth/"
@@ -90,7 +90,8 @@ build() {
 		--with-background-start-color-stop=0x000000 \
 		--with-background-end-color-stop=0x4D4D4D \
 		--without-rhgb-compat-link \
-		--without-system-root-install
+		--without-system-root-install \
+        --with-runtimedir=/run
 
 	make
 }
