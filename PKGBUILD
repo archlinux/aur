@@ -4,7 +4,7 @@
 # you also find the URL of a binary repository.
 
 pkgname=mingw-w64-freetype2
-pkgver=2.10.0
+pkgver=2.10.1
 pkgrel=1
 pkgdesc='Font rasterization library (mingw-w64)'
 arch=('any')
@@ -15,12 +15,12 @@ makedepends=(mingw-w64-gcc mingw-w64-configure)
 provides=(mingw-w64-freetype)
 replaces=(mingw-w64-freetype)
 conflicts=(mingw-w64-freetype)
-source=(https://download-mirror.savannah.gnu.org/releases/freetype/freetype-${pkgver}.tar.bz2{,.sig}
+source=(https://download-mirror.savannah.gnu.org/releases/freetype/freetype-${pkgver}.tar.xz{,.sig}
         0001-Enable-table-validation-modules.patch
         0002-Enable-infinality-subpixel-hinting.patch
         0003-Enable-long-PCF-family-names.patch)
 options=(!strip !buildflags !libtool staticlibs)
-sha1sums=('f6abf03e0e3189a0de883981c57d3861b5d314f5'
+sha1sums=('79874ef4eaa52025126b71d836453b8279bdd331'
           'SKIP'
           '46fd67e6a594f6c2c473b9321ba64913984ba42f'
           '4bf0c0749db09878b918cc404300f0d3e9091607'
