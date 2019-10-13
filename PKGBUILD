@@ -7,8 +7,8 @@
 # Contributor: Anthony <anthony@littlegno.me>
 
 pkgname=pidgin-sipe
-pkgver=1.24.0
-pkgrel=2
+pkgver=1.25.0
+pkgrel=1
 pkgdesc="Third-party Pidgin plugin for Microsoft Office 365/Lync/LCS/OCS"
 arch=('x86_64')
 license=('GPL2')
@@ -17,7 +17,7 @@ depends=('gmime' 'libpurple')
 makedepends=('intltool')
 optdepends=('freerdp: Desktop sharing' 'krb5: Kerberos support')
 source=(https://downloads.sourceforge.net/project/sipe/sipe/$pkgname-$pkgver/$pkgname-$pkgver.tar.bz2)
-sha256sums=('f6e67450871382e11b093ba2c9cbb2de75356808345f0063fec9b892d13786ca')
+sha256sums=('5a42810e447c3af2632961e88d7c683b6619aeda03accdcbaad222d8337ec676')
 
 build() {
   cd $pkgname-$pkgver
