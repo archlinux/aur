@@ -1,0 +1,19 @@
+pkgbase = libedgetpu
+	pkgdesc = Google Coral Edge TPU library and headers.
+	pkgver = 12.1
+	pkgrel = 1
+	url = https://coral.withgoogle.com/
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = Apache
+	makedepends = dpkg
+	makedepends = gcc
+	options = !strip
+	source_x86_64 = libedgetpu-dev_12-1_amd64.deb::https://packages.cloud.google.com/apt/pool/libedgetpu-dev_12-1_amd64_9d235ea1e53aee2f8ea05f68410c63234c766b8f821e5d1a91d7ed62f96ffdd2.deb
+	source_x86_64 = libedgetpu1-max_12-1_amd64.deb::https://packages.cloud.google.com/apt/pool/libedgetpu1-max_12-1_amd64_1fd32c18d97bf76a0856f8677132b7919b21eabaf930c40a395f15fefaaf759e.deb
+	sha256sums_x86_64 = 9d235ea1e53aee2f8ea05f68410c63234c766b8f821e5d1a91d7ed62f96ffdd2
+	sha256sums_x86_64 = 1fd32c18d97bf76a0856f8677132b7919b21eabaf930c40a395f15fefaaf759e
+
+pkgname = libedgetpu
+
