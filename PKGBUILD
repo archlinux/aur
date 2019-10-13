@@ -1,3 +1,4 @@
+# Previous maintainer: Davide Depau <davide@depau.eu>
 # Maintainer: Antoine Damhet <xdbob@lse.epita.fr>
 
 _pkgname=brightnessctl
@@ -12,7 +13,7 @@ makedepends=('git' 'pkg-config')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("git://github.com/Hummer12007/$_pkgname")
-sha256sums=('SKIP')    
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
@@ -21,7 +22,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_pkgname"
-  make PREFIX=/usr 
+  make PREFIX=/usr
 }
 
 package() {
