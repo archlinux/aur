@@ -1,6 +1,6 @@
 pkgbase = clipman
 	pkgdesc = A simple clipboard manager for Wayland
-	pkgver = 1.0.2
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/yory8/clipman
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = clipman
 	makedepends = go
 	depends = wl-clipboard>=2.0
 	provides = clipman
-	source = https://github.com/yory8/clipman/archive/v1.0.2.tar.gz
-	md5sums = 5ba342d7420f90214418c389a465e451
+	source = https://github.com/yory8/clipman/archive/v1.1.0.tar.gz
+	md5sums = bfa6441fc3bf5c1298e2df2fd3679ef9
 
 pkgname = clipman
 
