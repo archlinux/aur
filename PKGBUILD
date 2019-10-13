@@ -21,7 +21,7 @@ pkgname=(
   "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev"
 )
 _gitname='xbmc'
-pkgver=r53303.7405d260471
+pkgver=r53578.c0968c9b83f
 pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
