@@ -1,7 +1,7 @@
 # Maintainer: Mohammadreza Abdollahzadeh < morealaz at gmail dot com >
 
 pkgname=gnome-shell-extension-arc-menu-git
-pkgver=17.r56.g9325c8f
+pkgver=34.1.dev.r11.g9d3d9d4
 pkgrel=1
 pkgdesc='A GNOME shell extension designed to replace the standard menu found in GNOME 3.'
 arch=(any)
