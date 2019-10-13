@@ -3,7 +3,7 @@
 # Contributor: Rhinoceros <aurarchlinux@plast.id.au>
 
 pkgname=vim-undotree
-pkgver=6.0
+pkgver=6.1
 pkgrel=1
 pkgdesc='Display your undo history in a graph.'
 arch=(any)
@@ -12,7 +12,7 @@ license=(BSD)
 depends=(vim)
 groups=(vim-plugins)
 source=("${pkgname}.tar.gz::https://github.com/mbbill/undotree/archive/rel_${pkgver}.tar.gz")
-sha256sums=('27f11e6ea1760957352dd3d4b79e9da7b5a61a4ffe0680c1700a8016a8ee4534')
+sha256sums=('ab55e442be0eea4e3e22a08179086866f44d604e8a8132174e7c0d1166bcf42c')
 
 package() {
   cd "${srcdir}/undotree-rel_${pkgver}"
