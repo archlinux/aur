@@ -31,7 +31,7 @@ sha256sums=('SKIP'
 '4c61bfb0faca87219ea587326c467b95acb25555b53d1a421ffa3c8a9296ee2c'
 'c00c878e8bedb3d9d5440fc9f58d349e1004612f4c349326cb06bbb1fa6bec27'
 '042f965e182b80693015839a9d0278ae73fae5d5d09d8bf6d0e6a39a8c4393bd'
-'3136a743986e4b0b0f39b24fc82a3e72a5875935bd6f0716841158684c12067d'
+'643b270ab0ad5854b69647e416d1582d457fa1ef6aec90ee961e275342dcfda4'
 'ca9da403a8cdbd2594ba1b7261af119e56772d71ebbf0045bf7aa2d07d88118b'
 '7fccdeb1a89134b48674764dc243f8967eb1234679e401af93e210fbf0934b62')
 backup=('etc/h2o.conf')
@@ -61,13 +61,15 @@ build() {
 
 	patch -p1 -i "$srcdir/h2o-hiredis.patch"
 
+	sed -i 's|example|/usr/share/doc/h2o/example|' examples/h2o/h2o.conf
+
 	# Note that picotls can be turned off,
 	# OpenSSL already supports TLS 1.3
 	cmake \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_INSTALL_LIBDIR=/usr/lib \
+		-DCMAKE_INSTALL_SYSCONFDIR=/etc \
 		-DWITH_MRUBY=on \
-		-DWITH_PICOTLS=on \
 		-DWITHOUT_LIBS=off \
 		-DBUILD_SHARED_LIBS=off \
 		.
