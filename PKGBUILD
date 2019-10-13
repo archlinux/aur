@@ -5,7 +5,7 @@
 _pkgname='transgui'
 _ws='gtk2'
 pkgname='transmission-remote-gui-gtk2'
-pkgver='5.17.0'
+pkgver='5.18.0'
 pkgrel=1
 pkgdesc='Cross platform remote GUI for the Transmission daemon'
 arch=('i686' 'x86_64')
@@ -14,11 +14,11 @@ license=('GPL2')
 depends=('gtk2')
 makedepends=('lazarus')
 provides=('transmission-remote-gui')
-conflicts=('transmission-remote-gui-gtk2' 'transmission-remote-gui-qt4'
-           'transmission-remote-gui-svn' 'transmission-remote-gui')
-source=("${_pkgname}-${pkgver}.tar.gz"::"https://github.com/leonsoft-kras/${pkgname%%-gtk2}/archive/v${pkgver}.tar.gz"
+conflicts=('transmission-remote-gui-bin' 'transmission-remote-gui-git'
+           'transmission-remote-gui-qt4' 'transmission-remote-gui')
+source=("${_pkgname}-${pkgver}.tar.gz"::"https://github.com/leonsoft-kras/${pkgname%%-$_ws}/archive/v${pkgver}.tar.gz"
         "${_pkgname}.desktop")
-sha256sums=('c3d5378f8b6be64c3fefab77eecd86b5357dfd9dbb941bd620b6083ae350417f'
+sha256sums=('d1cbb16eb35d41e76f4a171a3887053899e8dc6a1124afc21615b5038ea60d78'
             'eff1a22b1dad72528f2200eafcec6df411ff7231d199889b08e730256fcae81c')
 
 build() {
