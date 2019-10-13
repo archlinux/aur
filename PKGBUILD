@@ -32,7 +32,7 @@ build() {
   sed -i 's/Py_InitModule( "muse", g_methodDefinitions );/PyModule_Create( \&muse );/' muse/remote/pyapi.cpp
 
   # build dir
-  [ -d bld ] || mkdir bld && cd bld
+  [ -d build ] || mkdir build && cd build
 
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=release \
@@ -45,11 +45,12 @@ build() {
         -DENABLE_LASH=1 \
         -DENABLE_OSC=1 \
         -DENABLE_RTAUDIO=1 ..
+  sed -i -e 's/CXX_INCLUDES = /CXX_INCLUDES = -I\/usr\/include\/harfbuzz/' muse/lv2Gtk2Support/CMakeFiles/lv2_gtk2_support.dir/flags.make
   make
 }
 
 package() {
-  cd "$srcdir/muse-git/muse3/bld"
+  cd "$srcdir/muse-git/muse3/build"
   make DESTDIR="$pkgdir" install
 
   # .. and oomidi grepmidi bin
