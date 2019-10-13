@@ -1,6 +1,6 @@
 # Maintainer: Rui Ventura <rventura.pt@outlook.com>
 pkgname=chiaki
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc='Free and Open Source PS4 Remote Play Client'
 arch=('x86_64')
