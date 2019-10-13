@@ -4,7 +4,7 @@
 
 pkgname=liquidshell-git
 _gitname=liquidshell
-pkgver=r190.911f501
+pkgver=r266.d12f28a
 pkgrel=1
 pkgdesc='Alternative desktop replacement for Plasma, using QtWidgets instead of QtQuick to ensure hardware acceleration is not required'
 arch=('x86_64')
