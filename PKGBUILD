@@ -6,11 +6,11 @@ pkgdesc='Generic CAN interface description with helpers for filtering and driver
 url="http://wiki.ros.org/socketcan_interface?distro=melodic"
 
 pkgver='0.8.1'
-pkgrel=1
+pkgrel=2
 arch=('any')
 license=('LGPL3')
 
-ros_makedepends=(
+ros_makedepends=( ros-melodic-catkin
 )
 makedepends=(cmake ros-build-tools ${ros_makedepends[@]})
 
