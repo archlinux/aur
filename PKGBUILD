@@ -1,7 +1,7 @@
 #Maintainer: Gharim Turen <gharim@turen.de>
 pkgname=evesetup
 pkgver=1548102
-pkgrel=4
+pkgrel=5
 pkgdesc="An inofficial EVE Online Launcher Setup Tool."
 arch=(x86_64)
 url="https://forums.eveonline.com/t/eve-installing/71494"
@@ -37,7 +37,9 @@ source=("evelauncher.desktop"
         "evebackup.desktop"
         "evebackup"
         "build_installer.sh"
+        "build_small_installer.sh"
         "setup.sh.in"
+        "setup_small.sh.in"
         "eve-icons.tar.gz"
         "eve-icons_large.tar.gz"
         "eve-transl5.11-de.tar.gz"
@@ -114,8 +116,10 @@ sha256sums=('ce85defa2698ea72e88221d72424fb953f86836494ecc0e4006f41ec89682af4'
             'f438c7002eaf8e1186a838ac2e803242b7a2c98a22cf49622eb4a64cf4b202ec'
             '04c102d6db1bb8d4159c41f32ec0aa95846c0fb519841a3c1428ab20c850e9cf'
             '25c84d6823badf7c04dd316857b144b614a917943baeb8dc769b27cd029071ff'
-            '498c21e2ab8ef8e789d5d99265678a2784e6d0ddbd407a520e107412fd8bfd0d'
-            'e4166acb66ced33e9e2c3e7961d9581397e7016b8ed675341ed42fb9742dffe0'
+            '5aff377c2158ff40eb7b27f3792cc568c41a43bdbff2787178ab936fff192c8d'
+            '7064241dd0b9876743ce89d0b638c9b2dc5e8153a327e44973a0424e31a715c1'
+            '6f8116cbbe05808be4ecddcb782965fcbfad09645ad8153db325e8c17ef7c27b'
+            'dcb776b66f31a9f2fd545a5c6b6ef874b3f9b3c2a14881c3822ac505e1d431ce'
             '69b98d923c08c6fb035c0c6905ec5e9c73273b694f8f3497777d44597dbe63e3'
             '762db1df07dfcf526fe634b4b589a08e8affefb2f79f02cff2624c70e0820422'
             '47accd49b64d624c6a6dee42952f8627aaabdd315fad85ef037507745d393f1a'
