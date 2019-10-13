@@ -2,9 +2,9 @@
 # Contributor: detrito <detrito at inventati dot org>
 # Contributor: Thomas Holder <thomas at thomas-holder dot de>
 
-pkgname='therion'
-pkgver='5.4.4'
-pkgrel='3'
+pkgname=therion
+pkgver=5.4.4
+pkgrel=3
 pkgdesc="Cave surveying: processes survey data and generates maps or 3D models of caves"
 arch=('x86_64' 'i686')
 url="http://therion.speleo.sk"
