@@ -1,7 +1,7 @@
 # Maintainer: Daichi Shinozaki <dsdseg@gmail.com>
 pkgname=emacs-julia-mode
 pkgver=0.3.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Emacs major mode for the Julia programming language"
 arch=('any')
 url="http://www.julialang.org"
