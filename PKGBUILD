@@ -3,17 +3,15 @@
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
-pkgname=nvidia-340xx-ck
+pkgbase=nvidia-340xx-ck
+pkgname=(nvidia-340xx-ck nvidia-340xx-ck-dkms)
 pkgver=340.107
-pkgrel=99
+pkgrel=100
 pkgdesc="NVIDIA drivers for linux-ck, 340xx legacy branch."
 arch=('x86_64')
 url="https://www.nvidia.com/"
-depends=('linux-ck' 'libgl' "nvidia-340xx-utils=${pkgver}")
-makedepends=('linux-ck-headers' 'nvidia-340xx-libgl')
-conflicts=('nvidia-ck' 'nvidia-390xx-ck')
-#groups=('ck-generic')
-#replaces=()
+makedepends=("nvidia-340xx-utils=${pkgver}" 'linux-ck' 'linux-ck-headers')
+conflicts=('nvidia-ck')
 license=('custom')
 options=(!strip)
 source=("https://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run"
@@ -28,6 +26,7 @@ _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
 # default is 'linux' substitute custom name here
 _kernelname=linux-ck
 _kernver="$(</usr/src/$_kernelname/version)"
+_extradir="/usr/lib/modules/$_kernver/extramodules"
 
 prepare() {
   sh "${_pkg}.run" --extract-only
@@ -37,6 +36,8 @@ prepare() {
   patch -Np0 < "${srcdir}/kernel-4.11.patch"
   patch -Np0 < "${srcdir}/kernel-5.0.patch"
   patch -Np0 < "${srcdir}/kernel-5.1.patch"
+
+  cp -a kernel kernel-dkms
 }
 
 build() {
@@ -47,8 +48,10 @@ build() {
   make SYSSRC="/usr/src/$_kernelname" module
 }
 
-package() {
-  _extradir="/usr/lib/modules/$_kernver/extramodules"
+package_nvidia-340xx-ck() {
+  pkgdesc="NVIDIA drivers for linux-ck, 340xx legacy branch."
+  depends=('linux-ck' "nvidia-340xx-utils=${pkgver}" 'libgl')
+
   install -Dt "${pkgdir}${_extradir}" -m644 \
     "${srcdir}/${_pkg}/kernel"/{nvidia,uvm/nvidia-uvm}.ko
 
@@ -58,4 +61,19 @@ package() {
     install -Dm644 /dev/stdin "${pkgdir}/usr/lib/modprobe.d/nvidia-340xx-ck.conf"
 }
 
-# vim:set ts=2 sw=2 et:
+package_nvidia-340xx-ck-dkms() {
+    pkgdesc="NVIDIA driver sources for linux, 340xx legacy branch"
+    depends=('dkms' "nvidia-340xx-utils=$pkgver" 'libgl')
+    optdepends=('linux-ck-headers: Build the module for ck kernel')
+    provides=("nvidia-340xx=$pkgver")
+    conflicts+=('nvidia-340xx')
+
+    cd "${_pkg}"
+
+    install -dm 755 "${pkgdir}"/usr/src
+    cp -dr --no-preserve='ownership' kernel-dkms "${pkgdir}/usr/src/nvidia-${pkgver}"
+    cat "${pkgdir}"/usr/src/nvidia-${pkgver}/uvm/dkms.conf.fragment >> "${pkgdir}"/usr/src/nvidia-${pkgver}/dkms.conf
+
+    echo "blacklist nouveau" |
+        install -Dm644 /dev/stdin "${pkgdir}/usr/lib/modprobe.d/${pkgname}.conf"
+}

@@ -1,17 +1,14 @@
 pkgbase = nvidia-340xx-ck
 	pkgdesc = NVIDIA drivers for linux-ck, 340xx legacy branch.
 	pkgver = 340.107
-	pkgrel = 99
+	pkgrel = 100
 	url = https://www.nvidia.com/
 	arch = x86_64
 	license = custom
+	makedepends = nvidia-340xx-utils=340.107
+	makedepends = linux-ck
 	makedepends = linux-ck-headers
-	makedepends = nvidia-340xx-libgl
-	depends = linux-ck
-	depends = libgl
-	depends = nvidia-340xx-utils=340.107
 	conflicts = nvidia-ck
-	conflicts = nvidia-390xx-ck
 	options = !strip
 	source = https://us.download.nvidia.com/XFree86/Linux-x86_64/340.107/NVIDIA-Linux-x86_64-340.107-no-compat32.run
 	source = kernel-4.11.patch
@@ -23,4 +20,18 @@ pkgbase = nvidia-340xx-ck
 	sha256sums = 2b0e69814bfaee6b227bbf15d89d056ab27d84bd325248614e27cb5fa33a63a1
 
 pkgname = nvidia-340xx-ck
+	pkgdesc = NVIDIA drivers for linux-ck, 340xx legacy branch.
+	depends = linux-ck
+	depends = nvidia-340xx-utils=340.107
+	depends = libgl
+
+pkgname = nvidia-340xx-ck-dkms
+	pkgdesc = NVIDIA driver sources for linux, 340xx legacy branch
+	depends = dkms
+	depends = nvidia-340xx-utils=340.107
+	depends = libgl
+	optdepends = linux-ck-headers: Build the module for ck kernel
+	provides = nvidia-340xx=340.107
+	conflicts = nvidia-ck
+	conflicts = nvidia-340xx
 
