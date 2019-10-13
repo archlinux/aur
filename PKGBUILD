@@ -10,8 +10,8 @@ url='https://github.com/leonsoft-kras/transmisson-remote-gui'
 license=('GPL2')
 depends=('gtk2' 'desktop-file-utils')
 provides=('transmission-remote-gui')
-conflicts=('transmission-remote-gui-gtk2' 'transmission-remote-gui-qt4'
-           'transmission-remote-gui-svn' 'transmission-remote-gui')
+conflicts=('transmission-remote-gui-git' 'transmission-remote-gui-gtk2'
+           'transmission-remote-gui-qt4' 'transmission-remote-gui')
 source=("${_pkgname}.desktop")
 source_i686=("https://github.com/leonsoft-kras/${pkgname%%-bin}/releases/download/v$pkgver/$_pkgname-$pkgver-i686-linux.txz")
 source_x86_64=("https://github.com/leonsoft-kras/${pkgname%%-bin}/releases/download/v$pkgver/$_pkgname-$pkgver-x86_64-linux.txz")
