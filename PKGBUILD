@@ -2,7 +2,7 @@
 
 pkgname=zrepl
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='One-stop ZFS backup & replication solution'
 arch=('x86_64')
 url='https://zrepl.github.io/'
@@ -24,8 +24,8 @@ build() {
 package() {
     cd "${pkgname}-${pkgver}"
     install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-	install -d "${pkgdir}/usr/share/licenses/${pkgname}"
-	install -d "${pkgdir}/usr/share/${pkgname}"
+    install -d "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -d "${pkgdir}/usr/share/${pkgname}"
     install -d "${pkgdir}/usr/lib/systemd/system"
 
     install -m644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
