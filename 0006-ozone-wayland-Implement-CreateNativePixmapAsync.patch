@@ -1,4 +1,4 @@
-From 5543ce4044356138c590f1602c25bcd7cdd98169 Mon Sep 17 00:00:00 2001
+From 3efec61426b3e4fa61a509047b835a7945248b5d Mon Sep 17 00:00:00 2001
 From: Maksim Sisov <msisov@igalia.com>
 Date: Thu, 1 Aug 2019 08:22:39 +0000
 Subject: [PATCH 6/6] [ozone/wayland] Implement CreateNativePixmapAsync

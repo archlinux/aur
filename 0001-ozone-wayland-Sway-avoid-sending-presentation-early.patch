@@ -1,4 +1,4 @@
-From 49c3fba35163f665a5e6ccdb5403dcfee8d7e626 Mon Sep 17 00:00:00 2001
+From bd257de2d82e36aae112fe6e46f0e6313137da47 Mon Sep 17 00:00:00 2001
 From: Maksim Sisov <msisov@igalia.com>
 Date: Tue, 30 Jul 2019 05:53:48 +0000
 Subject: [PATCH 1/6] [ozone/wayland] Sway: avoid sending presentation early.

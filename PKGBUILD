@@ -5,10 +5,10 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium-ozone
-pkgver=77.0.3865.90
+pkgver=77.0.3865.120
 pkgrel=1
 _launcher_ver=6
-_meta_browser_sha=38b36f421f8d984c7004c9d9a6d514ed2fb6cf8e
+_meta_browser_sha=34ef417cdcf848839b59c086be046c2b4a96ac32
 pkgdesc="Chromium built with patches for wayland support via Ozone"
 arch=('x86_64')
 url="https://www.chromium.org/Home"
@@ -43,9 +43,9 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         0004-ozone-wayland-Extract-window-management-methods-to-o.patch
         0005-ozone-wayland-Do-not-use-possibly-blocking-dispatch-.patch
         0006-ozone-wayland-Implement-CreateNativePixmapAsync.patch)
-sha256sums=('004cfdb1df74847bea8659bcaf8e039d51fe1101d42b6cf1c6cc346073fdefc3'
+sha256sums=('d792f9b09b1dcfd64e68f47a611c540dd1383dd9abd78ca1e06b2a7e2ff06af8'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
-            'd87957d01be9fb59faf5fde523eb87a8256605b1533171416b7a56bfcbd6d056'
+            '892026717ac487e1a92073d7a363a7f4a12b06ed6ac61825842ad734eda857d7'
             '33a5bcd1df2cc7aa7467fa882790ef143a4497d2b704c9e1ea86c8ede90c2d90'
             'ab986e4b723dfcedab1bc8dcada07526facae28a8a7ff3345f658532c1d99987'
             '840f555020751ec284dca35b9317a9dd7dc69fcb910ea1cae2dd7cc9b237dfb7'
@@ -54,12 +54,12 @@ sha256sums=('004cfdb1df74847bea8659bcaf8e039d51fe1101d42b6cf1c6cc346073fdefc3'
             '0f7ba6882844542a7226b419dfefc5b6a16b5b7882698bd773b5ee9148aa6e87'
             'd081f2ef8793544685aad35dea75a7e6264a2cb987ff3541e6377f4a3650a28b'
             '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1'
-            'f22ee87b16f9b06acd1f37081fbb24fb442a5c90278416f67dcd5bc6e0e93e02'
-            'd6a03dfc515df07da8172adec53d77b161b41d0a541193a94319e814bbe564b0'
-            '25b9a7ee019db07b5870b2933d112ddd51faf6412b22a6eaa5457c2d3da485c3'
-            '3d85dd53a412f1d7bda4f4be092ac8dab19c623c6510b9b34e0e6010bf3b67a4'
-            'a6cafead21891ebe24cc9535d4d83edba1794830a4aeebebccd9a7f6c036a15c'
-            'f89da9c31ef6bf900535e71272791e27a1977d215424cb6eb79e8c1f8f94dceb')
+            'c43f54e180a9eeed31ef6b0e05ec98afbb5fc1197c71e119293784bb37579439'
+            '3d83763a5ccd4a8dd59a4d1ffbae3fcfba7688e32b6acd03505f779c7bfa8d02'
+            '811567d57cf22139e6ace8c8fdbc329a24f586f68214daf6dd224f56cac792b3'
+            '5c4b5b596b2b3bdcf33b865d44f1daa0787fc52a2a1d6ac82a6f03287ca6355a'
+            '231147345c0f175263cacddb62c97c7b13897870f5ebac9fa6feabf9cc28ea2d'
+            'bec73f9f8b88e2c83549fc851f21fd7d0a6db714f713147f253eb7de17508efc')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
