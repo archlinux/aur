@@ -9,6 +9,7 @@ pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
+  ros-melodic-moveit-resources
 )
 
 makedepends=(
