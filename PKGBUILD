@@ -2,7 +2,7 @@
 
 _plug=waifu2x-caffe
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r13.1.g102e7f2
+pkgver=r13.2.g7b679d8
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (NVIDIA users only)(static libcaffe)(GIT version)"
 arch=('x86_64')
@@ -48,11 +48,6 @@ prepare() {
 
   # set CUDA directory
   sed '/CUDA_DIR/s/\/usr\/local\/cuda/\/opt\/cuda/' \
-      -i caffe/Makefile.config
-
-  # disable python
-  sed -e '/PYTHON_INCLUDE/s/^P/# P/g' \
-      -e '/PYTHON_LIB/s/^P/# P/g' \
       -i caffe/Makefile.config
 
   # -- local
@@ -110,7 +105,8 @@ build() {
     -Dcudalibdir=/opt/cuda/lib64 \
     -Dcaffe_includedir="$(readlink -e "${srcdir}/fakeroot/include")" \
     -Dcaffe_libdir="$(readlink -e "${srcdir}/fakeroot/lib")" \
-    --buildtype=release
+    --buildtype=release \
+    -Db_lto=false
 
   ninja
 }
