@@ -5,10 +5,11 @@ url='https://moveit.ros.org'
 pkgname='ros-melodic-moveit-commander'
 pkgver='1.0.2'
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
-ros_makedepends=(ros-melodic-catkin)
+ros_makedepends=(ros-melodic-catkin
+  ros-melodic-moveit-resources)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   python
@@ -24,12 +25,6 @@ ros_depends=(ros-melodic-moveit-msgs
 depends=(${ros_depends[@]}
   python
   python-pyassimp)
-
-# Git version (e.g. for debugging)
-# _tag=release/melodic/moveit_commander/${pkgver}-${_pkgver_patch}
-# _dir=${pkgname}
-# source=("${_dir}"::"git+https://github.com/ros-gbp/moveit-release.git"#tag=${_tag})
-# sha256sums=('8bf2b1fa88ff397eaa0ef4ffeeef6d28b458322112383985fc6abed2b3b77893')
 
 # Tarball version (faster download)
 _dir="moveit-${pkgver}/moveit_commander"

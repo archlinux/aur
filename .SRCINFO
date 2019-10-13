@@ -1,13 +1,14 @@
 pkgbase = ros-melodic-moveit-commander
 	pkgdesc = ROS - Python interfaces to MoveIt.
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://moveit.ros.org
 	arch = any
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
 	makedepends = ros-melodic-catkin
+	makedepends = ros-melodic-moveit-resources
 	makedepends = python
 	makedepends = python-catkin-pkg
 	depends = ros-melodic-moveit-msgs
