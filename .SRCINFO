@@ -1,7 +1,7 @@
 pkgbase = mongodb
 	pkgdesc = A high-performance, open source, schema-free document-oriented database
 	pkgver = 4.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.mongodb.com/
 	arch = x86_64
 	license = custom:SSPL
@@ -16,7 +16,6 @@ pkgbase = mongodb
 	depends = curl
 	depends = libstemmer
 	depends = lsb-release
-	depends = yaml-cpp
 	depends = snappy
 	depends = gperftools
 	optdepends = mongodb-tools: mongoimport, mongodump, mongotop, etc
