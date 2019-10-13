@@ -1,20 +1,20 @@
 # Contributor: Alex Whitt <alex.joseph.whitt@gmail.com>
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Maintainer: Geballin - Guillaume Ballin <macniaque at free dot fr>
 
 _pkgsrcname=cider
 _pkgmaintainer=clojure-emacs
 _pkgdestdirname=cider
 _versionprefix=v
-pkgver=0.21.0
-pkgrel=2
+pkgver=0.23.0
+pkgrel=0
 pkgdesc="The Clojure Interactive Development Environment that Rocks for Emacs"
 pkgname=emacs-${_pkgdestdirname}
 arch=('any')
 url="https://github.com/${_pkgmaintainer}/${_pkgsrcname}"
 license=('GPL3')
-depends=('emacs' 'emacs-clojure-mode' 'emacs-pkg-info' 'emacs-queue' 'emacs-spinner' 'emacs-sesman' 'emacs-seq')
+depends=('emacs' 'emacs-clojure-mode' 'emacs-pkg-info' 'emacs-queue' 'emacs-spinner' 'emacs-sesman' 'emacs-seq' 'emacs-a' 'emacs-parseclj' 'emacs-parseedn')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/${_pkgmaintainer}/${_pkgsrcname}/archive/${_versionprefix}${pkgver}.tar.gz")
-sha256sums=('9337d141972e494d5057e848caa899906b9fa09f302fab0dc5f9e13f731272c3')
+sha256sums=('5bbb600f54f96ec864666d5bd04d66abb57894e26dbfaf4513528a05c8d42ebc')
 install=${pkgname}.install
 
 build() {
