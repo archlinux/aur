@@ -1,7 +1,7 @@
 pkgbase = nodejs-decktape
 	pkgdesc = PDF exporter for HTML presentation frameworks
 	pkgver = 2.10.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/astefanutti/decktape
 	arch = any
 	license = MIT

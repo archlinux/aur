@@ -4,7 +4,7 @@
 pkgname=nodejs-decktape
 _npmname=decktape
 pkgver=2.10.0
-pkgrel=1
+pkgrel=3
 pkgdesc='PDF exporter for HTML presentation frameworks'
 arch=('any')
 url='https://github.com/astefanutti/decktape'
@@ -17,6 +17,11 @@ package() {
   mkdir -p $_npmdir
   cd $_npmdir
   npm install --user root -g --prefix "$pkgdir/usr" $_npmname@$pkgver
-  # rmdir "${pkgdir}/usr/etc"
+
+  find "$pkgdir/usr/bin" -type d -exec chmod 755 '{}' +
+  find "$pkgdir/usr/lib/node_modules" -type d -exec chmod -R 755 '{}' +
+
+  install -Dm0644 "$pkgdir/usr/lib/node_modules/$_npmname/LICENSE" \
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 md5sums=('155ac0d666f8dea448f56eefc2a0618f')
