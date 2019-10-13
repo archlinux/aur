@@ -1,38 +1,36 @@
-# Maintainer: Karol "Kenji Takahashi" Woźniak <kenji.sx>
-
+# Contributor: Karol "Kenji Takahashi" Woźniak <kenji.sx>
+# Maintainer: aksr <aksr at t-com dot me>
 pkgname=copyq-plugin-itemweb-git
-pkgver=20151130
+pkgver=r4773.2217511c
 pkgrel=1
+epoch=1
 pkgdesc="Clipboard manager with searchable and editable history. Itemweb plugin."
 url="https://github.com/hluk/CopyQ"
 arch=('i686' 'x86_64')
 license=('GPL3')
-depends=('qt5-webkit' 'copyq-git')
-makedepends=('cmake' 'git' 'qt5-tools' 'qt5-svg')
-provides=('copyq-plugin-itemweb')
-conflicts=('copyq-plugin-itemweb')
-source=("${pkgname}::git+https://github.com/hluk/CopyQ.git")
+depends=('copyq-git' 'qt5-webkit' 'qt5-svg')
+makedepends=('git' 'cmake' 'qt5-tools')
+provides=(${pkgname%-*})
+conflicts=(${pkgname%-*})
+source=("$pkgname::git+https://github.com/hluk/CopyQ.git")
 md5sums=('SKIP')
 
 pkgver() {
-    cd ${srcdir}/${pkgname}
-    git log -1 --format="%cd" --date=short | tr -d '-'
+  cd "$srcdir/$pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-    mkdir -p ${srcdir}/${pkgname}/build
-    cd ${srcdir}/${pkgname}/build
-    cmake \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DWITH_QT5=TRUE \
-        ${srcdir}/${pkgname}
-    make itemweb
+  cd "$srcdir/$pkgname"
+  mkdir build
+  cd build
+  cmake -DCMAKE_INSTALL_PREFIX=/usr \
+        -DWITH_QT5=TRUE $srcdir/$pkgname
+  make itemweb
 }
 
 package() {
-    cd ${srcdir}/${pkgname}/build
-    install -Dm755 plugins/libitemweb.so $pkgdir/usr/lib/copyq/plugins/libitemweb.so
-    rm -rf ${srdir}/${pkgname}/build
+  cd "$srcdir/$pkgname/build"
+  install -D -m755 plugins/libitemweb.so $pkgdir/usr/lib/copyq/plugins/libitemweb.so
 }
 
-# vim:set ts=4 sw=4 et:
