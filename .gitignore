@@ -5,4 +5,5 @@ src/
 .*.swp
 .*.swo
 *.tar.xz
+*.tar
 *.bin

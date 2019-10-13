@@ -6,6 +6,7 @@ pkgbase = ti-cgt-msp430
 	arch = x86_64
 	license = custom
 	makedepends = lib32-glibc
+	makedepends = lib32-fakeroot
 	optdepends = ccstudio
 	options = !strip
 	options = libtool
