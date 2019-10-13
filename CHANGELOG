@@ -1,6 +1,6 @@
 # 5.4.4-3 - 2019-10-12 - Rodrigo Severo
-- updating maintainer.
-- including the following depends: freetype2, python and tkimg.
+- updating maintainer
+- including the following depends: freetype2, python and tkimg
 - upgrading the following optdepends to depends: libjpeg-turbo, libpng, zlib
 - including makedepends: perl
 - created this CHANGELOG
@@ -11,4 +11,7 @@
 
 # 5.4.4-5 - 2019-10-12 - Rodrigo Severo
 - finally fixing quoting in PKGBUILD
+
+# NEXT - DATE - NAME
+- Including date and person in changelog - 2019-10-13 - Rodrigo Severo
 
