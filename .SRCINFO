@@ -7,7 +7,7 @@ pkgbase = globalplatformpro-git
 	license = LGPL3
 	makedepends = apache-ant
 	makedepends = git
-	makedepends = java-environment>=8
+	makedepends = java-environment=8
 	makedepends = maven
 	depends = java-runtime-headless>=8
 	depends = pcsclite

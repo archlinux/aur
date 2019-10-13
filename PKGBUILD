@@ -8,7 +8,7 @@ arch=('any')
 url="https://javacard.pro/globalplatform/"
 license=('LGPL3')
 depends=('java-runtime-headless>=8' 'pcsclite')
-makedepends=('apache-ant' 'git' 'java-environment>=8' 'maven')
+makedepends=('apache-ant' 'git' 'java-environment=8' 'maven')
 source=(
   "$pkgname::git+https://github.com/martinpaljak/GlobalPlatformPro.git"
   'gp-pro'
@@ -30,6 +30,14 @@ prepare() {
 
 build() {
   cd $pkgname
+
+  # Build only works on Java 8, so set JAVA_HOME to OpenJDK 8.
+  if [ -d /usr/lib/jvm/java-8-openjdk ]; then
+    export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
+  else
+    echo "WARNING: OpenJDK 8 not found. If the build fails, select a version 8 JDK using \"archlinux-java\"."
+  fi
+
   mvn package
   ant
 }
