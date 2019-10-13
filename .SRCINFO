@@ -5,6 +5,7 @@ pkgbase = ti-cgt-arm
 	url = http://www.ti.com/tool/ARM-CGT
 	arch = x86_64
 	license = custom
+	makedepends = lib32-glibc
 	optdepends = ccstudio
 	options = !strip
 	options = libtool

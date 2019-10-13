@@ -8,6 +8,9 @@ arch=('x86_64')
 url="http://www.ti.com/tool/ARM-CGT"
 license=('custom')
 
+# lib32-glibc needed for the installer
+makedepends=('lib32-glibc')
+
 optdepends=('ccstudio')
 
 _installer="ti_cgt_tms470_${pkgver}_linux_installer_x86.bin"
