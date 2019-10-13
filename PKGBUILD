@@ -1,6 +1,6 @@
 pkgname='generic-macro-deck'
 pkgver=1.0.0
-pkgrel=1
+pkgrel=4
 pkgdesc='Turn any keyboard into a macro board'
 arch=('x86_64')
 url='https://gitlab.com/ArisuOngaku/genericmacrodeck'
@@ -8,7 +8,7 @@ license=('MIT')
 source=('git://github.com/ArisuOngaku/generic_macro_deck.git'
   'generic-macro-deck'
   'generic-macro-deck.desktop')
-md5sums=('SKIP' 'SKIP' 'SKIP')
+md5sums=('SKIP' 'dbe4291eb1d5d16004e0706552c05343' '80de93e925802dda57c32a60dcb9f45d')
 provides=('generic-macro-deck')
 conflicts=('generic-macro-deck')
 depends=('electron' 'xorg-xinput')
@@ -36,5 +36,7 @@ package() {
   install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
 
   install -Dm644 "$srcdir/generic_macro_deck/resources/logo.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/$pkgname.png"
-  install -Dm644 "$srcdir/generic_macro_deck/dist/linux-unpacked/resources/app.asar" "$pkgdir/usr/lib/$pkgname.asar"
+
+  mkdir -p "$pkgdir/opt/$pkgname"
+  cp -dr --no-preserve=ownership "$srcdir/generic_macro_deck/dist/linux-unpacked/." "$pkgdir/opt/$pkgname/"
 }

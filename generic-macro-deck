@@ -1,3 +1,4 @@
 #!/bin/sh
 
-exec electron /usr/lib/generic-macro-deck.asar "$@"
+cd /opt/generic-macro-deck
+./generic-macro-deck

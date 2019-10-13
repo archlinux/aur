@@ -1,7 +1,7 @@
 pkgbase = generic-macro-deck
 	pkgdesc = Turn any keyboard into a macro board
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 4
 	url = https://gitlab.com/ArisuOngaku/genericmacrodeck
 	arch = x86_64
 	license = MIT
@@ -15,8 +15,8 @@ pkgbase = generic-macro-deck
 	source = generic-macro-deck
 	source = generic-macro-deck.desktop
 	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
+	md5sums = dbe4291eb1d5d16004e0706552c05343
+	md5sums = 80de93e925802dda57c32a60dcb9f45d
 
 pkgname = generic-macro-deck
 
