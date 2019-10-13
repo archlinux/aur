@@ -14,7 +14,7 @@ post_install() {
     
     echo "installing python package"
     cd /opt/ethoscope-device/src
-    python setup.py install
+    python setup.py develop
     
     echo "create 000 machine files"
     echo "ETHOSCOPE_000" > /etc/machine-name

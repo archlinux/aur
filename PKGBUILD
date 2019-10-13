@@ -2,7 +2,7 @@
 
 pkgname=ethoscope-device
 pkgver=r1702.g1c43fc3
-pkgrel=5
+pkgrel=6
 pkgdesc="A platform from monitoring animal behaviour in real time from a raspberry pi - Device version"
 arch=('any')
 url="http://lab.gilest.ro/ethoscope"
@@ -34,10 +34,11 @@ package() {
   cp -R --no-dereference --preserve=mode,links -v * "${pkgdir}/opt/${pkgname}"
   ln -s /opt/ethoscope-device/scripts/ethoscope_updater "${pkgdir}/opt/"
   
-  #install python service
-  cd "${srcdir}/${pkgname}/src"
-  #pip install -e . --install-option="--prefix=${pkgdir}" --no-deps
-  python setup.py develop --root="$pkgdir/"
+  #install python package
+  #cd "${srcdir}/${pkgname}/src"
+  #PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps -e .
+  #install is not upgrade friendly and develop won't accept the option "root"
+  #python setup.py install --root="$pkgdir/"
 
   #install service files
   cd "${srcdir}"/"${pkgname}"/scripts/
