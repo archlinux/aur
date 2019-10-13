@@ -1,29 +1,29 @@
-# Maintainer: maz_1 <ohmygod19993 at gmail dot com>
+# Maintainer: flacs <0f1ac5@gmail.com>
+# Contributor: maz_1 <ohmygod19993 at gmail dot com>
 
 _pkgname=edb-debugger
 pkgname=$_pkgname-git
-pkgver=1.0.0.r368.gf1b6efe8
+pkgver=1.0.0.r370.g6a87b68f
 pkgrel=1
 pkgdesc="EDB (Evan's Debugger) is a binary mode debugger with the goal of having usability on par with OllyDbg. Git version"
-arch=('i686' 'x86_64')
-url='http://www.codef00.com/projects#debugger'
+arch=('x86_64')
+url='https://www.codef00.com/projects#debugger'
 license=('GPL2')
-depends=('qt5-base' 'capstone' 'qt5-xmlpatterns')
+# add 'gdtoa-desktop-git' dependency if you want 80-bit floats
+# to be printed in their shortest possible representation
+depends=('capstone' 'desktop-file-utils' 'graphviz' 'hicolor-icon-theme' 'qt5-svg' 'qt5-xmlpatterns')
 makedepends=('boost>=1.35.0')
 source=("git+https://github.com/eteran/edb-debugger.git"
         'edb.desktop')
 sha256sums=('SKIP'
-            'af1d0eae06544fbca7a9af2e2f55dc472324abf28402652e88d3b62c1882a132')
+            '1d3bc1c8a6c5d08d0b627f03b926e5645e9b4ca0c70282e06585f181251990f3')
 
 pkgver() {
 	cd $_pkgname
 
-	if git_version=$( git describe --long --tags 2>/dev/null ); then
-		IFS='-' read last_tag tag_rev commit <<< "$git_version"
-		printf '%s.r%s.%s' "$last_tag" "$tag_rev" "$commit"
-	else
-		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-	fi
+	git_version=$( git describe --long --tags 2>/dev/null )
+	IFS='-' read last_tag tag_rev commit <<< "$git_version"
+	printf '%s.r%s.%s' "$last_tag" "$tag_rev" "$commit"
 }
 
 prepare() {
@@ -45,14 +45,10 @@ build() {
 package() {
   cd $_pkgname
 
-  cd build
   # install to pkg dir
-  make DESTDIR="$pkgdir" install
-  mv "$pkgdir/usr/lib64" "$pkgdir/usr/lib"
-  cd ..
+  make -C build DESTDIR="$pkgdir" install
 
   # icons
-  install -Dm644 src/images/edb48-logo.png "$pkgdir/usr/share/pixmaps/edb.png"
   install -Dm644 src/images/edb48-logo.png "$pkgdir/usr/share/icons/hicolor/48x48/apps/edb.png"
 
   # install desktop file

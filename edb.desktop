@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Evan's Debugger
 GenericName=Debugger
-Comment=QT4 based binary mode debugger
+Comment=binary mode debugger
 TryExec=edb
 Exec=edb
 Terminal=false
