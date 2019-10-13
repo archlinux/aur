@@ -1,7 +1,7 @@
 pkgbase = clash
 	pkgdesc = A rule based proxy in Go
 	pkgver = 0.16.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/Dreamacro/clash
 	arch = x86_64
 	license = MIT
