@@ -3,10 +3,10 @@
 pkgname=yubioath-desktop
 pkgdesc='Yubico Authenticator for Desktop'
 pkgver=5.0.0
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 url='https://github.com/Yubico/yubioath-desktop'
-license=('BSD 2-Clause')
+license=('BSD')
 depends=('qt5-base' 'qt5-declarative' 'qt5-quickcontrols2'
          'python-pyotherside' 'qt5-graphicaleffects' 'ccid' 'pcsclite'
          'yubikey-manager')
@@ -34,7 +34,7 @@ package() {
 
     install -Dm 644 debian/copyright "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 
-    install -Dm 644 images/yubioath@2x.png "$pkgdir"/usr/share/pixmaps/$pkgname/yubioauth.png
+    install -Dm 644 resources/icons/yubioath.svg "$pkgdir"/usr/share/pixmaps/yubioath.svg
     install -Dm 755 resources/yubioath-desktop.desktop "$pkgdir"/usr/share/applications/yubioath-desktop.desktop
 }
 
