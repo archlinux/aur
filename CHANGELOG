@@ -1,0 +1,8 @@
+# 5.4.4-3
+- updating maintainer.
+- including the following depends: freetype2, python and tkimg.
+- upgrading the following optdepends to depends: libjpeg-turbo, libpng, zlib
+- including makedepends: perl
+- created this CHANGELOG
+- updated package description
+
