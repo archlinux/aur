@@ -20,10 +20,12 @@ pkgbase = realrtcw
 	depends = zlib
 	source = https://github.com/wolfetplayer/RealRTCW/archive/3.0.tar.gz
 	source = https://wolffiles.de/filebase/RtCW/Mods/RealRTCW.zip
+	source = realrtcw.png
 	source = realrtcw-sp.launcher
 	source = realrtcw-sp.desktop
 	md5sums = a3eff16d3851e1bf5b391501afa4663e
 	md5sums = 031b4228e632a8f31143bf38e8ea7394
+	md5sums = 13fd3f1ac91dff9ef31d02158f9b58d9
 	md5sums = 7e3991e5f331662419ad1ed04e49366c
 	md5sums = 5fcd49cca83f7bba0d75c6b4b5801f95
 

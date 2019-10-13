@@ -13,6 +13,7 @@ makedepends=('cmake' 'unzip' 'innoextract')
 install='realrtcw.install'
 source=("https://github.com/wolfetplayer/RealRTCW/archive/$pkgver.tar.gz"
 	"https://wolffiles.de/filebase/RtCW/Mods/RealRTCW.zip"
+	realrtcw.png
 	realrtcw-sp.launcher
 	realrtcw-sp.desktop
 )
@@ -91,8 +92,8 @@ package_realrtcw() {
 		$pkgdir/usr/share/applications/realrtcw-sp.desktop
 
 	# Install Icon File (Single Player)
-	install -Dm 644 misc/iortcw.svg \
-		$pkgdir/usr/share/pixmaps/realrtcw.svg
+	install -Dm 644 $srcdir/realrtcw.png \
+		$pkgdir/usr/share/pixmaps/realrtcw.png
 }
 
 package_realrtcw-hdpack() {
@@ -114,5 +115,6 @@ package_realrtcw-splatterladder() {
 
 md5sums=('a3eff16d3851e1bf5b391501afa4663e'
 	'031b4228e632a8f31143bf38e8ea7394'
+	'13fd3f1ac91dff9ef31d02158f9b58d9'
 	'7e3991e5f331662419ad1ed04e49366c'
 '5fcd49cca83f7bba0d75c6b4b5801f95')
