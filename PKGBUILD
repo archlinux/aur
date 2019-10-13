@@ -5,9 +5,8 @@ url='https://wiki.ros.org/camera_calibration_parsers'
 
 pkgname='ros-melodic-camera-calibration-parsers'
 pkgver='1.11.13'
-_pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(
@@ -40,8 +39,15 @@ depends=(
 )
 
 _dir="image_common-${pkgver}/camera_calibration_parsers"
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-perception/image_common/archive/${pkgver}.tar.gz")
-sha256sums=('32a2e07724dec6eaaace21eae006274436d70d40bfe205249438570275c43cac')
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-perception/image_common/archive/${pkgver}.tar.gz"
+    "boost-fix.patch")
+sha256sums=('32a2e07724dec6eaaace21eae006274436d70d40bfe205249438570275c43cac'
+            '85b506e095b95e6382b816625e798444c83e77f52eef8c98ed0182ef59d326d4')
+
+prepare() {
+    cd "${srcdir}/${_dir}"
+    patch -uN CMakeLists.txt ../../../boost-fix.patch || return 1
+}
 
 build() {
 	# Use ROS environment variables.
