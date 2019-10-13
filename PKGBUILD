@@ -3,21 +3,24 @@
 pkgname=yubioath-desktop
 pkgdesc='Yubico Authenticator for Desktop'
 pkgver=5.0.0
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url='https://github.com/Yubico/yubioath-desktop'
-license=('BSD2' 'custom')
+license=('BSD 2-Clause')
 depends=('qt5-base' 'qt5-declarative' 'qt5-quickcontrols2'
-         'python-pyotherside' 'qt5-graphicaleffects' 'ccid' 'pcsclite')
-makedepends=('python')
-source=("$url/archive/$pkgname-$pkgver.tar.gz")
-sha512sums=('10d1e0daf374b825ca8db3facbf7007815ebc411c24e1d9e1bbb3353d8e87fac4f6be44769c823c8ab11e2178dca3db39c639dc703d7726f91dc7019c2b4f142')
+         'python-pyotherside' 'qt5-graphicaleffects' 'ccid' 'pcsclite'
+         'yubikey-manager')
+makedepends=('git' 'python')
+source=("git+$url.git#tag=$pkgname-$pkgver?signed")
+validpgpkeys=('8D0B4EBA9345254BCEC0E843514F078FF4AB24C3'        # Dag Heyman <dag@yubico.com>
+              '57A9DEED4C6D962A923BB691816F3ED99921835E')       # Emil Lundberg <emil@yubico.com>
+sha512sums=('SKIP')
 
 build() {
-  cd $pkgname-$pkgname-$pkgver
+  cd $pkgname
 
   qmake . \
-    PREFIX='/usr' \
+    PREFIX=/usr \
     QMAKE_CFLAGS_RELEASE="$CFLAGS" \
     QMAKE_CXXFLAGS_RELEASE="$CXXFLAGS"
 
@@ -25,13 +28,13 @@ build() {
 }
 
 package() {
-    cd $pkgname-$pkgname-$pkgver
+    cd $pkgname
 
     make INSTALL_ROOT="$pkgdir" install
 
     install -Dm 644 debian/copyright "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 
-    install -Dm 644 images/yubioath@2x.png "$pkgdir"/usr/share/licenses/$pkgname/yubioauth.png
+    install -Dm 644 images/yubioath@2x.png "$pkgdir"/usr/share/pixmaps/$pkgname/yubioauth.png
     install -Dm 755 resources/yubioath-desktop.desktop "$pkgdir"/usr/share/applications/yubioath-desktop.desktop
 }
 
