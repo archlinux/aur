@@ -1,7 +1,7 @@
 # Maintainer: spider-mario <spidermario@free.fr>
 
 pkgname=sdlpop
-pkgver=1.19
+pkgver=1.20
 pkgrel=1
 pkgdesc="An open-source port of Prince of Persia"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/NagyD/SDLPoP"
 depends=('sdl2_image' 'sdl2_mixer')
 source=("sdlpop-$pkgver.tar.gz::https://github.com/NagyD/SDLPoP/archive/v$pkgver.tar.gz"
         "sdlpop.sh")
-sha256sums=('e43e3a215e1377d74375fc06183cda76195328a0348a980a5991f3648bb91be2'
+sha256sums=('dbb75398dee2224bcee648602ad23e469b936a2b7ea962a8a01b091b989f25b6'
             'cb7b7923dcfb68520c7e738e6e8bd503f56f2775b28022285397284c0c428991')
 
 prepare() {
