@@ -1,12 +1,12 @@
 # Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
 pkgname=imcompressor
 pkgver=0.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple & lossless image compressor."
 arch=('any')
 url="https://github.com/Huluti/ImCompressor"
 license=('GPL3')
-depends=('gtk3' 'python' 'libjpeg-turbo' 'jpegoptim')
+depends=('gtk3' 'python' 'libjpeg-turbo' 'jpegoptim' 'optipng')
 makedepends=('meson' 'appstream-glib')
 optdepends=('mozjpeg: Recommended, provides libjpeg-turbo')
             # See https://libjpeg-turbo.org/About/Mozjpeg
