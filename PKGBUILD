@@ -22,7 +22,7 @@ pkgname=(
 )
 _gitname='xbmc'
 pkgver=r53580.05488ed68e4
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://kodi.tv"
 license=('GPL2')
@@ -36,7 +36,7 @@ makedepends=(
   'shairplay' 'smbclient' 'taglib' 'tinyxml' 'swig'
   'upower' 'giflib' 'rapidjson' 'ghostscript' 'git'
   # wayland
-  'wayland-protocols' 'waylandpp-git'
+  'wayland-protocols' 'waylandpp>=0.2.7-1'
   # gbm
   'libinput' 'libxkbcommon'
 )
@@ -266,7 +266,7 @@ package_kodi-git-wayland() {
     'bluez-libs' 'curl' 'lcms2' 'libass' 'libbluray' 'libcdio' 'libcec'
     'libmicrohttpd' 'libnfs' 'libpulse' 'libva' 'libxkbcommon' 'libxslt'
     'lirc' 'mariadb-libs' 'python' 'smbclient' 'taglib' 'tinyxml'
-    'waylandpp-git' "$pkgbase"
+    'waylandpp>=0.2.7-1' "$pkgbase"
   )
 
   cd kodi-build-wayland

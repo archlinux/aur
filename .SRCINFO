@@ -1,6 +1,6 @@
 pkgbase = kodi-git
 	pkgver = r53580.05488ed68e4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kodi.tv
 	arch = x86_64
 	license = GPL2
@@ -49,7 +49,7 @@ pkgbase = kodi-git
 	makedepends = ghostscript
 	makedepends = git
 	makedepends = wayland-protocols
-	makedepends = waylandpp-git
+	makedepends = waylandpp>=0.2.7-1
 	makedepends = libinput
 	makedepends = libxkbcommon
 	noextract = libdvdcss-1.4.2-Leia-Beta-5.tar.gz
@@ -147,7 +147,7 @@ pkgname = kodi-git-wayland
 	depends = smbclient
 	depends = taglib
 	depends = tinyxml
-	depends = waylandpp-git
+	depends = waylandpp>=0.2.7-1
 	depends = kodi-git
 	provides = kodi-git-bin=r53580.05488ed68e4
 	conflicts = kodi-wayland
