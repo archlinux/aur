@@ -1,7 +1,7 @@
 # Maintainer: Ryan Gonzalez <rymg19 at gmail dot com>
 # Contributor: Frederic Bezies <fredbezies at gmail dot com>, youngunix <>
 
-_version=5.0
+_version=5.1.1
 pkgname=swift-bin
 pkgver=${_version//-/.}
 pkgrel=1
@@ -9,18 +9,18 @@ pkgdesc="Official binary builds of the Swift programming language."
 arch=('x86_64')
 url="https://swift.org"
 license=('apache')
-depends=('clang' 'icu62' 'libbsd' 'libutil-linux' 'libxml2' 'python2')
+depends=('clang' 'icu63' 'libbsd' 'libutil-linux' 'libxml2' 'python3')
 makedepends=('patchelf' 'rpmextract')
 conflicts=('swift-language-git')
 options=('!strip')
 provides=('swift-language')
 replaces=('swift-language-bin')
 source=(
-  'https://kojipkgs.fedoraproject.org//packages/swift-lang/5.0/0.52.20190325gitba33f9e.fc29/x86_64/swift-lang-5.0-0.52.20190325gitba33f9e.fc29.x86_64.rpm'
-  'https://kojipkgs.fedoraproject.org//packages/swift-lang/5.0/0.52.20190325gitba33f9e.fc29/x86_64/swift-lang-runtime-5.0-0.52.20190325gitba33f9e.fc29.x86_64.rpm'
+  'https://rpmfind.net/linux/fedora/linux/updates/testing/31/Everything/x86_64/Packages/s/swift-lang-5.1.1-0.1.20191004git4242edd.fc31.x86_64.rpm'
+  'https://rpmfind.net/linux/fedora/linux/updates/testing/30/Everything/x86_64/Packages/s/swift-lang-runtime-5.1.1-0.1.20191004git4242edd.fc30.x86_64.rpm'
 )
-sha256sums=('9b4610757147e547373d65c269d2ff627d3c0ef0164e8e130bed3d7a874cbc4b'
-            '8884e3e42cc79bb44775ebf1514647c581478844be859bdb24bd4fe571d7a303')
+sha256sums=('b2da11d0867090e804601155c1e1dd57016ef0b2f7e29c8e7b68538d9cf92604'
+            '201a526342cc72ff839f2caf17d3b29ac1f4248be7d6621dead4683adee9c171')
 
 package() {
   cp -Ppr "${srcdir}"/{etc,usr} "${pkgdir}"
