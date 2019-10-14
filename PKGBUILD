@@ -2,7 +2,7 @@
 
 _pkgname=leveldb
 pkgname=mingw-w64-${_pkgname}
-pkgver=1.21
+pkgver=1.22
 pkgrel=1
 pkgdesc="A fast and lightweight key/value database library (mingw-w64)"
 arch=(any)
@@ -12,7 +12,7 @@ depends=('mingw-w64-snappy')
 makedepends=('mingw-w64-gcc' 'mingw-w64-cmake' 'make')
 options=(!strip !buildflags staticlibs)
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/google/leveldb/archive/$pkgver.tar.gz")
-sha1sums=('56c28f289c965f9ecccfc381b2830ef7fe84f853')
+sha1sums=('8d310af5cfb53dc836bfb412ff4b3c8aea578627')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 _shared_libs="OFF ON"
 
