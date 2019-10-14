@@ -1,7 +1,7 @@
 # Maintainer: kpcyrd <git@rxv.cc>
 
 pkgname=cargo-crev
-pkgver=0.9.0
+pkgver=0.10.1
 pkgrel=1
 pkgdesc="Scalable, social, Code REView and recommendation system that we desperately need"
 url="https://github.com/dpc/crev"
@@ -10,7 +10,7 @@ makedepends=('cargo' 'clang')
 arch=('i686' 'x86_64' 'armv6h' 'aarch64')
 license=('MPL' 'Apache' 'MIT')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/dpc/crev/archive/v${pkgver}.tar.gz")
-sha512sums=('66d9f17378ef4f64d70bf3924eb3e3f3a307bebdb5d8c99f18654b25ca05f2f7f285209eef10443aba4a8da2716bafccd2b6f153670db7c704fa33e8aa543830')
+sha512sums=('b497e419ffbfc09ff9beae6d003311690dad91d286d046f93a744e7a2444095d2caeac580e8450a871fb8d31a68f1a615eac191824a206ca2316e9f2dbb8fd55')
 
 build() {
   cd "${pkgname}-${pkgver}/cargo-crev"
