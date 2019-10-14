@@ -1,0 +1,49 @@
+From 38700e207e076a391f30ef66ad90d03e7543006e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?P=C5=99emysl=20=C5=A0=C5=A5astn=C3=BD?=
+ <premysl.stastny@hotmail.com>
+Date: Sun, 26 May 2019 18:36:02 +0200
+Subject: [PATCH] Solving problem with g++8 and new boost libs:
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+osrm-backend/src/storage/io_config.cpp:18:89: error: call of overloaded ‘is_regular_file(<brace-enclosed initializer list>)’ is ambiguous
+         if (!boost::filesystem::is_regular_file({base_path.string() + fileName.string()}))
+                                                                                         ^
+In file included from /usr/local/include/boost/filesystem.hpp:17,
+                 from /home/premy/packages/osrm-backend/include/storage/io_config.hpp:8,
+                 from /home/premy/packages/osrm-backend/src/storage/io_config.cpp:1:
+/usr/local/include/boost/filesystem/operations.hpp:473:8: note: candidate: ‘bool boost::filesystem::is_regular_file(const boost::filesystem::path&)’
+   bool is_regular_file(const path& p)  {return is_regular_file(detail::status(p));}
+        ^~~~~~~~~~~~~~~
+In file included from /usr/local/include/boost/filesystem.hpp:17,
+---
+ src/storage/io_config.cpp | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/src/storage/io_config.cpp b/src/storage/io_config.cpp
+index 82d8a914e3..e100a93174 100644
+--- a/src/storage/io_config.cpp
++++ b/src/storage/io_config.cpp
+@@ -12,10 +12,12 @@ namespace storage
+ {
+ bool IOConfig::IsValid() const
+ {
++    namespace fs = boost::filesystem;
++
+     bool success = true;
+     for (auto &fileName : required_input_files)
+     {
+-        if (!boost::filesystem::is_regular_file({base_path.string() + fileName.string()}))
++        if (!fs::is_regular_file(fs::status(base_path.string() + fileName.string())))
+         {
+             util::Log(logWARNING) << "Missing/Broken File: " << base_path.string()
+                                   << fileName.string();
+@@ -24,5 +26,5 @@ bool IOConfig::IsValid() const
+     }
+     return success;
+ }
+-}
+-}
++} // namespace storage
++} // namespace osrm
