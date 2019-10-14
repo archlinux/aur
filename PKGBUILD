@@ -1,44 +1,51 @@
-# Maintainer: pancho horrillo <pancho at pancho dot name>
+# Contributor: pancho horrillo <pancho at pancho dot name>
 # Contributor: Bram Swenson <bram at amplified dot work>
-# Maintainer: Julien Nicoulaud <julien dot nicoulaud at gmail dot com>
+# Contributor: Julien Nicoulaud <julien dot nicoulaud at gmail dot com>
 
-pkgname='concourse-fly'
-pkgver=4.2.3
+_pkgname="concourse-fly"
+pkgname=$_pkgname-git
+pkgver=5.6.0.r90.gcb8a08f02
 pkgrel=1
 pkgdesc="A command line interface that runs a build in a container with ATC."
-arch=(x86_64)
+arch=('x86_64')
 url="https://concourse-ci.org/fly.html"
 license=('Apache')
 makedepends=('go-pie' 'git')
-provides=("${pkgname}")
-conflicts=("${pkgname}-bin" "${pkgname}-git")
-source=("git+https://github.com/concourse/concourse.git#tag=v${pkgver}")
+provides=("${_pkgname}")
+conflicts=("${_pkgname}" "${_pkgname}-bin")
+source=("git+https://github.com/concourse/concourse.git")
 sha512sums=('SKIP')
 
+pkgver() {
+    cd $srcdir/concourse/
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 prepare() {
-    cd "${srcdir}/concourse"
-    git submodule update --init --recursive --jobs $(nproc) --recommend-shallow
-    export GOPATH="$PWD"
-    go get github.com/onsi/ginkgo/ginkgo
+    mkdir -p gopath/src/github.com/concourse
+    ln -rTsf $srcdir/concourse/ gopath/src/github.com/concourse/concourse
+    export GOPATH="$srcdir"/gopath
+    cd $srcdir/concourse/fly
+    go get ./...
 }
 
 build() {
-    cd "${srcdir}/concourse"
-    export GOPATH="$PWD"
-    cd src/github.com/concourse/fly
-    go build -gcflags "all=-trimpath=${PWD}" \
-             -asmflags "all=-trimpath=${PWD}" \
-             -ldflags "-extldflags ${LDFLAGS}"
+    export GOPATH="$srcdir"/gopath
+    cd $srcdir/concourse/fly
+    go build \
+        -trimpath \
+        -ldflags "-extldflags ${LDFLAGS}" \
+        .
 }
 
 check() {
-    cd "${srcdir}/concourse"
-    export GOPATH="$PWD"
-    cd src/github.com/concourse/fly
-    "$GOPATH"/bin/ginkgo -r
+    export GOPATH="$srcdir"/gopath
+    cd $srcdir/concourse/fly
+    go get github.com/onsi/ginkgo/ginkgo
+    $GOPATH/bin/ginkgo -r -p
 }
 
 package() {
-    cd "${srcdir}/concourse"
-    install -m 755 -D src/github.com/concourse/fly/fly "$pkgdir"/usr/bin/fly
+    cd $srcdir/concourse/fly
+    install -m 755 -D fly $pkgdir/usr/bin/fly
 }
