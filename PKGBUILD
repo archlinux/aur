@@ -2,14 +2,14 @@
 
 pkgname=plumed-patches
 pkgver=0.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Additional patches for PLUMED"
 url="http://www.plumed.org/"
 license=('GPL')
 arch=(any)
-depends=('plumed<=2.5.2')
-optdepends=('plumed-mpi<=2.5.2')
-conflicts=('plumed>2.5.2')
+depends=('plumed')
+optdepends=('plumed-mpi')
+conflicts=('plumed>=2.6')
 source=("namd-git.config"
         "namd-git.diff"
         "amber18.config"
