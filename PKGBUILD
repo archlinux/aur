@@ -2,11 +2,11 @@
 
 pkgname=o
 pkgver=2.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Small, fast and limited text editor'
 arch=(x86_64)
 url='https://github.com/xyproto/o'
-license=(MIT)
+license=(BSD)
 makedepends=(git gcc-go)
 source=("git+$url#tag=$pkgver")
 sha256sums=('SKIP')
