@@ -13,7 +13,9 @@ license=('GPL')
 
 depends=('libdrm' 'pango' 'systemd')
 makedepends=('git' 'docbook-xsl' 'intltool')
-optdepends=('ttf-dejavu')
+optdepends=('ttf-dejavu: For true type font support'
+        'xf86-video-fbdev: Support special graphic cards on early startup'
+        'cantarell-fonts: True Type support for BGRT theme')
 provides=('plymouth')
 conflicts=('plymouth' 'plymouth-legacy' 'plymouth-nosystemd')
 backup=('etc/plymouth/plymouthd.conf')
@@ -41,12 +43,12 @@ source=("git+https://gitlab.freedesktop.org/plymouth/plymouth.git"
 md5sums=('SKIP'
          '65fa2763d5c9bb9f80973ea5e6e3db3e'
          'd67132b297ccfb1a877a2efd78076963'
-         '02861a13840dee3a5f2224b598274220'
+         'de482fa4d91887c3aafa673341b6c719'
          'ae6e97bb1104bb12cbca6738e3fb872d'
          '1430ae2ec501d600f8f6771454dc9bbe'
          '870ea3e63c6989e2badf79d1fbafa914'
          'a3cfc30df846b2d7057a29e7fbe8733a'
-         'f803c315739f46128b99232d64c268ca'
+         'b95f6979dc2f373045b2ab88a36d6771'
          '006847d16b852c7a50ee2f241fd9647e'
          '606cd558141551a1ce0d80150a045d83'
          '672ad913e2383483bcb4599a0a6bee48'
@@ -84,6 +86,7 @@ build() {
 		--enable-tracing \
 		--enable-pango \
 		--enable-gtk=no \
+        --enable-gdm-transition \
 		--with-release-file=/etc/os-release \
 		--with-logo=/usr/share/plymouth/arch-logo.png \
 		--with-background-color=0x000000 \
