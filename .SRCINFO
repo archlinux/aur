@@ -1,0 +1,14 @@
+pkgbase = go-pm-git
+	pkgdesc = Simple secure password manager written in Go
+	pkgver = 20191014.21_37aa6fc
+	pkgrel = 1
+	arch = x86_64
+	license = GPL
+	makedepends = go
+	makedepends = git
+	depends = sqlite
+	depends = gnupg
+	source = pm::git+https://github.com/himidori/pm
+	md5sums = SKIP
+
+pkgname = pm
