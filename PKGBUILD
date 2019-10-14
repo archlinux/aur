@@ -1,8 +1,7 @@
 # $Id$
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
-
 pkgname=icu4j
-pkgver=64.2
+pkgver=65.1
 pkgrel=1
 pkgdesc="International Components for Unicode for Java"
 arch=('any')
@@ -18,11 +17,11 @@ source=("${_ghurl}/${pkgname}-${pkgver//./_}.jar"
 noextract=("${pkgname}-${pkgver//./_}.jar"
            "${pkgname}-charset-${pkgver//./_}.jar"
            "${pkgname}-localespi-${pkgver//./_}.jar")
-sha256sums=('ec5a7d92495a2c0f0a09506aef935cca6a68ce8ac18fbae105381a38288127e3'
-            '739432de83b518d277774a49ed8c76176eb9779ec19045613d186e594024a1e7'
-            '29ada0a78857c0ce4915052174e26457156f3934670890c3c574b7a9570cbdcc'
-            'f224d66b9a3f3e03260837a58c18ab07ca30241462c297aea444704df20683fe'
-            '87dc0324ed781e74a6564e446fc317d2e1d406d1d1aee1e53b5251d762d5b4d4')
+sha256sums=('041e677ddea663f219cd554ef1005ec27870207bb5420347af1d0268b3409291'
+            '473009ebe8bdc7e7b2343130b13d62eb28ddf21289a09210730a34831e08c948'
+            'dd01a87f5d74b48e179da3431d4886588c483649c462de19dedfd2b22dd7d573'
+            'bb46e8951449ccafdab059569651d3d7a9de688e2e93ee1296874c46fb311a85'
+            '48ec44eea21aa1b61f73e5f236d383696aff269e3a4b079777204b1399fb84dd')
 
 package() {
   install -d ${pkgdir}/usr/share/{doc,java,licenses}/${pkgname}/
