@@ -1,16 +1,14 @@
 pkgbase = sourcekitten
-	pkgdesc = An adorable little framework and command line tool for interacting with SourceKit..
-	pkgver = 0.22.0
+	pkgdesc = An adorable little framework and command line tool for interacting with SourceKit.
+	pkgver = 0.26.0
 	pkgrel = 1
 	url = https://github.com/jpsim/SourceKitten
 	arch = any
 	license = MIT
 	makedepends = swift-language
 	depends = swift-language
-	source = https://github.com/jpsim/SourceKitten/archive/0.22.0.tar.gz
-	source = 0001-Silence-errors-due-to-which-failing-to-find-swiftenv.patch
-	sha256sums = 61f92e16c7dacd8e1389e42c5e9ccc350c73e962b7d73b7ef92608d222a744c4
-	sha256sums = SKIP
+	source = https://github.com/jpsim/SourceKitten/archive/0.26.0.tar.gz
+	sha256sums = 4c8ab67f15654a11da3739b966f5a0b379cf7a7626095238ad921d958c559c86
 
 pkgname = sourcekitten
 
