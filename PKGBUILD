@@ -1,18 +1,18 @@
 # Maintainer: Ryan Gonzalez <rymg19@gmail.com>
 
 pkgname=('mrkd')
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc='Write man pages using Markdown, and convert them to Roff or HTML.'
 arch=('any')
-url='https://github.com/kirbyfan64/mrkd'
+url='https://github.com/refi64/mrkd'
 license=('BSD')
 makedepends=('python-setuptools')
-depends=('python-setuptools' 'python-jinja' 'python-mistune' 'python-plac' 'python-pygments')
-source=(https://pypi.org/packages/source/m/mrkd/mrkd-$pkgver.tar.gz)
-sha256sums=('95dd3d6f24bf71d592dba35b58e7c7f0c4344dabd77ade876cb8008aba832ae9')
+depends=('python-pip' 'python-jinja' 'python-mistune' 'python-plac' 'python-pygments')
+source=(https://files.pythonhosted.org/packages/py3/${pkgname::1}/$pkgname/${pkgname/-/_}-$pkgver-py3-none-any.whl)
+sha256sums=('9662b05abbb8e98c2ec5aa60296ca6dd7b39868e5b19f69195dbd1bd22880acb')
 
 package() {
-  cd "$srcdir/mrkd-$pkgver"
-  python setup.py install --root="$pkgdir" -O1
+  cd "$srcdir"
+  PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps *.whl
 }
