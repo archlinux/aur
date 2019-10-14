@@ -1,7 +1,7 @@
 # Maintainer:   M.Reynolds <blackboxnetworkproject@gmail.com>
 
 pkgname=tastyworks
-pkgver=1.0.15
+pkgver=1.0.16
 pkgrel=1
 pkgdesc="One of the fastest, most reliable, and most secure trading platforms in the world."
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('Other')
 depends=('java-runtime')
 source=("https://download.tastyworks.com/desktop-1.x.x/$pkgver/$pkgname-$pkgver-$pkgrel.x86_64.rpm"
         "tastyworks.png")
-sha256sums=('13cca9c54fe95461a83022b1149dbb6008c20109e805279c2a674872330dad98'
+sha256sums=('8a2c9bd54dd1736aa07e693839939988d94951537709cf1bd3e9263ce3368fd5'
             '5875675195bb9156c050976e00c98538a6662740f5359e677d26fe5e21560cea')
 
 package() {
@@ -32,6 +32,11 @@ package() {
     sed     -i          's|Comment=tastyworks|Comment=Trading Platform|'          "$srcdir/opt/$pkgname/bin/$pkgname.desktop"
     sed     -i          's|Icon=/opt/tastyworks/tastyworks.png|Icon=tastyworks|'  "$srcdir/opt/$pkgname/bin/$pkgname.desktop"
     sed     -i          's|Categories=Unknown|Categories=Internet|'               "$srcdir/opt/$pkgname/bin/$pkgname.desktop"
+
+    # Add the correct startup window manager class
+    # This *should* fix gnome from creating more than one dock entry for the program
+    echo                'StartupWMClass=tasty.javafx.launcher.LauncherFxApp' >>   "$srcdir/opt/$pkgname/bin/$pkgname.desktop"
+    sed     -i          '/^[[:space:]]*$/d'                                       "$srcdir/opt/$pkgname/bin/$pkgname.desktop"
 
     install -Dm 644     "$srcdir/opt/$pkgname/bin/$pkgname.desktop"               "$pkgdir/usr/share/applications/$pkgname.desktop"
 
