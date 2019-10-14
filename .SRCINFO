@@ -1,0 +1,21 @@
+pkgbase = libkml-dev
+	pkgdesc = A KML library written in C++ with bindings to other languages
+	pkgver = 1062.878abd1
+	pkgrel = 1
+	url = https://github.com/libkml/libkml
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	makedepends = swig
+	depends = expat
+	depends = uriparser
+	optdepends = swig: bindings for additional languages
+	optdepends = python2: python bindings
+	provides = libkml
+	conflicts = libkml-dev
+	source = libkml::git+https://github.com/libkml/libkml.git
+	sha256sums = SKIP
+
+pkgname = libkml-dev
+
