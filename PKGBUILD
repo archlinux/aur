@@ -1,6 +1,6 @@
 pkgname=betterautolock
 pkgver=0.1
-pkgrel=0
+pkgrel=1
 pkgdesc="betterlockscreen administration and suspend service"
 arch=('any')
 license=('gpl')

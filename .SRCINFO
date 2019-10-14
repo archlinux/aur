@@ -1,7 +1,7 @@
 pkgbase = betterautolock
 	pkgdesc = betterlockscreen administration and suspend service
 	pkgver = 0.1
-	pkgrel = 0
+	pkgrel = 1
 	arch = any
 	license = gpl
 	depends = feh

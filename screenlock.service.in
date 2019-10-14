@@ -1,6 +1,7 @@
 [Unit]
 Description=Bloqueia a tela ao suspender
-After=sleep.target
+After=suspend.target
+After=hibernate.target
 
 [Service]
 User=lucas59356
