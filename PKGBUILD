@@ -6,7 +6,7 @@
 pkgbase=python-visdom-git
 _pkgbase="visdom"
 pkgname=(python-visdom-git python2-visdom-git)
-pkgver=r274.35a3576
+pkgver=r288.bb0ab59
 pkgrel=1
 arch=(any)
 url='https://github.com/facebookresearch/visdom'
@@ -18,8 +18,11 @@ makedepends=(
   'python2-setuptools'
 )
 options=(!emptydirs)
-source=("git+https://github.com/facebookresearch/visdom.git")
-sha256sums=('SKIP')
+source=("git+https://github.com/facebookresearch/visdom.git" "visdom.conf" "visdom2.conf" "visdom.group.conf")
+sha256sums=('SKIP'
+            'f795c8a3185282b366e7942b07b5ac74b9c293d1eb0f15727cf26905c1d7934e'
+            'f795c8a3185282b366e7942b07b5ac74b9c293d1eb0f15727cf26905c1d7934e'
+            'd71fbfa6bb3feecfb1997a459da196f8a2f0f50b33428043921803d97db5562c')
 
 pkgver() {
   cd "${_pkgbase}"
@@ -27,24 +30,26 @@ pkgver() {
 }
 
 package_python-visdom-git() {
-depends=('python-websocket-client' 'python-numpy' 'python-scipy' 'python-requests' 'python-tornado' 'python-pyzmq' 'python-six' 'python-torchfile')
+depends=('python-websocket-client' 'python-numpy' 'python-scipy' 'python-requests' 'python-tornado' 'python-pyzmq' 'python-six' 'python-jsonpatch')
 provides=('python-visdom')
 conflicts=('python-visdom')
 install='visdom.install'
   cd "${srcdir}/${_pkgbase}"
   python setup.py install --root="${pkgdir}/" --optimize=1
   install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  chmod -R 775 "${pkgdir}/usr/lib/python3.7/site-packages/${_pkgbase}"
+  install -Dm 644 "${srcdir}/${_pkgbase}.group.conf" "${pkgdir}/usr/lib/sysusers.d/${_pkgbase}.group.conf"
+  install -Dm 644 "${srcdir}/${_pkgbase}.conf" "${pkgdir}/usr/lib/tmpfiles.d/${_pkgbase}.conf"
 }
 
 package_python2-visdom-git() {
-depends=('python2-websocket-client' 'python2-numpy' 'python2-scipy' 'python2-requests' 'python2-tornado' 'python2-pyzmq' 'python2-six' 'python2-torchfile')
+depends=('python2-websocket-client' 'python2-numpy' 'python2-scipy' 'python2-requests' 'python2-tornado' 'python2-pyzmq' 'python2-six' 'python2-jsonpatch')
 provides=('python2-visdom')
 conflicts=('python2-visdom')
-install='visdom2.install'
+install='visdom.install'
   cd "${srcdir}/${_pkgbase}"
   python2 setup.py install --root="${pkgdir}/" --optimize=1
   mv "${pkgdir}/usr/bin/visdom" "${pkgdir}/usr/bin/visdom2"
   install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  chmod -R 775 "${pkgdir}/usr/lib/python2.7/site-packages/${_pkgbase}"
+  install -Dm 644 "${srcdir}/${_pkgbase}.group.conf" "${pkgdir}/usr/lib/sysusers.d/${_pkgbase}.group.conf"
+  install -Dm 644 "${srcdir}/${_pkgbase}2.conf" "${pkgdir}/usr/lib/tmpfiles.d/${_pkgbase}.conf"
 }

@@ -1,6 +1,6 @@
 pkgbase = python-visdom-git
 	pkgdesc = Visualization tool for Pytorch by Facebook
-	pkgver = r274.35a3576
+	pkgver = r288.bb0ab59
 	pkgrel = 1
 	url = https://github.com/facebookresearch/visdom
 	arch = any
@@ -10,7 +10,13 @@ pkgbase = python-visdom-git
 	makedepends = python2-setuptools
 	options = !emptydirs
 	source = git+https://github.com/facebookresearch/visdom.git
+	source = visdom.conf
+	source = visdom2.conf
+	source = visdom.group.conf
 	sha256sums = SKIP
+	sha256sums = f795c8a3185282b366e7942b07b5ac74b9c293d1eb0f15727cf26905c1d7934e
+	sha256sums = f795c8a3185282b366e7942b07b5ac74b9c293d1eb0f15727cf26905c1d7934e
+	sha256sums = d71fbfa6bb3feecfb1997a459da196f8a2f0f50b33428043921803d97db5562c
 
 pkgname = python-visdom-git
 	install = visdom.install
@@ -21,12 +27,12 @@ pkgname = python-visdom-git
 	depends = python-tornado
 	depends = python-pyzmq
 	depends = python-six
-	depends = python-torchfile
+	depends = python-jsonpatch
 	provides = python-visdom
 	conflicts = python-visdom
 
 pkgname = python2-visdom-git
-	install = visdom2.install
+	install = visdom.install
 	depends = python2-websocket-client
 	depends = python2-numpy
 	depends = python2-scipy
@@ -34,7 +40,7 @@ pkgname = python2-visdom-git
 	depends = python2-tornado
 	depends = python2-pyzmq
 	depends = python2-six
-	depends = python2-torchfile
+	depends = python2-jsonpatch
 	provides = python2-visdom
 	conflicts = python2-visdom
 
