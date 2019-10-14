@@ -1,6 +1,6 @@
 pkgbase = kodi-devel
 	pkgver = 18.5pre21
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kodi.tv
 	arch = x86_64
 	license = GPL2
@@ -49,7 +49,7 @@ pkgbase = kodi-devel
 	makedepends = ghostscript
 	makedepends = git
 	makedepends = wayland-protocols
-	makedepends = waylandpp-git
+	makedepends = waylandpp>=0.2.7-1
 	makedepends = libinput
 	makedepends = libxkbcommon
 	noextract = libdvdcss-1.4.2-Leia-Beta-5.tar.gz
@@ -190,7 +190,7 @@ pkgname = kodi-wayland-devel
 	depends = smbclient
 	depends = taglib
 	depends = tinyxml
-	depends = waylandpp-git
+	depends = waylandpp>=0.2.7-1
 	depends = kodi-devel
 	provides = kodi-bin=18.5pre21
 	provides = kodi-wayland
