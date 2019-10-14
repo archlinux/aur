@@ -1,14 +1,16 @@
 # Maintainer: Jonas Witschel <diabonas@archlinux.org>
 pkgname=pdftk-git
-pkgver=3.0.0.r62.a1b9815
+pkgver=3.0.0.r65.c98f90e
 pkgrel=1
 pkgdesc='Command-line tool for working with PDFs'
 arch=('any')
 url='https://gitlab.com/pdftk-java/pdftk'
 license=('GPL')
-depends=('bcprov' 'java-commons-lang' 'java-runtime-headless')
-makedepends=('git' 'ant')
+depends=('java-runtime-headless')
+makedepends=('git' 'ant' 'bcprov' 'java-commons-lang')
 checkdepends=('java-hamcrest' 'junit' 'junit-system-rules' 'poppler')
+optdepends=('bcprov: encrypted PDF support'
+            'java-commons-lang: dump_data operation support')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("git+$url.git" 'pdftk.sh')
