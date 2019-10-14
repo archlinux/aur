@@ -1,7 +1,7 @@
 pkgname=linvst3
 pkgver=1.7.0
 _pkgver=1.7
-pkgrel=2
+pkgrel=3
 pkgdesc="enables Windows vst3's to be used as Linux vst's in Linux vst capable DAW's"
 arch=('x86_64')
 url="https://github.com/osxmidi/LinVst"

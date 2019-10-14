@@ -11,7 +11,7 @@ import sys  # import sytem functions
 # Golbal Variables
 linvstfileso="/usr/bin/linvst3.so"  # the linvst3.so bridge file for the linvst3 bridge
 homedir=os.path.expanduser("~")  # expand the current users home directory /home/<user>
-vstdir=(homedir + "/" + ".vst3" + "/")  # DAW scanned VST directory
+vstdir=(homedir + "/" + ".vst3" + "/" + "windows-bridged" + "/")  # DAW scanned VST directory
 currentdir=os.getcwd() + "/"  # get the current work directory
 
 # Executable Code
