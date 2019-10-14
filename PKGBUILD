@@ -21,7 +21,7 @@ pkgname=(
   "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev"
 )
 _gitname='xbmc'
-pkgver=r53578.c0968c9b83f
+pkgver=r53580.05488ed68e4
 pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
@@ -36,7 +36,7 @@ makedepends=(
   'shairplay' 'smbclient' 'taglib' 'tinyxml' 'swig'
   'upower' 'giflib' 'rapidjson' 'ghostscript' 'git'
   # wayland
-  'wayland-protocols' 'waylandpp'
+  'wayland-protocols' 'waylandpp-git'
   # gbm
   'libinput' 'libxkbcommon'
 )
@@ -266,7 +266,7 @@ package_kodi-git-wayland() {
     'bluez-libs' 'curl' 'lcms2' 'libass' 'libbluray' 'libcdio' 'libcec'
     'libmicrohttpd' 'libnfs' 'libpulse' 'libva' 'libxkbcommon' 'libxslt'
     'lirc' 'mariadb-libs' 'python' 'smbclient' 'taglib' 'tinyxml'
-    'waylandpp' "$pkgbase"
+    'waylandpp-git' "$pkgbase"
   )
 
   cd kodi-build-wayland

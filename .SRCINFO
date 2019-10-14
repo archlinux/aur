@@ -1,5 +1,5 @@
 pkgbase = kodi-git
-	pkgver = r53578.c0968c9b83f
+	pkgver = r53580.05488ed68e4
 	pkgrel = 1
 	url = https://kodi.tv
 	arch = x86_64
@@ -49,7 +49,7 @@ pkgbase = kodi-git
 	makedepends = ghostscript
 	makedepends = git
 	makedepends = wayland-protocols
-	makedepends = waylandpp
+	makedepends = waylandpp-git
 	makedepends = libinput
 	makedepends = libxkbcommon
 	noextract = libdvdcss-1.4.2-Leia-Beta-5.tar.gz
@@ -98,7 +98,7 @@ pkgname = kodi-git
 	optdepends = libplist: AirPlay support
 	optdepends = pulseaudio: PulseAudio support
 	optdepends = upower: Display battery level
-	provides = kodi=r53578.c0968c9b83f
+	provides = kodi=r53580.05488ed68e4
 	conflicts = kodi
 
 pkgname = kodi-git-bin
@@ -147,9 +147,9 @@ pkgname = kodi-git-wayland
 	depends = smbclient
 	depends = taglib
 	depends = tinyxml
-	depends = waylandpp
+	depends = waylandpp-git
 	depends = kodi-git
-	provides = kodi-git-bin=r53578.c0968c9b83f
+	provides = kodi-git-bin=r53580.05488ed68e4
 	conflicts = kodi-wayland
 
 pkgname = kodi-git-gbm
@@ -175,14 +175,14 @@ pkgname = kodi-git-gbm
 	depends = taglib
 	depends = tinyxml
 	depends = kodi-git
-	provides = kodi-git-bin=r53578.c0968c9b83f
+	provides = kodi-git-bin=r53580.05488ed68e4
 	provides = kodi-gbm
 	conflicts = kodi-gbm
 
 pkgname = kodi-git-eventclients
 	pkgdesc = Kodi Event Clients (master branch)
 	optdepends = python: most eventclients are implemented in python
-	provides = kodi-eventclients=r53578.c0968c9b83f
+	provides = kodi-eventclients=r53580.05488ed68e4
 	conflicts = kodi-eventclients
 
 pkgname = kodi-git-tools-texturepacker
@@ -191,12 +191,12 @@ pkgname = kodi-git-tools-texturepacker
 	depends = giflib
 	depends = libjpeg-turbo
 	depends = lzo
-	provides = kodi-tools-texturepacker=r53578.c0968c9b83f
+	provides = kodi-tools-texturepacker=r53580.05488ed68e4
 	conflicts = kodi-tools-texturepacker
 
 pkgname = kodi-git-dev
 	pkgdesc = Kodi dev files (master branch)
 	depends = kodi-git
-	provides = kodi-dev=r53578.c0968c9b83f
+	provides = kodi-dev=r53580.05488ed68e4
 	conflicts = kodi-dev
 
