@@ -1,40 +1,50 @@
 # Maintainer: Jon Gjengset <jon@tsp.io>
+# Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
+# Contributor: Jonathon Fernyhough <jonathon_at_manjaro_dot_org>
 pkgname=rustup-git
-pkgver=1.0.0.r0.g17b6d21
+pkgver=1.19.0.r70.gfbcc6720
 pkgrel=1
-
 pkgdesc="The Rust toolchain installer"
-arch=('i686' 'x86_64')
-url="https://github.com/rust-lang-nursery/rustup.rs"
+arch=('x86_64')
+url="https://github.com/rust-lang/rustup.rs"
 license=('MIT' 'Apache')
 makedepends=('git' 'cargo')
-provides=('rust' 'cargo' 'rust-nightly' 'cargo-nightly' 'rustup')
-conflicts=('rust' 'cargo' 'rust-nightly' 'rust-nightly-bin' 'multirust' 'multirust-git' 'rustup')
-replaces=('multirust' 'multirust-git')
+optdepends=('lldb: rust-lldb script'
+            'gdb: rust-gdb script')
+provides=('rust' 'cargo' 'rust-nightly' 'cargo-nightly' 'rustfmt' 'rustup')
+conflicts=('rust' 'cargo' 'rustfmt' 'rust-nightly' 'rust-nightly-bin' 'rustup')
 install='post.install'
-
 source=("${pkgname}::git+https://github.com/rust-lang-nursery/rustup.rs.git")
-md5sums=('SKIP')
+sha512sums=('SKIP')
+_binlinks=('cargo' 'rustc' 'rustdoc' 'rust-gdb' 'rust-lldb' 'rls' 'rustfmt' 'cargo-fmt' 'cargo-clippy' 'clippy-driver')
 
 pkgver() {
-	cd "$srcdir/${pkgname}"
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    cd "$srcdir/${pkgname}"
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-	msg2 "Building rustup"
-	cd "$srcdir/$pkgname"
-	cargo build --release --features no-self-update --bin rustup-init
-
-	msg2 "Running rustup-init"
-	mkdir -p "$srcdir/tmp/.cargo"
-	env -u CARGO_HOME "HOME=$srcdir/tmp" target/release/rustup-init -y --no-modify-path
+    cd "$srcdir/$pkgname"
+    cargo build --release --features no-self-update --bin rustup-init
 }
 
 package() {
-	cd "$pkgname"
-	install -dm755 "$pkgdir/usr/bin"
-	cp "$srcdir/tmp/.cargo/bin"/* "$pkgdir/usr/bin/"
+    cd "$srcdir/$pkgname"
+    install -Dm755 "target/release/rustup-init" "${pkgdir}/usr/bin/rustup"
+    for link in "${_binlinks[@]}"; do
+        ln -s /usr/bin/rustup "${pkgdir}/usr/bin/${link}"
+    done
+
+    # Generate completion files.
+    mkdir -p "$pkgdir/usr/share/bash-completion/completions"
+    $pkgdir/usr/bin/rustup completions bash > "$pkgdir/usr/share/bash-completion/completions/rustup"
+    mkdir -p "$pkgdir/usr/share/fish/completions"
+    $pkgdir/usr/bin/rustup completions fish > "$pkgdir/usr/share/fish/completions/rustup.fish"
+    mkdir -p "$pkgdir/usr/share/zsh/site-functions"
+    $pkgdir/usr/bin/rustup completions zsh > "$pkgdir/usr/share/zsh/site-functions/_rustup"
+
+    install -Dm644 LICENSE-MIT "${pkgdir}"/usr/share/licenses/$pkgname/LICENSE-MIT
+    install -Dm644 LICENSE-APACHE "${pkgdir}"/usr/share/licenses/$pkgname/LICENSE-APACHE
 }
 
 # vim:filetype=sh:
