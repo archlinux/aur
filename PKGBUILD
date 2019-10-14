@@ -2,24 +2,18 @@
 # Contributor: Bram Swenson <bram at amplified dot work>
 # Contributor: Julien Nicoulaud <julien dot nicoulaud at gmail dot com>
 
-_pkgname="concourse-fly"
-pkgname=$_pkgname-git
-pkgver=5.6.0.r90.gcb8a08f02
-pkgrel=1
+pkgname="concourse-fly"
+pkgver=5.6.0
+pkgrel=2
 pkgdesc="A command line interface that runs a build in a container with ATC."
 arch=('x86_64')
 url="https://concourse-ci.org/fly.html"
 license=('Apache')
 makedepends=('go-pie' 'git')
-provides=("${_pkgname}")
-conflicts=("${_pkgname}" "${_pkgname}-bin")
-source=("git+https://github.com/concourse/concourse.git")
+provides=("${pkgname}")
+conflicts=("${pkgname}" "${pkgname}-bin" "${pkgname}-git")
+source=("git+https://github.com/concourse/concourse.git#tag=v${pkgver}")
 sha512sums=('SKIP')
-
-pkgver() {
-    cd $srcdir/concourse/
-    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
 
 prepare() {
     mkdir -p gopath/src/github.com/concourse
