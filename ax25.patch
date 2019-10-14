@@ -1,6 +1,16 @@
 --- ax25/ax25d.c
 +++ ax25/ax25d.c
-@@ -307,6 +307,17 @@ int main(int argc, char *argv[])
+@@ -260,7 +260,8 @@ static void SignalTERM(int code)
+ 		syslog(LOG_INFO, "terminating on SIGTERM\n");
+ 		closelog();
+ 	}
+-
++	// FIXME - hardcoded path
++	unlink("/var/run/ax25d.pid");
+ 	exit(0);
+ }
+ 
+@@ -1083,6 +1084,17 @@ int main(int argc, char *argv[])
  		syslog(LOG_INFO, "starting");
  	}
  
@@ -18,16 +28,6 @@
  	act.sa_handler = SignalHUP;
  	sigemptyset(&act.sa_mask);
  	act.sa_flags = 0;
-@@ -643,7 +654,8 @@ static void SignalTERM(int code)
- 		syslog(LOG_INFO, "terminating on SIGTERM\n");
- 		closelog();
- 	}
--	
-+	// FIXME - hardcoded path
-+	unlink("/var/run/ax25d.pid");
- 	exit(0);
- }
- 
 --- ax25/mheardd.c
 +++ ax25/mheardd.c
 @@ -98,7 +98,7 @@ static void terminate(int sig)
