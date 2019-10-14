@@ -15,7 +15,7 @@ rm -f "$target_file"
 
 for i in 1 2 3; do
     echo "Authenticating for download ..." >&2
-    curl -fsSL -A Mozilla "$base_url/cookie/init.js.php" > /dev/null
+    curl -fsSL -A Mozilla "$base_url/cookie/init.js.static.php" > /dev/null
 
     echo "Downloading ..." >&2
     curl -fLC - --retry 5 --retry-delay 3 -A Mozilla -o "$target_file" "$file_url"
