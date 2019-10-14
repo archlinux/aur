@@ -1,32 +1,15 @@
-usr=mycroft
-home=/var/lib/mycroft
-data=/usr/share/mycroft-core
-
 post_install() {
-  _mkuser
-  _chown
+  echo "====>  Please add mycroft user to audio group"
+  echo "====     sudo gpassd -a mycroft audio"
+  echo "====>  Add this line to your default.pa PulseAudio file configuration"
+  echo "====     load-module module-native-protocol-unix auth-anonymous=1 socket=/tmp/pulse-socket"
+  echo "====>  Read instructions under /usr/share/mycroft-core/pulseaudio-client.conf"
+  echo "====>  Add this line into /etc/pulse/client.conf"
+  echo "====     autospawn=1"
+  echo "====>  Finally run:"
+  echo "====	 systemctl start mycroft.service"
 }
 
 post_upgrade() {
     post_install $1
-}
-
-pre_remove() {
-    userdel $usr &> /dev/null
-    groupdel $usr &> /dev/null || true
-    rm -rf /var/log/$usr/ &> /dev/null || true
-}
-
-_chown() {
-  chown -R $usr:$usr $home
-  chown -R $usr:$usr $data
-}
-
-_mkuser() {
-  getent passwd $usr &>/dev/null || {
-    echo -n "Creating $usr user... "
-    grep -E "^$usr:" /etc/group >/dev/null || groupadd $usr
-    useradd -m -d $home -g $usr -G audio -s /usr/bin/nologin $usr 2>/dev/null
-    echo "done"
-  }
 }

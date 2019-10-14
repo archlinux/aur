@@ -1,2 +1,2 @@
-u mycroft - -
+u mycroft - "Mycroft" /var/lib/mycroft /usr/bin/login
 g mycroft - -

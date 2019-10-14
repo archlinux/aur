@@ -1,8 +1,9 @@
-# Maintainer: Thorben Guenther <echo YWRtaW5AeGVucm94Lm5ldAo= | base64 -d>
+# Maintainer: robertfoster
+# Contributor: Thorben Guenther <echo YWRtaW5AeGVucm94Lm5ldAo= | base64 -d>
 
 pkgname=mycroft-core
 pkgver=19.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The Mycroft Artificial Intelligence platform."
 arch=('i686' 'x86_64')
 url='https://github.com/MycroftAI/mycroft-core'
@@ -28,7 +29,8 @@ install=mycroft-core.install
 source=("https://github.com/MycroftAI/mycroft-core/archive/release/v${pkgver}.tar.gz"
 	"mycroft.tmpfiles"
 	"mycroft.sysusers"
-"mycroft.service")
+	"mycroft.service"
+"mycroft.pulseaudio")
 
 prepare() {
 	cd $srcdir/$pkgname-release-v$pkgver
@@ -52,16 +54,21 @@ package() {
 	install -D -m644 "${srcdir}/mycroft.sysusers" "${pkgdir}/usr/lib/sysusers.d/mycroft.conf"
 	install -D -m644 "${srcdir}/mycroft.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/mycroft.conf"
 
-	# venv
+	# Virtualenv
 	cd $pkgdir/usr/share/mycroft-core
 	virtualenv .venv
 	source .venv/bin/activate
 	pip install -r requirements.txt
-	pip install py_mplayer
+	pip install https://github.com/JarbasAl/py_mplayer/archive/master.zip
 	sed -i 's/^VIRTUAL_ENV=.*/VIRTUAL_ENV="\/usr\/share\/mycroft-core\/.venv"/g' .venv/bin/activate
+	rm .venv/bin/activate.{fish,csh}
+	find . -name "*.py[co]" -o -name __pycache__ -exec rm -rf {} +
+	install -D -m644 "${srcdir}/mycroft.pulseaudio" "${pkgdir}/usr/share/mycroft-core/pulse-client.conf"
+
 }
 
 md5sums=('04ec4428ad8ee3787e798bcd5a7ed23a'
-	'e9a8f1095bb32a05946650e2993bdb37'
-	'7c2f6981ea856fc10c64eab60d69569c'
-'a587888fcaf792ab9ceb6c698bb03ac3')
+	'5fafd69eb177046827b9cb93c91e3802'
+	'f4b41cc9e1a7308c8833f0f7804d8c02'
+	'a587888fcaf792ab9ceb6c698bb03ac3'
+'ffd5e294798abaa35bb79f2b1afd40e1')
