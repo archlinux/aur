@@ -47,7 +47,7 @@ archlinux:
   - ccache -s
   - ccache -z
 # set timeout to 50m minus current uptime, minus travis cache in time, minus 60 second buffer for arch-travis cleanup.
-  - timeout $((50*60-arch_uptime-travis_uptime-60)) makepkg -s --noconfirm > >(ts -s '%.T'); _makepkg_return=$?
+  - timeout $((50*60-arch_uptime-travis_uptime-60)) makepkg -s --noconfirm --nocheck > >(ts -s '%.T'); _makepkg_return=$?
   - sudo pacman -Sc --noconfirm
   - ccache -s
   - ccache -z
