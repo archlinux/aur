@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-dev
 	pkgdesc = Next generation desktop shell
-	pkgver = 3.34.1
+	pkgver = 3.35.1
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/gnome-shell
 	arch = x86_64
@@ -36,7 +36,7 @@ pkgbase = gnome-shell-dev
 	optdepends = evolution-data-server: Evolution calendar integration
 	provides = gnome-shell
 	conflicts = gnome-shell
-	source = git+https://gitlab.gnome.org/GNOME/gnome-shell.git#tag=3.34.1
+	source = git+https://gitlab.gnome.org/GNOME/gnome-shell.git#tag=3.35.1
 	sha256sums = SKIP
 
 pkgname = gnome-shell-dev
