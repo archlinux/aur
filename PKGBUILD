@@ -14,9 +14,8 @@ makedepends=('linux-ck-headers' "virtualbox-host-dkms>=$pkgver" "virtualbox-gues
 # 1: Get the installed ck from pacman. ex: linux-ck-ivybridge 4.17.11-6
 # 2: Get first column. ex: linux-ck-ivybridge
 # 3: Get core version. ex: ivybridge
-_kernel="$(pacman -Q linux-ck | awk '{print $1}' | cut -d \- -f 3)"
-_extramodules=extramodules-ck-${_kernel}
-_kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
+_kernel="$(pacman -Qq linux-ck | cut -d \- -f 3)"
+_kernver="$(cat /usr/src/linux-ck-ivybridge/version)"
 
 pkgver() {
         pacman -Ss virtualbox-host-dkms | awk 'NR==1{print $2}' | cut -d \- -f 1
@@ -43,13 +42,13 @@ package_virtualbox-ck-host-modules() {
 	#groups=('ck-generic')
 
 	cd "dkms/vboxhost/${pkgver}_OSE/$_kernver/$CARCH/module"
-  install -Dt "$pkgdir/usr/lib/modules/$_extramodules" -m644 *
+  install -Dt "$pkgdir/usr/lib/modules/$_kernver/extramodules" -m0644 *
 
   # compress each module individually
-  find "$pkgdir" -name '*.ko' -exec gzip -n {} +
+  find "$pkgdir" -name '*.ko' -exec xz -T1 {} +
 	
   # systemd module loading
-  printf "vboxdrv\nvboxpci\nvboxnetadp\nvboxnetflt\n" |
+  printf '%s\n' vboxdrv vboxpci vboxnetadp vboxnetflt |
     install -Dm644 /dev/stdin "$pkgdir/usr/lib/modules-load.d/virtualbox-host-modules-ck.conf"
 }
 
