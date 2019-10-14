@@ -3,7 +3,7 @@
 # Contributor: Jonathon Fernyhough <jonathon_at_manjaro_dot_org>
 pkgname=rustup-git
 pkgver=1.19.0.r70.gfbcc6720
-pkgrel=1
+pkgrel=2
 pkgdesc="The Rust toolchain installer"
 arch=('x86_64')
 url="https://github.com/rust-lang/rustup.rs"
@@ -25,7 +25,7 @@ pkgver() {
 
 build() {
     cd "$srcdir/$pkgname"
-    cargo build --release --features no-self-update --bin rustup-init
+    env --unset=CARGO_TARGET_DIR cargo build --release --features no-self-update --bin rustup-init
 }
 
 package() {

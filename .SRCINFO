@@ -1,7 +1,7 @@
 pkgbase = rustup-git
 	pkgdesc = The Rust toolchain installer
 	pkgver = 1.19.0.r70.gfbcc6720
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rust-lang/rustup.rs
 	install = post.install
 	arch = x86_64
