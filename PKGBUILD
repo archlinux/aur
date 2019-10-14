@@ -2,7 +2,7 @@
 pkgname=lx-music-desktop
 pkgver=0.7.0
 pkgrel=1
-pkgdesc="一个免费的音乐下载助手"
+pkgdesc="A music software based on Electron + Vue. 一个基于 Electron + Vue 开发的音乐软件。"
 arch=('x86_64')
 url="https://github.com/lyswhut/lx-music-desktop#readme"
 license=('')
