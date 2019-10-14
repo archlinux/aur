@@ -1,46 +1,32 @@
-pre_install() {
-  useradd -r mycroft-core -b /usr/share
-}
+usr=mycroft
+home=/var/lib/mycroft
+data=/usr/share/mycroft-core
 
 post_install() {
-  chown -R mycroft-core:mycroft-core /usr/share/mycroft-core
-
-  sudo -Hu mycroft-core bash -c '/usr/share/mycroft-core/venv_init'
-
-  # Create skill folder
-  mkdir -p /opt/mycroft/skills
-  chown -R mycroft-core:mycroft-core /opt/mycroft
-  chmod -R g+w /opt/mycroft
-
-  # Create Log files
-  mkdir -p /var/log/mycroft
-  chown -R mycroft-core:mycroft-core /var/log/mycroft
-  chmod g+w /var/log/mycroft
-
-  echo "*** ATTENTION ***"
-  echo ""
-  echo "* The users who will use Mycroft need to be part of the mycroft-core group"
-  echo ""
-  echo "* You can configure your Mycroft instance preferences systemwide at:"
-  echo "    /usr/share/mycroft-core/mycroft/configuration/mycroft.conf"
-  echo ""
-  echo "* The systemd unit is"                                  
-  echo "    - mycroft.service"
-  echo ""
-  echo "* This is a USER unit which you can start issuing:"
-  echo "    systemctl --user start mycroft.service"
-  echo "    More information at: https://wiki.archlinux.org/index.php/Systemd/User"
-
+  _mkuser
+  _chown
 }
 
 post_upgrade() {
-  chown -R mycroft-core:mycroft-core /usr/share/mycroft-core
+    post_install $1
 }
 
-post_remove() {
-  userdel mycroft-core
-  groupdel mycroft-core
-  rm -rf /usr/share/mycroft-core
-  rm -rf /opt/mycroft
-  rm -rf /var/log/mycroft
+pre_remove() {
+    userdel $usr &> /dev/null
+    groupdel $usr &> /dev/null || true
+    rm -rf /var/log/$usr/ &> /dev/null || true
+}
+
+_chown() {
+  chown -R $usr:$usr $home
+  chown -R $usr:$usr $data
+}
+
+_mkuser() {
+  getent passwd $usr &>/dev/null || {
+    echo -n "Creating $usr user... "
+    grep -E "^$usr:" /etc/group >/dev/null || groupadd $usr
+    useradd -m -d $home -g $usr -G audio -s /usr/bin/nologin $usr 2>/dev/null
+    echo "done"
+  }
 }

@@ -3,6 +3,9 @@ Description=Mycroft main service
 After=network.target local-fs.target remote-fs.target
 
 [Service]
+User=mycroft
+Group=mycroft
+SyslogIdentifier=mycroft-core
 Type=forking
 RemainAfterExit=no
 ExecStart=/usr/share/mycroft-core/start-mycroft.sh all

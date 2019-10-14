@@ -1,0 +1,4 @@
+d /var/lib/mycroft 0755 mycroft mycroft 
+d /var/log/mycroft 0755 mycroft mycroft 
+d /opt/mycroft/ 0755 mycroft mycroft
+d /tmp/mycroft/ 0755 mycroft mycroft
