@@ -4,7 +4,7 @@
 
 _pyname=xxhash
 pkgname=python-${_pyname,,}
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc='Python binding for xxHash'
 arch=('i686' 'x86_64')
@@ -13,8 +13,8 @@ depends=('python')
 makedepends=('python-setuptools')
 license=('BSD')
 source=("https://pypi.io/packages/source/${_pyname:0:1}/$_pyname/$_pyname-${_pyver:-$pkgver}.tar.gz")
-md5sums=('2e6c0bd69a540e15ff2222d6cb8da466')
-sha256sums=('6b5af8c37ff12745ae77f28e695c0d3a3327932fd229824e49382377e940fdf1')
+md5sums=('80461eff10ac62214fa788a6045aab43')
+sha256sums=('82cdc67b41da904aa2921107e9877814079d9b067a99f19852b5d85e8a40555d')
 
 build() {
   cd $srcdir/$_pyname-${_pyver:-$pkgver}
