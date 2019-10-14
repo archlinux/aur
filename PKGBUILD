@@ -3,46 +3,50 @@
 # Contributor: Marti Raudsepp <marti at juffo dot org>
 # Maintainer: Julien Nicoulaud <julien dot nicoulaud at gmail dot com>
 
-_pkgname='concourse-fly'
-pkgname="${_pkgname}-git"
-pkgver=4.2.1.r9287.gee3b4cf8b
+_pkgname="concourse-fly"
+pkgname=$_pkgname-git
+pkgver=5.6.0.r90.gcb8a08f02
 pkgrel=1
-pkgdesc='Command line interface to the Concourse continuous integration tool'
+pkgdesc="A command line interface that runs a build in a container with ATC."
 arch=('x86_64')
-url='https://concourse-ci.org/fly.html'
+url="https://concourse-ci.org/fly.html"
 license=('Apache')
-makedepends=('go')
-checkdepends=()
+makedepends=('go' 'git')
 provides=("${_pkgname}")
-conflicts=("${_pkgname}")
-_srcname='concourse'
-source=("git+https://github.com/concourse/${_srcname}.git")
+conflicts=("${_pkgname}" "${_pkgname}-bin")
+source=("git+https://github.com/concourse/concourse.git")
 sha512sums=('SKIP')
 
-prepare() {
-    cd "${srcdir}/${_srcname}"
-    git submodule update --init --recursive --jobs $(nproc) --recommend-shallow
-}
-
 pkgver() {
-    cd "${srcdir}/${_srcname}"
+    cd $srcdir/concourse/
     git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+    mkdir -p gopath/src/github.com/concourse
+    ln -rTsf $srcdir/concourse/ gopath/src/github.com/concourse/concourse
+    export GOPATH="$srcdir"/gopath
+    cd $srcdir/concourse/fly
+    go get ./...
+}
+
 build() {
-    cd "${srcdir}/${_srcname}/fly"
-    export GOPATH="$PWD"
-    go build
+    export GOPATH="$srcdir"/gopath
+    cd $srcdir/concourse/fly
+    go build \
+        -trimpath \
+        -ldflags "-extldflags ${LDFLAGS}" \
+        .
 }
 
 check() {
-    cd "${srcdir}/${_srcname}/fly"
-    export GOPATH="$PWD"
+    export GOPATH="$srcdir"/gopath
+    cd $srcdir/concourse/fly
     go get github.com/onsi/ginkgo/ginkgo
-    "$GOPATH"/bin/ginkgo -r
+    $GOPATH/bin/ginkgo -r -p
 }
 
 package() {
-    cd "${srcdir}/${_srcname}/fly"
-    install -m 755 -D fly "$pkgdir"/usr/bin/fly
+    cd $srcdir/concourse/fly
+    install -m 755 -D fly $pkgdir/usr/bin/fly
 }
