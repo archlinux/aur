@@ -2,8 +2,8 @@
 pkgbase=python-spherical_geometry
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=1.2.17
-pkgrel=2
+pkgver=1.2.18
+pkgrel=1
 pkgdesc="Python based tools for spherical geometry"
 arch=('i686' 'x86_64')
 url="http://www.stsci.edu/resources/software_hardware/stsci_python"
@@ -12,7 +12,7 @@ makedepends=('python-setuptools' 'python-numpy' 'qd>=2.3.7' 'python-sphinx-autom
 #checkdepends=('python-pytest' 'python-astropy')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         'fix_doc_warning.patch')
-md5sums=('07b30fdba1215d2a5a5beea2279019da'
+md5sums=('a90b12aaf7eeb99807ad2ebf505ad84c'
          'fed5395d45a2275ccd5e0d63956ecddf')
 
 prepare() {
@@ -51,6 +51,7 @@ package_python-spherical_geometry-doc() {
     pkgdesc="Documentation for Python Spherical Geometry Toolkit"
     cd ${srcdir}/${_pyname}-${pkgver}/docs/_build
 
+    install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" ../../licenses/*
     install -d -m755 "${pkgdir}/usr/share/doc/${pkgbase}"
     cp -a html "${pkgdir}/usr/share/doc/${pkgbase}"
 }
