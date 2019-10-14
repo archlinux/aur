@@ -1,16 +1,16 @@
-diff -ru nethack-3.6.0.orig/include/config.h nethack-3.6.0/include/config.h
---- nethack-3.6.0.orig/include/config.h	2015-11-17 06:58:34.000000000 +0100
-+++ nethack-3.6.0/include/config.h	2016-05-08 21:15:56.953494936 +0200
-@@ -43,7 +43,7 @@
- #if !defined(NOTTYGRAPHICS)
+diff -ru '--color=auto' nethack-3.6.2.orig/include/config.h nethack-3.6.2/include/config.h
+--- nethack-3.6.2.orig/include/config.h	2019-10-14 15:43:52.234943122 -0400
++++ nethack-3.6.2/include/config.h	2019-10-14 16:26:55.257097257 -0400
+@@ -46,7 +46,7 @@
  #define TTY_GRAPHICS /* good old tty based graphics */
  #endif
+ /* #define CURSES_GRAPHICS *//* Curses interface - Karl Garrison*/
 -/* #define X11_GRAPHICS */   /* X11 interface */
-+#define X11_GRAPHICS    /* X11 interface */
++#define X11_GRAPHICS         /* X11 interface */
  /* #define QT_GRAPHICS */    /* Qt interface */
  /* #define GNOME_GRAPHICS */ /* Gnome interface */
  /* #define MSWIN_GRAPHICS */ /* Windows NT, CE, Graphics */
-@@ -113,7 +113,7 @@
+@@ -116,7 +116,7 @@
  #endif
  
  #ifndef DEFAULT_WINDOW_SYS
@@ -18,8 +18,8 @@ diff -ru nethack-3.6.0.orig/include/config.h nethack-3.6.0/include/config.h
 +#define DEFAULT_WINDOW_SYS "X11"
  #endif
  
- #ifdef X11_GRAPHICS
-@@ -125,7 +125,7 @@
+ #ifdef CURSES_GRAPHICS
+@@ -134,7 +134,7 @@
   * would allow:
   *  xpmtoppm <x11tiles.xpm | pnmscale 1.25 | ppmquant 90 >x11tiles_big.xpm
   */
@@ -28,7 +28,7 @@ diff -ru nethack-3.6.0.orig/include/config.h nethack-3.6.0/include/config.h
  #ifdef USE_XPM
  #define GRAPHIC_TOMBSTONE /* Use graphical tombstone (rip.xpm) */
  #endif
-@@ -250,11 +250,11 @@
+@@ -263,11 +263,11 @@
  
  #if defined(UNIX) && !defined(ZLIB_COMP) && !defined(COMPRESS)
  /* path and file name extension for compression program */
@@ -44,7 +44,7 @@ diff -ru nethack-3.6.0.orig/include/config.h nethack-3.6.0/include/config.h
  #endif
  
  #ifndef COMPRESS
-@@ -298,7 +298,7 @@
+@@ -311,7 +311,7 @@
   *      a tar-like file, thus making a neater installation.  See *conf.h
   *      for detailed configuration.
   */
@@ -52,17 +52,17 @@ diff -ru nethack-3.6.0.orig/include/config.h nethack-3.6.0/include/config.h
 +#define DLB /* not supported on all platforms */
  
  /*
-  *      Defining INSURANCE slows down level changes, but allows games that
-@@ -317,7 +317,7 @@
+  *      Defining REPRODUCIBLE_BUILD causes 'util/makedefs -v' to construct
+@@ -352,7 +352,7 @@
   * otherwise it will be the current directory.
   */
  #ifndef HACKDIR
 -#define HACKDIR "/usr/games/lib/nethackdir"
-+#define HACKDIR "/usr/games/nethack"
++#define HACKDIR "/var/games/nethack"
  #endif
  
  /*
-@@ -327,7 +327,7 @@
+@@ -362,7 +362,7 @@
   * since the user might create files in a directory of his choice.
   * Of course SECURE is meaningful only if HACKDIR is defined.
   */
@@ -71,40 +71,22 @@ diff -ru nethack-3.6.0.orig/include/config.h nethack-3.6.0/include/config.h
  
  /*
   * If it is desirable to limit the number of people that can play Hack
-diff -ru nethack-3.6.0.orig/include/unixconf.h nethack-3.6.0/include/unixconf.h
---- nethack-3.6.0.orig/include/unixconf.h	2015-11-17 11:54:25.000000000 +0100
-+++ nethack-3.6.0/include/unixconf.h	2016-05-08 21:19:25.780412473 +0200
-@@ -36,7 +36,7 @@
- #define NETWORK        /* if running on a networked system */
-                        /* e.g. Suns sharing a playground through NFS */
- /* #define SUNOS4 */   /* SunOS 4.x */
--/* #define LINUX */    /* Another Unix clone */
-+#define LINUX    /* Another Unix clone */
- /* #define CYGWIN32 */ /* Unix on Win32 -- use with case sensitive defines */
- /* #define GENIX */    /* Yet Another Unix Clone */
- /* #define HISX */     /* Bull Unix for XPS Machines */
-@@ -101,7 +101,7 @@
-  * If you want the static parts of your playground on a read-only file
-  * system, define VAR_PLAYGROUND to be where the variable parts are kept.
-  */
--/* #define VAR_PLAYGROUND "/var/lib/games/nethack" */
-+#define VAR_PLAYGROUND "/var/games/nethack"
- 
- /*
-  * Define DEF_PAGER as your default pager, e.g. "/bin/cat" or "/usr/ucb/more"
-@@ -128,7 +128,7 @@
+diff -ru '--color=auto' nethack-3.6.2.orig/include/unixconf.h nethack-3.6.2/include/unixconf.h
+--- nethack-3.6.2.orig/include/unixconf.h	2019-10-14 15:43:52.238276427 -0400
++++ nethack-3.6.2/include/unixconf.h	2019-10-14 16:26:55.257097257 -0400
+@@ -133,7 +133,7 @@
   * "extra output" method is used, but not all systems provide access to
   * a fine-grained timer.
   */
 -/* #define TIMED_DELAY */ /* usleep() */
 +#define TIMED_DELAY /* usleep() */
  #endif
- 
- /*
-diff -ru nethack-3.6.0.orig/src/invent.c nethack-3.6.0/src/invent.c
---- nethack-3.6.0.orig/src/invent.c	2015-11-16 06:05:29.000000000 +0100
-+++ nethack-3.6.0/src/invent.c	2016-05-12 23:03:28.134734406 +0200
-@@ -2813,6 +2813,7 @@
+ #if defined(MACOSX) && !defined(TIMED_DELAY)
+ #define TIMED_DELAY
+diff -ru '--color=auto' nethack-3.6.2.orig/src/invent.c nethack-3.6.2/src/invent.c
+--- nethack-3.6.2.orig/src/invent.c	2019-10-14 15:43:52.238276427 -0400
++++ nethack-3.6.2/src/invent.c	2019-10-14 16:26:55.257097257 -0400
+@@ -3483,6 +3483,7 @@
                  picked_some ? "Other things" : "Things",
                  Blind ? "you feel" : "are");
          putstr(tmpwin, 0, buf);
@@ -112,21 +94,21 @@ diff -ru nethack-3.6.0.orig/src/invent.c nethack-3.6.0/src/invent.c
          for (; otmp; otmp = otmp->nexthere) {
              if (otmp->otyp == CORPSE && will_feel_cockatrice(otmp, FALSE)) {
                  felt_cockatrice = TRUE;
-diff -ru nethack-3.6.0.orig/sys/unix/Makefile.src nethack-3.6.0/sys/unix/Makefile.src
---- nethack-3.6.0.orig/sys/unix/Makefile.src	2015-11-12 08:51:56.000000000 +0100
-+++ nethack-3.6.0/sys/unix/Makefile.src	2016-05-08 21:22:05.518161366 +0200
-@@ -222,8 +222,8 @@
- 
+diff -ru '--color=auto' nethack-3.6.2.orig/sys/unix/Makefile.src nethack-3.6.2/sys/unix/Makefile.src
+--- nethack-3.6.2.orig/sys/unix/Makefile.src	2019-10-14 15:43:52.244943040 -0400
++++ nethack-3.6.2/sys/unix/Makefile.src	2019-10-14 16:27:31.580193016 -0400
+@@ -267,8 +267,8 @@
+ #WINBEOBJ = winbe.o NHWindow.o NHMenuWindow.o NHMapWindow.o tile.o
  #
  #
 -#WINSRC = $(WINTTYSRC)
 -#WINOBJ = $(WINTTYOBJ)
-+WINSRC = $(WINTTYSRC) $(WINX11SRC) 
-+WINOBJ = $(WINTTYOBJ) $(WINX11OBJ) 
- 
- # on some systems the termcap library is in -ltermcap or -lcurses
- # on 386 Xenix, the -ltermlib tputs() seems not to work; use -lcurses instead
-@@ -238,14 +238,14 @@
++WINSRC = $(WINTTYSRC) $(WINX11SRC)
++WINOBJ = $(WINTTYOBJ) $(WINX11OBJ)
+ #
+ # Curses - Karl Garrison, Tangles
+ #WINSRC = $(WINCURSESSRC)
+@@ -287,14 +287,14 @@
  # WINTTYLIB = -ltermcap
  # WINTTYLIB = -lcurses
  # WINTTYLIB = -lcurses16
@@ -136,27 +118,26 @@ diff -ru nethack-3.6.0.orig/sys/unix/Makefile.src nethack-3.6.0/sys/unix/Makefil
  #
  # libraries for X11
  # If USE_XPM is defined in config.h, you will also need -lXpm here.
--WINX11LIB = -lXaw -lXmu -lXext -lXt -lX11
-+# WINX11LIB = -lXaw -lXmu -lXext -lXt -lX11
+ #WINX11LIB = -lXaw -lXmu -lXext -lXt -lX11
  # WINX11LIB = -lXaw -lXmu -lXt -lX11
 -# WINX11LIB = -lXaw -lXmu -lXext -lXt -lXpm -lX11 -lm
 +WINX11LIB = -lXaw -lXmu -lXext -lXt -lXpm -lX11 -lm
  # WINX11LIB = -lXaw -lXmu -lXpm -lXext -lXt -lX11 -lSM -lICE -lm # BSD/OS 2.0
  #
- # libraries for Qt
-@@ -263,7 +263,7 @@
- # libraries for BeOS 
- WINBELIB = -lbe
- 
+ #
+@@ -327,7 +327,7 @@
+ # same as above, for XCurses
+ #WINCURSESLIB = -L/usr/local/lib/pdcurses -lXCurses -lXawM -lXmu -lXext -lXt -lX11
+ #
 -#WINLIB = $(WINTTYLIB)
 +WINLIB = $(WINTTYLIB) $(WINX11LIB)
- 
- # any other strange libraries your system needs (for Sysunix only -- the more
- # specialized targets should already be right)
-diff -ru nethack-3.6.0.orig/sys/unix/Makefile.top nethack-3.6.0/sys/unix/Makefile.top
---- nethack-3.6.0.orig/sys/unix/Makefile.top	2015-11-18 21:54:59.000000000 +0100
-+++ nethack-3.6.0/sys/unix/Makefile.top	2016-05-08 21:44:50.649427698 +0200
-@@ -20,17 +20,17 @@
+ #
+ # For Curses
+ #WINLIB = $(WINCURSESLIB)
+diff -ru '--color=auto' nethack-3.6.2.orig/sys/unix/Makefile.top nethack-3.6.2/sys/unix/Makefile.top
+--- nethack-3.6.2.orig/sys/unix/Makefile.top	2019-10-14 15:43:52.244943040 -0400
++++ nethack-3.6.2/sys/unix/Makefile.top	2019-10-14 16:26:55.257097257 -0400
+@@ -22,16 +22,16 @@
  #PREFIX	 = /usr
  GAME     = nethack
  # GAME     = nethack.prg
@@ -167,47 +148,22 @@ diff -ru nethack-3.6.0.orig/sys/unix/Makefile.top nethack-3.6.0/sys/unix/Makefil
  
  # Permissions - some places use setgid instead of setuid, for instance
  # See also the option "SECURE" in include/config.h
--#GAMEPERM = 04755
-+GAMEPERM = 04755
- FILEPERM = 0644
--# VARFILEPERM = 0644
-+VARFILEPERM = 0644
+ #GAMEPERM = 04755
+-FILEPERM = 0644
++FILEPERM = 0664
+ # VARFILEPERM = 0644
  EXEPERM  = 0755
- DIRPERM  = 0755
--# VARDIRPERM = 0755
-+VARDIRPERM = 0755
+-DIRPERM  = 0755
++DIRPERM  = 0775
+ # VARDIRPERM = 0755
  
  # VARDIR may also appear in unixconf.h as "VAR_PLAYGROUND" else HACKDIR
- #
-@@ -39,15 +39,16 @@
- # therefore there should not be anything in HACKDIR that you want to keep
- # (if there is, you'll have to do the installation by hand or modify the
- # instructions)
--#HACKDIR  = $(PREFIX)/games/lib/$(GAME)dir
--#VARDIR  = $(HACKDIR)
-+HACKDIR  = $(PREFIX)/games/$(GAME)
-+VARDIR  = "/var/games/nethack"
- # Where nethack.sh in installed.  If this is not defined, the wrapper is not used.
--#SHELLDIR = $(PREFIX)/games
-+SHELLDIR = $(PREFIX)/bin
-+INSTDIR = $(HACKDIR)
- 
+@@ -49,7 +49,7 @@
  # per discussion in Install.X11 and Install.Qt
  #VARDATND = 
- # VARDATND = x11tiles NetHack.ad pet_mark.xbm pilemark.xpm
--# VARDATND = x11tiles NetHack.ad pet_mark.xbm pilemark.xpm rip.xpm
+ # VARDATND = x11tiles NetHack.ad pet_mark.xbm pilemark.xbm
+-# VARDATND = x11tiles NetHack.ad pet_mark.xbm pilemark.xbm rip.xpm
 +VARDATND = x11tiles NetHack.ad pet_mark.xbm pilemark.xbm rip.xpm
  # for Atari/Gem
  # VARDATND = nh16.img title.img GEM_RSC.RSC rip.img
  # for BeOS
-@@ -69,8 +70,8 @@
- # other permission-related reasons.  If that happens, you may want to set the
- # command to "true", which is a no-op. Note that disabling chown or chgrp
- # will only work if setuid (or setgid) behavior is not desired or required.
--#CHOWN = chown
--#CHGRP = chgrp
-+CHOWN = chown
-+CHGRP = chgrp
- 
- #
- # end of configuration

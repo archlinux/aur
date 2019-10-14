@@ -3,7 +3,7 @@
 # Contributor: Jamie <dyscoria@googlemail.com>
 
 pkgname=nethack-x11
-pkgver=3.6.0
+pkgver=3.6.2
 pkgrel=1
 pkgdesc='Single-player roguelike dungeon exploration game (X11 version)'
 arch=('x86_64' 'i686')
@@ -21,8 +21,8 @@ backup=('etc/nethackrc'
 source=("http://downloads.sourceforge.net/nethack/nethack-${pkgver//./}-src.tgz"
         'nethack-x11.patch'
         'nethack-x11.png::http://bugs.gentoo.org/attachment.cgi?id=86458')
-sha256sums=('1ade698d8458b8d87a4721444cb73f178c74ed1b6fde537c12000f8edf2cb18a'
-            'be227a980243dba79ffc2bf311462f7b7d369899253c89dbb1ada4bedb2a5017'
+sha256sums=('fbd00ada6a4ee347ecd4a350a5b2995b4b4ab5dcc63881b3bc4485b0479ddb1d'
+            '685d68cbbd2c9854b52d71e53ca2c73c95adef43b79e7d36b6c244dc86f796e5'
             'e1e0b059c617af04ee88bed4b03b73c02f022663e001c5485fe9900ca2d76295')
 
 prepare() {
@@ -49,7 +49,6 @@ prepare() {
   ####
 
   patch -Np1 -i ../nethack-x11.patch
-  sh sys/unix/setup.sh
 
   # Create /etc/nethackrc with OPTIONS=windowtype:X11
   setconf -a nethackrc OPTIONS 'windowtype:X11'
@@ -59,8 +58,9 @@ prepare() {
     's|export HACKDIR|NETHACKOPTIONS=\nexport NETHACKOPTIONS\nexport HACKDIR|' \
     sys/unix/nethack.sh
 
-  # Set HACKDIR
-  setconf sys/unix/nethack.sh HACKDIR '/usr/games/nethack'
+  # Set HACKDIR and HACK
+  setconf sys/unix/nethack.sh HACKDIR '/var/games/nethack/'
+  setconf sys/unix/nethack.sh HACK '/usr/lib/nethack/nethack'
 
   # Set NETHACKOPTIONS
   setconf sys/unix/nethack.sh NETHACKOPTIONS '@/etc/nethackrc'
@@ -69,30 +69,43 @@ prepare() {
   sed 's/variable/fixed/' -i win/X11/NetHack.ad
   sed 's/nh10/fixed/' -i win/X11/NetHack.ad
   sed 's/!NetHack.tile_file/NetHack.tile_file/' -i win/X11/NetHack.ad
+
+  # From community/nethack
+  sed -e '/^HACKDIR/ s|/games/lib/\$(GAME)dir|/var/games/nethack/|' \
+      -e '/^SHELLDIR/ s|/games|/usr/bin|' \
+      -e '/^VARDIRPERM/ s|0755|0775|' \
+      -e '/^VARFILEPERM/ s|0600|0664|' \
+      -e '/^GAMEPERM/ s|0755|02755|' \
+      -e '/CURSES_GRAPHICS/ s|^|#|' \
+      -e 's|\(DSYSCF_FILE=\)\\"[^"]*\\"|\1\\"/var/games/nethack/sysconf\\"|' \
+      -e 's|\(DHACKDIR=\)\\"[^"]*\\"|\1\\"/var/games/nethack/\\"|' -i sys/unix/hints/linux
+
+  sed -e "/^MANDIR\s*=/s|/usr/man/man6|$pkgdir/usr/share/man/man6|" -i sys/unix/Makefile.doc
 }
 
 build() {
-  cd "nethack-$pkgver"
-
-  export CC="gcc"
-  export CFLAGS='-I../include -O2 -fomit-frame-pointer -w'
-  export LFLAGS="-L/usr/lib -L/usr/lib/X11 -Xlinker -soname=_APP_"
-  export LINK="gcc"
-
-  # MAXIMUM HACK-FORCE, ENGAGED!
-  sh -c "make all -j1"
+  cd "nethack-$pkgver/sys/unix"
+  sh setup.sh hints/linux
+  
+  cd ../..
+  make
 }
 
 package() {
   cd "nethack-$pkgver"
 
-  install -d "$pkgdir/var/games/nethack"
-  export CFLAGS="-I../include -O2 -fomit-frame-pointer"
-  setconf Makefile VARDIR "$pkgdir/var/games/nethack"
-  echo -e "install:\n\ttrue" > src/Makefile
-  make -k PREFIX=$pkgdir/usr install
+  install -dm755 $pkgdir/usr/share/{man/man6,doc/nethack}
+  install -dm775 $pkgdir/var/games/
+  make PREFIX=$pkgdir -j1 install manpages # Multi-threaded builds fail.
+  
+  install -dm755 $pkgdir/usr/lib/nethack
+  mv $pkgdir/var/games/nethack/{nethack,recover} $pkgdir/usr/lib/nethack/
+
+  chown -R root:games $pkgdir/var/games/
+  chown root:games $pkgdir/usr/lib/nethack/nethack
+
   install -Dm644 nethackrc "$pkgdir/etc/nethackrc"
-  install -Dm644 dat/license "$pkgdir/usr/share/licenses/$pkgname/license"
+  install -Dm644 dat/license "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 win/X11/nethack.rc "$pkgdir/usr/share/doc/$pkgname/nethackrc"
   install -Dm644 doc/Guidebook.txt "$pkgdir/usr/share/doc/$pkgname/Guidebook.txt"
   install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
