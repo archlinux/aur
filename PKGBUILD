@@ -1,4 +1,5 @@
-# Maintainer: fs4000 <matthias_dienstbier[at]yahoo[dot]de>
+# Maintainer: Ken Miller <kenneth.millr@gmail.com>
+# Contributor: fs4000 <matthias_dienstbier[at]yahoo[dot]de>
 
 pkgname=libchipcard
 pkgver=5.0.4
