@@ -3,11 +3,11 @@
 _pkgname=pullcord
 pkgname=$_pkgname-git
 pkgver=r117.6526a7c
-pkgrel=1
+pkgrel=2
 pkgdesc="Discord archiver - git version"
 arch=('x86_64')
 url="https://github.com/tsudoko/$_pkgname"
-license=('custom:Unlicense')
+license=('Unlicense')
 makedepends=('git' 'go' 'golang-github-gorilla-websocket' 'golang-golang-x-crypto')
 provides=('pullcord')
 conflicts=('pullcord')
@@ -47,5 +47,4 @@ build() {
 package() {
   cd "$_pkgname"
   install -Dm755 pullcord "$pkgdir/usr/bin/pullcord"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
