@@ -1,7 +1,7 @@
 # Maintainer: Erhad Husovic <xdaemonx@protonmail.ch>
 
 pkgname=qvault
-pkgver=0.2.10
+pkgver=0.2.11
 pkgrel=1
 pkgdesc="An open source, fully transparent and extremely secure password manager"
 arch=('any')
@@ -13,7 +13,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Q-Vault/qvault/archive/
 	'qvault.desktop'
 	'qvault'
 	)
-sha256sums=('2d56dc5920e378c00dfe0d34a4c7df59e99ce05ef6616aca9470dcec70d94827'
+sha256sums=('e4281ec68cf8c4717119661fb2e44c7c3dbd62f130616eca79e0f7fa57934642'
 	'SKIP'
 	'SKIP')
 
