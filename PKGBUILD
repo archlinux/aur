@@ -1,24 +1,24 @@
-# Maintainer: Xavier Devlamynck <magicrhesus@ouranos.be>
+# Maintainer: Andrew Sun <adsun701 at gmail dot com>
+# Contributor: Xavier Devlamynck <magicrhesus at ouranos dot be>
 
 pkgname=sipgrep
-pkgver=2.0.0
-pkgrel=2
+pkgver=2.1.0
+pkgrel=1
 pkgdesc="Display and Troubleshoot SIP signaling over IP networks in console"
 arch=('i686' 'x86_64')
-url="http://www.sipcapture.org/"
+url="https://www.sipcapture.org/"
 license=('GPL3')
 depends=('pcre' 'libpcap')
-source=(https://github.com/sipcapture/sipgrep/archive/${pkgver}.tar.gz)
-sha256sums=('35b75ff94a27994004fb71e5668480d54236573905938f1f8ea726ad03978ef4')
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/sipcapture/sipgrep/archive/${pkgver}.tar.gz")
+sha256sums=('72ac17c734c404125ee20d552edf64f7a02bfa5d39fc70f2fd8fe944fdf1e632')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  ./build.sh
-  ./configure
+  ./configure --prefix=/usr --enable-ipv6
   make
 }
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  install -D -m0755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  make DESTDIR="${pkgdir}" install
 }
