@@ -1,13 +1,13 @@
 pkgbase = ffxvid
 	pkgdesc = a small yet quite capable shell script for encoding video files to the MPEG4 Part 2/Xvid video format using ffmpeg.
-	pkgver = 1.4.2
+	pkgver = 1.4.3
 	pkgrel = 1
 	url = https://ffxvid.teambelgium.net/
 	arch = any
 	license = GPL2
 	depends = ffmpeg
-	source = https://downloads.sourceforge.net/project/ffxvid/ffxvid-1.4.2.tar.gz
-	sha256sums = 9d30c1ba0cacca4cd6c4e17232baacf8092490ac133a6777ab427b8216efc0e6
+	source = https://downloads.sourceforge.net/project/ffxvid/ffxvid-1.4.3.tar.gz
+	sha256sums = 42e1bdd4695e32f51cfb333d5dbae546f6b00fd514d02820053d6e9470b5b89f
 
 pkgname = ffxvid
 
