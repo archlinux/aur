@@ -31,7 +31,7 @@ depends=(
 source=(
     # TODO: Add the package version here to the saved file name too!
     # Official mod launcher download for the current release.
-    "$pkgname.zip::https://cdn.donutteam.com/Downloads/Tools/\
+    "$pkgname-${pkgver}.zip::https://cdn.donutteam.com/Downloads/Tools/\
 Lucas'%20Simpsons%20Hit%20&%20Run%20Mod%20Launcher%20${pkgver}.zip"
     # Unofficial mod launcher Linux launcher download for the latest master branch.
     # TODO: release these in lockstep with the launcher?
