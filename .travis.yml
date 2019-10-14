@@ -23,7 +23,7 @@ archlinux:
   - ~/.pkg-cache:/var/cache/pacman/pkg
   - ~/.cache/yay:~/.cache/yay
   repos:
-  - bartus=https://github.com/bartoszek/AUR-repo/raw/master
+# - bartus=https://github.com/bartoszek/AUR-repo/raw/master
   packages:
   - ccache
   - ccache-ext
@@ -34,9 +34,6 @@ archlinux:
   - flann
   - coin-or-lemon
   - ceres-solver
-  - geogram
-  - popsift
-  - uncertainty-framework 
   before_install:
 # 1.Override `package-cleanup.hook` to preserve cache for travis.
 # 2.Enable ccache
@@ -55,24 +52,27 @@ archlinux:
   - |
      [ "$TRAVIS" == "true" ] && TRAVIS=1 || TRAVIS=0
 # Build
-# - ccache -C;exit 1
-  - ccache -s
-  - ccache -z
-  - 'echo "Travis initialization time:      $travis_uptime"'
+  - 'echo "Travis initialization time:      $travis_uptime seconds"'
   - "arch_uptime=$(cut -d' ' -f1 /proc/uptime|cut -d'.' -f1)"
   - 'echo "Arch-Travis initialization time: $((arch_uptime-travis_uptime)) seconds"'
-  - timeout $((50*60-arch_uptime-travis_uptime-60)) makepkg -s --noconfirm > >(ts -s '%.T'); _makepkg_return=$?
+  - ccache -s
+  - ccache -z
+# set timeout to 50m minus current uptime, minus travis cache in time, minus 60 second buffer for arch-travis cleanup.
+  - timeout $((50*60-arch_uptime-cache_out_time-60)) yay -S --noconfirm geogram popsift uncertainty-framework > >(ts -s '%.T')
+  - "arch_uptime=$(cut -d' ' -f1 /proc/uptime|cut -d'.' -f1)"
+  - timeout $((50*60-arch_uptime-cache_out_time-60)) makepkg -s --noconfirm > >(ts -s '%.T'); _makepkg_return=$?
   - sudo pacman -Sc --noconfirm
   - ccache -s
   - ccache -z
   - exit $_makepkg_return
 script:
-#- "curl -s https://raw.githubusercontent.com/bartoszek/arch-travis/base64-encode/arch-travis.sh| timeout 40m bash > >(ts| ts -r '[%M:%.S]') 2>&1"
 - export CCACHE_MAXSIZE=2G
 - "export travis_uptime=$(cut -d' ' -f1 /proc/uptime|cut -d'.' -f1)"
 - 'echo "Travis initialization time: $travis_uptime seconds"'
 # assume caching out will take the same amount of time as caching in those making build time equal to 50 minutes minus two time current uptime.
-- "curl -s https://raw.githubusercontent.com/bartoszek/arch-travis/master/arch-travis.sh| timeout $((50*60-2*travis_uptime)) bash"
+# detect no cache in and assume 5min cache out time.
+- "[ $travis_uptime -le 60 ] && export cache_out_time=300 || export cache_out_time=$travis_uptime"
+- "curl -s https://raw.githubusercontent.com/bartoszek/arch-travis/master/arch-travis.sh| timeout $((50*60-travis_uptime-cache_out_time)) bash"
 - "echo pacman pkg cache size: $(du -h ~/.pkg-cache|cut -f1) in $(ls ~/.pkg-cache|wc -l) files"
 
 #deploy:
