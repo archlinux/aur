@@ -3,12 +3,11 @@ pkgbase = pureref
 	pkgver = 1.9.2
 	pkgrel = 1
 	url = http://www.pureref.com
-	install = pureref.install
 	arch = x86_64
 	makedepends = curl
 	options = !strip
 	options = !emptydirs
-	source = pureref-1.9.2.deb::https://www.pureref.com/files/installer.php?build=UNIX64.deb&downloadKey=BLZOr4abAghr5HxTbOtsVg%3D%3D
+	source = pureref-1.9.2.deb::https://www.pureref.com/files/installer.php?build=UNIX64.deb&downloadKey=x4Nd8vGBO1TSQI%2BzlaguiA%3D%3D
 	sha512sums = 225c94dd06841222e6cef0806056b38a7f6ba2f29a719f5a886230cd51bcf227dd43a90f1e7d7c8da81327ef76f038364cf05c65edc0e1e57d132e4a7baa0a6d
 
 pkgname = pureref
