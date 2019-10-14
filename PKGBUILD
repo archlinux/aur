@@ -2,12 +2,12 @@
 pkgname=nvidia-system-monitor-git
 _pkgname=nvidia-system-monitor
 pkgver=v1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Task Manager for Linux for Nvidia graphics cards"
 arch=('x86_64')
 url="https://github.com/congard/${_pkgname}"
 license=('MIT')
-depends=('nvidia-utils' 'wxgtk3')
+depends=('nvidia-utils' 'wxgtk3' 'which')
 makedepends=('wxgtk2')
 source=("${_pkgname}::git+https://github.com/congard/${_pkgname}.git" "${_pkgname}.desktop")
 md5sums=('SKIP' 'SKIP')
