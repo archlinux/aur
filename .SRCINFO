@@ -1,7 +1,7 @@
 pkgbase = ida-pro
 	pkgdesc = Hex-Rays IDA Pro {pkgver}
 	pkgver = 7.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.hex-rays.com/products/ida/7.3/index.shtml
 	arch = x86_64
 	license = custom
