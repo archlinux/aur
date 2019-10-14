@@ -3,7 +3,7 @@
 # Contributor: Andrew Stubbs <andrew dot stubbs at gmail dot com>
 
 pkgname=etcher-bin
-pkgver=1.5.58
+pkgver=1.5.59
 pkgrel=1
 pkgdesc="Flash OS images to SD cards & USB drives, safely and easily"
 arch=("x86_64")
@@ -16,7 +16,7 @@ optdepends=("libnotify: for notifications"
             "speech-dispatcher: for text-to-speech")
 source=("https://github.com/balena-io/${pkgname%-bin}/releases/download/v${pkgver}/balena-${pkgname%-bin}-electron_${pkgver}_amd64.deb")
 options=("!strip")
-sha256sums=("2156355c6141bb56bdb6b80d145053477d9bee5d500dceff7f428b944b391ec8")
+sha256sums=("ffb52473a8ac2fdc8afe7c8443bd9254ea8e1cb3c84757ab06f87ab7cfd9357d")
 
 build() {
   mkdir -p "${srcdir}/output"
