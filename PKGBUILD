@@ -1,7 +1,7 @@
 # Maintainer: Aaron McDaniel (mcd1992) <'aur' at the domain 'fgthou.se'>
 
 pkgname=python-pwntools-git
-pkgver=3.13.0beta0.r199.gb0e1ce33
+pkgver=3.13.0beta0.r226.gfb117841
 pkgrel=1
 pkgdesc='A CTF framework and exploit development library. (git branch dev3)'
 url='https://github.com/Gallopsled/pwntools'
@@ -11,7 +11,7 @@ makedepends=('make')
 depends=('python' 'python-intervaltree' 'python-pyelftools' 'python-tox' 'python-mako'
          'python-unicorn' 'python-psutil' 'python-dateutil' 'python-pysocks' 'python-pygments'
          'python-pip' 'python-pyserial' 'python-paramiko' 'ropgadget' 'python-capstone'
-         'python-requests' 'python-psutil' 'python-pypandoc' 'python-packaging')
+         'python-requests' 'python-psutil' 'python-packaging')
 optdepends=('gdb: binary debugging')
 source=("${pkgname}::git+https://github.com/Gallopsled/pwntools.git#branch=dev3")
 sha256sums=('SKIP')
