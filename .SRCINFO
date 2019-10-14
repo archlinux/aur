@@ -1,0 +1,16 @@
+pkgbase = python-od
+	pkgdesc = Shorthand syntax for building OrderedDicts
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/epsy/od/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	provides = python-od
+	conflicts = python-od
+	source = https://files.pythonhosted.org/packages/source/o/od/od-1.0.tar.gz
+	sha256sums = d1c94cd3af5fdb13ca27c4d3e1601c77028f36bbba9e78c324daf0c1ac06e3ab
+
+pkgname = python-od
+
