@@ -5,7 +5,7 @@
 
 pkgname=gnurobbo
 pkgver=0.68
-pkgrel=2
+pkgrel=3
 pkgdesc="A reimplementation of Janusz Pelc's Robbo, originally for the Atari XE/XL"
 arch=('i686' 'x86_64')
 url="http://gnurobbo.sourceforge.net/"
@@ -22,6 +22,7 @@ build() {
   sed -e 's|#MUSIC=-DHAVE_MUSIC|MUSIC=-DHAVE_MUSIC|g' \
       -e 's|=-O3 -pipe -Wall -fomit-frame-pointer|+=|g' \
       -e 's|-lSDL_image|-lm -lSDL_image|g' \
+      -e 's|\-d||g' \
 	    -i Makefile
 
   sed '/#define DEBUG_DUMP_VM_USAGE/d' -i game.c
