@@ -35,7 +35,7 @@ index 301db0d..9677e7c 100644
  }
 --- /dev/null	2019-10-12 21:52:32.461829196 +0200
 +++ b/node_modules/electron-media-service/src/linux/index.js	2019-10-12 22:23:11.969848536 +0200
-@@ -0,0 +1,96 @@
+@@ -0,0 +1,97 @@
 +const { EventEmitter } = require('events');
 +const mpris = require('mpris-service');
 +
@@ -113,7 +113,8 @@ index 301db0d..9677e7c 100644
 +                'mpris:trackid': this.player.objectPath('track/0'),
 +                'xesam:title': title ,
 +                'xesam:album': album,
-+                'xesam:artist': [ artist ]
++                'xesam:artist': [ artist ],
++                'mpris:artUrl': albumArt
 +            }
 +        }
 +
