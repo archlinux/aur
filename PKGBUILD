@@ -2,7 +2,7 @@
 
 _reponame=brave-browser
 pkgname=brave
-pkgver=0.69.132
+pkgver=0.69.135
 pkgrel=1
 pkgdesc='A web browser that stops ads and trackers by default'
 arch=('x86_64')
@@ -25,7 +25,7 @@ source=("git+https://github.com/brave/brave-browser.git#tag=v${pkgver}"
         'brave-launcher'
         'brave-browser.desktop')
 sha256sums=('SKIP'
-            '333b1e0997ad8831906f66550efc73f51b8650ec3436a247d920b5d12e2169de'
+            '7496762a1953b15a48d3e5503fb76d9835940afd850a45b7de976de9f51479f9'
             'd081f2ef8793544685aad35dea75a7e6264a2cb987ff3541e6377f4a3650a28b'
             '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1'
             '33a5bcd1df2cc7aa7467fa882790ef143a4497d2b704c9e1ea86c8ede90c2d90'
