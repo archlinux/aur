@@ -2,7 +2,7 @@
 # Contributer: ArielAxionL <i at axionl dot me>
 pkgname=qv2ray-dev-git
 pkgver=1.3.8.0.r0.g4179cf2
-pkgrel=1
+pkgrel=2
 pkgdesc="Qt cross platform v2ray GUI client (Dev branch build release)"
 arch=('x86_64')
 url="https://github.com/lhy0403/Qv2ray"
@@ -16,7 +16,7 @@ source=("${pkgname}::git+https://github.com/lhy0403/Qv2ray#branch=dev"
         "0001-build_for_archlinux.patch")
 
 sha512sums=('SKIP'
-            'cc07b885e5f2885b28ba1c4401421f676b7808054367b8ac053e023782d496511776c8abf7aeaccba6603abd1046efbb222e59f1ec88306255623ff6744e4f84')
+            'a25cc3eea393a83ed300a99dad06e23b83f31e5faa59ccda0594396b59a85b7106063f68c10a8a2f57e07b1683b7980217b6e8f37922018e2acf2d4a894ebb25')
 
 pkgver() {
     cd ${pkgname}
