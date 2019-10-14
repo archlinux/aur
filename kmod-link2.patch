@@ -1,0 +1,44 @@
+--- a/setup/Linux/oss/build/Makefile.tmpl
++++ b/setup/Linux/oss/build/Makefile.tmpl
+@@ -5,6 +5,7 @@ EXTRA_CFLAGS += -I${OSSLIBDIR}/include/internals -I${OSSLIBDIR}/include/sys
+ ifneq ($(KERNELRELEASE),)
+ 
+ 	obj-m := MODNAME.o
++	MODNAME-objs := MODNAME_wrapper.o MODNAME_mainline.o
+ 
+ else
+ 
+--- a/setup/Linux/oss/build/install.sh
++++ b/setup/Linux/oss/build/install.sh
+@@ -228,10 +228,11 @@ do
+ 	N=`basename $n .o`
+ 	echo Building module $N 
+ 
+-	rm -f $N_mainline.o Makefile
++	rm -f $N\_mainline.o  $N\_wrapper.c Makefile
+ 
+-	sed "s/MODNAME/$N/" < Makefile.tmpl > Makefile
+-	ln -s $n $N_mainline.o
++	sed "s/MODNAME/$N/g" < Makefile.tmpl > Makefile
++	ln -s $N.c $N\_wrapper.c
++	ln -s $n $N\_mainline.o
+ 
+ 	if ! make KERNELDIR=$KERNELDIR > build.list 2>&1
+ 	then
+@@ -240,13 +241,9 @@ do
+ 		exit 4
+ 	fi
+ 
+-	if ! $LD -r $N.ko $N_mainline.o -o /lib/modules/$UNAME/kernel/oss/$N.ko
+-	then
+-		echo Linking $N module failed
+-		exit 6
+-	fi
+-
+-	rm -f $N_mainline.o
++	cp -f $N.ko /lib/modules/$UNAME/kernel/oss/
++        rm -f $N\_mainline.o
++        rm -f $N\_wrapper.c
+ 	make clean
+ done 
+ 

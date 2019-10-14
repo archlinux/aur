@@ -26,6 +26,7 @@ source=(oss::git://git.code.sourceforge.net/p/opensound/git
         rm-init-scripts.patch
         soundon.patch
         kmod-link.patch
+        kmod-link2.patch
         ossvermagic.patch)
 sha512sums=('SKIP'
             '5599f75ac2784aca7d0367e88705938d2680e7a0eb7ae7300080e3fc0ea0c9d3b183554a9e208ed8359f675028024e8de62baa5f8dbc79e9f3bd942db6aa6157'
@@ -36,6 +37,7 @@ sha512sums=('SKIP'
             '64e6d9d8eb5320f737d3a0698a245da2b2d141b68cfb2f02e448144d1c610aa8b8a6c38b56fcca364d63171a49afe93161a00545cdb90086b5328997b3096690'
             'a8196aeea43499f4822bad6adc8c7f8721eb122045732ab34bb675182a1c4403c3f4a30ead85188fdaec77ee79a5097dd8de84782f8915db4061157474b5c7c6'
             'f73b837643c7b86c5ce3a2ff18a66b99166d16ac7d1ac3d419b203efd8d398d8c4b21c304d6fa1c038ebf180ca0620d6517be384b307bb66e84a15b0339800df'
+           '6cefeca6921916d2fbf7c4efd354d3c0b7f7285c6d049912bd318f0b520698a2de2a974604a56a7b288636939773ef49f022962bb88f9e3b5ea442462a50de1b'
             'eec0608d82d5bec305b374d9cb62d70860d7be833f87f563a828c44b2dd67754cb27716194d2ea2707391d1257ba1b4b7b5cdf513d618dfd877a065999baa4ad')
 
 pkgver() {
@@ -80,6 +82,7 @@ prepare() {
 
   # FS#35672
   mv oss/build/{osscore.c,osscore_wrapper.c}
+  patch -p3 < "$srcdir/kmod-link2.patch"
   patch -p2 < "$srcdir/kmod-link.patch"
   cd ../..
 }
