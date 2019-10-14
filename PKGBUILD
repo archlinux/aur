@@ -1,5 +1,5 @@
 pkgname=studioarch-utils
-pkgver=2.1.1
+pkgver=2.2
 pkgrel=1
 pkgdesc="Studio Arch Utilities (Arch Linux)"
 arch=('x86_64')
