@@ -1,7 +1,7 @@
 # Maintainer: Danilo Bargen <aur at dbrgn dot ch>
 pkgname=tezos-mainnet-git
 _name=tezos
-pkgver=r2556.d06e9b1b
+pkgver=r3797.a67ca32c6
 pkgrel=1
 pkgdesc="Tezos is a distributed consensus platform with meta-consensus capability."
 arch=('x86_64' 'i686')
@@ -28,6 +28,7 @@ sha256sums=(
 
 prepare() {
   cd "$srcdir/$_name"
+  opam init --bare -n --disable-sandboxing
   make build-deps
 }
 
