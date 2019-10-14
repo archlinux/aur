@@ -12,8 +12,8 @@
 
 pkgname=mesa-aco-git
 pkgdesc="Mesa with the ACO compiler patchset, git version"
-pkgver=19.3.0_devel.20191004.6c3bad5214b
-pkgrel=5
+pkgver=19.3.0_devel.20191010.1b2cbc98c39
+pkgrel=6
 arch=('x86_64')
 makedepends=('git' 'python-mako' 'xorgproto'
               'libxml2' 'libx11'  'libvdpau' 'libva' 'elfutils' 'libomxil-bellagio' 'libxrandr'
@@ -52,8 +52,8 @@ sha512sums=('SKIP'
 
 # Users of alternative llvm packages may need to tweak the hard version dependency here, which ensures this package is
 # rebuilt if the underlying llvm updates.
-makedepends+=('llvm>=8.0.0' 'llvm<8.1' 'clang>=8.0.0' 'clang<8.1')
-depends+=('llvm-libs>=8.0.0' 'llvm-libs<8.1')
+makedepends+=('llvm>=9.0.0' 'llvm<9.1' 'clang>=9.0.0' 'clang<9.1')
+depends+=('llvm-libs>=9.0.0' 'llvm-libs<9.1')
 
 # LLVM NOTE: The upstream mesa-git package provides these alternative suggestions.  Really, these packages should all
 #            have the necessary provides to make selecting these manually here unnecessary, and we've disabled them
