@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="http://www.libchipcard.de/"
 license=('GPL2')
 depends=('gwenhywfar' 'pcsclite')
-source=("$pkgname-$pkgver.tar.gz::http://www.aquamaniac.de/sites/download/download.php?package=02&release=200&file=01&dummy=$pkgname-$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://www.aquamaniac.de/rdm/attachments/download/158/$pkgname-$pkgver.tar.gz")
 sha256sums=('d25a79adcf09f1058ca9168b80e843fadbd556fb0f23c890d871124ad380423a')
 
 build() {
