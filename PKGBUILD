@@ -22,7 +22,7 @@ pkgname=(
   "$pkgbase" kodi-bin-devel kodi-wayland-devel kodi-gbm-devel
   kodi-eventclients-devel kodi-tools-texturepacker-devel kodi-dev-devel
 )
-pkgver=18.5pre19
+pkgver=18.5pre21
 _major=18.4
 pkgrel=1
 arch=('x86_64')
@@ -34,11 +34,11 @@ makedepends=(
   'libbluray' 'libcdio' 'libcec' 'libgl' 'mariadb-libs' 'libmicrohttpd'
   'libmodplug' 'libmpeg2' 'libnfs' 'libplist' 'libpulse' 'libva'
   'libvdpau' 'libxrandr' 'libxslt' 'lirc' 'lzo' 'mesa' 'nasm'
-  'python2-pycryptodome' 'python2-pillow' 'python2-pybluez' 'python2-simplejson'
+  'python2-pycryptodomex' 'python2-pillow' 'python2-pybluez' 'python2-simplejson'
   'shairplay' 'smbclient' 'taglib' 'tinyxml' 'swig'
   'upower' 'giflib' 'rapidjson' 'ghostscript' 'git'
   # wayland
-  'wayland-protocols' 'waylandpp'
+  'wayland-protocols' 'waylandpp-git'
   # gbm
   'libinput' 'libxkbcommon'
 )
@@ -97,6 +97,8 @@ source=(
   017-PR16750.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16750.patch
   018-PR16751.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16751.patch
   019-PR16609.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16609.patch
+  020-PR16725.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16725.patch
+  021-PR16628.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16628.patch
 )
 noextract=(
   "libdvdcss-$_libdvdcss_version.tar.gz"
@@ -136,7 +138,9 @@ sha256sums=('bf2be186d8ae5b5377e43c06a538012bb9f51a0e98f8244b70a401006861d110'
             '46d137acd55e85d8e9eb494797d51f4643ab53282ba1660e966fcd33506aae49'
             'c19ddf56276c2c069d0a8e471526f1aaf61266c8e0e3db2c8298d813d859b246'
             '59005a91f5293dfe022b7f20cf3747a94031016235bf8c289fc3449ce88c6fe4'
-            'e4dda581d215fe766b03a1b041420e9f014ae102a63d49c68ce404f1d2711ec9')
+            'e4dda581d215fe766b03a1b041420e9f014ae102a63d49c68ce404f1d2711ec9'
+            '0eb079db9dc40c621dfb60cfb3d0d923a36ffa269fe9605c4a3fd575471fadd1'
+            '224748c4ef223237e396e4f847c8b8d642064c698c7001529545b76d5c745fcc')
 
 prepare() {
   # force python 'binary' as python2
@@ -266,7 +270,7 @@ build() {
 package_kodi-devel() {
   pkgdesc="Alpha, Beta, or RC versions of the software media player and entertainment hub for digital media"
   depends=(
-    'desktop-file-utils' 'hicolor-icon-theme' 'mesa' 'python2-pycryptodome'
+    'desktop-file-utils' 'hicolor-icon-theme' 'mesa' 'python2-pycryptodomex'
     'python2-pillow' 'python2-simplejson' 'xorg-xdpyinfo'
     'kodi-bin'
   )
@@ -336,7 +340,7 @@ package_kodi-wayland-devel() {
     'bluez-libs' 'curl' 'lcms2' 'libass' 'libbluray' 'libcdio' 'libcec'
     'libmicrohttpd' 'libnfs' 'libpulse' 'libva' 'libxkbcommon' 'libxslt'
     'lirc' 'mariadb-libs' 'python2' 'smbclient' 'taglib' 'tinyxml'
-    'waylandpp' "$pkgbase"
+    'waylandpp-git' "$pkgbase"
   )
 
   cd kodi-build-wayland
