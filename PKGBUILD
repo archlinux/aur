@@ -42,7 +42,7 @@ package() {
 
 	# the installer needlessly makes a lot of files executable
 	find "${pkgdir}"/opt/${pkgname} -type f -exec chmod -x {} \;
-	chmod +x "${pkgdir}"/opt/${pkgname}/{ida{,64},assistant}
+	chmod +x "${pkgdir}"/opt/${pkgname}/{ida{,64},assistant,qwingraph}
 
 	rm "${pkgdir}"/opt/${pkgname}/{uninstall*,Uninstall*}
 
