@@ -60,8 +60,8 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-mainline-bcachefs
-_srcver_tag=5.3
-pkgver=v5.3.2
+_srcver_tag=5.4
+pkgver=v5.4_rc3
 pkgrel=1
 arch=(x86_64)
 url="https://github.com/koverstreet/bcachefs"
@@ -87,7 +87,6 @@ _repo_upstream="https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git
 _pkgdesc_extra="~ featuring Kent Overstreet's bcachefs filesystem"
 
 source=(
-    "git+${_repo_url}"
     "git+${_repo_url_gcc_patch}"
     "upstream::git+${_repo_upstream}"
     config         # the main kernel config file
@@ -100,7 +99,6 @@ validpgpkeys=(
     '647F28654894E3BD457199BE38DBBDC86092693E'    # Greg Kroah-Hartman
 )
 sha512sums=('SKIP'
-            'SKIP'
             'SKIP'
             '50d550c97a61eea91139e24024a9b72d73bd36b6dbb213d10dec5b76f1baeb14ddf7aaa47473c0bb60fcbe2637134cc8e3ccb6e2b50df8a28e89527cb70b00f4'
             '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
@@ -119,26 +117,26 @@ pkgver() {
   git fetch --tags &> /dev/null
 
   _srcver_tag=$(git tag | grep v${_srcver_tag} | grep -v '-' | sort -t. -k 1,1n -k 2,2n -k 3,3n | tail -n1)
-# [ -z "$_srcver_tag" ] &&
-#   _srcver_tag=$(git tag | grep v${_srcver_tag} | grep '-' | tail -n1)
+  [ -z "$_srcver_tag" ] &&
+  _srcver_tag=$(git tag | grep v${_srcver_tag} | grep '-' | tail -n1)
   msg2 $_srcver_tag
   echo "${_srcver_tag}" | sed 's/-/_/'
 }
 
 actual_prepare() {
-  _srcver_tag=$(echo $pkgver | sed 's/_/-/')
 
   cd upstream
   git fetch --tags
-  cd ..
 
-  cd ${_reponame}
+  git remote add ${_reponame} ${_repo_url} || true
+  git fetch ${_reponame} master
+  git reset --hard ${_reponame}/master
+
+  _srcver_tag=$(echo $pkgver | sed 's/_/-/')
 
   export EDITOR=true
-  git remote add upstream ../upstream || true
-  git fetch --tags upstream
 
-  git rebase ${_srcver_tag}
+  git rebase origin/master
 
   msg2 "Setting version..."
   scripts/setlocalversion --save-scmversion
@@ -182,7 +180,7 @@ actual_prepare() {
 
 build() {
     ( actual_prepare )
-    cd ${_reponame}
+    cd upstream
     make bzImage modules
 }
 
@@ -202,7 +200,7 @@ _package() {
     local kernver="$(<version)"
     local modulesdir="$pkgdir/usr/lib/modules/$kernver"
 
-    cd ${_reponame}
+    cd upstream
 
     msg2 "Installing boot image..."
     # systemd expects to find the kernel here to allow hibernation
@@ -256,7 +254,7 @@ _package-headers() {
 
     local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
-    cd ${_reponame}
+    cd upstream
 
     msg2 "Installing build files..."
     install -Dt "$builddir" -m644 Makefile .config Module.symvers System.map vmlinux
@@ -341,7 +339,7 @@ _package-docs() {
 
     local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
-    cd ${_reponame}
+    cd upstream
 
     msg2 "Installing documentation..."
     mkdir -p "$builddir"

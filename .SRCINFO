@@ -1,5 +1,5 @@
 pkgbase = linux-mainline-bcachefs
-	pkgver = v5.3
+	pkgver = v5.4_rc3
 	pkgrel = 1
 	url = https://github.com/koverstreet/bcachefs
 	arch = x86_64
@@ -11,7 +11,6 @@ pkgbase = linux-mainline-bcachefs
 	makedepends = libelf
 	makedepends = git
 	options = !strip
-	source = git+https://github.com/nicman23/bcachefs
 	source = git+https://github.com/graysky2/kernel_gcc_patch
 	source = upstream::git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git
 	source = config
@@ -20,7 +19,6 @@ pkgbase = linux-mainline-bcachefs
 	source = linux.preset
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = 50d550c97a61eea91139e24024a9b72d73bd36b6dbb213d10dec5b76f1baeb14ddf7aaa47473c0bb60fcbe2637134cc8e3ccb6e2b50df8a28e89527cb70b00f4
@@ -41,6 +39,6 @@ pkgname = linux-mainline-bcachefs
 
 pkgname = linux-mainline-bcachefs-headers
 	pkgdesc = Header files and scripts for building modules for Linux-mainline-bcachefs kernel ~ featuring Kent Overstreet's bcachefs filesystem
-	provides = linux-bcachefs-git-headers=v5.3
-	provides = linux-headers=v5.3
+	provides = linux-bcachefs-git-headers=v5.4_rc3
+	provides = linux-headers=v5.4_rc3
 
