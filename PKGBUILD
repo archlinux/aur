@@ -18,9 +18,9 @@ sha256sums=("SKIP")
 pkgver() {
     cd dxvk
     git fetch --tags 1>2&
-    a=`git describe --tags`
-    git checkout $a 1>2&
+    a=`git tag | tail -n1`
     echo $a | sed 's/v//g'
+    git checkout $a 1>2&
 }
 
 build() {
