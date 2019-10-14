@@ -1,16 +1,15 @@
 pkgbase = docker-machine-driver-hetzner
 	pkgdesc = Hetzner driver for Docker Machine
-	pkgver = 1.2.2
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://github.com/JonasProgrammer/docker-machine-driver-hetzner
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = go
-	makedepends = git
 	depends = docker-machine
-	source = https://github.com/jonasprogrammer/docker-machine-driver-hetzner/archive/1.2.2.tar.gz
-	sha256sums = 326d70985d387f3b34a75e3c06cbf5af17e7d8cec0d6a1d3d018c28aaed7e454
+	source = https://github.com/JonasProgrammer/docker-machine-driver-hetzner/archive/2.0.1.tar.gz
+	md5sums = 5124dbee753546cdf1489d9e011b6a7d
 
 pkgname = docker-machine-driver-hetzner
 
