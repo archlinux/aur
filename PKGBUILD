@@ -3,7 +3,7 @@
 # Contributor: fabien Cellier <fabien.cellier@gmail.com>
 
 pkgname=pocl
-pkgver=1.3
+pkgver=1.4
 pkgrel=1
 pkgdesc="Portable OpenCL is an open-source implementation of OpenCL which can be easily adapted for new targets"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ license=('GPL')
 depends=('clang' 'hwloc' 'libltdl' 'opencl-headers' 'opencl-icd-loader')
 source=("https://github.com/$pkgname/$pkgname/archive/v$pkgver.tar.gz")
 makedepends=('cmake' 'llvm' 'ocl-icd')
-sha512sums=('8c4ea87c19ea044e752f50810aa5eb99090956d804533e13b4074846c1fecb28258f0e1ec67af62f255f321f53d2e8bf34a938be64c358410490b2565972a2a0')
+sha512sums=('ef4911638c76d988c120b69a991e54773a6b8bde49433c2e0f1703c374fa65a4fa64ebcaec94569863458032c17d8cb9879dc501b7e3a43b2c24524bce1b6098')
 
 build() {
   mkdir -p build
