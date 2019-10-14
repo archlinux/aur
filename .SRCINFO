@@ -5,8 +5,10 @@ pkgbase = slock-pam
 	url = https://tools.suckless.org/slock
 	arch = x86_64
 	license = MIT
+	makedepends = pam
 	depends = libxext
 	depends = libxrandr
+	depends = pam
 	provides = slock
 	conflicts = slock
 	source = https://dl.suckless.org/tools/slock-1.4.tar.gz
@@ -15,4 +17,3 @@ pkgbase = slock-pam
 	sha256sums = 4ccb97fc919c7bb63c380116c7fbb783277de4388b72a1d9e02932ba938b9036
 
 pkgname = slock-pam
-

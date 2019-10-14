@@ -12,7 +12,8 @@ url="https://tools.suckless.org/slock"
 license=('MIT')
 provides=('slock')
 conflicts=('slock')
-depends=('libxext' 'libxrandr')
+depends=('libxext' 'libxrandr' 'pam')
+makedepends=('pam')
 source=("https://dl.suckless.org/tools/$_name-$pkgver.tar.gz"
         'https://tools.suckless.org/slock/patches/pam_auth/slock-pam_auth-20190207-35633d4.diff')
 sha256sums=('b53849dbc60109a987d7a49b8da197305c29307fd74c12dc18af0d3044392e6a'
