@@ -1,15 +1,15 @@
 pkgbase = scalarr
 	pkgdesc = A command-line interface for Sonarr
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/nichobi/scalarr
 	arch = any
 	license = GPL
 	makedepends = sbt
 	depends = java-runtime
-	source = scalarr-v1.0.0.tar.gz::https://github.com/nichobi/scalarr/archive/v1.0.0.tar.gz
+	source = scalarr-v1.0.1.tar.gz::https://github.com/nichobi/scalarr/archive/v1.0.1.tar.gz
 	source = scalarr.sh
-	sha256sums = 4d7985dfa7ad9df498a8136d6ff06285019c330aeea103d29416f6b06712fe49
+	sha256sums = ed0fd975400e22a211695d2b44d778665a015206fdebe7575da3e8fd094686e8
 	sha256sums = 603e8c012cb0c72a9b4615457fdeb67e92c4311b436f4ee535448d402a98b54d
 
 pkgname = scalarr
