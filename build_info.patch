@@ -1,5 +1,5 @@
 diff --git a/Makefile b/Makefile
-index 434d6ca..a6cce39 100644
+index 1f6ee7c..88f763e 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -32,7 +32,8 @@ SUPPORTED_PLATFORMS := linux-$(GOARCH) darwin-$(GOARCH) windows-$(GOARCH).exe
@@ -18,6 +18,6 @@ index 434d6ca..a6cce39 100644
  GO_LDFLAGS += -X $(VERSION_PACKAGE).gitCommit=$(COMMIT)
 -GO_LDFLAGS += -X $(VERSION_PACKAGE).gitTreeState=$(if $(shell git status --porcelain),dirty,clean)
 +GO_LDFLAGS += -X $(VERSION_PACKAGE).gitTreeState=$(TREE_STATE)
+ GO_LDFLAGS += -s -w
  
  GO_LDFLAGS_windows =" $(GO_LDFLAGS)  -extldflags \"$(LDFLAGS_windows)\""
- GO_LDFLAGS_darwin =" $(GO_LDFLAGS)  -extldflags \"$(LDFLAGS_darwin)\""
