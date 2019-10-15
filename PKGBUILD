@@ -1,7 +1,7 @@
 # Maintainer: mistiru (Anaël Megna) <anael.megna@gmail.com>
 
 pkgname=aegisub-japan7
-pkgver=3.2.2.r439.61f05d234
+pkgver=3.2.2.r442.8615152bc
 pkgrel=1
 pkgdesc='A fork of aegisub project with custom predefined configuration'
 arch=(x86_64)
@@ -12,6 +12,7 @@ license=(
 )
 depends=(
   alsa-lib
+  amaranth-font
   boost-libs
   fftw
   fontconfig

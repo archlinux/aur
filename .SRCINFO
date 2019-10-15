@@ -1,6 +1,6 @@
 pkgbase = aegisub-japan7
 	pkgdesc = A fork of aegisub project with custom predefined configuration
-	pkgver = 3.2.2.r439.61f05d234
+	pkgver = 3.2.2.r442.8615152bc
 	pkgrel = 1
 	url = https://github.com/odrling/Aegisub
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = aegisub-japan7
 	makedepends = lua
 	makedepends = mesa
 	depends = alsa-lib
+	depends = amaranth-font
 	depends = boost-libs
 	depends = fftw
 	depends = fontconfig
