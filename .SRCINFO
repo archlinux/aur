@@ -1,0 +1,18 @@
+pkgbase = ltrace-git
+	pkgdesc = Debugging program to track runtime library calls in dynamically linked programs
+	pkgver = 0.7.91.r1410.gea8928d
+	pkgrel = 1
+	url = http://www.ltrace.org/
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = autoconf
+	depends = libelf
+	depends = libunwind
+	provides = ltrace
+	conflicts = ltrace
+	source = ltrace-git::git+https://gitlab.com/cespedes/ltrace
+	sha256sums = SKIP
+
+pkgname = ltrace-git
+
