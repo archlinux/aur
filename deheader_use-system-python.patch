@@ -1,0 +1,42 @@
+From df0b47a4543279191e1bfc88269438add4a8deb3 Mon Sep 17 00:00:00 2001
+From: Jonas Witschel <diabonas@gmx.de>
+Date: Tue, 15 Oct 2019 17:51:25 +0200
+Subject: [PATCH] Force use of the system Python 3 interpreter
+
+This avoids PATH manipulation attacks and is encouraged by PEP 394.
+---
+ deheader      | 2 +-
+ test/Makefile | 5 -----
+ 2 files changed, 1 insertion(+), 6 deletions(-)
+
+diff --git a/deheader b/deheader
+index 5b7d06f..4ceb83b 100755
+--- a/deheader
++++ b/deheader
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ """\
+ deheader -- find (optionally remove) unneeded includes in C or C++ sourcefiles.
+ 
+diff --git a/test/Makefile b/test/Makefile
+index 6a70c0d..cf4dc8c 100644
+--- a/test/Makefile
++++ b/test/Makefile
+@@ -4,13 +4,8 @@ SOURCES = $(shell ls *.c)
+ 
+ regress:
+ 	@echo "Testing deheader: no output is good news."
+-	@setpython python2
+ 	@-deheader -v -v . >/tmp/regress
+ 	@diff -u regress.chk /tmp/regress
+-	@setpython python3
+-	@-deheader -v -v . >/tmp/regress
+-	@diff -u regress.chk /tmp/regress
+-	@setpython python
+ 	@rm /tmp/regress 
+ makeregress:
+ 	@-deheader -v -v . >regress.chk
+-- 
+2.23.0
+
