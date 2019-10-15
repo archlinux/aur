@@ -4,7 +4,7 @@
 _author=monday15
 _gitname=lounge-gtk-theme
 pkgname=("${_gitname}-git")
-pkgver=r1080.1c22d9c
+pkgver=1.11.r407.g8417615
 pkgrel=1
 pkgdesc="Simple and clean theme, based on original Adwaita"
 arch=('i686' 'x86_64')
@@ -28,7 +28,7 @@ pkgver() {
 
 build() {
     cd "${_gitname}/"
-    meson . _build --prefix=/usr
+    meson . _build --prefix=/usr -Dscale_style=fancy
     ninja -C _build
 }
 

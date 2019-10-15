@@ -1,6 +1,6 @@
 pkgbase = lounge-gtk-theme-git
 	pkgdesc = Simple and clean theme, based on original Adwaita
-	pkgver = r1080.1c22d9c
+	pkgver = 1.11.r407.g8417615
 	pkgrel = 1
 	url = https://github.com/monday15/lounge-gtk-theme
 	arch = i686
