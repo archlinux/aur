@@ -1,0 +1,35 @@
+pkgbase = hydrogen-cme-git
+	pkgdesc = An advanced drum machine (git version)
+	pkgver = 1.0.0.beta1.r3475.0d3bb860
+	pkgrel = 1
+	url = https://github.com/hydrogen-music/hydrogen
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = docbook-xml
+	makedepends = docbook-sgml
+	makedepends = docbook-utils
+	makedepends = docbook-xsl
+	makedepends = poxml
+	makedepends = xmlto
+	depends = desktop-file-utils
+	depends = jack
+	depends = libarchive
+	depends = liblrdf
+	depends = liblo
+	depends = libpulse
+	depends = qt5-tools
+	depends = qt5-xmlpatterns
+	provides = hydrogen
+	conflicts = hydrogen
+	source = hydrogen::git://github.com/cme/hydrogen.git
+	source = fix_dtd_version.patch
+	source = fix_missing_locale.patch
+	md5sums = SKIP
+	md5sums = 67122f71e3be7546d0b483f6fc923b19
+	md5sums = 90ca9817a9976c483fbe0e9605d73058
+
+pkgname = hydrogen-cme-git
+

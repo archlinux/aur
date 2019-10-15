@@ -1,0 +1,22 @@
+--- a/data/doc/manual.docbook	2016-11-05 09:22:50.000000000 +0100
++++ b/data/doc/manual.docbook	2017-07-28 18:03:51.938394459 +0200
+@@ -1,6 +1,6 @@
+ ﻿<?xml version="1.0" encoding="UTF-8"?> <!-- -*- mode:nxml; indent-tabs-mode:nil; fill-column:80; -*- -->
+-  <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook V4.0//EN"
+-                      "http://www.oasis-open.org/docbook/xml/4.0/docbookx.dtd">
++  <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook V4.2//EN"
++                      "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
+ <book id="Hydrogen-manual" lang="en">
+ 
+   <bookinfo>
+--- a/data/doc/tutorial.docbook	2016-11-05 09:22:50.000000000 +0100
++++ b/data/doc/tutorial.docbook	2017-07-28 18:03:51.938394459 +0200
+@@ -1,6 +1,6 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+-<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook V4.0//EN"
+-               "http://www.oasis-open.org/docbook/xml/4.0/docbookx.dtd">
++<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook V4.2//EN"
++               "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
+ <book id="Hydrogen-tutorial" lang="en">
+ 
+ <bookinfo>
