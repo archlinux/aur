@@ -13,6 +13,8 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/vmware/octant/archive/v$pkg
 sha256sums=('5605e3926dd3d9d32326d97bf4ab4dc7865bafc601f1c70885e7a1fd1dc98ee4')
 
 build() {
+  export NG_CLI_ANALYTICS=ci
+
   cd $pkgname-$pkgver
   make go-install ci
 }
