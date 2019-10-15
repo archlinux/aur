@@ -3,7 +3,7 @@
 pkgname=libedgetpu-max
 pkgver=12.1
 pkgrel=4
-pkgdesc='Google Coral Edge TPU library and headers.'
+pkgdesc='Google Coral Edge TPU library and headers (max speed).'
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://coral.withgoogle.com/'
 license=('Apache')

@@ -1,5 +1,5 @@
 pkgbase = libedgetpu-max
-	pkgdesc = Google Coral Edge TPU library and headers.
+	pkgdesc = Google Coral Edge TPU library and headers (max speed).
 	pkgver = 12.1
 	pkgrel = 4
 	url = https://coral.withgoogle.com/
