@@ -1,0 +1,27 @@
+pkgbase = mingw-w64-python38-bin
+	pkgdesc = Next generation of the python high-level scripting language (native MSVC version) (mingw-w64)
+	pkgver = 3.8.0
+	pkgrel = 1
+	url = http://www.python.org/
+	arch = any
+	license = PSF
+	makedepends = mingw-w64-tools
+	makedepends = mingw-w64-binutils
+	depends = mingw-w64-openssl
+	optdepends = mingw-w64-wine: runtime support
+	noextract = python-3.8.0-embed-win32.zip
+	noextract = python-3.8.0-embed-amd64.zip
+	options = staticlibs
+	options = !buildflags
+	options = !strip
+	source = https://www.python.org/ftp/python/3.8.0/python-3.8.0-embed-win32.zip
+	source = https://www.python.org/ftp/python/3.8.0/python-3.8.0-embed-amd64.zip
+	source = https://www.python.org/ftp/python/3.8.0/Python-3.8.0.tgz
+	source = wine-python.sh
+	sha256sums = 233036f6f97c33af94b6af3d4fed1cb61b7538074e59116c15e4e64238419d84
+	sha256sums = 9f4dba6c7b5c5db2993d899b4627872932e2229fdb9353ed352278cd4ea8b174
+	sha256sums = f1069ad3cae8e7ec467aa98a6565a62a48ef196cb8f1455a245a08db5e1792df
+	sha256sums = SKIP
+
+pkgname = mingw-w64-python38-bin
+
