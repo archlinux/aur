@@ -1,8 +1,8 @@
 # AUR Package Maintainer: f1reflyylmao <f1refy@airmail.cc>
 # Author: Fatih Kadir Akın <f@users.noreply.github.com>
 pkgname=guardian-git
-pkgver=v0.0.5.0.804d693
-pkgrel=3
+pkgver=v0.0.5.4.g54d535d
+pkgrel=1
 pkgdesc="Watches over your files and runs assigned tasks"
 arch=('any')
 url="https://github.com/f/guardian"
