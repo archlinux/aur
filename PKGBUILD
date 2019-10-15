@@ -8,8 +8,8 @@ url="https://github.com/nichobi/scalarr"
 license=('GPL')
 depends=('java-runtime')
 makedepends=('sbt')
-source=("https://github.com/nichobi/$pkgname/archive/v$pkgver.tar.gz" scalarr)
-md5sums=('7338ae0c81599bae88bcc132230e149b' 'ae65ce3a9bfbf4a164132b124e44bc3f')
+source=("scalarr-v$pkgver.tar.gz::https://github.com/nichobi/$pkgname/archive/v$pkgver.tar.gz" scalarr.sh)
+sha256sums=('4d7985dfa7ad9df498a8136d6ff06285019c330aeea103d29416f6b06712fe49' '603e8c012cb0c72a9b4615457fdeb67e92c4311b436f4ee535448d402a98b54d')
 
 build() {
 	cd "$pkgname-$pkgver"
@@ -20,6 +20,6 @@ package() {
   mkdir -p $pkgdir/usr/share/java/scalarr/
   cp target/scala-2.13/$pkgname-assembly-$pkgver.jar $pkgdir/usr/share/java/scalarr/scalarr.jar
   mkdir -p $pkgdir/usr/bin/
-  cp ../scalarr $pkgdir/usr/bin/scalarr
+  cp ../scalarr.sh $pkgdir/usr/bin/scalarr
   chmod +x $pkgdir/usr/bin/scalarr
 }
