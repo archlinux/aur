@@ -1,0 +1,15 @@
+pkgbase = system76-acpi-dkms
+	pkgdesc = System76 ACPI Driver (DKMS)
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/pop-os/system76-acpi-dkms
+	arch = x86_64
+	license = GPL
+	depends = dkms
+	source = https://github.com/pop-os/system76-acpi-dkms/archive/1.0.1.tar.gz
+	source = system76-acpi.conf
+	sha256sums = 032fc6e0ba0ad6b94abb7f0f3dbc6126f8bdef3384d08be37823d684235c8e8d
+	sha256sums = 7b7e6bac10669d47576c8bd0bedad8217b32c1e25cab9cbb2ff64aa6be11fd39
+
+pkgname = system76-acpi-dkms
+
