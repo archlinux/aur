@@ -1,0 +1,27 @@
+pkgbase = ubuntu1804lts-python3
+	pkgdesc = Python3 version matching current version of Ubuntu's python3.
+	pkgver = 3.6.8
+	pkgrel = 1
+	url = http://www.python.org/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = tk
+	makedepends = sqlite
+	makedepends = bluez-libs
+	makedepends = mpdecimal
+	makedepends = pkgconf
+	depends = expat
+	depends = bzip2
+	depends = gdbm
+	depends = openssl
+	depends = libffi
+	depends = zlib
+	optdepends = tk: for tkinter
+	optdepends = sqlite
+	options = !makeflags
+	source = http://www.python.org/ftp/python/3.6.8/Python-3.6.8.tar.xz
+	sha256sums = 35446241e995773b1bed7d196f4b624dadcadc8429f26282e756b2fb8a351193
+
+pkgname = ubuntu1804lts-python3
+
