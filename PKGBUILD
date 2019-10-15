@@ -10,7 +10,6 @@ pkgname=blender-2.8-git
 _fragment="#branch=master"
 pkgver=2.82.r91259.3cdcd1fa9f0
 pkgrel=1
-options=(debug)
 pkgdesc="Development version of Blender 2.8 branch"
 arch=('i686' 'x86_64')
 url="https://blender.org/"
