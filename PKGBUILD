@@ -4,7 +4,7 @@
 pkgname=proftpd
 pkgver=1.3.6a
 pkgrel=1
-epoch=1
+epoch=2
 pkgdesc='High-performance, scalable FTP server'
 arch=('x86_64' 'i686')
 url='http://www.proftpd.org/'
