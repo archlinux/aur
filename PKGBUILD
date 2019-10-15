@@ -1,8 +1,8 @@
 # AUR Package Maintainer: f1reflyylmao <f1refy@airmail.cc>
 # Author: Fatih Kadir Akın <f@users.noreply.github.com>
 pkgname=guardian-noemoji-git
-pkgver=v0.0.5.2.g804d693
-pkgrel=1
+pkgver=v0.0.5.54d535d
+pkgrel=2
 pkgdesc="This patched version comes without the emoji"
 arch=('any')
 url="https://github.com/f/guardian"
