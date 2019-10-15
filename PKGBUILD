@@ -25,7 +25,7 @@ sha512sums=(
 
 # Run curl https://keybase.io/roasbeef/pgp_keys.asc | gpg --import
 # But of course don't trust this rando AUR comment - verify yourself that this pubkey belongs to roasbeef.
-validpgpkeys=('4AB7F8DA6FAEBB3B70B1F903BC13F65E2DC84465')
+validpgpkeys=('9769140D255C759B1EB77B46A96387A57CAAE94D')
 
 prepare() {
     sha256sum --ignore-missing -c "manifest-v$_pkgver.txt"
