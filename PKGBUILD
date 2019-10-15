@@ -2,7 +2,7 @@
 
 pkgname="emojicode"
 pkgver=1.0.beta.1
-pkgrel=3
+pkgrel=4
 pkgdesc="An open-source, full-blown programming language consisting of emojis"
 arch=('i686' 'x86_64')
 url="https://emojicode.org"
@@ -56,7 +56,6 @@ check() {
 
 package() {
     cd "${srcdir}/${pkgname}"
-    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
     cd "${srcdir}/${pkgname}/build"
     ninja dist
