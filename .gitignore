@@ -1,0 +1,6 @@
+pkg/
+src/
+midiomatic-*.tar.gz
+midiomatic-*.tar.xz
+midiomatic-*.src.tar.gz
+.AURINFO
