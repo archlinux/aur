@@ -8,8 +8,9 @@
 
 pkgname=blender-2.8-git
 _fragment="#branch=master"
-pkgver=2.82.r91251.e2e95d56ffc
+pkgver=2.82.r91259.3cdcd1fa9f0
 pkgrel=1
+options=(debug)
 pkgdesc="Development version of Blender 2.8 branch"
 arch=('i686' 'x86_64')
 url="https://blender.org/"
@@ -19,8 +20,8 @@ depends=('alembic' 'libgl' 'python' 'python-numpy' 'openjpeg' 'desktop-file-util
 makedepends=('git' 'cmake' 'boost' 'mesa' 'llvm')
 ((DISABLE_NINJA)) ||  makedepends+=('ninja')
 ((DISABLE_CUDA)) && optdepends=('cuda: CUDA support in Cycles') || { makedepends+=('cuda') ; ((DISABLE_OPTIX)) || makedepends+=('optix>=7.0'); }
-provides=('blender-2.81')
-conflicts=('blender-2.81')
+provides=('blender-2.82')
+conflicts=('blender-2.82')
 license=('GPL')
 install=blender.install
 # NOTE: the source array has to be kept in sync with .gitmodules
