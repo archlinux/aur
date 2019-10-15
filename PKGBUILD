@@ -2,7 +2,7 @@
 # Maintainer: Corey Hinshaw <corey(at)electrickite(dot)org>
 
 pkgname=system76-driver
-pkgver=19.04.18
+pkgver=19.04.19
 pkgrel=1
 pkgdesc="Universal driver for System76 computers"
 arch=('any')
@@ -21,6 +21,7 @@ depends=(
 	'python-pynacl'
 	'python-systemd'
 	'python-xlib'
+  'system76-acpi-dkms'
 	'system76-dkms'
 	'system76-firmware-daemon')
 makepdepends=(
@@ -42,7 +43,7 @@ source=(
   'cli.patch'
   'wayland.patch')
 sha1sums=(
-  'dff733cf140c62c1dcd189c387430a7b78d3b5bb'
+  '8d5ed2cd302bcced441d1f1152fa9008773f8f7c'
   'ddc85f9b062eb89c2c6fef0c6d7c68a28f419760'
   '45b4601ed3d9d80a01d5179628b1502caa9d7e6f'
   '916e0eeda26e00bd0372c1ffc7c5368cda9d46a1'
