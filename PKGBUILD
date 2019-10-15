@@ -1,25 +1,26 @@
 # $Id: PKGBUILD 266875 2017-11-15 14:29:11Z foutrelis $
+# Maintainer: Boris Timofeev <btimofeev@emunix.org>
 # Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Peter Kosyh <p.kosyhgmail.com>
 
 pkgname=instead
-pkgver=3.3.0
+pkgver=3.3.1
 pkgrel=1
 pkgdesc="a quest interpreter"
 arch=('i686' 'x86_64')
-url="http://sourceforge.net/projects/instead/"
+url="https://github.com/instead-hub/instead"
 license=('MIT')
-depends=('sdl2_image' 'sdl2_mixer' 'sdl2_ttf' 'gtk2' 'lua' 'luajit')
+depends=('sdl2_image' 'sdl2_mixer' 'sdl2_ttf' 'gtk2' 'luajit')
 makedepends=('cmake')
 optdepends=('instead-launcher: install and update INSTEAD games from net','insteadman: Manager for INSTEAD interpreter.')
-source=(http://downloads.sourceforge.net/project/instead/instead/${pkgver}/instead_${pkgver}.tar.gz)
-sha256sums=('c9f845be9267fb4457fec4b056a281e1460478969a8c70d2bd2ff82770e6534f')
+source=(https://github.com/instead-hub/instead/releases/download/${pkgver}/instead_${pkgver}.tar.gz)
+sha256sums=('00879f36ad9221fd75c7497dd091460c7477fc6e53151a0ea50a342b1bbb7781')
 
 build() {
   cd "${srcdir}"
   mkdir -p build
   cd build
-  cmake \
+  CFLAGS="-isystem /usr/include/harfbuzz" cmake \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DWITH_LUAJIT=1 \
