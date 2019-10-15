@@ -28,7 +28,7 @@
 pkgname=vivado
 pkgver=2019.1
 _more_ver=0524_1430
-pkgrel=1
+pkgrel=2
 pkgdesc="FPGA/CPLD design suite for Xilinx devices"
 url="https://www.xilinx.com/products/design-tools/vivado.html"
 arch=('x86_64')
@@ -43,17 +43,25 @@ depends=('ncurses5-compat-libs'
          'xterm')
 
 source=("file:///Xilinx_Vivado_SDK_${pkgver}_${_more_ver}.tar.gz"
-        'spoof_homedir.c')
+        'spoof_homedir.c'
+        'Xilinx-VivadoIDE.desktop'
+        'Xilinx-SDK.desktop'
+        'Xilinx-DocNav.desktop')
 
 # checksum from https://www.xilinx.com/support/download.html
 md5sums=('47388a71dc5962a4b8d76e752928616e'
-         '69d14ad64f6ec44e041eaa8ffcb6f87c')
+         '69d14ad64f6ec44e041eaa8ffcb6f87c'
+         'b7cad6d39ef5293d4f433b8c9959f486'
+         '44bb51e1c8832f001cb7d21b90cb5796'
+         '40d60bc80129f8e7fe7df56ec2605ebf')
 
 options=('!strip')
 PKGEXT=".pkg.tar"
 
 prepare() {
 	mkdir -p "$srcdir/installer_temp"
+
+	sed -i "s/%VERSION%/$pkgver/g" *.desktop
 }
 
 build() {
@@ -71,8 +79,17 @@ package() {
 		--edition 'Vivado HL WebPACK' \
 		--location "$pkgdir/opt/Xilinx"
 
+	# install udev rules
+	install -Dm644 "$pkgdir/opt/Xilinx/Vivado/2019.1/data/xicom/cable_drivers/lin64/install_script/install_drivers/52-xilinx-digilent-usb.rules" -t "$pkgdir/usr/lib/udev/rules.d/"
+	install -Dm644 "$pkgdir/opt/Xilinx/Vivado/2019.1/data/xicom/cable_drivers/lin64/install_script/install_drivers/52-xilinx-ftdi-usb.rules" -t "$pkgdir/usr/lib/udev/rules.d/"
+	install -Dm644 "$pkgdir/opt/Xilinx/Vivado/2019.1/data/xicom/cable_drivers/lin64/install_script/install_drivers/52-xilinx-pcusb.rules" -t "$pkgdir/usr/lib/udev/rules.d/"
+
+	install -Dm644 "$srcdir/Xilinx-VivadoIDE.desktop" -t "$pkgdir/usr/share/applications/"
+	install -Dm644 "$srcdir/Xilinx-SDK.desktop" -t "$pkgdir/usr/share/applications/"
+	install -Dm644 "$srcdir/Xilinx-DocNav.desktop" -t "$pkgdir/usr/share/applications/"
+
 	# clean up artefacts, remove leading $pkgdir from paths
 	rm -rf "$pkgdir/opt/Xilinx/.xinstall/"
-	sed -i -e "s|$pkgdir||g" "$pkgdir"/opt/Xilinx/{DocNav/.settings64-DocNav.{,c}sh,SDK/"$pkgver"/{settings64,.settings64-SDK_Core_Tools}.{,c}sh,Vivado/"$pkgver"/{settings64,.settings64-Vivado}.{,c}sh}
+	find "$pkgdir/opt/Xilinx/" -name '*settings64*' -exec sed -ie "s|$pkgdir||g" '{}' \+
 }
 
