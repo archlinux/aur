@@ -1,12 +1,11 @@
 pkgbase = firecracker-git
 	pkgdesc = Secure and fast microVMs for serverless computing
-	pkgver = r1
+	pkgver = r1496.effaab05
 	pkgrel = 1
 	url = https://github.com/firecracker-microvm/firecracker
 	arch = x86_64
 	license = Apache:2.0
-	makedepends = rustup
-	makedepends = musl
+	makedepends = docker
 	source = git+https://github.com/firecracker-microvm/firecracker.git
 	sha256sums = SKIP
 

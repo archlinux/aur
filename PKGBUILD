@@ -1,11 +1,11 @@
 pkgname=firecracker-git
 _gitname=firecracker
-pkgver=r1
+pkgver=r1496.effaab05
 pkgrel=1
 pkgdesc="Secure and fast microVMs for serverless computing"
 url="https://github.com/firecracker-microvm/firecracker"
 depends=()
-makedepends=('rustup' 'musl')
+makedepends=('docker')
 arch=('x86_64')
 license=('Apache:2.0')
 source=("git+https://github.com/firecracker-microvm/firecracker.git")
@@ -18,15 +18,14 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${_gitname}"
-  rustup target install x86_64-unknown-linux-musl
-  cargo build --release
-  #tools/devtool build
+  tools/devtool build --release
 }
 
 package() {
   cd "${srcdir}/${_gitname}"
-  install -Dm755 target/x86_64-unknown-linux-musl/release/firecracker "$pkgdir/usr/bin/firecracker"
-  install -Dm755 target/x86_64-unknown-linux-musl/release/jailer "$pkgdir/usr/bin/jailer"
+  toolchain="$(uname -m)-unknown-linux-musl"
+  install -Dm755 build/cargo_target/${toolchain}/release/firecracker "$pkgdir/usr/bin/firecracker"
+  install -Dm755 build/cargo_target/${toolchain}/release/jailer "$pkgdir/usr/bin/jailer"
   install -m644 -D LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
   install -m644 -D README.md "$pkgdir"/usr/share/licenses/$pkgname/README.md
 }
