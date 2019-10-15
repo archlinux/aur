@@ -1,0 +1,24 @@
+--- config.default.php	2019-10-15 12:14:27.909885285 -0500
++++ config.default.php.arch	2019-10-15 12:16:50.632608374 -0500
+@@ -6,8 +6,11 @@
+ /* Make sure all paths are absolute by using __DIR__ where needed  */
+ /*******************************************************************/
+ 
++// Define base dir as absolute path of Arch Linux install
++define('ARCH_BASE_DIR', '/usr/share/webapps/kanboard');
++
+ // Data folder (must be writeable by the web server user and absolute)
+-define('DATA_DIR', __DIR__.DIRECTORY_SEPARATOR.'data');
++define('DATA_DIR', ARCH_BASE_DIR.DIRECTORY_SEPARATOR.'data');
+ 
+ // Enable/Disable debug
+ define('DEBUG', false);
+@@ -19,7 +22,7 @@
+ define('LOG_FILE', DATA_DIR.DIRECTORY_SEPARATOR.'debug.log');
+ 
+ // Plugins directory
+-define('PLUGINS_DIR', __DIR__.DIRECTORY_SEPARATOR.'plugins');
++define('PLUGINS_DIR', ARCH_BASE_DIR.DIRECTORY_SEPARATOR.'plugins');
+ 
+ // Plugins directory URL
+ define('PLUGIN_API_URL', 'https://kanboard.org/plugins.json');

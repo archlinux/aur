@@ -3,7 +3,7 @@
 
 pkgname=kanboard
 pkgver=1.2.11
-pkgrel=2
+pkgrel=3
 pkgdesc='Simple visual task board'
 arch=('any')
 url='http://kanboard.net/'
@@ -20,7 +20,8 @@ source=("https://github.com/kanboard/kanboard/archive/v$pkgver/kanboard-$pkgver.
 	"kanboard-nginx-subdir.conf"
 	"kanboard-cron"
 	"kanboard.service"
-	"kanboard.timer")
+	"kanboard.timer"
+ 	"config.patch")
 validpgpkeys=(
 	'DCF1D3CBC1E43342116F760E112C718C894226ED'
 	'112C718C894226ED')
@@ -29,6 +30,7 @@ package() {
     mkdir -p ${pkgdir}/usr/share/webapps
     mkdir -p ${pkgdir}/usr/lib/systemd/system
     mkdir -p ${pkgdir}/usr/share/licenses/kanboard
+    patch ${srcdir}/${pkgname}-${pkgver}/config.default.php ${srcdir}/config.patch
     cp -R ${srcdir}/${pkgname}-${pkgver} ${pkgdir}/usr/share/webapps/${pkgname}
     install -D -m 644 "${srcdir}/kanboard-apache.conf" ${pkgdir}/etc/webapps/${pkgname}/kanboard-apache.conf
     install -D -m 644 "${srcdir}/kanboard-nginx.conf" ${pkgdir}/etc/webapps/${pkgname}/kanboard-nginx.conf
@@ -46,4 +48,5 @@ sha256sums=('0424ebe188919311708100cf0122b9e78b9e34c3aef0160c069f0b201c39ac86'
             '5fdf81a69cda8c3c813e5d21f62d4112264645c95d376d7b31dae4573724930a'
             '0efff866815a47329767bb00482f9fc1adff77a6e0e62889ea666ecd930d6f1d'
             '5353560c7664db99a2845a39750a2c5e62045083f7e3f835a198158faa809c64'
-            'b030b1655cfca20700faa5d3f4dac87bacc24e7070517af041f2ffb25ba46292')
+            'b030b1655cfca20700faa5d3f4dac87bacc24e7070517af041f2ffb25ba46292'
+            '3dfa63a56e11185132a07c146dcaf1d5131fd61e610fdb463e039eb8ff2fb944')

@@ -1,7 +1,7 @@
 pkgbase = kanboard
 	pkgdesc = Simple visual task board
 	pkgver = 1.2.11
-	pkgrel = 2
+	pkgrel = 3
 	url = http://kanboard.net/
 	install = kanboard.install
 	arch = any
@@ -23,6 +23,7 @@ pkgbase = kanboard
 	source = kanboard-cron
 	source = kanboard.service
 	source = kanboard.timer
+	source = config.patch
 	validpgpkeys = DCF1D3CBC1E43342116F760E112C718C894226ED
 	validpgpkeys = 112C718C894226ED
 	sha256sums = 0424ebe188919311708100cf0122b9e78b9e34c3aef0160c069f0b201c39ac86
@@ -32,6 +33,7 @@ pkgbase = kanboard
 	sha256sums = 0efff866815a47329767bb00482f9fc1adff77a6e0e62889ea666ecd930d6f1d
 	sha256sums = 5353560c7664db99a2845a39750a2c5e62045083f7e3f835a198158faa809c64
 	sha256sums = b030b1655cfca20700faa5d3f4dac87bacc24e7070517af041f2ffb25ba46292
+	sha256sums = 3dfa63a56e11185132a07c146dcaf1d5131fd61e610fdb463e039eb8ff2fb944
 
 pkgname = kanboard
 
