@@ -1,5 +1,5 @@
 pkgbase = halide-git
-	pkgdesc = Halide library from github
+	pkgdesc = a language for fast, portable data-parallel computation
 	pkgver = r19227.9bbcb6b4f
 	pkgrel = 1
 	url = https://halide-lang.org/
@@ -10,6 +10,7 @@ pkgbase = halide-git
 	depends = cmake>=3.8
 	provides = halide-git
 	conflicts = halide-git
+	conflicts = halide-bin
 	source = git+https://github.com/halide/Halide.git
 	md5sums = SKIP
 

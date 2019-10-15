@@ -2,7 +2,7 @@
 pkgname=halide-git
 pkgver=r19227.9bbcb6b4f
 pkgrel=1
-pkgdesc="Halide library from github"
+pkgdesc="a language for fast, portable data-parallel computation"
 arch=(x86_64)
 url="https://halide-lang.org/"
 license=('MIT')
