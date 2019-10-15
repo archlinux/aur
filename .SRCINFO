@@ -1,0 +1,27 @@
+pkgbase = regina-normal
+	pkgdesc = software for low-dimensional topology
+	pkgver = 5.1
+	pkgrel = 1
+	url = https://regina-normal.github.io/
+	arch = x86_64
+	license = GPL
+	depends = gmp
+	depends = libxml2
+	depends = jansson
+	depends = tokyocabinet
+	depends = popt
+	depends = boost
+	depends = qt5-svg
+	depends = python2
+	depends = hicolor-icon-theme
+	depends = desktop-file-utils
+	optdepends = doxygen: C++/Python API docs
+	optdepends = graphviz: drawing graphs
+	optdepends = libxslt: user handbook
+	optdepends = openmpi: MPI-enabled utilities
+	optdepends = cppunit: test suite
+	source = https://github.com/regina-normal/regina/releases/download/regina-5.1/regina-5.1.tar.gz
+	md5sums = 76ea01d700618325c3f0cbaa6acff159
+
+pkgname = regina-normal
+
