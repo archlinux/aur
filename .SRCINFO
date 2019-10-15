@@ -11,7 +11,7 @@ pkgbase = openca-ocspd
 	depends = bash
 	depends = openssl
 	source = http://prdownloads.sourceforge.net/project/openca/openca-ocspd/releases/v3.1.2/sources/openca-ocspd-3.1.2.tar.gz
-	sha256sums = 10d56cecb862d94ed8742bdf52958cebe1b3f8d87625ba014b0ae2b7c4820de5
+	sha256sums = fdba65ee232b03668563acbcb09a57aaadb2b4d140ceec7b58ec8b274f61a62d
 
 pkgname = openca-ocspd
 
