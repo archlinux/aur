@@ -19,8 +19,8 @@ pkgbase = evince-light
 	optdepends = gvfs: bookmark support and session saving
 	provides = evince
 	conflicts = evince
-	source = https://gitlab.gnome.org/GNOME/evince/-/archive/3.34.1/evince-3.34.1.tar.gz
-	sha256sums = de6d653700e7c4d419be216922802b1b08141d8308fb0d2e5a98092669fd4987
+	source = https://ftp.gnome.org/pub/GNOME/sources/evince/3.34.1/evince-3.34.1.tar.xz
+	sha256sums = 85e407cde396147b249120d816c7715fb6df191ca561cf65ff3554a5d67626df
 
 pkgname = evince-light
 
