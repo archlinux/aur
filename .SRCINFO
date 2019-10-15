@@ -1,5 +1,5 @@
 pkgbase = libedgetpu-std
-	pkgdesc = Google Coral Edge TPU library and headers.
+	pkgdesc = Google Coral Edge TPU library and headers (standard speed).
 	pkgver = 12.1
 	pkgrel = 4
 	url = https://coral.withgoogle.com/
@@ -12,7 +12,7 @@ pkgbase = libedgetpu-std
 	depends = libusb
 	provides = libedgetpu
 	conflicts = libedgetpu
-	conflicts = libedgetpu-std
+	conflicts = libedgetpu-max
 	noextract = libedgetpu-dev_12-1.deb
 	noextract = libedgetpu1-std_12-1.deb
 	options = !strip

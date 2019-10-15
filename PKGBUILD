@@ -3,7 +3,7 @@
 pkgname=libedgetpu-std
 pkgver=12.1
 pkgrel=4
-pkgdesc='Google Coral Edge TPU library and headers.'
+pkgdesc='Google Coral Edge TPU library and headers (standard speed).'
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://coral.withgoogle.com/'
 license=('Apache')
@@ -11,7 +11,7 @@ options=(!strip)
 depends=('gcc' 'libusb')
 makedepends=('binutils')
 provides=('libedgetpu')
-conflicts=('libedgetpu' 'libedgetpu-std')
+conflicts=('libedgetpu' 'libedgetpu-max')
 source_x86_64=(
     'libedgetpu-dev_12-1.deb::https://packages.cloud.google.com/apt/pool/libedgetpu-dev_12-1_amd64_9d235ea1e53aee2f8ea05f68410c63234c766b8f821e5d1a91d7ed62f96ffdd2.deb'
     'libedgetpu1-std_12-1.deb::https://packages.cloud.google.com/apt/pool/libedgetpu1-std_12-1_amd64_46a4f29eb4ac6f862c3d68b37c1eceec62e24c7d7c741aed81cca05cbccf9e2e.deb'
