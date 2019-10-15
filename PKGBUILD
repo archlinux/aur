@@ -8,7 +8,7 @@
 
 pkgname=pidgin-sipe
 pkgver=1.25.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Third-party Pidgin plugin for Microsoft Office 365/Lync/LCS/OCS"
 arch=('x86_64')
 license=('GPL2')
@@ -26,8 +26,12 @@ build() {
 
   # Fix #359: Incorrect build due to false negative configure checks
   patch -p1 <"${srcdir}/${pkgname}-fix-359.patch"
+  autopoint --force
+  AUTOPOINT="intltoolize --copy --force --automake" \
+    autoreconf --force --install
+  # End fix #359
 
-  ./configure --prefix=/usr --disable-telepathy
+  ./configure --prefix=/usr --disable-telepathy --with-vv
 
   make
 }
