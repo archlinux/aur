@@ -1,7 +1,7 @@
 # Maintainer: Ryozuki <ryo@ryozuki.xyz>
 pkgname=digital
 pkgver=0.23
-pkgrel=1
+pkgrel=2
 pkgdesc="A digital logic designer and circuit simulator."
 arch=('x86_64')
 url="https://github.com/hneemann/Digital"
