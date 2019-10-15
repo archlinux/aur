@@ -1,7 +1,7 @@
 # Maintainer: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
 
 pkgname=pidgin-sipe-git
-pkgver=1.24.0.r94.gfa7fdb13
+pkgver=1.25.0.r3.g9043ff51
 pkgrel=1
 pkgdesc="Third-party Pidgin plugin for Microsoft Office 365/Lync/LCS/OCS"
 arch=('x86_64')
@@ -23,7 +23,7 @@ build() {
 
   ./autogen.sh
 
-  ./configure --prefix=/usr --disable-telepathy
+  ./configure --prefix=/usr --disable-telepathy --with-vv
 
   make
 }

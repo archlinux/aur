@@ -1,6 +1,6 @@
 pkgbase = pidgin-sipe-git
 	pkgdesc = Third-party Pidgin plugin for Microsoft Office 365/Lync/LCS/OCS
-	pkgver = 1.24.0.r94.gfa7fdb13
+	pkgver = 1.25.0.r3.g9043ff51
 	pkgrel = 1
 	url = https://sipe.sourceforge.net/
 	arch = x86_64
