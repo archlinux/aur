@@ -1,11 +1,10 @@
 pkgbase = python-plotnine
 	pkgdesc = A grammar of graphics for python
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/has2k1/plotnine
 	arch = any
 	license = GPL2
-	makedepends = python-pip
 	depends = python
 	depends = python-mizani>=0.5.2
 	depends = python-matplotlib>=3.0.0

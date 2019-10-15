@@ -1,7 +1,7 @@
 _name=plotnine
 pkgname=python-$_name
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A grammar of graphics for python'
 arch=(any)
 url="https://github.com/has2k1/$_name"
@@ -17,7 +17,6 @@ depends=(
 	'python-pandas>=0.23.4'
 	'python-descartes>=1.1.0'
 )
-makedepends=(python-pip)
 optdepends=(
 	'python-scikit-learn: gaussian process smoothing, kernel density implementation'
 	'python-scikit-misc: loess smooting'
@@ -29,5 +28,7 @@ noextract=("$_wheel")
 sha256sums=('c271d08edf276f6be09951a4544a1116fc7aa6bc68cadef1b05e29c26ff5f683')
 
 package() {
-	pip install --compile --no-deps --ignore-installed --root="$pkgdir" "$_wheel"
+	local site="$pkgdir/usr/lib/$(readlink /bin/python3)/site-packages"
+	mkdir -p "$site"
+	unzip "$_wheel" -d "$site"
 }
