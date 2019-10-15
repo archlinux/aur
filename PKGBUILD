@@ -2,8 +2,8 @@
 
 pkgname=netsurf-fb
 pkgver=3.9
-pkgrel=3
-pkgdesc='Lightweight and fast web browser'
+pkgrel=4
+pkgdesc='Lightweight and fast web browser (framebuffer front end)'
 arch=(x86_64 i686)
 url=https://www.netsurf-browser.org/
 license=(MIT GPL2)

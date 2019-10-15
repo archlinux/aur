@@ -1,7 +1,7 @@
 pkgbase = netsurf-fb
-	pkgdesc = Lightweight and fast web browser
+	pkgdesc = Lightweight and fast web browser (framebuffer front end)
 	pkgver = 3.9
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.netsurf-browser.org/
 	arch = x86_64
 	arch = i686
