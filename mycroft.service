@@ -10,6 +10,7 @@ Type=forking
 RemainAfterExit=no
 ExecStart=/usr/share/mycroft-core/start-mycroft.sh all
 ExecStop=/usr/share/mycroft-core/stop-mycroft.sh all
+AmbientCapabilities=CAP_NET_BIND_SERVICE
 
 [Install]
 WantedBy=multi-user.target
