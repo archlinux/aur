@@ -6,6 +6,7 @@ pkgbase = mingw-w64-z3
 	arch = any
 	license = MIT
 	makedepends = mingw-w64-cmake
+	makedepends = python
 	depends = mingw-w64-gmp
 	options = !strip
 	options = !buildflags
