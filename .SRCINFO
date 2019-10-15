@@ -1,6 +1,6 @@
 pkgbase = osquery-bin
 	pkgdesc = osquery is an operating system instrumentation framework.
-	pkgver = 3.3.2
+	pkgver = 4.0.2
 	pkgrel = 1
 	url = https://osquery.io/
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = osquery-bin
 	depends = zlib
 	conflicts = osquery-git
 	conflicts = kolide-git
-	source = https://osquery-packages.s3.amazonaws.com/linux/osquery-3.3.2_1.linux_x86_64.tar.gz
-	sha256sums = 05b0b15bd44e6a85813dd92a567c371031938aedbcd2e64d32229a3ca0c2d509
+	source = https://osquery-packages.s3.amazonaws.com/linux/osquery-4.0.2_1.linux_x86_64.tar.gz
+	sha256sums = b32f052250908eefabdd582e07aa5e206ab1899762d728bc1a17dae5151070b4
 
 pkgname = osquery-bin
 
