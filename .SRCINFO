@@ -1,0 +1,30 @@
+pkgbase = st-solarized-scrollback
+	pkgdesc = A simple virtual terminal emulator for X. Patched for solarized colorscheme and scrollback.
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = http://st.suckless.org
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = ncurses
+	depends = libxft
+	provides = st
+	conflicts = st
+	conflicts = st-solarized
+	source = http://dl.suckless.org/st/st-0.8.1.tar.gz
+	source = http://st.suckless.org/patches/solarized/st-no_bold_colors-0.8.1.diff
+	source = http://st.suckless.org/patches/solarized/st-solarized-both-0.8.1.diff
+	source = https://st.suckless.org/patches/scrollback/st-scrollback-0.8.1.diff
+	source = https://st.suckless.org/patches/scrollback/st-scrollback-mouse-0.8.diff
+	source = https://st.suckless.org/patches/scrollback/st-scrollback-mouse-altscreen-0.8.diff
+	source = config.h
+	sha256sums = c4fb0fe2b8d2d3bd5e72763e80a8ae05b7d44dbac8f8e3bb18ef0161c7266926
+	sha256sums = 5a6e2b745c7746228e0ee4e84214e3ac7054e6d451bc5843364e878bb2011e3b
+	sha256sums = 698e7ee411cf80ae31e11d41daf2713b6ed8f3f533281efb9a8c200f458a03bf
+	sha256sums = ddc26e8e6dcce1a51f8aa8ed33072afcf4ff2d20f64ea24d96409479e86e8750
+	sha256sums = 3fb38940cc3bad3f9cd1e2a0796ebd0e48950a07860ecf8523a5afd0cd1b5a44
+	sha256sums = bcfc106089d9eb75aa014d4915ed3e6842f1df54edd8b75597154096333df6fa
+	sha256sums = SKIP
+
+pkgname = st-solarized-scrollback
+
