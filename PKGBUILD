@@ -2,11 +2,11 @@
 
 pkgname="emojicode"
 pkgver=1.0.beta.1
-pkgrel=2
+pkgrel=3
 pkgdesc="An open-source, full-blown programming language consisting of emojis"
 arch=('i686' 'x86_64')
 url="https://emojicode.org"
-license=("custom: Artistic License 2")
+license=("Artistic2.0")
 depends=(
     "ncurses"
     "zlib"
