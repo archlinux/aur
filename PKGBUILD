@@ -2,10 +2,10 @@
 
 pkgname=elemental
 pkgver=0.87.7
-pkgrel=2
+pkgrel=3
 url="https://github.com/elemental/Elemental"
 pkgdesc="distributed-memory dense linear algebra"
-makedepends=('cmake' 'gcc7' 'gcc-fortran')
+makedepends=('cmake' 'gcc6' 'gcc-fortran')
 depends=('openblas-lapack' 'parmetis' 'libmpc' 'python2')
 arch=('i686' 'x86_64')
 license=("custom:BSD")
@@ -17,7 +17,7 @@ options=('!makeflags')
 build() {
   cd Elemental-$pkgver
   mkdir -p build && pushd build
-  CXX=g++-7 cmake .. -DCMAKE_INSTALL_PREFIX=/usr \
+  CXX=g++-6 cmake .. -DCMAKE_INSTALL_PREFIX=/usr \
 	-DCMAKE_EL_DISABLE_PARMETIS=ON \
 	-DCMAKE_BUILD_TYPE=Release \
 	-DCMAKE_INSTALL_LIBDIR=/usr/lib

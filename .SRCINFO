@@ -1,13 +1,13 @@
 pkgbase = elemental
 	pkgdesc = distributed-memory dense linear algebra
 	pkgver = 0.87.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/elemental/Elemental
 	arch = i686
 	arch = x86_64
 	license = custom:BSD
 	makedepends = cmake
-	makedepends = gcc7
+	makedepends = gcc6
 	makedepends = gcc-fortran
 	depends = openblas-lapack
 	depends = parmetis
