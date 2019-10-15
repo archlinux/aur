@@ -6,7 +6,7 @@
 pkgname=simgear
 pkgver=2018.3.2
 _pkgver=${pkgver%.*}
-pkgrel=1
+pkgrel=2
 pkgdesc="A set of open-source libraries designed to be used as building blocks for quickly assembling 3d simulations, games, and visualization applications."
 arch=(x86_64)
 depends=('glu' 'glut' 'freealut' 'plib' 'openscenegraph34')
@@ -25,7 +25,7 @@ prepare() {
 build() {
   cd "$srcdir"/simgear-$pkgver
   mkdir ../sgbuild && cd ../sgbuild
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib -DCMAKE_BUILD_TYPE=Release ../simgear-${pkgver}
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib -DCMAKE_BUILD_TYPE=Release -DENABLE_TESTS=off ../simgear-${pkgver}
   make
 }
 
