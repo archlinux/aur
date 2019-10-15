@@ -1,87 +1,84 @@
-# Maintainer: Michael Taboada <michael@michaels.world>
+# Maintainer: Michael Taboada <michael@2mb.solutions>
 # Maintainer: Storm Dragon <stormdragon2976@gmail.com>
+# Contributor: alex19EP <aarnaarn2@gmail.com>
 # Contributor: Kyle <kyle@free2.ml>
-# Contributer: Steve Holmes <steve.holmes88@gmail.com>
+# Contributor: Steve Holmes <steve.holmes88@gmail.com>
 # Contributor: Alexander Jenisch <nt@divzero.at>
 # Contributor: Chris Brannon <cmbrannon@cox.net>
 # Contributor: Andreas Messer <andi@bupfen.de>
 
-pkgname=speech-dispatcher-git
+pkgbase=speech-dispatcher-git
+pkgname=(speech-dispatcher-git libspeechd-git)
 pkgver=0.9.0.rc2.r7.gd25ed10d
 pkgrel=1
-arch=('armv7h' 'aarch64' 'i686' 'x86_64')
-pkgdesc="High-level device independent layer for speech synthesis interface (development version)."
+arch=('x86_64')
+pkgdesc="High-level device independent layer for speech synthesis interface (development version)"
 license=('GPL2' 'FDL')
-depends=('glib2' 'libao' 'python')
-optdepends=('festival-freebsoft-utils: Speech output using Festival.'
-            'flite: Speech output using Festival Lite.'
-            'espeak: Speech output using ESpeak.'
-            'svox-pico-git: Speech output using Android pico voice.')
-makedepends=('git' 'pkgconfig' 'espeak' 'dotconf' 'automake' 'intltool')
-provides=("libspeechd" "speech-dispatcher")
-conflicts=("libspeechd" "speech-dispatcher")
-options=('!libtool') 
 url="http://www.freebsoft.org/speechd"
-_gitname="speechd"
-source=('git+https://github.com/brailcom/speechd.git'
-        'speech-dispatcherd.service'
-	"speech-dispatcher-git.install")
-#source=("speechd.run" "speechd.sh" "speechd.logrotate")
-install="speech-dispatcher-git.install"
+makedepends=('intltool' 'espeak' 'libltdl' 'python-xdg' 'dotconf' 'libpulse' 'libao' 'git')
+source=(${pkgname}::'git+https://github.com/brailcom/speechd.git')
+sha512sums=('SKIP')
 
-backup=('etc/speech-dispatcher/clients/gnome-speech.conf'
-	'etc/speech-dispatcher/clients/emacs.conf'
-	'etc/speech-dispatcher/modules/ibmtts.conf'
-	'etc/speech-dispatcher/modules/espeak-generic.conf'
-	'etc/speech-dispatcher/modules/espeak.conf'
-	'etc/speech-dispatcher/modules/swift-generic.conf'
-	'etc/speech-dispatcher/modules/festival.conf'
-	'etc/speech-dispatcher/modules/cicero.conf'
-	'etc/speech-dispatcher/modules/espeak-mbrola-generic.conf'
-	'etc/speech-dispatcher/modules/dtk-generic.conf'
-	'etc/speech-dispatcher/modules/llia_phon-generic.conf'
-	'etc/speech-dispatcher/modules/ivona.conf'
-	'etc/speech-dispatcher/modules/epos-generic.conf'
-	'etc/speech-dispatcher/modules/flite.conf'
-	'etc/speech-dispatcher/speechd.conf'
-	'etc/logrotate.d/speechd')
-
-#_gitroot="git://git.freebsoft.org/git/speechd"
-#_gitname="speechd"
-
-sha512sums=('SKIP'
-            '73eb563003b03f4836b17af66335664050d1dc3bd8434be368cd09ff8933aa2adc4bd17c4ce5c1bbbd406a0b0880191426a679fa05eac0a30f4005eaeeb47340'
-            'c7dbb517526cfbaaf455ff974209a07749385e504175d9d3328d4020f47f9bcf4572848d909738b4b3a5534e9ad4b1e09bcdb51a44945b2c7aecd4cf8f718f8f')
-
-pkgver() {
-  cd ${_gitname}
-  git describe --tags | sed -E 's/([^-]*-g)/r\1/;s/[-]/./g'
+prepare() {
+	cd "$pkgname"
+	autoreconf -i
 }
 
 build() {
-  cd ${srcdir}/${_gitname}
-  autoreconf -i
-  PYTHON=python ./configure --prefix=/usr --sysconfdir=/etc --with-alsa --with-libao
-  make
+	cd "$pkgname"
+	./configure --prefix=/usr \
+		--enable-shared \
+		--sysconfdir=/etc \
+		--localstatedir=/var \
+		--localedir=/usr/share/speech-dispatcher/locale \
+		--with-systemdsystemunitdir=/usr/lib/systemd/system \
+		--with-espeak        
+	make
 }
 
-package() {
-  cd ${srcdir}/${_gitname}
-  make DESTDIR=${pkgdir} install
+package_speech-dispatcher-git() {
+	depends=("libspeechd-git=$pkgver-$pkgrel" 'libltdl' 'python-xdg' 'dotconf' 'libpulse' 'libao')
+	optdepends=('festival: Speech output using Festival'
+		'espeak: Speech output using ESpeak'
+  'espeak-ng-git: Speech output using espeak-ng compatible with espeak (may require rebuild)'
+		'pulseaudio: PulseAudio support')  
+	provides=("speech-dispatcher")
+	conflicts=("speech-dispatcher")
+	backup=(etc/speech-dispatcher/clients/emacs.conf
+		etc/speech-dispatcher/modules/ibmtts.conf
+		etc/speech-dispatcher/modules/espeak-generic.conf
+		etc/speech-dispatcher/modules/espeak.conf
+		etc/speech-dispatcher/modules/espeak-ng.conf
+		etc/speech-dispatcher/modules/swift-generic.conf
+		etc/speech-dispatcher/modules/festival.conf
+		etc/speech-dispatcher/modules/cicero.conf
+		etc/speech-dispatcher/modules/espeak-mbrola-generic.conf
+		etc/speech-dispatcher/modules/espeak-ng-mbrola-generic.conf
+		etc/speech-dispatcher/modules/dtk-generic.conf
+		etc/speech-dispatcher/modules/llia_phon-generic.conf
+		etc/speech-dispatcher/modules/ivona.conf
+		etc/speech-dispatcher/modules/epos-generic.conf
+		etc/speech-dispatcher/modules/flite.conf
+		etc/speech-dispatcher/modules/pico-generic.conf
+		etc/speech-dispatcher/speechd.conf)
 
-  # Remove info dir and compress info pages
-  rm -f ${pkgdir}/usr/share/info/dir
-  #gzip -9nf ${pkgdir}/usr/share/info/*
+	cd "$pkgname"
+	make DESTDIR="${pkgdir}" install
 
-  # Install startup, profile and logrotate files
-  install -Dm644 "${srcdir}"/speech-dispatcherd.service "${pkgdir}/usr/lib/systemd/system/speech-dispatcherd.service"
-  #install -D -m644 ${srcdir}/speechd.logrotate ${pkgdir}/etc/logrotate.d/speechd
-  install -d "${pkgdir}/var/log/speech-dispatcher"
+	install -d "${pkgdir}/var/log/speech-dispatcher"
 
-  # Modify speechd.conf to accomodate running as a system wide service
-  #cd "${pkgdir}/etc/speech-dispatcher"
-  #sed -i -e 's|LogDir  "default"|#LogDir  "default"|' speechd.conf
-  #sed -i -e 's|#LogDir  "/var/log/speech-dispatcher/"|LogDir  "/var/log/speech-dispatcher/"|' speechd.conf
-  #sed -i -e 's|# AudioOutputMethod "pulse"|AudioOutputMethod "alsa"|' speechd.conf
-  #sed -i -e 's|# DisableAutoSpawn|DisableAutoSpawn|' speechd.conf
+	sed -i 's|includedir=.*|includedir=${prefix}/include/speech-dispatcher|g' "${pkgdir}/usr/lib/pkgconfig/speech-dispatcher.pc"
+
+	mkdir -p ${srcdir}/libspeechd/usr/lib
+	mv "${pkgdir}"/usr/include ${srcdir}/libspeechd/usr
+	mv "${pkgdir}"/usr/lib/libspeechd*so* ${srcdir}/libspeechd/usr/lib
+}
+
+package_libspeechd-git() {
+	provides=("libspeechd")
+	conflicts=("libspeechd")
+	mkdir -p "${pkgdir}"/usr/lib
+
+	mv ${srcdir}/libspeechd/usr/include "${pkgdir}"/usr
+	mv ${srcdir}/libspeechd/usr/lib/* "${pkgdir}"/usr/lib
 }
