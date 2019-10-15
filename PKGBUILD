@@ -1,7 +1,7 @@
 # Maintainer: Setpill
 pkgname=lnd-bin
 _pkgname=lnd
-pkgver=0.7.1_beta
+pkgver=0.8.0_beta
 _pkgver="${pkgver//_/-}"
 pkgrel=1
 pkgdesc="Lightning Network Daemon ⚡"
@@ -17,15 +17,15 @@ source=(
     "https://raw.githubusercontent.com/lightningnetwork/lnd/v$_pkgver/LICENSE"
 )
 sha512sums=(
-    '480913f01851ee34dfb07881507d29b2f361565878e816702e50e8510c3530043ca04ac5405f923f13357cb885e748c902fa194a217995e8ce9ad4853853c8fe'
+    '8121fd9123c215ef69bcc1641ccacadb49f627d35367fb3ef8a1f0133fb801bdbb6d3afc3e4dadfb165132984eebbcaa89509c276331a640f66861163f71377c'
     'SKIP'
     'SKIP'
     '9837c5d097a2838cf6dc992cc25b9e94946e401131e13e66a699077c3e2de1b89fb1de71027d46d7230464ebbad3ae8df118d459961b28995677d56fded451ca'
 )
 
-# Run gpg --recv-keys BD599672C804AF2770869A048B80CD2BB8BD8132
+# Run curl https://keybase.io/roasbeef/pgp_keys.asc | gpg --import
 # But of course don't trust this rando AUR comment - verify yourself that this pubkey belongs to roasbeef.
-validpgpkeys=('BD599672C804AF2770869A048B80CD2BB8BD8132')
+validpgpkeys=('4AB7F8DA6FAEBB3B70B1F903BC13F65E2DC84465')
 
 prepare() {
     sha256sum --ignore-missing -c "manifest-v$_pkgver.txt"
