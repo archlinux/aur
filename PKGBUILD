@@ -146,6 +146,7 @@ ac_add_options --enable-rust-simd
 
 ac_add_options --enable-application=browser
 ac_add_options --enable-eme=widevine
+ac_add_options --enable-av1
 
 export MOZ_GECKO_PROFILER=
 export MOZ_ENABLE_PROFILER_SPS=
