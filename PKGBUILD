@@ -7,6 +7,7 @@ pkgname=gnome-shell-performance
 _pkgname=gnome-shell
 pkgver=3.34.1
 pkgrel=1
+epoch=1
 pkgdesc="Next generation desktop shell"
 url="https://wiki.gnome.org/Projects/GnomeShell"
 arch=(x86_64)
