@@ -1,7 +1,7 @@
 pkgbase = course
 	pkgdesc = Course management tools for students.
 	pkgver = 2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://samuellando.com
 	arch = any
 	license = GPL
