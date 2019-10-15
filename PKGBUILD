@@ -6,7 +6,7 @@ pkgbase=linux-rc
 pkgrel=1
 _srcname=linux-5.3
 _major=5.3
-_minor=5
+_minor=6
 _minorc=$((_minor+1))
 _rcver=1
 _rcpatch=patch-${_major}.${_minorc}-rc${_rcver}
@@ -31,8 +31,8 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('1f0130d7f4985e0066ef9403bbd6e2e1c9d440c58155aeb21024a75eef3b8bfa'
-            '80ed8c5cfc298fdbccbd69f8b919c12b11d8b54d8c20f08fc8c3b1840d1e53f0'
+sha256sums=('eecbbe579170889ba84e3024808b00fd74eba7523bcebe6682d9f71d64ab3825'
+            'e84021a94784de7bb10e4251fb1a87859a8d1c97bd78fb55ad47ab6ce475ec1f'
             'SKIP'
             '7d09d1d79a4ecb82502b4483cf989ede3f643e05613de45e12563dfe85d80423'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
