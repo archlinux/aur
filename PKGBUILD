@@ -13,13 +13,13 @@ source=('https://github.com/orhun/zps/archive/1.0.0-alpha.tar.gz')
 sha256sums=('SKIP')
 
 build() {
-  cd $pkgname-$pkgver
+  cd "$pkgname-$pkgver-alpha"
   mkdir -p build && cd build/
   cmake ../ -DCMAKE_INSTALL_PREFIX=/usr
   make
 }
 
 package() {
-  cd "$pkgname-$pkgver/build"
+  cd "$pkgname-$pkgver-alpha/build"
   make DESTDIR="$pkgdir" install
 }
