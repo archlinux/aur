@@ -1,5 +1,5 @@
 pkgbase = hydrogen-cme-git
-	pkgdesc = An advanced drum machine. Keyboard editing fork (development git version)
+	pkgdesc = An advanced drum machine. Cursor key editing fork (development git version)
 	pkgver = 1.0.0.beta1.r3475.0d3bb860
 	pkgrel = 1
 	url = https://github.com/hydrogen-music/hydrogen
