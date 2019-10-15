@@ -46,6 +46,7 @@ package() {
     cd "$srcdir/Halide/build"
     make DESTDIR="$pkgdir/" install
     rm -rf "${pkgdir}/usr/local/tutorial/"
+    rm -rf "${pkgdir}/usr/local/tools/"
     find ${pkgdir} -type f -name "*.md" -delete
-    find ${pkgdir} -type f -name "*.cmake" -delete
+    find ${pkgdir} -type f -name "*.*make" -delete
 }
