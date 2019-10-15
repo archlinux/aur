@@ -1,7 +1,7 @@
 
 pkgname=mingw-w64-cmake
 pkgver=1
-pkgrel=26
+pkgrel=27
 arch=('any')
 pkgdesc="CMake wrapper for MinGW (mingw-w64)"
 depends=('cmake' 'mingw-w64-gcc' 'mingw-w64-pkg-config')
@@ -13,7 +13,7 @@ source=("mingw-cmake.sh"
         "toolchain-mingw.cmake")
 sha256sums=('SKIP' 'SKIP' "SKIP")
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
-_python_versions="27 35 36 37"
+_python_versions="27 36 37 38"
 
 build() {
   for _arch in ${_architectures}; do
