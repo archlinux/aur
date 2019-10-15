@@ -1,0 +1,17 @@
+pkgbase = halide-git
+	pkgdesc = Halide library from github
+	pkgver = r19227.9bbcb6b4f
+	pkgrel = 1
+	url = https://halide-lang.org/
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = llvm>=8.0
+	depends = cmake>=3.8
+	provides = halide-git
+	conflicts = halide-git
+	source = git+https://github.com/halide/Halide.git
+	md5sums = SKIP
+
+pkgname = halide-git
+
