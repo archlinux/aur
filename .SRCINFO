@@ -1,7 +1,7 @@
 pkgbase = jdk-openj9-bin
 	pkgdesc = Eclipse (former IBM) OpenJ9 with latest GA release of openjdk (jdk13)
 	pkgver = 13b33_openj9_0.16.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://adoptopenjdk.net/index.html?variant=openjdk13&jvmVariant=openj9
 	arch = x86_64
 	license = GPL2
