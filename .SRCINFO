@@ -3,7 +3,6 @@ pkgbase = icecat
 	pkgver = 60.9.0
 	pkgrel = 1
 	url = http://www.gnu.org/software/gnuzilla/
-	arch = i686
 	arch = x86_64
 	license = GPL
 	license = MPL
