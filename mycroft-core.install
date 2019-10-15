@@ -3,11 +3,8 @@ post_install() {
   echo "====     sudo gpasswd -a mycroft audio"
   echo "====     sudo gpasswd -a mycroft dbus"
   echo "====     sudo gpasswd -a mycroft network"
-  echo "====>  Add this line to your default.pa PulseAudio file configuration"
+  echo "====>  Add this line to /etc/default.pa PulseAudio file configuration and restart PulseAudio"
   echo "====     load-module module-native-protocol-unix auth-anonymous=1 socket=/tmp/pulse-socket"
-  echo "====>  Read instructions under /usr/share/mycroft-core/pulseaudio-client.conf"
-  echo "====>  Add this line into /etc/pulse/client.conf"
-  echo "====     autospawn=1"
   echo "====>  Finally run:"
   echo "====	 systemctl start mycroft.service"
 }

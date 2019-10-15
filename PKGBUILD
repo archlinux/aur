@@ -3,7 +3,7 @@
 
 pkgname=mycroft-core
 pkgver=19.8.1
-pkgrel=2
+pkgrel=3
 pkgdesc="The Mycroft Artificial Intelligence platform."
 arch=('i686' 'x86_64')
 url='https://github.com/MycroftAI/mycroft-core'
@@ -65,13 +65,14 @@ package() {
 
 	# Cleanup
 	find . -name "*.py[co]" -o -name __pycache__ -exec rm -rf {} +
+	rm -rf "$pkgdir/usr/share/mycroft-core/test"
 
 	# Pulseaudio Workaround (any suggestion is well accepted)
 	install -D -m644 "${srcdir}/mycroft.pulseaudio" "${pkgdir}/usr/share/mycroft-core/pulse-client.conf"
 }
 
 md5sums=('04ec4428ad8ee3787e798bcd5a7ed23a'
-	'b09b8ac1a4c1fbb17c79bde8d6520ea1'
+	'5e3d6efeb812c6020d3d7f532ca6541c'
 	'f4b41cc9e1a7308c8833f0f7804d8c02'
 	'a587888fcaf792ab9ceb6c698bb03ac3'
 'ffd5e294798abaa35bb79f2b1afd40e1')
