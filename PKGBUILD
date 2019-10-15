@@ -3,8 +3,8 @@
 # Contributor: Fergus Symon <fergofrog@fergofrog.com>
 
 pkgname=razercfg
-pkgver=0.40
-pkgrel=3
+pkgver=0.41
+pkgrel=1
 pkgdesc='Razer mouse configuration tool'
 arch=('x86_64')
 url=https://bues.ch/cms/hacking/razercfg
@@ -14,11 +14,9 @@ makedepends=('cmake')
 optdepends=('python-pyqt5: for the graphical qrazercfg tool')
 provides=('razerd')
 backup=('etc/razer.conf')
-source=("https://bues.ch/razercfg/razercfg-$pkgver.tar.bz2"{,.asc}
-        'tmpfile.conf')
-sha512sums=('42c3e7a34a348982fb2c1022c85dd3ec6d875dec387492eb4f6aece82423a1fd5984c4efb79926084aac880944a9e139a424487ab277d8c1a56c4f9c0a7c9d6e'
-            'SKIP'
-            '0a84cf5775930ff9adca513971a9eaf983f239b4cf59f8915632477c6ca20c02997fed3a24864aa04058d66899da3599d92a2180cfc43676102b733dd1db577b')
+source=("https://bues.ch/razercfg/razercfg-$pkgver.tar.bz2"{,.asc})
+sha512sums=('a24f3d2187f0791459e1f7a86583f72e6bfd9fc81fda6fa3482f3351dc641f8a511339b5c3b041c3e88a7d5da35a641696e86ce7d46b3fdb6a125bc7fed78a87'
+            'SKIP')
 validpgpkeys=('757FAB7CED1814AE15B4836E5FB027474203454C') # Michael Busch
 
 build() {
@@ -32,8 +30,7 @@ package() {
   make DESTDIR="$pkgdir" install
 
   install -Dm644 -t "$pkgdir"/etc razer.conf
-  install -Dm644 "$srcdir"/tmpfile.conf\
-    "$pkgdir"/usr/lib/tmpfiles.d/razerd.conf
+  install -Dm644 tmpfile.conf "$pkgdir"/usr/lib/tmpfiles.d/razerd.conf
 }
 
 # vim:set ts=2 sw=2 et:
