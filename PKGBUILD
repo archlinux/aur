@@ -1,7 +1,7 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=uftrace-git
-pkgver=0.9.2+113.g41af616
+pkgver=0.9.3+95.g562e3b3
 pkgrel=1
 pkgdesc="Function (graph) tracer for user-space"
 arch=(x86_64)
