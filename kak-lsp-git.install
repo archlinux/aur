@@ -1,5 +1,3 @@
 post_install() {
 	echo 'To customize settings, copy the kak-lsp.toml configuration file in /usr/share/kak-lsp-git/examples/ to $HOME/.config/kak-lsp/'
-	echo 'If desired, enable the kak-lsp systemd user service for client auto-start/restart:'
-	echo '    systemctl --user enable --now kak-lsp'
 }

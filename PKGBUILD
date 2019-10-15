@@ -31,7 +31,6 @@ package() {
 	cd "${srcdir}/${pkgname}"
 	install -Dm755 -t "${pkgdir}/usr/bin" target/release/kak-lsp
 	install -Dm644 -t "${pkgdir}/usr/share/${pkgname}/examples/" kak-lsp.toml
-	install -Dm644 -t "${pkgdir}/usr/lib/systemd/user" kak-lsp.service
 	install -Dm644 UNLICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
