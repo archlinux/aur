@@ -12,7 +12,7 @@ pkgbase = cpcache-git
 	makedepends = erlang-nox
 	makedepends = elixir
 	backup = etc/cpcache/cpcache.toml
-	source = git+https://github.com/nroi/cpcache.git#tag=0.1.6
+	source = git+https://github.com/nroi/cpcache.git#tag=0.1.7
 	source = sysuser.conf
 	source = cpcache.install
 	source = cpcache.service
