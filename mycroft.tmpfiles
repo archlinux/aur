@@ -1,6 +1,6 @@
-d /usr/share/mycroft-core 0755 mycroft mycroft 
+Z /usr/share/mycroft-core 0755 mycroft mycroft 
 d /var/lib/mycroft 0755 mycroft mycroft
-d /var/lib/mycroft/ 0755 mycroft mycroft
 d /var/log/mycroft 0755 mycroft mycroft 
 d /opt/mycroft/ 0755 mycroft mycroft
 d /tmp/mycroft/ 0755 mycroft mycroft
+f /var/tmp/mycroft_web_cache.json 0755 mycroft mycroft

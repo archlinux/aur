@@ -62,13 +62,16 @@ package() {
 	pip install https://github.com/JarbasAl/py_mplayer/archive/master.zip
 	sed -i 's/^VIRTUAL_ENV=.*/VIRTUAL_ENV="\/usr\/share\/mycroft-core\/.venv"/g' .venv/bin/activate
 	rm .venv/bin/activate.{fish,csh}
-	find . -name "*.py[co]" -o -name __pycache__ -exec rm -rf {} +
-	install -D -m644 "${srcdir}/mycroft.pulseaudio" "${pkgdir}/usr/share/mycroft-core/pulse-client.conf"
 
+	# Cleanup
+	find . -name "*.py[co]" -o -name __pycache__ -exec rm -rf {} +
+
+	# Pulseaudio Workaround (any suggestion is well accepted)
+	install -D -m644 "${srcdir}/mycroft.pulseaudio" "${pkgdir}/usr/share/mycroft-core/pulse-client.conf"
 }
 
 md5sums=('04ec4428ad8ee3787e798bcd5a7ed23a'
-	'5fafd69eb177046827b9cb93c91e3802'
+	'b09b8ac1a4c1fbb17c79bde8d6520ea1'
 	'f4b41cc9e1a7308c8833f0f7804d8c02'
 	'a587888fcaf792ab9ceb6c698bb03ac3'
 'ffd5e294798abaa35bb79f2b1afd40e1')
