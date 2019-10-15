@@ -8,8 +8,7 @@
 pkgbase=nvidia-vulkan
 pkgname=('nvidia-vulkan' 'nvidia-vulkan-dkms' 'nvidia-vulkan-utils' 'opencl-nvidia-vulkan' 'lib32-nvidia-vulkan-utils' 'lib32-opencl-nvidia-vulkan')
 pkgver=435.27.01
-_extramodules=extramodules-ARCH
-pkgrel=1
+pkgrel=2
 pkgdesc="NVIDIA drivers for linux (vulkan developer branch)"
 arch=('x86_64')
 url="https://developer.nvidia.com/vulkan-driver"
@@ -61,9 +60,8 @@ DEST_MODULE_LOCATION[3]="/kernel/drivers/video"' dkms.conf
 }
 
 build() {
-    _kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
     cd "${_pkg}"/kernel
-    make SYSSRC=/usr/lib/modules/"${_kernver}/build" module
+    make SYSSRC=/usr/src/linux module
 }
 
 package_nvidia-vulkan() {
@@ -71,8 +69,9 @@ package_nvidia-vulkan() {
     depends=('linux' "nvidia-vulkan-utils=${pkgver}" 'libglvnd')
     provides=("nvidia=$pkgver")
     conflicts+=('nvidia')
-
-    install -Dt "${pkgdir}/usr/lib/modules/${_extramodules}" -m644 \
+    
+    _extradir="/usr/lib/modules/$(</usr/src/linux/version)/extramodules"
+    install -Dt "${pkgdir}${_extradir}" -m644 \
       "${srcdir}/${_pkg}/kernel"/nvidia{,-modeset,-drm,-uvm}.ko
 
     find "${pkgdir}" -name '*.ko' -exec gzip -n {} +
