@@ -1,12 +1,13 @@
 pkgbase = archlinux-nix
 	pkgdesc = A command-line tool for setting up Nix on Arch Linux
-	pkgver = 1.1.1
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/asppsa/archlinux-nix
 	arch = any
 	license = Apache
-	source = https://github.com/asppsa/archlinux-nix/archive/v1.1.1.tar.gz
-	sha256sums = cc3a3e1f0824eb398b96d1d6da0dc741eafc47f73659b86ed6cff9c7a0f7649b
+	depends = xz
+	source = https://github.com/asppsa/archlinux-nix/archive/v2.0.0.tar.gz
+	sha256sums = 63b9dc8997cab8d9c4a9d8bcb9009e7af3056605af56a2193548dbd59f817db4
 
 pkgname = archlinux-nix
 

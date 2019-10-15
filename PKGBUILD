@@ -1,6 +1,6 @@
 # Maintainer: Alastair Pharo <me at asp dot dev>
 pkgname=archlinux-nix
-pkgver=1.1.1
+pkgver=2.0.0
 pkgrel=1
 epoch=
 pkgdesc="A command-line tool for setting up Nix on Arch Linux"
@@ -8,7 +8,7 @@ arch=('any')
 url="https://github.com/asppsa/archlinux-nix"
 license=('Apache')
 groups=()
-depends=()
+depends=('xz')
 makedepends=()
 checkdepends=()
 optdepends=()
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("https://github.com/asppsa/$pkgname/archive/v$pkgver.tar.gz")
 noextract=()
-sha256sums=('cc3a3e1f0824eb398b96d1d6da0dc741eafc47f73659b86ed6cff9c7a0f7649b')
+sha256sums=('63b9dc8997cab8d9c4a9d8bcb9009e7af3056605af56a2193548dbd59f817db4')
 validpgpkeys=()
 
 package() {
