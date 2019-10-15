@@ -9,9 +9,9 @@
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-rt-lts       # Build kernel with a different name
 _pkgver=4.19.72
-_rtpatchver=rt25
+_rtpatchver=rt26
 pkgver=${_pkgver}_${_rtpatchver}
-pkgrel=3
+pkgrel=1
 arch=('x86_64')
 url="https://wiki.linuxfoundation.org/realtime/start"
 license=('GPL2')
@@ -40,7 +40,7 @@ validpgpkeys=(
 )
 sha256sums=('f9fcb6b3bd29115ac55fc154e300c3dce2044502732f6842ad6c25e6f9f51f6d'
             'SKIP'
-            'ef5150a4c30c0342bf5e21e3ed8832a688ee6d871e1017ff43f46eb51aaa9453'
+            '7e360014f510daf6ab886f272531f98d9ae5cb5a55973a9b636346ac45f841f6'
             'SKIP'
             '75aa8dd708ca5a0137fbf7cddc9cafefe6aac6b8e0638c06c156d412d05af4bc'
             '67aed9742e4281df6f0bd18dc936ae79319fee3763737f158c0e87a6948d100d'
