@@ -1,7 +1,7 @@
 # Maintainer: Jack Chen <redchenjs@live.com>
 
 pkgname=utools
-pkgver=0.8.0
+pkgver=0.8.3
 pkgrel=1
 pkgdesc="uTools Utilities"
 arch=('x86_64')
@@ -17,10 +17,10 @@ depends=(
     'libxss'
 )
 source=(
-    'https://resource.u-tools.cn/version/utools_'${pkgver}'-beta_amd64.deb'
+    'https://resource.u-tools.cn/currentversion/utools_'${pkgver}'-beta_amd64.deb'
 )
 md5sums=(
-    '496298315327cdc694e0885b77465319'
+    'e9f502cf06eda0804c5741a613c3aed7'
 )
 
 package() {
