@@ -9,11 +9,12 @@ url='https://liri.io'
 license=('GPL3')
 depends=('qt5-tools' 'qt5-wayland' 'qt5-accountsservice-git' 'qt5-gsettings-git'
          'polkit-qt5' 'solid' 'pam' 'pipewire' 'dconf' 'libliri-git' 'fluid-git'
-	 'liri-platformtheme-git' 'qml-xwayland-git' 'liri-eglfs-git')
+	 'liri-platformtheme-git' 'qml-xwayland-git' 'liri-eglfs-git'
+	 'liri-wayland-git')
 makedepends=('git' 'liri-cmake-shared-git')
 options=(debug !strip)
-conflicts=('hawaii-shell-git' 'papyros-shell-git' 'liri-workspace-git' 'liri-wayland-git' 'liri-shell')
-replaces=('hawaii-shell-git' 'papyros-shell-git' 'liri-workspace-git' 'liri-wayland-git' 'liri-shell')
+conflicts=('hawaii-shell-git' 'papyros-shell-git' 'liri-workspace-git' 'liri-shell')
+replaces=('hawaii-shell-git' 'papyros-shell-git' 'liri-workspace-git' 'liri-shell')
 provides=('liri-shell')
 groups=('liri-git')
 
