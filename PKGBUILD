@@ -21,7 +21,7 @@ optdepends=('gnome-control-center: System settings'
 groups=(gnome)
 provides=(gnome-shell gnome-shell=$pkgver)
 conflicts=(gnome-shell)
-install=gnome-shell-performance.install
+install=$pkgname.install
 _commit=3d39b32a0b65da23d3e6e1513bd7388afdf0e87a  # master
 source=("git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=$_commit"
         "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git")
@@ -85,18 +85,25 @@ prepare() {
   #   3. Fix: Regression/bug fix only available in master (not backported).
   #   4. Cleanup: Code styling improvement, function deprecation, rearrangement...
 
-  # Title: St theme: use css instance data 
+  # Title: St theme: use css instance data
   # URL: https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/536
   # Type: 2
   # Status: 3
   # Comment: Crash fix for st_theme_get_custom_stylesheets
   git_cp_by_msg '!536' 'st-theme: Use CRStyleSheet app_data instead of hash map' 'st-theme: Use glib auto free/ptr features'
 
+  # Title: environment: Only disable unredirection of ongoing transitions
+  # URL: https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/761
+  # Type: 3
+  # Status: 4
+  # Comment: Fix unredirection broken on a fullscreen game after triggering animations
+  git cherry-pick -n 38ad1d7c
+
   git submodule init
   git config --local submodule.subprojects/gvc.url "$srcdir/libgnome-volume-control"
   git submodule update
 }
-  
+
 build() {
   arch-meson $_pkgname build -D gtk_doc=true
   ninja -C build
