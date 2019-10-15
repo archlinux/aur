@@ -11,7 +11,7 @@ license=('GPL')
 url='http://wiki.gnome.org/Projects/NetworkManager/VPN'
 depends=('libsecret' 'libreswan' 'libnl')
 makedepends=('intltool' 'python')
-source=(http://ftp.gnome.org/pub/GNOME/sources/NetworkManager-libreswan/${pkgver::3}/NetworkManager-libreswan-${pkgver}.tar.xz)
+source=(https://ftp.gnome.org/pub/GNOME/sources/NetworkManager-libreswan/${pkgver::3}/NetworkManager-libreswan-${pkgver}.tar.xz)
 sha256sums=('57a8a5e4537e41260df50fe4ddc16a09cb909b4ae19833a53ccac12d1234a6f6')
 
 build() {
