@@ -1,4 +1,4 @@
-# Maintainer: Gord Stephen <mail at gord dot io>
+# Maintainer: Jan-Jaap Korpershoek <jjkorpershoek96 at gmail dot com>
 
 _ref=''
 pkgname=kak-lsp-git
