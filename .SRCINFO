@@ -1,7 +1,7 @@
 pkgbase = evince-light
 	pkgdesc = GNOME document viewer, built with minimal dependencies by default but configurable.
 	pkgver = 3.34.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://wiki.gnome.org/Apps/Evince
 	arch = i686
 	arch = x86_64
