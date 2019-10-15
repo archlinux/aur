@@ -4,18 +4,17 @@
 pkgbase="python-pytorch"
 pkgname=("python-pytorch" "python-pytorch-opt" "python-pytorch-cuda" "python-pytorch-opt-cuda")
 _pkgname="pytorch"
-pkgver=1.2.0
-pkgrel=3
+pkgver=1.3.0
+pkgrel=1
 pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU acceleration"
 arch=('x86_64')
 url="https://pytorch.org"
 license=('BSD')
 depends=('google-glog' 'gflags' 'opencv' 'openmp' 'nccl' 'pybind11' 'python' 'python-yaml' 'python-numpy' 'protobuf' 'ffmpeg' 'python-future')
-makedepends=('python' 'python-setuptools' 'python-yaml' 'python-numpy' 'cmake' 'cuda' 'cudnn' 'git' 'magma')
-source=("${_pkgname}-${pkgver}::git+https://github.com/pytorch/pytorch.git#tag=v$pkgver"
-        24143.patch)
-sha256sums=('SKIP'
-            '773971a391e2d517630b37150ec20bd4ba06181c5c9767d51cd7358729b4aa5a')
+makedepends=('python' 'python-setuptools' 'python-yaml' 'python-numpy' 'cmake' 'cuda' 'cudnn' 'git' 'magma' 'qt5-base')
+optdepends=('qt5-base: HighGUI module')
+source=("${_pkgname}-${pkgver}::git+https://github.com/pytorch/pytorch.git#tag=v$pkgver")
+sha256sums=('SKIP')
 
 get_pyver () {
   python -c 'import sys; print(str(sys.version_info[0]) + "." + str(sys.version_info[1]))'
@@ -24,14 +23,15 @@ get_pyver () {
 prepare() {
   cd "${_pkgname}-${pkgver}"
 
-  patch -Np1 -i "$srcdir"/24143.patch
-
   # This is the lazy way since pytorch has sooo many submodules and they keep
   # changing them around but we've run into more problems so far doing it the
   # manual than the lazy way. This lazy way (not explicitly specifying all
   # submodules) will make building inefficient but for now I'll take it.
   # It will result in the same package, don't worry.
   git submodule update --init --recursive
+
+  # https://github.com/pytorch/pytorch/issues/26555
+  sed -i 's#^  ${CMAKE_CURRENT_SOURCE_DIR}/tensor_iterator_test.cpp##g' aten/src/ATen/test/CMakeLists.txt
 
   cd ..
 
