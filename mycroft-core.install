@@ -1,6 +1,6 @@
 post_install() {
   echo "====>  Please add mycroft user to audio group"
-  echo "====     sudo gpassd -a mycroft audio"
+  echo "====     sudo gpasswd -a mycroft audio"
   echo "====>  Add this line to your default.pa PulseAudio file configuration"
   echo "====     load-module module-native-protocol-unix auth-anonymous=1 socket=/tmp/pulse-socket"
   echo "====>  Read instructions under /usr/share/mycroft-core/pulseaudio-client.conf"
