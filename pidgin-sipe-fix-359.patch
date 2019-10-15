@@ -1,0 +1,22 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -336,7 +336,8 @@ PKG_CHECK_MODULES(LIBXML2, [libxml-2.0])
+ dnl assumption check: sizof(uuid_t) must be 16 (see uuid.c)
+ AC_MSG_CHECKING([that sizeof(uuid_t) is 16])
+ ac_save_CFLAGS="$CFLAGS"
+-CFLAGS="$CFLAGS $GLIB_CFLAGS $QUALITY_CFLAGS"
++dnl NOTE: including $QUALITY_CFLAGS can lead to false negative configure checks!
++CFLAGS="$CFLAGS $GLIB_CFLAGS"
+ dnl note the [[[ quoting: our code contains []!
+ AC_RUN_IFELSE(
+ 	[AC_LANG_PROGRAM(
+@@ -415,7 +416,8 @@ AS_IF([test "x$enable_purple" != xno],
+ 
+ 		 ac_save_CFLAGS="$CFLAGS"
+ 		 ac_save_LIBS="$LIBS"
+-		 CFLAGS="$CFLAGS $PURPLE_CFLAGS $QUALITY_CFLAGS"
++		 dnl NOTE: including $QUALITY_CFLAGS can lead to false negative configure checks!
++		 CFLAGS="$CFLAGS $PURPLE_CFLAGS"
+ 		 LIBS="$LIBS $PURPLE_LIBS"
+ 
+ 		 dnl check whether enable voice and video support
