@@ -1,0 +1,9 @@
+diff --git data/desktop/org.gnome.Germinal.desktop.in.in data/desktop/org.gnome.Germinal.desktop.in.in
+index 677e67f..e12ad7c 100644
+--- data/desktop/org.gnome.Germinal.desktop.in.in
++++ data/desktop/org.gnome.Germinal.desktop.in.in
+@@ -10,3 +10,4 @@ Terminal=false
+ Categories=GTK;GNOME;Utility;TerminalEmulator;System;
+ StartupWMClass=germinal
+ StartupNotify=true
++X-GNOME-SingleWindow=false
