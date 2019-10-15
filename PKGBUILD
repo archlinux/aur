@@ -5,7 +5,7 @@
 
 pkgname=st
 pkgver=0.8.2
-pkgrel=4
+pkgrel=5
 pkgdesc='A simple virtual terminal emulator for X.'
 arch=('i686' 'x86_64' 'armv7h')
 license=('MIT')
@@ -20,7 +20,7 @@ prepare() {
 
   # This package provides a mechanism to provide a custom config.h. Multiple
   # configuration states are determined by the presence of two files in
-  # $startdir:
+  # $BUILDDIR:
   #
   # * config.h: The user has supplied his or her configuration. The file will
   #   be copied to $srcdir and used during build.
@@ -37,10 +37,10 @@ prepare() {
   # future runs will proceed with default values due to the presence of
   # config.def.h.
   abort=
-  if [ -e "$startdir/config.h" ]
+  if [ -e "$BUILDDIR/config.h" ]
   then
-    cp "$startdir/config.h" "$pkgname-$pkgver"
-  elif [ ! -e "$startdir/config.def.h" ]
+    cp "$BUILDDIR/config.h" "$pkgname-$pkgver"
+  elif [ ! -e "$BUILDDIR/config.def.h" ]
   then
     abort=1
     msg='This package can be configured in config.h. Copy provided '
@@ -48,7 +48,7 @@ prepare() {
     msg+='config.def.h as it is to use default values. Then rerun makepkg.'
     error "$msg"
   fi
-  cp "$pkgname-$pkgver/config.def.h" "$startdir"
+  cp "$pkgname-$pkgver/config.def.h" "$BUILDDIR"
   test -z "$abort"
 }
 
