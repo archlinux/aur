@@ -2,13 +2,13 @@
 # Contributor: Alad <alad@archlinux.info>
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=wmutils-git
-pkgver=1.4.r0.gdd268ec
+pkgver=1.5.r0.g354acb7
 pkgrel=1
 pkgdesc="A set of tools for X windows manipulation."
 url="https://github.com/wmutils/core"
 arch=('i686' 'x86_64')
 license=('ISC')
-depends=('libxcb' 'xcb-util' 'xcb-util-wm' 'libwm-git')
+depends=('libxcb' 'xcb-util' 'xcb-util-wm' 'libwm-git' 'xcb-util-cursor')
 makedepends=('git')
 conflicts=('wmutils')
 source=("$pkgname::git+https://github.com/wmutils/core.git"
@@ -33,8 +33,8 @@ build() {
 package() {
   prefix="/usr"
   manprefix="$prefix/share/man"
-  licenseprefix="$prefix/share/licenses/$pkgname"
-  docprefix="$prefix/share/doc/$pkgname"
+  licenseprefix="$prefix/share/licenses/${pkgname%-*}"
+  docprefix="$prefix/share/doc/${pkgname%-*}"
   cd "$srcdir/$pkgname"
   make DESTDIR="$pkgdir" PREFIX="$prefix" MANPREFIX="$manprefix" install
   install -Dm644 LICENSE $pkgdir/$licenseprefix/LICENSE
