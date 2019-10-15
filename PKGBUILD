@@ -1,5 +1,5 @@
 pkgname=kallisto
-pkgver=0.45.0
+pkgver=0.46.0
 pkgrel=1
 pkgdesc='Quantify abundances of transcripts from RNA-Seq data'
 url="http://pachterlab.github.io/$pkgname/"
@@ -8,7 +8,7 @@ arch=(i686 x86_64)
 depends=(hdf5 zlib)
 makedepends=(cmake autoconf automake)
 source=("https://github.com/pachterlab/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('b32c74cdc0349c2fe0847b3464a3698da89212a507332a06291b6fc27b4e2305')
+sha256sums=('af4778cf121cdb9f732b355fc0ce44c6708caddf22d9560ba7f4b5d5b9795be1')
 
 build() {
 	(
