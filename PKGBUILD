@@ -3,9 +3,9 @@
 
 pkgname='pop-gnome-shell-theme-bin'
 pkgver='5.0.0'
-pkgrel=4
-_timestamp=1570566474
-_commit=472b0cf
+pkgrel=5
+_timestamp=1570998216
+_commit=cbbf790
 pkgdesc='System76 Pop GNOME Shell Theme'
 arch=('any')
 url='https://github.com/pop-os/gnome-shell-theme'
@@ -23,7 +23,7 @@ optdepends=(
   "ttf-roboto-slab: Recommended font for documents"
 )
 source=("http://ppa.launchpad.net/system76/pop/ubuntu/pool/main/p/pop-gtk-theme/pop-gnome-shell-theme_${pkgver}~${_timestamp}~19.10~${_commit}_all.deb")
-sha256sums=('0bf7b5a0123f09706fde15b550ecb9ee8e4fc832e6c50e3216b60250ad9c10ff')
+sha256sums=('fa896f76803fc98c7f33dc506fe4677e42256139de1dd9b99cc806748143b258')
 
 package() {
   cd "${srcdir}"
