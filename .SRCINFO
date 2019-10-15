@@ -1,15 +1,15 @@
 pkgbase = kubernetic
 	pkgdesc = Package archlinux for Kubernetic
-	pkgver = 2.3.0
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = https://kubernetic.com/
 	arch = x86_64
 	license = GPL
 	makedepends = tar
-	source = https://kubernetic.s3.amazonaws.com/Kubernetic-2.3.0.tar.gz
+	source = https://kubernetic.s3.amazonaws.com/Kubernetic-2.4.0.tar.gz
 	source = kubernetic.png
 	source = kubernetic.desktop
-	sha256sums = 0fb74f1a30ac5fbd54bdecce3539bad9c2994b5621efd791c10c2185fb2e8eed
+	sha256sums = b7325edfae519c043d89f55e01734f6b9db25b7d21a9b5bac62aad632da78e69
 	sha256sums = fab7a05be0e7a9d373d0243b810c371eddaf32930f58eece4761b9e4296f8a3f
 	sha256sums = c49a4d4d045268c54bc09b73a0c51484139f779742fdf5404364a9181c52a24e
 

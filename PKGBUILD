@@ -5,7 +5,7 @@
 
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=kubernetic
-pkgver=2.3.0
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="Package archlinux for Kubernetic"
 arch=('x86_64')
@@ -23,17 +23,17 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://kubernetic.s3.amazonaws.com/Kubernetic-2.3.0.tar.gz"
+source=("https://kubernetic.s3.amazonaws.com/Kubernetic-2.4.0.tar.gz"
 	"kubernetic.png"
 	"kubernetic.desktop")
-sha256sums=('0fb74f1a30ac5fbd54bdecce3539bad9c2994b5621efd791c10c2185fb2e8eed'
+sha256sums=('b7325edfae519c043d89f55e01734f6b9db25b7d21a9b5bac62aad632da78e69'
 	    "fab7a05be0e7a9d373d0243b810c371eddaf32930f58eece4761b9e4296f8a3f"
 	    "c49a4d4d045268c54bc09b73a0c51484139f779742fdf5404364a9181c52a24e")
 
 package() {
 	cd $srcdir
 	install -d $pkgdir/{opt/$pkgname,usr/bin}
-	cp -a Kubernetic-2.3.0/* $pkgdir/opt/$pkgname
+	cp -a Kubernetic-2.4.0/* $pkgdir/opt/$pkgname
 	install -Dm644 $srcdir/kubernetic.png $pkgdir/usr/share/pixmaps/$pkgname.png
   	install -Dm644 $srcdir/$pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
 	ln -s /opt/kubernetic/kubernetic $pkgdir/usr/bin/$pkgname
