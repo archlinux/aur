@@ -1,6 +1,6 @@
 _name=plotnine
 pkgname=python-$_name
-pkgver=0.5.1
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='A grammar of graphics for python'
 arch=(any)
@@ -22,10 +22,11 @@ optdepends=(
 	'python-scikit-learn: gaussian process smoothing, kernel density implementation'
 	'python-scikit-misc: loess smooting'
 )
-_wheel="$_name-$pkgver-py2.py3-none-any.whl"
-source=("https://files.pythonhosted.org/packages/py2.py3/${_name::1}/$_name/$_wheel")
+_pyarch=py3
+_wheel="$_name-$pkgver-$_pyarch-none-any.whl"
+source=("https://files.pythonhosted.org/packages/$_pyarch/${_name::1}/$_name/$_wheel")
 noextract=("$_wheel")
-sha256sums=('0d8b44a6e433a9303231f2d402c5b898f50c04809a2fee8e393dc79a2d8d762d')
+sha256sums=('c271d08edf276f6be09951a4544a1116fc7aa6bc68cadef1b05e29c26ff5f683')
 
 package() {
 	pip install --compile --no-deps --ignore-installed --root="$pkgdir" "$_wheel"
