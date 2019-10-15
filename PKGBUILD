@@ -7,17 +7,18 @@
 # Contributor: Anders Bennehag
 
 pkgname=nix
-pkgver=2.2.2
-pkgrel=3
+pkgver=2.3.1
+pkgrel=1
 pkgdesc="A purely functional package manager"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://nixos.org/nix"
 license=('LGPL')
-depends=('gc' 'libsodium' 'boost' 'brotli' 'editline' 'archlinux-nix')
+depends=('gc' 'libsodium' 'boost' 'brotli' 'editline')
+optdepends=('archlinux-nix: tools to help with setup of Nix')
 makedepends=('bzip2' 'openssl')
 install=nix.install
 source=("https://nixos.org/releases/nix/nix-$pkgver/nix-$pkgver.tar.xz")
-sha256sums=('f80a1b4f9837a8d33209f0b7769d5038335459ff4303eccf3e9217a9eca8594c')
+sha256sums=('bb6578e9f20eebab6d78469ecc59c450ac54f276e5a86a882015d98fecb1bc7b')
 
 prepare() {
   cd "$pkgname-$pkgver"

@@ -1,13 +1,7 @@
 install_info() {
-  echo "Nix is installed and configured, and the nix-daemon should be running.  To check,"
-  echo "you can run:"
-  echo
-  echo "    archlinux-nix status"
-  echo
-  echo "Each user's environment is setup on login.  Alternatively, you can execute the"
-  echo "following to avoid having to log back in:"
-  echo
-  echo "    source /etc/profile.d/nix{,-daemon}.sh"
+  echo "Nix is installed but no configuration has been done to make it work."
+  echo "You may wish to install the archlinux-nix package from AUR to help set"
+  echo "things up."
   echo
   echo "For more information on how to use nix, check out Part III of the Nix Manual:"
   echo
@@ -21,27 +15,16 @@ remove_info() {
   echo "1. delete /nix folder"
   echo "   # rm -r /nix"
   echo
-  echo "2. delete the build users (if any)"
-  echo "   # archlinux-nix delete-build-group"
-  echo
-  echo "3. delete the config dir"
+  echo "2. delete the config dir"
   echo "   # rm -r /etc/nix"
   echo
-  echo "4. uninstall the archlinux-nix tool"
-  echo "   pacman -R archlinux-nix"
-  echo
-  echo "5. you may also want to delete nix-related files from users' home dirs"
+  echo "3. you may also want to delete nix-related files from users' home dirs"
   echo "   # rm -r /root/.nix-* /home/*/.nix-*"
   echo
 }
 
 post_install() {
-  archlinux-nix bootstrap
   install_info
-}
-
-post_upgrade() {
-  archlinux-nix bootstrap
 }
 
 post_remove() {
