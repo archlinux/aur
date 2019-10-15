@@ -30,7 +30,7 @@ source=("https://github.com/MycroftAI/mycroft-core/archive/release/v${pkgver}.ta
 	"mycroft.tmpfiles"
 	"mycroft.sysusers"
 	"mycroft.service"
-"mycroft.pulseaudio")
+)
 
 prepare() {
 	cd $srcdir/$pkgname-release-v$pkgver
@@ -66,13 +66,9 @@ package() {
 	# Cleanup
 	find . -name "*.py[co]" -o -name __pycache__ -exec rm -rf {} +
 	rm -rf "$pkgdir/usr/share/mycroft-core/test"
-
-	# Pulseaudio Workaround (any suggestion is well accepted)
-	install -D -m644 "${srcdir}/mycroft.pulseaudio" "${pkgdir}/usr/share/mycroft-core/pulse-client.conf"
 }
 
 md5sums=('04ec4428ad8ee3787e798bcd5a7ed23a'
-	'6712830084b2d2845f7c1db46410cfc7'
+	'679808c9cbbcd0770772a08345cd752f'
 	'f4b41cc9e1a7308c8833f0f7804d8c02'
-	'a587888fcaf792ab9ceb6c698bb03ac3'
-'ffd5e294798abaa35bb79f2b1afd40e1')
+'a587888fcaf792ab9ceb6c698bb03ac3')

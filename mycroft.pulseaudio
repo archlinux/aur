@@ -1,6 +1,0 @@
-# This is a working example to get PulseAudio working when no root privileges are involved
-# References to:
-#  https://wiki.archlinux.org/index.php/PulseAudio/Examples#Allowing_multiple_users_to_use_PulseAudio_at_the_same_time
-#
-# Copy this file into /var/lib/mycroft/.config/pulse/client.conf
-default-server = unix:/tmp/pulse-socket
