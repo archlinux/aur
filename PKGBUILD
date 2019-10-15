@@ -2,27 +2,20 @@
 # Contributor: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=krusader-git
-pkgver=2.8.0.dev.r5907.gff58e5c0
+pkgver=2.8.0.dev.r6115.gc3c22c9d
 pkgrel=1
 pkgdesc="Advanced twin panel file manager for KDE. (GIT version)"
 arch=('x86_64')
 url='http://www.krusader.org'
 license=('GPL')
-depends=('karchive' 'kbookmarks' 'kcodecs' 'kcompletion' 'kcoreaddons' 'kconfig'
-         'kdoctools' 'ki18n' 'kiconthemes' 'kitemviews' 'kio' 'knotifications'
-         'kparts' 'solid' 'ktextwidgets' 'kwallet' 'kwidgetsaddons' 'kwindowsystem'
-         'kxmlgui' 'kguiaddons' 'hicolor-icon-theme')
-makedepends=('cmake' 'extra-cmake-modules' 'git')
-optdepends=(
-            # archive formats
-            # look for KrServices::cmdExist calls
-            'xz: LZMA and XZ archive support'
+depends=('kparts' 'hicolor-icon-theme')
+makedepends=('extra-cmake-modules' 'kdoctools' 'git')
+optdepends=('xz: LZMA and XZ archive support'
             'unzip: ZIP decompression support'
             'zip: ZIP archive support'
             'lhasa: LHA archive support'
             'cpio: cpio archive support'
             'unrar: RAR decompression support'
-            'rar: RAR archive support'
             'arj: ARJ archive support'
             'unarj: ARJ decompression support'
             'unace: ACE decompression support'
@@ -34,8 +27,7 @@ optdepends=(
             'kdiff3: file contents comparison'
             'krename: advanced rename tool'
             'konsole: terminal'
-            'ktexteditor: file editing support'
-)
+            'ktexteditor: file editing support')
 provides=('krusader')
 conflicts=('krusader')
 source=('git://anongit.kde.org/krusader')
@@ -47,16 +39,18 @@ pkgver() {
   echo "${_ver}.r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+  mkdir -p build
+}
+
 build() {
-  cd krusader
-  cmake . \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
+  cd build
+  cmake ../krusader \
     -DKDESU_PATH="/usr/lib/kf5/kdesu"
   make
 }
 
 package() {
-  cd krusader
+  cd build
   make DESTDIR="$pkgdir" install
 }
