@@ -1,14 +1,14 @@
 # Contributor: Hector <hsearaDOTatDOTgmailDOTcom>
 
 pkgname=gromacs-plumed
-pkgver=2019.2
-_gromacsver=2019.2
-_plumedver=2.5.2
+pkgver=2019.4
+_gromacsver=2019.4
+_plumedver=2.5.3
 pkgrel=1
 pkgdesc='GROMACS is a versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles. (Plumed patched)'
 url='http://www.gromacs.org/'
 license=("LGPL")
-arch=('i686' 'x86_64')
+arch=('x86_64')
 depends=('lapack' 'zlib' "plumed>=${_plumedver}")
 optdepends=('cuda: Nvidia GPU support'
             'opencl-mesa: OpenCL support for AMD GPU'
@@ -16,7 +16,7 @@ optdepends=('cuda: Nvidia GPU support'
 makedepends=('cmake' 'libxml2' 'hwloc' 'gcc8')
 options=('!libtool')
 source=(ftp://ftp.gromacs.org/pub/gromacs/gromacs-${pkgver}.tar.gz)
-sha1sums=('6d638441221b829f13bd721f79ea7db1be84757f')
+sha256sums=('ba4366eedfc8a1dbf6bddcef190be8cd75de53691133f305a7f9c296e5ca1867')
 
 export VMDDIR=/usr/lib/vmd/ #If vmd is available at compilation time
                             #Gromacs will have the ability to read any
