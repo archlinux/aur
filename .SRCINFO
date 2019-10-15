@@ -1,18 +1,20 @@
 pkgbase = clean-lang-bin
 	pkgdesc = Provides the general purpose, pure and lazy functional programming language Clean.
 	pkgver = 3.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://clean.cs.ru.nl
 	arch = x86_64
 	license = custom
-	depends = glibc
+	depends = bash
 	provides = clean-lang
 	conflicts = clean-lang
 	replaces = clean-lang
 	source = https://ftp.cs.ru.nl/Clean/Clean30/linux/clean3.0_64.tar.gz
-	source = clean-lang.sh
+	source = clm-wrapper.sh
+	source = clenv.sh
 	sha256sums = c71024cc6d27df357fed771a75f5d43e584369c3ee963bfd6d5cffe9af731ca8
-	sha256sums = 872a1bbe40b2b846e7aef38cee182df731bd2fca60bfb639d44fbb8ed21649d3
+	sha256sums = 70d90c34c0c9716b59cb843a7a617c986f56810a70342be3d4c2389436317c82
+	sha256sums = c190821ac6c72d159c9713fba3140b886d5d1716021bf8e28b676418774d0915
 
 pkgname = clean-lang-bin
 
