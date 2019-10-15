@@ -5,7 +5,7 @@
 # Contributor: Curtis Smith <kman922002@gmail.com>
 
 pkgname=odamex
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc='A free client/server multiplayer engine for the classic FPS Doom.'
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ makedepends=('cmake')
 optdepends=('timidity++: Required for music')
 source=("http://downloads.sourceforge.net/odamex/odamex-src-${pkgver}.tar.gz"
         0001-Fix-WAD-path.patch)
-sha256sums=('52b4d0ba504edfea53e24d8b19c86da6f7e3b75980c3133eb6b5e97d24a606ea'
+sha256sums=('31704a45eae3a833dcc0c4c840444cda0ba88a2fc9b6115b612e31a6dcc48bfb'
             'c4ce4072515c7dbfe65d1829a317d21b5f1091e04997761cdfee345a60141638')
 
 prepare() {
