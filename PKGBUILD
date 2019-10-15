@@ -7,7 +7,7 @@
 pkgbase=linux-zencjk       # Build kernel with a different name
 _srcver=5.3.6-zen1
 pkgver=${_srcver//-/.}
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 url="https://github.com/zen-kernel/zen-kernel/commits/v$_srcver"
 license=(GPL2)
