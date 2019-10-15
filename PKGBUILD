@@ -2,7 +2,7 @@
 # Contributor: eolianoe <eolianoe [at] gmail [DoT] com>
 
 pkgname=pgi-compilers
-_release='194'
+_release='19.4'
 _REL_VERSION='2019'
 pkgver=${_release}
 pkgrel=1
