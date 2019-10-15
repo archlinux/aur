@@ -2,19 +2,19 @@
 # Maintainer: Hector Martinez-Seara Monne <hseara ##[at]## gmail?com>
 
 pkgname=plumed
-pkgver=2.5.2
-pkgrel=2
+pkgver=2.5.3
+pkgrel=1
 pkgdesc="An open source plugin for free energy calculations in molecular systems which works together with some of the most popular molecular dynamics engines."
 url="http://www.plumed.org/"
 license=("GPL")
-arch=(i686 x86_64)
+arch=("x86_64")
 depends=('lapack' 'zlib' 'gsl' 'netcdf' 'gcc8')
 optdepends=('vmd-molfile-plugins: Add capability to read vmd compatible trajectories')
 makedepends=('vim')
 provides=('plumed')
 #install=$pkgname.install
 source=( https://github.com/plumed/plumed2/releases/download/v${pkgver}/plumed-${pkgver}.tgz)
-sha1sums=('5f0944c126e00e27601aca841a94dd397fd33dc6')
+sha256sums=('e59fb5d7c4ee9a21cd0a82c361bbab472cddf07475db8e70ed83549ba7e41331')
 #options=(!buildflags)
 
 #Using gcc8 as compiler due to linking problems with gromacs-plumed
