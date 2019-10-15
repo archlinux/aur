@@ -2,7 +2,7 @@
 # Maintainer: Hector <hsearaDOTatDOTgmailDOTcom>
 
 pkgname=gromacs-2018-complete
-pkgver=2018.7
+pkgver=2018.8
 pkgrel=3
 pkgdesc='A versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles.'
 url='http://www.gromacs.org/'
@@ -18,8 +18,8 @@ makedepends=('cmake' 'libxml2' 'hwloc')
 options=('!libtool')
 source=(http://ftp.gromacs.org/pub/gromacs/gromacs-${pkgver}.tar.gz
         GMXRC.bash.cmakein.patch)
-sha1sums=('bf90510d31150a78acb4ee79f99191686fdf0a36'
-          '014b2cbfa13db9b495c88f653805c330747117dc')
+sha256sums=('776923415df4bc78869d7f387c834141fdcda930b2e75be979dc59ecfa6ebecf'
+            'b345e0d81a4f7ce7ee1719c4ce78096a1105a12bae9c8696b09bf1187ae35c3a')
 
 export VMDDIR=/usr/lib/vmd/ #If vmd is available at compilation time
                             #Gromacs will have the ability to read any
