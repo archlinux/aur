@@ -10,7 +10,18 @@ pkgdesc='PGI compilers and tools (Community Edition)'
 arch=('x86_64')
 url="https://www.pgroup.com/products/community.htm"
 license=('custom')
-depends=('gtk2')
+depends=(
+  'gtk2'
+  'lib32-glibc'
+  'python'
+  'libnet'
+  'openmp'
+  'libglvnd'
+  'alsa-lib'
+  'libxslt'
+  'libxtst'
+  'openmpi'
+)
 makedepends=('bash')
 source=("file://pgilinux-${_REL_VERSION}-${_release//./}-x86-64.tar.gz"
         "https://www.pgroup.com/doc/LICENSE.txt"
@@ -53,6 +64,8 @@ package(){
 
   # Fix reference to $pkgdir
   sed -i "s:${pkgdir}::g" $(grep -rl "${pkgdir}" "${pkgdir}")
+  # Fix ownership
+  chown -R root: ${pkgdir}
 }
 
 # vim:set ts=2 sw=2 et:

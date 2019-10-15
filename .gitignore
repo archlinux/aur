@@ -1,6 +1,18 @@
-*.gz
-*.xz
-LICENSE.txt
-/pkg
-/src
-*.log*
+#### joe made this: http://goel.io/joe
+
+#### archlinuxpackages ####
+*.tar
+*.tar.*
+*.jar
+*.exe
+*.msi
+*.zip
+*.tgz
+*.log
+*.log.*
+*.sig
+
+pkg/
+src/
+
+*.txt
