@@ -44,11 +44,14 @@ check() {
 
 package() {
     cd "$srcdir/Halide/build"
-    make DESTDIR="$pkgdir/" install
-    mkdir "${pkgdir}/usr/local/lib"
+    make DESTDIR="$pkgdir/" install    
     rm -rf "${pkgdir}/usr/local/tutorial/"
     rm -rf "${pkgdir}/usr/local/tools/"
+    
+    mkdir "${pkgdir}/usr/local/lib"
+    mkdir "${pkgdir}/usr/local/include/Halide"
     mv "${pkgdir}/usr/local/bin/libHalide.so" "${pkgdir}/usr/local/lib/"
+    find "${pkgdir}/usr/local/include/" -maxdepth 1 -type f -exec mv {} "${pkgdir}/usr/local/include/Halide" \;
     rmdir "${pkgdir}/usr/local/bin/"
     find ${pkgdir} -type f -name "*.md" -delete
     find ${pkgdir} -type f -name "*.*make" -delete
