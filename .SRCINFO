@@ -1,14 +1,14 @@
 pkgbase = firefox-css-exfil-protection
 	pkgdesc = Guard against CSS data exfiltration attacks
-	pkgver = 1.0.16
+	pkgver = 1.0.17
 	pkgrel = 1
 	url = https://www.mike-gualtieri.com/css-exfil-vulnerability-tester
 	arch = any
 	groups = firefox-addons
 	license = MIT
-	noextract = css_exfil_protection-1.0.16-an+fx.xpi
-	source = https://addons.cdn.mozilla.net/user-media/addons/931864/css_exfil_protection-1.0.16-an+fx.xpi
-	sha256sums = e57119d372015588948bf349d728419ef9750ec9623b2d6365aa83e64c9b59d5
+	noextract = css_exfil_protection-1.0.17-an+fx.xpi
+	source = https://addons.cdn.mozilla.net/user-media/addons/931864/css_exfil_protection-1.0.17-an+fx.xpi
+	sha256sums = 918148e4218e1b60ce83ad5c81d2e7383e7ef85378bc838c52b7b2aad9cb78ce
 
 pkgname = firefox-css-exfil-protection
 
