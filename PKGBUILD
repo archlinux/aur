@@ -1,5 +1,5 @@
 pkgname=python-pamela
-pkgver=0.3.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Python PAM interface"
 arch=('any')
@@ -7,7 +7,7 @@ url="https://github.com/minrk/pamela"
 license=('MIT')
 depends=('pam' 'python')
 source=("https://github.com/minrk/pamela/archive/${pkgver}.tar.gz")
-md5sums=('d4eca701a798c8411e7c7c4a3f4dbc92')
+md5sums=('0df71e470bc4199548734794a4ddc33a')
 
 package() {
   cd "$srcdir/pamela-$pkgver"
