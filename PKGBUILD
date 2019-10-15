@@ -1,7 +1,7 @@
 # Maintainer: Christopher Arndt <aur -at- chrisarndt -dot- de>
 
 pkgname=jack-select
-pkgver=1.3.1
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="A systray app to set the JACK configuration from QjackCtl presets via DBus."
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/SpotlightKid/jack-select"
 license=('MIT')
 depends=('python-dbus' 'python-gobject' 'python-pyudev' 'python-setuptools' 'python-xdg')
 source=("https://files.pythonhosted.org/packages/source/j/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('03f4db8690c328dbee341848748af7c8f1e6af9c9409afd7c17934d6e4259e78')
+sha256sums=('629625f21310e2dbc2932e8130abb6683de83e29f9d25f8a1471ed73043a2c50')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"

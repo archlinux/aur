@@ -1,6 +1,6 @@
 pkgbase = jack-select
 	pkgdesc = A systray app to set the JACK configuration from QjackCtl presets via DBus.
-	pkgver = 1.3.1
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/SpotlightKid/jack-select
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = jack-select
 	depends = python-pyudev
 	depends = python-setuptools
 	depends = python-xdg
-	source = https://files.pythonhosted.org/packages/source/j/jack-select/jack-select-1.3.1.tar.gz
-	sha256sums = 03f4db8690c328dbee341848748af7c8f1e6af9c9409afd7c17934d6e4259e78
+	source = https://files.pythonhosted.org/packages/source/j/jack-select/jack-select-1.4.0.tar.gz
+	sha256sums = 629625f21310e2dbc2932e8130abb6683de83e29f9d25f8a1471ed73043a2c50
 
 pkgname = jack-select
 
