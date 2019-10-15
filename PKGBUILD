@@ -1,9 +1,9 @@
 # Maintainer: Wayne Campbell <wcampbell1995 [at] gmail [dot] com>
 pkgname=mint-cli-git
 _pkgname=mint-cli
-pkgver=r52.814bd4d
+pkgver=v0.1.0.r0.g11aad24
 pkgrel=1
-pkgdesc="cli interface for Mint using python-mintapi"
+pkgdesc="cli interface for Intuit Mint using python-mintapi"
 arch=('any')
 url="https://github.com/userWayneCampbell/mint-cli"
 license=('GPL')

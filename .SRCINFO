@@ -1,6 +1,6 @@
 pkgbase = mint-cli-git
-	pkgdesc = cli interface for Mint using python-mintapi
-	pkgver = r52.814bd4d
+	pkgdesc = cli interface for Intuit Mint using python-mintapi
+	pkgver = v0.1.0.r0.g11aad24
 	pkgrel = 1
 	url = https://github.com/userWayneCampbell/mint-cli
 	arch = any
