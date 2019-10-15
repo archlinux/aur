@@ -1,6 +1,6 @@
 pkgbase = waterfox-kde
 	pkgdesc = Free, open and private browser with openSUSE's patches for better integration with KDE
-	pkgver = 56.2.14
+	pkgver = 2019.10
 	pkgrel = 0
 	url = https://www.waterfox.net/
 	arch = x86_64
@@ -43,12 +43,12 @@ pkgbase = waterfox-kde
 	optdepends = alsa-lib: Audio support
 	optdepends = jack: Audio support
 	optdepends = speech-dispatcher: Text-to-Speech
-	provides = waterfox=56.2.14
+	provides = waterfox=2019.10
 	conflicts = waterfox
 	options = !emptydirs
 	options = !makeflags
 	options = zipman
-	source = git+https://github.com/MrAlex94/Waterfox.git#commit=4f22b84524c911ee3d9dba38180304c0a324bca9
+	source = git+https://github.com/MrAlex94/Waterfox.git#commit=5d90ff98a165ce0018077c9f916f28a55144a76d
 	source = waterfox.desktop::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-kde/waterfox.desktop
 	source = kde.js::https://raw.githubusercontent.com/hawkeye116477/Waterfox/plasma/_Plasma_Build/kde.js
 	source = distribution.ini::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-kde/distribution.ini
@@ -59,7 +59,7 @@ pkgbase = waterfox-kde
 	source = dont-statically-link-libstdc++.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-kde/patches/dont-statically-link-libstdc%2B%2B.patch
 	source = pgo_fix_missing_kdejs.patch
 	sha256sums = SKIP
-	sha256sums = 6e9ec5f9c6fc5b191f9dec85b82d58eb2a51577b989bc7852e6b254d56ff13e8
+	sha256sums = 64d5587093e4d32b0111adf8f531a2e3bfe24e76b8f5166e31cebcad7add8f81
 	sha256sums = 0850a8a8dea9003c67a8ee1fa5eb19a6599eaad9f2ad09db753b74dc5048fdbc
 	sha256sums = 3961c09993c442df97832866ddaea5bcc1ade1313beb313b5ceba60166933016
 	sha256sums = 065244d3f6d88c48b7afec313b7da5a3a04377076e198954cda7951500530b84
