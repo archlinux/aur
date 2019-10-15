@@ -45,8 +45,11 @@ check() {
 package() {
     cd "$srcdir/Halide/build"
     make DESTDIR="$pkgdir/" install
+    mkdir "${pkgdir}/usr/local/lib"
     rm -rf "${pkgdir}/usr/local/tutorial/"
     rm -rf "${pkgdir}/usr/local/tools/"
+    mv "${pkgdir}/usr/local/bin/libHalide.so" "${pkgdir}/usr/local/lib/"
+    rmdir "${pkgdir}/usr/local/bin/"
     find ${pkgdir} -type f -name "*.md" -delete
     find ${pkgdir} -type f -name "*.*make" -delete
 }
