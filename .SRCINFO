@@ -1,13 +1,14 @@
 pkgbase = wf-config
 	pkgdesc = A library for managing configuration files, written for wayfire
 	pkgver = 0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wayfire.org
 	arch = x86_64
 	license = custom:MIT
 	makedepends = meson
 	makedepends = ninja
 	makedepends = pkg-config
+	makedepends = wayland-protocols
 	depends = libevdev
 	depends = wlroots>=0.8.0
 	conflicts = wf-config-git
