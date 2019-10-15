@@ -2,7 +2,7 @@
 # Contributor: Alexsandr Pavlov <kidoz at mail dot ru>
 # Maintainer: Philipp A. <flying-sheep@web.de>
 pkgname=rstudio-desktop
-pkgver=1.2.1335
+pkgver=1.2.5001
 _gwtver=2.8.1
 _ginver=2.1.2
 _clangver=3.6.1
@@ -32,7 +32,7 @@ source=(
 )
 noextract=('core-dictionaries.zip' "gin-$_ginver.zip")
 sha256sums=(
-	'466d547d1330a39138f25ef0a3ac6d2120cbacafdc71843f257e6a48ddc7c5ae'
+	'68d530c6ee724946f3a2f1ee53de8529c9953abf4bc69ba344629fe9d8582a17'
 	'b98e704164f54be596779696a3fcd11be5785c9907a99ec535ff6e9525ad5f9a'
 	'0b7af89fdadb4ec51cdb400ace94637d6fe9ffa401b168e2c3d372392a00a0a7'
 	'4341a9630efb9dcf7f215c324136407f3b3d6003e1c96f2e5e1f9f14d5787494'
@@ -84,10 +84,14 @@ build() {
 		bash 'install-packages'
 	)
 	
+	# The previous comparison doesn’t seem to work with Boost_VERSION being 1.71.0
+	sed -i 's/if(NOT Boost_VERSION LESS 106900)/if(NOT Boost_VERSION VERSION_LESS 1.69.0)/' src/cpp/CMakeLists.txt
+	
 	# Prevent java error: “Could not lock User prefs. Lock file access denied.”
 	# Because gwt desperately needs to add a “firstLaunch” entry there…
 	export JAVA_TOOL_OPTIONS="-Djava.util.prefs.userRoot=$srcdir"
 	cmake -DRSTUDIO_TARGET=Desktop \
+		-DRSTUDIO_USE_SYSTEM_BOOST=Yes \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DQT_QMAKE_EXECUTABLE=/usr/bin/qmake-qt5 \
 		-DCMAKE_INSTALL_PREFIX=/usr/lib/rstudio
