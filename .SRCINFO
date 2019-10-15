@@ -1,7 +1,7 @@
 pkgbase = simgear
 	pkgdesc = A set of open-source libraries designed to be used as building blocks for quickly assembling 3d simulations, games, and visualization applications.
 	pkgver = 2018.3.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.flightgear.org/
 	arch = x86_64
 	license = GPL
