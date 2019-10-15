@@ -8,6 +8,7 @@ arch=(any)
 license=(AGPL3)
 depends=(xdg-utils shared-mime-info desktop-file-utils)
 makedepends=(librsvg imagemagick)
+optdepends=('osu-handler: to open osu! files in a running osu! instance')
 install='osu-mime.install'
 source=(https://raw.githubusercontent.com/ppy/osu-web/master/public/images/layout/osu-logo-triangles.svg
         https://raw.githubusercontent.com/ppy/osu-web/master/public/images/layout/osu-logo-white.svg

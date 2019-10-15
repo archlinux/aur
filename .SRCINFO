@@ -10,6 +10,7 @@ pkgbase = osu-mime
 	depends = xdg-utils
 	depends = shared-mime-info
 	depends = desktop-file-utils
+	optdepends = osu-handler: to open osu! files in a running osu! instance
 	source = https://raw.githubusercontent.com/ppy/osu-web/master/public/images/layout/osu-logo-triangles.svg
 	source = https://raw.githubusercontent.com/ppy/osu-web/master/public/images/layout/osu-logo-white.svg
 	source = osu-file-extensions.xml
