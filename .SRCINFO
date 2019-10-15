@@ -1,6 +1,6 @@
 pkgbase = ocaml-menhir-compcert
 	pkgdesc = Latest version of Menhir that can build the latest CompCert release.
-	pkgver = 20190626
+	pkgver = 20190924
 	pkgrel = 1
 	url = http://cristal.inria.fr/~fpottier/menhir/
 	arch = i686
@@ -10,12 +10,12 @@ pkgbase = ocaml-menhir-compcert
 	makedepends = ocamlbuild
 	makedepends = ocaml-findlib
 	depends = ocaml>=4.02
-	provides = ocaml-menhir=20190626
+	provides = ocaml-menhir=20190924
 	conflicts = ocaml-menhir
 	options = !strip
 	options = !makeflags
-	source = https://gitlab.inria.fr/fpottier/menhir/-/archive/20190626/menhir-20190626.tar.gz
-	md5sums = 097afbd686172e15bef0ccb938b9c634
+	source = https://gitlab.inria.fr/fpottier/menhir/-/archive/20190924/menhir-20190924.tar.gz
+	md5sums = 69b2cbcfb12ca0ca09ad0096c8716265
 
 pkgname = ocaml-menhir-compcert
 
