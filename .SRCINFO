@@ -1,6 +1,6 @@
 pkgbase = opencv-cuda
 	pkgdesc = Open Source Computer Vision Library with CUDA support
-	pkgver = 4.1.1
+	pkgver = 4.1.2
 	pkgrel = 1
 	url = http://opencv.org/
 	arch = x86_64
@@ -34,12 +34,12 @@ pkgbase = opencv-cuda
 	conflicts = opencv
 	conflicts = opencv-samples
 	options = staticlibs
-	source = opencv-4.1.1.tar.gz::https://github.com/opencv/opencv/archive/4.1.1.zip
-	source = opencv_contrib-4.1.1.tar.gz::https://github.com/opencv/opencv_contrib/archive/4.1.1.tar.gz
+	source = opencv-4.1.2.tar.gz::https://github.com/opencv/opencv/archive/4.1.2.zip
+	source = opencv_contrib-4.1.2.tar.gz::https://github.com/opencv/opencv_contrib/archive/4.1.2.tar.gz
 	source = fix-cuda-10.1.patch
 	source = fix-build-error.patch::https://github.com/opencv/opencv_contrib/commit/00e60f0d578651540b709730aa284af54055ae97.patch
-	sha256sums = d34985c7b4283519c032e3585b30846644f56c81acba35693295ff8930f080aa
-	sha256sums = 9f85d380758498d800fec26307e389620cde8b1a2e86ab51cddc5200fbe37102
+	sha256sums = 546d7d19388f2eea709a1951c7bfd56943241e41649473278950f4cbef656661
+	sha256sums = 0f6c3d30baa39e3e7611afb481ee86dea45dafb182cac87d570c95dccd83eb8b
 	sha256sums = 4e1640f37ee357d38551a65d3dbfc03a5d7589bffaa3cde92a64c5ea62f55aef
 	sha256sums = 805166b77b0c38e9e9f69b5b285d2b5313e54f0419a71155f4d9f2d5e6b5d2cc
 

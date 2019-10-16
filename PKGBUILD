@@ -3,7 +3,7 @@
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 
 pkgname=opencv-cuda
-pkgver=4.1.1
+pkgver=4.1.2
 pkgrel=1
 provides=(opencv opencv-samples)
 conflicts=(opencv opencv-samples)
@@ -24,8 +24,8 @@ source=("opencv-$pkgver.tar.gz::https://github.com/opencv/opencv/archive/$pkgver
         "opencv_contrib-$pkgver.tar.gz::https://github.com/opencv/opencv_contrib/archive/$pkgver.tar.gz"
         "fix-cuda-10.1.patch"
         "fix-build-error.patch::https://github.com/opencv/opencv_contrib/commit/00e60f0d578651540b709730aa284af54055ae97.patch")
-sha256sums=('d34985c7b4283519c032e3585b30846644f56c81acba35693295ff8930f080aa'
-            '9f85d380758498d800fec26307e389620cde8b1a2e86ab51cddc5200fbe37102'
+sha256sums=('546d7d19388f2eea709a1951c7bfd56943241e41649473278950f4cbef656661'
+            '0f6c3d30baa39e3e7611afb481ee86dea45dafb182cac87d570c95dccd83eb8b'
             '4e1640f37ee357d38551a65d3dbfc03a5d7589bffaa3cde92a64c5ea62f55aef'
             '805166b77b0c38e9e9f69b5b285d2b5313e54f0419a71155f4d9f2d5e6b5d2cc')
 
