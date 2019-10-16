@@ -14,8 +14,8 @@ conflicts=("electron3")
 depends=("gtk3" "libxss" "nss")
 source=("${_github_url}/releases/download/v${pkgver}/chromedriver-v${pkgver}-linux-x64.zip"
 "${_github_url}/releases/download/v${pkgver}/electron-v${pkgver}-linux-x64.zip")
-sha256sums=("8256f20cb30d9f1c545c8228d7b59622743e270016e6541c51e3dbebb71ef790"
-            "b3ad887ce96e4eba18c7736b4e504f71785d88e108a5f7ec0ac20afb9c106b88")
+sha256sums=('8256f20cb30d9f1c545c8228d7b59622743e270016e6541c51e3dbebb71ef790'
+            'b3ad887ce96e4eba18c7736b4e504f71785d88e108a5f7ec0ac20afb9c106b88')
 
 package() {
 	cd "${srcdir}"
