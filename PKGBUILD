@@ -4,9 +4,9 @@
 pkgname=nushell
 cargoname=nu
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 makedepends=('rustup')
-depends=('openssl' 'zlib')
+depends=('openssl' 'zlib' 'e2fsprogs')
 optdepends=('libxcb' 'libx11')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 pkgdesc="A shell for the GitHub era"
