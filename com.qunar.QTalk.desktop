@@ -15,3 +15,5 @@ Categories=QT;Network;InstantMessaging;
 # Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 Keywords[zh_CN]=qtalk;qunar;chat;QTalk;
 Keywords=qtalk;qunar;chat;QTalk;
+Terminal=false
+Type=Application
