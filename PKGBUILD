@@ -1,16 +1,19 @@
 # Maintainer: Cyano Hao <c@cyano.cn>
-# Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
-# Maintainer: Tobias Powalowski <tpowa@archlinux.org>
-# Maintainer: Thomas Baechler <thomas@archlinux.org>
+# Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+# Contributor: Tobias Powalowski <tpowa@archlinux.org>
+# Contributor: Thomas Baechler <thomas@archlinux.org>
 
 pkgbase=linux-x32       # Build kernel with a different name
-_srcver=5.0-arch1
+_srcver=5.3.6-arch1
 pkgver=${_srcver//-/.}
 pkgrel=1
 arch=(x86_64)
 url="https://git.archlinux.org/linux.git/log/?h=v$_srcver"
 license=(GPL2)
-makedepends=(xmlto kmod inetutils bc libelf git python-sphinx graphviz)
+makedepends=(
+  xmlto kmod inetutils bc libelf git python-sphinx python-sphinx_rtd_theme
+  graphviz imagemagick
+)
 options=('!strip')
 _srcname=archlinux-linux
 source=(
@@ -26,8 +29,8 @@ validpgpkeys=(
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            '88ee44488bc183c3b9e5591e278c9661c3d2f8adffe2bb2903ae763a0b8ba804'
-            'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
+            '7f6fc939dd137adcf264fa3dfb5d476941f6f0830cf9bc1fa089a2a3d1585ce1'
+            '452b8d4d71e1565ca91b1bebb280693549222ef51c47ba8964e411b2d461699c'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 
@@ -55,8 +58,8 @@ prepare() {
   cp ../config .config
   make olddefconfig
 
-  make -s kernelrelease > ../version
-  msg2 "Prepared %s version %s" "$pkgbase" "$(<../version)"
+  make -s kernelrelease > version
+  msg2 "Prepared %s version %s" "$pkgbase" "$(<version)"
 }
 
 build() {
@@ -65,17 +68,16 @@ build() {
 }
 
 _package() {
-  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules"
-  [[ $pkgbase = linux ]] && groups=(base)
-  depends=(coreutils linux-firmware kmod mkinitcpio)
-  optdepends=('crda: to set the correct wireless channels of your country')
+  pkgdesc="The Linux kernel and modules with x32 ABI support"
+  depends=(coreutils kmod initramfs)
+  optdepends=('crda: to set the correct wireless channels of your country'
+              'linux-firmware: firmware images needed for some devices')
   backup=("etc/mkinitcpio.d/$pkgbase.preset")
   install=linux.install
 
+  cd $_srcname
   local kernver="$(<version)"
   local modulesdir="$pkgdir/usr/lib/modules/$kernver"
-
-  cd $_srcname
 
   msg2 "Installing boot image..."
   # systemd expects to find the kernel here to allow hibernation
@@ -83,15 +85,11 @@ _package() {
   install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
   install -Dm644 "$modulesdir/vmlinuz" "$pkgdir/boot/vmlinuz-$pkgbase"
 
+  # Used by mkinitcpio to name the kernel
+  echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
+
   msg2 "Installing modules..."
   make INSTALL_MOD_PATH="$pkgdir/usr" modules_install
-
-  # a place for external modules,
-  # with version file for building modules and running depmod from hook
-  local extramodules="extramodules$_kernelname"
-  local extradir="$pkgdir/usr/lib/modules/$extramodules"
-  install -Dt "$extradir" -m644 ../version
-  ln -sr "$extradir" "$modulesdir/extramodules"
 
   # remove build and source links
   rm "$modulesdir"/{source,build}
@@ -101,7 +99,6 @@ _package() {
   local subst="
     s|%PKGBASE%|$pkgbase|g
     s|%KERNVER%|$kernver|g
-    s|%EXTRAMODULES%|$extramodules|g
   "
 
   # hack to allow specifying an initially nonexisting install file
@@ -123,12 +120,12 @@ _package() {
 _package-headers() {
   pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel"
 
+  cd $_srcname
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
-  cd $_srcname
-
   msg2 "Installing build files..."
-  install -Dt "$builddir" -m644 Makefile .config Module.symvers System.map vmlinux
+  install -Dt "$builddir" -m644 .config Makefile Module.symvers System.map \
+    localversion.* version vmlinux
   install -Dt "$builddir/kernel" -m644 kernel/Makefile
   install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
   cp -t "$builddir" -a scripts
@@ -138,9 +135,6 @@ _package-headers() {
 
   # add xfs and shmem for aufs building
   mkdir -p "$builddir"/{fs/xfs,mm}
-
-  # ???
-  mkdir "$builddir/.tmp_versions"
 
   msg2 "Installing headers..."
   cp -t "$builddir" -a include
@@ -195,7 +189,7 @@ _package-headers() {
 
   msg2 "Adding symlink..."
   mkdir -p "$pkgdir/usr/src"
-  ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase-$pkgver"
+  ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 
   msg2 "Fixing permissions..."
   chmod -Rc u=rwX,go=rX "$pkgdir"
@@ -204,9 +198,8 @@ _package-headers() {
 _package-docs() {
   pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase/linux/Linux} kernel"
 
-  local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
-
   cd $_srcname
+  local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
   msg2 "Installing documentation..."
   mkdir -p "$builddir"

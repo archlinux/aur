@@ -1,7 +1,7 @@
 pkgbase = linux-x32
-	pkgver = 5.0.arch1
+	pkgver = 5.3.6.arch1
 	pkgrel = 1
-	url = https://git.archlinux.org/linux.git/log/?h=v5.0-arch1
+	url = https://git.archlinux.org/linux.git/log/?h=v5.3.6-arch1
 	arch = x86_64
 	license = GPL2
 	makedepends = xmlto
@@ -11,9 +11,11 @@ pkgbase = linux-x32
 	makedepends = libelf
 	makedepends = git
 	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
 	makedepends = graphviz
+	makedepends = imagemagick
 	options = !strip
-	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v5.0-arch1
+	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v5.3.6-arch1
 	source = config
 	source = 60-linux.hook
 	source = 90-linux.hook
@@ -22,19 +24,19 @@ pkgbase = linux-x32
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = 8218F88849AAC522E94CF470A5E9288C4FA415FA
 	sha256sums = SKIP
-	sha256sums = 88ee44488bc183c3b9e5591e278c9661c3d2f8adffe2bb2903ae763a0b8ba804
-	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
+	sha256sums = 7d09d1d79a4ecb82502b4483cf989ede3f643e05613de45e12563dfe85d80423
+	sha256sums = 452b8d4d71e1565ca91b1bebb280693549222ef51c47ba8964e411b2d461699c
 	sha256sums = c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636
 	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
 
 pkgname = linux-x32
-	pkgdesc = The Linux-x32 kernel and modules
+	pkgdesc = The Linux kernel and modules with x32 ABI support
 	install = linux.install
 	depends = coreutils
-	depends = linux-firmware
 	depends = kmod
-	depends = mkinitcpio
+	depends = initramfs
 	optdepends = crda: to set the correct wireless channels of your country
+	optdepends = linux-firmware: firmware images needed for some devices
 	backup = etc/mkinitcpio.d/linux-x32.preset
 
 pkgname = linux-x32-headers
