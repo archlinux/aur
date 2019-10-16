@@ -1,7 +1,7 @@
 pkgbase = elemental
 	pkgdesc = distributed-memory dense linear algebra
 	pkgver = 0.87.7
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/elemental/Elemental
 	arch = i686
 	arch = x86_64

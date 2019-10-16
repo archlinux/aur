@@ -2,7 +2,7 @@
 
 pkgname=elemental
 pkgver=0.87.7
-pkgrel=3
+pkgrel=4
 url="https://github.com/elemental/Elemental"
 pkgdesc="distributed-memory dense linear algebra"
 makedepends=('cmake' 'gcc6' 'gcc-fortran')
@@ -18,7 +18,6 @@ build() {
   cd Elemental-$pkgver
   mkdir -p build && pushd build
   CXX=g++-6 cmake .. -DCMAKE_INSTALL_PREFIX=/usr \
-	-DCMAKE_EL_DISABLE_PARMETIS=ON \
 	-DCMAKE_BUILD_TYPE=Release \
 	-DCMAKE_INSTALL_LIBDIR=/usr/lib
   make
