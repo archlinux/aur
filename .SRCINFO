@@ -1,6 +1,6 @@
 pkgbase = docker-registry2-git
-	pkgdesc = Official Docker Registry 2.0 implementation to pack, ship, store, and deliver docker images (git version).
-	pkgver = r2691.6d62eb1d
+	pkgdesc = Docker Registry 2.0 implementation to pack, ship, store, and deliver docker images (git version).
+	pkgver = r2752.ae2e973d
 	pkgrel = 1
 	url = https://github.com/docker/distribution
 	install = docker-registry-git.install
@@ -20,7 +20,7 @@ pkgbase = docker-registry2-git
 	source = docker-registry.service
 	source = docker-registry.sysusers
 	sha256sums = SKIP
-	sha256sums = fb487613a07a9645f49ada176d4c27f613aeecd4275bb7998094f25fb8e023bd
+	sha256sums = ef9c4f3dbde6a60d07a0be2553a5ca0717132fb3dbdd541284f671c2f4e34cdf
 	sha256sums = b75e03e96dd90bb05e22d31fb5ee8fa159db21652995fbb7069bf3ac823c57f5
 	sha256sums = 4aada981fb0bc3f4b7eb04790178e17fa2820a7d423474a3dad808ae1607ed39
 
