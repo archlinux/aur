@@ -1,0 +1,20 @@
+pkgbase = peakcell-git
+	pkgdesc = CSV to Excel Chart Conversion Utility
+	pkgver = 0
+	pkgrel = 1
+	url = https://gitlab.com/william.belanger/peakcell
+	arch = any
+	license = GPL3
+	depends = python
+	depends = python-setuptools
+	depends = python-pyqt5
+	depends = python-openpyxl
+	depends = python-pandas
+	depends = python-scipy
+	provides = peakcell
+	conflicts = peakcell
+	source = git+https://gitlab.com/william.belanger/peakcell.git
+	md5sums = SKIP
+
+pkgname = peakcell-git
+
