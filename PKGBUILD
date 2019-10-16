@@ -11,19 +11,18 @@
 pkgname=gnucash-git
 _pkgname=gnucash
 __pkgname=Gnucash
-pkgver=3.0
+pkgver=3.7.r132.g9661a77f3
 #.r84.g451bbd53d
 pkgrel=1
 pkgdesc="A personal and small-business financial-accounting application - GIT version"
 arch=('i686' 'x86_64')
 url="http://www.gnucash.org"
 license=("GPL")
-depends=('aqbanking' 'libdbi-drivers' 'libgnomecanvas' 'boost-libs' \
-	 'slib' 'webkit2gtk')
+depends=('aqbanking' 'boost-libs' 'guile' 'libdbi' 'webkit2gtk')
 optdepends=('evince: for print preview'
 	    'perl-date-manip: for stock information lookups'
 	    'perl-finance-quote: for stock information lookups')
-makedepends=('git' 'intltool' 'boost' 'swig' 'gtest' 'gmock' 'cmake' 'sqlite3' 'libmariadbclient' 'postgresql-libs')
+makedepends=('git' 'boost' 'cmake' 'swig' 'gtest' 'gmock' 'libdbi-drivers' 'mariadb-libs' 'postgresql-libs' )
 options=('!emptydirs')
 conflicts=('gnucash' 'gnucash-devel' 'gnucash-latest' 'gnucash-gtk3-git' 'gnucash-python' 'gnucash-xbt')
 provides=('gnucash')
@@ -47,10 +46,8 @@ build() {
 	cmake .. \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_INSTALL_LIBDIR=/usr/lib \
-		-DCMAKE_INSTALL_LIBEXECDIR=/usr/lib \
 		-DHAVE_GWEN_GTK3=ON \
-		-DWITH_OFX=ON \
-		-DWITH_AQBANKING=ON \
+		-DCOMPILE_GSCHEMAS=OFF \
 		-DCMAKE_BUILD_TYPE=RelWithDebInfo
 
 	make VERBOSE=1
@@ -67,9 +64,6 @@ package() {
 	cd "$srcdir/$pkgname/build"
 
 	make DESTDIR="${pkgdir}" install
-
-	# TODO: tell cmake not to make this file in the first place
-	rm -f "${pkgdir}"/usr/share/glib-2.0/schemas/*.compiled
 
 	# Delete the gnucash-valgrind executable because the source files
 	# are not included with the package and the executable is hardlinked
