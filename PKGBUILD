@@ -1,7 +1,7 @@
-# Maintainer: Spencer Harmon <spencer dot harmon at higher-state dot com>
+# Maintainer: Spencer Harmon
 
 pkgname="ulam-git"
-pkgver=4.0.1.r14.gf4d7c743
+pkgver=4.0.1.r27.g8c517e58
 pkgrel=1
 epoch=
 pkgdesc="Github version of ulam compiler and MFM simulator"
@@ -11,7 +11,7 @@ license=('(L)GPL3')
 groups=()
 depends=('make'
 	'gcc'
-	'gcc6'
+	'gcc49'
 	'binutils'
 	'perl'
 	'sdl'
@@ -40,10 +40,6 @@ pkgver(){
 }
 
 prepare() {
-#	use gcc6 for compilation; note that this does not affect compilation of ulam libraries (still uses gcc)
-	perl -0777 -i -pe 's/(NATIVE_GCC:=).+/$1gcc-6/' MFM/config/Makevars.mk
-	perl -0777 -i -pe 's/(NATIVE_GPP:=).+/$1g++-6/' MFM/config/Makevars.mk
-
 #	ensure build directory is correct
 	perl -0777 -i -pe 's/ifndef BUILDDIR\n\s(.+\n)endif\n/$1/' MFM/config/Makecommon.mk
 
@@ -56,16 +52,17 @@ prepare() {
 }
 
 build() {
-	make -C MFM
-	make -C ULAM
+	make -C MFM NATIVE_GCC=gcc-4.9 NATIVE_GPP=g++-4.9
 
+	make -C ULAM CXX=g++-4.9
+	
 	perl ULAM/share/perl/extractDistro.pl bin . "$srcdir/ulam" ulam
 	perl ULAM/share/perl/extractDistro.pl src . "$srcdir/ulam" ulam
-	make -C ulam
+	make -C ulam CXX=g++-4.9 NATIVE_GCC=gcc-4.9 NATIVE_GPP=g++-4.9
 }
 
 package() {
-	make -C "$srcdir/ulam" DESTDIR="$pkgdir/" install
+	make -C "$srcdir/ulam" DESTDIR="$pkgdir/" CXX=g++-4.9 NATIVE_GCC=gcc-4.9 NATIVE_GPP=g++-4.9 install
 
 	mkdir -p "$pkgdir/usr/bin"
 	for f in `ls "$pkgdir/usr/lib/ulam/ULAM/bin"`; \
