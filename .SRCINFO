@@ -1,23 +1,16 @@
 pkgbase = python-mido
 	pkgdesc = A Python library for working with MIDI messages and ports
 	pkgver = 1.2.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mido.readthedocs.io/
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
+	depends = python-rtmidi
 	optdepends = portmidi: for PortMidi support
+	optdepends = python-pygame: for PortMidi support
 	source = https://files.pythonhosted.org/packages/source/m/mido/mido-1.2.9.tar.gz
 	md5sums = bec86e55a19f5bfdd5a3546c7cdc418a
 
 pkgname = python-mido
-	depends = python-rtmidi
-	optdepends = portmidi: for PortMidi support
-	optdepends = python-pygame: for PortMidi support
-
-pkgname = python2-mido
-	depends = python2-rtmidi
-	optdepends = portmidi: for PortMidi support
-	optdepends = python2-pygame: for PortMidi support
 
