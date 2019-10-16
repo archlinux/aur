@@ -1,0 +1,14 @@
+pkgbase = python-pycld2
+	pkgdesc = Python bindings for the Compact Langauge Detect 2 (CLD2)
+	pkgver = 0.41
+	pkgrel = 1
+	url = https://github.com/aboSamoor/pycld2
+	arch = i686
+	arch = x86_64
+	makedepends = python-setuptools
+	provides = python-pycld2
+	source = https://files.pythonhosted.org/packages/source/p/pycld2/pycld2-0.41.tar.gz
+	sha256sums = a42f6e974df8fdd70685c2baa8a9f523069a260e1140ce604fb9f1fb6c3064df
+
+pkgname = python-pycld2
+
