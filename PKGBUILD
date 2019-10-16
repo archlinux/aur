@@ -1,8 +1,8 @@
 # Maintainer: svalo <code@valo.space>
 pkgname="certbot-dns-gandi-git"
 pkgdesc="gandi DNS authenticator plugin for certbot - GIT version"
-pkgver=1.1.1.r3.g9bc7d07
-pkgrel=2
+pkgver=1.2.2.r0.gb12db36
+pkgrel=1
 arch=("any")
 url="https://github.com/obynio/certbot-plugin-gandi.git"
 license=("MIT")
@@ -28,5 +28,8 @@ package() {
   cd "${srcdir}/certbot-dns-gandi"
   python setup.py install --root="${pkgdir}"
   mkdir -p "${pkgdir}/etc/letsencrypt"
+  mkdir -p "${pkgdir}/usr/lib/systemd/system"
   install -m 0600 "${srcdir}/gandi.ini" "${pkgdir}/etc/letsencrypt/gandi.ini"
+  install -m 0644 "${srcdir}/certbot-dns-gandi/contrib/certbot-dns-gandi-renew.timer" "${pkgdir}/usr/lib/systemd/system/certbot-dns-gandi-renew.timer"
+  install -m 0644 "${srcdir}/certbot-dns-gandi/contrib/certbot-dns-gandi-renew.service" "${pkgdir}/usr/lib/systemd/system/certbot-dns-gandi-renew.service"
 }
