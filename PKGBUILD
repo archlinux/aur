@@ -8,7 +8,7 @@
 
 pkgname=unknown-horizons
 pkgver=2019.1
-pkgrel=2
+pkgrel=3
 pkgdesc="2D realtime strategy simulation with an emphasis on economy and city building."
 arch=('any')
 url="http://www.unknown-horizons.org/"
@@ -24,11 +24,11 @@ sha512sums=('87ae37442ee0b80130c7a75c7eeb7c0ef6c50f3e6b2616db32e6381ace5068729ab
 # step
 build() {
     cd "$srcdir/$pkgname-$pkgver"
-    # HOME="$srcdir/python" python setup.py build
-    HOME="$srcdir/python" python horizons/engine/generate_atlases.py 2048
+    # UH_USER_DIR="$srcdir/UH_USER_DIR" python setup.py build
+    UH_USER_DIR="$srcdir/UH_USER_DIR" python horizons/engine/generate_atlases.py 2048
 }
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
-    HOME="$srcdir/python" python setup.py install --root="$pkgdir/" --optimize=1 #--skip-build
+    UH_USER_DIR="$srcdir/UH_USER_DIR" python setup.py install --root="$pkgdir/" --optimize=1 #--skip-build
 }

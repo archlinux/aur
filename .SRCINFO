@@ -1,7 +1,7 @@
 pkgbase = unknown-horizons
 	pkgdesc = 2D realtime strategy simulation with an emphasis on economy and city building.
 	pkgver = 2019.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.unknown-horizons.org/
 	changelog = .CHANGELOG
 	arch = any
