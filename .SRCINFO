@@ -6,9 +6,9 @@ pkgbase = elfeed
 	arch = any
 	license = custom:unlicnese
 	depends = emacs>=24.3
-	optdepends = curl
+	depends = curl
 	provides = elfeed=3.2.0
-	source = elfeed-3.2.0.tar.gz::https://github.com/skeeto/elfeedarchive/3.2.0.tar.gz
+	source = elfeed-3.2.0.tar.gz::https://github.com/skeeto/elfeed/archive/3.2.0.tar.gz
 	sha256sums = d68d520489d486074f5b3e6e666e0c87c927c2d51d3bb58156310cc61b761b10
 
 pkgname = elfeed
