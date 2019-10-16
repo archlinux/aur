@@ -1,14 +1,15 @@
 pkgbase = rebuild-detector
 	pkgdesc = Detects which packages need to be rebuilt
-	pkgver = 2.1.0
-	pkgrel = 3
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://github.com/maximbaz/rebuild-detector
 	arch = any
 	license = MIT
 	depends = parallel
-	source = rebuild-detector-2.1.0.tar.gz::https://github.com/maximbaz/rebuild-detector/releases/download/2.1.0/rebuild-detector.tar.gz
-	source = rebuild-detector-2.1.0.tar.gz.sig::https://github.com/maximbaz/rebuild-detector/releases/download/2.1.0/rebuild-detector.tar.gz.sig
+	source = rebuild-detector-2.2.0.tar.gz::https://github.com/maximbaz/rebuild-detector/releases/download/2.2.0/rebuild-detector.tar.gz
+	source = rebuild-detector-2.2.0.tar.gz.sig::https://github.com/maximbaz/rebuild-detector/releases/download/2.2.0/rebuild-detector.tar.gz.sig
 	validpgpkeys = EB4F9E5A60D32232BB52150C12C87A28FEAC6B20
-	sha256sums = 60a7495eb05d223c461c43dbee9fbf46cf32c698e1950cfcc7dcb0d30f12292a
+	sha256sums = c439d591189e4484ea345754e5ccf8197c79d008a985e7f92c9df42f8f4ff102
 	sha256sums = SKIP
 
 pkgname = rebuild-detector
