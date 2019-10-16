@@ -4,7 +4,7 @@
 
 pkgname=adwaita-qt
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A style to bend Qt applications to look like they belong into GNOME Shell'
 arch=('x86_64')
 url="https://github.com/FedoraQt/adwaita-qt"
@@ -12,8 +12,7 @@ license=('GPL')
 depends=('qt5-base')
 makedepends=('cmake' 'git')
 optdepends=('qgnomeplatform: apply GNOME settings to Qt apps')
-conflicts=('adwaita-qt-common' 'adwaita-qt-git')
-replaces=('adwaita-qt-common' 'adwaita-qt-git')
+provides=('adwaita-qt5')
 source=("https://github.com/FedoraQt/adwaita-qt/archive/1.1.0.tar.gz")
 sha256sums=('a7d535e42ff56a4851eeb0572b920c2e76ae0bdd87fe21a8503242fe6e7327f6')
 
