@@ -2,13 +2,13 @@
 pkgbase=qt5-restclient
 pkgname=(qt5-restclient qt5-restclient-doc)
 group=qt5-restclient-full
-pkgver=2.1.1
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="A library for generic JSON-based REST-APIs, with a mechanism to map JSON to Qt objects"
 arch=('i686' 'x86_64')
 url="https://github.com/Skycoder42/QtRestClient"
 license=('BSD')
-depends=('qt5-base' 'qt5-jsonserializer>=3.1.0')
+depends=('qt5-base' 'qt5-networkauth' 'qt5-jsonserializer>=3.1.0')
 makedepends=('git' 'qt5-tools' 'qt5-declarative' 'qdep' 'python' 'doxygen' 'graphviz')
 optdepends=("repkg: Automatically rebuild the package on dependency updates")
 _pkgfqn=$pkgname-$pkgver
@@ -62,7 +62,4 @@ package_qt5-restclient-doc() {
   # DROP file paths from doc tags
   find "$pkgdir/usr/share/doc/qt" -type f -name '*.tags' \
     -exec sed -i -e 's:<path>[^<]*<\/path>:<path>/usr/include/qt/QtRestClient</path>:g' {} \;
-
-  # install manpages
-  install -Dm644 -t "$pkgdir/usr/share/man/man3" man/man3/*.3
 }
