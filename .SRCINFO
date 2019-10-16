@@ -1,23 +1,18 @@
 pkgbase = dprox
 	pkgdesc = a lightweight DNS proxy server, compatible with dnsmasq-china-list
 	pkgver = 0.1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bjin/dprox
 	arch = x86_64
+	arch = aarch64
 	license = BSD
-	makedepends = ghc
-	makedepends = haskell-hspec
-	depends = ghc-libs
-	depends = haskell-attoparsec
-	depends = haskell-dns
-	depends = haskell-iproute
-	depends = haskell-network
-	depends = haskell-optparse-applicative
-	depends = haskell-streaming-commons
-	depends = haskell-unordered-containers
 	optdepends = dnsmasq-china-list-git: configuration file for easy deployment
 	source = https://hackage.haskell.org/packages/archive/dprox/0.1.2.1/dprox-0.1.2.1.tar.gz
 	sha512sums = 24bacb9ab594f571fc07c715f53fa1130bc5206fcf2a7d7ab00cbfa7c3f1f43f87a9131d75b5c02b18c13a7afd7cea2a5ec0d3346c811cfaeceedd1130725ecb
+	source_x86_64 = https://github.com/bjin/dprox/releases/download/v0.1.2.1/dprox-0.1.2.1-linux-x86_64-static.tar.gz
+	sha512sums_x86_64 = 00280d7e6b9e38939f916291569a3949915b9b8d75d2d4e0c464479260b49c1423dc54d84c810d12978f91174e1a79035b382ccc7720441e49b5b94be0ffcafd
+	source_aarch64 = https://github.com/bjin/dprox/releases/download/v0.1.2.1/dprox-0.1.2.1-linux-aarch64-static.tar.gz
+	sha512sums_aarch64 = b2df8de2162cd776bdc84bf98c89b5de8048b8aae869aaf4aaad01d31e7db7a6ad52df627d5e88b8be488270f8e5876077c4b80bd6cab9342641d62672690b62
 
 pkgname = dprox
 
