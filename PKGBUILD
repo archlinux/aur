@@ -5,10 +5,10 @@
 # Contributor: M0Rf30
 
 pkgname=virtualbox-bin
-pkgver=6.0.12
-_build=133076
+pkgver=6.0.14
+_build=133895
 _rev=79806
-pkgrel=2
+pkgrel=1
 pkgdesc='Oracle VM VirtualBox Binary Edition (Oracle branded non-OSE version)'
 arch=('x86_64')
 url='https://www.virtualbox.org/'
@@ -37,11 +37,10 @@ source=("http://download.virtualbox.org/virtualbox/${pkgver}/VirtualBox-${pkgver
         'vboxweb.conf'
         'do_dkms'
         'dkms.conf'
-        '013-Makefile.patch'
-        '015-linux-5-3.patch')
+        '013-Makefile.patch')
 noextract=("VirtualBoxSDK-${pkgver}-${_build}.zip")
-sha256sums=('60659c5096252e768cf1eaeb646e7cdf5547ae832b1f8c52e59b4e8799e6b584'
-            '995310edbc813808c638d96946a6f508099e0b261ee77628c53fd0c924e0f00e'
+sha256sums=('e6a63037caf3bc5ced1bb384b2a7fcf86b9fca5a467101ece4c5f7bf38edc4fe'
+            'c7b848034939fa65be095752109009ad0c3733e5d10c09fd26b5addaf58ba159'
             '584f02a2a1e83b9cabd7b7e3b00a0515b118e040160eb46c014ea6fd3a16586e'
             '600df773fca199dc21acde10c95a4733b03b3efd8ffaef3a9fb9da363a9cd114'
             '452351c15d97aeda29e45dbcb0da69412dc3a615c9aece43a424af3639368d49'
@@ -51,18 +50,17 @@ sha256sums=('60659c5096252e768cf1eaeb646e7cdf5547ae832b1f8c52e59b4e8799e6b584'
             '12dbba3b59991f2b68cddeeeda20236aeff63e11b7e2d1b08d9d6a82225f6651'
             'cc1c0500ab07bc13563d99037f776bf64bdc90bb521e31e2e0b04e42ea5bb36a'
             'e9df0fff15184d0a90abe17707bdbe1931582433bbc14ded4fb3b0252653c801'
-            '268e794de9d66a2751006b2ca3810fc6a05da4af2ffa8b58c56c94b292f1f424'
-            '37593d09bcde15a056b93d56ad47877a9bbac140474da2c66648871a0537998a')
+            '268e794de9d66a2751006b2ca3810fc6a05da4af2ffa8b58c56c94b292f1f424')
 
 prepare() {
     mkdir -p "${pkgname}-${pkgver}"
     
     # extract the main source file
-    yes | sh "VirtualBox-${pkgver}-${_build}-Linux_amd64.run" \
-              --target "${srcdir}/${pkgname}-${pkgver}" \
-              --nox11 \
-              --noexec \
-              &> /dev/null
+    yes 2>/dev/null | sh "VirtualBox-${pkgver}-${_build}-Linux_amd64.run" \
+                          --target "${srcdir}/${pkgname}-${pkgver}" \
+                          --nox11 \
+                          --noexec \
+                          &> /dev/null
               
     # extract sdk
     cd "${pkgname}-${pkgver}"
@@ -81,7 +79,6 @@ package() {
     printf '%s\n' "  -> Fixing DKMS build..."
     cd "${pkgdir}/${_installdir}"
     patch -Np1 -i "${srcdir}/013-Makefile.patch"
-    patch -Np1 -i "${srcdir}/015-linux-5-3.patch"
     
     # hardened build: mark binaries suid root, and make sure the
     # directory is only writable by the user
