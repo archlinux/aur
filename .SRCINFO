@@ -1,7 +1,7 @@
 pkgbase = pysolo
 	pkgdesc = A software for sleep analysis in Drosophila
 	pkgver = 1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.pysolo.net
 	arch = i686
 	arch = x86_64

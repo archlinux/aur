@@ -2,7 +2,7 @@
 
 pkgname=pysolo
 pkgver=1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A software for sleep analysis in Drosophila"
 arch=('i686' 'x86_64')
 depends=('python2' 'wxpython' 'python2-scipy' 'python2-numpy' 'python2-matplotlib')
@@ -25,6 +25,7 @@ package() {
   cd $srcdir/$pkgname-$pkgver
   #cp -r * $pkgdir/opt/pysolo/
   cp -dr --preserve=mode,timestamp * $pkgdir/opt/pysolo/
+  chmod 755 $pkgdir/opt/pysolo/img
 
   cp $srcdir/*.desktop $pkgdir/usr/share/applications/
 }
