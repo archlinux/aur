@@ -1,15 +1,15 @@
 pkgbase = virtualbox-ext-oracle
 	pkgdesc = Oracle VM VirtualBox Extension Pack
-	pkgver = 6.0.12
+	pkgver = 6.0.14
 	pkgrel = 1
 	url = https://www.virtualbox.org/
 	install = virtualbox-ext-oracle.install
 	arch = any
 	license = custom:PUEL
-	noextract = Oracle_VM_VirtualBox_Extension_Pack-6.0.12.vbox-extpack
+	noextract = Oracle_VM_VirtualBox_Extension_Pack-6.0.14.vbox-extpack
 	options = !strip
-	source = https://download.virtualbox.org/virtualbox/6.0.12/Oracle_VM_VirtualBox_Extension_Pack-6.0.12.vbox-extpack
-	sha256sums = 27a0956940654b0accf4d79692078bd496d9f062e4ed3da69e5421cba8d1e444
+	source = https://download.virtualbox.org/virtualbox/6.0.14/Oracle_VM_VirtualBox_Extension_Pack-6.0.14.vbox-extpack
+	sha256sums = c8a5cc980c9c94cdac3d94e23cf159c2433aae76b416dbfb5b1a918758f21e63
 
 pkgname = virtualbox-ext-oracle
 	depends = virtualbox
