@@ -8,6 +8,8 @@ license=('LGPL')
 depends=('ffmpeg'
          'sbc'
          'vulkan-icd-loader'
+         'bluez-libs'
+         'jack'
          )
 makedepends=('graphviz'
              'doxygen'
@@ -55,7 +57,6 @@ prepare() {
     -D docs=true \
     -D gstreamer=false \
     -D ffmpeg=true \
-    
 
 }
 
