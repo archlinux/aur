@@ -1,6 +1,6 @@
 pkgbase = jriver-media-center25
 	pkgdesc = The Most Comprehensive Media Software
-	pkgver = 25.0.108
+	pkgver = 25.0.113
 	pkgrel = 1
 	url = http://www.jriver.com/
 	arch = x86_64
@@ -28,7 +28,7 @@ pkgbase = jriver-media-center25
 	optdepends = musepack-tools
 	conflicts = jriver-media-center
 	conflicts = jriver-media-center24
-	source = http://files.jriver.com/mediacenter/channels/v25/latest/MediaCenter-25.0.108-amd64.deb
+	source = http://files.jriver.com/mediacenter/channels/v25/latest/MediaCenter-25.0.113-amd64.deb
 	source = License.txt
 	sha256sums = SKIP
 	sha256sums = ee00f430918df6be37777a61e12812875b5583379c78daaa969bae7383a41fbd
