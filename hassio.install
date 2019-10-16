@@ -25,5 +25,5 @@ post_install() {
   systemctl start docker
   systemctl enable docker
   echo "Installing Hass.io"
-  curl -sL https://raw.githubusercontent.com/home-assistant/hassio-build/master/install/hassio_install | bash -s
+  curl -sL https://raw.githubusercontent.com/home-assistant/hassio-installer/master/hassio_install.sh | bash -s
 }

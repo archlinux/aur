@@ -3,7 +3,7 @@
 pkgname=home-assistant-hassio
 pkgdesc='Open-source home automation platform running on HASSIO subsystem'
 pkgver=0.1
-pkgrel=3
+pkgrel=4
 url="https://home-assistant.io/"
 license=('APACHE')
 arch=('any')
