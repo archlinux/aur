@@ -1,8 +1,11 @@
-# Maintainer: Tao Meng ("mtunique") <oatgnem [at] gmail.com>
+# Maintainer: Shengyu Zhang <la@archlinuxcn.org>
+# Contributor: Tao Meng ("mtunique") <oatgnem [at] gmail.com>
 
 pkgname=apache-flink
-pkgver=1.2.0
-pkgrel=2
+_scalaver=2.11
+_appver=1.9.0
+pkgver=${_scalaver}_${_appver}
+pkgrel=1
 pkgdesc="Apache Flink is an open source platform for distributed stream and batch data processing"
 arch=("i686" "x86_64")
 url="http://flink.apache.org"
@@ -12,12 +15,12 @@ optdepends=("python2: python2 support for python API"
             "python: python3 support for python API"
             "hadoop: support for running on YARN")
 install=apache-flink.install
-source=("http://www-us.apache.org/dist/flink/flink-1.2.0/flink-${pkgver}-bin-hadoop2-scala_2.10.tgz"
+source=("http://www-us.apache.org/dist/flink/flink-${_appver}/flink-${_appver}-bin-scala_${_scalaver}.tgz"
         "apache-flink-jobmanager.service"
         "apache-flink-taskmanager@.service")
-md5sums=("792225bf4256b8ae2b2d9582a505c41c"
-         "d44f0d5c4af36313b405115168bc48c3"
-         "76146d287e355b8fae843858e8233608")
+md5sums=('c7c9c64ce71d85295c1a4e4d325ea521'
+         'd44f0d5c4af36313b405115168bc48c3'
+         '76146d287e355b8fae843858e8233608')
 backup=(
     "etc/${pkgname}/flink-conf.yaml"
     "etc/${pkgname}/log4j-cli.properties"
@@ -33,15 +36,15 @@ backup=(
 PKGEXT=${PKGEXT:-".pkg.tar.xz"}
 
 prepare() {
-  cd "$srcdir/flink-${pkgver}"
+  cd "$srcdir/flink-${_appver}"
 }
 
 package() {
-        cd "$srcdir/flink-${pkgver}"
+        cd "$srcdir/flink-${_appver}"
 
         install -d "$pkgdir/usr/bin" "$pkgdir/opt" "$pkgdir/var/log/apache-flink" "$pkgdir/run/apache-flink"
 
-        cp -r "$srcdir/flink-${pkgver}" "$pkgdir/opt/apache-flink/"
+        cp -r "$srcdir/flink-${_appver}" "$pkgdir/opt/apache-flink/"
 
         cd "$pkgdir/usr/bin"
         binpath="/opt/apache-flink/bin/flink"
@@ -52,7 +55,7 @@ package() {
 
 
         mkdir -p "$pkgdir/etc/apache-flink"
-        install -Dm644 "$srcdir/flink-${pkgver}/conf"/* "$pkgdir/etc/apache-flink"
+        install -Dm644 "$srcdir/flink-${_appver}/conf"/* "$pkgdir/etc/apache-flink"
 
         cd "$pkgdir/opt/apache-flink"
         mv conf conf-templates
