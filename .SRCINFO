@@ -1,7 +1,7 @@
 pkgbase = airsonic
 	pkgdesc = A free, web-based media streamer and jukebox.
 	pkgver = 10.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Airsonic/airsonic/
 	arch = any
 	license = GPL3
@@ -9,13 +9,13 @@ pkgbase = airsonic
 	noextract = airsonic.war
 	backup = etc/airsonic/airsonic.conf
 	source = airsonic-10.4.1.war::https://github.com/airsonic/airsonic/releases/download/v10.4.1/airsonic.war
-	source = airsonic-systemd-env-10.4.1::https://raw.githubusercontent.com/airsonic/airsonic/master/contrib/airsonic-systemd-env
-	source = airsonic-10.4.1.service::https://raw.githubusercontent.com/airsonic/airsonic/master/contrib/airsonic.service
+	source = airsonic-systemd-env-10.4::https://raw.githubusercontent.com/airsonic/airsonic/release-10.4/contrib/airsonic-systemd-env
+	source = airsonic-10.4.service::https://raw.githubusercontent.com/airsonic/airsonic/release-10.4/contrib/airsonic.service
 	source = airsonic.sysusers
 	source = airsonic.tmpfiles
 	sha256sums = 1d3ee9811ecbabbf9e2cfb63bd936bc238fe75dbcd223a87f3fab18b7a2a75a3
 	sha256sums = 059a43fe100d95aaaae8091d1c312f4d3a2a2b4edc1969358dd7be35f6525930
-	sha256sums = 21deabc2802a3909c040451c60a3fdf4ee157a3e05b5b9bafa164bc12ce9c0b2
+	sha256sums = 5566b234fc1117d58c41f7b004ed7f156853c0ea0d18d045905cd25ac60a8dce
 	sha256sums = 25af0b92b247df928db5ac8fec3fb4fa2cdc717e649729d5e0c059a5b81e058e
 	sha256sums = 952c15c8c6b53b9c63a96eb6b2402eae42bde56dc9c6c60484cf039a03a82963
 
