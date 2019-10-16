@@ -1,4 +1,6 @@
 /*.pkg.tar.xz
+/config.def.h
+/config.h
 /pkg/
 /src/
 /st-*.tar.gz

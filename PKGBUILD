@@ -5,7 +5,7 @@
 
 pkgname=st
 pkgver=0.8.2
-pkgrel=5
+pkgrel=6
 pkgdesc='A simple virtual terminal emulator for X.'
 arch=('i686' 'x86_64' 'armv7h')
 license=('MIT')
@@ -43,9 +43,10 @@ prepare() {
   elif [ ! -e "$BUILDDIR/config.def.h" ]
   then
     abort=1
-    msg='This package can be configured in config.h. Copy provided '
-    msg+='config.def.h to config.h and modify to change configuration. Leave '
-    msg+='config.def.h as it is to use default values. Then rerun makepkg.'
+    msg='This package can be configured in config.h. Copy config.def.h just '
+    msg+='placed into the package directory to config.h and modify it to '
+    msg+='change the configuration. Or just leave it alone to use default '
+    msg+='values. Then restart the build process.'
     error "$msg"
   fi
   cp "$pkgname-$pkgver/config.def.h" "$BUILDDIR"
