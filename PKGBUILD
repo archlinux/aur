@@ -6,6 +6,7 @@ pkgdesc="Python bindings for the Compact Langauge Detect 2 (CLD2)"
 url="https://github.com/aboSamoor/pycld2"
 arch=('i686' 'x86_64')
 provides=('python-pycld2')
+depends=('python')
 makedepends=('python-setuptools')
 _name="${pkgname#python-}"
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
