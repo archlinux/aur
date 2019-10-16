@@ -1,0 +1,16 @@
+pkgbase = php-zstd
+	pkgdesc = Zstd Extension for PHP
+	pkgver = 0.7.4
+	pkgrel = 1
+	url = https://github.com/kjdev/php-ext-zstd
+	arch = x86_64
+	license = MIT
+	depends = php
+	depends = zstd
+	source = php-zstd-0.7.4.tar.gz::https://github.com/kjdev/php-ext-zstd/archive/0.7.4.tar.gz
+	source = zstd.ini
+	sha256sums = c5720163e9c4391d6cafaf368fc16a1c67c628e7e82dd21fe8dcdafbb88680de
+	sha256sums = 2b68270574fcc8234d0e8ed8d7ac6bbecd68b20b9a72c049c3a8e2e309d90304
+
+pkgname = php-zstd
+
