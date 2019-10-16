@@ -1,6 +1,6 @@
 pkgbase = linux-rc
 	pkgver = 5.3.7rc1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.kernel.org/
 	arch = x86_64
 	license = GPL2
@@ -9,7 +9,8 @@ pkgbase = linux-rc
 	makedepends = bc
 	makedepends = libelf
 	options = !strip
-	source = patch-5.3.7-rc1.patch::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable-rc.git/patch/?id=linux-5.3.y&id2=v5.3.6
+	source = https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/stable-review/patch-5.3.7-rc1.xz
+	source = https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/stable-review/patch-5.3.7-rc1.sign
 	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.3.6.tar.xz
 	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.3.6.tar.sign
 	source = config
@@ -20,7 +21,8 @@ pkgbase = linux-rc
 	source = 0002-Bluetooth-hidp-Fix-assumptions-on-the-return-value-o.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	sha256sums = eecbbe579170889ba84e3024808b00fd74eba7523bcebe6682d9f71d64ab3825
+	sha256sums = 127e21828c3727b7ddc16ef3182960985a1c44f532c375bb83abc6f28a04a827
+	sha256sums = SKIP
 	sha256sums = e84021a94784de7bb10e4251fb1a87859a8d1c97bd78fb55ad47ab6ce475ec1f
 	sha256sums = SKIP
 	sha256sums = 7d09d1d79a4ecb82502b4483cf989ede3f643e05613de45e12563dfe85d80423

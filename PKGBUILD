@@ -3,7 +3,7 @@
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
 pkgbase=linux-rc
-pkgrel=1
+pkgrel=2
 _srcname=linux-5.3
 _major=5.3
 _minor=6
@@ -17,9 +17,10 @@ license=('GPL2')
 makedepends=('kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 source=(
-  "$_rcpatch.patch::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable-rc.git/patch/?id=$_srcname.y&id2=v${_major}.${_minor}"
-  https://www.kernel.org/pub/linux/kernel/v5.x/linux-$_major.$_minor.tar.{xz,sign}
+  https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/stable-review/"$_rcpatch".{xz,sign}
   # https://lkml.org/lkml/2019/8/23/712
+  # "$_rcpatch.patch::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable-rc.git/patch/?id=$_srcname.y&id2=v${_major}.${_minor}"
+  https://www.kernel.org/pub/linux/kernel/v5.x/linux-$_major.$_minor.tar.{xz,sign}
   config         # the main kernel config file
   60-linux.hook  # pacman hook for depmod
   90-linux.hook  # pacman hook for initramfs regeneration
@@ -31,7 +32,8 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('eecbbe579170889ba84e3024808b00fd74eba7523bcebe6682d9f71d64ab3825'
+sha256sums=('127e21828c3727b7ddc16ef3182960985a1c44f532c375bb83abc6f28a04a827'
+            'SKIP'
             'e84021a94784de7bb10e4251fb1a87859a8d1c97bd78fb55ad47ab6ce475ec1f'
             'SKIP'
             '7d09d1d79a4ecb82502b4483cf989ede3f643e05613de45e12563dfe85d80423'
