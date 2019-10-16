@@ -1,10 +1,11 @@
 pkgbase = platformio-git
 	pkgdesc = A cross-platform code builder and library manager
-	pkgver = v4.0.1.r1.gadde5e6a
+	pkgver = v4.0.3.r97.ga481a5de
 	pkgrel = 1
 	url = http://platformio.org/
 	arch = any
 	license = GPL
+	makedepends = git
 	depends = python-setuptools
 	depends = python-bottle
 	depends = python-click
