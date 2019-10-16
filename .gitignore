@@ -1,0 +1,5 @@
+pkg/
+src/
+*.tar.*
+skaffold-linux-amd64
+LICENSE
