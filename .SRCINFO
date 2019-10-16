@@ -1,0 +1,19 @@
+pkgbase = procserv-git
+	pkgdesc = Wrapper to start arbitrary interactive commands in the background
+	pkgver = v2.8.0.r2.3330d41
+	pkgrel = 1
+	url = https://github.com/ralphlange/procServ
+	arch = any
+	license = GPL3
+	makedepends = autoconf
+	makedepends = git
+	makedepends = python-setuptools
+	makedepends = dblatex
+	depends = autoconf
+	depends = asciidoc
+	depends = fop
+	source = git+https://github.com/ralphlange/procServ.git
+	md5sums = SKIP
+
+pkgname = procserv-git
+
