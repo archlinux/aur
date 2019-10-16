@@ -1,6 +1,6 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 pkgname=oidn
-pkgver=1.0.0
+pkgver=1.1.0
 _fragment="#tag=v${pkgver}"
 pkgrel=1
 pkgdesc="Intel(R) Open Image Denoise library"
