@@ -1,0 +1,13 @@
+pkgbase = inlein
+	pkgdesc = running clojure scripts
+	pkgver = 0.2
+	pkgrel = 1
+	url = http://inlein.org
+	arch = i686
+	arch = x86_64
+	license = EPL
+	source = https://github.com/hypirion/inlein/releases/download/0.2.0/inlein
+	sha256sums = 0d89b5373471bfb9e266f0f1229ac056fb713fbf2742317445b2d8e9d7f43e36
+
+pkgname = inlein
+
