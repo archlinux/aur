@@ -1,10 +1,10 @@
 pkgbase = elfeed
 	pkgdesc = Emacs web feeds client
 	pkgver = 3.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/skeeto/elfeed
 	arch = any
-	license = custom:unlicnese
+	license = custom:unlicense
 	depends = emacs>=24.3
 	depends = curl
 	provides = elfeed=3.2.0

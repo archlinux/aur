@@ -3,11 +3,11 @@
 
 pkgname=elfeed
 pkgver=3.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Emacs web feeds client"
 arch=('any')
 url="https://github.com/skeeto/elfeed"
-license=('custom:unlicnese')
+license=('custom:unlicense')
 depends=('emacs>=24.3' 'curl')
 provides=("${pkgname}=${pkgver}")
 source=("${pkgname}-${pkgver}.tar.gz"::"${url}/archive/${pkgver}.tar.gz")
@@ -24,8 +24,8 @@ check() {
 }
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    install -d "${pkgdir}/usr/share/emacs/site-lisp/${pkgname}"
-    cp *.el{,c} *.md "${pkgdir}/usr/share/emacs/site-lisp/${pkgname}"
-    install -Dm644 UNLICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  install -d "${pkgdir}/usr/share/emacs/site-lisp/${pkgname}"
+  cp *.el{,c} *.md "${pkgdir}/usr/share/emacs/site-lisp/${pkgname}"
+  install -Dm644 UNLICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
