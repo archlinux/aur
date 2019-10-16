@@ -1,7 +1,7 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 
 pkgname=adwaita-qt-git
-pkgver=1.0.r45.gcbfaac5
+pkgver=1.1.0.r5.ge53c795
 pkgrel=1
 pkgdesc='A style to bend Qt applications to look like they belong into GNOME Shell (Qt5).'
 arch=('x86_64')
