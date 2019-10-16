@@ -3,7 +3,7 @@
 
 _gemname=glib2
 pkgname=ruby-$_gemname
-pkgver=3.3.8
+pkgver=3.4.1
 pkgrel=1
 pkgdesc='Ruby/GLib2 is a Ruby binding of GLib-2.x.'
 arch=(x86_64)
@@ -13,7 +13,7 @@ depends=(ruby glib2 ruby-pkg-config ruby-native-package-installer)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('9e6050dc5fd6cde4198c5f0b4f9a3d9de4777c36')
+sha1sums=('48f8b780bb83b72762e9d762d916e3ccbb63c787')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
