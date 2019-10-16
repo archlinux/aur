@@ -8,7 +8,7 @@
 pkgname=icecat
 pkgver=60.9.0
 _pkgver=6634ee332979f7a78b11cbf09a77364143a981ed
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU version of the Firefox browser."
 arch=(x86_64)
 url="http://www.gnu.org/software/gnuzilla/"
@@ -24,7 +24,7 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
 
 source=(http://git.savannah.gnu.org/cgit/gnuzilla.git/snapshot/gnuzilla-${_pkgver}.tar.gz
         icecat.desktop icecat-safe.desktop
-        rust_133-part0.patch 'rust_133-part1.patch::https://bugzilla.mozilla.org/attachment.cgi?id=9046663' 'rust_133-part2.patch::https://bugzilla.mozilla.org/attachment.cgi?id=9046664' 
+        rust_133-part0.patch 'rust_133-part1.patch::https://bugzilla.mozilla.org/attachment.cgi?id=9046663' 'rust_133-part2.patch::https://bugzilla.mozilla.org/attachment.cgi?id=9046664'
         deny_missing_docs.patch patch_makeicecat_stuff.patch fix-addons.patch)
 
 sha256sums=('2655c3a8f656435e636fcc7774f3fa6e62bf1f98056a64b8b84fbec9a03f7b0c'
@@ -64,6 +64,9 @@ prepare() {
   # fixes installation of those addons which don't have ID on IceCat ("Cannot find id for addon" error). Thanks to kitsunyan.
   patch -Np1 -i ${srcdir}/fix-addons.patch
 
+  # Fix for error: static declaration of 'gettid' follows non-static declaration
+  sed -i -e "s/static inline pid_t gettid/inline pid_t gettid/" tools/profiler/core/platform.h
+
   printf '%b' "  \e[1;36m->\e[0m\033[1m Starting build...\n"
   
   cat >.mozconfig <<END
@@ -98,6 +101,7 @@ ac_add_options --disable-debug-symbols
 ac_add_options --disable-tests
 ac_add_options --disable-eme
 ac_add_options --disable-gconf
+ac_add_options --disable-stylo  # Workaround to fix build with rustc 1.38
 
 ac_add_options --with-app-basename=icecat
 ac_add_options --with-app-name=icecat
