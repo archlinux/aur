@@ -11,7 +11,7 @@
 
 pkgname=mesa-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=19.3.0_devel.115858.cdc331c6f9f
+pkgver=19.3.0_devel.116318.16233797f49
 pkgrel=1
 arch=('x86_64')
 makedepends=('git' 'python-mako' 'xorgproto'
@@ -36,6 +36,8 @@ sha512sums=('SKIP'
 
 # MESA_WHICH_LLVM is an environment variable used to determine which llvm package tree is used to built mesa-git against.
 # Adding a line to ~/.bashrc  that sets this value is the simplest way to ensure a specific choice.
+#
+# NOTE: Aur helpers have trouble with this method, check the sticky comments on mesa-git aur page .
 #
 # 1: llvm-minimal-git (aur) preferred value
 # 2: AUR llvm-git
@@ -66,8 +68,8 @@ case $MESA_WHICH_LLVM in
         ;;
     4)
         # extra/llvm
-        makedepends+=(llvm=8.0.1 clang=8.0.1)
-        depends+=(llvm-libs=8.0.1)
+        makedepends+=(llvm=9.0.0 clang=9.0.0)
+        depends+=(llvm-libs=9.0.0)
         ;;
     *)
 esac
