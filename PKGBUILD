@@ -2,7 +2,7 @@
 
 _pkgname=librsync
 pkgname=lib32-${_pkgname}
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="Library for calculating and applying network deltas (32-bit)"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('LGPL')
 depends=('lib32-popt' 'lib32-bzip2' 'lib32-zlib' 'librsync')
 makedepends=('cmake' 'gcc-multilib')
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/${_pkgname}/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('9eac82c09c4404ba4edadd25dbbcc14008e553c9b2fb492ff9ee05cad9fa012c')
+sha256sums=('b5ab8e2092b82b7d7bb9c1dd52e6a77083a89f8ad9b9309da611f490d0b49a71')
 
 prepare() {
   if [[ -d ${srcdir}/build ]]; then
