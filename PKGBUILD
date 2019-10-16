@@ -6,6 +6,7 @@ pkgdesc="A natural language pipeline that supports massive multilingual applicat
 url="https://github.com/aboSamoor/polyglot"
 arch=('any')
 provides=('python-polyglot')
+depends=('python')
 makedepends=('python-setuptools')
 _name="${pkgname#python-}"
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
