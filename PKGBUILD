@@ -1,7 +1,7 @@
 # Maintainer: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
 _pytype_repo="https://github.com/google/pytype"
-_pytype_tag=2019.08.09
+_pytype_tag=2019.09.17
 
 _cpython_repo="https://github.com/python/cpython"
 _cpython_gitcommit="9734024ec65311e33936faa83fb1cb249ef0de9d"
@@ -10,7 +10,7 @@ _googletest_repo="https://github.com/google/googletest"
 _googletest_gitcommit="e82d320567a45db1a999f9109f2b9a733bc59bb1"
 
 _typeshed_repo="https://github.com/python/typeshed"
-_typeshed_gitcommit="40215d1fa3ef33a31fe68624472c10dd62350f18"
+_typeshed_gitcommit="668988fa8cfd106a73218b23f953f226db89b3d4"
 
 pkgname=pytype
 pkgver="${_pytype_tag}"
@@ -23,6 +23,7 @@ provides=('pytype')
 depends=(
   'ninja'
   'python>=3.3'
+  'python-attrs'
   'python-importlab>=0.5.1'
   'python-six'
   'python-typed-ast'
@@ -47,11 +48,11 @@ source=(
   'without-ninja-python-distributions.patch'
 )
 sha256sums=(
-  '9a5eff6ad8e364d6b0faf4db6fabd124989d547c6b8bb7bac2b4d9122b78afcd'
+  '5852445fe2dc847613d124caa689790a9ed3ffca18bab3f2381c5ae2f8936399'
   'ebc3b63747875586f17b967ad2dae6d2a404adb5814612200217f39074377f9a'
   '891d732c77eec9fb57727cd99990a25455d6d5859b1fde107a332c5e238cc9e7'
-  '21bd743a80dfa2c8fe38f0b6bcb215c8562cc7744a53a78f83e73540b013bacd'
-  '4094677e9c9e56866cf2581ca834e8e4cfbaaa1fd3061a78acef89795758df8a'
+  '63139752f2cb4714af0d79aa4c6356fd2892776fd2d5420efd31ae1343056d8d'
+  'a6ec264db06e04452a818d5af3ffbed5f6299e4d01acbabd35874bdc01f17197'
 )
 
 prepare() {
