@@ -2,7 +2,7 @@
 
 pkgname="electron3-bin"
 _pkgname="electron3"
-pkgver="3.1.12"
+pkgver="3.1.13"
 pkgrel="1"
 pkgdesc="Build cross-platform desktop apps with JavaScript, HTML, and CSS"
 arch=("x86_64")
@@ -14,8 +14,8 @@ conflicts=("electron3")
 depends=("gtk3" "libxss" "nss")
 source=("${_github_url}/releases/download/v${pkgver}/chromedriver-v${pkgver}-linux-x64.zip"
 "${_github_url}/releases/download/v${pkgver}/electron-v${pkgver}-linux-x64.zip")
-sha256sums=('8256f20cb30d9f1c545c8228d7b59622743e270016e6541c51e3dbebb71ef790'
-            'b3ad887ce96e4eba18c7736b4e504f71785d88e108a5f7ec0ac20afb9c106b88')
+sha256sums=('aaaa85c1e3b83b0c9c4337e8a8fd46fcae7be3a00c7bb8ca5dc48169c88e34f8'
+            '33ab34af83bd1063fb1581ad0fed6dc1120b6b5d1dba0a8db3164af3e95d55df')
 
 package() {
 	cd "${srcdir}"
