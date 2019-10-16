@@ -2,8 +2,8 @@
 
 pkgname=brother-dcpl3510cdw-drv-bin
 pkgver=1.0.2
-pkgrel=1
-pkgdesc="Printer driver for Brother HL-L8360CDW printer"
+pkgrel=2
+pkgdesc="Printer driver for Brother DCP-L3510CDW printer"
 arch=("i686" "x86_64")
 url="https://support.brother.com/g/b/producttop.aspx?c=gb&lang=en&prod=dcpl3510cdw_eu_as"
 license=("EULA")
