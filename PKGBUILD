@@ -1,6 +1,6 @@
 # Maintainer: Nicholas Boyd Isacsson <nicholas@isacsson.se>
 pkgname=scalarr
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="A command-line interface for Sonarr"
 arch=('any')
@@ -9,7 +9,7 @@ license=('GPL')
 depends=('java-runtime')
 makedepends=('sbt')
 source=("scalarr-v$pkgver.tar.gz::https://github.com/nichobi/$pkgname/archive/v$pkgver.tar.gz" scalarr.sh)
-sha256sums=('ed0fd975400e22a211695d2b44d778665a015206fdebe7575da3e8fd094686e8' '603e8c012cb0c72a9b4615457fdeb67e92c4311b436f4ee535448d402a98b54d')
+sha256sums=('760724baa4d21601266f5c81f0da2479605116600142d478ce2aec622fef826c' '603e8c012cb0c72a9b4615457fdeb67e92c4311b436f4ee535448d402a98b54d')
 
 build() {
 	cd "$pkgname-$pkgver"
