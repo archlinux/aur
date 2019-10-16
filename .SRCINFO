@@ -1,14 +1,14 @@
 pkgbase = eless
 	pkgdesc = A Better 'less' - A bash script that loads emacs with minimal view-mode config
-	pkgver = 0.5
+	pkgver = 0.6
 	pkgrel = 1
 	url = https://eless.scripter.co
 	arch = any
 	license = MIT
 	depends = bash
 	depends = emacs
-	source = https://github.com/kaushalmodi/eless/archive/v0.5.tar.gz
-	md5sums = 66e282b332feeabaf003512cc817a180
+	source = https://github.com/kaushalmodi/eless/archive/v0.6.tar.gz
+	md5sums = c188fcceb2b3f006f7bb3855b525fa29
 
 pkgname = eless
 
