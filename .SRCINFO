@@ -1,0 +1,15 @@
+pkgbase = git-backup
+	pkgdesc = A tool to help you backup your git repositories from services like GitHub
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/jsdw/git-backup
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = openssl
+	source = git-backup-0.2.0.tar.gz::https://github.com/jsdw/git-backup/archive/v0.2.0.tar.gz
+	sha512sums = 4a181afbd6f424e97722711977913aee83a90529d1925ce2115f91a1108d5a543230ccaf14cbfc3b630ac09e85d7a5ca63b3b162286556496897961b0762e88b
+
+pkgname = git-backup
+
