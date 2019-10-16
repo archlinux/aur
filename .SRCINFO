@@ -1,0 +1,12 @@
+pkgbase = python-kismet-rest
+	pkgdesc = Kismet REST Python API
+	pkgver = 2019.05.02
+	pkgrel = 1
+	url = https://github.com/kismetwireless/python-kismet-rest
+	arch = any
+	license = GPL2
+	depends = python-requests
+	source = https://github.com/kismetwireless/python-kismet-rest/archive/2019.05.02.tar.gz
+	sha256sums = 6a26d0ce0f86501d93812e28744c0591441e1e114103cb5041431d7f6ea6f414
+
+pkgname = python-kismet-rest
