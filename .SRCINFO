@@ -1,7 +1,7 @@
 pkgbase = kismon
 	pkgdesc = GUI client for kismet (wireless scanner/sniffer/monitor)
-	pkgver = 0.9.0
-	pkgrel = 3
+	pkgver = 1.0.1
+	pkgrel = 1
 	url = https://www.salecker.org/software/kismon.html
 	arch = any
 	license = BSD
@@ -11,8 +11,8 @@ pkgbase = kismon
 	depends = python-simplejson
 	depends = python-cairo
 	depends = osm-gps-map
-	source = https://files.salecker.org/kismon/kismon-0.9.0.tar.gz
-	sha256sums = 58315b56113c6916f6ccd78d4ff3e50b4cc4b6316b9814819b0df6a48b173ea7
+	depends = python-kismet-rest
+	source = https://files.salecker.org/kismon/kismon-1.0.1.tar.gz
+	sha256sums = cb79dafe494c237060a79528d2f86a0af2f6a86aece5eefbc49ce37ef91513a7
 
 pkgname = kismon
-
