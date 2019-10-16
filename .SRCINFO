@@ -1,6 +1,6 @@
 pkgbase = rabs
 	pkgdesc = Generic imperative build system
-	pkgver = 2.2.2
+	pkgver = 2.4.1
 	pkgrel = 4
 	arch = x86_64
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = rabs
 	depends = gc
 	depends = sqlite
 	provides = rabs
-	source = git+https://github.com/wrapl/rabs#tag=v2.2.2
+	source = git+https://github.com/wrapl/rabs#tag=v2.4.1
 	md5sums = SKIP
 
 pkgname = rabs
