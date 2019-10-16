@@ -1,17 +1,27 @@
+pre_install() {
+	if systemctl status gosearch &> /dev/null; then
+		echo 'Stopping & disabling gosearch service...'
+		systemctl disable --now gosearch.service
+	fi
+}
+
 post_install() {
-  systemctl enable gosearch.service
-  systemctl start gosearch.service
+	echo 'Starting & enabling gosearch service...'
+	systemctl enable --now gosearch.service
 }
 
 pre_upgrade() {
-  systemctl stop gosearch.service
+	echo 'Stopping gosearch service...'
+	systemctl stop gosearch.service
 }
 
 post_upgrade() {
-  systemctl daemon-reload
-  systemctl start gosearch.service
+	echo 'Restarting gosearch service...'
+	systemctl daemon-reload
+	systemctl start gosearch.service
 }
 
 pre_remove() {
-  systemctl stop gosearch.service
+	echo 'Stopping & disabling gosearch service...'
+	systemctl disable --now gosearch.service
 }
