@@ -4,16 +4,15 @@
 # Contributer: Sébastien Luttringer <seblu@aur.archlinux.org>
 pkgbase=(virtualbox-ck-modules)
 pkgname=(virtualbox-ck-host-modules)
-pkgver=6.0.12
-pkgrel=3
+pkgver=6.0.14
+pkgrel=1
 arch=('x86_64')
 url='http://virtualbox.org'
 license=('GPL')
 makedepends=('linux-ck-headers' "virtualbox-host-dkms>=$pkgver" "virtualbox-guest-dkms>=$pkgver" 'dkms')
 
-# 1: Get the installed ck from pacman. ex: linux-ck-ivybridge 4.17.11-6
-# 2: Get first column. ex: linux-ck-ivybridge
-# 3: Get core version. ex: ivybridge
+# 1: Get the installed ck from pacman. ex: linux-ck-ivybridge
+# 2: Get core version. ex: ivybridge
 _kernel="$(pacman -Qq linux-ck | cut -d \- -f 3)"
 _kernver="$(cat /usr/src/linux-ck-ivybridge/version)"
 
