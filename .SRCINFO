@@ -1,21 +1,20 @@
 pkgbase = nushell
 	pkgdesc = A shell for the GitHub era
-	pkgver = 0.3.0
-	pkgrel = 4
+	pkgver = 0.4.0
+	pkgrel = 1
 	url = http://nushell.sh
 	arch = i686
 	arch = x86_64
 	arch = armv6h
 	arch = armv7h
 	license = MIT
-	makedepends = rust-nightly
-	makedepends = cargo
+	makedepends = rustup
 	depends = openssl
 	depends = zlib
 	optdepends = libxcb
 	optdepends = libx11
-	source = nushell-0.3.0.tar.gz::https://github.com/nushell/nushell/archive/0.3.0.tar.gz
-	sha256sums = 0151f1a09b76c83b7e20932e5e3b0d3af41d32a7862e070ef1b3d5f1163b2876
+	source = nushell-0.4.0.tar.gz::https://github.com/nushell/nushell/archive/0.4.0.tar.gz
+	sha256sums = 7111d3067db3dabc6137e8a441670de0fae63deae522d1675fc77402948f2c67
 
 pkgname = nushell
 
