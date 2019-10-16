@@ -9,7 +9,6 @@ pkgbase = halide-git
 	depends = llvm>=8.0
 	depends = cmake>=3.8
 	provides = halide-git
-	conflicts = halide-git
 	conflicts = halide-bin
 	source = git+https://github.com/halide/Halide.git
 	md5sums = SKIP
