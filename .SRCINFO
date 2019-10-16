@@ -15,7 +15,7 @@ pkgbase = petal-bin
 	source = petal.sh
 	md5sums = 60468b810d09e6f48ca271e677dbb85d
 	md5sums = cebd0dda9b913e6254f5e09a257955bb
-	md5sums = a4f3cb91573bbc3fce9466350ddfb4d2
+	md5sums = e3da3170012174fea78d060f9f77f0e5
 	md5sums = e946f427355b1a85454b74e7ca918072
 	md5sums = 5c3aace4646132860b8084cbbb55ad55
 

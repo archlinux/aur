@@ -31,7 +31,7 @@ noextract=()
 validpgpkeys=()
 md5sums=('60468b810d09e6f48ca271e677dbb85d'
          'cebd0dda9b913e6254f5e09a257955bb'
-         'a4f3cb91573bbc3fce9466350ddfb4d2'
+         'e3da3170012174fea78d060f9f77f0e5'
          'e946f427355b1a85454b74e7ca918072'
          '5c3aace4646132860b8084cbbb55ad55')
 
