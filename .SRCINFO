@@ -1,13 +1,12 @@
 pkgbase = auger-git
 	pkgdesc = Tool to directly access data objects stored in etcd by Kubernetes
-	pkgver = r47.3e36b65
+	pkgver = r54.63a4e8a
 	pkgrel = 1
 	url = https://github.com/jpbetz/auger
 	arch = x86_64
 	license = Apache
 	makedepends = git
 	makedepends = go
-	makedepends = glide
 	source = auger-git::git+https://github.com/jpbetz/auger
 	md5sums = SKIP
 
