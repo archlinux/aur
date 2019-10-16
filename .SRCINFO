@@ -1,7 +1,7 @@
 pkgbase = atlas-lapack
 	pkgdesc = Automatically Tuned Linear Algebra Software
 	pkgver = 3.10.3
-	pkgrel = 2
+	pkgrel = 3
 	url = http://math-atlas.sourceforge.net/
 	install = atlas-lapack.install
 	arch = x86_64

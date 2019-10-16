@@ -1,13 +1,13 @@
-# Maintainer: Giuseppe Borzi <gborzi___AT___ieee___DOT___org>
+# Maintainer: Anton Kudelin <kudelin___AT___protonmail___DOT___com>
+# Contributor: Giuseppe Borzi <gborzi___AT___ieee___DOT___org>
 # Contributor: mickele <mimocciola___AT___yahoo___DOT___ com>
 # Contributor: iztok pizorn <pizorn___AT___gmail___DOT___com>
 # Contributor: olivier medoc <o_medoc___AT___yahoo___DOT___fr>
-# Contributor: Anton Kudelin <kudelin___AT___protonmail___DOT___com>
 
 pkgname=atlas-lapack
 pkgver=3.10.3
 _lapackver=3.8.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Automatically Tuned Linear Algebra Software"
 url="http://math-atlas.sourceforge.net/"
 depends=('gcc-libs')
@@ -33,7 +33,7 @@ prepare() {
 
    cd $srcdir
    tar -xjf atlas$pkgver.tar.bz2
-   mkdir ATLAS/build
+   mkdir -p ATLAS/build
 }
    
 build() {
