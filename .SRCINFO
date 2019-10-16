@@ -1,6 +1,6 @@
 pkgbase = wcm-git
 	pkgdesc = Wayfire Config Manager
-	pkgver = r116.2f3e075
+	pkgver = v0.3.r1.g82fef44
 	pkgrel = 1
 	url = https://wayfire.org
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = wcm-git
 	depends = wf-config
 	depends = gtkmm3
 	depends = wayfire
+	optdepends = wayfire-plugins-extra: configuration for extra Wayfire plugins
 	provides = wcm
 	conflicts = wcm
 	source = wcm-git::git+https://github.com/WayfireWM/wcm

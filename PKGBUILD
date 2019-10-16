@@ -1,6 +1,6 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgname=wcm-git
-pkgver=r116.2f3e075
+pkgver=v0.3.r1.g82fef44
 pkgrel=1
 pkgdesc='Wayfire Config Manager'
 url=https://wayfire.org
@@ -10,6 +10,7 @@ provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 depends=(wf-config gtkmm3 wayfire)
 makedepends=(wayland-protocols meson ninja git extra-cmake-modules)
+optdepends=("wayfire-plugins-extra: configuration for extra Wayfire plugins")
 source=("${pkgname}::git+https://github.com/WayfireWM/wcm")
 sha512sums=('SKIP')
 
