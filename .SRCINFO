@@ -7,7 +7,7 @@ pkgbase = dummyhttp
 	license = MIT
 	makedepends = cargo
 	source = https://github.com/svenstaro/dummyhttp/archive/0.4.1.tar.gz
-	sha512sums = 232d80a8e26fe92baf7dfed3d6e40ff6b5449ce17da86beaf6d4f40694c9a4a4932a83c83b991b1ed14d4fbbdb6dc57dba6be396114e7f2370c6737a34584a15
+	sha512sums = 711c60ab0125ee3aeeb69cd51ff3c81075ab3fef1db0632979a9da3e87110e352e7fa0a6305719842fd76f71316e20d0a3d30f2695bce0ce7837421548ae2efa
 
 pkgname = dummyhttp
 
