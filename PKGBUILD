@@ -3,7 +3,7 @@
 pkgname=opensmtpd-filter-senderscore-git
 _pkgname=filter-senderscore
 pkgver=0.1.0+r3+g824cc03
-pkgrel=1
+pkgrel=2
 pkgdesc='OpenSMTPD filter integration for Sender Score (git)'
 arch=(i686 x86_64)
 url=https://github.com/poolpOrg/filter-senderscore
@@ -30,6 +30,6 @@ build() {
 package() {
   cd $_pkgname
   install -D filter-senderscore -t "$pkgdir"/usr/bin
-  install -Dm 644 README.md -t "$pkgdir"/usr/share/doc/$pkgname
-  install -Dm 644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
+  install -Dm 644 README.md -t "$pkgdir"/usr/share/doc/${pkgname/-git/}
+  install -Dm 644 LICENSE -t "$pkgdir"/usr/share/licenses/${pkgname/-git/}
 }
