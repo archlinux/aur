@@ -1,15 +1,15 @@
-# Maintainer: LIN Rs <20455421+LinRs [dot] users.noreply.github.com>
+# Maintainer: LIN Rs <LinRs[d]users.noreply.github.com>
 
 pkgbase=devilutionx-git
 pkgname=( 'devilutionx-git' 'devilutionx-multilib-git' )
 _pkgname=devilutionx
-pkgver=0.3.1.r9.g47a9ad12
+pkgver=0.5.0.r37.g3c416b16
 pkgrel=1
 pkgdesc="Diablo devolved for linux (git version)"
 arch=('x86_64')
 url="https://github.com/diasurgical/devilutionX"
 license=('custom:unlicense')
-makedepends=('git' 'cmake' 'lib32-gcc-libs' 'lib32-sdl2_mixer' 
+makedepends=('git' 'cmake' 'lib32-gcc-libs' 'lib32-sdl2_mixer'
 'sdl2_ttf' 'sdl2_ttf' 'lib32-sdl2_ttf'  'lib32-libsodium' 'libsodium')
 #provides=("${pkgname}"="${pkgver}")
 install="${_pkgname}".install
@@ -18,7 +18,7 @@ source=(
   LICENSE::https://raw.githubusercontent.com/diasurgical/devilutionX/master/LICENSE
 )
 sha256sums=('SKIP'
-            '88d9b4eb60579c191ec391ca04c16130572d7eedc4a86daa58bf28c6e14c9bcd')
+	    '88d9b4eb60579c191ec391ca04c16130572d7eedc4a86daa58bf28c6e14c9bcd')
 pkgver() {
   cd "${_pkgname}"
   ( set -o pipefail
@@ -31,14 +31,14 @@ build() {
   cd "${_pkgname}"
   rm -rf build32 build64
   mkdir -p build64 && cd build64
-  cmake .. 
+  cmake ..
   make
   cd "${srcdir}/${_pkgname}"
   mkdir -p build32 && cd build32
-  export CC="gcc -m32"                                                                                                   
-  export CXX="g++ -m32"                                                                                                  
-  cmake .. 
-##    -DCMAKE_TOOLCHAIN_FILE=../CMake/32bit.cmake 
+  export CC="gcc -m32"
+  export CXX="g++ -m32"
+  cmake ..
+##    -DCMAKE_TOOLCHAIN_FILE=../CMake/32bit.cmake
   make
 }
 package_devilutionx-git() {
@@ -56,7 +56,7 @@ package_devilutionx-multilib-git() {
   depends=('lib32-gcc-libs' 'lib32-sdl2_mixer' 'sdl2_ttf' 'lib32-sdl2_ttf'  'lib32-libsodium' 'libsodium')
   makedepends=('git' 'cmake')
 
-  cd "${_pkgname}"   
+  cd "${_pkgname}"
   install -vDm755 build32/"${_pkgname}" "${pkgdir}"/usr/bin/"${_pkgname}_multilib"
   install -vDm644 LICENSE -t "${pkgdir}"/usr/share/licenses/"${pkgname}"
 }
