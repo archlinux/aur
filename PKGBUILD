@@ -1,18 +1,18 @@
 # Maintainer: Daniel Bermond < gmail-com: danielbermond >
 
 pkgname=muwire
-pkgver=0.4.13
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='An I2P file sharing program'
 arch=('any')
 url='https://muwire.com/'
 license=('GPL3')
-depends=('bash' 'java-runtime>=8' 'java-runtime<=12' 'hicolor-icon-theme')
+depends=('bash' 'java-runtime' 'hicolor-icon-theme')
 makedepends=('gradle')
 source=("https://github.com/zlatinb/muwire/archive/muwire-${pkgver}.tar.gz"
         'muwire.desktop'
         'muwire.sh')
-sha256sums=('4139d658f9763cf4e9a598997a9f806241bb01ede7729911dd065b8c9aa9763a'
+sha256sums=('fb1a61ad815a69540850b099c990252748e6ffe0166ecd558ac7d8f0a8b58920'
             'e3e425d872f3c8cd68037b4ffe71ec66d07148072db89f6af220e7b24881d633'
             'd48d94fef75622bb2afca202804a32cac1cec0514894e1a7c21bb9c2d3a9438b')
 
