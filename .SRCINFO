@@ -1,6 +1,6 @@
 pkgbase = glog-git
 	pkgdesc = C++ implementation of the Google logging module
-	pkgver = 0.3.4.r141.g2a6df66
+	pkgver = 0.4.0.r6.g4cc89c9
 	pkgrel = 1
 	url = https://github.com/google/glog
 	arch = i686

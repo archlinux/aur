@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=glog-git
-pkgver=0.3.4.r141.g2a6df66
+pkgver=0.4.0.r6.g4cc89c9
 pkgrel=1
 pkgdesc="C++ implementation of the Google logging module"
 arch=('i686' 'x86_64')
@@ -24,11 +24,9 @@ pkgver() {
 build() {
   cd "glog"
 
-  aclocal
-  autoconf
-  automake -a
-
-  ./configure
+  ./autogen.sh
+  ./configure \
+    --prefix="/usr"
   make
 }
 
@@ -41,7 +39,7 @@ check() {
 package() {
   cd "glog"
 
-  make prefix="/usr" DESTDIR="$pkgdir" install
-  install -Dm644 "COPYING" "$pkgdir/usr/share/licenses/glog/COPYING"
+  make DESTDIR="$pkgdir" install
+  install -Dm644 "COPYING" -t "$pkgdir/usr/share/licenses/glog"
 }
 
