@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url='https://github.com/hellonico/origami-scripting'
 license=('EPL')
 groups=()
-depends=()
+depends=("inlein>=0.2")
 #makedepends=('git')
 checkdepends=()
 optdepends=()
