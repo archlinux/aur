@@ -1,6 +1,6 @@
 pkgbase = peakcell-git
 	pkgdesc = CSV to Excel Chart Conversion Utility
-	pkgver = 0
+	pkgver = r4.9a812e3
 	pkgrel = 1
 	url = https://gitlab.com/william.belanger/peakcell
 	arch = any

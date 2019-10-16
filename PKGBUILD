@@ -1,7 +1,7 @@
 # Maintainer: William Belanger <echo d2lsbGlhbS5iZWxyQGdtYWlsLmNvbQ== | base64 -d>
 
 pkgname=peakcell-git
-pkgver=0
+pkgver=r4.9a812e3
 pkgrel=1
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
