@@ -19,16 +19,16 @@ depends=(
 case "$CARCH" in
     armv?h) _arch='aarch32hf'
         _build=11.33.21
-        sha256sums=('5e7e76a46fe1cf614ddfd7efc3b139ace7ba3fb552a4d9bd5b4ea31dc28494a3')
+        sha256sums=('5E7E76A46FE1CF614DDFD7EFC3B139ACE7BA3FB552A4D9BD5B4EA31DC28494A3')
         ;;
     aarch64) _arch='aarch64'
         _build=11.33.21
-        sha256sums=('a5150033cc8912c0845d547eeea1e4577d6e438b95b106e429db0543d6605500')
+        sha256sums=('A5150033CC8912C0845D547EEEA1E4577D6E438B95B106E429DB0543D6605500')
         ;;
     i686)
-        _build=13.27.9
-        sha256sums=('cf08df04c7e86e4f0547418ca8e162593e36784b11b811e9ccadd0801aa75656')
-		source=("https://cdn.azul.com/zulu/bin/zulu${_build}-ca-jdk13-linux_i686.tar.gz")
+        _build=13.28.11
+        sha256sums=('8C134B1EFA452409FA3EBF6BCEF4DF6FD521C8B2A0D1D68DA7D3FFDCB5AB0C79')
+        source=("https://cdn.azul.com/zulu/bin/zulu${_build}-ca-jdk13.0.1-linux_i686.tar.gz")
         provides=("java-environment=13" "java-runtime=13")
 esac
 
