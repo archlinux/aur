@@ -1,42 +1,39 @@
-# Current Maintainer: Troy Engel <troyengel+arch@gmail.com>
+# Maintainer: David Runge <dave@sleepmap.de>
+# Contributor: Troy Engel <troyengel+arch@gmail.com>
 
 pkgname=kernelshark
-pkgver=1.0
-pkgrel=2
+pkgver=1.1
+pkgrel=1
 pkgdesc="GUI frontend for trace-cmd based Linux kernel Ftrace captures"
 arch=('x86_64' 'aarch64')
 url="https://git.kernel.org/pub/scm/utils/trace-cmd/trace-cmd.git"
 license=('GPL2')
-depends=('trace-cmd>=2.8.3' 'qt5-base' 'freeglut' 'glu')
-makedepends=('asciidoc' 'extra-cmake-modules' 'doxygen' 'json-c' 'libxmu'
-             'swig')
-provides=('kernelshark')
-conflicts=('kernelshark-git')
-source=("https://git.kernel.org/pub/scm/utils/trace-cmd/trace-cmd.git/snapshot/kernelshark-v${pkgver}.tar.gz")
-sha256sums=('1ca279365acfba869e18277fc4e7d3f77b3ffbf0067ace91c0a7d7be379dfa33')
+depends=('freeglut' 'gcc-libs' 'glibc' 'glu' 'json-c' 'trace-cmd=2.8.3' 'qt5-base')
+makedepends=('cmake')
+source=("https://git.kernel.org/pub/scm/utils/trace-cmd/trace-cmd.git/snapshot/${pkgname}-v${pkgver}.tar.gz")
+sha512sums=('549cbf71205b6786f50eb976eb8825e71b733570ac03e1fa9bb82c69ae576bc77d2793ea3837c7265c0f498c28356f743e72955d4a7c52f98dd65fc622dae5ee')
 
-# 2019-09-29 - kernelshark builds a stub copy of tracecmd libraries first,
-# they must be finished before the second stage tries to find them for use
-# during autoconf. We can't build in parallel at this time.
-options=('!makeflags')
+prepare() {
+  mv -v "${pkgname}-v${pkgver}" "${pkgname}-${pkgver}"
+  mkdir -vp "${pkgname}-${pkgver}/kernel-shark/bld"
+}
 
 build() {
-  cd "${srcdir}/${pkgname}-v${pkgver}"
-  
-  make BUILD_TYPE=Release prefix="/usr" DESTDIR="$pkgdir" \
-    gui doc
+  cd "${pkgname}-${pkgver}"
+  make
+  (
+    cd "kernel-shark/bld"
+    cmake -D_INSTALL_PREFIX=/usr \
+          -D_DOXYGEN_DOC=1 \
+          ..
+    make VERBOSE=1
+  )
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-v${pkgver}"
-
-  make BUILD_TYPE=Release prefix="/usr" DESTDIR="$pkgdir" \
-    install_gui install_doc
-
-  # remove trace-cmd artifacts from this package
-  rm -rf "${pkgdir}/etc"
-  rm -rf "${pkgdir}/usr/lib/trace-cmd"
-  rm -rf "${pkgdir}/usr/share/man/man5"
-  rm -f "${pkgdir}/usr/bin/trace-cmd"
-  rm -f "${pkgdir}/usr/share/man/man1/trace-cmd"*
+  cd "${pkgname}-${pkgver}"
+  (
+    cd "kernel-shark/bld"
+    make DESTDIR="${pkgdir}/" install
+  )
 }
