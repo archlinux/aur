@@ -31,8 +31,6 @@ prepare() {
 	      --enable-optim \
 	      --disable-mumps \
 	      --disable-hpddm
-#  find . -name Makefile -exec sed -i 's+^gcc+gcc =+' {} \;
-#  find . -name Makefile -exec sed -i 's+^dir+dir =+' {} \;
 }
 
 build() {
