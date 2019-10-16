@@ -1,0 +1,18 @@
+pkgbase = haiti
+	pkgdesc = A CLI tool to identify the hash type of a given hash.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://orange-cyberdefense.github.io/haiti/
+	install = haiti.install
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-bundler
+	depends = libxslt
+	provides = haiti
+	conflicts = haiti-git
+	source = https://github.com/Orange-Cyberdefense/haiti/archive/v0.0.1.tar.gz
+	sha512sums = d91cad845d36f3dc1f877ecc789fe9d86a06939d5941b0927c303b67bb5dcc28780004cab98b8fccfde496afb74ef4d5cd28cb86132f3fd385df3c838c70320e
+
+pkgname = haiti
+
