@@ -2,7 +2,7 @@
 pkgbase=qt5-jsonserializer
 pkgname=(qt5-jsonserializer qt5-jsonserializer-doc)
 group=qt5-jsonserializer-full
-pkgver=3.3.1
+pkgver=3.4.0
 pkgrel=1
 pkgdesc="A library to perform generic seralization and deserialization of QObjects"
 arch=('i686' 'x86_64')
@@ -58,7 +58,4 @@ package_qt5-jsonserializer-doc() {
   # DROP file paths from doc tags
   find "$pkgdir/usr/share/doc/qt" -type f -name '*.tags' \
     -exec sed -i -e 's:<path>[^<]*<\/path>:<path>/usr/include/qt/QtJsonSerializer</path>:g' {} \;
-
-  # install manpages
-  install -Dm644 -t "$pkgdir/usr/share/man/man3" man/man3/*.3
 }
