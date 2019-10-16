@@ -11,12 +11,12 @@ pkgbase = p4
 	validpgpkeys = 7123CB760FF18869
 	validpgpkeys = E58131C0AEA7B082C6DC4C937123CB760FF18869
 	sha256sums = c4ed3aef62b1bbf2d16ce4cceb65dc49ab9635b38e2fed0a595fe259283a9f32
-	source_i686 = http://www.perforce.com/downloads/perforce/r19.1/bin.linux26x86/p4
-	source_i686 = http://www.perforce.com/downloads/perforce/r19.1/bin.linux26x86/p4.asc
+	source_i686 = 2019.1.1845410-p4::http://www.perforce.com/downloads/perforce/r19.1/bin.linux26x86/p4
+	source_i686 = 2019.1.1845410-p4.asc::http://www.perforce.com/downloads/perforce/r19.1/bin.linux26x86/p4.asc
 	sha256sums_i686 = SKIP
 	sha256sums_i686 = SKIP
-	source_x86_64 = http://www.perforce.com/downloads/perforce/r19.1/bin.linux26x86_64/p4
-	source_x86_64 = http://www.perforce.com/downloads/perforce/r19.1/bin.linux26x86_64/p4.asc
+	source_x86_64 = 2019.1.1845410-p4::http://www.perforce.com/downloads/perforce/r19.1/bin.linux26x86_64/p4
+	source_x86_64 = 2019.1.1845410-p4.asc::http://www.perforce.com/downloads/perforce/r19.1/bin.linux26x86_64/p4.asc
 	sha256sums_x86_64 = SKIP
 	sha256sums_x86_64 = SKIP
 

@@ -1,0 +1,7 @@
+*p4
+*p4.asc
+
+src/
+pkg
+
+p4-*.tar.*
