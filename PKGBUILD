@@ -2,24 +2,16 @@
 pkgname=junit-system-rules
 pkgver=1.19.0
 _commit=f4782ebfd72c08bd3f00aa04ad20fe499c5463b4 # signed commit corresponding to tag system-rules-1.19.0
-pkgrel=4
+pkgrel=5
 pkgdesc='A collection of JUnit rules for testing code that uses java.lang.System'
 arch=('any')
 url='https://stefanbirkner.github.io/system-rules/'
 license=('CPL')
 depends=('junit')
 makedepends=('git' 'jdk8-openjdk' 'maven' 'strip-nondeterminism')
-source=("$pkgname::git+https://github.com/stefanbirkner/system-rules.git?signed#commit=$_commit"
-        'junit-system-rules_update-lib-parent.patch::https://github.com/stefanbirkner/system-rules/commit/6a4fe4c8ccaa3f9234b8eec75deeaa42b5154568.patch')
-sha512sums=('SKIP'
-            '42d4172d32a1376a0cb6a33f5ba150929bd8d11ef3b73b67a3e2a6f12b0b302f991066b2f85bda55d2c2e0e30cb8e6cde0c6067a76cad142da366c78138f0666')
+source=("$pkgname::git+https://github.com/stefanbirkner/system-rules.git?signed#commit=$_commit")
+sha512sums=('SKIP')
 validpgpkeys=('F4AF40991AECE57728B0034F9ECE1F68817F4996') # Stefan Birkner <mail@stefan-birkner.de>
-
-prepare() {
-	cd "$pkgname"
-	# Update lib-parent to latest version 16 to fix build failure (GitHub PR #76)
-	patch --strip=1 --input="$srcdir/junit-system-rules_update-lib-parent.patch"
-}
 
 build() {
 	cd "$pkgname"
