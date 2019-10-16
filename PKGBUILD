@@ -4,11 +4,9 @@
 
 pkgname="radarr-aphrodite"
 pkgver="2.0.0.2101"
-_shortstupidfuckingrandomnumber="107"
-_longstupidfuckingrandomnumber="FCEDEA69A375948FB8C5048BDC224B9889E2EBF4ED2C8DC8B15EAA0D87EF65F102"
 pkgrel=1
 pkgdesc="Movie download automation for usenet and torrents."
-arch=(any)
+arch=('x86_64')
 url="https://github.com/Radarr/Radarr"
 license=('GPL3')
 options=('!strip' 'staticlibs')
