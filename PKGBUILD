@@ -1,6 +1,6 @@
 # Maintainer: Manuel Coenen <manuel.coenen@gmail.com>
 pkgname=rfm-bin
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Command-line interface to perform file management on RepRapFirmware based devices."
 arch=('x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -13,11 +13,11 @@ source_arm=("https://github.com/wilriker/rfm/releases/download/v${pkgver//_/-}/r
 source_armv6h=("https://github.com/wilriker/rfm/releases/download/v${pkgver//_/-}/rfm-linux_arm.tgz")
 source_armv7h=("https://github.com/wilriker/rfm/releases/download/v${pkgver//_/-}/rfm-linux_arm.tgz")
 source_aarch64=("https://github.com/wilriker/rfm/releases/download/v${pkgver//_/-}/rfm-linux_arm64.tgz")
-sha256sums_x86_64=('ea43ad5fdb38047c2f4f21e45abf97445eb46f0ca31067c9eb35bc49a5cde1a4')
-sha256sums_arm=('9dfa458ddc67cd9bbad8e0e8a118b4e9c49db363021087d2e8fd69b98db2c920')
-sha256sums_armv6h=('9dfa458ddc67cd9bbad8e0e8a118b4e9c49db363021087d2e8fd69b98db2c920')
-sha256sums_armv7h=('9dfa458ddc67cd9bbad8e0e8a118b4e9c49db363021087d2e8fd69b98db2c920')
-sha256sums_aarch64=('380986c03d6c414857ad523f40f806325f4727dc08083dcfdc0c9969b54e96b9')
+sha256sums_x86_64=('d9d63aa09529745a883f4cce521f44c5e6ed4e906a2d918d71e7a489828c8a01')
+sha256sums_arm=('e64410b3a812b65acea0612f88ae1a1265a67cc42c6ed816ddd5643f1763db52')
+sha256sums_armv6h=('e64410b3a812b65acea0612f88ae1a1265a67cc42c6ed816ddd5643f1763db52')
+sha256sums_armv7h=('e64410b3a812b65acea0612f88ae1a1265a67cc42c6ed816ddd5643f1763db52')
+sha256sums_aarch64=('34fead1227993f18a80452903008ad65b732e436262601cc23f2ea6cb9c46601')
 
 package() {
 	install -Dm 755 rfm "${pkgdir}/usr/bin/rfm"
