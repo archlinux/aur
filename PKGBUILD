@@ -62,29 +62,23 @@ build () {
     echo ':arm64_dyn:M::\x7f\x45\x4c\x46\x02\x01\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x03\x00\xb7::/system/lib64/arm64/houdini64:P' >> ./squashfs-root/system/etc/binfmt_misc/arm64_dyn
 
     # add features
-    _C=$(cat <<-END
-		<feature name="android.hardware.touchscreen" />\n
-		<feature name="android.hardware.audio.output" />\n
-		<feature name="android.hardware.camera" />\n
-		<feature name="android.hardware.camera.any" />\n
-		<feature name="android.hardware.location" />\n
-		<feature name="android.hardware.location.gps" />\n
-		<feature name="android.hardware.location.network" />\n
-		<feature name="android.hardware.microphone" />\n
-		<feature name="android.hardware.screen.portrait" />\n
-		<feature name="android.hardware.screen.landscape" />\n
-		<feature name="android.hardware.wifi" />\n
-		<feature name="android.hardware.bluetooth" />"
-	END
-	)
-
-    _C=$(echo ${_C} | sed 's/\//\\\//g')
-    _C=$(echo ${_C} | sed 's/\"/\\\"/g')
-    sed -i "/<\/permissions>/ s/.*/${_C}\n&/" ./squashfs-root/system/etc/permissions/anbox.xml
-
-    # make wifi and bt available
+    sed -i "/<\/permissions>/d" ./squashfs-root/system/etc/permissions/anbox.xml
     sed -i "/<unavailable-feature name=\"android.hardware.wifi\" \/>/d" ./squashfs-root/system/etc/permissions/anbox.xml
     sed -i "/<unavailable-feature name=\"android.hardware.bluetooth\" \/>/d" ./squashfs-root/system/etc/permissions/anbox.xml
+
+    echo '    <feature name="android.hardware.touchscreen" />
+    <feature name="android.hardware.audio.output" />
+    <feature name="android.hardware.camera" />
+    <feature name="android.hardware.camera.any" />
+    <feature name="android.hardware.location" />
+    <feature name="android.hardware.location.gps" />
+    <feature name="android.hardware.location.network" />
+    <feature name="android.hardware.microphone" />
+    <feature name="android.hardware.screen.portrait" />
+    <feature name="android.hardware.screen.landscape" />
+    <feature name="android.hardware.wifi" />
+    <feature name="android.hardware.bluetooth" />' >> ./squashfs-root/system/etc/permissions/anbox.xml
+    echo '</permissions>' >> ./squashfs-root/system/etc/permissions/anbox.xml
 
     # set processors
     sed -i "/^ro.product.cpu.abilist=x86_64,x86/ s/$/,armeabi-v7a,armeabi,arm64-v8a/" ./squashfs-root/system/build.prop
@@ -103,7 +97,7 @@ package() {
     cd "${srcdir}"
 
     # repack image
-    mksquashfs ./squashfs-root ./android.img -b 131072 -comp xz -Xbcj x86
+    mksquashfs ./squashfs-root ./android.img -noappend -b 131072 -comp xz -Xbcj x86
 
     install -Dm 644 ./android.img "${pkgdir}"/var/lib/anbox/android.img
 }
