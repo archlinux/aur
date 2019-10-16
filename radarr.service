@@ -6,7 +6,7 @@ After=network-online.target
 [Service]
 User=radarr
 Group=radarr
-ExecStart=/usr/bin/mono --debug /usr/lib/radarr/Radarr.exe -nobrowser -data=/var/lib/radarr
+ExecStart=/usr/lib/radarr/Radarr -nobrowser -data=/var/lib/radarr
 Type=simple
 TimeoutStopSec=20
 
