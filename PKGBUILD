@@ -2,7 +2,7 @@
 # Contributor: Raphaël Doursenaud <rdoursenaud@free.fr>
 
 pkgname=mysql-shell
-pkgver=8.0.17
+pkgver=8.0.18
 pkgrel=1
 pkgdesc='An interface supporting development and administration for the MySQL Server'
 arch=('x86_64' 'i686')
@@ -18,9 +18,9 @@ source=(
 )
 noextract=("googletest-release-$GTEST_VERSION.zip")
 md5sums=(
-  "8a1b15515ec6f3e21aa777bbfe77c721"
+  "1e04f2c53ed21a220e93f1d96e06aeda"
   "SKIP"
-  "7472a25d91973cbba5d8a8f176a3080b"
+  "b63e84d8ba2bbd6f82df12fc6dfb8d51"
   "SKIP"
   "adfafc8512ab65fd3cf7955ef0100ff5"
 )

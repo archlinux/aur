@@ -1,6 +1,6 @@
 pkgbase = mysql-shell
 	pkgdesc = An interface supporting development and administration for the MySQL Server
-	pkgver = 8.0.17
+	pkgver = 8.0.18
 	pkgrel = 1
 	url = https://dev.mysql.com/downloads/shell/
 	arch = x86_64
@@ -26,15 +26,15 @@ pkgbase = mysql-shell
 	depends = openssl
 	depends = protobuf
 	noextract = googletest-release-1.8.0.zip
-	source = https://dev.mysql.com/get/Downloads/MySQL-Shell/mysql-shell-8.0.17-src.tar.gz
-	source = mysql-shell-8.0.17-src.tar.gz.asc::https://dev.mysql.com/downloads/gpg/?file=mysql-shell-8.0.17-src.tar.gz
-	source = https://dev.mysql.com/get/Downloads/MySQL-8.0/mysql-boost-8.0.17.tar.gz
-	source = mysql-boost-8.0.17.tar.gz.asc::https://dev.mysql.com/downloads/gpg/?file=mysql-boost-8.0.17.tar.gz
+	source = https://dev.mysql.com/get/Downloads/MySQL-Shell/mysql-shell-8.0.18-src.tar.gz
+	source = mysql-shell-8.0.18-src.tar.gz.asc::https://dev.mysql.com/downloads/gpg/?file=mysql-shell-8.0.18-src.tar.gz
+	source = https://dev.mysql.com/get/Downloads/MySQL-8.0/mysql-boost-8.0.18.tar.gz
+	source = mysql-boost-8.0.18.tar.gz.asc::https://dev.mysql.com/downloads/gpg/?file=mysql-boost-8.0.18.tar.gz
 	source = googletest-release-1.8.0.zip::https://github.com/google/googletest/archive/release-1.8.0.zip
 	validpgpkeys = A4A9406876FCBD3C456770C88C718D3B5072E1F5
-	md5sums = 8a1b15515ec6f3e21aa777bbfe77c721
+	md5sums = 1e04f2c53ed21a220e93f1d96e06aeda
 	md5sums = SKIP
-	md5sums = 7472a25d91973cbba5d8a8f176a3080b
+	md5sums = b63e84d8ba2bbd6f82df12fc6dfb8d51
 	md5sums = SKIP
 	md5sums = adfafc8512ab65fd3cf7955ef0100ff5
 
