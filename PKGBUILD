@@ -1,16 +1,15 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - USB Video Class camera driver."
-url='http://ros.org/wiki/libuvc_camera'
+url='https://wiki.ros.org/libuvc_camera'
 
 pkgname='ros-melodic-libuvc-camera'
 pkgver='0.0.10'
-_pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
-ros_makedepends=(ros-melodic-camera-info-manager
+ros_makedepends=(
   ros-melodic-nodelet
   ros-melodic-roscpp
   ros-melodic-libuvc
@@ -21,7 +20,7 @@ ros_makedepends=(ros-melodic-camera-info-manager
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
-ros_depends=(ros-melodic-camera-info-manager
+ros_depends=(
   ros-melodic-nodelet
   ros-melodic-roscpp
   ros-melodic-libuvc
@@ -30,16 +29,10 @@ ros_depends=(ros-melodic-camera-info-manager
   ros-melodic-image-transport)
 depends=(${ros_depends[@]})
 
-# Git version (e.g. for debugging)
-# _tag=release/melodic/libuvc_camera/${pkgver}-${_pkgver_patch}
-# _dir=${pkgname}
-# source=("${_dir}"::"git+https://github.com/ros-drivers-gbp/libuvc_ros-release.git"#tag=${_tag})
-# sha256sums=('SKIP')
-
-# Tarball version (faster download)
-_dir="libuvc_ros-release-release-melodic-libuvc_camera-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-drivers-gbp/libuvc_ros-release/archive/release/melodic/libuvc_camera/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('3b85b16607514bfd4e5f49d120a5c88e9b69276e250491156f96190fdad3ae57')
+# use ros-drivers tarball version (faster download)
+_dir="libuvc_ros-${pkgver}/libuvc_camera"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-drivers/libuvc_ros/archive/${pkgver}.tar.gz")
+sha256sums=('33c356df370f548be1dbc1d21a13bf2704b6ea0218f77d3d6f305392266629d3')
 
 build() {
   # Use ROS environment variables
