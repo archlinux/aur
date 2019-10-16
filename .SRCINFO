@@ -1,8 +1,8 @@
 pkgbase = st
 	pkgdesc = A simple virtual terminal emulator for X.
 	pkgver = 0.8.2
-	pkgrel = 6
-	url = http://st.suckless.org
+	pkgrel = 7
+	url = https://st.suckless.org
 	arch = i686
 	arch = x86_64
 	arch = armv7h
@@ -10,7 +10,7 @@ pkgbase = st
 	makedepends = libxext
 	makedepends = ncurses
 	depends = libxft
-	source = http://dl.suckless.org/st/st-0.8.2.tar.gz
+	source = https://dl.suckless.org/st/st-0.8.2.tar.gz
 	sha256sums = aeb74e10aa11ed364e1bcc635a81a523119093e63befd2f231f8b0705b15bf35
 
 pkgname = st
