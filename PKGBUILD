@@ -1,4 +1,5 @@
-# Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
+# Maintainer: Your Name <youremail@domain.com>
+# Contributor: Mark Wagie <yochanan dot marqos at gmail dot com>
 # Contributor: Juan Simón <play4pro at protonmail dot com>
 pkgname=gosearch-git
 pkgver=0.1.r21.518ad3c
