@@ -1,0 +1,32 @@
+diff --git a/cmake/FindQScintilla.cmake b/cmake/FindQScintilla.cmake
+index ff7f0021afccd7c4d181360fc6f68ebb6bec9817..7124576b244caf9e0db540d1934bbe4b5737cf65 100644
+--- a/cmake/FindQScintilla.cmake
++++ b/cmake/FindQScintilla.cmake
+@@ -4,7 +4,7 @@
+ #  QScintilla_LIBRARIES - libraries needed
+ 
+ FIND_PATH(QSCINTILLA_INCLUDE_DIR NAMES Qsci/qsciscintilla.h PATH_SUFFIXES qt5 qt)
+-FIND_LIBRARY(QSCINTILLA_LIBRARY NAMES qsciscintilla qt5scintilla2 qscintilla2)
++FIND_LIBRARY(QSCINTILLA_LIBRARY NAMES qsciscintilla qt5scintilla2 qscintilla2_qt5 qscintilla2)
+ 
+ SET(QScintilla_INCLUDE_DIRS ${QSCINTILLA_INCLUDE_DIR})
+ SET(QScintilla_LIBRARIES ${QSCINTILLA_LIBRARY})
+diff --git a/src/core/reference/PropertyField.h b/src/core/reference/PropertyField.h
+index 5d77d9cb6f207985aff82b536b98afcf08ee4098..5021d1ae77c63eb39ecdb36c5bf791aa5523960d 100755
+--- a/src/core/reference/PropertyField.h
++++ b/src/core/reference/PropertyField.h
+@@ -159,10 +159,12 @@ private:
+ 	// This undo class records a change to the property value.
+ 	class PropertyChangeOperation : public UndoableOperation {
+ 	public:
+-		PropertyChangeOperation(PropertyField& field) : _field(field), _owner(field.owner() != field.owner()->dataset() ? field.owner() : nullptr) {
++		PropertyChangeOperation(PropertyField& field) : _field(field) {
+ 			// Make a copy of the current property value.
++			_owner = field.owner() != dynamic_cast<Ovito::RefMaker*>(field.owner()->dataset()) ? field.owner() : nullptr;
+ 			_oldValue = field;
+ 		}
++
+ 		/// Restores the old property value.
+ 		virtual void undo() override {
+ 			// Swap old value and current property value.
+ 
