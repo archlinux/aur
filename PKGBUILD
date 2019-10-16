@@ -1,3 +1,4 @@
+# Contributor: agvares <omen13@bk.ru>
 # Contributor: Zeph <zeph33@gmail.com>
 # Maintainer: Antoine Viallon <antoine.viallon@gmail.com>
 pkgname=codelite-bin
@@ -33,8 +34,8 @@ replaces=('codelite' 'codelite-svn')
 conflicts=('codelite' 'codelite-git')
 provides=('codelite')
 
-source=("http://www.lesviallon.fr/download/packages/${CARCH}/${_pkgname}-${pkgver}-${_pkgrel}-${CARCH}.pkg.tar.xz")
-md5sums=('baa8291ad50b7827c373cca0396f666c')
+source=("https://www.lesviallon.fr/download/packages/${CARCH}/${_pkgname}-${pkgver}-${_pkgrel}-${CARCH}.pkg.tar.xz")
+sha1sum=('baa8291ad50b7827c373cca0396f666c')
 noextract=(${_pkgname}-${pkgver}-${_pkgrel}-${CARCH}.pkg.tar.xz)
 
 package() {
@@ -44,3 +45,4 @@ package() {
   rm -f "${pkgdir}/.PKGINFO"
 # 	find "${pkgdir}/usr/bin" -type d -exec chmod 755 '{}' \;
 }
+md5sums=('baa8291ad50b7827c373cca0396f666c')

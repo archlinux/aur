@@ -32,7 +32,7 @@ pkgbase = codelite-bin
 	replaces = codelite
 	replaces = codelite-svn
 	noextract = codelite-13.0-1-x86_64.pkg.tar.xz
-	source = http://www.lesviallon.fr/download/packages/x86_64/codelite-13.0-1-x86_64.pkg.tar.xz
+	source = https://www.lesviallon.fr/download/packages/x86_64/codelite-13.0-1-x86_64.pkg.tar.xz
 	md5sums = baa8291ad50b7827c373cca0396f666c
 
 pkgname = codelite-bin
