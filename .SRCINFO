@@ -5,6 +5,7 @@ pkgbase = python-morfessor
 	url = https://github.com/aalto-speech/morfessor
 	arch = any
 	makedepends = python-setuptools
+	depends = python
 	provides = python-morfessor
 	source = https://files.pythonhosted.org/packages/source/m/morfessor/Morfessor-2.0.6.tar.gz
 	sha256sums = bb3beac234341724c5f640f65803071f62373a50dba854d5a398567f9aefbab2

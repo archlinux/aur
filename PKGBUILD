@@ -6,6 +6,7 @@ pkgdesc="A tool for unsupervised and semi-supervised morphological segmentation"
 url="https://github.com/aalto-speech/morfessor"
 arch=('any')
 provides=('python-morfessor')
+depends=('python')
 makedepends=('python-setuptools')
 _name="${pkgname#python-}"
 _Name="Morfessor"
