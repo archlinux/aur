@@ -6,13 +6,13 @@
 pkgbase=virtualbox-modules-aufs
 pkgname=('virtualbox-host-modules-aufs')
 pkgver=6.0.14
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='http://virtualbox.org'
 license=('GPL')
 makedepends=('linux-aufs-headers' "virtualbox-host-dkms>=$pkgver" 'dkms')
 
-_kernver="$(</usr/src/linux/version)"
+_kernver="$(</usr/src/linux-aufs/version)"
 
 build() {
 	# dkms need modification to be run as user
@@ -32,9 +32,9 @@ package_virtualbox-host-modules-aufs() {
         install -Dt "$pkgdir/usr/lib/modules/$_kernver/extramodules" -m0644 *
 
         # compress each module individually
-        find "$pkgdir" -name '*.ko' -exec gzip -n {} +
+        find "$pkgdir" -name '*.ko' -exec xz -T1 {} +
 	
         # systemd module loading
-        printf "vboxdrv\nvboxpci\nvboxnetadp\nvboxnetflt\n" |
-        install -Dm644 /dev/stdin "$pkgdir/usr/lib/modules-load.d/virtualbox-host-modules-aufs.conf"
+        printf '%s\n' vboxdrv vboxpci vboxnetadp vboxnetflt |
+        install -D -m0644 /dev/stdin "$pkgdir/usr/lib/modules-load.d/$pkgname.conf"
 }
