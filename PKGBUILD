@@ -1,6 +1,6 @@
 
 # Maintainer: Donald Webster <fryfrog@gmail.com>
-# Helpful url: https://radarr.Radarr.audio/v1/update/aphrodite?version=0.0.0.0&os=linux&runtime=netcore&arch=x64
+# Helpful url: https://radarr.lidarr.audio/v1/update/aphrodite?version=0.0.0.0&os=linux&runtime=netcore&arch=x64
 
 pkgname="radarr-aphrodite"
 pkgver="2.0.0.2101"
