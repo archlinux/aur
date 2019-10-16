@@ -1,7 +1,7 @@
 # Contributor: Zeph <zeph33@gmail.com>
-# Maintainer: Zeph <zeph33@gmail.com>
+# Maintainer: Antoine Viallon <antoine.viallon@gmail.com>
 pkgname=codelite-bin
-pkgver=12.0
+pkgver=13.0
 pkgrel=1
 _pkgname=codelite
 _pkgrel=1
@@ -17,6 +17,7 @@ depends=('wxgtk3' 'webkit2gtk'
           'ncurses'
           'xterm' 'curl'
           'python2'
+          'hunspell'
         )
 makedepends=('tar' 'xz')
 optdepends=( 'graphviz: callgraph visualization'
@@ -24,13 +25,16 @@ optdepends=( 'graphviz: callgraph visualization'
              'gcc: compiler'
              'gdb: debugger'
              'valgrind: debugger'
+             'php: php IDE capabilities'
+             'nodejs: for Node.js IDE'
             )
 
 replaces=('codelite' 'codelite-svn')
+conflicts=('codelite' 'codelite-git')
 provides=('codelite')
 
-source=("http://download.opensuse.org/repositories/home:/zeph33:/archlinux/Arch_Extra/${CARCH}/${_pkgname}-${pkgver}-${_pkgrel}-${CARCH}.pkg.tar.xz")
-md5sums=('SKIP')
+source=("http://www.lesviallon.fr/download/packages/${CARCH}/${_pkgname}-${pkgver}-${_pkgrel}-${CARCH}.pkg.tar.xz")
+md5sums=('baa8291ad50b7827c373cca0396f666c')
 noextract=(${_pkgname}-${pkgver}-${_pkgrel}-${CARCH}.pkg.tar.xz)
 
 package() {
