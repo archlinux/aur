@@ -1,17 +1,17 @@
-# Maintainer: Andrew Sun <adsun701@gmail.com>
+# Maintainer: Andrew Sun <adsun701 at gmail dot com>
 
 _pkgname=fstrm
 pkgname=lib32-${_pkgname}
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="A C implementation of the Frame Streams data transport protocol (32-bit)"
 arch=('x86_64')
 url="https://github.com/farsightsec/fstrm"
 license=('Apache')
 depends=('lib32-libevent' 'fstrm')
-makedepends=('gcc-multilib' 'lib32-gcc-libs')
+makedepends=('gcc-multilib')
 source=(${_pkgname}-${pkgver}.tar.gz::"${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('ca762fb260176f35af639376cc65c3f13a5f63d1cca42eb5ce87caca8d57c450')
+sha256sums=('82851b2424ae3e94b4fba310b60629b33d6757fbeb15662566b1857cd5c31517')
 
 prepare() {
   cd "${srcdir}/${_pkgname}-${pkgver}"

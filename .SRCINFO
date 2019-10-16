@@ -1,16 +1,15 @@
 pkgbase = lib32-fstrm
 	pkgdesc = A C implementation of the Frame Streams data transport protocol (32-bit)
-	pkgver = 0.5.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/farsightsec/fstrm
 	arch = x86_64
 	license = Apache
 	makedepends = gcc-multilib
-	makedepends = lib32-gcc-libs
 	depends = lib32-libevent
 	depends = fstrm
-	source = fstrm-0.5.0.tar.gz::https://github.com/farsightsec/fstrm/archive/v0.5.0.tar.gz
-	sha256sums = ca762fb260176f35af639376cc65c3f13a5f63d1cca42eb5ce87caca8d57c450
+	source = fstrm-0.6.0.tar.gz::https://github.com/farsightsec/fstrm/archive/v0.6.0.tar.gz
+	sha256sums = 82851b2424ae3e94b4fba310b60629b33d6757fbeb15662566b1857cd5c31517
 
 pkgname = lib32-fstrm
 
