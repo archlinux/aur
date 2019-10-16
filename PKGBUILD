@@ -1,7 +1,7 @@
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Maintainer: 1 2 <fdsfgs@krutt.org>
 
 pkgname=libretro-bsnes-hd-git
-pkgver=r1091.3a2f757e
+pkgver=r1113.9447451b
 pkgrel=1
 pkgdesc='Super Nintendo Entertainment System cores'
 arch=('x86_64')
@@ -10,8 +10,8 @@ license=('GPL3')
 groups=('libretro-unstable')
 depends=('gcc-libs' 'glibc' 'libretro-core-info')
 makedepends=('git')
-provides=('libretro-bsnes-hd')
-conflicts=('libretro-bsnes-hd')
+provides=('libretro-bsnes')
+conflicts=('libretro-bsnes')
 source=('libretro-bsnes::git+https://github.com/libretro/bsnes')
 sha256sums=('SKIP')
 
@@ -24,9 +24,6 @@ pkgver() {
 build() {
   cd libretro-bsnes/bsnes
 
-  #for p in accuracy balanced performance; do
-  #  make profile=${p} target="libretro"
-  #done
   make target="libretro" binary=library
 }
 
@@ -34,10 +31,7 @@ package() {
   cd libretro-bsnes/bsnes
 
   install -dm 755 "${pkgdir}"/usr/{lib/libretro,share/libretro/info}
-  #for p in accuracy balanced performance; do
-  #  install -m 644 out/bsnes_${p}_libretro.so "${pkgdir}"/usr/lib/libretro/
-  #done
-  install -m 644 out/bsnes_libretro.so "${pkgdir}"/usr/lib/libretro/bsnes_hd_libretro.so
+  install -m 644 out/bsnes_libretro.so "${pkgdir}"/usr/lib/libretro/
 }
 
 # vim: ts=2 sw=2 et:
