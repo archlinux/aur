@@ -5,8 +5,8 @@
 
 pkgbase=virtualbox-modules-aufs
 pkgname=('virtualbox-host-modules-aufs')
-pkgver=6.0.12
-pkgrel=4
+pkgver=6.0.14
+pkgrel=1
 arch=('x86_64')
 url='http://virtualbox.org'
 license=('GPL')
