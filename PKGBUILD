@@ -1,7 +1,7 @@
 # Maintainer: Johannes Graën <johannes SPIRALGALAXY selfnet FULLSTOP de>
 
 pkgname=jabref-latest
-pkgver=20191014
+pkgver=20191016
 pkgrel=1
 pkgdesc="GUI frontend for BibTeX, written in Java; latest master version from git"
 arch=('x86_64')
@@ -17,7 +17,7 @@ depends=('glibc'
 	 'alsa-lib'
          'python3')
 optdepends=('gsettings-desktop-schemas: For web search support')
-source=(https://builds.jabref.org/master/JabRef-portable_linux.tar.gz
+source=(Jabref-${pkgver}.tgz::https://builds.jabref.org/master/JabRef-portable_linux.tar.gz
         https://raw.githubusercontent.com/JabRef/jabref/master/LICENSE.md
         jabref.sh
         JabRef.desktop
@@ -43,3 +43,4 @@ package() {
   install -Dm644 JabRef.desktop ${pkgdir}/usr/share/applications/JabRef.desktop
   install -Dm644 LICENSE.md ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md
 }
+
