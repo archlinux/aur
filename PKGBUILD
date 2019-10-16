@@ -2,7 +2,7 @@
 pkgname="certbot-dns-gandi-git"
 pkgdesc="gandi DNS authenticator plugin for certbot - GIT version"
 pkgver=1.2.2.r0.gb12db36
-pkgrel=1
+pkgrel=2
 arch=("any")
 url="https://github.com/obynio/certbot-plugin-gandi.git"
 license=("MIT")
@@ -20,16 +20,18 @@ sha256sums=('SKIP'
             '2a55fa5f82814eb95d9748737be182302d3a8cb2217e0365737062a8f57a677c')
 
 pkgver() {
-  cd "${srcdir}/certbot-dns-gandi"
+  cd "${srcdir}/${pkgname%-git}"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
-  cd "${srcdir}/certbot-dns-gandi"
+  cd "${srcdir}/${pkgname%-git}"
   python setup.py install --root="${pkgdir}"
   mkdir -p "${pkgdir}/etc/letsencrypt"
   mkdir -p "${pkgdir}/usr/lib/systemd/system"
-  install -m 0600 "${srcdir}/gandi.ini" "${pkgdir}/etc/letsencrypt/gandi.ini"
-  install -m 0644 "${srcdir}/certbot-dns-gandi/contrib/certbot-dns-gandi-renew.timer" "${pkgdir}/usr/lib/systemd/system/certbot-dns-gandi-renew.timer"
-  install -m 0644 "${srcdir}/certbot-dns-gandi/contrib/certbot-dns-gandi-renew.service" "${pkgdir}/usr/lib/systemd/system/certbot-dns-gandi-renew.service"
+  mkdir -p "${pkgdir}/usr/share/licenses/${pkgname%-git}"
+  install -m 0600 "../gandi.ini" "${pkgdir}/etc/letsencrypt/gandi.ini"
+  install -m 0644 "contrib/certbot-dns-gandi-renew.timer" "${pkgdir}/usr/lib/systemd/system/certbot-dns-gandi-renew.timer"
+  install -m 0644 "contrib/certbot-dns-gandi-renew.service" "${pkgdir}/usr/lib/systemd/system/certbot-dns-gandi-renew.service"
+  install -m 0644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
 }
