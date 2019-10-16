@@ -3,8 +3,8 @@
 
 pkgname=golden-cheetah-dev
 pkgver=3.5
-pkgrel=1903
-_devversion=1903
+pkgrel=191016
+_devversion=RC1
 pkgdesc="Cycling Power Analysis Software. Development version."
 arch=('i686' 'x86_64')
 url="http://www.goldencheetah.org/"
@@ -13,15 +13,15 @@ makedepends=(bison flex 'gcc' 'make' 'qt5-tools' )
 depends=('qt5-base' 'qt5-svg' qt5-location qt5-declarative qt5-webchannel qt5-sensors qt5-serialport qt5-webkit qt5-multimedia qt5-script qt5-connectivity qt5-charts vlc 'libical')
 optdepends=('vlc' 'qwtplot3d-svn' 'srmio' 'libftd2xx' 'libkml' 'libusb-compat' 'libsamplerate')
 options=('!strip' '!buildflags' 'staticlibs')
-source=(https://github.com/GoldenCheetah/GoldenCheetah/archive/v$pkgver-DEV$_devversion.tar.gz
+source=(https://github.com/GoldenCheetah/GoldenCheetah/archive/V$pkgver-$_devversion.tar.gz
 gcconfig.pri GoldenCheetah.desktop gc.png)
-md5sums=('160e54ab47a06d98123f917da2adb7eb'
+md5sums=('f2ad28568853f0cbc30f1d04835f34c4'
          'c9046d48dcff232fcdd6b04ab77db6db'
          '5a83da03adf4b4ea14ec459061699c0c'
          'e1fb382b4a7316da1ffd435e45e50c4a')
 
 build() {
-  cd "${srcdir}/GoldenCheetah-$pkgver-DEV$_devversion"
+  cd "${srcdir}/GoldenCheetah-$pkgver-$_devversion"
 
   cd "qwt/"
   cp qwtconfig.pri.in qwtconfig.pri
@@ -36,7 +36,7 @@ build() {
 
 package() {
   mkdir -p "$pkgdir/usr/bin/"
-  cp "${srcdir}/GoldenCheetah-$pkgver-DEV$_devversion/src/GoldenCheetah" "$pkgdir/usr/bin/"
+  cp "${srcdir}/GoldenCheetah-$pkgver-$_devversion/src/GoldenCheetah" "$pkgdir/usr/bin/"
   mkdir -p "$pkgdir/usr/lib/udev/rules.d/"
   mkdir -p "$pkgdir/usr/share/applications/"
   cp "${srcdir}/GoldenCheetah.desktop" "$pkgdir/usr/share/applications/"
