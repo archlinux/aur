@@ -1,0 +1,22 @@
+pkgbase = iot-inspector-client
+	pkgdesc = A standalone desktop app that lets you analyze your home IoT devices
+	pkgver = 2
+	pkgrel = 1
+	url = https://iot-inspector.princeton.edu/blog/
+	arch = any
+	license = MIT
+	depends = python
+	depends = python2
+	depends = python2-flask
+	depends = python2-flask-cors
+	depends = python2-requests
+	depends = python2-netaddr
+	depends = python2-scapy
+	depends = python-netdisco
+	source = https://github.com/noise-lab/iot-inspector-client/archive/1b6af10888c452b39a3e90216ca298f8f27523e3.zip
+	source = launch.sh
+	sha256sums = f51f7320139fb5a8794aef64343e1c033605ed7702a0b476a74fbea28e67189b
+	sha256sums = SKIP
+
+pkgname = iot-inspector-client
+
