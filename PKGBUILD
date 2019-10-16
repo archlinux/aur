@@ -2,7 +2,7 @@
 
 pkgname=elpa
 PkgName=ELPA
-pkgver=2019.05.001
+pkgver=2019.05.002
 pkgrel=1
 arch=('x86_64')
 pkgdesc="Eigenvalue SoLvers for Petaflop-Applications"
@@ -13,7 +13,7 @@ makedepends=('gcc-fortran' 'python')
 optdepends=('cuda: GPU support')
 provides=('elpa')
 source=("$url/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('772c03dab8713ba3891b17757a0b8429b3c4bec4b261dd337ed4b34311f6b221')
+sha256sums=('d2eab5e5d74f53601220b00d18185670da8c00c13e1c1559ecfb0cd7cb2c4e8d')
 
 prepare() {
     export CC=mpicc
