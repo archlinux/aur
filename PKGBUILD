@@ -1,8 +1,9 @@
+# Maintainer: Joey Dumont <joey.dumont@gmail.com>
 # Contributor: Whitney Marshall <whitney.marshall@gmail.com>
-# Maintainer: McNoggins <Gagnon88 (at) gmail (dot) com>
+# Contributor: McNoggins <Gagnon88 (at) gmail (dot) com>
 
 pkgname=go-mtpfs-git
-pkgver=20150917
+pkgver=20190802
 pkgrel=1
 pkgdesc="Simple tool for viewing MTP devices as FUSE filesystems"
 arch=('x86_64' 'i686')
@@ -24,7 +25,8 @@ pkgver() {
 build() {
   cd "$srcdir"
   # Build using go
-  GOPATH="$srcdir" go get -v -x ${_gourl}
+  go mod init hanwen/go-mtpfs
+  go get -v -x ${_gourl}
 }
 
 package() {
