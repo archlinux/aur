@@ -7,7 +7,7 @@
 # This package preferentially uses GOG's installer, using the
 #   build function to extract the data.  Please ensure the
 #   file is available in the build directory via copy or
-#   symlink, i.e. ~/aur/fs2_open-data/setup_freespace_2.exe.
+#   symlink, i.e. ~/aur/fs2_open-data/setup_freespace_2_1.20.exe.
 #       If using a copy of the retail CD, follow the instructions
 #   from the website below to extract the data. Once extracted, place
 #   the data directly in the $builddir/src directory, i.e.
@@ -19,78 +19,60 @@
 
 pkgname=fs2_open-data
 pkgver=1.20
-pkgrel=7
+pkgrel=8
 pkgdesc="FreeSpace 2 retail data for fs2_open"
 arch=('any')
 url="https://www.gog.com/game/freespace_2"
 license=('custom:freespace2')
 makedepends=('icoutils' 'innoextract' 'recode')
 PKGEXT=".pkg.tar"
-
+source=('file://setup_freespace_2_1.20.exe')
+sha256sums=('6070befe0e041aa80c824593ac3ed2430ea18eb14aba6bdb1704fd375786c707')
 prepare() {
-  # Could possibly support older versions of the GOG installer too,
-  # but it's worth it to have the latest version.
-  local _gog_sha256="6070befe0e041aa80c824593ac3ed2430ea18eb14aba6bdb1704fd375786c707"
-  local _gog_exe="setup_freespace_2_1.20.exe"
-  if [ -f ../$_gog_exe ]; then
-    echo "GOG installer detected; checking sha256sum ..."
-    if ! echo "$_gog_sha256 ../$_gog_exe" | sha256sum -c --status; then
-      error "Invalid sha256sum; verify your download and try again."
-      return 1
+    local _gog_exe="setup_freespace_2_1.20.exe"
+    mkdir -p build
+    cd build
+    innoextract ../$_gog_exe
+    # Extract and convert the icon
+    # Untested with the CD version
+    if [ -f ReadMe.txt ]; then
+	wrestool -x -t 14 -o . FreeSpace2.exe
     else
-      ln -s ../$_gog_exe .
-      innoextract $_gog_exe
+	wrestool -x -t 14 -o . app/FreeSpace2.exe
     fi
-  elif [ -f readme.txt ]; then
-    echo "Retail CD files detected."
-  else
-    error "You must have either $_gog_exe or the extracted files\
- from the retail CD present (.exe in main dir or CD files in src)."
-    error "Either download the game from your GOG shelf or extract the files\
- from the retail CD and try again."
-    return 1
-  fi
-
-  # Extract and convert the icon
-  # Untested with the CD version
-  if [ -f readme.txt ]; then
-    wrestool -x -t 14 -o . FreeSpace2.exe
-  else
-    wrestool -x -t 14 -o . app/FreeSpace2.exe
-  fi
-  icotool -x -i 3 -o . FreeSpace2.exe_14_128.ico
-  mv FreeSpace2.exe_14_128_3_48x48x8.png freespace2.png
+    icotool -x -i 3 -o . FreeSpace2.exe_14_128.ico
+    mv FreeSpace2.exe_14_128_3_48x48x8.png freespace2.png
 }
 
 package() {
-  cd "$srcdir"
+    cd "$srcdir"
 
-  if [[ -r readme.txt ]]; then sed -n 416,471p readme.txt > LICENSE;
-  else head -n 19 < tmp/GOG_EULA.txt | recode windows-1252/CRLF..utf8 > LICENSE;
-    license=('custom:goodoldgames');
-  fi
+    if [[ -r ReadMe.txt ]]; then sed -n 416,471p ReadMe.txt > LICENSE;
+    else head -n 19 < tmp/GOG_EULA.txt | recode windows-1252/CRLF..utf8 > LICENSE;
+	 license=('custom:goodoldgames');
+    fi
 
-  install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -D -m644 freespace2.png "$pkgdir/usr/share/icons/freespace2.png"
-  rm -f freespace2.png
+    install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -D -m644 freespace2.png "$pkgdir/usr/share/icons/freespace2.png"
+    rm -f freespace2.png
 
-  # This whole thing goes in /opt/fs2_open as a lot of upstream stuff
-  #   expects binaries and data to be together like in Windows
-  mkdir -p "$pkgdir/opt/fs2_open"
+    # This whole thing goes in /opt/fs2_open as a lot of upstream stuff
+    #   expects binaries and data to be together like in Windows
+    mkdir -p "$pkgdir/opt/fs2_open"
 
-  if [[ -r readme.txt ]]; then
-    mv ./* "$pkgdir/opt/fs2_open"
-  else
-    # The GOG installer places cutscenes and data copies in folders
-    #   corresponding with the original CDs; we need to move the
-    #   cutscenes and delete the redundant data and folders.
-    mkdir app/data/movies
-    mv app/data{2,3}/*.MVE app/data/movies/
-    rm -rf app/data{2,3}
-    mv app/* "$pkgdir/opt/fs2_open"
-  fi
+    if [[ -r ReadMe.txt ]]; then
+	mv ./* "$pkgdir/opt/fs2_open"
+    else
+	# The GOG installer places cutscenes and data copies in folders
+	#   corresponding with the original CDs; we need to move the
+	#   cutscenes and delete the redundant data and folders.
+	mkdir app/data/movies
+	mv app/data{2,3}/*.MVE app/data/movies/
+	rm -rf app/data{2,3}
+	mv app/* "$pkgdir/opt/fs2_open"
+    fi
 
-  # Useless files for a Linux port. :D
-  find "$pkgdir/opt/fs2_open" -iname \*.exe -print0 -or -iname \*.dll -print0 \
-    -or -iname \*.ico -print0 | xargs -0 rm -f
+    # Useless files for a Linux port. :D
+    find "$pkgdir/opt/fs2_open" -iname \*.exe -print0 -or -iname \*.dll -print0 \
+	 -or -iname \*.ico -print0 | xargs -0 rm -f
 }
