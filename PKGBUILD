@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-math-bigint'
-pkgver='1.999816'
+pkgver='1.999817'
 pkgrel='1'
 pkgdesc="Math::BigInt - Arbitrary size integer/float math package"
 arch=('any')
@@ -14,8 +14,8 @@ provides=('perl-math-bigfloat' 'perl-math-bigint-calc' 'perl-math-bigint-lib')
 
 url='https://metacpan.org/release/Math-BigInt'
 source=("https://cpan.metacpan.org/authors/id/P/PJ/PJACKLAM/Math-BigInt-$pkgver.tar.gz")
-md5sums=('879409c5c62441a675853cabe690b313')
-sha512sums=('2b5fbaa3e5be661514ff44bef049dbb60ee07e278a4c0efa5b5722ec8578ea1c3c672a3ebd04a03651e931b90a8fd40d5a1249ba611dfc59b10d3cdadcdbbbd4')
+md5sums=('d519ec977857b3376193473a0eb71616')
+sha512sums=('4fa72713cd91cf7bffebcdf3ba1ee0fd448393f02beda3f856f9038207e351c7ebc1e2fbe91bec7f154a363c360b16eeae8d06c067c5359e2b92d547155d92af')
 _distdir="Math-BigInt-$pkgver"
 
 build() {
@@ -43,9 +43,3 @@ package() {
   make install
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
-
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:
