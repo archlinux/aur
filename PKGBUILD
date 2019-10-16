@@ -2,7 +2,7 @@
 
 pkgname=quiche
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='an implementation of the QUIC transport protocol and HTTP/3 as specified by the IETF'
 arch=('x86_64')
 url='https://github.com/cloudflare/quiche'
@@ -23,7 +23,7 @@ prepare() {
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
-	cargo build --release --features pkg-config-meta
+	cargo build --release
 }
 
 package() {
@@ -33,9 +33,18 @@ package() {
 	mkdir -p $pkgdir/usr/lib/pkgconfig
     mkdir -p $pkgdir/usr/share/licenses/quiche
 
-	install include/quiche.h $pkgdir/usr/include
-	install target/release/libquiche.a $pkgdir/usr/lib
-	install target/release/libquiche.so $pkgdir/usr/lib
-	install target/release/quiche.pc $pkgdir/usr/lib/pkgconfig
+	install -Dm644 include/quiche.h $pkgdir/usr/include
+	install -Dm644 target/release/libquiche.a $pkgdir/usr/lib
+	install -Dm755 target/release/libquiche.so $pkgdir/usr/lib
+	install -Dm644 /dev/stdin $pkgdir/usr/lib/pkgconfig/quiche.pc <<PC
+# quiche
+
+Name: quiche
+Description: quiche library
+URL: https://github.com/cloudflare/quiche
+Version: $pkgver
+Libs: -lquiche
+PC
+
     install COPYING $pkgdir/usr/share/licenses/quiche
 }
