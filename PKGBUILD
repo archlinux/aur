@@ -5,12 +5,12 @@
 
 pkgname=unknown-horizons-git
 pkgver=2019.1.r47.gc196f0704
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source real-time strategy game with the comfy Anno1602 feeling."
 arch=('any')
 url="http://www.unknown-horizons.org"
 license=('GPL' 'CCPL')
-depends=('fife' 'python-yaml' 'python-pillow' 'python-future')
+depends=('fife' 'python-distro' 'python-future' 'python-pillow' 'python-yaml')
 makedepends=('git' 'intltool' 'python-setuptools')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
@@ -28,11 +28,11 @@ pkgver() {
 # step
 build() {
     cd "$srcdir/${pkgname%-git}"
-    # HOME="$srcdir/python" python setup.py build
-    HOME="$srcdir/python" python horizons/engine/generate_atlases.py 2048
+    # UH_USER_DIR="$srcdir/UH_USER_DIR" python setup.py build
+    UH_USER_DIR="$srcdir/UH_USER_DIR" python horizons/engine/generate_atlases.py 2048
 }
 
 package() {
     cd "$srcdir/${pkgname%-git}"
-    HOME="$srcdir/python" python setup.py install --root="$pkgdir/" --optimize=1 #--skip-build
+    UH_USER_DIR="$srcdir/UH_USER_DIR" python setup.py install --root="$pkgdir/" --optimize=1 #--skip-build
 }
