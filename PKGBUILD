@@ -4,7 +4,7 @@
 pkgbase=python-thrift
 pkgname=(python-thrift python2-thrift)
 _pkgname=thrift
-pkgver=0.11.0
+pkgver=0.13.0
 pkgrel=1
 pkgdesc='Python bindings for the Apache Thrift RPC system'
 arch=(i686 x86_64)
@@ -12,7 +12,7 @@ license=(Apache)
 url='https://thrift.apache.org/'
 makedepends=(python-setuptools python2-setuptools)
 source=(thrift-$pkgver.zip::https://github.com/apache/$_pkgname/archive/$pkgver.zip)
-sha256sums=('c183e6337ae6d03a019c3581de71d3bd5c6fa92dfe1754398c402e3561d09f23')
+sha256sums=('2da56e84f42763d1ca8502156f1de347c1e16467f14a7e809b7ccafe8d428a96')
 
 prepare() {
     cd "$srcdir"
