@@ -1,6 +1,6 @@
 pkgbase = python-sphinxcontrib-programoutput
 	pkgdesc = Sphinx extension to include program output
-	pkgver = 0.14
+	pkgver = 0.15
 	pkgrel = 1
 	url = https://bitbucket.org/birkenfeld/sphinx-contrib
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = python-sphinxcontrib-programoutput
 	depends = python-sphinx
 	provides = sphinxcontrib-programoutput
 	options = !emptydirs
-	source = https://pypi.python.org/packages/source/s/sphinxcontrib-programoutput/sphinxcontrib-programoutput-0.14.tar.gz
-	sha256sums = 75b182e9e8cf7efe828cac2c351bb737b00a76bc3aa60fd1a9b2b7096e99c383
+	source = https://pypi.python.org/packages/source/s/sphinxcontrib-programoutput/sphinxcontrib-programoutput-0.15.tar.gz
+	sha256sums = 80dd5b4eab780a13ff2c23500cac3dbf0e04ef9976b409ef25a47c263ef8ab94
 
 pkgname = python-sphinxcontrib-programoutput
 
