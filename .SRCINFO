@@ -1,6 +1,6 @@
 pkgbase = ulam-git
 	pkgdesc = Github version of ulam compiler and MFM simulator
-	pkgver = 4.0.1.r27.g8c517e58
+	pkgver = 4.0.1.r31.g7b346da2
 	pkgrel = 1
 	url = https://github.com/elenasa/ULAM/wiki
 	arch = any
