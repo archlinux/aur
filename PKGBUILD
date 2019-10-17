@@ -39,7 +39,7 @@ conflicts=(
 pkgdesc='A collection of LLVM-based C++ dev tools'
 
 pkgver=9.0.0svn_r360728
-pkgrel=2
+pkgrel=3
 
 arch=('i686' 'x86_64')
 url='https://llvm.org/'
@@ -170,6 +170,7 @@ check() {
 package() {
     cd "${srcdir}/build"
     DESTDIR=${pkgdir} ninja install
+    rm -f ${pkgdir}/usr/lib/python{2.7,3.7}/site-packages/six.py
 }
 
 # vim:set ts=4 sts=4 sw=4 et:
