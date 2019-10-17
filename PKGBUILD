@@ -1,6 +1,6 @@
 pkgname=libmodulemd1
 _pkgname=libmodulemd
-pkgver=1.8.15
+pkgver=1.8.16
 pkgrel=1
 pkgdesc="C Library for manipulating module metadata files (v1 API)"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ depends=('glib2' 'libyaml')
 makedepends=('gobject-introspection' 'gtk-doc' 'meson>=0.47' 'python-gobject')
 optdepends=('python-gobject: for python bindings')
 source=("$url/releases/download/$_pkgname-$pkgver/${_pkgname#lib}-$pkgver.tar.xz")
-md5sums=('aa1a8da0696bb2ad77e53e13d5aa84ce')
+md5sums=('f94a217c1e9f4feb383b8ef15bcf0e54')
 
 prepare() {
 	mv "${_pkgname#lib}-$pkgver" "$pkgname-$pkgver"
