@@ -4,7 +4,7 @@
 
 pkgbase=python-mechanicalsoup
 pkgname=(python-mechanicalsoup python2-mechanicalsoup)
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="A Python library for automating interaction with websites"
 arch=('any')
@@ -12,7 +12,6 @@ url="https://github.com/hickford/MechanicalSoup"
 license=('MIT')
 makedepends=('python2-setuptools' 'python-setuptools')
 source=("https://github.com/hickford/MechanicalSoup/archive/v${pkgver}.tar.gz")
-sha512sums=('d45303523d46e241769ca763d970044c8eee5278e4546720b3b2088577e05ffd269a1e40fd53168894906d3ee75b441f5591e162fa0d39ceea9f479283135f5e')
 
 check() {
   cd $srcdir/MechanicalSoup-$pkgver 
@@ -32,3 +31,5 @@ package_python-mechanicalsoup() {
 
   python setup.py install --root="$pkgdir/" --optimize=1
 }
+
+sha512sums=('dcbbe50d59b1314ea6c8ee17a5fa9b2dafc50b2a73f015de191a08d6c1ea367be329d9e9822e4da97f38fb7a5907d0a7ee5e24b43421bd14dae9950d6fed9cbd')
