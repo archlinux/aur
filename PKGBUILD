@@ -11,8 +11,6 @@ depends=('inkscape')
 makedepends=('git')
 source=("${_pkgname}::git+https://github.com/Xaviju/inkscape-open-symbols.git"
         'https://raw.githubusercontent.com/Xaviju/inkscape-open-symbols/master/LICENSE.txt')
-md5sums=('SKIP'
-         'SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
