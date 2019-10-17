@@ -6,13 +6,13 @@ pkgrel=1
 pkgdesc="Open source icon sets to use as Inkscape symbols"
 arch=('any')
 url="https://github.com/Xaviju/inkscape-open-symbols"
-license=('custom')
+license=('MIT')
 depends=('inkscape')
 makedepends=('git')
 source=("${_pkgname}::git+https://github.com/Xaviju/inkscape-open-symbols.git"
-        'https://raw.githubusercontent.com/google/material-design-icons/ac6812576bce556dd736f6f28a42e15cdf386b6e/LICENSE')
+        'https://raw.githubusercontent.com/Xaviju/inkscape-open-symbols/master/LICENSE.txt')
 md5sums=('SKIP'
-         '30cdba52b170859bf6e7ec48a1e43dda')
+         'SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
@@ -39,8 +39,7 @@ package() {
          -exec 'cp' '{}' "${pkgdir}/usr/share/inkscape/symbols" ';'
   done
 
-  mkdir -p "${pkgdir}/usr/share/licenses/${_pkgname}"
-  cp "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}"
+  install -Dm644 "${srcdir}/LICENSE.txt" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
