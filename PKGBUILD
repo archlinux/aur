@@ -2,13 +2,13 @@
 pkgdesc='VHDL compiler and simulator'
 pkgname=nvc
 pkgver=1.4.0
-pkgrel=2
+pkgrel=3
 url='https://github.com/nickg/nvc'
 license=(GPL3)
-depends=(libelf llvm7-libs)
+depends=(libelf llvm-libs)
 conflicts=(nvc-git)
 arch=(x86_64 i686)
-makedepends=(pkgconfig make flex check llvm7 tcl automake autoconf)
+makedepends=(pkgconfig make flex check llvm tcl automake autoconf)
 
 _vital_url='https://raw.githubusercontent.com/tgingold/ghdl/master/libraries/vital2000'
 
