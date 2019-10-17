@@ -1,0 +1,19 @@
+pkgbase = ch34x-dkms-git
+	pkgdesc = CH341SER driver with fixed bug
+	pkgver = r16.c6b4bc9
+	pkgrel = 1
+	url = https://github.com/juliagoda/CH341SER
+	install = ch34x-dkms-git.install
+	arch = i686
+	arch = x86_64
+	makedepends = git
+	depends = dkms
+	source = git+https://github.com/juliagoda/CH341SER.git
+	source = dkms.conf
+	source = blacklist-ch34x-dkms-git.conf
+	sha1sums = SKIP
+	sha1sums = cbce8f44f307b2a656c34f184871da3bb11d8565
+	sha1sums = 524ea363adee44fb9f2293bde3838b5e235193da
+
+pkgname = ch34x-dkms-git
+
