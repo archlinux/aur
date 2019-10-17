@@ -3,7 +3,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-swiper
-pkgver=0.12.0
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="Ivy - a generic completion frontend for Emacs, Swiper - isearch with an overview"
 url="https://github.com/abo-abo/swiper"
@@ -14,7 +14,7 @@ makedepends=('git')
 provides=('emacs-swiper')
 conflicts=('emacs-swiper')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/abo-abo/swiper/archive/${pkgver}.tar.gz")
-sha256sums=('e6bd2d41142623e097c041cc061a01ba34ed27623a9c42b227c40f31d8eb7cfa')
+sha256sums=('ef70b0dffc34513f64b4470948044527c9455705e05cb5b92e370714dfb8a3a2')
 
 build() {
   cd "swiper-${pkgver}"

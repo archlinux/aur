@@ -1,6 +1,6 @@
 pkgbase = emacs-swiper
 	pkgdesc = Ivy - a generic completion frontend for Emacs, Swiper - isearch with an overview
-	pkgver = 0.12.0
+	pkgver = 0.13.0
 	pkgrel = 1
 	url = https://github.com/abo-abo/swiper
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = emacs-swiper
 	depends = emacs
 	provides = emacs-swiper
 	conflicts = emacs-swiper
-	source = emacs-swiper-0.12.0.tar.gz::https://github.com/abo-abo/swiper/archive/0.12.0.tar.gz
-	sha256sums = e6bd2d41142623e097c041cc061a01ba34ed27623a9c42b227c40f31d8eb7cfa
+	source = emacs-swiper-0.13.0.tar.gz::https://github.com/abo-abo/swiper/archive/0.13.0.tar.gz
+	sha256sums = ef70b0dffc34513f64b4470948044527c9455705e05cb5b92e370714dfb8a3a2
 
 pkgname = emacs-swiper
 
