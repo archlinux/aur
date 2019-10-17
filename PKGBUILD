@@ -1,7 +1,7 @@
 # Maintainer: Ulf Winberg <ulfwin@gmail.com>
 _pkgname="inkscape-open-symbols"
 pkgname="${_pkgname}-git"
-pkgver=r43.99b8be9
+pkgver=v1.2.1.r12.g7a991f1
 pkgrel=1
 pkgdesc="Open source icon sets to use as Inkscape symbols"
 arch=('any')
