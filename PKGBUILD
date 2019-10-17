@@ -8,7 +8,7 @@ url="https://github.com/JDimproved/JDim/tree/test"
 license=('GPL2')
 makedepends=('git')
 depends=('gnutls' 'libsm' 'gtkmm3' 'autoconf-archive')
-conflicts=('jd' 'jd-svn' 'jd-gtk3' )
+conflicts=('jd' 'jd-svn' 'jd-gtk3' 'jd-git' )
 source=('git://github.com/JDimproved/JDim.git#branch=test')
 sha256sums=('SKIP')
 
