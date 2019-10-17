@@ -1,6 +1,6 @@
 # Maintainer: Adrien Gallouët <adrien@gallouet.fr>
 pkgname=glorytun
-pkgver=0.2.0
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="A small, simple and secure VPN"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('BSD')
 depends=('libsodium' 'iproute2')
 makedepends=('libsodium' 'pkg-config')
 source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('0704fe7eb77fc9cb82fdbe060e0fb9e0')
+md5sums=('96a25e6f39aa359cb4fe7bc8dfcf5c7a')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
