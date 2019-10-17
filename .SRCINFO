@@ -1,22 +1,22 @@
 pkgbase = myetherwallet
-	pkgdesc = Free, open-source, client-side tool for easily & securely interacting with the Ethereum network
-	pkgver = 3.40.0
+	pkgdesc = Client-side interface for interacting with the Ethereum blockchain
+	pkgver = 5.1.6
 	pkgrel = 1
-	url = https://github.com/kvhnuke/etherwallet
+	url = https://github.com/MyEtherWallet/MyEtherWallet
 	arch = any
 	license = MIT
 	depends = xdg-utils
-	source = https://github.com/kvhnuke/etherwallet/releases/download/v3.40.0/etherwallet-v3.40.0.zip
-	source = https://github.com/kvhnuke/etherwallet/releases/download/v3.40.0/etherwallet-v3.40.0.zip.sig
+	source = https://github.com/MyEtherWallet/MyEtherWallet/releases/download/v5.1.6/MyEtherWallet-v5.1.6.zip
+	source = https://github.com/MyEtherWallet/MyEtherWallet/releases/download/v5.1.6/MyEtherWallet-v5.1.6.zip.sig
 	source = myetherwallet.desktop
 	source = myetherwallet
 	source = LICENSE
 	validpgpkeys = 2FCA4A1E3AF4278F7AD3B7637F059C0F7B9A12F0
-	sha256sums = 8be7c42fa6810a6c80b287e62356873b90f0899fc7dbbefcf59e46509f9b3b5f
+	sha256sums = c850bb80af051162b33f273f31fd64156bfcd083109625647bbba9274e32e09c
 	sha256sums = SKIP
-	sha256sums = 08fca55eaa60eca466f75a9961aa792442e36ae6740f31ff9c0dbfa888f9a45f
-	sha256sums = 7f53205c3ee5ca028aa9ef69544de8befdc25670dfbd45203ea8d81539e3ca7e
-	sha256sums = 6d8c51c704f3a16402bc9eceb01273d7fbad1f1a4e8770a26dfd35b531101d34
+	sha256sums = b49e3bb0cded23c40820281a110d2baed5d1f7aa036635108323d0133e0e30e9
+	sha256sums = 814f489e4e6e0ce172513febf58d6821e7b77cd2e644152aec4888228fe41da5
+	sha256sums = 42039cf560b0b2b35463f33656d9639c8f9b98e9a4f57723dbab0a90a4ad8ad6
 
 pkgname = myetherwallet
 
