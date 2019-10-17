@@ -22,3 +22,27 @@ pkgbase = cloud-utils
 
 pkgname = cloud-utils
 
+pkgbase = cloud-utils
+	pkgdesc = A useful set of utilities for interacting with a cloud
+	pkgver = 0.31
+	pkgrel = 1
+	url = https://launchpad.net/cloud-utils
+	arch = any
+	license = GPL3
+	depends = python
+	depends = qemu
+	depends = ca-certificates
+	depends = cdrkit
+	depends = e2fsprogs
+	depends = file
+	depends = util-linux
+	depends = wget
+	optdepends = gptfdisk
+	optdepends = euca2ools
+	provides = cloud-utils
+	conflicts = cloud-utils-bzr
+	source = https://launchpad.net/cloud-utils/trunk/0.31/+download/cloud-utils-0.31.tar.gz
+	md5sums = 63f1dacf5ba761a6f220e6bec83ffb8e
+
+pkgname = cloud-utils
+
