@@ -1,7 +1,7 @@
 pkgbase = wps-office
 	pkgdesc = Kingsoft Office (WPS Office) is an office productivity suite
 	pkgver = 11.1.0.8865
-	pkgrel = 3
+	pkgrel = 4
 	url = http://wps-community.org/
 	install = wps-office.install
 	arch = x86_64
@@ -19,6 +19,7 @@ pkgbase = wps-office
 	depends = libpulse
 	depends = hicolor-icon-theme
 	depends = libxss
+	depends = sqlite
 	optdepends = cups: for printing support
 	optdepends = libjpeg-turbo: JPEG image codec support
 	optdepends = pango: for complex (right-to-left) text support
