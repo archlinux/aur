@@ -2,7 +2,7 @@
 
 pkgname=clash-bin
 _pkgname=clash
-pkgver=0.15.0
+pkgver=0.16.0
 pkgrel=1
 pkgdesc="A rule based proxy in Go."
 url="https://github.com/Dreamacro/clash"
@@ -18,7 +18,7 @@ noextract=("$_pkgname-$pkgver.gz")
 sha256sums=(
         "5742063861d24f959a6aed1eecbcdfde772e63dcf1e9104690d4255d6967e656"
         "71a8880111f577df201c8c73300616a01411f14a6a7d14a18c768e469dc71541"
-        "d5910f38036d350ade9cbb5fa0bf47799ac7f289da1f119a8541081bc1d96d3a"
+        "c40c1844d0cf3ce49bc9a0a413ffef8665aaca8112b2b1ac2a20f8cd05d6ae4f"
 )
 
 install=$_pkgname.install
