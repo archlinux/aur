@@ -6,7 +6,7 @@
 pkgname=simgear
 pkgver=2019.1.1
 _pkgver=${pkgver%.*}
-pkgrel=1
+pkgrel=2
 pkgdesc="A set of open-source libraries designed to be used as building blocks for quickly assembling 3d simulations, games, and visualization applications."
 arch=(x86_64)
 depends=('glu' 'glut' 'freealut' 'plib' 'openscenegraph34')
@@ -29,6 +29,6 @@ build() {
 }
 
 package() {
-  cd "$srcdir"/sgbuild
+  cd "$srcdir"/simgear-$pkgver
   make DESTDIR="$pkgdir" install
 }
