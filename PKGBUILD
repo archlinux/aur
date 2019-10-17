@@ -1,4 +1,4 @@
-# Maintainer: Vinícius dos Santos Oliveira <vini.ipsmaker@gmail.com>
+# Maintainer: Ulf Winberg <ulfwin@gmail.com>
 _pkgname="inkscape-open-symbols"
 pkgname="${_pkgname}-git"
 pkgver=r43.99b8be9
