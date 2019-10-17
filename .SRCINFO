@@ -1,0 +1,14 @@
+pkgbase = nmrpflash-git
+	pkgdesc = Netgear Unbrick Utility
+	pkgver = v0.9.13.r20.g021e449
+	pkgrel = 1
+	url = https://github.com/jclehner/nmrpflash
+	arch = x86_64
+	makedepends = make
+	depends = libpcap
+	depends = libnl>=3
+	source = nmrpflash::git+https://github.com/jclehner/nmrpflash.git
+	sha256sums = SKIP
+
+pkgname = nmrpflash-git
+
