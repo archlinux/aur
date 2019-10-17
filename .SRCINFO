@@ -15,6 +15,7 @@ pkgbase = libretro-kronos-git
 	source = Kronos::git+https://github.com/FCare/Kronos.git
 	source = fix-build.patch
 	sha256sums = SKIP
+	sha256sums = 8546b631386cfe7027dff302c95d59689c1129b78d68e40aac2a3d704da8b830
 
 pkgname = libretro-kronos-git
 

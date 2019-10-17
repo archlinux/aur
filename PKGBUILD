@@ -12,7 +12,8 @@ provides=('libretro-kronos')
 conflicts=('libretro-kronos')
 source=('Kronos::git+https://github.com/FCare/Kronos.git'
         'fix-build.patch')
-sha256sums=('SKIP')
+sha256sums=('SKIP'
+            '8546b631386cfe7027dff302c95d59689c1129b78d68e40aac2a3d704da8b830')
 
 pkgver() {
   cd Kronos
