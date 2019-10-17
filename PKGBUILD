@@ -1,22 +1,20 @@
-# Maintainer: Nick Cao <nickcao@nichi.co>
-# Maintainer: hexchain <richard0053@gmail.com>
 pkgname=dptf
-pkgver=8.4.10401
-pkgrel=5
+pkgver=8.7.10100
+pkgrel=1
 pkgdesc='Intel (R) Dynamic Platform and Thermal Framework (Intel (R) DPTF)'
 arch=('x86_64')
 url='https://github.com/intel/dptf'
 license=('custom')
 depends=('readline')
 makedepends=('cmake')
-source=('https://github.com/intel/dptf/archive/8.4.10401.tar.gz')
-md5sums=('707632f2943e838f379d20a5076fb722')
+source=("https://github.com/intel/dptf/archive/$pkgver.tar.gz")
+sha256sums=('fbd9302973fcb3ca32aec9a38891fa25e8ab17720fab3c994955fd1ffca72661')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
 
-    export CXXFLAGS="${CXXFLAGS} -Wno-error=catch-value -Wno-error=stringop-truncation"
-    export CFLAGS="${CFLAGS} -Wno-error=format-truncation"
+    export CXXFLAGS="${CXXFLAGS} -Wno-error=catch-value -Wno-error=stringop-truncation -ffile-prefix-map='$srcdir/$pkgname-$pkgver'="
+    export CFLAGS="${CFLAGS} -Wno-error=format-truncation -ffile-prefix-map='$srcdir/$pkgname-$pkgver'="
 
     pushd DPTF/Linux/build
     cmake ..
@@ -41,14 +39,11 @@ build() {
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
-    install -Dm755 "DPTF/Linux/build/x64/release/Dptf.so" "$pkgdir/usr/share/dptf/ufx64/Dptf.so"
-    install -Dm755 "DPTF/Linux/build/x64/release/DptfPolicyActive.so" "$pkgdir/usr/share/dptf/ufx64/DptfPolicyActive.so"
-    install -Dm755 "DPTF/Linux/build/x64/release/DptfPolicyCritical.so" "$pkgdir/usr/share/dptf/ufx64/DptfPolicyCritical.so"
-    install -Dm755 "DPTF/Linux/build/x64/release/DptfPolicyPassive.so" "$pkgdir/usr/share/dptf/ufx64/DptfPolicyPassive.so"
-    install -Dm755 "ESIF/Products/ESIF_CMP/Linux/esif_cmp.so" "$pkgdir/usr/share/dptf/ufx64/esif_cmp.so"
-    install -Dm755 "ESIF/Products/ESIF_WS/Linux/esif_ws.so" "$pkgdir/usr/share/dptf/ufx64/esif_ws.so"
-    install -Dm644 "ESIF/Packages/DSP/dsp.dv" "$pkgdir/etc/dptf/dsp.dv"
-    install -Dm755 "ESIF/Products/ESIF_UF/Linux/esif_ufd" "$pkgdir/usr/bin/esif_ufd"
-    install -Dm644 "ESIF/Packages/Installers/linux/dptf.service" "$pkgdir/usr/lib/systemd/system/dptf.service"
-    install -Dm644 "LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm755 DPTF/Linux/build/x64/release/Dptf{,Policy{Active,Critical,Passive}}.so -t "$pkgdir/usr/share/dptf/ufx64/"
+    install -Dm755 ESIF/Products/ESIF_CMP/Linux/esif_cmp.so "$pkgdir/usr/share/dptf/ufx64/esif_cmp.so"
+    install -Dm755 ESIF/Products/ESIF_WS/Linux/esif_ws.so "$pkgdir/usr/share/dptf/ufx64/esif_ws.so"
+    install -Dm644 ESIF/Packages/DSP/dsp.dv "$pkgdir/etc/dptf/dsp.dv"
+    install -Dm755 ESIF/Products/ESIF_UF/Linux/esif_ufd "$pkgdir/usr/bin/esif_ufd"
+    install -Dm644 ESIF/Packages/Installers/linux/dptf.service "$pkgdir/usr/lib/systemd/system/dptf.service"
+    install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
