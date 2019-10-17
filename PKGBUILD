@@ -10,7 +10,8 @@ depends=('glibc' 'libretro-core-info')
 makedepends=('git')
 provides=('libretro-kronos')
 conflicts=('libretro-kronos')
-source=('Kronos::git+https://github.com/FCare/Kronos.git')
+source=('Kronos::git+https://github.com/FCare/Kronos.git'
+        'fix-build.patch')
 sha256sums=('SKIP')
 
 pkgver() {
