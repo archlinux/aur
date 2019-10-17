@@ -1,7 +1,7 @@
 pkgbase = ndn-cxx-git
 	pkgdesc = Library implementing Named Data Networking (NDN) primitives that can be used to write various NDN applications
-	pkgver = ndn.cxx.0.6.6.r46.g5e494c0c
-	pkgrel = 4
+	pkgver = ndn.cxx.0.6.6.r47.ge6e125ea
+	pkgrel = 1
 	url = https://github.com/named-data/ndn-cxx
 	arch = any
 	license = GPL
