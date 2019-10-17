@@ -2,7 +2,7 @@
 
 pkgname=shshare
 pkgver=0.1.9
-pkgrel=1
+pkgrel=2
 pkgdesc="A screenshotter, recorder, and uploader"
 arch=('any')
 url="https://github.com/MarkusGordathian/shshare"
@@ -12,7 +12,7 @@ depends=('curl' 'maim' 'xclip' 'jq' 'xsel')
 optdepends=('libnotify: for notifying of upload completions'
 			'ffmpeg: for screen recording')
 source=("shshare-${pkgver}.tar.gz::https://github.com/MarkusGordathian/shshare/releases/download/${pkgver}/shshare-${pkgver}.tar.gz")
-backup=(etc/share.sh.d/upload.sh)
+backup=("etc/shshare/uploader.sh")
 sha512sums=('77d77a2b78f182dec360a18fe58a00a832813856b65e03382953aa68f009f4d41fb87689acb97b8096874ef0b6d82d8c65ddaa91dfce452b893f462b18fb210c')
 
 package() {
