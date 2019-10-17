@@ -1,0 +1,653 @@
+--- a/src/command_download.cc	2016-10-23 05:33:00.000000000 +0100
++++ a/src/command_download.cc	2017-04-30 21:40:38.853044300 +0100
+@@ -196,19 +196,6 @@ apply_d_connection_type(core::Download*
+   return torrent::Object();
+ }
+ 
+-torrent::Object
+-apply_d_choke_heuristics(core::Download* download, const std::string& name, bool is_down) {
+-  torrent::Download::HeuristicType t =
+-    (torrent::Download::HeuristicType)torrent::option_find_string(torrent::OPTION_CHOKE_HEURISTICS, name.c_str());
+-
+-  if (is_down)
+-    download->download()->set_download_choke_heuristic(t);
+-  else
+-    download->download()->set_upload_choke_heuristic(t);
+-
+-  return torrent::Object();
+-}
+-
+ const char*
+ retrieve_d_priority_str(core::Download* download) {
+   switch (download->priority()) {
+@@ -687,6 +674,7 @@ initialize_command_download() {
+   CMD2_DL         ("d.is_partially_done",     CMD2_ON_DATA(is_partially_done));
+   CMD2_DL         ("d.is_not_partially_done", CMD2_ON_DATA(is_not_partially_done));
+   CMD2_DL         ("d.is_meta",               CMD2_ON_INFO(is_meta_download));
++  CMD2_DL         ("d.is_done",               CMD2_ON_FL(is_done));
+ 
+   CMD2_DL_V       ("d.resume",     std::bind(&core::DownloadList::resume_default, control->core()->download_list(), std::placeholders::_1));
+   CMD2_DL_V       ("d.pause",      std::bind(&core::DownloadList::pause_default, control->core()->download_list(), std::placeholders::_1));
+@@ -760,16 +748,6 @@ initialize_command_download() {
+   CMD2_DL_VAR_STRING("d.connection_leech",      "rtorrent", "connection_leech");
+   CMD2_DL_VAR_STRING("d.connection_seed",       "rtorrent", "connection_seed");
+ 
+-  CMD2_DL       ("d.up.choke_heuristics",       std::bind(&torrent::option_as_string, torrent::OPTION_CHOKE_HEURISTICS, CMD2_ON_DL(upload_choke_heuristic)));
+-  CMD2_DL_STRING("d.up.choke_heuristics.set",   std::bind(&apply_d_choke_heuristics, std::placeholders::_1, std::placeholders::_2, false));
+-  CMD2_DL       ("d.down.choke_heuristics",     std::bind(&torrent::option_as_string, torrent::OPTION_CHOKE_HEURISTICS, CMD2_ON_DL(download_choke_heuristic)));
+-  CMD2_DL_STRING("d.down.choke_heuristics.set", std::bind(&apply_d_choke_heuristics, std::placeholders::_1, std::placeholders::_2, true));
+-
+-  CMD2_DL_VAR_STRING("d.up.choke_heuristics.leech", "rtorrent", "choke_heuristics.up.leech");
+-  CMD2_DL_VAR_STRING("d.up.choke_heuristics.seed",  "rtorrent", "choke_heuristics.up.seed");
+-  CMD2_DL_VAR_STRING("d.down.choke_heuristics.leech", "rtorrent", "choke_heuristics.down.leech");
+-  CMD2_DL_VAR_STRING("d.down.choke_heuristics.seed",  "rtorrent", "choke_heuristics.down.seed");
+-
+   CMD2_DL         ("d.hashing_failed",     std::bind(&core::Download::is_hash_failed, std::placeholders::_1));
+   CMD2_DL_VALUE_V ("d.hashing_failed.set", std::bind(&core::Download::set_hash_failed, std::placeholders::_1, std::placeholders::_2));
+ 
+@@ -820,6 +797,7 @@ initialize_command_download() {
+   CMD2_DL         ("d.free_diskspace", CMD2_ON_FL(free_diskspace));
+ 
+   CMD2_DL         ("d.size_files",     CMD2_ON_FL(size_files));
++  CMD2_DL         ("d.selected_size_bytes",    CMD2_ON_FL(selected_size_bytes));
+   CMD2_DL         ("d.size_bytes",     CMD2_ON_FL(size_bytes));
+   CMD2_DL         ("d.size_chunks",    CMD2_ON_FL(size_chunks));
+   CMD2_DL         ("d.chunk_size",     CMD2_ON_FL(chunk_size));
+@@ -853,18 +833,8 @@ initialize_command_download() {
+   CMD2_DL         ("d.priority_str", std::bind(&retrieve_d_priority_str, std::placeholders::_1));
+   CMD2_DL_VALUE_V ("d.priority.set", std::bind(&core::Download::set_priority, std::placeholders::_1, std::placeholders::_2));
+ 
+-  // CMD2_DL         ("d.group",     std::bind(&torrent::resource_manager_entry::group,
+-  //                                           std::bind(&torrent::ResourceManager::entry_at, torrent::resource_manager(),
+-  //                                                     std::bind(&core::Download::main, std::placeholders::_1))));
+-
+-  // CMD2_DL_V       ("d.group.set", std::bind(&torrent::ResourceManager::set_group,
+-  //                                           torrent::resource_manager(),
+-  //                                           std::bind(&torrent::ResourceManager::find_throw, torrent::resource_manager(),
+-  //                                                     std::bind(&core::Download::main, std::placeholders::_1)),
+-  //                                           CG_GROUP_INDEX()));
+-
+   CMD2_DL         ("d.group",      std::bind(&cg_d_group, std::placeholders::_1));
+-  CMD2_DL         ("d.group.name", std::bind(&cg_d_group, std::placeholders::_1));
++  CMD2_DL         ("d.group.name", std::bind(&cg_d_group_name, std::placeholders::_1));
+   CMD2_DL_V       ("d.group.set",  std::bind(&cg_d_group_set, std::placeholders::_1, std::placeholders::_2));
+ 
+   CMD2_DL_LIST    ("f.multicall", std::bind(&f_multicall, std::placeholders::_1, std::placeholders::_2));
+--- a/src/command_groups.cc	2016-10-23 05:33:00.000000000 +0100
++++ a/src/command_groups.cc	2017-04-30 21:35:27.000000000 +0100
+@@ -52,12 +52,6 @@
+ // For cg_d_group.
+ #include "core/download.h"
+ 
+-// A hack to allow testing of the new choke_group API without the
+-// working parts present.
+-#define USE_CHOKE_GROUP 0
+-
+-#if USE_CHOKE_GROUP
+-
+ int64_t
+ cg_get_index(const torrent::Object& raw_args) {
+   const torrent::Object& arg = (raw_args.is_list() && !raw_args.as_list().empty()) ? raw_args.as_list().front() : raw_args;
+@@ -122,104 +116,6 @@ apply_cg_insert(const std::string& arg)
+   return torrent::Object();
+ }
+ 
+-//
+-// The hacked version:
+-//
+-#else
+-
+-std::vector<torrent::choke_group*> cg_list_hack;
+-
+-int64_t
+-cg_get_index(const torrent::Object& raw_args) {
+-  const torrent::Object& arg = (raw_args.is_list() && !raw_args.as_list().empty()) ? raw_args.as_list().front() : raw_args;
+-
+-  int64_t index = 0;
+-
+-  if (arg.is_string()) {
+-    if (!rpc::parse_whole_value_nothrow(arg.as_string().c_str(), &index)) {
+-      std::vector<torrent::choke_group*>::iterator itr = std::find_if(cg_list_hack.begin(), cg_list_hack.end(),
+-                                                                      rak::equal(arg.as_string(), std::mem_fun(&torrent::choke_group::name)));
+-
+-      if (itr == cg_list_hack.end())
+-        throw torrent::input_error("Choke group not found.");
+-
+-      return std::distance(cg_list_hack.begin(), itr);
+-    }
+-
+-  } else {
+-    index = arg.as_value();
+-  }
+-
+-  if (index < 0)
+-    index = (int64_t)cg_list_hack.size() + index;
+-
+-  if ((size_t)index >= cg_list_hack.size())
+-    throw torrent::input_error("Choke group not found.");
+-
+-  return index;
+-}
+-
+-torrent::choke_group*
+-cg_get_group(const torrent::Object& raw_args) {
+-  int64_t index = cg_get_index(raw_args);
+-
+-  if ((size_t)index >= cg_list_hack.size())
+-    throw torrent::input_error("Choke group not found.");
+-
+-  return cg_list_hack.at(index);
+-}
+-
+-int64_t cg_d_group(core::Download* download) { return download->group(); }
+-void    cg_d_group_set(core::Download* download, const torrent::Object& arg) { download->set_group(cg_get_index(arg)); }
+-
+-torrent::Object
+-apply_cg_list() {
+-  torrent::Object::list_type result;
+-  
+-  for (std::vector<torrent::choke_group*>::iterator itr = cg_list_hack.begin(), last = cg_list_hack.end(); itr != last; itr++)
+-    result.push_back((*itr)->name());
+-
+-  return torrent::Object::from_list(result);
+-}
+-
+-torrent::Object
+-apply_cg_insert(const std::string& arg) {
+-  int64_t dummy;
+-
+-  if (rpc::parse_whole_value_nothrow(arg.c_str(), &dummy))
+-    throw torrent::input_error("Cannot use a value string as choke group name.");
+-
+-  if (arg.empty() ||
+-      std::find_if(cg_list_hack.begin(), cg_list_hack.end(),
+-                   rak::equal(arg, std::mem_fun(&torrent::choke_group::name))) != cg_list_hack.end())
+-    throw torrent::input_error("Duplicate name for choke group.");
+-
+-  cg_list_hack.push_back(new torrent::choke_group());
+-  cg_list_hack.back()->set_name(arg);
+-
+-  cg_list_hack.back()->up_queue()->set_heuristics(torrent::choke_queue::HEURISTICS_UPLOAD_LEECH);
+-  cg_list_hack.back()->down_queue()->set_heuristics(torrent::choke_queue::HEURISTICS_DOWNLOAD_LEECH);
+-
+-  return torrent::Object();
+-}
+-
+-torrent::Object
+-apply_cg_index_of(const std::string& arg) {
+-  std::vector<torrent::choke_group*>::iterator itr =
+-    std::find_if(cg_list_hack.begin(), cg_list_hack.end(), rak::equal(arg, std::mem_fun(&torrent::choke_group::name)));
+-
+-  if (itr == cg_list_hack.end())
+-    throw torrent::input_error("Choke group not found.");
+-
+-  return std::distance(cg_list_hack.begin(), itr);
+-}
+-
+-//
+-// End of choke group hack.
+-//
+-#endif
+-
+-
+ torrent::Object
+ apply_cg_max_set(const torrent::Object::list_type& args, bool is_up) {
+   if (args.size() != 2)
+@@ -338,15 +234,8 @@ initialize_command_groups() {
+   CMD2_ANY         ("choke_group.list",                std::bind(&apply_cg_list));
+   CMD2_ANY_STRING  ("choke_group.insert",              std::bind(&apply_cg_insert, std::placeholders::_2));
+ 		
+-#if USE_CHOKE_GROUP
+   CMD2_ANY         ("choke_group.size",                std::bind(&torrent::ResourceManager::group_size, torrent::resource_manager()));
+   CMD2_ANY_STRING  ("choke_group.index_of",            std::bind(&torrent::ResourceManager::group_index_of, torrent::resource_manager(), std::placeholders::_2));
+-#else
+-  apply_cg_insert("default");
+-
+-  CMD2_ANY         ("choke_group.size",                std::bind(&std::vector<torrent::choke_group*>::size, cg_list_hack));
+-  CMD2_ANY_STRING  ("choke_group.index_of",            std::bind(&apply_cg_index_of, std::placeholders::_2));
+-#endif
+ 
+   // Commands specific for a group. Supports as the first argument the
+   // name, the index or a negative index.
+--- a/src/command_local.cc	2016-10-23 05:33:00.000000000 +0100
++++ a/src/command_local.cc	2017-04-30 21:35:27.000000000 +0100
+@@ -73,7 +73,7 @@ apply_pieces_stats_total_size() {
+ 
+   for (core::DownloadList::iterator itr = d_list->begin(), last = d_list->end(); itr != last; itr++)
+     if ((*itr)->is_active())
+-      size += (*itr)->file_list()->size_bytes();
++      size += (*itr)->file_list()->selected_size_bytes();
+ 
+   return size;
+ }
+--- a/src/command_network.cc	2016-10-23 05:33:00.000000000 +0100
++++ a/src/command_network.cc	2017-04-30 21:35:27.000000000 +0100
+@@ -254,11 +254,6 @@ initialize_command_network() {
+   CMD2_VAR_STRING  ("protocol.connection.leech", "leech");
+   CMD2_VAR_STRING  ("protocol.connection.seed",  "seed");
+ 
+-  CMD2_VAR_STRING  ("protocol.choke_heuristics.up.leech", "upload_leech");
+-  CMD2_VAR_STRING  ("protocol.choke_heuristics.up.seed",  "upload_leech");
+-  CMD2_VAR_STRING  ("protocol.choke_heuristics.down.leech", "download_leech");
+-  CMD2_VAR_STRING  ("protocol.choke_heuristics.down.seed",  "download_leech");
+-
+   CMD2_ANY         ("network.http.cacert",                std::bind(&core::CurlStack::http_cacert, httpStack));
+   CMD2_ANY_STRING_V("network.http.cacert.set",            std::bind(&core::CurlStack::set_http_cacert, httpStack, std::placeholders::_2));
+   CMD2_ANY         ("network.http.capath",                std::bind(&core::CurlStack::http_capath, httpStack));
+--- a/src/command_ui.cc	2017-04-30 21:07:03.000000000 +0100
++++ a/src/command_ui.cc	2017-04-30 21:35:27.000000000 +0100
+@@ -411,6 +411,17 @@ apply_to_throttle(const torrent::Object&
+   return std::string(buffer);
+ }
+ 
++torrent::Object
++apply_to_group(const torrent::Object& rawArgs) {
++  int64_t arg = rawArgs.as_value();
++  if (arg < 0)
++    return "--";
++
++  char buffer[16];
++  snprintf(buffer, 16, "%2d", (int)(arg));
++  return std::string(buffer);
++}
++
+ // A series of if/else statements. Every even arguments are
+ // conditionals and odd arguments are branches to be executed, except
+ // the last one which is always a branch.
+@@ -778,6 +789,7 @@ initialize_command_ui() {
+   CMD2_ANY_VALUE("convert.mb",           std::bind(&apply_to_mb, std::placeholders::_2));
+   CMD2_ANY_VALUE("convert.xb",           std::bind(&apply_to_xb, std::placeholders::_2));
+   CMD2_ANY_VALUE("convert.throttle",     std::bind(&apply_to_throttle, std::placeholders::_2));
++  CMD2_ANY_VALUE("convert.group",        std::bind(&apply_to_group, std::placeholders::_2));
+ 
+   CMD2_ANY_LIST("math.add",              std::bind(&apply_math_basic, std::plus<int64_t>(), std::placeholders::_2));
+   CMD2_ANY_LIST("math.sub",              std::bind(&apply_math_basic, std::minus<int64_t>(), std::placeholders::_2));
+--- a/src/core/download.cc	2016-10-23 05:33:00.000000000 +0100
++++ a/src/core/download.cc	2017-04-30 21:35:27.000000000 +0100
+@@ -94,7 +94,7 @@ Download::set_priority(uint32_t p) {
+   p %= 4;
+ 
+   // Seeding torrents get half the priority of unfinished torrents.
+-  if (!is_done())
++  if (!is_partially_done())
+     torrent::download_set_priority(m_download, p * p * 2);
+   else
+     torrent::download_set_priority(m_download, p * p);
+--- a/src/core/download_factory.cc	2016-10-23 05:33:00.000000000 +0100
++++ a/src/core/download_factory.cc	2017-04-30 21:35:27.000000000 +0100
+@@ -421,6 +421,12 @@ DownloadFactory::initialize_rtorrent(Dow
+   if (rtorrent->has_key_value("total_downloaded"))
+     download->info()->mutable_down_rate()->set_total(rtorrent->get_key_value("total_downloaded"));
+ 
++  if (rtorrent->has_key_value("total_skipped"))
++    download->info()->mutable_skip_rate()->set_total(rtorrent->get_key_value("total_skipped"));
++
++  if (rtorrent->has_key_value("size_selected"))
++    download->file_list()->set_selected_size_bytes(rtorrent->get_key_value("size_selected"));
++
+   if (rtorrent->has_key_value("chunks_done") && rtorrent->has_key_value("chunks_wanted"))
+     download->download()->set_chunks_done(rtorrent->get_key_value("chunks_done"), rtorrent->get_key_value("chunks_wanted"));
+ 
+@@ -433,11 +436,6 @@ DownloadFactory::initialize_rtorrent(Dow
+ 
+   rtorrent->insert_preserve_type("connection_leech", m_variables["connection_leech"]);
+   rtorrent->insert_preserve_type("connection_seed",  m_variables["connection_seed"]);
+-
+-  rtorrent->insert_preserve_copy("choke_heuristics.up.leech",   std::string());
+-  rtorrent->insert_preserve_copy("choke_heuristics.up.seed",    std::string());
+-  rtorrent->insert_preserve_copy("choke_heuristics.down.leech", std::string());
+-  rtorrent->insert_preserve_copy("choke_heuristics.down.seed",  std::string());
+ }
+ 
+ }
+--- a/src/core/download.h	2016-10-23 05:33:00.000000000 +0100
++++ a/src/core/download.h	2017-04-30 21:35:27.000000000 +0100
+@@ -79,8 +79,9 @@ public:
+   bool                is_open() const                          { return m_download.info()->is_open(); }
+   bool                is_active() const                        { return m_download.info()->is_active(); }
+   bool                is_done() const                          { return m_download.file_list()->is_done(); }
+-  bool                is_downloading() const                   { return is_active() && !is_done(); }
+-  bool                is_seeding() const                       { return is_active() && is_done(); }
++  bool                is_partially_done() const                { return m_download.data()->is_partially_done(); }
++  bool                is_downloading() const                   { return is_active() && !is_partially_done(); }
++  bool                is_seeding() const                       { return is_active() && is_partially_done(); }
+ 
+   // FIXME: Fixed a bug in libtorrent that caused is_hash_checked to
+   // return true when the torrent is closed. Remove this redundant
+@@ -129,7 +130,6 @@ public:
+ 
+   float               distributed_copies() const;
+ 
+-  // HACK: Choke group setting.
+   unsigned int        group() const { return m_group; }
+   void                set_group(unsigned int g) { m_group = g; }
+ 
+--- a/src/core/download_list.cc	2016-10-23 05:33:00.000000000 +0100
++++ a/src/core/download_list.cc	2017-04-30 21:35:27.000000000 +0100
+@@ -182,6 +182,7 @@ DownloadList::insert(Download* download)
+   try {
+     (*itr)->data()->slot_initial_hash()        = std::bind(&DownloadList::hash_done, this, download);
+     (*itr)->data()->slot_download_done()       = std::bind(&DownloadList::received_finished, this, download);
++    (*itr)->data()->slot_partially_restarted() = std::bind(&DownloadList::received_partially_restarted, this, download);
+ 
+     // This needs to be separated into two different calls to ensure
+     // the download remains in the view.
+@@ -371,31 +372,18 @@ DownloadList::resume(Download* download,
+     rpc::call_command("d.state_changed.set", cachedTime.seconds(), rpc::make_target(download));
+     rpc::call_command("d.state_counter.set", rpc::call_command_value("d.state_counter", rpc::make_target(download)) + 1, rpc::make_target(download));
+ 
+-    if (download->is_done()) {
+-      torrent::Object conn_current = rpc::call_command("d.connection_seed", torrent::Object(), rpc::make_target(download));
+-      torrent::Object choke_up     = rpc::call_command("d.up.choke_heuristics.seed", torrent::Object(), rpc::make_target(download));
+-      torrent::Object choke_down   = rpc::call_command("d.down.choke_heuristics.seed", torrent::Object(), rpc::make_target(download));
++    if (download->is_partially_done()) {
++      rpc::call_command("d.group.set", "default_seed", rpc::make_target(download));
+ 
++      torrent::Object conn_current = rpc::call_command("d.connection_seed", torrent::Object(), rpc::make_target(download));
+       if (conn_current.is_string_empty()) conn_current = rpc::call_command("protocol.connection.seed", torrent::Object(), rpc::make_target(download));
+-      if (choke_up.is_string_empty())     choke_up     = rpc::call_command("protocol.choke_heuristics.up.seed", torrent::Object(), rpc::make_target(download));
+-      if (choke_down.is_string_empty())   choke_down   = rpc::call_command("protocol.choke_heuristics.down.seed", torrent::Object(), rpc::make_target(download));
+-
+-      rpc::call_command("d.connection_current.set",    conn_current, rpc::make_target(download));
+-      rpc::call_command("d.up.choke_heuristics.set",   choke_up, rpc::make_target(download));
+-      rpc::call_command("d.down.choke_heuristics.set", choke_down, rpc::make_target(download));
+-
++      rpc::call_command("d.connection_current.set", conn_current, rpc::make_target(download));
+     } else {
+-      torrent::Object conn_current = rpc::call_command("d.connection_leech", torrent::Object(), rpc::make_target(download));
+-      torrent::Object choke_up     = rpc::call_command("d.up.choke_heuristics.leech", torrent::Object(), rpc::make_target(download));
+-      torrent::Object choke_down   = rpc::call_command("d.down.choke_heuristics.leech", torrent::Object(), rpc::make_target(download));
++      rpc::call_command("d.group.set", "default_leech", rpc::make_target(download));
+ 
++      torrent::Object conn_current = rpc::call_command("d.connection_leech", torrent::Object(), rpc::make_target(download));
+       if (conn_current.is_string_empty()) conn_current = rpc::call_command("protocol.connection.leech", torrent::Object(), rpc::make_target(download));
+-      if (choke_up.is_string_empty())     choke_up     = rpc::call_command("protocol.choke_heuristics.up.leech", torrent::Object(), rpc::make_target(download));
+-      if (choke_down.is_string_empty())   choke_down   = rpc::call_command("protocol.choke_heuristics.down.leech", torrent::Object(), rpc::make_target(download));
+-
+-      rpc::call_command("d.connection_current.set",    conn_current, rpc::make_target(download));
+-      rpc::call_command("d.up.choke_heuristics.set",   choke_up, rpc::make_target(download));
+-      rpc::call_command("d.down.choke_heuristics.set", choke_down, rpc::make_target(download));
++      rpc::call_command("d.connection_current.set", conn_current, rpc::make_target(download));
+ 
+       // For the moment, clear the resume data so we force hash-check
+       // on non-complete downloads after a crash. This shouldn't be
+@@ -528,14 +516,14 @@ DownloadList::hash_done(Download* downlo
+ 
+     // If the download was previously completed but the files were
+     // f.ex deleted, then we clear the state and complete.
+-    if (rpc::call_command_value("d.complete", rpc::make_target(download)) && !download->is_done()) {
++    if (rpc::call_command_value("d.complete", rpc::make_target(download)) && !download->is_partially_done()) {
+       rpc::call_command("d.state.set", (int64_t)0, rpc::make_target(download));
+       download->set_message("Download registered as completed, but hash check returned unfinished chunks.");
+     }
+ 
+     // Save resume data so we update time-stamps and priorities if
+     // they were invalid/changed while loading/hashing.
+-    rpc::call_command("d.complete.set", (int64_t)download->is_done(), rpc::make_target(download));
++    rpc::call_command("d.complete.set", (int64_t)download->is_partially_done(), rpc::make_target(download));
+     torrent::resume_save_progress(*download->download(), download->download()->bencode()->get_key("libtorrent_resume"));
+ 
+     if (rpc::call_command_value("d.state", rpc::make_target(download)) == 1)
+@@ -545,7 +533,7 @@ DownloadList::hash_done(Download* downlo
+ 
+   case Download::variable_hashing_last:
+ 
+-    if (download->is_done()) {
++    if (download->is_partially_done()) {
+       confirm_finished(download);
+     } else {
+       download->set_message("Hash check on download completion found bad chunks, consider using \"safe_sync\".");
+@@ -623,19 +611,14 @@ DownloadList::confirm_finished(Download*
+ 
+   rpc::call_command("d.complete.set", (int64_t)1, rpc::make_target(download));
+ 
+-  // Clean up these settings:
+-  torrent::Object conn_current = rpc::call_command("d.connection_seed", torrent::Object(), rpc::make_target(download));
+-  torrent::Object choke_up     = rpc::call_command("d.up.choke_heuristics.seed", torrent::Object(), rpc::make_target(download));
+-  torrent::Object choke_down   = rpc::call_command("d.down.choke_heuristics.seed", torrent::Object(), rpc::make_target(download));
++  // Set seeding mode
++  rpc::call_command("d.group.set", "default_seed", rpc::make_target(download));
+ 
++  torrent::Object conn_current = rpc::call_command("d.connection_seed", torrent::Object(), rpc::make_target(download));
+   if (conn_current.is_string_empty()) conn_current = rpc::call_command("protocol.connection.seed", torrent::Object(), rpc::make_target(download));
+-  if (choke_up.is_string_empty())     choke_up     = rpc::call_command("protocol.choke_heuristics.up.seed", torrent::Object(), rpc::make_target(download));
+-  if (choke_down.is_string_empty())   choke_down   = rpc::call_command("protocol.choke_heuristics.down.seed", torrent::Object(), rpc::make_target(download));
+-
+   rpc::call_command("d.connection_current.set",    conn_current, rpc::make_target(download));
+-  rpc::call_command("d.up.choke_heuristics.set",   choke_up, rpc::make_target(download));
+-  rpc::call_command("d.down.choke_heuristics.set", choke_down, rpc::make_target(download));
+ 
++  // Update the priority to ensure it has the correct seeding/unfinished modifiers.
+   download->set_priority(download->priority());
+ 
+   if (rpc::call_command_value("d.peers_min", rpc::make_target(download)) == rpc::call_command_value("throttle.min_peers.normal") &&
+@@ -656,8 +639,9 @@ DownloadList::confirm_finished(Download*
+   }
+ 
+   // Send the completed request before resuming so we don't reset the
+-  // up/downloaded baseline.
+-  download->download()->send_completed();
++  // up/downloaded baseline if download is completely done.
++  if (download->is_done())
++    download->download()->send_completed();
+ 
+   // Save the hash in case the finished event erases it.
+   torrent::HashString infohash = download->info()->hash();
+@@ -688,6 +672,40 @@ DownloadList::confirm_finished(Download*
+ }
+ 
+ void
++DownloadList::received_partially_restarted(Download* download) {
++  check_contains(download);
++
++  lt_log_print_info(torrent::LOG_TORRENT_INFO, download->info(), "download_list", "Received partially restarted.");
++
++  rpc::call_command("d.complete.set", (int64_t)0, rpc::make_target(download));
++
++  // Set leeching mode.
++  rpc::call_command("d.group.set", "default_leech", rpc::make_target(download));
++
++  torrent::Object conn_current = rpc::call_command("d.connection_leech", torrent::Object(), rpc::make_target(download));
++  if (conn_current.is_string_empty()) conn_current = rpc::call_command("protocol.connection.leech", torrent::Object(), rpc::make_target(download));
++  rpc::call_command("d.connection_current.set",    conn_current, rpc::make_target(download));
++
++  // Update the priority to ensure it has the correct seeding/unfinished modifiers.
++  download->set_priority(download->priority());
++
++  // Set these also back to the original leeching values.
++  if (rpc::call_command_value("throttle.min_peers.seed") >= 0 &&
++      rpc::call_command_value("d.peers_min", rpc::make_target(download)) == rpc::call_command_value("throttle.min_peers.seed"))
++    rpc::call_command("d.peers_min.set", rpc::call_command("throttle.min_peers.normal"), rpc::make_target(download));
++
++  if (rpc::call_command_value("throttle.max_peers.seed") >= 0 &&
++      rpc::call_command_value("d.peers_max", rpc::make_target(download)) == rpc::call_command_value("throttle.max_peers.seed"))
++    rpc::call_command("d.peers_max.set", rpc::call_command("throttle.max_peers.normal"), rpc::make_target(download));
++
++  DL_TRIGGER_EVENT(download, "event.download.partially_restarted");
++
++  if (!download->is_active() && rpc::call_command_value("session.on_completion") != 0) {
++    control->core()->download_store()->save_resume(download);
++  }
++}
++
++void
+ DownloadList::process_meta_download(Download* download) {
+   lt_log_print_info(torrent::LOG_TORRENT_INFO, download->info(), "download_list", "Processing meta download.");
+ 
+--- a/src/core/download_list.h	2016-10-23 05:33:00.000000000 +0100
++++ a/src/core/download_list.h	2017-04-30 21:35:27.000000000 +0100
+@@ -123,6 +123,7 @@ public:
+     D_SLOTS_HASH_REMOVED,
+     D_SLOTS_HASH_DONE,
+     D_SLOTS_FINISHED,
++    D_SLOTS_PARTIALLY_RESTARTED,
+ 
+     SLOTS_MAX_SIZE
+   };
+@@ -139,6 +140,7 @@ public:
+     case D_SLOTS_HASH_REMOVED: return "event.download.hash_removed";
+     case D_SLOTS_HASH_DONE: return "event.download.hash_done";
+     case D_SLOTS_FINISHED: return "event.download.finished";
++    case D_SLOTS_PARTIALLY_RESTARTED: return "event.download.partially_restarted";
+     default: return "BORK";
+     }
+   }
+@@ -162,6 +164,7 @@ private:
+ 
+   void                received_finished(Download* d);
+   void                confirm_finished(Download* d);
++  void                received_partially_restarted(Download* d);
+ 
+   void                process_meta_download(Download* d);
+ };
+--- a/src/core/download_store.cc	2016-10-23 05:33:00.000000000 +0100
++++ a/src/core/download_store.cc	2017-04-30 21:35:27.000000000 +0100
+@@ -141,6 +141,8 @@ DownloadStore::save(Download* d, int fla
+   rtorrent_base->insert_key("chunks_wanted",  d->download()->data()->wanted_chunks());
+   rtorrent_base->insert_key("total_uploaded", d->info()->up_rate()->total());
+   rtorrent_base->insert_key("total_downloaded", d->info()->down_rate()->total());
++  rtorrent_base->insert_key("total_skipped",  d->info()->skip_rate()->total());
++  rtorrent_base->insert_key("size_selected",  d->download()->file_list()->selected_size_bytes());
+ 
+   // Don't save for completed torrents when we've cleared the uncertain_pieces.
+   torrent::resume_save_progress(*d->download(), *resume_base);
+--- a/src/display/utils.cc	2017-04-30 21:07:03.000000000 +0100
++++ a/src/display/utils.cc	2017-04-30 21:35:27.000000000 +0100
+@@ -161,8 +161,12 @@ print_download_info_full(char* first, ch
+     first = print_buffer(first, last, " ");
+     first = print_download_percentage_done(first, last, d);
+ 
+-    first = print_buffer(first, last, " ");
+-    first = print_download_time_left(first, last, d);
++    if (!d->is_partially_done()) {
++      first = print_buffer(first, last, " ");
++      first = print_download_time_left(first, last, d);
++    } else {
++      first = print_buffer(first, last, "   done   ");
++    }
+   } else {
+     first = print_buffer(first, last, "                ");
+   }
+@@ -261,7 +265,7 @@ print_download_info_compact(char* first,
+   first = print_buffer(first, last, "| %7.1f MB ", (double)d->info()->up_rate()->total() / (1 << 20));
+   first = print_buffer(first, last, "| ");
+ 
+-  if (d->download()->info()->is_active() && !d->is_done())
++  if (d->download()->info()->is_active() && !d->is_partially_done())
+     first = print_download_time_left(first, last, d);
+   else
+     first = print_buffer(first, last, "         ");
+@@ -291,7 +295,7 @@ print_download_time_left(char* first, ch
+   if (rate < 512)
+     return print_buffer(first, last, "--d --:--");
+   
+-  time_t remaining = (d->download()->file_list()->size_bytes() - d->download()->bytes_done()) / (rate & ~(uint32_t)(512 - 1));
++  time_t remaining = (d->download()->file_list()->selected_size_bytes() - d->download()->bytes_done()) / (rate & ~(uint32_t)(512 - 1));
+ 
+   return print_ddhhmm(first, last, remaining);
+ }
+--- a/src/display/window_download_chunks_seen.cc	2016-10-23 05:33:00.000000000 +0100
++++ a/src/display/window_download_chunks_seen.cc	2017-04-30 21:35:27.000000000 +0100
+@@ -67,7 +67,7 @@ WindowDownloadChunksSeen::redraw() {
+     return;
+ 
+   m_canvas->print(2, 0, "Chunks seen: [C/A/D %i/%i/%.2f]",
+-                  (int)m_download->download()->peers_complete() + m_download->download()->file_list()->is_done(),
++                  (int)m_download->download()->peers_complete() + m_download->is_partially_done(),
+                   (int)m_download->download()->peers_accounted(),
+                   std::floor(m_download->distributed_copies() * 100.0f) / 100.0f);
+ 
+@@ -78,7 +78,7 @@ WindowDownloadChunksSeen::redraw() {
+     return;
+   }
+ 
+-  if (!m_download->is_done()) { 
++  if (!m_download->is_partially_done()) { 
+     m_canvas->print(36, 0, "X downloaded    missing    queued    downloading");
+     m_canvas->print_char(50, 0, 'X' | A_BOLD);
+     m_canvas->print_char(61, 0, 'X' | A_BOLD | A_UNDERLINE);
+--- a/src/main.cc	2017-04-30 21:07:03.000000000 +0100
++++ a/src/main.cc	2017-04-30 21:35:27.000000000 +0100
+@@ -262,6 +262,7 @@ main(int argc, char** argv) {
+        "method.insert = event.download.paused,multi|rlookup|static\n"
+        
+        "method.insert = event.download.finished,multi|rlookup|static\n"
++       "method.insert = event.download.partially_restarted,multi|rlookup|static\n"
+        "method.insert = event.download.hash_done,multi|rlookup|static\n"
+        "method.insert = event.download.hash_failed,multi|rlookup|static\n"
+        "method.insert = event.download.hash_final_failed,multi|rlookup|static\n"
+@@ -278,7 +279,7 @@ main(int argc, char** argv) {
+        "method.set_key = event.download.erased, ~_delete_tied, d.delete_tied=\n"
+ 
+        "method.set_key = event.download.resumed,   !_timestamp, ((d.timestamp.started.set_if_z, ((system.time)) ))\n"
+-       "method.set_key = event.download.finished,  !_timestamp, ((d.timestamp.finished.set_if_z, ((system.time)) ))\n"
++       "method.set_key = event.download.finished,  !_timestamp, ((d.timestamp.finished.set, ((system.time)) ))\n"
+        "method.set_key = event.download.hash_done, !_timestamp, {(branch,((d.complete)),((d.timestamp.finished.set_if_z,(system.time))))}\n"
+ 
+        "method.insert.c_simple = group.insert_persistent_view,"
+@@ -287,6 +288,9 @@ main(int argc, char** argv) {
+        "file.prioritize_toc.first.set = {*.avi,*.mp4,*.mkv,*.gz}\n"
+        "file.prioritize_toc.last.set  = {*.zip}\n"
+ 
++       "choke_group.insert = default_seed\n"
++       "choke_group.up.heuristics.set = default_seed,upload_seed\n"
++
+        // Allow setting 'group2.view' as constant, so that we can't
+        // modify the value. And look into the possibility of making
+        // 'const' use non-heap memory, as we know they can't be
+@@ -322,12 +326,13 @@ main(int argc, char** argv) {
+ 
+        "view.add = complete\n"
+        "view.filter = complete,((d.complete))\n"
+-       "view.filter_on    = complete,event.download.hash_done,event.download.hash_failed,event.download.hash_final_failed,event.download.finished\n"
++       "view.filter_on    = complete,event.download.hash_done,event.download.hash_failed,event.download.hash_final_failed,"
++                                      "event.download.finished,event.download.partially_restarted\n"
+ 
+        "view.add = incomplete\n"
+        "view.filter = incomplete,((not,((d.complete))))\n"
+        "view.filter_on    = incomplete,event.download.hash_done,event.download.hash_failed,"
+-                                      "event.download.hash_final_failed,event.download.finished\n"
++                                      "event.download.hash_final_failed,event.download.finished,event.download.partially_restarted\n"
+ 
+        // The hashing view does not include stopped torrents.
+        "view.add = hashing\n"
+@@ -337,11 +342,11 @@ main(int argc, char** argv) {
+ 
+        "view.add    = seeding\n"
+        "view.filter = seeding,((and,((d.state)),((d.complete))))\n"
+-       "view.filter_on = seeding,event.download.resumed,event.download.paused,event.download.finished\n"
++       "view.filter_on = seeding,event.download.resumed,event.download.paused,event.download.finished,event.download.partially_restarted\n"
+ 
+        "view.add    = leeching\n"
+        "view.filter = leeching,((and,((d.state)),((not,((d.complete))))))\n"
+-       "view.filter_on = leeching,event.download.resumed,event.download.paused,event.download.finished\n"
++       "view.filter_on = leeching,event.download.resumed,event.download.paused,event.download.finished,event.download.partially_restarted\n"
+ 
+        "schedule2 = view.main,10,10,((view.sort,main,20))\n"
+        "schedule2 = view.name,10,10,((view.sort,name,20))\n"
+--- a/src/ui/download.cc	2017-04-30 21:07:03.000000000 +0100
++++ a/src/ui/download.cc	2017-04-30 21:35:27.000000000 +0100
+@@ -160,6 +160,7 @@ Download::create_info() {
+   element->push_column("File stats:",       te_command("cat=$if=$d.is_multi_file=\\,multi\\,single,\" \",$d.size_files=,\" files\""));
+ 
+   element->push_back("");
++  element->push_column("Size:",             te_command("cat=(convert.xb,(d.bytes_done)),\" / \",(convert.xb,(d.selected_size_bytes)),\" / \",(convert.xb,(d.size_bytes))"));
+   element->push_column("Chunks:",           te_command("cat=(d.completed_chunks),\" / \",(d.size_chunks),\" * \",(d.chunk_size),\" (\",(d.wanted_chunks),\")\""));
+   element->push_column("Priority:",         te_command("d.priority="));
+   element->push_column("Peer exchange:",    te_command("cat=$if=$d.peer_exchange=\\,enabled\\,disabled,\\ ,"
+@@ -176,7 +177,14 @@ Download::create_info() {
+ 
+   element->push_back("");
+   element->push_column("Connection type:",  te_command("cat=(d.connection_current),\" \",(if,(d.accepting_seeders),"",\"no_seeders\")"));
+-  element->push_column("Choke heuristic:",  te_command("cat=(d.up.choke_heuristics),\", \",(d.down.choke_heuristics),\", \",(d.group)"));
++  element->push_column("Choke group:",      te_command("cat=(d.group.name),\"  [\",(choke_group.up.heuristics,(d.group)),\", \","
++                                                       "(choke_group.down.heuristics,(d.group)),\", \",(choke_group.tracker.mode,(d.group)),\"]   [Max \","
++                                                       "(convert.group,(choke_group.up.max,(d.group))),\"/\",(convert.group,(choke_group.down.max,(d.group))),\"]\""));
++  element->push_column("Choke group stat:", te_command("cat=\"[Size \",(choke_group.general.size,(d.group)),\"]   [Unchoked \",(choke_group.up.unchoked,(d.group)),"
++                                                       "\"/\",(choke_group.down.unchoked,(d.group)),\"]   [Queued \",(choke_group.up.queued,(d.group)),"
++                                                       "\"/\",(choke_group.down.queued,(d.group)),\"]   [Total \",(choke_group.up.total,(d.group)),"
++                                                       "\"/\",(choke_group.down.total,(d.group)),\"]   [Rate \",(convert.kb,(choke_group.up.rate,(d.group))),"
++                                                       "\"/\",(convert.kb,(choke_group.down.rate,(d.group))),\" KB]\""));
+   element->push_column("Safe sync:",        te_command("if=$pieces.sync.always_safe=,yes,no"));
+   element->push_column("Send buffer:",      te_command("cat=$convert.kb=$network.send_buffer.size=,\" KB\""));
+   element->push_column("Receive buffer:",   te_command("cat=$convert.kb=$network.receive_buffer.size=,\" KB\""));

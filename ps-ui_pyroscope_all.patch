@@ -1,0 +1,7 @@
+--- orig/src/rpc/object_storage.h	2011-04-07 09:44:06.000000000 +0200
++++ rtorrent-0.8.8/src/rpc/object_storage.h	2011-06-05 13:20:24.000000000 +0200
+@@ -124,2 +124,4 @@
+   
++  const torrent::Object& set_color_string(const torrent::raw_string& key, const std::string& object);
++
+   // Functions callers:

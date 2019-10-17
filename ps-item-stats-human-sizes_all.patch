@@ -1,0 +1,35 @@
+--- rel-0.9.4/src/display/utils.cc	2012-02-14 04:32:01.000000000 +0100
++++ rtorrent-0.9.4/src/display/utils.cc	2015-08-11 04:35:46.000000000 +0200
+@@ -133,4 +133,6 @@
+ }
+ 
++std::string human_size(int64_t bytes, unsigned int format=0);
++
+ char*
+ print_download_info(char* first, char* last, core::Download* d) {
+@@ -142,15 +144,16 @@
+     first = print_buffer(first, last, "          ");
+ 
++  std::string h_size = human_size(d->download()->file_list()->size_bytes(), 0);
++  std::string h_done = human_size(d->download()->bytes_done(), 0);
+   if (d->is_done())
+-    first = print_buffer(first, last, "done %10.1f MB", (double)d->download()->file_list()->size_bytes() / (double)(1 << 20));
++    first = print_buffer(first, last, "  done   %s   ", h_size.c_str());
+   else
+-    first = print_buffer(first, last, "%6.1f / %6.1f MB",
+-                         (double)d->download()->bytes_done() / (double)(1 << 20),
+-                         (double)d->download()->file_list()->size_bytes() / (double)(1 << 20));
+-  
+-  first = print_buffer(first, last, " Rate: %5.1f / %5.1f KB Uploaded: %7.1f MB",
+-                       (double)d->info()->up_rate()->rate() / (1 << 10),
+-                       (double)d->info()->down_rate()->rate() / (1 << 10),
+-                       (double)d->info()->up_rate()->total() / (1 << 20));
++    first = print_buffer(first, last, "%s / %s   ", h_done.c_str(), h_size.c_str());
++
++  std::string h_up   = human_size(d->info()->up_rate()->rate(), 0);
++  std::string h_down = human_size(d->info()->down_rate()->rate(), 0);
++  std::string h_sum  = human_size(d->info()->up_rate()->total(), 0);
++  first = print_buffer(first, last, " Rate: %s / %s  Uploaded: %s    ",
++                       h_up.c_str(), h_down.c_str(), h_sum.c_str());
+ 
+   if (d->download()->info()->is_active() && !d->is_done()) {

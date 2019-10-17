@@ -1,0 +1,51 @@
+--- a/src/ui/download_list.cc
++++ b/src/ui/download_list.cc
+@@ -277,6 +277,10 @@ DownloadList::receive_view_input(Input t
+     title = "filter";
+     break;
+ 
++  case INPUT_FIND:
++    title = "find";
++    break;
++
+   default:
+     throw torrent::internal_error("DownloadList::receive_view_input(...) Invalid input type.");
+   }
+@@ -372,6 +376,11 @@ DownloadList::receive_exit_input(Input t
+       }
+       break;
+ 
++    case INPUT_FIND:
++      rpc::call_command("ui.find.term.set", rak::trim(input->str()), rpc::make_target());
++      rpc::call_command("ui.find.next", torrent::Object(), rpc::make_target());
++      break;
++
+     default:
+       throw torrent::internal_error("DownloadList::receive_exit_input(...) Invalid input type.");
+     }
+@@ -384,13 +403,13 @@ DownloadList::setup_keys() {
+   m_bindings['\x0F']        = std::bind(&DownloadList::receive_view_input, this, INPUT_CHANGE_DIRECTORY);
+   m_bindings['X' - '@']     = std::bind(&DownloadList::receive_view_input, this, INPUT_COMMAND);
+   m_bindings['F']           = std::bind(&DownloadList::receive_view_input, this, INPUT_FILTER);
++  m_bindings['F' - '@']     = std::bind(&DownloadList::receive_view_input, this, INPUT_FIND);
+ 
+   m_uiArray[DISPLAY_LOG]->bindings()[KEY_LEFT] =
+     m_uiArray[DISPLAY_LOG]->bindings()['B' - '@'] =
+     m_uiArray[DISPLAY_LOG]->bindings()[' '] = std::bind(&DownloadList::activate_display, this, DISPLAY_DOWNLOAD_LIST);
+ 
+-  m_uiArray[DISPLAY_DOWNLOAD_LIST]->bindings()[KEY_RIGHT] =
+-    m_uiArray[DISPLAY_DOWNLOAD_LIST]->bindings()['F' - '@'] = std::bind(&DownloadList::activate_display, this, DISPLAY_DOWNLOAD);
++  m_uiArray[DISPLAY_DOWNLOAD_LIST]->bindings()[KEY_RIGHT] = std::bind(&DownloadList::activate_display, this, DISPLAY_DOWNLOAD);
+   m_uiArray[DISPLAY_DOWNLOAD_LIST]->bindings()['l'] = std::bind(&DownloadList::activate_display, this, DISPLAY_LOG);
+ }
+ 
+--- a/src/ui/download_list.h	2018-08-21 15:39:24.381506981 +0100
++++ a/src/ui/download_list.h	2018-08-21 15:47:05.582341775 +0100
+@@ -88,6 +88,7 @@ public:
+     INPUT_CHANGE_DIRECTORY,
+     INPUT_COMMAND,
+     INPUT_FILTER,
++    INPUT_FIND,
+     INPUT_EOI
+   } Input;
+ 

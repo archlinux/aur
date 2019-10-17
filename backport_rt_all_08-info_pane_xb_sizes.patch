@@ -1,0 +1,76 @@
+--- a/src/command_ui.cc	2017-06-04 18:27:53.508262194 +0100
++++ a/src/command_ui.cc	2017-06-04 18:28:15.144811646 +0100
+@@ -392,8 +392,16 @@ apply_to_xb(const torrent::Object& rawAr
+     snprintf(buffer, 48, "%5.1f MB", (double)arg / (int64_t(1) << 20));
+   else if (arg < (int64_t(1000) << 30))
+     snprintf(buffer, 48, "%5.1f GB", (double)arg / (int64_t(1) << 30));
+-  else
++  else if (arg < (int64_t(1000) << 40))
+     snprintf(buffer, 48, "%5.1f TB", (double)arg / (int64_t(1) << 40));
++  else if (arg < (int64_t(1000) << 50))
++    snprintf(buffer, 48, "%5.1f PB", (double)arg / (int64_t(1) << 50));
++  else if (arg < (int64_t(1000) << 60))
++    snprintf(buffer, 48, "%5.1f EB", (double)arg / (int64_t(1) << 60));
++  else if (arg < (int64_t(1000) << 70))
++    snprintf(buffer, 48, "%5.1f ZB", (double)arg / (int64_t(1) << 70));
++  else
++    snprintf(buffer, 48, "%5.1f YB", (double)arg / (int64_t(1) << 80));
+ 
+   return std::string(buffer);
+ }
+--- a/src/display/window_peer_list.cc	2017-06-04 18:24:58.355877743 +0100
++++ a/src/display/window_peer_list.cc	2017-06-04 18:25:52.675583468 +0100
+@@ -60,6 +60,8 @@ WindowPeerList::WindowPeerList(core::Dow
+   m_focus(f) {
+ }
+ 
++std::string human_size(int64_t bytes, unsigned int format=0);
++
+ void
+ WindowPeerList::redraw() {
+   m_slotSchedule(this, (cachedTime + rak::timer::from_seconds(1)).round_seconds());
+@@ -110,9 +112,13 @@ WindowPeerList::redraw() {
+                     ip_address.c_str());
+     x += 27;
+ 
+-    m_canvas->print(x, y, "%.1f", (double)p->up_rate()->rate() / 1024); x += 7;
+-    m_canvas->print(x, y, "%.1f", (double)p->down_rate()->rate() / 1024); x += 7;
+-    m_canvas->print(x, y, "%.1f", (double)p->peer_rate()->rate() / 1024); x += 7;
++    std::string h_up_rate = human_size(p->up_rate()->rate(), 0);
++    std::string h_down_rate = human_size(p->down_rate()->rate(), 0);
++    std::string h_peer_rate = human_size(p->peer_rate()->rate(), 0);
++
++    m_canvas->print(x, y, "%s", h_up_rate.c_str()); x += 7;
++    m_canvas->print(x, y, "%s", h_down_rate.c_str()); x += 7;
++    m_canvas->print(x, y, "%s", h_peer_rate.c_str()); x += 7;
+ 
+     char remoteChoked;
+     char peerType;
+--- a/src/ui/download.cc	2017-06-04 17:44:36.748996714 +0100
++++ a/src/ui/download.cc	2017-06-04 17:40:55.816860273 +0100
+@@ -171,10 +171,10 @@ Download::create_info() {
+   element->push_column("State changed:",    te_command("convert.elapsed_time=$d.state_changed="));
+ 
+   element->push_back("");
+-  element->push_column("Memory usage:",     te_command("cat=$convert.mb=$pieces.memory.current=,\" MB\""));
+-  element->push_column("Max memory usage:", te_command("cat=$convert.mb=$pieces.memory.max=,\" MB\""));
+-  element->push_column("Free diskspace:",   te_command("cat=$convert.mb=$d.free_diskspace=,\" MB\""));
+-  element->push_column("Safe diskspace:",   te_command("cat=$convert.mb=$pieces.sync.safe_free_diskspace=,\" MB\""));
++  element->push_column("Memory usage:",     te_command("convert.xb=$pieces.memory.current="));
++  element->push_column("Max memory usage:", te_command("convert.xb=$pieces.memory.max="));
++  element->push_column("Free diskspace:",   te_command("convert.xb=$d.free_diskspace="));
++  element->push_column("Safe diskspace:",   te_command("convert.xb=$pieces.sync.safe_free_diskspace="));
+ 
+   element->push_back("");
+   element->push_column("Connection type:",  te_command("cat=(d.connection_current),\" \",(if,(d.accepting_seeders),"",\"no_seeders\")"));
+@@ -187,8 +187,8 @@ Download::create_info() {
+                                                        "\"/\",(choke_group.down.total,(d.group)),\"]   [Rate \",(convert.kb,(choke_group.up.rate,(d.group))),"
+                                                        "\"/\",(convert.kb,(choke_group.down.rate,(d.group))),\" KB]\""));
+   element->push_column("Safe sync:",        te_command("if=$pieces.sync.always_safe=,yes,no"));
+-  element->push_column("Send buffer:",      te_command("cat=$convert.kb=$network.send_buffer.size=,\" KB\""));
+-  element->push_column("Receive buffer:",   te_command("cat=$convert.kb=$network.receive_buffer.size=,\" KB\""));
++  element->push_column("Send buffer:",      te_command("convert.xb=$network.send_buffer.size="));
++  element->push_column("Receive buffer:",   te_command("convert.xb=$network.receive_buffer.size="));
+ 
+   // TODO: Define a custom command for this and use $argument.0 instead of looking up the name multiple times?
+   element->push_column("Throttle:",         te_command("branch=d.throttle_name=,\""

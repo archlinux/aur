@@ -1,0 +1,18 @@
+--- a/src/main.cc	2017-06-10 09:33:10.387844804 +0100
++++ b/src/main.cc	2018-04-16 19:28:46.339181188 +0100
+@@ -283,6 +283,15 @@ main(int argc, char** argv) {
+        "method.set_key = event.download.finished,  !_timestamp, ((d.timestamp.finished.set, ((system.time)) ))\n"
+        "method.set_key = event.download.hash_done, !_timestamp, {(branch,((d.complete)),((d.timestamp.finished.set_if_z,(system.time))))}\n"
+ 
++       // EVENTS: Timestamp 'tm_completed' (time of completion)
++       "method.set_key = event.download.finished,  !tm_completed,   ((d.custom.set, tm_completed, ((cat,((system.time)))) ))\n"
++       "method.set_key = event.download.hash_done, !tm_completed,   {(branch, ((and,((d.complete)),((not,((d.custom,tm_completed)))))), ((d.custom.set, tm_completed, (cat,(system.time)))) )}\n"
++
++       // EVENTS/SCHEDULE: Timestamp 'last_active' for items that have peers
++       "method.set_key = event.download.finished,  !tm_last_active, ((d.custom.set, last_active, ((cat,((system.time)))) ))\n"
++       "method.set_key = event.download.resumed,   !tm_last_active, {(branch, ((or,((d.peers_connected)),((not,((d.custom,last_active)))))), ((d.custom.set, last_active, (cat,(system.time)))) )}\n"
++       "schedule2      = pyro_update_last_active,  24, 42,          ((d.multicall2, started, \"branch=((d.peers_connected)),((d.custom.set, last_active, (cat,(system.time))))\" ))\n"
++
+        "method.insert.c_simple = group.insert_persistent_view,"
+        "((view.add,((argument.0)))),((view.persistent,((argument.0)))),((group.insert,((argument.0)),((argument.0))))\n"
+ 

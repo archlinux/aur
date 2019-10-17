@@ -1,0 +1,83 @@
+--- rel-0.9.7/src/Makefile.am	2016-08-30 16:58:31.444054971 +0100
++++ rtorrent-0.9.7/src/Makefile.am	2016-08-30 16:57:49.924279903 +0100
+@@ -30,6 +30,7 @@ libsub_root_a_SOURCES = \
+ 	control.h \
+ 	globals.cc \
+ 	globals.h \
++	ui_pyroscope.cc \
+ 	option_parser.cc \
+ 	option_parser.h \
+ 	signal_handler.cc \
+--- rel-0.9.7/src/command_helpers.cc	2016-08-30 16:59:41.970339564 +0100
++++ rtorrent-0.9.7/src/command_helpers.cc	2016-08-30 16:56:49.281275101 +0100
+@@ -57,6 +57,7 @@ void initialize_command_throttle();
+ void initialize_command_tracker();
+ void initialize_command_scheduler();
+ void initialize_command_ui();
++void initialize_command_ui_pyroscope();
+ 
+ void
+ initialize_commands() {
+@@ -75,4 +76,5 @@ initialize_commands() {
+   initialize_command_throttle();
+   initialize_command_tracker();
+   initialize_command_scheduler();
++  initialize_command_ui_pyroscope();
+ }
+--- rel-0.9.7/src/display/canvas.h	2009-11-12 09:03:47.000000000 +0100
++++ rtorrent-0.9.7/src/display/canvas.h	2016-08-28 12:47:17.252596654 +0100
+@@ -137,8 +137,10 @@ Canvas::print(unsigned int x, unsigned i
+ 
+   if (!m_isDaemon) {
+     va_start(arglist, str);
+-    wmove(m_window, y, x);
+-    vw_printw(m_window, const_cast<char*>(str), arglist);
++    if (y < height()) {
++      wmove(m_window, y, x);
++      vw_printw(m_window, const_cast<char*>(str), arglist);
++    }
+     va_end(arglist);
+   }
+ }
+--- rel-0.9.7/src/display/window_statusbar.cc	2016-08-30 18:59:56.054590848 +0100
++++ rtorrent-0.9.7/src/display/window_statusbar.cc	2016-08-30 16:16:24.554410975 +0100
+@@ -67,6 +67,8 @@ WindowStatusbar::redraw() {
+     m_canvas->print(m_canvas->width() - (position - buffer), 0, "%s", buffer);
+   }
+ 
++  void ui_pyroscope_statusbar_redraw(Window* window, display::Canvas* canvas);
++  ui_pyroscope_statusbar_redraw(this, m_canvas);
+   m_lastTick = control->tick();
+ }
+ 
+--- rel-0.9.7/src/display/window_download_list.cc	2016-08-26 10:06:55.000000000 +0100
++++ rtorrent-0.9.7/src/display/window_download_list.cc	2016-08-30 12:27:10.745588420 +0100
+@@ -83,6 +83,8 @@ WindowDownloadList::redraw() {
+ 
+   m_canvas->print(0, 0, "%s", ("[View: " + m_view->name() + (m_view->get_temp_filter().is_empty() ? "" : " (filtered)") + "]").c_str());
+ 
++  bool ui_pyroscope_download_list_redraw(Window* window, display::Canvas* canvas, core::View* view);
++  if (ui_pyroscope_download_list_redraw(this, m_canvas, m_view)) return;
+   if (m_view->empty_visible() || m_canvas->width() < 5 || m_canvas->height() < 2)
+     return;
+ 
+@@ -132,6 +134,8 @@ WindowDownloadList::redraw() {
+       print_download_status(buffer, last, *range.first);
+       m_canvas->print(0, pos++, "%c %s", range.first == m_view->focus() ? '*' : ' ', buffer);
+ 
++      void ui_pyroscope_download_list_redraw_item(Window* window, display::Canvas* canvas, core::View* view, int pos, Range& range);
++      ui_pyroscope_download_list_redraw_item(this, m_canvas, m_view, pos, range);
+       range.first++;
+     }
+ 
+--- rel-0.9.7/src/display/canvas.cc	2016-08-30 17:01:19.156479729 +0100
++++ rtorrent-0.9.7/src/display/canvas.cc	2016-08-30 16:48:56.697168643 +0100
+@@ -111,6 +111,8 @@ Canvas::initialize() {
+ 
+   if (!m_isDaemon) {
+     initscr();
++    extern void ui_pyroscope_canvas_init();
++    ui_pyroscope_canvas_init();
+     raw();
+     noecho();
+     nodelay(stdscr, TRUE);

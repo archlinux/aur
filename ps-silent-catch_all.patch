@@ -1,0 +1,18 @@
+--- a/src/command_dynamic.cc
++++ b/src/command_dynamic.cc
+@@ -425,10 +425,14 @@ system_method_list_keys(const torrent::Object::string_type& args) {
+ 
+ torrent::Object
+ cmd_catch(rpc::target_type target, const torrent::Object& args) {
++  bool silent = (args.is_list()
++              && !args.as_list().empty()
++              && args.as_list().front().is_string()
++              && args.as_list().front().as_string() == "false=");
+   try {
+     return rpc::call_object(args, target);
+   } catch (torrent::input_error& e) {
+-    lt_log_print(torrent::LOG_WARN, "Caught exception: '%s'.", e.what());
++    if (!silent) lt_log_print(torrent::LOG_WARN, "Caught exception: '%s'.", e.what());
+     return torrent::Object();
+   }
+ }

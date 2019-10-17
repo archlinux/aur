@@ -1,0 +1,263 @@
+--- a/src/command_ui.cc	2017-04-30 20:45:24.094335223 +0100
++++ a/src/command_ui.cc	2017-04-30 20:56:18.000000000 +0100
+@@ -568,6 +568,26 @@ apply_elapsed_greater(const torrent::Obj
+   return (int64_t)(start_time != 0 && rak::timer::current_seconds() - start_time > rpc::convert_to_value(args.back()));
+ }
+ 
++torrent::Object
++cmd_status_throttle_names(bool up, const torrent::Object::list_type& args) {
++  if (args.size() == 0)
++    return torrent::Object();
++
++  std::vector<std::string> throttle_name_list;
++
++  for (torrent::Object::list_const_iterator itr = args.begin(), last = args.end(); itr != last; itr++) {
++    if (itr->is_string())
++      throttle_name_list.push_back(itr->as_string());
++  }
++
++  if (up)
++    control->ui()->set_status_throttle_up_names(throttle_name_list);
++  else
++    control->ui()->set_status_throttle_down_names(throttle_name_list);
++
++  return torrent::Object();
++}
++
+ void
+ initialize_command_ui() {
+   CMD2_VAR_STRING("keys.layout", "qwerty");
+@@ -608,6 +628,9 @@ initialize_command_ui() {
+   CMD2_ANY       ("ui.current_view",       std::bind(&cmd_ui_current_view));
+   CMD2_ANY_STRING("ui.current_view.set",   std::bind(&cmd_ui_set_view, std::placeholders::_2));
+ 
++  CMD2_ANY_LIST  ("ui.status.throttle.up.set",   std::bind(&cmd_status_throttle_names, true, std::placeholders::_2));
++  CMD2_ANY_LIST  ("ui.status.throttle.down.set", std::bind(&cmd_status_throttle_names, false, std::placeholders::_2));
++
+   // TODO: Add 'option_string' for rtorrent-specific options.
+   CMD2_VAR_STRING("ui.torrent_list.layout", "full");
+ 
+--- a/src/core/manager.cc	2017-04-30 20:37:29.000000000 +0100
++++ a/src/core/manager.cc	2017-04-30 20:56:18.000000000 +0100
+@@ -146,6 +146,35 @@ Manager::get_address_throttle(const sock
+   return m_addressThrottles.get(rak::socket_address::cast_from(addr)->sa_inet()->address_h(), torrent::ThrottlePair(NULL, NULL));
+ }
+ 
++int64_t
++Manager::retrieve_throttle_value(const torrent::Object::string_type& name, bool rate, bool up) {
++  ThrottleMap::iterator itr = throttles().find(name);
++
++  if (itr == throttles().end()) {
++    return (int64_t)-1;
++  } else {
++    torrent::Throttle* throttle = up ? itr->second.first : itr->second.second;
++
++    // check whether the actual up/down throttle exist (one of the pair can be missing)
++    if (throttle == NULL)
++      return (int64_t)-1;
++
++    int64_t throttle_max = (int64_t)throttle->max_rate();
++
++    if (rate) {
++
++      if (throttle_max > 0)
++        return (int64_t)throttle->rate()->rate();
++      else
++        return (int64_t)-1;
++
++    } else {
++      return throttle_max;
++    }
++
++  }
++}
++
+ // Most of this should be possible to move out.
+ void
+ Manager::initialize_second() {
+--- a/src/core/manager.h	2016-10-23 05:33:00.000000000 +0100
++++ a/src/core/manager.h	2017-04-30 20:56:18.000000000 +0100
+@@ -42,6 +42,7 @@
+ 
+ #include <torrent/utils/log_buffer.h>
+ #include <torrent/connection_manager.h>
++#include <torrent/object.h>
+ 
+ #include "download_list.h"
+ #include "poll_manager.h"
+@@ -91,6 +92,8 @@ public:
+   ThrottleMap&          throttles()                       { return m_throttles; }
+   torrent::ThrottlePair get_throttle(const std::string& name);
+ 
++  int64_t             retrieve_throttle_value(const torrent::Object::string_type& name, bool rate, bool up);
++
+   // Use custom throttle for the given range of IP addresses.
+   void                  set_address_throttle(uint32_t begin, uint32_t end, torrent::ThrottlePair throttles);
+   torrent::ThrottlePair get_address_throttle(const sockaddr* addr);
+--- a/src/display/utils.cc	2017-04-30 20:37:29.000000000 +0100
++++ a/src/display/utils.cc	2017-04-30 20:56:18.000000000 +0100
+@@ -57,6 +57,7 @@
+ #include "core/download.h"
+ #include "core/manager.h"
+ #include "rpc/parse_commands.h"
++#include "ui/root.h"
+ 
+ #include "control.h"
+ #include "globals.h"
+@@ -323,20 +324,100 @@ print_client_version(char* first, char*
+ }
+ 
+ char*
++print_status_throttle_limit(char* first, char* last, bool up, const ui::ThrottleNameList& throttle_names) {
++  char throttle_str[40];
++  throttle_str[0] = 0;
++  char* firstc = throttle_str;
++  char* lastc = throttle_str + 40 - 1;
++
++  for (ui::ThrottleNameList::const_iterator itr = throttle_names.begin(), laste = throttle_names.end(); itr != laste; itr++) {
++
++    if (!(*itr).empty()) {
++      int64_t throttle_max = control->core()->retrieve_throttle_value(*itr, false, up);
++
++      if (throttle_max > 0)
++        firstc = print_buffer(firstc, lastc, "|%1.0f", (double)throttle_max / 1024.0);
++    }
++
++  }
++
++  // Add temp buffer (chop first char first) into main buffer if temp buffer isn't empty
++  if (throttle_str[0] != 0)
++    first = print_buffer(first, last, "(%s)", &throttle_str[1]);
++
++  return first;
++}
++
++char*
++print_status_throttle_rate(char* first, char* last, bool up, const ui::ThrottleNameList& throttle_names, const double& global_rate) {
++  double main_rate = global_rate;
++  char throttle_str[50];
++  throttle_str[0] = 0;
++  char* firstc = throttle_str;
++  char* lastc = throttle_str + 50 - 1;
++
++  for (ui::ThrottleNameList::const_iterator itr = throttle_names.begin(), laste = throttle_names.end(); itr != laste; itr++) {
++
++    if (!(*itr).empty() && (up ? torrent::up_throttle_global()->is_throttled() : torrent::down_throttle_global()->is_throttled())) {
++      int64_t throttle_rate_value = control->core()->retrieve_throttle_value(*itr, true, up);
++
++      if (throttle_rate_value > -1) {
++        double throttle_rate = (double)throttle_rate_value / 1024.0;
++        main_rate = main_rate - throttle_rate;
++
++        firstc = print_buffer(firstc, lastc, "|%3.1f", throttle_rate);
++      }
++    }
++
++  }
++
++  // Add temp buffer into main buffer if temp buffer isn't empty
++  if (throttle_str[0] != 0)
++    first = print_buffer(first, last, "(%3.1f%s)",
++                    main_rate < 0.0 ? 0.0 : main_rate,
++                    throttle_str);
++
++  return first;
++}
++
++char*
+ print_status_info(char* first, char* last) {
+-  if (!torrent::up_throttle_global()->is_throttled())
++  ui::ThrottleNameList& throttle_up_names = control->ui()->get_status_throttle_up_names();
++  ui::ThrottleNameList& throttle_down_names = control->ui()->get_status_throttle_down_names();
++
++  if (!torrent::up_throttle_global()->is_throttled()) {
+     first = print_buffer(first, last, "[Throttle off");
+-  else
++  } else {
+     first = print_buffer(first, last, "[Throttle %3i", torrent::up_throttle_global()->max_rate() / 1024);
+ 
+-  if (!torrent::down_throttle_global()->is_throttled())
+-    first = print_buffer(first, last, "/off KB]");
+-  else
+-    first = print_buffer(first, last, "/%3i KB]", torrent::down_throttle_global()->max_rate() / 1024);
+-  
+-  first = print_buffer(first, last, " [Rate %5.1f/%5.1f KB]",
+-                       (double)torrent::up_rate()->rate() / 1024.0,
+-                       (double)torrent::down_rate()->rate() / 1024.0);
++    if (!throttle_up_names.empty())
++      first = print_status_throttle_limit(first, last, true, throttle_up_names);
++  }
++
++  if (!torrent::down_throttle_global()->is_throttled()) {
++    first = print_buffer(first, last, " / off KB]");
++  } else {
++    first = print_buffer(first, last, " / %3i", torrent::down_throttle_global()->max_rate() / 1024);
++
++    if (!throttle_down_names.empty())
++      first = print_status_throttle_limit(first, last, false, throttle_down_names);
++
++    first = print_buffer(first, last, " KB]");
++  }
++
++  double global_uprate = (double)torrent::up_rate()->rate() / 1024.0;
++  first = print_buffer(first, last, " [Rate %5.1f", global_uprate);
++
++  if (!throttle_up_names.empty())
++    first = print_status_throttle_rate(first, last, true, throttle_up_names, global_uprate);
++
++  double global_downrate = (double)torrent::down_rate()->rate() / 1024.0;
++  first = print_buffer(first, last, " / %5.1f", global_downrate);
++
++  if (!throttle_down_names.empty())
++    first = print_status_throttle_rate(first, last, false, throttle_down_names, global_downrate);
++
++  first = print_buffer(first, last, " KB]");
+ 
+   first = print_buffer(first, last, " [Port: %i]", (unsigned int)torrent::connection_manager()->listen_port());
+ 
+--- a/src/display/utils.h	2016-10-23 05:33:00.000000000 +0100
++++ a/src/display/utils.h	2017-04-30 20:56:18.000000000 +0100
+@@ -80,6 +80,9 @@ char*       print_client_version(char* f
+ char*       print_entry_tags(char* first, char* last);
+ char*       print_entry_file(char* first, char* last, const torrent::Entry& entry);
+ 
++char*       print_status_throttle_limit(char* first, char* last, bool up, const std::vector<std::string>& throttle_names);
++char*       print_status_throttle_rate(char* first, char* last, bool up, const std::vector<std::string>& throttle_names, const double& global_rate);
++
+ char*       print_status_info(char* first, char* last);
+ char*       print_status_extra(char* first, char* last);
+ 
+--- a/src/ui/root.h	2016-10-23 05:33:00.000000000 +0100
++++ a/src/ui/root.h	2019-07-26 20:01:18.000000000 +0100
+@@ -59,6 +59,8 @@ namespace ui {
+ 
+ class DownloadList;
+ 
++typedef std::vector<std::string> ThrottleNameList;
++
+ class Root {
+ public:
+   typedef display::WindowTitle     WTitle;
+@@ -93,6 +95,12 @@ public:
+ 
+   const char*         get_throttle_keys();
+ 
++  ThrottleNameList&   get_status_throttle_up_names()          { return m_throttle_up_names; }
++  ThrottleNameList&   get_status_throttle_down_names()        { return m_throttle_down_names; }
++
++  void                set_status_throttle_up_names(const ThrottleNameList& throttle_list)      { m_throttle_up_names = throttle_list; }
++  void                set_status_throttle_down_names(const ThrottleNameList& throttle_list)    { m_throttle_down_names = throttle_list; }
++
+   void                enable_input(const std::string& title, input::TextInput* input, ui::DownloadList::Input type);
+   void                disable_input();
+ 
+@@ -119,6 +127,9 @@ private:
+ 
+   input::Bindings     m_bindings;
+ 
++  ThrottleNameList    m_throttle_up_names;
++  ThrottleNameList    m_throttle_down_names;
++
+   int                   m_input_history_length;
+   std::string           m_input_history_last_input;
+   int                   m_input_history_pointer_get;
