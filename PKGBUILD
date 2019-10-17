@@ -14,11 +14,11 @@ source=("$_pkgsrc.tar.gz::https://github.com/CESNET/$pkgname/archive/v$_pkgver.t
 sha256sums=('351f712433d50494aad153bfd4aa92ff50299058428620eabddb7a41d781e756')
 
 prepare() {
-    mkdir -p $srcdir/build
+    mkdir -p $srcdir/build-$_pkgver
 }
 
 build() {
-    cd $srcdir/build
+    cd $srcdir/build-$_pkgver
     cmake -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DCMAKE_BUILD_TYPE=Release \
@@ -28,7 +28,7 @@ build() {
 }
 
 package() {
-    cd $srcdir/build
+    cd $srcdir/build-$_pkgver
     make DESTDIR="$pkgdir" install
     install -Dm644 $srcdir/$_pkgsrc/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
