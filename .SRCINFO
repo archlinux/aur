@@ -1,7 +1,7 @@
 pkgbase = pyfunceble-dev
 	pkgdesc = The tool to check the availability or syntax of domains, IPv4, IPv6 or URL.
 	pkgver = 2.17.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://funilrys.github.io/PyFunceble/
 	arch = any
 	license = MIT
