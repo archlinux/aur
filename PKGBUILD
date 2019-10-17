@@ -27,7 +27,7 @@ package() {
 
   make DESTDIR="$pkgdir" PREFIX=/usr install
 
-  install -m644 -D contrib/60-libsigrok.rules $pkgdir/usr/lib/udev/rules.d/60-libsigrok.rules
-  install -m644 -D contrib/61-libsigrok-uaccess.rules $pkgdir/usr/lib/udev/rules.d/61-libsigrok-uaccess.rules
+  install -m644 -D contrib/60-libsigrok.rules "$pkgdir"/usr/lib/udev/rules.d/60-libsigrok.rules
+  install -m644 -D contrib/61-libsigrok-uaccess.rules "$pkgdir"/usr/lib/udev/rules.d/61-libsigrok-uaccess.rules
 }
 
