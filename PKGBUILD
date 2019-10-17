@@ -1,8 +1,8 @@
 # Maintainer: aNNiMON <annimon119 at gmail dot com>
 
 pkgname=ownlang
-pkgver=1.4.0
-pkgrel=2
+pkgver=1.5.0
+pkgrel=3
 pkgdesc="A scripting functional programming language with dynamic typing"
 arch=('any')
 url="http://projects.annimon.com/projects/ownlang"
@@ -10,8 +10,8 @@ license=('MIT')
 depends=('java-runtime>=8')
 optdepends=('java-openjfx: for canvasfx module')
 source=("https://annimon.com/aur/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('176267b17c7cae0bf8de7c06e1090155f56cb064e4f80a4a6b985eff847f4462')
-sha512sums=('d0bc6857bc456474d5434b12e15a14a989cfe6daf47d8db906f2aa03b6a1fb5e2e04176a1d24c7ba8f971051de9cc50305300fe694095ffd0fa201d381768853')
+sha256sums=('c10b67e40e7d13d49247b315ff5752bf83a85feec18f23090fc6ed7a2010d458')
+sha512sums=('33866271343b6cac0fc4abc8a12c12f74404a61f8370c21bfa05098a90e47a0537418708be1b8a259cbf1a87b305dd7396a6f6e9b0ce3466af73c03e660340bc')
 
 package() {
 	install -Dm644 "$srcdir/$pkgname.jar" "$pkgdir/usr/share/java/$pkgname/$pkgname.jar"
