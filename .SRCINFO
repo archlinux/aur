@@ -1,6 +1,6 @@
 pkgbase = dnf-plugins-extras
 	pkgdesc = Extras DNF Plugins
-	pkgver = 4.0.6
+	pkgver = 4.0.7
 	pkgrel = 1
 	url = https://github.com/rpm-software-management/dnf-plugins-extras
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = dnf-plugins-extras
 	optdepends = tracer: for tracer plugin
 	backup = etc/dnf/plugins/rpmconf.conf
 	backup = etc/dnf/plugins/torproxy.conf
-	source = https://github.com/rpm-software-management/dnf-plugins-extras/archive/4.0.6/dnf-plugins-extras-4.0.6.tar.gz
-	md5sums = 2f93a3e720412a257ced7853f059b17f
+	source = https://github.com/rpm-software-management/dnf-plugins-extras/archive/4.0.7/dnf-plugins-extras-4.0.7.tar.gz
+	md5sums = 19084f75a1b71d5cbf9959b52951e92f
 
 pkgname = dnf-plugins-extras
 
