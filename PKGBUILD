@@ -5,21 +5,24 @@
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
 pkgbase=linux-hardened-ccs-apparmor
-_pkgver=4.19.12
+_pkgver=5.2.9
 _hardenedver=a
 _srcname=linux-${_pkgver}
 pkgver=${_pkgver}.${_hardenedver}
 pkgrel=1
-ccsver=1.8.5
-ccskernver=4.19
-_timestamp=20181225
+ccsver=1.8.6
+ccskernver=5.2
+_timestamp=20190820
 url='https://github.com/anthraxx/linux-hardened https://tomoyo.osdn.jp https://gitlab.com/apparmor/apparmor'
 arch=('x86_64')
 license=('GPL2')
-makedepends=('xmlto' 'kmod' 'inetutils' 'bc' 'libelf' 'python-sphinx' 'graphviz')
+#makedepends=(
+#  xmlto kmod inetutils bc libelf python-sphinx python-sphinx_rtd_theme
+#  graphviz imagemagick
+#)
 options=('!strip')
-source=(https://www.kernel.org/pub/linux/kernel/v4.x/linux-${_pkgver}.tar.xz
-        https://www.kernel.org/pub/linux/kernel/v4.x/linux-${_pkgver}.tar.sign
+source=(https://www.kernel.org/pub/linux/kernel/v${_pkgver//.*}.x/linux-${_pkgver}.tar.xz
+        https://www.kernel.org/pub/linux/kernel/v${_pkgver//.*}.x/linux-${_pkgver}.tar.sign
         https://github.com/anthraxx/linux-hardened/releases/download/${pkgver}/linux-hardened-${pkgver}.patch{,.sig}
         config.x86_64  # the main kernel config files
         60-linux.hook  # pacman hook for depmod
@@ -29,18 +32,18 @@ source=(https://www.kernel.org/pub/linux/kernel/v4.x/linux-${_pkgver}.tar.xz
         # TOMOYO CCS patch
         https://osdn.net/projects/tomoyo/downloads/49684/ccs-patch-${ccsver}-${_timestamp}.tar.gz{,.asc}
 )
-sha256sums=('4d81ac539d62617f5b52f25971749d8c6d3a200deee76898bb99be8492999b77'
+replaces=('linux-grsec')
+sha256sums=('b6f02a4b306ca5cd314d72615bfc2650166969613135da202630e6c4e1b5d4e6'
             'SKIP'
-            'df3b2316bfe81e702dbddccfbbd37402d592f1af80dfc90296b50ba141604b44'
+            'c4b3c9e7dad9b6d3a1171840d5e55d3840c0392f6f17899b8be9286aa3b6fc76'
             'SKIP'
-            'ca46d390f28ffb676257220f27d5b2b9865138c67b0797ae243c7dfe8b4550c7'
+            '946c2e921696591dac8df184fdc9581d329d96ff9fe8f8e8c535efa3a59e4137'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '73f65475f1698147c153a442d116404cdbfef9f46897614d949c37b989db0996'
-            '98161b952eda87723ea68dfc3071b6c55699c0649be7f5356be5d1aaa6031f2a'
-            'SKIP'
-              )
+            'a4cdccf1d0a389553a792dc370b843f898ed9b760b6e2d8f9befb574c1ed1d7f'
+            'SKIP')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
