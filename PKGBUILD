@@ -8,7 +8,7 @@ url="https://github.com/ryanoasis/nerd-fonts"
 license=('MIT')
 depends=('fontconfig')
 conflicts=('nerd-fonts-git')
-raw_url="$url/raw/master/patched-fonts/Blex/Mono/complete"
+raw_url="$url/raw/master/patched-fonts/IBMPlexMono/Mono/complete"
 
 source=(
 "Blex-Mono-Bold-Italic-Nerd-Font-Complete-Mono.ttf::$raw_url/Blex%20Mono%20Bold%20Italic%20Nerd%20Font%20Complete%20Mono.ttf"
