@@ -1,7 +1,7 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 pkgbase=python-ezpadova-git
 pkgname=('python-ezpadova-git' 'python2-ezpadova-git')
-pkgver=r59.1b71cd7
+pkgver=r61.5378a3e
 pkgrel=1
 pkgdesc="A python package that allows you to download PADOVA isochrones directly from their website"
 arch=('i686' 'x86_64')
@@ -49,8 +49,8 @@ package_python-ezpadova-git() {
     depends=('python')
     cd ${srcdir}/${_gitname}
 
-    install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname%-git}"
-    install -D -m644 README.md -t "${pkgdir}/usr/share/doc/${pkgname%-git}"
+    install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -D -m644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
     python setup.py install --root=${pkgdir} --prefix=/usr --optimize=1
 }
 
@@ -58,7 +58,7 @@ package_python2-ezpadova-git() {
     depends=('python2')
     cd ${srcdir}/${_gitname}-py2
 
-    install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname%-git}"
-    install -D -m644 README.md -t "${pkgdir}/usr/share/doc/${pkgname%-git}"
+    install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -D -m644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
     python2 setup.py install --root=${pkgdir} --prefix=/usr --optimize=1
 }
