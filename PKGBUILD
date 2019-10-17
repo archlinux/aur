@@ -1,7 +1,7 @@
 # Maintainer: Filippo Berto <berto.f@protonmail.com>
 _pkgname=ndn-cxx
 pkgname=${_pkgname}-git
-pkgver=ndn.cxx.0.6.6.r0.g0d748af3
+pkgver=ndn.cxx.0.6.6.r47.ge6e125ea
 pkgrel=1
 # epoch=
 pkgdesc="Library implementing Named Data Networking (NDN) primitives that can be used to write various NDN applications"
@@ -26,8 +26,6 @@ validpgpkeys=()
 
 prepare() {
 	cd "${srcdir}/${_pkgname}"
-	git checkout `git describe --tags --abbrev=0`
-	# Run the initial configuration
 	./waf configure
 }
 
@@ -38,13 +36,11 @@ pkgver() {
 
 build() {
 	cd "${srcdir}/${_pkgname}"
-	# Build libraries and tools
 	./waf build
 }
 
 package() {
 	cd "${srcdir}/${_pkgname}"
 	./waf install --destdir="${pkgdir}"
-	
 	mv "${pkgdir}/usr/local/"* "${pkgdir}/usr"
 }
