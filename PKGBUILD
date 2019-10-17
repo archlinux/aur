@@ -11,7 +11,7 @@ depends=('fontconfig' 'xorg-font-utils')
 source=("https://github.com/CyanoHao/Sarasa-Alternatives/releases/download/v${pkgver}/sarasa-slab-ttc-${pkgver}.7z"
 	"https://raw.githubusercontent.com/CyanoHao/Sarasa-Alternatives/master/LICENSE")
 md5sums=('112c3d254f049c9c93a9623dfc72927e'
-         '8ff57183e6df3ffbe6248fa831090a5f')
+         'bb894d46cb6fb06cd086a58828eee132')
 
 package() {
 	install -d "${pkgdir}/usr/share/fonts/${pkgname:4}"

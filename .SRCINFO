@@ -10,7 +10,7 @@ pkgbase = ttf-sarasa-slab
 	source = https://github.com/CyanoHao/Sarasa-Alternatives/releases/download/v0.10.0/sarasa-slab-ttc-0.10.0.7z
 	source = https://raw.githubusercontent.com/CyanoHao/Sarasa-Alternatives/master/LICENSE
 	md5sums = 112c3d254f049c9c93a9623dfc72927e
-	md5sums = 8ff57183e6df3ffbe6248fa831090a5f
+	md5sums = bb894d46cb6fb06cd086a58828eee132
 
 pkgname = ttf-sarasa-slab
 
