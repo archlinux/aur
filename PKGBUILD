@@ -15,7 +15,7 @@ replaces=()
 backup=()
 options=()
 install=
-source=('git+https://github.com/halide/Halide.git') #https://github.com/halide/Halide.git
+source=('git+https://github.com/halide/Halide.git')
 noextract=()
 md5sums=('SKIP')
 
@@ -34,12 +34,13 @@ build() {
     cd "$srcdir/Halide/build"
     cmake   -DCMAKE_BUILD_TYPE=Release -DWITH_TESTS=False -DWITH_DOCS=False -DWITH_TUTORIALS=False \
             -DWARNINGS_AS_ERRORS=False -DWITH_APPS=False -DBUILD_AOT_TUTORIAL=False -DWITH_UTILS=False ..
-    CC="clang" CXX="clang++" make -j
+    CORES=$(cat /proc/cpuinfo | grep -c "vendor_id")                
+    make clean
+    make -j${CORES} -l${CORES}
 }
 
 check() {
     cd "$srcdir/Halide/build"
-    #make -k check
 }
 
 package() {
