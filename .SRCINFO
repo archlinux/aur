@@ -1,6 +1,6 @@
 pkgbase = pioneer-git
 	pkgdesc = A game of lonely space adventure
-	pkgver = 20190203.r216.g35d34d983
+	pkgver = 20191009.r10.g020188a
 	pkgrel = 1
 	url = https://github.com/pioneerspacesim/pioneer
 	arch = x86_64
