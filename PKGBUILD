@@ -1,6 +1,6 @@
-#Maintainer: Sam Bazley <sambazley@protonmail.com>
+#Maintainer: Sam Bazley <sambazley@fastmail.com>
 pkgname=blockbar-git
-pkgver=20190421204709
+pkgver=20191017234655
 pkgrel=1
 pkgdesc="Blocks based status bar for X window managers"
 arch=("i686" "x86_64")
@@ -11,6 +11,7 @@ depends=("cairo" "pango" "libxrandr" "ujson-git")
 source=("git+https://gitlab.com/sambazley/blockbar.git")
 md5sums=("SKIP")
 provides=("blockbar")
+install=blockbar.install
 
 pkgver() {
     cd blockbar
