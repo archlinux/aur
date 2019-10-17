@@ -9,6 +9,7 @@ pkgbase = clean-chroot-manager
 	depends = devtools>=20190821-1
 	depends = rsync
 	depends = libarchive>=3.3.3
+	depends = pacman<5.2
 	conflicts = clean_chroot_manager
 	replaces = clean_chroot_manager
 	source = clean-chroot-manager-2.98.tar.gz::https://github.com/graysky2/clean-chroot-manager/archive/v2.98.tar.gz
