@@ -7,13 +7,20 @@ pkgdesc="Control components for Dash"
 arch=('any')
 url=https://github.com/plotly/dash-daq
 license=('MIT')
-depends=(python python-dash)
-makedepends=(python-setuptools)
+depends=(python python-dash python-dash-table)
+makedepends=(python-setuptools yarn)
 source=(https://github.com/plotly/dash-daq/archive/v${pkgver}.tar.gz)
 sha256sums=('0909d5556760f8caa7e2b3e8c48e4e4e812cb1a66422e4c59ceb7cee498982c1')
 
 prepare() {
   cd "$srcdir/dash-daq-$pkgver"
+  rm yarn.lock
+  rm package-lock.json
+  yarn
+  python get_version_info.py
+  yarn copy-lib
+  dash-generate-components ./src/components dash_daq -p package-info.json --r-prefix 'daq'
+
   #versioneer install 
 }
 
