@@ -1,7 +1,7 @@
 pkgbase = cover-thumbnailer
 	pkgdesc = A Python script which displays music album covers in nautilus, preview of pictures which are in a folder and more.
 	pkgver = 0.8.3
-	pkgrel = 5
+	pkgrel = 6
 	url = https://launchpad.net/cover-thumbnailer
 	install = cover-thumbnailer.install
 	arch = i686
