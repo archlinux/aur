@@ -1,7 +1,7 @@
 pkgbase = anbox-image-houdini
-	pkgdesc = Android image for running in Anbox with houdini
+	pkgdesc = Android image for running in Anbox with Houdini and SuperSU
 	pkgver = 2018.07.19
-	pkgrel = 1
+	pkgrel = 2
 	url = https://anbox.io/
 	arch = x86_64
 	license = custom
@@ -12,9 +12,11 @@ pkgbase = anbox-image-houdini
 	source = http://build.anbox.io/android-images/2018/07/19/android_amd64.img
 	source = houdini_y.sfs::http://dl.android-x86.org/houdini/7_y/houdini.sfs
 	source = houdini_z.sfs::http://dl.android-x86.org/houdini/7_z/houdini.sfs
-	sha256sums = 6b04cd33d157814deaf92dccf8a23da4dc00b05ca6ce982a03830381896a8cca
-	sha256sums = 56fd08c448840578386a71819c07139122f0af39f011059ce728ea0f3c60b665
-	sha256sums = 7eedc42015e6fb84a11a406a099241efccc20d4e020d476335a5fdb6e69a33d2
+	source = http://supersuroot.org/downloads/SuperSU-v2.82-201705271822.zip
+	md5sums = 26874452a6521ec2e37400670d438e33
+	md5sums = 7ebf618b1af94a02322d9f2d2610090b
+	md5sums = 5ca37e1629edb7d13b18751b72dc98ad
+	md5sums = 8755c94775431f20bd8de368a2c7a179
 
 pkgname = anbox-image-houdini
 

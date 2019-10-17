@@ -2,8 +2,8 @@
 
 pkgname=anbox-image-houdini
 pkgver=2018.07.19
-pkgrel=1
-pkgdesc='Android image for running in Anbox with houdini'
+pkgrel=2
+pkgdesc='Android image for running in Anbox with Houdini and SuperSU'
 arch=('x86_64')
 url='https://anbox.io/'
 license=('custom')
@@ -21,11 +21,13 @@ source=(
     'http://build.anbox.io/android-images/'${pkgver//./\/}'/android_amd64.img'
     'houdini_y.sfs::http://dl.android-x86.org/houdini/7_y/houdini.sfs'
     'houdini_z.sfs::http://dl.android-x86.org/houdini/7_z/houdini.sfs'
+    'http://supersuroot.org/downloads/SuperSU-v2.82-201705271822.zip'
 )
-sha256sums=(
-    '6b04cd33d157814deaf92dccf8a23da4dc00b05ca6ce982a03830381896a8cca'
-    '56fd08c448840578386a71819c07139122f0af39f011059ce728ea0f3c60b665'
-    '7eedc42015e6fb84a11a406a099241efccc20d4e020d476335a5fdb6e69a33d2'
+md5sums=(
+    '26874452a6521ec2e37400670d438e33'
+    '7ebf618b1af94a02322d9f2d2610090b'
+    '5ca37e1629edb7d13b18751b72dc98ad'
+    '8755c94775431f20bd8de368a2c7a179'
 )
 
 build () {
@@ -91,6 +93,34 @@ build () {
 
     # enable opengles
     echo 'ro.opengles.version=131072' >> ./squashfs-root/system/build.prop
+
+    # install supersu
+    rm -f ./squashfs-root/system/bin/su
+    rm -f ./squashfs-root/system/xbin/su
+    rm -f ./squashfs-root/system/sbin/su
+
+    mkdir -p ./squashfs-root/system/bin/.ext
+    chmod 777 ./squashfs-root/system/bin/.ext
+    install -Dm 755 ./x64/su ./squashfs-root/system/bin/.ext/.su
+    install -Dm 755 ./x64/su ./squashfs-root/system/xbin/su
+    install -Dm 755 ./x64/su ./squashfs-root/system/xbin/daemonsu
+    install -Dm 755 ./x64/supolicy ./squashfs-root/system/xbin/supolicy
+    install -Dm 644 ./x64/libsupol.so ./squashfs-root/system/lib64/libsupol.so
+
+    mkdir -p ./squashfs-root/system/app/SuperSU
+    chmod 755 ./squashfs-root/system/app/SuperSU
+    install -Dm 644 ./common/Superuser.apk ./squashfs-root/system/app/SuperSU/Superuser.apk
+
+    rm ./squashfs-root/system/bin/app_process
+    ln -s /system/xbin/daemonsu ./squashfs-root/system/bin/app_process
+    mv ./squashfs-root/system/bin/app_process64 ./squashfs-root/system/bin/app_process64_original
+    ln -s /system/xbin/daemonsu ./squashfs-root/system/bin/app_process64
+    cp  ./squashfs-root/system/bin/app_process64_original ./squashfs-root/system/bin/app_process_init
+
+    chmod +w ./squashfs-root/system/etc/init.goldfish.sh
+    echo '/system/xbin/daemonsu --auto-daemon &' >> ./squashfs-root/system/etc/init.goldfish.sh
+    chmod -w ./squashfs-root/system/etc/init.goldfish.sh
+    echo 1 > ./squashfs-root/system/etc/.installed_su_daemon
 }
 
 package() {
