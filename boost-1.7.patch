@@ -1,0 +1,114 @@
+From 6f8098712b39ff4f7fd004759730a5a4756bd9c0 Mon Sep 17 00:00:00 2001
+From: Paul Jensen <eastendmumbles@gmail.com>
+Date: Mon, 23 Sep 2019 00:35:18 -0700
+Subject: [PATCH] Support boost 1.70 and below options as well
+
+---
+ src/rpcclient.cpp |  4 ++--
+ src/rpcprotocol.h | 18 +++++++++++++++---
+ src/rpcserver.cpp |  8 ++++----
+ 3 files changed, 21 insertions(+), 9 deletions(-)
+
+diff --git a/src/rpcclient.cpp b/src/rpcclient.cpp
+index 00559b6df..aea63ee3d 100644
+--- a/src/rpcclient.cpp
++++ b/src/rpcclient.cpp
+@@ -45,10 +45,10 @@ UniValue CallRPC(const string& strMethod, const UniValue& params)
+ 
+     // Connect to localhost
+     bool fUseSSL = GetBoolArg("-rpcssl");
+-    asio::io_service io_service;
++    ioContext io_context;
+     ssl::context context(ssl::context::sslv23);
+     context.set_options(ssl::context::no_sslv2);
+-    asio::ssl::stream<asio::ip::tcp::socket> sslStream(io_service, context);
++    asio::ssl::stream<asio::ip::tcp::socket> sslStream(io_context, context);
+     SSLIOStreamDevice<asio::ip::tcp> d(sslStream, fUseSSL);
+     iostreams::stream< SSLIOStreamDevice<asio::ip::tcp> > stream(d);
+     if (!d.connect(GetArg("-rpcconnect", "127.0.0.1"), GetArg("-rpcport", ToString(GetDefaultRPCPort()))))
+diff --git a/src/rpcprotocol.h b/src/rpcprotocol.h
+index df097ff91..bd88f6272 100644
+--- a/src/rpcprotocol.h
++++ b/src/rpcprotocol.h
+@@ -18,6 +18,18 @@
+ 
+ using namespace std;
+ 
++// Boost Support for 1.70+
++#if BOOST_VERSION >= 107000
++    #define GetIOService(s) ((boost::asio::io_context&)(s).get_executor().context())
++    #define GetIOServiceFromPtr(s) ((boost::asio::io_context&)(s->get_executor().context())) // this one
++    typedef boost::asio::io_context ioContext;
++
++#else
++    #define GetIOService(s) ((s).get_io_service())
++    #define GetIOServiceFromPtr(s) ((s)->get_io_service())
++    typedef boost::asio::io_service ioContext;
++#endif
++
+ // HTTP status codes
+ enum HTTPStatusCode
+ {
+@@ -97,7 +109,7 @@ class SSLIOStreamDevice : public boost::iostreams::device<boost::iostreams::bidi
+     }
+     bool connect(const std::string& server, const std::string& port)
+     {
+-        boost::asio::ip::tcp::resolver resolver(stream.get_io_service());
++        boost::asio::ip::tcp::resolver resolver(GetIOService(stream));
+         boost::asio::ip::tcp::resolver::query query(server.c_str(), port.c_str());
+         boost::asio::ip::tcp::resolver::iterator endpoint_iterator = resolver.resolve(query);
+         boost::asio::ip::tcp::resolver::iterator end;
+@@ -133,10 +145,10 @@ class AcceptedConnectionImpl : public AcceptedConnection
+ {
+ public:
+     AcceptedConnectionImpl(
+-            boost::asio::io_service& io_service,
++            ioContext& io_context,
+             boost::asio::ssl::context &context,
+             bool fUseSSL) :
+-        sslStream(io_service, context),
++        sslStream(io_context, context),
+         _d(sslStream, fUseSSL),
+         _stream(_d)
+     {
+diff --git a/src/rpcserver.cpp b/src/rpcserver.cpp
+index e916e62d4..7e1469512 100644
+--- a/src/rpcserver.cpp
++++ b/src/rpcserver.cpp
+@@ -36,7 +36,7 @@ void ThreadRPCServer2(void* parg);
+ static std::string strRPCUserColonPass;
+ 
+ // These are created by StartRPCThreads, destroyed in StopRPCThreads
+-static asio::io_service* rpc_io_service = NULL;
++static ioContext* rpc_io_service = NULL;
+ static ssl::context* rpc_ssl_context = NULL;
+ static boost::thread_group* rpc_worker_group = NULL;
+ 
+@@ -509,7 +509,7 @@ static void RPCListen(boost::shared_ptr< basic_socket_acceptor<Protocol> > accep
+                       const bool fUseSSL)
+ {
+     // Accept connection
+-    AcceptedConnectionImpl<Protocol>* conn = new AcceptedConnectionImpl<Protocol>(acceptor->get_io_service(), context, fUseSSL);
++    AcceptedConnectionImpl<Protocol>* conn = new AcceptedConnectionImpl<Protocol>(GetIOServiceFromPtr(acceptor), context, fUseSSL);
+ 
+     acceptor->async_accept(
+                 conn->sslStream.lowest_layer(),
+@@ -592,7 +592,7 @@ void StartRPCThreads()
+     const bool fUseSSL = GetBoolArg("-rpcssl");
+ 
+     assert(rpc_io_service == NULL);
+-    rpc_io_service = new asio::io_service();
++    rpc_io_service = new ioContext();
+     rpc_ssl_context = new ssl::context(ssl::context::sslv23);
+ 
+     if (fUseSSL)
+@@ -675,7 +675,7 @@ void StartRPCThreads()
+     
+     rpc_worker_group = new boost::thread_group();
+     for (int i = 0; i < GetArg("-rpcthreads", 4); i++)
+-        rpc_worker_group->create_thread(boost::bind(&asio::io_service::run, rpc_io_service));
++        rpc_worker_group->create_thread(boost::bind(&ioContext::run, rpc_io_service));
+ }
+ 
+ void StopRPCThreads()
+
