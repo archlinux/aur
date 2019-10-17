@@ -8,7 +8,7 @@ license=('BSD')
 makedepends=('python-setuptools')
 depends=('python-scikit-learn')
 source=("https://github.com/jonathf/chaospy/archive/v${pkgver}.tar.gz")
-sha256sums=('f45675789ec1dd564a2f17395e1447e1f64d26a078fd0fad120953517453cfec')
+sha256sums=('751955ffa77857e4409a8d233bf7b4f47b1dbf564f18ec27e3c8ed2457559462')
 
 build() {
   cd "${srcdir}/chaospy-$pkgver"
