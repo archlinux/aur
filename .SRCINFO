@@ -1,7 +1,7 @@
 pkgbase = php-swoole
 	pkgdesc = Event-driven asynchronous and concurrent networking engine with high performance for PHP.
 	pkgver = 4.4.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/swoole/swoole-src
 	install = php-swoole.install
 	arch = x86_64
