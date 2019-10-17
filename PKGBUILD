@@ -4,14 +4,14 @@
 
 pkgname=yle-dl
 pkgver=20190614
-pkgrel=2
+pkgrel=3
 pkgdesc="Download video and audio from YLE Areena."
 arch=('any')
 url="http://aajanki.github.io/yle-dl/"
 license=('GPL3')
 depends=('ffmpeg'
        'python-attrs>=18.1.0'
-       'python-attrs<19.3.0'
+       'python-attrs<19.4.0'
        'python-configargparse>=0.13.0'
        'python-future'
        'python-lxml'
@@ -27,7 +27,7 @@ makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/y/yle-dl/yle-dl-${pkgver}.tar.gz"
 	"python-attrs.patch")
 sha256sums=('c8c88cd6d48426623c008ccbe6efec1d06e61a9316dda82313070589469303bb'
-            'b49383241b241b64158b7e8316e3f7a114bd280e83810cd5484882af79555852')
+            '4608d89261c6fd41cf3a5c96d9bee739874e4665366280bea4282b7c19894d4c')
 
 prepare() {
   cd $pkgname-$pkgver

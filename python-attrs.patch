@@ -1,12 +1,12 @@
 diff --unified --recursive --text yle-dl-20190614/setup.py yle-dl-20190614.new/setup.py
---- yle-dl-20190614/setup.py	2019-05-02 15:13:34.000000000 +0300
-+++ yle-dl-20190614.new/setup.py	2019-10-13 12:38:25.372325814 +0300
+--- yle-dl-20190614/setup.py	
++++ yle-dl-20190614.new/setup.py
 @@ -39,7 +39,7 @@
      include_package_data=True,
      install_requires=[
          'pycryptodomex', 'requests', 'lxml', 'future', 'mini-amf',
 -        'attrs >= 18.1.0, < 19.2.0', 'ConfigArgParse >= 0.13.0'
-+        'attrs >= 18.1.0, < 19.3.0', 'ConfigArgParse >= 0.13.0'
++        'attrs >= 18.1.0, < 19.4.0', 'ConfigArgParse >= 0.13.0'
      ] + ssl_sni_requires,
      extras_require = {
          'youtubedl-backend': ['youtube_dl']
