@@ -3,7 +3,7 @@
 pkgname=opensmtpd-filter-rspamd
 _pkgname=filter-rspamd
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc='OpenSMTPD filter integration for Rspamd'
 arch=(i686 x86_64)
 url=https://github.com/poolpOrg/filter-rspamd
@@ -24,7 +24,7 @@ build() {
 
 package() {
   cd $_pkgname-$pkgver
-  install -D filter-rspamd -t "$pkgdir"/usr/bin
+  install -D filter-rspamd -t "$pkgdir"/usr/lib/smtpd/opensmtpd
   install -Dm 644 README.md -t "$pkgdir"/usr/share/doc/$pkgname
   install -Dm 644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
 }
