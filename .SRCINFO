@@ -1,0 +1,14 @@
+pkgbase = blockbar-constwidth-git
+	pkgdesc = Module for blockbar that prevents the block's width from changing
+	pkgver = 20191017024640
+	pkgrel = 1
+	url = https://gitlab.com/sambazley/blockbar-constwidth
+	arch = i686
+	arch = x86_64
+	license = ZLIB
+	depends = blockbar
+	source = git+https://gitlab.com/sambazley/blockbar-constwidth.git
+	md5sums = SKIP
+
+pkgname = blockbar-constwidth-git
+
