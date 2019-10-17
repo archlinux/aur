@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=IPFS Desktop
+Comment=Desktop client for the InterPlanetary File System
+Exec="/usr/bin/ipfs-desktop"
+Terminal=false
+Type=Application
+Icon=ipfs
+StartupWMClass="IPFS"
+Categories=Network;FileTransfer;P2P
