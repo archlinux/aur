@@ -1,7 +1,7 @@
 pkgbase = opensmtpd-filter-senderscore
 	pkgdesc = OpenSMTPD filter integration for Sender Score
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/poolpOrg/filter-senderscore
 	arch = i686
 	arch = x86_64
