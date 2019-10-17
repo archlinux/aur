@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=buck
-pkgver=2019.10.02.01
+pkgver=2019.10.17.01
 pkgrel=1
 pkgdesc='A fast build system that encourages the creation of small, \
 	   reusable modules over a variety of platforms and languages.'
@@ -13,7 +13,7 @@ optdepends=('watchman: prevent Buck from parsing all of your build files every t
 url='https://buckbuild.com'
 license=('Apache')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/facebook/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('3945c118844db3d845b1718307a9f10a996e7622ed9fb70076038fab545e70df')
+sha256sums=('19c86895faa39271d9a18c35bd66d6daeff0d8e27bc97d612ba76284feff313e')
 
 build() {
   cd ${pkgname}-${pkgver}
