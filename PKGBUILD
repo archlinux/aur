@@ -1,8 +1,8 @@
-# Maintainer: Andrew Sun <adsun701@gmail.com>
+# Maintainer: Andrew Sun <adsun701 at gmail dot com>
 
 pkgname=mingw-w64-libuv
 _pkgname=libuv
-pkgver=1.31.0
+pkgver=1.33.0
 pkgrel=1
 pkgdesc="Multi-platform support library with a focus on asynchronous I/O (mingw-w64)"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('mingw-w64-configure')
 depends=('mingw-w64-crt')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("https://github.com/libuv/libuv/archive/v${pkgver}/${_pkgname}-${pkgver}.tar.gz")
-sha512sums=('bb27ab86f2f6e9c2b22e768216097db2b69e468967b48bf1a15d17c36b445355ee4bd356f59bbd1bcf7d7c0d3f68b2c6660f999a2cc0660033eb5e3775499409')
+sha512sums=('0b0767d9743931060fe9347ca239d8fb3192a2e0182101dc8f55ab3c9a7440967eda062cc2b3b8b1aede4bdda690e5c20e55ad258c273a1518412e08bf8b8707')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
