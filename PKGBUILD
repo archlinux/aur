@@ -10,7 +10,7 @@ pkgname=(
   ppsspp-headless
   ppsspp-qt
 )
-pkgver=1.9.1
+pkgver=1.9.4
 pkgrel=1
 pkgdesc='A PSP emulator written in C++'
 arch=(x86_64)
@@ -31,7 +31,7 @@ makedepends=(
   qt5-tools
 )
 source=(
-  git+https://github.com/hrydgard/ppsspp.git#tag=97194ee642965fac7619d3d3101540e48c7acdd0
+  git+https://github.com/hrydgard/ppsspp.git#tag=e3c9793cb3a68ec9f44371c7ebb45a0abed1ecca
   git+https://github.com/Kingcom/armips.git
   git+https://github.com/discordapp/discord-rpc.git
   ppsspp-ffmpeg::git+https://github.com/hrydgard/ppsspp-ffmpeg.git
