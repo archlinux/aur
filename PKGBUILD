@@ -2,7 +2,7 @@
 
 pkgname=kwin-effects-yet-another-magic-lamp
 pkgver=4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Just Yet Another Magic Lamp effect"
 arch=('x86_64')
 url="https://github.com/zzag/$pkgname"
