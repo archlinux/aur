@@ -1,7 +1,7 @@
 pkgbase = megasync
 	pkgdesc = Easy automated syncing between your computers and your MEGA cloud drive
 	pkgver = 4.2.5
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/meganz/MEGAsync
 	arch = i686
 	arch = x86_64
@@ -24,10 +24,10 @@ pkgbase = megasync
 	optdepends = sni-qt: fix systray issue on KDE and LXQt
 	source = git+https://github.com/meganz/MEGAsync.git#tag=v4.2.5.0_Linux
 	source = meganz-sdk::git+https://github.com/meganz/sdk.git
-	source = remove-static-tgkill.patch
+	source = fix-double-declaration-of-tgkill.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 1d100f2517f4dc2b3af38eaa4f52ffbe9fb348833384ae0befa3ec3caaac1786
+	sha256sums = a4ee87777bc055bc98dc9b044734d24e0ec17124389fedcf45e6a67cfe2fb061
 
 pkgname = megasync
 
