@@ -1,0 +1,14 @@
+pkgbase = librcnb
+	pkgdesc = Everything can be encoded to rcnb.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/rcnbapp/librcnb
+	arch = x86_64
+	license = MIT
+	makedepends = cmake>=3.1
+	depends = glibc
+	source = https://github.com/rcnbapp/librcnb/archive/v1.0.0.tar.gz
+	sha256sums = a8c2fb89c5249d810633ecda573ca044428699652c810f2ed2c1f595c8e0d4d0
+
+pkgname = librcnb
+
