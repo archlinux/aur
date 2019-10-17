@@ -6,7 +6,7 @@
 
 pkgname=mitmproxy
 pkgver=4.0.4
-pkgrel=4
+pkgrel=6
 pkgdesc='SSL-capable man-in-the-middle HTTP proxy'
 arch=('any')
 url='https://mitmproxy.org'
@@ -14,9 +14,9 @@ license=('MIT')
 depends=('python-blinker' 'python-brotlipy' 'python-click' 'python-cryptography' 'python-h2'
          'python-hyperframe' 'python-kaitaistruct' 'python-ldap3' 'python-passlib' 'python-protobuf'
          'python-pyasn1' 'python-pyopenssl' 'python-pyparsing' 'python-pyperclip'
-         'python-ruamel-yaml' 'python-setuptools' 'python-sortedcontainers' 'python-tornado'
+         'python-ruamel-yaml' 'python-setuptools' 'python-sortedcontainers' 'python-flask'
          'python-urwid' 'python-wsproto')
-checkdepends=('python-asynctest' 'python-beautifulsoup4' 'python-flask' 'python-parver'
+checkdepends=('python-asynctest' 'python-beautifulsoup4' 'python-tornado' 'python-parver'
               'python-pytest-runner' 'python-pytest-asyncio' 'python-requests')
 provides=('pathod')
 conflicts=('pathod')
@@ -43,7 +43,10 @@ prepare() {
   sed '176,188d' \
       -i ../70777a1b6ed64af9cafcdef223a8a260ecc96864.patch
   patch -p1 < ../70777a1b6ed64af9cafcdef223a8a260ecc96864.patch
+
+  # Fix outdated tornado
   patch -p1 < ../move-onboardingapp-from-tornado-to-flask-backport.patch
+  sed -i '/tornado/d' setup.py
 
   # Remove failing tests
   rm  test/mitmproxy/addons/test_readfile.py \
