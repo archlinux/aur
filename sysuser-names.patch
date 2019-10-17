@@ -1,0 +1,28 @@
+diff --unified --recursive --text snapcast-0.16.0/debian/snapclient.service new/debian/snapclient.service
+--- snapcast-0.16.0/debian/snapclient.service	2019-10-16 23:07:24.000000000 +0200
++++ new/debian/snapclient.service	2019-10-18 11:38:35.255846328 +0200
+@@ -7,8 +7,8 @@
+ [Service]
+ EnvironmentFile=-/etc/default/snapclient
+ ExecStart=/usr/bin/snapclient $SNAPCLIENT_OPTS
+-User=_snapclient
+-Group=_snapclient
++User=snapclient
++Group=snapclient
+ # very noisy on stdout
+ StandardOutput=null
+ Restart=on-failure
+diff --unified --recursive --text snapcast-0.16.0/debian/snapserver.service new/debian/snapserver.service
+--- snapcast-0.16.0/debian/snapserver.service	2019-10-16 23:07:24.000000000 +0200
++++ new/debian/snapserver.service	2019-10-18 11:38:18.315946842 +0200
+@@ -7,8 +7,8 @@
+ [Service]
+ EnvironmentFile=-/etc/default/snapserver
+ ExecStart=/usr/bin/snapserver $SNAPSERVER_OPTS
+-User=_snapserver
+-Group=_snapserver
++User=snapserver
++Group=snapserver
+ Restart=on-failure
+ 
+ [Install]

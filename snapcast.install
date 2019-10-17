@@ -1,0 +1,26 @@
+#!/bin/sh
+
+post_install() {
+  echo ":: The default setup will create a pipe /tmp/snapfifo."
+  echo "   Due to recent changes in systemd, pipes in /tmp are by default only"
+  echo "   writable by the owning user (here: sysuser snapserver)."
+  echo "   This is controlled by systclt fs.protected_fifos."
+  echo "   A possible workaround is to disable the sysctl feature by running:"
+  echo "     # sysctl fs.protected_fifos=0"
+}
+
+post_upgrade() {
+  echo ":: The default setup will create a pipe /tmp/snapfifo."
+  echo "   Due to recent changes in systemd, pipes in /tmp are by default only"
+  echo "   writable by the owning user (here: sysuser snapserver)."
+  echo "   This is controlled by systclt fs.protected_fifos."
+  echo "   A possible workaround is to disable the sysctl feature by running:"
+  echo "     # sysctl fs.protected_fifos=0"
+  
+  # return if old package version greater 10.4...
+  (( $(vercmp $2 '0.15.0') > 0 )) && return
+  
+  echo ":: The snapserver configuration layout has changed!"
+  echo "   -> Most of the configuration has moved from /etc/default/snapserver"
+  echo "      to /etc/snapserver.conf."
+}
