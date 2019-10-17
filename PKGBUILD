@@ -1,7 +1,7 @@
 # Maintainer: snafu
 pkgname=(env-modules-tcl)
-pkgver=4.3.0
-pkgrel=2
+pkgver=4.3.1
+pkgrel=1
 epoch=
 pkgdesc="Provides for an easy dynamic modification of a user's environment via modulefile."
 arch=('i686' 'x86_64')
@@ -18,12 +18,11 @@ replaces=(env-modules)
 options=()
 install=env-modules-tcl.install
 changelog=
-source=("https://sourceforge.net/projects/modules/files/Modules/modules-$pkgver/modules-$pkgver.tar.gz" moduleshome.patch lib-makefile.in.patch)
+source=("https://sourceforge.net/projects/modules/files/Modules/modules-$pkgver/modules-$pkgver.tar.gz" moduleshome.patch)
 noextract=()
 validpgpkeys=()
-md5sums=('bc45aff23db73a38f635d3311c61ce16'
-         '7e6bf66733845eb3705a0a19c029eed6'
-         '6be36c0076bde45c0cc856b742ff701b')
+md5sums=('70b5a0f6bf8771a26435661794e78b12'
+         '3a3b6ba0ac0766be9ba601223baaf107')
 
 # Install locations:
 install_prefix=/usr
@@ -38,7 +37,6 @@ prepare() {
     cd "modules-$pkgver"
 
     patch -p1 < ../moduleshome.patch
-    patch -p1 < ../lib-makefile.in.patch
 }
 
 build() {

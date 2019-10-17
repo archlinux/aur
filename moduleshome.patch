@@ -2,7 +2,7 @@ diff --git a/modulecmd.tcl.in b/modulecmd.tcl.in
 index 843e178..8e77ec7 100644
 --- a/modulecmd.tcl.in
 +++ b/modulecmd.tcl.in
-@@ -9066,7 +9066,7 @@ proc cmdModuleAutoinit {} {
+@@ -9174,7 +9174,7 @@ proc cmdModuleAutoinit {} {
     pushMode load
  
     # default MODULESHOME
