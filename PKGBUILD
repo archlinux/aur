@@ -27,6 +27,7 @@ source=(
     'houdini_y.sfs::http://dl.android-x86.org/houdini/7_y/houdini.sfs'
     'houdini_z.sfs::http://dl.android-x86.org/houdini/7_z/houdini.sfs'
     'http://supersuroot.org/downloads/SuperSU-v2.82-201705271822.zip'
+    'http://supersuroot.org/downloads/supersu-pro.apk'
     ${gapps_src}
 )
 md5sums=(
@@ -34,6 +35,7 @@ md5sums=(
     '7ebf618b1af94a02322d9f2d2610090b'
     '5ca37e1629edb7d13b18751b72dc98ad'
     '8755c94775431f20bd8de368a2c7a179'
+    '77d3c829ff46e155db40b0cf6c012f9b'
     ${gapps_md5}
 )
 gapps_list=(
@@ -122,7 +124,7 @@ build () {
 
     mkdir -p ./squashfs-root/system/app/SuperSU
     chmod 755 ./squashfs-root/system/app/SuperSU
-    install -Dm 644 ./common/Superuser.apk ./squashfs-root/system/app/SuperSU/Superuser.apk
+    install -Dm 644 ./supersu-pro.apk ./squashfs-root/system/app/SuperSU/Superuser.apk
 
     rm ./squashfs-root/system/bin/app_process
     ln -s /system/xbin/daemonsu ./squashfs-root/system/bin/app_process
