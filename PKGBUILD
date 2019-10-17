@@ -26,18 +26,8 @@ package() {
   cd "${srcdir}/${_pkgname}"
 
   mkdir -p "${pkgdir}/usr/share/inkscape/symbols"
-  for i in \
-      font-awesome \
-          genericons \
-          gnome-icon-theme \
-          humble-ui \
-          material-design \
-          octicons \
-          suru-icons \
-      ; do
-    find "$i" -mindepth 1 -iname '*.svg' \
+  find . -mindepth 2 -iname '*.svg' \
          -exec 'cp' '{}' "${pkgdir}/usr/share/inkscape/symbols" ';'
-  done
 
   install -Dm644 "${srcdir}/LICENSE.txt" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
