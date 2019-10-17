@@ -13,7 +13,7 @@ install=${pkgname}.install
 source=("git+https://github.com/juliagoda/CH341SER.git" "dkms.conf" "blacklist-ch34x-dkms-git.conf")
 sha1sums=('SKIP'
           'cbce8f44f307b2a656c34f184871da3bb11d8565'
-          '524ea363adee44fb9f2293bde3838b5e235193da')
+          'f16e2741c39103594dd6bcee562bfda6d2818318')
 
 pkgver() {
 	cd "CH341SER"
