@@ -21,7 +21,7 @@ install=
 changelog=
 source=("https://github.com/MCJack123/craftos2/archive/v2.1.1.tar.gz")
 noextract=()
-sha256sums=('cab561565d480cb642c299e12f57ca30637f5be2094103a69620fa46f8f640c9' 'f8ec3c98e603c760e60f8a7faf99e11eada12f66a559ecbdf5e36962af74fb04')
+sha256sums=('a8f41248f5c60637bb9f9b497943467b83a31e6024e972f9bafd1780bcfd699b')
 validpgpkeys=()
 
 prepare() {
