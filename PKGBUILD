@@ -23,18 +23,18 @@ gapps_rel=$(curl -s -L https://api.github.com/repos/opengapps/x86_64/releases/la
 gapps_src='https://downloads.sourceforge.net/project/opengapps/x86_64/'${gapps_rel}'/open_gapps-x86_64-7.1-pico-'${gapps_rel}'.zip'
 gapps_md5=$(curl -s -L ${gapps_src}.md5 | sed -r 's/^([0-9a-z]+).*/\1/')
 source=(
-    ${gapps_src}
-    'http://supersuroot.org/downloads/SuperSU-v2.82-201705271822.zip'
     'http://build.anbox.io/android-images/'${pkgver//./\/}'/android_amd64.img'
     'houdini_y.sfs::http://dl.android-x86.org/houdini/7_y/houdini.sfs'
     'houdini_z.sfs::http://dl.android-x86.org/houdini/7_z/houdini.sfs'
+    'http://supersuroot.org/downloads/SuperSU-v2.82-201705271822.zip'
+    ${gapps_src}
 )
 md5sums=(
-    ${gapps_md5}
-    '8755c94775431f20bd8de368a2c7a179'
     '26874452a6521ec2e37400670d438e33'
     '7ebf618b1af94a02322d9f2d2610090b'
     '5ca37e1629edb7d13b18751b72dc98ad'
+    '8755c94775431f20bd8de368a2c7a179'
+    ${gapps_md5}
 )
 gapps_list=(
     'gsfcore-all'
