@@ -1,0 +1,13 @@
+pkgbase = python-box
+	pkgdesc = Advanced Python dictionaries with dot notation access
+	pkgver = 3.4.5
+	pkgrel = 1
+	url = https://github.com/cdgriffith/Boxs
+	arch = any
+	license = MIT
+	provides = python-box
+	source = https://files.pythonhosted.org/packages/source/p/python-box/python-box-3.4.5.tar.gz
+	sha256sums = ff2ccbbc06b9b8cfb4d00e3113079bfcd4a050365ad9aa774cb3003da705ad06
+
+pkgname = python-box
+
