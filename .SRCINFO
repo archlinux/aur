@@ -1,0 +1,16 @@
+pkgbase = tale-git
+	pkgdesc = An experimental version control system.
+	pkgver = 0.0.1.r0.g67b0dcb
+	pkgrel = 1
+	url = https://gitlab.com/severinkaderli/tale
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = maven
+	makedepends = git
+	conflicts = tale
+	source = git+https://gitlab.com/severinkaderli/tale
+	md5sums = SKIP
+
+pkgname = tale-git
+
