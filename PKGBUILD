@@ -1,27 +1,29 @@
 # Maintainer: farwayer <farwayer@gmail.com>
 
-_gemname=google-cloud-core
-pkgname=ruby-${_gemname}
-pkgver=1.3.1
-pkgrel=1
+_name=google-cloud-core
+_v=1.3.2
+_r=1
+_gem=$_name-$_v.gem
+
+pkgname=ruby-$_name
+pkgver=$_v
+pkgrel=$_r
 pkgdesc="google-cloud-core is the internal shared library for google-cloud-ruby."
 arch=('any')
 depends=(
   ruby
   'ruby-google-cloud-env>=1' 'ruby-google-cloud-env<2'
 )
-url="https://rubygems.org/gems/${_gemname}"
-noextract=($_gemname-$pkgver.gem)
+url="https://rubygems.org/gems/$_name"
+noextract=($_gem)
 options=(!emptydirs)
 license=('MIT')
-source=(
-  "https://rubygems.org/downloads/${_gemname}-${pkgver}.gem"
-)
-sha256sums=('fe57280c7277c4204be374c7a41f5a911b1345d5a9cce871d3fce71052c87d91')
+source=(https://rubygems.org/downloads/$_gem)
+sha256sums=('189cb6526ff79da633a2920ff43e928ed2beb14d058d552b353a3c0d9c811e0d')
 
 package() {
-  local _gemdir="$(ruby -e'puts Gem.default_dir')"
-  gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
-  rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
-  install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  local _gemdir="$pkgdir/$(ruby -e'puts Gem.default_dir')"
+  gem install --ignore-dependencies --no-user-install -i "$_gemdir" "$_gem"
+  rm "$_gemdir/cache/$_gem"
+  install -D -m644 "$_gemdir/gems/$_name-$_v/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
