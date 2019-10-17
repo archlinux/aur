@@ -1,18 +1,16 @@
 # Maintainer: ValHue <vhuelamo at gmail dot com>
-# https://github.com/ValHue/AUR-PKGBUILDs
 #
 # Contributor: Moritz Lüdecke <ritze at skweez dot net>
 # Contributor: boenki <boenki at gmx dot de>
 
 pkgname="cover-thumbnailer"
 pkgver="0.8.3"
-pkgrel="5"
+pkgrel="6"
 pkgdesc="A Python script which displays music album covers in nautilus, preview of pictures which are in a folder and more."
 arch=('i686' 'x86_64')
 url="https://launchpad.net/cover-thumbnailer"
 license=('GPL3')
 depends=('python2-pillow' 'python2-gconf')
-makedepends=('')
 provides=("${pkgname}")
 source=("https://launchpad.net/${pkgname}/v0.8/v${pkgver}/+download/${pkgname}_${pkgver}_src.tar.gz")
 sha256sums=('c0d5213743cb251428b9998d7838d6d6e64bb4bb9ccd3a21ffebb3fc21b688c4')
@@ -39,4 +37,4 @@ package() {
 	./install.sh -p ${pkgdir}
 }
 
-# vim:set ts=4 sw=2 ft=sh et:
+# vim:set ts=4 sw=4 et syn=sh ft=sh:
