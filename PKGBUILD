@@ -1,9 +1,6 @@
-# Maintainer: Tomasz Paś <kierek93@gmail.com>
-# Contributor: Tomasz Paś <kierek93@gmail.com>
-
-pkgname=libretro-mednafen-saturn-git
+pkgname=libretro-beetle-saturn-git
 _gitname=beetle-saturn-libretro
-pkgver=363.6d371f0
+pkgver=495.3313cc6
 pkgrel=1
 pkgdesc="libretro port of Mednafen Saturn"
 arch=('x86_64')

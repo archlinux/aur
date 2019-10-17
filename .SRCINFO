@@ -1,6 +1,6 @@
-pkgbase = libretro-mednafen-saturn-git
+pkgbase = libretro-beetle-saturn-git
 	pkgdesc = libretro port of Mednafen Saturn
-	pkgver = 363.6d371f0
+	pkgver = 495.3313cc6
 	pkgrel = 1
 	url = https://github.com/libretro/beetle-saturn-libretro
 	arch = x86_64
@@ -12,5 +12,5 @@ pkgbase = libretro-mednafen-saturn-git
 	source = beetle-saturn-libretro::git://github.com/libretro/beetle-saturn-libretro.git
 	md5sums = SKIP
 
-pkgname = libretro-mednafen-saturn-git
+pkgname = libretro-beetle-saturn-git
 
