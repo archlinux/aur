@@ -1,0 +1,22 @@
+pkgbase = python-fvcore-git
+	pkgdesc = Collection of common code that's shared among different research projects in FAIR computer vision team.
+	pkgver = r9.1f3825f
+	pkgrel = 1
+	url = https://github.com/facebookresearch/fvcore/
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = python
+	depends = python>=3.6
+	depends = python-yaml
+	depends = python-tqdm
+	depends = python-portalocker
+	depends = python-termcolor
+	depends = python-shapely
+	provides = python-fvcore
+	conflicts = python-fvcore
+	source = python-fvcore::git+https://github.com/facebookresearch/fvcore.git
+	sha256sums = SKIP
+
+pkgname = python-fvcore-git
+
