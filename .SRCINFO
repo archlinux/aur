@@ -1,7 +1,7 @@
 pkgbase = octopi
 	pkgdesc = A powerful Pacman frontend using Qt libs
 	pkgver = 0.9.0
-	pkgrel = 1
+	pkgrel = 3
 	url = http://octopiproject.wordpress.com
 	arch = x86_64
 	license = GPL2
