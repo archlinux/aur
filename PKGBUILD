@@ -1,6 +1,6 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgname='wlroots-git'
-pkgver=0.7.0.r8.g020a33e0
+pkgver=0.8.1.r11.g17242619
 pkgrel=1
 license=('custom:MIT')
 pkgdesc='Modular Wayland compositor library'
@@ -11,7 +11,7 @@ conflicts=('wlroots')
 options=('debug' '!strip')
 depends=('libcap' 'systemd' 'wayland' 'opengl-driver' 'libxcb'
          'xcb-util-errors' 'xcb-util-image' 'xcb-util-wm' 'pixman'
-         'libinput' 'libxkbcommon' 'libpng' 'ffmpeg')
+         'libinput' 'libxkbcommon' 'libpng' 'ffmpeg' 'freerdp')
 makedepends=('meson' 'ninja' 'git' 'wayland-protocols')
 source=("${pkgname}::git+${url}")
 sha512sums=('SKIP')
