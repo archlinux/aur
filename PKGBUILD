@@ -19,7 +19,7 @@
 
 pkgname=fs2_open-data
 pkgver=1.20
-pkgrel=8
+pkgrel=9
 pkgdesc="FreeSpace 2 retail data for fs2_open"
 arch=('any')
 url="https://www.gog.com/game/freespace_2"
@@ -45,7 +45,7 @@ prepare() {
 }
 
 package() {
-    cd "$srcdir"
+    cd "$srcdir/build"
 
     if [[ -r ReadMe.txt ]]; then sed -n 416,471p ReadMe.txt > LICENSE;
     else head -n 19 < tmp/GOG_EULA.txt | recode windows-1252/CRLF..utf8 > LICENSE;
