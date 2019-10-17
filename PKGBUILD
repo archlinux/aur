@@ -1,12 +1,16 @@
 # Maintainer: farawayer <farwayer@gmail.com>
 
-_gemname=xcodeproj
-pkgname=ruby-$_gemname
-pkgver=1.12.0
-pkgrel=1
+_name=xcodeproj
+_v=1.13.0
+_r=1
+_gem=$_name-$_v.gem
+
+pkgname=ruby-$_name
+pkgver=$_v
+pkgrel=$_r
 pkgdesc='Create and modify Xcode projects from Ruby.'
 arch=(any)
-url='https://github.com/cocoapods/xcodeproj'
+url='https://github.com/cocoapods/$_name'
 license=(MIT)
 depends=(
   ruby
@@ -17,13 +21,13 @@ depends=(
   'ruby-nanaimo>=0.2.6' 'ruby-nanaimo<0.3'
 )
 options=(!emptydirs)
-source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
-noextract=($_gemname-$pkgver.gem)
-sha1sums=('1cfd7e805d01978a3b704937ab30564986b1586b')
+source=(https://rubygems.org/downloads/$_gem)
+noextract=($_gem)
+sha256sums=('9da3a66393b63814d5136dd91712b35d1d9ab8c776437fad3558a48661f6c9b0')
 
 package() {
-  local _gemdir="$(ruby -e'puts Gem.default_dir')"
-  gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
-  rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
-  install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  local _gemdir="$pkgdir/$(ruby -e'puts Gem.default_dir')"
+  gem install --ignore-dependencies --no-user-install -i "$_gemdir" "$_gem"
+  rm "$_gemdir/cache/$_gem"
+  install -D -m644 "$_gemdir/gems/$_name-$_v/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
