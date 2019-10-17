@@ -1,8 +1,8 @@
 pkgbase = cloud-init
-	pkgdesc = The standard for customising cloud instances
-	pkgver = 19.1
-	pkgrel = 2
-	url = https://cloud-init.io
+	pkgdesc = The defacto multi-distribution package that handles early initialization of a cloud instance.
+	pkgver = 19.2
+	pkgrel = 1
+	url = https://cloud-init.io/
 	arch = any
 	license = GPL3
 	makedepends = python
@@ -25,10 +25,10 @@ pkgbase = cloud-init
 	optdepends = python-cheetah3: support for cheetah templates
 	backup = etc/cloud/cloud.cfg
 	backup = etc/cloud/cloud.cfg.d/05_logging.cfg
-	source = https://launchpad.net/cloud-init/trunk/19.1/+download/cloud-init-19.1.tar.gz
+	source = https://launchpad.net/cloud-init/trunk/19.2/+download/cloud-init-19.2.tar.gz
 	source = fix-lib.patch
 	source = archlinux.cloud.cfg
-	sha256sums = 75be8cbff1431883227c05356cb69400f20bbb2666fd05e085f846ecf1d153cb
+	sha256sums = f5ead1b3c782c159669f8f8779c45d16a986c7405425d75f915ec55301d83a07
 	sha256sums = 0ace6a9e4156145e5b50bd5fa75d6aeefe8e5c10a63f8d9e0d3c7be4c9b53942
 	sha256sums = 0fb03b5827d0c7540633b62f1855c9d2731d8e9bf7946d5e1ab60426f1289484
 
