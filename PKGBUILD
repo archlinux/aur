@@ -5,7 +5,7 @@
 
 pkgname=gnome-shell-performance
 _pkgname=gnome-shell
-pkgver=3.34.1
+pkgver=3.34.1+5+g072a9a484
 pkgrel=1
 epoch=1
 pkgdesc="Next generation desktop shell"
@@ -23,7 +23,7 @@ groups=(gnome)
 provides=(gnome-shell gnome-shell=$pkgver)
 conflicts=(gnome-shell)
 install=$pkgname.install
-_commit=986600ab31383724e2eeb4fe2475b3d7fcfb54fc  # tags/3.34.1^0
+_commit=072a9a4842673355535098edd4748d689b913bf1  # tags/3.34.1^5
 source=("git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=$_commit"
         "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git")
 sha256sums=('SKIP'
@@ -92,13 +92,6 @@ prepare() {
   # Status: 3
   # Comment: Crash fix for st_theme_get_custom_stylesheets
   git_cp_by_msg '!536' 'st-theme: Use CRStyleSheet app_data instead of hash map' 'st-theme: Use glib auto free/ptr features'
-
-  # Title: environment: Only disable unredirection of ongoing transitions
-  # URL: https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/761
-  # Type: 3
-  # Status: 4
-  # Comment: Fix unredirection broken on a fullscreen game after triggering animations
-  git cherry-pick -n 38ad1d7c
 
   git submodule init
   git config --local submodule.subprojects/gvc.url "$srcdir/libgnome-volume-control"
