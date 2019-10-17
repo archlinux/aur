@@ -1,0 +1,12 @@
+--- Makefile.common	2019-10-17 11:04:56.041763144 +0300
++++ Makefile.common.new	2019-10-17 11:05:33.611101797 +0300
+@@ -160,8 +160,7 @@
+ 	$(SOURCE_DIR)/c68k/c68k_opE.inc \
+ 	$(SOURCE_DIR)/c68k/c68k_opF.inc
+ 
+-M68KMAKE_INC_SOURCES := $(SOURCE_DIR)/musashi/m68kops.h \
+-	$(SOURCE_DIR)/musashi/m68kopac.c \
++M68KMAKE_INC_SOURCES := $(SOURCE_DIR)/musashi/m68kopac.c \
+ 	$(SOURCE_DIR)/musashi/m68kopdm.c \
+ 	$(SOURCE_DIR)/musashi/m68kopnz.c \
+ 	$(SOURCE_DIR)/musashi/m68kops.c
