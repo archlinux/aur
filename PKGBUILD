@@ -1,7 +1,7 @@
 pkgname=seaweedfs-git
 __gitroot=github.com/chrislusf/seaweedfs
 pkgver=r2620.7de121d9
-pkgrel=1
+pkgrel=2
 pkgdesc="Seaweed-FS is a simple and highly scalable distributed file system, written on Go."
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h' 'arm')
 url="https://github.com/chrislusf/seaweedfs"
@@ -10,17 +10,17 @@ depends=( )
 makedepends=('git' 'go' 'mercurial' 'gcc')
 provides=('seaweedfs')
 conflicts=('seaweedfs')
-_gourl=$__gitroot/weed
 source=("$pkgname::git+https://${__gitroot}")
 sha256sums=('SKIP')
 
 build() {
-  GOPATH="$srcdir" go get -v ${_gourl}
+  cd "$srcdir/$pkgname"
+  make
 }
 
 package() {
   mkdir -p "$pkgdir/usr/bin"
-  install -p -m755 "$srcdir/bin/"* "$pkgdir/usr/bin"
+  install -p -m755 "$srcdir/$pkgname/weed/weed" "$pkgdir/usr/bin"
 }
 
 pkgver() {
