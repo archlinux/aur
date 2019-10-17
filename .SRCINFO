@@ -1,0 +1,15 @@
+pkgbase = kakoune-extra-filetypes-git
+	pkgdesc = Extra highlighters for the Kakoune editor
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/kakoune-editor/kakoune-extra-filetypes
+	install = kakoune-extra-filetypes-git.install
+	arch = any
+	license = custom:unlicense
+	makedepends = git
+	depends = kakoune
+	source = kakoune-extra-filetypes-git::git+https://github.com/kakoune-editor/kakoune-extra-filetypes.git
+	sha256sums = SKIP
+
+pkgname = kakoune-extra-filetypes-git
+
