@@ -1,21 +1,19 @@
 # Maintainer: Aleksandar Trifunović <akstrfn at gmail dot com>
 
 pkgname=finalcut
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="A text-based widget toolkit."
 arch=('x86_64')
 url="https://github.com/gansm/finalcut"
-license=('GPL3')
+license=('LGPL3')
 depends=('gpm')
-makedepends=()
+makedepends=('autoconf-archive')
 source=("${url}/archive/$pkgver.tar.gz")
-sha256sums=('eb230ff878ba8b4c2f2a0722e7848180e2412c9bcb4e194d951b97d1fb77539f')
+sha256sums=('8c2260104ba918a83748f6af0f01e33c35bbc4591f49567839e45cf1555b9f2f')
 
 prepare() {
     cd "$pkgname-$pkgver"
-    # Does not build because of -Werror=stringop-truncation atm
-    sed -i "s/-Werror//" src/Makefile.am
 
     autoreconf -if
     ./configure --prefix=/usr
