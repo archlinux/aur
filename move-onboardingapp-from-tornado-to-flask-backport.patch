@@ -1,0 +1,406 @@
+commit cc61c6223b18fbf82258031431eb28048089b829
+Author: Maximilian Hils <git@maximilianhils.com>
+Date:   Sun Oct 6 14:41:46 2019 +0200
+
+    Move onboardingapp from tornado to flask (#3661)
+
+diff --git a/mitmproxy/addons/onboarding.py b/mitmproxy/addons/onboarding.py
+index 900acb08..94ca7c49 100644
+--- a/mitmproxy/addons/onboarding.py
++++ b/mitmproxy/addons/onboarding.py
+@@ -10,7 +10,7 @@ class Onboarding(wsgiapp.WSGIApp):
+     name = "onboarding"
+ 
+     def __init__(self):
+-        super().__init__(app.Adapter(app.application), None, None)
++        super().__init__(app, None, None)
+ 
+     def load(self, loader):
+         loader.add_option(
+@@ -32,6 +32,7 @@ class Onboarding(wsgiapp.WSGIApp):
+     def configure(self, updated):
+         self.host = ctx.options.onboarding_host
+         self.port = ctx.options.onboarding_port
++        app.config["CONFDIR"] = ctx.options.confdir
+ 
+     def request(self, f):
+         if ctx.options.onboarding:
+diff --git a/mitmproxy/addons/onboardingapp/__init__.py b/mitmproxy/addons/onboardingapp/__init__.py
+index e69de29b..722fed03 100644
+--- a/mitmproxy/addons/onboardingapp/__init__.py
++++ b/mitmproxy/addons/onboardingapp/__init__.py
+@@ -0,0 +1,37 @@
++import os
++
++from flask import Flask, render_template
++
++from mitmproxy.options import CONF_BASENAME, CONF_DIR
++
++app = Flask(__name__)
++# will be overridden in the addon, setting this here so that the Flask app can be run standalone.
++app.config["CONFDIR"] = CONF_DIR
++
++
++@app.route('/')
++def index():
++    return render_template("index.html")
++
++
++@app.route('/cert/pem')
++def pem():
++    return read_cert("pem", "application/x-x509-ca-cert")
++
++
++@app.route('/cert/p12')
++def p12():
++    return read_cert("p12", "application/x-pkcs12")
++
++
++def read_cert(ext, content_type):
++    filename = CONF_BASENAME + f"-ca-cert.{ext}"
++    p = os.path.join(app.config["CONFDIR"], filename)
++    p = os.path.expanduser(p)
++    with open(p, "rb") as f:
++        cert = f.read()
++
++    return cert, {
++        "Content-Type": content_type,
++        "Content-Disposition": f"inline; filename={filename}",
++    }
+diff --git a/mitmproxy/addons/onboardingapp/app.py b/mitmproxy/addons/onboardingapp/app.py
+deleted file mode 100644
+index ab136778..00000000
+--- a/mitmproxy/addons/onboardingapp/app.py
++++ /dev/null
+@@ -1,118 +0,0 @@
+-import os
+-
+-import tornado.template
+-import tornado.web
+-import tornado.wsgi
+-
+-from mitmproxy.utils import data
+-from mitmproxy.proxy import config
+-
+-loader = tornado.template.Loader(data.pkg_data.path("addons/onboardingapp/templates"))
+-
+-
+-class Adapter(tornado.wsgi.WSGIAdapter):
+-    # Tornado doesn't make the WSGI environment available to pages, so this
+-    # hideous monkey patch is the easiest way to get to the mitmproxy.master
+-    # variable.
+-
+-    def __init__(self, application):
+-        self._application = application
+-
+-    def application(self, request):
+-        request.master = self.environ["mitmproxy.master"]
+-        return self._application(request)
+-
+-    def __call__(self, environ, start_response):
+-        self.environ = environ
+-        return tornado.wsgi.WSGIAdapter.__call__(
+-            self,
+-            environ,
+-            start_response
+-        )
+-
+-
+-class Index(tornado.web.RequestHandler):
+-
+-    def get(self):
+-        t = loader.load("index.html")
+-        self.write(t.generate())
+-
+-
+-class PEM(tornado.web.RequestHandler):
+-
+-    @property
+-    def filename(self):
+-        return config.CONF_BASENAME + "-ca-cert.pem"
+-
+-    def head(self):
+-        p = os.path.join(self.request.master.options.confdir, self.filename)
+-        p = os.path.expanduser(p)
+-        content_length = os.path.getsize(p)
+-
+-        self.set_header("Content-Type", "application/x-x509-ca-cert")
+-        self.set_header(
+-            "Content-Disposition",
+-            "inline; filename={}".format(
+-                self.filename))
+-        self.set_header("Content-Length", content_length)
+-
+-    def get(self):
+-        p = os.path.join(self.request.master.options.confdir, self.filename)
+-        p = os.path.expanduser(p)
+-        self.set_header("Content-Type", "application/x-x509-ca-cert")
+-        self.set_header(
+-            "Content-Disposition",
+-            "inline; filename={}".format(
+-                self.filename))
+-
+-        with open(p, "rb") as f:
+-            self.write(f.read())
+-
+-
+-class P12(tornado.web.RequestHandler):
+-
+-    @property
+-    def filename(self):
+-        return config.CONF_BASENAME + "-ca-cert.p12"
+-
+-    def head(self):
+-        p = os.path.join(self.request.master.options.confdir, self.filename)
+-        p = os.path.expanduser(p)
+-        content_length = os.path.getsize(p)
+-
+-        self.set_header("Content-Type", "application/x-pkcs12")
+-        self.set_header(
+-            "Content-Disposition",
+-            "inline; filename={}".format(
+-                self.filename))
+-
+-        self.set_header("Content-Length", content_length)
+-
+-    def get(self):
+-        p = os.path.join(self.request.master.options.confdir, self.filename)
+-        p = os.path.expanduser(p)
+-        self.set_header("Content-Type", "application/x-pkcs12")
+-        self.set_header(
+-            "Content-Disposition",
+-            "inline; filename={}".format(
+-                self.filename))
+-
+-        with open(p, "rb") as f:
+-            self.write(f.read())
+-
+-
+-application = tornado.web.Application(
+-    [
+-        (r"/", Index),
+-        (r"/cert/pem", PEM),
+-        (r"/cert/p12", P12),
+-        (
+-            r"/static/(.*)",
+-            tornado.web.StaticFileHandler,
+-            {
+-                "path": data.pkg_data.path("addons/onboardingapp/static")
+-            }
+-        ),
+-    ],
+-    # debug=True
+-)
+diff --git a/mitmproxy/addons/onboardingapp/static/mitmproxy.css b/mitmproxy/addons/onboardingapp/static/mitmproxy.css
+index 969bd62b..e654d56b 100644
+--- a/mitmproxy/addons/onboardingapp/static/mitmproxy.css
++++ b/mitmproxy/addons/onboardingapp/static/mitmproxy.css
+@@ -15,7 +15,7 @@
+     height: 300px;
+ }
+ 
+-.bigtitle>div {
++.bigtitle > div {
+     display: table-cell;
+     vertical-align: middle;
+ }
+@@ -31,7 +31,7 @@ section {
+ 
+ .innerlink {
+     text-decoration: none;
+-    border-bottom:1px dotted;
++    border-bottom: 1px dotted;
+     margin-bottom: 15px;
+ }
+ 
+diff --git a/mitmproxy/addons/onboardingapp/templates/frame.html b/mitmproxy/addons/onboardingapp/templates/frame.html
+index f00e1a66..13003f3c 100644
+--- a/mitmproxy/addons/onboardingapp/templates/frame.html
++++ b/mitmproxy/addons/onboardingapp/templates/frame.html
+@@ -3,7 +3,7 @@
+ <div class="row">
+     <div class="span12">
+         {% block body %}  
+-        {% end %}  
++        {% endblock %}
+     </div>
+ </div>
+-{% end %}  
++{% endblock %}
+diff --git a/mitmproxy/addons/onboardingapp/templates/index.html b/mitmproxy/addons/onboardingapp/templates/index.html
+index 38aa27ed..aa471668 100644
+--- a/mitmproxy/addons/onboardingapp/templates/index.html
++++ b/mitmproxy/addons/onboardingapp/templates/index.html
+@@ -135,19 +135,19 @@ function changeTo(device) {
+ <h2 class="text-center"> Click to install your mitmproxy certificate </h2>
+ <div id="certbank" class="row">
+     <div class="col-md-3">
+-        <a onclick="changeTo('apple')" href="/cert/pem"><i class="fa fa-apple fa-5x"></i></a>
++        <a target="_blank" onclick="changeTo('apple')" href="/cert/pem"><i class="fa fa-apple fa-5x"></i></a>
+         <p>Apple</p>
+     </div>
+     <div class="col-md-3">
+-        <a onclick="changeTo('windows')" href="/cert/p12"><i class="fa fa-windows fa-5x"></i></a>
++        <a target="_blank" onclick="changeTo('windows')" href="/cert/p12"><i class="fa fa-windows fa-5x"></i></a>
+         <p>Windows</p>
+     </div>
+     <div class="col-md-3">
+-        <a onclick="changeTo('android')" href="/cert/pem"><i class="fa fa-android fa-5x"></i></a>
++        <a target="_blank" onclick="changeTo('android')" href="/cert/pem"><i class="fa fa-android fa-5x"></i></a>
+         <p>Android</p>
+     </div>
+     <div class="col-md-3">
+-        <a onclick="changeTo('asterisk')" href="/cert/pem"><i class="fa fa-asterisk fa-5x"></i></a>
++        <a target="_blank" onclick="changeTo('asterisk')" href="/cert/pem"><i class="fa fa-asterisk fa-5x"></i></a>
+         <p>Other</p>
+     </div>
+ </div>
+@@ -167,4 +167,4 @@ function changeTo(device) {
+     between mitmproxy installations.
+ </div>
+ 
+-{% end %}
++{% endblock %}
+diff --git a/mitmproxy/addons/onboardingapp/templates/layout.html b/mitmproxy/addons/onboardingapp/templates/layout.html
+index f6e1b286..cea8373b 100644
+--- a/mitmproxy/addons/onboardingapp/templates/layout.html
++++ b/mitmproxy/addons/onboardingapp/templates/layout.html
+@@ -28,7 +28,7 @@
+ 
+ <div class="container">
+     {% block content %}
+-    {% end %}
++    {% endblock %}
+ </div>
+ 
+   </body>
+diff --git a/mitmproxy/options.py b/mitmproxy/options.py
+index 047a44cd..99cc9cb9 100644
+--- a/mitmproxy/options.py
++++ b/mitmproxy/options.py
+@@ -5,6 +5,7 @@ from mitmproxy.net import tls
+ 
+ 
+ CONF_DIR = "~/.mitmproxy"
++CONF_BASENAME = "mitmproxy"
+ LISTEN_PORT = 8080
+ 
+ 
+diff --git a/mitmproxy/proxy/config.py b/mitmproxy/proxy/config.py
+index f32d3086..e512c004 100644
+--- a/mitmproxy/proxy/config.py
++++ b/mitmproxy/proxy/config.py
+@@ -4,13 +4,11 @@ import typing
+ 
+ from OpenSSL import crypto
+ 
++from mitmproxy import certs
+ from mitmproxy import exceptions
+ from mitmproxy import options as moptions
+-from mitmproxy import certs
+ from mitmproxy.net import server_spec
+ 
+-CONF_BASENAME = "mitmproxy"
+-
+ 
+ class HostMatcher:
+ 
+@@ -57,7 +55,7 @@ class ProxyConfig:
+             )
+         self.certstore = certs.CertStore.from_store(
+             certstore_path,
+-            CONF_BASENAME
++            moptions.CONF_BASENAME,
+         )
+ 
+         for c in options.certs:
+diff --git a/mitmproxy/tools/web/app.py b/mitmproxy/tools/web/app.py
+index b72e0d77..20d4e7c8 100644
+--- a/mitmproxy/tools/web/app.py
++++ b/mitmproxy/tools/web/app.py
+@@ -1,24 +1,25 @@
++import asyncio
+ import hashlib
+ import json
+ import logging
+ import os.path
+ import re
+ from io import BytesIO
+-import asyncio
+ 
+-import mitmproxy.flow
+ import tornado.escape
+ import tornado.web
+ import tornado.websocket
++
++import mitmproxy.flow
++import mitmproxy.tools.web.master  # noqa
+ from mitmproxy import contentviews
+ from mitmproxy import exceptions
+ from mitmproxy import flowfilter
+ from mitmproxy import http
+ from mitmproxy import io
+ from mitmproxy import log
+-from mitmproxy import version
+ from mitmproxy import optmanager
+-import mitmproxy.tools.web.master # noqa
++from mitmproxy import version
+ 
+ 
+ def flow_to_json(flow: mitmproxy.flow.Flow) -> dict:
+@@ -108,6 +109,8 @@ class APIError(tornado.web.HTTPError):
+ 
+ 
+ class RequestHandler(tornado.web.RequestHandler):
++    application: "Application"
++
+     def write(self, chunk):
+         # Writing arrays on the top level is ok nowadays.
+         # http://flask.pocoo.org/docs/0.11/security/#json-security
+@@ -473,7 +476,9 @@ class DnsRebind(RequestHandler):
+ 
+ 
+ class Application(tornado.web.Application):
+-    def __init__(self, master, debug):
++    master: "mitmproxy.tools.web.master.WebMaster"
++
++    def __init__(self, master: "mitmproxy.tools.web.master.WebMaster", debug: bool) -> None:
+         self.master = master
+         super().__init__(
+             default_host="dns-rebind-protection",
+diff --git a/setup.cfg b/setup.cfg
+index 32b6aac3..df327ef3 100644
+--- a/setup.cfg
++++ b/setup.cfg
+@@ -22,6 +22,9 @@ exclude_lines =
+ [mypy-mitmproxy.contrib.*]
+ ignore_errors = True
+ 
++[mypy-tornado.*]
++ignore_errors = True
++
+ [tool:full_coverage]
+ exclude =
+     mitmproxy/proxy/protocol/base.py
+diff --git a/setup.py b/setup.py
+index f315e2e5..764d4277 100644
+--- a/setup.py
++++ b/setup.py
+@@ -64,6 +64,7 @@ setup(
+         "brotlipy>=0.7.0",
+         "click>=6.2",
+         "cryptography>=2.1.4",
++        "flask>=1.1.1",
+         "h2>=3.0.1",
+         "hyperframe>=5.1.0",
+         "kaitaistruct>=0.7",
+diff --git a/test/mitmproxy/addons/onboardingapp/__init__.py b/test/mitmproxy/addons/onboardingapp/__init__.py
+deleted file mode 100644
+index e69de29b..00000000
+diff --git a/test/mitmproxy/addons/onboardingapp/test_app.py b/test/mitmproxy/addons/onboardingapp/test_app.py
+deleted file mode 100644
+index 777ab4dd..00000000
+--- a/test/mitmproxy/addons/onboardingapp/test_app.py
++++ /dev/null
+@@ -1 +0,0 @@
+-# TODO: write tests
