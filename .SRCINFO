@@ -1,7 +1,7 @@
 pkgbase = emby-server-beta
 	pkgdesc = Bring together your videos, music, photos, and live television
 	pkgver = 4.3.0.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://emby.media
 	arch = x86_64
 	license = custom
@@ -17,7 +17,7 @@ pkgbase = emby-server-beta
 	depends = lame
 	depends = libass.so
 	depends = libdrm
-	depends = libfreetype.so
+	depends = freetype2
 	depends = libjpeg-turbo
 	depends = libmfx.so
 	depends = libpng

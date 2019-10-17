@@ -5,7 +5,7 @@
 
 pkgname=emby-server-beta
 pkgver=4.3.0.14
-pkgrel=1
+pkgrel=2
 _ffmpeg_ver=2019_04_09
 _ffdetect_ver=4.0.3
 pkgdesc='Bring together your videos, music, photos, and live television'
@@ -22,7 +22,7 @@ depends=('alsa-lib'
          'lame'
          'libass.so'
          'libdrm'
-         'libfreetype.so'
+         'freetype2'
          'libjpeg-turbo'
          'libmfx.so'
          'libpng'
@@ -66,7 +66,7 @@ sha256sums=('110bd86b67ac1b24b46fb53fd305135a6954397f48c51c241558689a52bf1e5b'
             'a6d7ea65dcb06392479a85e1a10a7aeb872d803da6f784f6935fcd4ee63008c6')
 
 prepare() {
-  rm -rf system/{electron,runtimes}
+  rm -rf system/runtimes/tizen-armel
 }
 
 build() {
