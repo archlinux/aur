@@ -1,10 +1,11 @@
-# Maintainer: Thore Bödecker <me [at] foxxx0 [dot] de>
+# Maintainer: tjbp (archlinux@tjbp.net)
+# Contributor: Thore Bödecker <me [at] foxxx0 [dot] de>
 # Contributor: Evangelos Foutras <evangelos@foutrelis.com>
 
 pkgname=php56-memcache
 _pkgbase="${pkgname#php56-}"
 pkgver=3.0.8
-pkgrel=4
+pkgrel=5
 _commit=fdbd46bbc6f53ed6e024521895e142cbfc9b3340
 pkgdesc="Memcache module for php56"
 arch=('i686' 'x86_64')
@@ -12,6 +13,7 @@ url="https://pecl.php.net/package/memcache"
 license=('PHP')
 provides=("php-memcache=${pkgver}-${pkgrel}")
 depends=('php56>=5.6.17-3')
+makedepends=('git')
 checkdepends=('memcached')
 backup=('etc/php56/conf.d/memcache.ini')
 #source=(https://pecl.php.net/get/memcache-${pkgver}.tgz)
@@ -34,7 +36,7 @@ prepare() {
   #   ini_set('memcache.session_redundancy') [tests/044.phpt]
   #   ini_set('session.save_handler') with unix domain socket [tests/053.phpt]
   #   session locking [tests/057.phpt]
-  rm tests/{005,036,040,042,044,053,057}.phpt
+  rm tests/{005,036,040,042,044,053,057,100b}.phpt
 }
 
 build() {
