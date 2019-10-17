@@ -1,0 +1,23 @@
+pkgbase = ndn-tools
+	pkgdesc = ndn-tools is a collection of basic tools for Named Data Networking
+	pkgver = 0.6.4
+	pkgrel = 2
+	url = https://github.com/named-data/ndn-tools
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = gcc
+	makedepends = python
+	makedepends = boost
+	makedepends = pkgconf
+	makedepends = sqlite
+	makedepends = openssl>=1.0.2
+	depends = ndn-cxx
+	depends = boost
+	provides = ndn-tools
+	conflicts = ndn-tools
+	source = https://github.com/named-data/ndn-tools/archive/ndn-tools-0.6.4.tar.gz
+	sha256sums = 8fb4c6c4a5d88801105cd271fde38522dd1cd25c02d5d0f97cb9faf7004e5949
+
+pkgname = ndn-tools
+
