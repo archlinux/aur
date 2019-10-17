@@ -1,10 +1,10 @@
 # Maintainer: bauh developers <bauh4linux@gmail.com>
 
 pkgname=bauh-staging
-pkgver=0.6.4.RC
+pkgver=0.7.0.RC
 pkgrel=1
-_commit="9fa9df04a5d3a0ab5b9525607978fc8ab3e0e48b"
-pkgdesc="Graphical interface to manage Flatpak, Snaps and AUR packages (staging: it is a testing branch which receives updates frequently and may not be working properly)"
+_commit="2b0ff71834de03579a6c463d2d2989b56043e85f"
+pkgdesc="Graphical interface to manage Flatpaks, Snaps, AppImages and AUR packages (staging: it is a testing branch which receives updates frequently and may not be working properly)"
 arch=('any')
 url="https://github.com/vinifmor/bauh"
 license=('zlib/libpng')
@@ -12,16 +12,17 @@ depends=('python' 'python-pip' 'python-pyqt5' 'python-requests' 'python-colorama
 optdepends=('flatpak: for Flatpak support' 
             'snapd: for Snap support' 
             'pacman: for AUR support' 
-            'wget: for AUR support' 
+            'wget: for AUR and AppImage support' 
+            'sqlite3: for AppImage support'
             'git: to downgrade AUR packages ( optional )'
-            'aria2: faster AUR source downloads ( optional )'
+            'aria2: faster AppImages and AUR source downloads ( optional )'
             'ccache: can improve AUR packages compilation speed ( optional )' 
             'breeze: for KDE Plasma main theme be available ( optional )')
 makedepends=('git' 'python-setuptools')
 provides=("bauh")
 conflicts=('bauh')
 source=("${url}/archive/${_commit}.tar.gz")
-sha512sums=('def1aabfe9cac4570a9344897b66406a5de7c81e1cfd14d9be7a7acd1ce7df1fd9a513917e19e5a0c8a80bb2893d501099a431168bf9f3eb8164ed4df546f8e9')
+sha512sums=('03014f16f5f81b4ce7bba43e77a8c38066918b6a00bc25796059200d4f8aef66a6d86fefa63499deed4ac05c1d37b2259150bea4da71147c284b16d09613ce0c')
 
 build() {
   cd "${srcdir}/bauh-${_commit}"
