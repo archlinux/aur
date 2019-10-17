@@ -4,8 +4,8 @@
 
 pkgbase=dotnet-core-preview
 pkgname=('dotnet-host-preview' 'dotnet-runtime-preview' 'aspnet-runtime-preview' 'dotnet-sdk-preview')
-pkgver=3.0.0+100+rc1.014190
-pkgrel=3
+pkgver=3.1.0+100+preview1.014459
+pkgrel=1
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://www.microsoft.com/net/core'
 license=('MIT')
@@ -18,18 +18,18 @@ source=(
   'dotnet.sh'
 )
 source_x86_64=(
-  'https://download.visualstudio.microsoft.com/download/pr/b81a2bd3-a8a4-4c7e-bd69-030f412ff7b4/3fc5f2c0481313daf2e18c348362ff3f/dotnet-sdk-3.0.100-rc1-014190-linux-x64.tar.gz'
+  'https://download.visualstudio.microsoft.com/download/pr/a3cc3d8a-226d-4306-a61b-a5446fdb72ef/604e029047aec0229545e8c397a14ddb/dotnet-sdk-3.1.100-preview1-014459-linux-x64.tar.gz'
 )
 source_armv7h=(
-  'https://download.visualstudio.microsoft.com/download/pr/29f1b10f-758f-44fb-b14c-49833e5379aa/c259e43ccc84a77fdf4ab5feea6774b3/dotnet-sdk-3.0.100-rc1-014190-linux-arm.tar.gz'
+  'https://download.visualstudio.microsoft.com/download/pr/add0da94-569b-462d-a3d4-f29407cb9386/9570da173af00033d6b5d9aaf6603450/dotnet-sdk-3.1.100-preview1-014459-linux-arm.tar.gz'
 )
 source_aarch64=(
-  'https://download.visualstudio.microsoft.com/download/pr/19cc5d2e-6794-401a-8b57-29a96cbf21b5/f1de24385a2b5a8fcbebab3af9ec07c4/dotnet-sdk-3.0.100-rc1-014190-linux-arm64.tar.gz'
+  'https://download.visualstudio.microsoft.com/download/pr/3cf6ae0b-5933-461f-b32d-10bae9199a97/ff5251238265d20f07ff62181d3e2d1d/dotnet-sdk-3.1.100-preview1-014459-linux-arm64.tar.gz'
 )
 sha256sums=('4978b3a31a94032b425d2a2a9b5a17f506f36fb784fbfefdf2cfea9485a30f47')
-sha256sums_x86_64=('4429853c24e054cd8ec0e471a41682da591888b9652d24021c761c0ba6be8d7f')
-sha256sums_armv7h=('8b0f0f27e2e4fba85fb48117f771de306fec89943b13d61ce220db95eb732c90')
-sha256sums_aarch64=('34dc98d4abbde383b4b2ce6836e321de074a8aaeb21163e9eb8d68fe2b88a918')
+sha256sums_x86_64=('e5f480b7c48b581e093567a982e39d819870f69791f24102684b9b74d5c3a332')
+sha256sums_armv7h=('06b2ce08e2d171eef884bbef52aafa46098900a723da6a675be2808c2128541e')
+sha256sums_aarch64=('23c0d864586d53356cf8643dbf802e9531663891e9fcb7e0e8f348416386ae05')
 
 package_dotnet-host-preview() {
   pkgdesc='A generic driver for the .NET Core Command Line Interface (preview)'
