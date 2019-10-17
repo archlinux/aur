@@ -2,14 +2,14 @@
 
 pkgname=emacs-goby-git
 pkgver=1.1.13.gea799f9
-pkgrel=1
+pkgrel=2
 pkgdesc="WYSIWYG presentation tool, which runs on Emacs"
 arch=('any')
 url="http://www.mew.org/~kazu/proj/goby/en/index.html"
 license=('custom:BSD')
 depends=('emacs')
 makedepends=('git')
-optdepends=('netpbm: for using images' 'imagemagic6: for making screen dumps')
+optdepends=('netpbm: for using images' 'imagemagic: for making screen dumps')
 provides=('emacs-goby')
 conflicts=('emacs-goby')
 install=emacs-goby.install
@@ -29,6 +29,7 @@ build() {
 
 package() {
   cd Goby
+  install -d "$pkgdir"/usr/share/emacs/site-lisp/goby
   install -Dm644 "$srcdir"/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
   make PREFIX="$pkgdir"/usr install
 }
