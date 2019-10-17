@@ -4,7 +4,7 @@ _pkgbase=('apple-bce')
 pkgname=(${_pkgbase}-git ${_pkgbase}-dkms-git)
 pkgdesc="Apple BCE (Buffer Copy Engine) driver for T2-based devices."
 pkgver=r134.e98957b
-pkgrel=5
+pkgrel=6
 
 arch=('x86_64')
 url="https://github.com/MCMrARM/mbp2018-bridge-drv"
@@ -12,7 +12,6 @@ license=('GPL2')
 
 depends=('linux')
 makedepends=('git' 'linux-headers')
-_extramodules=extramodules-mbp
 options=(!strip)
 
 source=("apple-bce::git+https://github.com/aunali1/mbp2018-bridge-drv.git#branch=aur"
@@ -37,7 +36,7 @@ prepare() {
 
 build() {
 	cd "$_pkgbase"
-	_kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
+	_kernver=$(</usr/src/linux-mbp/version)
 	make KVERSION=${_kernver}
 }
 
@@ -45,8 +44,11 @@ package_apple-bce-git() {
 	depends=('linux-mbp')
 	makedepends=('linux-mbp-headers')
 
+	_kernver=$(</usr/src/linux-mbp/version)
+	_extramodules="/usr/lib/modules/${_kernver}/extramodules"
+
 	cd "$_pkgbase"
-	install -Dt "${pkgdir}/usr/lib/modules/${_extramodules}" -m644 *.ko
+	install -Dt "${pkgdir}${_extramodules}" -m644 *.ko
 	find "${pkgdir}" -name '*.ko' -exec xz {} +
 }
 
@@ -60,7 +62,7 @@ package_apple-bce-dkms-git() {
 	cd "$_pkgbase"
 
 	# XXX: Find a better solution...
-	make KVERSION="$(cat /usr/lib/modules/${_extramodules}/version)" clean
+	make KVERSION=$(</usr/src/linux-mbp/version) clean
 
 	cp -dr --no-preserve='ownership' ./* "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/
 }
