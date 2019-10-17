@@ -6,6 +6,7 @@ arch=('any')
 url="https://github.com/minrk/pamela"
 license=('MIT')
 depends=('pam' 'python')
+makedepends=('python-setuptools')
 source=("https://github.com/minrk/pamela/archive/${pkgver}.tar.gz")
 md5sums=('0df71e470bc4199548734794a4ddc33a')
 
