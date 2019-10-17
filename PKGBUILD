@@ -2,8 +2,9 @@
 # For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - OpenCV 3.x. for melodic distro"
 
+_pkgname="opencv"
 pkgname='ros-melodic-opencv3'
-pkgver='3.4.5'
+pkgver='3.4.7'
 _pkgver_patch=1
 arch=('x86_64')
 pkgrel=2
@@ -57,8 +58,8 @@ depends=(
 
 source=(opencv-${pkgver}.tar.gz::https://github.com/opencv/opencv/archive/${pkgver}.tar.gz
         opencv_contrib-${pkgver}.tar.gz::https://github.com/opencv/opencv_contrib/archive/${pkgver}.tar.gz)
-sha256sums=('0c57d9dd6d30cbffe68a09b03f4bebe773ee44dc8ff5cd6eaeb7f4d5ef3b428e'
-            '8f73d029887c726fed89c69a2b0fcb1d098099fcd81c1070e1af3b452669fbe2')
+sha256sums=('ea743896a604a6ba1e1c1651ad42c97d0f90165debe9940811c7e0bdaa307526'
+            '5e3ba5fbe0ff3ab7462d42c08501f8c15d3e46b0684aee281f735345e1353cb4')
 
 _dir="opencv-${pkgver}"
 
@@ -102,9 +103,26 @@ build() {
     -DCPU_BASELINE_REQUIRE=SSE2 \
     -DLAPACK_LIBRARIES="/usr/lib/liblapack.so;/usr/lib/libblas.so;/usr/lib/libcblas.so" \
     -DLAPACK_CBLAS_H="/usr/include/cblas.h" \
-    -DLAPACK_LAPACKE_H="/usr/include/lapacke.h"
+    -DLAPACK_LAPACKE_H="/usr/include/lapacke.h" \
+    -DENABLE_PRECOMPILED_HEADERS=OFF
 
-  make -j$(nproc)
+  ##########################################
+  # Temporary workaround until compiler issue is fixed
+  ##########################################
+  # assume gcc compiler, fix issue:
+  #    /usr/include/c++/9.2.0/cstdlib:75:15: fatal error: stdlib.h: No such file or directory
+
+  CXX_VERSION=$(gcc --version | head -n1 | cut -f3 -d' ')
+  echo "GCC vession found: ${CXX_VERSION}"
+  # patch makefiles to insert gcc std include first all other includes
+  grep -Rl CXX_INCLUDES "${srcdir}/build" | while read MAKE; do
+    echo "patching ${MAKE}..."
+    sed -i "s|CXX_INCLUDES = -I|CXX_INCLUDES = -isystem /usr/include/c++/${CXX_VERSION} -I|" "${MAKE}"
+  done
+  ##########################################
+
+  # use all processors but be nice
+  nice make -j$(nproc)
 }
 
 package() {

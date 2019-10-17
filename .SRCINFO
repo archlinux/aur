@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-opencv3
 	pkgdesc = ROS - OpenCV 3.x. for melodic distro
-	pkgver = 3.4.5
+	pkgver = 3.4.7
 	pkgrel = 2
 	url = http://opencv.org/
 	arch = x86_64
@@ -42,10 +42,10 @@ pkgbase = ros-melodic-opencv3
 	depends = python
 	depends = v4l-utils
 	depends = zlib
-	source = opencv-3.4.5.tar.gz::https://github.com/opencv/opencv/archive/3.4.5.tar.gz
-	source = opencv_contrib-3.4.5.tar.gz::https://github.com/opencv/opencv_contrib/archive/3.4.5.tar.gz
-	sha256sums = 0c57d9dd6d30cbffe68a09b03f4bebe773ee44dc8ff5cd6eaeb7f4d5ef3b428e
-	sha256sums = 8f73d029887c726fed89c69a2b0fcb1d098099fcd81c1070e1af3b452669fbe2
+	source = opencv-3.4.7.tar.gz::https://github.com/opencv/opencv/archive/3.4.7.tar.gz
+	source = opencv_contrib-3.4.7.tar.gz::https://github.com/opencv/opencv_contrib/archive/3.4.7.tar.gz
+	sha256sums = ea743896a604a6ba1e1c1651ad42c97d0f90165debe9940811c7e0bdaa307526
+	sha256sums = 5e3ba5fbe0ff3ab7462d42c08501f8c15d3e46b0684aee281f735345e1353cb4
 
 pkgname = ros-melodic-opencv3
 
