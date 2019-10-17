@@ -1,16 +1,18 @@
-# Maintainer: Thore Bödecker <me [at] foxxx0 [dot] de>
+# Maintainer: tjbp (archlinux@tjbp.net)
+# Contributor: Thore Bödecker <me [at] foxxx0 [dot] de>
 # Contributor: Evangelos Foutras <evangelos@foutrelis.com>
 
 pkgname=php56-memcached
 _pkgbase="${pkgname#php56-}"
 pkgver=2.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc="php56 extension for interfacing with memcached via libmemcached library"
 arch=('i686' 'x86_64')
 url="https://pecl.php.net/package/memcached"
 license=('PHP')
 provides=("php-memcached=${pkgver}-${pkgrel}")
 depends=('php56>=5.6.17-3' 'libmemcached')
+checkdepends=('memcached')
 backup=('etc/php56/conf.d/memcached.ini')
 source=("https://pecl.php.net/get/memcached-${pkgver}.tgz")
 sha512sums=('61207d3f8c11b0620dbcb20fb2ebb6d1fc10159a7e879ee91556a303c3dcdf3d2571e8dda5efcbed77ff779f5c9b226aa48800630b9e7781cd964126b848c356')
