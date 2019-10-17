@@ -1,6 +1,7 @@
-# Maintainer: SuperBo<supernbo@gmail.com>
+# Maintainer: peace885 <reyadmin@gmail.com>
+# Contributor: SuperBo<supernbo@gmail.com>
 pkgname=cloud-utils
-pkgver=0.29
+pkgver=0.31
 pkgrel=1
 pkgdesc="A useful set of utilities for interacting with a cloud"
 arch=('any')
@@ -13,7 +14,7 @@ provides=(cloud-utils)
 conflicts=(cloud-utils-bzr)
 replaces=()
 source=("https://launchpad.net/cloud-utils/trunk/$pkgver/+download/$pkgname-$pkgver.tar.gz")
-sha256sums=('9ea1b66f5a4798c8d6eeca48d908e11169a38e943efa433b7ec5dffa907e257c')
+md5sums=('63f1dacf5ba761a6f220e6bec83ffb8e')
 validpgpkeys=()
 
 prepare() {
