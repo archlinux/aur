@@ -6,7 +6,7 @@
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 _pkgname=digikam
 pkgname=digikam-without-akonadi-mediawiki-vkontakte
-pkgver=6.2.0
+pkgver=6.3.0
 pkgrel=1
 pkgdesc="minimized build of Digikam for non-KDE users, without Plasma/KDE integration"
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ makedepends=(extra-cmake-modules boost doxygen eigen kdoctools glu)
 conflicts=('digikam' 'digikam-git')
 provides=('digikam')
 source=("http://download.kde.org/stable/${_pkgname}/${pkgver}/${_pkgname}-${pkgver}.tar.xz")
-sha256sums=('28762ea0f03a82e3b2473c0682a358c9b83f5013aec827dd5ab6556a1f29baeb')
+sha256sums=('94dc05e3f9c08b83419010d1689c7b0398d4eced4fef42375249c974622874ba')
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
