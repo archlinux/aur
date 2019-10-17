@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
 pkgname=touchpad-indicator-git
-pkgver=r102.ad2a9ae
+pkgver=r104.871c375
 pkgrel=1
 epoch=1
 pkgdesc="An indicator for the touchpad"
@@ -46,85 +46,85 @@ package() {
 	
 	# Create languages directories
 	
-	_langpackdir=$pkgdir/usr/share/locale-langpack
+	_localedir=$pkgdir/usr/share/locale
 	
-	install -dm644 "$_langpackdir"/ar/LC_MESSAGES
-	install -dm644 "$_langpackdir"/ast/LC_MESSAGES
-	install -dm644 "$_langpackdir"/be/LC_MESSAGES
-	install -dm644 "$_langpackdir"/ca/LC_MESSAGES
-	install -dm644 "$_langpackdir"/cs/LC_MESSAGES
-	install -dm644 "$_langpackdir"/de/LC_MESSAGES
-	install -dm644 "$_langpackdir"/en_GB/LC_MESSAGES
-	install -dm644 "$_langpackdir"/en/LC_MESSAGES
-	install -dm644 "$_langpackdir"/es/LC_MESSAGES
-	install -dm644 "$_langpackdir"/eu/LC_MESSAGES
-	install -dm644 "$_langpackdir"/fi/LC_MESSAGES
-	install -dm644 "$_langpackdir"/fr/LC_MESSAGES
-	install -dm644 "$_langpackdir"/gl/LC_MESSAGES
-	install -dm644 "$_langpackdir"/hr/LC_MESSAGES
-	install -dm644 "$_langpackdir"/hu/LC_MESSAGES
-	install -dm644 "$_langpackdir"/id/LC_MESSAGES
-	install -dm644 "$_langpackdir"/it/LC_MESSAGES
-	install -dm644 "$_langpackdir"/ja/LC_MESSAGES
-	install -dm644 "$_langpackdir"/ka/LC_MESSAGES
-	install -dm644 "$_langpackdir"/lt/LC_MESSAGES
-	install -dm644 "$_langpackdir"/mn/LC_MESSAGES
-	install -dm644 "$_langpackdir"/ms/LC_MESSAGES
-	install -dm644 "$_langpackdir"/nl/LC_MESSAGES
-	install -dm644 "$_langpackdir"/pl/LC_MESSAGES
-	install -dm644 "$_langpackdir"/pt_BR/LC_MESSAGES
-	install -dm644 "$_langpackdir"/pt/LC_MESSAGES
-	install -dm644 "$_langpackdir"/ro/LC_MESSAGES
-	install -dm644 "$_langpackdir"/ru/LC_MESSAGES
-	install -dm644 "$_langpackdir"/si/LC_MESSAGES
-	install -dm644 "$_langpackdir"/sk/LC_MESSAGES
-	install -dm644 "$_langpackdir"/sr/LC_MESSAGES
-	install -dm644 "$_langpackdir"/sv/LC_MESSAGES
-	install -dm644 "$_langpackdir"/tr/LC_MESSAGES
-	install -dm644 "$_langpackdir"/uk/LC_MESSAGES
-	install -dm644 "$_langpackdir"/vi/LC_MESSAGES
-	install -dm644 "$_langpackdir"/zh_CN/LC_MESSAGES
-	install -dm644 "$_langpackdir"/zh_HK/LC_MESSAGES
-	install -dm644 "$_langpackdir"/zh_TW/LC_MESSAGES
+	install -dm755 "$_localedir"/ar/LC_MESSAGES
+	install -dm755 "$_localedir"/ast/LC_MESSAGES
+	install -dm755 "$_localedir"/be/LC_MESSAGES
+	install -dm755 "$_localedir"/ca/LC_MESSAGES
+	install -dm755 "$_localedir"/cs/LC_MESSAGES
+	install -dm755 "$_localedir"/de/LC_MESSAGES
+	install -dm755 "$_localedir"/en_GB/LC_MESSAGES
+	install -dm755 "$_localedir"/en/LC_MESSAGES
+	install -dm755 "$_localedir"/es/LC_MESSAGES
+	install -dm755 "$_localedir"/eu/LC_MESSAGES
+	install -dm755 "$_localedir"/fi/LC_MESSAGES
+	install -dm755 "$_localedir"/fr/LC_MESSAGES
+	install -dm755 "$_localedir"/gl/LC_MESSAGES
+	install -dm755 "$_localedir"/hr/LC_MESSAGES
+	install -dm755 "$_localedir"/hu/LC_MESSAGES
+	install -dm755 "$_localedir"/id/LC_MESSAGES
+	install -dm755 "$_localedir"/it/LC_MESSAGES
+	install -dm755 "$_localedir"/ja/LC_MESSAGES
+	install -dm755 "$_localedir"/ka/LC_MESSAGES
+	install -dm755 "$_localedir"/lt/LC_MESSAGES
+	install -dm755 "$_localedir"/mn/LC_MESSAGES
+	install -dm755 "$_localedir"/ms/LC_MESSAGES
+	install -dm755 "$_localedir"/nl/LC_MESSAGES
+	install -dm755 "$_localedir"/pl/LC_MESSAGES
+	install -dm755 "$_localedir"/pt_BR/LC_MESSAGES
+	install -dm755 "$_localedir"/pt/LC_MESSAGES
+	install -dm755 "$_localedir"/ro/LC_MESSAGES
+	install -dm755 "$_localedir"/ru/LC_MESSAGES
+	install -dm755 "$_localedir"/si/LC_MESSAGES
+	install -dm755 "$_localedir"/sk/LC_MESSAGES
+	install -dm755 "$_localedir"/sr/LC_MESSAGES
+	install -dm755 "$_localedir"/sv/LC_MESSAGES
+	install -dm755 "$_localedir"/tr/LC_MESSAGES
+	install -dm755 "$_localedir"/uk/LC_MESSAGES
+	install -dm755 "$_localedir"/vi/LC_MESSAGES
+	install -dm755 "$_localedir"/zh_CN/LC_MESSAGES
+	install -dm755 "$_localedir"/zh_HK/LC_MESSAGES
+	install -dm755 "$_localedir"/zh_TW/LC_MESSAGES
 
 	# Compile languages
 	
-	msgfmt po/ar.po -o "$_langpackdir"/ar/LC_MESSAGES/touchpad-indicator.mo
-	msgfmt po/ast.po -o "$_langpackdir"/ast/LC_MESSAGES/touchpad-indicator.mo
-	msgfmt po/be.po -o "$_langpackdir"/be/LC_MESSAGES/touchpad-indicator.mo
-	msgfmt po/ca.po -o "$_langpackdir"/ca/LC_MESSAGES/touchpad-indicator.mo
-	msgfmt po/cs.po -o "$_langpackdir"/cs/LC_MESSAGES/touchpad-indicator.mo
-	msgfmt po/de.po -o "$_langpackdir"/de/LC_MESSAGES/touchpad-indicator.mo
-	msgfmt po/en_GB.po -o "$_langpackdir"/en_GB/LC_MESSAGES/touchpad-indicator.mo
-	msgfmt po/en.po -o "$_langpackdir"/en/LC_MESSAGES/touchpad-indicator.mo
-	msgfmt po/es.po -o "$_langpackdir"/es/LC_MESSAGES/touchpad-indicator.mo
-	msgfmt po/eu.po -o "$_langpackdir"/eu/LC_MESSAGES/touchpad-indicator.mo
-	msgfmt po/fi.po -o "$_langpackdir"/fi/LC_MESSAGES/touchpad-indicator.mo
-	msgfmt po/fr.po -o "$_langpackdir"/fr/LC_MESSAGES/touchpad-indicator.mo
-	msgfmt po/gl.po -o "$_langpackdir"/gl/LC_MESSAGES/touchpad-indicator.mo
-	msgfmt po/hr.po -o "$_langpackdir"/hr/LC_MESSAGES/touchpad-indicator.mo
-	msgfmt po/hu.po -o "$_langpackdir"/hu/LC_MESSAGES/touchpad-indicator.mo
-	msgfmt po/id.po -o "$_langpackdir"/id/LC_MESSAGES/touchpad-indicator.mo
-	msgfmt po/it.po -o "$_langpackdir"/it/LC_MESSAGES/touchpad-indicator.mo
-	msgfmt po/ja.po -o "$_langpackdir"/ja/LC_MESSAGES/touchpad-indicator.mo
-	msgfmt po/ka.po -o "$_langpackdir"/ka/LC_MESSAGES/touchpad-indicator.mo
-	msgfmt po/lt.po -o "$_langpackdir"/lt/LC_MESSAGES/touchpad-indicator.mo
-	msgfmt po/mn.po -o "$_langpackdir"/mn/LC_MESSAGES/touchpad-indicator.mo
-	msgfmt po/ms.po -o "$_langpackdir"/ms/LC_MESSAGES/touchpad-indicator.mo
-	msgfmt po/nl.po -o "$_langpackdir"/nl/LC_MESSAGES/touchpad-indicator.mo
-	msgfmt po/pl.po -o "$_langpackdir"/pl/LC_MESSAGES/touchpad-indicator.mo
-	msgfmt po/pt_BR.po -o "$_langpackdir"/pt_BR/LC_MESSAGES/touchpad-indicator.mo
-	msgfmt po/pt.po -o "$_langpackdir"/pt/LC_MESSAGES/touchpad-indicator.mo
-	msgfmt po/ro.po -o "$_langpackdir"/ro/LC_MESSAGES/touchpad-indicator.mo
-	msgfmt po/ru.po -o "$_langpackdir"/ru/LC_MESSAGES/touchpad-indicator.mo
-	msgfmt po/si.po -o "$_langpackdir"/si/LC_MESSAGES/touchpad-indicator.mo
-	msgfmt po/sk.po -o "$_langpackdir"/sk/LC_MESSAGES/touchpad-indicator.mo
-	msgfmt po/sr.po -o "$_langpackdir"/sr/LC_MESSAGES/touchpad-indicator.mo
-	msgfmt po/sv.po -o "$_langpackdir"/sv/LC_MESSAGES/touchpad-indicator.mo
-	msgfmt po/tr.po -o "$_langpackdir"/tr/LC_MESSAGES/touchpad-indicator.mo
-	msgfmt po/uk.po -o "$_langpackdir"/uk/LC_MESSAGES/touchpad-indicator.mo
-	msgfmt po/vi.po -o "$_langpackdir"/vi/LC_MESSAGES/touchpad-indicator.mo
-	msgfmt po/zh_CN.po -o "$_langpackdir"/zh_CN/LC_MESSAGES/touchpad-indicator.mo
-	msgfmt po/zh_HK.po -o "$_langpackdir"/zh_HK/LC_MESSAGES/touchpad-indicator.mo
-	msgfmt po/zh_TW.po -o "$_langpackdir"/zh_TW/LC_MESSAGES/touchpad-indicator.mo
+	msgfmt po/ar.po -o "$_localedir"/ar/LC_MESSAGES/touchpad-indicator.mo
+	msgfmt po/ast.po -o "$_localedir"/ast/LC_MESSAGES/touchpad-indicator.mo
+	msgfmt po/be.po -o "$_localedir"/be/LC_MESSAGES/touchpad-indicator.mo
+	msgfmt po/ca.po -o "$_localedir"/ca/LC_MESSAGES/touchpad-indicator.mo
+	msgfmt po/cs.po -o "$_localedir"/cs/LC_MESSAGES/touchpad-indicator.mo
+	msgfmt po/de.po -o "$_localedir"/de/LC_MESSAGES/touchpad-indicator.mo
+	msgfmt po/en_GB.po -o "$_localedir"/en_GB/LC_MESSAGES/touchpad-indicator.mo
+	msgfmt po/en.po -o "$_localedir"/en/LC_MESSAGES/touchpad-indicator.mo
+	msgfmt po/es.po -o "$_localedir"/es/LC_MESSAGES/touchpad-indicator.mo
+	msgfmt po/eu.po -o "$_localedir"/eu/LC_MESSAGES/touchpad-indicator.mo
+	msgfmt po/fi.po -o "$_localedir"/fi/LC_MESSAGES/touchpad-indicator.mo
+	msgfmt po/fr.po -o "$_localedir"/fr/LC_MESSAGES/touchpad-indicator.mo
+	msgfmt po/gl.po -o "$_localedir"/gl/LC_MESSAGES/touchpad-indicator.mo
+	msgfmt po/hr.po -o "$_localedir"/hr/LC_MESSAGES/touchpad-indicator.mo
+	msgfmt po/hu.po -o "$_localedir"/hu/LC_MESSAGES/touchpad-indicator.mo
+	msgfmt po/id.po -o "$_localedir"/id/LC_MESSAGES/touchpad-indicator.mo
+	msgfmt po/it.po -o "$_localedir"/it/LC_MESSAGES/touchpad-indicator.mo
+	msgfmt po/ja.po -o "$_localedir"/ja/LC_MESSAGES/touchpad-indicator.mo
+	msgfmt po/ka.po -o "$_localedir"/ka/LC_MESSAGES/touchpad-indicator.mo
+	msgfmt po/lt.po -o "$_localedir"/lt/LC_MESSAGES/touchpad-indicator.mo
+	msgfmt po/mn.po -o "$_localedir"/mn/LC_MESSAGES/touchpad-indicator.mo
+	msgfmt po/ms.po -o "$_localedir"/ms/LC_MESSAGES/touchpad-indicator.mo
+	msgfmt po/nl.po -o "$_localedir"/nl/LC_MESSAGES/touchpad-indicator.mo
+	msgfmt po/pl.po -o "$_localedir"/pl/LC_MESSAGES/touchpad-indicator.mo
+	msgfmt po/pt_BR.po -o "$_localedir"/pt_BR/LC_MESSAGES/touchpad-indicator.mo
+	msgfmt po/pt.po -o "$_localedir"/pt/LC_MESSAGES/touchpad-indicator.mo
+	msgfmt po/ro.po -o "$_localedir"/ro/LC_MESSAGES/touchpad-indicator.mo
+	msgfmt po/ru.po -o "$_localedir"/ru/LC_MESSAGES/touchpad-indicator.mo
+	msgfmt po/si.po -o "$_localedir"/si/LC_MESSAGES/touchpad-indicator.mo
+	msgfmt po/sk.po -o "$_localedir"/sk/LC_MESSAGES/touchpad-indicator.mo
+	msgfmt po/sr.po -o "$_localedir"/sr/LC_MESSAGES/touchpad-indicator.mo
+	msgfmt po/sv.po -o "$_localedir"/sv/LC_MESSAGES/touchpad-indicator.mo
+	msgfmt po/tr.po -o "$_localedir"/tr/LC_MESSAGES/touchpad-indicator.mo
+	msgfmt po/uk.po -o "$_localedir"/uk/LC_MESSAGES/touchpad-indicator.mo
+	msgfmt po/vi.po -o "$_localedir"/vi/LC_MESSAGES/touchpad-indicator.mo
+	msgfmt po/zh_CN.po -o "$_localedir"/zh_CN/LC_MESSAGES/touchpad-indicator.mo
+	msgfmt po/zh_HK.po -o "$_localedir"/zh_HK/LC_MESSAGES/touchpad-indicator.mo
+	msgfmt po/zh_TW.po -o "$_localedir"/zh_TW/LC_MESSAGES/touchpad-indicator.mo
 }
