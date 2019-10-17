@@ -2,8 +2,8 @@
 
 pkgname=yubioath-desktop
 pkgdesc='Yubico Authenticator for Desktop'
-pkgver=5.0.0
-pkgrel=4
+pkgver=5.0.1
+pkgrel=1
 arch=('x86_64')
 url='https://github.com/Yubico/yubioath-desktop'
 license=('BSD')
