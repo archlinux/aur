@@ -1,0 +1,25 @@
+pkgbase = factorio-stable
+	pkgdesc = A 2D game about building and maintaining factories (stable branch).
+	pkgver = 0.17.69
+	pkgrel = 1
+	url = http://www.factorio.com/
+	arch = x86_64
+	license = custom: commercial
+	makedepends = jq
+	depends = libxcursor
+	depends = gcc-libs
+	depends = alsa-lib
+	depends = libxrandr
+	depends = libxinerama
+	depends = mesa
+	provides = factorio=0.17.69
+	conflicts = factorio
+	conflicts = factorio-demo
+	options = !strip
+	source = factorio.desktop
+	source = LICENSE
+	md5sums = 5cacd198a3156c157a482aeab368e9a1
+	md5sums = 65e8866287fd69b9eac3ec6bd817478a
+
+pkgname = factorio-stable
+
