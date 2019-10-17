@@ -1,7 +1,7 @@
 pkgbase = clang-trunk
 	pkgdesc = A collection of LLVM-based C++ dev tools
 	pkgver = 9.0.0svn_r360728
-	pkgrel = 1
+	pkgrel = 2
 	url = https://llvm.org/
 	arch = i686
 	arch = x86_64
