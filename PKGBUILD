@@ -1,14 +1,14 @@
 # Maintainer: Edward Pacman <edward@edward-p.xyz>
 
 pkgname=archwrt-ss.sh-git
-pkgver=r21.2fab9d8
+pkgver=r25.5b66701
 pkgrel=1
 pkgdesc="A simple Shadowsocks transparent proxy setup script by archwrt."
 arch=('x86_64')
 url="https://github.com/archwrt/archwrt-ss.sh"
 license=('GPL')
-depends=(shadowsocks-libev dnsmasq ipset iptables bind-tools)
-backup=(opt/archwrt-ss/archwrt-ss.conf)
+depends=(shadowsocks-libev dnsmasq ipset iptables)
+backup=(opt/archwrt-ss/archwrt-ss.conf etc/archwrt-ss/archwrt-ss.conf)
 optdepends=('simple-obfs: shadowsocks-libev plugin'
             'shadowsocks-v2ray-plugin: shadowsocks-libev plugin'
             'dnsproxy-adguard: a tiny dnsproxy with doh & dot support')
@@ -29,6 +29,6 @@ package() {
   # Install dkms.conf
   cd "${pkgname}"
   install -Dm755 archwrt-ss.sh "${pkgdir}/usr/bin/archwrt-ss.sh"
-  install -Dm644 archwrt-ss.conf "${pkgdir}/opt/archwrt-ss/archwrt-ss.conf"
+  install -Dm644 archwrt-ss.conf "${pkgdir}/etc/archwrt-ss/archwrt-ss.conf"
   install -Dm644 archwrt-ss.service "${pkgdir}/usr/lib/systemd/system/archwrt-ss.service"
 }
