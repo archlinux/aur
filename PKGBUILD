@@ -2,7 +2,7 @@
 
 _pkgname=nmrpflash
 pkgname=${_pkgname}-git
-pkgver=v0.9.13.r20.g021e449
+pkgver=0.9.13.r20.g021e449
 pkgrel=1
 pkgdesc="Netgear Unbrick Utility"
 arch=('x86_64')
@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 pkgver() {
   cd "${_pkgname}"
 
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
