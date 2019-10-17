@@ -1,6 +1,6 @@
 pkgbase = icaclient
 	pkgdesc = Citrix Workspace App for x86_64 (64bit) Linux (ICAClient, Citrix Receiver)
-	pkgver = 19.08
+	pkgver = 19.10
 	pkgrel = 1
 	url = https://www.citrix.com/downloads/workspace-app/linux/
 	install = citrix-client.install
@@ -43,12 +43,12 @@ pkgbase = icaclient
 	md5sums = 1f214f6f456f59afd1a3275580f4240e
 	md5sums = 59f8e50cc0e0c399d47eb7ace1df5a32
 	md5sums = dca5a1f51449ef35f1441b900d622276
-	source_x86_64 = icaclient-x64-19.08.tar.gz::http://downloads.citrix.com/16537/linuxx64-19.8.0.20.tar.gz?__gda__=1567481609_f14308a41545e3693e4421d0800c7488
-	sha256sums_x86_64 = 7C35ED300D3375F74D16070A412E0E3C015803533E013FC48291974B11970D39
-	source_i686 = icaclient-x86-19.08.tar.gz::http://downloads.citrix.com/16537/linuxx86-19.8.0.20.tar.gz?__gda__=1567481609_d29f3420a32a40381d27ca36bcc94077
-	sha256sums_i686 = B64943D97E7CD76CCDBC9E47121E17DEBCAF27DE08F91F474E6460B272C4CC29
-	source_armv7h = icaclient-armhf-19.08.tar.gz::http://downloads.citrix.com/16537/linuxarmhf-19.8.0.20.tar.gz?__gda__=1567481611_7e4d3fb88f90678d463554dd8c5d33bb
-	sha256sums_armv7h = 1C4A9D1C235CFECE7018F12FA9A8922E660D523E71DC20FD970E5D341E1ED8B9
+	source_x86_64 = icaclient-x64-19.10.tar.gz::http://downloads.citrix.com/16728/linuxx64-19.10.0.15.tar.gz?__gda__=1571282968_d74c1d91cbe221a2f2a42d71524cbefd
+	sha256sums_x86_64 = 24C024B38E146FE8A02D05998B6A713D8020348563156968AD2FF1E8EA2598D0
+	source_i686 = icaclient-x86-19.10.tar.gz::http://downloads.citrix.com/16728/linuxx86-19.10.0.15.tar.gz?__gda__=1571282968_934fb3a3b8a7a93e5ba3b949d74100fb
+	sha256sums_i686 = 7EC835CABE69651F0728FD13524AA2C29275CE055169DB94330B398E66941F00
+	source_armv7h = icaclient-armhf-19.10.tar.gz::http://downloads.citrix.com/16728/linuxarmhf-19.10.0.15.tar.gz?__gda__=1571282968_3b911f23b4a1253faaa0f093c21acec6
+	sha256sums_armv7h = 2A151450721FBC6D55F2F7DAA84E58BFD135863F716BE583BE0846CC8AA20F03
 
 pkgname = icaclient
 
