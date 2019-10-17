@@ -1,0 +1,154 @@
+From 96f9409733cdbcfebe93498f84815d31d8fd43a8 Mon Sep 17 00:00:00 2001
+From: Nick Gasson <nick@nickg.me.uk>
+Date: Mon, 11 Mar 2019 21:23:07 +0800
+Subject: [PATCH] Fix warnings with GCC 8.3
+
+---
+ src/cgen.c   |  6 ------
+ src/lib.c    | 17 +++++++++--------
+ src/rt/fst.c |  5 +++--
+ src/rt/vcd.c |  5 +++--
+ src/vcode.c  |  4 ++--
+ 5 files changed, 17 insertions(+), 20 deletions(-)
+
+diff --git a/src/cgen.c b/src/cgen.c
+index c4120dd2..a181f5c6 100644
+--- a/src/cgen.c
++++ b/src/cgen.c
+@@ -3595,12 +3595,6 @@ static void cgen_optimise(void)
+ {
+    LLVMPassManagerRef pass_mgr = LLVMCreatePassManager();
+ 
+-   LLVMAddPromoteMemoryToRegisterPass(pass_mgr);
+-   LLVMAddInstructionCombiningPass(pass_mgr);
+-   LLVMAddReassociatePass(pass_mgr);
+-   LLVMAddGVNPass(pass_mgr);
+-   LLVMAddCFGSimplificationPass(pass_mgr);
+-
+    LLVMPassManagerBuilderRef builder = LLVMPassManagerBuilderCreate();
+    LLVMPassManagerBuilderSetOptLevel(builder, opt_get_int("optimise"));
+    LLVMPassManagerBuilderPopulateModulePassManager(builder, pass_mgr);
+diff --git a/src/lib.c b/src/lib.c
+index 2d73d481..82908c81 100644
+--- a/src/lib.c
++++ b/src/lib.c
+@@ -1,5 +1,5 @@
+ //
+-//  Copyright (C) 2011-2017  Nick Gasson
++//  Copyright (C) 2011-2019  Nick Gasson
+ //
+ //  This program is free software: you can redistribute it and/or modify
+ //  it under the terms of the GNU General Public License as published by
+@@ -231,8 +231,8 @@ static lib_unit_t *lib_put_aux(lib_t lib, tree_t unit,
+ static lib_t lib_find_at(const char *name, const char *path, bool exact)
+ {
+    char dir[PATH_MAX];
+-   char *p = dir + snprintf(dir, sizeof(dir) - 4 - strlen(name),
+-                            "%s" PATH_SEP, path);
++   char *p = dir + checked_sprintf(dir, sizeof(dir) - 4 - strlen(name),
++                                   "%s" PATH_SEP, path);
+    bool found = false;
+ 
+    if (!exact) {
+@@ -242,7 +242,7 @@ static lib_t lib_find_at(const char *name, const char *path, bool exact)
+ 
+       // Try suffixing standard revision extensions first
+       for (vhdl_standard_t s = standard(); (s > STD_87) && !found; s--) {
+-         snprintf(p, 4, ".%s", standard_suffix(s));
++         checked_sprintf(p, 4, ".%s", standard_suffix(s));
+          found = (access(dir, F_OK) == 0);
+       }
+    }
+@@ -254,7 +254,7 @@ static lib_t lib_find_at(const char *name, const char *path, bool exact)
+    }
+ 
+    char marker[PATH_MAX];
+-   snprintf(marker, sizeof(marker), "%s" PATH_SEP "_NVC_LIB", dir);
++   checked_sprintf(marker, sizeof(marker), "%s" PATH_SEP "_NVC_LIB", dir);
+    if (access(marker, F_OK) < 0)
+       return NULL;
+ 
+@@ -264,7 +264,7 @@ static lib_t lib_find_at(const char *name, const char *path, bool exact)
+ static const char *lib_file_path(lib_t lib, const char *name)
+ {
+    static char buf[PATH_MAX];
+-   snprintf(buf, sizeof(buf), "%s" PATH_SEP "%s", lib->path, name);
++   checked_sprintf(buf, sizeof(buf), "%s" PATH_SEP "%s", lib->path, name);
+    return buf;
+ }
+ 
+@@ -525,7 +525,8 @@ void lib_destroy(lib_t lib)
+    struct dirent *e;
+    while ((e = readdir(d))) {
+       if (e->d_name[0] != '.') {
+-         snprintf(buf, sizeof(buf), "%s" PATH_SEP "%s", lib->path, e->d_name);
++         checked_sprintf(buf, sizeof(buf), "%s" PATH_SEP "%s",
++                         lib->path, e->d_name);
+          if (unlink(buf) < 0)
+             perror("unlink");
+       }
+@@ -786,7 +787,7 @@ void lib_realpath(lib_t lib, const char *name, char *buf, size_t buflen)
+    assert(lib != NULL);
+ 
+    if (name)
+-      snprintf(buf, buflen, "%s" PATH_SEP "%s", lib->path, name);
++      checked_sprintf(buf, buflen, "%s" PATH_SEP "%s", lib->path, name);
+    else
+       strncpy(buf, lib->path, buflen);
+ }
+diff --git a/src/rt/fst.c b/src/rt/fst.c
+index e0aebe6c..686e91d7 100644
+--- a/src/rt/fst.c
++++ b/src/rt/fst.c
+@@ -288,9 +288,10 @@ static void fst_process_signal(tree_t d)
+    const char *name_base = strrchr(istr(tree_ident(d)), ':') + 1;
+    const size_t base_len = strlen(name_base);
+    char name[base_len + 64];
+-   strncpy(name, name_base, base_len + 64);
+    if (type_is_array(type))
+-      snprintf(name + base_len, 64, "[%d:%d]\n", msb, lsb);
++      checked_sprintf(name, sizeof(name), "%s[%d:%d]\n", name_base, msb, lsb);
++   else
++      checked_sprintf(name, sizeof(name), "%s", name_base);
+ 
+    data->handle = fstWriterCreateVar2(
+       fst_ctx,
+diff --git a/src/rt/vcd.c b/src/rt/vcd.c
+index 09141488..1f21d687 100644
+--- a/src/rt/vcd.c
++++ b/src/rt/vcd.c
+@@ -187,9 +187,10 @@ static void vcd_process_signal(tree_t d, int *next_key)
+    const char *name_base = strrchr(istr(tree_ident(d)), ':') + 1;
+    const size_t base_len = strlen(name_base);
+    char name[base_len + 64];
+-   strncpy(name, name_base, base_len + 64);
+    if (type_is_array(type))
+-      snprintf(name + base_len, 64, "[%d:%d]\n", msb, lsb);
++      checked_sprintf(name, sizeof(name), "%s[%d:%d]\n", name_base, msb, lsb);
++   else
++      checked_sprintf(name, sizeof(name), "%s", name_base);
+ 
+    tree_add_attr_ptr(d, vcd_data_i, data);
+ 
+diff --git a/src/vcode.c b/src/vcode.c
+index f1745744..6ea9db43 100644
+--- a/src/vcode.c
++++ b/src/vcode.c
+@@ -2682,7 +2682,7 @@ int vcode_unit_depth(void)
+ vcode_type_t vcode_unit_result(void)
+ {
+    assert(active_unit != NULL);
+-   assert(active_unit->kind = VCODE_UNIT_FUNCTION);
++   assert(active_unit->kind == VCODE_UNIT_FUNCTION);
+    return active_unit->result;
+ }
+ 
+@@ -5096,7 +5096,7 @@ static void vcode_write_unit(vcode_unit_t unit, fbuf_t *f,
+ 
+ void vcode_write(vcode_unit_t unit, fbuf_t *f)
+ {
+-   assert(unit->kind = VCODE_UNIT_CONTEXT);
++   assert(unit->kind == VCODE_UNIT_CONTEXT);
+ 
+    write_u32(VCODE_MAGIC, f);
+    write_u8(VCODE_VERSION, f);

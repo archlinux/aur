@@ -1,0 +1,25 @@
+From 122055b1b359d2890e3bd2050de1ffb0ee06050b Mon Sep 17 00:00:00 2001
+From: Nick Gasson <nick@nickg.me.uk>
+Date: Sun, 17 Mar 2019 21:03:34 +0800
+Subject: [PATCH] Fix segfault with -O0
+
+---
+ src/cgen.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/src/cgen.c b/src/cgen.c
+index a181f5c6..e251f562 100644
+--- a/src/cgen.c
++++ b/src/cgen.c
+@@ -3595,6 +3595,11 @@ static void cgen_optimise(void)
+ {
+    LLVMPassManagerRef pass_mgr = LLVMCreatePassManager();
+ 
++   LLVMAddInstructionCombiningPass(pass_mgr);
++   LLVMAddReassociatePass(pass_mgr);
++   LLVMAddGVNPass(pass_mgr);
++   LLVMAddCFGSimplificationPass(pass_mgr);
++
+    LLVMPassManagerBuilderRef builder = LLVMPassManagerBuilderCreate();
+    LLVMPassManagerBuilderSetOptLevel(builder, opt_get_int("optimise"));
+    LLVMPassManagerBuilderPopulateModulePassManager(builder, pass_mgr);

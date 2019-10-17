@@ -1,0 +1,70 @@
+From 3c61c812e111b5458e0ccebec09f9e101e7ad61a Mon Sep 17 00:00:00 2001
+From: Nick Gasson <nick@nickg.me.uk>
+Date: Sat, 5 Jan 2019 20:14:52 +0800
+Subject: [PATCH] Fix build with LLVM 7.0
+
+---
+ m4/ax_llvm_c.m4 | 5 +++++
+ src/cgen.c      | 8 ++++++++
+ 2 files changed, 13 insertions(+)
+
+diff --git a/m4/ax_llvm_c.m4 b/m4/ax_llvm_c.m4
+index 22f6060b..661f3216 100644
+--- a/m4/ax_llvm_c.m4
++++ b/m4/ax_llvm_c.m4
+@@ -95,6 +95,11 @@ AC_DEFUN([AX_LLVM_C], [
+                                  [LLVM has new ORC API])
+           fi
+ 
++          if test "$llvm_ver_num" -lt "70"; then
++              AC_DEFINE_UNQUOTED(LLVM_INTRINSIC_ALIGN, [1],
++                                 [LLVM intrinsics have alignment param])
++          fi
++
+           LLVM_OBJ_EXT="o"
+           case $host_os in
+               *cygwin*|msys*|mingw32*)
+diff --git a/src/cgen.c b/src/cgen.c
+index 1fd062ae..c4120dd2 100644
+--- a/src/cgen.c
++++ b/src/cgen.c
+@@ -2029,7 +2029,9 @@ static void cgen_op_copy(int op, cgen_ctx_t *ctx)
+       llvm_void_cast(dest),
+       llvm_void_cast(src),
+       bytes,
++#if LLVM_INTRINSIC_ALIGN
+       llvm_int32(4),
++#endif
+       llvm_int1(0)
+    };
+    LLVMBuildCall(builder, llvm_fn(cgen_memcpy_name("memmove", 8)),
+@@ -2229,7 +2231,9 @@ static void cgen_op_memset(int op, cgen_ctx_t *ctx)
+       llvm_void_cast(ptr),
+       LLVMBuildZExt(builder, value, LLVMInt8Type(), ""),
+       length,
++#if LLVM_INTRINSIC_ALIGN
+       llvm_int32(4),
++#endif
+       llvm_int1(false)
+    };
+ 
+@@ -3769,7 +3773,9 @@ static LLVMValueRef cgen_support_fn(const char *name)
+          LLVMPointerType(LLVMInt8Type(), 0),
+          LLVMInt8Type(),
+          LLVMInt32Type(),
++#if LLVM_INTRINSIC_ALIGN
+          LLVMInt32Type(),
++#endif
+          LLVMInt1Type()
+       };
+       fn = LLVMAddFunction(module, "llvm.memset.p0i8.i32",
+@@ -3786,7 +3792,9 @@ static LLVMValueRef cgen_support_fn(const char *name)
+          LLVMPointerType(LLVMIntType(width), 0),
+          LLVMPointerType(LLVMIntType(width), 0),
+          LLVMInt32Type(),
++#if LLVM_INTRINSIC_ALIGN
+          LLVMInt32Type(),
++#endif
+          LLVMInt1Type()
+       };
+       fn = LLVMAddFunction(module, cgen_memcpy_name(kind, width),

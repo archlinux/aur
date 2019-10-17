@@ -2,13 +2,13 @@
 pkgdesc='VHDL compiler and simulator'
 pkgname=nvc
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 url='https://github.com/nickg/nvc'
 license=(GPL3)
-depends=(libelf llvm6-libs)
+depends=(libelf llvm7-libs)
 conflicts=(nvc-git)
 arch=(x86_64 i686)
-makedepends=(pkgconfig make flex check llvm6 tcl)
+makedepends=(pkgconfig make flex check llvm7 tcl automake autoconf)
 
 _vital_url='https://raw.githubusercontent.com/tgingold/ghdl/master/libraries/vital2000'
 
@@ -19,8 +19,10 @@ source=("${url}/releases/download/r${pkgver}/${pkgname}-${pkgver}.tar.gz"
 		"${_vital_url}/prmtvs_p.vhdl"
 		"${_vital_url}/prmtvs_b.vhdl"
 		"${_vital_url}/memory_p.vhdl"
-		"${_vital_url}/memory_b.vhdl")
-
+		"${_vital_url}/memory_b.vhdl"
+		01-llvm7-support.patch
+		02-fix-warnings.patch
+		03-fix-segfault.patch)
 sha512sums=('4450f035c0355befa18636748b7eddb0a4710d4db3b38dfba581ecfc5f1bdaa02ddcbcc1b5cbe42cfcb23688288095c9d06f83e240b8ae59c65163c5db61aba6'
             '428ebaaa02eb25240569c90e907828ce87e7a18e3a61d9809dda8ecc0bb46a59d0d6c15e625cc0d8e92b26d37dae3be68b480acc77326c07b763fd986bd8e563'
             'bdc38f3f3b5f9b0e572277e8a984361fec7fc877db7ee819bfe4cc9de0f101e53d52472b39b0d3b2c931b50af942378002481dff8e4b99732823ec8d364abe12'
@@ -28,10 +30,22 @@ sha512sums=('4450f035c0355befa18636748b7eddb0a4710d4db3b38dfba581ecfc5f1bdaa02dd
             '741b95985a4a98427d459dba141eebca2fbc3b1a1a3c1cf237d5b6e9d5e12417a9568b38f98049ffdaaa6d6ea11604a869a53a1b66956d61c6487e53b719b309'
             'f0f604bb5bd1e0a8a2a15a4ac5180948e35be30f1479646ddf52803100dcf2c3b8546722f23a81934d006be1b25b44a7fd76ba3dbc8a1ad670560b405f53a0f2'
             '7358582b3f3877c8492b8cce1bc238dc6ef60818cdfe7e4a2ed5cb50ffe74c81221b7e473e59504328d2583c7e555457be50faf9238402bce1f6236586891c51'
-            '41d9d4862db13cf741fa857ca085ba3fa3596d61eb8276effcfe8b9b7359479670c83fe525a98b595f523506c821b2ed3569fa72df5f62a6f83f7805436b02bf')
+            '41d9d4862db13cf741fa857ca085ba3fa3596d61eb8276effcfe8b9b7359479670c83fe525a98b595f523506c821b2ed3569fa72df5f62a6f83f7805436b02bf'
+            '3e82eddc83d3f0d63097b476e6f9e97e12e9aba4526f4d03c838b52abaa828e60f2ddb88dc6776d0a53417f6f6df6fbea6ff5bbbaafae11e8c03de2082d88b46'
+            'd38d400546de1c6a2f5c732a4e6af50641b6fe95435cd0fd410f9feeba4cac7660400799a80178300d6a84522f73719bd1bc7ae89af480a37da85c777235dba7'
+            'd41e1f6a2c7d5a6a1f25619b3c836534a25dd955d3ee6ce9580951a6e32d488da66c0d2d8e1976d63d5a7539146126dbbfc946114a7ac9e7e40fc088f43ddae0')
 
 prepare () {
-	cd "${pkgname}-${pkgver}/lib/ieee"
+	cd "${pkgname}-${pkgver}"
+
+	local name
+	for name in 01-llvm7-support 02-fix-warnings 03-fix-segfault ; do
+		msg2 "Applying patch: ${name} ..."
+		patch -p1 < "${srcdir}/${name}.patch"
+	done
+	autoreconf -fvi
+
+	cd lib/ieee
 	cp -v "${srcdir}"/*.vhdl "${srcdir}/1076.2-1996_downloads"/*.vhdl .
 
 	sed -i -e '119,120 s/^--/  /' -e '89 s/^--/  /' \
@@ -43,7 +57,7 @@ prepare () {
 
 build () {
 	cd "${pkgname}-${pkgver}"
-	./configure --prefix=/usr
+	./configure --prefix=/usr --with-llvm
 	make
 }
 

@@ -1,8 +1,5 @@
-/*.log
-/*.tar
-/*.tar.*
-/*.zip
-/*.vhdl
-/pkg/
-/src/
-/work/
+*
+!/PKGBUILD
+!/.SRCINFO
+!/.gitignore
+!/*.patch
