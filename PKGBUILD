@@ -1,4 +1,4 @@
-# Maintainer: GI_Jack <GI_Jack@hackermail.com>
+# Maintainer: GI_Jack <iamjacksemail@hackermail.com>
 
 # This is the package build for the tools to build nban and the shuriken
 # This was originally developed for Ninja OS, but has been back ported to Arch
@@ -20,7 +20,7 @@
 # This is very much a valid security tool, and its very well documented.
 
 pkgname=ninjaos-bootandnuke
-pkgver=1.4
+pkgver=1.5
 pkgrel=1
 pkgdesc="Ninja Boot'n'Nuke. Boot'n'Nuke implemented as an initcpio image."
 url="http://ninjaos.org/projects.html#bootandnuke"
@@ -28,20 +28,16 @@ arch=('any')
 license=('GPL3')
 groups=('ninjaos')
 depends=('mkinitcpio' 'syslinux' 'parted' 'dosfstools')
-optdepends=('hdparm: ATA Security-Erase command')
 install="${pkgname}.install"
 replaces=("mkinitcpio-nban")
 conflicts=("mkinitcpio-nban")
 provides=("mkinitcpio-nban")
 source=("http://ninjaos.org/downloads/projects/${pkgname}-${pkgver}.tar.gz"
-        "http://ninjaos.org/downloads/projects/${pkgname}-${pkgver}.tar.gz.sig"
-        "README")
-sha256sums=('dce692bbd844646182223bf395451a233f942a69e37be20a6c5bb5f771d58ce8'
-            'SKIP'
-            '93e1fe5810a837399724d1e6fb9403aa68e852c731b93656c6667ea4bea2b075')
+        "http://ninjaos.org/downloads/projects/${pkgname}-${pkgver}.tar.gz.sig")
+sha256sums=('f645198e50fcdc7318786ba05ebad2ceea696f20ea027b9d95cb4d6410292b0e'
+            'SKIP')
 validpgpkeys=('D5E76841665A4408D73C2D8796FD6113A1F8331E')
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     cp -ra . "${pkgdir}"
-    cp "${srcdir}/README" "${pkgdir}/README"
 }
