@@ -1,6 +1,6 @@
 # Maintainer: Johannes Arnold <johannesarnold@stud.uni-hannover.de>
 pkgname=xfwm4-rounded-corners
-pkgver=4.13.2
+pkgver=4.14.0
 pkgrel=1
 epoch=
 pkgdesc="Patch for Xfwm4 that allows drawing windows with rounded corners"

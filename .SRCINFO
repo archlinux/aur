@@ -1,6 +1,6 @@
 pkgbase = xfwm4-rounded-corners
 	pkgdesc = Patch for Xfwm4 that allows drawing windows with rounded corners
-	pkgver = 4.13.2
+	pkgver = 4.14.0
 	pkgrel = 1
 	url = https://github.com/wsdfhjxc/xfwm-rounded-corners-patch
 	arch = x86_64
