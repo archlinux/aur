@@ -1,14 +1,14 @@
 # Maintainer: Pierre Choffet <peuc@wanadoo.fr>
 
 pkgname=return-to-the-roots-git
-pkgver=r4319.fbaa134b
+pkgver=r4467.3af7f7c76
 pkgrel=1
 pkgdesc="Free/libre implementation of The Settlers II game engine"
 arch=("x86_64")
 url="https://siedler25.org/"
 license=("GPL3")
-makedepends=("cmake" "git" "boost" "mesa" "sdl_mixer" "curl" "lua52" "miniupnpc")
-depends=("boost-libs" "libgl" "sdl_mixer" "miniupnpc" "lua52")
+makedepends=("cmake" "git" "boost" "mesa" "sdl_mixer" "curl" "lua52" "miniupnpc" "libsamplerate")
+depends=("boost-libs" "libgl" "sdl_mixer" "miniupnpc" "lua52" "libsamplerate")
 optdepends=("siedler2-data")
 conflicts=("return-to-the-roots" "s25rttr" "s25rttr-nightly-bin")
 provides=("return-to-the-roots")
@@ -75,7 +75,10 @@ build() {
 
 	# Build
 	mkdir -p build && cd build
-	cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr" -DBUILD_TESTING=Off -RTTR_BINDIR="bin" -DRTTR_DATADIR="share/s25rttr" -DRTTR_LIBDIR="lib/s25rttr" -DRTTR_EXTRA_BINDIR="bin" ..
+	cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr" \
+	      -DBUILD_TESTING=Off -RTTR_BINDIR="bin" -DRTTR_DATADIR="share/s25rttr" \
+	      -DRTTR_LIBDIR="lib/s25rttr" -DRTTR_EXTRA_BINDIR="bin" \
+	      -DRTTR_USE_SYSTEM_SAMPLERATE=On ..
 	make
 }
 
