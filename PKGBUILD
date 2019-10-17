@@ -10,7 +10,7 @@ pkgdesc="A 2D game about building and maintaining factories (stable branch)."
 arch=('x86_64')
 url="http://www.factorio.com/"
 license=('custom: commercial')
-conflicts=('factorio' 'factorio-demo')
+conflicts=('factorio' 'factorio-demo' 'factorio-experimental')
 provides=("factorio=$pkgver")
 depends=('libxcursor' 'gcc-libs' 'alsa-lib' 'libxrandr' 'libxinerama' 'mesa')
 makedepends=('jq')

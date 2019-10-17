@@ -15,6 +15,7 @@ pkgbase = factorio-stable
 	provides = factorio=0.17.69
 	conflicts = factorio
 	conflicts = factorio-demo
+	conflicts = factorio-experimental
 	options = !strip
 	source = factorio.desktop
 	source = LICENSE
