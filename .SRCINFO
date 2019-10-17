@@ -1,0 +1,22 @@
+pkgbase = libtorrent-ps-ch
+	pkgdesc = BitTorrent library written in C++ for use with rtorrent-ps-ch
+	pkgver = 1.8.3
+	pkgrel = 1
+	url = https://github.com/rakshasa/libtorrent
+	arch = any
+	license = GPL2
+	depends = openssl
+	provides = libtorrent
+	conflicts = libtorrent
+	conflicts = libtorrent-ps
+	source = https://github.com/rakshasa/libtorrent/archive/v0.13.8.tar.gz
+	source = backport_lt_all_01-partially_done_and_choke_group_fix.patch
+	source = backport_lt_all_02-honor_system_file_allocate_fix.patch
+	source = lt-ps_all_02-better-bencode-errors_all.patch
+	md5sums = dd184eadb8b449ddc6c3498a93ddd568
+	md5sums = 2a8eb09877e81e3e72bd544c27b45dbb
+	md5sums = 4797c5abf04dca2468178bc85244d076
+	md5sums = dfae06b33afa738211619040810be8b4
+
+pkgname = libtorrent-ps-ch
+

@@ -1,0 +1,282 @@
+--- a/src/download/download_wrapper.cc	2016-12-12 08:49:18.000000000 +0000
++++ a/src/download/download_wrapper.cc	2017-04-30 21:25:15.511379804 +0100
+@@ -228,6 +228,7 @@ DownloadWrapper::receive_hash_done(Chunk
+         priority_queue_erase(&taskScheduler, &m_main->delay_partially_done());
+         priority_queue_erase(&taskScheduler, &m_main->delay_partially_restarted());
+         priority_queue_insert(&taskScheduler, &m_main->delay_partially_done(), cachedTime);
++        finished_download();
+       }
+     
+       if (!m_main->have_queue()->empty() && m_main->have_queue()->front().first >= cachedTime)
+@@ -325,8 +326,10 @@ DownloadWrapper::receive_tick(uint32_t t
+ 
+ void
+ DownloadWrapper::receive_update_priorities() {
+-  if (m_main->chunk_selector()->empty())
++  if (m_main->chunk_selector()->empty()) {
++    file_list()->set_selected_size_bytes();
+     return;
++  }
+ 
+   data()->mutable_high_priority()->clear();
+   data()->mutable_normal_priority()->clear();
+@@ -373,11 +376,15 @@ DownloadWrapper::receive_update_prioriti
+     priority_queue_erase(&taskScheduler, &m_main->delay_partially_done());
+     priority_queue_erase(&taskScheduler, &m_main->delay_partially_restarted());
+     
+-    if (was_partial)
++    if (was_partial) {
+       priority_queue_insert(&taskScheduler, &m_main->delay_partially_done(), cachedTime);
+-    else
++      finished_download();
++    } else {
+       priority_queue_insert(&taskScheduler, &m_main->delay_partially_restarted(), cachedTime);
++    }
+   }
++
++  file_list()->set_selected_size_bytes();
+ }
+ 
+ void
+--- a/src/manager.cc	2016-12-12 08:49:18.000000000 +0000
++++ a/src/manager.cc	2017-04-30 21:15:43.000000000 +0100
+@@ -98,7 +98,7 @@ Manager::Manager() :
+   m_connectionManager->listen()->slot_accepted() =
+     std::bind(&HandshakeManager::add_incoming, m_handshakeManager, std::placeholders::_1, std::placeholders::_2);
+ 
+-  m_resourceManager->push_group("default");
++  m_resourceManager->push_group("default_leech");
+   m_resourceManager->group_back()->up_queue()->set_heuristics(choke_queue::HEURISTICS_UPLOAD_LEECH);
+   m_resourceManager->group_back()->down_queue()->set_heuristics(choke_queue::HEURISTICS_DOWNLOAD_LEECH);
+ }
+--- a/src/protocol/handshake_manager.cc	2016-12-12 08:49:18.000000000 +0000
++++ a/src/protocol/handshake_manager.cc	2017-04-30 21:15:43.000000000 +0100
+@@ -232,7 +232,7 @@ HandshakeManager::receive_succeeded(Hand
+ 
+     if (!download->info()->is_active())
+       reason = e_handshake_inactive_download;
+-    else if (download->file_list()->is_done() && handshake->bitfield()->is_all_set())
++    else if (download->file_list()->data()->is_partially_done() && handshake->bitfield()->is_all_set())
+       reason = e_handshake_unwanted_connection;
+     else
+       reason = e_handshake_duplicate;
+--- a/src/protocol/peer_connection_base.cc	2016-12-12 08:49:18.000000000 +0000
++++ a/src/protocol/peer_connection_base.cc	2017-04-30 21:15:43.000000000 +0100
+@@ -197,7 +197,7 @@ PeerConnectionBase::initialize(DownloadM
+ 
+   m_peerChunks.download_cache()->clear();
+ 
+-  if (!m_download->file_list()->is_done()) {
++  if (!m_download->file_list()->data()->is_partially_done()) {
+     m_sendInterested = true;
+     m_downInterested = true;
+   }
+--- a/src/protocol/peer_connection_leech.cc	2016-12-12 08:49:18.000000000 +0000
++++ a/src/protocol/peer_connection_leech.cc	2017-04-30 21:15:43.000000000 +0100
+@@ -691,7 +691,7 @@ PeerConnection<type>::read_have_chunk(ui
+     m_download->choke_group()->up_queue()->set_not_queued(this, &m_upChoke);
+   }
+ 
+-  if (type != Download::CONNECTION_LEECH || m_download->file_list()->is_done())
++  if (type != Download::CONNECTION_LEECH || m_download->file_list()->data()->is_partially_done())
+     return;
+ 
+   if (is_down_interested()) {
+--- a/src/torrent/data/file_list.cc	2016-12-12 08:49:18.000000000 +0000
++++ a/src/torrent/data/file_list.cc	2017-04-30 21:15:43.000000000 +0100
+@@ -86,6 +86,7 @@ FileList::FileList() :
+   m_isOpen(false),
+ 
+   m_torrentSize(0),
++  m_selectedSize(0),
+   m_chunkSize(0),
+   m_maxFileSize(~uint64_t()) {
+ }
+@@ -98,6 +99,7 @@ FileList::~FileList() {
+ 
+   base_type::clear();
+   m_torrentSize = 0;
++  m_selectedSize = 0;
+ }
+ 
+ bool
+@@ -193,6 +195,65 @@ FileList::set_max_file_size(uint64_t siz
+   m_maxFileSize = size;
+ }
+ 
++// This function should be called from receive_update_priorities().
++// It offloads continous calculation by updating the m_selectedSize property.
++// Its purpose is to replace size_bytes() with selected_size_bytes()
++// by taking into account partial downloads.
++void
++FileList::set_selected_size_bytes(uint64_t bytes) {
++  if (bytes > 0) {
++    m_selectedSize = bytes;
++    return;
++  }
++
++  if (is_done()) {
++    m_selectedSize = m_torrentSize;
++    return;
++  }
++
++  uint64_t completedBytes = completed_bytes();
++
++  if (data()->is_partially_done()) {
++    m_selectedSize = completedBytes;
++    return;
++  }
++
++  uint32_t selectedSizeChunks = 0;
++  uint32_t prevChunk = -1;
++  bool areAllFilesSelected = true;
++  bool isLastFileSelected = false;
++
++  for (FileList::const_iterator itr = begin(), last = end(); itr != last; itr++) {
++
++    if ((*itr)->priority() != PRIORITY_OFF) {
++      selectedSizeChunks += (*itr)->size_chunks() - ((*itr)->range_first() == prevChunk ? 1 : 0);
++      prevChunk = (*itr)->range_second() - 1;
++
++      if (itr == end() - 1)
++        isLastFileSelected = true;
++    } else {
++      areAllFilesSelected = false;
++    }
++
++  }
++
++  if (areAllFilesSelected) {
++    m_selectedSize = m_torrentSize;
++    return;
++  }
++
++  uint64_t selectedSizeBytes = (uint64_t)selectedSizeChunks * (uint64_t)m_chunkSize;
++
++  // Dealing with size of last chunk as it's usually smaller than the rest.
++  uint64_t remainder = m_torrentSize % (uint64_t)m_chunkSize;
++
++  if (isLastFileSelected && remainder != 0)
++    selectedSizeBytes = selectedSizeBytes - (uint64_t)m_chunkSize + remainder;
++
++  // Set completed bytes if some files (e.g. all of them) were set to Off later.
++  m_selectedSize = (selectedSizeBytes < completedBytes ? completedBytes : selectedSizeBytes);
++}
++
+ // This function should really ensure that we arn't dealing files
+ // spread over multiple mount-points.
+ uint64_t
+@@ -376,6 +432,7 @@ FileList::initialize(uint64_t torrentSiz
+ 
+   m_chunkSize = chunkSize;
+   m_torrentSize = torrentSize;
++  m_selectedSize = torrentSize;
+   m_rootDir = ".";
+ 
+   m_data.mutable_completed_bitfield()->set_size_bits((size_bytes() + chunk_size() - 1) / chunk_size());
+@@ -725,6 +782,7 @@ FileList::reset_filesize(int64_t size) {
+   close();
+   m_chunkSize = size;
+   m_torrentSize = size;
++  m_selectedSize = size;
+   (*begin())->set_size_bytes(size);
+   (*begin())->set_range(m_chunkSize);
+ 
+--- a/src/torrent/data/file_list.h	2016-12-12 08:49:18.000000000 +0000
++++ a/src/torrent/data/file_list.h	2017-04-30 21:15:43.000000000 +0100
+@@ -109,6 +109,9 @@ public:
+   uint64_t            size_bytes() const                              { return m_torrentSize; }
+   uint32_t            size_chunks() const                             { return bitfield()->size_bits(); }
+ 
++  uint64_t            selected_size_bytes() const                     { return m_selectedSize; }
++  void                set_selected_size_bytes(uint64_t bytes = 0);
++
+   uint32_t            completed_chunks() const                        { return bitfield()->size_set(); }
+   uint64_t            completed_bytes() const;
+   uint64_t            left_bytes() const;
+@@ -187,6 +190,7 @@ private:
+   uint64_t            m_torrentSize;
+   uint32_t            m_chunkSize;
+   uint64_t            m_maxFileSize;
++  uint64_t            m_selectedSize;
+ 
+   std::string         m_rootDir;
+ 
+--- a/src/torrent/download.cc	2016-12-12 08:49:18.000000000 +0000
++++ a/src/torrent/download.cc	2017-04-30 21:15:43.000000000 +0100
+@@ -565,32 +565,6 @@ Download::set_connection_type(Connection
+   m_ptr->set_connection_type(t);
+ }
+ 
+-Download::HeuristicType
+-Download::upload_choke_heuristic() const {
+-  return (Download::HeuristicType)m_ptr->main()->choke_group()->up_queue()->heuristics();
+-}
+-
+-void
+-Download::set_upload_choke_heuristic(HeuristicType t) {
+-  if ((choke_queue::heuristics_enum)t >= choke_queue::HEURISTICS_MAX_SIZE)
+-    throw input_error("Invalid heuristics value.");
+-  
+-  m_ptr->main()->choke_group()->up_queue()->set_heuristics((choke_queue::heuristics_enum)t);
+-}
+-
+-Download::HeuristicType
+-Download::download_choke_heuristic() const {
+-  return (Download::HeuristicType)m_ptr->main()->choke_group()->down_queue()->heuristics();
+-}
+-
+-void
+-Download::set_download_choke_heuristic(HeuristicType t) {
+-  if ((choke_queue::heuristics_enum)t >= choke_queue::HEURISTICS_MAX_SIZE)
+-    throw input_error("Invalid heuristics value.");
+-  
+-  m_ptr->main()->choke_group()->down_queue()->set_heuristics((choke_queue::heuristics_enum)t);
+-}
+-
+ void
+ Download::update_priorities() {
+   m_ptr->receive_update_priorities();
+--- a/src/torrent/download.h	2016-12-12 08:49:18.000000000 +0000
++++ a/src/torrent/download.h	2017-04-30 21:15:43.000000000 +0100
+@@ -183,15 +183,6 @@ public:
+   ConnectionType      connection_type() const;
+   void                set_connection_type(ConnectionType t);
+ 
+-  typedef enum {
+-  } HeuristicType;
+-
+-  HeuristicType       upload_choke_heuristic() const;
+-  void                set_upload_choke_heuristic(HeuristicType t);
+-
+-  HeuristicType       download_choke_heuristic() const;
+-  void                set_download_choke_heuristic(HeuristicType t);
+-
+   // Call this when you want the modifications of the download priorities
+   // in the entries to take effect. It is slightly expensive as it rechecks
+   // all the peer bitfields to see if we are still interested.
+--- a/src/torrent/peer/connection_list.cc	2016-12-12 08:49:18.000000000 +0000
++++ a/src/torrent/peer/connection_list.cc	2017-04-30 21:15:43.000000000 +0100
+@@ -79,7 +79,7 @@ ConnectionList::clear() {
+ 
+ bool
+ ConnectionList::want_connection(PeerInfo* p, Bitfield* bitfield) {
+-  if (m_download->file_list()->is_done() || m_download->initial_seeding() != NULL)
++  if (m_download->file_list()->data()->is_partially_done() || m_download->initial_seeding() != NULL)
+     return !bitfield->is_all_set();
+ 
+   if (!m_download->info()->is_accepting_seeders())
+--- a/src/torrent/utils/resume.cc	2016-12-12 08:49:18.000000000 +0000
++++ a/src/torrent/utils/resume.cc	2017-04-30 21:15:43.000000000 +0100
+@@ -254,10 +254,7 @@ resume_save_progress(Download download,
+ 
+       //    } else if ((*listItr)->completed_chunks() == (*listItr)->size_chunks()) {
+ 
+-    } else if (fileList->bitfield()->is_all_set()) {
+-      // Currently only checking if we're finished. This needs to be
+-      // smarter when it comes to downloading partial torrents, etc.
+-
++    } else if (download.data()->is_partially_done()) {
+       // This assumes the syncs are properly called before
+       // resume_save_progress gets called after finishing a torrent.
+       filesItr->insert_key("mtime", (int64_t)fs.modified_time());
