@@ -1,14 +1,15 @@
 # Maintainer:  Sparadox <etienne.lafarge at gmail.com>
+# Co-Maintainer: flaccid aka Chris Fordham <chris@fordham.id.au>
 # Contributor:  kpcyrd <git@rxv.cc>
 # Contributor: Jonathan Steel <jsteel at archlinux.org>
 # Contributor: Daniel Wallace <danielwallace at gtmanfred dot com>
 
 pkgname=cloud-init
-pkgver=19.1
-pkgrel=2
-pkgdesc="The standard for customising cloud instances"
+pkgver=19.2
+pkgrel=1
+pkgdesc="The defacto multi-distribution package that handles early initialization of a cloud instance."
 arch=('any')
-url="https://cloud-init.io"
+url="https://cloud-init.io/"
 license=('GPL3')
 depends=(
   'dhclient'
@@ -44,14 +45,14 @@ source=(
   archlinux.cloud.cfg
 )
 sha256sums=(
-  '75be8cbff1431883227c05356cb69400f20bbb2666fd05e085f846ecf1d153cb'
+  'f5ead1b3c782c159669f8f8779c45d16a986c7405425d75f915ec55301d83a07'
   '0ace6a9e4156145e5b50bd5fa75d6aeefe8e5c10a63f8d9e0d3c7be4c9b53942'
   '0fb03b5827d0c7540633b62f1855c9d2731d8e9bf7946d5e1ab60426f1289484'
 )
 
 prepare(){
   pushd "$pkgname-$pkgver" >/dev/null
-    patch -Np1 -i "$startdir/fix-lib.patch"
+    patch -Np1 -i "$srcdir/fix-lib.patch"
     sed -e 's:/etc/systemd:/usr/lib/systemd:g' -e 's:\"/lib\":\"/usr/lib\":g' -i setup.py
   popd
 }
@@ -61,5 +62,5 @@ package() {
     python ./setup.py install --root="$pkgdir" --init-system systemd
   popd
 
-  install -m644 ../archlinux.cloud.cfg "$pkgdir"/etc/cloud/cloud.cfg
+  install -m644 "$srcdir/archlinux.cloud.cfg" "$pkgdir/etc/cloud/cloud.cfg"
 }
