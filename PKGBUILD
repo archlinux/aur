@@ -1,22 +1,26 @@
-# Maintainer: Carsten Feuls <archlinux@carstenfeuls.de>
+# Maintainer: farwayer <farwayer@gmail.com>
 
-pkgname=ruby-excon
-_gemname=excon
-pkgver=0.67.0
-pkgrel=1
+_name=excon
+_v=0.67.0
+_r=2
+_gem=$_name-$_v.gem
+
+pkgname=ruby-$_name
+pkgver=$_v
+pkgrel=$_r
 pkgdesc="EXtended http(s) CONnections"
 arch=('any')
 url="https://github.com/geemus/excon"
 license=('MIT')
 depends=('ruby')
 makedepends=('rubygems' 'ruby-rdoc')
-source=(http://rubygems.org/downloads/${_gemname}-${pkgver}.gem)
-noextract=(${_gemname}-${pkgver}.gem)
+source=(http://rubygems.org/downloads/$_gem)
+noextract=($_gem)
+sha256sums=('e264d6eeb58a8b1f5e2e6bf0c1edd5376c134be942e03dd63262ba48e01347ec')
 
 package() {
-  cd "${srcdir}"
-  local _gemdir="$(ruby -e'puts Gem.default_dir')"
-
-  gem install --ignore-dependencies --no-user-install -i "${pkgdir}${_gemdir}" "${_gemname}-${pkgver}.gem"
+  local _gemdir="$pkgdir/$(ruby -e'puts Gem.default_dir')"
+  gem install --ignore-dependencies --no-user-install -i "$_gemdir" "$_gem"
+  rm "$_gemdir/cache/$_gem"
+  install -D -m644 "$_gemdir/gems/$_name-$_v/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-sha512sums=('b6aa277794a970d51a34eac6f1f5ce85f5cb327d0c50bc4df328a02d9d5320e00248a22178dbb76a7a46e4a1b0db4cdd40e150ef393e860861affe6f4db4cb00')
