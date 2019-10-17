@@ -3,7 +3,7 @@
 pkgname=anbox-image-gapps-houdini
 pkgver=2018.07.19
 pkgrel=2
-pkgdesc='Android image for running in Anbox with Houdini, SuperSU and OpenGApps'
+pkgdesc='Android image for running in Anbox with OpenGApps, Houdini and SuperSU'
 arch=('x86_64')
 url='https://anbox.io/'
 license=('custom')
