@@ -1,7 +1,7 @@
 pkgbase = snapcraft
 	pkgdesc = Build Ubuntu snappy packages.
 	pkgver = 3.8
-	pkgrel = 1
+	pkgrel = 2
 	url = http://snapcraft.io
 	arch = any
 	license = GPL
@@ -24,6 +24,7 @@ pkgbase = snapcraft
 	depends = python-pysha3
 	depends = python-requests-unixsocket
 	depends = python-pylxd
+	depends = python-pyelftools
 	optdepends = lxd
 	options = !emptydirs
 	source = https://github.com/snapcore/snapcraft/archive/3.8.tar.gz
