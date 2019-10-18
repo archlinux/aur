@@ -1,5 +1,5 @@
 #! /bin/bash
-# Maintainer: Rafael Cavalcanti <rc.cavalcanti at gmail dot com>
+# Maintainer: Rafael Cavalcanti <rccavalcanti at gmail dot com>
 # Contributor: Jorge Barroso <jorge.barroso.11 at gmail dot com>
 # Contributor: x-demon
 
@@ -8,9 +8,9 @@ _gitname=nicotine-plus
 pkgver=1.4.1.r17.g8b2c199
 pkgrel=1
 pkgdesc="A fork of Nicotine, a graphical client for Soulseek."
-arch=('i686' 'x86_64')
+arch=('any')
 url="http://nicotine-plus.org"
-license=('GPL')
+license=('GPL3')
 depends=('pygtk' 'gtk2' 'mutagen')
 makedepends=('git' 'python2')
 optdepends=('miniupnpc: To enable UPnP support'
@@ -32,3 +32,4 @@ build() {
 package() {
 	mv ${srcdir}/pkg/* ${pkgdir}
 }
+
