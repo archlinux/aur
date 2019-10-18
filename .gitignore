@@ -1,5 +1,8 @@
-/*
+# Ignore everything
+*
+
+# But not these files...
 !.gitignore
-!.SRCINFO
 !PKGBUILD
-!mullvad-vpn-beta.install
+!.SRCINFO
+!mullvad-vpn.install
