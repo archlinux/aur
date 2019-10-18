@@ -3,7 +3,7 @@
 
 _gemname=ruby-prof
 pkgname=ruby-$_gemname
-pkgver=0.15.1
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='Fast Ruby profiler'
 arch=(i686 x86_64)
@@ -13,7 +13,7 @@ depends=(ruby)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('2ec6bfbdb543f43a4876e707e07e4e40e45976ae')
+sha1sums=('9718ba1acef2d86337355326bf5a2ed4604404b5')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"

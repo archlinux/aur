@@ -1,16 +1,16 @@
 pkgbase = ruby-ruby-prof
 	pkgdesc = Fast Ruby profiler
-	pkgver = 0.15.1
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/ruby-prof/ruby-prof
 	arch = i686
 	arch = x86_64
 	license = MIT
 	depends = ruby
-	noextract = ruby-prof-0.15.1.gem
+	noextract = ruby-prof-1.0.0.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/ruby-prof-0.15.1.gem
-	sha1sums = 2ec6bfbdb543f43a4876e707e07e4e40e45976ae
+	source = https://rubygems.org/downloads/ruby-prof-1.0.0.gem
+	sha1sums = 9718ba1acef2d86337355326bf5a2ed4604404b5
 
 pkgname = ruby-ruby-prof
 
