@@ -1,0 +1,4 @@
+GDLauncher-linux-setup.AppImage
+pkg/
+src/
+*.tar.xz

@@ -1,8 +1,8 @@
 # Maintainer: S Stewart <tda@lmao.tf>
 # Special thanks to RyanTheAllmighty for making hyper-appimage
 pkgname="gdlauncher-appimage"
-pkgver="v0.12.1"
-pkgrel=2
+pkgver="v0.12.2"
+pkgrel=1
 arch=('x86_64')
 pkgdesc="Modded Minecraft launcher built with Electron/React"
 url="https://gdevs.io"
@@ -10,16 +10,14 @@ license=('MIT')
 install="gdlauncher-appimage.install"
 depends=('libnotify' 'libxss' 'libxtst' 'gconf' 'libindicator' 'libappindicator')
 
-_source_x86_64=(
+source_x86_64=(
+    "gdlauncher.desktop"
     "GDLauncher-linux-setup.AppImage::https://github.com/gorilla-devs/GDLauncher/releases/download/${pkgver}/GDLauncher-linux-setup.AppImage"
 )
 
-md5sums=(
-    "63b1ca5aad86bf11fefba7252327e646"
-)
-
-source=(
-    "gdlauncher.desktop"
+md5sums_x86_64=(
+    "310ff29d9c622367e31b989610a47617"
+    "b4963c40ec5b55ab618a5f4505431a3f"
 )
 
 prepare() {
@@ -34,7 +32,7 @@ prepare() {
 package() {
     # install the main files.
     install -d -m755 "${pkgdir}/opt/${pkgname}"
-    cp -Rr "${srcdir}/squashfs-root/app/"* "${pkgdir}/opt/${pkgname}"
+    cp -Rr "${srcdir}/squashfs-root/"* "${pkgdir}/opt/${pkgname}"
 
     # desktop entry
     install -D -m644 "${srcdir}/gdlauncher.desktop" "${pkgdir}/usr/share/applications/gdlauncher.desktop"
