@@ -2,7 +2,7 @@
 # Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname='dynamic-wallpaper-editor'
-pkgver='2.3'
+pkgver='2.4'
 pkgrel='1'
 pkgdesc="A little utility for creation or edition of GNOME desktop's XML wallpapers"
 changelog='CHANGELOG'

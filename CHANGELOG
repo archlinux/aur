@@ -1,3 +1,11 @@
+v2.4
+====
+Add a picture-wide menu with actions such as "Replace with…", thus missing
+pictures can be replaces without the necessity to set the durations again, or
+"View file" to open the file in the system image viewer.
+
+Wallpaper types are now managed from the primary menu again.
+
 v2.3
 ====
 Add the ability to search among pictures, fix a memory leak, improve the
