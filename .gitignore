@@ -1,3 +1,6 @@
-/pacman-hacks/
-/src/
-/pkg/
+*
+
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!CHANGELOG

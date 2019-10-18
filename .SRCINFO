@@ -1,16 +1,16 @@
 pkgbase = makemetapkg
 	pkgdesc = Create meta-packages for pacman
-	pkgver = 0.9.5
+	pkgver = 0.9.6
 	pkgrel = 1
 	url = https://gitlab.com/ayekat/pacman-hacks
-	changelog = changelog
+	changelog = CHANGELOG
 	arch = any
 	license = GPL3
 	makedepends = asciidoc
 	makedepends = git
 	depends = coreutils
 	conflicts = remakepkg
-	source = git+https://gitlab.com/ayekat/pacman-hacks.git#tag=v0.9.5
+	source = git+https://gitlab.com/ayekat/pacman-hacks.git#tag=v0.9.6
 	sha256sums = SKIP
 
 pkgname = makemetapkg

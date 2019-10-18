@@ -1,0 +1,357 @@
+================================================================================
+v0.9.6 (released on: 2019-10-08)
+
+REPKG:
+  * Improvements:
+    - When unpacking package files, ignore platform-specific file flags that may
+      lead to errors depending on the used filesystem.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+v0.9.5 (released on: 2019-08-02)
+
+REMAKEPKG
+  * Bug fixes:
+    - Don't exit with error code on success (if -k is not passed).
+
+ZR
+  * Bug fixes:
+    - Fix crash caused by unset variable.
+    - Don't invoke expac on a non-existing package file.
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+v0.9.4 (released on: 2019-07-31)
+
+MISCELLANEOUS/INTERNAL:
+  * Bug fixes:
+    - Makefile: Fix getpkg.1 installation
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+v0.9.3 (released on: 2019-07-31)
+
+REMAKEPKG
+  * Bug fixes:
+    - Download correct version of package with -b.
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+v0.9.2 (released on: 2019-07-26)
+
+REPKG
+  * Bug fixes:
+    - Fix crash in expect-{arch,desc,name,url} due to unset variables.
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+v0.9.1 (released on: 2019-07-25)
+
+MISCELLANEOUS/INTERNAL
+  * Bug fixes:
+    - Makefile: remove trailing reference to lib/string.sh.
+
+
+================================================================================
+v0.9 (released on: 2019-07-22)
+
+DIFFREPO
+  * Changes/Deprecations:
+    - Change -r option to -R, to be more in line with repkg.
+  * Improvements:
+    - Optimise comparison (fewer calls to pacman/expac, therefore faster).
+  * Additions:
+    - Add -b option to specify an alternative pacman package db location.
+
+FETCHPKG (new)
+  getpkg renamed to this.
+  * Additions:
+    - Add -b option to specify an alternative pacman package db location.
+
+GETPKG (deprecated)
+  fetchpkg (new) should be used now.
+
+METAPKG
+  * Bug fixes:
+    - Don't crash when XDG_CONFIG_HOME is unset.
+
+PACWHY (deprecated)
+  pactree (from pacman-contrib) should be used instead.
+
+PKGMIRROR
+  * Additions:
+    - Add -b option to specify an alternative pacman package db location.
+
+REMAKEPKG
+  * Bug fixes:
+    - remakepkg(1): Fix name of (hardcoded) directory used for rebuilding
+      packages.
+  * Improvements:
+    - Less verbose output by default (pass -d to see them all).
+    - Better error message format.
+    - More helpful -h message for -k option.
+    - For -k, save files to current working directory rather than pkg/.
+  * Additions:
+    - Add -b option to specify an alternative pacman package db location.
+
+REPKG
+  * Bug fixes:
+    - Fix false dependency conflicts caused by wrong package name matching.
+    - Properly update arch in output filename.
+    - Properly update package installation size.
+    - Support packages with files like /* or any hidden files directly in /.
+    - Check if parent directory exists (for create-file).
+    - Don't expect the user's makepkg.conf to exist.
+  * Changes/Deprecations:
+    - Rename change-mode to change-file-mode.
+  * Improvements:
+    - Less verbose output by default (pass -d to see them all).
+    - Better error message format.
+    - Be stricter and less verbose when patching.
+    - Allow absolute paths for patch files.
+  * Additions:
+    - Add set-name and set-desc commands for setting package name/description.
+    - Add change-file-uid and change-file-gid commands for setting file
+      ownership.
+    - Add add-file command for adding a file to the package.
+    - Add expect-… commands for performing various checks.
+
+MISCELLANEOUS/INTERNALS
+  * Removals:
+    - Remove lib/bool.sh, as booleans are now handled differently.
+    - Remove lib/string.sh, as it is not required by any script.
+  * Additions:
+    - Add lib/pacman.sh for dealing with alternative package DB locations
+      (required by diffrepo, fetchpkg, pkgmirror and remakepkg).
+
+
+================================================================================
+v0.8 (released on: 2019-06-10)
+
+GETPKG:
+  * Bug fixes:
+    - Properly fail on 404.
+
+METAPKG
+  * Bug fixes:
+    - Fix documentation for groups.
+    - Don't expect the user's makepkg.conf to exist.
+
+REPKG
+  * Bug fixes:
+    - Properly handle *non*-versioned depends/conflicts/provides/replaces.
+    - Fix path-related issues for remove-backup and rename-file.
+    - repkg(1): Fix note about mandatory options.
+
+ZR
+  * Changes/Deprecations:
+    - Use mappings for `zr add` (instead of declaring repo on command line).
+  * Additions:
+    - Add support for mappings.ini, to map packages to repositories.
+    - Add `map` command to show which repository a package is mapped to.
+
+MISCELLANEOUS/INTERNALS
+  * Bug fixes:
+    - Makefile: Fix PREFIX_… variable declarations.
+    - Makefile: Force rebuilding files containing software version.
+    - Makefile: Fix target dependencies to allow multithreaded building.
+    - Readme: Fix list of dependencies.
+  * Improvements:
+    - pacred: Use coreutils' `comm` instead of diffutils' `diff`
+      (-1 dependency).
+    - pkgmirror: Use pacman-conf to obtain package URL.
+
+
+================================================================================
+v0.7 (released on: 2018-09-18)
+
+CHECKRESTART
+  * Changes/Deprecations:
+    - Ignore /usr/share/{icons/hicolor/icon-theme,mime/mime}.cache
+
+METAPKG
+  * Bug fixes:
+    - Correctly print info messages for optional dependencies.
+    - Correctly generate conflicts/provides/replaces in PKGBUILD.
+    - Fix relative paths for output files.
+    - Properly escape special characters in descriptions and optdepends.
+
+REMAKEPKG
+  * Bug fixes:
+    - Don't test for (wrong) output file existence.
+    - Handle and forward repkg's -R correctly.
+
+REPKG
+  * Improvements:
+    - Automatically add provision for old package version/release (retains
+      compatibility for versioned dependencies).
+    - Add support for versioned depends/conflicts/provides/replaces.
+
+
+================================================================================
+v0.6 (released on: 2018-06-24)
+
+METAPKG
+  * Additions:
+    - Add `conflicts`/`provides`/`replaces`.
+
+PACRED
+  * Bug fixes:
+    - Don't treat base-devel specially
+
+REPKG
+  * Bug fixes:
+    - Correctly propagate errors from failing subroutines.
+    - Fix file check that could lead to incomplete/empty packages.
+  * Changes/Deprecations:
+    - `-o` now takes output *directory* as argument (filename is derived).
+    - Packages now get a dotted suffix for the pkgrel.
+
+ZR
+  * Changes/Deprecations:
+    - Repository profiles are now read from $XDG_CONFIG_HOME/zr/repos.
+
+
+================================================================================
+v0.5 (released on: 2018-04-16)
+
+DIFFREPO
+  * Additions:
+    - Add -n option to ignore/negate specific packages in a repository.
+
+MAKEMETAPKG (new)
+  Higher-level wrapper around metapkg (uses METAPKGBUILD files).
+
+METAPKG (new)
+  Generate meta-packages from compact rule files.
+
+REMAKEPKG
+  * Additions:
+    - Add -i option for specifying alternative REPKGBUILD file.
+
+REPKG
+  * Bug fixes:
+    - Fix unquoted variable (XDG_CONFIG_HOME).
+  * Changes/Deprecations:
+    - Drop functionality that reads rules from standard input (so `-r` is now
+      mandatory).
+  * Additions:
+    - Add add-group and remove-group commands.
+
+MISCELLANEOUS/INTERNAL
+  * Bug fixes:
+    - lib/bool.sh: Fix syntax error.
+  * Improvements
+    - Readme: Change description a bit ("simplify" → "complement").
+
+================================================================================
+v0.4 (released on: 2018-03-12)
+
+GETPKG
+  * Addition:
+    - Add -o option to specify alternative download file name.
+
+REMAKEPKG (new)
+  Wrapper around getpkg and repkg to easily rebuild a package.
+
+REPKG
+  Make it more low-level and intended for use with remakepkg.
+  * Bug fixes:
+    - Correctly update packager and build date as well
+    - Don't accept "empty line" or "comment" after a package name (instead
+      of a command).
+  * Changes/Deprecations:
+    - No global rules file anymore (see Additions section for new options).
+  * Additions:
+    - Add -r option for specifying rules file.
+    - Add -i option for specifying input package file.
+    - Add -o option for specifying output package file.
+    - Add set-arch and set-url commands.
+
+ZR
+  * Improvements:
+    - Group together the addition of files to a repo to make it faster.
+  * Bug fixes:
+    - Correctly add package to the remote database if invoked with -f.
+    - Don't redundantly print naked name of files to be removed.
+
+MISCELLANEOUS/INTERNAL
+  * Bug fixes:
+    - Show project commit date in man pages, not build date.
+
+
+================================================================================
+v0.3 (released on: 2018-02-26)
+
+The project is renamed from pacman-contrib-zuepfe to pacman-hacks.
+
+DIFFREPO (new)
+  List version differences between packages in multiple repositories.
+
+GETPKG (new)
+  Download a package from a mirror.
+
+PACBLOAT (removed)
+  pacman -Qet should be used instead (especially since base-devel is now a
+  meta-package).
+
+PKGMIRROR (new)
+  List mirror download URLs for a package.
+
+REPKG (new)
+  Apply modifications to package files.
+
+ZR
+  * Bug fixes:
+    - Fix argument handling for -p.
+  * Changes/Deprecations:
+    - Now invoked as `zr add {package} {repo}` and `zr rm {repo}/{package}`.
+  * Additions:
+    - Add `ls` subcommand for listing known/configured repositories.
+
+MISCELLANEOUS/INTERNAL
+  * Additions
+    - All scripts now provide a -h option for help output.
+
+
+================================================================================
+v0.2 (released on: 2018-02-09)
+
+The project is renamed from zr to pacman-contrib-zuepfe. It is now a repository
+containing various package maintenance related scripts (most imported from the
+utils repository).
+
+ABS (new)
+  Fetch package sources for official packages.
+
+ALA (new)
+  Download old packages from the Arch Linux Archive (ALA).
+
+AUR (new)
+  Fetch package sources from the AUR.
+
+CHECKRESTART
+  List processes using libraries/system files that no longer exist.
+
+PACBLOAT
+  List explicitly installed packages that are not required by any other package
+  and that are not part of base-devel.
+
+PACRED
+  List explicitly installed packages that are also required by an other package.
+
+PACWHY
+  List reverse dependency tree for a package.
+
+ZR
+  * Changes/Deprecations:
+    - Don't ask for confirmation when removing old packages (we assume our match
+      is always right).
+  * Improvements:
+    - Sign packages locally (before copying) for less bandwidth usage
+
+
+================================================================================
+v0.1 (released on: 2017-12-15)
+
+Initial release as `zr`: A small, dead-simple script to manage personal, remote
+Arch Linux package repository databases.

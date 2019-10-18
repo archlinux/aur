@@ -1,7 +1,7 @@
 # Maintainer: Tinu Weber <http://ayekat.ch>
 
 pkgname=makemetapkg
-pkgver=0.9.5
+pkgver=0.9.6
 pkgrel=1
 arch=(any)
 
@@ -17,7 +17,7 @@ conflicts=(remakepkg)
 depends=(coreutils)
 makedepends=(asciidoc git)
 
-changelog='changelog'
+changelog='CHANGELOG'
 
 source=("git+https://gitlab.com/ayekat/pacman-hacks.git#tag=v$pkgver")
 sha256sums=(SKIP)
