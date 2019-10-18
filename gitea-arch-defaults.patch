@@ -1,6 +1,6 @@
 --- a/custom/conf/app.ini.sample
 +++ b/custom/conf/app.ini.sample
-@@ -7,12 +7,12 @@
+@@ -8,12 +8,12 @@
  ; App name that shows in every page title
  APP_NAME = Gitea: Git with a cup of tea
  ; Change it if you run locally
@@ -16,7 +16,7 @@
  SCRIPT_TYPE = bash
  ; Default ANSI charset
  ANSI_CHARSET =
-@@ -241,7 +241,7 @@
+@@ -312,7 +312,7 @@
  ; For iterate buffer, default is 50
  ITERATE_BUFFER_SIZE = 50
  ; Show the database generated SQL
@@ -25,8 +25,8 @@
  ; Maximum number of DB Connect retries
  DB_RETRIES = 10
  ; Backoff time per DB retry (time.Duration)
-@@ -485,10 +485,10 @@
- FORMAT =
+@@ -615,10 +615,10 @@
+ DEFAULT_UI_LOCATION =
  
  [log]
 -ROOT_PATH =
@@ -37,13 +37,13 @@
 +MODE = console, file
  ; Buffer length of the channel, keep it as it is if you don't know what it is.
  BUFFER_LEN = 10000
- ; Either "Trace", "Debug", "Info", "Warn", "Error", "Critical", default is "Trace"
-@@ -496,7 +496,7 @@
+ REDIRECT_MACARON_LOG = false
+@@ -643,7 +643,7 @@
  
  ; For "console" mode only
  [log.console]
 -LEVEL =
 +LEVEL = Info
+ STDERR = false
  
  ; For "file" mode only
- [log.file]

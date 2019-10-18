@@ -1,19 +1,21 @@
 --- a/Makefile
 +++ b/Makefile
-@@ -33,6 +33,7 @@ else
- 	GITEA_VERSION := $(shell git describe --tags --always | sed 's/-/+/' | sed 's/^v//')
+@@ -39,7 +39,8 @@
+ 	GITEA_VERSION ?= $(shell git describe --tags --always | sed 's/-/+/' | sed 's/^v//')
  endif
  
-+EXTLDFLAGS := ${LDFLAGS}
- LDFLAGS := -X "main.Version=$(GITEA_VERSION)" -X "main.Tags=$(TAGS)"
+-LDFLAGS := $(LDFLAGS) -X "main.MakeVersion=$(MAKE_VERSION)" -X "main.Version=$(GITEA_VERSION)" -X "main.Tags=$(TAGS)"
++EXTLDFLAGS := $(LDFLAGS)
++LDFLAGS := -X "main.MakeVersion=$(MAKE_VERSION)" -X "main.Version=$(GITEA_VERSION)" -X "main.Tags=$(TAGS)"
  
- PACKAGES ?= $(filter-out code.gitea.io/gitea/integrations,$(shell $(GO) list ./... | grep -v /vendor/))
-@@ -240,7 +241,7 @@ install: $(wildcard *.go)
+ PACKAGES ?= $(filter-out code.gitea.io/gitea/integrations/migration-test,$(filter-out code.gitea.io/gitea/integrations,$(shell GO111MODULE=on $(GO) list -mod=vendor ./... | grep -v /vendor/)))
+ SOURCES ?= $(shell find . -name "*.go" -type f)
+@@ -358,7 +359,7 @@
  build: $(EXECUTABLE)
  
  $(EXECUTABLE): $(SOURCES)
--	$(GO) build $(GOFLAGS) $(EXTRA_GOFLAGS) -tags '$(TAGS)' -ldflags '-s -w $(LDFLAGS)' -o $@
-+	$(GO) build $(GOFLAGS) $(EXTRA_GOFLAGS) -tags '$(TAGS)' -ldflags '-linkmode external -extldflags "$(EXTLDFLAGS)" -s -w $(LDFLAGS)' -o $@
+-	GO111MODULE=on $(GO) build -mod=vendor $(GOFLAGS) $(EXTRA_GOFLAGS) -tags '$(TAGS)' -ldflags '-s -w $(LDFLAGS)' -o $@
++	GO111MODULE=on $(GO) build -mod=vendor $(GOFLAGS) $(EXTRA_GOFLAGS) -tags '$(TAGS)' -ldflags '-extldflags $(EXTLDFLAGS) -s -w $(LDFLAGS)' -o $@
  
  .PHONY: release
  release: release-dirs release-windows release-linux release-darwin release-copy release-compress release-check
