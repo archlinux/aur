@@ -1,7 +1,7 @@
 pkgbase = crrcsim
 	pkgdesc = Model airplane flight simulation program.
 	pkgver = 0.9.13
-	pkgrel = 1
+	pkgrel = 2
 	url = http://sourceforge.net/projects/crrcsim/
 	arch = i686
 	arch = x86_64

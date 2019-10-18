@@ -4,7 +4,7 @@
 
 pkgname=crrcsim
 pkgver=0.9.13
-pkgrel=1
+pkgrel=2
 pkgdesc="Model airplane flight simulation program."
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/crrcsim/"
