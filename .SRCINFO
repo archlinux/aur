@@ -11,6 +11,7 @@ pkgbase = pycam
 	depends = python2-rsvg
 	depends = python2-gtkglext
 	depends = python2-enum34
+	depends = python2-svg.path
 	source = https://github.com/SebKuzminsky/pycam/archive/v0.6.4.tar.gz
 	source = pycam
 	sha512sums = 4095d45b6c561c2e706469f12772ede8063fa0216cef4a52412fe4d5e892882aa62a65a6159d97c6c066aec20d4915a7a05724dc0e2b66f2309e0fa3bbc0253f
