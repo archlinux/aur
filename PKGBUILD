@@ -7,7 +7,7 @@ pkgdesc="dbuch zsh configuration"
 url="https://github.com/dbuch/"
 arch=(x86_64)
 license=(GPL)
-depends=('zsh>=5.3' 'exa' 'bat' 'skim')
+depends=('zsh>=5.3' 'ripgrep' 'bat' 'skim')
 makedepends=(git)
 source=("git+https://github.com/dbuch/dbuch-zsh-config.git")
 conflicts=('grml-zsh-config')
