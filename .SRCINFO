@@ -1,0 +1,12 @@
+pkgbase = pomodoro
+	pkgdesc = Time tool.
+	pkgver = 2
+	pkgrel = 1
+	url = http://samuellando.com
+	arch = any
+	license = GPL
+	source = https://github.com/samuellando/pomodoro/archive/2.tar.gz
+	sha256sums = 8541729b91acd0522c61d7bd66f22b7b4b58ce3925f11bb61f9fc0aa36c5c9db
+
+pkgname = pomodoro
+
