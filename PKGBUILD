@@ -8,8 +8,8 @@
 
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-rt       # Build kernel with a different name
-_pkgver=5.2.19
-_rtpatchver=rt11
+_pkgver=5.2.21
+_rtpatchver=rt13
 pkgver="${_pkgver}_${_rtpatchver}"
 pkgrel=1
 arch=('x86_64')
@@ -38,11 +38,11 @@ validpgpkeys=(
   '5ED9A48FC54C0A22D1D0804CEBC26CDB5A56DE73'  # Steven Rostedt
   'E644E2F1D45FA0B2EAA02F33109F098506FF0B14'  # Thomas Gleixner
 )
-sha256sums=('de98e4c28e08cd992c3aadc32450b3fa738b6101c509093192bb344f4f41b18a'
+sha256sums=('9a8ee3ff75dabffa76141c8dc7529dfbb3ca07888a3708a13f15b412268b3538'
             'SKIP'
-            '0a5d1cdc545891d7d0baa52ef9d92f45dcf5c9d216fae61eae128b328f9559ca'
+            '3251dd8f97d5117fe76d29d7eade1725a36bded072488a4e6618c51920462610'
             'SKIP'
-            'c9607aa2a69f6a1ef74ecf66f45215fcb83054f1d691bb9ace510931f6e7063e'
+            'e3b9c915ed10bdf0ce3652b9c356b54127bb74c9bc10d5dc4fb8d67bf7677e27'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
