@@ -1,6 +1,6 @@
 pkgbase = ingen-git
 	pkgdesc = A modular plugin host for JACK and LV2.
-	pkgver = 0.5.1.r2789.f48f9d69
+	pkgver = 0.5.1.r2797.6c5e9239
 	pkgrel = 1
 	url = http://drobilla.net/software/ingen/
 	arch = i686
@@ -22,10 +22,10 @@ pkgbase = ingen-git
 	provides = ingen
 	provides = ingen=0.5.1
 	conflicts = ingen
-	source = ingen::git+http://git.drobilla.net/cgit.cgi/ingen.git/
-	source = ingen-ingenish-python3.diff
+	source = ingen::git+https://git.drobilla.net/cgit.cgi/ingen.git
+	source = git+https://git.drobilla.net/cgit.cgi/autowaf
 	md5sums = SKIP
-	md5sums = 210743fd775951fb9e8641b13541e097
+	md5sums = SKIP
 
 pkgname = ingen-git
 

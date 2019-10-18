@@ -3,7 +3,7 @@
 
 _pkgname=ingen
 pkgname="${_pkgname}-git"
-pkgver=0.5.1.r2789.f48f9d69
+pkgver=0.5.1.r2797.6c5e9239
 pkgrel=1
 pkgdesc="A modular plugin host for JACK and LV2."
 arch=('i686' 'x86_64')
@@ -18,11 +18,20 @@ optdepends=(
 )
 provides=("${_pkgname}" "${_pkgname}=${pkgver//.r*/}")
 conflicts=("${_pkgname}")
-source=("${_pkgname}::git+http://git.drobilla.net/cgit.cgi/ingen.git/"
-        "ingen-ingenish-python3.diff")
-md5sums=('SKIP'
-         '210743fd775951fb9e8641b13541e097')
+source=("${_pkgname}::git+https://git.drobilla.net/cgit.cgi/ingen.git"
+        'git+https://git.drobilla.net/cgit.cgi/autowaf')
+md5sums=('SKIP' 'SKIP')
 
+
+prepare() {
+  cd "$srcdir/${_pkgname}"
+
+  git submodule init
+  git config submodule.waflib.url "${srcdir}/autowaf"
+  git submodule update
+
+  sed -i -e 's/raul-1 >= 1\.0\.0/raul >= 0.8.10/' wscript
+}
 
 pkgver() {
   cd "$srcdir/${_pkgname}"
@@ -31,14 +40,6 @@ pkgver() {
   local rev=$(git rev-list --count HEAD)
   local githash=$(git rev-parse --short HEAD)
   echo "${ver}.r${rev}.${githash}"
-}
-
-prepare() {
-  cd "$srcdir/${_pkgname}"
-
-  # Fix 'does not look like a valid URI' warning
-  # and decode command responses.
-  patch -p1 -N -r - -i "${srcdir}/ingen-ingenish-python3.diff"
 }
 
 build() {
