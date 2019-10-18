@@ -12,7 +12,11 @@ pkgbase = ashuffle
 	makedepends = meson
 	depends = libmpdclient
 	source = https://github.com/joshkunz/ashuffle/archive/v2.0.1/ashuffle-2.0.1.tar.gz
+	source = https://github.com/zorgnax/libtap/raw/14e6708db5215a657e615171682a1741023c9c0c/tap.c
+	source = https://github.com/zorgnax/libtap/raw/14e6708db5215a657e615171682a1741023c9c0c/tap.h
 	sha256sums = 7b1ce117568de33e26bcc762c0fba8c1a487952d93668358d10ae0dd52d5c487
+	sha256sums = 5952a5c99a273cc630eeb773461e5ee8255b3ddd19a9051f189e0ab1c1b7eaa8
+	sha256sums = 063dbe4bbd0c93707b31f536b54c698d30793be3410f428f0647aeb859c267c9
 
 pkgname = ashuffle
 
