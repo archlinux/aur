@@ -1,0 +1,12 @@
+diff -ur pytest-vcr-1.0.2-old/tests/test_vcr.py pytest-vcr-1.0.2/tests/test_vcr.py
+--- pytest-vcr-1.0.2-old/tests/test_vcr.py	2019-10-18 16:50:42.399908130 -0400
++++ pytest-vcr-1.0.2/tests/test_vcr.py	2019-10-18 16:51:00.440761181 -0400
+@@ -4,7 +4,7 @@
+ import pytest
+
+ # Check that the plugin has been properly installed before proceeding
+-assert pytest.config.pluginmanager.hasplugin("vcr")
++# assert pytest.config.pluginmanager.hasplugin("vcr")
+
+
+ def test_iana_example(testdir, live_server):
