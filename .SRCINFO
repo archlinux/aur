@@ -1,6 +1,6 @@
 pkgbase = libsolv
 	pkgdesc = Library for solving packages and reading repositories
-	pkgver = 0.7.6
+	pkgver = 0.7.7
 	pkgrel = 1
 	url = https://github.com/openSUSE/libsolv
 	arch = i686
@@ -21,8 +21,8 @@ pkgbase = libsolv
 	optdepends = perl: for perl bindings
 	optdepends = python: for python bindings
 	optdepends = ruby: for ruby bindings
-	source = https://github.com/openSUSE/libsolv/archive/0.7.6/libsolv-0.7.6.tar.gz
-	md5sums = 3ea8d4290d2bf66df3669871d588f030
+	source = https://github.com/openSUSE/libsolv/archive/0.7.7/libsolv-0.7.7.tar.gz
+	md5sums = c956595260e3d0f474edf585c667de3f
 
 pkgname = libsolv
 
