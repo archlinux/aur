@@ -1,7 +1,7 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=ipxe-git
-pkgver=1.0.0.r2720.g1dd56dbd
+pkgver=1.0.0.r2735.g3fe683eb
 pkgrel=1
 pkgdesc='iPXE open source boot firmware - git checkout'
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=('git' 'syslinux' 'libisoburn' 'mtools' 'xz')
 provides=('ipxe')
 conflicts=('ipxe')
 install=ipxe.install
-source=('git://github.com/ipxe/ipxe.git'
+source=('git+https://github.com/ipxe/ipxe.git'
 	'ipxe-0001-git-version.patch::https://github.com/eworm-de/ipxe/commit/b4b66013274d2bf1767dd093f6867872a070bc93.patch'
 	'ipxe-0002-banner.patch::https://github.com/eworm-de/ipxe/commit/83909ca09656dce6750924e671b6484959b14bf2.patch'
 	'ipxe-0003-efi-iso.patch::https://github.com/eworm-de/ipxe/commit/1bb5900a8aa64ae332dcd49a7ce82e43063b0244.patch'
