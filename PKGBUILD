@@ -1,8 +1,8 @@
 # Maintainer: Daniel Buch Hansen (dbuch) <boogiewasthere@gmail.com>
 
 pkgname=dbuch-zsh-config
-pkgver=1
-pkgrel=2
+pkgver=0.1.0
+pkgrel=1
 pkgdesc="dbuch zsh configuration"
 url="https://github.com/dbuch/"
 arch=(x86_64)

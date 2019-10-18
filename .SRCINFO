@@ -1,17 +1,13 @@
 pkgbase = dbuch-zsh-config
 	pkgdesc = dbuch zsh configuration
-	pkgver = 1
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/dbuch/
 	arch = x86_64
-	license = GNU
-	license = General
-	license = Public
-	license = License
-	license = v3.0
+	license = GPL
 	makedepends = git
-	depends = zsh
-	depends = exa
+	depends = zsh>=5.3
+	depends = ripgrep
 	depends = bat
 	depends = skim
 	conflicts = grml-zsh-config
