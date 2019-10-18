@@ -10,7 +10,7 @@ license=('MIT')
 depends=(python-pytest python-vcrpy python-setuptools)
 makedepends=(python-setuptools)
 checkdepends=(python-pytest python-pytest-cov)
-source=(${_name}-${pkgver}.tar.gz::${url}/archive/1.0.2.tar.gz
+source=(${_name}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz
         disable-plugin-install-assertion.patch)
 sha256sums=('8df1fd60668d639c88f6453ce25094b12b3b1903b23e83f49c8f859dbd75cbee'
             '2f18a5e216b9256ef237669893d66001953304f54cfaa513d5747b87e8721365')
