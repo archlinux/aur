@@ -1,0 +1,68 @@
+--- a/drivers/pci/hotplug/acpiphp_glue.c	
++++ a/drivers/pci/hotplug/acpiphp_glue.c	
+@@ -431,7 +431,8 @@ static int acpiphp_rescan_slot(struct acpiphp_slot *slot)
+ 	return pci_scan_slot(slot->bus, PCI_DEVFN(slot->device, 0));
+ }
+ 
+-static void acpiphp_native_scan_bridge(struct pci_dev *bridge)
++static void acpiphp_native_scan_bridge(struct pci_dev *bridge,
++				       struct list_head *add_list)
+ {
+ 	struct pci_bus *bus = bridge->subordinate;
+ 	struct pci_dev *dev;
+@@ -441,17 +442,32 @@ static void acpiphp_native_scan_bridge(struct pci_dev *bridge)
+ 		return;
+ 
+ 	max = bus->busn_res.start;
++
++	dev_info(&bridge->dev, "acpiphp: scanning configured, max=%u\n", max);
++
+ 	/* Scan already configured non-hotplug bridges */
+ 	for_each_pci_bridge(dev, bus) {
+ 		if (!hotplug_is_native(dev))
+ 			max = pci_scan_bridge(bus, dev, max, 0);
+ 	}
+ 
++	dev_info(&bridge->dev, "acpiphp: scanning un-configured, max=%u\n", max);
++
+ 	/* Scan non-hotplug bridges that need to be reconfigured */
+ 	for_each_pci_bridge(dev, bus) {
+-		if (!hotplug_is_native(dev))
++		if (!hotplug_is_native(dev)) {
+ 			max = pci_scan_bridge(bus, dev, max, 1);
++			if (dev->subordinate) {
++				dev_info(&dev->dev, "sizing bridges\n");
++				__pci_bus_size_bridges(dev->subordinate,
++						       add_list);
++			}
++		}
+ 	}
++
++	dev_info(&bridge->dev, "acpiphp: all scanned max=%u\n", max);
++	if (list_empty(add_list))
++		dev_info(&bridge->dev, "acpiphp: add_list is empty\n");
+ }
+ 
+ /**
+@@ -467,6 +483,7 @@ static void enable_slot(struct acpiphp_slot *slot, bool bridge)
+ 	struct pci_dev *dev;
+ 	struct pci_bus *bus = slot->bus;
+ 	struct acpiphp_func *func;
++	LIST_HEAD(add_list);
+ 
+ 	if (bridge && bus->self && hotplug_is_native(bus->self)) {
+ 		/*
+@@ -478,11 +495,10 @@ static void enable_slot(struct acpiphp_slot *slot, bool bridge)
+ 		 */
+ 		for_each_pci_bridge(dev, bus) {
+ 			if (PCI_SLOT(dev->devfn) == slot->device)
+-				acpiphp_native_scan_bridge(dev);
++				acpiphp_native_scan_bridge(dev, &add_list);
+ 		}
+-		pci_assign_unassigned_bridge_resources(bus->self);
++		__pci_bus_assign_resources(bus, &add_list, NULL);
+ 	} else {
+-		LIST_HEAD(add_list);
+ 		int max, pass;
+ 
+ 		acpiphp_rescan_slot(slot);

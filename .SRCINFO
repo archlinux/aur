@@ -1,0 +1,39 @@
+pkgbase = linux-203617-fix
+	pkgver = 5.3.7.arch1
+	pkgrel = 1
+	url = https://git.archlinux.org/linux.git/log/?h=v5.3.7-arch1
+	arch = x86_64
+	license = GPL2
+	makedepends = xmlto
+	makedepends = kmod
+	makedepends = inetutils
+	makedepends = bc
+	makedepends = libelf
+	makedepends = git
+	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
+	makedepends = graphviz
+	makedepends = imagemagick
+	options = !strip
+	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v5.3.7-arch1
+	source = config
+	source = 60-linux.hook
+	source = 90-linux.hook
+	source = linux.preset
+	source = 203617-fix.patch
+	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
+	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
+	validpgpkeys = 8218F88849AAC522E94CF470A5E9288C4FA415FA
+	sha256sums = SKIP
+	sha256sums = 7d09d1d79a4ecb82502b4483cf989ede3f643e05613de45e12563dfe85d80423
+	sha256sums = 452b8d4d71e1565ca91b1bebb280693549222ef51c47ba8964e411b2d461699c
+	sha256sums = c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636
+	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
+	sha256sums = 138338eb86b9f000c0acb4f5f4bb9344a532e48d9a389175ec7a6b2aa758dabb
+
+pkgname = linux-203617-fix
+
+pkgname = linux-203617-fix-headers
+
+pkgname = linux-203617-fix-docs
+
