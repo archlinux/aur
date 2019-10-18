@@ -8,7 +8,7 @@ pkgname=('cnijfilter-common')
 _pkgname=cnijfilter
 
 pkgver=4.10
-pkgrel=1
+pkgrel=2
 _pkgreview=1
 
 pkgdesc="Canon IJ Printer Driver (Common Package)"
@@ -35,9 +35,9 @@ source=("cnijfilter-source-4.10-1.tar.gz::http://pdisp01.c-wss.com/gdl/WWUFORedi
 	"buildfiles.patch"
 	"mychanges.patch")
 sha512sums=('58198e92e360c71c95423bfa8278f449eb645245af1b96770323cb6f4b2b7186e5ab326d58377c20627c750d3d8c253addf637f9d18e085b1c89a81d6239ab51'
-            '141a78c2353b3864b5a468fb6f4cf74fef5bf53ae75ac8932d6d853adc4044254a5371dcba1d05358b6075b6f38783f580ac7137088b91c10b1e412581144843'
+            'ce3de5764d47809166c86cc52feeae354f459bdc1db757ee62e8c7793b4886f95d9a04caee5adefc73b3ae1752ce370668d23d9530ebf8be2b7b25066e064210'
             'fb73e2e0653f2654a9c5211b5dc3e06ce24cd2f5bf64a27009f5446e69c7f02d78bb201f15da0f68ad01b1cb4e699c808eccb9df690ffea07b6d5a59ab5629f3'
-            '210902afe06240def9d6e662f5c21a8e99eeac6104798230f196e269e07b20b265bd360a15aed921ab73e7aff91c4a8e3212585091d86e89bac42e4b32ed1afd')
+            'c23d7e8406a7b43b0680a43cc1467075afc299b85ce5c3f7c0eb8e85f573226ec0dfb1497b70e0b08746cbc639360b746cd5962cfbf3935adb66aedf2a7fbcd2')
 
 prepare() {
   cd "${srcdir}/${_pkgname}-source-${pkgver}-${_pkgreview}/"
