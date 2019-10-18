@@ -1,13 +1,17 @@
 pkgbase = maxima-jupyter-git
 	pkgdesc = A Maxima kernel for Jupyter, based on CL-Jupyter (Common Lisp kernel)
-	pkgver = r303.b3da307
+	pkgver = r356.d9121c1
 	pkgrel = 1
 	url = https://github.com/robert-dodier/maxima-jupyter
 	arch = any
 	license = BSD
 	depends = maxima
-	source = maxima-jupyter-git::git+https://github.com/robert-dodier/maxima-jupyter
+	source = maxima-jupyter-git::git+https://github.com/robert-dodier/maxima-jupyter.git
+	source = https://beta.quicklisp.org/quicklisp.lisp
+	source = load.lisp
 	sha256sums = SKIP
+	sha256sums = 4a7a5c2aebe0716417047854267397e24a44d0cce096127411e9ce9ccfeb2c17
+	sha256sums = e7063f56f8308a9cc728f1f51964a4f0bcc762b6ffe69b8c57c6b021e2fafe73
 
 pkgname = maxima-jupyter-git
 

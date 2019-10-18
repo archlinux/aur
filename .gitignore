@@ -1,5 +1,8 @@
+*.pkg.tar.xz
+common-lisp-jupyter-git/
 maxima-jupyter-git/
 pkg/
-src/
-*.pkg.tar.xz
 quicklisp.lisp
+quicklisp.lisp.asc
+src/
+ziz-git/
