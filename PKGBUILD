@@ -1,7 +1,7 @@
 # Maintainer: bauh developers <bauh4linux@gmail.com>
 
 pkgname=bauh
-pkgver=0.6.4
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Graphical interface to manage Flatpak, Snaps and AUR packages"
 arch=('any')
@@ -11,14 +11,15 @@ depends=('python' 'python-pip' 'python-pyqt5' 'python-requests' 'python-colorama
 optdepends=('flatpak: for Flatpak support' 
             'snapd: for Snap support' 
             'pacman: for AUR support' 
-            'wget: for AUR support' 
+            'wget: for AUR and AppImage support' 
+            'sqlite3: for AppImage support'
             'git: to downgrade AUR packages ( optional )'
-            'aria2: faster AUR source downloads ( optional )'
+            'aria2: faster AppImages and AUR source downloads ( optional )'
             'ccache: can improve AUR packages compilation speed ( optional )' 
             'breeze: for KDE Plasma main theme be available ( optional )')
 makedepends=('git' 'python-setuptools')
 source=("${url}/archive/${pkgver}.tar.gz")
-sha512sums=('52320fcc7efab62daa82710a0ac581ffd867807440c607b88233d763a2dc1eea34125002ceb40bed9d9d2e881755c892676bc218d91b1b8adb0d9333d0e9cace')
+sha512sums=('06be2073ffc3e0b1f12913e2489461c66f82cf5f1ce364ef456c14d07cd06c7791c8b66f5ad8a59ba0c1b78fa457701c14910e0763859d8caf92e4f19bab3baf')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"

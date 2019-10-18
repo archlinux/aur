@@ -1,6 +1,6 @@
 pkgbase = bauh
 	pkgdesc = Graphical interface to manage Flatpak, Snaps and AUR packages
-	pkgver = 0.6.4
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/vinifmor/bauh
 	arch = any
@@ -15,13 +15,14 @@ pkgbase = bauh
 	optdepends = flatpak: for Flatpak support
 	optdepends = snapd: for Snap support
 	optdepends = pacman: for AUR support
-	optdepends = wget: for AUR support
+	optdepends = wget: for AUR and AppImage support
+	optdepends = sqlite3: for AppImage support
 	optdepends = git: to downgrade AUR packages ( optional )
-	optdepends = aria2: faster AUR source downloads ( optional )
+	optdepends = aria2: faster AppImages and AUR source downloads ( optional )
 	optdepends = ccache: can improve AUR packages compilation speed ( optional )
 	optdepends = breeze: for KDE Plasma main theme be available ( optional )
-	source = https://github.com/vinifmor/bauh/archive/0.6.4.tar.gz
-	sha512sums = 52320fcc7efab62daa82710a0ac581ffd867807440c607b88233d763a2dc1eea34125002ceb40bed9d9d2e881755c892676bc218d91b1b8adb0d9333d0e9cace
+	source = https://github.com/vinifmor/bauh/archive/0.7.0.tar.gz
+	sha512sums = 06be2073ffc3e0b1f12913e2489461c66f82cf5f1ce364ef456c14d07cd06c7791c8b66f5ad8a59ba0c1b78fa457701c14910e0763859d8caf92e4f19bab3baf
 
 pkgname = bauh
 
