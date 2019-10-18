@@ -3,7 +3,7 @@
 
 pkgname=mycroft-core
 pkgver=19.8.1
-pkgrel=3
+pkgrel=4
 pkgdesc="The Mycroft Artificial Intelligence platform."
 arch=('i686' 'x86_64')
 url='https://github.com/MycroftAI/mycroft-core'
@@ -69,6 +69,6 @@ package() {
 }
 
 md5sums=('04ec4428ad8ee3787e798bcd5a7ed23a'
-	'679808c9cbbcd0770772a08345cd752f'
-	'f4b41cc9e1a7308c8833f0f7804d8c02'
+	'b09b8ac1a4c1fbb17c79bde8d6520ea1'
+	'578b9531acff7b5bf96d776bbd327d15'
 'fc7662b4e3b499cbb0b4f8df12b0ce80')

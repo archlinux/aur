@@ -1,8 +1,4 @@
 post_install() {
-  echo "====>  Please add mycroft user to these groups"
-  echo "====     sudo gpasswd -a mycroft audio"
-  echo "====     sudo gpasswd -a mycroft dbus"
-  echo "====     sudo gpasswd -a mycroft network"
   echo "====>  Replace this line within /etc/pulse/default.pa:"
   echo "====     load-module module-native-protocol-unix"
   echo "====>  with:"
