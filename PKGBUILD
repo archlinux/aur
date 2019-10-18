@@ -13,6 +13,11 @@ source=("git+https://github.com/dbuch/dbuch-zsh-config.git")
 conflicts=('grml-zsh-config')
 sha256sums=('SKIP')
 
+pkgver() {
+  cd $pkgname
+  git describe --tags | sed 's/^v//;s/-/+/g'
+}
+
 prepare() {
   cd $pkgname
 
