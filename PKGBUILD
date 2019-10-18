@@ -4,7 +4,7 @@
 _version=5.1.1
 pkgname=swift-bin
 pkgver=${_version//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Official binary builds of the Swift programming language."
 arch=('x86_64')
 url="https://swift.org"
@@ -17,10 +17,10 @@ provides=('swift-language')
 replaces=('swift-language-bin')
 source=(
   'https://rpmfind.net/linux/fedora/linux/updates/testing/31/Everything/x86_64/Packages/s/swift-lang-5.1.1-0.1.20191004git4242edd.fc31.x86_64.rpm'
-  'https://rpmfind.net/linux/fedora/linux/updates/testing/30/Everything/x86_64/Packages/s/swift-lang-runtime-5.1.1-0.1.20191004git4242edd.fc30.x86_64.rpm'
+  'https://rpmfind.net/linux/fedora/linux/updates/testing/31/Everything/x86_64/Packages/s/swift-lang-runtime-5.1.1-0.1.20191004git4242edd.fc30.x86_64.rpm'
 )
 sha256sums=('b2da11d0867090e804601155c1e1dd57016ef0b2f7e29c8e7b68538d9cf92604'
-            '201a526342cc72ff839f2caf17d3b29ac1f4248be7d6621dead4683adee9c171')
+            '2c3da0448f27e88c1cdb6af52e68a6643820d545723eba6275b62a7cda6bbd59')
 
 package() {
   cp -Ppr "${srcdir}"/{etc,usr} "${pkgdir}"
