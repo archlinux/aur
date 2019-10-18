@@ -2,7 +2,7 @@
 # Contributor: Francois Rigaut <frigaut@gmail.com>
 
 pkgname=yorick
-pkgver=2.2
+pkgver=2_2_04
 pkgrel=1
 pkgdesc='Interpreted language for data processing'
 arch=('x86_64' 'i686')
@@ -11,17 +11,11 @@ url='http://yorick.github.com/'
 groups=('science' 'yorick-all')
 depends=('rlwrap')
 makedepends=('git' 'pkgconfig')
-source=('git://github.com/dhmunro/yorick.git#commit=01e228e'
-        'https://raw.githubusercontent.com/mdcb/python-gist/master/patch/yorick-cvs-pwin-border.patch'
-        'https://raw.githubusercontent.com/frigaut/frigaut-arch-abs-files/master/yorick-cvs-xft-2012sep11.patch')
-md5sums=('SKIP'
-         '4e486a0593cdedae8e44355d0b627abb'
-         '3cbd67fed39230c6a859ae601c1557f5')
+source=("https://github.com/LLNL/yorick/archive/y_$pkgver.tar.gz")
+md5sums=('f46ba063992d496114db6c0a8df0f9c4')
 
 prepare() {
   cd yorick
-
-  patch -p1 -i ../yorick-cvs-xft-2012sep11.patch
 
   make prefix=/usr ysite
   make config
@@ -44,5 +38,3 @@ package() {
   make -C yorick INSTALL_ROOT="$pkgdir" install
   install -DTm755 yorick/wrap.sh "$pkgdir/usr/bin/yorick"
 }
-
-# vim:set ts=2 sw=2 et:
