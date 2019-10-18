@@ -1,0 +1,21 @@
+pkgbase = xdg-desktop-portal-wlr-git
+	pkgdesc = xdg-desktop-portal backend for wlroots
+	pkgver = r7.13076d0
+	pkgrel = 1
+	url = https://github.com/emersion/xdg-desktop-portal-wlr
+	arch = x86_64
+	license = custom:MIT
+	makedepends = wayland-protocols
+	makedepends = meson
+	makedepends = ninja
+	makedepends = git
+	makedepends = wayland
+	makedepends = systemd-libs
+	depends = wlroots
+	provides = xdg-desktop-portal-wlr
+	conflicts = xdg-desktop-portal-wlr
+	source = xdg-desktop-portal-wlr-git::git+https://github.com/emersion/xdg-desktop-portal-wlr.git
+	sha512sums = SKIP
+
+pkgname = xdg-desktop-portal-wlr-git
+
