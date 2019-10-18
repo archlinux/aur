@@ -9,7 +9,8 @@ arch=(x86_64)
 license=(GPL)
 depends=('zsh>=5.3' 'ripgrep' 'bat' 'skim')
 makedepends=(git)
-source=("git+https://github.com/dbuch/dbuch-zsh-config.git")
+_commit=87800ba4c17fcc849283ddf9e708f8e2432c6520 #tags/v0.1.0
+source=("git+https://github.com/dbuch/dbuch-zsh-config.git#commit=$_commit")
 conflicts=('grml-zsh-config')
 sha256sums=('SKIP')
 
