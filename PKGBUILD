@@ -1,4 +1,3 @@
-#! /bin/bash
 # Maintainer: Rafael Cavalcanti <rccavalcanti at gmail dot com>
 # Contributor: Jorge Barroso <jorge.barroso.11 at gmail dot com>
 # Contributor: x-demon
