@@ -1,6 +1,6 @@
 # Maintainer: pureboy <yuyuud@yuyuud@gmail.com>
 
-pkgname='KikoPlay'
+pkgname='kikoPlay'
 pkgver='master'
 pkgrel=1
 pkgdesc="KikoPlay danmark"
@@ -18,7 +18,7 @@ md5sums=(
 
 
 build() {
-    cd ${srcdir}/${pkgname}-${pkgver}
+    cd ${srcdir}/KikoPlay-${pkgver}
     sed -i '29i DEFINES += TEXTURE_MAIN_THREAD' KikoPlay.pro 
     qmake 
     make
@@ -26,5 +26,5 @@ build() {
 
 package() {
     mkdir -p ${pkgdir}/usr/bin
-    cp ${srcdir}/${pkgname}-${pkgver}/KikoPlay ${pkgdir}/usr/bin
+    cp ${srcdir}/KikoPlay-${pkgver}/KikoPlay ${pkgdir}/usr/bin
 }
