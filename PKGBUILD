@@ -2,7 +2,7 @@
 # Contributor: gue5t <gue5t@aur.archlinux.org>
 _name=Mastodon.py
 pkgname=python-mastodon
-pkgver=1.4.6
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="python bindings for the Mastodon RPC API"
 arch=('any')
@@ -15,14 +15,26 @@ depends=(python
          python-six
          python-pytz
          python-decorator
-         python-http-ece
-         python-cryptography)
+	 python-blurhash)
+makedepends=(python-setuptools
+	     python-pytest
+	     python-pytest-runner
+	     python-pytest-cov
+	     python-vcrpy
+	     python-pytest-mock
+	     python-requests-mock
+	     python-pytest-vcr)
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('2b01559487165406d72fded986fd86e16997de2a9d2f3dec68a9c1bcb1dd71c3')
+sha256sums=('80701e37ca27586266fce4a1e23e1b910b883fe2c28ce9c43a16de30cb77d757')
 
 build() {
   cd ${_name}-${pkgver}
   python setup.py build
+}
+
+check() {
+  cd ${_name}-${pkgver}
+  python -m pytest
 }
 
 package() {
