@@ -1,13 +1,13 @@
 pkgbase = scaleft-client-tools
 	pkgdesc = ScaleFT(TM) client tools
-	pkgver = 1.40.7
+	pkgver = 1.40.8
 	pkgrel = 1
 	url = https://scaleft.com
 	arch = x86_64
 	license = custom
 	depends = glibc
-	source = https://pkg.scaleft.com/rpm/scaleft-client-tools-1.40.7-1.x86_64.rpm
-	sha256sums = 6ad37f8cc99cc554e6e498594181185b645ec48635c6122e658c482e14e7841e
+	source = https://pkg.scaleft.com/rpm/scaleft-client-tools-1.40.8-1.x86_64.rpm
+	sha256sums = 5ba1c7684b94a6e34f99db063c8f2eea57e8b0afd13a24ca05fce44e107a6640
 
 pkgname = scaleft-client-tools
 
