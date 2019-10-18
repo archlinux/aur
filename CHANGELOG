@@ -1,12 +1,16 @@
+1.0.9-1 (October 17, 2019)
+    Updated man page
+    Updated changelog styling (minor)
+
 1.0.8-1 (October 17, 2019)
-    Add toggle colors (`-l`,`--toggle-colors`) flag to turn colored output on or off
+    Added toggle colors (`-l`,`--toggle-colors`) flag to turn colored output on or off
     Updated man page
 
 1.0.7-2 (October 9, 2019)
-    Add CHANGELOG to AUR releases
+    Added CHANGELOG to AUR releases
 
 1.0.7-1 (October 8, 2019)
-    Add version (`-v`,`--version`) flag to display current version of wtwitch
+    Added version (`-v`,`--version`) flag to display current version of wtwitch
     Updated man page
     Changed format of man page from asciidoc to scdoc
 
@@ -23,17 +27,17 @@
     Fixed bug where jq would try to write to a nonexistent config file
 
 1.0.2-1 (June 23, 2019)
-    Fix reverted locale patch
-    Add wayland support for mpv
+    Fixed reverted locale patch
+    Added wayland support for mpv
 
 1.0.1-2 (June 23, 2019)
-    Fix typo in man page and embolden options in examples
+    Fixed typo in man page and embolden options in examples
 
 1.0.1-1 (June 22, 2019)
-    Add patch from nycko123 that fixes the check option (-c,--check) for locales other than en-US (https://gitlab.com/krathalan/wtwitch/issues/1)
+    Added patch from nycko123 that fixes the check option (-c,--check) for locales other than en-US (https://gitlab.com/krathalan/wtwitch/issues/1)
 
 1.0.0-2 (June 22, 2019)
-    Add missing Twitch API key
+    Added missing Twitch API key
 
 1.0.0-1 (June 22, 2019)
     First release
