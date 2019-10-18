@@ -8,16 +8,18 @@ pkgbase = crrcsim
 	license = GPL
 	makedepends = gawk
 	makedepends = plib>=1.8.4
-	makedepends = gcc5
+	makedepends = gcc
 	depends = sdl>=1.2.5
 	depends = portaudio
 	depends = libjpeg
 	depends = cgal
 	source = crrcsim.desktop
 	source = crrcsim.png
+	source = fix_bug.patch
 	source = http://sourceforge.net/projects/crrcsim/files/crrcsim/crrcsim-0.9.13/crrcsim-0.9.13.tar.gz
 	sha256sums = 2af239b7dc1d74967b1ec86665c7a7c28c9564306d7d299533235eacb8bf02de
 	sha256sums = 37d71a1be23afea19ad41179223eda997a3af103e2b2879784fd352de70a5696
+	sha256sums = 94b5d965327ca2d2db808aa088e6dba8ec204443843d71317d94d6e6e2b8c679
 	sha256sums = abe59b35ebb4322f3c48e6aca57dbf27074282d4928d66c0caa40d7a97391698
 
 pkgname = crrcsim

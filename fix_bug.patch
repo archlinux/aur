@@ -1,0 +1,12 @@
+diff -ru crrcsim-0.9.13.old/src/mod_video/crrc_animation.cpp crrcsim-0.9.13/src/mod_video/crrc_animation.cpp
+--- crrcsim-0.9.13.old/src/mod_video/crrc_animation.cpp	2016-04-10 09:57:14.000000000 -0700
++++ crrcsim-0.9.13/src/mod_video/crrc_animation.cpp	2018-10-30 16:13:09.055770007 -0700
+@@ -84,7 +84,7 @@
+       else
+       {
+         std::cerr << "createAnimation: unknown animation type \'"
+-                  << type << "\'" << std::cerr;
++                  << type << "\'" << std::endl;
+       }
+       
+       if (anim != NULL)
