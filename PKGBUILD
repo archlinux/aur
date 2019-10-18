@@ -21,8 +21,8 @@ sha256sums=('b18a654b8224bbefcff4e63ead312da2754aca17943ded60b9475062b506639a')
 
 # Heuristic to determine version of installed kernel
 # You can modify this if the heuristic fails
-_extramodules=$(ls -dt /usr/lib/modules/extramodules-* | head -n1)
-_kernelver=$(cat ${_extramodules}/version)
+_kernelver=$(ls -dt /usr/lib/modules/* | head -n1 | cut -d/ -f5)
+_extramodules="/usr/lib/modules/${_kernelver}/extramodules"
 
 prepare() {
   cd "${srcdir}/${_srcname}-${pkgver}"
