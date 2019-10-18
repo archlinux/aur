@@ -1,0 +1,22 @@
+pkgbase = dbuch-zsh-config
+	pkgdesc = dbuch zsh configuration
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/dbuch/
+	arch = x86_64
+	license = GNU
+	license = General
+	license = Public
+	license = License
+	license = v3.0
+	makedepends = git
+	depends = zsh
+	depends = exa
+	depends = bat
+	depends = skim
+	conflicts = grml-zsh-config
+	source = git+https://github.com/dbuch/dbuch-zsh-config.git
+	sha256sums = SKIP
+
+pkgname = dbuch-zsh-config
+
