@@ -1,0 +1,18 @@
+post_install() {
+    :
+#!/bin/bash
+
+# Link to the binary
+ln -sf '/opt/IPFS Desktop/ipfs-desktop' '/usr/bin/ipfs-desktop'
+
+update-mime-database /usr/share/mime || true
+update-desktop-database /usr/share/applications || true
+}
+post_remove() {
+    :
+#!/bin/bash
+
+# Delete the link to the binary
+rm -f '/usr/bin/ipfs-desktop'
+
+}

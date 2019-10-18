@@ -1,20 +1,16 @@
 pkgbase = ipfs-desktop
 	pkgdesc = Desktop client for the InterPlanetary File System
 	pkgver = 0.9.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ipfs-shipyard/ipfs-desktop
+	install = ipfs-desktop.install
 	arch = x86_64
 	license = MIT
 	makedepends = nodejs
 	makedepends = npm
 	makedepends = node-gyp
-	depends = electron
 	source = https://github.com/ipfs-shipyard/ipfs-desktop/archive/v0.9.5.tar.gz
-	source = ipfs-desktop.sh
-	source = ipfs-desktop.desktop
 	sha256sums = 1c0e1ea67e22228c46f1738665e21339aa4c105109773107817913234b7291a2
-	sha256sums = SKIP
-	sha256sums = SKIP
 
 pkgname = ipfs-desktop
 
