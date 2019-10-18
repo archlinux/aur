@@ -5,7 +5,8 @@
 set -u
 pkgname='jre11'
 #pkgver='11.0.3'; _build='12'; _hash='37f5e150db5247ab9333b11c1dddcd30'
-pkgver='11.0.4'; _build='10'; _hash='cf1bbcbf431a474eb9fc550051f4ee78'
+#pkgver='11.0.4'; _build='10'; _hash='cf1bbcbf431a474eb9fc550051f4ee78'
+pkgver='11.0.5'; _build='10'; _hash='e51269e04165492b90fa15af5b4eb1a5'
 _major="${pkgver%%.*}"
 pkgrel='1'
 pkgdesc="Oracle Java ${_major} Runtime Environment"
@@ -50,9 +51,9 @@ if [ -s ~/"Downloads/${_srcfil}" ] && [ ! -e "${_srcfil}" ]; then
   fi
 fi
 unset _srcfil
-md5sums=('10badb89c60b0932ced8f41079d30e60'
+md5sums=('8a6fa2e2ce09c1cf9de4b3a77dcc867d'
          '4dda444d58a4d78ca6357228adbde8a2')
-sha256sums=('45962ed7a08d66775cb036e6f33cd576ecb1eab655c96dbe74851a3ebe1945fa'
+sha256sums=('387e60bdad6d6fc20d41cd712536f0f7adbb086fa73bc3cb225b3edad0bfa0a6'
             'd1b4b3161614d7620365a0528a86f7eec543de30ee756b1ad2dabd386e84f734')
 
 PKGEXT='.pkg.tar.gz' # much faster than .xz
