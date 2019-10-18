@@ -1,12 +1,12 @@
 pkgbase = r-purrr
 	pkgdesc = A complete and consistent functional programming toolkit for R.
-	pkgver = 0.3.2
+	pkgver = 0.3.3
 	pkgrel = 1
 	url = https://cran.r-project.org/package=purrr
 	arch = i686
 	arch = x86_64
 	license = GPL-3
-	depends = r>=3.1
+	depends = r>=3.2
 	depends = r-magrittr>=1.5
 	depends = r-rlang>=0.3.1
 	optdepends = r-covr
@@ -17,8 +17,8 @@ pkgbase = r-purrr
 	optdepends = r-testthat
 	optdepends = r-tibble
 	optdepends = r-tidyselect
-	source = http://cran.r-project.org/src/contrib/purrr_0.3.2.tar.gz
-	md5sums = 666aa30d462bbf235b3a9dafd0637efc
+	source = http://cran.r-project.org/src/contrib/purrr_0.3.3.tar.gz
+	md5sums = c8eb681161e566440cae83b36d84704a
 
 pkgname = r-purrr
 
