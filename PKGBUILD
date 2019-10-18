@@ -5,8 +5,8 @@
 
 pkgbase=nvidia-utils-beta
 pkgname=('nvidia-utils-beta' 'opencl-nvidia-beta' 'nvidia-settings-beta')
-pkgver=435.21
-pkgrel=2
+pkgver=440.26
+pkgrel=1
 pkgdesc='NVIDIA drivers utilities (beta version)'
 arch=('x86_64')
 url='https://www.nvidia.com/'
@@ -17,7 +17,7 @@ source=("https://download.nvidia.com/XFree86/Linux-${CARCH}/${pkgver}/${_pkg}.ru
         'nvidia-drm-outputclass.conf'
         'nvidia-utils-beta.sysusers'
         'nvidia-settings-beta-change-desktop-paths.patch')
-sha256sums=('caee54f0ee5f6171a61b25670d309d1abe16d59fc7bec0577794b1a52c09244a'
+sha256sums=('51445f50e55edcb0169cccc625a2f72c861a9247e06ddacbc95d8cc1a62157f9'
             '5519cdb420a45c15030f99c5c8c73eff322dc24b55d20e0167f0f5e97ebf0a97'
             'd8d1caa5d72c71c6430c2a0d9ce1a674787e9272ccce28b9d5898ca24e60a167'
             '633bf69c39b8f35d0e64062eb0365c9427c2191583f2daa20b14e51772e8423a')
@@ -41,10 +41,9 @@ prepare() {
     [ -d "$_pkg" ] && rm -rf "$_pkg"
     printf '%s\n' "  -> Self-Extracting ${_pkg}.run..."
     sh "${_pkg}.run" --extract-only
-    cd "${_pkg}"
-    bsdtar -xf nvidia-persistenced-init.tar.bz2
+    bsdtar -C "$_pkg" -xf "${_pkg}/nvidia-persistenced-init.tar.bz2"
     
-    patch -Np1 -i "${srcdir}/nvidia-settings-beta-change-desktop-paths.patch"
+    patch -d "$_pkg" -Np1 -i "${srcdir}/nvidia-settings-beta-change-desktop-paths.patch"
 }
 
 package_nvidia-settings-beta() {
