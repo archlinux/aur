@@ -2,7 +2,7 @@
 pkgname=vintagestory
 # _pkgver is separate to allow specifying pre-release versions such as "-rc.1".
 # makepkg doesn't support hyphens in pkgver. They'll be replaced by underscores.
-_pkgver=1.10.16
+_pkgver=1.10.18
 pkgver=${_pkgver//-/_}
 pkgrel=1
 pkgdesc="An in-development indie sandbox game about innovation and exploration"
@@ -14,7 +14,7 @@ source=("https://cdn.vintagestory.at/gamefiles/stable/vs_archive_$_pkgver.tar.gz
 #       "https://account.vintagestory.at/files/stable/vs_archive_$_pkgver.tar.gz" (alternative source)
         "vintagestory.desktop"
         "vintagestory.sh")
-md5sums=("dad428f71e8be32a683d1164ab8524c0"
+md5sums=("ca842fc3b668b72bbe0cf7a06f132870"
          "ab6680c4499b58b14aa36acc2ab4038a"
          "da232b56f48e047ec60791bb7d8b6398")
 
