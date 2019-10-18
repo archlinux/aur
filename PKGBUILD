@@ -1,10 +1,10 @@
-# Maintainer: tildearrow <acc12345acc at gmail dot com>
+# Maintainer: tildearrow <tildearrow@protonmail.com>
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kwin-lowlatency
-pkgver=5.16.5
+pkgver=5.17.0
 pkgrel=1
 pkgdesc='the compositor, with added stutter/latency reductions'
 arch=(x86_64)
@@ -22,7 +22,7 @@ install=$pkgname.install
 
 prepare() {
   cd "$pkgname"
-  git checkout v5.16.5
+  git checkout v5.17.0
   cd ..
   mkdir -p build
 }
