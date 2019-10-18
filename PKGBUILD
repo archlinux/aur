@@ -48,13 +48,13 @@ _use_current=
 pkgbase=linux-rt-bfq
 # pkgname=('linux-rt-bfq' 'linux-rt-bfq-headers' 'linux-rt-bfq-docs')
 _major=5.2
-_minor=19
-_rtver=11
+_minor=21
+_rtver=13
 _rtpatchver=rt${_rtver}
 pkgver=${_major}.${_minor}.${_rtpatchver}
 _pkgver=${_major}.${_minor}
 _srcname=linux-${_pkgver}
-pkgrel=3
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/sirlucjan/bfq-mq-lucjan"
 license=('GPL2')
@@ -378,9 +378,9 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('76bf28dc803b6d90c4618c26ea7b95e6c72fb5931d70441447e4e5c271c080643228a44a672e8569b3387370fdea088d6220b38e275a4544f038bf39a7d12260'
+sha512sums=('359140f413e95442d7b873a5da17edfade915baf99d71a7a02194f363a1216d0830632622c2c93aba82014d20b20680cd01f018f9c815dea4e28594a396bfb03'
             'SKIP'
-            'fec6c12626b5706a6a0e9c6db7d220e7ca86bd3fdd27d06d19ba5655fe2217d96e90c38909b21970b20a3267be81ac7ca8c8621fcae17900ccbe0a8a7c1eb3ff'
+            'aecf19f03c746b5171cdf166781744c677d8ea612c07743199c98a10205079a3f5deec873b2ea8bb7f4471ce5c352caeadd0eeec18c78098371869e7432f0d99'
             'SKIP'
             'a57192d2989ff816e32970d86320f331be013b2c1d4a236565f33ef41b4092352e7dc560f97a39191d8c5eca8514f646fddc14a1c0168265ca3a470e7a41a2ea'
             '91e9486d36d30e539e2879f9fa377c4a3d98aa15af8cceed6e28a2fbe9b2f5696183483b342d60a01b636346324a99902e36039ee36d6b65a143378f9cc2be5f'
