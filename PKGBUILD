@@ -1,4 +1,4 @@
-# Maintainer: Arne Beer <arne@twobeer.de>
+# Maintainer: Arne Beer <privat@arne.beer>
 
 pkgname=pueue
 pkgver='1.0.5'
