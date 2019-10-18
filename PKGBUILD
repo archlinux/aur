@@ -13,7 +13,7 @@ checkdepends=(python-pytest python-pytest-cov)
 source=(${_name}-${pkgver}.tar.gz::${url}/archive/1.0.2.tar.gz
         disable-plugin-install-assertion.patch)
 sha256sums=('8df1fd60668d639c88f6453ce25094b12b3b1903b23e83f49c8f859dbd75cbee'
-            '230573a2ee2b831303411515dd492738ef6a1ea350fe7f6626396bc846b958cd')
+            '2f18a5e216b9256ef237669893d66001953304f54cfaa513d5747b87e8721365')
 
 prepare() {
   cd ${_name}-${pkgver}
