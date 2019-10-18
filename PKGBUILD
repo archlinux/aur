@@ -3,8 +3,8 @@
 
 pkgname=vna_j
 _realname=vnaJ
-pkgver=3.3.2
-pkgrel=2
+pkgver=3.3.3
+pkgrel=1
 pkgdesc="GUI for various vector network analyzers"
 arch=('any')
 license=('CCPL:by-nc-nd')
@@ -14,7 +14,8 @@ optdepends=('xdg-utils: desktop & menu shortcut support')
 makedepends=('imagemagick')
 source=(http://download.dl2sba.com/vnaj/$pkgver/${_realname}.${pkgver}.jar
         vnaJ.sh vnaJ.desktop http://download.dl2sba.com/vnaj/$pkgver/logo.ico)
-md5sums=('b3a43b6aaf4026c100fa589f9c58b300'
+noextract=(${_realname}.${pkgver}.jar)
+md5sums=('8bd2e83738a18d8b991b9d1bba8c21b4'
          '4d4958ceef2ddf13c26633e586b15417'
          'e1f40625326a65e5df479f4eae742041'
          '9f3eed2cc9491779155f111d9e3d6bfd')
