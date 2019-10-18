@@ -4,13 +4,13 @@
 # Contributor:  <godeater@gmail.com>
 
 pkgname=chezmoi-git
-pkgver=1.7.0.r2.g688bc14
-pkgrel=1
+pkgver=1.7.2.r0.g41c4fdc
+pkgrel=2
 pkgdesc="Manage your dotfiles across multiple machines"
 arch=('x86_64')
 url='https://github.com/twpayne/chezmoi'
 license=('MIT')
-makedepends=('go-pie' 'git')
+makedepends=('go' 'git')
 provides=('chezmoi')
 conflicts=('chezmoi')
 depends=('glibc')
