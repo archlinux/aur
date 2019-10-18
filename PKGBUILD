@@ -1,7 +1,7 @@
 # Maintainer: Ryan Gonzalez <rymg19@gmail.com>
 
 pkgname=('python-plac' 'python2-plac')
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='The smartest command line arguments parser in the world'
 arch=('any')
@@ -9,7 +9,7 @@ url='https://github.com/micheles/plac'
 license=('BSD')
 makedepends=('python-setuptools' 'python2-setuptools')
 source=(https://pypi.org/packages/source/p/plac/plac-$pkgver.tar.gz)
-sha256sums=('b03f967f535b3bf5a71b191fa5eb09872a5cfb1e3b377efc4138995e10ba36d7')
+sha256sums=('7c16cfa7422a76b7525fc93d0be5c9c9a2d5250083e80ddac6621edb395dc081')
 
 
 package_python-plac() {
