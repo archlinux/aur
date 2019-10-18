@@ -1,4 +1,5 @@
-# Maintainer:  Marcin (CTRL) Wieczorek <marcin@marcin.co>
+# Maintainer:  Samuel Walladge <samuel+aur@swalladge.net>
+# Contributor:  Marcin (CTRL) Wieczorek <marcin@marcin.co>
 # Contributor: DavidK <david_king at softhome dot net>
 # Contributor: Olivier Bordes <package@obordes.com>
 
