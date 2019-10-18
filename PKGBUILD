@@ -2,7 +2,7 @@
 
 pkgname=signal-desktop
 _pkgname=Signal-Desktop
-pkgver=1.27.3
+pkgver=1.27.4
 pkgrel=1
 pkgdesc='Electron application that links with Signal on mobile'
 arch=(x86_64)
@@ -13,19 +13,19 @@ makedepends=(yarn git python2 'nodejs>=12' npm python openssl-1.0)
 conflicts=(signal)
 source=($pkgname-$pkgver.tar.gz::https://github.com/signalapp/Signal-Desktop/archive/v$pkgver.tar.gz
         $pkgname.desktop)
-sha512sums=('2b9f2776524313b237f1b5da56a8891959e7100b20dc80c58fa2f8895d809dc9db04d932e09c382bd5c9143d0fd0acab8aa59bf08ef76a397af2bff48c0a2762'
-            '394a6db18a7bfc073e7a4e708d8a97716cf292810948a4fd28ec152e2f2318d7fd75457161707fa79cc28b5ac12ea6f66028417078c48dfbd939741263b5496f')
+sha512sums=('92a934d7680f33803bd7be21f4604719b211036931a6e00565e21a7008d0b35da7dda5c6527458a9498f82a9c9a96a94b868274d1d7e73e09ccb09fe1aea295a'
+            'bcbf8ffc6f6f7e99e59b5ab1517ba231f1d3b2b16a0e27541580f028ebee5027685a8c397212c43008844be352d3b6acf2269e631bc2c6ba05c2eb95f56fef36')
 
 prepare() {
   cd $_pkgname-$pkgver
 
   # Allow higher node versions
-  sed -i 's/"node": "/&>=/' package.json
+  sed 's#"node": "#&>=#' -i package.json
 
   yarn install
 
   # Have SQLCipher statically link from openssl-1.0
-  sed "76s/<.*$/-lcrypto'/;144d" -i node_modules/@journeyapps/sqlcipher/deps/sqlite3.gyp
+  sed '76s#<.*.a#-lcrypto#;144d' -i node_modules/@journeyapps/sqlcipher/deps/sqlite3.gyp
 }
 
 build() {
@@ -54,6 +54,7 @@ EOF
 
   install -Dm 644 ../$pkgname.desktop -t "$pkgdir"/usr/share/applications
   for i in 16 24 32 48 64 128 256 512 1024; do
-    install -Dm 644 build/icons/png/${i}* "$pkgdir"/usr/share/icons/hicolor/${i}x${i}/apps/$pkgname.png
+    install -Dm 644 build/icons/png/${i}* \
+      "$pkgdir"/usr/share/icons/hicolor/${i}x${i}/apps/$pkgname.png
   done
 }
