@@ -1,13 +1,12 @@
 pkgbase = pop-gtk-theme-git
 	pkgdesc = A GTK+ theme for Pop!_OS
-	pkgver = 4.0.0.b2.r143.gdcee6b3b
+	pkgver = 4.0.0.b2.r219.gd7e5e73b
 	pkgrel = 1
 	url = https://github.com/pop-os/gtk-theme
 	arch = any
 	license = GPL2
 	license = CCPL
-	makedepends = inkscape
-	makedepends = optipng
+	makedepends = meson
 	makedepends = libsass>=3.3.6
 	makedepends = sassc>=3.3.2
 	makedepends = git
@@ -17,6 +16,8 @@ pkgbase = pop-gtk-theme-git
 	depends = gdk-pixbuf2>=2.24.30
 	depends = gtk-engine-murrine>=0.98.1
 	depends = glib2
+	optdepends = inkscape
+	optdepends = optipng
 	optdepends = gnome-shell
 	optdepends = gnome-flashback
 	optdepends = budgie-desktop

@@ -1,7 +1,7 @@
 # Maintainer: Erik Wallström <erik.wallstrom@live.com>
 pkgname=pop-gtk-theme-git
 _pkgname=pop-gtk-theme
-pkgver=4.0.0.b2.r143.gdcee6b3b
+pkgver=4.0.0.b2.r219.gd7e5e73b
 pkgrel=1
 pkgdesc="A GTK+ theme for Pop!_OS"
 arch=("any")
@@ -15,14 +15,15 @@ depends=(
 	"glib2"
 )
 makedepends=(
-	"inkscape"
-	"optipng"
+	"meson"
 	"libsass>=3.3.6"
 	"sassc>=3.3.2"
 	"git"
 	"parallel"
 )
 optdepends=(
+	"inkscape"
+	"optipng"
 	"gnome-shell"
 	"gnome-flashback"
 	"budgie-desktop"
@@ -42,13 +43,14 @@ sha256sums=("SKIP")
 
 build() {
   	cd "gtk-theme"
-	make clean
-	make
+	meson build && cd build
+	ninja
 }
 
 package() {
   	cd "gtk-theme"
-	make DESTDIR="${pkgdir}" install
+	cd build
+	ninja install
 }
 
 pkgver() {
