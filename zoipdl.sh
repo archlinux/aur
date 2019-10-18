@@ -11,10 +11,7 @@ set -e
 
 echo "${0##*/}: $@"
 
-if [ ! -z "${1:-}" ] && [ "${2:-}" != 'https://zoipdl.tgz' ]; then
-  # from makepkg.conf DLAGENTS https
-  /usr/bin/curl -fLC - --retry '3' --retry-delay '3' -o "$1" "$2"
-else
+_fn_zoip() {
   _cookie='/tmp/zoiper_cookies.txt'
   _url1='https://www.zoiper.com/en/voip-softphone/download/current'
   _url2='https://www.zoiper.com/en/voip-softphone/download/zoiper5/for/linux'
@@ -38,4 +35,10 @@ else
     wget --content-disposition --load-cookies "${_cookie}" "${_opts[@]}" --continue "${_url2}"
   fi
   rm -f "${_cookie}"
-fi
+  # This makes updpkgsums and makepkg work in one step
+  if [ ! -z "${1:-}" ] && [ "${1}" != "${1%.part}" ] && [ -f "${1%.part}" ]; then
+    mv "${1%.part}" "${1}"
+  fi
+}
+
+_fn_zoip
