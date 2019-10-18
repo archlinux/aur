@@ -5,8 +5,8 @@
 
 pkgname=librewolf
 _pkgname=LibreWolf
-pkgver=69.0.2
-pkgrel=2
+pkgver=69.0.3
+pkgrel=1
 pkgdesc="Community-maintained fork of Librefox: a privacy and security-focused browser"
 arch=(x86_64)
 license=(MPL GPL LGPL)
@@ -28,7 +28,7 @@ source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-
         "no-relinking.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/no-relinking.patch?h=packages/firefox"
         "git+https://gitlab.com/${pkgname}-community/browser/common.git"
         "git+https://gitlab.com/${pkgname}-community/settings.git")
-sha256sums=('2904ef954626d2a7f320670ccb7cb5d9060610f091c94190a6cbee14aa2cd82e'
+sha256sums=('7527947a876c1734b8b2339f19b8ff8da6f4e4d06351b44940cb48d3509bb891'
             '0471d32366c6f415f7608b438ddeb10e2f998498c389217cdd6cc52e8249996b'
             'e03332f0e865949df5af9c231a364e9e1068fca0439621b98c2d4160d93e674f'
             '2dc9d1aa5eb7798c89f46478f254ae61e4122b4d1956d6044426288627d8a014'

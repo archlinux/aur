@@ -1,7 +1,7 @@
 pkgbase = librewolf
 	pkgdesc = Community-maintained fork of Librefox: a privacy and security-focused browser
-	pkgver = 69.0.2
-	pkgrel = 2
+	pkgver = 69.0.3
+	pkgrel = 1
 	url = https://LibreWolf.gitlab.io
 	arch = x86_64
 	license = MPL
@@ -47,13 +47,13 @@ pkgbase = librewolf
 	options = !emptydirs
 	options = !makeflags
 	options = !strip
-	source = https://archive.mozilla.org/pub/firefox/releases/69.0.2/source/firefox-69.0.2.source.tar.xz
+	source = https://archive.mozilla.org/pub/firefox/releases/69.0.3/source/firefox-69.0.3.source.tar.xz
 	source = librewolf.desktop
 	source = librewolf.cfg.patch
 	source = no-relinking.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/no-relinking.patch?h=packages/firefox
 	source = git+https://gitlab.com/librewolf-community/browser/common.git
 	source = git+https://gitlab.com/librewolf-community/settings.git
-	sha256sums = 2904ef954626d2a7f320670ccb7cb5d9060610f091c94190a6cbee14aa2cd82e
+	sha256sums = 7527947a876c1734b8b2339f19b8ff8da6f4e4d06351b44940cb48d3509bb891
 	sha256sums = 0471d32366c6f415f7608b438ddeb10e2f998498c389217cdd6cc52e8249996b
 	sha256sums = e03332f0e865949df5af9c231a364e9e1068fca0439621b98c2d4160d93e674f
 	sha256sums = 2dc9d1aa5eb7798c89f46478f254ae61e4122b4d1956d6044426288627d8a014
