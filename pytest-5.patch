@@ -1,0 +1,12 @@
+diff --unified --recursive --text src.orig/h5netcdf-0.7.4/h5netcdf/tests/test_h5netcdf.py src.new/h5netcdf-0.7.4/h5netcdf/tests/test_h5netcdf.py
+--- src.orig/h5netcdf-0.7.4/h5netcdf/tests/test_h5netcdf.py	2019-10-18 11:05:48.979345571 -0700
++++ src.new/h5netcdf-0.7.4/h5netcdf/tests/test_h5netcdf.py	2019-10-18 11:06:42.896526227 -0700
+@@ -36,7 +36,7 @@
+ @pytest.fixture(params=['testfile.nc', 'hdf5://testfile'])
+ def tmp_local_or_remote_netcdf(request, tmpdir):
+     if request.param.startswith(remote_h5):
+-        if not pytest.config.option.restapi:
++        if not request.config.option.restapi:
+             pytest.skip('Do not test with HDF5 REST API')
+         elif without_h5pyd:
+             pytest.skip('h5pyd package not available')
