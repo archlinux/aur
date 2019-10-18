@@ -7,7 +7,7 @@ echo '  https://www.oracle.com/technetwork/java/javase/downloads/'
 echo '  Java SE ... JDK, Download v'
 echo 'and download'
 echo " ${1%.part}"
-echo 'to your ~/Downloads folder or in with the PKGBUILD.'
+echo 'to your Downloads folder (XDG_DOWNLOAD_DIR) or in with the PKGBUILD.'
 echo ''
 echo 'Please do not post alternate sources. They are not legal. Advertising'
 echo 'will get them taken down by Oracle or too much traffic. Keep it a'

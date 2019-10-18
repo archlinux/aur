@@ -6,7 +6,8 @@ _pkgname='jdk'
 _major='8'
 pkgname="${_pkgname}${_major}"
 #_minor='212'; _build='b10'; _hash='59066701cf1a433da9770636fbc4c9aa'
-_minor='221'; _build='b11'; _hash='230deb18db3e4014bb8e3e8324f81b43'
+#_minor='221'; _build='b11'; _hash='230deb18db3e4014bb8e3e8324f81b43'
+_minor='231'; _build='b11'; _hash='5b13a193868b4bf28bcb45c792fce896'
 pkgver="${_major}u${_minor}"
 pkgrel='1'
 pkgdesc="Oracle Java ${_major} Development Kit"
@@ -57,30 +58,34 @@ source=(
 # from oracle-sqldeveloper
 DLAGENTS+=("manual::${startdir:-}/readme.sh %o %u")
 source[1]="manual://${_srcfil}"
-if [ -s ~/"Downloads/${_srcfil}" ] && [ ! -e "${_srcfil}" ]; then
-  if type msg > /dev/null 2>&1; then
-    set +u
-    msg "Scooping files from ~/Downloads"
-    msg2 "${_srcfil}"
-    set -u
-    ln -sr ~/"Downloads/${_srcfil}"
+if [ ! -z "${HOME:-}" ]; then # block mksrcinfo
+  XDG_DOWNLOAD_DIR=~/'Downloads'; source <(grep -Ee '^XDG_DOWNLOAD_DIR="[^"]+"$' ~/'.config/user-dirs.dirs' 2> /dev/null || :)
+  if [ -s "${XDG_DOWNLOAD_DIR}/${_srcfil}" ] && [ ! -e "${_srcfil}" ]; then
+    if type msg > /dev/null 2>&1; then
+      set +u
+      msg "Scooping files from ${XDG_DOWNLOAD_DIR}"
+      msg2 "${_srcfil}"
+      set -u
+      ln -sr "${XDG_DOWNLOAD_DIR}/${_srcfil}"
+    fi
   fi
 fi
 unset _srcfil
+unset XDG_DOWNLOAD_DIR
 md5sums=('b3c7031bc65c28c2340302065e7d00d3'
-         '9e1ecd461c3b848af45ab41c528d9a95'
+         'c1fef2e714be761773ee0fc2be5dd78e'
          '8a66f50efdc867ffd6a27168bc93b210'
          '1cbde70639abd98db4bace284dbf2bc4'
          'f0b39865361437f3778ecbe6ffbc0a06'
          '89704501aff8efe859c31968d8d168e6'
-         '4dda444d58a4d78ca6357228adbde8a2')
+         '51c8839211cc53f09c9b11a8e28ed1ef')
 sha256sums=('f3020a3922efd6626c2fff45695d527f34a8020e938a49292561f18ad1320b59'
-            'bac52b7f120a03c4c0815ca8fc77c02a8f3db2ded121ffad7449525f377e2479'
+            'a011584a2c9378bf70c6903ef5fbf101b30b08937441dc2ec67932fb3620b2cf'
             '65282603bd0804d162f3f7da47bc7f3c91373e87504297d6a6fd6f2f8a1ec4ee'
             '8f865b52946a9ab98556c56306c7e70ae7aa432b4d005c70df0bba9d2c3111b1'
             '144e6651fcea08d95f3148d3a8ad17deb93fec4dd9236d37d27d7c648230b870'
             '635433e9c78ff58af65c316232ac9907d289a324428923788ea0f82ae7f8083b'
-            'd1b4b3161614d7620365a0528a86f7eec543de30ee756b1ad2dabd386e84f734')
+            'f1081b08cfbb467277e95b3794191c9963398579733fa8832425b308b5917711')
 
 PKGEXT='.pkg.tar.gz' # much faster than .xz
 ## Alternative mirror, if your local one is throttled:
