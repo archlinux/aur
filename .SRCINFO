@@ -1,7 +1,7 @@
 pkgbase = precached-git
 	pkgdesc = A Linux process monitor and pre-caching daemon
 	pkgver = 1.7.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://x3n0m0rph59.gitlab.io/precached/
 	install = precached.install
 	arch = i686
