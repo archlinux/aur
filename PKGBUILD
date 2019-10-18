@@ -1,8 +1,8 @@
 # Maintainer: Jameson Pugh <imntreal@gmail.com>
 
 pkgname=kodi-addon-pvr-mythtv
-pkgver=5.10.9
-_kodiminver=3
+pkgver=5.10.13
+_kodiminver=4
 _kodicname=Leia
 pkgrel=1
 pkgdesc='MythTV PVR client addon for Kodi'
@@ -12,7 +12,7 @@ license=('GPL')
 makedepends=('cmake' 'kodi-platform' 'kodi-dev')
 depends=("kodi>=18.0")
 source=("https://github.com/janbar/pvr.mythtv/archive/${pkgver}-${_kodicname}.tar.gz")
-sha256sums=('f6642c115e05f8e505dfe04870cfa6dcbc3d66b9e54c96f7ea514a50d5943f33')
+sha256sums=('f2bc43d366b64737cf5b1dce83e5a3737670bf423c5a65562daece6cc86d84ae')
 
 prepare() {
   mkdir -p "${srcdir}/build"
