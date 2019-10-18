@@ -1,0 +1,13 @@
+pkgbase = python-pcpp
+	pkgdesc = A C99 preprocessor with partial preprocessing capabilities writen in Python.
+	pkgver = 1.21
+	pkgrel = 1
+	url = https://github.com/ned14/pcpp
+	arch = any
+	license = BSD
+	depends = python
+	source = pcpp::git+https://github.com/ned14/pcpp.git#tag=v1.21
+	sha512sums = SKIP
+
+pkgname = python-pcpp
+
