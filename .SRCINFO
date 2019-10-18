@@ -1,7 +1,7 @@
 pkgbase = googleplaymusic
 	pkgdesc = Google Play Music is a unofficial client to play your music.
 	pkgver = 1.1.5
-	pkgrel = 4
+	pkgrel = 5
 	url = https://gitlab.com/coreybruce/GooglePlayMusic
 	arch = x86_64
 	license = GPL
