@@ -1,7 +1,7 @@
 pkgbase = webplotdigitizer-bin
 	pkgdesc = Tool to extract numerical data from plot images
 	pkgver = 4.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://automeris.io/WebPlotDigitizer/
 	arch = x86_64
 	license = AGPL3
@@ -10,9 +10,9 @@ pkgbase = webplotdigitizer-bin
 	depends = nss
 	source = https://automeris.io/downloads/WebPlotDigitizer-4.2-linux-x64.zip
 	source = webplotdigitizer.desktop
-	md5sums = 192183e440d4bc5ea220c5bf1dbb536d
+	md5sums = 0a903a3ed00cf2d3729d09f13d86101c
 	md5sums = bbb5539842f94b8e986ba31c5f564003
-	sha256sums = 90ca8fe2f209fa46b543b441f09755a3e5a675873c5ade6458ba18214fa10183
+	sha256sums = fab2621c808b95fce6ffd7a120b156694370193d58fdc0118c4e23d418cf2d29
 	sha256sums = 30ddc4aef0b82c9b22dc9aeb9dbacd7cf3dd60cd1805cdc9db01da3db9a1ceef
 
 pkgname = webplotdigitizer-bin
