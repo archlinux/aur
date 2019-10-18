@@ -5,7 +5,7 @@
 # Contributor: Denis Martinez <deuns.martinez [at] gmail [dot] com>
 
 pkgname=lib32-intel-tbb
-pkgver=2019.8
+pkgver=2019.9
 _tagname=${pkgver/./_U}
 pkgrel=1
 pkgdesc="High level abstract threading library (32-bit)"
@@ -15,7 +15,13 @@ license=('GPL')
 depends=("${pkgname#lib32-}" 'lib32-gcc-libs')
 makedepends=('gcc-multilib')
 source=("${pkgname#lib32-}-${pkgver}.tar.gz::https://github.com/01org/tbb/archive/$_tagname.tar.gz")
-sha256sums=('7b1fd8caea14be72ae4175896510bf99c809cd7031306a1917565e6de7382fba')
+sha256sums=('15652f5328cf00c576f065e5cd3eaf3317422fe82afb67a9bcec0dc065bd2abe')
+
+prepare() {
+  cd "tbb-${_tagname}"
+  # Skip debug build. [https://bugs.archlinux.org/task/62757]
+  sed -i '/debug/d' Makefile
+}
 
 build() {
   cd "tbb-${_tagname}"
