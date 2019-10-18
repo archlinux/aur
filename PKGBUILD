@@ -2,7 +2,7 @@
 
 _pkgname=nano-syntax-highlighting
 pkgname=$_pkgname-git
-pkgver=311.43dd59a
+pkgver=474.421a5c4
 pkgrel=1
 pkgdesc="Nano editor syntax highlighting enhancements"
 arch=('any')
