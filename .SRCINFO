@@ -1,0 +1,21 @@
+pkgbase = cpplint-py3
+	pkgdesc = Command-line tool to check C/C++ files for style issues following Google's C++ style guide.
+	pkgver = 1.4.4
+	pkgrel = 1
+	url = https://github.com/cpplint/cpplint
+	arch = any
+	license = custom:BSD3
+	checkdepends = python-pytest
+	checkdepends = python-pytest-cov
+	depends = python
+	provides = cpplint
+	provides = python-cpplint
+	conflicts = cpplint
+	source = https://github.com/cpplint/cpplint/archive/1.4.4.tar.gz
+	md5sums = 77a0f3c2469a737e899443ef2d29f498
+	sha1sums = 9ca2b8fc3992130a62f4dc3708a67b10eb1baec7
+	sha256sums = 05f879aab5a04307e916e32afb547567d8a44149ddc2f91bf846ce2650ce6d7d
+	sha512sums = 27b1802c857432d1c6eae1fd76d06b60eaa3b57060546b1cfd4a4b6881a3f8fb696f86f303d20b436d6123bf1c26b4dcadd0b1032f70dc6a581c230ab6015017
+
+pkgname = cpplint-py3
+
