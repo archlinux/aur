@@ -1,14 +1,14 @@
 pkgbase = ttf-tiresias
 	pkgdesc = A set of free Sans Serif TrueType fonts
 	pkgver = 20090804
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.fontsquirrel.com/fonts/Tiresias-Infofont
 	arch = any
 	license = GPL3
 	depends = fontconfig
 	depends = xorg-font-utils
 	source = https://www.fontsquirrel.com/fonts/download/Tiresias-Infofont
-	md5sums = 25086f57fc701108ed610f0c123912fa
+	sha256sums = ca3c4a73cdefd7753ee8d3fa9b027886f68a4ff893d6e16e665bf1b3305a44f8
 
 pkgname = ttf-tiresias
 
