@@ -6,7 +6,7 @@
 pkgname=nicotine-plus-git
 _gitname=nicotine-plus
 pkgver=1.4.1.r17.g8b2c199
-pkgrel=1
+pkgrel=2
 pkgdesc="A fork of Nicotine, a graphical client for Soulseek."
 arch=('any')
 url="http://nicotine-plus.org/"
@@ -20,16 +20,17 @@ source=(git+https://github.com/Nicotine-Plus/${_gitname}.git)
 sha512sums=('SKIP')
 
 pkgver() {
-	cd "${srcdir}/$_gitname"
+	cd "${srcdir}/${_gitname}"
 	git describe --long --tags | sed 's/-/.r/;s/-/./'
 }
 
 build() {
-	cd "$srcdir/$_gitname"
-	python2 setup.py install --root=$srcdir/pkg
+	cd "${srcdir}/${_gitname}"
+	python2 setup.py build
 }
 
 package() {
-	mv ${srcdir}/pkg/* ${pkgdir}
+	cd "${srcdir}/${_gitname}"
+	python2 setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
 
