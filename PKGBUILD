@@ -5,7 +5,7 @@
 
 pkgbase=python-future
 pkgname=(python-future python2-future)
-pkgver=0.18.0
+pkgver=0.18.1
 pkgrel=1
 pkgdesc="Clean single-source support for Python 3 and 2"
 url="https://python-future.org/"
@@ -15,7 +15,7 @@ makedepends=('python-setuptools' 'python2-setuptools')
 checkdepends=('python-requests' 'python2-requests')
 options=('!emptydirs')
 source=("https://pypi.io/packages/source/f/future/future-$pkgver.tar.gz")
-sha512sums=('c2bf1741d548d007f25dd77e12899cca6167b627815a8b1963efe2df69ef35c3c05a774ada74d104b3ed7c976a53e270035e84fcd980fd57fe3c597c571af46f')
+sha512sums=('c70565a660cf87c5e7e994bae0d4eb0b2b8b607ecb5ce65521c027bf0a39ce5699f0578413bd3c7edd5d01aeb1617de48dcea098a9e9021d8487a73007573030')
 
 prepare() {
   cp -a future-$pkgver{,-py2}
