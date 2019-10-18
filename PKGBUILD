@@ -9,7 +9,7 @@ url="https://www.fontsquirrel.com/fonts/Tiresias-Infofont"
 license=('GPL3')
 depends=('fontconfig' 'xorg-font-utils')
 source=(https://www.fontsquirrel.com/fonts/download/Tiresias-Infofont)
-sha256sums=('31ed9ce54fdc3699073f8241cb215aa1be8ccd36173521f7797e4c1dc76c719b')
+sha256sums=('SKIP')
 
 package() {
   install -d "$pkgdir"/usr/share/fonts/TTF
