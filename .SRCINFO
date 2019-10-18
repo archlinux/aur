@@ -1,0 +1,17 @@
+pkgbase = kikoplay
+	pkgdesc = KikoPlay danmark
+	pkgver = master
+	pkgrel = 1
+	url = https://github.com/Protostars/KikoPlay
+	arch = x86_64
+	license = GPL3
+	makedepends = make
+	makedepends = gcc
+	makedepends = cmake
+	depends = mpv
+	depends = qhttpengine
+	source = kikoplay-master.zip::https://github.com/Protostars/KikoPlay/archive/master.zip
+	md5sums = 743d5cd6cf69ea33c51a0b87625597b4
+
+pkgname = kikoplay
+
