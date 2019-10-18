@@ -12,18 +12,13 @@ makedepends=('git')
 depends=('dkms')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
-source=("git+https://github.com/iksaif/thinkpad-wmi.git" tp.patch)
+source=("git+https://github.com/iksaif/thinkpad-wmi.git")
 md5sums=('SKIP'
          '38fc92d73e10b31f146dd4056c261b2d')
 
 pkgver() {
     cd "${srcdir}/${basename}"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-    cd "${srcdir}/${basename}"/drivers/platform/x86
-    patch -Np0 -i "${srcdir}/"tp.patch
 }
 
 package() {
