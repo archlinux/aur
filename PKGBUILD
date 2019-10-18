@@ -2,12 +2,12 @@
 
 pkgname=dbuch-zsh-config
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="dbuch zsh configuration"
 url="https://github.com/dbuch/"
 arch=(x86_64)
-license=(GNU General Public License v3.0)
-depends=(zsh exa bat skim)
+license=(GPL)
+depends=('zsh>=5.3' 'exa' 'bat' 'skim')
 makedepends=(git)
 source=("git+https://github.com/dbuch/dbuch-zsh-config.git")
 conflicts=('grml-zsh-config')
