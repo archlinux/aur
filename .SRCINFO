@@ -1,0 +1,17 @@
+pkgbase = python-blurhash
+	pkgdesc = Pure-Python implementation of the blurhash algorithm
+	pkgver = 1.1.4
+	pkgrel = 1
+	url = https://github.com/halcy/blurhash-python
+	arch = any
+	license = MIT
+	checkdepends = python-pillow
+	checkdepends = python-numpy
+	checkdepends = python-pytest-cov
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python
+	source = git+https://github.com/halcy/blurhash-python.git#commit=22e081ef1c24da1bb5c5eaa2c1d6649724deaef8
+	sha256sums = SKIP
+
+pkgname = python-blurhash
