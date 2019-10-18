@@ -6,7 +6,7 @@
 
 _pkgbase=mpd
 pkgname=${_pkgbase}-youtube-dl
-pkgver=0.21.15
+pkgver=0.21.16
 pkgrel=1
 pkgdesc='mpd fork with youtube support'
 url='https://github.com/MusicPlayerDaemon/MPD/pull/223'
@@ -26,7 +26,7 @@ source=("https://www.musicpd.org/download/${_pkgbase}/${pkgver%.*}/${_pkgbase}-$
         'tmpfiles.d'
         'sysusers.d'
         'conf'
-        "youtube-dl-$pkgver.patch::https://github.com/MusicPlayerDaemon/MPD/compare/v$pkgver...arcnmx:ytdl.patch")
+        "youtube-dl-$pkgver.patch::https://github.com/MusicPlayerDaemon/MPD/compare/v$pkgver...arcnmx:ytdl-$pkgver.patch")
 backup=('etc/mpd.conf')
 
 prepare() {
@@ -68,9 +68,9 @@ package() {
 }
 
 # makepkg -g >> PKGBUILD
-sha256sums=('4595adba2d8aa80b5a912bbb5185578abac3623ccc7e4897286993e4650a5022'
+sha256sums=('30cf1bddf7d7388487276745ad3515f134e07f0c57f9f97cb2b5d3befd4a4d92'
             'SKIP'
             '2faa85c12449a5b3ca422ff1c1fa06d057c7e262a74bfa6298c914a92d6f2e7a'
             '0b74c6e5db08daab3091dc15a6b0c75210ba2f9e98fa074f6cfd605a461056b6'
             'f40f68205834ca53cea3372e930bfe6c2f9ecc9df3b1605df2fec63a658b2e03'
-            '0809f7adfdffed166c83d46b879337e789f36eba2d1561ce7eb1ec558e2b1776')
+            'a07aa2e6094e656005502ee0fca3985091a876590404688a16b7e73bbb2c3c92')
