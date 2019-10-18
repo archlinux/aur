@@ -9,21 +9,21 @@ arch=('any')
 url="https://github.com/halcy/Mastodon.py"
 license=('MIT')
 depends=(python
-	 python-magic-ahupp
+         python-magic-ahupp
          python-requests
          python-dateutil
          python-six
          python-pytz
          python-decorator
-	 python-blurhash)
-makedepends=(python-setuptools
-	     python-pytest
-	     python-pytest-runner
-	     python-pytest-cov
-	     python-vcrpy
-	     python-pytest-mock
-	     python-requests-mock
-	     python-pytest-vcr)
+         python-blurhash)
+makedepends=(python-setuptools)
+checkdepends=(python-pytest
+              python-pytest-runner
+              python-pytest-cov
+              python-vcrpy
+              python-pytest-mock
+              python-requests-mock
+              python-pytest-vcr)
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
 sha256sums=('80701e37ca27586266fce4a1e23e1b910b883fe2c28ce9c43a16de30cb77d757')
 
@@ -43,4 +43,4 @@ package() {
   python ./setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
 
-# vim: set sts=2 sw=2 ft=PKGBUILD:
+# vim: set sts=2 sw=2 ft=PKGBUILD et:
