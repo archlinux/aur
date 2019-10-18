@@ -1,12 +1,13 @@
 pkgbase = factorio
-	pkgdesc = A 2D game about building and maintaining factories.
-	pkgver = 0.16.51
+	pkgdesc = A 2D game about building and maintaining factories (stable branch).
+	pkgver = 0.17.69
 	pkgrel = 1
 	url = http://www.factorio.com/
 	arch = x86_64
 	license = custom: commercial
 	makedepends = jq
 	depends = libxcursor
+	depends = gcc-libs
 	depends = alsa-lib
 	depends = libxrandr
 	depends = libxinerama
@@ -17,7 +18,7 @@ pkgbase = factorio
 	source = factorio.desktop
 	source = LICENSE
 	sha256sums = 5f62aa7763f9ad367a051371bc16f3c174022bb3380eb221ba06bac395bf9815
-	sha256sums = 67ec2f88afff5d7e0ca5fd3301b5d98655269c161a394368fa0ec49fbc0c0e21
+	sha256sums = e35912b1446981445f8f386e8cd9377f0649d3ff53467721c6ee119b142bee16
 
 pkgname = factorio
 

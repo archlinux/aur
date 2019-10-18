@@ -1,21 +1,22 @@
+# Maintainer: Thomas Lercher <aur@tlercher.de>
 # Maintainer: mickael9 <mickael9@gmail.com>
 # Contributor: Sebastien Duthil <duthils@free.fr>
 
 pkgname=factorio
-pkgver=0.16.51
+pkgver=0.17.69
 pkgrel=1
-pkgdesc="A 2D game about building and maintaining factories."
+pkgdesc="A 2D game about building and maintaining factories (stable branch)."
 arch=('x86_64')
 url="http://www.factorio.com/"
 license=('custom: commercial')
 conflicts=('factorio-demo' 'factorio-experimental' 'factorio-headless')
-depends=('libxcursor' 'alsa-lib' 'libxrandr' 'libxinerama' 'mesa')
+depends=('libxcursor' 'gcc-libs' 'alsa-lib' 'libxrandr' 'libxinerama' 'mesa')
 makedepends=('jq')
 source=(factorio.desktop
         LICENSE)
 sha256sums=('5f62aa7763f9ad367a051371bc16f3c174022bb3380eb221ba06bac395bf9815'
-            '67ec2f88afff5d7e0ca5fd3301b5d98655269c161a394368fa0ec49fbc0c0e21')
-_url=https://www.factorio.com/get-download/${pkgver}/alpha/linux64
+            'e35912b1446981445f8f386e8cd9377f0649d3ff53467721c6ee119b142bee16')
+_url=https://factorio.com/get-download/${pkgver}/alpha/linux64
 _gamepkg=factorio_alpha_x64_${pkgver}.tar.xz
 
 build() {
