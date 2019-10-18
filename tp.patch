@@ -1,0 +1,22 @@
+--- thinkpad-wmi.c
++++ thinkpad-wmi.c
+@@ -31,6 +31,7 @@
+ #include <linux/device.h>
+ #include <linux/init.h>
+ #include <linux/kernel.h>
++#include <linux/version.h>
+ #include <linux/module.h>
+ #include <linux/platform_device.h>
+ #include <linux/seq_file.h>
+@@ -1297,7 +1298,11 @@
+ 	return 0;
+ }
+ 
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(5, 3, 0))
++static int thinkpad_wmi_probe(struct wmi_device *wdev, const void *context)
++#else
+ static int thinkpad_wmi_probe(struct wmi_device *wdev)
++#endif
+ {
+ 	return thinkpad_wmi_add(wdev);
+ }

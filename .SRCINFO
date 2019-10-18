@@ -1,16 +1,18 @@
-pkgbase = thinkpad_wmi-dkms
-	pkgdesc = DKMS controlled modules for ThinkPad's WMI Bios Settings functionality
-	pkgver = r12.aa470c9
+pkgbase = thinkpad_wmi-dkms-git
+	pkgdesc = Updated DKMS controlled modules for ThinkPad's WMI Bios Settings functionality
+	pkgver = r35.dbe8b91
 	pkgrel = 1
-	url = https://github.com/c0d3z3r0/thinkpad-wmi
+	url = https://github.com/iksaif/thinkpad-wmi
 	arch = x86_64
 	license = GPL
 	makedepends = git
 	depends = dkms
-	provides = thinkpad_wmi-dkms
-	conflicts = thinkpad_wmi-dkms
-	source = git+https://github.com/c0d3z3r0/thinkpad-wmi.git
+	provides = thinkpad_wmi-dkms-git
+	conflicts = thinkpad_wmi-dkms-git
+	source = git+https://github.com/iksaif/thinkpad-wmi.git
+	source = tp.patch
 	md5sums = SKIP
+	md5sums = 38fc92d73e10b31f146dd4056c261b2d
 
-pkgname = thinkpad_wmi-dkms
+pkgname = thinkpad_wmi-dkms-git
 
