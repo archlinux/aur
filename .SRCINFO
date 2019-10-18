@@ -1,6 +1,6 @@
 pkgbase = boostnote-bin
 	pkgdesc = Open source note-taking app for programmers. Official binary.
-	pkgver = 0.12.1
+	pkgver = 0.13.0
 	pkgrel = 1
 	url = https://boostnote.io/
 	arch = any
