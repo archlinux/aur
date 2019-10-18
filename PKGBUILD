@@ -12,7 +12,7 @@ groups=('science' 'yorick-all')
 depends=('rlwrap')
 makedepends=('git' 'pkgconfig')
 source=("https://github.com/LLNL/yorick/archive/y_$pkgver.tar.gz")
-md5sums=('f46ba063992d496114db6c0a8df0f9c4')
+sha256sums=('4a4f3a18aed533cc5fadbb3d4bafb48f04834a22cbff6ad5c19d9dba74facbda')
 
 prepare() {
   cd yorick
