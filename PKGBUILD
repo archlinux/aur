@@ -1,8 +1,9 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 # Contributor: Tim Rakowski <tim.rakowski@gmail.com>
+
 pkgname=ignition-cmake
-pkgver=2.1.0
-pkgrel=3
+pkgver=2.1.1
+pkgrel=1
 pkgdesc="Provides modules that are used to find dependencies of ignition projects and generate cmake targets for consumers of ignition projects to link against."
 arch=('any')
 url="http://ignitionrobotics.org/libs/cmake"
@@ -12,9 +13,9 @@ depends=('cmake' 'pkg-config' 'ruby-ronn' 'doxygen')
 optdepends=()
 conflicts=()
 source=("https://bitbucket.org/ignitionrobotics/ign-cmake/get/${pkgname}2_${pkgver}.tar.bz2")
-sha256sums=('174bdb9616073c78b2d046218ca879c9291597c23b23d5d6651425fa5977f284')
+sha256sums=('ad89c81695b161694f86d5cffdc5d8fbbb896ea51290e30e4f07b3e7379464a2')
 
-_dir="ignitionrobotics-ign-cmake-5431a889ed95"
+_dir="ignitionrobotics-ign-cmake-02065e48ea4f"
 
 build() {
   cd "$srcdir/$_dir"
@@ -26,23 +27,11 @@ build() {
   cmake .. -DCMAKE_BUILD_TYPE="Release" \
            -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr" \
            -DCMAKE_INSTALL_LIBDIR="lib" \
-           -DENABLE_TESTS_COMPILATION:BOOL=False
+           -DBUILD_TESTING=OFF
 
   # Compile
   make
 }
-
-#check() {
-#  cd "$srcdir/$_dir/build"
-#
-#  cmake .. -DCMAKE_BUILD_TYPE="Release" \
-#           -DCMAKE_INSTALL_PREFIX="/usr" \
-#           -DCMAKE_INSTALL_LIBDIR="lib" \
-#           -DENABLE_TESTS_COMPILATION:BOOL=True
-#
-#  make
-#  make test
-#}
 
 package() {
   cd "$srcdir/$_dir/build"
