@@ -1,0 +1,19 @@
+pkgbase = poetry-beta
+	pkgdesc = Python dependency management and packaging made easy (pre-release version)
+	pkgver = 1.0.0b2
+	pkgrel = 1
+	url = https://poetry.eustace.io/
+	arch = any
+	license = MIT
+	depends = python
+	conflicts = python-poetry
+	options = !emptydirs
+	source = https://github.com/sdispater/poetry/releases/download/1.0.0b2/poetry-1.0.0b2-linux.tar.gz
+	source = https://github.com/sdispater/poetry/archive/1.0.0b2.tar.gz
+	source = poetry.py
+	sha256sums = 1f157b7ae110e153737ae55aac7b9e60f1c9f46d51189162a57548e77d06906c
+	sha256sums = 22da02cdbf39c2371bf8ab3ce4da746ba5a85c66c85b00804b3326dffe6d5df7
+	sha256sums = e9fee925c0fb42df53389bdfc8ebbe01bfd4f6146ed0a55786bd2ba741169c0c
+
+pkgname = poetry-beta
+
