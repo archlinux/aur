@@ -1,6 +1,6 @@
 pkgbase = osm-to-sql
 	pkgdesc = A tool to convert open street map XML data to SQL files.
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/whizsid/osm-to-sql
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = osm-to-sql
 	license = MIT
 	makedepends = rust
 	makedepends = cargo
-	source = osm-to-sql::git+https://github.com/whizsid/osm-to-sql#branch=master
+	source = osm-to-sql::git+https://github.com/whizsid/osm-to-sql#tag=0.1.2
 	md5sums = SKIP
 
 pkgname = osm-to-sql
