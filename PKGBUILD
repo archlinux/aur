@@ -1,4 +1,4 @@
-# Maintainer: Chris Severance aur.severach AatT spamgourmet.com
+# Maintainer:  Chris Severance aur.severach AatT spamgourmet.com
 # Contributor: Det <nimetonmaili g-mail>
 # Contributors: Charles Ghislain, Guillaume ALAUX, Daniel J Griffiths, Jason Chu, Geoffroy Carrier,
 #               Army, kfgz, Thomas Dziedzic, Dan Serban, jjacky, EasySly
@@ -10,13 +10,14 @@ pkgname="${_pkgname}${_major}"
 #_minor='211'; _build='b12'; _bundleid='238719'; _hash='478a62b7d4e34b78b671c754eaaf38ab'
 #https://javadl.oracle.com/webapps/download/AutoDL?BundleId=239848_
 #_minor='212'; _build='b10'; _bundleid='??????'; _hash='59066701cf1a433da9770636fbc4c9aa'
-_minor='221'; _bundleid='239848'; _hash='230deb18db3e4014bb8e3e8324f81b43'
+#_minor='221'; _bundleid='239848'; _hash='230deb18db3e4014bb8e3e8324f81b43'
+_minor='231'; _bundleid='240718'; _hash='5b13a193868b4bf28bcb45c792fce896'
 #  https://download.oracle.com/otn/java/jdk/8u212-b10/59066701cf1a433da9770636fbc4c9aa/jre-8u212-linux-x64.tar.gz
 pkgver="${_major}u${_minor}"
 pkgrel='1'
 pkgdesc="Oracle Java ${_major} Runtime Environment"
 arch=('x86_64')
-#url='http://www.oracle.com/technetwork/java/javase/downloads/index.html'
+#url='https://www.oracle.com/technetwork/java/javase/downloads/index.html'
 url='https://www.java.com/en/download/manual.jsp'
 license=('custom:Oracle')
 depends=('ca-certificates-java' 'hicolor-icon-theme' 'java-runtime-common' 'nss' 'xdg-utils')
@@ -27,7 +28,7 @@ provides=("java-runtime=${_major}" "java-runtime-headless=${_major}" "java-web-s
           "java-openjfx=${_major}")
 
 # Variables
-DLAGENTS=("${DLAGENTS[@]//curl -/curl -b 'oraclelicense=a' -}")
+
 _jname="${_pkgname}${_major}"
 _jvmdir="/usr/lib/jvm/java-${_major}-${_pkgname}/${_pkgname}"
 
@@ -46,7 +47,7 @@ backup=("etc/java-${_jname}/amd64/jvm.cfg"
         "etc/java-${_jname}/psfont.properties.ja"
         "etc/java-${_jname}/psfontj2d.properties"
         "etc/java-${_jname}/sound.properties")
-options=('!strip')
+options=('!strip') # JDK debug-symbols
 install="${pkgname}.install"
 source=(
   "https://download.oracle.com/otn-pub/java/jce/${_major}/jce_policy-${_major}.zip"
@@ -55,13 +56,16 @@ source=(
   "policytool-${_jname}.desktop"
 )
 md5sums=('b3c7031bc65c28c2340302065e7d00d3'
-         '9f3e2868f68ee5d0441b120374accb15'
+         '4a5b91b3a43a1f3af1f1fe519941a199'
          'ef3ff483db5d38ed106e0b819006bdae')
 sha256sums=('f3020a3922efd6626c2fff45695d527f34a8020e938a49292561f18ad1320b59'
-            '15ad4f7260d2416ac1558341d9d0a0ec5b83904e4ac4a22c8a3242e4e217649b'
+            '022dd15e416080838835f55510a0b7f37d7adab49e358be5669325f6a108212c'
             '614b2a74b53728b7914c1407126a7ecfed781a79fb11e9963528c7cad39dbca8')
 ## Alternative mirror, if your local one is throttled:
 #source[1]="http://ftp.wsisiz.edu.pl/pub/pc/pozyteczne%20oprogramowanie/java/${_pkgname}-${pkgver}-linux-x64.gz"
+
+DLAGENTS=("${DLAGENTS[@]// -gqb \"\"/ -gq}")
+DLAGENTS=("${DLAGENTS[@]//curl -/curl -b 'oraclelicense=a' -}")
 
 package() {
   set -u
