@@ -3,7 +3,7 @@
 
 pkgname=yorick
 pkgver=2_2_04
-pkgrel=1
+pkgrel=2
 pkgdesc='Interpreted language for data processing'
 arch=('x86_64' 'i686')
 license=('BSD')
@@ -15,7 +15,7 @@ source=("https://github.com/LLNL/yorick/archive/y_$pkgver.tar.gz")
 sha256sums=('4a4f3a18aed533cc5fadbb3d4bafb48f04834a22cbff6ad5c19d9dba74facbda')
 
 prepare() {
-  cd yorick
+  cd ${pkgname}-y_${pkgver}
 
   make prefix=/usr ysite
   make config
@@ -31,10 +31,12 @@ prepare() {
 }
 
 build() {
-  make -C yorick
+  cd ${pkgname}-y_${pkgver}
+  make
 }
 
 package() {
-  make -C yorick INSTALL_ROOT="$pkgdir" install
-  install -DTm755 yorick/wrap.sh "$pkgdir/usr/bin/yorick"
+  cd ${pkgname}-y_${pkgver}
+  make INSTALL_ROOT="$pkgdir" install
+  install -DTm755 wrap.sh "$pkgdir/usr/bin/yorick"
 }

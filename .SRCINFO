@@ -1,7 +1,7 @@
 pkgbase = yorick
 	pkgdesc = Interpreted language for data processing
 	pkgver = 2_2_04
-	pkgrel = 1
+	pkgrel = 2
 	url = http://yorick.github.com/
 	arch = x86_64
 	arch = i686
