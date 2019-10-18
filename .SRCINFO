@@ -1,6 +1,6 @@
 pkgbase = habitat-bin
 	pkgdesc = Application automation framework that allows you to build applications that have automation built-in
-	pkgver = 0.85.0
+	pkgver = 0.88.0
 	pkgrel = 1
 	url = https://www.habitat.sh/
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = habitat-bin
 	provides = habitat
 	conflicts = habitat
 	conflicts = habitat-git
-	source = https://dl.bintray.com/habitat/stable/linux/x86_64/hab-0.85.0-20190916214648-x86_64-linux.tar.gz
-	sha256sums = 2e526f81316b921b4689354c29ceb0e6df1a734554f63f8873e6ff0adf0efd4a
+	source = https://dl.bintray.com/habitat/stable/linux/x86_64/hab-0.88.0-20191009204957-x86_64-linux.tar.gz
+	sha256sums = 2a0bd903f395c441069bc618e48c20f175877f5f11c42765d7327866ee89ee60
 
 pkgname = habitat-bin
 
