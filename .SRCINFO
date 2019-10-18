@@ -1,0 +1,16 @@
+pkgbase = webhook-server-git
+	pkgdesc = A web server for executing stuff on your server on requests
+	pkgver = b003049
+	pkgrel = 1
+	url = https://github.com/nukesor/webhook-server
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = rustup
+	provides = webhook-server
+	conflicts = webhook-server
+	source = git+https://github.com/nukesor/webhook-server.git
+	sha256sums = SKIP
+
+pkgname = webhook-server-git
+
