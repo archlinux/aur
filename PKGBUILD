@@ -5,8 +5,8 @@
 
 pkgname=nicotine-plus-git
 _gitname=nicotine-plus
-pkgver=r2105.e91f0e9
-pkgrel=3
+pkgver=1.4.1.r17.g8b2c199
+pkgrel=1
 pkgdesc="A fork of Nicotine, a graphical client for Soulseek."
 arch=('i686' 'x86_64')
 url="http://nicotine-plus.org"
@@ -21,7 +21,7 @@ sha512sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/$_gitname"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --long --tags | sed 's/-/.r/;s/-/./'
 }
 
 build() {
