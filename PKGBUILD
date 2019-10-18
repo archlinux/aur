@@ -5,7 +5,8 @@
 set -u
 pkgname='jdk11'
 #pkgver='11.0.3'; _build='12'; _hash='37f5e150db5247ab9333b11c1dddcd30'
-pkgver='11.0.4'; _build='10'; _hash='cf1bbcbf431a474eb9fc550051f4ee78'
+#pkgver='11.0.4'; _build='10'; _hash='cf1bbcbf431a474eb9fc550051f4ee78'
+pkgver='11.0.5'; _build='10'; _hash='e51269e04165492b90fa15af5b4eb1a5'
 _major="${pkgver%%.*}"
 pkgrel='1'
 pkgdesc="Oracle Java ${_major} Development Kit"
@@ -38,14 +39,14 @@ if [ -s ~/"Downloads/${_srcfil}" ] && [ ! -e "${_srcfil}" ]; then
   fi
 fi
 unset _srcfil
-md5sums=('10badb89c60b0932ced8f41079d30e60'
+md5sums=('8a6fa2e2ce09c1cf9de4b3a77dcc867d'
          '985d0d81ece57d0ea633ccc1d3fd78ed'
          'fbd4ddd9069e48a65da6e0cb33db9bc1'
          'e59149780f4d1124f6e339611da9c70b'
          '6181f1ef1e5aeb637ef4cd593106beef'
          '1db7eb33e844d1a41bce196ab622da40'
          '4dda444d58a4d78ca6357228adbde8a2')
-sha256sums=('45962ed7a08d66775cb036e6f33cd576ecb1eab655c96dbe74851a3ebe1945fa'
+sha256sums=('387e60bdad6d6fc20d41cd712536f0f7adbb086fa73bc3cb225b3edad0bfa0a6'
             '1052634cdcbf50ca14b864b58f3afa53de1706bdc9c593667c29974146212c54'
             '9a84d1b4dd969e867b2dbb6df0d0c44814729e0f1d0c61ab6c54d676eae83b3b'
             '73d686fd6e478a887a51451d7ada7c045f31ce299f65f45e50a793820ee99d85'
