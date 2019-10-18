@@ -10,4 +10,8 @@
 *.sig
 
 pkg/
+pkg/*
 src/
+src/*
+dbuch-zsh-config
+dbuch-zsh-config/*
