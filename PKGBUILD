@@ -1,6 +1,6 @@
-# Maintainer: pure00boy <yuyuud@yuyuud@gmail.com>
+# Maintainer: pureboy <yuyuud@yuyuud@gmail.com>
 
-pkgname='kikoplay'
+pkgname='KikoPlay'
 pkgver='master'
 pkgrel=1
 pkgdesc="KikoPlay danmark"
