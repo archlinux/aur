@@ -1,17 +1,18 @@
 pkgbase = jrebel
 	pkgdesc = Reload code changes instantly
 	pkgver = 2019.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://jrebel.com/software/jrebel/
 	install = jrebel.install
 	arch = i686
 	arch = x86_64
 	license = custom
 	depends = java-environment
+	optdepends = lib32-glibc: 32-bit support
 	provides = jrebel
 	backup = etc/profile.d/jrebel.sh
 	backup = etc/profile.d/jrebel.csh
-	source = jrebel-2019.2.0-nosetup.zip::https://dl.zeroturnaround.com/?token=485695336bbbe9d300d7463138c08729a621554e
+	source = https://dl.zeroturnaround.com/jrebel/releases/jrebel-2019.2.0-nosetup.zip
 	source = jrebel.csh
 	source = jrebel.install
 	source = jrebel.sh

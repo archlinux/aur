@@ -3,7 +3,7 @@
 
 pkgname=jrebel
 pkgver=2019.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Reload code changes instantly"
 url="http://jrebel.com/software/jrebel/"
 license=('custom')
@@ -13,13 +13,9 @@ depends=('java-environment')
 optdepends=('lib32-glibc: 32-bit support')
 backup=('etc/profile.d/jrebel.sh'
 		'etc/profile.d/jrebel.csh')
-
 install=jrebel.install
 
-_pkgfile="$pkgname-$pkgver-nosetup.zip"
-_downloadurl=https:"$(curl "https://jrebel.com/software/jrebel/download/thank-you/?file=$_pkgfile" --silent | grep -o "//dl\\.zeroturnaround\\.com/?token=[a-fA-F0-9]*" | head -n 1)"
-
-source=("$_pkgfile::$_downloadurl"
+source=("https://dl.zeroturnaround.com/jrebel/releases/$pkgname-$pkgver-nosetup.zip"
 		"$pkgname.csh"
 		"$pkgname.install"
 		"$pkgname.sh")
