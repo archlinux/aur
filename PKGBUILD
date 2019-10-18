@@ -95,11 +95,11 @@ fi
 
 # vars
 _local_qt5_repo="${local_qt5_repo}"
-_pkgvermajmin="5.13"
+_pkgvermajmin="5.14"
 _pkgverpatch=".0"
 # {alpha/beta/beta2/rc}
-_dev_suffix=""
-pkgrel=4
+_dev_suffix="beta1"
+pkgrel=0
 pkgver="${_pkgvermajmin}${_pkgverpatch}"
 $_build_from_local_src_tree && pkgver=6.6.6
 _pkgver=${pkgver}
@@ -306,7 +306,7 @@ _core_configure_options=" \
                  -reduce-exports \
         "
 
-_tar_xz_sha256="2cba31e410e169bd5cdae159f839640e672532a4687ea0f265f686421e0e86d6"
+_tar_xz_sha256="f07cfc26762244bd343190b1b2e8b22708196f017024d6ab59f7fe1c8432f6b3"
 #_tar_xz_sha256="356f42d9087718f22f03d13d0c2cdfb308f91dc3cf0c6318bed33f2094cd9d6c"
 
 source=("git://github.com/sirspudd/mkspecs.git")
