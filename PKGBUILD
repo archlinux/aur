@@ -23,7 +23,6 @@ pkgver() {
 
 prepare () {
   cd "${srcdir}/brainworkshop"
-  curl -L https://github.com/samcv/brainworkshop/pull/13.patch | patch -p1
 }
 
 package() {
