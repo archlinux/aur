@@ -4,14 +4,14 @@ _name="luxcorerender"
 _ver_tag="luxcorerender_v2.2"
 { IFS='.'; read _ver_major _ver_minor; ((_ver_minor++)); unset IFS; } <<<${_ver_tag#luxcorerender_v}
 pkgname=${_name}-git
-pkgver=2.3.r90.ged325009a
+pkgver=2.3.r109.g537cedd54
 epoch=2
 pkgrel=1
 pkgdesc="Physically correct, unbiased rendering engine."
 arch=('x86_64')
 url="https://www.luxcorerender.org/"
 license=('Apache')
-depends=(oidn openimageio boost-libs blosc embree glfw-x11 gtk3 opencl-icd-loader)
+depends=(oidn openimageio boost-libs blosc embree glfw gtk3 opencl-icd-loader)
 optdepends=("opencl-driver: for gpu acceleration"
             "pyside2: for pyluxcoretools gui")
 makedepends=(boost git doxygen cmake pyside2-tools opencl-headers)
