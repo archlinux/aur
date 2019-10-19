@@ -1,3 +1,11 @@
+1.1.0-1 (October 19, 2019)
+    Fixed an issue where wtwitch would not function if the ~/.config/ dir didn't exist
+    Added "audio_only" as an acceptable quality
+    Improved functionality of (-h,--help) feature for systems without man page
+    Improved information output of debug (-d) feature
+    Change AUR package to build (man page) from source and remove make_release_files.sh
+    Drop "v" prefix from tags
+
 1.0.9-1 (October 17, 2019)
     Updated man page
     Updated changelog styling (minor)

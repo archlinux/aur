@@ -2,7 +2,7 @@
 
 # General package information
 pkgname=wtwitch
-pkgver=1.0.9
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Terminal user interface for Twitch"
 url="https://gitlab.com/krathalan/wtwitch"
@@ -12,14 +12,23 @@ changelog="CHANGELOG"
 
 # Dependencies
 depends=("jq" "streamlink" "wget")
+makedepends=("scdoc")
 
 # Download information
-source=("${url}/uploads/e3489943dbea543c0b29bad948e16287/wtwitch-1.0.9.tar.gz" "${url}/uploads/2b33d008b2d455f763747894a236d85b/wtwitch-1.0.9.tar.gz.sig")
+_packagesig="${url}/uploads/35f0f599b19b8dcf70a6b6765dfd63ea/wtwitch-1.1.0.tar.gz.sig"
+source=("${url}/-/archive/${pkgver}/wtwitch-${pkgver}.tar.gz" "${_packagesig}")
 validpgpkeys=("0CE6D5B52BD80B4EDB8DF343546BFAE445159FFC")
-sha256sums=("38aea0b2e3735291a003ec76e421e50922190e4a9d48d45c4d02f063ba722f3f" "9a12b8598b6ce0ee7ec1ebfdb63b1f60c487df2f912a122fc8b59e21025274e1")
+sha256sums=("cc1bbb92b82a85b1ac87c8c49e852195a522fad41dc9e7c3011752c761369e40" "84dbfbcf6d85bdac3a5a3843201aaabbc96c16659369a4a5aca938717ef69b6b")
+
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+
+  # Create man page
+  scdoc < wtwitch.1.scd > wtwitch.1
+}
 
 package() {
-  cd "${srcdir}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
   # wtwitch "binary"
   install -D -m755 wtwitch "${pkgdir}/usr/bin/${pkgname}"
