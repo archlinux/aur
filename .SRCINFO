@@ -2,6 +2,7 @@ pkgbase = rcsc-localsign
 	pkgdesc = RCSC LocalSign smartcard signing server (for GoSign and Elektroninis.lt)
 	pkgver = 20191015
 	pkgrel = 1
+	url = http://www.elektroninis.lt/lt/paruosti-kompiuteri/nid-469
 	arch = x86_64
 	makedepends = p7zip
 	makedepends = python

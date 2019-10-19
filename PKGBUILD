@@ -2,6 +2,7 @@ pkgname=rcsc-localsign
 pkgver=20191015
 pkgrel=1
 pkgdesc="RCSC LocalSign smartcard signing server (for GoSign and Elektroninis.lt)"
+url="http://www.elektroninis.lt/lt/paruosti-kompiuteri/nid-469"
 arch=(x86_64)
 depends=(java-runtime)
 makedepends=(p7zip python)
@@ -16,14 +17,17 @@ sha256sums=('17915f63108bc3f5279581589ae2616d908c9a28a71125df4ccf3a5884ceddeb'
             'c1bd62c20a74c779e4b2d645736663f8d7451dccce9c886f6e7c1bedfeb43128'
             '92f7673db77de2b46b1bf91870dbe9a28defb3f9b939e819af97cb6d30763945')
 
-prepare() {
+build() {
   msg2 "Extracting InstallShield self-executable..."
   7z -so x "rc-localsign-$pkgver.exe" "[0]" > isstream.bin
+
   msg2 "Extracting InstallShield data stream..."
   mkdir -p setup_files
   python issunpack.py isstream.bin setup_files
+
   msg2 "Extracting Windows Installer package..."
   7z -y -omsi_files x "setup_files/RC LocalSign.msi" Data1.cab
+
   msg2 "Extracting Windows Installer cabinet..."
   7z -y -ocab_files x "msi_files/Data1.cab"
 }
