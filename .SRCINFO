@@ -13,6 +13,7 @@ pkgbase = xdg-desktop-portal-wlr-git
 	makedepends = systemd-libs
 	depends = wlroots
 	provides = xdg-desktop-portal-wlr
+	provides = xdg-desktop-portal-impl
 	conflicts = xdg-desktop-portal-wlr
 	source = xdg-desktop-portal-wlr-git::git+https://github.com/emersion/xdg-desktop-portal-wlr.git
 	sha512sums = SKIP
