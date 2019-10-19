@@ -1,6 +1,6 @@
 pkgbase = openvr
 	pkgdesc = API and runtime that allows access to VR hardware
-	pkgver = 1.5.17
+	pkgver = 1.7.15
 	pkgrel = 1
 	url = https://www.steamvr.com/en/
 	arch = x86_64
@@ -12,9 +12,13 @@ pkgbase = openvr
 	depends = libgl
 	depends = sdl2
 	options = staticlibs
-	source = https://github.com/ValveSoftware/openvr/archive/v1.5.17.tar.gz
-	source = remove-openvrpaths-check.diff::https://aur.archlinux.org/cgit/aur.git/plain/remove-openvrpaths-check.diff?h=openvr-git
-	sha256sums = 1b502a1f04d918fcbb26534444260632e6883d81e1f895906857f9aafba3c56d
+	source = https://github.com/ValveSoftware/openvr/archive/v1.7.15.tar.gz
+	source = 0001-openvr_capi-Add-pragma-pack-around-VRControllerState.patch::https://aur.archlinux.org/cgit/aur.git/plain/0001-openvr_capi-Add-pragma-pack-around-VRControllerState.patch?h=openvr-git
+	source = 0002-samples-cmake-Remove-OpenVR-paths-check.patch::https://aur.archlinux.org/cgit/aur.git/plain/0002-samples-cmake-Remove-OpenVR-paths-check.patch?h=openvr-git
+	source = 0003-samples-compat-Use-correct-definition-for-vsprintf_s.patch::https://aur.archlinux.org/cgit/aur.git/plain/0003-samples-compat-Use-correct-definition-for-vsprintf_s.patch?h=openvr-git
+	sha256sums = ad5cba9bbd4235801ecce7e03f76f4a7d9b18343cc280c96905493eafcc00cc8
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = openvr
