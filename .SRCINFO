@@ -1,13 +1,13 @@
 pkgbase = python-streamlit
 	pkgdesc = Streamlit: Frontend library for machine learning engineers
-	pkgver = 0.48.0
+	pkgver = 0.48.1
 	pkgrel = 1
 	url = https://streamlit.io
 	arch = any
 	license = unknown
 	makedepends = python-pip
 	depends = python
-	depends = python-altair>=3.2.0
+	depends = python-altair3>=3.2.0
 	depends = python-astor
 	depends = python-base58
 	depends = python-blinker

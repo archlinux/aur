@@ -3,13 +3,13 @@
 pkgbase='python-streamlit'
 pkgname=('python-streamlit')
 _module='streamlit'
-pkgver='0.48.0'
+pkgver='0.48.1'
 pkgrel=1
 pkgdesc="Streamlit: Frontend library for machine learning engineers"
 url="https://streamlit.io"
 depends=(
 	'python'
-	'python-altair>=3.2.0'
+	'python-altair3>=3.2.0'
 	'python-astor'
 	'python-base58'
 	'python-blinker'
