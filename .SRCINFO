@@ -1,6 +1,6 @@
 pkgbase = aee-git
 	pkgdesc = Classic text editor with both curses and X11 interfaces.
-	pkgver = 2.2.21r4.ed7aa90
+	pkgver = 2.2.21.r4.ed7aa90
 	pkgrel = 1
 	url = https://github.com/xenji/aee.git
 	arch = i686

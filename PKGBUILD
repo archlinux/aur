@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=('aee-git' 'xae-git')
-pkgver=2.2.21r4.ed7aa90
+pkgver=2.2.21.r4.ed7aa90
 pkgrel=1
 pkgdesc="Classic text editor with both curses and X11 interfaces."
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd ${pkgbase%-git}
-  printf "%sr%s.%s" $(awk -F\" '/AEE_VERSION/ {print $2}' aee_version.h ) $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
+  printf "%s.r%s.%s" $(awk -F\" '/AEE_VERSION/ {print $2}' aee_version.h ) $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
 }
 
 prepare() {
