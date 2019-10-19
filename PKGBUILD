@@ -3,11 +3,11 @@
 
 pkgname=opensmtpd-extras
 pkgver=6.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Additional queues, schedulers, and tables for OpenSMTPD'
 arch=(i686 x86_64)
 url=https://github.com/OpenSMTPD/OpenSMTPD-extras
-license=() # Unclear
+license=(custom:ISC custom:BSD 'custom:Public Domain' custom:ISC-style)
 makedepends=(libevent python2 postgresql-libs mariadb-libs hiredis)
 optdepends=(
   'libevent: for table-python support'
@@ -22,7 +22,7 @@ sha512sums=('097223884841ec3939d3f3d86ba9d23f9c62a37825a8e5b94c2ac5fd16584879780
 prepare() {
   cd $pkgname-$pkgver
 
-  # Python addons use Python 2
+  # Python add-ons use Python 2
   sed 's#python_type="python"#python_type="python2"#' -i configure
 
   # Fix config folder location

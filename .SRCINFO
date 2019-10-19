@@ -1,10 +1,14 @@
 pkgbase = opensmtpd-extras
 	pkgdesc = Additional queues, schedulers, and tables for OpenSMTPD
 	pkgver = 6.4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/OpenSMTPD/OpenSMTPD-extras
 	arch = i686
 	arch = x86_64
+	license = custom:ISC
+	license = custom:BSD
+	license = custom:Public Domain
+	license = custom:ISC-style
 	makedepends = libevent
 	makedepends = python2
 	makedepends = postgresql-libs
