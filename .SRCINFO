@@ -1,6 +1,6 @@
 pkgbase = vicare-scheme-git
 	pkgdesc = R6RS scheme implementation, from github's master branch
-	pkgver = 20170911.f17d190e
+	pkgver = 20180130.58409619
 	pkgrel = 1
 	url = http://marcomaggi.github.io/vicare.html
 	arch = i686
@@ -13,7 +13,9 @@ pkgbase = vicare-scheme-git
 	conflicts = vicare-scheme
 	options = !makeflags
 	source = vicare-scheme::git+https://github.com/marcomaggi/vicare.git
-	md5sums = SKIP
+	source = docsfix.patch
+	sha256sums = SKIP
+	sha256sums = 1d410fc2e600aea54af3ce63a6f74b72ce5938610b6515582d48a5a15eb83240
 
 pkgname = vicare-scheme-git
 

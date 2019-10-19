@@ -1,0 +1,202 @@
+diff --git a/doc/iklib.texi b/doc/iklib.texi
+index 23105a5f..ed246ad3 100644
+--- a/doc/iklib.texi
++++ b/doc/iklib.texi
+@@ -12736,7 +12736,7 @@ as:
+ (@var{combine} @var{state}
+   (vector-ref @varo{vec} @var{idx})
+   (vector-ref @var{vec}  @var{idx})
+-  ···)
++  ...)
+ @end example
+ 
+ @noindent
+@@ -12752,7 +12752,7 @@ as:
+ (@var{combine}
+   (vector-ref @var{vec0} @var{idx})
+   (vector-ref @var{vec}  @var{idx})
+-  ···
++  ...
+   @var{state})
+ @end example
+ 
+diff --git a/doc/libs-bytevectors.texi b/doc/libs-bytevectors.texi
+index eb379631..d6ec1c9c 100644
+--- a/doc/libs-bytevectors.texi
++++ b/doc/libs-bytevectors.texi
+@@ -1572,7 +1572,7 @@ as:
+ (@var{kons} @var{idx} @var{state}
+   (bytevector-u8-ref @varo{bv} @var{idx})
+   (bytevector-u8-ref @var{bv}  @var{idx})
+-  ···)
++  ...)
+ @end example
+ 
+ @noindent
+diff --git a/doc/libs-strings.texi b/doc/libs-strings.texi
+index d9358397..01007440 100644
+--- a/doc/libs-strings.texi
++++ b/doc/libs-strings.texi
+@@ -1059,7 +1059,7 @@ strings, stopping at the end of the shortest; @var{kons} is applied as:
+ (@var{kons} @var{idx} @var{state}
+   (string-ref @var{str0} @var{idx})
+   (string-ref @var{str}  @var{idx})
+-  ···)
++  ...)
+ @end example
+ 
+ @noindent
+diff --git a/doc/libs-vectors.texi b/doc/libs-vectors.texi
+index 0449b047..7a63d50a 100644
+--- a/doc/libs-vectors.texi
++++ b/doc/libs-vectors.texi
+@@ -589,7 +589,7 @@ element of equal index in all the vectors; @var{combine} is applied as:
+ (@var{combine} @var{state}
+   (vector-ref @var{vec0} @var{idx})
+   (vector-ref @var{vec}  @var{idx})
+-  ···)
++  ...)
+ @end example
+ 
+ @noindent
+@@ -604,7 +604,7 @@ element of equal index in all the vectors; @var{combine} is applied as:
+ (@var{combine}
+   (vector-ref @var{vec0} @var{idx})
+   (vector-ref @var{vec}  @var{idx})
+-  ···
++  ...
+   @var{state})
+ @end example
+ 
+@@ -633,7 +633,7 @@ current elements as first argument.  For the left--folding operators:
+ (@var{combine} @var{idx} @var{state}
+   (vector-ref @var{vec0} @var{idx})
+   (vector-ref @var{vec}  @var{idx})
+-  ···)
++  ...)
+ @end example
+ 
+ @noindent
+@@ -643,7 +643,7 @@ for the right--folding operators:
+ (@var{combine} @var{idx}
+   (vector-ref @var{vec0} @var{idx})
+   (vector-ref @var{vec}  @var{idx})
+-  ···
++  ...
+   @var{state})
+ @end example
+ 
+diff --git a/doc/srfi-regular-expressions.texi b/doc/srfi-regular-expressions.texi
+index 8f8581f6..3bd8aacb 100644
+--- a/doc/srfi-regular-expressions.texi
++++ b/doc/srfi-regular-expressions.texi
+@@ -384,8 +384,8 @@ degenerate case where @var{str} is the empty string, the result is
+ (regexp-partition '(+ (or space punct)) "Hello, world!\n")
+ @result{} ("Hello" ", " "world" "!\n")
+ 
+-(regexp-partition '(+ (or space punct)) "¿Dónde Estás?")
+-@result{} ("" "¿" "Dónde" " " "Estás" "?")
++(regexp-partition '(+ (or space punct)) "DÃ³nde EstÃ¡s?")
++@result{} ("" "" "DÃ³nde" " " "EstÃ¡s" "?")
+ @end lisp
+ @end deftypefn
+ 
+diff --git a/doc/srfi-vectors.texi b/doc/srfi-vectors.texi
+index 02076218..20b79863 100644
+--- a/doc/srfi-vectors.texi
++++ b/doc/srfi-vectors.texi
+@@ -120,7 +120,7 @@ In this section containing specifications of procedures, the following
+ notation is used to specify parameters and return values:
+ 
+ @table @code
+-@item (f arg1 arg2 ···) -> something
++@item (f arg1 arg2 ...) -> something
+ Indicates a function @var{f} takes the parameters @var{arg1},
+ @var{arg2}, @dots{} and returns a value of the type @var{something}. If
+ @var{something} is unspecified, then what @var{f} returns is
+@@ -168,13 +168,13 @@ example, this usage of it is perfectly valid:
+ @noindent
+ and is indeed used quite often.
+ 
+-@item something ···
++@item something ...
+ Indicates that zero or more somethings are allowed to be arguments.
+ 
+-@item something1 something2 ···
++@item something1 something2 ...
+ Indicates that at least one something must be arguments.
+ 
+-@item something1 something2 ··· somethingn
++@item something1 something2 ... somethingn
+ Exactly equivalent to the previous argument notation, but this also
+ indicates that @var{n} will be used later in the procedure description.
+ @end table
+@@ -236,7 +236,7 @@ Examples:
+ ;; construct a vector of the sequence of integers
+ ;; in the range [0,n)
+ (vector-unfold values n)
+-=> #(0 1 2 ··· n-2 n-1)
++=> #(0 1 2 ... n-2 n-1)
+ 
+ ;; copy a vector
+ (vector-unfold (lambda (i)
+@@ -258,7 +258,7 @@ Examples:
+ (vector-unfold-right (lambda (i x)
+                        (values x (+ x 1)))
+                      n 0)
+-=> #(n-1 n-2 ··· 2 1 0)
++=> #(n-1 n-2 ... 2 1 0)
+ 
+ ;; Reverse vector.
+ (vector-unfold-right (lambda (i x)
+@@ -514,7 +514,7 @@ is applied as:
+ (@var{kons} @var{i} @var{state}
+             (vector-ref @var{vec1} @var{i})
+             (vector-ref @var{vec2} @var{i})
+-            ···)
++            ...)
+ @end example
+ 
+ @noindent
+@@ -569,7 +569,7 @@ vectors by:
+ @example
+ (@var{f} @var{i} (vector-ref @var{vec1} @var{i})
+                  (vector-ref @var{vec2} @var{i})
+-                 ···)
++                 ...)
+ @end example
+ 
+ The dynamic order of application of @var{f} is unspecified.
+@@ -707,9 +707,9 @@ in the vectors satisfy @var{pred?} until the end of the shortest vector,
+ this returns @false{}.  This is equivalent to:
+ 
+ @example
+-(vector-index (lambda (x1 x2 ···)
+-                (not (pred? x1 x1 ···)))
+-              vec1 vec2 ...)
++(vector-index (lambda (x1 x2 ...)
++...             (not (pred? x1 x1 ...)))
++...           vec1 vec2 ...)
+ @end example
+ 
+ Example:
+@@ -728,8 +728,8 @@ must have the same length.  This is equivalent to:
+ 
+ @example
+ (vector-index-right (lambda (x1 x2 ...)
+-                      (not (pred? x1 x1 ...)))
+-                    vec1 vec2 ...)
++...                   (not (pred? x1 x1 ...)))
++...                 vec1 vec2 ...)
+ @end example
+ @end defun
+ 
+@@ -768,7 +768,7 @@ vector argument, the set of elements:
+ @example
+ (vector-ref @var{vec1} @var{i})
+ (vector-ref @var{vec2} @var{i})
+- ···
++ ...
+ @end example
+ 
+ @noindent
