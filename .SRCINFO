@@ -1,6 +1,6 @@
 pkgbase = eventd
 	pkgdesc = A small daemon to act on remote or local events
-	pkgver = 0.26.0
+	pkgver = 0.27.0
 	pkgrel = 1
 	url = https://www.eventd.org
 	arch = aarch64
@@ -32,8 +32,8 @@ pkgbase = eventd
 	optdepends = librsvg: SVG images support
 	optdepends = libsoup: WebSocket support
 	options = !strip
-	source = https://www.eventd.org/download/eventd/eventd-0.26.0.tar.xz
-	sha256sums = 6dc8039b01811c4f4a3436d7f8f730f1b160c9b958ce8d8401d534b35059874e
+	source = https://www.eventd.org/download/eventd/eventd-0.27.0.tar.xz
+	sha256sums = 986b167ab54f89b59e9263d976a166d78ff67ffde8ee15ad1dbff68a451a30c9
 
 pkgname = eventd
 
