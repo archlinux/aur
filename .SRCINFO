@@ -1,0 +1,14 @@
+pkgbase = brother-dcp-l2510d
+	pkgdesc = CUPS and LPR driver for the Brother L2510D printer
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = https://support.brother.com/g/b/producttop.aspx?c=eu_ot&lang=en&prod=dcpl2510d_eu
+	arch = i686
+	arch = x86_64
+	groups = base-devel
+	license = EULA
+	source = https://download.brother.com/welcome/dlf103516/dcpl2510dpdrv-4.0.0-1.i386.deb
+	md5sums = 6dbcf91eb9c3bafd8a414408d940f93c
+
+pkgname = brother-dcp-l2510d
+
