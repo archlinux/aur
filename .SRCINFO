@@ -1,14 +1,14 @@
 pkgbase = python-pem
 	pkgdesc = Parsing and splitting of PEM files
-	pkgver = 19.2.0
+	pkgver = 19.3.0
 	pkgrel = 1
 	url = https://pem.readthedocs.io
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = pem-19.2.0.tar.gz::https://github.com/hynek/pem/archive/19.2.0.tar.gz
-	md5sums = 297afd00b775205766e95f5cf8801c3e
+	source = pem-19.3.0.tar.gz::https://github.com/hynek/pem/archive/19.3.0.tar.gz
+	md5sums = b8f20546b3dbe6e46015c96c300283af
 
 pkgname = python-pem
 	depends = python
