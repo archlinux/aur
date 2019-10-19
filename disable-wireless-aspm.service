@@ -1,0 +1,13 @@
+[Unit]
+Description=Disable wireless aspm for surface pro 2017
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash /usr/share/surface/disable_wireless_aspm.sh
+TimeoutSec=0
+#StandardOutput=tty
+RemainAfterExit=yes
+SysVStartPriority=99
+
+[Install]
+WantedBy=multi-user.target
