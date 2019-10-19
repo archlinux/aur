@@ -1,38 +1,28 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
-
+# Contributor: Jonas Witschel <diabonas@archlinux.org>
 pkgname=amide  
-pkgver=1.0.5
-pkgrel=10
-pkgdesc="Medical Imaging Data Examiner"
-url="http://amide.sourceforge.net/packages.html"
-arch=('i686' 'x86_64')
+pkgver=1.0.6
+pkgrel=1
+pkgdesc='Medical imaging data examiner'
+arch=('x86_64')
+url='http://amide.sourceforge.net/'
 license=('GPL')
-depends=('dcmtk' 'xmedcon' 'gconf' 'gsl' 'volpack' 'gnome-vfs' 'libgnomecanvas')
-makedepends=('gnome-doc-utils' 'intltool' 'libgnomecanvas')
-source=(http://downloads.sourceforge.net/project/$pkgname/amide/$pkgver/$pkgname-$pkgver.tgz gsl.patch alignment_mutual_information.patch)
-md5sums=('8a9b89e3d3ec1bb3e390f202f4861a7c'
-         '77737953dfcbd9eca4dd7699e79e0bca'
-         'fb64f22d5519b38cd832f14f02a7bd39')
-options=('!makeflags')
+depends=('dcmtk' 'ffmpeg' 'gnome-vfs' 'gsl' 'libgnomecanvas' 'volpack' 'xmedcon')
+makedepends=('gnome-doc-utils' 'intltool')
+source=('https://web.stanford.edu/~loening/files/amide-1.0.6-2.fc25.src.rpm')
+sha512sums=('2d6f9d7cfa7921ba95fd0a887504d4ec135d0e93d94ffdf256b5fc94f3df1766006e0f13ca24c1cc7904c636182db96b7e7c29ac2529554c351458217406053d')
 
 prepare() {
-  cd $pkgname-$pkgver/
-  patch -Np1 < "$srcdir"/alignment_mutual_information.patch
-  patch -Np1 < "$srcdir"/gsl.patch
+	bsdtar --extract --file "$pkgname-$pkgver.tgz"
 }
 
 build() {
-  cd $pkgname-$pkgver/
-  ./configure --prefix=/usr --disable-ffmpeg --enable-libdcmdata=no \
-	      --enable-gtk-doc=no --enable-amide-debug=no
-  make
-  ./configure --prefix=/usr --disable-ffmpeg --enable-libdcmdata \
-	      --with-xmedcon-exec-prefix=/usr/bin --enable-amide-debug=no
-  make
+	cd "$pkgname-$pkgver"
+	./configure --prefix=/usr
+	make --jobs=1
 }
 
 package() {
-  cd $pkgname-$pkgver
-  make DESTDIR=$pkgdir install
-  sed -i 's+.png++' "$pkgdir"/usr/share/applications/amide.desktop
+	cd "$pkgname-$pkgver"
+	make DESTDIR="$pkgdir" install
 }
