@@ -6,9 +6,9 @@
 
 pkgname=pebble-sdk
 pkgver=4.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Pebble SDK, used to develop applications and watchfaces for the Pebble Smartwatch."
-url="https://developer.pebble.com/sdk"
+url="https://developer.rebble.io/developer.pebble.com/index.html"
 arch=('i386' 'x86_64')
 license=('MIT')
 install='pebble-sdk.install'
@@ -38,8 +38,8 @@ optdepends=('python2-virtualenv: Required for installing SDK'
             'dtc: Emulator support'
 			'python2-pypkjs-git: Emulator support')
 conflicts=('pebble-sdk-beta' 'pebble-tool-git')
-source_i386=("https://s3.amazonaws.com/assets.getpebble.com/pebble-tool/pebble-sdk-${pkgver}-linux32.tar.bz2")
-source_x86_64=("https://s3.amazonaws.com/assets.getpebble.com/pebble-tool/pebble-sdk-${pkgver}-linux64.tar.bz2")
+source_i386=("https://developer.rebble.io/s3.amazonaws.com/assets.getpebble.com/pebble-tool/pebble-sdk-${pkgver}-linux32.tar.bz2")
+source_x86_64=("https://developer.rebble.io/s3.amazonaws.com/assets.getpebble.com/pebble-tool/pebble-sdk-${pkgver}-linux64.tar.bz2")
 source=('phonesim_path.patch')
 sha1sums=('231b04c03ea4ec1f49eee94ac0caa84021210caa')
 sha1sums_i386=('f5e9e3ba91811b1a486a14b6b2c8558d13a01982')
