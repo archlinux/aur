@@ -1,7 +1,7 @@
 # Author: Julian Xhokaxhiu <info@julianxhokaxhiu.com>
 pkgname=chromium-fullscreen
 pkgver=3
-pkgrel=5
+pkgrel=6
 pkgdesc="A script in order to run Chromium in fullscreen mode under the chromium user"
 url="https://aur.archlinux.org/packages/chromium-fullscreen/"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
@@ -14,6 +14,14 @@ source=('https://raw.githubusercontent.com/julianxhokaxhiu/AUR/master/chromium-f
         'https://raw.githubusercontent.com/julianxhokaxhiu/AUR/master/chromium-fullscreen/disable-x-frame-option-manifest.json'
         'https://raw.githubusercontent.com/julianxhokaxhiu/AUR/master/chromium-fullscreen/aw-snap-reloader-background.js'
         'https://raw.githubusercontent.com/julianxhokaxhiu/AUR/master/chromium-fullscreen/aw-snap-reloader-manifest.json')
+sha256sums=(
+  "SKIP"
+  "SKIP"
+  "SKIP"
+  "SKIP"
+  "SKIP"
+  "SKIP"
+)
 
 package() {
   # Copy autorun script
