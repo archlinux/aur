@@ -24,13 +24,6 @@ prepare() {
   rm -rf */
   #bsdtar xf "signa-browser-ext-1.0-r${r}-${d//-}-noarch.rpm"
   bsdtar xf "signa-browser-ext-1.0.r${r}.${d//-}-1-any.pkg.tar.xz"
-
-  # Apparently they now provide an Arch package as of r7771, which is cool.
-  # However, (as far as my inbox knows), they haven't expressed interest in
-  # maintaining this package in AUR.
-
-  # Also I think I'm technically violating the license by having this on AUR,
-  # but oh well
 }
 
 build() {
