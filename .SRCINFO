@@ -6,7 +6,7 @@ pkgbase = ntfs-automount
 	license = GPL
 	depends = udev
 	source = https://github.com/n34r1297/easyarch/raw/master/ntfs-automount/Releases/ntfs-automount-0.1.tar.gz
-	md5sums = e5c62bf991c9757cde00ec6afdf29401
+	md5sums = 65c43ce38ceecec2e5964af4b1a1ca9e
 
 pkgname = ntfs-automount
 
