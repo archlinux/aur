@@ -1,10 +1,9 @@
-# Maintainer: American_Jesus <american.jesus.pt AT gmail DOT com>
-
-_pkgname=nano-syntax-highlighting
-pkgname=$_pkgname-git
-pkgver=474.421a5c4
+# Contributor: American_Jesus <american.jesus.pt AT gmail DOT com>
+# Maintainer: Matthew Sexton <wsdmatty@gmail.com>
+pkgname=nano-syntax-highlighting-git
+pkgver=2019.10.17.r8.g6bee1b2
 pkgrel=1
-pkgdesc="Nano editor syntax highlighting enhancements"
+pkgdesc="improved nano syntax highlighting files"
 arch=('any')
 depends=('nano')
 makedepends=('git')
@@ -13,27 +12,26 @@ license=('GPL3')
 install=nano-syntax-highlighting.install
 provides=('nano-syntax-highlighting')
 conflicts=('nano-syntax-highlighting')
-source=('nanorc::git+https://github.com/scopatz/nanorc.git#branch=master')
+source=('nano-syntax-highlighting::git+https://github.com/scopatz/nanorc.git')
 md5sums=('SKIP')
 
 pkgver() {
-	cd $srcdir/nanorc
-	echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+	cd "${srcdir}/${pkgname%-git}"
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+
 }
 
 build() {
 	# Generate nanorc.sample
-	find $srcdir/nanorc/*.nanorc -type f | sed "s@${srcdir}\/nanorc@include \/usr\/share\/$_pkgname@" > $srcdir/nanorc.sample
+	find "${srcdir}"/"${pkgname%-git}"/*.nanorc -type f | sed "s@${srcdir}\/${pkgname%-git}@include \/usr\/share\/${pkgname%-git}@" > "${srcdir}/nanorc.sample"
 }
 
 package() {
-	cd $srcdir
+	mkdir -p "${pkgdir}/usr/share/${pkgname%-git}"
 	
-	mkdir -p $pkgdir/usr/share/$_pkgname
+	find "${srcdir}"/"${pkgname%-git}"/ -name '*.nanorc' | xargs install -D -m644 -t "${pkgdir}/usr/share/${pkgname%-git}/"
 	
-	find $srcdir/nanorc/ -name '*.nanorc' | xargs install -D -m644 -t $pkgdir/usr/share/$_pkgname/
-	
-	install -D -m644 $srcdir/nanorc.sample $pkgdir/usr/share/$_pkgname/nanorc.sample
+	install -D -m644 "${srcdir}/nanorc.sample" "${pkgdir}/usr/share/${pkgname%-git}/nanorc.sample"
 
 } 
 
