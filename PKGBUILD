@@ -2,7 +2,7 @@
 
 pkgname=ocaml-stdint-git
 pkgver=20180606
-pkgrel=1
+pkgrel=2
 pkgdesc="Various signed and unsigned integers for OCaml"
 arch=('i686' 'x86_64')
 url='https://github.com/andrenth/ocaml-stdint'
