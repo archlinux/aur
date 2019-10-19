@@ -1,17 +1,18 @@
 pkgbase = ruby-mini_magick
 	pkgdesc = Manipulate images with minimal use of memory via ImageMagick.
-	pkgver = 4.2.7
-	pkgrel = 2
+	pkgver = 4.9.5
+	pkgrel = 1
 	url = https://github.com/minimagick/minimagick
 	arch = any
 	license = MIT
 	makedepends = rubygems
+	makedepends = ruby-rdoc
 	depends = ruby
 	depends = imagemagick
-	depends = ruby-subexec
-	noextract = mini_magick-4.2.7.gem
-	source = https://rubygems.org/downloads/mini_magick-4.2.7.gem
-	sha256sums = 24f56c4561e9406d40f637a5f1ea9bc469fbd3b549c692061868fb7c054ff386
+	noextract = mini_magick-4.9.5.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/mini_magick-4.9.5.gem
+	sha256sums = 44a2f86de6addeb5eb1f3a4114c438d126ce76b12414b9664590afd2324ec063
 
 pkgname = ruby-mini_magick
 
