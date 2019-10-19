@@ -1,10 +1,9 @@
 pkgbase = fcitx-sogoupinyin
 	pkgdesc = Sogou Pinyin for Linux
-	pkgver = 2.2.0.0108
-	pkgrel = 6
+	pkgver = 2.3.1.0112
+	pkgrel = 1
 	url = https://pinyin.sogou.com/linux/
 	arch = x86_64
-	arch = i686
 	license = custom
 	depends = fcitx
 	depends = opencc
@@ -13,11 +12,9 @@ pkgbase = fcitx-sogoupinyin
 	depends = xorg-xprop
 	depends = qtwebkit
 	source = sogou-autostart
-	md5sums = ff599d805084f49b95ba99fe640bc170
-	source_x86_64 = http://cdn2.ime.sogou.com/dl/index/1524572264/sogoupinyin_2.2.0.0108_amd64.deb
-	md5sums_x86_64 = 3fc65450b4a8c2f00561d9c8a4a07b5a
-	source_i686 = http://cdn2.ime.sogou.com/dl/index/1524572032/sogoupinyin_2.2.0.0108_i386.deb
-	md5sums_i686 = 475d07b3a99c2e23daca68c7d900388f
+	source = http://cdn2.ime.sogou.com/dl/index/1571302197/sogoupinyin_2.3.1.0112_amd64.deb
+	sha256sums = 4357c28ba35d9441e47cc5c9a4c5f1ccbb8957cb3434212a609201aee485c092
+	sha256sums = 4e15aad4785b30f35a8d891de878abe8892ffaea1882f570fec74fd821d0c448
 
 pkgname = fcitx-sogoupinyin
 
