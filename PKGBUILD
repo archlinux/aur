@@ -1,14 +1,14 @@
 # Maintainer: Joseph R. Quinn <quinn period josephr at protonmail dot com>
 pkgname=nerd-fonts-fira-code
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Patched font Fira (Fura) Code from the nerd-fonts library"
 arch=("any")
 url="https://github.com/ryanoasis/nerd-fonts"
 license=('MIT')
 depends=('fontconfig')
 provides=('nerd-fonts-fira-code')
-conflicts=('nerd-fonts-git' 'nerd-fonts-complete')
+conflicts=('nerd-fonts-git' 'nerd-fonts-complete' 'otf-nerd-fonts-fira-code')
 groups=("nerd-fonts")
 source=("https://github.com/ryanoasis/nerd-fonts/releases/download/v$pkgver/FiraCode.zip"
         "https://github.com/ryanoasis/nerd-fonts/raw/v$pkgver/LICENSE")
