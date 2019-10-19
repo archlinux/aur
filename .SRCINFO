@@ -1,0 +1,16 @@
+pkgbase = ldid2
+	pkgdesc = a tool used for ad-hoc codesigning iOS binaries - xerub's fork
+	pkgver = 76.11f7ebc
+	pkgrel = 1
+	url = https://github.com/xerub/ldid
+	arch = any
+	license = custom
+	makedepends = git
+	makedepends = clang
+	provides = ldid
+	provides = ldid2
+	source = git+https://github.com/xerub/ldid
+	sha256sums = SKIP
+
+pkgname = ldid2
+
