@@ -2,7 +2,7 @@
 
 pkgname=python-ipaddress
 _pyname=ipaddress
-pkgver=1.0.22
+pkgver=1.0.23
 pkgrel=1
 pkgdesc='IPv4/IPv6 manipulation library'
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('custom:PSFL')
 makedepends=('python-setuptools')
 depends=('python')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('19b9a4e7ab0271a7f16b498cebe431d7d6179c7cd99626d918b5fa218f0ef8be')
+sha256sums=('8cc01a7523042c3b1a01446f0318e8bbe0fc0d520ca651c986377e402a2e9b47')
 
 build() {
   cd "${_pyname}-${pkgver}"
