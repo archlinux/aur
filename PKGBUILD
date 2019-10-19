@@ -1,6 +1,6 @@
 # Maintainer: Bruce Zhang
 pkgname=firecamp
-pkgver=0.6.6
+pkgver=0.6.9
 pkgrel=1
 pkgdesc="firecamp, A campsite for developers."
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=(
     "manual://firecamp_$pkgver.snap"
     'runner.patch'
 )
-sha256sums=('6ea77ac4124ac9d4ccdf3584c98bafa6d2ee2424de90186c352e1571759689db'
+sha256sums=('141b0da5c9900b457a283f08929906a9b0d38a1c9ca1478b9a2d898dae77017d'
             'f22a12c6b3ee55161ac9e8debadba48263fad338c13b6700d06261c2346426dd')
 
 prepare() {
