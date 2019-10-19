@@ -1,8 +1,8 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=amide-hg
-pkgver=1.0.6r109.7b8fc8a59fd2
-pkgrel=8
+pkgver=1.0.6.r109.7b8fc8a59fd2
+pkgrel=1
 pkgdesc="Medical Imaging Data Examiner - mercurial checkout"
 url="http://amide.sourceforge.net/packages.html"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ options=('!makeflags')
 
 pkgver() {
   cd ${pkgname%-hg}/${pkgname%-hg}-current
-  printf "1.0.6r%s.%s" "$(hg identify -n| tr -d +)" "$(hg identify -i| tr -d +)"
+  printf "1.0.6.r%s.%s" "$(hg identify -n| tr -d +)" "$(hg identify -i| tr -d +)"
 }
 
 prepare() {

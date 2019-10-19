@@ -1,7 +1,7 @@
 pkgbase = amide-hg
 	pkgdesc = Medical Imaging Data Examiner - mercurial checkout
-	pkgver = 1.0.6r109.7b8fc8a59fd2
-	pkgrel = 8
+	pkgver = 1.0.6.r109.7b8fc8a59fd2
+	pkgrel = 1
 	url = http://amide.sourceforge.net/packages.html
 	arch = i686
 	arch = x86_64
