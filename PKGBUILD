@@ -7,7 +7,7 @@ depends=(java-runtime)
 makedepends=(p7zip python)
 source=("rc-localsign-$pkgver.exe::http://www.elektroninis.lt/bylos/dokumentai/rcsc/localsign/localsign-install.exe"
         issunpack.py
-        LocalSign.service
+        rcsc-localsign.service
         RCSC_RootCA_4f001ba124bdcb8848bebd3f2b62c7c5.pem
         VI_Registru_Centras_RCSC_RootCA_03a3a457b5f0f3864a1163e898ff169c.pem)
 sha256sums=('17915f63108bc3f5279581589ae2616d908c9a28a71125df4ccf3a5884ceddeb'
@@ -30,7 +30,7 @@ prepare() {
 
 package() {
   install -Dm644 -t "$pkgdir"/opt/RCSC/LocalSign cab_files/local_webserver.jar
-  install -Dm644 -t "$pkgdir"/usr/lib/systemd/system LocalSign.service
+  install -Dm644 -t "$pkgdir"/usr/lib/systemd/system rcsc-localsign.service
   install -Dm644 -t "$pkgdir"/usr/share/ca-certificates/trust-source/anchors *.pem
 }
 
