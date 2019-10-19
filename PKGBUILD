@@ -8,7 +8,7 @@
 pkgname=mpd-light
 pkgver=0.21.15
 _majorver=0.21
-pkgrel=1
+pkgrel=2
 pkgdesc='Flexible, powerful, server-side application for playing music. Light version without ao, ffmpeg, jack, modplug, pulse, shout, sidplay, soundcloud, wavpack, avahi, smbclient and zziplib support.'
 url='https://www.musicpd.org/'
 license=('GPL')
@@ -42,6 +42,7 @@ build() {
 	       '-Dadplug=disabled' # not in an official repo
 	       '-Dsndio=disabled' # interferes with detection of alsa devices
 	       '-Dshine=disabled' # not in an official repo
+	       '-Dtremor=disabled' # not in an official repo
 	       '-Dao=disabled'
 	       '-Dffmpeg=disabled'
 	       '-Djack=disabled'
@@ -54,8 +55,22 @@ build() {
 	       '-Dzzip=disabled'
 	       '-Dzeroconf=disabled'
 	       '-Dsmbclient=disabled'
+	       '-Dcdio_paranoia=disabled'
+	       '-Dqobuz=disabled'
+	       '-Dtidal=disabled'
+	       '-Diso9660=disabled'
+	       '-Dfluidsynth=disabled'
+	       '-Dmikmod=disabled'
+	       '-Dmpcdec=disabled'
+	       '-Dmpg123=disabled'
+	       '-Dopus=disabled'
+	       '-Dwildmidi=disabled'
+	       '-Dlame=disabled'
+	       '-Dtwolame=disabled'
+	       '-Dopenal=disabled'
+	       '-Dyajl=disabled'
 	)
-	arch-meson --auto-features auto  .. ${_opts[@]}
+	arch-meson --auto-features auto .. ${_opts[@]}
 	ninja
 }
 
