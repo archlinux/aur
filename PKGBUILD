@@ -1,8 +1,8 @@
 # Maintainer: Mort Yao <soi@mort.ninja>
 
 pkgname=ocaml-ppxfind-git
-pkgver=20171213
-pkgrel=3
+pkgver=20190513
+pkgrel=1
 pkgdesc="ocamlfind ppx tool"
 arch=('x86_64')
 url='https://github.com/diml/ppxfind'
