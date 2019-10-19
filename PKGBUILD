@@ -1,6 +1,6 @@
 # Maintainer: Jon Gjengset <jon@thesquareplanet.com>
 pkgname=coz-git
-pkgver=r391.72c4afe
+pkgver=r424.d87e924
 pkgrel=1
 pkgdesc="a new kind of profiler that measures optimization potential"
 arch=('x86_64')
