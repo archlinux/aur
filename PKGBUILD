@@ -3,7 +3,7 @@
 
 pkgname=latte-dock-git
 _gitname=latte-dock
-pkgver=0.7.96.r974.gbe25a3b1
+pkgver=r3505.a69f3013
 pkgrel=1
 pkgdesc='Latte is a dock based on plasma frameworks that provides an elegant and intuitive experience for your tasks and plasmoids'
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ sha256sums=('SKIP')
 pkgver() {
    cd ${_gitname}
 
-   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
    
 }
 
@@ -32,7 +32,7 @@ build() {
         -DKDE_L10N_BRANCH=trunk \
         -DKDE_L10N_AUTO_TRANSLATIONS=OFF \
         -DCMAKE_BUILD_TYPE=Release ..
-   make fetch-translations
+#      make fetch-translations
   
 }
 
