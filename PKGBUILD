@@ -1,6 +1,6 @@
 # Maintainer: Alexander Mcmillan <linuxguy93@gmail.com> 
 pkgname=carla-bridges
-pkgver=5021.41c73f2e
+pkgver=5030.513a9f09
 pkgrel=1
 pkgdesc="Carla All Bridges (Stable Branch)"
 arch=('x86_64')
