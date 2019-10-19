@@ -1,7 +1,7 @@
 pkgbase = rtorrent-ps-ch
 	pkgdesc = Extended rTorrent-ps with additional UI patches, general fixes, and enhancements
 	pkgver = 1.8.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/chros73/rtorrent-ps-ch
 	arch = any
 	license = GPL2
