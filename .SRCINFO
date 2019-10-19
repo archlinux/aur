@@ -1,9 +1,8 @@
-pkgbase = qt-sdk
+pkgbase = qt-sdk-raspberry-pi
 	pkgdesc = Qt SDK for the Raspberry Pi 1/2/3
 	pkgver = 5.14.0
 	pkgrel = 0
 	url = http://www.chaos-reins.com/qpi/
-	install = qpi.install
 	arch = x86_64
 	license = LGPL3
 	license = GPL3

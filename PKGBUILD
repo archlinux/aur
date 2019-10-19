@@ -177,7 +177,7 @@ $_build_from_local_src_tree && _patching=false
 
 # PKGBUILD vars
 
-install=qpi.install
+#install=qpi.install
 
 rm $install
 touch $install
@@ -476,7 +476,7 @@ create_install_script() {
 package() {
   adjust_bin_dir
 
-  create_install_script
+  #create_install_script
 
   # Qt is now installed to $pkgdir/$sysroot/$prefix
   # manually generate/decompose host/target
