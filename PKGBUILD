@@ -22,17 +22,33 @@ int main() {
   return 0;
 }
 "
+
+#build() {
+#	cd ${pkgname}
+#	mkdir build
+#	cd build
+#	cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
+#}
+
+#package() {
+#	cd ${pkgname}/build
+#	make
+#	sudo make install
+#	sudo cp ../INCLUDES/firefly.hpp /usr/include/firefly.hpp
+#	echo -e "${example}"
+#}
+
 build() {
-	cd ${pkgname}
-	mkdir build
-	cd build
-	cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
+    cd ${pkgname}
+    mkdir build
+    cd build
+    cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
+    make
 }
 
 package() {
-	cd ${pkgname}/build
-	make
-	sudo make install
-	sudo cp ../INCLUDES/firefly.hpp /usr/include/firefly.hpp
-	echo -e "${example}"
+    cd ${pkgname}/build
+    make DESTDIR="$pkgdir/" install
+    install -Dm744 ../INCLUDES/firefly.hpp "$pkgdir/usr/include/firefly.hpp"
 }
+
