@@ -1,0 +1,30 @@
+pkgbase = nginx-http3
+	pkgdesc = Nginx with Cloudflare's http3 path on the top of quiche
+	pkgver = 1.16
+	pkgrel = 1
+	url = https://github.com/cloudflare/quiche/tree/master/extras/nginx
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = make
+	makedepends = gcc
+	makedepends = go
+	makedepends = perl
+	makedepends = ninja
+	makedepends = rust
+	provides = nginx
+	conflicts = nginx
+	conflicts = nginx-unstable
+	conflicts = nginx-svn
+	conflicts = nginx-devel
+	conflicts = nginx-custom-dev
+	conflicts = nginx-full
+	conflicts = nginx-libressl
+	source = https://nginx.org/download/nginx-1.16.1.tar.gz
+	source = git+https://github.com/cloudflare/quiche.git
+	sha256sums = f11c2a6dd1d3515736f0324857957db2de98be862461b5a542a3ac6188dbe32b
+	sha256sums = SKIP
+
+pkgname = nginx-http3
+
