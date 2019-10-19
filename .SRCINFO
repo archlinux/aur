@@ -1,6 +1,6 @@
 pkgbase = sublime-merge
 	pkgdesc = Meet a new Git Client, from the makers of Sublime Text
-	pkgver = 1116
+	pkgver = 1119
 	pkgrel = 1
 	url = https://www.sublimemerge.com
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = sublime-merge
 	depends = gtk3
 	conflicts = sublime-merge-dev
 	source = smerge
-	source = https://download.sublimetext.com/sublime_merge_build_1116_x64.tar.xz
-	source = https://download.sublimetext.com/sublime_merge_build_1116_x64.tar.xz.asc
+	source = https://download.sublimetext.com/sublime_merge_build_1119_x64.tar.xz
+	source = https://download.sublimetext.com/sublime_merge_build_1119_x64.tar.xz.asc
 	validpgpkeys = 1EDDE2CDFC025D17F6DA9EC0ADAE6AD28A8F901A
 	sha256sums = ddd804f64fa218d053f00ca82b5bb2625f9812d3530c2f2f88049dac9bb41a7d
-	sha256sums = a6b364b557bc88fe6202af9c67b6e486a172c9add28e882e434f83dd0eb19b33
+	sha256sums = 64b06320c0300923ade0901493cfd78e7f28598324f99d4c3609b3c85c5f1cea
 	sha256sums = SKIP
 
 pkgname = sublime-merge
