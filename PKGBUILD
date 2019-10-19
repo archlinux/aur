@@ -7,7 +7,7 @@
 
 pkgname=ocaml-menhir
 pkgver=20190924
-pkgrel=1
+pkgrel=2
 pkgdesc="Menhir is a LR(1) parser generator for the OCaml."
 arch=("i686" "x86_64")
 url="http://cristal.inria.fr/~fpottier/menhir/"
