@@ -19,5 +19,5 @@ pkgbase = python-streamlit-altair
 	source = altair-3.2.0.tar.gz::https://github.com/altair-viz/altair/archive/v3.2.0.tar.gz
 	sha256sums = 2c52a31621836e42587fe4a2b5c0adec874d84597cfea102ceea0646700c95a8
 
-pkgname = python-altair3
+pkgname = python-streamlit-altair3
 

@@ -3,7 +3,7 @@
 
 pkgbase=python-streamlit-altair
 _pyname=altair
-pkgname=('python-altair3')
+pkgname=('python-streamlit-altair3')
 depends=('python' 'python-entrypoints' 'python-jsonschema' 'python-numpy' 'python-pandas' 'python-six' 'python-toolz')
 conflicts=('python-altair')
 replaces=('python-altair')
