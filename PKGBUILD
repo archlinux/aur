@@ -9,7 +9,7 @@ pkgdesc='Extended rTorrent-ps with additional UI patches, general fixes and enha
 license=('GPL2')
 arch=('any')
 url='https://github.com/chros73/rtorrent-ps-ch'
-depends=('curl>=7.15.4' 'ncurses' 'xmlrpc-c')
+depends=('curl>=7.15.4' 'ncurses' 'xmlrpc-c' 'libtorrent-ps-ch')
 provides=('rtorrent')
 conflicts=('rtorrent' 'rtorrent-ps')
 
