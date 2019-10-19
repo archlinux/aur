@@ -2,13 +2,14 @@
 
 pkgname=ocaml-ppx_derivers-git
 pkgver=20190404
-pkgrel=1
+pkgrel=2
 pkgdesc="deriving plugin registry"
 arch=('x86_64')
 url='https://github.com/ocaml-ppx/ppx_derivers'
 license=('BSD')
 provides=('ocaml-ppx_derivers')
-makedepends=('ocamlbuild' 'ocaml-findlib')
+conflicts=('ocaml-ppx_derivers')
+makedepends=('ocamlbuild' 'ocaml-findlib' 'dune')
 source=("${pkgname}::git://github.com/ocaml-ppx/ppx_derivers.git")
 md5sums=('SKIP')
 
@@ -20,18 +21,14 @@ pkgver() {
 build() {
   cd "$pkgname"
 
-  make
+  dune build
 }
 
 package() {
-  set -e
-  destdir="$pkgdir/$(ocamlfind printconf destdir)"
-
   cd "$pkgname"
 
-  mkdir -p "$destdir/ppx_derivers"
-  export DESTDIR="$destdir/"
-  export OCAMLFIND_DESTDIR="$destdir/"
-  jbuilder build @install
-  jbuilder install -p ppx_derivers --prefix="${destdir}"
+  install -dm755 "${pkgdir}$(ocamlfind -printconf destdir)" "${pkgdir}/usr/share"
+  dune install --prefix "${pkgdir}/usr" --libdir "${pkgdir}$(ocamlfind -printconf destdir)"
+  mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
+  install -Dm644 "LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
 }
