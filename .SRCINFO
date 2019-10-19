@@ -1,0 +1,17 @@
+pkgbase = fightcade-windows
+	pkgdesc = An online arcade gaming platform for netplay based on GGPO. (Full Windows-wine version)
+	pkgver = 1
+	pkgrel = 1
+	url = http://www.fightcade.com/
+	arch = any
+	license = custom
+	makedepends = gendesk
+	makedepends = rsync
+	makedepends = icoutils
+	depends = wine
+	depends = lib32-mpg123
+	source = fightcade-windows.zip::http://www.fightcade.com/download/fightcade-win32-v042.2.zip
+	md5sums = SKIP
+
+pkgname = fightcade-windows
+
