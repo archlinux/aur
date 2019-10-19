@@ -1,7 +1,7 @@
 # Author: Julian Xhokaxhiu <info@julianxhokaxhiu.com>
 pkgname=chromium-fullscreen
 pkgver=3
-pkgrel=4
+pkgrel=5
 pkgdesc="A script in order to run Chromium in fullscreen mode under the chromium user"
 url="https://aur.archlinux.org/packages/chromium-fullscreen/"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
