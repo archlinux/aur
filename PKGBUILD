@@ -3,7 +3,7 @@
 _name=Mastodon.py
 pkgname=python-mastodon
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="python bindings for the Mastodon RPC API"
 arch=('any')
 url="https://github.com/halcy/Mastodon.py"
@@ -15,7 +15,9 @@ depends=(python
          python-six
          python-pytz
          python-decorator
-         python-blurhash)
+         python-blurhash
+         python-cryptography
+         python-http-ece)
 makedepends=(python-setuptools)
 checkdepends=(python-pytest
               python-pytest-runner

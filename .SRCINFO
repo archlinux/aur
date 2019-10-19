@@ -1,7 +1,7 @@
 pkgbase = python-mastodon
 	pkgdesc = python bindings for the Mastodon RPC API
 	pkgver = 1.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/halcy/Mastodon.py
 	arch = any
 	license = MIT
@@ -21,6 +21,8 @@ pkgbase = python-mastodon
 	depends = python-pytz
 	depends = python-decorator
 	depends = python-blurhash
+	depends = python-cryptography
+	depends = python-http-ece
 	source = Mastodon.py-1.5.0.tar.gz::https://files.pythonhosted.org/packages/source/M/Mastodon.py/Mastodon.py-1.5.0.tar.gz
 	sha256sums = 80701e37ca27586266fce4a1e23e1b910b883fe2c28ce9c43a16de30cb77d757
 
