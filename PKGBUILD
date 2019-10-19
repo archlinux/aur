@@ -1,19 +1,20 @@
-# Maintainer: Ista Zahn <istazahn[at]gmail[dot]com>
+# Maintainer: Mohammad Hossein Sekhavat <sekhavat17@gmail.com>
+# Original Maintainer: Ista Zahn <istazahn[at]gmail[dot]com>
 
-pkgbase=python-altair
+pkgbase=python-streamlit-altair
 _pyname=altair
-pkgname=('python-altair')
+pkgname=('python-streamlit-altair')
 depends=('python' 'python-entrypoints' 'python-jsonschema' 'python-numpy' 'python-pandas' 'python-six' 'python-toolz')
 makedepends=('python-setuptools')
 optdepends=('python-selenium: png and svg export support')
-pkgver=2.2.2
+pkgver=3.2.0
 pkgrel=1
 pkgdesc=" Declarative statistical visualization library for Python"
 arch=('any')
 url="https://altair-viz.github.io/"
 license=('MIT')
-source=("${_pyname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/fa/03/18e4435c766d5db6376bd8f72a12780a9a6bc475e4904dbcc0b9acb56deb/${_pyname}-${pkgver}.tar.gz")
-sha256sums=('c158699026eb5a19f95c1ca742e2e82bc20c27013ef5785f10836283e2233f8a')
+source=("${_pyname}-${pkgver}.tar.gz::https://github.com/altair-viz/altair/archive/v${pkgver}.tar.gz")
+sha256sums=('2c52a31621836e42587fe4a2b5c0adec874d84597cfea102ceea0646700c95a8')
 
 package() {
   cd "${srcdir}/${_pyname}-${pkgver}"
