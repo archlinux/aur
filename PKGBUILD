@@ -1,14 +1,14 @@
 # Maintainer: Jean Lucas <jean@4ray.co>
 
 pkgname=dino
-pkgver=0.0+r549+g7adb0e8
-_commit=7adb0e82fba1afc62689797be6c9491ad15d03bf
+pkgver=0.0+r557+g394862d
+_commit=394862dbd31a938be8e953e0edaa73d2f4fb9769
 pkgrel=1
 pkgdesc='Modern XMPP (Jabber) chat client written in GTK+/Vala'
 arch=(i686 x86_64)
 url=https://dino.im
 license=(GPL3)
-depends=(glib2 glib-networking gpgme gtk3 libgcrypt libgee libsoup qrencode sqlite)
+depends=(gpgme gtk3 libgee qrencode)
 makedepends=(git cmake ninja vala)
 source=(git+https://github.com/dino/dino#commit=$_commit)
 sha512sums=('SKIP')
@@ -38,5 +38,4 @@ check() {
 package() {
   cd dino
   make DESTDIR="$pkgdir" install
-  install -Dm 644 LICENSE -t "$pkgdir"/usr/share/licenses/dino
 }

@@ -1,6 +1,6 @@
 pkgbase = dino
 	pkgdesc = Modern XMPP (Jabber) chat client written in GTK+/Vala
-	pkgver = 0.0+r549+g7adb0e8
+	pkgver = 0.0+r557+g394862d
 	pkgrel = 1
 	url = https://dino.im
 	arch = i686
@@ -10,16 +10,11 @@ pkgbase = dino
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = vala
-	depends = glib2
-	depends = glib-networking
 	depends = gpgme
 	depends = gtk3
-	depends = libgcrypt
 	depends = libgee
-	depends = libsoup
 	depends = qrencode
-	depends = sqlite
-	source = git+https://github.com/dino/dino#commit=7adb0e82fba1afc62689797be6c9491ad15d03bf
+	source = git+https://github.com/dino/dino#commit=394862dbd31a938be8e953e0edaa73d2f4fb9769
 	sha512sums = SKIP
 
 pkgname = dino
