@@ -1,13 +1,13 @@
 # Maintainer: bartus @{aur \at bartus \dot  33mail \dot com}
 pkgname=('radare2-bindings-git' 'radare2-pipe-git')
 basename='radare2-bindings-git'
-pkgver=3.3.1.r12.g8eb0638
+pkgver=3.9.0.r1.gbc46ba8
 pkgrel=1
 pkgdesc="Language bindings for radare2 (git version)"
 arch=('i686' 'x86_64')
 url="https://radare.org"
 license=('LGPL')
-depends=('radare2-git' 'python3' 'python2')
+depends=("radare2>=${pkgver%.r*}" 'python3' 'python2')
 makedepends=('git' 'valabind' 'swig')
 
 source=("${pkgname}::git://github.com/radare/radare2-bindings.git"
