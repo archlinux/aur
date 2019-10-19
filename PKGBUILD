@@ -1,8 +1,8 @@
 # Maintainer: Mort Yao <soi@mort.ninja>
 
 pkgname=ocaml-ppx_derivers-git
-pkgver=20180224
-pkgrel=2
+pkgver=20190404
+pkgrel=1
 pkgdesc="deriving plugin registry"
 arch=('x86_64')
 url='https://github.com/ocaml-ppx/ppx_derivers'
