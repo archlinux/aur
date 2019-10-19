@@ -1,0 +1,19 @@
+pkgbase = libbpf
+	pkgdesc = BPF library
+	pkgver = 5.3.7
+	pkgrel = 1
+	url = https://github.com/torvalds/linux/tree/master/tools/lib/bpf
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = rsync
+	depends = libelf
+	provides = libbpf
+	source = https://mirrors.kernel.org/pub/linux/kernel/v5.x/linux-5.3.7.tar.xz
+	source = https://mirrors.kernel.org/pub/linux/kernel/v5.x/linux-5.3.7.tar.sign
+	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
+	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
+	sha256sums = c6c9714e21531c825c306b107bc6f6c7bfa2d5270a14bad170f8de5a73d34802
+	sha256sums = SKIP
+
+pkgname = libbpf
+
