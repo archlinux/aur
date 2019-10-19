@@ -1,12 +1,15 @@
 pkgbase = pkgfile-git
 	pkgdesc = a pacman .files metadata explorer
-	pkgver = 18.2.g6e6150d
+	pkgver = 21
 	pkgrel = 1
 	url = http://github.com/falconindy/pkgfile
 	install = pkgfile.install
 	arch = x86_64
 	arch = i686
 	license = MIT
+	checkdepends = python
+	checkdepends = gtest
+	checkdepends = gmock
 	makedepends = git
 	makedepends = perl
 	makedepends = meson

@@ -1,7 +1,7 @@
 # Contributor: Dave Reisner <d@falconindy.com>
 
 pkgname=pkgfile-git
-pkgver=18.2.g6e6150d
+pkgver=21
 pkgrel=1
 pkgdesc="a pacman .files metadata explorer"
 arch=('x86_64' 'i686')
@@ -9,6 +9,7 @@ url="http://github.com/falconindy/pkgfile"
 license=('MIT')
 depends=('libarchive' 'curl' 'pcre' 'pacman')
 makedepends=('git' 'perl' 'meson')
+checkdepends=('python' 'gtest' 'gmock')
 conflicts=('pkgfile')
 provides=('pkgfile')
 install=pkgfile.install
@@ -26,6 +27,12 @@ build() {
 
   arch-meson build
   ninja -C build
+}
+
+check() {
+  cd pkgfile
+
+  meson test -C build
 }
 
 package() {
