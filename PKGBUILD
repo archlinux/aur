@@ -1,16 +1,15 @@
 # Maintainer: Nick Cao <nickcao@nichi.co>
 pkgname=arch-prime-git
-pkgver=0.9.4.r0.ged63ff8
+pkgver=0.9.4.r1.g2396832
 pkgver() {
   cd ArchPrime
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
-pkgrel=1
+pkgrel=2
 pkgdesc='Provide nvidia-prime like package for Archlinux'
 arch=('any')
 url='https://gitlab.com/NickCao/ArchPrime'
 license=('GPL3')
-depends=('bash' 'nvidia')
 makedepends=('git')
 optdepends=('bbswitch: for powering off the nvidia GPU')
 source=('git+https://gitlab.com/NickCao/ArchPrime')
