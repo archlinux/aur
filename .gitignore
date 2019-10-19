@@ -1,4 +1,3 @@
-kikoplay-master-1-x86_64.pkg.tar.xz
-kikoplay-master.zip
-pkg/
-src/
+*
+!PKGBUILD
+!.SRCINFO

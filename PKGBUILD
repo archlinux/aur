@@ -1,24 +1,24 @@
 # Maintainer: pureboys <yuyuud@yuyuud@gmail.com>
 
 pkgname='kikoplay'
-pkgver='master'
+pkgver='0.6.0'
 pkgrel=1
 pkgdesc="linux danmaku player"
 arch=('x86_64')
 license=('GPL3')
 url="https://github.com/Protostars/KikoPlay"
-depends=('mpv' 'qhttpengine')
+depends=('mpv' 'qt5-base' 'qhttpengine')
 makedepends=('make' 'gcc' 'cmake')
 source=(
-    ${pkgname}-${pkgver}.zip::"https://github.com/Protostars/KikoPlay/archive/master.zip"
+    ${pkgname}-${pkgver}.zip::"https://github.com/Protostars/KikoPlay/archive/${pkgver}.zip"
 )
 md5sums=(
-    "743d5cd6cf69ea33c51a0b87625597b4"
+    "6ba4c585d1cb392750984f04c9d2bb08"
 )
 
 
 build() {
-    cd ${srcdir}/KikoPlay-master
+    cd ${srcdir}/KikoPlay-${pkgver}
     sed -i '29i DEFINES += TEXTURE_MAIN_THREAD' KikoPlay.pro 
     qmake 
     make
@@ -26,5 +26,5 @@ build() {
 
 package() {
     mkdir -p ${pkgdir}/usr/bin
-    cp ${srcdir}/KikoPlay-master/KikoPlay ${pkgdir}/usr/bin
+    cp ${srcdir}/KikoPlay-${pkgver}/KikoPlay ${pkgdir}/usr/bin
 }

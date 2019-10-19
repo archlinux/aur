@@ -1,6 +1,6 @@
 pkgbase = kikoplay
 	pkgdesc = linux danmaku player
-	pkgver = master
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/Protostars/KikoPlay
 	arch = x86_64
@@ -9,9 +9,10 @@ pkgbase = kikoplay
 	makedepends = gcc
 	makedepends = cmake
 	depends = mpv
+	depends = qt5-base
 	depends = qhttpengine
-	source = kikoplay-master.zip::https://github.com/Protostars/KikoPlay/archive/master.zip
-	md5sums = 743d5cd6cf69ea33c51a0b87625597b4
+	source = kikoplay-0.6.0.zip::https://github.com/Protostars/KikoPlay/archive/0.6.0.zip
+	md5sums = 6ba4c585d1cb392750984f04c9d2bb08
 
 pkgname = kikoplay
 
