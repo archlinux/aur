@@ -1,16 +1,16 @@
 pkgbase = mongodb-shell-bin
 	pkgdesc = Mongo shell client only
-	pkgver = 4.2.0
+	pkgver = 4.2.1
 	pkgrel = 1
 	url = https://www.mongodb.com/
 	arch = x86_64
 	license = SSPLv1
 	optdepends = mongodb-tools: The MongoDB tools provide import, export, and diagnostic capabilities
-	provides = mongodb=4.2.0
+	provides = mongodb=4.2.1
 	conflicts = mongodb
-	source = https://repo.mongodb.org/apt/ubuntu/dists/bionic/mongodb-org/4.2/multiverse/binary-amd64/mongodb-org-shell_4.2.0_amd64.deb
+	source = https://repo.mongodb.org/apt/ubuntu/dists/bionic/mongodb-org/4.2/multiverse/binary-amd64/mongodb-org-shell_4.2.1_amd64.deb
 	source = LICENSE
-	sha256sums = 940aa915fea181fc56079f7c3d17ecc8f43ba9d295719a46c9338abad340898a
+	sha256sums = 2e66bc27fbd2b37589a674e02b9353f21eae70a13e11bad6b75ce882896c6b1c
 	sha256sums = 09d99ca61eb07873d5334077acba22c33e7f7d0a9fa08c92734e0ac8430d6e27
 
 pkgname = mongodb-shell-bin
