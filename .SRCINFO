@@ -1,0 +1,14 @@
+pkgbase = rtm-cli
+	pkgdesc = CLI to Remember the Milk API
+	pkgver = 1.5.1
+	pkgrel = 1
+	url = https://github.com/dwaring87/rtm-cli/blob/master/README.md
+	arch = any
+	license = MIT
+	depends = nodejs
+	depends = npm
+	source = https://github.com/dwaring87/rtm-cli/archive/v1.5.1.tar.gz
+	md5sums = cf24c4190f777f940ee5a0af1540e44f
+
+pkgname = rtm-cli
+
