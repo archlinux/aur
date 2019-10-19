@@ -8,18 +8,12 @@ arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('MIT')
 depends=('xorg-server' 'xorg-xinit' 'xorg-xset' 'xorg-xrandr' 'unclutter' 'chromium' 'xlogin-git')
 install='chromium-fullscreen.install'
-source=('chromium-fullscreen.sysuser'
-        'chromium-fullscreen.xinitrc'
-        'disable-x-frame-option-background.js'
-        'disable-x-frame-option-manifest.json'
-        'aw-snap-reloader-background.js'
-        'aw-snap-reloader-manifest.json')
-md5sums=('9e979fbdd1e4a5a04fd0e91ce6a9a7be'
-         '857a60ed5fdf55a8c63e1d4dc854fcab'
-         'c700c36f4ea3e353c6d49df823561fc4'
-         'f543ec018edbaf5533e6bddd5068ff54'
-         'a2e49410d550e79ac9c0037121522387'
-         '729c8bb0e52fdd35c9c02fd6b1394d06')
+source=('https://raw.githubusercontent.com/julianxhokaxhiu/AUR/master/chromium-fullscreen/chromium-fullscreen.sysuser'
+        'https://raw.githubusercontent.com/julianxhokaxhiu/AUR/master/chromium-fullscreen/chromium-fullscreen.xinitrc'
+        'https://raw.githubusercontent.com/julianxhokaxhiu/AUR/master/chromium-fullscreen/disable-x-frame-option-background.js'
+        'https://raw.githubusercontent.com/julianxhokaxhiu/AUR/master/chromium-fullscreen/disable-x-frame-option-manifest.json'
+        'https://raw.githubusercontent.com/julianxhokaxhiu/AUR/master/chromium-fullscreen/aw-snap-reloader-background.js'
+        'https://raw.githubusercontent.com/julianxhokaxhiu/AUR/master/chromium-fullscreen/aw-snap-reloader-manifest.json')
 
 package() {
   # Copy autorun script

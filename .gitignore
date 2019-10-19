@@ -1,0 +1,9 @@
+# Ignore everything
+*
+
+# ...but
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!*.install
+!*.sysuser
