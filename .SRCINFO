@@ -1,0 +1,16 @@
+pkgbase = gdlv-git
+	pkgdesc = Gdlv is a graphical frontend to Delve
+	pkgver = r356.9555abd
+	pkgrel = 1
+	url = https://github.com/aarzilli/gdlv
+	arch = x86_64
+	license = GPL
+	makedepends = go
+	depends = delve
+	provides = gdlv
+	conflicts = gdlv
+	source = gdlv::git+https://github.com/aarzilli/gdlv
+	sha256sums = SKIP
+
+pkgname = gdlv-git
+
