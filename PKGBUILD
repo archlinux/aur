@@ -1,7 +1,7 @@
 # Maintainer: Mohammad Hossein Sekhavat <sekhavat17@gmail.com>
 # Original Maintainer: Ista Zahn <istazahn[at]gmail[dot]com>
 
-pkgbase=python-streamlit-altair
+pkgbase=python-altair3
 _pyname=altair
 pkgname=('python-altair3')
 depends=('python' 'python-entrypoints' 'python-jsonschema' 'python-numpy' 'python-pandas' 'python-six' 'python-toolz')
@@ -10,7 +10,7 @@ replaces=('python-altair')
 makedepends=('python-setuptools')
 optdepends=('python-selenium: png and svg export support')
 pkgver=3.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc=" Declarative statistical visualization library for Python"
 arch=('any')
 url="https://altair-viz.github.io/"
