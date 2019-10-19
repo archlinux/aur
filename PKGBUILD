@@ -2,10 +2,10 @@
 # Contributor: drakkan <nicola.murino at gmail dot com>
 pkgname=sftpgo
 pkgver=0.9.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Full featured and highly configurable SFTP server'
 arch=('i686' 'x86_64')
-url="https://github.com/giltene/${pkgname}"
+url="https://github.com/drakkan/${pkgname}"
 license=('GPL3')
 depends=('glibc')
 makedepends=('gcc' 'git' 'go')
