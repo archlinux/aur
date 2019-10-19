@@ -29,11 +29,11 @@ post_install() {
     echo ">>> NOTE: all operations including editing zerosite files,"
     echo ">>>       should be done as user zeronet and config must be passed"
     echo ">>>       for data directory to be selected to /var/lib/zeronet: "
-    echo ">>>   sudo -u zeronet python2 zeronet.py --config_file /etc/zeronet.conf ..."
+    echo ">>>   sudo -u zeronet python zeronet.py --config_file /etc/zeronet.conf ..."
     echo ">>>      OR"
     echo ">>>   sudo su - zeronet"
     echo ">>>   cd /opt/zeronet"
-    echo ">>>   python2 zeronet.py --config_file /etc/zeronet.conf ..."
+    echo ">>>   python zeronet.py --config_file /etc/zeronet.conf ..."
 }
 
 ## each separate version number must be less than 3 digit wide !
