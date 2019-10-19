@@ -3,7 +3,7 @@
 
 pkgname=quack  
 pkgver=0.48
-pkgrel=1
+pkgrel=2
 pkgdesc="[Emacs] enhanced support for editing and running Scheme code."
 url="http://www.neilvandyke.org/quack"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('emacs')
 makedepends=('emacs')
 install=quack.install
 source=("http://www.neilvandyke.org/${pkgname}/${pkgname}.el")
-md5sums=('73482065ce28e13401413f91b8619e2a')
+md5sums=('3008dadfd1cbfcf5671f788bd5a8e085')
 EMACS=emacs # or sxemacs, or xemacs
 
 build() {
