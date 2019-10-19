@@ -1,6 +1,6 @@
 pkgbase = firefly-iii
 	pkgdesc = PHP personal finances manager
-	pkgver = 4.7.17.3
+	pkgver = 4.8.1.4
 	pkgrel = 1
 	url = https://github.com/firefly-iii/firefly-iii
 	arch = any
@@ -8,11 +8,10 @@ pkgbase = firefly-iii
 	makedepends = composer
 	depends = php-intl
 	backup = etc/webapps/firefly-iii/config.env
-	backup = etc/webapps/firefly-iii/config.env.docker
 	backup = etc/webapps/firefly-iii/config.env.sandstorm
 	backup = etc/webapps/firefly-iii/config.env.heroku
-	source = firefly-iii-4.7.17.3.tar.gz::https://github.com/firefly-iii/firefly-iii/archive/4.7.17.3.tar.gz
-	sha256sums = f070089d89f2ac5f27c1c2adaadc911d0779533978226606c5f6d8d69cf5d1db
+	source = firefly-iii-4.8.1.4.tar.gz::https://github.com/firefly-iii/firefly-iii/archive/4.8.1.4.tar.gz
+	sha256sums = ebc6bfebc34c5c65fb7ff32f85f1f99bc4e2b98016d1283e8817e01927a61acc
 
 pkgname = firefly-iii
 
