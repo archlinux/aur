@@ -2,7 +2,7 @@
 
 pkgname=ocaml-process-git
 pkgver=20160901
-pkgrel=1
+pkgrel=2
 pkgdesc="Easy process control in OCaml"
 arch=('x86_64')
 url='https://github.com/dsheets/ocaml-process'
