@@ -1,7 +1,7 @@
 # Maintainer: Mort Yao <soi@mort.ninja>
 
 pkgname=ocaml-ppx_deriving_yojson-git
-pkgver=20180617
+pkgver=20191009
 pkgrel=1
 pkgdesc="A Yojson codec generator for OCaml >= 4.02."
 arch=('x86_64')
@@ -21,13 +21,13 @@ pkgver() {
 build() {
   cd "$pkgname"
 
-  jbuilder build
+  dune build
 }
 
 package() {
   cd "$pkgname"
 
-  mkdir -p "${pkgdir}"/usr/lib/ocaml/
-
-  jbuilder install --libdir="${pkgdir}"/usr/lib/ocaml/ --prefix="${pkgdir}"
+  install -dm755 "${pkgdir}$(ocamlfind -printconf destdir)" "${pkgdir}/usr/share"
+  dune install --prefix "${pkgdir}/usr" --libdir "${pkgdir}$(ocamlfind -printconf destdir)"
+  mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
 }
