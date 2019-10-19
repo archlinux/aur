@@ -2,7 +2,7 @@
 
 pkgname=dust
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="du + rust = dust. Like du but more intuitive"
 url="https://github.com/bootandy/dust"
 makedepends=('cargo')
@@ -13,7 +13,7 @@ sha512sums=('3a867451c23b9acf409acc83c7ea4c85864aae47405aa23f2a520e246b1162cc2eb
 
 build() {
 	cd "$pkgname-$pkgver"
-	cargo build --release
+	cargo build --release --target-dir "./target"
 }
 
 package() {

@@ -1,7 +1,7 @@
 pkgbase = dust
 	pkgdesc = du + rust = dust. Like du but more intuitive
 	pkgver = 0.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bootandy/dust
 	arch = i686
 	arch = x86_64
