@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-slinger-git
 	pkgdesc = gnome-shell extension for throwing windows around efficiently.
-	pkgver = r48.da9cda1
+	pkgver = r60.fdc4921
 	pkgrel = 1
 	url = https://github.com/timbertson/slinger
 	arch = any
