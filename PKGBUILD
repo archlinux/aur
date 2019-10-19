@@ -4,7 +4,7 @@
 pkgname='zeronet-git'
 _gitname='ZeroNet'
 _gitroot='https://github.com/HelloZeroNet/ZeroNet.git'
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 arch=('any')
 url="https://zeronet.io/"
@@ -52,6 +52,7 @@ package() {
    # install license
    install -D -m644 "$srcdir/$_gitname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+
 sha256sums=('SKIP'
             'ea735e82dbb10a2c1fda7abfeb2f38c2429044d8254f9e2396c50cecb6f778f8'
             '2ee64a1b671a49a1626901a11d4d7fa338c77cb9b7c9facd2f56b087a4a0bb83')
