@@ -1,6 +1,6 @@
 pkgbase = python-torchgan-git
 	pkgdesc = Research Framework for easy and efficient training of GANs based on PyTorch
-	pkgver = 0.0.3.r0.g9727d6f
+	pkgver = 0.0.3.r2.g10b0837
 	pkgrel = 1
 	url = https://github.com/torchgan/torchgan
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-torchgan-git
 	depends = python-pillow
 	depends = python-pytorch
 	depends = python-torchvision
-	provides = python-torchgan=0.0.3.r0.g9727d6f
+	provides = python-torchgan=0.0.3.r2.g10b0837
 	conflicts = python-torchgan
 	source = python-torchgan-git::git+https://github.com/torchgan/torchgan.git
 	md5sums = SKIP
