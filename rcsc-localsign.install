@@ -1,0 +1,8 @@
+post_install() {
+	echo "Note: This service needs the RCSC Root CA certificate to be installed and trusted by your browser (for communications with https://localhost:8000/)."
+	echo ""
+	echo "To trust this CA certificate system-wide, run:"
+	echo ""
+	echo "    sudo trust anchor /usr/share/rcsc-localsign/RCSC_RootCA_2017.crt"
+	echo ""
+}

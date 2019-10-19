@@ -1,6 +1,6 @@
 pkgname=rcsc-localsign
 pkgver=20191015
-pkgrel=1
+pkgrel=2
 pkgdesc="RCSC LocalSign smartcard signing server (for GoSign and Elektroninis.lt)"
 url="http://www.elektroninis.lt/lt/paruosti-kompiuteri/nid-469"
 arch=(x86_64)
@@ -20,6 +20,7 @@ sha256sums=('17915f63108bc3f5279581589ae2616d908c9a28a71125df4ccf3a5884ceddeb'
             '0536801fbb443b3e905fd6d70d8c81eb88551be8061299110d2b4f82e64cade1'
             'c1bd62c20a74c779e4b2d645736663f8d7451dccce9c886f6e7c1bedfeb43128'
             '92f7673db77de2b46b1bf91870dbe9a28defb3f9b939e819af97cb6d30763945')
+install=$pkgname.install
 
 build() {
   msg2 "Extracting InstallShield self-executable..."
@@ -37,9 +38,9 @@ build() {
 }
 
 package() {
-  install -Dm644 -t "$pkgdir"/opt/RCSC/LocalSign cab_files/local_webserver.jar
-  install -Dm644 -t "$pkgdir"/usr/lib/systemd/system rcsc-localsign.service
-  install -Dm644 -t "$pkgdir"/usr/share/ca-certificates/trust-source/anchors *.pem
+  install -Dm644 -t "$pkgdir"/opt/RCSC/LocalSign/     cab_files/local_webserver.jar
+  install -Dm644 -t "$pkgdir"/usr/lib/systemd/system/ rcsc-localsign.service
+  install -Dm644 -t "$pkgdir"/usr/share/$pkgname/     *.crt
 }
 
 # vim: ts=2:sw=2:et
