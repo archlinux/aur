@@ -5,6 +5,7 @@ pkgbase=python-streamlit-altair
 _pyname=altair
 pkgname=('python-streamlit-altair')
 depends=('python' 'python-entrypoints' 'python-jsonschema' 'python-numpy' 'python-pandas' 'python-six' 'python-toolz')
+provides=('python-altair=3.2.0')
 makedepends=('python-setuptools')
 optdepends=('python-selenium: png and svg export support')
 pkgver=3.2.0
