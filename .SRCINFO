@@ -1,0 +1,17 @@
+pkgbase = rcsc-localsign
+	pkgdesc = RCSC LocalSign smartcard signing server (for GoSign and Elektroninis.lt)
+	pkgver = 20180518.jar1.7.1
+	pkgrel = 1
+	arch = x86_64
+	depends = java-runtime
+	source = rc-localserver-20180518.jar1.7.1.zip::http://downloads.registrucentras.lt/bylos/dokumentai/rcsc/localsign/rc-localserver-install.zip
+	source = LocalSign.service
+	source = RCSC_RootCA_4f001ba124bdcb8848bebd3f2b62c7c5.pem
+	source = VI_Registru_Centras_RCSC_RootCA_03a3a457b5f0f3864a1163e898ff169c.pem
+	sha256sums = 52832e14e510f511558bfce97735ffd48796f863596edd8644796328667453f3
+	sha256sums = 6c45b7017f3c46fe9551b7ed4c69339fa1a15df3eb02d2dd71558f49866fdd4b
+	sha256sums = c1bd62c20a74c779e4b2d645736663f8d7451dccce9c886f6e7c1bedfeb43128
+	sha256sums = 92f7673db77de2b46b1bf91870dbe9a28defb3f9b939e819af97cb6d30763945
+
+pkgname = rcsc-localsign
+

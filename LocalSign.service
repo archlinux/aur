@@ -1,0 +1,11 @@
+[Unit]
+Description=RCSC LocalSign token server
+
+[Service]
+Type=simple
+User=daemon
+ExecStart=/usr/bin/java -jar /opt/RCSC/LocalSign/local-webserver-1.7.1.jar
+KillSignal=SIGKILL
+
+[Install]
+WantedBy=multi-user.target
