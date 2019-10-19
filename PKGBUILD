@@ -3,7 +3,7 @@
 # Contributor: therealfarfetchd
 pkgname='ripcord'
 pkgver=0.4.18
-pkgrel=1
+pkgrel=2
 pkgdesc='Qt-based Discord and Slack client'
 arch=('x86_64')
 depends=('harfbuzz' 'libgl')
@@ -50,7 +50,7 @@ package() {
   install -m644 squashfs-root/additional_license_information.txt "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
 
   # application
-  chmod 755 -R squashfs-root/lib squashfs-root/plugins squashfs-root/plugins/*
+  chmod 755 -R squashfs-root
   mv squashfs-root/* "$pkgdir"/usr/lib/ripcord/
   ln -s /usr/lib/ripcord/Ripcord "$pkgdir"/usr/bin/ripcord
 }
