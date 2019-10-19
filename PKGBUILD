@@ -1,28 +1,29 @@
 # Maintainer: Mort Yao <soi@mort.ninja>
 
 pkgname=fstar
-pkgver=0.9.6.0
+pkgver=0.9.7.0
+_subver=-alpha1
 pkgrel=1
 pkgdesc='A Higher-Order Effectful Language Designed for Program Verification'
 url='https://fstar-lang.org/'
 license=('Apache')
 arch=('i686' 'x86_64')
 depends=('z3-git')
-makedepends=('ocaml>=4.03' 'ocaml-findlib' 'ocaml-batteries' 'ocaml-stdint' 'zarith' 'ocaml-yojson' 'ocaml-fileutils' 'ocaml-pprint' 'ocaml-menhir' 'ocaml-migrate-parsetree' 'ocaml-ppx_deriving' 'ocaml-ppx_deriving_yojson' 'ocaml-process')
+makedepends=('ocaml>=4.03' 'ocaml-findlib' 'ocaml-num' 'ocaml-batteries' 'ocaml-stdint' 'zarith' 'ocaml-yojson' 'ocaml-fileutils' 'ocaml-pprint' 'ocaml-menhir' 'ulex-git' 'ocaml-migrate-parsetree' 'ocaml-ppx_deriving' 'ocaml-ppx_deriving_yojson' 'ocaml-process')
 provides=('fstar')
 conflicts=('fstar-bin' 'fstar-git')
-source=("https://github.com/FStarLang/FStar/archive/v$pkgver.zip")
-md5sums=('bad094857baf83b8f556ce1348d39ab4')
+source=("https://github.com/FStarLang/FStar/archive/v$pkgver$_subver.zip")
+md5sums=('754ecb3d2f6c234c78537707a87e6db2')
 
 build() {
-  cd "FStar-$pkgver"
+  cd "FStar-$pkgver$_subver"
 
   # Step 3. Building F* from the OCaml snapshot
   make -C src/ocaml-output -j 3
 }
 
 package() {
-  cd "FStar-$pkgver"
+  cd "FStar-$pkgver$_subver"
 
   install -d -m755 $pkgdir/opt/fstar $pkgdir/usr/bin
   cp -r * $pkgdir/opt/fstar
