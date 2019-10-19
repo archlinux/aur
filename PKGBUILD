@@ -31,6 +31,7 @@ install=mpd.install
 prepare() {
 	cd "${srcdir}/mpd-${pkgver}"
 
+	rm -r build
 	install -d build
 }
 
