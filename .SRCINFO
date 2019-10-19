@@ -1,0 +1,51 @@
+pkgbase = linux-froidzen
+	pkgver = 5.2.14.zen2
+	pkgrel = 1
+	url = https://github.com/zen-kernel/zen-kernel/commits/v5.2.14-zen2
+	arch = x86_64
+	license = GPL2
+	makedepends = xmlto
+	makedepends = kmod
+	makedepends = inetutils
+	makedepends = bc
+	makedepends = libelf
+	makedepends = git
+	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
+	makedepends = graphviz
+	makedepends = imagemagick
+	options = !strip
+	source = zen-kernel::git+https://github.com/zen-kernel/zen-kernel?signed#tag=v5.2.14-zen2
+	source = config
+	source = 60-linux.hook
+	source = 90-linux.hook
+	source = linux.preset
+	source = aosc-univt.patch::https://raw.githubusercontent.com/AOSC-Dev/aosc-os-abbs/testing/extra-kernel/linux-kernel/autobuild/patches/8000-aosc-feature-univt.patch
+	source = exfat-nofuse.patch::https://raw.githubusercontent.com/AOSC-Dev/aosc-os-abbs/testing/extra-kernel/linux-kernel/autobuild/patches/0018-feature-exfat-nofuse.patch
+	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
+	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
+	validpgpkeys = 8218F88849AAC522E94CF470A5E9288C4FA415FA
+	sha256sums = SKIP
+	sha256sums = 3bb498771bc4088e8e5692b561bd1ca48d76373b351a5c34bac32addb74e644c
+	sha256sums = 452b8d4d71e1565ca91b1bebb280693549222ef51c47ba8964e411b2d461699c
+	sha256sums = c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636
+	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
+	sha256sums = 2b499db6a7ba4926619dfc854dbd947f3e9720b39b7c2f6902b7a7b70eb856f2
+	sha256sums = b5452ebec7960f7ef5be7e79e1b5eb5df10658007abd26be27b1b95a3b1aa753
+
+pkgname = linux-froidzen
+	pkgdesc = The Linux-froidzen kernel and modules
+	install = linux.install
+	depends = coreutils
+	depends = kmod
+	depends = initramfs
+	optdepends = crda: to set the correct wireless channels of your country
+	optdepends = linux-firmware: firmware images needed for some devices
+	backup = etc/mkinitcpio.d/linux-froidzen.preset
+
+pkgname = linux-froidzen-headers
+	pkgdesc = Header files and scripts for building modules for Linux-froidzen kernel
+
+pkgname = linux-froidzen-docs
+	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-froidzen kernel
+
