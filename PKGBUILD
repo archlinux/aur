@@ -1,7 +1,7 @@
 # Maintainer: Mike Yuan <me@yhndnzj.com>
 
 pkgname=btrfs-snapshot
-pkgver=3.2.0
+pkgver=3.2.1
 pkgrel=1
 pkgdesc="Tool for creating btrfs snapshots"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/YHNdnzj/btrfs-snapshot"
 license=('MIT')
 depends=('bash' 'btrfs-progs')
 source=("$url/archive/$pkgver.tar.gz")
-sha256sums=('b21eedb5c3eac12bb89b22f2e5337c69361c1ff4b72b8d0d06d68fcb109257ea')
+sha256sums=('7f7759ad4c156da45c428c993995bc073497933100e47bfa961b6b535519c486')
 
 package() {
     cd "$pkgname-$pkgver"
