@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=libphidget22
-pkgver=1.4.20190927
+pkgver=1.5.20191018
 pkgrel=1
 pkgdesc="user-space access library for the Phidget devices"
 conflicts=('libphidget')
@@ -10,7 +10,7 @@ arch=('x86_64')
 license=('GPL')
 depends=('libusb')
 source=("https://www.phidgets.com/downloads/${pkgname#lib}/libraries/linux/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('b5fb317e9c647fb140f4e0f15b7cf6acf1bdd624b9f982a11683b7e8318915e3')
+sha256sums=('5c3cff3bb18230cfed89e84c81fd781fa74d35e1d11cce0c9c077d8cb5c6ebbc')
 
 build() {
   cd $pkgname-$pkgver
