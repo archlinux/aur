@@ -1,0 +1,23 @@
+pkgbase = opensmtpd-extras-git
+	pkgdesc = Additional queues, schedulers, and tables for OpenSMTPD (Git)
+	pkgver = 0+r604+36cc595
+	pkgrel = 1
+	url = https://github.com/OpenSMTPD/OpenSMTPD-extras
+	arch = i686
+	arch = x86_64
+	makedepends = git
+	makedepends = libevent
+	makedepends = python2
+	makedepends = postgresql-libs
+	makedepends = mariadb-libs
+	makedepends = hiredis
+	optdepends = libevent: for table-python support
+	optdepends = python2: for table-python support
+	optdepends = postgresql-libs: for table-postgres support
+	optdepends = mariadb-libs: for table-mysql support
+	optdepends = hiredis: for table-redis support
+	source = git+https://github.com/OpenSMTPD/OpenSMTPD-extras
+	sha512sums = SKIP
+
+pkgname = opensmtpd-extras-git
+
