@@ -1,32 +1,14 @@
 pkgbase = propellor
 	pkgdesc = property-based host configuration management in haskell
-	pkgver = 3.3.0
+	pkgver = 5.9.1
 	pkgrel = 1
 	url = https://propellor.branchable.com/
 	arch = i686
 	arch = x86_64
 	license = custom:BSD2
-	depends = cabal-install
-	depends = ghc=8.0.1
-	depends = git
-	depends = gnupg
-	depends = gmp
-	depends = libffi
-	depends = haskell-async
-	depends = haskell-missingh
-	depends = haskell-hslogger
-	depends = haskell-unix-compat
-	depends = haskell-ansi-terminal
-	depends = haskell-hackage-security
-	depends = haskell-ifelse
-	depends = haskell-network
-	depends = haskell-mtl
-	depends = haskell-transformers-base
-	depends = haskell-exceptions
-	depends = haskell-stm
-	depends = haskell-text
-	source = git+https://github.com/joeyh/propellor.git#tag=3.3.0
-	sha256sums = SKIP
+	depends = stack
+	source = https://git.joeyh.name/index.cgi/propellor.git/snapshot/propellor-5.9.1.tar.gz
+	sha256sums = 4ac697c1651f48318b08c0d131038bcbe8af27e28632abf065a7cca598d5f1c1
 
 pkgname = propellor
 
