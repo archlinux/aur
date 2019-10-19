@@ -1,0 +1,11 @@
+post_install() {
+	echo "  If you are migrating to drun-gtk3 from old drun package,"
+	echo "  the config and history locations have changed:"
+	echo "  . Config moved from ~/.drunrc -> .config/drun/rc"
+	echo "  . History moved ~/.drun-history -> .cache/drun/history"
+	echo
+	echo "  On Wayland the DIALOG window hint seems to be ignored."
+	echo "  On sway you can fix this with"
+	echo "    for_window [app_id=\"drun\"] floating enable"
+	echo "  in your config."
+}

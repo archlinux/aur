@@ -1,0 +1,18 @@
+pkgbase = drun-gtk3
+	pkgdesc = A GTK3 run dialog
+	pkgver = 1.0.3.a
+	pkgrel = 1
+	url = https://github.com/loserMcloser/drun-gtk3
+	install = drun-gtk3.install
+	arch = any
+	license = GPL
+	depends = ruby-gtk3
+	depends = ruby-native-package-installer
+	depends = ruby-cairo-gobject
+	provides = drun
+	conflicts = drun
+	source = https://github.com/loserMcloser/drun-gtk3/archive/v1.0.3.a.tar.gz
+	sha256sums = d97abee8e1a9dc0abce1b01136c3341c079e5570415837988ed65c29b5d347b2
+
+pkgname = drun-gtk3
+
