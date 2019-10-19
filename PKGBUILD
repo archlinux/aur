@@ -2,14 +2,14 @@
 
 pkgname=ocaml-ppx_deriving-git
 pkgver=20190909
-pkgrel=1
+pkgrel=3
 pkgdesc="Type-driven code generation for OCaml >=4.02"
 arch=('x86_64')
 url='https://github.com/ocaml-ppx/ppx_deriving'
 license=('MIT')
 provides=('ocaml-ppx_deriving')
 conflicts=('ocaml-ppx_deriving')
-depends=('ocaml' 'ocaml-migrate-parsetree' 'ocaml-ppx_derivers' 'ocaml-ppx_tools>=4.02.3' 'ocaml-result')
+depends=('ocaml' 'ocaml-migrate-parsetree' 'ocaml-ppx_derivers' 'ocaml-ppx_tools-git' 'ocaml-result')
 makedepends=('ocamlbuild' 'ocaml-findlib' 'cppo')
 source=("${pkgname}::git://github.com/ocaml-ppx/ppx_deriving.git")
 md5sums=('SKIP')
@@ -32,4 +32,7 @@ package() {
   dune install --prefix "${pkgdir}/usr" --libdir "${pkgdir}$(ocamlfind -printconf destdir)"
   mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
   install -Dm644 "LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
+
+  # remove rogue dune-package file
+  rm -r "${pkgdir}/usr/lib/ocaml/ppx_deriving/dune-package"
 }
