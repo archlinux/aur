@@ -50,7 +50,7 @@ build() {
 package() {
   	cd "gtk-theme"
 	cd build
-	ninja install
+	DESTDIR="${pkgdir}" ninja install
 }
 
 pkgver() {
