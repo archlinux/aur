@@ -1,6 +1,6 @@
 # Maintainer: Simon Kronberg <Simon.Kronberg@gmail.com>
 pkgname=waterfox-current-bin
-pkgver=2019.10
+pkgver=68.0b1
 pkgrel=1
 pkgdesc="64-bit Firefox fork; no telemetry; supports XUL & XPCOM (incl. unsigned) add-ons."
 arch=('x86_64')
@@ -10,7 +10,8 @@ depends=('libxt' 'libnotify' 'mime-types' 'nss' 'gtk2' 'gtk3' 'sqlite' 'dbus-gli
 optdepends=('alsa-lib' 'pulseaudio')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
-source=('waterfox-current.desktop' 'https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-current-'"${pkgver}"'.en-US.linux-x86_64.tar.bz2')
+#source=('waterfox-current.desktop' 'https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-current-'"${pkgver}"'.en-US.linux-x86_64.tar.bz2')
+source=('waterfox-current.desktop' 'https://storage-waterfox.netdna-ssl.com/Waterfox/beta/Linux/waterfox-'"${pkgver}"'.en-US.linux-x86_64.tar.bz2')
 
 package() {
 	# Create the necessary directories.
@@ -28,4 +29,4 @@ package() {
 }
 
 sha256sums=('5f8ba20330972933914bcfc52c59d7d61db5ada8f417d1c2a31497c8c8f12bc4'
-            '9967f1c9031cb884658ec0b8fe80cd3348b4baccb8187162ae7a2df110f7cf5a')
+            '71e77aea048515a63f218d84559f3f49ca1e79a5729ef3b81ae0c622f95baccd')
