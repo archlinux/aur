@@ -3,7 +3,7 @@
 
 pkgname=emacs-yasnippet-git
 epoch=1
-pkgver=0.13.0.r28.gfc33b2f
+pkgver=0.13.0.r38.ga66f15e
 pkgrel=1
 pkgdesc="Yet another template system for Emacs - git version"
 arch=('any')
