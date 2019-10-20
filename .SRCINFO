@@ -1,0 +1,14 @@
+pkgbase = source-marking-system-git
+	pkgdesc = A tool to mark your source code with your copyright/license
+	pkgver = r30.a26a83d
+	pkgrel = 1
+	url = https://github.com/F0xedb/source-marking-system
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	source = git+https://github.com/F0xedb/source-marking-system.git
+	md5sums = SKIP
+
+pkgname = source-marking-system-git
+
