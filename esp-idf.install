@@ -1,0 +1,7 @@
+post_install() {
+	cat <<HERE
+Set ESPIDF variable to /opt/esp-idf in your profile
+e. g. like this:
+  echo 'export ESPIDF=/opt/esp-idf' >>~/.profile
+HERE
+}
