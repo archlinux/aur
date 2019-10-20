@@ -2,7 +2,7 @@
 
 pkgname=namecoin-core
 pkgver=0.18.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Namecoin Core headless P2P node"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://namecoin.org"
@@ -67,6 +67,7 @@ package() {
 
   msg2 'Installing namecoin...'
   make DESTDIR="$pkgdir" install
+  install -Dm 755 share/rpcauth/rpcauth.py $pkgdir/usr/bin/namecoin-rpcauth
 
   # Rename files left over from forking, because conflict with btc packages
   mv $pkgdir/usr/share/man/man1/{bitcoind,namecoind}.1
