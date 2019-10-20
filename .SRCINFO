@@ -1,6 +1,6 @@
 pkgbase = gw2-tools
 	pkgdesc = Collection of small Guild Wars 2 tools
-	pkgver = 5
+	pkgver = 6
 	pkgrel = 2
 	url = http://ikn.org.uk/gw2-tools
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = gw2-tools
 	depends = parallel
 	optdepends = p7zip: gw2-dpsreport: support non-Zip logs, compress before upload
 	optdepends = xclip: gw2-dpsreport: copy result to clipboard
-	source = http://ikn.org.uk/files/desktop/gw2-tools/gw2-tools-5.tar.gz
-	sha1sums = 9419b981d007ae10779349b013eae1017ca70e0b
+	source = http://ikn.org.uk/files/desktop/gw2-tools/gw2-tools-6.tar.gz
+	sha1sums = 13265ac427583d41a6eacd11eece59039bcb0a6a
 
 pkgname = gw2-tools
 
