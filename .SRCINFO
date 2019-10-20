@@ -10,6 +10,7 @@ pkgbase = python-wpiformat-git
 	checkdepends = python-pip
 	checkdepends = git
 	makedepends = git
+	depends = python-regex
 	depends = clang
 	depends = yapf
 	provides = python-wpiformat
