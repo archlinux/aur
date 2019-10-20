@@ -1,6 +1,6 @@
 pkgbase = python-preshed
 	pkgdesc = Cython hash table that trusts the keys are pre-hashed
-	pkgver = 2.0.1
+	pkgver = 3.0.2
 	pkgrel = 1
 	url = https://github.com/explosion/preshed
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = python-preshed
 	makedepends = python-setuptools
 	depends = python
 	depends = python-cymem
-	source = python-preshed-2.0.1.tar.gz::https://github.com/explosion/preshed/archive/v2.0.1.tar.gz
-	md5sums = 2ca8b963cc7e4bd4fb4e5ede428acd5c
+	source = python-preshed-3.0.2.tar.gz::https://github.com/explosion/preshed/archive/v3.0.2.tar.gz
+	md5sums = 8a08bfdfecf33985f799e3aac102b14f
 
 pkgname = python-preshed
 
