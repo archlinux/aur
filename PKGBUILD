@@ -1,6 +1,6 @@
 # Maintainer: Matej Grabovsky <matej.grabovsky at gmail>
 pkgname=ocaml-sedlex
-pkgver=2.0
+pkgver=2.1
 pkgrel=1
 pkgdesc='Unicode-friendly OCaml lexer generator'
 license=('MIT')
@@ -9,7 +9,7 @@ url='https://github.com/alainfrisch/sedlex'
 depends=('ocaml' 'ocaml-gen' 'ocaml-ppx_tools')
 source=("https://github.com/alainfrisch/sedlex/archive/v${pkgver}.tar.gz")
 options=(!strip !makeflags)
-sha256sums=('58cd6d9fbc5e5b7717f3e56ef166853eb7a4ac0c3016db8f5ba71fe903510656')
+sha256sums=('7b4a66a74419a88a841370d7162243f834e0842c3ce984f2b0090f5f11ab1699<Paste>')
 
 build() {
     cd "$srcdir/${pkgname/ocaml-/}-$pkgver"
