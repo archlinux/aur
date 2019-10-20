@@ -1,6 +1,6 @@
 pkgbase = xfce4-panel-devel
 	pkgdesc = Panel for the Xfce desktop environment
-	pkgver = 4.13.7
+	pkgver = 4.15.0
 	pkgrel = 1
 	url = https://www.xfce.org/
 	arch = i686
@@ -12,19 +12,17 @@ pkgbase = xfce4-panel-devel
 	makedepends = gobject-introspection
 	makedepends = vala
 	makedepends = python
-	depends = exo>=0.11.2
-	depends = garcon>=0.5.0
-	depends = libxfce4ui>=4.13.0
-	depends = libxfce4util>4.13.0
+	depends = exo
+	depends = garcon
+	depends = libxfce4ui
+	depends = xfconf
 	depends = libwnck3
 	depends = hicolor-icon-theme
 	depends = desktop-file-utils
-	depends = xfconf>=4.13.2
-	provides = xfce4-panel=4.13.7
+	provides = xfce4-panel=4.15.0
 	conflicts = xfce4-panel
-	conflicts = xfce4-panel-git
-	source = https://archive.xfce.org/src/xfce/xfce4-panel/4.13/xfce4-panel-4.13.7.tar.bz2
-	sha256sums = 888e30417342b05d566f5ef5a85791b05117fadbbc2f00bc5f29a30d6ba42ba9
+	source = https://archive.xfce.org/src/xfce/xfce4-panel/4.15/xfce4-panel-4.15.0.tar.bz2
+	sha256sums = a4a8c9e2526f9006796aa37e9945a198aada3d53b7001ea176762eae70b9eb9f
 
 pkgname = xfce4-panel-devel
 
