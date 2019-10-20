@@ -27,7 +27,7 @@ source=("https://ftp.mozilla.org/pub/firefox/releases/$pkgver/linux-x86_64/en-US
         "$pkgname.desktop")
 sha256sums=('fddba760ae47409629daa9473ba7b1a84eb9813db18ce2f0f6e7059d00c9be17'
             '367100e5f66523a90c3792e2e0d0e2fe8a3c28748b905ce9f5f6b121343d7842'
-            '05dafb94c7dbe7a1fcc1e7555f350aebf7fd7bdc2459819273ac00d3ca5f028e')
+            '210f13ea47c4b96387f26ee7fc4dfc5c192cfb169aef2a13303fbd1ee58b3761')
 # RC
 if [[ $_build = ? ]]; then
   source[0]="firefox-$pkgver.tar.bz2::https://ftp.mozilla.org/pub/firefox/candidates/$_major-candidates/build$_build/linux-x86_64/en-US/firefox-$_major.tar.bz2"
