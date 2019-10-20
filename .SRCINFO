@@ -1,6 +1,6 @@
 pkgbase = kodi-git
-	pkgver = r53580.05488ed68e4
-	pkgrel = 2
+	pkgver = r53600.86227041bb2
+	pkgrel = 1
 	url = https://kodi.tv
 	arch = x86_64
 	license = GPL2
@@ -70,6 +70,7 @@ pkgbase = kodi-git
 	source = http://mirrors.kodi.tv/build-deps/sources/fstrcmp-0.7.D001.tar.gz
 	source = http://mirrors.kodi.tv/build-deps/sources/flatbuffers-1.11.0.tar.gz
 	source = cpuinfo
+	source = 000-unfuck.libglvnd.bad.headers.patch::https://bugs.archlinux.org/task/64182?getfile=17930
 	sha256sums = SKIP
 	sha256sums = 38816f8373e243bc5950449b4f3b18938c4e1c59348e3411e23f31db4072e40d
 	sha256sums = 071e414e61b795f2ff9015b21a85fc009dde967f27780d23092643916538a57a
@@ -80,6 +81,7 @@ pkgbase = kodi-git
 	sha256sums = e4018e850f80700acee8da296e56e15b1eef711ab15157e542e7d7e1237c3476
 	sha256sums = 1789b97e790da8f2cb5ff827d15580878c8629fd889f5f038d7524dca43eacc9
 	sha256sums = 27387e49043127f09c5ef0a931fffb864f5730e79629100a6e210b68a1b9f2c1
+	sha256sums = 6fa089625184b2b47bea7a3dcb349931e9b39681df9d84fd690a1ba848460168
 
 pkgname = kodi-git
 	pkgdesc = A software media player and entertainment hub for digital media (master branch)
@@ -98,7 +100,7 @@ pkgname = kodi-git
 	optdepends = libplist: AirPlay support
 	optdepends = pulseaudio: PulseAudio support
 	optdepends = upower: Display battery level
-	provides = kodi=r53580.05488ed68e4
+	provides = kodi=r53600.86227041bb2
 	conflicts = kodi
 
 pkgname = kodi-git-bin
@@ -149,7 +151,7 @@ pkgname = kodi-git-wayland
 	depends = tinyxml
 	depends = waylandpp>=0.2.7-1
 	depends = kodi-git
-	provides = kodi-git-bin=r53580.05488ed68e4
+	provides = kodi-git-bin=r53600.86227041bb2
 	conflicts = kodi-wayland
 
 pkgname = kodi-git-gbm
@@ -175,14 +177,14 @@ pkgname = kodi-git-gbm
 	depends = taglib
 	depends = tinyxml
 	depends = kodi-git
-	provides = kodi-git-bin=r53580.05488ed68e4
+	provides = kodi-git-bin=r53600.86227041bb2
 	provides = kodi-gbm
 	conflicts = kodi-gbm
 
 pkgname = kodi-git-eventclients
 	pkgdesc = Kodi Event Clients (master branch)
 	optdepends = python: most eventclients are implemented in python
-	provides = kodi-eventclients=r53580.05488ed68e4
+	provides = kodi-eventclients=r53600.86227041bb2
 	conflicts = kodi-eventclients
 
 pkgname = kodi-git-tools-texturepacker
@@ -191,12 +193,12 @@ pkgname = kodi-git-tools-texturepacker
 	depends = giflib
 	depends = libjpeg-turbo
 	depends = lzo
-	provides = kodi-tools-texturepacker=r53580.05488ed68e4
+	provides = kodi-tools-texturepacker=r53600.86227041bb2
 	conflicts = kodi-tools-texturepacker
 
 pkgname = kodi-git-dev
 	pkgdesc = Kodi dev files (master branch)
 	depends = kodi-git
-	provides = kodi-dev=r53580.05488ed68e4
+	provides = kodi-dev=r53600.86227041bb2
 	conflicts = kodi-dev
 

@@ -21,8 +21,8 @@ pkgname=(
   "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev"
 )
 _gitname='xbmc'
-pkgver=r53580.05488ed68e4
-pkgrel=2
+pkgver=r53600.86227041bb2
+pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
 license=('GPL2')
@@ -73,6 +73,7 @@ source=(
   "http://mirrors.kodi.tv/build-deps/sources/fstrcmp-$_fstrcmp_version.tar.gz"
   "http://mirrors.kodi.tv/build-deps/sources/flatbuffers-$_flatbuffers_version.tar.gz"
   cpuinfo
+  000-unfuck.libglvnd.bad.headers.patch::https://bugs.archlinux.org/task/64182?getfile=17930
 )
 noextract=(
   "libdvdcss-$_libdvdcss_version.tar.gz"
@@ -93,7 +94,8 @@ sha256sums=('SKIP'
             '3d77d09a5df0de510aeeb940df4cb534787ddff3bb1828779753f5dfa1229d10'
             'e4018e850f80700acee8da296e56e15b1eef711ab15157e542e7d7e1237c3476'
             '1789b97e790da8f2cb5ff827d15580878c8629fd889f5f038d7524dca43eacc9'
-            '27387e49043127f09c5ef0a931fffb864f5730e79629100a6e210b68a1b9f2c1')
+            '27387e49043127f09c5ef0a931fffb864f5730e79629100a6e210b68a1b9f2c1'
+            '6fa089625184b2b47bea7a3dcb349931e9b39681df9d84fd690a1ba848460168')
 
 pkgver() {
   cd "$_gitname"
@@ -116,6 +118,9 @@ prepare() {
     local _replace="exec_program(cat ARGS \"/build/$pkgname/src/cpuinfo\" OUTPUT_VARIABLE CPUINFO)"
     sed -i s"|$_find|$_replace|" cmake/modules/FindSSE.cmake
   fi
+
+  # blunt object workaround but effective until libglvnd upstream fixes
+  patch -Np1 -i ../000-unfuck.libglvnd.bad.headers.patch
 }
 
 build() {
