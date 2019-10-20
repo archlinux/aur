@@ -1,6 +1,6 @@
 # Maintainer: Jonathan Liu <net147@gmail.com>
 pkgname=admesh
-pkgver=0.98.3
+pkgver=0.98.4
 pkgrel=1
 pkgdesc="Program for processing STL triangulated solid meshes"
 arch=('i686' 'x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/admesh/admesh/"
 license=('GPL2')
 depends=('glibc')
 source=("https://github.com/admesh/admesh/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('ff471c684e3df0c99d15eb5a372dbcf9')
+md5sums=('0500cce63664809cbf707df8bfdcee61')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
