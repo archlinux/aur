@@ -1,7 +1,7 @@
 pkgbase = linux-pds
-	pkgver = 5.3.6.arch1
+	pkgver = 5.3.7.arch1
 	pkgrel = 1
-	url = https://git.archlinux.org/linux.git/log/?h=v5.3.6-arch1
+	url = https://git.archlinux.org/linux.git/log/?h=v5.3.7-arch1
 	arch = x86_64
 	license = GPL2
 	makedepends = xmlto
@@ -15,7 +15,7 @@ pkgbase = linux-pds
 	makedepends = graphviz
 	makedepends = imagemagick
 	options = !strip
-	source = git+https://git.archlinux.org/linux?signed#tag=v5.3.6-arch1
+	source = git+https://git.archlinux.org/linux?signed#tag=v5.3.7-arch1
 	source = git+https://github.com/graysky2/kernel_gcc_patch
 	source = config
 	source = 60-linux.hook
@@ -28,7 +28,7 @@ pkgbase = linux-pds
 	validpgpkeys = 8218F88849AAC522E94CF470A5E9288C4FA415FA
 	sha512sums = SKIP
 	sha512sums = SKIP
-	sha512sums = 123862129e35063c9cf0b74925e346a7ddaa01ca129dd15bfa4497859cf2bcdd1e6c13aabfbbf544c120f2630e53aac014a5e4f7aeeb932c918c64bd2f993a68
+	sha512sums = 6e7596a069a20732fa7b2b9fb9dadf167401f56fc4564dc3763e72ae3a573b5f096f31bae835778296d68d8deb58e7cb1a6d9ab669b0e460a767bffbaacbb548
 	sha512sums = 6b57a66b870b2f525e2dedd8f224b89474fd4ec6ea18484b0a67a1a2b9a4fc95d025cac181504406ea42a35d6c1b184c0d4e38c92815022935fc55746c69c7c1
 	sha512sums = 2718b58dbbb15063bacb2bde6489e5b3c59afac4c0e0435b97fe720d42c711b6bcba926f67a8687878bd51373c9cf3adb1915a11666d79ccb220bf36e0788ab7
 	sha512sums = 2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf
@@ -44,18 +44,18 @@ pkgname = linux-pds
 	depends = thrash-protect
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
-	provides = linux-pds=5.3.6.arch1
+	provides = linux-pds=5.3.7.arch1
 	backup = etc/mkinitcpio.d/linux-pds.preset
 
 pkgname = linux-pds-headers
 	pkgdesc = Header files and scripts for building modules for Linux-pds kernel ~ featuring Alfred Chen's PDS CPU scheduler, rebased by TkG
-	depends = linux-pds=5.3.6.arch1
-	provides = linux-pds-headers=5.3.6.arch1
-	provides = linux-headers=5.3.6.arch1
+	depends = linux-pds=5.3.7.arch1
+	provides = linux-pds-headers=5.3.7.arch1
+	provides = linux-headers=5.3.7.arch1
 
 pkgname = linux-pds-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-pds kernel ~ featuring Alfred Chen's PDS CPU scheduler, rebased by TkG
-	depends = linux-pds=5.3.6.arch1
-	provides = linux-pds-docs=5.3.6.arch1
-	provides = linux-docs=5.3.6.arch1
+	depends = linux-pds=5.3.7.arch1
+	provides = linux-pds-docs=5.3.7.arch1
+	provides = linux-docs=5.3.7.arch1
 
