@@ -1,7 +1,7 @@
 pkgbase = stratagus
 	pkgdesc = A free cross-platform real-time strategy gaming engine
 	pkgver = 2.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Wargus/stratagus
 	changelog = stratagus.changelog
 	arch = i686
@@ -17,7 +17,9 @@ pkgbase = stratagus
 	depends = sqlite
 	depends = tolua++
 	source = stratagus::git://github.com/Wargus/stratagus.git#tag=v2.4.2
+	source = glext.patch
 	md5sums = SKIP
+	md5sums = 1c4a52e50e0e959c5b8b58bf42930be7
 
 pkgname = stratagus
 

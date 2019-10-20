@@ -1,0 +1,34 @@
+diff -urN stratagus.orig/src/include/video.h stratagus/src/include/video.h
+--- stratagus.orig/src/include/video.h	2019-10-20 14:59:21.017468794 +0200
++++ stratagus/src/include/video.h	2019-10-20 15:14:41.057532388 +0200
+@@ -43,6 +43,7 @@
+ #ifdef __APPLE__
+ #define GL_GLEXT_PROTOTYPES 1
+ #endif
++#define NO_SDL_GLEXT
+ #include "SDL_opengl.h"
+ #include "shaders.h"
+ #endif
+diff -urN stratagus.orig/src/video/sdl.cpp stratagus/src/video/sdl.cpp
+--- stratagus.orig/src/video/sdl.cpp	2019-10-20 14:55:55.240787855 +0200
++++ stratagus/src/video/sdl.cpp	2019-10-20 15:15:48.324203711 +0200
+@@ -53,6 +53,7 @@
+ #include <sys/stat.h>
+ #endif
+
++#define NO_SDL_GLEXT
+ #include "SDL.h"
+ #include "SDL_syswm.h"
+
+diff -urN stratagus.orig/src/video/video.cpp stratagus/src/video/video.cpp
+--- stratagus.orig/src/video/video.cpp	2019-10-20 14:55:55.240787855 +0200
++++ stratagus/src/video/video.cpp	2019-10-20 15:14:41.057532388 +0200
+@@ -93,7 +93,7 @@
+ #include "map.h"
+ #include "ui.h"
+
+-
++#define NO_SDL_GLEXT
+ #include "SDL.h"
+
+ /*----------------------------------------------------------------------------

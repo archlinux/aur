@@ -1,3 +1,8 @@
+2019-10-20 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Added a patch to fix the SDL redefinition of GL_GLEXT_VERSION
+
 2017-06-07 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
 
 	* PKGBUILD :
