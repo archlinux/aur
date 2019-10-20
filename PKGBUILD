@@ -2,7 +2,7 @@
 
 pkgname=symfony-cli
 pkgrel=1
-pkgver=4.6.4
+pkgver=4.7.3
 pkgdesc="The Symfony client helps developers create and manage Symfony applications."
 url="https://symfony.com/"
 arch=('x86_64')
@@ -12,7 +12,7 @@ source=(
     "https://github.com/symfony/cli/releases/download/v${pkgver}/symfony_linux_amd64.gz"
 )
 noextract=('symfony_linux_amd64.gz')
-sha256sums=('63528dc6827d04537c2c80314a231d1c0e5279908183ac8d5b9b71a1652dc3a9')
+sha256sums=('cb00c01903625d1f63bdce9603f24f36abea0ba88eaf111651d2fbace1b74a3a')
 depends=('gzip')
 
 prepare() {
