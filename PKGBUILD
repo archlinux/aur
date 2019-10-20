@@ -3,8 +3,8 @@
 # Contributor: sxe <sxxe@gmx.de>
 
 pkgname=kuickshow
-pkgver=0.10.0
-pkgrel=2
+pkgver=0.10.1
+pkgrel=1
 pkgdesc="A very fast and convenient image viewer"
 url="https://userbase.kde.org/KuickShow"
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=('hicolor-icon-theme' 'imlib' 'qt5-base' 'qt5-x11extras'
 makedepends=('cmake' 'docbook-xsl' 'extra-cmake-modules')
 source=(https://download.kde.org/stable/$pkgname/$pkgver/$pkgname-$pkgver.tar.xz) #{,.sig})
 # validpgpkeys=('285ABEE99DADA2A7') #Unknown key - gpg: keyserver receive failed: No data
-sha256sums=('08bae0a3134579787bb8a6e4bb6439c5e6237ae6a990f411df6140b268f5d628')
+sha256sums=('511b3c8e6536db449267df26e775697b15afab4318d3c0a6d384e55f04478da2')
 
 build() {
   cd "${srcdir}"
