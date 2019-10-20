@@ -4,7 +4,7 @@
 
 pkgname=libdaq-nfqueue
 pkgver=2.0.6
-pkgrel=2
+pkgrel=3
 pkgdesc='Data Acquisition library for packet I/O.'
 arch=('i686' 'x86_64')
 url='https://www.snort.org/'
