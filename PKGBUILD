@@ -3,7 +3,7 @@
 pkgname=ubports-installer
 pkgver=0.3.2b
 _ver=${pkgver/b/-beta}
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple tool to install Ubuntu Touch on UBports devices'
 arch=('x86_64' 'i686')
 url='https://github.com/ubports/ubports-installer'
@@ -29,14 +29,14 @@ prepare() {
 
 build() {
     cd "$pkgname-$_ver"
-    node build.js --package dir --os linux --no-platform-tools
+    node build.js --package dir --os linux
 }
 
 package() {
     cd "$pkgname-$_ver"
 
     echo "#!/usr/bin/env bash
-exec electron4 /usr/share/ubports-installer/app.asar -n \$@" > "$srcdir/ubports-installer.sh"
+exec electron4 /usr/share/ubports-installer/app.asar \$@" > "$srcdir/ubports-installer.sh"
 	install -Dm755 "$srcdir/ubports-installer.sh" "$pkgdir/usr/bin/ubports-installer"
 
 	echo "[Desktop Entry]
