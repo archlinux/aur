@@ -1,0 +1,19 @@
+pkgbase = m4b-tool-bin
+	pkgdesc = A command line utility to merge, split and chapterize audiobook files such as mp3, ogg, flac, m4a or m4b
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = https://github.com/sandreas/m4b-tool
+	arch = x86_64
+	license = MIT
+	depends = ffmpeg
+	depends = libmp4v2
+	depends = php
+	depends = php-intl
+	optdepends = fdkaac: for high efficiency codecs to perform conversions
+	options = !strip
+	source = m4b-tool.tar.gz::https://github.com/sandreas/m4b-tool/releases/download/v.0.4.2/m4b-tool.tar.gz
+	md5sums = 60746a96431c068f6880ebf510e2bac7
+	sha256sums = 0ec79733770379dbd11ea9d76fd03d62d8aacca8e66730779f7caaa92f577ba7
+
+pkgname = m4b-tool-bin
+
