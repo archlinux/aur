@@ -1,0 +1,13 @@
+pkgbase = plymouth-theme-psx
+	pkgdesc = PSX boot simulation
+	pkgver = v1.0
+	pkgrel = 1
+	url = https://github.com/cylgom/plymouth_psx
+	arch = any
+	license = custom:WTFPL
+	depends = plymouth
+	source = https://github.com/cylgom/plymouth_psx/archive/v1.0.zip
+	sha256sums = 8f1c765e5b00d1ad6fa37c51e51dca727335ce3f7ee904117e7e9533e90bbe7c
+
+pkgname = plymouth-theme-psx
+
