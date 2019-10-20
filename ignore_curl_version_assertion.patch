@@ -1,0 +1,12 @@
+diff -r -u a/FreeFileSync/Source/afs/ftp.cpp b/FreeFileSync/Source/afs/ftp.cpp
+--- a/FreeFileSync/Source/afs/ftp.cpp 2019-10-17 18:37:03.000000000 +0200
++++ b/FreeFileSync/Source/afs/ftp.cpp 2019-10-20 20:18:07.221692533 +0200
+@@ -632,7 +632,7 @@
+             curlRelPath += compFmt;
+         }
+ 
+-        static_assert(LIBCURL_VERSION_MAJOR > 7 || (LIBCURL_VERSION_MAJOR == 7 && LIBCURL_VERSION_MINOR >= 67));
++        // static_assert(LIBCURL_VERSION_MAJOR > 7 || (LIBCURL_VERSION_MAJOR == 7 && LIBCURL_VERSION_MINOR >= 67));
+         /*  1. CURLFTPMETHOD_NOCWD requires absolute paths to unconditionally skip CWDs: https://github.com/curl/curl/pull/4382
+             2. CURLFTPMETHOD_SINGLECWD requires absolute paths to skip one needless "CWD entry path": https://github.com/curl/curl/pull/4332
+               => https://curl.haxx.se/docs/faq.html#How_do_I_list_the_root_dir_of_an

@@ -5,7 +5,7 @@
 # Maintainer: jooch <jooch AT gmx DOT com>
 
 pkgname=freefilesync
-pkgver=10.15
+pkgver=10.17
 pkgrel=1
 pkgdesc="Backup software to synchronize files and folders"
 arch=('i686' 'x86_64')
@@ -15,6 +15,7 @@ depends=(wxgtk webkit2gtk boost-libs)
 makedepends=(boost unzip)
 source=(
 	"FreeFileSync_${pkgver}_Source.zip::${url}/download/FreeFileSync_${pkgver}_Source.zip"		#ffs
+	ignore_curl_version_assertion.patch
 	revert_xdg_config_path.patch
 	revert_bulk_append.patch
 	revert_linkflags.patch
@@ -23,13 +24,14 @@ source=(
 	dlagent
 	)
 
-sha256sums=('bf495c182c51565a622023e4823a8df0a912c73f134e57a7398ccb6578d46dc5'
+sha256sums=('c833c13cd58ce66b846a3e3fe7dcee11c5cf9f365498a1454b05dc7668478dd3'
+            '4c62e13fdeafb3263c286718e27a48e8ff127fdcfac39becb45b976e66b6b99f'
             'e74b4abdf04c58004e52f77afee762e4c3d72d4ca42de4cc42cbc930cbec0e32'
             '2ea1f157ab31feb18b0d8ac117a1820174a4b2b9bdaee2027c1fbc2c287e1caa'
             'd3dedc100163ce00ae5889a6039a1fff11ae32b676ae5e83ae9182509f80638d'
             '590d87707240529ca893199f852143f5d7c7266cb050e37e615900b013ac3d51'
             '82439b4b81b0a72652befad9b9db52ffbc0180f307c92205aa5ab344f9f82830'
-            '1f47fa51bf9b8a15e3785a083662dd78aa5b0e92e0f8789ffbaa3c184e411f24')
+            '1649e7ea66235c6f82daf9beb6b61b7765df54e9ef70f7f6fc1283f5c2b1e54a')
 
 DLAGENTS=("https::./dlagent $url %u %o")
 
@@ -45,11 +47,14 @@ prepare() {
     sed -e 's:m_textCtrlOfflineActivationKey->ForceUpper:// &:g' -i 'FreeFileSync/Source/ui/small_dlgs.cpp'
     sed -e 's:const double scrollSpeed =:& 6; //:g' -i 'wx+/grid.cpp'
 
-# libssh2 v1.8.2 does not yet implement LIBSSH2_SFTP_DEFAULT_MODE, revert to previous impl.
-    sed -e 's/LIBSSH2_SFTP_DEFAULT_MODE/LIBSSH2_SFTP_S_IRWXU | LIBSSH2_SFTP_S_IRWXG | LIBSSH2_SFTP_S_IRWXO/g' -i 'FreeFileSync/Source/afs/sftp.cpp'
+# remove assertion for libcurl version >1.67 (1.66 should be safe but slower)
+    patch --binary -p1 -i ignore_curl_version_assertion.patch
 
 # add LINKFLAGS that were removed but that we still need in our case
     patch -p1 -i revert_linkflags.patch
+
+# don't try to compile inexistant file
+    sed -e '\:CPP_FILES+=afs/libssh2/init_libssh2.cpp:d' -i FreeFileSync/Source/Makefile
 
 # inlining of constants not present in libssh2's distributed headers
     sed -i 's/MAX_SFTP_READ_SIZE/30000/g' FreeFileSync/Source/afs/sftp.cpp
