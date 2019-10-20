@@ -3,7 +3,7 @@
 # Upstream: https://github.com/lightningnetwork/lnd
 
 pkgname=('lnd')
-pkgver=0.7.1_beta
+pkgver=0.8.0_beta
 _pkgver="${pkgver//_/-}"
 pkgrel=1
 pkgdesc='The Lightning Network Daemon, for secure off-chain bitcoin transactions.'
@@ -14,8 +14,8 @@ depends=('glibc')
 makedepends=('git' 'go')
 provides=('lnd' 'lncli')
 conflicts=('lnd-git')
-source=("$pkgname::git+https://github.com/lightningnetwork/lnd.git#tag=v${_pkgver}")
-md5sums=('SKIP')
+source_x86_64=("$pkgname::git+https://github.com/lightningnetwork/lnd.git#tag=v${_pkgver}")
+sha512sums_x86_64=('SKIP')
 
 # create a fake go path directory and pushd into it
 # $1 real directory
@@ -37,6 +37,7 @@ prepare() {
 }
 
 build() {
+  pwd && ls
   export GOPATH="$srcdir/GOPATH"
   _fake_gopath_pushd "$pkgname" github.com/lightningnetwork/lnd
   make && make install
