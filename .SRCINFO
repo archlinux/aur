@@ -1,0 +1,19 @@
+pkgbase = sftpgo-bin
+	pkgdesc = Full featured and highly configurable SFTP server
+	pkgver = 0.9.3
+	pkgrel = 1
+	url = https://github.com/drakkan/sftpgo
+	arch = x86_64
+	license = GPL3
+	depends = glibc
+	optdepends = python-requests: REST API CLI
+	optdepends = python-pygments: REST API CLI colors highlight
+	provides = sftpgo
+	conflicts = sftpgo
+	backup = etc/sftpgo/sftpgo.json
+	backup = etc/sftpgo/sftpgo.db
+	source = https://github.com/drakkan/sftpgo/releases/download/0.9.3/sftpgo_0.9.3_linux_x86_64.tar.xz
+	sha256sums = aa23d62356adc0d9b1634374647dff363c32afa8fd67c26635b99617929d1825
+
+pkgname = sftpgo-bin
+
