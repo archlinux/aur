@@ -4,21 +4,21 @@
 _plasma=false
 
 # Submodule versions
-_singleapplication=3.0.15
+_singleapplication=3.0.18
 
 pkgname=optimus-manager-qt
-pkgver=1.3.3
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="A Qt interface for Optimus Manager that allows to configure and switch GPUs on Optimus laptops using the tray menu"
 arch=('x86_64')
 url="https://github.com/Shatur95/optimus-manager-qt"
 license=('GPL3')
-depends=('qt5-base' 'qt5-x11extras' 'optimus-manager>=1.2')
+depends=('qt5-base' 'qt5-x11extras' 'optimus-manager>=1.2.2')
 makedepends=('qt5-tools' 'libxrandr')
 source=($pkgname-$pkgver.tar.gz::"https://github.com/Shatur95/optimus-manager-qt/archive/$pkgver.tar.gz"
         SingleApplication-$_singleapplication.tar.gz::"https://github.com/itay-grudev/SingleApplication/archive/$_singleapplication.tar.gz")
-sha256sums=('7fcf8d0f3e40e2da2aeb274cccecb7c69ba3253de42e316e5d847733017d4b72'
-            '312c125a5564f5aaa22b532599bc9707c1570a2e97232529848a66dc74486de3')
+sha256sums=('5b36e8ccb4e4f3e7246ee2745d209b08e0cd55edf11a274adca8148aba8efc57'
+            '0f0ce6466dbfdadf2a7ea75aa1d461e2e279c8c03f747117c75bd376a46c6eec')
 
 if [ $_plasma == true ]
 then
