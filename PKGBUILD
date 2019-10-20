@@ -3,7 +3,7 @@
 pkgbase=python-psycopg2-binary
 pkgname=('python-psycopg2-binary' 'python2-psycopg2-binary')
 _name=psycopg2-binary
-pkgver=2.8.3
+pkgver=2.8.4
 pkgrel=1
 pkgdesc='Python-PostgreSQL Database Adapter'
 conflicts=('python-psycopg2')
@@ -17,7 +17,7 @@ makedepends=('python-setuptools'
              'python2-setuptools')
 
 source=("https://pypi.python.org/packages/source/p/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('cd37cc170678a4609becb26b53a2bc1edea65177be70c48dd7b39a1149cabd6e')
+sha256sums=('3a2522b1d9178575acee4adf8fd9f979f9c0449b00b4164bb63c3475ea6528ed')
 
 package_python-psycopg2-binary() {
   depends+=('python')
