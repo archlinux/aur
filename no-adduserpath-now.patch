@@ -1,0 +1,10 @@
+--- setup.py.orig	2019-10-20 17:15:00.730064609 +0800
++++ setup.py	2019-10-20 17:15:07.896906249 +0800
+@@ -52,7 +52,6 @@
+     ),
+ 
+     install_requires=(
+-        'adduserpath>=0.4.0',
+         'appdirs',
+         'atomicwrites',
+         'click',
