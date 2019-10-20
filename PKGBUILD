@@ -2,7 +2,7 @@
 # Contributor: drakkan <nicola.murino at gmail dot com>
 pkgname=sftpgo-git
 _pkgname=sftpgo
-pkgver=r161.25f97bb
+pkgver=r162.4f6bb00
 pkgrel=1
 pkgdesc='Full featured and highly configurable SFTP server'
 arch=('i686' 'x86_64')
@@ -14,6 +14,8 @@ optdepends=(
   "sqlite: to use SQLite provider"
   "postgresql: to use PostgreSQL provider"
   "mariadb: to use MySQL provider"
+  "python-requests: REST API CLI"
+  "python-pygments: REST API CLI colors highlight"
 )
 conflicts=('sftpgo')
 provides=('sftpgo')
