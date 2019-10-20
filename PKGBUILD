@@ -2,9 +2,9 @@
 
 _pkgname=suil
 pkgname="${_pkgname}-git"
-pkgver=0.10.4.r318.e067828
-pkgrel=2
-pkgdesc="A lightweight C library for loading and wrapping LV2 plugin UIs"
+pkgver=0.10.4.r322.ee6ee77
+pkgrel=1
+pkgdesc="Lightweight C library for loading and wrapping LV2 plugin UIs (git version)"
 arch=('i686' 'x86_64')
 url="http://drobilla.net/software/suil/"
 license=('custom:ISC')
@@ -31,6 +31,9 @@ prepare() {
   git submodule init
   git config submodule.waflib.url "${srcdir}/autowaf"
   git submodule update
+
+  # remove local call to ldconfig
+  sed -i "/ldconfig/d" wscript
 }
 
 build() {
@@ -47,5 +50,5 @@ package() {
   cd "${srcdir}/${_pkgname}"
 
   python waf install --destdir="${pkgdir}"
-  install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${_svnname}/LICENSE"
+  install -Dm644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
