@@ -3,6 +3,7 @@
 # Maintainer: Zack Emmert <zemmert@fastmail.com>
 # Contributor Alexandre Bouvier <contact@amb.tf>
 # Contributor: Daniel Cohen <dan@supercore.co.uk>
+# Contributor: Jamesjon <universales@protonmail.com>
 pkgname=plymouth-kcm
 pkgver=5.16.5
 pkgrel=2
