@@ -4,18 +4,18 @@
 
 pkgname=nted
 pkgver=1.10.18
-pkgrel=5
+pkgrel=6
 pkgdesc="A free music score editor for Linux."
 arch=('i686' 'x86_64')
 depends=('harfbuzz' 'gdk-pixbuf2' 'pango' 'gtk2' 'alsa-lib')
-makedepends=('gcc49')
+makedepends=('gcc6')
 license=('GPL')
 url="http://http.debian.net/debian/pool/main/n/nted/"
 options=('!libtool' '!strip' '!makeflags')
 source=("http://urchlay.naptime.net/~urchlay/src/nted-$pkgver.tar.gz"
 	"http://http.debian.net/debian/pool/main/n/nted/nted_$pkgver-12.debian.tar.xz")
-md5sums=('0ca7aa23109171ab643a9b552487bd4b'
-         'ca741156f6633603c84fe3e8e74d0555')
+sha256sums=('808df3c851dbc4b24efdbf96c4e6ed28152deb301c4373268831f2a243e8f1ac'
+            '715e5acfb986f0b5b9c898c1a22f06e1da4b58713616c8e525b668e2f16fd074')
 
 prepare() {
   cd $pkgname-$pkgver
@@ -32,7 +32,7 @@ build() {
   aclocal
   automake --add-missing
   autoreconf
-  CXX=g++-4.9 CXXFLAGS=" -O2 -std=c++11 -Wno-narrowing" ./configure --prefix=/usr 
+  CXX=g++-6 CXXFLAGS=" -O2 -std=c++11 -Wno-narrowing" ./configure --prefix=/usr 
   make
 }
 

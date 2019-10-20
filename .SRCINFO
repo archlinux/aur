@@ -1,12 +1,12 @@
 pkgbase = nted
 	pkgdesc = A free music score editor for Linux.
 	pkgver = 1.10.18
-	pkgrel = 5
+	pkgrel = 6
 	url = http://http.debian.net/debian/pool/main/n/nted/
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = gcc49
+	makedepends = gcc6
 	depends = harfbuzz
 	depends = gdk-pixbuf2
 	depends = pango
@@ -17,8 +17,8 @@ pkgbase = nted
 	options = !makeflags
 	source = http://urchlay.naptime.net/~urchlay/src/nted-1.10.18.tar.gz
 	source = http://http.debian.net/debian/pool/main/n/nted/nted_1.10.18-12.debian.tar.xz
-	md5sums = 0ca7aa23109171ab643a9b552487bd4b
-	md5sums = ca741156f6633603c84fe3e8e74d0555
+	sha256sums = 808df3c851dbc4b24efdbf96c4e6ed28152deb301c4373268831f2a243e8f1ac
+	sha256sums = 715e5acfb986f0b5b9c898c1a22f06e1da4b58713616c8e525b668e2f16fd074
 
 pkgname = nted
 
