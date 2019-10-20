@@ -4,7 +4,7 @@
 # Contributor Alexandre Bouvier <contact@amb.tf>
 # Contributor: Daniel Cohen <dan@supercore.co.uk>
 pkgname=plymouth-kcm
-pkgver=5.16.2
+pkgver=5.16.5
 pkgrel=2
 pkgdesc="KCM to manage the Plymouth (Boot) theme"
 arch=('x86_64')
