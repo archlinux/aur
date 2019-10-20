@@ -1,7 +1,8 @@
+# Maintainer:  Chris Severance aur.severach aATt spamgourmet dott com
 # Contributor: Balló György <ballogyor+arch at gmail dot com>
 
 pkgname=pdfslicer
-pkgver=1.7.0
+pkgver=1.7.4
 pkgrel=1
 pkgdesc="Simple application to extract, merge, rotate and reorder pages of PDF documents"
 arch=(x86_64)
@@ -9,8 +10,7 @@ url="https://junrrein.github.io/pdfslicer/"
 license=(GPL3)
 depends=(gtkmm3 poppler qpdf)
 makedepends=(cmake git intltool)
-_commit=12114cf9e63484b3347bcd75fdcef987d4d7eba4  # tags/v1.7.0^0
-source=("git+https://github.com/junrrein/pdfslicer#commit=$_commit"
+source=("git+https://github.com/junrrein/pdfslicer#tag=v${pkgver}"
         "git+https://github.com/ericniebler/range-v3"
         "git+https://github.com/Microsoft/GSL"
         "git+https://github.com/fmtlib/fmt")
