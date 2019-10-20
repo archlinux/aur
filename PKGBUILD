@@ -1,17 +1,17 @@
 # Maintainer: Maxime Tréca <maxime.treca@gmail.com>
 pkgname=envypn-otb
-pkgver=r13.9059e0a
-pkgrel=1
-pkgdesc="A monospace bitmap font."
+pkgver=1.7.1
+pkgrel=3
+pkgdesc="Readable bitmap font inspired by Envy Code R"
+url="http://ywstd.fr/p/pj/#envypn"
 arch=('any')
-url="https://github.com/Sorixelle/envypn-powerline"
-license=('custom')
-depends=('xorg-font-utils' 'fontconfig')
+license=('custom:MirOS License')
+depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
 makedepends=('git' 'fonttosfnt-git')
 conflicts=('envypn-font')
-makedepends=('git')
-source=("$pkgname::git+https://github.com/Sorixelle/envypn-powerline")
-md5sums=('SKIP')
+source=("http://ywstd.fr/files/p/envypn-font/envypn-font-${pkgver}.tar.gz")
+md5sums=('976ceda01018d3b109a735daf4e8af95')
+sha256sums=('bda67b6bc6d5d871a4d46565d4126729dfb8a0de9611dae6c68132a7b7db1270')
 
 _ex_pt() {
 	_pt=${1%.bdf}
@@ -19,22 +19,15 @@ _ex_pt() {
 	echo $_pt
 }
 
-pkgver() {
-	cd "$srcdir/${pkgname}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-build() {
-	cd "$srcdir/${pkgname}"
-	for f in *.bdf; do
-		fonttosfnt -o "${f/bdf/otb}" "$f"
-	done
-}
-
 package() {
-	cd "$srcdir/${pkgname}"
+	cd "${srcdir}/envypn-font-${pkgver}"
+	for f in *.pcf.gz; do
+		fonttosfnt -o "${f/pcf.gz/otb}" "$f"
+	done
 	for i in *.otb; do
 		install -Dm 644 $i "$pkgdir/usr/share/fonts/misc/$i"
 	done
 }
+
+
 

@@ -1,16 +1,19 @@
 pkgbase = envypn-otb
-	pkgdesc = A monospace bitmap font.
-	pkgver = r13.9059e0a
-	pkgrel = 1
-	url = https://github.com/Sorixelle/envypn-powerline
+	pkgdesc = Readable bitmap font inspired by Envy Code R
+	pkgver = 1.7.1
+	pkgrel = 3
+	url = http://ywstd.fr/p/pj/#envypn
 	arch = any
-	license = custom
+	license = custom:MirOS License
 	makedepends = git
-	depends = xorg-font-utils
+	makedepends = fonttosfnt-git
 	depends = fontconfig
+	depends = xorg-fonts-encodings
+	depends = xorg-font-utils
 	conflicts = envypn-font
-	source = envypn-otb::git+https://github.com/Sorixelle/envypn-powerline
-	md5sums = SKIP
+	source = http://ywstd.fr/files/p/envypn-font/envypn-font-1.7.1.tar.gz
+	md5sums = 976ceda01018d3b109a735daf4e8af95
+	sha256sums = bda67b6bc6d5d871a4d46565d4126729dfb8a0de9611dae6c68132a7b7db1270
 
 pkgname = envypn-otb
 
