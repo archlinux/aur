@@ -2,7 +2,7 @@
 
 pkgname=rtlwifi_new-extended-dkms
 _pkgname=rtlwifi_new
-pkgver=r286.cbfed11
+pkgver=r287.39b7385
 pkgrel=1
 pkgdesc='Newest Realtek rtlwifi codes, extended branch'
 arch=('i686' 'x86_64')
