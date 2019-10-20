@@ -1,38 +1,34 @@
 # Maintainer: Simon Tas <simon.tas.st@gmail.com>
+# Co-Maintainer: telans <telans@protonmail.com>
+
 pkgname="sam-rewritten-git"
 _pkgname="SamRewritten"
-pkgver=r36.f332129
+pkgver=r39.50f2d7b
 pkgrel=1
-pkgdesc="Steam Achievement Manager For Linux. Rewritten in C++."
-arch=('any')
+pkgdesc="A Steam Achievement Manager For Linux."
+arch=("any")
 url="https://github.com/PaulCombal/SamRewritten"
-license=('GPL3')
-depends=('steam' 'yajl' 'gtk3' 'glibc')
-makedepends=('git')
+license=("GPL3")
+depends=("steam" "yajl" "gtk3" "glibc")
+makedepends=("git")
 source=("git+https://github.com/PaulCombal/SamRewritten.git")
-md5sums=('SKIP')
+md5sums=("SKIP")
 
 pkgver() {
-  cd "${srcdir}/$_pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd ${_pkgname}
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-    cd "${srcdir}/$_pkgname"
-	./make.sh
-	
-	#removing compiled c++ code
-	rm -rf SAM.Picker
-	rm -rf common
+    cd ${_pkgname}
+    ./make.sh
 }
 
-package() {
-    cd "${srcdir}/$_pkgname"
-    
-    install -dm755 "${pkgdir}/usr/lib/${_pkgname}"
-    cp -dr --no-preserve=ownership ./* "${pkgdir}/usr/lib/${_pkgname}/"
-    
+package() {  
+    install -dm755 "${pkgdir}/usr/lib/"
+    # Only copy required files. (Except for Glade files, as more may be added in the future.)
+    cp --parents ${_pkgname}/{LICENSE,README.MD,bin/{launch.sh,libsteam_api.so,samrewritten},glade/*.glade} "${pkgdir}/usr/lib/"
+
     install -dm755 "${pkgdir}/usr/bin"
-    ln -s "/usr/lib/${_pkgname}/bin/launch.sh" "${pkgdir}/usr/bin/sam-rewritten"
-}
- 
+    ln -s "${pkgdir}/usr/lib/${_pkgname}/bin/launch.sh" "${pkgdir}/usr/bin/samrewritten"
+} 
