@@ -2,7 +2,7 @@
 
 _target=riscv64-unknown-elf
 pkgname=$_target-gcc
-pkgver=9.1.0
+pkgver=9.2.0
 _islver=0.21
 _newlibver=3.1.0.20181231
 pkgrel=1
@@ -16,7 +16,7 @@ options=(!emptydirs !strip)
 source=("https://gcc.gnu.org/pub/gcc/releases/gcc-$pkgver/gcc-$pkgver.tar.xz"
         "http://isl.gforge.inria.fr/isl-$_islver.tar.bz2"
         "https://sourceware.org/pub/newlib/newlib-$_newlibver.tar.gz")
-sha256sums=('79a66834e96a6050d8fe78db2c3b32fb285b230b855d0a66288235bc04b327a0'
+sha256sums=('ea6ef08f121239da5695f76c9b33637a118dcf63e24164422231917fa61fb206'
             'd18ca11f8ad1a39ab6d03d3dcb3365ab416720fcb65b42d69f34f51bf0a0e859'
             '9e12fea7297648b114434033ed4458755afe7b9b6c7d58123389e82bd37681c0')
 
