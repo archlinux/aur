@@ -12,7 +12,7 @@ pkgbase = python2-v8
 	source = git+https://github.com/buffer/pyv8.git#commit=b5b0407
 	source = setup.diff
 	sha256sums = SKIP
-	sha256sums = 2eff2eeb95d14885e2309409d4e1150c93612a135445a486876d72cb1e91ee61
+	sha256sums = b11377849e06c7dde17162eee51659b1274d6528f77fab48f7af05e581b91a2d
 
 pkgname = python2-v8
 

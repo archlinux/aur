@@ -12,14 +12,17 @@ depends=('python2' 'boost-libs')
 makedepends=('git' 'v8')
 source=("git+$url#commit=b5b0407" setup.diff)
 sha256sums=('SKIP'
-            '2eff2eeb95d14885e2309409d4e1150c93612a135445a486876d72cb1e91ee61')
+            'b11377849e06c7dde17162eee51659b1274d6528f77fab48f7af05e581b91a2d')
 makedepends=('python2' 'python-setuptools')
 
 prepare() {
   cd ${_pkgname}
   patch -Np1 < "$srcdir"/setup.diff
-  }
+  sed -i '1s+python$+python2+' PyV8.py
+}
+
 package() {
   cd ${_pkgname}
   python2 setup.py install --root="$pkgdir"
+  sed -i '1s+python$+python2+' "$pkgdir"/usr/lib/python2.7/site-packages/PyV8.py
 }
