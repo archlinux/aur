@@ -3,6 +3,7 @@
 
 ## Update package
 
+0. Get package version from https://docs.lokalise.com/api-and-cli/lokalise-cli-tool
 1. Update package version in PKGBUILD
 2. Generate new checksums with `updpkgsums`
 3. Test install `makepkg -si`
