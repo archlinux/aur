@@ -3,7 +3,7 @@
 
 _appname=freecad
 pkgname="${_appname}-git"
-pkgver=0.19pre.r1386.g945e76d91
+pkgver=0.19pre.r2096.gc903de8af7
 pkgrel=1
 epoch=1
 pkgdesc='A general purpose 3D CAD modeler - git checkout'
@@ -11,7 +11,7 @@ arch=('x86_64')
 url='https://www.freecadweb.org/'
 license=('LGPL')
 depends=('boost-libs' 'curl' 'desktop-file-utils' 'glew' 'hicolor-icon-theme'
-         'jsoncpp' 'libspnav' 'med' 'opencascade' 'shiboken2' 'xerces-c'
+         'jsoncpp' 'libspnav' 'med' 'opencascade' 'openmpi' 'shiboken2' 'xerces-c'
          'pyside2' 'python-matplotlib' 'python-netcdf4' 'python-pivy'
          'qt5-svg' 'qt5-webkit' 'qt5-webengine')
 makedepends=('boost' 'cmake' 'eigen' 'git' 'gcc-fortran'
@@ -30,11 +30,7 @@ pkgver() {
 build() {
     cd "${srcdir}/${pkgname}"
 
-    # we need to manually set all SHIBOKEN_* and PYSIDE_* paths as autodetection is broken:
-    # https://github.com/FreeCAD/FreeCAD/pull/2020
-    PYVER="$(/usr/bin/python3 -c 'import sys; print("{}.{}".format(sys.version_info.major,sys.version_info.minor))')"
-
-    cmake . \
+    cmake \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX="/usr/lib/freecad" \
         -DCMAKE_INSTALL_DATAROOTDIR="/usr/share" \
@@ -43,14 +39,7 @@ build() {
         -DBUILD_QT5=ON \
         -DPYTHON_EXECUTABLE=/usr/bin/python3 \
         -DOPENMPI_INCLUDE_DIRS=/usr/include \
-        -DSHIBOKEN_INCLUDE_DIR=/usr/include/shiboken2 \
-        -DSHIBOKEN_BINARY=/usr/bin/shiboken2 \
-        -DSHIBOKEN_LIBRARY="/usr/lib/libshiboken2.cpython-${PYVER//.}m-${CARCH}-linux-gnu.so" \
-        -DPYSIDE_INCLUDE_DIR=/usr/include/PySide2 \
-        -DPYSIDE_LIBRARY="/usr/lib/libpyside2.cpython-${PYVER//.}m-${CARCH}-linux-gnu.so" \
-        -DPYSIDE_PYTHONPATH="/usr/lib/python${PYVER}/site-packages/PySide2" \
-        -DPYSIDE_TYPESYSTEMS=/usr/share/PySide2/typesystems
-
+        .
     make
 }
 

@@ -1,6 +1,6 @@
 pkgbase = freecad-git
 	pkgdesc = A general purpose 3D CAD modeler - git checkout
-	pkgver = 0.19pre.r1386.g945e76d91
+	pkgver = 0.19pre.r2096.gc903de8af7
 	pkgrel = 1
 	epoch = 1
 	url = https://www.freecadweb.org/
@@ -23,6 +23,7 @@ pkgbase = freecad-git
 	depends = libspnav
 	depends = med
 	depends = opencascade
+	depends = openmpi
 	depends = shiboken2
 	depends = xerces-c
 	depends = pyside2
