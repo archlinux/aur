@@ -9,17 +9,17 @@ license=('GPL3')
 makedepends=('cmake')
 provides=("$pkgname")
 conflicts=("$pkgname")
-source=('https://github.com/orhun/zps/archive/1.0.0-alpha.tar.gz')
+source=('https://github.com/orhun/zps/archive/1.0.0.tar.gz')
 sha256sums=('SKIP')
 
 build() {
-  cd "$pkgname-$pkgver-alpha"
+  cd "$pkgname-$pkgver"
   mkdir -p build && cd build/
   cmake ../ -DCMAKE_INSTALL_PREFIX=/usr
   make
 }
 
 package() {
-  cd "$pkgname-$pkgver-alpha/build"
+  cd "$pkgname-$pkgver/build"
   make DESTDIR="$pkgdir" install
 }

@@ -8,7 +8,7 @@ pkgbase = zps
 	makedepends = cmake
 	provides = zps
 	conflicts = zps
-	source = https://github.com/orhun/zps/archive/1.0.0-alpha.tar.gz
+	source = https://github.com/orhun/zps/archive/1.0.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = zps
