@@ -1,12 +1,12 @@
 pkgbase = firefox-china-extra
 	pkgdesc = Firefox Chinese extensions pack,provides Firefox China sync services,China search,screenshot,tab optimised,address bar QR Code and drag gesture.火狐浏览器的中文包，提供中国版同步、中国的搜索引擎 截图、标签页优化、地址栏里的二维码和拖拽手势
-	pkgver = 69.0.2
+	pkgver = 69.0.3
 	pkgrel = 1
 	arch = any
 	license = MPL
 	depends = firefox
 	source = https://download-ssl.firefox.com.cn/releases/firefox/69.0/zh-CN/Firefox-latest-x86_64.tar.bz2
-	md5sums = f25fada5e87667afb51fe60a8115bcc4
+	md5sums = 0187a7da77cab38c8800d45dce4e056d
 
 pkgname = firefox-china-extra
 
