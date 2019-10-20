@@ -1,6 +1,6 @@
 pkgbase = ganv-git
 	pkgdesc = An interactive Gtkmm canvas widget for graph-based interfaces (git version)
-	pkgver = 1.5.4.r343.c4e5940
+	pkgver = 1.5.4.r346.0141b42
 	pkgrel = 1
 	url = http://drobilla.net/software/ganv/
 	arch = i686
@@ -13,7 +13,9 @@ pkgbase = ganv-git
 	provides = ganv
 	provides = ganv=1.5.4
 	conflicts = ganv
-	source = ganv::git+http://git.drobilla.net/ganv.git
+	source = ganv::git+http://gitlab.com/drobilla/ganv.git
+	source = autowaf::git+http://gitlab.com/drobilla/autowaf.git
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = ganv-git

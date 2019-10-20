@@ -3,7 +3,7 @@
 
 _pkgname=ganv
 pkgname="${_pkgname}-git"
-pkgver=1.5.4.r343.c4e5940
+pkgver=1.5.4.r346.0141b42
 pkgrel=1
 pkgdesc="An interactive Gtkmm canvas widget for graph-based interfaces (git version)"
 arch=('i686' 'x86_64')
@@ -13,8 +13,18 @@ depends=('gtkmm' 'graphviz')
 makedepends=('git' 'python')
 provides=("$_pkgname" "$_pkgname=${pkgver//.r*/}")
 conflicts=("$_pkgname")
-source=("${_pkgname}::git+http://git.drobilla.net/${_pkgname}.git")
-sha256sums=(SKIP)
+source=("${_pkgname}::git+http://gitlab.com/drobilla/${_pkgname}.git"
+        'autowaf::git+http://gitlab.com/drobilla/autowaf.git')
+sha256sums=('SKIP' 'SKIP')
+
+
+prepare() {
+  cd "$srcdir/${_pkgname}"
+
+  git submodule init
+  git config submodule.waflib.url "${srcdir}/autowaf"
+  git submodule update
+}
 
 pkgver() {
   cd "$srcdir/${_pkgname}"
@@ -26,7 +36,6 @@ pkgver() {
 build(){
   cd "$srcdir/${_pkgname}"
 
-  CXXFLAGS+=' -std=c++11'
   python waf configure --prefix="/usr"
   python waf build ${MAKEFLAGS}
 }

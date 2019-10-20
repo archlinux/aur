@@ -1,4 +1,6 @@
-ganv
-pkg
-src
-*.tar.xz
+autowaf/
+ganv/
+pkg/
+src/
+ganv-git-*.tar.xz
+ganv-git-*.src.tar.gz
