@@ -171,27 +171,6 @@ Index: dev/media/base/media_switches.cc
    return true;
  #endif
    return false;
-Index: dev/media/filters/BUILD.gn
-===================================================================
---- dev.orig/media/filters/BUILD.gn
-+++ dev/media/filters/BUILD.gn
-@@ -5,6 +5,7 @@
- import("//build/config/jumbo.gni")
- import("//media/media_options.gni")
- import("//third_party/libaom/options.gni")
-+import("//media/gpu/args.gni")
- 
- jumbo_source_set("filters") {
-   # Do not expand the visibility here without double-checking with OWNERS, this
-@@ -196,7 +197,7 @@ jumbo_source_set("filters") {
-     deps += [ "//media/base/android" ]
-   }
- 
--  if (current_cpu != "arm" && is_linux) {
-+  if (use_vaapi) {
-     sources += [
-       "h264_bitstream_buffer.cc",
-       "h264_bitstream_buffer.h",
 Index: dev/media/gpu/BUILD.gn
 ===================================================================
 --- dev.orig/media/gpu/BUILD.gn

@@ -15,7 +15,7 @@ _use_wayland=0           # Build Wayland NOTE: extremely experimental and don't 
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=78.0.3904.9
+pkgver=79.0.3941.4
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
 arch=('x86_64')
@@ -79,7 +79,6 @@ source=(
         'enable-vaapi.patch' # Use Saikrishna Arcot patch again :https://raw.githubusercontent.com/saiarcot895/chromium-ubuntu-build/a996c32c7ae7b369799b528daddb7be3c8b67de4/debian/patches/enable_vaapi_on_linux_2.diff'
         'fix_vaapi_wayland.patch::https://patch-diff.githubusercontent.com/raw/Igalia/chromium/pull/517.patch' # Attemp to fix build if enable wayland
         # Patch from crbug.com (chromium bugtracker), chromium-review.googlesource.com / Gerrit or Arch chromium package.
-        'chromium-widevine-r4.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/chromium-widevine.patch?h=packages/chromium'
         'chromium-skia-harmony-r2.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/chromium-skia-harmony.patch?h=packages/chromium'
         )
 sha256sums=(
@@ -90,10 +89,9 @@ sha256sums=(
             # Patch form Gentoo
 
             # Misc Patches
-            '8f2a99fbd69b818856e44ecaedef44c4ef8d6b5ad24da8c1ba6e465b45596028'
+            '45c5ceb13df8e6ba1411b71bed6ab3b3f7c9c427ce51305e2721215d7abe3a42'
             '1b93388254c9d780365e4639d494bfa337a7924426c12f7362a1f7e8e7fad014'
             # Patch from crbug (chromium bugtracker) or Arch chromium package
-            'd081f2ef8793544685aad35dea75a7e6264a2cb987ff3541e6377f4a3650a28b'
             '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1'
             )
 install=chromium-dev.install
@@ -274,6 +272,7 @@ _keeplibs=(
            'third_party/SPIRV-Tools'
            'third_party/sqlite'
            'third_party/swiftshader'
+           'third_party/swiftshader/third_party/marl'
            'third_party/swiftshader/third_party/llvm-7.0'
            'third_party/swiftshader/third_party/llvm-subzero'
            'third_party/swiftshader/third_party/subzero'
@@ -314,6 +313,7 @@ _keeplibs=(
 
 _keeplibs+=(
             'third_party/icu' # https://crbug.com/678661.
+            'third_party/harfbuzz-ng' #https://crbug.com/1016158.
             )
 
 if [ "${_use_wayland}" = "1" ]; then
@@ -349,10 +349,10 @@ _flags=(
         'enable_nacl_nonsfi=true'
         'use_custom_libcxx=true' # use true if you want use bundled RE2
         'use_vaapi=true'
-        'enable_hevc_demuxing=true'
-        'enable_ac3_eac3_audio_demuxing=true'
-        'enable_mpeg_h_audio_demuxing=true'
-        'enable_dolby_vision_demuxing=true'
+        'enable_platform_hevc=true'
+        'enable_platform_ac3_eac3_audio=true'
+        'enable_platform_mpeg_h_audio=true'
+        'enable_platform_dolby_vision=true'
         'enable_mse_mpeg2ts_stream_parser=true'
         'closure_compile=false'
         'clang_use_chrome_plugins=true'
@@ -516,9 +516,6 @@ prepare() {
   # https://crbug.com/skia/6663#c10.
   patch -p0 -i "${srcdir}/chromium-skia-harmony-r2.patch"
 
-  # https://crbug.com/473866.
-  patch -p1 -i "${srcdir}/chromium-widevine-r4.patch"
-
   # Setup nodejs dependency.
   mkdir -p third_party/node/linux/node-linux-x64/bin/
   ln -sf /usr/bin/node third_party/node/linux/node-linux-x64/bin/node
@@ -613,7 +610,8 @@ package() {
   _libs=(
          'swiftshader/libEGL.so'
          'swiftshader/libGLESv2.so'
-         'swiftshader/libvk_swiftshader.so'
+         'swiftshader/libvk_swiftshader_icd.json'
+         'libvk_swiftshader.so'
          )
   if [ "${_use_wayland}" = "1" ]; then
     _libs+=(
@@ -629,7 +627,13 @@ package() {
 
   for i in "${_libs[@]}"; do
     install -Dm755 "${i}" "${pkgdir}/usr/lib/chromium-dev/${i}"
-    strip $STRIP_SHARED "${pkgdir}/usr/lib/chromium-dev/${i}"
+    case "$i" in
+      swiftshader/libvk_swiftshader_icd.json)
+        ;;
+      *)
+        strip $STRIP_SHARED "${pkgdir}/usr/lib/chromium-dev/${i}"
+        ;;
+    esac
   done
 
   _blobs=(
