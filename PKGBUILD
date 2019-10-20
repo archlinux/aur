@@ -6,7 +6,7 @@
 
 pkgname=activdriver
 pkgver=5.18.12
-pkgrel=0
+pkgrel=1
 pkgdesc="Drivers for Promethean hardware"
 arch=('x86_64')
 url="https://support.prometheanworld.com/product/activdriver"
@@ -59,8 +59,7 @@ package() {
   install -D usr/src/promethean/activlc/release/activlc "$pkgdir"/usr/bin/activlc
   
   # Set the module directory and install module
-  _extmoddir=ARCH
-  _moddir="/usr/lib/modules/extramodules-${_extmoddir}"/kernel/drivers/input/tablet/
+  _moddir="/usr/lib/modules/$(</usr/src/linux/version)/extramodules/kernel/drivers/input/tablet"
   install -m644 -D usr/src/promethean/kernel/promethean.ko "$pkgdir${_moddir}"/promethean.ko
   find "${pkgdir}" -name '*.ko' -exec gzip -9 {} \;
 

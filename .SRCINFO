@@ -1,7 +1,7 @@
 pkgbase = activdriver
 	pkgdesc = Drivers for Promethean hardware
 	pkgver = 5.18.12
-	pkgrel = 0
+	pkgrel = 1
 	url = https://support.prometheanworld.com/product/activdriver
 	install = activdriver.install
 	arch = x86_64
