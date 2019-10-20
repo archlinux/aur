@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=SamRewritten
+Exec=/usr/bin/samrewritten
+Terminal=false
+Type=Application
+Icon=face-wink
+Comment=Steam Achievement Manager
+Categories=Games;
