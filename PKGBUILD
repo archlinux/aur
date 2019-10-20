@@ -16,6 +16,7 @@ url="https://sipe.sourceforge.net/"
 depends=('gmime' 'libpurple')
 makedepends=('intltool')
 optdepends=('freerdp: Desktop sharing' 'krb5: Kerberos support')
+conflicts=('pidgin-sipe-git')
 source=("https://downloads.sourceforge.net/project/sipe/sipe/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.bz2"
         "${pkgname}-fix-359.patch")
 sha256sums=('5a42810e447c3af2632961e88d7c683b6619aeda03accdcbaad222d8337ec676'

@@ -10,6 +10,7 @@ pkgbase = pidgin-sipe
 	depends = libpurple
 	optdepends = freerdp: Desktop sharing
 	optdepends = krb5: Kerberos support
+	conflicts = pidgin-sipe-git
 	source = https://downloads.sourceforge.net/project/sipe/sipe/pidgin-sipe-1.25.0/pidgin-sipe-1.25.0.tar.bz2
 	source = pidgin-sipe-fix-359.patch
 	sha256sums = 5a42810e447c3af2632961e88d7c683b6619aeda03accdcbaad222d8337ec676
