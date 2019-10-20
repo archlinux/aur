@@ -1,7 +1,7 @@
 pkgbase = sardi-flat-mixing-icons-git
 	pkgdesc = Based on Sardi Flat you can use the modularity to combine elements and create a new icon theme.
-	pkgver = 9.7
-	pkgrel = 3
+	pkgver = 19.10
+	pkgrel = 1
 	arch = any
 	license = Attribution-NonCommercial-ShareAlike 4.0 International Public License
 	makedepends = git
