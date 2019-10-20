@@ -1,7 +1,9 @@
-# Maintainer: deadhead <deadhead3492@gmail.com>
+# Maintainer: xxvirusxx <condor20_05 at yahoo dot it>
+# Contributor: deadhead <deadhead3492 at gmail dot com>
+
 pkgname=arch-wiki-cli
-pkgver=0.3
-pkgrel=2
+pkgver=0.4
+pkgrel=1
 pkgdesc="Search the arch wiki from the cli"
 arch=('any')
 url="https://github.com/deadhead420/arch-wiki"
@@ -13,7 +15,6 @@ optdepends=(
   'links: to view the wiki inside your shell'
 )
 source=('https://raw.githubusercontent.com/deadhead420/arch-wiki/master/arch-wiki.sh'
-        'https://raw.githubusercontent.com/deadhead420/arch-wiki/master/archlinux.png'
         'https://raw.githubusercontent.com/deadhead420/arch-wiki/master/arch-wiki.desktop')
 md5sums=('437f7de1ace85e9397b83ddacc8bcc54'
          '662ff5c5cb614669ae096b46b49818a9'
@@ -21,7 +22,6 @@ md5sums=('437f7de1ace85e9397b83ddacc8bcc54'
 package() {
   cd "${srcdir}"
   install -Dm755 arch-wiki.sh "$pkgdir"/usr/bin/arch-wiki
-  install -Dm644 archlinux.png "$pkgdir"/usr/share/pixmaps/archlinux.png
   install -Dm644 arch-wiki.desktop "$pkgdir"/usr/share/applications/arch-wiki.desktop
 }
 
