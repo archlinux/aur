@@ -1,7 +1,7 @@
 # Maintainer: twa022 <twa022 at gmail dot com>
 
 pkgname=radiotray-ng
-pkgver=0.2.6
+pkgver=0.2.7
 pkgrel=1
 pkgdesc="An Internet radio player for Linux"
 arch=('i686' 'x86_64')
@@ -12,15 +12,12 @@ depends=('boost-libs' 'curl' 'gst-plugins-good' 'jsoncpp' 'libappindicator-gtk3'
 makedepends=('cmake' 'boost' 'lsb-release')
 optdepends=('python-lxml: Convert radiotray bookmarks to radiotray-ng format')
 options=('!libtool')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ebruck/radiotray-ng/archive/v${pkgver}.tar.gz"
-       'rt2rtng_python3.patch')
-sha256sums=('05e1b9ac7342b276fff6395a38719264f9bc47b28aadd4938c5bbe3303c67553'
-            '1965811963d5e02f08231f1c53a8a6db0bf146d8e745e8b7c76f3521f82142a3')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ebruck/radiotray-ng/archive/v${pkgver}.tar.gz")
+sha256sums=('0ee5459ea49cc78e4cdf2399061c0caf352d8a963c67a7e99c6cc81bb47288d3')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 #  sed -i 's:-Werror::' CMakeLists.txt
-  patch -Np1 -i ../rt2rtng_python3.patch
 }
 
 build() {
