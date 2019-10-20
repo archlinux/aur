@@ -2,14 +2,14 @@
 
 pkgname=python-efb-telegram-master-git
 pkgver=r230.d412462
-pkgrel=1
+pkgrel=2
 pkgdesc='EFB Telegram Master, a channel for EH Forwarder Bot.'
 arch=('any')
 url='https://github.com/blueset/efb-telegram-master'
 license=('AGPL-3')
 groups=('efb')
 depends=(
-	'python-ehforwarderbot' 'python-telegram-bot' 'python-urllib3>=1.25.3' 'python-magic-ahupp' 'python-moviepy' 'python-imageio-ffmpeg' 'python-peewee' 'python-requests' 'python-pydub' 'python-ruamel-yaml' 'python-language-tags' 'python-retrying'  'python-bullet' 'python-cjkwrap' 'python-humanize' 'python-tgs' 'python-cairosvg')
+	'python-ehforwarderbot' 'python-telegram-bot-git' 'python-urllib3>=1.25.3' 'python-magic-ahupp' 'python-moviepy' 'python-imageio-ffmpeg' 'python-peewee' 'python-requests' 'python-pydub' 'python-ruamel-yaml' 'python-language-tags' 'python-retrying'  'python-bullet' 'python-cjkwrap' 'python-humanize' 'python-tgs' 'python-cairosvg')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
