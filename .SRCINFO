@@ -1,12 +1,13 @@
 pkgbase = lilv-git
-	pkgdesc = A C library interface to the LV2 plug-in standard
-	pkgver = 0.24.5.r1218.9091b84
-	pkgrel = 2
+	pkgdesc = A C library interface to the LV2 plug-in standard with Python bindings (git version)
+	pkgver = 0.24.5.r1235.d959f44
+	pkgrel = 1
 	url = http://drobilla.net/software/lilv
 	arch = i686
 	arch = x86_64
 	license = custom:ISC
 	makedepends = git
+	makedepends = libsndfile
 	depends = lv2
 	depends = python
 	depends = sratom
