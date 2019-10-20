@@ -2,8 +2,8 @@
 # Maintainer: erik dubois <erik.dubois@gmail.com>
 pkgname=sardi-flat-mint-y-icons-git
 _pkgname=sardi-flat-mint-y-icons
-pkgver=367.60234a76
-pkgrel=3
+pkgver=368.2d0e34ff
+pkgrel=1
 pkgdesc="New icons from LinuxMint 18 inspired by the Moka icon set with Sardi-Flat as main icon set"
 arch=('any')
 url="https://github.com/linuxmint/mint-y-icons"
