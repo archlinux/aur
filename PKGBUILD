@@ -5,7 +5,7 @@ _install_dir="opt/$_pkg_name"
 _symlink_dir="usr/bin"
 
 pkgname="$_pkg_name"
-pkgver=2.6
+pkgver=2.7
 pkgrel=1
 pkgdesc="A utility to automatically perform Arch Linux system maintenance"
 arch=('x86_64')
@@ -14,6 +14,7 @@ license=('GPLv3')
 depends=(
     'awk'
     'git'
+    'nano'
     'pacman-contrib'
     'pacutils'
     'python'
@@ -23,31 +24,36 @@ depends=(
     'rsync'
     'sed'
     'sudo'
-    'vim'
     'dialog'
 )
 optdepends=(
-    'nano'
+    'emacs'
+    'vim'
 )
 backup=("$_install_dir/settings.sh")
 
 source=("https://gitlab.com/mgdobachesky/ArchSystemMaintenance/raw/master/pkg/$pkgname-$pkgver.tar.xz")
 
-md5sums=('4a74c99c518839d3a021b3f0c82f46d7')
+md5sums=('e03cf42fcc48ccfd99f9d97bc917916b')
 
 prepare() {
     umask 022
-    mkdir -p "$_install_dir/ui" "$_install_dir/other"
+    mkdir -p "$_install_dir/view" "$_install_dir/util" "$_install_dir/service"
     mkdir -p "$_symlink_dir"
 }
 
 build() {
-    install -m 755 "$srcdir/$pkgname/other/archNews.py" "$_install_dir/other"
-    install -m 755 "$srcdir/$pkgname/ui/cli.sh" "$_install_dir/ui"
-    install -m 755 "$srcdir/$pkgname/ui/dialog.sh" "$_install_dir/ui"
-    install -m 755 "$srcdir/$pkgname/logic.sh" "$_install_dir"
-    install -m 755 "$srcdir/$pkgname/menu.sh" "$_install_dir"
-    install -m 755 "$srcdir/$pkgname/run.sh" "$_install_dir"
+    install -m 755 "$srcdir/$pkgname/util/arch_news.py" "$_install_dir/util"
+    install -m 755 "$srcdir/$pkgname/view/cli.sh" "$_install_dir/view"
+    install -m 755 "$srcdir/$pkgname/view/dialog.sh" "$_install_dir/view"
+    install -m 755 "$srcdir/$pkgname/service/news.sh" "$_install_dir/service"
+    install -m 755 "$srcdir/$pkgname/service/upgrade.sh" "$_install_dir/service"
+    install -m 755 "$srcdir/$pkgname/service/cleanup.sh" "$_install_dir/service"
+    install -m 755 "$srcdir/$pkgname/service/errors.sh" "$_install_dir/service"
+    install -m 755 "$srcdir/$pkgname/service/backup.sh" "$_install_dir/service"
+    install -m 755 "$srcdir/$pkgname/service/settings.sh" "$_install_dir/service"
+    install -m 755 "$srcdir/$pkgname/main.sh" "$_install_dir"
+    install -m 755 "$srcdir/$pkgname/controller.sh" "$_install_dir"
     install -m 755 "$srcdir/$pkgname/settings.sh" "$_install_dir"
 }
 
@@ -57,5 +63,5 @@ package() {
 
     cp -r "$_install_base" "$pkgdir"
     cp -r "$_symlink_base" "$pkgdir"
-    ln -s "/$_install_dir/run.sh" "$pkgdir/$_symlink_dir/$pkgname"
+    ln -s "/$_install_dir/main.sh" "$pkgdir/$_symlink_dir/$pkgname"
 }
