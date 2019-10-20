@@ -1,0 +1,10 @@
+[Destkop Entry]
+Version=1.0
+Type=Application
+Name=Blobsaver
+Comment=A cross-platform GUI app for saving SHSH blobs
+Exec=blobsaver
+Icon=blobsaver
+Terminal=false
+StartupNotify=false
+Categories=Utility;

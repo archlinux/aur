@@ -1,0 +1,21 @@
+pkgbase = blobsaver
+	pkgdesc = A cross-platform GUI app for saving SHSH blobs using s0uthwest's fork of tsschecker
+	pkgver = 2.4.0
+	pkgrel = 1
+	url = https://github.com/airsquared/blobsaver
+	arch = any
+	license = GPL3
+	depends = java-runtime=8
+	depends = java8-openjfx
+	depends = archlinux-java-run
+	optdepends = libimobiledevice: get plugged in device information
+	conflicts = blobsaver-git
+	source = https://github.com/airsquared/blobsaver/releases/download/v2.4.0/blobsaver-linux.tar.gz
+	source = blobsaver.sh
+	source = blobsaver.desktop
+	md5sums = b944c7f36d774d8d777f439e5a2e72c1
+	md5sums = cf64cc261dd259213bf37c311edbe71f
+	md5sums = b47041056203fd1f9e2cf507cff14eec
+
+pkgname = blobsaver
+
