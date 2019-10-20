@@ -4,7 +4,7 @@
 
 pkgname=acmetool
 pkgver=0.0.67
-pkgrel=3
+pkgrel=4
 pkgdesc="An easy-to-use command line tool for automatically acquiring certificates from ACME servers (such as Let's Encrypt)"
 arch=(i686 x86_64 armv7h aarch64)
 url="https://github.com/hlandau/acme"
@@ -19,7 +19,7 @@ source=(acmetool-$pkgver.tar.gz::https://github.com/hlandau/acme/archive/v$pkgve
         acmetool.conf
         )
 
-sha256sums=('01f78340006539c62bb86250433d2f819ab529ccd9a0aa74e140ff0fee839073'
+sha256sums=('SKIP'
             'fd80a26fbb3f644af1fa994134446702932968519797227e07a1368dea80f0bc'
             'bf0052ea1a94919455fc364c6e9ff66f9268b7f80c42e9a73249919a6b369d9c'
             '82cd724853507a6d96f7a432aa44c457e76f4d6c0f1ad35142287b7c383d5c0b'
