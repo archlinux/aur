@@ -10,6 +10,7 @@ pkgbase = m4b-tool-bin
 	depends = php
 	depends = php-intl
 	optdepends = fdkaac: for high efficiency codecs to perform conversions
+	optdepends = ffmpeg-libfdk_aac: to use fdkaac in conversions
 	options = !strip
 	source = m4b-tool.tar.gz::https://github.com/sandreas/m4b-tool/releases/download/v.0.4.2/m4b-tool.tar.gz
 	md5sums = 60746a96431c068f6880ebf510e2bac7

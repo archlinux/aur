@@ -12,7 +12,8 @@ depends=('ffmpeg'
     'libmp4v2'
     'php'
     'php-intl')
-optdepends=('fdkaac: for high efficiency codecs to perform conversions')
+optdepends=('fdkaac: for high efficiency codecs to perform conversions'
+    'ffmpeg-libfdk_aac: to use fdkaac in conversions')
 options=('!strip')
 source=("m4b-tool.tar.gz::https://github.com/sandreas/m4b-tool/releases/download/v.${pkgver}/m4b-tool.tar.gz")
 
