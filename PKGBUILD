@@ -3,7 +3,7 @@
 
 pkgname=arch-wiki-cli
 pkgver=0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Search the arch wiki from the cli"
 arch=('any')
 url="https://github.com/deadhead420/arch-wiki"
@@ -17,8 +17,8 @@ optdepends=(
 source=('https://raw.githubusercontent.com/deadhead420/arch-wiki/master/arch-wiki.sh'
         'https://raw.githubusercontent.com/deadhead420/arch-wiki/master/arch-wiki.desktop')
 md5sums=('437f7de1ace85e9397b83ddacc8bcc54'
-         '662ff5c5cb614669ae096b46b49818a9'
          'f2a1dc5091fe9bb20ea0afb1b102262d')
+
 package() {
   cd "${srcdir}"
   install -Dm755 arch-wiki.sh "$pkgdir"/usr/bin/arch-wiki
