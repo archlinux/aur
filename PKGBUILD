@@ -2,7 +2,7 @@
 
 _target=riscv64-unknown-elf
 pkgname=$_target-binutils
-pkgver=2.32
+pkgver=2.33.1
 pkgrel=1
 pkgdesc='Assemble and manipulate binary and object files for 32bit and 64bit RISC-V'
 arch=('i686' 'x86_64')
@@ -10,11 +10,11 @@ url='http://www.gnu.org/software/binutils/'
 license=('GPL')
 depends=('zlib')
 source=("https://ftp.gnu.org/gnu/binutils/binutils-$pkgver.tar.xz")
-sha1sums=('cd45a512af1c8a508976c1beb4f5825b3bb89f4d')
+sha1sums=('06598868f5fa8efc98427dcb790d42c664f1a1a4')
 
 prepare() {
   cd binutils-$pkgver
-  sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" libiberty/configure
+  sed -i '/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/' libiberty/configure
 }
 
 build() {
