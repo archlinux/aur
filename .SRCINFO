@@ -1,7 +1,7 @@
 pkgbase = elektra
 	pkgdesc = A universal hierarchical configuration store
 	pkgver = 0.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.libelektra.org
 	arch = i686
 	arch = x86_64

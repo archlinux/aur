@@ -3,7 +3,7 @@
 
 pkgname=elektra
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A universal hierarchical configuration store"
 url="https://www.libelektra.org"
 license=('custom:BSD')
@@ -19,8 +19,8 @@ sha256sums=('87c84805dccbcf8441fe94f6541bf1b2dfa84ccf613eb55ffe208b4bf24cbaeb')
 
 build() {
   cd lib$pkgname-$pkgver
-  rm -rf build
-  mkdir build && cd build
+  [[ -d build ]] || mkdir build
+  cd build
   cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr \
         -DPLUGINS:STRING="ALL" \
         -DTOOLS:STRING="ALL" \
