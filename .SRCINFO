@@ -1,0 +1,16 @@
+pkgbase = envypn-otb
+	pkgdesc = A monospace bitmap font.
+	pkgver = r5.f42ebe3
+	pkgrel = 1
+	url = https://github.com/hicolour/envypn-font
+	arch = any
+	license = custom
+	makedepends = git
+	depends = xorg-font-utils
+	depends = fontconfig
+	conflicts = envypn-font
+	source = envypn-otb::git+https://github.com/hicolour/envypn-font
+	md5sums = SKIP
+
+pkgname = envypn-otb
+
