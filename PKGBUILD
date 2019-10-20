@@ -4,10 +4,10 @@
 _pkgname="raul"
 pkgname="${_pkgname}-git"
 pkgver=1.0.0.r603.10fb82f
-pkgrel=1
+pkgrel=2
 epoch=1
-pkgdesc="Realtime Audio Utility Library aimed at audio and musical applications"
-arch=('any')
+pkgdesc="Realtime Audio Utility Library for audio and musical applications (git version)"
+arch=('i686' 'x86_64')
 url="http://drobilla.net/software/raul/"
 license=('GPL3')
 depends=()
@@ -21,6 +21,7 @@ sha256sums=('SKIP' 'SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
+
   local ver=`grep "^RAUL_VERSION" wscript | cut -d "'" -f 2`
   echo "$ver.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
@@ -35,17 +36,19 @@ prepare() {
 
 build(){
   cd "${srcdir}/${_pkgname}"
+
   python waf configure \
     --prefix="/usr" \
     --docs \
-    --docdir="/usr/share/doc/$pkgname"
+    --docdir="/usr/share/doc/${pkgname}"
   python waf build ${MAKEFLAGS}
 }
 
 package() {
   cd "${srcdir}/${_pkgname}"
-  python waf install --destdir=${pkgdir}
-  install -m 644 README NEWS "$pkgdir/usr/share/doc/$pkgname"
-  mv "$pkgdir/usr/share/doc/$pkgname/raul-1/html" "$pkgdir/usr/share/doc/$pkgname"
-  rm -rf "$pkgdir/usr/share/doc/$pkgname/raul-1"
+
+  python waf install --destdir="${pkgdir}"
+  install -m 644 README NEWS "${pkgdir}/usr/share/doc/$pkgname"
+  mv "${pkgdir}/usr/share/doc/$pkgname/raul-1/html" "${pkgdir}/usr/share/doc/$pkgname"
+  rm -rf "${pkgdir}/usr/share/doc/$pkgname/raul-1"
 }
