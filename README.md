@@ -3,6 +3,7 @@
 
 ## Update package
 
+0. Get newest version from https://github.com/symfony/cli/releases
 1. Update package version in PKGBUILD
 2. Generate new checksums with `updpkgsums`
 3. Test install `makepkg -si`
