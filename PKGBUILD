@@ -1,16 +1,16 @@
 # Maintainer: Maxime Tréca <maxime.treca@gmail.com>
 pkgname=envypn-otb
-pkgver=r5.f42ebe3
+pkgver=r13.9059e0a
 pkgrel=1
 pkgdesc="A monospace bitmap font."
 arch=('any')
-url="https://github.com/hicolour/envypn-font"
+url="https://github.com/Sorixelle/envypn-powerline"
 license=('custom')
 depends=('xorg-font-utils' 'fontconfig')
 makedepends=('git' 'fonttosfnt-git')
 conflicts=('envypn-font')
 makedepends=('git')
-source=("$pkgname::git+https://github.com/hicolour/envypn-font")
+source=("$pkgname::git+https://github.com/Sorixelle/envypn-powerline")
 md5sums=('SKIP')
 
 _ex_pt() {
