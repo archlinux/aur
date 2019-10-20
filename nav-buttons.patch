@@ -1,0 +1,44 @@
+diff --git a/app/assets/cache/js/route-naboo-ads.c43bc090f18fbfacb3f5.js b/app/assets/cache/js/route-naboo-ads.c43bc090f18fbfacb3f5.js
+index 6171d73..00cd49e 100644
+--- a/app/assets/cache/js/route-naboo-ads.c43bc090f18fbfacb3f5.js
++++ b/app/assets/cache/js/route-naboo-ads.c43bc090f18fbfacb3f5.js
+@@ -14174,7 +14174,7 @@
+                       "button",
+                       {
+                         className: "sidebar-navbar-arrow",
+-                        disabled: !this.state.canGoBack,
++                        disabled: false,
+                         onClick: Dt.a.history.goBack,
+                         type: "button"
+                       },
+@@ -14184,7 +14184,7 @@
+                       "button",
+                       {
+                         className: "sidebar-navbar-arrow",
+-                        disabled: !this.state.canGoForward,
++                        disabled: false,
+                         onClick: Dt.a.history.goForward,
+                         type: "button"
+                       },
+diff --git a/app/assets/cache/js/route-naboo-no-ads.0673cfa1834672d3c740.js b/app/assets/cache/js/route-naboo-no-ads.0673cfa1834672d3c740.js
+index 3657965..f7653a6 100644
+--- a/app/assets/cache/js/route-naboo-no-ads.0673cfa1834672d3c740.js
++++ b/app/assets/cache/js/route-naboo-no-ads.0673cfa1834672d3c740.js
+@@ -12979,7 +12979,7 @@
+                       "button",
+                       {
+                         className: "sidebar-navbar-arrow",
+-                        disabled: !this.state.canGoBack,
++                        disabled: false,
+                         onClick: Dt.a.history.goBack,
+                         type: "button"
+                       },
+@@ -12989,7 +12989,7 @@
+                       "button",
+                       {
+                         className: "sidebar-navbar-arrow",
+-                        disabled: !this.state.canGoForward,
++                        disabled: false,
+                         onClick: Dt.a.history.goForward,
+                         type: "button"
+                       },
