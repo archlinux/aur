@@ -1,15 +1,15 @@
 
 pkgname=nodejs-configurable-http-proxy
-pkgver=2.0.4
+pkgver=4.1.0
 pkgrel=1
 pkgdesc="node-http-proxy plus a REST API"
-url="https://github.com/jupyter/configurable-http-proxy"
+url="https://github.com/jupyterhub/configurable-http-proxy"
 arch=(any)
 license=('BSD')
 makedepends=('npm')
 depends=('nodejs')
-source=("https://github.com/jupyter/configurable-http-proxy/archive/${pkgver}.tar.gz")
-sha256sums=('fee6ce0a8f93288cc47a19498a51fcca050da54c166b3c3ea30032f8241045e8')
+source=("${url}/archive/${pkgver}.tar.gz")
+sha256sums=('4ee24adafdd2e6887348f5316cafd499a4a615718ac9f82aa8a5591e308b5503')
 _npmname=configurable-http-proxy
 
 package() {
@@ -22,6 +22,6 @@ package() {
   rm -rf "$pkgdir/usr/etc"
   chown -R root:root "$pkgdir/usr"
   cd "$srcdir/$_npmname-$pkgver"
-  install -Dm644 COPYING.md "${pkgdir}"/usr/share/licenses/$pkgname/COPYING.md
+  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/$pkgname/LICENSE
 }
 
