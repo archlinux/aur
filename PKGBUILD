@@ -12,6 +12,7 @@ makedepends=(git)
 _commit=87800ba4c17fcc849283ddf9e708f8e2432c6520 #tags/v0.1.0
 source=("git+https://github.com/dbuch/dbuch-zsh-config.git#commit=$_commit")
 conflicts=('grml-zsh-config')
+provides=('grml-zsh-config')
 sha256sums=('SKIP')
 
 pkgver() {
@@ -30,15 +31,15 @@ prepare() {
 }
 
 package() {
-	cd ${srcdir}/${pkgname}
+  cd ${srcdir}/${pkgname}
 
-	install -D -m644 zshrc.skel \
+  install -D -m644 zshrc.skel \
     ${pkgdir}/etc/skel/zshrc
 
-	install -D -m644 zshrc \
+  install -D -m644 zshrc \
     ${pkgdir}/etc/zsh/zshrc
 
-	install -D -m644 zsh-async/async.zsh \
+  install -D -m644 zsh-async/async.zsh \
     ${pkgdir}/usr/share/zsh/functions/Async/async
 
   install -D -m644 dbuch-prompt.zsh \
