@@ -1,7 +1,7 @@
 pkgbase = sardi-flexible-colora-variations-icons-git
 	pkgdesc = The Sardi icon set contains 80+ scripts to change from colour. Change it yourself with these scripts.
-	pkgver = 9.7
-	pkgrel = 3
+	pkgver = 19.10
+	pkgrel = 1
 	arch = any
 	license = Attribution-NonCommercial-ShareAlike 4.0 International Public License
 	makedepends = git
