@@ -2,15 +2,15 @@
 
 _pkgname=edi
 pkgname=${_pkgname}-git
-pkgver=f80b901
+pkgver=v0.7.1.2.ga752979
 pkgrel=1
 pkgdesc="The EFL IDE"
 arch=('i686' 'x86_64')
 url="https://phab.enlightenment.org/w/projects/${_pkgname}/"
 license=('GPL2')
-depends=('efl' 'elementary')
-makedepends=('git')
-source=("git://git.enlightenment.org/tools/${_pkgname}.git")
+depends=('efl' 'clang' 'check')
+makedepends=('git' 'meson')
+source=("git+https://github.com/Enlightenment/edi.git")
 md5sums=('SKIP')
 
 pkgver() {
@@ -19,28 +19,17 @@ pkgver() {
 }
 
 build() {
-  if ! pacman -Qs '^clang$' &>/dev/null; then
-    warning "To enable syntax highlighting in edi, please install clang before building this package"
-  fi
-
-  cd "${srcdir}/${_pkgname}"
-
-  ./autogen.sh --prefix=/usr
-  make
+ arch-meson $_pkgname build \
+   -Dlibclang=true
+ ninja -C build
 }
 
-check() {
-  cd "${srcdir}/${_pkgname}"
-
-  make check
-}
+#check() {
+#  cd "${srcdir}/${_pkgname}"
+#
+#  make check
+#}
 
 package() {
-  if pacman -Qs '^clang$' &>/dev/null; then
-    depends+=('clang')
-  fi
-
-  cd "${srcdir}/${_pkgname}"
-  
-  make install DESTDIR=$pkgdir
+  DESTDIR=${pkgdir} ninja -C build install
 }
