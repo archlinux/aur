@@ -6,7 +6,7 @@
 # Contributor: Michael Kanis <mkanis_at_gmx_dot_de>
 
 pkgname=mutter-performance
-pkgver=3.34.0+82+g65cc8c1ea
+pkgver=3.34.1+26+gc0037305e
 pkgrel=1
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -22,9 +22,11 @@ provides=(mutter mutter-781835-workaround)
 conflicts=(mutter)
 replaces=(mutter-781835-workaround)
 groups=(gnome)
-_commit=65cc8c1ea2e6462349355142f17992101ef634ce  # master
-source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit")
-sha256sums=('SKIP')
+_commit=c0037305ebd9b742f8d133d810192022878efe8e  # master
+source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
+	fix-build.patch)
+sha256sums=('SKIP'
+            '28aa24daed161f2566ca2b159beb43285184c533956b851a7eb318de741da935')
 
 pkgver() {
   cd $pkgname
@@ -125,6 +127,8 @@ prepare() {
     echo "OK, you dont use multiple keyboard layouts"
     git revert ce86f90efbaa51522ba14c5b4cad933c2106de42 --no-commit
   fi
+
+  patch -Np1 < ../fix-build.patch
 
 }
 
