@@ -1,6 +1,6 @@
 pkgbase = python-userpath
-	pkgdesc = Cross-platform tool for adding locations to the user PATH, no sudo/runas required!
-	pkgver = 1.1.0
+	pkgdesc = Cross-platform tool for adding locations to the user PATH, no elevated privileges required!
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/ofek/userpath
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = python-userpath
 	makedepends = python-setuptools
 	depends = python-click
 	options = !emptydirs
-	source = https://files.pythonhosted.org/packages/24/7b/3b991e87d08211a95bafcadc370cb17e75a7dfb51e6f9ce9247f8cfff4c0/userpath-1.1.0.tar.gz
-	sha256sums = c4aa4b20298d14272e2a39047a38a7e2195c1d697dd37dec247e2331067e7f31
+	source = https://files.pythonhosted.org/packages/source/u/userpath/userpath-1.2.0.tar.gz
+	sha256sums = 10fa2a90c61546f188989680a9b7510888b976f5d18503ad4482c8f919e783cb
 
 pkgname = python-userpath
 
