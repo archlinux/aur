@@ -1,7 +1,7 @@
 # Contributor: Matthias Lisin <ml@visu.li>
 # Maintainer: Bruce Zhang <zttt183525594@gmail.com>
 pkgname=ubports-installer
-pkgver=0.2.7b
+pkgver=0.3.2b
 _ver=${pkgver/b/-beta}
 pkgrel=1
 pkgdesc='A simple tool to install Ubuntu Touch on UBports devices'
@@ -12,7 +12,7 @@ depends=('android-tools' 'android-udev' 'electron4')
 makedepends=('jq' 'npm' 'moreutils')
 conflicts=('ubports-installer-git' 'ubports-installer-bin')
 source=("$pkgname-$pkgver.src.tar.gz::https://github.com/ubports/ubports-installer/archive/$_ver.tar.gz")
-sha512sums=('5df83b16960ee7f21ce2922da9af5f5e849a494fd8a239da3b200a37693fd84e7d37897bd838b751452cc6653c5985636e43e28b01728a6fb33c3d6d901f87e3')
+sha512sums=('0c105b3686d09a9d55b8fa54d0c98fab59a363bb249c2ce7fa4695a0651c573a023337f672bc6dc582cf8c8c50c1f9a87e05f101ed517beef93c643dac198b5d')
 
 prepare() {
     local cache="$srcdir/npm-cache"
@@ -57,7 +57,4 @@ Categories=Utility" > "$srcdir/ubports-installer.desktop"
 
     cd "$srcdir/$pkgname-$_ver/dist/linux-unpacked/resources"
     install -Dm644 app.asar "$pkgdir/usr/share/ubports-installer/app.asar"
-
-    cd app.asar.unpacked
-    find . -type f -exec install -Dm644 {} "$pkgdir/usr/share/ubports-installer/app.asar.unpacked/{}" \;
 }
