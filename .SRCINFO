@@ -44,3 +44,26 @@ pkgbase = latex-template-springer
 
 pkgname = latex-template-springer
 
+pkgbase = latex-template-springer
+	pkgdesc = Springer templates for LNCS proceedings (llncs), monographs (svmono), multiauthor volumes (svmult), journals (svjour3), and other lecture notes (svmultln)
+	pkgver = 20191006
+	pkgrel = 2
+	url = https://www.springer.com/gp/computer-science/lncs/conference-proceedings-guidelines
+	install = texlive.install
+	arch = any
+	makedepends = unzip
+	depends = texlive-latex3
+	provides = latex-template-lncs
+	conflicts = latex-template-lncs
+	replaces = latex-template-lncs
+	source = ftp://ftp.springernature.com/cs-proceeding/llncs/llncs2e.zip
+	source = http://www.springer.com/cda/content/document/cda_downloaddocument/svmult.zip
+	source = http://www.springer.com/cda/content/document/cda_downloaddocument/svmono.zip
+	source = http://static.springer.com/sgw/documents/468198/application/zip/LaTeX_DL_468198_240419.zip
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = 24a19fb349ad5a7d26f75070fd58e628
+
+pkgname = latex-template-springer
+

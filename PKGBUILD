@@ -2,11 +2,9 @@
 # Contributor: florianbw <florian.bw@gmail.com>
 # vim:set ts=2 sw=2 et:
 
-SVJOUR3VER=240419
-
 pkgname=latex-template-springer
 pkgver=20191006
-pkgrel=1
+pkgrel=2
 pkgdesc="Springer templates for LNCS proceedings (llncs), monographs (svmono), multiauthor volumes (svmult), journals (svjour3), and other lecture notes (svmultln)"
 arch=('any')
 url="https://www.springer.com/gp/computer-science/lncs/conference-proceedings-guidelines"
@@ -21,6 +19,9 @@ replaces=(latex-template-lncs)
 backup=()
 options=()
 install=texlive.install
+
+SVJOUR3VER=240419
+
 source=(ftp://ftp.springernature.com/cs-proceeding/llncs/llncs2e.zip
 http://www.springer.com/cda/content/document/cda_downloaddocument/svmult.zip
 http://www.springer.com/cda/content/document/cda_downloaddocument/svmono.zip
