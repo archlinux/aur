@@ -1,0 +1,2 @@
+d /var/lib/orthanc 0700 orthanc orthanc -
+z /etc/webapps/orthanc/config.json - orthanc orthanc

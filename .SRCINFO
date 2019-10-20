@@ -1,28 +1,35 @@
 pkgbase = orthanc
-	pkgdesc = Open-source, lightweight DICOM server.
+	pkgdesc = Open-source, lightweight DICOM server
 	pkgver = 1.5.8
 	pkgrel = 1
 	url = http://orthanc-server.com/
 	arch = x86_64
 	arch = i686
-	license = custom:GPL3WithOpenSSLException
+	license = GPL3
+	makedepends = boost
 	makedepends = cmake
 	makedepends = doxygen
 	makedepends = gtest
 	makedepends = make
 	makedepends = python
-	depends = boost
+	makedepends = unzip
+	depends = boost-libs
 	depends = curl
 	depends = dcmtk
 	depends = jsoncpp
 	depends = libjpeg-turbo
-	depends = libpng
-	depends = openssl
+	depends = lua
 	depends = pugixml
 	depends = sqlite
-	depends = util-linux
+	backup = etc/webapps/orthanc/config.json
 	source = https://www.orthanc-server.com/downloads/get.php?path=/orthanc/Orthanc-1.5.8.tar.gz
-	sha512sums = 2357210fb6d7d8d99d5b67c3136abd7e7ec23a92f0946eeb2661aad7e6dcaaf3
+	source = orthanc.service
+	source = orthanc.sysusers
+	source = orthanc.tmpfiles
+	sha512sums = 9610526cff59e2061e16728d7ce78a80dd8803371ac80be561349476bac011ad2200b1e144df13b4e94174a90591ed8a1a0c258c98122f934ce4e70b320568e5
+	sha512sums = cd69b74eff5eea43191341ec35cef53d026a1939bb6fdc6a71734c0f9339ff47effc0eb611c16fd609d6ffcf1e332f48cfaa533ccf8d7f71ce7e61f04b4fabca
+	sha512sums = 30d63bafdcfff751e12f6187115bac5d1630eb31848eab6d06d10359118e3a3c404a845ef14852ee578df0b25f622f2195d0b0546fe62cdc8a2702f2ffb59634
+	sha512sums = 2dffd683e6c9bd0e495a1478bf2c6f90833a5c260c7619828136804d410da1d38b385db5db094a065352e21c54c0da1b5dcdd83bce129bd4bcba9c4a11361d18
 
 pkgname = orthanc
 

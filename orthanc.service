@@ -1,0 +1,14 @@
+[Unit]
+Description=Open-source, lightweight DICOM server
+
+[Service]
+Type=simple
+User=orthanc
+Group=orthanc
+ExecStart=Orthanc /etc/webapps/orthanc/config.json
+
+Restart=on-failure
+PrivateTmp=false
+
+[Install]
+WantedBy=multi-user.target
