@@ -1,12 +1,12 @@
 pkgbase = lokalise
 	pkgdesc = Command-line tool to automate project file export and import for lokalise.co.
-	pkgver = 0.711
+	pkgver = 0.721
 	pkgrel = 1
 	url = https://lokalise.co
 	arch = x86_64
 	license = custom
-	source = lokalise-0.711.tar.gz::https://s3-eu-west-1.amazonaws.com/lokalise-assets/cli/lokalise-0.711-linux-amd64.tgz
-	sha256sums = ebdafb558247c77889abe3941c62cc13b1425f699c24b3fb6d82c7ea38d87462
+	source = lokalise-0.721.tar.gz::https://s3-eu-west-1.amazonaws.com/lokalise-assets/cli/lokalise-0.721-linux-amd64.tgz
+	sha256sums = 9913e9fe29dbb38c35a5acacbdac30282071f9be5fc99b944fc6ae7f5366e5e8
 
 pkgname = lokalise
 
