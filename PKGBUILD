@@ -3,7 +3,7 @@
 
 pkgname=emscripten-git
 epoch=2
-pkgver=1.38.42.r25.g7d4968ceb
+pkgver=1.39.0.r5.gea459044a
 pkgrel=1
 pkgdesc="LLVM-to-JavaScript compiler"
 arch=('i686' 'x86_64')
@@ -33,15 +33,6 @@ pkgver() {
 }
 
 prepare() {
-  cd ${pkgname%-git}
-  
-  # adapt config file template to use our custom environment variable and path
-  sed -e "s|getenv('LLVM')|getenv('EMSCRIPTEN_FASTCOMP')|" \
-      -e 's|{{{ LLVM_ROOT }}}|/usr/lib/emscripten-fastcomp|' \
-      -i tools/settings_template_readonly.py
-  
-  # python2 shebang fixes
-  sed '1s|python$|python2|' -i $(find third_party tools -name \*.py) emrun emcc{,.py} em++{,.py} emconfigure emmake emcmake emar emranlib
   sed '1s|python$|python2|' -i "$srcdir"/${pkgname%-git}-fastcomp-clang/tools/scan-view/bin/scan-view 
   cd "$srcdir"/${pkgname%-git}-fastcomp
   
