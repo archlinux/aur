@@ -23,7 +23,7 @@ source=("$url/releases/download/v$pkgver/$pkgname-linux.tar.gz" "$pkgname.sh" "$
 noextract=()
 md5sums=('b944c7f36d774d8d777f439e5a2e72c1'
          'cf64cc261dd259213bf37c311edbe71f'
-         'b47041056203fd1f9e2cf507cff14eec')
+         'd8f5b91f53eb6b390b28ca7cd21a9fcf')
 validpgpkeys=()
 
 package() {

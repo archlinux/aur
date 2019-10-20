@@ -15,7 +15,7 @@ pkgbase = blobsaver
 	source = blobsaver.desktop
 	md5sums = b944c7f36d774d8d777f439e5a2e72c1
 	md5sums = cf64cc261dd259213bf37c311edbe71f
-	md5sums = b47041056203fd1f9e2cf507cff14eec
+	md5sums = d8f5b91f53eb6b390b28ca7cd21a9fcf
 
 pkgname = blobsaver
 
