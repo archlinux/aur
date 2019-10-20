@@ -12,8 +12,8 @@
 
 pkgname=lib32-mesa-aco-git
 pkgdesc="Mesa with the ACO compiler patchset, git version"
-pkgver=19.3.0_devel.20191010.1b2cbc98c39
-pkgrel=7
+pkgver=19.3.0_devel.20191017.fe930ad92ab
+pkgrel=8
 arch=('x86_64')
 makedepends=('python-mako' 'lib32-libxml2' 'lib32-libx11' 'xorgproto'
              'lib32-gcc-libs' 'lib32-libvdpau' 'lib32-libelf' 'git' 'lib32-libgcrypt' 'lib32-systemd'
@@ -35,10 +35,12 @@ url="https://www.mesa3d.org"
 license=('custom')
 source=('mesa-aco::git+https://github.com/daniel-schuermann/mesa'
         'LICENSE'
-        'llvm32.native')
+        'llvm32.native'
+        'mesa-headers.patch')
 sha512sums=('SKIP'
             '25da77914dded10c1f432ebcbf29941124138824ceecaf1367b3deedafaecabc082d463abcfa3d15abff59f177491472b505bcb5ba0c4a51bb6b93b4721a23c2'
-            'c7dbb390ebde291c517a854fcbe5166c24e95206f768cc9458ca896b2253aabd6df12a7becf831998721b2d622d0c02afdd8d519e77dea8e1d6807b35f0166fe')
+            'c7dbb390ebde291c517a854fcbe5166c24e95206f768cc9458ca896b2253aabd6df12a7becf831998721b2d622d0c02afdd8d519e77dea8e1d6807b35f0166fe'
+            'f83d52292f9b5144fc2f5b568cfb1d4bdebd37b877d34d9002335d79f66612123001c36a9615ed13f474771002672f2a445a89f3220d16b962e17087b6111644')
 
 # NINJAFLAGS is an env var used to pass commandline options to ninja
 # NOTE: It's your responbility to validate the value of $NINJAFLAGS. If unsure, don't set it.
@@ -103,6 +105,13 @@ prepare() {
     # that interferes with the spirit of makepkg --noextract
     if [  -d _build ]; then
         rm -rf _build
+    fi
+
+    cd "$srcdir"/mesa-aco
+
+    # Apply this until ACO is rebased and contains it
+    if ! git show b57fa7ca49f7ddb67ac47f392de05af388e73565 &>/dev/null; then
+      patch -Np1 -i "$srcdir"/mesa-headers.patch
     fi
 }
 
