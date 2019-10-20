@@ -17,15 +17,15 @@ then
 fi
 
 pkgname=junest-git
-pkgver=6.0.7
-pkgrel=3
+pkgver=6.0.10
+pkgrel=1
 pkgdesc="The Arch Linux based distro that runs upon any Linux distros without root access"
 arch=('any')
 url="http://fsquillace.github.io/junest-site/"
 license=('GPL')
 groups=()
-depends=('yaourt' 'pacman')
-makedepends=('git')
+depends=('pacman')
+makedepends=('git' 'sed')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 replaces=()
@@ -38,13 +38,11 @@ PROOT_LINK=${MAIN_REPO}/proot
 QEMU_LINK=$MAIN_REPO/qemu
 # Please refer to the 'USING VCS SOURCES' section of the PKGBUILD man page for
 # a description of each element in the source array.
-PKGNAME_YAOURT='yaourt'
-PKGVER_YAOURT='1.8.1'
 
-source=('junest::git+https://github.com/fsquillace/junest.git#branch=master' "https://github.com/archlinuxfr/$PKGNAME_YAOURT/releases/download/$PKGVER_YAOURT/$PKGNAME_YAOURT-$PKGVER_YAOURT.tar.xz" "$PROOT_LINK/proot-x86_64" "$PROOT_LINK/proot-x86" "$PROOT_LINK/proot-arm")
+source=('junest::git+https://github.com/fsquillace/junest.git#branch=master' "$PROOT_LINK/proot-x86_64" "$PROOT_LINK/proot-x86" "$PROOT_LINK/proot-arm")
 source_x86_64=("${QEMU_LINK}/x86_64/qemu-x86_64-static-x86" "${QEMU_LINK}/x86_64/qemu-x86_64-static-arm")
 source_i686=("${QEMU_LINK}/x86/qemu-x86-static-x86_64" "${QEMU_LINK}/x86/qemu-x86_64-static-arm")
-md5sums=('SKIP' '0c20b1d7b9c582b896ede30a9d95766b' '14080705dd45a6bafa20e909a68072cb' 'b1c08236b56d121e04e9e29b197d0eeb' '8218c5f00e77e2e6e04c372ced27c7e7')
+md5sums=('SKIP' '14080705dd45a6bafa20e909a68072cb' 'b1c08236b56d121e04e9e29b197d0eeb' '8218c5f00e77e2e6e04c372ced27c7e7')
 md5sums_x86_64=('8a706d734f8c790743a8114dda4c344a' '3ced729c95d2514f35d4899e944a4582')
 md5sums_x86=('c28d5049193dbce75efa0c8655d71427' 'f75fd15722fcc2914e3de0b0a46eb982')
 
@@ -74,8 +72,7 @@ pkgver() {
 }
 
 build() {
-  cd "$srcdir/$PKGNAME_YAOURT-$PKGVER_YAOURT/"
-  make PREFIX=/usr sysconfdir=/etc localstatedir=/var
+  :
 }
 
 package() {
@@ -100,15 +97,10 @@ package() {
     install -d -m 755 "${pkgdir}/opt/qemu"
     install -m 755 qemu-* ${pkgdir}/opt/qemu
 
-    echo "Applying patches for yaourt and makepkg"
-    install -d -m 755 "${pkgdir}/opt/yaourt/bin/"
-    install -m 755 "$srcdir/$PKGNAME_YAOURT-$PKGVER_YAOURT/yaourt.sh" ${pkgdir}/opt/yaourt/bin/yaourt
-    sed -i -e 's@#!/bin/bash@#!/bin/bash\nPATH=/opt/yaourt/bin:$PATH@' ${pkgdir}/opt/yaourt/bin/yaourt
-
-    install -m 755 /usr/bin/makepkg ${pkgdir}/opt/yaourt/bin/
-    sed -i -e 's/EUID\s==\s0/false/' ${pkgdir}/opt/yaourt/bin/makepkg
-
-    ln -s ../../opt/yaourt/bin/yaourt ${pkgdir}/usr/bin/yogurt
+    echo "Applying patches makepkg"
+    install -d -m 755 "${pkgdir}/opt/makepkg/bin/"
+    install -m 755 /usr/bin/makepkg ${pkgdir}/opt/makepkg/bin/
+    sed -i -e 's/EUID\s==\s0/false/' ${pkgdir}/opt/makepkg/bin/makepkg
 }
 
 # vim:set ts=2 sw=2 et:
