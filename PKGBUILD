@@ -2,7 +2,7 @@
 # Contributor: Serge Zirukin <ftrvxmtrx@gmail.com>
 
 pkgname=ocaml-batteries-git
-pkgver=20180122
+pkgver=20191001
 pkgrel=1
 pkgdesc="Batteries Included for OCaml"
 arch=('i686' 'x86_64')
@@ -13,13 +13,21 @@ makedepends=('ocamlbuild')
 optdepends=('ocaml-bisect')
 provides=('ocaml-batteries')
 conflicts=('ocaml-batteries')
-source=("${pkgname}::git://github.com/ocaml-batteries-team/batteries-included.git")
-md5sums=('SKIP')
+source=("${pkgname}::git://github.com/ocaml-batteries-team/batteries-included.git"
+        fix-ocaml-4.08.patch)
+md5sums=('SKIP'
+         '04ed53e7e68034f975fc21c00d5b6572')
 install=$pkgname.install
 
 pkgver () {
   cd "$pkgname"
   git log -1 --pretty=format:%cd --date=short | sed 's/-//g'
+}
+
+prepare() {
+  cd "$pkgname"
+
+  patch -Np1 -i ../fix-ocaml-4.08.patch
 }
 
 build () {

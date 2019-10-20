@@ -1,0 +1,12 @@
+
+--- ocaml-batteries-git/src/batteries.mlv	2019-10-20 14:54:12.758195004 +0200
++++ ocaml-batteries-git/src/batteries.mlv	2019-10-20 14:54:28.091527675 +0200
+@@ -34,7 +34,7 @@
+   module Random = Random
+   module Scanf = Scanf
+   module Set = Set
+-  module Sort = Sort
++##V<4.8## module Sort = Sort
+   module Stack = Stack
+   module StdLabels = StdLabels
+   module Stream = Stream
