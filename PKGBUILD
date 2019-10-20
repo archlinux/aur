@@ -4,10 +4,10 @@
 
 pkgname=mk-configure
 pkgver=0.32.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight replacement for GNU autotools"
 arch=('i686' 'x86_64')
-makedepends=('bmake' 'bmkdep' 'makedepend')
+makedepends=('bmake' 'bmkdep')
 url="https://github.com/cheusov/mk-configure"
 license=('BSD')
 source=("https://github.com/cheusov/$pkgname/archive/$pkgname-$pkgver.tar.gz")

@@ -1,14 +1,13 @@
 pkgbase = mk-configure
 	pkgdesc = Lightweight replacement for GNU autotools
 	pkgver = 0.32.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cheusov/mk-configure
 	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = bmake
 	makedepends = bmkdep
-	makedepends = makedepend
 	source = https://github.com/cheusov/mk-configure/archive/mk-configure-0.32.0.tar.gz
 	sha256sums = 69cf872f23c9e1a7edea5ed469b959823b2365602b60861ca7b21dffa097e98f
 
