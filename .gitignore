@@ -1,0 +1,10 @@
+# Ignore everything
+*
+
+# But not these files...
+!.gitignore
+!classicube.desktop
+!PKGBUILD
+!.SRCINFO
+!classicube
+
