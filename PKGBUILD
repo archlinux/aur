@@ -16,13 +16,13 @@ md5sums=('SKIP')
 _gitname="yasnippets-latex"
 
 pkgver() {
-  cd "$srcdir"/$_gitname
+  cd $_gitname
   echo $(git log -1 --format="%cd" --date=short | sed 's+-+_+g')
 }
 
 package(){
-  cd ${srcdir}/$_gitname 
-  install -d  ${pkgdir}/usr/share/emacs/site-lisp/yas/snippets/latex-mode
-  ./install.sh  ${pkgdir}/usr/share/emacs/site-lisp/yas
+  cd $_gitname 
+  install -d  "$pkgdir"/usr/share/emacs/site-lisp/yas/snippets/latex-mode
+  ./install.sh  "$pkgdir"/usr/share/emacs/site-lisp/yas
 }
 
