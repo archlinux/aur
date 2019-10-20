@@ -2,9 +2,9 @@
 
 _pkgname=sratom
 pkgname="${_pkgname}-git"
-pkgver=0.6.3.r168.202873c
+pkgver=0.6.3.r173.bdfb8d0
 pkgrel=1
-pkgdesc="An LV2 Atom RDF serialisation library"
+pkgdesc="An LV2 Atom RDF serialisation library (git version)"
 arch=('i686' 'x86_64')
 url="http://drobilla.net/software/$_pkgname/"
 license=('custom:ISC')
@@ -12,10 +12,10 @@ depends=('lv2' 'sord')
 makedepends=('git' 'python')
 conflicts=("${_pkgname}" "${_pkgname}-svn")
 provides=("${_pkgname}" "${_pkgname}=${pkgver//.r*/}")
-install="${_pkgname}.install"
 source=("${_pkgname}::git+https://gitlab.com/lv2/sratom.git"
         'autowaf::git+https://gitlab.com/drobilla/autowaf.git')
 md5sums=('SKIP' 'SKIP')
+
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
@@ -30,13 +30,13 @@ prepare() {
   git submodule init
   git config submodule.waflib.url "${srcdir}/autowaf"
   git submodule update
+
+  # remove local call to ldconfig
+  sed -i "/ldconfig/d" wscript
 }
 
 build() {
   cd "${srcdir}/${_pkgname}"
-
-  # remove ldconfig
-  sed -i '/ldconfig/d' wscript
 
   python waf configure --prefix=/usr
   python waf build $MAKEFLAGS

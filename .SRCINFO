@@ -1,9 +1,8 @@
 pkgbase = sratom-git
-	pkgdesc = An LV2 Atom RDF serialisation library
-	pkgver = 0.6.3.r168.202873c
+	pkgdesc = An LV2 Atom RDF serialisation library (git version)
+	pkgver = 0.6.3.r173.bdfb8d0
 	pkgrel = 1
 	url = http://drobilla.net/software/sratom/
-	install = sratom.install
 	arch = i686
 	arch = x86_64
 	license = custom:ISC
