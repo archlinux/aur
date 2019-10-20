@@ -2,8 +2,8 @@
 # Maintainer: erik dubois <erik.dubois@gmail.com>
 pkgname=sardi-orb-colora-mint-y-icons-git
 _pkgname=sardi-orb-colora-mint-y-icons
-pkgver=367.60234a76
-pkgrel=3
+pkgver=368.2d0e34ff
+pkgrel=1
 pkgdesc="New icons from LinuxMint 18 inspired by the Moka icon set with Sardi-Orb-Colora as main icon set"
 arch=('any')
 url="https://github.com/linuxmint/mint-y-icons"
@@ -32,10 +32,9 @@ package() {
   rm -rf Mint-Y-Dark-Purple 
   rm -rf Mint-Y-Dark-Red 
   rm -rf Mint-Y-Dark-Sand 
-  rm -rf Mint-Y-Dark-Teal 
+  rm -rf Mint-Y-Dark-Teal
 
   find .  -name "index.theme" -type f -exec sed -i "s/Name=Mint-Y-/Name=Sardi-Orb-Colora-Mint-Y-/g" {} \;
-  find .  -name "index.theme" -type f -exec sed -i "s/Name=Mint-Y-Dark-/Name=Sardi-Orb-Colora-Mint-Y-/g" {} \;
   find .  -name "index.theme" -type f -exec sed -i "s/Inherits=Mint-Y,Adwaita,gnome,hicolor/Inherits=Sardi-Orb-Colora,Sardi-Flat,Sardi,Surfn,Adwaita,gnome,hicolor/g" {} \;
 
   mv Mint-Y-Aqua Sardi-Orb-Colora-Mint-Y-Aqua
