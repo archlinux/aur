@@ -1,7 +1,7 @@
 # Maintainer: Cobalt Space <cobaltspace at protonmail dot com>
 pkgname=blobsaver
 pkgver=2.4.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A cross-platform GUI app for saving SHSH blobs using s0uthwest's fork of tsschecker"
 arch=('any')
