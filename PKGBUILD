@@ -3,11 +3,11 @@
 
 pkgname=opensmtpd-extras
 pkgver=6.4.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Additional queues, schedulers, and tables for OpenSMTPD'
 arch=(i686 x86_64)
 url=https://github.com/OpenSMTPD/OpenSMTPD-extras
-license=(custom:ISC custom:BSD 'custom:Public Domain' custom:ISC-style)
+license=(ISC BSD BSD3 'custom:Public Domain' custom:ISC-like)
 makedepends=(libevent python2 postgresql-libs mariadb-libs hiredis)
 optdepends=(
   'libevent: for table-python support'
