@@ -13,10 +13,12 @@ optdepends=('v2ray' 'v2ray-domain-list-community' 'v2ray-geoip')
 provides=('qv2ray')
 conflicts=('qv2ray')
 source=("${pkgname}::git+https://github.com/lhy0403/Qv2ray#branch=dev"
-        "0001-build_for_archlinux.patch")
+        "0001-modify-exec-path-for-qv2ray.desktop.patch"
+        "0002-modify-the-config-path-for-qv2ray.patch")
 
 sha512sums=('SKIP'
-            'a25cc3eea393a83ed300a99dad06e23b83f31e5faa59ccda0594396b59a85b7106063f68c10a8a2f57e07b1683b7980217b6e8f37922018e2acf2d4a894ebb25')
+            'f64f12d0c2be516aba033f3d6f31541bbcaebecb0d4e3eebce5aac0625fa1c41802e929a930601236899d1b19e01ceba167730568f9bc4d5b916bd5c636a58b5'
+            '181e58c0314ff29605583069c8d14f69a9e2fa3e3c4943144989811f3c19489426ba958496fccb89fc92c5eca73fe15c74577fe1426d17191c290d9dd1a6d376')
 
 pkgver() {
     cd ${pkgname}
@@ -26,7 +28,14 @@ pkgver() {
 prepare() {
     cd "${pkgname}"
     sh -c "tools/grpc_gen.sh"
-    patch -Np1 -i "${srcdir}/0001-build_for_archlinux.patch"
+    local src
+    for src in "${source[@]}"; do
+        src="${src%%::*}"
+        src="${src##*/}"
+        [[ $src = *.patch ]] || continue
+        msg2 "Applying patch $src..."
+        patch -Np1 < "../$src"
+    done
 }
 
 build() {
