@@ -22,7 +22,7 @@ _ex_pt() {
 package() {
 	cd "${srcdir}/envypn-font-${pkgver}"
 	for f in *.pcf.gz; do
-		fonttosfnt -o "${f/pcf.gz/otb}" "$f"
+		fonttosfnt -c -o "${f/pcf.gz/otb}" "$f"
 	done
 	for i in *.otb; do
 		install -Dm 644 $i "$pkgdir/usr/share/fonts/misc/$i"
