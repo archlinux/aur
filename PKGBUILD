@@ -13,7 +13,7 @@ license=('GPL')
 depends=('plymouth' 'knewstuff' 'kdeclarative')
 makedepends=('extra-cmake-modules' 'qt5-tools' 'kcmutils')
 source=("https://download.kde.org/stable/plasma/$pkgver/$pkgname-$pkgver.tar.xz"{,.sig})
-sha256sums=('87d8f7faba1a01e96573d533646f41af86aaddc1b94aa9af95718db7617ffc76'
+sha256sums=('4207464aa5fa7e97890a9c3ed93db1c3b8ec35045697d52e38bf7e58273cd5be'
             'SKIP')
 validpgpkeys=('2D1D5B0588357787DE9EE225EC94D18F7F05997E'  # Jonathan Riddell
               '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah
