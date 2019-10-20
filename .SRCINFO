@@ -1,7 +1,7 @@
 pkgbase = sardi-mint-y-icons-git
 	pkgdesc = New icons from LinuxMint 18 inspired by the Moka icon set with Sardi as main icon set
-	pkgver = 367.60234a76
-	pkgrel = 3
+	pkgver = 368.2d0e34ff
+	pkgrel = 1
 	url = https://github.com/linuxmint/mint-y-icons
 	arch = any
 	license = GPL3
