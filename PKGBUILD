@@ -21,7 +21,7 @@ license=('GPL2')
 arch=('i686' 'x86_64')
 install='freenet.install'
 depends=('java-runtime>=8' 'gmp' 'java-service-wrapper')
-makedepends=('java-environment>=8' 'apache-ant' 'git' 'zip' 'gradle')
+makedepends=('java-environment>=8' 'java-environment<13' 'apache-ant' 'git' 'zip' 'gradle')
 backup=('opt/freenet/wrapper.config'
         'opt/freenet/conf/freenet.ini')
 
@@ -44,7 +44,7 @@ sha256sums=('SKIP'
             'a6581d33448c2989ef9f7e888e7e47a8784b0159e76bf8f6bc97eec1d7d55769'
             '434f67e2e86edb555b7dfb572a52d7ff719373989e1f1830f779bfccc678539f'
             'c0ce093a098d91dee6be294f8a2fc929aabad95612f994933194d0da5c4cdd25'
-            '609705bafc02048f366711f470bebaf2d4e8c5fa1285b1611719826aef755107')
+            '560ff07854d5167c83de753c133059c0fcff404c463d31940d8cad3b9ff23845')
 
 pkgver() {
     cd "fred"
@@ -55,7 +55,7 @@ pkgver() {
 prepare() {
     cd "fred"
 
-    # Gradle 5.3 and Java 11 support
+    # Gradle 5.4 and Java 11 support
     git pull origin pull/658/head
     git apply -v "$srcdir/0001-strip-non-compile-deps.patch"
 
