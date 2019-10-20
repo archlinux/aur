@@ -1,15 +1,15 @@
 pkgbase = tree-sitter-cli-bin
 	pkgdesc = An incremental parsing system for programming tools
-	pkgver = 0.15.9
+	pkgver = 0.15.11
 	pkgrel = 1
 	url = https://tree-sitter.github.io/tree-sitter/
 	arch = x86_64
 	license = MIT
 	noextract = tree-sitter-linux-x64.gz
 	noextract = LICENSE
-	source = https://github.com/tree-sitter/tree-sitter/releases/download/0.15.9/tree-sitter-linux-x64.gz
-	source = https://raw.githubusercontent.com/tree-sitter/tree-sitter/0.15.9/LICENSE
-	md5sums = 6bab4455de94546502bbae9a7650d63c
+	source = https://github.com/tree-sitter/tree-sitter/releases/download/0.15.11/tree-sitter-linux-x64.gz
+	source = https://raw.githubusercontent.com/tree-sitter/tree-sitter/0.15.11/LICENSE
+	md5sums = 7e09d23c07e841652f1ffd1c61ee4c3b
 	md5sums = b83e3e9ab94483903b3bc21d9a1d41ed
 
 pkgname = tree-sitter-cli-bin
