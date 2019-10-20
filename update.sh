@@ -2,8 +2,10 @@
 
 rm -f ./*.xz
 
-makepkg --printsrcinfo > .SRCINFO
+# Update the N's version in PKGINFO
+
 updpkgsums
+makepkg --printsrcinfo > .SRCINFO
 
 makepkg
 
