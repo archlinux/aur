@@ -1,25 +1,6 @@
 pkgbase = nerd-fonts-fira-code
 	pkgdesc = Patched font Fira (Fura) Code from the nerd-fonts library
 	pkgver = 2.0.0
-	pkgrel = 1
-	url = https://github.com/ryanoasis/nerd-fonts
-	arch = any
-	groups = nerd-fonts
-	license = MIT
-	depends = fontconfig
-	provides = nerd-fonts-fira-code
-	conflicts = nerd-fonts-git
-	conflicts = nerd-fonts-complete
-	source = https://github.com/ryanoasis/nerd-fonts/releases/download/v2.0.0/FiraCode.zip
-	source = https://github.com/ryanoasis/nerd-fonts/raw/v2.0.0/LICENSE
-	sha1sums = b29926000cf0e0b6d01c255dade18b909e9832ba
-	sha1sums = 92fdad3c8babc0473da5f03e41fb1151417ab386
-
-pkgname = nerd-fonts-fira-code
-
-pkgbase = nerd-fonts-fira-code
-	pkgdesc = Patched font Fira (Fura) Code from the nerd-fonts library
-	pkgver = 2.0.0
 	pkgrel = 2
 	url = https://github.com/ryanoasis/nerd-fonts
 	arch = any
