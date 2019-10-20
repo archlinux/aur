@@ -1,6 +1,6 @@
 pkgbase = orthanc
 	pkgdesc = Open-source, lightweight DICOM server.
-	pkgver = 1.3.2
+	pkgver = 1.5.8
 	pkgrel = 1
 	url = http://orthanc-server.com/
 	arch = x86_64
@@ -21,8 +21,8 @@ pkgbase = orthanc
 	depends = pugixml
 	depends = sqlite
 	depends = util-linux
-	source = https://www.orthanc-server.com/downloads/get.php?path=/orthanc/Orthanc-1.3.2.tar.gz
-	sha256sums = 2357210fb6d7d8d99d5b67c3136abd7e7ec23a92f0946eeb2661aad7e6dcaaf3
+	source = https://www.orthanc-server.com/downloads/get.php?path=/orthanc/Orthanc-1.5.8.tar.gz
+	sha512sums = 2357210fb6d7d8d99d5b67c3136abd7e7ec23a92f0946eeb2661aad7e6dcaaf3
 
 pkgname = orthanc
 
