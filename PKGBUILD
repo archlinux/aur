@@ -1,7 +1,7 @@
 # Maintainer: Rin Cat <me@rin.cat>
 pkgname=mtg-git
 _pkgbase=mtg
-pkgver=0.15.1.r19.g78dea9a
+pkgver=0.15.1.r27.gc2b8e88
 pkgrel=1
 pkgdesc='Bullshit-free MTProto proxy for Telegram'
 arch=('x86_64')
