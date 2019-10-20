@@ -1,9 +1,8 @@
 pkgbase = libtremor-svn
 	pkgdesc = Integer-only, fully Ogg Vorbis compliant software decoder library
-	pkgver = r19483
+	pkgver = r19674
 	pkgrel = 1
 	url = http://www.xiph.org/vorbis/
-	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = subversion
@@ -11,7 +10,7 @@ pkgbase = libtremor-svn
 	provides = libtremor
 	conflicts = libtremor
 	options = !libtool
-	source = libtremor-svn::svn+http://svn.xiph.org/trunk/Tremor
+	source = libtremor-svn::svn+https://svn.xiph.org/trunk/Tremor
 	md5sums = SKIP
 
 pkgname = libtremor-svn
