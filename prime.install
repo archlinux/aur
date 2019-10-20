@@ -1,4 +1,4 @@
 post_install() {
 	echo "You must edit the config of Xorg server!!!"
-	echo "Example config located in /usr/share/prime/10-nvidia.conf"
+	echo "Example config located in /usr/share/X11/xorg.conf.d/10-nvidia.conf"
 }
