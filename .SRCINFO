@@ -1,0 +1,19 @@
+pkgbase = classicube-git
+	pkgdesc = Game based on the original Minecraft Classic. (Not an official package)
+	pkgver = 1.0.8.r68.g88af4d7c
+	pkgrel = 1
+	epoch = 0
+	url = https://www.classicube.net/
+	arch = x86_64
+	license = custom
+	makedepends = git
+	depends = openal
+	depends = mesa
+	depends = curl
+	provides = classicube
+	conflicts = classicube
+	source = git://github.com/UnknownShadow200/ClassiCube.git
+	md5sums = SKIP
+
+pkgname = classicube-git
+
