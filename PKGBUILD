@@ -62,7 +62,7 @@ _minor=3
 _basekernel=${_major}.${_minor}
 _srcname=linux-${_basekernel}
 pkgbase=linux-pf
-_pfrel=2
+_pfrel=4
 _kernelname=-pf
 _pfpatchhome="https://github.com/pfactum/pf-kernel/compare"
 _pfpatchname="v$_major.$_minor...v$_major.$_minor-pf$_pfrel.diff"
@@ -74,7 +74,7 @@ pkgname=('linux-pf')
 pkgdesc="Linux kernel and modules with the pf-kernel patch (uksm, PDS)."
 pkgname=('linux-pf' 'linux-pf-headers' 'linux-pf-preset-default')
 pkgver=${_basekernel}.${_pfrel}
-pkgrel=2
+pkgrel=1
 arch=('i686' 'x86_64')
 url="https://gitlab.com/post-factum/pf-kernel/wikis/README"
 license=('GPL2')
@@ -657,7 +657,7 @@ sha256sums=('78f3c397513cf4ff0f96aa7d09a921d003e08fa97c09e0bb71d88211b40567b2'
             '6231477d4f1fd31eb6c8d7052ad084af75d8c2af0eb54c7913ba8b033be174f2'
             '8d809b8a587f21a810ae385284855dec3c9cec0558f7ae957a91e8029386e930'
             '82d660caa11db0cd34fd550a049d7296b4a9dcd28f2a50c81418066d6e598864'
-            '88c03eaa3ac14757bf946bf6da1396cfb1de4cdeacf231f81ce4dcbf28caa0a7'
+            '0b7c497272ff058c9f823110c692ab89bb3f27bff4c522d672bbb3406446cc4f'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21')
 # vim:set ts=2 sw=2 tw=0 et:
