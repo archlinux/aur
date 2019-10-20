@@ -1,6 +1,6 @@
 pkgbase = retrosmart-aurorae-themes
 	pkgdesc = A retrosmart look collection of themes for KDE Aurorae.
-	pkgver = 1.1a
+	pkgver = 1.3a
 	pkgrel = 1
 	url = https://github.com/mdomlop/retrosmart-aurorae-themes
 	changelog = ChangeLog
@@ -10,8 +10,8 @@ pkgbase = retrosmart-aurorae-themes
 	optdepends = retrosmart-icon-theme: The corresponding icon theme
 	optdepends = retrosmart-kvantum-theme: The corresponding theme for Kvantum
 	optdepends = retrosmart-qtcurve-theme: The corresponding theme for QtCurve
-	source = retrosmart-aurorae-themes-1.1a.tar.gz::https://github.com/mdomlop/retrosmart-aurorae-themes/archive/1.1a.tar.gz
-	md5sums = 3076e697e96b386385c8177530e8340e
+	source = retrosmart-aurorae-themes-1.3a.tar.gz::https://github.com/mdomlop/retrosmart-aurorae-themes/archive/1.3a.tar.gz
+	md5sums = e2791b9a0a0a7ef90347c274b6df5092
 
 pkgname = retrosmart-aurorae-themes
 

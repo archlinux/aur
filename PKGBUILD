@@ -1,16 +1,15 @@
 # Maintainer: Manuel Domínguez López <mdomlop at gmail dot com>
 
-_pkgver_year=2018
-_pkgver_month=11
-_pkgver_day=17
+_pkgver_year=2019
+_pkgver_month=10
+_pkgver_day=20
 
 pkgname=retrosmart-aurorae-themes
-pkgver=1.1a
+pkgver=1.3a
 pkgrel=1
 pkgdesc='A retrosmart look collection of themes for KDE Aurorae.'
 url=https://github.com/mdomlop/$pkgname
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mdomlop/$pkgname/archive/$pkgver.tar.gz")
-md5sums=('3076e697e96b386385c8177530e8340e')
 license=('GPL3')
 optdepends=('xcursor-retrosmart: The corresponding X11 cursor theme'
             'retrosmart-icon-theme: The corresponding icon theme'
@@ -30,3 +29,4 @@ package() {
     cd $srcdir/$pkgname-$pkgver
     make install DESTDIR=$pkgdir
 }
+md5sums=('e2791b9a0a0a7ef90347c274b6df5092')
