@@ -2,24 +2,11 @@
 
 case "$@" in
 	""|"--help"|"-help"|"-h")
-		cat <<DOC
+		echo "
 This script only launches the command you write after.
 Example:
 	prime glxinfo | grep OpenGL
-It should show you video driver in use.
-
-Notice!
-To work this you sould have patched X server. Just install package xorg-server-git.
-
-If this does not help, verify that the NVIDIA driver has loaded correctly:
-	grep /var/log/Xorg.0.log -e "EE" -e "WW"
-Also, the xrandr --listproviders command should output as a minimum 2 providers, for example, like this:
-	Providers: number : 2
-	Provider 0: id: 0x29b cap: 0xf, Source Output, Sink Output, Source Offload, Sink Offload crtcs: 3 outputs: 2 associated providers: 0 name:modesetting
-	Provider 1: id: 0x277 cap: 0x0 crtcs: 0 outputs: 0 associated providers: 0 name:NVIDIA-G0
-
-If you need help, you can write me on AUR or in telegram @Feresey
-DOC
+It should show you video driver in use."
 exit 0
 esac
 

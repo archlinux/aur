@@ -1,10 +1,10 @@
 # Maintainer: Feresey <p.milko1999@yandex.ru>
 
 pkgname=prime
-pkgdesc="PRIME Render Offload Launcher. Please visit https://download.nvidia.com/XFree86/Linux-x86_64/435.21/README/primerenderoffload.html to manually configure your Device."
+pkgdesc="PRIME Render Offload Launcher"
 url="https://download.nvidia.com/XFree86/Linux-x86_64/435.21/README/primerenderoffload.html"
 pkgver=1.0
-pkgrel=6
+pkgrel=7
 arch=('any')
 # license=("nothing")
 conflicts=(bumblebee)
@@ -19,8 +19,8 @@ source=(prime
 		10-nvidia.conf
 		zsh_prime
 		bash_prime)
-md5sums=('38b57e5495ec64786f0b80084b58d471'
-         '244ba74b21444a74a18d4dbecd04f107'
+md5sums=('157eb42ffd9a60c9f61be4e81d62be9d'
+         '503cb03a63f21db38c14f57bde93e4e4'
          '84d31e7be165f77f6c58fe638b4670cb'
          'bbc3d71244a5fc5d4d6caeea941ff91f'
          '6597766f7fb79d6d030fbbe20f06e7f0')

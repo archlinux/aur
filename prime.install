@@ -1,21 +1,4 @@
-#there are one config file, provided by nvidia
-
-NAME="X11/xorg.conf.d/10-nvidia.conf"
-
 post_install() {
-	echo "Creating /etc/${NAME} ..."
-	[ ! -f /etc/${NAME} ] && cp -v /usr/share/${NAME} /etc/${NAME}
-	cat <<DOC
-Pay attention!!!
-If you use xorg-server-git then you may need to uncomment some lines in /etc/${NAME}
-DOC
-}
-
-# post_upgrade() {
-# 	post_install
-# }
-
-post_remove() {
-	echo "Removing /etc/X11/xorg.conf.d/10-nvidia.conf ..."
-	rm -v /etc/${NAME}
+	echo "You must edit the config of Xorg server!!!"
+	echo "Example config located in /usr/share/prime/10-nvidia.conf"
 }
