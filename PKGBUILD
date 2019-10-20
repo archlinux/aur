@@ -3,13 +3,16 @@
 pkgname=sftpgo-bin
 _pkgname=sftpgo
 pkgver=0.9.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Full featured and highly configurable SFTP server'
 arch=('x86_64')
 url="https://github.com/drakkan/${_pkgname}"
 license=('GPL3')
 depends=('glibc')
 optdepends=(
+  "sqlite: to use SQLite provider"
+  "postgresql: to use PostgreSQL provider"
+  "mariadb: to use MySQL provider"
   "python-requests: REST API CLI"
   "python-pygments: REST API CLI colors highlight"
 )
