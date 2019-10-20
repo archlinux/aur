@@ -1,7 +1,7 @@
 pkgbase = emacs-ht
 	pkgdesc = The missing Emacs hash table library.
 	pkgver = 2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Wilfred/ht.el
 	arch = any
 	license = GPL3
