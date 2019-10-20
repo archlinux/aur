@@ -1,6 +1,7 @@
-raul
-pkg
-src
+autowaf/
+raul/
+pkg/
+src/
 raul-git-*.tar.xz
 raul-git-*.src.tar.xz
 .AURINFO
