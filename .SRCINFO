@@ -6,6 +6,7 @@ pkgbase = pngcodec
 	arch = i686
 	arch = x86_64
 	license = GPL2
+	makedepends = gcc6
 	source = http://binaries.openttd.org/extra/pngcodec/r15435/pngcodec-r15435-source.tar.bz2
 	md5sums = bdc6bc9ed43873c0f6a07556fab2a9ff
 
