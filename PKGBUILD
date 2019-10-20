@@ -10,6 +10,8 @@ url="https://sipe.sourceforge.net/"
 depends=('gmime' 'libpurple')
 makedepends=('git' 'intltool')
 optdepends=('freerdp: Desktop sharing' 'krb5: Kerberos support')
+provides=('pidgin-sipe')
+conflicts=('pidgin-sipe')
 source=("${pkgname}"::"git+https://repo.or.cz/siplcs.git#branch=mob")
 sha256sums=('SKIP')
 

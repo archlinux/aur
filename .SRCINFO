@@ -11,6 +11,8 @@ pkgbase = pidgin-sipe-git
 	depends = libpurple
 	optdepends = freerdp: Desktop sharing
 	optdepends = krb5: Kerberos support
+	provides = pidgin-sipe
+	conflicts = pidgin-sipe
 	source = pidgin-sipe-git::git+https://repo.or.cz/siplcs.git#branch=mob
 	sha256sums = SKIP
 
