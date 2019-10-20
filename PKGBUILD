@@ -1,11 +1,11 @@
-# Maintainer:
+# Maintainer:  Chris Severance aur.severach aATt spamgourmet dott com
 # Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
 # Contributor: Kevin Piche <kevin@archlinux.org>
 # Contributor: Jason Chu <jchu@xentac.net>
 
 pkgname=mahjong
-pkgver=1.14
-pkgrel=3
+pkgver=1.15
+pkgrel=1
 pkgdesc='The classical game of Mah Jong (multiplayer)'
 arch=('x86_64')
 url='http://mahjong.julianbradfield.org/'
@@ -13,7 +13,8 @@ license=('GPL' 'custom')
 depends=('gtk2')
 makedepends=('gendesk' 'imagemagick' 'setconf')
 source=("http://mahjong.julianbradfield.org/Source/mj-$pkgver-src.tar.gz")
-sha256sums=('976c9e0e11b78066cd74568992ff5382930711d7536bb11c9fa6877366c63dd6')
+md5sums=('52eb521f5276a4057e0e44f84d3b27e4')
+sha256sums=('d115a1769b41a32cced0b236e4dbca9d9b0f30827032b507a18216896ef6da92')
 
 prepare() {
   gendesk -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" \
