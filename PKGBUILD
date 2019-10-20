@@ -1,4 +1,5 @@
-# Maintainer: bill <wpkp34 on gmail>
+#Mantainer: Manuel Palenzuela
+#Contributor: bill <wpkp34 on gmail>
 pkgname=kmd-compile-aasm
 pkgver=20120816
 pkgrel=1
@@ -17,14 +18,18 @@ build() {
   cd "$srcdir/aasm"
   gcc aasm.c -o aasm
   cat << EOS > kmd_compile
-#! /bin/sh
-FNAME=`echo $1 | sed s/[.]s$//`
-aasm -lk ${FNAME}.kmd $1
+#!/bin/sh
+FNAME=\$(echo "\$1" | sed s/.s//g)
+/usr/local/kmd/aasm -lk "\$FNAME.kmd" "\$1"
 EOS
 }
 
 package() {
+  mkdir -p "$pkgdir/usr/local/kmd"
   cd "$srcdir/aasm"
+  cp aasm "$pkgdir/usr/local/kmd/aasm"
   install -Dm755 aasm "$pkgdir/usr/bin/aasm"
   install -Dm755 kmd_compile "$pkgdir/usr/bin/kmd_compile"
+  install -Dm755 mnemonics "$pkgdir/usr/local/kmd/mnemonics"
 }
+
