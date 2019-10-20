@@ -4,13 +4,13 @@
 _pkgname=ingen
 pkgname="${_pkgname}-git"
 pkgver=0.5.1.r2797.6c5e9239
-pkgrel=1
-pkgdesc="A modular plugin host for JACK and LV2."
+pkgrel=2
+pkgdesc="A modular plugin host for JACK and LV2 (git version)"
 arch=('i686' 'x86_64')
 url="http://drobilla.net/software/${_pkgname}/"
 license=('GPL')
-depends=('alsa-lib' 'ganv>=1.5.0' 'jack' 'lilv>=0.21.5' 'lv2>=1.15.4'
-         'portaudio' 'python-rdflib' 'raul>=0.8.10' 'suil>=0.8.7' 'serd>=0.30'
+depends=('alsa-lib' 'ganv>=1.5.4' 'jack' 'lilv>=0.21.5' 'lv2>=1.16.0'
+         'portaudio' 'python-rdflib' 'raul>=1.0.0' 'suil>=0.8.7' 'serd>=0.30'
          'sord>=0.12.0')
 makedepends=('git')
 optdepends=(
@@ -18,8 +18,8 @@ optdepends=(
 )
 provides=("${_pkgname}" "${_pkgname}=${pkgver//.r*/}")
 conflicts=("${_pkgname}")
-source=("${_pkgname}::git+https://git.drobilla.net/cgit.cgi/ingen.git"
-        'git+https://git.drobilla.net/cgit.cgi/autowaf')
+source=("${_pkgname}::git+https://gitlab.com/drobilla/ingen.git"
+        'autowaf::git+https://gitlab.com/drobilla/autowaf.git')
 md5sums=('SKIP' 'SKIP')
 
 
@@ -29,8 +29,6 @@ prepare() {
   git submodule init
   git config submodule.waflib.url "${srcdir}/autowaf"
   git submodule update
-
-  sed -i -e 's/raul-1 >= 1\.0\.0/raul >= 0.8.10/' wscript
 }
 
 pkgver() {
