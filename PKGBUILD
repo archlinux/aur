@@ -1,7 +1,7 @@
 # Maintainer: Will Price <will.price94@gmail.com>
 
 pkgname=ttf-sudo
-pkgver=0.39
+pkgver=0.40
 pkgrel=1
 pkgdesc="A font for programmers and command line users"
 arch=(any)
@@ -20,3 +20,4 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
+md5sums=('fb13ae5477150ee8e25476b10a2a038e')
