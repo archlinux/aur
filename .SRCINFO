@@ -1,0 +1,20 @@
+pkgbase = powerkit
+	pkgdesc = Powerkit is a lightweight desktop independent full featured power manager.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/rodlie/powerkit
+	arch = x86_64
+	arch = i686
+	license = BSD 3-Clause
+	makedepends = xss
+	makedepends = xorg-xrandr
+	makedepends = qt5-base
+	depends = xscreensaver
+	depends = upower
+	optdepends = adwaita-icon-theme
+	provides = powerkit
+	source = https://github.com/rodlie/powerkit/releases/download/1.0.0/powerkit-1.0.0.tar.xz
+	md5sums = e5a613f2219c0491d1bdae1fa1afe4d5
+
+pkgname = powerkit
+
