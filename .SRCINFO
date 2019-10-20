@@ -1,8 +1,8 @@
 pkgbase = libquickmail
 	pkgdesc = A library intended to give C/C++ developers a quick and easy way to send email from their applications
 	pkgver = 0.1.29
-	pkgrel = 1
-	url = http://sourceforge.net/projects/libquickmail
+	pkgrel = 2
+	url = https://sourceforge.net/projects/libquickmail
 	arch = i686
 	arch = x86_64
 	license = GPL3
