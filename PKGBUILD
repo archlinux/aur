@@ -1,6 +1,6 @@
 # Maintainer: stiglers-eponym
 pkgname=beamerpresenter
-pkgver=r123.982f41f
+pkgver=r125.942756b
 pkgrel=1
 pkgdesc="Simple dual screen pdf presentation software"
 arch=('x86_64')
@@ -22,6 +22,8 @@ pkgver() {
 
 build() {
   cd "${srcdir}/BeamerPresenter"
+  ## Uncomment the following line to exclude strange "embedding" of applications which only works with an X server:
+  #sed -i 's/^\([^#]*\)\(DEFINES *+= *EMBEDDED_APPLICATIONS_ENABLED\)/\1#\2/' beamerpresenter.pro
   qmake && make
 }
 
