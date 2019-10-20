@@ -1,0 +1,22 @@
+pkgbase = rofi-menus-git
+	pkgdesc = A collection of rofi scripts used to provide different menus
+	pkgver = c20044c
+	pkgrel = 1
+	url = https://gitlab.com/vahnrr/rofi-menus
+	arch = any
+	depends = rofi
+	optdepends = python: Used to run the NetworkManager menu
+	optdepends = mpc: Used to interact with mpd for music menu
+	optdepends = scrot: Used to take screenshots
+	provides = rofi-appsmenu
+	provides = rofi-i3layout
+	provides = rofi-mpd
+	provides = rofi-network
+	provides = rofi-vpn
+	provides = rofi-power
+	provides = rofi-scrot
+	source = git+https://gitlab.com/vahnrr/rofi-menus.git
+	sha256sums = SKIP
+
+pkgname = rofi-menus-git
+
