@@ -1,6 +1,6 @@
 pkgbase = tixati
 	pkgdesc = Tixati is a peer-to-peer file sharing program that uses the popular BitTorrent protocol
-	pkgver = 2.63
+	pkgver = 2.64
 	pkgrel = 1
 	url = http://www.tixati.com/
 	install = tixati.install
@@ -14,10 +14,10 @@ pkgbase = tixati
 	optdepends = gconf: for shell integration
 	source = LICENSE
 	sha256sums = 4b8bc7a9be3ad1300dd8e90cbf5af96a597379c3b994ee0793990fee3290c8d2
-	source_i686 = https://download2.tixati.com/download/tixati-2.63-1.i686.manualinstall.tar.gz
-	sha256sums_i686 = 5c8d196504d7cd9e9ff7546dbf9744c9adc1335d6c1dd17bdd133276b0bcb6d7
-	source_x86_64 = https://download2.tixati.com/download/tixati-2.63-1.x86_64.manualinstall.tar.gz
-	sha256sums_x86_64 = 5cc9d99acc8b60da40d74d54854d6e223bbb491b8d36b3421c59b65ce80b9a57
+	source_i686 = https://download2.tixati.com/download/tixati-2.64-1.i686.manualinstall.tar.gz
+	sha256sums_i686 = 307581c6956a059e40aae1993e9972c83c8f4c1a05d8cdf3cefdb3c950db3222
+	source_x86_64 = https://download2.tixati.com/download/tixati-2.64-1.x86_64.manualinstall.tar.gz
+	sha256sums_x86_64 = 174ba35691e74fd3f17d3454b6c32af99e481b1753d1b4314f8339adb658e277
 
 pkgname = tixati
 
