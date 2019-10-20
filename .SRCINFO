@@ -1,0 +1,20 @@
+pkgbase = wireguard-hardened
+	pkgdesc = Wireguard module for Hardened Kernel
+	pkgver = 0.0.20191012
+	pkgrel = 1
+	url = http://www.wireguard.com/
+	arch = x86_64
+	license = GPL
+	makedepends = gcc
+	makedepends = linux-hardened-headers
+	depends = linux-hardened
+	provides = WIREGUARD-MODULE
+	conflicts = wireguard-dkms
+	source = https://git.zx2c4.com/WireGuard/snapshot/WireGuard-0.0.20191012.tar.xz
+	source = https://git.zx2c4.com/WireGuard/snapshot/WireGuard-0.0.20191012.tar.asc
+	validpgpkeys = AB9942E6D4A4CFC3412620A749FC7012A5DE03AE
+	sha256sums = 93573193c9c1c22fde31eb1729ad428ca39da77a603a3d81561a9816ccecfa8e
+	sha256sums = SKIP
+
+pkgname = wireguard-hardened
+
