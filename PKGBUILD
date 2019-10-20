@@ -6,11 +6,13 @@ pkgrel=1
 pkgdesc='A collection of rofi scripts used to provide different menus'
 arch=('any')
 url='https://gitlab.com/vahnrr/rofi-menus'
-depends=('rofi')
+depends=('rofi' 'paper-icon-theme-git' 'ttf-comfortaa' 'nerd-fonts-complete')
 builddepends=('sed')
 optdepends=('python: Used to run the NetworkManager menu'
 	    'mpc: Used to interact with mpd for music menu'
-	    'scrot: Used to take screenshots')
+	    'scrot: Used to take screenshots'
+            'networkmanager: Used for the network menu'
+            'light-locker: Used to lock the screen by the power menu')
 provides=('rofi-appsmenu' 'rofi-i3layout' 'rofi-mpd' 'rofi-network' 'rofi-vpn' 'rofi-power' 'rofi-scrot')
 source=('git+https://gitlab.com/vahnrr/rofi-menus.git')
 sha256sums=('SKIP')
@@ -61,4 +63,9 @@ package() {
     install -D -m755 bins/nmvpnmenu $pkgdir/usr/bin/rofi-vpn
     install -D -m755 bins/powermenu $pkgdir/usr/bin/rofi-power
     install -D -m755 bins/scrotmenu $pkgdir/usr/bin/rofi-scrot
+}
+
+post_install() {
+    printf "==> Default resolution is set to 1080p, change configuration in /usr/share/$pkgname/themes/shared/"
+    printf "==> Package has been installed in /usr/share/$pkgname, and can be configured from there"
 }
