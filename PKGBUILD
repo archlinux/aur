@@ -64,8 +64,3 @@ package() {
     install -D -m755 bins/powermenu $pkgdir/usr/bin/rofi-power
     install -D -m755 bins/scrotmenu $pkgdir/usr/bin/rofi-scrot
 }
-
-post_install() {
-    printf "==> Default resolution is set to 1080p, change configuration in /usr/share/$pkgname/themes/shared/"
-    printf "==> Package has been installed in /usr/share/$pkgname, and can be configured from there"
-}
