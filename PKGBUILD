@@ -1,7 +1,7 @@
 # Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@kth.se>
 
 pkgname=simple-icon-theme
-pkgver=4
+pkgver=6
 pkgrel=1
 pkgdesc='A very simple icon theme'
 url='https://github.com/maandree/simple-icon-theme'
@@ -10,7 +10,7 @@ license=('custom:ISC')
 depends=(gtk-update-icon-cache)
 makedepends=(librsvg)
 source=($pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
-sha512sums=(5004dea5b1de1c4286cb378f1f494476db011936d325caa29ae0aa725ecb4534e29997df3b750afbcff4c0d0f115a39d321d1bd0d7b8707ecfacd76d8672d58f)
+sha512sums=(7fff2faf1f611db8dcf0854798a8d366096b72578aca2da234a4c1ea4289e1090f8dabda2a499d76744a54f31ac1092d1d282a54b284c821dfa691ac39ec2040)
 
 build () {
 	cd "$srcdir/simple-icon-theme-$pkgver"
