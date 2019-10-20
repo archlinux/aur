@@ -2,7 +2,7 @@
 # Python package author: Matthew Honnibal <matt@explosion.ai>
 pkgname=python-blis
 _origpkgname=cython-blis
-pkgver=0.2.3
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="The Blis linear algebra routines as a self-contained Python C-extension"
 arch=("x86_64")
@@ -11,14 +11,7 @@ license=("MIT")
 depends=("cython" "python-numpy" "python-pytest" "python-hypothesis")
 makedepends=("python-setuptools" "python-wheel")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/explosion/cython-blis/archive/v$pkgver.tar.gz")
-md5sums=('404155b7e87c728a699b64fa8260cb58')
-
-prepare() {
-    # Change gcc-6 to gcc to avoid that dep. I originally made a patch here,
-    # but there is some idiosycracy in Matt's environ that the script seems
-    # to require to build properly, and I can't figure out which env it is.
-    sed -i -e 's/gcc-6/gcc/g' "$_origpkgname-$pkgver/blis/_src/make/linux-x86_64.jsonl"
-}
+md5sums=('277685a789be880d455b8855a550d2ac')
 
 package() {
     cd "$_origpkgname-$pkgver"

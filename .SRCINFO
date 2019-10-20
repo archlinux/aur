@@ -1,6 +1,6 @@
 pkgbase = python-blis
 	pkgdesc = The Blis linear algebra routines as a self-contained Python C-extension
-	pkgver = 0.2.3
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/explosion/cython-blis
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = python-blis
 	depends = python-numpy
 	depends = python-pytest
 	depends = python-hypothesis
-	source = python-blis-0.2.3.tar.gz::https://github.com/explosion/cython-blis/archive/v0.2.3.tar.gz
-	md5sums = 404155b7e87c728a699b64fa8260cb58
+	source = python-blis-0.4.1.tar.gz::https://github.com/explosion/cython-blis/archive/v0.4.1.tar.gz
+	md5sums = 277685a789be880d455b8855a550d2ac
 
 pkgname = python-blis
 
