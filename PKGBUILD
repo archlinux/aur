@@ -2,7 +2,7 @@
 # Contributor: Spyhawk
 
 pkgname=libsolv-git
-pkgver=0.7.4.47.g78e2076b
+pkgver=0.7.7.2.gee27eee6
 pkgrel=1
 pkgdesc="A new approach to package dependency solving"
 arch=('i686' 'x86_64')
@@ -62,8 +62,4 @@ package() {
   # cmake fix (see GH#56)
   mkdir -p "${pkgdir}/usr/lib/cmake/LibSolv"
   mv "${pkgdir}/usr/share/cmake/Modules/FindLibSolv.cmake" "${pkgdir}/usr/lib/cmake/LibSolv/LibSolvConfig.cmake"
-
-  # hacky lib64 symlink fix
-  mv "${pkgdir}/usr/lib64/"* "${pkgdir}/usr/lib/"
-  rmdir "${pkgdir}/usr/lib64"
 }
