@@ -4,7 +4,7 @@
 # Contributor: Aaron Griffin <aaron@archlinux.org>
 
 pkgname=syslog-ng-nosystemd
-pkgver=3.23.1
+pkgver=3.24.1
 pkgrel=1
 pkgdesc="Next-generation syslogd with advanced networking and filtering capabilities"
 arch=('i686' 'x86_64')
@@ -14,8 +14,7 @@ url="https://www.syslog-ng.com/products/open-source-log-management/"
 depends=('awk' 'glib2' 'libcap' 'libnsl' 'udev' 'json-c' 'curl' 'libnet')
 # we need latest mongo-c-driver build to make configure version check work correctly
 makedepends=('flex' 'pkg-config' 'libxslt' 'mongo-c-driver>=1.14.0-3' 'librabbitmq-c'
-             'python' 'libesmtp' 'hiredis' 'libdbi' 'geoip' 'libmaxminddb'
-             'net-snmp')
+             'python' 'libesmtp' 'hiredis' 'libdbi' 'libmaxminddb' 'net-snmp')
 optdepends=('logrotate: for rotating log files'
             'libdbi: for the SQL plugin'
             'librabbitmq-c: for the AMQP plugin'
@@ -23,7 +22,6 @@ optdepends=('logrotate: for rotating log files'
             'python: for the Python plugin'
             'libesmtp: for the SMTP plugin'
             'hiredis: fir the redis plugin'
-            'geoip: for the GeoIP plugin'
             'libmaxminddb: for the GeoIP2 plugin'
             'python: for Python-based plugins'
             'net-snmp: for the SNMP plugin'
@@ -40,8 +38,8 @@ source=(https://github.com/balabit/syslog-ng/releases/download/syslog-ng-$pkgver
         syslog-ng.conf.d
         syslog-ng.logrotate
         syslog-ng.rc)
-sha256sums=('fb36cfc1982831f74143b77a924ee79714745b5e2b3ff59d086d09a77d0acd38'
-            '200d069f30925eb0893ba8635d980c9e769d2c7e70b6e7d16eba05e084a2f187'
+sha256sums=('d4d0a0357b452be96b69d6f741129275530d8f0451e35adc408ad5635059fa3d'
+            'afda99cf191bce4ddd4455bc94e2b0846b41f885cc23e56de83a9ecafb4ae6ff'
             'fe6ebe5c281b34bad201d9206e607857db9a5a78f03bb4dc4440584dca610f61'
             '93c935eca56854011ea9e353b7a1da662ad40b2e8452954c5b4b5a1d5b2d5317'
             'db643d69e840dfd5d7849e857291f15fd60913527402fde806ce3911e3523063')
