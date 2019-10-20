@@ -2,9 +2,9 @@
 
 _pkgname=sord
 pkgname="${_pkgname}-git"
-pkgver=0.16.2.r408.5894971
+pkgver=0.16.2.r412.9c11543
 pkgrel=1
-pkgdesc="A lightweight C library for storing RDF statements in memory"
+pkgdesc="Lightweight C library for storing RDF statements in memory (git version)"
 arch=('i686' 'x86_64')
 url="http://drobilla.net/software/sord/"
 license=('custom:ISC')
@@ -16,6 +16,7 @@ install="${_pkgname}.install"
 source=("${_pkgname}::git+https://gitlab.com/drobilla/sord.git"
         'autowaf::git+https://gitlab.com/drobilla/autowaf.git')
 md5sums=('SKIP' 'SKIP')
+
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
@@ -30,6 +31,9 @@ prepare() {
   git submodule init
   git config submodule.waflib.url "${srcdir}/autowaf"
   git submodule update
+
+  # remove local call to ldconfig
+  sed -i "/ldconfig/d" wscript
 }
 
 build() {
