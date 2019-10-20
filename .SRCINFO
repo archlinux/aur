@@ -1,6 +1,6 @@
 pkgbase = notepadqq-git
 	pkgdesc = A Linux clone of Notepad++
-	pkgver = 1.4.8.r191.g45f90b67
+	pkgver = 2.0.0.beta.r5.g5553c0be
 	pkgrel = 1
 	url = http://notepadqq.altervista.org/wp/
 	install = notepadqq.install
@@ -8,9 +8,9 @@ pkgbase = notepadqq-git
 	arch = x86_64
 	license = GPL3
 	makedepends = git
-	makedepends = qt5-tools>5.2
-	depends = qt5-webkit>5.2
-	depends = qt5-svg>5.2
+	makedepends = qt5-tools>=5.6
+	depends = qt5-webengine>=5.6
+	depends = qt5-svg>=5.6
 	depends = hicolor-icon-theme
 	depends = desktop-file-utils
 	provides = notepadqq
