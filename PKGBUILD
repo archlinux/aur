@@ -2,12 +2,12 @@
 
 pkgname=jevois-inventor
 pkgver=0.4.0
-pkgrel=3
+pkgrel=4
 pkgdesc="An easy to use GUI for programming the Jevois smart camera"
 arch=('i686' 'x86_64')
 url="https://github.com/jevois/jevois-inventor"
 license=('GPL3')
-depends=('qt5-serialport' 'qt5-multimedia')
+depends=('qt5-serialport' 'qt5-multimedia' 'gst-plugins-bad')
 makedepends=('git' 'qt5-base')
 provides=("${pkgname}")
 source=("https://github.com/jevois/jevois-inventor/archive/${pkgver}.tar.gz"
