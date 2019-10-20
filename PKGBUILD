@@ -19,7 +19,7 @@ pkgver() {
   cd "${pkgname%-git}"
   git describe | tr -d v |sed 's+-+.r+' | tr - .
 }
-yy
+
 build() {
   cd "${pkgname%-git}"
   [[ -d build ]] || mkdir build
