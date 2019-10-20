@@ -2,7 +2,7 @@
 # Contributor: drakkan <nicola.murino at gmail dot com>
 pkgname=sftpgo
 pkgver=0.9.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Full featured and highly configurable SFTP server'
 arch=('i686' 'x86_64')
 url="https://github.com/drakkan/${pkgname}"
@@ -13,6 +13,8 @@ optdepends=(
   "sqlite: to use SQLite provider"
   "postgresql: to use PostgreSQL provider"
   "mariadb: to use MySQL provider"
+  "python-requests: REST API CLI"
+  "python-pygments: REST API CLI colors highlight"
 )
 backup=("etc/${pkgname}/sftpgo.json")
 install=${pkgname}.install

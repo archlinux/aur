@@ -1,7 +1,7 @@
 pkgbase = sftpgo
 	pkgdesc = Full featured and highly configurable SFTP server
 	pkgver = 0.9.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/drakkan/sftpgo
 	install = sftpgo.install
 	arch = i686
@@ -14,6 +14,8 @@ pkgbase = sftpgo
 	optdepends = sqlite: to use SQLite provider
 	optdepends = postgresql: to use PostgreSQL provider
 	optdepends = mariadb: to use MySQL provider
+	optdepends = python-requests: REST API CLI
+	optdepends = python-pygments: REST API CLI colors highlight
 	backup = etc/sftpgo/sftpgo.json
 	source = git+https://github.com/drakkan/sftpgo#tag=0.9.3
 	sha256sums = SKIP
