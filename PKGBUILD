@@ -26,6 +26,7 @@ build() {
     cd "$srcdir/${pkgname}-$pkgver/build"
     cmake .. -DCMAKE_INSTALL_PREFIX=`kf5-config --prefix` \
     -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_PREFIX_PATH=/usr/share/ECM \
     -DBUILD_TESTING=OFF
     make
 }
