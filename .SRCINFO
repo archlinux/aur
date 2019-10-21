@@ -1,0 +1,16 @@
+pkgbase = deepin-dock-plugin-pineappledatetime-git
+	pkgdesc = Simple quick hack to make timedate plugin display year/month/day on efficient mode
+	pkgver = r16.97986bc
+	pkgrel = 1
+	url = https://github.com/BLumia/dde-dock-pineappledatetime/
+	arch = x86_64
+	license = GPLv3
+	makedepends = git
+	makedepends = cmake
+	makedepends = dtkcore
+	depends = deepin-dock
+	source = git+https://github.com/BLumia/dde-dock-pineappledatetime.git
+	md5sums = SKIP
+
+pkgname = deepin-dock-plugin-pineappledatetime-git
+
