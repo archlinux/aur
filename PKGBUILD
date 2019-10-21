@@ -2,12 +2,12 @@
 
 pkgname=xfce4-dockbarx-plugin
 pkgver=0.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Embed DockbarX in the xfce4-panel"
 arch=('i686' 'x86_64')
 url="https://github.com/TiZ-EX1/xfce4-dockbarx-plugin"
 license=('X11')
-depends=('dockbarx>=0.91' 'xfce4-panel')
+depends=('dockbarx>=0.91' 'xfce4-panel<4.15.0')
 makedepends=('python2' 'git' 'vala')
 conflicts=("${pkgname}-git" 'dockbarx-gtk3-git') # Unfortunately doesn't work with the GTK3 version of dockbarx yet
 
