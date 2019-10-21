@@ -1,0 +1,13 @@
+pkgbase = aws-okta-bin
+	pkgdesc = Log into AWS with Okta
+	pkgver = 0.26.0
+	pkgrel = 1
+	url = http://kubernetes.io
+	arch = x86_64
+	license = MIT
+	provides = aws-okta=$pkgver
+	source_x86_64 = aws-okta-v0.26.0-linux-amd64::https://github.com/segmentio/aws-okta/releases/download/v0.26.0/aws-okta-v0.26.0-linux-amd64
+	sha256sums_x86_64 = 2fa36533eff9c2abcaaf96f549884f56c3966e6964c445cc61a16e49f297dfa5
+
+pkgname = aws-okta-bin
+
