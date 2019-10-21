@@ -1,7 +1,7 @@
 # Maintainer: K. Morton <pryre.dev@outlook.com>
 # Contributor: Anselmo L. S. Melo <anselmo.melo@intel.com>
 pkgname=qgroundcontrol
-pkgver=3.5.4
+pkgver=3.5.5
 pkgrel=1
 pkgdesc="Micro air vehicle ground control station."
 arch=('x86_64')
@@ -44,6 +44,7 @@ depends=('bzip2'
 		 'qt5-quickcontrols2'
 		 'qt5-location'
 		 'qt5-svg'
+		 'qt5-graphicaleffects'
 )
 
 makedepends=('git' 'qt5-base')
@@ -53,7 +54,7 @@ source=("qgroundcontrol-${pkgver}.tar.gz::https://github.com/mavlink/qgroundcont
 		"gps-drivers-qgc${pkgver}.zip::https://github.com/PX4/GpsDrivers/archive/${pkgver_gps}.zip"
 )
 
-sha256sums=('653f8e47b6452f3b3d5c3a073834468342a2af9783c6db1b8a1859e9f2abc2a9'
+sha256sums=('0fa99ea10d9d82ab5702cf9f1fd694ecc2656e89c5a83b15a3174c7fd9ec8852'
 			'65c0fc60be9435375f74990a5c83fb0cdef6d15c100245759d2465d480a5b9b5'
 			'1ab58c633edcfff9288bd868bf33e2c9990afa27fa5df8f1731675d98a4ce6e4'
 )
@@ -75,6 +76,7 @@ prepare() {
 
 	cd "${srcdir}/${pkgname}-${pkgver}/"
 	patch --strip=1 < "${startdir}/${pkgname}-libicudata.patch"
+	patch --strip=1 < "${startdir}/${pkgname}-mavlink-warn.patch"
 }
 
 build() {
