@@ -1,7 +1,7 @@
 pkgbase = aocc
 	pkgdesc = AMD Optimizing C/C++ Compiler
 	pkgver = 2.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://developer.amd.com/amd-aocc/
 	install = aocc.install
 	arch = x86_64
