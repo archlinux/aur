@@ -1,5 +1,5 @@
 pkgbase = aws-okta-bin
-	pkgdesc = Log into AWS with Okta
+	pkgdesc = Log in to AWS with Okta
 	pkgver = 0.26.0
 	pkgrel = 1
 	url = https://github.com/segmentio/aws-okta
