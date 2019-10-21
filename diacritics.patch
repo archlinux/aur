@@ -1,0 +1,24 @@
+diff -Naur mmm-mode-0.5.7.orig/mmm-rpm.el mmm-mode-0.5.7.new/mmm-rpm.el
+--- mmm-mode-0.5.7.orig/mmm-rpm.el	2019-10-21 19:59:55.279172249 +0200
++++ mmm-mode-0.5.7.new/mmm-rpm.el	2019-10-21 20:03:12.372504145 +0200
+@@ -28,7 +28,7 @@
+ ;; This file contains the definition of an MMM Mode submode class for
+ ;; editing shell script sections within RPM (Redhat Package Manager)
+ ;; spec files. I recommend to use it in combination with
+-;; rpm-spec-mode.el by Stig Bjørlykke <stigb@tihlde.hist.no> and Steve
++;; rpm-spec-mode.el by Stig BjÃ¶rlykke <stigb@tihlde.hist.no> and Steve
+ ;; Sanbeg <sanbeg@dset.com> (http://www.xemacs.org/~stigb/rpm-spec-mode.el)
+ 
+ ;;; Installation:
+diff -Naur mmm-mode-0.5.7.orig/mmm.texinfo mmm-mode-0.5.7.new/mmm.texinfo
+--- mmm-mode-0.5.7.orig/mmm.texinfo	2019-10-21 19:59:55.279172249 +0200
++++ mmm-mode-0.5.7.new/mmm.texinfo	2019-10-21 20:03:23.259170733 +0200
+@@ -1445,7 +1445,7 @@
+ @file{mmm-rpm.el} contains the definition of an MMM Mode submode class
+ for editing shell script sections within RPM (Redhat Package Manager)
+ spec files.  It is recommended for use in combination with
+-@file{rpm-spec-mode.el} by Stig Bjørlykke <stigb@@tihlde.hist.no> and
++@file{rpm-spec-mode.el} by Stig BjÃ¶rlykke <stigb@@tihlde.hist.no> and
+ Steve Sanbeg <sanbeg@@dset.com>
+ (@uref{http://www.xemacs.org/~stigb/rpm-spec-mode.el}).
+ 
