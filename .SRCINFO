@@ -1,0 +1,32 @@
+pkgbase = cawbird-12
+	pkgdesc = A fork of the Corebird GTK Twitter client that continues to work with Twitter
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://ibboard.co.uk/cawbird/
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	license = GPL
+	makedepends = vala
+	makedepends = meson
+	makedepends = intltool
+	depends = gtk3
+	depends = libgee
+	depends = sqlite3
+	depends = gst-plugins-good
+	depends = gst-plugins-bad
+	depends = gst-libav
+	depends = gspell
+	optdepends = noto-fonts-emoji: Emoji support
+	conflicts = corebird
+	conflicts = corebird-git
+	conflicts = corebird-non-streaming-git
+	conflicts = cawbird-git
+	conflicts = cawbird
+	source = cawbird-12-1.0.2.tar.gz::https://github.com/IBBoard/cawbird/archive/v1.0.2.tar.gz
+	sha1sums = be497abef647f6f5592afa84cc69af13b1c38033
+
+pkgname = cawbird-12
+
