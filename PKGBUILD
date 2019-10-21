@@ -15,16 +15,14 @@ source=("https://sourceforge.net/projects/libecw-legacy/files/${pkgname}-${pkgve
         'libecwj2-3.3-3245b.patch'
         'libecwj2-3.3-NCSPhysicalMemorySize-Linux.patch'
         'libecwj2-3.3-2593.patch'
-        'libecwj2-3.3-wcharfix.patch'
-        'libecwj2-3.3-missing_script_update.patch')
+        'libecwj2-3.3-wcharfix.patch')
 md5sums=('acc04e07153c2a2a6595b3e2ebf34432'
          '7163711813a954ca0b59b7e6e44ecfca'
          '7871632c8d52ceb0ac02589deaa3c347'
          'cf23c8fbb0009905185886708d1c6de4'
          '3018aa1e84ca64e0026c4f3d3481cac1'
          '3ebdc31fa456f47aba6e1a3295f690d3'
-         'd0bf5fa7e6ba62ef5a138b5b22364b4e'
-         'cee158f3258344716ee9e28fd0d08de8')
+         'd0bf5fa7e6ba62ef5a138b5b22364b4e')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
@@ -49,9 +47,6 @@ build() {
 
   # std::length_error bug
   patch -p0 -i ${srcdir}/libecwj2-3.3-wcharfix.patch
-
-  # rid of --is-lightweight warning
-  patch -p1 -i ${srcdir}/libecwj2-3.3-missing_script_update.patch
   
   # rid of subdirectory warnings
   sed -i -e "s:AM_INIT_AUTOMAKE:AM_INIT_AUTOMAKE([subdir-objects]):" \
@@ -61,7 +56,7 @@ build() {
   sed -i -e '8aACLOCAL_AMFLAGS= -I m4' Makefile.am
   mkdir m4
 
-  autoreconf -i
+  autoreconf -vfi
 
   ./configure --prefix=/usr || return 1
   make || return 1
