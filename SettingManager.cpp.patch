@@ -1,0 +1,37 @@
+--- SettingManager.cpp.orig	2019-10-08 12:54:54.907755146 +1100
++++ SettingManager.cpp   	2019-10-08 12:54:20.807846426 +1100
+@@ -504,7 +504,7 @@
+ 
+     for(size_t szi = 0; szi < SETBOOL_IDS_END; szi++) {
+     	// Don't save empty hint
+-    	if(SetBoolCom[szi] != '\0') {
++    	if(SetBoolCom[szi][0] != '\0') {
+ 			fputs(SetBoolCom[szi], fSettingsFile);
+ 		}
+ 
+@@ -527,7 +527,7 @@
+ 
+     for(size_t szi = 0; szi < SETSHORT_IDS_END; szi++) {
+     	// Don't save empty hint
+-    	if(SetShortCom[szi] != '\0') {
++    	if(SetShortCom[szi][0] != '\0') {
+ 			fputs(SetShortCom[szi], fSettingsFile);
+ 		}
+ 
+@@ -550,7 +550,7 @@
+ 
+     for(size_t szi = 0; szi < SETTXT_IDS_END; szi++) {
+     	// Don't save empty hint
+-    	if(SetTxtCom[szi] != '\0') {
++    	if(SetTxtCom[szi][0] != '\0') {
+ 			fputs(SetTxtCom[szi], fSettingsFile);
+ 		}
+ 
+@@ -1112,6 +1112,7 @@
+             if(szLen == 0 || szLen > 64 || strpbrk(sTxt, " $|") != NULL) {
+                 return;
+             }
++            break;
+         case SETTXT_TCP_PORTS:
+             if(szLen == 0 || szLen > 64) {
+                 return;
