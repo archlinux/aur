@@ -1,16 +1,68 @@
 # Maintainer: Alex S. <shantanna_at_hotmail_dot_com>
 # Contributor: Jonathon Fernyhough <jonathon_at_manjaro_dot_org>
 
-# You'll need to download the package archive from
-# https://www.blackmagicdesign.com/support/
-
 # Hardware support is limited. Nvidia cards should work fine.
 # If you're running a hybrid setup, try with primusrun/optirun.
+
+# This was originally written by Daniel Bermond in blackmagic-decklink-sdk pkgbuild
+# It is sufficient to just replace _downloadid to correspond new release version
+# It can be obtained from chromium -> Developer Tools -> Network -> XHR -> click latest-version and copy downloadId
+_downloadid='ab713d8b44e24b468f4c51c5c62a0f5c'
+_referid='ab713d8b44e24b468f4c51c5c62a0f5c'
+_siteurl="https://www.blackmagicdesign.com/api/register/us/download/${_downloadid}"
+
+_useragent="User-Agent: Mozilla/5.0 (X11; Linux ${CARCH}) \
+                        AppleWebKit/537.36 (KHTML, like Gecko) \
+                        Chrome/77.0.3865.75 \
+                        Safari/537.36"
+
+_reqjson="{ \
+    \"firstname\": \"Arch\", \
+    \"lastname\": \"Linux\", \
+    \"email\": \"someone@archlinux.org\", \
+    \"phone\": \"202-555-0194\", \
+    \"country\": \"us\", \
+    \"state\": \"New York\", \
+    \"city\": \"AUR\", \
+    \"product\": \"DaVinci Resolve Studio\" \
+}"
+
+_reqjson="$(  printf '%s' "$_reqjson"   | sed 's/[[:space:]]\+/ /g')"
+_useragent="$(printf '%s' "$_useragent" | sed 's/[[:space:]]\+/ /g')"
+_useragent_escaped="${_useragent// /\\ }"
+
+_srcurl="$(curl \
+            -s \
+            -H 'Host: www.blackmagicdesign.com' \
+            -H 'Accept: application/json, text/plain, */*' \
+            -H 'Origin: https://www.blackmagicdesign.com' \
+            -H "$_useragent" \
+            -H 'Content-Type: application/json;charset=UTF-8' \
+            -H "Referer: https://www.blackmagicdesign.com/support/download/${_referid}/Linux" \
+            -H 'Accept-Encoding: gzip, deflate, br' \
+            -H 'Accept-Language: en-US,en;q=0.9' \
+            -H 'Authority: www.blackmagicdesign.com' \
+            -H 'Cookie: _ga=GA1.2.1849503966.1518103294; _gid=GA1.2.953840595.1518103294' \
+            --data-ascii "$_reqjson" \
+            --compressed \
+            "$_siteurl")"
+
+DLAGENTS=("https::/usr/bin/curl \
+              -gqb '' -C - --retry 3 --retry-delay 3 \
+              -H Host:\ sw.blackmagicdesign.com \
+              -H Upgrade-Insecure-Requests:\ 1 \
+              -H ${_useragent_escaped} \
+              -H Accept:\ text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8 \
+              -H Accept-Language:\ en-US,en;q=0.9 \
+              -o %o \
+              --compressed \
+              %u")
+
 
 pkgname=davinci-resolve-studio
 _pkgname=resolve
 resolve_app_name=com.blackmagicdesign.resolve
-pkgver=16.0
+pkgver=16.1
 pkgrel=1
 arch=('any')
 url="https://www.blackmagicdesign.com/support/family/davinci-resolve-and-fusion"
@@ -26,36 +78,20 @@ if [ ${pkgname} == "davinci-resolve-studio" ]; then
 # Variables for STUDIO edition
 	pkgdesc='Professional A/V post-production software suite from Blackmagic Design. Studio edition, requires license key or license dongle.'
 	_archive_name=DaVinci_Resolve_Studio_${pkgver}_Linux
-	sha256sums=('e1ade0dcf72646b29f84ea7651ac6b796c492f462e2db41023fe9970a241a234')
-	conflicts=('davinci-resolve-beta' 'davinci-resolve' 'davinci-resolve-studio-beta')
+	sha256sums=('5719359486e8d7bfb0d3187b6ad1771c45422d7365f14b399ced8f7c2ba20ccf')
+	conflicts=('davinci-resolve-beta' 'davinci-resolve' 'davinci-resolve-studio')
 else
 # Variables for FREE edition
 	pkgdesc='Professional A/V post-production software suite from Blackmagic Design'
 	_archive_name=DaVinci_Resolve_${pkgver}_Linux
-	sha256sums=('03f7bbd32eb2956fd933838690af7e86ecc0eca9f935ef287cebdebaaf5a2dd2')
-	conflicts=('davinci-resolve-beta' 'davinci-resolve-studio' 'davinci-resolve-studio-beta')
+	sha256sums=('4808e35742c7b16a5864612708fff68212fb3d7c415149512faf709d928e708d')
+	conflicts=('davinci-resolve' 'davinci-resolve-studio' 'davinci-resolve-studio-beta')
 fi
 
 _archive=${_archive_name}.zip
 _installer_binary=${_archive_name}.run
 
-# Trying to make the user's life easier ;o)
-msg2 "Trying to fetch the archive file if available..."
-DOWNLOADS_DIR=`xdg-user-dir DOWNLOAD`
-
-if [ ! -f ${PWD}/${_archive} ]; then
-	if [ -f $DOWNLOADS_DIR/${_archive} ]; then
-		ln -sfn $DOWNLOADS_DIR/${_archive} ${PWD}
-	else
-		msg2 ""
-		msg2 "The package can be downloaded here: https://www.blackmagicdesign.com/support/family/davinci-resolve-and-fusion"
-		msg2 "Please remember to put a downloaded package ${_archive}into the build directory ${PWD} or $DOWNLOADS_DIR"
-		msg2 ""
-	fi
-fi
-
-source=("local://${_archive}")
-
+source=("${_archive}"::"$_srcurl")
 
 prepare()
 {
