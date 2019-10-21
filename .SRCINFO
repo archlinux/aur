@@ -1,0 +1,13 @@
+pkgbase = cityofthieves-cli
+	pkgdesc = City Of Thieves is a text adventure game after the English gamebook with the same name by Ian Livingstone.
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/richelbilderbeek/CityOfThieves
+	arch = any
+	license = GPL3
+	makedepends = qt5-base
+	source = https://github.com/richelbilderbeek/CityOfThieves/archive/v1.2.tar.gz
+	md5sums = 7ee7d1de1cbd9f40e505425e62c19f34
+
+pkgname = cityofthieves-cli
+
