@@ -25,7 +25,6 @@ pkgbase = pop-gtk-theme-git
 	optdepends = mate-desktop
 	optdepends = lxde-common
 	optdepends = pop-icon-theme-git: Recommended icon theme
-	optdepends = pop-shell-theme-git: Recommended shell theme
 	optdepends = ttf-fira-sans: Recommended font for window titles and interface
 	optdepends = ttf-fira-mono: Recommended monospace font
 	optdepends = ttf-roboto-slab: Recommended font for documents
