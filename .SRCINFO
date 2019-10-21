@@ -1,6 +1,6 @@
 pkgbase = gnome-directory-thumbnailer
 	pkgdesc = GNOME thumbnailer to generate thumbnails for directories
-	pkgver = 0.1.9
+	pkgver = 0.1.11
 	pkgrel = 1
 	url = https://wiki.gnome.org/GnomeDirectoryThumbnailer
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = gnome-directory-thumbnailer
 	license = LGPL2.1
 	makedepends = intltool
 	depends = gnome-desktop
-	source = https://download.gnome.org/sources/gnome-directory-thumbnailer/0.1/gnome-directory-thumbnailer-0.1.9.tar.xz
-	sha256sums = f1e7bf8b70833e9601532468b8d80254e0bc43909b6e6860e819ff239161a6e4
+	source = https://download.gnome.org/sources/gnome-directory-thumbnailer/0.1/gnome-directory-thumbnailer-0.1.11.tar.xz
+	sha256sums = 57fba723521ff21aa2f655c22dc3e1e66586bb1effef8dbaf5de4d027f70cf9d
 
 pkgname = gnome-directory-thumbnailer
 
