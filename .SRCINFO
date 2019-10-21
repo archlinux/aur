@@ -1,12 +1,14 @@
 pkgbase = sudo-font-git
 	pkgdesc = Monospaced font by jenskulitek
-	pkgver = 0.40
+	pkgver = 0.40.r0.gf63cadf
 	pkgrel = 1
 	url = https://www.kutilek.de/sudo-font/
 	arch = any
 	license = OFL
-	depends = git
+	makedepends = git
 	depends = fontconfig
+	source = sudo-font::git+https://github.com/jenskutilek/sudo-font.git
+	md5sums = SKIP
 
 pkgname = sudo-font-git
 
