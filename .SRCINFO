@@ -9,7 +9,7 @@ pkgbase = libsodium-static
 	optdepends = libsodium: headers and pkg-config files
 	options = staticlibs
 	source = https://download.libsodium.org/libsodium/releases/libsodium-1.0.18-stable.tar.gz
-	sha512sums = b6824f60bfe380c798a492b7dddfbcd530019124d52b220d5f28e81941e767b066ad222e62149df63a64d8cf5d8edf7929bd4b4b45ad894ae6476fa2019abeab
+	sha512sums = eca6f6c981c896579db5cf1a270417f14d8c81f692fcec7ff6fd0d826b6d4264219adf0681a3f0fd6d2a43699d999abbf25b3e01b692ade1267a44b7fdd62c85
 
 pkgname = libsodium-static
 
