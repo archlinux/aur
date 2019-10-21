@@ -24,9 +24,9 @@ pkgbase = gazebo
 	depends = sdformat=6
 	depends = ignition-math=4
 	depends = ignition-transport=4
-	depends = ignition-common
-	depends = ignition-fuel_tools
-	depends = ignition-msgs
+	depends = ignition-common=1
+	depends = ignition-fuel_tools=1
+	depends = ignition-msgs=1
 	depends = tinyxml2
 	depends = qwt
 	optdepends = bullet: Bullet support
