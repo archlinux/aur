@@ -5,7 +5,7 @@
 
 _gitname='libsigrok'
 pkgname="${_gitname}-git"
-pkgver=0.2.1.r3425.gf6129c8f
+pkgver=0.2.1.r3429.g02a8c07d
 pkgrel=1
 pkgdesc="Client software that supports various hardware logic analyzers, core library (git version)"
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
@@ -16,27 +16,23 @@ makedepends=('git' 'autoconf-archive' 'doxygen')
 conflicts=("${_gitname}")
 provides=("${_gitname}")
 source=("git://sigrok.org/${_gitname}"
-	"file://0001-doxyfile-work-around-doxygen-1.8.16-bug.patch"
 )
-sha512sums=('SKIP' 'SKIP')
+sha512sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_gitname}"
   git describe --exclude 'libsigrok-unreleased' --long | sed 's/^libsigrok-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-	cd "${srcdir}/${_gitname}"
-	patch -Np1 <../0001-doxyfile-work-around-doxygen-1.8.16-bug.patch
-}
-
 build() {
+  rm -rf "${srcdir}/build"
   mkdir -p "${srcdir}/build"
   cd "${srcdir}/${_gitname}"
   ./autogen.sh
 
   cd "${srcdir}/build"
-  ../${_gitname}/configure --prefix=/usr --disable-java
+  echo "CONFIGURE"
+  ../${_gitname}/configure --prefix=/usr --disable-java --disable-ruby
 
   make
 }

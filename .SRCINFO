@@ -20,8 +20,6 @@ pkgbase = libsigrok-git
 	provides = libsigrok
 	conflicts = libsigrok
 	source = git://sigrok.org/libsigrok
-	source = file://0001-doxyfile-work-around-doxygen-1.8.16-bug.patch
-	sha512sums = SKIP
 	sha512sums = SKIP
 
 pkgname = libsigrok-git
