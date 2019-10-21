@@ -10,7 +10,6 @@ pkgbase = envypn-otb
 	depends = fontconfig
 	depends = xorg-fonts-encodings
 	depends = xorg-font-utils
-	conflicts = envypn-font
 	source = http://ywstd.fr/files/p/envypn-font/envypn-font-1.7.1.tar.gz
 	md5sums = 976ceda01018d3b109a735daf4e8af95
 	sha256sums = bda67b6bc6d5d871a4d46565d4126729dfb8a0de9611dae6c68132a7b7db1270
