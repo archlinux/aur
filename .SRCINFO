@@ -1,6 +1,6 @@
 pkgbase = freecad
 	pkgdesc = A general purpose 3D CAD modeler
-	pkgver = 0.18.16144
+	pkgver = 0.18.16145
 	pkgrel = 1
 	url = https://www.freecadweb.org/
 	arch = x86_64
@@ -24,6 +24,7 @@ pkgbase = freecad
 	depends = libspnav
 	depends = glew
 	depends = netcdf
+	depends = openmpi
 	depends = shared-mime-info
 	depends = hicolor-icon-theme
 	depends = jsoncpp
@@ -41,7 +42,7 @@ pkgbase = freecad
 	optdepends = python-matplotlib
 	optdepends = graphviz
 	optdepends = openscad
-	source = git+https://github.com/FreeCAD/FreeCAD.git#commit=5a1527f954c69e022a42d4bbaccdd032996fdfb1
+	source = git+https://github.com/FreeCAD/FreeCAD.git#commit=f972b010bb86b39e38e7f59526596bea8b06d954
 	source = freecad.desktop
 	source = freecad.xml
 	sha256sums = SKIP
