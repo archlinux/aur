@@ -2,7 +2,7 @@
 # Contributor: Mirco Tischler <mt-ml at gmx dot de>
 
 pkgname=actor-framework
-pkgver=0.17.1
+pkgver=0.17.2
 pkgrel=1
 pkgdesc="An Open Source Implementation of the Actor Model in C++"
 arch=(i686 x86_64)
@@ -10,28 +10,21 @@ url="http://actor-framework.org"
 license=('custom:"BSD-3-Clause"'
 	 'custom:"Boost Software License"')
 depends=()
-makedepends=('cmake' 'opencl-headers' 'git' 'python' 'opencl-icd-loader')
+makedepends=('cmake' 'opencl-headers' 'git' 'opencl-icd-loader')
 optdepends=(
-	'python: caf-python'
-	'ipython: caf-python'
 	'opencl-icd-loader: opencl support'
 	'openssl: openssl support'
 	)
 
 source=(
-	"git+https://github.com/actor-framework/actor-framework#commit=5d6cda55a285343a6c9e0a878744f0c1c63ef380"
-	"git+https://github.com/pybind/pybind11.git"
+	"git+https://github.com/actor-framework/actor-framework#commit=4da751ab7a79bcdc6e9dd2157b9b5c5c6814e26d"
 	)
 sha256sums=(
-	'SKIP'
 	'SKIP'
 	)
 
 prepare(){
 	cd ${pkgname}
-	git submodule init libcaf_python/third_party/pybind
-	git config submodule.libcaf_python/third_party/pybind.url "${srcdir}/pybind11"
-	git submodule update
 
 	# Disable opencl test, it can't work in a clean chroot
 	rm libcaf_opencl/test/opencl.cpp
@@ -40,7 +33,8 @@ prepare(){
 	LDFLAGS=$LDFLAGS CXXFLAGS=$CXXFLAGS \
 		./configure   \
 		--prefix=/usr \
-		--no-examples
+		--no-examples \
+		--no-python
 }
 
 build() {
