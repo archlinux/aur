@@ -1,6 +1,6 @@
 pkgbase = lilv-git
 	pkgdesc = A C library interface to the LV2 plug-in standard with Python bindings (git version)
-	pkgver = 0.24.5.r1235.d959f44
+	pkgver = 0.24.5.r1240.7a7bff2
 	pkgrel = 1
 	url = http://drobilla.net/software/lilv
 	arch = i686

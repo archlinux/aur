@@ -4,7 +4,7 @@
 
 _pkgname=lilv
 pkgname="${_pkgname}-git"
-pkgver=0.24.5.r1235.d959f44
+pkgver=0.24.5.r1240.7a7bff2
 pkgrel=1
 pkgdesc="A C library interface to the LV2 plug-in standard with Python bindings (git version)"
 arch=('i686' 'x86_64')
@@ -38,6 +38,12 @@ prepare() {
   git submodule update
 }
 
+check() {
+  cd "${srcdir}/${_pkgname}"
+
+  python waf test -v -v
+}
+
 build() {
   cd "${srcdir}/${_pkgname}"
 
@@ -45,7 +51,7 @@ build() {
     --prefix=/usr \
     --configdir=/etc \
     --dyn-manifest \
-    --bindings
+    --test
   python waf $MAKEFLAGS
 }
 
