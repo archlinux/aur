@@ -2,8 +2,36 @@ Changelog
 =========
 
 
-r983.3eb9b4f
+r993.d9482c6
 ------------
+
+Fix
+~~~
+- Resurrect Clang fix. [Masashi Fujita]
+
+  5e66557a88ab747985913b2406c9157cfe377a0b is wrong :-(
+- Prevent double free error on LLVM 8.0.0. [Masashi Fujita]
+- Handle non-clang build on macOS. [Masashi Fujita]
+
+  `gcc` does not allow `-stdlib`.
+
+Other
+~~~~~
+- Merge pull request #237 from parbo/rtti-option. [emil-e]
+
+  Add option for using rtti
+- Add option for using rtti. [Pär Bohrarper]
+- Merge pull request #236 from Jvanrhijn/master. [emil-e]
+
+  Add fixed-count overloads for gen::unique(By)
+- Formatting fix in documentation for fixed-size container generators.
+  [Jesse van Rhijn]
+- Add documentation for new unique(By) overloads. [Jesse van Rhijn]
+- Add fixed-count overloads for gen::unique(By) [Jesse van Rhijn]
+- Merge pull request #230 from objectx/fix/double-free-on-llvm-8.
+  [emil-e]
+
+  Fix double free error on llvm 8
 - Merge pull request #224 from stolyaroleh/master. [emil-e]
 
   Allow aggregate initialization in gen::construct and gen::makeUnique
