@@ -1,6 +1,6 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 pkgname=meshlab-git
-pkgver=2019.01.29.f6c6675.r0.gf6c6675b
+pkgver=2019.01.29.f6c6675.r2.g17d380b1
 pkgrel=1
 pkgdesc="System for processing and editing of unstructured 3D models arising in 3D scanning (qt5 version)"
 arch=('i686' 'x86_64')
@@ -25,6 +25,7 @@ source=("git+https://github.com/cnr-isti-vclab/meshlab.git"
         "3ds.patch"
         "levmar.patch"
         "muparser.patch"
+        "muparser_drop_unicode.patch"
         "meshlabserver_GLU.patch"
         "mpir.patch"
         "rpath.patch"
@@ -38,7 +39,8 @@ md5sums=('SKIP'
          '0ac7701c703d3d88a9295f8fb39beeb9'
          '473a1af178e0ea2e92441e5dc29a3842'
          '32581c7128c8e544705c39e59647ab10'
-         'f1efa4f1400cc0952fdcd44adc11174b'
+         'e60c9cccc4051f0c383a8634859fe49c'
+         'a78fc74c7e24d6ce455188d4122ae9c7'
          'a4f7548978564637e502ecdbd2b537e0'
          '726e5aeee66681b586150c08cafbe3f1'
          'eb89ce7e86bba52ca4ad4aa173d3f8a2'
@@ -78,6 +80,8 @@ prepare() {
   patch -Np1 -i ../shaders_dir.patch
   msg "qt(5.11) compatibility"
   patch -Np1 -i ../qt5.11.patch
+  msg "fix muparser unicode string"
+  patch -Np1 -i ../muparser_drop_unicode.patch
   cd ${srcdir}/vcglib
   msg "fix import bundler/nvm"
   patch -Np1 -i ../import_bundle_out.patch
