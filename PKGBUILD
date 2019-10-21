@@ -14,7 +14,7 @@ makedepends=("git")
 source=("git+https://github.com/PaulCombal/SamRewritten.git"
         "samrewritten.desktop")
 md5sums=("SKIP"
-         "0992c9065836983f5e8cf86a7340193d")
+         "84c9216c71f336e1dabd462815a157ef")
 
 pkgver() {
     cd ${_pkgname}
