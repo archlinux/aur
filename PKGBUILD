@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
 pkgname=imcompressor
-pkgver=0.5.2
-pkgrel=2
+pkgver=0.6
+pkgrel=1
 pkgdesc="Simple & lossless image compressor."
 arch=('any')
 url="https://github.com/Huluti/ImCompressor"
@@ -11,7 +11,7 @@ makedepends=('meson' 'appstream-glib')
 optdepends=('mozjpeg: Recommended, provides libjpeg-turbo')
             # See https://libjpeg-turbo.org/About/Mozjpeg
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Huluti/ImCompressor/archive/$pkgver.tar.gz")
-sha256sums=('ef90d82249d4a76d10ec2e26fab0ee6c6347171ec43664fe1e389d56eafedfa4')
+sha256sums=('b91550ba6e43b2685a12913f593971d2ec415d6eccbb1fc427c5adcb96250b16')
 
 build() {
 	cd "ImCompressor-$pkgver"
