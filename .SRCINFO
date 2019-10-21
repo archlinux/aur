@@ -10,7 +10,7 @@ pkgbase = optimus-manager-qt-git
 	makedepends = git
 	depends = qt5-base
 	depends = qt5-x11extras
-	depends = optimus-manager>=1.2.2
+	depends = optimus-manager
 	provides = optimus-manager-qt
 	conflicts = optimus-manager-qt
 	source = git+https://github.com/Shatur95/optimus-manager-qt
