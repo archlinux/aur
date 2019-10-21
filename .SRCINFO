@@ -1,7 +1,7 @@
 pkgbase = qgroundcontrol
 	pkgdesc = Micro air vehicle ground control station.
 	pkgver = 3.5.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://qgroundcontrol.org/
 	arch = x86_64
 	license = GPL3
