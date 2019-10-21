@@ -1,5 +1,5 @@
 pkgname=libdbus-minimal
-pkgver=1.12.14
+pkgver=1.12.16
 pkgrel=1
 pkgdesc="DBus library"
 url="http://www.freedesktop.org/Software/dbus"
@@ -8,7 +8,7 @@ license=('GPL' 'custom')
 provides=('libdbus')
 conflicts=('libdbus')
 source=("http://dbus.freedesktop.org/releases/dbus/dbus-$pkgver.tar.gz"{,.asc})
-md5sums=('9e748b8c50dae17ae639f1c55ae6417d'
+md5sums=('2dbeae80dfc9e3632320c6a53d5e8890'
          'SKIP')
 validpgpkeys=('DA98F25C0871C49A59EAFF2C4DE8FF2A63C7CC90'  # Simon McVittie <simon.mcvittie@collabora.co.uk>
               '3C8672A0F49637FE064AC30F52A43A1E4B77B059') # Simon McVittie <simon.mcvittie@collabora.co.uk>
