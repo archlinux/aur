@@ -1,8 +1,8 @@
 # Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@kth.se>
 
 pkgname=liberror
-pkgver=1.0
-pkgrel=2
+pkgver=1.0.1
+pkgrel=1
 pkgdesc="Library for custom errors"
 arch=(i686 x86_64)
 url="https://github.com/maandree/liberror"
@@ -11,7 +11,7 @@ depends=()
 checkdepends=()
 makedepends=()
 source=(liberror-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
-sha256sums=(57d8541770d3d8f99afbd181086e1b97286d68353f08823ef3ea35df03cd6796)
+sha256sums=(428d6d03c7cf10e3797c0ad8351c6e3215da9079f3589fdc50e5e08c5b6a51b6)
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
