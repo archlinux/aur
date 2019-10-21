@@ -1,10 +1,10 @@
 # Maintainer: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
 _name=userpath
-_sha256sum=10fa2a90c61546f188989680a9b7510888b976f5d18503ad4482c8f919e783cb
+_sha256sum=dd0b8ba650732c614c5e6b709e51be321c596566422d99a443d545401a965468
 
 pkgname=python-userpath
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Cross-platform tool for adding locations to the user PATH, no elevated privileges required!"
 arch=('any')
