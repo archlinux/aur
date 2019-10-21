@@ -1,6 +1,6 @@
 pkgbase = emacs-mmm-mode-git
 	pkgdesc = Minor mode for Emacs that allows Multiple Major Modes to coexist in one buffer
-	pkgver = 20180621
+	pkgver = 20191017
 	pkgrel = 1
 	url = http://mmm-mode.sourceforge.net
 	arch = any
@@ -11,7 +11,9 @@ pkgbase = emacs-mmm-mode-git
 	conflicts = emacs-mmm-mode
 	conflicts = mmm-mode
 	source = git://github.com/purcell/mmm-mode.git
+	source = diacritics.patch
 	md5sums = SKIP
+	md5sums = f4aad5924cde6afade50e46ec7a072d4
 
 pkgname = emacs-mmm-mode-git
 

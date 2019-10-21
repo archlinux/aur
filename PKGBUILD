@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=emacs-mmm-mode-git
-pkgver=20180621
+pkgver=20191017
 pkgrel=1
 pkgdesc="Minor mode for Emacs that allows Multiple Major Modes to coexist in one buffer"
 arch=('any')
@@ -9,13 +9,19 @@ license=('GPL')
 makedepends=('git')
 provides=('emacs-mmm-mode' 'mmm-mode')
 conflicts=('emacs-mmm-mode' 'mmm-mode')
-source=('git://github.com/purcell/mmm-mode.git')
+source=('git://github.com/purcell/mmm-mode.git' diacritics.patch)
 _gitname="mmm-mode"
-md5sums=('SKIP')
+md5sums=('SKIP'
+         'f4aad5924cde6afade50e46ec7a072d4')
 
 pkgver() {
   cd $_gitname
   echo $(git log -1 --format="%cd" --date=short | sed 's|-||g')
+}
+
+prepare() {
+  cd $_gitname
+  patch -Np1 < "$srcdir"/diacritics.patch
 }
 
 build() {
