@@ -109,4 +109,5 @@ package() {
     rmdir "$pkgdir"/run
     install -d "$pkgdir"/usr/share/man/man8/
     gzip -9c man/nginx.8 > "$pkgdir"/usr/share/man/man8/nginx.8.gz
+    install -Dm644 ../http3.conf "$pkgdir"/etc/nginx/http3.conf.example
 }
