@@ -1,6 +1,6 @@
 pkgbase = dbuch-zsh-config
 	pkgdesc = dbuch zsh configuration
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/dbuch/
 	arch = x86_64
@@ -10,8 +10,9 @@ pkgbase = dbuch-zsh-config
 	depends = ripgrep
 	depends = bat
 	depends = skim
+	provides = grml-zsh-config
 	conflicts = grml-zsh-config
-	source = git+https://github.com/dbuch/dbuch-zsh-config.git
+	source = git+https://github.com/dbuch/dbuch-zsh-config.git#commit=87800ba4c17fcc849283ddf9e708f8e2432c6520
 	sha256sums = SKIP
 
 pkgname = dbuch-zsh-config
