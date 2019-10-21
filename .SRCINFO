@@ -1,6 +1,6 @@
 pkgbase = puppetserver
 	pkgdesc = Server automation framework and application
-	pkgver = 6.6.0
+	pkgver = 6.7.1
 	pkgrel = 1
 	url = https://docs.puppetlabs.com/puppetserver/latest/services_master_puppetserver.html
 	install = puppetserver.install
@@ -8,7 +8,7 @@ pkgbase = puppetserver
 	license = APACHE
 	depends = ruby
 	depends = puppet>=6
-	depends = java-runtime-headless=8
+	depends = java-runtime-headless
 	depends = logrotate
 	depends = jruby
 	depends = facter
@@ -24,10 +24,10 @@ pkgbase = puppetserver
 	backup = etc/puppetlabs/puppetserver/logback.xml
 	backup = etc/puppetlabs/puppetserver/request-logging.xml
 	backup = etc/puppetlabs/puppetserver/services.d/ca.cfg
-	source = puppetserver-6.6.0.tar.gz::https://downloads.puppetlabs.com/puppet/puppetserver-6.6.0.tar.gz
-	source = puppetserver-6.6.0.tar.gz.asc::https://downloads.puppetlabs.com/puppet/puppetserver-6.6.0.tar.gz.asc
+	source = puppetserver-6.7.1.tar.gz::https://downloads.puppetlabs.com/puppet/puppetserver-6.7.1.tar.gz
+	source = puppetserver-6.7.1.tar.gz.asc::https://downloads.puppetlabs.com/puppet/puppetserver-6.7.1.tar.gz.asc
 	validpgpkeys = 6F6B15509CF8E59E6E469F327F438280EF8D349F
-	sha512sums = 2b43092752e246027a437398d6d23a4085caa2956a1453cec2e62f1001fca1c98bddca0a9d90c178ce9c89a06c26edcaee49416c1b8a4941e2bc4b6b5bb1fe0e
+	sha512sums = 80af1266d122f131f8d5385acbcf712d3042e7665eb739491d1d3d06adec8c0d78009aaec86161ed4fdb180bf529a48b2964c784ec728d40319f63c6d2f8f0df
 	sha512sums = SKIP
 
 pkgname = puppetserver

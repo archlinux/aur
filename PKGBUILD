@@ -4,13 +4,13 @@
 # Contributor: Niels Abspoel <aboe76 (at) Gmail (dot) com>
 
 pkgname=puppetserver
-pkgver=6.6.0
+pkgver=6.7.1
 pkgrel=1
 pkgdesc="Server automation framework and application"
 arch=('any')
 url="https://docs.puppetlabs.com/puppetserver/latest/services_master_puppetserver.html"
 license=("APACHE")
-depends=("ruby" "puppet>=6" "java-runtime-headless=8" "logrotate" "jruby"
+depends=("ruby" "puppet>=6" "java-runtime-headless" "logrotate" "jruby"
          "facter" "net-tools")
 backup=('etc/default/puppetserver'
         'etc/logrotate.d/puppetserver'
@@ -26,14 +26,14 @@ backup=('etc/default/puppetserver'
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::https://downloads.puppetlabs.com/puppet/${pkgname}-${pkgver}.tar.gz"
         "${pkgname}-${pkgver}.tar.gz.asc::https://downloads.puppetlabs.com/puppet/${pkgname}-${pkgver}.tar.gz.asc")
-sha512sums=('2b43092752e246027a437398d6d23a4085caa2956a1453cec2e62f1001fca1c98bddca0a9d90c178ce9c89a06c26edcaee49416c1b8a4941e2bc4b6b5bb1fe0e'
+sha512sums=('80af1266d122f131f8d5385acbcf712d3042e7665eb739491d1d3d06adec8c0d78009aaec86161ed4fdb180bf529a48b2964c784ec728d40319f63c6d2f8f0df'
             'SKIP')
 validpgpkeys=('6F6B15509CF8E59E6E469F327F438280EF8D349F')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
 
-  echo 'hiera-eyaml 2.1.0' >> ext/build-scripts/jruby-gem-list.txt
+  echo 'hiera-eyaml 3.0.0' >> ext/build-scripts/jruby-gem-list.txt
   sed -i 's:sysconfig:default:' ext/redhat/puppetserver.service
   sed -i "s:\[/opt/puppetlabs/puppet/lib/ruby/vendor_ruby\]:\[$( ruby -e \
     'puts RbConfig::CONFIG["vendorlibdir"]' ),$( ruby -e \
@@ -42,6 +42,7 @@ prepare() {
     'puts Gem.default_dir' ):" \
     ext/build-scripts/install-vendored-gems.sh
   sed -i 's:#!/opt/.*/ruby:#!/usr/bin/ruby:' ext/cli/ca
+  sed -i 's/\/opt\/puppetlabs\/puppet\/lib\/ruby\/vendor_ruby/\/usr\/lib\/ruby\/vendor_ruby/g' ext/cli_defaults/cli-defaults.sh
 }
 
 package() {
