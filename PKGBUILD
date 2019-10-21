@@ -22,7 +22,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/IBBoard/cawbird/archive
 sha1sums=('be497abef647f6f5592afa84cc69af13b1c38033')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/cawbird-$pkgver"
   meson builddir --prefix=/usr -D VIDEO=yes -D SPELLCHECK=yes
   ninja -C builddir
 }
