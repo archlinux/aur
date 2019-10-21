@@ -1,15 +1,15 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=sed-go-git
-pkgver=r73.91e374d
+pkgver=r76.906bc69
 pkgrel=1
 epoch=
 pkgdesc="An implementation of sed in Go. Just because! "
 arch=('i686' 'x86_64')
-url="https://github.com/rwtodd/sed-go"
-license=('GPLv3')
+url="https://github.com/rwtodd/Go.Sed"
+license=('GPL3')
 categories=()
 groups=()
-depends=('')
+depends=()
 makedepends=('git' 'go')
 optdepends=()
 checkdepends=()
@@ -21,7 +21,7 @@ options=()
 changelog=
 install=
 noextract=()
-_gourl=github.com/rwtodd/sed-go/cmd/sed-go
+_gourl=github.com/rwtodd/Go.Sed/cmd/sed-go
 
 pkgver() {
   GOPATH="$srcdir" go get -d ${_gourl}
