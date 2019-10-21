@@ -1,22 +1,22 @@
 # Maintainer: Stelios Tsampas <loathingkernel @at gmail .dot com>
 
 pkgname=arenatracker
-pkgver=6.76
+pkgver=7.05
 pkgrel=1
 pkgdesc="Arena Tracker is a deck tracker that gives you a lot of extra info while playing Hearthstone"
 arch=('x86_64')
 url="https://github.com/supertriodo/Arena-Tracker"
 license=('GPL')
 depends=('qt5-base' 'qt5-websockets' 'python-pyautogui' 'libzip' 'opencv2')
-makedepends=('imagemagick')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/supertriodo/Arena-Tracker/archive/v${pkgver}.tar.gz"
+makedepends=('imagemagick' 'git')
+source=("git+https://github.com/supertriodo/Arena-Tracker.git#tag=v${pkgver}"
         'ArenaTracker.desktop')
-md5sums=('161bc892174d09dbc4ffd01e034aaa84'
+md5sums=('SKIP'
          '016d2e7016df6c2f07228ad49c5fb96c')
 
 
 prepare() {
-    cd "Arena-Tracker-${pkgver}"
+    cd Arena-Tracker
     if [[ -d build ]]; then
         rm -rf build
     fi
@@ -24,7 +24,7 @@ prepare() {
 }
 
 build() {
-    cd "Arena-Tracker-${pkgver}"/build
+    cd Arena-Tracker/build
     qmake \
         PREFIX=/usr \
         QMAKE_CFLAGS_RELEASE="${CFLAGS}" \
@@ -35,7 +35,7 @@ build() {
 }
 
 package() {
-    cd "Arena-Tracker-${pkgver}"
+    cd Arena-Tracker
     install -dm755 "$pkgdir"/usr/bin
     install -dm755 "$pkgdir"/usr/share/{applications,pixmaps}
     install -m755 build/ArenaTracker "$pkgdir"/usr/bin/

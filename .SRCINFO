@@ -1,19 +1,20 @@
 pkgbase = arenatracker
 	pkgdesc = Arena Tracker is a deck tracker that gives you a lot of extra info while playing Hearthstone
-	pkgver = 6.76
+	pkgver = 7.05
 	pkgrel = 1
 	url = https://github.com/supertriodo/Arena-Tracker
 	arch = x86_64
 	license = GPL
 	makedepends = imagemagick
+	makedepends = git
 	depends = qt5-base
 	depends = qt5-websockets
 	depends = python-pyautogui
 	depends = libzip
 	depends = opencv2
-	source = arenatracker-6.76.tar.gz::https://github.com/supertriodo/Arena-Tracker/archive/v6.76.tar.gz
+	source = git+https://github.com/supertriodo/Arena-Tracker.git#tag=v7.05
 	source = ArenaTracker.desktop
-	md5sums = 161bc892174d09dbc4ffd01e034aaa84
+	md5sums = SKIP
 	md5sums = 016d2e7016df6c2f07228ad49c5fb96c
 
 pkgname = arenatracker
