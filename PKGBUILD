@@ -24,7 +24,7 @@ package() {
     git submodule update --init --recursive
     cd ../nginx-$pkgver.$pkgrel
     patch -p01 < ../quiche/extras/nginx/nginx-$pkgver.patch
-    if [ $(uname -m) -eq 'aarch64' ]; then
+    if [ $(uname -m) = 'aarch64' ]; then
         sed -i 's/alignas(64)/alignas(16)/g' ../quiche/deps/boringssl/crypto/cipher_extra/aead_test.cc
     fi
     ./configure                                \
