@@ -1,14 +1,17 @@
 pkgbase = ryzenadj-git
 	pkgdesc = RyzenAdj tool for adjusting Ryzen Mobile power states
-	pkgver = v0.5.2.r2.g82afad3
+	pkgver = 0.5.2.r2.g82afad3
 	pkgrel = 1
 	url = https://github.com/FlyGoat/RyzenAdj
 	arch = x86_64
 	license = LGPL2
+	makedepends = git
 	makedepends = cmake
 	depends = pciutils
-	source = ryzenadj-git::git+https://github.com/FlyGoat/RyzenAdj
-	md5sums = SKIP
+	provides = ryzenadj
+	conflicts = ryzenadj
+	source = ryzenadj::git+https://github.com/FlyGoat/RyzenAdj
+	sha256sums = SKIP
 
 pkgname = ryzenadj-git
 
