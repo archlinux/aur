@@ -1,9 +1,10 @@
 # Maintainer: Bernhard Landauer <bernhard@manjaro.org>
 # Contributor: James Kittsmiller (AJSlye) <james@nulogicsystems.com>
+# Contributor: yochananmarqos https://github.com/yochananmarqos
 
 _pkgname=AppImageLauncher
 pkgname=appimagelauncher
-pkgver=1.5.0
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="A Helper application for running and integrating AppImages."
 arch=('x86_64')
@@ -17,6 +18,7 @@ depends=('binutils'
     'gtest'
     'libarchive'
     'libbsd'
+    'librsvg'
     'qt5-base'
     'shared-mime-info')
 makedepends=('git' 'cmake' 'wget' 'vim' 'qt5-tools')
@@ -33,8 +35,12 @@ prepare() {
 
 build() {
   cd $_pkgname
-  cmake . -DCMAKE_INSTALL_PREFIX:PATH=/usr/ -DUSE_SYSTEM_GTEST=ON -DUSE_SYSTEM_XZ=ON \
-          -DUSE_SYSTEM_LIBARCHIVE=ON
+  cmake . \
+    -DCMAKE_INSTALL_PREFIX:PATH=/usr/ \
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DUSE_SYSTEM_GTEST=ON \
+    -DUSE_SYSTEM_XZ=ON \
+    -DUSE_SYSTEM_LIBARCHIVE=ON
   make
 }
 
@@ -46,8 +52,4 @@ package() {
   cmake .
   make DESTDIR="$pkgdir" install
   install -Dm644 LICENSE.txt $pkgdir/usr/share/licenses/$pkgname/LICENSE
-
-  # fix lib location
-  mv $pkgdir/usr/lib64/* $pkgdir/usr/lib/
-  rm -rf $pkgdir/usr/lib64
 }
