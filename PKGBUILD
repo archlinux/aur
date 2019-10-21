@@ -1,43 +1,29 @@
+# Maintainer: Aleksandr <contact at via dot aur>
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
-# Maintainer: Alexander Boyko <4le34n at gmail dot com>
+
 pkgname=activemq
-pkgver=5.15.9
-pkgrel=2
+pkgver=5.15.10
+pkgrel=1
 pkgdesc="Popular and powerful open source messaging and Integration Patterns provider"
 arch=('x86_64')
 url="http://activemq.apache.org"
 license=('Apache 2.0')
 depends=('java-runtime' 'lsb-release')
-backup=('opt/activemq/conf/activemq.xml')
 source=("http://archive.apache.org/dist/${pkgname}/${pkgver}/apache-${pkgname}-${pkgver}-bin.tar.gz"
-	profile.sh
-	profile.csh
-	service)
+	service
+	sysusers)
 options=(!strip)
 install=install
 
 package() {
-    install -dm0755 "${pkgdir}/opt"
-    install -dm0755 "${pkgdir}/usr/share/doc"
-    install -dm0755 "${pkgdir}/usr/share/activemq"
-    install -dm0755 "${pkgdir}/usr/share/webapps"
-    install -dm0755 "${pkgdir}/usr/share/licenses/activemq"
-    mv apache-${pkgname}-${pkgver}/docs "${pkgdir}/usr/share/doc/activemq/"
-    mv apache-${pkgname}-${pkgver}/examples "${pkgdir}/usr/share/activemq/"
-    mv apache-${pkgname}-${pkgver}/webapps "${pkgdir}/usr/share/webapps/activemq"
-    mv apache-${pkgname}-${pkgver}/webapps-demo "${pkgdir}/usr/share/webapps/activemq-demo"
-    mv apache-${pkgname}-${pkgver}/LICENSE "${pkgdir}/usr/share/licenses/activemq/"
-    mv apache-${pkgname}-${pkgver}/NOTICE "${pkgdir}/usr/share/licenses/activemq/"
-    mv apache-${pkgname}-${pkgver}/README.txt "${pkgdir}/usr/share/doc/activemq/"
-    install -D -m0755 profile.sh "${pkgdir}/etc/profile.d/activemq.sh"
-    install -D -m0755 profile.csh "${pkgdir}/etc/profile.d/activemq.csh"
+    install -dm0755 "${pkgdir}/opt/${pkgname}"
+    install -dm0755 "${pkgdir}/usr/lib/sysusers.d"
+    install -D -m0644 sysusers "${pkgdir}/usr/lib/sysusers.d/activemq.conf"
     install -D -m0644 service "${pkgdir}/usr/lib/systemd/system/activemq.service"
-    mv apache-${pkgname}-${pkgver} "${pkgdir}/opt/activemq"
-    ln -s /usr/share/webapps/activemq "${pkgdir}/opt/activemq/webapps"
-    rm -rf "${pkgdir}/opt/activemq/bin/macosx"
+    mv apache-${pkgname}-${pkgver} "${pkgdir}/opt/${pkgname}/"
+    ln -s /opt/activemq/apache-${pkgname}-${pkgver} ${pkgdir}/opt/${pkgname}/current
 }
 
-md5sums=('9ebdbd9e26c3ed781431d066a7daab87'
-         '0a1b2ac8850b833a5926f393069eee72'
-         '86a4b3f9117acb83ba653859b053f966'
-         '1648124a20c6abad981c5d1e028adec6')
+md5sums=('73fa2fdd04ffe04ab64a5e49b49d9dcc'
+         '702b858fdb54ff2ba26f25758c01bc3b'
+         '4f4459a36f94a0ffdaf4c8bca762cf81')

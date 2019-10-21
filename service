@@ -1,13 +1,18 @@
 [Unit]
-Description=Messaging and Integration Patterns provider
-After=network.target
+Description=Apache ActiveMQ
+After=networki-online.target
 
 [Service]
-#PrivateTmp=true
 Type=forking
-#ExecStart=/opt/activemq/bin/linux-x86-64/activemq start
-ExecStart=/usr/bin/java -jar /opt/activemq/bin/activemq.jar start
-PIDFile=/run/activemq.pid
+WorkingDirectory=/opt/activemq/current/bin
+#ExecStart=/usr/bin/java -jar /opt/activemq/current/bin/activemq.jar start
+ExecStart=/opt/activemq/current/bin/activemq start
+ExecStop=/opt/activemq/current/bin/activemq stop
+Restart=on-abort
+RestartSec=60
+User=activemq
+Group=activemq
 
 [Install]
 WantedBy=multi-user.target
+

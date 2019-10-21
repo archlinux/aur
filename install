@@ -1,7 +1,16 @@
 post_install() {
 	echo
 	echo '  -> '
-	echo '  -> Edit wrapper.conf, enter the full path to the executable java'
-	echo '  -> '
+	echo '  -> To complete the installation, run:'
+        echo '  ->   cd /opt/activemq'
+        echo '  ->   chown -R activemq:activemq apache-${pkgname}-${pkgver}'
+        echo '  ->   chown -h activemq:activemq current'
+	echo '  -> The main settings are:'
+        echo '  ->   conf/activemq.xml'
+        echo '  ->   conf/credentials.properties (mq.user and mq.pswd)'
 	echo
 }
+post_update() {
+        post_install
+}
+
