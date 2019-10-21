@@ -1,0 +1,20 @@
+pkgbase = lacuna-webpki
+	pkgdesc = The Lacuna WebPKI native application. An easy solution for using digital certificates in Web applications.
+	pkgver = 2.10.0
+	pkgrel = 1
+	url = http://webpki.lacunasoftware.com
+	install = lacuna-webpki.install
+	arch = x86_64
+	license = unknown
+	depends = desktop-file-utils
+	depends = glib2
+	depends = gtk3>=3.6
+	depends = hicolor-icon-theme
+	depends = xdg-utils
+	options = !strip
+	options = !emptydirs
+	source_x86_64 = https://get.webpkiplugin.com/Downloads/2.10.0/setup-deb-64
+	sha512sums_x86_64 = bf0db6969f819a836bfd3deaa9839608f3da00ee6aa50b8df8397f7b3896a27df3c7a23fc82a0a36d3334f4b0feb5c06955b3f8ee3280195da3673f431126067
+
+pkgname = lacuna-webpki
+

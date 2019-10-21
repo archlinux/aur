@@ -1,0 +1,42 @@
+post_install() {
+	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+
+	# Chrome and Chromium uses the manifest file in the /etc dir, which is
+	# checked as an error in Litium package verification.
+	# Thus we are going to move the manifest file after installation.
+
+	# ensure that chrome and chromium extension manifest dir exists
+	CHROME_MANIFEST_DIR=/etc/opt/chrome/native-messaging-hosts/
+	CHROMIUM_MANIFEST_DIR=/etc/chromium/native-messaging-hosts/
+	sudo mkdir -p $CHROME_MANIFEST_DIR
+	sudo mkdir -p $CHROMIUM_MANIFEST_DIR
+
+	# copy manifest to respective dirs
+	sudo cp /opt/lacuna-webpki/manifest.json "$CHROME_MANIFEST_DIR"com.lacunasoftware.webpki.json
+	sudo cp /opt/lacuna-webpki/manifest.json "$CHROMIUM_MANIFEST_DIR"com.lacunasoftware.webpki.json
+
+	update-desktop-database -q
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_remove() {
+	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+
+	# remove user data
+	DIR=~/.lacuna-webpki
+	if [ -d $DIR ];
+	then
+		rm -r "$DIR"
+	fi
+
+	# remove chromium and chrome manifests
+	CHROME_MANIFEST_DIR=/etc/opt/chrome/native-messaging-hosts/
+	CHROMIUM_MANIFEST_DIR=/etc/chromium/native-messaging-hosts/
+	sudo rm "$CHROME_MANIFEST_DIR"com.lacunasoftware.webpki.json
+	sudo rm "$CHROMIUM_MANIFEST_DIR"com.lacunasoftware.webpki.json
+
+	update-desktop-database -q
+}
