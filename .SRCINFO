@@ -1,6 +1,6 @@
 pkgbase = freedoom-git
 	pkgdesc = Free game data files for Doom gaming engines
-	pkgver = 0.12.0.r2.ga9afb194
+	pkgver = 0.12.0.r14.g3ba7c8c3
 	pkgrel = 1
 	epoch = 1
 	url = http://freedoom.github.io/
@@ -17,11 +17,8 @@ pkgname = freedm-git
 	provides = freedoom
 	provides = freedm
 
-pkgname = freedoom1-git
+pkgname = freedoom-git
 	provides = freedoom
 	provides = freedoom1
-
-pkgname = freedoom2-git
-	provides = freedoom
 	provides = freedoom2
 

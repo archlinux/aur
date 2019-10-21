@@ -3,10 +3,10 @@
 # Contributor: Christoph Zeiler <rabyte*gmail>
 # Contributor: felix <at yandex.com, m.p.isaev>
 
-pkgname=({freedm,freedoom1,freedoom2}-git)
+pkgname=({freedm,freedoom}-git)
 pkgbase=freedoom-git
 pkgdesc="Free game data files for Doom gaming engines"
-pkgver=0.12.0.r2.ga9afb194
+pkgver=0.12.0.r14.g3ba7c8c3
 pkgrel=1
 epoch=1
 arch=('any')
@@ -33,16 +33,10 @@ package_freedm-git() {
   make prefix=/usr DESTDIR="$pkgdir" install-freedm
 }
 
-package_freedoom1-git() {
-  provides=('freedoom' 'freedoom1')
+package_freedoom-git() {
+  provides=('freedoom' 'freedoom1' 'freedoom2')
 
   cd "$srcdir/freedoom"
-  make prefix=/usr DESTDIR="$pkgdir" install-freedoom1
+  make prefix=/usr DESTDIR="$pkgdir" install-freedoom
 }
 
-package_freedoom2-git() {
-  provides=('freedoom' 'freedoom2')
-
-  cd "$srcdir/freedoom"
-  make prefix=/usr DESTDIR="$pkgdir" install-freedoom2
-}
