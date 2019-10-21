@@ -13,6 +13,7 @@ pkgbase = gcc7
 	makedepends = doxygen
 	makedepends = python
 	makedepends = subversion
+	makedepends = flex
 	options = !emptydirs
 	source = https://sources.archlinux.org/other/gcc/gcc-7.4.1-20181207.tar.xz
 	source = http://isl.gforge.inria.fr/isl-0.18.tar.bz2

@@ -18,7 +18,7 @@ pkgdesc='The GNU Compiler Collection (7.x.x)'
 arch=(x86_64)
 license=(GPL LGPL FDL custom)
 url='http://gcc.gnu.org'
-makedepends=(binutils libmpc doxygen python subversion)
+makedepends=(binutils libmpc doxygen python subversion flex)
 options=(!emptydirs)
 source=(https://sources.archlinux.org/other/gcc/gcc-${pkgver/+/-}.tar.xz
         http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2
