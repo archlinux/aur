@@ -5,7 +5,8 @@ pkgbase = emacs-lsp-mode
 	url = https://github.com/emacs-lsp/lsp-mode
 	arch = any
 	license = GPL3
-	depends = emacs
+	makedepends = cask
+	depends = emacs-ht
 	source = emacs-lsp-mode-6.1.tar.gz::https://github.com/emacs-lsp/lsp-mode/archive/6.1.tar.gz
 	sha256sums = 7c502ac206ea66b69f32015ac9e0e62a107bc8ecc2371756080914a561cae7e7
 

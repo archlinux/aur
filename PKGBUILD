@@ -11,13 +11,14 @@ pkgdesc="Emacs client/library for the Language Server Protocol"
 url="https://github.com/${_gituser}/${_gitrepo}"
 arch=('any')
 license=('GPL3')
-depends=('emacs')
+depends=('emacs-ht')
+makedepends=('cask')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/${_gituser}/${_gitrepo}/archive/$pkgver.tar.gz")
 sha256sums=('7c502ac206ea66b69f32015ac9e0e62a107bc8ecc2371756080914a561cae7e7')
 
 build() {
   cd ${_gitrepo}-$pkgver
-  emacs -q --no-splash -batch -L . -f batch-byte-compile *.el
+  cask build
 }
 
 package() {
