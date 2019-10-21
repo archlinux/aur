@@ -1,0 +1,17 @@
+pkgbase = perl-authen-captcha
+	pkgdesc = Perl extension for creating captcha's to verify the human element in transactions.
+	pkgver = 1.024
+	pkgrel = 1
+	url = https://metacpan.org/release/Authen-Captcha
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-gd>=0
+	depends = perl-string-random>=0
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/L/LK/LKUNDRAK/Authen-Captcha-1.024.tar.gz
+	md5sums = 266464497d74ff6c284fc2a7a6245576
+	sha512sums = eebe7796d089cdb4f8c78f91b42ac37492a98e5cc1c8e04266595bb391000d57e77fe0030d0d1ce74791d51dc51303615d49f20b302471e7d570afa777a581e0
+
+pkgname = perl-authen-captcha
+
