@@ -37,7 +37,7 @@ build() {
     git submodule update
 
     # Adding support for new version of GCC
-    sed -i.orig 's/\*|4\.\*|5\.\*|6\.\*|7\*/&|8*/' configure
+    sed -i.orig 's/\*|4\.\*|5\.\*|6\.\*|7\*/&|8*|9*/' configure
 
     # If both SDL and SDL2 are installed, then disable SDL.
     # Otherwise there are functions with similar names and linking fails.
