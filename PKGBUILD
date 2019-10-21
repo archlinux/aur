@@ -98,13 +98,6 @@ prepare() {
   # Status: 2
   git_cp_by_msg '!575' 'clutter/stage: Add an API for shallow relayouts' 'clutter/actor: Use the new shallow relayout API'
 
-  # Title: clutter-stage-cogl: Use regions
-  # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/692
-  # Type: 1
-  # Status: 2 (Crashes GDM)
-  # Comment:
-  # git cherry-pick -n 1393cd7a^..0f5e3851
-
   # Title: clutter/stage: Update input devices right after doing a relayout
   # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/429
   # Type: 1
