@@ -1,7 +1,7 @@
 pkgbase = nomachine
 	pkgdesc = Remote desktop application
 	pkgver = 6.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.nomachine.com
 	install = nomachine.install
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = nomachine
 	license = custom:"NoMachine EULA"
 	depends = bash
 	depends = openssh
+	depends = nawk
 	optdepends = xorg-xauth: allows logging into a headless machine
 	conflicts = nxmanager
 	conflicts = nxwebplayer
