@@ -1,0 +1,17 @@
+pkgbase = martin-todo-git
+	pkgdesc = Extremely simple todo app because everything sucks
+	pkgver = r13.7dce80e
+	pkgrel = 1
+	url = https://github.com/sandsmark/martin-todo.git
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = git
+	depends = qt5-base
+	provides = martin-todo
+	conflicts = martin-todo
+	source = git+https://github.com/sandsmark/martin-todo.git
+	md5sums = SKIP
+
+pkgname = martin-todo-git
+
