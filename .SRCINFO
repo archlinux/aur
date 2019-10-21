@@ -1,6 +1,6 @@
 pkgbase = devpi-server
 	pkgdesc = reliable private and pypi.python.org caching server
-	pkgver = 4.9.0
+	pkgver = 5.2.0
 	pkgrel = 1
 	url = http://doc.devpi.net/
 	install = devpi-server.install
@@ -19,10 +19,10 @@ pkgbase = devpi-server
 	depends = python-passlib
 	depends = python-argon2_cffi
 	depends = devpi-common
-	source = https://files.pythonhosted.org/packages/source/d/devpi-server/devpi-server-4.9.0.tar.gz
+	source = https://files.pythonhosted.org/packages/source/d/devpi-server/devpi-server-5.2.0.tar.gz
 	source = devpi-server.service
 	source = devpi-server.install
-	sha256sums = e92de95c869927ba628d25b024c460b63740d52ebba11dae79146d8cc3b6a033
+	sha256sums = aff9858dcb97e6806df9e0a4409f665515bfae3e6afb82bf23eb1e1d176857b5
 	sha256sums = 538aa64a3c88e55b971e4d249159228fb919802433191bbbd13e73c5e537c0b7
 	sha256sums = 16c075687426589b69da252f04ee1a2ff0f8e73526eb773c53475d82e827f199
 
