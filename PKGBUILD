@@ -18,7 +18,7 @@ depends=(
 optdepends=('noto-fonts-emoji: Emoji support')
 makedepends=('vala' 'meson' 'intltool')
 conflicts=('corebird' 'corebird-git' 'corebird-non-streaming-git' 'cawbird-git' 'cawbird')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/IBBoard/cawbird/archive/v${pkgver}.tar.gz")
+source=("cawbird-${pkgver}.tar.gz::https://github.com/IBBoard/cawbird/archive/v${pkgver}.tar.gz")
 sha1sums=('be497abef647f6f5592afa84cc69af13b1c38033')
 
 build() {

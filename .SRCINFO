@@ -25,7 +25,7 @@ pkgbase = cawbird-12
 	conflicts = corebird-non-streaming-git
 	conflicts = cawbird-git
 	conflicts = cawbird
-	source = cawbird-12-1.0.2.tar.gz::https://github.com/IBBoard/cawbird/archive/v1.0.2.tar.gz
+	source = cawbird-1.0.2.tar.gz::https://github.com/IBBoard/cawbird/archive/v1.0.2.tar.gz
 	sha1sums = be497abef647f6f5592afa84cc69af13b1c38033
 
 pkgname = cawbird-12
