@@ -2,7 +2,7 @@
 
 pkgname=nfsen
 pkgver=1.3.8
-pkgrel=32
+pkgrel=33
 pkgdesc="Netflow visualisation and investigation tool"
 arch=('i686' 'x86_64')
 url="https://sourceforge.net/projects/nfsen"
@@ -30,30 +30,30 @@ source=("$url/files/stable/$pkgname-$pkgver/$pkgname-$pkgver.tar.gz"
         'tmpfiles')
 
 prepare() {
-	cd "$pkgname-$pkgver"
+	cd "${pkgname}-${pkgver}"
         # Fix error
         sed -i 's|$rrd_version < 1.6|$rrd_version < 1.7|' libexec/NfSenRRD.pm
 }
 
 package() {
-	install -dm755 "$pkgdir/usr/share/webapps" 
-        cp -a "$pkgname-$pkgver" "$pkgdir/usr/share/webapps/$pkgname"
-	cd "$pkgname-$pkgver"
-	install -Dm644 "$srcdir/service" "$pkgdir/usr/lib/systemd/system/nfsen.service" 
-	install -Dm644 "$srcdir/sysusers" "$pkgdir/usr/lib/sysusers.d/nfsen.conf" 
-	install -Dm644 "$srcdir/tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/nfsen.conf" 
-	install -Dm644 BSD-license.txt "$pkgdir/usr/share/licenses/$pkgname/BSD-license.txt" 
-	install -Dm644 ChangeLog "$pkgdir/usr/share/doc/$pkgname/ChangeLog" 
-	install -Dm644 README "$pkgdir/usr/share/doc/$pkgname/README" 
-	install -Dm644 README.plugins "$pkgdir/usr/share/doc/$pkgname/README.plugins" 
-	install -Dm644 "$srcdir/nfsen.conf" "$pkgdir/etc/nfsen/nfsen.conf"
-	install -Dm644 "$srcdir/ports.desc" "$pkgdir/etc/nfsen/ports.desc"
-	install -Dm644 "$srcdir/nginx" "$pkgdir/usr/share/doc/$pkgname/vhost-nginx.conf"
-	install -Dm644 "$srcdir/README.pkg" "$pkgdir/usr/share/doc/$pkgname/README.pkg"
-	install -Dm755 "$srcdir/profile.sh" "$pkgdir/etc/profile.d/nfsen.sh"
-	install -Dm644 "$srcdir/scripts.conf" "$pkgdir/etc/$pkgname/scripts.conf"
-	install -Dm755 "$srcdir/create_top_directions" "$pkgdir/opt/$pkgname/bin/create_top_directions"
-	install -Dm755 "$srcdir/create_top_protocols" "$pkgdir/opt/$pkgname/bin/create_top_protocols"
+	install -dm755 "${pkgdir}/usr/share/webapps" 
+        cp -a "${pkgname}-${pkgver}" "${pkgdir}/usr/share/webapps/${pkgname}"
+	cd "${pkgname}-${pkgver}"
+	install -Dm644 "${srcdir}/service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service" 
+	install -Dm644 "${srcdir}/sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf" 
+	install -Dm644 "${srcdir}/tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf" 
+	install -Dm644 BSD-license.txt "${pkgdir}/usr/share/licenses/${pkgname}/BSD-license.txt" 
+	install -Dm644 ChangeLog "${pkgdir}/usr/share/doc/${pkgname}/ChangeLog" 
+	install -Dm644 README "${pkgdir}/usr/share/doc/${pkgname}/README" 
+	install -Dm644 README.plugins "${pkgdir}/usr/share/doc/${pkgname}/README.plugins" 
+	install -Dm644 "${srcdir}/${pkgname}.conf" "${pkgdir}/etc/${pkgname}/${pkgname}.conf"
+	install -Dm644 "${srcdir}/ports.desc" "${pkgdir}/etc/${pkgname}/ports.desc"
+	install -Dm644 "${srcdir}/nginx" "${pkgdir}/usr/share/doc/${pkgname}/vhost-nginx.conf"
+	install -Dm644 "${srcdir}/README.pkg" "${pkgdir}/usr/share/doc/${pkgname}/README.pkg"
+	install -Dm755 "${srcdir}/profile.sh" "${pkgdir}/etc/profile.d/${pkgname}.sh"
+	install -Dm644 "${srcdir}/scripts.conf" "${pkgdir}/etc/${pkgname}/scripts.conf"
+	install -Dm755 "${srcdir}/create_top_directions" "${pkgdir}/opt/${pkgname}/bin/create_top_directions"
+	install -Dm755 "${srcdir}/create_top_protocols" "${pkgdir}/opt/${pkgname}/bin/create_top_protocols"
 }
 
 md5sums=('fc45b3f44a66c2ed65d1269e479c2414'
