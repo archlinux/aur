@@ -3,7 +3,7 @@
 
 pkgname=aocc
 pkgver=2.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc="AMD Optimizing C/C++ Compiler"
 arch=('x86_64')
 license=('custom')

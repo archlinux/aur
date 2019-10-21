@@ -15,8 +15,11 @@ prepend-path LD_LIBRARY_PATH $AOCC_ROOT/lib:$AOCC_ROOT/lib32:/usr/lib:/usr/lib32
 append-path  CPATH           $AOCC_ROOT/include
 
 setenv       CC              aocc
+setenv       OMPI_CC         aocc
 setenv       CXX             aocc
+setenv       OMPI_CXX        aocc
 setenv       FC              flang
+setenv       OMPI_FC         flang
 
 module-whatis "$AOCC_TEXT version $VERSION"
 
