@@ -4,7 +4,7 @@
 
 pkgname=drone-git
 _pkgname=drone
-pkgver=v2973
+pkgver=v3608
 pkgrel=1
 pkgdesc="Drone is a Continuous Integration platform built on Docker, written in Go."
 arch=('i686' 'x86_64')
@@ -64,7 +64,6 @@ package() {
 
   # license
   install -Dm644 "$_pkgname/LICENSE" "$pkgdir/usr/share/$_pkgname"
-  install -Dm644 "$_pkgname/README.md" "$pkgdir/usr/share/$_pkgname"
 
   # service
   install -Dm644 drone.service "$pkgdir/usr/lib/systemd/system/drone.service"
