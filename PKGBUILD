@@ -2,13 +2,13 @@
 
 _pkgname=arturo
 pkgname=${_pkgname}-git
-pkgver=20160714
-pkgrel=2
+pkgver=20191021
+pkgrel=1
 pkgdesc="Command line toolkit for working with Arduino hardware."
 arch=('any')
 url="https://github.com/scottdarch/Arturo"
 license=('MIT')
-depends=('arduino-avr-core' 'python-glob2-git' 'picocom' 'python2-jinja' 'python2-configobj' 'python2-pyserial')
+depends=('arduino-avr-core' 'python2-glob2-git' 'picocom' 'python2-jinja' 'python2-configobj' 'python2-pyserial')
 makedepends=('python2' 'git')
 provides=(${_pkgname})
 conflicts=(${_pkgname})
