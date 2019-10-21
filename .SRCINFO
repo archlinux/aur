@@ -1,11 +1,12 @@
 pkgbase = emacs-lsp-mode-git
 	pkgdesc = Emacs client/library for the Language Server Protocol
-	pkgver = 6.0.r162.gbb0ab76
+	pkgver = 6.1.r140.g951766b
 	pkgrel = 1
 	url = https://github.com/emacs-lsp/lsp-mode
 	arch = any
 	license = GPL3
 	makedepends = git
+	makedepends = cask
 	depends = emacs
 	depends = emacs-ht
 	provides = emacs-lsp-mode

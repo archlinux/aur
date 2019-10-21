@@ -5,14 +5,14 @@ _gituser="emacs-lsp"
 _gitrepo="lsp-mode"
 
 pkgname=emacs-lsp-mode-git
-pkgver=6.0.r162.gbb0ab76
+pkgver=6.1.r140.g951766b
 pkgrel=1
 pkgdesc="Emacs client/library for the Language Server Protocol"
 url="https://github.com/${_gituser}/${_gitrepo}"
 arch=('any')
 license=('GPL3')
 depends=('emacs' 'emacs-ht')
-makedepends=('git')
+makedepends=('git' 'cask')
 provides=('emacs-lsp-mode')
 conflicts=('emacs-lsp-mode')
 source=("git+https://github.com/${_gituser}/${_gitrepo}.git")
@@ -25,7 +25,7 @@ pkgver() {
 
 build() {
   cd "$_gitrepo"
-  emacs -q --no-splash -batch -L . -f batch-byte-compile *.el
+  cask build
 }
 
 package() {
