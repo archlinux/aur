@@ -1,0 +1,25 @@
+pkgbase = clean-itasks-dev-bin
+	pkgdesc = Provides the functional programming language Clean and the iTasks system.
+	pkgver = 20191021
+	pkgrel = 1
+	url = https://clean.cs.ru.nl
+	arch = x86_64
+	license = custom
+	depends = bash
+	provides = clean-lang
+	provides = clean-lang-bin
+	conflicts = clean-lang
+	conflicts = clean-lang-bin
+	replaces = clean-lang
+	replaces = clean-lang-bin
+	source = https://ftp.cs.ru.nl/Clean/builds/linux-x64/clean-bundle-complete-linux-x64-latest.tgz
+	source = clm-wrapper.sh
+	source = cpm-wrapper.sh
+	source = clenv.sh
+	sha256sums = 2420fab49df9e325bd379659d9a3b86bbed7b420329330ee92e52a09a35a2c09
+	sha256sums = fb1a94763518b7bc583ea29fc97d5accac1644da0bbee8f7b082fde904fe6bce
+	sha256sums = 353ae04913cd1c6a27e31738b8f69c35394180b0b3f083d30d21d4b636df8955
+	sha256sums = 88ec2dd869af3e4a5beebde6878b0eb71a381932b885fb6b679a47c76d5e5c7b
+
+pkgname = clean-itasks-dev-bin
+
