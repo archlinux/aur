@@ -17,7 +17,7 @@ source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}
         'devpi-server.install')
 install='devpi-server.install'
 sha256sums=('aff9858dcb97e6806df9e0a4409f665515bfae3e6afb82bf23eb1e1d176857b5'
-            '538aa64a3c88e55b971e4d249159228fb919802433191bbbd13e73c5e537c0b7'
+            '1ebfe9edc2bf0f368162f15540e48a8e046db0023b5da23e98daf43f0e075a95'
             '16c075687426589b69da252f04ee1a2ff0f8e73526eb773c53475d82e827f199')
 
 package() {
