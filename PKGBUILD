@@ -1,7 +1,7 @@
 # Maintainer: Muhkoenig
 
 pkgname=kubernetes-helm-bin
-pkgver=2.14.3
+pkgver=2.15.0
 pkgrel=1
 pkgdesc="The Kubernetes Package Manager"
 url="https://github.com/kubernetes/helm"
@@ -12,7 +12,7 @@ optdepends=(
 )
 
 source=("https://storage.googleapis.com/kubernetes-helm/helm-v$pkgver-linux-amd64.tar.gz")
-sha256sums=('38614a665859c0f01c9c1d84fa9a5027364f936814d1e47839b05327e400bf55')
+sha256sums=('50936867d24431a98777828f399b48063c3f66af1ec3ba96ef5a8fc8326ebe74')
 package() {
   cd "$srcdir"
   install -d "$pkgdir/usr/bin"
