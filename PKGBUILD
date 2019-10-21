@@ -4,12 +4,12 @@
 _pkgname=picamera
 pkgname=python-${_pkgname}
 pkgver=1.13
-pkgrel=2
+pkgrel=3
 pkgdesc="pure Python interface to the Raspberry Pi camera module"
 arch=('any')
 url="https://pypi.python.org/pypi/picamera/"
 license=('BSD')
-depends=('python')
+depends=('python' 'raspberrypi-firmware')
 makedepends=('python-setuptools')
 optdepends=("python-numpy: used by array")
 source=(https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz)
