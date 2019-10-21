@@ -4,7 +4,7 @@ pkgver=2019.01.29.f6c6675.r2.g17d380b1
 pkgrel=1
 pkgdesc="System for processing and editing of unstructured 3D models arising in 3D scanning (qt5 version)"
 arch=('i686' 'x86_64')
-url="http://www.meshlab.net"
+url="https://www.meshlab.net"
 conflicts=('meshlab')
 provides=('meshlab')
 license=('GPL2')
@@ -32,21 +32,21 @@ source=("git+https://github.com/cnr-isti-vclab/meshlab.git"
         "import_bundle_out.patch"
         "qt5.11.patch"
         "meshlab.desktop")
-md5sums=('SKIP'
-         'SKIP'
-         'c1167629f7cebe025ba2cf29846462fd'
-         'ad6d2259bd491859834bd42cec92f245'
-         '0ac7701c703d3d88a9295f8fb39beeb9'
-         '473a1af178e0ea2e92441e5dc29a3842'
-         '32581c7128c8e544705c39e59647ab10'
-         'e60c9cccc4051f0c383a8634859fe49c'
-         'a78fc74c7e24d6ce455188d4122ae9c7'
-         'a4f7548978564637e502ecdbd2b537e0'
-         '726e5aeee66681b586150c08cafbe3f1'
-         'eb89ce7e86bba52ca4ad4aa173d3f8a2'
-         '3fc5cafa9792a89807b51c5a1859d152'
-         'fc06e29d2f91b01a768ab29707a65725'
-         '18aed0a21276a22325bf8c32166fb110')
+sha256sums=('SKIP'
+            'SKIP'
+            '0072605f6547f92f0d0c3abd18ec904d325185a5b6feac500ec0cb34e38b72b4'
+            '736c7afac25bc7b23703082c4d79a9981782038d23e39b646adfeae345d44374'
+            '4897153f5edc8e36961d4251d8ea0b4cf3514ebf1258f6ffd7a933f02d594162'
+            'a2b539e42a2468b95ecf5d08c269f3bbc5d9672840e3743e5facbd7a90b9564c'
+            'b2ae4862d98723c20be2312da2e5e73f3d59e9cc202f677b51e89270671bdf42'
+            '8b14d074da7d037814ffc901b3c03e9a2fa91f1b44ec0d83b7aeef4f380aa185'
+            '48229a56e8b61b8a0c21062e1cfe0ae2417f7609aa1a2ad29debdd636cadae3d'
+            '5a041c414777036ebd8925108a9bb51f66ab435324ff4671012bdcb806fcf400'
+            '865b318f4196b1a34b17867dc18e116ef5f702b4905bb2d536609eb79af1c1bc'
+            'c43cb14de251f369734330e1f93744f71527360e1894c93e9f9f8abe686db050'
+            'b3a72caff34d3c05840298bc7b758061dc353b662e1bb526dfb5463fa2a7cd18'
+            '2236863292bf078b2e89d278bad834fd08563613d40e33ec471ae92588132a57'
+            '030ab1dcafb7d793bed3bc455497208addadf1091a4619576fe7e044aed4231a')
 
 pkgver() {
   cd ${srcdir}/${pkgname%-git}
