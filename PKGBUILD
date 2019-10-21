@@ -1,7 +1,7 @@
 # Maintainer: Alex Henrie <alexhenrie24@gmail.com>
 pkgname=ipfs-desktop
-pkgver=0.9.5
-pkgrel=3
+pkgver=0.9.6
+pkgrel=1
 pkgdesc="Desktop client for the InterPlanetary File System"
 arch=(x86_64)
 url="https://github.com/ipfs-shipyard/$pkgname"
@@ -10,20 +10,17 @@ depends=(c-ares ffmpeg gtk3 http-parser libevent libvpx libxslt libxss minizip n
 makedepends=(nodejs npm node-gyp)
 install=$pkgname.install
 source=("https://github.com/ipfs-shipyard/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=(1c0e1ea67e22228c46f1738665e21339aa4c105109773107817913234b7291a2)
+sha256sums=(adcf6a1ba67ee2d05121c0481ff897745774fc41ffbbf629be2099e970c58f01)
 
 prepare() {
 	cd "$pkgname-$pkgver"
-	# For the "Launch on startup" feature to work, the program must be installed
-	# to a path that does not contain spaces
-	sed -i 's/"productName": "IPFS Desktop"/"productName": "IPFS-Desktop"/' package.json
 }
 
 build() {
 	cd "$pkgname-$pkgver"
 	npm install
 	npm run-script build:babel
-	npx electron-builder build --linux pacman -c.linux.icon=ipfs-desktop -c.linux.category='Network;FileTransfer;P2P' -c.linux.desktop.Name='IPFS Desktop'
+	npx electron-builder build --linux pacman
 }
 
 package() {
@@ -32,6 +29,6 @@ package() {
 	mv "$pkgdir/.INSTALL" "../$pkgname.install"
 	rm "$pkgdir/.MTREE" "$pkgdir/.PKGINFO"
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	mv "$pkgdir/opt/IPFS-Desktop/LICENSE.electron.txt" "$pkgdir/usr/share/licenses/$pkgname"
-	mv "$pkgdir/opt/IPFS-Desktop/LICENSES.chromium.html" "$pkgdir/usr/share/licenses/$pkgname"
+	mv "$pkgdir/opt/IPFS Desktop/LICENSE.electron.txt" "$pkgdir/usr/share/licenses/$pkgname"
+	mv "$pkgdir/opt/IPFS Desktop/LICENSES.chromium.html" "$pkgdir/usr/share/licenses/$pkgname"
 }
