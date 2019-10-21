@@ -5,7 +5,7 @@
 _name=UncertaintyTE
 pkgname=uncertainty-framework
 pkgver=1.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Uncertainty estimation framework for a surface from motion dataset"
 arch=('i686' 'x86_64')
 url="http://alicevision.github.io/"
@@ -22,7 +22,7 @@ sha256sums=('SKIP'
 
 _CMAKE_FLAGS=( -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release )
 _CMAKE_FLAGS+=( -DMAGMA_ROOT=/usr )
-_CMAKE_FLAGS+=( -DUNC_ALICEVISION_SUPPORT=ON -DUNC_BUILD_TESTS=ON -DUNC_MKL_SUPPORT=ON )
+_CMAKE_FLAGS+=( -DUNC_BUILD_TESTS=ON -DUNC_MKL_SUPPORT=ON )
 # test if we can build matlab module
 pacman -Qq matlab && _CMAKE_FLAGS+=( -DUNC_MATLAB_SUPPORT=ON -DUNC_BUILD_MEX=ON )
 
