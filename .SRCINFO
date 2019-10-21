@@ -1,0 +1,13 @@
+pkgbase = caddy2
+	pkgdesc = Fast, cross-platform HTTP/2 web server with automatic HTTPS
+	pkgver = beta6
+	pkgrel = 1
+	url = https://github.com/caddyserver/caddy
+	arch = x86_64
+	license = Apache
+	makedepends = go
+	source = caddy2-beta6.tar.gz::https://github.com/caddyserver/caddy/archive/v2.0.0-beta6.tar.gz
+	sha256sums = cbcd8ef9eb091c8431e5169c9acfa67f9641d6406a32b383c850bf6429a47182
+
+pkgname = caddy2
+
