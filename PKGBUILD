@@ -1,7 +1,7 @@
 # Maintainer: tuftedocelot <tuftedocelot@fastmail.fm>
 # Contributor: Davbo <dave@davbo.org>
 pkgname=x3270
-pkgver=3.5ga12
+pkgver=3.6ga8
 pkgrel=1
 pkgdesc="An IBM 3270 terminal emulator for the X Window System"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ install=x3270.install
 source=(http://downloads.sourceforge.net/sourceforge/x3270/suite3270-$pkgver-src.tgz 
 	x3270.desktop)
 
-sha256sums=('818cb3e5cbd5a2ab19a71cf5dba37ea419216cb67fa92fadaff0c348ab7a8106'
+sha256sums=('a174114ba42fd1644e39adc532d893da8c40692cf46fd5ef02bb83d5704c66bf'
             'bb3f1a301ca4f6d6d4f4cafe451945a55a9af7995d712a0f314fc58dfb16da6f')
 
 build() {
