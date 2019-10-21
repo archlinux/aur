@@ -1,4 +1,4 @@
-pkgbase = davinci-resolve-beta
+pkgbase = davinci-resolve
 	pkgdesc = Professional A/V post-production software suite from Blackmagic Design
 	pkgver = 16.1
 	pkgrel = 1
@@ -26,8 +26,8 @@ pkgbase = davinci-resolve-beta
 	conflicts = davinci-resolve-studio
 	conflicts = davinci-resolve-studio-beta
 	options = !strip
-	source = DaVinci_Resolve_16.1_Linux.zip::https://sw.blackmagicdesign.com/DaVinciResolve/v16.1/DaVinci_Resolve_16.1_Linux.zip?Key-Pair-Id=APKAJTKA3ZJMJRQITVEA&Signature=L7+CMH7NkKqxkdghjmpchCAKdtkTXE0koX+AXmZx9KCdx/SvJzEK7tazvbxuouqozwX4ByNxWprwAJNlzpcARh9pbCxEKCqiHS69Id30RTNa/K0dae/h2CO0INzLCZuA/M0T3KfTpSMgsE4im6X4gtmQPdvs6g9+6H+JnTKYPFTMu8lNY54cEcUj4ZduXLQFOAqZ8t0jwCv4PTh1POxkQ2kwxmLg7AGjpx74W/MWQUpT/j3WxL+gpmTJelU0xVvWSlYPqbKTEblUZrmfQIDYueMuvY0QBm0fDNgjz3d4fdmm6w77GUE/trZhxgGq2Fle/jhx06WWVRltkPESUvCQCw==&Expires=1571635220
+	source = DaVinci_Resolve_16.1_Linux.zip::https://sw.blackmagicdesign.com/DaVinciResolve/v16.1/DaVinci_Resolve_16.1_Linux.zip?Key-Pair-Id=APKAJTKA3ZJMJRQITVEA&Signature=ghfyBqqflnyeXWfblGEG+ZgtmL+3mGXxkhHQw/9lxDga5vwKhv6EwDvcKmZUMOOP9rrJrPNdlD/DzE5MWtA1B64WBAepIUxvHXu9iLjA1UieMxx9AsfXpsWSBlhb++lY1GNeyqGtSDc5B2fNtSRFbURsRgv4v1IY2nJHSHtJId529PftJ+2aMXTjzPh1a24gwlzfma17LNwz6jGGyXqqzyQ6u63FgKoA/kly+m+VyZSp5xpTr/rQPTOD1c1KnzKBYnpAkF+gJXxcL8w76RHZrZHc+uGRYEMZujHiY3RtfvXJK756YF7GEcpk3jTQQ4Fg346LL7HXmqmXWJqQzf17Eg==&Expires=1571635321
 	sha256sums = 4808e35742c7b16a5864612708fff68212fb3d7c415149512faf709d928e708d
 
-pkgname = davinci-resolve-beta
+pkgname = davinci-resolve
 

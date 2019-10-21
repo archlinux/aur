@@ -61,7 +61,7 @@ DLAGENTS=("https::/usr/bin/curl \
               %u")
 
 
-pkgname=davinci-resolve-beta
+pkgname=davinci-resolve
 _pkgname=resolve
 resolve_app_name=com.blackmagicdesign.resolve
 pkgver=16.1
