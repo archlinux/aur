@@ -15,4 +15,4 @@ else
 fi
 
 export CLEAN_HOME
-exec /opt/clean-itasks-dev-bin/bin/clm "$@"
+exec "$CLEAN_HOME/bin/clm" "$@"

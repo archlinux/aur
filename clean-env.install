@@ -1,0 +1,7 @@
+post_install() {
+   echo "Please have a look at the README in /usr/share/doc, as this provides"
+   echo "some details on how to use this distribution of the Clean/iTasks System."
+   echo ""
+   echo "Hint: Use \`clenv init\` first *before* using either the \`clm\` or \`cpm\`"
+   echo "      tools, otherwise compilations will fail!"
+}
