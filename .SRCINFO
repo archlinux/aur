@@ -1,0 +1,17 @@
+pkgbase = perl-object-insideout
+	pkgdesc = Comprehensive inside-out object support module
+	pkgver = 4.05
+	pkgrel = 1
+	url = https://metacpan.org/release/Object-InsideOut
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-want
+	depends = perl-exception-class>=1.32
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/J/JD/JDHEDDEN/Object-InsideOut-4.05.tar.gz
+	md5sums = 38edef7431609e67add48d3bdf70c076
+	sha512sums = 0bc853766d229d8043e9829915b50c158ce2e2d12d5ba9d49d6be892979f69d675dc032163400ca1ee1a8a89db39207828981ee66f02a24a3032a21760acf87d
+
+pkgname = perl-object-insideout
+
