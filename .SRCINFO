@@ -1,0 +1,15 @@
+pkgbase = qtraw-git
+	pkgdesc = Qt image plugin for loading raw files, via libraw
+	pkgver = 1.1.r32
+	pkgrel = 1
+	url = https://gitlab.com/mardy/qtraw
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = qt5-base
+	depends = libraw
+	source = qtraw::git+https://gitlab.com/mardy/qtraw
+	sha256sums = SKIP
+
+pkgname = qtraw-git
+
