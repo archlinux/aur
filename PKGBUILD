@@ -8,7 +8,7 @@ pkgname=(
     'samsung-unified-driver'
 )
 pkgver=1.00.39
-pkgrel=3
+pkgrel=4
 
 pkgdesc='Unified Linux Driver for Samsung printers and scanners.'
 arch=('i686' 'x86_64')
@@ -97,6 +97,7 @@ package_samsung-unified-driver-scanner()
         source "$srcdir"/uld/noarch/package_utils
         source "$srcdir"/uld/noarch/scanner-script.pkg
         fill_full_template "$srcdir"/uld/noarch/etc/smfp.rules.in "$pkgdir"/usr/lib/udev/rules.d/60_smfp_samsung.rules
+        chmod 644 "$pkgdir"/usr/lib/udev/rules.d/60_smfp_samsung.rules
 
         mkdir -p "$pkgdir"/opt/samsung/scanner/share
         cp "$OEM_FILE" "$pkgdir"/opt/samsung/scanner/share
