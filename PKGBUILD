@@ -74,7 +74,7 @@ options=('!strip')
 provides=('davinci-resolve')
 install=davinci-resolve.install
 
-if [ ${pkgname} == "davinci-resolve-studio-beta" ]; then
+if [ ${pkgname} == "davinci-resolve-studio" ]; then
 # Variables for STUDIO edition
 	pkgdesc='Professional A/V post-production software suite from Blackmagic Design. Studio edition, requires license key or license dongle.'
 	_archive_name=DaVinci_Resolve_Studio_${pkgver}_Linux
