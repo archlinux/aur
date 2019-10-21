@@ -10,6 +10,7 @@ pkgbase = rocksdb-release
 	checkdepends = python2
 	makedepends = gcc
 	makedepends = make
+	makedepends = diffutils
 	depends = bzip2
 	depends = gcc-libs
 	depends = lz4

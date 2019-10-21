@@ -13,7 +13,7 @@ depends=(
 	'zlib'
 	'gflags'
 	)
-makedepends=('gcc' 'make')
+makedepends=('gcc' 'make' 'diffutils')
 checkdepends=(python2)
 source=(https://github.com/facebook/rocksdb/archive/v$pkgver.zip)
 sha256sums=('16187d509b6a2c807d2587048d5f7ee12c10deb284bd749df126efb37bedae78')
