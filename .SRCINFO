@@ -1,14 +1,14 @@
 pkgbase = python-dash-html-components
 	pkgdesc = Dash UI HTML components suite
-	pkgver = 0.13.2
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://plot.ly/products/dash
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
-	source = https://pypi.org/packages/source/d/dash_html_components/dash_html_components-0.13.2.tar.gz
-	sha256sums = daf80a0b9dd244bb34e47381a9766617451301ac5aa204faa7e7f069a52d93f9
+	source = https://pypi.org/packages/source/d/dash_html_components/dash_html_components-1.0.1.tar.gz
+	sha256sums = 7d7e80bf12635eb7d281fb0e7dd4b6e53f10dd57e3384ea5044c44ab16454fe4
 
 pkgname = python-dash-html-components
 
