@@ -1,0 +1,18 @@
+pkgbase = perl-math-random-mt-auto
+	pkgdesc = Auto-seeded Mersenne Twister PRNGs
+	pkgver = 6.23
+	pkgrel = 1
+	url = https://metacpan.org/release/Math-Random-MT-Auto
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	depends = perl-exception-class>=1.32
+	depends = perl-object-insideout>=3.88
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/J/JD/JDHEDDEN/Math-Random-MT-Auto-6.23.tar.gz
+	md5sums = e4f98d4224f3ebca267b6c18dcdefdf2
+	sha512sums = 3cdb0a1fee776f6aa91bb7a623bd5b0f2fafa6505fc83352c4b76bdb637b7eb94675fa87b32a0213a1e3baa90e60ddd6330c990f6581abb4dc3cdc7d6e7f8b80
+
+pkgname = perl-math-random-mt-auto
+
