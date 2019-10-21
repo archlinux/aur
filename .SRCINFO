@@ -1,6 +1,6 @@
 pkgbase = axecore
 	pkgdesc = Axe Core (AXE) is an open source cryptocurrency.
-	pkgver = 1.4.0.2
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = https://axerunners.com/
 	arch = x86_64
@@ -27,13 +27,13 @@ pkgbase = axecore
 	source = axe256.png
 	source = axe-qt.desktop
 	source = COPYING
-	source = https://github.com/axerunners/axe/releases/download/v1.4.0.2/axecore-1.4.0.2-x86_64-linux-gnu.tar.gz
-	source = https://github.com/axerunners/axe/releases/download/v1.4.0.2/axecore-1.4.0.2-x86_64-linux-gnu.tar.gz.asc
+	source = https://github.com/axerunners/axe/releases/download/v1.4.1/axecore-1.4.1-x86_64-linux-gnu.tar.gz
+	source = https://github.com/axerunners/axe/releases/download/v1.4.1/axecore-1.4.1-x86_64-linux-gnu.tar.gz.asc
 	validpgpkeys = A9F09620C26999E08EF8F21238E34B740A0E29B7
 	sha256sums = 06b658f3da983270852b305326042ad563e58aa9ef7fb02002996e8bf6b57130
 	sha256sums = c6971f66cbbc7acb74885d35d5f7a9b42ada9a95e864f9c71e67d6f9e8264900
 	sha256sums = 9277abe7d3462deb49df07221f13643c2aa55ebc10725c0b9d6d82df8dd7b457
-	sha256sums = 10d7acda744c805674e8fcfa7f884442121ba8bb4f45e3b1deca3073a5aec67f
+	sha256sums = 9817ad9d4de78b7651d158c2b2b9d5f449d9688cb128d5a8cf3da72707956845
 	sha256sums = SKIP
 
 pkgname = axecore

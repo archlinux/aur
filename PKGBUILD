@@ -3,7 +3,7 @@
 # Based on PKGBUILD from dashcore maintained by pizzaman
 
 pkgname='axecore'
-pkgver=1.4.0.2
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="Axe Core (AXE) is an open source cryptocurrency."
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=('axe256.png'
 sha256sums=('06b658f3da983270852b305326042ad563e58aa9ef7fb02002996e8bf6b57130'
             'c6971f66cbbc7acb74885d35d5f7a9b42ada9a95e864f9c71e67d6f9e8264900'
             '9277abe7d3462deb49df07221f13643c2aa55ebc10725c0b9d6d82df8dd7b457'
-            '10d7acda744c805674e8fcfa7f884442121ba8bb4f45e3b1deca3073a5aec67f'
+            '9817ad9d4de78b7651d158c2b2b9d5f449d9688cb128d5a8cf3da72707956845'
             'SKIP')
 validpgpkeys=('A9F09620C26999E08EF8F21238E34B740A0E29B7')
 
