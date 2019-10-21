@@ -1,4 +1,5 @@
-# Maintainer: Victor3D <webmaster@victor3d.com.br>
+# Maintainer: peace885 <reyadmin@gmail.com>
+# Contributor: Victor3D <webmaster@victor3d.com.br>
 # Contributor: lks <lukas dot graetz at web dot de>
 # Contributor: JokerBoy <jokerboy at punctweb dot ro>
 # Contributor: sqwishy <sqwishybon@gmail.com>
@@ -6,8 +7,8 @@
 
 _pkgname=links
 pkgname=links-g-directfb
-pkgver=2.18
-pkgrel=3
+pkgver=2.20
+pkgrel=1
 pkgdesc="A text WWW browser, similar to Lynx (with directfb, X and fb graphics)"
 arch=('i686' 'x86_64' 'armv7h')
 url="http://links.twibright.com/"
@@ -21,7 +22,7 @@ provides=('links' 'links-g')
 conflicts=('links' 'links-g')
 replaces=('links-g')
 source=(http://links.twibright.com/download/${_pkgname}-${pkgver}.tar.bz2 links.desktop)
-sha256sums=('678cc1ab347cc90732b1925a11db7fbe12ce883fcca631f91696453a83819057'
+sha256sums=('3bddcd4cb2f7647e50e12a59d1c9bda61076f15cde5f5dca6288b58314e6902d'
             'e3aed7cda8ccb14295aa28508f528140541e5cc52659186d1f2c1122b0703bcc')
 
 prepare() {
