@@ -1,0 +1,8 @@
+# Ignore all
+*
+
+# Except
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!samrewritten.desktop
