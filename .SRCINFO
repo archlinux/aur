@@ -1,0 +1,35 @@
+pkgbase = beegfs-utils
+	pkgdesc = Distributed, fault-tolerant cluster storage platfom formally known as FhGFS
+	pkgver = 7.1.3
+	pkgrel = 1
+	url = https://git.beegfs.io/pub
+	arch = x86_64
+	arch = i686
+	license = BeeGFS END-USER LICENE AGREEMENT
+	makedepends = git
+	makedepends = gcc
+	makedepends = libsystemd
+	makedepends = systemd
+	makedepends = pkg-config
+	makedepends = bash
+	makedepends = boost-libs
+	depends = libutil-linux
+	depends = attr
+	depends = acl
+	depends = openssl
+	depends = zlib
+	depends = sqlite
+	depends = curl
+	depends = elfutils
+	depends = fuse-common
+	depends = ld-lsb
+	depends = lsb-release
+	depends = rdma-core
+	optdepends = beegfs-utils
+	optdepends = xfsprogs
+	optdepends = btrfs-progs
+	source = beegfs-utils-7.1.3::git+https://git.beegfs.io/pub/v7.git#tag=7.1.3
+	sha512sums = SKIP
+
+pkgname = beegfs-utils
+
