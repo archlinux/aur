@@ -1,15 +1,15 @@
 pkgbase = bm
 	pkgdesc = command-line bibliography manager for biblatex
-	pkgver = 0.2
-	pkgrel = 2
+	pkgver = 0.2.1
+	pkgrel = 1
 	url = https://git.ckyln.com/bm/log.html
 	arch = any
 	license = GPL3
 	depends = jq
 	optdepends = poppler: for getting DOI metadata from a pdf
 	provides = bm
-	source = https://git.ckyln.com/archives/bm/bm-0.2.tar.gz
-	md5sums = 707e17500e390c867cee7bdf9fdd28ba
+	source = https://git.ckyln.com/archives/bm/bm-0.2.1.tar.gz
+	md5sums = 99740d240f80c275321c3cecfadbeaa7
 
 pkgname = bm
 

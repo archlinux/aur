@@ -2,8 +2,8 @@
 
 pkgname=bm
 _pkgname=bm
-pkgrel=2
-pkgver=0.2
+pkgrel=1
+pkgver=0.2.1
 pkgdesc="command-line bibliography manager for biblatex"
 url="https://git.ckyln.com/bm/log.html"
 arch=('any')
@@ -11,8 +11,7 @@ license=('GPL3')
 depends=('jq')
 optdepends=('poppler: for getting DOI metadata from a pdf')
 source=("https://git.ckyln.com/archives/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('707e17500e390c867cee7bdf9fdd28ba')
-
+md5sums=('99740d240f80c275321c3cecfadbeaa7')
 provides=('bm')
 
 package() {
