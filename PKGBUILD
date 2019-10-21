@@ -1,8 +1,8 @@
 # Maintainer: Stelios Tsampas <loathingkernel @at gmail .dot com>
 
 pkgname=pcsxr-pgxp-git
-pkgver=1.9.94.r1714.6f760410
-pkgrel=2
+pkgver=1.9.94.r1731.62467b86
+pkgrel=1
 pkgdesc='A Sony PlayStation (PSX) emulator based on the PCSX-df Project with Parallel/Precision Geometry Transform Pipeline'
 arch=('x86_64')
 url='http://ngemu.com/threads/pcsxr-pgxp.186369/'
@@ -11,8 +11,10 @@ depends=('ffmpeg' 'gtk3' 'libarchive' 'libcdio' 'libxv')
 makedepends=('cmake' 'git' 'intltool' 'mesa')
 provides=('pcsxr' "${pkgname/%-git/}")
 conflicts=('pcsxr' "${pkgname/%-git/}")
-source=("${pkgname/%-git/}::git+https://github.com/iCatButler/pcsxr.git")
-md5sums=('SKIP')
+source=("${pkgname/%-git/}::git+https://github.com/iCatButler/pcsxr.git"
+        'fix-pango.patch')
+sha256sums=('SKIP'
+            '40298efe5f3137fa6926a1315d2299ef1b311ec365674d63578235bb00f2e454')
 
 pkgver() {
   cd "${pkgname/%-git/}"
@@ -25,6 +27,7 @@ prepare() {
     rm -rf build
   fi
   mkdir build
+  patch -p1 -i "$srcdir"/fix-pango.patch
 }
 
 build() {

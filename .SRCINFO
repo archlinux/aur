@@ -1,7 +1,7 @@
 pkgbase = pcsxr-pgxp-git
 	pkgdesc = A Sony PlayStation (PSX) emulator based on the PCSX-df Project with Parallel/Precision Geometry Transform Pipeline
-	pkgver = 1.9.94.r1714.6f760410
-	pkgrel = 2
+	pkgver = 1.9.94.r1731.62467b86
+	pkgrel = 1
 	url = http://ngemu.com/threads/pcsxr-pgxp.186369/
 	arch = x86_64
 	license = GPL
@@ -19,7 +19,9 @@ pkgbase = pcsxr-pgxp-git
 	conflicts = pcsxr
 	conflicts = pcsxr-pgxp
 	source = pcsxr-pgxp::git+https://github.com/iCatButler/pcsxr.git
-	md5sums = SKIP
+	source = fix-pango.patch
+	sha256sums = SKIP
+	sha256sums = 40298efe5f3137fa6926a1315d2299ef1b311ec365674d63578235bb00f2e454
 
 pkgname = pcsxr-pgxp-git
 

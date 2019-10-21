@@ -1,0 +1,24 @@
+diff --git a/cmake/FindGTK3.cmake b/cmake/FindGTK3.cmake
+index 049a276f..9e75806c 100644
+--- a/cmake/FindGTK3.cmake
++++ b/cmake/FindGTK3.cmake
+@@ -50,6 +50,7 @@ if(GTK3_LIBRARY)
+   set_property(TARGET ${GTK3} PROPERTY INTERFACE_COMPILE_OPTIONS "${GTK3_PKG_CFLAGS_OTHER}")
+ 
+   set(GTK3_INCLUDE_DIRS)
++  include_directories(/usr/include/harfbuzz)
+ 
+   find_path(GTK3_INCLUDE_DIR "gtk/gtk.h"
+     HINTS ${GTK3_PKG_INCLUDE_DIRS})
+diff --git a/plugins/peopsxgl/CMakeLists.txt b/plugins/peopsxgl/CMakeLists.txt
+index 907009ce..850da301 100644
+--- a/plugins/peopsxgl/CMakeLists.txt
++++ b/plugins/peopsxgl/CMakeLists.txt
+@@ -18,6 +18,7 @@ set(GTK_LIBRARIES ${GTK3_LIBRARY} ${GDK3_LIBRARY} ${GDKPixbuf_LIBRARY} ${Pango_L
+ 
+ find_package(X11 REQUIRED)
+ 
++set(OpenGL_GL_PREFERENCE GLVND)
+ find_package(OpenGL REQUIRED)
+ if(NOT OPENGL_FOUND)
+     message(FATAL_ERROR "GL library not found")
