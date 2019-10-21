@@ -1,6 +1,6 @@
 pkgbase = openxcom-extended
 	pkgdesc = An extended version of the open-source reimplementation of X-COM (OXCE)
-	pkgver = 5.6.5
+	pkgver = 6.0.0
 	pkgrel = 1
 	url = https://openxcom.org/forum/index.php/topic,5251.0.html
 	install = openxcom-extended.install
@@ -38,7 +38,7 @@ pkgbase = openxcom-extended
 	provides = openxcom
 	provides = openxcom-git
 	conflicts = openxcom
-	source = openxcom-extended::git+https://github.com/MeridianOXC/OpenXcom.git#commit=da07dcaec5d75b636753cefc79b804de3339f8cd
+	source = openxcom-extended::git+https://github.com/MeridianOXC/OpenXcom.git#commit=6f838794154e5b5ed28db7ea48a149e1389e5438
 	md5sums = SKIP
 
 pkgname = openxcom-extended

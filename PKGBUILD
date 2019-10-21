@@ -1,10 +1,10 @@
 # Maintainer:  WorMzy Tykashi <wormzy.tykashi@gmail.com>
 
 pkgname=openxcom-extended
-pkgver=5.6.5
+pkgver=6.0.0
 # Repo doesn't use tags, so set which commit this version corresponds to in
 # https://github.com/MeridianOXC/OpenXcom/commits/oxce-plus/src/version.h
-_commit=da07dcaec5d75b636753cefc79b804de3339f8cd
+_commit=6f838794154e5b5ed28db7ea48a149e1389e5438
 pkgrel=1
 pkgdesc="An extended version of the open-source reimplementation of X-COM (OXCE)"
 arch=('i686' 'x86_64')
