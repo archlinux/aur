@@ -1,6 +1,6 @@
 pkgbase = nginx-http3
 	pkgdesc = Nginx with Cloudflare's http3 path on the top of quiche
-	pkgver = 1.16
+	pkgver = 1.16.1
 	pkgrel = 1
 	url = https://github.com/cloudflare/quiche/tree/master/extras/nginx
 	arch = any
@@ -23,8 +23,12 @@ pkgbase = nginx-http3
 	conflicts = nginx-libressl
 	source = https://nginx.org/download/nginx-1.16.1.tar.gz
 	source = git+https://github.com/cloudflare/quiche.git
+	source = service
+	source = logrotate
 	sha256sums = f11c2a6dd1d3515736f0324857957db2de98be862461b5a542a3ac6188dbe32b
 	sha256sums = SKIP
+	sha256sums = 05fdc0c0483410944b988d7f4beabb00bec4a44a41bd13ebc9b78585da7d3f9b
+	sha256sums = b9af19a75bbeb1434bba66dd1a11295057b387a2cbff4ddf46253133909c311e
 
 pkgname = nginx-http3
 
