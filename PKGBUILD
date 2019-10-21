@@ -39,6 +39,6 @@ package() {
     cd "$pkgdir/"
     mkdir usr
     mv etc/nginx/sbin usr/bin
-    install -Dm644 ../logrotate "$pkgdir"/etc/logrotate.d/nginx
-    install -Dm644 ../service "$pkgdir"/usr/lib/systemd/system/nginx.service
+    install -Dm644 ../../logrotate "$pkgdir"/etc/logrotate.d/nginx
+    install -Dm644 ../../service "$pkgdir"/usr/lib/systemd/system/nginx.service
 }
