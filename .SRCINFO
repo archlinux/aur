@@ -1,0 +1,16 @@
+pkgbase = zsh-prompt-ys
+	pkgdesc = ysmood's prompt for zsh
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/grawlinson/zsh-prompt-ys
+	arch = any
+	license = MIT
+	depends = zsh
+	source = zsh-prompt-ys-1.0.0.tar.gz::https://codeload.github.com/grawlinson/zsh-prompt-ys/tar.gz/1.0.0
+	source = zsh-prompt-ys-1.0.0.tar.gz.asc::https://github.com/grawlinson/zsh-prompt-ys/releases/download/1.0.0/1.0.0.tar.gz.asc
+	validpgpkeys = 034D823DA2055BEE6A6BF0BB25EA6900D9EA5EBC
+	sha512sums = ec0a6d1816b31e9f7f81d26c24e91373bdddeb39ccf283bb6263c59c46cfd4ec4e5a4d64db875f9de8495fe23a10c08295ece748a9ee8f67aae209f19fe73f72
+	sha512sums = SKIP
+
+pkgname = zsh-prompt-ys
+
