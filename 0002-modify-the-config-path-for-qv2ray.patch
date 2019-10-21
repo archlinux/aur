@@ -1,7 +1,7 @@
-From aba35e0cec1142e43c198a9ff1d500278b570dd8 Mon Sep 17 00:00:00 2001
+From 23682e23656cc8711898537acc519899c172a872 Mon Sep 17 00:00:00 2001
 From: axionl <i@axionl.me>
-Date: Sun, 20 Oct 2019 22:11:20 +0800
-Subject: [PATCH 2/2] modify the config path for qv2ray
+Date: Tue, 22 Oct 2019 03:32:46 +0800
+Subject: [PATCH 2/2] modify-the-config-path-for-qv2ray
 
 ---
  src/Qv2rayBase.h | 2 +-
@@ -11,13 +11,13 @@ Subject: [PATCH 2/2] modify the config path for qv2ray
  4 files changed, 12 insertions(+), 4 deletions(-)
 
 diff --git a/src/Qv2rayBase.h b/src/Qv2rayBase.h
-index b453fe4..2a0e132 100644
+index 2b667b5..e81e3c3 100644
 --- a/src/Qv2rayBase.h
 +++ b/src/Qv2rayBase.h
-@@ -21,7 +21,7 @@
+@@ -20,7 +20,7 @@
+ #ifdef __WIN32
  #define QV2RAY_V2RAY_CORE_PATH (QV2RAY_V2RAY_CORE_DIR_PATH + "v2ray.exe")
  #else
- // macOS and Linux....
 -#define QV2RAY_V2RAY_CORE_PATH (QV2RAY_V2RAY_CORE_DIR_PATH + "v2ray")
 +#define QV2RAY_V2RAY_CORE_PATH (Qv2ray::Utils::GetVCorePath())
  #endif
@@ -49,7 +49,7 @@ index 1478281..db23201 100644
          {
              return GlobalConfig;
 diff --git a/src/QvUtils.h b/src/QvUtils.h
-index 20626c0..eb37158 100644
+index 6768084..b9fe11c 100644
 --- a/src/QvUtils.h
 +++ b/src/QvUtils.h
 @@ -20,6 +20,7 @@ namespace Qv2ray
