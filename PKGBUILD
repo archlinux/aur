@@ -1,9 +1,10 @@
 # Maintainer: Uncle Hunto <unclehunto äτ ÝãΗ00 Ð0τ ÇÖΜ>
 # Contributor: Limao Luo <luolimao+AUR@gmail.com>
 # Contributor: TuxSpirit <tuxspirit@archlinux.fr>
+# Contributor: Jamesjon <universales@protonmail.com>
 
 pkgname=peazip-qt
-pkgver=6.5.1
+pkgver=6.9.2
 pkgrel=1
 pkgdesc="QT archiver utility"
 arch=(i686 x86_64)
@@ -18,10 +19,9 @@ options=('!strip')
 install=peazip.install
 source=("$pkgname-$pkgver.tgz"::"https://github.com/giorgiotani/PeaZip/releases/download/$pkgver/peazip-$pkgver.LINUX.Qt.tgz"
         "peazip.desktop")
-sha256sums=('c812bfe387cafc78568fcdf97f536f7c3f1c036db07c68385e7fc947cfd7bc25'
+sha256sums=('b4f8e2bedeff52488dab4d641269103131038ff750e3b38d15f3ccad99797f8e'
             '4d876c6a61f25a7e2f3dfa69b1c80e61fdda9220bbf8e23a407e34eae377091b')
-sha512sums=('e0c37ee62c56a73bc96a427dfd9f71e950cff1a64e3c89b43c7f215791108665ff7bd9139e44ddb05dab611340b14e931cd48d04774d4814eacde36c2e6916cd'
-            'bc86d42b33285c2709081ddca7c06fe789cc2d42c69c4cbed595c077a776d91e5526eb799dcdc404375a3bfb212927165a02d3d79301f53adb8a89039bf7bb5f')
+
 
 package() {
   _pkgres="$pkgdir/usr/lib/peazip/res"
