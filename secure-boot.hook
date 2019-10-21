@@ -5,6 +5,7 @@ Type = Package
 Target = linux
 Target = usr/lib/initcpio/*
 Target = boot/intel-ucode.img
+Target = boot/amd-ucode.img
 
 [Action]
 When = PostTransaction
