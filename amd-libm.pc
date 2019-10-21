@@ -1,9 +1,0 @@
-libdir=/opt/aocl/amd-libm/lib
-includedir=/opt/aocl/amd-libm/include
-
-Name: AMD libm
-Description: AMD LibM is a software library containing a collection of basic math functions optimized for x86-64 processor based machines
-Version: 3.4.0
-URL: https://developer.amd.com/amd-aocl/amd-math-library-libm/
-Libs: -L${libdir} -lamdlibm
-Cflags: -I${includedir}

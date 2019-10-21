@@ -1,9 +1,0 @@
-libdir=/opt/aocl/amd-rng/rng-omp/lib
-includedir=/opt/aocl/amd-rng/rng-omp/include
-
-Name: AMD RNG
-Description: AMD Random Number Generator Library is a pseudorandom number generator library. A pseudo-random number generator (PRNG) produces a stream of variates that are independent and statistically indistinguishable from a random sequence
-Version: 2.0
-URL: https://developer.amd.com/amd-aocl/rng-library/
-Libs: -L${libdir} -lrng_omp_amd
-Cflags: -I${includedir}

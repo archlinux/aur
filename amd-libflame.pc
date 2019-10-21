@@ -1,9 +1,0 @@
-libdir=/opt/aocl/amd-libflame/lib
-includedir=/opt/aocl/amd-libflame/include
-
-Name: AMD libFLAME
-Description: libFLAME is a portable library for dense matrix computations, providing much of the functionality present in LAPACK
-Version: 2.0
-URL: https://developer.amd.com/amd-aocl/blas-library/
-Libs: -L${libdir} -lflame
-Cflags: -I${includedir}
