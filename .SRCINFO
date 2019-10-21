@@ -1,6 +1,6 @@
 pkgbase = terminator-python3-bzr
 	pkgdesc = python3 port for terminal emulator that supports tabs and grids python3
-	pkgver = r1849
+	pkgver = r1851
 	pkgrel = 1
 	url = https://code.launchpad.net/~hellodeargrandma/terminator/python3
 	arch = any
