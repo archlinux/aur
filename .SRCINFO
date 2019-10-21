@@ -1,7 +1,7 @@
 pkgbase = ocp-git
 	pkgdesc = Open Cubic Player (GIT Version)
 	pkgver = 0.1.22.r143.0183e4b
-	pkgrel = 1
+	pkgrel = 2
 	url = http://stian.cubic.org/project-ocp.php
 	install = ocp-git.install
 	arch = i686

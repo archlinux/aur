@@ -2,7 +2,7 @@
 _name=ocp
 pkgname=ocp-git
 pkgver=0.1.22.r143.0183e4b
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Cubic Player (GIT Version)"
 arch=('i686' 'x86_64')
 url="http://stian.cubic.org/project-ocp.php"
