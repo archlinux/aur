@@ -6,8 +6,10 @@ pkgbase = aws-okta-bin
 	arch = x86_64
 	license = MIT
 	provides = aws-okta
-	source_x86_64 = aws-okta-v0.26.0-linux-amd64::https://github.com/segmentio/aws-okta/releases/download/v0.26.0/aws-okta-v0.26.0-linux-amd64
-	sha256sums_x86_64 = 2fa36533eff9c2abcaaf96f549884f56c3966e6964c445cc61a16e49f297dfa5
+	source = aws-okta-v0.26.0-linux-amd64::https://github.com/segmentio/aws-okta/releases/download/v0.26.0/aws-okta-v0.26.0-linux-amd64
+	source = LICENSE::https://github.com/segmentio/aws-okta/raw/master/LICENSE
+	sha256sums = 2fa36533eff9c2abcaaf96f549884f56c3966e6964c445cc61a16e49f297dfa5
+	sha256sums = feaff489d3c077f7b48cf76a5f038604338a092be379c1297c64c26c6b81714b
 
 pkgname = aws-okta-bin
 
