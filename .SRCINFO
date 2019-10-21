@@ -1,7 +1,7 @@
 pkgbase = lib32-gst-plugins-bad
 	pkgdesc = GStreamer Multimedia Framework Bad Plugins (32-bit)
 	pkgver = 1.14.4
-	pkgrel = 5
+	pkgrel = 6
 	url = https://gstreamer.freedesktop.org/
 	arch = x86_64
 	license = LGPL

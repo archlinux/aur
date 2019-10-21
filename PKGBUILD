@@ -4,7 +4,7 @@
 _basename=gst-plugins-bad
 pkgname=lib32-gst-plugins-bad
 pkgver=1.14.4
-pkgrel=5
+pkgrel=6
 pkgdesc="GStreamer Multimedia Framework Bad Plugins (32-bit)"
 url="https://gstreamer.freedesktop.org/"
 arch=(x86_64)
@@ -44,6 +44,8 @@ prepare() {
     git submodule init
     git config --local submodule.common.url "$srcdir/gst-common"
     git submodule update
+
+    sed -e 's|-std=c++98||' -i ext/openexr/Makefile.am # openexr 2.4 requires c++11
 
     NOCONFIGURE=1 ./autogen.sh
 }
