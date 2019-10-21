@@ -1,7 +1,7 @@
 # Maintainer: Stelios Tsampas <loathingkernel @at gmail .dot com>
 
 pkgname=arenatracker-git
-pkgver=6.72.r7.g9a47c38
+pkgver=7.05.r7.g4863e086
 pkgrel=1
 pkgdesc="Arena Tracker is a deck tracker that gives you a lot of extra info while playing Hearthstone"
 arch=('x86_64')
@@ -11,18 +11,18 @@ depends=('qt5-base' 'qt5-websockets' 'python-pyautogui' 'libzip' 'opencv2')
 makedepends=('imagemagick' 'git')
 provides=("${pkgname/%-git/}")
 conflicts=("${pkgname/%-git/}")
-source=("${pkgname/%-git/}::git+https://github.com/supertriodo/Arena-Tracker.git"
+source=("git+https://github.com/supertriodo/Arena-Tracker.git"
         'ArenaTracker.desktop')
 md5sums=('SKIP'
          '016d2e7016df6c2f07228ad49c5fb96c')
 
 pkgver() {
-    cd "${pkgname/%-git/}"
+    cd Arena-Tracker
     git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-    cd "${pkgname/%-git/}"
+    cd Arena-Tracker
     if [[ -d build ]]; then
         rm -rf build
     fi
@@ -30,7 +30,7 @@ prepare() {
 }
 
 build() {
-    cd "${pkgname/%-git/}"/build
+    cd Arena-Tracker/build
     qmake \
         PREFIX=/usr \
         QMAKE_CFLAGS_RELEASE="${CFLAGS}" \
@@ -41,7 +41,7 @@ build() {
 }
 
 package() {
-    cd "${pkgname/%-git/}"
+    cd Arena-Tracker
     install -dm755 "$pkgdir"/usr/bin
     install -dm755 "$pkgdir"/usr/share/{applications,pixmaps}
     install -m755 build/ArenaTracker "$pkgdir"/usr/bin/
