@@ -7,7 +7,7 @@
 # This was originally written by Daniel Bermond in blackmagic-decklink-sdk pkgbuild
 # It is sufficient to just replace _downloadid to correspond new release version
 # It can be obtained from chromium -> Developer Tools -> Network -> XHR -> click latest-version and copy downloadId
-_downloadid='bc13b7714b9b4b16bc134d8bcfecc894' # dr 16.1b3
+_downloadid='bc13b7714b9b4b16bc134d8bcfecc894'
 _referid='986538a6700f47c18b74e5aeef3cbe22'
 _siteurl="https://www.blackmagicdesign.com/api/register/us/download/${_downloadid}"
 
@@ -17,16 +17,14 @@ _useragent="User-Agent: Mozilla/5.0 (X11; Linux ${CARCH}) \
                         Safari/537.36"
 
 _reqjson="{ \
-    \"platform\": \"Linux\", \
-    \"country\": \"us\", \
     \"firstname\": \"Arch\", \
     \"lastname\": \"Linux\", \
     \"email\": \"someone@archlinux.org\", \
     \"phone\": \"202-555-0194\", \
+    \"country\": \"us\", \
     \"state\": \"New York\", \
     \"city\": \"AUR\", \
-    \"hasAgreedToTerms\": true, \
-    \"product\": \"Desktop Video ${pkgver} SDK\" \
+    \"product\": \"DaVinci Resolve\" \
 }"
 
 _reqjson="$(  printf '%s' "$_reqjson"   | sed 's/[[:space:]]\+/ /g')"
