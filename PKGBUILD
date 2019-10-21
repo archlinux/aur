@@ -97,15 +97,11 @@ package() {
 
     make
     make DESTDIR="$pkgdir/" install
-    cd "$pkgdir/"
-    mkdir usr
-    mv etc/nginx/sbin usr/bin
     install -Dm644 ../logrotate "$pkgdir"/etc/logrotate.d/nginx
     install -Dm644 ../service "$pkgdir"/usr/lib/systemd/system/nginx.service
     install -d "$pkgdir"/var/lib/nginx
     install -dm700 "$pkgdir"/var/lib/nginx/proxy
-    chmod 755 "$pkgdir"/var/log/nginx
-    chown root:root "$pkgdir"/var/log/nginx
+    install -dm755 "$pkgdir"/var/log/nginx
     install -d "$pkgdir"/usr/share/nginx
     mv "$pkgdir"/etc/nginx/html/ "$pkgdir"/usr/share/nginx
     rmdir "$pkgdir"/run
