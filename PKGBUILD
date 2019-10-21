@@ -1,14 +1,15 @@
-# Maintainer: PureTryOut
+# Maintainer: tjbp (archlinux@tjbp.net)
+# Contributor: PureTryOut
 pkgname=openrw-git
-pkgver=r812.93f7a40
-pkgrel=2
+pkgver=r1.51b7264
+pkgrel=3
 epoch=
 pkgdesc="A re-implementation of Rockstar Games' Grand Theft Auto III"
 arch=('x86_64')
 url="https://github.com/rwengine/openrw"
 license=('GPL3')
 groups=()
-depends=('bullet' 'glm' 'libmad' 'openal' 'libsndfile' 'sdl2' 'boost')
+depends=('bullet' 'glm' 'libmad' 'openal' 'libsndfile' 'sdl2' 'boost' 'ffmpeg')
 makedepends=('git' 'cmake' 'make')
 checkdepends=()
 optdepends=()
