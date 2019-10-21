@@ -2,22 +2,23 @@
 
 pkgname=urlview
 pkgver=0.9
-pkgrel=12
-_patchlevel=20
+pkgrel=13
+_patchlevel=21
 pkgdesc="A curses URL parser for text files"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="http://packages.qa.debian.org/u/urlview.html"
 license=('GPL')
 depends=('bash')
-makedepends=('patch' 'automake' 'autoconf')
+makedepends=('patch' 'automake' 'autoconf' 'gzip')
 source=(http://ftp.debian.org/debian/pool/main/u/urlview/${pkgname}_$pkgver.orig.tar.gz
         http://ftp.debian.org/debian/pool/main/u/urlview/${pkgname}_$pkgver-$_patchlevel.diff.gz)
 sha256sums=('746ff540ccf601645f500ee7743f443caf987d6380e61e5249fc15f7a455ed42'
-            '0707956fd7195aefe6d6ff2eaabe8946e3d18821a1ce97c0f48d0f8d6e37514e')
+            'efdf6a279d123952820dd6185ab9399ee1bf081ea3dd613dc96933cd1827a9e9')
 
 prepare() {
   cd "${srcdir}"/$pkgname-$pkgver.orig
 
+  gunzip --force "${srcdir}"/${pkgname}_${pkgver}-$_patchlevel.diff.gz
   patch -Np1 -i "${srcdir}"/${pkgname}_${pkgver}-$_patchlevel.diff
   aclocal
   automake --foreign --ignore-deps --add-missing
