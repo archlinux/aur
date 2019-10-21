@@ -1,17 +1,17 @@
 # Maintainer: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
 _name=hatch
-_sha256sum=dddbc0e141dfcdc69f3c632515469b44d8610674abc52558d96dd4b7a9fa1382
+_sha256sum=b4b65753fcd8319ebddd51c0e1ef148d09592cdc38923d032f8f58ffc1658fd7
 
 pkgname=python-hatch
-pkgver=0.20.0
+pkgver=0.23.0
 pkgrel=1
 pkgdesc="A modern project, package, and virtual env manager"
 arch=('any')
 url="https://github.com/ofek/hatch"
 license=('MIT' 'APACHE')
 depends=(
-  'python>=3.6'
+  'python>=3.5'
   'python-appdirs'
   'python-atomicwrites'
   'python-click'
@@ -22,9 +22,10 @@ depends=(
   'python-pytest'
   'python-semver>=2.7.8'
   'python-setuptools>=36.0.0'
+  'python-sortedcontainers>=1.5.7'
   'python-toml>=0.9.3'
   'twine>=1.9.1'
-  'python-userpath>=1.1.0'
+  'python-userpath>=1.3.0'
   'python-virtualenv'
   'python-wheel>=0.27.0'
 )
@@ -32,24 +33,14 @@ provides=('python-hatch')
 options=(!emptydirs)
 source=(
   "https://files.pythonhosted.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz"
-  'no-adduserpath-now.patch'
   'hatch_complete.sh'
   'hatch_complete.zsh'
 )
 sha256sums=(
   "${_sha256sum}"
-  '88999bb69dfcff6221a705b8383c793e757483dff2b7b002bd7b9c0abbe3c3c5'
   'b87254c621719188907a2062b0aa3c4eb078088872d1de7d53d6a6d61a679c44'
   'a43679d72ebb7b5c029192519597eff835586d0b6ed9d1e3dfc93270b8720e71'
 )
-
-prepare() {
-  cd "${srcdir}/${_name}-${pkgver}"
-  patch -p0 -i ../no-adduserpath-now.patch
-
-  # no need to include tests files
-  rm tests/__init__.py
-}
 
 build() {
   cd "${srcdir}/${_name}-${pkgver}"

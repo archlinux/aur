@@ -1,12 +1,12 @@
 pkgbase = python-hatch
 	pkgdesc = A modern project, package, and virtual env manager
-	pkgver = 0.20.0
+	pkgver = 0.23.0
 	pkgrel = 1
 	url = https://github.com/ofek/hatch
 	arch = any
 	license = MIT
 	license = APACHE
-	depends = python>=3.6
+	depends = python>=3.5
 	depends = python-appdirs
 	depends = python-atomicwrites
 	depends = python-click
@@ -17,19 +17,18 @@ pkgbase = python-hatch
 	depends = python-pytest
 	depends = python-semver>=2.7.8
 	depends = python-setuptools>=36.0.0
+	depends = python-sortedcontainers>=1.5.7
 	depends = python-toml>=0.9.3
 	depends = twine>=1.9.1
-	depends = python-userpath>=1.1.0
+	depends = python-userpath>=1.3.0
 	depends = python-virtualenv
 	depends = python-wheel>=0.27.0
 	provides = python-hatch
 	options = !emptydirs
-	source = https://files.pythonhosted.org/packages/source/h/hatch/hatch-0.20.0.tar.gz
-	source = no-adduserpath-now.patch
+	source = https://files.pythonhosted.org/packages/source/h/hatch/hatch-0.23.0.tar.gz
 	source = hatch_complete.sh
 	source = hatch_complete.zsh
-	sha256sums = dddbc0e141dfcdc69f3c632515469b44d8610674abc52558d96dd4b7a9fa1382
-	sha256sums = 88999bb69dfcff6221a705b8383c793e757483dff2b7b002bd7b9c0abbe3c3c5
+	sha256sums = b4b65753fcd8319ebddd51c0e1ef148d09592cdc38923d032f8f58ffc1658fd7
 	sha256sums = b87254c621719188907a2062b0aa3c4eb078088872d1de7d53d6a6d61a679c44
 	sha256sums = a43679d72ebb7b5c029192519597eff835586d0b6ed9d1e3dfc93270b8720e71
 
