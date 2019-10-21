@@ -2,8 +2,8 @@
 
 pkgname=python2-stem
 _pypiname=${pkgname#*-}
-pkgver=1.7.2
-pkgrel=1
+pkgver=1.7.1
+pkgrel=2
 pkgdesc='Python controller library for Tor'
 url='https://stem.torproject.org/'
 arch=('any')
