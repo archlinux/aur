@@ -17,12 +17,14 @@ source=(
     'git+https://github.com/cloudflare/quiche.git'
     'service'
     'logrotate'
+    'http3.conf'
 )
 sha256sums=(
     'f11c2a6dd1d3515736f0324857957db2de98be862461b5a542a3ac6188dbe32b'
     'SKIP'
     '05fdc0c0483410944b988d7f4beabb00bec4a44a41bd13ebc9b78585da7d3f9b'
     'b9af19a75bbeb1434bba66dd1a11295057b387a2cbff4ddf46253133909c311e'
+    'c5e473507bb727a1eb60cfa84b1bbec86cb5069bf51a6e2fcaf813941a0ef646'
 )
 
 _common_flags=(
