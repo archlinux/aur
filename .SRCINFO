@@ -1,7 +1,7 @@
 pkgbase = xfce4-taskbar-plugin
 	pkgdesc = Taskbar plugin which mimicks the Windows 7 taskbar (pinning applications, etc)
 	pkgver = 20130504
-	pkgrel = 2
+	pkgrel = 3
 	url = https://git.xfce.org/archive/xfce4-taskbar-plugin/
 	install = xfce4-taskbar-plugin.install
 	arch = i686
@@ -11,6 +11,7 @@ pkgbase = xfce4-taskbar-plugin
 	depends = xfce4-panel>=4.4
 	depends = libwnck
 	depends = gtkhotkey
+	depends = dbus-glib
 	source = git://git.xfce.org/archive/xfce4-taskbar-plugin
 	sha512sums = SKIP
 
