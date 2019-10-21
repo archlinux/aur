@@ -12,7 +12,7 @@ provides=('aws-okta')
 _aws_okta_bin=aws-okta-v$pkgver-linux-amd64
 source=(
   $_aws_okta_bin::https://github.com/segmentio/aws-okta/releases/download/v$pkgver/aws-okta-v$pkgver-linux-amd64
-  LICENSE::https://github.com/segmentio/aws-okta/raw/master/LICENSE
+  LICENSE::https://github.com/segmentio/aws-okta/raw/v$pkgver/LICENSE
 )
 sha256sums=(
   '2fa36533eff9c2abcaaf96f549884f56c3966e6964c445cc61a16e49f297dfa5'
