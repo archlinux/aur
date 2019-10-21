@@ -1,7 +1,7 @@
 pkgbase = xdg-utils-mimeo
 	pkgdesc = Command line tools that assist applications with a variety of desktop integration tasks; patched to use mimeo
 	pkgver = 1.1.3+18+g0547886
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.freedesktop.org/wiki/Software/xdg-utils/
 	arch = any
 	license = MIT
@@ -10,6 +10,7 @@ pkgbase = xdg-utils-mimeo
 	makedepends = xmlto
 	makedepends = git
 	depends = sh
+	depends = which
 	depends = xorg-xset
 	optdepends = kde-cli-tools: for KDE Plasma5 support in xdg-open
 	optdepends = exo: for Xfce support in xdg-open
