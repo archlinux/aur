@@ -9,7 +9,9 @@ pkgbase = emacs-mmm-mode
 	provides = mmm-mode
 	conflicts = mmm-mode
 	source = emacs-mmm-mode-0.5.7.tar.gz::https://github.com/purcell/mmm-mode/archive/0.5.7.tar.gz
+	source = diacritics.patch
 	sha256sums = f9655542cf91ba766d5fbb9a3ada0c62aaadf96b220969d7c4ec2768a0b53e24
+	sha256sums = bbab81d4fdf9f0ffdaa4930bbccdd5bc0dc74ecf38cd31e9d6327eb54ae4ae4d
 
 pkgname = emacs-mmm-mode
 
