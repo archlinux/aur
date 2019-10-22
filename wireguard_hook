@@ -26,9 +26,9 @@
 # For more information, please refer to <http://unlicense.org/>
 #
 
-_fatal () { echo ":: wireguard [FATAL]: ${@}. Cannot initialise Wireguard\!"; break=y; }
+_fatal () { echo ":: wireguard [FATAL]: ${@}. Cannot initialise Wireguard!"; break=y; }
 
-if [ -f /etc/wireguard/initcpio/unlock ]; then
+if [ -s /etc/wireguard/initcpio/unlock ]; then
     . /etc/wireguard/initcpio/unlock
 fi
 
@@ -49,8 +49,8 @@ run_hook()
         return 1
     fi
 
-    if [ -z $PRIVATE_KEY_FILE -a -f $PRIVATE_KEY_FILE ]; then
-        _fatal 'Private key file is not defined!'
+    if [ ! -s $PRIVATE_KEYFILE ]; then
+        _fatal 'Private keyfile is not defined!'
         return 1
     fi
 
@@ -69,11 +69,11 @@ run_hook()
         return 1
     fi
 
-    echo "Starting Wireguard Remote Unlock."
+    echo "Starting Wireguard."
 
     ip link add dev $INTERFACE type wireguard
     wg set $INTERFACE \
-        private-key $PRIVATE_KEY_FILE \
+        private-key $PRIVATE_KEYFILE \
         peer $PEER_PUBLIC_KEY \
         endpoint $PEER_ENDPOINT \
         persistent-keepalive $PERSISTENT_KEEPALIVES \

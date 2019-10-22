@@ -28,12 +28,26 @@
 
 build()
 {
-   add_binary wg
-   add_module wireguard
+    if [ ! -s /etc/wireguard/initcpio/unlock ]; then
+        error "Missing Wireguard initcpio hook unlock configuration file! Exiting!"
+        return 1
+    else
+        . /etc/wireguard/initcpio/unlock
+        if [ ! -s $PRIVATE_KEYFILE ]; then
+            error "Missing Wireguard initcpio hook Private Keyfile! Exiting!"
+            return 1
+        fi
+    fi
 
-   add_full_dir /etc/wireguard/initcpio
+    add_binary wg
+    add_module wireguard
 
-   add_runscript
+    add_dir /etc/wireguard/initcpio
+
+    add_file $PRIVATE_KEYFILE
+    add_file /etc/wireguard/initcpio/unlock
+
+    add_runscript
 }
 
 help() {

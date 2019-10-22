@@ -1,7 +1,7 @@
 # Maintainer: David Harrigan <dharrigan [@] gmail [dot] com>
 
 pkgname=mkinitcpio-wireguard
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='mkinitcpio hook that initialises Wireguard to assist in the remote unlocking of encrypted partitions.'
 url='https://github.com/dharrigan/mkinitcpio-wireguard'
@@ -19,9 +19,9 @@ package() {
 }
 
 sha256sums=(
-'cf4027c5c88a521f76ecfe257ee0bbcaf24294f8dcc97b8128cf77a3cd547d09'
-'5bbbe54b9bd0469537c74f892fd30fcb90e9b49143addc7a03f4366419d6bff6'
-'7e6c925ba973a90f63100a1a56b2e57f017d1155c1d0514f38cf9eeca557bd99'
+'0d173d068d440ab423386994c3bb3e7acef6a1380db3586adbded129d1e3975b'
+'563e42ce30179df55132c10b295604e0a5a68d925890db55153764b4c3f959fe'
+'e7a034b4239610be33ccb1001a0df947fb14cbe758b8f2825d8b890f2bfc043e'
 )
 
 # vim:set syntax=sh tw=78:

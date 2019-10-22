@@ -25,6 +25,11 @@ WARNING: Read the warning above.
 |===
 |Version | Note
 
+| *0.3.0*
+a|
+* Various tidy ups and script improvements
+* Rename PRIVATE_KEY_FILE to PRIVATE_KEYFILE
+
 | *0.2.0*
 a|
 * Don't include the entire `/etc/wireguard` directory, instead use a subdirectory, namely `/etc/wireguard/initcpio` to keep things separate.
