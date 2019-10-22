@@ -1,7 +1,7 @@
-# Contributor: Angelo Theodorou <encelo@gmail.com>
+# Maintainer: Angelo Theodorou <encelo@gmail.com>
 
 pkgname=ncine
-pkgver=2019.05
+pkgver=2019.10
 pkgrel=1
 pkgdesc="A multi-platform 2D game engine"
 arch=('i686' 'x86_64')
@@ -11,8 +11,8 @@ depends=('glfw' 'openal' 'libvorbis' 'libwebp' 'hicolor-icon-theme')
 optdepends=('glew' 'lua')
 makedepends=('git' 'cmake' 'doxygen')
 options=(!strip)
-source=('https://github.com/nCine/nCine/archive/2019.05.tar.gz')
-md5sums=('324a3fbb0c46a877d514cb841b131288')
+source=('https://github.com/nCine/nCine/archive/2019.10.tar.gz')
+md5sums=('2598a2f357e465e5cd51c0ac30757d66')
 
 prepare() {
   git clone https://github.com/nCine/nCine-data || git -C nCine-data pull
