@@ -1,0 +1,22 @@
+pkgbase = python2-openpyxl
+	pkgdesc = A Python library to read/write Excel 2007 xlsx/xlsm files
+	pkgver = 2.6.2
+	pkgrel = 2
+	url = https://openpyxl.readthedocs.org/
+	arch = any
+	license = MIT
+	makedepends = python2-setuptools
+	makedepends = python2-jdcal
+	makedepends = python2-et-xmlfile
+	source = python2-openpyxl-2.6.2.tar.bz2::https://bitbucket.org/openpyxl/openpyxl/get/2.6.2.tar.bz2
+	source = LICENCE
+	sha256sums = 7935ee3b99f9e6c5c105e38cae710f5872241d3c0c63a937f7097b4a2c05e83a
+	sha256sums = 0c84bb42f5d367e5ebf9fc2dde35b16141df5ee0fdc189250858bc6c5560f69e
+
+pkgname = python2-openpyxl
+	depends = python2-jdcal
+	depends = python2-et-xmlfile
+	optdepends = python2-pillow: needed to include images
+	optdepends = python2-lxml: alternative XML backend
+	optdepends = python2-defusedxml: guard against various XML vulnerabilities
+
