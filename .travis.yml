@@ -59,7 +59,7 @@ archlinux:
   - ccache -s
   - ccache -z
 # set timeout to 50m minus current uptime, minus travis cache in time, minus 60 second buffer for arch-travis cleanup.
-  - timeout $((50*60-arch_uptime-travis_uptime-60)) makepkg -s --noconfirm > >(ts -s '%.T'); _makepkg_return=$?
+  - timeout $((50*60-arch_uptime-cache_out_time-60)) makepkg -s --noconfirm > >(ts -s '%.T'); _makepkg_return=$?
   - sudo pacman -Sc --noconfirm
   - ccache -s
   - ccache -z
@@ -73,6 +73,7 @@ script:
 # assume caching out will take the same amount of time as caching in those making build time equal to 50 minutes minus two time current uptime.
 # detect no cache in and assume 5min cache out time.
 - "[ $travis_uptime -le 60 ] && cache_out_time=300 || cache_out_time=$travis_uptime"
+- "export cache_out_time"
 - "curl -s https://raw.githubusercontent.com/bartoszek/arch-travis/master/arch-travis.sh| timeout $((50*60-travis_uptime-cache_out_time)) bash"
 - "echo pacman pkg cache size: $(du -h ~/.pkg-cache|cut -f1) in $(ls ~/.pkg-cache|wc -l) files"
 
