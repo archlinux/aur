@@ -8,7 +8,7 @@
 
 pkgname=blender-2.8-git
 _fragment="#branch=master"
-pkgver=2.82.r91259.3cdcd1fa9f0
+pkgver=2.82.r91375.dc0ce14316a
 pkgrel=1
 pkgdesc="Development version of Blender 2.8 branch"
 arch=('i686' 'x86_64')
@@ -19,8 +19,8 @@ depends=('alembic' 'libgl' 'python' 'python-numpy' 'openjpeg' 'desktop-file-util
 makedepends=('git' 'cmake' 'boost' 'mesa' 'llvm')
 ((DISABLE_NINJA)) ||  makedepends+=('ninja')
 ((DISABLE_CUDA)) && optdepends=('cuda: CUDA support in Cycles') || { makedepends+=('cuda') ; ((DISABLE_OPTIX)) || makedepends+=('optix>=7.0'); }
-provides=('blender-2.82')
-conflicts=('blender-2.82')
+provides=("blender-${pkgver%%.r*}")
+conflicts=("blender-${pkgver%%.r*}")
 license=('GPL')
 install=blender.install
 # NOTE: the source array has to be kept in sync with .gitmodules
@@ -98,29 +98,29 @@ package() {
   cd "$srcdir/blender-build"
   ((DISABLE_NINJA)) && make install DESTDIR="$pkgdir" || DESTDIR="$pkgdir" ninja install
   
-  msg "add -2.8 sufix to desktop shortcut"
-  sed -i 's/=blender/=blender-2.8/g' ${pkgdir}/usr/share/applications/blender.desktop
-  sed -i 's/=Blender/=Blender-2.8/g' ${pkgdir}/usr/share/applications/blender.desktop
-  mv ${pkgdir}/usr/share/applications/blender.desktop ${pkgdir}/usr/share/applications/blender-2.8.desktop
+  msg "add -${pkgver%%.r*} sufix to desktop shortcut"
+  sed -i "s/=blender/=blender-${pkgver%%.r*}/g" ${pkgdir}/usr/share/applications/blender.desktop
+  sed -i "s/=Blender/=Blender-${pkgver%%.r*}/g" ${pkgdir}/usr/share/applications/blender.desktop
+  mv ${pkgdir}/usr/share/applications/blender.desktop ${pkgdir}/usr/share/applications/blender-${pkgver%%.r*}.desktop
 
-  msg "add -2.8 sufix to binaries"
-  mv ${pkgdir}/usr/bin/blender ${pkgdir}/usr/bin/blender-2.8
-  mv ${pkgdir}/usr/bin/blender-thumbnailer.py ${pkgdir}/usr/bin/blender-2.8-thumbnailer.py
-#  mv ${pkgdir}/usr/bin/blenderplayer ${pkgdir}/usr/bin/blenderplayer-2.8
+  msg "add -${pkgver%%.r*} sufix to binaries"
+  mv ${pkgdir}/usr/bin/blender ${pkgdir}/usr/bin/blender-${pkgver%%.r*}
+  mv ${pkgdir}/usr/bin/blender-thumbnailer.py ${pkgdir}/usr/bin/blender-${pkgver%%.r*}-thumbnailer.py
+#  mv ${pkgdir}/usr/bin/blenderplayer ${pkgdir}/usr/bin/blenderplayer-${pkgver%%.r*}
 
-  msg "mv doc/blender to doc/blender-2.8"
-  mv ${pkgdir}/usr/share/doc/blender ${pkgdir}/usr/share/doc/blender-2.8
+  msg "mv doc/blender to doc/blender-${pkgver%%.r*}"
+  mv ${pkgdir}/usr/share/doc/blender ${pkgdir}/usr/share/doc/blender-${pkgver%%.r*}
 
-  msg "add -2.8 sufix to man page"
-  mv ${pkgdir}/usr/share/man/man1/blender.1 ${pkgdir}/usr/share/man/man1/blender-2.8
+  msg "add -${pkgver%%.r*} sufix to man page"
+  mv ${pkgdir}/usr/share/man/man1/blender.1 ${pkgdir}/usr/share/man/man1/blender-${pkgver%%.r*}
 
-  msg "add -2.8 sufix to all icons"  
+  msg "add -${pkgver%%.r*} sufix to all icons"  
   for icon in `find ${pkgdir}/usr/share/icons -type f`
   do
     # ${filename##/*.} extra extenssion from path
     # ${filename%.*} extract filename form path
     # look at bash "manipulatin string" 
-    mv $icon ${icon%.*}-2.8.${icon##/*.}
+    mv $icon ${icon%.*}-${pkgver%%.r*}.${icon##/*.}
   done
 
   if [ -e "$pkgdir"/usr/share/blender/*/scripts/addons/cycles/lib/ ] ; then
