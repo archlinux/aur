@@ -1,0 +1,13 @@
+pkgbase = ply-git
+	pkgdesc = A light-weight dynamic tracer for Linux
+	pkgver = r322.aa5b9ac
+	pkgrel = 1
+	url = https://github.com/iovisor/ply
+	arch = x86_64
+	license = BSD
+	provides = ply
+	source = git+https://github.com/iovisor/ply
+	md5sums = SKIP
+
+pkgname = ply-git
+
