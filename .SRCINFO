@@ -1,11 +1,12 @@
 pkgbase = emacs-nim-mode-git
 	pkgdesc = Emacs mode for the nim programming language - from git
-	pkgver = 0.4.1.r70.gfdd6f7a
+	pkgver = 0.4.1.r89.g3fb6643
 	pkgrel = 1
 	url = https://github.com/nim-lang/nim-mode
 	arch = any
 	license = GPL3
 	makedepends = git
+	makedepends = cask
 	depends = emacs-dash
 	depends = emacs-epc
 	depends = emacs-ctable

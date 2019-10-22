@@ -2,14 +2,14 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-nim-mode-git
-pkgver=0.4.1.r70.gfdd6f7a
+pkgver=0.4.1.r89.g3fb6643
 pkgrel=1
 pkgdesc="Emacs mode for the nim programming language - from git"
 arch=('any')
 url="https://github.com/nim-lang/nim-mode"
 license=('GPL3')
 depends=('emacs-dash' 'emacs-epc' 'emacs-ctable' 'emacs-epl' 'emacs-deferred' 'emacs-company-mode' 'emacs-commander' 'emacs-flycheck')
-makedepends=('git')
+makedepends=('git' 'cask')
 conflicts=('emacs-nim-mode')
 provides=('emacs-nim-mode')
 source=("$pkgname::git+$url" Makefile.patch)
@@ -28,7 +28,7 @@ prepare() {
 
 build() {
   cd ${pkgname}
-  make 
+  cask build 
 }
 
 package() {
