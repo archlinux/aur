@@ -1,17 +1,17 @@
-# Maintainer: Andrew Sun <adsun701@gmail.com>
-# Contributor: orumin <dev@orum.in>
+# Maintainer: Andrew Sun <adsun701 at gmail dot com>
+# Contributor: orumin <dev at orum dot in>
 
 _basename=check
 pkgname="lib32-$_basename"
-pkgver=0.12.0
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="A unit testing framework for C (32-bit)"
 arch=('x86_64')
 url="https://libcheck.github.io/check/"
 license=('LGPL')
-depends=('lib32-glibc' 'awk' "$_basename")
-makedepends=('git' 'lib32-gcc-libs')
-_commit=673dce1d61781c32b449bef0ee8711dc7e689170  # tags/0.12.0
+depends=('lib32-glibc' "${_basename}")
+makedepends=('git' 'gcc-multilib')
+_commit=90d03f3fe002c33224432753ebfa21ebb5c32238  # tags/0.13.0
 source=("git+https://github.com/libcheck/check#commit=$_commit")
 md5sums=('SKIP')
 
@@ -37,15 +37,8 @@ build() {
   make
 }
 
-check() {
-  cd $_basename
-  # Extremely long
-  #make -k check
-}
-
 package() {
   cd $_basename
   make DESTDIR="$pkgdir" install
   rm -rf ${pkgdir}/usr/{bin,share,include}
-
 }
