@@ -22,19 +22,18 @@ pkgbase = alice-vision
 	depends = opengv
 	depends = coin-or-clp
 	depends = ceres-solver
-	optdepends = popsift-libs: for GPU accelerated feature matching
-	optdepends = uncertainty-framework: for SFM uncertainty estimation
-        optdepends = cuda: (libcudart.so) for depth map computation
 	provides = alice-vision
 	conflicts = alice-vision-git
 	source = https://github.com/alicevision/AliceVision/archive/v2.2.0.tar.gz
 	source = MeshSDFilter::git+https://github.com/alicevision/MeshSDFilter.git#branch=av_develop
 	source = nanoflann::git+https://github.com/alicevision/nanoflann.git
 	source = submodule.patch
+	source = https://github.com/alicevision/AliceVision/pull/709.patch
 	sha256sums = 157d06d472ffef29f08a781c9df82daa570a49bb009e56a2924a3bd2f555ef50
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = ddbe76933cea0300b577095afa7459113a2d2ef02d4f300424261165ad9dee22
+	sha256sums = 3055e98b7d788135d9873bc7fc4698cb72a3f8212155f281877e37d315a693d8
 
 pkgname = alice-vision
 

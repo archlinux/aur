@@ -24,11 +24,13 @@ source=("https://github.com/alicevision/AliceVision/archive/v${pkgver}.tar.gz"
         "MeshSDFilter::git+https://github.com/alicevision/MeshSDFilter.git#branch=av_develop"
         "nanoflann::git+https://github.com/alicevision/nanoflann.git"
         "submodule.patch"
+        "https://github.com/alicevision/AliceVision/pull/709.patch"
         )
 sha256sums=('157d06d472ffef29f08a781c9df82daa570a49bb009e56a2924a3bd2f555ef50'
             'SKIP'
             'SKIP'
-            'ddbe76933cea0300b577095afa7459113a2d2ef02d4f300424261165ad9dee22')
+            'ddbe76933cea0300b577095afa7459113a2d2ef02d4f300424261165ad9dee22'
+            '3055e98b7d788135d9873bc7fc4698cb72a3f8212155f281877e37d315a693d8')
 
 _CMAKE_FLAGS=(
               -DCMAKE_INSTALL_PREFIX=/usr
@@ -71,6 +73,7 @@ _path="AliceVision-${pkgver}"
 prepare() {
   cd ${srcdir}/${_path}
   patch -Np1 -i ${srcdir}/submodule.patch
+  patch -Np1 -i ${srcdir}/709.patch
   rm -rf src/dependencies/{MeshSDFilter,nanoflann}
   cp -r ${srcdir}/MeshSDFilter src/dependencies/MeshSDFilter
   cp -r ${srcdir}/nanoflann src/dependencies/nanoflann
