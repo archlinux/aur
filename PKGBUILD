@@ -2,15 +2,15 @@
 
 pkgname=anbox-image-gapps-rooted
 pkgver=2018.07.19
-pkgrel=4
+pkgrel=5
 pkgdesc='Android image for running in Anbox with Houdini, OpenGApps and SuperSU'
 arch=('x86_64')
 url='https://anbox.io/'
 license=('custom')
-depends=(
-    'sed'
+makedepends=(
     'curl'
     'lzip'
+    'unzip'
     'squashfs-tools'
 )
 provides=(
