@@ -1,19 +1,19 @@
 pkgbase = duetcontrolserver-bin
 	pkgdesc = Control server application for Duet 3 series
-	pkgver = 1.0.4.1
+	pkgver = 1.1.0.5
 	pkgrel = 1
-	url = https://github.com/chrishamm/DuetSoftwareFramework
+	url = https://github.com/chrishamm/DuetSoftwareFramework.git
 	arch = armv7h
 	license = GPL3
-	depends = duetruntime>=1.0.4.1
+	depends = duetruntime>=1.1.0.5
 	depends = linux>=4.8
-	provides = duetcontrolserver=1.0.4.1
+	provides = duetcontrolserver=1.1.0.5
 	conflicts = duetcontrolserver
 	options = !strip
 	options = staticlibs
 	backup = opt/dsf/conf/config.json
-	source = https://pkg.duet3d.com/dists/stable/armv7/binary-armhf/duetcontrolserver_1.0.4.1_armhf.deb
-	sha256sums = 5b2b81ab02b8a3999e590c5f37fec53ce2435c9e14495193e4d927b9459a1e06
+	source = https://pkg.duet3d.com/dists/stable/armv7/binary-armhf/duetcontrolserver_1.1.0.5_armhf.deb
+	sha256sums = 4022b0516adbd435f430bbef349dd475247884d06e5cbe3dac98ef35078b7599
 
 pkgname = duetcontrolserver-bin
 
