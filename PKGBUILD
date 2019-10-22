@@ -6,7 +6,7 @@
 #
 
 pkgname=nethack-git
-pkgver=3.6.3_WIP.r334.g6cbf10d97
+pkgver=3.6.3_WIP.r362.g5690cce58
 pkgrel=1
 pkgdesc='A single player dungeon exploration game'
 arch=('i686' 'x86_64')
