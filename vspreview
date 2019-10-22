@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+
+SCRIPT_DIR=/opt/vapoursynth-preview
+python ${SCRIPT_DIR}/run.py "$@"

@@ -1,0 +1,21 @@
+pkgbase = vapoursynth-preview-git
+	pkgdesc = Preview for VapourSynth scripts
+	pkgver = r144.2fbc158
+	pkgrel = 1
+	url = https://github.com/Endilll/vapoursynth-preview
+	arch = any
+	license = Apache-2.0
+	depends = vapoursynth
+	depends = python-psutil
+	depends = python-pyqt5
+	depends = python-pyaml
+	depends = python-qdarkstyle
+	optdepends = python-cueparser
+	optdepends = python-pysubs2
+	source = git+https://github.com/Endilll/vapoursynth-preview.git
+	source = vspreview
+	sha512sums = SKIP
+	sha512sums = 54f7f97a3f5aa23e447a23e4a7f92e3bc38dad8521e922a3dcffd3c73ec29225692a8a60541d287130a09070440a473ea7b3342029f2dd3c45b31d9ec92cda32
+
+pkgname = vapoursynth-preview-git
+
