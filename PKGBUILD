@@ -2,14 +2,14 @@
 
 pkgname=ycmd-git
 _gitname=ycmd
-pkgver=r2382.be84d443
+pkgver=r2474.6f3e2ac5
 pkgrel=1
 pkgdesc="A code-completion & code-comprehension server"
 arch=('i686' 'x86_64')
 url="https://github.com/Valloric/ycmd"
 license=('GPLv3')
-depends=('clang' 'python' 'python-certifi')
-makedepends=('cmake' 'git')
+depends=('boost-libs' 'clang' 'python' 'python-certifi')
+makedepends=('boost' 'cmake' 'git')
 provides=('ycmd')
 conflicts=('ycmd')
 source=("git+https://github.com/Valloric/ycmd.git"
@@ -50,7 +50,7 @@ build() {
     cd "$srcdir/$_gitname"
     mkdir -p build
     cd build
-    cmake -G "Unix Makefiles" -DUSE_SYSTEM_LIBCLANG=ON -DUSE_PYTHON2=OFF . ../cpp/
+    cmake -G "Unix Makefiles" -DUSE_SYSTEM_BOOST=ON -DUSE_SYSTEM_LIBCLANG=ON -DUSE_CLANG_COMPLETER=ON -DUSE_PYTHON2=OFF . ../cpp/
     make ycm_core
 }
 

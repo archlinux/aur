@@ -1,13 +1,15 @@
 pkgbase = ycmd-git
 	pkgdesc = A code-completion & code-comprehension server
-	pkgver = r2382.be84d443
+	pkgver = r2474.6f3e2ac5
 	pkgrel = 1
 	url = https://github.com/Valloric/ycmd
 	arch = i686
 	arch = x86_64
 	license = GPLv3
+	makedepends = boost
 	makedepends = cmake
 	makedepends = git
+	depends = boost-libs
 	depends = clang
 	depends = python
 	depends = python-certifi
