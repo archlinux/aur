@@ -1,0 +1,11 @@
+pkgbase = gconf-dummy
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/nikola-kocic/gconf-dummy
+	arch = any
+	license = GPL
+	provides = gconf
+	conflicts = gconf
+
+pkgname = gconf-dummy
+
