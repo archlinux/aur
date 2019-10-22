@@ -1,0 +1,139 @@
+= mkinitcpio Wireguard hook
+:author: David Harrigan
+:email: <dharrigan [@] gmail [dot] com>
+:docinfo: true
+:doctype: book
+:icons: font
+:numbered:
+:sectlinks:
+:sectnums:
+:setanchors:
+:source-highlighter: highlightjs
+:toc:
+:toclevels: 5
+
+== Rationale
+
+Firstly, encryption. Encrypt all the things.
+
+Secondly, I think https://www.wireguard.io[Wireguard] is pretty awesome. It's
+really easy to setup and use and works flawlessly (at least for me 😄).
+
+Thirdly, the ability to remotely unlock encrypted partitions is extremely
+useful.  However, a limitation is that in order to remotely unlock the
+partition via SSH, you normally need to be on the same network (or at least
+routeable) to the computer that needs unlocking.
+
+As far as I could tell, there was nothing available in
+https://aur.archlinux.org[AUR] that provided a Wireguard hook for
+`mkinitcpio`. Creating a hook should allow a basic Wireguard interface to be
+established so that - via a secure network - you could gain access to the
+remote machine. This is my small attempt to achieve that aim.
+
+IMPORTANT: I developed this little hook for myself and I'm releasing it into
+the general community in the (probably misguided) hope that others may find it
+useful too. As usual, no warranty implied or otherwise is given towards the
+fitness of this software in meeting *YOUR* needs. Please refer to the included
+https://unlicense.org[Unlicense] license file for more information. That said,
+I find this little hook useful - perhaps you may too - so please enjoy! Oh,
+and please be be awesome to each other!
+
+WARNING: Ensure you have read the Arch wiki section on
+https://wiki.archlinux.org/index.php/Dm-crypt/Specialties#Remote_unlocking_of_the_root_(or_other)_partition[remote
+unlocking]. It's a *very* good idea to get remote unlocking working *first* on
+your local network - proving that it works for you (this includes using either
+*tinyssh* or *dropbear* to authenticate and unlock successfully)
+- *before* attempting to setup this mkinitcpio Wireguard hook for remote
+unlocking.
+
+IMPORTANT: It is also *strongly* recommend that a *separate* Wireguard network
+is setup and configured *just* for unlocking. You see, a private key (and a
+public key) and a configuration file are written to the ramdisk (which
+typically lives in an unencrypted boot partition). It's super trivially easy
+for anyone to copy this ramdisk, extract out the contents and use the private
+key and Wireguard configuration found therein to connect to your Wireguard
+network. As a minimum, you could disable (on the remote peer *nominally called
+the `server`*) the ability for the target machine (the `client` - the one on
+which you are remotely unlocking partitions) to connect and authenticate -
+only enabling connection *when* and *if* required. Please be careful and think
+this through! Safety first!
+
+== OS Installation
+
+Standard installation rules apply. Here's an example using the
+https://github.com/Jguer/yay[yay] package manager to install the utility.
+
+`yay -S mkinitcpio-wireguard`
+
+Please refer to your favourite package manager's documentation in learn how to
+install it for you 😄
+
+NOTE: Obviously, you must also install Wireguard! Choose either manual
+installation (using git and compiling it yourself), or using `wireguard-arch`
+or `wireguard-dkms`. Life is short, so personally I just roll with
+`wireguard-arch`. Seems to work OOTB for me, but YMMV...
+
+== Configuration
+
+IMPORTANT: The setup and running of `mkinitcpio-wireguard` is *very* basic and
+makes *lots* of assumptions. *This is intentional!* This hook is simple
+because it is designed to get a minimal Wireguard up and running so that you
+can remotely unlock encrypted partitions. The script does not attempt to do
+anything else. This script will never be super fancy or clever.
+
+WARNING: Please read and familiarise yourself with how Wireguard works. In
+particular, please refer to the *numerous* examples online of how to setup and
+configure Wireguard. It is *strongly* suggested you get Wireguard up and
+running first. A few examples of where to find documentation are listed below:
+
+* https://wiki.archlinux.org/index.php/WireGuard
+* https://www.wireguard.com/quickstart/
+* https://git.zx2c4.com/WireGuard/about/src/tools/man/wg.8
+
+After installing `mkinitcpio-wireguard`, a configuration file will be written
+to `/etc/wireguard/remote-unlock`. You *MUST* edit this file to suit your
+particular Wireguard requirements. The file is really simple and therefore
+should be pretty self-explanatory.
+
+NOTE: If you have an existing `wg0.conf` in your `/etc/wireguard` directory,
+you can use the contents of that file as a reference. Please be aware of the
+warning above concerning the recommended use of a separate network for remote
+unlocking.
+
+== Hook Installation
+
+After you have edited the `/etc/wireguard/remote-unlock` file to suit your
+needs, ensure that you've added the `wireguard` hook to the *HOOKS* array of
+`/etc/mkinitcpio.conf`. Shown below is an example that also includes the use
+of `netconf`, `tinyssh` and `encryptssh`.
+
+----
+HOOKS=(base udev autodetect keyboard keymap modconf block netconf wireguard tinyssh encryptssh filesystems fsck)
+----
+
+== Final Steps
+
+Lastly, run (as root):
+
+----
+mkinitcpio -P
+----
+
+This will regenerate the ramdisk with your Wireguard configuration.
+
+You should now be able to reboot your machine and after the interface has come
+up be able to ping it via your Wireguard network! You should now also be able
+to SSH to the machine (you did remember to set that all up before doing this,
+right?) and unlock any encrypted partitions and thus enable the continuation
+of your boot process! FTW!
+
+== Unlicensed
+
+Find the full unlicense in the UNLICENSE file, but here's a snippet.
+This is free and unencumbered software released into the public domain.
+
+----
+Anyone is free to copy, modify, publish, use, compile, sell, or distribute
+this software, either in source code form or as a compiled binary, for any
+purpose, commercial or non-commercial, and by any means.
+----

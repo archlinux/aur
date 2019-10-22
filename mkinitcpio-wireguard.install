@@ -1,0 +1,15 @@
+#!/bin/sh
+
+post_install() {
+    echo ">"
+	echo "> Now add 'wireguard' to your HOOKS array in your '/etc/mkinitcpio.conf' and rebuild the ramdisk."
+	echo "> e.g., HOOKS=(base udev autodetect keyboard keymap modconf block netconf wireguard tinyssh encryptssh filesystems fsck)"
+	echo "> don't forget to configure the '/etc/wireguard/remote-unlock' file then rerun mkinitcpio..."
+	echo ">"
+}
+
+post_remove() {
+	sed -i "/^HOOKS=/s/wireguard//" /etc/mkinitcpio.conf
+}
+
+# vim:set syntax=sh tw=78:

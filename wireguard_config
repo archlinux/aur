@@ -1,0 +1,60 @@
+#
+# This is free and unencumbered software released into the public domain.
+#
+# Anyone is free to copy, modify, publish, use, compile, sell, or
+# distribute this software, either in source code form or as a compiled
+# binary, for any purpose, commercial or non-commercial, and by any
+# means.
+#
+# In jurisdictions that recognize copyright laws, the author or authors
+# of this software dedicate any and all copyright interest in the
+# software to the public domain. We make this dedication for the benefit
+# of the public at large and to the detriment of our heirs and
+# successors. We intend this dedication to be an overt act of
+# relinquishment in perpetuity of all present and future rights to this
+# software under copyright law.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+# EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+# MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+# IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+# OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+# ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+# OTHER DEALINGS IN THE SOFTWARE.
+#
+# For more information, please refer to <http://unlicense.org/>
+#
+
+# Information pertaining to the Wireguard mkinitcpio hook
+#
+# Please ensure you've read the documentation on how to setup and configure
+# Wireguard for your needs. It's vital that you ensure that you can connect
+# successfully before working on enabling remote unlocking functionality.
+
+# All the values below are just examples. You must change them to suit
+# your Wireguard network setup.
+
+# Specifies the name of the Wireguard interface (usually wg0)
+INTERFACE=wg0
+
+# Specifies the address that the Wireguard interface will use.
+# Please ensure you specify the address in CIDR format.
+INTERFACE_ADDR=10.0.200.21/24
+
+# This is the public key of the peer.
+PEER_PUBLIC_KEY=abcdefg
+
+# This is the IP address and port of the peer.
+# Usually this is the external public-facing IP, but it may also be internal!
+PEER_ENDPOINT=192.168.80.1:12912
+
+# This is your private key previously setup to establish connection to the peer.
+PRIVATE_KEY_FILE=/etc/wireguard/privatekey
+
+# If you're behind a NAT, a ping of 25 seconds is useful!
+PERSISTENT_KEEPALIVES=25
+
+# The IP range that will be allowed.
+ALLOWED_IPS=10.0.200.0/24
+
+# vim:set syntax=sh tw=78:

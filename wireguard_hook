@@ -1,0 +1,90 @@
+#!/bin/ash
+#
+# This is free and unencumbered software released into the public domain.
+#
+# Anyone is free to copy, modify, publish, use, compile, sell, or
+# distribute this software, either in source code form or as a compiled
+# binary, for any purpose, commercial or non-commercial, and by any
+# means.
+#
+# In jurisdictions that recognize copyright laws, the author or authors
+# of this software dedicate any and all copyright interest in the
+# software to the public domain. We make this dedication for the benefit
+# of the public at large and to the detriment of our heirs and
+# successors. We intend this dedication to be an overt act of
+# relinquishment in perpetuity of all present and future rights to this
+# software under copyright law.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+# EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+# MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+# IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+# OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+# ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+# OTHER DEALINGS IN THE SOFTWARE.
+#
+# For more information, please refer to <http://unlicense.org/>
+#
+
+_fatal () { echo ":: wireguard [FATAL]: ${@}. Cannot initialise Wireguard\!"; break=y; }
+
+if [ -f /etc/wireguard/remote-unlock ]; then
+    . /etc/wireguard/remote-unlock
+fi
+
+run_hook()
+{
+    if [ -z $INTERFACE ]; then
+        _fatal 'Interface name is not defined!'
+        return 1
+    fi
+
+    if [ -z $INTERFACE_ADDR ]; then
+        _fatal 'Interface address is not defined!'
+        return 1
+    fi
+
+    if [ -z $PEER_PUBLIC_KEY ]; then
+        _fatal 'Peer Public Key is not defined!'
+        return 1
+    fi
+
+    if [ -z $PRIVATE_KEY_FILE -a -f $PRIVATE_KEY_FILE ]; then
+        _fatal 'Private key file is not defined!'
+        return 1
+    fi
+
+    if [ -z $PEER_ENDPOINT ]; then
+        _fatal 'Peer endpoint is not defined!'
+        return 1
+    fi
+
+    if [ -z $PERSISTENT_KEEPALIVES ]; then
+        _fatal 'Persistent Keep Alives is not defined!'
+        return 1
+    fi
+
+    if [ -z $ALLOWED_IPS ]; then
+        _fatal 'Allowed IPs is not defined!'
+        return 1
+    fi
+
+    echo "Starting Wireguard Remote Unlock."
+
+    ip link add dev $INTERFACE type wireguard
+    wg set $INTERFACE \
+        private-key $PRIVATE_KEY_FILE \
+        peer $PEER_PUBLIC_KEY \
+        endpoint $PEER_ENDPOINT \
+        persistent-keepalive $PERSISTENT_KEEPALIVES \
+        allowed-ips $ALLOWED_IPS
+    ip addr add $INTERFACE_ADDR dev $INTERFACE
+    ip link set $INTERFACE up
+}
+
+run_cleanuphook() {
+
+    ip link delete dev $INTERFACE
+
+}
+# vim:set syntax=sh tw=78:
