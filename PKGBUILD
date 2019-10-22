@@ -3,7 +3,7 @@
 # Maintainer: Teteros <teteros at teknik dot io>
 
 pkgname=radium
-pkgver=5.9.76
+pkgver=5.9.77
 pkgrel=1
 pkgdesc="A graphical music editor. A next generation tracker."
 arch=('i686' 'x86_64')
@@ -42,12 +42,10 @@ optdepends=(
 )
 options=(!strip)
 source=("https://github.com/kmatheussen/${pkgname}/archive/${pkgver}.tar.gz"
-        "add-faust-llvm90-support.patch"
         "use-libtirpc-headers.patch"
         "use-system-libxcb.patch"
         "use-system-vstsdk.patch")
-sha256sums=('e8a5d690822b87539972a1091986b6db7ec60d90018188220998d5f837a64d8b'
-            'eedde2cf78989f307f35bcf7aea49052b829c459db59805502b0cb5d831e75b4'
+sha256sums=('365a14ddf2ac266acbc24050210bd7c32520039493f722dcf2372e2b79e96af4'
             '0dfa3014bc6a66989564c7da2d963681f5d129eb0be28153744693dd533e4909'
             '6c29e825e06d1c3aec4afd915718b8c46da705d1411a94f7c0f777b888a9b50d'
             '045e4b4c444d1a37dffdcecb87e5245188fadf68444f9a4b14207a5b98671344')
@@ -55,8 +53,8 @@ sha256sums=('e8a5d690822b87539972a1091986b6db7ec60d90018188220998d5f837a64d8b'
 prepare() {
   cd "${pkgname}-${pkgver}"
 
-  # Add support for LLVM9 in FAUST
-  patch -p1 < "${srcdir}/add-faust-llvm90-support.patch"
+  # Fix context in faust.patch, PR #1231
+  sed -i '20s/8,13/8,14/g' bin/packages/faust.patch
 
   # glibc-2.27 deprecated legacy rpc, header files for libpd are in libtirpc
   patch -p1 < "${srcdir}/use-libtirpc-headers.patch"
