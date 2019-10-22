@@ -1,14 +1,14 @@
 pkgbase = libcleri
 	pkgdesc = C Left-Right Parser
-	pkgver = 0.10.0
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://github.com/transceptor-technology/libcleri
 	arch = x86_64
 	license = MIT
 	depends = pcre2
-	source = https://github.com/transceptor-technology/libcleri/archive/0.10.0.tar.gz
+	source = libcleri-0.11.0.tar.gz::https://github.com/transceptor-technology/libcleri/archive/0.11.0.tar.gz
 	source = makefile.targets.patch
-	sha256sums = cbe9cd30188f6fac16a752acc5272f8354d7769cc39737ffaced3501abea7bc0
+	sha256sums = c57171ba6165585391cc671a564c60eaecd6f77d4bc98aa491ffdfd1c91a5abb
 	sha256sums = c26ad2d1aea5cac6d536a93a55baeeb087c76946ddf549afe4f5e1bbe60388c9
 
 pkgname = libcleri
