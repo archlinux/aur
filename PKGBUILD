@@ -6,7 +6,7 @@
 pkgbase=nvidia-340xx
 pkgname=(nvidia-340xx nvidia-340xx-dkms)
 pkgver=340.107
-pkgrel=92
+pkgrel=93
 pkgdesc="NVIDIA drivers for linux, 340xx legacy branch"
 arch=('x86_64')
 url="https://www.nvidia.com/"
@@ -52,7 +52,7 @@ build() {
 
 package_nvidia-340xx() {
   pkgdesc="NVIDIA drivers for linux, 340xx legacy branch"
-  depends=('linux>=5.3.6' "nvidia-340xx-utils=${pkgver}" 'libgl')
+  depends=('linux>=5.3.6' "nvidia-340xx-utils=$pkgver" 'libgl')
 
   install -Dt "${pkgdir}${_extradir}" -m644 \
     "${srcdir}/${_pkg}/kernel"/{nvidia,uvm/nvidia-uvm}.ko
@@ -60,7 +60,7 @@ package_nvidia-340xx() {
   find "${pkgdir}" -name '*.ko' -exec gzip -n {} +
 
   echo "blacklist nouveau" |
-    install -Dm644 /dev/stdin "${pkgdir}/usr/lib/modprobe.d/nvidia-340xx-ck.conf"
+    install -Dm644 /dev/stdin "${pkgdir}/usr/lib/modprobe.d/nvidia-340xx.conf"
 }
 
 package_nvidia-340xx-dkms() {
