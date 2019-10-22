@@ -2,11 +2,11 @@
 # Maintainer:  skydrome <skydrome@protonmail.com>
 
 # Uncomment if you do not want to build all language translations
-#export LG2=en
+export LG2=en
 
 pkgname=i2p
-pkgver=0.9.42
-pkgrel=2
+pkgver=0.9.43
+pkgrel=1
 pkgdesc="A distributed anonymous network"
 url="https://geti2p.net"
 license=('GPL2')
@@ -20,28 +20,31 @@ backup=('opt/i2p/wrapper.config')
 install='i2p.install'
 options=(!strip)
 
-_url="https://download.i2p2.de/releases/${pkgver}"
-#_url="https://launchpad.net/i2p/trunk/${pkgver}/+download"
+# https://geti2p.net/en/get-involved/develop/release-signing-key
+# https://geti2p.net/_static/zzz.key.asc
+validpgpkeys=('2D3D2D03910C6504C1210C65EE60C0C8EE7256A8')
+
+#_url="https://download.i2p2.de/releases/${pkgver}"
+_url="https://launchpad.net/i2p/trunk/${pkgver}/+download"
 
 source=("${_url}/i2psource_${pkgver}.tar.bz2"{,.sig}
         'i2prouter.service' 'i2prouter.sh' 'wrapper.config' 'router.config')
 
-sha256sums=('30482b56becb6135ed4b74bd4715906774f7c3f3302753985a5fde363f0cc713'
+sha256sums=('beb2a3c62efce826cd5aa3e296b483143ad2c581ddb038677f960f7d110df81c'
             'SKIP'
             '9bb899ece87099716da29bac8b7da02916fc325699b68989e73c1fe333a6342f'
             'ea8f97e66461d591b1819eab39bbc40056b89ae12f7729b3dd9fd2ce088e5e53'
-            'd32da73b85be527ef0cc3791a2cedab089fed8272c7a70d23bc8edfe49d80b28'
+            'fc8833e081a842af0d9ff88af021a086370b2e55140bb08d932459f86f2c0bd2'
             '7a4688db826c3dddb762976cd8c9a5d465255c3577069243d8e5af941a4126e2')
-
-# https://geti2p.net/en/get-involved/develop/release-signing-key
-validpgpkeys=('2D3D2D03910C6504C1210C65EE60C0C8EE7256A8')
 
 build() {
     cd "$pkgname-$pkgver"
 
-    source /etc/ant.conf
-    export ANT_OPTS="-Dfile.encoding=UTF-8"
-    ant preppkg-linux-only
+    ant -Dfile.encoding=UTF-8 \
+        -Djavac.compilerargs=-Xlint:-options \
+        -Dbuild.reproducible=true \
+        -Djavac.version=8 \
+        preppkg-linux-only
 }
 
 package() {

@@ -1,32 +1,30 @@
 pkgbase = i2p
 	pkgdesc = A distributed anonymous network
-	pkgver = 0.9.42
-	pkgrel = 2
+	pkgver = 0.9.43
+	pkgrel = 1
 	url = https://geti2p.net
 	install = i2p.install
 	arch = any
 	license = GPL2
 	makedepends = java-environment>=8
 	makedepends = apache-ant
-	makedepends = gettext
 	depends = java-runtime>=8
 	depends = java-service-wrapper
 	conflicts = i2p-bin
 	conflicts = i2p-dev
 	options = !strip
 	backup = opt/i2p/wrapper.config
-	source = https://download.i2p2.de/releases/0.9.42/i2psource_0.9.42.tar.bz2
-	source = https://download.i2p2.de/releases/0.9.42/i2psource_0.9.42.tar.bz2.sig
+	source = https://launchpad.net/i2p/trunk/0.9.43/+download/i2psource_0.9.43.tar.bz2
+	source = https://launchpad.net/i2p/trunk/0.9.43/+download/i2psource_0.9.43.tar.bz2.sig
 	source = i2prouter.service
 	source = i2prouter.sh
 	source = wrapper.config
 	source = router.config
-	validpgpkeys = 2D3D2D03910C6504C1210C65EE60C0C8EE7256A8
-	sha256sums = 30482b56becb6135ed4b74bd4715906774f7c3f3302753985a5fde363f0cc713
+	sha256sums = beb2a3c62efce826cd5aa3e296b483143ad2c581ddb038677f960f7d110df81c
 	sha256sums = SKIP
 	sha256sums = 9bb899ece87099716da29bac8b7da02916fc325699b68989e73c1fe333a6342f
 	sha256sums = ea8f97e66461d591b1819eab39bbc40056b89ae12f7729b3dd9fd2ce088e5e53
-	sha256sums = d32da73b85be527ef0cc3791a2cedab089fed8272c7a70d23bc8edfe49d80b28
+	sha256sums = fc8833e081a842af0d9ff88af021a086370b2e55140bb08d932459f86f2c0bd2
 	sha256sums = 7a4688db826c3dddb762976cd8c9a5d465255c3577069243d8e5af941a4126e2
 
 pkgname = i2p
