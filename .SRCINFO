@@ -1,0 +1,38 @@
+pkgbase = code-transparent
+	pkgdesc = The Open Source build of Visual Studio Code (vscode) editor - with transparency enabled.
+	pkgver = 1.39.2
+	pkgrel = 1
+	url = https://github.com/microsoft/vscode
+	install = code-transparent.install
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = gulp
+	makedepends = npm
+	makedepends = python2
+	makedepends = yarn
+	makedepends = nodejs-lts-dubnium
+	depends = electron4
+	depends = libsecret
+	depends = libx11
+	depends = libxkbfile
+	depends = ripgrep
+	optdepends = bash-completion: Bash completions
+	optdepends = zsh-completions: ZSH completitons
+	provides = code
+	conflicts = code
+	source = code::git+https://github.com/Microsoft/vscode.git#tag=1.39.2
+	source = code.js
+	source = code.sh
+	source = product_json.diff
+	source = enable-proposed-apis.diff
+	source = transparent.diff
+	sha512sums = SKIP
+	sha512sums = 814c9554427183cd893a33cd2cbe91f6e0ea71921ef0717c86217b1d3058d265f9ff7a9ace3e7b76f122e60b7686475cf4d999e581a1845face3033afb9f745f
+	sha512sums = dfd9ca38e6510c9ad59fb24c1141fdfeb136f457392aee79b0bc2ff378c4c54d81a06728ba3ec4039d57dfcd730c26686585de9b4032a21ee8151a4f05195c15
+	sha512sums = 8ec47e497287d67f37e7b669af416f43d5cdbd4574892867d7b95996ef5de53640b5bc919b06b177e1fd91cb005579d6ed0c17325117b9914ba7cf28f5f06e40
+	sha512sums = b267dcedaf51067a782d0f14007663b706973c1538f7fb91f093475134c2145fd0ffd5ed2b47ad7f01c6167a78a4af285d2818d7850fc67a7f7a473324824664
+	sha512sums = 09e417a861d8c84855714253a65aeb954575a1ca51f5ef0fc6bc2aaa6fee9ba507325ce9ed2d450ba070d461456ef5fa60993ac68fc89f21c7d2f9ebe6631266
+
+pkgname = code-transparent
+
