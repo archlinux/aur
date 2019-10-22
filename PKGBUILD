@@ -1,16 +1,16 @@
 # Maintainer: lod <aur@cyber-anlage.de>
 
 pkgname=amdvlk
-pkgver=2019.Q3.6
-pkgrel=3
+pkgver=2019.Q4.1
+pkgrel=1
 
-_llpc_commit=ec210a78b6a280b00fb1765dd588c3970b6dc818
-_xgl_commit=2cb5558b94c5dc839e093cb439057a1802426c8e
-_pal_commit=88d997710b4e405f3a8e3fd60a38afee9e3e77e2
-_llvm_commit=1fc1a7d4248b4749c3df21eb48f7ae97b6cddf74
-_spvgen_commit=2f31d1170e8a12a66168b23235638c4bbc43ecdc
+_llpc_commit=3f15347d38da804814fdd9e24e2875ee0b2b9245
+_xgl_commit=19a031d9f73b95101fd4d3d594aca27c00feb180
+_pal_commit=39abe2297ca58a2b84dcd9bc5e238fbc399bd6e0
+_llvmproject_commit=40fbaf4c5446a361269c241d9112fff26575b5d0
+_spvgen_commit=f1bc2ba988273c3724afffe72fe9cd933a022ce7
 _spirvtools_commit=9702d47c6fe4cefbc55f905b0e9966452124b6c2
-_spirvheaders_commit=63d4d272f6e5b3cb9bb2bb50718a886a3eef4dab
+_spirvheaders_commit=af64a9e826bf5bb5fcd2434dd71be1e41e922563
 _glslang_commit=3aac2d44b20d2fcedfbded41ca3cfa932b90ae6f
 _metrohash_commit=2b6fee002db6cc92345b02aeee963ebaaf4c0e2f
 _cwpack_commit=b601c88aeca7a7b08becb3d32709de383c8ee428
@@ -28,7 +28,7 @@ source=(AMDVLK-$pkgname-$pkgver.tar.gz::https://github.com/GPUOpen-Drivers/AMDVL
         llpc-$pkgname-$pkgver.tar.gz::https://github.com/GPUOpen-Drivers/llpc/archive/${_llpc_commit}.tar.gz
         xgl-$pkgname-$pkgver.tar.gz::https://github.com/GPUOpen-Drivers/xgl/archive/${_xgl_commit}.tar.gz
         pal-$pkgname-$pkgver.tar.gz::https://github.com/GPUOpen-Drivers/pal/archive/${_pal_commit}.tar.gz
-        llvm-$pkgname-$pkgver.tar.gz::https://github.com/GPUOpen-Drivers/llvm/archive/${_llvm_commit}.tar.gz
+        llvm-project-$pkgname-$pkgver.tar.gz::https://github.com/GPUOpen-Drivers/llvm-project/archive/${_llvmproject_commit}.tar.gz
         spvgen-$pkgname-$pkgver.tar.gz::https://github.com/GPUOpen-Drivers/spvgen/archive/${_spvgen_commit}.tar.gz
         SPIRV-Tools-$pkgname-$pkgver.tar.gz::https://github.com/KhronosGroup/SPIRV-Tools/archive/${_spirvtools_commit}.tar.gz
         glslang-$pkgname-$pkgver.tar.gz::https://github.com/KhronosGroup/glslang/archive/${_glslang_commit}.tar.gz
@@ -36,15 +36,15 @@ source=(AMDVLK-$pkgname-$pkgver.tar.gz::https://github.com/GPUOpen-Drivers/AMDVL
         MetroHash-$pkgname-$pkgver.tar.gz::https://github.com/GPUOpen-Drivers/MetroHash/archive/${_metrohash_commit}.tar.gz
         CWPack-$pkgname-$pkgver.tar.gz::https://github.com/GPUOpen-Drivers/CWPack/archive/${_cwpack_commit}.tar.gz)
   
-sha256sums=('9afb90b56c3c1213c97ef3364b1d31d0e85a81469c861b43dc389af5672c6331'
-            '88ae1c7d465e6313c324e2802ffa024fc3e1ed588ac4b48170c736fea9181e93'
-            'fb9a6a497f488a3d9682b51ec9d615199b2f6770446b9cec47bd6a7c81278269'
-            '063f3446339a42b08128b4acb5b74e846a0bb5ebd9d3aae3feec5011a1797f1d'
-            '06104277583082701ca55c28093005919eead930fe93b8737e8e444628100535'
-            'cc946ad2835e502aca904c5f87802a2004eaed4729cb5c1dc29a5258d1c1e401'
+sha256sums=('2265bd0be973d4511cd47da29052b368369e5ac4133f3b08ab8c89c51d759986'
+            'd1957eb1aaaab89aab78f3d375cea93c4b91e47f602627b048f0fb71d8e7eb3d'
+            '47fdcb4ed0c9b2e1f61abe761bab912ca228dfd6103c2070c94244c6a2f13b5e'
+            '3def3a94e20dbb67cb4effdacc4c180ebf5bf30a4ae27ad6849cd32aa0628463'
+            '6f469cac7c2deaff595cd689a83067da6cfbee0f97362f6fa9f6c50b5bb23b56'
+            '77a4cad8691960b825e86b624bb5433f5098b8a49cb0d758e17c6d59e25a9361'
             '64820fab5f07b9525ae09afb7bd5c6cd2c898da41026f6517e83e67547bb659c'
             'f128ff27d185fbf7fadb5d498d9f2ca265d5e046025fa262d725dfaa2ab2c030'
-            'b3df84c2ea1854ce6004c77348f22ccaa554af44bd1fc1a2e4b4954003aff17a'
+            'e0522545b4fbf4c7ee50c1f31b883c275e5ba829141c9ebfa62fd96c08755966'
             'e8ecf026584dd953e39c3abba2eb04d28b28ed4577482ee70265f0d421fef398'
             '58ca397f33d62bcfecaecd89eb4ad466a6c33e1c619e5cf742822074f1f7d664')
             
@@ -53,13 +53,13 @@ prepare() {
   ln -sf ${srcdir}/xgl-${_xgl_commit} ${srcdir}/xgl
   ln -sf ${srcdir}/pal-${_pal_commit} ${srcdir}/pal
   ln -sf ${srcdir}/llpc-${_llpc_commit} ${srcdir}/llpc
-  ln -sf ${srcdir}/llvm-${_llvm_commit} ${srcdir}/llvm
+  ln -sf ${srcdir}/llvm-project-${_llvmproject_commit} ${srcdir}/llvm-project
   ln -sf ${srcdir}/spvgen-${_spvgen_commit} ${srcdir}/spvgen
   ln -sf ${srcdir}/SPIRV-Tools-${_spirvtools_commit} ${srcdir}/spvgen/external/SPIRV-tools
   ln -sf ${srcdir}/SPIRV-Headers-${_spirvheaders_commit} ${srcdir}/spvgen/external/SPIRV-tools/external/SPIRV-Headers
   ln -sf ${srcdir}/glslang-${_glslang_commit} ${srcdir}/spvgen/external/glslang
   ln -sf ${srcdir}/MetroHash-${_metrohash_commit} ${srcdir}/MetroHash
-  ln -sf ${srcdir}/CWPack-${_metrohash_commit} ${srcdir}/CWPack
+  ln -sf ${srcdir}/CWPack-${_cwpack_commit} ${srcdir}/CWPack
 
   #remove -Werror to build with gcc9 
   sed -i "s/-Werror//g" $srcdir/pal/shared/gpuopen/cmake/AMD.cmake
