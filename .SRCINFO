@@ -1,17 +1,18 @@
 pkgbase = duetsd-bin
 	pkgdesc = Virtual SD card directory for the Duet software framework
-	pkgver = 1.0.3
+	pkgver = 1.0.4
 	pkgrel = 1
-	url = https://github.com/chrishamm/DuetSoftwareFramework
+	url = https://github.com/chrishamm/DuetSoftwareFramework.git
 	arch = any
 	license = GPL3
 	depends = duetcontrolserver
 	optdepends = duetwebcontrol
-	provides = duetsd=1.0.3
+	provides = duetsd=1.0.4
 	conflicts = duetsd
+	conflicts = reprapfirmware<=1.1.0.0
 	backup = opt/dsf/sd/sys/config.g
-	source = https://pkg.duet3d.com/dists/stable/armv7/binary-armhf/duetsd_1.0.3_all.deb
-	sha256sums = cbec47068231af07062ce7db7b996e97da0a80ac8a25e1e21743514429eed812
+	source = https://pkg.duet3d.com/dists/stable/armv7/binary-armhf/duetsd_1.0.4_all.deb
+	sha256sums = 48a21508da9375bd5f8930e09f6887c15f67bd9d0eb21a16f30acaead26e403b
 
 pkgname = duetsd-bin
 
