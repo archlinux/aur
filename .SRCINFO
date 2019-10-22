@@ -1,0 +1,16 @@
+pkgbase = perl-class-field
+	pkgdesc = Class Field Accessor Generator
+	pkgver = 0.24
+	pkgrel = 1
+	url = https://metacpan.org/release/Class-Field
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=5.8.1
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/I/IN/INGY/Class-Field-0.24.tar.gz
+	md5sums = db368d2796c4f97de48c671af7d3f9d8
+	sha512sums = 4956190f6f1e6d6714a823421adf6c74ab1c884d059efad9ada5d8671d45ca4766c9ca9253a50784802ee0997fd5aa5dc870b16eb3e804564930e8fc68788472
+
+pkgname = perl-class-field
+
