@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=KISSlicer 2
+Comment=KISSlicer 2 is a fast, easy-to-use, cross-platform program that takes 3D files (STL) and generates path information (G-code) for a 3D Printer
+Exec=kisslicer2.sh
+Icon=/opt/kisslicer2/KISSlicer.png
+Type=Application
+Terminal=false
+Categories=Utility
