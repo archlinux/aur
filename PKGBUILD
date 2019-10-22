@@ -83,8 +83,10 @@ source=("${pkgname}.desktop"
 	"${pkgname}.png"
 	"${pkgname}.sh")
 
-# No need for `makepkg -g`: the following sha256sums¸don't need to be updated
-# with each release, everything is done automatically! Leave them like this!
+### IMPORTANT #################################################################
+# No need for `makepkg -g`: the following sha256sums¸don't need to be updated #
+# with each release, everything is done automatically! Leave them like this!  #
+###############################################################################
 sha256sums=('9ee0a4672e2d0835ffb94bcf26e17b56432030496a9cdf019b70c96083c24340'
             'bb6b0f27c33d21e0ef6df961e25418327c5e8b01c003bbe18c0a8dae3e16d77d'
             '3a491ad1a476f2fb343f274eab4e8df925637438e6dac3591f092b3ef3294da3')
