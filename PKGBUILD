@@ -3,24 +3,25 @@
 
 pkgname=emacs-nim-mode
 pkgver=0.4.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Emacs mode for the nim programming language"
 arch=('any')
 url="https://github.com/nim-lang/nim-mode"
 license=('GPL3')
 depends=('emacs-dash' 'emacs-epc' 'emacs-ctable' 'emacs-epl' 'emacs-deferred' 'emacs-company-mode' 'emacs-commander' 'emacs-flycheck')
+makedepends=('cask')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nim-lang/nim-mode/archive/v$pkgver.tar.gz" Makefile.patch)
 sha256sums=('2fb54b05e144f72bc15b7f8bc1112535bf22f6a3b7bfbe6d8a5a2ab7206a5815'
             '20fef5db29d67788dd22cbc9dd97dd2a778a66a0b6f0b80aa9776d08cadb4576')
 
 prepare() {
- cd ${pkgname#emacs-}-$pkgver
- patch -Np1 < "$srcdir"/Makefile.patch
+  cd ${pkgname#emacs-}-$pkgver
+  patch -Np1 < "$srcdir"/Makefile.patch
 }
 
 build() {
   cd ${pkgname#emacs-}-$pkgver
-  make 
+  cask build
 }
 
 package() {
