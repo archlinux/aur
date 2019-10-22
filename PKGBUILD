@@ -2,7 +2,7 @@
 
 pkgname=ixxat-socketcan
 pkgver=1.1.148.0
-pkgrel=4
+pkgrel=5
 pkgdesc="SocketCAN driver for IXXAT USB-to-CAN v2"
 arch=('i686' 'x86_64')
 url="https://www.ixxat.com/products/products-industrial/pc-interfaces/pc-can-interfaces/socketcan"
@@ -15,7 +15,7 @@ source=('https://www.ixxat.com/docs/librariesprovider8/default-document-library/
 md5sums=('c42d19b75802691b057a8163606903af'
          '94db6b37a2b8f07ef116352e73dbd88a')
 
-_extramodules=extramodules-ARCH
+_extramodules=$(uname -r)/extramodules
 
 prepare() {
 	patch -p1 -i kernel_api_fix.patch
