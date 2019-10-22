@@ -1,7 +1,7 @@
 pkgbase = joomscan-git
 	pkgdesc = OWASP Joomla! security scanner
-	pkgver = 0.0.7+11+g59ded07
-	pkgrel = 1
+	pkgver = 0.0.7+27+g4192949
+	pkgrel = 2
 	url = https://www.owasp.org/index.php/Category:OWASP_Joomla_Vulnerability_Scanner_Project
 	changelog = CHANGELOG
 	arch = any

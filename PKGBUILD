@@ -1,12 +1,13 @@
-# Maintainer: Kr1ss <kr1ss.x@yandex.com>
+# Maintainer :  Kr1ss $(sed s/\+/./g\;s/\-/@/ <<<\<kr1ss+x-yandex+com\>)
+
 
 pkgname=joomscan-git
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
 	git describe --tags | sed 's:-:\+:g'
 }
-pkgver=0.0.7+11+g59ded07
-pkgrel=1
+pkgver=0.0.7+27+g4192949
+pkgrel=2
 
 pkgdesc='OWASP Joomla! security scanner'
 arch=('any')
@@ -29,6 +30,14 @@ package() {
 	rsync -rpt core exploit modules "$pkgdir/usr/lib/${pkgname%-git}/"
 	install -Dm644 -t "$pkgdir/usr/share/doc/${pkgname%-git}/" *.md Dockerfile
 	install -dm755 "$pkgdir/usr/bin"
-	ln -Ts "/usr/lib/${pkgname%-git}/${pkgname%-git}.pl" "$pkgdir/usr/bin/${pkgname%-git}"
+	#ln -Ts "/usr/lib/${pkgname%-git}/${pkgname%-git}.pl" "$pkgdir/usr/bin/${pkgname%-git}"
+	cat >"$pkgdir/usr/bin/${pkgname%-git}" <<-EOT
+		#!/bin/sh
+
+		/usr/bin/perl "/usr/lib/${pkgname%-git}/${pkgname%-git}.pl"
+	EOT
+	chmod 755 "$pkgdir/usr/bin/${pkgname%-git}"
 }
 
+
+# vim: ts=4 sw=4 noet ft=PKGBUILD:
