@@ -4,27 +4,32 @@ _name=alice-vision
 #_fragment="#commit=eebc3e4f"
 _fragment="#branch=develop"
 pkgname=${_name}-git
-pkgver=2.2.0.r17.g63a3d6ad
-pkgrel=2
+pkgver=2.2.0.r43.g5bdfe01a
+pkgrel=1
 pkgdesc="Photogrammetric Computer Vision Framework which provides a 3D Reconstruction and Camera Tracking algorithms"
 arch=('i686' 'x86_64')
 url="https://alicevision.github.io/"
 license=('MPL2' 'MIT')
 groups=()
-conflicts=(alice-vision)
-provides=(alice-vision)
-depends=('openblas-lapack' 'gflags' 'glfw-x11' 'alembic' 'boost-libs' 'openexr' 'openimageio' 'opengv-git' 'flann' 'coin-or-coinutils' 'coin-or-clp' 'coin-or-lemon' 'coin-or-osi' 'google-glog')
-makedepends=('boost' 'doxygen' 'python-sphinx' 'eigen' 'ceres-solver' 'cuda' 'git' 'cmake' 'magma')
+conflicts=(${_name} geogram uncertainty-framework)
+provides=(${_name} geogram uncertainty-framework)
+
+
+depends=('alembic' 'boost-libs' 'openimageio' 'flann' 'opengv' 'coin-or-clp' 'google-glog')
+depends+=('glu' 'glfw-x11') # geogram deps.
+depends+=('magma' 'ceres-solver') # uncertaintyTE deps.
+makedepends=('boost' 'eigen' 'freetype2' 'gflags' 'doxygen' 'python-sphinx' 'coin-or-coinutils' 'coin-or-lemon' 'git' 'cmake')
 source=("${pkgname}::git+https://github.com/alicevision/AliceVision.git${_fragment}"
         "ute_lib::git+https://github.com/alicevision/uncertaintyTE.git"
         "geogram::git+https://github.com/alicevision/geogram.git"
         "submodule.patch"
+        "https://github.com/alicevision/AliceVision/pull/709.patch"
         )
 md5sums=('SKIP'
          'SKIP'
          'SKIP'
          'eb62c8be5a0d7ce537a928314c9d0028'
-        )
+         '5bcb86d3c07abb898dfb6c2dab4ec9b6')
 
 _CMAKE_FLAGS=(
               -DCMAKE_INSTALL_PREFIX=/usr
@@ -54,6 +59,7 @@ prepare() {
 #  git config submodule.src/dependencies/osi_clp.url
   git submodule update
   git apply ${srcdir}/submodule.patch
+  git apply ${srcdir}/709.patch
 # fix doc build
   sed -i '/^ *install.*doc/s/doc/htmlDoc/' src/CMakeLists.txt
 }
@@ -78,7 +84,7 @@ build() {
 
   msg2 "Build AliceVision library"
   mkdir -p build && cd build
-  cmake ${_CMAKE_FLAGS[@]} -DUNCERTAINTYTE_DIR=${srcdir}/ute_bin -DGEOGRAM_INSTALL_PREFIX=${srcdir}/geogram_bin ../${pkgname}
+  cmake ${_CMAKE_FLAGS[@]} -DGEOGRAM_INSTALL_PREFIX=${srcdir}/geogram_bin -DUNCERTAINTYTE_DIR=${srcdir}/ute_bin ../${pkgname}
   make
 }
 
@@ -97,5 +103,14 @@ package() {
   
   #fix conflict with openmvg
   rm ${pkgdir}/usr/lib/libvlsift.a
+
+# install costume licenses.
+  cd ${pkgdir}/usr/share
+  install -dm755 licenses/${_name}/
+  mv aliceVision/LICENSE-{MPL2,MIT-libmv}.md licenses/${_name}
+
+# prune empty dirs
+  cd ${pkgdir}/usr
+  find . -type d | tac | xargs rmdir 2>/dev/null || true
 }
 # vim:set ts=2 sw=2 et:
