@@ -21,7 +21,7 @@ prepare() {
 
 build() {
   cmake -H"${pkgname}-${pkgver}" -Bbuild \
-    -DCMAKE_BUILD_TYPE=Plain \
+    -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DGOBJECT_INTROSPECTION=true \
     -DICAL_GLIB_VAPI=true \
