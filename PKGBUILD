@@ -1,7 +1,7 @@
 pkgname=openxray-git
-_commit=27737bb1
-_build=542
-pkgver=1.6.02_b542.27737bb1e
+_commit=ec0314c0
+_build=551
+pkgver=1.6.02_b551.ec0314c03
 pkgrel=1 
 pkgdesc="Unofficial X-Ray Engine Linux port by OpenXRay team (Originally developed by GSC Game World)"                                          
 arch=('x86_64') 
