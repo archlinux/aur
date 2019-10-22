@@ -1,7 +1,7 @@
 pkgbase = xmrig-mo-beta
 	pkgdesc = Beta Version - High performance RandomX and CryptoNight CPU miner, with MoneroOcean auto alg switching
-	pkgver = 4.3.1
-	pkgrel = 2
+	pkgver = 4.3.1mo2
+	pkgrel = 1
 	url = https://github.com/MoneroOcean/xmrig
 	arch = x86_64
 	license = GPL

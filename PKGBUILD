@@ -1,15 +1,15 @@
 # Maintainer: Stephen Erisman <aur at serisman dot com>
 
 pkgname='xmrig-mo-beta'
-pkgver='4.3.1'
-pkgrel='2'
+pkgver='4.3.1mo2'
+pkgrel='1'
 pkgdesc='Beta Version - High performance RandomX and CryptoNight CPU miner, with MoneroOcean auto alg switching'
 arch=('x86_64')
 url="https://github.com/MoneroOcean/xmrig"
 depends=('libuv' 'openssl' 'hwloc')
 makedepends=('cmake')
 license=('GPL')
-source=("${url}/archive/v${pkgver}-beta-mo${pkgrel}.tar.gz"
+source=("${url}/archive/v4.3.1-beta-mo2.tar.gz"
         "${pkgname}.service"
         "${pkgname}.sysusers")
 sha256sums=('57d73c8564e53b20bb9e980fc7b6879e5dd361bf1b6d6105aea51b51295ddfe2'
@@ -17,7 +17,7 @@ sha256sums=('57d73c8564e53b20bb9e980fc7b6879e5dd361bf1b6d6105aea51b51295ddfe2'
             'd8f499302fb2b642fe02586c81c410a299e0a6e133aef1cc1c783bcdcb3f44f6')
 
 prepare() {
-  cd "xmrig-${pkgver}-beta-mo${pkgrel}"
+  cd "xmrig-4.3.1-beta-mo2"
   [ -d build ] || mkdir build
 
   msg2 "Reseting donation level to zero"
@@ -26,7 +26,7 @@ prepare() {
 }
 
 build() {
-  cd "xmrig-${pkgver}-beta-mo${pkgrel}/build"
+  cd "xmrig-4.3.1-beta-mo2/build"
   cmake .. \
     -DCMAKE_C_COMPILER=gcc \
     -DCMAKE_CXX_COMPILER=g++ \
@@ -35,7 +35,7 @@ build() {
 }
 
 package() {
-  cd "xmrig-${pkgver}-beta-mo${pkgrel}"
+  cd "xmrig-4.3.1-beta-mo2"
   install -Dm775 "build/xmrig" "${pkgdir}/usr/bin/${pkgname}"
   install -Dm644 "src/config.json" "${pkgdir}/etc/${pkgname}/${pkgname}.conf.example"
   install -Dm644 "${srcdir}/${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
