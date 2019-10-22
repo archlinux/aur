@@ -71,6 +71,10 @@ prepare() {
   # See: https://jira.mongodb.org/browse/SERVER-38086
   sed -i 's/\[Service]/[Service]\nTimeoutStartSec=infinity/' rpm/mongod.service
 
+  # Prevent building using debug symbols, since binaries will be stripped anyway
+  # Reduces makepkg -- which fully runs check() -- build size from 259GB to 2.3GB, and time by at least 37%
+  # See: https://jira.mongodb.org/browse/SERVER-44038
+  sed -i '/"-ggdb" if not env.TargetOSIs/d' SConstruct
 }
 
 build() {
