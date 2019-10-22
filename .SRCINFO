@@ -1,0 +1,19 @@
+pkgbase = pomod-git
+	pkgdesc = The pomodoro daemon
+	pkgver = r12.5587fb0
+	pkgrel = 1
+	url = https://gitlab.com/erickcc/pomod
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = meson
+	makedepends = scdoc
+	makedepends = git
+	depends = libnotify
+	provides = pomod
+	conflicts = pomod
+	source = pomod::git+https://gitlab.com/erickcc/pomod.git
+	sha1sums = SKIP
+
+pkgname = pomod-git
+
