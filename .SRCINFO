@@ -1,7 +1,7 @@
 pkgbase = unityhub
 	pkgdesc = The Unity Hub is a standalone application that streamlines the way you find, download, and manage your Unity Projects and installations.
 	pkgver = 2.1.2
-	pkgrel = 1
+	pkgrel = 2
 	arch = x86_64
 	license = custom
 	depends = gtk2

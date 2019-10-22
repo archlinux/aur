@@ -2,7 +2,7 @@
 
 pkgname=unityhub
 pkgver=2.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="The Unity Hub is a standalone application that streamlines the way you find, download, and manage your Unity Projects and installations."
 arch=('x86_64')
 license=('custom')
@@ -11,7 +11,7 @@ source=("${pkgname}-${pkgver}.AppImage::https://public-cdn.cloud.unity3d.com/hub
 md5sums=('7cbff634d574a4e6da02fd1ce15bf2cb')
 PKGEXT='.pkg.tar'
 
-package() {
+build() {
   # Extract AppImage
   chmod +x "${pkgname}-${pkgver}.AppImage"
   "./${pkgname}-${pkgver}.AppImage" --appimage-extract
@@ -21,7 +21,9 @@ package() {
   sed -i "/^Exec=/cExec=unityhub" "${_df}"
   sed -i "s/^X-AppImage-Version=/Version=/" "${_df}"
   sed -i "/^X-AppImage/d" "${_df}"
+}
 
+package() {
   # Install
   install -d "${pkgdir}/usr/share"
   install -D ${_df} "${pkgdir}/usr/share/applications/unityhub.desktop"
