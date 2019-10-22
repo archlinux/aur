@@ -1,7 +1,7 @@
 pkgbase = vmware-vcli
 	pkgdesc = VMware vSphere Command-Line Interface (vCLI); run commands against vSphere and ESX/ESXi
 	pkgver = 6.7.0.8156551
-	pkgrel = 1
+	pkgrel = 2
 	url = https://code.vmware.com/web/tool/6.7/vsphere-cli
 	install = vmware-vcli.install
 	arch = i686
@@ -25,6 +25,8 @@ pkgbase = vmware-vcli
 	depends = perl-lwp-protocol-https
 	depends = perl-class-methodmaker
 	depends = perl-net-ssleay
+	depends = perl-text-template
+	depends = perl-uuid
 	options = !strip
 	options = docs
 	options = libtool

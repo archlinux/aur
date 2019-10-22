@@ -6,7 +6,7 @@
 pkgname=vmware-vcli
 _pkgver=6.7.0-8156551
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="VMware vSphere Command-Line Interface (vCLI); run commands against vSphere and ESX/ESXi"
 arch=('i686' 'x86_64')
 url="https://code.vmware.com/web/tool/6.7/vsphere-cli"
@@ -14,7 +14,8 @@ license=('custom:vmware')
 depends=(e2fsprogs openssl libxml2 perl kmod krb5
   perl-xml-libxml perl-bytes-random-secure perl-crypt-ssleay perl-xml-sax
   perl-archive-zip perl-html-parser perl-data-dump perl-soap-lite perl-uri
-  perl-lwp-protocol-https perl-class-methodmaker perl-net-ssleay)
+  perl-lwp-protocol-https perl-class-methodmaker perl-net-ssleay
+  perl-text-template perl-uuid)
 install=$pkgname.install
 source=(for-arch.patch)
 source_i686=(local://VMware-vSphere-CLI-$_pkgver.i386.tar.gz)
