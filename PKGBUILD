@@ -66,29 +66,29 @@ build () {
 	cp -r ./$(find opengapps -type d -name "GoogleServicesFramework") ./squashfs-root/system/priv-app/
 
 	# load houdini_y
-    mkdir -p houdini_y
-    rm -rf ./houdini_y/*
-    unsquashfs -f -d ./houdini_y ./houdini_y.sfs
+	mkdir -p houdini_y
+	rm -rf ./houdini_y/*
+	unsquashfs -f -d ./houdini_y ./houdini_y.sfs
 
-    mkdir -p ./squashfs-root/system/lib/arm
-    cp -r ./houdini_y/* ./squashfs-root/system/lib/arm
-    mv ./squashfs-root/system/lib/arm/libhoudini.so ./squashfs-root/system/lib/libhoudini.so
+	mkdir -p ./squashfs-root/system/lib/arm
+	cp -r ./houdini_y/* ./squashfs-root/system/lib/arm
+	mv ./squashfs-root/system/lib/arm/libhoudini.so ./squashfs-root/system/lib/libhoudini.so
 
-    # load houdini_z
-    mkdir -p houdini_z
-    rm -rf ./houdini_z/*
-    unsquashfs -f -d ./houdini_z ./houdini_z.sfs
+	# load houdini_z
+	mkdir -p houdini_z
+	rm -rf ./houdini_z/*
+	unsquashfs -f -d ./houdini_z ./houdini_z.sfs
 
-    mkdir -p ./squashfs-root/system/lib64/arm64
-    cp -r ./houdini_z/* ./squashfs-root/system/lib64/arm64
-    mv ./squashfs-root/system/lib64/arm64/libhoudini.so ./squashfs-root/system/lib64/libhoudini.so
+	mkdir -p ./squashfs-root/system/lib64/arm64
+	cp -r ./houdini_z/* ./squashfs-root/system/lib64/arm64
+	mv ./squashfs-root/system/lib64/arm64/libhoudini.so ./squashfs-root/system/lib64/libhoudini.so
 
-    # add houdini parser
-    mkdir -p ./squashfs-root/system/etc/binfmt_misc
-    echo ':arm_exe:M::\x7f\x45\x4c\x46\x01\x01\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x02\x00\x28::/system/lib/arm/houdini:P' >> ./squashfs-root/system/etc/binfmt_misc/arm_exe
-    echo ':arm_dyn:M::\x7f\x45\x4c\x46\x01\x01\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x03\x00\x28::/system/lib/arm/houdini:P' >> ./squashfs-root/system/etc/binfmt_misc/arm_dyn
-    echo ':arm64_exe:M::\x7f\x45\x4c\x46\x02\x01\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x02\x00\xb7::/system/lib64/arm64/houdini64:P' >> ./squashfs-root/system/etc/binfmt_misc/arm64_exe
-    echo ':arm64_dyn:M::\x7f\x45\x4c\x46\x02\x01\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x03\x00\xb7::/system/lib64/arm64/houdini64:P' >> ./squashfs-root/system/etc/binfmt_misc/arm64_dyn
+	# add houdini parser
+	mkdir -p ./squashfs-root/system/etc/binfmt_misc
+	echo ':arm_exe:M::\x7f\x45\x4c\x46\x01\x01\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x02\x00\x28::/system/lib/arm/houdini:P' >> ./squashfs-root/system/etc/binfmt_misc/arm_exe
+	echo ':arm_dyn:M::\x7f\x45\x4c\x46\x01\x01\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x03\x00\x28::/system/lib/arm/houdini:P' >> ./squashfs-root/system/etc/binfmt_misc/arm_dyn
+	echo ':arm64_exe:M::\x7f\x45\x4c\x46\x02\x01\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x02\x00\xb7::/system/lib64/arm64/houdini64:P' >> ./squashfs-root/system/etc/binfmt_misc/arm64_exe
+	echo ':arm64_dyn:M::\x7f\x45\x4c\x46\x02\x01\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x03\x00\xb7::/system/lib64/arm64/houdini64:P' >> ./squashfs-root/system/etc/binfmt_misc/arm64_dyn
 
 
 	# add features
@@ -117,8 +117,8 @@ build () {
 	sed -i "/<unavailable-feature name=\"android.hardware.bluetooth\" \/>/d" ./squashfs-root/system/etc/permissions/anbox.xml
 
 	sed -i '/^ro.product.cpu.abilist=x86_64,x86/ s/$/,arm64-v8a,armeabi-v7a,armeabi/' ./squashfs-root/system/build.prop
-    sed -i '/^ro.product.cpu.abilist32=x86/ s/$/,armeabi-v7a,armeabi/' ./squashfs-root/system/build.prop
-    sed -i '/^ro.product.cpu.abilist64=x86_64/ s/$/,arm64-v8a/' ./squashfs-root/system/build.prop
+	sed -i '/^ro.product.cpu.abilist32=x86/ s/$/,armeabi-v7a,armeabi/' ./squashfs-root/system/build.prop
+	sed -i '/^ro.product.cpu.abilist64=x86_64/ s/$/,arm64-v8a/' ./squashfs-root/system/build.prop
 
 	# enable nativebridge
 	echo "persist.sys.nativebridge=1" >> ./squashfs-root/system/build.prop
@@ -143,4 +143,4 @@ package() {
 	#install image	
 	install -Dm644 ./android.img "${pkgdir}/"var/lib/anbox/android.img
 }
-    
+
