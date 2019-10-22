@@ -15,7 +15,7 @@ arch=('x86_64' 'i686')
 url="https://git.beegfs.io/pub"
 license=('BeeGFS END-USER LICENE AGREEMENT' 'GPL2')
 
-depends=('libutil-linux' 'attr' 'acl' 'openssl' 'zlib' 'sqlite' 'curl' 'elfutils' 'fuse-common' 'ld-lsb' 'lsb-release' 'rdma-core')
+depends=('libutil-linux' 'attr' 'acl' 'openssl' 'zlib' 'sqlite' 'curl' 'elfutils' 'fuse-common' 'ld-lsb' 'lsb-release' 'rdma-core' 'rpcbind')
 optdepends=('beegfs-utils' 'xfsprogs' 'btrfs-progs')
 makedepends=('git' 'gcc' 'libsystemd' 'systemd' 'pkg-config' 'bash' 'boost-libs' 'linux-headers' 'kmod' 'gzip')
 provides=('beegfs-helperd' 'beegfs-client')
@@ -43,6 +43,14 @@ prepare() {
          --expression='s|/usr/sbin|/usr/bin|g' \
          --expression='s|/sbin|/usr/bin|g' \
          --expression='s|/opt/beegfs/usr/bin|/usr/bin|g' \
+         '{}' '+'
+
+    find dist/etc/beegfs-mounts.conf -type f -exec sed --in-place \
+         --expression='s|/mnt/beegfs|/mnt/beegfs/beegfs-mount|g' \
+         '{}' '+'
+
+    find dist/usr/lib/systemd/system/beegfs-client.service -type f -exec sed --in-place \
+         --expression='s|/etc/init.d|/etc/beegfs/init.d|g' \
          '{}' '+'
 
     cd "$srcdir/$pkgname-$pkgver/${_srcname}_module/source/"
@@ -109,8 +117,11 @@ package() {
     install -D --mode=0755 beegfs-helperd "${pkgdir}/usr/bin/beegfs-helperd"
 
     cd "$srcdir/$pkgname-$pkgver/${_srcname}_module/build"
-    install -D --mode=0644 dist/etc/beegfs-client.conf "${pkgdir}/etc/beegfs/beegfs-clients.conf"
+    install -D --mode=0644 dist/etc/beegfs-client-autobuild.conf "${pkgdir}/etc/beegfs/beegfs-client-autobuild.conf"
+    install -D --mode=0644 dist/etc/beegfs-client.conf "${pkgdir}/etc/beegfs/beegfs-client.conf"
     install -D --mode=0644 dist/etc/beegfs-mounts.conf "${pkgdir}/etc/beegfs/beegfs-mounts.conf"
+    install -D --mode=0644 dist/etc/init.d/beegfs-client.init "${pkgdir}/etc/beegfs/init.d/beegfs-client"
+    install -D --mode=0644 dist/etc/beegfs-client-mount-hook.example "${pkgdir}/etc/beegfs/init.d/exec_mount_hook"
     install -D --mode=0644 dist/usr/lib/systemd/system/beegfs-client.service "${pkgdir}/usr/lib/systemd/system/beegfs-client.service"
     install -D --mode=0755 dist/sbin/beegfs-setup-client "${pkgdir}/usr/bin/beegfs-setup-client"
     gzip -fk beegfs.ko
