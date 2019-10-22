@@ -2,7 +2,7 @@
 # Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=gravit-designer-bin
-pkgver=2019_2.6
+pkgver=2019_2.7
 pkgrel=1
 pkgdesc="A cross-platform, free design tool for the 21st century empowering everyone to design"
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=("${pkgname}-${pkgver}.zip::https://designer.gravit.io/_downloads/linux/G
         "gravit-designer-document.svg"
         "gravit-designer.xml"
         "LICENSE")
-md5sums=('88415f9b9ba0d7e6ce7c85ea837e12e8'
+md5sums=('bc3aedae9a62a790de2b15860f8af9fd'
          '17969adf6d872a541772e169658b82d1'
          '70b0c1397df726a2ba0f16a4ff43993a'
          'fb3e19b45f7fe02bd959f20cc26e49d0'
