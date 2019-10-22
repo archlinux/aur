@@ -28,8 +28,8 @@
 
 _fatal () { echo ":: wireguard [FATAL]: ${@}. Cannot initialise Wireguard\!"; break=y; }
 
-if [ -f /etc/wireguard/remote-unlock ]; then
-    . /etc/wireguard/remote-unlock
+if [ -f /etc/wireguard/initcpio/unlock ]; then
+    . /etc/wireguard/initcpio/unlock
 fi
 
 run_hook()

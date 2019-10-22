@@ -12,6 +12,29 @@
 :toc:
 :toclevels: 5
 
+== ChangeLog
+
+IMPORTANT: Until this package has stabilised and until it has reached a 1.0.0
+release, *please be very careful* to examine the version changes listed below
+as the package requirements and instructions can change to reflect a better
+understanding of the problem domain. *DO NOT ASSUME THAT ANYTHING UNTIL AT
+LEAST A 1.0.0 RELEASE*
+
+WARNING: Read the warning above.
+
+|===
+|Version | Note
+
+| *0.2.0*
+a|
+* Don't include the entire `/etc/wireguard` directory, instead use a subdirectory, namely `/etc/wireguard/initcpio` to keep things separate.
+
+| *0.1.0*
+a|
+* Initial Release
+
+|===
+
 == Rationale
 
 Firstly, encryption. Encrypt all the things.
@@ -90,10 +113,10 @@ running first. A few examples of where to find documentation are listed below:
 * https://www.wireguard.com/quickstart/
 * https://git.zx2c4.com/WireGuard/about/src/tools/man/wg.8
 
-After installing `mkinitcpio-wireguard`, a configuration file will be written
-to `/etc/wireguard/remote-unlock`. You *MUST* edit this file to suit your
-particular Wireguard requirements. The file is really simple and therefore
-should be pretty self-explanatory.
+After installing `mkinitcpio-wireguard`, an example configuration file will be
+written to `/etc/wireguard/initcpio/unlock`. You *MUST* edit this file to suit
+your particular Wireguard requirements. The file is really simple and
+therefore should be pretty self-explanatory.
 
 NOTE: If you have an existing `wg0.conf` in your `/etc/wireguard` directory,
 you can use the contents of that file as a reference. Please be aware of the
@@ -102,7 +125,7 @@ unlocking.
 
 == Hook Installation
 
-After you have edited the `/etc/wireguard/remote-unlock` file to suit your
+After you have edited the `/etc/wireguard/initcpio/unlock` file to suit your
 needs, ensure that you've added the `wireguard` hook to the *HOOKS* array of
 `/etc/mkinitcpio.conf`. Shown below is an example that also includes the use
 of `netconf`, `tinyssh` and `encryptssh`.
@@ -113,7 +136,7 @@ HOOKS=(base udev autodetect keyboard keymap modconf block netconf wireguard tiny
 
 == Final Steps
 
-Lastly, run (as root):
+Lastly, run (still as root):
 
 ----
 mkinitcpio -P

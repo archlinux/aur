@@ -31,7 +31,7 @@ build()
    add_binary wg
    add_module wireguard
 
-   add_full_dir /etc/wireguard
+   add_full_dir /etc/wireguard/initcpio
 
    add_runscript
 }
@@ -40,7 +40,7 @@ help() {
     cat <<HELPME
 This hook provides basic Wireguard support to assist in the remote unlocking
 of encrypted partitions. There are various parameters that are to be
-configured via the "/etc/wireguard/remote-unlock" file. This must be done!
+configured via the "/etc/wireguard/initcpio/unlock" file. This must be done!
 
 In addition to this hook, you will require something like tinyssh or dropbear
 appropriately configured in order to gain remote access. Please refer to the
