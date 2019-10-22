@@ -7,7 +7,7 @@ pkgdesc="An experimental version control system."
 arch=('i686' 'x86_64')
 url="https://gitlab.com/severinkaderli/tale"
 license=('MIT')
-makedepends=('maven' 'git')
+makedepends=('maven' 'git' 'graal-native-image-bin')
 conflicts=('tale')
 source=('git+https://gitlab.com/severinkaderli/tale')
 md5sums=('SKIP')
@@ -19,7 +19,7 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${_pkgname}"
-    mvn -Dmaven.test.skip=true package
+    JAVA_HOME="/usr/lib/jvm/java-8-graal/" mvn -Dmaven.test.skip=true package
 }
 
 package() {
