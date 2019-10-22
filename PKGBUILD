@@ -2,12 +2,13 @@
 
 pkgname=aurrpkgs-git
 pkgver=r8.86048fb
-pkgrel=1
+pkgrel=2
 pkgdesc="Manage AUR R packages "
 arch=(any)
 license=('GPL3')
 url="https://github.com/dvdesolve/aurrpkgs"
 depends=('python>=3.2.0')
+makedepends=('git')
 provides=('aurrpkgs')
 conflicts=('aurrpkgs')
 source=("$pkgname::git+https://github.com/dvdesolve/aurrpkgs.git")
