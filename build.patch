@@ -1,0 +1,11 @@
+diff -ruN 1/src/ByteShiftArray.cpp 2/src/ByteShiftArray.cpp
+--- 1/src/ByteShiftArray.cpp	2018-05-05 00:41:48.000000000 +0200
++++ 2/src/ByteShiftArray.cpp	2019-10-22 22:43:03.836923553 +0200
+@@ -17,6 +17,7 @@
+ */
+ 
+ #include "ByteShiftArray.h"
++#include <climits>
+ 
+ //------------------------------------------------------------------------------
+ // Name: ByteShiftArray
