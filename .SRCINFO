@@ -1,7 +1,7 @@
 pkgbase = anbox-image-gapps
 	pkgdesc = Android image for running in Anbox, with OpenGApps and houdini
 	pkgver = 2018.07.19
-	pkgrel = 11
+	pkgrel = 12
 	url = https://anbox.io
 	arch = x86_64
 	license = custom
@@ -11,19 +11,17 @@ pkgbase = anbox-image-gapps
 	makedepends = unzip
 	provides = anbox-image
 	conflicts = anbox-image
-	noextract = open_gapps-x86_64-7.1-mini-20190925.zip
+	noextract = open_gapps-x86_64-7.1-mini-20191022.zip
 	source = https://build.anbox.io/android-images/2018/07/19/android_amd64.img
-	source = https://downloads.sourceforge.net/project/opengapps/x86_64/20190925/open_gapps-x86_64-7.1-mini-20190925.zip
-	source = https://downloads.sourceforge.net/project/opengapps/x86_64/20190925/open_gapps-x86_64-7.1-mini-20190925.zip.md5
+	source = https://downloads.sourceforge.net/project/opengapps/x86_64/20191022/open_gapps-x86_64-7.1-mini-20191022.zip
+	source = https://downloads.sourceforge.net/project/opengapps/x86_64/20191022/open_gapps-x86_64-7.1-mini-20191022.zip.md5
 	source = houdini_y.sfs::http://dl.android-x86.org/houdini/7_y/houdini.sfs
 	source = houdini_z.sfs::http://dl.android-x86.org/houdini/7_z/houdini.sfs
-	source = https://github.com/Rprop/libhoudini/raw/master/4.0.8.45720/system/lib/libhoudini.so
 	md5sums = 26874452a6521ec2e37400670d438e33
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = 7ebf618b1af94a02322d9f2d2610090b
 	md5sums = 5ca37e1629edb7d13b18751b72dc98ad
-	md5sums = 205ef556ceb5f3dbcb9c309773a47fc9
 
 pkgname = anbox-image-gapps
 
