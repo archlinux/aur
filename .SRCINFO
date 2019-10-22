@@ -1,0 +1,24 @@
+pkgbase = otf-japanese-radicals-font
+	pkgdesc = Japanese Radicals font
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/kanjialive/kanji-data-media/tree/master/radicals-font
+	install = otf-japanese-radicals-font.install
+	arch = any
+	license = apache
+	depends = fontconfig
+	depends = xorg-fonts-encodings
+	depends = xorg-font-utils
+	source = https://github.com/kanjialive/kanji-data-media/raw/master/radicals-font/60-custom-glyphs.png
+	source = https://github.com/kanjialive/kanji-data-media/raw/master/radicals-font/JapaneseRadicals-Regular.otf
+	source = https://github.com/kanjialive/kanji-data-media/raw/master/radicals-font/LICENSE.txt
+	source = https://github.com/kanjialive/kanji-data-media/raw/master/radicals-font/README.md
+	source = https://github.com/kanjialive/kanji-data-media/raw/master/radicals-font/japanese-radicals.pdf
+	md5sums = 67157e82d40f57ddf022d01bf9a69a7e
+	md5sums = 9cd42d8d727f67db43729dea68fabfaf
+	md5sums = 53e49f20ee48569fd6d86391c70460f9
+	md5sums = 81d60a39e8b582c9a37d34ae961360de
+	md5sums = a8cc38846db9cb8a0539c35854436dde
+
+pkgname = otf-japanese-radicals-font
+
