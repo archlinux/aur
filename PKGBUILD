@@ -7,12 +7,12 @@ _lang=en-US
 pkgname=${_name}-${_channel}
 pkgdesc="Standalone Web Browser from Mozilla — Nightly build (${_lang})"
 url="https://www.mozilla.org/${_lang}/${_name}/${_channel}"
-_version=71.0a1
-pkgver=71.0a1.20190904
+_version=72.0a1
+pkgver=72.0a1.20191021
 pkgrel=1
-arch=('i686' 'x86_64')
-license=('MPL' 'GPL' 'LGPL')
-depends=('dbus-glib' 'gtk3' 'libxt' 'nss' 'mime-types')
+arch=(i686 x86_64)
+license=(MPL GPL LGPL)
+depends=(dbus-glib gtk3 libxt nss mime-types)
 optdepends=('pulseaudio: audio support'
             'ffmpeg: h.264 video'
             'hunspell: spell checking'
@@ -33,9 +33,9 @@ source_x86_64=("${_filename}-x86_64.tar.bz2"::"${_url}/${_src}-x86_64.tar.bz2"
                "${_filename}-x86_64.txt"::"${_url}/${_src}-x86_64.txt")
 sha512sums=('42426e7b510bd88cbf7b246bf66d7768afa5d71389bf15f7a4231dc24f99fd73284dd9a0a8eb4342b42337c2c7dd843e570a93afa7d3b44c97ecbf5e38e433ac'
             '5ed67bde39175d4d10d50ba5b12063961e725e94948eadb354c0588b30d3f97d2178b66c1af466a6e7bd208ab694227a1391c4141f88d3da1a1178454eba5308')
-sha512sums_i686=('SKIP' 'SKIP' 'SKIP')
-sha512sums_x86_64=('SKIP' 'SKIP' 'SKIP')
-validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla’s GnuPG release key
+sha512sums_i686=(SKIP SKIP SKIP)
+sha512sums_x86_64=(SKIP SKIP SKIP)
+validpgpkeys=(14F26682D0916CDD81E37B6D61B7B526D98F0353) # Mozilla’s GnuPG release key
 
 pkgver() {
   echo "${_version}.$(head -n1 ${_filename}-${CARCH}.txt | cut -c-8)"
