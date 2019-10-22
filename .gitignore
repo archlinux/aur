@@ -1,0 +1,4 @@
+pkg/
+src/
+protobuf/
+cl-protobuf-*.pkg.tar.xz
