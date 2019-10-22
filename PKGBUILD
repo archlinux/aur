@@ -8,8 +8,8 @@ _name=thunderbird
 _channel=nightly
 _lang=it
 pkgname=${_name}-${_channel}-${_lang}
-pkgver=65.0a1.20181027
-_version=65.0a1
+pkgver=71.0a1
+_version=71.0a1
 pkgrel=1
 pkgdesc="Standalone Mail/News reader - Nightly build (${_lang})"
 arch=('i686' 'x86_64')
@@ -36,8 +36,7 @@ source=("${FX_SRC_URI_EN}.txt"
 sha512sums=('SKIP'
             'SKIP'
             '4f885cc6a2867db6864ade4f953bf743ebd779cc7fec8335aa60176c3c90306525b987c966f6f18484d07c131a88878306d037cc17207a0d01b198ccbc79852b'
-            
-'aeb444784732267f1b1e87e6084a776f82a1912c4c2637d2cf1de1c135dd9d41d2ef66d2bd3f9cbd3a79fad32d17ea6e2968ba644d5f887cb66ba6c09a2098f5')
+            'aeb444784732267f1b1e87e6084a776f82a1912c4c2637d2cf1de1c135dd9d41d2ef66d2bd3f9cbd3a79fad32d17ea6e2968ba644d5f887cb66ba6c09a2098f5')
 
 pkgver(){
     cd "${srcdir}"
