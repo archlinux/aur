@@ -3,7 +3,7 @@
 
 pkgname=onionshare
 pkgver=2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Lets you securely and anonymously share a file of any size with someone"
 url="https://github.com/micahflee/onionshare"
 arch=('any')
@@ -29,8 +29,5 @@ check() {
 package() {
     cd "$srcdir/onionshare-$pkgver" || return $?
     python setup.py install --root="$pkgdir/" --optimize=1
-    install -Dm644 install/org.onionshare.OnionShare.desktop "${pkgdir}/usr/share/applications/onionshare.desktop"
-    install -Dm644 install/org.onionshare.OnionShare.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/org.onionshare.OnionShare"
-    install -Dm644 install/org.onionshare.OnionShare.appdata.xml "${pkgdir}/usr/share/metainfo/apps/org.onionshare.OnionShare.appdata.xml"
     install -Dm644 install/onionshare80.xpm "${pkgdir}/usr/share/pixmaps/onionshare80.xpm"
 }

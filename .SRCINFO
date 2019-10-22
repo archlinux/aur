@@ -1,7 +1,7 @@
 pkgbase = onionshare
 	pkgdesc = Lets you securely and anonymously share a file of any size with someone
 	pkgver = 2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/micahflee/onionshare
 	arch = any
 	license = GPL3
