@@ -18,7 +18,7 @@ optdepends=('python-cueparser' 'python-pysubs2')
 source=('git+https://github.com/Endilll/vapoursynth-preview.git' 'vspreview')
 sha512sums=(
     'SKIP'
-    '54f7f97a3f5aa23e447a23e4a7f92e3bc38dad8521e922a3dcffd3c73ec29225692a8a60541d287130a09070440a473ea7b3342029f2dd3c45b31d9ec92cda32')
+    'c29a9a1a2de9f7132661aab3e772cd82ef5edcdbcb4cd92366366a4b9eea5211d1e9b9d50ec7fb2b0ad262610620b07e64324f02642e1279162ac557a91f550e')
 
 pkgver() {
     cd "${srcdir}/${_gitname}"
