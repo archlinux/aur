@@ -1,6 +1,6 @@
 pkgbase = amdvlk-bin
 	pkgdesc = Open-source Vulkan driver for AMD Radeon™ graphics adapters (Stable DEB Release)
-	pkgver = 2019.Q3.6
+	pkgver = 2019.Q4.1
 	pkgrel = 1
 	url = https://github.com/GPUOpen-Drivers/AMDVLK
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = amdvlk-bin
 	conflicts = amdvlk
 	conflicts = amdvlk-deb
 	conflicts = amdvlk-git
-	source = https://github.com/GPUOpen-Drivers/AMDVLK/releases/download/v-2019.Q3.6/amdvlk_2019.Q3.6_amd64.deb
-	sha256sums = c83e95457cf0dde66b9c13e7619d4b9b9b2bce47f77cc2117d704e80dcd7ed92
+	source = https://github.com/GPUOpen-Drivers/AMDVLK/releases/download/v-2019.Q4.1/amdvlk_2019.Q4.1_amd64.deb
+	sha256sums = c195f6eb0b54dbc7e5845692285353814ad7b27fd32306edf185f7f49f0146ff
 
 pkgname = amdvlk-bin
 
