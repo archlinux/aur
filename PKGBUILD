@@ -4,7 +4,7 @@
 
 pkgname=winscp
 pkgver=5.15.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Free SFTP, SCP and FTP client for Wine"
 arch=('any')
 url="https://winscp.net/"
@@ -36,20 +36,16 @@ sha256sums=('aaa8fa28dfa484eae974acbc4d0c327c42e9688c35a2193a17d8ea7aeb3fcf58'
 
 package() {
   # Install binary files
-  install -m 644 -D "${srcdir}/WinSCP.exe"
-"${pkgdir}/usr/share/${pkgname}/${pkgname}.exe"
+  install -m 644 -D "${srcdir}/WinSCP.exe" "${pkgdir}/usr/share/${pkgname}/${pkgname}.exe"
   # Install default configuration file
-  install -m 644 -D "${srcdir}/${pkgname}_default_configuration.ini"
-"${pkgdir}/usr/share/${pkgname}/${pkgname}_default_configuration.ini"
+  install -m 644 -D "${srcdir}/${pkgname}_default_configuration.ini" "${pkgdir}/usr/share/${pkgname}/${pkgname}_default_configuration.ini"
   # Install startup script
   install -m 755 -D "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
   # Install icons
   for _size in 16 24 32 48 64 128 256
   do
-    install -m 644 -D ${pkgname}-${_size}.png
-"$pkgdir/usr/share/icons/hicolor/${_size}x${_size}/apps/${pkgname}.png"
+    install -m 644 -D ${pkgname}-${_size}.png "$pkgdir/usr/share/icons/hicolor/${_size}x${_size}/apps/${pkgname}.png"
   done
   # Install desktop file
-  install -m 644 -D ${pkgname}.desktop
-"${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  install -m 644 -D ${pkgname}.desktop "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 }
