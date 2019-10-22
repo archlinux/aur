@@ -10,11 +10,9 @@ license=('custom')
 install=jdk.install
 options=(!strip)
 provides=("java-environment=11" "java-runtime=11")
-depends=(
-    'java-runtime-common>=3' 'java-environment-common=3'
-    'ca-certificates-utils' 'nss' 'libjpeg-turbo' 'lcms2' 'libnet' 'freetype2'
-    'giflib' 'libelf'
-)
+depends=('java-runtime-common>=3' 'java-environment-common=3'
+         'ca-certificates-utils' 'nss' 'libjpeg-turbo' 'lcms2' 'libnet'
+         'freetype2' 'giflib' 'libelf')
 
 case "$CARCH" in
     armv?h) _arch='aarch32hf'
@@ -25,17 +23,18 @@ case "$CARCH" in
         _build=11.33.21
         sha256sums=('A5150033CC8912C0845D547EEEA1E4577D6E438B95B106E429DB0543D6605500')
         ;;
-    i686)
+    i686) _arch='i686'
         _build=13.28.11
+        pkgver=13.0.1
         sha256sums=('8C134B1EFA452409FA3EBF6BCEF4DF6FD521C8B2A0D1D68DA7D3FFDCB5AB0C79')
-        source=("https://cdn.azul.com/zulu/bin/zulu${_build}-ca-jdk13.0.1-linux_i686.tar.gz")
+        source=("https://cdn.azul.com/zulu/bin/zulu${_build}-ca-jdk${pkgver}-linux_i686.tar.gz")
         provides=("java-environment=13" "java-runtime=13")
 esac
 
 _archive="zulu${_build}-ca-jdk${pkgver}-linux_${_arch}"
 source=(${source:-"http://cdn.azul.com/zulu-embedded/bin/${_archive}.tar.gz"})
 
-_jvmdir="/usr/lib/jvm/zulu-embedded-11"
+_jvmdir="usr/lib/jvm/zulu-embedded-${pkgver%%.*}"
 
 package() {
     cd "$_archive"
@@ -57,7 +56,7 @@ package() {
 
     # Man pages
     for f in man/man1/*; do
-      install -Dm 644 "${f}" "${pkgdir}/usr/share/${f/\.1/-zulu-11.1}"
+      install -Dm 644 "${f}" "${pkgdir}/usr/share/${f/\.1/-zulu.1}"
     done
     rm -rf "${pkgdir}/${_jvmdir}/man"
     ln -s /usr/share/man "${pkgdir}/${_jvmdir}/man"
