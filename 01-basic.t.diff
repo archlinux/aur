@@ -1,0 +1,20 @@
+--- a/01-basic.t
++++ b/01-basic.t
+@@ -6,13 +6,13 @@
+ {
+     my $test = Test::HTTP->new('GET basic');
+ 
+-    $test->get('http://www.socialtext.com/');
+-    $test->status_code_is(200);
++    $test->get('http://www.socialtext.net/');
++    $test->status_code_is(301);
+ }
+ 
+ {
+     my $test = Test::HTTP->new('GET utf8-crap');
+-    my $uri = 'http://en.wikipedia.org/wiki/£';
++    my $uri = 'https://en.wikipedia.org/wiki/£';
+     $test->get($uri);
+     $test->status_code_is(200);
+ }
+
