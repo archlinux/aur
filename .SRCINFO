@@ -1,13 +1,17 @@
 pkgbase = i3-gnome
 	pkgdesc = Use i3 with GNOME Session integration.
-	pkgver = 3.34.0
+	pkgver = 3.34.1
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/i3-gnome/i3-gnome/
 	arch = any
 	license = MIT
 	depends = i3-wm
-	source = i3-gnome-3.34.0.zip::https://github.com/i3-gnome/i3-gnome/archive/3.34.0.zip
+	depends = gnome-session
+	depends = gnome-settings-daemon
+	optdepends = gdm
+	optdepends = gnome-flashback
+	source = i3-gnome-3.34.1.zip::https://github.com/i3-gnome/i3-gnome/archive/3.34.1.zip
 	md5sums = ebe1afded21bc510a4752c3dc66fa21d
 
 pkgname = i3-gnome
