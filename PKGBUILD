@@ -25,7 +25,8 @@ replaces=("${_provides[@]}")
 
 source=("$pkgname-$pkgver::git+${url}/${_ver}.git#tag=${_tag}"
         "http://www.gnu.org/licenses/old-licenses/gpl-2.0.txt")
-sha512sums=('SKIP')
+sha256sums=('SKIP'
+            '8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643')
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver/${_srchelper}/build"
@@ -122,5 +123,5 @@ package() {
     install -D --mode=0644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
 
     cd "$srcdir"
-    install -D --mode=0644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/gpl-2.0.txt"
+    install -D --mode=0644 gpl-2.0.txt "${pkgdir}/usr/share/licenses/${pkgname}/gpl-2.0.txt"
 }
