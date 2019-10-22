@@ -3,15 +3,15 @@
 _prefix=/opt/UnityBeta
 
 pkgname=unity-editor-beta-ios
-pkgver=2019.3.0b6
+pkgver=2019.3.0b7
 pkgrel=1
 pkgdesc="Allows building your Unity projects for the iOS platform"
 arch=('x86_64')
 url='https://unity3d.com/'
 license=('custom')
 depends=('unity-editor-beta')
-source=("2019.3.0b6.3.0b6.tar.xz::https://beta.unity3d.com/download/0612c96692fb/LinuxEditorTargetInstaller/UnitySetup-iOS-Support-for-Editor-2019.3.0b6.tar.xz")
-md5sums=("03f78a5b339a05f85f5eb108a4984b2a")
+source=("2019.3.0b7.3.0b7.tar.xz::https://beta.unity3d.com/download/9946d7a66754/LinuxEditorTargetInstaller/UnitySetup-iOS-Support-for-Editor-2019.3.0b7.tar.xz")
+md5sums=("916e1a719ac26d36ad545666cf088348")
 options=(!strip)
 PKGEXT='.pkg.tar' # Prevent compressing of the final package
 
