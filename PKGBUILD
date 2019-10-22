@@ -1,4 +1,5 @@
-# Maintainer: Andrew Sun <adsun701@gmail.com>
+# Maintainer: Alex Dewar <alex.dewar@gmx.co.uk>
+# Contributor: Andrew Sun <adsun701@gmail.com>
 # Contributor: John Jenkins <twodopeshaggy@gmail.com>
 # Contributor: Maxime Gauduin <alucryd@gmail.com>
 # Contributor: Balló György <ballogyor+arch@gmail.com>
@@ -19,7 +20,7 @@ sha256sums=('56ecb380d74bf74caba193d9e8ad6b0c85ccf9eeb461bc9731c2b8636e1f1492'
 
 prepare() {
   cd "${srcdir}"
-  patch -p1 < ../0001-Fix-FTB-with-recent-vala-requiring-non-public-abstra.patch
+  patch -p1 < 0001-Fix-FTB-with-recent-vala-requiring-non-public-abstra.patch
   NOCONFIGURE=1 ./autogen.sh
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --disable-static
 }
