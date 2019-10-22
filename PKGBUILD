@@ -9,9 +9,9 @@ pkgname='mosek'
 pkgdesc="A commercial solver for mathematical optimization problems."
 epoch=1
 _majver=9
-_minver=0
+_minver=1
 _ver=${_majver}.${_minver}
-_tnyver=96
+_tnyver=3
 pkgver=${_ver}.${_tnyver}
 pkgrel=2
 arch=('x86_64')
@@ -23,7 +23,7 @@ options=('!strip')
 
 source=("mosek-${pkgver}.tar.bz2::https://download.mosek.com/stable/${pkgver}/mosektools${_mosekarch}.tar.bz2")
 
-sha512sums=('c2540f21f837b63630afb533f7d42afb622246e3100e5600b53375c7b4fb8a22068025b5f670f68fab78e38c51442d94a74c3ebd348d6539cf10eb3042085dc6')
+sha512sums=('3422ee08b27bb55df145d434bf8a373729d65b6ec3b93a8862d3e49df54c562da08ac050ff0f57415c787dd6448052e48f87c6522fc50b80acbe8d1525aaaef9')
 
 package() {
 	# Install shared libraries.
