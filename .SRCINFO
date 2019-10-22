@@ -1,7 +1,7 @@
 pkgbase = gravit-designer-bin
 	pkgdesc = A cross-platform, free design tool for the 21st century empowering everyone to design
 	pkgver = 2019_2.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://designer.io/
 	arch = x86_64
 	license = custom:freeware

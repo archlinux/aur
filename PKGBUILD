@@ -3,7 +3,7 @@
 
 pkgname=gravit-designer-bin
 pkgver=2019_2.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform, free design tool for the 21st century empowering everyone to design"
 arch=('x86_64')
 url="https://designer.io/"
@@ -22,7 +22,7 @@ md5sums=('bc3aedae9a62a790de2b15860f8af9fd'
          '021ccafc0993d3c34265ae59048d4bf2')
 PKGEXT='.pkg.tar'
 
-package() {
+build() {
   # Extract AppImage
   chmod +x GravitDesigner.AppImage
   ./GravitDesigner.AppImage --appimage-extract
@@ -33,7 +33,9 @@ package() {
   sed -i "/^MimeType=/cMimeType=x-scheme-handler/designer;application/gravit-designer-document" "${_df}"
   sed -i "s/^X-AppImage-Version=/Version=/" "${_df}"
   sed -i "/^X-AppImage/d" "${_df}"
+}
 
+package() {
   # Install
   install -d "${pkgdir}/usr/share"
   install -D ${_df} "${pkgdir}/usr/share/applications/gravitdesigner.desktop"
