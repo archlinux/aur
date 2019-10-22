@@ -1,8 +1,8 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 
-pkgname=(freedm freedoom1 freedoom2)
-pkgbase=freedoom
-pkgver=0.12.0
+pkgname=(freedoom freedm)
+pkgbase=${pkgname[0]}
+pkgver=0.12.1
 pkgrel=1
 pkgdesc="Free game based on the Doom engine"
 arch=('any')
@@ -10,7 +10,7 @@ url="https://freedoom.github.io/"
 license=('BSD')
 makedepends=('asciidoc' 'deutex' 'python')
 source=(https://github.com/$pkgbase/$pkgbase/releases/download/v$pkgver/$pkgbase-$pkgver.tar.xz)
-sha512sums=('d05c4a3309db16b8e0cbcdf5841608e187de21d5feec3782700b66f7075ec513f9d3d375625f384f96704bb623d39636e61b5ca4f5d041a255249fdfda6cb150')
+sha512sums=('08a8489e1bbd9418262bfefaa9afe67a281b6f3fd38f77ac822438da434229bb034077e53658c06fa93cbf3ba3c5c25dab5fe1844fe23043e310d21866e12810')
 
 build() {
   cd "$pkgbase-$pkgver"
@@ -23,14 +23,11 @@ package_freedm() {
   make prefix=/usr DESTDIR="$pkgdir" install-freedm
 }
 
-package_freedoom1() {
-  cd "$pkgbase-$pkgver"
-  make prefix=/usr DESTDIR="$pkgdir" install-freedoom1
-}
-
-package_freedoom2() {
-  provides=('freedoom')
+package_freedoom() {
+  replaces=('freedoom1' 'freedoom2')
+  conflicts=('freedoom1' 'freedoom2')
+  provides=('freedoom1' 'freedoom2')
 
   cd "$pkgbase-$pkgver"
-  make prefix=/usr DESTDIR="$pkgdir" install-freedoom2
+  make prefix=/usr DESTDIR="$pkgdir" install-freedoom
 }
