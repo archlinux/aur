@@ -2,7 +2,7 @@
 
 pkgname=unityhub
 pkgver=2.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="The Unity Hub is a standalone application that streamlines the way you find, download, and manage your Unity Projects and installations."
 arch=('x86_64')
 license=('custom')
@@ -25,6 +25,7 @@ build() {
 
 package() {
   # Install
+  _df="${srcdir}/squashfs-root/unityhub.desktop"
   install -d "${pkgdir}/usr/share"
   install -D ${_df} "${pkgdir}/usr/share/applications/unityhub.desktop"
   install -D "${srcdir}/squashfs-root/usr/share/icons/hicolor/48x48/apps/unityhub.png" \
