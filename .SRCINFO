@@ -1,7 +1,7 @@
 pkgbase = nvidia-340xx-lts
-	pkgdesc = NVIDIA drivers for linux-lts
+	pkgdesc = NVIDIA drivers for linux-lts, 340xx legacy branch
 	pkgver = 340.107
-	pkgrel = 25
+	pkgrel = 26
 	url = https://www.nvidia.com/
 	arch = x86_64
 	license = custom

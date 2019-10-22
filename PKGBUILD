@@ -6,8 +6,8 @@
 pkgbase=nvidia-340xx-lts
 pkgname=(nvidia-340xx-lts nvidia-340xx-lts-dkms)
 pkgver=340.107
-pkgrel=25
-pkgdesc="NVIDIA drivers for linux-lts"
+pkgrel=26
+pkgdesc="NVIDIA drivers for linux-lts, 340xx legacy branch"
 arch=('x86_64')
 url="https://www.nvidia.com/"
 makedepends=("nvidia-340xx-utils=${pkgver}" 'linux-lts>=4.19.79' 'linux-lts-headers>=4.19.79')
@@ -58,7 +58,7 @@ package_nvidia-340xx-lts() {
   find "${pkgdir}" -name '*.ko' -exec gzip -n {} +
 
   echo "blacklist nouveau" |
-    install -Dm644 /dev/stdin "${pkgdir}/usr/lib/modprobe.d/nvidia-340xx-ck.conf"
+    install -Dm644 /dev/stdin "${pkgdir}/usr/lib/modprobe.d/nvidia-340xx-lts.conf"
 }
 
 package_nvidia-340xx-lts-dkms() {
