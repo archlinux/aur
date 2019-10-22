@@ -2,38 +2,34 @@
 
 pkgname=chromium-widevine
 pkgdesc='A browser plugin designed for the viewing of premium video content'
-pkgver=4.10.1503.4
-_chrome_ver=77.0.3865.120
-_license_date=$(curl -sI https://www.google.com/intl/en/chrome/privacy/eula_text.html | sed -n '/^last-modified/ s/.*: //p' | date +"%Y%m%d" -u -f -)
-_license_last=20191018
-pkgrel=2
+pkgver=4.10.1582.1
+_chrome_ver=78.0.3904.70
+pkgrel=1
 epoch=1
 arch=('x86_64')
 url='https://www.widevine.com/'
 license=('custom')
-depends=('gcc-libs' 'glib2' 'glibc' 'nspr' 'nss')
 provides=("chromium-widevine-dev=$pkgver")
 conflicts=('chromium-widevine-dev')
 options=('!strip')
-source=("chrome-eula_text-$_license_date.html::https://www.google.com/intl/en/chrome/privacy/eula_text.html"
-        "https://dl.google.com/linux/deb/pool/main/g/google-chrome-stable/google-chrome-stable_${_chrome_ver}-1_amd64.deb"
-        get_cdm_version.c)
-sha256sums=('SKIP'
-            '07abdccd7c15f5abe68765c1162f2ab666b6478a4d578aa6351d5667cd983a48'
-            '3fda44a5b8b222434530f27923568de1fda1eb0caa8621b56a8b2a6a2a2e3d5d')
+source=("https://dl.google.com/linux/deb/pool/main/g/google-chrome-stable/google-chrome-stable_${_chrome_ver}-1_amd64.deb")
+sha256sums=('75d6063a5dc506662006eb3fde8c54342f3bc1422fa4d836650ae80f308a8f6f')
 
 prepare() {
-  bsdtar -x --strip-components 4 -f data.tar.xz opt/google/chrome/libwidevinecdm.so
-  gcc get_cdm_version.c -o get_cdm_version -ldl
+  bsdtar -x --strip-components 4 -f data.tar.xz opt/google/chrome/WidevineCdm
 }
 
 pkgver() {
-  ./get_cdm_version
+  awk 'match($0,/"version": "([0-9.]*)"/,a) {print a[1];}' WidevineCdm/manifest.json
 }
 
 package() {
-  install -Dm644 libwidevinecdm.so -t "$pkgdir/usr/lib/chromium/"
-  install -d "$pkgdir/usr/lib/chromium-dev/"
-  ln -s ../chromium/libwidevinecdm.so "$pkgdir/usr/lib/chromium-dev/libwidevinecdm.so"
-  install -Dm644 chrome-eula_text-$_license_date.html "$pkgdir/usr/share/licenses/$pkgname/eula_text.html"
+  depends=('gcc-libs' 'glib2' 'glibc' 'nspr' 'nss')
+
+  install -dm755 "$pkgdir/usr/lib/"chromium{,-dev}/
+  cp -a WidevineCdm "$pkgdir/usr/lib/chromium/"
+  ln -s ../chromium/WidevineCdm "$pkgdir/usr/lib/chromium-dev/WidevineCdm"
+  install -Dm644 WidevineCdm/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+# backward compatibility
+  ln -s WidevineCdm/_platform_specific/linux_x64/libwidevinecdm.so "$pkgdir/usr/lib/chromium/libwidevinecdm.so"
 }
