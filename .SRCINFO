@@ -1,11 +1,10 @@
 pkgbase = ttf-symbola
 	pkgdesc = Font for unicode symbols (part of Unicode Fonts for Ancient Scripts).
 	pkgver = 12.00
-	pkgrel = 1
+	pkgrel = 2
 	url = http://users.teilar.gr/~g1951d/
 	arch = any
 	license = custom
-	makedepends = unzip
 	depends = fontconfig
 	depends = xorg-font-utils
 	provides = ttf-symbola
