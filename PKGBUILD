@@ -44,12 +44,12 @@ sha256sums=('SKIP'
             'a6581d33448c2989ef9f7e888e7e47a8784b0159e76bf8f6bc97eec1d7d55769'
             '434f67e2e86edb555b7dfb572a52d7ff719373989e1f1830f779bfccc678539f'
             'c0ce093a098d91dee6be294f8a2fc929aabad95612f994933194d0da5c4cdd25'
-            '560ff07854d5167c83de753c133059c0fcff404c463d31940d8cad3b9ff23845')
+            '30788b1b7856fbcfcfbe6825cd772a22b75cf1d680c2cbfd9b15ef3fc2d0c077')
 
 pkgver() {
     cd "fred"
     printf "%s.%s" "${_pkgver}" \
-                   "$(git describe --abbrev=0 |sed 's/build0//;s/-/./g')"
+        "$(git describe --abbrev=0 |sed 's/build0//;s/-/./g')"
 }
 
 prepare() {
@@ -59,12 +59,6 @@ prepare() {
     git pull origin pull/658/head
     git apply -v "$srcdir/0001-strip-non-compile-deps.patch"
 
-    sed -i "$srcdir/plugin-WebOfTrust/build.xml" \
-        -e 's:value="7":value="1.8":'
-    sed -i "$srcdir/plugin-UPnP/build.xml" \
-        -e 's:value="1.5":value="1.8":'
-    sed -i "$srcdir/plugin-KeyUtils/build.xml" \
-        -e 's:value="1.6":value="1.8":'
     sed -i "gradle.properties" \
         -e "s:targetJavaVersion.*:targetJavaVersion=$(javac -version 2>&1 |awk '{print $2}'):"
 }
@@ -88,6 +82,7 @@ build_plugins() {
         msg "Building Plugin ${plugin}..."
         cd "$srcdir/plugin-${plugin}"
         ant dist \
+            -Dtarget-version=8 -Dsource-version=8 \
             -Dfreenet-cvs-snapshot.location=../fred/build/output/freenet.jar \
             -Dfreenet-ext.location=../fred/build/output/freenet-ext-29.jar \
             -Dtest.skip=true
