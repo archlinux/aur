@@ -3,12 +3,12 @@
 # https://gitlab.manjaro.org/packages/extra/pamac
 pkgname=pamac-cli
 pkgver=9.0.1
-pkgrel=1
+pkgrel=2
 _pkgfixver=$pkgver
 
-_pkgvercommit=v$pkgver
-#_pkgvercommit='c0daa011b87a195274930d79b340cb972e6a27d7'
-sha256sums=('53434271c9eae48d9fc770fddbf63f4a8de4487ba7c2906817da2ecc22023230'
+#_pkgvercommit=v$pkgver
+_pkgvercommit='b413a3e7c11ef00eb24cc7da421a3d40b8bb09b3'
+sha256sums=('b29e0ee2630a324117e628843f3adb9f799876b9ee6ad19ac8eec4cd5b1c1573'
             'd930fc889338cb50f6da36ddce3006946c69f6323b7b801d035c516b575ebc5d')
 
 pkgdesc="Pamac cli frontend for libalpm"
@@ -38,7 +38,7 @@ build() {
   cd "$srcdir/pamac-$_pkgvercommit"
   mkdir -p builddir
   cd builddir
-  meson --prefix=/usr --sysconfdir=/etc
+  meson --buildtype=release --prefix=/usr --sysconfdir=/etc
 
   # build
   ninja
