@@ -19,7 +19,9 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${_pkgname}"
-    JAVA_HOME="/usr/lib/jvm/java-8-graal/" mvn -Dmaven.test.skip=true package
+    export GRAALVM_HOME="/usr/lib/jvm/java-8-graal/"
+    export JAVA_HOME="${GRAALVM_HOME}"
+    mvn -Dmaven.test.skip=true package
 }
 
 package() {
