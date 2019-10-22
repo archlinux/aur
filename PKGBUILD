@@ -1,26 +1,23 @@
-# Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
+# Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@kth.se>
 
 pkgname=sleep-until
-pkgver=1
+pkgver=2
 pkgrel=1
 pkgdesc='Sleep until a specified time'
 arch=('i686' 'x86_64')
 url='https://github.com/maandree/sleep-until'
-license=('AGPL3')
+license=('custom:ISC')
 depends=('linux>=2.6.25' 'glibc>=2.8')
-makedepends=('glibc>=2.8' 'gcc' 'general-preprocessor' 'grep' 'texinfo' 'auto-auto-complete')
-install=sleep-until.install
-source=(https://github.com/maandree/sleep-until/archive/$pkgver.tar.gz)
-sha256sums=(fa1776be3f29c550f6eff48bcf714c76fcf399f1c7bac1d7306c5abc7fe14e17)
-
+makedepends=('glibc>=2.8' 'gcc' 'sed' 'auto-auto-complete')
+source=($pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
+sha256sums=(42d36bf374aa4505d82715bea95d907161619aa4a549432e907b0ab8e1eecdcb)
 
 build() {
-  cd "$srcdir/sleep-until-$pkgver"
-  make command info shell
+    cd "$srcdir/sleep-until-$pkgver"
+    make
 }
 
 package() {
-  cd "$srcdir/sleep-until-$pkgver"
-  make DESTDIR="$pkgdir" install-base install-info install-man install-shell
+    cd "$srcdir/sleep-until-$pkgver"
+    make install DESTDIR="$pkgdir"
 }
-
