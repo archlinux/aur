@@ -1,6 +1,6 @@
 # Maintainer: Christoph Scholz <christoph.scholz@gmail.com>
 _npmname=node-red
-_npmver=1.0.0
+_npmver=1.0.2
 pkgname=nodejs-${_npmname}
 pkgver=${_npmver}
 pkgrel=1
@@ -13,7 +13,7 @@ makedepends=('npm')
 optdepends=()
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-sha256sums=('9bb6687795fd24dc597746173131aa7993692a2b715d6875ab7dd4a7a6e07eda')
+sha256sums=('68fe0568bbe88df77cfaa48c17af01c122ed2a654cda86ee3f1748011ae41b8d')
 
 package() {
   mkdir -p ${pkgdir}/usr/lib/node_modules
