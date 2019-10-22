@@ -1,0 +1,18 @@
+pkgbase = python2-et-xmlfile
+	pkgdesc = A low memory library for creating large XML files.
+	pkgver = 1.0.1
+	pkgrel = 4
+	url = https://et-xmlfile.readthedocs.io/
+	arch = any
+	license = MIT
+	makedepends = python2-setuptools
+	makedepends = python2-lxml
+	source = https://pypi.python.org/packages/source/e/et_xmlfile/et_xmlfile-1.0.1.tar.gz
+	source = LICENCE
+	sha1sums = a3e502098bcb7fff22857882d80813c1b6db7608
+	sha1sums = 8b67150a9c68fa385ebe71453141020860a72ff4
+
+pkgname = python2-et-xmlfile
+	depends = python2
+	depends = python2-lxml
+
