@@ -1,6 +1,6 @@
 pkgbase = shattered-pixel-dungeon-git
 	pkgdesc = Shattered fork of the popular rogue-like game
-	pkgver = 276v0.7.5a
+	pkgver = 279v0.7.5d
 	pkgrel = 1
 	url = http://shatteredpixel.tumblr.com
 	arch = any
