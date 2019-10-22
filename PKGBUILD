@@ -1,26 +1,23 @@
-# Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
+# Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@kth.se>
 
 pkgname=libcoopgamma
-pkgver=1.2
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Cooperative gamma library"
 arch=(i686 x86_64)
 url="https://github.com/maandree/libcoopgamma"
-license=('GPL3')
+license=('custom:ISC')
 depends=(coopgammad)
-source=($url/archive/$pkgver.tar.gz)
-sha256sums=(33b9a2126c62d38ff15109c5f4cd255240231add6e4ac15991de2e5aedd2fd55)
+source=($pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
+sha256sums=(1129472a039c406ab088a31a1f4b4e010ac72ca87d64ba73893d4fbe63d5aa69)
 
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-  ./configure --prefix=/usr
-  make
+    cd "$srcdir/$pkgname-$pkgver"
+    make
 }
-
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  make install N=: DESTDIR="$pkgdir"
+    cd "$srcdir/$pkgname-$pkgver"
+    make install DESTDIR="$pkgdir"
 }
-
