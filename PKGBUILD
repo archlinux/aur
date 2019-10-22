@@ -3,11 +3,11 @@
 pkgname=python-bpsproxy
 _module='BPSProxy'
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Blender Power Sequencer proxy generator tool"
 url="https://github.com/GDquest/BPSProxy"
 depends=('python' 'python-tqdm' 'ffmpeg')
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'pandoc')
 license=('GPL')
 arch=('any')
 source=("https://github.com/GDquest/BPSProxy/archive/${pkgver}.tar.gz")
