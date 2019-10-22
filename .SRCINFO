@@ -1,6 +1,6 @@
 pkgbase = nginx-unit
-	pkgdesc = Dynamic web application server, designed to run applications in multiple languages.
-	pkgver = 1.7.1
+	pkgdesc = Lightweight, dynamic, open-source server for diverse web applications.
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = https://unit.nginx.org/
 	arch = i686
@@ -10,13 +10,17 @@ pkgbase = nginx-unit
 	makedepends = python
 	makedepends = python2
 	makedepends = go
-	source = https://unit.nginx.org/download/unit-1.7.1.tar.gz
+	makedepends = ruby
+	makedepends = perl
+	makedepends = npm
+	source = https://unit.nginx.org/download/unit-1.12.0.tar.gz
 	source = unit.service
-	sha256sums = e63cacb8308f625500c51440f2bc54d5a1e1b90aaa41c2c0fc7557c74a9d9e13
+	sha256sums = 03388fb39b2e589c85d4bccb6d5a0e99098d250f0ecb5be668b416cc478d17d1
 	sha256sums = 8c9b2f732d6e50aa747aa7703303e5fff69f5abc6f5fc1741b774b422e029606
 
 pkgname = nginx-unitd
 	depends = glibc
+	depends = openssl
 
 pkgname = nginx-unit-python
 	depends = nginx-unitd
@@ -29,6 +33,16 @@ pkgname = nginx-unit-python2
 pkgname = nginx-unit-php
 	depends = nginx-unitd
 	depends = php-embed
+
+pkgname = nginx-unit-perl
+	arch = any
+	depends = nginx-unitd
+	depends = perl
+
+pkgname = nginx-unit-ruby
+	arch = any
+	depends = nginx-unitd
+	depends = ruby
 
 pkgname = nginx-unit-go
 	arch = any
