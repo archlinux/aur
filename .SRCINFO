@@ -1,7 +1,7 @@
 pkgbase = onionshare
 	pkgdesc = Lets you securely and anonymously share a file of any size with someone
-	pkgver = 2.0
-	pkgrel = 2
+	pkgver = 2.2
+	pkgrel = 1
 	url = https://github.com/micahflee/onionshare
 	arch = any
 	license = GPL3
@@ -9,6 +9,7 @@ pkgbase = onionshare
 	makedepends = python-setuptools
 	depends = stem
 	depends = python-flask
+	depends = python-flask-httpauth
 	depends = tor
 	depends = python-pycryptodome
 	depends = python-pysocks
@@ -16,8 +17,8 @@ pkgbase = onionshare
 	depends = python-pyqt5
 	optdepends = python-nautilus: to enable Nautilus right-click extension
 	optdepends = obfs4proxy: for tor bridge support
-	source = onionshare-2.0.tar.gz::https://github.com/micahflee/onionshare/archive/v2.0.tar.gz
-	sha512sums = 1c3dbe90b52b1147f5dbe686453e518100fe7d71428a14231451c3e4a6f2aa8b4d1e5ea64cbb753ce2d7c3789f1479b9a715d2a68288dcf33e50070fb693520d
+	source = onionshare-2.2.tar.gz::https://github.com/micahflee/onionshare/archive/v2.2.tar.gz
+	sha512sums = 1c2575bc8254d6123294dc9a47e700e0a346e3ba22b71994546853a34377d7fef5abb38c78cfd08badce35d16ae55633ea52d42589323e6dd484a192a8993c38
 
 pkgname = onionshare
 

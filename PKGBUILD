@@ -1,24 +1,25 @@
-# Maintainer: Ye Shu <shuye02@outlook.com>
+# Maintainer: Kevin Azzam <aur at kevin.azz.am>
+# Contributor: Ye Shu <shuye02 at outlook.com>
 
 pkgname=onionshare
-pkgver=2.0
-pkgrel=2
+pkgver=2.2
+pkgrel=1
 pkgdesc="Lets you securely and anonymously share a file of any size with someone"
 url="https://github.com/micahflee/onionshare"
 arch=('any')
 license=('GPL3')
 makedepends=('python-setuptools')
 checkdepends=('python-pytest')
-depends=('stem' 'python-flask' 'tor' 'python-pycryptodome' 'python-pysocks' 'python-requests' 'python-pyqt5')
+depends=('stem' 'python-flask' 'python-flask-httpauth' 'tor' 'python-pycryptodome' 'python-pysocks' 'python-requests' 'python-pyqt5')
 optdepends=(
-    'python-nautilus: to enable Nautilus  right-click extension'
+    'python-nautilus: to enable Nautilus right-click extension'
     'obfs4proxy: for tor bridge support'
 )
 
 source=(
     "${pkgname}-${pkgver}.tar.gz::https://github.com/micahflee/onionshare/archive/v$pkgver.tar.gz"
 )
-sha512sums=('1c3dbe90b52b1147f5dbe686453e518100fe7d71428a14231451c3e4a6f2aa8b4d1e5ea64cbb753ce2d7c3789f1479b9a715d2a68288dcf33e50070fb693520d')
+sha512sums=('1c2575bc8254d6123294dc9a47e700e0a346e3ba22b71994546853a34377d7fef5abb38c78cfd08badce35d16ae55633ea52d42589323e6dd484a192a8993c38')
 
 check() {
     cd "$srcdir/onionshare-$pkgver"
@@ -28,6 +29,8 @@ check() {
 package() {
     cd "$srcdir/onionshare-$pkgver" || return $?
     python setup.py install --root="$pkgdir/" --optimize=1
-    install -Dm644 install/onionshare.desktop "${pkgdir}/usr/share/applications/onionshare.desktop"
+    install -Dm644 install/org.onionshare.OnionShare.desktop "${pkgdir}/usr/share/applications/onionshare.desktop"
+    install -Dm644 install/org.onionshare.OnionShare.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/org.onionshare.OnionShare"
+    install -Dm644 install/org.onionshare.OnionShare.appdata.xml "${pkgdir}/usr/share/metainfo/apps/org.onionshare.OnionShare.appdata.xml"
     install -Dm644 install/onionshare80.xpm "${pkgdir}/usr/share/pixmaps/onionshare80.xpm"
 }
