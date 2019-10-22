@@ -4,11 +4,24 @@ for name in $BASEDIR/lib/*.jar; do
   CP=$CP:$name
 done
 
-exec /usr/bin/java -cp $CP -Duser.language=en -Duser.country=US -XX:+UseG1GC \
+PATH_TO_FX=/usr/lib/jvm/java-13-openjfx/lib
+
+exec /usr/bin/java \
+  -cp $CP \
+  -Duser.language=en \
+  -Duser.country=US \
   -Dapp.name="asciidocfx" \
   -Dapp.pid="$$" \
   -Dapp.repo="$BASEDIR/lib" \
   -Dapp.home="$BASEDIR" \
   -Dbasedir="$BASEDIR" \
+  -Dfile.encoding=UTF-8 \
+  -Xms512M \
+  -Xmx1024M \
+  -Djava.awt.headless=false \
+  --module-path $PATH_TO_FX --add-modules javafx.controls,javafx.fxml,javafx.web \
+  --illegal-access=warn \
+  --add-opens javafx.base/com.sun.javafx.collections=javafx.web \
+  --add-opens javafx.controls/javafx.scene.control=ALL-UNNAMED \
   com.kodedu.boot.AppStarter \
   "$@"
