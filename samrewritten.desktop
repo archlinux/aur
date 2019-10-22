@@ -3,6 +3,6 @@ Name=SamRewritten
 Exec=/usr/bin/samrewritten
 Terminal=false
 Type=Application
-Icon=face-wink
+Icon=/usr/lib/SamRewritten/assets/icon.png
 Comment=Steam Achievement Manager
 Categories=Game;
