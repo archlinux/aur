@@ -40,10 +40,9 @@ prepare() {
     cd "${srcdir}/FreeCAD"
 
     if ((${#_backports[@]})); then
-        git cherry-pick -x -Xours -Xignore-space-change "${_backports[@]}" \
+        git cherry-pick -n -x -Xours -Xignore-space-change "${_backports[@]}" \
             || true # Kind of a hack, but the last commit does not apply cleanly
         git rm src/Mod/TechDraw/App/Cosmetic.cpp # Fix file not present in 0.18
-        git commit --no-edit
     fi
 }
 
