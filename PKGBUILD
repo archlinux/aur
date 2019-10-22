@@ -3,7 +3,7 @@
 
 pkgname=gravit-designer-bin
 pkgver=2019_2.7
-pkgrel=2
+pkgrel=3
 pkgdesc="A cross-platform, free design tool for the 21st century empowering everyone to design"
 arch=('x86_64')
 url="https://designer.io/"
@@ -37,6 +37,7 @@ build() {
 
 package() {
   # Install
+  local _df="${srcdir}/squashfs-root/gravit-designer.desktop"
   install -d "${pkgdir}/usr/share"
   install -D ${_df} "${pkgdir}/usr/share/applications/gravitdesigner.desktop"
   install -D "${srcdir}/gravit-designer.xml" "${pkgdir}/usr/share/mime/packages/gravitdesigner.xml"
