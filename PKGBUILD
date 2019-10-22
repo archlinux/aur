@@ -43,7 +43,6 @@ prepare() {
   ln -sf ${srcdir}/llpc-${_llpc_commit} ${srcdir}/llpc
   ln -sf ${srcdir}/llvm-project-${_llvmproject_commit} ${srcdir}/llvm-project
   ln -sf ${srcdir}/MetroHash-${_metrohash_commit} ${srcdir}/MetroHash
-  msg "ln -sf ${srcdir}/CWPack-${_cwpack_commit} ${srcdir}/CWPack"
   ln -sf ${srcdir}/CWPack-${_cwpack_commit} ${srcdir}/CWPack
   
   #remove -Werror to build with gcc9 
