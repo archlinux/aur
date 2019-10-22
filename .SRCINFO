@@ -10,7 +10,7 @@ pkgbase = cl-protobuf-git
 	optdepends = boost
 	optdepends = protobuf
 	provides = cl-protobuf
-	source = git+file:///home/eschulte/lisp/local-projects/protobuf
+	source = git://github.com/brown/protobuf.git
 	sha512sums = SKIP
 
 pkgname = cl-protobuf-git

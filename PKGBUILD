@@ -12,8 +12,7 @@ optdepends=('boost' 'protobuf')
 depends=()
 makedepends=('git' 'make')
 provides=("cl-${_srcname}")
-# source=('git://github.com/brown/protobuf.git')
-source=('git+file:///home/eschulte/lisp/local-projects/protobuf')
+source=('git://github.com/brown/protobuf.git')
 sha512sums=('SKIP')
 
 pkgver() {
