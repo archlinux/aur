@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Google Drive
+Comment=With Google Docs, you can write, edit, and collaborate wherever you are. For Free. 
+Exec=google-drive
+Icon=/usr/share/pixmaps/google-drive.png
+Terminal=false
+Categories=Productivity;Docs;Google;Nativefier;
