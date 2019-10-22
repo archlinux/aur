@@ -3,7 +3,7 @@
 _prefix=/opt/UnityBeta
 
 pkgname=unity-editor-beta-android
-pkgver=2019.3.0b6
+pkgver=2019.3.0b7
 pkgrel=1
 pkgdesc="Allows building your Unity projects for the Android platform"
 arch=('x86_64')
@@ -15,8 +15,8 @@ depends=('unity-editor-beta'
          'android-udev')
 optdepends=('android-ndk-16b: needed for IL2CPP builds')
 makedepends=('cpio')
-source=("2019.3.0b6.3.0b6.pkg::https://beta.unity3d.com/download/0612c96692fb/MacEditorTargetInstaller/UnitySetup-Android-Support-for-Editor-2019.3.0b6.pkg")
-md5sums=("5d36eba0522d3ae35187d709b77999d9")
+source=("2019.3.0b7.3.0b7.pkg::https://beta.unity3d.com/download/9946d7a66754/MacEditorTargetInstaller/UnitySetup-Android-Support-for-Editor-2019.3.0b7.pkg")
+md5sums=("7831c86b57dd0081c8886b277bbbad6d")
 options=(!strip)
 PKGEXT='.pkg.tar' # Prevent compressing of the final package
 
