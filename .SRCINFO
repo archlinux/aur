@@ -1,6 +1,6 @@
 pkgbase = python-fiona
 	pkgdesc = Reads and writes spatial data files
-	pkgver = 1.8.8
+	pkgver = 1.8.9
 	pkgrel = 1
 	url = https://github.com/Toblerity/Fiona
 	arch = x86_64
@@ -13,11 +13,11 @@ pkgbase = python-fiona
 	depends = python-six
 	depends = python-cligj
 	depends = python-munch
-	depends = gdal<3
+	depends = gdal
 	optdepends = python-click-plugins: for fio command line tool.
 	options = !emptydirs
-	source = https://github.com/Toblerity/Fiona/archive/1.8.8.tar.gz
-	sha256sums = 2072010f72953bd1005a5b92fac84725ce8cf77a2581bac0dfe99613fa0d57c8
+	source = https://github.com/Toblerity/Fiona/archive/1.8.9.tar.gz
+	sha256sums = c1dcdf3813090519b14cbf557dcfbe97b452722be473530edbccbdfc81601df5
 
 pkgname = python-fiona
 
