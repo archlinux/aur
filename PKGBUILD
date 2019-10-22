@@ -1,6 +1,6 @@
 # Maintainer Jonne Haß <me@jhass.eu>
 pkgname=workflowy
-pkgver=1.3.4
+pkgver=1.3.5_4650
 pkgrel=1
 pkgdesc="Desktop app for workflowy.com, a note taking tool based on lists"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('fuse2')
 _filename="$pkgname-$pkgver.AppImage"
 _downloadname="WorkFlowy-x86_64.AppImage"
 options=('!strip')
-source=("$_filename::https://github.com/workflowy/desktop/releases/download/v$pkgver/$_downloadname")
+source=("$_filename::https://github.com/workflowy/desktop/releases/download/v${pkgver/_/-}/$_downloadname")
 
 prepare() {
   cd "$srcdir"
@@ -28,4 +28,4 @@ package() {
   cp -av squashfs-root/usr/share/icons/hicolor/* "$pkgdir/usr/share/icons/hicolor/"
   chmod -R a+rX "$pkgdir/usr/share/icons/hicolor"
 }
-sha256sums=('c51033a948cac47c10088f84cf4cc4dc033710dce3bad3adee34a4b3ffd9c8c0')
+sha256sums=('1f9b489605f41e88f6cc7dafcb68497b3621310337e9e8ee25b014fb5e57ef14')
