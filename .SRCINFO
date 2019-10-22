@@ -1,12 +1,11 @@
 pkgbase = anbox-image-houdini
 	pkgdesc = Android image for running in Anbox with Houdini
 	pkgver = 2018.07.19
-	pkgrel = 4
+	pkgrel = 5
 	url = https://anbox.io/
 	arch = x86_64
 	license = custom
-	depends = sed
-	depends = squashfs-tools
+	makedepends = squashfs-tools
 	provides = anbox-image
 	conflicts = anbox-image
 	source = http://build.anbox.io/android-images/2018/07/19/android_amd64.img
