@@ -8,7 +8,7 @@
 # It is sufficient to just replace _downloadid to correspond new release version
 # It can be obtained from chromium -> Developer Tools -> Network -> XHR -> click latest-version and copy downloadId
 _downloadid='ab713d8b44e24b468f4c51c5c62a0f5c'
-_referid='ab713d8b44e24b468f4c51c5c62a0f5c'
+_referid='1649a7027eed41a1a7633e0dd348195c'
 _siteurl="https://www.blackmagicdesign.com/api/register/us/download/${_downloadid}"
 
 _useragent="User-Agent: Mozilla/5.0 (X11; Linux ${CARCH}) \
