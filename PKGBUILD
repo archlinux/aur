@@ -5,7 +5,7 @@ pkgbase=chicago95-git
 pkgname=(chicago95-gtk-theme-git
          chicago95-icon-theme-git
          xcursor-chicago95-git)
-pkgver=r243.7e5f203
+pkgver=v1.0.1.r0.g7e5f203
 pkgrel=1
 pkgdesc="Windows 95 inspired theme"
 arch=(any)
@@ -18,7 +18,7 @@ sha256sums=(SKIP)
 
 pkgver() {
     cd Chicago95
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package_chicago95-gtk-theme-git() {
