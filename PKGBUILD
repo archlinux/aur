@@ -2,7 +2,7 @@
 
 pkgname=bm-git
 _pkgname=bm
-pkgrel=1
+pkgrel=2
 pkgver=0.3
 pkgdesc="command-line bibliography manager for biblatex"
 url="https://git.ckyln.com/bm/log.html"
@@ -15,6 +15,7 @@ source=("git://git.ckyln.com/${_pkgname}")
 md5sums=('SKIP')
 
 provides=('bm')
+conflicts=('bm')
 
 pkgver() {
 	cd ${_pkgname}
