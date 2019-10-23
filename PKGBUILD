@@ -2,7 +2,7 @@
 # Maintainer: Tod Jackson <tod.jackson@gmail.com>
 pkgname=comix
 pkgver=4.0.4
-pkgrel=3
+pkgrel=4
 epoch=
 pkgdesc="A user-friendly, customizable comic/image viewer"
 arch=('x86_64')
@@ -23,8 +23,9 @@ prepare() {
   # https://github.com/python-pillow/Pillow/blob/master/docs/deprecations.rst#version-constant
   sed -i 's/assert Image.V/#assert Image.V/' ../src/comix.py
   sed -i 's/assert Image.V/#assert Image.V/' ../install.py
-  # Fix ordered thumbnails with Pillow
+  # Fix thumbnail page numbers
   sed -i 's/image.tostring/image.tobytes/' ../src/comix.py
+  sed -i 's/image.tostring/image.tobytes/' ../src/image.py
 }
 
 package() {
