@@ -3,6 +3,12 @@ pkgbase = softu2f
 	pkgver = 0.4.0
 	pkgrel = 1
 	arch = x86_64
+	makedepends = clang
+	makedepends = llvm
+	makedepends = rust
+	depends = libdbus
+	depends = libsystemd
+	depends = openssl
 	source = git+https://github.com/danstiner/rust-u2f#commit=1b49bad73b62a1b3982ec5af583dfa0f6ea5efb1
 	sha256sums = SKIP
 
