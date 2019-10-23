@@ -1,0 +1,17 @@
+pkgbase = lemonplus-git
+	pkgdesc = A tiny judging environment for OI contest based on Project_Lemon
+	pkgver = 20190721
+	pkgrel = 1
+	url = https://github.com/Dust1404/Project_LemonPlus
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = qt5-base
+	depends = qt5-base
+	source = git+https://github.com/Dust1404/Project_LemonPlus
+	source = LemonPlus.desktop
+	md5sums = SKIP
+	md5sums = 983771f033d32f2e7b07f0b44bb14c8d
+
+pkgname = lemonplus-git
+

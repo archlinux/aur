@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Lemon Plus
+Comment=A tiny judging environment for OI contest based on Project_Lemon
+Exec=/opt/LemonPlus/lemon
+Path=/opt/LemonPlus/
+Icon=lemon
+Terminal=false
+Categories=Development;Utility;Application;
