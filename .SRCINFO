@@ -1,7 +1,7 @@
 pkgbase = canta-kde-git
 	pkgdesc = Canta theme for kde plasma desktop
 	pkgver = r10.5d7260e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vinceliuice/Canta-kde
 	arch = any
 	license = GPL
@@ -9,6 +9,7 @@ pkgbase = canta-kde-git
 	optdepends = canta-gtk-theme-git
 	optdepends = canta-icon-theme-git
 	optdepends = kvantum-qt5
+	backup = usr/share/sddm/themes/Canta/theme.conf.user
 	source = canta-kde::git+https://github.com/vinceliuice/Canta-kde.git
 	md5sums = SKIP
 

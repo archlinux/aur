@@ -4,12 +4,13 @@ _srcname=canta-kde
 pkgname=canta-kde-git
 pkgdesc="Canta theme for kde plasma desktop"
 pkgver=r10.5d7260e
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="https://github.com/vinceliuice/Canta-kde"
 license=('GPL')
 depends=()
 makedepends=('git')
+backup=('usr/share/sddm/themes/Canta/theme.conf.user')
 optdepends=('canta-gtk-theme-git' 'canta-icon-theme-git' 'kvantum-qt5')
 
 source=("${_srcname}::git+https://github.com/vinceliuice/Canta-kde.git")
