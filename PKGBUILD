@@ -2,8 +2,8 @@
 # Contributor: Thorben Guenther <echo YWRtaW5AeGVucm94Lm5ldAo= | base64 -d>
 
 pkgname=mycroft-core
-pkgver=19.8.1
-pkgrel=4
+pkgver=19.8.2
+pkgrel=1
 pkgdesc="The Mycroft Artificial Intelligence platform."
 arch=('i686' 'x86_64')
 url='https://github.com/MycroftAI/mycroft-core'
@@ -30,6 +30,7 @@ source=("https://github.com/MycroftAI/mycroft-core/archive/release/v${pkgver}.ta
 	"mycroft.tmpfiles"
 	"mycroft.sysusers"
 	"mycroft.service"
+	"client.conf"
 )
 
 prepare() {
@@ -66,9 +67,18 @@ package() {
 	# Cleanup
 	find . -name "*.py[co]" -o -name __pycache__ -exec rm -rf {} +
 	rm -rf "$pkgdir/usr/share/mycroft-core/test"
+
+	# Pulseaudio Client configuration
+	install -D -m644 "${srcdir}/client.conf" "${pkgdir}/usr/share/mycroft-core/pulseaudio.client.conf"
 }
 
-md5sums=('04ec4428ad8ee3787e798bcd5a7ed23a'
-	'b09b8ac1a4c1fbb17c79bde8d6520ea1'
+md5sums=('8cc14a0c6b74d35dd7e4a4d749695b42'
+	'9f40c594e9f55ff63bc40108a694ed09'
 	'578b9531acff7b5bf96d776bbd327d15'
-'fc7662b4e3b499cbb0b4f8df12b0ce80')
+	'fc7662b4e3b499cbb0b4f8df12b0ce80'
+'46775f06fd9d6c4ad5ff3a221d4912ff')
+md5sums=('8cc14a0c6b74d35dd7e4a4d749695b42'
+	'74702c5b02efba7729fe18353418d567'
+	'578b9531acff7b5bf96d776bbd327d15'
+	'fc7662b4e3b499cbb0b4f8df12b0ce80'
+'46775f06fd9d6c4ad5ff3a221d4912ff')

@@ -1,8 +1,8 @@
 post_install() {
   echo "====>  Replace this line within /etc/pulse/default.pa:"
-  echo "====     load-module module-native-protocol-unix"
+  echo "====     #load-module module-native-protocol-tcp"
   echo "====>  with:"
-  echo "====     load-module module-native-protocol-unix auth-anonymous=1"
+  echo "====     load-module module-native-protocol-tcp auth-ip-acl=127.0.0.1"
   echo "====>  Restart PulseAudio"
   echo "====>  Finally run:"
   echo "====	 systemctl start mycroft.service"

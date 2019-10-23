@@ -1,7 +1,7 @@
 pkgbase = mycroft-core
 	pkgdesc = The Mycroft Artificial Intelligence platform.
-	pkgver = 19.8.1
-	pkgrel = 4
+	pkgver = 19.8.2
+	pkgrel = 1
 	url = https://github.com/MycroftAI/mycroft-core
 	install = mycroft-core.install
 	arch = i686
@@ -29,14 +29,16 @@ pkgbase = mycroft-core
 	depends = pulseaudio
 	depends = pulseaudio-alsa
 	depends = fann
-	source = https://github.com/MycroftAI/mycroft-core/archive/release/v19.8.1.tar.gz
+	source = https://github.com/MycroftAI/mycroft-core/archive/release/v19.8.2.tar.gz
 	source = mycroft.tmpfiles
 	source = mycroft.sysusers
 	source = mycroft.service
-	md5sums = 04ec4428ad8ee3787e798bcd5a7ed23a
-	md5sums = b09b8ac1a4c1fbb17c79bde8d6520ea1
+	source = client.conf
+	md5sums = 8cc14a0c6b74d35dd7e4a4d749695b42
+	md5sums = 74702c5b02efba7729fe18353418d567
 	md5sums = 578b9531acff7b5bf96d776bbd327d15
 	md5sums = fc7662b4e3b499cbb0b4f8df12b0ce80
+	md5sums = 46775f06fd9d6c4ad5ff3a221d4912ff
 
 pkgname = mycroft-core
 
