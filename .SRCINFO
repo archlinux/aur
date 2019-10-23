@@ -1,12 +1,12 @@
 pkgbase = pulumi-bin
 	pkgdesc = A multi-language, multi-cloud development platform
-	pkgver = 1.1.0
+	pkgver = 1.3.4
 	pkgrel = 1
 	url = https://github.com/pulumi/pulumi
 	arch = x86_64
 	license = Apache-2.0
-	source = https://get.pulumi.com/releases/sdk/pulumi-v1.1.0-linux-x64.tar.gz
-	sha256sums = c2cfd476e0b470087f471d71610a3d3c5518c1fab644ff60501959c2065368f3
+	source = https://get.pulumi.com/releases/sdk/pulumi-v1.3.4-linux-x64.tar.gz
+	sha256sums = 715b29b4372eab39800d182fca86c10f61db531283aa1473486a995775159ae9
 
 pkgname = pulumi-bin
 
