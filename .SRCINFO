@@ -1,7 +1,7 @@
 pkgbase = bareos
 	pkgdesc = Bareos - Backup Archiving REcovery Open Sourced
 	pkgver = 18.2.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.bareos.org
 	arch = i686
 	arch = x86_64
@@ -160,7 +160,7 @@ pkgname = bareos-storage-python-plugin
 	depends = libcap
 	depends = jansson
 
-pkgname = bareos-webui
+pkgname = bareos-web-ui
 	pkgdesc = Bareos - Backup Archiving REcovery Open Sourced - Webui (Bareos web administration)
 	depends = php
 	depends = php-fpm
