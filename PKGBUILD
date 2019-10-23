@@ -4,7 +4,7 @@
 pkgname=libcineform
 pkgver=0.2
 pkgrel=1
-pkgdesc="The GoPro® CineForm video codec SDK."
+pkgdesc="GoPro CineForm video codec SDK fork. Easier to build and integrate into other projects."
 arch=('x86_64')
 url='https://github.com/egrange/libcineform'
 license=('MIT, Apache')
