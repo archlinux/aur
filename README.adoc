@@ -25,10 +25,14 @@ WARNING: Read the warning above.
 |===
 |Version | Note
 
+| *0.4.0*
+a|
+* Add a route based upon the ALLOWED_IPS.
+
 | *0.3.0*
 a|
-* Various tidy ups and script improvements
-* Rename PRIVATE_KEY_FILE to PRIVATE_KEYFILE
+* Various tidy ups and script improvements.
+* Rename PRIVATE_KEY_FILE to PRIVATE_KEYFILE - BREAKING CHANGE!
 
 | *0.2.0*
 a|
@@ -36,7 +40,7 @@ a|
 
 | *0.1.0*
 a|
-* Initial Release
+* Initial Release.
 
 |===
 
@@ -154,6 +158,10 @@ up be able to ping it via your Wireguard network! You should now also be able
 to SSH to the machine (you did remember to set that all up before doing this,
 right?) and unlock any encrypted partitions and thus enable the continuation
 of your boot process! FTW!
+
+NOTE: It could take a minute or two for your Wireguard interface to
+authenticate and be recognised by the remote peer. Please be patient and hang
+on in there!
 
 == Unlicensed
 

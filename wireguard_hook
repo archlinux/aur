@@ -80,6 +80,7 @@ run_hook()
         allowed-ips $ALLOWED_IPS
     ip addr add $INTERFACE_ADDR dev $INTERFACE
     ip link set $INTERFACE up
+    ip route add $ALLOWED_IPS dev $INTERFACE
 }
 
 run_cleanuphook() {
