@@ -1,15 +1,15 @@
-# Maintainer: Tobias Hübner <dasNeutrum at gmx dot de>
+# Maintainer: Tobias Hübner <dasNeutrum@gmx.de>
 
 _pkgname=sonarqube
 pkgname=${_pkgname}-lts
 pkgver=7.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source platform for continuous inspection of code quality"
 arch=('x86_64')
 url="http://www.sonarqube.org/"
 license=('LGPL3')
 
-depends=('java-runtime>=11')
+depends=('java-runtime=11')
 
 optdepends=('apache: a fully featured webserver'
             'maven: a java project management and project comprehension tool'
