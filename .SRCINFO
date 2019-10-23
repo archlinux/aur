@@ -1,6 +1,6 @@
 pkgbase = carnet
 	pkgdesc = Carnet is a complete and rich note taking app for Android and Linux with sync capabilities
-	pkgver = 0.16.2
+	pkgver = 0.18.5
 	pkgrel = 1
 	url = https://github.com/PhieF/CarnetDocumentation
 	install = carnet.install
