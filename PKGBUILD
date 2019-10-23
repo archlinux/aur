@@ -8,7 +8,7 @@
 # to the depends and delete "no-g15" in the configure line below
 
 pkgname=mumble-git
-pkgver=2019.09.22
+pkgver=2019.10.22
 _pkgver=1.4.0
 pkgrel=1
 arch=('i686' 'x86_64')
@@ -38,7 +38,6 @@ prepare() {
 
   git submodule init
   git config submodule.3rdparty/fx11-src.url "$srcdir/fx11"
-  git config submodule.3rdparty/celt-0.11.0-src.url "$srcdir/celt"
   git config submodule.3rdparty/celt-0.7.0-src.url "$srcdir/celt"
   git config submodule.3rdparty/opus-src.url "$srcdir/opus"
   git config submodule.3rdparty/sbcelt-src.url "$srcdir/sbcelt"
