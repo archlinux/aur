@@ -1,15 +1,15 @@
 # Maintainer: Davorin Učakar <davorin.ucakar@gmail.com>
 
 pkgname=hunspell-sl
-pkgver=2015.12.25
-pkgrel=2
+pkgver=2019.07.28
+pkgrel=1
 pkgdesc="Slovene hunspell dictionary"
 arch=(any)
-url="https://github.com/LibreOffice/dictionaries"
+url="https://extensions.libreoffice.org/extensions/slovenian-dictionary-pack/"
 license=('LGPL2.1')
 optdepends=('hunspell: the spell checking libraries and apps')
-source=("https://extensions.libreoffice.org/extensions/slovenian-dictionary-pack/$pkgver/@@download/file/pack-sl.oxt")
-md5sums=('a95158fff7aa901938b9bc67c4937a88')
+source=("https://extensions.libreoffice.org/extensions/slovenian-dictionary-pack/2019-07.28/@@download/file/pack-sl.oxt")
+sha256sums=('d8e85d952a7a0e6998e13e497c6f91a0d1008d10c6e757bf9de7eeca4f0b670e')
 
 package() {
   install -Dm644 sl_SI.aff "$pkgdir"/usr/share/hunspell/sl_SI.aff
