@@ -5,13 +5,13 @@
 pkgname=poetry-beta
 _pkgname=poetry
 pkgver=1.0.0b2
-pkgrel=1
+pkgrel=2
 pkgdesc="Python dependency management and packaging made easy (pre-release version)"
 arch=('any')
 url="https://poetry.eustace.io/"
 license=('MIT')
 depends=('python')
-conflicts=('python-poetry')
+conflicts=('python-poetry' 'poetry')
 options=(!emptydirs)
 source=(
   "https://github.com/sdispater/poetry/releases/download/${pkgver}/poetry-${pkgver}-linux.tar.gz"
