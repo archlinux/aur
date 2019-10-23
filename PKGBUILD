@@ -5,14 +5,14 @@
 export LG2=en
 
 pkgname=i2p-dev
-pkgver=0.9.42.2
+pkgver=0.9.43.0
 pkgrel=1
 pkgdesc="A distributed anonymous network (daily mtn->git sync)"
 url="https://geti2p.net"
 license=('GPL2')
 arch=('x86_64' 'i686' 'armv6h' 'armv7h')
-depends=('java-runtime>=12' 'java-service-wrapper' 'gmp')
-makedepends=('java-environment>=12' 'apache-ant' 'git')
+depends=('java-runtime>=13' 'java-service-wrapper' 'gmp')
+makedepends=('java-environment>=13' 'apache-ant' 'git')
 [[ "$LG2" != 'en' ]] && makedepends+=('gettext')
 #optdepends=('gtk2: for rrd graphs')
 conflicts=('i2p' 'i2p-bin')
@@ -25,13 +25,15 @@ _gitname=i2p.i2p
 _commit=master
 
 source=("git+https://github.com/i2p/${_gitname}.git#commit=${_commit}"
-        'i2prouter.service' 'i2prouter.sh' 'wrapper.config' 'router.config')
+        'i2prouter.service' 'i2prouter.sh' 'wrapper.config' 'router.config'
+        'gettext-0.20.1-jdk13-fix.patch')
 
 sha256sums=('SKIP'
             'ff9942ca43715b5095b0118e306c8aec1af7c68c18e8959dba10d86eac8efbfd'
             'ea8f97e66461d591b1819eab39bbc40056b89ae12f7729b3dd9fd2ce088e5e53'
-            '3e97ceddc2c4ba766e77893341c83f3f87639d29b0fee346c955bc59ede15d14'
-            '41756375ef2e8323147cec31a8675b2bc11109451f9185c036ff32d26d6c9b99')
+            '5c57456bf3f364175d036dfc6c6ceea5e57cdda970407829c04d09a4c821a9c0'
+            '41756375ef2e8323147cec31a8675b2bc11109451f9185c036ff32d26d6c9b99'
+            '79e5c8077b479a2edaaaf15a427084c2e87c16cda80ed2230f9354dcdca14393')
 
 pkgver() {
     cd "$_gitname"
@@ -42,11 +44,7 @@ pkgver() {
 
 prepare() {
     cd "$_gitname"
-
-    sed -i build.properties \
-        -e 's:javac.version=.*:javac.version=12:'
-    sed -i {router,core}/java/build.xml \
-        -e 's:1.7:12:'
+    patch -Np0 -i "$srcdir/gettext-0.20.1-jdk13-fix.patch"
 }
 
 build_jbigi() {
@@ -72,14 +70,18 @@ fi
 }
 
 build() {
-    export ANT_OPTS="-Dfile.encoding=UTF-8"
     export JAVA_HOME="${JAVA_HOME:-/usr/lib/jvm/default}"
-
     build_jbigi
     build_jcpuid
 
     cd "$srcdir/$_gitname"
-    ant -Dworkspace.version=$(git rev-parse --short $_commit) preppkg-linux
+
+    ant -Dworkspace.version=$(git rev-parse --short $_commit) \
+        -Dfile.encoding=UTF-8 \
+        -Djavac.compilerargs=-Xlint:-options \
+        -Dbuild.reproducible=true \
+        -Djavac.version=13 \
+        preppkg-linux
 }
 
 package() {

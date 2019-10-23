@@ -1,0 +1,120 @@
+diff -Naur apps/desktopgui/bundle-messages.sh apps/desktopgui/bundle-messages.sh
+--- apps/desktopgui/bundle-messages.sh	2019-10-21 15:51:13.000000000 -0400
++++ apps/desktopgui/bundle-messages.sh	2019-10-23 00:05:49.425382182 -0400
+@@ -105,7 +105,7 @@
+         # only generate for non-source language
+         echo "Generating ${CLASS}_$LG ResourceBundle..."
+ 
+-        msgfmt -V | grep -q '0\.19'
++        msgfmt -V | grep -q '0\.2[01]'
+         if [ $? -ne 0 ]
+         then
+             # slow way
+diff -Naur apps/i2psnark/java/bundle-messages.sh apps/i2psnark/java/bundle-messages.sh
+--- apps/i2psnark/java/bundle-messages.sh	2019-10-21 15:51:14.000000000 -0400
++++ apps/i2psnark/java/bundle-messages.sh	2019-10-23 00:05:49.428715395 -0400
+@@ -96,7 +96,7 @@
+         # only generate for non-source language
+         echo "Generating ${CLASS}_$LG ResourceBundle..."
+ 
+-        msgfmt -V | grep -q '0\.19'
++        msgfmt -V | grep -q '0\.2[01]'
+         if [ $? -ne 0 ]
+         then
+             # slow way
+diff -Naur apps/i2ptunnel/java/bundle-messages-proxy.sh apps/i2ptunnel/java/bundle-messages-proxy.sh
+--- apps/i2ptunnel/java/bundle-messages-proxy.sh	2019-10-21 15:51:14.000000000 -0400
++++ apps/i2ptunnel/java/bundle-messages-proxy.sh	2019-10-23 00:05:49.435381820 -0400
+@@ -98,7 +98,7 @@
+         # only generate for non-source language
+         echo "Generating ${CLASS}_$LG ResourceBundle..."
+ 
+-        msgfmt -V | grep -q '0\.19'
++        msgfmt -V | grep -q '0\.2[01]'
+         if [ $? -ne 0 ]
+         then
+             # slow way
+diff -Naur apps/i2ptunnel/java/bundle-messages.sh apps/i2ptunnel/java/bundle-messages.sh
+--- apps/i2ptunnel/java/bundle-messages.sh	2019-10-21 15:51:14.000000000 -0400
++++ apps/i2ptunnel/java/bundle-messages.sh	2019-10-23 00:05:49.435381820 -0400
+@@ -97,7 +97,7 @@
+         # only generate for non-source language
+         echo "Generating ${CLASS}_$LG ResourceBundle..."
+ 
+-        msgfmt -V | grep -q '0\.19'
++        msgfmt -V | grep -q '0\.2[01]'
+         if [ $? -ne 0 ]
+         then
+             # slow way
+diff -Naur apps/ministreaming/java/bundle-messages.sh apps/ministreaming/java/bundle-messages.sh
+--- apps/ministreaming/java/bundle-messages.sh	2019-10-21 15:51:16.000000000 -0400
++++ apps/ministreaming/java/bundle-messages.sh	2019-10-23 00:05:49.442048246 -0400
+@@ -96,7 +96,7 @@
+         # only generate for non-source language
+         echo "Generating ${CLASS}_$LG ResourceBundle..."
+ 
+-        msgfmt -V | grep -q '0\.19'
++        msgfmt -V | grep -q '0\.2[01]'
+         if [ $? -ne 0 ]
+         then
+             # slow way
+diff -Naur apps/routerconsole/java/bundle-messages-countries.sh apps/routerconsole/java/bundle-messages-countries.sh
+--- apps/routerconsole/java/bundle-messages-countries.sh	2019-10-21 15:51:16.000000000 -0400
++++ apps/routerconsole/java/bundle-messages-countries.sh	2019-10-23 00:05:49.442048246 -0400
+@@ -112,7 +112,7 @@
+         # only generate for non-source language
+         echo "Generating ${CLASS}_$LG ResourceBundle..."
+ 
+-        msgfmt -V | grep -q '0\.19'
++        msgfmt -V | grep -q '0\.2[01]'
+         if [ $? -ne 0 ]
+         then
+             # slow way
+diff -Naur apps/routerconsole/java/bundle-messages-news.sh apps/routerconsole/java/bundle-messages-news.sh
+--- apps/routerconsole/java/bundle-messages-news.sh	2019-10-21 15:51:16.000000000 -0400
++++ apps/routerconsole/java/bundle-messages-news.sh	2019-10-23 00:05:49.452047883 -0400
+@@ -98,7 +98,7 @@
+         # only generate for non-source language
+         echo "Generating ${CLASS}_$LG ResourceBundle..."
+ 
+-        msgfmt -V | grep -q '0\.19'
++        msgfmt -V | grep -q '0\.2[01]'
+         if [ $? -ne 0 ]
+         then
+             # slow way
+diff -Naur apps/routerconsole/java/bundle-messages.sh apps/routerconsole/java/bundle-messages.sh
+--- apps/routerconsole/java/bundle-messages.sh	2019-10-21 15:51:16.000000000 -0400
++++ apps/routerconsole/java/bundle-messages.sh	2019-10-23 00:05:49.452047883 -0400
+@@ -126,7 +126,7 @@
+         # only generate for non-source language
+         echo "Generating ${CLASS}_$LG ResourceBundle..."
+ 
+-        msgfmt -V | grep -q '0\.19'
++        msgfmt -V | grep -q '0\.2[01]'
+         if [ $? -ne 0 ]
+         then
+             # slow way
+diff -Naur apps/susidns/src/bundle-messages.sh apps/susidns/src/bundle-messages.sh
+--- apps/susidns/src/bundle-messages.sh	2019-10-21 15:51:19.000000000 -0400
++++ apps/susidns/src/bundle-messages.sh	2019-10-23 00:05:49.415382545 -0400
+@@ -104,7 +104,7 @@
+         # only generate for non-source language
+         echo "Generating ${CLASS}_$LG ResourceBundle..."
+ 
+-        msgfmt -V | grep -q '0\.19'
++        msgfmt -V | grep -q '0\.2[01]'
+         if [ $? -ne 0 ]
+         then
+             # slow way
+diff -Naur apps/susimail/bundle-messages.sh apps/susimail/bundle-messages.sh
+--- apps/susimail/bundle-messages.sh	2019-10-21 15:51:19.000000000 -0400
++++ apps/susimail/bundle-messages.sh	2019-10-23 00:05:49.418715757 -0400
+@@ -96,7 +96,7 @@
+         # only generate for non-source language
+         echo "Generating ${CLASS}_$LG ResourceBundle..."
+ 
+-        msgfmt -V | grep -q '0\.19'
++        msgfmt -V | grep -q '0\.2[01]'
+         if [ $? -ne 0 ]
+         then
+             # slow way
