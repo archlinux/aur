@@ -1,7 +1,7 @@
 pkgbase = awl
 	pkgdesc = Andrew's Web Libraries
 	pkgver = 0.60
-	pkgrel = 3
+	pkgrel = 4
 	url = https://gitlab.com/davical-project/awl/
 	install = awl.install
 	arch = any

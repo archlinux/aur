@@ -7,7 +7,7 @@
 pkgbase=awl
 pkgname=('awl' 'awl-docs')
 pkgver=0.60
-pkgrel=3
+pkgrel=4
 pkgdesc="Andrew's Web Libraries"
 arch=('any')
 url="https://gitlab.com/davical-project/awl/"
@@ -22,7 +22,6 @@ sha512sums=('2604d92e6541da76be57c5700d360ffd512047ace951b1597c622456a2898871dc1
 package_awl() {
     pkgdesc="Andrew's Web Libraries - PHP Utility Libraries"
     depends=('php')
-    makedepends=()
     optdepends=('awl-docs')
 
     cd "${srcdir}/${pkgbase}-r${pkgver}-"*
@@ -45,7 +44,6 @@ package_awl() {
 package_awl-docs() {
     pkgdesc="Andrew's Web Libraries - API documentation"
     depends=()
-    makedepends=('doxygen' 'graphviz')
 
     cd "${srcdir}/${pkgbase}-r${pkgver}-"*
 
