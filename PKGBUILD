@@ -1,58 +1,39 @@
-# Maintainer: Clint Valentine <valentine.clint@gmail.com>
-# Contributor: Filipe Laíns (FFY00) <lains@archlinux.org>
+# Maintainer: alienzj <alienchuj@gmail.com>
 
-_name=datrie
-pkgbase=python-datrie
-pkgname=(python-datrie python2-datrie)
-pkgver=0.7.1
-pkgrel=3
-pkgdesc="Super-fast, efficiently stored Trie for Python"
+pkgname=python-datrie
+pkgver=0.8
+pkgrel=1
+pkgdesc="Fast, efficiently stored Trie for Python. Uses libdatrie"
 arch=('x86_64')
 url="https://github.com/pytries/datrie"
 license=('LGPL')
-makedepends=('python-setuptools' 'python2-setuptools' 'cython')
-checkdepends=('python-pytest-runner' 'python2-pytest-runner' 'python-hypothesis' 'python2-hypothesis')
+depends=('libdatrie')
+makedepends=('python-setuptools' 'cython')
+checkdepends=('python-pytest-runner' 'python-hypothesis')
 options=(!emptydirs)
-source=("${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha512sums=('9dd76a0240f0b890a7802463072ee14fb93baf94e009afe9476997200c17be9c94d08339ac85051f9c9a0b47c800d9804665484b6ecfb81305a183c38fd0d300')
+source=("https://github.com/pytries/datrie/archive/0.8.tar.gz")
+sha512sums=('8f05958fbac53a1932f80d00b3f0cf72bf4e1784b8cddc715664410893f82d5b21393c71a409d4e5db67a43c4a876ff17f16caaa44fb88ba2d8d55c3287ccca2')
 
 prepare() {
-  rm -rf "${_name}-${pkgver}-py2" # Tests fail if we keep the cache
-  cp -a "${_name}-${pkgver}"{,-py2}
+  cd $srcdir/datrie-0.8
+  sed -i 's|../libdatrie/||g' src/cdatrie.pxd
+  sed -i 's|../libdatrie/||g' src/cdatrie.c
+  sed -i 's|../libdatrie/||g' src/datrie.c
 }
 
 build() {
-  msg2 "Building python-${_name} ${pkgver}"
-  cd "${srcdir}/${_name}-${pkgver}"
+  cd $srcdir/datrie-0.8
   ./update_c.sh
   python setup.py build
-
-  msg2 "Building python2-${_name} ${pkgver}"
-  cd "${srcdir}/${_name}-${pkgver}-py2"
-  ./update_c.sh
-  python2 setup.py build
 }
 
-check() {
-  msg2 "Running tests on python-${_name} ${pkgver}"
-  cd "${srcdir}/${_name}-${pkgver}"
-  python setup.py pytest
+#check() {
+#  msg2 "Running tests on python-datrie 0.8"
+#  cd $srcdir/datrie-0.8
+#  python setup.py pytest
+#}
 
-  msg2 "Running tests on python2-${_name} ${pkgver}"
-  cd "${srcdir}/${_name}-${pkgver}-py2"
-  python2 setup.py pytest
-}
-
-package_python-datrie() {
-  depends=('python')
-
-  cd "${_name}-${pkgver}"
+package() {
+  cd $srcdir/datrie-0.8
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-}
-
-package_python2-datrie() {
-  depends=('python2')
-
-  cd "${_name}-${pkgver}-py2"
-  python2 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
