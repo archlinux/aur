@@ -8,7 +8,7 @@ pkgname=(yaru-sound-theme-git
          yaru-gnome-shell-theme-git
          yaru-icon-theme-git
          yaru-session-git)
-pkgver=19.10.4.r23.gab1bd973
+pkgver=19.10.4.r25.g00aaee95
 pkgrel=1
 pkgdesc="Yaru default ubuntu theme"
 arch=(any)
@@ -16,17 +16,12 @@ url="https://github.com/ubuntu/yaru"
 license=('GPL3')
 makedepends=(meson sassc git)
 options=('!strip' '!buildflags' 'staticlibs')
-source=("git+https://github.com/ubuntu/yaru" "install-shell.sh")
-sha256sums=('SKIP' '8b6aa29d87c5685fa5f968fae5c614bb45383016839968828ccaa02ceea3fdb1')
+source=("git+https://github.com/ubuntu/yaru")
+sha256sums=('SKIP')
 
 pkgver() {
     cd yaru
     git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-    # Workaround issue https://github.com/ubuntu/yaru/issues/1583 for now:
-    cp install-shell.sh "${srcdir}/yaru/gnome-shell/src/"
 }
 
 build() {
