@@ -4,7 +4,7 @@
 # Submitter: fluffylime <fluffylime@gmail.com>
 
 pkgname=redsocks2-git
-pkgver=release.0.67.r10.gbf24acf
+pkgver=0.67.r10.gbf24acf
 pkgrel=1
 pkgdesc='redsocks2 adapted to compile with openssl 1.0'
 arch=('i686' 'x86_64')
@@ -30,7 +30,7 @@ pkgver() {
   cd "$pkgname"
 
   # git describe | sed -E 's/([^-]*-g)/r\1/;s/-/./g;s/release.//g'
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/release.//g'
 }
 
 build() {
