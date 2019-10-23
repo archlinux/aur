@@ -1,0 +1,14 @@
+pkgbase = uperm
+	pkgdesc = Unified permissions
+	pkgver = 1.0.0
+	pkgrel = 0
+	url = https://github.com/dmitri-mcguckin/$pkgname
+	arch = any
+	license = MIT
+	makedepends = git
+	optdepends = sudo: for installing as root
+	source = git://github.com/dmitri-mcguckin/uperm.git
+	md5sums = SKIP
+
+pkgname = uperm
+
