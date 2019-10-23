@@ -9,8 +9,8 @@ arch=('any')
 url="https://github.com/blmhemu/openaero"
 license=('GPL2')
 makedepends=('python-setuptools')
-source=("https://github.com/blmhemu/openaero/releases/download/v$pkgver/openaero-$pkgver.tar.gz")
-sha256sums=('ec5b91874b9646c572496363a8d822aac81bed906ec626d8ac51050604a75108')
+source=("https://github.com/blmhemu/openaero/archive/v$pkgver.tar.gz")
+sha256sums=('97a9c0b81202dda8154b7ba0b998975548ed68492ad2ea287c12122643fc368c')
 
 package_openaero-driver-dkms() {
   pkgdesc="Kernel driver for Aero devices (DKMS-variant)"
@@ -19,7 +19,7 @@ package_openaero-driver-dkms() {
 
   cd "$pkgbase-$pkgver"
   make DESTDIR="$pkgdir" setup_dkms udev_install
-}
+}11
 
 package_openaero-meta() {
   pkgdesc="Meta package for installing all required openaero packages."
