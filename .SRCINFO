@@ -1,0 +1,13 @@
+pkgbase = spongebob
+	pkgdesc = Converts input to case from SpongeBob meme
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://git.auteiy.me/dmitry/spongebob
+	arch = any
+	license = MIT
+	depends = python
+	source = https://git.auteiy.me/dmitry/spongebob/raw/master/spongebob
+	md5sums = fa7172f4a9f1284b0631c8d79302a3ab
+
+pkgname = spongebob
+
