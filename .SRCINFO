@@ -1,6 +1,6 @@
 pkgbase = pacman-contrib-git
 	pkgdesc = Contributed scripts and tools for pacman systems
-	pkgver = 1.2.0.r1.g21449e3
+	pkgver = 1.2.0.r9.g3da550e
 	pkgrel = 1
 	url = https://git.archlinux.org/pacman-contrib.git/about/
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = pacman-contrib-git
 	depends = fakeroot
 	depends = pacman
 	depends = perl
-	optdepends = mlocate: pacdiff
 	optdepends = findutils: pacdiff
+	optdepends = mlocate: pacdiff
 	provides = pacman-contrib
 	conflicts = pacman-contrib
 	source = git+https://git.archlinux.org/pacman-contrib.git
