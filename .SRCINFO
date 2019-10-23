@@ -1,0 +1,28 @@
+pkgbase = python-einsteinpy-git
+	pkgdesc = Python package for General Relativity
+	pkgver = 0.1.0.r390.g73830ca
+	pkgrel = 1
+	url = https://einsteinpy.org/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-matplotlib
+	checkdepends = python-sympy
+	checkdepends = python-plotly
+	checkdepends = python-astropy
+	makedepends = git
+	makedepends = python-setuptools
+	source = git+https://github.com/einsteinpy/einsteinpy
+	md5sums = SKIP
+
+pkgname = python-einsteinpy-git
+	depends = python>=3.5
+	depends = python-astropy
+	depends = python-matplotlib
+	depends = python-plotly
+	depends = python-sympy
+	optdepends = python-numba: For accelerating the code
+	provides = python-einsteinpy
+	conflicts = python-einsteinpy
+
