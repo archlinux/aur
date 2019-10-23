@@ -22,7 +22,8 @@ optdepends=('pulseaudio: audio support'
             'networkmanager: location detection via available WiFi networks'
             'speech-dispatcher: text-to-speech'
             'startup-notification: support for FreeDesktop Startup Notification'
-            'jq: updater script support')
+            'jq: updater script support'
+            'zenity: updater script support')
 conflicts=('firefox-nightly')
 install=${pkgname}.install
 source=('firefox-nightly.desktop'

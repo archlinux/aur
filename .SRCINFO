@@ -23,6 +23,7 @@ pkgbase = firefox-nightly-ru
 	optdepends = speech-dispatcher: text-to-speech
 	optdepends = startup-notification: support for FreeDesktop Startup Notification
 	optdepends = jq: updater script support
+	optdepends = zenity: updater script support
 	conflicts = firefox-nightly
 	source = firefox-nightly.desktop
 	source = firefox-nightly-ru.install
