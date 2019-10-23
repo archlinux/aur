@@ -1,3 +1,4 @@
+# Maintainer: Hugues Chabot <at google mail>
 _npmname=serverless
 _npmver=1.55.0
 pkgname=nodejs-serverless # All lowercase
@@ -18,7 +19,7 @@ package() {
   local _npmdir="$pkgdir/usr/lib/node_modules/"
   mkdir -p $_npmdir
   cd $_npmdir
-  npm install -g --prefix "$pkgdir/usr" $_npmname@$_npmver
+  npm install -g --prefix "$pkgdir/usr" --ignore-scripts $_npmname@$_npmver
 }
 
 # vim:set ts=2 sw=2 et:
