@@ -7,7 +7,7 @@ declare -A dep_versions
 readonly -a deps=(babl)
 
 echo "##update sources"
-makepkg -Co
+makepkg -Cod
 echo "##finish updating sources"
 
 ## probe configure.ac for dependencies versions
@@ -25,7 +25,7 @@ for key in ${!dep_versions[*]};do sed -i "s/@${key}@/${dep_versions[${key}]}/" P
 echo "##finish generating PKGBUILD"
 
 echo "##update pkgver"
-makepkg -eo
+makepkg -eod
 echo "##finish updating pkgver"
 
 echo "##generate .SRCINFO" >&2
