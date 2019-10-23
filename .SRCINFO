@@ -1,6 +1,6 @@
 pkgbase = folly
 	pkgdesc = An open-source C++ library developed and used at Facebook
-	pkgver = 2019.09.30.00
+	pkgver = 2019.10.21.00
 	pkgrel = 1
 	url = https://github.com/facebook/folly
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = folly
 	depends = google-glog
 	depends = libevent
 	depends = boost>=1.51.0
-	source = https://github.com/facebook/folly/archive/v2019.09.30.00.tar.gz
+	source = https://github.com/facebook/folly/archive/v2019.10.21.00.tar.gz
 	source = gtest-1.7.0.zip::https://github.com/google/googletest/archive/release-1.7.0.zip
-	md5sums = 3e666c5345cd431a1748bbf3733cb83e
+	md5sums = 90565957ed02996446ffa00050572a86
 	md5sums = ef5e700c8a0f3ee123e2e0209b8b4961
 
 pkgname = folly
