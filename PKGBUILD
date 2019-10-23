@@ -42,7 +42,7 @@ build() {
 	fi
 
 	cd "$srcdir/xneur-devel/xneur"
-        ./autogen.sh
+        ./autogen.sh --without-xosd --with-gtk=gtk2 --sysconfdir=/etc --prefix=/usr
 	./configure --without-xosd --with-gtk=gtk2 --sysconfdir=/etc --prefix=/usr
 	cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
 	cmake --build build
