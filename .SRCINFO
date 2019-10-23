@@ -1,6 +1,6 @@
 pkgbase = openaero-git
 	pkgdesc = Entirely open source drivers and utilities for your Gigabyte Aero Laptops on GNU/Linux.
-	pkgver = 0.2.0
+	pkgver = 0.2.0.beta.r0.g7e76dab
 	pkgrel = 1
 	url = https://github.com/blmhemu/openaero
 	arch = any
