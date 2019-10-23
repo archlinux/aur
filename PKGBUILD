@@ -1,4 +1,4 @@
-# Maintainer: Michael Spradling <mike@mspradling.com>
+# Maintainer: Matthias Fulz <mfulz@olznet.net>
 # Contributor: Michael Spradling <mike@mspradling.com>
 
 pkgbase='bareos'
@@ -21,62 +21,96 @@ pkgname=("${pkgbase}-common"
          "${pkgbase}-filedaemon-python-plugin"
          "${pkgbase}-storage-python-plugin")
 
-pkgver=17.2.7
+pkgmajor=18
+pkgver=18.2.6
 pkgrel=1
 arch=(i686 x86_64 armv7h aarch64)
 groups=('bareos')
 pkgdesc="Bareos - Backup Archiving REcovery Open Sourced"
 url="http://www.bareos.org"
 license=('AGPL3')
-makedepends=('libmariadbclient' 'postgresql-libs' 'sqlite3' 'python2')
+makedepends=('libmariadbclient' 'postgresql-libs' 'sqlite3' 'python2' 'cmake' 'rpcsvc-proto')
 source=("git+https://github.com/bareos/bareos.git#tag=Release/$pkgver")
 md5sums=('SKIP')
 
 prepare() {
   cd $pkgbase
-  sed -i "s/python-config/python2-config/g" configure
+  patch --forward --strip=1 --input="../../plattforms-archlinux.patch"
+  patch --forward --strip=1 --input="../../gfapi_device-detect-glfs_ftruncate-API-change.patch"
 }
 
 build() {
   cd $pkgbase
 
-  # Disable cephfs, broken
-  sed -i 's/have_cephfs=\"yes\"/have_cephfs=\"no\"/' ./configure
+  #cmake .\
+    #-DCMAKE_INSTALL_PREFIX=/usr \
+    #-DCMAKE_INSTALL_SBINDIR=/usr/bin \
+    #-DCMAKE_INSTALL_SYSCONFDIR=/etc \
+    #-DCMAKE_INSTALL_LOCALSTATEDIR=/ \
+    #-DCMAKE_INSTALL_LIBDIR=/usr/lib/$pkgbase \
+    #-Dconio=no \
+    #-Ddynamic-cats-backends=yes \
+    #-Ddynamic-storage-backends=yes \
+    #-Drpath=no \
+    #-Dpostgresql=yes \
+    #-Dmysql=yes \
+    #-Dpython=yes \
+    #-Dopenssl=yes \
+    #-Dsqlite3=yes \
+    #-Dlogdir=/var/log/$pkgbase \
+    #-Ddir-user=$pkgbase \
+    #-Ddir-group=$pkgbase \
+    #-Dsd-user=$pkgbase \
+    #-Dsd-group=$pkgbase \
+    #-Dfd-user=root \
+    #-Dfd-group=root \
+    #-Dpid-dir=/run/bareos \
+    #-Dconfigtemplatedir=/usr/share/$pkgbase/config \
+    #-Dworking-dir=/var/lib/$pkgbase \
+    #-Dplugindir=/usr/lib/$pkgbase/plugins \ 
+    #-Dscriptdir=/usr/lib/$pkgbase/scripts \ 
+    #-Dbackenddir=/usr/lib/$pkgbase/backends \ 
+    #-Darchivedir=/var/lib/$pkgbase/storage \
+    #-Dbsrdir=/var/lib/$pkgbase \
+    #-Dsystemd=yes \
 
-  ./configure \
-    --prefix=/usr \
-    --sbindir=/usr/bin \
-    --sysconfdir=/etc \
-    --localstatedir=/ \
-    --libdir=/usr/lib/$pkgbase \
-    --disable-conio \
-    --enable-dynamic-cats-backends \
-    --enable-dynamic-storage-backends \
-    --with-python \
-    --with-openssl \
-    --with-mysql \
-    --disable-rpath \
-    --with-postgresql \
-    --with-sqlite3 \
-    --with-logdir=/var/log/$pkgbase \
-    --with-dir-user=$pkgbase \
-    --with-dir-group=$pkgbase \
-    --with-sd-user=$pkgbase \
-    --with-sd-group=$pkgbase \
-    --with-fd-user=root \
-    --with-pid-dir=/run/bareos \
-    --with-fd-group=root \
-    --with-configtemplatedir=/usr/share/$pkgbase/config \
-    --with-working-dir=/var/lib/$pkgbase \
-    --with-plugindir=/usr/lib/$pkgbase/plugins \
-    --with-scriptdir=/usr/lib/$pkgbase/scripts \
-    --with-backenddir=/usr/lib/$pkgbase/backends \
-    --with-archivedir=/var/lib/$pkgbase/storage \
-    --with-bsrdir=/var/lib/$pkgbase \
-    --with-subsys-dir=/run/$pkgbase \
-    --with-systemd && make
+  cmake -DCMAKE_INSTALL_PREFIX=/usr  -DCMAKE_INSTALL_SBINDIR=/usr/bin  -DCMAKE_INSTALL_SYSCONFDIR=/etc  -DCMAKE_INSTALL_LOCALSTATEDIR=/  -DCMAKE_INSTALL_LIBDIR=/usr/lib/$pkgbase -Dlibdir=/usr/lib/$pkgbase -Dconio=no  -Ddynamic-cats-backends=yes  -Ddynamic-storage-backends=yes  -Drpath=no  -Dpostgresql=yes  -Dmysql=yes  -Dpython=yes  -Dopenssl=yes  -Dsqlite3=yes  -Dlogdir=/var/log/$pkgbase  -Ddir-user=$pkgbase  -Ddir-group=$pkgbase  -Dsd-user=$pkgbase  -Dsd-group=$pkgbase  -Dfd-user=root  -Dfd-group=root  -Dpiddir=/run/bareos -Dsubsysdir=/run/bareos -Dconfdir=/etc/$pkgbase -Dconfigtemplatedir=/usr/share/$pkgbase/config  -Dworkingdir=/var/lib/$pkgbase  -Dplugindir=/usr/lib/$pkgbase/plugins  -Dscriptdir=/usr/lib/$pkgbase/scripts  -Dbackenddir=/usr/lib/$pkgbase/backends  -Darchivedir=/var/lib/$pkgbase/storage  -Dbsrdir=/var/lib/$pkgbase  -Dsystemd=yes .
 
-    make DESTDIR="$srcdir/install" install install-autostart
+  make DESTDIR="$srcdir/install" install
+  #./configure \
+    #--prefix=/usr \
+    #--sbindir=/usr/bin \
+    #--sysconfdir=/etc \
+    #--localstatedir=/ \
+    #--libdir=/usr/lib/$pkgbase \
+    #--disable-conio \
+    #--enable-dynamic-cats-backends \
+    #--enable-dynamic-storage-backends \
+    #--with-python \
+    #--with-openssl \
+    #--with-mysql \
+    #--disable-rpath \
+    #--with-postgresql \
+    #--with-sqlite3 \
+    #--with-logdir=/var/log/$pkgbase \
+    #--with-dir-user=$pkgbase \
+    #--with-dir-group=$pkgbase \
+    #--with-sd-user=$pkgbase \
+    #--with-sd-group=$pkgbase \
+    #--with-fd-user=root \
+    #--with-pid-dir=/run/bareos \
+    #--with-fd-group=root \
+    #--with-configtemplatedir=/usr/share/$pkgbase/config \
+    #--with-working-dir=/var/lib/$pkgbase \
+    #--with-plugindir=/usr/lib/$pkgbase/plugins \
+    #--with-scriptdir=/usr/lib/$pkgbase/scripts \
+    #--with-backenddir=/usr/lib/$pkgbase/backends \
+    #--with-archivedir=/var/lib/$pkgbase/storage \
+    #--with-bsrdir=/var/lib/$pkgbase \
+    #--with-subsys-dir=/run/$pkgbase \
+    #--with-systemd && make
+
+    #make DESTDIR="$srcdir/install" install install-autostart
 }
 
 
@@ -92,19 +126,25 @@ package_bareos-common() {
   install=bareos-common.install
 
   for f in \
-    usr/lib/bareos/libbareos-$pkgver.so \
+    usr/lib/bareos/libbareos.so.$pkgver \
+    usr/lib/bareos/libbareos.so.$pkgmajor \
     usr/lib/bareos/libbareos.so \
-    usr/lib/bareos/libbareoscfg-$pkgver.so \
-    usr/lib/bareos/libbareoscfg.so \
-    usr/lib/bareos/libbareosfind-$pkgver.so \
+    usr/lib/bareos/libbareosfind.so.$pkgver \
+    usr/lib/bareos/libbareosfind.so.$pkgmajor \
     usr/lib/bareos/libbareosfind.so \
+    usr/lib/bareos/libbareoslmdb.so.$pkgver \
+    usr/lib/bareos/libbareoslmdb.so.$pkgmajor \
+    usr/lib/bareos/libbareoslmdb.so \
+    usr/lib/bareos/libbareosndmp.so.$pkgver \
+    usr/lib/bareos/libbareosndmp.so.$pkgmajor \
+    usr/lib/bareos/libbareosndmp.so \
     usr/lib/bareos/scripts/bareos-config \
     usr/lib/bareos/scripts/bareos-config-lib.sh \
     usr/lib/bareos/scripts/btraceback.gdb \
     usr/bin/bsmtp \
     usr/bin/btraceback \
-    usr/share/man/man1/bsmtp.1.gz \
-    usr/share/man/man8/btraceback.8.gz \
+    usr/share/man/man1/bsmtp.1 \
+    usr/share/man/man8/btraceback.8 \
   ; do
     _cp $srcdir/install/$f $pkgdir/$f
   done
@@ -123,7 +163,7 @@ package_bareos-bconsole() {
   for f in \
     /usr/share/bareos/config/bconsole.conf \
     usr/bin/bconsole \
-    usr/share/man/man1/bconsole.1.gz \
+    usr/share/man/man1/bconsole.1 \
   ; do
     _cp $srcdir/install/$f $pkgdir/$f
   done
@@ -134,9 +174,11 @@ package_bareos-database-common() {
   depends=("bareos-common=$pkgver" 'libcap' 'lzo' 'zlib' 'openssl' 'bash' 'jansson')
 
   for f in \
-    usr/lib/bareos/libbareoscats-$pkgver.so \
+    usr/lib/bareos/libbareoscats.so.$pkgver \
+    usr/lib/bareos/libbareoscats.so.$pkgmajor \
     usr/lib/bareos/libbareoscats.so \
-    usr/lib/bareos/libbareossql-$pkgver.so \
+    usr/lib/bareos/libbareossql.so.$pkgver \
+    usr/lib/bareos/libbareossql.so.$pkgmajor \
     usr/lib/bareos/libbareossql.so \
     usr/lib/bareos/scripts/create_bareos_database \
     usr/lib/bareos/scripts/drop_bareos_database \
@@ -157,10 +199,10 @@ package_bareos-database-mysql() {
   install=bareos-database-mysql.install
 
   for f in \
-    usr/lib/bareos/backends/libbareoscats-mysql-$pkgver.so \
     usr/lib/bareos/backends/libbareoscats-mysql.so \
     usr/lib/bareos/scripts/ddl/drops/mysql.sql \
     usr/lib/bareos/scripts/ddl/grants/mysql.sql \
+    usr/lib/bareos/scripts/ddl/grants/mysql-readonly.sql \
     usr/lib/bareos/scripts/ddl/creates/mysql.sql \
     usr/lib/bareos/scripts/ddl/updates/mysql.10_11.sql \
     usr/lib/bareos/scripts/ddl/updates/mysql.11_12.sql \
@@ -182,7 +224,6 @@ package_bareos-database-postgresql() {
   install='bareos-database-postgresql.install'
 
   for f in \
-    usr/lib/bareos/backends/libbareoscats-postgresql-$pkgver.so \
     usr/lib/bareos/backends/libbareoscats-postgresql.so \
     usr/lib/bareos/scripts/ddl/drops/postgresql.sql \
     usr/lib/bareos/scripts/ddl/grants/postgresql-change_owner.dbconfig-template.sql \
@@ -209,7 +250,6 @@ package_bareos-database-sqlite3() {
   depends=("bareos-database-common=$pkgver" "sqlite3")
 
   for f in \
-    usr/lib/bareos/backends/libbareoscats-sqlite3-$pkgver.so \
     usr/lib/bareos/backends/libbareoscats-sqlite3.so \
     usr/lib/bareos/scripts/ddl/creates/sqlite3.sql \
     usr/lib/bareos/scripts/ddl/updates/sqlite3.10_11.sql \
@@ -232,8 +272,8 @@ package_bareos-database-tools() {
   for f in \
     usr/bin/bareos-dbcheck \
     usr/bin/bscan \
-    usr/share/man/man8/bareos-dbcheck.8.gz \
-    usr/share/man/man8/bscan.8.gz \
+    usr/share/man/man8/bareos-dbcheck.8 \
+    usr/share/man/man8/bscan.8 \
   ; do
     _cp $srcdir/install/$f $pkgdir/$f
   done
@@ -279,8 +319,8 @@ package_bareos-director() {
     usr/share/bareos/config/bareos-dir.d/schedule/WeeklyCycle.conf \
     usr/share/bareos/config/bareos-dir.d/storage/File.conf \
     usr/bin/bareos-dir \
-    usr/share/man/man8/bareos-dir.8.gz \
-    usr/share/man/man8/bareos.8.gz \
+    usr/share/man/man8/bareos-dir.8 \
+    usr/share/man/man8/bareos.8 \
   ; do
     # pacman LINT tool currently does not like spaces
     space_removal=`echo $f | tr ' ' '_'`
@@ -288,15 +328,14 @@ package_bareos-director() {
   done
 
   # Currently upstream systemd file does not automatically create run directory
-  sed -i '/\[Service\]/a RuntimeDirectory=bareos' $srcdir/bareos/platforms/systemd/bareos-dir.service
-  _cp $srcdir/bareos/platforms/systemd/bareos-dir.service $pkgdir/usr/lib/systemd/system/bareos-dir.service
+  sed -i '/\[Service\]/a RuntimeDirectory=bareos' $srcdir/bareos/core/platforms/systemd/bareos-dir.service
+  _cp $srcdir/bareos/core/platforms/systemd/bareos-dir.service $pkgdir/usr/lib/systemd/system/bareos-dir.service
 }
 
 package_bareos-storage-fifo() {
   pkgdesc="${pkgdesc} - FIFO support for storage daemon"
   depends=("bareos-storage=$pkgver" 'zlib' 'libcap' 'openssl' 'jansson' 'lzo')
   for f in \
-    usr/lib/bareos/backends/libbareossd-fifo-$pkgver.so \
     usr/lib/bareos/backends/libbareossd-fifo.so \
     usr/share/bareos/config/bareos-dir.d/storage/NULL.conf.example \
     usr/share/bareos/config/bareos-sd.d/device/NULL.conf.example \
@@ -316,12 +355,12 @@ package_bareos-tools() {
     usr/bin/bextract \
     usr/bin/bls \
     usr/bin/bpluginfo \
-    usr/share/man/man1/bwild.1.gz \
-    usr/share/man/man1/bregex.1.gz \
-    usr/share/man/man8/bcopy.8.gz \
-    usr/share/man/man8/bextract.8.gz \
-    usr/share/man/man8/bls.8.gz \
-    usr/share/man/man8/bpluginfo.8.gz \
+    usr/share/man/man1/bwild.1 \
+    usr/share/man/man1/bregex.1 \
+    usr/share/man/man8/bcopy.8 \
+    usr/share/man/man8/bextract.8 \
+    usr/share/man/man8/bls.8 \
+    usr/share/man/man8/bpluginfo.8 \
   ; do
     _cp $srcdir/install/$f $pkgdir/$f
   done
@@ -340,14 +379,14 @@ package_bareos-filedaemon() {
     usr/share/bareos/config/bareos-fd.d/messages/Standard.conf \
     usr/bin/bareos-fd \
     usr/lib/bareos/plugins/bpipe-fd.so \
-    usr/share/man/man8/bareos-fd.8.gz \
+    usr/share/man/man8/bareos-fd.8 \
   ; do
     _cp $srcdir/install/$f $pkgdir/$f
   done
 
   # Currently upstream systemd file does not automatically create run directory
-  sed -i '/\[Service\]/a RuntimeDirectory=bareos' $srcdir/bareos/platforms/systemd/bareos-fd.service
-  _cp $srcdir/bareos/platforms/systemd/bareos-fd.service $pkgdir/usr/lib/systemd/system/bareos-fd.service
+  sed -i '/\[Service\]/a RuntimeDirectory=bareos' $srcdir/bareos/core/platforms/systemd/bareos-fd.service
+  _cp $srcdir/bareos/core/platforms/systemd/bareos-fd.service $pkgdir/usr/lib/systemd/system/bareos-fd.service
 }
 
 package_bareos-storage() {
@@ -364,8 +403,7 @@ package_bareos-storage() {
     usr/share/bareos/config/bareos-sd.d/messages/Standard.conf \
     usr/share/bareos/config/bareos-sd.d/storage/bareos-sd.conf \
     usr/bin/bareos-sd \
-    usr/share/man/man8/bareos-sd.8.gz \
-    usr/lib/bareos/libbareossd-$pkgver.so \
+    usr/share/man/man8/bareos-sd.8 \
     usr/lib/bareos/libbareossd.so \
   ; do
     _cp $srcdir/install/$f $pkgdir/$f
@@ -373,8 +411,8 @@ package_bareos-storage() {
 
   install -d $pkgdir/var/lib/bareos/storage
   # Currently upstream systemd file does not automatically create run directory
-  sed -i '/\[Service\]/a RuntimeDirectory=bareos' $srcdir/bareos/platforms/systemd/bareos-sd.service
-  _cp $srcdir/bareos/platforms/systemd/bareos-sd.service $pkgdir/usr/lib/systemd/system/bareos-sd.service
+  sed -i '/\[Service\]/a RuntimeDirectory=bareos' $srcdir/bareos/core/platforms/systemd/bareos-sd.service
+  _cp $srcdir/bareos/core/platforms/systemd/bareos-sd.service $pkgdir/usr/lib/systemd/system/bareos-sd.service
 }
 
 package_bareos-storage-tape() {
@@ -387,13 +425,11 @@ package_bareos-storage-tape() {
     usr/share/bareos/config/bareos-dir.d/storage/Tape.conf.example \
     usr/share/bareos/config/bareos-sd.d/autochanger/autochanger-0.conf.example \
     usr/share/bareos/config/bareos-sd.d/device/tapedrive-0.conf.example \
-    usr/lib/bareos/backends/libbareossd-gentape-$pkgver.so \
     usr/lib/bareos/backends/libbareossd-gentape.so \
-    usr/lib/bareos/backends/libbareossd-tape-$pkgver.so \
     usr/lib/bareos/backends/libbareossd-tape.so \
     usr/lib/bareos/scripts/mtx-changer \
-    usr/share/man/man8/bscrypto.8.gz \
-    usr/share/man/man8/btape.8.gz \
+    usr/share/man/man8/bscrypto.8 \
+    usr/share/man/man8/btape.8 \
     usr/bin/bscrypto \
     usr/bin/btape \
   ; do

@@ -1,0 +1,11 @@
+--- bareos/core/platforms/CMakeLists.txt	2019-10-23 00:04:57.740580637 +0200
++++ bareosb/core/platforms/CMakeLists.txt	2019-10-23 00:54:08.225875749 +0200
+@@ -27,6 +27,8 @@
+       add_subdirectory(debian)
+    elseif (${DISTNAME} STREQUAL hpux)
+       MESSAGE( STATUS "DISTNAME: " ${DISTNAME} )
++   elseif (${DISTNAME} STREQUAL archlinux)
++      MESSAGE( STATUS "DISTNAME: " ${DISTNAME} )
+    else()
+       add_subdirectory(${DISTNAME})
+    endif()

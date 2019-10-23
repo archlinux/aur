@@ -1,0 +1,77 @@
+From 2ce2c58782840efbc33db029add4aba4611096f5 Mon Sep 17 00:00:00 2001
+From: Philipp Storz <philipp.storz@bareos.com>
+Date: Wed, 10 Jul 2019 21:21:49 +0200
+Subject: [PATCH] gfapi_device: detect glfs_ftruncate API change (Fedora 30)
+
+... and redefine glfs_ftruncate() to fix the problem
+---
+ core/cmake/BareosCheckSymbols.cmake     | 16 ++++++++++++++++
+ core/src/include/config.h.in            |  3 +++
+ core/src/stored/backends/gfapi_device.h |  6 +++++-
+ 3 files changed, 24 insertions(+), 1 deletion(-)
+
+diff --git a/core/cmake/BareosCheckSymbols.cmake b/core/cmake/BareosCheckSymbols.cmake
+index 7ddb95d..53023a1 100644
+--- a/core/cmake/BareosCheckSymbols.cmake
++++ b/core/cmake/BareosCheckSymbols.cmake
+@@ -47,3 +47,19 @@ CHECK_SYMBOL_EXISTS(rados_ioctx_set_namespace rados/librados.h  HAVE_RADOS_NAMES
+ CHECK_SYMBOL_EXISTS(rados_nobjects_list_open rados/librados.h HAVE_RADOS_NOBJECTS_LIST)
+ cmake_pop_check_state()
+ 
++
++IF(HAVE_GLUSTERFS_API_GLFS_H)
++cmake_push_check_state()
++set (CMAKE_REQUIRED_LIBRARIES ${GFAPI_LIBRARIES})
++check_cxx_source_compiles("
++#include <glusterfs/api/glfs.h>
++int main(void)
++{
++       /* new glfs_ftruncate() passes two additional args */
++       return glfs_ftruncate(NULL, 0, NULL, NULL);
++}
++"
++GLFS_FTRUNCATE_HAS_FOUR_ARGS)
++
++endif()
++cmake_pop_check_state()
+diff --git a/core/src/include/config.h.in b/core/src/include/config.h.in
+index 5a14cbc..d5a8810 100644
+--- a/core/src/include/config.h.in
++++ b/core/src/include/config.h.in
+@@ -391,6 +391,9 @@
+ /* Define to 1 if you have gfapi lib */
+ #cmakedefine HAVE_GFAPI @HAVE_GFAPI@
+ 
++/* Define to 1 if the `glfs_ftruncate' function has four arguments. */
++#cmakedefine GLFS_FTRUNCATE_HAS_FOUR_ARGS @GLFS_FTRUNCATE_HAS_FOUR_ARGS@
++
+ /* Define to 1 if you have the `glfs_readdirplus' function. */
+ #cmakedefine HAVE_GLFS_READDIRPLUS @HAVE_GLFS_READDIRPLUS@
+ 
+diff --git a/core/src/stored/backends/gfapi_device.h b/core/src/stored/backends/gfapi_device.h
+index 841895d..adfe08e 100644
+--- a/core/src/stored/backends/gfapi_device.h
++++ b/core/src/stored/backends/gfapi_device.h
+@@ -2,7 +2,7 @@
+    BAREOS® - Backup Archiving REcovery Open Sourced
+ 
+    Copyright (C) 2014-2014 Planets Communications B.V.
+-   Copyright (C) 2014-2014 Bareos GmbH & Co. KG
++   Copyright (C) 2014-2019 Bareos GmbH & Co. KG
+ 
+    This program is Free Software; you can redistribute it and/or
+    modify it under the terms of version three of the GNU Affero General Public
+@@ -30,6 +30,10 @@
+ 
+ #include <api/glfs.h>
+ 
++#if defined GLFS_FTRUNCATE_HAS_FOUR_ARGS
++#define glfs_ftruncate(fd, offset) glfs_ftruncate(fd, offset, NULL, NULL)
++#endif
++
+ namespace storagedaemon {
+ 
+ class gfapi_device: public Device {
+-- 
+2.9.3
+
