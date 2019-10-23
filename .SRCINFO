@@ -5,7 +5,6 @@ pkgbase = yay-bin
 	url = https://github.com/Jguer/yay
 	arch = x86_64
 	license = GPL
-	depends = pacman>=5.2.0
 	depends = sudo
 	depends = git
 	provides = yay
@@ -14,4 +13,3 @@ pkgbase = yay-bin
 	sha1sums_x86_64 = f44e0118ed89bccf9f7cad58c1430eaab764eb09
 
 pkgname = yay-bin
-

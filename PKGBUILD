@@ -8,7 +8,6 @@ arch=('x86_64')
 url="https://github.com/Jguer/yay"
 license=('GPL')
 depends=(
-  'pacman>=5.2.0'
   'sudo'
   'git'
 )
