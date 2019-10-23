@@ -1,6 +1,6 @@
 pkgbase = fizz
 	pkgdesc = C++14 implementation of the TLS-1.3 standard
-	pkgver = 2019.09.30.00
+	pkgver = 2019.10.21.00
 	pkgrel = 1
 	url = https://github.com/facebookincubator/fizz
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = fizz
 	depends = folly
 	depends = openssl
 	depends = libsodium
-	source = https://github.com/facebookincubator/fizz/archive/v2019.09.30.00.tar.gz
-	sha256sums = 31602b846dbc8140536fdd0c220257f46b890b895ea7c7bd53a600eaf0f417e1
+	source = https://github.com/facebookincubator/fizz/archive/v2019.10.21.00.tar.gz
+	sha256sums = 74c6a9671e4d4a79cd19c10e33bac1912a6d072ce288e111943a0f927ef238e9
 
 pkgname = fizz
 
