@@ -1,5 +1,5 @@
 # Maintainer: Stefano Marsili <efanomars@gmx.ch>
-
+# TEST
 pkgname=fofimon
 pkgver=0.5
 pkgrel=1
