@@ -3,7 +3,7 @@
 
 pkgname=memsource-editor
 _pkg=MemsourceEditor
-pkgver=6.239.6
+pkgver=6.240.0
 pkgrel=1
 pkgdesc="A CAT translation tool, requires Memsource subscription"
 arch=('x86_64')
@@ -31,7 +31,7 @@ source=("http://download.memsource.com/production/updates/memsource-editor/linux
         "memsource"
         "license.desktop")
 
-sha256sums=('40a5a53ca88908a2124fdec4a6e5118c49d5416a22cd92616db733ce1faad5cb'
+sha256sums=('635a63fd6bcd9ad0d111dac18e62ff212f107ca7838ab0cb42f0b116ae8c9ec1'
             '215a02637392af7a3f0af23411c5234c9ce8cdf1ae5c0e40b97c43e5b0995a45'
             '8a40f0172dc948dfadec126b5ab9a4f983216034aa8fbf19a41b9466e6253866'
             '4802b77ffefd2cdd7526fec28a690f8dc560fef74501806b3485648dcac830fe'
@@ -74,6 +74,7 @@ package() {
   find ${pkgdir}/opt -type f | while read _item; do chmod 644 "$_item"; done
   chmod +x ${pkgdir}/opt/memsource-editor/TranslationEditor
   chmod +x ${pkgdir}/opt/memsource-editor/run.sh
+  chmod +x ${pkgdir}/opt/memsource-editor/libexec/QtWebEngineProcess
 
   for sz in 16 24 32 36 48 64 96 128 192 256; do
     install -d ${pkgdir}/usr/share/icons/hicolor/${sz}x${sz}/apps
