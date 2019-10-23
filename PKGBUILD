@@ -29,7 +29,7 @@ _url="https://launchpad.net/i2p/trunk/${pkgver}/+download"
 
 source=("${_url}/i2psource_${pkgver}.tar.bz2"{,.sig}
         'i2prouter.service' 'i2prouter.sh' 'wrapper.config' 'router.config'
-        'gettext-0.20.1-jdk13-fix.patch')
+        'https://github.com/i2p/i2p.i2p/commit/eef6c5cb33d8292ce247fcd49578cc9fa1acf6cb.patch')
 
 sha256sums=('beb2a3c62efce826cd5aa3e296b483143ad2c581ddb038677f960f7d110df81c'
             'SKIP'
@@ -37,11 +37,11 @@ sha256sums=('beb2a3c62efce826cd5aa3e296b483143ad2c581ddb038677f960f7d110df81c'
             'ea8f97e66461d591b1819eab39bbc40056b89ae12f7729b3dd9fd2ce088e5e53'
             '5d134ee5bc614b54ec48de7c5214f6dbe08abcfab7d286c5b1c7616e39b478ed'
             '7a4688db826c3dddb762976cd8c9a5d465255c3577069243d8e5af941a4126e2'
-            '79e5c8077b479a2edaaaf15a427084c2e87c16cda80ed2230f9354dcdca14393')
+            'a3be87c6ed2a253a393ef39b47bb0c8d91bbbd80111557e412753e78c590e5b8')
 
 prepare() {
     cd "$pkgname-$pkgver"
-    patch -Np0 -i "$srcdir/gettext-0.20.1-jdk13-fix.patch"
+    patch -Np1 -i "$srcdir/eef6c5cb33d8292ce247fcd49578cc9fa1acf6cb.patch"
 }
 
 build() {
