@@ -1,35 +1,49 @@
-# Maintainer: oliver < a t >  first . in-berlin . de
-pkgname=camlpdf
-pkgver=2.2.p1
-pkgrel=1
-pkgdesc="PDF-processing-library for OCaml"
+# Maintainer: Chris Severance aur.severach aATt spamgourmet dott com
+# Contributor: oliver < a t >  first . in-berlin . de
+
+set -u
+pkgname='camlpdf'
+#_pkgver='2.1.1'
+#_pkgver='2.2'
+#_pkgver='2.2precrypt'
+#_pkgver='2.2-patchlevel1'
+_pkgver='2.3'
+pkgver="${_pkgver//atchlevel/}"
+pkgver="${pkgver//-/.}"
+pkgrel='1'
+pkgdesc='Coherent Graphics OCaml library for reading, writing and modifying PDF files'
 arch=('i686' 'x86_64')
-license=('LGPL')
-#source=(https://github.com/johnwhitington/camlpdf/archive/v$pkgver.tar.gz) # ORIG
-source=(https://github.com/johnwhitington/camlpdf/archive/v2.2-patchlevel1.tar.gz) # v2.2-patchlevel1
-md5sums=('dc3ff8bc4f2f3eae0df79fd0da6ad594')
 url="https://github.com/johnwhitington/camlpdf"
+license=('LGPL')
 depends=('glibc')
 makedepends=('ocaml-findlib')
-options=(!makeflags staticlibs)
-#
+options=('!makeflags' 'staticlibs')
+_srcdir="camlpdf-${_pkgver}"
+source=("${_srcdir}.tar.gz::https://github.com/johnwhitington/camlpdf/archive/v${_pkgver}.tar.gz")
+md5sums=('1ea36641c63a0f506e7a4aa41152abff')
+sha256sums=('b446b6f060e2869af6b8a682f3119dcdcfb3dfc701b1431809daff9ee4e8ac1c')
+
+_setvars() {
+  OCAMLFIND_DESTDIR="${pkgdir}/$(ocamlfind printconf destdir)"
+  OCAMLFIND_LDCONF="${pkgdir}/$(ocamlfind printconf ldconf)"
+}
+
 build() {
-#cd ${srcdir}/camlpdf-$pkgver # ORIG
-cd ${srcdir}/camlpdf-2.2-patchlevel1 # v2.2-patchlevel1
-#
-OCAMLFIND_DESTDIR="$pkgdir/$(ocamlfind printconf destdir)"
-make OCAMLFIND_DESTDIR="${OCAMLFIND_DESTDIR}"
+  set -u
+  cd "${_srcdir}"
+
+  local OCAMLFIND_DESTDIR OCAMLFIND_LDCONF; _setvars
+  make -s OCAMLFIND_DESTDIR="${OCAMLFIND_DESTDIR}"
+  set +u
 }
-#
-#
+
 package() {
-#cd ${srcdir}/camlpdf-$pkgver # ORIG
-cd ${srcdir}/camlpdf-2.2-patchlevel1 # v2.2-patchlevel1
-#
-OCAMLFIND_DESTDIR="$pkgdir/$(ocamlfind printconf destdir)"
-mkdir -p ${OCAMLFIND_DESTDIR}
-#
-OCAMLFIND_LDCONF="$pkgdir/$(ocamlfind printconf ldconf)"
-#
-make install -d OCAMLFIND_DESTDIR="${OCAMLFIND_DESTDIR}" OCAMLFIND_LDCONF="${OCAMLFIND_LDCONF}"
+  set -u
+  cd "${_srcdir}"
+
+  local OCAMLFIND_DESTDIR OCAMLFIND_LDCONF; _setvars
+  install -d "${OCAMLFIND_DESTDIR}"
+  make -s install -d OCAMLFIND_DESTDIR="${OCAMLFIND_DESTDIR}" OCAMLFIND_LDCONF="${OCAMLFIND_LDCONF}"
+  set +u
 }
+set +u
