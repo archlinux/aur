@@ -8,6 +8,7 @@ pkgbase = i2p
 	license = GPL2
 	makedepends = java-environment>=8
 	makedepends = apache-ant
+	makedepends = gettext
 	depends = java-runtime>=8
 	depends = java-service-wrapper
 	conflicts = i2p-bin
@@ -20,12 +21,14 @@ pkgbase = i2p
 	source = i2prouter.sh
 	source = wrapper.config
 	source = router.config
+	source = https://github.com/i2p/i2p.i2p/commit/eef6c5cb33d8292ce247fcd49578cc9fa1acf6cb.patch
 	sha256sums = beb2a3c62efce826cd5aa3e296b483143ad2c581ddb038677f960f7d110df81c
 	sha256sums = SKIP
 	sha256sums = 9bb899ece87099716da29bac8b7da02916fc325699b68989e73c1fe333a6342f
 	sha256sums = ea8f97e66461d591b1819eab39bbc40056b89ae12f7729b3dd9fd2ce088e5e53
 	sha256sums = 5d134ee5bc614b54ec48de7c5214f6dbe08abcfab7d286c5b1c7616e39b478ed
 	sha256sums = 7a4688db826c3dddb762976cd8c9a5d465255c3577069243d8e5af941a4126e2
+	sha256sums = a3be87c6ed2a253a393ef39b47bb0c8d91bbbd80111557e412753e78c590e5b8
 
 pkgname = i2p
 
