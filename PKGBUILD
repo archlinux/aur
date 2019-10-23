@@ -2,7 +2,7 @@
 # Contributor: Niklas Bolander <niklas.bolander at gmail dot com>
 
 pkgname=zsh-fast-syntax-highlighting-git
-pkgver=r242.868812a
+pkgver=r760.01471d8
 pkgrel=1
 pkgdesc='Optimized and extended zsh-syntax-highlighting'
 arch=('any')
@@ -21,28 +21,14 @@ pkgver() {
 }
 
 package() {
-  typeset _plugindir="${pkgdir}/usr/share/zsh/plugins/${_gitname}"
+  typeset _plugindir="${pkgdir}/usr/share/zsh/plugins"
   typeset _licdir="${pkgdir}/usr/share/licenses/${pkgname}"
-  typeset _chromadir="${_plugindir}/chroma"
-  typeset _themesdir="${_plugindir}/themes"
-
-  cd "${srcdir}/fast-syntax-highlighting"
 
   install -dm0755 "${_plugindir}"
-  install -m0644 fast-* "${_plugindir}"
-  install -m0644 _fast-* "${_plugindir}"
-  install -m0644 -- -fast-* "${_plugindir}"
+  cp -r "${srcdir}/${_gitname}" "${_plugindir}"
 
   install -dm755 "${_licdir}"
-  install -m0644 LICENSE "${_licdir}"
-
-  cd "${srcdir}/fast-syntax-highlighting/chroma"
-  install -dm0755 "${_chromadir}"
-  install -m0644 -- *.ch "${_chromadir}"
-
-  cd "${srcdir}/fast-syntax-highlighting/themes"
-  install -dm0755 "${_themesdir}"
-  install -m0644 -- *.ini "${_plugindir}/themes"
+  install -m0644 "${srcdir}/${_gitname}/LICENSE" "${_licdir}"
 }
 
 # vim:set syntax=PKGBUILD ts=2 sw=2 et:
