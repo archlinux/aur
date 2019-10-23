@@ -5,14 +5,14 @@
 
 pkgname=librewolf
 _pkgname=LibreWolf
-pkgver=69.0.3
+pkgver=70.0
 pkgrel=1
 pkgdesc="Community-maintained fork of Librefox: a privacy and security-focused browser"
 arch=(x86_64)
 license=(MPL GPL LGPL)
 url="https://LibreWolf.gitlab.io"
-depends=(gtk3 mozilla-common libxt startup-notification mime-types dbus-glib
-         ffmpeg nss ttf-font libpulse)
+depends=(gtk3 libxt startup-notification mime-types dbus-glib ffmpeg nss
+         ttf-font libpulse)
 makedepends=(unzip zip diffutils python2-setuptools yasm mesa imake inetutils
              xorg-server-xvfb autoconf2.13 rust clang llvm jack gtk2
              python nodejs python2-psutil cbindgen nasm git binutils)
@@ -28,7 +28,7 @@ source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-
         "no-relinking.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/no-relinking.patch?h=packages/firefox"
         "git+https://gitlab.com/${pkgname}-community/browser/common.git"
         "git+https://gitlab.com/${pkgname}-community/settings.git")
-sha256sums=('7527947a876c1734b8b2339f19b8ff8da6f4e4d06351b44940cb48d3509bb891'
+sha256sums=('cd9f2902753831c07c4b2ee64f7826f33ca1123add6440dc34abe3ff173a0cc6'
             '0471d32366c6f415f7608b438ddeb10e2f998498c389217cdd6cc52e8249996b'
             'e03332f0e865949df5af9c231a364e9e1068fca0439621b98c2d4160d93e674f'
             '2dc9d1aa5eb7798c89f46478f254ae61e4122b4d1956d6044426288627d8a014'
@@ -141,7 +141,7 @@ build() {
   # Do 3-tier PGO
   msg2 "Building instrumented browser..."
   cat >.mozconfig ../mozconfig - <<END
-ac_add_options --enable-profile-generate
+ac_add_options --enable-profile-generate=cross
 END
   ./mach build
 
@@ -169,7 +169,7 @@ END
   # xvfb-run -a -n 97 -s "-screen 0 1600x1200x24" ./mach build
   cat >.mozconfig ../mozconfig - <<END
 ac_add_options --enable-lto=cross
-ac_add_options --enable-profile-use
+ac_add_options --enable-profile-use=cross
 ac_add_options --with-pgo-profile-path=${PWD@Q}
 ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
 END
