@@ -1,6 +1,6 @@
 pkgbase = uperm
 	pkgdesc = Unified permissions
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 0
 	url = https://github.com/dmitri-mcguckin/uperm
 	arch = any
