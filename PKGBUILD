@@ -3,7 +3,7 @@
 
 pkgname=ttf-sarasa-gothic
 pkgver=0.10.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A CJK programming font based on Iosevka and Source Han Sans. (TTC)"
 arch=('any')
 url="https://github.com/be5invis/Sarasa-Gothic"
@@ -11,7 +11,7 @@ license=('custom:SIL Open Font License v1.1')
 depends=('fontconfig' 'xorg-font-utils')
 source=("https://github.com/be5invis/Sarasa-Gothic/releases/download/v$pkgver/sarasa-gothic-ttc-$pkgver.7z"
         "LICENSE-$pkgver::https://raw.githubusercontent.com/be5invis/Sarasa-Gothic/v${pkgver}/LICENSE")
-sha256sums=('2a8cad733d706b4f1677f91a1d9e97434c00583b662823692358edc90762eabc'
+sha256sums=('5f101908073e5f19ef95d5216f4dfd71e7adbb8e206260dbc4b5a4a041adc12c'
             '07e26208b78894948573d001a0133a8d071e161eba6ae65e2ab521fef311a429')
 
 package() {
