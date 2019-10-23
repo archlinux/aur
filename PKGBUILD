@@ -2,7 +2,7 @@
 # Contributer: N30N <archlinux@alunamation.com>
 pkgname=djv
 pkgver=1.3.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Movie playback and image processing software for the film and computer animation industries"
 url="http://djv.sourceforge.net/"
 license=('BSD')
@@ -20,6 +20,7 @@ prepare() {
     sed -i '/add_subdirectory(tests)/d' CMakeLists.txt
     sed -i 's/set(djvPackageThirdParty true)/set(djvPackageThirdParty false)/' CMakeLists.txt
     sed -i 's#picojson/picojson.h#picojson.h#' lib/djvCore/PicoJSON.h
+    find . -not -wholename './.git*' -type f -exec sed -i 's#OPENEXR_VERSION_HEX#((OPENEXR_VERSION_MAJOR << 24) | (OPENEXR_VERSION_MINOR << 16) | (OPENEXR_VERSION_PATCH << 8))#g' {} \+
 }
 
 build() {
