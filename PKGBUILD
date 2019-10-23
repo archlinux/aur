@@ -4,9 +4,6 @@
 # Contributor: Sebastian.Salich@gmx.de
 # Contributor: Doc Angelo
 
-# If you want support for your G15 Keyboard, please add 'g15daemon'
-# to the depends and delete "no-g15" in the configure line below
-
 pkgname=mumble-git
 pkgver=2019.10.22
 _pkgver=1.4.0
