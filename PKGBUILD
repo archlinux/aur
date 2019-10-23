@@ -3,19 +3,19 @@
 # https://gitlab.manjaro.org/packages/extra/pamac
 pkgname=pamac-cli
 pkgver=9.0.1
-pkgrel=2
+pkgrel=3
 _pkgfixver=$pkgver
 
 #_pkgvercommit=v$pkgver
-_pkgvercommit='b413a3e7c11ef00eb24cc7da421a3d40b8bb09b3'
-sha256sums=('b29e0ee2630a324117e628843f3adb9f799876b9ee6ad19ac8eec4cd5b1c1573'
+_pkgvercommit='5cadbe289cfd7e624bb3b98fdbce53a1aff42cfe'
+sha256sums=('ef4eb70443fa75af03600ebf37f06063d464a9b55fe79ecd96f25ace1462a9de'
             'd930fc889338cb50f6da36ddce3006946c69f6323b7b801d035c516b575ebc5d')
 
 pkgdesc="Pamac cli frontend for libalpm"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://gitlab.manjaro.org/applications/pamac"
 license=('GPL3')
-depends=('glib2>=2.42' 'json-glib' 'libsoup' 'curl' 'pacman>=5.1' 'appstream-glib' 'archlinux-appstream-data')
+depends=('glib2>=2.42' 'json-glib' 'libsoup' 'curl' 'pacman>=5.2' 'appstream-glib' 'archlinux-appstream-data')
 optdepends=('')
 makedepends=('gettext' 'itstool' 'vala>=0.36.6' 'meson' 'ninja' 'git' 'gobject-introspection')
 conflicts=('pamac' 'pamac-aur' 'pamac-aur-git')
