@@ -1,6 +1,6 @@
 pkgbase = phonesim
 	pkgdesc = Phone Simulator for modem testing
-	pkgver = 1.21
+	pkgver = 1.21.r0.g7664fdc
 	pkgrel = 1
 	url = https://git.kernel.org/pub/scm/network/ofono/phonesim.git/
 	arch = i686
