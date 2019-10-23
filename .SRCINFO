@@ -1,0 +1,27 @@
+pkgbase = openaero-git
+	pkgdesc = Entirely open source drivers and utilities for your Gigabyte Aero Laptops on GNU/Linux.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/blmhemu/openaero
+	arch = any
+	license = GPL2
+	makedepends = git
+	makedepends = python-setuptools
+	source = git+https://github.com/blmhemu/openaero.git
+	sha256sums = SKIP
+
+pkgname = openaero-driver-dkms-git
+	pkgdesc = Kernel driver for Aero devices (DKMS-variant)
+	install = openaero-driver-dkms-git.install
+	depends = dkms
+	depends = udev
+	depends = linux-headers
+	provides = openaero-driver-dkms
+	conflicts = openaero-driver-dkms
+
+pkgname = openaero-meta-git
+	pkgdesc = Meta package for installing all required openaero packages.
+	depends = openaero-driver-dkms
+	provides = openaero-meta
+	conflicts = openaero-meta
+
