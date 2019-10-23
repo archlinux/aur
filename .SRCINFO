@@ -1,0 +1,22 @@
+pkgbase = silos
+	pkgdesc = Standalone web-app container based on qt5-webengine
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/intersimone999/pyqtws
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = xdg-utils
+	depends = qt5-webengine
+	depends = python
+	depends = python-pip
+	source = git+https://github.com/intersimone999/pyqtws.git
+	sha256sums = SKIP
+
+pkgname = silos
+	depends = xdg-utils
+	depends = qt5-webengine
+	depends = python
+	depends = python-pip
+
