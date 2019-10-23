@@ -38,8 +38,9 @@ build() {
 
 package_bcc() {
 	pkgdesc='BPF Compiler Collection - C library and examples'
-	depends=('linux-headers' 'libelf')
-	optdepends=('bcc-tools: Python utilites using the BCC library'
+	depends=('libelf')
+	optdepends=('linux-headers: build against the Arch kernel'
+		'bcc-tools: Python utilites using the BCC library'
 		'python-bcc: Python 3 bindings for BCC'
 		'python2-bcc: Python 2 bindings for BCC')
 	provides=('bcc' 'libbcc')

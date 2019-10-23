@@ -21,8 +21,8 @@ pkgbase = bcc
 
 pkgname = bcc
 	pkgdesc = BPF Compiler Collection - C library and examples
-	depends = linux-headers
 	depends = libelf
+	optdepends = linux-headers: build against the Arch kernel
 	optdepends = bcc-tools: Python utilites using the BCC library
 	optdepends = python-bcc: Python 3 bindings for BCC
 	optdepends = python2-bcc: Python 2 bindings for BCC
