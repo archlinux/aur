@@ -4,7 +4,7 @@
 
 pkgname=waterfox-kde
 pkgver=2019.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Free, open and private browser with openSUSE's patches for better integration with KDE"
 arch=('x86_64')
 license=('MPL')
@@ -34,7 +34,9 @@ source=("git+https://github.com/MrAlex94/Waterfox.git#commit=$_commit"
         no-plt.diff
         "waterfox-kde-56.2.10.1.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-kde/patches/waterfox-kde-56.2.10.1.patch"
         "dont-statically-link-libstdc++.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-kde/patches/dont-statically-link-libstdc%2B%2B.patch"
-        pgo_fix_missing_kdejs.patch)
+        pgo_fix_missing_kdejs.patch
+        extension.patch
+        ua.patch)
 sha256sums=('SKIP'
             '64d5587093e4d32b0111adf8f531a2e3bfe24e76b8f5166e31cebcad7add8f81'
             '0850a8a8dea9003c67a8ee1fa5eb19a6599eaad9f2ad09db753b74dc5048fdbc'
@@ -44,7 +46,9 @@ sha256sums=('SKIP'
             'ea8e1b871c0f1dd29cdea1b1a2e7f47bf4713e2ae7b947ec832dba7dfcc67daa'
             'b55833542edf8cad2b73cf36dac6c667e588dcf79a99b570c5eca645698b80f7'
             '877bc1f0e768d96118bb739725e590467773dd897c31263099e52b8d7aaaa4c8'
-            'bf6743660623b7c9a43b94edc8acbcade07aa222ff2102a2808809df333ebe8e')
+            'bf6743660623b7c9a43b94edc8acbcade07aa222ff2102a2808809df333ebe8e'
+            '87b4b11ab95d90d4e84dfb53f785c8cbf233044b8950979b624af8ca6f720d59'
+            'e179856821d463be8ceb75313fa8eb44be7d8580c81b4897e867fefc3e89a864')
 
 prepare() {
   mkdir path
@@ -63,6 +67,10 @@ prepare() {
 
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1382942
   patch -Np1 -i ../no-plt.diff
+
+  patch -Np1 -i ../extension.patch
+
+  patch -Np1 -i ../ua.patch
 
   cat >.mozconfig <<END
 export CC=clang

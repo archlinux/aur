@@ -1,0 +1,22 @@
+From 02999ce8d80bd2d996e61faaec654a69820d6c65 Mon Sep 17 00:00:00 2001
+From: hawkeye116477 <hawkeye116477@gmail.com>
+Date: Wed, 16 Oct 2019 18:47:51 +0200
+Subject: [PATCH] Restore user-agent overrides for Linux
+
+---
+ browser/installer/package-manifest.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/browser/installer/package-manifest.in b/browser/installer/package-manifest.in
+index d5f12ce064bc..52a686a67b0c 100644
+--- a/browser/installer/package-manifest.in
++++ b/browser/installer/package-manifest.in
+@@ -146,7 +146,7 @@
+ @BINPATH@/@DLL_PREFIX@mozavcodec@DLL_SUFFIX@
+ #endif
+ @RESPATH@/browser/blocklist.xml
+-#ifdef XP_WIN
++#if defined(XP_WIN) || defined(XP_LINUX)
+ @BINPATH@/browser/ua-update.json
+ #endif
+ #ifdef XP_MACOSX
