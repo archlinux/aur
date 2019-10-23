@@ -25,26 +25,19 @@ _gitname=i2p.i2p
 _commit=master
 
 source=("git+https://github.com/i2p/${_gitname}.git#commit=${_commit}"
-        'i2prouter.service' 'i2prouter.sh' 'wrapper.config' 'router.config'
-        'gettext-0.20.1-jdk13-fix.patch')
+        'i2prouter.service' 'i2prouter.sh' 'wrapper.config' 'router.config')
 
 sha256sums=('SKIP'
             'ff9942ca43715b5095b0118e306c8aec1af7c68c18e8959dba10d86eac8efbfd'
             'ea8f97e66461d591b1819eab39bbc40056b89ae12f7729b3dd9fd2ce088e5e53'
             '5c57456bf3f364175d036dfc6c6ceea5e57cdda970407829c04d09a4c821a9c0'
-            '41756375ef2e8323147cec31a8675b2bc11109451f9185c036ff32d26d6c9b99'
-            '79e5c8077b479a2edaaaf15a427084c2e87c16cda80ed2230f9354dcdca14393')
+            '41756375ef2e8323147cec31a8675b2bc11109451f9185c036ff32d26d6c9b99')
 
 pkgver() {
     cd "$_gitname"
     printf "%s.%s" "$(grep 'VERSION =' core/java/src/net/i2p/CoreVersion.java \
         |sed 's/.*= "//;s/";//')" "$(grep 'BUILD =' router/java/src/net/i2p/router/RouterVersion.java \
         |sed 's/.*= //;s/;//')"
-}
-
-prepare() {
-    cd "$_gitname"
-    patch -Np0 -i "$srcdir/gettext-0.20.1-jdk13-fix.patch"
 }
 
 build_jbigi() {
