@@ -1,13 +1,13 @@
 pkgbase = tamtam
 	pkgdesc = TamTam messenger for linux
 	pkgver = 1.1.24
-	pkgrel = 1
+	pkgrel = 2
 	url = https://desktop.tamtam.chat/latest/
 	arch = x86_64
 	license = custom
 	depends = alsa-lib
 	depends = gconf
-	depends = gtk2
+	depends = gtk3
 	depends = libsecret
 	depends = libxss
 	depends = libxtst
