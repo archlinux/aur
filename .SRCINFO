@@ -1,0 +1,15 @@
+pkgbase = proby
+	pkgdesc = Check whether hosts are reachable on certain ports and return result on HTTP
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/svenstaro/proby
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = rust-nightly
+	makedepends = cargo-nightly
+	source = proby-0.2.0.tar.gz::https://github.com/svenstaro/proby/archive/0.2.0.tar.gz
+	sha512sums = 8a2c0a40194d1843d85c1985d3d2ad54cc7e917f996dfd9f8181f73dba87946feffb3ab70f69f568621d712874a5d65e68b6ca2eadc6f5a0cd933e9345d1e5ca
+
+pkgname = proby
+
