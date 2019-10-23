@@ -3,7 +3,7 @@
 
 pkgname='pop-gnome-shell-theme-bin'
 pkgver='5.0.0'
-pkgrel=8
+pkgrel=9
 _timestamp=1571333736
 _commit=d7e5e73
 pkgdesc='System76 Pop GNOME Shell Theme'
@@ -15,9 +15,11 @@ provides=('pop-gnome-shell-theme')
 depends=(
   "gnome-shell>=3.18.3"
   "pop-gtk-theme-bin"
+  "pop-session-bin"
 )
 optdepends=(
   "pop-icon-theme-bin: Recommended icon theme"
+  "pop-sound-theme-bin: Recommended sound theme"
   "ttf-fira-sans: Recommended font for window titles and interface"
   "ttf-fira-mono: Recommended monospace font"
   "ttf-roboto-slab: Recommended font for documents"
@@ -29,10 +31,6 @@ package() {
   cd "${srcdir}"
   
   tar -xJC "${pkgdir}" -f data.tar.xz
-  mkdir -p ${pkgdir}/usr/share/themes/Pop/gnome-shell
-  mkdir -p ${pkgdir}/usr/share/themes/Pop-dark/gnome-shell
-  cp -r ${pkgdir}/usr/share/gnome-shell/theme/Pop/* ${pkgdir}/usr/share/themes/Pop/gnome-shell/
-  mv ${pkgdir}/usr/share/gnome-shell/theme/Pop/* ${pkgdir}/usr/share/themes/Pop-dark/gnome-shell/
 }
 
 # vim: ts=2 sw=2 et:
