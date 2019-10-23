@@ -1,0 +1,13 @@
+pkgbase = permrs
+	pkgdesc = Utlity to save and restore unix permissions
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/gort818/permrs
+	arch = x86_64
+	makedepends = rust
+	makedepends = cargo
+	source = https://github.com/gort818/permrs/archive/v.0.1.0.tar.gz
+	sha256sums = 82bd93f808e457dff53ec64026e945f2b490fd0ed8a58b08d6d190ff40a7b773
+
+pkgname = permrs
+
