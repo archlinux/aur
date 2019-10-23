@@ -25,13 +25,11 @@ pkgbase = i2p-dev
 	source = i2prouter.sh
 	source = wrapper.config
 	source = router.config
-	source = gettext-0.20.1-jdk13-fix.patch
 	sha256sums = SKIP
 	sha256sums = ff9942ca43715b5095b0118e306c8aec1af7c68c18e8959dba10d86eac8efbfd
 	sha256sums = ea8f97e66461d591b1819eab39bbc40056b89ae12f7729b3dd9fd2ce088e5e53
 	sha256sums = 5c57456bf3f364175d036dfc6c6ceea5e57cdda970407829c04d09a4c821a9c0
 	sha256sums = 41756375ef2e8323147cec31a8675b2bc11109451f9185c036ff32d26d6c9b99
-	sha256sums = 79e5c8077b479a2edaaaf15a427084c2e87c16cda80ed2230f9354dcdca14393
 
 pkgname = i2p-dev
 
