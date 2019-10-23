@@ -1,6 +1,6 @@
 pkgbase = linux-slim
 	pkgver = 5.3.v.7
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.kernel.org/
 	arch = x86_64
 	license = GPL2
@@ -16,7 +16,7 @@ pkgbase = linux-slim
 	source = config.x86_64
 	source = linux-slim.preset
 	sha256sums = SKIP
-	sha256sums = c1478fb36e6485328ff48d7f742796a1df210ace7fe81309df5e26518547e892
+	sha256sums = 57c84ba2586998de99447e3977b1025c19ee6994d0ad21ce596e993c6b01dbdc
 	sha256sums = 41a0bb63095f32a501a54c2835b3fd883f51f00ad52739e5f1b9bd2f69b1f367
 
 pkgname = linux-slim
