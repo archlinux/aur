@@ -3,7 +3,7 @@
 
 pkgname='pop-gtk-theme-bin'
 pkgver='5.0.0'
-pkgrel=9
+pkgrel=10
 _timestamp=1571333736
 _commit=d7e5e73
 pkgdesc='System76 Pop GTK+ Theme'
@@ -37,8 +37,6 @@ package() {
   cd "${srcdir}"
   
   tar -xJC "${pkgdir}" -f data.tar.xz
-  rm -r "${pkgdir}/usr/share/themes/Pop/gnome-shell"
-  rm -r "${pkgdir}/usr/share/themes/Pop-dark/gnome-shell"
 }
 
 # vim: ts=2 sw=2 et:
