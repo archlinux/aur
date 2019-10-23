@@ -1,15 +1,15 @@
 # Maintainer: Auteiy <dmitry@auteiy.me>
 
 pkgname=randomcase-git
-pkgver=0.2
+pkgver=0.3
 pkgrel=1
 pkgdesc="Converts input to case from SpongeBob meme"
 arch=('any')
 license=('MIT')
 url="https://git.auteiy.me/dmitry/randomCase"
 depends=('python')
-source=(https://git.auteiy.me/dmitry/randomCase/raw/v0.2/randomcase)
-md5sums=('fa7172f4a9f1284b0631c8d79302a3ab')
+source=(https://git.auteiy.me/dmitry/randomCase/raw/v0.3/randomcase)
+md5sums=('f5653fa91dcb27e3762be0683f10d70c')
 
 package() {
   cd $srcdir
