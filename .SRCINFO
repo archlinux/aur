@@ -1,0 +1,29 @@
+pkgbase = phonesim
+	pkgdesc = Phone Simulator for modem testing
+	pkgver = 1.21
+	pkgrel = 1
+	url = https://git.kernel.org/pub/scm/network/ofono/phonesim.git/
+	arch = i686
+	arch = x86_64
+	license = GPLv2
+	makedepends = git
+	makedepends = gcc
+	depends = qt4
+	depends = libpng
+	depends = freetype2
+	depends = libsm
+	depends = libice
+	depends = libxrender
+	depends = fontconfig
+	depends = libxext
+	depends = libx11
+	depends = harfbuzz
+	depends = libxcb
+	depends = graphite
+	depends = libxau
+	depends = libxdmcp
+	source = phonesim::git+https://git.kernel.org/pub/scm/network/ofono/phonesim.git
+	sha512sums = SKIP
+
+pkgname = phonesim
+
