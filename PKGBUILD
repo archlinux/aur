@@ -1,3 +1,4 @@
+# Maintainer: Michael Spradling <mike@mspradling.com>
 # Maintainer: Matthias Fulz <mfulz@olznet.net>
 # Contributor: Michael Spradling <mike@mspradling.com>
 
@@ -19,7 +20,8 @@ pkgname=("${pkgbase}-common"
          "${pkgbase}-storage-tape"
          "${pkgbase}-director-python-plugin"
          "${pkgbase}-filedaemon-python-plugin"
-         "${pkgbase}-storage-python-plugin")
+         "${pkgbase}-storage-python-plugin"
+         "${pkgbase}-webui")
 
 pkgmajor=18
 pkgver=18.2.6
@@ -29,7 +31,7 @@ groups=('bareos')
 pkgdesc="Bareos - Backup Archiving REcovery Open Sourced"
 url="http://www.bareos.org"
 license=('AGPL3')
-makedepends=('libmariadbclient' 'postgresql-libs' 'sqlite3' 'python2' 'cmake' 'rpcsvc-proto')
+makedepends=('libmariadbclient' 'postgresql-libs' 'sqlite3' 'python2' 'cmake' 'rpcsvc-proto' 'git')
 source=("git+https://github.com/bareos/bareos.git#tag=Release/$pkgver")
 md5sums=('SKIP')
 
@@ -41,76 +43,45 @@ prepare() {
 
 build() {
   cd $pkgbase
+  mkdir build
+  cd build
 
-  #cmake .\
-    #-DCMAKE_INSTALL_PREFIX=/usr \
-    #-DCMAKE_INSTALL_SBINDIR=/usr/bin \
-    #-DCMAKE_INSTALL_SYSCONFDIR=/etc \
-    #-DCMAKE_INSTALL_LOCALSTATEDIR=/ \
-    #-DCMAKE_INSTALL_LIBDIR=/usr/lib/$pkgbase \
-    #-Dconio=no \
-    #-Ddynamic-cats-backends=yes \
-    #-Ddynamic-storage-backends=yes \
-    #-Drpath=no \
-    #-Dpostgresql=yes \
-    #-Dmysql=yes \
-    #-Dpython=yes \
-    #-Dopenssl=yes \
-    #-Dsqlite3=yes \
-    #-Dlogdir=/var/log/$pkgbase \
-    #-Ddir-user=$pkgbase \
-    #-Ddir-group=$pkgbase \
-    #-Dsd-user=$pkgbase \
-    #-Dsd-group=$pkgbase \
-    #-Dfd-user=root \
-    #-Dfd-group=root \
-    #-Dpid-dir=/run/bareos \
-    #-Dconfigtemplatedir=/usr/share/$pkgbase/config \
-    #-Dworking-dir=/var/lib/$pkgbase \
-    #-Dplugindir=/usr/lib/$pkgbase/plugins \ 
-    #-Dscriptdir=/usr/lib/$pkgbase/scripts \ 
-    #-Dbackenddir=/usr/lib/$pkgbase/backends \ 
-    #-Darchivedir=/var/lib/$pkgbase/storage \
-    #-Dbsrdir=/var/lib/$pkgbase \
-    #-Dsystemd=yes \
-
-  cmake -DCMAKE_INSTALL_PREFIX=/usr  -DCMAKE_INSTALL_SBINDIR=/usr/bin  -DCMAKE_INSTALL_SYSCONFDIR=/etc  -DCMAKE_INSTALL_LOCALSTATEDIR=/  -DCMAKE_INSTALL_LIBDIR=/usr/lib/$pkgbase -Dlibdir=/usr/lib/$pkgbase -Dconio=no  -Ddynamic-cats-backends=yes  -Ddynamic-storage-backends=yes  -Drpath=no  -Dpostgresql=yes  -Dmysql=yes  -Dpython=yes  -Dopenssl=yes  -Dsqlite3=yes  -Dlogdir=/var/log/$pkgbase  -Ddir-user=$pkgbase  -Ddir-group=$pkgbase  -Dsd-user=$pkgbase  -Dsd-group=$pkgbase  -Dfd-user=root  -Dfd-group=root  -Dpiddir=/run/bareos -Dsubsysdir=/run/bareos -Dconfdir=/etc/$pkgbase -Dconfigtemplatedir=/usr/share/$pkgbase/config  -Dworkingdir=/var/lib/$pkgbase  -Dplugindir=/usr/lib/$pkgbase/plugins  -Dscriptdir=/usr/lib/$pkgbase/scripts  -Dbackenddir=/usr/lib/$pkgbase/backends  -Darchivedir=/var/lib/$pkgbase/storage  -Dbsrdir=/var/lib/$pkgbase  -Dsystemd=yes .
+  cmake .. \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_SBINDIR=/usr/bin \
+    -DCMAKE_INSTALL_SYSCONFDIR=/etc \
+    -DCMAKE_INSTALL_LOCALSTATEDIR=/ \
+    -DCMAKE_INSTALL_LIBDIR=/usr/lib/$pkgbase \
+    -Dlibdir=/usr/lib/$pkgbase \
+    -Dconio=no \
+    -Ddynamic-cats-backends=yes \
+    -Ddynamic-storage-backends=yes \
+    -Drpath=no \
+    -Dpostgresql=yes \
+    -Dmysql=yes \
+    -Dpython=yes \
+    -Dopenssl=yes \
+    -Dsqlite3=yes \
+    -Dlogdir=/var/log/$pkgbase \
+    -Ddir-user=$pkgbase \
+    -Ddir-group=$pkgbase \
+    -Dsd-user=$pkgbase \
+    -Dsd-group=$pkgbase \
+    -Dfd-user=root \
+    -Dfd-group=root \
+    -Dpiddir=/run/bareos \
+    -Dsubsysdir=/run/bareos \
+    -Dconfdir=/etc/$pkgbase \
+    -Dconfigtemplatedir=/usr/share/$pkgbase/config \
+    -Dworkingdir=/var/lib/$pkgbase \
+    -Dplugindir=/usr/lib/$pkgbase/plugins \
+    -Dscriptdir=/usr/lib/$pkgbase/scripts \
+    -Dbackenddir=/usr/lib/$pkgbase/backends \
+    -Darchivedir=/var/lib/$pkgbase/storage \
+    -Dbsrdir=/var/lib/$pkgbase \
+    -Dsystemd=yes
 
   make DESTDIR="$srcdir/install" install
-  #./configure \
-    #--prefix=/usr \
-    #--sbindir=/usr/bin \
-    #--sysconfdir=/etc \
-    #--localstatedir=/ \
-    #--libdir=/usr/lib/$pkgbase \
-    #--disable-conio \
-    #--enable-dynamic-cats-backends \
-    #--enable-dynamic-storage-backends \
-    #--with-python \
-    #--with-openssl \
-    #--with-mysql \
-    #--disable-rpath \
-    #--with-postgresql \
-    #--with-sqlite3 \
-    #--with-logdir=/var/log/$pkgbase \
-    #--with-dir-user=$pkgbase \
-    #--with-dir-group=$pkgbase \
-    #--with-sd-user=$pkgbase \
-    #--with-sd-group=$pkgbase \
-    #--with-fd-user=root \
-    #--with-pid-dir=/run/bareos \
-    #--with-fd-group=root \
-    #--with-configtemplatedir=/usr/share/$pkgbase/config \
-    #--with-working-dir=/var/lib/$pkgbase \
-    #--with-plugindir=/usr/lib/$pkgbase/plugins \
-    #--with-scriptdir=/usr/lib/$pkgbase/scripts \
-    #--with-backenddir=/usr/lib/$pkgbase/backends \
-    #--with-archivedir=/var/lib/$pkgbase/storage \
-    #--with-bsrdir=/var/lib/$pkgbase \
-    #--with-subsys-dir=/run/$pkgbase \
-    #--with-systemd && make
-
-    #make DESTDIR="$srcdir/install" install install-autostart
 }
 
 
@@ -482,6 +453,26 @@ package_bareos-storage-python-plugin() {
     usr/lib/bareos/plugins/BareosSdPluginBaseclass.py \
     usr/lib/bareos/plugins/BareosSdWrapper.py \
     usr/lib/bareos/plugins/bareos-sd-class-plugin.py \
+  ; do
+    _cp $srcdir/install/$f $pkgdir/$f
+  done
+}
+
+package_bareos-webui() {
+  pkgdesc="${pkgdesc} - Webui (Bareos web administration)"
+  depends=('php' 'php-fpm' 'jansson')
+  optdepend=('nginx' 'apache')
+  backup=('etc/bareos-webui/directors.ini'
+          'etc/bareos-webui/configuration.ini'
+          'etc/bareos/bareos-dir.d/console/admin.conf.example'
+          'etc/bareos/bareos-dir.d/profile/webui-admin.conf')
+
+  _cp $srcdir/install/bareos-webui $pkgdir/usr/share/webapps/bareos-webui 
+
+  for f in \
+    etc/bareos/bareos-dir.d/console/admin.conf.example \
+    etc/bareos/bareos-dir.d/profile/webui-admin.conf \
+    etc/bareos-webui \
   ; do
     _cp $srcdir/install/$f $pkgdir/$f
   done
