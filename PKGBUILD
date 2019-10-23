@@ -1,13 +1,13 @@
 # Maintainer: Thomas Bork <sudobash418@gmail.com>
 
 pkgname=pamac-classic
-pkgver=7.0.2
+pkgver=7.1.1
 pkgrel=1
 pkgdesc="A Gtk3 frontend for libalpm - classic version"
 arch=('x86_64')
 url="https://git.cromer.cl/cromer/pamac-classic"
 license=('GPL3')
-depends=('curl' 'libsoup' 'polkit' 'pacman' 'libnotify' 'vte3')
+depends=('curl' 'libsoup' 'polkit' 'pacman>=5.2.0' 'libnotify' 'vte3')
 makedepends=('vala' 'meson' 'gettext' 'gobject-introspection')
 optdepends=('polkit-gnome: needed for authentication in Cinnamon, Gnome'
             'mate-polkit: needed for authentication in MATE'
@@ -17,7 +17,7 @@ provides=('pamac' 'pamac-aur')
 install=pamac-classic.install
 
 source=("pamac-classic-${pkgver}.tar.gz::$url/archive/v${pkgver}.tar.gz")
-sha256sums=('c5cdf4d96833c2d0be651f548cac1a7171964acfc37d1c8b0fc9994759aeba41')
+sha256sums=('193f619eaf2dd5dfc309d1f111644477b31a2590f5c5b3e26e88c34c42d31966')
 
 build() {
 	cd "${srcdir}/${pkgname}"
