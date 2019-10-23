@@ -3,15 +3,15 @@
 # original code by Sunday87: https://bbs.archlinux.org/viewtopic.php?pid=1253365#p1253365
 
 pkgname=texlive-most-doc
-pkgver=20191007
+pkgver=20191023
 pkgrel=1
 pkgdesc="Most TeXLive documentation"
 url="http://tug.org/texlive/"
 arch=('any')
 license=('unknown')
-optdepends=('texlive-bin: The texdoc program and some more documentation')
+optdepends=('texlive-core: texdoc, mktexlsr hook, and many packages documented here')
 makedepends=('rsync')
-install='texlive-most-doc.install'
+conflicts=(texlive-tlpdb)
 options=('!strip'  '!purge')
 
 pkgver() {

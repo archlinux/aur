@@ -1,13 +1,13 @@
 pkgbase = texlive-most-doc
 	pkgdesc = Most TeXLive documentation
-	pkgver = 20191007
+	pkgver = 20191023
 	pkgrel = 1
 	url = http://tug.org/texlive/
-	install = texlive-most-doc.install
 	arch = any
 	license = unknown
 	makedepends = rsync
-	optdepends = texlive-bin: The texdoc program and some more documentation
+	optdepends = texlive-core: texdoc, mktexlsr hook, and many packages documented here
+	conflicts = texlive-tlpdb
 	options = !strip
 	options = !purge
 
