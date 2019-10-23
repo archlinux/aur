@@ -2,7 +2,7 @@
 # Maintainer:  skydrome <skydrome@protonmail.com>
 
 # Uncomment if you do not want to build all language translations
-export LG2=en
+#export LG2=en
 
 pkgname=i2p
 pkgver=0.9.43
@@ -28,14 +28,21 @@ validpgpkeys=('2D3D2D03910C6504C1210C65EE60C0C8EE7256A8')
 _url="https://launchpad.net/i2p/trunk/${pkgver}/+download"
 
 source=("${_url}/i2psource_${pkgver}.tar.bz2"{,.sig}
-        'i2prouter.service' 'i2prouter.sh' 'wrapper.config' 'router.config')
+        'i2prouter.service' 'i2prouter.sh' 'wrapper.config' 'router.config'
+        'gettext-0.20.1-jdk13-fix.patch')
 
 sha256sums=('beb2a3c62efce826cd5aa3e296b483143ad2c581ddb038677f960f7d110df81c'
             'SKIP'
             '9bb899ece87099716da29bac8b7da02916fc325699b68989e73c1fe333a6342f'
             'ea8f97e66461d591b1819eab39bbc40056b89ae12f7729b3dd9fd2ce088e5e53'
             '5d134ee5bc614b54ec48de7c5214f6dbe08abcfab7d286c5b1c7616e39b478ed'
-            '7a4688db826c3dddb762976cd8c9a5d465255c3577069243d8e5af941a4126e2')
+            '7a4688db826c3dddb762976cd8c9a5d465255c3577069243d8e5af941a4126e2'
+            '79e5c8077b479a2edaaaf15a427084c2e87c16cda80ed2230f9354dcdca14393')
+
+prepare() {
+    cd "$pkgname-$pkgver"
+    patch -Np0 -i "$srcdir/gettext-0.20.1-jdk13-fix.patch"
+}
 
 build() {
     cd "$pkgname-$pkgver"
