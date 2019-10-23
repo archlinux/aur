@@ -1,0 +1,17 @@
+pkgbase = dwmbar-git
+	pkgdesc = Simple and modular status bar for dwm.
+	pkgver = 0.r74.
+	pkgrel = 1
+	url = https://github.com/thytom/dwmbar.git
+	arch = any
+	license = GPL
+	makedepends = git
+	optdepends = dwm
+	provides = dwmbar
+	source = git://github.com/thytom/dwmbar.git
+	md5sums = SKIP
+	sha1sums = SKIP
+	sha256sums = SKIP
+
+pkgname = dwmbar-git
+
