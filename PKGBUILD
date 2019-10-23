@@ -3,7 +3,7 @@
 _pkgname=lepton-snippet-manager
 pkgname=${_pkgname}-appimage
 pkgver=1.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Lepton is a lean code snippet manager based on GitHub Gist"
 arch=('x86_64')
 url="https://hackjutsu.com/Lepton/"
@@ -20,11 +20,12 @@ _filename=./Lepton-${pkgver}-${arch}.AppImage
 prepare() {
     cd "${srcdir}"
     chmod u+x ${_filename}
-    ./${_filename} --appimage-extract
+    ./${_filename} --appimage-extract 2> /dev/null
 }
 
 build() {
     sed -i "s|Exec=.*|Exec=${_pkgname}|g" "${srcdir}/squashfs-root/lepton.desktop"
+    sed -i "s|Icon=.*|Icon=${_pkgname}|g" "${srcdir}/squashfs-root/lepton.desktop"
 }
 
 package() {
@@ -34,6 +35,12 @@ package() {
 
     install -dm755 "${pkgdir}/usr/share/icons/hicolor/0x0/apps"
     install -Dm644 "${srcdir}/squashfs-root/lepton.png" "${pkgdir}/usr/share/icons/hicolor/0x0/apps/${_pkgname}.png"
+
+    for icon_res in $(ls "${srcdir}/squashfs-root/usr/share/icons/hicolor"); do
+        install -dm755 "${pkgdir}/usr/share/icons/hicolor/$icon_res/apps"
+        install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/$icon_res/apps/lepton.png" \
+            "${pkgdir}/usr/share/icons/hicolor/$icon_res/apps/${_pkgname}.png";
+    done
 
     install -Dm644 "${srcdir}/squashfs-root/lepton.desktop" "${pkgdir}/usr/share/applications/appimagekit-${_pkgname}.desktop"
 
