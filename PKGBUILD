@@ -1,15 +1,14 @@
 pkgname="font-victor-mono"
-pkgver=1.2.6
-_refcommit="68b7add39c619c96f0394b82b51f113501b55c77"
+pkgver=1.2.7
 pkgrel=1
 pkgdesc="A programming font with cursive italics and ligatures."
 arch=(any)
 url="https://rubjo.github.io/victor-mono"
 source=(
-    "victor-mono-$pkgver.zip::https://github.com/rubjo/victor-mono/raw/$_refcommit/public/VictorMonoAll.zip"
+    "victor-mono-$pkgver.zip::https://github.com/rubjo/victor-mono/raw/v$pkgver/public/VictorMonoAll.zip"
 )
 sha256sums=(
-    "14ede192570e6b422e9ed66bf76c9adb28dc56bdd52a83d44115d31737f1a037"
+    "4749ac40b4293bf02af579a6b2bbeb03af7d5e223291c54acddee7114da89318"
 )
 
 package() {
