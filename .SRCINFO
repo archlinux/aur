@@ -1,6 +1,6 @@
 pkgbase = kubernetes-helm
 	pkgdesc = A tool to manage Kubernetes charts
-	pkgver = 2.15.0
+	pkgver = 2.15.1
 	pkgrel = 1
 	url = https://github.com/helm/helm
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = kubernetes-helm
 	optdepends = kubectl: check cluster status
 	optdepends = kubectl-bin: check cluster status - binary package
 	conflicts = kubernetes-helm-bin
-	source = git+https://github.com/helm/helm#tag=v2.15.0
+	source = git+https://github.com/helm/helm#tag=v2.15.1
 	md5sums = SKIP
 
 pkgname = kubernetes-helm
