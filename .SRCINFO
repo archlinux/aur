@@ -1,7 +1,7 @@
 pkgbase = linvst2
 	pkgdesc = enables Windows vst's to be used as Linux vst's in Linux vst capable DAW's
-	pkgver = 2.7.0
-	pkgrel = 3
+	pkgver = 2.7.2
+	pkgrel = 1
 	url = https://github.com/osxmidi/LinVst
 	arch = x86_64
 	depends = wine
@@ -10,8 +10,8 @@ pkgbase = linvst2
 	conflicts = linvst-stable
 	replaces = linvst
 	replaces = linvst-stable
-	source = https://github.com/osxmidi/LinVst/releases/download/2.7/LinVst-64bit-32bit_2.7.0.deb
-	source = w2lvst2
+	source = https://github.com/osxmidi/LinVst/releases/download/2.7/LinVst-64bit-32bit_2.7.2.deb
+	source = https://github.com/usrmusicman/ArchStudioUtils/archive/2.4.zip
 	sha256sums = SKIP
 	sha256sums = SKIP
 
