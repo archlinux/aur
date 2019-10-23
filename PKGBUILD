@@ -1,31 +1,19 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
-# The following guidelines are specific to BZR, GIT, HG and SVN packages.
-# Other git sources are not natively supported by makepkg yet.
-
 # Maintainer: Jon Nordby <jononor@gmail.com>
+# CoMaintainer: bartus <arch-user-repoᘓbartus.33mail.com>
+# shellcheck disable=SC2034
 
 pkgname=mrg-git
-pkgver=0.1.2.r24.4168a63
+pkgver=0.1.2.r79.ae40b71
 pkgrel=1
-pkgdesc=""
+pkgdesc="C API for creating user interfaces"
 arch=(i686 x86_64)
-url=""
-license=('MIT')
-groups=()
-depends=()
-makedepends=('git')
+url="https://github.com/hodefoting/mrg"
+license=('GPL2')
+depends=('alsa-lib' 'mmm' 'cairo' 'sdl2' 'gtk3')
+makedepends=('git' 'meson')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-replaces=()
-backup=()
-options=()
-install=
-source=('git+https://github.com/hodefoting/mrg.git')
-noextract=()
+source=("git+${url}.git")
 md5sums=('SKIP')
 
 pkgver() {
@@ -35,12 +23,11 @@ pkgver() {
 }
 
 build() {
-	cd "$srcdir/${pkgname%-git}"
-    ./configure --prefix=/usr
-	make
+        mkdir -p ${srcdir}/build
+ 	meson ${srcdir}/${pkgname%-git} build --prefix=/usr
+	NINJA_STATUS="[%p | %f<%r<%u | %cbps ] " ninja -C "${srcdir}/build"
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}"
-	make DESTDIR="$pkgdir/" install
+	DESTDIR="${pkgdir}" ninja -C "${srcdir}/build" install
 }
