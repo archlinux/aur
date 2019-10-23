@@ -1,6 +1,6 @@
 pkgbase = emacs-git
 	pkgdesc = GNU Emacs. Development.
-	pkgver = 27.0.50.139156
+	pkgver = 27.0.50.139164
 	pkgrel = 1
 	url = http://www.gnu.org/software/emacs/
 	arch = x86_64
@@ -8,6 +8,7 @@ pkgbase = emacs-git
 	makedepends = git
 	makedepends = clang
 	makedepends = lld
+	makedepends = llvm
 	depends = alsa-lib
 	depends = gnutls
 	depends = libxml2

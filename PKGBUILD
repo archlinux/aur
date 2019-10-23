@@ -58,7 +58,7 @@ NOGZ="YES"        # Don't compress .el files.
 
 ################################################################################
 pkgname="emacs-git"
-pkgver=27.0.50.139156
+pkgver=27.0.50.139164
 pkgrel=1
 pkgdesc="GNU Emacs. Development."
 arch=('x86_64') # Arch Linux only. Derivative users are on their own.
@@ -79,9 +79,12 @@ md5sums=('SKIP')
 
 ################################################################################
 
-if [[ $LTO = "YES" ]]; then
+if [[ $LTO = "YES" ]] && [[ $CLANG != "YES" ]]; then
   CFLAGS+=" -flto -fuse-linker-plugin"
   CXXFLAGS+=" -flto -fuse-linker-plugin"
+else
+  CFLAGS+=" -flto"
+  CXXFLAGS+=" -flto"
 fi
 
 if [[ $CLANG = "YES" ]]; then
@@ -89,9 +92,11 @@ if [[ $CLANG = "YES" ]]; then
   export CXX="/usr/bin/clang++" ;
   export CPP="/usr/bin/clang -E" ;
   export LD="/usr/bin/lld" ;
+  export AR="/usr/bin/llvm-ar" ;
+  export AS="/usr/bin/llvm-as" ;
   export CCFLAGS+=' -fuse-ld=lld' ;
   export CXXFLAGS+=' -fuse-ld=lld' ;
-  makedepends+=( 'clang' 'lld') ;
+  makedepends+=( 'clang' 'lld' 'llvm') ;
 fi
 
 if [[ $NOTKIT = "YES" ]]; then
