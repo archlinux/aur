@@ -1,31 +1,29 @@
 pkgbase = opensmtpd-git
-	pkgdesc = A FREE implementation of the server-side SMTP protocol. Latest snapshot.
-	pkgver = latest
+	pkgdesc = Security-focused, simple, and performant SMTP server written in C (Git)
+	pkgver = 6.6.0+r2318+g8e53e1bd
 	pkgrel = 1
-	url = http://www.opensmtpd.org/
-	install = opensmtpd-git.install
-	arch = i686
+	url = https://www.opensmtpd.org
 	arch = x86_64
-	license = BSD
-	depends = libevent
-	depends = pam
-	depends = libasr-git
-	provides = opensmtpd
-	conflicts = sendmail
-	conflicts = postfix
-	conflicts = opensmtpd
-	options = emptydirs
-	options = !strip
-	backup = etc/mail/smtpd.conf
-	backup = etc/mail/aliases
-	source = git+https://git@github.com/OpenSMTPD/OpenSMTPD.git#branch=portable
+	license = custom
+	makedepends = git
+	depends = libasr
+	depends = zlib
+	provides = smtp-server
+	provides = smtp-forwarder
+	conflicts = smtp-server
+	conflicts = smtp-forwarder
+	backup = etc/smtpd/smtpd.conf
+	backup = etc/smtpd/aliases
+	source = git+https://github.com/OpenSMTPD/OpenSMTPD#branch=portable
+	source = opensmtpd.sysusers
+	source = opensmtpd.tmpfiles
 	source = smtpd.service
 	source = smtpd.socket
-	source = smtpd.conf.patch
-	sha256sums = SKIP
-	sha256sums = 655ca04a3b95e7424d625e60304387c5d73eb35997a7878089cae94e1dae5b27
-	sha256sums = 32d46de5562d01de445d04c93bcc9f94bf103539b676e449c32e3603a3866cf8
-	sha256sums = da42f59718713c70c24d001604cd123fbde1da4314abbe445347207d0d14f5e4
+	sha512sums = SKIP
+	sha512sums = 95df5a97ef20cbdfb5bb702d0d83397b0f8e205bd85cdce57227a9691d289f14a2fa4bbd85b527e3934d2b1216011e2214cf79589afce6fbb73c8b00d74097b3
+	sha512sums = 318e0e9cf860995fd0c81baa8226c75cc7bf3a221ca5ceb46118ce06903ff30bb337b00fa78afb6e18cf1502362233a3dce04b0e98b2af0937ca97ed68b43f1a
+	sha512sums = b3317315d4f378d7b8e10eac0313abac179be3351e1e0c476386384f788065f53f881224810bcf91662906ec0242ca7ffb6a91e6cbc56dddf1483100bca8b819
+	sha512sums = 806025d000ba34e86338bf127951e853849e077fe6941f7d0f43c362303ed191554f1d983d422f1acec22e89091517237a60da6e7ae6db1cb977fffe666e48c4
 
 pkgname = opensmtpd-git
 
