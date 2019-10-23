@@ -1,5 +1,5 @@
 pkgbase = nginx-http3
-	pkgdesc = Nginx with Cloudflare's http3 path on the top of quiche
+	pkgdesc = Nginx with Cloudflare's http3 patсh on the top of quiche
 	pkgver = 1.16.1
 	pkgrel = 1
 	url = https://github.com/cloudflare/quiche/tree/master/extras/nginx
@@ -25,7 +25,7 @@ pkgbase = nginx-http3
 	conflicts = nginx-custom-dev
 	conflicts = nginx-full
 	conflicts = nginx-libressl
-    conflicts = nginx-mainline-boringssl
+	conflicts = nginx-mainline-boringssl
 	source = https://nginx.org/download/nginx-1.16.1.tar.gz
 	source = git+https://github.com/cloudflare/quiche.git
 	source = service
