@@ -31,7 +31,6 @@ pkgname = yaru-gtk-theme-git
 pkgname = yaru-gnome-shell-theme-git
 	pkgdesc = Yaru default ubuntu gnome shell theme
 	depends = gnome-shell
-	depends = yaru-session
 	provides = yaru-gnome-shell-theme
 	conflicts = yaru-gnome-shell-theme
 
@@ -46,6 +45,7 @@ pkgname = yaru-icon-theme-git
 pkgname = yaru-session-git
 	pkgdesc = Yaru session
 	depends = gnome-shell
+	depends = yaru-gnome-shell-theme
 	provides = yaru-session
 	conflicts = yaru-session
 

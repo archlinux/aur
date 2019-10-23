@@ -31,23 +31,18 @@ build() {
 
 _delete_all_from_pkgdir_except() {
     if [[ "$1" != "sound-theme" ]]; then
-        echo "deleting sound theme"
         rm -r "${pkgdir}"/usr/share/sounds
     fi
     if [[ "$1" != "gtk-theme" ]]; then
-        echo "deleting gtk theme"
         rm -r "${pkgdir}"/usr/share/themes/Yaru{-light,{,-dark}/{gtk-*,index.theme}}
     fi
     if [[ "$1" != "gnome-shell-theme" ]]; then
-        echo "deleting shell theme"
         rm -r "${pkgdir}"/usr/share/{gnome-shell,themes/Yaru{,-dark}/gnome-shell}
     fi
     if [[ "$1" != "icon-theme" ]]; then
-        echo "deleting icon theme"
         rm -r "${pkgdir}"/usr/share/icons
     fi
     if [[ "$1" != "session" ]]; then
-        echo "deleting session"
         rm -r "${pkgdir}"/usr/share/{glib-2.0,xsessions,wayland-sessions}
     fi
 }
@@ -73,7 +68,7 @@ package_yaru-gtk-theme-git() {
 
 package_yaru-gnome-shell-theme-git() {
     pkgdesc="Yaru default ubuntu gnome shell theme"  
-    depends=(gnome-shell yaru-session)
+    depends=(gnome-shell)
     provides=(yaru-gnome-shell-theme)
     conflicts=(yaru-gnome-shell-theme)
     
@@ -93,7 +88,7 @@ package_yaru-icon-theme-git() {
 
 package_yaru-session-git() {
     pkgdesc="Yaru session"
-    depends=(gnome-shell)
+    depends=(gnome-shell yaru-gnome-shell-theme)
     provides=(yaru-session)
     conflicts=(yaru-session)
 
