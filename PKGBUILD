@@ -4,53 +4,58 @@
 # From cpdf-bin
 # Contributor: 2ion <dev@2ion.de>
 
-# From the author:
-# If downloading from Github, obtain the correct source.
-# This means choosing the tag for a particaular version, such as "v2.1.1".
-# The head of the master branch is unstable.
-
-# This means no git version unless you are really into development.
-
 # TODO: Build smpdf when the sources become available.
+# TODO: Is smpdf still needed? I don't see it in the binaries>2.2.1
 # TODO: Remove conflicts when cpdf-bin is fixed
 
 # cpdf-bin
 # TODO: Change conflicts and provides
+# TODO: provies=$pkgver
 # TODO: Add depends camlpdf
 
 set -u
 _pkgname='cpdf'
 pkgname="${_pkgname}"
-pkgver='2.2.1'
-_binver='2.1.1'; _binhash='17372d86935f7541ae0bc7ff0b9eebb721af0cb0' # version 2.1
+pkgver='2.3'
 pkgrel=1
-pkgdesc='Coherent PDF and smpdf to manipulate PDF files including merge, encrypt, decrypt, scale, crop, rotate, bookmarks, stamp, logos, page numbers'
+pkgdesc='Coherent Graphics ## to manipulate PDF files including merge, encrypt, decrypt, scale, crop, rotate, bookmarks, stamp, logos, page numbers'
 arch=('x86_64' 'i686')
 url='http://community.coherentpdf.com'
 license=('custom')
-depends=('camlpdf>=2.2')
+depends=("camlpdf>=${pkgver}")
 makedepends=('ocaml' 'ocaml-findlib')
 conflicts=('cpdf-bin') # temporary
 options=('!makeflags' 'staticlibs')
 
-#_srcdirmast="${_pkgname}-binaries-master"; _srcmastname="${_srcdirmast}"
-_srcdirmast="${_pkgname}-binaries-${_binhash}"; _srcmastname="${_pkgname}-binaries-${_binver}.tar.gz"
-unset _binhash _binver
-
 _srcfile="v${pkgver}"
-#_srcfile='master'
-#_srcfile='8d1ee91bd2390a6eacbc087983d8afec263182db'
 _srcdir="${_pkgname}-source-${_srcfile#v}"; _srcdirname="${_srcdir}"
 
 _giturl="https://github.com/johnwhitington/${_pkgname}-source"
 _verwatch=("${_giturl}/releases.atom" "\s\+<title>v\([^<]\+\)</title>.*" 'f') # RSS
 source=(
-  "${_srcmastname}.tar.gz::https://github.com/coherentgraphics/cpdf-binaries/archive/${_srcdirmast##*-}.tar.gz"
   "${_srcdirname}.tar.gz::${_giturl}/archive/${_srcfile}.tar.gz"
 )
-unset _srcfile _srcmastname _srcdirname
-sha256sums=('55a0de2b225413d7cda3784e6336f40f707a31b8f018c1cd24a8396df9dda65f'
-            '304877313312859fb4155091548bfb47295798367aeddb1d93f6640640335006')
+if [ "$(vercmp "${pkgver}" '2.1.1')" -le 0 ]; then # need smpdf
+  pkgdesc="${pkgdesc//##/cpdf and smpdf}"
+  # https://github.com/coherentgraphics/cpdf-binaries/commits/master
+  declare -gA _binhashes=(
+    [2.1.1]='17372d86935f7541ae0bc7ff0b9eebb721af0cb0'
+    #[2.2]='8e308f25a329e6ac3728a69afdc1ef531a24767c'
+    #[2.3]='0ae87ebc9f077ae95a40abdba761b135424d01e8'
+  )
+  _binver="${pkgver}"; _binhash="${_binhashes[${_binver}]}"; unset _binhashes
+  #_srcdirmast="${_pkgname}-binaries-master"; _srcmastname="${_srcdirmast}"
+  _srcdirmast="${_pkgname}-binaries-${_binhash}"; _srcmastname="${_pkgname}-binaries-${_binver}"
+  unset _binhash _binver
+
+  source+=("${_srcmastname}.tar.gz::https://github.com/coherentgraphics/cpdf-binaries/archive/${_srcdirmast##*-}.tar.gz")
+  unset _srcmastname
+else
+  pkgdesc="${pkgdesc//##/cpdf}"
+fi
+unset _srcfile _srcdirname
+md5sums=('894508d8ad6715b061dd56ad1d784ccc')
+sha256sums=('3ee58bc07ef22f22f467375fc6150b1d1db9d44abeceba0302c7272908d054ee')
 
 _pkgver_disabled() {
   set -u
@@ -59,13 +64,19 @@ _pkgver_disabled() {
   set +u
 }
 
+_setvars() {
+  OCAMLFIND_DESTDIR="${pkgdir}/$(ocamlfind printconf destdir)"
+  OCAMLFIND_LDCONF="${pkgdir}/$(ocamlfind printconf ldconf)"
+}
+
 build() {
   set -u
   cd "${_srcdir}"
 
-  make -s OCAMLFIND_DESTDIR="${pkgdir}/$(ocamlfind printconf destdir)" || :
-  # A broken make, fixed by running it again.
-  make -s
+  local OCAMLFIND_DESTDIR OCAMLFIND_LDCONF; _setvars
+  make -s OCAMLFIND_DESTDIR="${OCAMLFIND_DESTDIR}"
+  set +u; msg2 'A broken make, fixed by running it again.'; set -u
+  make -s OCAMLFIND_DESTDIR="${OCAMLFIND_DESTDIR}"
   set +u
 }
 
@@ -73,22 +84,22 @@ package() {
   set -u
   cd "${_srcdir}"
 
-  local OCAMLFIND_DESTDIR="${pkgdir}/$(ocamlfind printconf destdir)"
+  local OCAMLFIND_DESTDIR OCAMLFIND_LDCONF; _setvars
   install -d "${OCAMLFIND_DESTDIR}"
-  #local OCAMLFIND_LDCONF="${pkgdir}/$(ocamlfind printconf ldconf)"
-  #make install -d OCAMLFIND_DESTDIR="${OCAMLFIND_DESTDIR}" OCAMLFIND_LDCONF="${OCAMLFIND_LDCONF}"
-  make install -d OCAMLFIND_DESTDIR="${OCAMLFIND_DESTDIR}" OCAMLFIND_LDCONF="${pkgdir}/$(ocamlfind printconf ldconf)"
+  make -s install -d OCAMLFIND_DESTDIR="${OCAMLFIND_DESTDIR}" OCAMLFIND_LDCONF="${OCAMLFIND_LDCONF}"
 
-  declare -A _arch=([i686]='Linux32' [x86_64]='Linux64')
-  install -Dpm755 "${srcdir}/${_srcdirmast}/LosslessPDFCompressor/${_arch[${CARCH}]}/smpdf" -t "${pkgdir}/usr/bin/"
-  install -Dpm644 "${srcdir}/${_srcdirmast}/LosslessPDFCompressor/smpdfmanual.pdf" -t "${pkgdir}/usr/share/doc/${_pkgname}/"
+  if [ ! -z "${_srcdirmast:-}" ]; then
+    declare -A _arch=([i686]='Linux32' [x86_64]='Linux64')
+    install -Dpm755 "${srcdir}/${_srcdirmast}/LosslessPDFCompressor/${_arch[${CARCH}]}/smpdf" -t "${pkgdir}/usr/bin/"
+    install -Dpm644 "${srcdir}/${_srcdirmast}/LosslessPDFCompressor/smpdfmanual.pdf" -t "${pkgdir}/usr/share/doc/${_pkgname}/"
+    install -Dpm644 "${srcdir}/${_srcdirmast}/LICENSE" -t "${pkgdir}/usr/share/licenses/${_pkgname}/"
+  fi
 
   install -Dpm755 'cpdf' -t "${pkgdir}/usr/bin/"
   install -Dpm644 'cpdf.1' -t "${pkgdir}/usr/share/man/man1/"
   sed -e "s:cpdfmanual.pdf:/usr/share/doc/${_pkgname}/&:g" -i "${pkgdir}/usr/share/man/man1/cpdf.1"
   install -Dpm644 'cpdfmanual.pdf' -t "${pkgdir}/usr/share/doc/${_pkgname}/"
 
-  install -Dpm644 "${srcdir}/${_srcdirmast}/LICENSE" -t "${pkgdir}/usr/share/licenses/${_pkgname}/"
   set +u
 }
 set +u
