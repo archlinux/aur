@@ -1,4 +1,4 @@
-# Maintainer: Kewl <xrjy@nygb.rh.bet>(rot13)
+# Maintainer: Kewl <(rot13)xrjy@nygb.rh.bet>
 
 pkgname='emborg'
 pkgver=1.8
