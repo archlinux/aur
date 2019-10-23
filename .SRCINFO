@@ -1,7 +1,7 @@
 pkgbase = comix
 	pkgdesc = A user-friendly, customizable comic/image viewer
 	pkgver = 4.0.4
-	pkgrel = 1
+	pkgrel = 3
 	url = https://sourceforge.net/projects/comix
 	arch = x86_64
 	license = GPLv2
@@ -11,6 +11,8 @@ pkgbase = comix
 	depends = unrar
 	depends = python2-pillow
 	depends = pygtk
+	optdepends = gconf
+	conflicts = mcomix
 	options = emptydirs
 	source = https://downloads.sourceforge.net/project/comix/comix/comix-4.0.4/comix-4.0.4.tar.gz?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fcomix%2Ffiles%2F
 	md5sums = 029227a77b122f7080ee0280d41bee78
