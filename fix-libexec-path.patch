@@ -1,0 +1,23 @@
+diff --git a/bin/bats b/bin/bats
+index a852306..ce7f883 100755
+--- a/bin/bats
++++ b/bin/bats
+@@ -47,4 +47,4 @@ bats_resolve_absolute_root_dir() {
+
+ export BATS_ROOT
+ bats_resolve_absolute_root_dir "$0" 'BATS_ROOT'
+-exec "$BATS_ROOT/libexec/bats-core/bats" "$@"
++exec "$BATS_ROOT/lib/bats/bats" "$@"
+diff --git a/libexec/bats-core/bats b/libexec/bats-core/bats
+index 256af43..bf92f11 100755
+--- a/libexec/bats-core/bats
++++ b/libexec/bats-core/bats
+@@ -55,7 +55,7 @@ expand_path() {
+
+ export BATS_CWD="$PWD"
+ export BATS_TEST_PATTERN="^[[:blank:]]*@test[[:blank:]]+(.*[^[:blank:]])[[:blank:]]+\{(.*)\$"
+-export PATH="$BATS_ROOT/libexec/bats-core:$PATH"
++export PATH="$BATS_ROOT/lib/bats:$PATH"
+
+ options=()
+ arguments=()

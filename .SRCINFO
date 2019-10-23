@@ -1,0 +1,15 @@
+pkgbase = bats-core
+	pkgdesc = Bash Automated Testing System
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/bats-core/bats-core
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = bash
+	conflicts = bash-bats
+	source = git+https://github.com/bats-core/bats-core.git#tag=v1.1.0
+	md5sums = SKIP
+
+pkgname = bats-core
+
