@@ -8,7 +8,7 @@
 
 pkgname=xneur-devel-git
 pkgver=0.20.0
-pkgrel=19
+pkgrel=20
 epoch=
 pkgdesc="X Neural Switcher detects the input language and corrects keyboard layout. Git version"
 arch=('any')
@@ -42,8 +42,8 @@ build() {
 	fi
 
 	cd "$srcdir/xneur-devel/xneur"
-        ./autogen.sh --without-xosd --with-gtk=gtk2 --sysconfdir=/etc --prefix=/usr
-	./configure --without-xosd --with-gtk=gtk2 --sysconfdir=/etc --prefix=/usr
+        ./autogen.sh --prefix=/usr/ --sysconfdir=/etc --without-xosd --with-gtk=gtk2
+	./configure --prefix=/usr/ --sysconfdir=/etc --without-xosd --with-gtk=gtk2
 	cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
 	cmake --build build
 }
@@ -53,5 +53,6 @@ package() {
 
 	cd "$srcdir/xneur-devel/xneur/build"
 	make DESTDIR="$pkgdir/" install
+        mv -f "$pkgdir/usr/local/*" "$pkgdir/usr/"
 }
 
