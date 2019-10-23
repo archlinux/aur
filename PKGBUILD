@@ -1,6 +1,6 @@
 # Maintainer: Jon Noble <jonnobleuk@gmail.com>
 pkgname=chestnut
-pkgver=0.0.5
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="An open-source NLE video editor "
 arch=(x86_64)
@@ -15,7 +15,7 @@ replaces=()
 backup=()
 options=()
 install=
-source=('chestnut::git+https://github.com/jonno85uk/chestnut.git#commit=4c90e4e')
+source=('chestnut::git+https://github.com/jonno85uk/chestnut.git#commit=d46dbb5')
 noextract=()
 md5sums=('SKIP')
 
