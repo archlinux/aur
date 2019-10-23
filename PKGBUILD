@@ -8,7 +8,7 @@
 
 pkgname=signal
 pkgver=1.27.4
-pkgrel=1
+pkgrel=2
 license=('GPL3')
 pkgdesc='Private messenger for the desktop'
 depends=('electron' 'openssl-1.0')
@@ -29,6 +29,10 @@ sha512sums=('SKIP'
 
 prepare() {
   cd "${pkgname}-git-repo"
+  
+  # Set system electron version
+  _installed_electron_version=$(pacman -Q electron | cut -d' ' -f2 | cut -d'-' -f1)
+  sed -E -i 's/"electron": "[0-9.]+"/"electron": "'$_installed_electron_version'"/' package.json
 
   # Allow higher node versions
   sed -i 's/"node": "/&>=/' package.json

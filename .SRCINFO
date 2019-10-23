@@ -1,7 +1,7 @@
 pkgbase = signal
 	pkgdesc = Private messenger for the desktop
 	pkgver = 1.27.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/signalapp/Signal-Desktop
 	arch = i686
 	arch = x86_64
