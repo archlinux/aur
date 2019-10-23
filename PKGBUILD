@@ -1,13 +1,13 @@
 # Contributor: Dave Reisner <d@falconindy.com>
 
 pkgname=pkgfile-git
-pkgver=21
+pkgver=21.38.gaa06367
 pkgrel=1
 pkgdesc="a pacman .files metadata explorer"
 arch=('x86_64' 'i686')
 url="http://github.com/falconindy/pkgfile"
 license=('MIT')
-depends=('libarchive' 'curl' 'pcre' 'pacman')
+depends=('libarchive' 'curl' 'pcre' 'pacman' 'systemd-libs')
 makedepends=('git' 'perl' 'meson')
 checkdepends=('python' 'gtest' 'gmock')
 conflicts=('pkgfile')

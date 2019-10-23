@@ -1,6 +1,6 @@
 pkgbase = pkgfile-git
 	pkgdesc = a pacman .files metadata explorer
-	pkgver = 21
+	pkgver = 21.38.gaa06367
 	pkgrel = 1
 	url = http://github.com/falconindy/pkgfile
 	install = pkgfile.install
@@ -17,6 +17,7 @@ pkgbase = pkgfile-git
 	depends = curl
 	depends = pcre
 	depends = pacman
+	depends = systemd-libs
 	provides = pkgfile
 	conflicts = pkgfile
 	source = git+https://github.com/falconindy/pkgfile
