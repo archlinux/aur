@@ -1,7 +1,7 @@
 pkgbase = ialauncher-git
 	pkgdesc = Play all of the Internet Archive’s MS-DOS games offline!
-	pkgver = 1
-	pkgrel = 2
+	pkgver = r45.291048f
+	pkgrel = 1
 	url = https://github.com/rtts/ialauncher
 	arch = x86_64
 	license = GPL3
@@ -12,9 +12,7 @@ pkgbase = ialauncher-git
 	depends = gst-plugins-bad
 	depends = python-jinja
 	source = ialauncher::git+https://github.com/rtts/ialauncher.git
-	source = gamespath.patch
 	sha256sums = SKIP
-	sha256sums = 3d1fc7b7ad96bcbeb2f3a8331df7c157c9720c4f3c685715cba0aa1a98a2c166
 
 pkgname = ialauncher-git
 
