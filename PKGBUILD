@@ -1,14 +1,14 @@
 # Maintainer: Nikolay Korotkiy <sikmir@gmail.com>
 _orgname=OpenOrienteering
 _pkgname=mapper
-_branch=dev
+_branch=master
 _use_gh_api=true
 _gh_api_url="https://api.github.com/repos/${_orgname}/${_pkgname}"
 _wl_project=${_orgname}
 _wl_hz="https://hosted.weblate.org/healthz/"
 _wl_dl="https://hosted.weblate.org/download/${_wl_project}"
 pkgname=${_orgname,,}-${_pkgname}-git
-pkgver=20190820.3.r0.g90083097
+pkgver=0.9.0.r4.g608eb9ee
 pkgrel=1
 pkgdesc='Map drawing program from OpenOrienteering'
 arch=(x86_64)
@@ -34,12 +34,12 @@ sha256sums=('SKIP')
 
 pkgver() {
   if [ "${_use_gh_api}" = true ]; then
-    read -r tag_name tag_sha <<<$(curl -s "${_gh_api_url}/tags" | \
-      jq -r '.[0]|[.name,.commit.sha]|@sh' | sed "s/'//g")
+    read -r tag_name tag_sha <<<$(curl -s "${_gh_api_url}/releases" | \
+      jq -r '.[0]|[.tag_name,.target_commitish]|@sh' | sed "s/'//g")
     head=$(curl -s "${_gh_api_url}/git/refs/heads/${_branch}" | \
       jq -r '.object.sha')
     count=$(curl -s "${_gh_api_url}/compare/${tag_sha}...${head}" | \
-      jq -r '.total_commits')
+      jq -r '.behind_by')
 
     tag_name=${tag_name//-/.} # pkgver is not allowed to contain hyphens
     printf "%s.r%s.g%.8s" "${tag_name#?}" "${count}" "${head}"
