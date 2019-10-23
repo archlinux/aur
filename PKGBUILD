@@ -45,4 +45,4 @@ package() {
   rm -f "${pkgdir}/.PKGINFO"
 # 	find "${pkgdir}/usr/bin" -type d -exec chmod 755 '{}' \;
 }
-md5sums=('baa8291ad50b7827c373cca0396f666c')
+md5sums=('9fa46209a6f90e8d96a0092b7406493a')
