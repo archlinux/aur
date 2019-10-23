@@ -1,8 +1,8 @@
 # Maintainer: Nicola Squartini <tensor5@gmail.com>
 
 pkgname=electron4
-pkgver=4.2.11
-_commit=530bf8b69a9364e0aa24f5c851df401abfb40eb0
+pkgver=4.2.12
+_commit=3e0e966662c0ef2994d52566aaeb0850e18cdb3e
 _chromiumver=69.0.3497.128
 pkgrel=1
 pkgdesc='Build cross platform desktop apps with web technologies'
@@ -21,6 +21,7 @@ source=('git+https://github.com/electron/electron.git'
         'electron4.desktop'
         'default_app-icon.patch'
         'use-system-libraries-in-node.patch'
+        'chromium-SIOCGSTAMP.patch'
         'chromium-skia-harmony.patch'
         'chromium-system-icu.patch'
         'fix-cfi-icall-failure-with-use_system_libjpeg-true.patch'
@@ -31,6 +32,7 @@ sha256sums=('SKIP'
             '6a4f7164c60aede9bdc866a5f8b6a1bb473e498a6dcea9bf73f64843af34f0aa'
             '37372e8afd7c2405a8e50bca95c98b3c78e4c9b681cbef16da9c7a84b45e41e3'
             '3a81953701ac976a311db4e17999e67ab7c6de97ff63388f287d6497ef9adb9b'
+            '7acc4dd59b70fb64f602ceda2846ccddcb46f64a18f912658d1034965f6c1276'
             'feca54ab09ac0fc9d0626770a6b899a6ac5a12173c7d0c1005bc3964ec83e7b3'
             'c4f2d1bed9034c02b8806f00c2e8165df24de467803855904bff709ceaf11af5'
             '97b421bc60a4abdf37de2d88a51b973e9f68fb44d1eccd464adfb3d9f5d71478'
@@ -128,6 +130,7 @@ prepare() {
       "${_system_libs[@]}"
 
   echo "Applying local patches..."
+  patch -Np1 -i ../chromium-SIOCGSTAMP.patch
   patch -Np4 -i ../chromium-skia-harmony.patch
   patch -Np1 -i ../chromium-system-icu.patch
   patch -Np1 -i ../fix-cfi-icall-failure-with-use_system_libjpeg-true.patch
