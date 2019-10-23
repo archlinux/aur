@@ -1,6 +1,6 @@
 pkgbase = gonvim-fork
-	pkgdesc = Fork of gonvim for the purpose of maintenance and enhancement
-	pkgver = 0.3.4
+	pkgdesc = Neovim GUI written in Golang - fork for the purpose of maintenance and enhancement
+	pkgver = 0.3.5
 	pkgrel = 1
 	url = https://github.com/akiyosi/gonvim
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = gonvim-fork
 	depends = qt5-webengine
 	provides = gonvim
 	conflicts = gonvim
-	source = https://github.com/akiyosi/gonvim/releases/download/v0.3.4/Gonvim-0.3.4-linux.tar.gz
+	source = https://github.com/akiyosi/gonvim/releases/download/v0.3.5/Gonvim-0.3.5-linux.tar.gz
 	sha256sums = e635a9897be4c7766fe6b9016d90d5779119713d7bb8aaad1973ffab9747e954
 
 pkgname = gonvim-fork
