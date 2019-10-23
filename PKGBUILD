@@ -2,8 +2,8 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-sdcv
-pkgver=2.7
-pkgrel=2
+pkgver=2.9
+pkgrel=1
 pkgdesc="An extension to lookup words through sdcv (StarDict Console Version) in Emacs."
 arch=('any')
 url="https://www.emacswiki.org/emacs/Sdcv"
@@ -11,7 +11,7 @@ license=('GPL')
 depends=('emacs' 'sdcv' 'emacs-showtip' 'emacs-posframe')
 install=$pkgname.install
 source=(https://www.emacswiki.org/emacs/download/sdcv.el)
-sha256sums=('6e24f5a8df40be8b865fd7b55a60f69568f664fb066bd05c58202c61eb71e120')
+sha256sums=('4bc93558cb9ae6d83cd28c25e147a31c7b1204bf148285360b350fb71c9eb7c7')
 
 build() {
   emacs -Q -batch -L /usr/share/emacs/site-lisp -f batch-byte-compile sdcv.el
