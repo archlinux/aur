@@ -5,7 +5,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium-ozone
-pkgver=77.0.3865.120
+pkgver=78.0.3904.70
 pkgrel=1
 _launcher_ver=6
 _meta_browser_sha=34ef417cdcf848839b59c086be046c2b4a96ac32
@@ -29,37 +29,25 @@ install=chromium.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
         meta-browser-${_meta_browser_sha}.tar.gz::https://github.com/OSSystems/meta-browser/archive/${_meta_browser_sha}.tar.gz
-        include-memory-in-one_euro_filter.h.patch
-        link-against-harfbuzz-subset.patch
-        fix-wrong-string-initialization-in-LinkedHashSet.patch
-        include-limits-in-web_time_range.cc.patch
+        add-missing-include-for-unique_ptr.patch
+        dns_util-make-DohUpgradeEntry-non-const.patch
+        fix-shutdown-crash-in-ProfileManager.patch
         chromium-system-icu.patch
         chromium-system-zlib.patch
+        fix-spammy-unique-font-matching-log.patch
         chromium-widevine.patch
-        chromium-skia-harmony.patch
-        0001-ozone-wayland-Sway-avoid-sending-presentation-early.patch
-        0002-ozone-wayland-Use-mutex-before-accessing-surfaces-ma.patch
-        0003-ozone-wayland-Stop-using-wl_display_roundtrip.patch
-        0004-ozone-wayland-Extract-window-management-methods-to-o.patch
-        0005-ozone-wayland-Do-not-use-possibly-blocking-dispatch-.patch
-        0006-ozone-wayland-Implement-CreateNativePixmapAsync.patch)
-sha256sums=('d792f9b09b1dcfd64e68f47a611c540dd1383dd9abd78ca1e06b2a7e2ff06af8'
+        chromium-skia-harmony.patch)
+sha256sums=('ddc5794097d65ba19c1ae359c2057b08921e7b38b7afe9d5ec45f5e8b9a87462'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
             '892026717ac487e1a92073d7a363a7f4a12b06ed6ac61825842ad734eda857d7'
-            '33a5bcd1df2cc7aa7467fa882790ef143a4497d2b704c9e1ea86c8ede90c2d90'
-            'ab986e4b723dfcedab1bc8dcada07526facae28a8a7ff3345f658532c1d99987'
-            '840f555020751ec284dca35b9317a9dd7dc69fcb910ea1cae2dd7cc9b237dfb7'
-            'd3dfe3c86901a11636972a774ed6c941ac76e38c9e4a384f458043a0a03291a9'
+            '49052e8aa630c4aa57bf46823edc32b7b309493275163c3bb3f9fd390c73356e'
+            '69694ab12a5ced389916c0c5e8c7bdc191544f576b134ddfb2fe9d4ed9ec4494'
+            '4f81612c28957987f7344d8ce2b95a4a63136a8319c9751819436b11c62df057'
             'e73cc2ee8d3ea35aab18c478d76fdfc68ca4463e1e10306fa1e738c03b3f26b5'
-            '0f7ba6882844542a7226b419dfefc5b6a16b5b7882698bd773b5ee9148aa6e87'
+            'eb67eda4945a89c3b90473fa8dc20637511ca4dcb58879a8ed6bf403700ca9c8'
+            '6fbffe59b886195b92c9a55137cef83021c16593f49714acb20023633e3ebb19'
             'd081f2ef8793544685aad35dea75a7e6264a2cb987ff3541e6377f4a3650a28b'
-            '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1'
-            'c43f54e180a9eeed31ef6b0e05ec98afbb5fc1197c71e119293784bb37579439'
-            '3d83763a5ccd4a8dd59a4d1ffbae3fcfba7688e32b6acd03505f779c7bfa8d02'
-            '811567d57cf22139e6ace8c8fdbc329a24f586f68214daf6dd224f56cac792b3'
-            '5c4b5b596b2b3bdcf33b865d44f1daa0787fc52a2a1d6ac82a6f03287ca6355a'
-            '231147345c0f175263cacddb62c97c7b13897870f5ebac9fa6feabf9cc28ea2d'
-            'bec73f9f8b88e2c83549fc851f21fd7d0a6db714f713147f253eb7de17508efc')
+            '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
@@ -73,7 +61,7 @@ declare -gA _system_libs=(
   [libdrm]=
   [libjpeg]=libjpeg
   #[libpng]=libpng            # https://crbug.com/752403#c10
-  [libvpx]=libvpx
+  #[libvpx]=libvpx    # https://github.com/webmproject/libvpx/commit/5a0242ba5c
   [libwebp]=libwebp
   [libxml]=libxml2
   [libxslt]=libxslt
@@ -103,14 +91,7 @@ _mb_wayland_patches=(
   # 'V4L2/0002-Add-mmap-via-libv4l-to-generic_v4l2_device.patch'
 )
 
-_bugfix_patches=(
-  '0001-ozone-wayland-Sway-avoid-sending-presentation-early.patch'
-  '0002-ozone-wayland-Use-mutex-before-accessing-surfaces-ma.patch'
-  '0003-ozone-wayland-Stop-using-wl_display_roundtrip.patch'
-  '0004-ozone-wayland-Extract-window-management-methods-to-o.patch'
-  '0005-ozone-wayland-Do-not-use-possibly-blocking-dispatch-.patch'
-  '0006-ozone-wayland-Implement-CreateNativePixmapAsync.patch'
-)
+_bugfix_patches=()
 
 prepare() {
   cd "$srcdir/chromium-$pkgver"
@@ -125,21 +106,21 @@ prepare() {
     third_party/blink/renderer/core/xml/parser/xml_document_parser.cc \
     third_party/libxml/chromium/libxml_utils.cc
 
-  # https://crbug.com/819294
-  patch -Np1 -i ../include-memory-in-one_euro_filter.h.patch
+  # Missing include in third_party/blink/public/platform/web_rtc_rtp_source.h
+  patch -Np1 -i ../add-missing-include-for-unique_ptr.patch
 
-  # https://groups.google.com/a/chromium.org/d/msg/chromium-packagers/UyJsVJ5QqWo/jSv5z7-rEQAJ
-  patch -Np1 -i ../link-against-harfbuzz-subset.patch
+  # https://crbug.com/957519#c23
+  patch -Np1 -i ../dns_util-make-DohUpgradeEntry-non-const.patch
 
-  # https://crbug.com/980025
-  patch -Np1 -i ../fix-wrong-string-initialization-in-LinkedHashSet.patch
-
-  # https://crbug.com/992832
-  patch -Np1 -i ../include-limits-in-web_time_range.cc.patch
+  # https://crbug.com/1005244
+  patch -Np1 -i ../fix-shutdown-crash-in-ProfileManager.patch
 
   # Fixes from Gentoo
   patch -Np1 -i ../chromium-system-icu.patch
   patch -Np1 -i ../chromium-system-zlib.patch
+
+  # https://crbug.com/1005508
+  patch -Np1 -i ../fix-spammy-unique-font-matching-log.patch
 
   # Load Widevine CDM if available
   patch -Np1 -i ../chromium-widevine.patch
@@ -211,7 +192,8 @@ build() {
     'enable_widevine=true'
     'use_ozone=true'
     'ozone_platform_wayland=true'
-    'ozone_auto_platforms=false'
+    'ozone_platform_x11=true'
+    'ozone_auto_platforms=fals    e'
     'use_xkbcommon=true'
     'use_system_libwayland=true'
     'use_system_minigbm=true'
