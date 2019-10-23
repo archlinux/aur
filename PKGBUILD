@@ -2,7 +2,7 @@
 # Maintainer: Tod Jackson <tod.jackson@gmail.com>
 pkgname=comix
 pkgver=4.0.4
-pkgrel=4
+pkgrel=5
 epoch=
 pkgdesc="A user-friendly, customizable comic/image viewer"
 arch=('any')
@@ -34,6 +34,6 @@ package() {
   python2 install.py install --dir "$pkgdir/usr/"
   # File conflicts
   rm -rf "$pkgdir/usr/share/mime/"
-  mkdir -p "$pkgdir/usr/share/mime/"
-  cp "mime/comix.xml" "$pkgdir/usr/share/mime/"
+  mkdir -p "$pkgdir/usr/share/mime/packages/"
+  cp "mime/comix.xml" "$pkgdir/usr/share/mime/packages/"
 }

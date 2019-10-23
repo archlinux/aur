@@ -1,7 +1,7 @@
 pkgbase = comix
 	pkgdesc = A user-friendly, customizable comic/image viewer
 	pkgver = 4.0.4
-	pkgrel = 4
+	pkgrel = 5
 	url = https://sourceforge.net/projects/comix
 	arch = any
 	license = GPL2
