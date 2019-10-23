@@ -1,7 +1,7 @@
 pkgbase = redsocks2-git
 	pkgdesc = redsocks2 adapted to compile with openssl 1.0
-	pkgver = 0.66.r63.gb425c84
-	pkgrel = 5
+	pkgver = release.0.67.r10.gbf24acf
+	pkgrel = 1
 	url = https://github.com/semigodking/redsocks
 	install = redsocks2.install
 	arch = i686

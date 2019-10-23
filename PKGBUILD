@@ -4,8 +4,8 @@
 # Submitter: fluffylime <fluffylime@gmail.com>
 
 pkgname=redsocks2-git
-pkgver=0.66.r63.gb425c84
-pkgrel=5
+pkgver=release.0.67.r10.gbf24acf
+pkgrel=1
 pkgdesc='redsocks2 adapted to compile with openssl 1.0'
 arch=('i686' 'x86_64')
 url='https://github.com/semigodking/redsocks'
@@ -29,13 +29,14 @@ md5sums=('SKIP'
 pkgver() {
   cd "$pkgname"
 
-  git describe | sed -E 's/([^-]*-g)/r\1/;s/-/./g;s/release.//g'
+  # git describe | sed -E 's/([^-]*-g)/r\1/;s/-/./g;s/release.//g'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
   cd "$pkgname"
 
-  make
+  make DISABLE_SHADOWSOCKS=true
 }
 
 package() {
