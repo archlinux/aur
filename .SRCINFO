@@ -1,6 +1,6 @@
 pkgbase = clean-chroot-manager
 	pkgdesc = Wrapper for managing clean chroot builds with local repo therein.
-	pkgver = 2.102
+	pkgver = 2.103
 	pkgrel = 1
 	url = https://github.com/graysky2/clean-chroot-manager
 	install = ccm.install
@@ -9,11 +9,11 @@ pkgbase = clean-chroot-manager
 	depends = devtools>=20190821-1
 	depends = rsync
 	depends = libarchive>=3.3.3
-	depends = pacman<5.2
+	depends = pacman>=5.2
 	conflicts = clean_chroot_manager
 	replaces = clean_chroot_manager
-	source = clean-chroot-manager-2.102.tar.gz::https://github.com/graysky2/clean-chroot-manager/archive/v2.102.tar.gz
-	sha256sums = 187a35c118e524a2dfb3d6dfaeb72fa21d1266f48e0bfb8cec1297a99153cceb
+	source = clean-chroot-manager-2.103.tar.gz::https://github.com/graysky2/clean-chroot-manager/archive/v2.103.tar.gz
+	sha256sums = 989ea8863bc2fa5c0804a61b29227de14c0798ac218b38a4f80617a9192437ad
 
 pkgname = clean-chroot-manager
 
