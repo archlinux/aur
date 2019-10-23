@@ -12,7 +12,6 @@ depends=('unrar' 'python2-pillow' 'pygtk')
 makedepends=('tar' 'pygtk' 'python2-pillow')
 optdepends=('gconf')
 conflicts=('mcomix')
-options=('emptydirs')
 source=("https://downloads.sourceforge.net/project/comix/comix/comix-4.0.4/comix-4.0.4.tar.gz?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fcomix%2Ffiles%2F")
 md5sums=('029227a77b122f7080ee0280d41bee78')
 
@@ -35,6 +34,5 @@ package() {
   # File conflicts
   rm -rf "$pkgdir/usr/share/mime/"
   mkdir -p "$pkgdir/usr/share/mime/"
-  find ./ -name comix.xml
   cp "mime/comix.xml" "$pkgdir/usr/share/mime/"
 }
