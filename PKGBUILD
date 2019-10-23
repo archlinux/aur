@@ -22,8 +22,7 @@ sha256sums=('SKIP')
 pkgver() {
     cd "$_gitname"
     printf '0.r%s.%s' \
-        "$(git rev-list --count HEAD)" "$(git rev-parse --short
-HEAD)"
+        "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
