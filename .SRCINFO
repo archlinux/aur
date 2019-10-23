@@ -1,0 +1,22 @@
+pkgbase = gister-git
+	pkgdesc = A command line tool for managing GitHub gists
+	pkgver = 2.4.0.r0.gba6561e
+	pkgrel = 1
+	url = https://github.com/weakish/gister
+	arch = any
+	license = Apache 2.0
+	depends = curl
+	depends = git
+	depends = gist
+	depends = jq
+	depends = ruby
+	depends = xclip
+	optdepends = legit-git: more streamlined syncing of gist repository
+	optdepends = codesearch-git: faster searching of gists
+	provides = gister
+	conflicts = gister
+	source = gister::git://github.com/weakish/gister.git
+	sha256sums = SKIP
+
+pkgname = gister-git
+
