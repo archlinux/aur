@@ -1,0 +1,16 @@
+pkgbase = lepton-appimage
+	pkgdesc = Lepton is a lean code snippet manager based on GitHub Gist
+	pkgver = 1.8.1
+	pkgrel = 1
+	url = https://hackjutsu.com/Lepton/
+	arch = x86_64
+	license = MIT
+	provides = lepton
+	options = !strip
+	source = https://github.com/hackjutsu/lepton/releases/download/v1.8.1/lepton-1.8.1-x86_64.appimage
+	source = lepton.sh
+	sha256sums = caf9f1dc381f919826c683159b5d7662e4955cb587a4e50949dbdc2f5265ef39
+	sha256sums = 2d1135bf4ffccd9328445d6f20a2418d8b1af3e06591743c93a73378d2314b26
+
+pkgname = lepton-appimage
+
