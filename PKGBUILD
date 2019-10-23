@@ -2,7 +2,7 @@
 pkgname=tallow
 pkgdesc="Block hosts that attempt to bruteforce SSH using the journald API"
 
-pkgver="16"
+pkgver="17"
 pkgrel=1
 
 arch=('x86_64')
@@ -19,11 +19,11 @@ makedepends=(
 url="https://github.com/clearlinux/${pkgname}"
 
 source=(
-        ${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz
+        ${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz
 )
 
 sha256sums=(
-    '290dede05629e52778623f3d6561396bfa82567fcdeb3b2ff5499f962d581264'
+    'c3905891a7cb7e7d3be232c8d59be5f58965636d9d97affbfe8f2db6aa5e1c36'
 )
 
 build() {

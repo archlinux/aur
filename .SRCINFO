@@ -1,6 +1,6 @@
 pkgbase = tallow
 	pkgdesc = Block hosts that attempt to bruteforce SSH using the journald API
-	pkgver = 16
+	pkgver = 17
 	pkgrel = 1
 	url = https://github.com/clearlinux/tallow
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = tallow
 	makedepends = pkg-config
 	makedepends = grep
 	makedepends = gawk
-	source = https://github.com/clearlinux/tallow/releases/download/v16/tallow-16.tar.gz
-	sha256sums = 290dede05629e52778623f3d6561396bfa82567fcdeb3b2ff5499f962d581264
+	source = https://github.com/clearlinux/tallow/releases/download/v17/tallow-17.tar.xz
+	sha256sums = c3905891a7cb7e7d3be232c8d59be5f58965636d9d97affbfe8f2db6aa5e1c36
 
 pkgname = tallow
 
