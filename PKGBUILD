@@ -4,7 +4,7 @@ _gitname=pyqtws
 _gittag=0.1.3
 pkgver=$_gittag
 pkgrel=1
-pkgdesc='Standalone web-app container based on qt5-webengine'
+pkgdesc='Web-app container, with multimedia apps (YouTube, Netflix, Twitch, VVVVID, and RaiPlay),  productivity suites (Microsoft Office 365, Skype, Google Office, and Gmail), and others (WhatsApp web and Wikipedia)'
 arch=('i686' 'x86_64')
 url='https://github.com/intersimone999/pyqtws'
 license=('MIT')
@@ -12,13 +12,6 @@ depends=('xdg-utils' 'qt5-webengine' 'python' 'python-pip')
 makedepends=('git')
 source=("git+${url}.git")
 sha256sums=('SKIP')
-
-# pkgver() {
-#    cd ${srcdir}/${_gitname}
-#    
-#    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-# 
-# }
 
 build() {
     cd "${srcdir}/${_gitname}"
