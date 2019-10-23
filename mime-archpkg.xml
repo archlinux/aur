@@ -16,7 +16,11 @@
       <sub-class-of type="application/x-xz-compressed-tar"/>
       <sub-class-of type="application/x-compressed-tar"/>
       -->
+      <glob pattern="*.pkg.tar.zst"/>
       <glob pattern="*.pkg.tar.xz"/>
+      <glob pattern="*.pkg.tar.lzo"/>
+      <glob pattern="*.pkg.tar.lz4"/>
+      <glob pattern="*.pkg.tar.bz2"/>
       <glob pattern="*.pkg.tar.gz"/>
       <glob pattern="*.pkg.tar"/>
    </mime-type>

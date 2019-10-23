@@ -1,7 +1,7 @@
-# Contributor: grimi <grimi at poczta dot fm>
+# Contributor: grimi
 
 pkgname=mime-archpkg
-pkgver=0.3.9.2
+pkgver=0.3.9.3
 pkgrel=1
 pkgdesc="mime type for archlinux packages"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('shared-mime-info' 'gtk-update-icon-cache' 'librsvg')
 install=${pkgname}.install
 source=(${pkgname}.{xml,sh} {install,update,remove}.hook hook-script.sh
         {hicolor,gnome,Tango,oxygen,nuoveXT2,Faenza,Faience,NITRUX,Numix,breeze,FaenzaFlattr2-Zephyr,elementary,Paper,Papirus,Emerald}.svgz)
-sha256sums=('e3fc45b1121fa845a245c115704715ec0b6a17860a507202cc5e1b02d01c797b'
+sha256sums=('b6754602d6d71e80b6966ce7927fa355b1639be89f882ad9934237ed0c99f7f1'
             'eb942ad2f00cf95229d59a71462b49fe98ad08eb59b0a826087608f222b8da3b'
             'fa24289460397891c692d4a13c27b76065075b27153685ce9adf2890f41936db'
             '6d2ee985ad7ae820d3b9d4d6016c56749ccbbe2aa2649f08794d5efeca32f05a'

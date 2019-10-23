@@ -1,6 +1,6 @@
 pkgbase = mime-archpkg
 	pkgdesc = mime type for archlinux packages
-	pkgver = 0.3.9.2
+	pkgver = 0.3.9.3
 	pkgrel = 1
 	url = http://www.archlinux.org
 	install = mime-archpkg.install
@@ -30,7 +30,7 @@ pkgbase = mime-archpkg
 	source = Paper.svgz
 	source = Papirus.svgz
 	source = Emerald.svgz
-	sha256sums = e3fc45b1121fa845a245c115704715ec0b6a17860a507202cc5e1b02d01c797b
+	sha256sums = b6754602d6d71e80b6966ce7927fa355b1639be89f882ad9934237ed0c99f7f1
 	sha256sums = eb942ad2f00cf95229d59a71462b49fe98ad08eb59b0a826087608f222b8da3b
 	sha256sums = fa24289460397891c692d4a13c27b76065075b27153685ce9adf2890f41936db
 	sha256sums = 6d2ee985ad7ae820d3b9d4d6016c56749ccbbe2aa2649f08794d5efeca32f05a
