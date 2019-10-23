@@ -1,13 +1,13 @@
 pkgbase = openaero
 	pkgdesc = Entirely open source drivers and utilities for your Gigabyte Aero Laptops on GNU/Linux.
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/blmhemu/openaero
 	arch = any
 	license = GPL2
 	makedepends = python-setuptools
-	source = https://github.com/blmhemu/openaero/releases/download/v0.1.0/openaero-0.1.0.tar.gz
-	sha256sums = ec5b91874b9646c572496363a8d822aac81bed906ec626d8ac51050604a75108
+	source = https://github.com/blmhemu/openaero/archive/v0.1.1.tar.gz
+	sha256sums = e79d5288236723b2bbcaf9c219b3f2f0e3486d8e23ab477cb769828733558eea
 
 pkgname = openaero-driver-dkms
 	pkgdesc = Kernel driver for Aero devices (DKMS-variant)
