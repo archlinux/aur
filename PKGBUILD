@@ -29,18 +29,36 @@ build() {
     ninja -C build
 }
 
+_delete_all_from_pkgdir_except() {
+    if [[ "$1" != "sound-theme" ]]; then
+        echo "deleting sound theme"
+        rm -r "${pkgdir}"/usr/share/sounds
+    fi
+    if [[ "$1" != "gtk-theme" ]]; then
+        echo "deleting gtk theme"
+        rm -r "${pkgdir}"/usr/share/themes/Yaru{-light,{,-dark}/{gtk-*,index.theme}}
+    fi
+    if [[ "$1" != "gnome-shell-theme" ]]; then
+        echo "deleting shell theme"
+        rm -r "${pkgdir}"/usr/share/{gnome-shell,themes/Yaru{,-dark}/gnome-shell}
+    fi
+    if [[ "$1" != "icon-theme" ]]; then
+        echo "deleting icon theme"
+        rm -r "${pkgdir}"/usr/share/icons
+    fi
+    if [[ "$1" != "session" ]]; then
+        echo "deleting session"
+        rm -r "${pkgdir}"/usr/share/{glib-2.0,xsessions,wayland-sessions}
+    fi
+}
+
 package_yaru-sound-theme-git() {
     pkgdesc="Yaru default ubuntu sound theme"
     provides=(yaru-sound-theme)
     conflicts=(yaru-sound-theme)
 
-    DESTDIR="$pkgdir" ninja -C build install
-    rm -r "$pkgdir/usr/share/glib-2.0"
-    rm -r "$pkgdir/usr/share/xsessions"
-    rm -r "$pkgdir/usr/share/wayland-sessions"
-    rm -r "$pkgdir/usr/share/icons"
-    rm -r "$pkgdir/usr/share/themes"
-    rm -r "$pkgdir/usr/share/gnome-shell"
+    DESTDIR="$pkgdir" ninja -C build install 2>&1 >> install.log
+    _delete_all_from_pkgdir_except "sound-theme"
 }
 
 package_yaru-gtk-theme-git() {
@@ -49,15 +67,8 @@ package_yaru-gtk-theme-git() {
     provides=(yaru-gtk-theme)
     conflicts=(yaru-gtk-theme)
     
-    DESTDIR="$pkgdir" ninja -C build install
-    rm -r "$pkgdir/usr/share/glib-2.0"
-    rm -r "$pkgdir/usr/share/xsessions"
-    rm -r "$pkgdir/usr/share/wayland-sessions"
-    rm -r "$pkgdir/usr/share/icons"
-    rm -r "$pkgdir/usr/share/sounds"
-    rm -r "$pkgdir/usr/share/gnome-shell"
-    rm -r "$pkgdir/usr/share/themes/Yaru/gnome-shell"
-    rm -r "$pkgdir/usr/share/themes/Yaru-dark/gnome-shell"
+    DESTDIR="$pkgdir" ninja -C build install 2>&1 >> install.log
+    _delete_all_from_pkgdir_except "gtk-theme"
 }
 
 package_yaru-gnome-shell-theme-git() {
@@ -66,14 +77,8 @@ package_yaru-gnome-shell-theme-git() {
     provides=(yaru-gnome-shell-theme)
     conflicts=(yaru-gnome-shell-theme)
     
-    DESTDIR="$pkgdir" ninja -C build install
-    rm -r "$pkgdir/usr/share/glib-2.0"
-    rm -r "$pkgdir/usr/share/xsessions"
-    rm -r "$pkgdir/usr/share/wayland-sessions"
-    rm -r "$pkgdir/usr/share/icons"
-    rm -r "$pkgdir/usr/share/sounds"
-    rm -r "$pkgdir/usr/share/themes/Yaru-light"
-    rm -r "$pkgdir/usr/share/themes/Yaru"{,-dark}/{gtk-{2.0,3.0,3.20},index.theme}
+    DESTDIR="$pkgdir" ninja -C build install 2>&1 >> install.log
+    _delete_all_from_pkgdir_except "gnome-shell-theme"
 }
 
 package_yaru-icon-theme-git() {
@@ -82,13 +87,8 @@ package_yaru-icon-theme-git() {
     provides=(yaru-icon-theme)
     conflicts=(yaru-icon-theme)
 
-    DESTDIR="$pkgdir" ninja -C build install
-    rm -r "$pkgdir/usr/share/glib-2.0"
-    rm -r "$pkgdir/usr/share/xsessions"
-    rm -r "$pkgdir/usr/share/wayland-sessions"
-    rm -r "$pkgdir/usr/share/sounds"
-    rm -r "$pkgdir/usr/share/themes"
-    rm -r "$pkgdir/usr/share/gnome-shell"
+    DESTDIR="$pkgdir" ninja -C build install 2>&1 >> install.log
+    _delete_all_from_pkgdir_except "icon-theme"
 }
 
 package_yaru-session-git() {
@@ -97,9 +97,6 @@ package_yaru-session-git() {
     provides=(yaru-session)
     conflicts=(yaru-session)
 
-    DESTDIR="$pkgdir" ninja -C build install
-    rm -r "$pkgdir/usr/share/sounds"
-    rm -r "$pkgdir/usr/share/themes"
-    rm -r "$pkgdir/usr/share/gnome-shell"
-    rm -r "$pkgdir/usr/share/icons"
+    DESTDIR="$pkgdir" ninja -C build install 2>&1 >> install.log
+    _delete_all_from_pkgdir_except "session"
 }
