@@ -1,0 +1,43 @@
+diff --git a/Makefile b/Makefile
+index a4ace3c..41a461f 100644
+--- a/Makefile
++++ b/Makefile
+@@ -7,7 +7,6 @@ MAN_PAGES = \
+ 	doc/pakku.conf.5
+ 
+ TARGETS =  \
+-	completion/bash \
+ 	completion/zsh \
+ 	lib/tools \
+ 	src/pakku \
+@@ -20,8 +19,6 @@ DIST = \
+ 	COPYING \
+ 	Makefile \
+ 	pakku.conf \
+-	completion/bash.patch \
+-	completion/bash-git.patch \
+ 	completion/make.sh \
+ 	completion/zsh.patch \
+ 	completion/zsh-git.patch \
+@@ -82,13 +79,6 @@ all: \
+ 	${TARGETS} \
+ 	${TARGETS_NODIST}
+ 
+-completion/bash: \
+-	completion/make.sh \
+-	completion/bash.patch \
+-	completion/bash-git.patch
+-	@echo "GEN: $@"
+-	@(cd completion && ./make.sh 'bash')
+-
+ completion/zsh: \
+ 	completion/make.sh \
+ 	completion/zsh.patch \
+@@ -143,7 +133,6 @@ define uninstall
+ endef
+ 
+ install:
+-	$(call install,644,'completion/bash','${BASHCOMPLETIONSDIR}/pakku')
+ 	$(call install,644,'completion/zsh','${ZSHCOMPLETIONSDIR}/_pakku')
+ 	$(call install,644,'doc/pakku.8','${MANDIR}/man8/pakku.8')
+ 	$(call install,644,'doc/pakku.conf.5','${MANDIR}/man5/pakku.conf.5')
