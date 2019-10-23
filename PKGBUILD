@@ -1,7 +1,7 @@
-# Maintainer: jackusm <jackusm95@gmail.com>
+# Maintainer: jackus <jackusm95@gmail.com>
 
 pkgname=easytether-bin
-pkgver=0.8.9-1
+pkgver=0.8.9
 pkgrel=1
 pkgdesc="Internet access via smartphone"
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ case "$CARCH" in
 	armv7h) _pkgarch="armv7"
 		sha256sums+=('edc6cb840e816fa04445d73bd9100a4b94a73ff8b3d698a3cafe0ab254aefc3b')
 		;;
-	i686) _pkgarch="386"
+	i686) _pkgarch="i386"
 		sha256sums+=('81867d75fa974afa9100da8c94aef350e2892fd79b65fd92ae2308b15da3d83b')
 		;;
 	x86_64) _pkgarch="amd64"
