@@ -1,13 +1,13 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=cdetect
-pkgver=0.5.3
+pkgver=0.5.4
 pkgrel=1
 pkgdesc='Detect which compiler version was used for compiling an ELF file'
 arch=('x86_64')
 url='https://github.com/xyproto/cdetect'
-license=('MIT')
-makedepends=('go' 'git')
+license=(MIT)
+makedepends=(go git)
 source=("git+https://github.com/xyproto/cdetect#tag=$pkgver")
 sha256sums=('SKIP')
 
