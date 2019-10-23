@@ -3,7 +3,7 @@
 
 pkgname=haskell-ide-engine-git
 pkgver=r3043.38a6febb
-pkgrel=1
+pkgrel=2
 pkgdesc="The engine for haskell ide-integration. Not an IDE"
 arch=('x86_64')
 url="https://github.com/haskell/haskell-ide-engine"
@@ -39,7 +39,7 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/${pkgname}"
     install -D -m 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
     for ver in "${_enabled_ghc_versions[@]}"; do
