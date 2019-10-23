@@ -4,8 +4,9 @@
 
 _pkgname=distrobuilder
 _url=github.com/lxc/$_pkgname
+_tag=1.0
 pkgname=$_pkgname-git
-pkgver=538.56211c4
+pkgver=v1.0.3
 pkgrel=1
 pkgdesc="System container image builder for LXC and LXD"
 arch=('x86_64')
@@ -20,7 +21,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
-  echo "$(git rev-list --count HEAD).$(git describe --always)"
+  echo "v$_tag.$(git rev-list --count $_pkgname-$_tag..)"
 }
 
 prepare() {
@@ -34,7 +35,7 @@ prepare() {
 
 build() {
   cd "${srcdir}"/gosrc/src/$_url/$_pkgname
-  GOPATH="${srcdir}"/gosrc go build -v -trimpath -ldflags '-s -w' -o $_pkgname .
+  GOPATH="${srcdir}"/gosrc go build -o $_pkgname -v -trimpath -ldflags '-s -w' ./...
 }
 
 package() {
