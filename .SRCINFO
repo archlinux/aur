@@ -1,13 +1,13 @@
 pkgbase = libcineform
 	pkgdesc = The GoPro® CineForm video codec SDK.
-	pkgver = 0.1
+	pkgver = 0.2
 	pkgrel = 1
 	url = https://github.com/egrange/libcineform
 	arch = x86_64
 	license = MIT, Apache
 	makedepends = cmake
-	source = https://github.com/emericg/libcineform/archive/0.1.tar.gz
-	sha256sums = 15122bfdc3839a7f41f62b3df74d8f7f12bb17aa0faea770ca221e395598875e
+	source = https://github.com/emericg/libcineform/archive/v0.2.tar.gz
+	sha256sums = 7749cc6ccbd2b05ac8c942045396f06735dda5a87f5cd0166752570fd2be0cac
 
 pkgname = libcineform
 

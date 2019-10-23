@@ -1,8 +1,8 @@
-# Maintainer: Emeric <emeric.grange@gmail.com>
+# Maintainer: Emeric Grange <emeric.grange@gmail.com>
 # Created: 18/11/2017
 
 pkgname=libcineform
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 pkgdesc="The GoPro® CineForm video codec SDK."
 arch=('x86_64')
@@ -10,19 +10,18 @@ url='https://github.com/egrange/libcineform'
 license=('MIT, Apache')
 makedepends=('cmake')
 
-source=("https://github.com/emericg/libcineform/archive/${pkgver}.tar.gz")
-sha256sums=('15122bfdc3839a7f41f62b3df74d8f7f12bb17aa0faea770ca221e395598875e')
+source=("https://github.com/emericg/libcineform/archive/v${pkgver}.tar.gz")
+sha256sums=('7749cc6ccbd2b05ac8c942045396f06735dda5a87f5cd0166752570fd2be0cac')
 
 build() {
   mkdir -p libcineform-${pkgver}/build/
   cd libcineform-${pkgver}/build/
 
-  cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+  cmake -DBUILD_STATIC_LIBS:BOOL=OFF -DCMAKE_INSTALL_PREFIX=/usr ..
   make
 }
 
 package() {
   cd libcineform-${pkgver}/build/
-  make prefix="${pkgdir}" DESTDIR="${pkgdir}" install
+  make DESTDIR="${pkgdir}" install
 }
-
