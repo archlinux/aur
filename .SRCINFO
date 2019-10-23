@@ -14,6 +14,7 @@ pkgname = openaero-driver-dkms
 	install = openaero-driver-dkms.install
 	depends = dkms
 	depends = udev
+	depends = linux-headers
 
 pkgname = openaero-meta
 	pkgdesc = Meta package for installing all required openaero packages.

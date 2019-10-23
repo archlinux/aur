@@ -14,7 +14,7 @@ sha256sums=('e79d5288236723b2bbcaf9c219b3f2f0e3486d8e23ab477cb769828733558eea')
 
 package_openaero-driver-dkms() {
   pkgdesc="Kernel driver for Aero devices (DKMS-variant)"
-  depends=('dkms' 'udev')
+  depends=('dkms' 'udev' 'linux-headers')
   install=openaero-driver-dkms.install
 
   cd "$pkgbase-$pkgver"
