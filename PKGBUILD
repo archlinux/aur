@@ -1,13 +1,13 @@
 # Maintainer: Jon Noble <jonnobleuk@gmail.com>
 pkgname=halide-git
-pkgver=r19227.9bbcb6b4f
+pkgver=r19251.c0128b389
 pkgrel=1
 pkgdesc="a language for fast, portable data-parallel computation"
 arch=(x86_64)
 url="https://halide-lang.org/"
 license=('MIT')
 groups=()
-depends=('llvm>=8.0' 'cmake>=3.8')
+depends=('llvm>=8.0' 'cmake>=3.8' 'clang' 'fakeroot')
 makedepends=('git') 
 provides=("${pkgname%-VCS}")
 conflicts=("halide-bin")
