@@ -1,5 +1,5 @@
 pkgname=pycharm-community-eap
-_buildver=193.4386.14
+_buildver=193.4778.18
 _pkgver=2019.3
 _eap=y
 pkgver=$_pkgver.$_buildver
@@ -41,7 +41,7 @@ prepare() {
 }
 
 build() {
-	cd "pycharm-community-$_buildver/helpers/pydev/"
+	cd "pycharm-community-$_buildver/plugins/python-ce/helpers/pydev/"
 
 	# use absolute paths to the python executables so that users with an activated
 	# virtual environment (like e.g. anaconda) can build without issues
