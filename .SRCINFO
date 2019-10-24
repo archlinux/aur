@@ -1,5 +1,5 @@
 pkgbase = linuxqq
-	pkgdesc = QQ for Linux
+	pkgdesc = Tencent QQ for Linux
 	pkgver = 2.0.0
 	pkgrel = 2
 	url = https://im.qq.com/linuxqq/download.html

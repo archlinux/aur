@@ -3,7 +3,7 @@
 pkgname=linuxqq
 pkgver=2.0.0
 pkgrel=2
-pkgdesc='QQ for Linux'
+pkgdesc='Tencent QQ for Linux'
 arch=('x86_64' 'aarch64')
 url='https://im.qq.com/linuxqq/download.html'
 license=('custom')
