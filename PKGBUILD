@@ -5,7 +5,7 @@ pkgver=3.4.1
 pkgrel=2
 pkgdesc="Library that provides a simple interface to read whole-slide images"
 arch=('x86_64')
-url="http://openslide.org"
+url="https://openslide.org"
 license=('LGPL')
 depends=('openjpeg2'
          'cairo'
