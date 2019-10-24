@@ -1,9 +1,9 @@
-# Maintainer: Andrew Sun <adsun701@gmail.com>
+# Maintainer: Andrew Sun <adsun701 at gmail dot com>
 
 pkgname=mingw-w64-gtkmm3
 _pkgname=gtkmm3
-pkgver=3.24.1
-pkgrel=2
+pkgver=3.24.2
+pkgrel=1
 pkgdesc="C++ bindings for GTK+ 3 (mingw-w64)"
 url="https://www.gtkmm.org/"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('mingw-w64-gtk3' 'mingw-w64-pangomm' 'mingw-w64-atkmm')
 makedepends=('mingw-w64-configure')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("https://download.gnome.org/sources/gtkmm/${pkgver%.*}/gtkmm-${pkgver}.tar.xz")
-sha256sums=('ddfe42ed2458a20a34de252854bcf4b52d3f0c671c045f56b42aa27c7542d2fd')
+sha256sums=('6d71091bcd1863133460d4188d04102810e9123de19706fb656b7bb915b4adc3')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
