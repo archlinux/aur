@@ -1,6 +1,6 @@
 # Maintainer: Jack Wu (OriginCode) <self@origincode.me>
 
-pkgname=linuxqq
+pkgname=qq-linux
 pkgver=2.0.0_b1_1024
 pkgrel=1
 arch=('x86_64')
