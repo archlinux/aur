@@ -1,7 +1,7 @@
 pkgbase = python-clicolor
 	pkgdesc = Quick python reference for terminal color escape codes
-	pkgver = 1.0.1
-	pkgrel = 2
+	pkgver = 1.0.2
+	pkgrel = 1
 	url = https://github.com/camas/clicolors
 	arch = any
 	license = MIT
@@ -9,8 +9,8 @@ pkgbase = python-clicolor
 	depends = python
 	provides = python-clicolor
 	conflicts = python-clicolor
-	source = https://files.pythonhosted.org/packages/source/c/clicolor/clicolor-1.0.1.tar.gz
-	sha256sums = ae6707506b5dcbe5f56501f104fc9b92b8e4f285bcb93d960a5acf966975ffa9
+	source = https://files.pythonhosted.org/packages/source/c/clicolor/clicolor-1.0.2.tar.gz
+	sha256sums = 6fa986d8d4439f38d9913aa9eb83fbcce0b4fffec029f98aaafb26c476463cf7
 
 pkgname = python-clicolor
 
