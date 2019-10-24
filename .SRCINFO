@@ -1,0 +1,80 @@
+pkgbase = cups-noudev
+	pkgver = 2.3.0
+	pkgrel = 3
+	url = https://www.cups.org/
+	arch = x86_64
+	license = Apache
+	license = custom
+	makedepends = libtiff
+	makedepends = libpng
+	makedepends = acl
+	makedepends = pam
+	makedepends = xdg-utils
+	makedepends = krb5
+	makedepends = gnutls
+	makedepends = cups-filters
+	makedepends = bc
+	makedepends = colord
+	makedepends = xinetd
+	makedepends = gzip
+	makedepends = autoconf
+	makedepends = libusb
+	makedepends = avahi
+	makedepends = hicolor-icon-theme
+	makedepends = inetutils
+	makedepends = libpaper
+	makedepends = valgrind
+	source = https://github.com/apple/cups/releases/download/v2.3.0/cups-2.3.0-source.tar.gz
+	source = https://github.com/apple/cups/releases/download/v2.3.0/cups-2.3.0-source.tar.gz.sig
+	source = cups.logrotate
+	source = cups.pam
+	source = cups.sysusers
+	source = cups-no-export-ssllibs.patch
+	source = cups-1.6.2-statedir.patch
+	source = guid.patch
+	validpgpkeys = 3737FD0D0E63B30172440D2DDBA3A7AB08D76223
+	validpgpkeys = 45D083946E3035282B3CCA9AF434104235DA97EB
+	validpgpkeys = 845464660B686AAB36540B6F999559A027815955
+	sha256sums = acaf0229cf008ea8f06353ffd1bbd62d71dbe88990dd3330650ef87edb95a1a5
+	sha256sums = SKIP
+	sha256sums = d87fa0f0b5ec677aae34668f260333db17ce303aa1a752cba5f8e72623d9acf9
+	sha256sums = 57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5
+	sha256sums = 06173dfaea37bdd9b39b3e09aba98c34ae7112a2f521db45a688907d8848caa2
+	sha256sums = ff3eb0782af0405f5dafe89e04b1b4ea7a49afc5496860d724343bd04f375832
+	sha256sums = 23349c96f2f7aeb7d48e3bcd35a969f5d5ac8f55a032b0cfaa0a03d7e37ea9af
+	sha256sums = d4537526c1e075866ae22ad263da000fc2a592d36c26b79a459a1cfdade2bb2d
+
+pkgname = libcups-noudev
+	pkgdesc = The CUPS Printing System - client libraries and headers
+	depends = gnutls
+	depends = libtiff>=4.0.0
+	depends = libpng>=1.5.7
+	depends = krb5
+	depends = avahi
+	depends = libusb
+	provides = libcups=2.3.0
+	conflicts = libcups
+
+pkgname = cups-noudev
+	pkgdesc = The CUPS Printing System - daemon package
+	install = cups.install
+	depends = acl
+	depends = pam
+	depends = libcups>=2.3.0
+	depends = cups-filters
+	depends = bc
+	depends = libpaper
+	depends = hicolor-icon-theme
+	optdepends = xdg-utils: xdg .desktop file support
+	optdepends = colord: for ICC color profile support
+	provides = cups=2.3.0
+	conflicts = cups
+	backup = etc/cups/cupsd.conf
+	backup = etc/cups/snmp.conf
+	backup = etc/cups/printers.conf
+	backup = etc/cups/classes.conf
+	backup = etc/cups/cups-files.conf
+	backup = etc/cups/subscriptions.conf
+	backup = etc/logrotate.d/cups
+	backup = etc/pam.d/cups
+
