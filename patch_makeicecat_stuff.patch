@@ -1,6 +1,155 @@
---- a/makeicecat	2019-05-13 20:55:02.000000000 +0200
-+++ b/makeicecat	2019-05-13 20:54:38.007705184 +0200
-@@ -264,12 +264,9 @@
+--- a/makeicecat	2019-09-16 17:42:47.412945771 +0200
++++ b/makeicecat	2019-09-16 22:33:31.344728411 +0200
+@@ -16,6 +16,7 @@
+ #    along with this program; if not, write to the Free Software
+ #    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301 USA
+ #
++#    Modified for IceCat on Archlinux
+ 
+ set -euxo pipefail
+ 
+@@ -40,11 +41,11 @@
+ 
+ wget -N https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/${FFVERSION}esr/source/firefox-${FFVERSION}esr.source.tar.xz
+ wget -N https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/${FFVERSION}esr/source/firefox-${FFVERSION}esr.source.tar.xz.asc
+-gpg --recv-keys --keyserver keyserver.ubuntu.com 24C6F355
+-gpg --verify firefox-${FFVERSION}esr.source.tar.xz.asc
+-echo -n 0a5f0c1d8d1e9443d85083d37fec32e5cc15c1001ea992d49745490065b4a023 firefox-${FFVERSION}esr.source.tar.xz |sha256sum -c -
++gpg2 --keyserver hkp://gpg.mozilla.org/ --list-keys "Mozilla Software Releases <release@mozilla.com>"
++gpg2 --keyserver hkp://gpg.mozilla.org/ --receive-keys 14F26682D0916CDD81E37B6D61B7B526D98F0353
++gpg2 --keyserver hkp://gpg.mozilla.org/ --verify firefox-${FFVERSION}esr.source.tar.xz.asc
+ 
+-echo Extracting Firefox tarball
++#echo Extracting Firefox tarball
+ tar -xf firefox-${FFVERSION}esr.source.tar.xz
+ 
+ mv firefox-${FFVERSION} $SOURCEDIR
+@@ -53,11 +54,11 @@
+ # Retrieve l10n
+ ###############################################################################
+ 
+-mkdir l10n
++mkdir -p l10n
+ cd l10n
+ while read line;do
+     line=$(echo $line |cut -d' ' -f1)
+-    #[ $line = "es-ES" ] || continue # To speed up testing
++    [ $line = "es-ES" ] || continue # To speed up testing
+     [ $line = "en-US" ] && continue
+     hg clone https://hg.mozilla.org/l10n-central/$line
+     mkdir -p $line/browser/chrome/browser/preferences
+@@ -70,7 +71,7 @@
+ 
+ hg clone http://hg.mozilla.org/l10n/compare-locales/
+ cd compare-locales/
+-hg checkout RELEASE_3_3_0
++hg checkout RELEASE_7_2_5
+ cd ..
+ rm compare-locales/.hg* compare-locales/.git* -rf
+ mv compare-locales $SOURCEDIR/l10n
+@@ -79,12 +80,7 @@
+ 
+ cd $SOURCEDIR
+ 
+-#for patch in $DATA/patches/*; do
+-#    echo Patching with file: $patch
+-#    patch -p1 < $patch
+-#done
+-
+-cp $DATA/Changelog.IceCat $DATA/README.IceCat .
++cp -p $DATA/Changelog.IceCat $DATA/README.IceCat .
+ 
+ ###############################################################################
+ # Functions
+@@ -177,29 +173,29 @@
+ do
+   /bin/sed /^$/d -i $file
+   sort -u $file > /tmp/sorttmp
+-  cp /tmp/sorttmp $file
++  cp -p /tmp/sorttmp $file
+   echo >> $file
+ done
+ 
+-# Disable activity-stream antifeatures.
++echo "Disable activity-stream antifeatures..."
+ # These are not condensed into a single sed script to make it fail on individual commands that didn't change the source
+-sed '/^const DEFAULT_SITES/,/^])\;/c const DEFAULT_SITES = new Map\([[""]]\);' -i browser/extensions/activity-stream/lib/ActivityStream.jsm
+-sed '/\["showSponsored/,/value/s/value: true/value: false/' -i browser/extensions/activity-stream/lib/ActivityStream.jsm
+-sed '/\["disableSnippets/,/value/s/value: false/value: true/' -i browser/extensions/activity-stream/lib/ActivityStream.jsm
+-sed '/\["telemetry"/,/value/s/value: true/value: false/' -i browser/extensions/activity-stream/lib/ActivityStream.jsm
+-sed '/\["section.highlights.includePocket"/,/value/s/value: true/value: false/' -i browser/extensions/activity-stream/lib/ActivityStream.jsm
+-sed '/\["telemetry.ping.endpoint"/,/value/s/value: .*/value: ""/' -i browser/extensions/activity-stream/lib/ActivityStream.jsm
+-sed '/\["tippyTop.service.endpoint"/,/value/s/value: .*/value: ""/' -i browser/extensions/activity-stream/lib/ActivityStream.jsm
+-sed 's/\(read_more_endpoint:\) .http.*/\1 "",/' -i browser/extensions/activity-stream/lib/ActivityStream.jsm
+-sed 's/\(stories_endpoint:\) .http.*/\1 "",/' -i browser/extensions/activity-stream/lib/ActivityStream.jsm
+-sed 's/\(stories_referrer:\) .http.*/\1 "",/' -i browser/extensions/activity-stream/lib/ActivityStream.jsm
+-sed 's/\(privacy_notice_link:\) .http.*/\1 "https:\/\/trisquel.info\/legal",/' -i browser/extensions/activity-stream/lib/ActivityStream.jsm
+-sed 's/\(disclaimer_link:\) .http.*/\1 "",/' -i browser/extensions/activity-stream/lib/ActivityStream.jsm
+-sed 's/\(topics_endpoint:\) .http.*/\1 "",/' -i browser/extensions/activity-stream/lib/ActivityStream.jsm
+-sed '/name: "snippets"/,/value/s/value: true/value: false/' -i browser/extensions/activity-stream/lib/ActivityStream.jsm
+-sed '/name: "telemetry"/,/value/s/value: true/value: false/' -i browser/extensions/activity-stream/lib/ActivityStream.jsm
+-sed '/name: "section.topstories"/,/return/s/return.*/return false;/' -i browser/extensions/activity-stream/lib/ActivityStream.jsm
+-
++sed '/^const DEFAULT_SITES/,/^])\;/c const DEFAULT_SITES = new Map\([[""]]\);' -i browser/components/newtab/lib/ActivityStream.jsm
++sed '/\["showSponsored/,/value/s/value: true/value: false/' -i browser/components/newtab/lib/ActivityStream.jsm
++#sed '/\["disableSnippets/,/value/s/value: false/value: true/' -i browser/components/newtab/lib/ActivityStream.jsm
++sed '/\["telemetry"/,/value/s/value: true/value: false/' -i browser/components/newtab/lib/ActivityStream.jsm
++sed '/\["section.highlights.includePocket"/,/value/s/value: true/value: false/' -i browser/components/newtab/lib/ActivityStream.jsm
++sed '/\["telemetry.ping.endpoint"/,/value/s/value: .*/value: ""/' -i browser/components/newtab/lib/ActivityStream.jsm
++#sed '/\["tippyTop.service.endpoint"/,/value/s/value: .*/value: ""/' -i browser/components/newtab/lib/ActivityStream.jsm
++sed 's/\(read_more_endpoint:\) .http.*/\1 "",/' -i browser/components/newtab/lib/ActivityStream.jsm
++sed 's/\(stories_endpoint:\) .http.*/\1 "",/' -i browser/components/newtab/lib/ActivityStream.jsm
++sed 's/\(stories_referrer:\) .http.*/\1 "",/' -i browser/components/newtab/lib/ActivityStream.jsm
++#sed 's/\(privacy_notice_link:\) .http.*/\1 "https:\/\/trisquel.info\/legal",/' -i browser/components/newtab/lib/ActivityStream.jsm
++#sed 's/\(disclaimer_link:\) .http.*/\1 "",/' -i browser/components/newtab/lib/ActivityStream.jsm
++sed 's/\(topics_endpoint:\) .http.*/\1 "",/' -i browser/components/newtab/lib/ActivityStream.jsm
++#sed '/name: "snippets"/,/value/s/value: true/value: false/' -i browser/components/newtab/lib/ActivityStream.jsm
++sed '/name: "telemetry"/,/value/s/value: true/value: false/' -i browser/components/newtab/lib/ActivityStream.jsm
++sed '/name: "section.topstories"/,/return/s/return.*/return false;/' -i browser/components/newtab/lib/ActivityStream.jsm
++echo "Terminated activity-stream modifications"
+ 
+ ###############################################################################
+ # Branding
+@@ -209,9 +205,6 @@
+ rm browser/branding/{official,unofficial,aurora,nightly} mobile/android/branding/* -rf
+ cp -a $DATA/branding/icecat/ browser/branding/official
+ cp -a $DATA/branding/icecat/ browser/branding/nightly
+-cp -a $DATA/branding/icecatmobile/ mobile/android/branding/official
+-cp -a $DATA/branding/icecatmobile/ mobile/android/branding/unofficial
+-cp -a $DATA/branding/icecatmobile/ mobile/android/branding/nightly
+ # Disable preprocessor
+ sed 's/_PP//' -i browser/branding/branding-common.mozbuild
+ 
+@@ -219,7 +212,7 @@
+ rm -rf ./browser/metro ./addon-sdk/source/doc/static-files/media ./b2g
+ 
+ # Custom bookmarks
+-cp $DATA/bookmarks.html.in browser/locales/generic/profile/bookmarks.html.in
++cp -p $DATA/bookmarks.html.in browser/locales/generic/profile/bookmarks.html.in
+ 
+ # Custom legal about pages
+ 
+@@ -235,15 +228,15 @@
+  find -name aboutRights.dtd | xargs sed -i "s/ENTITY $STRING.*/ENTITY $STRING \"\">/"
+ done
+ 
+-sed '/helpus.start/d' -i browser/base/content/aboutDialog.xul
++#sed '/helpus.start/d' -i browser/base/content/aboutDialog.xul
+ 
+-cp $DATA/aboutRights.xhtml toolkit/content/aboutRights.xhtml
+-cp $DATA/aboutRights.xhtml toolkit/content/aboutRights-unbranded.xhtml
++cp -pb $DATA/aboutRights.xhtml toolkit/content/aboutRights.xhtml
++cp -pb $DATA/aboutRights.xhtml toolkit/content/aboutRights-unbranded.xhtml
+ 
+ sed -i 's/<a\ href\=\"http\:\/\/www.mozilla.org\/\">Mozilla\ Project<\/a>/<a\ href\=\"http\:\/\/www.gnu.org\/\"\>GNU\ Project<\/a>/g' browser/base/content/overrides/app-license.html
+ 
+ # Custom logo for about:preferences?entrypoint=menupanel#sync
+-cp $DATA/branding/sync.png browser/themes/shared/fxa/logo.png
++cp -p $DATA/branding/sync.png browser/themes/shared/fxa/logo.png
+ 
+ # Hide mobile promo
+ echo ".fxaMobilePromo {  display: none !important; }" >> browser/themes/shared/incontentprefs/preferences.inc.css
+@@ -260,22 +253,15 @@
  ###############################################################################
  
  # Replace Firefox branding
@@ -16,7 +165,17 @@
  
  echo "Running batch rebranding"
  SEDSCRIPT="
-@@ -289,11 +286,8 @@
+ s|marketplace.firefox.com|f-droid.org/repository/browse|g;
+ s/org.mozilla.firefox/org.gnu.icecat/g;
+ s/Adobe Flash/Flash/g;
+-s|addons.mozilla.org.*/mobile|directory.fsf.org/wiki/GNU_IceCat|g;
+-s|addons.mozilla.org.*/android|directory.fsf.org/wiki/GNU_IceCat|g;
+-s|support.mozilla.org.*/mobile|libreplanet.org/wiki/Group:IceCat/icecat-help|g;
+-s|fhr.cdn.mozilla.net.*mobile|127.0.0.1|g;
+ s/run-mozilla.sh/run-icecat.sh/g;
+ s/Firefox Marketplace/F-droid free software repository/g;
+ s|mozilla.com/plugincheck|$ADDONSURL|g;
+@@ -285,11 +271,8 @@
  
  s/Mozilla Firefox/GNU IceCat/g;
  s/firefox/icecat/g;
@@ -28,7 +187,7 @@
  s/ Mozilla / GNU /g;
  
  s|PACKAGES/icecat|PACKAGES/firefox|g;
-@@ -331,7 +325,7 @@
+@@ -327,7 +310,7 @@
  
  sed 's/mozilla-bin/icecat-bin/' -i build/unix/run-mozilla.sh
  
@@ -37,7 +196,19 @@
  
  # do not alter useragent/platform/oscpu/etc with fingerprinting countermeasure, it makes things worse
  sed '/ShouldResistFingerprinting/,/}/s/^/\/\//' -i ./netwerk/protocol/http/nsHttpHandler.cpp
-@@ -378,7 +372,6 @@
+@@ -339,8 +322,9 @@
+ find . -name region.properties |xargs -i /bin/sed 's_https://www.mibbit.*__' -i {}
+ 
+ # Set migrator scripts
+-cp browser/components/migration/IceCatProfileMigrator.js browser/components/migration/FirefoxProfileMigrator.js
+-sed 's/IceCat/Firefox/g; s/icecat/firefox/g' -i browser/components/migration/FirefoxProfileMigrator.js
++#cp -p browser/components/migration/IceCatProfileMigrator.js browser/components/migration/FirefoxProfileMigrator.js
++cp -p ./browser/components/migration/IceCatProfileMigrator.jsm ./browser/components/migration/FirefoxProfileMigrator.jsm
++sed 's/IceCat/Firefox/g; s/icecat/firefox/g' -i ./browser/components/migration/FirefoxProfileMigrator.jsm
+ 
+ # Copy js settings
+ cat $DATA/settings.js >> browser/app/profile/icecat.js
+@@ -374,7 +358,6 @@
  MOZ_DATA_REPORTING=0
  MOZ_SERVICES_SYNC=0
  MOZ_DEVICES=0
@@ -45,10 +216,58 @@
  MOZ_ADDON_SIGNING=0
  EOF
  
-@@ -449,87 +442,6 @@
- cp $ff32 image/test/unit/image2jpg32x32-win.png
+@@ -397,133 +380,36 @@
+ ff22=$DATA/branding/icecat/default22.png
+ ff16=$DATA/branding/icecat/default16.png
  
- ###############################################################################
+-#Grey flat logo
+-gf300=$DATA/android-images/resources/drawable-xhdpi/icon_home_empty_icecat.png
+-gf225=$DATA/android-images/resources/drawable-hdpi/icon_home_empty_icecat.png
+-gf150=$DATA/android-images/resources/drawable-mdpi/icon_home_empty_icecat.png
+-gf32=$DATA/android-images/resources/drawable-xhdpi/ic_status_logo.png
+-gf24=$DATA/android-images/resources/drawable-hdpi/ic_status_logo.png
+-gf16=$DATA/android-images/resources/drawable-mdpi/ic_status_logo.png
+-# White flat
+-wf24=$DATA/android-images/resources/drawable-mdpi-v11/ic_status_logo.png
+-wf48=$DATA/android-images/resources/drawable-xhdpi-v11/ic_status_logo.png
+-wf36=$DATA/android-images/resources/drawable-hdpi-v11/ic_status_logo.png
+-
+-#Market logo
+-ma50=$DATA/android-images/core/marketplace-logo.png
+-ma128=$DATA/android-images/resources/drawable-mdpi/marketplace.png
+-
+-cp $ff16 dom/canvas/test/crossorigin/image.png
+-cp $ff16 image/test/unit/image1.png
+-cp $jpglogo  image/test/unit/image1png16x16.jpg
+-cp $jpglogo  image/test/unit/image1png64x64.jpg
+-cp $ff16 image/test/unit/image2jpg16x16.png
+-cp $ff16 image/test/unit/image2jpg16x16-win.png
+-cp $ff32 image/test/unit/image2jpg32x32.png
+-cp $ff32 image/test/unit/image2jpg32x32-win.png
+-cp $ff16 dom/canvas/test/crossorigin/image-allow-credentials.png
+-cp $ff16 dom/html/test/image-allow-credentials.png
+-cp $ff16 dom/canvas/test/crossorigin/image-allow-star.png
+-cp $ff16 toolkit/components/places/tests/favicons/expected-favicon-big32.jpg.png
+-cp $ff16 toolkit/components/places/tests/favicons/expected-favicon-big64.png.png
+-cp $jpglogo  toolkit/components/places/tests/favicons/favicon-big32.jpg
+-cp $ff64 toolkit/components/places/tests/favicons/favicon-big64.png
+-cp $favicon image/test/unit/image4gif16x16bmp24bpp.ico
+-cp $favicon image/test/unit/image4gif16x16bmp32bpp.ico
+-cp $favicon image/test/unit/image4gif32x32bmp24bpp.ico
+-cp $favicon image/test/unit/image4gif32x32bmp32bpp.ico
+-cp $jpglogo image/test/unit/image1png16x16.jpg
+-cp $jpglogo image/test/unit/image2.jpg
+-cp $jpglogo image/test/unit/image2jpg16x16cropped.jpg
+-cp $jpglogo image/test/unit/image2jpg16x16cropped2.jpg
+-cp $jpglogo image/test/unit/image2jpg16x32cropped3.jpg
+-cp $jpglogo image/test/unit/image2jpg16x32scaled.jpg
+-cp $jpglogo image/test/unit/image2jpg32x16cropped4.jpg
+-cp $jpglogo image/test/unit/image2jpg32x16scaled.jpg
+-cp $jpglogo image/test/unit/image2jpg32x32.jpg
+-cp $ff32 image/test/unit/image2jpg32x32.png
+-cp $ff32 image/test/unit/image2jpg32x32-win.png
+-
+-###############################################################################
 -# Mobile
 -###############################################################################
 -
@@ -128,15 +347,96 @@
 -find . ! -executable -exec chmod 644 {} \;
 -find . -type d -exec chmod 755 {} \;
 -EOF
--
--###############################################################################
- # Extensions
- ###############################################################################
++cp -p $ff16 dom/canvas/test/crossorigin/image.png
++cp -p $ff16 image/test/unit/image1.png
++cp -p $jpglogo  image/test/unit/image1png16x16.jpg
++cp -p $jpglogo  image/test/unit/image1png64x64.jpg
++cp -p $ff16 image/test/unit/image2jpg16x16.png
++cp -p $ff16 image/test/unit/image2jpg16x16-win.png
++cp -p $ff32 image/test/unit/image2jpg32x32.png
++cp -p $ff32 image/test/unit/image2jpg32x32-win.png
++cp -p $ff16 dom/canvas/test/crossorigin/image-allow-credentials.png
++cp -p $ff16 dom/html/test/image-allow-credentials.png
++cp -p $ff16 dom/canvas/test/crossorigin/image-allow-star.png
++cp -p $ff16 toolkit/components/places/tests/favicons/expected-favicon-big32.jpg.png
++cp -p $ff16 toolkit/components/places/tests/favicons/expected-favicon-big64.png.png
++cp -p $jpglogo  toolkit/components/places/tests/favicons/favicon-big32.jpg
++cp -p $ff64 toolkit/components/places/tests/favicons/favicon-big64.png
++cp -p $favicon image/test/unit/image4gif16x16bmp24bpp.ico
++cp -p $favicon image/test/unit/image4gif16x16bmp32bpp.ico
++cp -p $favicon image/test/unit/image4gif32x32bmp24bpp.ico
++cp -p $favicon image/test/unit/image4gif32x32bmp32bpp.ico
++cp -p $jpglogo image/test/unit/image1png16x16.jpg
++cp -p $jpglogo image/test/unit/image2.jpg
++cp -p $jpglogo image/test/unit/image2jpg16x16cropped.jpg
++cp -p $jpglogo image/test/unit/image2jpg16x16cropped2.jpg
++cp -p $jpglogo image/test/unit/image2jpg16x32cropped3.jpg
++cp -p $jpglogo image/test/unit/image2jpg16x32scaled.jpg
++cp -p $jpglogo image/test/unit/image2jpg32x16cropped4.jpg
++cp -p $jpglogo image/test/unit/image2jpg32x16scaled.jpg
++cp -p $jpglogo image/test/unit/image2jpg32x32.jpg
++cp -p $ff32 image/test/unit/image2jpg32x32.png
++cp -p $ff32 image/test/unit/image2jpg32x32-win.png
  
-@@ -594,6 +506,3 @@
+ ###############################################################################
+ # Extensions
+@@ -540,7 +426,6 @@
+ # Add extensions to manifest
+ for EXTENSION in $(ls $DATA/extensions/); do
+ sed "/Browser Chrome Files/s%$%\n@BINPATH@/browser/extensions/$EXTENSION/*%" -i browser/installer/package-manifest.in
+-sed "/Browser Chrome Files/s%$%\n@BINPATH@/extensions/$EXTENSION/*%" -i mobile/android/installer/package-manifest.in
+ #echo "DIRS += ['$EXTENSION']" >> browser/app/profile/extensions/moz.build
+ #touch browser/app/profile/extensions/$EXTENSION/moz.build
+ done
+@@ -549,18 +434,12 @@
+ 
+ cat << EOF >> browser/app/Makefile.in
+ libs::
++	mkdir -p \$(DIST)/bin/browser/extensions
+ 	cp -a \$(topsrcdir)/extensions/gnu/* \$(DIST)/bin/browser/extensions
+-	mkdir -p \$(DIST)/icecat/browser/extensions/ 
++	mkdir -p \$(DIST)/icecat/browser/extensions
+ 	cp -a \$(topsrcdir)/extensions/gnu/* \$(DIST)/icecat/browser/extensions/
+ EOF
+ 
+-
+-cat << EOF >> mobile/android/app/Makefile.in
+-libs::
+-	mkdir -p \$(DIST)/bin/distribution
+-	cp -a \$(topsrcdir)/extensions/gnu/ \$(DIST)/bin/distribution/extensions
+-EOF
+-
+ #sed '/^make-package-internal:/ s%$%\n\tcp $(topsrcdir)/extensions.gnu/* $(DIST)/icecat/browser/extensions -a%' -i toolkit/mozapps/installer/packager.mk
+ 
+ # Add extensions to allowed-dupes.mn
+@@ -569,17 +448,15 @@
+ browser/chrome/browser/content/browser/aboutaccounts/images/fox.png
+ EOF
+ find extensions/gnu/ | sed s=extensions/gnu=browser/extensions= >> ./browser/installer/allowed-dupes.mn
+-find extensions/gnu/ | sed s=extensions/gnu=distribution/extensions= >> mobile/android/installer/allowed-dupes.mn
+ 
+ # Onboarding
+-
+-sed 's/.Ubuntu., //' -i browser/extensions/activity-stream/css/activity-stream*.css
+-cp $DATA/onboarding/bootstrap.js browser/extensions/onboarding
+-cp $DATA/onboarding/onboarding.js browser/extensions/onboarding/content
+-cp $DATA/onboarding/onboarding.properties browser/extensions/onboarding/locales/en-US
++mkdir -p browser/extensions/onboarding/locales/en-US browser/extensions/onboarding/content
++cp -p $DATA/onboarding/bootstrap.js browser/extensions/onboarding/
++cp -p $DATA/onboarding/onboarding.js browser/extensions/onboarding/content/
++cp -p $DATA/onboarding/onboarding.properties browser/extensions/onboarding/locales/en-US/
+ for locale in $(ls -1 $DATA/onboarding/locales/); do
+     mkdir -p l10n/$locale/browser/extensions/onboarding || true
+-    cp $DATA/onboarding/locales/$locale/onboarding.properties l10n/$locale/browser/extensions/onboarding
++    cp -p $DATA/onboarding/locales/$locale/onboarding.properties l10n/$locale/browser/extensions/onboarding/
+ done
+ 
+ # Fix CVE-2009-4029
+@@ -589,7 +466,3 @@
+ 
  # Fix CVE-2012-3386
  /bin/sed 's/chmod a+w/chmod u+w/' -i ./js/src/ctypes/libffi/Makefile.in ./toolkit/crashreporter/google-breakpad/Makefile.in ./toolkit/crashreporter/google-breakpad/src/third_party/glog/Makefile.in || true
- 
+-
 -cd ..
 -echo Packaging tarball
 -tar cfj icecat-$ICECATVERSION.tar.bz2 $SOURCEDIR

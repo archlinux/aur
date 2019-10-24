@@ -6,66 +6,75 @@
 # Contributor: Muhammad 'MJ' Jassim <UnbreakableMJ@gmail.com> 
 
 pkgname=icecat
-pkgver=60.9.0
+pkgver=68.2.0
+a_pkgver=( ${pkgver//./ } )
 _pkgver=6634ee332979f7a78b11cbf09a77364143a981ed
-pkgrel=2
+pkgrel=1
 pkgdesc="GNU version of the Firefox browser."
 arch=(x86_64)
 url="http://www.gnu.org/software/gnuzilla/"
 license=('GPL' 'MPL' 'LGPL')
-depends=('gtk3' 'gtk2' 'mozilla-common' 'libxt' 'startup-notification' 'mime-types' 'dbus-glib' 'alsa-lib' 'ffmpeg'
-         'icu' 'libevent' 'nss' 'hunspell' 'sqlite' 'ttf-font')
-makedepends=('unzip' 'zip' 'diffutils' 'python2' 'yasm' 'mesa' 'imake' 'autoconf2.13'
-             'libpulse' 'gst-plugins-base-libs' 'inetutils' 'rust' 'llvm' 'clang' 'bzr' 'wget' 'mercurial' 'perl-rename')
+depends=(gtk3 mozilla-common libxt startup-notification mime-types dbus-glib
+         ffmpeg nss ttf-font libpulse)
+makedepends=(unzip zip diffutils python2-setuptools yasm mesa imake inetutils
+             xorg-server-xvfb autoconf2.13 rust clang llvm jack gtk2
+             python nodejs python2-psutil cbindgen nasm wget)
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'pulseaudio: Audio support'
-            'speech-dispatcher: Text-to-Speech')
+            'speech-dispatcher: Text-to-Speech'
+            'hunspell-en_US: Spell checking, American English')
+options=(!emptydirs !makeflags !strip)
 
 source=(http://git.savannah.gnu.org/cgit/gnuzilla.git/snapshot/gnuzilla-${_pkgver}.tar.gz
-        icecat.desktop icecat-safe.desktop
-        rust_133-part0.patch 'rust_133-part1.patch::https://bugzilla.mozilla.org/attachment.cgi?id=9046663' 'rust_133-part2.patch::https://bugzilla.mozilla.org/attachment.cgi?id=9046664'
-        deny_missing_docs.patch patch_makeicecat_stuff.patch fix-addons.patch)
+        icecat.desktop icecat-safe.desktop patch_makeicecat_stuff.patch
+        "0001-Use-remoting-name-for-GDK-application-names.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0001-Use-remoting-name-for-GDK-application-names.patch?h=packages/firefox&id=3dac00b6aefd97b66f13af0ad8761a3765094368"
+        settings.js)
 
 sha256sums=('2655c3a8f656435e636fcc7774f3fa6e62bf1f98056a64b8b84fbec9a03f7b0c'
-            '88a2bfdc78e320fc53dcdc732991d305122ea4eecbbea1dc1723538baa6cd8e2'
-            '190577ad917bccfc89a9bcafbc331521f551b6f54e190bb6216eada48dcb1303'
-            'c10521badc262b476e844d3f3045ddf27e28d83d49b5db0d0e19431f06386e4d'
-            '8b37332dd205946ea95c606103b5b0e1e8498819051ea1c1bce79f04fd88ebca'
-            '08ab4293d6008524a38e20b428c750c4c55a2f7189e9a0067871ad723c1efab5'
-            'cb1116c783995b8187574f84acb8365681aedaa2c76222cf060d31fedcb063c4'
-            '49f7c5cb5a15a30f3fa524960a4ea273c76b191703899db68002f3194c175632'
-            '15b381ff8d8296bbf61036401ba774a9b44aaefdc13b2c0627ef6d44e055b00e')
+            'e00dbf01803cdd36fd9e1c0c018c19bb6f97e43016ea87062e6134bdc172bc7d'
+            '33dd309eeb99ec730c97ba844bf6ce6c7840f7d27da19c82389cdefee8c20208'
+            '228b553953df859aa03164352622c4f9d6514cff1e30756181a4cbe60d9324e5'
+            'ab07ab26617ff76fce68e07c66b8aa9b96c2d3e5b5517e51a3c3eac2edd88894'
+            'f56b75584f1baac86948cdebef71b767e37eee0e1c3677380ff9b2285514efea')
 
 #validpgpkeys=(A57369A8BABC2542B5A0368C3C76EED7D7E04784) # Ruben Rodriguez (GNU IceCat releases key) <ruben@gnu.org>
 
 prepare() {
   cd gnuzilla-${_pkgver}
   patch -Np1 -i ../patch_makeicecat_stuff.patch
-  sed -e '/sha256sum/d' -i makeicecat
-  sed -e "s/^FFMAJOR.*/FFMAJOR=${pkgver:0:2}/g" -i makeicecat
-  sed -e "s/^FFMINOR.*/FFMINOR=${pkgver:(-3):(-2)}/g" -i makeicecat
-  sed -e "s/^FFSUB.*/FFSUB=${pkgver:(5)}/g" -i makeicecat
+  cp -vf ../settings.js data/
+  sed -e "s/^FFMAJOR.*/FFMAJOR=${a_pkgver[0]}/g" -i makeicecat
+  sed -e "s/^FFMINOR.*/FFMINOR=${a_pkgver[1]}/g" -i makeicecat
+  sed -e "s/^FFSUB.*/FFSUB=${a_pkgver[2]}/g" -i makeicecat
+#  sed -e "s/^FFSUB.*/FFSUB=/g" -i makeicecat
+  sed -e "s/^GNUVERSION=.*/GNUVERSION=${pkgrel}/g" -i makeicecat
+  sed -e 's/^FFVERSION.*/FFVERSION=$FFMAJOR.$FFMINOR.$FFSUB/g' -i makeicecat   # Only need this patch if release has 2 numbers
+#  sed -e 's/^gpg --recv-keys.*//g' -i makeicecat  ## WITH PROXY gpg doesn't work!!!!!!
   rm -rf output  # Clean output just in case is already an old build there
   bash makeicecat
   cd output/icecat-${pkgver}
+
+  # Fix brand name variables
+  echo -e "-brand-shorter-name = IceCat\n-brand-full-name = GNU IceCat\n-brand-product-name = IceCat\n-vendor-short-name = GNU" >> browser/branding/official/locales/en-US/brand.ftl
+
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1530052
+  patch -Np1 -i ../../../0001-Use-remoting-name-for-GDK-application-names.patch
+
+  # Remove extra tag
+  mv -f browser/base/content/aboutDialog.xul browser/base/content/aboutDialog.xul_bad
+  cat browser/base/content/aboutDialog.xul_bad | uniq > browser/base/content/aboutDialog.xul
+  rm -f browser/base/content/aboutDialog.xul_bad
 
   # Patch to move files directly to /usr/lib/icecat. No more symlinks.
   sed -e 's;$(libdir)/$(MOZ_APP_NAME)-$(MOZ_APP_VERSION);$(libdir)/$(MOZ_APP_NAME);g' -i config/baseconfig.mk
   sed -e 's;$(libdir)/$(MOZ_APP_NAME)-devel-$(MOZ_APP_VERSION);$(libdir)/$(MOZ_APP_NAME)-devel;g' -i config/baseconfig.mk
 
-  # Bug 1521249 --enable-rust-simd fails to build using Rust 1.33
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1521249
-  patch -Np1 -i ${srcdir}/rust_133-part0.patch
-  patch -Np1 -i ${srcdir}/rust_133-part1.patch || true
-  patch -Np1 -i ${srcdir}/rust_133-part2.patch
-  patch -Np1 -i ${srcdir}/deny_missing_docs.patch
-
-  # fixes installation of those addons which don't have ID on IceCat ("Cannot find id for addon" error). Thanks to kitsunyan.
-  patch -Np1 -i ${srcdir}/fix-addons.patch
-
-  # Fix for error: static declaration of 'gettid' follows non-static declaration
-  sed -i -e "s/static inline pid_t gettid/inline pid_t gettid/" tools/profiler/core/platform.h
+  # Update all IceCat extensions
+  #git clone https://gitlab.com/sebaro/ViewTube.git data/extensions/viewtube@extension/
+  #cd data/extensions/https-everywhere@eff.org
+  #rm -rf * && wget -O - 'https://www.eff.org/files/https-everywhere-latest.xpi' | bsdtar -xvf-
+  #cd ../../..
 
   printf '%b' "  \e[1;36m->\e[0m\033[1m Starting build...\n"
   
@@ -73,35 +82,30 @@ prepare() {
 ac_add_options --enable-application=browser
 
 ac_add_options --prefix=/usr
-ac_add_options --libdir=/usr/lib
-ac_add_options --enable-linker=gold
 ac_add_options --enable-hardening
 ac_add_options --enable-optimize
 ac_add_options --enable-rust-simd
+ac_add_options --enable-lto
 # Branding
 ac_add_options --enable-official-branding
 ac_add_options --with-distribution-id=org.gnu
+ac_add_options --with-unsigned-addon-scopes=app,system
 
 # System libraries
-ac_add_options --with-system-zlib
-ac_add_options --with-system-bz2
-ac_add_options --with-system-icu
-ac_add_options --with-system-jpeg
 ac_add_options --with-system-nspr
 ac_add_options --with-system-nss
-ac_add_options --enable-system-sqlite
-ac_add_options --enable-system-ffi
 
 # Features
 ac_add_options --enable-alsa
+ac_add_options --enable-jack
 ac_add_options --enable-startup-notification
 ac_add_options --disable-crashreporter
 ac_add_options --disable-updater
+ac_add_options --disable-tests
 ac_add_options --disable-debug-symbols
 ac_add_options --disable-tests
 ac_add_options --disable-eme
 ac_add_options --disable-gconf
-ac_add_options --disable-stylo  # Workaround to fix build with rustc 1.38
 
 ac_add_options --with-app-basename=icecat
 ac_add_options --with-app-name=icecat
@@ -110,7 +114,6 @@ END
 
 build() {
   cd gnuzilla-${_pkgver}/output/icecat-${pkgver}
-  ICECATDIR="/usr/lib/${pkgname}" && export ICECATDIR
 
   export CC=clang
   export CXX=clang++
@@ -118,10 +121,10 @@ build() {
   export NM=llvm-nm
   export RANLIB=llvm-ranlib
 
-  # Do PGO
-  #xvfb-run -a -n 95 -s "-extension GLX -screen 0 1280x1024x24" \
-  #  MOZ_PGO=1 ./mach build
-  ./mach build
+  # LTO needs more open files
+  ulimit -n 4096
+
+  xvfb-run -a -n 97 -s "-screen 0 1600x1200x24" ./mach build
   ./mach buildsymbols
 }
 
