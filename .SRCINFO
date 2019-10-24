@@ -1,6 +1,6 @@
 pkgbase = alpm_octopi_utils
 	pkgdesc = Alpm utils for Octopi
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://octopiproject.wordpress.com/
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = alpm_octopi_utils
 	license = GPL3
 	makedepends = vala
 	depends = pacman-contrib
-	source = https://github.com/aarnt/alpm_octopi_utils/archive/19276e6269509d94bdb7a216da1b347c8dea6d73.zip
-	sha256sums = 0af157f39a35551c6cb4172686ed19f0565b9111978c5f68c285efd0fcd73434
+	source = https://github.com/aarnt/alpm_octopi_utils/archive/bd9fcd5fc5de8e8e800fbdf553249c95f1300356.tar.gz
+	sha256sums = 6af796743349f04127b4e168b03afef510d1b869c8116718c4cc26059ef6d19b
 
 pkgname = alpm_octopi_utils
 
