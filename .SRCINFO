@@ -1,6 +1,6 @@
 pkgbase = ags
 	pkgdesc = A development tool that is primarily used to create graphical adventure games
-	pkgver = 3.4.4.1
+	pkgver = 3.4.4.2
 	pkgrel = 1
 	url = https://github.com/adventuregamestudio/ags
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = ags
 	depends = dumb-a4
 	depends = libtheora
 	depends = freetype2
-	source = ags-3.4.4.1.tar.gz::https://github.com/adventuregamestudio/ags/archive/v.3.4.4.1.tar.gz
+	source = ags-3.4.4.2.tar.gz::https://github.com/adventuregamestudio/ags/archive/v.3.4.4.2.tar.gz
 	source = https://github.com/adventuregamestudio/ags/commit/44d954493bb5f3e95a11a4eddbb62bd6110b1b63.patch
-	sha256sums = 270df55df129563b7c759e8c1e14616669b991c268b0cf55bbb6aa27c3922fb4
+	sha256sums = dfbbabc8d54ec5182194a4565e3acb5c6daef5e90e6bafec65340183a9402743
 	sha256sums = 6b7092e5794ae532f79c5c6ad5f5761c217b3ec874da43537152fb8e60b20019
 
 pkgname = ags

@@ -4,7 +4,7 @@
 # Contributor: xyproto
 
 pkgname=ags
-pkgver=3.4.4.1
+pkgver=3.4.4.2
 pkgrel=1
 pkgdesc='A development tool that is primarily used to create graphical adventure games'
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=('dumb-a4' 'libtheora' 'freetype2')
 makedepends=('wxgtk')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/adventuregamestudio/ags/archive/v.$pkgver.tar.gz"
         'https://github.com/adventuregamestudio/ags/commit/44d954493bb5f3e95a11a4eddbb62bd6110b1b63.patch')
-sha256sums=('270df55df129563b7c759e8c1e14616669b991c268b0cf55bbb6aa27c3922fb4'
+sha256sums=('dfbbabc8d54ec5182194a4565e3acb5c6daef5e90e6bafec65340183a9402743'
             '6b7092e5794ae532f79c5c6ad5f5761c217b3ec874da43537152fb8e60b20019')
 
 prepare() {
