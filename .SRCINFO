@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-geos
 	pkgdesc = C++ port of the Java Topology Suite (mingw-w64)
-	pkgver = 3.7.2
+	pkgver = 3.8.0
 	pkgrel = 1
 	url = https://trac.osgeo.org/geos/
 	arch = any
@@ -11,10 +11,8 @@ pkgbase = mingw-w64-geos
 	options = !buildflags
 	options = !strip
 	options = staticlibs
-	source = https://download.osgeo.org/geos/geos-3.7.2.tar.bz2
-	source = geos-3.5.0.patch
-	sha256sums = 2166e65be6d612317115bfec07827c11b403c3f303e0a7420a2106bc999d7707
-	sha256sums = 206f8780b8da547d3fd1bbc3ffb827abc71ec0e5d90a217db2032fe481807992
+	source = https://download.osgeo.org/geos/geos-3.8.0.tar.bz2
+	sha256sums = 99114c3dc95df31757f44d2afde73e61b9f742f0b683fd1894cbbee05dda62d5
 
 pkgname = mingw-w64-geos
 
