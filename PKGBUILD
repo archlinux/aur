@@ -1,4 +1,5 @@
-# Maintainer: Frederic Bezies < fredbezies at gmail dot com >
+# Maintainer: Mark Vainomaa <mikroskeem round around a mikroskeem dot eu>
+# Old maintainer: Frederic Bezies < fredbezies at gmail dot com >
 # Contributor: qs9rx < that nick at enjoys döt it>
 # Contributor: Christoph Zeiler <rabyte*gmail> (the fitzquake PKGBUILD was a base)
 pkgname=quakespasm-svn
@@ -12,24 +13,24 @@ license=('GPL2')
 depends=('libvorbis' 'libmad' 'sdl2')
 makedepends=('subversion')
 conflicts=('quakespasm')
-sha1sums=('SKIP')
-install=$pkgname.install
-
+provides=('quakespasm')
+install=${pkgname}.install
 source=('svn+https://svn.code.sf.net/p/quakespasm/code/trunk/quakespasm')
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
-  svnversion
+    cd "${srcdir}/${_pkgname}"
+    svnversion
 }
 
 build() {
-  cd "$srcdir/$_pkgname/Quake/"
-  msg "Starting make..."
-  make DO_USERDIRS=1 USE_SDL2=1
+    cd "${srcdir}/${_pkgname}/Quake/"
+    msg "Starting make..."
+    make DO_USERDIRS=1 USE_SDL2=1
 }
 
 package() {
-  cd "$srcdir/$_pkgname/Quake/"
-  install -Dm755 quakespasm "$pkgdir"/usr/bin/$pkgname
+    cd "${srcdir}/${_pkgname}/Quake/"
+    install -D -m 755 quakespasm "${pkgdir}/usr/bin/${pkgname}"
 }
 
