@@ -1,0 +1,23 @@
+pkgbase = libnfc-no_alternate_usb-git
+	pkgdesc = Platform independent Near Field Communication (NFC) library
+	pkgver = 1.7.1.r223.gf8b2852
+	pkgrel = 1
+	url = http://nfc-tools.org/
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	makedepends = doxygen
+	makedepends = zip
+	makedepends = git
+	depends = pcsclite
+	depends = libusb-compat
+	provides = libnfc=1.7.1.r223.gf8b2852
+	conflicts = libnfc
+	conflicts = libnfc-svn
+	conflicts = libnfc-git
+	replaces = libnfc-svn
+	source = git+https://github.com/nfc-tools/libnfc.git
+	sha256sums = SKIP
+
+pkgname = libnfc-no_alternate_usb-git
+
