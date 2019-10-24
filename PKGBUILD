@@ -3,16 +3,16 @@
 
 _name=kustomize
 pkgname=kustomize-bin
-pkgver=3.2.3
+pkgver=3.3.0
 pkgrel=1
 pkgdesc="Customization of Kubernetes YAML configurations"
 arch=('x86_64')
 url="https://github.com/kubernetes-sigs/kustomize"
 license=('Apache')
-source=("https://github.com/kubernetes-sigs/${_name}/releases/download/${_name}%2Fv${pkgver}/${_name}_${_name}.v${pkgver}_linux_amd64")
-sha256sums=('77e4615f47cc1149873bd9ab398d48fec245812dfe391ff9a73193fb9a65df97')
+source=("https://github.com/kubernetes-sigs/${_name}/releases/download/${_name}%2Fv${pkgver}/${_name}_v${pkgver}_linux_amd64.tar.gz")
+sha256sums=('4b49e1bbdb09851f11bb81081bfffddc7d4ad5f99b4be7ef378f6e3cf98d42b6')
 
 package() {
   cd "${srcdir}"
-  install -Dm755 ${_name}_${_name}.v${pkgver}_linux_amd64 ${pkgdir}/usr/bin/${_name}
+  install -Dm755 ${_name} ${pkgdir}/usr/bin/${_name}
 }
