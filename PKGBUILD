@@ -1,9 +1,9 @@
 # Maintainer: bauh developers <bauh4linux@gmail.com>
 
 pkgname=bauh-staging
-pkgver=0.7.0.RC
-pkgrel=2
-_commit="db075cb3c0ec4eda59e9ec2690c8c067c3b52a20"
+pkgver=0.7.1.RC
+pkgrel=1
+_commit="c631ecdb0667911f0f083eace12ae7c6b6488704"
 pkgdesc="Graphical interface to manage Flatpaks, Snaps, AppImages and AUR packages (staging: it is a testing branch which receives updates frequently and may not be working properly)"
 arch=('any')
 url="https://github.com/vinifmor/bauh"
@@ -22,7 +22,7 @@ makedepends=('git' 'python-setuptools')
 provides=("bauh")
 conflicts=('bauh')
 source=("${url}/archive/${_commit}.tar.gz")
-sha512sums=('4f018a9912c6b40de0491cd8b5a927d3fc4ca72cee0ebca2b723400d1d0a9cab6f43e3418735ab69643e1831ead782bc1e14f3fc14863db0a06d19a5548a5dad')
+sha512sums=('cf1f4159a2d37894ea935d3777d051b0d56701cf0c1537d352bee2bca4eef4340448df66ccbdb4e3d9640d677e5f470c291da840e6aafcf3b58ca0f7f8a01393')
 
 build() {
   cd "${srcdir}/bauh-${_commit}"
@@ -33,15 +33,16 @@ build() {
 package() {
   cd "${srcdir}/bauh-${_commit}"  
   python3 setup.py install --root="$pkgdir" --optimize=1 || return 1
-  python3 aur/panel_entry.py
-  python3 aur/tray_entry.py
   
-  mkdir -p $pkgdir/usr/share/applications
-  mkdir -p $pkgdir/usr/local/bin
+  mkdir -p $pkgdir/usr/share/icons/hicolor
 
-  mv bauh.desktop $pkgdir/usr/share/applications/
-  mv bauh_tray.desktop $pkgdir/usr/share/applications/
+  python3 aur/copy_icons.py aur/icons $pkgdir/usr/share/icons/hicolor
+ 
+  mkdir -p $pkgdir/usr/share/applications
+  mv aur/bauh.desktop $pkgdir/usr/share/applications/
+  mv aur/bauh_tray.desktop $pkgdir/usr/share/applications/
   
-  chmod +x bauh-tray
-  mv bauh-tray $pkgdir/usr/local/bin/
+  mkdir -p $pkgdir/usr/local/bin
+  chmod +x aur/bauh-tray
+  mv aur/bauh-tray $pkgdir/usr/local/bin/
 }
