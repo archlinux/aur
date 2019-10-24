@@ -4,7 +4,7 @@
 # Based on tracktion-6 aur package from boltbuckle <amygdala@cheerful.com>
 
 pkgname=tracktion-waveform
-pkgver=10.3.1
+pkgver=10.3.4
 pkgrel=1
 pkgdesc="Audio and MIDI Workstation (DAW)"
 arch=('x86_64')
@@ -19,8 +19,8 @@ conflicts=(
     'waveform-bundle'
     'tracktion-waveform-beta'
 )
-source=(https://cdn.tracktion.com/file/tracktiondownload/waveform/1031/waveform_64bit_v10.3.1.deb)
-md5sums=('b1a80622c52076591a4f4879d02ed570')
+source=(https://cdn.tracktion.com/file/tracktiondownload/waveform/1034/waveform_64bit_v10.3.4.deb)
+md5sums=('d49030d88451609d39a8360eebae0789')
 
 package() {
     tar -x --xz -f data.tar.xz -C "${pkgdir}"
