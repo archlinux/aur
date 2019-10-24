@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=unco-git
-pkgver=0.2.0.4.g1f7d412
+pkgver=0.2.0.6.g227a923
 pkgrel=1
 epoch=
 pkgdesc="Undo any command."
@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/kazuho/unco"
 license=('MIT')
 groups=()
-depends=('')
+depends=()
 makedepends=('git' 'cmake')
 optdepends=()
 checkdepends=()
