@@ -1,15 +1,36 @@
+retrosmart-aurorae-themes (1.4b) unstable; urgency=medium
+
+  * 1.4b.
+    - Help button now works. Preliminary shape.
+
+ -- Manuel Domínguez López <mdomlop@gmail.com>  Thu, 24 Oct 2019 07:18:18 +0200
+
+retrosmart-aurorae-themes (1.3a) unstable; urgency=medium
+
+  * 1.3a.
+    - Fixed in button shapes position.
+    - Theme added: Moonlight.
+
+ -- Manuel Domínguez López <mdomlop@gmail.com>  Sun, 19 Oct 2019 08:32:22 +0200
+
+retrosmart-aurorae-themes (1.2a) unstable; urgency=medium
+
+  * 1.2a.
+    - Themes added: Babe, Lemon, Lime, and Breeze.
+
+ -- Manuel Domínguez López <mdomlop@gmail.com>  Sun, 18 Nov 2018 08:13:22 +0100
+
 retrosmart-aurorae-themes (1.1a) unstable; urgency=medium
 
   * 1.1a.
     - Fix Ghost, Milk and Sky themes.
     - Butane, Shadow, Heaven, Caelum, Forest and Laurum themes added.
     - Windows9x theme renamed to 9x.
-    - Some build fixes.
 
- -- Manuel Domínguez López <mdomlop@gmail.com>  Sat, 17 Nov 2018 06:59:16 +0100
+ -- Manuel Domínguez López <mdomlop@gmail.com>  Sat, 17 Nov 2018 08:13:22 +0100
 
- retrosmart-aurorae-themes (0.1a) unstable; urgency=medium
+retrosmart-aurorae-themes (0.1a) unstable; urgency=medium
 
-	* Version 0.1a.
+  * 0.1a.
 
  -- Manuel Domínguez López <mdomlop@gmail.com>  Fri, 24 Nov 2017 07:06:07 +0100
