@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-winpthreads-git
 	pkgdesc = MinGW-w64 winpthreads library (git version)
-	pkgver = 6.0.0.20190518
+	pkgver = 6.0.0.20190901
 	pkgrel = 1
 	url = https://mingw-w64.org/doku.php
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = mingw-w64-winpthreads-git
 	makedepends = git
 	makedepends = mingw-w64-gcc-base
 	makedepends = mingw-w64-binutils
-	makedepends = mingw-w64-crt-git>=6.0.0.20190518
-	provides = mingw-w64-winpthreads=6.0.0.20190518
+	makedepends = mingw-w64-crt-git>=6.0.0.20190901
+	provides = mingw-w64-winpthreads=6.0.0.20190901
 	provides = mingw-w64-headers-bootstrap
 	conflicts = mingw-w64-winpthreads
 	conflicts = mingw-w64-headers-bootstrap
@@ -19,7 +19,7 @@ pkgbase = mingw-w64-winpthreads-git
 	options = !strip
 	options = staticlibs
 	options = !buildflags
-	source = git+https://git.code.sf.net/p/mingw-w64/mingw-w64
+	source = git+https://git.code.sf.net/p/mingw-w64/mingw-w64#commit=0a1d495478d8ed1a94fc77b9dbb428b7e0372588
 	sha256sums = SKIP
 
 pkgname = mingw-w64-winpthreads-git
