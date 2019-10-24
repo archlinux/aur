@@ -1,0 +1,14 @@
+pkgbase = nodejs-10.10.0
+	pkgdesc = Node.js
+	pkgver = 10.10.0
+	pkgrel = 1
+	url = https://nodejs.org/dist/latest-v10.x/docs/api/
+	arch = any
+	license = Apache-2.0
+	makedepends = npm
+	depends = nodejs
+	noextract = nodejs-10.10.0.tgz
+	source = https://nodejs.org/dist/v10.10.0/node-v10.10.0.tar.xz
+	sha256sums = 860eff976d83dd619849c0b4fab4cadb093ece2c718aaa5af8fb5ebbfa7d8a80
+
+pkgname = nodejs-10.10.0
