@@ -1,11 +1,11 @@
 pkgbase = mingw-w64-p11-kit
 	pkgdesc = Provides a way to load and enumerate PKCS#11 modules (mingw-w64)
 	pkgver = 0.23.18.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://p11-glue.freedesktop.org
 	arch = any
 	license = BSD
-	makedepends = mingw-w64-configure
+	makedepends = mingw-w64-meson
 	makedepends = git
 	depends = mingw-w64-crt
 	depends = mingw-w64-libtasn1
@@ -14,9 +14,7 @@ pkgbase = mingw-w64-p11-kit
 	options = staticlibs
 	options = !buildflags
 	source = git+https://github.com/p11-glue/p11-kit?#commit=b0ebe7555c291808db29377ba79cb8326301f0a6
-	source = 0001-Build-and-install-libnssckbi-p11-kit.so.patch
 	sha256sums = SKIP
-	sha256sums = 0736f74cec5ca49d91afa47cd84f9ac0404947bf0064358e22c3e53b69e82798
 
 pkgname = mingw-w64-p11-kit
 
