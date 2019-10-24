@@ -4,9 +4,10 @@
 # Contributor: Sebastian.Salich@gmx.de
 # Contributor: Doc Angelo
 
-pkgname=mumble-git
-pkgver=2019.10.22
+_pkgname=mumble
+pkgname="$_pkgname-git"
 _pkgver=1.4.0
+pkgver=1.4.0.r7810.856eefa9b
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='A voice chat application similar to TeamSpeak'
@@ -14,24 +15,24 @@ url='https://www.mumble.info/'
 license=('BSD')
 depends=('qt5-base' 'qt5-svg' 'speex' 'lsb-release' 'avahi' 'protobuf' 'libpulse' 'opus'
          'xdg-utils' 'libspeechd' 'libpng' 'freetype2' 'fontconfig' 'libxrender')
-makedepends=('boost' 'git' 'jack' 'mesa' 'python' 'qt5-tools')
+makedepends=('boost' 'jack' 'mesa' 'python' 'qt5-tools' 'git')
 optdepends=('jack: JACK audio output'
             'espeak-ng: Text to Speech support'
             'speech-dispatcher: Text to Speech support')
-conflicts=('mumble')
-provides=('mumble')
+conflicts=("$_pkgname")
+provides=("$_pkgname")
 source=('git://github.com/mumble-voip/mumble.git' 'https://git.xiph.org/celt.git'
         'git://github.com/mumble-voip/fx11.git' 'git://github.com/mumble-voip/opus.git'
         'git://github.com/mumble-voip/sbcelt.git' 'https://git.xiph.org/speex.git')
 sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
-  cd "$srcdir/mumble"
-  git log -n 1 --pretty=format:"%cd" --date=short | sed "s/-/./g"
+  cd "$srcdir/$_pkgname"
+  printf "$_pkgver.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  cd "$srcdir/mumble"
+  cd "$srcdir/$_pkgname"
 
   git submodule init
   git config submodule.3rdparty/fx11-src.url "$srcdir/fx11"
@@ -43,7 +44,7 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/mumble"
+  cd "$srcdir/$_pkgname"
 
   # Building mumble
   qmake-qt5 main.pro \
@@ -57,7 +58,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/mumble"
+  cd "$srcdir/$_pkgname"
 
   # bin stuff
   install -m755 -D ./release/mumble "$pkgdir"/usr/bin/mumble
@@ -76,5 +77,5 @@ package() {
   install -m755 -d "$pkgdir"/usr/share/man/man1
   install -m644 -D ./man/mum* "$pkgdir"/usr/share/man/man1/
   install -m644 -D ./icons/mumble.svg "$pkgdir"/usr/share/icons/hicolor/scalable/apps/mumble.svg
-  install -m644 -D ./LICENSE "$pkgdir"/usr/share/licenses/mumble/LICENSE
+  install -m644 -D ./LICENSE "$pkgdir"/usr/share/licenses/$_pkgname/LICENSE
 }
