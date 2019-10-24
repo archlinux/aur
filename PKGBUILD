@@ -1,7 +1,7 @@
 # Maintainer:  Oliver Jaksch <arch-aur@com-in.de>
 
 pkgname=libretro-freeintv-git
-pkgver=115.2e80e4a
+pkgver=123.8f78205
 pkgrel=1
 pkgdesc="A libretro emulation core for the Mattel Intellivision designed to be compatible with joypads from the SNES era forward"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
