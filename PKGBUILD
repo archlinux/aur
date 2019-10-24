@@ -6,7 +6,8 @@
 
 _pkgname=audacious-plugins
 pkgname="$_pkgname-git"
-pkgver=2019.10.24
+_pkgver=4.0
+pkgver=4.0.r8578.813315f3b
 pkgrel=1
 pkgdesc="Plugins for Audacious"
 arch=('i686' 'x86_64')
@@ -15,7 +16,7 @@ license=('BSD' 'GPL')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 
-makedepends=("audacious-git>=$pkgver"
+makedepends=("audacious-git>=$_pkgver"
              'glib2' 'python' # for gdbus-codegen
              'alsa-lib' 'pulseaudio' 'jack' 'lame' 'libvorbis' 'flac' 'mpg123'
              'faad2' 'ffmpeg' 'libmodplug' 'fluidsynth' 'libcdio-paranoia'
@@ -53,7 +54,8 @@ source=("git://github.com/audacious-media-player/$_pkgname.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  date +%Y.%m.%d
+  cd "$srcdir/$_pkgname"
+  printf "$_pkgver.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {

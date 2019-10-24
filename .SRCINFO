@@ -1,13 +1,13 @@
 pkgbase = audacious-plugins-git
 	pkgdesc = Plugins for Audacious
-	pkgver = 2019.10.24
+	pkgver = 4.0.r8578.813315f3b
 	pkgrel = 1
 	url = https://audacious-media-player.org/
 	arch = i686
 	arch = x86_64
 	license = BSD
 	license = GPL
-	makedepends = audacious-git>=2019.10.24
+	makedepends = audacious-git>=4.0
 	makedepends = glib2
 	makedepends = python
 	makedepends = alsa-lib
