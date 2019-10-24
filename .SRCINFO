@@ -1,9 +1,11 @@
 pkgbase = yay-bin
 	pkgdesc = Yet another yogurt. Pacman wrapper and AUR helper written in go. Pre-compiled.
 	pkgver = 9.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Jguer/yay
 	arch = x86_64
+	arch = aarch64
+	arch = armv7h
 	license = GPL
 	depends = sudo
 	depends = git
@@ -11,5 +13,10 @@ pkgbase = yay-bin
 	conflicts = yay
 	source_x86_64 = https://github.com/Jguer/yay/releases/download/v9.4.2/yay_9.4.2_x86_64.tar.gz
 	sha1sums_x86_64 = f44e0118ed89bccf9f7cad58c1430eaab764eb09
+	source_aarch64 = https://github.com/Jguer/yay/releases/download/v9.4.2/yay_9.4.2_aarch64.tar.gz
+	sha1sums_aarch64 = d122c71ffc43041e71a4e71f27070d0bfb5681f0
+	source_armv7h = https://github.com/Jguer/yay/releases/download/v9.4.2/yay_9.4.2_armv7h.tar.gz
+	sha1sums_armv7h = c9d9af53b9241add989146e74c141d0acfbb3803
 
 pkgname = yay-bin
+
