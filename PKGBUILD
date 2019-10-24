@@ -4,7 +4,7 @@
 
 pkgname=platformio-git
 _pkgname=platformio-core
-pkgver=v4.0.3.r97.ga481a5de
+pkgver=v4.0.3.r131.g0b500dba
 pkgrel=1
 pkgdesc="A cross-platform code builder and library manager"
 arch=('any')
@@ -15,11 +15,12 @@ depends=('python-setuptools'
          'python-bottle'
          'python-click'
          'python-colorama'
-         'python-lockfile'
          'python-pyserial'
          'python-requests'
+         'python-semantic-version>=2.8.1'
          'python-tabulate'
-         'python-semantic-version')
+         'python-pyelftools'
+         'python-marshmallow>=2.20.5')
 optdepends=('energia: For MSP430 based projects'
             'arduino: For Arduino based projects')
 makedepends=('git')
@@ -38,6 +39,9 @@ build()
 }
 
 package() {
-    cd "$srcdir/${_pkgname}"
-    python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+    cd "${srcdir}/${_pkgname}"
+    python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
+
+    install -Dm644 "${srcdir}/${_pkgname}/scripts/99-platformio-udev.rules" \
+		"${pkgdir}/etc/udev/rules.d/99-platformio-udev.rules"
 }
