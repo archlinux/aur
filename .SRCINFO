@@ -1,13 +1,13 @@
 pkgbase = unity-editor-beta-doc
 	pkgdesc = Unity User Manual and Scripting API Reference.
-	pkgver = 2019.3.0b7
+	pkgver = 2019.3.0b8
 	pkgrel = 1
 	url = https://unity3d.com/
 	arch = x86_64
 	license = custom
 	depends = unity-editor-beta
 	options = !strip
-	source = 2019.3.0b7.zip::https://storage.googleapis.com/docscloudstorage/2019.3/UnityDocumentation.zip
+	source = 2019.3.0b8.zip::https://storage.googleapis.com/docscloudstorage/2019.3/UnityDocumentation.zip
 	md5sums = SKIP
 
 pkgname = unity-editor-beta-doc

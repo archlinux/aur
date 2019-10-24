@@ -3,14 +3,14 @@
 _prefix=/opt/UnityBeta
 
 pkgname=unity-editor-beta-doc
-pkgver=2019.3.0b7
+pkgver=2019.3.0b8
 pkgrel=1
 pkgdesc="Unity User Manual and Scripting API Reference."
 arch=('x86_64')
 url='https://unity3d.com/'
 license=('custom')
 depends=('unity-editor-beta')
-source=("2019.3.0b7.zip::https://storage.googleapis.com/docscloudstorage/2019.3/UnityDocumentation.zip")
+source=("2019.3.0b8.zip::https://storage.googleapis.com/docscloudstorage/2019.3/UnityDocumentation.zip")
 md5sums=("SKIP")
 options=(!strip)
 PKGEXT='.pkg.tar' # Prevent compressing of the final package
