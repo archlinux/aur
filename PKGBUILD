@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: CC0-1.0
 
 pkgname='python-license-expression'
-pkgver=0.999
+pkgver=1.0
 pkgrel=1
 pkgdesc='Utility library to parse, normalize and compare License expressions for Python using a boolean logic engine'
 arch=('any')
@@ -15,7 +15,7 @@ checkdepends=('python-tox')
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/nexB/license-expression/archive/v${pkgver}.tar.gz"
 )
-sha256sums=('5c166fffbb81ee78b629b4937758974b86b43536887bdf6cd1cd0962042e5cef')
+sha256sums=('cff181fbc43f40989f4b32685230b82c1f0d557aac15822c747f90cb6e9d26d0')
 
 check() {
   cd "$srcdir/license-expression-$pkgver"
