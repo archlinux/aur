@@ -8,7 +8,7 @@ _pkgver=6.0.0
 _targets="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-headers-git
-pkgver=6.0.0.20190518
+pkgver=6.0.0.20190901
 pkgrel=1
 pkgdesc="MinGW-w64 headers for Windows (git version)"
 arch=('any')
@@ -19,7 +19,7 @@ makedepends=('git')
 provides=("mingw-w64-headers=${pkgver}")
 conflicts=('mingw-w64-headers')
 options=('!strip' 'staticlibs' '!buildflags')
-source=("git+https://git.code.sf.net/p/mingw-w64/mingw-w64")
+source=("git+https://git.code.sf.net/p/mingw-w64/mingw-w64#commit=0a1d495478d8ed1a94fc77b9dbb428b7e0372588")
 sha256sums=('SKIP')
 
 pkgver() {
