@@ -1,8 +1,7 @@
-# Maintainer: Josh Hoffer 
 _hkgname=bytestring-progress
 pkgname=haskell-bytestring-progress
-pkgver=1.2
-pkgrel=2
+pkgver=1.4
+pkgrel=1
 pkgdesc="A library for tracking the consumption of a lazy ByteString"
 url="http://hackage.haskell.org/package/bytestring-progress"
 license=('BSD')
@@ -40,4 +39,4 @@ package() {
 	runhaskell Setup copy --destdir="${pkgdir}"
 	install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/bytestring-progress"
 }
-md5sums=('502e643aa440f04d5efe02577aec6f33')
+md5sums=('29e27a426a3ae09047e35d9e380d0d29')
