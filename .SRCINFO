@@ -1,7 +1,7 @@
 pkgbase = audacious-usf-plugin-git
 	pkgdesc = The USF plugin (N64) for audacious
 	pkgver = r10.abd9ddf
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/saschaklick/audacious-usf-plugin
 	arch = x86_64
 	license = unknown

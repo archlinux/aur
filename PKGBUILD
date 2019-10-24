@@ -2,7 +2,7 @@
 
 pkgname=audacious-usf-plugin-git
 pkgver=r10.abd9ddf
-pkgrel=1
+pkgrel=2
 pkgdesc="The USF plugin (N64) for audacious"
 arch=(x86_64)
 url="https://github.com/saschaklick/audacious-usf-plugin"
@@ -34,4 +34,7 @@ build() {
 package() {
 	cd "$srcdir/${pkgname%-git}"
 	make DESTDIR="$pkgdir/" install
+
+    # remove locale .mo files conflicting with extra/audacious-plugins
+    rm -r "$pkgdir/usr/share/locale"
 }
