@@ -31,7 +31,6 @@ build() {
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-cmake \
-    -DCMAKE_RULE_MESSAGES=OFF \
     -DPARAVIEW_INSTALL_DEVELOPMENT_FILES=ON \
     -DPARAVIEW_ENABLE_PYTHON=OFF \
     -DPARAVIEW_ENABLE_EMBEDDED_DOCUMENTATION=OFF \
@@ -42,7 +41,7 @@ build() {
     -DVTK_USE_SYSTEM_GL2PS=OFF \
     -DVTK_USE_SYSTEM_LIBHARU=OFF \
     -DHDF5_ROOT=/usr/${_arch}/ ..
-    make
+    WINEPATH="/usr/${_arch}/bin;${PWD}/bin" make
     popd
   done
 }
