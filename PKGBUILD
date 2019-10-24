@@ -26,7 +26,8 @@ prepare() {
 	      --enable-download \
 	      --enable-hpddm \
 	      --enable-optim \
-	      --disable-mumps 
+	      --disable-mumps \
+	      --disable-hpddm
 
   find . -name Makefile -exec sed -i 's+^gcc+gcc =+' {} \;
   find . -name Makefile -exec sed -i 's+^dir+dir =+' {} \;
