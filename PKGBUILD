@@ -7,7 +7,7 @@
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-icu
-pkgver=64.2
+pkgver=65.1
 pkgrel=1
 pkgdesc="International Components for Unicode library (mingw-w64)"
 arch=('any')
@@ -16,13 +16,11 @@ license=('custom')
 depends=('mingw-w64-crt>=6.0.0')
 makedepends=('mingw-w64-configure')
 options=('!strip' 'staticlibs' '!buildflags')
-source=("http://download.icu-project.org/files/icu4c/${pkgver}/icu4c-${pkgver//./_}-src.tgz"
-        "https://ssl.icu-project.org/files/icu4c/${pkgver}/icu4c-${pkgver//./_}-src.tgz.asc"
+source=("https://github.com/unicode-org/icu/releases/download/release-${pkgver//./-}/icu4c-${pkgver//./_}-src.tgz"{,.asc}
         "0004-move-to-bin.mingw.patch"
         "0007-actually-move-to-bin.mingw.patch"
         "0008-data-install-dir.mingw.patch"
         "0009-fix-bindir-in-config.mingw.patch"
-        "0010-msys-rules-for-makefiles.mingw.patch"
         "0011-sbin-dir.mingw.patch"
         "0012-libprefix.mingw.patch"
         "0014-mingwize-pkgdata.mingw.patch"
@@ -30,13 +28,12 @@ source=("http://download.icu-project.org/files/icu4c/${pkgver}/icu4c-${pkgver//.
         "0016-icu-pkgconfig.patch"
         "0017-icu-config-versioning.patch"
         "0021-mingw-static-libraries-without-s.patch")
-sha256sums=('627d5d8478e6d96fc8c90fed4851239079a561a6a8b9e48b0892f24e82d31d6c'
+sha256sums=('53e37466b3d6d6d01ead029e3567d873a43a5d1c668ed2278e253b683136d948'
             'SKIP'
             '0b6f5ea91bb579f03cdfa2737719411e3207169f5921ffeea8564cf24fa46715'
             'a32b3fae6a59599c942e5f8bc2d29416aaedca0ce2832c857ecf99eb7529cee1'
             'f437f25a62420856ed234d2b33672b860ae00106cb5d4ccc682f5ff15176aeaf'
             'c84fda5b32edcbf062d629bbf04c47e73e7b9620f4dae752c1c0c25f49124ca8'
-            '1cf7fd08bad22f39441213d54f0659a3046e163729aa4cd6ff393602ec22c285'
             '4f4787caeccf70607cf0cbde0c005f05f5c6de1543265a927839122405b4054f'
             'e7ecdafe85e18a4a4b5f29bbfde38776521a848e5b65089a2379b90e59f1592d'
             '426f2dc16a8f12c2aa91f6b2ab0533b41efdf60c946f14e267a5868af558dc4f'
@@ -52,7 +49,6 @@ prepare() {
   patch -p1 -i ../0007-actually-move-to-bin.mingw.patch
   patch -p1 -i ../0008-data-install-dir.mingw.patch
   patch -p1 -i ../0009-fix-bindir-in-config.mingw.patch
-  patch -p1 -i ../0010-msys-rules-for-makefiles.mingw.patch
   patch -p1 -i ../0011-sbin-dir.mingw.patch
   patch -p1 -i ../0012-libprefix.mingw.patch
   patch -p1 -i ../0014-mingwize-pkgdata.mingw.patch
@@ -69,6 +65,7 @@ build() {
   cd icu/source
   mkdir -p nativebuild && pushd nativebuild
   CFLAGS=-fno-stack-protector
+  CPPFLAGS=-U_FORTIFY_SOURCE # link error with latest mingw-w64-git
   CC=gcc CXX=g++ ../configure --enable-static --disable-shared
   make
   popd
