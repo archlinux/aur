@@ -1,14 +1,14 @@
 pkgbase = python-flask-paginate
 	pkgdesc = Simple paginate support for flask
-	pkgver = 0.5.3
+	pkgver = 0.5.4
 	pkgrel = 1
 	url = https://github.com/lixxu/flask-paginate
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/f/flask-paginate/flask-paginate-0.5.3.tar.gz
-	sha256sums = 2237c072680b7b0f1f8f3fd64ae43d50304281addbbf2d7041f74413ebe4f496
+	source = https://files.pythonhosted.org/packages/source/f/flask-paginate/flask-paginate-0.5.4.tar.gz
+	sha256sums = 60079a1c4c600cb4d4a9f7c386ea357b5ee02355ae6d6e8b41f769ae3f7af3ad
 
 pkgname = python-flask-paginate
 	depends = python
