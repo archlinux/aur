@@ -1,7 +1,7 @@
 pkgbase = prime
 	pkgdesc = PRIME Render Offload Launcher
 	pkgver = 1.0
-	pkgrel = 9
+	pkgrel = 10
 	url = https://download.nvidia.com/XFree86/Linux-x86_64/435.21/README/primerenderoffload.html
 	install = prime.install
 	arch = any
