@@ -5,7 +5,7 @@ pkgname=wtwitch
 pkgver=1.1.0
 pkgrel=1
 pkgdesc="Terminal user interface for Twitch"
-url="https://gitlab.com/krathalan/wtwitch"
+url="https://git.sr.ht/~krathalan/wtwitch"
 license=("GPL3")
 arch=("any")
 changelog="CHANGELOG"
@@ -15,10 +15,10 @@ depends=("jq" "streamlink" "wget")
 makedepends=("scdoc")
 
 # Download information
-_packagesig="${url}/uploads/35f0f599b19b8dcf70a6b6765dfd63ea/wtwitch-1.1.0.tar.gz.sig"
-source=("${url}/-/archive/${pkgver}/wtwitch-${pkgver}.tar.gz" "${_packagesig}")
-validpgpkeys=("0CE6D5B52BD80B4EDB8DF343546BFAE445159FFC")
-sha256sums=("cc1bbb92b82a85b1ac87c8c49e852195a522fad41dc9e7c3011752c761369e40" "84dbfbcf6d85bdac3a5a3843201aaabbc96c16659369a4a5aca938717ef69b6b")
+_packagesig="${url}/blob/master/signatures/${pkgver}.tar.gz.sig"
+source=("${url}/archive/${pkgver}.tar.gz" "${_packagesig}")
+validpgpkeys=("02AAA23ABDF1D538BD889D251AADE5E728FFC667")
+sha256sums=("796a159a4b25e9db275d33c8887959ff345dfe6151bc9d3e0ece220b57041a68" "80d7ac60431fb237a53813f16fce30e8db55cfec1670ddb2701f61a316b631ed")
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
