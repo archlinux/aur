@@ -2,11 +2,11 @@
 # Maintainer: Leihu Xi <leihuxi@gmail.com>
 
 pkgname=mitalk
-pkgver=4.0.85
+pkgver=4.0.91
 pkgrel=1
-pkgdesc="MiTalk Messenger"
+pkgdesc='MiTalk Messenger'
 arch=('x86_64')
-url="http://www.miliao.com/"
+url='http://www.miliao.com/'
 license=('custom')
 depends=(
     'gconf'
@@ -19,12 +19,12 @@ depends=(
     'xorg-xrandr'
 )
 source=(
-    'https://s1.zb.mi.com/miliao/apk/miliao/7.4/MiTalk_'${pkgver}'.deb'
+    'https://s1.zb.mi.com/miliao/apk/miliao/8.8/MiTalk_'${pkgver}'.deb'
 )
 md5sums=(
-    '53bc595fa668d017bef37e84c8bfa123'
+    'b1fb4b9a758c5f1017405a859de9cefd'
 )
 
 package() {
-    tar -xf "${srcdir}"/data.tar.xz -C "${pkgdir}"/
+    tar -xf ${srcdir}/data.tar.xz -C ${pkgdir}/
 }
