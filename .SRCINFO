@@ -1,6 +1,6 @@
 pkgbase = mint-cli-git
 	pkgdesc = cli interface for Intuit Mint using python-mintapi
-	pkgver = v0.1.0.r0.g11aad24
+	pkgver = v0.1.1.r0.gd02b7c7
 	pkgrel = 1
 	url = https://github.com/userWayneCampbell/mint-cli
 	arch = any
@@ -13,6 +13,7 @@ pkgbase = mint-cli-git
 	depends = python-dotenv
 	depends = python-tabulate-git
 	depends = python-colorama-git
+	depends = scdoc
 	source = git+https://github.com/userWayneCampbell/mint-cli.git
 	md5sums = SKIP
 
