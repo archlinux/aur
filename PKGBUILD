@@ -1,7 +1,10 @@
 # Maintainer: louis.seubert.ls@gmail.com <Louis Seubert>
 
+# Umcomment to skip the compression of the package
+# PKGEXT='.pkg.tar'
+
 pkgname=plasma5-runners-jetbrains-runner
-pkgver=1.1.1
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="A Krunner Plugin which allows you to open your recent projects"
 arch=("any")
@@ -11,7 +14,7 @@ depends=('krunner' 'qt5-base')
 makedepends=('cmake' 'extra-cmake-modules')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/alex1701c/JetBrainsRunner/archive/${pkgver}.tar.gz")
 noextract=("${pkgname}-${pkgver}.tar.gz")
-sha256sums=("bf9329e171c50a6d651b649ada68184fc7e8562e36743f898ce74b1aebe4a3af")
+sha256sums=('4171b897424e7aaa1d746ef52bb674f4076b9a092af001d0eecaf04941e05d7a')
 
 pkgver() {
     printf "%s" "$pkgver"

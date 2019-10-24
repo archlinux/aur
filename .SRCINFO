@@ -1,6 +1,6 @@
 pkgbase = plasma5-runners-jetbrains-runner
 	pkgdesc = A Krunner Plugin which allows you to open your recent projects
-	pkgver = 1.1.1
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://github.com/alex1701c/JetBrainsRunner
 	arch = any
@@ -9,9 +9,9 @@ pkgbase = plasma5-runners-jetbrains-runner
 	makedepends = extra-cmake-modules
 	depends = krunner
 	depends = qt5-base
-	noextract = plasma5-runners-jetbrains-runner-1.1.1.tar.gz
-	source = plasma5-runners-jetbrains-runner-1.1.1.tar.gz::https://github.com/alex1701c/JetBrainsRunner/archive/1.1.1.tar.gz
-	sha256sums = bf9329e171c50a6d651b649ada68184fc7e8562e36743f898ce74b1aebe4a3af
+	noextract = plasma5-runners-jetbrains-runner-1.2.1.tar.gz
+	source = plasma5-runners-jetbrains-runner-1.2.1.tar.gz::https://github.com/alex1701c/JetBrainsRunner/archive/1.2.1.tar.gz
+	sha256sums = 4171b897424e7aaa1d746ef52bb674f4076b9a092af001d0eecaf04941e05d7a
 
 pkgname = plasma5-runners-jetbrains-runner
 
