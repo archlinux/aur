@@ -1,6 +1,6 @@
 pkgbase = telegram-desktop-bin-dev
 	pkgdesc = Official desktop version of Telegram messaging app - Static binaries, developement version
-	pkgver = 1.8.13
+	pkgver = 1.8.15
 	pkgrel = 1
 	url = https://desktop.telegram.org
 	install = telegram-desktop-bin-dev.install
@@ -39,10 +39,10 @@ pkgbase = telegram-desktop-bin-dev
 	sha256sums = 83e3e8eeecadcb3429704626d4ac80ef61ef4e06ba2c6ca2b105a4a436f33032
 	sha256sums = 871f2a6d3bd9d657f8379196e51fd3117c1586e0042e9e993ae138f78b2bcd76
 	sha256sums = a9eb77ca5a428b32f6e01f62b859cce788c4c9a170dc2cd080800a9de59faa3d
-	source_i686 = https://github.com/telegramdesktop/tdesktop/releases/download/v1.8.13/tsetup32.1.8.13.tar.xz
-	sha256sums_i686 = ce7ac6ea2a284e9e5bd21bf486c703c862f983d70b05e01e25fe766a1c695fe6
-	source_x86_64 = https://github.com/telegramdesktop/tdesktop/releases/download/v1.8.13/tsetup.1.8.13.tar.xz
-	sha256sums_x86_64 = 799255ea18b3edfe301e7a5d0ae29a836f7b5ab792aa01c8b5690a70869bedac
+	source_i686 = https://github.com/telegramdesktop/tdesktop/releases/download/v1.8.15/tsetup32.1.8.15.tar.xz
+	sha256sums_i686 = 4b08e680f08d2421696226f8918b5ab8bf56748a84c74c16b0c5d7f88c6b3976
+	source_x86_64 = https://github.com/telegramdesktop/tdesktop/releases/download/v1.8.15/tsetup.1.8.15.tar.xz
+	sha256sums_x86_64 = c2ed83219ca938964f2daa38b9935056886e65b7ce25e3ae6ce36b0ac0939a68
 
 pkgname = telegram-desktop-bin-dev
 
