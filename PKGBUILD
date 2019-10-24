@@ -1,7 +1,7 @@
 # Maintainer: Josh Hoffer 
 _hkgname=terminal-progress-bar
 pkgname=haskell-terminal-progress-bar
-pkgver=0.4.0.1
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="A simple progress bar in the terminal"
 url="http://hackage.haskell.org/package/terminal-progress-bar"
@@ -39,4 +39,4 @@ package() {
 	runhaskell Setup copy --destdir="${pkgdir}"
 	install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/terminal-progress-bar"
 }
-md5sums=('1498717ca703e81b78fd1451e51fad47')
+md5sums=('3ef47403a7147ef6be1e0127dea3c8d7')
