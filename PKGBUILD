@@ -10,6 +10,8 @@ url="https://github.com/bostrt/quikey"
 license=('MIT')
 depends=('python-click' 'python-colored' 'python-daemon' 'python-inotify-simple' 'python-tinydb' 'python-pynput' 'python-terminaltables' 'python-xdg' 'python-humanize')
 makedepends=('python-setuptools')
+provides=('quikey')
+conflicts=('quikey')
 source=("git+https://github.com/bostrt/quikey.git")
 md5sums=('SKIP')
 
