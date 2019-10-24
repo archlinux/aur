@@ -1,7 +1,7 @@
 pkgbase = android-aarch64-libpng
 	pkgdesc = A collection of routines used to create PNG format graphics (android)
 	pkgver = 1.6.37
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.libpng.org/pub/png/libpng.html
 	arch = any
 	license = custom
