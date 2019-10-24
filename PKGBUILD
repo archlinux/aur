@@ -4,24 +4,25 @@
 # Contributor: Helmut Stult <helmut@manjaro.org>
 
 pkgbase=pamac
-pkgname=('pamac-common' 'pamac-cli-src' 'pamac-gtk' 'pamac-tray-appindicator-src')
-_pkgver=9.0.0
-pkgver=9.0.0rc
-pkgrel=1
-_commit=cf51d1aa15419589c24405e3eb593328ea0b914e
+pkgname=('pamac-common' 'pamac-cli-src' 'pamac-gtk' 'pamac-tray-appindicator-src' 'pamac-snap-plugin')
+_pkgver=9.0.1
+pkgver=9.0.1
+pkgrel=4
+_commit=5cadbe289cfd7e624bb3b98fdbce53a1aff42cfe
 pkgdesc="A Package Manager based on libalpm with AUR and Appstream support"
 arch=('x86_64')
 url="https://gitlab.manjaro.org/applications/pamac"
 license=('GPL3')
-depends=('glib2>=2.42' 'json-glib' 'libsoup' 'dbus-glib' 'polkit' 'vte3>=0.38' 'gtk3>=3.22'
-         'libnotify' 'desktop-file-utils' 'pacman>=5.1' 'pacman<5.2' 'gnutls>=3.4'
-         'appstream-glib' 'archlinux-appstream-data' 'git')
+depends=('glib2>=2.42' 'json-glib' 'libsoup' 'dbus-glib' 'polkit' 'gtk3>=3.22'
+         'desktop-file-utils' 'pacman>=5.2' 'pacman<5.3' 'gnutls>=3.4' 'libnotify'
+         'appstream-glib' 'archlinux-appstream-data' 'git'
+         'snapd' 'snapd-glib' 'vte3')
 makedepends=('gettext' 'meson' 'vala>=0.36.6' 'libappindicator-gtk3' 'gobject-introspection')
 options=(!emptydirs)
 
 source=(#"pamac-$pkgver-$pkgrel.tar.gz::$url/-/archive/v$pkgver/pamac-v$pkgver.tar.gz")
         "pamac-$pkgver-$pkgrel.tar.gz::$url/-/archive/$_commit/$pkgname-$_commit.tar.gz")
-sha256sums=('6c67cb09dc401e13d1ba01db2671cdbbc28782f0e29e105d72d283c686edeb35')
+sha256sums=(ef4eb70443fa75af03600ebf37f06063d464a9b55fe79ecd96f25ace1462a9de)
 
 prepare() {
   mv "$srcdir/pamac-$_commit" "$srcdir/pamac-v$_pkgver"
@@ -36,18 +37,19 @@ build() {
   cd "$srcdir/pamac-v$_pkgver"
   mkdir -p builddir
   cd builddir
-  meson --prefix=/usr --sysconfdir=/etc -Denable-appindicator=true --buildtype=release
+  meson --prefix=/usr --sysconfdir=/etc -Denable-appindicator=true -Denable-snap=true --buildtype=debug
 
   # build
   ninja
 }
 
 package_pamac-common() {
-  depends=('glib2>=2.42' 'json-glib' 'libsoup' 'dbus-glib' 'polkit'
-         'libnotify' 'desktop-file-utils' 'pacman>=5.1' 'pacman<5.2' 'gnutls>=3.4'
+  depends=('glib2>=2.42' 'json-glib' 'libsoup' 'dbus-glib' 'polkit' 'vte3'
+         'desktop-file-utils' 'pacman>=5.1' 'pacman<5.2' 'gnutls>=3.4' 'libnotify'
          'appstream-glib' 'archlinux-appstream-data' 'git')
+  optdepends=('pamac-snap-plugin')
   backup=('etc/pamac.conf')
-  provides=("pamac-common=$pkgver")
+  provides=("pamac-common=$pkgver-$pkgrel")
   conflicts=('pamac<=7.3.4-2' 'pamac-aur' 'pamac-common')
   install=pamac-common.install
   cd "$srcdir/pamac-v$_pkgver"
@@ -70,21 +72,25 @@ package_pamac-common() {
   rm -rf "$pkgdir/usr/share/applications"
   rm "$pkgdir/usr/share/dbus-1/services/org.manjaro.pamac.manager.service"
   rm -rf "$pkgdir/usr/share/gnome-shell"
+   # remove pamac-snap
+  rm "$pkgdir/usr/share/vala/vapi/pamac-snap.vapi"
+  rm "$pkgdir/usr/include/pamac-snap.h"
+  rm "$pkgdir/usr/lib/libpamac-snap.so"
 }
 
 package_pamac-cli-src() {
   depends=('pamac-common')
-  provides=("pamac-cli=$pkgver")
+  provides=("pamac-cli=$pkgver-$pkgrel")
   conflicts=('pamac<=7.3.4-2' 'pamac-aur' 'pamac-cli')
   cd "$srcdir/pamac-v$_pkgver"
   install -Dm755 "builddir/src/pamac" "$pkgdir/usr/bin/pamac"
 }
 
 package_pamac-gtk() {
-  depends=('pamac-cli-src' 'vte3>=0.38' 'gtk3>=3.22' 'pamac-tray-appindicator-src')
-  provides=("pamac=$pkgver-$pkgrel" "pamac=$pkgver-$pkgrel" "pamac-gtk=$pkgver")
+  depends=('pamac-cli-src' 'gtk3>=3.22' 'pamac-tray-appindicator-src')
+  provides=("pamac=$pkgver-$pkgrel" "pamac-gtk=$pkgver-$pkgrel")
   replaces=('pamac')
-  conflicts=('pamac' 'pamac-aur' 'pamac-gtk')
+  conflicts=('pamac' 'pamac-aur' 'pamac-gtk' 'pamac')
   install=pamac-gtk.install
   cd "$srcdir/pamac-v$_pkgver"
   install -Dm755 "builddir/src/pamac-tray" "$pkgdir/usr/bin/pamac-tray"
@@ -107,9 +113,22 @@ package_pamac-gtk() {
 package_pamac-tray-appindicator-src() {
   pkgdesc="Tray icon using appindicator which fits better in KDE"
   depends=('pamac-gtk' 'libappindicator-gtk3')
-  provides=("pamac-tray-appindicator=$pkgver")
+  provides=("pamac-tray-appindicator=$pkgver-$pkgrel")
   conflicts=('pamac-tray-appindicator' 'pamac-tray-appindicator-git')
   cd "$srcdir/pamac-v$_pkgver"
   install -Dm755 "builddir/src/pamac-tray-appindicator" "$pkgdir/usr/bin/pamac-tray-appindicator"
   install -Dm644 "data/applications/pamac-tray-appindicator.desktop" "$pkgdir/etc/xdg/autostart/pamac-tray-appindicator.desktop"
 }
+
+package_pamac-snap-plugin() {
+  pkgdesc="Snap plugin for Pamac"
+  depends=('snapd' 'snapd-glib')
+  conflicts=('pamac-snap-plugin')
+  provides=("pamac-snap-plugin=$pkgver-$pkgrel")
+  cd "$srcdir/pamac-v$_pkgver"
+  install -Dm644 "builddir/src/pamac-snap.vapi" "$pkgdir/usr/share/vala/vapi/pamac-snap.vapi"
+  install -Dm644 "builddir/src/pamac-snap.h" "$pkgdir/usr/include/pamac-snap.h"
+  install -Dm755 "builddir/src/libpamac-snap.so" "$pkgdir/usr/lib/libpamac-snap.so"
+
+}
+# vim:set ts=2 sw=2 et:
