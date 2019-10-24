@@ -4,15 +4,15 @@
 
 pkgname=bats-core
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Bash Automated Testing System'
 arch=('any')
 url='https://github.com/bats-core/bats-core'
 license=('MIT')
 depends=('bash')
 makedepends=('git')
-source=("git+https://github.com/bats-core/bats-core.git#tag=v$pkgver")
-md5sums=('SKIP')
+source=("git+https://github.com/bats-core/bats-core.git#tag=v$pkgver" fix-libexec-path.patch)
+sha256sums=('SKIP' '1c1aa78cead376910f71807d4615e3041c91e4525c9a439defc90e1d5f776c2a')
 conflicts=('bash-bats')
 
 check() {
@@ -23,7 +23,7 @@ check() {
 package() {
   cd "${srcdir}/bats-core"
 
-  patch -p1 -i ../../fix-libexec-path.patch
+  patch -p1 -i "${srcdir}/fix-libexec-path.patch"
 
   install -dm755 "${pkgdir}"/{usr/bin,usr/lib/bats,usr/share/man/man{1,7},usr/share/licenses/${pkgname}}
   install -m 755 "bin"/* "${pkgdir}/usr/bin"
