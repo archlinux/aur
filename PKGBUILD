@@ -2,7 +2,7 @@
 
 pkgname=shshare
 pkgver=0.1.10
-pkgrel=2
+pkgrel=3
 pkgdesc="A screenshotter, recorder, and uploader"
 arch=('any')
 url="https://github.com/MarkusGordathian/shshare"
@@ -20,5 +20,4 @@ package() {
 	install -D -m755 shshare "${pkgdir}/usr/bin/shshare"
 	install -D -m755 uploader.sh "${pkgdir}/etc/shshare/uploader.sh"
 	install -D -m644 shshare.1.gz "${pkgdir}/usr/share/man/man1/shshare.1.gz"
-	install -D -m644 shshare.bash "${pkgdir}/etc/bash_completion.d/shshare.bash"
 }
