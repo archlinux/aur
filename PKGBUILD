@@ -2,8 +2,8 @@
 
 pkgname=libsafec
 _pkgname=safeclib
-pkgver=04062019
-_gitver=ga99a05
+pkgver=17102019
+_gitver=5d92be8
 pkgrel=1
 _pkgver="${pkgver}.0-${_gitver}"
 pkgdesc='Implementtion of C11 Annex K + ISO TR24731 Bounds Checking Interface'
@@ -11,32 +11,36 @@ arch=('i686' 'x86_64')
 url='https://rurban.github.io/safeclib'
 _url='https://github.com/rurban/safeclib'
 depends=('pkgconfig')
-makedepends=('clang')
+makedepends=('clang' 'git')
 license=('MIT')
-# https://github.com/rurban/safeclib/releases/download/v03032018/libsafec-03032018.0-g570fa5.tar.bz2
-source=("${_url}/releases/download/v${pkgver}/${pkgname}-${_pkgver}.tar.bz2")
-sha256sums=('bb3680fb15cace9ffb1120352a4d8a149187006f4b7d8daa397530d9541c606c')
+# https://github.com/rurban/safeclib/archive/v17102019.tar.gz
+source=("${_url}/archive/v${pkgver}.tar.gz")
+sha256sums=('f6d945bd68581ab9776cfe963961e09f64db9a3c880564c9149c5b4e4944ec92')
 
-# prepare() {
-#   cd "${srcdir}/${pkgname}-${_pkgver}"
-#   ./build-tools/autogen.sh
-# }
+prepare() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  # Ugly workaround to solve this
+  git init
+  git add .
+  git commit -m "$(date)"
+  ./build-aux/autogen.sh
+  CC="clang -march=native -fstrict-aliasing" ./configure --prefix=/usr
+}
 
 build() {
-  cd "${srcdir}/${pkgname}-${_pkgver}"
-  CC="clang -march=native -fstrict-aliasing" ./configure --prefix=/usr
+  cd "${srcdir}/${_pkgname}-${pkgver}"
   make
 }
 
 check() {
-  cd "${srcdir}/${pkgname}-${_pkgver}"
-  # make check
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  make check
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${_pkgver}/"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}" install
-  install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  install -Dm0644 COPYING "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 
   # temp fix
   [ -f "${pkgdir}/usr/share/man/man3/towlower.3" ] && \
