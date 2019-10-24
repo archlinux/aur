@@ -2,7 +2,7 @@
 
 pkgname=cling
 pkgver=0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Interactive C++ interpreter, built on the top of LLVM and Clang libraries"
 arch=("i686" "x86_64")
 url="https://root.cern.ch/cling"
@@ -24,7 +24,6 @@ sha256sums=(
     "SKIP"
     "SKIP"
 )
-_num_cores=$(getconf _NPROCESSORS_ONLN)
 
 
 prepare() {
@@ -49,20 +48,20 @@ build() {
         -DLLVM_ENABLE_RTTI=ON \
         -DLLVM_ENABLE_FFI=ON \
         -DLLVM_BUILD_DOCS=OFF \
+        -DLLVM_BUILD_TOOLS=OFF \
         -DLLVM_ENABLE_SPHINX=OFF \
         -DLLVM_ENABLE_DOXYGEN=OFF \
         -DFFI_INCLUDE_DIR=$(pkg-config --cflags-only-I libffi | cut -c3-) \
         "$srcdir/llvm"
 
-    make -C tools/clang -j$_num_cores
-    make -C tools/cling -j$_num_cores
+    make -C tools/clang
+    make -C tools/cling
 }
 
 package() {
     cd "$srcdir/build"
 
-    make -C tools/clang -j$_num_cores DESTDIR="$pkgdir" install
-    make -C tools/cling -j$_num_cores DESTDIR="$pkgdir" install
+    make DESTDIR="$pkgdir" install
 
     install -d "$pkgdir/usr/bin"
     ln -s "/opt/cling/bin/cling" "$pkgdir/usr/bin/cling"
