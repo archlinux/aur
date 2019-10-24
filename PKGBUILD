@@ -1,34 +1,34 @@
 # Maintainer: Christopher Arndt <aur -at- chrisarndt -dot- de>
 
-_module='flake8-polyfill'
-pkgbase=("python-${_module}")
-pkgname=("${pkgbase}" "python2-${_module}")
-pkgver='1.0.1'
-pkgrel=2
+_name='flake8-polyfill'
+pkgbase="python-${_name}"
+pkgname=("${pkgbase}" "python2-${_name}")
+pkgver=1.0.2
+pkgrel=1
 pkgdesc="Polyfill package for Flake8 plugins"
-url="https://gitlab.com/pycqa/flake8-polyfill"
+url="https://gitlab.com/pycqa/${_name}"
 depends=()
 makedepends=('python-setuptools' 'python2-setuptools')
 license=('MIT')
 arch=('any')
-source=("https://pypi.python.org/packages/71/6e/dd7e0f0ddf146213d0cc0b963b3d4c6434823ebe3992c29b523182bbf785/${_module}-${pkgver}.tar.gz")
-md5sums=('92aa008899021c8c7c3a9db2578164da')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
+md5sums=('076110bed47814d27019a0db25ad481b')
 
 prepare() {
-  cp -a "${srcdir}/${_module}-${pkgver}"{,-python2}
+  cp -a "${srcdir}/${_name}-${pkgver}"{,-python2}
 }
 
 build() {
-  cd "${srcdir}/${_module}-${pkgver}"
+  cd "${srcdir}/${_name}-${pkgver}"
   python setup.py build
 
-  cd "${srcdir}/${_module}-${pkgver}-python2"
+  cd "${srcdir}/${_name}-${pkgver}-python2"
   python2 setup.py build
 }
 
 package_python-flake8-polyfill() {
   depends+=('flake8')
-  cd "${srcdir}/${_module}-${pkgver}"
+  cd "${srcdir}/${_name}-${pkgver}"
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 
   # license
@@ -37,7 +37,7 @@ package_python-flake8-polyfill() {
 
 package_python2-flake8-polyfill() {
   depends+=('python2-flake8')
-  cd "${srcdir}/${_module}-${pkgver}-python2"
+  cd "${srcdir}/${_name}-${pkgver}-python2"
   python2 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 
   # license
