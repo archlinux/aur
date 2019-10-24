@@ -6,7 +6,7 @@ pkgdesc="A tun2socks implementation written in Go."
 arch=(x86_64)
 url=https://github.com/eycorsican/go-tun2socks
 license=(MIT)
-makedepends=(go)
+makedepends=(go git)
 source=(
 	$pkgname-$pkgver.tar.gz::https://github.com/eycorsican/go-tun2socks/archive/v1.16.7.tar.gz
 	build-flags.patch
