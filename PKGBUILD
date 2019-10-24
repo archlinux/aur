@@ -5,8 +5,8 @@
 pkgname=elm-platform-bin
 _pkgname=elm-platform
 
-pkgver=0.19.0
-pkgrel=3
+pkgver=0.19.1
+pkgrel=1
 pkgdesc="Bundle of all core development tools for Elm"
 url="https://github.com/elm/compiler"
 license=('BSD-3-Clause')
@@ -15,11 +15,12 @@ depends=(ncurses5-compat-libs)
 conflicts=(elm-platform)
 provides=(elm-platform)
 makedepends=()
+pkgbinary=${pkgname}-${pkgver}
 
-source=(binaries-for-linux-${pkgver}.tar.gz::https://github.com/elm/compiler/releases/download/${pkgver}/binaries-for-linux.tar.gz)
-sha512sums=('7a68a8ffd795e89a4587f6959c820ffbc9abfea5e30fec3de70cc9521097d3d9b45ed1cf671f9f45833a366f771f9805df28866117d53e8e29b9557cd492bd31')
+source=(${pkgbinary}.gz::https://github.com/elm/compiler/releases/download/${pkgver}/binary-for-linux-64-bit.gz)
+sha256sums=('e44af52bb27f725a973478e589d990a6428e115fe1bb14f03833134d6c0f155c')
 
 package() {
   install -d $pkgdir/usr/bin
-  install -m755 elm $pkgdir/usr/bin/elm
+  install -m755 ${pkgbinary} $pkgdir/usr/bin/elm
 }
