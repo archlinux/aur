@@ -6,7 +6,7 @@ pkgver=v0.1.3.r110.ga48164b
 pkgrel=1
 arch=(any)
 url='https://github.com/arraiyopensource/kornia'
-pkgdesc='Visualization tool for Pytorch by Facebook'
+pkgdesc='Open Source Differentiable Computer Vision Library for PyTorch'
 license=(Apache)
 makedepends=(
   'git'
