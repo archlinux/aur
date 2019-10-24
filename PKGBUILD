@@ -9,7 +9,7 @@ pkgdesc='CLI and Ruby client library for Travis CI'
 arch=(any)
 url='https://github.com/travis-ci/travis.rb'
 license=(MIT)
-depends=(ruby ruby-backports ruby-faraday ruby-faraday-middleware ruby-gh 'ruby-highline>=1.6.0' 'ruby-highline<2.0.0' ruby-launchy ruby-pusher-client 'ruby-typhoeus>=0.6.8' 'ruby-typhoeus<1.0.0')
+depends=(ruby ruby-backports ruby-faraday ruby-faraday-middleware ruby-gh ruby-highline-1.6 ruby-launchy ruby-pusher-client ruby-typhoeus-0.6)
 makedepends=('ruby-rdoc')
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
