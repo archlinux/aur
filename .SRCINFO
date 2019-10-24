@@ -1,6 +1,6 @@
 pkgbase = bsequencer-git
 	pkgdesc = Multi channel MIDI step sequencer LV2 plugin.
-	pkgver = r65.49dc212
+	pkgver = r82.c4dd235
 	pkgrel = 1
 	url = https://github.com/sjaehn/BSEQuencer
 	arch = x86_64
