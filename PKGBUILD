@@ -1,8 +1,8 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=freefem-git
-pkgver=4.4.2r20191016
-epoch=1
+pkgver=4.4.2.r20191024
+epoch=2
 pkgrel=1
 pkgdesc='A PDE oriented language using the finite element method from git'
 arch=('x86_64')
@@ -18,7 +18,7 @@ options=('!makeflags')
 
 pkgver() {
   cd FreeFem
-  printf "%sr%s" $(grep AC_INIT configure.ac| cut -d, -f2|tr - .) $(git log -1 --format="%cd" --date=short | sed 's|-||g')
+  printf "%s.r%s" $(grep AC_INIT configure.ac| cut -d, -f2|tr - .) $(git log -1 --format="%cd" --date=short | sed 's|-||g')
 }
 
 prepare() {
