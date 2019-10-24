@@ -11,12 +11,10 @@ pkgbase = ruby-travis
 	depends = ruby-faraday
 	depends = ruby-faraday-middleware
 	depends = ruby-gh
-	depends = ruby-highline>=1.6.0
-	depends = ruby-highline<2.0.0
+	depends = ruby-highline-1.6
 	depends = ruby-launchy
 	depends = ruby-pusher-client
-	depends = ruby-typhoeus>=0.6.8
-	depends = ruby-typhoeus<1.0.0
+	depends = ruby-typhoeus-0.6
 	noextract = travis-1.8.10.gem
 	options = !emptydirs
 	source = https://rubygems.org/downloads/travis-1.8.10.gem
