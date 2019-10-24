@@ -1,7 +1,7 @@
 pkgbase = android-aarch64-expat
 	pkgdesc = An XML parser library (android)
-	pkgver = 2.2.7
-	pkgrel = 2
+	pkgver = 2.2.9
+	pkgrel = 1
 	url = http://expat.sourceforge.net
 	arch = any
 	license = custom
@@ -11,8 +11,8 @@ pkgbase = android-aarch64-expat
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = http://downloads.sourceforge.net/expat/expat-2.2.7.tar.bz2
-	sha256sums = cbc9102f4a31a8dafd42d642e9a3aa31e79a0aedaa1f6efd2795ebc83174ec18
+	source = http://downloads.sourceforge.net/expat/expat-2.2.9.tar.bz2
+	sha256sums = f1063084dc4302a427dabcca499c8312b3a32a29b7d2506653ecc8f950a9a237
 
 pkgname = android-aarch64-expat
 
