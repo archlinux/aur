@@ -1,6 +1,6 @@
 pkgbase = postgis-src
 	pkgdesc = Postgres GIS extensions (from source)
-	pkgver = 2.5.3
+	pkgver = 3.0.0
 	pkgrel = 4
 	url = http://postgis.net/
 	arch = i686
@@ -15,11 +15,11 @@ pkgbase = postgis-src
 	depends = protobuf-c
 	depends = sfcgal
 	optdepends = gtk2-appmenu: for GTK support
-	provides = postgis-src=2.5.3
+	provides = postgis-src=3.0.0
 	conflicts = postgis-src
 	conflicts = postgis
-	source = http://download.osgeo.org/postgis/source/postgis-2.5.3.tar.gz
-	sha256sums = 72e8269d40f981e22fb2b78d3ff292338e69a4f5166e481a77b015e1d34e559a
+	source = http://download.osgeo.org/postgis/source/postgis-3.0.0.tar.gz
+	sha256sums = c06fd2cd5cea0119106ffe17a7235d893c2bbe6f4b63c8617c767630973ba594
 
 pkgname = postgis-src
 
