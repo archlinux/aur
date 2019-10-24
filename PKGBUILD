@@ -5,7 +5,7 @@ pkgver=2.0.0
 pkgrel=1
 pkgdesc='QQ for Linux'
 arch=('x86_64' 'aarch64' 'mips64el')
-url='https://im.qq.com/linuxqq/download.html/'
+url='https://im.qq.com/linuxqq/download.html'
 license=('custom')
 source=(
     'https://qd.myapp.com/myapp/qqteam/linuxQQ/linuxqq_'${pkgver}'-b1-1024_'${arch}'.rpm'
