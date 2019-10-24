@@ -1,0 +1,22 @@
+pkgbase = quikey-git
+	pkgdesc = A keyboard macro tool.
+	pkgver = 0.1.1.r4.g40a82ba
+	pkgrel = 1
+	url = https://github.com/bostrt/quikey
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-click
+	depends = python-colored
+	depends = python-daemon
+	depends = python-inotify-simple
+	depends = python-tinydb
+	depends = python-pynput
+	depends = python-terminaltables
+	depends = python-xdg
+	depends = python-humanize
+	source = git+https://github.com/bostrt/quikey.git
+	md5sums = SKIP
+
+pkgname = quikey-git
+
