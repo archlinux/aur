@@ -1,11 +1,11 @@
 pkgbase = gconf-dummy
+	pkgdesc = Dummy package providing gconf. Useful when packages wrongly depend on gconf.
 	pkgver = 1.0
 	pkgrel = 1
 	url = https://github.com/nikola-kocic/gconf-dummy
 	arch = any
 	license = GPL
 	provides = gconf
-	conflicts = gconf
 
 pkgname = gconf-dummy
 

@@ -1,14 +1,13 @@
 # Maintainer: Nikola Kocić <nikolakocic@gmail.com>
 pkgname=gconf-dummy
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
-epoch=
-pkgdesc=""
+pkgdesc="Dummy package providing gconf. Useful when packages wrongly depend on gconf."
 arch=('any')
 url="https://github.com/nikola-kocic/${pkgname}"
 license=('GPL')
 provides=('gconf')
-conflicts=('gconf')
+conflicts=()
 replaces=()
 source=()
 noextract=()
