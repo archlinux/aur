@@ -1,0 +1,4 @@
+src/
+pkg/
+python-boolean.py*.tar.gz
+python-boolean.py*.tar.xz
