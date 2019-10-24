@@ -19,11 +19,11 @@ md5sums=('f8a61c58ff5b4a27b9f1ba0c5593e81c')
 
 build() {
   cd "$srcdir"/$pkgname-$pkgver
-  python ./setup.py build
+  /usr/bin/python setup.py build
 }
 
 package() {
   cd "$srcdir"/$pkgname-$pkgver
-  python ./setup.py install --root="$pkgdir"
+  /usr/bin/python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
 
