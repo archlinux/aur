@@ -1,14 +1,14 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=rav1e-git
-pkgver=r658.4f93ef7
+pkgver=r2010.1618f98b
 pkgrel=1
 pkgdesc="The fastest and safest AV1 encoder"
 arch=('i686' 'x86_64')
 url="https://github.com/xiph/rav1e"
 license=('custom' 'BSD')
 depends=('gcc-libs')
-makedepends=('git' 'cargo'
+makedepends=('git' 'rust'
   # aom dependency
   'cmake' 'perl' 'nasm')
 # aom dependency
@@ -46,9 +46,11 @@ check() {
 package() {
   cd "rav1e"
 
-  install -Dm755 "target/release/rav1e" "$pkgdir/usr/bin/rav1e"
+  cargo install --root "$pkgdir/usr" --path "$srcdir/rav1e"
 
   install -Dm644 "README.md" "$pkgdir/usr/share/doc/rav1e/README.md"
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/rav1e/LICENSE"
   install -Dm644 "PATENTS" "$pkgdir/usr/share/licenses/rav1e/PATENTS"
+
+  rm "$pkgdir/usr/.crates.toml"
 }
