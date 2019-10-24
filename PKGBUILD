@@ -3,7 +3,7 @@
 pkgbase=octopi-dev
 pkgname='octopi-dev'
 pkgver=0.9.0
-pkgrel=5
+pkgrel=6
 pkgdesc="A powerful Pacman frontend using Qt5 libs"
 arch=('i686' 'x86_64')
 url="http://octopiproject.wordpress.com"
