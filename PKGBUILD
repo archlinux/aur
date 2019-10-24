@@ -2,8 +2,8 @@
 
 pkgname=opensmtpd-extras-git
 _pkgname=OpenSMTPD-extras
-pkgver=0+r604+36cc595
-pkgrel=3
+pkgver=0+r604+g36cc595
+pkgrel=1
 pkgdesc='Additional queues, schedulers, and tables for OpenSMTPD (Git)'
 arch=(i686 x86_64)
 url=https://github.com/OpenSMTPD/OpenSMTPD-extras
@@ -21,7 +21,7 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
-  echo 0+r$(git rev-list --count HEAD)+$(git rev-parse --short HEAD)
+  echo 0+r$(git rev-list --count HEAD)+g$(git rev-parse --short HEAD)
 }
 
 prepare() {

@@ -1,7 +1,7 @@
 pkgbase = opensmtpd-extras-git
 	pkgdesc = Additional queues, schedulers, and tables for OpenSMTPD (Git)
-	pkgver = 0+r604+36cc595
-	pkgrel = 3
+	pkgver = 0+r604+g36cc595
+	pkgrel = 1
 	url = https://github.com/OpenSMTPD/OpenSMTPD-extras
 	arch = i686
 	arch = x86_64
