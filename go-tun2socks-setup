@@ -1,0 +1,9 @@
+#!/bin/bash
+while true; do
+	if [ -d /sys/class/net/$TUN_DEVICE_NAME ]; then
+		ip addr add $TUN_ADDRESS dev $TUN_DEVICE_NAME
+		ip link set $TUN_DEVICE_NAME up
+		break
+	fi
+	sleep 1
+done

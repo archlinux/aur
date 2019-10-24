@@ -1,0 +1,21 @@
+pkgbase = go-tun2socks
+	pkgdesc = A tun2socks implementation written in Go.
+	pkgver = 1.16.7
+	pkgrel = 1
+	url = https://github.com/eycorsican/go-tun2socks
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	source = go-tun2socks-1.16.7.tar.gz::https://github.com/eycorsican/go-tun2socks/archive/v1.16.7.tar.gz
+	source = build-flags.patch
+	source = go-tun2socks.service
+	source = go-tun2socks.conf
+	source = go-tun2socks-setup
+	sha512sums = 3bf6f1b76b90d8fa8c75547d8659435054d2798dd97669b4cdccde72f75253baa1fb40442d82d480636a468c5b2234e5eddb4892e2e3c35069d3349f3991af16
+	sha512sums = 72a04943aa4e0cb8241c63a26d30c88cdbedf12b49f5f1c93dc97b1cb4f621c8e59736107d729f7244ab2a2c0fc926874bd19bed20e2afafabd7db8ac767e21b
+	sha512sums = e886723a3fe098e514c22a942cef6f2eae060713b40c4c95fbd26147bf87b11ca75c15e6da44ec19ebabd4f2f39abd1f2aeb1494c235d62ee17dac63ca466adb
+	sha512sums = 3c878b5004f4aed59635d832b22199c2550abb46b4ede49221d904a37f0e1088cb976d4d73966c7d2826b5b86b352937d37824f1e76ce461eed1ca8ce9ca6521
+	sha512sums = b600ba920d72187f63a3202ea50006fdb7058b1063f128664a947d32af5736ca5450d6bd63c87e9518fbe2f99f3fbbe4b5650fb7cf8202a4ceb5e5cbf5c61446
+
+pkgname = go-tun2socks
+
