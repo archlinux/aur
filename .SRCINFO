@@ -1,6 +1,6 @@
 pkgbase = audacious-git
 	pkgdesc = Lightweight, advanced audio player focused on audio quality
-	pkgver = 2019.10.24
+	pkgver = 4.0.r8945.d17897dc4
 	pkgrel = 1
 	url = https://audacious-media-player.org/
 	install = audacious.install
