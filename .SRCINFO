@@ -1,12 +1,12 @@
 pkgbase = chestnut
 	pkgdesc = An open-source NLE video editor
 	pkgver = 0.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jonno85uk/chestnut
 	arch = x86_64
-	license = GPL2
+	license = GPL3
 	makedepends = git
-	depends = pkgconfig
+	makedepends = pkgconfig
 	depends = ffmpeg
 	depends = qt5-base
 	depends = qt5-multimedia
