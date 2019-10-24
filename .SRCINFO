@@ -1,7 +1,7 @@
 pkgbase = pivy
 	pkgdesc = Tools for using PIV smartcards/Yubikeys with ssh-agent and disk encryption
-	pkgver = 0.3.0
-	pkgrel = 2
+	pkgver = 0.3.1
+	pkgrel = 1
 	url = https://github.com/arekinath/pivy
 	arch = x86
 	arch = x86_64
@@ -17,14 +17,14 @@ pkgbase = pivy
 	optdepends = zfs-utils: ZFS encrypted pool/fs support (pivy-zfs)
 	source = zfs-pivy.hook
 	source = zfs-pivy.install
-	source = https://github.com/arekinath/pivy/archive/v0.3.0.tar.gz
+	source = https://github.com/arekinath/pivy/archive/v0.3.1.tar.gz
 	source = https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-2.7.4.tar.gz
-	source = https://github.com/arekinath/mini-pcsc/archive/v0.1.0.tar.gz
+	source = https://github.com/arekinath/mini-pcsc/archive/v0.2.0.tar.gz
 	sha256sums = 404e1ba4ab21e030f1661898d21c6a64a7dda5ad12cee678e33ad77856557f1b
 	sha256sums = 44b5a004a06ffe214df2810bb2d58a3ecb2bdcf1c892411a8d574afac935f678
-	sha256sums = f29ae879030bcd72a04df71b1854d1cf9ecda130825efc80ab7fe3b74d3735b8
+	sha256sums = e0fdfd6c39fab493c57dccc236a8e775b7b8933f0876c28f495af5fe240b6acd
 	sha256sums = 1e3a9fada06c1c060011470ad0ff960de28f9a0515277d7336f7e09362517da6
-	sha256sums = aff68661c77bde91d67bfe3a132fab1bfa6e445281c7362caa59e5238b228e66
+	sha256sums = a2c23b7b9e3dc976b54627a08da68b76fd6194ba45d211959dedf4700879379e
 
 pkgname = pivy
 
