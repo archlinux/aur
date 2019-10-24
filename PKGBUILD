@@ -5,7 +5,7 @@ _pkgver_month=10
 _pkgver_day=24
 
 pkgname=retrosmart-aurorae-themes
-pkgver=1.4b
+pkgver=1.5
 pkgrel=1
 pkgdesc='A retrosmart look collection of themes for KDE Aurorae.'
 url=https://github.com/mdomlop/$pkgname
@@ -29,4 +29,4 @@ package() {
     cd $srcdir/$pkgname-$pkgver
     make install DESTDIR=$pkgdir
 }
-md5sums=('95b3a6a891b7c5257792f9b7fe18f5fa')
+md5sums=('0a97c92ac89b6eb69a326294b47ed37f')
