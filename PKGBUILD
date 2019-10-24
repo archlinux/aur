@@ -3,12 +3,12 @@
 _pkgname=bna
 pkgname=python-bna
 pkgver=5.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Command-line Battle.net authenticator and Python library"
 arch=("any")
 license=("MIT")
 url="https://github.com/jleclanche/python-bna"
-depends=("python")
+depends=("python-click" "python-pyotp")
 source=(
 	"https://pypi.python.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz"
 #	"https://pypi.python.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz.asc"
