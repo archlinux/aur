@@ -1,14 +1,14 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=wasmer-git
-pkgver=0.5.1.r20.g13c5f5e7
+pkgver=0.9.0.r0.gaa8b968d4
 pkgrel=1
 pkgdesc="Standalone JIT WebAssembly runtime"
 arch=('i686' 'x86_64')
 url="https://wasmer.io/"
 license=('MIT')
 depends=('gcc-libs')
-makedepends=('git' 'cargo' 'cmake' 'python')
+makedepends=('git' 'rust' 'cmake' 'python')
 provides=('wasmer')
 conflicts=('wasmer')
 source=("git+https://github.com/wasmerio/wasmer.git")
@@ -30,7 +30,7 @@ pkgver() {
 build() {
   cd "wasmer"
 
-  cargo build --release --locked
+  cargo build --release #--locked
 }
 
 check() {
@@ -42,6 +42,8 @@ check() {
 package() {
   cd "wasmer"
 
-  cargo install --root "$pkgdir/usr" --path "."
+  cargo install --root "$pkgdir/usr" --path "$srcdir/wasmer"
   install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/wasmer"
+
+  rm "$pkgdir/usr/.crates.toml"
 }
