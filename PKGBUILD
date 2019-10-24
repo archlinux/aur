@@ -2,7 +2,7 @@
 # Contributor: Daniel Ratcliffe <dratcliffe@gmail.com>
 pkgname=craftos-pc-data
 pkgver=2.1.1
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="ROM package for CraftOS-PC"
 arch=('any')
@@ -14,7 +14,7 @@ makedepends=()
 checkdepends=()
 optdepends=()
 provides=()
-conflicts=('craftos-pc<=2.1.1')
+conflicts=()
 replaces=()
 backup=()
 options=()
