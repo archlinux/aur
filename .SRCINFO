@@ -1,6 +1,6 @@
 pkgbase = pkgupd-git
 	pkgdesc = Checks repositories and AUR for package updates
-	pkgver = 0.40
+	pkgver = 0.41
 	pkgrel = 1
 	url = https://github.com/foucault/pkgupd
 	arch = i686
