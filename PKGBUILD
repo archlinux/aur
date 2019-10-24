@@ -1,6 +1,6 @@
-# Maintainer: FzerorubigD <Fzerorubigd {AT} GMail {DOT} com>
+# Maintainer: fzerorubigd <fzero@rubi.gd>
 pkgname=protobuf-go
-pkgver=657.822fe569
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="Go support for Google's protocol buffers"
 arch=('i686' 'x86_64' 'armv5tel' 'armv6l' 'armv71')
@@ -14,15 +14,10 @@ sha1sums=('SKIP')
 
 _gitname=protobuf
 
-pkgver() {
-        cd "${srcdir}/${_gitname}"
-        echo "$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
-}
-
 build() {
 	mkdir -p ${srcdir}/src/github.com/golang/protobuf
         cd "${srcdir}/${_gitname}"
-	git --work-tree=${srcdir}/src/github.com/golang/protobuf checkout -f master
+	git --work-tree=${srcdir}/src/github.com/golang/protobuf checkout -f v${pkgver}
 	cd ${srcdir}/src/github.com/golang/protobuf
 	 GOPATH=${srcdir} go get -v ./...
 }
