@@ -1,15 +1,15 @@
 pkgbase = gingko
 	pkgdesc = Gingko is a new kind of tool, that lets you shape your ideas with lists, outlines and cards, all in the same clean interface.
-	pkgver = 2.4.3
+	pkgver = 2.4.5
 	pkgrel = 1
 	url = https://gingko.io/
 	arch = x86_64
 	arch = i686
 	license = Commercial
 	options = !strip
-	source = https://github.com/gingko/client/releases/download/v2.4.3/Gingko-2.4.3.AppImage
+	source = https://github.com/gingko/client/releases/download/v2.4.5/Gingko-2.4.5.AppImage
 	source = gingko.desktop
-	sha512sums = dc3e97f009517d7828db1a0c53a276e5c185c32d4e0e30df965810d5a5b18ec9656b4422f2872c7567e0a308431dc9e2c56bd75f0f2e021b9d8bb37c9f52c677
+	sha512sums = 2916f89f3fa9afba5b0b4e790e46c6740f05c8e74d5bbd0cf1fb28f1c34e6b013d865017f793b9d5f418c2154bf6694120d66c2b1f185fa16fa9a1879e40469e
 	sha512sums = c11e9c2541211d0ff43d4ff26fd23f6c64d8bb8008bddbbe174a420a69cc981120c3c5466e47894515fee0dbaccd95309eb61a16ffc3b3193af0609e62b46820
 
 pkgname = gingko
