@@ -55,12 +55,9 @@ pkgver() {
 prepare() {
     cd "fred"
 
-    # Gradle 5.4 and Java 11 support
+    # Gradle 5.4+ and Java 11 support
     git pull origin pull/658/head
     git apply -v "$srcdir/0001-strip-non-compile-deps.patch"
-
-    sed -i "gradle.properties" \
-        -e "s:targetJavaVersion.*:targetJavaVersion=$(javac -version 2>&1 |awk '{print $2}'):"
 }
 
 build() {
@@ -69,7 +66,9 @@ build() {
     export GRADLE_USER_HOME="$srcdir/.gradle"
 
     msg "Building Freenet..."
-    gradle --no-build-cache copyRuntimeLibs
+    gradle -DtargetJavaVersion=$(javac -version 2>&1 |awk '{print $2}') \
+           --no-build-cache --no-daemon \
+           copyRuntimeLibs
 
     build_plugins
 }
