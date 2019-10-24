@@ -5,7 +5,7 @@ _android_arch=x86
 
 pkgname=android-${_android_arch}-libpng
 pkgver=1.6.37
-pkgrel=3
+pkgrel=4
 pkgdesc="A collection of routines used to create PNG format graphics (android)"
 arch=('any')
 url="http://www.libpng.org/pub/png/libpng.html"
@@ -24,7 +24,7 @@ prepare() {
 
     # Add animated PNG (apng) support
     # see http://sourceforge.net/projects/libpng-apng/
-    gzip -dkf ../libpng-$pkgver-apng.patch
+    gzip -dkf ../libpng-$pkgver-apng.patch.gz
     patch -Np0 -i ../libpng-$pkgver-apng.patch
     sed -i "s/libpng@PNGLIB_MAJOR@@PNGLIB_MINOR@/libpng/g" libpng.pc.in
     sed -i "s/-lpng@PNGLIB_MAJOR@@PNGLIB_MINOR@/\-lpng/g" libpng.pc.in
