@@ -3,7 +3,7 @@
 # Contributor: Valère Monseur <valere dot monseur at ymail dot com>
 
 pkgname=picom-git
-_gitname=compton
+_gitname=picom
 pkgver=1242_Next.114.g43b2173_2019.10.23
 pkgrel=1
 pkgdesc="X compositor (fork of compton) (git-version)"
