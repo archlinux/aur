@@ -33,7 +33,7 @@ prepare() {
 }
 build() {
 	cd "$srcdir/$gosrcdir/$pkgname"
-	make
+	make VERSION=v$pkgver
 }
 package() {
 	cd "$srcdir"
