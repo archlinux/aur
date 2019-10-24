@@ -1,14 +1,14 @@
 pkgbase = python-profig
 	pkgdesc = A threading library written in python. Help you build threaded app.
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 1
-	url = https://bitbucket.org/dhagrow/profig/
+	url = https://github.com/dhagrow/profig
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = https://files.pythonhosted.org/packages/source/p/profig/profig-0.5.0.tar.gz
-	sha512sums = ec26e323ad69d55010104967a291ad2d0cf335e50c06d2876690ed661fd6b134d3d0935598e57d802ae2318c5ebdf747522adb90f9c7aba92a3fa019ddb03ca7
+	source = https://files.pythonhosted.org/packages/source/p/profig/profig-0.5.1.tar.gz
+	sha512sums = 6c95e2dc9b1736db4d341c5a94906319c54db36c181bfcb7fe6d2c92b95e3aaa12e70763ee55b491e6aaeaa6c9967104debeb67976a39c0bcf2a227e17828b03
 
 pkgname = python-profig
 	depends = python

@@ -3,15 +3,15 @@
 pkgbase=python-profig
 pkgname=('python-profig' 'python2-profig')
 _name=${pkgname#python-}
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="A threading library written in python. Help you build threaded app."
 arch=('any')
-url="https://bitbucket.org/dhagrow/profig/"
+url="https://github.com/dhagrow/profig"
 license=('MIT')
 makedepends=('python-setuptools' 'python2-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha512sums=('ec26e323ad69d55010104967a291ad2d0cf335e50c06d2876690ed661fd6b134d3d0935598e57d802ae2318c5ebdf747522adb90f9c7aba92a3fa019ddb03ca7')
+sha512sums=('6c95e2dc9b1736db4d341c5a94906319c54db36c181bfcb7fe6d2c92b95e3aaa12e70763ee55b491e6aaeaa6c9967104debeb67976a39c0bcf2a227e17828b03')
 
 prepare() {
   cp -a profig-$pkgver{,-py2}
