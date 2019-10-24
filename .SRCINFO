@@ -12,7 +12,7 @@ pkgbase = python-pyrepl-git
 	provides = python-pyrepl-hg
 	conflicts = python-pyrepl
 	conflicts = python-pyrepl-hg
-	source = git+https://github.com/blueyed/pyrepl
+	source = git+https://github.com/pypy/pyrepl
 	md5sums = SKIP
 
 pkgname = python-pyrepl-git

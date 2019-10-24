@@ -3,7 +3,7 @@
 # long time.
 pkgname=python-pyrepl-git
 _realpkg=pyrepl
-pkgver=0.9.0.16.g9df1fcb
+pkgver=0.9.0.29.g73bf331
 pkgrel=1
 pkgdesc="A Python library for building flexible command line interfaces"
 url="https://github.com/blueyed/pyrepl"
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('python')
 conflicts=('python-pyrepl' 'python-pyrepl-hg')
 provides=('python-pyrepl' 'python-pyrepl-hg')
-source=("git+https://github.com/blueyed/pyrepl")
+source=("git+https://github.com/pypy/pyrepl")
 md5sums=('SKIP')
 makedepends=('git' 'python')
 
