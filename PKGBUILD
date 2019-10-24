@@ -3,8 +3,8 @@
 _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-expat
-pkgver=2.2.7
-pkgrel=2
+pkgver=2.2.9
+pkgrel=1
 pkgdesc="An XML parser library (android)"
 arch=('any')
 url="http://expat.sourceforge.net"
@@ -13,12 +13,7 @@ depends=('android-ndk')
 options=(!strip !buildflags staticlibs !emptydirs)
 makedepends=('android-configure')
 source=("http://downloads.sourceforge.net/expat/expat-${pkgver}.tar.bz2")
-sha256sums=('cbc9102f4a31a8dafd42d642e9a3aa31e79a0aedaa1f6efd2795ebc83174ec18')
-
-prepare() {
-    source android-env ${_android_arch}
-    check_ndk_version_ge_than 18.0
-}
+sha256sums=('f1063084dc4302a427dabcca499c8312b3a32a29b7d2506653ecc8f950a9a237')
 
 build() {
     cd "${srcdir}"/expat-${pkgver}
