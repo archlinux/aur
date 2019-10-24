@@ -3,7 +3,7 @@
 pkgbase=octopi-notifier-qt5
 pkgname=('octopi-notifier-qt5')
 pkgver=0.9.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Notifier for Octopi using Qt5 libs"
 pkggit=octopi
 _gitcommit=7c5e3f9f27529f8a372b17611eeec18cf788c8d7
