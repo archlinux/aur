@@ -2,7 +2,7 @@
 
 pkgname=randomcase-git
 pkgver=0.5
-pkgrel=1
+pkgrel=3
 pkgdesc="Converts input to case from SpongeBob meme"
 arch=('any')
 license=('MIT')
