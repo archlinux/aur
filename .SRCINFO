@@ -1,6 +1,6 @@
 pkgbase = webcamoid
 	pkgdesc = Webcamoid is a full featured webcam capture application.
-	pkgver = 8.7.0
+	pkgver = 8.7.1
 	pkgrel = 1
 	url = https://webcamoid.github.io/
 	install = webcamoid.install
@@ -39,8 +39,8 @@ pkgbase = webcamoid
 	optdepends = kdesudo: Root privileges for virtual camera module
 	provides = webcamoid
 	conflicts = webcamoid-git
-	source = https://github.com/webcamoid/webcamoid/archive/8.7.0.tar.gz
-	sha256sums = 6fb9c55b574f06700802f10a5c20105c6c53ba4da43d842d1580bcefe7e9dbe6
+	source = https://github.com/webcamoid/webcamoid/archive/8.7.1.tar.gz
+	sha256sums = e0c033b0421e3ee626456fcc6e7c39d322be646a96a53352f74c3b5dc5fd5435
 
 pkgname = webcamoid
 
