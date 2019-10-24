@@ -1,7 +1,7 @@
 # Maintainer: JackMacWindows <jackmacwindowslinux@gmail.com>
 pkgname=craftos-pc
 pkgver=2.1.2
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Advanced ComputerCraft emulator written in C++"
 arch=('x86_64' 'i386' 'armv7l' 'aarch64')
@@ -25,6 +25,7 @@ sha256sums=('0be7d282e84c3f6d4017179ada4f7d63d0ea233b6ca0b3bf73a2664069e8d74e')
 validpgpkeys=()
 
 prepare() {
+    cd "craftos2-$pkgver"
     mkdir icons
     unzip linux-icons.zip -d icons
 }
