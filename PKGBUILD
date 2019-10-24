@@ -5,7 +5,7 @@
 pkgname=picom-git
 _gitname=picom
 pkgver=1242_Next.114.g43b2173_2019.10.23
-pkgrel=1
+pkgrel=2
 pkgdesc="X compositor (fork of compton) (git-version)"
 arch=(i686 x86_64)
 url="https://github.com/yshui/${_gitname}"
@@ -17,8 +17,9 @@ optdepends=('dbus:          To control picom via D-Bus'
             'xorg-xwininfo: For picom-trans'
             'xorg-xprop:    For picom-trans'
             'python:        For picom-convgen.py')
-provides=('compton' 'picom')
-conflicts=('compton' 'picom')
+provides=('compton' 'compton-git' 'picom')
+conflicts=('compton' 'compton-git' 'picom')
+replaces=('picom-git')
 source=(git+"https://github.com/yshui/${_gitname}.git#branch=next")
 md5sums=("SKIP")
 
