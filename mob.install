@@ -1,7 +1,0 @@
-post_install() {
-	ln -s /opt/Mob/mob /usr/bin/mob
-}
-
-pre_remove() {
-	rm /usr/bin/mob
-}
