@@ -10,6 +10,7 @@ url="http://www.florian-diesch.de/software/arronax/"
 depends=('gtk3' 'python-gobject' 'python-setuptools' 'python-xdg')
 #makedepends=('python-distutils-extra')
 optdepends=('python-nautilus: Arronax as Nautilus extension'
+            'python2-caja: Arronax as Caja extension'
             'nemo-python: Arronax as Nemo extension')
 
 source=(http://www.florian-diesch.de/software/$pkgname/dist/$pkgname-$pkgver.tar.gz)
