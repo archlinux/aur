@@ -1,0 +1,26 @@
+diff -aru a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2019-10-21 21:47:49.376729092 -0400
++++ b/CMakeLists.txt	2019-10-22 01:57:36.572070650 -0400
+@@ -40,7 +40,7 @@
+ # External Projects
+ ##############################
+ 
+-set (Boost_USE_STATIC_LIBS ON)
++set (Boost_USE_STATIC_LIBS OFF)
+ set (Boost_USE_MULTITHREADED ON)
+ 
+ IF (MSVC)
+diff -aru a/src/gui/helpers.cpp b/src/gui/helpers.cpp
+--- a/src/gui/helpers.cpp	2019-10-21 17:38:30.913050954 -0400
++++ b/src/gui/helpers.cpp	2019-10-21 17:38:17.576261366 -0400
+@@ -148,8 +148,8 @@
+           "One of the filenames to compare was invalid.");
+   }
+ #else
+-  auto unicodeLhs = UnicodeString::fromUTF8(lhs);
+-  auto unicodeRhs = UnicodeString::fromUTF8(rhs);
++  auto unicodeLhs = icu::UnicodeString::fromUTF8(lhs);
++  auto unicodeRhs = icu::UnicodeString::fromUTF8(rhs);
+   return unicodeLhs.caseCompare(unicodeRhs, U_FOLD_CASE_DEFAULT);
+ #endif
+ }

@@ -1,0 +1,34 @@
+diff -aru a/src/api/game/load_order_handler.h b/src/api/game/load_order_handler.h
+--- a/src/api/game/load_order_handler.h	2019-10-21 16:34:59.069308937 -0400
++++ b/src/api/game/load_order_handler.h	2019-10-21 16:30:11.742569749 -0400
+@@ -29,6 +29,7 @@
+ #include <list>
+ #include <string>
+ #include <unordered_set>
++#include <vector>
+ 
+ #include <libloadorder.hpp>
+ 
+diff -aru a/src/api/helpers/text.cpp b/src/api/helpers/text.cpp
+--- a/src/api/helpers/text.cpp	2019-10-21 16:36:52.762753869 -0400
++++ b/src/api/helpers/text.cpp	2019-10-21 16:37:24.112790799 -0400
+@@ -152,8 +152,8 @@
+           "One of the filenames to compare was invalid.");
+   }
+ #else
+-  auto unicodeLhs = UnicodeString::fromUTF8(lhs);
+-  auto unicodeRhs = UnicodeString::fromUTF8(rhs);
++  auto unicodeLhs = icu::UnicodeString::fromUTF8(lhs);
++  auto unicodeRhs = icu::UnicodeString::fromUTF8(rhs);
+   return unicodeLhs.caseCompare(unicodeRhs, U_FOLD_CASE_DEFAULT);
+ #endif
+ }
+@@ -165,7 +165,7 @@
+   return FromWinWide(wideString);
+ #else
+   std::string normalizedFilename;
+-  UnicodeString::fromUTF8(filename)
++  icu::UnicodeString::fromUTF8(filename)
+       .foldCase(U_FOLD_CASE_DEFAULT)
+       .toUTF8String(normalizedFilename);
+   return normalizedFilename;
