@@ -1,7 +1,7 @@
 # Maintainer: orhun <github.com/orhun>
 pkgname=k3rmit-git
 pkgdesc="A VTE-based terminal emulator that aims to be simple, fast and effective."
-pkgver=1.8.r0.g8c4ed86
+pkgver=1.9.r0.ge1e3172
 pkgrel=1
 arch=('any')
 url="https://github.com/orhun/k3rmit"
@@ -22,7 +22,6 @@ build() {
   mkdir -p "${pkgname%-git}/build"
   cd "${pkgname%-git}/build"
   cmake ../ -DCMAKE_INSTALL_PREFIX=/usr
-  make
 }
 
 package() {
