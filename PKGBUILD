@@ -1,24 +1,19 @@
-
 # Maintainer: Jon Nordby <jononor@gmail.com>
+# CoMaintainer: bartus <arch-user-repoᘓbartus.33mail.com>
+# shellcheck disable=SC2034
 
 pkgname=mmm-git
-pkgver=0.1.0.r11.0ae93f1
-pkgrel=2
-pkgdesc=""
+pkgver=0.1.0.r22.a5b2321
+pkgrel=1
+pkgdesc="Shared memory protocol for virtualising access to framebuffer graphics, audio output and input event."
 arch=(i686 x86_64)
-url=""
-license=('MIT')
-groups=()
-depends=()
-makedepends=('git')
+url="https://github.com/hodefoting/mmm"
+license=('custom')
+depends=('alsa-lib' 'sdl2')
+makedepends=('git' 'meson')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-replaces=()
-backup=()
-options=()
-install=
-source=('git+https://github.com/hodefoting/mmm.git')
-noextract=()
+source=("git+${url}.git")
 md5sums=('SKIP')
 
 pkgver() {
@@ -29,11 +24,12 @@ pkgver() {
 
 
 build() {
-	cd "$srcdir/${pkgname%-git}"
-	make PREFIX=/usr
+	mkdir -p ${srcdir}/build
+	meson ${srcdir}/${pkgname%-git} build --prefix=/usr
+	NINJA_STATUS="[%p | %f<%r<%u | %cbps ] " ninja -C "${srcdir}/build"
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}"
-	make PREFIX=/usr DESTDIR="$pkgdir/" install
+	DESTDIR="${pkgdir}" ninja -C "${srcdir}/build" install
+	install -Dm755 -t "${pkgdir}/usr/share/licenses/${pkgname}/" "${srcdir}/${pkgname%-git}/COPYING"
 }
