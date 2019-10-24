@@ -7,7 +7,7 @@ arch=(x86_64)
 url="https://halide-lang.org/"
 license=('MIT')
 groups=()
-depends=('llvm>=8.0' 'cmake>=3.8' 'clang' 'fakeroot')
+depends=('llvm>=8.0' 'cmake>=3.8' 'clang' 'fakeroot' 'binutils' 'make')
 makedepends=('git') 
 provides=("${pkgname%-VCS}")
 conflicts=("halide-bin")

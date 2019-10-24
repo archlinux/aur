@@ -10,6 +10,8 @@ pkgbase = halide-git
 	depends = cmake>=3.8
 	depends = clang
 	depends = fakeroot
+	depends = binutils
+	depends = make
 	provides = halide-git
 	conflicts = halide-bin
 	source = git+https://github.com/halide/Halide.git
