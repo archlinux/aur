@@ -193,7 +193,7 @@ build() {
     'use_ozone=true'
     'ozone_platform_wayland=true'
     'ozone_platform_x11=true'
-    'ozone_auto_platforms=fals    e'
+    'ozone_auto_platforms=false'
     'use_xkbcommon=true'
     'use_system_libwayland=true'
     'use_system_minigbm=true'
