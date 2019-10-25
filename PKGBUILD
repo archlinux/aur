@@ -3,11 +3,11 @@
 # Contributors: Det, Achilleas Pipinellis, speed145a, Schnouki
 
 pkgname=ungoogled-chromium-bin
-pkgver=77.0.3865.90
+pkgver=77.0.3865.120
 pkgrel=1
-pkgdesc="Modifications to Google Chromium for removing Google integration and enhancing privacy, control, and transparency (binary version)"
+pkgdesc="A lightweight approach to removing Google web service dependency"
 arch=("x86_64")
-url="https://github.com/ungoogled-software/ungoogled-chromium-binaries"
+url="https://ungoogled-software.github.io/"
 license=("BSD")
 provides=("chromium")
 conflicts=("chromium" "iridium" "ungoogled-chromium")
@@ -20,8 +20,8 @@ optdepends=('pepper-flash: support for Flash content'
             'kdialog: needed for file dialogs in KDE'
             'gnome-keyring: for storing passwords in GNOME keyring'
             'kwallet: for storing passwords in KWallet')
-source=("https://github.com/rtMis/ungoogled-chromium-binaries/releases/download/${pkgver}-${pkgrel}/ungoogled-chromium-${pkgver}-${pkgrel}-x86_64.pkg.tar.xz")
-sha256sums=("2075a65365cb87eb64d451219a57dab543f8cb37431ff37d14e5ee6e3a399518")
+source=("https://github.com/laamalif/ungoogled-chromium-binaries/releases/download/${pkgver}-${pkgrel}/ungoogled-chromium-${pkgver}-${pkgrel}-${arch}.pkg.tar.xz")
+sha256sums=("985ce82a7c2c503b5d8a6969e0f08eb5096d4fef74b2b1b1c55db1149935e1b1")
 
 package() {
   cp -R "${srcdir}/usr/" "${pkgdir}/usr"    
