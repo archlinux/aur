@@ -1,13 +1,15 @@
 pkgbase = dep-bin
 	pkgdesc = Go dependency management tool
 	pkgver = 0.5.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/golang/dep
 	arch = any
 	license = BSD
 	provides = dep
 	conflicts = dep
+	source = LICENSE
 	source = https://github.com/golang/dep/releases/download/v0.5.4/dep-linux-amd64
+	sha256sums = 69c47f09a7aec01c59ff1bdc346406d36e84df11461fb2bed92b0d185a7a2ccb
 	sha256sums = 40a78c13753f482208d3f4bea51244ca60a914341050c588dad1f00b1acc116c
 
 pkgname = dep-bin
