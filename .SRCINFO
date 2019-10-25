@@ -1,7 +1,7 @@
 pkgbase = linuxqq
 	pkgdesc = Tencent QQ for Linux
 	pkgver = 2.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://im.qq.com/linuxqq/download.html
 	arch = x86_64
 	arch = aarch64
