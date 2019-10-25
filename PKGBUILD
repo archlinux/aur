@@ -2,12 +2,11 @@
 
 pkgname=wireguard-hardened
 pkgver=0.0.20191012
-pkgrel=1
+pkgrel=2
 pkgdesc='Wireguard module for Hardened Kernel'
 arch=('x86_64')
 url='http://www.wireguard.com/'
 license=('GPL')
-depends=('linux-hardened')
 makedepends=('gcc' 'linux-hardened-headers')
 conflicts=('wireguard-dkms')
 provides=('WIREGUARD-MODULE')
@@ -17,13 +16,16 @@ sha256sums=('93573193c9c1c22fde31eb1729ad428ca39da77a603a3d81561a9816ccecfa8e'
             'SKIP')
 
 build() {
-        cd "${srcdir}/WireGuard-${pkgver}/src/"
-    make KERNELRELEASE="$(file -b /boot/vmlinuz-linux-hardened | sed 's/.*version //;s/ .*//')" module
+    _kernver="$(cat /usr/src/linux-hardened/version)"
+    cd "${srcdir}/WireGuard-${pkgver}/src/"
+    make KERNELRELEASE="${_kernver}" module
 }
 
 package() {
+    _kernver="$(cat /usr/src/linux-hardened/version)"
+    depends=("linux-hardened=$(echo ${_kernver}|sed 's/-hardened//g')")
     cd "${srcdir}/WireGuard-${pkgver}/src/"
     xz wireguard.ko
-    install -Dt "$pkgdir/usr/lib/modules/$(file -b /boot/vmlinuz-linux-hardened | sed 's/.*version //;s/ .*//')/extramodules/" -m0644 wireguard.ko.xz
+    install -Dt "$pkgdir/usr/lib/modules/${_kernver}/extramodules/" -m0644 wireguard.ko.xz
 }
 
