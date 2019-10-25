@@ -4,7 +4,7 @@
 
 pkgname=youtube-dl
 pkgver=2019.10.22
-pkgrel=1
+pkgrel=2
 pkgdesc="A small command-line program to download videos from YouTube.com and a few more sites"
 arch=('any')
 url="https://ytdl-org.github.io/youtube-dl/"
