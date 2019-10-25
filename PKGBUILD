@@ -18,7 +18,7 @@ depends=(gtk3 mozilla-common libxt startup-notification mime-types dbus-glib
          ffmpeg nss ttf-font libpulse)
 makedepends=(unzip zip diffutils python2-setuptools yasm mesa imake inetutils
              xorg-server-xvfb autoconf2.13 rust clang llvm jack gtk2
-             python nodejs python2-psutil cbindgen nasm wget)
+             python nodejs python2-psutil cbindgen nasm wget mercurial perl-rename)
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'pulseaudio: Audio support'
@@ -50,7 +50,7 @@ prepare() {
 #  sed -e "s/^FFSUB.*/FFSUB=/g" -i makeicecat
   sed -e "s/^GNUVERSION=.*/GNUVERSION=${pkgrel}/g" -i makeicecat
   sed -e 's/^FFVERSION.*/FFVERSION=$FFMAJOR.$FFMINOR.$FFSUB/g' -i makeicecat   # Only need this patch if release has 2 numbers
-#  sed -e 's/^gpg --recv-keys.*//g' -i makeicecat  ## WITH PROXY gpg doesn't work!!!!!!
+#  sed -e 's/^gpg2 --keyserver.*//g' -i makeicecat  ## WITH PROXY gpg doesn't work!!!!!!
   rm -rf output  # Clean output just in case is already an old build there
   bash makeicecat
   cd output/icecat-${pkgver}
