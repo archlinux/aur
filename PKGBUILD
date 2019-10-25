@@ -17,7 +17,7 @@ optdepends=()
 #conflicts=("jointris")
 
 source=('https://efanomars.com/sources/jointris-0.14.tar.gz')
-sha256sums=('44c2a3fdbf4fcab006e8f5da098459731befa8da6907f9002eae8522a64d8bcc')
+sha256sums=('8dd709cb201899ef6083fb9b2a0072b5f0bae56a0ec74fc2a7f3d61930f6b62a')
 
 build() {
   cd "${srcdir}/jointris"
