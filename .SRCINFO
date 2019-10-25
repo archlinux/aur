@@ -16,12 +16,10 @@ pkgbase = toggldesktop-bin
 	depends = qt5-x11extras
 	provides = toggldesktop
 	conflicts = toggldesktop
-	source = removelibs.list
 	source = toggldesktop.deb::https://github.com/toggl/toggldesktop/releases/download/v7.4.528/toggldesktop_7.4.528_amd64.deb
 	source = toggldesktop.bin
-	sha512sums = b49eb411ba0e10e52bc18237e313910ad94e471ba5affb833f33a3e242e7fc44f404fa463c1f8bf7157161338b0be4ced4f14c10259e58e1addcb419d0e3cc1c
 	sha512sums = d15b3801cd7eae8af245b2b57f42d510fe4b0e0a8e9c3f7a2e67fc253e3bbc04c86a56e955e0addb398447d4f08035f1cdfbf239849341a8ce7bae1ed368ebef
-	sha512sums = b8669361b7c0cdbaec8a2225085aac9e26c2e99122b0840543685d06bf2fa7410722276ce1fa26374a313e5af6de47f70d84fac8261a35745953b85adb1ce0bb
+	sha512sums = f14c5734925424cd1f415094733233f28d26f893513d6a059a1b4f254b058b3113e2ee5d0aa7ab1b88ecad10e7f6bb171fd1eaf94529f0c0feb43a4565d389b6
 
 pkgname = toggldesktop-bin
 
