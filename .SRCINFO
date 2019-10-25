@@ -1,7 +1,7 @@
 pkgbase = pamac
 	pkgdesc = A Package Manager based on libalpm with AUR and Appstream support
 	pkgver = 9.0.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://gitlab.manjaro.org/applications/pamac
 	arch = x86_64
 	license = GPL3
@@ -28,7 +28,7 @@ pkgbase = pamac
 	depends = snapd-glib
 	depends = vte3
 	options = !emptydirs
-	source = pamac-9.0.1-4.tar.gz::https://gitlab.manjaro.org/applications/pamac/-/archive/5cadbe289cfd7e624bb3b98fdbce53a1aff42cfe/pamac-common-5cadbe289cfd7e624bb3b98fdbce53a1aff42cfe.tar.gz
+	source = pamac-9.0.1-5.tar.gz::https://gitlab.manjaro.org/applications/pamac/-/archive/5cadbe289cfd7e624bb3b98fdbce53a1aff42cfe/pamac-common-5cadbe289cfd7e624bb3b98fdbce53a1aff42cfe.tar.gz
 	sha256sums = ef4eb70443fa75af03600ebf37f06063d464a9b55fe79ecd96f25ace1462a9de
 
 pkgname = pamac-common
@@ -48,7 +48,7 @@ pkgname = pamac-common
 	depends = archlinux-appstream-data
 	depends = git
 	optdepends = pamac-snap-plugin
-	provides = pamac-common=9.0.1-4
+	provides = pamac-common=9.0.1-5
 	conflicts = pamac<=7.3.4-2
 	conflicts = pamac-aur
 	conflicts = pamac-common
@@ -56,7 +56,7 @@ pkgname = pamac-common
 
 pkgname = pamac-cli-src
 	depends = pamac-common
-	provides = pamac-cli=9.0.1-4
+	provides = pamac-cli=9.0.1-5
 	conflicts = pamac<=7.3.4-2
 	conflicts = pamac-aur
 	conflicts = pamac-cli
@@ -66,8 +66,8 @@ pkgname = pamac-gtk
 	depends = pamac-cli-src
 	depends = gtk3>=3.22
 	depends = pamac-tray-appindicator-src
-	provides = pamac=9.0.1-4
-	provides = pamac-gtk=9.0.1-4
+	provides = pamac=9.0.1-5
+	provides = pamac-gtk=9.0.1-5
 	conflicts = pamac
 	conflicts = pamac-aur
 	conflicts = pamac-gtk
@@ -78,7 +78,7 @@ pkgname = pamac-tray-appindicator-src
 	pkgdesc = Tray icon using appindicator which fits better in KDE
 	depends = pamac-gtk
 	depends = libappindicator-gtk3
-	provides = pamac-tray-appindicator=9.0.1-4
+	provides = pamac-tray-appindicator=9.0.1-5
 	conflicts = pamac-tray-appindicator
 	conflicts = pamac-tray-appindicator-git
 
@@ -86,6 +86,6 @@ pkgname = pamac-snap-plugin
 	pkgdesc = Snap plugin for Pamac
 	depends = snapd
 	depends = snapd-glib
-	provides = pamac-snap-plugin=9.0.1-4
+	provides = pamac-snap-plugin=9.0.1-5
 	conflicts = pamac-snap-plugin
 
