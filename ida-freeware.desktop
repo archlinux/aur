@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=IDA-Free
+Comment=The Interactive Disassembler (Freeware version)
+Exec=/usr/share/ida-freeware/ida64
+Icon=ida-freeware
+Terminal=false
+Type=Application
+Categories=Development

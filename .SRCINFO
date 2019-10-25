@@ -1,0 +1,19 @@
+pkgbase = ida-freeware
+	pkgdesc = The freeware version of IDA v7.0
+	pkgver = 7.0
+	pkgrel = 1
+	url = https://www.hex-rays.com/products/ida/support/download_freeware.shtml
+	arch = x86_64
+	license = Custom
+	makedepends = fakechroot
+	depends = qt5-base
+	conflicts = ida-pro
+	conflicts = ida-pro-6.4
+	options = !strip
+	source = https://out7.hex-rays.com/files/idafree70_linux.run
+	source = ida-freeware.desktop
+	sha256sums = 136e0e1995f16e1ff85244c269450fa91fb5454a565ca7623712f34ac004e245
+	sha256sums = ea97a8c7a2e4a0043d3d73be5880f3754f3aa9901f2d2f3d51c58d30a7a41d96
+
+pkgname = ida-freeware
+
