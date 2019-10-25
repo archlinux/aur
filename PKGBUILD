@@ -2,7 +2,7 @@
 
 pkgname=python-clicolor
 _name=${pkgname#python-}
-pkgver=1.0.3
+pkgver=1.0.6
 pkgrel=1
 pkgdesc="Quick python reference for terminal color escape codes"
 arch=('any')
@@ -14,7 +14,7 @@ provides=('python-clicolor')
 conflicts=('python-clicolor')
 
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('a6ae16c50122e62e2fd97f094726c8ef505dbfa4f805a58a75ee9e0723f32e3b')
+sha256sums=('a29994261c1c65aa0d05d8405ebd9b7b7ea1cb833696afc0eb0b5fc69c987d9b')
 
 build() {
     cd "$srcdir/$_name-$pkgver"
