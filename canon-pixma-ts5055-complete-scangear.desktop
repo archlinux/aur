@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Canon Scangear (TS5055)
+Exec=/usr/bin/scangearmp2
+Icon=/usr/share/pixmaps/canon-pixma-ts5055-complete-scangear-icon.png
+Categories=Graphics;2DGraphics;
+Name[en_US]=canon-pixma-ts5055-complete-scangear.desktop

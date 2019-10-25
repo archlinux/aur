@@ -1,0 +1,28 @@
+pkgbase = canon-pixma-ts5055-complete
+	pkgdesc = Complete stand alone driver set (printing and scanning) for Canon Pixma TS5055
+	pkgver = 5.40
+	pkgrel = 1
+	url = https://www.canon.de/support/consumer_products/products/fax__multifunctionals/inkjet/pixma_ts_series/pixma-ts5055.html
+	install = canon-pixma-ts5055-complete.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = deb2targz
+	makedepends = sed
+	depends = popt
+	depends = libpng12
+	depends = libusb-compat
+	depends = libtiff
+	depends = libxml2
+	depends = gtk2
+	source = http://gdlp01.c-wss.com/gds/9/0100008399/01/cnijfilter2-5.40-1-deb.tar.gz
+	source = http://gdlp01.c-wss.com/gds/2/0100008402/01/scangearmp2-3.40-1-deb.tar.gz
+	source = canon-pixma-ts5055-complete-scangear.desktop
+	source = canon-pixma-ts5055-complete-scangear-icon.png
+	md5sums = 9fde0c1def36fbd38b4d08cd22a2b7a8
+	md5sums = 833f71781ba733fec84f4eb06d468fb4
+	md5sums = 149560a4ef6a661611e12fafe828093b
+	md5sums = 3feefd413092d7152f47b7451ba79efe
+
+pkgname = canon-pixma-ts5055-complete
+
