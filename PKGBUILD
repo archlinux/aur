@@ -1,14 +1,14 @@
 # Maintainer: Stefano Marsili <efanomars@gmx.ch>
 
 pkgname=mynes
-pkgver=0.2
+pkgver=0.3
 pkgrel=1
 pkgdesc="Rolling minesweeper with islands and sonars"
 url='https://www.efanomars.com/games/mynes'
 arch=('x86_64')
 license=('GPL3')
 
-depends=('stmm-games' 'stmm-input' 'gtkmm')
+depends=('stmm-games' 'stmm-input' 'gtkmm3')
 makedepends=('cmake' 'gcc' 'doxygen' 'graphviz' 'python')
 optdepends=()
 
@@ -16,8 +16,8 @@ optdepends=()
 #replaces=("mynes")
 #conflicts=("mynes")
 
-source=('git+https://gitlab.com/efanomars/mynes.git#commit=91e7c635d89a12d00e302ddeb0dfca732d1b923f')
-sha512sums=('SKIP')
+source=('https://efanomars.com/sources/mynes-0.3.tar.gz')
+sha256sums=('2750d293192f55c235b94fa70266fd89072d65845d15bbe8268de0f54c06b427')
 
 build() {
   cd "${srcdir}/mynes"
