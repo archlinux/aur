@@ -1,0 +1,16 @@
+pkgbase = violetminer-bin
+	pkgdesc = Argon2 CPU and Nvidia miner for TurtleCoin and WrkzCoin
+	pkgver = v0.1.1
+	pkgrel = 0
+	url = https://github.com/turtlecoin/violetminer
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	conflicts = violetminer-git
+	source_x86_64 = https://github.com/turtlecoin/violetminer/releases/download/v0.1.1/violetminer-linux.tar.gz
+	sha256sums_x86_64 = 81d594915160424d8aa1be96c9a5a78b4214bcf5946587e73cebd8b195a9e29f
+	source_aarch64 = https://github.com/turtlecoin/violetminer/releases/download/v0.1.1/violetminer-armv8.tar.gz
+	sha256sums_aarch64 = 0cce24bdac82e45ed8fc42809f71dff333582e4a26b8a11dad67a45a74bc6ff3
+
+pkgname = violetminer-bin
+
