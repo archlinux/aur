@@ -1,0 +1,20 @@
+pkgbase = discimagechef
+	pkgdesc = Disc image management and creation tool for disks, tapes, optical and solid state media
+	pkgver = 4.5.1.1692
+	pkgrel = 1
+	url = http://www.discimagechef.app
+	arch = any
+	license = GPL
+	depends = mono
+	provides = discimagechef
+	options = !strip
+	source = https://github.com/discimagechef/DiscImageChef/releases/download/v4.5.1.1692/DiscImageChef-4.5.1.1692.zip
+	source = https://github.com/discimagechef/DiscImageChef/releases/download/v4.5.1.1692/DiscImageChef-4.5.1.1692.zip.asc
+	source = discimagechef.sh
+	validpgpkeys = 236F1E21B540FC0D40F7AD1751D20488C724CA9F
+	sha256sums = f0eeadb1c963e26f6b661943dd73c070e469a27c143e11b7bdf59b1da47cb37a
+	sha256sums = SKIP
+	sha256sums = f55f4b5a861856473b21edd5ee7edd3605bf225186af1fdffad9b553789542bb
+
+pkgname = discimagechef
+
