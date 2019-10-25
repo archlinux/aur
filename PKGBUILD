@@ -18,7 +18,7 @@ md5sums=(
 )
 
 package() {
-    install -Dm 755 ${pkgdir}/usr/share/fcitx/skin/aqua/
+    install -dm 755 ${pkgdir}/usr/share/fcitx/skin/aqua/
     install -Dm 644 ${srcdir}/fcitx-skin-aqua-${pkgver}/aqua/* \
                     ${pkgdir}/usr/share/fcitx/skin/aqua/
 }
