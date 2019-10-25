@@ -8,8 +8,8 @@
 # update the dependencies based on dynamic libraries when packaging..
 pkgname=mpv-ahjolinna
 _gitname=mpv
-pkgver=0.29.1
-pkgrel=1
+pkgver=0.30.0
+pkgrel=10
 pkgdesc="MPV using ahjolinna's personal pre-made conf build"
 arch=('x86_64')
 license=('GPL')
@@ -48,7 +48,7 @@ optdepends+=('cuda: for CUVID hardware-acceleration for NVIDIA users')
 provides=('mpv' 'mpv-git')
 conflicts=('mpv' 'mpv-vapoursynth' 'mpv-ahjolinna-build-git' 'mpv-build-git' 'mpv-ahjolinna' )
 options=('!emptydirs')
-source=(git+https://github.com/mpv-player/$_gitname#tag=v$pkgver
+source=(https://github.com/mpv-player/mpv/archive/v$pkgver.tar.gz
         'git+https://github.com/ahjolinna/mpv-conf'
         'find-deps.py'
         'mpv-hq.desktop'
@@ -58,7 +58,7 @@ source=(git+https://github.com/mpv-player/$_gitname#tag=v$pkgver
          'mpv-SVP.desktop'
          'mpv-CUDA.desktop')
 
-sha256sums=('SKIP'
+sha256sums=('33a1bcb7e74ff17f070e754c15c52228cf44f2cefbfd8f34886ae81df214ca35'
             'SKIP'
             'ce974e160347202e0dc63f6a7a5a89e52d2cc1db2d000c661fddb9dc1d007c02'
             'ddd18dbccdaa4513586cb97299e88564e3289940f25d7ebe762c4482fbad3809'
@@ -69,13 +69,13 @@ sha256sums=('SKIP'
             'b703510f6e1f36d3f00008c282c7fef52057aa5703b412a7b750fb05c3a6a2e5')
 
 prepare() {
-  cd "${srcdir}/mpv"
+  cd "${srcdir}/mpv-$pkgver"
 ./bootstrap.py
 
 }
 
 build() {
-  cd "${srcdir}/$_gitname"
+  cd "${srcdir}/mpv-$pkgver"
  ./waf configure \
 	--color='yes' \
 	--prefix='/usr' \
@@ -93,7 +93,6 @@ build() {
 	--disable-pdf-build \
 	\
 	--enable-cplugins \
-	--enable-zsh-comp \
 	--disable-test \
 	--disable-clang-database \
 	\
@@ -153,7 +152,6 @@ build() {
 	--enable-vaapi-x11 \
 	--enable-vaapi-wayland \
 	--enable-vaapi-drm \
-	--enable-vaapi-glx \
 	--enable-vaapi-x-egl \
 	--enable-caca \
 	--enable-jpeg \
@@ -175,12 +173,13 @@ build() {
 	\
 	--disable-apple-remote \
 	--disable-macos-touchbar \
-	--disable-macos-cocoa-cb
+	--disable-macos-cocoa-cb \
+  --disable-tvos
 
 	./waf build
 }
 package() {
-  cd "$srcdir/$_gitname"
+  cd "$srcdir/mpv-$pkgver"
   ./waf install --destdir="${pkgdir}"
 
 
