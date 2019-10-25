@@ -12,6 +12,7 @@ post_install() {
   # install prerequisites as stated on the website
   sudo -u anki-sync-server pip install -r /opt/anki-sync-server/anki-bundled/requirements.txt --user 
   sudo -u anki-sync-server pip install webob --user
+  sudo -u anki-sync-server pip install decorator --user
 
   # post installation instructions
   cat << EOF 
@@ -54,9 +55,19 @@ To just run the server, go to:
 
 then run:
 
-    python -m ankisyncd
+    sudo -u anki-sync-server python -m ankisyncd
 
-The server is set to auto start on boot.
+if you run it as another user you may have to install some dependencies again:
+
+  pip install --user webob decorator
+
+or:
+
+  sudo pacman -S python2-webob python2-decorator
+
+=== (be aware you may have trouble with permissions on your auth.db if you run as different users!) ===
+
+The server is set to auto start via systemctl.
 See:
 
     systemctl status anki-sync-server

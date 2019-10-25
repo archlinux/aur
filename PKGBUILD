@@ -1,6 +1,6 @@
 # Maintainer: s7hoang <s7hoang at gmail dot com>
 pkgname=anki-sync-server-git
-pkgver=r258.b9a1203
+pkgver=r259.7ef3d4f
 pkgrel=1
 pkgdesc="A sync server for anki using a forked version from github.com/tsudoko (orig:dsnopek)"
 arch=('any')
@@ -19,6 +19,8 @@ optdepends=('python-pyqt5: dependency of bundled anki client'
 'qt5-svg>=5.12.2-1: dependency of bundled anki client'
 'portaudio: dependency of pyaudio which is a dependency of bundled anki'
 'mpv: optional dependency of bundled anki client'
+'python2-webob: if you want to run the server as a user other than the supplied anki-sync-server user'
+'python2-decorator: if you want to run the server as a user other than the supplied anki-sync-server user'
 )
 install=anki-sync-server.install
 source=('git+https://github.com/tsudoko/anki-sync-server')
