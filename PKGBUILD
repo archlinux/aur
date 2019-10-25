@@ -26,7 +26,7 @@ build() {
 check() {
   cd seqdiag-$pkgver
   python setup.py install --root="$PWD/tmp_install" --optimize=1
-  PYTHONPATH="$PWD/tmp_install/usr/lib/python3.7/site-packages" nosetests || warning "Tests failed"
+  PYTHONPATH="$PWD/tmp_install/usr/lib/python3.8/site-packages" nosetests || warning "Tests failed"
 }
 
 package() {
