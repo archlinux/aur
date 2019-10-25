@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Datafiles for Le Biniou. - a selection of free colormaps - a selection of images to start with Le Biniou"
 arch=('any')
 url="https://biniou.net"
-license=('gpl2+')
+license=('GPL2+')
 groups=('')
 options=('!strip' '!emptydirs')
 source=("http://ftp.fr.debian.org/debian/pool/main/l/lebiniou-data/lebiniou-data_3.28-2_all.deb")
@@ -17,7 +17,6 @@ package(){
 
 	# Extract package data
 	tar xf data.tar.xz -C "${pkgdir}"
-
-	install -D -m644 "/usr/share/doc/lebiniou-data/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -D -m644 "${pkgdir}/usr/share/doc/lebiniou-data/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
 }
