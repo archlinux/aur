@@ -1,6 +1,6 @@
 pkgbase = vim-colors-brogrammer-git
 	pkgdesc = A dark, colorful syntax highlighting theme for vim.
-	pkgver = 20190529
+	pkgver = r1.7168656
 	pkgrel = 1
 	url = https://github.com/ErikBoesen/vim-brogrammer-theme
 	arch = any
