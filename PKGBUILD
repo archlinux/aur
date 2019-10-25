@@ -3,7 +3,7 @@
 
 pkgname=kompose-bin
 _srcname=kompose
-pkgver=1.18.0
+pkgver=1.19.0
 pkgrel=1
 pkgdesc="Takes a Docker Compose file and translates it into Kubernetes resources"
 url="http://kompose.io/"
@@ -11,7 +11,7 @@ license=('Apache')
 arch=('x86_64')
 
 source_x86_64=("$_srcname-$pkgver.tar.gz::https://github.com/kubernetes/kompose/releases/download/v$pkgver/kompose-linux-amd64.tar.gz")
-sha256sums_x86_64=('d24d6e9f74c543925af142fafde22ed97849d215b589ab6ff2010bbbb3995fb7')
+sha256sums_x86_64=('fbef96ee334ae63c12332d5c6edfcc601ff8ad104cf01c6f946e37a5ab44e692')
 
 
 package() {
