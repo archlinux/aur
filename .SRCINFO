@@ -1,7 +1,7 @@
 pkgbase = lizzie
 	pkgdesc = Analysis interface for Leela Zero
-	pkgver = 0.6
-	pkgrel = 2
+	pkgver = 0.7.2
+	pkgrel = 1
 	url = https://github.com/featurecat/lizzie
 	arch = x86_64
 	license = GPLv3
@@ -11,14 +11,17 @@ pkgbase = lizzie
 	depends = bash
 	depends = java-runtime
 	depends = leela-zero
-	source = https://github.com/featurecat/lizzie/archive/0.6.tar.gz
-	source = winrate.patch::https://github.com/featurecat/lizzie/commit/d50f73a2cfb14b8f79c315f4057de8350bd5cfe5.patch
+	noextract = lznetwork.gz
+	source = https://github.com/featurecat/lizzie/archive/0.7.2.tar.gz
 	source = lizzie.sh
 	source = lizzie.desktop
-	sha256sums = 0bc244914d80d7fecab1ef22e6ad2a540992019734e4081138bb9cf757bc79cd
-	sha256sums = babc24f1bdd9e5c6315aff72eb6881489ec6ea0cae8bf277285a019c918dd665
-	sha256sums = 58a4987ab4167aab557e1bcd2bb22daec252ce7c6397e76040c038516b74de70
+	source = 0.7.2.patch::https://github.com/featurecat/lizzie/commit/15f10dcfb0975ed350a74c6d79cc867e5f2e4a17.patch
+	source = lznetwork.gz::http://zero.sjeng.org/networks/0d2694c5f5c6657d4b39c829b0b5f6626c3f1e09fdaad791dcb7771207e9c9c3.gz
+	sha256sums = ffa468049b1d14585b2820e639e074ae8a2be6e8068d7cca9a84938c9b826a90
+	sha256sums = 100e1c567f150ad64f0925c84ce773c2afe0b6fc780a39e31bdf77c19adc2bed
 	sha256sums = cf5d1651023f04294e580243aa7ef05bc9ebedb468631f4035fd3d5ce0f212f0
+	sha256sums = 1f14871d3d8cdf85927fb778a5635dc60e30263be11a30e889f94c8337022348
+	sha256sums = a1cdb58a522d6a425445af071aae74df1073a67eecb8230a17eee47685d458ac
 
 pkgname = lizzie
 

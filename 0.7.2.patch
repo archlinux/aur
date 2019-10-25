@@ -1,0 +1,36 @@
+From 15f10dcfb0975ed350a74c6d79cc867e5f2e4a17 Mon Sep 17 00:00:00 2001
+From: featurecat <annie.wagner.cs@gmail.com>
+Date: Fri, 25 Oct 2019 01:59:30 -0400
+Subject: [PATCH] update version number 0.7.2
+
+---
+ pom.xml                                     | 2 +-
+ src/main/java/featurecat/lizzie/Lizzie.java | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/pom.xml b/pom.xml
+index 45fb6736..f440fd5d 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -6,7 +6,7 @@
+ 
+     <groupId>featurecat</groupId>
+     <artifactId>lizzie</artifactId>
+-    <version>0.7</version>
++    <version>0.7.2</version>
+ 
+     <properties>
+         <!-- Prevent warning: "[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!"-->
+diff --git a/src/main/java/featurecat/lizzie/Lizzie.java b/src/main/java/featurecat/lizzie/Lizzie.java
+index e235f310..1826d84a 100644
+--- a/src/main/java/featurecat/lizzie/Lizzie.java
++++ b/src/main/java/featurecat/lizzie/Lizzie.java
+@@ -20,7 +20,7 @@
+   public static GtpConsolePane gtpConsole;
+   public static Board board;
+   public static Leelaz leelaz;
+-  public static String lizzieVersion = "0.7.1";
++  public static String lizzieVersion = "0.7.2";
+   private static String[] mainArgs;
+   public static EngineManager engineManager;
+ 
