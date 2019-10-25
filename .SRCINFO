@@ -1,7 +1,7 @@
 pkgbase = utools
 	pkgdesc = uTools Utilities
 	pkgver = 0.8.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://u.tools/
 	arch = x86_64
 	license = custom

@@ -2,10 +2,10 @@
 
 pkgname=utools
 pkgver=0.8.3
-pkgrel=1
-pkgdesc="uTools Utilities"
+pkgrel=2
+pkgdesc='uTools Utilities'
 arch=('x86_64')
-url="https://u.tools/"
+url='https://u.tools/'
 license=('custom')
 depends=(
     'gconf'
@@ -25,4 +25,7 @@ md5sums=(
 
 package() {
     tar -xf "${srcdir}"/data.tar.xz -C "${pkgdir}"/
+
+    mkdir -p ${pkgdir}/usr/bin
+    ln -s /opt/uTools/utools ${pkgdir}/usr/bin/utools
 }
