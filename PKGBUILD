@@ -6,7 +6,7 @@ url='https://wiki.ros.org/libuvc_camera'
 pkgname='ros-melodic-libuvc-camera'
 pkgver='0.0.10'
 arch=('any')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(
@@ -21,12 +21,13 @@ makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(
-  ros-melodic-nodelet
   ros-melodic-roscpp
-  ros-melodic-libuvc
+  ros-melodic-camera-info-manager
   ros-melodic-dynamic-reconfigure
-  ros-melodic-sensor-msgs
-  ros-melodic-image-transport)
+  ros-melodic-image-transport
+  ros-melodic-libuvc
+  ros-melodic-nodelet
+  ros-melodic-sensor-msgs)
 depends=(${ros_depends[@]})
 
 # use ros-drivers tarball version (faster download)
