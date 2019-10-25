@@ -1,12 +1,16 @@
 pkgbase = aur-git
-	pkgdesc = ABS-like command line tool to sync with the AUR git repository
-	pkgver = 20121208
+	pkgdesc = Publishes software to Arch based systems at the speed of light
+	pkgver = r2.8ceece5
 	pkgrel = 1
-	url = https://github.com/keenerd/aur
-	arch = any
-	license = MIT
+	url = https://gitlab.com/es20490446e/aur
+	arch = x86_64
+	license = GPL3
 	makedepends = git
-	source = git://github.com/keenerd/aur.git
+	depends = curl
+	depends = silently
+	provides = aur
+	conflicts = aur
+	source = git+https://gitlab.com/es20490446e/aur.git
 	md5sums = SKIP
 
 pkgname = aur-git
