@@ -13,6 +13,7 @@ pkgbase = haskell-bytestring-progress
 	makedepends = haskell-time>=1.1
 	makedepends = haskell-time<2.0
 	makedepends = haskell-terminal-progress-bar>=0.2.0
+	makedepends = haskell-terminal-size
 	depends = ghc
 	options = strip
 	source = https://hackage.haskell.org/packages/archive/bytestring-progress/1.4/bytestring-progress-1.4.tar.gz

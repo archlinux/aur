@@ -14,6 +14,7 @@ makedepends=('ghc'
 		'haskell-time>=1.1'
 		'haskell-time<2.0'
 		'haskell-terminal-progress-bar>=0.2.0'
+		'haskell-terminal-size'
 )
 #'haskell-terminal-progress-bar<0.3.0' # seems to work fine with latest version
 options=('strip')
