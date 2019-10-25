@@ -47,7 +47,7 @@ _1k_HZ_ticks=
 ### Do not edit below this line unless you know what you're doing
 
 pkgbase=linux-next-git
-pkgver=20191021.r0.ga6fcdcd94927
+pkgver=20191025.r0.g139c2d13c258
 _srcname=linux-next
 pkgrel=1
 arch=('x86_64')
@@ -75,6 +75,10 @@ source=("git://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git"
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-next}
+
+export KBUILD_BUILD_HOST=archlinux
+export KBUILD_BUILD_USER=$pkgbase
+export KBUILD_BUILD_TIMESTAMP="@${SOURCE_DATE_EPOCH:-$(date +%s)}"
 
 pkgver() {
   cd $_srcname
