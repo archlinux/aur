@@ -1,6 +1,6 @@
 pkgbase = postman-bin
 	pkgdesc = Build, test, and document your APIs faster
-	pkgver = 7.9.0
+	pkgver = 7.10.0
 	pkgrel = 1
 	url = https://www.getpostman.com
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = postman-bin
 	depends = libxtst
 	depends = nss
 	depends = alsa-lib
-	source = Postman-linux-x64-7.9.0.tar.gz::https://dl.pstmn.io/download/version/7.9.0/linux64
+	source = Postman-linux-x64-7.10.0.tar.gz::https://dl.pstmn.io/download/version/7.10.0/linux64
 	source = postman.desktop
-	md5sums = 5afbb30f9a39eb761f897af2a972e8fc
+	md5sums = 9af27153dc86301e12958d7e15088fea
 	md5sums = f40404e81c416a180b4c596059fc84dd
 
 pkgname = postman-bin
