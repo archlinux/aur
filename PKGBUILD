@@ -2,12 +2,13 @@
 
 pkgname=home-assistant-lutron-caseta-pro-git
 _pkgname=lutron-caseta-pro
-pkgrel=1
+pkgrel=2
 pkgver=r42.f7678c8
 pkgdesc="Lutron Caseta Pro Component for Home Assistant"
 arch=("any")
 url="https://github.com/upsert/lutron-caseta-pro"
 source=("$_pkgname::git+https://github.com/upsert/$_pkgname.git")
+depends=("home-assistant")
 md5sums=("SKIP")
 
 pkgver() {
