@@ -1,11 +1,13 @@
 pkgbase = 360cloud
 	pkgdesc = 360 Cloud Drive
 	pkgver = 1.0.0.1010
-	pkgrel = 3
+	pkgrel = 4
 	url = https://yunpan.360.cn/
 	arch = x86_64
 	license = custom
-	makedepends = sed
+	depends = curl
+	depends = libpng
+	depends = qt5-base
 	source = http://down.360safe.com/360eyun/360cloud-1.0.0.1010-deepin-x86_64.deb
 	md5sums = 672fc0c365a2375a1567e821b560677a
 

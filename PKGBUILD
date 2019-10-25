@@ -2,13 +2,15 @@
 
 pkgname=360cloud
 pkgver=1.0.0.1010
-pkgrel=3
-pkgdesc="360 Cloud Drive"
+pkgrel=4
+pkgdesc='360 Cloud Drive'
 arch=('x86_64')
-url="https://yunpan.360.cn/"
+url='https://yunpan.360.cn/'
 license=('custom')
-makedepends=(
-    'sed'
+depends=(
+    'curl'
+    'libpng'
+    'qt5-base'
 )
 source=(
     'http://down.360safe.com/360eyun/360cloud-'${pkgver}'-deepin-x86_64.deb'
@@ -18,7 +20,7 @@ md5sums=(
 )
 
 package() {
-    tar -xf "${srcdir}"/data.tar.xz -C "${pkgdir}"/
+    tar -xf ${srcdir}/data.tar.xz -C ${pkgdir}/
 
-    ln -sf /opt/360cloud/360cloud "${pkgdir}"/usr/bin/360cloud
+    ln -sf /opt/360cloud/360cloud ${pkgdir}/usr/bin/360cloud
 }
