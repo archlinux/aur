@@ -2,7 +2,7 @@
 _name=Yapsy
 pkgname=python-yapsy
 pkgver=1.12.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple plugin system for Python applications"
 arch=('any')
 url="http://yapsy.sourceforge.net/"
