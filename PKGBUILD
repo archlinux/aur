@@ -1,31 +1,41 @@
-# Maintainer: Sebastien Leduc <sebastien@sleduc.fr>
-pkgname=('python-redmine' 'python2-redmine')
+# Maintainer: Konstantin Shalygin <k0ste@k0ste.ru>
+# Contributor: Konstantin Shalygin <k0ste@k0ste.ru>
+# Contributor: Sebastien Leduc <sebastien@sleduc.fr>
+
 pkgbase='python-redmine'
-pkgver=2.0.2
+pkgname=('python-redmine' 'python2-redmine')
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="Python library for communicating with a Redmine project management application"
 arch=("any")
-url="http://python-redmine.readthedocs.org/"
+url="https://${pkgbase}.com/"
+makedepends=('python' 'python-setuptools'
+	     'python2' 'python2-setuptools')
+checkdepends=('python-nose' 'python-mock' 'python-requests' 'python-coverage')
 license=('Apache')
-makedepends=('python' 'python2')
-options=(!emptydirs)
-source=("https://pypi.python.org/packages/d6/6f/529c13202e2cd166c01f9984fc79ae1c28749782084b77ef5632f8385be3/${pkgbase}-${pkgver}.tar.gz")
-md5sums=('14ec968d04ae427b449d8c5ab15d174e')
+source=("https://github.com/maxtepkeev/${pkgbase}/archive/v${pkgver}.tar.gz")
+sha256sums=('995e852545b4e9ae8097ad64bc758ad1464d67ed76204294553296960837680b')
 
-prepare() {
-  cp -a "${srcdir}/${pkgbase}-${pkgver}"{,-python2}
+build() {
+  cd "${srcdir}/${pkgbase}-${pkgver}"
+  python setup.py build
+}
+
+check() {
+  cd "${srcdir}/${pkgbase}-${pkgver}"
+  nosetests --with-coverage --cover-erase --cover-package=redminelib
 }
 
 package_python-redmine() {
-  depends=('python' 'python-requests')
-  cd "$srcdir/$pkgbase-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1
+  depends=('python-requests')
+
+  cd "${srcdir}/${pkgbase}-${pkgver}"
+  python setup.py install -O1 --root="${pkgdir}"
 }
 
 package_python2-redmine() {
-  depends=('python2' 'python2-requests')
-  cd "$srcdir/$pkgbase-$pkgver-python2"
-  python2 setup.py install --root="$pkgdir/" --optimize=1
-}
+  depends=('python2-requests')
 
-# vim:set ts=2 sw=2 et:
+  cd "${srcdir}/${pkgbase}-${pkgver}"
+  python2 setup.py install -O1 --root="${pkgdir}"
+}
