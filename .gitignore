@@ -3,4 +3,5 @@
 !.gitignore
 !PKGBUILD
 !removelibs.list
-!toggledesktop.bin
+!toggldesktop.bin
+!toggldesktop.desktop
