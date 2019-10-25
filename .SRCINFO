@@ -1,0 +1,16 @@
+pkgbase = perl-scalar-util
+	pkgdesc = Perl module which implements a selection of general-utility scalar subroutines
+	pkgver = 1.53
+	pkgrel = 1
+	url = https://metacpan.org/pod/Scalar::Util
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=5.006
+	depends = perl-test-more-git
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/P/PE/PEVANS/Scalar-List-Utils-1.53.tar.gz
+	md5sums = 901d8cd8859b9b9a56002df1023e94ea
+
+pkgname = perl-scalar-util
+
