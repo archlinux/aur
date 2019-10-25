@@ -16,7 +16,7 @@ url='https://tomoyo.osdn.jp'
 #url='http://sourceforge.jp/projects/tomoyo/releases/?package_id=9818'
 license=('GPL')
 depends=('ncurses>=6.0')
-optdepends=('linux-lts-tomoyo: TOMOYO Linux enabled kernel')
+optdepends=('linux-lts: TOMOYO Linux enabled kernel')
 conflicts=('tomoyo-tools')
 replaces=('tomoyo-tools<2.6')
 install=tomoyo-tools.install
