@@ -2,19 +2,25 @@
 
 pkgname=linuxqq
 pkgver=2.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc='Tencent QQ for Linux'
 arch=('x86_64' 'aarch64')
-url='https://im.qq.com/linuxqq/download.html'
+url='https://im.qq.com/linuxqq/'
 license=('custom')
 depends=('gtk2' 'glibc' 'gcc-libs' 'nss')
-source_x86_64=('https://qd.myapp.com/myapp/qqteam/linuxQQ/linuxqq_'${pkgver}'-b1-1024_amd64.deb')
-md5sums_x86_64=('25dc612ff3dae3a1a86db4d79ad49058')
+source_x86_64=('https://qd.myapp.com/myapp/qqteam/linuxQQ/linuxqq_'${pkgver}'-b1-1024_x86_64.pkg.tar.xz')
+md5sums_x86_64=('d7d7d3666a46dc8e0cf24f8252974da1')
 source_aarch64=('https://qd.myapp.com/myapp/qqteam/linuxQQ/linuxqq_'${pkgver}'-b1-1024_arm64.deb')
 md5sums_aarch64=('a478d0c796e4bb1d4f81d2f5d2b809b7')
 
 package() {
-    tar -xf ${srcdir}/data.tar.xz -C ${pkgdir}/
+    if [ ${CARCH} = 'x86_64' ]; then
+        mv ${srcdir}/usr/ ${pkgdir}/
+    fi
+
+    if [ ${CARCH} = 'aarch64' ]; then
+        tar -xf ${srcdir}/data.tar.xz -C ${pkgdir}/
+    fi
 
     mkdir -p ${pkgdir}/usr/bin
     ln -s /usr/share/tencent-qq/qq ${pkgdir}/usr/bin/qq
