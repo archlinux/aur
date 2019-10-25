@@ -1,11 +1,11 @@
 # Maintainer: Vincent Cheung <coolingfall@gmail.com>
 
 _target=arm-linux-gnueabihf
-_pkgdate=2018.05
+_pkgdate=2019.02
 
 
 pkgname=${_target}-gcc-linaro-bin
-pkgver=7.3
+pkgver=7.4
 pkgrel=1
 epoch=
 pkgdesc="The GNU Compiler Collection - cross compiler for ARM EABI hard float target."
@@ -25,7 +25,7 @@ options=(!emptydirs !strip staticlibs)
 install=
 changelog=
 source=(http://releases.linaro.org/components/toolchain/binaries/${pkgver}-${_pkgdate}/${_target}/gcc-linaro-${pkgver}.1-${_pkgdate}-x86_64_${_target}.tar.xz)
-sha512sums=('d9ec43d636634394fb4d7651fe6f0df08c53fe374dbb4f7ca9a7b4ba6a3a30d7caa8a3f2116bbec5ba4a0898f623213deca47039423d8e6ef4cc83d065389126')
+sha512sums=('c93b226093606081ea71c88c3a1dea3f509553e9ed0a30578ee003e91a35711fab94496704369824855a0b46642f77cc7d0dc47cfbd51cf08773efd473a02964')
 
 
 package() {
