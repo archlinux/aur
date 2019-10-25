@@ -10,7 +10,7 @@ arch=('any')
 license=('Apache')
 url='https://github.com/stratis-storage/dbus-signature-pyparsing/releases'
 depends=('python-pyparsing')
-makedepends=('git')
+makedepends=('python-setuptools' 'git')
 checkdepends=('python-nose' 'python-hypothesis' 'python-hs-dbus-signature')
 source=(
   "${_srcname}-${pkgver}.tar.gz::https://github.com/stratis-storage/${_srcname}/archive/v${pkgver}.tar.gz"
