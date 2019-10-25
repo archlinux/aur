@@ -1,0 +1,19 @@
+pkgbase = mangl-git
+	pkgdesc = graphical man page viewer
+	pkgver = 20191022.13e891b
+	pkgrel = 1
+	url = https://github.com/zigalenarcic/mangl
+	arch = x86_64
+	license = BSD 2-Clause
+	makedepends = git
+	depends = zlib
+	depends = freeglut
+	depends = libgl
+	depends = glu
+	provides = mangl
+	conflicts = mangl
+	source = mangl::git+https://github.com/zigalenarcic/mangl.git
+	sha1sums = SKIP
+
+pkgname = mangl-git
+
