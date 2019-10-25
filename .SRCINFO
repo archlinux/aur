@@ -1,12 +1,12 @@
 pkgbase = fluxctl-bin
 	pkgdesc = CLI client for Flux, the GitOps Kubernetes operator
-	pkgver = 1.14.2
+	pkgver = 1.15.0
 	pkgrel = 1
 	url = https://github.com/fluxcd/flux
 	arch = x86_64
 	license = apache
-	source = fluxctl_linux_amd64-1.14.2::https://github.com/fluxcd/flux/releases/download/1.14.2/fluxctl_linux_amd64
-	sha256sums = 542a693a1c1601cf19aa0834e9af7ec303380ca62bfdaf063444e99bbec8bb00
+	source = fluxctl_linux_amd64-1.15.0::https://github.com/fluxcd/flux/releases/download/1.15.0/fluxctl_linux_amd64
+	sha256sums = d6ca90f6edaf5a770127ceb8fca63e1eafc2bfff8e382df255ffe16dce4fd099
 
 pkgname = fluxctl-bin
 
