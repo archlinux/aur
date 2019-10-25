@@ -1,9 +1,9 @@
-# Maintainer: David Runge <dave@sleepmap.de>
+# Maintainer: David Runge <dvzrv@archlinux.org>
 
 _name=jfrog
 _upstream_name=jfrog-cli
 pkgname=jfrog-cli-go
-pkgver=1.29.2
+pkgver=1.30.0
 pkgrel=1
 pkgdesc="Simple interface to Artifactory, Bintray and Mission Control"
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('Apache')
 depends=('glibc')
 makedepends=('git' 'go-pie')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jfrog/${_upstream_name}/archive/${pkgver}.tar.gz")
-sha512sums=('7320f88f28bc15df04d19998504e0e0b262fd8940bc54cd5ba1e61f66bffa53f33f50e00a9aef03687ac8156c47c58cd70c60079d764be4f3593bc5e05599dde')
+sha512sums=('e1a55447aef96aaa60dc56705fe8b80d177e50e998aa2ed80923f2d45dd6fbc5f21872e04f4834e0c580d7d5a672a3df34719cd002ba6e0f335b99e20646c0b9')
 
 prepare() {
   mv -v "${_upstream_name}-${pkgver}" "${pkgname}-${pkgver}"
