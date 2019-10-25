@@ -1,6 +1,6 @@
 # Maintainer: Ondřej Šponar
 
-pkgname=lexend-font-family-git
+pkgname=lexend-fonts-git
 pkgver=1.0
 pkgrel=1
 pkgdesc='Lexend is a variable typeface designed to improve reading fluency'
@@ -8,8 +8,8 @@ url="https://lexend.com"
 arch=(any)
 license=(custom:OFL-1.1)
 makedepends=('git')
-provides=('lexend-font-family-git')
-source=('lexend-font-family-git::git+https://github.com/ThomasJockin/lexend')
+provides=('lexend-fonts-git')
+source=('lexend-fonts-git::git+https://github.com/ThomasJockin/lexend')
 sha256sums=('SKIP')
 
 package() {
