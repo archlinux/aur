@@ -2,19 +2,14 @@
 
 pkgname=baka
 pkgver=0.0.0.15.986fba1
-pkgrel=1
+pkgrel=2
 pkgdesc="GTK+3 GUI for the pacman package manager"
 arch=('x86_64')
 url="https://github.com/allanbrokeit/baka"
 license=('GPL2')
 depends=('pacman' 'gtk3')
-source=("git+https://github.com/allanbrokeit/baka.git")
+source=("git+https://github.com/allanbrokeit/baka.git?commit=986fba151079362bfbb8e6138acc0f8b9aaca6b5")
 md5sums=("SKIP")
-
-pkgver() {
-  cd baka
-  printf "0.0.0.%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
 
 prepare() {
 	cd baka
@@ -23,7 +18,7 @@ prepare() {
 
 build() {
 	cd baka
-	./configure
+	./configure --prefix=/usr
 	make
 }
 

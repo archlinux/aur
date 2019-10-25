@@ -1,13 +1,13 @@
 pkgbase = baka
 	pkgdesc = GTK+3 GUI for the pacman package manager
 	pkgver = 0.0.0.15.986fba1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/allanbrokeit/baka
 	arch = x86_64
 	license = GPL2
 	depends = pacman
 	depends = gtk3
-	source = git+https://github.com/allanbrokeit/baka.git
+	source = git+https://github.com/allanbrokeit/baka.git?commit=986fba151079362bfbb8e6138acc0f8b9aaca6b5
 	md5sums = SKIP
 
 pkgname = baka
