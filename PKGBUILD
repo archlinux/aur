@@ -1,12 +1,13 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=journal-notify-git
-pkgver=0.0.8.r7.gd187bd3
+pkgver=0.1.1.r12.ga1c0a5e
 pkgrel=1
-pkgdesc="Notify about journal log entries - git checkout"
+pkgdesc='Notify about journal log entries - git checkout'
 arch=('i686' 'x86_64')
 url='https://github.com/eworm-de/journal-notify'
-depends=('libnotify' 'systemd' 'gnome-icon-theme')
+depends=('libnotify' 'systemd')
+optdepends=('gnome-icon-theme: icons in notifications')
 makedepends=('git' 'markdown')
 provides=('journal-notify')
 conflicts=('journal-notify')
