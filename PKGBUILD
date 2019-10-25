@@ -5,7 +5,7 @@
 pkgbase=python-pysendfile
 pkgname=(python-pysendfile python2-pysendfile)
 pkgver=2.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A Python interface to sendfile(2) syscall"
 url="https://github.com/giampaolo/pysendfile"
 license=('MIT')
