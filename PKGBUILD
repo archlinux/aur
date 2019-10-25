@@ -6,7 +6,7 @@ pkgbase=linux-zen           # Build stock -zen kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcver=5.3.7-zen1
 pkgver=${_srcver//-/.}
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 url="https://github.com/zen-kernel/zen-kernel/commits/v$_srcver"
 license=(GPL2)
@@ -36,6 +36,10 @@ sha256sums=('SKIP'
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-ARCH}
+
+export KBUILD_BUILD_HOST=archlinux
+export KBUILD_BUILD_USER=$pkgbase
+export KBUILD_BUILD_TIMESTAMP="@${SOURCE_DATE_EPOCH:-$(date +%s)}"
 
 prepare() {
   cd $_srcname
