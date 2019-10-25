@@ -7,7 +7,7 @@ pkgdesc="Perl module Low-Level Interface to zlib compression library"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=()
+depends=('perl>=5.006')
 makedepends=()
 url='https://metacpan.org/pod/Compress::Raw::Zlib'
 source=('https://cpan.metacpan.org/authors/id/P/PM/PMQS/Compress-Raw-Zlib-2.087.tar.gz')

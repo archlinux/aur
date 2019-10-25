@@ -6,6 +6,7 @@ pkgbase = perl-compress-raw-zlib
 	arch = any
 	license = PerlArtistic
 	license = GPL
+	depends = perl>=5.006
 	options = !emptydirs
 	source = https://cpan.metacpan.org/authors/id/P/PM/PMQS/Compress-Raw-Zlib-2.087.tar.gz
 	md5sums = 8aab05dc31cddd81465f8ae342b96fad
