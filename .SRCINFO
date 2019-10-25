@@ -1,7 +1,7 @@
 pkgbase = splashtop-streamer
 	pkgdesc = Remotely access your desktop from any device from anywhere!
 	pkgver = 2.5.9.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.splashtop.com/streamer/linux
 	arch = x86_64
 	arch = i686
