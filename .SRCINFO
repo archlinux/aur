@@ -1,5 +1,5 @@
 pkgbase = linux-ck
-	pkgver = 5.2.21
+	pkgver = 5.3.7
 	pkgrel = 1
 	url = https://wiki.archlinux.org/index.php/Linux-ck
 	arch = x86_64
@@ -9,28 +9,28 @@ pkgbase = linux-ck
 	makedepends = bc
 	makedepends = libelf
 	options = !strip
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.2.21.tar.xz
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.2.21.tar.sign
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.3.7.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.3.7.tar.sign
 	source = config
 	source = 60-linux.hook
 	source = 90-linux.hook
 	source = linux.preset
 	source = enable_additional_cpu_optimizations-20190822.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20190822.tar.gz
-	source = http://ck.kolivas.org/patches/5.0/5.2/5.2-ck1/patch-5.2-ck1.xz
-	source = 0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
-	source = 0002-ZEN-Add-CONFIG-for-unprivileged_userns_clone.patch
+	source = http://ck.kolivas.org/patches/5.0/5.3/5.3-ck1/patch-5.3-ck1.xz
+	source = 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
+	source = 0002-Bluetooth-hidp-Fix-assumptions-on-the-return-value-o.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	sha256sums = 9a8ee3ff75dabffa76141c8dc7529dfbb3ca07888a3708a13f15b412268b3538
+	sha256sums = c6c9714e21531c825c306b107bc6f6c7bfa2d5270a14bad170f8de5a73d34802
 	sha256sums = SKIP
-	sha256sums = 42e2bc6a7d8439b3a6fe4084d1349077472e0a6831d8a39edda46824a5f0987b
+	sha256sums = 1aec3441bf9b704b5b64230ac758b6e0f6a5a3442f90415f56ab438f503934a2
 	sha256sums = 452b8d4d71e1565ca91b1bebb280693549222ef51c47ba8964e411b2d461699c
 	sha256sums = c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636
 	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
 	sha256sums = 8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5
-	sha256sums = f1abc13a8d859fbf6350040e45d7f04ad551a6d39f113ba96fbbd820118c0e36
-	sha256sums = 91fafa76bf9cb32159ac7f22191b3589278b91e65bc4505cf2fc6013b8037bf3
-	sha256sums = 63e4378e69e2f23ed87af32a4951477a6d82d4ac0de2295db46502c8120da9d9
+	sha256sums = 5b66761eae4efa4cb967aba9d4e555aa320cf5c004f0848e6bfbcb75ef66fbf1
+	sha256sums = cb38c0468a9ee0507e97e48be4a51116c1db952b7599906f2c36933b03e1ca34
+	sha256sums = 4b4d388e0cb6b2448d644463e4693bb08122716117aafa411ce78305da305642
 
 pkgname = linux-ck
 	pkgdesc = The Linux-ck kernel and modules with the ck1 patchset featuring MuQSS CPU scheduler
@@ -40,12 +40,12 @@ pkgname = linux-ck
 	depends = initramfs
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
-	provides = linux-ck=5.2.21
+	provides = linux-ck=5.3.7
 	backup = etc/mkinitcpio.d/linux-ck.preset
 
 pkgname = linux-ck-headers
 	pkgdesc = Header files and scripts for building modules for Linux-ck kernel
 	depends = linux-ck
-	provides = linux-ck-headers=5.2.21
-	provides = linux-headers=5.2.21
+	provides = linux-ck-headers=5.3.7
+	provides = linux-headers=5.3.7
 
