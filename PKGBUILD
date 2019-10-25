@@ -13,7 +13,7 @@ options=('!strip')
 source=("https://out7.hex-rays.com/files/idafree${pkgver/./}_linux.run"
         "ida-freeware.desktop")
 sha256sums=('136e0e1995f16e1ff85244c269450fa91fb5454a565ca7623712f34ac004e245'
-            'ea97a8c7a2e4a0043d3d73be5880f3754f3aa9901f2d2f3d51c58d30a7a41d96')
+            '7b313d7980e79148a0f6acd43cb80da6c1a29804c7a0995462743423b442be92')
 
 _installer="idafree${pkgver/./}_linux.run"
 
