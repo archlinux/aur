@@ -1,6 +1,6 @@
 # Maintainer: YoyPa <yoann dot p dot public at gmail dot com>
 pkgname=isw
-pkgver=1.9
+pkgver=1.10
 pkgrel=1
 pkgdesc="Fan control tool for MSI gaming series laptops"
 arch=('any')
@@ -14,7 +14,7 @@ backup=(
 	'etc/isw.conf'
 )
 source=("isw-${pkgver}.tar.gz::https://github.com/YoyPa/isw/archive/${pkgver}.tar.gz")
-sha256sums=('cd521204f8bedafadc8a6e0285daf5beb0ee7941d62416773679dcd87ca529dc')
+sha256sums=('6ffc707ad735a88454b77ed168de6c32aacd590499346587544c69895928a578')
 
 package() {
 	cd "isw-${pkgver}"
