@@ -1,0 +1,14 @@
+pkgbase = lexend-font-family-git
+	pkgdesc = Lexend is a variable typeface designed to improve reading fluency
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://lexend.com
+	arch = any
+	license = custom:OFL-1.1
+	makedepends = git
+	provides = lexend-font-family-git
+	source = lexend-font-family-git::git+https://github.com/ThomasJockin/lexend
+	sha256sums = SKIP
+
+pkgname = lexend-font-family-git
+
