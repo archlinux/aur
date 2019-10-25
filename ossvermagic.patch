@@ -1,12 +1,53 @@
---- os_cmd/Linux/ossvermagic/ossvermagic.c	2013-06-14 06:55:00.000000000 +0200
-+++ os_cmd/Linux/ossvermagic/ossvermagic.c	2013-11-14 18:42:23.910206071 +0100
-@@ -81,6 +81,8 @@
+diff --git a/os_cmd/Linux/ossvermagic/ossvermagic.c b/os_cmd/Linux/ossvermagic/ossvermagic.c
+index d0ca321..6ce36c8 100644
+--- a/os_cmd/Linux/ossvermagic/ossvermagic.c
++++ b/os_cmd/Linux/ossvermagic/ossvermagic.c
+@@ -70,6 +70,8 @@ find_vermagic (char *fname)
+   ok = ELF_LOAD_SYMTAB (fname, "vermagic", sym_callback);
    if (!ok)
      ok = ELF_LOAD_SYMTAB (fname, "__mod_vermagic", sym_callback);
-   if (!ok)
-+    ok = ELF_LOAD_SYMTAB (fname, "__UNIQUE_ID_vermagic0", sym_callback);
 +  if (!ok)
++    ok = ELF_LOAD_SYMTAB (fname, "__UNIQUE_ID_vermagic0", sym_callback);
+   if (!ok)
      ELF_LOAD_SYMTAB (fname, "__oss_compile_vermagic", sym_callback);
  }
+@@ -119,6 +121,24 @@ check_bzipped_module (char *fname)
+   unlink ("/tmp/oss.tmpmodule");
+ }
  
-
++static void
++check_xzipped_module (char *fname)
++{
++  char tmp[1024];
++
++  sprintf (tmp, "xzdec %s > /tmp/oss.tmpmodule", fname);
++  unlink ("/tmp/oss.tmpmodule");
++
++  if (system (tmp) != 0)
++    {
++      unlink ("/tmp/oss.tmpmodule");
++      return;
++    }
++
++  find_vermagic ("/tmp/oss.tmpmodule");
++  unlink ("/tmp/oss.tmpmodule");
++}
++
+ static void
+ scan_dir (char *dirname)
+ {
+@@ -168,6 +188,14 @@ scan_dir (char *dirname)
+ 	      continue;
+ 	    }
+ 
++	  p = tmp + strlen (tmp) - 3;	// Seek the .xz suffix
++	  if (strcmp (p, ".xz") == 0)
++	    {
++	      fname = tmp;
++	      check_xzipped_module (tmp);
++	      continue;
++	    }
++
+ 	  fname = tmp;
+ 	  find_vermagic (tmp);
+ 	}
