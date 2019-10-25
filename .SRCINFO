@@ -13,7 +13,6 @@ pkgbase = lebiniou
 	depends = lebiniou-data>=3.27
 	depends = glib2>=2.35.9
 	depends = jack
-	depends = jack2>=1.9.10
 	depends = libmagick6>=6.9.10.2
 	depends = libpulse>=0.99.1
 	depends = libsndfile>=1.0.20
