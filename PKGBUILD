@@ -23,29 +23,7 @@ pkgver() {
 
 package() {
     conflicts=('linux-firmware'
-               'linux-firmware-git'
-               'kernel26-firmware'
-               'ar9170-fw'
-               'iwlwifi-1000-ucode'
-               'iwlwifi-3945-ucode'
-               'iwlwifi-4965-ucode'
-               'iwlwifi-5000-ucode'
-               'iwlwifi-5150-ucode'
-               'iwlwifi-6000-ucode'
-               'rt2870usb-fw'
-               'rt2x00-rt61-fw'
-               'rt2x00-rt71w-fw')
-  replaces=('kernel26-firmware'
-            'ar9170-fw'
-            'iwlwifi-1000-ucode'
-            'iwlwifi-3945-ucode'
-            'iwlwifi-4965-ucode'
-            'iwlwifi-5000-ucode'
-            'iwlwifi-5150-ucode'
-            'iwlwifi-6000-ucode'
-            'rt2870usb-fw'
-            'rt2x00-rt61-fw'
-            'rt2x00-rt71w-fw')
+               'linux-firmware-git')
 
     cd "${srcdir}/linux-firmware"
 
