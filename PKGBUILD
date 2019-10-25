@@ -1,20 +1,28 @@
 # Maintainer: Pedro A. López-Valencia <https://aur.archlinux.org/users/vorbote>
 
 pkgname=groff-git
-pkgver=1.22.4.37.gee0ce46b
+pkgver=1.22.4.66.g324977c5
 pkgrel=1
 pkgdesc="GNU Troff. Official git trunk."
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/groff/"
 license=('GPL')
-depends=('uchardet' 'netpbm' 'psutils' 'ghostscript')
+depends=('perl' 'uchardet')
+makedepends=('git' 'netpbm' 'psutils' 'ghostscript' 'libxaw')
 makedepends=('git' 'libxaw')
 conflicts=('groff')
 provides=('groff')
-source=("$pkgname::git://git.savannah.gnu.org/groff.git" 
+source=(
+	"$pkgname::git://git.savannah.gnu.org/groff.git" 
         "gnulib-git::git://git.sv.gnu.org/gnulib.git"
-	      'site.tmac')
-optdepends=('libxaw:      Enable gxditvew.')
+	'site.tmac'
+)
+optdepends=(
+	'ghostscript:  PDF, HTML generation and other tasks.'
+	'netpbm:       HTML generation and other tasks.'
+	'psutils:      HTML generation and other tasks.'
+	'libxaw:       Enable gxditvew.'
+)
 sha256sums=('SKIP'
             'SKIP'
             'af59ecde597ce9f8189368a7739279a5f8a391139fe048ef6b4e493ed46e5f5f')
