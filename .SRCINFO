@@ -1,6 +1,6 @@
 pkgbase = tonelib-zoom-bin
 	pkgdesc = ToneLib Zoom – change and save all the settings in your Zoom(r) guitar pedal
-	pkgver = 3.8.5
+	pkgver = 4.0.1
 	pkgrel = 1
 	url = https://tonelib.net/zoom-quick-start/
 	arch = x86_64
