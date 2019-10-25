@@ -1,0 +1,13 @@
+pkgbase = tinypngout
+	pkgdesc = Tiny PNG Output is a small standalone library which takes RGB8.8.8 pixels and writes a PNG file.
+	pkgver = 1
+	pkgrel = 2
+	url = https://www.nayuki.io/page/tiny-png-output
+	arch = x86_64
+	license = LGPL3 or any later version
+	provides = tinypngout
+	source = https://www.nayuki.io/res/tiny-png-output/TinyPngOut-cpp.zip
+	md5sums = 5a4b3d70a1e2bb9aa1ad15537c597e59
+
+pkgname = tinypngout
+
