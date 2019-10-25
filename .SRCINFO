@@ -1,7 +1,7 @@
 pkgbase = ida-freeware
 	pkgdesc = The freeware version of IDA v7.0
 	pkgver = 7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.hex-rays.com/products/ida/support/download_freeware.shtml
 	arch = x86_64
 	license = Custom
