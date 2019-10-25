@@ -2,7 +2,7 @@
 
 pkgname=posy-cursors
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Port of Posy's improved cursors for Windows 10"
 arch=(any)
 url="https://git.auteiy.me/dmitry/cursorsPosy"
