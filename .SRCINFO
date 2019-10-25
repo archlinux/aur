@@ -1,0 +1,17 @@
+pkgbase = vysor-appimage
+	pkgdesc = Android screen mirroring tool
+	pkgver = 2.1.7
+	pkgrel = 1
+	url = https://vysor.io
+	arch = x86_64
+	license = custom
+	provides = vysor
+	conflicts = vysor
+	options = !strip
+	source = https://github.com/koush/vysor.io/releases/download/continuous/Vysor_2.1.7.AppImage
+	source = vysor.sh
+	sha256sums = c46407fe1ae6ec03ca16b8bbe83039c47ea2f961cbad5fbd18366a033259ccc9
+	sha256sums = 61836b2a07581202010cf40a1862b19bcb3e168076d113c6db06caadddbf0150
+
+pkgname = vysor-appimage
+
