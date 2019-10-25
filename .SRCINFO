@@ -1,0 +1,18 @@
+pkgbase = libxinerama-randr-git
+	pkgdesc = Fork of libXinerama using RANDR for it to work in Zaphod mode
+	pkgver = 1.1.4.r3.g55d1524
+	pkgrel = 1
+	url = https://github.com/mkoskar/libxinerama-randr
+	arch = x86_64
+	license = custom
+	makedepends = xorg-util-macros
+	depends = libxext
+	depends = xineramaproto
+	depends = libxrandr>=1.5
+	provides = libxinerama
+	conflicts = libxinerama
+	source = git+https://github.com/mkoskar/libxinerama-randr.git
+	sha256sums = SKIP
+
+pkgname = libxinerama-randr-git
+
