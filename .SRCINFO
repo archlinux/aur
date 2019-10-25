@@ -1,0 +1,15 @@
+pkgbase = licenser
+	pkgdesc = A License management tool for your Open Source projects.
+	pkgver = 0.11
+	pkgrel = 2
+	url = https://github.com/coder3101/licenser
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = git
+	depends = clang
+	source = https://github.com/coder3101/licenser/archive/0.11.tar.gz
+	sha256sums = 4345fa8e2e32f324537508d101303b819239349601b6665a297e16d9842f5da7
+
+pkgname = licenser
+
