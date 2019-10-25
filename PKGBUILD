@@ -2,7 +2,7 @@
 
 pkgname=adobe-source-han-serif-classic-fonts
 pkgver=1.001
-pkgrel=2
+pkgrel=3
 pkgdesc='Adobe Source Han Serif - Classic Style Chinese Character'
 arch=('any')
 url='https://github.com/redchenjs/source-han-serif-classic/'
