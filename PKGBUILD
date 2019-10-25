@@ -52,9 +52,9 @@ prepare() {
 	#verify PKGBUILD signature
 	gpg --verify ../PKGBUILD.sig ../PKGBUILD
 	# https://wiki.archlinux.org/index.php/Go_package_guidelines
-	mkdir -p ${srcdir}/go/src/github.com/${projectname}/ ${srcdir}/go/bin
-	ln -rTsf ${srcdir}/${pkgname1} ${srcdir}/go/src/github.com/${projectname}/${pkgname1}
-	cd ${srcdir}/go/src/github.com/${projectname}/${pkgname1}/cmd
+	mkdir -p ${srcdir}/go/src/github.com/${githuborg}/ ${srcdir}/go/bin
+	ln -rTsf ${srcdir}/${pkgname1} ${srcdir}/go/src/github.com/${githuborg}/${pkgname1}
+	cd ${srcdir}/go/src/github.com/${githuborg}/${pkgname1}/cmd
 	git checkout master
 	git submodule --quiet update --init --recursive
 
@@ -70,7 +70,7 @@ build() {
 	export GOPATH=${srcdir}/go
 	export GOBIN=${GOPATH}/bin
 	export PATH=${GOPATH}/bin:${PATH}
-	cd ${srcdir}/go/src/github.com/${projectname}/${pkgname1}/cmd
+	cd ${srcdir}/go/src/github.com/${githuborg}/${pkgname1}/cmd
 	go install \
 	-gcflags "all=-trimpath=${GOPATH}" \
 	-asmflags "all=-trimpath=${GOPATH}" \
