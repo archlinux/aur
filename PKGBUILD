@@ -11,6 +11,8 @@ url='https://marktext.github.io/website/'
 license=('MIT')
 depends=('electron')
 makedepends=('python' 'nodejs' 'npm' 'yarn')
+conflicts=('marktext')
+provides=('marktext')
 source=("git+https://github.com/${_gitname}/${_gitname}"
         'marktext.sh')
 sha512sums=('SKIP'
@@ -37,14 +39,14 @@ package() {
 
     # Install app.asar and launcher script
     install -D build/linux-unpacked/resources/app.asar "${pkgdir}/usr/share/marktext/app.asar"
-    install -D "${srcdir}/marktext.sh" "${pkgdir}/usr/bin/$pkgname"
+    install -D "${srcdir}/marktext.sh" "${pkgdir}/usr/bin/marktext"
 
     # Install desktop file and icon
     install -D resources/linux/marktext.desktop "${pkgdir}/usr/share/applications/marktext.desktop"
     install -D resources/icons/icon.png "${pkgdir}/usr/share/pixmaps/marktext.png"
 
     # Install license file
-    install -D LICENSE "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
-    install -D build/linux-unpacked/LICENSE.electron.txt "${pkgdir}/usr/share/licenses/$pkgname/LICENSE.electron.txt"
-    install -D build/linux-unpacked/LICENSES.chromium.html "${pkgdir}/usr/share/licenses/$pkgname/LICENSES.chromium.html"
+    install -D LICENSE "${pkgdir}/usr/share/licenses/marktext/LICENSE"
+    install -D build/linux-unpacked/LICENSE.electron.txt "${pkgdir}/usr/share/licenses/marktext/LICENSE.electron.txt"
+    install -D build/linux-unpacked/LICENSES.chromium.html "${pkgdir}/usr/share/licenses/marktext/LICENSES.chromium.html"
 }
