@@ -10,7 +10,7 @@ post_install() {
 	SUBSYSTEM=="input", GROUP="input", MODE="0666"
 
 	# For ANNE PRO 2
-	UBSYSTEM=="input", GROUP="input", MODE="0666"
+	SUBSYSTEM=="input", GROUP="input", MODE="0666"
 
 	# For ANNE PRO 2
 	SUBSYSTEM=="usb", ATTRS{idVendor}=="04d9", ATTRS{idProduct}=="8008",MODE="0666", GROUP="plugdev"

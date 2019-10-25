@@ -5,6 +5,7 @@ pkgbase = obinskit
 	url = http://en.obins.net/obinskit
 	install = obinskit.install
 	arch = x86_64
+	groups = 
 	license = custom
 	depends = desktop-file-utils
 	depends = gconf
