@@ -17,7 +17,7 @@ optdepends=()
 #conflicts=("mynes")
 
 source=('https://efanomars.com/sources/mynes-0.3.tar.gz')
-sha256sums=('2750d293192f55c235b94fa70266fd89072d65845d15bbe8268de0f54c06b427')
+sha256sums=('d0eb6fcba7ebd76191588eb5d1416c958b39e0476b4001a13d84c72c74402291')
 
 build() {
   cd "${srcdir}/mynes"
