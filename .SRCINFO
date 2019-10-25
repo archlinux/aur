@@ -1,7 +1,7 @@
 pkgbase = haskell-terminal-progress-bar
 	pkgdesc = A simple progress bar in the terminal
 	pkgver = 0.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://hackage.haskell.org/package/terminal-progress-bar
 	arch = i686
 	arch = x86_64
@@ -14,6 +14,7 @@ pkgbase = haskell-terminal-progress-bar
 	makedepends = haskell-text>1.2
 	makedepends = haskell-time>=1.8
 	depends = ghc
+	depends = haskell-terminal-size
 	options = strip
 	source = https://hackage.haskell.org/packages/archive/terminal-progress-bar/0.4.1/terminal-progress-bar-0.4.1.tar.gz
 	md5sums = 3ef47403a7147ef6be1e0127dea3c8d7

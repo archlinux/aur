@@ -2,12 +2,12 @@
 _hkgname=terminal-progress-bar
 pkgname=haskell-terminal-progress-bar
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple progress bar in the terminal"
 url="http://hackage.haskell.org/package/terminal-progress-bar"
 license=('BSD')
 arch=('i686' 'x86_64')
-depends=('ghc') 
+depends=('ghc' 'haskell-terminal-size') 
 makedepends=('ghc'
 		'haskell-base<5'
 		'haskell-base>=4.9'
