@@ -1,6 +1,6 @@
-pkgbase = discimagechef
+pkgbase = discimagechef-git
 	pkgdesc = Disc image management and creation tool for disks, tapes, optical and solid state media
-	pkgver = v4.5.1.1692.r809.g2e585a2c
+	pkgver = v4.5.1.1692.r811.g16849ea2
 	pkgrel = 1
 	url = http://www.discimagechef.app
 	arch = x86_64
@@ -9,6 +9,12 @@ pkgbase = discimagechef
 	license = GPL
 	makedepends = dotnet-sdk>=2.0.0
 	makedepends = git
+	depends = icu
+	depends = krb5
+	depends = libcurl.so
+	depends = libunwind
+	depends = openssl-1.0
+	depends = zlib
 	provides = discimagechef
 	conflicts = discimagechef
 	options = !strip
