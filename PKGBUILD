@@ -1,6 +1,6 @@
 # Maintainer: Nikola Kocić <nikolakocic@gmail.com>
 pkgname=gconf-dummy
-pkgver=1.1
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Dummy package providing gconf. Useful when packages wrongly depend on gconf."
 arch=('any')
