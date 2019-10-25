@@ -1,6 +1,6 @@
 pkgbase = linux-zencjk
 	pkgver = 5.3.7.zen1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/zen-kernel/zen-kernel/commits/v5.3.7-zen1
 	arch = x86_64
 	license = GPL2
