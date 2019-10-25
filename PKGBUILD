@@ -4,14 +4,13 @@
 pkgbase=soccer-cli-git
 pkgname=('python2-soccer-cli-git' 'python-soccer-cli-git')
 epoch=1
-pkgver=20170929_r267.990bdfd
+pkgver=20190116_r298.472e9f4
 pkgrel=1
 pkgdesc="Soccer for Hackers - a CLI for all the football scores."
 arch=('any')
 url="https://github.com/architv/soccer-cli"
 license=('MIT')
 makedepends=('git' 'python' 'python2')
-provides=("${_pkgname}")
 source=('git+https://github.com/architv/soccer-cli.git')
 md5sums=('SKIP')
 install="${pkgbase}.install"
@@ -34,7 +33,8 @@ prepare() {
 
 package_python2-soccer-cli-git() {
   depends=('python2-click' 'python2-requests')
-  cd ${pkgbase%-git}2
+  provides=('python2-soccer-cli')
+  cd ${pkgbase%-git}
 
   install -D -m644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 
@@ -44,7 +44,7 @@ package_python2-soccer-cli-git() {
 
 package_python-soccer-cli-git() {
   depends=('python-click' 'python-requests')
-  cd ${pkgbase%-git}3
+  cd python-soccer-cli
 
   install -D -m644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 

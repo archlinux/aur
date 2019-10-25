@@ -1,6 +1,6 @@
 pkgbase = soccer-cli-git
 	pkgdesc = Soccer for Hackers - a CLI for all the football scores.
-	pkgver = 20170929_r267.990bdfd
+	pkgver = 20190116_r298.472e9f4
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/architv/soccer-cli
@@ -16,6 +16,7 @@ pkgbase = soccer-cli-git
 pkgname = python2-soccer-cli-git
 	depends = python2-click
 	depends = python2-requests
+	provides = python2-soccer-cli
 
 pkgname = python-soccer-cli-git
 	depends = python-click
