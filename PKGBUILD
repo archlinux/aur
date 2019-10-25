@@ -1,11 +1,12 @@
-# Maintainer: Yurii Kolesnykov <root@yurikoles.com>
-# Contributor: Karel Louwagie <karel@louwagie.net>
-# Contributor: Samuel Walladge <samuel@swalladge.id.au>
+# Maintainer: Whezzel <whezzel at gmail dot com>
+# Contributor: Karel Louwagie <karel at louwagie dot net>
+# Contributor: Samuel Walladge <samuel at swalladge dot id dot au>
+# Contributor: Yurii Kolesnykov <root at yurikoles dot com>
 
 pkgname=toggldesktop-bin
 _pkgname=toggldesktop
 pkgver=7.4.528
-pkgrel=2
+pkgrel=1
 pkgdesc="Time Tracking Software."
 arch=('x86_64')
 provides=('toggldesktop')
