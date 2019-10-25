@@ -1,6 +1,6 @@
 pkgbase = aqbanking-git
 	pkgdesc = A library for online banking and financial applications
-	pkgver = 5.99.35beta
+	pkgver = 5.99.43beta+10+gfe9dcc2b
 	pkgrel = 1
 	url = https://www.aquamaniac.de/rdm/projects/aqbanking
 	arch = x86_64
