@@ -2,14 +2,15 @@
 
 _plug=acsuite
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r1.4f72717
-pkgrel=1
-pkgdesc="Plugin for VapourSynth: ${_plug} (GIT version)"
+pkgver=r2.04194ad
+pkgrel=2
+pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
 url='https://github.com/OrangeChannel/acsuite'
 license=('GPL')
 depends=('vapoursynth'
          'mkvtoolnix-cli'
+         'mkvtoolnix-gui'
          )
 makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
