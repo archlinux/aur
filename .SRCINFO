@@ -1,12 +1,11 @@
 pkgbase = motrix-bin
 	pkgdesc = elegent downloading tool frontend for aria2c, using vue (binary version)
 	pkgver = 1.4.1
-	pkgrel = 1
-	url = https://github.com/agalwood/Motrix
+	pkgrel = 2
+	url = https://motrix.app/
 	arch = x86_64
 	license = MIT
 	makedepends = p7zip
-	makedepends = sed
 	depends = gtk3
 	depends = libxcb
 	conflicts = motrix
