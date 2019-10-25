@@ -1,8 +1,9 @@
 pkgbase = filebot
 	pkgdesc = The ultimate TV and Movie Renamer
 	pkgver = 4.8.5
-	pkgrel = 5
+	pkgrel = 6
 	url = https://www.filebot.net/
+	install = filebot.install
 	arch = i686
 	arch = x86_64
 	arch = aarch64

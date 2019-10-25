@@ -8,13 +8,13 @@
 
 pkgname=filebot
 pkgver=4.8.5
-pkgrel=5
+pkgrel=6
 pkgdesc="The ultimate TV and Movie Renamer"
 arch=('i686' 'x86_64' 'aarch64' 'armv7l' 'armv7h')
 url="https://www.filebot.net/"
 license=('Commercial')
 install=$pkgname.install
-install=()
+# install=()
 depends=('java8-openjfx' 'jre8-openjdk' 'fontconfig' 'chromaprint')
 makedepends=()
 provides=('filebot')
