@@ -25,7 +25,7 @@ build() {
   sed -i "s/ReleaseTag.*/ReleaseTag = \"RELEASE.${_pkgver}\"/g" cmd/build-constants.go
   sed -i "s/CommitID.*/CommitID = \"$(git rev-parse HEAD)\"/g" cmd/build-constants.go
 
-  GO111MODULE=on go build
+  GO111MODULE=on go build -ldflags "-extldflags $LDFLAGS"
 }
 
 package() {
