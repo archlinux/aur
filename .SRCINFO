@@ -1,6 +1,6 @@
 pkgbase = zrythm-debug-git
 	pkgdesc = a highly automated and intuitive digital audio workstation
-	pkgver = 0.6.261
+	pkgver = 0.6.261.r48.geead9adb
 	pkgrel = 1
 	url = https://www.zrythm.org
 	arch = x86_64
@@ -26,8 +26,6 @@ pkgbase = zrythm-debug-git
 	depends = fftw
 	optdepends = portaudio: portaudio backend
 	optdepends = qt5-base: for embedding qt5 plugin UIs
-	provides = zrythm
-	conflicts = zrythm
 	options = !strip
 	source = zrythm::git+https://git.zrythm.org/git/zrythm.git
 	md5sums = SKIP
