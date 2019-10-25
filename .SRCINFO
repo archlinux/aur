@@ -1,6 +1,6 @@
 pkgbase = bluetoother
 	pkgdesc = Bluetoooth adapter connectivity GUI tool
-	pkgver = 0.5
+	pkgver = 0.6
 	pkgrel = 1
 	url = https://www.efanomars.com/utilities/bluetoother
 	arch = x86_64
@@ -10,11 +10,12 @@ pkgbase = bluetoother
 	makedepends = doxygen
 	makedepends = graphviz
 	makedepends = python
-	depends = gtkmm
+	depends = gtkmm3
 	depends = bluez
+	depends = bluez-libs
 	depends = polkit
-	source = git+https://gitlab.com/efanomars/bluetoother.git#commit=2680338004eba6b5624001ee79db14d8994770da
-	sha512sums = SKIP
+	source = https://efanomars.com/sources/bluetoother-0.6.tar.gz
+	sha256sums = ecda48067813d3dae76dc23aad9510fc2677253a815d9fcae7679a20236f63a0
 
 pkgname = bluetoother
 
