@@ -24,8 +24,6 @@ pkgbase = pamac
 	depends = appstream-glib
 	depends = archlinux-appstream-data
 	depends = git
-	depends = snapd
-	depends = snapd-glib
 	depends = vte3
 	options = !emptydirs
 	source = pamac-9.0.1-5.tar.gz::https://gitlab.manjaro.org/applications/pamac/-/archive/5cadbe289cfd7e624bb3b98fdbce53a1aff42cfe/pamac-common-5cadbe289cfd7e624bb3b98fdbce53a1aff42cfe.tar.gz
@@ -47,7 +45,7 @@ pkgname = pamac-common
 	depends = appstream-glib
 	depends = archlinux-appstream-data
 	depends = git
-	optdepends = pamac-snap-plugin
+	optdepends = 
 	provides = pamac-common=9.0.1-5
 	conflicts = pamac<=7.3.4-2
 	conflicts = pamac-aur
@@ -81,11 +79,4 @@ pkgname = pamac-tray-appindicator-src
 	provides = pamac-tray-appindicator=9.0.1-5
 	conflicts = pamac-tray-appindicator
 	conflicts = pamac-tray-appindicator-git
-
-pkgname = pamac-snap-plugin
-	pkgdesc = Snap plugin for Pamac
-	depends = snapd
-	depends = snapd-glib
-	provides = pamac-snap-plugin=9.0.1-5
-	conflicts = pamac-snap-plugin
 
