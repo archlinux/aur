@@ -1,7 +1,7 @@
 _hkgname=bytestring-progress
 pkgname=haskell-bytestring-progress
 pkgver=1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A library for tracking the consumption of a lazy ByteString"
 url="http://hackage.haskell.org/package/bytestring-progress"
 license=('BSD')
@@ -13,8 +13,7 @@ makedepends=('ghc'
 		'haskell-bytestring'
 		'haskell-time>=1.1'
 		'haskell-time<2.0'
-		'haskell-terminal-progress-bar>=0.2.0'
-		'haskell-terminal-size'
+		'haskell-terminal-progress-bar>=0.4.0'
 )
 #'haskell-terminal-progress-bar<0.3.0' # seems to work fine with latest version
 options=('strip')
