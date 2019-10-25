@@ -1,6 +1,6 @@
 pkgbase = linux-aufs
 	pkgver = 5.3.7
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/sfjro/aufs5-standalone
 	arch = x86_64
 	license = GPL2
