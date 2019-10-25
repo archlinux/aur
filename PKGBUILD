@@ -2,10 +2,10 @@
 
 pkgname=adobe-source-han-sans-classic-fonts
 pkgver=2.001
-pkgrel=1
-pkgdesc="Adobe Source Han Sans - Classic Style Chinese Character"
+pkgrel=2
+pkgdesc='Adobe Source Han Sans - Classic Style Chinese Character'
 arch=('any')
-url="https://github.com/adobe-fonts/source-han-sans"
+url='https://github.com/redchenjs/source-han-sans-classic/'
 license=('OFL')
 source=(
     'git+https://github.com/redchenjs/source-han-sans-classic.git'
@@ -15,11 +15,7 @@ md5sums=(
 )
 
 package() {
-    mkdir -p "${pkgdir}"/usr/
-    mkdir -p "${pkgdir}"/usr/share/
-    mkdir -p "${pkgdir}"/usr/share/fonts/
-    mkdir -p "${pkgdir}"/usr/share/fonts/adobe-source-han-sans/
-
-    cp -a "${srcdir}"/source-han-sans-classic/*.otf \
-          "${pkgdir}"/usr/share/fonts/adobe-source-han-sans/
+    install -dm 755 ${pkgdir}/usr/share/fonts/adobe-source-han-sans/
+    install -Dm 644 ${srcdir}/source-han-sans-classic/*.otf \
+                    ${pkgdir}/usr/share/fonts/adobe-source-han-sans/
 }
