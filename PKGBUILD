@@ -2,7 +2,7 @@
 
 pkgname=python-first
 pkgver=2.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Return the first true value of an iterable"
 url="https://github.com/hynek/first"
 license=('MIT')
