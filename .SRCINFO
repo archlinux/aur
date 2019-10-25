@@ -1,6 +1,6 @@
 pkgbase = linux-rt-bfq
 	pkgver = 5.2.21.rt13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sirlucjan/bfq-mq-lucjan
 	arch = x86_64
 	license = GPL2
