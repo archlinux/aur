@@ -1,0 +1,29 @@
+pkgbase = wayfire-plugins-extra-git
+	pkgdesc = 3D wayland compositor extra plugins
+	pkgver = r8.5c9aa89
+	pkgrel = 1
+	url = https://github.com/WayfireWM/wayfire-plugins-extra
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = wayland-protocols
+	makedepends = extra-cmake-modules
+	depends = wayfire
+	depends = glibmm
+	depends = wlroots
+	depends = wf-config-git
+	depends = wayland-protocols
+	depends = boost
+	depends = gtkmm3
+	depends = libxkbcommon
+	optdepends = wcm-git: GTK3-based configuration tool for the Wayfire compositor
+	provides = wayfire-plugins-extra-git
+	provides = wayfire-plugins-extra
+	conflicts = wayfire-plugins-extra
+	source = git+https://github.com/WayfireWM/wayfire-plugins-extra
+	sha256sums = SKIP
+
+pkgname = wayfire-plugins-extra-git
+
