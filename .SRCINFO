@@ -1,14 +1,14 @@
 pkgbase = ttf-iosevka-ss04
 	pkgdesc = A slender monospace typeface. Shape: Menlo
 	pkgver = 2.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://be5invis.github.io/Iosevka/
 	arch = any
 	license = custom:OFL
 	depends = fontconfig
 	depends = xorg-font-utils
 	source = https://github.com/be5invis/Iosevka/releases/download/v2.3.2/iosevka-ss04-2.3.2.zip
-	source = ttf-iosevka-ss04-2.3.2-1-LICENSE.md::https://raw.githubusercontent.com/be5invis/Iosevka/master/LICENSE.md
+	source = ttf-iosevka-ss04-2.3.2-2-LICENSE.md::https://raw.githubusercontent.com/be5invis/Iosevka/v2.3.2/LICENSE.md
 	sha256sums = 57a6b8c6ba270fe62be769167311473a30a5cc0e3564e615a18412c06d2d43f8
 	sha256sums = ecfd74a1d6749bf509cee122870da0186bccfae446e3f6bc5faff253577ab000
 
