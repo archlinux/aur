@@ -17,7 +17,7 @@ optdepends=()
 #conflicts=("stmm-input-xi")
 
 source=('https://efanomars.com/sources/stmm-input-xi-0.6.tar.gz')
-sha256sums=('ee1da8a6f6b6937d041a2a813aa0b4a5a6f2485130740fd7619cbe0b80d73865')
+sha256sums=('bf0ea5a90ab674edd28a29fa6a840ba7c6991120e323b30b6f364173cd5c0304')
 
 build() {
   cd "${srcdir}/stmm-input-xi"
