@@ -15,7 +15,7 @@ pkgbase = bluetoother
 	depends = bluez-libs
 	depends = polkit
 	source = https://efanomars.com/sources/bluetoother-0.6.tar.gz
-	sha256sums = ecda48067813d3dae76dc23aad9510fc2677253a815d9fcae7679a20236f63a0
+	sha256sums = fcf61896579152522b78d47365ecadd4c42579b1e6c2885ebbb388668d80c6ba
 
 pkgname = bluetoother
 
