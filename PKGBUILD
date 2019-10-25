@@ -7,7 +7,7 @@ pkgdesc="Perl module Low-Level Interface to bzip2 compression library"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=()
+depends=('perl>=5.006')
 makedepends=()
 url='https://metacpan.org/pod/Compress::Raw::Bzip2'
 source=('https://cpan.metacpan.org/authors/id/P/PM/PMQS/Compress-Raw-Bzip2-2.087.tar.gz')
