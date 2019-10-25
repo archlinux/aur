@@ -1,7 +1,7 @@
 pkgbase = mitalk
 	pkgdesc = MiTalk Messenger
 	pkgver = 4.0.91
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.miliao.com/
 	arch = x86_64
 	license = custom

@@ -3,7 +3,7 @@
 
 pkgname=mitalk
 pkgver=4.0.91
-pkgrel=1
+pkgrel=2
 pkgdesc='MiTalk Messenger'
 arch=('x86_64')
 url='http://www.miliao.com/'
@@ -27,4 +27,7 @@ md5sums=(
 
 package() {
     tar -xf ${srcdir}/data.tar.xz -C ${pkgdir}/
+
+    mkdir -p ${pkgdir}/usr/bin
+    ln -s /opt/MiTalk/mitalk ${pkgdir}/usr/bin/mitalk
 }
