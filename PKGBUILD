@@ -1,6 +1,6 @@
 # Maintainer: Dmytro Meleshko <dmytro.meleshko@gmail.com>
 pkgbase=mindustry
-pkgname=(${pkgbase} ${pkgbase}-server)
+pkgname=("${pkgbase}" "${pkgbase}-server")
 pkgver=97
 pkgrel=1
 arch=('any')
