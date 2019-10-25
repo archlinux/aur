@@ -1,0 +1,136 @@
+pre_install() {
+
+	if [ "$1" = "install" ]; then
+	    echo "[Splashtop-Streamer] Install streamer"
+	fi
+
+	if [ "$1" = "upgrade" ]; then
+	    echo "[Splashtop-Streamer] Upgrade streamer"
+	fi
+
+	if [ -f "/opt/splashtop-streamer/config/global.conf" ]; then
+	    echo "[Splashtop-Streamer] Backup streamer settings"
+	fi
+
+}
+
+post_install() {
+	if [ "$1" = "configure" ]; then
+		echo "[Splashtop-Streamer] Configure streamer"
+	    if [ ! -e "/etc/splashtop-streamer.conf" ]; then
+	        echo "[Splashtop-Streamer] LastConfigured=`date +%s`" > /etc/splashtop-streamer.conf
+	    fi
+		if [ ! -d "/opt/splashtop-streamer/config/" ]; then
+			mkdir /opt/splashtop-streamer/config/
+		fi
+		if [ ! -d "/opt/splashtop-streamer/dump/" ]; then
+			mkdir /opt/splashtop-streamer/dump/
+		fi
+		if [ ! -d "/opt/splashtop-streamer/log/" ]; then
+			mkdir /opt/splashtop-streamer/log/
+		fi
+		chmod a=rwx /opt/splashtop-streamer/config
+	fi
+
+	if [ ! -f "/usr/bin/splashtop-streamer" ]; then
+		echo "[Splashtop-Streamer] Install user binary link"
+		ln -s /opt/splashtop-streamer/script/splashtop-streamer /usr/bin/splashtop-streamer
+	fi
+
+	if [ -e /etc/pam.d/common-session ]; then
+		echo "[Splashtop-Streamer] Install PAM module"
+		echo "session optional    pam_splashtop.so" >> /etc/pam.d/common-session
+		cp -f /opt/splashtop-streamer/config/pam_splashtop.so /usr/lib/x86_64-linux-gnu/security/
+	fi
+
+	if [ -e /etc/gdm3/custom.conf ];then
+		sed -i 's/#WaylandEnable=false/WaylandEnable=false/' /etc/gdm3/custom.conf
+	fi
+
+	if [ -d /usr/lib/systemd/system/ ]; then
+		echo "[Splashtop-Streamer] Install streamer service"
+		cp /opt/splashtop-streamer/config/SRStreamer.service /usr/lib/systemd/system/
+		ln -s /usr/lib/systemd/system/SRStreamer.service /etc/systemd/system/SRStreamer.service
+	fi
+
+	if [ -f "/etc/systemd/system/SRStreamer.service" ]; then
+		echo "[Splashtop-Streamer] Start streamer service"
+		systemctl daemon-reload
+		systemctl restart SRStreamer.service 
+		systemctl enable /usr/lib/systemd/system/SRStreamer.service 
+	fi
+
+}
+
+pre_upgrade() {
+	pre_install
+}
+
+post_upgrade() {
+	post_install
+}
+
+pre_remove() {
+	if [ -f "/etc/systemd/system/SRStreamer.service" ]; then
+		echo "[Splashtop-Streamer] Stop streamer service"
+	    systemctl disable SRStreamer.service
+		echo "[Splashtop-Streamer] Remove streamer service"
+	    rm /usr/lib/systemd/system/SRStreamer.service
+	    systemctl daemon-reload
+		pidof SRFeature | xargs kill -9
+		if [ "$(pgrep -f 'SRStreamer.pyc' | wc -w)" != 0 ]; then
+			pgrep -f SRStreamer.pyc | xargs kill -9
+		fi
+	fi
+
+}
+
+post_remove() {
+	if [ "$1" = "remove" ]; then
+		if [ -f "/opt/splashtop-streamer/config/global.conf" ]; then
+			echo "[Splashtop-Streamer] Find streamer settings"
+			ServerID=`cat /opt/splashtop-streamer/config/global.conf | grep CloudServerID | awk 'BEGIN {FS="="} {print $2}'`
+			ServerVER=`cat /opt/splashtop-streamer/config/global.conf | grep CloudVersion | awk 'BEGIN {FS="="} {print $2}'`
+			ServerUUID=`cat /opt/splashtop-streamer/config/global.conf | grep ServerUUID | awk 'BEGIN {FS="="} {print $2}' | sed 's/-//g'`
+			ServerURL="https://st-v3-internal.api.splashtop.com"
+			if [ "$ServerID" = "241" ]; then
+				echo "[Splashtop-Streamer] BE-QA"
+				ServerURL="https://be-qa.api.splashtop.com"
+			fi
+
+			if [ ! -z "$ServerUUID" ]; then
+				HttpHeaderAUTH="Authorization: Basic emVyb0BzcGxhc2h0b3AuY29tOk1WZWNpdmVkZGV2aWNlVk0="
+				HttpHeaderUSER="User-Agent: SRS/"$ServerVER" splashtop2 linux"
+				HttpHeaderCONTENT="Content-Type: application/x-www-form-urlencoded"
+				Result="$(curl --silent -X DELETE -H "$HttpHeaderCONTENT" -H "$HttpHeaderAUTH" -H "$HttpHeaderUSER" $ServerURL/api/fulong/v3/unlink_srs/$ServerUUID )"
+				echo ${Result} | grep -w 20200 > /dev/null
+				if [ $? -eq 0 ]; then
+					echo "[Splashtop-Streamer] Unlink streamer success"
+				else
+					echo "[Splashtop-Streamer] Unlink streamer $ServerUUID fail"
+				fi
+			fi
+		fi
+	fi
+
+	if [ -e /etc/pam.d/common-session ]; then
+		sed -i '/session optional    pam_splashtop.so/d' /etc/pam.d/common-session
+		if [ -f "/usr/lib/x86_64-linux-gnu/security/pam_splashtop.so" ]; then
+			echo "[Splashtop-Streamer] Remove PAM module"
+			rm /usr/lib/x86_64-linux-gnu/security/pam_splashtop.so
+		fi
+	fi
+
+	if [ "$1" = "remove" ]; then
+		if [ -d "/opt/splashtop-streamer/config/" ]; then
+			echo "[Splashtop-Streamer] Remove streamer settings"
+			rm -rf /opt/splashtop-streamer/config/global.conf
+			rm -rf /opt/splashtop-streamer/log
+		fi
+	fi
+
+	rm /usr/bin/splashtop-streamer
+	rm -rf /opt/splashtop-streamer/dump
+	rm -rf /opt/splashtop-streamer/SRFeature.sock
+
+}
