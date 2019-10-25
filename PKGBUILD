@@ -3,9 +3,9 @@
 pkgname=browser360
 pkgver=10.0.2012.0
 pkgrel=1
-pkgdesc="360 Security Browser"
+pkgdesc='360 Security Browser'
 arch=('x86_64')
-url="https://browser.360.cn/se/linux/"
+url='https://browser.360.cn/se/linux/'
 license=('custom')
 depends=(
     'ca-certificates'
@@ -28,13 +28,13 @@ md5sums=(
 )
 
 package() {
-    tar -xf "${srcdir}"/data.tar.xz -C "${pkgdir}"/
+    tar -xf ${srcdir}/data.tar.xz -C ${pkgdir}/
     # remove cron
-    rm -rf "${pkgdir}"/etc/
+    rm -rf ${pkgdir}/etc/
     # install icons
     for i in 16x16 22x22 24x24 32x32 48x48 64x64 128x128 256x256; do
-        install -Dm644 "${pkgdir}"/opt/browser360/product_logo_${i/x*}.png \
-                       "${pkgdir}"/usr/share/icons/hicolor/$i/apps/${pkgname}.png
+        install -Dm644 ${pkgdir}/opt/browser360/product_logo_${i/x*}.png \
+                       ${pkgdir}/usr/share/icons/hicolor/$i/apps/${pkgname}.png
     done
-    rm "${pkgdir}"/opt/browser360/product_logo_*
+    rm ${pkgdir}/opt/browser360/product_logo_*
 }
