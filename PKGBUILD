@@ -2,7 +2,7 @@
 
 _pkgname=yarn-completion
 pkgname=yarn-completion-git
-pkgver=v0.14.0.r0.gfa6cf1e
+pkgver=v0.15.0.r3.gcbcb7b5
 pkgrel=1
 pkgdesc='Bash completion for Yarn'
 url='https://github.com/dsifford/yarn-completion'
@@ -30,4 +30,3 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-
