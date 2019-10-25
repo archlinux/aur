@@ -1,0 +1,12 @@
+pkgbase = posy-cursors
+	pkgdesc = Port of Posy's improved cursors for Windows 10 (and older)
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://git.auteiy.me/dmitry/cursorsPosy
+	arch = any
+	license = unknown
+	source = posy-cursors-1.0.tar.gz::https://git.auteiy.me/dmitry/cursorsPosy/-/archive/v1.0/cursorsPosy-v1.0.tar.gz
+	sha256sums = 9abadc31d0c869b4f315c63bd0bc24e43695d8d69646a8d1271d1990344fbcb2
+
+pkgname = posy-cursors
+
