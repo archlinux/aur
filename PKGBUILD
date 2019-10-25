@@ -39,6 +39,7 @@ package() {
 
     # Install app.asar and launcher script
     install -D build/linux-unpacked/resources/app.asar "${pkgdir}/usr/share/marktext/app.asar"
+    cp -r build/linux-unpacked/resources/app.asar.unpacked "${pkgdir}/usr/share/marktext/app.asar.unpacked"
     install -D "${srcdir}/marktext.sh" "${pkgdir}/usr/bin/marktext"
 
     # Install desktop file and icon
