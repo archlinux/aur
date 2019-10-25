@@ -12,7 +12,7 @@ pkgbase = fofimon
 	makedepends = python
 	depends = glibmm
 	source = https://efanomars.com/sources/fofimon-0.6.tar.gz
-	sha256sums = 4ed72723fa3982ceb4b54872801f4fed6165c1a72acb5754f035acb448acb142
+	sha256sums = 855a5b13d0a855ba0925ecaf76fe0b71cd2a83aecbab828e97eeb27bef77a192
 
 pkgname = fofimon
 
