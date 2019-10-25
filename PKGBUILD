@@ -3,8 +3,8 @@
 # see also https://spectrum.chat/theia/general/how-to-package-the-browser-example-app~308c1998-2082-4063-ad99-0f1fd3b64d78
 
 pkgname=theia-next
-pkgver=20190620
-pkgrel=3
+pkgver=20191025
+pkgrel=1
 arch=('any')
 url='https://www.theia-ide.org/'
 license=('EPL2')
@@ -55,9 +55,9 @@ package() {
   cp -RL $PWD $pkgdir/opt/theia
 
   rm $pkgdir/opt/theia/webpack.config.js
-  rm $pkgdir/opt/theia/yarn.lock
+  #rm $pkgdir/opt/theia/yarn.lock
   rm $pkgdir/opt/theia/.yarnclean
-  rm $pkgdir/opt/theia/package.json
+  #rm $pkgdir/opt/theia/package.json
 
   install -Dm755 theia "$pkgdir/usr/bin/theia"
 }
