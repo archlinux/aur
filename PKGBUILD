@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=rpcs3-git
-pkgver=0.0.7.r192.319fc8c55
+pkgver=0.0.7.r392.f3ed26e9d
 pkgrel=1
 pkgdesc='A Sony PlayStation 3 emulator'
 arch=(x86_64)
@@ -30,6 +30,7 @@ depends=(
   libncursesw.so
   libswscale.so
   libudev.so
+  libz3.so
 )
 makedepends=(
   boost
@@ -51,6 +52,7 @@ source=(
   rpcs3-libusb::git+https://github.com/RPCS3/libusb.git
   rpcs3-llvm::git+https://github.com/RPCS3/llvm.git
   git+https://github.com/kobalicek/asmjit.git
+  git+https://github.com/FNA-XNA/FAudio.git
   git+https://github.com/Microsoft/GSL.git
   git+https://github.com/KhronosGroup/glslang.git
   git+https://github.com/zeux/pugixml.git
@@ -58,6 +60,7 @@ source=(
   git+https://github.com/jbeder/yaml-cpp.git
 )
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -78,9 +81,10 @@ pkgver() {
 prepare() {
   pushd rpcs3
 
-  git submodule init 3rdparty/{GSL,hidapi,libusb,pugixml,xxHash,yaml-cpp} asmjit llvm Vulkan/glslang
+  git submodule init 3rdparty/{FAudio,GSL,hidapi,libusb,pugixml,xxHash,yaml-cpp} asmjit llvm Vulkan/glslang
   git config submodule.asmjit.url ../asmjit
   git config submodule.glslang.url ../glslang
+  git config submodule.FAudio.url ../FAudio
   git config submodule.GSL.url ../GSL
   git config submodule.hidapi.url ../rpcs3-hidapi
   git config submodule.libusb.url ../rpcs3-libusb
@@ -88,7 +92,7 @@ prepare() {
   git config submodule.pugixml.url ../pugixml
   git config submodule.xxHash ../xxHash
   git config submodule.yaml-cpp ../yaml-cpp
-  git submodule update 3rdparty/{GSL,hidapi,libusb,pugixml,xxHash,yaml-cpp} asmjit llvm Vulkan/glslang
+  git submodule update 3rdparty/{FAudio,GSL,hidapi,libusb,pugixml,xxHash,yaml-cpp} asmjit llvm Vulkan/glslang
 
   popd
 
