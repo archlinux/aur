@@ -1,5 +1,5 @@
 pkgname=chevereto
-pkgver=1.1.0
+pkgver=1.1.4
 pkgrel=1
 pkgdesc="Chevereto is an image hosting script that allows you to create a beautiful and full-featured image hosting website on your own server."
 arch=(any)
@@ -12,7 +12,7 @@ options=(emptydirs)
 
 source=(https://github.com/Chevereto/Chevereto-Free/archive/${pkgver}.tar.gz
        chevereto.perm.sh)
-md5sums=('694fa397ea504e8eb018c5b8392a7c84'
+md5sums=('90515a682a2b5974dd3410650e019e76'
          'e7add39512c475948c6709a0a6a9c309')
 
 
