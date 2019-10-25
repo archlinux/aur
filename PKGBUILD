@@ -2,7 +2,7 @@
 
 pkgname=roonserver
 pkgver=1.6
-pkgrel=2
+pkgrel=3
 pkgdesc="The music player for music lovers"
 arch=('x86_64')
 url="https://roonlabs.com/"
@@ -15,6 +15,7 @@ package() {
    cd "$srcdir"
    mkdir -p ${pkgdir}/opt/
    bsdtar xf RoonServer_linuxx64.tar.bz2 -C "$pkgdir/opt"
+   chown -R root:root "$pkgdir/opt/RoonServer"
    install -Dm644 "roonserver.service" \
     "$pkgdir/usr/lib/systemd/system/roonserver.service"
    install -Dm644 "copyright" \
