@@ -3,7 +3,7 @@
 _name=IPy
 pkgname=python-ipy
 pkgver=1.00
-pkgrel=1
+pkgrel=2
 pkgdesc="Class and tools for handling of IPv4 and IPv6 addresses and networks"
 arch=('any')
 url="https://github.com/autocracy/python-ipy"
