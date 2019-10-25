@@ -48,7 +48,7 @@ check() {
   for _pkg in pytest-fixture-config pytest-shutil pytest-virtualenv; do
     cd "$srcdir"/pytest-plugins-$pkgver/$_pkg
     python setup.py install --root="$srcdir"/tmp_install --optimize=1
-    PYTHONPATH="$srcdir"/tmp_install/usr/lib/python3.7/site-packages py.test
+    PYTHONPATH="$srcdir"/tmp_install/usr/lib/python3.8/site-packages py.test
 
     cd "$srcdir"/pytest-plugins-$pkgver-py2/$_pkg
     python2 setup.py install --root="$srcdir"/tmp_install --optimize=1
