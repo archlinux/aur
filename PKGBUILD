@@ -1,15 +1,17 @@
 # Maintainer: Dmytro Meleshko <dmytro.meleshko@gmail.com>
 pkgbase=mindustry
 pkgname=("${pkgbase}" "${pkgbase}-server")
-pkgver=97
+_build=97
+pkgver="5.0_${_build}"
 pkgrel=1
+epoch=1
 arch=('any')
 _repo_name="Mindustry"
 url="https://github.com/Anuken/${_repo_name}"
 license=('GPL3')
 depends=("java-environment=8" "sh" "hicolor-icon-theme")
 makedepends=("libicns")
-source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/Anuken/${_repo_name}/archive/v${pkgver}.tar.gz"
+source=("${pkgbase}-${_build}.tar.gz::https://github.com/Anuken/${_repo_name}/archive/v${_build}.tar.gz"
         "${pkgbase}.desktop"
         "${pkgbase}.sh"
         "${pkgbase}-server.desktop"
@@ -21,8 +23,8 @@ sha256sums=('8acdbcba19a4e4470b6a74ab5c0704dcf64b712e0ded0102e44060093835180e'
             '679727847ba70773cee4f902114345e095b27f425aa00c4d3860d247705ed1f0')
 
 build() {
-  cd "${_repo_name}-${pkgver}"
-  ./gradlew --no-daemon dist -Pbuildversion="${pkgver}"
+  cd "${_repo_name}-${_build}"
+  ./gradlew --no-daemon dist -Pbuildversion="${_build}"
 
   cd core/assets/icons
   icns2png --extract icon.icns
@@ -32,7 +34,7 @@ _package_common() {
   install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
   install -Dm755 "${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
 
-  cd "${_repo_name}-${pkgver}"
+  cd "${_repo_name}-${_build}"
   local icon_size; for icon_size in 256 512 1024; do
     install -Dm644 "core/assets/icons/icon_${icon_size}x${icon_size}x32.png" \
       "${pkgdir}/usr/share/icons/hicolor/${icon_size}x${icon_size}/apps/${pkgname}.png"

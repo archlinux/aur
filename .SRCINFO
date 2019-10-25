@@ -1,6 +1,7 @@
 pkgbase = mindustry
-	pkgver = 97
+	pkgver = 5.0_97
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/Anuken/Mindustry
 	arch = any
 	license = GPL3
