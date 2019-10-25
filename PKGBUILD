@@ -1,6 +1,6 @@
 # Maintainer: Fancy <springzfx at gmail.com>
 pkgname=lx-music-desktop
-pkgver=0.7.0
+pkgver=0.8.2
 pkgrel=1
 pkgdesc="A music software based on Electron + Vue. 一个基于 Electron + Vue 开发的音乐软件。"
 arch=('x86_64')

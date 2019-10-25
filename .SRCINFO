@@ -1,9 +1,11 @@
 pkgbase = lx-music-desktop
 	pkgdesc = A music software based on Electron + Vue. 一个基于 Electron + Vue 开发的音乐软件。
-	pkgver = 0.7.0
+	pkgver = 0.8.2
 	pkgrel = 1
 	url = https://github.com/lyswhut/lx-music-desktop#readme
 	arch = x86_64
+	groups = 
+	license = 
 	depends = gtk3
 	depends = libnotify
 	depends = nss
