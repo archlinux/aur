@@ -1,7 +1,7 @@
 pkgbase = posy-cursors
-	pkgdesc = Port of Posy's improved cursors for Windows 10
+	pkgdesc = Port of Posy's improved cursors
 	pkgver = 1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://git.auteiy.me/dmitry/cursorsPosy
 	arch = any
 	license = unknown
