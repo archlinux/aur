@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="https://biniou.net"
 license=('GPL2+')
 groups=('')
-depends=('alsa-lib>=1.0.16' 'ffmpeg>=4.0' 'fftw>=3.3.5' 'lebiniou-data>=3.27' 'glib2>=2.35.9' 'jack' 'jack2>=1.9.10' 'libmagick6>=6.9.10.2' 'libpulse>=0.99.1' 'libsndfile>=1.0.20' 'libxml2>=2.7.4' 'sdl2>=2.0.10' 'sdl2_ttf>=2.0.14' 'ttf-freefont' 'zlib>=1.1.4')
+depends=('alsa-lib>=1.0.16' 'ffmpeg>=4.0' 'fftw>=3.3.5' 'lebiniou-data>=3.27' 'glib2>=2.35.9' 'jack' 'libmagick6>=6.9.10.2' 'libpulse>=0.99.1' 'libsndfile>=1.0.20' 'libxml2>=2.7.4' 'sdl2>=2.0.10' 'sdl2_ttf>=2.0.14' 'ttf-freefont' 'zlib>=1.1.4')
 options=('!strip' '!emptydirs')
 install=lebiniou.install
 source_i686=("http://ftp.fr.debian.org/debian/pool/main/l/lebiniou/lebiniou_3.31-1_i386.deb")
