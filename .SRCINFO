@@ -1,14 +1,14 @@
 pkgbase = ttf-iosevka-ss01
 	pkgdesc = A slender monospace typeface. Shape: Andale Mono
 	pkgver = 2.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://be5invis.github.io/Iosevka/
 	arch = any
 	license = custom:OFL
 	depends = fontconfig
 	depends = xorg-font-utils
 	source = https://github.com/be5invis/Iosevka/releases/download/v2.3.2/iosevka-ss01-2.3.2.zip
-	source = ttf-iosevka-ss01-2.3.2-1-LICENSE.md::https://raw.githubusercontent.com/be5invis/Iosevka/master/LICENSE.md
+	source = ttf-iosevka-ss01-2.3.2-2-LICENSE.md::https://raw.githubusercontent.com/be5invis/Iosevka/v2.3.2/LICENSE.md
 	sha256sums = 190e4182602ffb731050fab7eb8bf86986d1c7f88961617f2aaf8623a769e6f0
 	sha256sums = ecfd74a1d6749bf509cee122870da0186bccfae446e3f6bc5faff253577ab000
 
