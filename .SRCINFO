@@ -1,0 +1,16 @@
+pkgbase = python-setuptools-git-ver
+	pkgdesc = Automatically set package version using git tag/hash
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/camas/setuptools-git-ver
+	arch = any
+	license = MIT
+	depends = python>=3.7
+	depends = python-setuptools
+	provides = python-setuptools-git-ver
+	conflicts = python-setuptools-git-ver
+	source = https://files.pythonhosted.org/packages/source/s/setuptools-git-ver/setuptools-git-ver-1.0.3.tar.gz
+	sha256sums = f6db4b3b4136df9bae237729cfba3c0c798bc5d0d1be363d052957790981469e
+
+pkgname = python-setuptools-git-ver
+
