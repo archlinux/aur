@@ -45,7 +45,7 @@ build() {
 
 package_pamac-common() {
   depends=('glib2>=2.42' 'json-glib' 'libsoup' 'dbus-glib' 'polkit' 'vte3'
-         'desktop-file-utils' 'pacman>=5.1' 'pacman<5.2' 'gnutls>=3.4' 'libnotify'
+         'desktop-file-utils' 'pacman>=5.2' 'pacman<5.3' 'gnutls>=3.4' 'libnotify'
          'appstream-glib' 'archlinux-appstream-data' 'git')
   optdepends=('pamac-snap-plugin')
   backup=('etc/pamac.conf')

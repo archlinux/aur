@@ -40,8 +40,8 @@ pkgname = pamac-common
 	depends = polkit
 	depends = vte3
 	depends = desktop-file-utils
-	depends = pacman>=5.1
-	depends = pacman<5.2
+	depends = pacman>=5.2
+	depends = pacman<5.3
 	depends = gnutls>=3.4
 	depends = libnotify
 	depends = appstream-glib
@@ -88,3 +88,4 @@ pkgname = pamac-snap-plugin
 	depends = snapd-glib
 	provides = pamac-snap-plugin=9.0.1-4
 	conflicts = pamac-snap-plugin
+
