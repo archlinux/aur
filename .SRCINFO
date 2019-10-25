@@ -1,5 +1,5 @@
 pkgbase = aur-git
-	pkgdesc = Publishes software to Arch based systems at the speed of light
+	pkgdesc = Publishes software instantly to Arch Linuxes
 	pkgver = r2.8ceece5
 	pkgrel = 1
 	url = https://gitlab.com/es20490446e/aur

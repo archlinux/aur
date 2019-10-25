@@ -12,7 +12,7 @@ arch=("x86_64")
 pkgver=r2.8ceece5
 pkgrel=1
 
-pkgdesc="Publishes software to Arch based systems at the speed of light"
+pkgdesc="Publishes software instantly to Arch Linuxes"
 license=("GPL3")
 url="https://gitlab.com/es20490446e/${Name}"
 
