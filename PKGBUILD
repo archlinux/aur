@@ -6,7 +6,7 @@
 pkgname=toggldesktop-bin
 _pkgname=toggldesktop
 pkgver=7.4.528
-pkgrel=3
+pkgrel=4
 pkgdesc="Time Tracking Software."
 arch=('x86_64')
 provides=('toggldesktop')
@@ -20,6 +20,7 @@ depends=('libxss'
 	 'qt5-sensors'
 	 'qt5-svg'
 	 'qt5-webchannel'
+	 'qt5-webengine'
 	 'qt5-webkit'
 	 'qt5-x11extras')
 url='https://toggl.com/'
