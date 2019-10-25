@@ -4,7 +4,7 @@
 pkgbase=python-selectors2
 pkgname=('python2-selectors2' 'python-selectors2')
 pkgver=2.0.1
-pkgrel=2
+pkgrel=3
 arch=('any')
 url='https://github.com/SethMichaelLarson/selectors2'
 license=('MIT')
