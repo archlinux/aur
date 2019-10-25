@@ -3,7 +3,7 @@
 pkgname=python-justbytes
 _pkgname=justbytes
 pkgver=0.11
-pkgrel=3
+pkgrel=4
 pkgdesc="computing with and displaying bytes"
 url="https://pypi.org/project/justbytes/"
 depends=('python' 'python-justbases')
