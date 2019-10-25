@@ -1,0 +1,22 @@
+pkgbase = rkr.lv2-git
+	pkgdesc = rakarrack effects ported to LV2 plugins (git version)
+	pkgver = beta_3.r0.g7edcb4e
+	pkgrel = 1
+	url = https://github.com/ssj71/rkrlv2
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = cmake
+	depends = fftw
+	depends = libsamplerate
+	depends = lv2
+	provides = rkr.lv2
+	provides = rkr-lv2
+	conflicts = rkr.lv2
+	conflicts = rkr_lv2
+	source = rkr.lv2::git+https://github.com/ssj71/rkrlv2.git
+	md5sums = SKIP
+
+pkgname = rkr.lv2-git
+

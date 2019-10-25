@@ -1,0 +1,6 @@
+pkg/
+src/
+.AURINFO
+rkr.lv2/
+rkr.lv2-git-*.tar.xz
+rkr.lv2-git-*.src.tar.gz
