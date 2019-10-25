@@ -1,7 +1,7 @@
 # Maintainer: Hezekiah Michael < spiritomb at protonmail dot com>
 
 pkgname=neovim-colors-brogrammer-git
-pkgver=r1.bd1cab9
+pkgver=r2.a6518f8
 pkgrel=1
 pkgdesc="A dark, colorful syntax highlighting theme."
 arch=('any')
