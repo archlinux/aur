@@ -4,12 +4,13 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # News updates for packages can be followed at https://devblog.square-r00t.net
 # Thanks to mobo's package, https://aur.archlinux.org/packages/zandronum2/
 pkgname=zandronum
-pkgver=3.0
-pkgrel=5
+pkgver=3.0.1
+pkgrel=1
 _fmod_ver_true="4.24.16"
 _fmod_ver="$(echo ${_fmod_ver_true} | sed -e 's/\.//g')"
 pkgdesc="OpenGL ZDoom port with Client/Server multiplayer"
-arch=('i686' 'x86_64')
+#arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://zandronum.com/"
 license=('custom')
 depends=('sdl' 'libjpeg6-turbo' 'glu' 'openssl-1.0' 'fluidsynth')
@@ -30,13 +31,13 @@ sha512sums=('b928f3211ff31f17fc2d754728e299b5783e1b946b4019713718b7613e13ff0a7c4
 	    'SKIP'
 	    'SKIP'
 	    'SKIP')
-source_i686=("https://zandronum.com/downloads/${_pkgname}${pkgver}-linux-x86.tar.bz2"
-             "${_pkgname}${pkgver}-linux-x86.tar.bz2.sig")
-sha512sums_i686=('e04d421b817f366d5b0d0251088065b36daadb550b77f2d655db735c8163e92110ad7ec602b7d0fe93fcacd89bdb93c5de79eaa1546e4f8ba4d297200033e1a0'
-            	 'SKIP')
-source_x86_64=("https://zandronum.com/downloads/${_pkgname}${pkgver}-linux-x86_64.tar.bz2"
-               "${_pkgname}${pkgver}-linux-x86_64.tar.bz2.sig")
-sha512sums_x86_64=('830985bbea92c5519c50fbda839da7cebf35af7969d550c3e3d3f829fdb2d693c599d7d7f06ba977cb0cbb6973fa05c30cd06ff20293d5679688c9ea0b1392cc'
+#source_i686=("https://zandronum.com/downloads/${_pkgname}${pkgver}-linux-x86.tar.xz"
+#             "${_pkgname}${pkgver}-linux-x86.tar.xz.sig")
+#sha512sums_i686=('e04d421b817f366d5b0d0251088065b36daadb550b77f2d655db735c8163e92110ad7ec602b7d0fe93fcacd89bdb93c5de79eaa1546e4f8ba4d297200033e1a0'
+#            	 'SKIP')
+source_x86_64=("https://zandronum.com/downloads/${_pkgname}${pkgver}-linux-x86_64.tar.xz"
+               "${_pkgname}${pkgver}-linux-x86_64.tar.xz.sig")
+sha512sums_x86_64=('d09106cc7444f61abea8e07e4ea9d009b9e1e3e2e86c8f2f0320dcbe1636eda5abe2a44ba995fbb7b58c32ca43d79cb6f33ee0e54b4b9d33998a1fa3a2ea58a8'
             	   'SKIP')
 
 if [ "${CARCH}" == "x86_64" ];
