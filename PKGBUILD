@@ -5,7 +5,7 @@ pkgver=0.1
 pkgrel=2
 pkgdesc='Fcitx Skin - Aqua'
 arch=('any')
-url="https://github.com/redchenjs/fcitx-skin-aqua/"
+url='https://github.com/redchenjs/fcitx-skin-aqua/'
 license=('Apache')
 depends=(
     'fcitx'
@@ -18,7 +18,7 @@ md5sums=(
 )
 
 package() {
-    install -dm755 "${pkgdir}"/usr/share/fcitx/skin/aqua/
-    install -Dm644 "${srcdir}"/fcitx-skin-aqua-"${pkgver}"/aqua/* \
-                   "${pkgdir}"/usr/share/fcitx/skin/aqua/
+    install -Dm 755 ${pkgdir}/usr/share/fcitx/skin/aqua/
+    install -Dm 644 ${srcdir}/fcitx-skin-aqua-${pkgver}/aqua/* \
+                    ${pkgdir}/usr/share/fcitx/skin/aqua/
 }
