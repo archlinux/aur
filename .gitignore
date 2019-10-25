@@ -1,8 +1,6 @@
-# ignore build files                                                                                                                                                                           
-*.pkg.*
-*.sig
-src/
-pkg/
- 
-# ignore sources
-toggldesktop.deb
+*
+!.SRCINFO
+!.gitignore
+!PKGBUILD
+!removelibs.list
+!toggledesktop.bin
