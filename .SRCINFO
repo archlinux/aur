@@ -1,0 +1,15 @@
+pkgbase = vim-pandoc-markdown-preview-git
+	pkgdesc = Vim plugin for previewing pandoc markdown
+	pkgver = 20190627
+	pkgrel = 1
+	url = https://github.com/conornewton/vim-pandoc-markdown-preview
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = vim
+	provides = vim-pandoc-markdown-preview
+	source = vim-pandoc-markdown-preview-git::git://github.com/conornewton/vim-pandoc-markdown-preview
+	sha256sums = SKIP
+
+pkgname = vim-pandoc-markdown-preview-git
+
