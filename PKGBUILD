@@ -1,7 +1,7 @@
 # Maintainer: NOGISAKA Sadata <ngsksdt@gmail.com>
 
 pkgname=mkr
-pkgver=0.39.2
+pkgver=0.39.3
 pkgrel=1
 pkgdesc="Command Line Tool for Mackerel"
 arch=('i686' 'x86_64')
@@ -29,6 +29,6 @@ package() {
   install -Dm 755 mkr "$pkgdir/usr/bin/mkr"
 }
 
-sha512sums=('e1517cb5657df09340b1536cf36d7d6fa24b0ebb795c829ea4e37a1fa155b6795d3faba26366d9b155d12b2c3d81f3dc3b9bf5a006a63b38c26670c783b05dea')
+sha512sums=('368ae329011129afaa06f5b192f832a03294da72342a8409f06a0d1c5c7b176ee704ed98c32f76dcce186705834ab9276894dc97377c814606e02a2e737230e6')
 
 # vim: set et sw=2 sts=2:
