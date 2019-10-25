@@ -1,0 +1,22 @@
+pkgbase = discimagechef
+	pkgdesc = Disc image management and creation tool for disks, tapes, optical and solid state media
+	pkgver = v4.5.1.1692.r809.g2e585a2c
+	pkgrel = 1
+	url = http://www.discimagechef.app
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = GPL
+	makedepends = dotnet-sdk>=2.0.0
+	makedepends = git
+	provides = discimagechef
+	conflicts = discimagechef
+	options = !strip
+	source = git://github.com/DiscImageChef/discimagechef
+	sha256sums = SKIP
+
+pkgname = discimagechef-git
+
+pkgname = discimagechef-gtk-git
+	depends = gtk3
+
