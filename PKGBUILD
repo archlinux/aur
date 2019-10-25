@@ -1,22 +1,22 @@
 # Maintainer: Bruno Pagani <archange@archlinux.org>
 
 pkgname=cozy-desktop
-pkgver=3.15.2
+pkgver=3.16.0
 pkgrel=1
 pkgdesc="File synchronisation for Cozy Cloud on Desktop"
 arch=(any)
 url="https://cozy-labs.github.io/cozy-desktop/"
 license=(AGPL3)
-depends=(electron2)
+depends=(electron5)
 makedepends=(nodejs-lts-carbon yarn git node-gyp python2)
 source=("https://github.com/cozy-labs/${pkgname}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
+        "https://github.com/cozy-labs/${pkgname}/releases/download/v${pkgver}/Cozy-Drive-${pkgver}-x86_x64.AppImage"
         "${pkgname}.desktop"
-        "${pkgname}.sh"
-        icons.tar.xz)
-sha256sums=('b0eafc139d1e0bae6f6d893a9d438e6ad5cbc3e5c622302de950be279e9dad23'
-            'df0935e38d99c506b622d99d85179ec4612140d78fcd8c73103cb89c4f58ebab'
-            '6c2df91fca75903c1e518eab56ba9cddfd3e7af6d4433207d9861ce22338f677'
-            '69631fcd5f2334deffd3a5e2708cd06801fd9c22f1ebd2892c2d829dc33adf97')
+        "${pkgname}.sh")
+sha256sums=('0dce740866cf29d4aee254400c52465ac7bd23297f336fdd180259cc3e91f544'
+            '074bb3b392e8556a3d3f962739c86f5ce06a8f8ab932489447797a0472374c05'
+            '563edd5a43c7f06080e03bec5f4e46154227f7e163500950ea39ecad466b198a'
+            '6915fe8b5771cfcb23970fbd78e07edb6ca364ba336fc3aa790de693d3ade16c')
 
 prepare() {
     cd ${pkgname}-${pkgver}
@@ -37,10 +37,13 @@ package() {
 
     rm "${pkgdir}"/usr/lib/cozy-desktop/resources/app.asar.unpacked/gui/scripts/macos-add-favorite.py
     rmdir "${pkgdir}"/usr/lib/cozy-desktop/resources/app.asar.unpacked/gui/{scripts/,}
+    rm -r "${pkgdir}"/usr/lib/cozy-desktop/resources/inspector
 
     cd "${srcdir}"
-    install -d "${pkgdir}"/usr/share/icons/
-    cp -r hicolor "${pkgdir}"/usr/share/icons/
+    chmod +x Cozy-Drive-${pkgver}-x86_x64.AppImage
+    ./Cozy-Drive-${pkgver}-x86_x64.AppImage --appimage-extract
+    cp -r squashfs-root/usr/share "${pkgdir}"/usr/
+    chmod a+rX -R "${pkgdir}"/usr/share
 
     install -Dm755 ${pkgname}.sh "${pkgdir}"/usr/bin/${pkgname}
     install -Dm644 ${pkgname}.desktop "${pkgdir}"/usr/share/applications/${pkgname}.desktop

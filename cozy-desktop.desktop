@@ -4,6 +4,6 @@ Comment=Save them safely in your open source personal cloud, access them anywher
 Exec=/usr/bin/cozy-desktop
 Terminal=false
 Type=Application
-Icon=cozy-desktop
+Icon=cozydrive
 StartupNotify=true
 Categories=Network;FileTransfer;
