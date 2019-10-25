@@ -17,7 +17,7 @@ optdepends=()
 #conflicts=("stmm-games")
 
 source=('https://efanomars.com/sources/stmm-games-0.14.tar.gz')
-sha256sums=('0bbfbe5f2c36a9f0b64af71357d8c742504487fc2e6fdda4c03d46b79df4aac8')
+sha256sums=('d398bf6fda16fa17ff47497ea3fa0b18fb97a11d74c295065efabe71bccb72a4')
 
 build() {
   cd "${srcdir}/stmm-games"
