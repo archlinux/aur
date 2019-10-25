@@ -17,7 +17,7 @@ optdepends=()
 #conflicts=("swapper")
 
 source=('https://efanomars.com/sources/swapper-0.14.tar.gz')
-sha256sums=('fcdaefced4736107e060ef9e6c3870d8ca23a67a37463b83d5a75d02e3fb1728')
+sha256sums=('597a8f049ccd09528b34ef1d03c8f0f1f603d8ad02d69d4fbe64da99ffffc7c4')
 
 build() {
   cd "${srcdir}/swapper"
