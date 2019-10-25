@@ -1,14 +1,14 @@
 # Maintainer: Auteiy <dmitry@auteiy.me>
 
 pkgname=posy-cursors
-pkgver=2
+pkgver=2.1
 pkgrel=1
 pkgdesc="Port of Posy's improved cursors"
 arch=(any)
 url="https://git.auteiy.me/dmitry/cursorsPosy"
 license=(unknown)
 source=("$pkgname-$pkgver.tar.gz::https://git.auteiy.me/dmitry/cursorsPosy/-/archive/v$pkgver/cursorsPosy-v$pkgver.tar.gz")
-sha256sums=('91df0de432de2883750ec51a6404f24f312a9c785a1e6265c95c3969ef0c0df2')
+sha256sums=('bc456335ac6a1eb3668a79df289b0ccb21c15d669677d7da6ced9d4c4515bfed')
 
 package() {
   cd cursorsPosy-v$pkgver
