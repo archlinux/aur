@@ -1,0 +1,20 @@
+pkgbase = 8189fs-dkms
+	pkgdesc = Kernel module for Realtek RTL8189FS and RTL8189FTV SDIO wireless devices.
+	pkgver = r48.54bd680
+	pkgrel = 1
+	url = https://github.com/jwrdegoede/rtl8189ES_linux/tree/rtl8189fs
+	install = 8189fs-dkms.install
+	arch = armv7h
+	license = GPL
+	makedepends = linux-headers
+	makedepends = git
+	depends = linux
+	depends = dkms
+	conflicts = 8189fs-git
+	source = git://github.com/jwrdegoede/rtl8189ES_linux.git#branch=rtl8189fs
+	source = dkms.conf
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = 8189fs-dkms
+
