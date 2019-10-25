@@ -3,13 +3,13 @@
 pkgname=signal-desktop
 _pkgname=Signal-Desktop
 pkgver=1.27.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Electron application that links with Signal on mobile'
 arch=(x86_64)
 url=https://signal.org
 license=(GPL3)
 depends=(electron)
-makedepends=(yarn git python2 'nodejs>=12' npm python openssl-1.0)
+makedepends=(yarn git python2 'nodejs>=12' npm python)
 conflicts=(signal)
 source=($pkgname-$pkgver.tar.gz::https://github.com/signalapp/Signal-Desktop/archive/v$pkgver.tar.gz
         $pkgname.desktop)
@@ -19,12 +19,16 @@ sha512sums=('92a934d7680f33803bd7be21f4604719b211036931a6e00565e21a7008d0b35da7d
 prepare() {
   cd $_pkgname-$pkgver
 
-  # Allow higher node versions
+  # Set known working Electron version
+  sed 's#\("electron": "\).*"#\16.1.2"#' -i package.json
+
+  # Allow higher Node versions
   sed 's#"node": "#&>=#' -i package.json
 
   yarn install
 
-  # Have SQLCipher statically link from openssl-1.0
+  # Have SQLCipher dynamically link from OpenSSL
+  # See https://github.com/signalapp/Signal-Desktop/issues/2634
   sed '76s#<.*.a#-lcrypto#;144d' -i node_modules/@journeyapps/sqlcipher/deps/sqlite3.gyp
 }
 
