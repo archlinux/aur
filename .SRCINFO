@@ -1,15 +1,14 @@
 pkgbase = nextcloud-app-carnet
 	pkgdesc = A Nextcloud server app providing digital sticky notes to users.
-	pkgver = 0.18.4
+	pkgver = 0.18.5
 	pkgrel = 1
 	url = https://github.com/PhieF/CarnetNextcloud
 	arch = any
 	license = AGPL
 	depends = nextcloud
 	options = !strip
-	source = carnet-nc-0.18.4.tar.gz::https://github.com/PhieF/CarnetNextcloud/releases/download/v0.18.4/carnet-nc-v0.18.4.tar.gz
-	md5sums = 0949cc860b731dd6783b5e06bfea5a6d
-	sha256sums = 58c4a1106605d0b6d8cf495c9b69aa0019ff0c8c50be38a0a5d31be6847319d0
+	source = carnet-nc-0.18.5.tar.gz::https://github.com/PhieF/CarnetNextcloud/releases/download/v0.18.5/carnet-nc-v0.18.5.tar.gz
+	sha256sums = f7559eaf899c77bceef46451617862bf43f95e77561ff847a95ec119065823f7
 
 pkgname = nextcloud-app-carnet
 
