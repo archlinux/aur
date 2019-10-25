@@ -1,0 +1,41 @@
+pkgbase = realtek-firmware
+	pkgdesc = Realtek-specific firmware for WiFI, Bluetooth and Ethernet cards
+	pkgver = 20191022.2b016af
+	pkgrel = 1
+	url = https://git.kernel.org/?p=linux/kernel/git/firmware/linux-firmware.git;a=summary
+	arch = any
+	license = GPL2
+	license = GPL3
+	license = custom
+	makedepends = git
+	options = !strip
+	source = git+https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git#commit=2b016afc348ba4b5fb2016ffcb2822f4a293da0c?signed
+	validpgpkeys = 4CDE8575E547BF835FE15807A31B6BD72486CFD6
+	md5sums = SKIP
+
+pkgname = realtek-firmware
+	conflicts = linux-firmware
+	conflicts = linux-firmware-git
+	conflicts = kernel26-firmware
+	conflicts = ar9170-fw
+	conflicts = iwlwifi-1000-ucode
+	conflicts = iwlwifi-3945-ucode
+	conflicts = iwlwifi-4965-ucode
+	conflicts = iwlwifi-5000-ucode
+	conflicts = iwlwifi-5150-ucode
+	conflicts = iwlwifi-6000-ucode
+	conflicts = rt2870usb-fw
+	conflicts = rt2x00-rt61-fw
+	conflicts = rt2x00-rt71w-fw
+	replaces = kernel26-firmware
+	replaces = ar9170-fw
+	replaces = iwlwifi-1000-ucode
+	replaces = iwlwifi-3945-ucode
+	replaces = iwlwifi-4965-ucode
+	replaces = iwlwifi-5000-ucode
+	replaces = iwlwifi-5150-ucode
+	replaces = iwlwifi-6000-ucode
+	replaces = rt2870usb-fw
+	replaces = rt2x00-rt61-fw
+	replaces = rt2x00-rt71w-fw
+
