@@ -1,6 +1,6 @@
 pkgbase = caja-dropbox
 	pkgdesc = Dropbox extension for Caja file manager
-	pkgver = 1.22.1
+	pkgver = 1.23.0
 	pkgrel = 1
 	url = https://github.com/mate-desktop/caja-dropbox
 	arch = i686
@@ -18,7 +18,7 @@ pkgbase = caja-dropbox
 	depends = pygtk
 	depends = xdg-utils
 	optdepends = dropbox: Dropbox support
-	source = caja-dropbox-1.22.1.tar.gz::https://github.com/mate-desktop/caja-dropbox/archive/v1.22.1.tar.gz
+	source = caja-dropbox-1.23.0.tar.gz::https://github.com/mate-desktop/caja-dropbox/archive/v1.23.0.tar.gz
 	sha256sums = 389e172a282054d5486f57315b25fa62544bcd0c9d46ea6ddab0913f88a884a9
 
 pkgname = caja-dropbox
