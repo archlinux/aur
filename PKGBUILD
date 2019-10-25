@@ -1,7 +1,7 @@
 # Maintainer: Andy B. <brofi.archlinux at gmail dot com>
 
 pkgname=xmobar-alsa
-pkgver=0.29.5
+pkgver=0.31
 pkgrel=1
 pkgdesc="A Minimalistic Text Based Status Bar compiled with ALSA"
 url="https://hackage.haskell.org/package/xmobar"
@@ -18,7 +18,7 @@ depends=('haskell-alsa-core>=0.5.0' 'haskell-alsa-mixer>=0.3.0' 'libxft'
          'haskell-extensible-exceptions' 'haskell-http-conduit')
 makedepends=('ghc')
 source=(https://github.com/jaor/xmobar/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz)
-sha512sums=('bd264f740301b6e1b468f9e7c6ecc02971825238415ba5148c36f180cf40310410c8aaa1f018f237a1b600b167e482178c5e8fc4f104b5c8dc465e0fb7a31d52')
+sha512sums=('b0afe21f398a16a2e9d6e94ecb643fc5a259e1f60504ce50acd90ae31ae2e14d0925afb66f9593ff2a9bb016e39ab612027e836ece8ede665c66badac3386d01')
 
 prepare() {
   cd xmobar-$pkgver
