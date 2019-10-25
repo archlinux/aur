@@ -1,33 +1,5 @@
 pkgbase = neovim-colors-brogrammer-git
 	pkgdesc = A dark, colorful syntax highlighting theme.
-	pkgver = 20190529
-	pkgrel = 1
-	url = https://github.com/ErikBoesen/vim-brogrammer-theme
-	arch = any
-	license = unknown
-	makedepends = git
-	depends = neovim
-	source = neovim-colors-brogrammer-git::git://github.com/ErikBoesen/vim-brogrammer-theme.git
-	sha256sums = SKIP
-
-pkgname = neovim-colors-brogrammer-git
-
-pkgbase = neovim-colors-brogrammer-git
-	pkgdesc = A dark, colorful syntax highlighting theme.
-	pkgver = r1.bd1cab9
-	pkgrel = 1
-	url = https://github.com/ErikBoesen/vim-brogrammer-theme
-	arch = any
-	license = unknown
-	makedepends = git
-	depends = neovim
-	source = neovim-colors-brogrammer-git::git://github.com/ErikBoesen/vim-brogrammer-theme.git
-	sha256sums = SKIP
-
-pkgname = neovim-colors-brogrammer-git
-
-pkgbase = neovim-colors-brogrammer-git
-	pkgdesc = A dark, colorful syntax highlighting theme.
 	pkgver = r2.a6518f8
 	pkgrel = 1
 	url = https://github.com/ErikBoesen/vim-brogrammer-theme
