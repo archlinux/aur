@@ -1,6 +1,6 @@
 # Maintainer: Mantas Mikulėnas <grawity@gmail.com>
 pkgname=realmd
-pkgver=0.16.3.r26.gb6753bd
+pkgver=0.16.3.r29.g81b5e34
 pkgrel=1
 pkgdesc="DBus service for joining hosts to Active Directory and FreeIPA realms"
 arch=(i686 x86_64)
@@ -12,7 +12,7 @@ optdepends=('sssd: Active Directory, FreeIPA, LDAP client'
 makedepends=(docbook-xsl git intltool python xmlto)
 #source=("https://www.freedesktop.org/software/realmd/releases/$pkgname-$pkgver.tar.gz"
 #        "https://www.freedesktop.org/software/realmd/releases/$pkgname-$pkgver.tar.gz.sig")
-_commit=b6753bd048b4012b11d60c094d1ab6ca181ee50d
+_commit=81b5e3478269ea47d66ddb98f7cbebd06fe950e6
 source=("git+https://gitlab.freedesktop.org/realmd/realmd.git#commit=$_commit")
 sha256sums=('SKIP')
 validpgpkeys=('C0F67099B808FB063E2C81117BFB1108D92765AF')
