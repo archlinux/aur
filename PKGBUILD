@@ -1,7 +1,7 @@
 # Maintainer: Daniel Buch Hansen (dbuch) <boogiewasthere@gmail.com>
 
 pkgname=dbuch-zsh-config
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="dbuch zsh configuration"
 url="https://github.com/dbuch/"
@@ -9,7 +9,7 @@ arch=(x86_64)
 license=(GPL)
 depends=('zsh>=5.3' 'ripgrep' 'bat' 'skim' 'ttf-ionicons')
 makedepends=(git)
-_commit=a57702089169571e8f821bf338806e82f2015ee4 # tag v0.1.3
+_commit=6934c7f156528ca7d665aa5577cc59dc32869698 # tag v0.1.4
 source=("git+https://github.com/dbuch/dbuch-zsh-config.git#commit=$_commit")
 conflicts=('grml-zsh-config')
 sha256sums=('SKIP')
