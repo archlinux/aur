@@ -1,8 +1,8 @@
 # Maintainer: Alynx Zhou <alynx.zhou@gmail.com>
 
 pkgname=hikarujs
-pkgver=1.0.5
-pkgrel=2
+pkgver=1.0.6
+pkgrel=1
 pkgdesc='A static site generator that generates routes based on directories naturally.'
 arch=('any')
 url='https://hikaru.alynx.moe/'
@@ -11,7 +11,7 @@ depends=('nodejs')
 makedepends=('npm')
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
-sha512sums=('dfb00b1e51fb3fbb5a2a12d9dbbf87a77c056cd183c93493cafe30948a1f768ab0a77a6bfe68a75f1229617d9d63ebf2979b2556b076138390c747ea1f025fe6')
+sha512sums=('b4a62770857142804ea54cb1df0bc319d66f4243761ea4d5b7621803014b6b1f14a82669475f8085a72c87d6630dbd221458db655e1b953c035f72fe3d1a28d1')
 
 package() {
   npm install \
