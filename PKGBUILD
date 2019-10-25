@@ -13,12 +13,10 @@ optdepends=('v2ray' 'v2ray-domain-list-community' 'v2ray-geoip')
 provides=('qv2ray')
 conflicts=('qv2ray')
 source=("${pkgname}::git+https://github.com/lhy0403/Qv2ray#branch=dev"
-        "0001-modify-exec-path-for-qv2ray.desktop.patch"
-        "0002-modify-the-config-path-for-qv2ray.patch")
+        "0001-modify-exec-path-for-qv2ray.desktop.patch")
 
 sha512sums=('SKIP'
-            'f64f12d0c2be516aba033f3d6f31541bbcaebecb0d4e3eebce5aac0625fa1c41802e929a930601236899d1b19e01ceba167730568f9bc4d5b916bd5c636a58b5'
-            '325912282c5574d10260a7c0f7128ea735113fab113631d8f1ded9ef9ac40765799c3f7fa732ceb46b99b19519645f3085d7ed9e20e331513302cec610b8575d')
+            'f64f12d0c2be516aba033f3d6f31541bbcaebecb0d4e3eebce5aac0625fa1c41802e929a930601236899d1b19e01ceba167730568f9bc4d5b916bd5c636a58b5')
 
 pkgver() {
     cd ${pkgname}
