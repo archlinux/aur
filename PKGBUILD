@@ -1,18 +1,17 @@
-# Maintainer: Sibren Vasse <arch at sibrenvasse dot nl>
+# Maintainer: oguzkagan
 pkgname=splashtop-streamer
-pkgver=2.2.5.1_4
-pkgrel=7
-pkgdesc="Remotely access your desktop from any device from anywhere! - Server version"
+pkgver=2.5.9.5
+pkgrel=1
+pkgdesc="Splashtop Remote Streamer. Remotely access your desktop from any device from anywhere!"
 arch=('x86_64' 'i686')
 url="http://www.splashtop.com/streamer/linux"
 license=('custom')
-depends=('python2' 'python2-keyring' 'python2-crypto' 'apr' 'apr-util' 'dbus' 'dbus-glib' 'glib2' 'libpulse' 'openssl' 'util-linux' 'libx11' 'libx264' 'libxfixes' 'libxrandr' 'libxtst' 'libappindicator-gtk2' 'networkmanager' 'python2-libappindicator')
+depends=('apr>=1.5.2' 'apr-util>=1.5.4' 'bash-completion>=2.7.3' 'curl>=7.47.0' 'dbus>=1.9.14' 'dbus-glib>=0.78' 'glib2>=2.12.0' 'libcurl-gnutls>=7.16.2' 'libpulse>=0.99.1' 'libutil-linux>=2.16' 'libx11' 'libxfixes' 'libxrandr>=1.2.0' 'libxtst' 'mumble' 'networkmanager' 'pam>=0.99.7.1' 'python>=2.6.1' 'python2-libappindicator')
+install=${pkgname}.install
 makedepends=('curl' 'p7zip')
 if [ "$CARCH" = "x86_64" ]; then
-  source=(http://d17kmd0va0f0mp.cloudfront.net/linux/Splashtop_Streamer_Ubuntu_14.04_v${pkgver//_/-}_amd64.deb
-  splashtop-streamer)
-  md5sums=('d56f08bb08b0a58b65c64bd3a8f7a4b4'
-  '9867062d727d41fff1ba47cf9bc501a1')
+  source=(https://www.dropbox.com/s/03oeju0u89rcwcl/Splashtop_Streamer_Ubuntu_amd64.deb)
+  md5sums=('56671123325db8a22691bc9d44d91bb1')
 else
   source=(http://d17kmd0va0f0mp.cloudfront.net/linux/Splashtop_Streamer_Ubuntu_14.04_v${pkgver//_/-}_i386.deb
   splashtop-streamer)
@@ -25,11 +24,8 @@ package ()
   msg "Extracting Splashtop package"
   #cd "$srcdir/$pkgname-$pkgver"
   tar -xf $srcdir/data.tar.xz -C $pkgdir
-  sed -i 's/python /python2 /' $pkgdir/usr/share/applications/SplashtopStreamer.desktop
-
-  msg "Creating custom executable in /usr/bin"
-  mkdir -p $pkgdir/usr/bin
-  cp splashtop-streamer $pkgdir/usr/bin/
+  sed -i 's/python /python2 /' $pkgdir/opt/splashtop-streamer/script/spt_main
+	install -D -m644 "$pkgdir/opt/splashtop-streamer/EULA.htm" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
