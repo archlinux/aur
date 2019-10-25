@@ -4,7 +4,7 @@
 
 pkgname=acmetool
 pkgver=0.0.67
-pkgrel=4
+pkgrel=5
 pkgdesc="An easy-to-use command line tool for automatically acquiring certificates from ACME servers (such as Let's Encrypt)"
 arch=(i686 x86_64 armv7h aarch64)
 url="https://github.com/hlandau/acme"
@@ -28,7 +28,7 @@ sha256sums=('SKIP'
 prepare() {
     export GOPATH="${srcdir}/build"
     mkdir -p "${GOPATH}/src/github.com/hlandau/"
-    mv "${srcdir}/acme-${pkgver}" "${GOPATH}/src/github.com/hlandau/acme"
+    mv "${srcdir}/acmetool-${pkgver}" "${GOPATH}/src/github.com/hlandau/acme"
     go get -v github.com/hlandau/acme/cmd/acmetool
 }
 
