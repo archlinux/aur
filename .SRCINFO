@@ -1,6 +1,6 @@
 pkgbase = nyacc
 	pkgdesc = Not Yet Another Compiler Compiler
-	pkgver = 0.99.1
+	pkgver = 0.99.2
 	pkgrel = 1
 	url = http://www.nongnu.org/nyacc
 	arch = any
@@ -8,10 +8,10 @@ pkgbase = nyacc
 	license = LGPL
 	license = FDL
 	depends = guile
-	source = http://download-mirror.savannah.gnu.org/releases/nyacc/nyacc-0.99.1.tar.gz
-	source = http://download-mirror.savannah.gnu.org/releases/nyacc/nyacc-0.99.1.tar.gz.sig
+	source = http://download-mirror.savannah.gnu.org/releases/nyacc/nyacc-0.99.2.tar.gz
+	source = http://download-mirror.savannah.gnu.org/releases/nyacc/nyacc-0.99.2.tar.gz.sig
 	validpgpkeys = 7C9EDA8DCE5DC8AE2C675EC9EE4F2A40097B7C03
-	sha256sums = 5abdd03809cc377bb69a024b584d15a5ffb5e72a646802d88fdc597c37f35325
+	sha256sums = f182d097b1e2d8a75a8d7c857171131f0361da3a9087096b768ffda4ecf6e3a7
 	sha256sums = SKIP
 
 pkgname = nyacc
