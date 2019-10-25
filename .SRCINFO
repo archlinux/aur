@@ -1,0 +1,18 @@
+pkgbase = pigz-git
+	pkgdesc = A parallel implementation of gzip
+	pkgver = 2.4.r24.gc3de75b
+	pkgrel = 1
+	url = https://zlib.net/pigz/
+	arch = i686
+	arch = x86_64
+	license = zlib
+	makedepends = git
+	depends = glibc
+	depends = zlib
+	provides = pigz
+	conflicts = pigz
+	source = git+https://github.com/madler/pigz.git#branch=develop
+	sha256sums = SKIP
+
+pkgname = pigz-git
+
