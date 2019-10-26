@@ -3,7 +3,7 @@
 
 pkgname=snb-git
 pkgver=r128.54225f2
-pkgrel=2
+pkgrel=3
 pkgdesc="Simple hierarchical notebook that's locale (Unicode) aware"
 arch=("i686" "x86_64")
 url="https://github.com/drbig/snb"
@@ -30,7 +30,7 @@ prepare() {
 	cd "$srcdir/${pkgname%-git}"
 
 	# Open the help file by default if no arguments are specified.
-	sed -i src/user.h -e 's/\/\/#define DEFAULT_FILE.*/#define DEFAULT_FILE    "\/usr\/share\/docs\/snb\/help.md"/'
+	sed -i src/user.h -e 's/\/\/#define DEFAULT_FILE.*/#define DEFAULT_FILE    "\/usr\/share\/doc\/snb\/help.md"/'
 }
 
 build() {
