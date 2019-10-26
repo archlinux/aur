@@ -1,7 +1,7 @@
 pkgbase = bitbox-wallet-app-appimage
 	pkgdesc = BitBox cryptocurrency hardware wallet desktop app with Bitcoin, Segwit, Bech32 and native Litecoin support in an AppImage
 	pkgver = 4.13.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://shiftcrypto.ch/
 	arch = x86_64
 	license = Apache
