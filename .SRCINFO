@@ -1,0 +1,15 @@
+pkgbase = studyflash
+	pkgdesc = Learn flashcards inside your terminal
+	pkgver = 0.5.3
+	pkgrel = 1
+	url = https://github.com/Alone2/studyFlash
+	arch = any
+	license = GPL3
+	depends = python
+	depends = python3
+	depends = python-pip
+	source = https://github.com/Alone2/studyFlash/archive/v0.5.3.tar.gz
+	md5sums = ebdc26f0195e8b8b50bff3580a206e0a
+
+pkgname = studyflash
+
