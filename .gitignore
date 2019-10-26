@@ -1,4 +1,9 @@
-/pkg/
-/src/
-/*.pkg.tar*
-/*.swp
+# folders
+pkg
+src
+distrobuilder
+
+# files
+*.log
+*.tar.*
+
