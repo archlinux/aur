@@ -1,7 +1,7 @@
 # Maintainer: Aaron Barany <akb825@gmail.com>
 
 pkgname=('cuttlefish-tool')
-pkgver=2.0.3
+pkgver=2.0.5
 pkgrel=1
 pkgdesc='Texture converter tool and library'
 arch=('i686' 'x86_64')
@@ -9,7 +9,6 @@ url="https://github.com/akb825/Cuttlefish"
 license=('Apache')
 makedepends=('cmake' 'git')
 depends=('freeimage')
-optdepends=('PVRTexTool: PVRTC support. Download from https://community.imgtec.com/developers/powervr/tools/pvrtextool/')
 source=()
 sha256sums=()
 
