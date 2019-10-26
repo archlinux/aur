@@ -2,7 +2,7 @@
 # Ex-Maintainer: K0n24d <konrad AT knauber DOT net>
 pkgname=urbackup2-server
 pkgver=2.4.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Client Server backup system"
 arch=('i686' 'x86_64' 'armv5' 'armv6h' 'armv6' 'armv7h' 'armv7' 'aarch64')
 url="http://www.urbackup.org/"
@@ -10,9 +10,15 @@ license=('GPL')
 makedepends=('gcc-libs' 'gcc' 'make')
 depends=('sqlite' 'crypto++' 'curl' 'fuse' 'zlib')
 conflicts=('urbackup-server')
-source=("https://www.urbackup.org/downloads/Server/${pkgver}/urbackup-server-${pkgver}.tar.gz")
+source=(
+    "https://www.urbackup.org/downloads/Server/${pkgver}/urbackup-server-${pkgver}.tar.gz"
+    "md5-bytes.patch"
+)
 install='urbackup.install'
-sha512sums=('a47c362f8aaa58660cd4824c887cb8533bb7ceb7cfa7972419c827171096b5dbca0197478ca47bea354fdcf84fd19d63b97d08ddd550498135dd75c6b57a3b64')
+sha512sums=(
+    'a47c362f8aaa58660cd4824c887cb8533bb7ceb7cfa7972419c827171096b5dbca0197478ca47bea354fdcf84fd19d63b97d08ddd550498135dd75c6b57a3b64'
+    '34e25c868cf4572414fbc6c693877127152f9a97edf8865b4263a55cf16f71a5045ba96b1a9af8244ed49c35cab56e3fdb44348d191e9f85e2efb66392907132'
+)
 
 CFLAGS="-march=native -O2 -pipe -fstack-protector-strong"
 CXXFLAGS="${CFLAGS}"
@@ -22,7 +28,7 @@ MAKEFLAGS="-j$(nproc)"
 build() {
     sed  -i '/\#include \"cryptopp_inc.h\"/a #include "assert.h"' "${srcdir}/urbackup-server-${pkgver}/cryptoplugin/AESGCMDecryption.h"
 
-    patch -d"${srcdir}/urbackup-server-${pkgver}" -p0 < ../md5-bytes.patch
+    patch -d"${srcdir}/urbackup-server-${pkgver}" -p0 < "${srcdir}/md5-bytes.patch"
 
     cd "${srcdir}/urbackup-server-${pkgver}"
     ./configure --prefix=/usr --sbindir=/usr/bin --sysconfdir=/etc \
