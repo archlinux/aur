@@ -1,0 +1,5 @@
+post_install() {
+    echo
+    echo "==> Add mkrepo.service, ghq.root and user.name and service in your ~/.gitconfig"
+    echo
+}
