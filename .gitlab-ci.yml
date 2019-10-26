@@ -1,0 +1,9 @@
+include:
+  - project: 'aur-packages/ci-cd'
+    ref: master
+    file: 'github-packages.yml'
+
+buildAndTest:
+  script:
+    - su gitlab -c 'makepkg --noconfirm --syncdeps --install .'
+    - terraformer --version
