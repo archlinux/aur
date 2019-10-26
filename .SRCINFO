@@ -1,0 +1,19 @@
+pkgbase = icc-brightness-gnome-git
+	pkgdesc = Adjust OLED display brightness by applying ICC color profiles (GNOME version)
+	pkgver = r14.587a861
+	pkgrel = 2
+	url = https://github.com/udifuchs/icc-brightness.git
+	arch = x86_64
+	license = MIT
+	makedepends = make
+	makedepends = git
+	depends = python3
+	depends = lcms2
+	depends = gnome-color-manager
+	provides = icc-brightness-gnome
+	conflicts = icc-brightness-gnome
+	source = git+https://github.com/udifuchs/icc-brightness.git
+	sha1sums = SKIP
+
+pkgname = icc-brightness-gnome-git
+
