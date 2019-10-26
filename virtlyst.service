@@ -1,6 +1,8 @@
 [Unit]
-After=network.target libvirtd.service
 Description=Web interface to manage virtual machines with libvirt
+Requires=virtlyst.socket
+After=virtlyst.socket
+After=network.target libvirtd.service
 
 [Service]
 Type=notify
