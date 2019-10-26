@@ -23,7 +23,6 @@ sha512sums=(
 )
 gosrcdir=gopath/src/github.com/eycorsican
 prepare() {
-	cd "$srcdir"
 	mkdir -p $gosrcdir
 	ln -rTsf $pkgname-$pkgver $gosrcdir/$pkgname
 	export GOPATH="$PWD/gopath"
@@ -32,11 +31,10 @@ prepare() {
 	go get -d -v ./...
 }
 build() {
-	cd "$srcdir/$gosrcdir/$pkgname"
+	cd "$gosrcdir/$pkgname"
 	make VERSION=v$pkgver
 }
 package() {
-	cd "$srcdir"
 	install -Dm755 $gosrcdir/$pkgname/build/tun2socks "$pkgdir/usr/bin/go-tun2socks"
 	install -Dm644 go-tun2socks.service "$pkgdir/usr/lib/systemd/system/go-tun2socks.service"
 	install -Dm644 go-tun2socks.conf "$pkgdir/etc/systemd/system/go-tun2socks.service.d/go-tun2socks.conf"
