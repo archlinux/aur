@@ -1,6 +1,6 @@
 pkgbase = mmutils-git
 	pkgdesc = A set of utilities for querying xrandr monitor information
-	pkgver = 1.1.1.r6.4beedf9
+	pkgver = 1.1.1.r4.g4beedf9
 	pkgrel = 1
 	url = http://github.com/pockata/mmutils
 	arch = i686
