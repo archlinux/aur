@@ -3,7 +3,7 @@
 pkgname=blockdiag
 pkgver=1.5.4.20180722
 _commit=4767d8eea98454c50ec7f39f0f1849a2c3969aab
-pkgrel=1
+pkgrel=2
 pkgdesc="blockdiag generates block-diagram image from text"
 url="http://blockdiag.com"
 license=('Apache')
