@@ -1,0 +1,15 @@
+pkgbase = python-gorilla
+	pkgdesc = python library that provides a convenient approach to monkey patching
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/christophercrouzet/gorilla
+	arch = x86_64
+	license = MIT
+	makedepends = python
+	makedepends = python-setuptools
+	depends = python
+	source = python-gorilla-0.3.0::https://github.com/christophercrouzet/gorilla/archive/v0.3.0.tar.gz
+	sha256sums = 4614087a64e5a31d394ced603cc2657fd39a2104f56065ea6cf21e5e59b623e2
+
+pkgname = python-gorilla
+
