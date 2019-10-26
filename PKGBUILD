@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=neatcc-git
-pkgver=r345.f76cb7f
+pkgver=r352.d4b6ecc
 pkgrel=1
 epoch=
 pkgdesc="A simple ARM/x86(_64) C compiler."
