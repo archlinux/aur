@@ -1,43 +1,44 @@
-# Maintainer: graysky <graysky AT archlinux DOT us>
+# Maintainer: George Rawlinson <george@rawlinson.net.nz>
+# Contributor: graysky <graysky AT archlinux DOT us>
 # Contributor: Stéphane Graber <stgraber AT ubuntu DOT com>
 
 pkgname=distrobuilder
-pkgver=228.70f3864
+pkgver=1.0
 pkgrel=1
 pkgdesc="System container image builder for LXC and LXD"
-arch=('x86_64')
+arch=(x86_64)
 url="https://github.com/lxc/distrobuilder"
-license=('APACHE')
-depends=('lxc')
-makedepends=('gcc-go' 'git')
-source=(git://github.com/lxc/distrobuilder.git)
-md5sums=('SKIP')
-
-pkgver() {
-  cd "$pkgname"
-  echo "$(git rev-list --count HEAD).$(git describe --always)"
-}
+license=(Apache)
+depends=(rsync squashfs-tools gnupg debootstrap)
+makedepends=(go git)
+conflicts=(distrobuilder-git)
+source=("$pkgname-$pkgver.tar.gz::https://github.com/lxc/$pkgname/archive/$pkgname-$pkgver.tar.gz")
+sha512sums=('f322435df87fc21fe479894a7d85df75fbf419f29371cca7ad621a1d7686162386c2a74a5dccfe09dc939023ac4e30508ae46a43b0e909ff2a82c78c25cb6d62')
 
 prepare() {
-  [[ -d .gopath ]] || mkdir .gopath 
-  export GOPATH="${srcdir}/.gopath"
-  export PATH="${GOPATH}/bin:${PATH}"
+  # create $GOPATH directory, plus some extras
+  mkdir -p $srcdir/gopath/src/github.com/lxc
+
+  # symlink extracted source to gopath
+  ln -srfT $pkgname-$pkgname-$pkgver gopath/src/github.com/lxc/distrobuilder
+
+  # export $GOPATH & download dependencies
+  export GOPATH="$srcdir"/gopath
+  cd "$GOPATH"/src/github.com/lxc/distrobuilder
+  go get -v -d ./...
 }
 
 build() {
-  cd "$pkgname"
-  go get -v -x github.com/lxc/distrobuilder/distrobuilder
+  export GOPATH="$srcdir"/gopath
+  cd "$GOPATH"/src/github.com/lxc/distrobuilder
+  go install -v \
+    -trimpath \
+    -ldflags "-extldflags ${LDFLAGS}" \
+    ./...
 }
 
 package() {
-  cd "$pkgname"
-  _examples="$GOPATH/src/github.com/lxc/$pkgname/doc/examples"
-
-  install -Dm755 "$GOPATH/bin/$pkgname" "$pkgdir/usr/bin/$pkgname"
-  install -d "$pkgdir/usr/share/$pkgname"
-  install -d "$pkgdir/var/cache/$pkgname"
-
-  for i in alpine archlinux centos debian fedora ubuntu; do
-    install -m644 "$_examples/$i" "$pkgdir/usr/share/$pkgname/$i"
-  done
+  export GOPATH="$srcdir"/gopath
+  cd "$GOPATH"
+  install -Dm755 bin/distrobuilder "${pkgdir}/usr/bin/${pkgname}"
 }
