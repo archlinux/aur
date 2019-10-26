@@ -2,7 +2,7 @@
 
 pkgname=python-pytest-black
 pkgver=0.3.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A pytest plugin to enable format checking with black"
 arch=('any')
 license=('MIT')
