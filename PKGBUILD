@@ -1,13 +1,15 @@
+# vim: set ts=2 sw=2 et:
 # Maintainer: Patrick Wicki <patrick.wicki96@gmail.com>
 
 pkgname=gnome-extra-meta
-pkgver=3.32.1
+pkgver=3.34.0
 pkgrel=1
 pkgdesc='Meta package for installing the gnome-extra group'
 arch=(any)
 url='https://www.archlinux.org/'
 license=(GPL)
-depends=(accerciser
+depends=(
+	accerciser
 	dconf-editor
 	devhelp
 	evolution
@@ -29,7 +31,7 @@ depends=(accerciser
 	gnome-tetravex
 	gnome-tweaks
 	hitori
-	iao
+	iagno
 	lightsoff
 	nautilus-sendto
 	polari
@@ -40,4 +42,6 @@ depends=(accerciser
 	gnome-code-assistance
 	gnome-multi-writer
 	gnome-recipes
-	gnome-usage)
+	gnome-usage
+)
+

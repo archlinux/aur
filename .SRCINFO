@@ -1,6 +1,6 @@
 pkgbase = gnome-extra-meta
 	pkgdesc = Meta package for installing the gnome-extra group
-	pkgver = 3.32.1
+	pkgver = 3.34.0
 	pkgrel = 1
 	url = https://www.archlinux.org/
 	arch = any
@@ -27,7 +27,7 @@ pkgbase = gnome-extra-meta
 	depends = gnome-tetravex
 	depends = gnome-tweaks
 	depends = hitori
-	depends = iao
+	depends = iagno
 	depends = lightsoff
 	depends = nautilus-sendto
 	depends = polari
