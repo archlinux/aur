@@ -1,17 +1,16 @@
 pkgbase = rainier-ui-icons-git
 	pkgdesc = A crisp, modern icon theme for Trenta OS.
-	pkgver = 0.r426.f5ea2d3
-	pkgrel = 1.2
-	url = https://github.com/trenta-io/rainier-UI-icons/
+	pkgver = 0.r436.cfea10a
+	pkgrel = 1
+	url = https://github.com/trenta-io/rainier-ui-icons/
 	arch = any
 	license = GPL3
 	makedepends = git
 	depends = bash
-	depends = elementary-icon-theme-git
 	provides = rainier-ui-icons
 	conflicts = rainier-ui-icons
 	options = !strip
-	source = rainier-ui-icons::git+https://github.com/trenta-io/rainier-UI-icons.git
+	source = rainier-ui-icons::git+https://github.com/trenta-io/rainier-ui-icons.git
 	sha256sums = SKIP
 
 pkgname = rainier-ui-icons-git
