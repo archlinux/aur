@@ -1,5 +1,5 @@
 function post_install {
   echo "
-To start espanso automatically when you log in, enable the systemd user service: systemctl --user enable espanso.service
+To start espanso automatically when you log in, enable the systemd user service: espanso register
 "
 }
