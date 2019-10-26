@@ -35,6 +35,6 @@ check() {
 
 package() {
   cd "$srcdir/${_pkgname}"
-  install -Dm755 mangl "$pkgdir/"
+  install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${_pkgname}/LICENSE"
 }
