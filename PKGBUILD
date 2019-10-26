@@ -42,6 +42,6 @@ package() {
 	cp -R "$srcdir/$_pkgname" "$pkgdir/usr/share/"
 
 	# Link the shell executables to "/usr/bin"
-	ln -s "$pkgdir/usr/share/$_pkgname/executar-console-linux.sh" "$pkgdir/usr/bin/portugol-console"
-	ln -s "$pkgdir/usr/share/$_pkgname/executar-studio-linux.sh" "$pkgdir/usr/bin/$_pkgname"
+	ln -s "/usr/share/$_pkgname/executar-console-linux.sh" "$pkgdir/usr/bin/portugol-console"
+	ln -s "/usr/share/$_pkgname/executar-studio-linux.sh" "$pkgdir/usr/bin/$_pkgname"
 }
