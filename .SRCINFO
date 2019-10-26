@@ -1,0 +1,15 @@
+pkgbase = fprime
+	pkgdesc = A Flight-Proven, Multi-Platform, Open-Source Flight Software Framework
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/nasa/fprime
+	arch = i686
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cmake
+	depends = gcc
+	source = https://github.com/nasa/fprime/archive/NASA-v1.2.tar.gz
+	sha256sums = 180ae41d5708de4f3d81cb4201b7ad3fae47f0d36bef5dde2078f5d3a7e53d53
+
+pkgname = fprime
+
