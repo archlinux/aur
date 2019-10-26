@@ -3,14 +3,14 @@
 
 pkgname=monetcours
 pkgdesc="A toolchain for creating class subjects webpages and more."
-pkgver=1.1.2
+pkgver=1.1.4
 pkgrel=1.0
 epoch=
 arch=('any')
 url="https://scott-hamilton.github.io/"
 license=('Apache')
 groups=()
-depends=( 'coreutils>=8.31' 'findutils>=4.7.0' 'gawk>=5.0.1' 'parallel' 'perl>=5.10.0' 'perl-pdf-api2' 'zip>=3.0')
+depends=( 'coreutils>=8.31' 'findutils>=4.7.0' 'gawk>=5.0.1' 'parallel' 'perl>=5.10.0' 'perl-pdf-api2' 'zip>=3.0' 'python-yaml')
 makedepends=()
 checkdepends=()
 optdepends=()
@@ -23,7 +23,7 @@ install=
 changelog=
 source=("https://github.com/SCOTT-HAMILTON/Monetcours-linux/archive/$pkgver.tar.gz")
 noextract=()
-md5sums=('02481995af23028ed9c774644fbb347c')
+md5sums=('97dfa505bcb8df7900743a2f4716bfad')
 validpgpkeys=()
 
 package() {
