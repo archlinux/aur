@@ -2,7 +2,7 @@
 
 _pkgbase=jool
 pkgname=${_pkgbase}-dkms-git
-pkgver=3.5.5.r4.g375e1802
+pkgver=4.0.6.r1.g90033801
 pkgrel=1
 pkgdesc="Open Source SIIT and NAT64 for Linux."
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ pkgver() {
 
 build() {
   cp -r Jool Jool-clean
-  cd Jool/usr
+  cd Jool
   ./autogen.sh
   ./configure --prefix=/usr
   make
@@ -28,13 +28,13 @@ build() {
 
 package() {
   # Install
-  cd Jool/usr
+  cd Jool
   make DESTDIR="${pkgdir}" install
   make clean
 
   # Copy sources (including Makefile)
   ver=$(echo ${pkgver}| grep -o '[0-9]*\.[0-9*]\.[0-9]*')
-  cd ../..
+  cd ..
   mkdir -p "${pkgdir}"/usr/src/${_pkgbase}-${ver}/
   cp -r Jool-clean/* "${pkgdir}"/usr/src/${_pkgbase}-${ver}/
 }
