@@ -27,7 +27,7 @@ package() {
 	find "$srcdir/$_pkgname/java/java-linux/bin" -type f -exec chmod 755 {} \;
 	chmod 755 "$srcdir/$_pkgname/executar-console-linux.sh"
 	chmod 755 "$srcdir/$_pkgname/executar-studio-linux.sh"
-	
+
 	# Install the desktop file
 	install -Dm644 "$srcdir/arquivos-auxiliares/$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
 
