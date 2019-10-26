@@ -1,0 +1,14 @@
+pkgbase = konsole-tomorrow-theme-git
+	pkgver = r1.6f43a05
+	pkgrel = 1
+	url = https://github.com/dram/konsole-tomorrow-theme
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = konsole
+	provides = konsole-tomorrow-theme
+	source = konsole-tomorrow-theme-git::git+https://github.com/dram/konsole-tomorrow-theme
+	md5sums = SKIP
+
+pkgname = konsole-tomorrow-theme-git
+
