@@ -1,8 +1,9 @@
 # Maintainer: Butui Hu <hot123tea123@gmail.com>
 
 pkgname=python-pytorch-lightning
+_name=${pkgname#python-}
 _pkgname=pytorch-lightning
-pkgver=0.5.1.3
+pkgver=0.5.2.1
 pkgrel=1
 pkgdesc="Rapid research framework for PyTorch. The researcher's version of Keras"
 arch=('any')
@@ -21,8 +22,8 @@ optdepends=(
   'python-apex: mixed precision support'    
 )
 makedepends=('python-setuptools')
-source=("https://github.com/williamFalcon/pytorch-lightning/archive/${pkgver}.tar.gz")
-sha512sums=('d037953a343f914273ec136ef08c75a02890275034a07d57da4ef14ee28c3efbeb7c10f686e4bca2cb34860a59dcf5cf7687f541a2ab29c2004a475eaa251e00')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
+sha512sums=('05ff76aa82453bcae8f022a578e37d7364adfa7d96c54339137f009363743612a4b8205a5909eb4c11bebeaf015affd7d558d59d8290a389dbd6a7678bf1e8df')
 
 build() {
   cd "${_pkgname}-${pkgver}"
