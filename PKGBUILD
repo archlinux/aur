@@ -1,23 +1,21 @@
+# Maintainer: nightuser <nightuser.android at gmail dot com>
+
 pkgname=glib2-static
-pkgver=2.58.2
-pkgrel=3
-pkgdesc="Low level core library. Static library."
+pkgver=2.62.2
+pkgrel=1
+pkgdesc="Low level core library: Static library"
 url="https://wiki.gnome.org/Projects/GLib"
 license=(LGPL2.1)
 arch=(x86_64)
 depends=(pcre libffi)
-makedepends=(libffi zlib shared-mime-info python libelf git util-linux meson dbus libxslt docbook-xsl)
+makedepends=(zlib libffi shared-mime-info python libelf git util-linux meson dbus)
 checkdepends=(desktop-file-utils dbus)
-optdepends=('python: gdbus-codegen, glib-genmarshal, glib-mkenums, gtester-report'
-            'libelf: gresource inspection tool')
 options=('!docs' '!libtool' '!emptydirs' '!strip' 'staticlibs')
-_commit=97bcbcb8c2aa0aeee5afd9939efbadbae0c8a8fa  # tags/2.58.2^0
+_commit=ca9f51b82f57e05f6b3c82b98c235623afa47573  # tags/2.62.2^0
 source=("git+https://gitlab.gnome.org/GNOME/glib.git#commit=$_commit"
-        noisy-glib-compile-schemas.diff
-        fix-static-build-589.diff)
-sha256sums=('SKIP'
-            '81a4df0b638730cffb7fa263c04841f7ca6b9c9578ee5045db6f30ff0c3fc531'
-            'f4790fc845f2b4811ce5df5ef3a7dfcc23a1593ec4e19ae9173bb799a045d00f')
+        disable_utf8-pointer_test.patch)
+sha256sums=(SKIP
+            3142dc433504e0a7c6801c36bb2fd3e61bd294173bbfc401d2e88a47752fc30e)
 
 pkgver() {
   cd glib
@@ -26,30 +24,28 @@ pkgver() {
 
 prepare() {
   cd glib
-
-  # Suppress noise from glib-compile-schemas.hook
-  patch -Np1 -i ../noisy-glib-compile-schemas.diff
-  patch -Np1 -i ../fix-static-build-589.diff
+  patch -Np1 -i "$srcdir"/disable_utf8-pointer_test.patch
 }
 
 build() {
-  arch-meson glib build \
+  arch-meson glib _build \
     --default-library static \
-    -D selinux=false \
-    -D man=true \
-    -D gtk_doc=false \
-    -Dinternal_pcre=false \
-    -Dfam=false
-  ninja -C build
+    --buildtype release \
+    -Dselinux=disabled \
+    -Dman=false \
+    -Dgtk_doc=false \
+    -Dinternal_pcre=false
+  ninja -C _build
 }
 
 check() {
-  meson test -C build
+  # meson test -C build
+  meson test -C _build --no-suite flaky --timeout-multiplier 2 --print-errorlogs
 }
 
 package() {
-  DESTDIR="$pkgdir" meson install -C build
+  DESTDIR="$pkgdir" meson install -C _build
 
   # Only install static library
-  rm -rf "$pkgdir/usr/"{bin,include,share,lib/glib-2.0,lib/pkgconfig} $pkgdir/usr/lib/*.so*
+  rm -rf "$pkgdir"/usr/{bin,include,share,lib/glib-2.0,lib/pkgconfig}
 }

@@ -1,14 +1,14 @@
 pkgbase = glib2-static
-	pkgdesc = Low level core library. Static library.
-	pkgver = 2.58.2
-	pkgrel = 3
+	pkgdesc = Low level core library: Static library
+	pkgver = 2.62.2
+	pkgrel = 1
 	url = https://wiki.gnome.org/Projects/GLib
 	arch = x86_64
 	license = LGPL2.1
 	checkdepends = desktop-file-utils
 	checkdepends = dbus
-	makedepends = libffi
 	makedepends = zlib
+	makedepends = libffi
 	makedepends = shared-mime-info
 	makedepends = python
 	makedepends = libelf
@@ -16,23 +16,17 @@ pkgbase = glib2-static
 	makedepends = util-linux
 	makedepends = meson
 	makedepends = dbus
-	makedepends = libxslt
-	makedepends = docbook-xsl
 	depends = pcre
 	depends = libffi
-	optdepends = python: gdbus-codegen, glib-genmarshal, glib-mkenums, gtester-report
-	optdepends = libelf: gresource inspection tool
 	options = !docs
 	options = !libtool
 	options = !emptydirs
 	options = !strip
 	options = staticlibs
-	source = git+https://gitlab.gnome.org/GNOME/glib.git#commit=97bcbcb8c2aa0aeee5afd9939efbadbae0c8a8fa
-	source = noisy-glib-compile-schemas.diff
-	source = fix-static-build-589.diff
+	source = git+https://gitlab.gnome.org/GNOME/glib.git#commit=ca9f51b82f57e05f6b3c82b98c235623afa47573
+	source = disable_utf8-pointer_test.patch
 	sha256sums = SKIP
-	sha256sums = 81a4df0b638730cffb7fa263c04841f7ca6b9c9578ee5045db6f30ff0c3fc531
-	sha256sums = f4790fc845f2b4811ce5df5ef3a7dfcc23a1593ec4e19ae9173bb799a045d00f
+	sha256sums = 3142dc433504e0a7c6801c36bb2fd3e61bd294173bbfc401d2e88a47752fc30e
 
 pkgname = glib2-static
 

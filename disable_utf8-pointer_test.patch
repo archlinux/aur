@@ -1,0 +1,11 @@
+--- a/glib/tests/meson.build	2019-10-26 22:24:21.710509066 +0300
++++ b/glib/tests/meson.build	2019-10-26 22:24:49.210561309 +0300
+@@ -95,7 +95,7 @@
+   'timer' : {},
+   'tree' : {},
+   'utf8-performance' : {},
+-  'utf8-pointer' : {},
++  #'utf8-pointer' : {},
+   'utf8-validate' : {},
+   'utf8-misc' : {},
+   'utils' : {},
