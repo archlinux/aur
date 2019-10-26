@@ -1,6 +1,6 @@
 pkgbase = apparmor-git
 	pkgdesc = Mandatory Access Control (MAC) using Linux Security Module (LSM)
-	pkgver = 2.13.r638.gdb1f3918
+	pkgver = 2.13.r676.g1567ea6f
 	pkgrel = 1
 	url = https://gitlab.com/apparmor/apparmor
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = apparmor-git
 	makedepends = git
 	makedepends = apache
 	makedepends = swig
+	makedepends = perl
 	makedepends = ruby
 	depends = audit
 	depends = bash
@@ -22,7 +23,7 @@ pkgbase = apparmor-git
 	optdepends = ruby: ruby bindings
 	optdepends = python-notify2: for the aa-notify tool
 	optdepends = python-psutil: for the aa-notify tool
-	provides = apparmor=2.13.r638.gdb1f3918
+	provides = apparmor=2.13.r676.g1567ea6f
 	provides = libapparmor.so
 	conflicts = apparmor
 	backup = etc/apparmor/easyprof.conf

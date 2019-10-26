@@ -2,14 +2,14 @@
 # Contributor: David Runge <dave@sleepmap.de>
 
 pkgname=apparmor-git
-pkgver=2.13.r638.gdb1f3918
+pkgver=2.13.r676.g1567ea6f
 pkgrel=1
 pkgdesc='Mandatory Access Control (MAC) using Linux Security Module (LSM)'
 arch=('x86_64')
 url='https://gitlab.com/apparmor/apparmor'
 license=('GPL')
 depends=('audit' 'bash' 'pam' 'python')
-makedepends=('git' 'apache' 'swig' 'ruby')
+makedepends=('git' 'apache' 'swig' 'perl' 'ruby')
 checkdepends=('dejagnu' 'perl-locale-gettext' 'python-pyflakes' 'python-notify2' 'python-psutil')
 optdepends=('perl: perl bindings'
             'ruby: ruby bindings'
