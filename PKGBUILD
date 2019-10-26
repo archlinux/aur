@@ -1,8 +1,9 @@
 # Maintainer: 'Scott Hamilton <sgn DOT hamilton PLUS archlinux AT protonmail DOT com>'
+# Packager: 'Scott Hamilton <sgn DOT hamilton PLUS archlinux AT protonmail DOT com>'
 
 pkgname=monetcours
 pkgdesc="A toolchain for creating class subjects webpages and more."
-pkgver=1.1
+pkgver=1.1.1
 pkgrel=1.0
 epoch=
 arch=('any')
@@ -20,15 +21,16 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/SCOTT-HAMILTON/Monetcours-linux/archive/v$pkgver.tar.gz")
+source=("https://github.com/SCOTT-HAMILTON/Monetcours-linux/archive/$pkgver.tar.gz")
 noextract=()
+md5sums=('29fbf78591b99978e6a2baf79474b08c')
 validpgpkeys=()
 
 package() {
 	mkdir -p "$pkgdir/usr/bin"
+	mkdir -p "$pkgdir/usr/lib/monetcours"
 	ls "$srcdir"
-	find "$srcdir/Monetcours-linux-$pkgver/"  -not -path '*/\.*' -type f | xargs -n1 -L1 -r -t -I{} cp {} "$pkgdir/usr/bin"
-	echo "lol"
-}
+	find "$srcdir/Monetcours-linux-$pkgver/"  -not -path '*/\.*' -type f | grep -E -v "*.sh|*.pl|*.py" | xargs -n1 -L1 -r -t -I{} mv {} "$pkgdir/usr/lib/monetcours"
+	find "$srcdir/Monetcours-linux-$pkgver/"  -not -path '*/\.*' -type f | grep -E "*.sh|*.pl|*.py" | xargs -n1 -L1 -r -t -I{} mv {} "$pkgdir/usr/bin"
 
-md5sums=('be2e144624a7aecc0edc1cc8b26aa50f')
+}
