@@ -44,7 +44,7 @@ _opt_features=(
 
 pkgname=mpv-git
 _gitname=mpv
-pkgver=0.29.0_804_gfd7aff7a9d
+pkgver=0.30.0_25_ga908101258
 pkgrel=1
 _waf_version=2.0.9
 pkgdesc='Video player based on MPlayer/mplayer2 (git version)'
