@@ -22,6 +22,7 @@ ros_depends=(
     ros-melodic-std-msgs
     ros-melodic-diagnostic-msgs
     ros-melodic-sensor-msgs
+    ros-melodic-turtlebot3-msgs
     ros-melodic-turtlebot3-description
     ros-melodic-turtlebot3-teleop
     ros-melodic-joint-state-publisher

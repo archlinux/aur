@@ -12,6 +12,7 @@ pkgbase = ros-melodic-turtlebot3-bringup
 	depends = ros-melodic-std-msgs
 	depends = ros-melodic-diagnostic-msgs
 	depends = ros-melodic-sensor-msgs
+	depends = ros-melodic-turtlebot3-msgs
 	depends = ros-melodic-turtlebot3-description
 	depends = ros-melodic-turtlebot3-teleop
 	depends = ros-melodic-joint-state-publisher
