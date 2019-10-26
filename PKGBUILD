@@ -2,7 +2,7 @@
 
 pkgname=btrfs-snapshot
 pkgver=3.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool for creating btrfs snapshots"
 arch=('any')
 url="https://github.com/YHNdnzj/btrfs-snapshot"
@@ -14,13 +14,13 @@ sha256sums=('7b396391e16b28eb8d8f48987c38d55465b997c908e2cd9a8cffa38270e825ab')
 package() {
     cd "$pkgname-$pkgver"
 
-    sed "s|\(^_f_parseopts\)=.*|\1=/usr/lib/btrfs-snapshot-po|
+    sed "s|\(^_f_parseopts\)=.*|\1=/usr/lib/parseopts|
          s|\(^_d_config\)=.*|\1=/etc/btrfs-snapshot|
          s|%VERSION%|$pkgver|g" \
             btrfs-snapshot | install -Dm755 /dev/stdin \
                 "$pkgdir/usr/bin/btrfs-snapshot"
 
-    install -Dm644 parseopts "$pkgdir/usr/lib/btrfs-snapshot-po"
+    install -Dm644 parseopts "$pkgdir/usr/lib/parseopts"
     install -dm755 "$pkgdir/etc/btrfs-snapshot"
 
     install -Dt "$pkgdir/usr/lib/systemd/system" -m644 btrfs-snapshot.{service,timer}
