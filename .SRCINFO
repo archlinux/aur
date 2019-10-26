@@ -1,6 +1,6 @@
 pkgbase = jool-dkms-git
 	pkgdesc = Open Source SIIT and NAT64 for Linux.
-	pkgver = 4.0.6.r2.g90033801
+	pkgver = 4.0.6.r1.g90033801
 	pkgrel = 2
 	url = https://www.jool.mx
 	arch = i686
