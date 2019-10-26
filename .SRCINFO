@@ -1,0 +1,16 @@
+pkgbase = python-querystring-parser
+	pkgdesc = Creates nested dictionaries from sent form/querystring data
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/bernii/querystring-parser
+	arch = x86_64
+	license = MIT
+	makedepends = python
+	makedepends = python-setuptools
+	depends = python
+	depends = python-six
+	source = python-querystring-parser-1.2.0::https://github.com/bernii/querystring-parser/archive/1.2.0.tar.gz
+	sha256sums = 27f3b947ad0a70a298c8daa506b458877d57307efcd9833f0174e90a821230b0
+
+pkgname = python-querystring-parser
+
