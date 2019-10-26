@@ -1,6 +1,6 @@
 pkgbase = websocketpp-git-dev
 	pkgdesc = C++/Boost Asio based websocket client/server library, Develop branch
-	pkgver = 0.7.0.1685.19cad99
+	pkgver = 0.8.1.1702.bc0dc57
 	pkgrel = 1
 	url = http://www.zaphoyd.com/websocketpp/
 	arch = any
@@ -17,7 +17,9 @@ pkgbase = websocketpp-git-dev
 	provides = websocketpp
 	conflicts = websocketpp
 	source = websocketpp-git-dev::git+https://github.com/zaphoyd/websocketpp#branch=develop
+	source = 0001-migrated-SConstrcut-from-python2-to-python3.patch
 	sha512sums = SKIP
+	sha512sums = 6e3081c6857599e83179200c0a2096760e3d6903e4ca4bf45acd66460921f84d8934ec8e73062ef3a53948514a8eaf3a5e658d370c716b1b4ef0ff60d0c43eaa
 
 pkgname = websocketpp-git-dev
 
