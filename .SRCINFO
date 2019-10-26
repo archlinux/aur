@@ -1,7 +1,7 @@
 pkgbase = scantools
 	pkgdesc = scantools is a library and a matching set of command line applications for graphics manipulation, written with a view towards the handling of scanned documents and generation of high-quality PDF files.
 	pkgver = 0.6.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://cplx.vm.uni-freiburg.de/scantools/
 	arch = x86_64
 	license = GPL
