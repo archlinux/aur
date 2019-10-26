@@ -18,6 +18,7 @@ pkgbase = discimagechef-git
 	provides = discimagechef
 	conflicts = discimagechef
 	options = !strip
+	options = staticlibs
 	source = git://github.com/DiscImageChef/discimagechef
 	sha256sums = SKIP
 

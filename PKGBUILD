@@ -13,7 +13,7 @@ url='http://www.discimagechef.app'
 license=('GPL')
 source=('git://github.com/DiscImageChef/discimagechef')
 makedepends=('dotnet-sdk>=2.0.0' 'git')
-options=('!strip')
+options=('!strip' 'staticlibs')
 sha256sums=('SKIP')
 provides=('discimagechef')
 conflicts=('discimagechef')
