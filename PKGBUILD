@@ -1,26 +1,24 @@
 # Maintainer : Karl-Felix Glatzer <karl.glatzer@gmx.de>
 pkgname=mingw-w64-x264
-pkgver=157.r72db4377
+pkgver=0.157.r2980.34c06d1
 pkgrel=1
-epoch=2
+epoch=3
 pkgdesc='Open Source H264/AVC video encoder (mingw-w64)'
 arch=('any')
 url='http://www.videolan.org/developers/x264.html'
 license=('GPL')
-depends=('mingw-w64-crt' 'mingw-w64-ffmpeg' 'mingw-w64-l-smash')
+depends=('mingw-w64-crt' 'mingw-w64-l-smash')
 #provides=('mingw-w64-libx264.so')
 options=(!strip !buildflags staticlibs)
 makedepends=('mingw-w64-gcc' 'git' 'nasm')
-source=('git+https://code.videolan.org/videolan/x264.git#commit=72db437770fd1ce3961f624dd57a8e75ff65ae0b')
+source=('git+https://code.videolan.org/videolan/x264.git#commit=34c06d1c17ad968fbdda153cb772f77ee31b3095')
 sha256sums=(SKIP)
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgver() {
   cd x264
-  local _ver=$(grep '#define X264_BUILD' x264.h | cut -d' ' -f3)
-  local _rev=$(git rev-parse --short HEAD)
 
-  echo ${_ver}.r${_rev}
+  ./version.sh | grep X264_POINTVER | sed -r 's/^#define X264_POINTVER "([0-9]+\.[0-9]+)\.([0-9]+) (.*)"$/\1.r\2.\3/'
 }
 
 build() {
