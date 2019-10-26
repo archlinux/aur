@@ -1,0 +1,8 @@
+--- masari-0.3.1.2/CMakeLists.txt
++++ masari-0.3.1.2/CMakeLists.txt
+@@ -504,1 +504,1 @@
+-    set(WARNINGS_AS_ERRORS_FLAG "-Werror")
++    set(WARNINGS_AS_ERRORS_FLAG "-Wno-error")
+@@ -809,1 +809,1 @@
+-  if (Boost_VERSION VERSION_LESS 106200 AND NOT (OPENSSL_VERSION VERSION_LESS 1.1))
++  if (Boost_VERSION VERSION_LESS 1.62 AND NOT (OPENSSL_VERSION VERSION_LESS 1.1))

@@ -1,30 +1,30 @@
 # Maintainer: Chris Magyar <c.magyar.ec@gmail.com>
 
 pkgname=masari
-pkgver=0.3.0.0
+pkgver=0.3.1.2
 pkgrel=1
 _gitrepo=masari
 _gituser=masari-project
-_gitver=v0.3.0.0
+_gitver=v0.3.1.2
 pkgdesc="Masari: cryptonote currency daemon and wallet"
 arch=('x86_64')
 url="https://github.com/$_gituser/$_gitrepo"
 license=('custom:Cryptonote')
-makedepends=('boost' 'cmake' 'git')
-depends=('boost-libs' 'libunwind' 'miniupnpc' 'openssl' 'readline'
-    'unbound' 'zeromq')
+makedepends=('boost' 'cmake' 'git' 'openssl')
+depends=('boost-libs' 'libsodium' 'libunwind' 'miniupnpc'
+    'openssl' 'readline' 'unbound' 'zeromq')
 optdepends=('doxygen: documentation'
     'expat: XML parsing'
     'graphviz: documentation'
     'ldns: SSL toolkit')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$_gitver.tar.gz"
-    boost.patch)
-md5sums=('7efd2602db7862b34264e105a8182edd'
-    '5f84a2b83dd85e4e791b93dbb8b703eb')
+    'CMakeLists.txt.patch')
+md5sums=('deb1679c8f8c051242aa13e18b696ceb'
+    'de1a927fa3d54babf66cb7cc3d0e2fd6')
 
 prepare() {
 	cd "$pkgname-$pkgver"
-    patch -p1 -i ../boost.patch
+    patch -p1 -i ../CMakeLists.txt.patch
 }
 
 build() {
