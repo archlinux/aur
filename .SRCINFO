@@ -19,7 +19,7 @@ pkgbase = bitbox-wallet-app-appimage
 	sha256sums = 5f6daacf19cf42da161465465f7ecc3cd0278278ff6ed1d287a3308d680828e8
 	sha256sums = SKIP
 	sha256sums = d6ca9430782d88b6bc80450ad8a2781c208aa5bda9f90e22a4659c9dc7975f25
-	sha256sums = 7b89151aa6b525d1b370d8224fe9191f1ad6a3b9e0beb02c745585b5e1dd02d5
+	sha256sums = SKIP
 
 pkgname = bitbox-wallet-app-appimage
 

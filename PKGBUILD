@@ -23,7 +23,7 @@ source=("https://github.com/digitalbitbox/bitbox-wallet-app/releases/download/v$
 sha256sums=('5f6daacf19cf42da161465465f7ecc3cd0278278ff6ed1d287a3308d680828e8'
             'SKIP'
             'd6ca9430782d88b6bc80450ad8a2781c208aa5bda9f90e22a4659c9dc7975f25'
-            '7b89151aa6b525d1b370d8224fe9191f1ad6a3b9e0beb02c745585b5e1dd02d5')
+            'SKIP')
 prepare() {
     cd "${srcdir}"
     7z x "${srcdir}/$_upkgname-$pkgver-$CARCH.AppImage" $_pkgname.desktop
