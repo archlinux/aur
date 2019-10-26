@@ -1,0 +1,37 @@
+pkgbase = openxray-git-current
+	pkgdesc = Unofficial X-Ray Engine Linux port by OpenXRay team (Originally developed by GSC Game World)
+	pkgver = 1.6.02_6d421d0
+	pkgrel = 1
+	url = https://github.com/OpenXRay/xray-16
+	arch = any
+	license = GPL3
+	makedepends = gcc
+	makedepends = git
+	makedepends = cmake
+	makedepends = libglvnd
+	makedepends = libjpeg6-turbo
+	makedepends = ncurses
+	makedepends = pcre2
+	makedepends = pcre
+	depends = glew
+	depends = sdl2
+	depends = openal
+	depends = intel-tbb
+	depends = crypto++
+	depends = liblockfile
+	depends = freeimage
+	depends = libogg
+	depends = libtheora
+	depends = libvorbis
+	depends = lzo
+	depends = lzop
+	depends = libjpeg-turbo
+	provides = openxray
+	conflicts = openxray
+	conflicts = openxray-bin
+	conflicts = openxray-git
+	source = git+https://github.com/OpenXRay/xray-16.git
+	sha256sums = SKIP
+
+pkgname = openxray-git-current
+
