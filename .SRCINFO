@@ -1,0 +1,15 @@
+pkgbase = riscv64-unknown-elf-newlib
+	pkgdesc = A C standard library implementation intended for use on embedded systems (microcontrollers)
+	pkgver = 3.1.0.20181231
+	pkgrel = 1
+	url = https://www.sourceware.org/newlib/
+	arch = any
+	license = BSD
+	makedepends = riscv64-unknown-elf-gcc
+	options = !emptydirs
+	options = !strip
+	source = https://sourceware.org/pub/newlib/newlib-3.1.0.20181231.tar.gz
+	sha256sums = 9e12fea7297648b114434033ed4458755afe7b9b6c7d58123389e82bd37681c0
+
+pkgname = riscv64-unknown-elf-newlib
+
