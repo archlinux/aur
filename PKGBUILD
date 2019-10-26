@@ -4,7 +4,7 @@
 
 pkgname=bluecurve-icon-theme
 pkgver=8.0.2
-pkgrel=22
+pkgrel=23
 _md5=3a3ecac0922f964bb1c4be617e8dec37
 
 pkgdesc="Red Hat Icons from Fedora 10"
@@ -61,9 +61,15 @@ build() {
     ## default gnome foot
     # echo "$size/filesystems/start-here.png ../apps/redhat-icon-panel-menu.png" >> symlink.manifest
     # echo "$size/filesystems/distributor-logo.png ../apps/redhat-icon-panel-menu.png" >> symlink.manifest
+    ## Uncomment the following lines for some more customization
+    # echo "$size/apps/thunderbird.png email.png" >> symlink.manifest
+    # echo "$size/apps/firefox.png galeon.png" >> symlink.manifest
+    # echo "$size/apps/cliqz.png galeon.png" >> symlink.manifest
+    # echo "$size/apps/chromium.png galeon.png" >> symlink.manifest
     echo "$size/filesystems/user-desktop.png ../apps/desktop.png" >> symlink.manifest
     echo "$size/filesystems/network-server.png ../apps/icon-network-systems.png" >> symlink.manifest
     echo "$size/filesystems/network-workgroup.png ../apps/icon-network-systems.png" >> symlink.manifest
+    echo "$size/filesystems/network-wired.png ../apps/applications-internet.png" >> symlink.manifest
     echo "$size/status/battery-good-charging.png gpm-primary-080-charging.png" >> symlink.manifest
     echo "$size/status/battery-full-charging.png gpm-primary-100-charging.png" >> symlink.manifest
     echo "$size/status/battery-full-charged.png gpm-primary-100-charged.png" >> symlink.manifest
@@ -86,6 +92,7 @@ build() {
     echo "$size/apps/mate-power-manager.png ../status/gpm-primary-100-charging.png" >> symlink.manifest
     echo "$size/apps/preferences-system-windows.png gnome-ccwindowmanager.png" >> symlink.manifest
     echo "$size/apps/mate-preferences-desktop-display.png display-capplet.png" >> symlink.manifest
+    echo "$size/apps/preferences-desktop-screensaver.png icon-xscreensaver.png" >> symlink.manifest
     echo "$size/apps/preferences-desktop-display.png display-capplet.png" >> symlink.manifest
     echo "$size/apps/display.png display-capplet.png" >> symlink.manifest
     echo "$size/apps/mate-run.png gnome-run.png" >> symlink.manifest
@@ -93,6 +100,7 @@ build() {
     echo "$size/apps/mate-notification-properties.png gaim.png" >> symlink.manifest
     echo "$size/apps/preferences-desktop-keyboard-shortcuts.png gnome-settings-keybindings.png" >> symlink.manifest
     echo "$size/apps/preferences-desktop-default-applications.png 500_setup.png" >> symlink.manifest
+    echo "$size/apps/applications-other.png 500_setup.png" >> symlink.manifest
     echo "$size/apps/mozo.png gnome-panel.png" >> symlink.manifest
     echo "$size/apps/alacarte.png gnome-panel.png" >> symlink.manifest
     echo "$size/apps/mate-panel.png gnome-panel.png" >> symlink.manifest
@@ -102,8 +110,14 @@ build() {
     echo "$size/apps/utilities-terminal.png gnome-color-xterm.png" >> symlink.manifest
     echo "$size/apps/mate-power-statistics.png utilities-system-monitor.png" >> symlink.manifest
     echo "$size/apps/emacs.png accessories-text-editor.png" >> symlink.manifest
-    echo "$size/apps/thunderbird.png email.png" >> symlink.manifest
-    echo "$size/apps/firefox.png galeon.png" >> symlink.manifest
+    echo "$size/apps/nitrogen.png preferences-desktop-wallpaper.png" >> symlink.manifest
+    echo "$size/apps/gajim.png gaim.png" >> symlink.manifest
+    echo "$size/apps/glade.png glade-2.png" >> symlink.manifest
+    echo "$size/apps/zeal.png accessories-dictionary.png" >> symlink.manifest
+    echo "$size/apps/net.poedit.Poedit.png preferences-desktop-locale.png" >> symlink.manifest
+    echo "$size/apps/org.gnome.seahorse.Application.png icon-security-keys.png" >> symlink.manifest
+    echo "$size/apps/org.gnome.SimpleScan.png ../mimetypes/scanner.png" >> symlink.manifest
+    echo "$size/apps/libreoffice-startcenter.png applications-office.png" >> symlink.manifest
     echo "$size/apps/libreoffice-writer.png openofficeorg-writer.png" >> symlink.manifest
     echo "$size/apps/libreoffice-calc.png openofficeorg-calc.png" >> symlink.manifest
     echo "$size/apps/libreoffice-math.png openofficeorg-math.png" >> symlink.manifest
