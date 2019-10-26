@@ -30,11 +30,6 @@ package() {
 	mkdir -p "$pkgdir/usr/bin"
 	mkdir -p "$pkgdir/usr/lib/monetcours"
 	ls "$srcdir"
-	echo "BINARIES : "
-	find "$srcdir/Monetcours-linux-$pkgver/"  -not -path '*/\.*' -type f | grep -E "*.sh$|*.pl$|*.py$" | xargs -n1 -L1 -r -t -I{} mv {} "$pkgdir/usr/bin"
-	find "$srcdir/Monetcours-linux-$pkgver/"  -not -path '*/\.*' -type f | grep -E -v "*.sh$|*.pl$|*.py$" | xargs -n1 -L1 -r -t -I{} mv {} "$pkgdir/usr/lib/monetcours"
-	echo "BIN : "
-	ls "$pkgdir/usr/bin"
-	echo "LIB : "
-	ls "$pkgdir/usr/lib/monetcours"
+	find "$srcdir/Monetcours-linux-$pkgver/"  -not -path '*/\.*' -type f | grep -E "*.sh$|*.pl$|*.py$" | xargs -n1 -L1 -r -I{} mv {} "$pkgdir/usr/bin"
+	find "$srcdir/Monetcours-linux-$pkgver/"  -not -path '*/\.*' -type f | grep -E -v "*.sh$|*.pl$|*.py$" | xargs -n1 -L1 -r -I{} mv {} "$pkgdir/usr/lib/monetcours"
 }
