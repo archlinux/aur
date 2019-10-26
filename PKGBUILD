@@ -1,10 +1,10 @@
 # Maintainer: George Rawlinson <george@rawlinson.net.nz>
 pkgname=realize
 pkgver=2.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Golang live reload and task runner"
 arch=('x86_64')
-url="https://gorealize.io/"
+url="https://github.com/oxequa/realize"
 license=('GPL')
 conflicts=('realize-git')
 provides=('realize')
