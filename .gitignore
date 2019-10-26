@@ -1,8 +1,7 @@
-/PKGBUILD-namcap.log
-/torbrowser-launcher/
-/torbrowser-launcher-*-namcap.log
-/torbrowser-launcher-*-package.log
-/torbrowser-launcher-*.pkg.tar.xz
-/torbrowser-launcher-*-pkgver.log
-/torbrowser-launcher-*.src.tar.gz
-/torbrowser-launcher-*.src.tar.gz.sig
+# Ignore everything
+*
+
+# But not these files...
+!.gitignore
+!PKGBUILD
+!.SRCINFO
