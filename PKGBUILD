@@ -3,7 +3,7 @@
 
 pkgname=monetcours
 pkgdesc="A toolchain for creating class subjects webpages and more."
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1.0
 epoch=
 arch=('any')
@@ -23,14 +23,18 @@ install=
 changelog=
 source=("https://github.com/SCOTT-HAMILTON/Monetcours-linux/archive/$pkgver.tar.gz")
 noextract=()
-md5sums=('29fbf78591b99978e6a2baf79474b08c')
+md5sums=('02481995af23028ed9c774644fbb347c')
 validpgpkeys=()
 
 package() {
 	mkdir -p "$pkgdir/usr/bin"
 	mkdir -p "$pkgdir/usr/lib/monetcours"
 	ls "$srcdir"
-	find "$srcdir/Monetcours-linux-$pkgver/"  -not -path '*/\.*' -type f | grep -E -v "*.sh|*.pl|*.py" | xargs -n1 -L1 -r -t -I{} mv {} "$pkgdir/usr/lib/monetcours"
-	find "$srcdir/Monetcours-linux-$pkgver/"  -not -path '*/\.*' -type f | grep -E "*.sh|*.pl|*.py" | xargs -n1 -L1 -r -t -I{} mv {} "$pkgdir/usr/bin"
-
+	echo "BINARIES : "
+	find "$srcdir/Monetcours-linux-$pkgver/"  -not -path '*/\.*' -type f | grep -E "*.sh$|*.pl$|*.py$" | xargs -n1 -L1 -r -t -I{} mv {} "$pkgdir/usr/bin"
+	find "$srcdir/Monetcours-linux-$pkgver/"  -not -path '*/\.*' -type f | grep -E -v "*.sh$|*.pl$|*.py$" | xargs -n1 -L1 -r -t -I{} mv {} "$pkgdir/usr/lib/monetcours"
+	echo "BIN : "
+	ls "$pkgdir/usr/bin"
+	echo "LIB : "
+	ls "$pkgdir/usr/lib/monetcours"
 }
