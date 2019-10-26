@@ -1,6 +1,6 @@
 # Maintainer: Martin Drawitsch <martin dot drawitsch at gmail dot com>
 pkgname=('ezc3d')
-pkgver='1.1.0'
+pkgver='1.2.2'
 pkgrel=1
 pkgdesc="An easy to use reader, modifier and writer for C3D format files. Includes Python bindings"
 url="https://github.com/pyomeca/ezc3d"
@@ -9,7 +9,7 @@ makedepends=('python' 'swig' 'cmake')
 license=('MIT')
 arch=('x86_64')
 source=("https://github.com/pyomeca/ezc3d/archive/Release_${pkgver}.tar.gz")
-sha256sums=('d0b99d8681aadfafc82a0106703ee66ce83852a65ce507899942c6d68e42d7b4')
+sha256sums=('b8d141a6a320f2871b4add3511918a20ed62eae0596f8a0d5dac76fe1ca6190b')
 
 build() {
     cd ${srcdir}/ezc3d-Release_${pkgver}
