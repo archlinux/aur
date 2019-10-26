@@ -1,7 +1,7 @@
 pkgbase = kata-containers
 	pkgdesc = Lightweight virtual machines for containers
 	pkgver = 1.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://katacontainers.io
 	arch = x86_64
 	license = Apache

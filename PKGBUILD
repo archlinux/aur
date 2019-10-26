@@ -5,7 +5,7 @@
 pkgbase=kata-containers
 pkgname=(kata-runtime kata-proxy kata-shim kata-ksm-throttler kata-containers-image kata-linux-container)
 pkgver="1.9.0"
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight virtual machines for containers"
 arch=(x86_64)
 url="https://katacontainers.io"
@@ -84,8 +84,10 @@ package_kata-runtime() {
   install=kata-runtime.install
 
   pushd $srcdir/kata-runtime-${pkgver}
+  install -D -m 0755 {,$pkgdir/}usr/bin/containerd-shim-kata-v2
   install -D -m 0755 {,$pkgdir/}usr/bin/kata-runtime
   install -D -m 0755 {,$pkgdir/}usr/bin/kata-collect-data.sh
+  install -D -m 0755 usr/libexec/kata-containers/kata-netmon $pkgdir/usr/lib/kata-containers/kata-netmon
   install -D -m 0644 {,$pkgdir/}usr/share/bash-completion/completions/kata-runtime
   install -D -m 0644 {,$pkgdir/}usr/share/defaults/kata-containers/configuration.toml
 
