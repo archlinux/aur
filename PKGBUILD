@@ -24,7 +24,7 @@ conflicts=('openttd')
  
 prepare() {
   cd ${_pkgname}-${pkgver} 
-  patch -p1 < "../BTPro_Client_${pkgver}_A_19202.diff" || true
+  patch -p1 < "../BTPro_Client_${pkgver}_A_19301.diff" || true
 }
  
 build() {
