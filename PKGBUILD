@@ -28,9 +28,9 @@ package() {
 	chmod 755 "$srcdir/$_pkgname/executar-console-linux.sh"
 	chmod 755 "$srcdir/$_pkgname/executar-studio-linux.sh"
 
-	# Install the shell executables
-	ln -s "$srcdir/$_pkgname/executar-console-linux.sh" "$pkgdir/usr/bin/portugol-console"
-	ln -s "$srcdir/$_pkgname/executar-studio-linux.sh" "$pkgdir/usr/bin/$_pkgname"
+	# Link the shell executables to "/usr/bin"
+	ln -s "$pkgdir/$_pkgname/executar-console-linux.sh" "$pkgdir/usr/bin/portugol-console"
+	ln -s "$pkgdir/$_pkgname/executar-studio-linux.sh" "$pkgdir/usr/bin/$_pkgname"
 
 	# Install the desktop file
 	install -Dm644 "$srcdir/arquivos-auxiliares/$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
