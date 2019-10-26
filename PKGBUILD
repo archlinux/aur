@@ -1,5 +1,6 @@
 # Maintainer: DDoSolitary <DDoSolitary@gmail.com>
 pkgname=konsole-snazzy-git
+pkgdesc="Elegant Konsole theme with bright colors"
 pkgver=r3.113050d
 pkgrel=1
 arch=(any)
