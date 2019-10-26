@@ -1,23 +1,30 @@
 # Maintainer: Étienne Deparis <etienne@depar.is>
 
 pkgname=boston-icon-theme
-pkgver=0.3
-_gitname=Boston-Icons
-_gitrel=33ec2ce838ba7f0eeff43133019b2ce63a6b2171
+pkgver=0.6
 pkgrel=1
+_upname=Boston
+_gitname=Boston-Icons
+_gitrel=b7a4b17361c4af4c9a440b4d79872e205f40c7db
 pkgdesc="A highly minimalist icon theme, with a sober color palette inspired on basic hues and forms."
 arch=('any')
 url="https://www.opendesktop.org/p/1012402"
 license=('CCPL:by-sa')
-source=("boston-icon-theme.tar.gz::https://github.com/heychrisd/$_gitname/archive/$_gitrel.tar.gz")
-sha256sums=('92e46eb026810e9ffdc26b1a3106be49d5c39a16fa8a89573d0492566482fa60')
+source=("https://github.com/heychrisd/$_gitname/archive/$_gitrel.tar.gz")
+sha256sums=('74f97985442a745d214e9eeef5265f0a5dc0dac7b2343e9b3791be1b75cffe64')
 options=(!emptydirs)
 
 package() {
-    install -d -m755 $pkgdir/usr/share/{icons,licenses/$pkgname}
+    cd "$srcdir/${_gitname}-${_gitrel}"
 
-    cd $srcdir
-    install -D -m644 "${_gitname}-${_gitrel}/LICENSE" \
-            $pkgdir/usr/share/licenses/$pkgname/LICENSE
-    mv "${_gitname}-${_gitrel}" "$pkgdir/usr/share/icons/${_gitname}"
+    install -d -m755 $pkgdir/usr/share/licenses/$pkgname
+    install -D -m644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
+    install -D -m644 "THIRD PARTY" $pkgdir/usr/share/licenses/$pkgname/THIRD_PARTY
+    install -D -m644 PATRONS.md $pkgdir/usr/share/licenses/$pkgname/PATRONS
+
+    install -d -m755 $pkgdir/usr/share/icons/$_upname
+    for size in 16 48 128 legacy symbolic; do
+        mv $size "$pkgdir/usr/share/icons/${_upname}/$size"
+    done
+    install -D -m644 index.theme "$pkgdir/usr/share/icons/${_upname}/index.theme"
 }
