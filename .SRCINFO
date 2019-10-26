@@ -1,0 +1,17 @@
+pkgbase = violetminer-git
+	pkgdesc = Argon2 CPU and Nvidia miner for TurtleCoin and WrkzCoin
+	pkgver = v0.1.1.r8.g09157ed
+	pkgrel = 1
+	url = https://github.com/turtlecoin/violetminer
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	optdepends = cuda: Nvidia GPU mining support
+	conflicts = violetminer-bin
+	source = git+https://github.com/turtlecoin/violetminer.git
+	sha256sums = SKIP
+
+pkgname = violetminer-git
+
