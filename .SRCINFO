@@ -1,6 +1,6 @@
 pkgbase = newsup-git
 	pkgdesc = NewsUP - A usenet binary uploader
-	pkgver = r459.0df6f47
+	pkgver = r473.d6f20e6
 	pkgrel = 1
 	url = https://github.com/demanuel/NewsUP
 	install = newsup.install
