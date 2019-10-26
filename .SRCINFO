@@ -1,11 +1,16 @@
 pkgbase = wps-office
 	pkgdesc = Kingsoft Office (WPS Office) is an office productivity suite
 	pkgver = 11.1.0.8865
-	pkgrel = 4
+	pkgrel = 5
 	url = http://wps-community.org/
-	install = wps-office.install
 	arch = x86_64
 	license = custom
+	options = !emptydirs
+	source = http://kdl.cc.ksosoft.com/wps-community/download/8865/wps-office_11.1.0.8865_amd64.deb
+	sha1sums = ee5e2ea5f7480bb7d6e116dd7690990a861c8a37
+
+pkgname = wps-office
+	install = wps-office.install
 	depends = fontconfig
 	depends = xorg-mkfontdir
 	depends = libxrender
@@ -27,10 +32,10 @@ pkgbase = wps-office
 	optdepends = ttf-wps-fonts: Symbol fonts required by wps-office
 	optdepends = ttf-ms-fonts: Microsft Fonts recommended for wps-office
 	optdepends = wps-office-fonts: FZ TTF fonts provided by wps community
+	optdepends = wps-office-mime: Use mime files provided by Kingsoft
 	conflicts = kingsoft-office
-	options = !emptydirs
-	source = http://kdl.cc.ksosoft.com/wps-community/download/8865/wps-office_11.1.0.8865_amd64.deb
-	sha1sums = ee5e2ea5f7480bb7d6e116dd7690990a861c8a37
 
-pkgname = wps-office
+pkgname = wps-office-mime
+	pkgdesc = Mime files provided by Kingsoft Office (WPS Office)
+	depends = shared-mime-info
 
