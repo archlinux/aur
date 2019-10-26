@@ -4,10 +4,10 @@
 # Contributor: Pieter Goetschalckx <3.14.e.ter <at> gmail <dot> com>
 
 pkgname=ferdi-git
-_pkgver=5.3.4
+_pkgver=5.4.0
 pkgver=${_pkgver//-/_}
 pkgrel=5
-pkgdesc='Free messaging app for services like WhatsApp, Slack, Messenger and many more. Hard fork of Franz'
+pkgdesc='Ferdi is a messaging browser that allows you to combine your favorite messaging services into one application.'
 arch=(x86_64 i686)
 url='https://getferdi.com/'
 license=(Apache)
@@ -20,8 +20,8 @@ source=('git://github.com/getferdi/ferdi.git'
         'ferdi.sh')
 sha512sums=('SKIP'
             'SKIP'
-            'SKIP'
-            'SKIP')
+            '501ff4d6c653823bf3321500bf7b1a4e3fa412e30c9884f6860656f816ca90c3f37610435d591c4b9444b491e7f8fe0c0dcad33be97c345ffccf46fd30e1eb65'
+            '6313c50e4226a144303c5a0055f08312009ea14e45de227c163aaeb528a49c796704bbd3b8cfa2cce49840e54dbd5e25cf8a241e619f2bf9b1a4ff79b80b78eb')
 
 prepare() {
   # Prepare Python 2 for later

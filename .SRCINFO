@@ -1,6 +1,6 @@
 pkgbase = ferdi-git
-	pkgdesc = Free messaging app for services like WhatsApp, Slack, Messenger and many more. Hard fork of Franz
-	pkgver = 5.3.4
+	pkgdesc = Ferdi is a messaging browser that allows you to combine your favorite messaging services into one application.
+	pkgver = 5.4.0
 	pkgrel = 5
 	url = https://getferdi.com/
 	arch = x86_64
@@ -18,8 +18,8 @@ pkgbase = ferdi-git
 	source = ferdi.sh
 	sha512sums = SKIP
 	sha512sums = SKIP
-	sha512sums = SKIP
-	sha512sums = SKIP
+	sha512sums = 501ff4d6c653823bf3321500bf7b1a4e3fa412e30c9884f6860656f816ca90c3f37610435d591c4b9444b491e7f8fe0c0dcad33be97c345ffccf46fd30e1eb65
+	sha512sums = 6313c50e4226a144303c5a0055f08312009ea14e45de227c163aaeb528a49c796704bbd3b8cfa2cce49840e54dbd5e25cf8a241e619f2bf9b1a4ff79b80b78eb
 
 pkgname = ferdi-git
 
