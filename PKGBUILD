@@ -1,7 +1,8 @@
-# Maintainer: Patrick Wicki <wickip@student.ethz.ch>
+# vim: set ts=2 sw=2 et:
+# Maintainer: Patrick Wicki <patrick.wicki96@gmail.com>
 
 pkgname=gnome-meta
-pkgver=3.32.0
+pkgver=3.34.0
 pkgrel=1
 pkgdesc='Meta package for installing the gnome group'
 arch=(any)
