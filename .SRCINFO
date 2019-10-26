@@ -1,6 +1,6 @@
 pkgbase = aurutils
 	pkgdesc = helper tools for the arch user repository
-	pkgver = 2.3.1
+	pkgver = 2.3.2
 	pkgrel = 1
 	url = https://github.com/AladW/aurutils
 	install = aurutils.install
@@ -16,10 +16,11 @@ pkgbase = aurutils
 	optdepends = bash-completion: bash completion
 	optdepends = devtools: aur-chroot
 	optdepends = vifm: build file interaction
-	optdepends = xdelta3: generate delta files
-	source = aurutils-2.3.1.tar.gz::https://github.com/AladW/aurutils/archive/2.3.1.tar.gz
+	source = aurutils-2.3.2.tar.gz::https://github.com/AladW/aurutils/archive/2.3.2.tar.gz
+	source = aurutils-2.3.2.tar.gz.asc::https://github.com/AladW/aurutils/releases/download/2.3.2/2.3.2.tar.gz.asc
 	validpgpkeys = DBE7D3DD8C81D58D0A13D0E76BC26A17B9B7018A
-	sha256sums = c657f2d0878bedeb0f11d2b72f3028d271db0f14d8f23c18b641e3c59134150e
+	sha256sums = 175aae92d2e250cb527c1e58bbe05cf62778caffe0aa447a0ca312fcbf561e24
+	sha256sums = SKIP
 
 pkgname = aurutils
 
