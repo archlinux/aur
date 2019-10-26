@@ -1,0 +1,17 @@
+pkgbase = nothing
+	pkgdesc = A game about nothing
+	pkgver = r2505.9945a78
+	pkgrel = 1
+	url = https://github.com/tsoding/nothing
+	arch = x86_64
+	license = GPL
+	makedepends = gcc
+	makedepends = cmake
+	depends = sdl2
+	provides = nothing
+	conflicts = nothing
+	source = nothing::git+https://github.com/tsoding/nothing
+	sha512sums = SKIP
+
+pkgname = nothing
+
