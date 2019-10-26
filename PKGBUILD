@@ -3,7 +3,7 @@
 
 pkgname=miredo
 pkgver=1.2.6+r158+g509603a
-pkgrel=1
+pkgrel=2
 _commit='509603ab416cd8f57e9227d09a8a80289df1a9f1'
 pkgdesc='Teredo client and server.'
 arch=('x86_64')
@@ -27,7 +27,8 @@ pkgver() {
 prepare() {
 	cd "${srcdir}/${pkgname}"
 	# Miredo starts too early
-	sed 's|^After=network.target$|After=network-online.target|' -i "${srcdir}/${pkgname}/misc/miredo.service-in"
+	sed 's/^After=network.target$/Wants=network-online.target\nAfter=network-online.target nss-lookup.target/' -i "${srcdir}/${pkgname}/misc/miredo.service-in"
+	sed '/^Description=.*$/a\After=network.target' -i "${srcdir}/${pkgname}/misc/miredo-server.service-in"
 }
 
 build() {

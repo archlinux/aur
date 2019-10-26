@@ -1,7 +1,7 @@
 pkgbase = miredo
 	pkgdesc = Teredo client and server.
 	pkgver = 1.2.6+r158+g509603a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.remlab.net/miredo/
 	arch = x86_64
 	license = GPL
