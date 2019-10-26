@@ -2,22 +2,22 @@
 
 _pkgname=mpv
 pkgname=${_pkgname}-light
-pkgver=0.29.1
+pkgver=0.30.0
 pkgrel=1
 _waf_version=2.0.9
 pkgdesc="Free, open source, and cross-platform media player – with selection of features."
 arch=(i686 x86_64)
 url="https://mpv.io"
 license=(GPL)
-depends=(ffmpeg libxkbcommon libxrandr libxss lua52 uchardet libxinerama vulkan-icd-loader shaderc)
+depends=(ffmpeg libxkbcommon libxrandr libxss lua52 uchardet libxinerama vulkan-icd-loader shaderc libplacebo)
 makedepends=(mesa python-docutils wayland-protocols wayland vulkan-headers)
 optdepends=('youtube-dl: for video-sharing websites playback')
 options=('!emptydirs')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=(${_pkgname}-${pkgver}.tar.gz::"https://github.com/mpv-player/${_pkgname}/archive/v${pkgver}.tar.gz"
+source=("https://github.com/mpv-player/${_pkgname}/archive/v${pkgver}/${_pkgname}-${pkgver}.tar.gz"
         "https://waf.io/waf-${_waf_version}")
-sha256sums=('f9f9d461d1990f9728660b4ccb0e8cb5dce29ccaa6af567bec481b79291ca623'
+sha256sums=('33a1bcb7e74ff17f070e754c15c52228cf44f2cefbfd8f34886ae81df214ca35'
             '2a8e0816f023995e557f79ea8940d322bec18f286917c8f9a6fa2dc3875dfa48')
 
 prepare() {
@@ -32,23 +32,18 @@ build() {
   ./waf configure --prefix=/usr \
     --confdir=/etc/mpv \
     --lua=52arch \
-    --enable-zsh-comp \
     --enable-libmpv-shared \
     --disable-libarchive \
     --disable-libbluray \
     --disable-rubberband \
     --disable-vapoursynth \
-    --disable-vapoursynth-lazy \
     --disable-oss-audio \
     --disable-rsound \
     --disable-pulse \
     --disable-jack \
     --disable-opensles \
     --disable-xv \
-    --disable-caca \
-    --disable-tv-v4l2 \
-    --disable-libv4l2 \
-    --disable-audio-input
+    --disable-caca
 
   ./waf build
 }

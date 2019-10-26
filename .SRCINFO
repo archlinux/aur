@@ -1,6 +1,6 @@
 pkgbase = mpv-light
 	pkgdesc = Free, open source, and cross-platform media player – with selection of features.
-	pkgver = 0.29.1
+	pkgver = 0.30.0
 	pkgrel = 1
 	url = https://mpv.io
 	arch = i686
@@ -20,13 +20,14 @@ pkgbase = mpv-light
 	depends = libxinerama
 	depends = vulkan-icd-loader
 	depends = shaderc
+	depends = libplacebo
 	optdepends = youtube-dl: for video-sharing websites playback
 	provides = mpv
 	conflicts = mpv
 	options = !emptydirs
-	source = mpv-0.29.1.tar.gz::https://github.com/mpv-player/mpv/archive/v0.29.1.tar.gz
+	source = https://github.com/mpv-player/mpv/archive/v0.30.0/mpv-0.30.0.tar.gz
 	source = https://waf.io/waf-2.0.9
-	sha256sums = f9f9d461d1990f9728660b4ccb0e8cb5dce29ccaa6af567bec481b79291ca623
+	sha256sums = 33a1bcb7e74ff17f070e754c15c52228cf44f2cefbfd8f34886ae81df214ca35
 	sha256sums = 2a8e0816f023995e557f79ea8940d322bec18f286917c8f9a6fa2dc3875dfa48
 
 pkgname = mpv-light
