@@ -7,7 +7,7 @@
 # Contributor: Alexey Pavlov <alexpux@gmail.com>
 
 pkgname=mingw-w64-libssh
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="Library for accessing ssh client services through C libraries (mingw-w64)"
 url="https://www.libssh.org/"
@@ -18,13 +18,9 @@ makedepends=('mingw-w64-gcc' 'mingw-w64-cmake' 'mingw-w64-pkg-config' 'mingw-w64
 options=(!strip !buildflags staticlibs)
 #cmocka
 source=(https://www.libssh.org/files/${pkgver%.*}/libssh-$pkgver.tar.xz{,.asc}
-        mingw-as-unix.patch
-        mingw-DATADIR-conflict.patch
         mingw-pkgconfig.patch)
-sha256sums=('25303c2995e663cd169fdd902bae88106f48242d7e96311d74f812023482c7a5'
+sha256sums=('33249bb616bb696e184cf930ea5d14239b65bb999c0815589efc35e5ed895787'
             'SKIP'
-            '41df4db83fd2590591aa4e1d78b685084eb53b033e0b2d84131ffa85b35e7e2d'
-            'abb368517ec909bfa785cb9580e9d77cbdcc0d7f36f8889582dfaab3cd6ad1ba'
             '10e57a3c226374b42656a11411fb8803a6afc9f76a3b71ca72649a1c9c1b10d1')
 validpgpkeys=('8DFF53E18F2ABC8D8F3C92237EE0FC4DCC014E3D') # Andreas Schneider <asn@cryptomilk.org>
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
@@ -40,8 +36,6 @@ prepare() {
 
   cd "${srcdir}/libssh-${pkgver}"
 
-  patch -p1 -i ${srcdir}/mingw-as-unix.patch
-  patch -p1 -i ${srcdir}/mingw-DATADIR-conflict.patch
   patch -p1 -i ${srcdir}/mingw-pkgconfig.patch
 }
 
@@ -69,7 +63,6 @@ build() {
   done
 }
 
-#TODO: Test with wine?
 check() {
   for _arch in ${_architectures}; do
     cd "${srcdir}"/build-${_arch}
