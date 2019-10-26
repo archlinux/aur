@@ -11,19 +11,16 @@ pkgbase = qv2ray-dev-git
 	makedepends = protobuf
 	makedepends = which
 	makedepends = gcc
-	depends = qt5-base
 	depends = hicolor-icon-theme
 	depends = grpc
-	depends = v2ray
+	depends = qt5-charts
 	optdepends = v2ray
 	optdepends = v2ray-domain-list-community
 	optdepends = v2ray-geoip
 	provides = qv2ray
 	conflicts = qv2ray
 	source = qv2ray-dev-git::git+https://github.com/lhy0403/Qv2ray#branch=dev
-	source = 0001-modify-exec-path-for-qv2ray.desktop.patch
 	sha512sums = SKIP
-	sha512sums = f64f12d0c2be516aba033f3d6f31541bbcaebecb0d4e3eebce5aac0625fa1c41802e929a930601236899d1b19e01ceba167730568f9bc4d5b916bd5c636a58b5
 
 pkgname = qv2ray-dev-git
 

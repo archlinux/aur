@@ -7,16 +7,14 @@ pkgdesc="Qt cross platform v2ray GUI client (Dev branch build release)"
 arch=('x86_64')
 url="https://github.com/lhy0403/Qv2ray"
 license=('GPL3')
-depends=('qt5-base' 'hicolor-icon-theme' 'grpc' 'v2ray')
+depends=('hicolor-icon-theme' 'grpc' 'qt5-charts')
 makedepends=('git' 'make' 'qt5-tools' 'protobuf' 'which' 'gcc')
 optdepends=('v2ray' 'v2ray-domain-list-community' 'v2ray-geoip')
 provides=('qv2ray')
 conflicts=('qv2ray')
-source=("${pkgname}::git+https://github.com/lhy0403/Qv2ray#branch=dev"
-        "0001-modify-exec-path-for-qv2ray.desktop.patch")
+source=("${pkgname}::git+https://github.com/lhy0403/Qv2ray#branch=dev")
 
-sha512sums=('SKIP'
-            'f64f12d0c2be516aba033f3d6f31541bbcaebecb0d4e3eebce5aac0625fa1c41802e929a930601236899d1b19e01ceba167730568f9bc4d5b916bd5c636a58b5')
+sha512sums=('SKIP')
 
 pkgver() {
     cd ${pkgname}
@@ -26,27 +24,21 @@ pkgver() {
 prepare() {
     cd "${pkgname}"
     sh -c "tools/grpc_gen.sh"
-    local src
-    for src in "${source[@]}"; do
-        src="${src%%::*}"
-        src="${src##*/}"
-        [[ $src = *.patch ]] || continue
-        msg2 "Applying patch $src..."
-        patch -Np1 < "../$src"
-    done
 }
 
 build() {
     cd "${srcdir}/${pkgname}"
     git submodule update --init
     mkdir -p build && cd build
+    echo "Building!"
     qmake ../
+    echo "Done!"
     make
 }
 
 package() {
     cd "${srcdir}/${pkgname}"
-    install -Dm755 build/Qv2ray "${pkgdir}/usr/bin/qv2ray"
+    install -Dm755 build/Qv2ray "${pkgdir}/usr/bin/Qv2ray"
     install -Dm644 icons/Qv2ray.desktop "${pkgdir}/usr/share/applications/Qv2ray.desktop"
     install -Dm644 icons/Qv2ray.png "${pkgdir}/usr/share/icons/hicolor/256x256/apps/Qv2ray.png"
 }
