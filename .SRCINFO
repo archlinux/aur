@@ -1,7 +1,7 @@
 pkgbase = imcompressor
 	pkgdesc = Simple & lossless image compressor.
-	pkgver = 0.6
-	pkgrel = 2
+	pkgver = 0.7
+	pkgrel = 1
 	url = https://github.com/Huluti/ImCompressor
 	arch = any
 	license = GPL3
@@ -14,8 +14,8 @@ pkgbase = imcompressor
 	depends = optipng
 	depends = pngquant
 	optdepends = mozjpeg: Recommended, provides libjpeg-turbo
-	source = imcompressor-0.6.tar.gz::https://github.com/Huluti/ImCompressor/archive/0.6.tar.gz
-	sha256sums = b91550ba6e43b2685a12913f593971d2ec415d6eccbb1fc427c5adcb96250b16
+	source = imcompressor-0.7.tar.gz::https://github.com/Huluti/ImCompressor/archive/0.7.tar.gz
+	sha256sums = 8701581e7abb1ba7ed470e6f9914a3c7a9498b948f9d667ffa516c8be1bc15bc
 
 pkgname = imcompressor
 
