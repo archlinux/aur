@@ -1,0 +1,11 @@
+[Unit]
+Description=Psiphon Tunnelling Proxy
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+ExecStart=/usr/bin/psiphon-tunnel-core --config /etc/psiphon.conf -formatNotices
+ExecStop= /usr/bin/killall psiphon-tunnel-
+
+[Install]
+WantedBy=multi-user.target
