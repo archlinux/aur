@@ -5,7 +5,7 @@
 
 pkgname=kwin-lowlatency
 pkgver=5.17.1
-pkgrel=1
+pkgrel=2
 pkgdesc='the compositor, with added stutter/latency reductions'
 arch=(x86_64)
 url='https://github.com/tildearrow/kwin-lowlatency'
@@ -22,7 +22,7 @@ install=$pkgname.install
 
 prepare() {
   cd "$pkgname"
-  git checkout v5.17.1
+  git checkout v5.17.1-2
   cd ..
   mkdir -p build
 }
