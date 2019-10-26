@@ -1,14 +1,16 @@
 pkgbase = snb-git
-	pkgdesc = A simple Unicode-aware hierarchical notebook.
-	pkgver = 029d3e8
-	pkgrel = 1
+	pkgdesc = Simple hierarchical notebook that's locale (Unicode) aware
+	pkgver = r128.54225f2
+	pkgrel = 2
 	url = https://github.com/drbig/snb
 	arch = i686
 	arch = x86_64
-	license = custom:BSD
+	license = BSD
 	makedepends = git
 	depends = ncurses
-	source = snb-git::git+https://github.com/drbig/snb.git
+	provides = snb
+	conflicts = snb
+	source = git+https://github.com/drbig/snb
 	sha256sums = SKIP
 
 pkgname = snb-git

@@ -1,37 +1,47 @@
-# Maintainer: Patrick Burroughs (Celti) <celti@celti.name>
+# Maintainer: 'Francisco Demartino <demartino.francisco@gmail.com>'
+# Contributor: 'Patrick Burroughs (Celti) <celti@celti.name>'
 
 pkgname=snb-git
-pkgver=029d3e8
-pkgrel=1
-pkgdesc="A simple Unicode-aware hierarchical notebook."
+pkgver=r128.54225f2
+pkgrel=2
+pkgdesc="Simple hierarchical notebook that's locale (Unicode) aware"
 arch=("i686" "x86_64")
 url="https://github.com/drbig/snb"
-license=('custom:BSD')
+license=('BSD')
 depends=('ncurses')
 makedepends=('git')
-source=("${pkgname}::git+https://github.com/drbig/snb.git")
+source=('git+https://github.com/drbig/snb')
+groups=()
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+replaces=()
+backup=()
+options=()
+install=
+noextract=()
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "$pkgname"
-	git describe --tags --always --dirty --match "[0-9A-Z]*.[0-9A-Z]*"
+	cd "$srcdir/${pkgname%-git}"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-	cd "$pkgname"
+	cd "$srcdir/${pkgname%-git}"
 
 	# Open the help file by default if no arguments are specified.
 	sed -i src/user.h -e 's/\/\/#define DEFAULT_FILE.*/#define DEFAULT_FILE    "\/usr\/share\/docs\/snb\/help.md"/'
 }
 
 build() {
-	cd "$pkgname"
-	make NCURS_CONF=ncursesw6-config debug
+	cd "$srcdir/${pkgname%-git}"
+	make
 }
 
 package() {
-	cd "$pkgname"
-	install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	install -Dm644 help.md "${pkgdir}/usr/share/docs/snb/help.md"
-	install -Dm755 bin/snb "${pkgdir}/usr/bin/snb"
+	cd "$srcdir/${pkgname%-git}"
+	make DESTDIR="$pkgdir/" install
+
+	mv "$pkgdir/usr/share/docs" "$pkgdir/usr/share/doc"
+	install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
 }
