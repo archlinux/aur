@@ -2,12 +2,12 @@
 pkgname=sirius-git
 _pkgname=sirius
 pkgver=r6480.1608ef6f
-pkgrel=1
+pkgrel=2
 pkgdesc="Domain specific library for electronic structure calculations"
 arch=('i686' 'x86_64')
 url="https://github.com/electronic-structure/SIRIUS"
 license=('GPL')
-depends=(cuda gsl fftw libxc scalapack openblas-lapack spglib hdf5 python-h5py python-mpi4py python-numpy python-scipy python-matplotlib)
+depends=(cuda gsl spfft-cuda-git fftw libxc scalapack openblas-lapack spglib hdf5 python-h5py python-mpi4py python-numpy python-scipy python-matplotlib)
 makedepends=(cmake)
 provides=('sirius')
 options=('staticlibs')
