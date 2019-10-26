@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=neatlibc-git
-pkgver=r154.e5469d2
+pkgver=r162.34d290a
 pkgrel=1
 epoch=
 pkgdesc="A small ARM/x86(_64) libc."
@@ -32,7 +32,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/$pkgname"
-  make CC="$(which ncc)"
+  make CC="$(which neatcc)"
 }
 
 package() {
