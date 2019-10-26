@@ -1,7 +1,7 @@
 # Maintainer: Étienne Deparis <etienne@depar.is>
 
 pkgname=novprog
-pkgver=3.1.5
+pkgver=3.1.6
 pkgrel=1
 pkgdesc="A tool to graph your progress in writing a NaNoWriMo style novel"
 arch=('i686' 'x86_64')
@@ -24,5 +24,5 @@ build() {
 
 package() {
   cd $pkgname-$pkgver
-  make INSTALL_ROOT="$pkgdir/" install
+  make INSTALL_ROOT="$pkgdir" install
 }
