@@ -2,7 +2,7 @@
 # Contributer: ArielAxionL <i at axionl dot me>
 pkgname=qv2ray-dev-git
 pkgver=1.3.8.0.r0.g4179cf2
-pkgrel=1
+pkgrel=2
 pkgdesc="Qt cross platform v2ray GUI client (Dev branch build release)"
 arch=('x86_64')
 url="https://github.com/lhy0403/Qv2ray"
@@ -30,9 +30,7 @@ build() {
     cd "${srcdir}/${pkgname}"
     git submodule update --init
     mkdir -p build && cd build
-    echo "Building!"
     qmake ../
-    echo "Done!"
     make
 }
 
