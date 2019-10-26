@@ -1,6 +1,6 @@
 pkgbase = keepassxc-git
 	pkgdesc = Cross-platform community-driven port of KeePass Password Safe
-	pkgver = 2.4.1.r10.gd5d51d66
+	pkgver = 2.5.0.r3.g9b5a46f4
 	pkgrel = 1
 	url = https://github.com/keepassxreboot/keepassxc
 	install = keepassxc.install
