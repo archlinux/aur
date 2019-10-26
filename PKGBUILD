@@ -2,7 +2,7 @@
 
 pkgname=yaru-plus-git
 pkgver=3.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Yaru++ – Elegant and modern third-party icons theme, based on Canonical’s Yaru "
 arch=('any')
 url="https://github.com/Bonandry/${pkgname/-git/}"

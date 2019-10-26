@@ -1,4 +1,3 @@
-| bash
 #!/bin/bash
 
 BRIGHTORANGE="\e[0;38;2;175;104;76m"
