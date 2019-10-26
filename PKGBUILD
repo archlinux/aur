@@ -2,8 +2,8 @@
 
 pkgname=opensmtpd-filter-rspamd
 _pkgname=filter-rspamd
-pkgver=0.1.3
-pkgrel=2
+pkgver=0.1.4
+pkgrel=1
 pkgdesc='OpenSMTPD filter integration for Rspamd'
 arch=(i686 x86_64)
 url=https://github.com/poolpOrg/filter-rspamd
@@ -11,7 +11,7 @@ license=(ISC)
 depends=(glibc)
 makedepends=(go)
 source=($pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
-sha512sums=('bc1cf59d37539a2f1bc092a9416ea5db511d19a0d72f9da00541afeba36d6d235ca98ce0cd859a09cb1d9137b929a6863596b89f5906fedf443061cf8110584f')
+sha512sums=('66c7d663ed1934ea7a1cbeb59b27d58ac5cac1a42db42b007f95677e542f6eb673f6f9dd8738dd54f0687fbb963412a00ee606c62b6713b0cc37e182ceaf21d0')
 
 build() {
   cd $_pkgname-$pkgver
