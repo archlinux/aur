@@ -1,18 +1,13 @@
 pkgbase = outcurses
 	pkgdesc = High-level UI elements built atop ncurses
 	pkgver = 0.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://nick-black.com/dankwiki/index.php/Outcurses
 	arch = x86_64
 	license = Apache
-	makedepends = docbook-xsl
-	makedepends = autoconf-archive
-	makedepends = libxslt
-	makedepends = autoconf
-	depends = cryptsetup
-	depends = libatasmart
-	depends = libpciaccess
-	depends = pciutils
+	makedepends = gtest
+	makedepends = cmake
+	depends = ncurses
 	source = https://github.com/dankamongmen/outcurses/archive/v0.0.4.tar.gz
 	sha256sums = 0799e6b77ed6a00866dd2f24fc15d345a5908c8a81c742ddc1338f59b3d1adf1
 

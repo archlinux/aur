@@ -2,15 +2,13 @@
 
 pkgname=outcurses
 pkgver=0.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="High-level UI elements built atop ncurses"
 url="https://nick-black.com/dankwiki/index.php/Outcurses"
 license=('Apache')
 arch=('x86_64')
-# ncurses and readline are found without our help. Don't explicitly list them.
-# The same goes for device-mapper.
-depends=('cryptsetup' 'libatasmart' 'libpciaccess' 'pciutils')
-makedepends=('docbook-xsl' 'autoconf-archive' 'libxslt' 'autoconf')
+depends=('ncurses')
+makedepends=('gtest' 'cmake')
 source=("https://github.com/dankamongmen/outcurses/archive/v${pkgver}.tar.gz")
 
 build() {
