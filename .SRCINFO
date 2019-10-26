@@ -1,27 +1,30 @@
 pkgbase = sirius-git
-  pkgdesc = Domain specific library for electronic structure calculations
-  pkgver = r6480.1608ef6f
-  pkgrel = 1
-  url = https://github.com/electronic-structure/SIRIUS
-  arch = i686
-  arch = x86_64
-  license = GPL
-  makedepends = cmake
-  depends = gsl
-  depends = fftw
-  depends = libxc
-  depends = scalapack
-  depends = openblas-lapack
-  depends = spglib
-  depends = hdf5
-  depends = python-h5py
-  depends = python-mpi4py
-  depends = python-numpy
-  depends = python-scipy
-  depends = python-matplotlib
-  provides = sirius
-  options = staticlibs
-  source = sirius::git+https://github.com/electronic-structure/SIRIUS.git#branch=develop
-  sha256sums = SKIP
+	pkgdesc = Domain specific library for electronic structure calculations
+	pkgver = r6480.1608ef6f
+	pkgrel = 1
+	url = https://github.com/electronic-structure/SIRIUS
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	depends = cuda
+	depends = gsl
+	depends = spFFT-cuda
+	depends = fftw
+	depends = libxc
+	depends = scalapack
+	depends = openblas-lapack
+	depends = spglib
+	depends = hdf5
+	depends = python-h5py
+	depends = python-mpi4py
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-matplotlib
+	provides = sirius
+	options = staticlibs
+	source = sirius::git+https://github.com/electronic-structure/SIRIUS.git#branch=develop
+	sha256sums = SKIP
 
 pkgname = sirius-git
+
