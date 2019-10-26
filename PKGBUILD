@@ -3,7 +3,7 @@
 
 _pkgname=polibeepsync
 pkgname="${_pkgname}"
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="Sync Politecnico di Milano's BeeP files with your PC"
 arch=('any')
