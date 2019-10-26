@@ -1,0 +1,14 @@
+pkgbase = lilyjazz
+	pkgdesc = LilyJAZZ font for LilyPond
+	pkgver = r6.8fa7d55
+	pkgrel = 1
+	url = https://github.com/OpenLilyPondFonts
+	arch = any
+	license = custom:GPL
+	makedepends = git
+	depends = lilypond
+	source = git+https://github.com/OpenLilyPondFonts/lilyjazz.git
+	sha256sums = SKIP
+
+pkgname = lilyjazz
+
