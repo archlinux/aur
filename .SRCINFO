@@ -1,0 +1,20 @@
+pkgbase = monetcours
+	pkgdesc = A toolchain for creating class subjects webpages and more.
+	pkgver = 1.1
+	pkgrel = 1.0
+	url = https://scott-hamilton.github.io/
+	arch = any
+	license = Apache
+	depends = coreutils>=8.31
+	depends = findutils>=4.7.0
+	depends = gawk>=5.0.1
+	depends = parallel
+	depends = perl>=5.10.0
+	depends = perl-pdf-api2
+	depends = zip>=3.0
+	provides = monetcours
+	source = https://github.com/SCOTT-HAMILTON/Monetcours-linux/archive/v1.1.tar.gz
+	md5sums = be2e144624a7aecc0edc1cc8b26aa50f
+
+pkgname = monetcours
+
