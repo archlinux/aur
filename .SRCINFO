@@ -1,0 +1,17 @@
+pkgbase = riscv64-unknown-elf-picolibc
+	pkgdesc = Fork of newlib with stdio bits from avrlibc
+	pkgver = 1.0.55
+	pkgrel = 1
+	url = https://github.com/keith-packard/picolibc
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = meson
+	depends = riscv64-unknown-elf-gcc
+	options = !strip
+	source = git+https://github.com/keith-packard/picolibc.git
+	sha1sums = SKIP
+
+pkgname = riscv64-unknown-elf-picolibc
+
