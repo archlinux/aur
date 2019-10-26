@@ -2,8 +2,8 @@
 
 _pkgbase=jool
 pkgname=${_pkgbase}-dkms-git
-pkgver=4.0.6.r1.g90033801
-pkgrel=1
+pkgver=4.0.6.r2.g90033801
+pkgrel=2
 pkgdesc="Open Source SIIT and NAT64 for Linux."
 arch=('i686' 'x86_64')
 url="https://www.jool.mx"
@@ -37,4 +37,8 @@ package() {
   cd ..
   mkdir -p "${pkgdir}"/usr/src/${_pkgbase}-${ver}/
   cp -r Jool-clean/* "${pkgdir}"/usr/src/${_pkgbase}-${ver}/
+
+ # Install service files
+ install -Dm644 ../jool.service "${pkgdir}"/usr/lib/systemd/system/jool.service
+ install -Dm644 ../jool_siit.service "${pkgdir}"/usr/lib/systemd/system/jool_siit.service
 }

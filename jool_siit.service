@@ -1,0 +1,38 @@
+[Unit]
+Description=Stateless IP/ICMP Translator
+Documentation=https://jool.mx/en/documentation.html
+After=network.target
+ConditionPathExists=/etc/jool/jool_siit.conf
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+
+ExecStartPre=/sbin/modprobe jool_siit
+ExecStart=/usr/bin/jool_siit file handle /etc/jool/jool_siit.conf --force
+ExecStop=/usr/bin/jool_siit -f /etc/jool/jool_siit.conf instance remove
+# Do not modprobe -r; some other instance could be running.
+
+# -- Security Section --
+# Long story short: All the jool clients need is read access on the config
+# files, and the Netlink socket to kernelspace.
+# The ExecStartPre above also needs to be able to modify kernel modules.
+# Everything else should probably be blocked.
+
+CapabilityBoundingSet=CAP_SYS_MODULE CAP_NET_ADMIN
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+InaccessiblePaths=/tmp /dev
+ProtectKernelTunables=yes
+ProtectKernelModules=no
+ProtectControlGroups=yes
+RestrictAddressFamilies=AF_NETLINK
+RestrictNamespaces=yes
+LockPersonality=yes
+MemoryDenyWriteExecute=yes
+RestrictRealtime=yes
+SystemCallArchitectures=native
+
+[Install]
+WantedBy=multi-user.target
