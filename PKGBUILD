@@ -71,7 +71,7 @@ build() {
   cd "${pkgname}-${pkgver}"
  
   make PREFIX=/usr
- }
+}
  
 package() {
   cd "${pkgname}-${pkgver}"
