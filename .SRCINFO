@@ -1,0 +1,15 @@
+pkgbase = colpack
+	pkgdesc = A Graph Coloring Algorithm Package
+	pkgver = 1.0.10
+	pkgrel = 1
+	url = https://cscapes.cs.purdue.edu/coloringpage
+	arch = x86_64
+	arch = i686
+	license = BSD-3
+	makedepends = cmake
+	depends = gcc
+	source = https://github.com/CSCsw/ColPack/archive/v1.0.10.tar.gz
+	sha256sums = b22ead7da80fa1735291b2d83198adf41bf36101e4fcb2c4f07c1cfacf211c75
+
+pkgname = colpack
+
