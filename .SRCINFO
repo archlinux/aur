@@ -1,6 +1,6 @@
 pkgbase = firefox-appmenu
 	pkgdesc = Firefox from extra with appmenu patch
-	pkgver = 69.0.3
+	pkgver = 70.0
 	pkgrel = 1
 	url = https://www.mozilla.org/firefox/
 	arch = x86_64
@@ -28,7 +28,6 @@ pkgbase = firefox-appmenu
 	makedepends = cbindgen
 	makedepends = nasm
 	depends = gtk3
-	depends = mozilla-common
 	depends = libxt
 	depends = startup-notification
 	depends = mime-types
@@ -42,25 +41,23 @@ pkgbase = firefox-appmenu
 	optdepends = pulseaudio: Audio support
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = hunspell-en_US: Spell checking, American English
-	provides = firefox=69.0.3
+	provides = firefox=70.0
 	options = !emptydirs
 	options = !makeflags
 	options = !strip
-	source = https://archive.mozilla.org/pub/firefox/releases/69.0.3/source/firefox-69.0.3.source.tar.xz
-	source = https://archive.mozilla.org/pub/firefox/releases/69.0.3/source/firefox-69.0.3.source.tar.xz.asc
+	source = https://archive.mozilla.org/pub/firefox/releases/70.0/source/firefox-70.0.source.tar.xz
+	source = https://archive.mozilla.org/pub/firefox/releases/70.0/source/firefox-70.0.source.tar.xz.asc
 	source = no-relinking.patch
 	source = 0001-Use-remoting-name-for-GDK-application-names.patch
 	source = firefox.desktop
-	source = firefox-symbolic.svg
 	source = unity-menubar.patch
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
-	sha256sums = 7527947a876c1734b8b2339f19b8ff8da6f4e4d06351b44940cb48d3509bb891
+	sha256sums = cd9f2902753831c07c4b2ee64f7826f33ca1123add6440dc34abe3ff173a0cc6
 	sha256sums = SKIP
 	sha256sums = 2dc9d1aa5eb7798c89f46478f254ae61e4122b4d1956d6044426288627d8a014
 	sha256sums = ab07ab26617ff76fce68e07c66b8aa9b96c2d3e5b5517e51a3c3eac2edd88894
 	sha256sums = e466789015e15be9409b7a7044353674ca6aa0f392e882217f90c79821fe2630
-	sha256sums = 9a1a572dc88014882d54ba2d3079a1cf5b28fa03c5976ed2cb763c93dabbd797
-	sha256sums = 2fd7261853ee2ed95ca6a68838de1e7cc18e01c7a56db9abcad4ac93867cedf7
+	sha256sums = 73b9804393381f2c278eff63fecbd05035264dbb2aa68dd263a14db9f981a668
 
 pkgname = firefox-appmenu
 

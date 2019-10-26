@@ -5,14 +5,14 @@
 
 pkgname=firefox-appmenu
 _pkgname=firefox
-pkgver=69.0.3
+pkgver=70.0
 pkgrel=1
 pkgdesc="Firefox from extra with appmenu patch"
 arch=(x86_64)
 license=(MPL GPL LGPL)
 url="https://www.mozilla.org/firefox/"
-depends=(gtk3 mozilla-common libxt startup-notification mime-types dbus-glib
-         ffmpeg nss ttf-font libpulse)
+depends=(gtk3 libxt startup-notification mime-types dbus-glib ffmpeg nss
+         ttf-font libpulse)
 makedepends=(unzip zip diffutils python2-setuptools yasm mesa imake inetutils
              xorg-server-xvfb autoconf2.13 rust clang llvm jack gtk2
              python nodejs python2-psutil cbindgen nasm)
@@ -27,15 +27,14 @@ options=(!emptydirs !makeflags !strip)
 source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz{,.asc}
         no-relinking.patch
         0001-Use-remoting-name-for-GDK-application-names.patch
-        $_pkgname.desktop firefox-symbolic.svg
+        $_pkgname.desktop
         unity-menubar.patch)
-sha256sums=('7527947a876c1734b8b2339f19b8ff8da6f4e4d06351b44940cb48d3509bb891'
+sha256sums=('cd9f2902753831c07c4b2ee64f7826f33ca1123add6440dc34abe3ff173a0cc6'
             'SKIP'
             '2dc9d1aa5eb7798c89f46478f254ae61e4122b4d1956d6044426288627d8a014'
             'ab07ab26617ff76fce68e07c66b8aa9b96c2d3e5b5517e51a3c3eac2edd88894'
             'e466789015e15be9409b7a7044353674ca6aa0f392e882217f90c79821fe2630'
-            '9a1a572dc88014882d54ba2d3079a1cf5b28fa03c5976ed2cb763c93dabbd797'
-            '2fd7261853ee2ed95ca6a68838de1e7cc18e01c7a56db9abcad4ac93867cedf7')
+            '73b9804393381f2c278eff63fecbd05035264dbb2aa68dd263a14db9f981a668')
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases <release@mozilla.com>
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -127,7 +126,7 @@ build() {
   # Do 3-tier PGO
   msg2 "Building instrumented browser..."
   cat >.mozconfig ../mozconfig - <<END
-ac_add_options --enable-profile-generate
+ac_add_options --enable-profile-generate=cross
 END
   ./mach build
 
@@ -154,7 +153,7 @@ END
   msg2 "Building optimized browser..."
   cat >.mozconfig ../mozconfig - <<END
 ac_add_options --enable-lto=cross
-ac_add_options --enable-profile-use
+ac_add_options --enable-profile-use=cross
 ac_add_options --with-pgo-profile-path=${PWD@Q}
 ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
 END
@@ -169,8 +168,8 @@ package() {
   cd firefox-$pkgver
   DESTDIR="$pkgdir" ./mach install
 
-  _vendorjs="$pkgdir/usr/lib/$_pkgname/browser/defaults/preferences/vendor.js"
-  install -Dm644 /dev/stdin "$_vendorjs" <<END
+  local vendorjs="$pkgdir/usr/lib/$pkgname/browser/defaults/preferences/vendor.js"
+  install -Dvm644 /dev/stdin "$vendorjs" <<END
 // Use LANG environment variable to choose locale
 pref("intl.locale.requested", "");
 
@@ -185,8 +184,8 @@ pref("extensions.autoDisableScopes", 11);
 pref("extensions.shownSelectionUI", true);
 END
 
-  _distini="$pkgdir/usr/lib/$_pkgname/distribution/distribution.ini"
-  install -Dm644 /dev/stdin "$_distini" <<END
+  local distini="$pkgdir/usr/lib/$pkgname/distribution/distribution.ini"
+  install -Dvm644 /dev/stdin "$distini" <<END
 [Global]
 id=archlinux
 version=1.0
@@ -198,31 +197,36 @@ app.distributor.channel=$_pkgname
 app.partner.archlinux=archlinux
 END
 
+  local i
   for i in 16 22 24 32 48 64 128 256; do
-    install -Dm644 browser/branding/official/default$i.png \
+    install -Dvm644 browser/branding/official/default$i.png \
       "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$_pkgname.png"
   done
-  install -Dm644 browser/branding/official/content/about-logo.png \
+  install -Dvm644 browser/branding/official/content/about-logo.png \
     "$pkgdir/usr/share/icons/hicolor/192x192/apps/$_pkgname.png"
-  install -Dm644 browser/branding/official/content/about-logo@2x.png \
+  install -Dvm644 browser/branding/official/content/about-logo@2x.png \
     "$pkgdir/usr/share/icons/hicolor/384x384/apps/$_pkgname.png"
-  install -Dm644 ../firefox-symbolic.svg \
+  install -Dvm644 ../firefox-symbolic.svg \
     "$pkgdir/usr/share/icons/hicolor/symbolic/apps/$_pkgname-symbolic.svg"
 
-  install -Dm644 ../$_pkgname.desktop \
+  install -Dvm644 ../$_pkgname.desktop \
     "$pkgdir/usr/share/applications/$_pkgname.desktop"
 
   # Install a wrapper to avoid confusion about binary path
-  install -Dm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" <<END
+  install -Dvm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" <<END
 #!/bin/sh
 exec /usr/lib/$_pkgname/firefox "\$@"
 END
 
   # Replace duplicate binary with wrapper
   # https://bugzilla.mozilla.org/show_bug.cgi?id=658850
-  ln -srf "$pkgdir/usr/bin/$_pkgname" \
-    "$pkgdir/usr/lib/$_pkgname/firefox-bin"
+  ln -srfv "$pkgdir/usr/bin/$pkgname" "$pkgdir/usr/lib/$pkgname/firefox-bin"
 
+  # Use system certificates
+  local nssckbi="$pkgdir/usr/lib/$pkgname/libnssckbi.so"
+  if [[ -e $nssckbi ]]; then
+    ln -srfv "$pkgdir/usr/lib/libnssckbi.so" "$nssckbi"
+  fi
 
   if [[ -f "$startdir/.crash-stats-api.token" ]]; then
     find . -name '*crashreporter-symbols-full.zip' -exec \
