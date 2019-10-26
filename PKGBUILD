@@ -2,7 +2,7 @@
 
 pkgname=hikarujs
 pkgver=1.0.11
-pkgrel=2
+pkgrel=3
 pkgdesc='A static site generator that generates routes based on directories naturally.'
 arch=('any')
 url='https://hikaru.alynx.moe/'
@@ -21,7 +21,7 @@ package() {
 
   find "$pkgdir" -name package.json -print0 | xargs -r -0 sed -i '/_where/d'
   find "${pkgdir}"/usr -type d -exec chmod 755 {} +
-  chown -R root:root "$pkgdir"
+
   install -Dm0644 \
     "$pkgdir/usr/lib/node_modules/$pkgname/LICENSE" \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
