@@ -1,7 +1,7 @@
 # Maintainer: hashworks <mail@hashworks.net>
 pkgname=wiki-js-beta-git
 pkgver=r1223.b567413f
-pkgrel=1
+pkgrel=2
 pkgdesc="Wiki.js | A modern, lightweight and powerful wiki app built on Node.js"
 license=('AGPL3')
 arch=('any')
@@ -32,6 +32,7 @@ prepare() {
 
 build() {
 	cd "wiki"
+	npm install
 	yarn build
 }
 
