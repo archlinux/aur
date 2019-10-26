@@ -13,7 +13,7 @@ pkgbase = espanso-git
 	depends = libxtst
 	provides = espanso
 	conflicts = espanso
-	source = espanso::git+https://github.com/federico-terzi/espanso.git#branch=dev
+	source = espanso::git+https://github.com/federico-terzi/espanso.git#branch=master
 	sha512sums = SKIP
 
 pkgname = espanso-git

@@ -1,6 +1,6 @@
 # Maintainer: Sefa Eyeoglu <contact@scrumplex.net>
 
-_branch=dev
+_branch=master
 _pkgname=espanso
 pkgname=${_pkgname}-git
 pkgver=v0.2.4.r15.gf277558
