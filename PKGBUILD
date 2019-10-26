@@ -1,7 +1,7 @@
 # Maintainer: Moritz Maxeiner <moritz@ucworks.org>
 
 pkgname=j4status-git
-pkgver=448.6dd031e
+pkgver=458.e86c6d3
 pkgrel=1
 pkgdesc="A plugin-based status line generator: j4status generates a status line to use with bar programs (like i3bar). It is plugin-based to allow anyone to extend it easily."
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url='https://sardemff7.github.io/j4status/'
 license=('GPL')
 provides=('j4status')
 depends=('dbus' 'yajl' 'networkmanager' 'upower' 'lm_sensors' 'systemd'
-         'libnl' 'pulseaudio' 'libmpdclient')
+         'libnl' 'pulseaudio' 'libmpdclient' 'eventd')
 makedepends=('git' 'docbook-xsl' 'meson' 'ninja')
 options=('!libtool')
 source=('j4status::git+https://github.com/sardemff7/j4status'
