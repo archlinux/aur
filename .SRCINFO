@@ -1,0 +1,16 @@
+pkgbase = go-tun2socks
+	pkgdesc = A tun2socks implementation written in Go.
+	pkgver = 1.16.7
+	pkgrel = 1
+	url = https://github.com/eycorsican/go-tun2socks/
+	arch = x86_64
+	license = MIT
+	provides = go-tun2socks
+	provides = tun2socks
+	conflicts = go-tun2socks
+	conflicts = tun2socks
+	source = tun2socks::https://github.com/eycorsican/go-tun2socks/releases/download/v1.16.7/tun2socks-linux-amd64
+	md5sums = SKIP
+
+pkgname = go-tun2socks
+
