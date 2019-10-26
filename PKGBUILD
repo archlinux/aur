@@ -27,11 +27,7 @@ package() {
 	find "$srcdir/$_pkgname/java/java-linux/bin" -type f -exec chmod 755 {} \;
 	chmod 755 "$srcdir/$_pkgname/executar-console-linux.sh"
 	chmod 755 "$srcdir/$_pkgname/executar-studio-linux.sh"
-
-	# Link the shell executables to "/usr/bin"
-	ln -s "$pkgdir/$_pkgname/executar-console-linux.sh" "$pkgdir/usr/bin/portugol-console"
-	ln -s "$pkgdir/$_pkgname/executar-studio-linux.sh" "$pkgdir/usr/bin/$_pkgname"
-
+	
 	# Install the desktop file
 	install -Dm644 "$srcdir/arquivos-auxiliares/$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
 
@@ -44,4 +40,8 @@ package() {
 
 	# Copy the necessary files
 	cp -R "$srcdir/$_pkgname" "$pkgdir/usr/share/"
+
+	# Link the shell executables to "/usr/bin"
+	ln -s "$pkgdir/$_pkgname/executar-console-linux.sh" "$pkgdir/usr/bin/portugol-console"
+	ln -s "$pkgdir/$_pkgname/executar-studio-linux.sh" "$pkgdir/usr/bin/$_pkgname"
 }
