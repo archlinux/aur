@@ -1,5 +1,6 @@
 # Maintainer: DDoSolitary <DDoSolitary@gmail.com>
 pkgname=konsole-tomorrow-theme-git
+pkgdesc="Tomorrow color theme for Konsole"
 pkgver=r1.6f43a05
 pkgrel=1
 arch=(any)
