@@ -1,0 +1,19 @@
+pkgbase = spfft-cuda-git
+	pkgdesc = 3D FFT used in plane-wave DFT codes.
+	pkgver = r31.69e08b7
+	pkgrel = 1
+	url = https://github.com/eth-cscs/spFFT
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	depends = fftw
+	depends = cuda
+	depends = openmpi
+	provides = spFFT
+	options = staticlibs
+	source = spfft::git+https://github.com/eth-cscs/spFFT.git#branch=master
+	sha256sums = SKIP
+
+pkgname = spfft-cuda-git
+
