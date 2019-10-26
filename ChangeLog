@@ -1,3 +1,12 @@
+4.5.17 (2019-10-25 23:41:07)
+
+    Handles endbr32 and endbr64 instructions,
+    Adds a few methods to handle arrays in Python API,
+    Improved Mach-O header information,
+    Improves command line tool,
+    Fixes a crash in the C++ name demangler,
+    Fixes a crash on ARM64.
+
 4.5.16 (2019-09-18 13:45:00)
 
     Adds IPA file loader (note: ciphered IPA taken from the AppStore will still be ciphered, obviously...),
