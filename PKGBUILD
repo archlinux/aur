@@ -3,7 +3,7 @@
 pkgbase=python-mamba
 pkgname=('python-mamba' 'python2-mamba')
 pkgver=0.10
-pkgrel=1
+pkgrel=2
 pkgdesc="The definitive testing tool for Python. Born under the banner of Behavior Driven Development."
 arch=('any')
 license=('MIT')
