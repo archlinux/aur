@@ -1,6 +1,6 @@
 pkgbase = python-gpy
 	pkgdesc = Gaussian processes framework in python
-	pkgver = 1.9.8
+	pkgver = 1.9.9
 	pkgrel = 1
 	url = https://github.com/SheffieldML/GPy
 	arch = any
@@ -23,8 +23,8 @@ pkgbase = python-gpy
 	optdepends = python-jupyter_client
 	optdepends = jupyter-notebook
 	optdepends = python-mpi4py
-	source = https://files.pythonhosted.org/packages/source/G/GPy/GPy-1.9.8.tar.gz
-	sha256sums = 33a55bb99fe5c7cdd8df4f8e220e3b87574afde49f5654b3ef7c0445018af4a0
+	source = https://files.pythonhosted.org/packages/source/G/GPy/GPy-1.9.9.tar.gz
+	sha256sums = 04faf0c24eacc4dea60727c50a48a07ddf9b5751a3b73c382105e2a31657c7ed
 
 pkgname = python-gpy
 
