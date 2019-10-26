@@ -1,7 +1,7 @@
 pkgbase = wiki-js-beta-git
 	pkgdesc = Wiki.js | A modern, lightweight and powerful wiki app built on Node.js
 	pkgver = r1223.b567413f
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Requarks/wiki
 	arch = any
 	license = AGPL3
@@ -17,7 +17,7 @@ pkgbase = wiki-js-beta-git
 	source = wiki-js.sysusers
 	sha256sums = SKIP
 	sha256sums = 39bfd1390d3f2eba2522d750b89176aeefcdfdd1e3b2ba4d10276f1b7d3c55e8
-	sha256sums = 08607347f362db25839bddee6d52d102431d7a7ec05937c0ab4ad0b47456ee21
+	sha256sums = 4e7fc467c43f5de2d1a355036abccb2ba23a6b10e1a93ae2d645e4352646bd55
 
 pkgname = wiki-js-beta-git
 
