@@ -4,19 +4,19 @@
 
 pkgbase=kata-containers
 pkgname=(kata-runtime kata-proxy kata-shim kata-ksm-throttler kata-containers-image kata-linux-container)
-pkgver="1.8.3"
+pkgver="1.9.0"
 pkgrel=1
 pkgdesc="Lightweight virtual machines for containers"
 arch=(x86_64)
 url="https://katacontainers.io"
 license=('Apache')
 
-__runtime_suffix="-7.1"
-__proxy_suffix="-7.1"
-__shim_suffix="-7.1"
-__ksm_throttler_suffix="-7.1"
-__img_suffix="-7.1"
-__linux_container_ver="4.19.75.44-7.1"
+__runtime_suffix="-3.1"
+__proxy_suffix="-3.1"
+__shim_suffix="-3.1"
+__ksm_throttler_suffix="-3.1"
+__img_suffix="-3.1"
+__linux_container_ver="4.19.75.54-3.1"
 
 __runtime_rpm="kata-runtime-${pkgver}${__runtime_suffix}.x86_64.rpm"
 __proxy_bin_rpm="kata-proxy-bin-${pkgver}${__proxy_suffix}.x86_64.rpm"
@@ -25,7 +25,7 @@ __ksm_throttler_rpm="kata-ksm-throttler-${pkgver}${__ksm_throttler_suffix}.x86_6
 __img_rpm="kata-containers-image-${pkgver}${__img_suffix}.x86_64.rpm"
 __linux_container_rpm="kata-linux-container-${__linux_container_ver}.x86_64.rpm"
 
-__dlbase="http://download.opensuse.org/repositories/home:/katacontainers:/releases:/x86_64:/stable-1.8/Fedora_30/x86_64"
+__dlbase="http://download.opensuse.org/repositories/home:/katacontainers:/releases:/x86_64:/stable-1.9/Fedora_30/x86_64"
 __runtime_src="${__dlbase}/${__runtime_rpm}"
 __proxy_bin_src="${__dlbase}/${__proxy_bin_rpm}"
 __shim_bin_src="${__dlbase}/${__shim_bin_rpm}"
@@ -50,12 +50,12 @@ noextract=(
   $__linux_container_rpm
 )
 
-sha256sums=('0ee09da5ab5314cf83bc3ba3f9cc684b931b98e0cea6d494274178ddaa4acb3a'
-            'b478b3fa0682fc7d43dbad45854b1f8143c8c524de0a5cf822a84542d90faf24'
-            'c7ee1ccb5d40cbbcc5519d61ffa94804c41e0182b7418adfb26d67ffb65c689d'
-            'd4533389c0406e6acfc27445dd56ba93b01bf0b8ee4500affc3ee05959410358'
-            '3c88560c3248e0f2ae81fbdda62227251bd2aa2ccfce57a4ce0606d33d3d4616'
-            '96d42d423b0d04c23572e26b7a51ae26a9253ec0782bbf1434ee5c510d23996f')
+sha256sums=('b6750d23fec54ea24204141284698fa6309fed2644ce8116f61af52c01911b3a'
+            'c41ecda5c79afca4ade9e36dc8f7567fb02312a37c38056b35fccfcfb6f1ed25'
+            'ba5304e7b0c021cb0cb953c19c727f1d8f33f911eae99ce943b75540083514ef'
+            '7078dba4978e216c2cf4f9ecfc2996af4fb56ba40486ddc0baf4a2d3eed50cf9'
+            'd30d77a3c2925fb12444460bf797d8619210776557969d9aeb5a4974c4936df3'
+            '6570414b7c99920d9aaded00cfe0dab6853702bdff0c71495458de6c0eeef9bc')
 
 __extract_into_dir() {
   archive=$1
