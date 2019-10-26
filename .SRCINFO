@@ -1,4 +1,4 @@
-pkgbase = go-tun2socks
+pkgbase = go-tun2socks-bin
 	pkgdesc = A tun2socks implementation written in Go.
 	pkgver = 1.16.7
 	pkgrel = 1
@@ -12,5 +12,5 @@ pkgbase = go-tun2socks
 	source = tun2socks::https://github.com/eycorsican/go-tun2socks/releases/download/v1.16.7/tun2socks-linux-amd64
 	md5sums = SKIP
 
-pkgname = go-tun2socks
+pkgname = go-tun2socks-bin
 
