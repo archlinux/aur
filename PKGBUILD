@@ -1,6 +1,6 @@
 
 # Maintainer: Your Name h_cheung@outlook.com
-pkgname=go-tun2socks
+pkgname=go-tun2socks-bin
 pkgver=1.16.7
 pkgrel=1
 epoch=
