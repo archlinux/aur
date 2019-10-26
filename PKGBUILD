@@ -2,7 +2,7 @@
 _npmname=node-pre-gyp
 pkgname=nodejs-node-pre-gyp
 pkgver=0.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Node.js tool for easy binary deployment of C++ addons "
 arch=('any')
 url="https://github.com/mapbox/node-pre-gyp"
@@ -25,6 +25,9 @@ package() {
 	jq '.|=with_entries(select(.key|test("_.+")|not))' "$pkgjson" > "$tmppackage"
 	mv "$tmppackage" "$pkgjson"
 	chmod 644 "$pkgjson"
+
+	# Fix a weird permission thing
+	chmod 755 "$pkgdir/usr/lib/node_modules"
 
 	# Install LICENSE in a more findable spot.
 	install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" \
