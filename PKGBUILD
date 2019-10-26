@@ -2,14 +2,14 @@
 
 pkgname=('sat-templates-hg')
 _realname=sat_templates
-pkgver=0.7.r199.02cbc3cf4b32
+pkgver=0.7.r223.5db3aacee4a3
 _version=0.7
 pkgrel=1
 url="https://salut-a-toi.org/"
 pkgdesc="sat-templates is a collection of templates for Salut à Toi, the multi-frontends multi-purposes XMPP client (core). For now, it needs to be accessible in the PYTHONPATH"
 
 arch=('any')
-depends=('python2' 'python2-jinja')
+depends=('python' 'python-jinja')
 makedepends=('mercurial')
 conflicts=('sat-templates')
 provides=('sat-templates')

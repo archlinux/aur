@@ -1,13 +1,13 @@
 pkgbase = sat-templates-hg
 	pkgdesc = sat-templates is a collection of templates for Salut à Toi, the multi-frontends multi-purposes XMPP client (core). For now, it needs to be accessible in the PYTHONPATH
-	pkgver = 0.7.r199.02cbc3cf4b32
+	pkgver = 0.7.r223.5db3aacee4a3
 	pkgrel = 1
 	url = https://salut-a-toi.org/
 	arch = any
 	license = AGPL3
 	makedepends = mercurial
-	depends = python2
-	depends = python2-jinja
+	depends = python
+	depends = python-jinja
 	provides = sat-templates
 	conflicts = sat-templates
 	options = !strip
