@@ -14,7 +14,7 @@ case "$(uname -m)" in
   x86_64)
     _arch="x64"
   ;;
-  arm)
+  arm|armv7*)
     _arch="arm"
   ;;
   aarch64*|armv8*)
