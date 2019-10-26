@@ -14,7 +14,9 @@ conflicts=('zorin-desktop-themes-git')
 source=(
         "$pkgname-$pkgver.tar.xz::https://github.com/ZorinOS/$pkgname/archive/$pkgver.tar.gz"
 )
-md5sums=('49aa573993a5dd0733ecee77bda88d3a')
+sha512sums=(
+    'f691f53c7092e46b9993a0cdf204986805f997ed63c46718a0f5fecc32260d68e6ee547f8e7ed5cd29028865c2c17855205b3d689fb23e72a50ce81ef7618285'
+)
 
 package() {
     cd "$pkgname-$pkgver"
