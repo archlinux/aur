@@ -1,15 +1,15 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgname='bspwc-git'
-pkgver=r30.b3d0da3
-pkgrel=2
-license=(custom:as-is)
+pkgver=r51.5edc0d1
+pkgrel=1
+license=(GPL3)
 pkgdesc='Wayland compositor based on BSPWM'
 url='https://git.sr.ht/~bl4ckb0ne/bspwc'
 arch=(x86_64)
 provides=(bspwc)
 conflicts=(bspwc)
-depends=(wltrunk-git wlroots-git)
-makedepends=(meson ninja git wayland-protocols)
+depends=(wltrunk-git 'wlroots>=0.8')
+makedepends=(meson ninja git wayland-protocols scdoc)
 source=("${pkgname}::git+${url}")
 sha512sums=('SKIP')
 

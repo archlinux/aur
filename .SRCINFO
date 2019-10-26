@@ -1,16 +1,17 @@
 pkgbase = bspwc-git
 	pkgdesc = Wayland compositor based on BSPWM
-	pkgver = r30.b3d0da3
-	pkgrel = 2
+	pkgver = r51.5edc0d1
+	pkgrel = 1
 	url = https://git.sr.ht/~bl4ckb0ne/bspwc
 	arch = x86_64
-	license = custom:as-is
+	license = GPL3
 	makedepends = meson
 	makedepends = ninja
 	makedepends = git
 	makedepends = wayland-protocols
+	makedepends = scdoc
 	depends = wltrunk-git
-	depends = wlroots-git
+	depends = wlroots>=0.8
 	provides = bspwc
 	conflicts = bspwc
 	source = bspwc-git::git+https://git.sr.ht/~bl4ckb0ne/bspwc
