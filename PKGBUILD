@@ -3,111 +3,105 @@
 # Maintainer: Teteros <teteros at teknik dot io>
 
 pkgname=radium
-pkgver=5.9.77
+pkgver=5.9.79
 pkgrel=1
-pkgdesc="A graphical music editor. A next generation tracker."
-arch=('i686' 'x86_64')
-url="https://users.notam02.no/~kjetism/radium"
-license=('GPL')
+pkgdesc='A graphical music editor. A next generation tracker.'
+arch=(i686 x86_64)
+url=https://users.notam02.no/~kjetism/radium
+license=(GPL2)
 depends=(
-  'desktop-file-utils'
-  'fftw'
-  'glu'
-  'hicolor-icon-theme'
-  'jack'
-  'liblrdf'
-  'libmpc'
-  'libsamplerate'
-  'python2'
-  'qt5-webkit'
-  'qt5-x11extras'
-  'speex'
+  desktop-file-utils
+  fftw
+  glu
+  gsfonts
+  hicolor-icon-theme
+  jack
+  liblrdf
+  libmpc
+  python2
+  qt5-webkit
+  qt5-x11extras
+  speex
+  ttf-bitstream-vera
+  ttf-lato
 )
 makedepends=(
-  'boost'
-  'clang'
-  'cmake'
-  'ladspa'
-  'libxcursor'
-  'libxinerama'
-  'libxkbfile'
-  'libxrandr'
-  'llvm'
-  'qt5-tools'
-  'steinberg-vst36'
+  boost
+  clang
+  cmake
+  ladspa
+  libxcursor
+  libxinerama
+  libxkbfile
+  libxrandr
+  llvm
+  qt5-tools
+  steinberg-vst36
 )
 optdepends=(
   'calf-ladspa: Default chorus plugin'
   'ladspa-plugins: Package group for default radium plugins incl in binary releases'
 )
 options=(!strip)
-source=("https://github.com/kmatheussen/${pkgname}/archive/${pkgver}.tar.gz"
-        "use-libtirpc-headers.patch"
-        "use-system-libxcb.patch"
-        "use-system-vstsdk.patch")
-sha256sums=('365a14ddf2ac266acbc24050210bd7c32520039493f722dcf2372e2b79e96af4'
+source=(https://github.com/kmatheussen/radium/archive/$pkgver.tar.gz
+        use-libtirpc-headers.patch
+        use-system-libxcb.patch
+        use-system-vstsdk.patch)
+sha256sums=('b560c954fd702149dd5c4b9bd9940f4575c09fc22ac7f6280ec94d8ee4e966f1'
             '0dfa3014bc6a66989564c7da2d963681f5d129eb0be28153744693dd533e4909'
             '6c29e825e06d1c3aec4afd915718b8c46da705d1411a94f7c0f777b888a9b50d'
             '045e4b4c444d1a37dffdcecb87e5245188fadf68444f9a4b14207a5b98671344')
 
 prepare() {
-  cd "${pkgname}-${pkgver}"
+  cd radium-$pkgver
 
-  # Fix context in faust.patch, PR #1231
-  sed -i '20s/8,13/8,14/g' bin/packages/faust.patch
+  # Force libpd to look for legacy rpc headers in the libtirpc package
+  patch -p1 < "$srcdir/use-libtirpc-headers.patch"
 
-  # glibc-2.27 deprecated legacy rpc, header files for libpd are in libtirpc
-  patch -p1 < "${srcdir}/use-libtirpc-headers.patch"
+  # Use system libxcb 1.13 rather than try to compile it
+  patch -p1 < "$srcdir/use-system-libxcb.patch"
 
-  # Use system libxcb 1.13 instead of radium's to reduce build time
-  patch -p1 < "${srcdir}/use-system-libxcb.patch"
+  # Set VST SDK location to steinberg-vst36 rather than look for it in user's home folder
+  patch -p1 < "$srcdir/use-system-vstsdk.patch"
 
-  # JUCE expects the VST SDK in home directory, this adds paths for SDK in steinberg-vst36 from AUR
-  patch -p1 < "${srcdir}/use-system-vstsdk.patch"
-
-  # calf-ladspa in AUR uses LMMS's 'veal' fork of Calf LADSPA in which the chorus plugin ref contains a white space
-  # Radium has not switched to veal yet for its demo songs, https://github.com/kmatheussen/radium/issues/1158
+  # Edit new file template and demo songs to be compatible with chorus plugin from calf-ladspa
   for file in bin/sounds/*.rad; do sed -i -e 's/Calf MultiChorus LADSPA/Calf Multi Chorus LADSPA/g' "$file"; done
 }
 
 build() {
-  cd "${pkgname}-${pkgver}"
+  cd radium-$pkgver
 
   RADIUM_USE_CLANG=1 RADIUM_QT_VERSION=5 make packages
   RADIUM_USE_CLANG=1 RADIUM_QT_VERSION=5 BUILDTYPE=RELEASE ./build_linux.sh
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
+  cd radium-$pkgver
 
   # Install radium and its packages to /opt
-  ./install.sh "${pkgdir}/opt"
+  ./install.sh "$pkgdir/opt"
 
   # Create startup script according to bin/packages/README
-  mkdir -p "${pkgdir}/usr/bin"
-  echo '#!/bin/bash' > "${pkgdir}/usr/bin/radium"
-  echo LADSPA_PATH="$LADSPA_PATH:/usr/lib/ladspa" \
-    QT_QPA_PLATFORM_PLUGIN_PATH="$($(RADIUM_QT_VERSION=5 ./find_moc_and_uic_paths.sh qmake) -query QT_INSTALL_PLUGINS)" \
-    /opt/radium/radium >> "${pkgdir}/usr/bin/radium"
-  chmod +x "${pkgdir}/usr/bin/radium"
+  mkdir -p "$pkgdir/usr/bin"
+  echo '#!/usr/bin/env bash' > "$pkgdir/usr/bin/radium"
+  echo QT_QPA_PLATFORM_PLUGIN_PATH="$($(RADIUM_QT_VERSION=5 ./find_moc_and_uic_paths.sh qmake) -query QT_INSTALL_PLUGINS)" \
+    /opt/radium/radium >> "$pkgdir/usr/bin/radium"
+  chmod +x "$pkgdir/usr/bin/radium"
 
   # Icons, .desktop and mimetype files
-  mkdir -p "${pkgdir}/usr/share/icons/hicolor/"{16x16,32x32,128x128,256x256}"/apps" \
-    "${pkgdir}/usr/share/applications" \
-    "${pkgdir}/usr/share/mime/packages"
-  ln -s "/opt/radium/radium_16x16x8.png" "${pkgdir}/usr/share/icons/hicolor/16x16/apps/radium.png"
-  ln -s "/opt/radium/radium_32x32x24.png" "${pkgdir}/usr/share/icons/hicolor/32x32/apps/radium.png"
-  ln -s "/opt/radium/radium_128x128x32.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/radium.png"
-  ln -s "/opt/radium/radium_256x256x32.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/radium.png"
-  ln -s "/opt/radium/radium.desktop" "${pkgdir}/usr/share/applications/radium.desktop"
-  ln -s "/opt/radium/radium-mimetype.xml" "${pkgdir}/usr/share/mime/packages/radium.xml"
+  mkdir -p "$pkgdir/usr/share/icons/hicolor/"{16x16,32x32,128x128,256x256}"/apps" \
+    "$pkgdir/usr/share/applications" \
+    "$pkgdir/usr/share/mime/packages"
+  ln -s "/opt/radium/radium_16x16x8.png" "$pkgdir/usr/share/icons/hicolor/16x16/apps/radium.png"
+  ln -s "/opt/radium/radium_32x32x24.png" "$pkgdir/usr/share/icons/hicolor/32x32/apps/radium.png"
+  ln -s "/opt/radium/radium_128x128x32.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/radium.png"
+  ln -s "/opt/radium/radium_256x256x32.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/radium.png"
+  ln -s "/opt/radium/radium.desktop" "$pkgdir/usr/share/applications/radium.desktop"
+  ln -s "/opt/radium/radium-mimetype.xml" "$pkgdir/usr/share/mime/packages/radium.xml"
 }
 
 warn_build_references() {
-  # Radium author would prefer if binaries are left unstripped.
-  # Meaning debug information inside them will reference build dir, this silences the warning from makepkg.
+  # Silence warning about build dir refs as Radium's author prefers packagers don't strip binaries.
   # https://github.com/kmatheussen/radium/issues/1153#issuecomment-421543245
   true
 }
-
-# vim:set sw=2 ts=2 et:
