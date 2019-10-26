@@ -1,6 +1,6 @@
 pkgbase = purescript-bin
 	pkgdesc = A strongly-typed functional programming language that compiles to JavaScript
-	pkgver = 0.13.3
+	pkgver = 0.13.4
 	pkgrel = 1
 	url = http://www.purescript.org
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = purescript-bin
 	depends = zlib
 	provides = purescript
 	conflicts = purescript
-	source = purescript-v0.13.3-linux64.tar.gz::https://github.com/purescript/purescript/releases/download/v0.13.3/linux64.tar.gz
-	sha1sums = 6838ae5972a6130608c04002e46e96915e05f256
+	source = purescript-v0.13.4-linux64.tar.gz::https://github.com/purescript/purescript/releases/download/v0.13.4/linux64.tar.gz
+	sha1sums = 8a28fb73445bbee411dd5d7f5997ec917bc071c8
 
 pkgname = purescript-bin
 
