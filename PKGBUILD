@@ -1,7 +1,7 @@
 # Maintainer: hashworks <mail@hashworks.net>
 pkgname=wiki-js-beta-git
 pkgver=r1223.b567413f
-pkgrel=5
+pkgrel=6
 pkgdesc="Wiki.js | A modern, lightweight and powerful wiki app built on Node.js"
 license=('AGPL3')
 arch=('any')
@@ -46,6 +46,6 @@ package() {
 	install -Dm 644 "package.json" -t "${pkgdir}/usr/lib/wiki-js"
 	cp -r "assets" "server" "node_modules" "${pkgdir}/usr/lib/wiki-js"
 
-	mkdir -P "${pkgdir}/var/lib/wiki-js"
+	mkdir -p "${pkgdir}/var/lib/wiki-js"
 	chown 5494:5494 "${pkgdir}/var/lib/wiki-js"
 }
