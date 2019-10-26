@@ -1,0 +1,16 @@
+pkgbase = lusol
+	pkgdesc = A sparse LU factorization for square and rectangular matrices.
+	pkgver = 2016.1.26
+	pkgrel = 1
+	url = https://web.stanford.edu/group/SOL/software/lusol/
+	arch = i686
+	arch = x86_64
+	license = MIT/BSD
+	makedepends = gcc-libs
+	depends = gcc-libs
+	optdepends = 
+	source = https://github.com/nwh/lusol/archive/build-2016-01-26.tar.gz
+	sha256sums = f9ff04d8be7decfaa930b3052e2ca026ad977ff300b5f27a4088bdc16de279dc
+
+pkgname = lusol
+
