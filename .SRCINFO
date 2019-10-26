@@ -1,0 +1,14 @@
+pkgbase = konsole-snazzy-git
+	pkgver = r3.113050d
+	pkgrel = 1
+	url = https://github.com/miedzinski/konsole-snazzy
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = konsole
+	provides = konsole-snazzy
+	source = konsole-snazzy-git::git+https://github.com/miedzinski/konsole-snazzy
+	md5sums = SKIP
+
+pkgname = konsole-snazzy-git
+
