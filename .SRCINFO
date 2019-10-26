@@ -1,6 +1,6 @@
 pkgbase = linux-mainline-bcachefs
-	pkgver = v5.4_rc3
-	pkgrel = 1
+	pkgver = v5.4_rc4
+	pkgrel = 2
 	url = https://github.com/koverstreet/bcachefs
 	arch = x86_64
 	license = GPL2
@@ -39,6 +39,6 @@ pkgname = linux-mainline-bcachefs
 
 pkgname = linux-mainline-bcachefs-headers
 	pkgdesc = Header files and scripts for building modules for Linux-mainline-bcachefs kernel ~ featuring Kent Overstreet's bcachefs filesystem
-	provides = linux-bcachefs-git-headers=v5.4_rc3
-	provides = linux-headers=v5.4_rc3
+	provides = linux-bcachefs-git-headers=v5.4_rc4
+	provides = linux-headers=v5.4_rc4
 

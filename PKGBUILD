@@ -61,8 +61,8 @@ _localmodcfg=
 
 pkgbase=linux-mainline-bcachefs
 _srcver_tag=5.4
-pkgver=v5.4_rc3
-pkgrel=1
+pkgver=v5.4_rc4
+pkgrel=2
 arch=(x86_64)
 url="https://github.com/koverstreet/bcachefs"
 license=(GPL2)
