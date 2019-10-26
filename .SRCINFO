@@ -1,0 +1,17 @@
+pkgbase = fing
+	pkgdesc = The ultimate tool for network discovery and scanning
+	pkgver = 5.4.0
+	pkgrel = 1
+	url = https://www.fing.com/images/uploads/general/Fing_CLI_User_Guide_1.2.pdf
+	arch = x86_64
+	license = custom:FING EXECUTABLE LICENSE
+	depends = boost-libs
+	depends = openssl
+	depends = zlib
+	depends = icu55
+	options = !strip
+	source = https://www.fing.com/images/uploads/general/CLI_Linux_others_5.4.0.zip
+	sha1sums = e66136543e7c5169d9a17b88ad836b2a32754ddc
+
+pkgname = fing
+
