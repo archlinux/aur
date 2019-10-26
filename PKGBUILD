@@ -3,7 +3,7 @@
 pkgname=naiveproxy-git
 _pkgname=naiveproxy
 pkgdesc='Make a fortune quietly'
-pkgver=77.0.3865.90.r33.7929e0850
+pkgver=78.0.3904.70.r42.1a802cfb5
 pkgrel=1
 arch=('any')
 url='https://github.com/klzgrad/naiveproxy'
@@ -15,7 +15,7 @@ makedepends=("clang" "lld" "ninja" "gn" "python2" "gcc" "llvm")
 optdepends=("ccache: Speed up compilation")
 backup=(etc/naiveproxy/config.json)
 md5sums=('SKIP'
-         '21772e7e4492a42c4a5dd015b3787be0')
+         'bd41169db41ceac6369626b61c74bcc4')
 provides=('naiveproxy')
 conflicts=('naiveproxy' 'naiveproxy-bin')
 

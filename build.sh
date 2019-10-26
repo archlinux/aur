@@ -45,6 +45,7 @@ flags="$flags"'
   use_dbus=false
   use_gio=false
   use_platform_icu_alternatives=true
+  use_gtk=false
 
   disable_file_support=true
   enable_websockets=false
