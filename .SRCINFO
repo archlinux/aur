@@ -1,0 +1,18 @@
+pkgbase = dbow2-git
+	pkgdesc = Enhanced hierarchical bag-of-word library for C++.
+	pkgver = r28.4d08e9f
+	pkgrel = 1
+	url = https://github.com/dorian3d/DBoW2
+	arch = x86_64
+	license = custom
+	makedepends = cmake
+	makedepends = gcc
+	depends = gcc
+	provides = dbow2
+	source = git+https://github.com/dorian3d/DBoW2.git
+	source = LICENSE.txt
+	sha256sums = SKIP
+	sha256sums = c02e19ed871eb9dd11b01db600d3f3601c5a03c4121f6baeb2ebe215ecbeaf23
+
+pkgname = dbow2-git
+
