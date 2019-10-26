@@ -1,12 +1,12 @@
 # Author: mosra <mosra@centrum.cz>
 pkgname=magnum-integration-git
-pkgver=2019.01.r0.gb1a4328
+pkgver=2019.10.r0.g5e103b5
 pkgrel=1
 pkgdesc="Integration libraries for the Magnum C++11/C++14 graphics engine (Git version)"
 arch=('i686' 'x86_64')
 url="https://magnum.graphics"
 license=('MIT')
-depends=('magnum-git' 'bullet' 'glm')
+depends=('magnum-git' 'bullet' 'eigen' 'glm')
 makedepends=('cmake' 'git')
 provides=('magnum-integration')
 conflicts=('magnum-integration')
@@ -26,6 +26,7 @@ build() {
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DWITH_BULLET=ON \
+        -DWITH_EIGEN=ON \
         -DWITH_GLM=ON \
         -DWITH_DART=OFF \
         -DWITH_IMGUI=OFF
