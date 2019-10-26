@@ -2,7 +2,7 @@
 # Contributor: Sergey Mastykov <smastykov[at]gmail[dot]com>
 
 pkgname=python2-pyramid
-pkgver=1.9.1
+pkgver=1.10.4
 pkgrel=1
 pkgdesc='Pyramid is a very general open source Python web framework.'
 arch=('any')
@@ -20,8 +20,8 @@ depends=('python2' 'python2-mako' 'python2-webob' 'python2-repoze.lru' \
   'python2-translationstring' 'python2-setuptools' 'python2-hupper')
 
 
-source=(https://pypi.python.org/packages/9a/57/73447be9e7d0512d601e3f0a1fb9d7d1efb941911f49efdfe036d2826507/pyramid-${pkgver}.tar.gz)
-sha256sums=('840f4bbd5994609340de35079da0d1dd94f79942e27818d5d8566f8009fb0b36')
+source=(https://files.pythonhosted.org/packages/c2/43/1ae701c9c6bb3a434358e678a5e72c96e8aa55cf4cb1d2fa2041b5dd38b7/pyramid-${pkgver}.tar.gz)
+sha256sums=('d80ccb8cfa550139b50801591d4ca8a5575334adb493c402fce2312f55d07d66')
 
 build() {
   msg "Building Pyramid for Python3"
