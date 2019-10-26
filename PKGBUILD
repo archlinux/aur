@@ -6,7 +6,7 @@
 pkgname=ferdi-git
 _pkgver=5.4.0
 pkgver=${_pkgver//-/_}
-pkgrel=5
+pkgrel=1
 pkgdesc='Ferdi is a messaging browser that allows you to combine your favorite messaging services into one application.'
 arch=(x86_64 i686)
 url='https://getferdi.com/'
