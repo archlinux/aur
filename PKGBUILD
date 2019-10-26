@@ -68,7 +68,7 @@ _srcname=linux-${_major}
 _clr=${_major}.7-853
 pkgbase=linux-clear
 pkgver=${_major}.${_minor}
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux"
 license=('GPL2')
@@ -89,6 +89,10 @@ source=(
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-clear}
+
+export KBUILD_BUILD_HOST=archlinux
+export KBUILD_BUILD_USER=$pkgbase
+export KBUILD_BUILD_TIMESTAMP="@${SOURCE_DATE_EPOCH:-$(date +%s)}"
 
 prepare() {
     cd ${_srcname}
@@ -115,18 +119,44 @@ prepare() {
 
     ### Enable extra stuff from arch kernel
         msg2 "Enable extra stuff from arch kernel..."
-        sed -i 's|^# CONFIG_MODULE_COMPRESS|\
-CONFIG_MODULE_COMPRESS=y\
-# CONFIG_MODULE_COMPRESS_GZIP is not set\
-CONFIG_MODULE_COMPRESS_XZ=y|' ./.config
 
-        scripts/config --enable CONFIG_ACPI_REV_OVERRIDE_POSSIBLE \
-                       --enable CONFIG_HIBERNATION \
-                       --enable CONFIG_FRAMEBUFFER_CONSOLE_DEFERRED_TAKEOVER \
+        scripts/config --undefine CONFIG_MODULE_SIG_FORCE \
+                       --enable CONFIG_MODULE_COMPRESS \
+                       --enable-after CONFIG_MODULE_COMPRESS CONFIG_MODULE_COMPRESS_XZ \
                        --enable CONFIG_DELL_SMBIOS_SMM \
-                       --undefine CONFIG_RT_GROUP_SCHED \
-                       --undefine CONFIG_MODULE_SIG_FORCE \
-                       --module CONFIG_NET_SCH_CAKE
+                       --enable-after CONFIG_SOUND CONFIG_SOUND_OSS_CORE \
+                       --enable CONFIG_SND_OSSEMUL \
+                       --module-after CONFIG_SND_OSSEMUL CONFIG_SND_MIXER_OSS \
+                       --module-after CONFIG_SND_MIXER_OSS CONFIG_SND_PCM_OSS \
+                       --enable-after CONFIG_SND_PCM_OSS CONFIG_SND_PCM_OSS_PLUGINS
+
+        # Scheduler features
+        scripts/config --undefine CONFIG_RT_GROUP_SCHED
+
+        # Queueing/Scheduling
+        scripts/config --module CONFIG_NET_SCH_CAKE
+
+        # PATA SFF controllers with BMDMA
+        scripts/config --module CONFIG_PATA_JMICRON
+
+        # Power management and ACPI options
+        scripts/config --enable CONFIG_ACPI_REV_OVERRIDE_POSSIBLE \
+                       --enable CONFIG_HIBERNATION
+
+        # Console display driver support
+        scripts/config --enable CONFIG_FRAMEBUFFER_CONSOLE_DEFERRED_TAKEOVER
+
+        # Security options
+        scripts/config --enable CONFIG_FRAMEBUFFER_CONSOLE_DEFERRED_TAKEOVER \
+                       --enable CONFIG_SECURITY_SELINUX \
+                       --enable-after CONFIG_SECURITY_SELINUX CONFIG_SECURITY_SELINUX_BOOTPARAM \
+                       --enable CONFIG_SECURITY_SMACK \
+                       --enable-after CONFIG_SECURITY_SMACK CONFIG_SECURITY_SMACK_BRINGUP \
+                       --enable-after CONFIG_SECURITY_SMACK_BRINGUP CONFIG_SECURITY_SMACK_NETFILTER \
+                       --enable-after CONFIG_SECURITY_SMACK_NETFILTER CONFIG_SECURITY_SMACK_APPEND_SIGNALS \
+                       --enable CONFIG_SECURITY_TOMOYO \
+                       --enable CONFIG_SECURITY_APPARMOR \
+                       --enable CONFIG_SECURITY_YAMA
 
         make olddefconfig
 
