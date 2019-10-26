@@ -1,6 +1,6 @@
 # Maintainer: Atnanasi <ys2000pro@gmail.com>
 pkgname=mkrepo
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Create repo directory for ghq style'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ depends=('git')
 makedepends=('rust')
 optdepends=('ghq')
 source=("https://github.com/himanoa/${pkgname}/archive/v${pkgver}.tar.gz")
-md5sums=('d04c20368d8640756a96e91cf2c1fd8c')
+md5sums=('3886b378badee1f3fc7b53314a1ba5af')
 install=$pkgname.install
 
 build() {

@@ -1,6 +1,6 @@
 pkgbase = mkrepo
 	pkgdesc = Create repo directory for ghq style
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/himanoa/mkrepo
 	install = mkrepo.install
@@ -10,7 +10,7 @@ pkgbase = mkrepo
 	makedepends = rust
 	depends = git
 	optdepends = ghq
-	source = https://github.com/himanoa/mkrepo/archive/v0.1.0.tar.gz
+	source = https://github.com/himanoa/mkrepo/archive/v0.1.1.tar.gz
 	md5sums = d04c20368d8640756a96e91cf2c1fd8c
 
 pkgname = mkrepo
