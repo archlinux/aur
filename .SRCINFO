@@ -1,0 +1,15 @@
+pkgbase = hg-fast-export
+	pkgdesc = Mercurial to git converter using git-fast-import
+	pkgver = 190913
+	pkgrel = 1
+	url = https://repo.or.cz/fast-export.git
+	changelog = hg-fast-export.changelog
+	arch = any
+	license = MIT
+	license = GPL2
+	depends = python2
+	source = https://github.com/frej/fast-export/archive/v190913.tar.gz
+	md5sums = 17d558219b8e3db19a821bca19f7a4d7
+
+pkgname = hg-fast-export
+
