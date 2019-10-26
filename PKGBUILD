@@ -1,9 +1,9 @@
 # Contributor: Andrew Clunis <andrew@orospakr.ca>
-# Contributor: Ben R <thebenj88 *AT* gmail *DOT* com>
-# Maintainer: Loïc Bidoux <loic.bidoux [at] owndata.org>
+# Contributor: Ben R <thebenj88@gmail.com>
+# Maintainer: Loïc Bidoux <loic.bidoux@owndata.org>
 
 pkgname=vrms-arch
-pkgver=0.1.0.r21.g4ef0a5c
+pkgver=0.1.0.r25.g802c767
 pkgrel=1
 pkgdesc="vrms for ArchLinux"
 arch=('any')
@@ -12,7 +12,7 @@ license=('custom:BSD3')
 makedepends=('git')
 depends=('python' 'pyalpm')
 source=("git+https://github.com/orospakr/${pkgname}.git")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/${pkgname}"
