@@ -1,0 +1,16 @@
+pkgbase = xrotor
+	pkgdesc = interactive program for the design and analysis of ducted and free-tip propellers and windmills
+	pkgver = 7.55
+	pkgrel = 1
+	url = https://web.mit.edu/drela/Public/web/xrotor/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gcc-fortran
+	depends = gcc-libs
+	depends = libx11
+	source = https://web.mit.edu/drela/Public/web/xrotor/Xrotor7.55.tar.tgz
+	sha256sums = 7bee104afa0f81ce6ca7ce2205f65943b5e3650105507363f1a628bbca3a075b
+
+pkgname = xrotor
+
