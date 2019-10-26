@@ -1,7 +1,7 @@
 # Maintainer: Jonathon Fernyhough <jonathon_at manjaro_org>
 
 pkgname=lily
-pkgver=1.5
+pkgver=1.10
 pkgrel=1
 pkgdesc='An interpreted language with a focus on expressiveness and type safety'
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
@@ -10,7 +10,12 @@ license=(MIT)
 depends=(glibc)
 makedepends=('cmake>=3.0.0')
 source=($pkgname-$pkgver.tar.gz::https://gitlab.com/FascinatedBox/lily/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz)
-sha256sums=('6c364615b549ab168ff2894a5abacde11bbbaa5114fc7656c00a7d7cbc295a6f')
+sha256sums=('d2643d3bfb999ab167c43f16488b59589d5746b8080b052f7f7025ef9367efac')
+changelog=lily.changelog
+
+_update_changelog() {
+	wget -q https://gitlab.com/FascinatedBox/lily/raw/v${pkgver}/RELEASES.md -O lily.changelog
+}
 
 build() {
 	cd $pkgname-v$pkgver

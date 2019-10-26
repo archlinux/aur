@@ -1,6 +1,6 @@
 pkgbase = lily
 	pkgdesc = An interpreted language with a focus on expressiveness and type safety
-	pkgver = 1.5
+	pkgver = 1.10
 	pkgrel = 1
 	url = http://lily-lang.org/
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = lily
 	license = MIT
 	makedepends = cmake>=3.0.0
 	depends = glibc
-	source = lily-1.5.tar.gz::https://gitlab.com/FascinatedBox/lily/-/archive/v1.5/lily-v1.5.tar.gz
-	sha256sums = 6c364615b549ab168ff2894a5abacde11bbbaa5114fc7656c00a7d7cbc295a6f
+	source = lily-1.10.tar.gz::https://gitlab.com/FascinatedBox/lily/-/archive/v1.10/lily-v1.10.tar.gz
+	sha256sums = d2643d3bfb999ab167c43f16488b59589d5746b8080b052f7f7025ef9367efac
 
 pkgname = lily
 
