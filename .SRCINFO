@@ -1,7 +1,7 @@
 pkgbase = rtlwifi_new-extended-dkms
 	pkgdesc = Newest Realtek rtlwifi codes, extended branch
 	pkgver = r288.2c8da8d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lwfinger/rtlwifi_new
 	install = rtlwifi_new-extended-dkms.install
 	arch = i686
