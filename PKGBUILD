@@ -1,9 +1,9 @@
 # Maintainer: bauh developers <bauh4linux@gmail.com>
 
 pkgname=bauh
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
-pkgdesc="Graphical interface to manage Flatpak, Snaps and AUR packages"
+pkgdesc="Graphical interface to manage Flatpaks, Snaps, AppImages and AUR packages"
 arch=('any')
 url="https://github.com/vinifmor/bauh"
 license=('zlib/libpng')
@@ -19,7 +19,7 @@ optdepends=('flatpak: for Flatpak support'
             'breeze: for KDE Plasma main theme be available ( optional )')
 makedepends=('git' 'python-setuptools')
 source=("${url}/archive/${pkgver}.tar.gz")
-sha512sums=('06be2073ffc3e0b1f12913e2489461c66f82cf5f1ce364ef456c14d07cd06c7791c8b66f5ad8a59ba0c1b78fa457701c14910e0763859d8caf92e4f19bab3baf')
+sha512sums=('22fe7f804e63c3a27c7206fd7a5cca7603598f9b513f20cb71bd782adaecaa773bd88d5f2798bc09c8a7ec34177f2b578d7b9cd236f48f5dd92e37e7a305db61')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -30,15 +30,16 @@ build() {
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   python3 setup.py install --root="$pkgdir" --optimize=1 || return 1
-  python3 aur/panel_entry.py
-  python3 aur/tray_entry.py
   
-  mkdir -p $pkgdir/usr/share/applications
-  mkdir -p $pkgdir/usr/local/bin
+  mkdir -p $pkgdir/usr/share/icons/hicolor
 
-  mv bauh.desktop $pkgdir/usr/share/applications/
-  mv bauh_tray.desktop $pkgdir/usr/share/applications/
+  python3 aur/copy_icons.py aur/icons $pkgdir/usr/share/icons/hicolor
+ 
+  mkdir -p $pkgdir/usr/share/applications
+  mv aur/bauh.desktop $pkgdir/usr/share/applications/
+  mv aur/bauh_tray.desktop $pkgdir/usr/share/applications/
   
-  chmod +x bauh-tray
-  mv bauh-tray $pkgdir/usr/local/bin/
+  mkdir -p $pkgdir/usr/local/bin
+  chmod +x aur/bauh-tray
+  mv aur/bauh-tray $pkgdir/usr/local/bin/
 }
