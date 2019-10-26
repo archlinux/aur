@@ -63,8 +63,6 @@ build() {
 
    # because b2 in boost 1.62.0 doesn't seem to respect python parameter, we
    # need another run for liboost_python3.so
-   sed -e '/using python/ s@;@: /usr/include/python${PYTHON_VERSION/3*/${PYTHON_VERSION}m} ;@' \
-      -i bootstrap.sh
 
    ./bootstrap.sh \
      --with-toolset=gcc \
