@@ -1,6 +1,6 @@
 pkgbase = neovim-nightly
 	pkgdesc = Fork of Vim aiming to improve user experience, plugins, and GUIs - Nightly Builds
-	pkgver = 0.4.0+20191024
+	pkgver = 0.4.0+20191027
 	pkgrel = 1
 	epoch = 1
 	url = https://neovim.io
