@@ -1,8 +1,8 @@
 pkgbase = z-push
 	pkgdesc = open-source implementation of the ActiveSync protocol
-	pkgver = 2.4.5
+	pkgver = 2.5.1
 	pkgrel = 1
-	url = http://z-push.sf.net/
+	url = https://z-push.org/
 	install = install
 	arch = any
 	groups = zarafa
@@ -18,7 +18,7 @@ pkgbase = z-push
 	backup = etc/webapps/z-push/nginx-location.conf
 	backup = etc/php/conf.d/z-push.ini
 	backup = etc/php/fpm.d/z-push.conf
-	source = z-push-2.4.5::git+https://stash.z-hub.io/scm/zp/z-push.git#tag=2.4.5
+	source = z-push-2.5.1::git+https://stash.z-hub.io/scm/zp/z-push.git#tag=2.5.1
 	source = apache.example.conf
 	source = htaccess
 	source = z-push.ini
