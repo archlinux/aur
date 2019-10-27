@@ -1,0 +1,15 @@
+pkgbase = dracut-colors-git
+	pkgdesc = dracut hook to set VT console colors during early userspace
+	pkgver = 1.df81206
+	pkgrel = 1
+	url = https://github.com/mxfm/dracut-colors
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = dracut
+	depends = setcolors-git
+	source = dracut-colors-git::git://github.com/mxfm/dracut-colors
+	md5sums = SKIP
+
+pkgname = dracut-colors-git
+
