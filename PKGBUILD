@@ -17,12 +17,12 @@ makedepends=('asar')
 optdepends=('gnome-keyring')
 conflicts=('slack-desktop')
 source=("https://downloads.slack-edge.com/linux_releases/${pkgname%-dark}-${pkgver}-amd64.deb"
-        "slack-4-${pkgver}-${pkgrel}::https://raw.githubusercontent.com/caiceA/slack-raw/227d054/slack-4"
+        "slack-4-${pkgver}-${pkgrel}::https://raw.githubusercontent.com/caiceA/slack-raw/812a890/slack-4"
         "darkify_slack.js"
         "${pkgname}.patch")
 noextract=("${pkgname%-dark}-${pkgver}-amd64.deb")
 sha256sums=('2e84af28a9179faf1a6c64e36e6316792531de1d4530fcd2909e5eae77d1ced9'
-            '83ebce78749dd0fd5c55dd484991f0afabb15ffb551b466834d7d560bc7d19c6'
+            '4c457f014af17e8eb3f24f925069b0d27299a30bcae148b3ca579cc32327db79'
             '13fc4ea2c9bfd113e123a7f74375f17c17a7256d7481f9acacb466088b913418'
             'c952eb32dd59beff9fc5374853b04acde4a60ed8c39934fcd0b66829455d594d')
 
