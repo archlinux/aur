@@ -1,0 +1,10 @@
+--- dymo-cups-drivers-1.4.0.5/src/common/CupsPrintEnvironment.cpp.orig	2012-02-07 08:22:37.000000000 -0500
++++ dymo-cups-drivers-1.4.0.5/src/common/CupsPrintEnvironment.cpp	2019-10-27 11:27:37.899169865 -0400
+@@ -23,6 +23,7 @@
+ #include "CupsPrintEnvironment.h"
+ #include <errno.h>
+ #include <cups/cups.h>
++#include <cups/sidechannel.h>
+ #include <cassert>
+ 
+ namespace DymoPrinterDriver
