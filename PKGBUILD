@@ -2,7 +2,7 @@
 
 pkgname=dotdrop
 pkgver=0.29.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Save your dotfiles once, deploy them everywhere "
 arch=('any')
 url="https://github.com/deadc0de6/dotdrop"
