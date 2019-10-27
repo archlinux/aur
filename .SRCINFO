@@ -1,9 +1,8 @@
 pkgbase = ttf-liberation-sans-narrow
 	pkgdesc = Red Hat's Liberation Sans Narrow
-	pkgver = 1.07.4
+	pkgver = 1.07.6
 	pkgrel = 1
-	url = https://www.redhat.com/promo/fonts/
-	install = ttf.install
+	url = https://github.com/liberationfonts/liberation-sans-narrow
 	arch = any
 	license = custom
 	license = GPL2
@@ -12,9 +11,9 @@ pkgbase = ttf-liberation-sans-narrow
 	depends = xorg-font-utils
 	optdepends = ttf-liberation: Main liberation fonts
 	provides = ttf-font
-	source = https://fedorahosted.org/releases/l/i/liberation-fonts/liberation-fonts-ttf-1.07.4.tar.gz
+	source = https://github.com/liberationfonts/liberation-sans-narrow/files/2579431/liberation-narrow-fonts-ttf-1.07.6.tar.gz
 	source = 30-0-liberation-sans-narrow.conf
-	sha256sums = 61a7e2b6742a43c73e8762cdfeaf6dfcf9abdd2cfa0b099a9854d69bc4cfee5c
+	sha256sums = 8879d89b5ff7b506c9fc28efc31a5c0b954bbe9333e66e5283d27d20a8519ea3
 	sha256sums = b9da42411e2035d87a366c7de9f85004e681a2fc4ea7dd82a17e7a1ce9715908
 
 pkgname = ttf-liberation-sans-narrow
