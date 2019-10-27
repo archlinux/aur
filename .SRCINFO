@@ -1,0 +1,15 @@
+pkgbase = fnft
+	pkgdesc = Fast numerical computation of (inverse) nonlinear Fourier transforms
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/FastNFT/FNFT
+	arch = any
+	license = GPL2
+	makedepends = gcc
+	makedepends = gcc-fortran
+	makedepends = cmake
+	source = https://github.com/FastNFT/FNFT/archive/v0.2.2.tar.gz
+	sha1sums = 17aca6985a34f54be2a865554ef863c7d6c3108f
+
+pkgname = fnft
+
