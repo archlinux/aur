@@ -1,18 +1,18 @@
 # Maintainer: Jonas Dellinger <jonas@dellinger.dev>
 pkgname=altair
-pkgver=2.3.5
-pkgrel=2
+pkgver=2.3.6
+pkgrel=1
 pkgdesc='A beautiful feature-rich GraphQL Client for all platforms.'
 arch=('x86_64')
-depends=('gtk2' 'gtk3' 'nss' 'libxss' 'dbus-glib' 'electron4')
+depends=('gtk2' 'gtk3' 'nss' 'libxss' 'dbus-glib' 'electron')
 url="https://github.com/imolorhe/altair"
 license=('MIT')
 provides=('altair')
 
-source_x86_64=("${pkgname}-${pkgver}.AppImage::https://github.com/imolorhe/altair/releases/download/v${pkgver}/altair-electron_${pkgver}_${arch}_linux.AppImage"
+source_x86_64=("${pkgname}-${pkgver}.AppImage::https://github.com/imolorhe/altair/releases/download/v${pkgver}/altair_${pkgver}_${arch}_linux.AppImage"
                altair)
-sha256sums_x86_64=('009a06df5a50fcf57ef8ba912e2737b526742acd784856089e0d00e1cf7fe002'
-                   '7ac2746cb9c44d54e234b7e4a222e0ee97ece2aa61679a03082d4f2d7dfcaf9e')
+sha256sums_x86_64=('4c736e21046dcd38fbb6a503861447293b4b7c1e60a57fcd7c7a7fcc3a4fa5aa'
+                   'a3760d34334143f48d278f5cb17fd450da04048c7d3966e46bb44d35e9d171c7')
 
 prepare() {
   # mark as executable so we can extract
@@ -26,20 +26,20 @@ prepare() {
 }
 
 package() {
-  # install the electron4 wrapper
+  # install the electron wrapper
   install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
 
   # install asar file
   install -Dm644 "${srcdir}/squashfs-root/resources/app.asar" "$pkgdir/usr/lib/$pkgname.asar"
 
   # desktop entry
-  sed -i.bak s/Exec=AppRun/Exec=altair/g "${srcdir}/squashfs-root/${pkgname}-electron.desktop"
-  install -Dm644 "${srcdir}/squashfs-root/${pkgname}-electron.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  sed -i.bak s/Exec=AppRun/Exec=altair/g "${srcdir}/squashfs-root/${pkgname}.desktop"
+  install -Dm644 "${srcdir}/squashfs-root/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
   # install the icons
   for i in 16 32 48 60 120 192 310; do
     install -Dm 644 \
-      "${srcdir}/squashfs-root/usr/share/icons/hicolor/${i}x${i}/apps/${pkgname}-electron.png" \
-      "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/${pkgname}-electron.png"
+      "${srcdir}/squashfs-root/usr/share/icons/hicolor/${i}x${i}/apps/${pkgname}.png" \
+      "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/${pkgname}.png"
   done
 }
