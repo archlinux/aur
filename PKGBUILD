@@ -1,7 +1,5 @@
 #! /bin/bash
-#  https://wiki.archlinux.org/index.php/Arch_package_guidelines
-#  https://wiki.archlinux.org/index.php/PKGBUILD
-#  https://wiki.archlinux.org/index.php/VCS_package_guidelines
+#  Coding manual at: https://gitlab.com/es20490446e/aur/wikis/packaging
 
 Name="aur"
 provides=("${Name}")
