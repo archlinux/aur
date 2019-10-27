@@ -1,7 +1,7 @@
 pkgbase = mp3tag
 	pkgdesc = The universal tag editor.
 	pkgver = 2.98
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.mp3tag.de/en/
 	arch = i686
 	arch = x86_64

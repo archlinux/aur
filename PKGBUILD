@@ -3,7 +3,7 @@
 
 pkgname=mp3tag
 pkgver=2.98
-pkgrel=2
+pkgrel=3
 pkgdesc="The universal tag editor."
 arch=('i686' 'x86_64')
 url="https://www.mp3tag.de/en/"
@@ -14,7 +14,7 @@ source=(mp3tag
         LICENSE
         mp3tag.desktop
         mp3tag.png
-        "https://download.mp3tag.de/mp3tagv${pkgver/./}setup.exe")
+        "https://download.mp3tag.de/${pkgname}v${pkgver/./}setup.exe")
 sha256sums=('3fdcabf91b5ec50373d3aaeaf653611613aed39d94d17af50bb6f5a85afff586'
             '18967b634e69d8ccb08383d42a49ced3c0b11c632649a15c3a6a55e3a27f62e9'
             'bc0c7b8a7a9f9ee92dfe2f1880ef5d91920473713b5d60e4afa361d69a446798'
@@ -22,15 +22,21 @@ sha256sums=('3fdcabf91b5ec50373d3aaeaf653611613aed39d94d17af50bb6f5a85afff586'
             '85b17e667aeff9325e0021b0f319ac70dc0a6da29ce5ce85c2391da990b4a01b')
 options=('!strip')
 
+prepare() {
+  7z -y -o"$srcdir/$pkgname-$pkgver" x "$srcdir/${pkgname}v${pkgver/./}setup.exe"
+}
+
 package() {
-  install -d -m755 "$pkgdir/usr/share/$pkgname"
-  7z -y -o"$pkgdir/usr/share/$pkgname" x "$srcdir/mp3tagv${pkgver/./}setup.exe"
+  cd "$pkgname-$pkgver"
+
+  install -dm755 "$pkgdir/usr/share/$pkgname"
+  cp -a * "$pkgdir/usr/share/$pkgname"
   rm -rf "$pkgdir/usr/share/mp3tag/\$PLUGINSDIR" "$pkgdir/usr/share/mp3tag/\$R0"
   find "$pkgdir/usr/share/$pkgname" -type d -exec chmod 755 "{}" \;
   find "$pkgdir/usr/share/$pkgname" -type f -exec chmod 644 "{}" \;
 
-  install -D -m755 mp3tag "$pkgdir/usr/bin/mp3tag"
-  install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -D -m644 mp3tag.png "$pkgdir/usr/share/pixmaps/mp3tag.png"
-  install -D -m644 mp3tag.desktop "$pkgdir/usr/share/applications/mp3tag.desktop"
+  install -D -m755 "$srcdir/mp3tag" "$pkgdir/usr/bin/mp3tag"
+  install -D -m644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -D -m644 "$srcdir/mp3tag.png" "$pkgdir/usr/share/pixmaps/mp3tag.png"
+  install -D -m644 "$srcdir/mp3tag.desktop" "$pkgdir/usr/share/applications/mp3tag.desktop"
 }
