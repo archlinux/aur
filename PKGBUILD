@@ -3,7 +3,7 @@
 pkgbase=php-xapian
 pkgname=('php-xapian')
 _realname=xapian-bindings
-pkgver=1.4.11
+pkgver=1.4.13
 epoch=1
 pkgrel=1
 pkgdesc="PHP bindings for Xapian"
