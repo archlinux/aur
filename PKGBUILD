@@ -2,9 +2,9 @@
 # Contributor: Bidossessi Sodonon
 
 pkgname=odoo
-pkgver=12.0
-_pkgsubver=20190718
-pkgrel=2
+pkgver=13.0
+_pkgsubver=20191027
+pkgrel=3
 pkgdesc="Web-based Open Source Business Apps"
 url=https://www.odoo.com/
 arch=('any')
