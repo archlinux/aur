@@ -1,6 +1,6 @@
 pkgbase = libpreludedb
 	pkgdesc = Framework to easy access to the Prelude database
-	pkgver = 5.0.0
+	pkgver = 5.1.0
 	pkgrel = 1
 	url = https://www.prelude-siem.org
 	arch = i686
@@ -17,8 +17,14 @@ pkgbase = libpreludedb
 	optdepends = sqlite: SQLite support
 	optdepends = mariadb: MariaDB support
 	optdepends = postgresql: PostgreSQL support
-	source = https://www.prelude-siem.org/pkg/src/5.0.0/libpreludedb-5.0.0.tar.gz
-	md5sums = 02ce27eb98bb71f47eb10a7d3d3f7cb5
+	source = https://www.prelude-siem.org/pkg/src/5.1.0/libpreludedb-5.1.0.tar.gz
+	source = libpreludedb-5.1.0-fix_gtkdoc_1.32.patch
+	source = libpreludedb-5.1.0-fix_py38.patch
+	source = libpreludedb-5.1.0-update_m4_postgresql.patch
+	md5sums = 372b2e7b40e1cc451833370e19bb4ec7
+	md5sums = c7dcc36dea18613273437ba7114509b8
+	md5sums = e76d6a5a75e312a235b15f8dd4d13110
+	md5sums = 5a643e0b78a60505c24e84e2696000ad
 
 pkgname = libpreludedb
 
