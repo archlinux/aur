@@ -1,0 +1,15 @@
+pkgbase = python-cld3-git
+	pkgdesc = Python bindings for cld3 (Compact Language Detector v3)
+	pkgver = 0.2.2.20181228
+	pkgrel = 1
+	url = https://github.com/Elizafox/cld3
+	arch = i686
+	arch = x86_64
+	license = BSD3
+	makedepends = git
+	depends = python
+	source = git+https://github.com/Elizafox/cld3.git
+	md5sums = SKIP
+
+pkgname = python-cld3-git
+
