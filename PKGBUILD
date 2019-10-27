@@ -2,8 +2,8 @@
 # Co-maintainer: Dragoon Aethis <dragoon@dragonic.eu>
 
 pkgname=substance-player
-pkgver=2019.2.1
-_build=2586
+pkgver=2019.2.2
+_build=2644
 pkgrel=1
 pkgdesc="PBR material preview, visualization and tweaking software."
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=("https://download.allegorithmic.com/substance-player/2019.x/Substance_Pl
         'substance-player-icon.png'
         'substance-player.desktop'
         'substance-player')
-sha256sums=('b4ff1e43fe09fc80a72b84055a936fd45aabd6a21d779483ff95714d7ce06dae'
+sha256sums=('c5dbcce83185859bd4a36bd44ec7387887c676ccb14145ad4c3a0603cb1679fa'
             '87d2e879c24a26e63334614b9f1c5d24bfb2eb2b606762b63ce5a2fe6a54345e'
             '098fd0e11871c999b2ad2ff236d7ddc4fc857ce82ceffae3f27238a8bbcd3f15'
             'f024998986230fe480ea77c62c655e0e468e0b3664dbc0120d865311db19944e')
