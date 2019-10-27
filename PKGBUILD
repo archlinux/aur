@@ -1,9 +1,10 @@
-# Maintainer: Hugo Doria <hugo@archlinux.org>
+# Maintainer: Sven-Hendrik Haase <svenstaro@gmail.com>
+# Contributor: Hugo Doria <hugo@archlinux.org>
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
 _pkgbasename=mpg123
 pkgname=lib32-$_pkgbasename
-pkgver=1.25.12
+pkgver=1.25.13
 pkgrel=1
 pkgdesc="A console based real time MPEG Audio Player for Layer 1, 2 and 3 (32-bit)"
 arch=('x86_64')
@@ -13,7 +14,7 @@ depends=('lib32-glibc' 'lib32-libtool' 'lib32-alsa-lib' $_pkgbasename)
 makedepends=('lib32-sdl' gcc-multilib libtool-multilib)
 optdepends=('lib32-sdl: for additional audio support')
 source=(https://downloads.sourceforge.net/sourceforge/${_pkgbasename}/${_pkgbasename}-${pkgver}.tar.bz2{,.sig})
-sha1sums=('4ece1ec124a6ca085e1d68f7ede6d5619fc587ff'
+sha1sums=('2b6428dc563c56fb1374191d1244c8ac928e4d89'
           'SKIP')
 validpgpkeys=(D021FF8ECF4BE09719D61A27231C4CBC60D5CAFE)
 
