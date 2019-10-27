@@ -1,7 +1,7 @@
 # Maintainer: Drew DeVault <sir@cmpwn.com>
 pkgname=mako-git
 _pkgname=mako
-pkgver=r375.e3a69aa
+pkgver=r430.bf6d462
 pkgrel=1
 license=('MIT')
 pkgdesc='Lightweight notification daemon for Wayland'
@@ -11,6 +11,7 @@ depends=(
 	"cairo"
 	"wayland"
 )
+optdepends=("jq: support for 'makoctl menu'")
 arch=("x86_64")
 url='http://mako-project.org'
 source=("${pkgname%-*}::git+https://github.com/emersion/mako.git")
