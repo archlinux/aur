@@ -1,0 +1,80 @@
+pkgbase = waterfox-classic-kpe
+	pkgdesc = Free, open and private browser with openSUSE's patches for better integration with KDE
+	pkgver = 2019.10
+	pkgrel = 3
+	url = https://www.waterfox.net/
+	arch = x86_64
+	license = MPL
+	makedepends = unzip
+	makedepends = zip
+	makedepends = diffutils
+	makedepends = python2
+	makedepends = yasm
+	makedepends = mesa
+	makedepends = imake
+	makedepends = gconf
+	makedepends = inetutils
+	makedepends = xorg-server-xvfb
+	makedepends = autoconf2.13
+	makedepends = rust
+	makedepends = clang
+	makedepends = llvm
+	makedepends = git
+	depends = gtk3
+	depends = gtk2
+	depends = libxt
+	depends = startup-notification
+	depends = mime-types
+	depends = dbus-glib
+	depends = ffmpeg
+	depends = nss>=3.34
+	depends = hunspell
+	depends = sqlite
+	depends = ttf-font
+	depends = icu
+	depends = kwaterfoxhelper
+	depends = nspr>=4.15
+	depends = hicolor-icon-theme
+	depends = jemalloc
+	depends = libevent
+	optdepends = networkmanager: Location detection via available WiFi networks
+	optdepends = libnotify: Notification integration
+	optdepends = pulseaudio: Audio support
+	optdepends = alsa-lib: Audio support
+	optdepends = jack: Audio support
+	optdepends = speech-dispatcher: Text-to-Speech
+	provides = waterfox-classic=2019.10,
+	provides = waterfox-classic-kde=2019.10
+	conflicts = waterfox-classic
+	conflicts = waterfox-kde
+	replaces = waterfox-kde
+	options = !emptydirs
+	options = !makeflags
+	options = zipman
+	source = git+https://github.com/MrAlex94/Waterfox.git#commit=f80144efd74f252d18ff8b26fbaea26e5ee03147
+	source = waterfox-classic.desktop::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-classic-kpe/waterfox-classic.desktop
+	source = kde.js::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-classic-kpe/kde.js
+	source = distribution.ini::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-classic-kpe/distribution.ini
+	source = waterfox-classic-kpe.1::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-classic-kpe/waterfox-classic.1
+	source = jack-system-ports.patch
+	source = no-plt.diff
+	source = waterfox-classic-kde-2019.10.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-classic-kpe/patches/waterfox-classic-kde-2019.10.patch
+	source = dont-statically-link-libstdc++.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-classic-kpe/patches/dont-statically-link-libstdc%2B%2B.patch
+	source = pgo_fix_missing_kdejs.patch
+	source = restore_ua_overrides.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-classic-kpe/patches/restore_ua_overrides.patch
+	source = bmo1480003.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-classic-kpe/patches/bmo1480003.patch
+	sha256sums = SKIP
+	sha256sums = b0ec717b10494dad234a10c9ba9c2a89ed52fd0afbc3b98bb8c4f9c5dd4755a0
+	sha256sums = 0850a8a8dea9003c67a8ee1fa5eb19a6599eaad9f2ad09db753b74dc5048fdbc
+	sha256sums = bf06887c00bbc7176f452a3d18092e1b222731218e461782b2877cba938aaa26
+	sha256sums = 3b3089733bde4c0f945b0da4043950717af7f3993dd0b9eb3ca769c27c194422
+	sha256sums = be19426cd658ea0ff0dedbdd80da6bf84580c80d92f9b3753da107011dfdd85c
+	sha256sums = ea8e1b871c0f1dd29cdea1b1a2e7f47bf4713e2ae7b947ec832dba7dfcc67daa
+	sha256sums = 6a74ac7235014aa78793a2cf15d870bb3bdd79b7eced35f993ad323563b056d7
+	sha256sums = 877bc1f0e768d96118bb739725e590467773dd897c31263099e52b8d7aaaa4c8
+	sha256sums = bf6743660623b7c9a43b94edc8acbcade07aa222ff2102a2808809df333ebe8e
+	sha256sums = e179856821d463be8ceb75313fa8eb44be7d8580c81b4897e867fefc3e89a864
+	sha256sums = 56e5ed40df1cb84606e9d095b05e5e8d9a397198a1eb6491e208d5f888266ee7
+
+pkgname = waterfox-classic-kpe
+
