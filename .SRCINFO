@@ -1,6 +1,6 @@
 pkgbase = jdk-adoptopenjdk
 	pkgdesc = OpenJDK Java 13 development kit (AdoptOpenJDK build)
-	pkgver = 13.u33
+	pkgver = 13.0.1.u9
 	pkgrel = 1
 	url = https://adoptopenjdk.net/
 	install = install_jdk-adoptopenjdk.sh
@@ -16,18 +16,18 @@ pkgbase = jdk-adoptopenjdk
 	optdepends = gtk3: for the Gtk+ 3 look and feel
 	provides = java-runtime-headless=13
 	provides = java-runtime-headless-openjdk=13
-	provides = jre13-openjdk-headless=13.u33
-	provides = jre-openjdk-headless=13.u33
+	provides = jre13-openjdk-headless=13.0.1.u9
+	provides = jre-openjdk-headless=13.0.1.u9
 	provides = java-runtime=13
 	provides = java-runtime-openjdk=13
-	provides = jre13-openjdk=13.u33
-	provides = jre-openjdk=13.u33
+	provides = jre13-openjdk=13.0.1.u9
+	provides = jre-openjdk=13.0.1.u9
 	provides = java-environment=13
 	provides = java-environment-openjdk=13
-	provides = jdk13-openjdk=13.u33
-	provides = jdk-openjdk=13.u33
-	provides = openjdk13-src=13.u33
-	provides = openjdk-src=13.u33
+	provides = jdk13-openjdk=13.0.1.u9
+	provides = jdk-openjdk=13.0.1.u9
+	provides = openjdk13-src=13.0.1.u9
+	provides = openjdk-src=13.0.1.u9
 	backup = etc/jdk-adoptopenjdk/logging.properties
 	backup = etc/jdk-adoptopenjdk/management/jmxremote.access
 	backup = etc/jdk-adoptopenjdk/management/jmxremote.password.template
@@ -43,11 +43,11 @@ pkgbase = jdk-adoptopenjdk
 	backup = etc/jdk-adoptopenjdk/security/policy/unlimited/default_local.policy
 	backup = etc/jdk-adoptopenjdk/security/policy/unlimited/default_US_export.policy
 	backup = etc/jdk-adoptopenjdk/sound.properties
-	source = https://github.com/AdoptOpenJDK/openjdk13-binaries/releases/download/jdk-13%2B33/OpenJDK13U-jdk_x64_linux_hotspot_13_33.tar.gz
+	source = https://github.com/AdoptOpenJDK/openjdk13-binaries/releases/download/jdk-13.0.1%2B9/OpenJDK13U-jdk_x64_linux_hotspot_13.0.1_9.tar.gz
 	source = freedesktop-java.desktop
 	source = freedesktop-jconsole.desktop
 	source = freedesktop-jshell.desktop
-	sha256sums = e562caeffa89c834a69a44242d802eae3523875e427f07c05b1902c152638368
+	sha256sums = 2226366d7dffb3eb4ec3d14101f4ddb4259195aa43bb319a93810447b8384930
 	sha256sums = 9b11bbaf5834748fc9a30cb887c129b32f34a81535dc512ff47b26ae72c91927
 	sha256sums = 16551b98abbd5cbb9da14157df60afd2a608602c6e3734e979d9574e0780f8da
 	sha256sums = 7d46b5ffcb2528f039b4534dddeab4b87de92106c25ff17e175570edde52f1c9
