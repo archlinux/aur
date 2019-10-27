@@ -1,6 +1,6 @@
 pkgbase = chestnut-git
 	pkgdesc = An open-source NLE video editor; fork of Olive-Editor
-	pkgver = v0.1.0.r5.geaae54b
+	pkgver = 0.1.0.r5.geaae54b
 	pkgrel = 1
 	url = https://github.com/jonno85uk/chestnut
 	arch = i686

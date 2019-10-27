@@ -2,7 +2,7 @@
 
 pkgname=chestnut-git
 _pkgname=chestnut
-pkgver=v0.1.0.r5.geaae54b
+pkgver=0.1.0.r5.geaae54b
 pkgrel=1
 arch=('i686' 'pentium4' 'x86_64')
 pkgdesc="An open-source NLE video editor; fork of Olive-Editor"
