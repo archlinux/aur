@@ -1,5 +1,5 @@
 pkgname=wishbone-tool
-pkgver=0.4.6
+pkgver=0.4.7
 pkgrel=1
 pkgdesc='Utilities for working with a Wishbone bridge'
 arch=(x86_64)
@@ -8,11 +8,11 @@ license=(custom:BSD2clause)
 depends=(gcc-libs)
 makedepends=(rust)
 source=(wishbone-tool-$pkgver.tar.gz::https://github.com/xobs/wishbone-utils/archive/v$pkgver.tar.gz)
-sha256sums=('9fbb2723f134dd7f6d7f45053de7ce97e9ad971b69bea1578c2e347a4ea59fc8')
+sha256sums=('c9a5d5566d43f88c27fd53096ef8b7081427b9254b35cfa16082784f909a5a4f')
 
 build(){
 	cd "$srcdir/wishbone-utils-$pkgver/wishbone-tool"
-	cargo build --release #--locked
+	cargo build --release --locked
 }
 
 package(){
