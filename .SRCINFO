@@ -1,6 +1,6 @@
 pkgbase = libprelude
 	pkgdesc = Provides the framework for using the Prelude system
-	pkgver = 5.0.0
+	pkgver = 5.1.1
 	pkgrel = 1
 	url = https://www.prelude-siem.org
 	arch = i686
@@ -16,8 +16,14 @@ pkgbase = libprelude
 	backup = etc/prelude/default/global.conf
 	backup = etc/prelude/default/idmef-client.conf
 	backup = etc/prelude/default/tls.conf
-	source = https://www.prelude-siem.org/pkg/src/5.0.0/libprelude-5.0.0.tar.gz
-	md5sums = 122cebf2073dc9803eb60e80d3d234a4
+	source = https://www.prelude-siem.org/pkg/src/5.1.0/libprelude-5.1.1.tar.gz
+	source = libprelude-5.1.0-fix_awk_error.patch
+	source = libprelude-5.1.0-fix_gtkdoc_1.32.patch
+	source = libprelude-5.1.0-fix_py38.patch
+	md5sums = 9302c68e1c84a847f77574ab048177e6
+	md5sums = 6e68405705b75b0ce25b8165db8c4e2e
+	md5sums = 25529ffd018e827c07d5dc2b4a5d44ae
+	md5sums = b63554f1057f054a96d470d70056c668
 
 pkgname = libprelude
 
