@@ -1,7 +1,7 @@
 pkgbase = python-pystray
 	pkgdesc = Provides systray integration.
 	pkgver = 0.14.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/moses-palmer/pystray
 	arch = any
 	license = GPL
