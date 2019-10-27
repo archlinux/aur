@@ -3,7 +3,7 @@
 _pkgname=acquisition
 pkgname=acquisition-git
 pkgver=0.8b.r6.gbea4121
-pkgrel=1
+pkgrel=2
 pkgdesc='Inventory management tool for Path of Exile.'
 arch=(x86_64)
 license=(GPL)
@@ -11,6 +11,7 @@ url='https://github.com/xyzz/acquisition'
 depends=(qt5-base qt5-webengine)
 makedepends=(boost git)
 provides=(acquisition)
+conflicts=(acquisition)
 source=("git+https://github.com/xyzz/acquisition")
 sha256sums=(SKIP)
 

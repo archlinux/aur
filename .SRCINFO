@@ -1,7 +1,7 @@
 pkgbase = acquisition-git
 	pkgdesc = Inventory management tool for Path of Exile.
 	pkgver = 0.8b.r6.gbea4121
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xyzz/acquisition
 	arch = x86_64
 	license = GPL
@@ -10,6 +10,7 @@ pkgbase = acquisition-git
 	depends = qt5-base
 	depends = qt5-webengine
 	provides = acquisition
+	conflicts = acquisition
 	source = git+https://github.com/xyzz/acquisition
 	sha256sums = SKIP
 
