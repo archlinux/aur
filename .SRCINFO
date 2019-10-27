@@ -1,6 +1,6 @@
 pkgbase = python-ehforwarderbot-git
 	pkgdesc = An extensible message tunneling chat bot framework. Delivers messages to and from multiple platforms and remotely control your accounts.
-	pkgver = r429.400de55
+	pkgver = r449.70d29ce
 	pkgrel = 1
 	url = https://github.com/blueset/ehForwarderBot
 	install = ehforwarderbot.install
@@ -8,6 +8,7 @@ pkgbase = python-ehforwarderbot-git
 	groups = efb
 	license = AGPL-3
 	makedepends = git
+	makedepends = python-setuptools
 	depends = python-ruamel-yaml
 	depends = python-bullet
 	depends = python-cjkwrap
