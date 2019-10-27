@@ -17,7 +17,6 @@ source=("git+${SourcePath}.git")
 md5sums=("SKIP")
 
 depends=("curl" "glew" "libjpeg-turbo" "libpng" "libpng12" "libpulse" "libxxf86vm" "openal")
-optdepends=("darkradiant: allows creating maps")
 makedepends=("git" "unzip")
 
 
