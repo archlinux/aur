@@ -3,32 +3,38 @@
 # Created by Darjan Krijan <darjan_krijan@gmx.de>
 #
 
-set MODULE    "aocc"
-set BASE_DIR  "/opt"
-set VERSION   "2.0.0"
-set AOCC_ROOT "$BASE_DIR/$MODULE"
-set AOCC_TEXT "AMD Optimizing C/C++ Compiler"
+set MODULE   "aocc"
+set BASE_DIR "/opt"
+set VERSION  "2.0.0"
+set MDL_ROOT "$BASE_DIR/$MODULE"
+set MDL_TEXT "AMD Optimizing C/C++ Compiler"
 
-prepend-path PATH            $AOCC_ROOT/bin
-prepend-path LIBRARY_PATH    $AOCC_ROOT/lib:$AOCC_ROOT/lib32:/usr/lib:/usr/lib32
-prepend-path LD_LIBRARY_PATH $AOCC_ROOT/lib:$AOCC_ROOT/lib32:/usr/lib:/usr/lib32
-append-path  CPATH           $AOCC_ROOT/include
+prepend-path PATH            $MDL_ROOT/bin
+prepend-path LIBRARY_PATH    $MDL_ROOT/lib32
+prepend-path LIBRARY_PATH    $MDL_ROOT/lib
+prepend-path LD_LIBRARY_PATH $MDL_ROOT/lib32
+prepend-path LD_LIBRARY_PATH $MDL_ROOT/lib
+append-path  CPATH           $MDL_ROOT/include
 
-setenv       CC              aocc
-setenv       OMPI_CC         aocc
-setenv       CXX             aocc
-setenv       OMPI_CXX        aocc
+setenv       CC              clang
+setenv       OMPI_CC         clang
+setenv       CXX             clang++
+setenv       OMPI_CXX        clang++
 setenv       FC              flang
+setenv       F77             flang
+setenv       F90             flang
 setenv       OMPI_FC         flang
 
-module-whatis "$AOCC_TEXT version $VERSION"
+module-whatis "$MDL_TEXT version $VERSION"
 
 proc ModulesHelp {} {
-	global AOCC_TEXT
-	puts stderr "This module sets up the environment for $AOCC_TEXT"
+	global MDL_TEXT
+	puts stderr "This module sets up the environment for $MDL_TEXT"
 	puts stderr "by adapting the following environment variables:"
 	puts stderr "PATH"
 	puts stderr "LIBRARY_PATH"
 	puts stderr "LD_LIBRARY_PATH"
 	puts stderr "CPATH"
+	puts stderr "CC, CXX, FC, F77, F90"
+	puts stderr "OMPI_CC, OMPI_CXX, OMPI_FC"
 }

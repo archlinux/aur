@@ -3,7 +3,7 @@
 
 pkgname=aocc
 pkgver=2.0.0
-pkgrel=5
+pkgrel=6
 pkgdesc="AMD Optimizing C/C++ Compiler"
 arch=('x86_64')
 license=('custom')
@@ -26,9 +26,6 @@ package() {
 	find ${srcdir}/${pkgname}-compiler-${pkgver}/lib/ -name "*amdlibm*" -delete
 
 	cp -r ${srcdir}/${pkgname}-compiler-${pkgver}/* ${prefix}
-
-	# aocc symlink
-	ln -s ${aocc_prefix}/bin/clang ${prefix}/bin/${pkgname}
 
 	# modulefile
 	cp ${srcdir}/modulefile ${prefix}
