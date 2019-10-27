@@ -3,10 +3,10 @@
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
 pkgbase=linux-rc
-pkgrel=2
+pkgrel=1
 _srcname=linux-5.3
 _major=5.3
-_minor=6
+_minor=7
 _minorc=$((_minor+1))
 _rcver=1
 _rcpatch=patch-${_major}.${_minorc}-rc${_rcver}
@@ -32,11 +32,11 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('127e21828c3727b7ddc16ef3182960985a1c44f532c375bb83abc6f28a04a827'
+sha256sums=('34eae340fc88a17a056753872a97b993550569f66c8bd57bc434615511494ea3'
             'SKIP'
-            'e84021a94784de7bb10e4251fb1a87859a8d1c97bd78fb55ad47ab6ce475ec1f'
+            'c6c9714e21531c825c306b107bc6f6c7bfa2d5270a14bad170f8de5a73d34802'
             'SKIP'
-            '7d09d1d79a4ecb82502b4483cf989ede3f643e05613de45e12563dfe85d80423'
+            'e6d2df92f3079c740ca2cafd7e8b34b5dd43832d292284c2dc133d47600d1f29'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
