@@ -1,15 +1,15 @@
 # Maintainer: Corey Hinshaw <corey(at)electrickite(dot)org>
 
 pkgname=mkinitcpio-tpm2-encrypt
-pkgver=1.4.0
-pkgrel=2
+pkgver=1.5.0
+pkgrel=1
 pkgdesc="mkinitcpio hook that decrypts a TPM2-sealed LUKS keyfile"
 url="https://github.com/electrickite/mkinitcpio-tpm2-encrypt"
 arch=(any)
 license=('GPL3')
 depends=('mkinitcpio' 'tpm2-tools>=4.0')
 source=("https://github.com/electrickite/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('6364f9311db3ccbc5c15e02efe3b5c81bcaeed1002cf9ee40b2a63eaa77d08c0')
+sha256sums=('1d33a42744927f6aad8960b0cec888b6fc3e78d1e6f856c948e1d0e0c2615f24')
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
