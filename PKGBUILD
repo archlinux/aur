@@ -1,7 +1,7 @@
 # Maintainer Poscat <poscat@mail.poscat.moe>
 
 pkgname="python-pyoidc"
-pkgver="1.0.1"
+pkgver="1.1.0"
 pkgrel=1
 pkgdesc="A complete OpenID Connect implementation in Python"
 arch=("x86_64")
