@@ -3,8 +3,8 @@
 
 _progname="OpenJUMP"
 pkgname=openjump-bin
-pkgver=1.13
-_pkgverf="${pkgver}-r5792-PLUS"
+pkgver=1.14.1
+_pkgverf="${pkgver}-r6147-PLUS"
 pkgrel=1
 pkgdesc="Geographic Information System (GIS) written in the Java (binary version)"
 arch=(any)
@@ -14,7 +14,7 @@ groups=('science')
 depends=('java-environment' 'bash')
 install=openjump.install
 changelog=ChangeLog
-md5sums=('e54fa252e51fc107583d84c25b7b8120')
+md5sums=('edc8c44fc32539dddd414c8642bf5cf9')
 
 source=("$pkgname-$pkgver.zip::http://sourceforge.net/projects/jump-pilot/files/${_progname}/$pkgver/${_progname}-Portable-${_pkgverf}.zip/download")
 

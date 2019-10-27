@@ -1,6 +1,6 @@
 pkgbase = openjump-bin
 	pkgdesc = Geographic Information System (GIS) written in the Java (binary version)
-	pkgver = 1.13
+	pkgver = 1.14.1
 	pkgrel = 1
 	url = http://www.openjump.org/
 	install = openjump.install
@@ -10,8 +10,8 @@ pkgbase = openjump-bin
 	license = GPL2
 	depends = java-environment
 	depends = bash
-	source = openjump-bin-1.13.zip::http://sourceforge.net/projects/jump-pilot/files/OpenJUMP/1.13/OpenJUMP-Portable-1.13-r5792-PLUS.zip/download
-	md5sums = e54fa252e51fc107583d84c25b7b8120
+	source = openjump-bin-1.14.1.zip::http://sourceforge.net/projects/jump-pilot/files/OpenJUMP/1.14.1/OpenJUMP-Portable-1.14.1-r6147-PLUS.zip/download
+	md5sums = edc8c44fc32539dddd414c8642bf5cf9
 
 pkgname = openjump-bin
 
