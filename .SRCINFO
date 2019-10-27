@@ -1,7 +1,7 @@
 pkgbase = python-devtools
 	pkgdesc = Dev tools for python. The debug print command python never had (and other things).
 	pkgver = 0.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/devtools
 	arch = any
 	license = LGPLv3

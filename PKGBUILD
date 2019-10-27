@@ -3,7 +3,7 @@
 _pkgname=devtools
 pkgname="python-${_pkgname}"
 pkgver=0.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Dev tools for python. The debug print command python never had (and other things)."
 arch=('any')
 url="https://pypi.org/project/${_pkgname}"
