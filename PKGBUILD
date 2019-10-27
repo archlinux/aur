@@ -1,11 +1,11 @@
 # Maintainer: Stephan Springer <buzo+arch@Lini.de>
 # Contributor: Doug Newgard <scimmia at archlinux dot info>
 # Contributor: SaultDon <sault.don gmail>
-# Contributor: Lantald < lantald at gmx.com >
-# Contributor: Thomas Dziedzic < gostrc at gmail >
-# Contributor: dibblethewrecker dibblethewrecker.at.jiwe.dot.org
+# Contributor: Lantald <lantald at gmx.com>
+# Contributor: Thomas Dziedzic <gostrc at gmail>
+# Contributor: dibblethewrecker <dibblethewrecker.at.jiwe.dot.org>
 # Contributor: Gerardo Exequiel Pozzi <vmlinuz386@yahoo.com.ar>
-# Contributor: Eric Forgeot < http://esclinux.tk >
+# Contributor: Eric Forgeot <http://esclinux.tk>
 
 # Globe Plugin and Map Server are disabled in cmake by default.
 # Uncomment them in the build() portion if you'd like them enabled.
