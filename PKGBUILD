@@ -3,28 +3,36 @@
 _pkgname=fmf
 pkgbase="python-${_pkgname}"
 pkgname=("python-${_pkgname}" "python2-${_pkgname}")
-pkgver=0.7
-pkgrel=2
+pkgver=0.8
+pkgrel=1
 arch=(any)
 license=('GPL2')
 pkgdesc='Flexible Metadata Format.'
 url='https://github.com/psss/fmf'
 makedepends=('python' 'python2' 'python-setuptools' 'python2-setuptools')
 source=("https://github.com/psss/${_pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('c0ba80405acfd975184a1804485862454cccff187d0b0c5ae8dd656147cd9b48e69381829933f380611a84c6f4309f55e4ef7696b6291bea78e4eb623212f455')
+sha512sums=('a491b7484096b21e1f4ee9f5dc92e19a635a78df94a276bb75c1b8ec9ab252c266fafe58f6fe5fa7d67d0740ae7b68832ba23e66f57c97702be0dc654a871e7b')
 
 prepare() {
   cp -a ${_pkgname}-${pkgver}{,-py2}
 }
 
+build() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python setup.py build
+
+  cd "${srcdir}/${_pkgname}-${pkgver}-py2"
+  python2 setup.py build
+}
+
 package_python-fmf() {
   depends=('python-pyaml')
-  cd ${_pkgname}-$pkgver
-  python setup.py install --root="$pkgdir" --optimize=1
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
 
 package_python2-fmf() {
   depends=('python2-pyaml')
-  cd ${_pkgname}-$pkgver-py2
-  python2 setup.py install --root="$pkgdir" --optimize=1
+  cd "${srcdir}/${_pkgname}-${pkgver}-py2"
+  python2 setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
