@@ -1,7 +1,7 @@
 pkgbase = grub-theme-slaze-git
 	pkgdesc = Slaze grub theme
-	pkgver = 1.0
-	pkgrel = 3
+	pkgver = 20191003
+	pkgrel = 1
 	url = https://github.com/vinceliuice/grub2-themes
 	arch = any
 	license = GPL3
