@@ -1,0 +1,18 @@
+pkgbase = sway-interactive-screenshot
+	pkgdesc = Take screenshot easly on Sway
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/moverest/sway-interactive-screenshot
+	arch = x86_64
+	license = MIT
+	depends = jq
+	depends = rofi
+	depends = grim
+	depends = slurp
+	depends = libnotify
+	depends = wl-clipboard
+	source = https://github.com/moverest/sway-interactive-screenshot/archive/1.0.tar.gz
+	md5sums = 1d63968ac60f3fb2b269e1bd64f163ae
+
+pkgname = sway-interactive-screenshot
+
