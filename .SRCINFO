@@ -1,7 +1,7 @@
 pkgbase = surface-pro-2017-disable-wireless-aspm
 	pkgdesc = A systemd unit to disable wireless aspm of surface pro 2017
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jakeday/linux-surface/issues/572#issuecomment-542115727
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = surface-pro-2017-disable-wireless-aspm
 	license = GPL
 	depends = systemd
 	depends = bash
+	depends = bc
 	provides = surface-pro-2017-disable-wireless-aspm
 	source = https://launchpadlibrarian.net/405591349/disable_wireless_aspm.sh
 	source = disable-wireless-aspm.service

@@ -1,13 +1,13 @@
 # Maintainer: Ke Liu <spcter119@gmail.com>
 pkgname=surface-pro-2017-disable-wireless-aspm
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A systemd unit to disable wireless aspm of surface pro 2017'
 arch=('i686' 'x86_64')
 url="https://github.com/jakeday/linux-surface/issues/572#issuecomment-542115727"
 license=('GPL')
 groups=('surface')
-depends=('systemd' 'bash')
+depends=('systemd' 'bash' 'bc')
 provides=($pkgname)
 source=(https://launchpadlibrarian.net/405591349/disable_wireless_aspm.sh
         disable-wireless-aspm.service)
