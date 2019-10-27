@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-radio-git
 	pkgdesc = Gnome shell extension for listening to internet radio streams.
-	pkgver = 11.r1.gbaaa4a1
+	pkgver = 12.r4.gfca7356
 	pkgrel = 1
 	url = https://github.com/hslbck/gnome-shell-extension-radio
 	install = gnome-shell-extension.install
