@@ -3,9 +3,9 @@
 pkgname=xasm
 pkgver=3.1.0
 pkgrel=1
-pkgdesc=""
+pkgdesc="6502 cross-assembler with original syntax extensions"
 arch=('x86_64')
-url="http://dasm-dillon.sourceforge.net/"
+url="https://github.com/pfusik/xasm"
 source=(
     https://github.com/pfusik/xasm/archive/xasm-$pkgver.zip
     0001-hex.patch
