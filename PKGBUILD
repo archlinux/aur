@@ -1,11 +1,11 @@
 # Maintainer: Nick Cao <nickcao@nichi.co>
 pkgname=arch-prime-git
-pkgver=0.9.4.r1.g2396832
+pkgver=0.9.4.r2.ge754390
 pkgver() {
   cd ArchPrime
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
-pkgrel=2
+pkgrel=1
 pkgdesc='Provide nvidia-prime like package for Archlinux'
 arch=('any')
 url='https://gitlab.com/NickCao/ArchPrime'
