@@ -5,7 +5,7 @@
 
 pkgname=lf
 pkgver=13
-pkgrel=3
+pkgrel=4
 license=('MIT')
 pkgdesc="A terminal file manager inspred by ranger written in Go"
 depends=('glibc')
@@ -37,15 +37,21 @@ package() {
   install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" \
       ./README.md \
       ./etc/lfrc.example
+  install -Dm644 -t "${pkgdir}/usr/share/${pkgname}" \
+      ./etc/lfcd.sh
 
   install -Dm644 -t "${pkgdir}/usr/share/man/man1" \
       ./lf.1
 
+  # vim
   install -Dm644 -t "${pkgdir}/usr/share/vim/vimfiles/syntax" \
       ./etc/lf.vim
   install -Dm644 -t "${pkgdir}/usr/share/vim/vimfiles/ftdetect" \
       ./etc/lf.vim
 
+  # fish
   install -Dm644 -t "${pkgdir}/usr/share/fish/vendor_completions.d" \
       ./etc/lf.fish
+  install -Dm644 -t "${pkgdir}/usr/share/fish/vendor_functions.d" \
+      ./etc/lfcd.fish
 }

@@ -1,7 +1,7 @@
 pkgbase = lf
 	pkgdesc = A terminal file manager inspred by ranger written in Go
 	pkgver = 13
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/gokcehan/lf
 	arch = aarch64
 	arch = armv7h
