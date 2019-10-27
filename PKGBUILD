@@ -27,7 +27,7 @@ build() {
 
 check() {
         cd "$srcdir/$pkgname-$pkgver"
-        /usr/bin/python2 setup.py check
+        /usr/bin/python2 setup.py test
 }
 
 package() {
