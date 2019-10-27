@@ -3,6 +3,7 @@ Name=Vectr
 GenericName=Vector Graphics Design
 Comment=Free Design App For Web + Desktop
 Exec=vectr
+Path=/opt/vectr
 Icon=vectr
 Terminal=false
 Type=Application
