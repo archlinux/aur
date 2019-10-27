@@ -1,2 +1,7 @@
-/*.tar.gz
-/*.tar.xz
+# makepkg files
+pkg/
+src/
+*.xz
+
+# source files
+*.gz
