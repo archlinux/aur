@@ -1,0 +1,12 @@
+pkgbase = humble-trove
+	pkgdesc = The cross platform Humble Trove Downloader
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/td512/Humble-Trove-Console-Downloader
+	arch = x86_64
+	license = MIT
+	source = trove::https://ltscdn.m6.nz/humble/1804/trove
+	sha256sums = 32cb5bdf271a39421f0453508dd80779dee047621caa97e56e435844256003dd
+
+pkgname = humble-trove
+
