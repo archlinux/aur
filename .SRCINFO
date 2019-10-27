@@ -12,7 +12,6 @@ pkgbase = z-push
 	makedepends = php-composer
 	depends = nginx
 	depends = php
-	depends = kopano-core
 	depends = php-fpm
 	options = !strip
 	backup = etc/webapps/z-push/nginx-location.conf
