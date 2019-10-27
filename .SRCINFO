@@ -1,0 +1,13 @@
+pkgbase = wpa-psk
+	pkgdesc = Generate a WPA PSK from an ASCII passphrase for a SSID
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/wpa-psk
+	arch = any
+	license = MIT
+	depends = python
+	source = wpa-psk.py
+	sha256sums = 8dddd39534c9c48574222bef1d81efbb34992a6143a786f07c051d58904b1fff
+
+pkgname = wpa-psk
+
