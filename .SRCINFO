@@ -1,0 +1,15 @@
+pkgbase = akd
+	pkgdesc = Keyboard userspace daemon
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Shatur95/akd
+	arch = x86_64
+	license = GPL3
+	makedepends = gcc
+	makedepends = cmake
+	depends = libx11
+	source = akd-1.0.0.tar.gz::https://github.com/Shatur95/akd/archive/1.0.0.tar.gz
+	sha256sums = ca3e1a6c51be5f999c757830cd32eb5b061e599f406f80323a580ce34fe8db43
+
+pkgname = akd
+
