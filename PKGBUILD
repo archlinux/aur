@@ -2,7 +2,7 @@
 
 pkgname=lazylibrarian
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Automatic Book Downloading via NZBs & Torrent"
 arch=('any')
 url="https://gitlab.com/LazyLibrarian/LazyLibrarian/"
@@ -10,7 +10,8 @@ license=('GPL3')
 depends=('python'
          'python-unrardll'
          'python-apprise'
-         'python-pyopenssl')
+         'python-pyopenssl'
+         'python-gobject')
 conflicts=('lazylibrarian-git')
 provides=('lazylibrarian')
 install='lazylibrarian.install'

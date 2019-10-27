@@ -1,7 +1,7 @@
 pkgbase = lazylibrarian
 	pkgdesc = Automatic Book Downloading via NZBs & Torrent
 	pkgver = 1.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/LazyLibrarian/LazyLibrarian/
 	install = lazylibrarian.install
 	arch = any
@@ -10,6 +10,7 @@ pkgbase = lazylibrarian
 	depends = python-unrardll
 	depends = python-apprise
 	depends = python-pyopenssl
+	depends = python-gobject
 	provides = lazylibrarian
 	conflicts = lazylibrarian-git
 	options = !strip
