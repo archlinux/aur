@@ -1,6 +1,6 @@
 pkgbase = my-weather-indicator-git
 	pkgdesc = A simple indicator for the weather
-	pkgver = r97.8701218
+	pkgver = r104.9ce9b4c
 	pkgrel = 1
 	url = https://github.com/atareao/my-weather-indicator
 	arch = any
@@ -23,7 +23,9 @@ pkgbase = my-weather-indicator-git
 	provides = my-weather-indicator
 	conflicts = my-weather-indicator
 	source = my-weather-indicator::git+https://github.com/atareao/my-weather-indicator
+	source = https://raw.githubusercontent.com/atareao/my-weather-indicator/8701218dc218f5533590b995617f3f1e839135d9/setup.py
 	sha256sums = SKIP
+	sha256sums = 97e101e29ece53549ed1ce4c7958d9207cd1da9e60f6ea9f0aa7849baed82897
 
 pkgname = my-weather-indicator-git
 
