@@ -1,15 +1,16 @@
-# Maintainer: Andrew Sun <adsun701@gmail.com>
+# Maintainer: Andrew Sun <adsun701 at gmail dot com>
 
 pkgname=libxls
-pkgver=1.5.1
+pkgver=1.5.2
 pkgrel=1
 pkgdesc='Read binary Excel files from C/C++'
 arch=('i686' 'x86_64')
 url='https://github.com/libxls/libxls'
 license=('BSD')
 depends=('glibc')
+makedepends=('autoconf-archive')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/libxls/libxls/archive/v${pkgver}.tar.gz")
-sha512sums=('2120294c62c792ff01f566eaf4aac57b70a403246f3e890b45949e6fa87e37eabf11a5bc2a726ab2bb9eb967c951d6d74858eb08b22b53258bcf6c11a4dbd2ae')
+sha512sums=('d3809f74d6548f4e227dcd764a98fef92c98e85374d715a31c2e205ba3bf2d9d8dc325e3c7d3e02f36d6c01e3ac4c3854dea16e23d32474c2f6316ff645cadc8')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -34,5 +35,5 @@ check() {
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}" install
-  install -m 644 -D LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
