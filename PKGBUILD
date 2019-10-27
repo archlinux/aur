@@ -4,7 +4,7 @@
 pkgname=httraqt-git
 pkgver=1.4.10.4.gd3e085c
 pkgrel=1
-pkgdesc="Is the clone from WinHTTrack tool. GUI is based on Qt libriaries. (GIT Version)"
+pkgdesc="Is the clone from WinHTTrack tool. GUI is based on Qt libraries. (GIT Version)"
 arch=('x86_64')
 url='http://qt-apps.org/content/show.php/HTTraQt?content=155711'
 license=('GPL')
