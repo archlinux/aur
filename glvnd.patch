@@ -1,0 +1,181 @@
+From e6ef2b12404dfec7f23592a3524d2a63d9d25802 Mon Sep 17 00:00:00 2001
+From: Marvin Schmidt <marv@exherbo.org>
+Date: Tue, 24 Sep 2019 09:58:43 +0200
+Subject: [PATCH] build: glx: Lower gl version to work with libglvnd
+
+When using mesa with libglvnd support, mesa will no longer install the
+gl, glx, egl pkg-config files but instead let libglvnd provide them.
+libglvnd maintainers decided to change the versioning as it was
+mesa-specific previously. Now the libraries have versions of the API
+they expose[1].
+This causes problems when building the X server:
+
+  checking for glproto >= 1.4.17 gl >= 9.2.0... no
+  configure: error: Package requirements (glproto >= 1.4.17 gl >= 9.2.0) were not met:
+
+  Requested 'gl >= 9.2.0' but version of gl is 1.2
+
+Lower the version requirement to 1.2 to allow building against libglvnd
+provided libraries
+
+[1] https://github.com/NVIDIA/libglvnd/commit/0dfaea2bcb7cdcc785f95e244223bd004a2d7fba
+---
+ configure.ac    | 4 ++--
+ glx/meson.build | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 03c2e367c..969090b94 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -760,7 +760,7 @@ LIBDRI="dri >= 7.8.0"
+ LIBDRM="libdrm >= 2.4.89"
+ LIBEGL="egl"
+ LIBGBM="gbm >= 10.2.0"
+-LIBGL="gl >= 7.1.0"
++LIBGL="gl >= 1.2"
+ LIBXEXT="xext >= 1.0.99.4"
+ LIBXFONT="xfont2 >= 2.0.0"
+ LIBXI="xi >= 1.2.99.1"
+@@ -1115,7 +1115,7 @@ case "$DRI2,$HAVE_DRI2PROTO" in
+ 	yes,yes | auto,yes)
+ 		AC_DEFINE(DRI2, 1, [Build DRI2 extension])
+ 		DRI2=yes
+-		LIBGL="gl >= 9.2.0"
++		LIBGL="gl >= 1.2"
+ 		SDK_REQUIRED_MODULES="$SDK_REQUIRED_MODULES $DRI2PROTO"
+ 		;;
+ esac
+diff --git a/glx/meson.build b/glx/meson.build
+index 7f9e549f0..745814336 100644
+--- a/glx/meson.build
++++ b/glx/meson.build
+@@ -39,7 +39,7 @@ if build_glx
+             common_dep,
+             dl_dep,
+             dependency('glproto', version: '>= 1.4.17'),
+-            dependency('gl', version: '>= 9.2.0'),
++            dependency('gl', version: '>= 1.2'),
+         ],
+         c_args: [
+             glx_align64,
+-- 
+2.23.0
+
+From c7486613b0dc586f93f6ba293d9b55c69995b05c Mon Sep 17 00:00:00 2001
+From: Adam Jackson <ajax@redhat.com>
+Date: Wed, 9 Oct 2019 15:17:47 -0400
+Subject: [PATCH] meson: Fix another reference to "gl" 9.2.0
+
+Previous commit e6ef2b12 missed a spot.
+---
+ glx/meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/glx/meson.build b/glx/meson.build
+index 745814336..d7a2aa468 100644
+--- a/glx/meson.build
++++ b/glx/meson.build
+@@ -74,7 +74,7 @@ if build_glx
+             common_dep,
+             dl_dep,
+             dependency('glproto', version: '>= 1.4.17'),
+-            dependency('gl', version: '>= 9.2.0'),
++            dependency('gl', version: '>= 1.2.0'),
+         ],
+     )
+ 
+-- 
+2.23.0
+
+From 3340ddf37743fdf197dfc16a97107435ff53c6e4 Mon Sep 17 00:00:00 2001
+From: Adam Jackson <ajax@redhat.com>
+Date: Wed, 9 Oct 2019 16:03:17 -0400
+Subject: [PATCH] meson: Apparently 1.2 is < 1.2.0
+
+Siiiigh.
+---
+ glx/meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/glx/meson.build b/glx/meson.build
+index d7a2aa468..1140522f6 100644
+--- a/glx/meson.build
++++ b/glx/meson.build
+@@ -74,7 +74,7 @@ if build_glx
+             common_dep,
+             dl_dep,
+             dependency('glproto', version: '>= 1.4.17'),
+-            dependency('gl', version: '>= 1.2.0'),
++            dependency('gl', version: '>= 1.2'),
+         ],
+     )
+ 
+-- 
+2.23.0
+
+diff --git a/glamor/glamor_egl.h b/glamor/glamor_egl.h
+index 2f7566b24..af1c707d2 100644
+--- a/glamor/glamor_egl.h
++++ b/glamor/glamor_egl.h
+@@ -27,7 +27,7 @@
+ #ifndef GLAMOR_EGL_H
+ #define GLAMOR_EGL_H
+ 
+-#define MESA_EGL_NO_X11_HEADERS
++#define EGL_NO_X11
+ #include <epoxy/gl.h>
+ #include <epoxy/egl.h>
+ #include <glamor_egl_ext.h>
+diff --git a/glamor/glamor_priv.h b/glamor/glamor_priv.h
+index 7d9a7d4fb..bcdaf4040 100644
+--- a/glamor/glamor_priv.h
++++ b/glamor/glamor_priv.h
+@@ -39,7 +39,7 @@
+ 
+ #include <epoxy/gl.h>
+ #ifdef GLAMOR_HAS_GBM
+-#define MESA_EGL_NO_X11_HEADERS
++#define EGL_NO_X11
+ #include <epoxy/egl.h>
+ #endif
+ 
+diff --git a/hw/xwayland/xwayland-glamor-eglstream.c b/hw/xwayland/xwayland-glamor-eglstream.c
+index c62c0d2ac..e665b963e 100644
+--- a/hw/xwayland/xwayland-glamor-eglstream.c
++++ b/hw/xwayland/xwayland-glamor-eglstream.c
+@@ -32,7 +32,7 @@
+ #include "wayland-eglstream-client-protocol.h"
+ #include "wayland-eglstream-controller-client-protocol.h"
+ 
+-#define MESA_EGL_NO_X11_HEADERS
++#define EGL_NO_X11
+ #include <glamor_egl.h>
+ #include <glamor.h>
+ #include <glamor_transform.h>
+diff --git a/hw/xwayland/xwayland-glamor-gbm.c b/hw/xwayland/xwayland-glamor-gbm.c
+index a211e0915..e28b65078 100644
+--- a/hw/xwayland/xwayland-glamor-gbm.c
++++ b/hw/xwayland/xwayland-glamor-gbm.c
+@@ -35,7 +35,7 @@
+ #include <xf86drm.h>
+ #include <drm_fourcc.h>
+ 
+-#define MESA_EGL_NO_X11_HEADERS
++#define EGL_NO_X11
+ #include <gbm.h>
+ #include <glamor_egl.h>
+ 
+diff --git a/hw/xwayland/xwayland-glamor.c b/hw/xwayland/xwayland-glamor.c
+index 7ea6def61..587ef5ed0 100644
+--- a/hw/xwayland/xwayland-glamor.c
++++ b/hw/xwayland/xwayland-glamor.c
+@@ -25,7 +25,7 @@
+ 
+ #include "xwayland.h"
+ 
+-#define MESA_EGL_NO_X11_HEADERS
++#define EGL_NO_X11
+ #include <glamor_egl.h>
+ 
+ #include <glamor.h>
