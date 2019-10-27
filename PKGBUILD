@@ -3,17 +3,17 @@
 # Contributor: A. Weiss <adam [at] archlinux.us>
 
 pkgname=osgearth
-pkgver=2.9
+pkgver=2.10.1
 pkgrel=1
 pkgdesc="A terrain rendering toolkit for OpenSceneGraph"
 arch=('i686' 'x86_64')
 url='http://www.osgearth.org'
 license=('LGPL')
-depends=('openscenegraph' 'gdal' 'minizip' 'qt5-base')
+depends=('openscenegraph' 'gdal' 'minizip' 'qt5-base' 'rocksdb' 'duktape')
 makedepends=('cmake')
 provides=('osgearth')
 source=("https://github.com/gwaldron/osgearth/archive/${pkgname}-${pkgver}.tar.gz")
-md5sums=('87d0ce80a9bb5c8b8ce4ae7b5b257c52')
+md5sums=('d780ccc0735130ff79b3f1b39e377960')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgname}-${pkgver}
@@ -29,9 +29,11 @@ build() {
   cmake \
   -DLIB_POSTFIX= \
   -DCMAKE_INSTALL_PREFIX=/usr \
+  -DWITH_STATIC_ROCKSDB=ON \
+  -DWITH_EXTERNAL_DUKTAPE=ON \
   ..
 
-  make -j3
+  make
 }
 
 package() {
