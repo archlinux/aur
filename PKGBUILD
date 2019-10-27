@@ -1,8 +1,8 @@
 # Maintainer: Teoh Han Hui <teohhanhui@gmail.com>
 
 pkgname=aniadd-bin
-pkgver=04.06.14
-pkgrel=3
+pkgver=20190803
+pkgrel=1
 pkgdesc='A very simple to use AniDB client (GUI)'
 arch=('any')
 url='https://anidb.net/perl-bin/animedb.pl?show=software'
@@ -23,7 +23,7 @@ source=('https://static.anidb.net/files/AniAdd.jar'
         'aniadd.sh'
         'aniadd.desktop')
 noextract=('AniAdd.jar')
-sha256sums=('19fbfec796de1c381797969cd085468e21cb8c41bdb67ee18f02a825ee08af6f'
+sha256sums=('1431edf48a1b3f2cc2d64c6982858410cfd70a906268e16095afc1b3d589b9a2'
             '6472e83d6dfe5975f2fbe811aeb39908b55fad629447159eae57bd9bd844328b'
             'bb906cdfe418ba32146f44b8c7ae00e091db6b10a9f3d982ad9eb81f85b5b4b3'
             'bcc777d4af19712bca7636dea9748af97ff9e5280d41956370fc1df528e37209'
