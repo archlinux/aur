@@ -16,6 +16,7 @@ depends=(
   'wkhtmltopdf-static'
   'python'
   'python-babel'
+  'python-chardet'
   'python-decorator'
   'python-docutils'
   'python-ebaysdk'
@@ -33,6 +34,7 @@ depends=(
   'python-ofxparse'
   'python-passlib'
   'python-pillow'
+  'python-polib'
   'python-psutil'
   'python-psycopg2'
   'python-pydot'
@@ -46,14 +48,14 @@ depends=(
   'python-qrcode'
   'python-reportlab'
   'python-requests'
-  'python-suds'
+  'python-zeep'
   'python-vatnumber'
   'python-vobject'
   'python-werkzeug'
   'python-xlsxwriter'
   'python-xlwt'
   'python-xlrd'
-  'python-polib'
+  
 )
 
 source=("https://nightly.odoo.com/${pkgver}/nightly/src/${pkgname}_${pkgver}.${_pkgsubver}.tar.gz"
