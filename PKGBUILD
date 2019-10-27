@@ -4,7 +4,7 @@
 
 pkgname=yle-dl
 pkgver=20191022
-pkgrel=3
+pkgrel=1
 pkgdesc="Download video and audio from YLE Areena."
 arch=('any')
 url="http://aajanki.github.io/yle-dl/"
