@@ -1,18 +1,18 @@
 pkgbase = ruby-scss_lint
 	pkgdesc = Configurable tool for writing clean and consistent SCSS.
-	pkgver = 0.56.0
-	pkgrel = 2
+	pkgver = 0.59.0
+	pkgrel = 1
 	url = https://github.com/brigade/scss-lint
 	arch = any
 	license = MIT
+	makedepends = rubygems
 	makedepends = ruby-rdoc
 	depends = ruby
 	depends = ruby-sass
-	depends = ruby-rainbow
-	noextract = scss_lint-0.56.0.gem
+	noextract = scss_lint-0.59.0.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/scss_lint-0.56.0.gem
-	sha256sums = 0f04fa7e6a5a45535dc93c4f54026fab71bc8fcec17217c37310c460659e6e05
+	source = https://rubygems.org/downloads/scss_lint-0.59.0.gem
+	sha256sums = 67fbe3dc39cf6295147ea5093b3a1b6c0fe26dbcfcbd4823c3d5de64c9fccde8
 
 pkgname = ruby-scss_lint
 
