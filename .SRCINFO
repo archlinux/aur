@@ -1,6 +1,6 @@
 pkgbase = bsf-git
 	pkgdesc = A C++ library that aims to provide a unified foundation for the development of real-time graphical applications, whether games, engines or tools
-	pkgver = r4728.5b9720f5b
+	pkgver = r5221.41e122d24
 	pkgrel = 1
 	url = https://www.bsframework.io/
 	arch = x86_64
@@ -11,20 +11,20 @@ pkgbase = bsf-git
 	makedepends = ninja
 	source = git+https://github.com/GameFoundry/bsf.git
 	source = install-dir.patch
-	source = dont-strip-symbols.patch
-	source = https://data.banshee3d.com/bsfCompiledData_Master_13.zip
-	source = https://data.banshee3d.com/bsfData_Master_6.zip
+	source = https://data.banshee3d.com/bsfCompiledData_Master_35.zip
+	source = https://data.banshee3d.com/bsfData_Master_7.zip
 	source = https://data.banshee3d.com/bsfDocImagesData_Master_2.zip
-	source = https://data.banshee3d.com/bsfDependencies_Linux_Master_8.zip
-	source = https://data.banshee3d.com/bsfDep_XShaderCompiler_Linux_Master_1.zip
+	source = https://data.banshee3d.com/bsfDependencies_Linux_Master_11.zip
+	source = https://data.banshee3d.com/bsfDep_XShaderCompiler_Linux_Master_6.zip
+	source = https://data.banshee3d.com/SemanticUI.zip
 	sha256sums = SKIP
-	sha256sums = 4301910bd0c17e2747c08b27617fe3b4e5f10f70a78ffb29dcef4f23d52b4e16
-	sha256sums = 871c19f0e652efa2cbdaef34b6960ba9a81378b957cdf3701dc3f8733cb69cd6
-	sha256sums = 100e91e5ae58dd301adc0d5f31c972237a688f12682e0c0f21e200430728bf27
-	sha256sums = 3b5e087e200e786ab1a0b79d6f3cd04d4c70fde9337dc8082a13479f477d1025
+	sha256sums = 9291ac8fe6c125841179ae6d3af66d20c31105a0869e8a5d30982454240a62dc
+	sha256sums = 848973eef189b16b00947655d2895d0195f4078159884d585653390ca781d125
+	sha256sums = 212ec9fd67be4f58278de6d35ea8dc6f350009cbc741202b957a8b0337da84b3
 	sha256sums = e9d3793f87c4ff0a36f3574ecd070e4b6b25c567a063e3042d2dc5883636f011
-	sha256sums = 60c53790eda57495fefdad2bcc4a6a78198a330e70aeec71abc213edcc8b7036
-	sha256sums = 3e9063abfb04ae88cf0275d90783d37b87c3c84d2e2bea9a163b65641aa07d66
+	sha256sums = 2c8726abb0f6ec35d00bf7d30a75a3b74de1820672db177799898d8cbb359426
+	sha256sums = 41ff32953fceeb1166ac1ec8ae3ab49d3a55acfa6de993d27862d80a9fbf701b
+	sha256sums = d827f244a0dc9a41e012ebe165c3af2bce1da583e107635acd51012cec303121
 
 pkgname = bsf-git
 	arch = x86_64
@@ -44,6 +44,6 @@ pkgname = bsf-git
 	provides = bsf
 	conflicts = bsf
 
-pkgname = bsf-git-docs
+pkgname = bsf-docs-git
 	arch = any
 

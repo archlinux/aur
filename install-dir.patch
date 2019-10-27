@@ -1,12 +1,12 @@
 diff --git a/Source/CMake/BsEngineConfig.h.in b/Source/CMake/BsEngineConfig.h.in
-index 301aaf73f..db89006bf 100644
+index ef62cdc96..f586fa8e0 100644
 --- a/Source/CMake/BsEngineConfig.h.in
 +++ b/Source/CMake/BsEngineConfig.h.in
-@@ -7,18 +7,9 @@
+@@ -7,21 +7,12 @@
  #define BS_SCRIPTING_ENABLED @BS_SCRIPTING_ENABLED@
  
  /** Path to the framework source directory. */
--static constexpr const char* RAW_APP_ROOT = "@APP_ROOT_DIR@/"; 
+-static constexpr const char* RAW_APP_ROOT = "@APP_ROOT_DIR@/";
 +static constexpr const char* RAW_APP_ROOT = "@CMAKE_INSTALL_PREFIX@/share/bsf/";
  
  /** Path to the framework build directory. */
@@ -23,18 +23,42 @@ index 301aaf73f..db89006bf 100644
 -static constexpr const char* BINARIES_PATH = "@CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE@";
 -#endif
 +static constexpr const char* BINARIES_PATH = "@CMAKE_INSTALL_PREFIX@/lib/";
+ 
+ /** Banshee 3D related version stuff*/
+ #if BS_IS_BANSHEE3D
+diff --git a/Source/CMake/HelperMethods.cmake b/Source/CMake/HelperMethods.cmake
+index 6e61614ee..6c0bb66de 100644
+@@ -410,8 +410,6 @@ function(strip_symbols targetName outputFilename)
+ endfunction()
+ 
+ function(install_bsf_target targetName)
+-	strip_symbols(${targetName} symbolsFile)
+-	
+ 	if(NOT BS_IS_BANSHEE3D)
+ 		set(BIN_DIR bin)
+ 		install(
 diff --git a/Source/CMakeLists.txt b/Source/CMakeLists.txt
-index a35dc9bea..87831df61 100644
+index caf9213da..ed4971f1a 100644
 --- a/Source/CMakeLists.txt
 +++ b/Source/CMakeLists.txt
-@@ -220,8 +220,8 @@ endif()
+@@ -278,16 +278,16 @@ if(((SCRIPT_API AND (NOT SCRIPT_API MATCHES "None")) OR BS_IS_BANSHEE3D) AND SCR
+ endif()
+ 
+ if(NOT BS_IS_BANSHEE3D)
+-	set(DATA_DST_DIR bin)
++	set(DATA_DST_DIR share/bsf/)
+ else()
+ 	set(DATA_DST_DIR .)
+ endif()
  
  ## Install
  install(
 -	DIRECTORY ../Data
--	DESTINATION bin/
 +	DIRECTORY ../Data/
-+	DESTINATION share/bsf/
+ 	DESTINATION ${DATA_DST_DIR}
  	PATTERN "../Data/Raw" EXCLUDE
  	PATTERN ".version" EXCLUDE
  	PATTERN ".reqversion" EXCLUDE
+-)
+\ No newline at end of file
++)

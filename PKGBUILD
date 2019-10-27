@@ -1,8 +1,8 @@
 # Maintainer: Guillaume Meunier <guillaume.meunier@centraliens.net>
-pkgname=(bsf-git bsf-git-docs)
+pkgname=(bsf-git bsf-docs-git)
 pkgbase=bsf-git
 _pkgname=bsf
-pkgver=r4728.5b9720f5b
+pkgver=r5221.41e122d24
 pkgrel=1
 epoch=
 pkgdesc="A C++ library that aims to provide a unified foundation for the development of real-time graphical applications, whether games, engines or tools"
@@ -21,12 +21,12 @@ changelog=
 
 source=('git+https://github.com/GameFoundry/bsf.git'
         'install-dir.patch'
-        'dont-strip-symbols.patch'
-        'https://data.banshee3d.com/bsfCompiledData_Master_13.zip'
-        'https://data.banshee3d.com/bsfData_Master_6.zip'
+        'https://data.banshee3d.com/bsfCompiledData_Master_35.zip'
+        'https://data.banshee3d.com/bsfData_Master_7.zip'
         'https://data.banshee3d.com/bsfDocImagesData_Master_2.zip'
-        'https://data.banshee3d.com/bsfDependencies_Linux_Master_9.zip'
-        'https://data.banshee3d.com/bsfDep_XShaderCompiler_Linux_Master_1.zip')
+        'https://data.banshee3d.com/bsfDependencies_Linux_Master_11.zip'
+        'https://data.banshee3d.com/bsfDep_XShaderCompiler_Linux_Master_6.zip'
+        'https://data.banshee3d.com/SemanticUI.zip')
 noextract=()
 validpgpkeys=()
 
@@ -47,7 +47,6 @@ prepare() {
 	rm -rf "$_pkgname"/Dependencies/freeimg
 
 	patch -d bsf -p1 < install-dir.patch
-	patch -d bsf -p1 < dont-strip-symbols.patch
 }
 
 pkgver() {
@@ -68,7 +67,8 @@ build() {
 	ninja
 
 	cd ../Documentation/Doxygen
-	doxygen config.doxyconfig
+	doxygen native.doxyconfig
+	doxygen csharp.doxyconfig
 }
 
 package_bsf-git() {
@@ -87,18 +87,22 @@ package_bsf-git() {
 	install "$_pkgname"/LICENSE.md $pkgdir/usr/share/licenses/$pkgbase/
 }
 
-package_bsf-git-docs() {
+package_bsf-docs-git() {
 	arch=(any)
 
 	mkdir -p "$pkgdir"/usr/share/doc/$pkgbase
-	cp -r "$_pkgname"/Documentation/Generated/html/* "$pkgdir"/usr/share/doc/$pkgbase/
+	cp -r "$_pkgname"/Documentation/Generated/native "$pkgdir"/usr/share/doc/$pkgbase/
+	cp -r "$_pkgname"/Documentation/Generated/csharp "$pkgdir"/usr/share/doc/$pkgbase/
+
+	cp -r SemanticUI "$pkgdir"/usr/share/doc/$pkgbase/native/
+	cp -r SemanticUI "$pkgdir"/usr/share/doc/$pkgbase/csharp/
 }
 
 sha256sums=('SKIP'
-            '4301910bd0c17e2747c08b27617fe3b4e5f10f70a78ffb29dcef4f23d52b4e16'
-            '871c19f0e652efa2cbdaef34b6960ba9a81378b957cdf3701dc3f8733cb69cd6'
-            '100e91e5ae58dd301adc0d5f31c972237a688f12682e0c0f21e200430728bf27'
-            '3b5e087e200e786ab1a0b79d6f3cd04d4c70fde9337dc8082a13479f477d1025'
+            '9291ac8fe6c125841179ae6d3af66d20c31105a0869e8a5d30982454240a62dc'
+            '848973eef189b16b00947655d2895d0195f4078159884d585653390ca781d125'
+            '212ec9fd67be4f58278de6d35ea8dc6f350009cbc741202b957a8b0337da84b3'
             'e9d3793f87c4ff0a36f3574ecd070e4b6b25c567a063e3042d2dc5883636f011'
-            '300541083a4c27da9825cddaaca98dabb49175c84845ce40a45a0faaeeb23d4d'
-            '3e9063abfb04ae88cf0275d90783d37b87c3c84d2e2bea9a163b65641aa07d66')
+            '2c8726abb0f6ec35d00bf7d30a75a3b74de1820672db177799898d8cbb359426'
+            '41ff32953fceeb1166ac1ec8ae3ab49d3a55acfa6de993d27862d80a9fbf701b'
+            'd827f244a0dc9a41e012ebe165c3af2bce1da583e107635acd51012cec303121')
