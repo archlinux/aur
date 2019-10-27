@@ -19,8 +19,8 @@ sha256sums=(
     )
 license=('Poetic')
 provides=('xasm')
-depends=('glibc' 'dmd')
-makedepends=('gcc')
+depends=('glibc')
+makedepends=('dmd' 'patch')
 
 build() {
   cd "$srcdir/${pkgname}-xasm-${pkgver}"
