@@ -1,0 +1,15 @@
+pkgbase = python-devtools
+	pkgdesc = Dev tools for python. The debug print command python never had (and other things).
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://pypi.org/project/devtools
+	arch = any
+	license = LGPLv3
+	makedepends = python-setuptools
+	makedepends = python-pip
+	depends = python
+	source = devtools-0.5.1::https://pypi.python.org/packages/source/d/devtools/devtools-0.5.1.tar.gz
+	sha256sums = 51ca8d2e15b8a862875a4837db2bafbc6cda409c069e960aec3f4bbd91fe9c08
+
+pkgname = python-devtools
+
