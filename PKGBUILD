@@ -5,6 +5,14 @@
 # Maintainer: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Michael Kanis <mkanis_at_gmx_dot_de>
 
+
+### MERGE REQUESTS SELECTION
+
+# available MR: ('!429' '!493' '!575' '!579' '!724')
+_merge_requests_to_use=('!493' '!575' '!724')
+
+### IMPORTANT: Do no edit below this line unless you know what you're doing
+
 pkgname=mutter-performance
 pkgver=3.34.1+27+g85f5db7e7
 pkgrel=1
@@ -28,6 +36,7 @@ source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit
 sha256sums=('SKIP'
             '28aa24daed161f2566ca2b159beb43285184c533956b851a7eb318de741da935')
 
+
 pkgver() {
   cd $pkgname
   git describe --tags | sed 's/-/+/g'
@@ -48,6 +57,24 @@ git_cp_by_msg() {
     echo "Found $h_first for $1"
     git cherry-pick -n -Xtheirs $h_first
   fi
+}
+
+pick_mr() {
+  for mr in "${_merge_requests_to_use[@]}"; do
+    if [ "$1" = "$mr" ]; then
+      if [ "$3" = "merge" ]; then
+        echo "Merging $1..."
+        git cherry-pick -n $2
+      elif [ "$3" = "revert" ]; then
+        echo "Reverting $1..."
+        git revert "$2" --no-commit
+      else
+        echo "Merging latest commits for $1..."
+        git_cp_by_msg "$1" "$2" "$3"
+      fi
+      break
+    fi
+  done
 }
 
 prepare() {
@@ -86,40 +113,33 @@ prepare() {
   # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/493
   # Type: 1
   # Status: 3
-  # Comment: Disabled because breaks the overview on Wayland. https://gitlab.gnome.org/GNOME/mutter/merge_requests/493#note_549833
-  if [ -f "$HOME/.i_dont_use_wayland_on_gnome" ]; then
-    echo "OK, you dont use wayland on gnome"
-    git cherry-pick -n 3aa449af^..1017ce44
-  fi
+  # Comment: Not picked by default because breaks the overview on Wayland. https://gitlab.gnome.org/GNOME/mutter/merge_requests/493#note_549833
+  pick_mr '!493' 3aa449af^..1017ce44 'merge'
 
   # Title: Honour `CLUTTER_ACTOR_NO_LAYOUT` more efficiently
   # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/575
   # Type: 1
   # Status: 2
-  git_cp_by_msg '!575' 'clutter/stage: Add an API for shallow relayouts' 'clutter/actor: Use the new shallow relayout API'
+  pick_mr '!575' 'clutter/stage: Add an API for shallow relayouts' 'clutter/actor: Use the new shallow relayout API'
 
   # Title: clutter/stage: Update input devices right after doing a relayout
   # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/429
   # Type: 1
   # Status: 1
-  # git_cp_by_msg '!429' 'clutter/stage-cogl: Add method to check if ongoing repaint is clipped' 'clutter/stage: Use a device-manager method to update input devices'
+  pick_mr '!429' 'clutter/stage-cogl: Add method to check if ongoing repaint is clipped' 'clutter/stage: Use a device-manager method to update input devices'
 
   # Title: Sync timelines to hardware vsync
   # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/724
   # Type: 1
   # Status: 2
   # Comment:
-  git_cp_by_msg '!724' 'clutter/stage: Add API to get_next_presentation_time' 'clutter/master-clock-default: Sync timelines to hardware vsync'
-
+  pick_mr '!724' 'clutter/stage: Add API to get_next_presentation_time' 'clutter/master-clock-default: Sync timelines to hardware vsync'
 
   # By the way, the commit "backends/x11: Do not reload keymap on new keyboard notifications"
-  # has been reverted because it introduces #822 for certain keyboards in attempt to fix #398. 
-  # If you use stenography software or play hardcore rhythm games like Lunatic Rave 2/osumania, 
-  # you should revert the revert for that commit. 
-  if [ -f "$HOME/.i_dont_use_multiple_keyboard_layouts" ]; then
-    echo "OK, you dont use multiple keyboard layouts"
-    git revert ce86f90efbaa51522ba14c5b4cad933c2106de42 --no-commit
-  fi
+  # has been reverted because it introduces #822 for certain keyboards in attempt to fix #398.
+  # If you use stenography software or play hardcore rhythm games like Lunatic Rave 2/osumania,
+  # you should revert the revert for that commit.
+  pick_mr '!579' ce86f90efbaa51522ba14c5b4cad933c2106de42 'revert'
 
   patch -Np1 < ../fix-build.patch
 
