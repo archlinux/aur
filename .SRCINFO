@@ -1,7 +1,7 @@
 pkgbase = signal-desktop
 	pkgdesc = Electron application that links with Signal on mobile
 	pkgver = 1.27.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://signal.org
 	arch = x86_64
 	license = GPL3
@@ -11,12 +11,15 @@ pkgbase = signal-desktop
 	makedepends = nodejs>=12
 	makedepends = npm
 	makedepends = python
-	depends = electron
-	conflicts = signal
+	depends = electron>=6.1.1
+	provides = signal
+	replaces = signal
 	source = signal-desktop-1.27.4.tar.gz::https://github.com/signalapp/Signal-Desktop/archive/v1.27.4.tar.gz
+	source = openssl-linking.patch
 	source = signal-desktop.desktop
 	sha512sums = 92a934d7680f33803bd7be21f4604719b211036931a6e00565e21a7008d0b35da7dda5c6527458a9498f82a9c9a96a94b868274d1d7e73e09ccb09fe1aea295a
 	sha512sums = bcbf8ffc6f6f7e99e59b5ab1517ba231f1d3b2b16a0e27541580f028ebee5027685a8c397212c43008844be352d3b6acf2269e631bc2c6ba05c2eb95f56fef36
+	sha512sums = 2c10d4cc6c0b9ca650e786c1e677f22619a78c93465f27fc4cf4831f1cfe771f3b9885a416e381a9e14c3aea5d88cb3545264046188db72d54b8567266811e51
 
 pkgname = signal-desktop
 
