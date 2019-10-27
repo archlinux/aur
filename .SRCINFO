@@ -3,6 +3,7 @@ pkgbase = lf
 	pkgver = 13
 	pkgrel = 2
 	url = https://github.com/gokcehan/lf
+	arch = aarch64
 	arch = armv7h
 	arch = i686
 	arch = x86_64
