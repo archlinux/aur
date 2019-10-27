@@ -54,7 +54,7 @@ archlinux:
 # Update PKGBUILD and push changes to AUR
   - ./update.PKGBUILD
   - |
-     deps_update=$(git diff .SRCINFO|grep -oP "^\+\tdepends = \K.*") && [[ "$TRAVIS_EVENT_TYPE" =~ "push|cron" ]] && \
+     deps_update=$(git diff .SRCINFO|grep -oP "^\+\tdepends = \K.*") && [[ "$TRAVIS_EVENT_TYPE" =~ push|cron ]] && \
      ( . PKGBUILD
        git checkout master
        git config user.name "Travis"
@@ -63,7 +63,7 @@ archlinux:
        git remote add github git@github.com:bartoszek/AUR-${pkgname}.git
        echo "\$ git config"
        git config -l
-       git commit -a -m "Update denepdencies" -m "$deps_update" -m "[skip ci]"
+       git commit PKGBUILD .SRCINFO -m "Update denepdencies" -m "$deps_update" -m "[skip ci]"
        echo "\$ stat ~/.ssh/*"
        stat ~/.ssh/*
        echo "\$ git push"
