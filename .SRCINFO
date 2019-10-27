@@ -1,12 +1,15 @@
 pkgbase = aseprite
 	pkgdesc = Create animated sprites and pixel art
-	pkgver = 1.2.12
-	pkgrel = 2
+	pkgver = 1.2.15
+	pkgrel = 1
 	url = http://www.aseprite.org/
 	arch = x86_64
 	arch = i686
 	license = custom
 	makedepends = cmake
+	makedepends = ninja
+	makedepends = git
+	makedepends = python2
 	depends = cmark
 	depends = pixman
 	depends = curl
@@ -16,14 +19,79 @@ pkgbase = aseprite
 	depends = libjpeg-turbo
 	depends = tinyxml
 	depends = freetype2
-	depends = libwebp
 	depends = harfbuzz
+	depends = nettle
+	depends = fontconfig
+	depends = libxcursor
+	depends = desktop-file-utils
 	conflicts = aseprite-git
 	conflicts = aseprite-gpl
-	source = https://github.com/aseprite/aseprite/releases/download/v1.2.12/Aseprite-v1.2.12-Source.zip
+	source = https://github.com/aseprite/aseprite/releases/download/v1.2.15/Aseprite-v1.2.15-Source.zip
 	source = aseprite.desktop
-	sha256sums = 23ef408bc31e414fc09cc094fc7d53d00c8f57bf3ca2a97c852cc7af2e9fdbfb
+	source = git+https://chromium.googlesource.com/chromium/tools/depot_tools.git
+	source = git+https://github.com/aseprite/skia.git#branch=aseprite-m71
+	source = git+https://chromium.googlesource.com/chromium/buildtools.git#commit=505de88083136eefd056e5ee4ca0f01fe9b33de8
+	source = git+https://skia.googlesource.com/common.git#commit=9737551d7a52c3db3262db5856e6bcd62c462b92
+	source = angle2::git+https://chromium.googlesource.com/angle/angle.git#commit=956ab4d9fab36be9929e63829475d4d69b2c681c
+	source = git+https://android.googlesource.com/platform/external/dng_sdk.git#commit=96443b262250c390b0caefbf3eed8463ba35ecae
+	source = egl-registry::git+https://skia.googlesource.com/external/github.com/KhronosGroup/EGL-Registry#commit=a0bca08de07c7d7651047bedc0b653cfaaa4f2ae
+	source = git+https://android.googlesource.com/platform/external/expat.git#tag=android-6.0.1_r55
+	source = freetype::git+https://skia.googlesource.com/third_party/freetype2.git#commit=7edc937fe679d14d66f55cf6f7fa607925d38f3c
+	source = git+https://android.googlesource.com/platform/external/googletest#commit=dd43b9998e9a44a579a7aba6c1309407d1a5ed95
+	source = git+https://skia.googlesource.com/third_party/harfbuzz.git#tag=1.4.2
+	source = git+https://chromium.googlesource.com/chromium/deps/icu.git#commit=ec9c1133693148470ffe2e5e53576998e3650c1d
+	source = git+https://skia.googlesource.com/external/github.com/ocornut/imgui.git#commit=bc6ac8b2aee0614debd940e45bc9cd0d9b355c86
+	source = git+https://chromium.googlesource.com/external/github.com/open-source-parsers/jsoncpp.git#tag=1.0.0
+	source = git+https://skia.googlesource.com/external/github.com/libjpeg-turbo/libjpeg-turbo.git#tag=2.0.0
+	source = git+https://skia.googlesource.com/third_party/libpng.git#tag=v1.6.33
+	source = git+https://chromium.googlesource.com/webm/libwebp.git#tag=v0.6.1
+	source = git+https://skia.googlesource.com/external/github.com/lua/lua.git#tag=v5-3-4
+	source = microhttpd::git+https://android.googlesource.com/platform/external/libmicrohttpd#commit=748945ec6f1c67b7efc934ab0808e1d32f2fb98d
+	source = opencl-lib::git+https://skia.googlesource.com/external/github.com/GPUOpen-Tools/common-lib-amd-APPSDK-3.0#commit=4e6d30e406d2e5a65e1d65e404fe6df5f772a32b
+	source = opengl-registry::git+https://skia.googlesource.com/external/github.com/KhronosGroup/OpenGL-Registry#commit=14b80ebeab022b2c78f84a573f01028c96075553
+	source = git+https://android.googlesource.com/platform/external/piex.git#commit=bb217acdca1cc0c16b704669dd6f91a1b509c406
+	source = git+https://skia.googlesource.com/third_party/sdl#commit=5d7cfcca344034aff9327f77fc181ae3754e7a90
+	source = git+https://chromium.googlesource.com/external/github.com/googlei18n/sfntly.git#commit=b18b09b6114b9b7fe6fc2f96d8b15e8a72f66916
+	source = spirv-headers::git+https://skia.googlesource.com/external/github.com/KhronosGroup/SPIRV-Headers.git#commit=661ad91124e6af2272afd00f804d8aa276e17107
+	source = spirv-tools::git+https://skia.googlesource.com/external/github.com/KhronosGroup/SPIRV-Tools.git#commit=e9e4393b1c5aad7553c05782acefbe32b42644bd
+	source = swiftshader::git+https://swiftshader.googlesource.com/SwiftShader#commit=d6126aea667e37d2d7b57b0a381b9f26912a21b7
+	source = git+https://chromium.googlesource.com/chromium/src/third_party/zlib#commit=ea3ba903faac98b64b2bf8de5e98cd97b335a474
+	source = git+https://github.com/2d-inc/Nima-Cpp.git#commit=4bd02269d7d1d2e650950411325eafa15defb084
+	source = git+https://github.com/2d-inc/Nima-Math-Cpp.git#commit=e0c12772093fa8860f55358274515b86885f0108
+	source = gn::https://chromium-gn.storage-download.googleapis.com/2f27ff0b6118e5886df976da5effa6003d19d1ce
+	sha256sums = 813d6a099e1131f25f54e3935d6fdcdb1d0854ba757af074f3fc59dc869f38f4
 	sha256sums = c258fa38a0e0bd575f0bd744c4c3b60cf8d59d596c7572f84bd392e1c5e49b4f
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = c482981e91b5591ff85e055f3026956d6178aae3560ed984ff60b22e99351312
 
 pkgname = aseprite
 
