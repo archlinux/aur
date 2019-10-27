@@ -34,7 +34,7 @@ pkgbase = mutter-performance
 	replaces = mutter-781835-workaround
 	options = debug
 	options = !strip
-	source = mutter-performance::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=85f5db7e739bb524fa8e98c16dc59c95deb9ad66
+	source = mutter-performance::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=ef2f5f07f098d67d8fd1bba76d1df18d62daeb81
 	source = fix-build.patch
 	sha256sums = SKIP
 	sha256sums = 28aa24daed161f2566ca2b159beb43285184c533956b851a7eb318de741da935
