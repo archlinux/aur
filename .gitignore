@@ -1,1 +1,4 @@
-python-efb-wechat-slave/
+/src/
+/pkg/
+/python-efb-wechat-slave/
+*.pkg.tar.*
