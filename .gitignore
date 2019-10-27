@@ -1,4 +1,4 @@
-/src
-/pkg
-/python-ehforwarderbot
-*.pkg.tar.xz
+/src/
+/pkg/
+/python-ehforwarderbot/
+*.pkg.tar.*
