@@ -29,6 +29,8 @@ pkgbase = gimp-develop-git
 	makedepends = gjs
 	makedepends = python-gobject
 	makedepends = luajit
+	makedepends = meson
+	makedepends = xorg-server-xvfb
 	depends = lcms2>=2.8
 	depends = libwmf>=0.2.8
 	depends = icu
