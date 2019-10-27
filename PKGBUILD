@@ -2,16 +2,15 @@
 
 pkgbase=wxgtk-dev
 pkgname=(wxgtk2-dev wxgtk3-dev wxgtk-common-dev)
-pkgver=3.1.2
+pkgver=3.1.3
 pkgrel=1
 arch=('x86_64')
 url="https://wxwidgets.org"
 license=('custom:wxWindows')
 makedepends=('gst-plugins-base' 'gconf' 'glu' 'webkit2gtk' 'libnotify' 'gtk2')
 options=('!emptydirs')
-source=("https://github.com/wxWidgets/wxWidgets/releases/download/v$pkgver/wxWidgets-$pkgver.tar.bz2")
-sha1sums=('29cbbba946d2a7b4d28ca1db12315810cc8de74d')
-sha256sums=('4cb8d23d70f9261debf7d6cfeca667fc0a7d2b6565adb8f1c484f9b674f1f27a')
+source=("https://github.com/wxWidgets/wxWidgets/archive/v${pkgver}.tar.gz")
+sha256sums=('a5cb5ea326d76b5e472e9400933cef17c900d5c9b549e40eef00b64fe86d7cb0')
 
 prepare() {
   cp -a wxWidgets-${pkgver} wxWidgets-${pkgver}-gtk3
@@ -51,7 +50,7 @@ package_wxgtk-common-dev() {
 
 package_wxgtk2-dev() {
   pkgdesc='GTK+2 implementation of wxWidgets API for GUI'
-  depends=('gtk2' 'gst-plugins-base-libs' 'libsm' 'libxxf86vm' 'wxgtk-common' 'libnotify')
+  depends=('gtk2' 'gst-plugins-base-libs' 'libsm' 'libxxf86vm' 'wxgtk-common-dev' 'libnotify')
   conflicts=('wxgtk' 'wxgtk2')
   provides=('wxgtk' 'wxgtk2')
   replaces=('wxgtk')
@@ -65,7 +64,7 @@ package_wxgtk2-dev() {
 
 package_wxgtk3-dev() {
   pkgdesc='GTK+3 implementation of wxWidgets API for GUI'
-  depends=('gtk3' 'gst-plugins-base-libs' 'libsm' 'libxxf86vm' 'wxgtk-common' 'libnotify')
+  depends=('gtk3' 'gst-plugins-base-libs' 'libsm' 'libxxf86vm' 'wxgtk-common-dev' 'libnotify')
   optdepends=('webkit2gtk: for webview support')
   conflicts=('wxgtk<3.0.3.1-2' 'wxgtk3')
   provides=('wxgtk3')
