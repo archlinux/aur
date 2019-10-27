@@ -1,6 +1,6 @@
 pkgbase = linux-froidzen
 	pkgver = 5.3.7.zen1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/zen-kernel/zen-kernel/commits/v5.3.7-zen1
 	arch = x86_64
 	license = GPL2
@@ -26,7 +26,7 @@ pkgbase = linux-froidzen
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = 8218F88849AAC522E94CF470A5E9288C4FA415FA
 	sha256sums = SKIP
-	sha256sums = 3bb498771bc4088e8e5692b561bd1ca48d76373b351a5c34bac32addb74e644c
+	sha256sums = 74d5cf595db4ce777d17eeeea40de9ed57d4f88ee5d558b90ee65c353d390b55
 	sha256sums = 452b8d4d71e1565ca91b1bebb280693549222ef51c47ba8964e411b2d461699c
 	sha256sums = c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636
 	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
