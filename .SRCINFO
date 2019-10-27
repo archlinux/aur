@@ -1,0 +1,14 @@
+pkgbase = icecat-umatrix
+	pkgdesc = Point and click matrix to filter net requests by source, destination and type
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/gorhill/uMatrix
+	arch = any
+	groups = icecat-addons
+	license = GPL3
+	noextract = uMatrix.firefox.xpi
+	source = https://github.com/gorhill/uMatrix/releases/download/1.4.0/uMatrix.firefox.xpi
+	sha256sums = 8e00959b70ba6d676a63022594d4414ce6ea3a9d13bc3099f25d282a275fb160
+
+pkgname = icecat-umatrix
+
