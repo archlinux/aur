@@ -1,7 +1,7 @@
 # Maintainer: Daniel Ruiz de Alegría <daniel@drasite.com>
 
 pkgname="flat-remix-gnome"
-pkgver=20190926
+pkgver=20191027
 pkgrel=1
 pkgdesc="Flat Remix GNOME theme is a pretty simple shell theme inspired on material design following a modern design using \"flat\" colors with high contrasts and sharp borders."
 arch=('any')
