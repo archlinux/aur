@@ -28,7 +28,24 @@ build() {
 
 package() {
   cd "${GOPATH}/src/${_srcname}"
-  install -Dm755 ./lf "${pkgdir}"/usr/bin/lf
-  install -Dm644 ./LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
-  install -Dm644 ./README.md "${pkgdir}"/usr/share/doc/${pkgname}/README.md
+  install -Dm755 -t "${pkgdir}/usr/bin" \
+      ./lf
+
+  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" \
+      ./LICENSE
+
+  install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" \
+      ./README.md \
+      ./etc/lfrc.example
+
+  install -Dm644 -t "${pkgdir}/usr/share/man/man1" \
+      ./lf.1
+
+  install -Dm644 -t "${pkgdir}/usr/share/vim/vimfiles/syntax" \
+      ./etc/lf.vim
+  install -Dm644 -t "${pkgdir}/usr/share/vim/vimfiles/ftdetect" \
+      ./etc/lf.vim
+
+  install -Dm644 -t "${pkgdir}/usr/share/fish/vendor_completions.d" \
+      ./etc/lf.fish
 }
