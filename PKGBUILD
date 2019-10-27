@@ -1,12 +1,12 @@
 # Maintainer: Sefa Eyeoglu <contact@scrumplex.net>
 pkgname=libquotient-git
-pkgver=0.5.0.1.r109.g74caea2
-pkgrel=2
+pkgver=0.6.0.r249.g8a574f8
+pkgrel=1
 pkgdesc="A Qt5 library to write cross-platform clients for Matrix"
 arch=(x86_64)
 url="https://github.com/quotient-im/libQuotient"
 license=("LGPL2")
-depends=("qt5-base" "qt5-multimedia" "qt5-olm-git")
+depends=("qt5-base" "qt5-multimedia" "libolm")
 makedepends=("git" "cmake" "make" "gcc")
 provides=("libquotient")
 conflicts=("libquotient")
@@ -14,13 +14,25 @@ source=("${pkgname}::git+https://github.com/quotient-im/libQuotient.git")
 sha512sums=("SKIP")
 
 
+# Thanks to Morguldir <morguldir@protonmail.com> for this!
 pkgver() {
     cd "$pkgname"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+
+    _info="$(git blame -s CMakeLists.txt | grep set\(API)"
+    _commit="$(echo $_info | awk '{print $1}')"
+    _ver="$(echo $_info | awk '{print $4}' | sed s/[^0-9.]//g)"
+    _patch_ver="$(git blame -p CMakeLists.txt | grep project\(Quotient | sed s/[^0-9]//g)"
+    _revisions="$(git rev-list --count $_commit..HEAD)"
+    _current_commit="$(git log --pretty=format:'%h' -n 1)"
+    printf "%s.%d.r%d.g%s" $_ver $_patch_ver $_revisions $_current_commit
 }
 
 prepare() {
     mkdir -p "build"
+
+    cd "$srcdir/${pkgname}"
+    git submodule init
+    git submodule update
 }
 
 build() {
@@ -29,8 +41,7 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DCMAKE_BUILD_TYPE=Release \
-        -DBUILD_SHARED_LIBS=1 \
-        -DQMATRIXCLIENT_INSTALL_EXAMPLE=1
+        -DBUILD_SHARED_LIBS=1
 
     make
 }
@@ -40,6 +51,5 @@ package() {
     make DESTDIR="${pkgdir}" install
 
     cd "../$pkgname"
-    install -Dm 644 "examples/qmc-example.cpp" "${pkgdir}/usr/share/doc/${pkgname}/qmc-example.cpp"
     install -Dm 644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
