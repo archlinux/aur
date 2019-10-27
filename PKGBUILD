@@ -1,7 +1,7 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 _pyname=astropy-helpers
 pkgname=python-${_pyname}-doc
-pkgver=3.2.1
+pkgver=3.2.2
 pkgrel=1
 pkgdesc="Documentation for Astropy helpers"
 arch=(any)
@@ -9,7 +9,7 @@ url="https://astropy-helpers.readthedocs.io/"
 license=('BSD')
 makedepends=('python-sphinx-astropy')
 source=("https://github.com/astropy/astropy-helpers/archive/v${pkgver}.tar.gz")
-md5sums=('5d6bc9a3b4fadc73541c0105fef2299b')
+md5sums=('40f978d0c5fbd6b605ff759ab82e2b1b')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}/docs
