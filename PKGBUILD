@@ -5,7 +5,7 @@
 
 pkgname=lf
 pkgver=13
-pkgrel=2
+pkgrel=3
 license=('MIT')
 pkgdesc="A terminal file manager inspred by ranger written in Go"
 depends=('glibc')
