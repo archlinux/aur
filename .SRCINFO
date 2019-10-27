@@ -47,6 +47,7 @@ pkgbase = odoo
 	depends = python-xlsxwriter
 	depends = python-xlwt
 	depends = python-xlrd
+	depends = python-polib
 	conflicts = openerp
 	replaces = openerp
 	backup = etc/odoo/odoo.conf

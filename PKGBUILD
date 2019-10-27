@@ -53,6 +53,7 @@ depends=(
   'python-xlsxwriter'
   'python-xlwt'
   'python-xlrd'
+  'python-polib'
 )
 
 source=("https://nightly.odoo.com/${pkgver}/nightly/src/${pkgname}_${pkgver}.${_pkgsubver}.tar.gz"
