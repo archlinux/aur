@@ -2,12 +2,12 @@
 _pkgname=camouflage
 pkgname=$_pkgname-git
 pkgver=0.12.0.r2.g123d873
-pkgrel=1
+pkgrel=2
 pkgdesc="a mux websocket over TLS proxy, experimental version"
 arch=('x86_64')
 license=('MPL')
 depends=()
-makedepends=('go>=2:1.12' 'git')
+makedepends=('go>=2:1.13' 'git')
 url='https://github.com/Sherlock-Holo/camouflage'
 source=(
 	"git+https://github.com/Sherlock-Holo/camouflage"
