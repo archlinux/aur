@@ -1,0 +1,22 @@
+pkgbase = vapoursynth-plugin-neo_f3kdb-git
+	pkgdesc = Plugin for Vapoursynth: neo_f3kdb (GIT version)
+	pkgver = r2.0.gf805e0f
+	pkgrel = 1
+	url = https://github.com/HomeOfAviSynthPlusEvolution/neo_f3kdb.git
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = clang
+	depends = vapoursynth
+	provides = vapoursynth-plugin-neo_f3kdb
+	conflicts = vapoursynth-plugin-neo_f3kdb
+	conflicts = vapoursynth-plugin-flash3kyuu_deband
+	conflicts = vapoursynth-plugin-f3kdb
+	source = neo_f3kdb::git+https://github.com/HomeOfAviSynthPlusEvolution/neo_f3kdb.git
+	source = esee.patch
+	sha256sums = SKIP
+	sha256sums = 59eba3e8fe7c4a8b89d765c13d9928bcf311a5985d2c52baf95964b1cb46b337
+
+pkgname = vapoursynth-plugin-neo_f3kdb-git
+

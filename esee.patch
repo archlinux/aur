@@ -1,0 +1,10 @@
+diff --git a/src/flash3kyuu_deband_impl_sse4.cpp b/src/flash3kyuu_deband_impl_sse4.cpp
+index 477014f..ced10d0 100644
+--- a/src/flash3kyuu_deband_impl_sse4.cpp
++++ b/src/flash3kyuu_deband_impl_sse4.cpp
+@@ -1,4 +1,5 @@
+ #include <smmintrin.h>
++#include <stdint.h>
+ 
+ #include "flash3kyuu_deband_sse_base.h"
+ 
