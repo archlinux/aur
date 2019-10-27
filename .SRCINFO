@@ -1,23 +1,23 @@
 pkgbase = didjvu
 	pkgdesc = DjVu encoder with foreground/background separation
-	pkgver = 0.8.2
+	pkgver = 0.9
 	pkgrel = 1
 	url = http://jwilk.net/software/didjvu
 	arch = any
 	license = GPL2
-	depends = python2>=2.6
-	depends = gamera>=3.2.3
+	checkdepends = python2-nose
+	depends = python2>=2.7
+	depends = gamera>=3.3.2
 	depends = python2-pillow
 	depends = djvulibre>=3.5.22
 	depends = minidjvu>=0.8
-	depends = python2-configargparse
 	depends = libgexiv2>=0.10.3
 	depends = python2-gobject
-	source = https://github.com/jwilk/didjvu/releases/download/0.8.2/didjvu-0.8.2.tar.gz
-	source = https://github.com/jwilk/didjvu/releases/download/0.8.2/didjvu-0.8.2.tar.gz.asc
+	source = https://github.com/jwilk/didjvu/releases/download/0.9/didjvu-0.9.tar.gz
+	source = https://github.com/jwilk/didjvu/releases/download/0.9/didjvu-0.9.tar.gz.asc
 	validpgpkeys = CDB5A1243ACDB63009AD07212D4EB3A6015475F5
-	md5sums = 12b0eb70f45dd60dec09485480ffe304
-	md5sums = SKIP
+	sha256sums = 7b5dc4ce14c17d1f0442b4c9b266253f3b83e5940f89fc033e114ed1d0b4d977
+	sha256sums = SKIP
 
 pkgname = didjvu
 
