@@ -1,7 +1,7 @@
 pkgbase = iptables-fullconenat
 	pkgdesc = Linux kernel packet control tool with FULLCONENAT support.
 	pkgver = 1.8.3
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://www.netfilter.org/projects/iptables/index.html
 	install = iptables-fullconenat.install
@@ -51,7 +51,7 @@ pkgbase = iptables-fullconenat
 	sha1sums = 9cec592787e32451f58fa608ea057870e07aa704
 	sha1sums = d10af7780d1634778d898c709e2d950aa1561856
 	sha1sums = 15c1684f3e671f4d0ede639a7c9c08e1a841511c
-	sha1sums = b5dd6f51b9257150290a140453e09d38fb63c391
+	sha1sums = 6defc372f039b484948c9bb6d88737967818b2dd
 
 pkgname = iptables-fullconenat
 	pkgdesc = Linux kernel packet control tool with FULLCONENAT support. (using legacy interface)
