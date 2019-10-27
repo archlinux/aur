@@ -1,0 +1,29 @@
+--- xasm.d.orig	2019-10-27 07:30:11.264959439 +0100
++++ xasm.d	2019-10-27 07:34:17.302298521 +0100
+@@ -2929,16 +2929,16 @@
+ 		writeln(TITLE);
+ 	if (exitCode != 0) {
+ 		write(
+-			"Syntax: xasm source [options]\n"
+-			"/c             Include false conditionals in listing\n"
+-			"/d:label=value Define a label\n"
+-			"/i             Don't list included files\n"
+-			"/l[:filename]  Generate listing\n"
+-			"/o:filename    Set object file name\n"
+-			"/M             Print Makefile rule\n"
+-			"/p             Print absolute paths in listing and error messages\n"
+-			"/q             Suppress info messages\n"
+-			"/t[:filename]  List label table\n"
++			"Syntax: xasm source [options]\n" ~
++			"/c             Include false conditionals in listing\n" ~
++			"/d:label=value Define a label\n" ~
++			"/i             Don't list included files\n" ~
++			"/l[:filename]  Generate listing\n" ~
++			"/o:filename    Set object file name\n" ~
++			"/M             Print Makefile rule\n" ~
++			"/p             Print absolute paths in listing and error messages\n" ~
++			"/q             Suppress info messages\n" ~
++			"/t[:filename]  List label table\n" ~
+ 			"/u             Warn of unused labels\n");
+ 		return exitCode;
+ 	}

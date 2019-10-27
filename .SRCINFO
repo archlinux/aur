@@ -1,0 +1,19 @@
+pkgbase = xasm
+	pkgver = 3.1.0
+	pkgrel = 1
+	url = http://dasm-dillon.sourceforge.net/
+	arch = x86_64
+	license = Poetic
+	makedepends = gcc
+	depends = glibc
+	depends = dmd
+	provides = xasm
+	source = https://github.com/pfusik/xasm/archive/xasm-3.1.0.zip
+	source = 0001-hex.patch
+	source = 0002-string-concat.patch
+	sha256sums = 835e8a4e9971c263ddf3f82366a4909201cfb2f49e9a842b9d8ce0be397ba249
+	sha256sums = 3a619a404bf8b901e8f85606ac84ab89c35c4edee1df728a9eeeabddaf95098e
+	sha256sums = 7b37655e16a9de3ad2875ea68e738503492389e6822885c426a22a1c2b2a1aeb
+
+pkgname = xasm
+
