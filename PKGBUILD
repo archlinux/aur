@@ -25,16 +25,13 @@ optdepends=('pulseaudio: audio support'
             'jq: updater script support'
             'zenity: updater script support')
 conflicts=('firefox-nightly')
-install=${pkgname}.install
 source=('firefox-nightly.desktop'
-        'firefox-nightly-ru.install'
         'policies.json')
 source_i686=("${_date}-${_filename}.tar.bz2::${_baseurl}${_filename}-i686.tar.bz2"
         "${_date}-${_filename}.tar.bz2.asc::${_baseurl}${_filename}-i686.tar.bz2.asc")
 source_x86_64=("${_date}-${_filename}.tar.bz2::${_baseurl}${_filename}-x86_64.tar.bz2"
         "${_date}-${_filename}.tar.bz2.asc::${_baseurl}${_filename}-x86_64.tar.bz2.asc")
 sha512sums=('02bd8c8c717e6796fb1772f51c1bfd78ff3ca7c5355c08b9568dc36cb72b8b84330d20522653eedda12bdec1517cd4074a4bc5d51a8667880121e946b85c11ec'
-            'baff53b8c7e4f5a43314ab0d69498989f99e18c877d6429e083c0d460f14f6920ce0ba7405e76f827ac697a38c2d2a18a192a25b16f7d078bacbb8ad19b2e8e4'
             '5ed67bde39175d4d10d50ba5b12063961e725e94948eadb354c0588b30d3f97d2178b66c1af466a6e7bd208ab694227a1391c4141f88d3da1a1178454eba5308')
 sha512sums_i686=('SKIP' 'SKIP')
 sha512sums_x86_64=('SKIP' 'SKIP')
