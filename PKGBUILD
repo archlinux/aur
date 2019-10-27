@@ -1,8 +1,8 @@
 # Maintainer: Cameron Reikes<cameronreikes@gmail.com>
 
 pkgname=jevois-inventor
-pkgver=0.4.0
-pkgrel=4
+pkgver=0.5.0
+pkgrel=5
 pkgdesc="An easy to use GUI for programming the Jevois smart camera"
 arch=('i686' 'x86_64')
 url="https://github.com/jevois/jevois-inventor"
@@ -13,7 +13,7 @@ provides=("${pkgname}")
 source=("https://github.com/jevois/jevois-inventor/archive/${pkgver}.tar.gz"
 	"https://i.imgur.com/TgKOknB.png"
 	"${pkgname}.desktop")
-sha256sums=('4bc4589c3f724387f3cddf51c9f71990e933788b8becfbf40433c40fc980bbfb'
+sha256sums=('d468cd9e6f603f7e9236b775cd1f8267dad7256263db93062932123904e899aa'
 	'fa1038a63572327f680c68e89fbc6b35a249037232957388538fdba44227a185'
 	'SKIP')
 
