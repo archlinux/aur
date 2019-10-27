@@ -2,7 +2,7 @@
 
 pkgname=python-clicolor
 _name=${pkgname#python-}
-pkgver=1.0.6
+pkgver=1.0.7
 pkgrel=1
 pkgdesc="Quick python reference for terminal color escape codes"
 arch=('any')
@@ -14,7 +14,7 @@ provides=('python-clicolor')
 conflicts=('python-clicolor')
 
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('a29994261c1c65aa0d05d8405ebd9b7b7ea1cb833696afc0eb0b5fc69c987d9b')
+sha256sums=('cdd13b78654a6bb06486597c5292cdf0fe482cea1025e854b5256f0d159cd49a')
 
 build() {
     cd "$srcdir/$_name-$pkgver"
@@ -24,5 +24,6 @@ build() {
 package() {
     cd "$srcdir/$_name-$pkgver"
     python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
