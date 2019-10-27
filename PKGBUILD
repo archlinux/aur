@@ -2,8 +2,8 @@
 
 _plug=acsuite
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r2.04194ad
-pkgrel=2
+pkgver=r4.157f7d5
+pkgrel=3
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
 url='https://github.com/OrangeChannel/acsuite'
