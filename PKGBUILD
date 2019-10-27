@@ -3,23 +3,22 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=scribus-svn
-pkgver=23196
+pkgver=23281
 pkgrel=1
 pkgdesc="A desktop publishing program - Version from SVN"
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL')
 url="http://www.scribus.net"
-depends=('hunspell' 'podofo' 'python2' 'libcups' 'graphicsmagick'
-	 'poppler' 'libcdr' 'libvisio' 'libpagemaker' 'harfbuzz-icu'
-	 'qt5-declarative' 'libmspub' 'openscenegraph' 'libwmf'
-	 'desktop-file-utils' 'libqxp' 'libzmf' 'libfreehand')
+depends=('hunspell' 'podofo' 'libcups' 'graphicsmagick' 'poppler'
+	 'libcdr' 'libvisio' 'libpagemaker' 'harfbuzz-icu' 'python'
+	 'qt5-declarative' 'libmspub' 'openscenegraph' 'libqxp'
+	 'desktop-file-utils' 'libzmf' 'libfreehand')
 makedepends=('subversion' 'cmake' 'qt5-tools')
 optdepends=('lib2geom: for mesh distortion')
 conflicts=('scribus')
 provides=('scribus')
-source=('scribus::svn://scribus.net/trunk' python2.patch)
-sha256sums=('SKIP'
-            '1801f9b1fbabeee33112c48e706706072e1e60b1160b1723c9bb80df0b4e2c66')
+source=('scribus::svn://scribus.net/trunk')
+sha256sums=('SKIP')
 _svnmod='scribus'
 
 pkgver() {
@@ -28,18 +27,13 @@ pkgver() {
   printf "%s" "${ver//[[:alpha:]]}"
 }
 
-prepare() {
-  cd $_svnmod/Scribus
-  patch -Np1 < "$srcdir"/python2.patch || true
-}
-
 build() {
   cd $_svnmod/Scribus
   cmake . -DCMAKE_INSTALL_PREFIX:PATH=/usr \
 	-DCMAKE_SKIP_RPATH:BOOL=YES \
 	-DWANT_GRAPHICSMAGICK:BOOL=YES \
 	-DCMAKE_LIBRARY_PATH:PATH=/usr/lib \
-	-DCMAKE_INCLUDE_PATH:PATH=/usr/include/python2.7 \
+	-DCMAKE_INCLUDE_PATH:PATH=/usr/include/python3.7 \
 	-DCMAKE_EXE_LINKER_FLAGS:STRING="-lQt5Quick -lQt5PrintSupport" \
 	-DQT_PREFIX:PATH="/usr" -DWANT_SVNVERSION:BOOL=YES
   make
