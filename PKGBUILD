@@ -1,7 +1,7 @@
 # Maintainer: Thomas Andrejak <thomas.andrejak@gmail.com>
 
 pkgname=prelude-lml
-pkgver=5.0.0
+pkgver=5.1.0
 pkgrel=1
 pkgdesc="The prelude log analyzer"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPLv2')
 depends=('gamin' 'pcre' 'gtk-doc' 'libprelude')
 optdepends=('syslog-ng: store logs in syslog files to let prelude-lml read it'
             'rsyslog: store logs in syslog files to let prelude-lml read it')
-source=("https://www.prelude-siem.org/pkg/src/5.0.0/$pkgname-$pkgver.tar.gz"
+source=("https://www.prelude-siem.org/pkg/src/5.1.0/$pkgname-$pkgver.tar.gz"
         "prelude-lml.run"
         "prelude-lml.service"
         "prelude-lml-conf.patch")
@@ -37,4 +37,4 @@ prepare() {
   patch -p0 <prelude-lml-conf.patch
 }
 
-md5sums=('7becdbf625f0aff45a975d9db39bc4f2' '826320a9f19db7e179d7cccb0828eb36' '6418c224e5053f6383bdb625bb5ab03f' '2443d976ce2e9cc04480d0cd18d91191')
+md5sums=('d3fb98b9fef480fe843d606742a168e5' '826320a9f19db7e179d7cccb0828eb36' '6418c224e5053f6383bdb625bb5ab03f' '85a5a677313ef6a54c2b398d1e619e5c')
