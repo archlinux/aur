@@ -1,14 +1,14 @@
 # Maintainer: Thomas Andrejak <thomas.andrejak@gmail.com>
 
 pkgname=prelude-lml-rules
-pkgver=5.0.0
+pkgver=5.1.0
 pkgrel=1
 pkgdesc="Prelude LML community ruleset"
 arch=('i686' 'x86_64')
 url="https://www.prelude-siem.org"
 license=('GPLv2')
 depends=('prelude-lml')
-source=("https://www.prelude-siem.org/pkg/src/5.0.0/$pkgname-$pkgver.tar.gz")
+source=("https://www.prelude-siem.org/pkg/src/5.1.0/$pkgname-$pkgver.tar.gz")
 backup=('etc/prelude-lml/ruleset/pcre.rules')
 
 package() {
@@ -20,4 +20,4 @@ package() {
   install -m 0755 src/prelude-lml-rules-check "$pkgdir/usr/bin/"
 }
 
-md5sums=('f524da1053be96bedbccc3d9eca2b343')
+md5sums=('3c686aafd05630e2f51eef5a3313a981')
