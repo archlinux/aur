@@ -21,5 +21,11 @@ pkgver() {
 package() {
   cd "${pkgname}"
   python setup.py install --root="${pkgdir}/" --optimize=1
+
+  install -Dm644 completion/dotdrop-completion.bash "${pkgdir}/usr/share/bash-completion/completions/dotdrop"
+  install -Dm644 completion/dotdrop.sh-completion.bash "${pkgdir}/usr/share/bash-completion/completions/dotdrop.sh"
+
+  install -Dm644 completion/_dotdrop-completion.zsh "${pkgdir}/usr/share/zsh/site-functions/_dotdrop"
+  install -Dm644 completion/_dotdrop.sh-completion.zsh "${pkgdir}/usr/share/zsh/site-functions/_dotdrop.sh"
 }
 
