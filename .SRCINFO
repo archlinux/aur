@@ -8,6 +8,7 @@ pkgbase = python-devtools
 	makedepends = python-setuptools
 	makedepends = python-pip
 	depends = python
+	depends = python-pygments
 	source = devtools-0.5.1::https://pypi.python.org/packages/source/d/devtools/devtools-0.5.1.tar.gz
 	sha256sums = 51ca8d2e15b8a862875a4837db2bafbc6cda409c069e960aec3f4bbd91fe9c08
 
