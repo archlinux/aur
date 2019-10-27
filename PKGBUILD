@@ -1,7 +1,7 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 _pyname=crds
 pkgname=python-${_pyname}-doc
-pkgver=7.4.1.1
+pkgver=7.4.1.2
 pkgrel=1
 pkgdesc="Documentation for STScI CRDS"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('BSD')
 makedepends=("python-${_pyname}=${pkgver}" 'python-sphinx-astropy' 'python-sphinx_rtd_theme' 'python-stsci_rtd_theme')
 source=("https://github.com/spacetelescope/${_pyname}/archive/${pkgver}.tar.gz"
         'fix_doc_warning.patch')
-md5sums=('3d018e7ef610ea959009495fd5c47ca0'
+md5sums=('3c8676196007e48a91dce2850a6d1cbe'
          '647db347dbb750a10b37c2e24090403f')
 
 prepare() {
