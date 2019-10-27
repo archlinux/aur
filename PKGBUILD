@@ -1,7 +1,7 @@
 # Maintainer: Oliver Friedrich <olifriedrich at gmail dot com>
 
 pkgname='tonelib-gfx-bin'
-pkgver=3.9.9
+pkgver=4.0.1
 pkgrel=1
 pkgdesc="ToneLib GFX – the perfect custom tone with a complete guitar studio in your computer!"
 arch=('x86_64')
@@ -11,7 +11,7 @@ url="https://tonelib.net/gfx-overview/"
 depends=('gtk3' 'glib2' 'desktop-file-utils' 'alsa-lib' 'harfbuzz' 'fribidi' 'pango' 'freetype2')
 optdepends=('jack: JACK output')
 source=("https://www.tonelib.net/download/${filename}")
-sha256sums=('8db5027050c1914a0125506e419c45a34aa6cd20770ae717f4e67c05255918bc')
+sha256sums=('85df797d7f5fc4f6e0957fef13840c25c1349f31951bc8face27454f9c34b1fb')
 
 package () {
     tar xf data.tar.xz -C "${pkgdir}"
