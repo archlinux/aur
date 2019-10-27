@@ -3,7 +3,7 @@
 # Contributor sumt <sumt at sci dot fi>
 
 pkgname=yle-dl
-pkgver=20190614
+pkgver=20191022
 pkgrel=3
 pkgdesc="Download video and audio from YLE Areena."
 arch=('any')
@@ -24,14 +24,13 @@ optdepends=('php: for downloading live TV and certain news broadcasts'
 	    'youtube-dl: an alternative downloader backend to AdobeHDS.php'
             'wget: for some rare streams')
 makedepends=('python-setuptools')
-source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/y/yle-dl/yle-dl-${pkgver}.tar.gz"
-	"python-attrs.patch")
-sha256sums=('c8c88cd6d48426623c008ccbe6efec1d06e61a9316dda82313070589469303bb'
-            '4608d89261c6fd41cf3a5c96d9bee739874e4665366280bea4282b7c19894d4c')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/y/yle-dl/yle-dl-${pkgver}.tar.gz")
+sha256sums=('6e4ef38c5162ddd3da800c7c97c5fcb3dc4d12f9809a9d9d949c114877714801')
 
+# Patching setup.py to allow attrs 19.3
 prepare() {
   cd $pkgname-$pkgver
-  patch -Np1 -i "${srcdir}/python-attrs.patch"
+  sed -i 's/attrs >= 18.1.0, < 19.3.0'/'attrs >= 18.1.0, < 19.4.0/g' setup.py
 }
 
 build() {
