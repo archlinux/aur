@@ -1,18 +1,18 @@
 pkgbase = realize
 	pkgdesc = Golang live reload and task runner
 	pkgver = 2.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/oxequa/realize
 	arch = x86_64
 	license = GPL
-	makedepends = go>=1.11
+	makedepends = go
 	makedepends = git
-	depends = glibc
-	provides = realize
+	makedepends = dep
 	conflicts = realize-git
-	options = !strip
 	source = realize-2.0.2.tar.gz::https://github.com/oxequa/realize/archive/v2.0.2.tar.gz
+	source = realize.patch
 	sha512sums = 8e68504710552a487dcec92e6295d18ea830d29192c4c3d1af316589861a04325b99765eb0051adb7ecb8ff344d98bf667453d7bbd8e6d588a44db446f267a56
+	sha512sums = 60f5eddc6efc3a4767f2fb0aa3f174ed1188d379fec24b3009103c27ba5c02d623990b313d424dc0f5bcb5d9e7ac5e2276649ab0d2c6ab270b8902ba8b770ab5
 
 pkgname = realize
 

@@ -1,0 +1,50 @@
+diff --git a/Gopkg.toml b/Gopkg.toml
+index a0e9380..ee3699f 100644
+--- a/Gopkg.toml
++++ b/Gopkg.toml
+@@ -28,10 +28,6 @@
+   name = "github.com/fsnotify/fsnotify"
+   version = "1.4.2"
+ 
+-[[constraint]]
+-  name = "github.com/go-siris/siris"
+-  version = "7.4.0"
+-
+ [[constraint]]
+   name = "github.com/labstack/echo"
+   version = "3.2.5"
+diff --git a/realize/cli.go b/realize/cli.go
+index 81ed142..25d6ee5 100644
+--- a/realize/cli.go
++++ b/realize/cli.go
+@@ -3,7 +3,7 @@ package realize
+ import (
+ 	"fmt"
+ 	"github.com/fsnotify/fsnotify"
+-	"github.com/go-siris/siris/core/errors"
++	"errors"
+ 	"go/build"
+ 	"log"
+ 	"os"
+@@ -18,7 +18,7 @@ var (
+ 	// RPrefix tool name
+ 	RPrefix = "realize"
+ 	// RVersion current version
+-	RVersion = "2.1"
++	RVersion = "2.0.2"
+ 	// RExt file extension
+ 	RExt = ".yaml"
+ 	// RFile config file name
+diff --git a/realize/server.go b/realize/server.go
+index 250f118..cbc3e5f 100644
+--- a/realize/server.go
++++ b/realize/server.go
+@@ -14,7 +14,7 @@ import (
+ 	"os/exec"
+ 	"runtime"
+ 	"strconv"
+-	"github.com/go-siris/siris/core/errors"
++	"errors"
+ )
+ 
+ // Dafault host and port
