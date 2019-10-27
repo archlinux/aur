@@ -1,8 +1,8 @@
 pkgbase = element-git
 	pkgdesc = a modular AU/LV2/VST/VST3 audio plugin host.
-	pkgver = 0.1
+	pkgver = 0.40.0.r17.gbd619ea
 	pkgrel = 1
-	url = https://github.com/mfcc64/mpv-scripts
+	url = https://github.com/kushview/Element
 	arch = x86_64
 	license = GPL
 	makedepends = git
@@ -16,6 +16,7 @@ pkgbase = element-git
 	depends = lv2
 	depends = lilv
 	depends = ladspa
+	depends = suil
 	source = element-git::git+https://github.com/kushview/Element
 	md5sums = SKIP
 
