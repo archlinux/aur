@@ -1,7 +1,7 @@
 
 pkgname=mingw-w64-arpack
 pkgver=3.7.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc='Fortran77 subroutines designed to solve large scale eigenvalue problems (mingw-w64)'
 url='http://forge.scilab.org/index.php/p/arpack-ng/'
@@ -19,7 +19,7 @@ build() {
   ./bootstrap
   for _arch in ${_architectures}; do
     mkdir -p "build-${_arch}" && pushd "build-${_arch}"
-    ${_arch}-configure
+    ${_arch}-configure --enable-icb
     make
     popd
   done
