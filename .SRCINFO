@@ -1,7 +1,7 @@
 pkgbase = hdfview
 	pkgdesc = a GUI browser for reading hdf5 files
-	pkgver = 3.0
-	pkgrel = 4
+	pkgver = 3.1.0
+	pkgrel = 1
 	url = https://www.hdfgroup.org/downloads/hdfview/
 	arch = x86_64
 	license = custom
@@ -12,14 +12,14 @@ pkgbase = hdfview
 	conflicts = hdfview-beta
 	replaces = hdfview-beta
 	options = !strip
-	source = https://support.hdfgroup.org/ftp/HDF5/releases/HDF-JAVA/hdfview-3.0/src/hdfview-3.0.tar.gz
-	source = license
+	source = https://support.hdfgroup.org/ftp/HDF5/releases/HDF-JAVA/hdfview-3.1/src/hdfview-3.1.0.tar.gz
+	source = build.patch
 	source = HDFView.desktop
-	source = HDFView.ico
-	sha512sums = 8d1c0e4c063153fa4bfac80c6f85e9a6f0e879e706d77ba31db20eca105bc7c72852edd2aa1ada38446b2bd44581291faa0d93c3cc3a4086f153a35dcd619061
-	sha512sums = d831e3211c67480728488e1e2df2596d41381c5ba7b8451ea0f5174d9a34f224133d9cbaa81728cb68560328054663e8940de86db4777de8b46b65f080de9674
-	sha512sums = 42cbf32c91c4bfd3984d2ef130d8357c28269660117ad210039d9599904688853674f6626a7663c17cf0927895e5cbbede719b6766ff19ace43a5447421a4709
-	sha512sums = bc2bb9ffa22140c1b6b5448ed310a8dbb839ddcf802ec327f32f904f0e77e0034bb26fabeb5d9e4e8ce8d334333327a2bd08b8e07f0313e85ef50afe0be41cfe
+	source = HDF_logo.svg
+	sha512sums = ae9b180c0da2b4b9a39189a7e42068435e29802469488b5880c4eea6e9cc4a63ad19b5c90529e55cbd62e4085379259782d404105b85ec52b837196fd43701a0
+	sha512sums = 18a20af53ea2c075a26e22dbab6d7cecb67bead97db49569963e60d589c59f183ad97e796f0a2b67b59cdd311ff2831a134d69ee560a50c2ff8e821472ac82cb
+	sha512sums = c92d8cd4818feabb996b43c81e4e554e16f8120c80c73a5b7cc8bb2c4c4a59bdd47d42b19ec7a3454f855155ba17b65631e7016f891f29ef4ee8fd4ee45caf90
+	sha512sums = 649eb81f33a3b38a7ae2ee9a7f286ffa489d0bd7a9f37a0face64fe7956863dcab2131be3792c45dc03b1a6955fda2b37d168698922e938b73c90d24fee7a8c4
 
 pkgname = hdfview
 
