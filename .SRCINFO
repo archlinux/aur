@@ -8,6 +8,7 @@ pkgbase = python-relic
 	license = BSD
 	checkdepends = python-pytest
 	checkdepends = python2-pytest
+	checkdepends = git
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
 	source = https://files.pythonhosted.org/packages/source/r/relic/relic-1.1.2.tar.gz
