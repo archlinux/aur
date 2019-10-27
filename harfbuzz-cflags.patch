@@ -1,0 +1,13 @@
+diff --git a/build-lin.sh b/build-lin.sh
+index 7716b30..0dfc92d 100755
+--- a/build-lin.sh
++++ b/build-lin.sh
+@@ -32,5 +32,8 @@ popd
+ mkdir -p build
+ cd build
+
++# We must set these cxxflags so harfbuzz header is found:
++# https://gitlab.kitware.com/cmake/cmake/issues/19531
++CXXFLAGS=$(pkgconf --cflags harfbuzz) \
+ cmake $@ .. || exit 1
+ make -j || exit 1
