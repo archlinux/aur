@@ -1,13 +1,17 @@
 # Maintainer: Donald Webster <fryfrog@gmail.com>
 
 pkgname=lazylibrarian-git
-pkgver=r4240.56edaae6
+pkgver=r4281.dff36bd8
 pkgrel=1
 pkgdesc="Automatic Book Downloading via NZBs & Torrent"
 arch=('any')
 url="https://gitlab.com/LazyLibrarian/LazyLibrarian/"
 license=('GPL3')
-depends=('python')
+depends=('python'
+         'python-unrardll'
+         'python-apprise'
+         'python-pyopenssl'
+         'python-gobject')
 makedepends=('git')
 install='lazylibrarian.install'
 options=(!strip)
