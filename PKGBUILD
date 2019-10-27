@@ -212,7 +212,6 @@ extract_rpms() {
 }
 
 set_build_vars() {
-  _pkg_ver=${pkgver}
   _composer_xe_dir="compilers_and_libraries_${_year}.${_v_a}.${_v_b}"
   rpm_dir=${srcdir}/${_parallel_studio_xe_dir}/rpm
   xe_build_dir=${srcdir}/cxe_build
@@ -334,7 +333,6 @@ package_intel-common-libs() {
   set_build_vars
 
   pkgdesc="Intel Common Libraries $_icc_ver"
-  pkgver=${_pkg_ver}
 
   mkdir -p ${xe_build_dir}
   cd ${xe_build_dir}
@@ -359,7 +357,6 @@ package_intel-openmp() {
   set_build_vars
 
   pkgdesc="Intel OpenMP Implementation ${_icc_ver}"
-  pkgver=${_pkg_ver}
   depends=("intel-common-libs=$pkgver")
 
   mkdir -p ${xe_build_dir}
@@ -378,7 +375,6 @@ package_intel-compiler-base() {
   set_build_vars
 
   pkgdesc="Intel C/C++ $_icc_ver"
-  pkgver=${_pkg_ver}
   depends=("intel-common-libs=$pkgver"
            "intel-openmp=$pkgver")
   install=intel-composer.install
@@ -442,7 +438,6 @@ package_intel-fortran-compiler() {
   set_build_vars
 
   pkgdesc="Intel Fortran compiler $_icc_ver"
-  pkgver=${_pkg_ver}
   depends=("intel-compiler-base=$pkgver")
   install=intel-composer.install
 
@@ -491,7 +486,6 @@ package_intel-ipp() {
   set_build_vars
 
   pkgdesc="Intel Integrated Performance Primitives"
-  pkgver=${_pkg_ver}
   install=intel-composer.install
 
   mkdir -p ${xe_build_dir}
@@ -534,7 +528,6 @@ package_intel-mkl() {
   set_build_vars
 
   pkgdesc="Intel Math Kernel Library (Intel® MKL)"
-  pkgver=${_pkg_ver}
   depends=("intel-common-libs=$pkgver")
   optdepends=("intel-openmp: Intel OpenMP Implementation")
   install=intel-mkl.install
@@ -587,7 +580,6 @@ package_intel-mpi() {
   set_build_vars
 
   pkgdesc="Intel MPI library"
-  pkgver=${_pkg_ver}
 
   mkdir -p ${xe_build_dir}
   cd ${xe_build_dir}
@@ -631,7 +623,6 @@ package_intel-tbb_psxe() {
   set_build_vars
 
   pkgdesc="Intel Threading Building Blocks (TBB)"
-  pkgver=${_pkg_ver}
   install=intel-tbb.install
 
   mkdir -p ${xe_build_dir}
@@ -670,7 +661,6 @@ package_intel-vtune-amplifier() {
   set_build_vars
 
   pkgdesc="Performance profiler for serial and parallel performance analysis $_vtune_ver"
-  pkgver=${_pkg_ver}
   depends=('pangox-compat')
 
   mkdir -p ${xe_build_dir}
@@ -713,7 +703,6 @@ package_intel-advisor() {
   set_build_vars
 
   pkgdesc="Threading design and prototyping tool for software architects $_advisor_ver"
-  pkgver=${_pkg_ver}
   conflicts=( 'intel-advisor-xe' )
 
   mkdir -p ${xe_build_dir}
@@ -754,7 +743,6 @@ package_intel-advisor() {
 package_intel-inspector() {
   set_build_vars
   pkgdesc="Memory and thread debugger $_inspector_ver"
-  pkgver=${_pkg_ver}
   conflicts=('intel-inspector-xe')
 
   mkdir -p ${xe_build_dir}
