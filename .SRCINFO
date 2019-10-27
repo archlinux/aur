@@ -1,0 +1,16 @@
+pkgbase = vapoursynth-plugin-edgefixer-git
+	pkgdesc = Plugin for Vapoursynth: edgefixer
+	pkgver = r1.8.gfb00a01
+	pkgrel = 1
+	url = https://github.com/sekrit-twc/znedi3
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = vapoursynth
+	provides = vapoursynth-plugin-edgefixer
+	conflicts = vapoursynth-plugin-edgefixer
+	source = edgefixer::git+https://github.com/sekrit-twc/EdgeFixer.git
+	sha256sums = SKIP
+
+pkgname = vapoursynth-plugin-edgefixer-git
+
