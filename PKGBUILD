@@ -18,7 +18,7 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'alsa-lib: Audio support'
             'jack: Audio support'
             'speech-dispatcher: Text-to-Speech')
-provides=("waterfox-classic=${pkgver}", "waterfox-classic-kde=${pkgver}")
+provides=("waterfox-classic=${pkgver}" "waterfox-classic-kde=${pkgver}")
 conflicts=('waterfox-classic' 'waterfox-kde')
 replaces=('waterfox-kde')
 options=('!emptydirs' '!makeflags' 'zipman')

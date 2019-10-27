@@ -43,7 +43,7 @@ pkgbase = waterfox-classic-kpe
 	optdepends = alsa-lib: Audio support
 	optdepends = jack: Audio support
 	optdepends = speech-dispatcher: Text-to-Speech
-	provides = waterfox-classic=2019.10,
+	provides = waterfox-classic=2019.10
 	provides = waterfox-classic-kde=2019.10
 	conflicts = waterfox-classic
 	conflicts = waterfox-kde
