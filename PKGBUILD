@@ -3,7 +3,7 @@ _orgname=huzheng001
 _pkgname=stardict-3
 _basever=3.0.6
 pkgname=stardict-tools-git
-pkgver=3.0.6.r657.6a5b1d4
+pkgver=3.0.6.r660.f154d79
 pkgrel=1
 pkgdesc='Stardict tools'
 arch=('i686' 'x86_64')
@@ -31,6 +31,7 @@ build() {
   ./autogen.sh
   ./configure --prefix=/usr --disable-dict
   sed -i 's/noinst_PROGRAMS =/bin_PROGRAMS =/' tools/src/Makefile
+  sed -i 's/MYSQL_PORT/0/' tools/src/wikipediaImage.cpp
   make
 }
 
