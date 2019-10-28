@@ -2,8 +2,8 @@
 # Contributor: Bryan Ischo <bryan@ischo.com>
 pkgname=libs3-git
 _gitname=libs3
-pkgver=267.537bb7b
-pkgrel=2
+pkgver=278.287e4be
+pkgrel=1
 pkgdesc="C Library and Tools for Amazon S3 Access"
 arch=('i686' 'x86_64')
 url="https://github.com/bji/libs3"
@@ -17,7 +17,7 @@ replaces=()
 backup=()
 options=()
 install=
-source=("git://github.com/bji/${_gitname}.git#commit=537bb7b59bbf3d9eb322eb807d329bb701075a88"
+source=("git://github.com/bji/${_gitname}.git#commit=287e4bee6fd430ffb52604049de80a27a77ff6b4"
         'added_s3_versioning_support.patch')
 noextract=()
 sha256sums=('SKIP'

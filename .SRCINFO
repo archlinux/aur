@@ -13,7 +13,7 @@ pkgbase = libs3-git
 	depends = libxml2
 	depends = openssl
 	depends = curl
-	source = git://github.com/bji/libs3.git#commit=537bb7b59bbf3d9eb322eb807d329bb701075a88
+	source = git://github.com/bji/libs3.git#commit=287e4bee6fd430ffb52604049de80a27a77ff6b4
 	source = added_s3_versioning_support.patch
 	sha256sums = SKIP
 	sha256sums = 0549154da30ef026b334a83cb69e168f7bb243a17569f54bbc57f0840d76f8c2
