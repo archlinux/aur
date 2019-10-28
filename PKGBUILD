@@ -2,12 +2,12 @@
 
 pkgname=hikarujs
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A static site generator that generates routes based on directories naturally.'
 arch=('any')
 url='https://hikaru.alynx.moe/'
 license=('Apache')
-depends=('nodejs')
+depends=('nodejs>=8.9.0')
 makedepends=('npm' 'jq')
 source=("https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz")
 noextract=("${pkgname}-${pkgver}.tgz")
