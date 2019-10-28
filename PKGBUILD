@@ -1,8 +1,8 @@
- # By tejonaco
+# By tejonaco <tejonaco@gmail.com>
 _pkgname=plymouth-theme-arch-agua
 pkgname="${_pkgname}"
-pkgver=hola
-pkgrel=1
+pkgver=1
+pkgrel=2
 pkgdesc='Plymouth theme for Arch Linux inspired by Deepin.'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 url="https://github.com/tejonaco/${_pkgname}/"
@@ -24,4 +24,3 @@ package() {
   done
 
 }
-

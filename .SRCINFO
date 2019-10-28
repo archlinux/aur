@@ -1,7 +1,7 @@
 pkgbase = plymouth-theme-arch-agua
 	pkgdesc = Plymouth theme for Arch Linux inspired by Deepin.
-	pkgver = hola
-	pkgrel = 1
+	pkgver = 1
+	pkgrel = 2
 	url = https://github.com/tejonaco/plymouth-theme-arch-agua/
 	install = plymouth-theme-arch-agua.install
 	arch = x86_64
