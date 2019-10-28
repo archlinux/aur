@@ -10,7 +10,7 @@ depends=('php>=5.5')
 makedepends=('gcc')
 optdepends=('composer' 'php-fpm')
 provides=('php-phalcon')
-conflicts=('php-phalcon' 'php70-phalcon')
+conflicts=('php-phalcon' 'php70-phalcon' 'php-phalcon-git')
 backup=('etc/php/conf.d/phalcon.ini')
 source=(
   "https://github.com/phalcon/cphalcon/archive/v$pkgver.zip"

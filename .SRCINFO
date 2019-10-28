@@ -13,6 +13,7 @@ pkgbase = php-phalcon3
 	provides = php-phalcon
 	conflicts = php-phalcon
 	conflicts = php70-phalcon
+	conflicts = php-phalcon-git
 	backup = etc/php/conf.d/phalcon.ini
 	source = https://github.com/phalcon/cphalcon/archive/v3.4.4.zip
 	source = phalcon.ini
