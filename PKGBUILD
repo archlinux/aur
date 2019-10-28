@@ -1,7 +1,7 @@
 # Maintainer: osch <oliver@luced.de>
 pkgname=surge-synthesizer
-pkgver=1.6.2.1
-scmver=1.6.2.1
+pkgver=1.6.3
+scmver=1.6.3
 pkgrel=1
 pkgdesc="Surge Synthesizer plugin"
 arch=('x86_64')
@@ -11,8 +11,7 @@ groups=('vst-plugins' 'lv2-plugins')
 depends=('cairo'     'fontconfig'          'freetype2'
          'libx11'    'xcb-util-cursor'     'xcb-util'
          'libxcb'    'xcb-util-renderutil' 'xcb-util-image'
-         'xdg-utils' 'zenity'
-         )
+         'ttf-lato'  'xdg-utils' 'zenity')
 makedepends=('steinberg-vst36' 'premake-git' 'git')
 provides=("surge-synthesizer")
 conflicts=('surge-synthesizer')
@@ -48,6 +47,7 @@ build() {
 	export VST2SDK_DIR="$srcdir/vst2sdk"
 	cd "$srcdir/surge"
 	export MAKEFLAGS="-j1" # workaround for broken build script
+	./build-linux.sh clean-all
 	./build-linux.sh -p vst2 build
 	./build-linux.sh -p vst3 build
 	./build-linux.sh -p lv2  build
