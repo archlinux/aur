@@ -1,5 +1,5 @@
 pkgbase = linux-mainline
-	pkgver = 5.4rc4
+	pkgver = 5.4rc5
 	pkgrel = 1
 	url = https://kernel.org/
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = linux-mainline
 	makedepends = graphviz
 	makedepends = imagemagick
 	options = !strip
-	source = linux-mainline::git+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git#tag=v5.4-rc4
+	source = linux-mainline::git+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git#tag=v5.4-rc5
 	source = config
 	source = 60-linux.hook
 	source = 90-linux.hook
