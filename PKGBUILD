@@ -5,7 +5,7 @@ _gitname=fofix
 pkgname=fofix-git
 pkgver=v4.0.0alpha2.r324.g0f69173
 epoch=1
-pkgrel=3
+pkgrel=4
 pkgdesc="Frets on Fire X (FoFiX). Highly improved version of Frets on Fire (Git Version)"
 arch=('i686' 'x86_64')
 url="https://github.com/fofix/fofix"
@@ -51,6 +51,7 @@ pkgver() {
 build() {
     cd "$srcdir/fofix"
     python2 setup.py build_ext --inplace --force
+    python2 setup.py msgfmt
 }
 
 package() {

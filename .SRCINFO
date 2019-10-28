@@ -1,7 +1,7 @@
 pkgbase = fofix-git
 	pkgdesc = Frets on Fire X (FoFiX). Highly improved version of Frets on Fire (Git Version)
 	pkgver = v4.0.0alpha2.r324.g0f69173
-	pkgrel = 3
+	pkgrel = 4
 	epoch = 1
 	url = https://github.com/fofix/fofix
 	install = fofix-git.install
