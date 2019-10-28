@@ -7,7 +7,7 @@ pkgbase = mindustry-server-bin
 	arch = any
 	license = GPL3
 	makedepends = libicns
-	depends = java-runtime=8
+	depends = java-runtime>=8
 	depends = sh
 	depends = hicolor-icon-theme
 	provides = mindustry-server
