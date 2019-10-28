@@ -1,7 +1,7 @@
 # Maintainer: MaryJaneInChain <maryjaneinchain@gmail.com>
 
 pkgname=tic-80-git
-pkgver=r996.170c6c9
+pkgver=r1017.fd45a8d
 pkgrel=1
 pkgdesc='TIC-80 tiny computer emulator'
 arch=('i686' 'x86_64')
