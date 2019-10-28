@@ -2,7 +2,7 @@
 
 pkgname=linuxqq
 pkgver=2.0.0
-pkgrel=6
+pkgrel=7
 pkgdesc='Tencent QQ for Linux'
 arch=('x86_64' 'aarch64')
 url='https://im.qq.com/linuxqq/'
@@ -17,6 +17,10 @@ md5sums_aarch64=('f37c3d05edc3764cf7837354971f5656')
 package() {
     mv ${srcdir}/usr/ ${pkgdir}/
 
+    mkdir -p ${pkgdir}/opt
+    mv ${pkgdir}/usr/share/tencent-qq/ ${pkgdir}/opt/
+    sed -i 's#/usr/share#/opt#' ${pkgdir}/usr/share/applications/qq.desktop
+
     mkdir -p ${pkgdir}/usr/bin
-    ln -s /usr/share/tencent-qq/qq ${pkgdir}/usr/bin/qq
+    ln -s /opt/tencent-qq/qq ${pkgdir}/usr/bin/qq
 }
