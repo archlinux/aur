@@ -7,8 +7,8 @@ arch=('x86_64')
 url="https://gitlab.com/ChacaS0/chksum"
 license=('Apache')
 makedepends=('git')
-provides=("${pkgname}")
-conflicts=("${pkgname}")
+provides=("${pkgname%-git-bin}")
+conflicts=("${pkgname%-git-bin}")
 source=("https://gitlab.com/chacas0/chksum/-/jobs/artifacts/master/download?job=build"
         'https://gitlab.com/ChacaS0/chksum/raw/master/LICENSE')
 sha256sums=('SKIP'

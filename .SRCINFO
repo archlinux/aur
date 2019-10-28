@@ -6,8 +6,8 @@ pkgbase = chksum-git-git-bin
 	arch = x86_64
 	license = Apache
 	makedepends = git
-	provides = chksum-git-git-bin
-	conflicts = chksum-git-git-bin
+	provides = chksum-git
+	conflicts = chksum-git
 	source = https://gitlab.com/chacas0/chksum/-/jobs/artifacts/master/download?job=build
 	source = https://gitlab.com/ChacaS0/chksum/raw/master/LICENSE
 	sha256sums = SKIP
