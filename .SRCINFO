@@ -1,6 +1,6 @@
 pkgbase = surge-synthesizer-bin
 	pkgdesc = Surge Synthesizer plugin
-	pkgver = 1.6.2.1
+	pkgver = 1.6.3
 	pkgrel = 1
 	url = https://surge-synthesizer.github.io
 	arch = x86_64
@@ -16,6 +16,7 @@ pkgbase = surge-synthesizer-bin
 	depends = libxcb
 	depends = xcb-util-renderutil
 	depends = xcb-util-image
+	depends = ttf-lato
 	depends = xdg-utils
 	depends = zenity
 	provides = surge-synthesizer
@@ -23,8 +24,8 @@ pkgbase = surge-synthesizer-bin
 	options = !strip
 	options = !libtool
 	options = !emptydirs
-	source = https://github.com/surge-synthesizer/releases/releases/download/1.6.2.1/Surge-linux-x64-1.6.2.1.deb
-	md5sums = 6f9e4053a813fc1aa52e02ca99bf5c0a
+	source = https://github.com/surge-synthesizer/releases/releases/download/1.6.3/Surge-linux-x64-1.6.3.deb
+	md5sums = 9b004a05367e2eee2af741b008f9859c
 
 pkgname = surge-synthesizer-bin
 
