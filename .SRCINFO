@@ -1,6 +1,6 @@
 pkgbase = zshdb-git
 	pkgdesc = A debugger for zsh scripts.
-	pkgver = 0.09.r20.gc930e33
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/rocky/zshdb
 	arch = i686

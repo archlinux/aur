@@ -1,7 +1,6 @@
-# Maintainer: illuser <lykouleon dot eve at gmail dot com>
-
+# Maintainer: Joseph R Quinn <quinn period joseph r at protonmail dot com>
 pkgname=zshdb-git
-pkgver=0.09.r20.gc930e33
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='A debugger for zsh scripts.'
 arch=('i686' 'x86_64')
@@ -14,17 +13,17 @@ source=('git+git://github.com/rocky/zshdb.git')
 md5sums=('SKIP')
 
 pkgver() {
-  cd zshdb
+  cd ${pkgname%-git}
   git describe --tags | sed 's/^release.//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd zshdb
+  cd ${pkgname%-git}
   ./autogen.sh --prefix=/usr
   make
 }
 
 package() {
-  cd zshdb
+  cd ${pkgname%-git}
   make DESTDIR=$pkgdir install
 }
