@@ -3,7 +3,7 @@
 _name=pyre-check
 _py=py3
 pkgname=pyre-check-bin
-pkgver=0.0.29
+pkgver=0.0.32
 pkgrel=1
 pkgdesc="Performant type-checking for Python"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('python')
 provides=('pyre-check')
 makedepends=('python-pip')
 source=("https://files.pythonhosted.org/packages/$_py/${_name::1}/$_name/${_name/-/_}-$pkgver-$_py-none-manylinux1_x86_64.whl")
-sha256sums=('6bcc705d4f9f758fab8055164e6fa2aa47f5fcf863fb4b7b7b1f47a11e83b183')
+sha256sums=('4b5eb0796e33930eaf1beb6e5f086e018474f6da640387d5871ec6c39ba82b1f')
 
 package() {
 	PIP_CONFIG_FILE=/dev/null pip install \
@@ -22,7 +22,7 @@ package() {
 		--ignore-installed \
 		--no-deps \
 		--no-warn-script-location \
-		*.whl
+		./*.whl
 
 	python -O -m compileall "${pkgdir}/usr/lib/python3.7/site-packages/pyre_check"
 
