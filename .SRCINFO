@@ -1,16 +1,17 @@
 pkgbase = mlrpt
-	pkgdesc = Non-interactivr command-line version of glrpt for receiving, decoding and saving LRPT images from the Russian Meteor-M type of weather satellites
+	pkgdesc = Non-interactive command-line version of glrpt for receiving, decoding and saving LRPT images from the Russian Meteor-M type of weather satellites
 	pkgver = 1.6.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.5b4az.org
 	arch = x86_64
 	license = GPLv3
 	makedepends = make
+	makedepends = automake
+	makedepends = autoconf
 	depends = rtl-sdr
-	source = http://www.5b4az.org/pkg/lrpt/mlrpt-1.6.2-beta.tar.bz2
-	source = mlrpt.patch
-	md5sums = SKIP
-	md5sums = SKIP
+	depends = airspy
+	source = http://www.5b4az.org/pkg/lrpt/mlrpt-1.6.2.tar.bz2
+	md5sums = 3c3953b0236bcc5bc3d40022d1a8fb9f
 
 pkgname = mlrpt
 
