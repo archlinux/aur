@@ -1,0 +1,17 @@
+pkgbase = python-pytris-git
+	pkgdesc = A cli tetris game written in python using curses
+	pkgver = r41.eb2f855
+	pkgrel = 1
+	url = https://github.com/mjtadema/pytris/tree/v0.1
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python>=3.7
+	depends = python-numpy
+	provides = python-pytris
+	conflicts = python-pytris
+	source = python-pytris::git+https://github.com/mjtadema/pytris.git#branch=master
+	md5sums = SKIP
+
+pkgname = python-pytris-git
+
