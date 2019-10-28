@@ -1,6 +1,6 @@
 pkgbase = graal-native-image-bin
 	pkgdesc = Plugin to turn Graal-based applications into native binary images
-	pkgver = 19.2.0.1
+	pkgver = 19.2.1
 	pkgrel = 1
 	url = https://github.com/oracle/graal
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = graal-native-image-bin
 	depends = graal
 	provides = graal-native-image
 	conflicts = graal-native-image
-	source = https://github.com/oracle/graal/releases/download/vm-19.2.0.1/native-image-installable-svm-linux-amd64-19.2.0.1.jar
-	sha256sums = 04c70c53f4fcb247e2f53326bca1b23471efc404f7e48192f93df5639e452de0
+	source = https://github.com/oracle/graal/releases/download/vm-19.2.1/native-image-installable-svm-linux-amd64-19.2.1.jar
+	sha256sums = af7c51adc71371fb9f24561a8a14e458096379488d2aab54bc3d260e01072b7c
 
 pkgname = graal-native-image-bin
 
