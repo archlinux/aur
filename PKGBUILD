@@ -9,8 +9,8 @@ arch=('any')
 _repo_name="Mindustry"
 url="https://github.com/Anuken/${_repo_name}"
 license=('GPL3')
-depends=("java-environment=8" "sh" "hicolor-icon-theme")
-makedepends=("libicns")
+depends=("java-runtime>=8" "sh" "hicolor-icon-theme")
+makedepends=("java-environment>=8" "libicns")
 source=("${pkgbase}-${_build}.tar.gz::https://github.com/Anuken/${_repo_name}/archive/v${_build}.tar.gz"
         "${pkgbase}.desktop"
         "${pkgbase}.sh"

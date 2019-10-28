@@ -5,8 +5,9 @@ pkgbase = mindustry
 	url = https://github.com/Anuken/Mindustry
 	arch = any
 	license = GPL3
+	makedepends = java-environment>=8
 	makedepends = libicns
-	depends = java-environment=8
+	depends = java-runtime>=8
 	depends = sh
 	depends = hicolor-icon-theme
 	source = mindustry-99.tar.gz::https://github.com/Anuken/Mindustry/archive/v99.tar.gz
