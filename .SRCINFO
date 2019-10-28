@@ -1,17 +1,19 @@
 pkgbase = python-emcee-doc
 	pkgdesc = Documentation for Python emcee
-	pkgver = 3.0.0
+	pkgver = 3.0.1
 	pkgrel = 1
 	url = http://emcee.readthedocs.io
 	arch = i686
 	arch = x86_64
 	license = MIT
-	makedepends = python-emcee=3.0.0
+	makedepends = python-emcee=3.0.1
 	makedepends = python-sphinx
 	makedepends = python-sphinx_rtd_theme
-	source = https://github.com/dfm/emcee/archive/v3.0.0.tar.gz
+	makedepends = jupyter-nbconvert
+	makedepends = pandoc
+	source = https://github.com/dfm/emcee/archive/v3.0.1.tar.gz
 	source = fix_MPI_python_highlight.patch
-	md5sums = a6f411904868f8d4356a6b3215294f8b
+	md5sums = 68da24f0df9cbc43e4c3adfb9bb3f17f
 	md5sums = 04636e60d509170af5e537588de57a0c
 
 pkgname = python-emcee-doc
