@@ -1,6 +1,6 @@
 # Maintainer: ChacaS0 <incoming+chacas0-chksum-13830438-issue-@incoming.gitlab.com>
 pkgname=chksum
-pkgver=0.1.21
+pkgver=0.1.22
 pkgrel=1
 pkgdesc='Check and compare easily the checksum of a file.'
 arch=('x86_64')
@@ -13,8 +13,6 @@ sha256sums=('SKIP')
 build() {
   cd $pkgname
   go build \
-    -trimpath \
-    -ldflags "-extldflags $LDFLAGS" \
     -o $pkgname .
 }
 
