@@ -1,8 +1,8 @@
 # Maintainer: Frederik Schwan <frederik dot schwan at linux dot com>
 
 pkgname=or-tools-java
-pkgver=7.3
-pkgrel=2
+pkgver=7.4
+pkgrel=1
 pkgdesc='Google`s Operations Research tools. With Java bindings.'
 arch=('x86_64')
 url='https://github.com/google/or-tools'
@@ -10,7 +10,7 @@ license=('Apache')
 depends=('java-runtime>=7.0')
 makedepends=('swig')
 source=("https://github.com/google/or-tools/archive/v${pkgver}.tar.gz")
-sha512sums=('a8cc5b3103debe02bb7fbb40c7786a08182b152d6926889c07b1767c7affebe50fc0e658ed9bce41a5e7e21c88fe4d4bb1907b720a9d60a990da059a797b3342')
+sha512sums=('a6bd6f199b6c51dbbe0b594704bc90f5a6774d23da3e76ca4bc5bdf9fe3b5b354931b4726c2f2d0b51907570e63ec377efcdea5f35619515815718e60c289ec2')
 
 prepare() {
     cd "${pkgname%-java}-${pkgver}"
