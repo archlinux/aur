@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="High performance, full-stack PHP framework delivered as a C extension. Git package."
 arch=('i686' 'x86_64')
 url="https://phalcon.io/"
-license=('PHP')
+license=('BSD')
 depends=('php>=5.5' 'php-psr' 're2c' 'pcre')
 makedepends=('git' 'gcc')
 optionaldepends=('php-sqlite: Sqlite support'
@@ -52,4 +52,5 @@ package() {
 	cd "$srcdir/$_pkgname/build/$_PHP_VERSION/$_arch"
 	make INSTALL_ROOT="$pkgdir" install
 	install -Dm644 "$srcdir/phalcon.ini" "$pkgdir/etc/php/conf.d/phalcon.ini"
+  install -Dm644 "$srcdir/$_pkgname/LICENSE.txt" "$pkgdir/usr/share/licenses/php-phalcon/LICENSE.txt"
 }
