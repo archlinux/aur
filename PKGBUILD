@@ -3,7 +3,7 @@
 
 _pkgname=libglvnd
 pkgname=$_pkgname-git
-pkgver=1.2.0.r2.g879a453
+pkgver=1.2.0.r8.g58f1c0d
 pkgrel=1
 pkgdesc="The GL Vendor-Neutral Dispatch library"
 arch=('x86_64')
@@ -26,7 +26,7 @@ build() {
   cd $_pkgname
   ./autogen.sh
   ./configure --prefix=/usr \
-    --disable-headers
+    --disable-gles1
   make
 }
 
