@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="PHP extension providing the accepted PSR interfaces."
 arch=('any')
 url="https://github.com/jbboehr/php-psr"
-license=('GPL')
+license=('BSD')
 depends=('php')
 makedepends=('gcc>=4.4')
 provides=("$pkgname")
@@ -25,5 +25,6 @@ build() {
 package() {
 	cd "$pkgname-$pkgver"
 	make INSTALL_ROOT="$pkgdir/" install
-  install -Dm644 "$srcdir/psr.ini" "$pkgdir/etc/php/conf.d/psr.ini"
+        install -Dm644 "$srcdir/psr.ini" "$pkgdir/etc/php/conf.d/psr.ini"
+        install -Dm644 "$srcdir/LICENSE.md" "$pkgdir/usr/share/licenses/php-psr/LICENSE"
 }
