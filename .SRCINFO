@@ -1,6 +1,6 @@
 pkgbase = onefetch
-	pkgdesc = Displays info about software projects
-	pkgver = 1.5.5
+	pkgdesc = Display info about software projects
+	pkgver = 1.6.5
 	pkgrel = 1
 	url = https://github.com/o2sh/onefetch
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = onefetch
 	arch = armv7h
 	license = MIT
 	makedepends = cargo
-	source = https://github.com/o2sh/onefetch/archive/v1.5.5.tar.gz
-	sha256sums = 8627c81ec513bae8b61a678e96391bb5b024a0424b3384b398160748bd14028d
+	source = https://github.com/o2sh/onefetch/archive/v1.6.5.tar.gz
+	sha256sums = 50f069db2fa713024a19bf708add7812f3420b0c107eb68cd9907d76e375a06d
 
 pkgname = onefetch
 
