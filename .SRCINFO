@@ -1,0 +1,15 @@
+pkgbase = amdgpu-clocks-git
+	pkgdesc = Simple script to control power states of amdgpu driven GPUs
+	pkgver = r14.4cfd488
+	pkgrel = 1
+	url = https://github.com/sibradzic/amdgpu-clocks
+	arch = any
+	license = GPL2
+	depends = bash
+	provides = amdgpu-clocks
+	conflicts = amdgpu-clocks
+	source = amdgpu-clocks-git::git+https://github.com/sibradzic/amdgpu-clocks.git
+	sha512sums = SKIP
+
+pkgname = amdgpu-clocks-git
+
