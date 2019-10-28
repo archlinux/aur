@@ -1,7 +1,7 @@
 # Maintainer: pappy <pappy _AT_ a s c e l i o n _DOT_ com>
 
 pkgname=octoprint
-pkgver=1.3.11
+pkgver=1.3.12
 pkgrel=2
 pkgdesc="Responsive web interface for controlling a 3D printer (RepRap, Ultimaker, ...)"
 arch=(any)

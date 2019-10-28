@@ -1,6 +1,6 @@
 pkgbase = octoprint
 	pkgdesc = Responsive web interface for controlling a 3D printer (RepRap, Ultimaker, ...)
-	pkgver = 1.3.11
+	pkgver = 1.3.12
 	pkgrel = 2
 	url = http://octoprint.org/
 	install = octoprint.install
