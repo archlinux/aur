@@ -1,0 +1,15 @@
+pkgbase = tempus-themes-gtksourceview3-git
+	pkgdesc = Tempus themes for GTK3 syntax highlighting
+	pkgver = r24.25d7bfb
+	pkgrel = 1
+	url = https://protesilaos.com/tempus-themes
+	arch = any
+	license = GPL3
+	depends = gtksourceview3
+	provides = tempus-themes-gtksourceview3
+	conflicts = tempus-themes-gtksourceview3
+	source = git+https://gitlab.com/protesilaos/tempus-themes-gtksourceview3.git
+	sha256sums = SKIP
+
+pkgname = tempus-themes-gtksourceview3-git
+
