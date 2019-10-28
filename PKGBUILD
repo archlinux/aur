@@ -16,21 +16,25 @@ makedepends=('git' 'python2' 'autoconf2.13' 'unzip' 'zip' 'yasm' 'gconf'
 optdepends=('libpulse: PulseAudio audio driver'
             'ffmpeg: various video and audio support')
 source=(git+"https://github.com/MoonchildProductions/UXP#tag=PM${pkgver}_Release"
-        mozconfig.in)
-md5sums=('SKIP'
-         'f6a92ca06a9ec853396f17610fa0f703')
+        mozconfig.in
+        e31d79e8da99456247df84c2f99ba9083d46efe1.patch)
+sha1sums=('SKIP'
+          '802731e5af4d117961d3d6fc61bd1e23f69fd384'
+          'dcea3eeeff37747c09d266f7a1af453d81f5f291')
 
 prepare() {
-  sed 's#%SRCDIR%#'"$srcdir"'#g' mozconfig.in > mozconfig
+  sed 's#%SRCDIR%#'"${srcdir}"'#g' mozconfig.in > mozconfig
   sed -i 's#xlocale#locale#' UXP/intl/icu/source/i18n/digitlst.cpp
+  cd UXP
+  patch -Np1 -i "${srcdir}/e31d79e8da99456247df84c2f99ba9083d46efe1.patch"
 }
 
 build() {
   cd UXP
 
-  export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
-  export MOZCONFIG="$srcdir/mozconfig"
-  export CPPFLAGS="$CPPFLAGS -O2 -Wno-format-overflow"
+  export MOZBUILD_STATE_PATH="${srcdir}/mozbuild"
+  export MOZCONFIG="${srcdir}/mozconfig"
+  export CPPFLAGS="${CPPFLAGS} -O2 -Wno-format-overflow"
   python2 mach build
 }
 
@@ -38,20 +42,20 @@ package() {
   cd pmbuild
   make package
   cd dist
-  install -d "$pkgdir"/usr/{bin,lib}
-  cp -r palemoon/ "$pkgdir/usr/lib/$pkgname"
-  ln -s "../lib/$pkgname/palemoon" "$pkgdir/usr/bin/palemoon"
+  install -d "${pkgdir}"/usr/{bin,lib}
+  cp -r palemoon/ "${pkgdir}/usr/lib/${pkgname}"
+  ln -s "../lib/${pkgname}/palemoon" "${pkgdir}/usr/bin/palemoon"
 
   # icons
   install -Dm644 palemoon/browser/chrome/icons/default/default16.png \
-    "$pkgdir/usr/share/icons/hicolor/16x16/apps/$pkgname.png"
+    "${pkgdir}/usr/share/icons/hicolor/16x16/apps/${pkgname}.png"
   install -Dm644 palemoon/browser/chrome/icons/default/default32.png \
-    "$pkgdir/usr/share/icons/hicolor/32x32/apps/$pkgname.png"
+    "${pkgdir}/usr/share/icons/hicolor/32x32/apps/${pkgname}.png"
   install -Dm644 palemoon/browser/chrome/icons/default/default48.png \
-    "$pkgdir/usr/share/icons/hicolor/48x48/apps/$pkgname.png"
+    "${pkgdir}/usr/share/icons/hicolor/48x48/apps/${pkgname}.png"
   install -Dm644 palemoon/browser/icons/mozicon128.png \
-    "$pkgdir/usr/share/icons/hicolor/128x128/apps/$pkgname.png"
+    "${pkgdir}/usr/share/icons/hicolor/128x128/apps/${pkgname}.png"
 
   # install desktop file
-  install -Dm644 "$srcdir/UXP/application/palemoon/branding/official/palemoon.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+  install -Dm644 "${srcdir}/UXP/application/palemoon/branding/official/palemoon.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 }

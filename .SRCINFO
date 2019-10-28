@@ -27,8 +27,10 @@ pkgbase = palemoon
 	optdepends = ffmpeg: various video and audio support
 	source = git+https://github.com/MoonchildProductions/UXP#tag=PM28.7.1_Release
 	source = mozconfig.in
-	md5sums = SKIP
-	md5sums = f6a92ca06a9ec853396f17610fa0f703
+	source = e31d79e8da99456247df84c2f99ba9083d46efe1.patch
+	sha1sums = SKIP
+	sha1sums = 802731e5af4d117961d3d6fc61bd1e23f69fd384
+	sha1sums = dcea3eeeff37747c09d266f7a1af453d81f5f291
 
 pkgname = palemoon
 
