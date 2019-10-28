@@ -23,12 +23,12 @@ pkgver() {
 
 build() {
 	cd "$srcdir/${_pkgname}"
+	echo "pkgdir: $pkgdir"
 	make
 }
 
 package() {
 	cd "$srcdir/${_pkgname}"
-	echo "pkgdir: $pkgdir"
 	make DESTDIR="$pkgdir" install
 }
 
