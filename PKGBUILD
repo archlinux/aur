@@ -1,18 +1,23 @@
+# Packager: Adam Levy <adam@canonical-ledgers.com>
 # Maintainer: Adam Levy <adam@canonical-ledgers.com>
 pkgname=fatd-git
-_pkgname=${pkgname%-git}
-pkgver=v0.4.2.r35.g10782a8
+pkgver=v0.6.0.r126.g2e4a483
 pkgrel=1
-pkgdesc="Factom Asset Tokens Daemon (develop git branch)"
+pkgdesc="Factom Asset Tokens Daemon (develop branch)"
 url="https://github.com/Factom-Asset-Tokens/fatd"
-license=('MIT')
+license=(MIT)
 
-provides=("$_pkgname")
-conflicts=("$_pkgname")
+provides=(fatd)
+conflicts=(fatd)
+
+options=(emptydirs)
+
+install=fatd.install
 
 arch=('x86_64')
 depends=("glibc")
-makedepends=("go-pie" "go-tools" "git" "sqlite")
+optdepends=("factomd")
+makedepends=("go-pie" "git")
 source=("git+https://github.com/Factom-Asset-Tokens/fatd#branch=develop")
 md5sums=('SKIP')
 
@@ -20,38 +25,39 @@ prepare() {
     # Generate completion files. Each cmd is its own completion program.
     cd "$srcdir"
     mkdir -p completions
+    rm -f completions/fatd
     for cmd in fatd fat-cli; do
-        echo "complete -C /usr/bin/$cmd $cmd" > completions/$cmd
+        echo "complete -C /usr/bin/$cmd $cmd" >> completions/fatd
     done
 }
 
 build() {
-    #export GOPROXY="http://localhost:3000"
     export LDFLAGS
     export CGO_LDFLAGS=$LDFLAGS
-    cd "$srcdir/$_pkgname"
-    make clean
+    cd "$srcdir/fatd"
     make
 }
 
 package() {
-    cd "$srcdir/"
-    completions_dir="$pkgdir/usr/share/bash-completion/completions"
-    install -dm755 "$completions_dir"
-    cd ./completions
-    install -m644 fatd fat-cli "$completions_dir"
+    install -Dm644 "$srcdir/completions/fatd" \
+        "$pkgdir/usr/share/bash-completion/completions/fatd"
 
-    cd "$srcdir/$_pkgname"
+    cd "$srcdir/fatd"
+
     bin_dir="$pkgdir/usr/bin"
     install -dm755 "$bin_dir"
     install -m755 fatd fat-cli "$bin_dir"
 
-    license_dir="$pkgdir/usr/share/licenses/$pkgname"
-    install -dm755 "$license_dir"
-    install -m644 LICENSE "$license_dir"
+    install -dm755 "$pkgdir/var/lib/fatd"
+
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/fatd/LICENSE"
+
+    install -Dm644 fatd@.service       "$pkgdir/usr/lib/systemd/system/fatd@.service"
+    install -Dm644 sysusers-fatd.conf "$pkgdir/usr/lib/sysusers.d/fatd.conf"
+
 }
 
 pkgver() {
-    cd "$srcdir/$_pkgname"
+    cd "$srcdir/fatd"
     ./revision
 }

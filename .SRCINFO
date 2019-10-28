@@ -1,17 +1,18 @@
 pkgbase = fatd-git
-	pkgdesc = Factom Asset Tokens Daemon (develop git branch)
-	pkgver = v0.4.2.r35.g10782a8
+	pkgdesc = Factom Asset Tokens Daemon (develop branch)
+	pkgver = v0.6.0.r126.g2e4a483
 	pkgrel = 1
 	url = https://github.com/Factom-Asset-Tokens/fatd
+	install = fatd.install
 	arch = x86_64
 	license = MIT
 	makedepends = go-pie
-	makedepends = go-tools
 	makedepends = git
-	makedepends = sqlite
 	depends = glibc
+	optdepends = factomd
 	provides = fatd
 	conflicts = fatd
+	options = emptydirs
 	source = git+https://github.com/Factom-Asset-Tokens/fatd#branch=develop
 	md5sums = SKIP
 

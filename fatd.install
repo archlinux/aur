@@ -1,0 +1,8 @@
+post_install() {
+  post_upgrade
+}
+
+post_upgrade() {
+  systemd-sysusers
+  chown fatd:fatd -R /var/lib/fatd
+}
