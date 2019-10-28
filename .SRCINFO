@@ -1,6 +1,6 @@
 pkgbase = nextcloud-app-ocsms
 	pkgdesc = Push your Android SMS to your Nextcloud instance.
-	pkgver = 2.1.1
+	pkgver = 2.1.3
 	pkgrel = 1
 	epoch = 1
 	url = https://apps.nextcloud.com/apps/ocsms
@@ -8,8 +8,8 @@ pkgbase = nextcloud-app-ocsms
 	license = AGPL
 	depends = nextcloud
 	options = !strip
-	source = https://github.com/nextcloud/ocsms/releases/download/2.1.1/ocsms-2.1.1.tar.gz
-	sha512sums = 8dfd7046275e6fe30d1cd4ebdcde89f9cd294b2c33df1400de6e188148039c270e4ea45d0328d2ce204880797bba5140a86653986e47226b81951fd42fcc4aa7
+	source = https://github.com/nextcloud/ocsms/releases/download/2.1.3/ocsms-2.1.3.tar.gz
+	sha512sums = 486b9b2d18a6f142e58e3e588102dc33b91c9afc352338a087eeadd6917419061c4ddbc1fded0eb141a23d0eac202e62ee275159d1683b42983dc75f54fbc5a0
 
 pkgname = nextcloud-app-ocsms
 
