@@ -1,7 +1,7 @@
 # Maintainer: Stephen Gregoratto <dev@sgregoratto.me>
 pkgname=doas
 pkgver=6.2p1
-pkgrel=2
+pkgrel=3
 pkgdesc="Port of OpenBSD's doas(1), an alternative to sudo(1)"
 license=('custom: ISC')
 url="https://github.com/slicer69/doas"
@@ -13,7 +13,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
         'doas.patch'
         'doas-pam')
 sha256sums=('b1c0246ba7cdf0e80dc625d9aed09c3aaa430eb42b271b71ecc36b40052de847'
-            '8127bab559742558eb6344c70bdcb2cb82e819cde81e7af60a0390e280cbfd23'
+            'db32c666bb8d216222bc6d8827e254b5f58ee2a81198f97bb55df6cc08d27725'
             'f61f6b6d2e495dac44dd0d5ee870edf6d8bacbcc8a5059d74c4b91d2bf5c9d6f')
 
 prepare() {
@@ -27,8 +27,8 @@ build() {
 }
 
 package() {
+  install -Dm644 "doas-pam" "$pkgdir/etc/pam.d/doas"
   cd "$pkgname-$pkgver"
   make DESTDIR="$pkgdir" install
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 "${srcdir}/doas-pam" "$pkgdir/etc/pam.d/doas"
 }

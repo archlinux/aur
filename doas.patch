@@ -8,7 +8,7 @@ Hunk 3: Rewrite Makefile
 	- Obey DESTDIR location
 diff -ura doas-6.2p1-old/doas.1 doas-6.2p1-new/doas.1
 --- doas-6.2p1-old/doas.1	2019-09-11 03:05:57.000000000 +1000
-+++ doas-6.2p1-new/doas.1	2019-10-27 18:14:55.141354126 +1100
++++ doas-6.2p1-new/doas.1	2019-10-28 13:59:19.143901072 +1100
 @@ -91,7 +91,7 @@
  .Bl -bullet -compact
  .It
@@ -20,7 +20,7 @@ diff -ura doas-6.2p1-old/doas.1 doas-6.2p1-new/doas.1
  The user attempted to run a command which is not permitted.
 diff -ura doas-6.2p1-old/doas.conf.5 doas-6.2p1-new/doas.conf.5
 --- doas-6.2p1-old/doas.conf.5	2019-09-11 03:05:57.000000000 +1000
-+++ doas-6.2p1-new/doas.conf.5	2019-10-27 18:14:55.141354126 +1100
++++ doas-6.2p1-new/doas.conf.5	2019-10-28 13:59:19.143901072 +1100
 @@ -20,7 +20,7 @@
  .Nm doas.conf
  .Nd doas configuration file
@@ -44,7 +44,7 @@ diff -ura doas-6.2p1-old/doas.conf.5 doas-6.2p1-new/doas.conf.5
  wheel to execute commands as any user while keeping the environment
 diff -ura doas-6.2p1-old/Makefile doas-6.2p1-new/Makefile
 --- doas-6.2p1-old/Makefile	2019-09-11 03:05:57.000000000 +1000
-+++ doas-6.2p1-new/Makefile	2019-10-27 18:21:34.453259228 +1100
++++ doas-6.2p1-new/Makefile	2019-10-28 13:59:33.973682908 +1100
 @@ -1,61 +1,38 @@
 -CC?=clang
 -YACC?=yacc
@@ -137,7 +137,7 @@ diff -ura doas-6.2p1-old/Makefile doas-6.2p1-new/Makefile
 +install: doas
 +	install -Dm4755 doas $(DESTDIR)$(BINDIR)/doas
 +	install -Dm0644 doas.1 $(DESTDIR)$(MANDIR)/man1/doas.1
-+	install -Dm0644 doas.conf.5 $(DESTDIR)$(MANDIR)/man1/doas.conf.5
++	install -Dm0644 doas.conf.5 $(DESTDIR)$(MANDIR)/man5/doas.conf.5
  
  clean:
 -	rm -f $(BIN) $(OBJECTS) y.tab.c

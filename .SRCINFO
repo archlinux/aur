@@ -1,7 +1,7 @@
 pkgbase = doas
 	pkgdesc = Port of OpenBSD's doas(1), an alternative to sudo(1)
 	pkgver = 6.2p1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/slicer69/doas
 	arch = i686
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = doas
 	source = doas.patch
 	source = doas-pam
 	sha256sums = b1c0246ba7cdf0e80dc625d9aed09c3aaa430eb42b271b71ecc36b40052de847
-	sha256sums = 8127bab559742558eb6344c70bdcb2cb82e819cde81e7af60a0390e280cbfd23
+	sha256sums = db32c666bb8d216222bc6d8827e254b5f58ee2a81198f97bb55df6cc08d27725
 	sha256sums = f61f6b6d2e495dac44dd0d5ee870edf6d8bacbcc8a5059d74c4b91d2bf5c9d6f
 
 pkgname = doas
