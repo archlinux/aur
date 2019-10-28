@@ -1,6 +1,6 @@
 pkgbase = mindustry
 	pkgver = 5.0_99
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/Anuken/Mindustry
 	arch = any
