@@ -1,18 +1,24 @@
 pkgbase = icqdesktop
-	pkgdesc = Official ICQ client for Linux. Binary version.
-	pkgver = 10.0.3055
+	pkgdesc = Official ICQ desktop client for Linux (binary version)
+	pkgver = 10.0.6611
 	pkgrel = 1
 	url = https://icq.com/linux/
 	arch = i686
 	arch = x86_64
-	license = APLv2
-	depends = qt5-base
-	source = https://r.mail.ru/clo20842175/storage.icq.com/pub/ICQ_Linux/x64/icq.tar.xz
-	source = https://raw.githubusercontent.com/mailru/icqdesktop/master/gui/resources/main_window/appicon.ico
+	license = Apache
+	depends = libxcursor
+	depends = libxinerama
+	depends = libxrandr
+	provides = icqdesktop-bin
+	conflicts = icqdesktop-bin
+	source = icq.png
 	source = icq.desktop
-	sha256sums = da30a70e9a34ced8ef4b0e7f95624340a03d3c39d99dba4ac704681bebe384a1
-	sha256sums = 8b304d3f11ee73aa288c61aba47c853d83a080286e60afdcbcca9cccba62c54c
-	sha256sums = 6c8d6e9481f5978038fc2bbd91c41bc831bebc3df87e9117d9571f39f1305c43
+	sha256sums = 646e5bfbe01b867a6398cfd2ba49c2e3a16da2596e77fd2137f9d4e1d4ebfd7d
+	sha256sums = a509978ce7e4f728b05ed316129be1d2ee55d81718cb65d5903e1e29e211241f
+	source_i686 = https://r.mail.ru/clo20842175/exe.icq.com/x32/icq.tar.xz
+	sha256sums_i686 = ca81e2a16a17f6655a498271529279f835ab15b2574381359d70a8e911ba0a4f
+	source_x86_64 = https://r.mail.ru/clo20842175/exe.icq.com/x64/icq.tar.xz
+	sha256sums_x86_64 = 4cc647aa8c2158b379acb2074ba577d2e13e58a5965521589408e764ffb71afa
 
 pkgname = icqdesktop
 

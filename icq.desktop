@@ -1,11 +1,10 @@
 [Desktop Entry]
 Type=Application
-Version=10.0.3010
+Version=10.0.6611
 Name=ICQ
-Comment=Official ICQ client
-Path=/usr/bin
+Comment=Official ICQ desktop client for Linux
 Exec=icq
-Icon=/usr/share/pixmaps/icq.ico
+Icon=icq
 Terminal=false
-Categories=Network
+Categories=Network;InstantMessaging;
 
