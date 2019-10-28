@@ -4,7 +4,7 @@ pkgbase = php-psr
 	pkgrel = 1
 	url = https://github.com/jbboehr/php-psr
 	arch = any
-	license = GPL
+	license = BSD
 	makedepends = gcc>=4.4
 	depends = php
 	provides = php-psr
