@@ -5,7 +5,7 @@ pkgdesc="3D wayland compositor extra plugins"
 arch=('any')
 url="https://github.com/WayfireWM/wayfire-plugins-extra"
 license=('MIT')
-depends=('wayfire' 'glibmm' 'wlroots' 'wf-config' 'wayland-protocols' 'boost' 'gtkmm3' 'libxkbcommon')
+depends=('wayfire' 'glibmm' 'wlroots' 'wf-config' 'wayland-protocols' 'boost' 'gtkmm3' 'libxkbcommon' 'iio-sensor-proxy')
 makedepends=('git' 'meson' 'ninja' 'wayland-protocols' 'extra-cmake-modules')
 optdepends=('wcm: GTK3-based configuration tool for the Wayfire compositor')
 provides=("${pkgname}" "wayfire-plugins-extra")
@@ -14,7 +14,7 @@ replaces=()
 options=()
 source=('git+https://github.com/WayfireWM/wayfire-plugins-extra')
 sha256sums=('SKIP')
-
+install=wayfire-plugins-extra.install
 prepare() {
   cd "$srcdir/wayfire-plugins-extra"
   git submodule update --init --recursive
