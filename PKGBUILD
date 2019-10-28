@@ -1,6 +1,6 @@
 pkgname=qtum-electrum
 pkgver=0.18.16
-pkgrel=1
+pkgrel=2
 pkgdesc='Qtum thin client'
 arch=(any)
 url=https://qtum.org/
@@ -42,7 +42,7 @@ depends=(desktop-file-utils
 	     python-eth-utils	     
 	     zbar)
 source=("https://github.com/qtumproject/qtum-electrum/archive/v$pkgver.tar.gz")
-sha256sums=(e2cef9d3b33498e5d0113bbd1d7e6e8f2317c2fdc27665e091e08bda5ae3f3d7)
+sha256sums=(b63e5c50854453614d61e26b0d3e0882a54ece38d8aecc0c40596efce40f31e0)
 
 
 
