@@ -1,14 +1,14 @@
-# Maintainer: TheAifam5 <aifam96 at gmail dot com>
+# Maintainer: TheAifam5 <theaifam5@gmail.com>
 
 _pkgname=bullet-train-oh-my-zsh-theme
 pkgname=$_pkgname-git
-pkgver=a
-pkgrel=2
+pkgver=v0.0.5.r236.gd60f62c
+pkgrel=1
 pkgdesc='An oh-my-zsh shell theme based on the Powerline Vim plugin'
 arch=('any')
 url='https://github.com/caiogondim/bullet-train-oh-my-zsh-theme'
 license=('MIT')
-depends=('zsh' 'oh-my-zsh-git' 'nodejs')
+depends=('zsh' 'oh-my-zsh-git')
 source=('git+https://github.com/caiogondim/bullet-train-oh-my-zsh-theme.git')
 sha256sums=('SKIP')
 makedepends=('git')
@@ -30,10 +30,10 @@ package() {
     rm -rf .git*
 
     # License is inside of README
-    install -D -m644 README.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -D -m644 README.md "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 
     # Install empty documentation
-    install -D -m644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+    install -D -m644 README.md "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
 
     # Install the theme
     install -D -m644 bullet-train.zsh-theme "${pkgdir}/usr/share/oh-my-zsh/themes/bullet-train.zsh-theme"
