@@ -6,6 +6,7 @@ pkgdesc='Check and compare easily the checksum of a file.'
 arch=('x86_64')
 url="https://gitlab.com/ChacaS0/chksum"
 license=('Apache')
+provides=("chksum")
 conflicts=("chksum")
 makedepends=('git' 'go-pie')
 source=("git+https://gitlab.com/chacas0/chksum#branch=master")
@@ -21,6 +22,6 @@ build() {
 
 package() {
     cd "$srcdir/$pkgname"
-    install -Dm755 "$pkgname" "$pkgdir/usr/bin/chksum"
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm755 "${pkgname%-bin-git}" "$pkgdir/usr/bin/chksum"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname%-bin-git}/LICENSE"
 }
