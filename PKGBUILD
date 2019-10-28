@@ -23,7 +23,7 @@ source=(
   "${_ms_python_vsix}::https://github.com/microsoft/vscode-python/releases/download/${_ms_python_version}/ms-python-release.vsix"
   "${_ms_go_vsix}::https://github.com/microsoft/vscode-go/releases/download/${_ms_go_version}/Go-${_ms_go_version}.vsix"
 )
-sha1sums=('1155980968a6c82fe8a77c29284761bb0de63785'
+sha1sums=('e567647596a73d032df365ed15cab6da490c4fd4'
           '1e84fc34576beac0d376c9970af1d2403a6c731f'
           '2b0672378cbc96e5cfa778b19b8f0ae92f67686a'
           '5e8066e914792f8d2793e495ce386cd6b2df1afa')
