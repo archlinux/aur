@@ -1,0 +1,28 @@
+pkgbase = telefuel-desktop
+	pkgdesc = Telefuel desktop app
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://telefuel.com/
+	install = telefuel-desktop.install
+	arch = x86_64
+	groups = 
+	license = custom:chromium
+	depends = at-spi2-core
+	depends = desktop-file-utils
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libappindicator-gtk3
+	depends = libnotify
+	depends = libsecret
+	depends = libutil-linux
+	depends = libxss
+	depends = libxtst
+	depends = nss
+	depends = xdg-utils
+	options = !strip
+	options = !emptydirs
+	source = https://desktop-downloads.s3.amazonaws.com/Telefuel+Linux.zip
+	sha256sums = 0bea54dd40a9659b3c88286005e042d225ede0523a5e2bfc176ae41f1e7d2c43
+
+pkgname = telefuel-desktop
+
