@@ -1,19 +1,20 @@
 pkgbase = glrpt
 	pkgdesc = Interactive GUI application for receiving, decoding and displaying LRPT images from the Russian Meteor-M type of weather satellites
 	pkgver = 2.4.2
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.5b4az.org
 	arch = x86_64
 	license = GPLv3
 	makedepends = make
-	depends = rtl-sdr
+	makedepends = automake
+	makedepends = autoconf
 	depends = gtk3
 	depends = libglade
 	depends = soapysdr
-	source = http://www.5b4az.org/pkg/lrpt/glrpt-2.4.2-beta.tar.bz2
-	source = glrpt.patch
-	md5sums = SKIP
-	md5sums = SKIP
+	optdepends = soapyrtlsdr: RTL-SDR support
+	optdepends = soapyairspy: Airspy support
+	source = http://www.5b4az.org/pkg/lrpt/glrpt-2.4.2.tar.bz2
+	md5sums = 7f062cd18c0478299410bb81a9ba9a3e
 
 pkgname = glrpt
 
