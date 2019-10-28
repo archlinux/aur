@@ -1,7 +1,7 @@
 pkgbase = libs3-git
 	pkgdesc = C Library and Tools for Amazon S3 Access
-	pkgver = 267.537bb7b
-	pkgrel = 2
+	pkgver = 278.287e4be
+	pkgrel = 1
 	url = https://github.com/bji/libs3
 	arch = i686
 	arch = x86_64
