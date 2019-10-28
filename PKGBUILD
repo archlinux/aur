@@ -1,9 +1,9 @@
-# Maintainer: Cem Keylan <cem at ckyln dot com>
+# Maintainer: Cem Keylan <cem@ckyln.com>
 
 pkgname=bm
 _pkgname=bm
-pkgrel=2
-pkgver=0.3
+pkgrel=1
+pkgver=0.4
 pkgdesc="command-line bibliography manager for biblatex"
 url="https://git.ckyln.com/bm/log.html"
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('jq')
 optdepends=('poppler: for getting DOI metadata from a pdf')
 source=("https://git.ckyln.com/archives/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('40fa15f4188a9734bd82ae2ecc066d4d')
+md5sums=('a278ec37af4bb6ed4b58da1fe6716c7f')
 provides=('bm')
 conflicts=('bm')
 
