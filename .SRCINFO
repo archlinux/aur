@@ -1,6 +1,6 @@
 pkgbase = python-tensorboardx
 	pkgdesc = Tensorboard for PyTorch
-	pkgver = 1.8
+	pkgver = 1.9
 	pkgrel = 1
 	url = https://github.com/lanpa/tensorboardX
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-tensorboardx
 	depends = python-protobuf
 	depends = python-six
 	conflicts = python-tensorboard-git
-	source = git+https://github.com/lanpa/tensorboardX.git#tag=v1.8
+	source = git+https://github.com/lanpa/tensorboardX.git#tag=v1.9
 	sha256sums = SKIP
 
 pkgname = python-tensorboardx
