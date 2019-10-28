@@ -1,17 +1,18 @@
 pkgbase = elastix
 	pkgdesc = Toolbox for rigid and nonrigid registration of images
-	pkgver = 4.9.0
-	pkgrel = 5
+	pkgver = 5.0.0
+	pkgrel = 1
 	url = http://elastix.isi.uu.nl/
 	arch = x86_64
 	license = apache
 	makedepends = cmake
-	depends = insight-toolkit>=4.13
 	depends = ann
+	depends = insight-toolkit>=5.0.1
+	depends = openjpeg2
 	conflicts = elastix-git
 	conflicts = elastix-bin
-	source = https://github.com/SuperElastix/elastix/archive/4.9.0.tar.gz
-	sha512sums = 5380529a27d9aef4d93147c6de3cb0930fd31851106cfb41f35556b6e6a5406058de60bdb6ec699f17631861fd518f370b0f0a170db5d254eeafb529283d618c
+	source = https://github.com/SuperElastix/elastix/archive/5.0.0.tar.gz
+	sha256sums = a377ae0307231bf70c474e87ebbf07d649faca211febf1c1d981a2039fcfcd0e
 
 pkgname = elastix
 
