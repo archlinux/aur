@@ -2,15 +2,13 @@
 # Contributor: bartus ( aur\at\bartus.33mail.com )
 
 pkgname=makepkg-optimize
-pkgver=13
+pkgver=14
 pkgrel=1
 pkgdesc='Supplemental build and packaging optimizations for makepkg'
 arch=('any')
 license=('GPL')
 url='https://wiki.archlinux.org/index.php/Makepkg-optimize'
-conflicts=(makepkg-optimize{,2} pacman-buildenv_ext-git)
-replaces=('makepkg-optimize2' pacman-buildenv_ext-git)
-depends=('pacman-git')
+depends=('pacman')
 optdepends=('upx' 'optipng' 'nodejs-svgo' 'openmp')
 backup=(etc/makepkg-optimize.conf)
 _buildenv=({pgo,ZZ-lto,graphite,rice}.sh.in)
@@ -41,7 +39,7 @@ sha1sums=('a9af81c30f57b7db6a9a52796d79399a4e754791'
           'efb3ed7d7d5516259709149d7bcd6ec208c07593'
           '1fc8035e64b739e20c70fbb4eaa5cb7aa1c63c90'
           '5d0cde13b50641371e4ec4d813d6b2dfae493889'
-          'f5fe14a39dd4fe2117bf764d67cf2609ca48229b')
+          '67801619b39ea4542829a4b715034a9f7ac7cf2c')
 
 prepare() {
   # Use the current makepkg config as a base
@@ -82,7 +80,7 @@ prepare() {
   sed -i "/^#*PURGE_TARGETS=/r pkgopts-param_ext.conf" makepkg-optimize.conf
 
   #Maximum COMPRESS parameters
-  sed -i "/^COMPRESSZ=/r compress-param_max.conf" makepkg-optimize.conf
+  sed -i "/^COMPRESSLZ=/r compress-param_max.conf" makepkg-optimize.conf
 }
 
 package() {

@@ -1,20 +1,15 @@
 pkgbase = makepkg-optimize
 	pkgdesc = Supplemental build and packaging optimizations for makepkg
-	pkgver = 13
+	pkgver = 14
 	pkgrel = 1
 	url = https://wiki.archlinux.org/index.php/Makepkg-optimize
 	arch = any
 	license = GPL
-	depends = pacman-git
+	depends = pacman
 	optdepends = upx
 	optdepends = optipng
 	optdepends = nodejs-svgo
 	optdepends = openmp
-	conflicts = makepkg-optimize
-	conflicts = makepkg-optimize2
-	conflicts = pacman-buildenv_ext-git
-	replaces = makepkg-optimize2
-	replaces = pacman-buildenv_ext-git
 	backup = etc/makepkg-optimize.conf
 	source = pgo.sh.in
 	source = ZZ-lto.sh.in
@@ -57,7 +52,7 @@ pkgbase = makepkg-optimize
 	sha1sums = efb3ed7d7d5516259709149d7bcd6ec208c07593
 	sha1sums = 1fc8035e64b739e20c70fbb4eaa5cb7aa1c63c90
 	sha1sums = 5d0cde13b50641371e4ec4d813d6b2dfae493889
-	sha1sums = f5fe14a39dd4fe2117bf764d67cf2609ca48229b
+	sha1sums = 67801619b39ea4542829a4b715034a9f7ac7cf2c
 
 pkgname = makepkg-optimize
 
