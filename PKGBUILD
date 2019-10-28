@@ -2,7 +2,7 @@
 # Contributor: Aaron DeVore <aaron.devore@gmail.com>
 # Contributor: Michael Fellinger <m.fellinger@gmail.com>
 pkgname=diakonos
-pkgver=0.9.6
+pkgver=0.9.7
 pkgrel=1
 pkgdesc="A Linux editor for the masses."
 arch=('any')
@@ -10,7 +10,7 @@ depends=('ruby' 'ruby-curses')
 license=('MIT')
 url="http://diakonos.pist0s.ca/"
 source=("https://github.com/Pistos/diakonos/archive/v$pkgver.tar.gz")
-sha256sums=('85da8ccecf41ac85835f0866518073dd0709148707f9fed30049f11985c26348')
+sha256sums=('77b7f2d2ba29c3a72fff85c91038e19c40eef8a162945105bad203c065c554f9')
 
 package() {
   cd $srcdir/$pkgname-$pkgver
