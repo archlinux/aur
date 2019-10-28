@@ -1,0 +1,15 @@
+pkgbase = tempus-themes-tilix-git
+	pkgdesc = Tempus themes for the Tilix terminal emulator
+	pkgver = r23.2bf069e
+	pkgrel = 1
+	url = https://protesilaos.com/tempus-themes
+	arch = any
+	license = GPL3
+	depends = tilix
+	provides = tempus-themes-tilix
+	conflicts = tempus-themes-tilix
+	source = git+https://gitlab.com/protesilaos/tempus-themes-tilix.git
+	sha256sums = SKIP
+
+pkgname = tempus-themes-tilix-git
+
