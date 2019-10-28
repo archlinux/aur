@@ -17,17 +17,15 @@ sha256sums=('fe99ed9785fbdc606835139c0c52c854b32b1f1449ba83567a115b21d2e882f4')
 _srcname=${pkgname}-r$pkgver
 
 build() {
-  export GOPATH="${srcdir}"
-  mkdir -p "${GOPATH}/src"
-  rm -rf "${GOPATH}/src/${_srcname}"
-  mv "${_srcname}" "${GOPATH}/src"
-  cd "${GOPATH}/src/${_srcname}"
-  go get
-  version=r$pkgver ./gen/build.sh -trimpath
+  export GOPATH="${srcdir}/gopath"
+  cd "${pkgname}-r${pkgver}"
+  go mod vendor
+  version=r$pkgver ./gen/build.sh -mod=vendor -trimpath
+  go clean -modcache
 }
 
 package() {
-  cd "${GOPATH}/src/${_srcname}"
+  cd "${pkgname}-r${pkgver}"
   install -Dm755 -t "${pkgdir}/usr/bin" \
       ./lf
 
