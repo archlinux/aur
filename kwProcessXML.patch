@@ -1,0 +1,13 @@
+diff --git a/CMake/ParaViewMacros.cmake b/CMake/ParaViewMacros.cmake
+index 3b8903c8f8..ac43ab3a62 100644
+--- a/CMake/ParaViewMacros.cmake
++++ b/CMake/ParaViewMacros.cmake
+@@ -186,7 +186,7 @@ function(generate_header name)
+   if (have_xmls)
+     add_custom_command(
+       OUTPUT "${name}"
+-      COMMAND kwProcessXML
++      COMMAND ${CMAKE_CROSSCOMPILING_EMULATOR} $<TARGET_FILE:kwProcessXML>
+               ${base_64}
+               ${name}
+               \"${arg_PREFIX}\" 

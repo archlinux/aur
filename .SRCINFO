@@ -37,8 +37,10 @@ pkgbase = mingw-w64-paraview56
 	options = staticlibs
 	source = http://paraview.org/files/v5.6/ParaView-v5.6.0.tar.gz
 	source = compile-tools.patch
+	source = kwProcessXML.patch
 	sha256sums = cb8c4d752ad9805c74b4a08f8ae6e83402c3f11e38b274dba171b99bb6ac2460
-	sha256sums = ea4211078f1e1d7d2bb999861d81fbcb0cc6176844fead431c473035e94bd4bb
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = mingw-w64-paraview56
 

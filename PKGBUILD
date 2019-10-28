@@ -13,9 +13,9 @@ provides=('mingw-w64-paraview')
 conflicts=('mingw-w64-paraview')
 options=('!buildflags' '!strip' 'staticlibs')
 source=("http://paraview.org/files/v${_majordotminor}/ParaView-v${_pkgver}.tar.gz"
-        "compile-tools.patch")
+        "compile-tools.patch" "kwProcessXML.patch")
 sha256sums=('cb8c4d752ad9805c74b4a08f8ae6e83402c3f11e38b274dba171b99bb6ac2460'
-            'ea4211078f1e1d7d2bb999861d81fbcb0cc6176844fead431c473035e94bd4bb')
+            'SKIP' 'SKIP')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -24,6 +24,9 @@ prepare() {
 
   # cannot be modified upstream, see https://gitlab.kitware.com/paraview/paraview/merge_requests/1716
   patch -p1 -i "${srcdir}/compile-tools.patch"
+
+  # run kwProcessXML with the mingw wine wrapper
+  patch -p1 -i "${srcdir}/kwProcessXML.patch"
 }
 
 build() {
