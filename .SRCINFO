@@ -1,0 +1,13 @@
+pkgbase = chksum-bin
+	pkgdesc = Check and compare easily the checksum of a file (binary version).
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://gitlab.com/ChacaS0/chksum
+	arch = x86_64
+	license = Apache License 2.0
+	noextract = artifacts.zip
+	source = https://gitlab.com/chacas0/chksum/-/jobs/artifacts/master/download?job=build
+	sha256sums = SKIP
+
+pkgname = chksum-bin
+
