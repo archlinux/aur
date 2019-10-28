@@ -1,0 +1,17 @@
+pkgbase = gnome-shell-extension-no-annoyance-git
+	pkgdesc = Removes the “Windows is ready” notification and puts the window into focus
+	pkgver = r5.f21d09a
+	pkgrel = 1
+	url = https://github.com/sindex/no-annoyance
+	arch = any
+	license = GPL2
+	makedepends = git
+	makedepends = zip
+	depends = gnome-shell>=3.18
+	provides = gnome-shell-extension-no-annoyance
+	conflicts = gnome-shell-extension-no-annoyance
+	source = gnome-shell-extension-no-annoyance-git::git+https://github.com/sindex/no-annoyance.git
+	sha512sums = SKIP
+
+pkgname = gnome-shell-extension-no-annoyance-git
+
