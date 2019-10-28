@@ -11,7 +11,7 @@ url="https://www.slf4j.org"
 license=('MIT')
 depends=('java-runtime')
 optdepends=('log4j')
-source=("https://github.com/qos-ch/slf4j/blob/v_${pkgver}/LICENSE.txt"
+source=("https://raw.githubusercontent.com/qos-ch/slf4j/v_${pkgver}/LICENSE.txt"
         "https://repo1.maven.org/maven2/org/slf4j/jcl-over-slf4j/${pkgver}/jcl-over-slf4j-${pkgver}.jar"
         "https://repo1.maven.org/maven2/org/slf4j/jul-to-slf4j/${pkgver}/jul-to-slf4j-${pkgver}.jar"
         "https://repo1.maven.org/maven2/org/slf4j/log4j-over-slf4j/${pkgver}/log4j-over-slf4j-${pkgver}.jar"
@@ -58,7 +58,7 @@ package() {
 	done
 }
 
-sha256sums=('7bba75924c26de6c3941ce5c4ce0785cdb3854bf715d2123b25086cf6d0f2114'
+sha256sums=('899cb2e2f92e74ec969e477503c6442fb50bec5d523bc87dc40bad3419113c3b'
             'b81f5f910da9708c7a6a77b720a7de20154cced4065b56f33301945c04aaad70'
             '67c99ffdef691c3b0f817e130c2047fa43ecf12017613ff597f66f768d745475'
             'c24e45c905f0c3b1dcc873164f5409bbfe3ee8860e366d1cd2190f798227f864'
