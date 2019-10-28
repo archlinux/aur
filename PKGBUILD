@@ -8,7 +8,7 @@ _gopkgname='github.com/caddyserver/caddy'
 
 pkgname=caddy
 pkgver=1.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc='HTTP/2 Web Server with Automatic HTTPS'
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
 url='https://caddyserver.com'
@@ -29,7 +29,7 @@ sha256sums=('c1c7b337a5008d28c1956fd4f057104a78d0e24b74c30867cea988369b61fed3'
             '5f899f3d72bd815ba67a2fbd95144f7ff5d83ae47d1c4bee8297ce4e5d2ed400'
             'c8f002f5ba59985a643600dc3c871e18e110903aa945ef3f2da7c9edd39fbd7a'
             '80520b80ccabf077a3269f6a1bf55faa3811ef5adce115131b35ef2044d37b64'
-            'f5a0fbb961e7c9ecf99e88d0959a3164cbea54660c1c08c3ba3cdf1d45563929')
+            '69956ee6a54ee0469fdee77f6d07cccee61699b1ee24e2f94ef6017c7ec1118b')
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver/caddy"
@@ -71,6 +71,7 @@ package() {
 }
 
 plugins=(
+#    'consul'
 #    'dns'
 #    'docker'
 #    'dyndns'
@@ -96,16 +97,21 @@ plugins=(
 #    'http.mailout'
 #    'http.minify'
 #    'http.nobots'
+#    'http.permission'
 #    'http.prometheus'
 #    'http.proxyprotocol'
+#    'http.pubsub'
 #    'http.ratelimit'
 #    'http.realip'
 #    'http.reauth'
+#    'http.recaptcha'
 #    'http.restic'
 #    'http.s3browser'
 #    'http.supervisor'
+#    'http.torproxy'
 #    'http.webdav'
 #    'net'
+#    'redis'
 #    'supervisor'
 #    'tls.dns.auroradns'
 #    'tls.dns.azure'

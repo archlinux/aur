@@ -10,7 +10,7 @@ import (
 	"sort"
 )
 
-const URL = "https://caddyserver.com/api/download-page"
+const URL = "https://caddyserver.com/v1/api/download-page"
 
 type Plugin struct {
 	Name       string
