@@ -10,53 +10,54 @@ arch=('x86_64')
 url="https://github.com/diasurgical/devilutionX"
 license=('custom:unlicense')
 makedepends=('git' 'cmake' 'lib32-gcc-libs' 'lib32-sdl2_mixer'
-'sdl2_ttf' 'sdl2_ttf' 'lib32-sdl2_ttf'  'lib32-libsodium' 'libsodium')
-#provides=("${pkgname}"="${pkgver}")
+	     'sdl2_ttf' 'sdl2_ttf' 'lib32-sdl2_ttf'  'lib32-libsodium'
+	     'libsodium')
+optdepends=('ttf-charis-sil: CharisSILB.ttf')
 install="${_pkgname}".install
 source=(
-  "${_pkgname}::git+https://github.com/diasurgical/devilutionX.git"
-  LICENSE::https://raw.githubusercontent.com/diasurgical/devilutionX/master/LICENSE
+    "${_pkgname}::git+https://github.com/diasurgical/devilutionX.git"
 )
-sha256sums=('SKIP'
-	    '88d9b4eb60579c191ec391ca04c16130572d7eedc4a86daa58bf28c6e14c9bcd')
+sha256sums=('SKIP')
 pkgver() {
-  cd "${_pkgname}"
-  ( set -o pipefail
-    git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+    cd "${_pkgname}"
+    ( set -o pipefail
+      git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+	  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    )
 }
 
 build() {
-  cd "${_pkgname}"
-  rm -rf build32 build64
-  mkdir -p build64 && cd build64
-  cmake ..
-  make
-  cd "${srcdir}/${_pkgname}"
-  mkdir -p build32 && cd build32
-  export CC="gcc -m32"
-  export CXX="g++ -m32"
-  cmake ..
-##    -DCMAKE_TOOLCHAIN_FILE=../CMake/32bit.cmake
-  make
+    cd "${_pkgname}"
+    rm -rf build32 build64
+    mkdir -p build64 && cd build64
+    cmake .. -DCMAKE_BUILD_TYPE=Release
+    make
+    cd "${srcdir}/${_pkgname}"
+    mkdir -p build32 && cd build32
+    export CC="gcc -m32"
+    export CXX="g++ -m32"
+    cmake .. \
+	  -DCMAKE_TOOLCHAIN_FILE="../CMake/32bit.cmake" \
+	  -DCMAKE_BUILD_TYPE=Release
+    make
 }
 package_devilutionx-git() {
-  pkgdesc="Diablo devolved for linux (native build)"
-  provides=("${_pkgname}"="${pkgver}")
-  depends=('sdl2_mixer' 'sdl2_ttf' 'libsodium')
-  makedepends=('git' 'cmake')
-  cd "${_pkgname}"
-  install -vDm755 build64/"${_pkgname}" "${pkgdir}"/usr/bin/"${_pkgname}_native"
-  install -vDm644 LICENSE -t "${pkgdir}"/usr/share/licenses/"${pkgname}"
+    pkgdesc="Diablo devolved for linux (native build)"
+    provides=("${_pkgname}"="${pkgver}")
+    depends=('sdl2_mixer' 'sdl2_ttf' 'libsodium')
+
+    cd "${_pkgname}"
+    install -vDm755 build64/"${_pkgname}" "${pkgdir}"/usr/bin/"${_pkgname}_native"
+    install -vDm644 LICENSE -t "${pkgdir}"/usr/share/licenses/"${pkgname}"
 }
 package_devilutionx-multilib-git() {
-  pkgdesc="Diablo devolved for linux (multilib build)"
-  provides=("${_pkgname}"="${pkgver}")
-  depends=('lib32-gcc-libs' 'lib32-sdl2_mixer' 'sdl2_ttf' 'lib32-sdl2_ttf'  'lib32-libsodium' 'libsodium')
-  makedepends=('git' 'cmake')
+    pkgdesc="Diablo devolved for linux (multilib build)"
+    provides=("${_pkgname}"="${pkgver}")
+    depends=('lib32-gcc-libs' 'lib32-dbus' 'lib32-sdl2_mixer'
+	     'sdl2_ttf' 'lib32-sdl2_ttf'  'lib32-libsodium'
+	     'libsodium')
 
-  cd "${_pkgname}"
-  install -vDm755 build32/"${_pkgname}" "${pkgdir}"/usr/bin/"${_pkgname}_multilib"
-  install -vDm644 LICENSE -t "${pkgdir}"/usr/share/licenses/"${pkgname}"
+    cd "${_pkgname}"
+    install -vDm755 build32/"${_pkgname}" "${pkgdir}"/usr/bin/"${_pkgname}_multilib"
+    install -vDm644 LICENSE -t "${pkgdir}"/usr/share/licenses/"${pkgname}"
 }
