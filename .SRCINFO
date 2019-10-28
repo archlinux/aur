@@ -1,6 +1,6 @@
 pkgbase = elastix-bin
 	pkgdesc = Toolbox for rigid and nonrigid registration of images
-	pkgver = 4.9.0
+	pkgver = 5.0.0
 	pkgrel = 1
 	url = http://elastix.isi.uu.nl/
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = elastix-bin
 	provides = elastix
 	conflicts = elastix-git
 	conflicts = elastix
-	source = https://github.com/SuperElastix/elastix/releases/download/4.9.0/elastix-4.9.0-linux.tar.bz2
-	sha512sums = 9523e0ad5a949c6cd99a76c1877e9c9db7ddf0d2801ce6fd8d80fadfb922bf250b743e45656fac3095d760ca9da51c0214a9eb2b52af689a1eb28d1971402b43
+	source = https://github.com/SuperElastix/elastix/releases/download/5.0.0/elastix-5.0.0-linux.tar.bz2
+	sha256sums = 7c6bdc7667aaf736b1f5bd70ad496288f737106fd1cb22c019f0bae0363d8b5c
 
 pkgname = elastix-bin
 
