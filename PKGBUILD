@@ -25,6 +25,6 @@ build() {
 }
 
 package() {
-    mkdir -p ${pkgdir}/usr/bin
-    cp ${srcdir}/KikoPlay-${pkgver}/KikoPlay ${pkgdir}/usr/bin
+    mkdir -m 0777 -p ${pkgdir}/opt/${pkgname} 
+    cp -f ${srcdir}/KikoPlay-${pkgver}/KikoPlay ${pkgdir}/opt/${pkgname}/${pkgname}
 }
