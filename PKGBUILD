@@ -1,6 +1,6 @@
 # Maintainer: ChacaS0 <incoming+chacas0-chksum-13830438-issue-@incoming.gitlab.com>
 pkgname=chksum-git-git-bin
-pkgver=0.1
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Check and compare easily the checksum of a file (binary version)."
 arch=('x86_64')
