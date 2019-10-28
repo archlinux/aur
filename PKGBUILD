@@ -2,7 +2,7 @@
 
 pkgname=tidal-dl
 _pkgname=Tidal-Media-Downloader
-pkgver=1.1.0.8
+pkgver=1.1.0.9
 pkgrel=1
 pkgdesc="Tidal Music Download"
 arch=('any')
