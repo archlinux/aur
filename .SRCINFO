@@ -1,5 +1,5 @@
 pkgbase = zfs-linux-zen-git
-	pkgver = 2019.10.18.r5471.g4063440b7_5.3.7.zen1.1
+	pkgver = 2019.10.26.r5490.ge35704647_5.3.7.zen1.1
 	pkgrel = 1
 	url = https://zfsonlinux.org/
 	arch = x86_64
@@ -7,9 +7,9 @@ pkgbase = zfs-linux-zen-git
 	makedepends = linux-zen-headers=5.3.7.zen1-1
 	makedepends = git
 	depends = kmod
-	depends = zfs-utils-git=2019.10.18.r5471.g4063440b7
+	depends = zfs-utils-git=2019.10.26.r5490.ge35704647
 	depends = linux-zen=5.3.7.zen1-1
-	source = git+https://github.com/zfsonlinux/zfs.git#commit=4063440b73af79be9792029ada17b01c51ad7172
+	source = git+https://github.com/zfsonlinux/zfs.git#commit=e35704647e84c62c6a6017ead0b66b446010e4ff
 	sha256sums = SKIP
 
 pkgname = zfs-linux-zen-git
