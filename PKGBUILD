@@ -1,12 +1,13 @@
-# Maintainer: gaelic, Fincer
+# Maintainer: gaelic <gaelic@luchmhor.net>
+#             Fincer <fincer@example.com>
 
 # Previous Maintainer: scimmia, XavierCLL, SaultDon, Lantald, Thomas Dziedzic, dibblethewrecker, Gerardo Exequiel Pozzi, Eric Forgeot
 
 pkgname=qgis-git
 _pkgname=qgis
-pkgver=3.9.0_master.r54615.7f95991edf
+pkgver=3.10.0_master.r58226.f69d7f8f83
 
-_pkgver=3.9.0_master
+_pkgver=3.10.0_master
 pkgrel=1
 pkgdesc='Geographic Information System (GIS) that supports vector, raster & database formats - Development master'
 url='http://qgis.org/'
