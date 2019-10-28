@@ -2,7 +2,7 @@
 # Maintainer: Médéric Boquien <mboquien@free.fr>
 pkgname=python2-astropy
 pkgver=2.0.16
-pkgrel=1
+pkgrel=2
 pkgdesc="A community python library for astronomy"
 arch=('i686' 'x86_64')
 url="http://www.astropy.org/"
@@ -11,7 +11,7 @@ depends=('python2' 'python2-numpy' 'python2-scipy' 'python2-h5py' 'cfitsio' 'exp
 conflicts=('python2-pyfits' 'python-pywcs' 'python2-vo')
 makedepends=('cython2')
 source=("https://files.pythonhosted.org/packages/source/a/astropy/astropy-${pkgver}.tar.gz")
-md5sums=('84bac74aad1393db60243dae35a9b9f7')
+sha512sums=('69b282084ec4b46d8d2dc750ba8cad053370cafdea494d142c6b05f571ab6fc925c7dcdf1589ff24bae6f6d7cfb3c054efa8d10d92592dd07e42adbc0a9a42d1')
 
 build() {
   cd ${srcdir}/astropy-${pkgver}
