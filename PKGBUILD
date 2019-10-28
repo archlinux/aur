@@ -1,4 +1,4 @@
-# Kevin Del Castillo <lans9831@gmail.com>
+# Maintainer: Kevin Del Castillo <lans9831@gmail.com>
 
 _pkgname=neovim
 pkgname=neovim-nightly
