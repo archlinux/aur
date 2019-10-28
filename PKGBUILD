@@ -14,6 +14,7 @@ provides=("${Name}" "batman")
 conflicts=("${Name}" "batman")
 source=("git+${url}.git")
 md5sums=("SKIP")
+# fgiauerhgea
 
 
 package () {
