@@ -3,7 +3,7 @@
 
 _pkgname=lib32-libglvnd
 pkgname=$_pkgname-git
-pkgver=1.2.0.r2.g879a453
+pkgver=1.2.0.r8.g58f1c0d
 pkgrel=1
 pkgdesc="The GL Vendor-Neutral Dispatch library"
 arch=('x86_64')
@@ -30,7 +30,7 @@ build() {
   ./configure --prefix=/usr \
     --libdir=/usr/lib32/ \
     --build=i686-unknown-linux-gnu \
-    --disable-headers
+    --disable-gles1
   make
 }
 
