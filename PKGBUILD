@@ -8,7 +8,7 @@ url="https://gitlab.com/ChacaS0/chksum"
 license=('Apache')
 makedepends=('git')
 provides=("${pkgname}")
-conflicts=("${pkgname}" "chksum-git" "chksum")
+replaces=("${pkgname}" "chksum-git" "chksum")
 source=("https://gitlab.com/chacas0/chksum/-/jobs/artifacts/master/download?job=build"
         'https://gitlab.com/ChacaS0/chksum/raw/master/LICENSE')
 sha256sums=('SKIP'
@@ -16,5 +16,5 @@ sha256sums=('SKIP'
 
 package () {
     install -Dm755 "${pkgname%-git-bin}" "$pkgdir/usr/bin/chksum"
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname%-git-bin}/LICENSE"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 }
