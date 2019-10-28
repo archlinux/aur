@@ -1,7 +1,7 @@
 # Maintainer: Frederik Schwan <frederik dot schwan at linux dot com>
 
 pkgname=perl-http-dav
-pkgver=0.48
+pkgver=0.49
 pkgrel=1
 pkgdesc='A client module for the WebDAV protocol'
 arch=('any')
@@ -10,7 +10,7 @@ options=('!emptydirs')
 depends=('perl-libwww' 'perl-uri' 'perl-xml-dom')
 url='http://search.cpan.org/dist/HTTP-DAV'
 source=("http://search.cpan.org/CPAN/authors/id/C/CO/COSIMO/HTTP-DAV-${pkgver}.tar.gz")
-sha512sums=('2edf92791660b1996eb22b9ea68bd4e417c497afeebb56cb0a2ecf0cf72ea54b6fb8efd4d69dae1dcb946517f917593932a8040bd0ef5cfc83f7fdfd1fe3ccf8')
+sha512sums=('01a097f47d95090fd0fd08a44b440d0ed4f2f04e0bedc41f8e2abedf1879e7cfcae6cf5cf7a415ac89dc610cf0cacf4f75078586bbf6a818f8c6dd36ccb451f6')
 
 build() {
     export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
