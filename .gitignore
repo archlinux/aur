@@ -3,3 +3,4 @@
 !/.SRCINFO
 !/.gitignore
 !/doas.patch
+!/doas-pam
