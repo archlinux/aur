@@ -1,12 +1,14 @@
 pkgbase = elastix-git
 	pkgdesc = Toolbox for rigid and nonrigid registration of images
-	pkgver = 4.9.0.r0.g6e031631
-	pkgrel = 5
+	pkgver = 5.0.0.r2.g812c4d90
+	pkgrel = 1
 	url = http://elastix.isi.uu.nl/
 	arch = x86_64
 	license = apache
 	makedepends = cmake
+	depends = ann
 	depends = insight-toolkit
+	depends = openjpeg2
 	provides = elastix
 	conflicts = elastix-bin
 	conflicts = elastix
