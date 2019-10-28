@@ -1,14 +1,14 @@
 pkgbase = fritzctl
 	pkgdesc = A lightweight, easy to use console client for the AVM FRITZ!Box Home Automation.
-	pkgver = 1.4.22
+	pkgver = 1.4.23
 	pkgrel = 1
 	url = https://github.com/bpicode/fritzctl
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	options = !strip
-	source = https://github.com/bpicode/fritzctl/archive/v1.4.22.tar.gz
-	sha256sums = ffd5de2d6580fa482f64bc7803bfcfd9ec7c13a68b33648c5bfd1edc718e0c10
+	source = https://github.com/bpicode/fritzctl/archive/v1.4.23.tar.gz
+	sha256sums = 63bd37113146bb75b3ba1aff10b9a1fe34e7e8d684ed0b624c97b0cd03e26830
 
 pkgname = fritzctl
 
