@@ -1,6 +1,6 @@
 # Maintainer: ChacaS0 <incoming+chacas0-chksum-13830438-issue-@incoming.gitlab.com>
 pkgname=chksum-bin
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Check and compare easily the checksum of a file (binary version)."
 arch=('x86_64')
@@ -33,7 +33,7 @@ package () {
 	echo "[INSTALL]  STATUS : Started."
 	echo "[INSTALL]  INFO   : Putting chksum into /usr/bin..."
 	echo "[INSTALL]  INFO   : "
-	sudo install "${srcdir}/chksum" /usr/bin
+	install "${srcdir}/chksum" /usr/bin
 	ls -lh /usr/bin | grep chksum
 	echo "[INSTALL]  STATUS : Done."
 }
