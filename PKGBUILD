@@ -1,7 +1,7 @@
 # Maintainer of this PKBGUILD file: Martino Pilia <martino.pilia@gmail.com>
 _pkgname=ilastik
 pkgname=${_pkgname}-bin
-pkgver=1.3.2rc2
+pkgver=1.3.3
 pkgrel=1
 pkgdesc='The interactive learning and segmentation toolkit'
 arch=('x86_64')
@@ -15,7 +15,7 @@ options=('!strip')
 conflicts=()
 source=("http://files.ilastik.org/ilastik-${pkgver}-Linux.tar.bz2"
         "ilastik.desktop")
-sha256sums=('0d41b9035aaa62e5825d1f0d673d52e04f4827e652682af2df5f0a6b8c50845d'
+sha256sums=('5ade81c71e112b7ce2909a517dedf211e6fc73df006ab63e417942eb95e49367'
             '0c8c5c9b5c310448fda82c5b89a1957f56e134ef63a7b579c006abf18dfd8bd2')
 
 package() {
