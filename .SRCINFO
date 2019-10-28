@@ -1,0 +1,17 @@
+pkgbase = gnome-shell-extension-clock-override-git
+	pkgdesc = Customize the date and time format displayed in clock in the top bar in GNOME Shell
+	pkgver = 5+40+g7dd30bc
+	pkgrel = 1
+	url = https://github.com/stuartlangridge/gnome-shell-clock-override
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = zip
+	depends = gnome-shell>=3.18
+	provides = gnome-shell-extension-clock-override
+	conflicts = gnome-shell-extension-clock-override
+	source = gnome-shell-extension-clock-override-git::git+https://github.com/stuartlangridge/gnome-shell-clock-override.git
+	sha512sums = SKIP
+
+pkgname = gnome-shell-extension-clock-override-git
+
