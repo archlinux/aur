@@ -1,6 +1,6 @@
 pkgbase = yggdrasil-git
 	pkgdesc = An experiment in scalable routing as an encrypted IPv6 overlay network (develop branch)
-	pkgver = 0.3.11.r5.gcee28d1
+	pkgver = 0.3.11.r7.g1373800
 	pkgrel = 1
 	url = https://github.com/yggdrasil-network/yggdrasil-go
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = yggdrasil-git
 	makedepends = git
 	makedepends = go
 	conflicts = yggdrasil
-	source = yggdrasil::git+https://github.com/yggdrasil-network/yggdrasil-go.git#commit=cee28d11f8a3b4349dc0a3d4862aa4c4f10e77b1
+	source = yggdrasil::git+https://github.com/yggdrasil-network/yggdrasil-go.git#commit=1373800d26d193166006264ae5086b63129238b4
 	source = yggdrasil.sysusers
 	sha512sums = SKIP
 	sha512sums = b78d1f5efeeba184588ba7bdb2249d976aec160daa59742e032983da1aedad062d15c7c97cba3eba69412a0f7904ee123d98b58f859892d71188c25624295c32
