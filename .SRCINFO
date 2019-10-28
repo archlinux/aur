@@ -5,6 +5,7 @@ pkgbase = chksum-bin
 	url = https://gitlab.com/ChacaS0/chksum
 	arch = x86_64
 	license = Apache License 2.0
+	replaces = chksum
 	noextract = artifacts.zip
 	source = https://gitlab.com/chacas0/chksum/-/jobs/artifacts/master/download?job=build
 	sha256sums = SKIP
