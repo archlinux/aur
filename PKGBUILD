@@ -4,7 +4,7 @@
 
 pkgname=slf4j
 pkgver=1.7.28
-pkgrel=3
+pkgrel=4
 pkgdesc="Simple Logging Facade for Java for various logging frameworks (e.g. java.util.logging, logback, log4j)"
 arch=('any')
 url="https://www.slf4j.org"
