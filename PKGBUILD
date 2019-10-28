@@ -24,13 +24,12 @@ sha512sums_aarch64=(
 )
 
 package() {
-    mv ${srcdir}/usr/ ${pkgdir}/
+    mkdir -p $pkgdir/opt
+    mv $srcdir/usr/share/tencent-qq $pkgdir/opt/
 
-    mkdir -p ${pkgdir}/opt
-    mv ${pkgdir}/usr/share/tencent-qq/ ${pkgdir}/opt/
+    mv $srcdir/usr $pkgdir/
+    sed -i 's#/usr/share#/opt#' $pkgdir/usr/share/applications/qq.desktop
 
-    mkdir -p ${pkgdir}/usr/bin
-    ln -s /opt/tencent-qq/qq ${pkgdir}/usr/bin/qq
-
-    sed -i 's#/usr/share#/opt#' ${pkgdir}/usr/share/applications/qq.desktop
+    mkdir -p $pkgdir/usr/bin
+    ln -s /opt/tencent-qq/qq $pkgdir/usr/bin/qq
 }
