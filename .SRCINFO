@@ -1,0 +1,15 @@
+pkgbase = tempus-themes-konsole-git
+	pkgdesc = Tempus themes for Konsole
+	pkgver = r13.0667e36
+	pkgrel = 1
+	url = https://protesilaos.com/tempus-themes
+	arch = any
+	license = GPL3
+	depends = konsole
+	provides = tempus-themes-konsole
+	conflicts = tempus-themes-konsole
+	source = git+https://gitlab.com/protesilaos/tempus-themes-konsole.git
+	sha256sums = SKIP
+
+pkgname = tempus-themes-konsole-git
+
