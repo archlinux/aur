@@ -8,16 +8,16 @@ pkgbase = libgestures-bin
 	license = custom:chromiumos
 	depends = jsoncpp
 	replaces = libgestures
-	noextract = libgestures-bin.deb
-	noextract = libgestures-bin-dev.deb
-	source_i686 = libgestures-bin.deb::https://launchpad.net/~eugenesan/+archive/ubuntu/ppa/+build/9682492/+files/libgestures_2.1.14-1ubuntu2~eugenesan~xenial3_i386.deb
-	source_i686 = libgestures-bin-dev.deb::https://launchpad.net/~eugenesan/+archive/ubuntu/ppa/+build/9682492/+files/libgestures-dev_2.1.14-1ubuntu2~eugenesan~xenial3_i386.deb
-	md5sums_i686 = SKIP
-	md5sums_i686 = SKIP
-	source_x86_64 = libgestures-bin.deb::https://launchpad.net/~eugenesan/+archive/ubuntu/ppa/+build/9682491/+files/libgestures_2.1.14-1ubuntu2~eugenesan~xenial3_amd64.deb
-	source_x86_64 = libgestures-bin-dev.deb::https://launchpad.net/~eugenesan/+archive/ubuntu/ppa/+build/9682491/+files/libgestures-dev_2.1.14-1ubuntu2~eugenesan~xenial3_amd64.deb
-	md5sums_x86_64 = SKIP
-	md5sums_x86_64 = SKIP
+	noextract = libgestures_2.1.14-1_i686.deb
+	noextract = libgestures-dev_2.1.14-1_i686.deb
+	source_i686 = libgestures_2.1.14-1_i686.deb::https://launchpad.net/~eugenesan/+archive/ubuntu/ppa/+build/9682492/+files/libgestures_2.1.14-1ubuntu2~eugenesan~xenial3_i386.deb
+	source_i686 = libgestures-dev_2.1.14-1_i686.deb::https://launchpad.net/~eugenesan/+archive/ubuntu/ppa/+build/9682492/+files/libgestures-dev_2.1.14-1ubuntu2~eugenesan~xenial3_i386.deb
+	md5sums_i686 = 7afb68a9aac5328692190ef6ff04ac0a
+	md5sums_i686 = b995c86f55349f97e61cfd26420524ec
+	source_x86_64 = libgestures_2.1.14-1_i686.deb::https://launchpad.net/~eugenesan/+archive/ubuntu/ppa/+build/9682491/+files/libgestures_2.1.14-1ubuntu2~eugenesan~xenial3_amd64.deb
+	source_x86_64 = libgestures-dev_2.1.14-1_i686.deb::https://launchpad.net/~eugenesan/+archive/ubuntu/ppa/+build/9682491/+files/libgestures-dev_2.1.14-1ubuntu2~eugenesan~xenial3_amd64.deb
+	md5sums_x86_64 = 7afb68a9aac5328692190ef6ff04ac0a
+	md5sums_x86_64 = 7c19215c2440d814f66bfc707c396a48
 
 pkgname = libgestures-bin
 

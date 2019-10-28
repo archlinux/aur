@@ -5,48 +5,44 @@ pkgname=libgestures-bin
 pkgdesc="Chromium OS gestures library (binary version)"
 pkgver=2.1.14
 pkgrel=2
-arch=(i686 x86_64)
+arch=("i686" "x86_64")
 url="https://github.com/hugegreenbug/libgestures"
 license=('custom:chromiumos')
 depends=('jsoncpp')
-replaces=("libgestures")
+replaces=('libgestures')
+
+_pkgver=2.1.14-1
+_ppa_url="https://launchpad.net/~eugenesan/+archive/ubuntu/ppa"
+_ppa_ver="ubuntu2~eugenesan~xenial3"
 
 
+# Source files
 source_i686=(
-"${pkgname}.deb::https://launchpad.net/~eugenesan/+archive/ubuntu/ppa/+build/9682492/+files/libgestures_2.1.14-1ubuntu2~eugenesan~xenial3_i386.deb"
-"${pkgname}-dev.deb::https://launchpad.net/~eugenesan/+archive/ubuntu/ppa/+build/9682492/+files/libgestures-dev_2.1.14-1ubuntu2~eugenesan~xenial3_i386.deb")
+    "libgestures_${_pkgver}_${arch}.deb::${_ppa_url}/+build/9682492/+files/libgestures_2.1.14-1${_ppa_ver}_i386.deb"
+    "libgestures-dev_${_pkgver}_${arch}.deb::${_ppa_url}/+build/9682492/+files/libgestures-dev_2.1.14-1${_ppa_ver}_i386.deb")
 
 source_x86_64=(
-"${pkgname}.deb::https://launchpad.net/~eugenesan/+archive/ubuntu/ppa/+build/9682491/+files/libgestures_2.1.14-1ubuntu2~eugenesan~xenial3_amd64.deb"
-"${pkgname}-dev.deb::https://launchpad.net/~eugenesan/+archive/ubuntu/ppa/+build/9682491/+files/libgestures-dev_2.1.14-1ubuntu2~eugenesan~xenial3_amd64.deb"
+    "libgestures_${_pkgver}_${arch}.deb::${_ppa_url}/+build/9682491/+files/libgestures_2.1.14-1${_ppa_ver}_amd64.deb"
+    "libgestures-dev_${_pkgver}_${arch}.deb::${_ppa_url}/+build/9682491/+files/libgestures-dev_2.1.14-1${_ppa_ver}_amd64.deb"
+)
+noextract=(
+    "libgestures_${_pkgver}_${arch}.deb"
+    "libgestures-dev_${_pkgver}_${arch}.deb"
+)
+md5sums_i686=(
+    '7afb68a9aac5328692190ef6ff04ac0a'
+    'b995c86f55349f97e61cfd26420524ec'
+)
+md5sums_x86_64=(
+    '7afb68a9aac5328692190ef6ff04ac0a'
+    '7c19215c2440d814f66bfc707c396a48'
 )
 
-noextract=("${pkgname}.deb"
-					"${pkgname}-dev.deb")
-
-md5sums_i686=('SKIP'
-							'SKIP')
-md5sums_x86_64=('SKIP'
-								'SKIP')
 build() {
-		msg2 "Extracting source deb..."	
-		mkdir "${srcdir}/source/"
-		cd "${srcdir}/source/"
-		ar x "${srcdir}/${pkgname}.deb"
-		cd "../../"
-    
-		msg2 "Extracting dev deb..."
-		mkdir  "${srcdir}/dev"
-		cd "${srcdir}/dev/"		
-		ar x "${srcdir}/${pkgname}-dev.deb"
-		cd "../"
-               
-		msg2 "Extract source data.tar.xz..."
-		tar xf "${srcdir}/source/data.tar.xz"
-    
-		msg2 "Extract dev data.tar.xz..."
-		tar xf "${srcdir}/dev/data.tar.xz"
-                
+    ar x "${srcdir}/libgestures_${_pkgver}_${arch}.deb"
+    tar xf "${srcdir}/data.tar.xz"
+    ar x "${srcdir}/libgestures-dev_${_pkgver}_${arch}.deb" 
+    tar xf "${srcdir}/data.tar.xz"
 }
 
 package() {
