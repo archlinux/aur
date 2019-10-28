@@ -10,7 +10,7 @@ pkgbase = bubbles-git
 	depends = libxft
 	optdepends = libxinerama
 	provides = bubbles
-	source = https://git.fabbe.io/bubbles
+	source = git+https://git.fabbe.io/bubbles
 	md5sums = SKIP
 
 pkgname = bubbles-git

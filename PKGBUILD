@@ -10,7 +10,7 @@ license=('GPL')
 depends=('libx11' 'libxft')
 optdepends=('libxinerama')
 provides=("${pkgname%-*}")
-source=('https://git.fabbe.io/bubbles')
+source=('git+https://git.fabbe.io/bubbles')
 md5sums=('SKIP')
 
 pkgver() {
