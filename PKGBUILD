@@ -1,15 +1,19 @@
 # Maintainer of this PKBGUILD file: Martino Pilia <martino.pilia@gmail.com>
 pkgname=inviwo
-pkgver=0.9.10
+pkgver=0.9.11
 pkgrel=1
 pkgdesc="Software framework for rapid visualization prototyping"
 arch=('x86_64')
 url="http://www.inviwo.org/"
 license=('BSD')
 depends=(
+	'libjpeg'
+	'libpng'
+	'libtiff'
 	'libtirpc'
 	'python'
 	'qt5-base'
+	'zlib'
 )
 makedepends=('git' 'cmake')
 _icon_url='https://avatars1.githubusercontent.com/u/10848351'
@@ -41,26 +45,31 @@ prepare() {
 	# do not try to use the source folder as base path for the executable
 	sed -i 's,IVW_TRUNK,std::string("/opt/inviwo"),' src/core/util/filesystem.cpp
 
-	# fix missing libraries in sigar
-	sed -i '27i#include <sys/sysmacros.h>' ext/sigar/src/os/linux/linux_sigar.c
-	sed -i \
-		-e '69itarget_link_libraries(sigar PRIVATE libtirpc.so)' \
-		-e '69itarget_include_directories(sigar PRIVATE /usr/include/tirpc)' \
-		ext/sigar/CMakeLists.txt
+	# look in the source folder for test files
+	sed -i "s,filesystem::getPath(PathType::Tests),\"$srcdir/$pkgname/tests\"," \
+		tests/integrationtests/image-test.cpp \
+		tests/integrationtests/volume-test.cpp
+	sed -i "s,filesystem::getPath(.*),\"$srcdir/$pkgname/tests/images/swirl.png\"," \
+		modules/png/tests/unittests/png-savetobuffer-test.cpp
+	sed -i "s,filesystem::getPath(.*),\"$srcdir/$pkgname/tests/images/swirl.\" + testExtension," \
+		modules/cimg/tests/unittests/savetobuffer-test.cpp
 
-    mkdir build || :
-    cd build
+    mkdir "${srcdir}/build" || :
+    cd "${srcdir}/build"
 
-    cmake .. -DCMAKE_INSTALL_PREFIX:PATH="/opt/inviwo"
+    cmake "$srcdir/$pkgname" \
+		-DCMAKE_INSTALL_PREFIX:PATH="/opt/inviwo" \
+		-DIVW_USE_EXTERNAL_IMG:BOOL=ON \
+		-DIVW_INTEGRATION_TESTS:BOOL=OFF
 }
 
 build() {
-	cd "$srcdir/$pkgname/build"
+	cd "${srcdir}/build"
     make
 }
 
 package() {
-	cd "$srcdir/$pkgname/build"
+	cd "${srcdir}/build"
 
 	_install="$pkgdir/opt/inviwo"
 	mkdir -p "$_install" "$pkgdir/usr/bin"

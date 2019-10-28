@@ -1,16 +1,20 @@
 pkgbase = inviwo
 	pkgdesc = Software framework for rapid visualization prototyping
-	pkgver = 0.9.10
+	pkgver = 0.9.11
 	pkgrel = 1
 	url = http://www.inviwo.org/
 	arch = x86_64
 	license = BSD
 	makedepends = git
 	makedepends = cmake
+	depends = libjpeg
+	depends = libpng
+	depends = libtiff
 	depends = libtirpc
 	depends = python
 	depends = qt5-base
-	source = git+https://github.com/inviwo/inviwo.git#tag=v0.9.10
+	depends = zlib
+	source = git+https://github.com/inviwo/inviwo.git#tag=v0.9.11
 	source = inviwo.desktop
 	source = inviwo.sh
 	source = icon_24.png::https://avatars1.githubusercontent.com/u/10848351?s=24
