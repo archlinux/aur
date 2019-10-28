@@ -1,0 +1,24 @@
+pkgbase = skydive
+	pkgdesc = Real-time network topology and protocols analyzer
+	pkgver = 0.25.0
+	pkgrel = 1
+	url = https://skydive.network
+	arch = x86_64
+	arch = i686
+	license = Apache
+	makedepends = go
+	makedepends = libpcap
+	makedepends = libxml2
+	makedepends = protobuf
+	makedepends = libvirt
+	makedepends = npm
+	options = !buildflags
+	source = https://github.com/skydive-project/skydive/archive/v0.25.0.tar.gz
+	source = skydive.tmpfiles
+	source = skydive.sysusers
+	sha256sums = 698413e4c9c5dbd5977328bd46e912cd760b500dacf6ec4f4c453f6a494c09ec
+	sha256sums = 5d3b4f628a485363ec47897054b2d4a84ef680b9db93562a58e42971f5597bc3
+	sha256sums = acbccbc4dace958b4d7eeeb3879e6f80fe798ffb5e7be5375008970f6ee30c34
+
+pkgname = skydive
+
