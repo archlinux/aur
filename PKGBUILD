@@ -23,7 +23,7 @@ pkgver() {
 
 build() {
 	cd "$srcdir/${_pkgname}"
-	echo "pkgdir: $pkgdir"
+	sed -i 's:@install -D -m 755 $(OUT) $(PREFIX)/bin/$(NAME):@install -D -m 755 $(OUT) $(PREFIX)/$(NAME):g' makefile 	
 	make
 }
 
