@@ -1,0 +1,18 @@
+pkgbase = python-pandocode-git
+	pkgdesc = pandocode is a pandoc filter that converts Python (-like) code to LaTeX-Pseudocode.
+	pkgver = 20190524.5c8c531
+	pkgrel = 1
+	arch = any
+	license = ISC
+	makedepends = python-pylint
+	depends = pandoc-panflute
+	depends = python
+	depends = python-setuptools
+	depends = zip
+	provides = python-pandocode
+	conflicts = python-pandocode
+	source = pandocode::git+https://github.com/nzbr/pandocode.git
+	sha1sums = SKIP
+
+pkgname = python-pandocode-git
+
