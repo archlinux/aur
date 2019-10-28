@@ -1,0 +1,12 @@
+pkgbase = arch-bootstrap
+	pkgdesc = Bootstrap a base Arch Linux system
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/btwiuse/arch-bootstrap
+	arch = x86_64
+	license = MIT
+	source = arch-bootstrap-0.1.tar.gz::https://github.com/btwiuse/arch-bootstrap/archive/v0.1.tar.gz
+	md5sums = ae2181f10cc68a37842879b5fcf21670
+
+pkgname = arch-bootstrap
+
