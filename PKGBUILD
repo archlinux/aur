@@ -8,14 +8,14 @@
 
 ### MERGE REQUESTS SELECTION
 
-# available MR: ('!429' '!493' '!575' '!579' '!724')
+# available MR: ('!429' '!493' '!575' '!579' !719 '!724' '!762')
 _merge_requests_to_use=('!575' '!724')
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgname=mutter-performance
 pkgver=3.34.1+28+gef2f5f07f
-pkgrel=2
+pkgrel=3
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -135,11 +135,22 @@ prepare() {
   # Comment:
   pick_mr '!724' 'clutter/stage: Add API to get_next_presentation_time' 'clutter/master-clock-default: Sync timelines to hardware vsync'
 
-  # By the way, the commit "backends/x11: Do not reload keymap on new keyboard notifications"
-  # has been reverted because it introduces #822 for certain keyboards in attempt to fix #398.
-  # If you use stenography software or play hardcore rhythm games like Lunatic Rave 2/osumania,
-  # you should revert the revert for that commit.
+  # Title: backends: Do not reload keymap on new keyboard notifications
+  # URL:  https://gitlab.gnome.org/GNOME/mutter/merge_requests/579
+  # Type: 1
+  # Status: 4
+  # Comment: Was reverted: https://gitlab.gnome.org/GNOME/mutter/merge_requests/833
+  #          If you use stenography software or play hardcore rhythm games like Lunatic Rave 2/osumania, use it.
   pick_mr '!579' ce86f90efbaa51522ba14c5b4cad933c2106de42 'revert'
+
+  # Title: https://gitlab.gnome.org/GNOME/mutter/merge_requests/719
+  # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/719
+  # Type: 1
+  # Status: 4
+  # Comment: Was reverted: https://gitlab.gnome.org/GNOME/mutter/commit/97140ab6346bd29208e99c9c9aab892c2eec0e52
+  #          Use together with !762 to fix one of its issues.
+  pick_mr '!719' 97140ab6346bd29208e99c9c9aab892c2eec0e52 'revert'
+  pick_mr '!762' e9ba9dc2 'merge'
 
   patch -Np1 < ../fix-build.patch
 
