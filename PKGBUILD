@@ -1,6 +1,6 @@
 # Maintainer: Matthijs Tadema <M dot J dot Tadema at protonmail dot com>
 pkgname=python-pytris-git
-pkgver=r41.eb2f855
+pkgver=r43.21ceb04
 pkgrel=1
 pkgdesc="A cli tetris game written in python using curses"
 arch=('any')

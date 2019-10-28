@@ -1,6 +1,6 @@
 pkgbase = python-pytris-git
 	pkgdesc = A cli tetris game written in python using curses
-	pkgver = r41.eb2f855
+	pkgver = r43.21ceb04
 	pkgrel = 1
 	url = https://github.com/mjtadema/pytris/tree/v0.1
 	arch = any
