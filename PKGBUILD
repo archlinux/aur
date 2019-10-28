@@ -1,7 +1,7 @@
 # Packager: Adam Levy <adam@canonical-ledgers.com>
 # Maintainer: Adam Levy <adam@canonical-ledgers.com>
 pkgname=fatd-git
-pkgver=v0.6.0.r126.g2e4a483
+pkgver=v1.0.0.r1.gce0a4cf
 pkgrel=1
 pkgdesc="Factom Asset Tokens Daemon (develop branch)"
 url="https://github.com/Factom-Asset-Tokens/fatd"
