@@ -1,6 +1,6 @@
 pkgbase = kodi-devel
-	pkgver = 18.5pre27
-	pkgrel = 2
+	pkgver = 18.5pre29
+	pkgrel = 1
 	url = https://kodi.tv
 	arch = x86_64
 	license = GPL2
@@ -70,7 +70,6 @@ pkgbase = kodi-devel
 	source = http://mirrors.kodi.tv/build-deps/sources/fstrcmp-0.7.D001.tar.gz
 	source = http://mirrors.kodi.tv/build-deps/sources/flatbuffers-1.9.0.tar.gz
 	source = cpuinfo
-	source = 000-unfuck.libglvnd.bad.headers.patch::https://bugs.archlinux.org/task/64182?getfile=17930
 	source = 000-fix.building.with.mariadb.patch::https://github.com/wsnipex/xbmc/commit/cd20c8eb8a0394db1f028b118c4ca9b91b7e746a.patch
 	source = 001-PR16596.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16596.patch
 	source = 002-PR16627.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16627.patch
@@ -98,6 +97,8 @@ pkgbase = kodi-devel
 	source = 025-PR16792.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16792.patch
 	source = 026-PR16783.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16783.patch
 	source = 027-PR16675.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16675.patch
+	source = 028-PR16824.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16824.patch
+	source = 029-PR16843.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16843.patch
 	sha256sums = bf2be186d8ae5b5377e43c06a538012bb9f51a0e98f8244b70a401006861d110
 	sha256sums = 38816f8373e243bc5950449b4f3b18938c4e1c59348e3411e23f31db4072e40d
 	sha256sums = 071e414e61b795f2ff9015b21a85fc009dde967f27780d23092643916538a57a
@@ -108,7 +109,6 @@ pkgbase = kodi-devel
 	sha256sums = e4018e850f80700acee8da296e56e15b1eef711ab15157e542e7d7e1237c3476
 	sha256sums = 5ca5491e4260cacae30f1a5786d109230db3f3a6e5a0eb45d0d0608293d247e3
 	sha256sums = 27387e49043127f09c5ef0a931fffb864f5730e79629100a6e210b68a1b9f2c1
-	sha256sums = 6fa089625184b2b47bea7a3dcb349931e9b39681df9d84fd690a1ba848460168
 	sha256sums = 849daf1d5b081ef6d0e428bbc7d448799fc43a8ac9e79cd7513de0eb5a91b0bb
 	sha256sums = d5eead90e570a96d4ed947e7d671cf7b1794fca12c3b834f45a9628fe1a8e9ab
 	sha256sums = 0cea951df699da5281a99c1280de0f5256b5e5087f89dc62aecf2d6584e4bf79
@@ -136,6 +136,8 @@ pkgbase = kodi-devel
 	sha256sums = 753bb9ecedb8b01525e7e9eafb59125a1ef099848154fd206b95e39ce2ef2c86
 	sha256sums = 4ad439e04a2884f0b3611eae70ed19eac494e4c992b32d07839ed65a8575582a
 	sha256sums = 5aab7f7561a139528bf4a46be32ac284a02dc48b260054d78dfbee6e692a1d49
+	sha256sums = 9c501428e712ed7e217bf5ef093011836d0238be47d702bd373d6ac3199c6665
+	sha256sums = b3069f7494f93f3e6e59cdeeaf41f2307caf4497b058fcaf2d1f90210697016b
 
 pkgname = kodi-devel
 	pkgdesc = Alpha, Beta, or RC versions of the software media player and entertainment hub for digital media
@@ -154,7 +156,7 @@ pkgname = kodi-devel
 	optdepends = pulseaudio: PulseAudio support
 	optdepends = shairplay: AirPlay support
 	optdepends = upower: Display battery level
-	provides = kodi=18.5pre27
+	provides = kodi=18.5pre29
 	conflicts = kodi
 
 pkgname = kodi-bin-devel
@@ -180,7 +182,7 @@ pkgname = kodi-bin-devel
 	depends = taglib
 	depends = tinyxml
 	depends = kodi-devel
-	provides = kodi-bin=18.5pre27
+	provides = kodi-bin=18.5pre29
 	conflicts = kodi-bin
 
 pkgname = kodi-wayland-devel
@@ -206,7 +208,7 @@ pkgname = kodi-wayland-devel
 	depends = tinyxml
 	depends = waylandpp>=0.2.7-1
 	depends = kodi-devel
-	provides = kodi-bin=18.5pre27
+	provides = kodi-bin=18.5pre29
 	provides = kodi-wayland
 	conflicts = kodi-wayland
 
@@ -233,14 +235,14 @@ pkgname = kodi-gbm-devel
 	depends = taglib
 	depends = tinyxml
 	depends = kodi-devel
-	provides = kodi-bin=18.5pre27
+	provides = kodi-bin=18.5pre29
 	provides = kodi-gbm
 	conflicts = kodi-gbm
 
 pkgname = kodi-eventclients-devel
 	pkgdesc = Kodi Event Clients
 	optdepends = python2: most eventclients are implemented in python2
-	provides = kodi-eventclients=18.5pre27
+	provides = kodi-eventclients=18.5pre29
 	conflicts = kodi-eventclients
 
 pkgname = kodi-tools-texturepacker-devel
@@ -249,12 +251,12 @@ pkgname = kodi-tools-texturepacker-devel
 	depends = giflib
 	depends = libjpeg-turbo
 	depends = lzo
-	provides = kodi-tools-texturepacker=18.5pre27
+	provides = kodi-tools-texturepacker=18.5pre29
 	conflicts = kodi-tools-texturepacker
 
 pkgname = kodi-dev-devel
 	pkgdesc = Kodi dev files
 	depends = kodi-devel
-	provides = kodi-dev=18.5pre27
+	provides = kodi-dev=18.5pre29
 	conflicts = kodi-dev
 

@@ -22,9 +22,9 @@ pkgname=(
   "$pkgbase" kodi-bin-devel kodi-wayland-devel kodi-gbm-devel
   kodi-eventclients-devel kodi-tools-texturepacker-devel kodi-dev-devel
 )
-pkgver=18.5pre27
+pkgver=18.5pre29
 _major=18.4
-pkgrel=2
+pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
 license=('GPL2')
@@ -77,9 +77,6 @@ source=(
   "http://mirrors.kodi.tv/build-deps/sources/fstrcmp-$_fstrcmp_version.tar.gz"
   "http://mirrors.kodi.tv/build-deps/sources/flatbuffers-$_flatbuffers_version.tar.gz"
   cpuinfo
-  # blunt object workaround but effective until libglvnd upstream fixes
-  000-unfuck.libglvnd.bad.headers.patch::https://bugs.archlinux.org/task/64182?getfile=17930
-
   000-fix.building.with.mariadb.patch::https://github.com/wsnipex/xbmc/commit/cd20c8eb8a0394db1f028b118c4ca9b91b7e746a.patch
   001-PR16596.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16596.patch
   002-PR16627.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16627.patch
@@ -108,6 +105,8 @@ source=(
   025-PR16792.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16792.patch
   026-PR16783.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16783.patch
   027-PR16675.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16675.patch
+  028-PR16824.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16824.patch
+  029-PR16843.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16843.patch
 )
 noextract=(
   "libdvdcss-$_libdvdcss_version.tar.gz"
@@ -129,7 +128,6 @@ sha256sums=('bf2be186d8ae5b5377e43c06a538012bb9f51a0e98f8244b70a401006861d110'
             'e4018e850f80700acee8da296e56e15b1eef711ab15157e542e7d7e1237c3476'
             '5ca5491e4260cacae30f1a5786d109230db3f3a6e5a0eb45d0d0608293d247e3'
             '27387e49043127f09c5ef0a931fffb864f5730e79629100a6e210b68a1b9f2c1'
-            '6fa089625184b2b47bea7a3dcb349931e9b39681df9d84fd690a1ba848460168'
             '849daf1d5b081ef6d0e428bbc7d448799fc43a8ac9e79cd7513de0eb5a91b0bb'
             'd5eead90e570a96d4ed947e7d671cf7b1794fca12c3b834f45a9628fe1a8e9ab'
             '0cea951df699da5281a99c1280de0f5256b5e5087f89dc62aecf2d6584e4bf79'
@@ -156,7 +154,9 @@ sha256sums=('bf2be186d8ae5b5377e43c06a538012bb9f51a0e98f8244b70a401006861d110'
             'cf5338673616aa9dbedf76ad9d27099acd3a62fa459c6ebb2eb137978eb8bdbe'
             '753bb9ecedb8b01525e7e9eafb59125a1ef099848154fd206b95e39ce2ef2c86'
             '4ad439e04a2884f0b3611eae70ed19eac494e4c992b32d07839ed65a8575582a'
-            '5aab7f7561a139528bf4a46be32ac284a02dc48b260054d78dfbee6e692a1d49')
+            '5aab7f7561a139528bf4a46be32ac284a02dc48b260054d78dfbee6e692a1d49'
+            '9c501428e712ed7e217bf5ef093011836d0238be47d702bd373d6ac3199c6665'
+            'b3069f7494f93f3e6e59cdeeaf41f2307caf4497b058fcaf2d1f90210697016b')
 
 prepare() {
   # force python 'binary' as python2
