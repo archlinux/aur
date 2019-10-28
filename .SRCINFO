@@ -1,6 +1,6 @@
-pkgbase = chksum
+pkgbase = chksum-bin
 	pkgdesc = Check and compare easily the checksum of a file.
-	pkgver = 0.1.19
+	pkgver = 0.1.20
 	pkgrel = 1
 	url = https://gitlab.com/ChacaS0/chksum
 	arch = x86_64
@@ -9,5 +9,5 @@ pkgbase = chksum
 	source = https://gitlab.com/chacas0/chksum/-/jobs/artifacts/master/download?job=build
 	sha256sums = SKIP
 
-pkgname = chksum
+pkgname = chksum-bin
 
