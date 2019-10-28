@@ -2,7 +2,7 @@
 
 _pkgname=meld
 pkgname=$_pkgname-git
-pkgver=3.20.0.465.gc931d532
+pkgver=3.20.0.485.gff5916e7
 pkgrel=1
 _realver=3.21.0
 pkgdesc='Visual diff and merge tool'
@@ -17,6 +17,7 @@ depends=('python>=3.3'
          'gtksourceview4>=4.0.0'
          'python-cairo>=1.10.0-6')
 makedepends=('meson'
+             'appstream-glib'
              'intltool'
              'gnome-doc-utils'
              'git'
@@ -26,7 +27,7 @@ conflicts=('meld' 'meld-dev')
 provides=('meld')
 install=meld.install
 options=('!emptydirs')
-source=("git+https://github.com/GNOME/meld.git")
+source=("git+https://gitlab.gnome.org/GNOME/meld.git")
 sha256sums=('SKIP')
 
 pkgver() {
