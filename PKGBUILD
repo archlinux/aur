@@ -1,6 +1,6 @@
 pkgname=qtum-electrum
 pkgver=0.18.16
-pkgrel=2
+pkgrel=3
 pkgdesc='Qtum thin client'
 arch=(any)
 url=https://qtum.org/
@@ -39,7 +39,10 @@ depends=(desktop-file-utils
 	     python-eth-typing
 	     python-toolz
 	     python-cytoolz
-	     python-eth-utils	     
+	     python-eth-utils
+	     python-requests
+	     python-pip
+	     python-socks	     
 	     zbar)
 source=("https://github.com/qtumproject/qtum-electrum/archive/v$pkgver.tar.gz")
 sha256sums=(b63e5c50854453614d61e26b0d3e0882a54ece38d8aecc0c40596efce40f31e0)
@@ -49,13 +52,14 @@ sha256sums=(b63e5c50854453614d61e26b0d3e0882a54ece38d8aecc0c40596efce40f31e0)
 build() {
   cd qtum-electrum-$pkgver
   ./setup.py build
+  sudo pip install eth_abi
 }
 
 package() {
   cd qtum-electrum-$pkgver
   ./setup.py install -O1 --root="$pkgdir" --skip-build
   install -Dm755 "$pkgdir/"/usr/bin/run_qtum_electrum "$pkgdir/"/usr/bin/qtum-electrum
-  install -Dm755 "srcdir/"../qtum-electrum.desktop "$pkgdir"/usr/share/applications/
+  install -Dm755 "$srcdir/"qtum-electrum-$pkgver/qtum-electrum.desktop "$pkgdir"/usr/share/applications/
   install -Dm755 "$pkgdir/"/usr/share/pixmaps/electrum.png "$pkgdir/"/usr/share/pixmaps/qtumelectrum.png
   rm "$pkgdir/"/usr/share/pixmaps/electrum.png
   rm "$pkgdir/"/usr/bin/run_qtum_electrum
