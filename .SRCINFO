@@ -1,0 +1,23 @@
+pkgbase = wf-osk-git
+	pkgdesc = A very, very basic on-screen keyboard for wayland using gtkmm, virtual-keyboard-v1 and layer-shell protocols
+	pkgver = r7.d28bd69
+	pkgrel = 1
+	url = https://github.com/WayfireWM/wf-osk
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = wayland-protocols
+	makedepends = extra-cmake-modules
+	depends = wayland-protocols
+	depends = gtkmm3
+	depends = gtk-layer-shell
+	provides = wf-osk-git
+	provides = wf-osk
+	conflicts = wf-osk
+	source = git+https://github.com/WayfireWM/wf-osk
+	sha256sums = SKIP
+
+pkgname = wf-osk-git
+
