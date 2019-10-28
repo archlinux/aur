@@ -1,0 +1,15 @@
+pkgbase = tempus-themes-vim-git
+	pkgdesc = Tempus Themes for Vim
+	pkgver = r36.60c8b5e
+	pkgrel = 1
+	url = https://protesilaos.com/tempus-themes
+	arch = any
+	license = GPL3
+	depends = vim
+	provides = tempus-themes-vim
+	conflicts = tempus-themes-vim
+	source = git+https://gitlab.com/protesilaos/tempus-themes-vim.git
+	sha256sums = SKIP
+
+pkgname = tempus-themes-vim-git
+
