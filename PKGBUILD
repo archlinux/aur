@@ -1,10 +1,10 @@
 # Maintainer: Fancy <springzfx at gmail.com>
-pkgname=lx-music-desktop-bin
+pkgname=lx-music-desktop
 pkgver=0.9.1
 pkgrel=1
 pkgdesc="A music software based on Electron + Vue. 一个基于 Electron + Vue 开发的音乐软件。"
 arch=('x86_64')
-url="https://github.com/lyswhut/lx-music-desktop#readme"
+url="https://github.com/lyswhut/lx-music-desktop"
 license=('')
 groups=('')
 depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'libutil-linux' 'at-spi2-core' 'libappindicator-gtk3' 'libsecret')
