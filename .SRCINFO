@@ -1,7 +1,7 @@
 pkgbase = notify-desktop-git
 	pkgdesc = A replacement for notify-send with replaces-id support and less dependencies
 	pkgver = r23.9863919
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nowrep/notify-desktop
 	arch = x86_64
 	arch = i686
