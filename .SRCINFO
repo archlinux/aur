@@ -1,6 +1,6 @@
 pkgbase = graal-bin
 	pkgdesc = Universal virtual machine for running applications written in a variety of languages (JVM-based, LLVM-based, or other)
-	pkgver = 19.2.0.1
+	pkgver = 19.2.1
 	pkgrel = 1
 	url = https://www.graalvm.org/
 	install = graal-bin.install
@@ -13,8 +13,8 @@ pkgbase = graal-bin
 	provides = java-environment=8
 	provides = graal
 	conflicts = graal
-	source = https://github.com/oracle/graal/releases/download/vm-19.2.0.1/graalvm-ce-linux-amd64-19.2.0.1.tar.gz
-	sha256sums = 53e3e37530337fd276e133fc6f2bb72e20acc770aa7320ce612fdc718c88f42d
+	source = https://github.com/oracle/graal/releases/download/vm-19.2.1/graalvm-ce-linux-amd64-19.2.1.tar.gz
+	sha256sums = c3af1238c8021cbf018e4824a39823a246256596979bd6ec55685ccf661b253b
 
 pkgname = graal-bin
 
