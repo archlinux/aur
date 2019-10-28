@@ -5,7 +5,7 @@
 _pkgname="xournalpp"
 pkgname="${_pkgname}-git"
 
-pkgver=1.0.13.nightly.20190722.r0.gd1f0ea09
+pkgver=1.0.15.r49.gf2535dd5
 pkgrel=1
 pkgdesc='Xournal++ is a handwriting Notetaking software with PDF annotation support. Supports Pen input like Wacom Tablets.'
 arch=('i686' 'x86_64')
@@ -36,6 +36,8 @@ build() {
 	cd "${srcdir}/${_pkgname}/build"
 
 	cmake -DCMAKE_INSTALL_PREFIX="/usr/" -DDEV_CONFIG_DIR="$configdir/xournalpp" -DENABLE_CPPUNIT=ON ..
+        cmake --build . --target pot
+        cmake --build . --target translations
 	cmake --build .
 }
 
