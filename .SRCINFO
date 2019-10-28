@@ -1,6 +1,6 @@
 pkgbase = qvault
 	pkgdesc = An open source, fully transparent and extremely secure password manager
-	pkgver = 0.2.11
+	pkgver = 0.2.12
 	pkgrel = 1
 	url = https://qvault.io
 	arch = any
@@ -8,10 +8,10 @@ pkgbase = qvault
 	makedepends = yarn
 	makedepends = npm
 	depends = electron
-	source = qvault-0.2.11.tar.gz::https://github.com/Q-Vault/qvault/archive/v0.2.11.tar.gz
+	source = qvault-0.2.12.tar.gz::https://github.com/Q-Vault/qvault/archive/v0.2.12.tar.gz
 	source = qvault.desktop
 	source = qvault
-	sha256sums = e4281ec68cf8c4717119661fb2e44c7c3dbd62f130616eca79e0f7fa57934642
+	sha256sums = 335c4aec122a489c19cf5dceca60fda64429a95475ab5eea276eb655aec2159f
 	sha256sums = SKIP
 	sha256sums = SKIP
 
