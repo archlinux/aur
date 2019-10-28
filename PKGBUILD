@@ -1,4 +1,4 @@
-# Maintainer: Kevin Del Castillo R. <lans9831@gmail.com>
+# Kevin Del Castillo <lans9831@gmail.com>
 
 _pkgname=neovim
 pkgname=neovim-nightly
@@ -16,8 +16,8 @@ optdepends=('python2-neovim: for Python 2 plugin support, see :help python'
             'xclip: for clipboard support, see :help clipboard'
             'xsel: for clipboard support, see :help clipboard')
 
-source=('https://github.com/neovim/neovim/releases/download/nightly/nvim-linux64.tar.gz')
-sha512sums=(SKIP)
+source=("$_pkgname-$pkgver.tar.gz::https://github.com/neovim/neovim/releases/download/nightly/nvim-linux64.tar.gz")
+sha512sums=(SKIP) 
 install=neovim.install
 
 check() {
@@ -37,10 +37,6 @@ package() {
   # Make Arch vim packages work
   mkdir -p "${pkgdir}"/usr/share/vim
   echo "set runtimepath+=/usr/share/vim/vimfiles" > "${pkgdir}"/usr/share/nvim/sysinit.vim
-
-  # Remove nvim-linux64.tar.gz if it still exists, who knows?
-  rm -f ../nvim-linux64.tar.gz || true
-  rm -f ../../nvim-linux64.tar.gz || true
 }
 
 # vim:set sw=2 sts=2 et:
