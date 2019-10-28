@@ -6,7 +6,7 @@
 
 pkgname=slack-desktop-dark
 pkgver=4.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Slack Desktop (Beta) for Linux, with dark theme patch"
 arch=('x86_64')
 url="https://slack.com/downloads"
