@@ -33,7 +33,7 @@ package_selinux-python() {
 }
 
 package_selinux-python2() {
-  depends=('python2' 'python2-audit' 'libsemanage>=2.8' 'setools>=4.0.0')
+  depends=('python2' 'libsemanage>=2.8' 'setools>=4.0.0')
 
   cd "${pkgbase}-${pkgver}"
 

@@ -27,7 +27,6 @@ pkgname = selinux-python
 
 pkgname = selinux-python2
 	depends = python2
-	depends = python2-audit
 	depends = libsemanage>=2.8
 	depends = setools>=4.0.0
 
