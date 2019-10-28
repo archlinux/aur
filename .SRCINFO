@@ -1,15 +1,12 @@
 pkgbase = linuxqq
 	pkgdesc = Tencent QQ for Linux
 	pkgver = 2.0.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://im.qq.com/linuxqq/
 	arch = x86_64
 	arch = aarch64
 	license = custom
-	depends = gtk2
-	depends = glibc
-	depends = gcc-libs
-	depends = nss
+	depends = tint2
 	source_x86_64 = https://qd.myapp.com/myapp/qqteam/linuxQQ/linuxqq_2.0.0-b1-1024_x86_64.pkg.tar.xz
 	md5sums_x86_64 = d7d7d3666a46dc8e0cf24f8252974da1
 	source_aarch64 = https://qd.myapp.com/myapp/qqteam/linuxQQ/linuxqq_2.0.0-b1-1024_aarch64.rpm
