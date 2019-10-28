@@ -4,7 +4,7 @@
 pkgdesc="Allen Wild's fork of ag, which supports pcre2 and .agrc user config"
 url='https://github.com/aswild/the_silver_searcher'
 pkgname=the_silver_searcher_wild-git
-pkgver=2.2.0.r190.gc2e20d7
+pkgver=2.2.0.r195.gab8bbc3
 pkgrel=1
 provides=('the_silver_searcher')
 conflicts=('the_silver_searcher')
@@ -12,7 +12,7 @@ conflicts=('the_silver_searcher')
 arch=('x86_64' 'i686')
 license=('Apache')
 
-depends=('pcre2' 'xz' 'zlib')
+depends=('pcre2' 'xz' 'zlib' 'libarchive')
 makedepends=('git')
 checkdepends=('python-cram')
 
@@ -28,7 +28,10 @@ pkgver() {
 build() {
     cd "$srcdir/$_srcname"
     ./autogen.sh
-    ./configure --prefix=/usr --enable-zlib --enable-lzma \
+    ./configure --prefix=/usr \
+                --enable-zlib \
+                --enable-lzma \
+                --enable-libarchive \
                 ac_cv_prog_CLANG_FORMAT=no
     make
 }
