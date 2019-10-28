@@ -23,13 +23,12 @@ pkgver() {
 
 build() {
 	cd "$srcdir/${_pkgname}"
-	sed -i 's:@install -D -m 755 $(OUT) $(PREFIX)/bin/$(NAME):@install -D -m 755 $(OUT) $(PREFIX)/$(NAME):g' makefile 	
 	make
 }
 
 package() {
 	cd "$srcdir/${_pkgname}"
-    install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+    install -Dm755 "${_pkgname}.pyz" "${pkgdir}/usr/bin/${_pkgname}"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${_pkgname}/LICENSE"
 }
 
