@@ -1,0 +1,17 @@
+pkgbase = orw-git
+	pkgdesc = Collection of command line utilities designed to provide cohesive experience for ricing enthusiasts.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/s0la/orw
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = openbox
+	provides = orw
+	conflicts = orw
+	replaces = orw
+	source = git+https://github.com/s0la/orw.git
+	md5sums = SKIP
+
+pkgname = orw-git
+
