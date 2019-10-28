@@ -1,7 +1,7 @@
 pkgbase = oomd
 	pkgdesc = A userspace out-of-memory killer.
 	pkgver = 0.2.0
-	pkgrel = 2
+	pkgrel = 4
 	url = https://github.com/facebookincubator/oomd
 	install = oomd.install
 	arch = x86_64
@@ -10,12 +10,8 @@ pkgbase = oomd
 	checkdepends = gmock
 	makedepends = meson
 	makedepends = ninja
-	makedepends = jsoncpp
-	makedepends = gcc>=8
-	makedepends = gtest
-	makedepends = gmock
 	depends = jsoncpp
-	depends = systemd-libs
+	optdepends = systemd-libs
 	provides = oomd
 	conflicts = oomd-git
 	backup = etc/oomd.json

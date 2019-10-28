@@ -1,14 +1,16 @@
-# Maintainer: Julien Nicoulaud <julien dot nicoulaud at gmail dot com>
+# Maintainer: Nick Cao <nickcao@nichi.co>
+# Previous Maintainer: Julien Nicoulaud <julien dot nicoulaud at gmail dot com>
 
 pkgname=oomd
 pkgver=0.2.0
-pkgrel=2
+pkgrel=4
 pkgdesc='A userspace out-of-memory killer.'
 arch=('x86_64')
 url='https://github.com/facebookincubator/oomd'
 license=('GPL2')
-depends=('jsoncpp' 'systemd-libs')
-makedepends=('meson' 'ninja' 'jsoncpp' 'gcc>=8' 'gtest' 'gmock')
+depends=('jsoncpp')
+optdepends=('systemd-libs')
+makedepends=('meson' 'ninja')
 checkdepends=('gtest' 'gmock')
 install="${pkgname}.install"
 provides=("${pkgname}")
@@ -33,11 +35,10 @@ build() {
   meson --prefix "${pkgdir}/usr" build && ninja -C build
 }
 
-# FIXME tests don't pass on v0.2.0
-# check() {
-#   cd "${srcdir}/${pkgname}"
-#   ninja test -C build
-# }
+check() {
+   cd "${srcdir}/${pkgname}"
+   ninja test -C build
+}
 
 package() {
   cd "${srcdir}/${pkgname}"
