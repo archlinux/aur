@@ -1,6 +1,6 @@
 pkgbase = simpleitk
 	pkgdesc = A simplified layer built on top of ITK
-	pkgver = 1.2.2
+	pkgver = 1.2.3
 	pkgrel = 1
 	url = http://www.simpleitk.org/
 	arch = x86_64
@@ -33,7 +33,7 @@ pkgbase = simpleitk
 	optdepends = tk: Tcl/TK bindings
 	provides = python-simpleitk
 	conflicts = python-simpleitk
-	source = git+https://github.com/SimpleITK/SimpleITK#tag=v1.2.2
+	source = git+https://github.com/SimpleITK/SimpleITK#tag=v1.2.3
 	md5sums = SKIP
 
 pkgname = simpleitk

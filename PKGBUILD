@@ -2,7 +2,7 @@
 # Contributor: Yen Chi Hsuan <yan12125 at gmail.com>
 _pkgname=SimpleITK
 pkgname=simpleitk
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc="A simplified layer built on top of ITK"
 arch=('x86_64')
