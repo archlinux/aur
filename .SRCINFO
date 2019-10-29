@@ -1,24 +1,35 @@
 pkgbase = python2-pymupdf
 	pkgdesc = Python bindings for MuPDF
-	pkgver = 1.14.8
+	pkgver = 1.16.4
 	pkgrel = 1
 	url = https://github.com/pymupdf/PyMuPDF
 	arch = x86_64
 	license = AGPL3
-	makedepends = python2-pip
-	makedepends = python-pip
-	depends = python2>=2.7
-	depends = python2<2.8
-	noextract = PyMuPDF-1.14.8-cp27-cp27mu-manylinux1_x86_64.whl
-	noextract = PyMuPDF-1.14.8-cp37-cp37m-manylinux1_x86_64.whl
-	source = https://github.com/rk700/PyMuPDF/releases/download/1.14.8/PyMuPDF-1.14.8-cp27-cp27mu-manylinux1_x86_64.whl
-	source = https://github.com/rk700/PyMuPDF/releases/download/1.14.8/PyMuPDF-1.14.8-cp37-cp37m-manylinux1_x86_64.whl
-	sha256sums = 193353a7451c2a453732234bc1cc1e658ee6fd0cf303a85353a0e8381bbdd3a6
-	sha256sums = a49798b58cce00e09b8a4431a5f64a400b11a0959f29507187c471208ce040a5
+	makedepends = python2-setuptools
+	makedepends = python-setuptools
+	makedepends = libmupdf>=1.16
+	makedepends = libmupdf<1.17
+	depends = libjpeg-turbo
+	depends = jbig2dec
+	depends = openjpeg2
+	depends = freetype2
+	depends = harfbuzz
+	source = https://files.pythonhosted.org/packages/source/P/PyMuPDF/PyMuPDF-1.16.4.tar.gz
+	sha256sums = f00fa9b3590b5c05c821ed5ffbddc955b04a051c03fc44ba1dbf2a3ba1bce2b9
 
 pkgname = python2-pymupdf
+	depends = libjpeg-turbo
+	depends = jbig2dec
+	depends = openjpeg2
+	depends = freetype2
+	depends = harfbuzz
+	depends = python2
 
 pkgname = python-pymupdf
-	depends = python>=3.7
-	depends = python<3.8
+	depends = libjpeg-turbo
+	depends = jbig2dec
+	depends = openjpeg2
+	depends = freetype2
+	depends = harfbuzz
+	depends = python
 

@@ -1,31 +1,40 @@
-# Maintainer: Ruikai Liu <lrk700 at gmail dot com>
+# Maintainer: Hsiu-Ming Chang <cges30901 at gmail dot com>
+# Contributor: Ruikai Liu <lrk700 at gmail dot com>
 # Contributor: Alexander Kobel <a-kobel at a-kobel dot de>
 
-_pkgname=PyMuPDF
 pkgname=('python2-pymupdf' 'python-pymupdf')
-pkgver=1.14.8
+_name='PyMuPDF'
+pkgver=1.16.4
 pkgrel=1
 pkgdesc='Python bindings for MuPDF'
 arch=('x86_64')
 url='https://github.com/pymupdf/PyMuPDF'
 license=('AGPL3')
-depends=('python2>=2.7' 'python2<2.8')
-makedepends=('python2-pip' 'python-pip')
+depends=('libjpeg-turbo' 'jbig2dec' 'openjpeg2'  'freetype2' 'harfbuzz')
+makedepends=('python2-setuptools' 'python-setuptools' 'libmupdf>=1.16' 'libmupdf<1.17')
 
-source=("${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}-cp27-cp27mu-manylinux1_x86_64.whl"
-"${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}-cp37-cp37m-manylinux1_x86_64.whl")
-noextract=("${_pkgname}-${pkgver}-cp27-cp27mu-manylinux1_x86_64.whl"
-           "${_pkgname}-${pkgver}-cp37-cp37m-manylinux1_x86_64.whl")
-sha256sums=('193353a7451c2a453732234bc1cc1e658ee6fd0cf303a85353a0e8381bbdd3a6'
-'a49798b58cce00e09b8a4431a5f64a400b11a0959f29507187c471208ce040a5')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-${pkgver}.tar.gz")
+sha256sums=('f00fa9b3590b5c05c821ed5ffbddc955b04a051c03fc44ba1dbf2a3ba1bce2b9')
+
+prepare() {
+    cd "${_name}-${pkgver}"
+    sed -i "s:# 'jbig2dec', 'openjp2', 'jpeg', 'freetype',:'jbig2dec', 'openjp2', 'jpeg', 'freetype', 'harfbuzz',:g" setup.py
+}
+
+build() {
+    cd "${_name}-${pkgver}"
+    python2 setup.py build
+    python setup.py build
+}
 
 package_python2-pymupdf() {
-  cd "${srcdir}"
-  pip2 install --root="${pkgdir}" "${_pkgname}-${pkgver}-cp27-cp27mu-manylinux1_x86_64.whl"
+  depends+=('python2')
+  cd "${_name}-${pkgver}"
+  python2 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
 
 package_python-pymupdf() {
-  depends=('python>=3.7' 'python<3.8')
-  cd "${srcdir}"
-  pip install --root="${pkgdir}" "${_pkgname}-${pkgver}-cp37-cp37m-manylinux1_x86_64.whl"
+  depends+=('python')
+  cd "${_name}-${pkgver}"
+  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
