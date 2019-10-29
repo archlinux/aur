@@ -1,7 +1,7 @@
 # Packager: Adam Levy <adam@canonical-ledgers.com>
 # Maintainer: Adam Levy <adam@canonical-ledgers.com>
 pkgname=fatd-git
-pkgver=v1.0.0.r1.gce0a4cf
+pkgver=1.0.0.r1.gce0a4cf
 pkgrel=1
 pkgdesc="Factom Asset Tokens Daemon (develop branch)"
 url="https://github.com/Factom-Asset-Tokens/fatd"
@@ -59,5 +59,5 @@ package() {
 
 pkgver() {
     cd "$srcdir/fatd"
-    ./revision
+    ./revision | sed 's/^v//'
 }
