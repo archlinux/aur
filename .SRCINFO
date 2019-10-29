@@ -1,6 +1,6 @@
 pkgbase = android-platform-29
 	pkgdesc = Android SDK Platform, API 29
-	pkgver = 29_10.0.0_r01
+	pkgver = 29_10.0.0_r03
 	pkgrel = 1
 	url = https://developer.android.com/sdk/index.html
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = android-platform-29
 	depends = android-sdk
 	depends = android-sdk-platform-tools
 	options = !strip
-	source = https://dl.google.com/android/repository/platform-29_r01.zip
-	sha1sums = b1e10d134ac69f5e746e9be8015122b18d43c235
-	sha256sums = 2c9e961858e03900ffa0801a4f6234aa7223363b629fd8e1be60da9aa09d86bd
+	source = https://dl.google.com/android/repository/platform-29_r03.zip
+	sha1sums = 670e2e104333dae90e16ea3b615f0b63da5883ae
+	sha256sums = 40407df6142ea30da51a3ed48cad9c4ec3bcd6877ea66f69a1faab6f000f43f8
 
 pkgname = android-platform-29
 

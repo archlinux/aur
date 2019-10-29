@@ -13,7 +13,7 @@
 _apilevel=29
 _sdkShortVer=10
 _sdkver="${_sdkShortVer}.0.0"
-_rev='r01'
+_rev='r03'
 #_sdkver_char='Q' Not using it yet as it hasn't been revealed. Will probably be Q. Let me know if you find out.
 pkgname="android-platform-${_apilevel}"
 pkgver="${_apilevel}_${_sdkver}_${_rev}" # I use this version labeling scheme as an attempt to work with all notations.
@@ -28,8 +28,8 @@ license=('custom') # TODO: Link to the license.
 depends=('android-sdk' 'android-sdk-platform-tools')
 options=('!strip')
 source=("https://dl.google.com/android/repository/platform-${_apilevel}_${_rev}.zip")
-sha1sums=('b1e10d134ac69f5e746e9be8015122b18d43c235')
-sha256sums=('2c9e961858e03900ffa0801a4f6234aa7223363b629fd8e1be60da9aa09d86bd')
+sha1sums=('670e2e104333dae90e16ea3b615f0b63da5883ae')
+sha256sums=('40407df6142ea30da51a3ed48cad9c4ec3bcd6877ea66f69a1faab6f000f43f8')
 
 package() {
 	_destdir="${pkgdir}/opt/android-sdk/platforms"
