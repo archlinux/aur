@@ -3,12 +3,12 @@
 pkgbase=realrtcw
 pkgname=('realrtcw' 'realrtcw-hdpack' 'realrtcw-splatterladder')
 pkgver=3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A mod that brings some realism to the classic Wolfenstein game. You can expect ruthless AI, new weapons and rebalanced gameplay"
 arch=('i686' 'x86_64')
 url="http://www.moddb.com/mods/realrtcw-realism-mod"
 license=('GPL')
-depends=('iortcw-data' 'freetype2' 'sdl2' 'openal' 'opus' 'opusfile' 'libogg' 'zlib')
+depends=('freetype2' 'graphite' 'harfbuzz' 'iortcw-data' 'libjpeg-turbo' 'libogg' 'openal' 'opus' 'opusfile' 'pcre' 'sdl2' 'zlib')
 makedepends=('cmake' 'unzip' 'innoextract')
 install='realrtcw.install'
 source=("https://github.com/wolfetplayer/RealRTCW/archive/$pkgver.tar.gz"
