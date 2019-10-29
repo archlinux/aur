@@ -63,7 +63,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck
-_srcver=5.3.7-arch1
+_srcver=5.3.8-arch1
 pkgver=${_srcver%-*}
 pkgrel=1
 _ckpatchversion=1
@@ -82,6 +82,7 @@ source=(
   linux.preset   # standard config files for mkinitcpio ramdisk
   "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
   "http://ck.kolivas.org/patches/5.0/5.3/5.3-ck${_ckpatchversion}/$_ckpatch.xz"
+  fix.systemd-detect-virt.patch::https://github.com/ckolivas/linux/commit/6e346c7b4258ac03ec308741e8e28e0da3abf911.patch
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
   0002-Bluetooth-hidp-Fix-assumptions-on-the-return-value-o.patch
 )
@@ -89,14 +90,15 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('c6c9714e21531c825c306b107bc6f6c7bfa2d5270a14bad170f8de5a73d34802'
+sha256sums=('78f3cfc6c20b10ff21c0bb22d7d257cab03781c44d8c5aae289f749f94f76649'
             'SKIP'
-            '1aec3441bf9b704b5b64230ac758b6e0f6a5a3442f90415f56ab438f503934a2'
+            'e6d2df92f3079c740ca2cafd7e8b34b5dd43832d292284c2dc133d47600d1f29'
             '452b8d4d71e1565ca91b1bebb280693549222ef51c47ba8964e411b2d461699c'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5'
             '5b66761eae4efa4cb967aba9d4e555aa320cf5c004f0848e6bfbcb75ef66fbf1'
+            '01367272cd82cafc24ae04d309d5c738352949727dc2a37f8578c14c7a90b9f0'
             'cb38c0468a9ee0507e97e48be4a51116c1db952b7599906f2c36933b03e1ca34'
             '4b4d388e0cb6b2448d644463e4693bb08122716117aafa411ce78305da305642')
 
@@ -138,19 +140,30 @@ prepare() {
   sed -i -re "s/^(.EXTRAVERSION).*$/\1 = /" "../${_ckpatch}"
 
   msg2 "Patching with ck patchset..."
-
+  
   # fix ck1 patchset for 5.2.18
   sed -i -e '/^-CFLAGS/ s,+=,:=,' -i -e '/^+CFLAGS/ s,+=,:=,' ../"${_ckpatch}"
+
+  # ck patchset itself
   patch -Np1 -i ../"${_ckpatch}"
+
+  # systemd-detect-virt fix from CK merged but not yet released
+  patch -Np1 -i ../fix.systemd-detect-virt.patch
+
+  # non-interactively apply ck1 default options
+  # this isn't redundant if we want a clean selection of subarch below
+  make olddefconfig
 
   # https://github.com/graysky2/kernel_gcc_patch
   msg2 "Applying enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v4.13+.patch ..."
   patch -Np1 -i "$srcdir/kernel_gcc_patch-$_gcc_more_v/enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v4.13+.patch"
 
   if [ -n "$_subarch" ]; then
+    # user wants a subarch so apply choice defined above interactively via 'yes'
     yes "$_subarch" | make oldconfig
   else
-    make prepare
+    # no subarch defined so allow user to pick one
+    make oldconfig
   fi
 
   ### Optionally load needed modules for the make localmodconfig
@@ -164,9 +177,6 @@ prepare() {
         exit
       fi
     fi
-
-  # do not run `make olddefconfig` as it sets default options
-  yes "" | make config >/dev/null
 
   make -s kernelrelease > version
   msg2 "Prepared %s version %s" "$pkgbase" "$(<version)"
@@ -201,7 +211,11 @@ _package() {
   msg2 "Installing boot image..."
   # systemd expects to find the kernel here to allow hibernation
   # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
-  install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
+  #install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
+  #
+  # hard-coded path in case user defined CC=xxx for build which causes errors
+  # I need to open a flyspray for this
+  install -Dm644 arch/x86/boot/bzImage "$modulesdir/vmlinuz"
   install -Dm644 "$modulesdir/vmlinuz" "$pkgdir/boot/vmlinuz-$pkgbase"
 
   # Used by mkinitcpio to name the kernel
