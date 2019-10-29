@@ -1,6 +1,6 @@
 pkgbase = python-mintapi
 	pkgdesc = a screen-scraping API for Mint.com
-	pkgver = 1.40
+	pkgver = r5.f082e65
 	pkgrel = 1
 	url = https://github.com/mrooney/mintapi
 	arch = any
