@@ -17,6 +17,7 @@ sha512sums=(
     'a6118c6a2dc03d22b423d4bca393c6a2ef0c8494f6480db0ee1b29ca28485e3a5e648d9485595d2d4c921d1688f72c70a70949c241b2fdde6d43bd0053cdcaa2'
 )
 provides=('linuxqq')
+conflicts=('linuxqq')
 
 package() {
     mkdir -p "$pkgdir/opt"
