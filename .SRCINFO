@@ -1,0 +1,24 @@
+pkgbase = mididings-git
+	pkgdesc = A MIDI router and processor based on Python, supporting ALSA and JACK MIDI (python3 patched)
+	pkgver = 20191029.bbec99a
+	pkgrel = 1
+	url = http://das.nasophon.de/mididings/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = boost
+	depends = boost-libs
+	depends = python-decorator
+	depends = jack
+	optdepends = python-dbus: to send DBUS messages
+	optdepends = python-pyliblo: to send or receive OSC messages
+	optdepends = python-pyinotify: to automatically restart when a script changes
+	optdepends = python-xdg: so mididings knows where to look for config files
+	optdepends = tk: for the livedings GUI
+	provides = mididings
+	conflicts = mididings
+	source = mididings-git::git+https://github.com/dsacre/mididings
+	md5sums = SKIP
+
+pkgname = mididings-git
+
