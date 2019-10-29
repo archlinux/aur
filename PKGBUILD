@@ -2,17 +2,20 @@
 # Contributor: Patrick Griffis <tingping@tingping.se>
 
 pkgname=xdg-desktop-portal
-pkgver=1.5.1
+pkgver=1.5.2
 pkgrel=1
 pkgdesc="Desktop integration portals for sandboxed apps"
 url="https://github.com/flatpak/xdg-desktop-portal"
 arch=(x86_64)
 license=(LGPL2.1)
 depends=(glib2 pipewire fuse2 geoclue2)
-makedepends=(python xmlto docbook-xsl git flatpak libportal)
-_commit=c9f727e26ce1ce7c504a92bf59d0fe88e824918f  # tags/1.5.1^0
-source=("git+https://github.com/flatpak/xdg-desktop-portal#commit=$_commit")
-sha256sums=('SKIP')
+makedepends=(python xmlto docbook-xsl git flatpak)
+checkdepends=(libportal epiphany gedit)
+_commit=5a4e6ed3b4c9322a6e3e79dd10cb881f25e84335  # tags/1.5.2^0
+source=("git+https://github.com/flatpak/xdg-desktop-portal#commit=$_commit"
+        hack.diff)
+sha256sums=('SKIP'
+            'dfa41dea8882db18b2e9671118f09626a2cc1d17bafcffa578165cab9d58826c')
 
 pkgver() {
   cd $pkgname
@@ -21,12 +24,17 @@ pkgver() {
 
 prepare() {
   cd $pkgname
+
+  # Make tests pass
+  # https://github.com/flatpak/xdg-desktop-portal/issues/394
+  git apply -3 ../hack.diff
+
   NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
   cd $pkgname
-  ./configure --prefix=/usr --libexecdir=/usr/lib --enable-pipewire
+  ./configure --prefix=/usr --libexecdir=/usr/lib
   make 
 }
 
