@@ -1,15 +1,14 @@
 pkgbase = xmonk-lv2-git
 	pkgdesc = A simple sound generator LV2 plugin to have some fun with (git version)
-	pkgver = 0.1.r9.6a6dd92
+	pkgver = 0.1.r13.cb62b06
 	pkgrel = 1
 	url = https://github.com/brummer10/Xmonk
 	arch = i686
 	arch = x86_64
 	groups = pro-audio
 	groups = lv2-plugins
-	license = GPL
+	license = 0BSD
 	makedepends = git
-	makedepends = libgl
 	depends = cairo
 	provides = xmonk-lv2
 	provides = xmonk-lv2=0.1

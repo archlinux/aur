@@ -3,14 +3,14 @@
 _reponame=Xmonk.lv2
 _pkgname=xmonk-lv2
 pkgname="${_pkgname}-git"
-pkgver=0.1.r9.6a6dd92
+pkgver=0.1.r13.cb62b06
 pkgrel=1
 pkgdesc="A simple sound generator LV2 plugin to have some fun with (git version)"
 arch=('i686' 'x86_64')
 url="https://github.com/brummer10/Xmonk"
-license=('GPL')
+license=('0BSD')
 depends=('cairo')
-makedepends=('git' 'libgl')
+makedepends=('git')
 groups=('pro-audio' 'lv2-plugins')
 provides=("${_pkgname}" "${_pkgname}=${pkgver//.r*/}")
 conflicts=("${_pkgname}")
@@ -42,4 +42,6 @@ build() {
 package() {
   cd "${srcdir}/${_pkgname}"
   make DESTDIR="${pkgdir}" PREFIX=/usr install
+
+  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
