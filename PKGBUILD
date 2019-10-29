@@ -1,7 +1,7 @@
 # Maintainer: ChacaS0 <incoming+chacas0-chksum-13830438-issue-@incoming.gitlab.com>
 pkgname=chksum-git
-pkgver=1
-pkgrel=1
+pkgver=0.1
+pkgrel=0.1
 pkgdesc='Check and compare easily the checksum of a file.'
 arch=('x86_64')
 url="https://gitlab.com/ChacaS0/chksum"
@@ -28,6 +28,6 @@ build() {
 
 package() {
     cd "$srcdir/$pkgname"
-    install -Dm755 "${pkgname%-bin-git}" "$pkgdir/usr/bin/chksum"
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname%-bin-git}/LICENSE"
+    install -Dm755 "${pkgname%-git}" "$pkgdir/usr/bin/${pkgname%-git}"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname%-git}/LICENSE"
 }
