@@ -24,12 +24,13 @@ md5sums=("SKIP")
 
 build() {
     mkdir "$pkgname-$pkgver"
-	cd "$pkgname-$pkgver"
-	mkdir build
-	cd build
-	cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DKDE_INSTALL_LIBDIR=lib -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
+    mv CMakeLists.txt "$pkgname-$pkgver"
+    cd "$pkgname-$pkgver"
+    mkdir build
+    cd build
+    cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DKDE_INSTALL_LIBDIR=lib -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
 }
 package(){
-	cd "$pkgname-$pkgver"
-	make install
-}	 
+    cd "$pkgname-$pkgver"
+    make install
+}
