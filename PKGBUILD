@@ -6,15 +6,18 @@ pkgver() {
   printf "r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 pkgver=r37.gdd67138
-pkgrel=2
+pkgrel=3
 
 pkgdesc="Remote git stash, in case of fire and more!"
 arch=("any")
 url="https://github.com/sarpik/git-backup"
 license=("GPL2")
 
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}") # git-backup is a different package though. I dunno 'bout this..
+provides=()
+conflicts=("${pkgname%-git}")
+# git-backup is a different package.
+#provides=("${pkgname%-git}")
+#conflicts=("${pkgname%-git}")
 
 makedepends=()
 depends=("git")
