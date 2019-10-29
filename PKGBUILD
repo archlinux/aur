@@ -1,6 +1,6 @@
 # Maintainer: Versus Void <chaoskeeper somwhere_at m a i l ru>
 pkgname=intel-mkl-slim
-pkgver_hyphen=2019.4-243
+pkgver_hyphen=2019.5-281
 pkgver=${pkgver_hyphen/-/.}
 pkgrel=3
 pkgdesc="Intel Math Kernel Library (x86_64 shared libraries and headers only)"
@@ -15,7 +15,7 @@ optdepends=(
 provides=(intel-mkl)
 conflicts=(intel-mkl)
 replaces=(intel-mkl)
-_url="http://registrationcenter-download.intel.com/akdlm/irc_nas/15540/onlinedata/rpm"
+_url="http://registrationcenter-download.intel.com/akdlm/irc_nas/15816/onlinedata/rpm"
 openmp_version=${pkgver_hyphen/2019/19.0}
 source=(
 	"$_url/intel-mkl-common-$pkgver_hyphen-$pkgver_hyphen.noarch.rpm"
@@ -27,12 +27,12 @@ source=(
 	intel-mkl-slim.conf
 )
 noextract=("${source[@]##*/}")
-sha256sums=('8558a841419e4ce6b8cc6a0eb7b748019fa411fc2796872628796c88f7b7519d'
-            'f159279b4f2dc945781e937466621d2768d85c1c4d99d2a481501cbd8106d864'
-            'db4b6f14a3097d4026191bb2936b33a807cc2d66b996de57be3a8a9e135671cf'
-            '865a94d170860d976507b2d48a6781672f9f4c046b9923729132ab7ce1d19d7f'
-            '8ab7be6454e821cf9d3d37e7953bf717152e15cc32e8716cd7cede993121d7c3'
-            '3cbd775296c3d7bb3d04a7c69e091b95680a8f6a5872ea67ecdd82b47e487c6a'
+sha256sums=('323abb51162c0159f29bc139e9a6e8eb57674b550047ed37fbe73bb72432e188'
+            '61e36100a9856dfe3a3266a4dbcddf89ea635d3bfc48c85c2e597f1380f70f49'
+            '230c038d4bbe8d7660bd60a245134e80f13fab101faae62624c3d60d8aa8c482'
+            '4c62e48d188cfba87edf13fd71150f57ecdd22377fb166962c97732d77d33195'
+            '9431e77dfadfda1b6535ce45481d7b7d3db2f0de7053aacf666c16362c6fba54'
+            'b8ac1a850664d4e780312a569efe410c5d82b3a2bb8d7e33ff4ba48ad5078504'
             '90586d84ff1a4273921affe669f9af45ab09b2e97f58483282dd11a194cf9d8a')
 install=intel-mkl.install
 
