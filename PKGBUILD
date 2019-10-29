@@ -6,7 +6,6 @@ pkgver=316.fdb95ac
 pkgrel=1
 pkgdesc='The fastest and cross-platform subdomain enumerator, do not waste your time.'
 arch=('any')
-groups=('blackarch' 'blackarch-scanner' 'blackarch-recon')
 url='https://github.com/Edu4rdSHL/findomain'
 license=('GPL3')
 optdepends=('postgresql: for subdomains monitoring.')
