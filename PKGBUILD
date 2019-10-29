@@ -1,17 +1,13 @@
-# Maintainer: Yunhui Fu (yhfudev@gmail.com)
-# Contributor: Julien Sopena (jsopena.archlinux@free.fr)
-# Contributor: Oleg Smirnov (oleg.smirnov@gmail.com)
-# Contributor: angrycore (angrycore@gmail.com)
-# Contributor: Christophe Guéret (christophe.gueret@gmail.com)
+# Maintainer: oguzkagan <me@oguzkaganeren.com.tr
 
 pkgname="omnetpp"
-pkgver=5.0
+pkgver=5.5.1
 pkgrel=1
 pkgdesc="Component-based simulation package designed for modeling communication networks"
 url="http://www.omnetpp.org"
 license=("Academic Public License")
-depends=(tcl tk blt)
-makedepends=(libxml2 bison flex qt4)
+depends=('tcl' 'openscenegraph' 'tk' 'blt' 'osgearth')
+makedepends=('libxml2' 'bison' 'flex' 'openscenegraph' 'qt4' 'osgearth')
 arch=('i686' 'x86_64')
 optdepends=('openmpi: message passing library for parallel simulation',
   'java-environment: Java runtime for using OMNeT++/OMNEST IDE')
@@ -23,19 +19,21 @@ DLAGENTS=(
   "https::/usr/bin/wget --no-check-certificate -c -r -np -nd -H --referer https://omnetpp.org/ %u"
 )
 source=(
-    omnetpp-5.0-src.tgz::https://omnetpp.org/omnetpp/send/30-omnet-releases/2305-omnetpp-50-linux
+    omnetpp-5.5.1-src-linux.tgz::"https://github-production-release-asset-2e65be.s3.amazonaws.com/160219599/1e3e8680-8e9b-11e9-9a06-2686953eb5ba?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20191029%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20191029T102522Z&X-Amz-Expires=300&X-Amz-Signature=c6c6bc9324e0596fc98a3f11ade4ace8f78a81363b4ddb8638304ad90115f887&X-Amz-SignedHeaders=host&actor_id=5963437&response-content-disposition=attachment%3B%20filename%3Domnetpp-5.5.1-src-linux.tgz"
     OMNeT++.desktop
     )
-md5sums=('91f9540077d719e693610d70244d8661'
+md5sums=('f7abe260ff47ec02a665e287c653db86'
          '4e51f984f1a7114ab1f0b6f88fa4e0bc')
 
 build() {
 	cd ${srcdir}/${_pkgname}-${pkgver}
 	PATH=${srcdir}/${_pkgname}-${pkgver}/bin:$PATH
+    changeText1=". .\/configure.user"
+    changeText2=".\/configure.user"
 	LD_LIBRARY_PATH=${srcdir}/${_pkgname}-${pkgver}/lib:$LD_LIBRARY_PATH
 	
 	sed -i 's!OMNETPP_ROOT/images!OMNETPP_ROOT/images;/usr/share/omnetpp/images!' configure*
-
+    sed -i '/for arg in \$ac_configure_args/,+8 d' configure
 	./configure --prefix=/usr
 
 	sed -i 's!IDEDIR=.*!IDEDIR=/opt/omnetpp/ide!' src/utils/omnetpp src/utils/omnest
@@ -46,7 +44,6 @@ build() {
 
 package() {
 	cd ${srcdir}/${_pkgname}-${pkgver}
-
 	mkdir -p ${pkgdir}/usr/bin
 	install -m755 bin/* ${pkgdir}/usr/bin
 
@@ -54,7 +51,7 @@ package() {
 	sed "s|OMNETPP_INCL_DIR=/usr/include|OMNETPP_INCL_DIR=/usr/include/omnetpp|" -i ${pkgdir}/usr/bin/opp_makemake
 
 	mkdir -p ${pkgdir}/usr/lib
-	install lib/gcc/* ${pkgdir}/usr/lib
+	install lib/* ${pkgdir}/usr/lib
 
 	mkdir -p ${pkgdir}/usr/include/omnetpp
 	mkdir -p ${pkgdir}/usr/include/omnetpp/platdep
@@ -67,8 +64,8 @@ package() {
 	cp -R samples/* ${pkgdir}/usr/share/omnetpp/samples
 
 	install -d ${pkgdir}/usr/share/emacs/site-lisp
-	install -m644 contrib/emacs/ned-mode.el ${pkgdir}/usr/share/emacs/site-lisp
-	install -m644 contrib/emacs/ini-mode.el ${pkgdir}/usr/share/emacs/site-lisp
+	install -m644 misc/emacs/ned-mode.el ${pkgdir}/usr/share/emacs/site-lisp
+	install -m644 misc/emacs/ini-mode.el ${pkgdir}/usr/share/emacs/site-lisp
 
 	install -d ${pkgdir}/opt/omnetpp
 	cp -R ide ${pkgdir}/opt/omnetpp
@@ -82,3 +79,4 @@ package() {
 	cd ${srcdir}
 	cp OMNeT++.desktop ${pkgdir}/usr/share/applications/
 }
+
