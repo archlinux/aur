@@ -2,9 +2,9 @@
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 
 pkgname=miredo
-pkgver=1.2.6+r158+g509603a
-pkgrel=2
-_commit='509603ab416cd8f57e9227d09a8a80289df1a9f1'
+pkgver=1.2.6+r159+ge5f5652
+pkgrel=1
+_commit='e5f565281b388e47b8a78411663d6cf85131040d'
 pkgdesc='Teredo client and server.'
 arch=('x86_64')
 url='https://www.remlab.net/miredo/'
@@ -22,13 +22,6 @@ sha512sums=('SKIP')
 pkgver() {
 	cd "${srcdir}/${pkgname}"
 	git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/+/g'
-}
-
-prepare() {
-	cd "${srcdir}/${pkgname}"
-	# Miredo starts too early
-	sed 's/^After=network.target$/Wants=network-online.target\nAfter=network-online.target nss-lookup.target/' -i "${srcdir}/${pkgname}/misc/miredo.service-in"
-	sed '/^Description=.*$/a\After=network.target' -i "${srcdir}/${pkgname}/misc/miredo-server.service-in"
 }
 
 build() {
