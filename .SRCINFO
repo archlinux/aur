@@ -1,5 +1,5 @@
 pkgbase = linux-amd-raven
-	pkgver = 5.3.v.7
+	pkgver = 5.3.v.8
 	pkgrel = 1
 	url = https://www.kernel.org/
 	arch = x86_64
