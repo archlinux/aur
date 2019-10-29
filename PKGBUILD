@@ -7,15 +7,16 @@
 
 pkgname=gnome-settings-daemon-elementary
 pkgver=3.28.1_0ubuntu1.1_r5.9610af6df
-pkgrel=1
+pkgrel=2
 pkgdesc="GNOME Settings Daemon (with elementary OS patches)"
 url="https://gitlab.gnome.org/GNOME/gnome-settings-daemon"
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=(dconf geoclue2 geocode-glib gnome-desktop 'gsettings-desktop-schemas-ubuntu>=3.24.0'
-	gtk3-print-backends libcanberra-pulse libgudev libgweather libnotify librsvg 
-	libsystemd libwacom nss pulseaudio pulseaudio-alsa upower)
-makedepends=(docbook-xsl git gnome-common intltool libxslt libnm python xf86-input-wacom meson git)
+depends=(geoclue2 gnome-desktop 'gsettings-desktop-schemas-ubuntu>=3.24.0'
+	 gtk3-print-backends lib{canberra-pulse,gweather,notify,nm,systemd}
+         pulseaudio-alsa upower)
+makedepends=(docbook-xsl git gnome-common intltool lib{xslt,nm,wacom} python
+             xf86-input-wacom meson git)
 groups=(pantheon)
 provides=(gnome-settings-daemon{,-ubuntu}="${pkgver}")
 conflicts=(gnome-settings-daemon{,-ubuntu})
@@ -41,12 +42,13 @@ prepare() {
     git submodule init
     git config --local submodule."subprojects/gvc".url "${srcdir}/libgnome-volume-control"
     git submodule update
+
+    [[ ! -d build ]] || rm -rf build
 }
 
 build() {
     cd "os-patches"
 
-    [ -d build ] && rm -rf build
     arch-meson build -Dstatic-false=true
     ninja -C build
 }

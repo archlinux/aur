@@ -1,7 +1,7 @@
 pkgbase = gnome-settings-daemon-elementary
 	pkgdesc = GNOME Settings Daemon (with elementary OS patches)
 	pkgver = 3.28.1_0ubuntu1.1_r5.9610af6df
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.gnome.org/GNOME/gnome-settings-daemon
 	arch = i686
 	arch = x86_64
@@ -13,25 +13,20 @@ pkgbase = gnome-settings-daemon-elementary
 	makedepends = intltool
 	makedepends = libxslt
 	makedepends = libnm
+	makedepends = libwacom
 	makedepends = python
 	makedepends = xf86-input-wacom
 	makedepends = meson
 	makedepends = git
-	depends = dconf
 	depends = geoclue2
-	depends = geocode-glib
 	depends = gnome-desktop
 	depends = gsettings-desktop-schemas-ubuntu>=3.24.0
 	depends = gtk3-print-backends
 	depends = libcanberra-pulse
-	depends = libgudev
 	depends = libgweather
 	depends = libnotify
-	depends = librsvg
+	depends = libnm
 	depends = libsystemd
-	depends = libwacom
-	depends = nss
-	depends = pulseaudio
 	depends = pulseaudio-alsa
 	depends = upower
 	provides = gnome-settings-daemon=3.28.1_0ubuntu1.1_r5.9610af6df
