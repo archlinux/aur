@@ -1,12 +1,11 @@
 pkgbase = pktstat
 	pkgdesc = Real-time interface traffic viewer for curses.
 	pkgver = 1.8.5
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.adaptive-enterprises.com.au/~d/software/pktstat/
 	arch = i686
 	arch = x86_64
-	license = Public Domain
-	depends = ncurses
+	license = custom
 	depends = libpcap
 	source = http://ftp.ussg.iu.edu/linux/gentoo/distfiles/pktstat-1.8.5.tar.gz
 	md5sums = 0f387f86567eb3da1c329f7b182c3355
