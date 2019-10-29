@@ -27,7 +27,7 @@ build() {
 }
 
 package() {
-    cd "$srcdir/$pkgname"
+    cd "$srcdir/${pkgname%-git}"
     install -Dm755 "${pkgname%-git}" "$pkgdir/usr/bin/${pkgname%-git}"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname%-git}/LICENSE"
 }
