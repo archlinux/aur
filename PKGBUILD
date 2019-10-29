@@ -3,7 +3,7 @@
 pkgname=pktstat-git
 _pkgname=pktstat
 pkgver=1.8.5.r9.g2070e5e
-pkgrel=3
+pkgrel=1
 pkgdesc="Real-time interface traffic viewer for curses."
 arch=(i686 x86_64)
 url="http://www.adaptive-enterprises.com.au/~d/software/pktstat/"
