@@ -1,0 +1,89 @@
+commit 613ff91dd2d9a5ee0e86be8a3682beecc4e94887
+Author: Hal Gentz <zegentzy@protonmail.com>
+Date:   Thu Oct 24 06:17:40 2019 -0600
+
+    Fix for v8 in node 12.
+    
+    Signed-off-by: Hal Gentz <zegentzy@protonmail.com>
+---
+ src/main.cc   | 22 ++++++++++++++++------
+ src/worker.cc | 12 +++++++++---
+ 2 files changed, 25 insertions(+), 9 deletions(-)
+
+diff --git a/src/main.cc b/src/main.cc
+index 0318ac5..b834148 100644
+--- a/src/main.cc
++++ b/src/main.cc
+@@ -134,9 +134,15 @@ class Spellchecker : public Nan::ObjectWrap {
+       uint32_t start = iter->start, end = iter->end;
+ 
+       Local<Object> misspelled_range = Nan::New<Object>();
+-      misspelled_range->Set(Nan::New("start").ToLocalChecked(), Nan::New<Integer>(start));
+-      misspelled_range->Set(Nan::New("end").ToLocalChecked(), Nan::New<Integer>(end));
+-      result->Set(index, misspelled_range);
++      {
++        Isolate* isolate = misspelled_range->GetIsolate();
++        Local<Context> context = isolate->GetCurrentContext();
++        misspelled_range->Set(context, Nan::New("start").ToLocalChecked(), Nan::New<Integer>(start)).Check();
++        misspelled_range->Set(context, Nan::New("end").ToLocalChecked(), Nan::New<Integer>(end)).Check();
++      }
++      Isolate* isolate = result->GetIsolate();
++      Local<Context> context = isolate->GetCurrentContext();
++      result->Set(context, index, misspelled_range).Check();
+     }
+   }
+ 
+@@ -220,7 +226,9 @@ class Spellchecker : public Nan::ObjectWrap {
+     Local<Array> result = Nan::New<Array>(dictionaries.size());
+     for (size_t i = 0; i < dictionaries.size(); ++i) {
+       const std::string& dict = dictionaries[i];
+-      result->Set(i, Nan::New(dict.data(), dict.size()).ToLocalChecked());
++      Isolate* isolate = result->GetIsolate();
++      Local<Context> context = isolate->GetCurrentContext();
++      result->Set(context, i, Nan::New(dict.data(), dict.size()).ToLocalChecked()).Check();
+     }
+ 
+     info.GetReturnValue().Set(result);
+@@ -246,7 +254,9 @@ class Spellchecker : public Nan::ObjectWrap {
+       const std::string& word = corrections[i];
+ 
+       Nan::MaybeLocal<String> val = Nan::New<String>(word.data(), word.size());
+-      result->Set(i, val.ToLocalChecked());
++      Isolate* isolate = result->GetIsolate();
++      Local<Context> context = isolate->GetCurrentContext();
++      result->Set(context, i, val.ToLocalChecked()).Check();
+     }
+ 
+     info.GetReturnValue().Set(result);
+@@ -286,7 +296,7 @@ class Spellchecker : public Nan::ObjectWrap {
+ 
+     Isolate* isolate = exports->GetIsolate();
+     Local<Context> context = isolate->GetCurrentContext();
+-    exports->Set(Nan::New("Spellchecker").ToLocalChecked(), tpl->GetFunction(context).ToLocalChecked());
++    exports->Set(context, Nan::New("Spellchecker").ToLocalChecked(), tpl->GetFunction(context).ToLocalChecked()).Check();
+   }
+ };
+ 
+diff --git a/src/worker.cc b/src/worker.cc
+index fbae5ec..0314e91 100644
+--- a/src/worker.cc
++++ b/src/worker.cc
+@@ -35,9 +35,15 @@ void CheckSpellingWorker::HandleOKCallback() {
+     uint32_t start = iter->start, end = iter->end;
+ 
+     Local<Object> misspelled_range = Nan::New<Object>();
+-    misspelled_range->Set(Nan::New("start").ToLocalChecked(), Nan::New<Integer>(start));
+-    misspelled_range->Set(Nan::New("end").ToLocalChecked(), Nan::New<Integer>(end));
+-    result->Set(index, misspelled_range);
++    {
++      Isolate* isolate = misspelled_range->GetIsolate();
++      Local<Context> context = isolate->GetCurrentContext();
++      misspelled_range->Set(context, Nan::New("start").ToLocalChecked(), Nan::New<Integer>(start)).Check();
++      misspelled_range->Set(context, Nan::New("end").ToLocalChecked(), Nan::New<Integer>(end)).Check();
++    }
++    Isolate* isolate = result->GetIsolate();
++    Local<Context> context = isolate->GetCurrentContext();
++    result->Set(context, index, misspelled_range).Check();
+   }
+ 
+   Local<Value> argv[] = { Nan::Null(), result };
