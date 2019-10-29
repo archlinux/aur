@@ -2,12 +2,12 @@
 # Contributor: Ilya Gulya <ilyagulya@gmail.com>
 pkgname="deezer"
 pkgver=4.17.10
-pkgrel=3
+pkgrel=4
 pkgdesc="A proprietary music streaming service"
 arch=('any')
 url="https://www.deezer.com/"
 license=('custom:"Copyright (c) 2006-2018 Deezer S.A."')
-depends=('electron')
+depends=('electron5')
 provides=('deezer')
 makedepends=('p7zip' 'asar' 'prettier' 'imagemagick')
 source=("$pkgname-$pkgver-setup.exe::https://www.deezer.com/desktop/download/artifact/win32/x86/$pkgver"
@@ -69,7 +69,7 @@ package() {
     mkdir -p "$pkgdir"/usr/bin/
 
     echo "#!/bin/sh" > deezer
-    echo "exec electron /usr/share/deezer/app.asar \"\$@\"" >> deezer
+    echo "exec electron5 /usr/share/deezer/app.asar \"\$@\"" >> deezer
 
     install -Dm644 resources/app.asar "$pkgdir"/usr/share/deezer/
     install -Dm644 resources/win/deezer.png "$pkgdir"/usr/share/icons/hicolor/256x256/apps/
