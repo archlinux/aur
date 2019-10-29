@@ -1,6 +1,6 @@
 # Maintainer: Jake Barnes <me@jakebarn.es>
 pkgname=input-redirection-client-qt-git
-pkgver=2.1
+pkgver=2.1.r6.g85439b9
 pkgrel=1
 pkgdesc="Input redirection client for the 3DS using QtGamepad"
 arch=('x86_64')
@@ -14,6 +14,7 @@ md5sums=('SKIP'
          'a2ca494c5c1b38ac77ee9f44d586c89a')
 
 pkgver() {
+  cd "$srcdir/InputRedirectionClient-Qt"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//g'
 }
 
