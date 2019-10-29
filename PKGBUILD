@@ -26,6 +26,5 @@ package() {
     mkdir -p "$pkgdir/usr/bin"
     ln -s /opt/tencent-qq/qq "$pkgdir/usr/bin/qq"
     
-    mkdir -p "$pkgdir/usr/share/applications"
-    install -m644 "$srcdir/qq.desktop" "$pkgdir/usr/share/applications/"
+    install -Dm644 "$srcdir/qq.desktop" "$pkgdir/usr/share/applications/"
 }
