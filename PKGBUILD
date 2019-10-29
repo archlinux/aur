@@ -1,7 +1,7 @@
 # Maintainer: David Runge <dave@sleepmap.de>
 # Contributor: Nils Czernia <nils[at]czserver[dot]de>
 pkgname=librenms
-pkgver=1.56
+pkgver=1.57
 pkgrel=1
 pkgdesc='Autodiscovering PHP/MySQL/SNMP based network monitoring'
 arch=('any')
