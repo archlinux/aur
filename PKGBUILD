@@ -1,8 +1,7 @@
-# Maintainer: Yurii Kolesnykov <root@yurikoles.com>
-# Contributor: Sean Anderson <seanga2@gamil.com>
 pkgname=proton-git
 _pkgname=proton
-pkgver=8.0
+epoch=1
+pkgver=4.11.7.r0.g71d4637
 pkgrel=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components"
 arch=('x86_64')
@@ -17,13 +16,8 @@ source=("${pkgname}::git+https://github.com/ValveSoftware/Proton.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  local version count
-
   cd "${pkgname}"
-
-  version="$(git describe --abbrev=0 --tags)"
-  count="$(git rev-list --count ${version}..)"
-  printf '%s.%s' "${version#proton-*-}" "${count}"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/proton\.//g'
 }
 
 prepare() {
