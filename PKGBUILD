@@ -1,6 +1,6 @@
 # Maintainer: Asger Hautop Drewsen <asgerdrewsen@gmail.com>
 pkgname=us_da-layout
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="US keyboard layout with level 3-4 æøå"
 arch=('any')
@@ -18,4 +18,4 @@ package() {
 
 sha256sums=('5f9e7e69a69a0c604640c9dd26ab56331af2027dc0ca42a9695feaa138f1e457'
             '579702a5617a25749d35f89fa71fbcee912a43b37a1d2e0f46109f1d11f2e65a'
-            '79a7cb2c8773b6489c5c8fe1b1db5f53b4e08c90ba8a6ad33e2ce66f362d3906')
+            '342adf441ce7fe42cf8694ae2294204b4d0391111e2d85dc6fefe49b6333abef')

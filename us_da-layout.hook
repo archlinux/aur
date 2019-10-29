@@ -7,4 +7,4 @@ Target = usr/share/X11/xkb/rules/evdev.xml
 
 [Action]
 When = PostTransaction
-Exec = /usr/share/lipalpm/scripts/install-us_da-layout
+Exec = /usr/share/libalpm/scripts/install-us_da-layout
