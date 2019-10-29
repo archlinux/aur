@@ -3,15 +3,15 @@
 # Contributor: Ner0 <darkelfdarkelf666@yahoo.co.uk>
 
 pkgname=pantheon-3d
-pkgver=3
-pkgrel=11
+pkgver=4
+pkgrel=1
 pkgdesc='Pantheon 3d Session (replaces Gala with Compiz)'
-arch=('i686' 'x86_64')
+arch=('any')
 url='https://bbs.archlinux.org/viewtopic.php?pid=1401967#p1401967'
 license=('GPL3')
 groups=('pantheon-qq')
-depends=('compiz' 'pantheon-workarounds'
-         'plank' 'cerbere' 'wingpanel-standalone-git')
+depends=('compiz' pantheon-{workarounds,session}
+         'wingpanel-standalone-git')
 provides=("pantheon-3d")
 conflicts=()
 source=(pantheon-compiz.{desktop,session}
