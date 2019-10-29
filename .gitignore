@@ -1,0 +1,11 @@
+# IntelliJ project files
+.idea
+*.iml
+out
+gen
+
+# Generated files
+sources-*.zip
+android-sources-*.pkg.tar.xz
+src
+pkg
