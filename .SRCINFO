@@ -1,14 +1,14 @@
 pkgbase = signal-desktop
 	pkgdesc = Electron application that links with Signal on mobile
 	pkgver = 1.27.4
-	pkgrel = 5
+	pkgrel = 6
 	url = https://signal.org
 	arch = x86_64
 	license = GPL3
 	makedepends = yarn
 	makedepends = git
 	makedepends = python2
-	makedepends = nodejs-lts-erbium
+	makedepends = nodejs
 	makedepends = npm
 	makedepends = python
 	depends = electron

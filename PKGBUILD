@@ -3,17 +3,24 @@
 pkgname=signal-desktop
 _pkgname=Signal-Desktop
 pkgver=1.27.4
-pkgrel=5
+pkgrel=6
 pkgdesc='Electron application that links with Signal on mobile'
 arch=(x86_64)
 url=https://signal.org
 license=(GPL3)
 depends=(electron)
-makedepends=(yarn git python2 nodejs-lts-erbium npm python)
+makedepends=(
+  yarn
+  git
+  python2
+  nodejs
+  npm
+  python
+)
 provides=(signal)
 replaces=(signal)
 source=(
-  $pkgname-$pkgver.tar.gz::https://github.com/signalapp/Signal-Desktop/archive/v$pkgver.tar.gz
+  $pkgname-$pkgver.tar.gz::https://github.com/signalapp/$_pkgname/archive/v$pkgver.tar.gz
   $pkgname.desktop
   openssl-linking.patch
 )
@@ -24,9 +31,12 @@ sha512sums=('92a934d7680f33803bd7be21f4604719b211036931a6e00565e21a7008d0b35da7d
 prepare() {
   cd $_pkgname-$pkgver
 
-  # Set system electron version
-  _installed_electron_version=$(pacman -Q electron | cut -d' ' -f2 | cut -d'-' -f1)
-  sed -E -i 's/"electron": "[0-9.]+"/"electron": "'$_installed_electron_version'"/' package.json
+  # Fix SpellChecker build with imminent Node 13
+  # See https://github.com/atom/node-spellchecker/issues/127
+  sed -r 's#("spellchecker": ").*"#\1https://github.com/atom/node-spellchecker/archive/613ff91dd2d9a5ee0e86be8a3682beecc4e94887.tar.gz"#' -i package.json
+
+  # Set system Electron version for ABI compatibility
+  sed -r 's#("electron": ").*"#\1'$(cat /usr/lib/electron/version)'"#' -i package.json
 
   # Allow higher Node versions
   sed 's#"node": "#&>=#' -i package.json
@@ -35,7 +45,7 @@ prepare() {
 
   # Have SQLCipher dynamically link from OpenSSL
   # See https://github.com/signalapp/Signal-Desktop/issues/2634
-  patch -Np0 -i ../openssl-linking.patch
+  patch -Np0 < ../openssl-linking.patch
 }
 
 build() {
