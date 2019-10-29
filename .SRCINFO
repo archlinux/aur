@@ -1,6 +1,6 @@
 pkgbase = uvicorn
 	pkgdesc = The lightning-fast ASGI server.
-	pkgver = 0.9.0
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://www.uvicorn.org/
 	arch = any
@@ -13,8 +13,8 @@ pkgbase = uvicorn
 	depends = python-uvloop
 	depends = python-websockets>=8.0
 	options = !emptydirs
-	source = https://github.com/encode/uvicorn/archive/0.9.0.tar.gz
-	sha256sums = 19bbd258074c1cc077aee3f4d458c671e3b0f2f3efaa938b552d0dbd34197ab6
+	source = https://github.com/encode/uvicorn/archive/0.9.1.tar.gz
+	sha256sums = 86467803f7c73a8c05bf1640bdad2464830d74d20e0f156edd1bade64926c294
 
 pkgname = uvicorn
 

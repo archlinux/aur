@@ -1,7 +1,7 @@
 # Maintainer: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
 pkgname=uvicorn
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="The lightning-fast ASGI server."
 arch=('any')
@@ -21,7 +21,7 @@ source=(
   "https://github.com/encode/uvicorn/archive/${pkgver}.tar.gz"
 )
 sha256sums=(
-  '19bbd258074c1cc077aee3f4d458c671e3b0f2f3efaa938b552d0dbd34197ab6'
+  '86467803f7c73a8c05bf1640bdad2464830d74d20e0f156edd1bade64926c294'
 )
 
 build() {
