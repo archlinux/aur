@@ -1,23 +1,22 @@
-# Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
+# Maintainer: Alex Sarum <rum.274.4 at gmail dot com>
+# Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
 pkgbase=unicorn-git
 pkgname=('unicorn-git' 'python-unicorn-git' 'python2-unicorn-git' 'ruby-unicorn-git')
-pkgver=1.0.1616.15b99f1
+pkgver=1.0.2.rc1.r5.g3b17db0d
 pkgrel=1
 pkgdesc='Lightweight, multi-platform, multi-architecture CPU emulator framework based on QEMU'
 url='http://www.unicorn-engine.org'
 arch=('i686' 'x86_64')
 license=('GPL2')
 makedepends=('git' 'python' 'python2' 'python-setuptools' 'python2-setuptools' 'ruby')
-checkdepends=('cmocka')
 options=('staticlibs' '!emptydirs')
 source=(${pkgbase}::git+https://github.com/unicorn-engine/unicorn)
 sha512sums=('SKIP')
 
 pkgver() {
   cd ${pkgname}
-  printf "%s.%s.%s" "$(git describe --tags --abbrev=0)" \
-    "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -43,13 +42,14 @@ build() {
     python2 setup.py build
   )
   (cd bindings/ruby/unicorn_gem
-    gem build unicorn.gemspec
+    gem build unicorn-engine.gemspec
   )
 }
 
 check() {
   cd ${pkgbase}
   # Tests are not supported right now, hope they get some love soon
+  # checkdepends=('cmocka')
   # make test
 }
 
