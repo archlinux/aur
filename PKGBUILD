@@ -1,0 +1,28 @@
+# Maintainer: Frederic Bezies < fredbezies at gmail dot com>
+# Based on previous and misnamed nighthawk AUR package by liberodark
+
+pkgname=nighthawk-bin
+_pkgname=nighthawk
+pkgver=2.1.1
+pkgrel=1
+pkgdesc="A stealthy, simple, unobtrusive music player that stays out of your way."
+arch=('x86_64')
+url="https://github.com/quantumkv/nighthawk"
+license=('MIT')
+depends=('xdg-utils')
+replaces=('nighhawk')
+source=("https://github.com/quantumkv/nighthawk/releases/download/${pkgver}/nighthawk-linux-v${pkgver}-amd64.deb"
+        $_pkgname.desktop
+        $_pkgname.png)
+sha512sums=('6a48878bab0f3e91f920bca35f66f7f3bc9ae250bd88a1196e52fafe134de928a8c811e3dec267bb3d0dbd3e5d277f3836410668b6edd89f3a524df2dbbffd68'
+            '445d6d4973d6598eddd7e723dd1f9073e63cc4e676d7d257dffbc66a5ddb1394c26c12d0dbce8daaa670f841546a5ada51dca39896c4e9821a4fe6474fecfe42'
+            '10afcd81d7caf67c3dc20a8082b07a8db024ada88a1ae5218c0958ee001c4351f9546d351cde49df7064b2c2a89e43ce00fb0caff51aba15d619083a96d71c5d')
+        
+package() {
+  cd $srcdir
+  tar xvf data.tar.xz
+  cp -r opt $pkgdir
+  install -vDm644 $srcdir/$_pkgname.desktop $pkgdir/usr/share/applications/$_pkgname.desktop
+  install -vDm644 $srcdir/$_pkgname.png $pkgdir/usr/share/pixmaps/$_pkgname.png
+}
+
