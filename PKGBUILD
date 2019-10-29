@@ -14,13 +14,13 @@ replaces=()
 backup=()
 options=()
 install=
-source=('git+https://github.com/hugopl/RubyCreator.git#branch=qtc-3.5')
+source=('git+https://github.com/hugopl/RubyCreator.git#branch=archlinux')
 noextract=()
 md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/RubyCreator"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
