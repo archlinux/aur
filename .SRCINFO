@@ -1,7 +1,7 @@
 pkgbase = nginx-mod-ipscrub
 	pkgdesc = IP address anonymizer for nginx log files
 	pkgver = 1.0.1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/masonicboom/ipscrub
 	arch = i686
 	arch = pentium4
