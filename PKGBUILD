@@ -4,7 +4,7 @@
 # Thanks: Chih-Hsuan Yen (aur/spim-svn)
 
 pkgname=spimsuite-svn
-pkgver=r717
+pkgver=r721
 pkgrel=1
 pkgdesc="spim + xspim + QtSpim"
 arch=('x86_64')
