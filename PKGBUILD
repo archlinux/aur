@@ -1,7 +1,7 @@
 # Maintainer: Poscat <poscat At mail Dot poscat Dot moe>
 
 pkgname=caddy2
-pkgver=beta6
+pkgver=beta7
 pkgrel=2
 pkgdesc='Fast, cross-platform HTTP/2 web server with automatic HTTPS'
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=('caddy')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/caddyserver/caddy/archive/v2.0.0-${pkgver}.tar.gz"
         "caddy.service")
-sha256sums=('cbcd8ef9eb091c8431e5169c9acfa67f9641d6406a32b383c850bf6429a47182'
+sha256sums=('2bcbb23926d94e9829d186cf9c10a06f3c348e9fb44bc8f6bf679b0049527e1b'
             'c3eb327ba564b167e508b2bfa76ef459cacef09fb2e67a7f09944cb8f92e3207')
 
 build() {
