@@ -1,0 +1,17 @@
+Spectral-Bold.ttf
+Spectral-BoldItalic.ttf
+Spectral-ExtraBold.ttf
+Spectral-ExtraBoldItalic.ttf
+Spectral-ExtraLight.ttf
+Spectral-ExtraLightItalic.ttf
+Spectral-Italic.ttf
+Spectral-Light.ttf
+Spectral-LightItalic.ttf
+Spectral-Medium.ttf
+Spectral-MediumItalic.ttf
+Spectral-Regular.ttf
+Spectral-SemiBold.ttf
+Spectral-SemiBoldItalic.ttf
+pkg/
+src/
+ttf-spectral-*
