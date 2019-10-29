@@ -23,5 +23,6 @@ build() {
 }
 
 package() {
-    make install
+    cd "$pkgname-$pkgver"
+    cmake install
 }
