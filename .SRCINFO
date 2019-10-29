@@ -1,0 +1,17 @@
+pkgbase = input-redirection-client-qt-git
+	pkgdesc = Input redirection client for the 3DS using QtGamepad
+	pkgver = 2.1
+	pkgrel = 1
+	url = https://github.com/TuxSH/InputRedirectionClient-Qt
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = qt5-base
+	depends = qt5-gamepad
+	source = git://github.com/TuxSH/InputRedirectionClient-Qt
+	source = input-redirection-client-qt.desktop
+	md5sums = SKIP
+	md5sums = a2ca494c5c1b38ac77ee9f44d586c89a
+
+pkgname = input-redirection-client-qt-git
+

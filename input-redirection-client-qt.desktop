@@ -1,0 +1,5 @@
+[Desktop Entry]
+Name=InputRedirectionClient-Qt
+Comment=Input redirection client for the 3DS using QtGamepad
+Exec=input-redirection-client-qt
+Type=Application
