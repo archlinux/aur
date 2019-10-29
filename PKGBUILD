@@ -15,7 +15,7 @@ _merge_requests_to_use=('!575' '!724')
 
 pkgname=mutter-performance
 pkgver=3.34.1+28+gef2f5f07f
-pkgrel=3
+pkgrel=4
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -25,7 +25,6 @@ depends=(dconf gobject-introspection-runtime gsettings-desktop-schemas libcanber
          gnome-settings-daemon libgudev libinput pipewire xorg-server-xwayland)
 makedepends=(gobject-introspection git egl-wayland meson xorg-server "sysprof>=3.34")
 checkdepends=(xorg-server-xvfb)
-options=(debug !strip)
 provides=(mutter mutter-781835-workaround)
 conflicts=(mutter)
 replaces=(mutter-781835-workaround)

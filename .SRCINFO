@@ -1,7 +1,7 @@
 pkgbase = mutter-performance
 	pkgdesc = A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync
 	pkgver = 3.34.1+28+gef2f5f07f
-	pkgrel = 3
+	pkgrel = 4
 	url = https://gitlab.gnome.org/GNOME/mutter
 	arch = x86_64
 	groups = gnome
@@ -32,8 +32,6 @@ pkgbase = mutter-performance
 	provides = mutter-781835-workaround
 	conflicts = mutter
 	replaces = mutter-781835-workaround
-	options = debug
-	options = !strip
 	source = mutter-performance::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=ef2f5f07f098d67d8fd1bba76d1df18d62daeb81
 	source = fix-build.patch
 	sha256sums = SKIP
