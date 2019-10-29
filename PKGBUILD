@@ -59,7 +59,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=4.19
-_minor=80
+_minor=81
 _srcname=linux-${_major}
 _clr=${_major}.79-86
 pkgbase=linux-clear-lts2018
@@ -83,6 +83,10 @@ source=(
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-clear-lts2018}
+
+export KBUILD_BUILD_HOST=archlinux
+export KBUILD_BUILD_USER=$pkgbase
+export KBUILD_BUILD_TIMESTAMP="@${SOURCE_DATE_EPOCH:-$(date +%s)}"
 
 prepare() {
     cd ${_srcname}
@@ -109,18 +113,45 @@ prepare() {
 
     ### Enable extra stuff from arch kernel
         msg2 "Enable extra stuff from arch kernel..."
-        sed -i 's|^# CONFIG_MODULE_COMPRESS|\
-CONFIG_MODULE_COMPRESS=y\
-# CONFIG_MODULE_COMPRESS_GZIP is not set\
-CONFIG_MODULE_COMPRESS_XZ=y|' ./.config
 
-        scripts/config --enable CONFIG_ACPI_REV_OVERRIDE_POSSIBLE \
-                       --enable CONFIG_HIBERNATION \
-                       --enable CONFIG_FRAMEBUFFER_CONSOLE_DEFERRED_TAKEOVER \
+        scripts/config --undefine CONFIG_MODULE_SIG_FORCE \
+                       --enable CONFIG_MODULE_COMPRESS \
+                       --enable-after CONFIG_MODULE_COMPRESS CONFIG_MODULE_COMPRESS_XZ \
                        --enable CONFIG_DELL_SMBIOS_SMM \
-                       --undefine CONFIG_RT_GROUP_SCHED \
-                       --undefine CONFIG_MODULE_SIG_FORCE \
-                       --module CONFIG_NET_SCH_CAKE
+                       --enable-after CONFIG_SOUND CONFIG_SOUND_OSS_CORE \
+                       --enable CONFIG_SND_OSSEMUL \
+                       --module-after CONFIG_SND_OSSEMUL CONFIG_SND_MIXER_OSS \
+                       --module-after CONFIG_SND_MIXER_OSS CONFIG_SND_PCM_OSS \
+                       --enable-after CONFIG_SND_PCM_OSS CONFIG_SND_PCM_OSS_PLUGINS
+
+        # Scheduler features
+        scripts/config --undefine CONFIG_RT_GROUP_SCHED
+
+        # Queueing/Scheduling
+        scripts/config --module CONFIG_NET_SCH_CAKE
+
+        # PATA SFF controllers with BMDMA
+        scripts/config --module CONFIG_PATA_JMICRON
+
+        # Power management and ACPI options
+        scripts/config --enable CONFIG_ACPI_REV_OVERRIDE_POSSIBLE \
+                       --enable CONFIG_HIBERNATION
+
+        # Console display driver support
+        scripts/config --enable CONFIG_FRAMEBUFFER_CONSOLE_DEFERRED_TAKEOVER
+
+        # Security options
+        scripts/config --enable CONFIG_SECURITY_SELINUX \
+                       --enable-after CONFIG_SECURITY_SELINUX CONFIG_SECURITY_SELINUX_BOOTPARAM \
+                       --set-val CONFIG_SECURITY_SELINUX_BOOTPARAM_VALUE 0 \
+                       --enable CONFIG_SECURITY_SMACK \
+                       --enable-after CONFIG_SECURITY_SMACK CONFIG_SECURITY_SMACK_BRINGUP \
+                       --enable-after CONFIG_SECURITY_SMACK_BRINGUP CONFIG_SECURITY_SMACK_NETFILTER \
+                       --enable-after CONFIG_SECURITY_SMACK_NETFILTER CONFIG_SECURITY_SMACK_APPEND_SIGNALS \
+                       --enable CONFIG_SECURITY_TOMOYO \
+                       --enable CONFIG_SECURITY_APPARMOR \
+                       --set-val CONFIG_SECURITY_APPARMOR_BOOTPARAM_VALUE 0 \
+                       --enable CONFIG_SECURITY_YAMA
 
         make olddefconfig
 
@@ -317,7 +348,7 @@ done
 
 sha256sums=('0c68f5655528aed4f99dae71a5b259edc93239fa899e2df79c055275c21749a1'
             'SKIP'
-            '4147e43cba6b8195fe0cc6a0c9907b71bbf5869654d7aaddd5e84eaee8d8229e'
+            '42c2ae8c4178ca27dd7e5da55db3b4f078091b8d22d7d31d82064f4ddc86d73b'
             'SKIP'
             '8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5'
             '452b8d4d71e1565ca91b1bebb280693549222ef51c47ba8964e411b2d461699c'
