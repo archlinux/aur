@@ -1,15 +1,16 @@
 # Maintainer: Stephen Gregoratto <dev@sgregoratto.me>
 pkgname=nauniq
-pkgver=0.10
-pkgrel=2
-pkgdesc="non-adjacent uniq"
 _dist=App-nauniq
+pkgver=0.10
+pkgrel=3
+pkgdesc="non-adjacent uniq"
 license=('GPL' 'PerlArtistic')
+url="https://metacpan.org/release/$_dist"
 arch=('any')
 depends=('perl>=5.10.0')
 checkdepends=('perl-file-slurper' 'perl-file-chdir' 'perl-string-shellquote' 'perl-tie-cache')
 options=('!emptydirs' purge)
-source=("https://search.cpan.org/CPAN/authors/id/D/DO/DOY/$_dist-$pkgver.tar.gz")
+source=("https://cpan.metacpan.org/authors/id/P/PE/PERLANCAR/$_dist-$pkgver.tar.gz")
 sha256sums=('8c37c9baf352bf21b876c1fef76b7225e493149e15e1d74defa94047d5a0e934')
 
 build() {
