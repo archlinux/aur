@@ -59,12 +59,12 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=4.14
-_minor=150
+_minor=151
 _srcname=linux-${_major}
-_clr=${_major}.149-69
+_clr=${_major}.150-72
 pkgbase=linux-clear-lts2017
 pkgver=${_major}.${_minor}
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux-lts2017"
 license=('GPL2')
@@ -84,6 +84,10 @@ source=(
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-clear-lts2017}
 
+export KBUILD_BUILD_HOST=archlinux
+export KBUILD_BUILD_USER=$pkgbase
+export KBUILD_BUILD_TIMESTAMP="@${SOURCE_DATE_EPOCH:-$(date +%s)}"
+
 prepare() {
     cd ${_srcname}
 
@@ -98,7 +102,7 @@ prepare() {
         echo "$_kernelname" > localversion.20-pkgname
 
     ### Add Clearlinux patches
-        for i in $(grep '^Patch' ${srcdir}/${pkgbase}/linux-lts2017.spec | grep -Ev '^Patch0127|^Patch0001' | sed -n 's/.*: //p'); do
+        for i in $(grep '^Patch' ${srcdir}/${pkgbase}/linux-lts2017.spec | grep -Ev '^Patch0127' | sed -n 's/.*: //p'); do
         msg2 "Applying patch ${i}..."
         patch -Np1 -i "$srcdir/${pkgbase}/${i}"
         done
@@ -109,15 +113,38 @@ prepare() {
 
     ### Enable extra stuff from arch kernel
         msg2 "Enable extra stuff from arch kernel..."
-        sed -i 's|^# CONFIG_MODULE_COMPRESS|\
-CONFIG_MODULE_COMPRESS=y\
-# CONFIG_MODULE_COMPRESS_GZIP is not set\
-CONFIG_MODULE_COMPRESS_XZ=y|' ./.config
 
+        scripts/config --undefine CONFIG_MODULE_SIG_FORCE \
+                       --enable CONFIG_MODULE_COMPRESS \
+                       --enable-after CONFIG_MODULE_COMPRESS CONFIG_MODULE_COMPRESS_XZ \
+                       --enable CONFIG_SOUND_OSS_CORE \
+                       --enable CONFIG_SND_OSSEMUL \
+                       --module-after CONFIG_SND_OSSEMUL CONFIG_SND_MIXER_OSS \
+                       --module-after CONFIG_SND_MIXER_OSS CONFIG_SND_PCM_OSS \
+                       --enable-after CONFIG_SND_PCM_OSS CONFIG_SND_PCM_OSS_PLUGINS
+
+        # Scheduler features
+        scripts/config --undefine CONFIG_RT_GROUP_SCHED
+
+        # PATA SFF controllers with BMDMA
+        scripts/config --module CONFIG_PATA_JMICRON
+
+        # Power management and ACPI options
         scripts/config --enable CONFIG_ACPI_REV_OVERRIDE_POSSIBLE \
-                       --enable CONFIG_HIBERNATION \
-                       --undefine CONFIG_RT_GROUP_SCHED \
-                       --undefine CONFIG_MODULE_SIG_FORCE
+                       --enable CONFIG_HIBERNATION
+
+        # Security options
+        scripts/config --enable CONFIG_SECURITY_SELINUX \
+                       --enable-after CONFIG_SECURITY_SELINUX CONFIG_SECURITY_SELINUX_BOOTPARAM \
+                       --set-val CONFIG_SECURITY_SELINUX_BOOTPARAM_VALUE 0 \
+                       --enable CONFIG_SECURITY_SMACK \
+                       --enable-after CONFIG_SECURITY_SMACK CONFIG_SECURITY_SMACK_BRINGUP \
+                       --enable-after CONFIG_SECURITY_SMACK_BRINGUP CONFIG_SECURITY_SMACK_NETFILTER \
+                       --enable-after CONFIG_SECURITY_SMACK_NETFILTER CONFIG_SECURITY_SMACK_APPEND_SIGNALS \
+                       --enable CONFIG_SECURITY_TOMOYO \
+                       --enable CONFIG_SECURITY_APPARMOR \
+                       --set-val CONFIG_SECURITY_APPARMOR_BOOTPARAM_VALUE 0 \
+                       --enable CONFIG_SECURITY_YAMA
 
         make olddefconfig
 
@@ -314,7 +341,7 @@ done
 
 sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'SKIP'
-            '2b89e95cbf4f683a686776dd2ad21164c4e8f943334fa03cc57775f38c3ede88'
+            '1a7fd60f82c659ada834780a57517fe4f851111db2d3a6476cc6713c428076ad'
             'SKIP'
             '8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5'
             '452b8d4d71e1565ca91b1bebb280693549222ef51c47ba8964e411b2d461699c'
