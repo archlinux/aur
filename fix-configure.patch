@@ -1,0 +1,77 @@
+diff -u10 -r Togl2.0/configure Togl2.0-a/configure
+--- Togl2.0/configure	2008-04-18 09:21:26.000000000 +0200
++++ Togl2.0-a/configure	2019-10-29 12:31:38.240698522 +0100
+@@ -7211,21 +7211,21 @@
+         # If Tcl was built as a framework, attempt to use
+         # the framework's Headers and PrivateHeaders directories
+         case ${TCL_DEFS} in
+ 	    *TCL_FRAMEWORK*)
+ 	        if test -d "${TCL_BIN_DIR}/Headers" -a -d "${TCL_BIN_DIR}/PrivateHeaders"; then
+ 	        TCL_INCLUDES="-I\"${TCL_BIN_DIR}/Headers\" -I\"${TCL_BIN_DIR}/PrivateHeaders\" ${TCL_INCLUDES}"; else
+ 	        TCL_INCLUDES="${TCL_INCLUDES} ${TCL_INCLUDE_SPEC} `echo "${TCL_INCLUDE_SPEC}" | sed -e 's/Headers/PrivateHeaders/'`"; fi
+ 	        ;;
+ 	esac
+     else
+-	if test ! -f "${TCL_SRC_DIR}/generic/tclInt.h" ; then
++	if test ! -f "${TCL_SRC_DIR}/tclInt.h" ; then
+ 	    { { echo "$as_me:$LINENO: error: Cannot find private header tclInt.h in ${TCL_SRC_DIR}" >&5
+ echo "$as_me: error: Cannot find private header tclInt.h in ${TCL_SRC_DIR}" >&2;}
+    { (exit 1); exit 1; }; }
+ 	fi
+     fi
+ 
+ 
+ 
+ 
+ 
+@@ -7237,25 +7237,26 @@
+ 
+     { echo "$as_me:$LINENO: result: Using srcdir found in tclConfig.sh: ${TCL_SRC_DIR}" >&5
+ echo "${ECHO_T}Using srcdir found in tclConfig.sh: ${TCL_SRC_DIR}" >&6; }
+ 
+ 
+ #TEA_PUBLIC_TK_HEADERS
+ 
+     { echo "$as_me:$LINENO: checking for Tk private include files" >&5
+ echo $ECHO_N "checking for Tk private include files... $ECHO_C" >&6; }
+ 
++    TK_SRC_DIR=/usr/include
+     TK_SRC_DIR_NATIVE=`${CYGPATH} ${TK_SRC_DIR}`
+     TK_TOP_DIR_NATIVE=\"${TK_SRC_DIR_NATIVE}\"
+     TK_UNIX_DIR_NATIVE=\"${TK_SRC_DIR_NATIVE}/unix\"
+     TK_WIN_DIR_NATIVE=\"${TK_SRC_DIR_NATIVE}/win\"
+-    TK_GENERIC_DIR_NATIVE=\"${TK_SRC_DIR_NATIVE}/generic\"
++    TK_GENERIC_DIR_NATIVE=\"${TK_SRC_DIR_NATIVE}/tk-private/generic\"
+     TK_XLIB_DIR_NATIVE=\"${TK_SRC_DIR_NATIVE}/xlib\"
+     if test "${TEA_PLATFORM}" = "windows"; then
+ 	TK_PLATFORM_DIR_NATIVE=${TK_WIN_DIR_NATIVE}
+     else
+ 	TK_PLATFORM_DIR_NATIVE=${TK_UNIX_DIR_NATIVE}
+     fi
+     # We want to ensure these are substituted so as not to require
+     # any *_NATIVE vars be defined in the Makefile
+     TK_INCLUDES="-I${TK_GENERIC_DIR_NATIVE} -I${TK_PLATFORM_DIR_NATIVE}"
+     # Detect and add ttk subdir
+@@ -7272,21 +7273,21 @@
+     if test "`uname -s`" = "Darwin"; then
+         # If Tk was built as a framework, attempt to use
+         # the framework's Headers and PrivateHeaders directories
+         case ${TK_DEFS} in
+ 	    *TK_FRAMEWORK*)
+ 	        if test -d "${TK_BIN_DIR}/Headers" -a -d "${TK_BIN_DIR}/PrivateHeaders"; then
+ 	        TK_INCLUDES="-I\"${TK_BIN_DIR}/Headers\" -I\"${TK_BIN_DIR}/PrivateHeaders\" ${TK_INCLUDES}"; fi
+ 	        ;;
+ 	esac
+     else
+-	if test ! -f "${TK_SRC_DIR}/generic/tkInt.h" ; then
++	if test ! -f "${TK_SRC_DIR}/tk-private/generic/tkInt.h" ; then
+ 	    { { echo "$as_me:$LINENO: error: Cannot find private header tkInt.h in ${TK_SRC_DIR}" >&5
+ echo "$as_me: error: Cannot find private header tkInt.h in ${TK_SRC_DIR}" >&2;}
+    { (exit 1); exit 1; }; }
+ 	fi
+     fi
+ 
+ 
+ 
+ 
+ 

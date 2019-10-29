@@ -1,0 +1,18 @@
+pkgbase = tk-togl
+	pkgdesc = A Tcl/Tk widget for OpenGL rendering.
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://sourceforge.net/projects/togl/
+	arch = x86_64
+	license = BSD
+	depends = tk
+	depends = tcl
+	depends = libglvnd
+	depends = libxmu
+	source = Togl2.0.tar.gz::https://sourceforge.net/projects/togl/files/Togl/2.0/Togl2.0-src.tar.gz/download
+	source = fix-configure.patch
+	sha256sums = b7d4a90bbad3aca618d505ee99e7fd8fb04c829f63231dda2360f557ba3f7610
+	sha256sums = 79d1519517787c1a36d3493dde915a06005633fff6fba60d88b4516fce3d0268
+
+pkgname = tk-togl
+
