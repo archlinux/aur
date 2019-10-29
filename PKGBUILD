@@ -2,20 +2,20 @@
 # Maintainer: Daniel Egeberg <daniel.egeberg@gmail.com>
 
 pkgname="nzbhydra2"
-pkgver=2.7.3
+pkgver=2.7.4
 pkgrel=1
-pkgdesc="Meta search for NZB indexers"
+pkgdesc="Search aggregator for newznab and torznab indexers"
 arch=('any')
 url="https://github.com/theotherp/nzbhydra2"
 license=('Apache')
 depends=('python2' 'java-runtime-headless>=8')
-
+optdepends=('jackett: torrent indexer proxy')
 source=("https://github.com/theotherp/nzbhydra2/releases/download/v${pkgver}/${pkgname}-${pkgver}-linux.zip"
         'nzbhydra2.service'
         'nzbhydra2.tmpfiles'
         'nzbhydra2.sysusers')
 
-sha256sums=('ec97af8004cce39f703bcda19a21ccd53055c0f7ce84505f78342755b917ff21'
+sha256sums=('d44cc2b28e96244d1f8390934066e22d72550f40ab26885cc037a0a64feee2b6'
             '8c864fa865c92a6e0182f4dd3d4032ad85f09d021444cca217efafecbeff33c3'
             '464bffa0e7bf99ccd7bbcdb787b25b53b7692f86f081a4fe347b92f88c56fb09'
             '8f91eb4f98f7f5c11590b29b1394dfa7ca62ad115feeac4f402c9ac094fb925a')
