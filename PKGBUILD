@@ -5,7 +5,7 @@
 
 pkgname=joplin
 pkgver=1.0.170
-pkgrel=1
+pkgrel=2
 pkgdesc="Joplin - a note taking and to-do application with synchronization capabilities for Windows, macOS, Linux, Android and iOS."
 arch=("x86_64" "i686")
 makedepends=("git" "nodejs" "rsync" "npm" "python")
@@ -49,6 +49,9 @@ build() {
   # NOTE: Manually forcing sqlite 4.0.7 for node v12, remove later on
   npm install sqlite3@4.0.7
   npm install
+  # Remove uneeed .vscode path that comes with it
+  rm -r node_modules/sqlite3/.vscode 
+
   rsync -a --delete "${srcdir}/${pkgname}-${pkgver}/ReactNativeClient/lib/" \
     "${srcdir}/${pkgname}-${pkgver}/ElectronClient/app/lib/"
   npm run compile
@@ -63,6 +66,8 @@ package() {
     "${pkgdir}/usr/share/${pkgname}-cli"
   cp -R "${srcdir}/${pkgname}-${pkgver}/CliClient/node_modules" \
     "${pkgdir}/usr/share/${pkgname}-cli"
+  rm -r "${pkgdir}/usr/share/${pkgname}-cli/"
+  # usr/share/joplin/resources/app/node_modules/sqlite3/.vscode
   cp -R "${srcdir}/${pkgname}-${pkgver}/ElectronClient/app/dist/linux-unpacked/"* \
     "${pkgdir}/usr/share/${pkgname}"
 
