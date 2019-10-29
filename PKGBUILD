@@ -1,7 +1,7 @@
 # Maintainer: Severin Kaderli <severin@kaderli.dev>
 _pkgname=tale
 pkgname=${_pkgname}-git
-pkgver=0.0.1.r0.g67b0dcb
+pkgver=0.0.1.r13.g8cea41d
 pkgrel=1
 pkgdesc="An experimental version control system."
 arch=('i686' 'x86_64')
