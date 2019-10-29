@@ -25,7 +25,7 @@ popd
 
 echo "# Maintainer: Sumner Evans <sumner.evans98 at gmail dot com>
 
-pkgbase=('${AUR_NAME}')
+pkgbase='${AUR_NAME}'
 pkgname=('${AUR_NAME}')
 _module='${PROJ_NAME}'
 pkgver='$1'
