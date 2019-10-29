@@ -12,6 +12,12 @@ makedepends=('git' 'go-pie')
 source=("git+https://gitlab.com/chacas0/chksum#branch=master")
 sha256sums=('SKIP')
 
+
+pkgver() {
+    cd "$srcdir/${pkgname%-git}"
+    printf "%s" "$(git describe --long | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
+}
+
 build() {
     cd "$srcdir/chksum"
     go build \
