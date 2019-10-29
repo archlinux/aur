@@ -1,48 +1,37 @@
 # Maintainer: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 
 pkgname=omegat
-pkgver=3.6.0_11
+pkgver=4.3.0
 pkgrel=1
 pkgdesc="Multiplatform CAT tool application, written in Java"
 arch=('any')
-url="http://www.omegat.org/en/omegat.html"
+url="https://www.omegat.org/en/"
 license=('GPL')
 depends=('java-runtime' 'desktop-file-utils')
 conflicts=('omegat-beta')
 options=('!strip')
 source=(http://downloads.sourceforge.net/$pkgname/OmegaT_${pkgver}_Without_JRE.zip
-        $pkgname.desktop)
-sha256sums=('9c19cb614f31f6db733ebc7058fa599a64b4da3d9308ded1f59feaac3299fd0d'
-            'ac480a8244c1a5171b7f2d5892585360067d78e3113ccb45aad6afe7ed69aec5')
+        $pkgname.desktop $pkgname.sh)
+sha256sums=('c64b99b3e07368acd6667948b643f6e66647f9872378fc773821786646b32e43'
+            'ac480a8244c1a5171b7f2d5892585360067d78e3113ccb45aad6afe7ed69aec5'
+            '8a6893d382d37c7a12f81370920ca362a8b36e81cec4121942f58613d18b5ade')
 
 package() {
-  cd "${srcdir}"
-  install -d "${pkgdir}"/usr/share/java/$pkgname \
-             "${pkgdir}"/usr/bin
+  cd "${srcdir}"/OmegaT_${pkgver}_Without_JRE
 
-  find . -type f -exec chmod 644 "{}" \;
-  mv *.txt "${srcdir}"/docs
-  cp -r * "${pkgdir}"/usr/share/java/$pkgname
+  mv *.txt docs/
+  install -d "${pkgdir}"/usr/{bin,share/java/${pkgname}}
+  cp -r * "${pkgdir}"/usr/share/java/${pkgname}
 
 #.desktop file + icon
-  install -Dm644 "${srcdir}"/$pkgname.desktop \
-    "${pkgdir}"/usr/share/applications/$pkgname.desktop
+  install -Dm644 "${srcdir}"/${pkgname}.desktop \
+    "${pkgdir}"/usr/share/applications/${pkgname}.desktop
   install -Dm644 images/OmegaT.svg \
-    "${pkgdir}"/usr/share/pixmaps/${_realname}.svg
+    "${pkgdir}"/usr/share/pixmaps/${pkgname}.svg
 
 #executable file
-  echo "#!/bin/sh" > "${pkgdir}"/usr/bin/$pkgname
-  echo "cd /usr/share/java/$pkgname/" >> "${pkgdir}"/usr/bin/$pkgname
-  echo "java -jar -Xmx512M OmegaT.jar \$*" >> "${pkgdir}"/usr/bin/$pkgname
-  chmod 755 "${pkgdir}"/usr/bin/$pkgname
+  install -Dm755 "${srcdir}"/${pkgname}.sh "${pkgdir}"/usr/bin/${pkgname}
 
 #removing obsolete files
-  rm -rf "${pkgdir}"/usr/share/java/$pkgname/{*.{zip,desktop,sh,kaptn},OmegaT,OmegaT.bat,icons}
-  rm "${pkgdir}"/usr/share/java/$pkgname/native/*.{dll,dylib}
-
-if [[ "$CARCH" == "x86_64" ]]; then
-  rm "${pkgdir}"/usr/share/java/$pkgname/native/libhunspell-linux32.so
-else
-  rm "${pkgdir}"/usr/share/java/$pkgname/native/libhunspell-linux64.so
-fi
+  rm -rf "${pkgdir}"/usr/share/java/${pkgname}/{*.{zip,desktop,sh,kaptn},OmegaT,OmegaT.bat}
 }
