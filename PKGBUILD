@@ -2,9 +2,9 @@
 
 pkgbase=linux-slim
 _srcname=linux
-gitver=v5.3.7
-pkgver=5.3.v.7
-pkgrel=2
+gitver=v5.3.8
+pkgver=5.3.v.8
+pkgrel=1
 arch=('x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')

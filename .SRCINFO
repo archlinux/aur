@@ -1,6 +1,6 @@
 pkgbase = linux-slim
-	pkgver = 5.3.v.7
-	pkgrel = 2
+	pkgver = 5.3.v.8
+	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = x86_64
 	license = GPL2
