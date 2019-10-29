@@ -6,7 +6,7 @@ pkgbase=python-pynbody-git
 pkgname=('python-pynbody-git'
 	 'python2-pynbody-git')	 
 pkgdesc='Pynbody is a light-weight, portable, format-transparent analysis framework for N-body and hydrodynamic astrophysical simulations'
-pkgver=2505.b37d0dba
+pkgver=2508.d2a716f0
 pkgrel=1
 url="http://pynbody.github.io/"
 license=('MIT')
