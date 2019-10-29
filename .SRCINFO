@@ -1,6 +1,6 @@
 pkgbase = amazon-corretto-8
 	pkgdesc = No-cost, multiplatform, production-ready distribution of OpenJDK
-	pkgver = 8.222.10.1
+	pkgver = 8.232.09.1
 	pkgrel = 1
 	url = https://aws.amazon.com/corretto/
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = amazon-corretto-8
 	provides = java-runtime-headless=8
 	provides = java-runtime=8
 	provides = java-environment=8
-	source = https://d3pxv6yz143wms.cloudfront.net/8.222.10.1/amazon-corretto-8.222.10.1-linux-x64.tar.gz
-	md5sums = 6599a081ce56dda81ee7ac23802d6e67
+	source = https://d3pxv6yz143wms.cloudfront.net/8.232.09.1/amazon-corretto-8.232.09.1-linux-x64.tar.gz
+	md5sums = 3511152bd52c867f8b550d7c8d7764aa
 
 pkgname = amazon-corretto-8
 
