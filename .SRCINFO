@@ -1,18 +1,16 @@
 pkgbase = pantheon-workarounds
 	pkgdesc = Workarounds for Pantheon derivatives
-	pkgver = r1103.3661cbd
-	pkgrel = 3
+	pkgver = r1158.5898845
+	pkgrel = 1
 	url = https://github.com/quequotion/pantheon-bzr-qq
 	install = gala.install
-	arch = i686
-	arch = x86_64
+	arch = any
 	groups = pantheon-qq
 	license = GPL3
 	makedepends = git
 	makedepends = intltool
 	depends = gnome-settings-daemon-elementary
 	depends = gnome-settings-daemon-compat
-	depends = pantheon-session-git
 	optdepends = pantheon-qq-default-settings-git: Pantheon configuration and themeing for Pantheon derivatives
 	optdepends = contractor-git: A desktop-wide extension service
 	optdepends = pantheon-print-git: Print settings dialog
@@ -20,9 +18,9 @@ pkgbase = pantheon-workarounds
 	optdepends = pantheon-geoclue2-agent-git: Pantheon Geoclue2 Agent
 	optdepends = xscreensaver-dbus-screenlock: xscreensaver locker for gnome-derivative desktops
 	optdepends = numlockx: Turn on the numlock key in X11
-	provides = gala=r1103.3661cbd
-	provides = gala-bzr=r1103.3661cbd
-	provides = gala-git=r1103.3661cbd
+	provides = gala=r1158.5898845
+	provides = gala-bzr=r1158.5898845
+	provides = gala-git=r1158.5898845
 	conflicts = gala
 	conflicts = gala-bzr
 	conflicts = gala-git

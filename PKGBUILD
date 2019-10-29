@@ -3,14 +3,14 @@
 # Contributor: Ner0 <darkelfdarkelf666@yahoo.co.uk>
 
 pkgname=pantheon-workarounds
-pkgver=r1103.3661cbd
-pkgrel=3
+pkgver=r1158.5898845
+pkgrel=1
 pkgdesc='Workarounds for Pantheon derivatives'
-arch=('i686' 'x86_64')
+arch=('any')
 url='https://github.com/quequotion/pantheon-bzr-qq'
 license=('GPL3')
 groups=('pantheon-qq')
-depends=(gnome-settings-daemon-{elementary,compat} 'pantheon-session-git')
+depends=(gnome-settings-daemon-{elementary,compat})
 optdepends=("pantheon-qq-default-settings-git: Pantheon configuration and themeing for Pantheon derivatives"
             "contractor-git: A desktop-wide extension service"
             "pantheon-print-git: Print settings dialog"
