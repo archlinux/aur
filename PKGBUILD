@@ -3,7 +3,7 @@
 
 pkgname=pokerth
 pkgver=1.1.2
-pkgrel=10
+pkgrel=11
 pkgdesc="Client to online Poker game written in C++/QT"
 arch=('i686' 'x86_64')
 url="http://www.pokerth.net/"
@@ -14,9 +14,11 @@ depends=('curl' 'boost-libs' 'gsasl' 'protobuf'
 makedepends=('boost')
 
 source=(https://sourceforge.net/projects/$pkgname/files/$pkgname/$pkgver/$pkgname-$pkgver.tar.gz
-        ${pkgname}-${pkgver}.patch)
+        ${pkgname}-${pkgver}.patch
+        ${pkgname}-${pkgver}.patch.2019)
 md5sums=('8fd7d7fc7ece17315e58aa3240dd4586'
-         '0ef5541fc6008dfb2521dcab47afb659')
+         '0ef5541fc6008dfb2521dcab47afb659'
+         '50d427bd8afc57fb61e186de6c4e5601')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver-rc"
