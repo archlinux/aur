@@ -1,0 +1,8 @@
+*
+
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!git-backup.install
+!CHANGELOG.md
+

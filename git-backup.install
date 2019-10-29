@@ -1,0 +1,15 @@
+post_install() {
+	echo -e "\n\e[1m Kipras’s git-backup $1\e[0m\n"
+	cat <<-END
+		 See the GitHub repository:  https://github.com/sarpik/git-backup
+		 See     Kipras’s  website:  https://kipras.org/
+
+		 git config --global alias.backup git-backup
+
+		      -->  git-backup is free/libre software, licensed under the GPL-2.0  <--
+
+	END
+}
+
+# vim: ts=2 sw=2 noet ft=bash:
+
