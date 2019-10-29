@@ -3,7 +3,7 @@
 
 pkgname=d9vk-bin
 pkgver=0.30
-pkgrel=1
+pkgrel=2
 pkgdesc="A d3d9 to vk layer based off DXVK's codebase. Binary version"
 arch=('x86_64')
 url="https://github.com/Joshua-Ashton/d9vk"
