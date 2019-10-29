@@ -1,6 +1,6 @@
 pkgbase = android-x86-64-system-image-29
 	pkgdesc = Android x86_64 system image, API 29
-	pkgver = 29_10.0.0_r05
+	pkgver = 29_10.0.0_r07
 	pkgrel = 1
 	url = https://developer.android.com/studio/index.html
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = android-x86-64-system-image-29
 	depends = android-platform-29
 	provides = android-x86-64-system-image
 	options = !strip
-	source = https://dl.google.com/android/repository/sys-img/android/x86_64-29_r05.zip
-	sha1sums = d79df6337805e222c07411da048487de2695e8d5
-	sha256sums = 2cf8f4092a23425c6ac01dc22f79bae9780fd2346cc68ca0ecadc26402eaa6a1
+	source = https://dl.google.com/android/repository/sys-img/android/x86_64-29_r07-linux.zip
+	sha1sums = c8e307b885a68f71b4889a70bffea729fc4ecbfa
+	sha256sums = 19686a92b24ab71d6b1c74af6602252d62ea6d860964f23d6e1da2f13a611d87
 
 pkgname = android-x86-64-system-image-29
 
