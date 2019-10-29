@@ -2,22 +2,20 @@
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=wingpanel-standalone-git
-pkgver=r387.fc1b8ea
+pkgver=r413.b6811e8
 pkgrel=1
 pkgdesc='Stylish top panel that holds indicators and spawns an application launcher (without Gala dependencies)'
 arch=('i686' 'x86_64')
 url='https://github.com/elementary/wingpanel'
 license=('GPL3')
 groups=('pantheon-qq')
-depends=('glib2' 'glibc' 'gtk3' 'libgee'
-         'libgranite.so' 'libwnck3' 'cogl')
+depends=(lib{gee,granite.so,wnck3} 'cogl')
 makedepends=('meson' 'git' 'vala')
 optdepends=("pantheon-applications-menu-git: Application launcher"
-            wingpanel-indicator-{a11y,bluetooth,datetime,keyboard,network,notifications,power,session,sound}-git": Tray applet"
-            "wingpanel-indicator-ayatana-git: Unity 7 Tray applets"
+            wingpanel-indicator-{a11y,bluetooth,datetime,keyboard,network,notifications,power,session,sensors,sound}-git": Tray applet"
+            wingpanel-indicator-{ayatana,namarupa}-git": Display Unity 7 tray applets"
             "indicator-powersave: On the fly power savings and performance toggles"
             "glippy-indicator: Excellent clipboard manager applet"
-            "indicator-sensors: Sensors readout applet"
             "ubuntu-indicator-weather: Simple weather applet")
 provides=(wingpanel{,{,-standalone}-bzr,-git} 'libwingpanel-2.0.so')
 conflicts=(wingpanel{,{,-standalone}-bzr,-git} 'libwingpanel-2.0.so')
@@ -25,14 +23,12 @@ replaces=('wingpanel-standalone-bzr')
 source=('git+https://github.com/elementary/wingpanel.git'
         'minus-backgroundmanager.patch'
         'minus-galaplugin.patch'
-        'minus-gala.patch'
         'autohide.patch'
         'reverse-105c1d0.patch')
 sha256sums=('SKIP'
-            '206e5e66501bd0aaefaa422edb4ef5b47dc5c1aff8a90410971b8be2147245e6'
+            'ab49041873724b299131e6d6f59ff20cbfd1c48b9cd61bbac4ab16cc005d0f1a'
             'aa0a27e41df60a7b15e2fd7e0d06551663b98917b7632e4067e6b9a39407de1c'
-            '04fc55095e9fabc61862ef9a54934402b940b6cfa90fe5ed67462aa78e6e8f8e'
-            '54d0fa9110eb948bc7a8ac55ed323b6979aabdf0657dcabfae2304b1dd16c194'
+            '1d5ccfa659b0e63637a8a84adbbf1fb104a3f9ca565755f13ec89ed7e9073384'
             '53bfa2220d14065ca848c36217abe812685c7d6e0d42251423d0faa2a0ac5394')
 
 pkgver() {
@@ -59,7 +55,6 @@ prepare() {
   rm src/Services/BackgroundManager.vala
   patch -Np2 < ../minus-backgroundmanager.patch
   patch -Np2 < ../minus-galaplugin.patch
-  patch -Np2 < ../minus-gala.patch
 
   [ ! -d build ] || rm -rf build
 }
@@ -74,5 +69,3 @@ package() {
   cd wingpanel/
   DESTDIR="${pkgdir}" ninja -C build install
 }
-
-# vim: ts=2 sw=2 et:

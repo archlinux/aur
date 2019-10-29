@@ -1,20 +1,7 @@
-diff --git a/./.travis.yml b/../wingpanel-qq/wingpanel-qq/.travis.yml
-index 20a23ed..409aceb 100644
---- a/./.travis.yml
-+++ b/../wingpanel-qq/wingpanel-qq/.travis.yml
-@@ -4,7 +4,7 @@ services:
-  - docker
-
- env:
-- - DEPENDENCY_PACKAGES="libgala-dev libgee-0.8-dev libgirepository1.0-dev libglib2.0-dev libgranite-dev libgtk-3-dev meson valac"
-+ - DEPENDENCY_PACKAGES="libgala-dev libgee-0.8-dev libgirepository1.0-dev libglib2.0-dev libgranite-dev libgtk-3-dev libwnck-3-dev meson valac"
-
- install:
-  - docker pull elementary/docker:juno-unstable
-diff --git a/./meson.build b/../wingpanel-qq/wingpanel-qq/meson.build
+diff --git a/./meson.build b/./meson.build
 index 4f0f279..19b4f65 100644
 --- a/./meson.build
-+++ b/../wingpanel-qq/wingpanel-qq/meson.build
++++ b/./meson.build
 @@ -14,7 +14,8 @@ add_project_arguments([
 
  add_project_arguments([
@@ -33,10 +20,10 @@ index 4f0f279..19b4f65 100644
  gee_dep = dependency('gee-0.8')
  granite_dep = dependency('granite')
 
-diff --git a/./schemas/io.elementary.desktop.wingpanel.gschema.xml b/../wingpanel-qq/wingpanel-qq/schemas/io.elementary.desktop.wingpanel.gschema.xml
+diff --git a/./schemas/io.elementary.desktop.wingpanel.gschema.xml b/./schemas/io.elementary.desktop.wingpanel.gschema.xml
 index a309a1d..aa150f7 100644
 --- a/./schemas/io.elementary.desktop.wingpanel.gschema.xml
-+++ b/../wingpanel-qq/wingpanel-qq/schemas/io.elementary.desktop.wingpanel.gschema.xml
++++ b/./schemas/io.elementary.desktop.wingpanel.gschema.xml
 @@ -6,5 +6,23 @@
  			<summary>Sets if the panel uses transparency.</summary>
  			<description>Disable this to provide higher contrasts and make indicators better readable.</description>
@@ -61,10 +48,10 @@ index a309a1d..aa150f7 100644
 +		</key>
  	</schema>
  </schemalist>
-diff --git a/./src/PanelWindow.vala b/../wingpanel-qq/wingpanel-qq/src/PanelWindow.vala
+diff --git a/./src/PanelWindow.vala b/./src/PanelWindow.vala
 index 162c54a..e06472f 100644
 --- a/./src/PanelWindow.vala
-+++ b/../wingpanel-qq/wingpanel-qq/src/PanelWindow.vala
++++ b/./src/PanelWindow.vala
 @@ -29,6 +29,13 @@ public class Wingpanel.PanelWindow : Gtk.Window {
      private int panel_height;
      private bool expanded = false;
@@ -73,23 +60,25 @@ index 162c54a..e06472f 100644
 +    private uint timeout;
 +    private bool hiding = false;
 +    private bool delay = false;
-+    private string autohide = Services.PanelSettings.get_default ().autohide;
-+    private int autohide_delay = Services.PanelSettings.get_default ().delay;
++    private string autohide = "Disabled";
++    private int autohide_delay = 200;
 +    private Wnck.Screen wnck_screen = Wnck.Screen.get_default ();
 
      public PanelWindow (Gtk.Application application) {
          Object (
-@@ -70,16 +77,65 @@ public class Wingpanel.PanelWindow : Gtk.Window {
+@@ -70,16 +77,67 @@ public class Wingpanel.PanelWindow : Gtk.Window {
          application.add_accelerator ("<Control>Tab", "app.cycle", null);
          application.add_accelerator ("<Control><Shift>Tab", "app.cycle-back", null);
 
-+        Services.PanelSettings.get_default ().notify["autohide"].connect (() => {
-+            autohide = Services.PanelSettings.get_default ().autohide;
++        var panel_settings = new GLib.Settings ("io.elementary.desktop.wingpanel");
++
++        panel_settings.changed["autohide"].connect (() => {
++            autohide = panel_settings.get_string ("autohide");
 +            update_autohide_mode ();
 +        });
 +
-+        Services.PanelSettings.get_default ().notify["delay"].connect (() => {
-+            autohide_delay = Services.PanelSettings.get_default ().delay;
++        panel_settings.changed["delay"].connect (() => {
++            autohide_delay = panel_settings.get_int ("delay");
 +        });
 +
          add (panel);
@@ -287,25 +276,10 @@ index 162c54a..e06472f 100644
      }
 
      private void update_visual () {
-diff --git a/./src/Services/Settings.vala b/../wingpanel-qq/wingpanel-qq/src/Services/Settings.vala
-index 6d8f0f1..e138162 100644
---- a/./src/Services/Settings.vala
-+++ b/../wingpanel-qq/wingpanel-qq/src/Services/Settings.vala
-@@ -23,6 +23,10 @@ namespace Wingpanel.Services {
-
-         public bool use_transparency { get; set; }
-
-+        public string autohide { get; set; }
-+
-+        public int delay { get; set; }
-+
-         public PanelSettings () {
-             base ("io.elementary.desktop.wingpanel");
-         }
-diff --git a/./src/meson.build b/../wingpanel-qq/wingpanel-qq/src/meson.build
+diff --git a/./src/meson.build b/./src/meson.build
 index 3703e53..b3b1b39 100644
 --- a/./src/meson.build
-+++ b/../wingpanel-qq/wingpanel-qq/src/meson.build
++++ b/./src/meson.build
 @@ -16,6 +16,7 @@ wingpanel_files = files(
  wingpanel_deps = [
      libwingpanel_dep,
