@@ -1,7 +1,8 @@
-# Maintainer : Daniel Bermond < gmail-com: danielbermond >
+# Maintainer: Sefa Eyeoglu <contact@scrumplex.net>
+# Contributor: Daniel Bermond < gmail-com: danielbermond >
 # Contributor: Det <nimetonmaili g-mail>
 
-pkgname=jdk
+pkgname=jdk12
 pkgver=12.0.2
 _build=10
 _hash=e482c34c86bd4bf8b56c0b35558996b9
@@ -12,10 +13,10 @@ pkgdesc='Oracle Java Development Kit'
 arch=('x86_64')
 url='https://www.oracle.com/java/'
 license=('custom')
-depends=('java-environment-common' "jre>=${_majver}" "jre<${_next}" 'zlib' 'hicolor-icon-theme')
+depends=('java-environment-common' "jre12" 'zlib' 'hicolor-icon-theme')
 provides=("java-environment=${_majver}" "java-environment-jdk=${_majver}")
 install="${pkgname}.install"
-source=("https://download.oracle.com/otn-pub/java/jdk/${pkgver}+${_build}/${_hash}/${pkgname}-${pkgver}_linux-x64_bin.tar.gz"
+source=("https://download.oracle.com/otn-pub/java/jdk/${pkgver}+${_build}/${_hash}/jdk-${pkgver}_linux-x64_bin.tar.gz"
         'java.desktop'
         'jconsole.desktop'
         'jshell.desktop'
@@ -29,6 +30,7 @@ sha256sums=('2dde6fda89a4ec6e6560ed464e917861c9e40bf576e7a64856dafc55abaaff51'
             '7cf8ca096e6d6e425b3434446b0835537d0fc7fe64b3ccba7a55f7bd86c7e176')
             
 DLAGENTS=('https::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 -b oraclelicense=a -o %o %u')
+
 
 package() {
     cd "jdk-${pkgver}"
