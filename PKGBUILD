@@ -2,7 +2,7 @@
 pkgname=tallow
 pkgdesc="Block hosts that attempt to bruteforce SSH using the journald API"
 
-pkgver="17"
+pkgver="18"
 pkgrel=1
 
 arch=('x86_64')
@@ -23,7 +23,7 @@ source=(
 )
 
 sha256sums=(
-    'c3905891a7cb7e7d3be232c8d59be5f58965636d9d97affbfe8f2db6aa5e1c36'
+    '789cd67a6d2a9a2ecc9aadbc8b03f7a6d1b5764b23df19477affd853e3576a44'
 )
 
 build() {
