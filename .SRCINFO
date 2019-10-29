@@ -1,13 +1,13 @@
 pkgbase = ffx264
 	pkgdesc = a small yet quite capable shell script for encoding video files to the H.264 video format using ffmpeg and libx264.
-	pkgver = 3.9.9
+	pkgver = 4.0.1
 	pkgrel = 1
 	url = https://ffx264.teambelgium.net/
 	arch = any
 	license = GPL2
 	depends = ffmpeg
-	source = https://downloads.sourceforge.net/project/ffx264/ffx264-3.9.9.tar.gz
-	sha256sums = a9c4e128c7b2915eefce1146c2a5e2ffc426bedf104b98b651961aa5a5563c25
+	source = https://downloads.sourceforge.net/project/ffx264/ffx264-4.0.1.tar.gz
+	sha256sums = baf13fad2793a965da4e36fd7af229ec7298ea30e4c1c197b2f9a9a6f6f270dd
 
 pkgname = ffx264
 
