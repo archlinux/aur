@@ -6,7 +6,7 @@ pkgver=1.2.5001
 _gwtver=2.8.1
 _ginver=2.1.2
 _clangver=3.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source and enterprise-ready professional software for the R community"
 arch=(i686 x86_64)
 url="http://www.rstudio.com/"
@@ -29,6 +29,7 @@ source=(
 	"https://s3.amazonaws.com/rstudio-buildtools/gin-$_ginver.zip"
 	"https://s3.amazonaws.com/rstudio-buildtools/gwt-$_gwtver.zip"
 	'https://s3.amazonaws.com/rstudio-dictionaries/core-dictionaries.zip'
+	'boost-1.70.patch::https://github.com/rstudio/rstudio/commit/217ce0962734ae85621fd82f0eed86129c991a79.patch'
 )
 noextract=('core-dictionaries.zip' "gin-$_ginver.zip")
 sha256sums=(
@@ -36,6 +37,7 @@ sha256sums=(
 	'b98e704164f54be596779696a3fcd11be5785c9907a99ec535ff6e9525ad5f9a'
 	'0b7af89fdadb4ec51cdb400ace94637d6fe9ffa401b168e2c3d372392a00a0a7'
 	'4341a9630efb9dcf7f215c324136407f3b3d6003e1c96f2e5e1f9f14d5787494'
+	'd252111e28a7de8602b4df1f66b36dded260061f094b504895e5c789f8681091'
 )
 
 _pkgname=rstudio
@@ -85,12 +87,15 @@ build() {
 	)
 	
 	# The previous comparison doesn’t seem to work with Boost_VERSION being 1.71.0
-	sed -i 's/if(NOT Boost_VERSION LESS 106900)/if(NOT Boost_VERSION VERSION_LESS 1.69.0)/' src/cpp/CMakeLists.txt
+	sed -i 's/Boost_VERSION LESS 106900/Boost_VERSION VERSION_LESS 1.69.0/g' src/cpp/CMakeLists.txt
+	# The second boost 1.71 problem: tcp::resolver::get_io_service got removed
+	patch -p1 <'../boost-1.70.patch'
 	
 	# Prevent java error: “Could not lock User prefs. Lock file access denied.”
 	# Because gwt desperately needs to add a “firstLaunch” entry there…
 	export JAVA_TOOL_OPTIONS="-Djava.util.prefs.userRoot=$srcdir"
 	cmake -DRSTUDIO_TARGET=Desktop \
+		-Wno-dev \
 		-DRSTUDIO_USE_SYSTEM_BOOST=Yes \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DQT_QMAKE_EXECUTABLE=/usr/bin/qmake-qt5 \
