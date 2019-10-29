@@ -1,0 +1,24 @@
+pkgbase = pybookreader
+	pkgdesc = PyBookReader+OrnamentBook
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = http://pybookreader.narod.ru
+	arch = any
+	license = custom
+	depends = python>=2.0
+	depends = gtk2>=2.0
+	depends = pygtk>=2.0
+	depends = libxml2>=2.0
+	source = http://pybookreader.narod.ru/PyBookReader-0.5.0.tar.gz
+	source = Pybr.desktop
+	source = pybr.png
+	source = Ob.desktop
+	source = ob.png
+	md5sums = 9c36e3c8f3910884655bb9f87ae45374
+	md5sums = 3b12bfb1ccd5dbfd577094a35d8c17c8
+	md5sums = dcb45e395351c496598220b4d51b4dd5
+	md5sums = bb8a2f520dce887036cec899cea44469
+	md5sums = 80a7d5905556dd5d4add29b9a0e7a18c
+
+pkgname = pybookreader
+

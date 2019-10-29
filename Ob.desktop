@@ -1,0 +1,11 @@
+[Desktop Entry]
+Categories=Utility
+Exec=ob
+Icon=/usr/share/pixmaps/ob.png
+Name=OrnamentBook
+Name[en_US]=OrnamentBook
+Type=Application
+X-Deepin-Vendor=user-custom
+X-Deepin-CreatedBy=com.deepin.dde.daemon.Launcher
+X-Deepin-AppID=Ob
+

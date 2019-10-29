@@ -1,0 +1,11 @@
+[Desktop Entry]
+Categories=Utility
+Exec=pybr
+Icon=/usr/share/pixmaps/pybr.png
+Name=PyBookReader
+Name[en_US]=PyBookReader
+Type=Application
+X-Deepin-Vendor=user-custom
+X-Deepin-CreatedBy=com.deepin.dde.daemon.Launcher
+X-Deepin-AppID=Pybr
+
