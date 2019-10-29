@@ -1,0 +1,14 @@
+diff -U0 -u -r a/glib/tests/utf8-pointer.c b/glib/tests/utf8-pointer.c
+--- a/glib/tests/utf8-pointer.c	2019-10-29 04:17:31.314293848 +0300
++++ b/glib/tests/utf8-pointer.c	2019-10-29 04:18:01.952814507 +0300
+@@ -22,6 +22,10 @@
+  * GLib at ftp://ftp.gtk.org/pub/gtk/.
+  */
+
++#if defined(__GNUC__) && __GNUC__ > 7
++#pragma GCC optimize (1)
++#endif
++
+ #include <string.h>
+ #include <glib.h>
+

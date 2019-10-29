@@ -2,7 +2,7 @@
 
 pkgname=glib2-static
 pkgver=2.62.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Low level core library: Static library"
 url="https://wiki.gnome.org/Projects/GLib"
 license=(LGPL2.1)
@@ -13,9 +13,9 @@ checkdepends=(desktop-file-utils dbus)
 options=('!docs' '!libtool' '!emptydirs' '!strip' 'staticlibs')
 _commit=ca9f51b82f57e05f6b3c82b98c235623afa47573  # tags/2.62.2^0
 source=("git+https://gitlab.gnome.org/GNOME/glib.git#commit=$_commit"
-        disable_utf8-pointer_test.patch)
+        utf8-pointer-test-disable-optimisations.patch)
 sha256sums=(SKIP
-            3142dc433504e0a7c6801c36bb2fd3e61bd294173bbfc401d2e88a47752fc30e)
+            1accbea014625913f8727139f6072d3be615af19d77953b250a56d97238ecdf6)
 
 pkgver() {
   cd glib
@@ -24,7 +24,7 @@ pkgver() {
 
 prepare() {
   cd glib
-  patch -Np1 -i "$srcdir"/disable_utf8-pointer_test.patch
+  patch -Np1 -i "$srcdir"/utf8-pointer-test-disable-optimisations.patch
 }
 
 build() {

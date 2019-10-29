@@ -1,7 +1,7 @@
 pkgbase = glib2-static
 	pkgdesc = Low level core library: Static library
 	pkgver = 2.62.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.gnome.org/Projects/GLib
 	arch = x86_64
 	license = LGPL2.1
@@ -24,9 +24,9 @@ pkgbase = glib2-static
 	options = !strip
 	options = staticlibs
 	source = git+https://gitlab.gnome.org/GNOME/glib.git#commit=ca9f51b82f57e05f6b3c82b98c235623afa47573
-	source = disable_utf8-pointer_test.patch
+	source = utf8-pointer-test-disable-optimisations.patch
 	sha256sums = SKIP
-	sha256sums = 3142dc433504e0a7c6801c36bb2fd3e61bd294173bbfc401d2e88a47752fc30e
+	sha256sums = 1accbea014625913f8727139f6072d3be615af19d77953b250a56d97238ecdf6
 
 pkgname = glib2-static
 
