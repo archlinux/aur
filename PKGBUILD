@@ -6,6 +6,8 @@ pkgdesc="Input redirection client for the 3DS using QtGamepad"
 arch=('x86_64')
 url="https://github.com/TuxSH/InputRedirectionClient-Qt"
 license=('MIT')
+provides=('input-redirection-client-qt')
+conflicts=('input-redirection-client-qt')
 makedepends=('git')
 depends=('qt5-base' 'qt5-gamepad')
 source=("git://github.com/TuxSH/InputRedirectionClient-Qt"
@@ -26,5 +28,5 @@ build() {
 
 package() {
   install -Dm 755 "$srcdir/InputRedirectionClient-Qt/InputRedirectionClient-Qt" "$pkgdir/usr/bin/input-redirection-client-qt"
-  install -Dm 644 "$srcdir/input-redirection-client-qt.desktop "$pkgdir/usr/share/applications/input-redirection-client-qt.desktop"
+  install -Dm 644 "$srcdir/input-redirection-client-qt.desktop" "$pkgdir/usr/share/applications/input-redirection-client-qt.desktop"
 }
