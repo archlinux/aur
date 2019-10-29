@@ -4,7 +4,7 @@
 # Contributor: Jimmy Tang <jtang@tchpc.tcd.ie>
 
 pkgname=pristine-tar
-pkgver=1.46
+pkgver=1.47
 pkgrel=1
 pkgdesc="Tool to regenerate a pristine upstream tarball using only a small binary delta file and a copy of the source which can be a revision control checkout."
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ depends=(
 conflicts=('pristine-tar-git')
 checkdepends=('shunit2' 'diffoscope')
 source=(http://ftp.debian.org/debian/pool/main/p/${pkgname}/${pkgname}_${pkgver}.tar.xz)
-sha256sums=('0d27bf6dbd8b22520cd49a8807246f7e9dc9f47c4491ef178e2228071f9479c2')
+sha256sums=('97e5ddcc3e59f7956c9ace6b73beebb8854411c2978a9c106c806696a509a2a1')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
