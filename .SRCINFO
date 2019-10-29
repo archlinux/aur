@@ -2,12 +2,13 @@ pkgbase = ntfs-automount
 	pkgdesc = NTFS automount utility based on udev rule
 	pkgver = 0.2
 	pkgrel = 0
+	url = https://github.com/n34r1297/easyarch/aur/ntfs-automount/
 	arch = any
 	groups = easyarch
 	license = GPL3
 	depends = udev
 	source = https://github.com/n34r1297/easyarch/raw/master/aur/ntfs-automount/Releases/ntfs-automount-0.2.tar.gz
-	md5sums = a2f994aae2463922ff7490e0e5a00564
+	md5sums = 10ebd1b9d87bd71dc5593d6f05e2a413
 
 pkgname = ntfs-automount
 
