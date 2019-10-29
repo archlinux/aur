@@ -11,7 +11,7 @@ license=('Apache')
 depends=('python-aigpy' 'python-requests' 'python-libffmpeg' 'python-pycryptodome' 'python-pydub')
 makedepends=('python-setuptools')
 source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=('6a878397dc9ea79741be1f0b9e2236703374f2edb68b7255cb5ccc44dcdb4d74')
+sha256sums=('a9ecc702af1e494541462bb61297eaf35bfad6b07adb35ed0ad4e372ca2a6f71')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}/TIDALDL-PY"
