@@ -18,7 +18,7 @@ md5sums=("SKIP")
 
 build() {
   cd "$srcdir/application"
-  npm i electron electron-packager
+  npm i electron jquery electron-packager
   ./node_modules/.bin/electron-packager .
 }
 
