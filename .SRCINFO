@@ -1,0 +1,12 @@
+pkgbase = ttf-hellvetica
+	pkgdesc = Like Helvetica, but with like, much shittier kerning for Halloween
+	pkgver = 20191029
+	pkgrel = 1
+	url = https://hellveticafont.com/
+	arch = any
+	license = custom
+	source = https://hellveticafont.com/s/Hellvetica.ttf
+	sha256sums = a203591479597ea154d86f7ffd06ac777810705db352919057801330457b765a
+
+pkgname = ttf-hellvetica
+
