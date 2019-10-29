@@ -2,3 +2,4 @@
 !./.SRCINFO
 !./.gitignore
 !./PKGBUILD
+!./vala-basefontlist.patch
