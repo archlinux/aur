@@ -1,7 +1,7 @@
 pkgbase = pantheon-workarounds
 	pkgdesc = Workarounds for Pantheon derivatives
 	pkgver = r1158.5898845
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/quequotion/pantheon-bzr-qq
 	install = gala.install
 	arch = any
@@ -11,7 +11,6 @@ pkgbase = pantheon-workarounds
 	makedepends = intltool
 	depends = gnome-settings-daemon-elementary
 	depends = gnome-settings-daemon-compat
-	depends = pantheon-session
 	optdepends = pantheon-qq-default-settings-git: Pantheon configuration and themeing for Pantheon derivatives
 	optdepends = contractor-git: A desktop-wide extension service
 	optdepends = pantheon-print-git: Print settings dialog
