@@ -2,7 +2,7 @@
 # Contributor: Mihai Coman <mihai@m1x.ro>
 # Contributor: Alexander Vynnyk <cosmonaut@mail.ua>
 
-pkgname=skychart
+pkgname=skychart-bin
 pkgver=4.2
 pkgrel=1
 pkgdesc="Free software to draw sky charts, also known as Cartes du Ciel"
