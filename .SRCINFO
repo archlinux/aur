@@ -13,6 +13,7 @@ pkgbase = vectr
 	depends = libxtst
 	depends = libxss
 	depends = gconf
+	depends = pango<=1:1.44.1
 	source = vectr.desktop
 	source = vectr.svg
 	sha256sums = 0bf55bed71f68c0fb998d8a12da6fa6ac1f927775ebc8c11d9f754667b76d18f

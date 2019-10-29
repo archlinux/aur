@@ -8,7 +8,7 @@ pkgrel=1
 arch=('i686' 'x86_64')
 url='https://vectr.com/'
 license=('custom')
-depends=('gtk2' 'gdk-pixbuf2' 'alsa-lib' 'nss' 'libxtst' 'libxss' 'gconf')
+depends=('gtk2' 'gdk-pixbuf2' 'alsa-lib' 'nss' 'libxtst' 'libxss' 'gconf' 'pango<=1:1.44.1')
 makedepends=()
 source=('vectr.desktop'
         'vectr.svg')
