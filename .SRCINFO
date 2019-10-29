@@ -6,6 +6,7 @@ pkgbase = gamerworld
 	arch = x86_64
 	license = GPL
 	makedepends = nodejs
+	makedepends = npm
 	makedepends = git
 	depends = nss
 	depends = gtk3
