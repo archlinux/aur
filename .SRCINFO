@@ -1,15 +1,15 @@
 pkgbase = nodejs-nestjs-cli
 	pkgdesc = The command line interface for nestjs
-	pkgver = 6.10.5
+	pkgver = 6.11.1
 	pkgrel = 0
 	url = https://docs.nestjs.com/cli/overview
 	arch = any
 	depends = npm
 	depends = jq
 	depends = typescript
-	noextract = cli-6.10.5.tgz
-	source = http://registry.npmjs.org/@nestjs/cli/-/@nestjs/cli-6.10.5.tgz
-	sha256sums = 9811d6c1e8d664fac9a866f4dec53a51fd62b40e64ff60c5086e27bedac74e5e
+	noextract = cli-6.11.1.tgz
+	source = http://registry.npmjs.org/@nestjs/cli/-/@nestjs/cli-6.11.1.tgz
+	sha256sums = 664f367f562eaf6a4dbf5bfa123edfad7f196b964c0324f6519514c0539a17ae
 
 pkgname = nodejs-nestjs-cli
 
