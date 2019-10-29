@@ -23,6 +23,7 @@ md5sums=("SKIP")
 # }
 
 build() {
+    mkdir "$pkgname-$pkgver"
 	cd "$pkgname-$pkgver"
 	mkdir build
 	cd build
