@@ -1,6 +1,6 @@
 pkgbase = google-cloud-sdk
 	pkgdesc = A set of command-line tools for the Google Cloud Platform. Includes gcloud (with beta and alpha commands), gsutil, and bq.
-	pkgver = 268.0.0
+	pkgver = 269.0.0
 	pkgrel = 1
 	url = https://cloud.google.com/sdk/
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = google-cloud-sdk
 	optdepends = python2-crcmod: [gsutil] verify the integrity of GCS object contents
 	options = !strip
 	options = staticlibs
-	source = https://dl.google.com/dl/cloudsdk/release/downloads/for_packagers/linux/google-cloud-sdk_268.0.0.orig.tar.gz
+	source = https://dl.google.com/dl/cloudsdk/release/downloads/for_packagers/linux/google-cloud-sdk_269.0.0.orig.tar.gz
 	source = google-cloud-sdk.sh
-	sha256sums = 6648e2112ed8b57f62bf187f56953307ce3b656be543f3f91f168bab83255e4b
+	sha256sums = d5cb41e9e4892fc1ee2b8091e9ca3923be41efe1f91a6d8edbf9a7d8d1e97536
 	sha256sums = 36ac88de630e49ea4b067b1f5f229142e4cf97561b98b3bd3d8115a356946692
 
 pkgname = google-cloud-sdk
