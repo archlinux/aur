@@ -3,14 +3,14 @@
 # Contributor: Sebastien Duthil <duthils@free.fr>
 
 pkgname=factorio
-pkgver=0.17.69
+pkgver=0.17.74
 pkgrel=1
 pkgdesc="A 2D game about building and maintaining factories (stable branch)."
 arch=('x86_64')
 url="http://www.factorio.com/"
 license=('custom: commercial')
 conflicts=('factorio-demo' 'factorio-experimental' 'factorio-headless')
-depends=('libxcursor' 'gcc-libs' 'alsa-lib' 'libxrandr' 'libxinerama' 'mesa')
+depends=('libxcursor' 'alsa-lib' 'libxrandr' 'libxinerama' 'mesa')
 makedepends=('jq')
 source=(factorio.desktop
         LICENSE)
