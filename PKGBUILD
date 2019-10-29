@@ -3,7 +3,7 @@
 pkgname=tidal-dl
 _pkgname=Tidal-Media-Downloader
 pkgver=1.1.0.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Tidal Music Download"
 arch=('any')
 url="https://github.com/yaronzz/Tidal-Media-Downloader"
