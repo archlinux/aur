@@ -1,0 +1,15 @@
+pkgbase = efm-langserver-git
+	pkgdesc = General purpose Language Server
+	pkgver = r41.8718b46
+	pkgrel = 1
+	url = https://github.com/mattn/efm-langserver
+	arch = any
+	license = MIT
+	makedepends = go
+	provides = efm-langserver
+	conflicts = efm-langserver
+	source = git+https://github.com/mattn/efm-langserver.git
+	sha256sums = SKIP
+
+pkgname = efm-langserver-git
+
