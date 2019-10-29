@@ -1,25 +1,24 @@
-# Maintainer: peippo <christoph.fink@gmail.com>
-pkgname=postgis-svn
-pkgver=r16091
+# Maintainer: Marti Raudsepp <marti@juffo.org>
+pkgname=postgis-git
+pkgver=76e34fa54
 pkgrel=1
 
-pkgdesc="Postgres GIS extensions (from svn)"
-url="http://postgis.net/"
+pkgdesc="Postgres GIS extensions (from git)"
+url="https://postgis.net/"
 license=('GPL')
 
 arch=('i686' 'x86_64')
 depends=('postgresql' 'gdal' 'geos' 'json-c' 'libxml2' 'libxslt')
-makedepends=('subversion')
+makedepends=('git')
 conflicts=('postgis')
 provides=('postgis')
 
-source=("${pkgname}::svn+http://svn.osgeo.org/postgis/trunk/")
+source=("${pkgname}::git+https://git.osgeo.org/gitea/postgis/postgis.git")
 md5sums=('SKIP')
 
 pkgver() {
   cd "${pkgname}"
-  local ver="$(svnversion)"
-  printf "r%s" "${ver//[[:alpha:]]}"
+  git describe --long --always | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {

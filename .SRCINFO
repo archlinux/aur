@@ -1,12 +1,12 @@
-pkgbase = postgis-svn
-	pkgdesc = Postgres GIS extensions (from svn)
-	pkgver = r16091
+pkgbase = postgis-git
+	pkgdesc = Postgres GIS extensions (from git)
+	pkgver = 76e34fa54
 	pkgrel = 1
-	url = http://postgis.net/
+	url = https://postgis.net/
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = subversion
+	makedepends = git
 	depends = postgresql
 	depends = gdal
 	depends = geos
@@ -15,8 +15,8 @@ pkgbase = postgis-svn
 	depends = libxslt
 	provides = postgis
 	conflicts = postgis
-	source = postgis-svn::svn+http://svn.osgeo.org/postgis/trunk/
+	source = postgis-git::git+https://git.osgeo.org/gitea/postgis/postgis.git
 	md5sums = SKIP
 
-pkgname = postgis-svn
+pkgname = postgis-git
 
