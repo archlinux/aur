@@ -26,5 +26,5 @@ build() {
 
 package() {
   install -Dm 755 "$srcdir/InputRedirectionClient-Qt/InputRedirectionClient-Qt" "$pkgdir/usr/bin/input-redirection-client-qt"
-  install -Dm 644 input-redirection-client-qt.desktop "$pkgdir/usr/share/applications/input-redirection-client-qt.desktop"
+  install -Dm 644 "$srcdir/input-redirection-client-qt.desktop "$pkgdir/usr/share/applications/input-redirection-client-qt.desktop"
 }
