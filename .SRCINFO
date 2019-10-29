@@ -1,17 +1,16 @@
 pkgbase = xnecview
 	pkgdesc = A program for visualizing NEC2 input and output data
 	pkgver = 1.36
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.pa3fwm.nl/software/xnecview/
 	arch = i686
 	arch = x86_64
 	license = GPL2
-	makedepends = libpng12
 	depends = gtk2
 	provides = xnecview
 	conflicts = xnecview
 	source = https://www.pa3fwm.nl/software/xnecview/xnecview-1.36.tgz
-	md5sums = SKIP
+	md5sums = c7a96fbaf006e209abe9e23bd011caa5
 
 pkgname = xnecview
 
