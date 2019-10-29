@@ -3,7 +3,7 @@
 
 pkgname=pokerth
 pkgver=1.1.2
-pkgrel=9
+pkgrel=10
 pkgdesc="Client to online Poker game written in C++/QT"
 arch=('i686' 'x86_64')
 url="http://www.pokerth.net/"
@@ -24,6 +24,9 @@ prepare() {
   # ---< required for v1.1.2 >--------------------------------------------------
   # these changes should be incorporated in next release ~feb-2018
   patch -Np1 -i "${srcdir}/pokerth-1.1.2.patch"
+  # ----------------------------------------------------------------------------
+  # changes to permit building with boost 1.70
+  patch -Np1 -i "${srcdir}/pokerth-1.1.2.patch.2019"
   # ----------------------------------------------------------------------------
 
   # good idea to do this at all times
