@@ -3,7 +3,7 @@
 # Contributor: ilikenwf
 # Contributor: American_Jesus
 pkgname=palemoon
-pkgver=28.7.1
+pkgver=28.7.2
 pkgrel=1
 pkgdesc="Open source web browser based on Firefox focusing on efficiency."
 arch=('i686' 'x86_64')
@@ -16,17 +16,13 @@ makedepends=('git' 'python2' 'autoconf2.13' 'unzip' 'zip' 'yasm' 'gconf'
 optdepends=('libpulse: PulseAudio audio driver'
             'ffmpeg: various video and audio support')
 source=(git+"https://github.com/MoonchildProductions/UXP#tag=PM${pkgver}_Release"
-        mozconfig.in
-        e31d79e8da99456247df84c2f99ba9083d46efe1.patch)
+        mozconfig.in)
 sha1sums=('SKIP'
-          '802731e5af4d117961d3d6fc61bd1e23f69fd384'
-          'dcea3eeeff37747c09d266f7a1af453d81f5f291')
+          '802731e5af4d117961d3d6fc61bd1e23f69fd384')
 
 prepare() {
   sed 's#%SRCDIR%#'"${srcdir}"'#g' mozconfig.in > mozconfig
   sed -i 's#xlocale#locale#' UXP/intl/icu/source/i18n/digitlst.cpp
-  cd UXP
-  patch -Np1 -i "${srcdir}/e31d79e8da99456247df84c2f99ba9083d46efe1.patch"
 }
 
 build() {
