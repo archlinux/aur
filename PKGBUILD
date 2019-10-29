@@ -3,7 +3,7 @@
 pkgname=omegat-beta
 _pkgname=omegat
 pkgver=5.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Beta version of a multiplatform CAT tool application, written in Java"
 arch=('any')
 url="http://www.omegat.org/en/omegat.html"
