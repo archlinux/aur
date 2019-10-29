@@ -1,9 +1,9 @@
-pkgbase = jre
+pkgbase = jre12
 	pkgdesc = Oracle Java Runtime Environment
 	pkgver = 12.0.2
 	pkgrel = 1
 	url = https://www.oracle.com/java/
-	install = jre.install
+	install = jre12.install
 	arch = x86_64
 	license = custom
 	depends = java-runtime-common
@@ -17,22 +17,22 @@ pkgbase = jre
 	provides = java-runtime-headless=12
 	provides = java-runtime-jre=12
 	provides = java-runtime-headless-jre=12
-	backup = etc/java12-jre/management/jmxremote.access
-	backup = etc/java12-jre/management/jmxremote.password.template
-	backup = etc/java12-jre/management/management.properties
-	backup = etc/java12-jre/security/policy/limited/default_US_export.policy
-	backup = etc/java12-jre/security/policy/limited/default_local.policy
-	backup = etc/java12-jre/security/policy/limited/exempt_local.policy
-	backup = etc/java12-jre/security/policy/unlimited/default_US_export.policy
-	backup = etc/java12-jre/security/policy/unlimited/default_local.policy
-	backup = etc/java12-jre/security/policy/README.txt
-	backup = etc/java12-jre/security/java.policy
-	backup = etc/java12-jre/security/java.security
-	backup = etc/java12-jre/logging.properties
-	backup = etc/java12-jre/net.properties
-	backup = etc/java12-jre/sound.properties
+	backup = etc/java12-jre12/management/jmxremote.access
+	backup = etc/java12-jre12/management/jmxremote.password.template
+	backup = etc/java12-jre12/management/management.properties
+	backup = etc/java12-jre12/security/policy/limited/default_US_export.policy
+	backup = etc/java12-jre12/security/policy/limited/default_local.policy
+	backup = etc/java12-jre12/security/policy/limited/exempt_local.policy
+	backup = etc/java12-jre12/security/policy/unlimited/default_US_export.policy
+	backup = etc/java12-jre12/security/policy/unlimited/default_local.policy
+	backup = etc/java12-jre12/security/policy/README.txt
+	backup = etc/java12-jre12/security/java.policy
+	backup = etc/java12-jre12/security/java.security
+	backup = etc/java12-jre12/logging.properties
+	backup = etc/java12-jre12/net.properties
+	backup = etc/java12-jre12/sound.properties
 	source = https://download.oracle.com/otn-pub/java/jdk/12.0.2+10/e482c34c86bd4bf8b56c0b35558996b9/jdk-12.0.2_linux-x64_bin.tar.gz
 	sha256sums = 2dde6fda89a4ec6e6560ed464e917861c9e40bf576e7a64856dafc55abaaff51
 
-pkgname = jre
+pkgname = jre12
 
