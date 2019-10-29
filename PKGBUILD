@@ -9,14 +9,14 @@
 
 pkgname=djgpp-djcrx-bootstrap
 pkgver=2.05
-pkgrel=3
+pkgrel=4
 pkgdesc="DJGPP C library and development files for initial bootstrapping djgpp-gcc"
 arch=('i686' 'x86_64')
 provides=(djgpp-djcrx)
 url="http://www.delorie.com/djgpp/"
 license=(GPL LGPL custom:djgpp)
 source=(
-	"http://www.delorie.com/pub/djgpp/current/v2/djcrx${pkgver//./}.zip"
+	"ftp://ftp.delorie.com/pub/djgpp/current/v2/djcrx${pkgver//./}.zip"
 )
 sha512sums=(
 	'248034a3c026971eeaa6421ef40f44d03873c62d4edf97490e98c71ac76662eaed531eb734e137a38a644483a34065c3ffc70d3d739682d53c8863bf7b521b90'

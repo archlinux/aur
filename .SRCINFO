@@ -1,7 +1,7 @@
 pkgbase = djgpp-djcrx-bootstrap
 	pkgdesc = DJGPP C library and development files for initial bootstrapping djgpp-gcc
 	pkgver = 2.05
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.delorie.com/djgpp/
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = djgpp-djcrx-bootstrap
 	license = custom:djgpp
 	provides = djgpp-djcrx
 	options = !strip
-	source = http://www.delorie.com/pub/djgpp/current/v2/djcrx205.zip
+	source = ftp://ftp.delorie.com/pub/djgpp/current/v2/djcrx205.zip
 	sha512sums = 248034a3c026971eeaa6421ef40f44d03873c62d4edf97490e98c71ac76662eaed531eb734e137a38a644483a34065c3ffc70d3d739682d53c8863bf7b521b90
 
 pkgname = djgpp-djcrx-bootstrap
