@@ -9,8 +9,8 @@ pkgdesc='Python bindings for cld3 (Compact Language Detector v3)'
 arch=('i686' 'x86_64')
 url='https://github.com/Elizafox/cld3'
 license=('Apache')
-depends=('python')
-makedepends=('git')
+depends=('python' 'protobuf')
+makedepends=('git' 'python-setuptools' 'cython')
 source=('git+https://github.com/Elizafox/cld3.git')
 md5sums=('SKIP')
 
