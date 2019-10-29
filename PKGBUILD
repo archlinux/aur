@@ -16,7 +16,7 @@ SourcePath="https://gitlab.com/es20490446e/darkmod-linux-packager"
 source=("git+${SourcePath}.git")
 md5sums=("SKIP")
 
-depends=("curl" "glew" "libjpeg-turbo" "libpng" "libpng12" "libpulse" "libxxf86vm" "openal")
+depends=("curl" "glew" "libjpeg-turbo" "libpng" "libpng12" "libpulse" "libxxf86vm" "openal" "silently")
 makedepends=("git" "unzip")
 
 

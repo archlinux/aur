@@ -17,6 +17,7 @@ pkgbase = darkmod
 	depends = libpulse
 	depends = libxxf86vm
 	depends = openal
+	depends = silently
 	provides = darkmod
 	conflicts = darkmod
 	source = git+https://gitlab.com/es20490446e/darkmod-linux-packager.git
