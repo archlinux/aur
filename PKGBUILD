@@ -1,14 +1,15 @@
+# Maintainer: navigaid <navigaid@gmail.com>
 # Maintainer: Angel Velasquez <angvp@archlinux.org>
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Stéphane Gaudreault <stephane@archlinux.org>
 # Contributor: Allan McRae <allan@archlinux.org>
 # Contributor: Jason Chu <jason@archlinux.org>
 
-pkgname=python
+pkgname=python37-git
 pkgver=3.7.4
-pkgrel=2
+pkgrel=1
 _pybasever=${pkgver%.*}
-pkgdesc="Next generation of the python high-level scripting language"
+pkgdesc="Major release 3.7 of the Python high-level programming language"
 arch=('x86_64')
 license=('custom')
 url="https://www.python.org/"
@@ -20,8 +21,6 @@ optdepends=('python-setuptools'
             'mpdecimal: for decimal'
             'xz: for lzma'
             'tk: for tkinter')
-provides=('python3')
-replaces=('python3')
 source=("https://www.python.org/ftp/python/${pkgver%rc*}/Python-${pkgver}.tar.xz"{,.asc}
         dont-make-libpython-readonly.patch
         0001-compileall-Fix-ddir-when-recursing.patch)

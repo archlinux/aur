@@ -1,7 +1,7 @@
-pkgbase = python
-	pkgdesc = Next generation of the python high-level scripting language
+pkgbase = python37-git
+	pkgdesc = Major release 3.7 of the Python high-level programming language
 	pkgver = 3.7.4
-	pkgrel = 2
+	pkgrel = 1
 	url = https://www.python.org/
 	arch = x86_64
 	license = custom
@@ -26,8 +26,6 @@ pkgbase = python
 	optdepends = mpdecimal: for decimal
 	optdepends = xz: for lzma
 	optdepends = tk: for tkinter
-	provides = python3
-	replaces = python3
 	source = https://www.python.org/ftp/python/3.7.4/Python-3.7.4.tar.xz
 	source = https://www.python.org/ftp/python/3.7.4/Python-3.7.4.tar.xz.asc
 	source = dont-make-libpython-readonly.patch
@@ -38,5 +36,5 @@ pkgbase = python
 	sha512sums = 2ef96708d5b13ae2a3d2cc62c87b4780e60ecfce914e190564492def3a11d5e56977659f41c7f9d12266e58050c766bce4e2b5d50b708eb792794fa8357920c4
 	sha512sums = ebd04c3b6d41321b1f0d439d356e0ce463760db55dc64109854c70d017cf56608aa19de9fc4a21bf840795ff202b4703444f9af8074b661780798c17e03089ff
 
-pkgname = python
+pkgname = python37-git
 
