@@ -1,0 +1,7 @@
+.AURINFO
+pkg/
+src/
+xmonk-lv2/
+xputty/
+xmonk-lv2-git-*.tar.xz
+xmonk-lv2-git-*.src.tar.gz
