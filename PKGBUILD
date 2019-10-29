@@ -1,13 +1,13 @@
 # Maintainer: András Wacha <awacha@gmail.com>
 pkgname=atsas
 pkgver=2.8.4
-pkgrel=3
+pkgrel=4
 pkgdesc="A program suite for small-angle scattering data analysis from biological macromolecules"
 arch=('x86_64')
 url="https://www.embl-hamburg.de/biosaxs/software.html"
 license=('custom')
 options=('!strip')
-depends=( gcc7-libs )
+depends=( gcc7-libs qt4 )
 
 # !!! You have to download the sources yourself from https://www.embl-hamburg.de/biosaxs/download.html
 # !!! Use the Ubuntu-18.04 version!

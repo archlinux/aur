@@ -1,11 +1,12 @@
 pkgbase = atsas
 	pkgdesc = A program suite for small-angle scattering data analysis from biological macromolecules
 	pkgver = 2.8.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.embl-hamburg.de/biosaxs/software.html
 	arch = x86_64
 	license = custom
 	depends = gcc7-libs
+	depends = qt4
 	options = !strip
 	source = local://ATSAS-2.8.4-1_amd64.tar.gz
 	source = license.md
