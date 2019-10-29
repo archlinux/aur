@@ -3,7 +3,7 @@
 
 pkgname=signal-desktop-bin
 pkgver=1.27.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Private messaging from your desktop'
 arch=('x86_64')
 url='https://github.com/signalapp/Signal-Desktop'
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('gtk3' 'libnotify' 'nss' 'xdg-utils' 'libxss')
 optdepends=('hunspell-en_US: US English hunspell dictionaries')
 provides=('signal-desktop')
-conflicts=('signal')
+conflicts=('signal' 'signal-desktop')
 options=('!strip')
 source=("https://updates.signal.org/desktop/apt/pool/main/s/signal-desktop/signal-desktop_${pkgver}_amd64.deb")
 sha256sums=('5297d7efe843c61ee5e874009a076ec5b6f74974b79675f6c4a9ff0e8e0eeaab')
