@@ -1,15 +1,16 @@
 pkgbase = gammy
 	pkgdesc = Automatic screen brightness tool.
-	pkgver = 0.9.51
+	pkgver = 0.9.52
 	pkgrel = 1
 	url = https://getgammy.com
 	arch = x86_64
 	license = GPL3
 	depends = mesa
 	depends = qt5-base
-	source = gammy-0.9.51.tar.gz::https://github.com/Fushko/gammy/archive/v0.9.51.tar.gz
+	optdepends = plog: library for debug logging
+	source = gammy-0.9.52.tar.gz::https://github.com/Fushko/gammy/archive/v0.9.52.tar.gz
 	source = gammy.desktop
-	sha256sums = a03c08b8edcd4a58d0d5155c8da310cca58826ebc2a33cd7b9c55af5fbcc961e
+	sha256sums = 9ea9f5ce4eec6bcfd87fce25646125cebfc6e74eb8a591c2240c0aa8c1cd9e89
 	sha256sums = ad02735598429f55246969c58fe5ff54db7960e813996d6d642c08fb18687583
 
 pkgname = gammy
