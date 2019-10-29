@@ -1,6 +1,6 @@
 pkgbase = solo-python
 	pkgdesc = Tools and Python library for SoloKeys.
-	pkgver = 0.0.15
+	pkgver = 0.0.17
 	pkgrel = 1
 	url = https://github.com/solokeys/solo-python
 	arch = any
@@ -17,8 +17,8 @@ pkgbase = solo-python
 	depends = python-pyserial
 	depends = python-pyusb
 	depends = python-requests
-	source = https://files.pythonhosted.org/packages/source/s/solo-python/solo-python-0.0.15.tar.gz
-	sha256sums = 6c3b168d93eecf656fdf58525c0f1da9403b5fd0685fcdb445560960c5a6458b
+	source = https://files.pythonhosted.org/packages/source/s/solo-python/solo-python-0.0.17.tar.gz
+	sha256sums = ac3a48ea29a414c00e6c5d7891c9e15699a8c093fb7b1cd92988d0ebeffc2ba7
 
 pkgname = solo-python
 
