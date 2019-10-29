@@ -11,7 +11,8 @@ depends=('gtk-engine-murrine' 'gtk-engines' 'gnome-themes-standard')
 optdepends=('ttf-droid: General-purpose fonts released by Google as part of Android')
 #source=("http://gnome-look.org/CONTENT/content-files/150905-adwaita-x-dark-light-$pkgver.zip")
 source=("150905-adwaita-x-dark-light-$pkgver.zip::https://dl.opendesktop.org/api/files/download?id=1460761610");
-md5sums=('5ced0d4ec96f254f6e190b0587206330')
+# checksum is different every time it downloads
+md5sums=('SKIP')
 
 package() {
     cd $srcdir
