@@ -8,8 +8,8 @@ pkgdesc='Electron application that links with Signal on mobile'
 arch=(x86_64)
 url=https://signal.org
 license=(GPL3)
-depends=('electron>=6.1.1')
-makedepends=(yarn git python2 'nodejs>=12' npm python)
+depends=(electron)
+makedepends=(yarn git python2 nodejs-lts-erbium npm python)
 provides=(signal)
 replaces=(signal)
 source=(

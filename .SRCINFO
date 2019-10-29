@@ -8,10 +8,10 @@ pkgbase = signal-desktop
 	makedepends = yarn
 	makedepends = git
 	makedepends = python2
-	makedepends = nodejs>=12
+	makedepends = nodejs-lts-erbium
 	makedepends = npm
 	makedepends = python
-	depends = electron>=6.1.1
+	depends = electron
 	provides = signal
 	replaces = signal
 	source = signal-desktop-1.27.4.tar.gz::https://github.com/signalapp/Signal-Desktop/archive/v1.27.4.tar.gz
