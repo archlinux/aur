@@ -1,20 +1,26 @@
 diff -ura package.orig/src/main.js package.new/src/main.js
---- package.orig/src/main.js	2019-10-12 21:18:46.099712720 +0200
-+++ package.new/src/main.js	2019-10-12 21:25:12.285643001 +0200
-@@ -266,16 +266,6 @@
-     });
+--- package.orig/src/main.js	2019-10-30 00:09:52.833991579 +0100
++++ package.new/src/main.js	2019-10-30 00:13:11.936926036 +0100
+@@ -393,22 +393,6 @@
+       });
    });
  
 -  // Task we need only on the first start
 -  mainWindow.webContents.once("did-finish-load", () => {
--    utils.getUpdateAvailable().then(() => {
--      utils.log.info("This is not the latest version of the UBports Installer! Please update: https://devices.ubuntu-touch.io/installer/" + (global.packageInfo.package ? global.packageInfo.package : ""));
--      mainWindow.webContents.send("user:update-available");
--    }).catch(() => {
--      utils.log.debug("This is the latest version.")
--    });
+-    utils
+-      .getUpdateAvailable()
+-      .then(() => {
+-        utils.log.info(
+-          "This is not the latest version of the UBports Installer! Please update: https://devices.ubuntu-touch.io/installer/" +
+-            (global.packageInfo.package ? global.packageInfo.package : "")
+-        );
+-        mainWindow.webContents.send("user:update-available");
+-      })
+-      .catch(() => {
+-        utils.log.debug("This is the latest version.");
+-      });
 -  });
 -
-   mainWindow.loadURL(url.format({
-     pathname: path.join(__dirname, 'html/index.pug'),
-     protocol: 'file:',
+   mainWindow.loadURL(
+     url.format({
+       pathname: path.join(__dirname, "html/index.pug"),

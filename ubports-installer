@@ -1,4 +1,2 @@
 #!/bin/sh
-# need SNAP_NAME for adb/fastbook to be detected
-# https://github.com/ubports/ubports-installer/commit/15ed833ce5149a47ea376aa93e6cc7908afe8c92#diff-1c90ff38a08209f9ebd4d05d1e43358eR48
-SNAP_NAME=arch exec electron4 /usr/share/ubports-installer/app.asar "$@"
+exec electron4 /usr/share/ubports-installer/app.asar "$@"

@@ -1,0 +1,21 @@
+diff -ura package.orig/src/utils.js package.new/src/utils.js
+--- package.orig/src/utils.js	2019-10-30 00:09:52.833991579 +0100
++++ package.new/src/utils.js	2019-10-30 00:24:23.422742604 +0100
+@@ -222,16 +222,9 @@
+   process.exit(-1);
+ }
+ 
+-let toolpath = global.packageInfo.package
+-  ? path.join(
+-      __dirname,
+-      "../../app.asar.unpacked/platform-tools",
+-      platforms[os.platform()]
+-    )
+-  : path.join(__dirname, "..", "platform-tools", platforms[os.platform()]);
+ function execTool(tool, args, callback) {
+   exec(
+-    [path.join(toolpath, tool)].concat(args).join(" "),
++    [tool].concat(args).join(" "),
+     { options: { maxBuffer: 1024 * 1024 * 2 } },
+     callback
+   );
