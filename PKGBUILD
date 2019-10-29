@@ -6,7 +6,7 @@ _orgname=dfandrich
 _pkgname=gpscorrelate
 _branch=master
 pkgname=${_pkgname}-git
-pkgver=r175.f6401ff
+pkgver=2.0.r1.gf00b4d9
 pkgrel=1
 pkgdesc='GPS Photo Correlation; Writes location data to EXIF tags using GPX files (command line and GTK interface).'
 arch=('x86_64')
@@ -22,8 +22,7 @@ sha256sums=('SKIP')
 pkgver() {
   cd ${_pkgname}-${_branch}
 
-  # Get the version number.
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
