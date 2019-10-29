@@ -1,12 +1,12 @@
 pkgbase = execute-git
 	pkgdesc = Opens exe and bat files as if they were native
 	pkgver = r19.940ea82
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/es20490446e/execute
 	arch = x86_64
 	license = GPL3
 	makedepends = git
-	depends = dosbox-svn
+	depends = dosbox
 	depends = q4wine
 	depends = wine_gecko
 	depends = wine-mono
