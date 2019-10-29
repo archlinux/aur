@@ -1,7 +1,7 @@
 # Maintainer: fenuks
 
 pkgname=covimerage
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Generate coverage information for Vim scripts."
 arch=("any")
@@ -13,8 +13,8 @@ makedepends=("python-setuptools")
 conflicts=("${pkgname}")
 # install=$pkgname.install
 # source=("https://github.com/Vimjas/${pkgname}/archive/v${pkgver}.tar.gz")
-source=("https://files.pythonhosted.org/packages/af/82/f6cf0d73e7459b993bd77e167d060c420479f416e7e37b67777593370f88/covimerage-0.2.0.tar.gz")
-sha256sums=('2075e42da1fffb3656ea5c786c5c8d42657327a14c3f9c619977b10ccb73661b')
+source=("https://files.pythonhosted.org/packages/a1/be/0bcf26319fd2a1da72385af9cc02008fa304c6528205a5b2b41abd9a3693/covimerage-0.2.1.tar.gz")
+sha256sums=('a75fd6a4f7d743e40977f2f1d556040e8fad5a1122dbf8d63cd759d811fd64f6')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
