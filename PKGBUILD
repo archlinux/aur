@@ -1,7 +1,7 @@
 # Maintainer: ChacaS0 <incoming+chacas0-chksum-13830438-issue-@incoming.gitlab.com>
 pkgname=chksum-git
 pkgver=0.1
-pkgrel=0.1
+pkgrel=1
 pkgdesc='Check and compare easily the checksum of a file.'
 arch=('x86_64')
 url="https://gitlab.com/ChacaS0/chksum"
