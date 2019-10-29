@@ -25,11 +25,15 @@ package_vimix-kde-git() {
         'tela-icon-theme-git: Recommended icon theme')
 	
     cd "${srcdir}/${_gitname}"
-    install -d "${pkgdir}/"usr/share
+    install -d "${pkgdir}/"usr/share/{aurorae,color-schemes,plasma}
 	
-    for _dir in plasma aurorae color-schemes ; do
-	    cp -r "${_dir}" "${pkgdir}/"usr/share ;
-    done
+	sed -i '5,8d' install.sh
+	
+    AURORAE_DIR=${pkgdir}/usr/share/aurorae/themes \
+    SCHEMES_DIR=${pkgdir}/usr/share/color-schemes \
+    PLASMA_DIR=${pkgdir}/usr/share/plasma/desktoptheme \
+    LOOKFEEL_DIR=${pkgdir}/usr/share/plasma/look-and-feel \
+    ./install.sh -b
 }
 
 package_kvantum-theme-vimix-git() {
