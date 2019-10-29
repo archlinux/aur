@@ -1,7 +1,7 @@
 pkgbase = ccls
 	pkgdesc = C/C++/ObjC language server supporting cross references, hierarchies, completion and semantic highlighting
 	pkgver = 0.20190823.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/MaskRay/ccls
 	arch = x86_64
 	license = Apache
