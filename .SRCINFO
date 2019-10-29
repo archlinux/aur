@@ -1,0 +1,18 @@
+pkgbase = findomain-git
+	pkgdesc = The fastest and cross-platform subdomain enumerator, do not waste your time.
+	pkgver = 316.fdb95ac
+	pkgrel = 1
+	url = https://github.com/Edu4rdSHL/findomain
+	arch = any
+	groups = blackarch
+	groups = blackarch-scanner
+	groups = blackarch-recon
+	license = GPL3
+	makedepends = git
+	makedepends = cargo
+	optdepends = postgresql: for subdomains monitoring.
+	source = git+https://github.com/Edu4rdSHL/findomain.git
+	sha512sums = SKIP
+
+pkgname = findomain-git
+
