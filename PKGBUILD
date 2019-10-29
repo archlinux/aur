@@ -1,7 +1,7 @@
 # Maintainer: Eric Biggers <ebiggers3 at gmail dot com>
 
 pkgname=fscrypt-git
-pkgver=0.2.5.0.g672cce6
+pkgver=0.2.5.8.ga3434e4
 pkgrel=1
 pkgdesc='A tool for managing Linux filesystem encryption'
 arch=('x86_64' 'i686')
@@ -10,7 +10,7 @@ license=('Apache')
 makedepends=('git' 'go')
 depends=('pam')
 provides=('fscrypt')
-source=('git://github.com/google/fscrypt.git' 'pam_config')
+source=('git+https://github.com/google/fscrypt.git' 'pam_config')
 sha256sums=('SKIP'
             'ae6ceaefc6d936c95a9b7a3f925111ffb946e6fd0152373247f1d40132f05aef')
 
