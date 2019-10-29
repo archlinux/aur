@@ -2,13 +2,13 @@
 
 pkgbase=iortcw-git
 pkgname=iortcw-git
-pkgver=1.51c.r15.ga40aa852
+pkgver=1.51c.r19.gb96f1c26
 pkgrel=1
 pkgdesc="Merge of ioquake3 features and fixes into Return to Castle Wolfenstein"
 arch=('i686' 'x86_64')
 url="https://github.com/iortcw/iortcw"
 license=('GPL')
-depends=('iortcw-data' 'freetype2' 'sdl2' 'openal' 'opus' 'opusfile' 'libogg' 'zlib')
+depends=('iortcw-data' 'freetype2' 'graphite' 'libjpeg-turbo' 'harfbuzz' 'sdl2' 'openal' 'opus' 'opusfile' 'pcre' 'libogg' 'zlib')
 conflicts=('iortcw-svn')
 replaces=('iortcw-svn')
 makedepends=('cmake' 'git')
