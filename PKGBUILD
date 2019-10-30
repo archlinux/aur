@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=tuxpaint-git
-pkgver=3064.1588c20b
+pkgver=3113.2860da76
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="A free drawing program designed for young children. Checkout from git"
@@ -14,8 +14,9 @@ provides=('tuxpaint')
 conflicts=('tuxpaint')
 makedepends=('git' 'gperf' 'awk')
 options=('!makeflags')
-source=("git+https://git.code.sf.net/p/tuxpaint/tuxpaint")
-md5sums=('SKIP')
+source=("git+https://git.code.sf.net/p/tuxpaint/tuxpaint" Makefile.patch)
+sha256sums=('SKIP'
+            '52485c1f594e9614ffdf7581fa8352b9665265af2b75f034c6e0fb419ffcdc82')
 
 pkgver() {
   cd "${pkgname%-git}"
@@ -23,18 +24,19 @@ pkgver() {
 }
 
 prepare() {
-  sed -i 's+/usr/local+/usr+g' "${pkgname%-git}"/Makefile
-  sed -i 's+	kbuildsycoca4+#+' "${pkgname%-git}"/Makefile
+  cd "${pkgname%-git}"
+  git apply "$srcdir"/Makefile.patch
 }
 
 build() {
   cd "${pkgname%-git}"
-  
   make
 }
 
 package() {
   cd "${pkgname%-git}"
+  install -d "$pkgdir"/usr/share/icons/hicolor
+  install -Dm644 src/tuxpaint.desktop "$pkgdir"/usr/share/applications/tuxpaint.desktop
   make DESTDIR="$pkgdir" install 
   rm -rf "$pkgdir"/usr/share/tuxpaint/CVS
   rm -rf "$pkgdir"/usr/X11R6 

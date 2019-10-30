@@ -1,0 +1,113 @@
+diff --git a/Makefile b/Makefile
+index d4eefe51..a48b900c 100644
+--- a/Makefile
++++ b/Makefile
+@@ -129,9 +129,9 @@ ARCH_HEADERS:=$($(OS)_ARCH_HEADERS)
+ 
+ # Where things will go when ultimately installed:
+ # For macOS, the prefix is relative to DESTDIR.
+-windows_PREFIX:=/usr/local
++windows_PREFIX:=/usr
+ osx_PREFIX:=Resources
+-linux_PREFIX:=/usr/local
++linux_PREFIX:=/usr
+ PREFIX:=$($(OS)_PREFIX)
+ 
+ # Root directory to place files when creating packages.
+@@ -624,22 +624,14 @@ uninstall:	uninstall-i18n
+ 	-if [ "x$(BUNDLE)" != "x" ]; then \
+ 	  rm -rf $(BUNDLE); \
+ 	fi
+-	@if [ "x$(shell which xdg-icon-resource install)" != "x" ]; then \
+-	  xdg-icon-resource uninstall --size 192 tux4kids-tuxpaint ; \
+-	  xdg-icon-resource uninstall --size 128 tux4kids-tuxpaint ; \
+-	  xdg-icon-resource uninstall --size 96 tux4kids-tuxpaint ; \
+-	  xdg-icon-resource uninstall --size 64 tux4kids-tuxpaint ; \
+-	  xdg-icon-resource uninstall --size 48 tux4kids-tuxpaint ; \
+-	  xdg-icon-resource uninstall --size 32 tux4kids-tuxpaint ; \
+-	  xdg-icon-resource uninstall --size 22 tux4kids-tuxpaint ; \
+-	  xdg-icon-resource uninstall --size 16 tux4kids-tuxpaint ; \
+-	fi
+-	@if [ "x$(shell which xdg-desktop-menu)" != "x" ]; then \
+-	  xdg-desktop-menu uninstall tux4kids-tuxpaint.desktop ; \
+-	fi
+-	-if [ "x$(shell which update-desktop-database)" != "x" ]; then \
+-	  update-desktop-database; \
+-	fi
++	xdg-icon-resource uninstall --size 192 tux4kids-tuxpaint ; \
++	xdg-icon-resource uninstall --size 128 tux4kids-tuxpaint ; \
++	xdg-icon-resource uninstall --size 96 tux4kids-tuxpaint ; \
++	xdg-icon-resource uninstall --size 64 tux4kids-tuxpaint ; \
++	xdg-icon-resource uninstall --size 48 tux4kids-tuxpaint ; \
++	xdg-icon-resource uninstall --size 32 tux4kids-tuxpaint ; \
++	xdg-icon-resource uninstall --size 22 tux4kids-tuxpaint ; \
++	xdg-icon-resource uninstall --size 16 tux4kids-tuxpaint ; \
+ 
+ # Install default config file:
+ .PHONY: install-default-config
+@@ -823,22 +815,14 @@ install-xdg:
+ 	@echo
+ 	@echo "...Installing launcher icon into desktop environment..."
+ 	@if [ "x$(shell which xdg-icon-resource install)" != "x" ]; then \
+-	  xdg-icon-resource install --size 192 data/images/icon192x192.png tux4kids-tuxpaint ; \
+-	  xdg-icon-resource install --size 128 data/images/icon128x128.png tux4kids-tuxpaint ; \
+-	  xdg-icon-resource install --size 96 data/images/icon96x96.png tux4kids-tuxpaint ; \
+-	  xdg-icon-resource install --size 64 data/images/icon64x64.png tux4kids-tuxpaint ; \
+-	  xdg-icon-resource install --size 48 data/images/icon48x48.png tux4kids-tuxpaint ; \
+-	  xdg-icon-resource install --size 32 data/images/icon32x32.png tux4kids-tuxpaint ; \
+-	  xdg-icon-resource install --size 22 data/images/icon22x22.png tux4kids-tuxpaint ; \
+-	  xdg-icon-resource install --size 16 data/images/icon16x16.png tux4kids-tuxpaint ; \
+-	fi
+-	@if [ "x$(shell which xdg-desktop-menu)" != "x" ]; then \
+-	  cp src/tuxpaint.desktop ./tux4kids-tuxpaint.desktop ; \
+-	  xdg-desktop-menu install tux4kids-tuxpaint.desktop ; \
+-	  rm ./tux4kids-tuxpaint.desktop ; \
+-	fi
+-	@if [ "x$(shell which update-desktop-database)" != "x" ]; then \
+-	  update-desktop-database ; \
++	  install data/images/icon192x192.png $(DESTDIR)$(PREFIX)/share/icons/hicolor/ ; \
++	  install data/images/icon128x128.png $(DESTDIR)$(PREFIX)/share/icons/hicolor/ ; \
++	  install data/images/icon96x96.png $(DESTDIR)$(PREFIX)/share/icons/hicolor/ ; \
++	  install data/images/icon64x64.png $(DESTDIR)$(PREFIX)/share/icons/hicolor/ ; \
++	  install data/images/icon48x48.png $(DESTDIR)$(PREFIX)/share/icons/hicolor/ ; \
++	  install data/images/icon32x32.png $(DESTDIR)$(PREFIX)/share/icons/hicolor/ ; \
++	  install data/images/icon22x22.png $(DESTDIR)$(PREFIX)/share/icons/hicolor/ ; \
++	  install data/images/icon16x16.png $(DESTDIR)$(PREFIX)/share/icons/hicolor/ ; \
+ 	fi
+ 
+ # Install the PNG icon (for KDE desktop, etc.)
+@@ -917,13 +901,13 @@ install-dlls:
+ 	  echo; \
+ 	  echo "...Installing Library Modules..."; \
+ 	  mkdir -p $(BIN_PREFIX)/lib/gdk-pixbuf-2.0/2.10.0/loaders; \
+-	  cp /usr/local/lib/gdk-pixbuf-2.0/2.10.0/loaders/*.dll $(BIN_PREFIX)/lib/gdk-pixbuf-2.0/2.10.0/loaders; \
++	  cp /usr/lib/gdk-pixbuf-2.0/2.10.0/loaders/*.dll $(BIN_PREFIX)/lib/gdk-pixbuf-2.0/2.10.0/loaders; \
+ 	  strip -s $(BIN_PREFIX)/lib/gdk-pixbuf-2.0/2.10.0/loaders/*.dll; \
+ 	  mkdir -p $(BIN_PREFIX)/lib/gtk-2.0/2.10.0/loaders; \
+-	  cp /usr/local/lib/gtk-2.0/loaders/*.dll $(BIN_PREFIX)/lib/gtk-2.0/2.10.0/loaders; \
++	  cp /usr/lib/gtk-2.0/loaders/*.dll $(BIN_PREFIX)/lib/gtk-2.0/2.10.0/loaders; \
+ 	  strip -s $(BIN_PREFIX)/lib/gtk-2.0/2.10.0/loaders/*.dll; \
+ 	  mkdir -p $(BIN_PREFIX)/lib/pango/1.6.0/modules; \
+-	  cp /usr/local/lib/pango/1.6.0/modules/*.dll $(BIN_PREFIX)/lib/pango/1.6.0/modules; \
++	  cp /usr/lib/pango/1.6.0/modules/*.dll $(BIN_PREFIX)/lib/pango/1.6.0/modules; \
+ 	  strip -s $(BIN_PREFIX)/lib/pango/1.6.0/modules/*.dll; \
+ 	fi
+ 
+@@ -1079,7 +1063,7 @@ obj/parse.c:	obj/parse_step1.c
+ 	@echo
+ 	@echo "...Generating the command-line and config file parser (STEP 2)..."
+ 	@sed -e 's/^const struct/static const struct/' -e 's/_GNU/_TUX/' obj/parse_step1.c > obj/parse.c
+-	
++
+ obj/parse_step1.c:	src/parse.gperf
+ 	@echo
+ 	@echo "...Generating the command-line and config file parser (STEP 1)..."
+@@ -1233,7 +1217,7 @@ obj:
+ ######
+ 
+ MAGIC_SDL_CPPFLAGS:=$(shell $(PKG_CONFIG) $(SDL_PCNAME) --cflags)
+-MAGIC_SDL_LIBS:=-L/usr/local/lib $(LIBMINGW) $(shell $(PKG_CONFIG) $(SDL_PCNAME) --libs) -lSDL_image -lSDL_ttf $(SDL_MIXER_LIB)
++MAGIC_SDL_LIBS:=-L/usr/lib $(LIBMINGW) $(shell $(PKG_CONFIG) $(SDL_PCNAME) --libs) -lSDL_image -lSDL_ttf $(SDL_MIXER_LIB)
+ MAGIC_ARCH_LINKS:=-lintl $(PNG)
+ 
+ windows_PLUGIN_LIBS:=$(MAGIC_SDL_LIBS) $(MAGIC_ARCH_LINKS)

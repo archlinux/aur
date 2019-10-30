@@ -1,6 +1,6 @@
 pkgbase = tuxpaint-git
 	pkgdesc = A free drawing program designed for young children. Checkout from git
-	pkgver = 3064.1588c20b
+	pkgver = 3113.2860da76
 	pkgrel = 1
 	url = http://www.newbreedsoftware.com/tuxpaint/
 	arch = i686
@@ -22,7 +22,9 @@ pkgbase = tuxpaint-git
 	conflicts = tuxpaint
 	options = !makeflags
 	source = git+https://git.code.sf.net/p/tuxpaint/tuxpaint
-	md5sums = SKIP
+	source = Makefile.patch
+	sha256sums = SKIP
+	sha256sums = 52485c1f594e9614ffdf7581fa8352b9665265af2b75f034c6e0fb419ffcdc82
 
 pkgname = tuxpaint-git
 
