@@ -1,14 +1,15 @@
 pkgbase = gxi
 	pkgdesc = GTK frontend, written in Rust, for the xi editor.
-	pkgver = 0.4.6
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://github.com/Cogitri/gxi/
 	arch = x86_64
 	license = MIT
+	makedepends = meson
 	depends = gtk3
 	depends = rust
-	source = https://github.com/Cogitri/gxi/releases/download/v0.4.6/gxi-0.4.6.tar.xz
-	md5sums = f74f3bf701e3d0101803d4afe846477c
+	source = https://github.com/Cogitri/gxi/releases/download/v0.8.1/gxi-0.8.1.tar.xz
+	sha256sums = 7f970239815cd688218c360fba7f00b8e1eb9ee9bafc9ce578e61018cca087a1
 
 pkgname = gxi
 

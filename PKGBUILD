@@ -1,21 +1,16 @@
-# Maintainer: Tarn Burton <twburton at gmail dot com>
+# Maintainer: Frederic Bezies < fredbezies at gmail dot com >
+# Contributor: Tarn Burton <twburton at gmail dot com>
+
 pkgname=gxi
-pkgver=0.4.6
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="GTK frontend, written in Rust, for the xi editor."
 arch=("x86_64")
 url="https://github.com/Cogitri/gxi/"
 license=('MIT')
-make_depends=('meson')
+makedepends=('meson')
 depends=('gtk3' 'rust')
 source=("https://github.com/Cogitri/gxi/releases/download/v$pkgver/gxi-$pkgver.tar.xz")
-md5sums=('f74f3bf701e3d0101803d4afe846477c')
-
-# prepare() {
-#   cd $pkgname
-#   git submodule init
-#   git submodule update
-# }
 
 build() {
   cd $pkgname-$pkgver
@@ -28,3 +23,4 @@ package() {
   DESTDIR=$pkgdir ninja -C build install
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+sha256sums=('7f970239815cd688218c360fba7f00b8e1eb9ee9bafc9ce578e61018cca087a1')
