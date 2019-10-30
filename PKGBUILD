@@ -1,9 +1,9 @@
 # Maintainer: Spencer Muise <smuise@protonmail.com>
 pkgname=doppler-bin
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A zero configuration remote monitoring tool designed to be better than nothing"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/EnKrypt/Doppler"
 license=('GPL3')
 provides=('doppler')
