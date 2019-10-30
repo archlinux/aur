@@ -1,7 +1,7 @@
 # Maintainer: Auteiy <dmitry@auteiy.me>
 
 pkgname=posy-cursors
-pkgver=3.5.2
+pkgver=3.5.3
 pkgrel=1
 pkgdesc="Port of Posy's improved cursors"
 arch=(any)
@@ -9,7 +9,7 @@ url="https://git.auteiy.me/dmitry/cursorsPosy"
 license=(unknown)
 makedepends=("imagemagick" "xorg-xcursorgen")
 source=("$pkgname-$pkgver.tar.gz::https://git.auteiy.me/dmitry/cursorsPosy/-/archive/v$pkgver/cursorsPosy-v$pkgver.tar.gz")
-sha256sums=('4860db5ae4f48e3c3fbac6b2ba31577a69592bd880e9bd483eecf139fc6e77e4')
+sha256sums=('bc8b8c81263b44db531a73da85cfcc03a6612a3b7f47997cfd035257df5ea920')
 
 prepare() {
   cd cursorsPosy-v$pkgver
