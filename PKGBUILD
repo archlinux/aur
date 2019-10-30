@@ -5,7 +5,7 @@
 # Contributor: Fabio Zanini <iosonofabio@gmail.com>
 
 pkgname=modeller
-pkgver=9.22
+pkgver=9.23
 pkgrel=1
 pkgdesc="3D Structure Homology Modeller"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ optdepends=('python: python support'
 backup=("etc/$pkgname/config.py")
 source=("http://www.salilab.org/modeller/$pkgver/$pkgname-$pkgver.tar.gz"{,.sign}
         "LICENSE")
-sha256sums=('bc3be72a402f7a45cc9b5df698f1150bd441ef38c060dfe9c4631fefb83172d1'
+sha256sums=('7fa0b268a2c3feb400d96962cd61d617b91fa6295b4bcc11eb466df20f5dabc3'
             'SKIP'
             '7d1fb18e362298bc606d6d99852479dc107ad336e1bcd33362fdeef18cf207fe')
 validpgpkeys=('9F7FF1477E5A2463732EC9781CC7D059745E6093')
