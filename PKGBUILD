@@ -4,13 +4,13 @@ pkgver=1.5
 pkgrel=2
 pkgdesc="Remote control and programm Behringer X Air Mixers"
 arch=('i686' 'x86_64')
-url="https://www.music-group.com/Categories/Behringer/Mixers/Digital-Mixers/XR18/p/P0BI8/downloads"
+url="https://www.behringer.com/Categories/Behringer/Mixers/Digital/XR18/p/P0BI8/Downloads"
 license=('custom:MUSIC Group End User License Agreement')
 install=${pkgname}.install
 
 depends=('libxext' 'alsa-lib' 'freetype2' 'mesa' 'mesa-libgl')
 
-source=("http://www.music-group.com/eurocom/assets/EULA_2012-09-12.pdf"
+source=("https://www.musictribe.com/eurocom/assets/EULA_2012-09-12.pdf"
          "xairedit.desktop"
          "x-air-edit.png")
 source_i686=("http://downloads.music-group.com/software/behringer/XAIR/X-AIR-Edit_LINUX_V${pkgver}.tar.gz")
