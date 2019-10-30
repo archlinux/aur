@@ -1,51 +1,46 @@
-# Maintainer: Milk Brewster <aur@milkmiruku.com>
-
-_pkgname=helio-workstation
-pkgname="${_pkgname}-git"
-pkgver=r643.24e031d
+# Contributor: Milk Brewster <aur@milkmiruku.com>
+# Maintainer: Matthew Sexton <wsdmatty@gmail.com>
+pkgname=helio-workstation-git
+pkgver=2.3.r28.2a76dc3f
 pkgrel=1
-pkgdesc="A high-performance MIDI sequencer with a clean interface, version control, VST support and more"
+pkgdesc="high-performance MIDI sequencer with a clean interface, version control, and more"
 arch=('x86_64')
 url="https://helioworkstation.com/"
 license=('GPL3')
-depends=('freetype2' 'libx11' 'libxinerama' 'libxrandr' 'libxcursor' 'libxcomposite' 'mesa' 'freeglut' 'curl'
-         'alsa-lib' 'jack' 'asio' 'steinberg-vst36')
-makedepends=('git')
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
+depends=('hicolor-icon-theme' 'curl' 'freetype2' 'libxinerama' 'libglvnd' 'alsa-lib')
+makedepends=('git' 'steinberg-vst36' 'libxrandr' 'libxcursor' 'libxcomposite' 'jack' 'asio' 'freeglut')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 source=("git+https://github.com/helio-fm/helio-workstation.git"
         "git+https://github.com/WeAreROLI/JUCE.git"
         "git+https://github.com/greg7mdp/sparsepp.git")
 md5sums=('SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
-  cd "$srcdir/${_pkgname}"
-
-  # Git, tags available
-  # printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
-
-  # Git, no tags available
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "${srcdir}/${pkgname%-git}"
+  printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 prepare() {
-  cd "$srcdir/${_pkgname}"
+  cd "${srcdir}/${pkgname%-git}"
   git submodule init
-  git config submodule.JUCE.url "$srcdir"/ThirdParty/JUCE
-  git config submodule.sparsepp.url "$srcdir"/ThirdParty/SparseHashMap
+  git config submodule.JUCE.url "${srcdir}"/ThirdParty/JUCE
+  git config submodule.sparsepp.url "${srcdir}"/ThirdParty/SparseHashMap
   git submodule update
   
-  cd "$srcdir/${_pkgname}/Projects/LinuxMakefile"
-  make check-pkg-config
 }
 
 build() {
-  cd "$srcdir/${_pkgname}/Projects/LinuxMakefile"
+  cd "$srcdir/${pkgname%-git}/Projects/LinuxMakefile"
   export CONFIG=Release64
   make
 }
 
 package() {
-  cd "$srcdir/${_pkgname}/Projects/"
-  install -Dm755 "LinuxMakefile/build/Helio" "$pkgdir/usr/bin/helio_workstation"
-}
+  cd "$srcdir/${pkgname%-git}/Projects/"
+  install -Dm755 "LinuxMakefile/build/Helio" "${pkgdir}/usr/bin/helio"
+  install -Dm755 "Deployment/Linux/Debian/x64/usr/share/applications/Helio.desktop" "${pkgdir}/usr/share/applications/Helio.desktop"
+  install -dm 755 "${pkgdir}/usr/share/icons"
+  cp -dr --no-preserve='ownership' Deployment/Linux/Debian/x64/usr/share/icons/* "${pkgdir}/usr/share/icons/"
+  }
+
