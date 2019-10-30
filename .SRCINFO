@@ -1,6 +1,6 @@
 pkgbase = modeller
 	pkgdesc = 3D Structure Homology Modeller
-	pkgver = 9.22
+	pkgver = 9.23
 	pkgrel = 1
 	url = http://salilab.org/modeller/
 	arch = i686
@@ -10,11 +10,11 @@ pkgbase = modeller
 	optdepends = python: python support
 	optdepends = python2: python2 support
 	backup = etc/modeller/config.py
-	source = http://www.salilab.org/modeller/9.22/modeller-9.22.tar.gz
-	source = http://www.salilab.org/modeller/9.22/modeller-9.22.tar.gz.sign
+	source = http://www.salilab.org/modeller/9.23/modeller-9.23.tar.gz
+	source = http://www.salilab.org/modeller/9.23/modeller-9.23.tar.gz.sign
 	source = LICENSE
 	validpgpkeys = 9F7FF1477E5A2463732EC9781CC7D059745E6093
-	sha256sums = bc3be72a402f7a45cc9b5df698f1150bd441ef38c060dfe9c4631fefb83172d1
+	sha256sums = 7fa0b268a2c3feb400d96962cd61d617b91fa6295b4bcc11eb466df20f5dabc3
 	sha256sums = SKIP
 	sha256sums = 7d1fb18e362298bc606d6d99852479dc107ad336e1bcd33362fdeef18cf207fe
 
