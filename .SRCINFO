@@ -1,0 +1,14 @@
+pkgbase = plod
+	pkgdesc = tool for keeping an on-line journal of what you're working on
+	pkgver = 1.9
+	pkgrel = 1
+	url = http://deer-run.com/~hal/plod/
+	arch = any
+	license = Perl
+	depends = perl
+	depends = crypt
+	source = http://deer-run.com/~hal/plod/plod.shar
+	md5sums = 2f1b52298eed7b660eb4a73c3a2cba83
+
+pkgname = plod
+
