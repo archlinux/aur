@@ -35,121 +35,123 @@ sha256sums=('SKIP'
 validpgpkeys=('3CE1780F78DD88DF45194FD706BC317B515ACE7C') # Kovid Goyal (New longer key) <kovid@kovidgoyal.net>
 
 pkgver() {
-  cd "${srcdir}/${pkgbase%-git}"
-  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    cd "${srcdir}/${pkgbase%-git}"
+
+    git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare(){
-  cd "${srcdir}/${pkgbase%-git}"
+    cd "${srcdir}/${pkgbase%-git}"
 
-  python2 setup.py git_version
+    python2 setup.py git_version
 
-  # Link translations to build dir
-  ln -sfT ../calibre-translations translations
+    # Link translations to build dir
+    ln -sfT ../calibre-translations translations
 
-  # Desktop integration (e.g. enforce arch defaults)
-  # Use uppercase naming scheme, don't delete config files under fakeroot.
-  sed -e "/import config_dir/,/os.rmdir(config_dir)/d" \
-      -e "s/^Name=calibre/Name=Calibre/g" \
-      -i  src/calibre/linux.py
+    # Desktop integration (e.g. enforce arch defaults)
+    # Use uppercase naming scheme, don't delete config files under fakeroot.
+    sed -e "/import config_dir/,/os.rmdir(config_dir)/d" \
+        -e "s/^Name=calibre/Name=Calibre/g" \
+        -i  src/calibre/linux.py
 
-  # cherry-picked bits of python2-backports.functools_lru_cache
-  # needed for frozen builds + beautifulsoup4
-  # see https://github.com/kovidgoyal/calibre/commit/b177f0a1096b4fdabd8772dd9edc66662a69e683#commitcomment-33169700
-  rm -r src/backports
+    # cherry-picked bits of python2-backports.functools_lru_cache
+    # needed for frozen builds + beautifulsoup4
+    # see https://github.com/kovidgoyal/calibre/commit/b177f0a1096b4fdabd8772dd9edc66662a69e683#commitcomment-33169700
+    rm -r src/backports
 }
 
 build() {
-  cd "${srcdir}/${pkgbase%-git}"
+    cd "${srcdir}/${pkgbase%-git}"
 
-  # Don't use the bootstrapper, since it tries to checkout/pull the
-  # translations repo and generally touch the internet. Instead call each
-  # *needed* subcommmand.
-  # LANG='en_US.UTF-8' python2 setup.py bootstrap
+    # Don't use the bootstrapper, since it tries to checkout/pull the
+    # translations repo and generally touch the internet. Instead call each
+    # *needed* subcommmand.
+    # LANG='en_US.UTF-8' python2 setup.py bootstrap
 
-  LANG='en_US.UTF-8' python2 setup.py build
-  LANG='en_US.UTF-8' python2 setup.py iso639
-  LANG='en_US.UTF-8' python2 setup.py iso3166
-  LANG='en_US.UTF-8' python2 setup.py translations
-  LANG='en_US.UTF-8' python2 setup.py gui
-  LANG='en_US.UTF-8' python2 setup.py resources --path-to-mathjax /usr/share/mathjax2 --system-mathjax
+    LANG='en_US.UTF-8' python2 setup.py build
+    LANG='en_US.UTF-8' python2 setup.py iso639
+    LANG='en_US.UTF-8' python2 setup.py iso3166
+    LANG='en_US.UTF-8' python2 setup.py translations
+    LANG='en_US.UTF-8' python2 setup.py gui
+    LANG='en_US.UTF-8' python2 setup.py resources --path-to-mathjax /usr/share/mathjax2 --system-mathjax
 
-  LANG='en_US.UTF-8' CALIBRE_PY3_PORT=1 python3 setup.py build
+    LANG='en_US.UTF-8' CALIBRE_PY3_PORT=1 python3 setup.py build
 
-  # manpages simply don't build at the moment:
-  # https://github.com/sphinx-doc/sphinx/issues/5150
-  #LANG='en_US.UTF-8' python2 setup.py man_pages
+    # manpages simply don't build at the moment:
+    # https://github.com/sphinx-doc/sphinx/issues/5150
+    #LANG='en_US.UTF-8' python2 setup.py man_pages
 
-  # This tries to download new user-agent data, so pre-seed a
-  # recently-generated copy to allow offline builds.
-  cp ../user-agent-data.json resources/
-  LANG='en_US.UTF-8' python2 setup.py recent_uas || true
+    # This tries to download new user-agent data, so pre-seed a
+    # recently-generated copy to allow offline builds.
+    cp ../user-agent-data.json resources/
+    LANG='en_US.UTF-8' python2 setup.py recent_uas || true
 }
 
 check() {
-  cd "${srcdir}/${pkgbase%-git}"
+    cd "${srcdir}/${pkgbase%-git}"
 
-  # without xvfb-run this fails with much "Control socket failed to recv(), resetting"
-  # ERROR: test_websocket_perf (calibre.srv.tests.web_sockets.WebSocketTest)
-  # one or two tests are a bit flaky, but the python3 build seems to succeed more often
-  LANG='en_US.UTF-8' xvfb-run env CALIBRE_PY3_PORT=1 python3 setup.py test
-  LANG='en_US.UTF-8' xvfb-run python2 setup.py test
+    # without xvfb-run this fails with much "Control socket failed to recv(), resetting"
+    # ERROR: test_websocket_perf (calibre.srv.tests.web_sockets.WebSocketTest)
+    # one or two tests are a bit flaky, but the python3 build seems to succeed more often
+    LANG='en_US.UTF-8' xvfb-run env CALIBRE_PY3_PORT=1 python3 setup.py test
+    LANG='en_US.UTF-8' xvfb-run python2 setup.py test
 }
 
 package_calibre-git() {
-  depends+=("${_py_deps[@]/#/python2-}")
-  optdepends+=('ipython2: to use calibre-debug')
-  provides=("${pkgname%-git}")
-  conflicts=("${pkgname%-git}")
+    depends+=("${_py_deps[@]/#/python2-}")
+    optdepends+=('ipython2: to use calibre-debug')
+    provides=("${pkgname%-git}")
+    conflicts=("${pkgname%-git}")
 
-  cd "${srcdir}/${pkgbase%-git}"
+    cd "${srcdir}/${pkgbase%-git}"
 
-  # If this directory don't exist, zsh completion won't install.
-  install -d "${pkgdir}/usr/share/zsh/site-functions"
+    # If this directory don't exist, zsh completion won't install.
+    install -d "${pkgdir}/usr/share/zsh/site-functions"
 
-  LANG='en_US.UTF-8' python2 setup.py install --staging-root="${pkgdir}/usr" \
-      --prefix=/usr
-  rm -r "${pkgdir}"/usr/lib/calibre/calibre/plugins/3/
+    LANG='en_US.UTF-8' python2 setup.py install \
+        --staging-root="${pkgdir}/usr" \
+        --prefix=/usr
+    rm -r "${pkgdir}"/usr/lib/calibre/calibre/plugins/3/
 
-  #cp -a man-pages/ "${pkgdir}/usr/share/man"
+    #cp -a man-pages/ "${pkgdir}/usr/share/man"
 
-  # not needed at runtime
-  rm -r "${pkgdir}"/usr/share/calibre/rapydscript/
+    # not needed at runtime
+    rm -r "${pkgdir}"/usr/share/calibre/rapydscript/
 
-  # Compiling bytecode FS#33392
-  # This is kind of ugly but removes traces of the build root.
-  while read -rd '' _file; do
-    _destdir="$(dirname "${_file#${pkgdir}}")"
-    python2 -m compileall -d "${_destdir}" "${_file}"
-    python2 -O -m compileall -d "${_destdir}" "${_file}"
-  done < <(find "${pkgdir}"/usr/lib/ -name '*.py' -print0)
+    # Compiling bytecode FS#33392
+    # This is kind of ugly but removes traces of the build root.
+    while read -rd '' _file; do
+        _destdir="$(dirname "${_file#${pkgdir}}")"
+        python2 -m compileall -d "${_destdir}" "${_file}"
+        python2 -O -m compileall -d "${_destdir}" "${_file}"
+    done < <(find "${pkgdir}"/usr/lib/ -name '*.py' -print0)
 }
 
 package_calibre-python3-git() {
-  depends+=("${_py3_deps[@]/#/python-}" 'calibre-git')
-  optdepends+=('ipython: to use calibre-debug')
-  provides=("${pkgname%-git}")
-  conflicts=("${pkgname%-git}")
+    depends+=("${_py3_deps[@]/#/python-}" 'calibre-git')
+    optdepends+=('ipython: to use calibre-debug')
+    provides=("${pkgname%-git}")
+    conflicts=("${pkgname%-git}")
 
-  cd "${srcdir}/${pkgbase%-git}"
+    cd "${srcdir}/${pkgbase%-git}"
 
-  LANG='en_US.UTF-8' CALIBRE_PY3_PORT=1 python3 setup.py install \
-    --staging-root="${pkgdir}/usr" \
-    --prefix=/usr \
-    --no-postinstall \
-    --bindir=/opt/calibre-python3 \
-    --staging-bindir="${pkgdir}"/opt/calibre-python3 \
-    --staging-sharedir="${srcdir}"/temp
+    LANG='en_US.UTF-8' CALIBRE_PY3_PORT=1 python3 setup.py install \
+        --staging-root="${pkgdir}/usr" \
+        --prefix=/usr \
+        --no-postinstall \
+        --bindir=/opt/calibre-python3 \
+        --staging-bindir="${pkgdir}"/opt/calibre-python3 \
+        --staging-sharedir="${srcdir}"/temp
 
-  # Compiling bytecode FS#33392
-  # This is kind of ugly but removes traces of the build root.
-  while read -rd '' _file; do
-    _destdir="$(dirname "${_file#${pkgdir}}")"
-    python3 -m compileall -d "${_destdir}" "${_file}"
-    python3 -O -m compileall -d "${_destdir}" "${_file}"
-  done < <(find "${pkgdir}"/usr/lib/ -name '*.py' -print0)
+    # Compiling bytecode FS#33392
+    # This is kind of ugly but removes traces of the build root.
+    while read -rd '' _file; do
+        _destdir="$(dirname "${_file#${pkgdir}}")"
+        python3 -m compileall -d "${_destdir}" "${_file}"
+        python3 -O -m compileall -d "${_destdir}" "${_file}"
+    done < <(find "${pkgdir}"/usr/lib/ -name '*.py' -print0)
 
-  # cleanup overlapping files
-  find "${pkgdir}"/usr/lib/calibre -name '*.py' -delete
-  rm "${pkgdir}"/usr/lib/calibre/calibre/plugins/*.so
+    # cleanup overlapping files
+    find "${pkgdir}"/usr/lib/calibre -name '*.py' -delete
+    rm "${pkgdir}"/usr/lib/calibre/calibre/plugins/*.so
 }
