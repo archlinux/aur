@@ -1,7 +1,6 @@
 # Maintainer: Matthias Lisin <ml@visu.li
-pkgname=vt-cli
-pkgver=0.7.0
-pkgrel=1
+pkgname=vt-cli pkgver=0.7.0
+pkgrel=2
 pkgdesc='VirusTotal Command Line Interface'
 arch=('i686' 'x86_64')
 url='https://github.com/VirusTotal/vt-cli'
@@ -30,5 +29,8 @@ build() {
 
 package() {
     cd "$pkgname-$pkgver"
-    install -Dm755 build/vt "$pkgdir/usr/bin/vt"
+    install -dm755 "$pkgdir"/usr/share/{bash-completion/completions,zsh/site-functions}
+    install -Dm755 build/vt "$pkgdir"/usr/bin/vt
+    build/vt completion bash > "$pkgdir"/usr/share/bash-completion/completions/vt
+    build/vt completion zsh > "$pkgdir"/usr/share/zsh/site-functions/_vt
 }
