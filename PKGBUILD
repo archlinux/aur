@@ -24,14 +24,11 @@ source=(manual://sqldeveloper-$pkgver-no-jre.zip
         oracle-sqldeveloper.sh
         LICENSE
         java_home.patch)
-DLAGENTS+=('manual::/usr/bin/echo The source file for this package needs to be downloaded manually, since it requires a login and is not redistributable.;/usr/bin/echo Please visit http://www.oracle.com/technetwork/developer-tools/sql-developer/downloads/index.html.; exit 1;')
 md5sums=('ec986f454d747b742830284e6cd46fb0'
          '1d17d18e10ab85dead0770e8840273b3'
          '26c1dc933a9ab58a4245f4f351717645'
          '71a4092467209c160d0f34abbc08e049'
          'fe446201cc0d5326ecb757c384c67232')
-# don't compress the package - we're just going to uncompress during install in a moment
-PKGEXT='.pkg.tar'
 
 package() {
   cd "$srcdir/sqldeveloper"
