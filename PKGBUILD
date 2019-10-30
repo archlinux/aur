@@ -1,4 +1,5 @@
-# Maintainer: Joseph R Quinn <quinn period joseph r at protonmail dot com>
+# Packager: Joseph R Quinn <quinn.josephr@protonmail.com>
+# Maintainer: Joseph R Quinn <quinn.josephr@protonmail.com>
 pkgname=php-phalcon-git
 _pkgname=cphalcon
 pkgver=4.0.0.rc.2
