@@ -1,8 +1,8 @@
-# Contributor: BluePeril <blueperil (at) blueperil _dot_ de>
+# Contributor: BluePeril "<blueperil@blueperil.de>"
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-test-www-mechanize-catalyst'
-pkgver='0.60'
+pkgver='0.62'
 pkgrel='1'
 pkgdesc="Test::WWW::Mechanize for Catalyst"
 arch=('any')
@@ -11,10 +11,10 @@ options=('!emptydirs')
 depends=('perl-catalyst-runtime>=0' 'perl-class-load>=0.19' 'perl-moose>=0.67' 'perl-test-www-mechanize>=1.14' 'perl-www-mechanize>=1.54' 'perl-libwww>=0' 'perl-namespace-clean>=0.09' 'perl>=5.8.4')
 makedepends=('perl-catalyst-plugin-session>=0' 'perl-catalyst-plugin-session-state-cookie>=0' 'perl-test-exception>=0' 'perl-test-utf8>=0')
 url='https://metacpan.org/release/Test-WWW-Mechanize-Catalyst'
-source=('http://search.cpan.org/CPAN/authors/id/J/JJ/JJNAPIORK/Test-WWW-Mechanize-Catalyst-0.60.tar.gz')
-md5sums=('ed35bc5fbde82b69f5d05d4f6bdc9a5a')
-sha512sums=('ede9a01d0124ac798d336f813d1380ab8e8a73ff8f436961db44439a8d1c43aa21adbd9d9c538d79040456f7be0451773fd01b46f82307221a17a0d3d7a079a3')
-_distdir="Test-WWW-Mechanize-Catalyst-0.60"
+source=('http://search.cpan.org/CPAN/authors/id/M/MS/MSTROUT/Test-WWW-Mechanize-Catalyst-0.62.tar.gz')
+md5sums=('ca56e1c8cef26ef720e69350fd62b010')
+sha512sums=('06a44d7dd8d4fe9a7a8d793883ca539193785748756610f7db7f131bd6793d3acb7a0f1809c5b0fb91db205c1a5cb84ce4cc50057df5171667b5b699f638c392')
+_distdir="Test-WWW-Mechanize-Catalyst-0.62"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -39,7 +39,6 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
-
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
