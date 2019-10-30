@@ -49,7 +49,7 @@ build() {
       -DVTK_MODULE_USE_EXTERNAL_VTK_libharu=OFF \
       -DVTK_MODULE_ENABLE_VTK_IOADIOS2=NO \
       ..
-    make
+    WINEPATH="/usr/${_arch}/bin;${PWD}/bin" make
     popd
   done
 }
