@@ -6,14 +6,13 @@
 pkgbase=virtualbox-modules-lqx
 pkgname=('virtualbox-host-modules-lqx')
 pkgver=6.0.14
-pkgrel=1
+pkgrel=3
 arch=('x86_64')
 url='http://virtualbox.org'
 license=('GPL')
 makedepends=('linux-lqx-headers' "virtualbox-host-dkms>=$pkgver" 'dkms')
 
-_extramodules=extramodules-lqx
-_kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
+_kernver="$(</usr/src/linux-lqx/version)"
 
 build() {
 	# dkms need modification to be run as user
@@ -27,19 +26,15 @@ build() {
 package_virtualbox-host-modules-lqx() {
 	pkgdesc='Host kernel modules for VirtualBox running under linux-lqx.'
 	provides=("VIRTUALBOX-HOST-MODULES")
-	depends=('linux-lqx>=5.2' 'linux-lqx<5.3')
+	depends=('linux-lqx>=5.3' 'linux-lqx<5.4')
 	
-	cd "dkms/vboxhost/${pkgver}_OSE/$_kernver/$CARCH/module"
-        install -Dt "$pkgdir/usr/lib/modules/$_extramodules" -m644 *
+	cd "/var/lib/dkms/vboxhost/${pkgver}_OSE/$_kernver/$CARCH/module"
+        install -Dt "$pkgdir/usr/lib/modules/$_kernver/extramodules" -m0644 *
 
         # compress each module individually
-        find "$pkgdir" -name '*.ko' -exec gzip -n {} +
+        find "$pkgdir" -name '*.ko' -exec xz -T1 {} +
 	
         # systemd module loading
-        printf "vboxdrv\nvboxpci\nvboxnetadp\nvboxnetflt\n" |
-        install -Dm644 /dev/stdin "$pkgdir/usr/lib/modules-load.d/virtualbox-host-modules-lqx.conf"
+        printf '%s\n' vboxdrv vboxpci vboxnetadp vboxnetflt |
+        install -D -m0644 /dev/stdin "$pkgdir/usr/lib/modules-load.d/$pkgname.conf"
 }
-
-
-
-
