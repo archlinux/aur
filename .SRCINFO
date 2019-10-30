@@ -1,6 +1,6 @@
 pkgbase = linux-lqx
 	pkgver = 5.3.7_1
-	pkgrel = 3
+	pkgrel = 4
 	url = http://liquorix.net/
 	arch = x86_64
 	license = GPL2

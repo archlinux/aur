@@ -59,7 +59,7 @@ _lqxpatchrel=1
 _lqxpatchver=${_lqxpatchname}-${_major}-${_lqxpatchrel}
 pkgbase=linux-lqx
 pkgver=5.3.7_1
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 url="http://liquorix.net/"
 license=('GPL2')
@@ -89,10 +89,6 @@ _kernelname=${pkgbase#linux}
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="@${SOURCE_DATE_EPOCH:-$(date +%s)}"
-
-pkgver() {
-  printf ${_major}.${_minor}_${_patchrel}
-}
 
 prepare() {
     cd $_srcname
