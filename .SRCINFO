@@ -1,12 +1,11 @@
 pkgbase = php-psr
 	pkgdesc = PHP extension providing the accepted PSR interfaces.
 	pkgver = 0.7.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jbboehr/php-psr
 	arch = any
 	license = BSD
-	makedepends = gcc>=4.4
-	depends = php
+	depends = php>=5.5
 	provides = php-psr
 	backup = etc/php/conf.d/psr.ini
 	source = https://github.com/jbboehr/php-psr/archive/v0.7.0.tar.gz
