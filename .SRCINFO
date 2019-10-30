@@ -1,0 +1,23 @@
+pkgbase = python-sbpy
+	pkgdesc = A Python package for small bodies research
+	pkgver = 0.2
+	pkgrel = 1
+	url = http://sbpy.readthedocs.io/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = python-astropy-helpers
+	makedepends = python-sphinx-astropy
+	source = https://files.pythonhosted.org/packages/source/s/sbpy/sbpy-0.2.tar.gz
+	md5sums = 6421c7c58dc473974d1aaf11441a6032
+
+pkgname = python-sbpy
+	depends = python
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-astropy>=1.0
+	optdepends = python-sbpy-doc: Documentation for sbpy
+
+pkgname = python-sbpy-doc
+	pkgdesc = Documentation for Python sbpy module
+
