@@ -1,6 +1,6 @@
 pkgbase = emacs-editorconfig-git
 	pkgdesc = EditorConfig Emacs Plugin
-	pkgver = v0.7.11.r35.e314a7cb6437
+	pkgver = 0.8.1.r4.59c734af576b
 	pkgrel = 1
 	url = http://github.com/editorconfig/editorconfig-emacs
 	install = emacs-editorconfig-git.install
@@ -8,7 +8,7 @@ pkgbase = emacs-editorconfig-git
 	license = GPL3
 	makedepends = git
 	depends = emacs
-	depends = editorconfig-core-c
+	depends = editorconfig-core-c-git
 	provides = emacs-editorconfig
 	source = git+https://github.com/editorconfig/editorconfig-emacs.git
 	md5sums = SKIP
