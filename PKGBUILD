@@ -18,7 +18,7 @@ prepare() {
 
 package() {
     cd $srcdir
-    install -Dm644 ./README $pkgdir/usr/share/doc/plod/PLOD
+    install -Dm644 ./README $pkgdir/usr/share/doc/plod/README
     install -Dm644 ./TODO $pkgdir/usr/share/doc/plod/TODO
     install -Dm644 ./plod.el.* $pkgdir/usr/share/doc/plod/
     install -Dm644 ./plod.man $pkgdir/usr/share/man/man1/plod.1
