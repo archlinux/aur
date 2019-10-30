@@ -5,24 +5,24 @@
 
 pkgname=st
 pkgver=0.8.2
-pkgrel=7
+pkgrel=8
 pkgdesc='A simple virtual terminal emulator for X.'
 arch=('i686' 'x86_64' 'armv7h')
 license=('MIT')
 depends=(libxft)
 makedepends=(libxext ncurses)
 url=https://st.suckless.org
-source=(https://dl.suckless.org/$pkgname/$pkgname-$pkgver.tar.gz)
-sha256sums=('aeb74e10aa11ed364e1bcc635a81a523119093e63befd2f231f8b0705b15bf35')
-_makedir=$pkgname-$pkgver
-_makeopts="--directory=$_makedir"
+source=(https://dl.suckless.org/$pkgname/$pkgname-$pkgver.tar.gz
+        terminfo.patch
+        README.terminfo.rst)
+sha256sums=(aeb74e10aa11ed364e1bcc635a81a523119093e63befd2f231f8b0705b15bf35
+            b282c0b963a24299d02e485af30260d237ca2e8e6b06282d385022c9c10a0950
+            9a1b764cedd3a6288cc6601a3cdce06f4ab993f44de7aea5afd69511c13df7c0)
+_sourcedir=$pkgname-$pkgver
+_makeopts="--directory=$_sourcedir"
 
 prepare() {
-  # Do not install terminfo files, as they conflict with ncurses.
-  sed -r \
-    -e '/^[[:space:]]+tic\>/d' \
-    -e '/^[[:space:]]+@echo .* terminfo/d' \
-    -i $_makedir/Makefile
+  patch --directory="$_sourcedir" --strip=0 < terminfo.patch
 
   # This package provides a mechanism to provide a custom config.h. Multiple
   # configuration states are determined by the presence of two files in
@@ -45,7 +45,7 @@ prepare() {
   abort=
   if [ -e "$BUILDDIR/config.h" ]
   then
-    cp "$BUILDDIR/config.h" "$_makedir"
+    cp "$BUILDDIR/config.h" "$_sourcedir"
   elif [ ! -e "$BUILDDIR/config.def.h" ]
   then
     abort=1
@@ -55,7 +55,7 @@ prepare() {
     msg+='values. Then restart the build process.'
     error "$msg"
   fi
-  cp "$_makedir/config.def.h" "$BUILDDIR"
+  cp "$_sourcedir/config.def.h" "$BUILDDIR"
   test -z "$abort"
 }
 
@@ -69,6 +69,7 @@ package() {
   local licdir="$shrdir/licenses/$pkgname"
   local docdir="$shrdir/doc/$pkgname"
   make $_makeopts PREFIX=/usr DESTDIR="$pkgdir" install
-  install $installopts "$licdir" "$_makedir/LICENSE"
-  install $installopts "$docdir" "$_makedir/README"
+  install $installopts "$licdir" "$_sourcedir/LICENSE"
+  install $installopts "$docdir" "$_sourcedir/README"
+  install $installopts "$docdir" README.terminfo.rst
 }
