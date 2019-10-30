@@ -1,7 +1,8 @@
-# Maintainer: Minzord
+# Maintainer: Frederic Bezies < fredbezies at gmail dot com >
+# Contributor: Minzord
 
 pkgname="aura-git"
-pkgver=2.0.1.r1616.831604b
+pkgver=2.0.2.r1630.7a7f87c
 pkgrel=1
 pkgdesc="A package manager for Arch Linux and its AUR"
 arch=("x86_64")
@@ -15,8 +16,7 @@ conflicts=("aura" "aura-bin")
 replaces=()
 options=("strip")
 source=("${pkgname}"::"git+https://github.com/aurapm/aura.git")
-md5sums=("SKIP")
-
+sha256sums=("SKIP")
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
