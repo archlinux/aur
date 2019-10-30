@@ -1,7 +1,7 @@
 # Maintainer: Jean Lucas <jean@4ray.co>
 
 pkgname=spotify-tui
-pkgver=0.7.5
+pkgver=0.8.0
 pkgrel=1
 pkgdesc='Spotify for the terminal written in Rust'
 arch=(i686 x86_64)
@@ -10,7 +10,7 @@ license=(MIT)
 depends=(openssl)
 makedepends=(cargo)
 source=($pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz)
-sha512sums=('db6add3a242506cc5a5d6088e93450f03f0c0985cb4cd6a3b84c4100e6d23024ee7adb0377ae5725a712fb51b8235e60c1e46cc16f96181b9abeeb441593420a')
+sha512sums=('df4c1089b76c8b303434b8f784fe1cefb254d5cb2e8ec5310016a1d7320f127d207a1179a5eb05bc170bf8c04d4637355d1cf33bad75d869af3e238ea2f4d481')
 
 build() {
   cd $pkgname-$pkgver
