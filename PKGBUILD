@@ -20,17 +20,14 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-gc
-_srcver=5.3.7-arch1
+_srcver=5.3.8-arch1
 pkgver=${_srcver%-*}
 pkgrel=1
 _bmqversion=5.3-r2
 arch=(x86_64)
 url="https://cchalpha.blogspot.co.uk/"
 license=(GPL2)
-makedepends=(
-  xmlto kmod inetutils bc libelf git python-sphinx python-sphinx_rtd_theme
-  graphviz imagemagick
-)
+makedepends=(kmod inetutils bc libelf)
 options=('!strip')
 _srcname=linux-$_srcver
 _bmq_patch="bmq_v${_bmqversion}.patch"
@@ -49,8 +46,8 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('0d029985eeed1f6e5c5977ad09b89008619e642b2ea5f361899e0a7156918882'
-            '8e8c4c37831f3bf326c47a99e0fd4d26fa85adfeb46c68febdec67df8cfcf803'
+sha256sums=('ec2092391717d165faeab20d21789aab2606ddcc1b85cb80003481aa4c9ca6a9'
+            'b7daf52a06cec968741ef36236d567ead53aecb5b21920285ed535a4a55114e1'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
@@ -59,6 +56,9 @@ sha256sums=('0d029985eeed1f6e5c5977ad09b89008619e642b2ea5f361899e0a7156918882'
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-gc}
+export KBUILD_BUILD_HOST=archlinux
+export KBUILD_BUILD_USER=$pkgbase
+export KBUILD_BUILD_TIMESTAMP="@${SOURCE_DATE_EPOCH:-$(date +%s)}"
 
 prepare() {
   cd $_srcname
@@ -131,7 +131,11 @@ _package() {
   msg2 "Installing boot image..."
   # systemd expects to find the kernel here to allow hibernation
   # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
-  install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
+  #install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
+  #
+  # hard-coded path in case user defined CC=xxx for build which causes errors
+  # see this FS https://bugs.archlinux.org/task/64315
+  install -Dm644 arch/x86/boot/bzImage "$modulesdir/vmlinuz"
   install -Dm644 "$modulesdir/vmlinuz" "$pkgdir/boot/vmlinuz-$pkgbase"
 
   msg2 "Installing modules..."
@@ -181,7 +185,8 @@ _package-headers() {
   cd $_srcname
 
   msg2 "Installing build files..."
-  install -Dt "$builddir" -m644 Makefile .config Module.symvers System.map vmlinux
+  install -Dt "$builddir" -m644 .config Makefile Module.symvers System.map \
+    localversion.* ../version vmlinux
   install -Dt "$builddir/kernel" -m644 kernel/Makefile
   install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
   cp -t "$builddir" -a scripts
@@ -191,9 +196,6 @@ _package-headers() {
 
   # add xfs and shmem for aufs building
   mkdir -p "$builddir"/{fs/xfs,mm}
-
-  # ???
-  mkdir "$builddir/.tmp_versions"
 
   msg2 "Installing headers..."
   cp -t "$builddir" -a include
