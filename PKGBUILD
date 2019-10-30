@@ -68,7 +68,7 @@ _srcname=linux-${_major}
 _clr=${_major}.7-853
 pkgbase=linux-clear
 pkgver=${_major}.${_minor}
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux"
 license=('GPL2')
@@ -120,42 +120,44 @@ prepare() {
     ### Enable extra stuff from arch kernel
         msg2 "Enable extra stuff from arch kernel..."
 
-        scripts/config --undefine CONFIG_MODULE_SIG_FORCE \
-                       --enable CONFIG_MODULE_COMPRESS \
-                       --enable-after CONFIG_MODULE_COMPRESS CONFIG_MODULE_COMPRESS_XZ \
-                       --enable CONFIG_DELL_SMBIOS_SMM \
-                       --enable-after CONFIG_SOUND CONFIG_SOUND_OSS_CORE \
-                       --enable CONFIG_SND_OSSEMUL \
-                       --module-after CONFIG_SND_OSSEMUL CONFIG_SND_MIXER_OSS \
-                       --module-after CONFIG_SND_MIXER_OSS CONFIG_SND_PCM_OSS \
-                       --enable-after CONFIG_SND_PCM_OSS CONFIG_SND_PCM_OSS_PLUGINS
+        scripts/config --undefine MODULE_SIG_FORCE \
+                       --enable MODULE_COMPRESS \
+                       --enable-after MODULE_COMPRESS MODULE_COMPRESS_XZ \
+                       --enable DELL_SMBIOS_SMM \
+                       --module IKCONFIG \
+                       --enable-after IKCONFIG IKCONFIG_PROC \
+                       --enable-after SOUND SOUND_OSS_CORE \
+                       --enable SND_OSSEMUL \
+                       --module-after SND_OSSEMUL SND_MIXER_OSS \
+                       --module-after SND_MIXER_OSS SND_PCM_OSS \
+                       --enable-after SND_PCM_OSS SND_PCM_OSS_PLUGINS
 
         # Scheduler features
-        scripts/config --undefine CONFIG_RT_GROUP_SCHED
+        scripts/config --undefine RT_GROUP_SCHED
 
         # Queueing/Scheduling
-        scripts/config --module CONFIG_NET_SCH_CAKE
+        scripts/config --module NET_SCH_CAKE
 
         # PATA SFF controllers with BMDMA
-        scripts/config --module CONFIG_PATA_JMICRON
+        scripts/config --module PATA_JMICRON
 
         # Power management and ACPI options
-        scripts/config --enable CONFIG_ACPI_REV_OVERRIDE_POSSIBLE \
-                       --enable CONFIG_HIBERNATION
+        scripts/config --enable ACPI_REV_OVERRIDE_POSSIBLE \
+                       --enable HIBERNATION
 
         # Console display driver support
-        scripts/config --enable CONFIG_FRAMEBUFFER_CONSOLE_DEFERRED_TAKEOVER
+        scripts/config --enable FRAMEBUFFER_CONSOLE_DEFERRED_TAKEOVER
 
         # Security options
-        scripts/config --enable CONFIG_SECURITY_SELINUX \
-                       --enable-after CONFIG_SECURITY_SELINUX CONFIG_SECURITY_SELINUX_BOOTPARAM \
-                       --enable CONFIG_SECURITY_SMACK \
-                       --enable-after CONFIG_SECURITY_SMACK CONFIG_SECURITY_SMACK_BRINGUP \
-                       --enable-after CONFIG_SECURITY_SMACK_BRINGUP CONFIG_SECURITY_SMACK_NETFILTER \
-                       --enable-after CONFIG_SECURITY_SMACK_NETFILTER CONFIG_SECURITY_SMACK_APPEND_SIGNALS \
-                       --enable CONFIG_SECURITY_TOMOYO \
-                       --enable CONFIG_SECURITY_APPARMOR \
-                       --enable CONFIG_SECURITY_YAMA
+        scripts/config --enable SECURITY_SELINUX \
+                       --enable-after SECURITY_SELINUX SECURITY_SELINUX_BOOTPARAM \
+                       --enable SECURITY_SMACK \
+                       --enable-after SECURITY_SMACK SECURITY_SMACK_BRINGUP \
+                       --enable-after SECURITY_SMACK_BRINGUP SECURITY_SMACK_NETFILTER \
+                       --enable-after SECURITY_SMACK_NETFILTER SECURITY_SMACK_APPEND_SIGNALS \
+                       --enable SECURITY_TOMOYO \
+                       --enable SECURITY_APPARMOR \
+                       --enable SECURITY_YAMA
 
         make olddefconfig
 
