@@ -7,7 +7,7 @@ pkgbase = konica-minolta-bizhub-c554e-series
 	arch = any
 	license = custom:konica minolta commercial license
 	depends = cups
-	source = https://o.cses.konicaminolta.com/file/Default.aspx?FilePath=DL/201408/23080504/BHC554ePPDLinux_300000001MU.zip
+	source = https://www.uibk.ac.at/downloads/th-physik/Driver/bizhubC364e/Linux/BHC554ePPDLinux_300000001MU.zip
 	source = LICENSE
 	sha512sums = 93658a16338faf7efa3720c3c23a2f2e3f6a46f6e7342c08c09f0db26671746af40cb229cd53f22a5ca731753c9588a08e9ff3f8a007f6b6f0023627c4938957
 	sha512sums = 95f5ceb1406e689c840411cef8f7803d9be6829c75a6eb8474ad3a1374ffca68db06cd56cf782578c02b2f7f3b190bb76f99f01e38a18254d7f0a6fbb48159f4
