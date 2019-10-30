@@ -2,7 +2,7 @@
 # Maintainer: Gegrely Imreh <imrehg@gmail.com>
 
 pkgname=balena-engine
-pkgver=18.9.7
+pkgver=18.9.10
 pkgrel=1
 epoch=1
 pkgdesc='A Moby-based container engine for the Internet of Things'
@@ -41,10 +41,14 @@ build() {
 }
 
 package() {
-
-    ### engine
-    for f in "${srcdir}/${pkgname}/bundles/binary-balena/"* ; do
-      install -Dm755 "${f}" -t "${pkgdir}/usr/bin/"
+    # The engine files
+    mkdir -p "${pkgdir}/usr/bin/"
+    for artifact in "${srcdir}/${pkgname}/bundles/binary-balena/"* ; do
+      if [ ! -L "${artifact}" ]; then
+        install -Dm755 "${artifact}" -t "${pkgdir}/usr/bin/"
+      else
+        cp -P "${artifact}" "${pkgdir}/usr/bin/"
+      fi
     done
 
     # systemd
