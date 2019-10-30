@@ -2,15 +2,15 @@
 # See COPYING for license details.
 
 pkgname='blackman'
-pkgver='0.5.7.3'
+pkgver='0.5.13'
 pkgrel=1
 pkgdesc='Emerge for BlackArch Linux - Download and compile packages as emerge does.'
 arch=('any')
 url='https://github.com/BlackArch/blackman'
 license=('GPL')
-source=("https://github.com/BlackArch/blackman/archive/v${pkgver}.tar.gz")
-sha1sums=('08444216ed5b18b786619aedb484923575c74263')
 depends=('git' 'subversion')
+source=("https://github.com/BlackArch/blackman/archive/v${pkgver}.tar.gz")
+sha256sums=('f8502a86733843d2bac7eccbbd107325bfd38ee29210d106370709ffa7654685')
 
 package() {
   cd "$srcdir/blackman-$pkgver"
@@ -18,3 +18,4 @@ package() {
   install -Dm755 blackman "$pkgdir/usr/bin/blackman"
   install -Dm644 -t "$pkgdir/usr/share/doc/blackman/" README.md TODO
 }
+
