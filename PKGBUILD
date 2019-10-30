@@ -1,7 +1,7 @@
 # Maintainer: Gokberk Yaltirakli <aur at gkbrk dot com>
 pkgname=nothing
 _pkgname=nothing
-pkgver=r2505.9945a78
+pkgver=r2509.5053d9c
 pkgrel=1
 epoch=
 pkgdesc="A game about nothing"
@@ -53,7 +53,7 @@ package() {
 
     ls assets/
     install -Dm755 -d "$pkgdir/usr/share/games/nothing"
-    cp -r assets/* "$pkgdir/usr/share/games/nothing"
+    cp -r assets/ "$pkgdir/usr/share/games/nothing"
 
     install -Dm755 "build/nothing" "$pkgdir/usr/lib/games/nothing/nothing"
     install -Dm755 "build/nothing-with-dir" "$pkgdir/usr/bin/nothing"

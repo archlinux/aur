@@ -1,6 +1,6 @@
 pkgbase = nothing
 	pkgdesc = A game about nothing
-	pkgver = r2505.9945a78
+	pkgver = r2509.5053d9c
 	pkgrel = 1
 	url = https://github.com/tsoding/nothing
 	arch = x86_64
