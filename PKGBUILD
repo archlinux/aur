@@ -1,8 +1,8 @@
+# Maintainer: Daniel González Cabanelas <dgcbueu@gmail.com>
 # Contributor: Tudhalyas <tudhalyas_AT_gmail_DOT_com>
-# Contributor: danitool <dgcbueu_AT_gmail_DOT_com>
 
 pkgname=amulegui-upnp
-pkgver=11004
+pkgver=11025
 pkgrel=1
 pkgdesc="Remote GUI for the aMule Daemon, an eMule-like client for the ed2k p2p network"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ makedepends=('crypto++')
 conflicts=('amule' 'amule-svn' 'amule-noupnp-svn' 'amule-noupnp')
 provides=("amulegui=${pkgver}")
 source=(http://amule.sourceforge.net/tarballs/aMule-SVN-r${pkgver}.tar.bz2)
-md5sums=('ae18e08ee4e08034dcc829a2cd7ced3e')
+md5sums=('c16f708e3d6171f670766888ee682d3c')
 
 build() {
   cd ${srcdir}/aMule-SVN-r${pkgver}
