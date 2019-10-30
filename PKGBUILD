@@ -3,7 +3,7 @@
 # You may find it convenient to file issues and pull requests there.
 
 pkgname=gnome-shell-extension-volume-mixer
-pkgver=0.16.0
+pkgver=0.16.1
 pkgrel=1
 pkgdesc="Applet allowing separate configuration of pulseaudio mixers"
 arch=(any)
@@ -47,8 +47,8 @@ package_02_install() {
     -exec install -Dm644 -t "$destdir" '{}' +
 }
 
-package_09_pautils() {
-  cp -r --no-preserve=ownership pautils "$destdir"
+package_09_subdirs() {
+  cp -r --no-preserve=ownership lib pautils "$destdir"
 }
 
 package_10_locale() {
