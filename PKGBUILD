@@ -4,7 +4,7 @@
 
 pkgname=mupdf-git
 _pkgname=mupdf
-pkgver=20191022.39197a149
+pkgver=20181125.b5053c4c
 pkgrel=1
 pkgdesc='Lightweight PDF, XPS, and E-book viewer'
 arch=('i686' 'x86_64' 'armv7h')
@@ -39,6 +39,9 @@ prepare() {
 
 	# embedding CJK fonts into binaries is madness...
 	sed '/TOFU_CJK /c #define TOFU_CJK 1/' -i include/mupdf/fitz/config.h
+
+	# fix memento.h confusion
+	echo 'THIRD_CFLAGS += -I./include/mupdf' >> Makethird
 }
 
 build() {
