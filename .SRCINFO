@@ -1,13 +1,13 @@
 pkgbase = layan-gtk-theme-git
 	pkgdesc = An Flat Gtk+ theme based on Material Design
-	pkgver = 0.0.0.c5cb79f
-	pkgrel = 2
+	pkgver = 0.0.0.493cf28
+	pkgrel = 1
 	url = https://github.com/vinceliuice/Layan-gtk-theme
 	arch = any
 	license = GPL2
 	makedepends = git
-	depends = gtk-engine-murrine
-	depends = gtk-engines
+	optdepends = gtk-engine-murrine
+	optdepends = gtk-engines
 	source = git+https://github.com/vinceliuice/Layan-gtk-theme.git
 	sha256sums = SKIP
 
