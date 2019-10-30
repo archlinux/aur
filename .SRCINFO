@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-volume-mixer
 	pkgdesc = Applet allowing separate configuration of pulseaudio mixers
-	pkgver = 0.17.0
+	pkgver = 0.17.1
 	pkgrel = 1
 	url = https://github.com/aleho/gnome-shell-volume-mixer
 	install = gschemas.install
