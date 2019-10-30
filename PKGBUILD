@@ -1,4 +1,5 @@
 # PACKAGER: wolftankk <wolftankk@gmail.com>
+# Maintainer: Joseph R. Quinn <quinn.josephr@protonmail.com>
 pkgname=php-phalcon
 pkgver=3.4.4
 pkgrel=1
