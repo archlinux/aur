@@ -9,7 +9,7 @@ arch=(x86_64)
 url='https://www.qt.io'
 license=(LGPL)
 pkgdesc='Enables the use of Qt5 APIs in Python applications'
-depends=(python-shiboken2 qt5-base)
+depends=(python-shiboken2 qt5-declarative)
 makedepends=(shiboken2 cmake
              qt5-multimedia qt5-tools qt5-sensors qt5-charts qt5-webengine qt5-datavis3d
              qt5-websockets qt5-speech qt5-3d qt5-svg qt5-script qt5-scxml qt5-x11extras qt5-remoteobjects)
