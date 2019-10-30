@@ -1,0 +1,14 @@
+pkgbase = crypt
+	pkgdesc = A public-domain replacement for the UNIX "crypt" command
+	pkgver = r12.1b95a9d
+	pkgrel = 1
+	url = https://github.com/freebsd/freebsd/tree/master/usr.bin/enigma
+	arch = x86_64
+	license = unknown
+	source = https://raw.githubusercontent.com/freebsd/freebsd/master/usr.bin/enigma/enigma.1
+	source = https://raw.githubusercontent.com/freebsd/freebsd/master/usr.bin/enigma/enigma.c
+	md5sums = d4e4f1de06369065d2b99625d9a5e438
+	md5sums = acc3c6c9e8b7d1f24f19e53c7495b33e
+
+pkgname = crypt
+
