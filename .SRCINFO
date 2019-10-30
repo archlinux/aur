@@ -7,6 +7,7 @@ pkgbase = linuxqq
 	arch = aarch64
 	license = custom
 	depends = gtk2
+	depends = nss
 	source_x86_64 = https://qd.myapp.com/myapp/qqteam/linuxQQ/linuxqq_2.0.0-b1-1024_x86_64.pkg.tar.xz
 	sha512sums_x86_64 = b430ee22c7d32f61982482e24ed47ad249c95ec5ba750b8d7537f880e3780a8513b101061511949245139fe122a582bdce87b784301de85e14593a8b4ad58866
 	source_aarch64 = https://qd.myapp.com/myapp/qqteam/linuxQQ/linuxqq_2.0.0-b1-1024_aarch64.rpm

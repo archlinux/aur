@@ -9,6 +9,7 @@ url='https://im.qq.com/linuxqq/'
 license=('custom')
 depends=(
     'gtk2'
+    'nss'
 )
 source_x86_64=(
     'https://qd.myapp.com/myapp/qqteam/linuxQQ/linuxqq_2.0.0-b1-1024_x86_64.pkg.tar.xz'
