@@ -1,7 +1,5 @@
 # Maintainer: Kyle De'Vir (QuartzDragon) <kyle[dot]devir[at]mykolab[dot]com>
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
-# Contributor: Tobias Powalowski <tpowa@archlinux.org>
-# Contributor: Thomas Baechler <thomas@archlinux.org>
 
 ### BUILD OPTIONS
 # Set these variables to ANYTHING that is not null to enable them
@@ -52,7 +50,7 @@ _subarch=
 
 # Compile ONLY used modules to VASTLY reduce the number of modules built
 # and the build time.
-# 
+#
 # To keep track of which modules are needed for your specific system/hardware,
 # give module_db script a try: https://aur.archlinux.org/packages/modprobed-db
 # This PKGBUILD read the database kept if it exists
@@ -61,11 +59,11 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-bcachefs-git
-_srcver_tag=5.2.21-arch1
-pkgver=5.2.21.arch1.r844571.5e3567bd1f52
+pkgver=5.2.21.arch1.r844589.e96bfb9bc2c1
 pkgrel=1
-arch=(x86_64)
+_srcver_tag=5.2.21-arch1
 url="https://github.com/koverstreet/bcachefs"
+arch=(x86_64)
 license=(GPL2)
 makedepends=(
     xmlto
@@ -73,11 +71,11 @@ makedepends=(
     inetutils
     bc
     libelf
-    git
     python-sphinx
     python-sphinx_rtd_theme
     graphviz
     imagemagick
+    git
 )
 options=('!strip')
 
@@ -94,9 +92,6 @@ source=(
     "git+$_repo_url#branch=master"
     "git+$_repo_url_gcc_patch"
     config         # the main kernel config file
-    60-linux.hook  # pacman hook for depmod
-    90-linux.hook  # pacman hook for initramfs regeneration
-    linux.preset   # standard config files for mkinitcpio ramdisk
 )
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -104,13 +99,11 @@ validpgpkeys=(
 )
 sha512sums=('SKIP'
             'SKIP'
-            'd9519955c66275dbb8a1b056eb799b97387fab4cadb96de3a400cef7ec39f6a3ad0228c6deb24401f4ad65ffb6ed6173b27f453a1edf9c5e2a36c3a46851d4a8'
-            '6b57a66b870b2f525e2dedd8f224b89474fd4ec6ea18484b0a67a1a2b9a4fc95d025cac181504406ea42a35d6c1b184c0d4e38c92815022935fc55746c69c7c1'
-            '2718b58dbbb15063bacb2bde6489e5b3c59afac4c0e0435b97fe720d42c711b6bcba926f67a8687878bd51373c9cf3adb1915a11666d79ccb220bf36e0788ab7'
-            '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf')
+            'd9519955c66275dbb8a1b056eb799b97387fab4cadb96de3a400cef7ec39f6a3ad0228c6deb24401f4ad65ffb6ed6173b27f453a1edf9c5e2a36c3a46851d4a8')
 
-_kernelname=${pkgbase#linux}
-: ${_kernelname:=-ARCH}
+export KBUILD_BUILD_HOST=archlinux
+export KBUILD_BUILD_USER=$pkgbase
+export KBUILD_BUILD_TIMESTAMP="@${SOURCE_DATE_EPOCH:-$(date +%s)}"
 
 pkgver() {
     cd "$_reponame"
@@ -123,7 +116,7 @@ prepare() {
     msg2 "Setting version..."
     scripts/setlocalversion --save-scmversion
     echo "-$pkgrel" > localversion.10-pkgrel
-    echo "$_kernelname" > localversion.20-pkgname
+    echo "${pkgbase#linux}" > localversion.20-pkgname
 
     msg2 "Adding patches from Linux upstream kernel repository..."
     git remote add upstream_stable "https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git" || true
@@ -206,8 +199,6 @@ _package() {
         "linux-firmware: firmware images needed for some devices"
     )
     provides=("$pkgbase=$pkgver")
-    backup=("etc/mkinitcpio.d/$pkgbase.preset")
-    install=linux.install
 
     cd $_reponame 
     local kernver="$(<version)"
@@ -217,7 +208,6 @@ _package() {
     # systemd expects to find the kernel here to allow hibernation
     # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
     install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
-    install -Dm644 "$modulesdir/vmlinuz" "$pkgdir/boot/vmlinuz-$pkgbase"
 
     # Used by mkinitcpio to name the kernel
     echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
@@ -227,25 +217,6 @@ _package() {
 
     # remove build and source links
     rm "$modulesdir"/{source,build}
-
-    msg2 "Installing hooks..."
-    # sed expression for following substitutions
-    local subst="
-        s|%PKGBASE%|$pkgbase|g
-        s|%KERNVER%|$kernver|g
-    "
-
-    # hack to allow specifying an initially nonexisting install file
-    sed "$subst" "$startdir/$install" > "$startdir/$install.pkg"
-    true && install=$install.pkg
-
-    # fill in mkinitcpio preset and pacman hooks
-    sed "$subst" ../linux.preset | install -Dm644 /dev/stdin \
-        "$pkgdir/etc/mkinitcpio.d/$pkgbase.preset"
-    sed "$subst" ../60-linux.hook | install -Dm644 /dev/stdin \
-        "$pkgdir/usr/share/libalpm/hooks/60-$pkgbase.hook"
-    sed "$subst" ../90-linux.hook | install -Dm644 /dev/stdin \
-        "$pkgdir/usr/share/libalpm/hooks/90-$pkgbase.hook"
 
     msg2 "Fixing permissions..."
     chmod -Rc u=rwX,go=rX "$pkgdir"
