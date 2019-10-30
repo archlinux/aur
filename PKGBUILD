@@ -1,16 +1,27 @@
 pkgname=mfcoin-bin
-pkgver=3.0.0
-pkgrel=1
+pkgver=3.0.0.2
+pkgrel=20706322
 provides=('mfcoin' 'mfcoin-daemon')
 conflicts=('mfcoin-cli' 'mfcoin-git' 'mfcoin-cli-git')
-reldate='05.10.19'
 pkgdesc="MFCoin is a digital currency and blockchain service platform."
-arch=('x86_64')    
+arch=('x86_64')
 depends=("libevent>=2.1.8" "qt5-base" "dbus>=1.10.14" "miniupnpc>=2.0.20170509" "expat>=2.2.0" "freetype2>=2.7.1" "protobuf")
+makedepends=('wget' 'jq')
 url="https://mfcoin.net/"
 license=('GPL3')
-source_x86_64=("https://github.com/MFrcoin/MFCoin/releases/download/v.${pkgver}.${pkgrel}/mfcoin-linux.${reldate}.zip")
-sha256sums_x86_64=('852423d7b44c83ffd172386176bf48df5f2d400410cab36315ddbc55844fe004')
+
+_linux(){
+    json=$(wget -O - https://api.github.com/repos/MFrcoin/MFCoin/releases/${pkgrel} 2>/dev/null)
+    assets=$(echo "${json}" | jq '.assets')
+    length=$(echo "${assets}" | jq '. | length')
+    for (( i=0; i <= $length; i++ )); do
+        name=$(echo "${assets}" | jq --raw-output ".[$i].browser_download_url")
+        echo "$name" | grep linux
+    done
+}
+
+source_x86_64=("$(_linux)")
+sha256sums_x86_64=('9fe30f4e2143fc1ffd3060b82c959347f81533fab0836d72ed127d0f57619373')
 
 _link() {
     ln -s /opt/mfcoin/start $pkgdir/usr/bin/mfcoin$1
