@@ -1,4 +1,5 @@
-# Maintainer: Joseph R. Quinn <quinn period josephr at protonmail dot com>
+# Packager: Joseph R. Quinn <quinn.josephr@protonmail.com>
+# Maintainer: Joseph R. Quinn <quinn.josephr@protonmail.com>
 pkgname=nerd-fonts-fira-code
 pkgver=2.0.0
 pkgrel=2
