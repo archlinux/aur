@@ -1,7 +1,7 @@
 pkgbase = nerd-fonts-inconsolata
 	pkgdesc = Patched font Inconsolata from the nerd-fonts library
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ryanoasis/nerd-fonts
 	arch = any
 	groups = nerd-fonts

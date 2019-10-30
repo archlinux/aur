@@ -1,7 +1,8 @@
-# Maintainer: Joseph R. Quinn <quinn period josephr at protonmail dot com>
+# Packager: Joseph R. Quinn <quinn.josephr@protonmail.com>
+# Maintainer: Joseph R. Quinn <quinn.josephr@protonmail.com>
 pkgname=nerd-fonts-inconsolata
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Patched font Inconsolata from the nerd-fonts library"
 arch=("any")
 url="https://github.com/ryanoasis/nerd-fonts"
