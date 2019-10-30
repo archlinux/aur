@@ -1,6 +1,6 @@
 # Maintainer: bronson mathews <bronsonmathews@gmail.com> -> http://bit-shift.io -> https://github.com/bit-shift-io
 pkgname=audiobook-git
-pkgver=r25.5be3f94
+pkgver=r33.5d6696b
 pkgrel=1
 pkgdesc="A simple audio book reader. Written in Qt and C++."
 arch=('x86_64')
@@ -21,7 +21,7 @@ build() {
   cd "${pkgname}"
   mkdir -p build
   cd "${srcdir}/${pkgname}/build"
-  qmake ../audiobook.pro -r CONFIG+=release PREFIX=/usr 
+  cmake .. -DCMAKE_INSTALL_PREFIX=../install
   make
 }
 
