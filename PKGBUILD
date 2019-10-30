@@ -3,7 +3,7 @@
 pkgname=php-phalcon-git
 _pkgname=cphalcon
 pkgver=4.0.0.rc.2
-pkgrel=1
+pkgrel=2
 pkgdesc="High performance, full-stack PHP framework delivered as a C extension. Git package."
 arch=('i686' 'x86_64')
 url="https://phalcon.io/"
