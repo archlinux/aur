@@ -1,9 +1,9 @@
-#Maintainer: Aleksandr Grehov <alewmoose@gmail.com>
-#Contributor: Aleksandr Grehov
+#Maintainer: Frederic Bezies <fredbezies at gmail dot com>
+#Contributor: Aleksandr Grehov <alewmosse@gmail.com>
 
 _pkgname='2048term'
 pkgname="${_pkgname}-git"
-pkgver=20181213.00a8ee1
+pkgver=20190609.8453a88
 pkgrel=1
 pkgdesc='Console version of the game "2048"'
 url='https://github.com/alewmoose/2048-in-terminal.git'
@@ -33,6 +33,6 @@ check() {
 
 package() {
 	cd "${srcdir}/${_pkgname}"
-	install -Dm755 build/2048-in-terminal "${pkgdir}/usr/bin/2048t"
-	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm755 _build/2048-in-terminal "${pkgdir}/usr/bin/2048t"
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
