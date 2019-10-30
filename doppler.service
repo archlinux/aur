@@ -1,0 +1,11 @@
+[Unit]
+Description=Doppler Monitoring Service
+
+[Service]
+User=doppler
+Group=doppler
+Type=simple
+ExecStart=/usr/bin/doppler
+
+[Install]
+WantedBy=default.target

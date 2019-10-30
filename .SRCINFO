@@ -1,0 +1,18 @@
+pkgbase = doppler-bin
+	pkgdesc = A zero configuration remote monitoring tool designed to be better than nothing
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/EnKrypt/Doppler
+	arch = any
+	license = GPL3
+	provides = doppler
+	options = !strip
+	source = https://github.com/EnKrypt/Doppler/releases/download/v0.1.0/doppler-0.1.0-linux-x64
+	source = doppler.sysusers
+	source = doppler.service
+	md5sums = 571e0cfe6aea949544e231af8cfdda14
+	md5sums = 76c5b7b4441aa65df739eea82487f830
+	md5sums = 8bf035f980c6424235f1dfa123fa9930
+
+pkgname = doppler-bin
+
