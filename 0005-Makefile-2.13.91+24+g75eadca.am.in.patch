@@ -1,0 +1,24 @@
+From 53ae12f285b2a7fa019939ef35265034643d5443 Mon Sep 17 00:00:00 2001
+From: Solomon Choina <shlomochoina@gmail.com>
+Date: Wed, 29 May 2019 14:28:17 -0400
+Subject: [PATCH 5/5] Makefile-20190328.am
+
+---
+ Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index cc3024e..da0cc8e 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -23,7 +23,7 @@
+
+ SUBDIRS=fontconfig fc-case fc-lang src \
+ 	fc-cache fc-cat fc-conflist fc-list fc-match \
+-	fc-pattern fc-query fc-scan fc-validate conf.d \
++	fc-pattern fc-query fc-scan fc-validate conf.d conf.d.infinality \
+ 	its po po-conf test
+ if ENABLE_DOCS
+ SUBDIRS += doc
+--
+2.21.0

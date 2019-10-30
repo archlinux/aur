@@ -1,7 +1,7 @@
 pkgbase = fontconfig-infinality-remix
 	pkgdesc = A library for configuring and customizing font access, optimized for Infinality Remix.
-	pkgver = 2.13.1
-	pkgrel = 2
+	pkgver = 2.13.91+24+g75eadca
+	pkgrel = 1
 	url = http://www.fontconfig.org/release/
 	install = fontconfig-infinality-remix.install
 	arch = i686
@@ -15,8 +15,7 @@ pkgbase = fontconfig-infinality-remix
 	makedepends = git
 	depends = expat
 	depends = freetype2
-	provides = fontconfig=$pkgver
-	provides = fontconfig-infinality-remix
+	provides = fontconfig=2.13.91+24+g75eadca
 	conflicts = fontconfig
 	conflicts = fontconfig-infinality
 	conflicts = fontconfig-infinality-git
@@ -33,24 +32,24 @@ pkgbase = fontconfig-infinality-remix
 	backup = etc/fonts/conf.avail.infinality/35-repl-custom.conf
 	backup = etc/fonts/conf.avail.infinality/38-repl-webfonts-custom.conf
 	backup = etc/fonts/conf.avail.infinality/97-selective-rendering-custom.conf
-	source = git+https://anongit.freedesktop.org/git/fontconfig#tag=2.13.1
-	source = fontconfig-infinality-remix-srcs-2.13.1.tar.bz2
+	source = git+https://anongit.freedesktop.org/git/fontconfig#commit=75eadca26648abf69497691ff0f4c7803b9ff23c
+	source = fontconfig-infinality-remix-srcs-20191030.tar.bz2
 	source = fc-presets
 	source = fc-cache-infinality-remix.hook
-	source = 0001-configure-2.13.1.patch
-	source = 0002-configure-2.13.1.ac.patch
-	source = 0003-Makefile-2.13.1.in.patch
-	source = 0004-Makefile-2.13.1.conf.d.patch
-	source = 0005-Makefile-2.13.1.am.in.patch
+	source = 0001-configure-2.13.91+24+g75eadca.patch
+	source = 0002-configure-2.13.91+24+g75eadca.ac.patch
+	source = 0003-Makefile-2.13.91+24+g75eadca.in.patch
+	source = 0004-Makefile-2.13.91+24+g75eadca.conf.d.patch
+	source = 0005-Makefile-2.13.91+24+g75eadca.am.in.patch
 	sha256sums = SKIP
 	sha256sums = f8c49b4ee86ad64b1d3df700a5c0b337e44f507bb7e7d264eb5eaf0040998ef2
 	sha256sums = c291f3849369106c5005155b5b099459c86baf455cea0e080a76a3fdf8a8f4b7
 	sha256sums = 94e7b03a32304604be2cf5568c02805ea1ac45eb68104de400ae7f370e3e598b
-	sha256sums = 7a0597c3a926176b5c844aa15f3fc98007398eb24db336b059c30f1cec8510cf
-	sha256sums = ba8815b38d5d6e307d2107966c8b2ce0d2d48212ab99b55a56c6d66621b705ce
-	sha256sums = 039f53ede54db124ab55bf084c22359bf31e667e18e0abf660ce4b450610ae49
-	sha256sums = 6d1296fa0d86b95b41017e0c424c1cffea85606edaf80ed5e1d52b1d21486e5d
-	sha256sums = 61d6c1ecd4516a4b836c0dea3e0f70a4703ca326ffc830e9c135f907c464cfae
+	sha256sums = 45a1ea897f0c7687f4ba1d2c200b17145cc5246e4a82eaa33e09d1b843030cb7
+	sha256sums = 006a14e00017736813002034996b024bb7133bd3eeda6b7f74e4c2880b64031d
+	sha256sums = 7dfc5ba9b20e0326e6a3a880f18d58a7ed31f7af025627670f210ec109be1a81
+	sha256sums = fd3487482109874d21c0e537284920392f93c4362b70a765de376c66654edec6
+	sha256sums = f989fce1a1537f6e9ad42b8a2d1bb87a451af6b4fb80f9281f8773985ce85627
 
 pkgname = fontconfig-infinality-remix
 

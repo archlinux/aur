@@ -1,0 +1,62 @@
+--- a/conf.d/Makefile.am	2019-10-30 16:02:58.939228041 -0400
++++ b/conf.d/Makefile.am	2019-10-30 16:09:44.696215561 -0400
+@@ -23,30 +23,11 @@
+ 
+ NULL =
+ BUILT_SOURCES = 		\
+-	README			\
+ 	35-lang-normalize.conf	\
+ 	$(NULL)
+-DOC_SOURCES = README.in
+ DOC_FILES = $(DOC_SOURCES:.in=)
+ 
+-CONF_LINKS = \
+-	10-hinting-$(PREFERRED_HINTING).conf	\
+-	10-scale-bitmap-fonts.conf \
+-	20-unhint-small-vera.conf \
+-	30-metric-aliases.conf \
+-	40-nonlatin.conf \
+-	45-generic.conf \
+-	45-latin.conf \
+-	49-sansserif.conf \
+-	50-user.conf \
+-	51-local.conf \
+-	60-generic.conf \
+-	60-latin.conf \
+-	65-fonts-persian.conf \
+-	65-nonlatin.conf \
+-	69-unifont.conf \
+-	80-delicious.conf \
+-	90-synthetic.conf
++CONF_LINKS =
+ 
+ EXTRA_DIST = $(template_DATA) $(DOC_SOURCES)
+ CLEANFILES = $(DOC_FILES)
+@@ -94,27 +75,7 @@
+ 	80-delicious.conf		\
+ 	90-synthetic.conf
+ 
+-README: $(srcdir)/README.in
+-	sed "s|\@TEMPLATEDIR\@|$(templatedir)|" $< > $@
+-
+ 35-lang-normalize.conf: ../fc-lang/Makefile.am
+ 	cd ../fc-lang && $(MAKE) $(AM_MAKEFLAGS) $(top_builddir)/conf.d/35-lang-normalize.conf
+ 
+-install-data-hook:
+-	mkdir -p $(DESTDIR)$(configdir)
+-	@(echo cd $(DESTDIR)$(configdir);			\
+-	  cd $(DESTDIR)$(configdir);				\
+-	  for i in $(CONF_LINKS); do				\
+-	    echo $(RM) $$i";" ln -s $(templatedir)/$$i .;	\
+-	    $(RM) $$i;						\
+-	    ln -s $(templatedir)/$$i .;				\
+-	  done)
+-uninstall-local:
+-	@(echo cd $(DESTDIR)$(configdir);			\
+-	  cd $(DESTDIR)$(configdir);				\
+-	  for i in $(CONF_LINKS); do				\
+-	    echo $(RM) $$i;					\
+-	    $(RM) $$i;						\
+-	  done)
+-
+ -include $(top_srcdir)/git.mk

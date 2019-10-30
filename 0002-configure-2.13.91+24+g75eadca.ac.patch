@@ -1,7 +1,18 @@
---- a/configure.ac	2016-04-06 14:05:36.000000000 +0200
-+++ b/configure.ac	2016-04-10 05:01:11.577597555 +0200
-@@ -524,9 +524,14 @@ AC_SUBST(FC_FONTDATE)
- 
+From f7d8de65f0c8328bb3f4f1e1ad3de2ba0ad9929c Mon Sep 17 00:00:00 2001
+From: Solomon Choina <shlomochoina@gmail.com>
+Date: Wed, 29 May 2019 15:51:56 -0400
+Subject: [PATCH] configure-20190328.ac
+
+---
+ configure.ac | 17 ++++++++++++++++-
+ 1 file changed, 16 insertions(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index fb8af46..1db2c1d 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -620,9 +620,14 @@ AC_SUBST(FC_FONTDATE)
+
  AC_ARG_WITH(templatedir,
  	[AC_HELP_STRING([--with-templatedir=DIR],
 -			[Use DIR to store the configuration template files [default=DATADIR/fontconfig/conf.avail]])],
@@ -16,7 +27,7 @@
  AC_ARG_WITH(baseconfigdir,
  	[AC_HELP_STRING([--with-baseconfigdir=DIR],
  			[Use DIR to store the base configuration files [default=SYSCONFDIR/fonts]])],
-@@ -550,6 +555,13 @@ no|yes)
+@@ -646,6 +651,13 @@ no|yes)
  *)
  	;;
  esac
@@ -30,9 +41,9 @@
  case "$baseconfigdir" in
  no|yes)
  	baseconfigdir='${sysconfdir}'/fonts
-@@ -573,10 +585,12 @@ no|yes)
+@@ -669,10 +681,12 @@ no|yes)
  esac
- 
+
  TEMPLATEDIR=${templatedir}
 +TEMPLATEINFDIR=${templateinfdir}
  BASECONFIGDIR=${baseconfigdir}
@@ -43,11 +54,13 @@
  AC_SUBST(BASECONFIGDIR)
  AC_SUBST(CONFIGDIR)
  AC_SUBST(XMLDIR)
-@@ -706,6 +720,7 @@ fc-blanks/Makefile
+@@ -800,6 +814,7 @@ fc-lang/Makefile
  fc-case/Makefile
  src/Makefile
  conf.d/Makefile
 +conf.d.infinality/Makefile
  fc-cache/Makefile
  fc-cat/Makefile
- fc-list/Makefile
+ fc-conflist/Makefile
+--
+2.21.0

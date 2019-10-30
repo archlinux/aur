@@ -6,8 +6,8 @@ _basename=fontconfig
 pkgdesc="A library for configuring and customizing font access, optimized for Infinality Remix."
 url='http://www.fontconfig.org/release/'
 license=('custom' 'MIT')
-pkgver=2.13.1
-pkgrel=2
+pkgver=2.13.91+24+g75eadca
+pkgrel=1
 arch=(i686 x86_64)
 groups=('infinality-remix')
 
@@ -15,7 +15,7 @@ depends=('expat' 'freetype2')
 makedepends=('gperf' 'python-lxml' 'python-six' 'git')
 options=('libtool')
 
-provides=('fontconfig=$pkgver' 'fontconfig-infinality-remix')
+provides=("fontconfig=$pkgver")
 
 conflicts=('fontconfig'
             'fontconfig-infinality'
@@ -36,8 +36,14 @@ backup=('etc/fonts/fonts.conf'
 
 install=fontconfig-infinality-remix.install
 
-source=("git+https://anongit.freedesktop.org/git/fontconfig#tag=${pkgver}"
-        fontconfig-infinality-remix-srcs-${pkgver}.tar.bz2
+# Arch official upstream version commit
+_commit=75eadca26648abf69497691ff0f4c7803b9ff23c
+
+# Infinality Remix fontconfig configuration version
+_remixver=20191030
+
+source=("git+https://anongit.freedesktop.org/git/fontconfig#commit=$_commit"
+        fontconfig-infinality-remix-srcs-${_remixver}.tar.bz2
         fc-presets
         fc-cache-infinality-remix.hook
         0001-configure-${pkgver}.patch
@@ -50,22 +56,25 @@ sha256sums=('SKIP'
             'f8c49b4ee86ad64b1d3df700a5c0b337e44f507bb7e7d264eb5eaf0040998ef2'
             'c291f3849369106c5005155b5b099459c86baf455cea0e080a76a3fdf8a8f4b7'
             '94e7b03a32304604be2cf5568c02805ea1ac45eb68104de400ae7f370e3e598b'
-            '7a0597c3a926176b5c844aa15f3fc98007398eb24db336b059c30f1cec8510cf'
-            'ba8815b38d5d6e307d2107966c8b2ce0d2d48212ab99b55a56c6d66621b705ce'
-            '039f53ede54db124ab55bf084c22359bf31e667e18e0abf660ce4b450610ae49'
-            '6d1296fa0d86b95b41017e0c424c1cffea85606edaf80ed5e1d52b1d21486e5d'
-            '61d6c1ecd4516a4b836c0dea3e0f70a4703ca326ffc830e9c135f907c464cfae')
+            '45a1ea897f0c7687f4ba1d2c200b17145cc5246e4a82eaa33e09d1b843030cb7'
+            '006a14e00017736813002034996b024bb7133bd3eeda6b7f74e4c2880b64031d'
+            '7dfc5ba9b20e0326e6a3a880f18d58a7ed31f7af025627670f210ec109be1a81'
+            'fd3487482109874d21c0e537284920392f93c4362b70a765de376c66654edec6'
+            'f989fce1a1537f6e9ad42b8a2d1bb87a451af6b4fb80f9281f8773985ce85627')
+
+pkgver() {
+    cd fontconfig
+    git describe --tags | sed 's/-/+/g'
+}
 
 # a nice page to test font matching:
 # http://zipcon.net/~swhite/docs/computers/browsers/fonttest.html
 prepare() {
-
     patches=(0001-configure-${pkgver}.patch
             0002-configure-${pkgver}.ac.patch
             0003-Makefile-${pkgver}.in.patch
             0004-Makefile-${pkgver}.conf.d.patch
-            0005-Makefile-${pkgver}.am.in.patch
-            )
+            0005-Makefile-${pkgver}.am.in.patch)
 
     # Copy the Infinality font configuration.
     cd "${_basename}-infinality-remix-srcs"
@@ -88,14 +97,14 @@ build() {
     cd "${_basename}"
 
     ./configure --prefix=/usr \
-    --sysconfdir=/etc \
-    --with-templatedir=/etc/fonts/conf.avail \
-    --with-templateinfdir=/etc/fonts/conf.avail.infinality \
-    --with-xmldir=/etc/fonts \
-    --localstatedir=/var \
-    --disable-static \
-    --with-default-fonts=/usr/share/fonts \
-    --with-add-fonts=/usr/share/fonts
+        --sysconfdir=/etc \
+        --with-templatedir=/etc/fonts/conf.avail \
+        --with-templateinfdir=/etc/fonts/conf.avail.infinality \
+        --with-xmldir=/etc/fonts \
+        --localstatedir=/var \
+        --disable-static \
+        --with-default-fonts=/usr/share/fonts \
+        --with-add-fonts=/usr/share/fonts
     make
 }
 
@@ -117,7 +126,7 @@ package() {
 
     # ALPM/Pacman hook
     install -D -m 644 "${srcdir}"/fc-cache-infinality-remix.hook \
-    "${pkgdir}/usr/share/libalpm/hooks/90-fc-cache-infinality-remix.hook"
+        "${pkgdir}/usr/share/libalpm/hooks/90-fc-cache-infinality-remix.hook"
 
     # Switch to Infinality Remix sources
     cd "${srcdir}"/"${_basename}-infinality-remix-srcs"
