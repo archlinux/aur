@@ -9,7 +9,7 @@ pkgname=(yaru-sound-theme-git
          yaru-icon-theme-git
          yaru-session-git)
 pkgver=19.10.4.r34.g2d2cf90a
-pkgrel=2
+pkgrel=3
 pkgdesc="Yaru default ubuntu theme"
 arch=(any)
 url="https://github.com/ubuntu/yaru"
@@ -38,12 +38,14 @@ _delete_all_from_pkgdir_except() {
     fi
     if [[ "$1" != "gnome-shell-theme" ]]; then
         rm -r "${pkgdir}"/usr/share/themes/Yaru{,-dark}/gnome-shell
+        rm -r "${pkgdir}"/usr/share/gnome-shell/theme/Yaru
     fi
     if [[ "$1" != "icon-theme" ]]; then
         rm -r "${pkgdir}"/usr/share/icons
     fi
     if [[ "$1" != "session" ]]; then
-        rm -r "${pkgdir}"/usr/share/{gnome-shell,glib-2.0,xsessions,wayland-sessions}
+        rm -r "${pkgdir}"/usr/share/{glib-2.0,xsessions,wayland-sessions}
+        rm -r "${pkgdir}"/usr/share/gnome-shell/{extensions,modes}
     fi
     # Delete remaining empty directories:
     find "${pkgdir}" -type d -empty -delete
