@@ -2,7 +2,7 @@
 
 pkgname="emojicode"
 pkgver=1.0.beta.1
-pkgrel=4
+pkgrel=5
 pkgdesc="An open-source, full-blown programming language consisting of emojis"
 arch=('i686' 'x86_64')
 url="https://emojicode.org"
@@ -27,11 +27,12 @@ optdepends=(
 )
 
 # FIXME: versioning after stable
-source=("${pkgname}::git+https://github.com/emojicode/emojicode#tag=v1.0-beta.1")
-md5sums=("SKIP")
+source=("${pkgname}-${pkgver}::https://github.com/emojicode/emojicode/archive/v1.0-beta.1.tar.gz")
+sha1sums=('7618540dcb6af03604fb6afce24fa4ad7248888b')
 
 build() {
-    cd "${srcdir}/${pkgname}"
+    # e
+    cd "${srcdir}/${pkgname}-1.0-beta.1"
 
     # ugh
     sed -i 's/8.0/9.0/' Compiler/CMakeLists.txt
@@ -49,15 +50,15 @@ check() {
     echo
 
     if [[ "$runchecks" == y* ]] || [[ "$runchecks" == Y* ]]; then
-        cd "${srcdir}/${pkgname}/build"
+        # e
+        cd "${srcdir}/${pkgname}-1.0-beta.1/build"
         ninja tests
     fi
 }
 
 package() {
-    cd "${srcdir}/${pkgname}"
-
-    cd "${srcdir}/${pkgname}/build"
+    # e
+    cd "${srcdir}/${pkgname}-1.0-beta.1/build"
     ninja dist
 
     # FIXME: versioning ugh

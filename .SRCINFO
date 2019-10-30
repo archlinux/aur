@@ -1,7 +1,7 @@
 pkgbase = emojicode
 	pkgdesc = An open-source, full-blown programming language consisting of emojis
 	pkgver = 1.0.beta.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://emojicode.org
 	arch = i686
 	arch = x86_64
@@ -16,8 +16,8 @@ pkgbase = emojicode
 	depends = zlib
 	optdepends = yarn: for package support and allegro
 	optdepends = allegro: for graphics support
-	source = emojicode::git+https://github.com/emojicode/emojicode#tag=v1.0-beta.1
-	md5sums = SKIP
+	source = https://github.com/emojicode/emojicode/archive/v1.0-beta.1.tar.gz
+	sha1sums = 7618540dcb6af03604fb6afce24fa4ad7248888b
 
 pkgname = emojicode
 
