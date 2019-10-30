@@ -2,7 +2,7 @@
 
 pkgname="omnetpp"
 pkgver=5.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Component-based simulation package designed for modeling communication networks"
 url="http://www.omnetpp.org"
 license=("Academic Public License")
@@ -19,7 +19,7 @@ DLAGENTS=(
   "https::/usr/bin/wget --no-check-certificate -c -r -np -nd -H --referer https://omnetpp.org/ %u"
 )
 source=(
-    omnetpp-5.5.1-src-linux.tgz::"https://github-production-release-asset-2e65be.s3.amazonaws.com/160219599/1e3e8680-8e9b-11e9-9a06-2686953eb5ba?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20191029%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20191029T102522Z&X-Amz-Expires=300&X-Amz-Signature=c6c6bc9324e0596fc98a3f11ade4ace8f78a81363b4ddb8638304ad90115f887&X-Amz-SignedHeaders=host&actor_id=5963437&response-content-disposition=attachment%3B%20filename%3Domnetpp-5.5.1-src-linux.tgz"
+    omnetpp-5.5.1-src-linux.tgz::"https://github.com/omnetpp/omnetpp/releases/download/omnetpp-5.5.1/omnetpp-5.5.1-src-linux.tgz"
     OMNeT++.desktop
     )
 md5sums=('f7abe260ff47ec02a665e287c653db86'
@@ -61,7 +61,7 @@ package() {
 	install -d ${pkgdir}/usr/share/omnetpp/{images,doc,samples}
 	cp -R images/* ${pkgdir}/usr/share/omnetpp/images
 	cp -R doc/* ${pkgdir}/usr/share/omnetpp/doc
-	cp -R samples/* ${pkgdir}/usr/share/omnetpp/samples
+	cp -R samples/* ${pkgdir}/opt/omnetpp
 
 	install -d ${pkgdir}/usr/share/emacs/site-lisp
 	install -m644 misc/emacs/ned-mode.el ${pkgdir}/usr/share/emacs/site-lisp
