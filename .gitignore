@@ -1,0 +1,8 @@
+*p4v
+*p4v.asc
+
+src/
+pkg
+
+p4v-*.tar.*
+p4v-*.tgz
