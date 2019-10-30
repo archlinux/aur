@@ -1,7 +1,8 @@
-# Maintainer: Joseph Quinn <quinn period joseph r at protonmail dot com>
+# Packager: Joseph R. Quinn <quinn.josephr@protonmail.com>
+# Maintainer: Joseph R. Quinn <quinn.josephr@protonmail.com>
 pkgname=php-phalcon3
 pkgver=3.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Web framework delivered as a C-extension for PHP. 3.x version line."
 arch=('i686' 'x86_64')
 url="http://phalconphp.com"

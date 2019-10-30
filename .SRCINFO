@@ -1,7 +1,7 @@
 pkgbase = php-phalcon3
 	pkgdesc = Web framework delivered as a C-extension for PHP. 3.x version line.
 	pkgver = 3.4.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://phalconphp.com
 	arch = i686
 	arch = x86_64
