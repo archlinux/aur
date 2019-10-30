@@ -52,7 +52,7 @@ diff --git a/./src/PanelWindow.vala b/./src/PanelWindow.vala
 index 162c54a..e06472f 100644
 --- a/./src/PanelWindow.vala
 +++ b/./src/PanelWindow.vala
-@@ -29,6 +29,13 @@ public class Wingpanel.PanelWindow : Gtk.Window {
+@@ -29,6 +29,14 @@ public class Wingpanel.PanelWindow : Gtk.Window {
      private int panel_height;
      private bool expanded = false;
      private int panel_displacement;
@@ -60,20 +60,19 @@ index 162c54a..e06472f 100644
 +    private uint timeout;
 +    private bool hiding = false;
 +    private bool delay = false;
-+    private string autohide = "Disabled";
-+    private int autohide_delay = 200;
++    private static GLib.Settings panel_settings = new GLib.Settings ("io.elementary.desktop.wingpanel");
++    private string autohide_mode = panel_settings.get_string ("autohide");
++    private int autohide_delay = panel_settings.get_int ("delay");
 +    private Wnck.Screen wnck_screen = Wnck.Screen.get_default ();
 
      public PanelWindow (Gtk.Application application) {
          Object (
-@@ -70,16 +77,67 @@ public class Wingpanel.PanelWindow : Gtk.Window {
+@@ -70,16 +77,65 @@ public class Wingpanel.PanelWindow : Gtk.Window {
          application.add_accelerator ("<Control>Tab", "app.cycle", null);
          application.add_accelerator ("<Control><Shift>Tab", "app.cycle-back", null);
 
-+        var panel_settings = new GLib.Settings ("io.elementary.desktop.wingpanel");
-+
 +        panel_settings.changed["autohide"].connect (() => {
-+            autohide = panel_settings.get_string ("autohide");
++            autohide_mode = panel_settings.get_string ("autohide");
 +            update_autohide_mode ();
 +        });
 +
@@ -102,9 +101,9 @@ index 162c54a..e06472f 100644
 +            }
 +            panel_displacement++;
 +        } else {
-+            if (panel_displacement <= panel_height * (-1)) {
++            if (panel_displacement <= panel_height * -1) {
 +                timeout = 0;
-+                switch (autohide) {
++                switch (autohide_mode) {
 +                    case "Autohide":
 +                        update_struts ();
 +                        this.leave_notify_event.connect (hide_panel);
@@ -138,11 +137,13 @@ index 162c54a..e06472f 100644
          update_panel_dimensions ();
 
          return true;
-@@ -90,7 +146,128 @@ public class Wingpanel.PanelWindow : Gtk.Window {
+@@ -90,7 +146,130 @@ public class Wingpanel.PanelWindow : Gtk.Window {
 
          Services.BackgroundManager.initialize (this.monitor_number, panel_height);
 
 -        Timeout.add (300 / panel_height, animation_step);
++        panel_displacement--;
++        update_panel_dimensions ();
 +        update_autohide_mode ();
 +    }
 +
@@ -223,7 +224,7 @@ index 162c54a..e06472f 100644
 +        this.enter_notify_event.disconnect (show_panel);
 +        this.motion_notify_event.disconnect (show_panel);
 +        hiding = false;
-+        if (autohide != "Disabled") {
++        if (autohide_mode != "Disabled") {
 +            if (delay) {
 +                Thread.usleep (autohide_delay * 1000);
 +            }
@@ -235,7 +236,7 @@ index 162c54a..e06472f 100644
 +    }
 +
 +    private void update_autohide_mode () {
-+        switch (autohide) {
++        switch (autohide_mode) {
 +            case "Autohide":
 +            case "Float":
 +                delay = true;

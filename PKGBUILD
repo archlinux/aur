@@ -2,15 +2,15 @@
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=wingpanel-standalone-git
-pkgver=r413.b6811e8
+pkgver=r419.1df4fc3
 pkgrel=1
 pkgdesc='Stylish top panel that holds indicators and spawns an application launcher (without Gala dependencies)'
 arch=('i686' 'x86_64')
 url='https://github.com/elementary/wingpanel'
 license=('GPL3')
 groups=('pantheon-qq')
-depends=(lib{gee,granite.so,wnck3} 'cogl')
-makedepends=('meson' 'git' 'vala')
+depends=(lib{gee,wnck3} 'cogl')
+makedepends=('meson' 'libgranite.so' 'git' 'vala')
 optdepends=("pantheon-applications-menu-git: Application launcher"
             wingpanel-indicator-{a11y,bluetooth,datetime,keyboard,network,notifications,power,session,sensors,sound}-git": Tray applet"
             wingpanel-indicator-{ayatana,namarupa}-git": Display Unity 7 tray applets"
@@ -26,9 +26,9 @@ source=('git+https://github.com/elementary/wingpanel.git'
         'autohide.patch'
         'reverse-105c1d0.patch')
 sha256sums=('SKIP'
-            'ab49041873724b299131e6d6f59ff20cbfd1c48b9cd61bbac4ab16cc005d0f1a'
+            '7131827bd4ea454eecc389f372450a9f1a795ead12b91ab629324b9efc5cfb04'
             'aa0a27e41df60a7b15e2fd7e0d06551663b98917b7632e4067e6b9a39407de1c'
-            '1d5ccfa659b0e63637a8a84adbbf1fb104a3f9ca565755f13ec89ed7e9073384'
+            'f1ebada8f241bb714007470f99c0e7a3b1a9dda35b7d2996644b493b93ab1243'
             '53bfa2220d14065ca848c36217abe812685c7d6e0d42251423d0faa2a0ac5394')
 
 pkgver() {
