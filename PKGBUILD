@@ -1,8 +1,8 @@
 #Original author: Jason Ferrara <jason.ferrara [at] jacquette.com>
-#Maintainer: Kirill Gagarski <gagarin.gtn [at] gmail.com>
+#Maintainer: Kirill Gagarski <kirill.gagarski [at] gmail.com>
 pkgname=jmtpfs-git
 pkgver=v0.5
-pkgrel=2
+pkgrel=3
 license=('GPL')
 pkgdesc="mtpfs with better support for Android"
 arch=('x86_64')
