@@ -2,7 +2,7 @@
 
 pkgname=wireguard-hardened
 pkgver=0.0.20191012
-pkgrel=2
+pkgrel=3
 pkgdesc='Wireguard module for Hardened Kernel'
 arch=('x86_64')
 url='http://www.wireguard.com/'
