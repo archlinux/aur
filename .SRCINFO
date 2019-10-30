@@ -26,6 +26,7 @@ pkgbase = mingw-w64-paraview-git
 	depends = mingw-w64-netcdf
 	depends = mingw-w64-double-conversion
 	depends = mingw-w64-protobuf
+	depends = mingw-w64-pugixml
 	provides = mingw-w64-paraview
 	conflicts = mingw-w64-paraview
 	options = !buildflags
