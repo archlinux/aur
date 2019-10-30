@@ -1,7 +1,7 @@
 # Maintainer: João Marcos <marcospb19@hotmail.com>
 
 pkgname=corrupter-bin
-_pkgname=${pkgname%-bin}
+_pkgname=corrupter
 pkgver=1.0
 pkgrel=1
 pkgdesc='Simple image glitcher for producing nice i3lock backgrounds - Binary version'
