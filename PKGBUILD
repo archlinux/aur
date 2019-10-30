@@ -11,7 +11,7 @@ depends=("cups")
 install="${pkgname}.install"
 _distdir="BHC554ePPDLinux_${pkgver//.}"
 source=(
-  "https://o.cses.konicaminolta.com/file/Default.aspx?FilePath=DL/201408/23080504/${_distdir}MU.zip"
+  "https://www.uibk.ac.at/downloads/th-physik/Driver/bizhubC364e/Linux/${_distdir}MU.zip"
   "LICENSE"
 )
 sha512sums=(
