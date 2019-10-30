@@ -4,7 +4,7 @@ pkgbase = chwifi-git
 	pkgrel = 1
 	url = https://github.com/cogitantium/chwifi
 	arch = any
-	license = GPL2
+	license = GPL3
 	makedepends = git
 	depends = sudo
 	depends = netctl>=1.20
