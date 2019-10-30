@@ -2,7 +2,7 @@
 # Maintainer: Jan de Groot <jgc@archlinux.org>
 
 pkgname=shared-mime-info
-pkgver=1.14
+pkgver=1.15
 pkgrel=1
 pkgdesc="Freedesktop.org Shared MIME Info"
 arch=('x86_64')
@@ -11,9 +11,9 @@ depends=('libxml2' 'glib2')
 makedepends=('itstool' 'gettext')
 install=shared-mime-info.install
 url="https://www.freedesktop.org/wiki/Specifications/shared-mime-info-spec/"
-source=(https://gitlab.freedesktop.org/xdg/shared-mime-info/uploads/aee9ae9646cbef724bbb1bd2ba146556/$pkgname-$pkgver.tar.xz
+source=(https://gitlab.freedesktop.org/xdg/shared-mime-info/uploads/b27eb88e4155d8fccb8bb3cd12025d5b/$pkgname-$pkgver.tar.xz
         update-mime-database.hook)
-sha256sums=('c573e9cae423669878b990e5e4790bc924119841f482b36a25fd751147f44a26'
+sha256sums=('f482b027437c99e53b81037a9843fccd549243fd52145d016e9c7174a4f5db90'
             '7ecdd55ff7c4331e188cf46debbcc5660edb0e2bbeb4dd87cc5b87278c292821')
 options=(!makeflags)
 
