@@ -59,7 +59,7 @@ _lqxpatchrel=1
 _lqxpatchver=${_lqxpatchname}-${_major}-${_lqxpatchrel}
 pkgbase=linux-lqx
 pkgver=5.3.7_1
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="http://liquorix.net/"
 license=('GPL2')
@@ -352,9 +352,6 @@ _package-docs() {
   msg2 "Installing documentation..."
   mkdir -p "$builddir"
   cp -t "$builddir" -a Documentation
-
-  msg2 "Removing doctrees..."
-  rm -r "$builddir/Documentation/output/.doctrees"
 
   if [ -n "$_htmldocs_enable" ]; then
     msg2 "Removing doctrees..."
