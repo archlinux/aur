@@ -19,10 +19,12 @@ tidy_optipng() {
     msg2 "$(gettext "Optimizing PNG images...")"
     local png
     find . -type f -iname "*.png" 2>/dev/null | while read -r png ; do
+      [ $(jobs -p|wc -l) -gt $(nproc) ] && wait -n
       if [[ $(file --brief --mime-type "$png") = 'image/png' ]]; then
-        optipng "${OPTIPNGFLAGS[@]}" "$png" &>/dev/null ||
-          warning "$(gettext "Could not optimize PNG image : %s")" "${png/$pkgdir\//}"
+        { optipng "${OPTIPNGFLAGS[@]}" "$png" &>/dev/null ||
+          warning "$(gettext "Could not optimize PNG image : %s")" "${png/$pkgdir\//}"; } &
       fi
     done
+    wait
   fi
 }

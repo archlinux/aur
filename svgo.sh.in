@@ -19,10 +19,12 @@ tidy_svgo() {
     msg2 "$(gettext "Optimizing SVG images...")"
     local svg
     find . -type f -iname "*.svg" 2>/dev/null | while read -r svg ; do
+      [ $(jobs -p|wc -l) -gt $(nproc) ] && wait -n
       if [[ $(file --brief --mime-type "$svg") = 'image/svg' ]]; then
-        svgo "${SVGOFLAGS[@]}" "$svg" &>/dev/null ||
-          warning "$(gettext "Could not optimize SVG image : %s")" "${svg/$pkgdir\//}"
+        { svgo "${SVGOFLAGS[@]}" "$svg" &>/dev/null ||
+          warning "$(gettext "Could not optimize SVG image : %s")" "${svg/$pkgdir\//}"; } &
       fi
     done
+    wait
   fi
 }

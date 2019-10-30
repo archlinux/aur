@@ -19,18 +19,19 @@ tidy_upx() {
     msg2 "$(gettext "Compressing binaries with %s...")" "UPX"
     local binary
     find . -type f -perm -u+w 2>/dev/null | while read -r binary ; do
-      if [[ $(file --brief --mime-type "$binary") == application* ]] ; then
-        case "$(file --brief --mime-type "$binary")" in
-          'application/x-executable' | 'application/x-dosexec')
-            upx "${UPXFLAGS[@]}" "$binary" &>/dev/null ||
-              warning "$(gettext "Could not compress binary : %s")" "${binary/$pkgdir\//}"
-          ;;
-          *)
-            warning "$(gettext "Not compressing %s, $(file --brief --mime-type "$binary")")" \
-              "${binary/$pkgdir\//}"
-          ;;
-        esac
-      fi
+      [ $(jobs -p|wc -l) -gt $(nproc) ] && wait -n
+      mime=$(file --brief --mime-type "$binary")
+      case "$mime" in
+        application/x-executable | application/x-dosexec )
+          { upx "${UPXFLAGS[@]}" "$binary" &>/dev/null ||
+            warning "$(gettext "Could not compress binary : %s")" "${binary/$pkgdir\//}"; } &
+        ;;
+        application* )
+          warning "$(gettext "Not compressing %s, $(file --brief --mime-type "$binary")")" \
+            "${binary/$pkgdir\//}"
+        ;;
+      esac
     done
+    wait
   fi
 }
