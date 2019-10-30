@@ -75,12 +75,12 @@ build() {
 
 build_plugins() {
     export ANT_HOME=/usr/share/ant
-    export ANT_OPTS="-Dfile.encoding=UTF-8"
 
     for plugin in ${_plugins[@]}; do
         msg "Building Plugin ${plugin}..."
         cd "$srcdir/plugin-${plugin}"
         ant dist \
+            -Dfile.encoding=UTF-8 \
             -Dtarget-version=8 -Dsource-version=8 \
             -Dfreenet-cvs-snapshot.location=../fred/build/output/freenet.jar \
             -Dfreenet-ext.location=../fred/build/output/freenet-ext-29.jar \
