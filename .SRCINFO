@@ -7,6 +7,7 @@ pkgbase = seqtk
 	arch = x86_64
 	license = MIT
 	makedepends = zlib
+	makedepends = make
 	provides = seqtk
 	conflicts = seqtk
 	source = https://github.com/lh3/seqtk/archive/v1.3.tar.gz
