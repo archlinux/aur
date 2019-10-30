@@ -15,7 +15,7 @@ _err(){
 }
 
 _linux(){
-    json=$(wget -O - https://api.github.com/repos/MFrcoin/MFCoin/releases/${pkgrel} 2>/dev/null)
+    json=$(wget -O - https://api.github.com/repos/MFrcoin/MFCoin/releases/${pkgrel})
     assets=$(echo "${json}" | jq '.assets')
     length=$(echo "${assets}" | jq '. | length')
     _err length="$json"
