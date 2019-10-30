@@ -1,0 +1,17 @@
+pkgbase = git-punchcard
+	pkgdesc = Show punchcard graphs with git commit activity.
+	pkgver = 2.0.3
+	pkgrel = 1
+	url = https://github.com/coldfix/git-punchcard
+	arch = any
+	license = custom:UNLICENSE
+	makedepends = python-setuptools
+	depends = git
+	depends = python-numpy
+	depends = python-matplotlib
+	depends = python-pytz
+	source = https://pypi.python.org/packages/source/g/git-punchcard/git-punchcard-2.0.3.tar.gz
+	md5sums = d5905fe42a44c0c8756f6f00ece547c5
+
+pkgname = git-punchcard
+
