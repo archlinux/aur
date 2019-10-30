@@ -2,7 +2,7 @@
 
 pkgname=bitwarden-cli-bin
 _pkgname=bitwarden-cli
-pkgver=1.7.4
+pkgver=1.8.0
 pkgrel=1
 pkgdesc='Natively packaged versions of the bitwarden cli'
 arch=(x86_64)
@@ -16,7 +16,7 @@ source=(
 )
 
 sha512sums=(
-  d6fb0ff065fd9a534329214fdaa50c8734ee7c9099f32080dee8536432d96055c427e457583af548cba4a7caceb700185522462964aad01c989a265a37228cb3
+  29460d57681c44750e5b7832bc9527ced2a20c7dc035bde1a70eb90f7a77eacc23b80ce37a363896952f64b0ba6b8d0c7c601514bcdaee6fca18ddec0813a789
 )
 
 provides=('bitwarden-cli')
