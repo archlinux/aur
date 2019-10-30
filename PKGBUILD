@@ -2,7 +2,7 @@
 
 pkgname=rememberthemilk
 pkgver=1.1.15
-pkgrel=1
+pkgrel=2
 pkgdesc="The smart to-do app for busy people."
 arch=('x86_64')
 url="https://www.rememberthemilk.com"
@@ -22,11 +22,11 @@ package() {
 
   # add symlink to usr/bin
   mkdir -p ${pkgdir}/usr/bin
-  ln -s "/opt/Remember The Milk/rememberthemilk" ${pkgdir}/usr/bin
+  ln -s "/opt/RememberTheMilk/rememberthemilk" ${pkgdir}/usr/bin
 
   # Install licenses
   mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -Dm644 "${srcdir}/opt/Remember The Milk"/LICENSE* "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm644 "${srcdir}/opt/RememberTheMilk"/LICENSE* "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 # vim:set ts=2 sw=2 et:

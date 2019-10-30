@@ -1,7 +1,7 @@
 pkgbase = rememberthemilk
 	pkgdesc = The smart to-do app for busy people.
 	pkgver = 1.1.15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.rememberthemilk.com
 	arch = x86_64
 	license = custom:none
