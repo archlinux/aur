@@ -1,7 +1,8 @@
-# Maintainer: Joseph R Quinn <quinn period joseph r at protonmail dot com>
+# Packager: Joseph R. Quinn <quinn.josephr@protonmail.com>
+# Maintainer: Joseph R. Quinn <quinn.josephr@protonmail.com>
 pkgname=zshdb-git
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A debugger for zsh scripts.'
 arch=('i686' 'x86_64')
 url='https://github.com/rocky/zshdb'
