@@ -6,7 +6,7 @@ packager='Natalia Portillo <claunia@claunia.com>'
 pkgbase='discimagechef-git'
 pkgname=('discimagechef-git' 'discimagechef-gtk-git')
 pkgver=v4.5.1.1692.r811.g16849ea2
-pkgrel=1
+pkgrel=2
 pkgdesc='Disc image management and creation tool for disks, tapes, optical and solid state media'
 arch=('x86_64' 'armv7h' 'aarch64')
 url='http://www.discimagechef.app'
@@ -28,7 +28,7 @@ else
 fi
 
 pkgver() {
-  cd "$SRCDEST"
+  cd "${srcdir}"/"${_dicbase}"
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
