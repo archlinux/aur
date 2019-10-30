@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Meßlinger <sebastian.messlinger@posteo.de>
 pkgname=dnslookup-git
-pkgver=10.ae36d05
-pkgrel=1
+pkgver=r10.ae36d05
+pkgrel=2
 pkgdesc="Simple command line utility to make DNS lookups to the specified server"
 arch=('any')
 url="https://github.com/ameshkov/dnslookup"
@@ -12,8 +12,8 @@ source=('git://github.com/ameshkov/dnslookup.git')
 sha1sums=('SKIP')
 
 pkgver() {
-        cd "${srcdir}/${_gitname}"
-        echo "$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+        cd "${srcdir}/dnslookup"
+        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build(){
