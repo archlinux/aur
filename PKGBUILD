@@ -1,12 +1,12 @@
 # This file is part of BlackArch Linux ( http://blackarch.org ).
 # See COPYING for license details.
 
-pkgname='blackman'
-pkgver='0.5.13'
+pkgname=blackman
+pkgver=0.5.13
 pkgrel=1
-pkgdesc='Emerge for BlackArch Linux - Download and compile packages as emerge does.'
+pkgdesc="Emerge for BlackArch Linux - Download and compile packages as emerge does."
 arch=('any')
-url='https://github.com/BlackArch/blackman'
+url=https://github.com/BlackArch/blackman
 license=('GPL')
 depends=('git' 'subversion')
 source=("https://github.com/BlackArch/blackman/archive/v${pkgver}.tar.gz")
