@@ -1,14 +1,15 @@
 # Maintainer: Donald Webster <fryfrog@gmail.com>
-# Helpful url: https://services.lidarr.audio/v1/update/nightly/changes?os=linux
+# Helpful url: https://services.lidarr.audio/v1/update/nightly?version=0.0.0.0&os=linux&runtime=netcore&arch=x64
 
 pkgname="lidarr-develop"
-pkgver=0.7.1.1476
+pkgver=0.7.1.1566
 pkgrel=1
 pkgdesc="Music downloader for usenet and torrents."
-arch=(any)
+arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/lidarr/Lidarr"
 license=("GPL3")
-depends=('mono' 'sqlite' 'chromaprint')
+depends=('sqlite' 'chromaprint')
+options=('!strip' 'staticlibs')
 optdepends=('sabnzbd: usenet downloader'
             'nzbget: usenet downloader'
             'transmission-cli: torrent downloader (CLI and daemon)'
@@ -24,21 +25,34 @@ optdepends=('sabnzbd: usenet downloader'
 provides=('lidarr')
 conflicts=('lidarr')
 
-source=("Lidarr.develop.${pkgver}.linux.tar.gz::https://services.lidarr.audio/v1/update/nightly/updatefile?version=${pkgver}&os=linux"
-        'lidarr.service'
+source_x86_64=("Lidarr.develop.${pkgver}.linux-core-x64.tar.gz::https://services.lidarr.audio/v1/update/nightly/updatefile?version=${pkgver}&os=linux&runtime=netcore&arch=x64")
+source_aarch64=("Lidarr.develop.${pkgver}.linux-core-arm64.tar.gz::https://services.lidarr.audio/v1/update/nightly/updatefile?version=${pkgver}&os=linux&runtime=netcore&arch=arm64")
+source_armv7h=("Lidarr.develop.${pkgver}.linux-core-arm.tar.gz::https://services.lidarr.audio/v1/update/nightly/updatefile?version=${pkgver}&os=linux&runtime=netcore&arch=arm")
+
+source=('lidarr.service'
         'lidarr.tmpfiles'
         'lidarr.sysusers')
 
-sha512sums=('fb25a81f567dc110185342c7efaeb2ed1343dfe65ec18ae500909347e5f0cf5e24c3c18897273c378353df480ca5af0575f7106012ca632f442d4075c5431b99'
-            'e339ad3fe7d7569d65346309ffa69ea5f68001a45ae6e1a494e786fc4711a189f38cd73bb4d9bafdb3e5315a625f1c25301804473830418d8284192cb0c04c84'
+sha512sums=('11bd4fc0021f813477f199d649f9cc98605d0538b9fc2cc4484e43ae84d924c24105436fc7b601d6b4fe516279b77e6b8bc8c7077fb3a3560b4bf1503018aee9'
             'e40ce79a3e1741e7e06312797e652a85d199bd6d719ef953ea8c3c030756ee44e202956ac9e13cff17fac38312c27398f457f79923a7d0f56bd563a69af6ab63'
             'ffd466960527256d8de1d9887d90d4da87486eff062950c46cbc4fd4af1ef89e7d5c070ef1e649b23a95fbab15651e289fd5bdc6d34649e4a6ecdf2f6da06622')
+sha512sums_x86_64=('5ffe2ae3ab7443941bcacc78607deaadb32e2199106a962c17f948321ed3678a69eafe19028ed1b41d898f5a8fc8a9a8097b0716677a3ba28528198918530911')
+sha512sums_aarch64=('d7e134f8e8a44ccb341bf1842e3e2cadab882715905ec8a758ea0d74b1009ac4c888bd5f7c293aab7dc3dfacdec793c271039c2b6bb78ed6aacfae05ffa2abd0')
+sha512sums_armv7h=('6c17a29f3cf909610c07aa1afbd446f5fc91688590d0207aaf5cd6304e4c386609ee21e6cb280b0f88cb0a4988b72e727ba55607b0e71b1fd2b71d8f30585111')
+
+
 
 package() {
+  # Update environment isn't needed.
   rm -rf "${srcdir}/Lidarr/Lidarr.Update"
+
+  # The fpcalc binary comes from chromaprint.
+  rm -rf "${srcdir}/Lidarr/fpcalc"
+
   install -d -m 755 "${pkgdir}/usr/lib/lidarr"
   cp -dpr --no-preserve=ownership "${srcdir}/Lidarr/"* "${pkgdir}/usr/lib/lidarr"
   chmod -R a=,a+rX,u+w "${pkgdir}/usr/lib/lidarr/"
+  chmod +x "${pkgdir}/usr/lib/lidarr/Lidarr"
 
   install -D -m 644 "${srcdir}/lidarr.service" "${pkgdir}/usr/lib/systemd/system/lidarr.service"
   install -D -m 644 "${srcdir}/lidarr.sysusers" "${pkgdir}/usr/lib/sysusers.d/lidarr.conf"
