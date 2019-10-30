@@ -1,7 +1,7 @@
 pkgbase = ffmpeg-cuda
 	pkgdesc = Complete solution to record, convert and stream audio and video. Includes cuda support.
 	pkgver = 4.2
-	pkgrel = 1
+	pkgrel = 3
 	epoch = 1
 	url = https://ffmpeg.org/
 	arch = x86_64
