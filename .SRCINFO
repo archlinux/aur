@@ -1,0 +1,15 @@
+pkgbase = ookla-speedtest-bin
+	pkgdesc = Speedtest CLI by Ookla
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://www.speedtest.net/apps/cli
+	arch = x86_64
+	license = custom:Ookla EULA
+	depends = ca-certificates
+	conflicts = speedtest-cli
+	options = !strip
+	source = https://ookla.bintray.com/download/ookla-speedtest-1.0.0-x86_64-linux.tgz
+	sha256sums = 5fe2028f0d4427e4f4231d9f9cf70e6691bb890a70636d75232fe4d970633168
+
+pkgname = ookla-speedtest-bin
+
