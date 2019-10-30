@@ -4,7 +4,7 @@
 
 pkgbase=mt76-git
 pkgname=('mt76-dkms-git' 'mt76-firmware-git')
-pkgver=r1082.417cf49
+pkgver=r1619.gf2be00b
 pkgrel=1
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/openwrt/mt76'
@@ -13,11 +13,11 @@ makedepends=('git')
 source=("git+${url}.git"
         'dkms.conf')
 sha256sums=('SKIP'
-            '7744e0e1035f4bd0f2cea71e0f2ba9c9723a4c597ccc356deb249aa49900c0e2')
+            '084b5d5127dd3569c417c1574af40fffdccf2e74d8ef93f1615d27ed492a7146')
 
 pkgver() {
 	cd ${srcdir}/mt76
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package_mt76-dkms-git() {
@@ -37,6 +37,6 @@ package_mt76-firmware-git() {
 
 	install -dm755 ${pkgdir}/usr/lib/firmware/mediatek
 	cp ${srcdir}/mt76/firmware/* ${pkgdir}/usr/lib/firmware/mediatek/
-	# remove firmware present in linux-firmware package
-	rm -f ${pkgdir}/usr/lib/firmware/mediatek/mt7610e.bin
+	# remove firmwares present in linux-firmware package
+	rm -f ${pkgdir}/usr/lib/firmware/mediatek/{mt7610e,mt7615_cr4,mt7615_n9,mt7615_rom_patch}.bin
 }

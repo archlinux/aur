@@ -1,5 +1,5 @@
 pkgbase = mt76-git
-	pkgver = r1082.417cf49
+	pkgver = r1619.gf2be00b
 	pkgrel = 1
 	url = https://github.com/openwrt/mt76
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = mt76-git
 	source = git+https://github.com/openwrt/mt76.git
 	source = dkms.conf
 	sha256sums = SKIP
-	sha256sums = 7744e0e1035f4bd0f2cea71e0f2ba9c9723a4c597ccc356deb249aa49900c0e2
+	sha256sums = 084b5d5127dd3569c417c1574af40fffdccf2e74d8ef93f1615d27ed492a7146
 
 pkgname = mt76-dkms-git
 	pkgdesc = mac80211 driver for MediaTek MT76x2e, MT7603, MT7628 and MT7688
