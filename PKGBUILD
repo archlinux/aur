@@ -16,7 +16,7 @@ source=("https://git.zx2c4.com/WireGuard/snapshot/WireGuard-${pkgver}.tar"{.xz,.
 sha256sums=('93573193c9c1c22fde31eb1729ad428ca39da77a603a3d81561a9816ccecfa8e'
             'SKIP')
 
-_kernver="5.3.7.b-2"
+_kernver="5.3.7.b-2-hardened"
 
 build() {
     cd "${srcdir}/WireGuard-${pkgver}/src/"
