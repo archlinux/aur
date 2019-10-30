@@ -1,6 +1,6 @@
 pkgbase = chromedriver-beta
 	pkgdesc = Standalone server which implements WebDriver's wire protocol (for google-chrome-beta)
-	pkgver = 78.0.3904.70
+	pkgver = 79.0.3945.16
 	pkgrel = 1
 	url = https://sites.google.com/a/chromium.org/chromedriver/
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = chromedriver-beta
 	optdepends = google-chrome-beta
 	provides = chromedriver
 	conflicts = chromium
-	source = chromedriver_78.0.3904.70_linux64.zip::http://chromedriver.storage.googleapis.com/78.0.3904.70/chromedriver_linux64.zip
-	md5sums = 37f077132433b20db3f0f5636e89f142
+	source = chromedriver_79.0.3945.16_linux64.zip::http://chromedriver.storage.googleapis.com/79.0.3945.16/chromedriver_linux64.zip
+	md5sums = 105ccad6c939b96600d3963bd758a6c9
 
 pkgname = chromedriver-beta
 
