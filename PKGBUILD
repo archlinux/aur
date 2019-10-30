@@ -1,5 +1,4 @@
 # Maintainer: Erik Dubois <erik.dubois@gmail.com>
-
 pkgname=sardi-icons
 pkgver=19.10
 pkgrel=1
