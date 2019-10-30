@@ -1,14 +1,14 @@
 pkgbase = intellij-idea-ultimate-edition
 	pkgdesc = An intelligent IDE for Java, Groovy and other programming languages with advanced refactoring features intensely focused on developer productivity.
-	pkgver = 2019.2.3
-	pkgrel = 2
+	pkgver = 2019.2.4
+	pkgrel = 1
 	url = https://www.jetbrains.com/idea/
 	arch = any
 	license = Commercial
 	options = !strip
-	source = https://download.jetbrains.com/idea/ideaIU-2019.2.3.tar.gz
+	source = https://download.jetbrains.com/idea/ideaIU-2019.2.4.tar.gz
 	source = jetbrains-idea.desktop
-	sha256sums = a14fb570dd5b1264bea9463dc211800bc3f789202f27b7926eac5600b983b992
+	sha256sums = 102a925396f2edd5d67b823fe14f3547e3d109c2a63a313c81fa2185cf8b98a1
 	sha256sums = 83af2ba8f9f14275a6684e79d6d4bd9b48cd852c047dacfc81324588fa2ff92b
 
 pkgname = intellij-idea-ultimate-edition
