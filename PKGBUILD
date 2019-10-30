@@ -4,7 +4,7 @@
 
 pkgname=mupdf-git
 _pkgname=mupdf
-pkgver=20180502.effc6a80
+pkgver=20191022.39197a149
 pkgrel=1
 pkgdesc='Lightweight PDF, XPS, and E-book viewer'
 arch=('i686' 'x86_64' 'armv7h')
@@ -21,8 +21,8 @@ sha256sums=('SKIP'
             'SKIP'
             '3240d4ebda002cb2c4f42cd42793c6160f1701d349d0acb797819dfd10d4fedd')
 
-conflicts=("${_pkgname}")
-provides=("${_pkgname}")
+conflicts=("${_pkgname}"{,-gl,-tools})
+provides=("${_pkgname}"{,-gl,-tools})
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
