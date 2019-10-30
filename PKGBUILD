@@ -3,13 +3,13 @@
 
 pkgname=opensmtpd-git
 _pkgname=OpenSMTPD
-pkgver=6.6.0+r2318+g8e53e1bd
+pkgver=6.6.0+r2330+g22e1bdab
 pkgrel=1
 pkgdesc='Security-focused, simple, and performant SMTP server written in C (Git)'
 arch=(x86_64)
 url=https://www.opensmtpd.org
 license=(custom)
-depends=(libasr zlib)
+depends=(libasr zlib libevent)
 makedepends=(git)
 provides=(smtp-server smtp-forwarder)
 conflicts=(smtp-server smtp-forwarder)
