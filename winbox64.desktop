@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Winbox
+Comment=GUI administration for Mikrotik RouterOS
+Exec=/usr/bin/winbox64
+Icon=/usr/share/pixmaps/winbox64.png
+Terminal=false
+Categories=Utility
+StartupWMClass=winbox64.exe
