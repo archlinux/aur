@@ -1,5 +1,5 @@
 pkgbase = python-stempeg
-	pkgdesc = A python package to parse and process the MUSDB18 dataset
+	pkgdesc = A python package to read and write STEM files.
 	pkgver = 0.1.8
 	pkgrel = 1
 	url = https://github.com/faroit/stempeg
