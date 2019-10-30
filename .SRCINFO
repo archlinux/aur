@@ -1,7 +1,7 @@
 pkgbase = bm
 	pkgdesc = command-line bibliography manager for biblatex
 	pkgver = 0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.ckyln.com/bm/log.html
 	arch = any
 	license = GPL3
@@ -10,7 +10,7 @@ pkgbase = bm
 	provides = bm
 	conflicts = bm
 	source = https://git.ckyln.com/archives/bm/bm-0.4.tar.gz
-	md5sums = a278ec37af4bb6ed4b58da1fe6716c7f
+	md5sums = f21c2b7590385f9158c5666dbcfd2c78
 
 pkgname = bm
 
