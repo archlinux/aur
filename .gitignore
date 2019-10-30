@@ -1,0 +1,6 @@
+# Downloaded and generated files
+*.tar.xz
+*.tar.gz
+
+# All sub-folders
+*/

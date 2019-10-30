@@ -1,0 +1,17 @@
+pkgbase = python-stempeg
+	pkgdesc = A python package to parse and process the MUSDB18 dataset
+	pkgver = 0.1.8
+	pkgrel = 1
+	url = https://github.com/faroit/stempeg
+	arch = x86_64
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-numpy
+	depends = python-soundfile
+	source = stempeg-0.1.8.tar.gz::https://github.com/faroit/stempeg/archive/v0.1.8.tar.gz
+	sha512sums = 93fff64cd22315e1d181b9f4a57a58b4b4f7363dbd5b4dc9667d77fa83a214af52f5ddf8e099256740be7fcad98b881456ea7f6d1a989cc70522ec89041e3f83
+
+pkgname = python-stempeg
+	depends = python-numpy
+	depends = python-soundfile
+
