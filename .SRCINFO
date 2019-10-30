@@ -11,7 +11,6 @@ pkgbase = mfcoin-cli-bin
 	depends = dbus>=1.10.14
 	depends = miniupnpc>=2.0.20170509
 	depends = expat>=2.2.0
-	depends = freetype2>=2.7.1
 	depends = protobuf
 	provides = mfcoin
 	provides = mfcoin-daemon
