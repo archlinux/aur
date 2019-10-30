@@ -1,0 +1,22 @@
+pkgbase = layan-kde-git
+	pkgdesc = A flat Design theme for KDE Plasma desktop
+	pkgver = r9.9dbe87f
+	pkgrel = 1
+	url = https://github.com/vinceliuice/layan-kde
+	arch = any
+	license = GPL3
+	options = !strip
+	source = git+https://github.com/vinceliuice/layan-kde.git
+	sha256sums = SKIP
+
+pkgname = layan-kde-git
+	optdepends = layan-gtk-theme: Matching GTK theme
+	optdepends = kvantum-theme-layan: Layan theme for Kvantum Qt style (recommended)
+	optdepends = tela-icon-theme: Matching icon theme
+	provides = layan-kde
+
+pkgname = kvantum-theme-layan-git
+	pkgdesc = Layan theme for KDE Plasma 5
+	depends = kvantum-qt5
+	provides = kvantum-theme-layan
+
