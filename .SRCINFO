@@ -5,11 +5,17 @@ pkgbase = rkt-bin
 	url = https://github.com/rkt/rkt
 	arch = x86_64
 	license = apache
+	depends = glibc
+	depends = openssl
+	depends = zlib
+	depends = systemd
 	provides = rkt-bin
 	conflicts = rkt
 	conflicts = rkt-git
 	source = rkt_1.30.0-1_amd64.deb::https://github.com/rkt/rkt/releases/download/v1.30.0/rkt_1.30.0-1_amd64.deb
+	source = rkt.sysusers
 	sha256sums = 57e1d8ec5075369a0781d1c3aac2dcc032d73f4c2b292bcb61a52a53cd02d301
+	sha256sums = SKIP
 
 pkgname = rkt-bin
 
