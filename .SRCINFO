@@ -1,7 +1,7 @@
 pkgbase = linux-pds
-	pkgver = 5.3.7.arch1
+	pkgver = 5.3.8.1
 	pkgrel = 1
-	url = https://git.archlinux.org/linux.git/log/?h=v5.3.7-arch1
+	url = https://git.archlinux.org/linux.git/log/?h=v5.3.8-arch1
 	arch = x86_64
 	license = GPL2
 	makedepends = xmlto
@@ -9,18 +9,15 @@ pkgbase = linux-pds
 	makedepends = inetutils
 	makedepends = bc
 	makedepends = libelf
-	makedepends = git
 	makedepends = python-sphinx
 	makedepends = python-sphinx_rtd_theme
 	makedepends = graphviz
 	makedepends = imagemagick
+	makedepends = git
 	options = !strip
-	source = git+https://git.archlinux.org/linux?signed#tag=v5.3.7-arch1
+	source = git+https://git.archlinux.org/linux?signed#tag=v5.3.8-arch1
 	source = git+https://github.com/graysky2/kernel_gcc_patch
 	source = config
-	source = 60-linux.hook
-	source = 90-linux.hook
-	source = linux.preset
 	source = 01-Undead-PDS-0.99o-rebase-by-TkG.patch
 	source = 02-Glitched-PDS-by-TkG.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
@@ -29,33 +26,28 @@ pkgbase = linux-pds
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = 6e7596a069a20732fa7b2b9fb9dadf167401f56fc4564dc3763e72ae3a573b5f096f31bae835778296d68d8deb58e7cb1a6d9ab669b0e460a767bffbaacbb548
-	sha512sums = 6b57a66b870b2f525e2dedd8f224b89474fd4ec6ea18484b0a67a1a2b9a4fc95d025cac181504406ea42a35d6c1b184c0d4e38c92815022935fc55746c69c7c1
-	sha512sums = 2718b58dbbb15063bacb2bde6489e5b3c59afac4c0e0435b97fe720d42c711b6bcba926f67a8687878bd51373c9cf3adb1915a11666d79ccb220bf36e0788ab7
-	sha512sums = 2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf
 	sha512sums = 2aef8b8949fec12d237facc57d5feddf0e7c1c878c94fb4eb8a845c110d5cfcc83492e73475de04ce98069e9ab1bb6b4a0a4559d445fbf264442dd8b0af9a8f1
 	sha512sums = a5ff06602840327e10d623c195b7e1676f967e5aa04de04e9435766fab2b596a44da21f808bfdd632dcf64800456337b7b4c03de2a268980238a310b3644ceae
 
 pkgname = linux-pds
 	pkgdesc = The Linux-pds kernel and modules ~ featuring Alfred Chen's PDS CPU scheduler, rebased by TkG
-	install = linux.install
 	depends = coreutils
 	depends = kmod
 	depends = initramfs
 	depends = thrash-protect
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
-	provides = linux-pds=5.3.7.arch1
-	backup = etc/mkinitcpio.d/linux-pds.preset
+	provides = linux-pds=5.3.8.1
 
 pkgname = linux-pds-headers
 	pkgdesc = Header files and scripts for building modules for Linux-pds kernel ~ featuring Alfred Chen's PDS CPU scheduler, rebased by TkG
-	depends = linux-pds=5.3.7.arch1
-	provides = linux-pds-headers=5.3.7.arch1
-	provides = linux-headers=5.3.7.arch1
+	depends = linux-pds=5.3.8.1
+	provides = linux-pds-headers=5.3.8.1
+	provides = linux-headers=5.3.8.1
 
 pkgname = linux-pds-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-pds kernel ~ featuring Alfred Chen's PDS CPU scheduler, rebased by TkG
-	depends = linux-pds=5.3.7.arch1
-	provides = linux-pds-docs=5.3.7.arch1
-	provides = linux-docs=5.3.7.arch1
+	depends = linux-pds=5.3.8.1
+	provides = linux-pds-docs=5.3.8.1
+	provides = linux-docs=5.3.8.1
 

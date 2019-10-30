@@ -1,7 +1,5 @@
 # Maintainer: Kyle De'Vir (QuartzDragon) <kyle[dot]devir[at]mykolab[dot]com>
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
-# Contributor: Tobias Powalowski <tpowa@archlinux.org>
-# Contributor: Thomas Baechler <thomas@archlinux.org>
 
 ### BUILD OPTIONS
 # Set these variables to ANYTHING that is not null to enable them
@@ -67,11 +65,11 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-pds
-_srcver_tag=5.3.7-arch1
-pkgver=${_srcver_tag//-/.}
+pkgver=5.3.8.1
 pkgrel=1
-arch=(x86_64)
+_srcver_tag=${pkgver%.*}-arch${pkgver##*.}
 url="https://git.archlinux.org/linux.git/log/?h=v$_srcver_tag"
+arch=(x86_64)
 license=(GPL2)
 makedepends=(
     xmlto
@@ -79,11 +77,11 @@ makedepends=(
     inetutils
     bc
     libelf
-    git
     python-sphinx
     python-sphinx_rtd_theme
     graphviz
     imagemagick
+    git
 )
 options=('!strip')
 
@@ -100,9 +98,6 @@ source=(
     "git+$_repo_url?signed#tag=v$_srcver_tag"
     "git+$_repo_url_gcc_patch"
     config         # the main kernel config file
-    60-linux.hook  # pacman hook for depmod
-    90-linux.hook  # pacman hook for initramfs regeneration
-    linux.preset   # standard config files for mkinitcpio ramdisk
     01-Undead-PDS-0.99o-rebase-by-TkG.patch
     02-Glitched-PDS-by-TkG.patch
 )
@@ -114,14 +109,12 @@ validpgpkeys=(
 sha512sums=('SKIP'
             'SKIP'
             '6e7596a069a20732fa7b2b9fb9dadf167401f56fc4564dc3763e72ae3a573b5f096f31bae835778296d68d8deb58e7cb1a6d9ab669b0e460a767bffbaacbb548'
-            '6b57a66b870b2f525e2dedd8f224b89474fd4ec6ea18484b0a67a1a2b9a4fc95d025cac181504406ea42a35d6c1b184c0d4e38c92815022935fc55746c69c7c1'
-            '2718b58dbbb15063bacb2bde6489e5b3c59afac4c0e0435b97fe720d42c711b6bcba926f67a8687878bd51373c9cf3adb1915a11666d79ccb220bf36e0788ab7'
-            '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
             '2aef8b8949fec12d237facc57d5feddf0e7c1c878c94fb4eb8a845c110d5cfcc83492e73475de04ce98069e9ab1bb6b4a0a4559d445fbf264442dd8b0af9a8f1'
             'a5ff06602840327e10d623c195b7e1676f967e5aa04de04e9435766fab2b596a44da21f808bfdd632dcf64800456337b7b4c03de2a268980238a310b3644ceae')
 
-_kernelname=${pkgbase#linux}
-: ${_kernelname:=-ARCH}
+export KBUILD_BUILD_HOST=archlinux
+export KBUILD_BUILD_USER=$pkgbase
+export KBUILD_BUILD_TIMESTAMP="@${SOURCE_DATE_EPOCH:-$(date +%s)}"
 
 prepare() {
     cd $_reponame
@@ -129,7 +122,7 @@ prepare() {
     msg2 "Setting version..."
     scripts/setlocalversion --save-scmversion
     echo "-$pkgrel" > localversion.10-pkgrel
-    echo "$_kernelname" > localversion.20-pkgname
+    echo "${pkgbase#linux}" > localversion.20-pkgname
 
     # https://github.com/graysky2/kernel_gcc_patch
     msg2 "Patching to enabled additional gcc CPU optimizatons..."
@@ -209,8 +202,6 @@ _package() {
         "linux-firmware: firmware images needed for some devices"
     )
     provides=("$pkgbase=$pkgver")
-    backup=("etc/mkinitcpio.d/$pkgbase.preset")
-    install=linux.install
 
     cd $_reponame 
     local kernver="$(<version)"
@@ -220,7 +211,6 @@ _package() {
     # systemd expects to find the kernel here to allow hibernation
     # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
     install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
-    install -Dm644 "$modulesdir/vmlinuz" "$pkgdir/boot/vmlinuz-$pkgbase"
 
     # Used by mkinitcpio to name the kernel
     echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
@@ -230,25 +220,6 @@ _package() {
 
     # remove build and source links
     rm "$modulesdir"/{source,build}
-
-    msg2 "Installing hooks..."
-    # sed expression for following substitutions
-    local subst="
-        s|%PKGBASE%|$pkgbase|g
-        s|%KERNVER%|$kernver|g
-    "
-
-    # hack to allow specifying an initially nonexisting install file
-    sed "$subst" "$startdir/$install" > "$startdir/$install.pkg"
-    true && install=$install.pkg
-
-    # fill in mkinitcpio preset and pacman hooks
-    sed "$subst" ../linux.preset | install -Dm644 /dev/stdin \
-        "$pkgdir/etc/mkinitcpio.d/$pkgbase.preset"
-    sed "$subst" ../60-linux.hook | install -Dm644 /dev/stdin \
-        "$pkgdir/usr/share/libalpm/hooks/60-$pkgbase.hook"
-    sed "$subst" ../90-linux.hook | install -Dm644 /dev/stdin \
-        "$pkgdir/usr/share/libalpm/hooks/90-$pkgbase.hook"
 
     msg2 "Fixing permissions..."
     chmod -Rc u=rwX,go=rX "$pkgdir"
