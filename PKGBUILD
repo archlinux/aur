@@ -1,7 +1,7 @@
 # Maintainer: pureboys <yuyuud@yuyuud@gmail.com>
 
 pkgname='kikoplay'
-pkgver='0.6.0'
+pkgver='0.6.0.1'
 pkgrel=1
 pkgdesc="linux danmaku player"
 arch=('x86_64')
@@ -10,21 +10,23 @@ url="https://github.com/Protostars/KikoPlay"
 depends=('mpv' 'qt5-base' 'qhttpengine')
 makedepends=('make' 'gcc' 'cmake')
 source=(
-    ${pkgname}-${pkgver}.zip::"https://github.com/Protostars/KikoPlay/archive/${pkgver}.zip"
+    ${pkgname}-${pkgver}.zip::"https://github.com/pureboys/KikoPlay/archive/${pkgver}.zip"
 )
 md5sums=(
-    "6ba4c585d1cb392750984f04c9d2bb08"
+    "0ad2b24da8a82f0c6bdc16c72270689a"
 )
 
 
 build() {
     cd ${srcdir}/KikoPlay-${pkgver}
-    sed -i '29i DEFINES += TEXTURE_MAIN_THREAD' KikoPlay.pro 
     qmake 
     make
 }
 
 package() {
-    mkdir -m 0777 -p ${pkgdir}/opt/${pkgname} 
-    cp -f ${srcdir}/KikoPlay-${pkgver}/KikoPlay ${pkgdir}/opt/${pkgname}/${pkgname}
+    install -dm755 "${pkgdir}/opt/${pkgname}"
+	chmod -R 755 ${srcdir}/KikoPlay-${pkgver}/KikoPlay
+	cp -rf ${srcdir}/KikoPlay-${pkgver}/KikoPlay "${pkgdir}/opt/kikoplay/kikoplay"
+	chmod -R 755 "${pkgdir}/opt/kikoplay/kikoplay"
+  	cp -rf ${srcdir}/KikoPlay-${pkgver}/web ${pkgdir}/opt/${pkgname}/web
 }
