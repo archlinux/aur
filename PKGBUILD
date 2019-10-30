@@ -2,7 +2,7 @@
 
 pkgname='nfpm'
 pkgver=v1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A simple deb and rpm packager written in Go '
 url='https://github.com/goreleaser/nfpm'
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=()
 makedepends=()
 
-_basedownloadurl="${url}/releases/download/v${pkgver#v}/"
+_basedownloadurl="${url}/releases/download/v${pkgver#v}"
 
 source=("${_basedownloadurl}/${pkgname}_${pkgver#v}_linux_${arch}.tar.gz")
 sha256sums=('fb7468abf49ff0bfbfc55467ee341bf9646b829d16d8012362b174aaef52a087')
