@@ -1,4 +1,5 @@
-# Maintainer: Sven Schneider <archlinux.sandmann@googlemail.com>
+# Maintainer: Stefan Tatschner <stefan@rumpelsepp.org>
+# Contributor: Sven Schneider <archlinux.sandmann@googlemail.com>
 
 pkgname=('python-aenum' 'python2-aenum')
 _pkgname='aenum'
