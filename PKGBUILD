@@ -1,4 +1,4 @@
-# Maintainer: Marco Pompili <aur (at) mg.odd.red>
+# Maintainer: Marco Pompili <aur@mg.odd.red>
 # Contributor: Anatol Pomozov <anatol.pomozov@gmail.com>
 # Contributor: Bartłomiej Piotrowski <nospam@bpiotrowski.pl>
 # Contributor: Kaiting Chen <kaitocracy@gmail.com>
@@ -6,8 +6,8 @@
 # Contributor: David Flemström <david.flemstrom@gmail.com>
 
 pkgname=v8
-pkgver=7.8.279.12
-pkgrel=2
+pkgver=7.8.279.17
+pkgrel=1
 pkgdesc="Fast and modern Javascript engine used in Google Chrome."
 arch=('i686' 'x86_64')
 url="https://v8.dev"
