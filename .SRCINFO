@@ -1,21 +1,19 @@
 pkgbase = emacs-magit
 	pkgdesc = It's Magit! A Emacs mode for Git.
-	pkgver = 2.13.1
-	pkgrel = 3
+	pkgver = 2.90.1
+	pkgrel = 1
 	url = http://github.com/magit/magit
 	install = emacs-magit.install
 	arch = any
 	license = GPL3
 	makedepends = git
-	depends = emacs
-	depends = git>=1.9.4
+	depends = emacs>=25.1
+	depends = git>=2.0.0
 	depends = emacs-dash>=2.14.1
-	depends = emacs-ghub>=2.0.1
-	depends = emacs-magit-popup>=2.12.3
-	depends = emacs-with-editor>=2.7.3
+	depends = emacs-with-editor>=2.8.0
 	provides = emacs-magit
 	conflicts = emacs-magit-git
-	source = git+https://github.com/magit/magit.git#tag=2.13.1
+	source = git+https://github.com/magit/magit.git#tag=v2.90.1
 	md5sums = SKIP
 
 pkgname = emacs-magit

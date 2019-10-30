@@ -1,8 +1,8 @@
 # Maintainer:  Esben Haabendal <esben@haabendal.dk>
 
 pkgname=emacs-magit
-pkgver=2.13.1
-pkgrel=3
+pkgver=2.90.1
+pkgrel=1
 pkgdesc="It's Magit! A Emacs mode for Git."
 arch=('any')
 _github_org="magit"
@@ -10,11 +10,11 @@ _github_repo="magit"
 url="http://github.com/${_github_org}/${_github_repo}"
 license=('GPL3')
 makedepends=('git')
-depends=('emacs' 'git>=1.9.4' 'emacs-dash>=2.14.1' 'emacs-ghub>=2.0.1' 'emacs-magit-popup>=2.12.3' 'emacs-with-editor>=2.7.3')
+depends=('emacs>=25.1' 'git>=2.0.0' 'emacs-dash>=2.14.1' 'emacs-with-editor>=2.8.0')
 provides=('emacs-magit')
 conflicts=('emacs-magit-git')
 install="${pkgname}.install"
-source=("git+https://github.com/${_github_org}/${_github_repo}.git#tag=$pkgver")
+source=("git+https://github.com/${_github_org}/${_github_repo}.git#tag=v$pkgver")
 md5sums=('SKIP')
 
 build() {
