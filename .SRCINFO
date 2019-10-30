@@ -1,14 +1,14 @@
 pkgbase = posy-cursors
 	pkgdesc = Port of Posy's improved cursors
-	pkgver = 3.5.3
+	pkgver = 3.6
 	pkgrel = 1
 	url = https://git.auteiy.me/dmitry/cursorsPosy
 	arch = any
 	license = unknown
 	makedepends = imagemagick
 	makedepends = xorg-xcursorgen
-	source = posy-cursors-3.5.3.tar.gz::https://git.auteiy.me/dmitry/cursorsPosy/-/archive/v3.5.3/cursorsPosy-v3.5.3.tar.gz
-	sha256sums = bc8b8c81263b44db531a73da85cfcc03a6612a3b7f47997cfd035257df5ea920
+	source = posy-cursors-3.6.tar.gz::https://git.auteiy.me/dmitry/cursorsPosy/-/archive/v3.6/cursorsPosy-v3.6.tar.gz?path=Prebuilt
+	sha256sums = 0a68ba1adc3a9d2deae6542c07de696d24742500d10ed44500bd5d6e984b2c67
 
 pkgname = posy-cursors
 
