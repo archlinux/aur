@@ -47,6 +47,10 @@ package() {
   cd "$srcdir/$_gitname"
   make DESTDIR="${pkgdir}" install
 
+  # glibc 2.30-2 already provides these two files
+  rm -f "$pkgdir"/usr/include/sys/sdt-config.h
+  rm -f "$pkgdir"/usr/include/sys/sdt.h
+
   cd "${pkgdir}"
   pushd var >/dev/null
   rmdir -p run/stap-server log
