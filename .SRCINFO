@@ -1,7 +1,7 @@
 pkgbase = nerd-fonts-fira-code
 	pkgdesc = Patched font Fira (Fura) Code from the nerd-fonts library
 	pkgver = 2.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ryanoasis/nerd-fonts
 	arch = any
 	groups = nerd-fonts
