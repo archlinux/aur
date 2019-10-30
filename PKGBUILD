@@ -2,7 +2,7 @@
 # Maintainer:  skydrome <skydrome@protonmail.com>
 
 pkgname=i2p-bin
-pkgver=0.9.42
+pkgver=0.9.43
 pkgrel=1
 pkgdesc="A distributed anonymous network (pre-compiled binary)"
 url="https://geti2p.net"
@@ -17,21 +17,22 @@ install='i2p.install'
 noextract=("i2pinstall_${pkgver}.jar")
 options=(!strip)
 
+# https://geti2p.net/en/get-involved/develop/release-signing-key
+# https://geti2p.net/_static/zzz.key.asc
+validpgpkeys=('2D3D2D03910C6504C1210C65EE60C0C8EE7256A8')
+
 #_url="https://download.i2p2.de/releases/${pkgver}"
 _url="https://launchpad.net/i2p/trunk/${pkgver}/+download"
 
 source=("${_url}/i2pinstall_${pkgver}.jar"{,.sig}
         'i2prouter.service' 'i2prouter.sh' 'wrapper.config' 'router.config')
 
-sha256sums=('cb192e48c5f06839c99b71861364f3a9117b6b24f78f7f7c25d6716507c81bdf'
+sha256sums=('e5eb3db08dcc594e2fb01ada63303ff48096a454db1c7659c928ddb07736c84a'
             'SKIP'
             '9bb899ece87099716da29bac8b7da02916fc325699b68989e73c1fe333a6342f'
             'ea8f97e66461d591b1819eab39bbc40056b89ae12f7729b3dd9fd2ce088e5e53'
-            'da8da9e30edb19fa276be37716b9e59061b1b5ef6b505c8c7c132f1c2b29d4b4'
+            '5d134ee5bc614b54ec48de7c5214f6dbe08abcfab7d286c5b1c7616e39b478ed'
             '1527afbadcf849ef551b3b7b68d1a29eec316ee620f5320f2933f73ee9924978')
-
-# https://geti2p.net/en/get-involved/develop/release-signing-key
-validpgpkeys=('2D3D2D03910C6504C1210C65EE60C0C8EE7256A8')
 
 package() {
     source /etc/profile.d/jre.sh
