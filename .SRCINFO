@@ -5,19 +5,16 @@ pkgbase = browser360
 	url = https://browser.360.cn/se/linux/
 	arch = x86_64
 	license = custom
-	depends = ca-certificates
-	depends = ttf-liberation
-	depends = gconf
-	depends = libappindicator-gtk3
+	depends = alsa-lib
 	depends = gconf
 	depends = gtk2
 	depends = nss
+	depends = libxt
 	depends = libxss
-	depends = lsb-release
-	depends = wget
-	depends = xdg-utils
+	depends = libxtst
+	depends = libglvnd
 	source = https://down.360safe.com/gc/browser360-cn-stable_10.0.2012.0-1_amd64.deb
-	md5sums = 7c46603bfc45da505297f946d11d32e4
+	sha512sums = 4a4b5ca22c0728d8d0d74b10637e596595bbf973e2e7e17fc09be04d439bb24a5a08893bb4e4adf63cd5d24740aa95013147adb75085dc2ec3ae33c4dd76b4c6
 
 pkgname = browser360
 
