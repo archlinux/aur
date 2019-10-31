@@ -1,6 +1,6 @@
 # Maintainer: Ruslan Magomedov <rmagomedov.iam@yahoo.com>
 pkgname=scanastudio
-pkgver=4.0.6
+pkgver=4.0.7
 pkgrel=1
 epoch=
 pkgdesc="ScanaStudio is a software for Ikalogic logic analyzers"
@@ -25,7 +25,7 @@ source=(
 )
 noextract=()
 sha256sums=(
-	'cdc7342babfad59a9c56e8c5abf8c52258753d4a07679c6f8027b53854d35b2f'
+	'28751d1385fb60057859dbb749dcede0fadae8c30e2afa23d80caf48de9454c8'
 	'abb172b2fa0f00380c9c34b5ce51ae35b7434e93da127c23336bf9de81b49957'
 )
 validpgpkeys=()
