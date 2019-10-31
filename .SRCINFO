@@ -1,7 +1,7 @@
 pkgbase = soccer-cli-git
 	pkgdesc = Soccer for Hackers - a CLI for all the football scores.
 	pkgver = 20190116_r298.472e9f4
-	pkgrel = 1
+	pkgrel = 3
 	epoch = 1
 	url = https://github.com/architv/soccer-cli
 	install = soccer-cli-git.install
