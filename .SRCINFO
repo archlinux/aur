@@ -1,0 +1,17 @@
+pkgbase = mingw-w64-wine-qt
+	pkgdesc = Wine wrapper for Qt executables (mingw-w64)
+	pkgver = 1
+	pkgrel = 1
+	url = http://fedoraproject.org/wiki/MinGW
+	arch = any
+	license = MIT
+	depends = mingw-w64-wine
+	depends = mingw-w64-qt5-xmlpatterns
+	depends = mingw-w64-qt5-tools
+	source = wine-xmlpatterns.sh
+	source = wine-qhelpgenerator.sh
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = mingw-w64-wine-qt
+
