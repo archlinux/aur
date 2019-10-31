@@ -2,7 +2,7 @@
 
 pkgname=python-testing.common.database
 pkgver=2.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Utilities for testing.* packages'
 arch=(any)
 url='https://github.com/tk0miya/testing.common.database'
