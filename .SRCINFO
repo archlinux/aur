@@ -1,0 +1,17 @@
+pkgbase = plptools-git
+	pkgdesc = Utilities for communication with EPOC PDAs, e.g. mounting via FUSE
+	pkgver = rel.1.0.12.r51.g56dc15d
+	pkgrel = 2
+	url = https://github.com/rrthomas/plptools
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = make
+	makedepends = automake
+	depends = fuse
+	source = plptools::git+https://github.com/rrthomas/plptools
+	md5sums = SKIP
+
+pkgname = plptools-git
+
