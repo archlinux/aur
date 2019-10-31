@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=nRF Connect
+Comment=nRF Connect for PC 3.2.0
+GenericName=nRF Connect
+Exec=/opt/nrfconnect-appimage/nrfconnect %F
+Icon=/opt/nrfconnect-appimage/usr/share/icons/hicolor/0x0/apps/nrfconnect.png
+Path=/opt/nrfconnect-appimage/
+Terminal=false
+Type=Application
+StartupWMClass=nRF Connect
+StartupNotify=true
+Categories=Development
