@@ -3,7 +3,7 @@ pkgbase = data-science-stack
 	pkgrel = 1
 	arch = any
 
-pkgname = python-data-science-meta
+pkgname = data-science-python-meta
 	pkgdesc = Meta package for python packages
 	depends = python-pandas
 	depends = python-numpy
@@ -21,7 +21,7 @@ pkgname = python-data-science-meta
 	depends = ipython
 	replaces = 
 
-pkgname = data-science-utils
+pkgname = data-science-utils-meta
 	pkgdesc = Meta package for data science packages
 	depends = git
 	replaces = 

@@ -2,14 +2,14 @@
 
 
 pkgbase=data-science-stack
-pkgname=(python-data-science-meta
-	     data-science-utils
+pkgname=(data-science-python-meta
+	     data-science-utils-meta
 )
 pkgver=0.1
 pkgrel=1
 arch=(any)
 
-package_python-data-science-meta() {
+package_data-science-python-meta() {
   pkgdesc='Meta package for python packages'
   replaces=()
   depends=(python-pandas
@@ -29,7 +29,7 @@ package_python-data-science-meta() {
   )
 }
 
-package_data-science-utils() {
+package_data-science-utils-meta() {
   pkgdesc='Meta package for data science packages'
   replaces=()
   depends=(git
