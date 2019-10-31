@@ -11,7 +11,7 @@
 _srcname=ffmpeg
 pkgname=ffmpeg-qsv
 pkgver=4.2.1
-pkgrel=1
+pkgrel=3
 pkgdesc='Complete solution to record, convert and stream audio and video (including qsv and libfdk-aac)'
 arch=(x86_64)
 url='https://www.ffmpeg.org/'
@@ -101,7 +101,7 @@ sha256sums=('SKIP'
 build() {
   cd ffmpeg
 
-  export PKG_CONFIG_PATH="${PKG_CONFIG_PATH:+${PKG_CONFIG_PATH}:}/opt/intel/mediasdk/lib64/pkgconfig"
+  export PKG_CONFIG_PATH="${PKG_CONFIG_PATH:+${PKG_CONFIG_PATH}:}/opt/intel/mediasdk/lib/pkgconfig"
 
   ./configure \
     --prefix=/usr \
