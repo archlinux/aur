@@ -1,4 +1,4 @@
-# Maintainer : nerfingen <nerfingen at yahoo dot de>
+# Maintainer : nerfingen <nerfingen@yahoo.de>
 
 _pkgname=weechat-discord
 pkgname=weechat-discord-git
