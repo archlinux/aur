@@ -11,7 +11,7 @@ pkgrel=1
 arch=(any)
 
 package_data-science-python-meta() {
-  pkgdesc='Meta package for python packages'
+  pkgdesc='Meta package for python data science packages'
   replaces=()
   depends=(python-pandas
            python-numpy
@@ -43,7 +43,19 @@ package_data-science-languages-meta() {
 package_data-science-utils-meta() {
   pkgdesc='Meta package for data science utils'
   replaces=()
-  depends=(git
-           
+  depends=(git           
+  )
+}
+
+package_data-science-mkl-meta() {
+  pkgdesc='Meta package for data science packages compiled with the Intel MKL library '
+  replaces=()
+  depends=(python-numpy-mkl
+           python-scipy-mkl
+           mkl-dnn
+           julia-mkl
+           python-mkl-fft
+           python-mkl-random
+           python-mkl-service
   )
 }

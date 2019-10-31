@@ -4,7 +4,7 @@ pkgbase = data-science-stack
 	arch = any
 
 pkgname = data-science-python-meta
-	pkgdesc = Meta package for python packages
+	pkgdesc = Meta package for python data science packages
 	depends = python-pandas
 	depends = python-numpy
 	depends = miniconda3
