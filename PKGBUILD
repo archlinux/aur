@@ -2,7 +2,7 @@
 # Maintainer: Steven Allen <steven@stebalien.com>
 
 pkgname=ndyndns
-pkgver=2.3
+pkgver=2.3.1
 pkgrel=1
 pkgdesc="Update client for the dynamic DNS services from DynDNS and Namecheap"
 url="https://github.com/niklata/ndyndns"
@@ -16,11 +16,11 @@ source=("https://github.com/niklata/ndyndns/archive/v${pkgver}.tar.gz"
         'ndyndns.sysusers'
         'ndyndns.conf'
         "${pkgname}.install")
-sha256sums=('555960f18895153daeeafcea60eb374f2fa483685c7d326a1d699b10e03711b6'
+sha256sums=('b610579adfb89505439c4f69e6633cec632b8abe8de4ceecb16c01746d5debb4'
             'f59f189536536f4ee55f8c38a5df537bbc9ce5f9fb52d15ea3ecc6ae9c610221'
             '47b3b368a43a42fb9ca7cad4c6a3d95f5eae978b8654d55e5b82a6859c5fc7cf'
             'c71c313a08cdd9261a331f1dace91d423d63c506582f69dac6f52d4b73d25ed7'
-            'b31c99abc68fa4bbda9c5334f97fdecef293c5c0790176a27a2af4c1d6b5d7a4')
+            '8cda5abbbeeb4e8af44fb0fb7ec683bea775e617c1a8c08715a28ee00db28c40')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"

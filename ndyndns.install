@@ -1,5 +1,4 @@
 post_install() {
-    systemd-sysusers
     chown ndyndns:ndyndns var/lib/ndyndns/var
 }
 
