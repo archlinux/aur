@@ -22,7 +22,7 @@ pkgname = data-science-python-meta
 	replaces = 
 
 pkgname = data-science-utils-meta
-	pkgdesc = Meta package for data science packages
+	pkgdesc = Meta package for data science utils
 	depends = git
 	replaces = 
 

@@ -29,9 +29,20 @@ package_data-science-python-meta() {
   )
 }
 
+package_data-science-languages-meta() {
+  pkgdesc='Meta package for data science languages'
+  replaces=()
+  depends=(r
+           julia
+           python
+           go
+  )
+}
+
 package_data-science-utils-meta() {
-  pkgdesc='Meta package for data science packages'
+  pkgdesc='Meta package for data science utils'
   replaces=()
   depends=(git
+           
   )
 }
