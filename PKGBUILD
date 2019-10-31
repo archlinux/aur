@@ -1,7 +1,7 @@
 # Maintainer: Dimitris Kiziridis <ragouel@outlook.com>
 
 pkgname=('arc-icon-theme-full-git')
-pkgver=0
+pkgver=1.0.r100.gae267dc
 pkgrel=1
 pkgdesc="The complete Arc icon theme."
 arch=('any')
