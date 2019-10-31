@@ -16,22 +16,19 @@
 
 pkgbase=llvm-minimal-git
 pkgname=('llvm-minimal-git' 'llvm-libs-minimal-git')
-pkgver=10.0.0_r327278.04398c729b2
+pkgver=10.0.0_r330749.e491e82639d
 pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
-license=('custom:University of Illinois/NCSA Open Source License')
+license=('custom:Apache 2.0 with LLVM Exception')
 makedepends=('git' 'cmake' 'ninja' 'libffi' 'libedit' 'ncurses' 'libxml2'
              'python-sphinx' 'python-recommonmark' 'swig')
 source=("llvm-project::git+https://github.com/llvm/llvm-project.git"
-                'llvm-config.h'
-                'enable-SSP-and-PIE-by-default.patch')
+                'llvm-config.h')
 md5sums=('SKIP'
-         '295c343dcd457dc534662f011d7cff1a'
-         '5e9b3822e6b7de45f0ecb0ad71b3f7d3')
+         '295c343dcd457dc534662f011d7cff1a')
 sha512sums=('SKIP'
-            '75e743dea28b280943b3cc7f8bbb871b57d110a7f2b9da2e6845c1c36bf170dd883fca54e463f5f49e0c3effe07fbd0db0f8cf5a12a2469d3f792af21a73fcdd'
-            '2fdbae0b62d33411beaf191920ff280f83fa80fd505a71077671027f27ed8c61c5867de3e6ee6f26734c7605037e86796404212182f8ffa71f4af6ed2c316a40')
+            '75e743dea28b280943b3cc7f8bbb871b57d110a7f2b9da2e6845c1c36bf170dd883fca54e463f5f49e0c3effe07fbd0db0f8cf5a12a2469d3f792af21a73fcdd')
 
 # NINJAFLAGS is an env var used to pass commandline options to ninja
 # NOTE: It's your responbility to validate the value of $NINJAFLAGS. If unsure, don't set it.
@@ -60,9 +57,6 @@ prepare() {
     cd llvm-project
     # remove code parts not needed for build
     rm -rf debuginfo-tests libclc libcxx libcxxabi libunwind lld lldb llgo openmp parallel-libs polly pstl
-
-    cd clang
-    patch --forward --strip=1 --input="$srcdir"/enable-SSP-and-PIE-by-default.patch
 }
 
 build() {
