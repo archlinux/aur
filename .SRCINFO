@@ -5,6 +5,7 @@ pkgbase = dovecot-xaps-daemon
 	url = https://github.com/st3fan/dovecot-xaps-daemon
 	arch = any
 	license = MIT
+	makedepends = go
 	conflicts = dovecot-xaps-daemon-git
 	backup = etc/xapsd/xapsd.conf
 	source = https://github.com/st3fan/dovecot-xaps-daemon/archive/v0.7.tar.gz
