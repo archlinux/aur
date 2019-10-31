@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Mini Diary
+Comment=Simple and secure journal app
+Exec=/usr/bin/mini-diary
+Terminal=false
+Type=Application
+Icon=mini-diary
+StartupWMClass=Mini Diary
+Categories=GTK;Office;Calendar;
