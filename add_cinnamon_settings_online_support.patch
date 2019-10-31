@@ -1,26 +1,28 @@
---- src/gcal-source-dialog.c
-+++ src/gcal-source-dialog.c
-@@ -696,6 +696,17 @@
-                      const gchar *arg)
+--- src/gui/gcal-window.c
++++ src/gui/gcal-window.c
+@@ -394,8 +394,22 @@
+                                    gpointer       user_data)
  {
-   GDBusProxy *proxy;
+   GApplication *application = g_application_get_default ();
+-
+-  gcal_utils_launch_online_accounts_panel (g_application_get_dbus_connection (application), NULL, NULL);
 +  gchar *desktop_environment;
 +
 +  desktop_environment = getenv ("XDG_CURRENT_DESKTOP");
 +  if (desktop_environment)
++  {
++    if (g_strcmp0 (desktop_environment, "X-Cinnamon") == 0 || g_strcmp0 (desktop_environment, "Cinnamon") == 0)
 +    {
-+      if (g_strcmp0 (desktop_environment, "X-Cinnamon") == 0 || g_strcmp0 (desktop_environment, "Cinnamon") == 0)
-+        {
-+          g_spawn_command_line_async ("cinnamon-settings online-accounts", NULL);
-+          return;
-+        }
+++     g_spawn_command_line_async ("cinnamon-settings online-accounts", NULL);
+++     return;
 +    }
++    else if (g_strcmp0 (desktop_environment, "GNOME") == 0)
++    {
++      gcal_utils_launch_online_accounts_panel (g_application_get_dbus_connection (application), NULL, NULL);
++    }
++  }
++
+ }
  
-   proxy = g_dbus_proxy_new_for_bus_sync (G_BUS_TYPE_SESSION,
-                                          G_DBUS_PROXY_FLAGS_NONE,
-@@ -2338,4 +2349,4 @@
-   g_return_if_fail (source && E_IS_SOURCE (source));
- 
-   g_set_object (&dialog->source, source);
--}
-+}
+ static void
+
