@@ -2,7 +2,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=qt5-datavis3d
-_qtver=5.13.1
+_qtver=5.13.2
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=('x86_64')
@@ -15,7 +15,7 @@ optdepends=('qt5-declarative: QML bindings')
 groups=('qt' 'qt5')
 _pkgfqn="${pkgname/5-/}-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('b153f05028eabf9485c6b5c321fb3e093402be9d8717518dd9eaaad8fafaa256')
+sha256sums=('ecf934c3eb07173505781734f95cfc2cf9d89e6b1b98516ac98a137797f4ef28')
 
 prepare() {
   mkdir -p build
