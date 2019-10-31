@@ -2,7 +2,7 @@
 
 pkgname=python-scramp
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Python implementation of the SCRAM protocol"
 arch=(any)
 url='https://github.com/tlocke/scramp'
