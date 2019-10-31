@@ -3,7 +3,7 @@
 
 pkgname=emms-git
 epoch=1
-pkgver=5.1.0.g56d9ec2
+pkgver=5.2.r9.rg2bad5e6
 pkgrel=1
 pkgdesc="Emacs MultiMedia System -- git version"
 arch=('i686' 'x86_64')
@@ -24,7 +24,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd emms
-  git describe --long | tr - .
+  git describe --long | sed 's+-+.r+g'
 }
 
 prepare() {
