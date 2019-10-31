@@ -1,0 +1,20 @@
+pkgbase = aur-publisher-git
+	pkgdesc = Publishes software instantly to Arch Linuxes
+	pkgver = r11.1411290
+	pkgrel = 1
+	url = https://gitlab.com/es20490446e/aur-publisher
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = curl
+	depends = silently
+	provides = aur
+	provides = aur-publisher
+	conflicts = aur
+	conflicts = aur-publisher
+	replaces = aur
+	source = git+https://gitlab.com/es20490446e/aur-publisher.git
+	md5sums = SKIP
+
+pkgname = aur-publisher-git
+
