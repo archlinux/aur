@@ -5,7 +5,7 @@
 
 pkgname=st
 pkgver=0.8.2
-pkgrel=8
+pkgrel=9
 pkgdesc='A simple virtual terminal emulator for X.'
 arch=('i686' 'x86_64' 'armv7h')
 license=('MIT')
@@ -28,35 +28,32 @@ prepare() {
   # configuration states are determined by the presence of two files in
   # $BUILDDIR:
   #
-  # * config.h: The user has supplied his or her configuration. The file will
-  #   be copied to $srcdir and used during build.
-  # * config.def.h only: The user was previously made aware of the
-  #   configuration options and has opted not to make any configuration
-  #   changes. The package is built using default values.
-  # * neither file: Initial state. The user receives a message on how to
-  #   configure this package. The build process is aborted after the copy
-  #   operation below.
+  # config.h  config.def.h  state
+  # ========  ============  =====
+  # absent    absent        Initial state. The user receives a message on how
+  #                         to configure this package.
+  # absent    present       The user was previously made aware of the
+  #                         configuration options and has not made any
+  #                         configuration changes. The package is built using
+  #                         default values.
+  # present                 The user has supplied his or her configuration. The
+  #                         file will be copied to $srcdir and used during
+  #                         build.
   #
-  # After this test, config.def.h is copied from $srcdir to provide an up to
-  # date template for the user. If neither file was present initially, further
-  # build steps are aborted at this point. Even if no config.h is provided,
-  # future runs will proceed with default values due to the presence of
-  # config.def.h.
-  abort=
+  # After this test, config.def.h is copied from $srcdir to $BUILDDIR to
+  # provide an up to date template for the user.
   if [ -e "$BUILDDIR/config.h" ]
   then
     cp "$BUILDDIR/config.h" "$_sourcedir"
   elif [ ! -e "$BUILDDIR/config.def.h" ]
   then
-    abort=1
-    msg='This package can be configured in config.h. Copy config.def.h just '
-    msg+='placed into the package directory to config.h and modify it to '
-    msg+='change the configuration. Or just leave it alone to use default '
-    msg+='values. Then restart the build process.'
-    error "$msg"
+    msg='This package can be configured in config.h. Copy the config.def.h '
+    msg+='that was just placed into the package directory to config.h and '
+    msg+='modify it to change the configuration. Or just leave it alone to '
+    msg+='continue to use default values.'
+    warning "$msg"
   fi
   cp "$_sourcedir/config.def.h" "$BUILDDIR"
-  test -z "$abort"
 }
 
 build() {
