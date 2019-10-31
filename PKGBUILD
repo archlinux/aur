@@ -1,9 +1,9 @@
 # Maintainer: SanskritFritz (gmail)
 
-pkgname=(pzl_common pzl_ajs pzl_akari pzl_arrowsudoku pzl_boggle pzl_bridges pzl_codeword pzl_fillomino pzl_futoshiki pzl_hidato pzl_hitori pzl_jigsaw pzl_jigsawsudoku pzl_kakuro pzl_minesweeper pzl_numberlink pzl_nurikabe pzl_scrabbler pzl_othello pzl_shikaku pzl_sokoban pzl_sudoku pzl_suguru pzl_sumpuzzle pzl_wordwheel pzl_wordladder)
+pkgname=(pzl_common pzl_ajs pzl_akari pzl_arrowsudoku pzl_boggle pzl_bridges pzl_codeword pzl_fillomino pzl_futoshiki pzl_hidato pzl_hitori pzl_jigsaw pzl_jigsawsudoku pzl_kakuro pzl_masyu pzl_minesweeper pzl_numberlink pzl_nurikabe pzl_scrabbler pzl_othello pzl_shikaku pzl_sokoban pzl_sudoku pzl_suguru pzl_sumpuzzle pzl_wordwheel pzl_wordladder)
 pkgbase="pzl_games"
-pkgver=18.1
-_pkgver=18_1
+pkgver=19.0
+_pkgver=19_0
 pkgrel=1
 pkgdesc="Small collection of puzzle games."
 arch=('any')
@@ -23,6 +23,7 @@ source=("http://pzl.org.uk/pzl3_$_pkgver.zip"
         "pzl_jigsaw.desktop"
         "pzl_jigsawsudoku.desktop"
         "pzl_kakuro.desktop"
+        "pzl_masyu.desktop"
         "pzl_minesweeper.desktop"
         "pzl_numberlink.desktop"
         "pzl_nurikabe.desktop"
@@ -36,7 +37,7 @@ source=("http://pzl.org.uk/pzl3_$_pkgver.zip"
         "pzl_wordwheel.desktop"
         "pzl_wordladder.desktop")
 
-md5sums=('3781e6309d21e8e32f560c2d83859853'
+md5sums=('fe27506f1bfd6fb637df840783a227fb'
          '6f5058e263976d69a2eb356ca2c2a6b5'
          '37af6d1fa020f7fa532a69a0e07b32ad'
          'a1e25c7621e92598bcdb8d442133031a'
@@ -50,6 +51,7 @@ md5sums=('3781e6309d21e8e32f560c2d83859853'
          '00333ad5a67aa529189cb8d5efce7ec2'
          'fa5438c87ada71ae5bdf2edd84df4290'
          '27c7b30bf6c9365397b35d4cca7044f8'
+         '0ff3ac0767cd8fc94388ef3b301c8adc'
          '3938559de7b10ca25f86ccb59676547e'
          'ab1d907a83c8b7e359eff308ee89d9d9'
          '08f441dcf7ec24f4148d9a952738d7f4'
@@ -204,6 +206,17 @@ package_pzl_kakuro() {
 	install -m644 pzl3_download/kakuro.pyw "$pkgdir/usr/share/pzl_games"
 	install -m644 pzl3_download/kakuro_icon.png "$pkgdir/usr/share/pixmaps/pzl_games"
 	install -m644 pzl_kakuro.desktop "$pkgdir/usr/share/applications"
+}
+
+package_pzl_masyu() {
+	pkgdesc="A game played on a rectangular grid in which some of the vertices contain black or white circles."
+	url="http://pzl.org.uk/masyu.html"
+	depends=('pzl_common')
+	install -dm755 "$pkgdir"/usr/share/{applications,pixmaps/pzl_games,pzl_games}
+	install -m644 pzl3_download/masyu.pyw "$pkgdir/usr/share/pzl_games"
+	install -m644 pzl3_download/masyu_data.py "$pkgdir/usr/share/pzl_games"
+	install -m644 pzl3_download/masyu_icon.png "$pkgdir/usr/share/pixmaps/pzl_games"
+	install -m644 pzl_masyu.desktop "$pkgdir/usr/share/applications"
 }
 
 package_pzl_minesweeper() {

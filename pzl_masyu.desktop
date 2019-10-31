@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=pzl games Masyu
+Comment=Masyu (pzl games)
+Categories=Game;LogicGame
+Exec=python /usr/share/pzl_games/masyu.pyw
+Terminal=false
+Icon=/usr/share/pixmaps/pzl_games/masyu_icon.png
+Type=Application
