@@ -2,7 +2,7 @@
 
 pkgname=kiss-gui
 pkgver=2.0.17
-pkgrel=1
+pkgrel=2
 pkgdesc="Crossplatform configuration tool for the Flyduino flight control system (KISS)"
 arch=(x86_64)
 url="https://github.com/flyduino/kissfc-chrome-gui"
