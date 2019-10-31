@@ -32,7 +32,6 @@ build() {
   cd "$srcdir/mysql-$pkgver"
   mkdir -p bld && cd $_
   cmake .. -DWITH_BOOST="../boost" -DWITH_SSL=system -DWITH_PROTOBUF=bundled
-  cd "$srcdir/mysql-$pkgver/bld"
   cmake --build . --target mysqlclient
   cmake --build . --target mysqlxclient
 
