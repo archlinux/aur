@@ -15,7 +15,7 @@ conflicts=('etterna-git')
 install='etterna.install'
 changelog=
 source=(
-    "${pkgname}-${pkgver}.tar.gz::https://github.com/etternagame${pkgname}/archive/v${pkgver}.tar.gz"
+    "${pkgname}-${pkgver}.tar.gz::https://github.com/etternagame/${pkgname}/archive/v${pkgver}.tar.gz"
     "${pkgname}.desktop"
 )
 sha256sums=(
