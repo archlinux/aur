@@ -14,7 +14,7 @@ sha512sums=('2b2ef42c7bc3a0581e142c890a32e64a2c423a9452d3cbc6d789fc306b05d055319
 prepare() {
   cd ${pkgname}-${pkgver}
   for i in {osd,trustd,machined,proxyd,ntpd,networkd}; do
-    cd "${srcdir}/${pkgname}-${pkgver}/internal/app/${i}"
+    cd "${srcdir}"/${pkgname}-${pkgver}/internal/app/${i}
     protoc -I./proto --go_out=plugins=grpc:proto proto/api.proto
   done
 }
@@ -26,5 +26,5 @@ build() {
 
 package() {
   cd ${pkgname}-${pkgver}
-  install -D -m 755 osctl "${pkgdir}/usr/bin/osctl"
+  install -Dm755 osctl "${pkgdir}"/usr/bin/osctl
 }
