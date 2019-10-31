@@ -1,7 +1,7 @@
 # Maintainer: Dimitris Kiziridis <ragouel@outlook.com>
 
 pkgname=('arc-icon-theme-full-git')
-pkgver=1.0.r100.gae267dc
+pkgver=r145.ae267dc
 pkgrel=1
 pkgdesc="The complete Arc icon theme."
 arch=('any')
@@ -15,7 +15,11 @@ options=('!strip')
 
 pkgver() {
 	cd "$srcdir"/rtl88-Themes/Arc-ICONS
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	( 
+		set -o pipefail
+		git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	)
 }
 
 prepare() {
