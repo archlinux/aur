@@ -1,13 +1,12 @@
 pkgbase = dirstalk-git
 pkgdesc = Multi threaded application designed to brute force paths on web servers, modern alternative to dirb and dirbuster
-pkgver = 1.3.0
+pkgver = 1.3.1
 pkgrel = 1
 url = https://github.com/stefanoj3/dirstalk
 arch = x86_64
 license = MIT
 makedepends = go
 makedepends = git
-makedepends = dep
 provides = dirstalk
 conflicts = dirstalk
 source = dirstalk-git::git+https://github.com/stefanoj3/dirstalk

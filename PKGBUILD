@@ -1,16 +1,16 @@
 # Maintainer: Stefano Gabryel <esse[dot]gab2[at]gmail[dot]com>
 
 pkgname=dirstalk
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc='Multi threaded application designed to brute force paths on web servers, modern alternative to dirb and dirbuster'
 url='https://github.com/stefanoj3/dirstalk'
 arch=('x86_64')
 license=('MIT')
-makedepends=('go' 'git' 'dep')
+makedepends=('go' 'git')
 options=('!emptydirs')
 source=(https://github.com/stefanoj3/dirstalk/archive/${pkgver}.tar.gz)
-sha512sums=('bafa76ce85f0d87bd63e814f120f2a16111aeecdeaef52f853415fcac7e8823aa04d788ae76a3ce4ebc0465321142392c2e8081364af624e11d9fe25b385e68c')
+sha512sums=('82dfcc33f2c194dd31a4220687daee8c0c830a17b7dbbdc76fd862c327b6a98eda3e15626543c8cac628132e0f0f9510c5e80d59a58ab5db96fd0592f7f256d5')
 provides=('dirstalk')
 
 prepare() {
@@ -22,7 +22,6 @@ prepare() {
 build() {
   cd go/src/github.com/stefanoj3/dirstalk
   export GOPATH="${srcdir}/go"
-  dep ensure
   make build
 }
 
