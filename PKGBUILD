@@ -19,7 +19,7 @@
 
 pkgbase=lib32-llvm-minimal-git
 pkgname=('lib32-llvm-minimal-git' 'lib32-llvm-libs-minimal-git')
-pkgver=10.0.0_r330504.12c9ffd1083
+pkgver=10.0.0_r330756.8d7bd575264
 pkgrel=1
 arch=('x86_64')
 url="http://llvm.org/"
@@ -29,6 +29,7 @@ makedepends=('git' 'cmake' 'ninja' 'lib32-libffi' 'lib32-zlib' 'python' 'lib32-g
 source=("llvm-project::git+https://github.com/llvm/llvm-project.git")
 md5sums=('SKIP')
 sha512sums=('SKIP')
+options=('staticlibs')
 
 # NINJAFLAGS is an env var used to pass commandline options to ninja
 # NOTE: It's your responbility to validate the value of $NINJAFLAGS. If unsure, don't set it.
