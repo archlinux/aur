@@ -1,16 +1,17 @@
 pkgbase = phpstorm
 	pkgdesc = Lightweight and Smart PHP IDE
-	pkgver = 2019.2.3b192.6817.20
+	pkgver = 2019.2.4b192.7142.41
 	pkgrel = 1
 	url = https://www.jetbrains.com/phpstorm/
 	arch = x86_64
 	arch = i686
 	license = Commercial
-	makedepends = rsync
+	depends = glib2
+	depends = python
 	options = !strip
-	source = https://download.jetbrains.com/webide/PhpStorm-2019.2.3.tar.gz
+	source = https://download.jetbrains.com/webide/PhpStorm-2019.2.4.tar.gz
 	source = jetbrains-phpstorm.desktop
-	sha512sums = 2b0f47c26f664fc05ebdb1f6b8e7fc38dd9f7fba1a0717936ca35cc63febd345fb573b1b004ccb89ddccaf3f755cd22d70de7954a199749be03f3f67255898f0
+	sha512sums = f1215162c9b459afc967b49966bcc12813284432b115af16fc6ccb60da0043a4d7a1a44bd7c712d123d972031bb38e27ee011dc84104281b8e299a7faaf9ec31
 	sha512sums = b10edd04a7d48641bec7a9e23037510b426acb5a3059267b2081ec0fce41272d8de413f0b4c1dddd3387bb0ce330c48b3f7894f4817973cd6d32a74a14af3528
 
 pkgname = phpstorm
@@ -20,4 +21,6 @@ pkgname = phpstorm
 	optdepends = java-openjfx: rendering Markdown files
 
 pkgname = phpstorm-jre
+	pkgdesc = JBR (JetBrains Runtime) for PhpStorm - a patched JDK
+	url = https://confluence.jetbrains.com/display/JBR/JetBrains+Runtime
 
