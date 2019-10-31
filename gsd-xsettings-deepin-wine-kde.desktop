@@ -1,0 +1,6 @@
+[Desktop Entry]
+Exec=/usr/lib/gsd-xsettings
+Name=GNOME Settings Daemon's xsettings plugin
+NoDisplay=true
+OnlyShowIn=KDE;
+Type=Application

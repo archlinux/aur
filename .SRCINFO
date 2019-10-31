@@ -1,0 +1,14 @@
+pkgbase = deepin-wine-apps-kde-fix
+	pkgdesc = Run gnome-settings-daemon under KDE to fix problem of some apps depends on deepin-wine
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://aur.archlinux.org/deepin-wine-apps-kde-fix
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gnome-settings-daemon
+	source = gsd-xsettings-deepin-wine-kde.desktop
+	md5sums = 58d2a2d8908b1e9e40f50cf407d9b1ad
+
+pkgname = deepin-wine-apps-kde-fix
+
