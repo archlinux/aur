@@ -8,7 +8,7 @@ pkgdesc='DVD and Blu-ray to MKV converter and network streamer - CLI only'
 arch=('i686' 'x86_64')
 url='http://www.makemkv.com'
 license=('LGPL' 'MPL' 'custom')
-depends=('ffmpeg')
+depends=('ffmpeg' 'java-runtime')
 optdepends_x86_64=('lib32-glibc: dts support')
 provides=('makemkv')
 conflicts=('makemkv')
@@ -23,21 +23,21 @@ sha512sums=('9086444f30de71a83d93cf9814f4485b5ebe78940acd722a549029af89408fd39a2
             '1c1ea3deefebc440f40c7cc710ac2123e20df8d6921846250ca50c39125afa0ef0bf6b3ecbcb71dd29e0b49772d7f77aa5af789bfd22746c92e44d15473637c2')
 
 build() {
-  cd "$srcdir/makemkv-oss-${pkgver}"
+  cd makemkv-oss-${pkgver}
   ./configure --prefix=/usr --disable-gui
   make
 }
 
 package() {
-  cd "${srcdir}/makemkv-oss-${pkgver}"
+  cd makemkv-oss-${pkgver}
   make DESTDIR="${pkgdir}" install
 
-  cd "${srcdir}/makemkv-bin-${pkgver}"
+  cd "${srcdir}"/makemkv-bin-${pkgver}
   make DESTDIR="${pkgdir}" install
 
-  install -Dm 644 src/eula_en_linux.txt "${pkgdir}/usr/share/licenses/${pkgname}/eula_en_linux.txt"
+  install -Dm644 src/eula_en_linux.txt "${pkgdir}"/usr/share/licenses/${pkgname}/eula_en_linux.txt
 
-  cd "$srcdir/"
-  install -d "${pkgdir}/usr/share/man/man1/"
-  install -m 644 -t "${pkgdir}/usr/share/man/man1/" makemkvcon.1 mmdtsdec.1
+  cd "${srcdir}"
+  install -d "${pkgdir}"/usr/share/man/man1/
+  install -m644 -t "${pkgdir}"/usr/share/man/man1/ makemkvcon.1 mmdtsdec.1
 }

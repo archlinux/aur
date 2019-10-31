@@ -10,6 +10,7 @@ pkgbase = makemkv-cli
 	license = MPL
 	license = custom
 	depends = ffmpeg
+	depends = java-runtime
 	provides = makemkv
 	conflicts = makemkv
 	source = http://www.makemkv.com/download/makemkv-bin-1.14.5.tar.gz
