@@ -31,15 +31,11 @@ package() {
 
     chmod -R 755 "$pkgdir/opt/"
 
-    for i in 16x16 24x24 32x32 48x48 64x64 96x96 128x128 256x256 512x512 1024x1024; do
-        install -Dm 644 "$pkgdir/opt/Motrix/usr/share/icons/hicolor/$i/apps/motrix.png" \
-                        "$pkgdir/usr/share/icons/hicolor/$i/apps/motrix.png"
-    done
+    mkdir -p "$pkgdir/usr"
+    mv "$pkgdir/opt/Motrix/usr/share" "$pkgdir/usr/share"
 
     sed -i 's/Exec=AppRun/Exec=\/opt\/Motrix\/motrix/' "$pkgdir/opt/Motrix/motrix.desktop"
-
     install -Dm644 "$pkgdir/opt/Motrix/motrix.desktop" "$pkgdir/usr/share/applications/motrix.desktop"
-    install -Dm644 "$pkgdir/opt/Motrix/usr/share/mime/motrix.xml" "$pkgdir/usr/share/mime/application/motrix.xml"
 
     mkdir -p "$pkgdir/usr/bin"
     ln -s /opt/Motrix/motrix "$pkgdir/usr/bin/motrix"
@@ -47,6 +43,4 @@ package() {
     rm "$pkgdir/opt/Motrix/AppRun"
     rm "$pkgdir/opt/Motrix/motrix.png"
     rm "$pkgdir/opt/Motrix/motrix.desktop"
-
-    rm -r "$pkgdir/opt/Motrix/usr/"
 }
