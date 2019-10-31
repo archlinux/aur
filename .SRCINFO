@@ -1,0 +1,17 @@
+pkgbase = jitter-git
+	pkgdesc = An efficient langauge virtual machine generator
+	pkgver = r596.745ba29
+	pkgrel = 1
+	url = http://ageinghacker.net/git/cgit.cgi/jitter
+	arch = i686
+	arch = x86_64
+	license = GPLv3+
+	makedepends = git
+	depends = gc
+	provides = jitter
+	conflicts = jitter
+	source = jitter::git+http://ageinghacker.net/git/cgit.cgi/jitter#commit=745ba29c15dd56c60a7ab0320e09c1ca705018b7
+	md5sums = SKIP
+
+pkgname = jitter-git
+
