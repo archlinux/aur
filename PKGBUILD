@@ -4,7 +4,7 @@
 # Contributor: Alessio Sergi <asergi at archlinux dot us>
 # Contributor: Gaute Hope <eg@gaute.vetsj.com>
 # Contributor: Marcos Heredia <chelqo@gmail.com>
- 
+
 pkgname=gtkhotkey
 pkgver=0.2.1
 pkgrel=9
@@ -14,26 +14,19 @@ url="https://launchpad.net/gtkhotkey"
 license=('LGPL3')
 depends=('gtk2')
 makedepends=('intltool')
-source=("http://launchpad.net/$pkgname/0.2/$pkgver/+download/$pkgname-$pkgver.tar.gz")
-md5sums=('bfdc73e68e9adbe0d506d31a25862914')
- 
+source=("http://launchpad.net/$pkgname/0.2/$pkgver/+download/$pkgname-$pkgver.tar.gz"
+        fix-glib-and-docpath.patch)
+sha512sums=('7f7e1b9bd94ff806d98277f2dafbf5b6569efdc6f0367a83e885d38584a8f6e098f31d0f03b080f2ca76394eb73e43f9da07e0d944a2e6443a55d9f2e8fee324'
+            '2069f269b5abcd204a00a2e1ced78699e1acf7e7594ff660771911f711e4c3a36931378d32ac97b9fd43216e2522bec2f27e6c8274f2a599999ec8bb6a793f63')
+
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
- 
-  # doc path fix
-  sed -i '/gtkhotkeydocdir/s/\${prefix}/\${datadir}/g' Makefile.{am,in}
- 
-  # glib2 fix
-  sed -i 's|glib/gquark\.h|glib.h|' src/gtk-hotkey-error.h
-  sed -i 's|glib/gtypes\.h|glib.h|' src/x11/tomboykeybinder.h
- 
-  ./configure --prefix=/usr \
-              --disable-static
+  cd ${pkgname}-${pkgver}
+  patch -p0 < "${srcdir}"/fix-glib-and-docpath.patch
+  ./configure --prefix=/usr --disable-static
   make
 }
- 
+
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
- 
-  make DESTDIR="$pkgdir/" install
+  cd ${pkgname}-${pkgver}
+  make DESTDIR="${pkgdir}"/ install
 }

@@ -1,0 +1,48 @@
+diff --git Makefile.am Makefile.am
+--- Makefile.am	2009-09-03 22:52:49.000000000 +0200
++++ Makefile.am	2019-10-28 18:18:35.544582709 +0100
+@@ -11,7 +11,7 @@
+ pkgconfigdir = $(libdir)/pkgconfig
+ pkgconfig_DATA = gtkhotkey-1.0.pc
+
+-gtkhotkeydocdir = ${prefix}/doc/gtkhotkey
++gtkhotkeydocdir = ${datadir}/doc/gtkhotkey
+ gtkhotkeydoc_DATA = \
+ 	README			\
+ 	COPYING			\
+diff --git Makefile.in Makefile.in
+--- Makefile.in	2009-09-03 22:53:33.000000000 +0200
++++ Makefile.in	2019-10-28 18:18:35.544582709 +0100
+@@ -246,7 +246,7 @@
+ SUBDIRS = src po test doc
+ pkgconfigdir = $(libdir)/pkgconfig
+ pkgconfig_DATA = gtkhotkey-1.0.pc
+-gtkhotkeydocdir = ${prefix}/doc/gtkhotkey
++gtkhotkeydocdir = ${datadir}/doc/gtkhotkey
+ gtkhotkeydoc_DATA = \
+ 	README			\
+ 	COPYING			\
+diff --git src/gtk-hotkey-error.h src/gtk-hotkey-error.h
+--- src/gtk-hotkey-error.h	2009-09-03 22:52:49.000000000 +0200
++++ src/gtk-hotkey-error.h	2019-10-28 18:18:35.544582709 +0100
+@@ -23,7 +23,7 @@
+ #ifndef __GTK_HOTKEY_ERROR_H__
+ #define __GTK_HOTKEY_ERROR_H__
+
+-#include <glib/gquark.h>
++#include <glib.h>
+
+ G_BEGIN_DECLS
+
+diff --git src/x11/tomboykeybinder.h src/x11/tomboykeybinder.h
+--- src/x11/tomboykeybinder.h	2009-09-03 22:52:49.000000000 +0200
++++ src/x11/tomboykeybinder.h	2019-10-28 18:18:35.547916050 +0100
+@@ -2,7 +2,7 @@
+ #ifndef __TOMBOY_KEY_BINDER_H__
+ #define __TOMBOY_KEY_BINDER_H__
+
+-#include <glib/gtypes.h>
++#include <glib.h>
+
+ G_BEGIN_DECLS
+
