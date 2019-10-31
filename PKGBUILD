@@ -3,12 +3,12 @@
 pkgname=robo3t-bin
 _pkgver=1.3.1
 pkgver=${_pkgver/-/_}
-pkgrel=1
+pkgrel=2
 pkgdesc='Shell-centric MongoDB management tool'
 arch=('x86_64')
 url='https://robomongo.org/'
 license=('GPLv3')
-depends=('qt5-base' 'pcre')
+depends=('qt5-base' 'pcre' 'openssl-1.0')
 replaces=('robomongo-bin')
 conflicts=('robo3t' 'robomongo')
 _tarfile="robo3t-${_pkgver}-linux-x86_64-7419c406"
