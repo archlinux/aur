@@ -55,7 +55,7 @@ prepare() {
 
     cd llvm-project
     # remove code parts not needed to build this package
-    rm -rf clang clang-tools-extra compiler-rt debuginfo-tests libclc libcxx libcxxabi libunwind lld lldb llgo openmp parallel-libs polly pstl
+    rm -rf debuginfo-tests libclc libcxx libcxxabi libunwind lld lldb llgo openmp parallel-libs polly pstl
 }
 
 build() {
@@ -86,7 +86,8 @@ build() {
         -D FFI_INCLUDE_DIR=$(pkg-config --variable=includedir libffi) \
         -D LLVM_BINUTILS_INCDIR=/usr/include \
         -D LLVM_VERSION_SUFFIX="" \
-        -D LLVM_ENABLE_BINDINGS=OFF
+        -D LLVM_ENABLE_BINDINGS=OFF \
+        -D LLVM_ENABLE_PROJECTS="compiler-rt;clang-tools-extra;clang"
         
         ninja $NINJAFLAGS
 }
