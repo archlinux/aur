@@ -1,2 +1,5 @@
-*pkg.tar.xz
-rrcc
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!rrcc.desktop

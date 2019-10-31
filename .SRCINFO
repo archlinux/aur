@@ -1,15 +1,17 @@
 pkgbase = rrcc
-	pkgdesc = RoboRock Control Center
-	pkgver = 0.8.3
+	pkgdesc = RoboRock Control Center for Xiaomi vacuum cleaners
+	pkgver = 0.8.7
 	pkgrel = 1
 	url = https://github.com/LazyT/rrcc
-	arch = any
+	arch = x86_64
 	license = GPL3
-	makedepends = git
-	makedepends = make
-	makedepends = gcc
-	source = rrcc::git+https://github.com/LazyT/rrcc.git#tag=0.8.3
-	md5sums = SKIP
+	depends = libssh
+	depends = libarchive
+	depends = qt5-websockets
+	source = rrcc-0.8.7.tar.gz::https://github.com/LazyT/rrcc/archive/0.8.7.tar.gz
+	source = rrcc.desktop
+	md5sums = ed2cf9274acb08646d3b34877551aa42
+	md5sums = ec967e26644bd9c18f5a6178cca3691e
 
 pkgname = rrcc
 

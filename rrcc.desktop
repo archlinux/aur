@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+GenericName=Xiaomi vacuum control software
+Categories=Qt;
+Terminal=false
+Exec=rrcc
+Name=RoboRock Control Center
+Icon=rrcc
