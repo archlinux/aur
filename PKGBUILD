@@ -1,15 +1,15 @@
 # Maintainer: Samo Turk <samo.turk@gmail.com> 
 pkgname=rdkit
 _pkgname=RDKit
-pkgver=2019_03_4
-pkgrel=2
+pkgver=2019_09_1
+pkgrel=1
 pkgdesc="RDKit - A collection of cheminformatics and machine-learning software written in C++ and Python."
 arch=("i686" "x86_64" "armv7h")
 url="http://rdkit.org/"
 license=('New BSD License')
 depends=( 'bison' 'boost' 'boost-libs' 'cmake' 'flex' 'python' 'python-numpy' 'sqlite3' 'python-cairocffi' 'python-pillow' 'eigen3' )
 source=("https://github.com/rdkit/rdkit/archive/Release_${pkgver}.tar.gz")
-sha256sums=('33c8eb5b3162296662ec06f8dd58e11fc21fa2ebcb13b456fcb3c4f3a39a357c')
+sha256sums=('bfcb3c094cd0e7ec6fbebacde71f29f61df71601eb3d577eb295fd45771513eb')
 conflicts=('rdkit-python2' 'rdkit-git')
 
 build() {
