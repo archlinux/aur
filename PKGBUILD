@@ -1,7 +1,7 @@
-# Maintainer: Lucas H. Gabrielli <heitzmann at gmail dot com>
+# Maintainer: Lucas H. Gabrielli <heitzmann@gmail.com>
 
 pkgname=petsc-git
-pkgver=20190929
+pkgver=20191031
 pkgrel=1
 _config=linux-c-opt
 pkgdesc="Portable, extensible toolkit for scientific computation"
@@ -48,7 +48,8 @@ build() {
   # "linux-c-debug" for some things, so _config should be changed to "linux-c-debug"
   #CONFOPTS="${CONFOPTS} --with-debugging=1"
 
-  for external_pkg in amd eigen hypre metis mumps parmetis party pastix ptscotch scalapack suitesparse sundials superlu superlu_dist
+  # Removed pastix due to incompatibility with current MPI (2019-10-31)
+  for external_pkg in amd eigen hypre metis mumps parmetis party ptscotch scalapack suitesparse sundials superlu superlu_dist
   do
     CONFOPTS="${CONFOPTS} --download-${external_pkg}=1"
   done
