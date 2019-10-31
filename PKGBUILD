@@ -2,13 +2,13 @@
 
 pkgname=swanctl-completion
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='strongSwan swanctl tool bash autocompletion'
 url='https://github.com/Thermi/swanctl-completion'
 license=('GPL3')
 arch=('any')
 depends=('python' 'python-urllib3' 'strongswan')
-
+optdepends=('python-vici')
 source=("https://github.com/Thermi/swanctl-completion/releases/download/1.0/swanctl-completion-1.0.tar.gz"{,.asc})
 
 validpgpkeys=("352493BEB5F78E631372AF2DF54EE40B0739AD6C")
