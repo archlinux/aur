@@ -2,9 +2,9 @@
 
 pkgname=heimer
 pkgver=1.11.0
-pkgrel=1
+pkgrel=1.1
 pkgdesc="simple cross-platform mind map and note-taking tool written in Qt."
-arch=("any")
+arch=("x86_64")
 url="https://github.com/juzzlin/heimer"
 license=("GPL3")
 depends=("qt5-tools")
