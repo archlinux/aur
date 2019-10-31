@@ -1,6 +1,6 @@
 src
 pkg
 *.pkg.tar.xz
-*.whl
+*.tar.gz
 LICENSE
 *.log
