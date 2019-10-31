@@ -13,10 +13,10 @@ arch=('any')
 depends=('xorg-fonts-encodings' 'xorg-font-utils' 'fontconfig')
 
 package() {
-	cd "${srcdir}/ttf-freebanglafont/"
-	for i in *.ttf; do
-		install -Dm644 "${i}" "${pkgdir}/usr/share/fonts/TTF/${i}.ttf"
-	done
+  cd ttf-freebanglafont
+  for i in *.ttf; do
+    install -Dm644 "${i}" "${pkgdir}"/usr/share/fonts/TTF/${i}.ttf
+  done
 }
 
 _fonts=('solaimanlipi'
