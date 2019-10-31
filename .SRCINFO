@@ -1,0 +1,25 @@
+pkgbase = imagine-git
+	pkgdesc = PNG/JPEG optimization app
+	pkgver = v0.5.0.r1.gf68ae12
+	pkgrel = 1
+	url = https://github.com/meowtec/Imagine
+	install = imagine.install
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = npm
+	depends = electron2
+	depends = imagemagick
+	provides = imagine-git
+	conflicts = imagine-git
+	source = imagine::git+https://github.com/meowtec/Imagine.git
+	source = imagine.sh
+	source = imagine.desktop
+	source = imagine.install
+	md5sums = SKIP
+	md5sums = e7577f322638f548ea42e7e1c9cd77d8
+	md5sums = 7f80869e29fd5af22e4c303f9a10975f
+	md5sums = 671bee3aec8f7e0a0556ee8d336c604d
+
+pkgname = imagine-git
+

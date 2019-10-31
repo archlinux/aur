@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Imagine
+Comment=PNG/JPEG optimization app
+Exec=/usr/bin/imagine
+Terminal=false
+Type=Application
+Icon=imagine
+StartupWMClass=Imagine
+Categories=Graphics;
