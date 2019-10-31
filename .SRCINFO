@@ -1,12 +1,10 @@
 pkgbase = goland
-	pkgdesc = Capable and Ergonomic Go IDE
 	pkgver = 2019.2.3
 	pkgrel = 1
 	url = https://www.jetbrains.com/go/
 	arch = x86_64
 	arch = i686
 	license = Commercial
-	makedepends = rsync
 	options = !strip
 	source = https://download.jetbrains.com/go/goland-2019.2.3.tar.gz
 	source = jetbrains-goland.desktop
@@ -14,12 +12,15 @@ pkgbase = goland
 	sha512sums = 930a0f1269b7f49f7a08fd5fbfff178628114dee01f4e4e8426c643d7c442b77f178b5188325caf0ace5503c5f873a419cd3f7128b63d7c3c9baf8065b0065aa
 
 pkgname = goland
+	pkgdesc = Capable and Ergonomic Go IDE
 	optdepends = goland-jre: JetBrains custom Java Runtime (Recommended)
 	optdepends = java-runtime: JRE - Required if goland-jre is not installed
 	conflicts = gogland
 	replaces = gogland
 
 pkgname = goland-jre
+	pkgdesc = JBR (JetBrains Runtime) for Goland - a patched JDK
+	url = https://confluence.jetbrains.com/display/JBR/JetBrains+Runtime
 	conflicts = gogland-jre
 	replaces = gogland-jre
 
