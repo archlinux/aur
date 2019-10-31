@@ -4,7 +4,7 @@
 
 pkgname=bluecurve-icon-theme
 pkgver=8.0.2
-pkgrel=23
+pkgrel=24
 _md5=3a3ecac0922f964bb1c4be617e8dec37
 
 pkgdesc="Red Hat Icons from Fedora 10"
@@ -14,7 +14,6 @@ license=('GPL')
 groups=('redhat-artwork')
 makedepends=('python')
 optdepends=('gnome-icon-theme: for inheriting missing icons')
-conflicts=('xcursor-bluecurve')
 options=(!emptydirs)
 
 source=("https://src.fedoraproject.org/repo/pkgs/$pkgname/$pkgname-$pkgver.tar.bz2/${_md5}/$pkgname-$pkgver.tar.bz2")
@@ -24,20 +23,29 @@ build() {
   cd "$srcdir/$pkgname-$pkgver"
 
   msg2 "Call upstream make"
+
   ./configure --prefix="$pkgdir/usr"
   make
 
   cd theme
 
+  msg2 "Aliases Bluecurve to Bluecurve8"
+
+  # This is to avoid conflicts with community xcursor-bluecurve package
+  mv Bluecurve Bluecurve8
+  sed -i "s/^Name=Bluecurve$/Name=Bluecurve8/" Bluecurve8/index.theme
+  sed -i 's/name="Bluecurve"/name="Bluecurve8"/' Bluecurve8/Bluecurve.cursortheme
+  mv Bluecurve8/Bluecurve.cursortheme Bluecurve8/Bluecurve8.cursortheme
+
   msg2 "Remove now useless Make files"
 
-  for theme in Bluecurve Bluecurve-inverse LBluecurve LBluecurve-inverse; do
+  for theme in Bluecurve8 Bluecurve-inverse LBluecurve LBluecurve-inverse; do
     find . -type f -name "Makefile*" -exec rm {} \;
     find . -type f -name "*.in" -exec rm {} \;
     find . -type f -name "*.icon" -exec rm {} \;
   done
 
-  cd Bluecurve
+  cd Bluecurve8
 
   msg2 "Patch index.theme and symlink.manifest"
 
@@ -202,6 +210,10 @@ PYSCRIPT
   python read_manifest.py
   rm read_manifest.py symlink.manifest
 
+  # Prefer old watch cursor
+  rm cursors/watch
+  mv cursors/_watch-old_ cursors/watch
+
   # Remove broken links if any
   find -L . -type l -exec rm {} \;
 
@@ -216,7 +228,7 @@ package() {
   install -D -m644 COPYING $pkgdir/usr/share/licenses/$pkgname/LICENSE
   install -D -m644 AUTHORS $pkgdir/usr/share/licenses/$pkgname/AUTHORS
 
-  for theme in Bluecurve Bluecurve-inverse LBluecurve LBluecurve-inverse; do
+  for theme in Bluecurve8 Bluecurve-inverse LBluecurve LBluecurve-inverse; do
     cp -R theme/$theme $pkgdir/usr/share/icons/
   done
 }
