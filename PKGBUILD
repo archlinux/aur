@@ -1,4 +1,5 @@
-# Maintainer: Yurii Kolesnykov <root@yurikoles.com>
+# Maintainer: Lone_Wolf <lonewolf at xs4all dot nl>
+# Contributor: Yurii Kolesnykov <root@yurikoles.com>
 # Contributor: Luchesar V. ILIEV <luchesar%2eiliev%40gmail%2ecom>
 # Contributor: Anders Bergh <anders@archlinuxppc.org>
 # Contributor: Armin K. <krejzi at email dot com>
@@ -12,11 +13,11 @@
 pkgbase=lib32-llvm-git
 pkgname=(lib32-llvm-git lib32-llvm-libs-git)
 pkgdesc="Collection of modular and reusable compiler and toolchain technologies (32-bit, git)"
-pkgver=9.0.0_r318201.d98a0a362fb
+pkgver=10.0.0_r328055.120a5e9a745
 pkgrel=1
 arch=('x86_64')
 url='https://llvm.org/'
-license=('custom:University of Illinois/NCSA Open Source License')
+license=('custom:Apache 2.0 with LLVM Exception')
 makedepends=('cmake' 'lib32-gcc-libs' 'git' 'lib32-libffi' 'lib32-libxml2' 'lib32-zlib' 'ninja' 'python')
 source=("llvm-project::git+https://github.com/llvm/llvm-project.git")
 sha512sums=('SKIP')
