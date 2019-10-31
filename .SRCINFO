@@ -1,13 +1,13 @@
 pkgbase = otf-stix
 	pkgdesc = An OpenType font with math support, designed for scientific and engineering printing
-	pkgver = 2.0.1
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = http://www.stixfonts.org
 	arch = any
 	license = custom:OFL
 	depends = fontconfig
-	source = https://github.com/stipub/stixfonts/raw/v2.0.1/zipfiles/STIXv2.0.1.zip
-	sha256sums = 6bb3c6eee6761f4178bdb9eeed88b6bc391c80d496967f26d26988cbf1ab4883
+	source = https://github.com/stipub/stixfonts/raw/v2.0.2/zipfiles/STIXv2.0.2.zip
+	sha256sums = fef26941bf7eeab7ed6400a386211ba11360f0b2df22002382ceb3e2b551179d
 
 pkgname = otf-stix
 
