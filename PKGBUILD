@@ -3,7 +3,7 @@
 
 _pkgname=xfce-polkit
 pkgname=${_pkgname}-git
-pkgver=19.fabc2f7
+pkgver=27.89bab1e
 pkgrel=1
 pkgdesc='A simple PolicyKit authentication agent for XFCE'
 arch=('x86_64' 'i686')
@@ -19,12 +19,12 @@ sha256sums=('SKIP'
             'c7a18aa56a9e0b7b35f0817fa420a506b4b78d18baf62cece4e7488b3e93d968')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
+  cd ${_pkgname}
   echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
-build() { 
-  cd "$srcdir/$_pkgname"
+build() {
+  cd ${_pkgname}
   aclocal
   autoconf
   automake --add-missing
@@ -33,6 +33,6 @@ build() {
 }
 
 package() {
-  install -Dm755 "$srcdir/$_pkgname/src/xfce-polkit" "$pkgdir/usr/lib/$_pkgname/xfce-polkit"
-  install -Dm644 "$srcdir/xfce-polkit.desktop" "$pkgdir/etc/xdg/autostart/xfce-polkit.desktop"
+  install -Dm755 "${srcdir}"/${_pkgname}/src/xfce-polkit "${pkgdir}"/usr/lib/${_pkgname}/xfce-polkit
+  install -Dm644 "${srcdir}"/xfce-polkit.desktop "${pkgdir}"/etc/xdg/autostart/xfce-polkit.desktop
 }
