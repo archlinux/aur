@@ -3,13 +3,14 @@
 pkgname=bitwarden-cli-bin
 _pkgname=bitwarden-cli
 pkgver=1.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Natively packaged versions of the bitwarden cli'
 arch=(x86_64)
 url='https://github.com/bitwarden/cli'
 license=('GPL3')
 depends=('gcc-libs')
 makedepends=()
+options=(!strip)
 
 source=(
   "https://github.com/bitwarden/cli/releases/download/v$pkgver/bw-linux-$pkgver.zip"
