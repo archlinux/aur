@@ -14,14 +14,13 @@ source=(https://github.com/freechipsproject/chisel3/archive/v$pkgver.tar.gz)
 sha512sums=('b37557c92bcb5d9f73af3d8bbaf843404537b417532872467144a821cf42efb1b0173b503623fb8892e94beebab1bef0c312177721c31c4765781b44d2466078')
 
 build(){
-    cd "${srcdir}/${pkgname}3-${pkgver}"
-    sbt publishLocal
+  cd ${pkgname}3-${pkgver}
+  sbt publishLocal
 }
 
 package() {
-    install -d "${pkgdir}/usr/share/licenses/${pkgname}" "${pkgdir}/usr/share/scala/${pkgname}/"
-
-    cd "${srcdir}/${pkgname}3-${pkgver}"
-    install -Dm644 target/scala-2.12/${pkgname}3_2.12-${pkgver}.jar "${pkgdir}/usr/share/scala/${pkgname}/${pkgname}.jar"
-    install -Dm644 src/LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/"
+  cd ${pkgname}3-${pkgver}
+  install -dm755 "${pkgdir}"/usr/share/licenses/${pkgname} "${pkgdir}"/usr/share/scala/${pkgname}/
+  install -Dm644 target/scala-2.12/${pkgname}3_2.12-${pkgver}.jar "${pkgdir}"/usr/share/scala/${pkgname}/${pkgname}.jar
+  install -Dm644 src/LICENSE.txt "${pkgdir}"/usr/share/licenses/${pkgname}/
 }
