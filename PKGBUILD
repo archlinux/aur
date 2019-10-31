@@ -11,20 +11,23 @@ makedepends=('cmake' 'git')
 depends=('libpurple' 'mxml' 'libxml2' 'sqlite' 'libgcrypt')
 optdepends=('libpurple-carbons: message carbons support')
 conflicts=('libpurple-lurch-git')
-source=("git+https://github.com/gkdr/lurch.git#tag=v${pkgver}")
-sha512sums=('SKIP')
+source=("git+https://github.com/gkdr/lurch.git#tag=v${pkgver}"
+        gitmodule-paths.patch)
+sha512sums=('SKIP'
+            '43bcadb8246b97bb54c3642cd249e675777ff5cb2e5b04b164b8541ae8a173ab4608b01bfa1f07534125abd8b14e8054a55e644697fa99451e16e248959487af')
 
 prepare() {
-    cd "${srcdir}/${pkgname##libpurple-}"
-    sed -i "s#\.\./#https://github.com/gkdr/#g" .gitmodules
-    git submodule update --init --recursive
+  cd ${pkgname##libpurple-}
+  patch -p0 < ${srcdir}/gitmodule-paths.patch
+  git submodule update --init --recursive
 }
+
 build() {
-    cd "${srcdir}/${pkgname##libpurple-}"
-    make
+  cd ${pkgname##libpurple-}
+  make
 }
 
 package() {
-    cd "${srcdir}/${pkgname##libpurple-}"
-    make DESTDIR="${pkgdir}" install
+  cd ${pkgname##libpurple-}
+  make DESTDIR="${pkgdir}" install
 }

@@ -1,0 +1,11 @@
+--- .gitmodules	2019-10-28 18:10:13.773236077 +0100
++++ gitmod	2019-10-28 18:10:09.083220306 +0100
+@@ -1,6 +1,6 @@
+ [submodule "lib/axc"]
+ 	path = lib/axc
+-	url = ../axc
++	url = https://github.com/gkdr/axc
+ [submodule "lib/libomemo"]
+ 	path = lib/libomemo
+-	url = ../libomemo
++	url = https://github.com/gkdr/libomemo

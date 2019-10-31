@@ -16,7 +16,9 @@ pkgbase = libpurple-lurch
 	optdepends = libpurple-carbons: message carbons support
 	conflicts = libpurple-lurch-git
 	source = git+https://github.com/gkdr/lurch.git#tag=v0.6.8
+	source = gitmodule-paths.patch
 	sha512sums = SKIP
+	sha512sums = 43bcadb8246b97bb54c3642cd249e675777ff5cb2e5b04b164b8541ae8a173ab4608b01bfa1f07534125abd8b14e8054a55e644697fa99451e16e248959487af
 
 pkgname = libpurple-lurch
 
