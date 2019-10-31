@@ -20,8 +20,14 @@ _linux(){
     done
 }
 
-source_x86_64=("$(_linux)")
-sha256sums_x86_64=('9fe30f4e2143fc1ffd3060b82c959347f81533fab0836d72ed127d0f57619373')
+source_x86_64=(
+    "$(_linux)"
+    "start"
+)
+sha256sums_x86_64=(
+    '9fe30f4e2143fc1ffd3060b82c959347f81533fab0836d72ed127d0f57619373'
+    '06a20d6ed918d9958f8c336ea38422acc6e845f686639a1f98cf6a7f2117d5ef'
+)
 
 _prep() {
     cp ./bin/mfcoin$1 $pkgdir/opt/mfcoin/bin/
@@ -34,12 +40,12 @@ package() {
     mkdir -p $pkgdir/usr/bin
     mkdir -p $pkgdir/usr/include
     mkdir -p $pkgdir/share/man/man1
-    cp ../start $pkgdir/opt/mfcoin/start
+    cp ./start $pkgdir/opt/mfcoin/start
     cd $(ls -d */)
     cp -R ./utxo_snapshot ./genesis-reg.dat ./genesis-test.dat ./genesis.dat $pkgdir/opt/mfcoin/
-    ls -la $pkgdir/opt/mfcoin/bin
-    chmod 755 $pkgdir/opt/mfcoin/bin/* $pkgdir/opt/mfcoin/start
+    ls -la ./bin
     _prep d
     _prep -cli
+    chmod 755 $pkgdir/opt/mfcoin/bin/* $pkgdir/opt/mfcoin/start
     cp ./include/mfcoinconsensus.h $pkgdir/usr/include/mfcoinconsensus.h
 }

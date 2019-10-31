@@ -18,7 +18,9 @@ pkgbase = mfcoin-cli-bin
 	conflicts = mfcoin-git
 	conflicts = mfcoin-cli-git
 	source_x86_64 = https://github.com/MFrcoin/MFCoin/releases/download/v.3.0.0.2/mfcoin-0.7.10-linux.zip
+	source_x86_64 = start
 	sha256sums_x86_64 = 9fe30f4e2143fc1ffd3060b82c959347f81533fab0836d72ed127d0f57619373
+	sha256sums_x86_64 = 06a20d6ed918d9958f8c336ea38422acc6e845f686639a1f98cf6a7f2117d5ef
 
 pkgname = mfcoin-cli-bin
 
