@@ -1,9 +1,9 @@
 pkgbase = heimer
 	pkgdesc = simple cross-platform mind map and note-taking tool written in Qt.
 	pkgver = 1.11.0
-	pkgrel = 1
+	pkgrel = 1.1
 	url = https://github.com/juzzlin/heimer
-	arch = any
+	arch = x86_64
 	license = GPL3
 	makedepends = git
 	makedepends = cmake
