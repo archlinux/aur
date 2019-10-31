@@ -1,0 +1,26 @@
+diff --git configure.ac configure.ac
+--- configure.ac	2018-09-15 07:03:24.000000000 +0200
++++ configure.ac	2019-10-28 18:02:19.792588993 +0100
+@@ -37,13 +37,11 @@
+   AC_DEFINE([USE_UBLIO], [1],
+     [Define if block devices are not supported.])
+ ], [:])
+-PKG_CHECK_MODULES([FUSE], [fuse])
+ AC_CONFIG_HEADERS([libexfat/config.h])
+ AC_CONFIG_FILES([
+ 	libexfat/Makefile
+ 	dump/Makefile
+ 	fsck/Makefile
+-	fuse/Makefile
+ 	label/Makefile
+ 	mkfs/Makefile
+ 	Makefile])
+diff --git Makefile.am Makefile.am
+--- Makefile.am	2018-09-15 07:03:24.000000000 +0200
++++ Makefile.am	2019-10-28 18:02:19.785922319 +0100
+@@ -20,4 +20,4 @@
+ #	51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+ #
+
+-SUBDIRS = libexfat dump fsck fuse label mkfs
++SUBDIRS = libexfat dump fsck label mkfs
