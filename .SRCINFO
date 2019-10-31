@@ -21,4 +21,5 @@ pkgname = python2-soccer-cli-git
 pkgname = python-soccer-cli-git
 	depends = python-click
 	depends = python-requests
+	provides = python-soccer-cli
 

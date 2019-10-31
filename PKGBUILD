@@ -34,7 +34,7 @@ prepare() {
 package_python2-soccer-cli-git() {
   depends=('python2-click' 'python2-requests')
   provides=('python2-soccer-cli')
-  cd ${pkgbase%-git}
+  cd ${pkgbase%-git}2
 
   install -D -m644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 
@@ -44,7 +44,8 @@ package_python2-soccer-cli-git() {
 
 package_python-soccer-cli-git() {
   depends=('python-click' 'python-requests')
-  cd python-soccer-cli
+  provides=('python-soccer-cli')
+  cd ${pkgbase%-git}3
 
   install -D -m644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 
