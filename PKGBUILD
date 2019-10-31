@@ -3,7 +3,7 @@
 
 pkgname=mysql-shell
 pkgver=8.0.18
-pkgrel=2
+pkgrel=3
 pkgdesc='An interface supporting development and administration for the MySQL Server'
 arch=('x86_64' 'i686')
 url="https://dev.mysql.com/downloads/shell/"
@@ -31,7 +31,7 @@ makedepends=('v8-6.7-static' 'cmake' 'clang' 'zip' 'zlib' 'libsasl' 'rpcsvc-prot
 build() {
   cd "$srcdir/mysql-$pkgver"
   mkdir -p bld && cd $_
-  cmake .. -DWITH_BOOST="../boost" -DWITH_SSL=system -DWITH_PROTOBUF=bundled
+  cmake .. -DWITH_BOOST="../boost" -DWITH_SSL=system -DWITH_PROTOBUF=bundled -Dprotobuf_BUILD_SHARED_LIBS=OFF
   cmake --build . --target mysqlclient
   cmake --build . --target mysqlxclient
 
@@ -55,11 +55,11 @@ build() {
     -DV8_INCLUDE_DIR="/usr/include" \
     -DV8_LIB_DIR="/usr/lib" \
     -DWITH_SSL=system \
-    -DWITH_PROTOBUF="$srcdir/mysql-$pkgver/extra/protobuf/$protobuf_dir" \
+    -DWITH_STATIC_LINKING=1 \
+    -DWITH_PROTOBUF="$srcdir/mysql-$pkgver/extra/protobuf/$protobuf_dir/src" \
     -DCMAKE_C_FLAGS="-I $srcdir/mysql-$pkgver/extra/protobuf/$protobuf_dir/src" \
     -DCMAKE_CXX_FLAGS="-I $srcdir/mysql-$pkgver/extra/protobuf/$protobuf_dir/src" \
-    -DCMAKE_LIBRARY_PATH="$srcdir/mysql-$pkgver/bld/library_output_directory" \
-    -DCMAKE_INSTALL_RPATH='${CMAKE_INSTALL_PREFIX}/lib/mysql/private'
+    -DCMAKE_LIBRARY_PATH="$srcdir/mysql-$pkgver/bld/extra/protobuf/$protobuf_dir/cmake"
   make
 }
 
@@ -76,8 +76,6 @@ check() {
 package() {
   cd "$srcdir/$pkgname-$pkgver-src/bld"
   make DESTDIR="$pkgdir/" install
-  install -d "$pkgdir/usr/lib/mysql/private"
-  install -Dm755 "$srcdir/mysql-$pkgver/bld/library_output_directory/"* "$pkgdir/usr/lib/mysql/private/"
   install -Dm644 "$srcdir/$pkgname-$pkgver-src/doc/man/mysqlsh.1" "$pkgdir/usr/share/man/man1/mysqlsh.1"
   cd "$srcdir/$pkgname-$pkgver-src"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
