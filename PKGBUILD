@@ -9,19 +9,23 @@ pkgdesc='Open-source DNS benchmark utility'
 arch=(any)
 url='http://code.google.com/p/namebench/'
 license=(Apache)
-depends=(python2-dnspython python2-httplib2 python2-simplejson python2-jinja
-         python2-graphy)
+depends=('python2-dnspython' 'python2-httplib2' 'python2-simplejson' 'python2-jinja'
+         'python2-graphy')
 makedepends=(git)
 optdepends=('tk: gui'
             'python2-pmw: gui')
-source=(namebench::git+https://github.com/google/${pkgname}.git#branch=${pkgver})
+source=("namebench::git+https://github.com/google/${pkgname}.git#branch=${pkgver}")
 sha512sums=('SKIP')
 
+build() {
+  cd ${pkgname}
+  python2 setup.py build
+}
+
 package() {
-  cd namebench
-  export NO_THIRD_PARTY=true
-  python2 setup.py install --root="${pkgdir}"
-  cd "${pkgdir}/usr"
+  cd ${pkgname}
+  NO_THIRD_PARTY=true python2 setup.py install --skip-build --root="${pkgdir}" --optimize=1
+  cd "${pkgdir}"/usr
   mkdir share
   mv namebench share
 }
