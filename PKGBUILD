@@ -1,7 +1,7 @@
 #Maintainer: Christoph Steinacker <archologist.linuxATgooglemailDOTcom>
 #Maintainer: Heiko Nickerl <devATheiko-nickerlDOTcom>
 pkgname=jes
-pkgver=2.02.29
+pkgver=2.02.30
 pkgrel=1
 pkgdesc="A java-based tool for german cash method of accounting (Einnahmen-Überschuss-Rechnung)"
 arch=('any')
@@ -30,7 +30,7 @@ package() {
   # Installing the icons
   install -D -m644 ${pkgname}.png ${pkgdir}/usr/share/icons/hicolor/128x128/apps/${pkgname}.png
 }
-sha512sums=('427e41aa998f64fffa195534974831fdd12800a7cd06f39ba55c694713b5c25ae7d9258e1a2255aea738eca8798baff6f3753c5be68396c2c15fa0bf48e92d6c'
+sha512sums=('e451b04202edfce332d35f7a15b9fea7bbca47d93732e2e350024e5a2cc05e806da1af15cb1c23c9333ad949f28fb3fd5a85caeaff711f10a359b796a778745c'
             '8ebf48266ba3f55369fb01d9c465fa6c8c30a13c5ca8d1936bf2a3654c659f59b6c47c250e3e7b7e944c9c1cdcc858a085beeb185b1c892fddadbfa23a8f1ce9'
             '869bb56593aeb13e804df88981c83af55f291d7f7531ec8cd1c4847a4fdbed52d4cc11ec7604c07a729504155f25a3f4741f16b444b8dd77249d42299e8bfec0'
             '7e5cb765fed87f9035bd81c238f3de87b82dfb52197528dd8b647c299cbc11ffe9c0b6fc69cee03a02a0e861dca016a45a2fe8b20c7668725c2009a0c461277f')
