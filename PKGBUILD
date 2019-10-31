@@ -5,6 +5,7 @@ pkgbase=data-science-stack
 pkgname=(data-science-python-meta
        data-science-languages-meta
 	     data-science-utils-meta
+       data-science-mkl-meta
 )
 pkgver=0.1
 pkgrel=1

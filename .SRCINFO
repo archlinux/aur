@@ -34,3 +34,14 @@ pkgname = data-science-utils-meta
 	depends = git
 	replaces = 
 
+pkgname = data-science-mkl-meta
+	pkgdesc = Meta package for data science packages compiled with the Intel MKL library
+	depends = python-numpy-mkl
+	depends = python-scipy-mkl
+	depends = mkl-dnn
+	depends = julia-mkl
+	depends = python-mkl-fft
+	depends = python-mkl-random
+	depends = python-mkl-service
+	replaces = 
+
