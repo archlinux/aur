@@ -1,7 +1,7 @@
 pkgbase = mysql-shell
 	pkgdesc = An interface supporting development and administration for the MySQL Server
 	pkgver = 8.0.18
-	pkgrel = 1
+	pkgrel = 2
 	url = https://dev.mysql.com/downloads/shell/
 	arch = x86_64
 	arch = i686
@@ -24,7 +24,6 @@ pkgbase = mysql-shell
 	makedepends = wget
 	depends = python2
 	depends = openssl
-	depends = protobuf
 	noextract = googletest-release-1.8.0.zip
 	source = https://dev.mysql.com/get/Downloads/MySQL-Shell/mysql-shell-8.0.18-src.tar.gz
 	source = mysql-shell-8.0.18-src.tar.gz.asc::https://dev.mysql.com/downloads/gpg/?file=mysql-shell-8.0.18-src.tar.gz

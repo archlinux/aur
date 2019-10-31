@@ -3,7 +3,7 @@
 
 pkgname=mysql-shell
 pkgver=8.0.18
-pkgrel=1
+pkgrel=2
 pkgdesc='An interface supporting development and administration for the MySQL Server'
 arch=('x86_64' 'i686')
 url="https://dev.mysql.com/downloads/shell/"
@@ -25,19 +25,20 @@ md5sums=(
   "adfafc8512ab65fd3cf7955ef0100ff5"
 )
 validpgpkeys=('A4A9406876FCBD3C456770C88C718D3B5072E1F5')
-depends=('python2' 'openssl' 'protobuf')
+depends=('python2' 'openssl')
 makedepends=('v8-6.7-static' 'cmake' 'clang' 'zip' 'zlib' 'libsasl' 'rpcsvc-proto' 'python2' 'python2-colorama' 'python2-pylint' 'python2-lazy-object-proxy' 'python2-singledispatch' 'python2-wrapt' 'ninja' 'git' 'wget')
 
 build() {
   cd "$srcdir/mysql-$pkgver"
   mkdir -p bld && cd $_
-  cmake .. -DWITH_BOOST="../boost" -DWITH_SSL=system -DWITH_PROTOBUF=system
+  cmake .. -DWITH_BOOST="../boost" -DWITH_SSL=system -DWITH_PROTOBUF=bundled
   cd "$srcdir/mysql-$pkgver/bld"
   cmake --build . --target mysqlclient
   cmake --build . --target mysqlxclient
 
   cd "$srcdir/$pkgname-$pkgver-src"
   mkdir -p bld && cd $_
+  protobuf_dir="$(basename "$(find $srcdir/mysql-$pkgver/extra/protobuf -maxdepth 1 -type d -name 'protobuf-*')")"
   cmake .. \
     -DWITH_TESTS=1 \
     -DWITH_GMOCK="${srcdir}/googletest-release-$GTEST_VERSION.zip" \
@@ -50,7 +51,12 @@ build() {
     -DHAVE_V8=1 \
     -DV8_INCLUDE_DIR="/usr/include" \
     -DV8_LIB_DIR="/usr/lib" \
-    -DWITH_PROTOBUF="/usr"
+    -DWITH_SSL=system \
+    -DWITH_PROTOBUF="$srcdir/mysql-$pkgver/extra/protobuf/$protobuf_dir" \
+    -DCMAKE_C_FLAGS="-I $srcdir/mysql-$pkgver/extra/protobuf/$protobuf_dir/src" \
+    -DCMAKE_CXX_FLAGS="-I $srcdir/mysql-$pkgver/extra/protobuf/$protobuf_dir/src" \
+    -DCMAKE_LIBRARY_PATH="$srcdir/mysql-$pkgver/bld/library_output_directory" \
+    -DCMAKE_INSTALL_RPATH='${CMAKE_INSTALL_PREFIX}/lib/mysql/private'
   make
 }
 
@@ -67,6 +73,8 @@ check() {
 package() {
   cd "$srcdir/$pkgname-$pkgver-src/bld"
   make DESTDIR="$pkgdir/" install
+  install -d "$pkgdir/usr/lib/mysql/private"
+  install -Dm755 "$srcdir/mysql-$pkgver/bld/library_output_directory/"* "$pkgdir/usr/lib/mysql/private/"
   install -Dm644 "$srcdir/$pkgname-$pkgver-src/doc/man/mysqlsh.1" "$pkgdir/usr/share/man/man1/mysqlsh.1"
   cd "$srcdir/$pkgname-$pkgver-src"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
