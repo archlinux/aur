@@ -8,6 +8,7 @@ pkgdesc='Smart SQL Editor and Advanced Database Client Packed Together for Optim
 arch=('any')
 url='http://www.jetbrains.com/datagrip/'
 license=('Commercial')
+depends=('glib2')
 conflicts=('0xdbe' '0xdbe-eap')
 options=('!strip')
 source=(https://download.jetbrains.com/${pkgbase}/${pkgbase}-${pkgver}.tar.gz

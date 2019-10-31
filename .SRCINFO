@@ -5,6 +5,7 @@ pkgbase = datagrip
 	url = http://www.jetbrains.com/datagrip/
 	arch = any
 	license = Commercial
+	depends = glib2
 	conflicts = 0xdbe
 	conflicts = 0xdbe-eap
 	options = !strip
