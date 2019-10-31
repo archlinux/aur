@@ -1,6 +1,6 @@
 pkgbase = anura-git
 	pkgdesc = A fully-featured game engine, the tech behind the spectacular Frogatto & Friends.
-	pkgver = 0.0.3603.gd8e7ff8a
+	pkgver = 0.0.3619.ge4a2f2e7
 	pkgrel = 1
 	url = https://github.com/anura-engine/anura
 	install = anura.install
@@ -24,13 +24,9 @@ pkgbase = anura-git
 	source = git+https://github.com/anura-engine/anura.git#branch=trunk
 	source = git+https://github.com/sweetkristas/imgui.git
 	source = anura.sh
-	source = fix_redefine_have_m_pi_error.patch
-	source = fix_boost_uuid_detail_sha1_path.patch
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = 15f4c03c2404bcfd7618b8f9e0c850ba
-	md5sums = bfdf31856d06c69ef13ee76f0a67242b
-	md5sums = 6a929113d76065841c1cb87bf4798f58
 
 pkgname = anura-git
 

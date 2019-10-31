@@ -1,6 +1,6 @@
 # Maintainer: Yaohan Chen <yaohan.chen@gmail.com>
 pkgname=anura-git
-pkgver=0.0.3603.gd8e7ff8a
+pkgver=0.0.3619.ge4a2f2e7
 pkgrel=1
 pkgdesc="A fully-featured game engine, the tech behind the spectacular Frogatto & Friends."
 arch=(i686 x86_64)
@@ -12,14 +12,10 @@ optdepends=('frogatto-git: the default game module'
 makedepends=(git boost)
 source=('git+https://github.com/anura-engine/anura.git#branch=trunk'
         'git+https://github.com/sweetkristas/imgui.git'
-        anura.sh
-        fix_redefine_have_m_pi_error.patch
-        fix_boost_uuid_detail_sha1_path.patch)
+        anura.sh)
 md5sums=('SKIP'
          'SKIP'
-         '15f4c03c2404bcfd7618b8f9e0c850ba'
-         'bfdf31856d06c69ef13ee76f0a67242b'
-         '6a929113d76065841c1cb87bf4798f58')
+         '15f4c03c2404bcfd7618b8f9e0c850ba')
 install=anura.install
 
 _gitname=anura
@@ -29,9 +25,6 @@ prepare() {
   git submodule init
   git config submodule.imgui.url "$srcdir/imgui"
   git submodule update
-
-  git apply "$srcdir/fix_redefine_have_m_pi_error.patch"
-  git apply "$srcdir/fix_boost_uuid_detail_sha1_path.patch"
 }
 
 pkgver() {
