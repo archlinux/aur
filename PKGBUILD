@@ -37,9 +37,13 @@ build() {
 
   cd "$srcdir/$pkgname-$pkgver-src"
   mkdir -p bld && cd $_
+  build_tests=0
+  if [[ "$MYSQL_SHELL_RUN_TESTS" ]]; then
+    build_tests=1
+  fi
   protobuf_dir="$(basename "$(find $srcdir/mysql-$pkgver/extra/protobuf -maxdepth 1 -type d -name 'protobuf-*')")"
   cmake .. \
-    -DWITH_TESTS=1 \
+    -DWITH_TESTS="$build_tests" \
     -DWITH_GMOCK="${srcdir}/googletest-release-$GTEST_VERSION.zip" \
     -DCMAKE_C_COMPILER=/usr/bin/clang \
     -DCMAKE_CXX_COMPILER=/usr/bin/clang++ \
@@ -60,11 +64,11 @@ build() {
 }
 
 check() {
-  cd "$srcdir/$pkgname-$pkgver-src/bld/shell-tests"
-  sed 's/python/python2/' -i mysqlx-test-run.py
-  sed 's/bld"/bld\/bin"/' -i mysqlx-test-run.py
   # requires MySQL server, disabled by default
   if [[ "$MYSQL_SHELL_RUN_TESTS" ]]; then
+    cd "$srcdir/$pkgname-$pkgver-src/bld/shell-tests"
+    sed 's/python/python2/' -i mysqlx-test-run.py
+    sed 's/bld"/bld\/bin"/' -i mysqlx-test-run.py
     ./mxtr
   fi
 }
