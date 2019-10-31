@@ -1,4 +1,4 @@
-# Maintainer: Joe Groocock <ts3-aur@frebib.net>
+## Maintainer: Joe Groocock <ts3-aur@frebib.net>
 # Contributor: Thaodan <theodorstormgrade@gmail.com>
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 # Contributor: Slash <demodevil5[at]yahoo[dot]com>
@@ -6,7 +6,7 @@
 
 _pkgname=teamspeak3
 pkgname=$_pkgname-wbundled
-pkgver=3.3.0
+pkgver=3.3.2
 pkgrel=1
 pkgdesc="TeamSpeak is software for quality voice communication via the Internet"
 url="http://www.teamspeak.com"
@@ -27,7 +27,7 @@ source=('teamspeak3.desktop'
 sha512sums=('4cac0b7446dc3e728b232fdd6c6d75be1d2a5530635eab5918a4e7dd6a4a3fc21d6a75055da919b56e5cf849f4c5ba26ece56759a45bc4850eba3eb73853759d'
             'af18ed36a3c8de90b60a7205ebf91a35d4b517f22f97d541c82debdb12697882469d9771fdf3fb8b081aeb74a01237f3afd4732daccf4b374dc6d39e7df5d444'
             'd6d03f1bda86c90390ce0032e4d30e889977f80ff76ba1e5c443109e93cbedbee92c6fc2759f58d23659c15dba4f2ac718861571239ba117dcfe11f136f556dc'
-            '477ced3deb4d4226817bf1f4ec0828123c027027160cdc62a6384583227c153168ec28025613380483229e2a8b3c30bf5b17337c3011e52f01317a9f0dbd4bbb')
+            '1dd8912120ba0e9e84849fd793d54aee56e98396f6228a4bcec5c79485b9902398eeefb8f276abd46bbe627e7bd3c8fc5d740d05807342f837ac226f475510d7')
 
 prepare() {
   mkdir archive && cd archive
