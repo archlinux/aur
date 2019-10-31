@@ -7,11 +7,12 @@ pkgbase = motrix-bin
 	license = MIT
 	makedepends = p7zip
 	depends = gtk3
-	depends = libxcb
+	depends = nss
+	depends = libxss
 	conflicts = motrix
 	conflicts = motrix-git
 	source = https://dl.motrix.app/release/Motrix-1.4.1-x86_64.AppImage
-	md5sums = 96f2aea1332517fb645347d5033fbabf
+	sha512sums = 1e3e1cd053453f4bd4440729ec6f95e91e6da3ceafe801cab800b1ae157c89dd50be818e44fb7a6685ca7826dfb530dc698f51cfc0015892a0893fc2abc2c15f
 
 pkgname = motrix-bin
 
