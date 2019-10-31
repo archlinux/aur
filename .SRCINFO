@@ -1,0 +1,18 @@
+pkgbase = flatery-icon-theme-git
+	pkgdesc = Flatery is an icon theme for linux in flat style.
+	pkgver = r45.3de6198
+	pkgrel = 1
+	url = https://github.com/cbrnix/Flatery
+	arch = any
+	license = CC BY-NC-SA 3.0
+	makedepends = git
+	provides = flatery-icon-theme
+	provides = flatery-icon-theme-git
+	conflicts = flatery-icon-theme
+	conflicts = flatery-icon-theme-git
+	options = !strip
+	source = git+https://github.com/cbrnix/Flatery
+	md5sums = SKIP
+
+pkgname = flatery-icon-theme-git
+
