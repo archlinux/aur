@@ -1,7 +1,7 @@
 [Desktop Entry]
 Version=1.1
 Name=Etterna
-Comment=An advanced cross-platform rhythm game focused on keyboard play.
+Comment=A advanced cross-platform rhythm game focused on keyboard play.
 Exec=/opt/etterna/Etterna
 Icon=/opt/etterna/icon.ico
 Terminal=false

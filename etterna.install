@@ -1,7 +1,4 @@
 function post_install {
-    chmod 777 -R /opt/etterna
-    chown -R nobody:nobody /opt/etterna
-
     echo "All user data is stored in your home directory."
     echo "However, you should still keep a backup of the data in /opt/etterna if you reinstall/remove Etterna!"
 }
