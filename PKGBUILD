@@ -63,7 +63,7 @@ source=("https://nightly.odoo.com/${pkgver}/nightly/src/${pkgname}_${pkgver}.${_
         odoo.confd
         odoo.service
         odoo.sysusers)
-md5sums=('6ff27bfb0cc414de7da772ac1ec68bd0'
+md5sums=('177f6f466c59ad545317a2919d999ee0'
          '863418f31f0fb982cde0008fa63f35f0'
          '742fa9ad94a92ac2aa910197a26af4e8'
          '5bddcc6edbdefdd07cae945165c63604'
