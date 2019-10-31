@@ -3,7 +3,7 @@
 _pkgmain=backports.csv
 pkgname=python-$_pkgmain
 pkgver=1.0.7
-pkgrel=2
+pkgrel=3
 pkgdesc="Backport of Python 3 csv module."
 arch=('any')
 url="https://github.com/ryanhiebert/backports.csv"
