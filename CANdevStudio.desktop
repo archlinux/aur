@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=CANdevStudio
+Comment=Development tool for CAN bus simulation
+Exec=CANdevStudio
+Categories=Development;Electronics
+Keywords=can

@@ -3,7 +3,7 @@
 
 pkgname=candevstudio-git
 _pkgbasename=candevstudio
-pkgver=r215.4cf77f66
+pkgver=r269.fe417bd3
 pkgrel=1
 pkgdesc="Development tool for CAN bus simulation"
 arch=('i686' 'x86_64')
@@ -12,9 +12,10 @@ license=('MPL2')
 depends=('qt5-base' 'qt5-serialbus')
 makedepends=('git' 'cmake' 'qt5-tools')
 provides=('candevstudio')
-conflicts=('candevstudio')
-source=('candevstudio::git+https://github.com/GENIVI/CANdevStudio.git')
-md5sums=('SKIP')
+source=('candevstudio::git+https://github.com/GENIVI/CANdevStudio.git'
+		'CANdevStudio.desktop')
+md5sums=('SKIP'
+         'f349ae9ad8f711e1ae5e7e18f833d2f5')
 
 pkgver() {
   cd "$srcdir/$_pkgbasename"
@@ -32,6 +33,7 @@ build() {
 }
 
 package() {
+  install -Dm644 CANdevStudio.desktop "$pkgdir"/usr/share/applications/CANdevStudio.desktop
   cd "$srcdir/$_pkgbasename"
   cd build
   make DESTDIR="$pkgdir" install
