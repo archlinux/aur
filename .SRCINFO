@@ -8,7 +8,10 @@ pkgbase = gpu-trace-git
 	depends = gpuvis-git
 	depends = trace-cmd
 	provides = gpu-trace
+	provides = amdgpu-trace
 	conflicts = gpu-trace
+	conflicts = amdgpu-trace
+	replaces = amdgpu-trace
 	source = git+https://github.com/lostgoat/gpu-trace
 	sha256sums = SKIP
 
