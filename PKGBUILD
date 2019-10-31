@@ -2,7 +2,7 @@
 _name=husl
 pkgname=python-husl
 pkgver=4.0.3
-pkgrel=4
+pkgrel=5
 pkgdesc="A Python implementation of HUSL (revision 3)"
 arch=('any')
 url="https://pypi.org/project/husl/"
