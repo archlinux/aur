@@ -9,8 +9,8 @@ url="https://github.com/rtlewis88/rtl88-Themes/tree/Arc-ICONS"
 license=('Creative Commons')
 makedepends=('git')
 optdepends=('arc-gtk-theme' 'arc-solid-gtk-theme')
-provides=("${pkgname%-*}" "${pkgname}")
-conflicts=("${pkgname%-*}" "${pkgname}")
+provides=("${pkgname%-*}" "${pkgname}" "arc-icon-theme")
+conflicts=("${pkgname%-*}" "${pkgname}" "arc-icon-theme")
 options=('!strip')
 
 pkgver() {
