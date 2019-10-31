@@ -12,7 +12,6 @@ pkgname = data-science-python-meta
 	depends = python-numba
 	depends = python-sympy
 	depends = python-statsmodels
-	depends = python-scikit-learn
 	depends = python-matplotlib
 	depends = python-virtualenv
 	depends = python-nltk
@@ -55,5 +54,22 @@ pkgname = data-science-octave-meta
 	depends = octave-dataframe
 	depends = octave-plot
 	depends = octave-database
+	replaces = 
+
+pkgname = data-science-ai-meta
+	pkgdesc = Meta package for popular machine learning frameworks
+	depends = tensorflow-opt
+	depends = python-pytorch-opt
+	depends = caffe2
+	depends = cntk
+	depends = python-scikit-learn
+	replaces = 
+
+pkgname = data-science-ai-gpu-meta
+	pkgdesc = Meta package for popular machine learning frameworks with CUDA support
+	depends = tensorflow-opt-cuda
+	depends = python-pytorch-opt-cuda
+	depends = caffe2-cuda
+	depends = cntk-cuda
 	replaces = 
 

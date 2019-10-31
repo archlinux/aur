@@ -7,6 +7,8 @@ pkgname=(data-science-python-meta
 	     data-science-utils-meta
        data-science-mkl-meta
        data-science-octave-meta
+       data-science-ai-meta
+       data-science-ai-gpu-meta
 )
 pkgver=0.1
 pkgrel=1
@@ -22,7 +24,6 @@ package_data-science-python-meta() {
            python-numba
            python-sympy
            python-statsmodels
-           python-scikit-learn
            python-matplotlib
            python-virtualenv
            python-nltk
@@ -73,5 +74,26 @@ package_data-science-octave-meta() {
            octave-dataframe
            octave-plot
            octave-database
+  )
+}
+
+package_data-science-ai-meta() {
+  pkgdesc='Meta package for popular machine learning frameworks'
+  replaces=()
+  depends=(tensorflow-opt
+           python-pytorch-opt
+           caffe2
+           cntk
+           python-scikit-learn           
+  )
+}
+
+package_data-science-ai-gpu-meta() {
+  pkgdesc='Meta package for popular machine learning frameworks with CUDA support'
+  replaces=()
+  depends=(tensorflow-opt-cuda
+           python-pytorch-opt-cuda
+           caffe2-cuda
+           cntk-cuda
   )
 }
