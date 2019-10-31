@@ -1,21 +1,25 @@
-# Maintainer: Code Imp  <code_imp@bk.ru>
+# Maintainer: dekart811
 
 _pkgbase=veeamsnap
 pkgname=veeamsnap
-pkgver=3.0.1.1046
+pkgver=3.0.2.1190
 pkgrel=1
 pkgdesc="Veeam Agent for Linux kernel modules (DKMS)"
 arch=('i686' 'x86_64')
-url="https://www.github.com/veeam/veeamsnap"
+url="http://repository.veeam.com/backup/linux/agent"
 license=('GPL2')
-depends=('dkms')
+depends=('dkms' 'rpmextract')
 conflicts=("${_pkgbase}")
 install=${pkgname}.install
-#source=('veeamsnap.tar.gz'
-source=( "${url}/archive/experimental.zip"
+source=( "${url}/rpm/el/7/x86_64/veeamsnap-${pkgver}-1.noarch.rpm"
         'dkms.conf')
-md5sums=('b13a6056bbf9213fdde270a0a6a283a4'
+md5sums=('6b2018bc488763885488eeb79df3367f'
          '23381bcf3c992e0b6467be681bbc751a')
+
+build() {
+  msg "build..."
+  rpmextract.sh veeamsnap-${pkgver}-1.noarch.rpm
+}
 
 package() {
   # Install
@@ -32,6 +36,6 @@ package() {
       -i "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/dkms.conf
   
   # Copy sources (including Makefile)
-  cp -r ${_pkgbase}-experimental/source/* "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/
+  cp -r ${srcdir}/usr/src/${_pkgbase}-${pkgver}/* "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/
 }
 
