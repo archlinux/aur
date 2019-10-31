@@ -12,7 +12,7 @@ license=(Apache)
 url='https://thrift.apache.org/'
 makedepends=(python-setuptools python2-setuptools)
 source=(thrift-$pkgver.zip::https://github.com/apache/$_pkgname/archive/$pkgver.zip)
-sha256sums=('2da56e84f42763d1ca8502156f1de347c1e16467f14a7e809b7ccafe8d428a96')
+sha256sums=('4ed6254847b9c632fb64e5ba700a4cefa441af2b53bfc6ff91206fe5771be74f')
 
 prepare() {
     cd "$srcdir"
