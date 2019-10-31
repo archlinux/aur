@@ -1,6 +1,6 @@
 pkgbase = otf-xits
 	pkgdesc = An OpenType implementation of STIX fonts with math support
-	pkgver = 1.200
+	pkgver = 1.301
 	pkgrel = 1
 	url = https://github.com/khaledhosny/xits
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = otf-xits
 	depends = fontconfig
 	depends = xorg-fonts-encodings
 	depends = xorg-font-utils
-	source = https://github.com/khaledhosny/xits/archive/v1.200.tar.gz
-	sha256sums = ee7231eb836d94ddc20a1b631866ef12dfeaace794389071948e4931e3d751ec
+	source = https://github.com/khaledhosny/xits/archive/v1.301.tar.gz
+	sha256sums = 63a778f24e9275b7f2c7c78060e7ad6c375f5cff077852716537b26e9da8be69
 
 pkgname = otf-xits
 
