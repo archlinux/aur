@@ -14,27 +14,26 @@ license=('custom:BSD3')
 depends=('glibc')
 optdepends=('tcl: ispin graphical interface'
             'swarm: improved performance on large verification problems'
-            'modex: extract verification models from implementation C code'
             'ispin: GUI for Spin')
 source=(https://github.com/nimble-code/Spin/archive/version-${pkgver}.tar.gz)
 sha512sums=('0beeb1faea93f806c37a4b76c2c407363990596134fc60b15c3f3a2d33ccf59680acd30e251c4f83fb725903aecb6238b166af7dbc9296a8a34259feabeeae24')
 
 build() {
-  cd "${srcdir}/Spin-version-${pkgver}/Src"
+  cd Spin-version-${pkgver}/Src
   make
 }
 
 package() {
-  cd "${srcdir}/Spin-version-${pkgver}/Src"
   # install binary and license file
-  install -Dm755 spin "${pkgdir}/usr/bin/spin"
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
+  cd Spin-version-${pkgver}/Src
+  install -Dm755 spin "${pkgdir}"/usr/bin/spin
+  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE.txt
 
-  cd "${srcdir}/Spin-version-${pkgver}"
   # install manpage and docs
-  install -d "${pkgdir}/usr/share/man/man1/"
-  install -d "${pkgdir}/usr/share/doc/${pkgname}/examples"
+  cd "${srcdir}"/Spin-version-${pkgver}
+  install -dm755 "${pkgdir}"/usr/share/man/man1/
+  install -dm755 "${pkgdir}"/usr/share/doc/${pkgname}/examples
 
-  gzip -9c Man/spin.1 > "${pkgdir}/usr/share/man/man1/spin.1.gz"
-  cp -a Examples/* "${pkgdir}/usr/share/doc/${pkgname}/examples/"
+  install -Dm644 Man/spin.1 "${pkgdir}"/usr/share/man/man1/spin.1.gz
+  cp -a Examples/* "${pkgdir}"/usr/share/doc/${pkgname}/examples/
 }
