@@ -1,7 +1,7 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 
 pkgname=azote-git
-pkgver=1.3.0.r7.g46027c3
+pkgver=1.5.5.r7.g46027c3
 pkgrel=1
 pkgdesc="Wallpaper manager for Sway, i3 and some other WMs (development version)"
 arch=('x86_64')
