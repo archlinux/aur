@@ -1,0 +1,24 @@
+pkgbase = etterna
+	pkgdesc = A advanced cross-platform rhythm game focused on keyboard play
+	pkgver = 0.66.1
+	pkgrel = 1
+	url = https://etternaonline.com
+	install = etterna.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	depends = glu
+	depends = libpulse
+	depends = libxrandr
+	depends = curl
+	optdepends = jack: Audio server
+	provides = etterna
+	conflicts = etterna-git
+	source = etterna-0.66.1.tar.gz::https://github.com/etternagameetterna/archive/v0.66.1.tar.gz
+	source = etterna.desktop
+	sha256sums = 25e62a9de6fdfd33068dd7579d2d3b383ee95bdc0c4096af28059fe67a9a645e
+	sha256sums = c02e9be96fd447c9240b2510feab98a29df5ce0d694dad00baf8b92d79983115
+
+pkgname = etterna
+
