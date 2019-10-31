@@ -1,7 +1,7 @@
 pkgbase = valentina-studio
 	pkgdesc = Create, administer, query and explore Valentina DB, MySQL, MariaDB, PostgreSQL and SQLite databases for FREE.
 	pkgver = 9.6.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.valentina-db.com
 	arch = x86_64
 	license = custom
