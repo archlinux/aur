@@ -2,38 +2,34 @@
 
 pkgname=360zip
 pkgver=1.0.0.1010
-pkgrel=3
-pkgdesc='360 Archiving Tool'
+pkgrel=4
+pkgdesc="360 Archiving Tool"
 arch=('x86_64')
-url='http://yasuo.360.cn/'
+url="http://yasuo.360.cn/"
 license=('custom')
-makedepends=(
-    'imagemagick'
-)
 depends=(
     'qt5-base'
 )
 source=(
-    'https://packages.deepin.com/deepin/pool/non-free/3/360zip/360zip_1.0.0.1010_amd64.deb'
+    "https://packages.deepin.com/deepin/pool/non-free/3/360zip/360zip_${pkgver}_amd64.deb"
 )
-md5sums=(
-    'b368ad91d6c3667a6b3cdead857a90c9'
+sha512sums=(
+    '62a46ef491f91378d4c9d9f645eb72610eebc5180c1a988bccec9b3a87e46d7ed3c9c1f7bce214c72d269cafad1337d2a3db96f638fbfa3739fce95e3cb394eb'
 )
 
 package() {
-    tar -xf ${srcdir}/data.tar.xz -C ${pkgdir}/
+    tar -xf "$srcdir/data.tar.xz" -C "$pkgdir/"
 
-    mv ${pkgdir}/usr/lib/x86_64-linux-gnu/* ${pkgdir}/usr/lib/
-    rmdir ${pkgdir}/usr/lib/x86_64-linux-gnu/
+    mkdir -p "$pkgdir/usr/share"
+    mv "$pkgdir/usr/local/share/360zip" "$pkgdir/usr/share/360zip"
+    mv "$pkgdir/usr/local/share/applications" "$pkgdir/usr/share/applications"
 
-    mkdir ${pkgdir}/usr/local/bin/
-    ln -s /usr/local/share/360zip/360zip.sh ${pkgdir}/usr/local/bin/360zip
+    mkdir -p "$pkgdir/usr/share/icons"
+    ln -s "$pkgdir/usr/local/share/360zip.png" "$pkgdir/usr/share/icons/360zip.png"
 
-    for i in 16x16 22x22 24x24 32x32 48x48 64x64 128x128 256x256; do
-        convert -adaptive-resize $i ${pkgdir}/usr/local/share/icons/360zip.png \
-                                    ${pkgdir}/usr/local/share/icons/360zip_$1.png
-        install -Dm644 ${pkgdir}/usr/local/share/icons/360zip_$1.png \
-                       ${pkgdir}/usr/share/icons/hicolor/$i/apps/360zip.png
-        rm ${pkgdir}/usr/local/share/icons/360zip_$1.png
-    done
+    mv "$pkgdir/usr/lib/x86_64-linux-gnu/dde-file-manager" "$pkgdir/usr/lib/dde-file-manager"
+    rmdir "$pkgdir/usr/lib/x86_64-linux-gnu"
+
+    mkdir -p "$pkgdir/usr/bin"
+    ln -s /usr/share/360zip/360zip.sh "$pkgdir/usr/bin/360zip"
 }

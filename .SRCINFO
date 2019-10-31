@@ -1,14 +1,13 @@
 pkgbase = 360zip
 	pkgdesc = 360 Archiving Tool
 	pkgver = 1.0.0.1010
-	pkgrel = 3
+	pkgrel = 4
 	url = http://yasuo.360.cn/
 	arch = x86_64
 	license = custom
-	makedepends = imagemagick
 	depends = qt5-base
 	source = https://packages.deepin.com/deepin/pool/non-free/3/360zip/360zip_1.0.0.1010_amd64.deb
-	md5sums = b368ad91d6c3667a6b3cdead857a90c9
+	sha512sums = 62a46ef491f91378d4c9d9f645eb72610eebc5180c1a988bccec9b3a87e46d7ed3c9c1f7bce214c72d269cafad1337d2a3db96f638fbfa3739fce95e3cb394eb
 
 pkgname = 360zip
 
