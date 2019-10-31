@@ -1,6 +1,6 @@
 # Maintainer: stiglers-eponym
 pkgname=beamerpresenter
-pkgver=r132.b88b47b
+pkgver=r137.a32b3f2
 pkgrel=1
 pkgdesc="Simple dual screen pdf presentation software"
 arch=('x86_64')
@@ -33,6 +33,8 @@ package() {
   sed -ie 's/^pid2wid=.*$/pid2wid=\/etc\/beamerpresenter\/pid2wid.sh/' beamerpresenter.conf
   install -Dm644 beamerpresenter.conf "${pkgdir}/etc/${pkgname}/${pkgname}.conf"
   install -Dm644 pid2wid.sh "${pkgdir}/etc/${pkgname}/pid2wid.sh"
-  [ -f beamerpresenter.1.gz ] || gzip -9 beamerpresenter.1
+  [ -f beamerpresenter.1 ] && gzip -f9 beamerpresenter.1
+  [ -f beamerpresenter.conf.5 ] && gzip -f9 beamerpresenter.conf.5
   install -Dm644 beamerpresenter.1.gz "${pkgdir}/usr/share/man/man1/${pkgname}.1.gz"
+  install -Dm644 beamerpresenter.conf.5.gz "${pkgdir}/usr/share/man/man5/${pkgname}.conf.5.gz"
 }
