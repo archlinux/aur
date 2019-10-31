@@ -1,7 +1,7 @@
 # Maintainer: Robinhuett <aur at tripp dot xyz>
 
 pkgname=kiss-gui
-pkgver=2.0.16
+pkgver=2.0.17
 pkgrel=1
 pkgdesc="Crossplatform configuration tool for the Flyduino flight control system (KISS)"
 arch=(x86_64)
@@ -13,7 +13,7 @@ options=(!strip)
 source=($pkgname-$pkgver.tar.gz::"$url/archive/$pkgver.tar.gz"
         "$pkgname.sh"
         "$pkgname.desktop")
-sha512sums=('527cc52fee6f35706df33fa17bd04757b43a09fc151290c6de376b82edd79d5cd649aa5850e0bb914c9c089d3444af68175ee06ceb187b208b7395229e26e4e7'
+sha512sums=('2e7c1785e6aaedfbf82fb4304ebfa7b2f36cf4f74df6c3b26da0336b794e4b17efa173c3c6c5b72e0bc1e9a5338d05e1bc78eacdb9acafe1cc77f8bcfe7cfe80'
             '68c02635d1c6449c8aadf55dc156717b8393c422fe9bfb96a2263314762ec82b024dc5979e1cb5c275de49439a25a4d4b962c5e7b3b58406038a3673daf895f0'
             '5a43483c365a1b1134bdd176be481a0400d3807b270cf0a31a575d5a7b0de167db6d1cd182ee9443cc0c86c77fbe14bb66bb1147c230f994aab36540687536ae')
 
