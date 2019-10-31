@@ -2,7 +2,7 @@
 
 pkgname=fightcade-windows
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc='An online arcade gaming platform for netplay based on GGPO. (Full Windows-wine version)'
 url='http://www.fightcade.com/'
 arch=('any')
@@ -19,7 +19,8 @@ prepare() {
     msg "Generating icon..."
     wrestool -x --output="$srcdir/icon.png" -t14 -n0 "$srcdir/$_tmpappfolder/${_execapp}"
     msg "Generating menu shortcut..."
-    gendesk -n -f --pkgname "$pkgname" --pkgdesc "$pkgdesc" --name "Fightcade" --exec "env WINEPREFIX=\"$HOME/.$pkgname/$_wineprefix\" wine \"/opt/$pkgname/$_execapp\""
+	#/bin/bash -c 'cd /opt/fightcade-windows && wine FightCade.exe'
+    gendesk -n -f --pkgname "$pkgname" --pkgdesc "$pkgdesc" --name "Fightcade" --exec "env WINEPREFIX=\"$HOME/.$pkgname/$_wineprefix\" /bin/bash -c 'cd \"/opt/$pkgname/\" && wine $_execapp'"
 }
 
 package() {
