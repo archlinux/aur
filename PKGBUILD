@@ -10,15 +10,10 @@ makedepends=('wget' 'jq')
 url="https://mfcoin.net/"
 license=('GPL3')
 
-_err(){
-    echo "$@" 1>&2
-}
-
 _linux(){
-    json=$(wget -O - https://api.github.com/repos/MFrcoin/MFCoin/releases/${pkgrel})
+    json=$(wget -O - https://api.github.com/repos/MFrcoin/MFCoin/releases/${pkgrel} 2>/dev/null)
     assets=$(echo "${json}" | jq '.assets')
     length=$(echo "${assets}" | jq '. | length')
-    _err length="$json"
     for (( i=0; i <= $length; i++ )); do
         name=$(echo "${assets}" | jq --raw-output ".[$i].browser_download_url")
         echo "$name" | grep linux
