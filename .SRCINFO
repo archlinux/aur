@@ -46,3 +46,14 @@ pkgname = data-science-mkl-meta
 	depends = r-mkl
 	replaces = 
 
+pkgname = data-science-octave-meta
+	pkgdesc = Meta package for octave data science packages
+	depends = octave-statistics
+	depends = octave-signal
+	depends = octave-control
+	depends = octave-image
+	depends = octave-dataframe
+	depends = octave-plot
+	depends = octave-database
+	replaces = 
+

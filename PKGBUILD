@@ -6,6 +6,7 @@ pkgname=(data-science-python-meta
        data-science-languages-meta
 	     data-science-utils-meta
        data-science-mkl-meta
+       data-science-octave-meta
 )
 pkgver=0.1
 pkgrel=1
@@ -59,5 +60,18 @@ package_data-science-mkl-meta() {
            python-mkl-service
            julia-mkl
            r-mkl           
+  )
+}
+
+package_data-science-octave-meta() {
+  pkgdesc='Meta package for octave data science packages'
+  replaces=()
+  depends=(octave-statistics
+           octave-signal
+           octave-control
+           octave-image
+           octave-dataframe
+           octave-plot
+           octave-database
   )
 }
