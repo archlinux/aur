@@ -1,0 +1,14 @@
+pkgbase = mingw-w64-wine-xmlpatterns
+	pkgdesc = Wine wrapper for xmlpatterns (mingw-w64)
+	pkgver = 1
+	pkgrel = 1
+	url = http://fedoraproject.org/wiki/MinGW
+	arch = any
+	license = MIT
+	depends = mingw-w64-wine
+	depends = mingw-w64-qt5-xmlpatterns
+	source = wine-xmlpatterns.sh
+	sha256sums = SKIP
+
+pkgname = mingw-w64-wine-xmlpatterns
+
