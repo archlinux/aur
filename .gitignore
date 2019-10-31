@@ -1,0 +1,7 @@
+*
+
+!.SRCINFO
+!.gitignore
+!PKGBUILD
+!dkms.conf
+!liquidtux-dkms-git.install
