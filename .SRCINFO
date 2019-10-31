@@ -1,0 +1,14 @@
+pkgbase = pyval
+	pkgdesc = Show value of python expressions, automatically imports objects
+	pkgver = 0.0.5
+	pkgrel = 1
+	url = https://github.com/coldfix/pyval
+	arch = any
+	license = custom:UNLICENSE
+	makedepends = python-setuptools
+	depends = python
+	source = https://pypi.python.org/packages/source/e/eval/eval-0.0.5.tar.gz
+	md5sums = 4b19c73333846fab16ff8bbf6b93250d
+
+pkgname = pyval
+
