@@ -8,8 +8,8 @@ pkgdesc='Simple Chart Library for Python (deprecated Google Chart API)'
 arch=(any)
 url='https://code.google.com/p/graphy/'
 license=(Apache)
-depends=(python2)
-makedepends=(python2-distribute)
+depends=('python2')
+makedepends=('python2-distribute')
 source=(https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/graphy/graphy_${pkgver}.tar.bz2
         setup.py)
 sha512sums=('39b85b21dd0e984a3b7895a090d6676d2fc12e629bcb5f2e486ad02b6cacdd57ab150c1aa4364cae571cd8e6fbca20b5744c079be532b6f4ea2668899c9932e3'
@@ -18,5 +18,5 @@ sha512sums=('39b85b21dd0e984a3b7895a090d6676d2fc12e629bcb5f2e486ad02b6cacdd57ab1
 package() {
   cd graphy_${pkgver}
   cp ../setup.py .
-  python2 setup.py install --root=${pkgdir}
+  python2 setup.py install --root="${pkgdir}"
 }
