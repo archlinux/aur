@@ -1,4 +1,7 @@
 # Maintainer: Stefan Cocora <stefan dot cocora at gmail dot com>
+# Maintainer: Brad Erhart <brae dot 04+aur at gmail dot com >
+# Maintainer: Michael Beaumont
+# Maintainer: aps42 <arch at andre-sterba dot de>
 # Contributor:
 
 _pkgauthor=GoogleContainerTools
