@@ -2,7 +2,7 @@
 
 _pkgname=ntsclient
 pkgname=$_pkgname-git
-pkgver=r27.671e778
+pkgver=0.1.1.r1.g4b484cd
 pkgrel=1
 pkgdesc='Small Network Time Security Client (NTP with NTS). Alpha software.'
 arch=('i686' 'x86_64')
@@ -16,15 +16,17 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
   cd $_pkgname
+  GITVERSION="$(git describe --tags --long --dirty)"
+  BUILDTIMESTAMP="$(date +%s)"
   go build \
      -gcflags "all=-trimpath=$PWD" \
      -asmflags "all=-trimpath=$PWD" \
-     -ldflags "-extldflags $LDFLAGS" \
+     -ldflags "-X main.gitVersion=$GITVERSION -X main.buildTimestamp=$BUILDTIMESTAMP -extldflags $LDFLAGS" \
      -o $_pkgname .
 }
 
