@@ -38,8 +38,8 @@ package() {
 
     sed -i 's/Exec=AppRun/Exec=\/opt\/Motrix\/motrix/' "$pkgdir/opt/Motrix/motrix.desktop"
 
-    install -Dm 644 "$pkgdir/opt/Motrix/motrix.desktop" "$pkgdir/usr/share/applications/motrix.desktop"
-    install -Dm 644 "$pkgdir/opt/Motrix/usr/share/mime/motrix.xml" "$pkgdir/usr/share/mime/application/motrix.xml"
+    install -Dm644 "$pkgdir/opt/Motrix/motrix.desktop" "$pkgdir/usr/share/applications/motrix.desktop"
+    install -Dm644 "$pkgdir/opt/Motrix/usr/share/mime/motrix.xml" "$pkgdir/usr/share/mime/application/motrix.xml"
 
     mkdir -p "$pkgdir/usr/bin"
     ln -s /opt/Motrix/motrix "$pkgdir/usr/bin/motrix"
