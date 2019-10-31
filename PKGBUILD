@@ -1,7 +1,7 @@
 # Maintainer: Florian Bruhin (The Compiler) <archlinux.org@the-compiler.org>
 
 pkgname=devpi-client
-pkgver=5.0.0
+pkgver=5.1.0
 pkgrel=1
 pkgdesc="devpi upload/install/... workflow commands for Python developers"
 arch=(any)
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python' 'python-py' 'python-tox' 'python-pkginfo' 'check-manifest' 'devpi-common')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('786c3472e95807e397b961f60f472e91c30373caecf132a946c51856581fd243')
+sha256sums=('5841c5c1b421cf97f4371f335998acc39bf37c857cd16d6bb44f5b792c363398')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
