@@ -1,0 +1,14 @@
+[Unit]
+Description="auth-thu - Authentication utility for srun4000"
+After=network-online.target
+
+[Service]
+Type=simple
+RemainAfterExit=yes
+ExecStart=bash -c "auth-thu | grep 'Login Successfully!'"
+ExecStop=bash -c "auth-thu auth --logout | grep 'Logout Successfully!'"
+RestartSec=5s
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
