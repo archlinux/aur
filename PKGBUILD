@@ -1,8 +1,8 @@
-# Maintainer: Code Imp  <code_imp@bk.ru>
+# Maintainer: dekart811
 #
 _pkgbase=veeam
 pkgname=veeam
-pkgver=3.0.1.1046
+pkgver=3.0.2.1190
 pkgrel=1
 pkgdesc="Veeam Agent for Linux"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('ncurses' 'lvm2' 'fuse' 'rpmextract')
 install=${pkgname}.install
 source=( "${url}/rpm/el/7/x86_64/veeam-${pkgver}-1.el7.x86_64.rpm" )
 conflicts=("${_pkgbase}")
-md5sums=('fab6361f3f947b5a0ed52c7a847b1ccb')
+md5sums=('0597a0ce19f134bac0f7f265f01d75cc')
 #
 build() {
   msg "build..."
