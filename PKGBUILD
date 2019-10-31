@@ -1,11 +1,11 @@
-# Maintainer: David Runge <dave@sleepmap.de>
+# Maintainer: David Runge <dvzrv@archlinux.org>
 
 pkgname=patroneo
 pkgver=1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="An easy to use pattern based midi sequencer"
 arch=('x86_64')
-url="https://www.laborejo.org/fluajho.git/"
+url="https://www.laborejo.org/patroneo.git/"
 license=('GPL3')
 groups=('pro-audio')
 depends=('glib2' 'glibc' 'hicolor-icon-theme' 'libjack.so' 'libsndfile'
