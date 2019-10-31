@@ -4,7 +4,7 @@ pkgname='matterircd'
 _github_path="github.com/42wim/${pkgname}"
 _go_pkg_path="src/${_github_path}"
 pkgver='0.19.2'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Minimal IRC server which integrates with mattermost and slack'
 arch=('x86_64')
 url='https://github.com/42wim/matterircd'
@@ -32,6 +32,8 @@ prepare() {
     export PATH="$PATH:$GOPATH/bin"
     mkdir -p "$(dirname "${_go_pkg_path}")"
     mv "${pkgname}-${pkgver}" "${_go_pkg_path}"
+    cd "${_go_pkg_path}"
+    go get ./...
 }
 
 build() {
