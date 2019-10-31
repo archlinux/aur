@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 5.3.7-arch1 Kernel Configuration
+# Linux/x86 5.3.8-arch1 Kernel Configuration
 #
 
 #
@@ -4117,7 +4117,7 @@ CONFIG_RMI4_F11=y
 CONFIG_RMI4_F12=y
 CONFIG_RMI4_F30=y
 CONFIG_RMI4_F34=y
-CONFIG_RMI4_F54=y
+# CONFIG_RMI4_F54 is not set
 CONFIG_RMI4_F55=y
 
 #
