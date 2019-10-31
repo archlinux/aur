@@ -1,7 +1,7 @@
 pkgbase = ffmpeg-compat-57
 	pkgdesc = Compatibility package for ffmpeg to provide versions 57 of libavcodec, libavdevice and libavformat, not anymore provided by the ffmpeg package
 	pkgver = 3.4.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://ffmpeg.org/
 	arch = i686
 	arch = x86_64
@@ -39,6 +39,7 @@ pkgbase = ffmpeg-compat-57
 	depends = v4l-utils
 	depends = xz
 	depends = zlib
+	depends = libxv
 	depends = libomxil-bellagio
 	depends = libass.so
 	depends = libbluray.so
@@ -65,10 +66,12 @@ pkgbase = ffmpeg-compat-57
 	source = http://ffmpeg.org/releases/ffmpeg-3.4.2.tar.xz
 	source = http://ffmpeg.org/releases/ffmpeg-3.4.2.tar.xz.asc
 	source = fs56089.patch
+	source = FFmpeg-devel-avutil-mem-Fix-invalid-use-of-av_alloc_size.patch
 	validpgpkeys = FCF986EA15E6E293A5644F10B4322F04D67658D8
 	sha256sums = 2b92e9578ef8b3e49eeab229e69305f5f4cbc1fdaa22e927fc7fca18acccd740
 	sha256sums = SKIP
 	sha256sums = 0bfcd12d1992903f21c146ae56d9ad89b52818cfb2303197ee905347c25a5427
+	sha256sums = 5aeba39dcc8b23502e214310542f45ccc5fbcdb8104e88c9feca515fce1ae404
 
 pkgname = ffmpeg-compat-57
 
