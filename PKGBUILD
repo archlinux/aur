@@ -3,7 +3,7 @@
 _pkgname=mohawk
 pkgname=python-mohawk
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Python library for Hawk HTTP authorization"
 arch=('any')
 url="https://github.com/kumar303/mohawk"
