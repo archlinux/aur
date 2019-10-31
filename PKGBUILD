@@ -3,8 +3,8 @@
 
 pkgname=odoo
 pkgver=13.0
-_pkgsubver=20191027
-pkgrel=3
+_pkgsubver=20191031
+pkgrel=4
 pkgdesc="Web-based Open Source Business Apps"
 url=https://www.odoo.com/
 arch=('any')
