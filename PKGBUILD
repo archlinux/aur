@@ -2,11 +2,11 @@
 
 pkgname=python-shreddit-git
 epoch=
-pkgver=r292.e550fa1
+pkgver=r377.b0c9ea2
 pkgrel=1
 pkgdesc='Remove your comment history on Reddit as deleting an account does not do so.'
 arch=(any)
-url=https://github.com/x89/Shreddit
+url=https://github.com/jdbassa/Shreddit
 license=(BSD)
 depends=(python python-arrow python-backports-abc python-praw python-yaml python-requests python-six python-tornado)
 ## EXTRA_DEPENDS ##
@@ -14,7 +14,7 @@ makedepends=(python-pip)
 checkdepends=()
 provides=()
 conflicts=(${provides%=*})  # No quotes, to avoid an empty entry.
-source=(git+https://github.com/x89/shreddit)
+source=(git+https://github.com/jdbassa/Shreddit)
 md5sums=(SKIP)
 source+=(LICENSE)
 md5sums+=(0cf0fb38f370a4b0e9e7e0749e0aaa9f)
