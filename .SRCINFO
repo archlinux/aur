@@ -5,6 +5,7 @@ pkgbase = goland
 	arch = x86_64
 	arch = i686
 	license = Commercial
+	depends = glib2
 	options = !strip
 	source = https://download.jetbrains.com/go/goland-2019.2.3.tar.gz
 	source = jetbrains-goland.desktop
