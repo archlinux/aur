@@ -39,9 +39,10 @@ pkgname = data-science-mkl-meta
 	depends = python-numpy-mkl
 	depends = python-scipy-mkl
 	depends = mkl-dnn
-	depends = julia-mkl
 	depends = python-mkl-fft
 	depends = python-mkl-random
 	depends = python-mkl-service
+	depends = julia-mkl
+	depends = r-mkl
 	replaces = 
 

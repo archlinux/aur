@@ -54,9 +54,10 @@ package_data-science-mkl-meta() {
   depends=(python-numpy-mkl
            python-scipy-mkl
            mkl-dnn
-           julia-mkl
            python-mkl-fft
            python-mkl-random
            python-mkl-service
+           julia-mkl
+           r-mkl           
   )
 }
