@@ -22,15 +22,15 @@ md5sums=("SKIP"
          "7efca87d5c782c6b4334e381e5c67b3e"
          "292b53906f31d9bc445961e8a33092b1")
 
-pkgver() {
-  	cd "$_pkgname"
-  	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
 prepare() {
 	sed -i -e 's,.*"build:app":.*,"build:app": "electron-builder --linux",' "$srcdir/$_pkgname/package.json"
 	sed -i -e '/"build:app": "electron-builder --linux"/ s/$/,/' "$srcdir/$_pkgname/package.json"
 	sed -i '27idevTools: false' "$srcdir/$_pkgname/src/main/main.ts"
+}
+
+pkgver() {
+  	cd "$_pkgname"
+  	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -43,7 +43,7 @@ package() {
 	install -Dm644 "$srcdir/$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
 	install -Dm644 "$srcdir/$_pkgname.sh" "$pkgdir/usr/bin/$_pkgname"
 
-	install -Dm644 "$srcdir/$_pkgname/LICENSE.md" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+	install -Dm644 "$srcdir/$_pkgname/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   	for _size in "192x192" "128x128" "96x96" "64x64" "48x48" "32x32" "24x24" "22x22" "20x20" "16x16" "8x8"
   	do
