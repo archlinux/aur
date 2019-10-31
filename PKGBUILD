@@ -26,14 +26,14 @@ pkgver() {
 
 prepare() {
   # update PACKAGE_VERSION to pkgver
-  sed -i "s/PACKAGE_VERSION=\"[-._ 0-9a-zA-Z]*\"/PACKAGE_VERSION=\"${pkgver}\"/g" "${srcdir}/dkms.conf"
+  sed -i "s/PACKAGE_VERSION=\"[-._ 0-9a-zA-Z]*\"/PACKAGE_VERSION=\"${pkgver}\"/g" "${srcdir}"/dkms.conf
 }
 
 package() {
+  # remove unneeded git files
   rm -fr ${_gitname}/{.git,.gitignore}
 
-  mkdir -p "${pkgdir}/usr/src"
-  cp -r ${_gitname} "${pkgdir}/usr/src/exfat-${pkgver}"
-
-  install -Dm644 "${srcdir}/dkms.conf" "${pkgdir}/usr/src/exfat-${pkgver}/dkms.conf"
+  install -dm644 "${pkgdir}"/usr/src
+  cp -r ${_gitname} "${pkgdir}"/usr/src/exfat-${pkgver}
+  install -Dm644 "${srcdir}"/dkms.conf "${pkgdir}"/usr/src/exfat-${pkgver}/dkms.conf
 }
