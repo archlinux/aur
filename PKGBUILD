@@ -37,6 +37,7 @@ package() {
     cp ../start $pkgdir/opt/mfcoin/start
     cd $(ls -d */)
     cp -R ./utxo_snapshot ./genesis-reg.dat ./genesis-test.dat ./genesis.dat $pkgdir/opt/mfcoin/
+    ls -la $pkgdir/opt/mfcoin/bin
     chmod 755 $pkgdir/opt/mfcoin/bin/* $pkgdir/opt/mfcoin/start
     _prep d
     _prep -cli
