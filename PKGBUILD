@@ -1,8 +1,8 @@
 # Maintainer: katt <magunasu.b97 [at] gmail [dot] com>
 
 _pkgname=gallery-dl
-pkgname=gallery-dl-git
-pkgver=r1885.b1728f5
+pkgname=$_pkgname-git
+pkgver=1.10.6.r37.g8361d87
 pkgrel=1
 pkgdesc="Command-line program to download image-galleries and collections from several image hosting sites"
 arch=('any')
@@ -14,12 +14,12 @@ optdepends=('ffmpeg: Convert Pixiv Ugoira to WebM'
 	    'youtube-dl: Download videos')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=(git+https://github.com/mikf/$_pkgname.git)
+source=(git+https://github.com/mikf/gallery-dl.git)
 sha512sums=('SKIP')
 
 pkgver() {
     cd $_pkgname
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare(){
