@@ -8,6 +8,7 @@ pkgdesc='Capable and Ergonomic Go IDE'
 arch=('x86_64' 'i686')
 url='https://www.jetbrains.com/go/'
 license=('Commercial')
+depends=('glib2')
 options=('!strip')
 source=(https://download.jetbrains.com/go/${pkgbase%-eap}-${pkgver}.tar.gz
         jetbrains-goland-eap.desktop)

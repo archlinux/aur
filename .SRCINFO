@@ -6,6 +6,7 @@ pkgbase = goland-eap
 	arch = x86_64
 	arch = i686
 	license = Commercial
+	depends = glib2
 	options = !strip
 	source = https://download.jetbrains.com/go/goland-193.4099.15.tar.gz
 	source = jetbrains-goland-eap.desktop
