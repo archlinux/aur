@@ -12,7 +12,7 @@ pkgbase = cqrlog-bin
 	depends = trustedqsl
 	depends = xplanet
 	depends = glabels
-	source_x86_64 = http://www.cqrlog.com/files/cqrlog_2.4.0/cqrlog_2.4.0_amd64.tar.gz
+	source_x86_64 = https://github.com/ok2cqr/cqrlog/releases/download/v2.4.0/cqrlog_2.4.0_amd64.tar.gz
 	sha256sums_x86_64 = c97e4123fe802a292040dddd2c80c7930e34abcde356950a197b5deedb9a56cb
 
 pkgname = cqrlog-bin

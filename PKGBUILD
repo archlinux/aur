@@ -7,6 +7,7 @@ pkgrel=1
 pkgdesc="An advanced ham radio logger based on MySQL database ( MariaDB replaces MySQL in repositories ). (Binary Version)"
 arch=('x86_64')
 url="http://www.cqrlog.com"
+url_sourse="https://github.com/ok2cqr/cqrlog"
 license=('GPL')
 groups=()
 
@@ -19,7 +20,7 @@ sha256sums_x86_64=('c97e4123fe802a292040dddd2c80c7930e34abcde356950a197b5deedb9a
 fi
 
 _pkg="${_pkgname_sourse//_/-}_${pkgver//_/-}_${_arch}"
-source_x86_64=($url/files/${_pkgname_sourse//_/-}_${pkgver}/${_pkg}.tar.gz)
+source_x86_64=($url_sourse/releases/download/v${pkgver}/${_pkg}.tar.gz)
 
 
 package() {
