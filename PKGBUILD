@@ -1,6 +1,6 @@
 # Maintainer: Auteiy <dmitry@auteiy.me>
 
-pkgname=katfetch
+pkgname=katfetch-git
 pkgver=1.2.9
 pkgrel=1
 pkgdesc="A minimal and customizable fetch script."
