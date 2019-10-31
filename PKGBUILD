@@ -1,11 +1,12 @@
 # Maintainer: kumen
 pkgname="stm32cubeide"
-pkgver=1.0.2
-_pkgver_ext="$pkgver"_3566_20190716_0927
+pkgver=1.1.0
+_pkgver_ext="$pkgver"_4551_20191014_1140
+_pkg_file_name=en.en.st-stm32cubeide_${_pkgver_ext}_amd64.sh.zip
 pkgrel=1
 pkgdesc="Integrated Development Environment for STM32"
 arch=("x86_64")
-depends=('java-runtime' 'jlink-software-and-documentation')
+depends=('java-runtime' 'jlink-software-and-documentation' 'ncurses5-compat-libs' 'lib32-glibc' 'libusb')
 optdepends=('stlink')
 conflicts=()
 url="https://www.st.com/en/development-tools/stm32cubeide.html"
@@ -13,36 +14,36 @@ license=('Commercial')
 options=(!strip)
 
 _DOWNLOADS_DIR=`xdg-user-dir DOWNLOAD`
-if [ ! -f ${PWD}/en.st-stm32cubeide_${_pkgver_ext}_amd64.sh.zip ]; then
-	if [ -f $_DOWNLOADS_DIR/en.st-stm32cubeide_${_pkgver_ext}_amd64.sh.zip ]; then
-		ln -sfn $_DOWNLOADS_DIR/en.st-stm32cubeide_${_pkgver_ext}_amd64.sh.zip ${PWD}
+if [ ! -f ${PWD}/${_pkg_file_name} ]; then
+	if [ -f $_DOWNLOADS_DIR/${_pkg_file_name} ]; then
+		ln -sfn $_DOWNLOADS_DIR/${_pkg_file_name} ${PWD}
 	else
 		msg2 ""
 		msg2 "The package can be downloaded here: "
-		msg2 "Please remember to put a downloaded package en.st-stm32cubeide_${_pkgver_ext}_amd64.sh.zip into the build directory ${PWD} or $_DOWNLOADS_DIR"
+		msg2 "Please remember to put a downloaded package ${_pkg_file_name} into the build directory ${PWD} or $_DOWNLOADS_DIR"
 		msg2 ""
 	fi
 fi
 
-source=("local://en.st-stm32cubeide_${_pkgver_ext}_amd64.sh.zip"
+source=("local://${_pkg_file_name}"
 	$pkgname.desktop)
-sha256sums=('bf8b8d6bd0bf7009c2240d88019d09950b96663f37dd8703e8e9b2365508ab6e'
-	'2bfee50bd9875642c376d1c2af12a9f698a407aa2798413154e98dada4e5f937')
+sha256sums=('d5a077e159fb2ffaf171bf1c4d31817835bb6c4bb6f6e4859a8b273a4a7918e7'
+	'838ed4f6d759386e640578936b252ef587de15b9d763b7e856b1cf3f4e7db24d')
 
 prepare(){
 	cd "$srcdir"
 	mkdir build
-        sh st-stm32cubeide_${_pkgver_ext}_amd64.sh --quiet --noexec --target ./build  
+        sh st-stm32cubeide_${_pkgver_ext}_amd64.sh --noexec --target ./build  
         
-        cd build
-        mkdir stlink-server
-        sh st-stlink-server*.sh --quiet --noexec --target ./stlink-server
+	cd build
+	mkdir stlink-server
+	sh st-stlink-server.*.install.sh --noexec --target ./stlink-server
         
-        mkdir stlink-udev
-        sh st-stlink-udev-rules-1.0.0-linux-noarch.sh --quiet --noexec --target ./stlink-udev
+	mkdir stlink-udev
+	sh st-stlink-udev-rules-*-linux-noarch.sh --noexec --target ./stlink-udev
 
-        mkdir jlink-udev
-        sh segger-jlink-udev-rules-6.44c-3-linux-noarch.sh --quiet --noexec --target ./jlink-udev
+	mkdir jlink-udev
+	sh segger-jlink-udev-rules-*-linux-noarch.sh --noexec --target ./jlink-udev
 }
 
 package() {
@@ -76,7 +77,7 @@ package() {
 	#rm -rf "${srcdir}/build"
 	
 	msg2 'Prevent automatical *.desktop file replacement by not functional one'
-	mv ${pkgdir}/opt/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.ide_1.0.2.201907121423/resources/project_importer/linux/mimetype/stm32cubeide.desktop.template ${pkgdir}/opt/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.ide_1.0.2.201907121423/resources/project_importer/linux/mimetype/stm32cubeide.desktop.template.old
+	mv ${pkgdir}/opt/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.ide_1.1.0.201910081157/resources/project_importer/linux/mimetype/stm32cubeide.desktop.template ${pkgdir}/opt/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.ide_1.1.0.201910081157/resources/project_importer/linux/mimetype/stm32cubeide.desktop.template.old
 }
 
 #

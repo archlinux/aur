@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=STM32CubeIDE
-Comment=STM32CubeIDE 1.0.2
+Comment=STM32CubeIDE 1.1.0
 GenericName=STM32CubeIDE
 Exec=/opt/stm32cubeide/stm32cubeide %F
 Icon=/opt/stm32cubeide/icon.xpm
