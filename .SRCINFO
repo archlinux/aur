@@ -5,16 +5,11 @@ pkgbase = mitalk
 	url = http://www.miliao.com/
 	arch = x86_64
 	license = custom
-	depends = gconf
-	depends = libnotify
-	depends = libappindicator-gtk2
-	depends = libappindicator-gtk3
-	depends = libxtst
+	depends = gtk3
 	depends = nss
 	depends = libxss
-	depends = xorg-xrandr
 	source = https://s1.zb.mi.com/miliao/apk/miliao/8.8/MiTalk_4.0.91.deb
-	md5sums = b1fb4b9a758c5f1017405a859de9cefd
+	sha512sums = 2de3919d555cfdcd653e9ef4d54ec6ac5c484f2f4149b656f58e17168911ccd61f6d7098f20c8b3e71eecc619b518f855331c5cabf2310cafb77ddb4a3e0d84c
 
 pkgname = mitalk
 
