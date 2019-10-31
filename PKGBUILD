@@ -8,7 +8,7 @@ arch=('any')
 url='https://github.com/yoarch/timer'
 license=('MIT')
 depends=('bash' 'mpv')
-makedepends=('')
+#makedepends=('')
 
 source=("git://github.com/yoarch/timer.git")
 #source#=("file:///$MHOME/dev/aur/timer/timer.tar.gz")
