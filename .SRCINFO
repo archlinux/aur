@@ -1,5 +1,5 @@
 pkgbase = rua
-	pkgdesc = AUR helper in Rust providing controlled and jailed build
+	pkgdesc = AUR helper in Rust providing control, review, patch application and safe build options
 	pkgver = 0.14.19
 	pkgrel = 1
 	url = https://github.com/vn971/rua
