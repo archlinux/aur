@@ -1,6 +1,6 @@
-diff -aur conan-1.19.0-pristine/conans/requirements_server.txt conan-1.19.0-new/conans/requirements_server.txt
---- conan-1.19.0-pristine/conans/requirements_server.txt	2019-09-30 17:11:58.395705867 +0200
-+++ conan-1.19.0-new/conans/requirements_server.txt	2019-09-30 17:14:05.026044132 +0200
+diff -aur conan-1.19.3-pristine/conans/requirements_server.txt conan-1.19.3-new/conans/requirements_server.txt
+--- conan-1.19.3-pristine/conans/requirements_server.txt	2019-10-31 11:26:43.598396692 +0100
++++ conan-1.19.3-new/conans/requirements_server.txt	2019-10-31 11:30:29.878856114 +0100
 @@ -1,3 +1,3 @@
  # Server
 -bottle>=0.12.8, < 0.13
@@ -8,10 +8,10 @@ diff -aur conan-1.19.0-pristine/conans/requirements_server.txt conan-1.19.0-new/
 \ No newline at end of file
 +bottle>=0.12.8
 +pluginbase>=0.5
-diff -aur conan-1.19.0-pristine/conans/requirements.txt conan-1.19.0-new/conans/requirements.txt
---- conan-1.19.0-pristine/conans/requirements.txt	2019-09-30 17:11:58.395705867 +0200
-+++ conan-1.19.0-new/conans/requirements.txt	2019-09-30 17:13:52.896011590 +0200
-@@ -1,19 +1,17 @@
+diff -aur conan-1.19.3-pristine/conans/requirements.txt conan-1.19.3-new/conans/requirements.txt
+--- conan-1.19.3-pristine/conans/requirements.txt	2019-10-31 11:26:43.598396692 +0100
++++ conan-1.19.3-new/conans/requirements.txt	2019-10-31 11:29:54.908753086 +0100
+@@ -1,21 +1,18 @@
 -PyJWT>=1.4.0, <2.0.0
 -requests>=2.8.1, <3.0.0
 -urllib3!=1.25.4,!=1.25.5
@@ -20,6 +20,7 @@ diff -aur conan-1.19.0-pristine/conans/requirements.txt conan-1.19.0-new/conans/
 -patch==1.16
 +PyJWT>=1.4.0
 +requests>=2.8.1
++urllib3>=1.25.6
 +colorama>=0.3.3
 +PyYAML>=3.11
 +patch>=1.16
@@ -27,20 +28,23 @@ diff -aur conan-1.19.0-pristine/conans/requirements.txt conan-1.19.0-new/conans/
  six>=1.10.0
 -node-semver==0.6.1
 -distro>=1.0.2, <1.2.0
--pylint>=1.9.3,!=2.3.0
+-pylint>=1.9.3, <2.0; python_version < '3'
+-pylint>=2.0,!=2.3.0; python_version >= '3'
 -future>=0.16.0, <0.19.0
 -pygments>=2.0, <3.0
-+node-semver>=0.6.1
-+distro>=1.0.2
-+pylint>=2.3.1
-+future>=0.16.0
-+pygments>=2.0
- astroid>=1.6.5
+-astroid>=1.6.5, <2.0; python_version < '3'
+-astroid>=2.2.0; python_version >= '3'
 -deprecation>=2.0, <2.1
 -tqdm>=4.28.1, <5
 -Jinja2>=2.3, <3
 -python-dateutil>=2.7.0, <3
 -typed-ast<1.4; python_version == '3.4' and platform_system=='Windows'
++node-semver>=0.6.1
++distro>=1.0.2
++pylint>=2.3.1
++future>=0.16.0
++pygments>=2.0
++astroid>=2.2.0
 +deprecation>=2.0
 +tqdm>=4.28.1
 +Jinja2>=2.3
