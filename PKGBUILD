@@ -1,6 +1,6 @@
 # Maintainer: Gareth Latty <gareth@lattyware.co.uk>
 pkgname=unrpa
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="Extract files from the RPA archive format (from Ren'Py visual novels)."
 arch=("any")
@@ -12,8 +12,8 @@ optdepends=("python-uncompyle6: ZiX archive support")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Lattyware/$pkgname/archive/$pkgver.tar.gz"
         "https://github.com/Lattyware/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.gz.asc")
 validpgpkeys=("92A57AA673039A4491E6D80E5BDD8CFCA5F0551E")
-sha256sums=("5c30fa986227f6a010c82ebed052628e6dcbc0e3fa58a880eb70e05e273916c9"
-            "dd110f6f9909f063a52bbc636795f160fb4508bf003a5e4ece7e1858d6e7b6c8")
+sha256sums=("49b6bc03e620a26ea0e92b19e979acf9478514e93de98f6786b798ef65cc5f3e"
+            "241033f032ff73160c55f9c9ca1c71565c1376eb8121f3a87d2dbe417e6cac1e")
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
