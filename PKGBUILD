@@ -3,7 +3,7 @@
 pkgname=gnome-calendar-linuxmint
 _pkgname=gnome-calendar
 pkgver=3.34.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple and beautiful calendar application designed to perfectly fit the GNOME desktop. With Linux Mint patches'
 arch=(x86_64)
 url=https://wiki.gnome.org/Apps/Calendar
