@@ -8,7 +8,7 @@ arch=('any')
 url='https://github.com/yoarch/regal'
 license=('MIT')
 depends=('bash' 'mpv')
-makedepends=('')
+#makedepends=('')
 
 source=("git://github.com/yoarch/regal.git")
 #source#=("file:///$MHOME/dev/aur/regal/regal.tar.gz")
