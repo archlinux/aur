@@ -21,6 +21,14 @@ pkgname = data-science-python-meta
 	depends = ipython
 	replaces = 
 
+pkgname = data-science-languages-meta
+	pkgdesc = Meta package for data science languages
+	depends = r
+	depends = julia
+	depends = python
+	depends = go
+	replaces = 
+
 pkgname = data-science-utils-meta
 	pkgdesc = Meta package for data science utils
 	depends = git
