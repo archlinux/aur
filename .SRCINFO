@@ -1,7 +1,7 @@
 pkgbase = wayfire-plugins-extra-git
 	pkgdesc = 3D wayland compositor extra plugins
 	pkgver = r8.5c9aa89
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/WayfireWM/wayfire-plugins-extra
 	install = wayfire-plugins-extra.install
 	arch = any
