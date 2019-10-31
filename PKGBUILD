@@ -19,15 +19,15 @@ source=(http://dl.sourceforge.jp/separate-plus/47873/separate+-${pkgver}.zip)
 sha512sums=('1e2ecf00ff6e604d0a04337ebf25ca9370e2d46d302d3fca7b7df577c37983f870704ad6018c03152bcba3bcddda59a4acceb35b3ba5d0bfd589fa1e99413aa3')
 
 build() {
-	cd "${srcdir}/separate+-${pkgver}"
+	cd "separate+-${pkgver}"
 	sed '/LIBS/s/$/ -lm/' -i Makefile
 	make
 }
 
 package() {
-	cd "${srcdir}/separate+-${pkgver}"
-	make PREFIX="${pkgdir}/usr" install
+	cd "separate+-${pkgver}"
+	make PREFIX="${pkgdir}"/usr install
 
-	install -d "${pkgdir}/usr/share/gimp/2.0/scripts"
-	install -m644 sample-scripts/* "${pkgdir}/usr/share/gimp/2.0/scripts"
+	install -dm755 "${pkgdir}"/usr/share/gimp/2.0/scripts
+	install -m644 sample-scripts/* "${pkgdir}"/usr/share/gimp/2.0/scripts
 }
