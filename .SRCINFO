@@ -1,6 +1,6 @@
 pkgbase = gallery-dl-git
 	pkgdesc = Command-line program to download image-galleries and collections from several image hosting sites
-	pkgver = r1885.b1728f5
+	pkgver = 1.10.6.r37.g8361d87
 	pkgrel = 1
 	url = https://github.com/mikf/gallery-dl
 	arch = any
