@@ -2,7 +2,7 @@
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=enlightenment16
-pkgver=1.0.19
+pkgver=1.0.21
 _themever=1.0.1
 pkgrel=2
 pkgdesc="A fast, flexible, and very extensible Window Manager"
@@ -13,7 +13,7 @@ depends=('libxinerama' 'imlib2' 'perl' 'pango' 'libxcomposite'
          'libxrandr' 'libpulse' 'libxdamage')
 source=(http://downloads.sourceforge.net/sourceforge/enlightenment/e16-${pkgver}.tar.gz
         http://downloads.sourceforge.net/enlightenment/e16-themes-${_themever}.tar.gz)
-sha1sums=('0c6e4c684d95d115e423dbc9e234693f0e9eb952'
+sha1sums=('758540c24d09350f8ceb9e1987995c7783cc40e1'
           'ae34e2df1294198795736bf953bf695aba93b710')
 
 build() {
