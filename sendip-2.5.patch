@@ -1,7 +1,18 @@
-diff --git a/mec/protoname.c b/mec/protoname.c
-index 4fee90e..f4183b4 100644
---- a/mec/protoname.c
-+++ b/mec/protoname.c
+diff --git csum.c csum.c
+--- csum.c	2009-04-13 19:38:41.000000000 +0200
++++ csum.c	2019-10-28 17:50:13.731987947 +0100
+@@ -6,7 +6,7 @@
+  */
+
+ #define __USE_BSD    /* GLIBC */
+-#define _BSD_SOURCE  /* LIBC5 */
++#define _DEFAULT_SOURCE  /* LIBC5 */
+ #include <sys/types.h>
+ #include <netinet/in_systm.h>
+ #include <netinet/in.h>
+diff --git mec/protoname.c mec/protoname.c
+--- mec/protoname.c	2010-01-28 22:19:35.000000000 +0100
++++ mec/protoname.c	2019-10-28 17:50:01.155315624 +0100
 @@ -14,6 +14,7 @@
  #include <string.h>
  #include <netdb.h>
@@ -10,11 +21,10 @@ index 4fee90e..f4183b4 100644
 
  #include "mec/ipv6ext.h"
 
-diff --git a/rip.c b/rip.c
-index bda372d..a13a9e2 100644
---- a/rip.c
-+++ b/rip.c
-@@ -63,7 +63,8 @@ bool do_opt(char *opt, char *arg, sendip_data *pack) {
+diff --git rip.c rip.c
+--- rip.c	2015-01-30 01:17:48.000000000 +0100
++++ rip.c	2019-10-28 17:50:01.155315624 +0100
+@@ -63,7 +63,8 @@
  		ripopt = RIP_OPTION(pack);
  		p=q=arg;
  		/* TODO: if arg is malformed, this could segfault */
@@ -24,11 +34,10 @@ index bda372d..a13a9e2 100644
  		rippack->addressFamily= htons((p==q)?2:(u_int16_t)strtoul(p, (char **)0, 0));
  		pack->modified |= RIP_MOD_ADDRFAM;
  		p=++q; while(*(q++)!=':') /* do nothing */; *(--q)='\0';
-diff --git a/ripng.c b/ripng.c
-index 1dab2a1..fec2de6 100644
---- a/ripng.c
-+++ b/ripng.c
-@@ -77,7 +77,8 @@ bool do_opt(char *opt, char *arg, sendip_data *pack) {
+diff -Naur ripng.c ripng.c
+--- ripng.c	2009-03-26 05:06:42.000000000 +0100
++++ ripng.c	2019-10-28 17:50:01.155315624 +0100
+@@ -77,7 +77,8 @@
  		ripopt = RIPNG_ENTRY(pack);
  		p=q=arg;
  		/* TODO: if arg is malformed, this could segfault */
@@ -36,5 +45,5 @@ index 1dab2a1..fec2de6 100644
 +		while(*(q++)!='/') /* do nothing */;
 +		*(--q)='\0';
  		ripopt->prefix = (p==q)?in6addr_any:inet6_addr(p);
- 
+
  		p=++q; while(*(q++)!='/') /* do nothing */; *(--q)='\0';
