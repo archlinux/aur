@@ -1,0 +1,28 @@
+pkgbase = data-science-stack
+	pkgver = 0.1
+	pkgrel = 1
+	arch = any
+
+pkgname = python-data-science-meta
+	pkgdesc = Meta package for python packages
+	depends = python-pandas
+	depends = python-numpy
+	depends = miniconda3
+	depends = python-dask
+	depends = python-numba
+	depends = python-sympy
+	depends = python-statsmodels
+	depends = python-scikit-learn
+	depends = python-matplotlib
+	depends = python-virtualenv
+	depends = python-nltk
+	depends = python-gensim
+	depends = nltk-data
+	depends = ipython
+	replaces = 
+
+pkgname = data-science-utils
+	pkgdesc = Meta package for data science packages
+	depends = git
+	replaces = 
+
