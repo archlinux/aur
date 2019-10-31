@@ -2,7 +2,7 @@
 # Contributor: Dan Beste <dan.ray.beste@gmail.com>
 
 pkgname='stratisd'
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc='Easy to use local storage management for Linux.'
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('asciidoc' 'cargo' 'rust')
 depends=('dbus')
 optdepends=('stratis-cli: command line interface')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/stratis-storage/stratisd/archive/v${pkgver}.tar.gz")
-sha256sums=('062ff3fa7e0a0e9327dd9f9a86cbf71d8277b3d969880dc980dfb649032cfbcc')
+sha256sums=('ea56c317920fbf0c2cba28fdcb681230af782df43355a4c65ab6f6152f4fc848')
 
 build() {
   cd "${pkgname}-${pkgver}"
