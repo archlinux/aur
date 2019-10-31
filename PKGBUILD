@@ -1,14 +1,14 @@
-# Maintainer: Agesly Danzig
+# Maintainer: Agesly Danzig <agesly.danzig@gmail.com>
 
 pkgname=pext
 _pkgname=Pext
 pkgver=0.26
-pkgrel=1
+pkgrel=2
 pkgdesc='Python-based extendable tool'
 url='https://pext.io/'
 arch=(any)
 license=(GPL3)
-depends=(python-dulwich python-pynput python-pip python-pyqt5 qt5-quickcontrols python-opengl python-opengl-accelerate python-requests python-watchdog)
+depends=(python-dulwich python-pynput python-pip python-pyqt6 qt5-quickcontrols python-opengl python-opengl-accelerate python-requests python-watchdog python-psutil)
 makedepends=(python-setuptools)
 optdepends=('pass: password manager support'
             'ffmpeg: radiobrowser music support')
