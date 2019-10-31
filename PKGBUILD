@@ -19,11 +19,11 @@
 
 pkgbase=lib32-llvm-minimal-git
 pkgname=('lib32-llvm-minimal-git' 'lib32-llvm-libs-minimal-git')
-pkgver=10.0.0_r324862.045f33aec9e
+pkgver=10.0.0_r330504.12c9ffd1083
 pkgrel=1
 arch=('x86_64')
 url="http://llvm.org/"
-license=('custom:University of Illinois/NCSA Open Source License')
+license=('custom:Apache 2.0 with LLVM Exception')
 makedepends=('git' 'cmake' 'ninja' 'lib32-libffi' 'lib32-zlib' 'python' 'lib32-gcc-libs'
              'lib32-libxml2')
 source=("llvm-project::git+https://github.com/llvm/llvm-project.git")
@@ -99,8 +99,8 @@ package_lib32-llvm-minimal-git() {
     pkgdesc="Collection of modular and reusable compiler and toolchain technologies (32-bit)"
     depends=(lib32-llvm-libs-minimal-git=$pkgver-$pkgrel llvm-minimal-git)
     conflicts=('lib32-llvm')
-    provides=(lib32-llvm=$pkgver-$pkgrel lone_wolf-lib32-llvm-git)
-    replaces=(lone_wolf-lib32-llvm-git)
+    
+    
     
     cd _build
     DESTDIR="$pkgdir" ninja $NINJAFLAGS install
@@ -132,8 +132,6 @@ package_lib32-llvm-libs-minimal-git() {
     pkgdesc="Low Level Virtual Machine (runtime library)(32-bit)"
     depends=('lib32-libffi' 'lib32-zlib' 'lib32-ncurses' 'lib32-libxml2' 'lib32-gcc-libs')
     optdepends=('lib32-llvm-libs: for LLVMgold linker')
-    provides=(lone_wolf-lib32-llvm-libs-git=$pkgver-$pkgrel)
-    replaces=(lone_wolf-lib32-llvm-libs-git)
     
     install -d "$pkgdir"/usr/lib32
 

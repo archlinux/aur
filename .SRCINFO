@@ -1,9 +1,9 @@
 pkgbase = lib32-llvm-minimal-git
-	pkgver = 10.0.0_r324862.045f33aec9e
+	pkgver = 10.0.0_r330504.12c9ffd1083
 	pkgrel = 1
 	url = http://llvm.org/
 	arch = x86_64
-	license = custom:University of Illinois/NCSA Open Source License
+	license = custom:Apache 2.0 with LLVM Exception
 	makedepends = git
 	makedepends = cmake
 	makedepends = ninja
@@ -18,12 +18,9 @@ pkgbase = lib32-llvm-minimal-git
 
 pkgname = lib32-llvm-minimal-git
 	pkgdesc = Collection of modular and reusable compiler and toolchain technologies (32-bit)
-	depends = lib32-llvm-libs-minimal-git=10.0.0_r324862.045f33aec9e-1
+	depends = lib32-llvm-libs-minimal-git=10.0.0_r330504.12c9ffd1083-1
 	depends = llvm-minimal-git
-	provides = lib32-llvm=10.0.0_r324862.045f33aec9e-1
-	provides = lone_wolf-lib32-llvm-git
 	conflicts = lib32-llvm
-	replaces = lone_wolf-lib32-llvm-git
 
 pkgname = lib32-llvm-libs-minimal-git
 	pkgdesc = Low Level Virtual Machine (runtime library)(32-bit)
@@ -33,6 +30,4 @@ pkgname = lib32-llvm-libs-minimal-git
 	depends = lib32-libxml2
 	depends = lib32-gcc-libs
 	optdepends = lib32-llvm-libs: for LLVMgold linker
-	provides = lone_wolf-lib32-llvm-libs-git=10.0.0_r324862.045f33aec9e-1
-	replaces = lone_wolf-lib32-llvm-libs-git
 
