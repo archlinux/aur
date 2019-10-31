@@ -6,7 +6,6 @@ pkgbase = goland-eap
 	arch = x86_64
 	arch = i686
 	license = Commercial
-	makedepends = rsync
 	options = !strip
 	source = https://download.jetbrains.com/go/goland-193.4099.15.tar.gz
 	source = jetbrains-goland-eap.desktop
@@ -20,6 +19,8 @@ pkgname = goland-eap
 	replaces = gogland-eap
 
 pkgname = goland-eap-jre
+	pkgdesc = JBR (JetBrains Runtime) for Goland - a patched JDK
+	url = https://confluence.jetbrains.com/display/JBR/JetBrains+Runtime
 	conflicts = gogland-eap-jre
 	replaces = gogland-eap-jre
 

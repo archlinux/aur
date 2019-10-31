@@ -8,7 +8,6 @@ pkgdesc='Capable and Ergonomic Go IDE'
 arch=('x86_64' 'i686')
 url='https://www.jetbrains.com/go/'
 license=('Commercial')
-makedepends=('rsync')
 options=('!strip')
 source=(https://download.jetbrains.com/go/${pkgbase%-eap}-${pkgver}.tar.gz
         jetbrains-goland-eap.desktop)
@@ -21,22 +20,25 @@ package_goland-eap() {
   conflicts=('gogland-eap')
   replaces=('gogland-eap')
 
-  install -d -m 755 "${pkgdir}/opt/"
-  install -d -m 755 "${pkgdir}/usr/bin/"
-  install -d -m 755 "${pkgdir}/usr/share/applications/"
-  install -d -m 755 "${pkgdir}/usr/share/pixmaps/"
+  install -dm755 "${pkgdir}"/opt/
+  install -dm755 "${pkgdir}"/usr/bin/
+  install -dm755 "${pkgdir}"/usr/share/applications/
+  install -dm755 "${pkgdir}"/usr/share/pixmaps/
 
-  rsync -rtl "${srcdir}/GoLand-${pkgver}/" "${pkgdir}/opt/${pkgbase}" --exclude=/jbr
+  cp -a "${srcdir}"/GoLand-${pkgver}/ "${pkgdir}"/opt/${pkgbase}
+  rm -rf "${pkgdir}"/opt/${pkgbase}/jbr
 
   ln -s "/opt/${pkgbase}/bin/${pkgbase%-eap}.sh" "${pkgdir}/usr/bin/${pkgbase}"
-  install -D -m 644 "${srcdir}/jetbrains-${pkgbase}.desktop" "${pkgdir}/usr/share/applications/"
-  install -D -m 644 "${pkgdir}/opt/${pkgbase}/bin/${pkgbase%-eap}.png" "${pkgdir}/usr/share/pixmaps/${pkgbase}.png"
+  install -m644 "${srcdir}"/jetbrains-${pkgbase}.desktop "${pkgdir}"/usr/share/applications/
+  install -m644 "${pkgdir}"/opt/${pkgbase}/bin/${pkgbase%-eap}.png "${pkgdir}"/usr/share/pixmaps/${pkgbase}.png
 }
 
 package_goland-eap-jre() {
+  pkgdesc='JBR (JetBrains Runtime) for Goland - a patched JDK'
+  url='https://confluence.jetbrains.com/display/JBR/JetBrains+Runtime'
   conflicts=('gogland-eap-jre')
   replaces=('gogland-eap-jre')
 
-  install -d -m 755 "${pkgdir}/opt/${pkgbase}"
-  rsync -rtl "${srcdir}/GoLand-${pkgver}/jbr" "${pkgdir}/opt/${pkgbase}"
+  install -dm755 "${pkgdir}"/opt/${pkgbase}
+  cp -a "${srcdir}"/GoLand-${pkgver}/jbr "${pkgdir}"/opt/${pkgbase}
 }
