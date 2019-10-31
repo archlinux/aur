@@ -16,7 +16,7 @@ sha512sums=('2f6c2300caad1410f139e9192046a60e4e64954867085d22ab403f7808634cce7a2
             '08843b55d193dfdaea9146500936e459a28971fbf5c1b9e045ca1247a319f3e0c030dba1cb58977e87951149993139df25328c14a5a5bf39fe60b35deb2ba433')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd ${pkgname}-${pkgver}
   aclocal
   autoconf
   automake --add-missing
@@ -25,6 +25,6 @@ build() {
 }
 
 package() {
-  install -Dm755 "${srcdir}/${pkgname}-${pkgver}/src/xfce-polkit" "${pkgdir}/usr/lib/${pkgname}/xfce-polkit"
-  install -Dm644 "${srcdir}/xfce-polkit.desktop" "${pkgdir}/etc/xdg/autostart/xfce-polkit.desktop"
+  install -Dm755 "${srcdir}"/${pkgname}-${pkgver}/src/xfce-polkit "${pkgdir}"/usr/lib/${pkgname}/xfce-polkit
+  install -Dm644 "${srcdir}"/xfce-polkit.desktop "${pkgdir}"/etc/xdg/autostart/xfce-polkit.desktop
 }
