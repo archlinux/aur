@@ -1,5 +1,5 @@
 pkgname=mingw-w64-paraview-git
-pkgver=r71904.1c2ad539d5
+pkgver=r72233.1b0aa7b3b1
 pkgrel=1
 pkgdesc='Parallel Visualization Application using VTK (mingw-w64)'
 arch=('any')
@@ -32,6 +32,8 @@ prepare() {
   git config submodule.ThirdParty/IceT/vtkicet.git "$srcdir"/icet
   git config submodule.ThirdParty/QtTesting/vtkqttesting.git "$srcdir"/qttesting
   git submodule update -f --init
+
+  curl -L https://gitlab.kitware.com/paraview/paraview/merge_requests/3677.patch | patch -p1
 }
 
 build() {
@@ -43,11 +45,9 @@ build() {
       -DPARAVIEW_ENABLE_PYTHON=OFF \
       -DPARAVIEW_ENABLE_EMBEDDED_DOCUMENTATION=OFF \
       -DPARAVIEW_USE_VTKM=OFF \
-      -DPARAVIEW_PLUGINS_DEFAULT=OFF \
       -DPARAVIEW_USE_EXTERNAL=ON \
       -DVTK_MODULE_USE_EXTERNAL_VTK_gl2ps=OFF \
       -DVTK_MODULE_USE_EXTERNAL_VTK_libharu=OFF \
-      -DVTK_MODULE_ENABLE_VTK_IOADIOS2=NO \
       ..
     WINEPATH="/usr/${_arch}/bin;${PWD}/bin" make
     popd
