@@ -10,6 +10,7 @@ license=('MIT')
 depends=('gpuvis-git' 'trace-cmd')
 provides=('gpu-trace')
 conflicts=('gpu-trace')
+replaces=('amdgpu-trace')
 source=("git+$url")
 sha256sums=("SKIP")
 
