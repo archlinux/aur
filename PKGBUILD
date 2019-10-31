@@ -1,25 +1,25 @@
 # Maintainer: Andres Rodriguez <andresx7@gmail.com>
 
-pkgname=amdgpu-trace-git
-pkgver=v1.1.r1.g47551c6
+pkgname=gpu-trace-git
+pkgver=v2.0.r0.g1fbaa4f
 pkgrel=1
-pkgdesc="Trace capture helper for amdgpu based systems"
+pkgdesc="GPU Trace capture tool"
 arch=('x86_64')
-url="https://github.com/lostgoat/amdgpu-trace"
+url="https://github.com/lostgoat/gpu-trace"
 license=('MIT')
 depends=('gpuvis-git' 'trace-cmd')
-provides=('amdgpu-trace')
-conflicts=('amdgpu-trace')
+provides=('gpu-trace')
+conflicts=('gpu-trace')
 source=("git+$url")
 sha256sums=("SKIP")
 
 pkgver() {
-  cd "$srcdir/amdgpu-trace"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    cd "$srcdir/gpu-trace"
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
-  cd "${srcdir}/amdgpu-trace"
-  install -dm755 "$pkgdir/usr/bin/"
-  make INSTALL_PATH="$pkgdir/usr/" install
+    cd "${srcdir}/gpu-trace"
+    install -dm755 "$pkgdir/usr/bin/"
+    make INSTALL_ROOT="$pkgdir" INSTALL_PREFIX="/usr/" install
 }
