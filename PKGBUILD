@@ -29,9 +29,6 @@ pkgver() {
 package() {
   cd "$srcdir/$_gitname"
 
-  sed -i 's/trackma/trackma -a 1/g' adl
-  sed -i 's/player="vlc"/player="mpv"/g' adl
-
   # Install the program.
   mkdir -p "$pkgdir/usr/share/$_gitname"
   install -Dm755 adl "${pkgdir}/usr/bin/$_gitname"
