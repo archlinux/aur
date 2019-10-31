@@ -1,17 +1,14 @@
 pkgbase = game-devices-udev
 	pkgdesc = Udev rules for controllers
-	pkgver = 0.4
+	pkgver = 0.5
 	pkgrel = 0
 	url = https://gitlab.com/Fabish/game-devices-udev
 	install = game-devices-udev.install
 	arch = any
 	license = MIT
 	depends = systemd
-	provides = steam-devices
-	conflicts = steam-devices
-	replaces = steam-devices
-	source = https://gitlab.com/Fabish/game-devices-udev/-/archive/0.4/game-devices-udev-0.4.zip
-	sha512sums = 384c9b6681c78e00acba2864f1e4dc69ee84ba7c7022b85164f05f82e4f20d8b03eeb5040a375f43271c76b93816c7f0d88a02ca40ab2d4b345e673d84b8c9ba
+	source = https://gitlab.com/Fabish/game-devices-udev/-/archive/0.5/game-devices-udev-0.5.zip
+	sha512sums = 721c47554928d6159d4285e94f0057cec8d1d748f3e965352de1fac3ad5003b4f4a52cd8e27798b5498ff344c4428fcb1ed06401ceeb9e144e68ea492a330f06
 
 pkgname = game-devices-udev
 
