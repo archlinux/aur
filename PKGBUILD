@@ -7,7 +7,7 @@ pkgdesc="A minimal and customizable fetch script."
 arch=(any)
 url="https://gitlab.com/KatHamer/katfetch"
 license=(MIT)
-depends=(python-click python-psutil python-hurry-filesize) 
+depends=(python-click python-psutil python-hurry-filesize python-py-cpuinfo) 
 
 _commit="1e079b39520664f27c85c289eb5e56b40dbd229b"
 source=("$pkgname-$pkgver.tar.gz::https://gitlab.com/KatHamer/katfetch/-/archive/$_commit/katfetch-$_commit.tar.gz")
