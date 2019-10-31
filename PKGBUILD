@@ -1,4 +1,4 @@
-# Maintainer: Auteiy <dmitry@auteiy.me>
+## Maintainer: Auteiy <dmitry@auteiy.me>
 
 pkgname=posy-cursors
 pkgver=3.6.2
