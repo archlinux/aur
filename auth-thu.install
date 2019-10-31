@@ -1,0 +1,11 @@
+post_install() {
+    echo "Excecute the following command to run auth-thu on user login:"
+	echo "ln -sf /usr/share/auth-thu/auth-thu.service ~/.config/systemd/user/auth-thu.service"
+    echo "systemctl --user enable auth-thu.service"
+}
+
+post_remove() {
+	echo "If you've installed the systemd service file for auth-thu, it's time to remove it:"
+    echo "systemctl --user disable auth-thu.service"
+	echo "rm ~/.config/systemd/user/auth-thu.service"
+}
