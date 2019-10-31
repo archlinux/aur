@@ -1,7 +1,7 @@
 pkgbase = fightcade-windows
 	pkgdesc = An online arcade gaming platform for netplay based on GGPO. (Full Windows-wine version)
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.fightcade.com/
 	arch = any
 	license = custom
