@@ -1,7 +1,7 @@
 pkgbase = networkmanager-iwd
 	pkgdesc = NM modified package to use exclusively iwd backend getting rid of wpa_supplicant dependency
-	pkgver = 1.20.0
-	pkgrel = 2
+	pkgver = 1.20.4
+	pkgrel = 1
 	url = https://wiki.gnome.org/Projects/NetworkManager
 	arch = x86_64
 	license = GPL2
@@ -39,8 +39,8 @@ pkgbase = networkmanager-iwd
 	makedepends = libpsl
 	makedepends = audit
 	makedepends = meson
-	source = https://download.gnome.org/sources/NetworkManager/1.20/NetworkManager-1.20.0.tar.xz
-	sha256sums = b7e605055491ea8ef433bc149d55349111b9c789ad1cd0578f19ece39b1ac7c4
+	source = https://download.gnome.org/sources/NetworkManager/1.20/NetworkManager-1.20.4.tar.xz
+	sha256sums = a3d738b7e702d9548b522a5781a5fb75ba69363f468c400ddd885ca65035914c
 
 pkgname = networkmanager-iwd
 	install = networkmanager-iwd.install

@@ -7,8 +7,8 @@
 
 pkgbase=networkmanager-iwd
 pkgname=(networkmanager-iwd libnm-iwd)
-pkgver=1.20.0
-pkgrel=2
+pkgver=1.20.4
+pkgrel=1
 pkgdesc="NM modified package to use exclusively iwd backend getting rid of wpa_supplicant dependency"
 url="https://wiki.gnome.org/Projects/NetworkManager"
 arch=(x86_64)
@@ -19,8 +19,9 @@ makedepends=(intltool dhclient iptables gobject-introspection gtk-doc "ppp=$_ppp
              libnewt libndp libteam vala perl-yaml python-gobject git jansson bluez-libs
              glib2-docs dhcpcd iwd dnsmasq systemd-resolvconf libpsl audit meson)
 checkdepends=(libx11 python-dbus)
-source=("https://download.gnome.org/sources/NetworkManager/1.20/NetworkManager-1.20.0.tar.xz")
-sha256sums=("b7e605055491ea8ef433bc149d55349111b9c789ad1cd0578f19ece39b1ac7c4")
+_prefixver=1.20
+source=("https://download.gnome.org/sources/NetworkManager/$_prefixver/NetworkManager-$pkgver.tar.xz")
+sha256sums=('a3d738b7e702d9548b522a5781a5fb75ba69363f468c400ddd885ca65035914c')
 
 #pkgver() {
 #  cd NetworkManager-$pkgver
@@ -58,7 +59,7 @@ build() {
 }
 
 check() {
-  # iproute2 bug 
+  # iproute2 bug
   # https://gitlab.freedesktop.org/NetworkManager/NetworkManager/commit/be76d8b624fab99cbd76092ff511e6adc305279c
   meson test -C build --print-errorlogs || :
 }
@@ -82,10 +83,10 @@ package_networkmanager-iwd() {
               'bluez: Bluetooth support'
               'ppp: dialup connection support'
               'modemmanager: cellular network support')
-  backup=(etc/NetworkManager/NetworkManager.conf)
-  install="$pkgbase.install"
-  groups=(gnome)
 
+  backup=(etc/NetworkManager/NetworkManager.conf)
+  groups=(gnome)
+  install="$pkgbase.install"
   DESTDIR="$pkgdir" meson install -C build
 
   # /etc/NetworkManager
