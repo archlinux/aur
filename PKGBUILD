@@ -7,6 +7,7 @@ pkgdesc="Expressive and extensible TDD/BDD assertion library for Python"
 arch=('any')
 license=('Apache')
 url="https://github.com/jaimegildesagredo/expects"
+depends=('python')
 makedepends=('python-setuptools')
 checkdepends=('python-mamba')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jaimegildesagredo/expects/archive/v$pkgver.tar.gz")
@@ -23,8 +24,6 @@ check() {
 }
 
 package() {
-  depends=('python')
-
   cd expects-$pkgver
   python setup.py install --root="$pkgdir" --optimize=1
   install -D -m644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
