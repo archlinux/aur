@@ -1,15 +1,15 @@
 pkgbase = scala-dotty
 	pkgdesc = Research compiler that will become Scala 3
-	pkgver = 0.18.1
+	pkgver = 0.20.0RC1
 	pkgrel = 1
 	url = http://dotty.epfl.ch
 	arch = any
 	license = BSD
 	depends = java-environment>=8
 	depends = java-environment<=11
-	source = https://github.com/lampepfl/dotty/releases/download/0.18.1/dotty-0.18.1.tar.gz
-	sha1sums = e2d6138f087327a7d82416d183ec52640fc61e55
-	sha256sums = a9e102d8289b6367e737a523691f6ecfe01e1834719f8682f7f1d4cc3c33efed
+	source = https://github.com/lampepfl/dotty/releases/download/0.20.0-RC1/dotty-0.20.0-RC1.tar.gz
+	sha1sums = 52f2014cd57b539a821b73abc6a1a1011c1ce35d
+	sha256sums = 86a6d62614e250dacd9b46d32e2b5765a45956502a73f64c28062e26461d1a23
 
 pkgname = scala-dotty
 
