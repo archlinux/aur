@@ -1,16 +1,16 @@
+# Maintainer: Artjom Simon <artjom.simon@gmail.com>
 # Contributor: William Di Luigi <williamdiluigi@gmail.com>
-# Contributor: Artjom Simon <artjom.simon@gmail.com>
 
 pkgname=flyway
-pkgver=6.0.7
+pkgver=6.0.8
 pkgrel=1
-pkgdesc="Flyway Community Edition - Database Migrations Made Easy."
+pkgdesc="Database migration utility written Java, supporting a wide range of databases"
 arch=('any')
 url="https://flywaydb.org/"
 license=('Apache')
 depends=('java-environment>=8')
 source=(https://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/$pkgver/flyway-commandline-$pkgver.tar.gz)
-sha256sums=('c734793171fc42c475cd8e06cfba6de2196879a85c2fcff1dd341ef8c07d43b6')
+sha256sums=('636d5ab5a3b226cad38b2e0bb56c0063b74a6f029ff887158948cbf962e46a2d')
 
 package() {
   cd $srcdir
@@ -21,7 +21,7 @@ package() {
 
   cat << 'EOF' > $pkgdir/usr/bin/flyway
 #!/bin/sh
-"$JAVA_HOME/bin/java" -cp /opt/flyway/flyway-6.0.7/lib/*:/opt/flyway/flyway-6.0.7/lib/community/*:/opt/flyway/flyway-6.0.7/drivers/* org.flywaydb.commandline.Main "$@"
+"$JAVA_HOME/bin/java" -cp /opt/flyway/flyway-6.0.8/lib/*:/opt/flyway/flyway-6.0.8/lib/community/*:/opt/flyway/flyway-6.0.8/drivers/* org.flywaydb.commandline.Main "$@"
 EOF
   chmod 755 $pkgdir/usr/bin/flyway
 }
