@@ -3,7 +3,7 @@
 # shellcheck disable=SC2154
 
 pkgname=clickhouse-static
-pkgver=19.14.3.3
+pkgver=19.16.2.2
 pkgrel=1
 pkgdesc='An open-source column-oriented database management system that allows generating analytical data reports in real time. Static binary'
 arch=('i686' 'x86_64')
@@ -31,7 +31,7 @@ source=("https://github.com/yandex/ClickHouse/archive/v$pkgver-stable.tar.gz"
   'libxml2.tgz::https://github.com/GNOME/libxml2/archive/18890f47.tar.gz'
   'llvm.tgz::https://github.com/ClickHouse-Extras/llvm/archive/163def2.tar.gz'
   'lz4.tgz::https://github.com/lz4/lz4/archive/7a4e3b1f.tar.gz'
-  'mariadb-connector-c.tgz::https://github.com/ClickHouse-Extras/mariadb-connector-c/archive/c6503d3.tar.gz'
+  'mariadb-connector-c.tgz::https://github.com/ClickHouse-Extras/mariadb-connector-c/archive/1801630.tar.gz'
   'orc.tgz::https://github.com/apache/orc/archive/5981208.tar.gz'
   'poco.tgz::https://github.com/ClickHouse-Extras/poco/archive/6216cc0.tar.gz'
   'protobuf.tgz::https://github.com/ClickHouse-Extras/protobuf/archive/1273537.tar.gz'
@@ -39,14 +39,15 @@ source=("https://github.com/yandex/ClickHouse/archive/v$pkgver-stable.tar.gz"
   're2.tgz::https://github.com/google/re2/archive/7cf8b88.tar.gz'
   'simdjson.tgz::https://github.com/lemire/simdjson/archive/e9be643.tar.gz'
   'snappy.tgz::https://github.com/google/snappy/archive/3f194ac.tar.gz'
+  'sparsehash-c11.tgz::https://github.com/sparsehash/sparsehash-c11/archive/cf0bffa.tar.gz'
   'ssl.tgz::https://github.com/ClickHouse-Extras/ssl/archive/ba8de79.tar.gz'
   'thrift.tgz::https://github.com/apache/thrift/archive/010ccf0a.tar.gz'
   'UnixODBC.tgz::https://github.com/ClickHouse-Extras/UnixODBC/archive/b0ad30f.tar.gz'
-  'zlib-ng.tgz::https://github.com/ClickHouse-Extras/zlib-ng/archive/cb43e7f.tar.gz'
+  'zlib-ng.tgz::https://github.com/ClickHouse-Extras/zlib-ng/archive/cff0f50.tar.gz'
   'zstd.tgz::https://github.com/facebook/zstd/archive/25559750.tar.gz'
 )
 sha256sums=(
-  9258d406d32b35d3b646d2403fc66fc87337f439733e3b7461432161379f0481 # clickhouse sources
+  145e43fa7a2af862bf4e05e91f661c08718449b6bc1a9d5183a35348cc7c7dbd # clickhouse sources
   80837520237b40e27c36edb5b71127dd9051e3bcb93e26d7fa3301f2e0563e3f # arrow.tgz
   fd586532ea7c0f297f36f1fa076da6ca421abc5d2dee05f96175267a753e7154 # base64.tgz
   18a057463753f377524d2223b38c32319a704f1f220b1fd307dabeceed6f3bd1 # boost.tgz
@@ -67,7 +68,7 @@ sha256sums=(
   2c3d9a93e651b02fef59489e796546a16df9010288905e62598816eaa2c7eb33 # libxml2.tgz
   86389e971f15512ae6952584cf4c4a471a72a7489e8063cfba5e0c6b3af826a4 # llvm.tgz
   b4ac86c2d511e836455a5732cbc4d6f472b9334998b04c3ea203f9fc88abaa30 # lz4.tgz
-  fab7d6071aa5c8135c75a8a863eac7aa9739ecb22b1f9318efb8fcdb9f79ab1e # mariadb-connector-c.tgz
+  3316dd42dc0c0d688fe3dbab840c84d157dcd04c9abbc563eb0c98c217a6cf59 # mariadb-connector-c.tgz
   3207d094a85a4b2fed16fd7fda8720449e83931010efe04104986bd1e0053e1c # orc.tgz
   b750be8035351a7afe9e0717b23725a06bb478c4e5619615d94f2cb713ca5cb7 # poco.tgz
   92a47cda264ef66dbaa28608e830a560871311b2f5558a91ea34ce27747cbfb7 # protobuf.tgz
@@ -75,10 +76,11 @@ sha256sums=(
   2e1d268c4340fc86206756f265f5910608c6d8e07a3668a955191c486afb072b # re2.tgz
   c23d33ee945b4441a10e19f7f69e58ef5946e69251a5e220962becdc77e5a871 # simdjson.tgz
   5811308e224ae6a405c4f20356388df80a01513af20958e3568791c5444765a3 # snappy.tgz
+  cd154b2e72af81ddce7963eb7eb2f695c60711f436c1278130f9afd8e3ea1f0e # sparsehash-c11.tgz
   665635a1eca4bdf5bc3de2a8daf841d919e3a39be18b53018247cc43e1fc122d # ssl.tgz
   ebf4c0ec59f84598953f6ad9fd274230c22fcc6c03916afd4e34186c5207546d # thrift.tgz
   5560ff2c30c9e1c571df9a94ec11338075ff8812e729359adb0df8232010a52e # unixodbc.tgz
-  9f1f838befd908428cb618f12c2353aa8c81b709c46ef44ed325f0febcc21204 # zlib-ng.tgz
+  c6bde6ce0a5c5621d0ff1b95aae21192d6c26b41c98299ed625d80490014dd18 # zlib-ng.tgz
   f9f3bb69c7d1cef48bb122b5a82da3d750583f76092f2ec478848da1bc77ca87 # zstd.tgz
 )
 provides=('clickhouse')
