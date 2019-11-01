@@ -1,6 +1,6 @@
 pkgbase = git-backup-git
 	pkgdesc = Remote git stash, in case of fire and more!
-	pkgver = r40.g1e23d7b
+	pkgver = r41.g3ffc208
 	pkgrel = 1
 	url = https://github.com/sarpik/git-backup
 	install = git-backup.install
