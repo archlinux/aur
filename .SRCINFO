@@ -1,7 +1,7 @@
 pkgbase = android-emulator
 	pkgdesc = Google Android Emulator
 	pkgver = 29.2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://developer.android.com/studio/releases/emulator.html
 	install = android-emulator.install
 	arch = x86_64
