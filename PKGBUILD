@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - The tuw_geometry_msgs package."
-url='http://www.ros.org/'
+url='https://github.com/tuw-robotics/tuw_msgs'
 
 pkgname='ros-melodic-tuw-geometry-msgs'
 pkgver='0.0.13'
