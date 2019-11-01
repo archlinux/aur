@@ -1,0 +1,20 @@
+pkgbase = brother-mfc-j497dw
+	pkgdesc = LPR and CUPS driver for the Brother MFC-J497DW
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = http://solutions.brother.com/linux/en_us/
+	install = brother-mfc-j497dw.install
+	arch = i686
+	arch = x86_64
+	license = custom:brother commercial license
+	depends = cups
+	depends = ghostscript
+	depends = gsfonts
+	optdepends = brscan4
+	optdepends = brscan-skey
+	source = http://www.brother.com/pub/bsc/linux/packages/mfcj497dwpdrv-1.0.5-0.i386.rpm
+	md5sums = 5a3f823f2c7cb6d1718c2277fa949b40
+	depends_x86_64 = lib32-glibc
+
+pkgname = brother-mfc-j497dw
+

@@ -1,0 +1,12 @@
+post_install() {
+  post_upgrade;
+}
+
+post_upgrade() {
+  echo "Restart CUPS to load the new files"
+  echo "You can now register your new printer using the web interface at:"
+  echo "  http://localhost:631/"
+  echo "To print over wireless, choose the 'LPD/LPR Host or Printer' protocol"
+  echo "when adding the printer, and use the following connection:"
+  echo "  lpd://ipaddress/queue"
+}
