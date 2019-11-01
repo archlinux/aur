@@ -1,8 +1,9 @@
-# Maintainer: Anatol Pomozov <anatol@google.com>
+# Maintainer: peeweep <peeweep at 0x0 dot ee>
+# Contributor: Anatol Pomozov <anatol@google.com>
 
 pkgname=muduo
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A C++ non-blocking multi-threaded network library'
 url='https://github.com/chenshuo/muduo'
 license=(BSD)
