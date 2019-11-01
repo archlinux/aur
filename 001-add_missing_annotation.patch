@@ -1,0 +1,10 @@
+--- a/src/GuiQt/AnnotationCoordinateSelectionWidget.cxx	2019-11-02 00:14:33.208292320 +0100
++++ b/src/GuiQt/AnnotationCoordinateSelectionWidget.cxx	2019-11-02 00:15:25.141627050 +0100
+@@ -410,6 +410,7 @@
+         case AnnotationCoordinateSpaceEnum::SURFACE:
+         case AnnotationCoordinateSpaceEnum::TAB:
+         case AnnotationCoordinateSpaceEnum::WINDOW:
++        case AnnotationCoordinateSpaceEnum::SPACER:
+             break;
+         case AnnotationCoordinateSpaceEnum::VIEWPORT:
+             CaretAssert(0);
