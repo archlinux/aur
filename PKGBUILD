@@ -4,7 +4,7 @@
 
 pkgname=joy2key
 pkgver=1.6.3
-pkgrel=3
+pkgrel=4
 pkgdesc='Translate joystick movements into keystrokes'
 arch=('x86_64' 'i686')
 url='https://github.com/joolswills/joy2key'
