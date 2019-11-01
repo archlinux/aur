@@ -2,7 +2,7 @@
 # Contributor: bartus ( aur\at\bartus.33mail.com )
 
 pkgname=makepkg-optimize
-pkgver=14
+pkgver=15
 pkgrel=1
 pkgdesc='Supplemental build and packaging optimizations for makepkg'
 arch=('any')
@@ -26,9 +26,9 @@ sha1sums=('a9af81c30f57b7db6a9a52796d79399a4e754791'
           'a893c32f2a3fff8b279025ec60f0c3d88143dc1e'
           '9270b5e33d4508a959688a10c20dec3732763937'
           '34a33b47a8b667f9dc810737c0f598660b962d4c'
-          'fb3ab1f7d341efc421e5def39b48eb67f25e93a4'
-          '3f961ecc06c5bf24b5439be902f7eadbfcf0a629'
-          '038b4c0a36ba06614ae3205338e970e678efb6d8'
+          '2e69ac6c8e3674faf7e5d1739f9d772d50332fc0'
+          '0022423564ed30dfe91bb3faa7f0c03ddcf4f25f'
+          'fbd6ee512b6486320d41a007b9670dcf5a3430b6'
           '4d11331aeff1c1ec3de3759710acc060769ef274'
           '83a6d62b19184cac1de02c957cd4ea7bbdac9ddb'
           'dea4d727d81ac040846555e59ac7c34eb0978233'

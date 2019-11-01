@@ -19,7 +19,7 @@ tidy_upx() {
     msg2 "$(gettext "Compressing binaries with %s...")" "UPX"
     local binary
     find . -type f -perm -u+w 2>/dev/null | while read -r binary ; do
-      [ $(jobs -p|wc -l) -gt $(nproc) ] && wait -n
+      [ $(jobs -p|wc -l) -gt $(getconf _NPROCESSORS_ONLN) ] && wait -n
       mime=$(file --brief --mime-type "$binary")
       case "$mime" in
         application/x-executable | application/x-dosexec )
