@@ -1,0 +1,17 @@
+pkgbase = protondb-tags-dev-git
+	pkgdesc = Pull ratings from ProtonDB and import them into your Steam library as tags.
+	pkgver = r51.fe599c4
+	pkgrel = 1
+	url = https://github.com/CorruptComputer/ProtonDB-Tags
+	arch = any
+	license = MIT
+	depends = python-vdf
+	depends = python-requests
+	optdepends = steam: Supports any steam, native, flatpak, etc
+	provides = protondb-tags
+	conflicts = protondb-tags
+	source = git+https://github.com/CorruptComputer/ProtonDB-Tags.git#branch=dev
+	md5sums = SKIP
+
+pkgname = protondb-tags-dev-git
+
