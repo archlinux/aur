@@ -3,12 +3,12 @@
 _basename=aom
 pkgname=lib32-aom
 pkgver=1.0.0.errata1
-pkgrel=1
+pkgrel=2
 pkgdesc="Alliance for Open Media video codec (32-bit)"
 url="https://aomedia.org/"
 arch=(x86_64)
 license=(BSD custom:PATENTS)
-depends=(aom)
+depends=(lib32-glibc aom)
 makedepends=(cmake git ninja yasm)
 _commit=add4b15580e410c00c927ee366fa65545045a5d9  # tags/v1.0.0-errata1^0
 source=("git+https://aomedia.googlesource.com/aom#commit=$_commit")
