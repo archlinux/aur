@@ -1,7 +1,7 @@
 # Maintainer: Martins Mozeiko <martins.mozeiko@gmail.com>
 
 pkgname=far2l-git
-pkgver=r1546.480f7f5
+pkgver=r1624.6803ba8a
 pkgrel=1
 pkgdesc='Linux port of FAR v2'
 url='https://github.com/elfmz/far2l'
@@ -18,6 +18,12 @@ sha256sums=('SKIP'
            )
 makedepends=('git' 'cmake')
 depends=('wxgtk' 'gtkmm3' 'openssl-1.0')
+optdepends=(
+  'libssh: SFTP support in NetRocks'
+  'smbclient: SMB support in NetRocks'
+  'libnfs: NFS support in NetRocks'
+  'neon: WebDAV support in NetRocks'
+)
 
 pkgver() {
   cd "$srcdir"/far2l

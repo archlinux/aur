@@ -1,6 +1,6 @@
 pkgbase = far2l-git
 	pkgdesc = Linux port of FAR v2
-	pkgver = r1546.480f7f5
+	pkgver = r1624.6803ba8a
 	pkgrel = 1
 	url = https://github.com/elfmz/far2l
 	arch = i686
@@ -11,6 +11,10 @@ pkgbase = far2l-git
 	depends = wxgtk
 	depends = gtkmm3
 	depends = openssl-1.0
+	optdepends = libssh: SFTP support in NetRocks
+	optdepends = smbclient: SMB support in NetRocks
+	optdepends = libnfs: NFS support in NetRocks
+	optdepends = neon: WebDAV support in NetRocks
 	source = git+https://github.com/elfmz/far2l
 	source = git+https://github.com/cycleg/far-gvfs#commit=7ea1a87fbe3e0c6cc42a4c2e7067d04758587894
 	source = far2l-add-gvfs.patch
