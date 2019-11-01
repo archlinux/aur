@@ -1,7 +1,7 @@
 pkgbase = liquidtux-dkms-git
 	pkgdesc = Linux kernel hwmon drivers for AIO liquid coolers and other devices (DKMS, Git)
 	pkgver = 0.1.0.r2.38d53e5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jonasmalacofilho/liquidtux
 	install = liquidtux-dkms-git.install
 	arch = i686
@@ -20,7 +20,7 @@ pkgbase = liquidtux-dkms-git
 	source = liquidtux-dkms-git::git+https://github.com/jonasmalacofilho/liquidtux#branch=master
 	source = dkms.conf
 	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 66287d98bf77ee8bf4a177dd4a5afbea4cb9f28e96d90457a5ba0fa102747eee
 
 pkgname = liquidtux-dkms-git
 
