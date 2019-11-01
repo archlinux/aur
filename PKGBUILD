@@ -2,7 +2,7 @@
 
 pkgname=python-testflo
 pkgver=1.3.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple flow-based testing framework"
 url="https://github.com/RaRe-Technologies/testflo"
 license=('Apache')
