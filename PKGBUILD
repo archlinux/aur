@@ -3,7 +3,7 @@
 pkgname=imagine-git
 _pkgname=imagine
 pkgver=0.5.0.r0.g7bea16d
-pkgrel=1
+pkgrel=1.1
 pkgdesc="PNG/JPEG optimization app"
 arch=("x86_64")
 url="https://github.com/meowtec/Imagine"
