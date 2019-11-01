@@ -12,6 +12,7 @@ pkgbase = pacman-contrib-git
 	depends = perl
 	optdepends = findutils: pacdiff
 	optdepends = mlocate: pacdiff
+	optdepends = sudo: privilege elevation for several scripts
 	provides = pacman-contrib
 	conflicts = pacman-contrib
 	source = git+https://git.archlinux.org/pacman-contrib.git

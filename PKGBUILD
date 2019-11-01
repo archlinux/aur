@@ -12,7 +12,8 @@ license=('GPL')
 depends=('fakeroot' 'pacman' 'perl')
 makedepends=('asciidoc' 'git')
 optdepends=('findutils: pacdiff'
-            'mlocate: pacdiff')
+            'mlocate: pacdiff'
+            'sudo: privilege elevation for several scripts')
 provides=("$_gitname")
 conflicts=("$_gitname")
 source=('git+https://git.archlinux.org/pacman-contrib.git')
