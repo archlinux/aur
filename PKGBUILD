@@ -1,7 +1,7 @@
 # Maintainer: Dimitris Kiziridis <ragouel@outlook.com>
 
 pkgname=('rednukem-git')
-pkgver=r256.19f24f3
+pkgver=0
 pkgrel=1
 pkgdesc="Redneck Rampage and Duke Nukem 3D port based on EDuke32."
 arch=('i686' 'x86_64')
