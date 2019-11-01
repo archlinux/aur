@@ -1,6 +1,6 @@
 pkgbase = linux-clear-lts2017
 	pkgver = 4.14.151
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/clearlinux-pkgs/linux-lts2017
 	arch = x86_64
 	license = GPL2
@@ -16,9 +16,6 @@ pkgbase = linux-clear-lts2017
 	source = https://cdn.kernel.org/pub/linux/kernel/v4.x/patch-4.14.151.xz
 	source = linux-clear-lts2017::git+https://github.com/clearlinux-pkgs/linux-lts2017.git#tag=4.14.150-72
 	source = enable_additional_cpu_optimizations-20190822.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20190822.tar.gz
-	source = 60-linux.hook
-	source = 90-linux.hook
-	source = linux.preset
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7
@@ -26,9 +23,6 @@ pkgbase = linux-clear-lts2017
 	sha256sums = 1a7fd60f82c659ada834780a57517fe4f851111db2d3a6476cc6713c428076ad
 	sha256sums = SKIP
 	sha256sums = 8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5
-	sha256sums = 452b8d4d71e1565ca91b1bebb280693549222ef51c47ba8964e411b2d461699c
-	sha256sums = c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636
-	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
 
 pkgname = linux-clear-lts2017
 	pkgdesc = Clearlinux lts2017 kernel and modules
@@ -40,7 +34,6 @@ pkgname = linux-clear-lts2017
 	optdepends = linux-firmware: firmware images needed for some devices
 	optdepends = modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig
 	provides = WIREGUARD-MODULE
-	backup = etc/mkinitcpio.d/linux-clear-lts2017.preset
 
 pkgname = linux-clear-lts2017-headers
 	pkgdesc = Header files and scripts for building modules for linux-clear-lts2017

@@ -64,7 +64,7 @@ _srcname=linux-${_major}
 _clr=${_major}.150-72
 pkgbase=linux-clear-lts2017
 pkgver=${_major}.${_minor}
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux-lts2017"
 license=('GPL2')
@@ -76,13 +76,7 @@ source=(
   "https://cdn.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
   "${pkgbase}::git+https://github.com/clearlinux-pkgs/linux-lts2017.git#tag=${_clr}"
   "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
-  '60-linux.hook'  # pacman hook for depmod
-  '90-linux.hook'  # pacman hook for initramfs regeneration
-  'linux.preset'   # standard config files for mkinitcpio ramdisk
 )
-
-_kernelname=${pkgbase#linux}
-: ${_kernelname:=-clear-lts2017}
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -99,7 +93,7 @@ prepare() {
         msg2 "Setting version..."
         scripts/setlocalversion --save-scmversion
         echo "-$pkgrel" > localversion.10-pkgrel
-        echo "$_kernelname" > localversion.20-pkgname
+        echo "${pkgbase#linux}" > localversion.20-pkgname
 
     ### Add Clearlinux patches
         for i in $(grep '^Patch' ${srcdir}/${pkgbase}/linux-lts2017.spec | grep -Ev '^Patch0127' | sed -n 's/.*: //p'); do
@@ -114,37 +108,39 @@ prepare() {
     ### Enable extra stuff from arch kernel
         msg2 "Enable extra stuff from arch kernel..."
 
-        scripts/config --undefine CONFIG_MODULE_SIG_FORCE \
-                       --enable CONFIG_MODULE_COMPRESS \
-                       --enable-after CONFIG_MODULE_COMPRESS CONFIG_MODULE_COMPRESS_XZ \
-                       --enable CONFIG_SOUND_OSS_CORE \
-                       --enable CONFIG_SND_OSSEMUL \
-                       --module-after CONFIG_SND_OSSEMUL CONFIG_SND_MIXER_OSS \
-                       --module-after CONFIG_SND_MIXER_OSS CONFIG_SND_PCM_OSS \
-                       --enable-after CONFIG_SND_PCM_OSS CONFIG_SND_PCM_OSS_PLUGINS
+        scripts/config --undefine MODULE_SIG_FORCE \
+                       --enable MODULE_COMPRESS \
+                       --enable-after MODULE_COMPRESS MODULE_COMPRESS_XZ \
+                       --module IKCONFIG \
+                       --enable-after IKCONFIG IKPROC \
+                       --enable SOUND_OSS_CORE \
+                       --enable SND_OSSEMUL \
+                       --module-after SND_OSSEMUL SND_MIXER_OSS \
+                       --module-after SND_MIXER_OSS SND_PCM_OSS \
+                       --enable-after SND_PCM_OSS SND_PCM_OSS_PLUGINS
 
         # Scheduler features
-        scripts/config --undefine CONFIG_RT_GROUP_SCHED
+        scripts/config --undefine RT_GROUP_SCHED
 
         # PATA SFF controllers with BMDMA
-        scripts/config --module CONFIG_PATA_JMICRON
+        scripts/config --module PATA_JMICRON
 
         # Power management and ACPI options
-        scripts/config --enable CONFIG_ACPI_REV_OVERRIDE_POSSIBLE \
-                       --enable CONFIG_HIBERNATION
+        scripts/config --enable ACPI_REV_OVERRIDE_POSSIBLE \
+                       --enable HIBERNATION
 
         # Security options
-        scripts/config --enable CONFIG_SECURITY_SELINUX \
-                       --enable-after CONFIG_SECURITY_SELINUX CONFIG_SECURITY_SELINUX_BOOTPARAM \
-                       --set-val CONFIG_SECURITY_SELINUX_BOOTPARAM_VALUE 0 \
-                       --enable CONFIG_SECURITY_SMACK \
-                       --enable-after CONFIG_SECURITY_SMACK CONFIG_SECURITY_SMACK_BRINGUP \
-                       --enable-after CONFIG_SECURITY_SMACK_BRINGUP CONFIG_SECURITY_SMACK_NETFILTER \
-                       --enable-after CONFIG_SECURITY_SMACK_NETFILTER CONFIG_SECURITY_SMACK_APPEND_SIGNALS \
-                       --enable CONFIG_SECURITY_TOMOYO \
-                       --enable CONFIG_SECURITY_APPARMOR \
-                       --set-val CONFIG_SECURITY_APPARMOR_BOOTPARAM_VALUE 0 \
-                       --enable CONFIG_SECURITY_YAMA
+        scripts/config --enable SECURITY_SELINUX \
+                       --enable-after SECURITY_SELINUX SECURITY_SELINUX_BOOTPARAM \
+                       --set-val SECURITY_SELINUX_BOOTPARAM_VALUE 0 \
+                       --enable SECURITY_SMACK \
+                       --enable-after SECURITY_SMACK SECURITY_SMACK_BRINGUP \
+                       --enable-after SECURITY_SMACK_BRINGUP SECURITY_SMACK_NETFILTER \
+                       --enable-after SECURITY_SMACK_NETFILTER SECURITY_SMACK_APPEND_SIGNALS \
+                       --enable SECURITY_TOMOYO \
+                       --enable SECURITY_APPARMOR \
+                       --set-val SECURITY_APPARMOR_BOOTPARAM_VALUE 0 \
+                       --enable SECURITY_YAMA
 
         make olddefconfig
 
@@ -192,7 +188,6 @@ prepare() {
 
 build() {
     cd ${_srcname}
-
     make bzImage modules
 }
 
@@ -203,7 +198,6 @@ _package() {
                 'linux-firmware: firmware images needed for some devices'
                 'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig')
     provides=('WIREGUARD-MODULE')
-    backup=("etc/mkinitcpio.d/${pkgbase}.preset")
     install=linux.install
 
     cd $_srcname
@@ -215,7 +209,6 @@ _package() {
     # systemd expects to find the kernel here to allow hibernation
     # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
     install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
-    install -Dm644 "$modulesdir/vmlinuz" "$pkgdir/boot/vmlinuz-$pkgbase"
 
     # Used by mkinitcpio to name the kernel
     echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
@@ -225,26 +218,6 @@ _package() {
 
     # remove build and source links
     rm "$modulesdir"/{source,build}
-
-    msg2 "Installing hooks..."
-    
-    # sed expression for following substitutions
-    local subst="
-      s|%PKGBASE%|$pkgbase|g
-      s|%KERNVER%|$kernver|g
-    "
-
-    # hack to allow specifying an initially nonexisting install file
-    sed "$subst" "$startdir/$install" > "$startdir/$install.pkg"
-    true && install=$install.pkg
-
-    # fill in mkinitcpio preset and pacman hooks
-    sed "$subst" ../linux.preset | install -Dm644 /dev/stdin \
-        "$pkgdir/etc/mkinitcpio.d/$pkgbase.preset"
-    sed "$subst" ../60-linux.hook | install -Dm644 /dev/stdin \
-        "$pkgdir/usr/share/libalpm/hooks/60-${pkgbase}.hook"
-    sed "$subst" ../90-linux.hook | install -Dm644 /dev/stdin \
-        "$pkgdir/usr/share/libalpm/hooks/90-${pkgbase}.hook"
 
     msg2 "Fixing permissions..."
     chmod -Rc u=rwX,go=rX "$pkgdir"
@@ -343,10 +316,7 @@ sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'SKIP'
             '1a7fd60f82c659ada834780a57517fe4f851111db2d3a6476cc6713c428076ad'
             'SKIP'
-            '8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5'
-            '452b8d4d71e1565ca91b1bebb280693549222ef51c47ba8964e411b2d461699c'
-            'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
-            'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
+            '8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5')
 
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
