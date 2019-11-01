@@ -1,7 +1,7 @@
 # Maintainer: Dimitris Kiziridis <ragouel@outlook.com>
 
 pkgname=powerkit
-pkgver=1.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Powerkit is a Lightweight Desktop Independent full featured power manager."
 arch=('x86_64')
