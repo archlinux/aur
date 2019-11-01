@@ -4,7 +4,7 @@
 # Contributor:  Gour <gour@mail.inet.hr>
 
 pkgname=emms
-pkgver=5.2
+pkgver=5.3
 pkgrel=1
 pkgdesc="The Emacs Multimedia System"
 url="http://www.gnu.org/software/emms/"
@@ -14,7 +14,7 @@ depends=('emacs' 'taglib')
 install=${pkgname}.install
 validpgpkeys=('691BF9D0EEC472730726EB7869725A21D60EEC42')
 source=(https://ftp.gnu.org/gnu/emms/emms-$pkgver.tar.gz{,.sig})
-sha256sums=('3f080ab56bb20b84b24bb5d80ab48251cc76f3e7c7212ec043f1cea766737733'
+sha256sums=('413e8b667f141a12985a130639cff45a3ccf8217ee1d975f8d5aac27e5d91602'
             'SKIP')
 
 prepare() {

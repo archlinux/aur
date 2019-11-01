@@ -1,6 +1,6 @@
 pkgbase = emms
 	pkgdesc = The Emacs Multimedia System
-	pkgver = 5.2
+	pkgver = 5.3
 	pkgrel = 1
 	url = http://www.gnu.org/software/emms/
 	install = emms.install
@@ -8,10 +8,10 @@ pkgbase = emms
 	license = GPL3
 	depends = emacs
 	depends = taglib
-	source = https://ftp.gnu.org/gnu/emms/emms-5.2.tar.gz
-	source = https://ftp.gnu.org/gnu/emms/emms-5.2.tar.gz.sig
+	source = https://ftp.gnu.org/gnu/emms/emms-5.3.tar.gz
+	source = https://ftp.gnu.org/gnu/emms/emms-5.3.tar.gz.sig
 	validpgpkeys = 691BF9D0EEC472730726EB7869725A21D60EEC42
-	sha256sums = 3f080ab56bb20b84b24bb5d80ab48251cc76f3e7c7212ec043f1cea766737733
+	sha256sums = 413e8b667f141a12985a130639cff45a3ccf8217ee1d975f8d5aac27e5d91602
 	sha256sums = SKIP
 
 pkgname = emms
