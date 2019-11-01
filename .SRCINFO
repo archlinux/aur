@@ -1,6 +1,6 @@
 pkgbase = linux-clear-lts2018
 	pkgver = 4.19.81
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/clearlinux-pkgs/linux-lts2018
 	arch = x86_64
 	license = GPL2
@@ -17,9 +17,6 @@ pkgbase = linux-clear-lts2018
 	source = https://cdn.kernel.org/pub/linux/kernel/v4.x/patch-4.19.81.xz
 	source = linux-clear-lts2018::git+https://github.com/clearlinux-pkgs/linux-lts2018.git#tag=4.19.79-86
 	source = enable_additional_cpu_optimizations-20190822.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20190822.tar.gz
-	source = 60-linux.hook
-	source = 90-linux.hook
-	source = linux.preset
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = 0c68f5655528aed4f99dae71a5b259edc93239fa899e2df79c055275c21749a1
@@ -27,9 +24,6 @@ pkgbase = linux-clear-lts2018
 	sha256sums = 42c2ae8c4178ca27dd7e5da55db3b4f078091b8d22d7d31d82064f4ddc86d73b
 	sha256sums = SKIP
 	sha256sums = 8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5
-	sha256sums = 452b8d4d71e1565ca91b1bebb280693549222ef51c47ba8964e411b2d461699c
-	sha256sums = c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636
-	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
 
 pkgname = linux-clear-lts2018
 	pkgdesc = Clearlinux lts2018 kernel and modules
@@ -41,7 +35,6 @@ pkgname = linux-clear-lts2018
 	optdepends = linux-firmware: firmware images needed for some devices
 	optdepends = modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig
 	provides = WIREGUARD-MODULE
-	backup = etc/mkinitcpio.d/linux-clear-lts2018.preset
 
 pkgname = linux-clear-lts2018-headers
 	pkgdesc = Header files and scripts for building modules for linux-clear-lts2018
