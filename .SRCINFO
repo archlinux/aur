@@ -1,7 +1,7 @@
 pkgbase = tclkit
 	pkgdesc = single-file executable that provides a complete Tcl and Tk runtime
 	pkgver = 8.6.4
-	pkgrel = 10
+	pkgrel = 11
 	url = https://github.com/patthoyts/kitgen
 	arch = i686
 	arch = x86_64
