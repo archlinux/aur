@@ -1,7 +1,7 @@
 # Maintainer: Dimitris Kiziridis <ragouel@outlook.com>
 
 pkgname=('flatery-icon-theme-git')
-pkgver=r45.3de6198
+pkgver=e6198
 pkgrel=1
 pkgdesc="Flatery is an icon theme for linux in flat style."
 arch=('any')
