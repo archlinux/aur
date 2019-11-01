@@ -1,4 +1,12 @@
 #!/usr/bin/env sh
+# update
+#
+# Muh very basic script for updating
+# to avoid typing the same stuff
+#
+# Don't mind if I later set up a CI/CD environment
+# just to deploy to the AUR lmao
+#
 
 if [ -n "$(git status --porcelain)" ]; then
 	printf "Working directory NOT clean - exiting\n"
@@ -8,7 +16,10 @@ fi
 makepkg -CcLfs
 makepkg --printsrcinfo > ".SRCINFO"
 
+# adding everything is safe because we ignore
+# all files by default in '.gitignore'
 git add .
+
 if git commit -m "Update"; then
 	git show HEAD
 	printf "\n push changes when you're ready:\n"
