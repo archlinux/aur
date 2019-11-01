@@ -3,7 +3,7 @@
 pkgname=vivaldi-codecs-ffmpeg-extra-bin
 pkgver=77.0.3865.90
 pkgver2=0ubuntu0
-pkgrel=1
+pkgrel=9
 pkgdesc="Prebuilt ffmpeg-codecs package for vivaldi"
 arch=("x86_64")
 url="https://packages.ubuntu.com/bionic/amd64/chromium-codecs-ffmpeg-extra/download"
