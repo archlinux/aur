@@ -4,7 +4,7 @@
 
 pkgname=rime-data
 _gitname=plum
-pkgver=2019.10.28
+pkgver=r2019.11.01
 pkgrel=1
 pkgdesc="Rime schema repository from plum"
 arch=('x86_64')
@@ -17,7 +17,8 @@ source=("git+https://github.com/rime/plum.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  date +%Y.%m.%d
+  build_date=r$(date +%Y.%m.%d)
+  echo $build_date
 }
 
 build() {
