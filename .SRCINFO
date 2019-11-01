@@ -1,7 +1,7 @@
 pkgbase = pycharm-community-eap
 	pkgdesc = Powerful Python and Django IDE, Early Access Program (EAP) build. Community edition.
 	pkgver = 2019.3.193.4932.14
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 4
 	url = http://www.jetbrains.com/pycharm/
 	arch = any
