@@ -2,7 +2,7 @@
 
 pkgname=python-tornado-4
 pkgver=4.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc='open source version of the scalable, non-blocking web server and tools'
 arch=('x86_64')
 url='https://www.tornadoweb.org/'
@@ -14,6 +14,7 @@ optdepends=('python-pycurl: for tornado.curl_httpclient'
 makedepends=('python-setuptools')
 checkdepends=('python-pycurl' 'python-mock' 'python-twisted')
 provides=('python-tornado=4')
+conflicts=('python-tornado')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/tornadoweb/tornado/archive/v$pkgver.tar.gz")
 sha512sums=('d0d0ba53e64254c5d3e78f11d77eb95174a14a78b9207bf3af63c050ad15f814381aaa777b6817cb4635ab5f03e63e95f0c99e8aec045e96a04b0e233447975e')
 

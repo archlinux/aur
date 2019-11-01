@@ -1,7 +1,7 @@
 pkgbase = python-tornado-4
 	pkgdesc = open source version of the scalable, non-blocking web server and tools
 	pkgver = 4.5.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.tornadoweb.org/
 	arch = x86_64
 	license = Apache
@@ -13,6 +13,7 @@ pkgbase = python-tornado-4
 	optdepends = python-pycurl: for tornado.curl_httpclient
 	optdepends = python-twisted: for tornado.platform.twisted
 	provides = python-tornado=4
+	conflicts = python-tornado
 	source = python-tornado-4-4.5.3.tar.gz::https://github.com/tornadoweb/tornado/archive/v4.5.3.tar.gz
 	sha512sums = d0d0ba53e64254c5d3e78f11d77eb95174a14a78b9207bf3af63c050ad15f814381aaa777b6817cb4635ab5f03e63e95f0c99e8aec045e96a04b0e233447975e
 
