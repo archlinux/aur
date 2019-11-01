@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Topsi Project Manager
+Comment=A Desktop Kanban board app
+Exec=/usr/bin/topsi-project-manager
+Terminal=false
+Type=Application
+Icon=topsi-project-manager
+StartupWMClass=Topsi Project Manager
+Categories=GTK;Office;
