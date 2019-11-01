@@ -46,7 +46,7 @@ EOS
 
 package() {
 	cd "$_gitname"
-	
+    mkdir -p "$pkgdir/usr/local/kmd/"	
     install -Dm755 kmd_run "$pkgdir/usr/bin/kmd"
 
     make DESTDIR="$pkgdir/" install
