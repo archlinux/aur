@@ -7,12 +7,14 @@ pkgdesc="A library for configuring and customizing font access, optimized for In
 url='http://www.fontconfig.org/release/'
 license=('custom' 'MIT')
 pkgver=2.13.91+24+g75eadca
-pkgrel=1
+pkgrel=2
 arch=(i686 x86_64)
 groups=('infinality-remix')
 
 depends=('expat' 'freetype2')
-makedepends=('gperf' 'python-lxml' 'python-six' 'git')
+makedepends=('git' 'autoconf-archive' 'gperf' 'python-lxml' 'python-six' 'docbook-utils' 'docbook-sgml'
+             'perl-sgmls' 'texlive-formatsextra>=2017' 'lynx' 'json-c')
+
 options=('libtool')
 
 provides=("fontconfig=$pkgver")
@@ -54,7 +56,7 @@ source=("git+https://anongit.freedesktop.org/git/fontconfig#commit=$_commit"
 
 sha256sums=('SKIP'
             'f8c49b4ee86ad64b1d3df700a5c0b337e44f507bb7e7d264eb5eaf0040998ef2'
-            'c291f3849369106c5005155b5b099459c86baf455cea0e080a76a3fdf8a8f4b7'
+            '23f70387eec20761b8b89f7a312f2859e4bfedd07325f3a1de12f86cca094711'
             '94e7b03a32304604be2cf5568c02805ea1ac45eb68104de400ae7f370e3e598b'
             '45a1ea897f0c7687f4ba1d2c200b17145cc5246e4a82eaa33e09d1b843030cb7'
             '006a14e00017736813002034996b024bb7133bd3eeda6b7f74e4c2880b64031d'

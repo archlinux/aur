@@ -16,8 +16,8 @@ RES='\E[0m'
 presets_dir="/etc/fonts/conf.avail.infinality"
 config_dir="/etc/fonts/conf.d"
 
-presets_list=(combi free ms)
-options=(combi free ms reset quit)
+presets_list=(combi free ms remix)
+options=(combi free ms remix reset quit)
 
 option=$1
 
@@ -35,6 +35,7 @@ usage(){
   echo '             combi  --  custom font collection'
   echo '              free  --  free font collection'
   echo '                ms  --  Microsoft font collection'
+  echo '             remix  --  remix collection'
   echo ' help     Print this help and exit'
   echo ''
   echo 'Troubleshooting:'
@@ -69,6 +70,7 @@ usage(){
   echo '    [ combi ] not set'
   echo '    [ ms ] not set'
   echo '    [ free ] not set'
+  echo '    [ remix ] not set'
   echo ' How to fix:'
   echo ' -----------'
   echo ' 1. Run <fc-presets set> as root and choose a preset 1) - 3).'
@@ -191,7 +193,7 @@ custom_postjob(){
     check_current=$(ls *.conf | grep "\-$option.conf")
     if [[ $check_current == *combi* ]] && [[ -f $config_dir/35-repl-custom.conf ]]; then
       rm -f 35-repl-custom.conf 2>/dev/null
-    elif [[ $check_current == *free* ]] || [[ $check_current == *ms* ]]; then
+    elif [[ $check_current == *free* ]] || [[ $check_current == *ms* ]] || [[ $check_current == *remix* ]]; then
       if [ ! -f 35-repl-custom ]; then
         ln -s $presets_dir/35-repl-custom.conf $config_dir/35-repl-custom.conf 2>/dev/null
       fi
@@ -227,6 +229,16 @@ set_preset(){
       ms)
         echo ' [ ms ] preset chosen...'
         option='ms'
+        check_current_prejob
+        targets_check_prejob
+        fc_reset
+        fc_set
+        custom_postjob
+        [ $? -eq 0 ] && OK || NOTOK
+        ;;
+      remix)
+        echo ' [ remix ] preset chosen...'
+        option='remix'
         check_current_prejob
         targets_check_prejob
         fc_reset
