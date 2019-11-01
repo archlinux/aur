@@ -2,7 +2,7 @@
 # Contributor: Carl Åkerlindh <carl.akerlindh at gmail dot com>
 pkgbase=mxnet
 pkgname=('mxnet' 'mxnet-cuda' 'mxnet-mkl')
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="Flexible and Efficient Library for Deep Learning"
 arch=('x86_64')
