@@ -36,9 +36,23 @@ build() {
 	cd "$_gitname"
 	./configure --prefix=/usr --build=i386
 	make
+
+cat << EOS > kmd_run
+#!/bin/sh
+KMD=/usr/local/kmd/
+exec \$KMD/kmd
+EOS
 }
 
 package() {
 	cd "$_gitname"
-	make DESTDIR="$pkgdir/" install
+	
+    install -Dm755 kmd_run "$pkgdir/usr/bin/kmd"
+
+    make DESTDIR="$pkgdir/" install
+    
+    mv "$pkgdir/usr/local/kmd/bin/kmd" "$pkgdir/usr/local/kmd/"
+    mv "$pkgdir/usr/local/kmd/bin/jimulator" "$pkgdir/usr/local/kmd/"
+    mv "$pkgdir/usr/local/kmd/bin/flash" "$pkgdir/usr/local/kmd/"
+    rm -rf "$pkgdir/usr/local/kmd/bin"
 }
