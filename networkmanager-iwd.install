@@ -11,6 +11,11 @@ _post_uninstall_message() {
     echo ">>> Do not forget to disable iwd service if you don't need it anymore:"
     echo
     echo "    systemctl disable iwd.service"
+    echo
+    echo ">>> If you are replacing upstream networkmanager, do not forget to"
+    echo ">>> install libnm also:"
+    echo
+    echo "    pacman -Syu networkmanager libnm"
 }
 
 post_install() {
