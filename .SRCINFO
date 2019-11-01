@@ -10,7 +10,7 @@ pkgbase = protondb-tags-git
 	optdepends = steam: Supports any steam, native, flatpak, etc
 	provides = protondb-tags
 	conflicts = protondb-tags
-	source = git+https://github.com/CorruptComputer/ProtonDB-Tags.git#branch=dev
+	source = git+https://github.com/CorruptComputer/ProtonDB-Tags.git
 	md5sums = SKIP
 
 pkgname = protondb-tags-git
