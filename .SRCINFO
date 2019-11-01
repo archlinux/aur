@@ -1,6 +1,6 @@
 pkgbase = deoplete-git
 	pkgdesc = deoplete completion plugin for neovim
-	pkgver = r1784.2a6236d
+	pkgver = r1788.ff09a7a
 	pkgrel = 1
 	url = https://github.com/Shougo/deoplete.nvim
 	install = deoplete.install
@@ -14,6 +14,7 @@ pkgbase = deoplete-git
 	optdepends = vim-hug-neovim-rpc: vim support
 	provides = deoplete
 	conflicts = deoplete
+	replaces = 
 	source = deoplete::git://github.com/Shougo/deoplete.nvim
 	md5sums = SKIP
 
