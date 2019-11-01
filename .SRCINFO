@@ -1,7 +1,7 @@
 pkgbase = mini-diary-git
 	pkgdesc = Simple and secure journal app
 	pkgver = 2.4.1.r16.g90bf72e
-	pkgrel = 1.1
+	pkgrel = 1.2
 	url = https://github.com/samuelmeuli/mini-diary
 	install = mini-diary.install
 	arch = x86_64
