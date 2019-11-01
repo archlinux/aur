@@ -1,0 +1,17 @@
+pkgbase = ms-tpm-20-ref-git
+	pkgdesc = Reference implementation of the TCG Trusted Platform Module 2.0 specification
+	pkgver = r134.39e7306
+	pkgrel = 1
+	url = https://github.com/Microsoft/ms-tpm-20-ref
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = autoconf-archive
+	depends = openssl
+	provides = ms-tpm-20-ref
+	conflicts = ms-tpm-20-ref
+	source = git+https://github.com/Microsoft/ms-tpm-20-ref.git
+	sha512sums = SKIP
+
+pkgname = ms-tpm-20-ref-git
+
