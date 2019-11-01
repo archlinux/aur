@@ -1,0 +1,29 @@
+diff --git a/moveit_ros/planning_interface/CMakeLists.txt b/moveit_ros/planning_interface/CMakeLists.txt
+index d1b5594b1..a5e130843 100644
+--- a/moveit_ros/planning_interface/CMakeLists.txt
++++ b/moveit_ros/planning_interface/CMakeLists.txt
+@@ -19,13 +19,15 @@ find_package(catkin REQUIRED COMPONENTS
+   tf2_eigen
+   tf2_geometry_msgs
+   tf2_ros
+-  eigenpy
+   roscpp
+   actionlib
+   rospy
+   rosconsole
+ )
+ 
++find_package(PkgConfig REQUIRED)
++pkg_check_modules(eigenpy eigenpy REQUIRED)
++
+ find_package(PythonInterp REQUIRED)
+ find_package(PythonLibs "${PYTHON_VERSION_MAJOR}.${PYTHON_VERSION_MINOR}" REQUIRED)
+ 
+@@ -77,6 +79,7 @@ catkin_package(
+ 
+ include_directories(${THIS_PACKAGE_INCLUDE_DIRS}
+                     ${Boost_INCLUDE_DIRS}
++                    ${eigenpy_INCLUDE_DIRS}
+                     ${catkin_INCLUDE_DIRS})
+ 
+ include_directories(SYSTEM
