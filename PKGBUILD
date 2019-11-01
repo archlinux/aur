@@ -1,15 +1,15 @@
 # Maintainer: Auteiy <dmitry@auteiy.me>
 
 pkgname=posy-cursors
-pkgver=3.6.11
+pkgver=3.7
 pkgrel=1
 pkgdesc="Port of Posy's improved cursors"
 arch=(any)
 url="https://git.auteiy.me/dmitry/cursorsPosy"
 license=(unknown)
-source=("$pkgname-$pkgver.tar.gz::https://git.auteiy.me/dmitry/cursorsPosy/-/archive/v3.6.11/cursorsPosy-v3.6.11.tar.gz?path=themes")
+source=("$pkgname-$pkgver.tar.gz::https://git.auteiy.me/dmitry/cursorsPosy/-/archive/v3.7/cursorsPosy-v3.7.tar.gz?path=themes")
 
-sha256sums=('645d55d9e3653d8bb3919e6cea8b06a33a1350de6ebfaee404265279ee8cdd7c')
+sha256sums=('38823be4e07fac1e294ae07738fea4b01a89da9c4369047f08832ca4c2bffaac')
 
 package() {
   cd cursorsPosy-v$pkgver-themes/themes
