@@ -3,7 +3,7 @@
 pkgname=('rednukem-git')
 pkgver=r256.19f24f3
 pkgrel=1
-pkgdesc="Redneck Rampage & Duke Nukem 3D port based on EDuke32."
+pkgdesc="Redneck Rampage and Duke Nukem 3D port based on EDuke32."
 arch=('i686' 'x86_64')
 url="https://github.com/nukeykt/NRedneck/"
 license=('GPL' 'custom: BUILD')
