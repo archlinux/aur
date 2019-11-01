@@ -1,7 +1,7 @@
 # Maintainer: Mohammad Ashar Khan <ashar786khan@gmail.com>
 
 pkgname=licenser
-pkgver=0.20
+pkgver=0.25
 pkgrel=1
 pkgdesc='A License management tool for your Open Source projects.'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('clang')
 makedepends=("cmake" "git")
 source=("https://github.com/coder3101/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('50c37ded328985d6a9b2de3bd66e2cda8657ce485f03824c9c83d366b471fb6a')
+sha256sums=('e555b8c7b26c745ac4766d080b6792b30abbab2eab2e179fbb04e868e7925201')
 
 prepare() {
   cd $pkgname-$pkgver
