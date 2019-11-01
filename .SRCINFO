@@ -1,0 +1,19 @@
+pkgbase = kmd-git
+	pkgdesc = Komodo Manchester Debugger
+	pkgver = 0
+	pkgrel = 1
+	url = http://brej.org/kmd/
+	arch = i386
+	arch = x86_64
+	license = GPL
+	depends = gtk>=1.2.0
+	depends = glib>=1.2.0
+	provides = kmd
+	conflicts = kmd
+	source = git://github.com/UoMCS/komodo.git
+	md5sums = SKIP
+	sha1sums = SKIP
+	sha256sums = SKIP
+
+pkgname = kmd-git
+
