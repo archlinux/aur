@@ -1,6 +1,6 @@
 pkgbase = httpdirfs
 	pkgdesc = A filesystem which allows you to mount HTTP directory listings
-	pkgver = 1.1.10
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/fangfufu/httpdirfs
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = httpdirfs
 	depends = gumbo-parser
 	depends = fuse2
 	depends = openssl
-	source = https://github.com/fangfufu/httpdirfs/archive/1.1.10.tar.gz
-	md5sums = cfe5321a3de14cade2ce7bcbfcfde018
+	source = https://github.com/fangfufu/httpdirfs/archive/1.2.0.tar.gz
+	md5sums = 5c9c31c39217da0a9ff44b4cae5704eb
 
 pkgname = httpdirfs
 
