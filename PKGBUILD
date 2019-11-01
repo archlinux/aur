@@ -1,6 +1,6 @@
 # Maintainer: Hans-Peter Deifel <hpd@hpdeifel.de>
 pkgname=aurs
-pkgver=0.4.2
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="An AUR helper written in Rust"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('sudo' 'ranger' 'git' 'pacman')
 makedepends=('cargo' 'clang')
 source=("$pkgname-$pkgver.tar.gz::https://gitlab.com/hpdeifel/$pkgname/repository/v$pkgver/archive.tar.gz")
-sha256sums=('25a3617e7a870ea5ba7e86622391207eb9c9d00618952a100b3520e1bac54e8a')
+sha256sums=('ff52710430a86031da39292a79fabdf055ec2923c40c523ab2e4b694c2600ed4')
 
 build() {
   cd "$srcdir/$pkgname-v$pkgver-"*
