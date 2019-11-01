@@ -64,7 +64,7 @@ _srcname=linux-${_major}
 _clr=${_major}.79-86
 pkgbase=linux-clear-lts2018
 pkgver=${_major}.${_minor}
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux-lts2018"
 license=('GPL2')
@@ -113,7 +113,7 @@ prepare() {
                        --enable-after MODULE_COMPRESS MODULE_COMPRESS_XZ \
                        --enable DELL_SMBIOS_SMM \
                        --module IKCONFIG \
-                       --enable-after IKCONFIG IKPROC \
+                       --enable-after IKCONFIG IKCONFIG_PROC \
                        --enable-after SOUND SOUND_OSS_CORE \
                        --enable SND_OSSEMUL \
                        --module-after SND_OSSEMUL SND_MIXER_OSS \
