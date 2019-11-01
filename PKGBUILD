@@ -1,7 +1,7 @@
 # Maintainer: Marc Plano-Lesay <marc.planolesay@gmail.com>
 
 pkgname="ibazel"
-pkgver="0.10.2"
+pkgver="0.10.3"
 pkgrel="1"
 pkgdesc="Tool for building Bazel targets when source files change."
 arch=("i686" "x86_64")
@@ -10,8 +10,8 @@ url="https://github.com/bazelbuild/bazel-watcher"
 makedepends=("bazel")
 depends=("bazel")
 
-source=("bazel-watcher.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=("f3c89fbd1580b1c7b627a230b0f810200d06fc4676c855e0e6f157e187b5ccc3")
+source=("$url/archive/v$pkgver.tar.gz")
+sha256sums=("a4aae4a523e5ff4b8b971c1d72a0477580b8a11f29535cf0b60d663506613f38")
 
 build() {
   cd bazel-watcher-$pkgver
