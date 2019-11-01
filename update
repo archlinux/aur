@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 if [ -n "$(git status --porcelain)" ]; then
 	printf "Working directory NOT clean - exiting\n"
