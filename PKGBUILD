@@ -3,7 +3,7 @@
 
 _basename=libgphoto2
 pkgname=lib32-libgphoto2
-pkgver=2.5.22
+pkgver=2.5.23
 pkgrel=1
 pkgdesc="The core library of gphoto2, designed to allow access to digital camera by external programs. (32-bit)"
 url="http://www.gphoto.org/"
@@ -11,7 +11,7 @@ arch=(x86_64)
 license=(LGPL)
 depends=(lib32-libexif lib32-gd lib32-libltdl lib32-libusb lib32-libxml2 libgphoto2)
 makedepends=(autoconf-archive git)
-_commit=c5a7943bef54953656a37edd893a09b2789240fd  # tags/libgphoto2-2_5_22-release
+_commit=276c1a403f07aac74224a65079c51ef600c6837b  # tags/libgphoto2-2_5_23-release
 source=("git+https://github.com/gphoto/libgphoto2#commit=$_commit")
 sha256sums=('SKIP')
 validpgpkeys=('7C4AFD61D8AAE7570796A5172209D6902F969C95') # Marcus Meissner
@@ -24,6 +24,8 @@ pkgver() {
 
 prepare() {
     cd $_basename
+
+    git cherry-pick -n 236cd97b617972c38ac8e6780590b3049c0afa2f
 
     autoreconf -fvi
 }
