@@ -63,11 +63,13 @@ prepare() {
   # - no longer required (from commit 891ddd)
   # patch -p0 < "$srcdir/linux-4.8-usercopy.patch"
   patch -p1 < "$srcdir/ossvermagic.patch"
-  patch -p1 < "$srcdir/seawright.patch"
+  # - no longer required (from commit 3e7a6c)
+  # patch -p1 < "$srcdir/seawright.patch"
   patch -p1 < "$srcdir/galaxy.patch"
 
   # make OSS compile with glibc >= 2.23
-  patch -p1 < "$srcdir/oss4_sys-libs_glibc-2.23_ossdetect_fix_git.patch"
+  # - no longer required (from commit 3e7a6c)
+  # patch -p1 < "$srcdir/oss4_sys-libs_glibc-2.23_ossdetect_fix_git.patch"
 
   # make OSS compile with gcc-5
   # - no longer required (from commit b3dc64)
@@ -82,9 +84,10 @@ prepare() {
   patch -p1 < "$srcdir/soundon.patch"
 
   # FS#35672
-  mv oss/build/{osscore.c,osscore_wrapper.c}
-  patch -p3 < "$srcdir/kmod-link2.patch"
-  patch -p2 < "$srcdir/kmod-link.patch"
+  # - no longer required (from commit 3e7a6c)
+  # mv oss/build/{osscore.c,osscore_wrapper.c}
+  # patch -p3 < "$srcdir/kmod-link2.patch"
+  # patch -p2 < "$srcdir/kmod-link.patch"
   cd ../..
 }
 
