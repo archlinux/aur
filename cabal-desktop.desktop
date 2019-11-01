@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Cabal Desktop
+Comment=Desktop client for Cabal, the p2p/decentralized/local-first chat platform.
+Exec=/usr/bin/cabal-desktop
+Terminal=false
+Type=Application
+Icon=cabal-desktop
+StartupWMClass=Cabal Desktop
+Categories=GTK;Network;

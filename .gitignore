@@ -1,0 +1,9 @@
+*
+
+!cabal-desktop.desktop
+!cabal-desktop.install
+!cabal-desktop.sh
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!.git

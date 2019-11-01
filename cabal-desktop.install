@@ -1,0 +1,7 @@
+post_install() {
+		chmod +x /usr/bin/cabal-desktop
+}
+
+post_upgrade() {
+        post_install
+}

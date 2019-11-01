@@ -1,0 +1,26 @@
+pkgbase = cabal-desktop-git
+	pkgdesc = Desktop client for Cabal, the p2p/decentralized/local-first chat platform.
+	pkgver = 3.1.1.r11.g23e1c10
+	pkgrel = 1
+	url = https://github.com/cabal-club/cabal-desktop
+	install = cabal-desktop.install
+	arch = x86_64
+	license = AGPL3
+	makedepends = git
+	makedepends = npm
+	makedepends = libicns
+	makedepends = imagemagick
+	depends = electron
+	provides = cabal-desktop-git
+	conflicts = cabal-desktop-git
+	source = cabal-desktop::git+https://github.com/cabal-club/cabal-desktop.git#commit=23e1c107792cfb4c5205d3acdb28a95b8a43cad5
+	source = cabal-desktop.sh
+	source = cabal-desktop.desktop
+	source = cabal-desktop.install
+	md5sums = SKIP
+	md5sums = 8244c7f8e70a73dc0de4beb09e6d06e7
+	md5sums = f0b11be2a1061cbe541c2287b3eb0926
+	md5sums = a5f7c97e76cc1fda971109a050cb6a02
+
+pkgname = cabal-desktop-git
+
