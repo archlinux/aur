@@ -5,16 +5,22 @@
 # Contributor: DrZaius <lou[at]fakeoutdoorsman[dot]com>
 
 pkgname=lib32-libfdk-aac
-pkgver=2.0.0
-pkgrel=2
+pkgver=2.0.1
+pkgrel=1
 pkgdesc='Fraunhofer FDK AAC codec library (32-bit)'
-arch=('x86_64')
-url='http://sourceforge.net/projects/opencore-amr/'
-license=('custom')
+arch=(x86_64)
+url=https://sourceforge.net/projects/opencore-amr/
+license=(custom)
 depends=(lib32-glibc libfdk-aac)
-makedepends=('git')
-source=(git+https://github.com/mstorsjo/fdk-aac.git#tag=v${pkgver})
-sha256sums=('SKIP')
+makedepends=(git)
+source=(git+https://github.com/mstorsjo/fdk-aac.git#tag=d387d3b6ed79ff9a82c60440bdd86e6e5e324bec)
+sha256sums=(SKIP)
+
+pkgver() {
+    cd fdk-aac
+
+    git describe --tags | sed 's/^v//'
+}
 
 prepare() {
     cd fdk-aac
@@ -29,7 +35,7 @@ build() {
     export CXX='g++ -m32'
     export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
 
-    ./configure --prefix='/usr' \
+    ./configure --prefix=/usr \
         --build=i686-pc-linux-gnu \
         --libdir=/usr/lib32 \
         --disable-static
