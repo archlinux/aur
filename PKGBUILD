@@ -3,7 +3,7 @@
 pkgname=topsi-project-manager-git
 _pkgname=topsi-project-manager
 pkgver=0.1.r0.g1c9d0d4
-pkgrel=1
+pkgrel=1.1
 pkgdesc="A Desktop Kanban board app"
 arch=("x86_64")
 url="https://github.com/Physiix/topsi-project-manager"
