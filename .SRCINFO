@@ -1,0 +1,19 @@
+pkgbase = ros-melodic-turtlebot3-navigation
+	pkgdesc = ROS - The turtlebot3_navigation provides roslaunch scripts for starting the navigation.
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://wiki.ros.org/turtlebot3_navigation
+	arch = any
+	license = Apache-2.0
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-catkin
+	depends = ros-melodic-amcl
+	depends = ros-melodic-map-server
+	depends = ros-melodic-move-base
+	depends = ros-melodic-turtlebot3-bringup
+	source = ros-melodic-turtlebot3-navigation-1.2.2.tar.gz::https://github.com/ROBOTIS-GIT/turtlebot3/archive/1.2.2.tar.gz
+	sha256sums = c652438109ea99008f6d2e950e6cb7f6e67653b8daa1079c825b77d9f52a4e1d
+
+pkgname = ros-melodic-turtlebot3-navigation
+
