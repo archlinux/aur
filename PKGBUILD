@@ -2,7 +2,7 @@
 pkgname=newsup-git
 _pkgname=newsup
 pkgrel=1
-pkgver=r473.d6f20e6
+pkgver=r474.835027c
 provides=(${_pkgname})
 pkgdesc="NewsUP - A usenet binary uploader"
 arch=('any')
