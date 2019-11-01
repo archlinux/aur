@@ -2,7 +2,7 @@
 
 pkgname=imagine-git
 _pkgname=imagine
-pkgver=v0.5.0.r1.gf68ae12
+pkgver=0.5.0.r0.g7bea16d
 pkgrel=1
 pkgdesc="PNG/JPEG optimization app"
 arch=("x86_64")
@@ -13,7 +13,7 @@ makedepends=("git" "npm")
 provides=("$pkgname")
 conflicts=("$pkgname")
 install=$_pkgname.install
-source=("$_pkgname::git+$url.git"
+source=("$_pkgname::git+$url.git#tag=v0.5.0"
 		"$_pkgname.sh"
 		"$_pkgname.desktop"
 		"$_pkgname.install")
@@ -23,8 +23,8 @@ md5sums=('SKIP'
          '671bee3aec8f7e0a0556ee8d336c604d')
 
 pkgver() {
-  	cd "$_pkgname"
-  	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$_pkgname"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
