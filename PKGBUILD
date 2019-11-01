@@ -1,15 +1,15 @@
 # Maintainer: Josh VanderLinden <arch@cloudlery.com>
 pkgname=glooctl-bin
-pkgver=0.20.11
+pkgver=0.20.12
 pkgrel=1
 pkgdesc="Provides useful functions to install, configure, and debug Gloo."
 arch=(x86_64)
 url="https://docs.solo.io/gloo/latest"
 license=('apache')
 provides=("glooctl-bin")
-source=("https://github.com/solo-io/gloo/releases/download/v${pkgver}/glooctl-linux-amd64")
-sha256sums=("c82196345b79a99f5508a32dd8b8c6569e6e1d104e9b261ae409afa685136e16")
+source=("glooctl-${pkgver}::https://github.com/solo-io/gloo/releases/download/v${pkgver}/glooctl-linux-amd64")
+sha256sums=('763643d41ecb1076d8ba6301701fc498cc6711357d29744aa28b11dc9c3ccdc1')
 
 package() {
-	install -Dm755 "glooctl-linux-amd64" "${pkgdir}/usr/bin/glooctl"
+	install -Dm755 "glooctl-${pkgver}" "${pkgdir}/usr/bin/glooctl"
 }
