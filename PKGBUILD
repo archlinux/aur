@@ -3,8 +3,8 @@
 # Contributor: Thomas S Hatch <thatch45@gmail.com>
 
 pkgname=python-ioflo
-pkgver=1.7.6
-pkgrel=2
+pkgver=2.0.0
+pkgrel=0
 pkgdesc='Flo based programming interface in python'
 arch=('any')
 url='https://ioflo.com'
@@ -13,7 +13,7 @@ depends=('python')
 makedepends=('python-setuptools-git')
 checkdepends=('python-pytest-runner')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ioflo/ioflo/archive/v$pkgver.tar.gz")
-sha512sums=('ce3e400249c530c55dee8ac4bacd7baf6edbba0be918251266a2c03ecbb30dbec38535097925cf949fa21b1c4e37499726f9bcca784109979f90cec086c94899')
+sha512sums=('b4b70aef65cffe067d7563682a2cbeac0a07cd4722aa2de8fb56fd127c99df771dc5d3d22be24aadd628a26fd1b7407db684ea7257b45eba8f8376f4ad226a87')
 
 build() {
   cd ioflo-$pkgver
