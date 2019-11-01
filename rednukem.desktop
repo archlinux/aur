@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=RedNukem
+Comment="Redneck Rampage & Duke Nukem 3D port based on EDuke32"
+Icon=rednukem
+Exec=rednukem
+Categories=Game;Shooter;
+Terminal=false
+StartupNotify=false
