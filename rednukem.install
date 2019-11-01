@@ -1,6 +1,6 @@
 post_install() {
   echo "Remember you need 'Duke Nukem 3D' data files to play. You can put them under"
-  echo "'/usr/share/games/rednukem/' for all users or '~/.config/rednukem/' for yourself."
+  echo "~/.config/rednukem/'."
 }
 
 post_upgrade() {
