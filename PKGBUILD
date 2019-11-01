@@ -51,8 +51,7 @@ package() {
 
     make DESTDIR="$pkgdir/" install
     
-    mv "$pkgdir/usr/local/kmd/bin/kmd" "$pkgdir/usr/local/kmd/"
-    mv "$pkgdir/usr/local/kmd/bin/jimulator" "$pkgdir/usr/local/kmd/"
-    mv "$pkgdir/usr/local/kmd/bin/flash" "$pkgdir/usr/local/kmd/"
-    rm -rf "$pkgdir/usr/local/kmd/bin"
+    mv "$pkgdir/usr/bin/kmd" "$pkgdir/usr/local/kmd/"
+    mv "$pkgdir/usr/bin/jimulator" "$pkgdir/usr/local/kmd/"
+    mv "$pkgdir/usr/bin/flash" "$pkgdir/usr/local/kmd/"
 }
