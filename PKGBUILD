@@ -7,7 +7,7 @@ pkgdesc="The definitive testing tool for Python. Born under the banner of Behavi
 arch=('any')
 license=('MIT')
 url="https://nestorsalceda.github.io/mamba"
-makedepends=('python-setuptools' 'python-clint' 'python-coverage' 'python-watchdog')
+depends=('python-coverage' 'python-watchdog' 'python-clint' 'python-setuptools')
 checkdepends=('python-doublex-expects')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nestorsalceda/mamba/archive/v$pkgver.tar.gz"
          mamba-python-3.8.patch)
@@ -38,8 +38,6 @@ check() {
 }
 
 package() {
-  depends=('python-coverage' 'python-watchdog' 'python-clint' 'python-setuptools')
-
   cd mamba-$pkgver
   python setup.py install --root="$pkgdir" --optimize=1
   install -D -m644 COPYING "$pkgdir"/usr/share/licenses/$pkgname/COPYING
