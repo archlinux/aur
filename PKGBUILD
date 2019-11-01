@@ -1,7 +1,7 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 pkgname=('azote')
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Wallpaper manager for Sway, i3 and some other WMs"
 arch=('x86_64')
 url="https://github.com/nwg-piotr/azote"
@@ -17,7 +17,8 @@ package() {
   install -D -t "$pkgdir"/usr/bin "$pkgname"-"$pkgver"/dist/azote
   install -D -t "$pkgdir"/usr/share/"$pkgname" "$pkgname"-"$pkgver"/dist/azote.svg
   install -D -t "$pkgdir"/usr/share/applications "$pkgname"-"$pkgver"/dist/azote.desktop
-  install -D -t "$pkgdir"/usr/share/licenses "$pkgname"-"$pkgver"/LICENSE*
+  install -Dm 644 "$pkgname"-"$pkgver"/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm 644 "$pkgname"-"$pkgver"/LICENSE-COLORTHIEF "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-COLORTHIEF"
   cd "$srcdir/$pkgname-$pkgver"
   /usr/bin/python setup.py install --root="$pkgdir/" --optimize=1
 }
