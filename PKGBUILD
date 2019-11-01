@@ -1,4 +1,4 @@
-# Maintainer: Dimitris Kiziridis ragouel@outlook.com
+# Maintainer: Dimitris Kiziridis <ragouel@outlook.com>
 
 pkgname=powerkit
 pkgver=1.0.0

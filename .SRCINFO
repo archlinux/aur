@@ -4,7 +4,6 @@ pkgbase = powerkit
 	pkgrel = 1
 	url = https://github.com/rodlie/powerkit
 	arch = x86_64
-	arch = i686
 	license = BSD 3-Clause
 	makedepends = xss
 	makedepends = xorg-xrandr
