@@ -2,17 +2,17 @@
 
 _basename=libaec
 pkgname=lib32-libaec
-pkgver=1.0.2
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="Adaptive Entropy Coding library (32-bit)"
-arch=('x86_64')
-url='https://gitlab.dkrz.de/k202009/libaec/'
-license=('custom')
-depends=('lib32-glibc' 'libaec')
-makedepends=('cmake')
-_md5=b30adc1abf805d7454896ab83c900eb8
+arch=(x86_64)
+url=https://gitlab.dkrz.de/k202009/libaec/
+license=(custom)
+depends=(lib32-glibc libaec)
+makedepends=(cmake)
+_md5=ea0b7d197a950b0c110da8dfdecbb71f
 source=("$url/uploads/$_md5/$_basename-$pkgver.tar.gz")
-sha256sums=('024722866eb859bf926d6f9cb20edd3f26e80a1bdbea1889e9235d5eca3106d0')
+sha256sums=('f2b1b232083bd8beaf8a54a024225de3dd72a673a9bcdf8c3ba96c39483f4309')
 
 prepare() {
     mkdir -p build
@@ -37,7 +37,7 @@ package() {
 
     make DESTDIR="$pkgdir" install
 
-    install -Dm644 "$srcdir/$_basename-$pkgver/Copyright.txt" -t "$pkgdir/usr/share/licenses/$pkgname"
+    install -Dm644 ../${_basename}-${pkgver}/Copyright.txt -t "${pkgdir}/usr/share/licenses/$pkgname"
 
     cd "$pkgdir/usr"
 
