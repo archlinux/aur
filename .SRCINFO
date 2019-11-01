@@ -1,0 +1,12 @@
+pkgbase = chromium-thegreatsuspender
+	pkgdesc = Automatic tab suspension for Chromium
+	pkgver = v7.1.0
+	pkgrel = 1
+	url = https://github.com/deanoemcke/thegreatsuspender
+	install = chromium-thegreatsuspender.install
+	arch = any
+	license = GPL2
+	makedepends = git
+
+pkgname = chromium-thegreatsuspender
+

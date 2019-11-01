@@ -1,0 +1,17 @@
+#!/bin/sh
+
+# Local Variables:
+# mode: sh
+# End:
+
+post_install() {
+    echo ""
+    echo ""
+    echo "The unpacked extension's directory is /usr/share/chromium-thegreatsuspender"
+    echo ""
+}
+
+post_upgrade() {
+    post_install
+}
+
