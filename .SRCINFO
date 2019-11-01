@@ -1,13 +1,16 @@
-pkgbase = hunspell-nb
-	pkgdesc = Spell checking support for Norwegian
-	pkgver = 6.1.3.2
+pkgbase = hunspell-nn
+	pkgdesc = Spell checking support for Norwegian Nynorsk
+	pkgver = 6.3.2.2
 	pkgrel = 1
 	url = http://no.speling.org/
 	arch = any
 	license = GPL
 	depends = hunspell
-	source = https://download.documentfoundation.org/libreoffice/src/6.1.3/libreoffice-dictionaries-6.1.3.2.tar.xz
-	md5sums = 716e3e91be00cee5f1c4fac15d94a867
+	source = https://download.documentfoundation.org/libreoffice/src/6.3.2/libreoffice-dictionaries-6.3.2.2.tar.xz
+	source = https://download.documentfoundation.org/libreoffice/src/6.3.2/libreoffice-dictionaries-6.3.2.2.tar.xz.asc
+	validpgpkeys = C2839ECAD9408FBE9531C3E9F434A1EFAFEEAEA3
+	sha256sums = b28e5fd2a3dc05eb871ba9a058bfaa6d92fab4d427cfca95f420a56f09ddd378
+	sha256sums = e10e73d7978c137dca55c6d6326e47a5d0b37fe7968751cd74e28542f76d4009
 
-pkgname = hunspell-nb
+pkgname = hunspell-nn
 
