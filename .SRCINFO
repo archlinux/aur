@@ -1,6 +1,6 @@
 pkgbase = highfive
 	pkgdesc = Header-only C++ HDF5 interface
-	pkgver = 2.0
+	pkgver = 2.1
 	pkgrel = 1
 	url = https://github.com/BlueBrain/HighFive
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = highfive
 	makedepends = cmake
 	depends = boost
 	depends = hdf5
-	source = https://github.com/BlueBrain/HighFive/archive/v2.0.tar.gz
-	md5sums = 51676953bfeeaf5f0368840525d269e3
+	source = https://github.com/BlueBrain/HighFive/archive/v2.1.tar.gz
+	md5sums = 5f029541919c0e17c085aeaf73b5e53b
 
 pkgname = highfive
 
