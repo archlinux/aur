@@ -1,6 +1,6 @@
 pkgbase = rime-data
 	pkgdesc = Rime schema repository from plum
-	pkgver = r2019.11.01
+	pkgver = 2019.11.01
 	pkgrel = 1
 	url = https://github.com/rime/plum/
 	arch = x86_64
