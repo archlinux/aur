@@ -2,14 +2,14 @@
 # Contributor: KingofToasters <dev at sgregoratto dot me>
 pkgname=sblg
 pkgdesc='simple off-line blog utility'
-pkgver=0.5.5
+pkgver=0.5.8
 pkgrel=1
 url='https://kristaps.bsd.lv/sblg'
 source=("${url}/snapshots/${pkgname}-${pkgver}.tar.gz")
 depends=(expat)
 license=(custom:ISC)
 arch=(x86_64 i686 armv6h armv7h)
-sha512sums=('fb18949985292b8db5fe82736fb25c14c1cb0ee19ff6b8764ad77cf745cfb8712fde74665d1efbca29fb7dfb9d4eb959a974bb30e840af78cf0e5e37a4e3520d')
+sha512sums=('632aabb6731e512866150dabafa144a2941a91ec490dd86b06dc7390556dc60c910024a2c1af57aac0f6fee9210e0e4311856c7a73273c230671c890fcb8b645')
 
 build () {
 	cd "${pkgname}-${pkgver}"
