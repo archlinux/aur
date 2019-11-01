@@ -6,7 +6,7 @@
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 
 pkgname=ypbind-mt
-pkgver=2.5
+pkgver=2.6.1
 pkgrel=1
 pkgdesc='Linux NIS daemon'
 url='https://github.com/thkukuk/ypbind-mt'
@@ -15,9 +15,15 @@ arch=('i686' 'x86_64')
 makedepends=('libxslt' 'libxml2' 'docbook-xml' 'docbook-xsl')
 depends=('yp-tools' 'libsystemd')
 backup=('etc/yp.conf')
-source=("$url/releases/download/v$pkgver/ypbind-mt-$pkgver.tar.xz"
+#source=("$url/releases/download/v$pkgver/ypbind-mt-$pkgver.tar.xz"
+source=("$url/archive/v$pkgver.tar.gz"
         'ypbind.service'
         'ypbind.conf')
+
+prepare() {
+  cd $pkgname-$pkgver
+  ./autogen.sh
+}
 
 build() {
   cd $pkgname-$pkgver
@@ -33,6 +39,6 @@ package() {
   install -D -m644 ../ypbind.conf "${pkgdir}"/usr/lib/tmpfiles.d/ypbind.conf
 }
 
-md5sums=('86a724d30dd8d65f53a4de28b7344ca1'
+md5sums=('47cbdbc290421140e5ccbaffe1c07ff5'
          '50e05f057ec0603243e3d334aaa0934f'
          '3d6a8eb44771f81abb47d14d9e4f301d')
