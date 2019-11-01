@@ -16,11 +16,6 @@ conflicts=('brise')
 source=("git+https://github.com/rime/plum.git")
 sha512sums=('SKIP')
 
-pkgver() {
-  build_date=r$(date +%Y.%m.%d)
-  echo $build_date
-}
-
 build() {
   cd "$_gitname"
   make all
