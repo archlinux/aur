@@ -4,8 +4,8 @@
 # Contributor: StevensNJD4 <github dot com slash StevensNJD4>
 
 pkgname=lazyman
-pkgver=2.4.0.20190807
-pkgrel=2
+pkgver=2.4.0.20191028
+pkgrel=1
 pkgdesc="A simple program that lets you stream every NHL and MLB game"
 arch=('any')
 url='https://github.com/StevensNJD4/LazyMan'
@@ -35,13 +35,13 @@ package() {
     install -Dm666 config.properties "$pkgdir/usr/share/java/lazyman/config.properties"
 
     for ARCH in arm x86 amd64 ppc64le; do   
-      install -Dm755 mlbamproxy/linux/$ARCH/mlbamproxy     "$pkgdir/$_proxypath/$ARCH/mlbamproxy"
+      install -Dm755 mlbamproxy/linux/$ARCH/mlbamproxy "$pkgdir/$_proxypath/$ARCH/mlbamproxy"
     done
 
     install -Dm644 LazyMan.jar "$pkgdir/usr/share/java/lazyman/LazyMan.jar"
 }
 
-md5sums=('8e88a75b8a537b85324778866b20dbcb'
+md5sums=('42177fae4b9655bbd1a4637060ce8a3c'
          'd41d8cd98f00b204e9800998ecf8427e'
          'b387dc6c2bdf54718d6d2e48f9f37e3d'
          'cc5998a228727420cbf7d07fc5318920'
