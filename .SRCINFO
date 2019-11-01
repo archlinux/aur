@@ -1,6 +1,6 @@
 pkgbase = krita-appimage
 	pkgdesc = Edit and paint images
-	pkgver = 4.2.5
+	pkgver = 4.2.7.1
 	pkgrel = 1
 	url = https://krita.org
 	arch = x86_64
@@ -8,10 +8,10 @@ pkgbase = krita-appimage
 	provides = krita
 	conflicts = krita
 	options = !strip
-	source = https://download.kde.org/stable/krita/4.2.5/krita-4.2.5-x86_64.appimage
+	source = https://download.kde.org/stable/krita/4.2.7.1/krita-4.2.7.1b-x86_64.appimage
 	source = krita.sh
-	sha256sums = 4f5202734aacd4fcd51aed4f3ed5cc776e0e404c699e0f92db62d57810a897da
-	sha256sums = eaa8cc05d2d24d65254fffb1c88acc00511a0353fb8f9146027fc7debaf580ec
+	md5sums = 638f28d7278012b7d882b93154e005d0
+	md5sums = b4f6a06058b5cc4be425e05fc457bde2
 
 pkgname = krita-appimage
 
