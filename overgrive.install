@@ -1,7 +1,8 @@
 post_install() {
-    python3 -m venv --system-site-packages /opt/thefanclub/overgrive/venv
+	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
     
-    # Install Google API Client for Python3 (for the virtualenv)
+    # virtual environement to avoid pip changing system packages
+    python3 -m venv --system-site-packages /opt/thefanclub/overgrive/venv
     /opt/thefanclub/overgrive/venv/bin/pip3 install --upgrade google-api-python-client
 
     # Recomplie Schemas for good measure
@@ -23,10 +24,56 @@ post_upgrade() {
 	post_install
 }
 
+pre_remove() {
+    # stop application if running
+	if ( pgrep overgrive > /dev/null )
+    then
+        pkill -9 ^overgrive
+   fi
+
+	# Set English as Shell output language
+	LANG=en_US.UTF-8
+	export LC_ALL=en_US.UTF-8
+	userName=$(eval echo $SUDO_USER) 
+	userHome=$(eval echo ~${SUDO_USER})
+
+	if [ -f /tmp/overgrive.lock ]
+	then
+	   # check if indicator is running 
+	   checkFlock=$(cat /tmp/overgrive.lock)
+
+	   if [ ! "$checkFlock" = "" ] 
+	   then
+	     kill $checkFlock 2>/dev/null || true
+	     rm /tmp/overgrive.lock
+	   fi
+	fi
+
+	if [ -f  "$userHome/.config/autostart/overgrive-autostart.desktop" ]
+	then 
+	   rm  "$userHome/.config/autostart/overgrive-autostart.desktop"
+	fi
+	
+    if [ -f  "$userHome/.config/autostart/overgrive.desktop" ]
+	then 
+	   rm  "$userHome/.config/autostart/overgrive.desktop"
+	fi
+
+
+	if [ -f  "/opt/thefanclub/overgrive/overgrive" ]
+	then 
+	   rm  "/opt/thefanclub/overgrive/overgrive"
+	fi
+}
+
 post_remove() {
     sudo rm -rf /opt/thefanclub/overgrive/
+    
     if [ -z "$(ls -A /opt/thefanclub/)" ]
     then
         sudo rmdir /opt/thefanclub/
     fi
+
+	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+	update-desktop-database -q
 }
