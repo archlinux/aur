@@ -10,7 +10,6 @@ license=('GPL' 'custom: BUILD')
 depends=('sdl2_mixer' 'libgl' 'libvpx' 'flac' 'gtk2')
 makedepends=('mesa' 'glu')
 makedepends_i686=('nasm')
-optdepends=('')
 install=rednukem.install
 source=("git+$url")
 sha256sums=('SKIP')
@@ -27,7 +26,7 @@ pkgver() {
 build() {
   cd "$srcdir"/NRedneck
   # add cxxflags, set revision
-  make PACKAGE_REPOSITORY=1 PRETTY_OUTPUT=0
+  make PACKAGE_REPOSITORY=1 #PRETTY_OUTPUT=0
 }
 
 package() {
