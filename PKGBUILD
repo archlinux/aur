@@ -10,7 +10,7 @@ _github_repo="magit"
 url="http://github.com/${_github_org}/${_github_repo}"
 license=('GPL3')
 makedepends=('git')
-depends=('emacs>=25.1' 'git>=2.0.0' 'emacs-dash>=2.14.1' 'emacs-with-editor>=2.8.0')
+depends=('emacs>=25.1' 'git>=2.0.0' 'emacs-dash>=2.14.1' 'emacs-magit-popup>=2.12.4' 'emacs-with-editor>=2.8.0')
 provides=('emacs-magit')
 conflicts=('emacs-magit-git')
 install="${pkgname}.install"

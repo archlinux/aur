@@ -10,6 +10,7 @@ pkgbase = emacs-magit
 	depends = emacs>=25.1
 	depends = git>=2.0.0
 	depends = emacs-dash>=2.14.1
+	depends = emacs-magit-popup>=2.12.4
 	depends = emacs-with-editor>=2.8.0
 	provides = emacs-magit
 	conflicts = emacs-magit-git
