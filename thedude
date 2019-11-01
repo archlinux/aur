@@ -15,5 +15,6 @@ if [ -h "$HOME"/.winbox/dude/data ] ; then
   rm -f "$HOME"/.winbox/dude/data
 fi
 
+cd $HOME/.winbox/dude
 wine $HOME/.winbox/dude/dude.exe "$@"
 
