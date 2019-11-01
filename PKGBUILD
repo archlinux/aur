@@ -3,7 +3,7 @@
 pkgname=powerkit
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="Powerkit is a lightweight desktop independent full featured power manager."
+pkgdesc="Powerkit is a Lightweight Desktop Independent full featured power manager."
 arch=('x86_64')
 url="https://github.com/rodlie/powerkit"
 license=('BSD 3-Clause')
