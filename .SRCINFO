@@ -9,7 +9,7 @@ pkgbase = guitar-pro
 	makedepends = binutils
 	makedepends = tar
 	depends = pulseaudio
-	source = gp6-full-linux-r11686.deb::https://guitar-pro.com/download.php?idfile=gp6_linux
+	source = https://downloads.guitar-pro.com/gp6/gp6-full-linux-r11686.deb
 	source = https://github.com/M0Rf30/openssl098-lib32/raw/master/libcrypto.so.0.9.8
 	source = https://github.com/M0Rf30/openssl098-lib32/raw/master/libssl.so.0.9.8
 	md5sums = 3de3b59151b33965a92cd4f51162aeee

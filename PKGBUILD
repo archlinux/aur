@@ -17,7 +17,7 @@ depends_x86_64=('lib32-glib2' 'lib32-libpulse' 'lib32-libgl' 'lib32-libxml2' 'li
 depends_i686=('glib2' 'libgl' 'libxml2' 'portaudio' 'zlib' 'libxrender' 'freetype2' 'libpng12')
 makedepends=('binutils' 'tar')
 
-source=("gp6-full-linux-r$pkgver.deb::https://guitar-pro.com/download.php?idfile=gp6_linux"
+source=("https://downloads.guitar-pro.com/gp6/gp6-full-linux-r$pkgver.deb"
 	"https://github.com/M0Rf30/openssl098-lib32/raw/master/libcrypto.so.0.9.8"
 "https://github.com/M0Rf30/openssl098-lib32/raw/master/libssl.so.0.9.8")
 
