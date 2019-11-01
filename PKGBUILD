@@ -63,7 +63,7 @@ _localmodcfg=
 pkgbase=linux-ck
 _srcver=5.3.8-arch1
 pkgver=${_srcver%-*}
-pkgrel=3
+pkgrel=4
 _ckpatchversion=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -104,7 +104,7 @@ prepare() {
   msg2 "Setting version..."
   scripts/setlocalversion --save-scmversion
   echo "-$pkgrel" > localversion.10-pkgrel
-  echo "$_kernelname" > localversion.20-pkgname
+  echo "${pkgbase#linux}" > localversion.20-pkgname
 
   local src
   for src in "${source[@]}"; do

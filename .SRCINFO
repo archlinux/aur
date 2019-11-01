@@ -1,6 +1,6 @@
 pkgbase = linux-ck
 	pkgver = 5.3.8
-	pkgrel = 3
+	pkgrel = 4
 	url = https://wiki.archlinux.org/index.php/Linux-ck
 	arch = x86_64
 	license = GPL2
