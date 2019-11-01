@@ -8,7 +8,6 @@ pkgbase = i2p
 	license = GPL2
 	makedepends = java-environment>=8
 	makedepends = apache-ant
-	makedepends = gettext
 	depends = java-runtime>=8
 	depends = java-service-wrapper
 	conflicts = i2p-bin
