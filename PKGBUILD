@@ -6,7 +6,7 @@
 
 pkgname=chromium-no-extras
 _pkgname=chromium
-pkgver=78.0.3904.70
+pkgver=78.0.3904.87
 pkgrel=1
 _launcher_ver=6
 pkgdesc="Chromium without hangout services, widevine, pipewire, or chromedriver"
@@ -35,7 +35,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/$_pkg
         fix-spammy-unique-font-matching-log.patch
         chromium-widevine.patch
         chromium-skia-harmony.patch)
-sha256sums=('ddc5794097d65ba19c1ae359c2057b08921e7b38b7afe9d5ec45f5e8b9a87462'
+sha256sums=('8df6ffca4087fc43e7d0443acc4f758399b248e96482705bd4fe7e88d239eb56'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
             '49052e8aa630c4aa57bf46823edc32b7b309493275163c3bb3f9fd390c73356e'
             '69694ab12a5ced389916c0c5e8c7bdc191544f576b134ddfb2fe9d4ed9ec4494'
