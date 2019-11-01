@@ -1,0 +1,12 @@
+diff --git a/mamba/nodetransformers.py b/mamba/nodetransformers.py
+index 5b46f12..da31e51 100644
+--- a/mamba/nodetransformers.py
++++ b/mamba/nodetransformers.py
+@@ -204,5 +204,6 @@ class TransformToSpecsPython3NodeTransformer(TransformToSpecsNodeTransformer):
+             kwonlyargs=[],
+             kw_defaults=[],
+             kwarg=None,
+-            defaults=[]
++            defaults=[],
++            posonlyargs=[]
+         )
