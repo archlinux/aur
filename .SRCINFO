@@ -1,0 +1,18 @@
+pkgbase = ros-melodic-rosbridge-suite
+	pkgdesc = ROS - Rosbridge provides a JSON API to ROS functionality for non-ROS programs.
+	pkgver = 0.11.3
+	pkgrel = 1
+	url = https://wiki.ros.org/rosbridge_suite
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-catkin
+	depends = ros-melodic-rosbridge-library
+	depends = ros-melodic-rosbridge-server
+	depends = ros-melodic-rosapi
+	source = ros-melodic-rosbridge-suite-0.11.3.tar.gz::https://github.com/RobotWebTools/rosbridge_suite/archive/0.11.3.tar.gz
+	sha256sums = 5020616a6589f81fde0dfcd2835bbf4c43ff57bc39b76aefd5ed8f0916af87a5
+
+pkgname = ros-melodic-rosbridge-suite
+
