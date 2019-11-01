@@ -3,7 +3,7 @@
 
 pkgname=muduo
 pkgver=2.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc='A C++ non-blocking multi-threaded network library'
 url='https://github.com/chenshuo/muduo'
 license=(BSD)
@@ -12,7 +12,7 @@ depends=(protobuf)
 makedepends=(cmake boost)
 options=(staticlibs)
 source=(${pkgname}-$pkgver.tar.gz::${url}/archive/v$pkgver.tar.gz)
-sha1sums=('ba73e559a060479550167694e6b939a97ea6fec4')
+sha256sums=('eab872539e50ee3d0377f2b5421c512022eb3013')
 
 build() {
   cd "${srcdir}/${pkgname}-$pkgver"
