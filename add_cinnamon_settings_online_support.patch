@@ -1,28 +1,13 @@
 --- src/gui/gcal-window.c
 +++ src/gui/gcal-window.c
-@@ -394,8 +394,22 @@
-                                    gpointer       user_data)
+@@ -395,7 +395,7 @@
  {
    GApplication *application = g_application_get_default ();
--
+ 
 -  gcal_utils_launch_online_accounts_panel (g_application_get_dbus_connection (application), NULL, NULL);
-+  gchar *desktop_environment;
-+
-+  desktop_environment = getenv ("XDG_CURRENT_DESKTOP");
-+  if (desktop_environment)
-+  {
-+    if (g_strcmp0 (desktop_environment, "X-Cinnamon") == 0 || g_strcmp0 (desktop_environment, "Cinnamon") == 0)
-+    {
-++     g_spawn_command_line_async ("cinnamon-settings online-accounts", NULL);
-++     return;
-+    }
-+    else if (g_strcmp0 (desktop_environment, "GNOME") == 0)
-+    {
-+      gcal_utils_launch_online_accounts_panel (g_application_get_dbus_connection (application), NULL, NULL);
-+    }
-+  }
-+
++  g_spawn_command_line_async ("cinnamon-settings online-accounts", NULL);
  }
  
  static void
+
 

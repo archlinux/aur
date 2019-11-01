@@ -1,0 +1,13 @@
+--- src/gui/calendar-management/gcal-new-calendar-page.c
++++ src/gui/calendar-management/gcal-new-calendar-page.c
+@@ -471,7 +471,7 @@
+ {
+   GDBusConnection *connection = g_application_get_dbus_connection (g_application_get_default ());
+ 
+-  gcal_utils_launch_online_accounts_panel (connection, NULL, NULL);
++  g_spawn_command_line_async ("cinnamon-settings online-accounts", NULL);
+ }
+ 
+ 
+
+

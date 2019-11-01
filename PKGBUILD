@@ -9,11 +9,15 @@ arch=(x86_64)
 url=https://wiki.gnome.org/Apps/Calendar
 license=(GPL)
 depends=(
+    cinnamon
+    cinnamon-control-center
     evolution-data-server
     geoclue2
+    gnome-online-accounts
     gsettings-desktop-schemas
     libdazzle
     libgweather
+    libical
 )
 optdepends=(
     'evolution: ICS file import'
@@ -21,7 +25,6 @@ optdepends=(
 makedepends=(
     appstream-glib
     git
-    gnome-control-center
     meson
     python
 )
@@ -32,10 +35,12 @@ _commit=98881b9071ce39b8704e9b5af4eb1faa064ba3fa  # tags/3.34.2^0
 source=(
     "git+https://gitlab.gnome.org/GNOME/gnome-calendar.git#commit=$_commit"
     "add_cinnamon_settings_online_support.patch"
+    "replace_link_cinnamon_settings_online_support.patch"
     "set_window_icon_name.patch"
 )
 sha256sums=('SKIP'
-            '9b81f538a4ebc74c66b6ea80a02303fe6adfc92dc183e6a96e0f090ac777e7d9'
+            'c05b6d35b89c9b121d544f86a788f021bf06a705d8c507c8a9eecc596d1320ba'
+            'ee49aad54bee8c50e5cdbbe68cd6f58287cd1cb368dd0f9f3a996a99418489c4'
             '1788c8cb1fbf8bd5cf81d700d9f5f7eb1e5eea265e35930dc70df147f79ebc9a')
 
 pkgver() {
@@ -46,11 +51,14 @@ pkgver() {
 prepare() {
   cd $_pkgname
 
-  # Add support so that gnome-calendar run within Cinnamon by calling cinnamon-settings online-accounts
-  patch -Np0 -i ../add_cinnamon_settings_online_support.patch
-
   # Fix: Set window icon name
   patch -Np0 -i ../set_window_icon_name.patch
+
+  # Replace GNOME Control Center internal call with Cinnamon Settings (cinnamon-settings online-accounts)
+  patch -Np0 -i ../add_cinnamon_settings_online_support.patch
+
+  # Replace GNOME Web Description link label with cinnamon-settings online-accounts
+  patch -Np0 -i ../replace_link_cinnamon_settings_online_support.patch
 }
 
 build() {
