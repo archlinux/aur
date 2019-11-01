@@ -1,6 +1,6 @@
 #!/bin/bash
 REPO='http://security.ubuntu.com/ubuntu/pool/universe/c/chromium-browser/'
-PACKAGE=$(wget -qO- $REPO | sed -rn "s/.*(chromium-codecs-ffmpeg-extra_(.*?)-(.*?).18.04.1_amd64.deb).*/\1#\2#\3/p" | sort | tail -n 1)
+PACKAGE=$(wget -qO- $REPO | sed -rn "s/.*(chromium-codecs-ffmpeg-extra_(.*?)-(.*?)ubuntu1_amd64.deb).*/\1#\2#\3/p" | sort | tail -n 1)
 
 deb=$(echo $PACKAGE | cut -d# -f1)
 ver1=$(echo $PACKAGE | cut -d# -f2)
