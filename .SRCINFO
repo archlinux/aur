@@ -17,7 +17,7 @@ pkgbase = naiveproxy
 	conflicts = naiveproxy-bin
 	backup = etc/naiveproxy/config.json
 	source = naiveproxy-78.0.3904.70-1.tar.gz::https://github.com/klzgrad/naiveproxy/archive/v78.0.3904.70-1.tar.gz
-	md5sums = dd9c66d6eece55b30cd22e8f7f06c606
+	md5sums = 135b16a3a6ebb3f75f4d7031a2135820
 
 pkgname = naiveproxy
 

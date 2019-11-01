@@ -12,7 +12,7 @@ makedepends=('git' 'ninja' 'cmake' 'unzip' 'python2')
 source=("${pkgname}-${pkgver}-${pkgrel}.tar.gz::https://github.com/klzgrad/naiveproxy/archive/v${pkgver}-${pkgrel}.tar.gz")
 optdepends=("ccache: Speed up compilation")
 backup=(etc/naiveproxy/config.json)
-md5sums=('dd9c66d6eece55b30cd22e8f7f06c606')
+md5sums=('135b16a3a6ebb3f75f4d7031a2135820')
 conflicts=('naiveproxy-git' 'naiveproxy-bin')
 
 build(){
