@@ -5,7 +5,7 @@ pkgver() {
   cd "$srcdir/${pkgname%-git}"
   printf "r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-pkgver=r39.g58bddfc
+pkgver=r40.g1e23d7b
 pkgrel=1
 
 pkgdesc="Remote git stash, in case of fire and more!"

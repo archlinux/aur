@@ -13,3 +13,18 @@ pkgbase = git-backup-git
 
 pkgname = git-backup-git
 
+pkgbase = git-backup-git
+	pkgdesc = Remote git stash, in case of fire and more!
+	pkgver = r40.g1e23d7b
+	pkgrel = 1
+	url = https://github.com/sarpik/git-backup
+	install = git-backup.install
+	arch = any
+	license = GPL2
+	depends = git
+	conflicts = git-backup
+	source = git+https://github.com/sarpik/git-backup
+	sha256sums = SKIP
+
+pkgname = git-backup-git
+
