@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+if [ -n "$(git status --porcelain)" ]; then
+	printf "Working directory NOT clean - exiting\n"
+	exit 1
+fi
+
+makepkg -CcLfs
+makepkg --printsrcinfo > ".SRCINFO"
+
+git add .
+if git commit -m "Update"; then
+	git show HEAD
+	printf "\n push changes when you're ready:\n"
+	printf "git push\n"
+fi
+
