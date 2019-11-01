@@ -1,14 +1,14 @@
 pkgbase = pspg
 	pkgdesc = Tabular data pager designed to be used with psql
-	pkgver = 2.5.0
+	pkgver = 2.5.2
 	pkgrel = 1
 	url = https://github.com/okbob/pspg
 	arch = x86_64
 	license = BSD
 	depends = readline
 	conflicts = pspg-git
-	source = pspg-2.5.0.tar.gz::https://github.com/okbob/pspg/archive/2.5.0.tar.gz
-	sha256sums = e68f2fb4cca91baf3e9c3f57894dbd12b6b28aec22f2ccba096313a6e33326ab
+	source = pspg-2.5.2.tar.gz::https://github.com/okbob/pspg/archive/2.5.2.tar.gz
+	sha256sums = 62b1761bcb6387bd5fc8106b634949d3658a833dcfb0cc78f740e72f379b257d
 
 pkgname = pspg
 
