@@ -2,7 +2,7 @@
 
 _pkgname=plasma-applet-places-widget
 pkgname=${_pkgname}-git
-pkgver=1.1.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='Plasmoid Places Widget for Plasma desktop'
 arch=('any')
