@@ -22,6 +22,7 @@ build() {
   mkdir -p "${pkgname%-git}/build"
   cd "${pkgname%-git}/build"
   cmake ../ -DCMAKE_INSTALL_PREFIX=/usr
+  make
 }
 
 package() {
