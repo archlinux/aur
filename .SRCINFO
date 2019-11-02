@@ -1,6 +1,6 @@
 pkgbase = xenontrade
 	pkgdesc = Path of Exile trading overlay
-	pkgver = 0.5.0alpha
+	pkgver = 0.6.3
 	pkgrel = 1
 	url = https://github.com/klayveR/xenontrade
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = xenontrade
 	depends = nss
 	depends = wmctrl
 	provides = xenontrade
-	source = git+https://github.com/klayveR/xenontrade#tag=v0.5.0-alpha
+	source = git+https://github.com/morguldir/xenontrade#tag=v0.6.3
 	source = xenontrade.sh
 	sha256sums = SKIP
 	sha256sums = 4050ea55730e76bdd90ab183bf687f5a614ee6ea303556400bd803ab7d01a2e7
