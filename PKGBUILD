@@ -9,6 +9,7 @@ pkgdesc="Use the Emacsclient as the $EDITOR of child processes"
 arch=('any')
 url="http://github.com/${_github_org}/${_github_repo}"
 license=('GPL3')
+makedepends=('git')
 depends=('emacs>=24.4' 'emacs-async>=1.9')
 provides=('emacs-with-editor')
 conflicts=('emacs-with-editor')
