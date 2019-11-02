@@ -12,11 +12,7 @@ pkgbase = gram-wallet-bin
 	conflicts = gram-wallet
 	conflicts = gram-wallet-git
 	source_x86_64 = https://github.com/ton-blockchain/wallet-desktop/releases/download/v0.9.2/wsetup.0.9.2.tar.xz
-	source_x86_64 = https://raw.githubusercontent.com/ton-blockchain/wallet-desktop/15695ce396ce7cb54585f6e276d3793f151f15a5/Wallet/Resources/art/logo.png
-	source_x86_64 = gram-wallet.desktop
 	sha256sums_x86_64 = 6fa5ae92f3c539c558d21bd50f61d45e424ccd2fc8c08100b9d20ed2b1d7d564
-	sha256sums_x86_64 = 19f62d467d41e3868fac8c5ee4bf79329a0ae5e80167017ef6e29bb9ca09dfed
-	sha256sums_x86_64 = 4aa6f232159ee2aa0ddab540a912998e45b1e5a3002c4ffafadb0b5eb0741c56
 
 pkgname = gram-wallet-bin
 

@@ -22,29 +22,15 @@ _tarball(){
     done
 }
 
-_current_release(){
-    echo "${current_release}" | jq --raw-output '.target_commitish'
-}
-
-_icon(){
-    echo "https://raw.githubusercontent.com/${repo}/$(_current_release)/Wallet/Resources/art/logo.png"
-}
-
 source_x86_64=(
     "$(_tarball)"
-    "$(_icon)"
-    "gram-wallet.desktop"
 )
 
 sha256sums_x86_64=(
     '6fa5ae92f3c539c558d21bd50f61d45e424ccd2fc8c08100b9d20ed2b1d7d564'
-    '19f62d467d41e3868fac8c5ee4bf79329a0ae5e80167017ef6e29bb9ca09dfed'
-    '4aa6f232159ee2aa0ddab540a912998e45b1e5a3002c4ffafadb0b5eb0741c56'
 )
 
 package() {
     mkdir -p $pkgdir/usr/bin
-    mkdir -p $pkgdir/usr/share/icons
     cp Wallet/Wallet $pkgdir/usr/bin/gram-wallet
-    cp logo.png $pkgdir/usr/share/icons/gram-wallet.png
 }
