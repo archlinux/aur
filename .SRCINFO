@@ -1,6 +1,6 @@
 pkgbase = silos
 	pkgdesc = Web-app container, with multimedia apps (YouTube, Netflix, Twitch, VVVVID, and RaiPlay), productivity suites (Microsoft Office 365, Skype, Google Office, and Gmail), and others (WhatsApp web and Wikipedia)
-	pkgver = 0.1.17
+	pkgver = 0.1.18
 	pkgrel = 1
 	url = https://github.com/intersimone999/pyqtws
 	arch = i686
@@ -11,6 +11,11 @@ pkgbase = silos
 	depends = qt5-webengine
 	depends = python
 	depends = python-pip
+	depends = libnotify
+	depends = pyqtwebengine-common
+	depends = python-pyqtwebengine
+	depends = python-qtpy
+	depends = python-gobject
 	source = git+https://github.com/intersimone999/pyqtws.git
 	sha256sums = SKIP
 
@@ -19,4 +24,9 @@ pkgname = silos
 	depends = qt5-webengine
 	depends = python
 	depends = python-pip
+	depends = libnotify
+	depends = pyqtwebengine-common
+	depends = python-pyqtwebengine
+	depends = python-qtpy
+	depends = python-gobject
 

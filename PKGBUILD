@@ -1,14 +1,14 @@
 PACKAGER='Simone Scalabrino <s.scalabrino9@gmail.com>'
 pkgname=silos
 _gitname=pyqtws
-_gittag=0.1.17
+_gittag=0.1.18
 pkgver=$_gittag
 pkgrel=1
 pkgdesc='Web-app container, with multimedia apps (YouTube, Netflix, Twitch, VVVVID, and RaiPlay),  productivity suites (Microsoft Office 365, Skype, Google Office, and Gmail), and others (WhatsApp web and Wikipedia)'
 arch=('i686' 'x86_64')
 url='https://github.com/intersimone999/pyqtws'
 license=('MIT')
-depends=('xdg-utils' 'qt5-webengine' 'python' 'python-pip')
+depends=('xdg-utils' 'qt5-webengine' 'python' 'python-pip' 'libnotify' 'pyqtwebengine-common' 'python-pyqtwebengine' 'python-qtpy' 'python-gobject')
 makedepends=('git')
 source=("git+${url}.git")
 sha256sums=('SKIP')
