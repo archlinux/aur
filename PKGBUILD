@@ -17,7 +17,7 @@ prepare() {
 
 build() {
 	cd $srcdir 
-        gcc enigma.c -o crypt -lcrypt
+        gcc enigma.c -o crypt -lcrypt -g -Wall -O3
 }
 
 package() {
