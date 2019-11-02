@@ -16,11 +16,15 @@ source=("$pkgname-r$pkgver.tar.gz::https://github.com/gokcehan/$pkgname/archive/
 sha256sums=('fe99ed9785fbdc606835139c0c52c854b32b1f1449ba83567a115b21d2e882f4')
 _srcname=${pkgname}-r$pkgver
 
-build() {
+prepare() {
   # prevent creation of a `go` directory in one's home.
   # this directory cannot be removed with even `rm -rf` unless one becomes root
   # or changes the write permissions.
   export GOPATH="${srcdir}/gopath"
+  go clean -modcache
+}
+
+build() {
   cd "${pkgname}-r${pkgver}"
   go mod vendor
   version=r$pkgver ./gen/build.sh -mod=vendor -trimpath
