@@ -1,15 +1,15 @@
 pkgbase = esphomeyaml
 	pkgdesc = Solution for your ESP8266/ESP32 projects with Home Assistant
-	pkgver = 1.13.6
-	pkgrel = 2
+	pkgver = 1.14.0
+	pkgrel = 1
 	url = https://github.com/esphome/ESPHome
 	arch = any
 	license = MIT
 	depends = python-setuptools
 	depends = python-voluptuous
-	depends = python-yaml>=5.1
+	depends = python-yaml
 	depends = python-paho-mqtt
-	depends = python-colorlog>=4.0.2
+	depends = python-colorlog
 	depends = python-tornado
 	depends = python-protobuf
 	depends = python-tzlocal
@@ -18,10 +18,10 @@ pkgbase = esphomeyaml
 	depends = python-pyaes
 	depends = python-ecdsa
 	depends = platformio
-	depends = esptool-git
+	depends = esptool
 	replaces = esphomeyaml
-	source = https://github.com/esphome/ESPHome/archive/v1.13.6.tar.gz
-	sha256sums = c9ffef72555e895fd14178f10a1195e39a90b1eb1ead51cc1c33781eb0958f27
+	source = https://github.com/esphome/ESPHome/archive/v1.14.0.tar.gz
+	sha256sums = e50a4880b6e2a4c37e9abe3156f0f4c12aa16b1a37a05f2bc7868329bb450114
 
 pkgname = esphome
 
