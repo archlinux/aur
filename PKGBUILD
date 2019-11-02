@@ -11,7 +11,7 @@ depends=('tor' 'gnupg' 'pygtk' 'python-gnupg' 'python-gpgme' 'python-pyqt5' 'pyt
 makedepends=('git' 'python-setuptools')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://github.com/micahflee/torbrowser-launcher.git')
+source=('git+https://github.com/micahflee/torbrowser-launcher.git#branch=develop')
 sha256sums=('SKIP')
 
 pkgver() {
