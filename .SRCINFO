@@ -1,0 +1,19 @@
+pkgbase = elementary-feedback
+	pkgdesc = GitHub Issue Reporter for elementary team
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/elementary/feedback
+	arch = any
+	groups = pantheon-stable
+	license = GPL3
+	makedepends = vala
+	makedepends = granite
+	depends = gtk3
+	optdepends = pantheon-default-settings
+	provides = elementary-feedback
+	conflicts = elementary-feedback-git
+	source = elementary-feedback-1.0.tar.gz::https://github.com/elementary/feedback/archive/1.0.tar.gz
+	sha256sums = f4600112c2552366a1f0f9f2270463c065a611f32286ba3439e14b93758dad50
+
+pkgname = elementary-feedback
+
