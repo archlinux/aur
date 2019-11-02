@@ -1,4 +1,4 @@
-pkgbase = gamerworld-git
+pkgbase = gamerworld
 	pkgdesc = Play games all in one place
 	pkgver = 1.1.4
 	pkgrel = 1
@@ -15,5 +15,5 @@ pkgbase = gamerworld-git
 	source = git+https://gitlab.com/gamerworld/application.git
 	sha256sums = SKIP
 
-pkgname = gamerworld-git
+pkgname = gamerworld
 

@@ -8,8 +8,8 @@ url="https://gitlab.com/gamerworld/application"
 license=('GPL')
 depends=('nss' 'gtk3' 'libxss')
 makedepends=('npm' 'git')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
+provides=("${pkgname%}")
+conflicts=("${pkgname%}")
 source=('git+https://gitlab.com/gamerworld/application.git')
 sha256sums=('SKIP')
 
@@ -31,7 +31,7 @@ package() {
 
     # Link to binary
     install -dm755 "$pkgdir/usr/bin"
-    ln -s "/opt/$_pkgname/$_pkgname" "$pkgdir/usr/bin/${pkgname%-git}"
+    ln -s "/opt/$_pkgname/$_pkgname" "$pkgdir/usr/bin/${pkgname%}"
 
     # Desktop Entry
     install -Dm644 "$srcdir/application/$_pkgname.desktop" \
