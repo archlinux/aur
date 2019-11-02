@@ -1,6 +1,6 @@
 # Maintainer: Aditya Mahajan <adityam at umich dot edu>
 pkgname=luametatex
-pkgver=2019.09.04
+pkgver=2019.10.28
 pkgrel=1
 pkgdesc="ConTeXt LuaMetaTeX distribution"
 url="http://www.contextgarden.net"
@@ -57,10 +57,15 @@ prepare() {
  chmod +x $srcdir/bin/mtxrun
  $srcdir/bin/mtxrun --script $srcdir/bin/mtx-install.lua --update \
                     --server="${_lmtxserverlist}" \
-                    --instance="install-lmtx" || return 1
+                    --instance="install-lmtx" --erase \
+                    || return 1
  PATH=$OLDPATH
  # Make sure the binaries are executable
  chmod +x $srcdir/tex/texmf-${_platform}/bin/{context,luametatex,mtxrun}
+
+ # Copy mtxrun for next install
+ cp $srcdir/tex/texmf-${_platform}/bin/mtxrun $srcdir/bin
+ cp $srcdir/tex/texmf-context/scripts/context/lua/{mtxrun.lua,mtx-install.lua} $srcdir/bin
 
  # Generate a setuptex file
  cat <<- _EOF_ > $srcdir/tex/setuptex
