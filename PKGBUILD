@@ -2,7 +2,7 @@
 
 # General package information
 pkgname=wtwitch
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Terminal user interface for Twitch"
 url="https://git.sr.ht/~krathalan/wtwitch"
@@ -18,7 +18,7 @@ makedepends=("scdoc")
 _packagesig="${url}/blob/master/signatures/${pkgver}.tar.gz.sig"
 source=("${url}/archive/${pkgver}.tar.gz" "${_packagesig}")
 validpgpkeys=("02AAA23ABDF1D538BD889D251AADE5E728FFC667")
-sha256sums=("796a159a4b25e9db275d33c8887959ff345dfe6151bc9d3e0ece220b57041a68" "80d7ac60431fb237a53813f16fce30e8db55cfec1670ddb2701f61a316b631ed")
+sha256sums=("5c34819d4e6727a106f0e92e37cac301f7587f4ea28c7b87f9bfa090616929b5" "e782bfed52124cd92112fc9caa20f5ed5ea17ad294fcfd666d142101cc4d7440")
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
