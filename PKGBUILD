@@ -2,8 +2,8 @@
 
 pkgname=gns3-ubridge
 pkgver=0.9.16
-pkgrel=1
-pkgdesc='Bridge IOU to UDP, TAP and Ethernet. GNS3 tool.'
+pkgrel=2
+pkgdesc='Bridge for UDP tunnels, Ethernet, TAP and VMnet interfaces. GNS3 Tool'
 arch=('i686' 'x86_64')
 url='https://github.com/GNS3/ubridge'
 license=('GPL3')
