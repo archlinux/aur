@@ -1,6 +1,6 @@
 pkgbase = unrpa
 	pkgdesc = Extract files from the RPA archive format (from Ren'Py visual novels).
-	pkgver = 2.1.1
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/Lattyware/unrpa
 	arch = any
@@ -8,11 +8,11 @@ pkgbase = unrpa
 	makedepends = python-setuptools
 	depends = python3
 	optdepends = python-uncompyle6: ZiX archive support
-	source = unrpa-2.1.1.tar.gz::https://github.com/Lattyware/unrpa/archive/2.1.1.tar.gz
-	source = https://github.com/Lattyware/unrpa/releases/download/2.1.1/unrpa-2.1.1.tar.gz.asc
+	source = unrpa-2.2.0.tar.gz::https://github.com/Lattyware/unrpa/archive/2.2.0.tar.gz
+	source = https://github.com/Lattyware/unrpa/releases/download/2.2.0/unrpa-2.2.0.tar.gz.asc
 	validpgpkeys = 92A57AA673039A4491E6D80E5BDD8CFCA5F0551E
-	sha256sums = 49b6bc03e620a26ea0e92b19e979acf9478514e93de98f6786b798ef65cc5f3e
-	sha256sums = 241033f032ff73160c55f9c9ca1c71565c1376eb8121f3a87d2dbe417e6cac1e
+	sha256sums = a85bc053b2401c3739db9f173ae3c277caaa917d96fec2bab61aecc6f2922dcc
+	sha256sums = 841511d411c031fbf1af23234f39834285520d62c9d6546892e20acc939fbaed
 
 pkgname = unrpa
 
