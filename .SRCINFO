@@ -1,19 +1,19 @@
 pkgbase = gxneur-devel-git
 	pkgdesc = XNeur GTK frontend. Git version
-	pkgver = 0.20.0
-	pkgrel = 17
+	pkgver = 0.21.0
+	pkgrel = 30
 	url = https://github.com/AndrewCrewKuznetsov/xneur-devel
 	arch = any
 	license = GPL
 	makedepends = git
 	depends = libglade
-	depends = xneur-devel-git>=0.20.0
+	depends = xneur-devel-git>=0.21.0
 	depends = gconf
 	depends = xorg-xprop
-	provides = gxneur=0.20.0
+	provides = gxneur=0.21.0
 	conflicts = gxneur
 	replaces = gxneur
-	source = git+http://github.com/AndrewCrewKuznetsov/xneur-devel.git
+	source = git+https://github.com/AndrewCrewKuznetsov/xneur-devel.git
 	md5sums = SKIP
 
 pkgname = gxneur-devel-git
