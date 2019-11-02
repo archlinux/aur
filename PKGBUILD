@@ -7,7 +7,7 @@ pkgdesc='This sans-serif typeface is the system font for watchOS, and includes a
 arch=('any')
 license=('custom')
 url='https://developer.apple.com/fonts/'
-depends=('fontconfig' 
+depends=('fontconfig'
 		 'xorg-font-utils')
 source=(SFCompact-"$pkgver"-"$pkgrel".zip::"$url"downloads/SFCompact.zip)
 sha256sums=('4792e19118de169af15bf0a8dbc9ee9e525aa6e17e1d12e9f5f94680a11d486d')
