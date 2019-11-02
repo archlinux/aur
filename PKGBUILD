@@ -1,4 +1,4 @@
-# Maintainer: Spencer Muise <smuise@protonmail.com>
+# Maintainer: Spencer Muise <smuise@spencermuise.ca>
 
 pkgname=calibre-web-git
 pkgver=0.6.3.r13.gf736a15
