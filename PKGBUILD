@@ -8,7 +8,7 @@
 
 pkgname=mythtv-git
 pkgver=30+fixes.20191016.2855e296
-pkgrel=1
+pkgrel=2
 pkgdesc="A Homebrew PVR project"
 arch=('x86_64')
 url="https://www.mythtv.org/"
@@ -16,7 +16,7 @@ license=('GPL')
 depends=('libass' 'qt5-script' 'libavc1394' 'fftw' 'exiv2' 'taglib' 'libva'
          'libiec61883' 'perl-net-upnp' 'urlgrabber' 'libsamplerate' 'qt5-webkit' 'x265'
          'x264' 'jack' 'libvpx' 'libvdpau' 'lame' 'libxinerama' 'libpulse' 'libxrandr'
-         'mysql-python' 'libxnvctrl' 'libhdhomerun')
+         'mysql-python' 'libxnvctrl' 'libhdhomerun' 'libbluray')
 makedepends=('git' 'help2man' 'yasm' 'libmariadbclient' 'libxml2' 'libcec'
              'libcdio' 'lirc' 'perl-io-socket-inet6' 'perl-libwww' 'perl-dbd-mysql'
              'python2-lxml' 'perl-xml-simple' 'perl-xml-xpath')
