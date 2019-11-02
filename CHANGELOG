@@ -1,3 +1,9 @@
+1.1.1-1 (November 2, 2019)
+    Change upstream to https://sourcehut.org/
+    Debugging feature now works with "no option" option, i.e. opening a stream
+    Add matching long --debug flag for existing short -d flag
+    Code cleanup
+
 1.1.0-1 (October 19, 2019)
     Fixed an issue where wtwitch would not function if the ~/.config/ dir didn't exist
     Added "audio_only" as an acceptable quality
