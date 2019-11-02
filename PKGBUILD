@@ -4,12 +4,13 @@
 
 pkgname=clblas
 pkgver=2.12
-pkgrel=2
+pkgrel=3
 pkgdesc="A software library containing BLAS functions written in OpenCL"
 arch=("i686" "x86_64")
 url="https://github.com/clMathLibraries/clBLAS"
 license=('APACHE')
-depends=("opencl-headers" "ocl-icd" "boost")
+depends=("opencl-headers" "ocl-icd")
+makedepends=("boost")
 provides=('clblas')
 source=("https://github.com/clMathLibraries/clBLAS/archive/v2.12.tar.gz")
 sha512sums=('5d9b0c58adde69e83d95e9c713e0cdc5f64785fe7e05553a14c57fa483c4ef39e9dc780c26880a7f15924967d5ce4ea29035c29d63eac7ee5a2ae5ddacac2b72')
