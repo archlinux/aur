@@ -4,7 +4,6 @@ After=network.target
 
 [Service]
 ExecStart=/usr/bin/go-tun2socks -proxyServer $PROXY_SERVER -tunName $TUN_DEVICE_NAME
-# It's a bit ugly here. Maybe I have to find a better way to wait for the tun device.
 ExecStartPost=/usr/lib/systemd/scripts/go-tun2socks-setup
 
 [Install]
