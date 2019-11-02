@@ -16,10 +16,10 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 # Maintainer: Luong Thanh Lam <ltlam93@gmail.com>
-# Contributor: Tran Van Cong
+# Contributor: Tran Cong <nopain2110@gmail.com>
 
 pkgname=ibus-bamboo-git
-pkgver=0.5.8
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='A Vietnamese IME for IBus'
 arch=(any)
