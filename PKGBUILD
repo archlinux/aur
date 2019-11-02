@@ -1,8 +1,8 @@
 # Maintainer: Jean Lucas <jean@4ray.co>
 
 pkgname=dino
-pkgver=0.0+r557+g394862d
-_commit=394862dbd31a938be8e953e0edaa73d2f4fb9769
+pkgver=0.0+r562+g388cc56
+_commit=388cc56674487e7b9e339637369fc55f0e271daf
 pkgrel=1
 pkgdesc='Modern XMPP (Jabber) chat client written in GTK+/Vala'
 arch=(i686 x86_64)
