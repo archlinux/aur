@@ -1,0 +1,9 @@
+[Unit]
+Description=Revive unavailable songs for Netease Cloud Music
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/unblockneteasemusic $UNM_ARGS
+
+[Install]
+WantedBy=multi-user.target

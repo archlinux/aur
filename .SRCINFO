@@ -1,0 +1,19 @@
+pkgbase = nodejs-unblockneteasemusic
+	pkgdesc = Revive unavailable songs for Netease Cloud Music
+	pkgver = 0.21.0
+	pkgrel = 1
+	url = https://github.com/nondanee/UnblockNeteaseMusic
+	arch = any
+	license = MIT
+	makedepends = npm
+	makedepends = jq
+	depends = nodejs
+	source = nodejs-unblockneteasemusic-0.21.0.tar.gz::https://github.com/nondanee/UnblockNeteaseMusic/archive/v0.21.0.tar.gz
+	source = unblockneteasemusic.service
+	source = args.conf
+	sha512sums = 8120eb8038a175d8c523fbd057c05f10fc01573f6b6079ea02ca2d3eccfbbb819cf31100f0ec3723ff8d0e569b3b4087a7e916a476f557f93d95697fccd14822
+	sha512sums = f5e69fe9a9e622bd6fa4d4d22c4cae7468b27bb6426fc6b329df44698f790f9e36c50758066e3f44f8d2a8939885023cf1773ef386041bc3dcc1d94987c99202
+	sha512sums = bbf170413150b9eab5fe996f213ca2e454f7acac7ce64c39a70e8ae4a2e2fb5a467b5a253898e0f488a272dfde2060310d7ebff958390dd918510bda764a65be
+
+pkgname = nodejs-unblockneteasemusic
+
