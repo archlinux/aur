@@ -1,6 +1,6 @@
 pkgbase = shadow-beta
 	pkgdesc = Shadow Bêta application
-	pkgver = 4.8.6
+	pkgver = 5.0.228
 	pkgrel = 1
 	url = http://shadow.tech
 	install = shadow-beta.install
@@ -33,8 +33,8 @@ pkgbase = shadow-beta
 	depends = libsndio-61-compat
 	depends = gnome-keyring
 	provides = shadow-beta
-	source = shadow-beta-4.8.6-1.zip::https://update.shadow.tech/launcher/preprod/linux/ubuntu_18.04/ShadowBeta.zip
-	md5sums = c2837f61b3b7dd190fcb38a1e9b73c88
+	source = shadow-beta-5.0.228-1.AppImage::https://update.shadow.tech/launcher/preprod/linux/ubuntu_18.04/ShadowBeta.AppImage
+	sha512sums = SKIP
 
 pkgname = shadow-beta
 

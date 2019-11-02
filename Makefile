@@ -15,6 +15,8 @@ clear: ## Clears files
 	rm -f ./shadow-beta-*.pkg.tar.xz
 	rm -f ./*~
 	rm -f shadow-beta.zip
+	rm -f *.AppImage
+	rm -f *.yml
 
 install:build ## Installs package with pacman
 	sudo pacman -U shadow-beta-*.pkg.tar

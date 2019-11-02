@@ -1,14 +1,3 @@
-post_install() {
-	# Adding all users to the input group
-	for user in `ls /home`
-	do
-		gpasswd -a $user input
-	done
-
-	# Create the link to the binary
-	ln -sf '/opt/shadowbeta/shadow-wrapper.pl' '/usr/bin/shadow-beta'
-}
-
 post_remove() {
 	# Remove configuration
 	for user in `ls /home`
@@ -24,8 +13,4 @@ pre_upgrade(){
 	if [ -d "/opt/Shadow Beta" ]; then
 	    rm -r "/opt/Shadow Beta"
 	fi
-}
-
-post_upgrade(){
-	post_install
 }

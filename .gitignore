@@ -6,3 +6,5 @@ shadowbeta.deb
 .directory
 *.zip
 *.part
+*.AppImage
+*.yml
