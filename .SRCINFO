@@ -35,6 +35,7 @@ pkgbase = pantheon-stable
 	depends = gvfs
 	depends = pantheon-agent-geoclue2
 	depends = pantheon-music
+	depends = pantheon-onboarding
 	depends = pantheon-photos
 	depends = pantheon-polkit-agent
 	depends = pantheon-print

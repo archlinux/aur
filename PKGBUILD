@@ -35,6 +35,7 @@ depends=(
 	'gvfs'
 	'pantheon-agent-geoclue2'
 	'pantheon-music'
+	'pantheon-onboarding'
 	'pantheon-photos'
 	'pantheon-polkit-agent'
 	'pantheon-print'
