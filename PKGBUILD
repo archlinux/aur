@@ -136,7 +136,7 @@ sha256sums=('2cbc23c9dcd316c35e51fa16b7d1dbcd31f19d2509d1a910b61d6839ccd56384'
             '673c0c55bce8068c297f9cdd389402c2d5d5a25e2cf84732cb071198bd6fa78a')
 
 build() {
-  cd ${pkgname}-${pkgver}
+  cd "${pkgname}-${pkgver}"
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --sbindir=/usr/bin --with-pjproject-bundled=no
   make menuselect.makeopts
   ./menuselect/menuselect --disable BUILD_NATIVE
@@ -144,26 +144,26 @@ build() {
 }
 
 package(){
-  cd ${srcdir}/${pkgname}-${pkgver}
-  make DESTDIR=${pkgdir} install
-  make DESTDIR=${pkgdir} samples
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  make DESTDIR="${pkgdir}" install
+  make DESTDIR="${pkgdir}" samples
 
-  sed -i -e "s/\/var\/run/\/run/" ${pkgdir}/etc/asterisk/asterisk.conf
+  sed -i -e 's,/var/run,/run,' "${pkgdir}/etc/asterisk/asterisk.conf"
 
-  mkdir -p ${pkgdir}/usr/share/doc/asterisk/examples
-  for i in ${pkgdir}/etc/asterisk/*; do install -D -m 644 $i ${pkgdir}/usr/share/doc/asterisk/examples/; done
+  mkdir -p "${pkgdir}/usr/share/doc/asterisk/examples"
+  for i in "${pkgdir}/etc/asterisk/"*; do install -D -m 644 "$i" "${pkgdir}/usr/share/doc/asterisk/examples/"; done
 
-  mv ${pkgdir}/var/run ${pkgdir}
+  mv "${pkgdir}/var/run" "${pkgdir}"
 
-  install -D -m 644 ${srcdir}/${pkgname}.sysusers ${pkgdir}/usr/lib/sysusers.d/asterisk.conf
-  install -D -m 644 ${srcdir}/${pkgname}.logrotated ${pkgdir}/etc/logrotate.d/asterisk
-  install -D -m 644 ${srcdir}/${pkgname}.tmpfile ${pkgdir}/usr/lib/tmpfiles.d/asterisk.conf
+  install -D -m 644 "${srcdir}/${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/asterisk.conf"
+  install -D -m 644 "${srcdir}/${pkgname}.logrotated" "${pkgdir}/etc/logrotate.d/asterisk"
+  install -D -m 644 "${srcdir}/${pkgname}.tmpfile" "${pkgdir}/usr/lib/tmpfiles.d/asterisk.conf"
 
-  install -D -m 644 ${srcdir}/${pkgname}-${pkgver}/contrib/systemd/asterisk.service ${pkgdir}/usr/lib/systemd/system/asterisk.service
-  install -D -m 644 ${srcdir}/${pkgname}-${pkgver}/contrib/systemd/asterisk.socket ${pkgdir}/usr/lib/systemd/system/asterisk.socket
-  install -D -m 644 ${srcdir}/${pkgname}-${pkgver}/contrib/systemd/asterisk-ami.socket ${pkgdir}/usr/lib/systemd/system/asterisk-ami.socket
-  install -D -m 644 ${srcdir}/${pkgname}-${pkgver}/contrib/systemd/asterisk-amis.socket ${pkgdir}/usr/lib/systemd/system/asterisk-amis.socket
-  install -D -m 644 ${srcdir}/${pkgname}-${pkgver}/contrib/systemd/asterisk-cli.socket ${pkgdir}/usr/lib/systemd/system/asterisk-cli.socket
-  install -D -m 644 ${srcdir}/${pkgname}-${pkgver}/contrib/systemd/asterisk-http.socket ${pkgdir}/usr/lib/systemd/system/asterisk-http.socket
-  install -D -m 644 ${srcdir}/${pkgname}-${pkgver}/contrib/systemd/asterisk-https.socket ${pkgdir}/usr/lib/systemd/system/asterisk-https.socket
+  install -D -m 644 "${srcdir}/${pkgname}-${pkgver}/contrib/systemd/asterisk.service" "${pkgdir}/usr/lib/systemd/system/asterisk.service"
+  install -D -m 644 "${srcdir}/${pkgname}-${pkgver}/contrib/systemd/asterisk.socket" "${pkgdir}/usr/lib/systemd/system/asterisk.socket"
+  install -D -m 644 "${srcdir}/${pkgname}-${pkgver}/contrib/systemd/asterisk-ami.socket" "${pkgdir}/usr/lib/systemd/system/asterisk-ami.socket"
+  install -D -m 644 "${srcdir}/${pkgname}-${pkgver}/contrib/systemd/asterisk-amis.socket" "${pkgdir}/usr/lib/systemd/system/asterisk-amis.socket"
+  install -D -m 644 "${srcdir}/${pkgname}-${pkgver}/contrib/systemd/asterisk-cli.socket" "${pkgdir}/usr/lib/systemd/system/asterisk-cli.socket"
+  install -D -m 644 "${srcdir}/${pkgname}-${pkgver}/contrib/systemd/asterisk-http.socket" "${pkgdir}/usr/lib/systemd/system/asterisk-http.socket"
+  install -D -m 644 "${srcdir}/${pkgname}-${pkgver}/contrib/systemd/asterisk-https.socket" "${pkgdir}/usr/lib/systemd/system/asterisk-https.socket"
 }
