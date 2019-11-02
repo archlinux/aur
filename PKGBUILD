@@ -1,24 +1,23 @@
 # Maintainer: Rui Ventura <rventura.pt@outlook.com>
 pkgname=chiaki
-pkgver=1.0.4
-pkgrel=2
-pkgdesc='Free and Open Source PS4 Remote Play Client'
-arch=('x86_64')
-url='https://github.com/thestr4ng3r/chiaki'
-license=('GPL')
-provides=('chiaki')
-depends=('qt5-multimedia' 'qt5-svg' 'ffmpeg' 'libopusenc' 'openssl>=1.1')
-makedepends=('cmake' 'protobuf' 'python-protobuf')
-source=("$pkgname.tar.gz::$url/releases/download/v$pkgver/$pkgname-v$pkgver-src.tar.gz")
-sha256sums=('92f45d6acf87d6340ed7af577e43cf8acabd03b963ea942343e57932379ee1ab')
+pkgver=1.1.0
+pkgrel=1
+pkgdesc="Free and Open Source PS4 Remote Play Client"
+arch=(x86_64)
+url=https://github.com/thestr4ng3r/chiaki
+license=(GPL)
+provides=(chiaki)
+depends=(ffmpeg gcc-libs qt5-multimedia qt5-svg opus "openssl>=1.1" sdl2)
+makedepends=(cmake protobuf python-protobuf)
+source=("$url/releases/download/v$pkgver/$pkgname-v$pkgver-src.tar.gz")
+sha256sums=(ae434eb8da9f15e6ba68b38812ade9a9f22a86a2119111f18dad636bac540180)
 
 build() {
   cd "$srcdir/$pkgname"
-  cmake . -DCMAKE_INSTALL_PREFIX=/usr
-  make
+  cmake -B build -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release
 }
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$pkgname/build"
   make DESTDIR="$pkgdir" install
 }
