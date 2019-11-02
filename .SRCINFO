@@ -1,7 +1,7 @@
 pkgbase = pkgtop
 	pkgdesc = Interactive package manager & resource monitor (stable version)
-	pkgver = 2.0
-	pkgrel = 4
+	pkgver = 2.1
+	pkgrel = 1
 	url = https://github.com/keylo99/pkgtop
 	arch = any
 	license = GPL3
@@ -9,8 +9,8 @@ pkgbase = pkgtop
 	makedepends = git
 	provides = pkgtop
 	conflicts = pkgtop-git
-	source = pkgtop-2.0.zip::https://github.com/keylo99/pkgtop/archive/2.0.zip
-	sha256sums = 338b018fa6aa102ef97901949cc1001afc753a44c91e3acc7d41c949e333c9b9
+	source = pkgtop-2.1.zip::https://github.com/keylo99/pkgtop/archive/2.1.zip
+	sha256sums = c660ecd03767a6f1cb37b295b36569ba44352905946ee50af1b9558ec7988ca1
 
 pkgname = pkgtop
 
