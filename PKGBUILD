@@ -1,20 +1,19 @@
-# Packager: push2001sla@gmail.com
+# Packager: Push Sla push2001sla@gmail.com
 # Developer: andrewcrew@rambler.ru
-
 pkgname=xneur-devel-git
 pkgver=0.21.0
-pkgrel=25
+pkgrel=30
 epoch=
 pkgdesc="X Neural Switcher detects the input language and corrects keyboard layout. Git version"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/AndrewCrewKuznetsov/xneur-devel"
 license=('GPL')
 groups=()
 depends=('enchant1.6' 'gtk2' 'libnotify' 'gstreamer>=1.14.4')
 makedepends=('git' 'intltool' 'cmake')
 checkdepends=()
-optdepends=('hunspell-YOUR-LANGUAGE')
-provides=("xneur=$pkgver")
+optdepends=('hunspell-LANG')
+provides=("xneur=$pkgver" "xnconfig=$pkgver")
 conflicts=('xneur')
 replaces=('xneur')
 backup=()
