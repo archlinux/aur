@@ -1,7 +1,7 @@
 pkgbase = gns3-ubridge
-	pkgdesc = Bridge IOU to UDP, TAP and Ethernet. GNS3 tool.
+	pkgdesc = Bridge for UDP tunnels, Ethernet, TAP and VMnet interfaces. GNS3 Tool
 	pkgver = 0.9.16
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/GNS3/ubridge
 	arch = i686
 	arch = x86_64
