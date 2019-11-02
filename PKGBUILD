@@ -6,7 +6,9 @@ pkgver=r128.bfcde84
 pkgrel=1
 pkgdesc="Protobuf is a Common Lisp implementation of Google's protocol buffers."
 arch=('x86_64')
-url="https://github.com/brown/protobuf"
+# url="https://github.com/brown/protobuf"
+# Temporarily until changes are merged upstream.
+url="https://github.com/eschulte/protobuf"
 license=('BSD')
 optdepends=('boost' 'protobuf')
 depends=()
