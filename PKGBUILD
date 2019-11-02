@@ -1,7 +1,7 @@
 # Maintainer: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
 _pytype_repo="https://github.com/google/pytype"
-_pytype_tag=2019.09.17
+_pytype_tag=2019.10.17
 
 _cpython_repo="https://github.com/python/cpython"
 _cpython_gitcommit="9734024ec65311e33936faa83fb1cb249ef0de9d"
@@ -48,7 +48,7 @@ source=(
   'without-ninja-python-distributions.patch'
 )
 sha256sums=(
-  '5852445fe2dc847613d124caa689790a9ed3ffca18bab3f2381c5ae2f8936399'
+  'f43487b2b8729b9e082c25652e1d22c166654ab9bc208a1ce9f8577330e77a82'
   'ebc3b63747875586f17b967ad2dae6d2a404adb5814612200217f39074377f9a'
   '891d732c77eec9fb57727cd99990a25455d6d5859b1fde107a332c5e238cc9e7'
   '63139752f2cb4714af0d79aa4c6356fd2892776fd2d5420efd31ae1343056d8d'
