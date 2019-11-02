@@ -2,7 +2,5 @@
 !.gitignore
 !gdl.profile
 !gdl-python3.patch 
-!gdl-updates.patch
-!gdl-tirpc.patch
 !PKGBUILD
 !.SRCINFO

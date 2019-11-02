@@ -1,14 +1,14 @@
 pkgbase = gnudatalanguage
 	pkgdesc = An IDL (Interactive Data Language) compatible incremental compiler (ie. runs IDL programs)
 	pkgver = 0.9.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gnudatalanguage/gdl
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = cmake
-	depends = python2
-	depends = python2-numpy
+	depends = python
+	depends = python-numpy
 	depends = plplot
 	depends = gsl
 	depends = readline
@@ -27,8 +27,10 @@ pkgbase = gnudatalanguage
 	depends = libgeotiff
 	source = https://github.com/gnudatalanguage/gdl/archive/v0.9.9.tar.gz
 	source = gdl.profile
-	sha256sums = ad5de3fec095a5c58b46338dcc7367d2565c093794ab1bbcf180bba1a712cf14
-	sha256sums = 8df4d0676ffcece07a6884c2836523cdda0bd7668b9491a96ef816bb993e6a2b
+	source = gdl-python3.patch
+	sha512sums = 41709c4951bbf71f7494eb339b6760756301b89b591020cb5a30c47d3b6f6228671a7d75b817e77f3ff6f1380505d27949e2900eb2577167de995f4941f288ee
+	sha512sums = b3a3589d2ce8eb5d49c902aa9bc43df0a0fcc369d17deb060026d34fa821881a212ce6aa02edc7ea6c0476b2faacc7455e467af7b5baf672e2653b71b162190f
+	sha512sums = 0155857c3fe00cefc8f078a57105aae4b26a5aa93b6b44327f78861041c51a14e6581499021ad64bff24ac514a535a1340a690f135aa5ab38e19e98e5f32eb5e
 
 pkgname = gnudatalanguage
 

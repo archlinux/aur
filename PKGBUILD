@@ -5,13 +5,13 @@
 
 pkgname=gnudatalanguage
 pkgver=0.9.9
-pkgrel=1
+pkgrel=2
 pkgdesc="An IDL (Interactive Data Language) compatible incremental compiler (ie. runs IDL programs)"
 arch=('i686' 'x86_64')
 url="https://github.com/gnudatalanguage/gdl"
 license=('GPL')
-depends=('python2'
-         'python2-numpy'
+depends=('python'
+         'python-numpy'
          'plplot'
          'gsl'
          'readline'
@@ -31,12 +31,16 @@ depends=('python2'
 makedepends=('cmake')
 #options=('!makeflags')
 source=("https://github.com/gnudatalanguage/gdl/archive/v${pkgver}.tar.gz"
-        'gdl.profile')
-sha256sums=('ad5de3fec095a5c58b46338dcc7367d2565c093794ab1bbcf180bba1a712cf14'
-            '8df4d0676ffcece07a6884c2836523cdda0bd7668b9491a96ef816bb993e6a2b')
+        'gdl.profile'
+        'gdl-python3.patch')
+sha512sums=('41709c4951bbf71f7494eb339b6760756301b89b591020cb5a30c47d3b6f6228671a7d75b817e77f3ff6f1380505d27949e2900eb2577167de995f4941f288ee'
+            'b3a3589d2ce8eb5d49c902aa9bc43df0a0fcc369d17deb060026d34fa821881a212ce6aa02edc7ea6c0476b2faacc7455e467af7b5baf672e2653b71b162190f'
+            '0155857c3fe00cefc8f078a57105aae4b26a5aa93b6b44327f78861041c51a14e6581499021ad64bff24ac514a535a1340a690f135aa5ab38e19e98e5f32eb5e')
 
 prepare() {
+    cp gdl-python3.patch ${srcdir}/gdl-${pkgver}/gdl-python3.patch
     cd ${srcdir}/gdl-${pkgver}
+    patch -p1 -l -i gdl-python3.patch
 }
 
 build() {
@@ -46,8 +50,8 @@ build() {
     fi
     mkdir build
     cd build
-    cmake -DCMAKE_INSTALL_PREFIX=/usr -DPYTHON=YES -DPYTHONVERSION=2 \
-        -DPYTHON_EXECUTABLE=/usr/bin/python2.7 -DGRAPHICSMAGICK=OFF -DMAGICK=ON \
+    cmake -DCMAKE_INSTALL_PREFIX=/usr -DPYTHON=YES -DPYTHONVERSION=3 \
+        -DPYTHON_EXECUTABLE=/usr/bin/python3 -DGRAPHICSMAGICK=OFF -DMAGICK=ON \
         -DFFTW=ON -DHDF=ON -DHDFDIR=/opt/hdf4 -DHDF5=ON -DGRIB=ON -DUDUNITS=ON ..
 
     make
