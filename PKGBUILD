@@ -9,7 +9,7 @@ arch=('any')
 license=('BSD')
 depends=(
   # base system
-  'base' 'sudo' 'tmux' 'htop' 'dstat' 'the_silver_searcher' 'fd' 'git' 'zsh' 'tigervnc' 'plasma-meta' 'gcc' 'i3' 'vim' 'code' 'klayout'
+  'base' 'sudo' 'tmux' 'htop' 'dstat' 'the_silver_searcher' 'fd' 'git' 'zsh' 'tigervnc' 'plasma-meta' 'gcc' 'vim' 'code' 'klayout'
 
   # chisel/verilog IDE and simulation
   'intellij-idea-community-edition' 'verilator' 'mill' 'sbt'

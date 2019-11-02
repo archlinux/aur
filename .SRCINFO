@@ -17,7 +17,6 @@ pkgbase = eda-meta
 	depends = tigervnc
 	depends = plasma-meta
 	depends = gcc
-	depends = i3
 	depends = vim
 	depends = code
 	depends = klayout
