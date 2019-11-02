@@ -1,35 +1,40 @@
-# Maintainer: Corey Bruce <cdfrosty@gmail.com>
-
-pkgname=gamerworld
-_pkgname=GamerWorld-linux-x64
+pkgname=gamerworld-git
+_pkgname=GamerWorld
 pkgver=1.1.4
 pkgrel=1
 pkgdesc="Play games all in one place"
 arch=('x86_64')
 url="https://gitlab.com/gamerworld/application"
 license=('GPL')
-depends=(nss gtk3 libxss)
-makedepends=('nodejs' 'npm' 'git')
-provides=('gamerworld')
-conflicts=()
-source=("git+https://gitlab.com/gamerworld/application.git")
+depends=('nss' 'gtk3' 'libxss')
+makedepends=('npm' 'git')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=('git+https://gitlab.com/gamerworld/application.git')
+sha256sums=('SKIP')
 
-md5sums=("SKIP")
+pkgver() {
+    cd "$srcdir/application"
+    node -pe "require('./package.json').version" | head --bytes -3
+}
 
 build() {
-  cd "$srcdir/application"
-  npm i electron jquery electron-packager
-  ./node_modules/.bin/electron-packager .
+    cd "$srcdir/application"
+    npm --cache "$srcdir/npm-cache" i electron jquery electron-packager
+    ./node_modules/.bin/electron-packager .
 }
 
 package() {
-    cd "$srcdir/application/${_pkgname}"
-    mkdir -p $pkgdir/opt/GamerWorld/
-  # Exec bit
-  chmod 755 "$pkgdir/opt/GamerWorld/"
-    cp -r ./ $pkgdir/opt/GamerWorld/
+    cd "$srcdir/application/$_pkgname-linux-x64"
+    install -dm755 "$pkgdir/opt/$_pkgname"
+    cp -r ./ "$pkgdir/opt/$_pkgname"
 
-# Desktop Entry
-  install -Dm 644 "$srcdir/application/GamerWorld.desktop" "${pkgdir}/usr/share/applications/GamerWorld.desktop"
-  sed -i s%/usr/share%/opt% ${pkgdir}/usr/share/applications/GamerWorld.desktop
+    # Link to binary
+    install -dm755 "$pkgdir/usr/bin"
+    ln -s "/opt/$_pkgname/$_pkgname" "$pkgdir/usr/bin/${pkgname%-git}"
+
+    # Desktop Entry
+    install -Dm644 "$srcdir/application/$_pkgname.desktop" \
+        "$pkgdir/usr/share/applications/$_pkgname.desktop"
+    sed -i s%/usr/share%/opt% "$pkgdir/usr/share/applications/$_pkgname.desktop"
 }
