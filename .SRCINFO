@@ -17,4 +17,5 @@ pkgname = sbtools-git
 pkgname = sbtools-hook-git
 	pkgdesc = Secure boot hook for pacman
 	depends = sbtools-git
+	depends = linux<5.3.8
 
