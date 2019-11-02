@@ -4,6 +4,9 @@ cat << EOT
 ==================================================================================
 
 Select "Dynamic" wallpaper type, put your real coordinates and your timer.
+For the timed version,
+you must sync your system clock time (presented both in local time and UTC) as well as the RTC (hardware clock).
+Consult https://wiki.archlinux.org/index.php/System_time & https://wiki.archlinux.org/index.php/OpenNTPD
 
 ==================================================================================
 
