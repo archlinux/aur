@@ -10,9 +10,12 @@ pkgbase = aur-publisher-git
 	depends = silently
 	provides = aur
 	provides = aur-publisher
+	provides = aur-publisher
 	conflicts = aur
 	conflicts = aur-publisher
+	conflicts = aur-publisher
 	replaces = aur
+	replaces = aur-publisher
 	source = git+https://gitlab.com/es20490446e/aur-publisher.git
 	md5sums = SKIP
 

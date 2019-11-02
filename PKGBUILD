@@ -1,10 +1,10 @@
 #! /bin/bash
-#  Coding manual at: https://gitlab.com/es20490446e/aur-publisher/-/wiki_pages/packaging
+#  Coding manual at: https://gitlab.com/es20490446e/aur-box/wikis/packaging
 
 Name="aur-publisher"
-provides=("aur" "${Name}")
-conflicts=("aur" "${Name}")
-replaces=("aur")
+provides=("aur" "aur-publisher" "${Name}")
+conflicts=("aur" "aur-publisher" "${Name}")
+replaces=("aur" "aur-publisher")
 pkgname="${Name}-git"
 
 arch=("x86_64")
@@ -32,12 +32,12 @@ package () {
 	mkdir --parents "${pkgdir}/usr/bin"
 	mkdir --parents "${pkgdir}/usr/share/man/man1"
 
-	mv "${srcdir}/${Name}/assets/aur" "${pkgdir}/usr/share/${Name}"
-	mv "${srcdir}/${Name}/assets/aur.1" "${pkgdir}/usr/share/man/man1/aur.1"
-	ln --symbolic "/usr/share/${Name}/_aur" "${pkgdir}/usr/bin/aur"
+	mv "${srcdir}/${Name}/assets/box" "${pkgdir}/usr/share/box"
+	mv "${srcdir}/${Name}/assets/box.1" "${pkgdir}/usr/share/man/man1/box.1"
+	ln --symbolic "/usr/share/box/_box" "${pkgdir}/usr/bin/box"
 
 	find "${pkgdir}" -type d -exec chmod u=rwx,g=rx,o=rx {} \;
 	find "${pkgdir}" -type f -exec chmod u=rw,g=r,o=r {} \;
-	chmod u=rwx,g=rx,o=rx "${pkgdir}/usr/share/${Name}/_aur"
+	chmod u=rwx,g=rx,o=rx "${pkgdir}/usr/share/box/_box"
 }
 
