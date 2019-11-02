@@ -13,14 +13,16 @@
 pkgbase=lib32-llvm-git
 pkgname=(lib32-llvm-git lib32-llvm-libs-git)
 pkgdesc="Collection of modular and reusable compiler and toolchain technologies (32-bit, git)"
-pkgver=10.0.0_r328055.120a5e9a745
+pkgver=10.0.0_r330903.81cc5d1c7d3
 pkgrel=1
 arch=('x86_64')
 url='https://llvm.org/'
 license=('custom:Apache 2.0 with LLVM Exception')
 makedepends=('cmake' 'lib32-gcc-libs' 'git' 'lib32-libffi' 'lib32-libxml2' 'lib32-zlib' 'ninja' 'python')
-source=("llvm-project::git+https://github.com/llvm/llvm-project.git")
-sha512sums=('SKIP')
+source=("llvm-project::git+https://github.com/llvm/llvm-project.git"
+                'enable-SSP-and-PIE-by-default.patch')
+sha512sums=('SKIP'
+            'de5dfed73b824c6de8820a90157c8709a5c4ea36a4044b097e0067841f696b9bd507ef29bab1dd321efcf3d103fc3cd968f385c90ad37c9ddfcfb5ffe1a8881a')
 
 pkgver() {
     cd llvm-project/llvm
@@ -52,6 +54,9 @@ prepare() {
    cd llvm-project
     # remove code parts not needed to build this package
     rm -rf debuginfo-tests libclc libcxx libcxxabi libunwind lld lldb llgo openmp parallel-libs polly pstl
+    
+    cd clang
+    patch --forward --strip=1 --input="$srcdir"/enable-SSP-and-PIE-by-default.patch
 }
 
 build() {

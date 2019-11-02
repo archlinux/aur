@@ -1,6 +1,6 @@
 pkgbase = lib32-llvm-git
 	pkgdesc = Collection of modular and reusable compiler and toolchain technologies (32-bit, git)
-	pkgver = 10.0.0_r328055.120a5e9a745
+	pkgver = 10.0.0_r330903.81cc5d1c7d3
 	pkgrel = 1
 	url = https://llvm.org/
 	arch = x86_64
@@ -14,14 +14,16 @@ pkgbase = lib32-llvm-git
 	makedepends = ninja
 	makedepends = python
 	source = llvm-project::git+https://github.com/llvm/llvm-project.git
+	source = enable-SSP-and-PIE-by-default.patch
 	sha512sums = SKIP
+	sha512sums = de5dfed73b824c6de8820a90157c8709a5c4ea36a4044b097e0067841f696b9bd507ef29bab1dd321efcf3d103fc3cd968f385c90ad37c9ddfcfb5ffe1a8881a
 
 pkgname = lib32-llvm-git
 	depends = lib32-llvm-libs-git
 	depends = llvm-git
 	provides = aur-lib32-llvm-git
-	provides = lib32-llvm=10.0.0_r328055.120a5e9a745-1
-	provides = lib32-clang=10.0.0_r328055.120a5e9a745-1
+	provides = lib32-llvm=10.0.0_r330903.81cc5d1c7d3-1
+	provides = lib32-clang=10.0.0_r330903.81cc5d1c7d3-1
 	provides = lib32-clang-git
 	provides = lib32-clang-svn
 	provides = lib32-llvm-svn
@@ -37,7 +39,7 @@ pkgname = lib32-llvm-libs-git
 	depends = lib32-ncurses
 	depends = lib32-zlib
 	provides = aur-lib32-llvm-libs-git
-	provides = lib32-llvm-libs=10.0.0_r328055.120a5e9a745-1
+	provides = lib32-llvm-libs=10.0.0_r330903.81cc5d1c7d3-1
 	provides = lib32-llvm-libs-svn
 	conflicts = lib32-llvm-libs
 
