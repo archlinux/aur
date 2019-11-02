@@ -2,3 +2,8 @@ post_install() {
   echo "-- If you want to modify config.h (which has some GUI and WebKit parameters), you can do so by accessing the build directory (directory location varies depending on how you built it, e.g with makepkg or yay)."
   /bin/true
 }
+
+post_upgrade() {
+  echo "-- Badwolf 0.4.0 changelog: F7 toggles caret browsing, F12 opens Web Inspector. Sandboxing is enabled by default."
+  /bin/true
+}
