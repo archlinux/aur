@@ -2,9 +2,7 @@
 Type = File
 Operation = Install
 Operation = Upgrade
-Target = boot/initramfs-linux.img
-Target = boot/kernel-command-line
-Target = boot/vmlinuz-linux
+Target = usr/lib/modules/*/vmlinuz
 Target = usr/lib/systemd/boot/efi/linuxx64.efi.stub
 
 [Action]
