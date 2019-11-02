@@ -12,10 +12,6 @@ install=$pkgname.install
 source=("https://github.com/ipfs-shipyard/$pkgname/archive/v$pkgver.tar.gz")
 sha256sums=(f6cc700aa14b1b0100779ddb4224a1120428f045c9633e79a37443c3bddff8e9)
 
-prepare() {
-	cd "$pkgname-$pkgver"
-}
-
 build() {
 	cd "$pkgname-$pkgver"
 	npm install
