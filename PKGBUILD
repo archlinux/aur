@@ -11,6 +11,7 @@ license=('GPL3')
 depends=(
 	'cerbere'
 	'contractor'
+	'elementary-feedback'
 	'elementary-icon-theme'
 	'elementary-wallpapers'
 	'epiphany-pantheon'

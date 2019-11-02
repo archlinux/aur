@@ -11,6 +11,7 @@ pkgbase = pantheon-stable
 	makedepends = vala>=0.40.3-1
 	depends = cerbere
 	depends = contractor
+	depends = elementary-feedback
 	depends = elementary-icon-theme
 	depends = elementary-wallpapers
 	depends = epiphany-pantheon
