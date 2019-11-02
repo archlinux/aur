@@ -1,4 +1,4 @@
-# Maintainer: Alim Gokkaya <alimgokkaya at gmail dot com>
+# Maintainer: Alim Gokkaya <alimgokkaya@gmail.com>
 # Contributor: Seth Girvan <snth@snthhacks.com>
 
 pkgname=librdkafka-git
