@@ -1,0 +1,20 @@
+pkgbase = ca-certificates-blacklist-wosign
+	pkgdesc = A set of broken CAs' certificates which should not be trusted (WoSign only)
+	pkgver = 3.30.1
+	pkgrel = 1
+	url = https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS
+	arch = any
+	license = MPL
+	license = GPL
+	depends = ca-certificates-utils
+	source = WoSign_China:2.16.80.112.107.205.216.19.252.27.78.59.51.114.210.17.72.141.crt
+	source = WoSign:2.16.94.104.214.17.113.148.99.80.86.0.104.243.62.201.197.145.crt
+	source = Certification_Authority_of_WoSign_G2:2.16.107.37.218.138.136.157.124.188.15.5.179.177.122.97.69.68.crt
+	source = CA_WoSign_ECC_Root:2.16.104.74.88.112.128.107.240.143.2.250.246.222.232.176.144.144.crt
+	sha256sums = 19253c1ace00e1dbf0fe81ffc3ab3e3244d5f2429b22456511f11e0b03f8dade
+	sha256sums = 6f937fb12833ebe4100660212782c0f24dcf6c754029daffbfcd1023f3030904
+	sha256sums = ec65f167b8bdf4338dfcce90bf34f36d25581643cb41f4ae4c0f3b79a9c6523a
+	sha256sums = c1ddd5f7b74e73f8f74364655431036285b119035bf0350fff35dada97f614a2
+
+pkgname = ca-certificates-blacklist-wosign
+
