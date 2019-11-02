@@ -1,0 +1,25 @@
+pkgbase = xenontrade
+	pkgdesc = Path of Exile trading overlay
+	pkgver = 0.5.0alpha
+	pkgrel = 1
+	url = https://github.com/klayveR/xenontrade
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = node-gyp
+	makedepends = nodejs-lts-carbon
+	makedepends = python
+	makedepends = yarn
+	depends = gtk3
+	depends = gdk-pixbuf2
+	depends = libxtst
+	depends = nss
+	depends = wmctrl
+	provides = xenontrade
+	source = git+https://github.com/klayveR/xenontrade#tag=v0.5.0-alpha
+	source = xenontrade.sh
+	sha256sums = SKIP
+	sha256sums = 4050ea55730e76bdd90ab183bf687f5a614ee6ea303556400bd803ab7d01a2e7
+
+pkgname = xenontrade
+
