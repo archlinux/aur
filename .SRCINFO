@@ -1,0 +1,16 @@
+pkgbase = gns3-ubridge
+	pkgdesc = Bridge IOU to UDP, TAP and Ethernet. GNS3 tool.
+	pkgver = 0.9.16
+	pkgrel = 1
+	url = https://github.com/GNS3/ubridge
+	arch = i686
+	arch = x86_64
+	groups = gns3
+	license = GPL3
+	makedepends = make
+	depends = libpcap
+	source = https://github.com/GNS3/ubridge/archive/v0.9.16.tar.gz
+	md5sums = SKIP
+
+pkgname = gns3-ubridge
+
