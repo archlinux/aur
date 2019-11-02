@@ -2,7 +2,7 @@
 pkgbase=python-pyroma
 pkgname=('python-pyroma' 'python2-pyroma')
 _pyname=pyroma
-pkgver=2.5
+pkgver=2.6
 pkgrel=1
 pkgdesc="Test your project's packaging friendliness"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('python' 'python2' 'python-setuptools' 'python2-setuptools'
              'python-docutils' 'python2-docutils')
 options=(!emptydirs)
 source=("https://pypi.io/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-sha256sums=('54d332f540d4828bc5672b75ccf9e12d4b2f72a42a4f304bcec1c73565aecc26')
+sha256sums=('c49c00377219626bf83df42adf018cc231e6162b68cc7aaf2ff1c63803924102')
 
 prepare() {
   cd "${srcdir}/${_pyname}-${pkgver}"
