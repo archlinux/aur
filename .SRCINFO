@@ -1,0 +1,23 @@
+pkgbase = aur-box
+	pkgdesc = Publishes software instantly to Arch Linuxes
+	pkgver = 12
+	pkgrel = 1
+	url = https://gitlab.com/es20490446e/aur-box
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = curl
+	depends = silently
+	provides = aur
+	provides = aur-publisher
+	provides = aur-box
+	conflicts = aur
+	conflicts = aur-publisher
+	conflicts = aur-box
+	replaces = aur
+	replaces = aur-publisher
+	source = git+https://gitlab.com/es20490446e/aur-box.git
+	md5sums = SKIP
+
+pkgname = aur-box
+
