@@ -1,5 +1,5 @@
 pkgbase = dynamic-wallpaper-catalina
-	pkgver = 1.2
+	pkgver = 1.2.r2.g39f139d
 	pkgrel = 1
 	url = https://github.com/japamax/gnome-kde-dynamic-wallpaper-catalina
 	arch = any
