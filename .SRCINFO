@@ -1,6 +1,6 @@
 pkgbase = sbtools-git
 	pkgdesc = Secure boot tools
-	pkgver = r10.af500bc
+	pkgver = r18.bfdf686
 	pkgrel = 1
 	url = https://github.com/xdbob/sbtools
 	arch = x86_64
@@ -17,5 +17,4 @@ pkgname = sbtools-git
 pkgname = sbtools-hook-git
 	pkgdesc = Secure boot hook for pacman
 	depends = sbtools-git
-	depends = linux<5.3.8
 

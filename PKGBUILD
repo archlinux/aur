@@ -1,7 +1,7 @@
 # Maintainer: Antoine Damhet <antoine.damhet@lse.epita.fr>
 
 pkgname=('sbtools-git' 'sbtools-hook-git')
-pkgver=r10.af500bc
+pkgver=r18.bfdf686
 pkgrel=1
 provides=('sbtools')
 pkgdesc='Secure boot tools'
@@ -22,7 +22,8 @@ package_sbtools-hook-git() {
 	pkgdesc='Secure boot hook for pacman'
 	cd "$srcdir/$_gitname"
 
-	install -D -m 644 secure-boot.hook ${pkgdir}/usr/share/libalpm/hooks/secure-boot.hook
+	install -D -m 755 secure-boot-hook ${pkgdir}/usr/share/libalpm/scripts/secure-boot-hook
+	install -D -m 644 95-secure-boot.hook ${pkgdir}/usr/share/libalpm/hooks/95-secure-boot.hook
 }
 
 package_sbtools-git() {
