@@ -3,16 +3,15 @@
 
 pkgname=gmt6
 _pkgname=gmt
-pkgver=6.0.0rc4
+pkgver=6.0.0
 pkgrel=1
 pkgdesc="Generic Mapping Tools: Collection of tools for manipulating geographic and Cartesian data sets, and generating EPS maps."
 arch=(i686 x86_64)
 url="https://gmt.soest.hawaii.edu/"
 license=('LGPL')
 makedepends=('cmake' 'ninja')
-depends=('gdal' 'fftw' 'lapack' 'python-sphinx')
+depends=('gdal' 'fftw' 'lapack' 'python-sphinx' 'ghostscript')
 optdepends=(
-    'ghostscript'
     'gmt-coast: coastlines'
     'gmt-dcw: digital chart of the world polygon map')
 conflicts=('gmt4' 'gmt')
@@ -23,13 +22,10 @@ install='gmt.install'
 #source=("ftp://ftp.iag.usp.br/pub/gmt/${_pkgname}-${pkgver}-src.tar.xz")
 #source=("https://mirrors.ustc.edu.cn/gmt/${_pkgname}-${pkgver}-src.tar.xz")
 source=("https://github.com/GenericMappingTools/${_pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('eb072a2da8d071119a5324b3ceafe5d813d2e33eceda28fc015ef38abd2c1cc4')
+sha256sums=('7a733e670f01d99f8fc0da51a4337320d764c06a68746621f83ccf2e3453bcb7')
 
 prepare() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
-  sed -i 's/\*\.1\.gz/\*\.1gmt\.gz/g' doc/rst/CMakeLists.txt
-  sed -i 's/\*\.3\.gz/\*\.3gmt\.gz/g' doc/rst/CMakeLists.txt
-  sed -i 's/\*\.5\.gz/\*\.5gmt\.gz/g' doc/rst/CMakeLists.txt
 }
 
 build() {
@@ -54,9 +50,6 @@ package() {
   cd "${srcdir}/build/aur"
   ninja docs_html docs_man
   cd doc/rst/man \
-  && for i in $(ls *.1.gz); do mv $i ${i%".1.gz"}.1gmt.gz; done \
-  && for i in $(ls *.3.gz); do mv $i ${i%".3.gz"}.3gmt.gz; done \
-  && for i in $(ls *.5.gz); do mv $i ${i%".5.gz"}.5gmt.gz; done \
   && cd "${srcdir}/build/aur"
   DESTDIR="${pkgdir}" ninja install || return 1
 }
