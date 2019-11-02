@@ -2,7 +2,7 @@
 
 pkgname=vkbasalt
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A vulkan post processing layer. Currently the only effect is Contrast Adaptiv Sharpening.'
 arch=('x86_64')
 url='https://github.com/DadSchoorse/vkBasalt'
@@ -25,6 +25,7 @@ package() {
   install -Dm 755 build/libvkbasalt32.so "${pkgdir}/usr/lib32/libvkbasalt.so"
   install -Dm 644 build/shader/cas.frag.spv  "${pkgdir}/usr/share/vkBasalt/shader/cas.frag.spv"
   install -Dm 644 build/shader/full_screen_rect.vert.spv  "${pkgdir}/usr/share/vkBasalt/shader/full_screen_rect.vert.spv"
+  install -Dm 644 build/shader/fxaa.frag.spv "${pkgdir}/usr/share/vkBasalt/shader/fxaa.frag.spv"
   install -Dm 644 config/vkBasalt.conf "${pkgdir}/usr/share/vkBasalt/vkBasalt.conf.example"
   install -dm 755 "${pkgdir}/usr/share/vulkan/implicit_layer.d"
   sed 's+@lib+/usr/lib/libvkbasalt.so+g' config/vkBasalt64.json > "${pkgdir}/usr/share/vulkan/implicit_layer.d/vkBasalt64.json"
