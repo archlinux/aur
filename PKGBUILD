@@ -1,4 +1,4 @@
-pkgname=gamerworld-git
+pkgname=gamerworld
 _pkgname=GamerWorld
 pkgver=1.1.4
 pkgrel=1
