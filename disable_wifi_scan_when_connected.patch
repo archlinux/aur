@@ -7,7 +7,7 @@ index 5e92f47b7..32e281cd2 100644
  		return FALSE;
  	case NM_DEVICE_STATE_ACTIVATED:
 -		/* Prohibit periodic scans when connected; we ask the supplicant to
--		 * background scan for us, unless the connection is locked to a specifc
+-		 * background scan for us, unless the connection is locked to a specific
 -		 * BSSID.
 -		 */
 -		if (periodic)

@@ -1,161 +1,119 @@
-# $Id: PKGBUILD 229954 2015-01-24 15:30:18Z heftig $
-# Maintainer: Alejandro Perez
+# Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+# Maintainer: Jan de Groot <jgc@archlinxu.org>
+# Contributor: Wael Nasreddine <gandalf@siemens-mobiles.org>
+# Contributor: Tor Krill <tor@krill.nu>
+# Contributor: Will Rea <sillywilly@gmail.com>
+# Contributor: Valentine Sinitsyn <e_val@inbox.ru>
 
 pkgbase=networkmanager-noscan
 pkgname=networkmanager-noscan
 provides=('networkmanager')
 replaces=('networkmanager')
 conflicts=('networkmanager')
-pkgver=1.10.3dev+38+g78ef57197
+pkgver=1.20.4
 pkgrel=1
-pkgdesc="Network Management daemon with Wi-Fi scanning disabled when already connected (improves reliability of the connection in several Wireless cards)"
+pkgdesc="Network connection manager and user applications"
+url="https://wiki.gnome.org/Projects/NetworkManager"
 arch=(x86_64)
 license=(GPL2 LGPL2.1)
-url="https://wiki.gnome.org/Projects/NetworkManager"
 _pppver=2.4.7
 makedepends=(intltool dhclient iptables gobject-introspection gtk-doc "ppp=$_pppver" modemmanager
-             dbus-glib iproute2 nss polkit wpa_supplicant libsoup systemd libgudev libmm-glib
-             libnewt libndp libteam vala perl-yaml python-gobject git jansson bluez-libs
-             glib2-docs)
+             iproute2 nss polkit wpa_supplicant curl systemd libmm-glib
+             libnewt libndp libteam vala perl-yaml python-gobject git vala jansson bluez-libs
+             glib2-docs dhcpcd iwd dnsmasq systemd-resolvconf libpsl audit meson)
 checkdepends=(libx11 python-dbus)
-_commit=78ef571972aa3bf81b287d767ae02471e2924027  # nm-1-10
-source=("git+https://anongit.freedesktop.org/git/NetworkManager/NetworkManager#commit=$_commit"
-        0001-nmp-netns-Mount-proc-in-the-new-namespace.patch
-        NetworkManager.conf 20-connectivity.conf
-        disable_wifi_scan_when_connected.patch)
-sha256sums=('SKIP'
-            '9be1576cce4eb36697a13a1edd15faed66393f97ab5df2c19650989cd0b644a0'
-            'dd2d3a9c8a08ce961e263e1847453890f1b24c72a806d8c83a5b69b227a5ccec'
-            '477d609aefd991c48aca93dc7ea5a77ebebf46e0481184530cceda4c0d8d72c6'
-            '860a772fcc26271f6a25a2baa0d92088e63dbf1770ccc4c25e71653dbe46b96b')
-
-prepare() {
-  mkdir -p libnm{,-glib}/usr/{include,lib/{girepository-1.0,pkgconfig},share/{gir-1.0,gtk-doc/html,vala/vapi}}
-
-  cd NetworkManager
-
-  # Fix test_netns_general in our containers
-  patch -Np1 -i ../0001-nmp-netns-Mount-proc-in-the-new-namespace.patch
-
-  patch -Np1 -i ../disable_wifi_scan_when_connected.patch
-  NOCONFIGURE=1 ./autogen.sh
-}
+_commit=27dee3b113bb45ffb53367f30a7c750eb146d980  # tags/1.20.4^0
+source=("git+https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git#commit=$_commit")
+sha256sums=('SKIP')
 
 pkgver() {
   cd NetworkManager
   git describe | sed 's/-dev/dev/;s/-rc/rc/;s/-/+/g'
 }
 
-build() {
+prepare() {
   cd NetworkManager
-  ./configure --prefix=/usr \
-    --sysconfdir=/etc \
-    --localstatedir=/var \
-    runstatedir=/run \
-    --sbindir=/usr/bin \
-    --libexecdir=/usr/lib \
-    --disable-ifcfg-rh \
-    --disable-ifcfg-suse \
-    --disable-ifnet \
-    --disable-ifupdown \
-    --disable-lto \
-    --disable-more-warnings \
-    --disable-static \
-    --enable-bluez5-dun \
-    --enable-concheck \
-    --enable-config-plugin-ibft \
-    --enable-gtk-doc \
-    --enable-introspection \
-    --enable-json-validation \
-    --enable-ld-gc \
-    --enable-modify-system \
-    --enable-polkit \
-    --enable-polkit-agent \
-    --enable-teamdctl \
-    --enable-wifi \
-    --with-config-dhcp-default=internal \
-    --with-config-dns-rc-manager-default=resolvconf \
-    --with-config-logging-backend-default=journal \
-    --with-config-plugins-default=keyfile,ibft \
-    --with-crypto=nss \
-    --with-dbus-sys-dir=/usr/share/dbus-1/system.d \
-    --with-dhclient=/usr/bin/dhclient \
-    --with-dist-version="$pkgver-$pkgrel, Arch Linux" \
-    --with-dnsmasq=/usr/bin/dnsmasq \
-    --with-dnssec-trigger=/usr/lib/dnssec-trigger/dnssec-trigger-script \
-    --with-hostname-persist=default \
-    --with-iptables=/usr/bin/iptables \
-    --with-kernel-firmware-dir=/usr/lib/firmware \
-    --with-libnm-glib \
-    --with-modem-manager-1 \
-    --with-nmcli \
-    --with-nmtui \
-    --with-pppd-plugin-dir=/usr/lib/pppd/$_pppver \
-    --with-pppd=/usr/bin/pppd \
-    --with-resolvconf=/usr/bin/resolvconf \
-    --with-session-tracking=systemd \
-    --with-suspend-resume=systemd \
-    --with-system-ca-path=/etc/ssl/certs \
-    --with-systemd-journal \
-    --with-systemd-logind \
-    --with-systemdsystemunitdir=/usr/lib/systemd/system \
-    --with-udev-dir=/usr/lib/udev \
-    --with-wext \
-    --without-consolekit \
-    --without-dhcpcd \
-    --without-libaudit \
-    --without-netconfig \
-    --without-ofono \
-    --without-selinux
+  patch -Np1 -i ../../disable_wifi_scan_when_connected.patch
+}
 
-  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+build() {
+  local meson_args=(
+    -D dbus_conf_dir=/usr/share/dbus-1/system.d
+    -D dist_version="$pkgver-$pkgrel"
+    -D session_tracking_consolekit=false
+    -D suspend_resume=systemd
+    -D modify_system=true
+    -D polkit_agent=true
+    -D selinux=false
+    -D iwd=true
+    -D pppd_plugin_dir=/usr/lib/pppd/$_pppver
+    -D teamdctl=true
+    -D bluez5_dun=true
+    -D ebpf=true
+    -D config_plugins_default=keyfile
+    -D vapi=true
+    -D docs=true
+    -D more_asserts=no
+    -D more_logging=false
+    -D qt=false
+  )
 
-  make
+  arch-meson NetworkManager build "${meson_args[@]}"
+  ninja -C build
+}
+
+check() {
+  # iproute2 bug 
+  # https://gitlab.freedesktop.org/NetworkManager/NetworkManager/commit/be76d8b624fab99cbd76092ff511e6adc305279c
+  meson test -C build --print-errorlogs || :
+}
+
+_pick() {
+  local p="$1" f d; shift
+  for f; do
+    d="$srcdir/$p/${f#$pkgdir/}"
+    mkdir -p "$(dirname "$d")"
+    mv "$f" "$d"
+    rmdir -p --ignore-fail-on-non-empty "$(dirname "$f")"
+  done
 }
 
 package() {
-  depends=(libnm-glib iproute2 polkit wpa_supplicant libsoup libmm-glib libnewt libndp libteam	curl bluez-libs)
+  depends=(libnm iproute2 polkit wpa_supplicant libmm-glib libnewt libndp libteam curl
+           bluez-libs libpsl audit)
   optdepends=('dnsmasq: connection sharing'
               'bluez: Bluetooth support'
-              'openresolv: resolvconf support'
               'ppp: dialup connection support'
-              'dhclient: External DHCP client'
-              'modemmanager: cellular network support')
-  backup=('etc/NetworkManager/NetworkManager.conf')
+              'modemmanager: cellular network support'
+              'iwd: wpa_supplicant alternative')
+  backup=(etc/NetworkManager/NetworkManager.conf)
+  groups=(gnome)
 
-  cd NetworkManager
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" meson install -C build
 
-  install -dm700 "$pkgdir/etc/NetworkManager/system-connections"
+  # /etc/NetworkManager
   install -d "$pkgdir"/etc/NetworkManager/{conf,dnsmasq}.d
-  install -m644 ../NetworkManager.conf "$pkgdir/etc/NetworkManager/"
-  install -Dm644 ../20-connectivity.conf \
-    "$pkgdir/usr/lib/NetworkManager/conf.d/20-connectivity.conf"
+  install -dm700 "$pkgdir/etc/NetworkManager/system-connections"
+  install -m644 /dev/stdin "$pkgdir/etc/NetworkManager/NetworkManager.conf" <<END
+# Configuration file for NetworkManager.
+# See "man 5 NetworkManager.conf" for details.
+END
+
+  # packaged configuration
+  install -Dm644 /dev/stdin "$pkgdir/usr/lib/NetworkManager/conf.d/20-connectivity.conf" <<END
+[connectivity]
+uri=http://www.archlinux.org/check_network_status.txt
+END
 
 ### Split libnm
-
-  cd ../libnm
-  mv "$pkgdir"/usr/include/libnm usr/include
-  mv "$pkgdir"/usr/lib/girepository-1.0/NM-* usr/lib/girepository-1.0
-  mv "$pkgdir"/usr/lib/libnm.* usr/lib
-  mv "$pkgdir"/usr/lib/pkgconfig/libnm.pc usr/lib/pkgconfig
-  mv "$pkgdir"/usr/share/gir-1.0/NM-* usr/share/gir-1.0
-  mv "$pkgdir"/usr/share/gtk-doc/html/libnm usr/share/gtk-doc/html
-  mv "$pkgdir"/usr/share/vala/vapi/libnm.* usr/share/vala/vapi
-
-### Split libnm-glib
-
-  cd ../libnm-glib
-  mv "$pkgdir"/usr/include/* usr/include
-  mv "$pkgdir"/usr/lib/girepository-1.0/* usr/lib/girepository-1.0
-  mv "$pkgdir"/usr/lib/libnm-* usr/lib
-  mv "$pkgdir"/usr/lib/pkgconfig/* usr/lib/pkgconfig
-  mv "$pkgdir"/usr/share/gir-1.0/* usr/share/gir-1.0
-  mv "$pkgdir"/usr/share/gtk-doc/html/libnm-* usr/share/gtk-doc/html
-  mv "$pkgdir"/usr/share/vala/vapi/* usr/share/vala/vapi
-
-  rmdir -p --ignore-fail-on-non-empty \
-    "$pkgdir"/usr/include \
-    "$pkgdir"/usr/lib/{girepository-1.0,pkgconfig} \
-    "$pkgdir"/usr/share/{gir-1.0,vala/vapi}
+  _pick libnm "$pkgdir"/usr/include/libnm
+  _pick libnm "$pkgdir"/usr/lib/girepository-1.0/NM-*
+  _pick libnm "$pkgdir"/usr/lib/libnm.*
+  _pick libnm "$pkgdir"/usr/lib/pkgconfig/libnm.pc
+  _pick libnm "$pkgdir"/usr/share/gir-1.0/NM-*
+  _pick libnm "$pkgdir"/usr/share/gtk-doc/html/libnm
+  _pick libnm "$pkgdir"/usr/share/vala/vapi/libnm.*
 }
+
+
+# vim:set sw=2 et:
