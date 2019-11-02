@@ -12,7 +12,7 @@ depends=('bash' 'coreutils')
 optdepends=('xclip: getting password to clipboard automatically' 'gnupg: password encryption and decryption')
 makedepends=('git')
 
-sha512sums=('e041bd86797aca5e0b1089968be8f2b2cb4e5879f4ac8378aed765132c01faeee2f57f3a8bb35a10eb60e7998b7c35d22d2fb1b8c3a0fe89d08fed21f7c1bf4a')
+sha512sums=('49386b19d1badd115200263d0d619ae26a5d171d645df2d20ea6951b8d5fc832a62be8db0d7cd80f270e12ebb47caa5d779c93aaf617fd0dd231967a2563ae83')
 
 package(){
 	cd "${srcdir}/${pkgname}-${pkgver}"
