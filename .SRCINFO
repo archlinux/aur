@@ -1,7 +1,7 @@
 pkgbase = clblas
 	pkgdesc = A software library containing BLAS functions written in OpenCL
 	pkgver = 2.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/clMathLibraries/clBLAS
 	arch = i686
 	arch = x86_64
