@@ -8,7 +8,7 @@ url=https://github.com/eycorsican/go-tun2socks
 license=(MIT)
 makedepends=(go git)
 source=(
-	$pkgname-$pkgver.tar.gz::https://github.com/eycorsican/go-tun2socks/archive/v1.16.7.tar.gz
+	$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz
 	build-flags.patch
 	go-tun2socks.service
 	go-tun2socks.conf

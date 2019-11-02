@@ -6,6 +6,7 @@ pkgbase = go-tun2socks
 	arch = x86_64
 	license = MIT
 	makedepends = go
+	makedepends = git
 	source = go-tun2socks-1.16.7.tar.gz::https://github.com/eycorsican/go-tun2socks/archive/v1.16.7.tar.gz
 	source = build-flags.patch
 	source = go-tun2socks.service
