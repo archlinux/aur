@@ -5,7 +5,7 @@
 
 pkgname=python-numpy
 pkgver=1.17.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Scientific tools for Python"
 arch=('x86_64')
 license=('custom')
