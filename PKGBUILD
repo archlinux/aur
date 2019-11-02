@@ -4,7 +4,7 @@
 
 _pkgname=lilv
 pkgname="${_pkgname}-git"
-pkgver=0.24.5.r1240.7a7bff2
+pkgver=0.24.5.r1249.36e74a7
 pkgrel=1
 pkgdesc="A C library interface to the LV2 plug-in standard with Python bindings (git version)"
 arch=('i686' 'x86_64')
@@ -36,6 +36,10 @@ prepare() {
   git submodule init
   git config submodule.waflib.url "${srcdir}/autowaf"
   git submodule update
+
+  # Ugly hack to fix pkgconfig file template
+  # https://github.com/drobilla/lilv/issues/30
+  sed -i -e 's/^Requires:.*/Requires: @LILV_PKG_DEPS@/' lilv.pc.in
 }
 
 check() {
