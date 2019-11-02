@@ -1,11 +1,12 @@
 pkgbase = plasma5-applets-panon
 	pkgdesc = A Different Audio Spectrum Analyzer
 	pkgver = 0.2.9
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/rbn42/panon
 	arch = any
 	license = GPL3
 	makedepends = git
+	depends = plasma-workspace
 	depends = python-numpy
 	depends = python-pillow
 	depends = python-pyaudio
