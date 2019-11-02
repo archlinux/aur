@@ -11,7 +11,8 @@ source=("https://raw.githubusercontent.com/freebsd/freebsd/master/usr.bin/enigma
 
 prepare() {
 	cd $srcdir 
-        sed -i '/FBSDID/d;45,48d;s/strlcpy/strncpy/' enigma.c
+        sed -i '/FBSDID/d;45,48d;s/strlcpy/strncpy/;/<unistd.h>/a\
+#include <crypt.h>' enigma.c
 }
 
 build() {
