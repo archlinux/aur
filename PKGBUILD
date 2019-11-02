@@ -1,7 +1,7 @@
 # Maintainer: morguldir <morguldir@protonmail.com>
 
 pkgname=xenontrade
-pkgver=0.5.0alpha
+pkgver=0.6.3
 pkgrel=1
 pkgdesc='Path of Exile trading overlay'
 arch=(x86_64)
@@ -10,7 +10,7 @@ url='https://github.com/klayveR/xenontrade'
 depends=(gtk3 gdk-pixbuf2 libxtst nss wmctrl)
 makedepends=(git node-gyp nodejs-lts-carbon python yarn)
 provides=(xenontrade)
-source=("git+https://github.com/klayveR/xenontrade#tag=v0.5.0-alpha"
+source=("git+https://github.com/morguldir/xenontrade#tag=v$pkgver"
         "xenontrade.sh")
 sha256sums=('SKIP'
             '4050ea55730e76bdd90ab183bf687f5a614ee6ea303556400bd803ab7d01a2e7')
@@ -18,7 +18,6 @@ sha256sums=('SKIP'
 prepare()
 {
     cd "$srcdir/$pkgname"
-    yarn add electron-updater
     yarn install
 }
 
