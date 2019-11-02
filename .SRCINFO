@@ -1,7 +1,7 @@
 pkgbase = texlive-vub
 	pkgdesc = Provides a titlepage, a beamer template and other style elements for the Vrije Universiteit Brussel.
 	pkgver = 2.4.2
-	pkgrel = 2
+	pkgrel = 1
 	url = https://gitlab.com/rubdos/texlive-vub/
 	arch = any
 	license = LPPL
