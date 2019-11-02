@@ -3,7 +3,7 @@
 pkgbase='dynamic-wallpaper-mojave'
 pkgname=("${pkgbase}-gnome-timed-git" "${pkgbase}-kde-git" "${pkgbase}-images-git" )
 _gitname='gnome-kde-dynamic-wallpaper-mojave'
-pkgver=6.2.r2.gdd63c5b
+pkgver=6.2.r3.gb625254
 pkgrel=1
 arch=('any')
 url="https://github.com/japamax/${_gitname}"
@@ -35,7 +35,7 @@ pkgver() {
  
  package_dynamic-wallpaper-mojave-kde-git() {
 	depends=('plasma5-wallpapers-dynamic>=2.3' dynamic-wallpaper-mojave-images-git)
-	pkgdesc="Azimuth Elevation based KDE macOS Mojave wallpaper"
+	pkgdesc="Azimuth Elevation based / Time based KDE macOS Mojave wallpaper"
 	install=dynamic-wallpaper-mojave-kde-git.install
 	cd "${srcdir}/${_gitname}"
 	install -dm755 "${pkgdir}/usr/share/dynamicwallpapers/mojave-timed/contents"
