@@ -1,6 +1,6 @@
 pkgbase = python-aiohttp-gns3
 	pkgdesc = Asynchronous HTTP Client/Server for asyncio and Python
-	pkgver = 3.5.4
+	pkgver = 3.6.2
 	pkgrel = 1
 	url = https://aiohttp.readthedocs.io/
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = python-aiohttp-gns3
 	depends = python-async-timeout-gns3
 	provides = python-aiohttp
 	conflicts = python-aiohttp
-	source = python-aiohttp-gns3-3.5.4.tar.gz::https://github.com/aio-libs/aiohttp/archive/v3.5.4.tar.gz
-	sha256sums = 9385ff2ea20249be9119236b3367356465cb92dc55b463d12239c7cf36024bba
+	source = python-aiohttp-gns3-3.6.2.tar.gz::https://github.com/aio-libs/aiohttp/archive/v3.6.2.tar.gz
+	sha256sums = 4ad2d8393843ea0c7b50a93bf04fb1cf20b93c0a5e958de128efcd2e5f8adf80
 
 pkgname = python-aiohttp-gns3
 
