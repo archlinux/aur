@@ -16,6 +16,7 @@ optdepends=(
         'libdbusmenu-glib: For KDE global menu'
 )
 provides=('code')
+conflicts=('code')
 source=(
         vscodium-bin.desktop
         ${pkgname}-${pkgver}-${pkgrel}.tar.gz::${url}/releases/download/${pkgver}/VSCodium-linux-x64-${pkgver}.tar.gz
