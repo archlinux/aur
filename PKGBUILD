@@ -69,12 +69,6 @@ prepare() {
     # llvm-project contains a lot of stuff, remove parts that aren't used by this package
     rm -rf debuginfo-tests libclc libcxx libcxxabi libunwind llgo openmp parallel-libs pstl
     
-    # The following patch was reverted upstream because it triggered an ICE with
-    # GCC 7; however, we need it to pass the test suite when building with GCC 9
-    # https://bugs.llvm.org/show_bug.cgi?id=40547
-    # manually adapted to apply cleanly with latest master
-#    patch --forward --strip=1 --input="$srcdir"/always-initialize-all-members-in-ABIArgInfo.patch
-
     cd clang
     patch --forward --strip=1 --input="$srcdir"/enable-SSP-and-PIE-by-default.patch
 }
