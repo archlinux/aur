@@ -1,6 +1,6 @@
 pkgbase = quex
 	pkgdesc = Generator of lexical analyzers in C and C++. Unicode Supported.
-	pkgver = 0.69.4
+	pkgver = 0.70.0
 	pkgrel = 1
 	url = http://quex.org/
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = quex
 	depends = python2
 	provides = quex
 	provides = quex-for_libadalang
-	source = https://downloads.sourceforge.net/quex/quex-0.69.4.zip
-	sha256sums = 9824bddce32b31f885285a36897215415ca3dff6c6e0e2ec8342b23710969cab
+	source = https://downloads.sourceforge.net/quex/quex-0.70.0.zip
+	sha256sums = 47b2aa1193c8bebb1471a94afe4944b1e9e689f723dc8ef953e63c02173d00d9
 
 pkgname = quex
 
