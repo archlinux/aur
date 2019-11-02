@@ -2,11 +2,11 @@
 
 pkgname=vkbasalt
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A vulkan post processing layer. Currently the only effect is Contrast Adaptiv Sharpening.'
 arch=('x86_64')
 url='https://github.com/DadSchoorse/vkBasalt'
-license=('UNKNOWN')
+license=('zlib')
 depends=('glslang' 'vulkan-headers' 'vulkan-tools' 'vulkan-validation-layers')
 source=("https://github.com/DadSchoorse/vkBasalt/archive/v${pkgver}.tar.gz")
 sha256sums=('92b28dbbe948e323f1321094e5adaee171b4c43c075d7d51028bdcc09dbc314d')

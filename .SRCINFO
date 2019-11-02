@@ -1,11 +1,11 @@
 pkgbase = vkbasalt
 	pkgdesc = A vulkan post processing layer. Currently the only effect is Contrast Adaptiv Sharpening.
 	pkgver = 0.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/DadSchoorse/vkBasalt
 	install = vkbasalt.install
 	arch = x86_64
-	license = UNKNOWN
+	license = zlib
 	depends = glslang
 	depends = vulkan-headers
 	depends = vulkan-tools
