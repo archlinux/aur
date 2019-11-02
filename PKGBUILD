@@ -18,18 +18,6 @@ sha256sums=('4cb8d23d70f9261debf7d6cfeca667fc0a7d2b6565adb8f1c484f9b674f1f27a')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
-# HACK: wxWidgets' configure script chokes at '--enable-static' from ${_arch}-configure
-# this function body is equivalent to 'mingw-w64-configure=0.1-1'
-_configure() {
-  mingw_c_flags="-O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions --param=ssp-buffer-size=4"
-  LDFLAGS=""
-  export CFLAGS="$mingw_c_flags $CFLAGS"
-  export CXXFLAGS="$mingw_c_flags $CXXFLAGS"
-  ../configure --host=${_arch} --target=${_arch} --build="$CHOST" \
-    --prefix=/usr/${_arch} --libdir=/usr/${_arch}/lib --includedir=/usr/${_arch}/include \
-    "$@"
-}
-
 build() {
   local _build_flags="\
         --with-msw \
@@ -54,15 +42,13 @@ build() {
   for _arch in ${_architectures}; do
     # shared build
     mkdir -p build-shared-${_arch} && pushd build-shared-${_arch}
-    # ${_arch}-configure ${_build_flags} --enable-monolithic ..
-    _configure ${_build_flags} --enable-shared --enable-monolithic
+    ${_arch}-configure --disable-option-checking ${_build_flags} --enable-shared --enable-monolithic
     make
     popd
 
     # static build
     mkdir -p build-static-${_arch} && pushd build-static-${_arch}
-    # ${_arch}-configure ${_build_flags} --disable-shared ..
-    _configure ${_build_flags} --disable-shared
+    ${_arch}-configure --disable-option-checking ${_build_flags} --disable-shared
     make
     popd
   done
