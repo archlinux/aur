@@ -5,7 +5,7 @@
 _name=sphinxcontrib-newsfeed
 pkgname=python-sphinxcontrib-newsfeed
 pkgver=0.1.4
-pkgrel=8
+pkgrel=9
 pkgdesc="News Feed extension for Sphinx"
 arch=('any')
 url="https://bitbucket.org/prometheus/sphinxcontrib-newsfeed"
