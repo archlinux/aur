@@ -1,7 +1,7 @@
 # Maintainer: orhun <github.com/orhun>
 pkgname=zps-git
 pkgdesc="A small utility for listing and reaping zombie processes."
-pkgver=1.2.0.r0.g3b9e771
+pkgver=1.2.1.r0.g55fc7ca
 pkgrel=1
 arch=('any')
 url="https://github.com/orhun/zps"
