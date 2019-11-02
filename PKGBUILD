@@ -2,19 +2,19 @@
 # Maintainer: Eric Schulte <eschulte@grammatech.com>
 _srcname=protobuf
 pkgname=cl-${_srcname}-git
-pkgver=r128.bfcde84
+pkgver=r125.3caf969
 pkgrel=1
 pkgdesc="Protobuf is a Common Lisp implementation of Google's protocol buffers."
 arch=('x86_64')
-# url="https://github.com/brown/protobuf"
-# Temporarily until changes are merged upstream.
-url="https://github.com/eschulte/protobuf"
+url="https://github.com/brown/protobuf"
 license=('BSD')
 optdepends=('boost' 'protobuf')
 depends=()
 makedepends=('git' 'make')
 provides=("cl-${_srcname}")
-source=('git://github.com/brown/protobuf.git')
+# source=('git://github.com/brown/protobuf.git')
+# Temporarily until changes are merged upstream.
+source=('git://github.com/eschulte/protobuf.git')
 sha512sums=('SKIP')
 
 pkgver() {
