@@ -41,6 +41,8 @@ sha256sums_x86_64=(
 )
 
 package() {
-    install -m755 Wallet/Wallet "${pkgdir}/usr/bin/gram-wallet"
-    install logo.png "${pkgdir}/usr/share/icons/gram-wallet.png"
+    mkdir -p $pkgdir/usr/bin
+    mkdir -p $pkgdir/usr/share/icons
+    cp Wallet/Wallet $pkgdir/usr/bin/gram-wallet
+    cp logo.png $pkgdir/usr/share/icons/gram-wallet.png
 }
