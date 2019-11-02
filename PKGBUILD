@@ -3,7 +3,7 @@
 pkgbase='dynamic-wallpaper-catalina'
 pkgname=("${pkgbase}-gnome-timed-git" "${pkgbase}-kde-git" "${pkgbase}-images-git" )
 _gitname='gnome-kde-dynamic-wallpaper-catalina'
-pkgver=1.1
+pkgver=1.2.r1.gda9fe3f
 pkgrel=1
 arch=('any')
 url="https://github.com/japamax/${_gitname}"
@@ -18,8 +18,8 @@ pkgver() {
  package_dynamic-wallpaper-catalina-images-git() {
 	pkgdesc="macOS Catalina dynamic wallpaper based 8 images"
 	cd "${srcdir}/${_gitname}"
-	install -dm755 "${pkgdir}/usr/share/dynamicwallpapers/catalina/images"
-	install -m644 ${srcdir}/${_gitname}/catalina/* "${pkgdir}/usr/share/dynamicwallpapers/catalina/images"
+	install -dm755 "${pkgdir}/usr/share/dynamicwallpapers/catalina-solar/contents/images"
+	install -m644 ${srcdir}/${_gitname}/catalina/* "${pkgdir}/usr/share/dynamicwallpapers/catalina-solar/contents/images"
 }
 
  package_dynamic-wallpaper-catalina-gnome-timed-git() {
@@ -28,7 +28,7 @@ pkgver() {
 	install=dynamic-wallpaper-catalina-gnome-timed-git.install
 	cd "${srcdir}/${_gitname}"
 	install -dm755 "${pkgdir}/usr/share/backgrounds/macOS"
-	ln -s "/usr/share/dynamicwallpapers/catalina/images" "${pkgdir}/usr/share/backgrounds/macOS/catalina"
+	ln -s "/usr/share/dynamicwallpapers/catalina-solar/contents/images" "${pkgdir}/usr/share/backgrounds/macOS/catalina"
 	install -Dm644 catalina-timed.xml "${pkgdir}/usr/share/backgrounds/macOS/catalina-timed.xml"
 	install -Dm644 catalina.xml "${pkgdir}/usr/share/gnome-background-properties/catalina.xml"
  }
@@ -38,6 +38,8 @@ pkgver() {
 	pkgdesc="Azimuth Elevation based KDE macOS Catalina wallpaper"
 	install=dynamic-wallpaper-catalina-kde-git.install
 	cd "${srcdir}/${_gitname}"
-	install -Dm644 catalina.json "${pkgdir}/usr/share/dynamicwallpapers/catalina/metadata.json"
+	install -dm755 "${pkgdir}/usr/share/dynamicwallpapers/catalina-timed/contents"
+	ln -s "/usr/share/dynamicwallpapers/catalina-solar/contents/images" "${pkgdir}/usr/share/dynamicwallpapers/catalina-timed/contents/images"
+	install -Dm644 catalina-solar.json "${pkgdir}/usr/share/dynamicwallpapers/catalina-solar/metadata.json"
+	install -Dm644 catalina-timed.json "${pkgdir}/usr/share/dynamicwallpapers/catalina-timed/metadata.json"
  }
-
