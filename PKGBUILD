@@ -1,4 +1,4 @@
-# Maintainer: Spencer Muise <smuise@protonmail.com>
+# Maintainer: Spencer Muise <smuise@spencermuise.ca>
 pkgname=doppler-bin
 pkgver=0.1.0
 pkgrel=2
