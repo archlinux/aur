@@ -1,7 +1,8 @@
 # Maintainer: Alim Gokkaya <alimgokkaya at gmail dot com>
+# Contributor: Seth Girvan <snth@snthhacks.com>
 
 pkgname=librdkafka-git
-pkgver=r3072.d3ff4bb5
+pkgver=1.2.2.RC1.r0.gda83c934
 pkgrel=1
 pkgdesc='Apache Kafka C driver library'
 url="https://github.com/edenhill/librdkafka"
@@ -17,7 +18,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd librdkafka
-  echo r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {

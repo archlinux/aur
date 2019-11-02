@@ -1,6 +1,6 @@
 pkgbase = librdkafka-git
 	pkgdesc = Apache Kafka C driver library
-	pkgver = r3072.d3ff4bb5
+	pkgver = 1.2.2.RC1.r0.gda83c934
 	pkgrel = 1
 	url = https://github.com/edenhill/librdkafka
 	arch = i686
