@@ -1,13 +1,13 @@
 # Maintainer: ahub <ahub@riseup.net>
 pkgname=wf-recorder-git
 _pkgname=wf-recorder
-pkgver=r60.43fb1c2
+pkgver=r91.7cb37c4
 pkgrel=1
 license=("MIT")
 pkgdesc="A video recorder for wlroots-based compositors like sway or wayfire"
 makedepends=("meson" "git" "wayland-protocols" "ninja")
 depends=(
-	"wayland" "ffmpeg" "x264" "opencl-headers"
+	"wayland" "ffmpeg" "x264" "opencl-headers" "ocl-icd"
 )
 optdepends=(
     "slurp: limit recording to a part of the screen"
