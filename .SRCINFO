@@ -1,5 +1,5 @@
 pkgbase = dynamic-wallpaper-catalina
-	pkgver = 1.2.r1.gda9fe3f
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://github.com/japamax/gnome-kde-dynamic-wallpaper-catalina
 	arch = any
@@ -14,9 +14,9 @@ pkgname = dynamic-wallpaper-catalina-gnome-timed-git
 	depends = dynamic-wallpaper-catalina-images-git
 
 pkgname = dynamic-wallpaper-catalina-kde-git
-	pkgdesc = Azimuth Elevation based KDE macOS Catalina wallpaper
+	pkgdesc = Azimuth Elevation based / Time based KDE macOS Catalina wallpaper
 	install = dynamic-wallpaper-catalina-kde-git.install
-	depends = plasma5-wallpapers-dynamic
+	depends = plasma5-wallpapers-dynamic>=2.3
 	depends = dynamic-wallpaper-catalina-images-git
 
 pkgname = dynamic-wallpaper-catalina-images-git
