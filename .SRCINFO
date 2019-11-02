@@ -1,0 +1,13 @@
+pkgbase = sshign
+	pkgdesc = Small program to sign & verify files with your SSH key
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://git.sr.ht/~minus/sshign
+	arch = any
+	license = MIT
+	makedepends = go
+	source = https://git.sr.ht/~minus/sshign/archive/0.1.0.tar.gz
+	sha256sums = cef741b11e43d275a7366f5cfb56c570044f764ec3a2099262e2167f94468f0f
+
+pkgname = sshign
+
