@@ -1,8 +1,8 @@
 # Maintainer: Lucas Malandrino <lucas.malandrino@gmail.com>
-# Co-maintainer & author of the original software: Gabriel "Squared" Saillard <squared@codebrew.fr>
+# Co-maintainer & author of the original software: Gabriel "Squared" Saillard <gabriel@saillard.dev>
 pkgname='edex-ui-git'
 _pkgname='edex-ui'
-pkgver=3.0.0.pre.88f5eed
+pkgver=3.0.0.pre
 pkgrel=1
 pkgdesc="A cross-platform, customizable science fiction terminal emulator with advanced monitoring & touchscreen support."
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -23,7 +23,8 @@ sha256sums=('SKIP')
 pkgver() {
     cd "${srcdir}/${_pkgname}"
 
-    echo $(head -n 4 package.json | tail -n 1 | sed 's/  "version": "//;s/",//;s/-/./g').$(git log -n 1 --oneline | head -c 7)
+    # echo $(head -n 4 package.json | tail -n 1 | sed 's/  "version": "//;s/",//;s/-/./g').$(git log -n 1 --oneline | head -c 7)
+    echo $(head -n 4 package.json | tail -n 1 | sed 's/  "version": "//;s/",//;s/-/./g')
 }
 
 build() {
