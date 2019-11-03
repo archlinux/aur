@@ -2,7 +2,7 @@
 
 pkgname=ttf-joypixels
 pkgver=5.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Emoji as a Service (formerly EmojiOne)'
 url='https://www.joypixels.com/download'
 arch=('any')
@@ -17,7 +17,7 @@ source=("joypixels-android-${pkgver}.ttf::https://cdn.joypixels.com/arch-linux/f
         "license-free-${pkgver}-${pkgrel}.pdf::https://cdn.joypixels.com/arch-linux/license/free-license.pdf"
         "license-appendix-${pkgver}-${pkgrel}.pdf::https://cdn.joypixels.com/arch-linux/appendix/joypixels-license-appendix.pdf")
 sha256sums=('622bdc17f828436167d0818d885093af374b8f327237b1cb301b97dc7f37b091'
-            'a6d96bba6ec120adad118a57d1ba39ea64cb0c796c671894ddff1be4aa13be18'
+            '3721e8b04edf6653b8c6fa8320b3017741e2404f2ec57b689a6a1e221e01ca30'
             'c4a17634bfebd5c1b74d9a02a1d981f8fcf6b1737162696cad7bfab161d8dbb3'
             '05084e4ddbbb0c241bb0ff4e307853a9e6236fa1c617b7cba44af31b6bfc5e2d')
 

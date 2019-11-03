@@ -1,13 +1,7 @@
 post_install() {
     echo
-    echo "  To prevent conflicts with other emoji fonts,"
-    echo "  75-joypixels.conf is not automatically installed to /etc/fonts/conf.d/"
-    echo
-    echo "  If you don't use other emoji fonts, you can simply create a symlink:"
-    echo "  # ln -sf ../conf.avail/75-joypixels.conf /etc/fonts/conf.d/75-joypixels.conf"
-    echo
-    echo "  If you do use other emoji fonts,"
-    echo "  copy 75-joypixels.conf to /etc/fonts/conf.d/ and remove corresponding aliases"
+    echo "  See /etc/fonts/conf.avail/75-joypixels.conf for how to enforce rendering emojis via JoyPixels"
+    echo "  It conflicts with other fonts, so either symlink it to /etc/fonts/conf.d/ or copy and modify as needed."
     echo
 }
 
