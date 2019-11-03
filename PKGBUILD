@@ -13,7 +13,7 @@
 pkgbase=linux-libre         # Build stock kernel
 #pkgbase=linux-libre-custom # Build kernel with a different name
 _srcbasever=5.3-gnu
-_srcver=5.3.1-gnu
+_srcver=5.3.7-gnu
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -23,8 +23,8 @@ _srcname=linux-${_srcbasever%-*}
 _archpkgver=${_srcver%-*}
 pkgver=${_srcver//-/_}
 pkgrel=1
-rcnver=5.3
-rcnrel=armv7-x8
+rcnver=5.3.6
+rcnrel=armv7-x12
 arch=(i686 x86_64 armv7h)
 url='https://linux-libre.fsfla.org/'
 license=(GPL2)
@@ -54,6 +54,7 @@ source=(
 
   # Arch's custom linux patches
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
+  0002-Bluetooth-hidp-Fix-assumptions-on-the-return-value-o.patch
 )
 source_armv7h=(
   # armv7h patches, put in the source_armv7h variable just for a more comfortable loop patching
@@ -81,7 +82,7 @@ validpgpkeys=(
 )
 sha512sums=('85d83c973ef96ab414354414da70ab3e1c3df19c3088458498cec1594952878b7967a8988bd9e36d4e728cc573a36e6eac056dbcab2f9aa742f18cbb4fb3164f'
             'SKIP'
-            'f58ba041868ef3475ca3b4ad2943ed2df3da17e4eadb6597131e9903a95b734d4df22d096e7cf66d30778e88c9e799512b2e3f51119c997dc2b7a766c104bcc2'
+            '22064d7cf6da426eff98b3fd72a52e6dc1349f1c5f53755041b487335fa8ff61fc1083440af38ef631056301d30d827c5c203566d1f720b9a65505e9c2cd3ee8'
             'SKIP'
             '13cb5bc42542e7b8bb104d5f68253f6609e463b6799800418af33eb0272cc269aaa36163c3e6f0aacbdaaa1d05e2827a4a7c4a08a029238439ed08b89c564bb3'
             'SKIP'
@@ -89,10 +90,10 @@ sha512sums=('85d83c973ef96ab414354414da70ab3e1c3df19c3088458498cec1594952878b796
             'SKIP'
             '267295aa0cea65684968420c68b32f1a66a22d018b9d2b2c1ef14267bcf4cb68aaf7099d073cbfefe6c25c8608bdcbbd45f7ac8893fdcecbf1e621abdfe9ecc1'
             'SKIP'
-            '6c61262cba5577497163e7e50dac899215b039d152d932b8717d7faa68f2cbfc179a5a1003ff229338c35c673ddd4e3f46372d5f998b466ac89edf31298aa8a7'
-            'de52a005c82ca9589b61d3c3ac2fed777e1759d8c7c4982edf3d98a2f5fcc3c567bcb1ff39d33b5ca389f4b128f16550a92e5f16392f1ce47cffe549cb58a83b'
-            'ea3a3813a6ad8ad18436b6010b60b855b9b89257cd959d8629643c6954c2607fa944566fe0368dc626aab11f3fa6a442a85e38f3fb1ea7ddc549509a87429a5c'
-            '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
+            'dd1034b6af98180cdc0428649845f5313db2858024b3a4c82cc86442136cf3b736ce561497525008651d2b50b3d2d760f0134782a71b8668c5e18eef347bcd4f'
+            'b6cdf0dd17dad6bbac7857952297289d76444ca783e1bf040179328c00eb697c8ebe6a121aec366c038abda68d95b94e68524faba290ea0e214a979026f60ef3'
+            'bffd1cb46d82871c84417be4698c1318cea50c64cded250f51af6506c1aa60ec339c2bdf1fc0f3348fab72a6c2a88b315e3958fd73d644c3c564bf28d78d9365'
+            '6b57a66b870b2f525e2dedd8f224b89474fd4ec6ea18484b0a67a1a2b9a4fc95d025cac181504406ea42a35d6c1b184c0d4e38c92815022935fc55746c69c7c1'
             '2718b58dbbb15063bacb2bde6489e5b3c59afac4c0e0435b97fe720d42c711b6bcba926f67a8687878bd51373c9cf3adb1915a11666d79ccb220bf36e0788ab7'
             '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
             '167bc73c6c1c63931806238905dc44c7d87c5a5c0f6293159f2133dfe717fb44081018d810675716d1605ec7dff5e8333b87b19e09e2de21d0448e447437873b'
@@ -100,8 +101,9 @@ sha512sums=('85d83c973ef96ab414354414da70ab3e1c3df19c3088458498cec1594952878b796
             '143dea30c6da00e504c99984a98a0eb2411f558fcdd9dfa7f607d6c14e9e7dffff9cb00121d9317044b07e3e210808286598c785ee854084b993ec9cb14d8232'
             '02af4dd2a007e41db0c63822c8ab3b80b5d25646af1906dc85d0ad9bb8bbf5236f8e381d7f91cf99ed4b0978c50aee37cb9567cdeef65b7ec3d91b882852b1af'
             'b8fe56e14006ab866970ddbd501c054ae37186ddc065bb869cf7d18db8c0d455118d5bda3255fb66a0dde38b544655cfe9040ffe46e41d19830b47959b2fb168'
-            '2ff49b3e5ee3ca61494cfcd6e3ba5dc31d8b625a193f5c5f24aca55d91cbd60a91897bbf6953e172acc596e72b033b3eeb6041380efd52d90a3c832db563cbf4')
-sha512sums_armv7h=('610d522b0c9d466f42edf2d8afa8725e1cd9cf9d38bd6a9dfdfec357e632acdd371e056d7e0c5169d116c7b5f1ecdfd1c39da62a52755ac85e46025424ffbee9'
+            '5c48b0092ab6a31453e27e6345347fd2d066e1c306c4c8a9144260bf37d0d13879b5cfe688906a06627d39a40a37e229e5300a479b2c9159e93e05ea7adc6b0a'
+            'b07d84cac1c784f5652a4681efd54ef89ce9cb0778bd2a633709b7150f9fb59db978dc290b92bcb69b8d211471c22a0be2a81a129318cd7efff601a3c591483c')
+sha512sums_armv7h=('078f8dfaabccb2a51c3440ed67a438bad1a83d35ccbcf06cb2d6f7d3c7e140b96c116926a0c503ffc31f849834bc22350467c1f0a48f60815c0d2882e9e01b93'
                    'SKIP'
                    '9724026836feefa67acb9644acf3ee89d465734af50b6637b8232b705c6259035d485cd1a1f0f08d189921eb75ad095b3e1f7f7e5e0e52302352c453f03ac820'
                    '41f9f7d58bb29311e09dd58105d173fb2e2a955c0e7d632bc8788c2f0a803a45281dfd2be1712d6ec93b58b9f440f3f8398f234bd7ded1c49b1c33b328478203'
@@ -164,8 +166,8 @@ prepare() {
   cp ../config.$CARCH .config
   make olddefconfig
 
-  make -s kernelrelease > ../version
-  msg2 "Prepared %s version %s" "$pkgbase" "$(<../version)"
+  make -s kernelrelease > version
+  msg2 "Prepared %s version %s" "$pkgbase" "$(<version)"
 }
 
 build() {
@@ -179,17 +181,16 @@ build() {
 
 _package() {
   pkgdesc="The ${pkgbase^} kernel and modules"
-  [[ $pkgbase = linux-libre ]] && groups=(base base-openrc)
-  depends=(coreutils linux-libre-firmware kmod mkinitcpio)
-  optdepends=('crda: to set the correct wireless channels of your country')
+  depends=(coreutils kmod mkinitcpio)
+  optdepends=('crda: to set the correct wireless channels of your country'
+              'linux-libre-firmware: firmware images needed for some devices')
   provides=("LINUX-ABI_VERSION=${_srcver%%-*}")
   backup=("etc/mkinitcpio.d/$pkgbase.preset")
   install=linux.install
 
+  cd $_srcname
   local kernver="$(<version)"
   local modulesdir="$pkgdir/usr/lib/modules/$kernver"
-
-  cd $_srcname
 
   msg2 "Installing boot image..."
   if [ "$CARCH" = "armv7h" ]; then
@@ -200,15 +201,11 @@ _package() {
   install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
   install -Dm644 "$modulesdir/vmlinuz" "$pkgdir/boot/vmlinuz-$pkgbase"
 
+  # Used by mkinitcpio to name the kernel
+  echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
+
   msg2 "Installing modules..."
   make INSTALL_MOD_PATH="$pkgdir/usr" modules_install
-
-  # a place for external modules,
-  # with version file for building modules and running depmod from hook
-  local extramodules="extramodules$_kernelname"
-  local extradir="$pkgdir/usr/lib/modules/$extramodules"
-  install -Dt "$extradir" -m644 ../version
-  ln -sr "$extradir" "$modulesdir/extramodules"
 
   # remove build and source links
   rm "$modulesdir"/{source,build}
@@ -220,13 +217,11 @@ _package() {
     s|/boot/vmlinuz-%PKGBASE%|$kernver|g
     s|%PKGBASE%|$pkgbase|g
     s|%KERNVER%|$kernver|g
-    s|%EXTRAMODULES%|$extramodules|g
   "
   else
   local subst="
     s|%PKGBASE%|$pkgbase|g
     s|%KERNVER%|$kernver|g
-    s|%EXTRAMODULES%|$extramodules|g
   "
   fi
 
@@ -249,12 +244,12 @@ _package() {
 _package-headers() {
   pkgdesc="Header files and scripts for building modules for ${pkgbase^} kernel"
 
+  cd $_srcname
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
-  cd $_srcname
-
   msg2 "Installing build files..."
-  install -Dt "$builddir" -m644 Makefile .config Module.symvers System.map vmlinux
+  install -Dt "$builddir" -m644 .config Makefile Module.symvers System.map \
+    localversion.* version vmlinux
   install -Dt "$builddir/kernel" -m644 kernel/Makefile
   install -Dt "$builddir/arch/$KARCH" -m644 arch/$KARCH/Makefile
   if [[ $CARCH = i686 ]]; then
@@ -269,9 +264,6 @@ _package-headers() {
 
   # add xfs and shmem for aufs building
   mkdir -p "$builddir"/{fs/xfs,mm}
-
-  # ???
-  mkdir "$builddir/.tmp_versions"
 
   msg2 "Installing headers..."
   cp -t "$builddir" -a include
@@ -342,7 +334,7 @@ _package-headers() {
 
   msg2 "Adding symlink..."
   mkdir -p "$pkgdir/usr/src"
-  ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase-$pkgver"
+  ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 
   msg2 "Fixing permissions..."
   chmod -Rc u=rwX,go=rX "$pkgdir"
@@ -351,9 +343,8 @@ _package-headers() {
 _package-docs() {
   pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase^} kernel"
   
-  local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
-
   cd $_srcname
+  local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
   msg2 "Installing documentation..."
   mkdir -p "$builddir"
