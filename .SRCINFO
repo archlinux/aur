@@ -1,15 +1,15 @@
 pkgbase = epson-inkjet-printer-escpr
 	pkgdesc = Epson Inkjet Printer Driver (ESC/P-R) for Linux
-	pkgver = 1.7.4
+	pkgver = 1.7.5
 	pkgrel = 1
 	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
 	arch = x86_64
 	license = GPL2
 	depends = cups
 	depends = ghostscript
-	source = https://download3.ebz.epson.net/dsc/f/03/00/10/19/83/de1d4c8152d80dc3afd14512e6b4e8ebd683ffc4/epson-inkjet-printer-escpr-1.7.4-1lsb3.2.tar.gz
+	source = https://download3.ebz.epson.net/dsc/f/03/00/10/29/40/898523640509d296a9988eee753a7299f518ceb0/epson-inkjet-printer-escpr-1.7.5-1lsb3.2.tar.gz
 	source = bug_x86_64.patch
-	sha512sums = 061a0339427eb165ed932eef231ad266d53b116b09c6cab5b984e41f74367cc17f763a88439a9ff1567da2f7f0f7c34d858be48c4aced611ee2768b6827f8d16
+	sha512sums = bebf68bd14f16c4321bee73a16f7ea6ec68c843630e81522c627324aaa765a3a5f4997f84e40ed0da2abe374d0405f5934d85eaf1c9921d6605b5b1b399fa2e1
 	sha512sums = ff4f736ec884c4d2354a83c89ee535732cb414ef0c6443bdc8ec869f889f486b242d76e143ad59d61b182231697dfe3bdf68122cb8aae873a9776ce109a07dab
 
 pkgname = epson-inkjet-printer-escpr
