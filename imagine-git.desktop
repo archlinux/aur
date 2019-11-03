@@ -1,9 +1,9 @@
 [Desktop Entry]
-Name=Imagine
+Name=imagine-git
 Comment=PNG/JPEG optimization app
-Exec=/usr/bin/imagine
+Exec=/usr/bin/imagine-git
 Terminal=false
 Type=Application
 Icon=imagine
-StartupWMClass=Imagine
+StartupWMClass=imagine-git
 Categories=Graphics;

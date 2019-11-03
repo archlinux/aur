@@ -1,5 +1,5 @@
 post_install() {
-		chmod +x /usr/bin/imagine
+		chmod +x /usr/bin/imagine-git
 }
 
 post_upgrade() {

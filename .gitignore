@@ -1,8 +1,8 @@
 *
 
-!imagine.desktop
-!imagine.install
-!imagine.sh
+!imagine-git.desktop
+!imagine-git.install
+!imagine-git.sh
 !PKGBUILD
 !.SRCINFO
 !.gitignore
