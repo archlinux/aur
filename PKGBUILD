@@ -3,13 +3,13 @@
 
 pkgname=python-virtualenvwrapper
 pkgver=4.8.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Extensions to Ian Bicking's virtualenv tool"
 arch=('any')
 url="https://virtualenvwrapper.readthedocs.io/"
 license=('MIT')
 depends=('python-virtualenv' 'python2-virtualenv' 'python-virtualenv-clone'
-         'python-stevedore')
+         'python-stevedore' 'which')
 makedepends=('python-pbr')
 conflicts=('python2-virtualenvwrapper')
 replaces=('python2-virtualenvwrapper')
