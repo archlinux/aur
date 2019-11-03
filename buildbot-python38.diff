@@ -1,0 +1,38 @@
+diff --git a/master/buildbot/changes/bitbucket.py b/master/buildbot/changes/bitbucket.py
+index 8a3c2067d..5e8d43954 100644
+--- a/master/buildbot/changes/bitbucket.py
++++ b/master/buildbot/changes/bitbucket.py
+@@ -89,7 +89,7 @@ class BitbucketPullrequestPoller(base.PollingChangeSource):
+ 
+     @defer.inlineCallbacks
+     def _processChanges(self, page):
+-        result = json.loads(page, encoding=self.encoding)
++        result = json.loads(page)
+         for pr in result['values']:
+             branch = pr['source']['branch']['name']
+             nr = int(pr['id'])
+@@ -106,7 +106,7 @@ class BitbucketPullrequestPoller(base.PollingChangeSource):
+                 if not current or current[0:12] != revision[0:12]:
+                     # parse pull request api page (required for the filter)
+                     page = yield client.getPage(str(pr['links']['self']['href']))
+-                    pr_json = json.loads(page, encoding=self.encoding)
++                    pr_json = json.loads(page)
+ 
+                     # filter pull requests by user function
+                     if not self.pullrequest_filter(pr_json):
+@@ -127,13 +127,13 @@ class BitbucketPullrequestPoller(base.PollingChangeSource):
+                     title = pr['title']
+                     # parse commit api page
+                     page = yield client.getPage(str(pr['source']['commit']['links']['self']['href']))
+-                    commit_json = json.loads(page, encoding=self.encoding)
++                    commit_json = json.loads(page)
+                     # use the full-length hash from now on
+                     revision = commit_json['hash']
+                     revlink = commit_json['links']['html']['href']
+                     # parse repo api page
+                     page = yield client.getPage(str(pr['source']['repository']['links']['self']['href']))
+-                    repo_json = json.loads(page, encoding=self.encoding)
++                    repo_json = json.loads(page)
+                     repo = repo_json['links']['html']['href']
+ 
+                     # update database
