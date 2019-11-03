@@ -1,0 +1,16 @@
+pkgbase = guile-opengl-git
+	pkgdesc = OpenGL bindings for Guile Scheme
+	pkgver = 0.1.0.r4.g687e96b
+	pkgrel = 1
+	url = https://www.gnu.org/software/guile-opengl/
+	arch = x86_64
+	arch = i686
+	license = LGPL3
+	depends = guile>=2.1.4
+	provides = guile-opengl
+	conflicts = guile-opengl
+	source = guile-opengl-git::git+https://git.savannah.gnu.org/git/guile-opengl.git
+	md5sums = SKIP
+
+pkgname = guile-opengl-git
+
