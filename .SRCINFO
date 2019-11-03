@@ -1,11 +1,12 @@
 pkgbase = gebaar-libinput-git
 	pkgdesc = A Super Simple WM Independent Touchpad Gesture Daemon for libinput. Forked version with new features
-	pkgver = r43.2d57aab
-	pkgrel = 2
+	pkgver = r47.07b0ca8
+	pkgrel = 1
 	url = https://github.com/Osleg/gebaar-libinput
 	arch = x86_64
 	license = GPL3
 	makedepends = cmake
+	makedepends = git
 	depends = libinput
 	provides = gebaar
 	conflicts = gebaar

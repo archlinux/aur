@@ -1,8 +1,8 @@
 # Maintainer: Will Vauclain <willvauclain.dev at gmail dot com>
 # Maintainer: Alex Zaslavsky <alex@wall-dev.org>
 pkgname=gebaar-libinput-git
-pkgver=r43.2d57aab
-pkgrel=2
+pkgver=r47.07b0ca8
+pkgrel=1
 pkgdesc='A Super Simple WM Independent Touchpad Gesture Daemon for libinput. Forked version with new features'
 arch=('x86_64')
 url="https://github.com/Osleg/gebaar-libinput"
