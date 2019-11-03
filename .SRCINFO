@@ -7,6 +7,7 @@ pkgbase = lib32-check
 	license = LGPL
 	makedepends = git
 	makedepends = gcc-multilib
+	makedepends = lib32-gcc-libs
 	depends = lib32-glibc
 	depends = check
 	source = git+https://github.com/libcheck/check#commit=90d03f3fe002c33224432753ebfa21ebb5c32238

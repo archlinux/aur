@@ -10,7 +10,7 @@ arch=('x86_64')
 url="https://libcheck.github.io/check/"
 license=('LGPL')
 depends=('lib32-glibc' "${_basename}")
-makedepends=('git' 'gcc-multilib')
+makedepends=('git' 'gcc-multilib' 'lib32-gcc-libs')
 _commit=90d03f3fe002c33224432753ebfa21ebb5c32238  # tags/0.13.0
 source=("git+https://github.com/libcheck/check#commit=$_commit")
 md5sums=('SKIP')
