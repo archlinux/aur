@@ -2,13 +2,13 @@
 
 pkgname=ecal
 pkgver=5.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="enhanced Communication Abstraction Layer"
 arch=('x86_64' 'armv7h')
 url="https://github.com/continental/ecal"
 license=('Apache')
-depends=('protobuf' 'qt5-base')
-makedepends=('asio' 'cmake' 'doxygen' 'graphviz' 'simpleini' 'tclap')
+depends=('protobuf' 'qt5-base' 'hdf5')
+makedepends=('asio' 'cmake' 'doxygen' 'graphviz' 'simpleini' 'spdlog' 'tclap')
 optdepends=()
 source=(https://github.com/continental/ecal/archive/v$pkgver.tar.gz
         arch-linux-compat.diff)
