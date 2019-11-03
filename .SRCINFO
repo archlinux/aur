@@ -1,7 +1,7 @@
 pkgbase = pantheon-default-settings
 	pkgdesc = Default settings for Pantheon
 	pkgver = 5.1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/elementary/default-settings
 	arch = any
 	groups = pantheon-stable
@@ -11,10 +11,15 @@ pkgbase = pantheon-default-settings
 	depends = elementary-wallpapers
 	depends = ttf-droid
 	depends = ttf-opensans
+	depends = ttf-roboto
 	provides = default-settings
 	conflicts = default-settings-git
 	source = pantheon-default-settings-5.1.1.tar.gz::https://github.com/elementary/default-settings/archive/5.1.1.tar.gz
-	sha1sums = 1f2e3499b1c2d820743714318b1f396876f5b948
+	source = arch-tweaks.patch
+	source = leave-bg-alone.patch
+	sha256sums = 7f17ef8d1dcdaca0017cf8bcf2160543b8b00ad64456e3ff4c826f627b313790
+	sha256sums = 99528c7ed672a5231f4d42d90421cef18d416f2b7aea6e0381db7cea6f9391d3
+	sha256sums = 3732b2209d28c68bb3a11da5726f486db1fca9fcb3776bf58f83c81678b84211
 
 pkgname = pantheon-default-settings
 

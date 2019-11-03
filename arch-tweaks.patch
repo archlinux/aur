@@ -1,0 +1,75 @@
+diff --git a/debian/elementary-default-settings.gsettings-override b/debian/elementary-default-settings.gsettings-override
+index da55ae6..ff3d55a 100644
+--- a/debian/elementary-default-settings.gsettings-override
++++ b/debian/elementary-default-settings.gsettings-override
+@@ -1,5 +1,5 @@
+ [net.launchpad.plank.dock.settings]
+-dock-items=['gala-multitaskingview.dockitem','org.gnome.Epiphany.dockitem','org.pantheon.mail.dockitem','io.elementary.calendar.dockitem','io.elementary.music.dockitem','io.elementary.videos.dockitem','io.elementary.photos.dockitem','io.elementary.switchboard.dockitem','io.elementary.appcenter.dockitem']
++dock-items=['gala-multitaskingview.dockitem','org.gnome.Epiphany.dockitem','org.pantheon.mail.dockitem','io.elementary.calendar.dockitem','io.elementary.music.dockitem','io.elementary.videos.dockitem','io.elementary.photos.dockitem','io.elementary.switchboard.dockitem']
+ hide-delay=250
+ hide-mode='window-dodge'
+ show-dock-item=false
+@@ -28,7 +28,6 @@ font-name='Open Sans 9'
+ gtk-theme='elementary'
+ icon-theme='elementary'
+ monospace-font-name='Roboto Mono 10'
+-show-unicode-menu=false
+ toolbar-style='icons'
+ 
+ [org.gnome.desktop.peripherals.touchpad]
+@@ -131,7 +130,6 @@ active=false
+ 
+ [org.gnome.settings-daemon.plugins.media-keys]
+ screensaver='<Super>l'
+-terminal='<Super>t'
+ 
+ [org.gnome.settings-daemon.plugins.power]
+ ambient-enabled=false
+diff --git a/meson.build b/meson.build
+index b5e25b8..20c262a 100644
+--- a/meson.build
++++ b/meson.build
+@@ -39,7 +39,6 @@ install_data(
+ # TODO: dynamically generate dockitem list using meson options
+ dock_items = [
+     join_paths('.', 'plank', 'dock1', 'launchers', 'gala-multitaskingview.dockitem'),
+-    join_paths('.', 'plank', 'dock1', 'launchers', 'io.elementary.appcenter.dockitem'),
+     join_paths('.', 'plank', 'dock1', 'launchers', 'org.gnome.Epiphany.dockitem'),
+     join_paths('.', 'plank', 'dock1', 'launchers', 'org.pantheon.audience.dockitem'),
+     join_paths('.', 'plank', 'dock1', 'launchers', 'org.pantheon.mail.dockitem'),
+diff --git a/plank/dock1/launchers/io.elementary.appcenter.dockitem b/plank/dock1/launchers/io.elementary.appcenter.dockitem
+deleted file mode 100644
+index c9e2372..0000000
+--- a/plank/dock1/launchers/io.elementary.appcenter.dockitem
++++ /dev/null
+@@ -1,4 +0,0 @@
+-[PlankDockItemPreferences]
+-Launcher=file:///usr/share/applications/io.elementary.appcenter.desktop
+-
+-
+--- a/meson.build	2019-08-17 01:58:19.554216192 +0900
++++ b/meson.build	2019-08-17 02:18:10.548389124 +0900
+@@ -9,12 +9,6 @@
+     install_dir: join_paths(get_option('datadir'), 'cups', 'data')
+ )
+ 
+-# Installer session lightdm.conf
+-install_data(
+-    'lightdm.conf',
+-    install_dir: join_paths(get_option('sysconfdir'), 'lightdm')
+-)
+-
+ install_data(
+     'settings.ini',
+     install_dir: join_paths(get_option('sysconfdir'), 'gtk-3.0')
+--- a/meson.build	2019-08-17 02:21:02.247682193 +0900
++++ b/meson.build	2019-08-17 02:30:05.087644804 +0900
+@@ -41,7 +41,7 @@
+     join_paths('.', 'plank', 'dock1', 'launchers', 'io.elementary.calendar.dockitem'),
+     join_paths('.', 'plank', 'dock1', 'launchers', 'io.elementary.music.dockitem'),
+     join_paths('.', 'plank', 'dock1', 'launchers', 'io.elementary.photos.dockitem'),
+-    join_paths('.', 'plank', 'dock1', 'launchers', 'org.pantheon.switchboard.dockitem'),
++    join_paths('.', 'plank', 'dock1', 'launchers', 'io.elementary.switchboard.dockitem'),
+ ]
+ 
+ install_data(

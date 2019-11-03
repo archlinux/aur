@@ -1,0 +1,30 @@
+--- src/pantheon-default-settings/debian/elementary-default-settings.gsettings-override~	2018-04-25 20:14:20.486240538 +0900
++++ src/pantheon-default-settings/debian/elementary-default-settings.gsettings-override	2018-04-25 20:23:20.077211471 +0900
+@@ -6,10 +6,6 @@
+ theme='Gtk+'
+ 
+ [org.gnome.desktop.background]
+-draw-background=true
+-picture-options='zoom'
+-picture-uri='file:///usr/share/backgrounds/elementaryos-default'
+-primary-color='#000000'
+ show-desktop-icons=false
+ 
+ [org.gnome.desktop.datetime]
+@@ -125,16 +121,9 @@
+ natural-scroll=true
+ scroll-method='two-finger-scrolling'
+ 
+-[org.gnome.settings-daemon.plugins.background]
+-active=false
+-
+ [org.gnome.settings-daemon.plugins.color]
+ night-light-temperature=4500
+ 
+-[org.gnome.settings-daemon.plugins.cursor]
+-# Workaround upstream gnome-settings-daemon bug (https://bugzilla.gnome.org/show_bug.cgi?id=694758) as tracked by elementary (https://bugs.launchpad.net/elementaryos/+bug/1248747)
+-active=false
+-
+ [org.gnome.settings-daemon.plugins.media-keys]
+ screensaver='<Super>l'
+ 
