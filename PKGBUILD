@@ -2,7 +2,7 @@
 
 pkgname=mini-diary-git
 pkgver=2.4.1.r16.g90bf72e
-pkgrel=1.2
+pkgrel=1.3
 pkgdesc="Simple and secure journal app"
 arch=("x86_64")
 url="https://github.com/samuelmeuli/mini-diary"
@@ -18,7 +18,7 @@ source=("${pkgname}::git+$url.git#commit=90bf72e126b4a365e0a01095b5d3f316d12cbe5
 		"${pkgname}.install")
 md5sums=('SKIP'
          '4266c8313117e3bb6dd92fc41d5bbdf6'
-         '7d35b529e86b007b9d6b310cf04bb038'
+         '391fea43fcc92e14b7f16298c9ac8c83'
          '0f4f35bfb1705117bf18b5c23e987ed6')
 
 prepare() {
