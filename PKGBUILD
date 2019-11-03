@@ -25,10 +25,10 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_realname"
-  python2 setup.py build
+  python setup.py build
 }
 
 package(){
   cd "$srcdir/$_realname"
-  python2 setup.py install --root="$pkgdir/" --prefix=/usr --optimize=1  --skip-build
+  python setup.py install --root="$pkgdir/" --prefix=/usr --optimize=1  --skip-build
 }
