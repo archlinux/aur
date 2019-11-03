@@ -3,9 +3,9 @@
 
 pkgname=magics++
 Pkgname=Magics
-pkgver=4.1.3
+pkgver=4.2.0
 _attnum=3473464
-pkgrel=2
+pkgrel=1
 pkgdesc="Magics is the latest generation of the ECMWF's Meteorological plotting software MAGICS."
 arch=('i686' 'x86_64')
 url="https://software.ecmwf.int/wiki/display/MAGP"
@@ -13,13 +13,11 @@ license=('Apache')
 depends=('qt5-base' 'proj' 'fftw' 'pango' 'netcdf-cxx-legacy' 'eccodes' 'python' 'libgeotiff')
 optdepends=('libaec' 'odb_api')
 makedepends=('perl-xml-parser' 'gcc-fortran' 'swig' 'python2-numpy' 'cmake' 'boost' 'emos' 'python2-jinja')
-source=(http://software.ecmwf.int/wiki/download/attachments/${_attnum}/${Pkgname}-${pkgver}-Source.tar.gz patch)
-md5sums=('d2f71e15837cd79a26288adeaf82098e'
-         '73b04ae78df8c2f6e88b2a36dcd2dd96')
+source=(http://software.ecmwf.int/wiki/download/attachments/${_attnum}/${Pkgname}-${pkgver}-Source.tar.gz)
+md5sums=('fddb1cc7090472a702926dc8d56bcfae')
 
 build() {
   cd "$srcdir/${Pkgname}-${pkgver}-Source"
-  patch -p0 -i ../patch
   rm -fr src/boost && ln -sf /usr/include/boost src
   [ -x /usr/bin/odb ] && has_odb=ON || has_odb=OFF
   # force this for now. Metview does not compile

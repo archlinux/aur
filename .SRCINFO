@@ -1,7 +1,7 @@
 pkgbase = magics++
 	pkgdesc = Magics is the latest generation of the ECMWF's Meteorological plotting software MAGICS.
-	pkgver = 4.1.3
-	pkgrel = 2
+	pkgver = 4.2.0
+	pkgrel = 1
 	url = https://software.ecmwf.int/wiki/display/MAGP
 	arch = i686
 	arch = x86_64
@@ -24,10 +24,8 @@ pkgbase = magics++
 	depends = libgeotiff
 	optdepends = libaec
 	optdepends = odb_api
-	source = http://software.ecmwf.int/wiki/download/attachments/3473464/Magics-4.1.3-Source.tar.gz
-	source = patch
-	md5sums = d2f71e15837cd79a26288adeaf82098e
-	md5sums = 73b04ae78df8c2f6e88b2a36dcd2dd96
+	source = http://software.ecmwf.int/wiki/download/attachments/3473464/Magics-4.2.0-Source.tar.gz
+	md5sums = fddb1cc7090472a702926dc8d56bcfae
 
 pkgname = magics++
 
