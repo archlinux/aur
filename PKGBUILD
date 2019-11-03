@@ -2,7 +2,7 @@
 
 pkgname=cabal-desktop-git
 pkgver=3.1.1.r11.g23e1c10
-pkgrel=1
+pkgrel=1.1
 pkgdesc="Desktop client for Cabal, the p2p/decentralized/local-first chat platform."
 arch=("x86_64")
 url="https://github.com/cabal-club/cabal-desktop"
@@ -18,7 +18,7 @@ source=("${pkgname}::git+$url.git#commit=23e1c107792cfb4c5205d3acdb28a95b8a43cad
 		"${pkgname}.install")
 md5sums=('SKIP'
          '5062bddcfedf537cc5a214f6a9bd9ced'
-         '22cfec2d6fbd6f6daaa0b247c46d69b9'
+         'bf5ee2ad1d13f3263078906da59f6682'
          'c9f23c6410b51ca0d92c2ebba081b4d2')
 
 prepare() {

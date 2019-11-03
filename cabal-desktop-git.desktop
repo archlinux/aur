@@ -4,6 +4,6 @@ Comment=Desktop client for Cabal, the p2p/decentralized/local-first chat platfor
 Exec=/usr/bin/cabal-desktop-git
 Terminal=false
 Type=Application
-Icon=cabal-desktop
+Icon=cabal-desktop-git
 StartupWMClass=Cabal Desktop
 Categories=GTK;Network;
