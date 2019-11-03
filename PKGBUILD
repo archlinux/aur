@@ -2,7 +2,7 @@
 
 _pkgname=ntsclient
 pkgname=$_pkgname-git
-pkgver=0.1.1.r1.g4b484cd
+pkgver=0.3.1.r0.g9e0937d
 pkgrel=1
 pkgdesc='Small Network Time Security Client (NTP with NTS). Alpha software.'
 arch=('i686' 'x86_64')
