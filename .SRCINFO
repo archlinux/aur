@@ -1,0 +1,14 @@
+pkgbase = wordpress-plugin-co-authors-plus
+	pkgdesc = Assign multiple bylines to posts, pages, and custom post types
+	pkgver = 3.4
+	pkgrel = 1
+	url = https://wordpress.org/plugins/co-authors-plus
+	arch = any
+	license = unknown
+	depends = wordpress
+	options = !strip
+	source = wordpress-plugin-co-authors-plus-3.4.tar.gz::https://downloads.wordpress.org/plugin/co-authors-plus.3.4.zip
+	sha512sums = bc18bd4191ed22e317b56cc2b5d35007592a5ce18771f8ae65aae269cc0d43a566afdf744fa20e2563e155c18c73d28adb0fc5a0f1008a896794da8e96acfb55
+
+pkgname = wordpress-plugin-co-authors-plus
+
