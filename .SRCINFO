@@ -1,5 +1,5 @@
 pkgbase = sat-media-hg
-	pkgver = 0.7.r65.a0e7fcd735f3
+	pkgver = 0.7.r70.32bc21bd2d9a
 	pkgrel = 1
 	url = https://salut-a-toi.org/
 	arch = any
