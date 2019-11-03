@@ -4,8 +4,8 @@
 # Contributor: Paul Bredbury <brebs@sent.com>
 
 pkgname=alienarena-svn
-pkgver=r5655
-pkgrel=3
+pkgver=r5663
+pkgrel=1
 pkgdesc="Multiplayer retro sci-fi deathmatch game based on Quake2"
 arch=('i686' 'x86_64')
 url="http://red.planetarena.org/"
@@ -16,7 +16,7 @@ makedepends=('subversion')
 provides=('alienarena')
 conflicts=('alienarena')
 source=(
-  svn://svn.icculus.org/alienarena/trunk#revision=5655
+  svn://svn.icculus.org/alienarena/trunk
   'alienarena.desktop'
 )
 sha512sums=(
