@@ -29,7 +29,7 @@ pkgver() {
 		cut --delimiter='<' --fields=1
 	)
 
-	if ! [[ ${version} =~ ${numbers} ]] ; then
+	if [[ "${version}" =~ "" ]] || ! [[ ${version} =~ ${numbers} ]] ; then
 		echo "Invalid version: ${version}" >&2
 		exit 1
 	else
