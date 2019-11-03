@@ -1,0 +1,52 @@
+diff --git a/app/play/eCALPlay/src/EcalPlayCli.cpp b/app/play/eCALPlay/src/EcalPlayCli.cpp
+index 05d0524..21c5fed 100644
+--- a/app/play/eCALPlay/src/EcalPlayCli.cpp
++++ b/app/play/eCALPlay/src/EcalPlayCli.cpp
+@@ -54,7 +54,6 @@
+ #include <sys/ioctl.h>
+ #include <termios.h>
+ #include <unistd.h>
+-#include <stropts.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <unistd.h>
+diff --git a/app/play/eCALPlayCore/include/EcalPlayLogger.h b/app/play/eCALPlayCore/include/EcalPlayLogger.h
+index eaa971c..6672431 100644
+--- a/app/play/eCALPlayCore/include/EcalPlayLogger.h
++++ b/app/play/eCALPlayCore/include/EcalPlayLogger.h
+@@ -21,6 +21,8 @@
+ 
+ #include <string>
+ #include <spdlog/fmt/ostr.h>
++#include <spdlog/sinks/stdout_sinks.h>
++#include <spdlog/sinks/rotating_file_sink.h>
+ #include <spdlog/spdlog.h>
+ #include <iostream>
+ 
+@@ -91,4 +93,4 @@ private:
+ 
+   EcalPlayLogger(const EcalPlayLogger&) = delete;
+   EcalPlayLogger& operator = (const EcalPlayLogger&) = delete;
+-};
+\ No newline at end of file
++};
+diff --git a/app/rec/rec_core/include/rec_core/ecal_rec_logger.h b/app/rec/rec_core/include/rec_core/ecal_rec_logger.h
+index 3b7aa62..52ea3fa 100644
+--- a/app/rec/rec_core/include/rec_core/ecal_rec_logger.h
++++ b/app/rec/rec_core/include/rec_core/ecal_rec_logger.h
+@@ -21,6 +21,8 @@
+ 
+ #include <string>
+ #include <spdlog/fmt/ostr.h>
++#include <spdlog/sinks/stdout_sinks.h>
++#include <spdlog/sinks/rotating_file_sink.h>
+ #include <spdlog/spdlog.h>
+ #include <iostream>
+ 
+@@ -97,4 +99,4 @@ namespace eCAL
+       EcalRecLogger& operator = (const EcalRecLogger&) = delete;
+     };
+   }
+-}
+\ No newline at end of file
++}
