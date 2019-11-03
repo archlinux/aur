@@ -29,10 +29,12 @@ optdepends=(
   'vault: to use HashiCorpVaultSecretProvider provider'
 )
 source=("https://github.com/buildbot/buildbot/releases/download/v$pkgver/buildbot-v$pkgver.gitarchive.tar.gz"{,.sig}
-        $pkgname-automat-117.diff)
+        $pkgname-automat-117.diff
+        $pkgname-python38.diff)
 sha256sums=('b5af824031c2bac87a73cd580fe597b439c113352f3f5d8c8146afbbf077fc77'
             'SKIP'
-            '00587459a73af8faabcef08b80fd83270f22907238111abaa4edf57c80e992f3')
+            '00587459a73af8faabcef08b80fd83270f22907238111abaa4edf57c80e992f3'
+            'cb09b08ff40283b8931da446282e6e31f3a46b1912177d93c62ba4b6575e1654')
 validpgpkeys=(
   '390EB159056ED56F66AB1092AECD456B4D2531FC'  # Pierre Tardy <tardyp@gmail.com> (@tardyp on GitHub)
   'FD0004A26EADFE43A4C3F249C6F7AE200374452D'  # Povilas Kanapickas <povilas@radix.lt> (@p12tic on GitHub)
@@ -41,6 +43,7 @@ validpgpkeys=(
 prepare() {
   cd buildbot-$pkgver/master
   patch -Np2 -i ../../$pkgname-automat-117.diff
+  patch -Np2 -i ../../$pkgname-python38.diff
 }
 
 build() {
