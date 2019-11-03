@@ -1,6 +1,6 @@
 pkgbase = appimage-git
 	pkgdesc = Package desktop applications as AppImages that run on common Linux-based operating systems, such as RHEL, CentOS, Ubuntu, Fedora, debian and derivatives.
-	pkgver = r1587.ce61b83
+	pkgver = r1597.801e789
 	pkgrel = 1
 	url = http://appimage.org
 	arch = i686
@@ -28,9 +28,7 @@ pkgbase = appimage-git
 	conflicts = appimage
 	options = !strip
 	source = git://github.com/probonopd/AppImageKit
-	source = https://patch-diff.githubusercontent.com/raw/AppImage/AppImageKit/pull/952.diff
 	md5sums = SKIP
-	md5sums = 608c5ead3266d58da38b4d7eb3a83c4a
 
 pkgname = appimage-git
 

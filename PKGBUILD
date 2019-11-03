@@ -4,7 +4,7 @@
 pkgname=appimage-git
 _gitname=AppImageKit
 pkgdesc="Package desktop applications as AppImages that run on common Linux-based operating systems, such as RHEL, CentOS, Ubuntu, Fedora, debian and derivatives."
-pkgver=r1587.ce61b83
+pkgver=r1597.801e789
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://appimage.org"
@@ -15,10 +15,8 @@ provides=('appimage')
 conflicts=('appimage')
 options=('!strip')
 install=
-source=('git://github.com/probonopd/AppImageKit'
-        'https://patch-diff.githubusercontent.com/raw/AppImage/AppImageKit/pull/952.diff')
-md5sums=('SKIP'
-         '608c5ead3266d58da38b4d7eb3a83c4a')
+source=('git://github.com/probonopd/AppImageKit')
+md5sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_gitname}"
@@ -34,8 +32,6 @@ prepare() {
   cd "${srcdir}/${_gitname}"
 
   ./build.sh --clean
-
-  patch -p1 -i "${srcdir}"/952.diff
 
   sed -i "s/ctest -V/echo 'Skip Tests...'/g" build.sh
 }
