@@ -1,9 +1,9 @@
 # Maintainer: Martin Sandsmark <martin.sandsmark@kde.org>
 
 pkgname=advancedgenieeditor-git
-pkgver=r692.1fc9098
+pkgver=r716.aa19eb9
 pkgrel=1
-_abiver=2
+_abiver=5
 pkgdesc='A program for editing data of genie files.'
 arch=('x86_64' 'i686')
 url='http://aok.heavengames.com/blacksmith/showfile.php?fileid=11002'
