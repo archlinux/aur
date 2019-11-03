@@ -2,7 +2,7 @@
 
 pkgname=osrm-backend
 pkgver=5.22.0
-pkgrel=2
+pkgrel=3
 pkgdesc="High performance routing engine written in C++14 designed to run on OpenStreetMap data."
 url="http://map.project-osrm.org/"
 depends=("expat" "boost-libs" "lua52" "intel-tbb")
@@ -27,7 +27,8 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_CXX_FLAGS="-Wno-pessimizing-move -Wno-redundant-move"
+        -DCMAKE_CXX_FLAGS="-Wno-pessimizing-move -Wno-redundant-move" \
+        -DBUILD_SHARED_LIBS=ON
     make VERBOSE=1
 }
 
