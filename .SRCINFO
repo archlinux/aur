@@ -1,0 +1,16 @@
+pkgbase = screenplain
+	pkgdesc = Fountain parser with FDX, HTML and PDF backends
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = http://www.screenplain.com/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-six
+	optdepends = python-reportlab: PDF backend support
+	source = https://github.com/vilcans/screenplain/archive/0.8.0.tar.gz
+	sha256sums = aef5e50bf4ea072c3d3a9384b66fe34a40e8d2d55ed226624aaabc226cec0d9a
+
+pkgname = screenplain
+
