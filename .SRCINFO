@@ -1,6 +1,6 @@
 pkgbase = execute-git
 	pkgdesc = Opens exe and bat files as if they were native
-	pkgver = 1
+	pkgver = 0
 	pkgrel = 2
 	url = https://gitlab.com/es20490446e/exeCute
 	arch = x86_64
