@@ -3,7 +3,7 @@
 
 _pkgname=airgeddon
 pkgname=$_pkgname-git
-pkgver=r1895.e9775f8
+pkgver=r2020.3e497c3
 pkgrel=1
 pkgdesc='Multi-use bash script for Linux systems to audit wireless networks'
 url='https://github.com/v1s1t0r1sh3r3/airgeddon'
@@ -13,7 +13,7 @@ depends=(
   'aircrack-ng' 'bash>=4.2' 'coreutils'
   'gawk' 'iproute2' 'iw' 'net-tools'
   'sed' 'wireless_tools' 'xterm' 'tmux'
-  'pciutils'
+  'pciutils' 'procps-ng'
 )
 optdepends=(
   'asleap: Actively recover LEAP/PPTP passwords'
