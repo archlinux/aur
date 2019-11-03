@@ -9,8 +9,8 @@ pkgdesc="Opens exe and bat files as if they were native"
 url="https://gitlab.com/es20490446e/exeCute"
 license=("GPL3")
 
-pkgver=0
-pkgrel=2
+pkgver=18
+pkgrel=1
 arch=("x86_64")
 
 makedepends=("git")
