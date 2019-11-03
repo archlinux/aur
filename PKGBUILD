@@ -1,19 +1,51 @@
-# Maintainer: Kaan Genç <SeriousBug at Gmail dot com>
-
+# Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
+# Co-Maintainer: Jameson Pugh <imntreal at gmail dot com>
+# Co-Maintainer: Joost Bremmer <toost dot b at gmail dot com>
 pkgname=cheat
-pkgver=1.0.3
+pkgver=3.0.3
 pkgrel=1
-pkgdesc="A minimal unit testing framework for the C programming language."
-arch=(any)
-url="https://github.com/Tuplanolla/cheat"
-license=('BSD')
-source=("https://github.com/Tuplanolla/cheat/archive/1.0.3.tar.gz")
-sha256sums=('2795b98230fb20cddf305ad1ff126518f82babfcb938be8fadd20ed80d45e979')
+pkgdesc="Allows you to create and view interactive cheatsheets on the command-line"
+arch=('x86_64')
+url="https://github.com/cheat/cheat"
+license=('MIT')
+makedepends=('go-pie')
+optdepends=('fzf: for Fuzzy Finder integration')
+conflicts=('cheat-bash-git' 'cheat-git')
+replaces=('python-cheat')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/cheat/cheat/archive/$pkgver.tar.gz")
+sha256sums=('a9c0d7f46fe4dd19b17fadb4c071629d8dd118a775ee842218a2e9199ec75923')
+
+prepare() {
+
+	# create gopath
+	mkdir -p "$srcdir/gopath"
+	export GOPATH="$srcdir/gopath"
+	
+	# fetch dependencies
+	msg "Fetching Go dependencies"
+	cd "$srcdir/gopath"
+	go get -d ./...
+}
+
+build() {
+	cd "$pkgname-$pkgver"
+	GOOS=linux \
+	GOARCH=amd64 \
+	go build \
+		-v \
+		-trimpath \
+		-gcflags "all=-trimpath=$srcdir" \
+		-asmflags "all=-trimpath=$srcdir" \
+		-ldflags "-extldflags $LDFLAGS" \
+		-o "./dist/$pkgname" "./cmd/$pkgname"
+		
+		# Clean mod cache for makepkg -C
+		go clean -modcache
+}
 
 package() {
-	cd "$srcdir/$pkgname-$pkgver"
-	install -Dm644 cheat.h "$pkgdir/usr/include/cheat.h"
-	install -Dm644 cheats.h "$pkgdir/usr/include/cheats.h"
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	install -Dm644 cheat.7 "$pkgdir/usr/share/man/man7/cheat.7"
+	cd "$pkgname-$pkgver"
+	install -Dm755 "dist/$pkgname" "$pkgdir/usr/bin/$pkgname"
+	install -Dm755 scripts/fzf.bash "$pkgdir/usr/share/$pkgname/fzf.bash"
+	install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
 }
