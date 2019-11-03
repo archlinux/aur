@@ -1,0 +1,19 @@
+pkgbase = guile-sdl2-git
+	pkgdesc = Guile Scheme bindings for SDL2
+	pkgver = 0.4.0.r11.g1c6a625
+	pkgrel = 1
+	url = https://dthompson.us/projects/guile-sdl2.html
+	arch = any
+	license = LGPL3
+	depends = guile>=2.1.4
+	depends = sdl2
+	depends = sdl2_image
+	depends = sdl2_ttf
+	depends = sdl2_mixer
+	provides = guile-sdl2
+	conflicts = guile-sdl2
+	source = guile-sdl2-git::git://git.dthompson.us/guile-sdl2.git
+	md5sums = SKIP
+
+pkgname = guile-sdl2-git
+
