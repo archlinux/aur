@@ -2,7 +2,7 @@
 pkgname=pidgin-wechat
 pkgver=0.1.1
 pkgrel=1
-pkgdesc="https://github.com/sbwtw/pidgin-wechat"
+pkgdesc="WeChat protocol plugin for pidgin/libpurple. Based on Web Wechat and supports basic message receiving and picture receiving."
 arch=('i686' 'x86_64')
 url="https://github.com/sbwtw/pidgin-wechat"
 license=('WTFPL')
