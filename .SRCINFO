@@ -1,6 +1,6 @@
 pkgbase = naf-git
 	pkgdesc = Nucleotide Archival Format - Compressed file format for DNA/RNA/protein sequences
-	pkgver = 1.0.0.r86.ga1fbd4d
+	pkgver = 1.0.0.r92.g814c820
 	pkgrel = 1
 	url = http://kirill-kryukov.com/study/naf/
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = naf-git
 	depends = glibc
 	conflicts = naf
 	replaces = naf
-	source = naf-git::git+https://github.com/KirillKryukov/naf.git#branch=develop
+	source = git+https://github.com/KirillKryukov/naf.git#branch=develop
 	source = git+https://github.com/facebook/zstd.git
 	sha1sums = SKIP
 	sha1sums = SKIP

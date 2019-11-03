@@ -1,7 +1,7 @@
 # Maintainer: Maël Kerbiriou <m431.kerbiriou@MountainView>
 pkgname=naf-git
 _pkgname=naf
-pkgver=1.0.0.r86.ga1fbd4d
+pkgver=1.0.0.r92.g814c820
 pkgrel=1
 pkgdesc="Nucleotide Archival Format - Compressed file format for DNA/RNA/protein sequences"
 arch=('i686' 'x86_64')
@@ -17,8 +17,7 @@ sha1sums=('SKIP' 'SKIP')
 
 pkgver() {
   cd ${_pkgname}
-  git describe --long --tags 2>/dev/null | sed 's/[^[:digit:]]*\(.\+\)-\([[:digit:]]\+\)-g\([[:xdigit:]]\{7\}\)/\1.r\2.g\3/;t;q1'
-  [ ${PIPESTATUS[0]} -ne 0 ] && printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
