@@ -6,15 +6,16 @@ _build_book=0 # 0=Uses defauld book.bin
 
 pkgname=crafty
 pkgver=25.2
-pkgrel=2
+pkgrel=3
+makedepends=('gzip')
 pkgdesc="A free, open-source computer chess program developed by Dr. Robert M. (Bob) Hyatt"
 arch=('i686' 'x86_64')
 url="http://www.craftychess.com/"
 license=('custom')
 source=("http://www.craftychess.com/downloads/source/$pkgname-$pkgver.zip"
-	"http://www.craftychess.com/downloads/book/book.`[[ "$_build_book" = '0' ]] && echo bin || echo pgn.gz`"
 	"http://www.craftychess.com/downloads/book/start.pgn.gz"
 	"http://www.craftychess.com/downloads/book/startc.pgn.gz"
+	"http://www.craftychess.com/downloads/book/book.`[[ "$_build_book" = '0' ]] && echo bin || echo pgn.gz`"
 	"copyright"
 	"crafty.6"
 	"crafty.doc.v18.html"
@@ -26,9 +27,9 @@ source=("http://www.craftychess.com/downloads/source/$pkgname-$pkgver.zip"
 	"paths.patch"
 	"Makefile.patch")
 md5sums=('d8ad87d9b0fc39a437595203d7b302fc'
-	 "`[[ "$_build_book" = '0' ]] && echo f8f93189c64324b1959a489da822438e || echo 05efad71289b2d328da5110df4a19f85`"
 	 '880279c223dc34164837a351faafe2f0'
 	 '7a53d5f09d2baa5e7f0df4ee81961cfb'
+	 "`[[ "$_build_book" = '0' ]] && echo f8f93189c64324b1959a489da822438e || echo 05efad71289b2d328da5110df4a19f85`"
 	 '438cec9f32fb79f58822f97cf64e7afb' 
 	 '8f9c577aa6e99bb3e5ada83d1868a8ad' 
 	 '584ef65843016328d67a7c9df4007e87' 
@@ -47,6 +48,7 @@ prepare() {
 	patch -Np0 -i "${srcdir}/Makefile.patch"
 	sed -i -e "s:mt=4:mt=$(nproc):" Makefile
 	sed -i -e "s:mt=4:mt=$(nproc):" crafty.rc
+	gzip -df *.pgn.gz
 }
 
 build() {
@@ -75,9 +77,10 @@ package() {
 	install -Dpm 0755 crafty "$pkgdir/usr/bin/crafty"
 	install -Dpm 0644 crafty.6 "$pkgdir/usr/share/man/man6/crafty.6.gz"
 	install -dm 0755 "$pkgdir/usr/share/crafty/syzygy/"
-	install -pm 0666 book.bin "$pkgdir/usr/share/crafty/book.bin"
+	install -Dpm 0666 book.bin "$pkgdir/usr/share/crafty/book.bin"
 	install -pm 0644 bookc.bin books.bin crafty.hlp "$pkgdir/usr/share/crafty/"
 	install -Dpm 0644 crafty.rc "$pkgdir/etc/crafty.rc"
 	install -Dpm 0644 copyright "$pkgdir/usr/share/licenses/crafty/copyright"
-	install -dpm 0644 {crafty.doc.v18.html,crafty.faq,readme,tournament.howto} "$pkgdir/usr/share/doc/crafty/"
+	install -dm 0755 "$pkgdir/usr/share/doc/crafty/"
+	install -pm 0644 crafty.doc.v18.html crafty.faq readme tournament.howto "$pkgdir/usr/share/doc/crafty/"
 }
