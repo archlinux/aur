@@ -1,7 +1,7 @@
 diff -ura package.orig/src/main.js package.new/src/main.js
---- package.orig/src/main.js	2019-10-30 00:09:52.833991579 +0100
-+++ package.new/src/main.js	2019-10-30 00:13:11.936926036 +0100
-@@ -393,22 +393,6 @@
+--- package.orig/src/main.js	2019-11-03 17:16:52.891370653 +0100
++++ package.new/src/main.js	2019-11-03 17:17:32.026472647 +0100
+@@ -390,20 +390,6 @@
        });
    });
  
@@ -16,9 +16,7 @@ diff -ura package.orig/src/main.js package.new/src/main.js
 -        );
 -        mainWindow.webContents.send("user:update-available");
 -      })
--      .catch(() => {
--        utils.log.debug("This is the latest version.");
--      });
+-      .catch(() => {}); // Ignore errors, since this is non-essential
 -  });
 -
    mainWindow.loadURL(
