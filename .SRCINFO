@@ -1,7 +1,7 @@
 pkgbase = pkgtop
 	pkgdesc = Interactive package manager & resource monitor (stable version)
 	pkgver = 2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/keylo99/pkgtop
 	arch = any
 	license = GPL3

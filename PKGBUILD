@@ -4,7 +4,7 @@
 pkgname=pkgtop
 pkgdesc="Interactive package manager & resource monitor (stable version)"
 pkgver=2.1
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="https://github.com/keylo99/pkgtop"
 license=('GPL3')
@@ -23,6 +23,7 @@ build() {
   export GOPATH="${srcdir}/gopath" GO111MODULE="auto"
   go get -d ./...
   go build \
+    -buildmode=pie \
     -gcflags "all=-trimpath=$srcdir" \
     -asmflags "all=-trimpath=$srcdir" \
     -ldflags "-extldflags $LDFLAGS" \
