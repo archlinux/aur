@@ -2,8 +2,8 @@
 # Contributor: Rich Li <rich@dranek.com>
 
 pkgname=gmt
-pkgver=5.4.5
-pkgrel=2
+pkgver=6.0.0
+pkgrel=1
 pkgdesc="Generic Mapping Tools: Collection of tools for manipulating geographic and Cartesian data sets, and generating EPS maps."
 arch=(i686 x86_64)
 url="http://gmt.soest.hawaii.edu/"
@@ -23,7 +23,7 @@ install='gmt.install'
 #source=("ftp://ftp.iris.washington.edu/pub/gmt/${pkgname}-${pkgver}-src.tar.xz")
 #source=("ftp://ftp.iag.usp.br/pub/gmt/${pkgname}-${pkgver}-src.tar.xz")
 source=("https://mirrors.ustc.edu.cn/gmt/${pkgname}-${pkgver}-src.tar.xz")
-md5sums=('846c7717ca8a6e2c76cc5538331ff59e')
+md5sums=('2721f3bd7f39eb7c8ea261f644c5c36e')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -44,6 +44,7 @@ build() {
     -DGMT_MANDIR=share/man \
     -DGMT_DOCDIR=share/doc/gmt \
     -DCMAKE_BUILD_TYPE=Release \
+    -DGMT_OPENMP=ON \
     ..
   export MAKEFLAGS="-j1"
   make || return 1
