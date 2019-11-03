@@ -2,13 +2,14 @@
 # Thanks to azurata and Skidnik for their jobs
 
 pkgname=systemd-guest-user
-pkgver=33.0
+pkgver=33.1
 pkgrel=1
 url='https://github.com/Akrai/systemd-guest-user'
 pkgdesc='A simple systemd configurations for guest user support'
 arch=(any)
 license=(GPL3)
-depends=(systemd)
+depends=("systemd")
+makedepends=("git")
 install=systemd-guest-user.install
 #source=("${pkgname}::git://github.com/Akrai/$pkgname") commenting this line in favor of using https as asked by an user
 source=("${pkgname}::git+https://github.com/Akrai/$pkgname")

@@ -1,11 +1,12 @@
 pkgbase = systemd-guest-user
 	pkgdesc = A simple systemd configurations for guest user support
-	pkgver = 33.0
+	pkgver = 33.1
 	pkgrel = 1
 	url = https://github.com/Akrai/systemd-guest-user
 	install = systemd-guest-user.install
 	arch = any
 	license = GPL3
+	makedepends = git
 	depends = systemd
 	source = systemd-guest-user::git+https://github.com/Akrai/systemd-guest-user
 	md5sums = SKIP
