@@ -1,0 +1,3 @@
+post_install() {
+  echo '--> This package expects your armv7h device to run distccd on port 3632'
+}
