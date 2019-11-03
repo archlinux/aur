@@ -4,7 +4,6 @@ pkgbase = sat-media-hg
 	url = https://salut-a-toi.org/
 	arch = any
 	license = AGPL3
-	depends = python2
 	provides = sat-media
 	conflicts = sat-media
 	options = !strip
