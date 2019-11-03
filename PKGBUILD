@@ -1,26 +1,35 @@
 # Maintainer: Hiroshi Hatake <cosmo0920.wp[at]gmail.com>
 
 pkgname=mroonga
-pkgver=9.00
+pkgver=9.09
 pkgrel=1
 pkgdesc="Fast fulltext search on MySQL(MariaDB and groonga bundled package)."
-mariadbver=10.3.12
-groongaver=9.0.0
+mariadbver=10.3.18
+MYSQL_VERSION=mariadb-${mariadbver}
 arch=('i686' 'x86_64')
 url="http://mroonga.org/"
 license=('LGPL2')
-provides=("groonga=$groongaver" "mysql-clients=$mariadbver" "mysql=$mariadbver" "libmysqlclient=$mariadbver")
-source=(http://packages.groonga.org/source/mroonga/mariadb-$mariadbver-with-$pkgname-$pkgver.tar.gz
+provides=("mysql-clients=$mariadbver" "mysql=$mariadbver" "libmysqlclient=$mariadbver")
+source=(http://packages.groonga.org/source/mroonga/mroonga-$pkgver.tar.gz
+        https://downloads.mariadb.org/f/${MYSQL_VERSION}/source/${MYSQL_VERSION}.tar.gz
         mariadb.service
         mariadb-post.sh
         mariadb-tmpfile.conf)
-makedepends=('cmake' 'openssl' 'zlib' 'libaio' 'libxml2' 'pcre' 'jemalloc' 'lz4')
-conflicts=('libmariadbclient' 'mariadb-clients' 'mytop' 'mariadb' 'mysql' 'libmysqlclient' 'mysql-clients' 'groonga')
-depends=('perl' 'inetutils' 'libaio' 'libxml2' 'pcre')
+makedepends=('cmake' 'openssl' 'zlib' 'libaio' 'libxml2' 'pcre' 'jemalloc' 'lz4' )
+conflicts=('libmariadbclient' 'mariadb-clients' 'mytop' 'mariadb' 'mysql' 'libmysqlclient' 'mysql-clients')
+depends=('perl' 'inetutils' 'libaio' 'libxml2' 'pcre' 'groonga' 'groonga-normalizer-mysql')
 optdepends=('cutter-test_framework' 'ruby' 'snowball-c')
 
+prepare() {
+    cd $srcdir/mariadb-$mariadbver
+    rm -rf storage/mroonga
+    cd $srcdir
+    mkdir -p $srcdir/mariadb-$mariadbver/storage/mroonga
+    mv $srcdir/mroonga-${pkgver}/* $srcdir/mariadb-$mariadbver/storage/mroonga
+}
+
 build() {
-    cd $srcdir/mariadb-$mariadbver-with-$pkgname-$pkgver
+    cd $srcdir/mariadb-$mariadbver
 
     cmake . \
     -DCMAKE_AR=/usr/bin/gcc-ar \
@@ -74,7 +83,10 @@ build() {
 package() {
     backup=('etc/mysql/my.cnf')
     install=mariadb.install
-    cd $srcdir/mariadb-$mariadbver-with-$pkgname-$pkgver
+    cd $srcdir/mariadb-$mariadbver
+
+    install -D -m0644 support-files/mariadb.pc "$pkgdir"/usr/share/pkgconfig/mariadb.pc
+    install -D -m0644 support-files/mysql.m4 "$pkgdir"/usr/share/aclocal/mysql.m4
 
     make DESTDIR="$pkgdir" install
 
@@ -86,7 +98,8 @@ package() {
     install -Dm644 ../mariadb.service "$pkgdir"/usr/lib/systemd/system/mysqld.service
     install -Dm644 ../mariadb-tmpfile.conf "$pkgdir"/usr/lib/tmpfiles.d/mysql.conf
 }
-sha1sums=('82e173908c8851e934c89f7393d2c7c3a9462f85'
+sha1sums=('0d5b53b8d48468f5275715d3be2e89658d4c47f0'
+          '922a317edd6f44baacc49831ca278e7a9878a363'
           '4bc34244fc4b578c155c8cd569d952a97a476f10'
           '206e9f7ba5357027becc2491e0987442f684d63e'
           'c2a86c745002923234f9d6d79b3b462d5ab55e8d')
