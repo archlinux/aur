@@ -46,7 +46,7 @@ prepare() {
 	patch -Np1 -i "${srcdir}/paths.patch"
 	patch -Np0 -i "${srcdir}/Makefile.patch"
 	sed -i -e "s:mt=4:mt=$(nproc):" Makefile
-	sed -i -e "s:mt=4:mt=$(nproc):" crafty-data/crafty.rc
+	sed -i -e "s:mt=4:mt=$(nproc):" crafty.rc
 }
 
 build() {
