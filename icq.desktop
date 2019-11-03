@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=ICQ
+Comment=Official ICQ client
+Exec=icq
+Icon=icq
+Categories=Network;InstantMessaging;

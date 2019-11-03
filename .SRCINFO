@@ -1,0 +1,25 @@
+pkgbase = icqdesktop-git
+	pkgdesc = Official ICQ desktop client for Linux
+	pkgver = r5.8422caa
+	pkgrel = 1
+	url = https://icq.com/
+	arch = i686
+	arch = x86_64
+	license = Apache
+	license = custom
+	makedepends = git
+	makedepends = cmake
+	makedepends = glfw-x11
+	provides = icqdesktop-git
+	conflicts = icqdesktop
+	conflicts = icqdesktop-bin
+	noextract = external.7z
+	source = icqdesktop-git::git+https://github.com/mail-ru-im/im-desktop.git
+	source = external.7z::"https://ub.icq.net/files/get/ohmpeKNhR6YdlRhMv8eWt2V8eWZoqBmRYaJi5WdODdtZJnydtWk4DetWrX2m0nBb72tR5JCXtALDXezAFjwpwZDdzAqnJVP1XAPIeNUZ98VSonNDzsQWHx9zKRtAj2kZR1CAuR1PRlaZ36bhyni6U4HWLMv8eW/external.7z"
+	source = icq.desktop
+	md5sums = SKIP
+	md5sums = 9a71b93b56fe50b6d3541552af7dd55c
+	md5sums = 7c16e645547ab40bd577b81c9705d5c1
+
+pkgname = icqdesktop-git
+
