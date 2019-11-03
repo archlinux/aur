@@ -1,6 +1,6 @@
 pkgbase = metview
 	pkgdesc = ECMWF interactive meteorological application
-	pkgver = 5.6.1
+	pkgver = 5.7.0
 	pkgrel = 1
 	url = https://software.ecmwf.int/wiki/display/METV/Metview
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = metview
 	license = APACHE
 	makedepends = emos>=4.0.5
 	makedepends = rpcsvc-proto
-	depends = magics++>=3.0.0
+	depends = magics++>=4.0.0
 	depends = mksh
 	depends = openmotif
 	depends = netcdf-cxx-legacy
@@ -17,8 +17,9 @@ pkgbase = metview
 	depends = qt5-webkit
 	depends = libxpm
 	depends = libtirpc
-	source = https://software.ecmwf.int/wiki/download/attachments/3964985/Metview-5.6.1-Source.tar.gz
-	md5sums = 2162de70c0cb9e3c71fbd8a0a3e8bd2d
+	depends = cgal
+	source = https://software.ecmwf.int/wiki/download/attachments/3964985/Metview-5.7.0-Source.tar.gz
+	md5sums = 713128e21669b5e421712029b652f3d7
 
 pkgname = metview
 
