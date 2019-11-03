@@ -3,7 +3,7 @@
 # Contributor: speps <speps at aur dot archlinux dot org>
 
 pkgname=friture
-pkgver=0.37
+pkgver=0.40
 pkgrel=1
 pkgdesc="An application to visualize and analyze live audio data in real-time."
 arch=(i686 x86_64)
@@ -26,6 +26,5 @@ package() {
 	install -Dm644 appimage/$pkgname.desktop "$pkgdir"/usr/share/applications/$pkgname.desktop
 	sed -i "s|usr|/usr|g" "$pkgdir"/usr/share/applications/$pkgname.desktop
 }
-	
 
-sha256sums=('ae5a03d6b173b857ebba546ecd1e6e311d0b14ef8f4b68336ff5ce5b3e43091d')
+sha256sums=('c9f6be5b688120c4776541e86dff5aaa4203385987a8331d0c5bd7c2ed7e5919')
