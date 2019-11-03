@@ -1,0 +1,13 @@
+pkgbase = random-wallpaper
+	pkgdesc = Changes the desktop wallpaper to random from the site wallhaven.cc
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/tz4678/random-wallpaper
+	arch = any
+	license = MIT
+	depends = jq
+	source = git+https://github.com/tz4678/random-wallpaper.git
+	md5sums = SKIP
+
+pkgname = random-wallpaper
+
