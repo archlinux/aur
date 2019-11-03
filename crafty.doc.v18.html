@@ -1,0 +1,2138 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head>
+<title> Crafty Command Documentation (version 18)
+</title>
+</head>
+
+<body>
+<h1> Crafty Command Documentation
+</h1>
+
+<!--- Note that I have put "Crafty" into <cite></cite>.  This is
+logical, as a computer program with source code provided is not less
+than a book.  On the other hand, maybe the document looks a bit garish
+as a result?  A matter of taste. ---JM. --->
+
+<cite>Crafty</cite> is nothing more than a long-time hobby of mine,
+dating back to <cite>Blitz</cite> and later <cite>Cray Blitz</cite>.
+People ask me how I keep doing this, and that is the one question that
+generally leaves me at a loss for words.
+
+  <p>Perhaps the most common question I'm asked is "is this version of
+<cite>Crafty</cite> some dumbed-down version of what you play on ICC
+or what you use at a computer chess event?"  The answer is a
+resounding <strong>*NO*</strong>.  The current version is
+<em>exactly</em> what is running on ICC under this version number.
+Note that a new version can, on occasion, introduce weaknesses or
+outright bugs that were not present in previous "gold" versions.  As a
+result, you should be careful to back up your "favorite" before trying
+the latest and greatest.  If you aren't satisfied with the new
+version, you can then go back to what you believe is a better version.
+
+  <p>If you are looking for the strongest playing computer chess
+program available, you should likely look to <cite>Fritz</cite>,
+<cite>Rebel</cite>, <cite>Tiger</cite>, and the other commercial
+entries.  There you will find strong opponents with polished
+interfaces that have been tested in a systematic and careful way.  If
+you are looking for a program that plays good chess, has a reasonable
+set of features for you to use, is available in source form, and one
+where the author welcomes feedback, code or suggestions, then you are
+at the right place.  I welcome comments and suggestions, and also
+feedback from ideas you try yourself that seem to work.
+
+  <p><cite>Crafty</cite> is a state-of-the-art computer chess program,
+and uses all of the search algorithms you have probably read about,
+negascout search, killer/history move ordering, SEE (Static Exchange
+Evaluation) quiescence move ordering and pruning, hash
+(transposition/refutation) tables as well as evaluation caches,
+selective extensions, recursive null-move search, and a host of other
+features that have been used and are still being used in most computer
+chess programs.  If it's not in <cite>Crafty</cite>, either it is on
+the "to do" list, or it has been tried, found wanting, and discarded.
+
+  <p>Chess knowledge is growing, and suggestions (or even better, real
+code) are welcome.  This is the best place to contribute your ideas,
+because knowledge can be used to supplant search and make it play
+better.  The evaluation is probably the easiest place to start
+studying <cite>Crafty</cite> because of the comments and simplicity of
+using bitmaps, *once* you get "into" them.
+
+  <p>My purpose for doing this is an exercise in computer chess
+efficiency.  I can't begin to count the number of people I know that
+started from scratch to write a chess program.  Even larger is the
+group that started from scratch, and gave up before finishing, because
+of the basic size of the project.
+
+  <p><cite>Crafty</cite> offers everyone a very clean starting point,
+if you are fascinated by the bitmap chess board implementation (as I
+am).  The search and quiescence code is reasonably straightforward, as
+is the evaluation.
+
+  <p>It offers a great starting point, so that if you are interested
+in trying a new search extension, you can be testing tomorrow, rather
+than next year, because you start with a fully functional chess engine
+that is not a "toy" application, but is a functional and "dangerous"
+chess player.  It offers a rapid start, although you can certainly
+replace it piece by piece until it is "yours" if you want.  It also
+offers a fairly complete set of commands and an interface for a GUI as
+well as support for chess server play, so that testing and debugging
+your new ideas is greatly simplified.
+
+  <p>If you'd like more information, please check out the
+<code>read.me</code> document and the <code>crafty.FAQ</code> that are
+distributed with <cite>Crafty</cite>.  These contain recent news and
+specific instructions for commonly asked questions, like "where can I
+obtain tablebase files and how do I use them?"
+
+
+
+<hr>
+<h2>How to play a game.</h2>
+
+When you execute <strong>crafty</strong>, you will immediately be
+greeted by the prompt string <strong>white(1): </strong> and
+<cite>Crafty</cite> will wait for commands.  This prompt means it is
+White on move, and we are at move #1 for White.  You can first use any
+of the commands from the alphabetic command listing below to tailor
+the game to your liking (time control, hash table size, book
+randomness, etc.)  and then you have two choices.  If you want to play
+White, just enter your move, and <cite>Crafty</cite> will take it from
+there and make a move in response.  You will then be prompted by
+<strong>white(2):</strong> and it is your move again.  If you would
+prefer to play Black, just enter either <strong>move</strong> or
+<strong>go</strong> at the prompt and <cite>Crafty</cite> will move
+for that side rather than accepting a move from you.  After it makes
+its move for White, you will then see the prompt
+<strong>black(1):</strong> indicating it is now time for Black's first
+move.  You can enter a move, or you can once again enter
+<strong>move</strong> or <strong>go</strong> and <cite>Crafty</cite>
+will again move for the current side, change sides, and prompt you for
+what to do next.
+
+  <p>If you find yourself continually using a set of commands to
+configure <cite>Crafty</cite> to play as you want, you can put these
+commands in a startup file called <code>.craftyrc</code>
+(<cite>Unix</cite>) or <code>crafty.rc</code>
+(<cite>DOS</cite>/<cite>Windows</cite>).  The format for this file is
+just like you would type the commands at the keyboard, with the
+requirement that the last line of the file must be
+<strong>exit</strong> on a line by itself.  Using this, each time you
+start <cite>Crafty</cite>, it will first execute the commands from
+this file before it prompts you for input.
+
+  <p>While <cite>Crafty</cite> is running, you can control what it
+displays, but here's a couple of samples to explain what it is saying
+and why:
+
+<pre><tt><strong>
+   depth   time   score    variation (1)
+    book moves {d4, c3, Nc3, d3, b3, c4, g3, b4, Be2, Bb5}
+    book   0.0s     70%    d4
+
+   White(3): d4
+            time used:   0.01
+</strong></tt></pre>
+
+This is the normal output for those cases where <cite>Crafty</cite> is
+in book.  The book moves line gives the set of book moves that made
+the first selection cut (see the book selection explanation given
+later), followed by the move actually played, in this case d4.
+
+  <p>If <cite>Crafty</cite> is out of book, then the output looks
+somewhat different as given below:
+
+<pre><tt><strong>
+   depth   time   score    variation (1)
+     4->   0.81    2.09    6. dxe4 Bxe4 7. Rad8 Qf2 8. Qb5
+     5     1.37    2.41    6. dxe4 Bxe4 7. Ne5 Qf4 8. Bxe4+ Qxe4 9. f5
+     5->   1.88    2.41    6. dxe4 Bxe4 7. Ne5 Qf4 8.  Bxe4+ Qxe4 9. f5
+     6     7.38      --    6. dxe4
+     6    11.90    1.97    6. dxe4 Bxe4 7. Rab8 Qf2 8. Qc7 Nc5 9. Qe5
+     6    12.92      ++    6. Ne5
+     6    13.71    2.23    6. Ne5 Qg2 7. Ng6 h5 8. Nh4 Qg4
+     6->  15.59    2.23    6. Ne5 Qg2 7. Ng6 h5 8. Nh4 Qg4
+   time: 15.60  cpu:99%  mat:1  n:246565  nps:15927
+   ext-> checks:4706 recaps:1336 pawns:0 1rep:301
+   nodes  full:45951  quiescence:200614  evals:104657
+   endgame tablebase-> probes done: 0  successful: 0
+</strong></tt></pre>
+
+Let's take this stuff one line at a time.<ul>
+
+  <li> Lines that have something like <samp>4-></samp> in the depth
+  column are printed when that iteration (depth) is completely finished.
+
+  <li> The time and score columns should be obvious as to their
+  meaning as is the PV, the sequence of moves that led to this score.
+  One note about the "score" column.  As of version 18,
+  <cite>Crafty</cite> displays the score with + values good for White,
+  - values good for Black, no matter which side it is playing in the
+  game.  All output now follows this convention, from playing, to
+  analysis mode, to annotating your games, to whispering/kibitzing on
+  the chess servers, and so forth.  This is unlike other engines, but
+  once you get used to it, it is much less confusing when you remember
+  that negative scores are good for Black and bad for White, and
+  vice-versa.
+
+  <li> The line that has <samp>--</samp> in the score column means that
+  when we started depth 6, dxe4 turned out to be worse than we thought
+  (notice score dropped from 2.411 last search to 1.972 for this move
+  this search.)  To resolve this, <cite>Crafty</cite> lowers the lower
+  search bound (alpha) and re-searches the move to find the score.
+
+  <li> The line with <samp>++</samp> means that this move
+  (<samp>Ne5</samp>) is better than the best move so far, so
+  <cite>Crafty</cite> raises the upper search bound (beta) and
+  re-searches this move to find the new score.
+
+  <li> The first line of statistics gives the total time taken for
+  this search, the cpu percentage which should stay at 98-100%
+  unless your machine is heavily loaded or unless <cite>Crafty</cite>
+  is in an endgame that is having lots of contact with endgame
+  databases.  If this drops below 98%, it means that
+  <cite>Crafty</cite> is not getting full CPU usage and will be
+  playing weaker than normal.  The mat:1 is simply the true material
+  score, since <cite>Crafty</cite>'s positional scores are often
+  larger than a pawn.
+
+  </ul>
+
+
+
+
+<hr>
+<h2>Alphabetic Listing of Commands</h2>
+
+<dl>
+
+<!-- This is formatted as a `definition list', quite properly.
+However, there is a problem about what tags to wrap around the
+`definiendum'.  The general style, `dfn', is not quite suitable for
+computer commands.  The logical choice, `code', does not show up well
+in Lynx, nor in the default settings of Mozilla.  So I have cheated
+slightly, and used `strong'.  Further, it all looks better with the
+crude expedient of putting an empty paragraph at the end of each
+definition. ---JM. --->
+
+  
+<a name="alarm"></a>   
+<dt> <strong>alarm on</strong>|<strong>off</strong>
+
+<dd> This command is used to control <cite>Crafty</cite>'s "beep"
+after it makes a move.  Turning this off will make <cite>Crafty</cite>
+"quiet" when it plays, but also makes it easy to miss a move if you
+are using <cite>Crafty</cite> to play in a tournament.  This is
+primarily designed to make <cite>Crafty</cite> tolerable during late
+night matches.
+
+
+<p>  
+<a name="analyze"></a> 
+<dt> <strong>analyze</strong>
+
+<dd> This command puts <cite>Crafty</cite> into analyze mode.  In this
+mode, <cite>Crafty</cite> starts computing for whichever side is on
+move, and it continues computing and showing its analysis until a move
+is entered.  This move is made, <cite>Crafty</cite> changes sides, and
+starts thinking and printing analysis all over, but for the other side
+now.
+
+  <p>This command is useful to play through a game, because you get
+instant feedback when you try a move.  If you want to try a different
+move from the one you just entered, use the <strong>back</strong>
+command to back up one move, or use <strong>back &lt;n&gt;</strong> to
+back up &lt;n&gt; moves.  Note that one move is a single move for the
+last player, not a move for both sides.  To unmake the most recent 2
+moves (one for Black, one for White) use <strong>back 2</strong>.<p>
+
+
+
+<a name="annotate"></a>
+<dt> <strong>annotate</strong> | <strong>annotateh</strong>
+<var>&lt;filename&gt; &lt;colors</var> | <var>name&gt; &lt;moves&gt;
+&lt;margin&gt; &lt;time&gt;</var>
+
+<dd> This command is used to annotate (make comments in) a game that
+has already been played.<p><dl>
+
+  <dt> <strong>annotate</strong>
+  <dd> produces a file with the .can extension added to the original
+name.  This file will contain pure ascii information from the
+annotation pass.
+
+  <dt> <strong>annotateh</strong>
+  <dd> produces an HTML file instead (with the .html extension).  This
+includes the normal output, plus a nice bitmapped graphical board
+display for every position where <cite>Crafty</cite> had 'something to say'.
+
+  <dt> <var>&lt;filename&gt;</var>
+  <dd> is the name of the file that has the game moves stored in it.
+This should be a PGN-compatible file, although <cite>Crafty</cite> can
+read nearly any file with chess moves and convert it to pgn using the
+<a href="#read"><strong>read</strong></a> and <a
+href="#savegame"><strong>savegame</strong></a> commands to perform the
+conversion.
+
+  <dt> <var>&lt;colors</var> | <var>name&gt;</var>
+  <dd> indicates which side <cite>Crafty</cite> will annotate.  The
+valid choices are <strong>w</strong>, <strong>b</strong>, and
+<strong>wb</strong>/<strong>bw</strong> for White only, Black only,
+and both, respectively.  <cite>Crafty</cite> will search and produce
+results for the indicated color only, making moves for the other side
+silently as they are read in.  Alternatively, you can specify the
+player's name (useful if you want to annotate several of your own
+games in one large pgn file, for example, and you alternated colors so
+that you can't pick the right one easily).  <cite>Crafty</cite> will
+then figure out which side to annotate for in each game.  Note that
+the name is case-sensitive, but that you only have to enter a string
+that is unique in the name field.  IE if one name is "Anatoly Karpov"
+and the other is "unknown" then specifying Karpov as the name would be
+sufficient.  If the same 'string' appears in both names,
+<cite>Crafty</cite> will complain.
+
+  <dt><var>&lt;moves&gt;</var>
+  <dd> indicates the moves that should be annotated.  If this is a
+single integer, annotation starts at this move number (for the color
+given above) and proceeds for the rest of the game.  If a range is
+given, as (20-33), then only moves 20-33 inclusive are annotated.  To
+annotate the complete game, you can use 1-999.
+
+  <dt> <var>&lt;margin&gt;</var>
+  <dd> gives a score "window" that controls whether
+<cite>Crafty</cite> will produce comments (see below).  The larger
+this number this number, the fewer annotations <cite>Crafty</cite>
+will produce.  A negative number will result in an annotation for
+every move selected.
+
+  <dt> <var>&lt;time&gt;</var>
+  <dd> indicates the time limit for each search.  Since each move
+selected requires two searches, you can take the number of moves,
+double this number and multiply by &lt;time&gt; to determine how long
+the annotation process will take.  This time is in seconds.
+
+  </dl>
+
+
+  <p>How it works.  Suppose you use the command <strong>annotate game1
+w 1-999 1.000 30</strong>.  This asks <cite>Crafty</cite> to read the
+file "game1", and annotate the white moves for the entire game.  The
+margin is 1 pawn and the search time limit is 30 seconds.  The output
+for the annotate command is found in &lt;filename&gt;.can, in this
+case this is game1.can.
+
+  <p><cite>Crafty</cite> first searches the move actually played in
+the game to determine the score for it.  <cite>Crafty</cite> then
+searches the same position, but tries all legal moves.  If the score
+for the best move found in this search is greater than the score for
+the move actually played plus the margin, then a comment is added to
+the output file.  This output file is quite short, with all the game
+moves (plus any PGN tags in the original, for identification purposes)
+plus the brief comments.
+
+  <p>An annotation looks like this: <strong>{real_value
+(depth:best_value PV moves)}</strong>
+
+  <ul>
+
+  <li> <strong>real_value</strong> is the score for the move actually
+  played.
+
+  <li> <strong>depth</strong> is the depth <cite>Crafty</cite>
+  searched to produce the best_value and PV for what it thinks is the
+  best sequence of moves for both sides.
+
+  </ul>
+
+  <p>If you set <var>&lt;margin&gt;</var> to 1.000, you are asking
+<cite>Crafty</cite> to only annotate moves that either lost a pawn or
+more, or moves that failed to win a pawn or more.  If you set
+<var>&lt;margin&gt;</var> to .300, you are asking for annotations for
+any move that makes the score drop about 1/3 of a pawn below the value
+for the best move <cite>Crafty</cite> found.
+
+  <p>If you have other moves you would like to see analyzed during
+this annotate process, at the point where the move can be played,
+insert it into the PGN file as an analysis comment, surrounded by ()
+or {} characters.  <cite>Crafty</cite> will produce analysis for this
+move as well.  If more than one move appears inside a single set of
+delimiters, only the first will be analyzed.  To force
+<cite>Crafty</cite> to analyze more than one move, enter them like
+this:  (move1) (move2) as though they were two separate comments.<p>
+
+
+
+<a name="ANSI"></a>
+<dt><strong>ANSI on</strong> | <strong>off</strong>
+
+<dd> This command is used to control whether or not
+<cite>Crafty</cite> attempts to display its move in reverse video or
+not.  For PC's, Linux, and most Unix boxes, this works fine.  Should
+you find yourself playing <cite>Crafty</cite> via a dumb terminal,
+this might hose the terminal and interfere with your ability to see or
+input moves.  If moves are not displayed in reverse video, it's
+probably wise to turn this off to avoid hanging the terminal you are
+using.<p>
+
+  
+
+<a name="black|white"></a>
+<dt> <strong>black</strong> | <strong>white</strong>
+
+<dd> This command simply toggles the side on move.  if it is White to
+move, and you enter white, nothing happens.  If it is White to move
+and you enter black, then it becomes Black's turn to move immediately
+from the same position.  Used only infrequently.<p>
+
+
+
+<a name="book"></a>
+<dt> <strong>book</strong>
+
+<dd> (See the <a href="#Opening Book">Opening Book Setup and Usage</a>
+section near the end of this document for a full explanation of this
+command and its many options.)  Note that there are special commands
+available (*only* on the command line, *not* in the
+<code>crafty.rc</code>/<code>.craftyrc</code> files) to direct
+<cite>Crafty</cite> to specific directories for the book files
+(<code>bookpath=/a/b/c</code>), the tablebase files
+(<code>tbpath=/i/j/k</code>) and the log files
+(<code>logpath=/x/y/z</code>).  Note that these commands can *only* be
+used on the command line, because they must be executed before the
+engine is initialized.  Putting them in the
+<code>crafty.rc</code>/<code>.craftyrc</code> file will produce error
+messages without affecting how the files are opened.
+
+  <p>If you need to specify multiple directories (tbpath only) you may
+do so by using "<code>tbpath=path1:path2:path3:etc</code>" or else use
+the more Unix-like "<code>tbpath=(path1:path2:path3:etc)</code>"
+instead.  The paths are separated by ":" (colon) characters and
+everything is case-sensitive as usual.  For
+<cite>DOS</cite>/<cite>Windows</cite> users, the separator can be a
+semi-colon (;) or a comma (,) to avoid the drive designation
+ambiguity.<p>
+
+
+
+<a name="cache"></a>
+<dt> <strong>cache</strong> [=] <var>&lt;N&gt;</var>
+
+<dd> This command is used to alter the cache size used for <a
+href="#egtb">endgame database</a> probes.  <var>&lt;N&gt;</var> can be
+a simple integer, representing the number of bytes to use or it can be
+specified as nK or nM representing n * 1024 bytes or n * 1024 * 1024
+bytes.  This should be in multiples of the database "chunk" size,
+which might vary.  Using the nM form guarantees that you will have a
+reasonable number.<p>
+
+
+
+<a name="clock"></a>
+<dt> <strong>clock</strong> <var>&lt;ctime&gt; &lt;otime&gt;</var>
+
+<dd> This command is primarily intended for use when
+<cite>Crafty</cite> is playing in a tournament, such as the WMCCC or
+WCCC events.  If the operator is somewhat slow in entering moves, or
+forgets to stop the clock after making a move for <cite>Crafty</cite>,
+the chess clock for the game will drift from the values that
+<cite>Crafty</cite> maintains internally.  <var>&lt;ctime&gt;</var> is
+the time (in minutes or hh:mm format) <cite>Crafty</cite> has left
+until the next time control, and <var>&lt;otime&gt;</var> is the
+opponent's remaining clock time.  This command can be used at any
+time, but will only affect the time per move *after*
+<cite>Crafty</cite> makes the current move and starts to think about
+what the opponent might do next.<p>
+
+
+
+<a name="computer"></a>
+<dt> <strong>computer</strong>
+
+<dd> This command usually comes from <a
+href="#xboard">XBoard/WinBoard</a>, but can be used at any time to
+tell <cite>Crafty</cite> it is playing a computer.  This will prevent
+some things from happening, such as a draw score that varies, as well
+as adjusting the book selection code to be more selective in what it
+plays.<p>
+
+
+
+<a name="display"></a>
+<dt> <strong>display</strong>
+
+<dd> This command is used to display the game board.  This board is
+displayed using the ICS style #1 type of ASCII display, with White
+always at the bottom of the screen, Black at the top.  Very unusable
+to play a game with, but good to verify a position after it has been
+set up.
+
+  <p>This command is also used to display the various piece/square
+tables, by typing <strong>display</strong> <var>&lt;piece&gt;</var>
+where <var>&lt;piece&gt;</var> is replaced by <strong>pawn</strong>,
+<strong>knight</strong>, <strong>bishop</strong>,
+<strong>rook</strong>, <strong>queen</strong> or
+<strong>king</strong>.  The board is oriented in the same way as the
+display board with a one-to-one correspondence between the squares.
+Perhaps useful for curiosity, but not for anything else.  These values
+can not be modified by the user.
+
+  <p>The final version of this command is used to control what kind of
+output you will see when <cite>Crafty</cite> runs.  Currently the
+following options are available.
+
+     <dl>
+
+     <dt> <strong>display time</strong>:
+
+     <dd> this will make <cite>Crafty</cite> display the amount of
+     time each side takes after making a move.
+
+     
+     <dt> <strong>display changes</strong>:
+
+     <dd> this will make <cite>Crafty</cite> display the PV each time
+     it changes during the search, including when a move fails high or
+     becomes a new best move.
+
+     
+     <dt> <strong>display variation</strong>:
+
+     <dd> this will make <cite>Crafty</cite> display the PV at the end of each
+     iteration, but it will only show the best PV for the entire
+     iteration, not all of the changes.
+
+
+     <dt> <strong>display stats</strong>:
+
+     <dd> this enables basic search statistics output including time,
+     nodes and so forth.
+
+     
+     <dt> <strong>display extstats</strong>:
+
+     <dd> this enables extended search stats including the hashing
+     statistics, search extension statistics and so forth.
+
+     
+     <dt> <strong>display movenum</strong>:
+
+     <dd> causes all PV output to have move numbers embedded in them to
+     make the PV possibly easier to read.  This causes the PV to look
+     like this:  <strong>12. ... Nxe4 13. Bxe4 h6</strong> rather than
+     simply <strong>Nxe4 Bxe4 h6</strong>.  This is very helpful when
+     playing on a server and whispering or kibitzing analysis.  It
+     will also be useful when <cite>Crafty</cite> is run from within a
+     database program as the move numbers will sync up with the actual
+     game.
+
+     
+     <dt> <strong>display moves</strong>:
+
+     <dd> will display each root move as it is searched, along with
+     updating the search time at the bottom of the screen, so you can
+     see what move is currently being analyzed.
+
+     
+     <dt> <strong>display general</strong>:
+
+     <dd> will display general information messages whenever
+     <cite>Crafty</cite> wants to tell you something (ie "clearing
+     hash tables" or other such things like "Mate in n moves."
+
+     </dl>
+
+If you put a <strong>no</strong> in front of any of these options,
+that will disable that particular type of output.<p>
+
+
+
+<a name="draw"></a>
+<dt> <strong>draw</strong>
+
+<dd> offers <cite>Crafty</cite> a draw.  It generally will look at the
+value returned by the last search, and compare it with the value
+returned by an internal function DrawScore().  If the search value is
+not above this result, then <cite>Crafty</cite> will accept the draw.
+If the search value is above the theoretical value for a draw,
+<cite>Crafty</cite> will decline the draw.  Note that
+<cite>Crafty</cite> will offer draws based on internal analysis.  When
+it offers a draw, you can respond with <strong>"draw"</strong>
+although the game does not really end until you exit
+<cite>Crafty</cite>.<p>
+
+
+
+<a name="drawscore"></a>
+<dt> <strong>drawscore</strong> <var>N</var>
+
+<dd> sets the draw score (or contempt factor) to <var>N</var>.  If you
+want <cite>Crafty</cite> to avoid draws, set this number to something that is
+negative.  IE -50 says that a repetition (draw) is the same as being
+1/2 pawn down.  Setting it to +100 will make it try very hard to draw
+because that looks like it is winning a pawn when it does so.  Note
+that this is dangerous (either way) as a -50 in a king and pawn ending
+is very likely dead lost...  and a repetition is better.<p>
+
+
+
+<a name="echo"></a>
+<dt> <strong>echo</strong> <var>&lt;text&gt;</var>
+
+<dd> This command is normally used inside a command file that you are
+going to use to "feed" <cite>Crafty</cite> some positions for analysis
+or whatever.  Since <cite>Crafty</cite> depends on the operating
+system to echo commands as they are typed, commands read in from a
+file are "invisible."  This gives you the ability to insert commands
+into such a file so that <cite>Crafty</cite> displays a message on the
+screen to give you an idea of where it is in processing the file.<p>
+
+
+
+<a name="edit"></a>
+<dt> <strong>edit</strong>
+
+<dd> This command has been "cloned" from <cite>GnuChess</cite> to
+provide an interface with <a href="#xboard">Xboard</a>.  After
+entering the <strong>edit</strong> command, you are in "edit.white"
+mode, where any piece/square combination you enter will add the
+indicated white piece on the given square.  Piece/squares are entered
+as "qa3", or "bc4" for example.  This puts a white queen on a3 and a
+white bishop on c4.  Once all white pieces are entered, typing a "c"
+changes to "edit.black" mode where piece/square combinations now place
+black pieces.  Typing a "."  character exits edit mode.  To clear the
+board initially, you use the "#" character.
+
+  <p>Here's a sample to set up the original starting position, after
+White has played 1. e4, but no other moves have been played.
+
+<pre><strong>
+              edit
+              #
+              ra1 nb1 bc1 qd1 ke1 bf1 ng1 rh1
+              pa2 pb2 pc2 pd2 pe4 pf2 pg2 ph2
+              c
+              ra8 nb8 bc8 qd8 ke8 bf8 ng8 rh8
+              pa7 pb7 pc7 pd7 pe7 pf7 pg7 ph7
+              .
+</strong></pre>
+
+Note that input is free form, so piece/squares can be entered one per
+line or all on one line.  Ditto for the #, c, and . special
+characters.  Note also that there is no way to enter castling status
+here.  It is far better to use the <a href="#setboard">
+<strong>setboard</strong></a> command which uses a FEN-like syntax and
+allows you to set both castling and en passant status.<p>
+
+
+
+<a name="egtb"></a>
+<dt> <strong>egtb</strong>
+
+<dd> This command enables the endgame databases.  <cite>Crafty</cite>
+will use the "tbpath" directory (if provided) to locate and register
+all of the databases you have downloaded.  It will report the largest
+class it found, as in "5 piece tablebase files found" if you
+downloaded at least one 5-piece file.  If you use this command to
+enable databases, you should also consider using the <a
+href="commands.html#cache"><strong>cache</strong></a> command to
+specify the egtb cache size.<p>
+
+
+
+<a name="quit"></a> <dt> <strong>end</strong> | <strong>quit</strong>
+ 
+<dd> These commands are used to terminate <cite>Crafty</cite>.  Note
+that you can resume a game later without having to replay the moves,
+by starting <cite>Crafty</cite> using the <strong>crafty c</strong>
+command.  It will immediately read in the moves for the last game,
+although you will have to set the time controls and clock time
+remaining yourself.<p>
+
+
+
+<a name="evaluation"></a>
+<dt> <strong>evaluation</strong> <var>option &lt;value&gt;</var>
+
+<dd> This command is used to modify the evaluation scores.
+
+  <ul>
+
+
+  <li> The option <strong>asymmetry</strong> is used to make
+  <cite>Crafty</cite> evaluate king safety differently for each side.
+
+    <p><strong>evaluation asymmetry 25</strong> will increase the king
+  safety scores for the opponent only, meaning it will pay less
+  attention to its own king safety than to that of its opponent.  This
+  will make it play more aggressively.
+
+    <p><strong>evaluation asymmetry -25</strong> will reduce the king
+  safety scores for the opponent by 25%, making it care more about
+  its own king safety than that of its opponent.  This will make it
+  play more defensively.
+
+
+  <li> The <strong>bscale</strong> option will adjust the scores for blocked
+  pawns.  The default value is 100.  Increasing this will tend to make
+  <cite>Crafty</cite> dislike blocked pawn positions more, which will
+  lead to more open positions.  Note that this only affects moves
+  _after_ the opening book has been followed, which means that the
+  position might be blocked before the evaluation term has a chance to
+  affect the game.
+
+
+  <li> The <strong>kscale</strong> option will adjust all king safety
+  scores based on the 'value' entered.  For example,
+
+    <dl>
+
+    <dt> <strong>evaluation kscale 50</strong>
+    <dd> will reduce all king safety scores to 50% of their normal
+    value.
+
+    <dt> <strong>evaluation  kscale  133</strong>
+    <dd> will increase all king safety scores to 133% of their normal
+    values.<dd></dl>
+
+
+  <li> The option <strong>tropism</strong> is used to scale king
+  tropism scores. This will attract pieces toward kings.  A value of
+  100 means no change.  other values are treated as a percentage (like
+  scale) to increase (&gt;  100)  or  decrease  (&lt;100)  the  king
+  tropism scores.
+
+  </ul>
+  
+  <p>When you use this command, you will see something like this:
+
+<pre>
+
+   modified king-safety values:
+   white:   0   4  16  26  39  45  58  77  87  90  93  96 100 103 106 109
+          112 116 119 122 125 128 128 128 128 128 128 128 128 128 128 128
+
+   black:   0   5  20  32  48  56  72  96 108 112 116 120 124 128 132 136
+          140 144 148 152 156 160 160 160 160 160 160 160 160 160 160 160
+
+</pre>
+
+Those values represent the king-safety evaluation as the king gets
+more and more exposed.  This is always based on the fast that "crafty"
+will be the side on move when the search starts.  In the above, it was
+White's move when this was typed, meaning that it appears that
+<cite>Crafty</cite> will be playing Black.  Notice that White's king
+safety numbers are scaled by 20% to make it slightly more cautious
+about its own king.  If you type <strong>go</strong> in this position,
+the scores get reversed as <cite>Crafty</cite>'s scores are always
+left alone (with the asymmetry option) and the opponent's scores are
+scaled down as indicated.
+
+  <p>You will see similar numbers (but not black and white sets) that
+represent the actual scores produced for king tropism.  Note that
+pieces interact to choose which element of this vector is used, but in
+general, the more pieces are close to the king, the larger the element
+from this array.
+
+  <ul>
+
+  <li> The <strong>pscale</strong> option is used to scale normal pawn
+  structure scoring in the same way as the other scaling options.  100
+  is the default.  Values less than 100 reduce this term, values over
+  100 inflate it.
+
+    
+  <li> The <strong>ppscale</strong> option is used to scale some
+  passed pawn scoring in the same way as the other scaling options.
+  100 is the default.  Values less than 100 reduce this term, values
+  over 100 inflate it.  This mainly effects outside passed
+  pawns/protected passed pawns.  The normal pawn scoring computes the
+  value of a passed pawn.  This term is then used to scale those terms
+  that modify this value further, such as two connected passed pawns
+  on the 6th, or a passed pawn with the king supporting it in an
+  endgame.
+
+  </ul><p>
+
+
+
+<a name="extensions"></a>  
+<dt> <strong>extensions</strong> <var>&lt;type&gt; &lt;value&gt;</var>
+
+<dd> This command is used to control the extension depth for the
+various extensions done in <cite>Crafty</cite>'s search.  The
+extensions are set as decimal numbers that represent plies (or
+fractions of plies) to extend for each particular reason.  Most
+default to 1.0 and .75, but any value can be used.  Note that values
+&gt; 1.0 are _very_ dangerous as they can cause the search to become
+non-terminating (<cite>Crafty</cite> will stop when it runs out of
+time for the move, but it might not be able to get anything useful
+from such a search).
+
+  <p>These extensions are presently limited to a maximum of one ply of
+extensions at any point in the tree.  IE no matter what you set these
+values to, they can not exceed one ply at present.
+
+  <dl>
+
+  <dt> <strong>incheck</strong>
+
+  <dd> This is the amount to extend when the side on move makes a move
+  that leaves the opponent in check.  Note that <cite>Crafty</cite>
+  extends on the ply where the check is played, not on the next ply
+  where the opposite side is in check.
+
+  <dt> <strong>onerep</strong>
+  <dd> This is the one-reply-to-check extensions, and is done at the
+  point where one side is in check and has exactly one legal move to
+  escape from the check.
+
+  <dt> <strong>pushpp</strong>
+  <dd> This is the extension used for certain passed pawn pushes in
+  the endgame.
+
+  <dt> <strong>recapture</strong>
+  <dd> This is the recapture extension, and is applied when the
+  current move recaptures an equal-valued piece that made a capture at
+  the previous ply.  IE BxN, PxB.  Note that this can only be applied
+  once for every two plies so that BxN, BxB, NxB, NxN won't look like
+  three recaptures.
+
+  <dt> <strong>mate</strong>
+  <dd> This is the mate threat extensions and is applied when a null
+  move search returns -MATED, which means that doing nothing gets the
+  side on move mated.  The opponent must have some sort of serious mate
+  threat in such a position.
+
+  </dl><p>
+
+
+
+<a name="flag"></a>
+<dt> <strong>flag on</strong>|<strong>off</strong>
+
+<dd> This command is used to force <cite>Crafty</cite> to end a game
+where the opponent runs out of time with <a
+href="#xboard">WinBoard/XBoard</a> (<strong>on</strong>) or to ignore
+this (<strong>off</strong>) if desired.<p>
+
+
+
+<a name="force"></a>
+<dt> <strong>force</strong> [<var>move</var>]
+
+<dd> This command is used to force <cite>Crafty</cite> to play a move
+that is different from the one chosen and played by the tree search.
+If [<var>move</var>] is given, and it is a legal move,
+<cite>Crafty</cite> will retract its last move and make this move
+instead.  It does not change the side on move, but does change the
+position of course.  If [<var>move </var>]is not given,
+<cite>Crafty</cite> will prompt you for a move to make.<p>
+
+
+
+<a name="hash"></a>
+<dt> <strong>hash=</strong><var>x</var> and
+<strong>hashp=</strong><var>x</var>
+
+<dd> These commands are used to adjust the size of the hash tables in
+<cite>Crafty</cite>:  <strong>hash</strong> modifies the size of the
+transposition/refutation table, while <strong>hashp</strong> modifies
+the size of the pawn structure/king safety hash table.  The size
+<var>x</var> may be entered as one of the following two types of
+values: nnnK where nnn is an integer indicating how many Kbytes
+<cite>Crafty</cite> should use for this hash table; nnnM where nnn is
+an integer indicating how many Mbytes <cite>Crafty</cite> should use.
+
+  <p>The transposition/refutation table is the more critical of the
+two, because it directly affects search efficiency, particularly in
+the endgame.  For this reason this should be maximized.  The most
+effective size for this hash table is 3/4 of your available memory.
+If you don't know how to figure this out, but know that you have 16
+megs for example, they you can say <strong>hash=16M</strong> and
+<cite>Crafty</cite> will round that down to 12M, which is 3/4 of a
+power of two size.  If you study the sizes that are possible, you will
+find 3M, 6M, 12M, 24M, 48M, and so forth.  Anything up to, but not
+including, the next size will be rounded down to the next lower size.
+hashp should be set to approximately 1/2 of what is left.  For
+example, the P6 <cite>Crafty</cite> runs on when playing on ICC often
+uses <strong>hash=48M</strong> and <strong>hashp=8M</strong>.  The
+only thing to watch for is that if you make this too large,
+particularly under <cite>Windows</cite>, performance will suffer badly
+because of paging I/O overhead.  When <cite>Crafty</cite> is searching
+in a normal (non-book, non-endgame database) position, the disk light
+should *not* be on, indicating lots of I/O.
+
+  <p>There is no danger in making this table too large, although you
+have to watch out because if <cite>Crafty</cite> barely fits in
+memory, doing something else on the machine can cause
+<cite>Crafty</cite> to be swapped out completely or partially,
+depending on the operating system you are using.  If you are going to
+use the machine for anything else while <cite>Crafty</cite> is
+running, it is better to "pretend" that the machine only has 1/2 of
+the memory it actually does when computing the size of the hash tables
+you want to use.<p>
+
+
+
+<a name="help"></a>
+<dt> <strong>help</strong>
+
+<dd> This command displays multiple pages of one-line help, one
+command per line.  If a line ends with [help], then you can use help
+followed by the specific command to get detailed help.<p>
+
+
+
+<a name="history"></a>
+<dt> <strong>history</strong>
+
+<dd> This command displays the history in a vertical column with one
+move for White and one per Black per line.  There are other ways to
+display the current game moves and also to save them in files that are
+explained later.<p>
+
+
+<a name="import"></a>
+  <dt> <strong>import</strong> <var>&lt;filename&gt;</var>
+[<strong>clear</strong>]
+
+<dd> This command is used to import any sort of learning data that
+<cite>Crafty</cite> supports, which currently includes book learning
+data and position learning data.  This command reads the appropriate
+<var>&lt;filename&gt;</var> and imports that learned data, just as
+though <cite>Crafty</cite> had learned it by playing the games.  The
+[<strong>clear</strong>] option, if specified, causes all old learned
+results to be cleared before the import operation, otherwise the
+imported data is simply added to what is already present.<p>
+
+
+
+<a name="info"></a>
+<dt> <strong>info</strong>
+
+<dd> This command is used to display information about
+<cite>Crafty</cite> and the current game.  Such things as the time
+control, the time left on the clocks and other information is
+shown.<p>
+
+
+
+<a name="input"></a>
+<dt> <strong>input</strong> <var>&lt;filename&gt;</var>
+
+<dd> This command is used to redirect the console input I/O stream
+from the keyboard to a file.  <cite>Crafty</cite> will then read
+commands from this file, rather than from the keyboard, and execute
+them just as though they were typed in.  Such a command file *must* be
+terminated by an <strong>"exit"</strong> command (no quotes) as the
+last command in the file.  This reverts the input stream back to the
+keyboard, and prompts you for another command or move.
+
+  <p>This command might be used to configure <cite>Crafty</cite> for a
+specific time control, by putting the appropriate time control
+commands in the file, or to customize the hash table sizes as
+needed.<p>
+
+
+
+<a name="learn"></a>
+<dt> <strong>learn</strong> <var>n</var>
+
+<dd> controls the learning facilities in <cite>Crafty</cite>.
+Currently this is a 3-bit boolean switch, bit 1 (001) controls book
+learning, bit 2 (010) controls position learning, and bit 3 (100)
+controls result learning.  <strong>learn=0</strong> disables all
+learning, <strong>learn=1</strong> enables book learning only,
+<strong>learn=2</strong> enables position learning only, and
+<strong>learn=4</strong> enables result learning.  Add the values
+together to turn on more than one type of learning (default=7 to
+enable everything).<p>
+
+
+
+<a name="level"></a>
+<dt> <strong>level</strong> <var>&lt;m&gt; &lt;t&gt; &lt;inc&gt;</var>
+
+<dd> This command was taken directly from <cite>GnuChess</cite> so
+that the <cite>Xboard</cite>/<cite>WinBoard</cite> interface would
+interface with <cite>Crafty</cite>.  There are other better ways to
+set the time, but this one is well-known.  The three parameters are
+<var>&lt;m&gt;</var> (number of moves in the game)
+<var>&lt;t&gt;</var> initial time on the clock.  After
+<var>&lt;m&gt;</var> moves are made, this amount of time is added to
+the clock again.  <var>&lt;inc&gt;</var> is the Fischer-Clock
+increment that is added back to each clock after a move is made.  It
+may be zero for a non-increment game.
+
+<p> Examples:
+
+  <pre>
+
+                <strong>level 0 5 0</strong>            (ICS 5 0 game)
+                <strong>level 0 5 3</strong>            (ICS 5 3 game)
+                <strong>level 0 15 30</strong>          (ICS 15 30 game)
+
+</pre><p>
+  
+
+<a name="list"></a>
+
+<dt> <strong>list GM</strong> | <strong>IM</strong> |
+<strong>C</strong> | <strong>AK</strong> | <strong>S +</strong><var>name</var>
+[<strong>+</strong><var>name</var> ...]
+<strong>-</strong><var>name</var> [<strong>-</strong><var>name</var>
+<strong>...</strong>]
+
+<dd> This command is used to maintain the internal "lists"
+<cite>Crafty</cite> uses to auto-tune itself when playing on a chess
+server.  There are three lists, <strong>GM</strong>,
+<strong>IM</strong> and <strong>C</strong>.  If <cite>Crafty</cite>'s
+opponent is in any of these lists, <cite>Crafty</cite> adjusts
+internal controls that affect how/when it resigns or offers draws, and
+how randomly it will choose moves from the opening book.  For example,
+<cite>Crafty</cite> resigns much sooner against a GM, because it
+assumes he knows how to win a rook-up ending, regardless of how much
+time is left.  By the same token, when playing against computers,
+<cite>Crafty</cite> will always assume that a draw is 0.000, so that
+it doesn't wreck its position trying to avoid repeating a position.
+
+  <p>The <strong>AK</strong> list will automatically kibitz
+scores/PV's if the opponent is in this list.  The <strong>S</strong>
+list will turn on special scoring for opponents in this list.  The
+only current member is "mercilous".
+
+  <p>The syntax +name1 +name2 simply adds these players to the
+specified list.  To remove a name, use -name1 -name2.  You can use one
+command per name to remove or add, or you can use one command to add
+and remove multiple names.  Note that all names must be entered in
+lowercase characters, using any uppercase characters will break the
+matching algorithm.<dd><p>
+
+
+
+<a name="log"></a>
+<dt> <strong>log off</strong> | <strong>on</strong> |
+<var>&lt;n&gt;</var>
+
+<dd> This command is used to disable logging.  The default is
+<strong>log on</strong>, which causes <cite>Crafty</cite> to produce a
+new log.nnn file for each game played.  If you are running
+<cite>Crafty</cite> on a server, you might use <strong>log
+off</strong>, which disables creating these files as well as the
+game.nnn files used to restart a game after you exit
+<cite>Crafty</cite> and come back later.  If you use the form
+<strong>log</strong> <var>n</var> <cite>Crafty</cite> will simply
+display the last <var>n</var> lines of the log on the screen.  If you
+use <strong>log</strong> <var>n file</var> <cite>Crafty</cite> will
+copy the last n lines of the log to <var>file</var> which could be
+your hard drive, or a floppy.
+
+  <p>Note that if you run with <strong>log off</strong>, you will be
+unable to find out what <cite>Crafty</cite> was thinking about since
+there is no other record of the game.  You will always see a game.001
+because as <cite>Crafty</cite> plays a game, this contains all the
+real moves played so far so that you can back up if needed.  you will
+also see a log.001 file, but it will be empty.<p>
+
+
+<a name="ls"></a>
+<dt> <strong>ls</strong> <var>&lt;filename&gt;</var>
+
+<dd> will list all the files that match the
+<var>&lt;filename&gt;</var> wildcard (the wildcards depend on the
+system you are using, but generally *, ? will work fine).  you can
+also supply path information in the filename if you want to list the
+contents of a different directory.  Just use the same syntax you would
+if you were using "ls" under <cite>Unix</cite> or "dir" under
+<cite>Windows</cite>.<p>
+
+
+
+<a name="mode"></a>
+<dt> <strong>mode tournament</strong> | <strong>normal</strong>
+
+<dd> This command is primarily used to put <cite>Crafty</cite> into
+"tournament" mode, which is intended for use when <cite>Crafty</cite>
+is playing in computer chess events.  It accomplishes two things:  (1)
+makes all draws return a score of 0.000, and (2) makes
+<cite>Crafty</cite> issue a message after each move showing the
+internal chess clock time, and requesting that that operator check and
+adjust as needed using the <a href="#clock"><strong>clock</strong></a>
+command.  This primarily makes <cite>Crafty</cite> comply with
+computer chess rules that say the operator can't do anything not
+specifically requested by the program.<p>
+
+
+
+<a name="name"></a>
+<dt> <strong>name</strong> <var>&lt;name&gt;</var>
+
+<dd> This command is an ICS-play specific command.
+<cite>Xboard</cite>/<cite>WinBoard</cite> uses this to inform
+<cite>Crafty</cite> of the opponent's name.  <cite>Crafty</cite> uses
+the <var>&lt;name&gt;</var>, and looks it up in its GM/IM/C lists, and
+if found, adjusts itself accordingly.  This is not used by the PGN
+code and this will not cause the players <var>&lt;name&gt;</var> to
+show up in the PGN tag section.<p>
+
+
+
+<a name="new"></a>
+<dt> <strong>new</strong>
+
+<dd> This command wipes everything out and starts a brand new game.
+It closes the old log-file and game-file, and opens the next
+sequential numbered file.  It also resets the game to the beginning
+and prepares to start a brand new game.  This was added for Xboard,
+but it turns out that Xboard does not use this, rather it starts
+<cite>Crafty</cite> fresh for each new game by first terminating the
+old copy then starting a new one.  Not nearly as efficient as using
+<strong>new</strong> but likely safer it a program can't be sure of
+resetting everything back to the initial state.<p>
+
+
+
+<a name="noise"></a>
+<dt> <strong>noise</strong> <var>&lt;n&gt;</var>
+
+<dd> This command sets the "noise" level in <cite>Crafty</cite>.
+Basically, until <var>&lt;n&gt;</var> nodes have been searched,
+<cite>Crafty</cite> will be silent and not display analysis.
+
+  <p>This is useful in two ways.  First, in end-games, 20+ ply
+searches are not uncommon, and the search analysis for the first few
+plies arrives so quickly that it is distracting.  Second, when
+observing games (new interface only) on ICS servers, this can be used
+to avoid having <cite>Crafty</cite> generate too many analysis kibitzes.  A value
+of 100000 will basically shut off any output for the first second or
+so (on a P6/200).  Similarly, 1000000 will eliminate any output for
+about the first 10 seconds.  When watching and kibitzing games like
+the World Championship games on ICC, I generally use 5000000, which is
+almost one minute of silence so that the first PV it kibitzes is a
+pretty deep search.
+
+  <p><strong>noise 0</strong> will cause *all* analysis to be
+displayed, which on a fast machine causes no problems.  On a slower
+machine, or over a slow phone connection, this might cause a big
+communication backlog.  The default is roughly one second on a P6/200
+(100000) but can be modified by this command.<p>
+
+
+<a name="operator"></a>
+<dt> <strong>operator</strong> <var>&lt;n&gt;</var>
+
+<dd> Another command intended for use when <cite>Crafty</cite> is
+playing in a tournament, operated by a human.  This tells
+<cite>Crafty</cite> to "hide" <var>&lt;n&gt;</var> minutes of time and
+not use them.  This time is basically allocated to the operator to
+make up for the time it takes to type in moves and/or correct
+mistakes.  At the WMCCC events, the normal value we use is 5.  Playing
+on a server, this is not needed, as it is not needed if you are
+playing <cite>Crafty</cite> yourself.<p>
+  
+
+<a name="perf"></a>
+<dt> <strong>perf</strong>
+
+<dd> This command is primarily used in optimizing <cite>Crafty</cite>,
+or to test the speed of the move generator and
+<code>MakeMove()</code>/<code>UnMakeMove()</code> on different
+platforms.  It produces two results, the moves it can generate per
+second, and the moves is can generate and make/unmake per second.
+While this is not a perfect performance indicator, it does give an
+"approximation" for how fast <cite>Crafty</cite> might run.  In
+general, the higher the numbers, the better the program will play,
+although machines are certainly different.  It's not uncommon to find
+a machine that searches slower than another, but has a higher "perf"
+value.<p>
+
+
+<a name="perft"></a>
+<dt>  <strong>perft</strong> <var>&lt;depth&gt;</var>
+
+<dd> This command is generally used to confirm that the move generator
+and bitmap operators are working properly.  It simply takes the
+current position, and generates/makes/unmakes moves and counts them.
+Many programs use this from a "standard" position to make sure that
+their move generator does not miss generating odd moves like
+enpassant/promotions and also to confirm that the make/unmake code
+correctly updates the board so that the totals remain constant across
+different machines and programs, since there is no alpha/beta or
+evaluation things done.  if <var>&lt;depth&gt;</var> is greater than 5
+or 6, it will take a *long* time, since this is basically a minimax
+tree traversal that will visit *every* node within the
+<var>&lt;depth&gt;</var> search horizon.<p>
+
+
+<a name="pgn"></a>
+<dt>  <strong>pgn</strong> <var>&lt;tag&gt; &lt;value&gt;</var>
+
+<dd> This command is used to set the usual PGN tags to meaningful
+values.  The recognized tags are <strong>Event</strong>,
+<strong>Site</strong>, <strong>Round</strong>, <strong>Date</strong>,
+<strong>White</strong>, <strong>WhiteElo</strong>,
+<strong>Black</strong>, <strong>BlackElo</strong>, and
+<strong>Result</strong>, and the tags *are* case sensitive.  The
+<var>&lt;value&gt;</var> can be any valid input and blanks and special
+characters are allowed.  Note that the date is clearly specified in
+the PGN standard and must be yyyy.mm.dd with no variance.  Valid
+results are <strong>1-0</strong> (White won), <strong>0-1</strong>
+(Black won), <strong>1/2-1/2</strong> (drawn) and <strong>*</strong>
+(unknown).  Some examples:
+
+<pre><strong>
+            pgn Event 14th World MicroComputer Chess Championship
+            pgn Date  1996.10.8
+            pgn Site  Jakarta, Indonesia
+            pgn Round 1
+            pgn White Crafty
+            pgn WhiteElo 2400
+            pgn Black assassin
+            pgn BlackElo 2400
+            pgn Result 1-0
+</strong></pre>
+  
+Setting these values will result in a proper PGN file when using the
+<a href="#savegame"><strong>savegame</strong></a> command.  Note that if you
+use the <a href="#read"><strong>read</strong></a> command to input a PGN game,
+these values will be extracted from that game if they are given.<p>
+
+
+
+<a name="ponder"></a>  
+<dt> <strong>ponder off</strong> | <strong>on</strong> |
+<var>&lt;move&gt;</var>
+
+<dd> This command serves two purposes.  First, it can be used to
+disable (<strong>off</strong>) or enable (<strong>on</strong>)
+thinking on the opponent's time (or pondering as it is called in many
+programs including <cite>Crafty</cite>.)  Turning it off will weaken
+<cite>Crafty</cite> since it will not use any machine time while
+waiting on the opponent to move.  It is sometimes useful, however,
+when playing <cite>Crafty</cite> against another computer and the
+machines are not equal.  If <cite>Crafty</cite> is on a faster
+machine, and you attempt to adjust for this by giving the opponent
+more time than <cite>Crafty</cite>, it doesn't work quite as expected,
+because while the opponent is thinking, so is <cite>Crafty</cite>,
+which lets it use the extra opponent time in an unexpected way.  In
+such a case, it's best to stop pondering in both programs.
+
+  <p>If <var>&lt;move&gt;</var> is given, it directs
+<cite>Crafty</cite> to use that <var>&lt;move&gt;</var> to ponder,
+rather than the one from the previous search.  Most commonly this is
+used to set the right move to ponder after <cite>Crafty</cite> has
+been stopped and then restarted, assuming that it is the opponent's
+turn to move when this happens.  Otherwise, it is probably better to
+not try to influence things, although if you are watching and suddenly
+wonder "what would <cite>Crafty</cite> do if the opponent plays move
+'X'?", you can answer this by simply typing <strong>ponder X</strong>
+and then watching the analysis.  You should reset the correct ponder
+move after you do this of course.<p>
+
+
+<a name="read"></a>
+<dt> <strong>read</strong> | <strong>reada</strong>
+[<var>&lt;filename&gt;</var>]
+
+<dd> This command will read input, and extract the chess moves and
+make them to set up the position at the end of the game.  It first
+resets the chess board to the initial position (read command only) and
+then extracts the PGN tags (if present) from the front of the input.
+The rest of the input is parsed for chess moves (comments and similar
+things are culled automatically) and the moves are made and added to
+the game history.  Once this is done, you can back up, go forward, or
+play from any point in the game.  If you specify a
+<var>&lt;filename&gt;</var> everything is read from the file,
+otherwise it is read from the console keyboard.
+
+  <p>The <strong>reada</strong> command reads moves, but appends them
+to the current game history/position rather than resetting to the
+initial chess position.  This lets you read in a game, then use reada
+to manually add some more moves to see the resulting position.<p>
+
+
+
+<a name="reset"></a>
+<dt> <strong>reset</strong> <var>&lt;n&gt;</var>
+
+<dd> This command lets you back up in the current game to any move of
+your choice.  <strong>reset</strong> <var>&lt;n&gt;</var> backs up the
+game to move <var>&lt;n&gt;</var> with the same side on move.  If you
+want to first change the side to move, use the <a href="#black|white"
+><strong>white</strong>|<strong>black</strong></a> command, then use
+the <strong>reset</strong> command to back up to the right move.  Note
+that you can also go forward as well, just so there are moves in the
+current game history.<p>
+
+
+
+<a name="resign"></a>
+<dt> <strong>resign</strong> <var>&lt;n&gt;</var>
+
+<dd> This command sets the resign threshold.  When running on ICC I
+typically use <strong>resign 9</strong> which will make
+<cite>Crafty</cite> resign roughly five moves after the score drops
+below -9.000.  For IM's I change this to 6, and for GM's I often use
+3, so that it will resign quicker and not drag a lost game out
+unnecessarily.<p>
+
+
+<a name="savegame"></a>
+<dt> <strong>savegame</strong> <var>&lt;filename&gt;</var>
+
+<dd> This command is used to save the current game in a PGN-compliant
+file with the PGN tags included.  Note that the default TAG values
+might not be what you want if you do not either use the <a
+href="#pgn"><strong>pgn</strong></a> command to set them or else input
+a valid PGN file with the tags already filled in.
+
+  <p>Be aware that this command doesn't check the filename for
+legality since anything goes in UNIX.  In DOS, you might produce a bad
+filename with either too many characters, too many periods, or
+whatever, so be careful with the name you choose.  Note also that this
+file will be overwritten if it already exists, so be sure to choose a
+name that is not the name of a file that has something you consider
+important in it.<p>
+
+
+
+<a name="savepos"></a>
+<dt> <strong>savepos</strong> <var>&lt;filename&gt;</var>
+
+<dd> This command writes a single line into
+<var>&lt;filename&gt;</var> in FEN-like notation.  This lets you save
+a position, and then come back later to re-examine it.  You would use
+the <a href=#input><strong>input</strong>
+<var>&lt;filename&gt;</var></a> command to input this file and set the
+position up.<p>
+
+
+
+<a name="search"></a>
+<dt> <strong>search</strong> <var>&lt;move&gt;</var>
+
+<dd> This command allows you to specify one particular move for the
+side on move, and then when you tell <cite>Crafty</cite> to search
+this position, this is the only move that will be searched.  This is
+used internally by the annotate command, but can be used to
+investigate one specific move.  If the move is not the best move, a
+normal search won't show you why it is bad, but this will.  It is also
+quite a bit faster since the other moves in the position are not
+searched at all.<p>
+
+
+
+<a name="settc"></a>
+<dt> <strong>settc</strong> <var>&lt;moves&gt; &lt;ctime&gt;
+&lt;otime&gt;</var>
+
+<dd> This command is primarily used in tournaments, and is an
+error-recovery command.  If the machine crashes and corrupts the game
+history file, frequently the operator will have to simply set the
+position using the <a href=#setboard"><strong>setboard</strong></a>
+command, and then use the <strong>settc</strong> command to restore
+the time control values.
+
+  <dl>
+
+  <dt> <var>&lt;moves&gt;</var>
+  <dd> is moves until the next time control (from <cite>Crafty</cite>'s
+perspective, be careful and don't look at the opponent's moves to time
+control by accident.)<dd>
+
+  <dt> <var>&lt;ctime&gt;</var>
+  <dd> is minutes left on <cite>Crafty</cite>'s clock,
+<var>&lt;otime&gt;</var> is minutes left on the opponent's clock.
+
+  </dl><p>
+
+
+
+<a name="setboard"></a>
+<dt> <strong>setboard</strong> <var>&lt;FEN input&gt;</var>
+
+<dd> This command is used to set a chess position up for analysis and
+is the preferred way to do this, rather than using the gnu <a
+href=#edit><strong> edit</strong></a> interface.  It uses a classic
+Forsythe-like notation to encode the position and also has provisions
+for castling status and en passant capture status.
+
+  <p>Standard piece codes p, n, b, r, q, k are used to denote the type
+of piece on a square, upper/lower case are used to indicate the color
+of the piece (uppercase=white pieces, lowercase=black pieces).
+
+  <p>Pieces are entered from the classic chess diagram's orientation
+of a8 being the upper-left-hand corner of the board, and this square
+is entered first, followed by the remainder of the 8th rank left to
+right.  To indicate empty squares, use a number between 1 and 8 to
+indicate how many adjacent squares are empty.  Use a slash (/) to
+terminate each rank after all of the pieces for that rank have been
+entered.  Note that you do not have to account for all 8 squares on a
+given rank, although many test suites do this for clarity.
+
+  <p>The input <strong>k2r/ppp////Q/5PPP/7K/ B</strong>
+will setup the board position that is given below:
+
+<pre><tt>
+                      -k  *  * -r  *  *  *  *
+                      -p -p -p  *  *  *  *  *
+                       *  *  *  *  *  *  *  *
+                       *  *  *  *  *  *  *  *
+                       *  *  *  *  *  *  *  *
+                       q  *  *  *  *  *  *  *
+                       *  *  *  *  *  p  p  p
+                       *  *  *  *  *  *  *  k      *
+</tt></pre>
+
+This assumes that k represents a white king and -q represents a black
+queen. 
+
+  <p>The field after the final "/" should be either b or w to indicate
+which side is "on move."  After this side-to-move field any of the
+following characters can appear to indicate the following:  KQ:  White
+can castle king-side/queen-side/both; kq: same for Black; a1-h8:
+indicates the square occupied by a pawn that can be captured en
+passant.<p>
+
+
+
+<a name="score"></a>
+<dt> <strong>score</strong>
+
+<dd> This command simply gives the positional score for the current
+position.  This score is from White's perspective, so a + score is
+good for White, a - score is good for Black.  <cite>Crafty</cite> also
+breaks the score down into major categories (from Evaluate()) to
+indicate things like pawn structure, piece evaluation, passed pawns,
+development, and so forth.  Note that some of <cite>Crafty</cite>'s
+evaluation is asymmetric, so that if you simply change sides with the
+<a
+href="#black|white"><strong>white</strong>/<strong>black</strong></a>
+command and then enter "score" again, you may get a different value.
+This is *not* a bug.  :)<p>
+
+
+
+<a name="sd"></a>
+<dt> <strong>sd</strong> <var>&lt;n&gt;</var>
+
+<dd> This command lets you specify a specific search depth limit that
+<cite>Crafty</cite> can not exceed.  It still pays attention to the
+clock, however, so often you will use the <a
+href=#st><strong>st</strong></a> command (below) in conjunction with
+this if the search is going to take an extended amount of time.
+<var>&lt;n&gt;</var> is the depth (in plies or 1/2 moves) that the
+search must reach.  Note that if <cite>Crafty</cite> is pondering, it
+still honors this limit and will stop a ponder search after this depth
+has been completed as well.  This is *not* the way to make
+<cite>Crafty</cite> play weaker, although this will be covered in a
+later section of this document.<p>
+
+
+
+<a name="show"></a>
+<dt> <strong>show</strong> <var>&lt;category&gt;</var>
+
+<dd> This command forces <cite>Crafty</cite> to display additional
+information about certain actions it takes.  Currently the only
+<var>&lt;category&gt;</var> is <strong>book</strong> which will make
+<cite>Crafty</cite> display information about all the book moves it
+found in the database.  More is given about this information in the
+the <a href="#Opening Book">Opening Book Setup and Usage</a> section
+later in this file.<p>
+
+
+<a name="smpmt"></a>
+<dt> <strong>smpmt=</strong><var>n</var>
+
+<dd> This command is used to set the number of threads to use on a
+machine with more than one processor.  For optimal performance,
+"<var>n</var>" should be set to the number of processors you have,
+although using fewer will reduce the load on your machine.  For this
+command to work, <cite>Crafty</cite> must have been compiled with SMP
+defined.  When compiled with SMP enabled, <strong>mt=0</strong>
+effectively disables the SMP code completely.
+
+  <p>This command also has two that are closely related:
+<strong>smpmin</strong> and <strong>smpmax</strong>.  Both accept
+single numerical arguments.<dl>
+
+
+  <a name="smpmin"></a>
+  <dt> <strong>smpmin</strong>
+
+  <dd> is used to control the minimum tree depth required at a node
+  for it to be eligible for parallel searching.  IE <strong>smpmin
+  2</strong> says don't split unless at least two more plies are left
+  to search below this node.<dd
+
+
+  <a name="smpmax"></a>
+  <dt> <strong>smpmax</strong>
+
+  <dd> sets the maximum for the same idea; that is, <strong>smpmax
+  10</strong> says don't split if more than 10 plies are remaining
+  below this node.
+
+  </dl><p>
+
+
+
+<a name="sn"></a>
+<dt> <strong>sn</strong> <var>&lt;n&gt;</var>
+
+<dd> This command is similar to the <a
+href="#sd"><strong>sd</strong></a> command, but instead of setting a
+specific search depth, it sets a number of nodes to search.  Once the
+search has searched this number of nodes (+ maybe one more second of
+searching to check the time) the search will exit.<p>
+
+
+
+<a name="st"></a>
+<dt> <strong>st</strong> <var>&lt;n&gt;</var>
+
+<dd> This command lets you specify a specific search time limit for
+<cite>Crafty</cite>.  Again, this is not the preferred way to set a
+time per move, because this limit is absolute and <cite>Crafty</cite>
+will never go over this limit, even if it sees that it is losing or
+getting mated.  Setting the time control with the usual <a
+href="#time"><strong>time</strong></a> or <a
+href="#level"><strong>level</strong></a> command is *much* better.
+<var>&lt;n&gt;</var> is given in seconds, although it may also be
+entered as mm:ss if preferred.<p>
+
+
+
+<a name="swindle"></a>
+<dt> <strong>swindle on</strong>|<strong>off</strong>
+
+<dd> This command gives you control over "swindle mode."  When on, and
+playing a game, <cite>Crafty</cite> will try to win drawn endings
+(according to the tablebases) if it has winning chances (like KR vs
+KB, for example).  This will put up very stiff "resistance" to
+accepting the draw, while with this mode off, it may be very easy to
+draw a position once the tablebases say "drawn."  This mode is
+automatically turned "off" during <a href="#analyze">analysis</a> or
+when <a href="#annotate">annotating</a> a game, and is only used when
+actually playing a game against an opponent.  If there are <a
+href="#egtb">no tablebases</a> then this has no effect on the game at
+all.<p>
+
+
+
+<a name="tags"></a>
+<dt> <strong>tags</strong>
+
+<dd> This command will simply display the current PGN tags (you can
+edit them with the various <a href="#pgn"><strong>pgn</strong></a>
+commands).<p>
+
+
+
+<a name="test"></a>
+<dt> <strong>test</strong> <var>&lt;filename&gt;</var> [<var>n</var>]
+
+<dd> This command will run a suite of positions (the file must be in
+"<cite>Crafty</cite>" format as explained below) and produce a summary
+of how many it got right, wrong, etc.  It uses the time per move you
+set with the (typically) <strong>st</strong> <var>&lt;n&gt;</var>
+command.  The optional parameter [<var>n</var>] is the "early exit"
+counter.  If <cite>Crafty</cite> finds, and holds the solution move
+for n iterations, it will terminate the search.  I use this to make a
+"<cite>Win at Chess</cite>" run take &lt; 15 minutes, even though the
+time per position is set to 1 minute, by setting n to 2.  After two
+correct iterations, <cite>Crafty</cite> goes on to the next problem.
+For absolutely correct results, this is not advisable as it could
+obviously change its mind later on, but for performance analysis, this
+saves a lot of time.
+
+  <p>The test suite contains the following lines:  (this is a sample
+from my test suite for <cite>Win At Chess</cite>.)
+
+  <pre>
+          title wac299
+          setboard 1n2rr2/1pk3pp/pNn2p2/2N1p3/8/6P1/PP2PPKP/2RR4 w
+          solution Nca4
+
+          title wac300
+          setboard b2b1r1k/3R1ppp/4qP2/4p1PQ/4P3/5B2/4N1K1/8 w
+          solution g6
+
+          end
+
+  </pre>
+
+  <ul>
+
+  <li> The <strong>title</strong> command simply displays this message
+  in the log file so you can look at the output and figure out which 
+  position it goes with.  This is optional, but useful.
+
+  <li> The <strong>setboard</strong> command sets the position as
+  explained above.
+
+  <li> The <strong>solution</strong> command gives the set of solution
+  moves (one or more moves that are separated by blanks) and/or a set
+  of "anti-solution" moves (moves that must not be played to
+  count  the  position as correct.)  "anti-solution" moves are
+  simply followed by a "?" character, for example:
+  
+        <center><strong> solution Bxa7?</strong></center>
+        <center> </center>
+  
+    <p>The <strong>solution</strong> command supplies a set of key moves, and
+  then starts the search.  If, after the search terminates, one of the
+  key solution moves was chosen (or none of the anti-solution moves
+  were chosen) the position is counted as correct.
+
+  <li> The final line should be <strong>end</strong> although
+  end-of-file or EOF will also be detected in this case.</ul><p>
+
+
+
+<a name="time"></a>
+<dt> <strong>time
+  CPU</strong> | <strong>elapsed</strong> | <var>&lt;values&gt;</var>
+
+<dd> In the forms <strong>time CPU</strong> and <strong>time
+elapsed</strong>, this command controls whether the program uses CPU
+time or wall-clock time for timing.  For tournament play, it is safer
+to use wall-clock timing.  For testing it may be more consistent to
+use CPU timing if the machine is used for other things concurrently
+with the tests being run.
+
+  <p>The form <strong>time</strong> <var>&lt;values&gt;</var> is used
+to set the basic search timing controls.  The general form of the
+command is as follows:
+
+      <center><strong>time</strong>
+      <var>nmoves</var> <strong>/</strong> <var>ntime</var>
+      [<strong>/</strong> <var>nmoves</var> <strong>/</strong>
+      <var>ntime</var>]
+      [<strong>/</strong> <var>increment</var>]</center>
+
+<ul>
+    
+<li> <var>nmoves</var><strong>/</strong><var>ntime</var> represents a
+traditional first time control when nmoves is an integer representing
+the number of moves and ntime is the total time allowed for these
+moves.
+
+<li> the optional
+[<var>nmoves</var><strong>/</strong><var>ntime</var>] is a traditional
+secondary time control.
+
+<li> <var>increment</var> is a feature related to ICS play and
+emulates the Fischer clock where <var>&lt;increment&gt;</var> is added
+to the time left after each move is made.
+
+</ul>
+
+  <p>Instead of an integer, nmoves can be <strong>sd</strong> which
+represents a sudden death time control of the remainder of the game
+played in ntime.  The optional secondary time control can be a
+sudden-death time control, as in the following example:
+
+        <center><strong>time 60/30/sd/30</strong>;</center>
+
+this sets 60 moves in 30 minutes, then game in 30 additional
+minutes.  An increment can be added if desired.
+
+  <p>One final example is the following:
+
+        <center><strong>time sd/15</strong></center>
+
+which is a simple game/15 setting.  This command can also be used to
+perform the same function as the "level" command.  For example, to set
+up a classic ICS 2 12 game, the following would would work:
+
+        <center><strong>time sd/2/12</strong>.</center>
+<p>
+
+
+<a name="trace"></a>
+<dt> <strong>trace</strong> <var>&lt;n&gt;</var>
+
+<dd> This command is used to make <cite>Crafty</cite> display the tree as it
+searches a position.  Due to the incredible speed at which this
+program can search, however, this is less than useful since it can
+swamp any known display driver and make things scroll impossibly fast.
+
+  <p>Also note that this command usually is disabled, because
+<cite>Crafty</cite> is generally compiled with the -DFAST flag, which
+removes the trace output code from the search to make things slightly
+faster.  You will have to recompile, without the -DFAST, if you want
+to use this.  Its utility is limited, except for debugging, anyway.<p>
+
+
+<a name="usage"></a>
+<dt> <strong>usage</strong> <var>&lt;n&gt;</var>
+
+<dd> is simply a way to modify <cite>Crafty</cite>'s time usage to fit
+your tastes.  You can "suggest" a time limit with any of the options
+discussed previously, but if you use anything other than the <a
+href="#st"><strong>st</strong></a> command, <cite>Crafty</cite> will
+do its best to use time as you suggest, but it also anticipates that
+it will save some time by pondering, etc., and will therefore be more
+aggressive at trying to use time.  If <var>&lt;n&gt;</var> is a
+positive integer, it is taken as a percentage and <cite>Crafty</cite>
+will compute the time limit it thinks is appropriate for the current
+clock settings, then increase this limit by this percentage (50 would
+make it take 1.5 times longer than normal.)  -50 would make it take
+1/2 the time it would normally take.
+
+  <p><cite>Crafty</cite> adjusts the usage internally based on time
+left, opponent's time left, how quickly or slowly the opponent is
+moving, etc.  Further modifying things with this is dangerous, but
+possible.<p>
+
+
+
+<a name="whisper/kibitz"></a>
+<dt> <strong>whisper/kibitz</strong> <var>&lt;n&gt;</var>
+
+<dd> These commands are used to control what <cite>Crafty</cite> will
+whisper or kibitz on a chess server.  The options are (1) only
+whispers or kibitzes mate announcements; (2) adds time, score, depth
+to the previous option, but no PV or moves.  (3) adds the PV.  (4)
+adds book move information to the output.  The remaining two options
+generate a lot of output and should be used with caution.  (5)
+displays the PV after each iteration completes.  I use this when using
+my custom interface to let <cite>Crafty</cite> observe/comment on
+games in progress on ICC.  Noise can be used to prevent shallow
+searches from generating output and keeping "noise" down on the games
+being watched.  (6) basically will whisper/kibitz nearly everything
+you see on the console from a search, each PV when it changes, fail
+highs and fail lows, etc.  A significant amount of output that should
+be carefully weighed before turning it "loose."<p>
+
+
+
+<a name="xboard"></a>
+<dt> <strong>xboard</strong>
+
+<dd> This command turns on <cite>Xboard</cite>/<cite>WinBoard</cite>
+compatibility mode, and makes <cite>Crafty</cite> behave somewhat like
+GnuChess.  This is designed to be used *only* when <cite>Crafty</cite>
+is interfacing with <cite>Xboard</cite>/<cite>WinBoard</cite>.
+<cite>Crafty</cite> will not work with these two GUIs without this
+option, and really won't work very well with this option if it is not
+connected to one of them.<p>
+
+
+</dl>
+
+There are other commands that are not documented.  They are part of
+the xboard protocol and really should not be used by the normal user.
+You can find all the commands in option.c should you be interested.
+
+
+
+
+<hr>
+<a name="Opening Book"></a>
+<h2>Opening Book Setup and Usage</h2>
+
+<cite>Crafty</cite> uses two pre-compiled opening books, called
+"<code>book.bin</code>" and "<code>books.bin</code>".
+
+  <p>The file <code>book.bin</code> is usually build from a large text
+file containing PGN games, often taken from collections of GM games.
+Building <code>book.bin</code> is a simple exercise and requires
+nothing other than the raw input file you are going to use.  Generally
+this will be either <code>medium.zip</code> or the set of four files
+<code>large</code>[1-4].<code>zip</code>, all of which are stored on
+the web site <a
+href="http://www.cis.uab.edu/hyatt/crafty">www.cis.uab.edu/hyatt/crafty</a>.
+
+  <p>To create the file <code>book.bin</code>, you need a PGN game
+collection that is a *real* PGN-compliant file.  Supposing this file
+is called "large.pgn" you would use the following command:
+
+<center><strong>book create large.pgn</strong> <var>&lt;m&gt;</var>
+[<var>n</var>] [<var>wpct</var>]</center>
+
+  <p>The only thing you have to supply is <var>&lt;m&gt;</var>,
+a number indicating how many moves from each game are to be stored in
+the book.bin database.  I typically use 60, which stores the first 60
+moves from each game.  Increasing this number slightly increases the
+probability that <cite>Crafty</cite> will stay in book longer, but it also
+increases the probability that it will follow a game too far, so that
+it begins to reach positions where the move actually played might not
+be the best move, letting it fall into a bad hole.  Increasing this
+also increases the size of the database as well.
+
+  <p>You can decrease the size of the book, and also reduce the number
+of ugly moves by specifying [<var>n</var>], which says that unless a
+move is played in at least <var>n</var> games, the move is discarded.
+This will substantially decrease the size of the book.bin file, and
+also eliminate single game moves that often have significant errors or
+blunders.
+
+  <p>You can increase the quality of book lines by specifying
+<var>wpct</var> which is the "winning percentage".  This is specified
+as a percentage of lost games, and is used to discard moves that led
+to mostly losses.  A safe value is 50, which says that if a particular
+opening move didn't win at least 50% as many games as it lost, the
+move is culled.  A value of 100 would mean that moves are culled if
+they produced more losses than wins, and is really a strict criterion.
+
+  <p>After creating <code>book.bin</code>, you need to create
+<code>books.bin</code>.  This is a small version of
+<code>book.bin</code>, which is intended to give you more control over
+the moves/openings <cite>Crafty</cite> will play.  This is usually
+built from the file <code>start.pgn</code> on the web site, but you
+can modify this file to suit your taste easily.  To build
+<code>books.bin</code>, you use the following command:
+
+    <center><strong>books create start.pgn 60</strong></center>
+
+  <p>Again, 60 is what I use, but none of my <code>start.pgn</code>
+lines go anywhere near that many moves.  The main point here is that
+in <code>start.pgn</code>, you can append a "!" to any move you want,
+and when it is <cite>Crafty</cite>'s turn to move for that color, it
+will play from the set of moves with "!" if there are any, ignoring
+the rest of the book moves.  If you only want it to play 1. e4 as
+White, you would just enter the short game:
+
+    <center><strong>[Crafty only plays 1. e4]
+    1. e4!</strong></center>
+
+  <p>and you are finished!  You can enter as many as you want.  If on
+the other hand there is a move you don't want <cite>Crafty</cite> to
+play, then follow that move with a "?" and it will never play it.
+Moves in <code>books.bin</code> that are not flagged with ! or ? don't
+have any influence on <cite>Crafty</cite>'s choice at all.
+
+  <p>Here's how the files are used.  When searching a position,
+<cite>Crafty</cite> first enumerates the set of moves it can find in
+the opening database.  It then does the same for the
+<code>books.bin</code> database, and performs a "merge" operation to
+combine the ?  and !  flags...  The purpose of the
+<code>books.bin</code> file is to give you a small database that you
+can easily modify, rebuild, and repeat this process over and over.
+Since it takes a fraction of a second to completely rebuild this file,
+it is very easy to modify this to control what <cite>Crafty</cite>
+will play, without having to rebuild the large database.
+
+  <p>One important characteristic of the PGN input is the Result tag
+must be specified in most of the lines, because <cite>Crafty</cite>
+counts wins, losses and draws for each book move and uses these counts
+with some of the book selection options given below.
+
+
+
+<h3>How the flags are used.</h3>
+
+The ! and ? flags should only appear in the small
+<code>books.bin</code> file, although there is no reason why they can
+not appear in the large file as well.  For this discussion, it doesn't
+matter since <cite>Crafty</cite> takes the moves from both files and
+"merges" the flags, etc., into one entry for each move.
+
+  <p>Quite simply, if any book legal book move has a ! flag, then
+<cite>Crafty</cite> will only play moves from the set of moves which
+all have the !  flag.  If a move has a ? flag, then that move is
+immediately removed from the set of possible book moves.  If the only
+legal book move has a ? flag, it will not be played as a book move and
+<cite>Crafty</cite> will simply pretend that it found no book moves
+and will execute a normal tree search.  Pretty simple.
+
+
+<h3>
+How to control the frequency of opening move selection.</h3>
+
+A new feature in version 15.15 and beyond allows you to append a PGN
+comment to any move in a text file used to create
+<code>books.bin</code>, of the form <strong>{play</strong>
+<var>nn</var><strong>%}</strong>.  This will force the move it follows
+to be played that percentage of the time, regardless of the normal
+book-ordering values based on frequency and so forth.
+
+  <p>Note that <strong>{play 0%}</strong> will not prevent a move from
+being played at all, as this will look just like a move with no
+percent specified.  To avoid playing a move, use the ? flag.
+
+
+<h3>
+How does <cite>Crafty</cite> choose book moves?</h3>
+
+<cite>Crafty</cite>'s book selection algorithm depends on two
+user-defined values that can be set at any time during a game:
+
+<center><strong>book random</strong> <var>&lt;n&gt;</var></center>
+
+<center><strong>book width</strong><var> &lt;w&gt;</var></center>
+
+  <p>The selection algorithm first finds the set of legal book moves
+as above.  This set will either be all !  moves, or will have no !
+moves in it.  This set is then sorted based on the setting of book
+random.  Here's the options:
+
+  <p><strong>book random 0</strong>.  This is a special case for book
+selection.  <cite>Crafty</cite> simply takes the set of book moves,
+and searches only these moves using a normal alpha/beta search, but
+with a shorter than usual time limit.  It then plays the move that
+produces the best search value.  This has one serious disadvantage in
+that there is no randomness to this at all.  It will always play the
+same move in the same position, unless the evaluation is modified, or
+the time per move is different enough to let the search find a
+different move from the book move set.
+
+  <p><strong>book random 1</strong>.  This enables a random form of
+book move selection, but you have a lot of control over how moves are
+randomly chosen.  The moves are ordered, based on 4 parameters:
+frequency of play, win/lose ratio, static evaluation and learned
+results.  Normally these are factored into the value used to sort the
+moves, based on default settings that you can modify by using the
+command <strong>bookw</strong> <var>&lt;option&gt; &lt;N&gt;</var>,
+where <var>&lt;option&gt;</var> should be "freq", "ratio", "eval" or
+"learn".  <var>&lt;N&gt;</var> should be a number between 0 and 1.
+
+  <p><cite>Crafty</cite> finds the min and max values for each of the
+4 parameters, and then maps this into the range 0-1000 for each
+parameter.  Each parameter is multiplied by the corresponding "weight"
+you have assigned, and this is used as a value to sort the moves from
+low to high.  Note that the first sort value is always the "play
+percent" to move them to the top of the list.  For moves with equal
+"play percent" values, the normal sort-value is used as the
+second-level sort variable (if no moves have a play-percent, then this
+second-level variable is the only one used, of course.)
+
+  <p>Once <cite>Crafty</cite> has sorted the moves as given above, it
+next excludes any book moves which have 0 wins.  This culls the odd
+lines where a player chose a bad line and lost quickly.  With zero
+wins, it will never be chosen, although <cite>Crafty</cite> will
+happily follow it from the other side.  :)  This is not anywhere near
+perfect, however, because an opening could have 1 win and 19 losses
+and that still would stay in the list.
+
+  <p>If a move has a learned value of &gt; 100, this move is elevated
+in priority to that of a ! move, since it appears to win material
+instantly.  If a value is &lt; -100, it is given a ? since it appears
+to be a lemon.
+
+  <p>After this, the setting for <strong>book width</strong>
+<var>&lt;w&gt;</var> is used to keep the first
+<var>&lt;w&gt;</var> moves in the list, after the above culling
+has been completed.  The smaller you make <var>&lt;w&gt;</var>
+the less randomness you get, but the chance of <cite>Crafty</cite>
+popping out a really bizarre book move gets smaller as well.
+
+  <p>After sorting, the final step is to fold in any mandatory "play
+percent" values.  What this step does is that it finds all the moves
+in the "playable move set" just computed, which have no
+percent-to-play value set.  It sums the sort-values for these moves,
+then adjusts the sort-values for the other moves so that their
+percentages will be honored.
+
+  <p>Once this has been done, <cite>Crafty</cite> simply uses the
+"sort value" for each move to compute a total for all moves.  It then
+generates a random number between 1 and this limit, and chooses the
+move that this probability distribution matches.  This will certainly
+evolve over time as new ideas are developed.
+
+  <p>For my play on ICC, I use <strong>book random 1</strong>, and
+<strong>book width 5</strong> normally, although for titled players
+this is reduced to <strong>book width 3</strong>.  For computers, I
+reduce this further to <strong>2</strong>, to try to play reasonable
+openings and cull the gambits and things that don't work out.
+
+
+<h3> How does book learning work and how can I share learned
+results?</h3>
+
+  <p>1.  *All* of <cite>Crafty</cite>'s "learned knowledge" is in the
+<code>book.bin</code> file.  It keeps the learned value and learned
+count right in the book file for speed.  You can't modify it, although
+<a href="#show"><strong>show book</strong></a> will make
+<cite>Crafty</cite> display all the book stuff before it makes a move.
+
+  <p>2.  the <code>book.lrn</code> file has two purposes:  (a) to
+serve as a log for your prying eyes, so you can see what it's learned,
+against whom, and what the score was that got its attention in the
+first place.  The values on the end of each book line, inside the {}
+characters are as follows:
+
+<center>{value,  depth, rating_difference}</center>
+
+<dl>
+  
+<dt> <strong>value</strong> is the value of the "key" search that
+comes from the first 10 moves out of book.  It's in centipawns, and +
+is good - is bad.<dd>
+
+<dt> <strong>depth</strong> is the depth the search reached at this "key"
+position, the deeper the search, the more the value is "trusted."<dd>
+
+<dt> <strong>rating_difference</strong> is <cite>Crafty</cite>'s
+rating - opponent's rating a negative value means pay more attention
+to the score since the opponent is better than <cite>Crafty</cite>, a
+positive value means to take the score with a grain of salt, because
+the opponent was weaker than <cite>Crafty</cite>.<dd></dl>
+
+
+  <p>You can delete this file at any time, and it has no effect on
+learning.  As I mentioned, the learning takes place in
+<code>book.bin</code>... this is mainly for you to peek at if you are
+interested.  However, this is the "portable learning data file" also,
+and can be given to others to import into their <cite>Crafty</cite>,
+where it will affect the opening book just like their
+<cite>Crafty</cite> had played the openings and got the same scores.
+There are two ways to use such "lrn" files:
+
+  <p>1.  <a href="#import"><strong>import</strong></a>
+<strong>&lt;filename&gt;</strong> will read &lt;filename&gt; and
+import the knowledge therein into your book.bin.  Since I use the same
+learning code as is used when playing games, this information also
+gets appended to *your* <code>book.lrn</code> file as well, so that
+your <code>book.lrn</code> always reflects *everything* your program
+has learned, so long as you don't ever remove this file.  It would be
+a mistake to use this command on your own book.lrn file, because the
+things would get counted twice, which might or might not be a good
+thing.
+
+  <p>2.  <a href="#import"<strong>import</strong></a>
+<strong>&lt;filename&gt; clear</strong> will read &lt;filename) and
+import the knowledge as above, but first clears *all* learned results
+from book.bin.  you will want to do this if you import my book.lrn,
+*and*, you have contributed to my book.lrn data by sending me yours.
+I'll take care of eliminating duplicates if you screw up in what you
+send me, but once you send me something, you run the risk of getting
+it "back again" later.  This is going to be a problem until everyone
+gets used to sharing something that is rather "vapid" like this
+"learned info" is...
+
+  <p>Other than that, we are now "open for business"...  when the urge
+strikes you, email me your .lrn file, I'll keep a large master here
+and update it on occasion.  Probably the best thing to do is to send
+me your .lrn and at the same *instant* delete yours.  This will
+capture anything learned *after* you send me the file, but you'll get
+it all right back with the next version of book.lrn that I
+distribute.
+
+  <p>After getting this new book.lrn back, here's what you should
+do:
+
+  <p>1.  rename your old <code>book.lrn</code> to something else.
+I'll call it "book.lrn.old" here.
+
+  <p>2.  copy my blearn.dat to your machine, but *do not* put it in
+the directory with your <code>book.bin</code> and
+<code>books.bin</code> file because it will get confusing very quickly
+if you do.  Put it somewhere else, because you are going to remove it
+quickly anyway.  I'll call it new.lrn for this example.
+
+  <p>3.<pre><strong>
+    import new.lrn clear
+    import book.lrn.old</strong></pre>
+
+and you are ready to rumble again.  The first command clears the
+learned values, sucks in my new learn file and updates everything.
+the second command re-learns everything you've learned since you sent
+me the last book.lrn file.  After doing this your book.lrn will have
+my .lrn stuff, plus your old.lrn stuff, just waiting to be sent to me
+again...
+
+  <p>If this is confusing, I can probably add an automatic command to
+do all of this by renaming book.lrn, etc.  Hopefully this is not too
+error-prone for the time being anyway...
+
+
+<h3>
+What is this new Position Learning I've heard about?</h3>
+
+<cite>Crafty</cite> now has a "permanent" hash table that is kept from
+game to game.  A position gets into this "hash file" when
+<cite>Crafty</cite> executes a search and the search value is
+significantly lower than the last search value.
+
+  <p>When this happens, <cite>Crafty</cite> stores the current
+information for this position in the permanent hash file, which can
+hold up to 65536 positions.  Once it fills up, the positions are
+replaced on a FIFO basis, always keeping the most recent 64K entries.
+
+  <p>Each time <cite>Crafty</cite> starts a search, the
+positions/scores from this file are stuffed into the normal
+transposition table, and used during the search just like any other
+table entry.  Here's how it helps:  In a game that was played, the
+following moves and scores were found by <cite>Crafty</cite> (playing
+White):
+
+  <p>1. Ng5 (+.277) h6 2. Nh7 (+.321) Kg8 3. Qh5 (+.133) Qg7 4.  Ng5
+(-2.122) hxg5
+
+  <p>So, the knight got trapped at h7, and at move 4
+<cite>Crafty</cite> discovered that this is gross and "learns" this
+result/position.
+
+  <p>We play the exact same game again:  except that two things can
+happen here.
+
+   <p>1. It might be that g5 is the *only* square the knight can move
+to here, which means this whole thing is forced.  The first search
+would find 1. Ng5 (-2.122) if the search can reach 8 plies deep, which
+happens even in 5 second games.  It's learned that Ng5 is bad.  It
+stores *this* position in the permanent hash file also, and the next
+time you try this same trap, it will discover 4-5 moves earlier that
+if the knight gets to g5 it is in trouble.  Each game will diverge
+from the first game 3-4 moves earlier.  Simple and effective.
+
+  <p>2.  Ng5 might not be forced, and if not, it knows Ng5 loses a
+piece for a pawn, so it will promptly play something else, which is
+exactly what is desired.
+
+  <p>This is implemented with two (count 'em, two) files.  One file
+"<code>position.bin</code>" is a binary file that contains the hash
+table entries, and it right at one megabyte in size, *max*.  (16 bytes
+per hash entry X 65536 entries = exactly one meg, but I have 8 extra
+bytes for the FIFO queue implementation and to see how many entries
+are currently in the file if it is not full.
+
+  <p>The second file is "<code>position.lrn</code>" and is, you
+guessed it, a file that can be shared with others, just like book.lrn.
+It contains all information needed to reconstruct the position, the
+score, the depth, etc.  and also included the pgn tags for who was
+what color and when the game was played...
+
+  <p>This data can be imported with the new <a
+href="#import"><strong>import</strong></a> command (the old book learn
+&lt;filename&gt; is no longer around) which will import either
+book.lrn type data or position.lrn type data and can tell them apart
+without your having to do anything.  The [<strong>clear</strong>]
+option is still there, should you want to use it, and simply removes
+the position.lrn and position.bin files before starting the import
+process for position learning.
+
+  <p>This can be turned off, if you like, by checking out the <a
+href="#learn"><strong>learn</strong></a> command, which gives you the
+ability to turn off book learning (as it presently works), position
+learning, and the next book learning stage which will add to the book
+in addition to learning which book lines are good and bad.
+
+
+<h3>
+What is this new "result" learning?</h3>
+
+Result learning works just like normal book learning, except
+that  if  <cite>Crafty</cite> is checkmated or resigns, it will step back
+through the book line to find the last point  where  it  had
+more than one move to choose from.  It will flag the move it
+chose as "never play again".
+
+  <p>This handles the case where the first ten non-book moves produce
+reasonable scores, but the position is one that <cite>Crafty</cite>
+simply can't handle very well.  If it loses such a game, it will still
+vary the next time this opening is played, as otherwise it would
+possibly repeat the same opening, and would certainly repeat the
+remainder of the game.
+
+  <p>All three learning modes are turned on by default, although any
+of them can be disabled with the appropriate command option to <a
+href="#learn"><strong>learn</strong></a>.
+
+
+<hr>
+<address></address>
+<!-- hhmts start --> Last modified: Sat Dec 20 01:41:05 EST 2003 <!-- hhmts end -->
+</body> </html>

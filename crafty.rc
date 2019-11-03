@@ -1,0 +1,36 @@
+# Example file for craftyrc
+# Copy it to $HOME/.craftyrc
+# Read /usr/share/doc/packages/crafty/crafty.doc.ascii for more information
+
+# Increases Crafty's position hash to 256MB
+hash=256m
+
+# Increases Crafty's pawn hash to 64MB
+hashp=64m
+
+# If you want to use your own books create a directory $HOME/.crafty ,
+# set this path accordingly to "/home/your_user_name/.crafty"
+# and copy your own book-files (book.bin, books.bin and bookc.bin) into that directory
+bookpath=/usr/share/crafty
+show book
+
+# Tells Crafty to use syzygy Endgame Tables
+egtb
+tbpath=/usr/share/crafty/TB
+
+# Disable logging, if you want crafty to log your games, set this to "on"
+log=off
+
+# Allows Crafty to try to win drawn games (according to Endgame Tables)
+swindle on
+
+# Allows Crafty to think on your time
+ponder on
+
+# Increases Crafty's Endgame Table Cache to 32MB
+cache=32m
+
+# Increases Crafty's MaxThreads to total number of CPU cores
+mt=4
+exit
+

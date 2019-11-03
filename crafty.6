@@ -1,0 +1,121 @@
+.TH crafty 6 "July 23, 2013" "23.4" "Games"
+.SH NAME
+crafty \- a chess playing/analysis program
+.SH SYNOPSIS
+.B crafty
+.SH DESCRIPTION
+.B crafty
+is a chess playing and analysis program modeled after Cray Blitz.
+It supports opening books and endgame databases.
+While you
+.B can
+run it on a text console you will probably prefer a graphical
+interface. In that case use
+.B xcrafty
+which uses
+.BR xboard (6).
+
+.B crafty
+is a state-of-the-art  computer  chess  program,  and
+uses  all  of  the  search algorithms you have probably read
+about, negascout search, killer/history move  ordering,
+quiescence move ordering and
+pruning, hash (transposition/refutation) tables as  well  as
+evaluation caches, selective extensions, recursive null-move
+search, and a host of other features that have been used and
+are  still  being  used in most computer chess programs.  If
+it's not in
+.BR crafty ,
+either it is on the "to do" list, or  it
+has been tried, found wanting, and discarded.
+
+.BR crafty 's
+strength is directly dependant upon processor speed, hash table size,
+size and content of it's opening book, and it's use of an endgame database.
+Versions of
+.B crafty
+running on ICC and FICS have ratings around 2500-2700.
+
+This
+.B crafty
+package
+comes with a basic opening book and a small endgame database
+(all the 3 piece tablebase files). You can get a more complete
+opening book (created from 650000+ games) and a huge
+endgame database (about 5 GByte) from
+.BR crafty 's
+site at
+.fi
+.IR ftp://ftp.cis.uab.edu/pub/hyatt
+or
+.IR http://www.cis.uab.edu/hyatt/crafty .
+
+A more extensive documentation is available in
+.fi
+.IR /usr/share/doc/packages/crafty .
+
+.SH FILES
+.TP
+.I ~/.craftyrc
+.BR crafty 's
+startup file. Contains commands executed by
+.B crafty
+automatically during startup.
+.TP
+.I ~/.crafty/book.bin
+.BR crafty 's
+opening book.
+.TP
+.I ~/.crafty/book.lrn
+Things learned, in human readable form.
+.TP
+.I ~/.crafty/books.bin
+Controls
+.BR crafty 's
+opening strategy.
+.TP
+.I ~/.crafty/position.bin
+Learned positional information.
+.TP
+.I ~/.crafty/position.lrn
+Learned positional information in human readable form.
+.TP
+.I  ~/.crafty/game.*
+Your played games.
+.TP
+.I ~/.crafty/log.*
+Complete
+.B crafty
+output produced during the game.
+.TP
+.I /etc/crafty.rc
+.BR crafty 's
+global startup file. Contains commands executed by
+.B crafty
+automatically during startup. It is overriden by ~/.craftyrc.
+.TP
+.I /usr/share/crafty
+Location of the default opening books.
+.TP
+.I /usr/share/crafty/TB
+Endgame tablebases. Get more from
+.BR crafty 's
+site. :-)
+.SH BUGS
+If you use 
+.B crafty
+as a
+.BR xboard (6)
+client and exit
+.BR xboard (6)
+using your window managers close button,
+.B crafty
+might not finish at all and run forever.
+.fi
+Well, this might actually be considered a
+.BR xboard (6)
+bug.
+.SH SEE ALSO
+.nf
+xboard(6)
+.fi

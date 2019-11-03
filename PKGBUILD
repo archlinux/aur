@@ -15,7 +15,13 @@ source=("http://www.craftychess.com/downloads/source/$pkgname-$pkgver.zip"
 	"http://www.craftychess.com/downloads/book/book.`[[ "$_build_book" = '0' ]] && echo bin || echo pgn.gz`"
 	"http://www.craftychess.com/downloads/book/start.pgn.gz"
 	"http://www.craftychess.com/downloads/book/startc.pgn.gz"
-	"crafty-data.tar.bz2"
+	"copyright"
+	"crafty.6"
+	"crafty.doc.v18.html"
+	"crafty.faq"
+	"crafty.rc"
+	"readme"
+	"tournament.howto"
 	"security-203541.patch"
 	"paths.patch"
 	"Makefile.patch")
@@ -23,7 +29,13 @@ md5sums=('d8ad87d9b0fc39a437595203d7b302fc'
 	 "`[[ "$_build_book" = '0' ]] && echo f8f93189c64324b1959a489da822438e || echo 05efad71289b2d328da5110df4a19f85`"
 	 '880279c223dc34164837a351faafe2f0'
 	 '7a53d5f09d2baa5e7f0df4ee81961cfb'
-         '18cb719601b36825113274335ee0e3f1'
+	 '438cec9f32fb79f58822f97cf64e7afb' 
+	 '8f9c577aa6e99bb3e5ada83d1868a8ad' 
+	 '584ef65843016328d67a7c9df4007e87' 
+	 'f744727e291b6dec7e7c69bb3586b6dd' 
+	 '1f8f06ace9f9703297c4adae867e8d34'
+	 'd345e23aea028ead565d608002b2e353' 
+	 '1e911ca0812ef14f21e40821dda5c1cd'
          '02c7ab07c0ff8f77738a055772f4406d'
          '9db34746e90ceb116d162a5fa727f7e0'
          '178436e4fdacdecd58d0bbdeb9aba924')
@@ -61,11 +73,11 @@ build() {
 package() {
 	cd "$srcdir"
 	install -Dpm 0755 crafty "$pkgdir/usr/bin/crafty"
-	install -Dpm 0644 crafty-data/crafty.6 "$pkgdir/usr/share/man/man6/crafty.6.gz"
+	install -Dpm 0644 crafty.6 "$pkgdir/usr/share/man/man6/crafty.6.gz"
 	install -dm 0755 "$pkgdir/usr/share/crafty/syzygy/"
 	install -pm 0666 book.bin "$pkgdir/usr/share/crafty/book.bin"
 	install -pm 0644 bookc.bin books.bin crafty.hlp "$pkgdir/usr/share/crafty/"
-	install -Dpm 0644 crafty-data/crafty.rc "$pkgdir/etc/crafty.rc"
-	install -Dpm 0644 crafty-data/copyright "$pkgdir/usr/share/licenses/crafty/copyright"
-	install -dpm 0644 crafty-data/{crafty.doc.v18.html,crafty.faq,readme,tournament.howto "$pkgdir/usr/share/doc/crafty/"
+	install -Dpm 0644 crafty.rc "$pkgdir/etc/crafty.rc"
+	install -Dpm 0644 copyright "$pkgdir/usr/share/licenses/crafty/copyright"
+	install -dpm 0644 {crafty.doc.v18.html,crafty.faq,readme,tournament.howto} "$pkgdir/usr/share/doc/crafty/"
 }

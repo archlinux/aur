@@ -1,0 +1,187 @@
+[tournament]
+playing in a manually-operated tournament
+
+1.  Starting Crafty.  This is the easiest part of the whole process.
+All that's needed is to simply type the command "crafty".
+
+2.  display.  This command displays the chess board using the standard
+chess server style#1 board display.
+
+This is most often used to confirm that the board has been set to the
+proper position in the event that you can't continue an old game and
+have to set up the position from scratch (explained later).  Note that
+white is always at the bottom, regardless of whether Crafty is playing
+black or white.
+
+3.  read.  This command is used to read in a list of moves and make them
+on the game board prior to using crafty to play that game.  There are 
+two ways this can be used:  (a) read.  This will prompt you for a
+white move, a black move, over and over until you type "exit" to terminate
+read mode.  The side to move will be set according to the number of moves
+entered, so that the next move will be for the correct side.  (b) read file.
+This command reads, but the input comes from "file" rather than from the
+keyboard.  Note that superfluous text is ignored, as is line numbers, times,
+etc.  This will read in a pgn game and cull everything but the moves.
+
+4.  setboard.  This command is used to set up a specific board position
+when it's impossible to restart a game using the "crafty c" command, and
+too many moves have been made, making the read command an unattractive
+alternative.  This command parses a FEN-like position description (a
+Forsythe-like notation) and sets the current board to that position.
+
+The notation uses a string of alpha characters to represent the chess
+position.  In this notation, uppercase K Q R B N P represents a white
+piece, lowercase k q r b n p represents a black piece.  for empty
+squares, you can use numbers 1-8 to indicate consecutive empty squares.
+A "/" must terminate each rank after defining at most 8 square on that
+rank, and the ranks are entered in descending order 8..1.  In this 
+notation, then, the first square you enter is a8, then b8, .., h8, 
+followed by a "/", then back to a7 and repeating.  After all 8 ranks
+are entered, you need to indicate whether or not one side can castle
+kingside or queenside by inserting at least one space character, followed
+by a K (white can castle kingside) Q (white can castle queenside) k (black
+can castle kingside) or Q (black can castle queenside).  After this, add
+one more space, followed by the square of a pawn that just moved two ranks
+and is subject to an enpassant capture.  Note that if there is no
+enpassant capture possible, you do not enter this field.
+
+For the above board position (display command), here's the setboard
+command to set that position up:
+
+setboard r2q1knr/pp2bppp/4b3/1BPp4/6PP/2N1P3/PP3P2/2RQK1NR/ K
+
+Note that after entering the last piece on a rank, a number for the
+remaining empty squares is *not* needed, so this could be shortened
+to:
+
+setboard r2q1knr/pp2bppp/4b/1BPp/6PP/2N1P/PP3P/2RQK1NR/ K
+
+One unfortunate effect of this command is that you have just lost the
+ability to detect repetitions of prior positions in the game, which can
+be a critical issue.  It is _always_ better to use the read command to
+re-enter the moves if the hardware crashes.  If you accidentally type
+^C and terminate Crafty, you can type "crafty c" and it will continue
+the last game, although you will need to set the time control information,
+and anything else that is not in the .craftyrc file.
+
+5.  reset <n>.  This command is used to back the game up if a different
+move is to be tried, or if an incorrect move was entered by mistake.  It
+depends on the current side to move, and the command "reset 13" will back
+the game up to move 13, where the current side on move is still on move,
+and Crafty will be positioned to read in move 13 for that side.  Note
+that this affects the game, but not the clock or time or level, so that if
+you back up more than a move or two, you also need to adjust the clock.
+
+If you want to first change the side to move, use the "white" or "black"
+command to set the side to move, then use the reset command to back up
+to the move for that side.
+
+6.  time.  This command is used to set the time control.  There are
+several ways to use it, depending on the type of time control desired.
+(a) time sd/n sets the game to sudden-death in n minutes. such as
+game/10, game/30.  time sd/30 would set game in 30 time control.
+(b) time moves/time smoves/stime sets the game to "moves" in "time"
+minutes, then "smoves" in "stime" minutes.  A common setting is
+time 40/120/20/60 for 40 moves in 2 hours, then 20 moves in one hour.
+(c) time moves/time/sd/sdtime sets a standard first time control,
+followed by a sudden death time control.  For example time 60/60/sd/30
+is 60 moves in 60 minutes followed by game in 30 minutes.  (d) for any
+of these, an optional 5th parameter can be added, which is the famous
+"Fischer clock" increment that is added to each players time remaining
+after he makes a move.  The increment is given in seconds rather than
+minutes.  Note that the default should be right unless the tournament
+modifies the T/C after the tournament starts for some reason.
+
+7.  settc.  This command is used to correct time-control info after a
+restart.  it will prompt you for how much time is left on both crafty's
+and the opponent's clock, and for how many more moves until crafty makes
+the next time control.  Again, usually not needed, but there for serious
+circumstances.  After restarting, type "clock" to display this info and
+if it's wrong in any way, this settc command is the quickest way to fix
+it up.
+
+Common problems and how to solve them:
+
+1.  Is crafty searching or pondering?  I was not watching the screen,
+and the window size is small enough that all I see is analysis scrolling 
+up the screen.  This is easy.  Look at the bottom line on the screen, and
+you will see a line that keeps changing, showing the depth, time used so
+far, how many moves have been searched and the PV.  Look at the third
+column what shows something like 12/30, which says that at the current
+depth crafty has already searched 12 of the 30 legal moves at the root.
+You will notice that there is an extra character after the 30, either a
+"*" or "?".  If an "*" is showing, Crafty is thinking about its move.  If
+a "?" is showing, crafty is pondering and thinks it is the opponent's move.
+
+If it shows a "?" but you know it is Crafty's move, you simply missed it.
+Scroll back up using whatever scroll mechanism your text window uses, to
+find the move Crafty made.  Hopefully this won't happen often, but on the
+occasional "emergency" men's room break, anything can happen.  Just remember
+that "?" means I am pondering and it is my opponent's move, "*" means I
+am searching and it is my move.
+
+2.  I entered the wrong move, how do I fix this?  You are playing in a
+game and at move 37, you enter Rfe1 rather than Rae1.  To correct this,
+you have to do a couple of things.  First, Crafty is now searching, and
+if you try to reset the position, it won't accept this command.  To stop
+the search, type ? (followed by a <RETURN> of course) to tell Crafty to
+"move now".  Once it displays the move it would play in response to the
+incorrect move, it will start its "ponder search" but now the reset
+command will work.  Simply type "r 37" to back up to move 37, then type
+Rae1 and Crafty will continue as though nothing happened.  Pay attention
+to the clock time after it moves and adjust if necessary (if you lost any
+time while correcting an incorrect move.)
+
+Note:  You can also use the "remove" command, which will unmake the last
+move by each side.  Crafty has to be pondering or waiting on input for
+this to work, just like the reset command, so if *you* typed the wrong
+move, type "?" to make it move, then "remove" which backs up one move
+for each side, followed by the opponent's move.  If the opponent makes
+the wrong move on the board, and you enter it, do this same thing.  Note,
+if the opponent screws up, you should notice whether or not crafty had
+predicted the right move.  If it had, you should probably call the TD
+over, back the game up one move with the remove command, then use the
+"ponder xxx" command to tell crafty to ponder "xxx" (the move it was
+pondering before the wrong move was made by the opponent) and then it
+should be allowed to "sit" until the same amount of time elapses before
+you enter the correct move.  The idea is that if the opponent screws up,
+it should not wipe out any searching crafty did while waiting.
+
+3.  The machine dies (power failure maybe).  How do I recover?  First, you
+can stop the clock for such failures, so do that *first*.  Then, reboot the
+machine and start crafty by typing "crafty c".  Next, type the "history"
+command and carefully check the last move it displays against the score
+sheet you are maintaining by hand.  If they are the same, you are ready to
+enter a move and continue.  If there are moves missing, use the "reada"
+command to re-enter these moves and append them to the moves already 
+present.
+
+If the continue option won't work due to a corrupted history file, you have
+two choices.  The best choice is to restart crafty without the "c" option,
+and then use the "read" command and enter the moves by hand so that if you
+screw up later, the "reset" command will work correctly to let you back up.
+If you are 100 moves into a game, this might not be practical.  In this
+case, use the "setboard" command to enter the position.  Be careful to
+check the position after entry using the display command, and be careful
+to not enter the wrong move since you can't use the "reset" command to
+back up after using the setboard command.
+
+After either of the above problems, you need to set the proper time
+control (if this is in your .craftyrc this is not needed) and then you
+need to adjust the clock to show the proper amount of time remaining.
+The command to display the clock is "clock".  To adjust the clock
+use the command form "clock c-time o-time" where c-time is crafty's
+time remaining, and o-time is the opponent's time remaing.  These
+can be etered as simply the number of minutes left, or in the hh:mm
+format if preferred.  "clock 60 50" sets crafty's clock to 60 minutes
+left, opponent's clock to 50 minutes left.  "clock 1:15 45" sets 
+Crafty's clock to 75 minutes remaining, opponent's clock to 45.
+Crafty pays attention to how much time the opponent has used,
+so be sure and get them both correct.   You should subtract 5 minutes
+from the actual time left on the clock to give yourself a cushion.  Of
+course, you should *never* enter "0" time left, or even worse, a negative
+number, because Crafty will go south for the Winter if you do.  :)
+
+Note that there is a "settc" command that simplifies getting the time
+control right after a restart...  It's explained above.
+<end>

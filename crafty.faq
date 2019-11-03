@@ -1,0 +1,244 @@
+Frequently asked questions (FAQ) on Crafty.
+Last modified on 1996.06.17
+Send corrections/additions/comments to:
+Anil Mungal (amungal@vnet.ibm.com)
+
+-----
+[1] What is Crafty?
+[1.1] What platforms can Crafty run on?
+[1.2] What is Crafty's rating/strength?
+[1.3] Where can I get Crafty?
+[1.4] How do I build Crafty?
+[1.5] How do I build Crafty's Book?
+[1.6] How can I maximize Crafty's performance?
+[1.7] What are "tablebases" and how do I use 'em?
+[1.8] How can I get a graphical interface with Crafty?
+[1.9] How can I use both Crafty and XBoard to analyze positions/games?
+-----
+[1] What is Crafty?
+
+Crafty is a chess program written by Bob Hyatt (hyatt@cis.uab.edu).
+It is modeled after Cray Blitz (also written by Bob).
+
+Crafty has the following features:
+- written in C
+- can be compiled with the GNU C compiler on various platforms
+- has a customizable opening book
+- supports tablebases (Steven Edward's endgame database)
+- text interface
+
+Crafty is a work in progress, and is frequently updated/enhanced by Bob.
+-----
+[1.1] What platforms can Crafty run on?
+
+The decision to write Crafty so that it compiles with the GNU C compiler
+allows it to run on many platforms without the hassle of porting.
+(Thanks Bob)
+
+Currently Crafty runs on:
+
+- DEC alpha running OSF/1-Digital Unix
+- any Cray-1 compatible architecture including XMP, YMP, C90, etc.
+- HP workstation running HP_UX operating system (unix)
+- PC running DOS, Windows, or OS/2 Warp, using DJGPP port of gcc to compile
+- RS/6000 running AIX (unix)
+- Sun SparcStation running Solaris (SYSV/R4) Unix
+- Sun SparcStation running SunOX (BSD) Unix
+- Any architecture running the Linux operating system
+- Microsoft Win95/WinNT, when compiled with Microsoft Visual C++
+- Macintosh and other MacOS-compatible computers
+
+Storage requirements range from 1Mb (small book and no tablebase) to 60Mb
+(largest book and no tablebases) to 300Mb (largest book and all tablebases).
+-----
+[1.2] What is Crafty's rating/strength?
+
+Crafty's strength is directly dependant upon processor speed, hash table size,
+size and content of it's opening book, and it's use of an endgame database.
+Versions of Crafty running on ICC and FICS have ratings around 2500-2700.
+This does not necessarily mean that Crafty will perform at this level
+under tournament conditions.
+
+Crafty's computational power in nodes/sec has been measured as follows:
+
+  Platform                                      Nodes/sec
+  --------                                      ---------
+  DEC alpha running OSF/1-Digital Unix             75,000
+  Cray-1 XMP, YMP, C90, etc.                       ??????
+  HP workstation running HP_UX operating system    35,000
+  80X86 architecture running LINUX (unix)          30,000 (P5/133)
+  Pentium 100 PC                                   24,000
+  Pentium Pro 200 PC                               75,000
+  RS/6000 running AIX (unix)                       ??????
+  Sun SparcStation running Solaris (SYSV/R4) Unix  30,000 (Sparc-20)
+
+According to the Louget Chess test, Crafty has been given the following ratings:
+
+		Platform  Hash table  Louget rating (comparable to FIDE rating)
+		========  ==========  =============
+Crafty v9.21	PP200	     56 MB	   2395
+Crafty v9.21	PP150	     56 MB	   2365
+Crafty v9.21	P133	     14 MB	   2305
+Crafty v9.21	P90	      7 MB	   2235
+
+Where the platforms were:
+PP200 = Pentium Pro 200 Mhz, 16+256KB internal caches, Aurora Intel motherboard
+PP150 = Pentium Pro 150 Mhz, 16+256KB internal caches, Asustek motherboard
+P133 = Pentium 133 Mhz, 256 KB pipeline burst synchronous L2 cache
+P90 = Pentium 90 Mhz, 256 KB asynchronous cache (Intel Zappa, Triton Chipset)
+
+For more info on the Louget Chess test, you can contact:
+Frederic Louguet (louguet@worldnet.net)
+----
+[1.3] Where can I get Crafty?
+
+You can get Crafty by anonymous FTP at:  ftp://news.cis.uab.edu/pub/hyatt
+
+Here is a description of the files that you will probably see.
+
+read.me       : Read me file that Bob updates
+crafty.exe    : PC DOS executable. (needs DPMI)
+craftyt.exe   : PC DOS executable with tablebases support. (needs DPMI)
+crafty.faq    : this file
+crafty.linux  : Linux executable
+crafty.sun    : Sun Sparc-20 executable
+crafty.zip    : Crafty source code
+crafty.tar.Z  : Crafty source code
+crafty.tar.gz : Crafty source code
+cwsdpmi.exe   : DPMI provider
+large1.zip    : Large PGN file used to create an opening book (1/4)
+large2.zip    : Large PGN file used to create an opening book (2/4)
+large3.zip    : Large PGN file used to create an opening book (3/4)
+large4.zip    : Large PGN file used to create an opening book (4/4)
+medium.zip    : Medium PGN file used to create an opening book
+small.zip     : Small PGN file used to create an opening book
+start.zip     : Tiny PGN file used to create an opening book
+probs.Z       : A test suite of chess problems
+wcrafty.exe   : Windows executable.
+wcraftyt.exe  : Windows executable with tablebases support.
+
+The Macintosh port of Crafty is available from <ftp://ftp.limunltd.com/crafty/>.
+The Mac versions are supported from <http://www.limunltd.com/crafty/>.
+
+-----
+[1.4] How do I build Crafty?
+
+If you wish to build Crafty for yourself, you need a copy of the source
+and the GNU C compiler (or the djgpp compiler for DOS) to compile.
+
+   a) Unzip/uncompress the source code.
+
+   b) Follow the instructions in the Makefile.  You will probably have to:
+      - comment/uncomment sections based on your hardware platform.
+      - edit the directory paths.
+      - add whatever optimization flags that you want.
+
+   c) type make
+
+-----
+[1.5] How do I build Crafty's Book?
+
+You need an executable version of Crafty and a PGN file to build it's book.
+Choose between large (unzip large1.zip, large2.zip, large3.zip, large4.zip
+and append them into one file), medium (unzip medium.zip), or small.zip
+(unzip small.zip).
+Large produces a 90Mb-60Mb opening database with 100K GM games; medium produces
+a 30Mb database, and small will produce a 1Mb database. Note that you will
+need at least double this space to create the files, since temporary files
+are written to disk, and then later deleted.  Use the following commands to
+build the book:
+
+	crafty
+	book create <filename> 60
+	quit
+
+<filename> should be replaced by the PGN filename that is created when you unzip
+the book file of your choice.
+
+Start.zip contains a small file that is used to create books.bin.
+books.bin is created as follows:
+
+	crafty
+	books create start.pgn 60
+	quit
+
+This file contains suggested openings that fit Crafty's "open" style of
+play better.  You can edit/modify this at will, and it takes a fraction of
+a second to re-build after modification, so the big book file can be left
+alone.
+
+Note that the "60" is arbitrary, and is used to cut book lines off at roughly
+60 plies.  You "can" say 500, so that the entire games will be stored,
+but you need even more disk space.  You can also reduce this number to 30
+(15 moves for each side) to conserve disk space as needed, since the book
+will contain far fewer positions.
+-----
+[1.6] How can I maximize Crafty's performance?
+
+   a) Compile with different combinations of the following options:
+      -DCOMPACT_ATTACKS, and -DUSE_SPLIT_SHIFTS.  Then check the performance
+      of Crafty.  The best test is to simply let it search to a fixed depth
+      (say sd=8 for example) from the opening position and pick the compiler
+      /optimizer options that minimize this time.  Pick SD=n so that the search
+      takes at least 2 minutes.
+
+   b) Increase the size of hash and hashp based on the following
+      observations:
+      - hash is more important that hashp.  the only guidance is that
+        you don't want to make hash so large things slow down due to
+        excessive paging or swapping.
+      - there's a compile option -DFAST.  if you use this, crafty won't
+        report any hashing statistics, making it harder to decide when
+        to make things bigger.
+-----
+[1.7] What are tablebases and how do I use 'em?
+
+tablebases are endgame databases distributed freely by Steven Edwards
+(sje@mv.mv.com).  If you are downloading an executable, for dos you'll
+want craftyt.exe, and for Win95/WinNT, you'll want wcraftyt.exe.  If
+you compile your own, -DTABLEBASES will do the trick.
+
+Once you have an executable that expects tablebases, you typically
+put them in a sub-directory TB that should be in the directory where
+you normally run crafty.  You can change this by editing the Makefile
+and changing TBDIR to point to where you want 'em.
+
+Next, you need the tablebase files.  These are available from ftp.onenet.net
+and other ftp sites.  The files are named like this:  KBNK.tbb and KBNK.tbw
+for the KBN vs K tablebases.  On some ftp machines the "." is replaced by a
+"_".  after downloading them, rename them to replace the _ by . or crafty
+will not recognize them.  These files are also available from the primary
+Crafty site ftp.cis.uab/edu/pub/hyatt/TB.
+
+The complete set takes about 260Mb, for all 4-man endings.  We are working
+on new ones for frequently encountered endings like KRP vs KR.  These will
+be made available as they are completed.  There are 10 5-piece files now
+available, KRPKR, KRNKR, KRBKR, KRRKR and KQRKR, where each has a .tbb
+and .tbw pair.  These files require about 500mb zipped, but will expand
+to about 2.3 gigabytes when unzipped.  So be prepared for a large disk
+space requirement.
+
+Note that these databases are "mate in n" type databases, so you'll see
+some interesting mate announcements from Crafty, with Mate in 30 a very
+common occurrence.  :)
+-----
+[1.8] How can I get a graphical interface with Crafty?
+
+On Unix systems, you can use XBoard with Crafty.  On Windows systems, you
+can use WinBoard.  For more information on XBoard and WinBoard, check out:
+http://www.research.digital.com/SRC/personal/Tim_Mann/chess.html
+-----
+[1.9] How can I use both Crafty and XBoard to analyze positions/games?
+
+It is now possible to use XBoard and Crafty together to perform
+interactive analysis of positions and stored (PGN, etc.) games.
+
+To do this, you need a recent version of Crafty (12.3 or up) and
+xboard/winboard version 3.6.1 or later.
+
+For instructions, see the winboard/xboard faq, which explains how to use
+this powerful and interesting facility.
+-----
+** End of Crafty FAQ **
+
+

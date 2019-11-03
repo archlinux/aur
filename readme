@@ -1,0 +1,95 @@
+Crafty Chess (version 18)
+=========================
+
+crafty can use a startup file in the users HOME for its configuration, which is
+~/.craftyrc. Likewise, it can use a subdirectory in the users HOME to store its
+data. This can be ~/.crafty/ but it is configurable.
+
+So, if your want to customize crafty to your needs you can do the following:
+
+Copy the file /etc/crafty.rc to ~/.craftyrc and modify it according to the
+comments inside the file. The endgame tablebase lookup is enabled. If you don't
+like that, just remove the "egtb" line.
+
+Similarly, a ~/.crafty/ directory can be created. Then copy the opening books
+book.bin, bookc.bin and books.bin from /usr/share/crafty/ to ~/.crafty/.
+
+The opening books and endgame tablebases that come with this package are
+fairly basic. To make full use of crafty's capabilities you should get
+larger versions from crafty's site (ftp://ftp.cis.uab.edu/pub/hyatt or
+http://www.cis.uab.edu/hyatt/crafty/).
+Please have a look at the documentation on how to do this.
+
+What is here?
+=============
+
+The following directories exist:
+
+book                 binary book files for Crafty.  At the least,
+                     you need a book.bin.  Most likely you will want
+                     a books.bin and bookc.bin (the crafty documentation
+                     explains their purpose).
+documentation        Documentation files.  There is a postscript version (.ps),
+                     a pure ASCII version (.ascii) and a groff version that
+                     can be used to produce any sort of output file you want.
+executables          these are executable files, that should run on
+                     most any processor around.  You can often compile the
+                     source yourself and optimize it for your specific hardware
+                     to get a faster executable.
+pgn                  PGN files that can be used to produce a larger or smaller
+                     book.bin.  Beware as "enormous.pgn" is just that. :)
+source               Here you will find all the source files.  Note that 
+                     version 20.11 is more recent than version 20.8.  The 
+                     xx.y version is set so that larger y is more current, not
+                     treating it as a decimal number.
+TB                   3-4-5 piece endgame databases (Nalimov format)
+wccc.2005            log files from the 2005 WCCC tournament produced by Crafty
+                     on the 8-cpu Opteron box.
+wccc.2006            log files from the 2006 WCCC tournament produced by Crafty
+                     on the 8-cpu Opteron box.
+
+What do I need to download?
+===========================
+
+1.  You need a copy of the documentation.  While crafty is easy to run, and
+has some built-in help facilities, the documentation will help you learn how
+to use all the features the program has.
+
+2.  You need a copy of Crafty.  Source is the best bet, but if you don't feel
+comfortable compiling your own executable, look in the executables directory and
+grab the version you want.  Note that even if you choose to download a ready-
+to-run version, downloading the source to go with it is a good idea as that will
+get you the "audio" stuff if you want crafty to verbally announce moves, etc.
+
+3.  You need at least a book.bin file from the book directory.  If you are going
+to play computer vs computer matches, you will want a bookc.bin, and the
+books.bin is useful to prevent it from playing ridiculous openings.
+
+4.  You may or may not want to download the 3-4-5 piece endgame tables.  They
+total to about 7.5 gigabytes of storage, so they require a lot of disk space
+as well as download bandwidth.
+
+Put everything in one directory, except for the endgame tables (if you download
+them) which should be put in a sub-directory named "TB" (until you learn how to
+put them somewhere else by reading over the crafty.doc information).
+
+You are set.
+
+Which version do I download?
+============================
+
+Currently 20.x is the most recent, and it is certainly the strongest Crafty
+version to date.  The highest .x number is the most current, and should be the
+best, but on occasion this is not the case due to bugs.
+
+What's next?
+============
+
+Read through the crafty.doc information.  It explains everything from how to
+create custom books, to using multiple-CPU machines, and so forth.  Then join
+the crafty mailing list (crafty-list@cis.uab.edu) and participate in the
+discussions there, get your questions answered, and so forth.
+
+see you there.
+
+
