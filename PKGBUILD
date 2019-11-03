@@ -4,12 +4,12 @@ _gitname=pyresample
 
 pkgname=pyresample
 pkgrel=1
-pkgver=v1.12.3
+pkgver=v1.13.2.5.ged5ed23
 pkgdesc="Geospatial image resampling in Python"
 arch=(i686 x86_64)
 url="http://pyresample.readthedocs.org"
-depends=('python2-numpy' 'python2-pyproj' 'python2-configobj')
-optdepends=('python2-numexpr: used to optimize some bottlenecks')
+depends=('python-numpy' 'python-pyproj' 'python-configobj')
+optdepends=('python-numexpr: used to optimize some bottlenecks')
 makedepends=('git')
 options=(!emptydirs)
 license=('LGPL3')
@@ -24,18 +24,13 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_gitname"
-  # We enforce this to be a strictly python2 package
-  sed -i -e "s|^#![ ]*/usr/bin/python$|#!/usr/bin/python2|" \
-         -e "s|^#![ ]*/usr/bin/env python$|#!/usr/bin/env python2|" \
-         -e "s|^#![ ]*/bin/env python$|#!/usr/bin/env python2|" \
-         $(find ${srcdir} -name '*.py')
-  python2 setup.py build_ext --inplace
-  python2 setup.py build
+  python setup.py build_ext --inplace
+  python setup.py build
 }
 
 package() {
   cd "$srcdir/$_gitname"
-  python2 setup.py install --root="$pkgdir" --optimize=1
+  python setup.py install --root="$pkgdir" --optimize=1
 }
 
 # vim:set ts=2 sw=2 et:
