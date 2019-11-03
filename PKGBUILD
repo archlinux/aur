@@ -2,6 +2,7 @@
 pkgname=pwninit
 pkgver=1.0.0
 pkgrel=1
+depends=('elfutils')
 makedepends=('rust' 'cargo')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 pkgdesc="pwninit - automate starting binary exploit challenges"

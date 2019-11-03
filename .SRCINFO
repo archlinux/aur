@@ -10,6 +10,7 @@ pkgbase = pwninit
 	license = MIT
 	makedepends = rust
 	makedepends = cargo
+	depends = elfutils
 	source = https://github.com/io12/pwninit/archive/1.0.0.tar.gz
 	md5sums = SKIP
 
