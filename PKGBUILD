@@ -2,7 +2,7 @@
 
 pkgname=topsi-project-manager-git
 pkgver=0.1.r0.g1c9d0d4
-pkgrel=1.1
+pkgrel=1.2
 pkgdesc="A Desktop Kanban board app"
 arch=("x86_64")
 url="https://github.com/Physiix/topsi-project-manager"
@@ -18,7 +18,7 @@ source=("${pkgname}::git+$url.git#tag=v0.1"
 		"${pkgname}.install")
 md5sums=('SKIP'
          '3c93fa571256014cc3428b149a7f4a47'
-         '937ba0e316613e0be68cab0c9cb24a44'
+         '525aa6b3f69b8ff6a3e1252348d1db4e'
          '3adfb178bd5c883661b1fccf17395b48')
 
 prepare() {
