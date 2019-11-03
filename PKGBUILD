@@ -2,7 +2,7 @@
 
 pkgname='python-traits'
 pkgver=5.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Explicitly typed attributes for Python"
 arch=('x86_64')
 url="https://github.com/enthought/traits"
