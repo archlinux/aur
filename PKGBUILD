@@ -3,8 +3,8 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=python-trezor
-pkgver=0.11.4
-pkgrel=2
+pkgver=0.11.5
+pkgrel=1
 pkgdesc='Python 3 library for communicating with the TREZOR Bitcoin hardware wallet'
 arch=('any')
 depends=('protobuf'
@@ -23,8 +23,8 @@ makedepends=('python-setuptools')
 url='https://github.com/trezor/python-trezor'
 license=('LGPL3')
 options=(!emptydirs)
-source=('https://files.pythonhosted.org/packages/65/a3/0c472afba8e878df36480860da3f117407a9542a942e712861e73fc051df/trezor-0.11.4.tar.gz')
-sha256sums=('aeb3f56a4c389495617f27bf218471b7969f636d25ddc491dfefeb8a1b3cd499')
+source=('https://files.pythonhosted.org/packages/e8/3d/c3792be9b025043ee2b3a08cd97e9617defd3135e084e270a1fba78d1cf8/trezor-0.11.5.tar.gz')
+sha256sums=('cd8aafd70a281daa644c4a3fb021ffac20b7a88e86226ecc8bb3e78e1734a184')
 provides=('python-trezor' 'trezorctl')
 conflicts=('trezorctl')
 
