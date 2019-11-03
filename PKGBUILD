@@ -9,7 +9,7 @@ pkgdesc="Opens exe and bat files as if they were native"
 url="https://gitlab.com/es20490446e/exeCute"
 license=("GPL3")
 
-pkgver=18
+pkgver=17
 pkgrel=1
 arch=("x86_64")
 
@@ -29,7 +29,7 @@ pkgver() {
 		cut --delimiter='<' --fields=1
 	)
 
-	if [[ "${version}" =~ "" ]] || ! [[ ${version} =~ ${numbers} ]] ; then
+	if [[ "${version}" == "" ]] || ! [[ ${version} =~ ${numbers} ]] ; then
 		echo "Invalid version: ${version}" >&2
 		exit 1
 	else
