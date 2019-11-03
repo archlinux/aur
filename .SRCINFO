@@ -1,4 +1,4 @@
-pkgbase = ex-impression-icon-theme-git
+pkgbase = ex-impression-icon-theme
 	pkgdesc = This icon theme got inspired on Mac OS icons and mimics those for the Linux OS.
 	pkgver = 1.0.1
 	pkgrel = 1
@@ -6,13 +6,13 @@ pkgbase = ex-impression-icon-theme-git
 	arch = any
 	license = GPL v3
 	makedepends = git
+	provides = ex-impression-icon
 	provides = ex-impression-icon-theme
-	provides = ex-impression-icon-theme-git
+	conflicts = ex-impression-icon
 	conflicts = ex-impression-icon-theme
-	conflicts = ex-impression-icon-theme-git
 	options = !strip
 	source = git+https://github.com/balasakthi88/EX-Impression
 	md5sums = SKIP
 
-pkgname = ex-impression-icon-theme-git
+pkgname = ex-impression-icon-theme
 

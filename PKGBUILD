@@ -1,6 +1,6 @@
 # Maintainer: Dimitris Kiziridis <ragouel@outlook.com>
 
-pkgname=('ex-impression-icon-theme-git')
+pkgname=('ex-impression-icon-theme')
 pkgver=1.0.1
 pkgrel=1
 pkgdesc="This icon theme got inspired on Mac OS icons and mimics those for the Linux OS."
