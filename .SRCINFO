@@ -1,0 +1,12 @@
+pkgbase = rpd-icons
+	pkgdesc = Raspberry Pi icon theme
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/raspberrypi-ui/rpd-icons
+	arch = any
+	license = GPL2
+	source = git+https://github.com/raspberrypi-ui/rpd-icons
+	md5sums = SKIP
+
+pkgname = rpd-icons
+
