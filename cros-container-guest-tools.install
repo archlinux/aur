@@ -5,8 +5,11 @@ post_install() {
 		dconf update
 	fi
 
-	# mask systemd-journald-audit.socket, which fails inside unprivileged container
+	# disable/mask systemd services and sockets which fail or not working as expected under Crostini
+    systemctl disable getty@tty1.service
 	systemctl mask systemd-journald-audit.socket
+    systemctl mask rtkit-daemon.service
+    systemctl mask systemd-udev-trigger.service
 
 	# workaround for https://bugs.archlinux.org/task/58701 - remove after fix
 	ln -sf /opt/google/cros-containers/cros-adapta /usr/share/themes/CrosAdapta
@@ -42,8 +45,11 @@ post_remove() {
 		dconf update 2>/dev/null
 	fi
 
-	# unmask systemd-journald-audit.socket
+	# restore systemd services/sockets
+    systemctl enable getty@tty1.service
 	systemctl unmask systemd-journald-audit.socket
+    systemctl unmask rtkit-daemon.service
+    systemctl unmask systemd-udev-trigger.service
 
 	# workaround for https://bugs.archlinux.org/task/58701 - remove after fix
 	rm /usr/share/themes/CrosAdapta
