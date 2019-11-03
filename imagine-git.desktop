@@ -4,6 +4,6 @@ Comment=PNG/JPEG optimization app
 Exec=/usr/bin/imagine-git
 Terminal=false
 Type=Application
-Icon=imagine
+Icon=imagine-git
 StartupWMClass=imagine-git
 Categories=Graphics;
