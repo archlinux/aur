@@ -1,0 +1,39 @@
+diff --git a/tests/test_sphinx.py b/tests/test_sphinx.py
+index 06078b1..fd62378 100644
+--- a/tests/test_sphinx.py
++++ b/tests/test_sphinx.py
+@@ -142,17 +142,17 @@ class GenericTests(SphinxIntegrationTests):
+         output = self.read_file('index.html')
+         self.assertIn(
+             ('<ul class="simple">\n'
+-             '<li>Item A</li>\n'
+-             '<li>Item B</li>\n'
+-             '<li>Item C</li>\n'
++             '<li><p>Item A</p></li>\n'
++             '<li><p>Item B</p></li>\n'
++             '<li><p>Item C</p></li>\n'
+              '</ul>'),
+             output
+         )
+         self.assertIn(
+             ('<ol class="simple">\n'
+-             '<li>Item 1</li>\n'
+-             '<li>Item 2</li>\n'
+-             '<li>Item 3</li>\n'
++             '<li><p>Item 1</p></li>\n'
++             '<li><p>Item 2</p></li>\n'
++             '<li><p>Item 3</p></li>\n'
+              '</ol>'),
+             output
+         )
+@@ -207,8 +207,8 @@ class CustomExtensionTests(SphinxIntegrationTests):
+     def test_integration(self):
+         output = self.read_file('index.html')
+         self.assertIn('<table ', output)
+-        self.assertIn('<th class="head">abc</th>', output)
+-        self.assertIn('<th class="head">data</th>', output)
++        self.assertIn('<th class="head"><p>abc</p></th>', output)
++        self.assertIn('<th class="head"><p>data</p></th>', output)
+         self.assertIn('</table>', output)
+ 
+         self.assertIn(

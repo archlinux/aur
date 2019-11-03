@@ -16,11 +16,13 @@ checkdepends=('python-pytest' 'python2-pytest')
 source=(${pkgbase}::"git+https://github.com/readthedocs/recommonmark#commit=$_gitcommit"
         recommonmark-disable-math-on-builds.patch
         recommonmark-sphinx-refdomain-fix.patch
-        recommonmark-fix-mdnode-parent.patch)
+        recommonmark-fix-mdnode-parent.patch
+        recommonmark-sphinx-2.patch)
 sha512sums=('SKIP'
             '66ef07ac21643b913c8ee551c7c71753fcb6442712e4fb11b84ea5f34265715471759b2c5a1badc1e299ca6aa831713b12284144801616349b2db61738607e8a'
             'df2440e7ce927ca6adc31e07f9e375fa4643bbe1c33a34821d3d3e5d9d4b2ae8bbdf7412a8f2c64d343c9004f54a4a650fc59e461b3b1eb1ab11c1dec02422fd'
-            '89745108ad78349ace30582cb28f8693edc109c97e94182a37afe5219bec8988bb785d77594e34306facf0eaa4e640c0bdf4e53249d6154094222e58df9498e9')
+            '89745108ad78349ace30582cb28f8693edc109c97e94182a37afe5219bec8988bb785d77594e34306facf0eaa4e640c0bdf4e53249d6154094222e58df9498e9'
+            'cff81ff659acd39557fbaf5c2b85a8c4f2b5ff0f950a2ecb10131f2673582173686c3cf46c7c8811d01f9ebab4675dfbcc097612005504121978f2957001ddf6')
 
 pkgver() {
   cd ${pkgbase}
@@ -38,6 +40,7 @@ prepare() {
   for tool in cm2{html,latex,man,pseudoxml,xetex,xml}; do
     sed -r "s|(${tool}) |\12 |g" -i ${pkgbase}-py2/setup.py
   done
+  patch -d ${pkgbase} -p1 < "${srcdir}/recommonmark-sphinx-2.patch" # Fix tests with Sphinx 2
 }
 
 build() {
