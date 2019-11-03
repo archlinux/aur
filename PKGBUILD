@@ -1,6 +1,6 @@
 # Maintainer: Nikola Hadžić <nikola@firemail.cc>
 pkgname="sini"
-pkgver=0.1
+pkgver=0.1.1
 pkgrel=1
 epoch=
 pkgdesc="Simple INI handling library"
@@ -19,7 +19,7 @@ backup=()
 options=("staticlibs")
 source=("https://gitlab.com/oktopod11/$pkgname/raw/master/archive/$pkgname-$pkgver.tar.gz")
 noextract=()
-sha256sums=("65fb6fa7934b0ae00121633cda9bcca5fe2258358fd3e213d8019c97846d1e81")
+sha256sums=("6430cc70a65b9c22f85d69a5676b5e267da8cbc0b877eb199e17643fabb36761") 
 
 build () {
 	cd "$srcdir/$pkgname/"
