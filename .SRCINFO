@@ -5,6 +5,7 @@ pkgbase = drush-launcher
 	url = https://github.com/drush-ops/drush-launcher
 	arch = any
 	license = GPL
+	makedepends = git
 	makedepends = composer
 	makedepends = php-box
 	depends = php
