@@ -1,7 +1,7 @@
 # Maintainer: eomanis at web dot de
 
 pkgname='disk-test'
-_pkgverUpstream="0.2.2"
+_pkgverUpstream="0.2.3"
 pkgver="${_pkgverUpstream//-/.}"
 pkgrel=1
 pkgdesc="Block device read-write test utility written in bash"
@@ -10,7 +10,7 @@ url='https://eomanis.duckdns.org/permshare/disk-test/'
 license=('GPL3')
 depends=('bash' 'coreutils' 'diffutils' 'grep' 'openssl' 'pv' 'sed' 'util-linux')
 source=("https://eomanis.duckdns.org/permshare/disk-test/disk-test-${_pkgverUpstream}.tar.gz")
-sha384sums=('38e21f48ab61171a409218dfb26677c9037436b3f163c7abbe814dfd870bdfdb29954d7744f715dab682ae3a4f5f232f')
+sha384sums=('3ebe44a5979cd04390980c88e7b13ac7dcd05629e7e674e082a34a7c79720c478ec929f6240e2117543c8c88f6b5e6dc')
 
 package() {
     local srcRootDir="${srcdir}/${pkgname}-${_pkgverUpstream}"
