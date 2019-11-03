@@ -1,5 +1,5 @@
 post_install() {
-		chmod +x /usr/bin/mini-diary
+		chmod +x /usr/bin/mini-diary-git
 }
 
 post_upgrade() {

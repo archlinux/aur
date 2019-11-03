@@ -1,8 +1,8 @@
 *
 
-!mini-diary.desktop
-!mini-diary.install
-!mini-diary.sh
+!mini-diary-git.desktop
+!mini-diary-git.install
+!mini-diary-git.sh
 !PKGBUILD
 !.SRCINFO
 !.gitignore

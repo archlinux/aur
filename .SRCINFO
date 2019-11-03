@@ -3,7 +3,7 @@ pkgbase = mini-diary-git
 	pkgver = 2.4.1.r16.g90bf72e
 	pkgrel = 1.2
 	url = https://github.com/samuelmeuli/mini-diary
-	install = mini-diary.install
+	install = mini-diary-git.install
 	arch = x86_64
 	license = MIT
 	makedepends = git
@@ -12,14 +12,14 @@ pkgbase = mini-diary-git
 	depends = electron
 	provides = mini-diary-git
 	conflicts = mini-diary-git
-	source = mini-diary::git+https://github.com/samuelmeuli/mini-diary.git#commit=90bf72e126b4a365e0a01095b5d3f316d12cbe5c
-	source = mini-diary.sh
-	source = mini-diary.desktop
-	source = mini-diary.install
+	source = mini-diary-git::git+https://github.com/samuelmeuli/mini-diary.git#commit=90bf72e126b4a365e0a01095b5d3f316d12cbe5c
+	source = mini-diary-git.sh
+	source = mini-diary-git.desktop
+	source = mini-diary-git.install
 	md5sums = SKIP
-	md5sums = 58bbcfb0f107d1e6dc6af01ccbbde552
-	md5sums = 7efca87d5c782c6b4334e381e5c67b3e
-	md5sums = 292b53906f31d9bc445961e8a33092b1
+	md5sums = 4266c8313117e3bb6dd92fc41d5bbdf6
+	md5sums = 7d35b529e86b007b9d6b310cf04bb038
+	md5sums = 0f4f35bfb1705117bf18b5c23e987ed6
 
 pkgname = mini-diary-git
 
