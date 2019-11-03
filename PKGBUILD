@@ -4,29 +4,23 @@
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
 pkgbase=linux-hardened-git
+_srcname=${pkgbase/-git/}
 _gitbranch=5.3
-pkgver=5.3.0.r857780.g1317ca6048b5
+pkgver=5.3.8.r858798.gdb18e081bc2b
 pkgrel=1
 url='https://github.com/anthraxx/linux-hardened'
-arch=('x86_64')
-license=('GPL2')
+arch=(x86_64)
+license=(GPL2)
 makedepends=(
   xmlto kmod inetutils bc libelf python-sphinx python-sphinx_rtd_theme
   graphviz imagemagick git
 )
 options=('!strip')
-source=("git+https://github.com/anthraxx/linux-hardened#branch=${_gitbranch}?signed"
-        config.x86_64  # the main kernel config files
-        60-linux.hook  # pacman hook for depmod
-        90-linux.hook  # pacman hook for initramfs regeneration
-        linux.preset   # standard config files for mkinitcpio ramdisk
+source=("${_srcname}::git+https://github.com/anthraxx/linux-hardened#branch=${_gitbranch}?signed"
+        config         # the main kernel config files
 )
-replaces=('linux-grsec')
 sha256sums=('SKIP'
-            '63feccba3f160c368c694f6a8fed4d8caa2c2a62cf73c7de28ab5fe276fe9923'
-            'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
-            'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
-            'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
+            '037cd07b6f1586f6c567cb9c4f78b1017bed4e73f69631f41ca417ab86e467dc')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -34,11 +28,8 @@ validpgpkeys=(
               'E240B57E2C4630BA768E2F26FC1B547C8D8172C8' # Levente Polyak
              )
 
-_kernelname=${pkgbase#linux}
-: ${_kernelname:=-hardened}
-
 pkgver() {
-  cd ${pkgbase/-git/}
+  cd $_srcname
   printf "%s.%s.%s%s.r%s.g%s" \
     "$(grep '^VERSION = ' Makefile|awk -F' = ' '{print $2}')" \
     "$(grep '^PATCHLEVEL = ' Makefile|awk -F' = ' '{print $2}')" \
@@ -49,13 +40,13 @@ pkgver() {
 }
 
 prepare() {
-  cd ${pkgbase/-git/}
+  cd $_srcname
 
   msg2 "Setting version..."
   rm -f localversion* include/config/kernel.release
   scripts/setlocalversion --save-scmversion
   echo "-$pkgrel" > localversion.10-pkgrel
-  echo "$_kernelname" > localversion.20-pkgname
+  echo "${pkgbase#linux}" > localversion.20-pkgname
   echo "-r$(git rev-list --count HEAD)" > localversion.30-revision
 
   local src
@@ -68,7 +59,7 @@ prepare() {
   done
 
   msg2 "Setting config..."
-  cp ../config.x86_64 .config
+  cp ../config .config
   make olddefconfig
 
   make -s kernelrelease > version
@@ -76,7 +67,7 @@ prepare() {
 }
 
 build() {
-  cd ${pkgbase/-git/}
+  cd $_srcname
   make bzImage modules htmldocs
 }
 
@@ -86,10 +77,8 @@ _package() {
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices'
               'usbctl: deny_new_usb control')
-  backup=("etc/mkinitcpio.d/$pkgbase.preset")
-  install=linux.install
 
-  cd ${pkgbase/-git/}
+  cd $_srcname
   local kernver="$(<version)"
   local modulesdir="$pkgdir/usr/lib/modules/$kernver"
 
@@ -97,35 +86,16 @@ _package() {
   # systemd expects to find the kernel here to allow hibernation
   # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
   install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
-  install -Dm644 "$modulesdir/vmlinuz" "$pkgdir/boot/vmlinuz-${pkgbase/-git/}"
+  install -Dm644 "$modulesdir/vmlinuz" "$pkgdir/boot/vmlinuz-$pkgbase"
 
   # Used by mkinitcpio to name the kernel
-  echo "${pkgbase/-git/}" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
+  echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   msg2 "Installing modules..."
   make INSTALL_MOD_PATH="$pkgdir/usr" modules_install
 
   # remove build and source links
   rm "$modulesdir"/{source,build}
-
-  msg2 "Installing hooks..."
-  # sed expression for following substitutions
-  local subst="
-    s|%PKGBASE%|${pkgbase/-git/}|g
-    s|%KERNVER%|$kernver|g
-  "
-
-  # hack to allow specifying an initially nonexisting install file
-  sed "$subst" "$startdir/$install" > "$startdir/$install.pkg"
-  true && install=$install.pkg
-
-  # fill in mkinitcpio preset and pacman hooks
-  sed "$subst" ../linux.preset | install -Dm644 /dev/stdin \
-    "$pkgdir/etc/mkinitcpio.d/${pkgbase/-git/}.preset"
-  sed "$subst" ../60-linux.hook | install -Dm644 /dev/stdin \
-    "$pkgdir/usr/share/libalpm/hooks/60-${pkgbase/-git/}.hook"
-  sed "$subst" ../90-linux.hook | install -Dm644 /dev/stdin \
-    "$pkgdir/usr/share/libalpm/hooks/90-${pkgbase/-git/}.hook"
 
   msg2 "Fixing permissions..."
   chmod -Rc u=rwX,go=rX "$pkgdir"
@@ -134,7 +104,7 @@ _package() {
 _package-headers() {
   pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel"
 
-  cd ${pkgbase/-git/}
+  cd $_srcname
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
   msg2 "Installing build files..."
@@ -203,7 +173,7 @@ _package-headers() {
 
   msg2 "Adding symlink..."
   mkdir -p "$pkgdir/usr/src"
-  ln -sr "$builddir" "$pkgdir/usr/src/${pkgbase/-git/}"
+  ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 
   msg2 "Fixing permissions..."
   chmod -Rc u=rwX,go=rX "$pkgdir"
@@ -212,7 +182,7 @@ _package-headers() {
 _package-docs() {
   pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase/linux/Linux} kernel"
 
-  cd ${pkgbase/-git/}
+  cd $_srcname
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
   msg2 "Installing documentation..."
@@ -233,7 +203,7 @@ _package-docs() {
 
   msg2 "Adding symlink..."
   mkdir -p "$pkgdir/usr/share/doc"
-  ln -sr "$builddir/Documentation" "$pkgdir/usr/share/doc/${pkgbase/-git/}"
+  ln -sr "$builddir/Documentation" "$pkgdir/usr/share/doc/$pkgbase"
 
   msg2 "Fixing permissions..."
   chmod -Rc u=rwX,go=rX "$pkgdir"
@@ -244,7 +214,6 @@ for _p in "${pkgname[@]}"; do
   _p=${_p/-git/}
   eval "package_$_p-git() {
     provides=(${_p})
-    conflicts=(${_p})
     $(declare -f "_package${_p#linux-hardened}")
     _package${_p#linux-hardened}
   }"

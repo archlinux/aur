@@ -1,5 +1,5 @@
 pkgbase = linux-hardened-git
-	pkgver = 5.3.0.r857780.g1317ca6048b5
+	pkgver = 5.3.8.r858798.gdb18e081bc2b
 	pkgrel = 1
 	url = https://github.com/anthraxx/linux-hardened
 	arch = x86_64
@@ -14,26 +14,18 @@ pkgbase = linux-hardened-git
 	makedepends = graphviz
 	makedepends = imagemagick
 	makedepends = git
-	replaces = linux-grsec
 	options = !strip
-	source = git+https://github.com/anthraxx/linux-hardened#branch=5.3?signed
-	source = config.x86_64
-	source = 60-linux.hook
-	source = 90-linux.hook
-	source = linux.preset
+	source = linux-hardened::git+https://github.com/anthraxx/linux-hardened#branch=5.3?signed
+	source = config
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = 65EEFE022108E2B708CBFCF7F9E712E59AF5F22A
 	validpgpkeys = E240B57E2C4630BA768E2F26FC1B547C8D8172C8
 	sha256sums = SKIP
-	sha256sums = 63feccba3f160c368c694f6a8fed4d8caa2c2a62cf73c7de28ab5fe276fe9923
-	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
-	sha256sums = c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636
-	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
+	sha256sums = 037cd07b6f1586f6c567cb9c4f78b1017bed4e73f69631f41ca417ab86e467dc
 
 pkgname = linux-hardened-git
 	pkgdesc = The Linux-hardened-git kernel and modules
-	install = linux.install
 	depends = coreutils
 	depends = kmod
 	depends = initramfs
@@ -41,16 +33,12 @@ pkgname = linux-hardened-git
 	optdepends = linux-firmware: firmware images needed for some devices
 	optdepends = usbctl: deny_new_usb control
 	provides = linux-hardened
-	conflicts = linux-hardened
-	backup = etc/mkinitcpio.d/linux-hardened-git.preset
 
 pkgname = linux-hardened-headers-git
 	pkgdesc = Header files and scripts for building modules for Linux-hardened-git kernel
 	provides = linux-hardened-headers
-	conflicts = linux-hardened-headers
 
 pkgname = linux-hardened-docs-git
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-hardened-git kernel
 	provides = linux-hardened-docs
-	conflicts = linux-hardened-docs
 
