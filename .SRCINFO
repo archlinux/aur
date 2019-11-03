@@ -1,0 +1,22 @@
+pkgbase = linux-wsl
+	pkgver = 4.19.81
+	pkgrel = 1
+	url = https://github.com/microsoft/WSL2-Linux-Kernel
+	arch = x86_64
+	license = GPL2
+	makedepends = xmlto
+	makedepends = kmod
+	makedepends = inetutils
+	makedepends = bc
+	makedepends = libelf
+	makedepends = git
+	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
+	makedepends = graphviz
+	makedepends = imagemagick
+	options = !strip
+	source = https://github.com/microsoft/WSL2-Linux-Kernel/archive/4.19.81-microsoft-standard.tar.gz
+	md5sums = e2784adf1f52ff428a6b965cf49e214d
+
+pkgname = linux-wsl
+
