@@ -1,8 +1,8 @@
 *
 
-!topsi-project-manager.desktop
-!topsi-project-manager.install
-!topsi-project-manager.sh
+!topsi-project-manager-git.desktop
+!topsi-project-manager-git.install
+!topsi-project-manager-git.sh
 !PKGBUILD
 !.SRCINFO
 !.gitignore
