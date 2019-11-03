@@ -1,7 +1,0 @@
-KERNEL_NAME=-linode
-
-export PATH='/usr/local/sbin:/usr/local/bin:/usr/bin'
-
-post_remove() {
-  rm -f boot/initramfs-linux${KERNEL_NAME}.img
-}
