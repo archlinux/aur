@@ -1,11 +1,11 @@
-# Maintainer: Daniel Bermond < gmail-com: danielbermond >
+# Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
-_glslang_commit='25a508cc735109cc4e382c3a1cc293a9452a41f3'
-_spirv_tools_commit='55adf4cf707bb12c29fc12f784ebeaa29a819e9b'
-_spirv_headers_commit='29c11140baaf9f7fdaa39a583672c556bf1795a1'
+_glslang_commit='4b5159ea8170fa34e29f13448fddebf88e0a722a'
+_spirv_tools_commit='bbb29870b510f83f99994358179c9ea6838c3100'
+_spirv_headers_commit='601d738723ac381741311c6c98c36d6170be14a2'
 
 pkgname=spirv-cross
-pkgver=2019.09.06
+pkgver=2019.11.01
 pkgrel=1
 pkgdesc='A tool and library for parsing and converting SPIR-V to other shader languages'
 arch=('x86_64')
@@ -65,18 +65,13 @@ build() {
         -DSPIRV_CROSS_SHARED:BOOL='ON' \
         -Wno-dev \
         ..
-        
     make
 }
 
 check() {
-    cd SPIRV-Cross/build
-    
-    make test
+    make -C SPIRV-Cross/build test
 }
 
 package() {
-    cd SPIRV-Cross/build
-    
-    make DESTDIR="$pkgdir" install
+    make -C SPIRV-Cross/build DESTDIR="$pkgdir" install
 }
