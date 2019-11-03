@@ -19,14 +19,16 @@ md5sums=('SKIP'
 	'SKIP')
 
 prepare() {
-	  cd "${srcdir}/${pkgname%-git}"
-	  git submodule update --init --recursive
-	  sed -i -e "\$atarget.path = /usr/bin\nINSTALLS += target" NifSkope.pro
+	cd "${srcdir}/${pkgname%-git}"
+	git submodule update --init --recursive
+	git pull origin pull/147/head
+	sed -i -e "\$atarget.path = /usr/bin\nINSTALLS += target" NifSkope.pro
 }
 
 
 pkgver() {
-	 git describe --always | sed 's|nifskope-\([0-9]\+.[0-9]\+.[0-9]\+\)|\1|' | sed 's|-|.|g'
+	cd "${srcdir}/${pkgname%-git}"
+	git describe --always | sed 's|nifskope-\([0-9]\+.[0-9]\+.[0-9]\+\)|\1|' | sed 's|-|.|g'
 }
 
 build() {
