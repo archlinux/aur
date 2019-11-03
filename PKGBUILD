@@ -1,6 +1,6 @@
 # Maintainer: malwareslayer <alternate-egoist@protonmail.com>
 
-pkgname=mbuild-git
+pkgname=mbuild
 _pypiname=mbuild
 
 pkgver=0.1
