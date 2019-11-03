@@ -2,12 +2,12 @@
 
 pkgname=imagine-git
 pkgver=0.5.0.r0.g7bea16d
-pkgrel=1.3
+pkgrel=1.4
 pkgdesc="PNG/JPEG optimization app"
 arch=("x86_64")
 url="https://github.com/meowtec/Imagine"
 license=("MIT")
-depends=("electron2" "imagemagick")
+depends=("electron2" "imagemagick" "gconf")
 makedepends=("git" "npm")
 provides=("${pkgname}")
 conflicts=("${pkgname}")
