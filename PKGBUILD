@@ -1,7 +1,7 @@
-# Maintainer: Daniel Bermond < gmail-com: danielbermond >
+# Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=mpv-full-git
-pkgver=0.29.1.r764.gc833c095d7
+pkgver=0.30.0.r87.g67e17f1104
 pkgrel=1
 pkgdesc='A free, open source, and cross-platform media player (git version with all possible libs)'
 arch=('x86_64')
@@ -11,12 +11,12 @@ depends=(
     # official repositories:
         'cmocka' 'ffmpeg' 'lcms2' 'libcdio-paranoia' 'libgl' 'libxss'
         'libxinerama' 'libxv' 'libxkbcommon' 'libva' 'wayland' 'libcaca'
-        'desktop-file-utils' 'hicolor-icon-theme' 'xdg-utils' 'lua52' 'libdvdnav'
-        'libxrandr' 'jack' 'rubberband' 'uchardet' 'libarchive' 'smbclient'
-        'zlib' 'vapoursynth' 'sndio' 'openal' 'vulkan-icd-loader' 'shaderc'
-        'libplacebo' 'zimg'
+        'desktop-file-utils' 'hicolor-icon-theme' 'xdg-utils' 'lua52' 'mujs'
+        'libdvdnav' 'libxrandr' 'jack' 'rubberband' 'uchardet' 'libarchive'
+        'smbclient' 'zlib' 'vapoursynth' 'sndio' 'openal' 'vulkan-icd-loader'
+        'shaderc' 'libplacebo' 'zimg'
     # AUR:
-        'mujs' 'rsound' 'spirv-cross'
+        'rsound' 'spirv-cross'
 )
 makedepends=('git' 'mesa' 'python-docutils' 'ladspa' 'vulkan-headers'
              'wayland-protocols' 'ffnvcodec-headers')
@@ -30,7 +30,6 @@ sha256sums=('SKIP')
 
 prepare() {
     cd mpv
-    
     ./bootstrap.py
 }
 
@@ -94,10 +93,13 @@ build() {
         --enable-vapoursynth \
         --enable-libarchive \
         --enable-dvbin \
+        --enable-sdl2 \
+        --enable-sdl2-gamepad \
         --enable-libavdevice \
+        --disable-ffmpeg-strict-abi \
         --lua='52arch' \
         \
-        --enable-sdl2 \
+        --enable-sdl2-audio \
         --enable-oss-audio \
         --enable-rsound \
         --enable-sndio \
@@ -110,6 +112,7 @@ build() {
         --disable-audiounit \
         --disable-wasapi \
         \
+        --enable-sdl2-video \
         --disable-cocoa \
         --enable-drm \
         --enable-drmprime \
@@ -181,5 +184,6 @@ package() {
     
     ./waf install --destdir="$pkgdir"
     
-    install -m644 DOCS/{encoding.rst,tech-overview.txt} "${pkgdir}/usr/share/doc/mpv"
+    install -D -m644 DOCS/{encoding.rst,tech-overview.txt} "${pkgdir}/usr/share/doc/mpv"
+    install -D -m644 TOOLS/lua/* -t "${pkgdir}/usr/share/mpv/script"
 }
