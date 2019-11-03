@@ -1,16 +1,20 @@
 #! /bin/bash
 
 Name="execute"
-pkgname="${Name}-git"
-pkgrel=1
-pkgdesc="Opens exe and bat files as if they were native"
-arch=("x86_64")
-url="https://gitlab.com/es20490446e/exeCute"
-license=("GPL3")
-makedepends=("git")
-depends=("dosbox" "q4wine" "wine_gecko" "wine-mono")
 provides=("${Name}" "batman")
 conflicts=("${Name}" "batman")
+pkgname="${Name}-git"
+
+pkgdesc="Opens exe and bat files as if they were native"
+url="https://gitlab.com/es20490446e/exeCute"
+license=("GPL3")
+
+pkgver=1
+pkgrel=1
+arch=("x86_64")
+
+makedepends=("git")
+depends=("dosbox" "q4wine" "wine_gecko" "wine-mono")
 source=()
 md5sums=()
 
@@ -32,7 +36,6 @@ pkgver() {
 		echo "${version}"
 	fi
 }
-pkgver=$(pkgver)
 
 
 build () {
