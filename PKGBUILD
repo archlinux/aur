@@ -17,7 +17,7 @@ source=('http://support.seagate.com/seachest/SeaChestUtilities.zip')
 md5sums=('d3d2d1dd58d9b5c669662997d9d78062')
 sha256sums=('e30848b722d72ad9fe014dafedc8e65389d82800465c7cc3430e40181bbf6922')
 
-SOURCE_DATE_EPOCH='disabled' # disable reproducible builds FFS
+#REPRODUCIBLE=0; SOURCE_DATE_EPOCH=$(date +%s) # disable reproducible builds FFS
 
 package() {
   set -u
