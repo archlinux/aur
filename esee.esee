@@ -1,0 +1,98 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 016e4c7..d69d12a 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,6 +1,8 @@
+ cmake_minimum_required(VERSION 3.8)
+ project(Quartz)
+ 
++include(GNUInstallDirs)
++
+ option(BUILD_SHARED_LIBS "Build shared libraries" ON)
+ option(BUILD_APPS "Build the standalone renderer & supplemental tools" ON)
+ option(BUILD_EXAMPLES "Build example programs" ON)
+@@ -29,3 +31,6 @@ if(BUILD_EXAMPLES)
+ endif()
+ 
+ set(QML_IMPORT_PATH "${PROJECT_BINARY_DIR}/qml")
++
++install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/include/Qt3DRaytrace DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/qt)
++install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/include/Qt3DRaytraceExtras DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/qt)
+\ No newline at end of file
+diff --git a/apps/quartz/CMakeLists.txt b/apps/quartz/CMakeLists.txt
+index 9e5b76d..bc1da51 100644
+--- a/apps/quartz/CMakeLists.txt
++++ b/apps/quartz/CMakeLists.txt
+@@ -20,3 +20,5 @@ endif()
+ target_compile_features(${APP_NAME} PRIVATE cxx_std_14)
+ target_include_directories(${APP_NAME} PRIVATE ${QUARTZ_3RDPARTY})
+ target_link_libraries(${APP_NAME} Qt5::Core Qt5::Gui Qt5::Widgets Qt5::Qml Qt3DRaytrace Qt3DRaytraceExtras stb)
++
++install(TARGETS ${APP_NAME} DESTINATION ${CMAKE_INSTALL_BINDIR})
+\ No newline at end of file
+diff --git a/apps/scene2qml/CMakeLists.txt b/apps/scene2qml/CMakeLists.txt
+index aac6496..86cf8aa 100644
+--- a/apps/scene2qml/CMakeLists.txt
++++ b/apps/scene2qml/CMakeLists.txt
+@@ -21,3 +21,5 @@ target_include_directories(${APP_NAME}
+ 
+ target_compile_features(${APP_NAME} PRIVATE cxx_std_14)
+ target_link_libraries(${APP_NAME} Qt5::Core ${assimp_LIBRARIES})
++
++install(TARGETS ${APP_NAME} DESTINATION ${CMAKE_INSTALL_BINDIR})
+diff --git a/src/extras/CMakeLists.txt b/src/extras/CMakeLists.txt
+index 4f313f2..c22591a 100644
+--- a/src/extras/CMakeLists.txt
++++ b/src/extras/CMakeLists.txt
+@@ -37,4 +37,7 @@ if(BUILD_SHARED_LIBS)
+         PUBLIC QUARTZ_SHARED
+         PRIVATE QT3DRAYTRACEEXTRAS_LIBRARY
+     )
++    install(TARGETS ${MODULE_NAME} LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
++else()
++    install(TARGETS ${MODULE_NAME} ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ endif()
+diff --git a/src/qml/quick3draytrace/CMakeLists.txt b/src/qml/quick3draytrace/CMakeLists.txt
+index eecc1b8..eba9d28 100644
+--- a/src/qml/quick3draytrace/CMakeLists.txt
++++ b/src/qml/quick3draytrace/CMakeLists.txt
+@@ -32,3 +32,11 @@ add_custom_command(
+ if(DUMP_QML_TYPEINFO)
+     qml_typeinfo("Qt3D.Raytrace" "1.0" "Qt3D/Raytrace/plugins.qmltypes")
+ endif()
++
++set(URI Qt3D)
++string(REPLACE "." "/" TARGETPATH ${URI})
++execute_process(COMMAND qmake -query QT_INSTALL_QML OUTPUT_VARIABLE QT_INSTALL_QML_RAW)
++string(REPLACE "\n" "" QT_INSTALL_QML ${QT_INSTALL_QML_RAW})
++set(QMLDIR "${QT_INSTALL_QML}/${TARGETPATH}")
++
++install(DIRECTORY "${PROJECT_BINARY_DIR}/qml/Qt3D/Raytrace" DESTINATION ${QMLDIR})
+diff --git a/src/qml/quick3draytraceextras/CMakeLists.txt b/src/qml/quick3draytraceextras/CMakeLists.txt
+index 0bb6c77..21d6b0d 100644
+--- a/src/qml/quick3draytraceextras/CMakeLists.txt
++++ b/src/qml/quick3draytraceextras/CMakeLists.txt
+@@ -32,3 +32,11 @@ add_custom_command(
+ if(DUMP_QML_TYPEINFO)
+     qml_typeinfo("Qt3D.RaytraceExtras" "1.0" "Qt3D/RaytraceExtras/plugins.qmltypes")
+ endif()
++
++set(URI Qt3D)
++string(REPLACE "." "/" TARGETPATH ${URI})
++execute_process(COMMAND qmake -query QT_INSTALL_QML OUTPUT_VARIABLE QT_INSTALL_QML_RAW)
++string(REPLACE "\n" "" QT_INSTALL_QML ${QT_INSTALL_QML_RAW})
++set(QMLDIR "${QT_INSTALL_QML}/${TARGETPATH}")
++
++install(DIRECTORY "${PROJECT_BINARY_DIR}/qml/Qt3D/RaytraceExtras" DESTINATION ${QMLDIR})
+diff --git a/src/raytrace/CMakeLists.txt b/src/raytrace/CMakeLists.txt
+index 60e3d04..65d6541 100644
+--- a/src/raytrace/CMakeLists.txt
++++ b/src/raytrace/CMakeLists.txt
+@@ -126,4 +126,7 @@ if(BUILD_SHARED_LIBS)
+         PUBLIC QUARTZ_SHARED
+         PRIVATE QT3DRAYTRACE_LIBRARY
+     )
++    install(TARGETS ${MODULE_NAME} LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
++else()
++    install(TARGETS ${MODULE_NAME} ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ endif()

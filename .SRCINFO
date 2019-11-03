@@ -1,0 +1,24 @@
+pkgbase = qt5-quartz-git
+	pkgdesc = Raytrace over Vulkan for Qt (works only Nvidia RTX users)
+	pkgver = v1.0.0.7.g1f07a9b
+	pkgrel = 1
+	url = https://github.com/Nadrin/Quartz
+	arch = x86_64
+	license = GPL
+	makedepends = qt5-tools
+	makedepends = cmake
+	makedepends = git
+	makedepends = python
+	makedepends = vulkan-headers
+	depends = qt5-3d
+	depends = assimp-git
+	depends = vulkan-icd-loader
+	provides = qt5-quatz
+	conflicts = qt5-quatz
+	source = git+https://github.com/Nadrin/Quartz.git
+	source = esee.esee
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = qt5-quartz-git
+
