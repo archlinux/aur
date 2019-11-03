@@ -1,8 +1,8 @@
 #! /bin/bash
 
 Name="execute"
-provides=("${Name}" "batman")
-conflicts=("${Name}" "batman")
+provides=("${Name}")
+conflicts=("${Name}")
 pkgname="${Name}-git"
 
 pkgdesc="Opens exe and bat files as if they were native"
@@ -10,7 +10,7 @@ url="https://gitlab.com/es20490446e/exeCute"
 license=("GPL3")
 
 pkgver=1
-pkgrel=1
+pkgrel=2
 arch=("x86_64")
 
 makedepends=("git")
