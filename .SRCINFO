@@ -1,43 +1,41 @@
 pkgbase = sat-xmpp-hg
 	pkgdesc = Salut à Toi, multi-frontends multi-purposes XMPP client (core)
-	pkgver = 0.7.0.r2956.767e1ef6e1bd
+	pkgver = 0.7.0.r3062.93e8793a735a
 	pkgrel = 1
 	url = http://salut-a-toi.org/
 	arch = any
 	license = AGPL3
-	makedepends = python2-setuptools
+	makedepends = python-setuptools
 	makedepends = mercurial
-	depends = python2
+	depends = python
 	depends = dbus
-	depends = python2-lxml>=3.1.0
-	depends = python2-pillow
-	depends = python2-pycryptodomex>=2.6.1
-	depends = python2-pyopenssl
-	depends = python2-dbus
-	depends = python2-twisted
-	depends = python2-wokkel>=0.7.1
+	depends = python-lxml
+	depends = python-pillow
+	depends = python-pycryptodomex
+	depends = python-pyopenssl
+	depends = python-dbus
+	depends = python-twisted
+	depends = python-wokkel>=0.7.1
 	depends = python-xdg
-	depends = python2-zope-interface
+	depends = python-zope-interface
 	depends = mutagen
-	depends = python2-markdown
-	depends = python2-xdg
-	depends = python2-shortuuid-git
-	depends = python2-gobject2
-	depends = python2-html2text
-	depends = python2-netifaces
-	depends = python2-service-identity
+	depends = python-markdown
+	depends = python-shortuuid-git
+	depends = python-html2text
+	depends = python-netifaces
+	depends = python-service-identity
 	depends = sat-tmp-hg
-	depends = python2-dateutil
-	depends = python2-regex
-	depends = python2-gobject
-	depends = python2-pyinotify
-	depends = python2-babel
-	depends = python2-urwid>=1.2.0
-	depends = python2-urwid-satext>=0.6.1
-	depends = python2-xlib
-	optdepends = python2-progressbar
-	optdepends = python2-miniupnpc
-	optdepends = python2-potr
+	depends = python-dateutil
+	depends = python-regex
+	depends = python-gobject
+	depends = python-pyinotify
+	depends = python-babel
+	depends = python-urwid
+	depends = python-urwid-satext
+	depends = python-xlib
+	optdepends = python-progressbar
+	optdepends = python-miniupnpc
+	optdepends = python-potr
 	options = !strip
 	source = hg+https://repos.goffi.org/sat
 	md5sums = SKIP
