@@ -1,10 +1,10 @@
-# Maintainer: Daniel Bermond < gmail-com: danielbermond >
+# Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 _wafver=2.0.9
 
 pkgname=mpv-full
-pkgver=0.29.1
-pkgrel=6
+pkgver=0.30.0
+pkgrel=0
 pkgdesc='A free, open source, and cross-platform media player (with all possible libs)'
 arch=('x86_64')
 license=('GPL3')
@@ -13,12 +13,12 @@ depends=(
     # official repositories:
         'cmocka' 'ffmpeg' 'lcms2' 'libcdio-paranoia' 'libgl' 'libxss'
         'libxinerama' 'libxv' 'libxkbcommon' 'libva' 'wayland' 'libcaca'
-        'desktop-file-utils' 'hicolor-icon-theme' 'xdg-utils' 'lua52' 'libdvdnav'
-        'libxrandr' 'jack' 'rubberband' 'uchardet' 'libarchive' 'smbclient'
-        'zlib' 'vapoursynth' 'sndio' 'openal' 'vulkan-icd-loader' 'shaderc'
-        
+        'desktop-file-utils' 'hicolor-icon-theme' 'xdg-utils' 'lua52' 'mujs'
+        'libdvdnav' 'libxrandr' 'jack' 'rubberband' 'uchardet' 'libarchive'
+        'smbclient' 'zlib' 'vapoursynth' 'sndio' 'openal' 'vulkan-icd-loader'
+        'shaderc' 'libplacebo' 'zimg'
     # AUR:
-        'mujs' 'rsound' 'crossc'
+        'rsound' 'spirv-cross'
 )
 makedepends=('mesa' 'python-docutils' 'ladspa' 'vulkan-headers'
              'wayland-protocols' 'ffnvcodec-headers')
@@ -29,12 +29,11 @@ conflicts=('mpv')
 options=('!emptydirs')
 source=("mpv-${pkgver}.tar.gz"::"https://github.com/mpv-player/mpv/archive/v${pkgver}.tar.gz"
         "https://waf.io/waf-${_wafver}")
-sha256sums=('f9f9d461d1990f9728660b4ccb0e8cb5dce29ccaa6af567bec481b79291ca623'
+sha256sums=('33a1bcb7e74ff17f070e754c15c52228cf44f2cefbfd8f34886ae81df214ca35'
             '2a8e0816f023995e557f79ea8940d322bec18f286917c8f9a6fa2dc3875dfa48')
 
 prepare() {
     cd "mpv-${pkgver}"
-    
     install -m755 "${srcdir}/waf-${_wafver}" waf
 }
 
@@ -58,11 +57,12 @@ build() {
         --disable-pdf-build \
         \
         --enable-cplugins \
-        --enable-zsh-comp \
         --enable-test \
         --disable-clang-database \
         \
         --disable-android \
+        --disable-tvos \
+        --disable-egl-android \
         --disable-swift \
         --disable-uwp \
         --disable-win32-internal-pthreads \
@@ -74,19 +74,22 @@ build() {
         --enable-libass-osd \
         --enable-zlib \
         --enable-libbluray \
-        --enable-dvdread \
         --enable-dvdnav \
         --enable-cdda \
         --enable-uchardet \
         --enable-rubberband \
+        --enable-zimg \
         --enable-lcms2 \
         --enable-vapoursynth \
-        --enable-vapoursynth-lazy \
         --enable-libarchive \
+        --enable-dvbin \
+        --enable-sdl2 \
+        --enable-sdl2-gamepad \
         --enable-libavdevice \
+        --disable-ffmpeg-strict-abi \
         --lua='52arch' \
         \
-        --enable-sdl2 \
+        --enable-sdl2-audio \
         --enable-oss-audio \
         --enable-rsound \
         --enable-sndio \
@@ -99,6 +102,7 @@ build() {
         --disable-audiounit \
         --disable-wasapi \
         \
+        --enable-sdl2-video \
         --disable-cocoa \
         --enable-drm \
         --enable-drmprime \
@@ -124,19 +128,18 @@ build() {
         --enable-vaapi-x11 \
         --enable-vaapi-wayland \
         --enable-vaapi-drm \
-        --enable-vaapi-glx \
         --enable-vaapi-x-egl \
         --enable-caca \
         --enable-jpeg \
         --disable-direct3d \
         --enable-shaderc \
-        --enable-crossc \
+        --enable-spirv-cross \
         --disable-d3d11 \
         --disable-rpi \
         --disable-ios-gl \
         --enable-plain-gl \
-        --disable-mali-fbdev \
         --enable-gl \
+        --enable-libplacebo \
         --enable-vulkan \
         \
         --disable-videotoolbox-gl \
@@ -144,15 +147,12 @@ build() {
         --disable-d3d9-hwaccel \
         --disable-gl-dxinterop-d3d9 \
         --enable-cuda-hwaccel \
-        \
-        --enable-tv \
-        --enable-tv-v4l2 \
-        --enable-libv4l2 \
-        --enable-audio-input \
-        --enable-dvbin \
+        --disable-rpi-mmal \
         \
         --disable-apple-remote \
         --disable-macos-touchbar \
+        --disable-macos-10-11-features \
+        --disable-macos-10-14-features \
         --disable-macos-cocoa-cb
         
     ./waf build
@@ -166,13 +166,14 @@ check() {
     do
         printf '%s\n' "  -> Running test '${_test##*/}'..."
         "$_test"
-    done < <(find . -executable -type f -print0)
+    done < <(find . -executable -type f -print0 | sort -z)
 }
 
 package() {
     cd "mpv-${pkgver}"
-    
+
     ./waf install --destdir="$pkgdir"
     
-    install -m644 DOCS/{encoding.rst,tech-overview.txt} "${pkgdir}/usr/share/doc/mpv"
+    install -D -m644 DOCS/{encoding.rst,tech-overview.txt} "${pkgdir}/usr/share/doc/mpv"
+    install -D -m644 TOOLS/lua/* -t "${pkgdir}/usr/share/mpv/script"
 }
