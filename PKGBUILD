@@ -2,7 +2,7 @@
 
 _reponame=brave-browser
 pkgname=brave
-pkgver=0.69.135
+pkgver=0.70.121
 pkgrel=1
 pkgdesc='A web browser that stops ads and trackers by default'
 arch=('x86_64')
@@ -17,10 +17,10 @@ source=("git+https://github.com/brave/brave-browser.git#tag=v${pkgver}"
         'chromium-vaapi-fix.patch'
         'chromium-widevine.patch'
         'chromium-skia-harmony.patch'
-        'include-memory-in-one_euro_filter.h.patch'
-        'link-against-harfbuzz-subset.patch'
-        'fix-wrong-string-initialization-in-LinkedHashSet.patch'
-        'include-limits-in-web_time_range.cc.patch'
+        'add-missing-include-for-unique_ptr.patch'
+        'dns_util-make-DohUpgradeEntry-non-const.patch'
+        'fix-shutdown-crash-in-ProfileManager.patch'
+        'fix-spammy-unique-font-matching-log.patch'
         'brave-vaapi-enable.patch'
         'brave-launcher'
         'brave-browser.desktop')
@@ -28,10 +28,10 @@ sha256sums=('SKIP'
             '7496762a1953b15a48d3e5503fb76d9835940afd850a45b7de976de9f51479f9'
             'd081f2ef8793544685aad35dea75a7e6264a2cb987ff3541e6377f4a3650a28b'
             '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1'
-            '33a5bcd1df2cc7aa7467fa882790ef143a4497d2b704c9e1ea86c8ede90c2d90'
-            'ab986e4b723dfcedab1bc8dcada07526facae28a8a7ff3345f658532c1d99987'
-            '840f555020751ec284dca35b9317a9dd7dc69fcb910ea1cae2dd7cc9b237dfb7'
-            'd3dfe3c86901a11636972a774ed6c941ac76e38c9e4a384f458043a0a03291a9'
+            '49052e8aa630c4aa57bf46823edc32b7b309493275163c3bb3f9fd390c73356e'
+            '69694ab12a5ced389916c0c5e8c7bdc191544f576b134ddfb2fe9d4ed9ec4494'
+            '4f81612c28957987f7344d8ce2b95a4a63136a8319c9751819436b11c62df057'
+            '6fbffe59b886195b92c9a55137cef83021c16593f49714acb20023633e3ebb19'
             '2b07eabd8b3d42456d2de44f6dca6cf2e98fa06fc9b91ac27966fca8295c5814'
             '43f442d9ffacd69a1ca770b029083aaa544d48c052939a66e58a868d91ebde70'
             '2191ba32800a423f37b7a667093e2bdef5762fe5111fee1d5067e66e26564488')
@@ -43,8 +43,8 @@ prepare() {
 
     # Hack to prioritize python2 in PATH
     mkdir -p "${srcdir}/bin"
-    ln -s /usr/bin/python2 "${srcdir}/bin/python"
-    ln -s /usr/bin/python2-config "${srcdir}/bin/python-config"
+    ln -sf /usr/bin/python2 "${srcdir}/bin/python"
+    ln -sf /usr/bin/python2-config "${srcdir}/bin/python-config"
     export PATH="${srcdir}/bin:${PATH}"
 
     # Prepare the environment
@@ -55,17 +55,17 @@ prepare() {
     cd src/
     patch -Np1 -i "${srcdir}/chromium-vaapi-fix.patch"
 
-    # https://crbug.com/819294
-    patch -Np1 -i "${srcdir}/include-memory-in-one_euro_filter.h.patch"
+    # Missing include in third_party/blink/public/platform/web_rtc_rtp_source.h
+    patch -Np1 -i "${srcdir}/add-missing-include-for-unique_ptr.patch"
 
-    # https://groups.google.com/a/chromium.org/d/msg/chromium-packagers/UyJsVJ5QqWo/jSv5z7-rEQAJ
-    patch -Np1 -i "${srcdir}/link-against-harfbuzz-subset.patch"
+    # https://crbug.com/957519#c23
+    patch -Np1 -i "${srcdir}/dns_util-make-DohUpgradeEntry-non-const.patch"
 
-    # https://crbug.com/980025
-    patch -Np1 -i "${srcdir}/fix-wrong-string-initialization-in-LinkedHashSet.patch"
+    # https://crbug.com/1005244
+    patch -Np1 -i "${srcdir}/fix-shutdown-crash-in-ProfileManager.patch"
 
-    # https://crbug.com/992832
-    patch -Np1 -i "${srcdir}/include-limits-in-web_time_range.cc.patch"
+    # https://crbug.com/1005508
+    patch -Np1 -i "${srcdir}/fix-spammy-unique-font-matching-log.patch"
 
     # Load Widevine CDM if available
     patch -Np1 -i "${srcdir}/chromium-widevine.patch"
@@ -79,6 +79,13 @@ prepare() {
 
 build() {
     cd "${_reponame}"
+
+    # Hack to prioritize python2 in PATH
+    mkdir -p "${srcdir}/bin"
+    ln -sf /usr/bin/python2 "${srcdir}/bin/python"
+    ln -sf /usr/bin/python2-config "${srcdir}/bin/python-config"
+    export PATH="${srcdir}/bin:${PATH}"
+
     npm run build Release
 }
 
