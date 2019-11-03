@@ -33,7 +33,7 @@ _git_reponame='im-desktop'
 
 pkgname='icqdesktop-git'
 pkgver=r5.8422caa
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 #depends=('')
 makedepends=('git' 'cmake' 'glfw-x11')
@@ -67,7 +67,7 @@ build() {
 }
 
 package() {
-  install -Dm755 "${pkgname}/bin/Release64/icq" "${pkgdir}/usr/bin/icq"
+  install -Dm755 "${pkgname}/bin/Release${LINUX_ARCH}/icq" "${pkgdir}/usr/bin/icq"
   install -Dm644 "${pkgname}/gui/resources/main_window/logo_icq.svg" "${pkgdir}/usr/share/pixmaps/icq.png"
   install -Dm644 icq.desktop "${pkgdir}/usr/share/applications/icq.desktop"
 }

@@ -1,7 +1,7 @@
 pkgbase = icqdesktop-git
 	pkgdesc = Official ICQ desktop client for Linux
 	pkgver = r5.8422caa
-	pkgrel = 1
+	pkgrel = 2
 	url = https://icq.com/
 	arch = i686
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = icqdesktop-git
 	conflicts = icqdesktop-bin
 	noextract = external.7z
 	source = icqdesktop-git::git+https://github.com/mail-ru-im/im-desktop.git
-	source = external.7z::"https://ub.icq.net/files/get/ohmpeKNhR6YdlRhMv8eWt2V8eWZoqBmRYaJi5WdODdtZJnydtWk4DetWrX2m0nBb72tR5JCXtALDXezAFjwpwZDdzAqnJVP1XAPIeNUZ98VSonNDzsQWHx9zKRtAj2kZR1CAuR1PRlaZ36bhyni6U4HWLMv8eW/external.7z"
+	source = external.7z::"https://ub.icq.net/files/get/ohmpeHiXpZlITgoFRP4syNAP4s22sSChHxfgXsITiQBKTIZv1sa6yzaxZjofugOnwNWsh6LWlxbHacYKiihr0xH0a9PgwSN2yh6hBAZsaw9kMKgFeqDK6BKr5gcycr5guSvRshK9TJbsiTu6vsPvOw4smORP4s/external.7z"
 	source = icq.desktop
 	md5sums = SKIP
 	md5sums = 9a71b93b56fe50b6d3541552af7dd55c
