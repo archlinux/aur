@@ -14,7 +14,6 @@ depends=(
 	'elementary-feedback'
 	'elementary-icon-theme'
 	'elementary-wallpapers'
-	'epiphany-pantheon'
 	'file-roller'
 	'gala'
 	'geary'
@@ -84,7 +83,7 @@ depends=(
 	'wingpanel-indicator-session'
 	'wingpanel-indicator-sound'
 	)
-optdepends=('urutau-icons' 'wingpanel-indicator-a11y-stable')
+optdepends=('urutau-icons' 'wingpanel-indicator-a11y-stable' 'epiphany-pantheon')
 makedepends=('git' 'meson' 'ninja' 'vala>=0.40.3-1')
 provides=("${pkgname}")
 conflicts=(
