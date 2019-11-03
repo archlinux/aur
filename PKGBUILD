@@ -1,7 +1,7 @@
 # Maintainer: Mohammad Ashar Khan <ashar786khan@gmail.com>
 
 pkgname=licenser
-pkgver=0.25
+pkgver=0.50
 pkgrel=1
 pkgdesc='A License management tool for your Open Source projects.'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('clang')
 makedepends=("cmake" "git")
 source=("https://github.com/coder3101/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('e555b8c7b26c745ac4766d080b6792b30abbab2eab2e179fbb04e868e7925201')
+sha256sums=('c9cb280bcb5fadab1803ee9b42e46e4bb1ae0c62b955e5894358b75915eb9359')
 
 prepare() {
   cd $pkgname-$pkgver
@@ -25,8 +25,8 @@ if [ -d "./.git" ]
   fi
 
   git init
-  rm -rf third_party/Lyra
-  git submodule add https://github.com/bfgroup/Lyra.git third_party/Lyra
+  rm -rf third_party/clipp
+  git submodule add https://github.com/muellan/clipp.git third_party/clipp
 }
 
 build() {
