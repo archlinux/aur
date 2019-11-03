@@ -1,3 +1,6 @@
+2.11.2-1
+  - New upstream version 2.11.2
+
 2.11.0-2
   - Manually specify boost paths to fix building with boost 1.71.0 and recent
     cmake versions
