@@ -4,7 +4,7 @@
 pkgname='python-dbus-client-gen'
 _srcname='dbus-python-client-gen'
 pkgver=0.7
-pkgrel=2
+pkgrel=3
 pkgdesc='A Python Library for Generating dbus-python Client Code'
 arch=('any')
 license=('MPL2')
