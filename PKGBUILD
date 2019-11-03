@@ -1,6 +1,6 @@
 # Maintainer: Sergey M <tz4678@gmail.com>
 pkgname=random-wallpaper
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Changes the desktop wallpaper to random from the site wallhaven.cc'
 arch=('any')
