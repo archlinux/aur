@@ -1,7 +1,8 @@
-# Maintainer: Danilo Bargen <aur at dbrgn dot ch>
+# Maintainer: Michael Duell <aur@akurei.me>
+# Contributor: Danilo Bargen <aur at dbrgn dot ch>
 pkgname=otii
-pkgver=2.5.2
-pkgrel=2
+pkgver=2.6.0
+pkgrel=1
 pkgdesc="Energy consumption analysis software by Qoitech"
 arch=('x86_64')
 url="https://www.qoitech.com/download"
@@ -10,8 +11,6 @@ depends=('qt5-serialport' 'qt5-quickcontrols2' 'qt5-svg'
          'gcc-libs-multilib' 'hicolor-icon-theme')
 source=("https://www.qoitech.com/downloads/${pkgname}_${pkgver}.deb"
         "LICENSE")
-sha256sums=('35eb40855bbc19ae08a7ac9225728d3191137524a86045741c1821c805215d98'
-            '6613e04098c77b408e006653f114156e9c8d1f21d73ddd24375c5599848502f1')
 
 validpgpkeys=()
 
@@ -24,3 +23,5 @@ package() {
     cp -a lib "$pkgdir/usr/"
     install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
+sha384sums=('e258bd6c574ccc2aa4fec152cacb674b3c32b729357534f1d4acccf2ab468218a49174f9207f648513618de5567869a2'
+            'd3817ebaebb1737f4a2b32b3f6d10484c7f1b0d83da818b03cbb71077dd7e2cbae7dbf02a963e1d8f679a8cfa8d00ed4')
