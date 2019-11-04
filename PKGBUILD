@@ -1,9 +1,10 @@
 # Maintainer: Tassos Natsakis <7712382@eipieq.com>
+# Packager: Tassos Natsakis <7712382@eipieq.com>
 
 pkgname="astra-sdk"
-pkgver="2.0.16"
-pkgtimestamp="20190516T025855Z"
-pkgchecksum="e6b4f7afb2"
+pkgver="2.0.17"
+pkgtimestamp="20190807T030729Z"
+pkgchecksum="686b69b99f"
 pkgrel=1
 pkgdesc='SDK for the Astra Camera from Orbbec'
 url="https://orbbec3d.com/develop/"
@@ -14,12 +15,12 @@ makedepends=('gcc>=4.9', 'clang>=3.5')
 options=('!strip') # Avoid time consuming operations.
 PKGEXT='.pkg.gz.tar' 
 _dir="AstraSDK-v${pkgver}-${pkgchecksum}-${pkgtimestamp}-Linux"
-source=("http://dl.orbbec3d.com/dist/astra/v${pkgver}/AstraSDK-v${pkgver}-${pkgchecksum}-${pkgtimestamp}-ubuntu16.04.tar.gz")
-sha256sums=('71a513702d70abad83575a755021ed484c76bf9fc5979d57c82311be288ac74c')
+source=("http://dl.orbbec3d.com/dist/astra/v${pkgver}/AstraSDK-v${pkgver}-${pkgchecksum}-${pkgtimestamp}-ubuntu1604.tar.gz")
+sha256sums=('07fb5ef08e86290dc756c7aa4aead5fe14aeab340b2c1a4a6a3659250b41a6f6')
 
 package() {
   mkdir -p "${pkgdir}/usr/bin"
-  mkdir -p "${pkgdir}/usr/share/${pkgname}"
+  mkdir -p "${pkgdir}/usr/share/${pkgname}/docs"
   mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
   mkdir -p "${pkgdir}/usr/include/${pkgname}"
   mkdir -p "${pkgdir}/usr/lib/${pkgname}"
@@ -27,7 +28,8 @@ package() {
   mkdir -p "${pkgdir}/etc/ld.so.conf.d"
 
   cp "${srcdir}/${_dir}/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
-  cp -r "${srcdir}/${_dir}/docs" "${pkgdir}/usr/share/${pkgname}/"
+  unzip "${srcdir}/${_dir}/docs/Astra_UserGuide-v${pkgver}.zip" -d "${srcdir}/${_dir}/docs/"
+  cp -r "${srcdir}/${_dir}/docs/html" "${pkgdir}/usr/share/${pkgname}/docs/"
   cp -r "${srcdir}/${_dir}/samples" "${pkgdir}/usr/share/${pkgname}/"
   cp -a "${srcdir}/${_dir}/bin/." "${pkgdir}/usr/bin/"
   cp -a "${srcdir}/${_dir}/include/." "${pkgdir}/usr/include/${pkgname}/"
