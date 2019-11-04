@@ -1,4 +1,4 @@
-# Maintainer: Sam Burgos < santiago dot burgos1089 at gmail dot 
+# Maintainer: Sam Burgos <santiago.burgos1089@gmail.com>
 
 pkgbase=lightdm-guest
 pkgname=(
@@ -6,7 +6,7 @@ pkgname=(
   liblightdm-qt5-guest
 )
 pkgver=1.30.0
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc='A lightweight display manager. With guest-session enabled'
 _add_group=add-autologin-group
@@ -18,7 +18,7 @@ license=(
 )
 makedepends=(
   glib2
-  glibc
+  git
   gobject-introspection
   gtk-doc
   intltool
@@ -36,7 +36,7 @@ makedepends=(
 )
 install=$_add_group.install
 source=(
-    "lightdm-${pkgver}.tar.gz::https://github.com/CanonicalLtd/lightdm/archive/${pkgver}.tar.gz"
+    git+https://github.com/CanonicalLtd/lightdm.git#tag=${pkgver}
     lightdm.service
     lightdm.sysusers
     lightdm.tmpfiles
@@ -50,7 +50,7 @@ source=(
     $_add_group.script
     $_add_group.service
 )
-sha256sums=('05fe38d10dc8966f19806f001561edc057e757656ed37e08ca3127ab32a02692'
+sha256sums=('SKIP'
             '0db37a14521be729411a767f157fbd07adb738b14006277def53a1efe4dacfb8'
             'fd93291bfc9985f0a1bb288472866aa0a9bcd259e024c3a29d20ca158bc08403'
             'cd69f928a1a5b30a30ba916e1b64c9f3657597cb28f3f0e220494d6e5e4bf587'
@@ -65,7 +65,7 @@ sha256sums=('05fe38d10dc8966f19806f001561edc057e757656ed37e08ca3127ab32a02692'
             '2199300cc27b6b407e46206abd181b2be2679d2520ddd183e4a37a3fc691739a')
 
 prepare() {
-    cd "lightdm-${pkgver}"
+    cd lightdm
 
     patch -Np1 -i ../lightdm-default-config.patch
 
@@ -85,10 +85,12 @@ prepare() {
     # this is a requirement to enable a fully functional session. It requires adding
     # the autologin tweak.
     patch -p1 -i ../0002-guest-account-Enable-autologin-guest-account-command.patch
+
+    NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
-  cd lightdm-${pkgver}
+  cd lightdm
 
   export MOC5=moc-qt5
 
@@ -141,7 +143,7 @@ package_lightdm-guest() {
     etc/pam.d/lightdm-greeter
   )
 
-  cd lightdm-${pkgver}
+  cd lightdm
 
   make DESTDIR="${pkgdir}" install
   make DESTDIR="${pkgdir}" -C liblightdm-qt uninstall
@@ -209,7 +211,7 @@ package_liblightdm-qt5-guest() {
   provides=(liblightdm-qt5)
   conflicts=(liblightdm-qt5)
 
-  cd lightdm-${pkgver}
+  cd lightdm
 
   make DESTDIR="${pkgdir}" -C liblightdm-gobject install
   make DESTDIR="${pkgdir}" -C liblightdm-qt install
