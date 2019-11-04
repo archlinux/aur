@@ -49,7 +49,7 @@ _terminate_gui_daemon() {
         systemctl stop ckb-next-daemon.service
     fi
 
-    running="$(systemctl is-enabled ckb-daemon.service)"
+    running="$(systemctl is-enabled ckb-daemon.service 2>/dev/null)"
     if [[ "$running" = "enabled" ]]; then
         systemctl disable ckb-daemon.service
     fi
