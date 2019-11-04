@@ -6,14 +6,3 @@ post_install() {
   echo "   page_alloc.shuffle=1 rcu_nocbs=0-64 rcupdate.rcu_expedited=1"
   echo "   rootfstype=ext4,btrfs,xfs tsc=reliable rw "
 }
-
-post_upgrade() {
-  if findmnt --fstab -uno SOURCE /boot &>/dev/null && ! mountpoint -q /boot; then
-    echo "WARNING: /boot appears to be a separate partition but is not mounted."
-  fi
-}
-
-post_remove() {
-  rm -f boot/initramfs-%PKGBASE%.img
-  rm -f boot/initramfs-%PKGBASE%-fallback.img
-}
