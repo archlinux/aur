@@ -1,7 +1,7 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 pkgname=('python-traittypes')
 _module='traittypes'
-pkgver='0.0.6'
+pkgver='0.2.1'
 pkgrel=1
 pkgdesc="Traitlet types for NumPy, SciPy and friends."
 url="https://github.com/jupyter-widgets/traittypes"
@@ -9,12 +9,12 @@ depends=('python'
     'python-traitlets'
     'python-numpy'
     'python-pandas')
-checkdepends=('python-pytest')
+checkdepends=('python-pytest' 'python-xarray')
 makedepends=('python-setuptools')
 license=('BSD')
 arch=('any')
 source=("https://github.com/jupyter-widgets/traittypes/archive/${pkgver}.tar.gz")
-sha256sums=('8b2a8a68ef83aa8dc11a0e3b91f83cb3b9709089db85e3ca49aec990f644748c')
+sha256sums=('f498c418d04551ea3b21fd97d1f3dcfbc114a672231580bb4e044a188f46efeb')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
