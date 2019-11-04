@@ -13,7 +13,7 @@
 pkgbase=linux-nitrous-git
 _srcname=linux-nitrous
 pkgver=5.3.8
-pkgrel=5
+pkgrel=6
 arch=('x86_64')
 url="https://gitlab.com/xdevs23/linux-nitrous"
 license=('GPL2')
@@ -28,9 +28,7 @@ sha256sums=('SKIP'
 _kernelname=${pkgbase#linux}
 
 pkgver() {
-  cd "${_srcname}"
-
-  echo $pkgver-$pkgrel
+  echo "${pkgver}-${pkgrel}"
 }
 
 prepare() {
@@ -43,7 +41,7 @@ prepare() {
   make CC=clang nitrous_defconfig
 
   # get kernel version
-  make prepare
+  #make prepare
 
   # load configuration
   # Configure the kernel. Replace the line below with one of your choice.
