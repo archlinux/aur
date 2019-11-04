@@ -2,7 +2,7 @@
 
 pkgname=libinput-xrandr-autorotate
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Allows to rotate screen and touch input for 2-in-1 laptops"
 url="https://github.com/AnatolyRugalev/libinput-xrandr-autorotate"
 license=('GPLv3')
@@ -15,5 +15,5 @@ package() {
   cd "$srcdir"
   install -d "$pkgdir/usr/bin"
   install -m755 libinput-xrandr-autorotate "$pkgdir/usr/bin/libinput-xrandr-autorotate"
-
+  install -DT -m0755 "$srcdir/libinput-xrandr-autorotate.service" "$pkgdir/usr/lib/systemd/system/libinput-xrandr-autorotate.service"
 }
