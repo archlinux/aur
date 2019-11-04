@@ -6,11 +6,6 @@ pkgbase = python-apprise
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
-	source = https://files.pythonhosted.org/packages/source/a/apprise/apprise-0.8.1.tar.gz
-	sha256sums = 7a26fa03c4b83f03f17e8f8fc0b94d5502a12dc2e39b48e93a0ab0fd93151a95
-
-pkgname = python-apprise
 	depends = python-decorator
 	depends = python-requests
 	depends = python-requests-oauthlib
@@ -20,15 +15,8 @@ pkgname = python-apprise
 	depends = python-click
 	depends = python-markdown
 	depends = python-yaml
+	source = https://files.pythonhosted.org/packages/source/a/apprise/apprise-0.8.1.tar.gz
+	sha256sums = 7a26fa03c4b83f03f17e8f8fc0b94d5502a12dc2e39b48e93a0ab0fd93151a95
 
-pkgname = python2-apprise
-	depends = python2-decorator
-	depends = python2-requests
-	depends = python2-requests-oauthlib
-	depends = python2-oauthlib
-	depends = python2-urllib3
-	depends = python2-six
-	depends = python2-click
-	depends = python2-markdown
-	depends = python2-yaml
+pkgname = python-apprise
 
