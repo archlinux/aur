@@ -1,24 +1,22 @@
 pkgbase = python-fontmake
 	pkgdesc = Compile fonts from sources (UFO, Glyphs) to binary (OpenType, TrueType).
-	pkgver = 1.10.1
+	pkgver = 2.0.4
 	pkgrel = 1
 	url = https://github.com/googlefonts/fontmake
 	arch = any
 	license = Apache
-	checkdepends = python-cu2qu
 	checkdepends = python-pytest
-	checkdepends = python-pyclipper
-	checkdepends = python-ufonormalizer
-	checkdepends = python-ufo2ft
-	checkdepends = python-xmldiff
 	makedepends = python-setuptools
 	depends = python
+	depends = python-cu2qu
 	depends = python-defcon
 	depends = python-fonttools
+	depends = python-fontmath
+	depends = python-glyphslib
 	depends = python-mutatormath
-	optdepends = python-ufonormalizer
-	source = https://pypi.org/packages/source/f/fontmake/fontmake-1.10.1.zip
-	sha256sums = b2c35066699d71afbc766631c2310e0f17f22aa2f56ebc702f355731c8ce6eeb
+	depends = python-ufolib2
+	source = https://pypi.org/packages/source/f/fontmake/fontmake-2.0.4.zip
+	sha256sums = af3ada0505c10eca222de47906d7320b10eae8998617a929ee14643417342628
 
 pkgname = python-fontmake
 

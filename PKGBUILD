@@ -1,26 +1,25 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 pkgname=('python-fontmake')
 _pkgname='fontmake'
-pkgver='1.10.1'
+pkgver='2.0.4'
 pkgrel=1
 pkgdesc="Compile fonts from sources (UFO, Glyphs) to binary (OpenType, TrueType)."
 url="https://github.com/googlefonts/fontmake"
-checkdepends=('python-cu2qu' 'python-pytest' 'python-pyclipper' 'python-ufonormalizer' 'python-ufo2ft' 'python-xmldiff')
-depends=('python' 'python-defcon' 'python-fonttools' 'python-mutatormath')
+checkdepends=('python-pytest')
+depends=('python' 'python-cu2qu' 'python-defcon' 'python-fonttools' 'python-fontmath' 'python-glyphslib' 'python-mutatormath' 'python-ufolib2')
 makedepends=('python-setuptools')
-optdepends=('python-ufonormalizer')
+optdepends=()
 license=('Apache')
 arch=('any')
-#source=("https://github.com/googlefonts/fontmake/archive/v${pkgver}b1.tar.gz")
 source=("https://pypi.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.zip")
-sha256sums=('b2c35066699d71afbc766631c2310e0f17f22aa2f56ebc702f355731c8ce6eeb')
+sha256sums=('af3ada0505c10eca222de47906d7320b10eae8998617a929ee14643417342628')
 
 package() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
     python setup.py install --root="${pkgdir}" --optimize=1
 }
 
-#check() {
-    #cd "$srcdir/$_pkgname-${pkgver}"
-    #python setup.py test
-#}
+check() {
+    cd "$srcdir/$_pkgname-${pkgver}"
+    PYTHONPATH=Lib pytest tests
+}
