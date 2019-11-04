@@ -18,13 +18,13 @@ build() {
 	export CXX=g++
 	cd "$srcdir"/discord-rpc-$pkgver
 
-	mkdir build-shared
+	mkdir -p build-shared
 	pushd build-shared
 	cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_LIBDIR=lib -DBUILD_EXAMPLES=OFF
 	cmake --build . --config Release
 	popd
 
-	mkdir build-static
+	mkdir -p build-static
 	pushd build-static
 	cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_SHARED_LIBS=OFF -DCMAKE_INSTALL_LIBDIR=lib -DBUILD_EXAMPLES=OFF
 	cmake --build . --config Release
@@ -38,6 +38,9 @@ package_discord-rpc-api() {
 }
 
 package_discord-rpc-api-static() {
+	conflicts=("discord-rpc-api")
+	provices=("discord-rpc-api-static")
+
 	pushd "$srcdir"/discord-rpc-$pkgver/build-static
         cmake --build . --config Release --target install -- DESTDIR=$pkgdir
 	popd
