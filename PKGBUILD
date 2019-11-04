@@ -2,7 +2,7 @@
 # Thanks to azurata and Skidnik for their jobs
 
 pkgname=systemd-guest-user
-pkgver=33.1
+pkgver=33.2
 pkgrel=1
 url='https://github.com/Akrai/systemd-guest-user'
 pkgdesc='A simple systemd configurations for guest user support'
