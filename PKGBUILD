@@ -75,7 +75,7 @@ _package() {
 
   cd "${_srcname}"
 
-  KARCH=x86_64
+  KARCH=x86
 
   # get kernel version
   _kernver="$(make kernelrelease)"
