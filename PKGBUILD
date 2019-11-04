@@ -6,7 +6,7 @@
 pkgname=buildbot
 pkgdesc='The Continuous Integration Framework'
 pkgver=2.5.0
-pkgrel=1
+pkgrel=2
 arch=(any)
 url='https://buildbot.net'
 license=(GPL2)
