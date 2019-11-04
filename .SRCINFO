@@ -1,7 +1,7 @@
 pkgbase = canu
 	pkgdesc = Fork of the Celera Assembler, designed for high-noise single-molecule sequencing (such as the PacBio RS II/Sequel or Oxford Nanopore MinION)
-	pkgver = 1.8
-	pkgrel = 2
+	pkgver = 1.9
+	pkgrel = 1
 	url = https://github.com/marbl/canu
 	arch = x86_64
 	license = GPL2
@@ -12,8 +12,8 @@ pkgbase = canu
 	depends = java-environment>=8
 	optdepends = gnuplot
 	backup = usr/bin/canu.defaults
-	source = https://codeload.github.com/marbl/canu/tar.gz/v1.8
-	sha256sums = 30ecfe574166f54f79606038830f68927cf0efab33bdc3c6e43fd1448fa0b2e4
+	source = https://codeload.github.com/marbl/canu/tar.gz/v1.9
+	sha256sums = 6b086ab6086c050752166500378bc4b3b3543d4c617863e894d296171cee3385
 
 pkgname = canu
 
