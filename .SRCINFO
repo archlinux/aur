@@ -1,7 +1,7 @@
 pkgbase = flexbv-bin
 	pkgdesc = FlexBV Professional Boardview
 	pkgver = R1060
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pldaniels.com/flexbv/
 	arch = x86_64
 	license = custom
@@ -11,10 +11,11 @@ pkgbase = flexbv-bin
 	depends = zlib
 	depends = gtk3
 	depends = libpng
+	conflicts = flexbv-beta-bin
 	source = https://pldaniels.com/flexbv/downloads/FlexBV-R1060-linux.tar.gz
 	source = flexbv.sh
 	md5sums = 9caa0eb598428c375b2e5314041c26fd
-	md5sums = ed44d401465836c03969409246b7ea3a
+	md5sums = 1487cbd7315654d30f9133b210d2d55b
 
 pkgname = flexbv-bin
 
