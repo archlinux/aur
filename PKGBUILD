@@ -1,7 +1,7 @@
 # Maintainer: JackMacWindows <jackmacwindowslinux@gmail.com>
 pkgname=craftos-pc
-pkgver=2.1.2
-pkgrel=2
+pkgver=2.1.3
+pkgrel=1
 epoch=
 pkgdesc="Advanced ComputerCraft emulator written in C++"
 arch=('x86_64' 'i386' 'armv7l' 'aarch64')
@@ -19,9 +19,9 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/MCJack123/craftos2/archive/v2.1.2.tar.gz")
+source=("https://github.com/MCJack123/craftos2/archive/v2.1.3.tar.gz")
 noextract=()
-sha256sums=('0be7d282e84c3f6d4017179ada4f7d63d0ea233b6ca0b3bf73a2664069e8d74e')
+sha256sums=('971d65b8b289f6c8c500abf3f664e2991377b74721a20b2d3f6b7a1cc8511ee8')
 validpgpkeys=()
 
 prepare() {
