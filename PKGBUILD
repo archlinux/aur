@@ -2,7 +2,7 @@
 
 pkgname=python-json-config
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A convenience utility for working with JSON config files with file syncing"
 url="https://github.com/bionikspoon/json_config"
 license=('MIT')
