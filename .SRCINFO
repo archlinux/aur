@@ -6,6 +6,6 @@ pkgbase = libinput-xrandr-autorotate
 	arch = x86_64
 	license = GPLv3
 	source = https://github.com/AnatolyRugalev/libinput-xrandr-autorotate/releases/download/0.1.0/libinput-xrandr-autorotate_0.1.0_Linux_amd64.tar.gz
-	sha256sums = 11d145f728357ff11009a0d3ab6f0b80010c73662030e2e3d31e8540248c355f
+	sha256sums = 5c0845b0381a8af4571003f2f91a5c8073a61c8f47747806287e4ec3531e3304
 
 pkgname = libinput-xrandr-autorotate

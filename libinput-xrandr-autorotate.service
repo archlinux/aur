@@ -3,7 +3,7 @@ Description=Allows to rotate screen and touch input automatically
 
 [Service]
 Type=idle
-ExecStart=/usr/bin/libinput-xrandr-autorotate -i %i
+ExecStart=/usr/bin/libinput-xrandr-autorotate
 Restart=always
 
 [Install]
