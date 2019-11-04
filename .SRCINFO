@@ -1,0 +1,16 @@
+pkgbase = commits-count-git
+	pkgdesc = Shows the commits count of a project without having to clone it
+	pkgver = 5
+	pkgrel = 1
+	url = https://gitlab.com/es20490446e/commits-count
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = curl
+	provides = commits-count
+	conflicts = commits-count
+	source = git+https://gitlab.com/es20490446e/commits-count.git
+	md5sums = SKIP
+
+pkgname = commits-count-git
+
