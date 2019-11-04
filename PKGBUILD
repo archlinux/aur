@@ -10,7 +10,7 @@ _github_repo="with-editor"
 url="http://github.com/${_github_org}/${_github_repo}"
 license=('GPL3')
 makedepends=('git')
-depends=('emacs>=24.4' 'emacs-async>=1.9')
+depends=('emacs' 'emacs-async>=1.9')
 provides=('emacs-with-editor')
 conflicts=('emacs-with-editor-git')
 install="${pkgname}.install"
