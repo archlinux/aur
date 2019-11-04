@@ -3,24 +3,29 @@
 
 pkgbase=dxvk-winelib
 pkgname=('dxvk-winelib')
-pkgver=1.4.2
+pkgver=1.4.4
 pkgrel=1
 pkgdesc="A Vulkan-based compatibility layer for Direct3D 10/11 which allows running 3D applications on Linux using Wine. Winelib version"
 arch=('x86_64')
 url="https://github.com/doitsujin/dxvk"
 license=('zlib/libpng')
 depends=('vulkan-icd-loader' 'wine>=4.0rc1' 'lib32-vulkan-icd-loader')
-makedepends=('ninja' 'meson>=0.43' 'glslang' 'git' 'wine')
+makedepends=('ninja' 'meson' 'glslang' 'git' 'wine')
 conflicts=("dxvk-bin" "dxvk-git" "dxvk-wine32-git" "dxvk-wine64-git" "dxvk-win32-git" "dxvk-win64-git" "dxvk-mingw-git" "dxvk-winelib-git")
-source=("git+https://github.com/doitsujin/dxvk.git"  )
+source=("git+https://github.com/doitsujin/dxvk.git")
 sha256sums=("SKIP")
+
+prepare() {
+    cd dxvk
+    git fetch --tags
+    a=`git tag | tail -n1`
+    git checkout $a
+}
 
 pkgver() {
     cd dxvk
-    git fetch --tags 1>2&
     a=`git tag | tail -n1`
     echo $a | sed 's/v//g'
-    git checkout $a 1>2&
 }
 
 build() {
