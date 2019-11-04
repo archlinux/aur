@@ -2,7 +2,7 @@
 pkgname=openscad-bosl-git
 _name=BOSL
 pkgver=r205.7c305fe
-pkgrel=1
+pkgrel=2
 pkgdesc="BOSL library for OpenSCAD"
 arch=('any')
 url='github.com/revarbat/BOSL'
