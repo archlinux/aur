@@ -1,7 +1,7 @@
 # Maintainer: Kyle Manna <kyle[at]kylemanna[d0t]com>
 _pkgname=affine
 pkgname=python-${_pkgname}
-pkgver=2.2.2
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="Python package for matrices describing affine transformation of the plane"
 url="https://github.com/sgillies/affine"
@@ -11,7 +11,7 @@ optdepends=()
 license=('BSD')
 arch=('any')
 source=("https://pypi.python.org/packages/source/a/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('ff0d0f40a90faa651f7bc7fece15bdbb7a0e0658b1e7ba6a03422c21efa7da90')
+sha256sums=('2e045def1aa29e613c42e801a7e10e0b9bacfed1a7c6af0cadf8843530a15102')
 
 build() {
     cd "$srcdir/${_pkgname}-$pkgver"
