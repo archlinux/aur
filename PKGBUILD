@@ -3,7 +3,7 @@
 
 pkgname=python-pythondialog
 pkgver=3.4.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Python package for interfacing with dialog"
 url="http://pythondialog.sf.net"
 arch=('any')
