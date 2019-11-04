@@ -8,8 +8,8 @@
 
 ### MERGE REQUESTS SELECTION
 
-# available MR: ('!429' '!493' '!575' '!579' !719 '!724' '!762')
-_merge_requests_to_use=('!575' '!724')
+# available MR: ('!429' '!493' '!575' '!579' !719 '!724' '!762' '!909')
+_merge_requests_to_use=('!575' '!724' '!909')
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
@@ -82,7 +82,10 @@ prepare() {
   ### Adding and fetching remotes providing the selected merge-requests
   git cherry-pick --abort || true
   git remote add vanvugt https://gitlab.gnome.org/vanvugt/mutter.git || true
+  git remote add 3v1no https://gitlab.gnome.org/3v1n0/mutter.git || true
+
   git fetch vanvugt
+  git fetch 3v1no
 
   ### Merge Requests
 
@@ -150,6 +153,13 @@ prepare() {
   #          Use together with !762 to fix one of its issues.
   pick_mr '!719' 97140ab6346bd29208e99c9c9aab892c2eec0e52 'revert'
   pick_mr '!762' e9ba9dc2 'merge'
+
+  # Title: x11-display: Don't unset the X11 focused window after setting one
+  # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/909
+  # Type: 3
+  # Status: 2
+  # Comment:
+  pick_mr '!909' b1b7c597^..765c8a3a 'merge'
 
   patch -Np1 < ../fix-build.patch
 
