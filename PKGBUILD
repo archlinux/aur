@@ -3,12 +3,12 @@
 pkgname=python-uproot
 _pkgname=uproot
 pkgname=python-uproot
-pkgver=3.10.6
-pkgrel=2
+pkgver=3.10.10
+pkgrel=1
 pkgdesc="Minimalist CERN ROOT I/O in pure Python and Numpy"
 arch=('any')
 makedepends=('python-cachetools' 'python-setuptools')
-checkdepends=('python-mock' 'python-pkgconfig' 'python-pytest-runner' 'python-requests' 'python-xxhash')
+checkdepends=('python-mock' 'python-pkgconfig' 'python-pandas' 'python-pytest-runner' 'python-requests' 'python-xxhash')
 depends=('python-awkward' 'python-cachetools' 'python-lz4' 'python-numpy' 'python-uproot-methods')
 optdepends=('xrootd: access remote files over XRootD'
             'python-pandas: fill Pandas DataFrames instead of Numpy arrays'
@@ -18,7 +18,7 @@ url="https://github.com/scikit-hep/uproot"
 license=('BSD')
 
 source=("${url}/archive/${pkgver}.zip")
-sha256sums=('1c3b5fd7f966f20cb50b175371037cda8b8326ca316541de4ae9d1c33a3c83b3')
+sha256sums=('c8ac8a70079dad198a943aacdd8e826e71136b6244d65efd218658432a3e0bd7')
 
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
