@@ -1,19 +1,19 @@
 pkgbase = googleplaymusic
 	pkgdesc = Google Play Music is a unofficial client to play your music.
-	pkgver = 1.1.5
-	pkgrel = 5
-	url = https://gitlab.com/coreybruce/GooglePlayMusic
+	pkgver = 1.1.6
+	pkgrel = 1
+	url = https://gitlab.com/google-play-music-desktop/application
 	arch = x86_64
 	license = GPL
-	makedepends = nodejs
 	makedepends = npm
 	makedepends = git
 	depends = nss
 	depends = gtk3
 	depends = libxss
 	provides = googleplaymusic
+	conflicts = googleplaymusic
 	source = git+https://gitlab.com/google-play-music-desktop/application.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = googleplaymusic
 

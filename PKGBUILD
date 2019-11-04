@@ -1,33 +1,40 @@
 pkgname=googleplaymusic
-_pkgname=GooglePlayMusic-linux-x64
-pkgver=1.1.5
-pkgrel=5
+_pkgname=Googleplaymusic
+pkgver=1.1.6
+pkgrel=1
 pkgdesc="Google Play Music is a unofficial client to play your music."
 arch=('x86_64')
-url="https://gitlab.com/coreybruce/GooglePlayMusic"
+url="https://gitlab.com/google-play-music-desktop/application"
 license=('GPL')
-depends=(nss gtk3 libxss)
-makedepends=('nodejs' 'npm' 'git')
-provides=('googleplaymusic')
-conflicts=()
-source=("git+https://gitlab.com/google-play-music-desktop/application.git")
+depends=('nss' 'gtk3' 'libxss')
+makedepends=('npm' 'git')
+provides=("${pkgname%}")
+conflicts=("${pkgname%}")
+source=('git+https://gitlab.com/google-play-music-desktop/application.git')
+sha256sums=('SKIP')
 
-md5sums=("SKIP")
+pkgver() {
+    cd "$srcdir/application"
+    node -pe "require('./package.json').version" | head --bytes -3
+}
 
 build() {
-  cd "$srcdir/application"
-  npm i electron electron-packager
-  ./node_modules/.bin/electron-packager .    
+    cd "$srcdir/application"
+    npm --cache "$srcdir/npm-cache" i electron jquery electron-packager
+    ./node_modules/.bin/electron-packager .
 }
 
 package() {
-    cd "$srcdir/application/${_pkgname}"
-    mkdir -p $pkgdir/opt/GooglePlayMusic/
-  # Exec bit
-  chmod 755 "$pkgdir/opt/GooglePlayMusic/"
-    cp -r ./ $pkgdir/opt/GooglePlayMusic/
+    cd "$srcdir/application/$_pkgname-linux-x64"
+    install -dm755 "$pkgdir/opt/$_pkgname"
+    cp -r ./ "$pkgdir/opt/$_pkgname"
 
-# Desktop Entry
-  install -Dm 644 "$srcdir/application/GooglePlayMusic.desktop" "${pkgdir}/usr/share/applications/GooglePlayMusic.desktop"
-  sed -i s%/usr/share%/opt% ${pkgdir}/usr/share/applications/GooglePlayMusic.desktop
+    # Link to binary
+    install -dm755 "$pkgdir/usr/bin"
+    ln -s "/opt/$_pkgname/$_pkgname" "$pkgdir/usr/bin/${pkgname%}"
+
+    # Desktop Entry
+    install -Dm644 "$srcdir/application/$_pkgname.desktop" \
+        "$pkgdir/usr/share/applications/$_pkgname.desktop"
+    sed -i s%/usr/share%/opt% "$pkgdir/usr/share/applications/$_pkgname.desktop"
 }
