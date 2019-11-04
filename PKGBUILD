@@ -5,14 +5,14 @@ pkgname=orfeo-toolbox
 pkgver=7.0.0
 _pkgver=7.0
 minorver=1
-pkgrel=3
+pkgrel=4
 pkgdesc="ORFEO Toolbox (OTB) is an open source library of image processing algorithms"
 arch=(x86_64 i686)
 url="http://www.orfeo-toolbox.org/otb/"
 license=('CeCILL')
 groups=()
 depends=('gdal' 'agg' 'freeglut' 'curl' 'fftw' 'tinyxml' 'muparser' 'fltk' 'python2' 'openthreads' 'boost'
-		'hdf5'  'insight-toolkit' 'ossim' 'libsvm' 'mapnik' 'qwt' 'opencv' 'glfw' 'openmpi')
+		'hdf5'  'insight-toolkit' 'ossim' 'libsvm' 'qwt' 'opencv' 'glfw' 'openmpi')
 makedepends=('boost' 'swig' 'cmake' 'qt5-base')
 optdepends=()
 provides=()
@@ -44,10 +44,10 @@ build() {
   msg "Extracting archive..."
   msg "starting make..."
  
-  if  [ -d "$srcdir/build/" ]; then
-    rm -rf $srcdir/build/
-   fi
-  mkdir $srcdir/build/
+  #if  [ -d "$srcdir/build/" ]; then
+  #  rm -rf $srcdir/build/
+  # fi
+  #mkdir $srcdir/build/
  
    cd $srcdir/build
  
@@ -62,8 +62,7 @@ build() {
           -DOTB_WRAP_PYTHON=ON \
           -DBUILD_SHARED_LIBS=ON \
           -DOTB_USE_QT=ON \
-          -DOTB_USE_MAPNIK=OFF \
-          -DOTB_USE_OPENCV=OFF \
+          -DOTB_USE_OPENCV=ON \
           -DOTB_USE_MUPARSER=ON \
           -DOTB_USE_LIBKML=OFF \
           -DOTB_USE_LIBSVM=ON \
