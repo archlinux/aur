@@ -1,0 +1,15 @@
+pkgbase = bcunit-git
+	pkgdesc = A fork of CUnit, a C unit testing framework
+	pkgver = 3.0.2.r11.g966505d
+	pkgrel = 1
+	url = http://www.linphone.org/
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	provides = bcunit
+	conflicts = bcunit
+	source = git+https://gitlab.linphone.org/BC/public/bcunit.git
+	sha256sums = SKIP
+
+pkgname = bcunit-git
+
