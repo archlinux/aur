@@ -2,7 +2,7 @@
 
 pkgname=paperboy
 _pkgname=pboy
-pkgver=1.1
+pkgver=1.3
 pkgrel=1
 pkgdesc='A small .pdf management utility'
 url='https://github.com/2mol/pboy'
@@ -21,8 +21,8 @@ depends=('ghc-libs'
          'haskell-vector'
          'haskell-vty')
 makedepends=('ghc')
-source=($pkgname-$pkgver.tar.gz::"https://github.com/2mol/pboy/archive/1.1.tar.gz")
-sha512sums=('d94768d0244c93eaba831338859cbfc671eec88d8e1dde7a38587c15ff77c7898043abcf449a7db73d0efbcb6c630a17587706fa9b87f4c24b9d44425383c939')
+source=($pkgname-$pkgver.tar.gz::"https://github.com/2mol/pboy/archive/$pkgver.tar.gz")
+sha512sums=('cb49e84976bbb971238c8932e1c143ab533633109f4a4027137e9a32b0c19edd45073f3b9f9a6f2c63c30b3056cbf0c7db504ef80bd4a10cff430b422ad7770e')
 
 prepare() {
     cd $_pkgname-$pkgver
