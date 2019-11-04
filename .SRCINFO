@@ -16,6 +16,7 @@ pkgbase = silos
 	depends = python-pyqtwebengine
 	depends = python-qtpy
 	depends = python-gobject
+	depends = python-pystray
 	source = git+https://github.com/intersimone999/pyqtws.git
 	sha256sums = SKIP
 
@@ -29,4 +30,5 @@ pkgname = silos
 	depends = python-pyqtwebengine
 	depends = python-qtpy
 	depends = python-gobject
+	depends = python-pystray
 
