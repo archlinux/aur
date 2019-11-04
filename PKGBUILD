@@ -1,5 +1,5 @@
 pkgname=googleplaymusic
-_pkgname=Googleplaymusic
+_pkgname=GooglePlayMusic
 pkgver=1.1.6
 pkgrel=1
 pkgdesc="Google Play Music is a unofficial client to play your music."
@@ -20,8 +20,8 @@ pkgver() {
 
 build() {
     cd "$srcdir/application"
-    npm --cache "$srcdir/npm-cache" i electron jquery electron-packager
-    ./node_modules/.bin/electron-packager .
+    npm --cache "$srcdir/npm-cache" i electron electron-packager
+    ./node_modules/.bin/electron-packager . --overwrite
 }
 
 package() {
