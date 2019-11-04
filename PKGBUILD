@@ -1,7 +1,7 @@
 # Maintainer: Vincent Hourdin <vh|at|free-astro=DOT=vinvin.tf>
 pkgname=siril-git
 _gitname=siril
-pkgver=759a832
+pkgver=745e41d
 pkgrel=1
 pkgdesc="An astronomical image processing software for Linux. (IRIS clone)"
 arch=('i686' 'x86_64')
@@ -35,6 +35,6 @@ package() {
 	make DESTDIR="${pkgdir}" install
 	install -v -d ${pkgdir}/usr/share/applications/
 	install -v -d ${pkgdir}/usr/share/mime/packages/
-	install -v -m 644 platform-specific/linux/org.free-astro.siril.desktop ${pkgdir}/usr/share/applications/
+	install -v -m 644 platform-specific/linux/org.free_astro.siril.desktop ${pkgdir}/usr/share/applications/
 	install -v -m 644 platform-specific/linux/siril.xml ${pkgdir}/usr/share/mime/packages/
 }
