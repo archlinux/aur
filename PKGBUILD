@@ -5,7 +5,7 @@
 pkgbase=python-nosexcover
 pkgname=(python-nosexcover python2-nosexcover)
 pkgver=1.0.11
-pkgrel=3
+pkgrel=4
 pkgdesc="Extends nose.plugins.cover to add Cobertura-style XML reports"
 url="https://pypi.python.org/pypi/nosexcover"
 license=('BSD')
