@@ -4,7 +4,7 @@
 
 pkgname=python-sounddevice
 pkgver=0.3.14
-pkgrel=1
+pkgrel=2
 pkgdesc='Play and Record Sound with Python'
 url='https://python-sounddevice.rtfd.io/'
 arch=(any)
