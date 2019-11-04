@@ -5,5 +5,5 @@ Exec=/usr/bin/cabal-desktop-git
 Terminal=false
 Type=Application
 Icon=cabal-desktop-git
-StartupWMClass=Cabal Desktop
+StartupWMClass=Cabal
 Categories=GTK;Network;
