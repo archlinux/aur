@@ -5,7 +5,7 @@
 
 pkgname=cxxtest
 pkgver=4.4
-pkgrel=6
+pkgrel=7
 pkgdesc='Unit testing framework for C++'
 arch=(any)
 url='https://cxxtest.com/'
