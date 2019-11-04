@@ -2,7 +2,7 @@
 # Contributor: geno+dev@fireorbit.de
 
 pkgname=purism-chatty
-pkgver=0.0.7
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="XMPP and SMS messaging via libpurple and Modemmanager"
 url="https://source.puri.sm/Librem5/chatty"
@@ -12,11 +12,11 @@ depends=(gtk3 libpurple)
 optdepends=('libpurple-lurch: XMPP E2E OMEMO encryption'
             'libpurple-carbons: XMPP Carbon Copy - Live multiple device support'
             'purple-xmpp-http-upload: XMPP HTTP Upload - Filesharing')
-makedepends=(pkg-config meson libhandy)
+makedepends=(pkg-config meson libhandy folks)
 provides=(purism-chatty)
 conflicts=(purism-chatty)
 source=("https://source.puri.sm/Librem5/chatty/-/archive/v${pkgver}/chatty-v${pkgver}.tar.bz2")
-sha256sums=('b86e1d027bb863b3cfedc6957ff34fb1413d97e15a6470c56d0c6a4c1d81917d')
+sha256sums=('f147ed2a0701ab728ae83913f33afcb685e3c48d9a5b2ecebf86a5e63856f93b')
 
 build() {
 	rm -rf build
