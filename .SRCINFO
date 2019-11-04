@@ -19,7 +19,7 @@ pkgbase = linux-next-git
 	source = config
 	sha512sums = SKIP
 	sha512sums = 8aac877c0dfcd6796bc217572c8b8c6473ab6b5b15b7cca0e7c0f4e7cbb7080557d32fd045e6608d8acbf98cf7c16834ed0c5de2ce9d9d5dfa0194d055642276
-	sha512sums = fde8546c08c6450f92bd1d327084bd81d899915674832cea754a5fb62f677a12b06428149c5beb1bd51582b174f59e2033af438deb22f4d8842e6ac9d7b496f2
+	sha512sums = eb0ad29fe37123af7f8b22a1c7736c8066aafdd8c79e831d7b2320cd5bde366097066e1fdefd2a2e848743305451a24ca8b91e742eb3f3913dfbadbe9ecea2a7
 
 pkgname = linux-next-git
 	pkgdesc = The Linux-next-git kernel and modules
