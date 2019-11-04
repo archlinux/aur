@@ -4,7 +4,7 @@
 # Submitter: BxS <bxsbxs at gmail dot com>
 
 pkgname=microchip-mplabx-bin
-pkgver=5.25
+pkgver=5.30
 pkgrel=1
 pkgdesc="IDE for Microchip PIC and dsPIC development"
 arch=(i686 x86_64)
@@ -33,7 +33,7 @@ source=("http://ww1.microchip.com/downloads/en/DeviceDoc/${_mplabx_installer}.ta
         "LICENSE"
         "mplabx-override.conf")
 
-md5sums=('9b8323a8bf9d23dc6eb6a24ca0f772df'
+md5sums=('45b2e0aa6f50acb02933c5d58d6c2675'
          'a34a85b2600a26f1c558bcd14c2444bd'
          'a476a71af625380a2fd52f82fb5d5492')
 
@@ -99,7 +99,7 @@ EOF
   mv "${pkgdir}"/usr/local/lib/*.so{,.*} "${pkgdir}"/usr/lib/
   rm -rf "${pkgdir}/usr/local/"
 
-  _mplabcomm_pkgdir=("${pkgdir}${_mplabcomm_dir}"/v*)
+  _mplabcomm_pkgdir=("${pkgdir}${_mplabcomm_dir}"/*)
   _mplabcomm_version=$(basename "${_mplabcomm_pkgdir}")
   _mplabcomm_dstdir="${_mplabcomm_dir}/${_mplabcomm_version}"
 
