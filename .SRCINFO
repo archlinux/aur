@@ -15,9 +15,7 @@ pkgbase = qsyncthingtray-git
 	depends = syncthing
 	provides = qsyncthingtray
 	conflicts = qsyncthingtray
-	source = git+https://github.com/sieren/QSyncthingTray.git
 	source = qsyncthingtray.desktop
-	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = qsyncthingtray-git

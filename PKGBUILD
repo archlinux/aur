@@ -8,8 +8,10 @@ pkgver() {
 
 
 build() {
-	cd "${srcdir}/${Name}"
+	cd "${srcdir}"
+	git clone "${url}.git"
 
+	cd "${srcdir}/${Name}"
 	mkdir "build"
 	cd "build"
 
@@ -48,6 +50,6 @@ arch=("i686" "x86_64")
 
 makedepends=("cmake" "commits-count-git" "git")
 depends=("qt5-location" "qt5-webengine" "startup-settings-git" "syncthing")
-source=("git+${url}.git" "${LowercaseName}.desktop")
-md5sums=("SKIP" "SKIP")
+source=("${LowercaseName}.desktop")
+md5sums=("SKIP")
 
