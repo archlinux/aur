@@ -45,7 +45,6 @@ prepare() {
 
 build() {
   cd ${pkgname%-git}
-  LANG=C
   export CXXFLAGS+=" -O3"
   NOCONFIGURE=1 ./autogen.sh
   ./configure --prefix=/usr \
