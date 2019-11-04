@@ -16,7 +16,7 @@ license=("GPL3")
 url="https://gitlab.com/es20490446e/${Name}"
 
 makedepends=("git")
-depends=("curl" "silently")
+depends=("commit-count" "silently")
 
 source=("git+${url}.git")
 md5sums=("SKIP")
