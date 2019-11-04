@@ -2,7 +2,7 @@
 
 pkgname=xenontrade
 pkgver=0.6.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Path of Exile trading overlay'
 arch=(x86_64)
 license=(MIT)
@@ -12,15 +12,18 @@ makedepends=(git node-gyp nodejs-lts-carbon python yarn)
 provides=(xenontrade)
 source=("git+https://github.com/und3rdg/xenontrade#tag=v$pkgver"
         "xenontrade.sh"
-        "resizable.patch")
+        "resizable.patch"
+        "icons.patch")
 sha256sums=('SKIP'
             '4050ea55730e76bdd90ab183bf687f5a614ee6ea303556400bd803ab7d01a2e7'
-            'f0f3c36f24181723fa612b6f937adb46a305b1187797cd14c4bb302a52d83289')
+            'd7903f0185ed41a5b6702b583f2c8858d7d650bf9052d24e561b8ba9d1b4a6c3'
+            '2fc1a8590778a68a8e436ae5d941ebdd694a71149752b2d6a700c9686956fd7f')
 
 prepare()
 {
     cd "$srcdir/$pkgname"
     git apply "$srcdir"/resizable.patch
+    git apply "$srcdir"/icons.patch
     yarn install
 }
 
