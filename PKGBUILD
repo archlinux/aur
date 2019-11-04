@@ -7,8 +7,8 @@ pkgdesc="Control components for Dash"
 arch=('any')
 url=https://github.com/plotly/dash-daq
 license=('MIT')
-depends=(python python-dash python-dash-table)
-makedepends=(python-setuptools yarn)
+depends=(python python-dash python-dash-table python-future yarn)
+makedepends=(python-setuptools)
 source=(https://github.com/plotly/dash-daq/archive/v${pkgver}.tar.gz)
 sha256sums=('0909d5556760f8caa7e2b3e8c48e4e4e812cb1a66422e4c59ceb7cee498982c1')
 
