@@ -1,0 +1,14 @@
+pkgbase = python-requests-gpgauthlib
+	pkgdesc = A GPGAuth Client in Python
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/liip/requests_gpgauthlib
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python
+	source = https://github.com/liip/requests_gpgauthlib/archive/0.1.2.tar.gz
+	sha512sums = 5ca9a0bc9af081623cf868ff259e71c866f3e653c60ba576a9cd687f641469c8f45de2633dceeb7c17e842ab426cacb0b21706cc9e16b1de26f4843a0e42f071
+
+pkgname = python-requests-gpgauthlib
+
