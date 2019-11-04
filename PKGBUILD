@@ -2,7 +2,7 @@
 
 pkgname=python-periphery
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A pure Python 2/3 library for peripheral I/O (GPIO, LED, PWM, SPI, I2C, MMIO, Serial) in Linux"
 url="https://github.com/vsergeev/python-periphery"
 license=('MIT')
