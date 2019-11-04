@@ -12,12 +12,14 @@ url="https://pidgin.im/"
 license=('GPL')
 makedepends=('startup-notification' 'gtkspell' 'libxss' 'nss' 'libsasl' 'libsm'
              'libidn' 'libgadu' 'python' 'hicolor-icon-theme' 'farstream' 'tk'
-             'libnsl' 'avahi' 'ca-certificates' 'intltool' 'networkmanager')
+             'libnsl' 'avahi' 'ca-certificates' 'intltool' 'networkmanager' 'dbus-glib')
 source=(https://bitbucket.org/pidgin/main/downloads/$pkgname-$pkgver.tar.bz2{,.asc}
-        purple-remote-python3.patch)
+        purple-remote-python3.patch pidgin-python-3.8.patch pidgin-nm-1.0.patch)
 sha256sums=('2747150c6f711146bddd333c496870bfd55058bab22ffb7e4eb784018ec46d8f'
             'SKIP'
-            '4eb6be9310e4d5d1b906b1d579c395000ee0af6d6f5056307233512151d1f4b1')
+            '4eb6be9310e4d5d1b906b1d579c395000ee0af6d6f5056307233512151d1f4b1'
+            'afc824771b7409859f06b18f88ed9db97e90e3a5b10e5bab60f880c19f058c4f'
+            'ca00ab0f502690f7a1551020dfc9a0119edf1eabaae9127658313d6635acda33')
 validpgpkeys=('364E2EB38EA6A8D61FB963AD75FE259AA8AC8032') # Gary Kramlich (grim) <grim@reaperworld.com>
 
 prepare() {
@@ -25,6 +27,10 @@ prepare() {
 
   # https://developer.pidgin.im/ticket/17065
   patch -Np1 -i ../purple-remote-python3.patch
+  # Fix networkmanager 1.0 detection (Fedora)
+  patch -p1 -i ../pidgin-nm-1.0.patch
+  # Fix build with python 3.8
+  patch -p1 -i ../pidgin-python-3.8.patch
 }
 
 build() {
