@@ -4,7 +4,7 @@
 pkgbase=python-tarantool
 pkgname=(python-tarantool python2-tarantool)
 pkgver=0.6.4
-pkgrel=2
+pkgrel=3
 pkgdesc='Python client library for Tarantool 1.6 Database'
 arch=('any')
 url='https://github.com/tarantool/tarantool-python'
