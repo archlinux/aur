@@ -28,7 +28,7 @@ build() {
 	cd ${srcdir}/${_pkgname}-${pkgver}
 
         CFLAGS=${CFLAGS//-D_FORTIFY_SOURCE=?/}
-        CFLAGS="${CFLAGS} -Wno-unused-value -Wno-shift-negative-value"
+        CFLAGS="${CFLAGS} -Wno-unused-value -Wno-shift-negative-value -Wno-error=implicit-fallthrough -Wno-error=format-overflow -Wno-error=cast-function-type -Wno-error=stringop-truncation -Wno-error=pointer-compare"
         export CFLAGS
         
         CPPFLAGS=${CPPFLAGS//-D_FORTIFY_SOURCE=?/}
