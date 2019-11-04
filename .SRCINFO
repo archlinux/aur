@@ -1,7 +1,7 @@
 pkgbase = diamond-aligner-git
 	pkgdesc = Accelerated BLAST compatible local sequence aligner
-	pkgver = 0.9.24.r46.gd333bab
-	pkgrel = 2
+	pkgver = 0.9.27.r1.g58ee82e
+	pkgrel = 1
 	url = https://github.com/bbuchfink/diamond
 	arch = x86_64
 	license = GPL3
