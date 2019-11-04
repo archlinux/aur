@@ -1,6 +1,6 @@
 pkgbase = abiword-git
 	pkgdesc = Fully-featured word processor from official gnome gitlab mirror
-	pkgver = 20492.d5f731944
+	pkgver = 20502.91faa0e0a
 	pkgrel = 1
 	url = http://www.abisource.com
 	arch = i686
