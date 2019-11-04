@@ -1,6 +1,6 @@
 pkgbase = hamsket-git
 	pkgdesc = Free and Open Source messaging and emailing app that combines common web applications into one.
-	pkgver = r1125.b5a13d2
+	pkgver = r1133.433cadb
 	pkgrel = 1
 	url = https://github.com/TheGoddessInari/hamsket
 	arch = i686

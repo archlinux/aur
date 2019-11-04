@@ -1,8 +1,8 @@
-# Maintainer: bserckx <services+aur at brechtserckx dot be>
-# Contributor: Philipp A. <flying-sheep at web dot de>
-# Contributor: theSander <aur at sandervanbalen dot be>
+# Maintainer: bserckx <services+aur@brechtserckx.be>
+# Contributor: Philipp A. <flying-sheep@web.de>
+# Contributor: theSander <aur@sandervanbalen.be>
 pkgname=hamsket-git
-pkgver=r1125.b5a13d2
+pkgver=r1133.433cadb
 pkgrel=1
 pkgdesc="Free and Open Source messaging and emailing app that combines common web applications into one."
 arch=(i686 x86_64)
