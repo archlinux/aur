@@ -1,7 +1,7 @@
 # Maintainer: Sol Bekic <s+aur at s-ol dot nu>
 
 pkgname=ossia-score-appimage
-pkgver=2.3.1
+pkgver=2.5.2
 pkgrel=1
 pkgdesc="an interactive sequencer for the intermedia arts."
 arch=('x86_64')
