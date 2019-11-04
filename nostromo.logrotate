@@ -4,6 +4,6 @@
 	notifempty
 	sharedscripts
 	postrotate
-		systemctl reload lighttpd.service || true
+		systemctl reload nostromo.service || true
 	endscript
 }
