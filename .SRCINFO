@@ -1,8 +1,8 @@
 pkgbase = xcb-imdkit-git
 	pkgdesc = Input method development support for xcb
 	pkgver = r62.a607b19
-	pkgrel = 3
-	url = https://gitlab.com/fcitx/xcb-imdkit
+	pkgrel = 5
+	url = https://github.com/fcitx/xcb-imdkit
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -12,7 +12,7 @@ pkgbase = xcb-imdkit-git
 	depends = xcb-util-keysyms
 	provides = xcb-imdkit
 	conflicts = xcb-imdkit
-	source = git+https://gitlab.com/fcitx/xcb-imdkit.git
+	source = git+https://github.com/fcitx/xcb-imdkit.git
 	sha512sums = SKIP
 
 pkgname = xcb-imdkit-git
