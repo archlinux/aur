@@ -1,7 +1,0 @@
-# DO NOT EDIT THE LINE BELOW
-ALL_kver="to be replaced"
-
-PRESETS=("default")
-
-default_config="/etc/mkinitcpio.d/linux-nitrous.conf"
-default_image="/boot/initramfs-linux-nitrous.img"

@@ -1,31 +1,39 @@
 pkgbase = linux-nitrous-git
-	pkgdesc = Modified linux-nitrous kernel optimized for Haswell (and newer) compiled using clang
 	pkgver = 5.3.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/xdevs23/linux-nitrous
 	arch = x86_64
 	license = GPL2
+	makedepends = xmlto
+	makedepends = docbook-xsl
+	makedepends = kmod
+	makedepends = inetutils
+	makedepends = bc
 	makedepends = git
+	makedepends = libelf
 	makedepends = coreutils
 	options = !strip
-	source = linux-nitrous.conf
-	source = linux-nitrous.preset
-	source = git+https://gitlab.com/xdevs23/linux-nitrous#branch=v5.3+
-	sha256sums = 086706b4fec123b658e73bb101d7360c3cc8b403f0f5885c9527e556f4cb49cf
-	sha256sums = 54bc90a27bb2f42aff4a460c26f88f44e2a2f6c19ec51e7fcac83c4cd1fb9968
+	source = git+https://gitlab.com/xdevs23/linux-nitrous.git/
+	source = linux-nitrous-git.preset
 	sha256sums = SKIP
+	sha256sums = 48ef93bf8f8ff236c4e2092736d0add8f87cfc5416417c50966bb296ab5933ae
 
 pkgname = linux-nitrous-git
-	install = linux-nitrous.install
+	pkgdesc = Modified Linux kernel optimized for Haswell (and newer) compiled using clang
+	install = linux-nitrous-git.install
 	depends = coreutils
 	depends = linux-firmware
 	depends = kmod
-	depends = mkinitcpio>=0.5.20
-	optdepends = linux-nitrous-git-headers: to build third party modules such as NVIDIA drivers or OSSv4
+	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = linux-nitrous
-	provides = linux-nitrous-git
-	backup = etc/mkinitcpio.d/linux-nitrous.conf
+	provides = linux
+	backup = etc/mkinitcpio.d/linux-nitrous-git.preset
 
 pkgname = linux-nitrous-git-headers
+	pkgdesc = Header files and scripts for building modules for Linux kernel (git version)
+	provides = linux-headers
+
+pkgname = linux-nitrous-git-docs
+	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux kernel (git version)
+	provides = linux-docs
 

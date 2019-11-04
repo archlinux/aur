@@ -1,213 +1,264 @@
 # Maintainer: Simao Gomes Viana <xdevs23@outlook.com>
-# Original Maintainer: Matt Parnell/ilikenwf <parwok@gmail.com>
-# Original PKGBUILD Contributor: Patrick Bartels <p4ddy.b@gmail.com>
-# Thanks to Bregol
-pkgname="linux-nitrous-git"
+# Packager: Simao Gomes Viana <xdevs23@outlook.com>
+# Contributor: Boohbah <boohbah at gmail.com>
+# Contributor: Tobias Powalowski <tpowa@archlinux.org>
+# Contributor: Thomas Baechler <thomas@archlinux.org>
+# Contributor: Jonathan Chan <jyc@fastmail.fm>
+# Contributor: misc <tastky@gmail.com>
+# Contributor: NextHendrix <cjones12 at sheffield.ac.uk>
+# Contributor: Shun Terabayashi <shunonymous at gmail.com>
+# Contributor: Brad McCormack <bradmccormack100 at gmail.com>
+# Contributor: Doug Johnson <dougvj at dougvj.net>
+
+pkgbase=linux-nitrous-git
+_srcname=linux-nitrous-git
 pkgver=5.3.8
-pkgdesc="Modified linux-nitrous kernel optimized for Haswell (and newer) compiled using clang"
+pkgrel=2
+arch=('x86_64')
 url="https://gitlab.com/xdevs23/linux-nitrous"
-license=("GPL2")
-makedepends=("git" "coreutils")
-true && pkgbase="linux-nitrous-git"
-true && pkgname=("linux-nitrous-git" "linux-nitrous-git-headers")
-arch=("x86_64")
-pkgrel=1
-options=("!strip")
-source=("linux-nitrous.conf"
-        "linux-nitrous.preset"
-        'git+https://gitlab.com/xdevs23/linux-nitrous#branch=v5.3+')
-sha256sums=('6373073ad943e068478ef1373be4eb2a7e473da8743d946f1f50cd364685ab87'
-            '54bc90a27bb2f42aff4a460c26f88f44e2a2f6c19ec51e7fcac83c4cd1fb9968'
-            'SKIP')
-_CORES=$(nproc --all)
+license=('GPL2')
+makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'libelf' 'coreutils')
+options=('!strip')
+source=('git+https://gitlab.com/xdevs23/linux-nitrous.git/'
+        # standard config files for mkinitcpio ramdisk
+        "${pkgbase}.preset")
+sha256sums=('SKIP'
+            '48ef93bf8f8ff236c4e2092736d0add8f87cfc5416417c50966bb296ab5933ae')
 
-# compress the modules or not
-_compress="y"
-
-# don't compress the package - we're just going to uncompress during install in a moment
-PKGEXT='.pkg.tar'
-
-prepare() {
-	cd "${srcdir}/linux-nitrous"
-	
-	# Number of CPU Cores
-	if [ $_CORES -lt 1 ]; then
-		_CORES=2
-	fi
-	
-	git reset --hard
-}
+_kernelname=${pkgbase#linux}
 
 pkgver() {
-	cd "${srcdir}/linux-nitrous"
-	eval $(grep -o "^\(VERSION\|PATCHLEVEL\|SUBLEVEL\) = [0-9a-zA-Z_-]\+" Makefile | tr -d \ )
-	printf "%s.%s.%s" $VERSION $PATCHLEVEL $SUBLEVEL
+  cd "${_srcname}"
+
+  echo $pkgver-$pkgrel
+}
+
+prepare() {
+  cd "${_srcname}"
+
+  # don't run depmod on 'make install'. We'll do this ourselves in packaging
+  sed -i '2iexit 0' scripts/depmod.sh
+
+  # get kernel version
+  make prepare
+
+  # load configuration
+  # Configure the kernel. Replace the line below with one of your choice.
+  #make menuconfig # CLI menu for configuration
+  #make nconfig # new CLI menu for configuration
+  #make xconfig # X-based configuration
+  #make oldconfig # using old config from previous kernel version
+  #make olddefconfig # old config from previous kernel, defaults for new options
+  make CC=clang nitrous_defconfig
+  # ... or manually edit .config
 }
 
 build() {
-	cd "${srcdir}/linux-nitrous"
-		
-	# don't run depmod on 'make install'. We'll do this ourselves in packaging
-	sed -i '2iexit 0' scripts/depmod.sh
+  cd "${_srcname}"
 
-	if [ ! -d "${srcdir}/build" ]; then
-		msg2 "Creating build directory..."
-		mkdir -p "${srcdir}/build"
-	else
-		if [ -f "${srcdir}/build/.config" ]; then
-			msg "Cleaning build directory"
-			
-			rm -rf "${srcdir}/build"
-						
-			cd "${srcdir}/linux-nitrous"
-			make clean &> /dev/null
-			make mrproper &> /dev/null
-			
-                        msg "Generating new config"
-			make -C "${srcdir}/linux-nitrous/" O="${srcdir}/build" CC=clang nitrous_defconfig > /dev/null
-		fi
-	fi
-
-	if [ ! -f "${srcdir}/build/.config" ]; then
-      		msg2 "Generating config..."
-		make -C "${srcdir}/linux-nitrous/" O="${srcdir}/build" CC=clang nitrous_defconfig > /dev/null
-	fi
-
-	msg2 "Updating output directory Makefile..."
-	make -C "${srcdir}/linux-nitrous/" O="${srcdir}/build" CC=clang outputmakefile
-
-	warning "Press ENTER if you want to build the kernel or CTRL+C to abort..."
-	read
-	
-	cd "${srcdir}/build"
-
-	msg2 "Building kernel..."; make -j$_CORES CC=clang bzImage
-	msg2 "Building modules..."; make -j$_CORES CC=clang modules
+  make ${MAKEFLAGS} CC=clang bzImage modules
 }
 
-package_linux-nitrous-git() {
-	depends=("coreutils" "linux-firmware" "kmod" "mkinitcpio>=0.5.20")
-	provides=("linux-nitrous" "linux-nitrous-git")
-	optdepends=("linux-nitrous-git-headers: to build third party modules such as NVIDIA drivers or OSSv4"
-	            "crda: to set the correct wireless channels of your country")
-	backup=(etc/mkinitcpio.d/linux-nitrous.conf)
-	install=linux-nitrous.install
+_package() {
+  pkgdesc="Modified Linux kernel optimized for Haswell (and newer) compiled using clang"
+  depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
+  optdepends=('crda: to set the correct wireless channels of your country')
+  provides=('linux')
+  backup=("etc/mkinitcpio.d/${pkgbase}.preset")
+  install=${pkgbase}.install
 
-	msg2 "Determining kernel name..."
-	cd "${srcdir}/build"
-	_kernver="$(make kernelrelease -s)"
-	msg2 "Kernel release name is: $_kernver"
+  cd "${_srcname}"
 
-	cd "${srcdir}/build"
-	mkdir -p "$pkgdir/usr/lib"
+  KARCH=x86
 
-	cd "${srcdir}/build"
+  # get kernel version
+  _kernver="$(make kernelrelease)"
+  _basekernel=${_kernver%%-*}
+  _basekernel=${_basekernel%.*}
 
-	msg2 "Installing kernel image..."
-	install -D -m644 "arch/x86/boot/bzImage" "$pkgdir/boot/vmlinuz-linux-nitrous"
+  mkdir -p "${pkgdir}"/{lib/modules,lib/firmware,boot}
+  make CC=clang INSTALL_MOD_PATH="${pkgdir}" modules_install
+  cp arch/$KARCH/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
 
-	msg2 "Installing modules (and firmware files)..."
-	make INSTALL_MOD_PATH="$pkgdir" modules_install
+  # set correct depmod command for install
+  cp -f "${startdir}/${install}" "${startdir}/${install}.pkg"
+  true && install=${install}.pkg
+  sed \
+    -e  "s/KERNEL_NAME=.*/KERNEL_NAME=${_kernelname}/" \
+    -e  "s/KERNEL_VERSION=.*/KERNEL_VERSION=${_kernver}/" \
+    -i "${startdir}/${install}"
 
-	if [ -d "$pkgdir/lib/firmware" ]; then
-		msg2 "Removing firmware files..."
-		rm -r "$pkgdir/lib/firmware"
-	fi
-	
-	if [ $_compress = "y" ]; then
-		msg2 "Compressing kernel modules with gzip..."
-		find "${pkgdir}" -name '*.ko' -exec gzip -9 {} \;
-	fi
-	
-	# make room for external modules
-	if [ -d "${pkgdir}/usr/lib/modules/extramodules-*" ]; then
-		rmdir "${pkgdir}/usr/lib/modules/extramodules-*" &> /dev/null
-	fi
+  # install mkinitcpio preset file for kernel
+  install -D -m644 "${srcdir}/${pkgbase}.preset" "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
+  sed \
+    -e "1s|'linux.*'|'${pkgbase}'|" \
+    -e "s|ALL_kver=.*|ALL_kver=\"/boot/vmlinuz-${pkgbase}\"|" \
+    -e "s|default_image=.*|default_image=\"/boot/initramfs-${pkgbase}.img\"|" \
+    -e "s|fallback_image=.*|fallback_image=\"/boot/initramfs-${pkgbase}-fallback.img\"|" \
+    -i "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
 
-	# add real version for building modules and running depmod from post_install/upgrade
-	mkdir -p "${pkgdir}/usr/lib/modules/extramodules-${_kernver}"
-	echo "${_kernver}" > "${pkgdir}/usr/lib/modules/extramodules-${_kernver}/version"
-	
-	# symlink extra
-	mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}"
-	cd "${pkgdir}/usr/lib/modules/${_kernver}"
-	ln -s "../extramodules-${_kernver}" "./extramodules"
+  # remove build and source links
+  rm -f "${pkgdir}"/lib/modules/${_kernver}/{source,build}
+  # remove the firmware
+  rm -rf "${pkgdir}/lib/firmware"
+  # make room for external modules
+  ln -s "../extramodules-${_basekernel}${_kernelname:--ARCH}" "${pkgdir}/lib/modules/${_kernver}/extramodules"
+  # add real version for building modules and running depmod from post_install/upgrade
+  mkdir -p "${pkgdir}/lib/modules/extramodules-${_basekernel}${_kernelname:--ARCH}"
+  echo "${_kernver}" > "${pkgdir}/lib/modules/extramodules-${_basekernel}${_kernelname:--ARCH}/version"
 
-	cd "${srcdir}/build"
+  # Now we call depmod...
+  depmod -b "${pkgdir}" -F System.map "${_kernver}"
 
-	msg2 "Removing links to source and build directory..."
-	rm "$pkgdir/lib/modules/$_kernver/"{build,source}
+  # move module tree /lib -> /usr/lib
+  mkdir -p "${pkgdir}/usr"
+  mv "${pkgdir}/lib" "${pkgdir}/usr/"
 
-	msg2 "Updating kernel version in install script..."
-	sed -i "s/_kernel_version=.*/_kernel_version=$_kernver/" \
-		"$startdir/linux-nitrous.install"
+  # add vmlinux
+  install -D -m644 vmlinux "${pkgdir}/usr/lib/modules/${_kernver}/build/vmlinux" 
 
-	msg2 "Installing files for mkinitcpio..."
-	install -D -m644 "${srcdir}/linux-nitrous.conf" \
-		"$pkgdir/etc/mkinitcpio.d/linux-nitrous.conf"
-	
-	install -D -m644 "${srcdir}/linux-nitrous.preset" \
-		"$pkgdir/etc/mkinitcpio.d/linux-nitrous.preset"
-	sed -i "s/^ALL_kver=.*$/ALL_kver=$_kernver/" \
-		"$pkgdir/etc/mkinitcpio.d/linux-nitrous.preset"
-
-	# Now we call depmod...
-	depmod -b "$pkgdir" -F System.map "$_kernver"
-	
-	# move module tree /lib -> /usr/lib
-	cp -a "$pkgdir/lib" "$pkgdir/usr/"
-	
-	rm -rf "$pkgdir/lib"
-	find "$pkgdir" -type d -name .git -exec rm -r '{}' +
+  # add System.map
+  install -D -m644 System.map "${pkgdir}/boot/System.map-${_kernver}"
 }
 
-package_linux-nitrous-git-headers() {
-	# AUR workaround
-	true && pkgdesc="Header files and scripts for building modules for linux-nitrous"
-	true && depends=("linux-nitrous-git")
-	true && conflicts=("linux-nitrous-headers")
-	true && provides=("linux-headers linux-nitrous-git-headers linux-nitrous-headers")
+_package-headers() {
+  pkgdesc="Header files and scripts for building modules for Linux kernel (git version)"
+  provides=('linux-headers')
 
-	_srcdir="/usr/src/linux-$_kernver"
+  install -dm755 "${pkgdir}/usr/lib/modules/${_kernver}"
 
-	msg2 "Installing files necessary for 3rd party modules such as NVIDIA drivers or OSSv4..."
-	mkdir -p "${pkgdir}/usr/src/linux-$_kernver/"{arch/x86,include,tools/objtool}
+  cd "${_srcname}"
+  install -D -m644 Makefile \
+    "${pkgdir}/usr/lib/modules/${_kernver}/build/Makefile"
+  install -D -m644 kernel/Makefile \
+    "${pkgdir}/usr/lib/modules/${_kernver}/build/kernel/Makefile"
+  install -D -m644 .config \
+    "${pkgdir}/usr/lib/modules/${_kernver}/build/.config"
 
-	install -D -m755 "${srcdir}/build/tools/objtool/objtool" "${pkgdir}/usr/src/linux-$_kernver/tools/objtool/objtool"	
-	install -D -m644 "${srcdir}/linux-nitrous/Makefile" "${pkgdir}/usr/src/linux-$_kernver/Makefile"
-	install -D -m644 "${srcdir}/linux-nitrous/kernel/Makefile" "${pkgdir}/usr/src/linux-$_kernver/kernel/Makefile"
-	install -D -m644 "${srcdir}/build/.config" "${pkgdir}/usr/src/linux-$_kernver/.config"
-	install -D -m644 "${srcdir}/build/Module.symvers" "${pkgdir}/usr/src/linux-$_kernver/Module.symvers"
-	install -D -m644 "${srcdir}/build/include/generated/uapi/linux/version.h" "${pkgdir}/usr/src/linux-$_kernver/include/linux/version.h"
-	install -D -m644 "${srcdir}/build/arch/x86/kernel/asm-offsets.s" "${pkgdir}/usr/src/linux-$_kernver/arch/x86/kernel/asm-offsets.s"
-	install -D -m644 "${srcdir}/linux-nitrous/arch/x86/Makefile" "${pkgdir}/usr/src/linux-$_kernver/arch/x86/Makefile"
+  mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/include"
 
-	if [ "$CARCH" = "i686" ]; then
-		install -D -m644 "${srcdir}/linux-nitrous/arch/x86/Makefile_32.cpu" "${pkgdir}/usr/src/linux-$_kernver/arch/x86/Makefile_32.cpu"
-	fi
+  for i in acpi asm-generic config crypto drm generated keys linux math-emu \
+    media net pcmcia scsi sound trace uapi video xen; do
+    cp -a include/${i} "${pkgdir}/usr/lib/modules/${_kernver}/build/include/"
+  done
 
-	cp -a "${srcdir}/linux-nitrous/scripts" "${pkgdir}/usr/src/linux-$_kernver"
-	cp -a "${srcdir}/build/scripts" "${pkgdir}/usr/src/linux-$_kernver"
-	cp -a "${srcdir}/linux-nitrous/include" "${pkgdir}/usr/src/linux-$_kernver"
-	cp -a "${srcdir}/build/include/"{generated,config} "${pkgdir}/usr/src/linux-$_kernver/include"
-	cp -a "${srcdir}/linux-nitrous/arch/x86/include" "${pkgdir}/usr/src/linux-$_kernver/arch/x86"
-	cp -a "${srcdir}/build/arch/x86/include" "${pkgdir}/usr/src/linux-$_kernver/arch/x86"
+  # copy arch includes for external modules
+  mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/x86"
+  cp -a arch/x86/include "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/x86/"
 
-	cd "${srcdir}/linux-nitrous"
-	{
-		find drivers -type f -name "*.h";
-		find . -type f -name "Kconfig*";
-	} | while read file; do
-		install -D -m644 "$file" "${pkgdir}/usr/src/linux-$_kernver/$file"
-	done
+  # copy files necessary for later builds, like nvidia and vmware
+  cp Module.symvers "${pkgdir}/usr/lib/modules/${_kernver}/build"
+  cp -a scripts "${pkgdir}/usr/lib/modules/${_kernver}/build"
 
-	msg2 "Fixing permissions on scripts directory..."
-	chmod og-w -R "${pkgdir}/usr/src/linux-$_kernver/scripts"
+  # fix permissions on scripts dir
+  chmod og-w -R "${pkgdir}/usr/lib/modules/${_kernver}/build/scripts"
+  mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/.tmp_versions"
 
-	msg2 "Creating symlinks..."
-	mkdir -p "${pkgdir}/usr/lib/modules/$_kernver/"
-	ln -s "/usr/src/linux-$_kernver" "${pkgdir}/usr/lib/modules/$_kernver/build"
-	ln -s "/usr/src/linux-$_kernver" "${pkgdir}/usr/lib/modules/$_kernver/source"
-	
-	find "$pkgdir" -type d -name .git -exec rm -r '{}' +
+  mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/kernel"
+
+  cp arch/${KARCH}/Makefile "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/"
+
+  if [ "${CARCH}" = "i686" ]; then
+    cp arch/${KARCH}/Makefile_32.cpu "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/"
+  fi
+
+  cp arch/${KARCH}/kernel/asm-offsets.s "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/kernel/"
+
+  # add dm headers
+  mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/md"
+  cp drivers/md/*.h "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/md"
+
+  # add inotify.h
+  mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/include/linux"
+  cp include/linux/inotify.h "${pkgdir}/usr/lib/modules/${_kernver}/build/include/linux/"
+
+  # add wireless headers
+  mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/net/mac80211/"
+  cp net/mac80211/*.h "${pkgdir}/usr/lib/modules/${_kernver}/build/net/mac80211/"
+
+  # add dvb headers for external modules
+  # http://bugs.archlinux.org/task/11194
+  mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/include/config/dvb/"
+  cp include/config/dvb/*.h "${pkgdir}/usr/lib/modules/${_kernver}/build/include/config/dvb/"
+
+  # add dvb headers for http://mcentral.de/hg/~mrec/em28xx-new
+  # in reference to:
+  # http://bugs.archlinux.org/task/13146
+  mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/dvb-frontends/"
+  cp drivers/media/dvb-frontends/lgdt330x.h "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/dvb-frontends/"
+  mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/i2c/"
+  cp drivers/media/i2c/msp3400-driver.h "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/i2c/"
+
+  # add dvb headers
+  # in reference to:
+  # http://bugs.archlinux.org/task/20402
+  mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/usb/dvb-usb"
+  cp drivers/media/usb/dvb-usb/*.h "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/usb/dvb-usb/"
+  mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/dvb-frontends"
+  cp drivers/media/dvb-frontends/*.h "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/dvb-frontends/"
+  mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/tuners"
+  cp drivers/media/tuners/*.h "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/tuners/"
+
+  # add xfs and shmem for aufs building
+  mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/fs/xfs"
+  mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/mm"
+  # removed in 3.17 series
+  # cp fs/xfs/xfs_sb.h "${pkgdir}/usr/lib/modules/${_kernver}/build/fs/xfs/xfs_sb.h"
+
+  # copy in Kconfig files
+  for i in $(find . -name "Kconfig*"); do
+    mkdir -p "${pkgdir}"/usr/lib/modules/${_kernver}/build/`echo ${i} | sed 's|/Kconfig.*||'`
+    cp ${i} "${pkgdir}/usr/lib/modules/${_kernver}/build/${i}"
+  done
+
+  # Fix file conflict with -doc package
+  rm "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild"/Kconfig.*-*
+
+  # Add objtool for CONFIG_STACK_VALIDATION
+  mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/tools"
+  cp -a tools/objtool "${pkgdir}/usr/lib/modules/${_kernver}/build/tools"
+
+  chown -R root.root "${pkgdir}/usr/lib/modules/${_kernver}/build"
+  find "${pkgdir}/usr/lib/modules/${_kernver}/build" -type d -exec chmod 755 {} \;
+
+  # strip scripts directory
+  find "${pkgdir}/usr/lib/modules/${_kernver}/build/scripts" -type f -perm -u+w 2>/dev/null | while read binary ; do
+    case "$(file -bi "${binary}")" in
+      *application/x-sharedlib*) # Libraries (.so)
+        /usr/bin/strip ${STRIP_SHARED} "${binary}";;
+      *application/x-archive*) # Libraries (.a)
+        /usr/bin/strip ${STRIP_STATIC} "${binary}";;
+      *application/x-executable*) # Binaries
+        /usr/bin/strip ${STRIP_BINARIES} "${binary}";;
+    esac
+  done
+
+  # remove unneeded architectures
+  rm -rf "${pkgdir}"/usr/lib/modules/${_kernver}/build/arch/{alpha,arc,arm,arm26,arm64,avr32,blackfin,c6x,cris,frv,h8300,hexagon,ia64,m32r,m68k,m68knommu,metag,mips,microblaze,mn10300,openrisc,parisc,powerpc,ppc,s390,score,sh,sh64,sparc,sparc64,tile,unicore32,um,v850,xtensa}
 }
+
+_package-docs() {
+  pkgdesc="Kernel hackers manual - HTML documentation that comes with the Linux kernel (git version)"
+  provides=('linux-docs')
+
+  cd "${_srcname}"
+
+  mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build"
+  cp -al Documentation "${pkgdir}/usr/lib/modules/${_kernver}/build"
+  find "${pkgdir}" -type f -exec chmod 444 {} \;
+  find "${pkgdir}" -type d -exec chmod 755 {} \;
+
+  # remove files already in linux package
+  rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/DocBook/Makefile"
+  rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/Kconfig"
+}
+
+pkgname=("${pkgbase}" "${pkgbase}-headers" "${pkgbase}-docs")
+for _p in ${pkgname[@]}; do
+  eval "package_${_p}() {
+    $(declare -f "_package${_p#${pkgbase}}")
+    _package${_p#${pkgbase}}
+  }"
+done
+
+# vim:set ts=8 sts=2 sw=2 et:
