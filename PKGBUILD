@@ -1,7 +1,7 @@
 # Maintainer: Andrew O'Neill <andrew at meanjollies dot com>
 
 pkgname=musikcube
-pkgver=0.65.1
+pkgver=0.70.0
 pkgrel=1
 pkgdesc='A terminal-based cross-platform music player, audio engine, metadata indexer, and server'
 arch=('x86_64')
@@ -11,7 +11,7 @@ conflicts=("${pkgname}-git")
 depends=('faad2' 'libogg' 'libvorbis' 'flac' 'libmicrohttpd' 'lame' 'ncurses' 'boost-libs' 'pulseaudio' 'libpulse' 'libev' 'alsa-lib' 'curl' 'ffmpeg' 'taglib')
 makedepends=('cmake' 'boost')
 source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=('e847bd71d3852e83a50b6b0a796e88386f61f09f3fb6379c866616edba4c8b72')
+sha256sums=('04161e4c79fdb7bc5b69757e231cf31cb8e2719dfd3c70085e3d8823b36e4ce9')
 
 build() {
   cd "${pkgname}-${pkgver}"
