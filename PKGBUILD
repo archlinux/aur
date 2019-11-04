@@ -5,7 +5,7 @@ pkgbase="python-pytorch"
 pkgname=("python-pytorch" "python-pytorch-opt" "python-pytorch-cuda" "python-pytorch-opt-cuda")
 _pkgname="pytorch"
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU acceleration"
 arch=('x86_64')
 url="https://pytorch.org"
@@ -32,6 +32,10 @@ prepare() {
 
   # https://github.com/pytorch/pytorch/issues/26555
   sed -i 's#^  ${CMAKE_CURRENT_SOURCE_DIR}/tensor_iterator_test.cpp##g' aten/src/ATen/test/CMakeLists.txt
+
+  # Fix build with Python 3.8
+  # https://github.com/pytorch/pytorch/issues/28060
+  find -name '*.cpp' -exec sed -i '/tp_print/s/nullptr/0/' {} +
 
   cd ..
 
