@@ -13,7 +13,7 @@
 pkgbase=linux-nitrous-git
 _srcname=linux-nitrous
 pkgver=5.3.8
-pkgrel=4
+pkgrel=5
 arch=('x86_64')
 url="https://gitlab.com/xdevs23/linux-nitrous"
 license=('GPL2')
@@ -39,6 +39,7 @@ prepare() {
   # don't run depmod on 'make install'. We'll do this ourselves in packaging
   sed -i '2iexit 0' scripts/depmod.sh
 
+  rm -f .clang
   make CC=clang nitrous_defconfig
 
   # get kernel version
@@ -58,6 +59,7 @@ prepare() {
 build() {
   cd "${_srcname}"
 
+  make CC=clang nitrous_defconfig
   make ${MAKEFLAGS} CC=clang bzImage modules
 }
 
