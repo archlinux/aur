@@ -1,13 +1,13 @@
 # Maintainer: Nick Skelsey <nskelsey+zz@gmail.com>
 pkgname=zeek
-pkgver=3.1.0.dev131.g916491e2b
+pkgver=3.1.0.dev172.g916205e25
 pkgrel=1
 pkgdesc="A network analysis framework"
 arch=('x86_64')
-url="https://www.zeek.org/index.html"
+url="https://zeek.org"
 license=('BSD')
 depends=("zlib" "libpcap" "bash" "libmaxminddb")
-makedepends=("cmake")
+makedepends=("cmake" "git")
 source=("git+https://github.com/zeek/zeek")
 md5sums=("SKIP")
 
@@ -19,7 +19,7 @@ pkgver() {
 build() {
     cd "$srcdir/zeek"
     git submodule update --init --recursive
-    ./configure --prefix=/usr --disable-auxtools --disable-python --disable-broker-tests --disable-zeekctl
+    ./configure --prefix=/usr --disable-python
     make
 }
 
