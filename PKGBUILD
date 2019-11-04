@@ -4,8 +4,8 @@
 pkgname=m68k-atari-mint-binutils
 _pkgname=binutils
 _target="m68k-atari-mint"
-pkgver=2.23.2
-pkgrel=7
+pkgver=2.30
+pkgrel=1
 pkgdesc="A set of programs to assemble and manipulate binary and object files for the M68K architecture"
 url="http://www.gnu.org/software/binutils/"
 arch=('i686' 'x86_64')
@@ -13,22 +13,20 @@ license=('GPL')
 depends=('glibc')
 replaces=('cross-m68k-atari-mint-binutils')
 conflicts=('cross-m68k-atari-mint-binutils')
-source=("ftp://ftp.gnu.org/gnu/binutils/${_pkgname}-${pkgver}.tar.bz2" "binutils-2.23.2-mint-20130327.patch.bz2" "tc-m68k.c.patch")
-sha1sums=('042c51073205ebaf88c272d6168f9deb71984b56' 'd6c21353905e24e3f3f410e4251866dc3ed6af8c' 'c76e49cf19ece5bf01d9d67274950f078ce30fe2')
+source=("ftp://ftp.gnu.org/gnu/binutils/${_pkgname}-${pkgver}.tar.bz2" "binutils-2.30-mint-20180703.patch.bz2")
+sha1sums=('33d807f7fa680b00439eb5560acd0c2ef645e5f9' 'bbf149ff3e6d8b15a217b71ad79fdb020a804e01')
 _sysroot="/usr/lib/${_target}"
 
 prepare() {
 	cd ${srcdir}/${_pkgname}-${pkgver}
 
-        patch -Np1 < ../binutils-2.23.2-mint-20130327.patch
-        patch -p0 < ../tc-m68k.c.patch
+        patch -Np1 < ../binutils-2.30-mint-20180703.patch
 }
 
 build() {
 	cd ${srcdir}/${_pkgname}-${pkgver}
 
         CFLAGS=${CFLAGS//-D_FORTIFY_SOURCE=?/}
-        CFLAGS="${CFLAGS} -Wno-unused-value -Wno-shift-negative-value -Wno-error=implicit-fallthrough -Wno-error=format-overflow -Wno-error=cast-function-type -Wno-error=stringop-truncation -Wno-error=pointer-compare"
         export CFLAGS
         
         CPPFLAGS=${CPPFLAGS//-D_FORTIFY_SOURCE=?/}
