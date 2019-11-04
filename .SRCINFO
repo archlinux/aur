@@ -1,8 +1,8 @@
 pkgbase = fcitx5-chinese-addons-git
 	pkgdesc = Addons related to Chinese, including IME previous bundled inside fcitx4
-	pkgver = r124.00b233f
+	pkgver = r125.cde40b2
 	pkgrel = 1
-	url = https://gitlab.com/fcitx/fcitx5-chinese-addons
+	url = https://github.com/fcitx/fcitx5-chinese-addons
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -18,7 +18,7 @@ pkgbase = fcitx5-chinese-addons-git
 	depends = fcitx5-git
 	provides = fcitx5-chinese-addons
 	conflicts = fcitx5-chinese-addons
-	source = git+https://gitlab.com/fcitx/fcitx5-chinese-addons.git
+	source = git+https://github.com/fcitx/fcitx5-chinese-addons.git
 	sha512sums = SKIP
 
 pkgname = fcitx5-chinese-addons-git
