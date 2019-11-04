@@ -2,7 +2,7 @@
 
 pkgname=d-feet
 pkgver=0.3.15
-pkgrel=1
+pkgrel=2
 pkgdesc="D-Bus debugger for GNOME"
 arch=('any')
 url="https://wiki.gnome.org/Apps/DFeet"
