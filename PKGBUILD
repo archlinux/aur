@@ -5,7 +5,7 @@
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 
 pkgname=digikam
-_pkgver=6.3.0
+_pkgver=6.4.0
 pkgver=${_pkgver//-/_} # for beta versions
 pkgrel=1
 pkgdesc="An advanced digital photo management application"
@@ -13,12 +13,13 @@ arch=(x86_64)
 license=(GPL)
 url="https://www.digikam.org/"
 depends=(lensfun opencv akonadi-contacts knotifyconfig libksane kfilemetadata qtav marble-common threadweaver kcalendarcore
-         qt5-xmlpatterns imagemagick)
+         qt5-xmlpatterns imagemagick glu)
 makedepends=(extra-cmake-modules doxygen eigen boost kdoctools libkvkontakte)
 optdepends=('hugin: panorama tool' 'qt5-imageformats: support for additional image formats (WEBP, TIFF)'
-            'libkvkontakte: VKontakte plugin')
+            'libkvkontakte: VKontakte plugin'
+            'rawtherapee: RAW import' 'darktable: RAW import')
 source=("https://download.kde.org/stable/$pkgname/$_pkgver/$pkgname-$_pkgver.tar.xz"{,.sig})
-sha256sums=('94dc05e3f9c08b83419010d1689c7b0398d4eced4fef42375249c974622874ba'
+sha256sums=('6532c02d51a9861f101092dfde92f8de478b1554d3449bbf3a11e50d32d39460'
             'SKIP')
 validpgpkeys=(D1CF2444A7858C5F2FB095B74A77747BC2386E50) # digiKam.org (digiKam project) <digikamdeveloper@gmail.com>
 
@@ -36,7 +37,8 @@ build() {
     -DENABLE_AKONADICONTACTSUPPORT=ON \
     -DENABLE_MYSQLSUPPORT=ON \
     -DENABLE_APPSTYLES=ON \
-    -DENABLE_QWEBENGINE=ON
+    -DENABLE_QWEBENGINE=ON \
+    -DOpenGL_GL_PREFERENCE=GLVND
   make
 }
 
