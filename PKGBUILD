@@ -1,29 +1,9 @@
 #! /bin/bash
-
-Name="QSyncthingTray"
-LowercaseName=$(echo "${Name,,}")
-pkgname="${LowercaseName}-git"
-
-pkgver=r421.11936bc
-pkgrel=2
-arch=("i686" "x86_64")
-
-pkgdesc="Syncs files among devices, and shows the sync status on a tray icon. Version with the latest unreleased improvements."
-license=("LGPL3")
-
 url="https://github.com/sieren/QSyncthingTray"
-source=("git+${url}.git" "${LowercaseName}.desktop")
-md5sums=("SKIP" "SKIP")
-
-makedepends=("cmake" "git")
-depends=("qt5-location" "qt5-webengine" "startup-settings-git" "syncthing")
-provides=("${LowercaseName}")
-conflicts=("${LowercaseName}")
 
 
 pkgver() {
-	cd "${Name}"
-	printf "r%s.%s\n" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	commitsCount "${url}"
 }
 
 
@@ -51,4 +31,23 @@ package() {
 	find "${pkgdir}" -type f -exec chmod u=rw,g=r,o=r {} \;
 	chmod +x "${pkgdir}/usr/bin/${LowercaseName}"
 }
+
+
+Name="QSyncthingTray"
+LowercaseName=$(echo "${Name,,}")
+provides=("${LowercaseName}")
+conflicts=("${LowercaseName}")
+pkgname="${LowercaseName}-git"
+
+pkgdesc="Syncs files among devices, and shows the sync status on a tray icon. Version with the latest unreleased improvements."
+license=("LGPL3")
+
+pkgver=$(pkgver)
+pkgrel=3
+arch=("i686" "x86_64")
+
+makedepends=("cmake" "commits-count-git" "git")
+depends=("qt5-location" "qt5-webengine" "startup-settings-git" "syncthing")
+source=("git+${url}.git" "${LowercaseName}.desktop")
+md5sums=("SKIP" "SKIP")
 
