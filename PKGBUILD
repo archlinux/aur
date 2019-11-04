@@ -13,7 +13,7 @@
 pkgbase=linux-nitrous-git
 _srcname=linux-nitrous
 pkgver=5.3.8
-pkgrel=7
+pkgrel=8
 arch=('x86_64')
 url="https://gitlab.com/xdevs23/linux-nitrous"
 license=('GPL2')
@@ -75,7 +75,7 @@ _package() {
 
   cd "${_srcname}"
 
-  KARCH=x86
+  KARCH=x86_64
 
   # get kernel version
   _kernver="$(make kernelrelease)"
