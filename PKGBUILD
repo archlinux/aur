@@ -4,7 +4,7 @@
 pkgbase=curator
 pkgname=(python-elasticsearch-curator curator)
 pkgver=5.7.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Curator: Tending your Elasticsearch indices'
 url='https://github.com/elastic/curator'
 arch=('x86_64')
