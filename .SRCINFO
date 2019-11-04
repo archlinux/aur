@@ -1,11 +1,11 @@
 pkgbase = libinput-xrandr-autorotate
 	pkgdesc = Allows to rotate screen and touch input for 2-in-1 laptops
 	pkgver = 0.1.0
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/AnatolyRugalev/libinput-xrandr-autorotate
 	arch = x86_64
 	license = GPLv3
 	source = https://github.com/AnatolyRugalev/libinput-xrandr-autorotate/releases/download/0.1.0/libinput-xrandr-autorotate_0.1.0_Linux_amd64.tar.gz
-	sha256sums = d0a308049b78d9e4cffddd220b2d3d81fe8b38944a7c45d642088a0d2b77cb8f
+	sha256sums = 11d145f728357ff11009a0d3ab6f0b80010c73662030e2e3d31e8540248c355f
 
 pkgname = libinput-xrandr-autorotate
