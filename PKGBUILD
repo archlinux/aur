@@ -1,8 +1,8 @@
-# Maintainer: Galen Gold <galen@galengold.me>
+# Maintainer: Abigail G <me@kb6.ee>
 
 pkgname=ttf-marketingscript
 pkgver=1
-pkgrel=2
+pkgrel=3
 pkgdesc="Marketing Script Font Family"
 url="https://www.1001fonts.com/marketing-script-font.html"
 arch=(any)
