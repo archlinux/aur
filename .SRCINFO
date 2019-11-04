@@ -1,15 +1,17 @@
 pkgbase = discord-rpc-api
 	pkgdesc = Libraries for Discord Rich Presence
-	pkgver = 3.3.0
-	pkgrel = 3
+	pkgver = 3.4.0
+	pkgrel = 0
 	url = https://github.com/discordapp/discord-rpc
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
-	makedepends = clang
-	source = discord-rpc-api-3.3.0.tar.gz::https://github.com/discordapp/discord-rpc/archive/v3.3.0.tar.gz
-	md5sums = 6f8c49413a2b91c443d812f4bae39938
-	sha256sums = 1c625f3546761e778e084fe037540f4fdb5452e9c297ee790bbb43ce3cf955b5
+	makedepends = gcc
+	source = discord-rpc-api-3.4.0.tar.gz::https://github.com/discordapp/discord-rpc/archive/v3.4.0.tar.gz
+	md5sums = dac53f5ff7e1c9e34a86cc3f5aafc487
+	sha256sums = e13427019027acd187352dacba6c65953af66fdf3c35fcf38fc40b454a9d7855
 
 pkgname = discord-rpc-api
+
+pkgname = discord-rpc-api-static
 
