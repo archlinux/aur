@@ -13,7 +13,7 @@ makedepends=()
 source=("https://pldaniels.com/flexbv/beta/FlexBV-$pkgver-linux.tar.gz"
 	"flexbv.sh")
 md5sums=('a59d61f95b52a85edeb3cc25bb8316f7'
-         'ed44d401465836c03969409246b7ea3a')
+         '1487cbd7315654d30f9133b210d2d55b')
 
 package() {
 	install -d -m755 "$pkgdir/opt/flexbv"

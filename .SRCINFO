@@ -15,7 +15,7 @@ pkgbase = flexbv-beta-bin
 	source = https://pldaniels.com/flexbv/beta/FlexBV-R1115-linux.tar.gz
 	source = flexbv.sh
 	md5sums = a59d61f95b52a85edeb3cc25bb8316f7
-	md5sums = ed44d401465836c03969409246b7ea3a
+	md5sums = 1487cbd7315654d30f9133b210d2d55b
 
 pkgname = flexbv-beta-bin
 
