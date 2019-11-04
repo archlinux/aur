@@ -2,7 +2,7 @@
 # Contributor: Conor Anderson <conor@conr.ca>
 
 pkgname=wire-desktop
-pkgver=3.10.2904
+pkgver=3.11.2912
 pkgrel=1
 pkgdesc='End-to-end encrypted messenger with file sharing, voice calls and video conferences'
 arch=('any')
@@ -14,7 +14,7 @@ optdepends=('emoji-font: colorful emoji')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/wireapp/${pkgname}/archive/linux/${pkgver}.tar.gz"
         "${pkgname}-${pkgver}.tar.gz.sig::https://github.com/wireapp/${pkgname}/releases/download/linux%2F${pkgver}/${pkgname}-linux-${pkgver}.tar.gz.sig"
         "${pkgname}.desktop")
-sha256sums=('25eec808ecd2bed5506749cc29c8ed5534dc455cf153d8e40ad933b68dfff031'
+sha256sums=('d0d92c37702af7f9e5e671575f0356feb5f4d823a8f818679a4d3b5fdd447033'
             'SKIP'
             '53f37e99d4c2f41a3e31fd70154d82ba06a4af578c68df86af4906f7f37ec787')
 validpgpkeys=('ABBA007D6E14E2DB5B283C45D599C1AA126762B1')
@@ -32,7 +32,7 @@ build() {
     cd "${pkgname}-linux-${pkgver}"
     yarn
     sed -i '/Promise.all/d' node_modules/@wireapp/build-tools/dist/cli/build-linux-cli.js
-    BUILD_NUMBER="${pkgver##*.}" LINUX_TARGET=dir yarn build:linux
+    BUILD_NUMBER="${pkgver##*.}" LINUX_TARGET=dir ENABLE_ASAR=false yarn build:linux
 }
 
 package() {
