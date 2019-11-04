@@ -2,7 +2,7 @@
 
 pkgname=python-flask-jwt
 pkgver=0.3.2
-pkgrel=4
+pkgrel=5
 pkgdesc="JWT token authentication for Flask apps"
 url="https://github.com/mattupstate/flask-jwt"
 license=('MIT')
