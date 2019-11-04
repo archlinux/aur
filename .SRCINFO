@@ -1,6 +1,6 @@
 pkgbase = softu2f
 	pkgdesc = Software U2F HID token daemon (rust-u2f)
-	pkgver = 0.4.0
+	pkgver = 0.4.0.r3.g14a6ed0
 	pkgrel = 1
 	arch = x86_64
 	makedepends = clang
@@ -9,7 +9,7 @@ pkgbase = softu2f
 	depends = libdbus
 	depends = libsystemd
 	depends = openssl
-	source = git+https://github.com/danstiner/rust-u2f#commit=1b49bad73b62a1b3982ec5af583dfa0f6ea5efb1
+	source = git+https://github.com/danstiner/rust-u2f#commit=14a6ed0ffb63a4c440d27edd5ffc132f6f3ee623
 	sha256sums = SKIP
 
 pkgname = softu2f
