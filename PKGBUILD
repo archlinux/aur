@@ -2,7 +2,7 @@
 
 pkgname=python-salsa20
 pkgver=0.3.0
-pkgrel=6
+pkgrel=7
 pkgdesc='Bindings for the NaCL implementation of Salsa20 and XSalsa20 by D. J. Bernstein'
 arch=('x86_64')
 url="https://github.com/keybase/python-salsa20"
