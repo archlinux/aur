@@ -31,6 +31,8 @@ prepare() {
   patch -p1 -i ../pidgin-nm-1.0.patch
   # Fix build with python 3.8
   patch -p1 -i ../pidgin-python-3.8.patch
+
+  autoreconf -vif
 }
 
 build() {
