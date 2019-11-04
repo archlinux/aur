@@ -1,16 +1,16 @@
 # Maintainer: Oystein Sture <oysstu@gmail.com>
 # Contributor: 
 pkgname=python-gpflow
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="Gaussian process methods in tensorflow"
 url="https://github.com/GPflow/GPflow"
 arch=('any')
 license=('MIT')
-depends=('python-tensorflow' 'python-pytest' 'python-pandas' 'python-scipy' 'python-multipledispatch')
+depends=('python-tensorflow<=1.14.0' 'python-pytest' 'python-pandas' 'python-scipy' 'python-multipledispatch')
 makedepends=('python-setuptools')
 source=("https://github.com/GPflow/GPflow/archive/v${pkgver}.tar.gz")
-sha256sums=('aaffa540aea0f8520f4bf2b2f5b294943e9d9fa655cb9a7986ff58306fe0c135')
+sha256sums=('ae438ecc38871b1d6812c1dec21c84c93f70887397d1b2dc4a058d46f031e346')
 
 build() {
   cd "${srcdir}"/GPflow-$pkgver
