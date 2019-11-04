@@ -1,0 +1,23 @@
+pkgbase = sxiv-dir-navigation-git
+	pkgdesc = Simple X Image Viewer (with patch to browse through images in working directory)
+	pkgver = v25.r10.g07300da
+	pkgrel = 1
+	url = https://github.com/muennich/sxiv
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = imlib2
+	depends = desktop-file-utils
+	depends = xdg-utils
+	depends = hicolor-icon-theme
+	depends = libexif
+	depends = libxft
+	provides = sxiv
+	conflicts = sxiv
+	source = sxiv::git+https://github.com/muennich/sxiv.git
+	source = dir-navigation.diff
+	sha256sums = SKIP
+	sha256sums = d2cd688f326c8457f7102d374e6bad96c9922d20e918c3f7020a6ec0d554fef5
+
+pkgname = sxiv-dir-navigation-git
+
