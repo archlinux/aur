@@ -1,7 +1,7 @@
 # Original Maintainer: Jonatan Bravo <zephrax@gmail.com>
 # Maintainer: Hendrik "T4cC0re" Meyer <aur@t4cc0.re>
 pkgname=tfenv
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=3
 epoch=
 pkgdesc="Terraform version manager inspired by rbenv"
@@ -32,4 +32,4 @@ package() {
 	chmod +x ${pkgdir}/usr/local/bin/${pkgname}
 	install -m644 "${srcdir}/${pkgname}-${pkgver}/CHANGELOG.md" "${pkgdir}/usr/local/lib/tfenv/"
 }
-sha512sums=(9ec96f67f6c25d0bb93fa880da6e1fdd74d6a5f930b29c45779a878ddc547eb10d2e6bacbbd64ac9a2a11b90b022fff87cd861a20eb3a412e39812e26c92741f)
+sha512sums=(f4fa3b9176ba7dcba49542debd6c3102d722122ae1f66d99a50bb422a1ecbb55c9639ef774225212c74125a7ea6c6f65f9ff0d66dd4835a2c91cadbf29ad2074)
