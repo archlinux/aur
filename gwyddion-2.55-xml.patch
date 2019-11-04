@@ -1,0 +1,14 @@
+diff -Naur ./gwyddion-2.55/data/gwyddion.xml ./gwyddion-2.55-patched/data/gwyddion.xml
+--- ./gwyddion-2.55/data/gwyddion.xml	2019-11-04 16:25:38.000000000 +0700
++++ ./gwyddion-2.55-patched/data/gwyddion.xml	2019-11-04 19:44:02.548355709 +0700
+@@ -55,8 +55,8 @@
+   <comment>Ambios XML profile data</comment>
+   <magic priority="80">
+     <match type="string" offset="0" value="&lt;?xml">
+-      <match type="string" offset="40:120" value="<ProfilometerData>">
+-         <match type="string" offset="60:140" value="<Header>"/>
++      <match type="string" offset="40:120" value="&lt;ProfilometerData&gt;">
++         <match type="string" offset="60:140" value="&lt;Header&gt;"/>
+       </match>
+     </match>
+   </magic>
