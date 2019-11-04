@@ -2,7 +2,7 @@
 
 pkgname=libinput-xrandr-autorotate
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Allows to rotate screen and touch input for 2-in-1 laptops"
 url="https://github.com/AnatolyRugalev/libinput-xrandr-autorotate"
 license=('GPLv3')
