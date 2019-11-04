@@ -7,25 +7,26 @@
 pkgname=iscan-plugin-network
 _pkgintname=iscan-network-nt
 _pkgdlname=iscan-bundle
-pkgver=1.1.1
-_pkgver=1.1.1-1 # workaround for hyphen in version
-_pkgdlver=1.0.0 # download bundle version
-pkgrel=13
+pkgver=1.1.2
+_pkgver=1.1.2-1 # workaround for hyphen in version
+_pkgdlver=2.30.4 # download bundle version
+pkgrel=14
 pkgdesc="Plugin for using Epson scanners with ISCAN over network"
 arch=('i686' 'x86_64')
 url="http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
-license=('custom:AVASYSPL')
+license=('custom:COPYING.EPSON')
 depends=(iscan)
+makedepends=(gzip)
 install=iscan-plugin-network.install
 if [[ ${CARCH} = 'x86_64' ]]; then
     _pkgdlarch='x64'
     _pkgarch='amd64'
-    sha512sums=('081ea48a83f955abd8f8d081f322e87ca02c91d371d6a7ed2d7cc4075c590c162a4ee9cd196cf5a53e6ce26fe29e34ef5a42400c06d336d2b8ccd33a6853575a')
+    sha512sums=('6d967f5d2d554478df49c784d0ee785a9e1fc4f4b6ea4dc320270a50eca35cc3d533b918a1bda33cf3b0e9b783380e7828b77543730079b2e2f40ad9578db79d')
     source=("iscan-bundle.deb.tar.gz::https://download2.ebz.epson.net/iscan/general/deb/${_pkgdlarch}/${_pkgdlname}-${_pkgdlver}.${_pkgdlarch}.deb.tar.gz")
 else
     _pkgdlarch='x86'
     _pkgarch='i386'
-    sha512sums=('d91a064342640582a71c664441e944812bc2fd18bd8f00010838adac7ad0581efcf8c9224c48a136ae0aec7f26b6df8071da7c2e10110eafe91c1dbd7f9865ad')
+    sha512sums=('6d967f5d2d554478df49c784d0ee785a9e1fc4f4b6ea4dc320270a50eca35cc3d533b918a1bda33cf3b0e9b783380e7828b77543730079b2e2f40ad9578db79d')
     source=("iscan-bundle.deb.tar.gz::https://download2.ebz.epson.net/iscan/general/deb/${_pkgdlarch}/${_pkgdlname}-${_pkgdlver}.${_pkgdlarch}.deb.tar.gz")
 fi
 
@@ -40,5 +41,6 @@ cp -R usr $srcdir
 package() {
 cd $srcdir
 cp -R usr $pkgdir
-install -Dm644 usr/share/doc/${_pkgintname}/AVASYSPL.en.txt $pkgdir/usr/share/licenses/${pkgname}/AVASYSPL
+gunzip usr/share/doc/${_pkgintname}/COPYING.EPSON.en.txt.gz
+install -Dm644 usr/share/doc/${_pkgintname}/COPYING.EPSON.en.txt $pkgdir/usr/share/licenses/${pkgname}/COPYING.EPSON
 } 
