@@ -4,7 +4,7 @@
 
 pkgname=openshot
 pkgver=2.4.4
-pkgrel=2
+pkgrel=3
 pkgdesc="an open-source, non-linear video editor for Linux based on MLT framework"
 arch=('any')
 url="https://www.openshot.org/"
