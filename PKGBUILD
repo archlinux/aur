@@ -7,11 +7,11 @@ _SPELL_EN_DICT_SHA256='c44a5d7847925eea9e4d2d04748d442cd28dd9299a0b572ef7d91eac4
 
 _pkgname=fcitx5
 pkgname=${_pkgname}-git
-pkgver=r415.75c5531
+pkgver=r418.6f26a33
 pkgrel=1
 pkgdesc="Next generation of fcitx"
 arch=('i686' 'x86_64')
-url="https://gitlab.com/fcitx/fcitx5"
+url="https://github.com/fcitx/fcitx5"
 license=('GPL')
 depends=('cairo' 'enchant' 'iso-codes' 'libgl' 'libxkbcommon-x11' 'pango' 'systemd' 'wayland'
          'wayland-protocols' 'xcb-imdkit-git' 'xcb-util-wm' 'libxkbfile'
