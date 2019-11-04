@@ -1,12 +1,12 @@
 # Maintainer: Nikolay Korotkiy <sikmir@gmail.com>
 pkgname=mapsoft
 pkgver=20190916
-pkgrel=2
+pkgrel=3
 pkgdesc='Programs for working with maps and geodata'
 arch=(x86_64)
 url='http://slazav.mccme.ru/prog/mapsoft.htm'
 license=('GPL')
-depends=('curl' 'giflib' 'gtkmm' 'libjpeg-turbo' 'libtiff' 'libusb' 'libxml2' 'libyaml' 'libzip' 'proj')
+depends=('curl' 'giflib' 'gtkmm' 'libjpeg-turbo' 'libtiff' 'libusb' 'libxml2' 'libyaml' 'libzip' 'proj' 'shapelib' 'imagemagick')
 makedepends=('boost' 'netpbm' 'perl' 'scons' 'transfig')
 source=("https://github.com/ushakov/${pkgname}/archive/${pkgver}-alt2.tar.gz"
         'scons.patch')
