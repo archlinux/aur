@@ -2,7 +2,7 @@
 
 pkgname=python-editdistance
 pkgver=0.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast implementation of the edit distance(Levenshtein distance)"
 arch=('x86_64')
 license=('MIT')
