@@ -2,7 +2,7 @@
 # Contributor: yubimusubi <possum+aur@possum.cc>
 
 pkgname=3dstool
-pkgver=1.2.3
+pkgver=1.2.6
 pkgrel=1
 pkgdesc='An all-in-one tool for extracting/creating 3ds roms'
 arch=(x86_64)
@@ -17,11 +17,19 @@ makedepends=(
   git
 )
 source=(
-  git+https://github.com/dnasdw/3dstool.git#tag=v${pkgver}
+  git+https://github.com/dnasdw/3dstool.git#tag=e31a569b130d30eccd3f41ef5691cb2aca77e4f6
   3dstool-paths.patch
 )
-sha256sums=('SKIP'
-            '5ac00e5b56182ffde04c7b9ab2a5151e6cf575400705f0b061ff832116757582')
+sha256sums=(
+  SKIP
+  5ac00e5b56182ffde04c7b9ab2a5151e6cf575400705f0b061ff832116757582
+)
+
+pkgver() {
+  cd 3dstool
+
+  git describe --tags | sed 's/^v//'
+}
 
 prepare() {
   if [[ -d build ]]; then
