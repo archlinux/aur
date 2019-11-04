@@ -9,7 +9,7 @@ arch=('x86_64')
 url='https://www.sigrok.org/wiki/Libsigrok'
 license=('GPL3')
 depends=('libftdi' 'libserialport' 'glibmm' 'libzip' 'libieee1284')
-makedepends=('cmake' 'doxygen' 'ruby' 'jdk8-openjdk' 'swig' 'python' 'pygobject-devel' 'python-numpy' 'python-setuptools')
+makedepends=('cmake' 'doxygen' 'ruby' 'jdk8-openjdk' 'swig3' 'python' 'pygobject-devel' 'python-numpy' 'python-setuptools')
 optdepends=('python' 'ruby' 'jdk8-openjdk')
 source=("https://sigrok.org/download/source/$pkgname/$pkgname-$pkgver.tar.gz"
          libsigrok-doxygen.patch::"https://sigrok.org/gitweb/?p=libsigrok.git;a=patch;h=2da97803")
@@ -19,6 +19,7 @@ sha512sums=('48337fc4625dc0abc162ae54e04ce091047835aa1e49ba1ab84542805008d1ff564
 prepare() {
   cd $pkgname-$pkgver
   patch -p1 -i ../libsigrok-doxygen.patch # Fix build with doxygen 1.8.16
+  sed -e 's|swig3.0|swig-3|g' -i configure # Build with swig 3
 }
 
 build() {
