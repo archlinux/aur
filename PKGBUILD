@@ -5,9 +5,8 @@ pkgver=2.2.2
 pkgrel=1
 pkgdesc="Python package for matrices describing affine transformation of the plane"
 url="https://github.com/sgillies/affine"
-depends=('python'
-         'python-pip'
-)
+makedepends=('python-setuptools')
+depends=('python')
 optdepends=()
 license=('BSD')
 arch=('any')
