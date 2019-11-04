@@ -1,10 +1,10 @@
 pkgbase = ibus-table-mongol-bichig-git
 	pkgdesc = An Input method for iBus to type traditional (uyghur) mongolian script
 	pkgver = git
-	pkgrel = 1
+	pkgrel = 2
 	url = https://framagit.org/popolon/ibus-table-mongol_bichig
 	arch = any
 	license = WTFPL
 	depends = ibus-table
-
+        optdepends = noto-fonts: contains mongolian script
 pkgname = ibus-table-mongol-bichig-git
