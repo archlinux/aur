@@ -13,7 +13,7 @@
 pkgbase=linux-nitrous-git
 _srcname=linux-nitrous
 pkgver=5.3.8
-pkgrel=6
+pkgrel=7
 arch=('x86_64')
 url="https://gitlab.com/xdevs23/linux-nitrous"
 license=('GPL2')
@@ -28,7 +28,7 @@ sha256sums=('SKIP'
 _kernelname=${pkgbase#linux}
 
 pkgver() {
-  echo "${pkgver}-${pkgrel}"
+  echo ${pkgver}
 }
 
 prepare() {
