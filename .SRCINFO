@@ -1,8 +1,8 @@
 pkgbase = fcitx5-rime-git
 	pkgdesc = RIME input method for fcitx5
 	pkgver = r105.02afc31
-	pkgrel = 2
-	url = https://gitlab.com/fcitx/fcitx5-rime
+	pkgrel = 4
+	url = https://github.com/fcitx/fcitx5-rime
 	arch = i686
 	arch = x86_64
 	license = LGPL
@@ -17,7 +17,7 @@ pkgbase = fcitx5-rime-git
 	depends = brise
 	provides = fcitx5-rime
 	conflicts = fcitx-rime
-	source = git+https://gitlab.com/fcitx/fcitx5-rime.git
+	source = git+https://github.com/fcitx/fcitx5-rime.git
 	sha512sums = SKIP
 
 pkgname = fcitx5-rime-git
