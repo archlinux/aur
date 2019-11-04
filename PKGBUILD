@@ -1,5 +1,5 @@
 pkgname=mingw-w64-suitesparse
-pkgver=5.4.0
+pkgver=5.6.0
 pkgrel=1
 pkgdesc="A collection of sparse matrix libraries (mingw-w64)"
 url="http://www.cise.ufl.edu/research/sparse/SuiteSparse/"
@@ -8,18 +8,18 @@ depends=('mingw-w64-lapack' 'mingw-w64-metis')
 makedepends=('mingw-w64-cmake')
 license=('GPL')
 options=('!buildflags' '!strip' 'staticlibs')
-source=("http://faculty.cse.tamu.edu/davis/SuiteSparse/SuiteSparse-${pkgver}.tar.gz")
-sha256sums=('374dd136696c653e34ef3212dc8ab5b61d9a67a6791d5ec4841efb838e94dbd1')
+source=("https://github.com/DrTimothyAldenDavis/SuiteSparse/archive/v${pkgver}.tar.gz" suitesparse-no-demo.patch)
+sha256sums=('76d34d9f6dafc592b69af14f58c1dc59e24853dcd7c2e8f4c98ffa223f6a1adb' SKIP)
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare () {
-  cd "$srcdir"/SuiteSparse
+  cd "$srcdir"/SuiteSparse-${pkgver}
 
   # no demos
-  curl -L https://git.archlinux.org/svntogit/packages.git/plain/trunk/suitesparse-no-demo.patch?h=packages/suitesparse | patch -p1
+  patch -p1 -i "$srcdir"/suitesparse-no-demo.patch
   sed -i "s|default: all|default: library|g" */Makefile
-  sed -i "s|all: C cov|default: library|g" */Makefile
+  sed -i "s|all: C cov|all: library|g" */Makefile
 
   # undefined refs to gcov
   sed -i "s|SET(CMAKE_EXE_LINKER_FLAGS_DEBUG|#SET(CMAKE_EXE_LINKER_FLAGS_DEBUG|g" Mongoose/CMakeLists.txt
@@ -40,7 +40,7 @@ prepare () {
 build() {
   cd "$srcdir"
   for _arch in ${_architectures}; do
-    cp -r SuiteSparse build-${_arch} && pushd build-${_arch}
+    cp -r SuiteSparse-${pkgver} build-${_arch} && pushd build-${_arch}
     make \
       UNAME=Windows CC=${_arch}-gcc CXX=${_arch}-g++ F77=${_arch}-gfortran \
       AR=${_arch}-ar RANLIB=${_arch}-ranlib BLAS="-lblas -lgfortran -lquadmath" \
