@@ -1,7 +1,7 @@
 # Maintainer: Georgi <georgi.patsev@gmail.com>
 pkgname=otf-plovdivtypeface
 pkgver=1.00
-pkgrel=2
+pkgrel=1
 pkgdesc="PlovdivTypeface is the first typeface dedicated to the city of Plovdiv, based on the handwriting of its citizens and friends and entirely free to download and use."
 arch=('any')
 url="https://plovdivtypeface.com"
