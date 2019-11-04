@@ -3,7 +3,7 @@
 pkgname=gottengeography
 pkgver=2.5
 _gitrev=dd98beb826da62f430d51749dfa340af3620053c
-pkgrel=7
+pkgrel=8
 pkgdesc='Easy to use photo geotagging application for the GNOME desktop'
 arch=('any')
 url='https://launchpad.net/gottengeography'
