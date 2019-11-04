@@ -2,7 +2,7 @@
 
 pkgname=t230c2-git
 _pkgname=t230c2-git
-pkgver=r1195.33c7160
+pkgver=r1206.15144f1
 pkgrel=1
 pkgdesc="CrazyCat Geniatech T230C2 DVB-T/T2/C kernel modules"
 arch=('i686' 'x86_64')
@@ -26,23 +26,21 @@ pkgver() {
 }
 
 build() {
+	_v="$(</usr/src/linux/version)"
 	cd "${srcdir}/${_pkgname}"
-	_v="/lib/modules/extramodules-ARCH/version"
-	if [ ! -f $_v ]; then
-	  echo "cannot find $_v"
-	  exit 1
-	fi
 
 	cp ../config v4l/.config
 	make -C linux download
 	make -C linux untar
-	make KERNELRELEASE="$(cat "$_v")" -C v4l
+	make KERNELRELEASE="$_v" -C v4l
 }
 
 package() {
+	_v="$(</usr/src/linux/version)"
 	cd "${srcdir}/${_pkgname}"
-	install -d "$pkgdir/usr/lib/modules/extramodules-ARCH/"
-	install -m644 v4l/*.ko "$pkgdir/usr/lib/modules/extramodules-ARCH/"
+
+	install -d "$pkgdir/usr/lib/modules/$_v/extramodules"
+	install -m644 v4l/*.ko "$pkgdir/usr/lib/modules/$_v/extramodules/"
 	install -Dm644 ../dvb-demod-si2168-d60-01.fw "$pkgdir/usr/lib/firmware/dvb-demod-si2168-d60-01.fw"
 	install -Dm644 ../dvb-tuner-si2141-a10-01.fw "$pkgdir/usr/lib/firmware/dvb-tuner-si2141-a10-01.fw"
 }
