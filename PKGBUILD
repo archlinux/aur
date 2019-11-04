@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=wingpanel-git
-pkgver=r397.ddf0de8
+pkgver=r543.fb81bcb
 pkgrel=1
 pkgdesc='Stylish top panel that holds indicators and spawns an application launcher'
 arch=(x86_64)
