@@ -13,7 +13,7 @@
 pkgbase=linux-nitrous-git
 _srcname=linux-nitrous
 pkgver=5.3.8
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 url="https://gitlab.com/xdevs23/linux-nitrous"
 license=('GPL2')
@@ -39,6 +39,8 @@ prepare() {
   # don't run depmod on 'make install'. We'll do this ourselves in packaging
   sed -i '2iexit 0' scripts/depmod.sh
 
+  make CC=clang nitrous_defconfig
+
   # get kernel version
   make prepare
 
@@ -49,7 +51,7 @@ prepare() {
   #make xconfig # X-based configuration
   #make oldconfig # using old config from previous kernel version
   #make olddefconfig # old config from previous kernel, defaults for new options
-  make CC=clang nitrous_defconfig
+
   # ... or manually edit .config
 }
 
