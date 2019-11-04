@@ -1,7 +1,7 @@
 # Maintainer: bartus @{aur \at bartus \dot  33mail \dot com}
 pkgname=('radare2-bindings-git' 'radare2-pipe-git')
 basename='radare2-bindings-git'
-pkgver=3.9.0.r1.gbc46ba8
+pkgver=4.0.0.r0.ge258a53
 pkgrel=1
 pkgdesc="Language bindings for radare2 (git version)"
 arch=('i686' 'x86_64')
