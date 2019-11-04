@@ -58,7 +58,11 @@ build() {
   cd "${_srcname}"
 
   make CC=clang nitrous_defconfig
-  make ${MAKEFLAGS} CC=clang bzImage modules
+  makeflags="${MAKEFLAGS}"
+  if [[ "$MAKEFLAGS" != *"-j"* ]]; then
+    makeflags="$makeflags -j$(nproc --all)"
+  fi
+  make ${makeflags} CC=clang bzImage modules
 }
 
 _package() {
