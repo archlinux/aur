@@ -1,14 +1,14 @@
 pkgbase = topgit
 	pkgdesc = A different patch queue manager
-	pkgver = 0.19.11
+	pkgver = 0.19.12
 	pkgrel = 1
 	url = https://github.com/mackyle/topgit
 	arch = any
 	license = GPL2
 	depends = gawk
 	depends = bash
-	source = https://github.com/mackyle/topgit/archive/topgit-0.19.11.tar.gz
-	sha256sums = f799c007d937ace94aa3dd905695dfe36bed758149e36a8206334feae3dcc45a
+	source = https://github.com/mackyle/topgit/archive/topgit-0.19.12.tar.gz
+	sha256sums = 104eaf5b33bdc738a63603c4a661aab33fc59a5b8e3bb3bc58af7e4fc2d031da
 
 pkgname = topgit
 
