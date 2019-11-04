@@ -2,7 +2,7 @@
 
 pkgname=python-mimerender
 pkgver=0.6.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Transparently select a render function for an HTTP request handler's result"
 arch=('any')
 url="https://github.com/martinblech/mimerender"
