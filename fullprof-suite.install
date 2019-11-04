@@ -1,9 +1,0 @@
-post_install() {
-	echo "    Programs can be launched by executing fullprof-[PROGRAM], where"
-	echo "    [PROGRAM] is substituted by the desired executable (e.g."
-	echo "    fullprof-tfp, fullprof-wfp2k, fullprof-winplotr-2006, etc.)"
-}
-
-post_upgrade() {
-	post_install
-}
