@@ -2,7 +2,7 @@
 
 pkgname=python-repoze.profile
 pkgver=2.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Aggregate profiling for WSGI requests"
 arch=('any')
 license=('BSD')
