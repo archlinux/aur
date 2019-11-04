@@ -13,7 +13,7 @@
 pkgbase=linux-nitrous-git
 _srcname=linux-nitrous
 pkgver=5.3.8
-pkgrel=8
+pkgrel=9
 arch=('x86_64')
 url="https://gitlab.com/xdevs23/linux-nitrous"
 license=('GPL2')
@@ -60,7 +60,7 @@ build() {
   make CC=clang nitrous_defconfig
   makeflags="${MAKEFLAGS}"
   if [[ "$MAKEFLAGS" != *"-j"* ]]; then
-    makeflags="$makeflags -j$(nproc --all)"
+    makeflags="$makeflags -j$(nproc --all)"   
   fi
   make ${makeflags} CC=clang bzImage modules
 }
