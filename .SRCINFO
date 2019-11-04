@@ -1,24 +1,25 @@
 pkgbase = virtualjaguar-git
 	pkgdesc = A portable Atari Jaguar emulator
-	pkgver = r503.a0fe543
+	pkgver = r504.8d86cf7
 	pkgrel = 1
 	url = http://icculus.org/virtualjaguar/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = git
-	depends = qt4
+	depends = qt5-base
 	depends = gcc
 	depends = gdb
 	depends = sdl
 	depends = zlib
 	depends = libcdio
-	depends = freeglut
 	provides = virtualjaguar
 	conflicts = virtualjaguar
 	conflicts = virtualjaguar-svn
 	source = virtualjaguar::git+http://shamusworld.gotdns.org/git/virtualjaguar
+	source = 0001-Fix-Makefile-qt-5-is-not-a-valid-option-of-recent-qm.patch
 	sha1sums = SKIP
+	sha1sums = 7bbe6bf9cb1c0cd0c09a9b717021058384e07fa2
 
 pkgname = virtualjaguar-git
 

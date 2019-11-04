@@ -1,12 +1,12 @@
 # Maintainer: SebRmv <sbriais at-symbol free dot fr>
 pkgname=virtualjaguar-git
-pkgver=r503.a0fe543
-pkgrel=3
+pkgver=r504.8d86cf7
+pkgrel=1
 pkgdesc="A portable Atari Jaguar emulator"
 arch=('i686' 'x86_64')
 url=http://icculus.org/virtualjaguar/
 license=('GPL')
-depends=('qt4' 'gcc' 'gdb' 'sdl' 'zlib' 'libcdio' 'freeglut')
+depends=('qt5-base' 'gcc' 'gdb' 'sdl' 'zlib' 'libcdio')
 makedepends=('git')
 provides=('virtualjaguar')
 conflicts=('virtualjaguar' 'virtualjaguar-svn')
