@@ -1,0 +1,18 @@
+pkgbase = numix-gtk-theme
+	pkgdesc = A flat and light theme with a modern look (GNOME, Openbox, Unity, Xfce)
+	pkgver = 2.6.7
+	pkgrel = 1
+	url = https://github.com/numixproject/numix-gtk-theme
+	arch = any
+	license = GPL3
+	makedepends = gdk-pixbuf2
+	makedepends = glib2
+	makedepends = libxml2
+	makedepends = ruby-sass
+	optdepends = gtk-engine-murrine: for gtk2 theme
+	replaces = numix-themes
+	source = numix-gtk-theme-2.6.7.tar.gz::https://github.com/numixproject/numix-gtk-theme/archive/2.6.7.tar.gz
+	sha256sums = 2b997ad3eee0b802d0dd49dd772127fd3c337cca32d8863efd4897928e38879a
+
+pkgname = numix-gtk-theme
+
