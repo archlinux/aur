@@ -1,13 +1,18 @@
 pkgbase = r-digest
-	pkgdesc = Create Compact Hash Digests of R Objects
-	pkgver = 0.6.20
+	pkgdesc = A function for creating hash digests of R objects.
+	pkgver = 0.6.22
 	pkgrel = 1
-	url = http://cran.r-project.org/web/packages/digest/index.html
+	url = https://cran.r-project.org/package=digest
+	arch = i686
 	arch = x86_64
-	license = GPL3
-	depends = r
-	source = http://cran.r-project.org/src/contrib/digest_0.6.20.tar.gz
-	md5sums = 0c1aa3679013787b9d19dee5521bab98
+	license = GPL-2
+	license = GPL-3
+	depends = r>=3.1.0
+	optdepends = r-tinytest
+	optdepends = r-knitr
+	optdepends = r-markdown
+	source = http://cran.r-project.org/src/contrib/digest_0.6.22.tar.gz
+	md5sums = 1199cb5013c99ed519f74cdf0857f9da
 
 pkgname = r-digest
 
