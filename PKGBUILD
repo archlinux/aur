@@ -3,7 +3,7 @@
 pkgbase=python-genty
 pkgname=('python-genty' 'python2-genty')
 pkgver=1.3.2
-pkgrel=4
+pkgrel=5
 pkgdesc="Allows you to run a test with multiple data sets"
 arch=('any')
 license=('Apache')
