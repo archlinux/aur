@@ -15,7 +15,7 @@ url="https://joplin.cozic.net"
 license=("MIT")
 source=("joplin.desktop" "joplin-desktop.sh" "joplin.sh"
         "https://github.com/laurent22/joplin/archive/v${pkgver}.zip")
-sha256sums=('1d5676ded18ae55d31d0dfc8e46a1646a045df94d9c169e68451536ebd9cb653'
+sha256sums=('57f88605a21649590aaff68e17996e49e399c7b28a3914f946116d6b55763fe0'
             '41bfdc95a6ee285eb644d05eb3bded72a83950d4720c3c8058ddd3c605cd625d'
             '5245da6f5f647d49fbe044b747994c9f5a8e98b3c2cd02757dd189426a677276'
             '0ae04173f1978dae437d067cb2c89f47b218a5181b450dcbe924e84345ece801')
@@ -66,8 +66,8 @@ package() {
     "${pkgdir}/usr/share/${pkgname}-cli"
   cp -R "${srcdir}/${pkgname}-${pkgver}/CliClient/node_modules" \
     "${pkgdir}/usr/share/${pkgname}-cli"
-  rm -r "${pkgdir}/usr/share/${pkgname}-cli/"
-  # usr/share/joplin/resources/app/node_modules/sqlite3/.vscode
+  # Remove uneeded .vscode from a dependency
+  rm -r "${pkgdir}/usr/share/${pkgname}-cli/node_modules/sqlite3/.vscode"
   cp -R "${srcdir}/${pkgname}-${pkgver}/ElectronClient/app/dist/linux-unpacked/"* \
     "${pkgdir}/usr/share/${pkgname}"
 
