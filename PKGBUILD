@@ -1,4 +1,5 @@
 # Maintainer: frichtlm <frichtlm@gmail.com>
+# Contributor: Grey Christoforo <first name at last name dot net>
 _cranname=digest
 _cranver=0.6.22
 pkgname=r-${_cranname}
