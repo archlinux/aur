@@ -5,5 +5,5 @@ Exec=/usr/bin/topsi-project-manager-git
 Terminal=false
 Type=Application
 Icon=topsi-project-manager-git
-StartupWMClass=Topsi Project Manager
+StartupWMClass=project_manager
 Categories=GTK;Office;
