@@ -1,7 +1,7 @@
 # Maintainer: Vaporeon <vaporeon@vaporeon.io>
 
 pkgname=invader-git
-pkgver=0.7.0.r375.77fb469
+pkgver=0.16.0.r775.4680436
 pkgrel=1
 pkgdesc="Open source modding toolkit for Halo Custom Edition"
 depends=('libtiff' 'libarchive' 'freetype2')
@@ -30,7 +30,7 @@ build() {
 
 package() {
   cd "$srcdir"/build
-  for i in invader-{archive,bitmap,build,crc,dependency,font,indexer,resource,string}; do
+  for i in invader-{archive,bitmap,build,compress,dependency,font,indexer,info,resource,string}; do
      install -Dm755 $i "$pkgdir"/usr/bin/$i
   done
 }
