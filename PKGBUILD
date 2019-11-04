@@ -2,7 +2,7 @@
 _name=xvfbwrapper
 pkgname=python-xvfbwrapper
 pkgver=0.2.9
-pkgrel=3
+pkgrel=4
 pkgdesc="Manage headless displays with Xvfb (X virtual framebuffer)"
 arch=('any')
 url="https://github.com/cgoldberg/xvfbwrapper"
