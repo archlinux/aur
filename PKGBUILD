@@ -11,7 +11,7 @@
 # Contributor: Doug Johnson <dougvj at dougvj.net>
 
 pkgbase=linux-nitrous-git
-_srcname=linux-nitrous-git
+_srcname=linux-nitrous
 pkgver=5.3.8
 pkgrel=2
 arch=('x86_64')
