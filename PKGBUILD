@@ -1,7 +1,7 @@
 # Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _cranname=spam
-_cranver=2.3-0
+_cranver=2.4-0
 pkgname=r-${_cranname}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -13,7 +13,7 @@ depends=('r' 'r-dotcall64')
 makedepends=('gcc-fortran')
 optdepends=('r-spam64' 'r-fields' 'r-sparsem' 'r-testthat' 'r-r.rsp' 'r-truncdist' 'r-knitr' 'r-rmarkdown')
 source=("http://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('2a07571c39ccc76e9675626f3a2b9c1a')
+md5sums=('cb6959bb0c00ae005f1f0e8d57027d1c')
 
 build(){
     cd "${srcdir}"
