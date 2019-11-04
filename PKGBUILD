@@ -2,10 +2,10 @@
 
 pkgname=fcitx5-anthy-git
 pkgver=r141.4908f4c
-pkgrel=2
+pkgrel=4
 pkgdesc="Anthy input method for fcitx5"
 arch=('x86_64')
-url="https://gitlab.com/fcitx/fcitx5-anthy"
+url="https://github.com/fcitx/fcitx5-anthy"
 license=('GPL')
 depends=('fcitx5-git' 'anthy' 'hicolor-icon-theme')
 makedepends=('cmake' 'git' 'extra-cmake-modules')
