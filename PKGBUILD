@@ -10,7 +10,7 @@ arch=('x86_64')
 url="https://www.gnu.org/software/gnubg/"
 license=('GPL3')
 depends=('python' 'gtkglext' 'curl')
-source=(http://www.gnubg.org/media/sources/$pkgname-release-$pkgver-sources.tar.gz
+source=(ftp://ftp.gnu.org/gnu/gnubg/gnubg-release-$pkgver-sources.tar.gz
         $pkgname.desktop)
 md5sums=('d3823526d5c503a961024d761adefd5e'
          '965f5c7c25f60b27d06cc6fef7befd30')
