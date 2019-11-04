@@ -4,7 +4,7 @@
 
 pkgname=razercfg
 pkgver=0.41
-pkgrel=1
+pkgrel=2
 pkgdesc='Razer mouse configuration tool'
 arch=('x86_64')
 url=https://bues.ch/cms/hacking/razercfg
