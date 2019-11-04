@@ -3,9 +3,9 @@
 
 _appname=freecad
 pkgname="${_appname}-git"
-pkgver=0.19pre.r2096.gc903de8af7
+pkgver=0.18.r2576.g953b802f83
 pkgrel=1
-epoch=1
+epoch=2
 pkgdesc='A general purpose 3D CAD modeler - git checkout'
 arch=('x86_64')
 url='https://www.freecadweb.org/'
@@ -24,7 +24,8 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
-    git describe --long --tags --match '*.*' | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/_//'
+    # upstream recyles the "pre" and "staging" tags so they do not produces stable commit counts
+    git describe --long --tags --exclude '*pre*' --exclude '*staging*' | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/_//'
 }
 
 build() {
