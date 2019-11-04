@@ -1,0 +1,12 @@
+--- gcc/pretty-print.h
++++ gcc/pretty-print.h
+@@ -305,8 +305,8 @@ extern void pp_base_append_text (pretty_printer *, const char *, const char *);
+ 
+ /* This header may be included before diagnostics-core.h, hence the duplicate
+    definitions to allow for GCC-specific formats.  */
+-#if GCC_VERSION >= 3005
++#if (GCC_VERSION >= 3005) && (GCC_VERSION != 9001) && (GCC_VERSION != 9002) /* 9.1.0 is buggy: https://gcc.gnu.org/PR90677  */
+ #define ATTRIBUTE_GCC_PPDIAG(m, n) __attribute__ ((__format__ (__gcc_diag__, m ,n))) ATTRIBUTE_NONNULL(m)
+ #else
+ #define ATTRIBUTE_GCC_PPDIAG(m, n) ATTRIBUTE_NONNULL(m)
+ 

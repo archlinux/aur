@@ -5,7 +5,7 @@ pkgname=m68k-atari-mint-gcc
 _pkgname=gcc
 _target="m68k-atari-mint"
 pkgver=4.6.4
-pkgrel=10
+pkgrel=11
 pkgdesc="The GNU Compiler Collection for the Motorola M68000 architecture"
 url="http://www.gnu.org/software/gcc/"
 arch=('i686' 'x86_64')
@@ -15,8 +15,8 @@ replaces=('cross-m68k-atari-mint-gcc')
 provides=('m68k-atari-mint-gcc-core')
 conflicts=('cross-m68k-atari-mint-gcc' 'cross-m68k-atari-mint-gcc-core' 'm68k-atari-mint-gcc-core')
 options=('!ccache' '!distcc' '!emptydirs' '!libtool' '!strip' 'staticlibs')
-source=("ftp://ftp.gnu.org/gnu/gcc/gcc-${pkgver}/${_pkgname}-${pkgver}.tar.bz2" "gcc-4.6.4-mint-20130415.patch.bz2" "cfns.h.patch")
-sha1sums=('63933a8a5cf725626585dbba993c8b0f6db1335d' 'bd2e88f2b862cc404f47144fb67375b1fe17291b' '0c9f81040e112c27434fbb11c7214fb799e3507d')
+source=("ftp://ftp.gnu.org/gnu/gcc/gcc-${pkgver}/${_pkgname}-${pkgver}.tar.bz2" "gcc-4.6.4-mint-20130415.patch.bz2" "cfns.h.patch" "pretty-print.h.patch")
+sha1sums=('63933a8a5cf725626585dbba993c8b0f6db1335d' 'bd2e88f2b862cc404f47144fb67375b1fe17291b' '0c9f81040e112c27434fbb11c7214fb799e3507d' '206ea7130b2608b77c3c2c1ea655d557fcd21026')
 _sysroot="/usr/lib/${_target}"
 
 
@@ -25,7 +25,7 @@ prepare() {
 
         patch -Np1 < ../gcc-4.6.4-mint-20130415.patch
         patch -p0 < ../cfns.h.patch
-
+        patch -p0 < ../pretty-print.h.patch
 # alternatively, we could download mpfr/mpc/gmp with this command
 #        ./contrib/download_prerequisites || return 1
 }

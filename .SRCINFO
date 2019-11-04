@@ -1,7 +1,7 @@
 pkgbase = m68k-atari-mint-gcc
 	pkgdesc = The GNU Compiler Collection for the Motorola M68000 architecture
 	pkgver = 4.6.4
-	pkgrel = 10
+	pkgrel = 11
 	url = http://www.gnu.org/software/gcc/
 	arch = i686
 	arch = x86_64
@@ -25,9 +25,11 @@ pkgbase = m68k-atari-mint-gcc
 	source = ftp://ftp.gnu.org/gnu/gcc/gcc-4.6.4/gcc-4.6.4.tar.bz2
 	source = gcc-4.6.4-mint-20130415.patch.bz2
 	source = cfns.h.patch
+	source = pretty-print.h.patch
 	sha1sums = 63933a8a5cf725626585dbba993c8b0f6db1335d
 	sha1sums = bd2e88f2b862cc404f47144fb67375b1fe17291b
 	sha1sums = 0c9f81040e112c27434fbb11c7214fb799e3507d
+	sha1sums = 206ea7130b2608b77c3c2c1ea655d557fcd21026
 
 pkgname = m68k-atari-mint-gcc
 
