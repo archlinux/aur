@@ -1,8 +1,9 @@
 # Maintainer: Baz <github(a)luxolus.com>
 
-pkgname=jaesve
+pkgname=jaesve-git
+_pkgname=jaesve
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A CLI utility for stream converting JSON objects to a series of CSV values"
 url="https://github.com/bazaah/jaesve"
 license=("MIT")
@@ -11,22 +12,22 @@ md5sums=('SKIP')
 arch=('x86_64')
 
 prepare () {
-    cd "$pkgname"
+    cd "$_pkgname"
     git checkout $pkgver
 }
 
 build() {
-    cd "$pkgname"
+    cd "$_pkgname"
     cargo build --release --locked
 }
 
 check() {
-   cd "$pkgname"
+   cd "$_pkgname"
    cargo test --release --locked
 }
 
 package() {
-   cd "$pkgname"
-   install -Dm 755 target/release/${pkgname} -t "${pkgdir}/usr/bin"
+   cd "$_pkgname"
+   install -Dm 755 target/release/${_pkgname} -t "${pkgdir}/usr/bin"
 }
 
