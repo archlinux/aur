@@ -1,13 +1,24 @@
 pkgbase = r-data.table
-	pkgdesc = Fast aggregation of large data (e.g. 100GB in RAM), fast ordered joins, fast add/modify/delete of columns by group using no copies at all, list columns and a fast file reader (fread). Offers a natural and flexible syntax, for faster development.
-	pkgver = 1.12.2
+	pkgdesc = Extension of data.frame
+	pkgver = 1.12.6
 	pkgrel = 1
-	url = http://cran.r-project.org/web/packages/data.table/index.html
+	url = https://cran.r-project.org/package=data.table
 	arch = x86_64
+	arch = i686
 	license = MPL2
-	depends = r-chron
-	source = http://cran.r-project.org/src/contrib/data.table_1.12.2.tar.gz
-	md5sums = 93b8f74d38a0819c881576de5883d5cb
+	makedepends = gcc
+	depends = r>=3.1.0
+	depends = zlib
+	optdepends = r-bit64
+	optdepends = r-curl
+	optdepends = r-r.utils
+	optdepends = r-knitr
+	optdepends = r-xts
+	optdepends = r-nanotime
+	optdepends = r-zoo
+	optdepends = r-yaml
+	source = http://cran.r-project.org/src/contrib/data.table_1.12.6.tar.gz
+	md5sums = 7fdb071ac00529f5ef697df3bae36353
 
 pkgname = r-data.table
 
