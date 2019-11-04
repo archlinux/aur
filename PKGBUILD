@@ -1,7 +1,7 @@
-# Maintainer: Sam Burgos < santiago dot burgos1089 at gmail dot com >
+# Maintainer: Sam Burgos <santiago.burgos1089@gmail.com>
 
 pkgname=cinnamon-doc
-pkgver=4.2.3
+pkgver=4.2.4
 _pkgver=tina
 pkgrel=1
 pkgdesc='Code documentation for various Cinnamon components.'
@@ -13,7 +13,7 @@ depends=(
     devhelp
 )
 source=("${pkgname}_${pkgver}.deb::${url}/${pkgname}_${pkgver}+${_pkgver}_all.deb")
-sha256sums=('d0e38f2021eabfbba3a1f2d587843bbacee632c8b069378358c177552eabedee')
+sha256sums=('cc3a571d4e88522198184b2aeafa69344ab94bc6a971c93c3f7e1806d643273a')
 
 package() {
   tar xf "${srcdir}/data.tar.xz"
