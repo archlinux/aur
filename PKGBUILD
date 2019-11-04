@@ -2,7 +2,7 @@
 
 pkgname=python-b2sdk
 _pkgname=b2-sdk-python
-pkgver=0.1.6
+pkgver=0.1.8
 pkgrel=2
 pkgdesc='Python library to access B2 cloud storage.'
 arch=(any)
@@ -18,7 +18,7 @@ depends=('python'
         )
 
 source=(https://github.com/Backblaze/${_pkgname}/archive/v${pkgver}.tar.gz)
-sha256sums=('331b16d42e4cc6da27d2e0eae13ae34b69a3e53d5a71209fb9329dd351eb00dd')
+sha256sums=('4787d1ab6306d664a2ffa0c4ec38a45b6688972072f780305ae85ac97094d4b2')
 
 build() {
   cd ${srcdir}/${_pkgname}-${pkgver}
