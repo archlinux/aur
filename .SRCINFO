@@ -1,6 +1,6 @@
 pkgbase = omegat
 	pkgdesc = Multiplatform CAT tool application, written in Java
-	pkgver = 4.3.0
+	pkgver = 4.3.1
 	pkgrel = 1
 	url = https://www.omegat.org/en/
 	arch = any
@@ -9,10 +9,10 @@ pkgbase = omegat
 	depends = desktop-file-utils
 	conflicts = omegat-beta
 	options = !strip
-	source = http://downloads.sourceforge.net/omegat/OmegaT_4.3.0_Without_JRE.zip
+	source = http://downloads.sourceforge.net/omegat/OmegaT_4.3.1_Without_JRE.zip
 	source = omegat.desktop
 	source = omegat.sh
-	sha256sums = c64b99b3e07368acd6667948b643f6e66647f9872378fc773821786646b32e43
+	sha256sums = 37a9eaef63fb08134849e0dd5c3d96edd80387f5a310cf5edd91be729b271dcf
 	sha256sums = ac480a8244c1a5171b7f2d5892585360067d78e3113ccb45aad6afe7ed69aec5
 	sha256sums = 8a6893d382d37c7a12f81370920ca362a8b36e81cec4121942f58613d18b5ade
 
