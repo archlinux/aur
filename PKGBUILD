@@ -2,7 +2,7 @@
 
 pkgname=imagine-git
 pkgver=0.5.0.r0.g7bea16d
-pkgrel=1.4
+pkgrel=1.5
 pkgdesc="PNG/JPEG optimization app"
 arch=("x86_64")
 url="https://github.com/meowtec/Imagine"
@@ -19,7 +19,7 @@ source=("${pkgname}::git+$url.git#tag=v0.5.0"
 		"${pkgname}.install")
 md5sums=('SKIP'
          'd59bb8174b24651acc0f5d6c68796eaa'
-         'd012c0f6f2b6b2e5dc1a95c8ecf85ca9'
+         'e9cea0ab2cde2303a73d97902b340930'
          'a2123b329fe19aa386ffd3af1483594c')
 
 pkgver() {

@@ -5,5 +5,5 @@ Exec=/usr/bin/imagine-git
 Terminal=false
 Type=Application
 Icon=imagine-git
-StartupWMClass=imagine-git
+StartupWMClass=Imagine
 Categories=Graphics;
