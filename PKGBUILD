@@ -1,11 +1,11 @@
 # Maintainer: sqrlfish at gmail dot com
 pkgname=stream2chromecast-git
 _pkgname=stream2chromecast
-pkgver=0.6.2
-pkgrel=2
+pkgver=0.6.3
+pkgrel=1
 pkgdesc="Chromecast media streamer for Linux"
 arch=('any')
-url="https://github.com/Pat-Carter/${_pkgname}"
+url="https://github.com/dohliam/${_pkgname}"
 license=('GPL')
 depends=('python2>=2.7.0')
 optdepends=('ffmpeg: realtime transcoding support')
