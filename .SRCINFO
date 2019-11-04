@@ -1,0 +1,14 @@
+pkgbase = triumph-adler-printer-drivers
+	pkgdesc = Triumph Adler printer drivers
+	pkgver = 20140115
+	pkgrel = 1
+	url = https://www.triumph-adler.de/
+	arch = x86_64
+	arch = i686
+	license = None
+	optdepends = cups
+	source = https://www.triumph-adler.de/resource/blob/130194/d317ddb2d4689ba40b3d24a409bf5601/talinuxpackages-ccd-clp-20140115-tar-data.gz
+	sha1sums = b2a9f5cab041060d367fe9eb140a17aadb72f0b9
+
+pkgname = triumph-adler-printer-drivers
+
