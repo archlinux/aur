@@ -20,13 +20,14 @@ pkgver() {
 }
 
 prepare() {
-          cp "$srcdir/reaper_plugin_functions.h" "$srcdir/$pkgname/vendor"
+    cp "$srcdir/reaper_plugin_functions.h" "$srcdir/$pkgname/vendor"
+    cd "$srcdir/$pkgname"
+	git submodule update --init
 }
 
 
 build() {
 	cd "$srcdir/$pkgname"
-	git submodule update --init
 	cmake -B build -DCMAKE_BUILD_TYPE=Release
 	cmake --build build
 }
