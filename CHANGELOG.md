@@ -9,6 +9,7 @@
 
 ### Bug Fixes
 
+- last-minute fix 
 - improve user notification if wrong java version is used 
 - windows data loading crash -> [#308](https://gitlab.com/langurmonkey/gaiasky/issues/308) 
 ### Build System
