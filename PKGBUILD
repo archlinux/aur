@@ -64,7 +64,7 @@ _srcname=linux-${_major}
 _clr=${_major}.150-72
 pkgbase=linux-clear-lts2017
 pkgver=${_major}.${_minor}
-pkgrel=4
+pkgrel=5
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux-lts2017"
 license=('GPL2')
@@ -108,26 +108,30 @@ prepare() {
     ### Enable extra stuff from arch kernel
         msg2 "Enable extra stuff from arch kernel..."
 
+        # General setup
+        scripts/config --module IKCONFIG \
+                       --enable-after IKCONFIG IKCONFIG_PROC \
+                       --undefine RT_GROUP_SCHED
+
+        # Power management and ACPI options
+        scripts/config --enable ACPI_REV_OVERRIDE_POSSIBLE  \
+                       --enable HIBERNATION
+
+        # Enable loadable module support
         scripts/config --undefine MODULE_SIG_FORCE \
                        --enable MODULE_COMPRESS \
-                       --enable-after MODULE_COMPRESS MODULE_COMPRESS_XZ \
-                       --module IKCONFIG \
-                       --enable-after IKCONFIG IKCONFIG_PROC \
-                       --enable SOUND_OSS_CORE \
+                       --enable-after MODULE_COMPRESS MODULE_COMPRESS_XZ
+
+        # Networking support
+        scripts/config --enable NETFILTER_INGRESS
+
+        # Device Drivers
+        scripts/config --module PATA_JMICRON \
+                       --enable-after SOUND SOUND_OSS_CORE \
                        --enable SND_OSSEMUL \
                        --module-after SND_OSSEMUL SND_MIXER_OSS \
                        --module-after SND_MIXER_OSS SND_PCM_OSS \
                        --enable-after SND_PCM_OSS SND_PCM_OSS_PLUGINS
-
-        # Scheduler features
-        scripts/config --undefine RT_GROUP_SCHED
-
-        # PATA SFF controllers with BMDMA
-        scripts/config --module PATA_JMICRON
-
-        # Power management and ACPI options
-        scripts/config --enable ACPI_REV_OVERRIDE_POSSIBLE \
-                       --enable HIBERNATION
 
         # Security options
         scripts/config --enable SECURITY_SELINUX \
