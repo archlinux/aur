@@ -3,14 +3,14 @@
 # This PKGBUILD is managed at https://github.com/sudoforge/pkgbuilds
 
 pkgname=wee-slack-git
-pkgver=2.2.0.r43.g55dfe74
+pkgver=2.3.0.r105.g1af420e
 pkgrel=1
 pkgdesc="A WeeChat plugin for slack"
 arch=('any')
 url="https://github.com/wee-slack/${pkgname%-git}"
 license=('MIT')
 depends=(
-  'python2-websocket-client'
+  'python-websocket-client'
   'weechat'
 )
 makedepends=('git')

@@ -1,12 +1,12 @@
 pkgbase = wee-slack-git
 	pkgdesc = A WeeChat plugin for slack
-	pkgver = 2.2.0.r43.g55dfe74
+	pkgver = 2.3.0.r105.g1af420e
 	pkgrel = 1
 	url = https://github.com/wee-slack/wee-slack
 	arch = any
 	license = MIT
 	makedepends = git
-	depends = python2-websocket-client
+	depends = python-websocket-client
 	depends = weechat
 	provides = wee-slack
 	conflicts = wee-slack
