@@ -1,7 +1,7 @@
 # Maintainer: Ian Douglas Scott <ian@iandouglasscott.com>
 # Contributor: Zhang Li <msfxzi at sina.com>
 pkgname=bas
-pkgver=2.5
+pkgver=2.6
 pkgrel=1
 pkgdesc="A BASIC interpreter"
 arch=(i686 x86_64)
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('glibc')
 makedepends=('gcc')
 source=("http://www.moria.de/~michael/bas/${pkgname}-${pkgver}.tar.gz")
-md5sums=('d3a0de662f47bb54e7fa79fe1797a42d')
+md5sums=('2a16491fb76ecbb848445b327b01c3ff')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
