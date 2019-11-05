@@ -1,14 +1,14 @@
 pkgbase = linux-nitrous-headers
 	pkgdesc = Headers for linux-nitrous
 	pkgver = 5.3.8
-	pkgrel = 10
+	pkgrel = 11
 	url = https://gitlab.com/xdevs23/linux-nitrous
 	arch = x86_64
 	license = GPL2
 	makedepends = tar
 	provides = linux
 	conflicts = linux-nitrous-git-headers
-	source = https://github.com/xdevs23/linux-nitrous/releases/download/v5.3.8-10/linux-nitrous-git-headers-5.3.8-10-x86_64.pkg.tar.xz
+	source = https://github.com/xdevs23/linux-nitrous/releases/download/v5.3.8-9/linux-nitrous-git-headers-5.3.8-9-x86_64.pkg.tar.xz
 	sha256sums = 6d56228e77c52f8c2f03d85b5d581fb46a825c87c62836f46dcfdb1e3e676d5f
 
 pkgname = linux-nitrous-headers
