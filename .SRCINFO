@@ -1,6 +1,6 @@
 pkgbase = linux-uksm
 	pkgver = 5.3.8
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/dolohow/uksm
 	arch = x86_64
 	license = GPL2
