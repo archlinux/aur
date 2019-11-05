@@ -3,11 +3,11 @@
 
 pkgname=clash
 pkgver=0.16.0
-pkgrel=3
+pkgrel=5
 pkgdesc="A rule based proxy in Go"
 arch=('x86_64')
 url="https://github.com/Dreamacro/clash"
-license=('MIT')
+license=('GPL3')
 provides=("clash")
 conflicts=("clash-git" "clash-bin")
 makedepends=('go' 'git')
