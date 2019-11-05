@@ -8,7 +8,7 @@
 pkgname=sispmctl
 pkgver=4.2
 pkgrel=1
-pkgdesc="Enabling the use of the Gembird SIS-PM Silver Shield device family"
+pkgdesc="Control Gembird SIS-PM programmable power outlet strips"
 arch=('i686' 'x86_64')
 url="http://sispmctl.sourceforge.net"
 license=('GPL2')

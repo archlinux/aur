@@ -1,5 +1,5 @@
 pkgbase = sispmctl
-	pkgdesc = Enabling the use of the Gembird SIS-PM Silver Shield device family
+	pkgdesc = Control Gembird SIS-PM programmable power outlet strips
 	pkgver = 4.2
 	pkgrel = 1
 	url = http://sispmctl.sourceforge.net
