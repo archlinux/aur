@@ -1,6 +1,6 @@
 pkgbase = seqan3-git
-	pkgdesc = The modern C++ library for sequence analysis
-	pkgver = r628.35e4fba
+	pkgdesc = The modern C++ library for sequence analysis. Contains version3 of the library and API docs.
+	pkgver = 3.0.0.r465.g4cdd84b2
 	pkgrel = 1
 	url = http://www.seqan.de
 	arch = i686
@@ -9,14 +9,17 @@ pkgbase = seqan3-git
 	makedepends = cmake
 	makedepends = gcc
 	makedepends = make
-	makedepends = doxygen
-	makedepends = gtest
-	makedepends = benchmark
+	depends = gcc-libs
+	depends = range-v3
+	depends = sdsl-lite-v3-git
 	optdepends = bzip2: bzip2 support
 	optdepends = zip: zip support
 	optdepends = coin-or-lemon: graphs, required for MSA
 	optdepends = cereal: serialisation support
-	provides = seqan3=r628.35e4fba
+	optdepends = benchmark
+	optdepends = gtest
+	optdepends = doxygen
+	provides = seqan3=3.0.0.r465.g4cdd84b2
 	conflicts = seqan3
 	source = git://github.com/seqan/seqan3.git
 	md5sums = SKIP
