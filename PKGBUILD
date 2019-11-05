@@ -3,7 +3,7 @@
 pkgname=linux-nitrous
 pkgver=5.3.8
 pkgrel=12
-_tar_pkgrel=9
+_tar_pkgrel=12
 pkgdesc="Modified Linux kernel optimized for Haswell (and newer) compiled using clang"
 arch=('x86_64')
 url="https://gitlab.com/xdevs23/linux-nitrous"
@@ -22,8 +22,10 @@ build() {
 
 package() {
     cd "$srcdir"
-    tar -xvf "$srcdir"/*.tar.xz -C "$pkgdir"
-    for f in .BUILDINFO .INSTALL .MTREE .PKGINFO; do
+    cp -R "$srcdir/$pkgname-$pkgver/." "$pkgdir/."
+    mv "$srcdir/$pkgname-$pkgver/.INSTALL" "${startdir}/linux-nitrous.install"
+    install="linux-nitrous.install"
+    for f in .BUILDINFO .MTREE .INSTALL .PKGINFO; do
       rm -f "$pkgdir/$f"
     done
 }
