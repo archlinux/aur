@@ -1,6 +1,5 @@
 # Maintainer: Maurice Frank <maurice.frank@posteo.de>
 
-pkgbase=python-musdb
 pkgname="python-musdb"
 _pkgname=sigsep-mus-db
 pkgver=0.3.1
@@ -20,7 +19,7 @@ build() {
   python setup.py build
 }
 
-package_python-musdb() {
+package() {
   depends=("python-numpy" "python-pyaml" "python-tqdm" "python-soundfile" "python-stempeg")
 
   cd "${srcdir}/${_pkgname}-${pkgver}"
