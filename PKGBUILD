@@ -13,7 +13,7 @@
 pkgbase=linux-nitrous-git
 _srcname=linux-nitrous
 pkgver=5.3.8
-pkgrel=11
+pkgrel=12
 arch=('x86_64')
 url="https://gitlab.com/xdevs23/linux-nitrous"
 license=('GPL2')
@@ -72,6 +72,7 @@ _package() {
   provides=('linux')
   backup=("etc/mkinitcpio.d/${pkgbase}.preset")
   install=${pkgbase}.install
+  _kernelname=linux-nitrous
 
   cd "${_srcname}"
 
@@ -84,7 +85,7 @@ _package() {
 
   mkdir -p "${pkgdir}"/{lib/modules,lib/firmware,boot}
   make CC=clang INSTALL_MOD_PATH="${pkgdir}" modules_install
-  cp arch/$KARCH/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
+  cp arch/$KARCH/boot/bzImage "${pkgdir}/boot/vmlinuz-${_kernelname}"
 
   # set correct depmod command for install
   cp -f "${startdir}/${install}" "${startdir}/${install}.pkg"
@@ -98,9 +99,9 @@ _package() {
   install -D -m644 "${srcdir}/${pkgbase}.preset" "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
   sed \
     -e "1s|'linux.*'|'${pkgbase}'|" \
-    -e "s|ALL_kver=.*|ALL_kver=\"/boot/vmlinuz-${pkgbase}\"|" \
-    -e "s|default_image=.*|default_image=\"/boot/initramfs-${pkgbase}.img\"|" \
-    -e "s|fallback_image=.*|fallback_image=\"/boot/initramfs-${pkgbase}-fallback.img\"|" \
+    -e "s|ALL_kver=.*|ALL_kver=\"/boot/vmlinuz-${_kernelname}\"|" \
+    -e "s|default_image=.*|default_image=\"/boot/initramfs-${_kernelname}.img\"|" \
+    -e "s|fallback_image=.*|fallback_image=\"/boot/initramfs-${_kernelname}-fallback.img\"|" \
     -i "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
 
   # remove build and source links
