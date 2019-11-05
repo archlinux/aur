@@ -8,7 +8,7 @@
 _bldtype=Release
 
 _mozcver=2.23.2815.102
-_dicver=20190911
+_dicver=20191014
 _revision=1
 
 _pkgbase=mozc
@@ -22,7 +22,7 @@ url="https://osdn.net/users/utuhiro/pf/utuhiro/files/"
 license=('custom')
 makedepends=('clang' 'ninja' 'pkg-config' 'python2' 'curl' 'gtk2' 'qt5-base' 'zinnia' 'fcitx' 'libxcb' 'glib2' 'bzip2' 'unzip')
 
-source=("https://osdn.net/frs/chamber_redir.php?m=iij&f=%2Fusers%2F24%2F24469%2Fmozc-neologd-ut-2.23.2815.102.20190911.1.tar.xz"
+source=("https://osdn.net/frs/chamber_redir.php?m=ymu&f=%2Fusers%2F24%2F24574%2Fmozc-neologd-ut-2.23.2815.102.20191024.1.tar.xz"
         "https://ja.osdn.net/downloads/users/24/24521/mozc-2.23.2815.102%2Bdfsg~ut2-20171008d%2B20191014.tar.xz/"
 		add-new-japanese-era.patch
         # https://github.com/google/mozc/issues/441#issue-321728877
@@ -36,7 +36,7 @@ sha1sums=('SKIP'
           '883f4fc489a9ed1c07d2d2ec37ca72509f04ea5d')
 
 prepare() {
-  cp -f $srcdir/mozc-2.23.2815.102+dfsg\~ut2-20171008d+20190718/mut/src/data/dictionary_oss/dictionary*.txt $srcdir/mozc-neologd-ut-${pkgver}/src/data/dictionary_oss/
+  cp -f $srcdir/mozc-${_mozcver}+dfsg\~ut2-20171008d+${_dicver}/mut/src/data/dictionary_oss/dictionary*.txt $srcdir/mozc-neologd-ut-${pkgver}/src/data/dictionary_oss/
   cd mozc-neologd-ut-${pkgver}/src
 
   # add a new Japanese era
