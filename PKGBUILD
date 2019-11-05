@@ -3,9 +3,9 @@
 
 pkgname=firefox-ubuntu-bin
 _pkgname=firefox
-pkgver=70.0
+pkgver=70.0.1
 pkgrel=1
-_ubuntuver="$pkgver+build2-0ubuntu0.19.10.1_amd64"
+_ubuntuver="$pkgver+build1-0ubuntu0.19.10.1_amd64"
 pkgdesc="Standalone web browser from mozilla.org with Ubuntu patches (binary)"
 arch=("x86_64")
 url="https://www.mozilla.org/firefox/"
@@ -32,7 +32,7 @@ provides=('firefox' 'firefox-ubuntu')
 conflicts=('firefox' 'firefox-ubuntu')
 
 source=("http://ppa.launchpad.net/ubuntu-mozilla-security/ppa/ubuntu/pool/main/f/firefox/firefox_$_ubuntuver.deb")
-sha256sums=('7afd847218c58db24ade40e32d264e5607bd50abe97a3d50e3603d59c6cb1c06')
+sha256sums=('fc0b9a2cd7639b96d8c25ffd5b2d37be86051a38570a1c7da9ab557db791a7c3')
 
 prepare() {
 	# Don't extract copyright files, which are included in the licenses package
