@@ -1,13 +1,13 @@
 # Maintainer: hfte@posteo.org
 pkgname=sws
 pkgver=2.11.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A collection of features that seamlessly integrate into REAPER"
 arch=('x86_64')
 url="http://www.sws-extension.org/"
 license=('MIT')
 depends=('reaper-bin>=5.979')
-makedepends=('git' 'gcc' 'cmake' 'php' 'php-gd' 'perl')
+makedepends=('git' 'gcc' 'make' 'cmake' 'php' 'php-gd' 'perl')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 source=("git://github.com/reaper-oss/sws.git"
@@ -34,8 +34,9 @@ build() {
 
 
 package() {
-	mkdir -p "${pkgdir}/usr/lib/REAPER/UserPlugins/"
-	cp "${srcdir}/$pkgname/build/reaper_sws-x86_64.so" "${pkgdir}/usr/lib/REAPER/UserPlugins/"
+	mkdir -p "${pkgdir}/opt/REAPER/UserPlugins/"
+	cp "${srcdir}/$pkgname/build/reaper_sws-x86_64.so" "${pkgdir}/opt/REAPER/UserPlugins/"
+	cp "${srcdir}/$pkgname/build/sws_python64.py" "${pkgdir}/opt/REAPER/UserPlugins/"
     mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}/"
 	cp "${srcdir}/$pkgname/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
