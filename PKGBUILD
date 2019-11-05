@@ -1,6 +1,6 @@
 pkgname=thunderbird-bin
 _pkgname=thunderbird
-pkgver=68.0
+pkgver=68.2.1
 _major=${pkgver/rc*}
 _build=${pkgver/*rc}
 pkgrel=1
