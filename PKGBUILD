@@ -2,7 +2,7 @@
 # Contributor: scrawler@gmail.com
 
 pkgname=freeplane
-pkgver=1.7.9
+pkgver=1.7.10
 pkgrel=1
 pkgdesc="A Java mindmapping tool"
 arch=('any')
@@ -10,9 +10,9 @@ url="http://freeplane.sourceforge.net"
 license=('GPL')
 makedepends=('unzip')
 depends=('java-runtime>7' 'desktop-file-utils')
-source=(http://downloads.sourceforge.net/sourceforge/${pkgname}/${pkgname}_bin-${pkgver}.zip
-        freeplane.desktop freeplane.run)
-sha256sums=('904fe65302011be07218b4eb26b11906b255040374d7f31ccd297f5542a324ac'
+source=("https://downloads.sourceforge.net/sourceforge/${pkgname}/${pkgname}_bin-${pkgver}.zip"
+        "freeplane.desktop" "freeplane.run")
+sha256sums=('e2ade69cc051d72f2448512b22b84d98534793803e038a9a9c731bd9b1558471'
             '25f6f65bb726f1051035c62c08fd9df7c989091d5c6aef0d94624e6d2ef4ab05'
             'f8b95860fb87893b020eb2e1780a34ff4d9653ba553637a6471f6cb8bbdd4133')
 package() {
@@ -28,7 +28,7 @@ package() {
   mkdir -p "${pkgdir}/usr/share/freeplane/scripts"
   mkdir -p "${pkgdir}/usr/share/freeplane/doc/Images/doc"
   mkdir -p "${pkgdir}/usr/share/freeplane/doc/Images/mouse"
-  mkdir -p "${pkgdir}/usr/share/freeplane/doc/Images/other/workspace/output}"
+  mkdir -p "${pkgdir}/usr/share/freeplane/doc/Images/other/workspace/output"
 
   cd ${srcdir}/${pkgname}-${pkgver}
   # Copy plugins
