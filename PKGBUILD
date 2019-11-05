@@ -13,7 +13,7 @@
 pkgbase=linux-nitrous-git
 _srcname=linux-nitrous
 pkgver=5.3.8
-pkgrel=12
+pkgrel=13
 arch=('x86_64')
 url="https://gitlab.com/xdevs23/linux-nitrous"
 license=('GPL2')
@@ -21,7 +21,7 @@ makedepends=('clang' 'xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'libelf
 options=('!strip')
 source=('git+https://gitlab.com/xdevs23/linux-nitrous.git/'
         # standard config files for mkinitcpio ramdisk
-        "${pkgbase}.preset")
+        "${_srcname}.preset")
 sha256sums=('SKIP'
             '48ef93bf8f8ff236c4e2092736d0add8f87cfc5416417c50966bb296ab5933ae')
 
@@ -70,9 +70,9 @@ _package() {
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
   provides=('linux')
-  backup=("etc/mkinitcpio.d/${pkgbase}.preset")
+  __kernelname=linux-nitrous
+  backup=("etc/mkinitcpio.d/linux-nitrous.preset")
   install=${pkgbase}.install
-  _kernelname=linux-nitrous
 
   cd "${_srcname}"
 
@@ -85,24 +85,24 @@ _package() {
 
   mkdir -p "${pkgdir}"/{lib/modules,lib/firmware,boot}
   make CC=clang INSTALL_MOD_PATH="${pkgdir}" modules_install
-  cp arch/$KARCH/boot/bzImage "${pkgdir}/boot/vmlinuz-${_kernelname}"
+  cp arch/$KARCH/boot/bzImage "${pkgdir}/boot/vmlinuz-${__kernelname}"
 
   # set correct depmod command for install
   cp -f "${startdir}/${install}" "${startdir}/${install}.pkg"
   true && install=${install}.pkg
   sed \
-    -e  "s/KERNEL_NAME=.*/KERNEL_NAME=${_kernelname}/" \
+    -e  "s/KERNEL_NAME=.*/KERNEL_NAME=${__kernelname}/" \
     -e  "s/KERNEL_VERSION=.*/KERNEL_VERSION=${_kernver}/" \
     -i "${startdir}/${install}"
 
   # install mkinitcpio preset file for kernel
-  install -D -m644 "${srcdir}/${pkgbase}.preset" "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
+  install -D -m644 "${srcdir}/${__kernelname}.preset" "${pkgdir}/etc/mkinitcpio.d/${__kernelname}.preset"
   sed \
     -e "1s|'linux.*'|'${pkgbase}'|" \
-    -e "s|ALL_kver=.*|ALL_kver=\"/boot/vmlinuz-${_kernelname}\"|" \
-    -e "s|default_image=.*|default_image=\"/boot/initramfs-${_kernelname}.img\"|" \
-    -e "s|fallback_image=.*|fallback_image=\"/boot/initramfs-${_kernelname}-fallback.img\"|" \
-    -i "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
+    -e "s|ALL_kver=.*|ALL_kver=\"/boot/vmlinuz-${__kernelname}\"|" \
+    -e "s|default_image=.*|default_image=\"/boot/initramfs-${__kernelname}.img\"|" \
+    -e "s|fallback_image=.*|fallback_image=\"/boot/initramfs-${__kernelname}-fallback.img\"|" \
+    -i "${pkgdir}/etc/mkinitcpio.d/${__kernelname}.preset"
 
   # remove build and source links
   rm -f "${pkgdir}"/lib/modules/${_kernver}/{source,build}

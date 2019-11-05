@@ -21,7 +21,7 @@ post_upgrade() {
   echo ">>> Updating module dependencies. Please wait ..."
   depmod ${KERNEL_VERSION}
   echo ">>> Generating initial ramdisk, using mkinitcpio.  Please wait..."
-  mkinitcpio -p linux${KERNEL_NAME}
+  mkinitcpio -p ${KERNEL_NAME}
 
   if [ $(vercmp $2 3.13) -lt 0 ]; then
     echo ">>> WARNING: AT keyboard support is no longer built into the kernel."
