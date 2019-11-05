@@ -1,20 +1,21 @@
 # Maintainer: graysky <graysky AT archlinux DOT us>
-# Contributor: Tobias Powalowski <tpowa@archlinux.org>
-# Contributor: Thomas Baechler <thomas@archlinux.org>
+# Contributorr: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-rc
 pkgrel=1
 _srcname=linux-5.3
+      url="https://www.kernel.org/"
 _major=5.3
-_minor=7
+_minor=8
 _minorc=$((_minor+1))
 _rcver=1
 _rcpatch=patch-${_major}.${_minorc}-rc${_rcver}
 pkgver=${_major}.${_minorc}rc${_rcver}
-arch=('x86_64')
-url="https://www.kernel.org/"
+arch=(x86_64)
 license=('GPL2')
-makedepends=('kmod' 'inetutils' 'bc' 'libelf')
+makedepends=(
+       kmod inetutils bc libelf
+)
 options=('!strip')
 source=(
   https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/stable-review/"$_rcpatch".{xz,sign}
@@ -22,9 +23,6 @@ source=(
   # "$_rcpatch.patch::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable-rc.git/patch/?id=$_srcname.y&id2=v${_major}.${_minor}"
   https://www.kernel.org/pub/linux/kernel/v5.x/linux-$_major.$_minor.tar.{xz,sign}
   config         # the main kernel config file
-  60-linux.hook  # pacman hook for depmod
-  90-linux.hook  # pacman hook for initramfs regeneration
-  linux.preset   # standard config files for mkinitcpio ramdisk
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
   0002-Bluetooth-hidp-Fix-assumptions-on-the-return-value-o.patch
 )
@@ -32,14 +30,11 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('34eae340fc88a17a056753872a97b993550569f66c8bd57bc434615511494ea3'
+sha256sums=('41dabaa3f24a744ac9aa7ef49ecda4ac350b948bdac2de8c3a10afca3a522ae0'
             'SKIP'
-            'c6c9714e21531c825c306b107bc6f6c7bfa2d5270a14bad170f8de5a73d34802'
+            '78f3cfc6c20b10ff21c0bb22d7d257cab03781c44d8c5aae289f749f94f76649'
             'SKIP'
-            'e6d2df92f3079c740ca2cafd7e8b34b5dd43832d292284c2dc133d47600d1f29'
-            'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
-            'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
-            'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
+            'e749cd85d37d4d70099b0a7f54e852b039ae07c14e4ab8be299c64edae5d4ba4'
             '1594f81f1b1ed4f3d474aaa2ebfc03623fc0168d0243d1654c250fb7b32ad5d7'
             'd81560f2dd07755d5d51dc1d0d2ee5d4a107c12a13f5d0a021411385813ae7dd')
 
@@ -51,7 +46,7 @@ prepare() {
   msg2 "Setting version..."
   scripts/setlocalversion --save-scmversion
   echo "-$pkgrel" > localversion.10-pkgrel
-  echo "$_kernelname" > localversion.20-pkgname
+  echo "${pkgbase#linux}" > localversion.20-pkgname
 
   local src
   for src in "${source[@]}"; do
@@ -64,19 +59,10 @@ prepare() {
 
   msg2 "Setting config..."
   cp ../config .config
+  make olddefconfig
 
-  # get kernel version
-  make prepare
-
-  # load configuration
-  # Configure the kernel. Replace the line below with one of your choice.
-  #make nconfig # new CLI menu for configuration
-
-  # rewrite configuration
-  yes "" | make config >/dev/null
-
-  make -s kernelrelease > ../version
-  msg2 "Prepared %s version %s" "$pkgbase" "$(<../version)"
+  make -s kernelrelease > version
+  msg2 "Prepared %s version %s" "$pkgbase" "$(<version)"
 }
 
 build() {
@@ -89,19 +75,15 @@ _package() {
   depends=(coreutils kmod initramfs)
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
-  backup=("etc/mkinitcpio.d/$pkgbase.preset")
-  install=linux.install
-
-  local kernver="$(<version)"
-  local modulesdir="$pkgdir/usr/lib/modules/$kernver"
 
   cd linux-${_major}.${_minor}
+  local kernver="$(<version)"
+  local modulesdir="$pkgdir/usr/lib/modules/$kernver"
 
   msg2 "Installing boot image..."
   # systemd expects to find the kernel here to allow hibernation
   # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
   install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
-  install -Dm644 "$modulesdir/vmlinuz" "$pkgdir/boot/vmlinuz-$pkgbase"
 
   # Used by mkinitcpio to name the kernel
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
@@ -109,35 +91,8 @@ _package() {
   msg2 "Installing modules..."
   make INSTALL_MOD_PATH="$pkgdir/usr" modules_install
 
-  # a place for external modules,
-  # with version file for building modules and running depmod from hook
-  local extramodules="extramodules$_kernelname"
-  local extradir="$pkgdir/usr/lib/modules/$extramodules"
-  install -Dt "$extradir" -m644 ../version
-  ln -sr "$extradir" "$modulesdir/extramodules"
-
   # remove build and source links
   rm "$modulesdir"/{source,build}
-
-  msg2 "Installing hooks..."
-  # sed expression for following substitutions
-  local subst="
-    s|%PKGBASE%|$pkgbase|g
-    s|%KERNVER%|$kernver|g
-    s|%EXTRAMODULES%|$extramodules|g
-  "
-
-  # hack to allow specifying an initially nonexisting install file
-  sed "$subst" "$startdir/$install" > "$startdir/$install.pkg"
-  true && install=$install.pkg
-
-  # fill in mkinitcpio preset and pacman hooks
-  sed "$subst" ../linux.preset | install -Dm644 /dev/stdin \
-    "$pkgdir/etc/mkinitcpio.d/$pkgbase.preset"
-  sed "$subst" ../60-linux.hook | install -Dm644 /dev/stdin \
-    "$pkgdir/usr/share/libalpm/hooks/60-$pkgbase.hook"
-  sed "$subst" ../90-linux.hook | install -Dm644 /dev/stdin \
-    "$pkgdir/usr/share/libalpm/hooks/90-$pkgbase.hook"
 
   msg2 "Fixing permissions..."
   chmod -Rc u=rwX,go=rX "$pkgdir"
@@ -146,12 +101,12 @@ _package() {
 _package-headers() {
   pkgdesc="Header files and scripts for building modules for the linux-rc kernel"
 
+  cd linux-${_major}.${_minor}
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
-  cd linux-${_major}.${_minor}
-
   msg2 "Installing build files..."
-  install -Dt "$builddir" -m644 Makefile .config Module.symvers System.map vmlinux
+  install -Dt "$builddir" -m644 .config Makefile Module.symvers System.map \
+    localversion.* version vmlinux
   install -Dt "$builddir/kernel" -m644 kernel/Makefile
   install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
   cp -t "$builddir" -a scripts
@@ -215,7 +170,7 @@ _package-headers() {
 
   msg2 "Adding symlink..."
   mkdir -p "$pkgdir/usr/src"
-  ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase-$pkgver"
+  ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 
   msg2 "Fixing permissions..."
   chmod -Rc u=rwX,go=rX "$pkgdir"
