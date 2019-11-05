@@ -1,7 +1,7 @@
 # Maintainer: graysky <graysky AT archlinux DOT us>
 
 pkgname=(distccd-x86_64)
-_date=20191103
+_date=20191105
 # inspect source tarball under $name/share/gcc-x.y.z
 pkgver=9.2.0
 pkgrel=1
@@ -11,14 +11,16 @@ pkgdesc="Toolchain for x86_64 builds via distcc on Arch ARM armv7h volunteers"
 url="https://archlinuxarm.org/wiki/Distcc_Cross-Compiling"
 depends=('distcc')
 options=('libtool' 'emptydirs' '!strip')
-source=(
-https://olegtown.pw/Public/ArchLinuxArm/x-tools86.tar.xz
+source=("http://repo-ck.com/PKG_source/x-tools86-$_date.tar.zst"{,.sig}
+         http://repo-ck.com/PKG_source/x-tools86-20191105.tar.zst
 distccd-x86_64.{service,config}
 )
 install=readme.install
-noextract=(x-tools86.tar.xz)
+noextract=("x-tools86-$_date.tar.zst")
 backup=(etc/config.d/distccd-x86_64)
-sha256sums=('2591533531e889090c621ffb27d78481283b33990bf60e31044ce29bf771d4a3'
+sha256sums=('6511c4da8cd4a795d191934bdbebccaec608492dc82703c580631981cb778f18'
+            'SKIP'
+            '6511c4da8cd4a795d191934bdbebccaec608492dc82703c580631981cb778f18'
             '23e791054de2b2599699482fdd880066c9d03758f9e38eb4634dc571cb90959e'
             'ea406b82e10b7084192d0a480ec24ee889a6a592ea3e339dc81cf3a6f1058bf9')
 
@@ -35,10 +37,7 @@ package() {
 
   # copy in toolchain
   install -d "${pkgdir}/opt"
-  bsdtar -xpf "${srcdir}/x-tools86.tar.xz" -C "${pkgdir}/opt/"
-
-  # fix permissions problem in packaging
-  chmod 555 "${pkgdir}/opt/x-tools86/x86_64-pc-linux-gnu/bin"
+  bsdtar -xf "${srcdir}/x-tools86-$_date.tar.zst" -C "${pkgdir}/opt/"
 
   # install service and config
   install -Dm644 "${srcdir}/distccd-x86_64.service" \
