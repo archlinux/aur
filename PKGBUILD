@@ -29,7 +29,7 @@ prepare() {
 build() {
 	cd "$srcdir/$pkgname"
 	cmake -B build -DCMAKE_BUILD_TYPE=Release
-	cmake --build build
+    cmake --build build
 }
 
 
@@ -37,5 +37,5 @@ package() {
 	mkdir -p "${pkgdir}/usr/lib/REAPER/UserPlugins/"
 	cp "${srcdir}/$pkgname/build/reaper_sws-x86_64.so" "${pkgdir}/usr/lib/REAPER/UserPlugins/"
     mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}/"
-	cp "${srcdir}/$pkgname/setup/license.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	cp "${srcdir}/$pkgname/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
