@@ -2,15 +2,15 @@
 
 pkgname="ddnsc"
 pkgdesc="A simple & lightweight client to update DNS dynamically."
-pkgver=1.0.0
-pkgrel=1
+pkgver=1.0.1
+pkgrel=2
 arch=("any")
 license=('GPL3')
 url="https://github.com/shyaminayesh/$pkgname"
 source=("$url/archive/v$pkgver.tar.gz")
 backup=('etc/ddnsc/ddnsc.conf')
 depends=("python>=3" "python-systemd" "python-requests")
-sha256sums=("6da61c543ea60b4acdc82058dfeb3c0819c87d94e3c52b59223c10046297d9f6")
+sha256sums=("269970ea8da399765171619bc3a5d2b5261ecf36eb0e5d050bc79fc200d147b7")
 
 package() {
 
