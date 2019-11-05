@@ -1,6 +1,6 @@
 # Maintainer: Alex Dewar <a.dewar@sussex.ac.uk>
 pkgname=genn
-pkgver=4.0.2
+pkgver=4.1.0
 pkgrel=1
 epoch=2
 pkgdesc="GeNN: GPU-enhanced neural networks (version 4)"
@@ -12,7 +12,7 @@ makedepends=(doxygen doxypypy python python-numpy swig)
 optdepends=("python: for pygenn" "python-numpy: for pygenn" "spinecreator: for spineml2genn")
 options=(staticlibs !emptydirs)
 source=("$url/archive/${pkgver//_/-}.tar.gz")
-sha256sums=('a7543f53b11fb31d18979d5d03e9866ee9656a825d80cc4fc8a08dfc75a8235b')
+sha256sums=('db4b7f5096b77b7179564a6d59bf81b8430a80c79558734d36a5307110ce1629')
 install="${pkgname}.install"
 
 export CUDA_PATH=/opt/cuda
@@ -32,7 +32,7 @@ build() {
 
 	# Generate documentation with doxygen
 	msg2 "Generating documentation"
-	./makedoc > /dev/null
+	sh ./makedoc.sh > /dev/null
 
 	# Build libgenn.a etc.
 	make
