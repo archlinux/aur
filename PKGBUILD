@@ -2,7 +2,7 @@
 
 pkgname=linux-nitrous
 pkgver=5.3.8
-pkgrel=11
+pkgrel=12
 _tar_pkgrel=9
 pkgdesc="Modified Linux kernel optimized for Haswell (and newer) compiled using clang"
 arch=('x86_64')
