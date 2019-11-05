@@ -1,0 +1,16 @@
+pkgbase = libtmx-git
+	pkgdesc = Loads .tmx tiled maps in your games.
+	pkgver = 160.1900b80
+	pkgrel = 1
+	url = https://github.com/baylej/tmx/
+	arch = any
+	license = BSD
+	makedepends = cmake
+	depends = zlib
+	depends = libxml2
+	provides = libtmx
+	source = libtmx-git::git://github.com/baylej/tmx.git
+	sha512sums = SKIP
+
+pkgname = libtmx-git
+
