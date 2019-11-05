@@ -1,8 +1,7 @@
 # Maintainer: Jean Lucas <jean@4ray.co>
 
 pkgname=bb-rs
-pkgver=0.3.1
-_commit=d9228f3c4328b9323cab7fecb96346f5181072a0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Simple process viewer in Rust'
 arch=(x86_64)
@@ -10,21 +9,21 @@ url=https://nessuent.xyz/bb.html
 license=(GPL3)
 depends=(gcc-libs)
 makedepends=(rust)
-source=($pkgname-$pkgver.tar.gz::https://github.com/epilys/bb/archive/$_commit.tar.gz)
-sha512sums=('8a01964cf50818ad78d898bb80fb1866c32d2dcb53fed624da777836e915360e9bafa36b285a9e55ce9826aaa6fc33504048720d4ae477f3510ee14e1f0dc845')
+source=($pkgname-$pkgver.tar.gz::https://github.com/epilys/bb/archive/$pkgver.tar.gz)
+sha512sums=('f189fd77603d8e4335a41acc27bf017ab12f0ba024c14bf930b8ba1744f0bd070635ba9c09fd39b7b1f37f0e9d38f074a782bf38ff6d05da468ff6df735b65ce')
 
 build() {
-  cd bb-$_commit
+  cd bb-$pkgver
   cargo build --release
 }
 
 check() {
-  cd bb-$_commit
+  cd bb-$pkgver
   cargo test --release
 }
 
 package() {
-  cd bb-$_commit
+  cd bb-$pkgver
   install -D target/release/bb -t "$pkgdir"/usr/bin
   install -Dm 644 README.md -t "$pkgdir"/usr/share/doc/bb
 }
