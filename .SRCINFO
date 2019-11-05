@@ -1,0 +1,16 @@
+pkgbase = nodejs-cordova-check-plugins
+	pkgdesc = A CLI tool to check for / manage plugin updates in Cordova/Phonegap projects.
+	pkgver = 4.0.5
+	pkgrel = 1
+	url = https://github.com/dpa99c/cordova-check-plugins
+	arch = any
+	license = MIT
+	depends = nodejs
+	depends = npm
+	noextract = cordova-check-plugins-4.0.5.tgz
+	options = !strip
+	source = https://registry.npmjs.org/cordova-check-plugins/-/cordova-check-plugins-4.0.5.tgz
+	sha1sums = 0ac568ac8a842ee0481ccadab594c0dfe69b8851
+
+pkgname = nodejs-cordova-check-plugins
+
