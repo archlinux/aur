@@ -1,0 +1,4 @@
+*.pkg.tar.xz
+/guile-lib-0.2.6.1.tar.gz
+/pkg/
+/src/
