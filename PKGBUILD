@@ -1,7 +1,7 @@
 # $Id$
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname=f31-backgrounds
-pkgver=31.0.3
+pkgver=31.0.4
 pkgrel=1
 _rhver="${pkgver}-1.fc32"
 pkgdesc="Fedora 31 backgrounds."
@@ -10,7 +10,7 @@ url="https://fedoraproject.org/wiki/F31_Artwork"
 license=("CC-BY-SA")
 _rhlink="https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages"
 source=("${_rhlink}/f/${pkgname}-${_rhver}.src.rpm")
-sha256sums=('6c587e1ee7a74ee6888b2a077d907cf445bad39b79378fbdcbe589200a2a1c20')
+sha256sums=('3e304c596cd8f363071453ab95bca3133a0fec2b155ba9098093311249620baf')
 
 prepare()  {
   tar -xvJf ./${pkgname}-${pkgver}.tar.xz
