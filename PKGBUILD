@@ -1,0 +1,24 @@
+# Maintainer: ovf <ovf@mm.st>
+pkgname=liburing
+pkgver=0.2
+pkgrel=1
+pkgdesc="Linux-native io_uring I/O access library (git-version)"
+arch=(i686 x86_64)
+url="http://git.kernel.dk/cgit/liburing/"
+license=('LGPL2.1')
+provides=(liburing.so)
+conflicts=(liburing.so)
+source=("https://git.kernel.dk/cgit/liburing/snapshot/liburing-$pkgver.tar.bz2")
+md5sums=('8998f15d94a9f83e2d82ef2e58037404')
+
+build() {
+  cd "$srcdir/$pkgname-$pkgver"
+  ./configure
+  make
+}
+
+package() {
+  pwd
+  cd "$srcdir/$pkgname-$pkgver"
+  DESTDIR="$pkgdir/" make install
+}
