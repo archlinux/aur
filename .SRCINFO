@@ -1,0 +1,17 @@
+pkgbase = whirlpool-gui-appimage
+	pkgdesc = Desktop GUI for Whirlpool by Samourai-Wallet
+	pkgver = 0.9.1
+	pkgrel = 1
+	url = https://github.com/Samourai-Wallet/whirlpool-gui/
+	arch = x86_64
+	license = custom:Unlicense
+	depends = zlib
+	noextract = whirlpool-gui-appimage-0.9.1.AppImage
+	options = !strip
+	source_x86_64 = whirlpool-gui-appimage-0.9.1.AppImage::https://github.com/Samourai-Wallet/whirlpool-gui/releases/download/0.9.1/whirlpool-gui.0.9.1.AppImage
+	source_x86_64 = https://raw.githubusercontent.com/Samourai-Wallet/whirlpool-gui/0.9.1/LICENSE
+	sha256sums_x86_64 = d0f7766b113793cac39edb7c629fb92f91be70e824c8fe534a1a2040586f8eec
+	sha256sums_x86_64 = 60d2c28d19d2bdf7bbaa59829e7a595234265e8111a01ccb74d25d6c4d2d013a
+
+pkgname = whirlpool-gui-appimage
+
