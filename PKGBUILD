@@ -4,7 +4,7 @@
 
 pkgbase="monero"
 pkgname=('monero' 'libmonero-wallet')
-pkgver=0.14.1.2
+pkgver=0.15.0.0
 pkgrel=1
 pkgdesc="Monero: the secure, private, untraceable currency - release version (includes daemon, wallet and miner)"
 license=('custom:Cryptonote')
@@ -56,7 +56,6 @@ build() {
 
 package_monero() {
   backup=('etc/monerod.conf')
-  install=monero.install
 
   # Uncomment for a debug build
   # options=(!strip debug)
@@ -64,6 +63,8 @@ package_monero() {
 
   install -Dm644 "${srcdir}/${_monero}/utils/conf/monerod.conf" "${pkgdir}/etc/monerod.conf"
   install -Dm644 "${srcdir}/${_monero}/utils/systemd/monerod.service" "${pkgdir}/usr/lib/systemd/system/monerod.service"
+  install -Dm644 "${srcdir}/../monero.sysusers" "${pkgdir}/usr/lib/sysusers.d/monero.conf"
+  install -Dm644 "${srcdir}/../monero.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/monero.conf"
 
   install -Dm755 "${srcdir}/${_monero}/build/bin/monero-blockchain-ancestry" "${pkgdir}/usr/bin/monero-blockchain-ancestry"
   install -Dm755 "${srcdir}/${_monero}/build/bin/monero-blockchain-depth" "${pkgdir}/usr/bin/monero-blockchain-depth"
@@ -74,6 +75,7 @@ package_monero() {
   install -Dm755 "${srcdir}/${_monero}/build/bin/monero-blockchain-prune-known-spent-data" "${pkgdir}/usr/bin/monero-blockchain-prune-known-spent-data"
   install -Dm755 "${srcdir}/${_monero}/build/bin/monero-blockchain-stats" "${pkgdir}/usr/bin/monero-blockchain-stats"
   install -Dm755 "${srcdir}/${_monero}/build/bin/monero-blockchain-usage" "${pkgdir}/usr/bin/monero-blockchain-usage"
+  install -Dm755 "${srcdir}/${_monero}/build/bin/monero-gen-ssl-cert" "${pkgdir}/usr/bin/monero-gen-ssl-cert"
   install -Dm755 "${srcdir}/${_monero}/build/bin/monero-gen-trusted-multisig" "${pkgdir}/usr/bin/monero-gen-trusted-multisig"
   install -Dm755 "${srcdir}/${_monero}/build/bin/monero-wallet-cli" "${pkgdir}/usr/bin/monero-wallet-cli"
   install -Dm755 "${srcdir}/${_monero}/build/bin/monero-wallet-rpc" "${pkgdir}/usr/bin/monero-wallet-rpc"
