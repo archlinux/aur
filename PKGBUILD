@@ -20,6 +20,7 @@ export LC_CTYPE=en_US.UTF-8
 prepare() {
   cd sopel-$pkgver
   sed -i 's/<6/<7/' requirements.txt
+  sed -e 's|Hey|Hi|' -i sopel/modules/translate.py # Update test for current Google translate results
 }
 
 build() {
