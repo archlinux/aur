@@ -3,17 +3,17 @@
 # code adapted from https://github.com/jaredallard/notion-app
 
 pkgname=notion-app
-pkgver=1.0.8
-pkgrel=2
+pkgver=2.0.1
+pkgrel=1
 pkgdesc="The all-in-one workspace for your notes and tasks"
 arch=('i686' 'x86_64')
 url="https://www.notion.so/desktop"
 license=('MIT')
-depends=('electron3-bin')
+depends=('electron6-bin')
 makedepends=('dmg2img' 'p7zip' 'libicns' 'gendesk')
 source=("https://desktop-release.notion-static.com/Notion-"${pkgver}".dmg" 'notion-app')
-md5sums=('11f262eb64de513e1c2b916929d26d43'
-         '2b301d7ca56a7f0134239219997df5dd')
+md5sums=('c49fa800c3ebabc2e09f1e3f3877f157'
+         'ad3c23bc7d0186e2f622aa4b7310deac')
 
 build() {
   msg "Converting dmg image..."

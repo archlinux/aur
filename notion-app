@@ -8,5 +8,5 @@ if [[ ! -e "/opt/notion-app" ]]; then
 fi
 
 pushd "/opt/notion-app/" >/dev/null || exit 1
-electron3 app.asar
+electron6 app.asar
 popd >/dev/null || exit 1
