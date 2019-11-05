@@ -1,6 +1,5 @@
 # Maintainer: Maurice Frank <maurice.frank@posteo.de>
 
-pkgbase=python-stempeg
 pkgname="python-stempeg"
 _pkgname=stempeg
 pkgver=0.1.8
@@ -19,7 +18,7 @@ build() {
   python setup.py build
 }
 
-package_python-stempeg() {
+package() {
   depends=("python-numpy" "python-soundfile")
 
   cd "${srcdir}/${_pkgname}-${pkgver}"
