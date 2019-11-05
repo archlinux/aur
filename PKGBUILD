@@ -1,7 +1,7 @@
 # Maintainer: Toni Sagrista <admin at tonisagrista dot com>
 
 pkgname=tsnake
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc='Terminal snake game written in C++'
 arch=(x86_64)
