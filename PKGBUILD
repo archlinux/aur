@@ -3,14 +3,14 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=link-grammar-git
-pkgver=5.6.2.r114.g91d17a72
+pkgver=5.7.0.r166.g965b0b0f
 pkgrel=1
 pkgdesc="A Grammar Checking library"
 arch=('x86_64')
 url="http://www.abisource.com/projects/link-grammar/"
 license=('LGPL')
-depends=('hunspell' 'sqlite' 'libedit' 'pcre2' 'java-runtime')
-makedepends=('swig' 'flex' 'graphviz' 'python' 'python2')
+depends=('hunspell' 'sqlite' 'libedit' 'pcre2' 'java-runtime<12')
+makedepends=('swig' 'flex' 'graphviz' 'python' 'python2' 'java-environment<12')
 conflicts=('link-grammar')
 provides=('link-grammar')
 source=("git+https://github.com/opencog/link-grammar")
