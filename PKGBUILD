@@ -4,7 +4,7 @@ pkgname=(distccd-x86_64)
 _date=20191105
 # inspect source tarball under $name/share/gcc-x.y.z
 pkgver=9.2.0
-pkgrel=1
+pkgrel=2
 arch=('armv7h')
 license=('GPL' )
 pkgdesc="Toolchain for x86_64 builds via distcc on Arch ARM armv7h volunteers"

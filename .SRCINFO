@@ -1,7 +1,7 @@
 pkgbase = distccd-x86_64
 	pkgdesc = Toolchain for x86_64 builds via distcc on Arch ARM armv7h volunteers
 	pkgver = 9.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://archlinuxarm.org/wiki/Distcc_Cross-Compiling
 	install = readme.install
 	arch = armv7h
