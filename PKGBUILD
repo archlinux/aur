@@ -3,7 +3,7 @@
 # Contributor: Alexander Rødseth <rodseth@gmail.com>
 
 pkgname=tcc-git
-pkgver=0.9.27.r21.g65c7f19
+pkgver=0.9.27.r210.gf420259
 pkgrel=1
 pkgdesc='Tiny C Compiler'
 arch=('x86_64' 'i686')
@@ -13,7 +13,7 @@ makedepends=('texi2html' 'git')
 provides=('tcc')
 conflicts=('tcc')
 options=('staticlibs')
-source=('git://repo.or.cz/tinycc.git')
+source=('git+https://repo.or.cz/tinycc.git')
 md5sums=('SKIP')
 
 pkgver() {
