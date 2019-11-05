@@ -1,6 +1,6 @@
 pkgbase = linux-nitrous-git
 	pkgver = 5.3.8
-	pkgrel = 18
+	pkgrel = 19
 	url = https://gitlab.com/xdevs23/linux-nitrous
 	arch = x86_64
 	license = GPL2
@@ -17,7 +17,7 @@ pkgbase = linux-nitrous-git
 	source = git+https://gitlab.com/xdevs23/linux-nitrous.git/
 	source = linux-nitrous.preset
 	sha256sums = SKIP
-	sha256sums = 48ef93bf8f8ff236c4e2092736d0add8f87cfc5416417c50966bb296ab5933ae
+	sha256sums = 02a08e1df74541e9848685da38134d701684694c43e3428197c6db41e968f246
 
 pkgname = linux-nitrous-git
 	pkgdesc = Modified Linux kernel optimized for Haswell (and newer) compiled using clang

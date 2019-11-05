@@ -13,7 +13,7 @@
 pkgbase=linux-nitrous-git
 _srcname=linux-nitrous
 pkgver=5.3.8
-pkgrel=18
+pkgrel=19
 arch=('x86_64')
 url="https://gitlab.com/xdevs23/linux-nitrous"
 license=('GPL2')
@@ -23,7 +23,7 @@ source=('git+https://gitlab.com/xdevs23/linux-nitrous.git/'
         # standard config files for mkinitcpio ramdisk
         "${_srcname}.preset")
 sha256sums=('SKIP'
-            '48ef93bf8f8ff236c4e2092736d0add8f87cfc5416417c50966bb296ab5933ae')
+            '02a08e1df74541e9848685da38134d701684694c43e3428197c6db41e968f246')
 
 _kernelname=${pkgbase#linux}
 
