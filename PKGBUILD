@@ -1,8 +1,9 @@
-# Maintainer: uzerus <szymonscholz at gmail dot com>
+# Maintainer: ghost64 <michael at corrigan dot xyz>
+# Previous Maintainer: uzerus <szymonscholz at gmail dot com>
 # Previous Maintainer: Matthew Gamble 
 
 pkgname=duck
-pkgver=6.8.3.29107
+pkgver=7.1.2.31675
 pkgrel=1
 pkgdesc="Cyberduck CLI"
 arch=('x86_64' 'i686')
@@ -19,8 +20,8 @@ optdepends=(
 	'gtk2: Graphical interface'
 	'alsa-lib: Audio support'
 )
-source_x86_64=("https://repo.cyberduck.io/stable/x86_64/$pkgname-$pkgver.x86_64.rpm")
-source_i686=("https://repo.cyberduck.io/stable/i386/$pkgname-$pkgver.i686.rpm")
+source_x86_64=("https://repo.cyberduck.io/stable/x86_64/$pkgname-$pkgver.$CARCH.rpm")
+source_i686=("https://repo.cyberduck.io/stable/i386/$pkgname-$pkgver.$CARCH.rpm")
 
 package() {
      cp -R opt "${pkgdir}/opt"
@@ -29,5 +30,5 @@ package() {
      ln -s /opt/duck/duck "${pkgdir}/usr/bin/duck"
     install -Dm644 "${pkgdir}/opt/duck/duck.desktop" "${pkgdir}/usr/share/applications/duck.desktop"
 }
-md5sums_x86_64=('1fbfdf6f41678441abf45870af7091d3')
-md5sums_i686=('2606566aaf7864c5ec334a4815e06483')
+md5sums_x86_64=('02be0fbeca17c17d62fc50f75bd3e1f1')
+md5sums_i686=('7a1e43633eb886d01b43052e7f25e34e')

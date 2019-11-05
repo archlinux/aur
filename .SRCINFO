@@ -1,6 +1,6 @@
 pkgbase = duck
 	pkgdesc = Cyberduck CLI
-	pkgver = 6.8.3.29107
+	pkgver = 7.1.2.31675
 	pkgrel = 1
 	url = https://duck.sh/
 	arch = x86_64
@@ -13,10 +13,10 @@ pkgbase = duck
 	optdepends = gtk2: Graphical interface
 	optdepends = alsa-lib: Audio support
 	options = !strip
-	source_x86_64 = https://repo.cyberduck.io/stable/x86_64/duck-6.8.3.29107.x86_64.rpm
-	md5sums_x86_64 = 1fbfdf6f41678441abf45870af7091d3
-	source_i686 = https://repo.cyberduck.io/stable/i386/duck-6.8.3.29107.i686.rpm
-	md5sums_i686 = 2606566aaf7864c5ec334a4815e06483
+	source_x86_64 = https://repo.cyberduck.io/stable/x86_64/duck-7.1.2.31675.x86_64.rpm
+	md5sums_x86_64 = 02be0fbeca17c17d62fc50f75bd3e1f1
+	source_i686 = https://repo.cyberduck.io/stable/i386/duck-7.1.2.31675.x86_64.rpm
+	md5sums_i686 = 7a1e43633eb886d01b43052e7f25e34e
 
 pkgname = duck
 
