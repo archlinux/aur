@@ -1,7 +1,7 @@
 pkgbase = cherrytree
 	pkgdesc = Hierarchical note taking application featuring rich text and syntax highlighting
 	pkgver = 0.38.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.giuspen.com/cherrytree/
 	arch = any
 	license = GPL3

@@ -7,7 +7,7 @@
 
 pkgname=cherrytree
 pkgver=0.38.9
-pkgrel=1
+pkgrel=2
 pkgdesc='Hierarchical note taking application featuring rich text and syntax highlighting'
 arch=('any')
 url='https://www.giuspen.com/cherrytree/'
