@@ -1,6 +1,6 @@
 pkgbase = steam-buddy
 	pkgdesc = ...
-	pkgver = 0.0.2
+	pkgver = 0.0.3
 	pkgrel = 1
 	url = https://github.com/gamer-os/steam-buddy
 	arch = any
@@ -13,8 +13,8 @@ pkgbase = steam-buddy
 	depends = libretro-nestopia
 	depends = libretro-snes9x
 	depends = retroarch-autoconfig-udev-git
-	source = https://github.com/gamer-os/steam-buddy/archive/0.0.2.tar.gz
-	md5sums = f1e8e3acc0d999dde52dad7d7bcb3aea
+	source = https://github.com/gamer-os/steam-buddy/archive/0.0.3.tar.gz
+	md5sums = 0d9832eeb87dbfc7a36770a3ae71d735
 
 pkgname = steam-buddy
 
