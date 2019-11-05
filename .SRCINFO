@@ -1,6 +1,6 @@
 pkgbase = openss7-modules-lts49-git
 	pkgdesc = OpenSS7 Fast-STREAMS and protocol Suites (4.9 Kernel Modules)
-	pkgver = 1.1.8.183.gefa3160b3
+	pkgver = 1.1.8.207.gcb093208d
 	pkgrel = 1
 	url = http://www.openss7.org
 	install = openss7-modules-lts49-git.install
@@ -33,8 +33,8 @@ pkgbase = openss7-modules-lts49-git
 	makedepends = java-environment
 	makedepends = lm_sensors
 	makedepends = popt
-	depends = linux-lts49=4.9.182-1
-	provides = openss7-modules-lts49=1.1.8.183.gefa3160b3
+	depends = linux-lts49=4.9.198-1
+	provides = openss7-modules-lts49=1.1.8.207.gcb093208d
 	conflicts = openss7-modules-lts49
 	options = !emptydirs
 	options = !strip

@@ -1,11 +1,11 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 _kvv="$(pacman -Qi linux-lts49|awk '/^Version/{print$3}')"
-_kvv="${_kvv:-4.9.182-1}"
+_kvv="${_kvv:-4.9.198-1}"
 _kvr="${_kvv:+${_kvv}-lts49}"
 _kvx="$(echo $_kvr|sed -e 's,\.[0-9][0-9]*-.*,,')"
 pkgname=openss7-modules-lts49-git
 _pkgname=openss7-modules-lts49
-pkgver=1.1.8.183.gefa3160b3
+pkgver=1.1.8.207.gcb093208d
 pkgrel=1
 pkgdesc="OpenSS7 Fast-STREAMS and protocol Suites (${_kvx:-LTS 4.9} Kernel Modules)"
 arch=('x86_64' 'i686')
