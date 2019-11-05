@@ -2,18 +2,18 @@
 pkgname=liburing
 pkgver=0.2
 pkgrel=1
-pkgdesc="Linux-native io_uring I/O access library (git-version)"
+pkgdesc="Linux-native io_uring I/O access library"
 arch=(i686 x86_64)
 url="http://git.kernel.dk/cgit/liburing/"
 license=('LGPL2.1')
+depends=(glibc)
 provides=(liburing.so)
-conflicts=(liburing.so)
 source=("https://git.kernel.dk/cgit/liburing/snapshot/liburing-$pkgver.tar.bz2")
 md5sums=('8998f15d94a9f83e2d82ef2e58037404')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  ./configure
+  ./configure --mandir=/usr/share/man
   make
 }
 

@@ -1,13 +1,13 @@
 pkgbase = liburing
-	pkgdesc = Linux-native io_uring I/O access library (git-version)
+	pkgdesc = Linux-native io_uring I/O access library
 	pkgver = 0.2
 	pkgrel = 1
 	url = http://git.kernel.dk/cgit/liburing/
 	arch = i686
 	arch = x86_64
 	license = LGPL2.1
+	depends = glibc
 	provides = liburing.so
-	conflicts = liburing.so
 	source = https://git.kernel.dk/cgit/liburing/snapshot/liburing-0.2.tar.bz2
 	md5sums = 8998f15d94a9f83e2d82ef2e58037404
 
