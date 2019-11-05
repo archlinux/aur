@@ -2,8 +2,8 @@
 
 _pkgname=onedrive
 pkgname=$_pkgname-abraunegg
-pkgver=2.3.10
-pkgrel=2
+pkgver=2.3.11
+pkgrel=1
 epoch=
 pkgdesc="Free OneDrive client written in D - abraunegg's fork. Follows the releases on https://github.com/abraunegg/onedrive/releases"
 arch=('i686' 'x86_64')
@@ -25,4 +25,4 @@ package() {
 	cd "$_pkgname-$pkgver"
 	make DESTDIR=$pkgdir PREFIX=/usr install
 }
-md5sums=('390c3b79c497c76c13a0775d524b003a')
+md5sums=('ed782c7ddb0f6473945a36d062bbf47b')
