@@ -1,12 +1,7 @@
-# Maintainer: grufo <madmurphy333 AT gmail DOT com>
-# Contributor: Marcin (CTRL) Wieczorek <marcin@marcin.co>
-# Contributor: Julio González <juliolokoo at gmail dot com>
-# Contributor: Jose Valecillos <valecillosjg (at) gmail (dot) com>
-# Contributor: Thiago Perrotta <echo dGhpYWdvcGVycm90dGE5NUBnbWFpbC5jb20K | base64 -d >
-# Contributor: alegotta <algottardi at disroot dot org>
+# Maintainer: oguzkagan <me@oguzkaganeren.com.tr>
 
 pkgname='xampp'
-pkgver='7.3.2'
+pkgver='7.3.11'
 pkgrel=1
 pkgdesc="A free and open source cross-platform web server package (LAMP Stack), consisting mainly of the Apache HTTP Server, MySQL database, and interpreters for scripts written in the PHP and Perl programming languages"
 url="http://www.apachefriends.org/"
@@ -18,7 +13,7 @@ makedepends=('fakeuser-git' 'proot')
 source=('lampp.service'
 	'xampp-manager.desktop'
 	'xampp-manager.png')
-source_x86_64=("https://downloads.sourceforge.net/project/${pkgname}/XAMPP%20Linux/${pkgver}/${pkgname}-linux-x64-${pkgver}-0-installer.run"
+source_x86_64=("https://www.apachefriends.org/xampp-files/${pkgver}/${pkgname}-linux-x64-${pkgver}-0-installer.run"
 	'org.freedesktop.xampp-manager.policy'
 	'xampp-manager-polkit')
 options=(!strip)
@@ -26,7 +21,7 @@ install='xampp.install'
 sha256sums=('9aa2e9b2ec768b7e0d5394cf27653a7c9d0291a890d058293109f1aeace79150'
             '595de672753af57c4abf1b4549530bba02b004bd45dfa82054d58ea3a174a4e6'
             '3df1d2fa8a8dbba21944045503b94315e5b7bc38b968ca5a816a57b83c6fd77a')
-sha256sums_x86_64=('b2dd3d90e7286ec6334b1c471481d34a4cb6d909d4cd289cc9d2c6ccd71d3ea9'
+sha256sums_x86_64=('53710f3d8c5a0b4d145382243093fde927c28a6dc3cf8e3af5bbe2b1c03465ad'
                    '4092631d86ec1c3a155bfec76ea2c8433426a13f12a7a5866f843a099f1ca418'
                    '210beb9372baf79f01b783db6d93a0f9a07289af64dd72d9e09baecd0799a76b')
 
