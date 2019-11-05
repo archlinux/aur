@@ -1,7 +1,7 @@
 # based on https://github.com/rbn42/panon/blob/master/PKGBUILD
 # Maintainer: Robin <rbn dot 86 et bigbrothergoogle>
 # Contributor: Marcus Behrendt <marcus dot behrendt dot 86 et bigbrothergoogle>
-
+# Contributor: Philipp A. <flying-sheep@github.com>
 
 _basename=panon
 pkgname=plasma5-applets-${_basename}-git
