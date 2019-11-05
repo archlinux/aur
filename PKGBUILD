@@ -2,7 +2,7 @@
 # Contributor: aimileus < $(echo YWltaWxpdXNAcHJvdG9ubWFpbC5jb20K | base64 -d)
 _pkgname=vita3k
 pkgname=${_pkgname}-git
-pkgver=r1255.daff95ff
+pkgver=r1293.164267bb
 pkgrel=1
 pkgdesc="Experimental PlayStation Vita emulator"
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=(
 	'clang'
 	'cmake'
 	'git'
-	'python2'
+	'python'
 )
 depends=(
 	'sdl2'
@@ -45,8 +45,16 @@ source=(
 	"git+https://github.com/discordapp/discord-rpc.git"
 	"git+https://github.com/zeux/pugixml.git"
 	"git+https://github.com/aantron/better-enums.git"
+	"git+https://github.com/illusionman1212/nativefiledialog-cmake.git"
+	"git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git"
+	"git+https://github.com/Vita3K/sdl.git"
+	"git+https://github.com/Vita3K/libfat16.git"
 )
 md5sums=(
+	'SKIP'
+	'SKIP'
+	'SKIP'
+	'SKIP'
 	'SKIP'
 	'SKIP'
 	'SKIP'
@@ -106,6 +114,9 @@ prepare() {
 	git config submodule.src/external/discord-rpc.url "${srcdir}/discord-rpc"
 	git config submodule.src/external/pugixml.url "${srcdir}/pugixml"
 	git config submodule.src/external/better-enums.url "${srcdir}/better-enums"
+	git config submodule.src/external/nativefiledialog-cmake.url "${srcdir}/nativefiledialog-cmake"
+	git config submodule.src/external/VulkanMemoryAllocator.url "${srcdir}/VulkanMemoryAllocator"
+	git config submodule.src/external/libfat16.url "${srcdir}/libfat16"
 	git submodule update
 }
 
@@ -116,6 +127,9 @@ build() {
 	export CC="/usr/bin/clang"
 	export CXX="/usr/bin/clang++"
 
+	# Set the python
+	PYTHON_INCLUDE_PATH="$(python -c "from sysconfig import get_paths as gp; print(gp()['include'])")"
+	export CPATH="${PYTHON_INCLUDE_PATH}"
 	./gen-linux.sh
 
 	# Workaround for linking problem with discord-rpc
