@@ -1,6 +1,6 @@
 pkgbase = peertube-viewer
 	pkgdesc = Peertube command line viewer inspired by youtube-viewer
-	pkgver = 0.5
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://gitlab.com/SostheneGuedon/peertube-viewer
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = peertube-viewer
 	makedepends = boost
 	depends = curl
 	depends = boost-libs
-	source = https://gitlab.com/SostheneGuedon/peertube-viewer/-/archive/v0.5/peertube-viewer-v0.5.tar.gz
-	md5sums = 8052576888876b9f8cd6fbeab94c4519
+	source = https://gitlab.com/SostheneGuedon/peertube-viewer/-/archive/v0.5.1/peertube-viewer-v0.5.1.tar.gz
+	md5sums = 17d237e207b056c77575a61cdc368aac
 
 pkgname = peertube-viewer
 
