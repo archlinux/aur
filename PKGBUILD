@@ -1,25 +1,23 @@
 # Maintainer: Nicola Squartini <tensor5@gmail.com>
 
 pkgname=zcash
-pkgver=2.0.7_3
-_commit=e3983afc03d256813662aa2cb07fbe1a05b9ab05
-pkgrel=2
+pkgver=2.1.0
+_commit=ffdba7c19eca07657f722a7c0a1b1c848d661f50
+pkgrel=1
 pkgdesc='Permissionless financial system employing zero-knowledge security'
 arch=('x86_64')
 url='https://z.cash/'
 license=('MIT')
 depends=('boost-libs' 'libevent' 'qpid-proton' 'zeromq')
-makedepends=('boost' 'cmake' 'git' 'gmock' 'python' 'rustup' 'wget')
+makedepends=('boost' 'cmake' 'git' 'gmock' 'python' 'rust' 'wget')
 checkdepends=('python2-pyblake2' 'python2-pyzmq' 'python2-qpid-proton')
 source=("git+https://github.com/zcash/zcash.git#commit=${_commit}"
-        'libsnark-no-gtest.patch'
         'use-system-qpid-proton.patch'
         'use-system-rust.patch'
         'zcashd.service')
 sha512sums=('SKIP'
-            'b4792cc6f4c1e4e633d34257b68a4fbf882dfc692fedc14a06905705dd0778f22097b1e0645e00231ddc366245fe76ff63a43b53fb468496daf5100b15ad2fee'
             '019870971a0cec093d0552585f4140f39dd65f90cb56b97e512bbaf0d79c0f1574295e722310d4e1762af12ff693802fc465765d4d1410d209e259326f307d6a'
-            'e2bdf46696e70a93ffcb45bf4e081c780cda8f11f6fa346b6807731f7c739f18c689c4e78a71f8bd7099874108b6b6584b8a96395bbca8d5441f7600a3fe0ebe'
+            '8878b5c805d6cdf159dbac0ef73fb47d0fbd2fc35332f1c15f05d6041c0eca7f16b12aeb1cc20615d0a325a68e8d22bb3961cadebbfa54b87783ad5de35b92fb'
             '2fb8b0a636ca9c7ee15f0fd2c47046c8323ade3de9562f393da7541eee50dd14b12107dd29b0e1ee90ff88963e2f7e25b12435166a1812df5c88c579c12dde88')
 
 prepare() {
@@ -28,7 +26,6 @@ prepare() {
     # Set gitattributes on src/clientversion.cpp
     git archive --format=tar ${_commit} -- src/clientversion.cpp | tar -xf -
 
-    patch -Np1 -i ../libsnark-no-gtest.patch
     patch -Np1 -i ../use-system-qpid-proton.patch
     patch -Np1 -i ../use-system-rust.patch
 
@@ -38,9 +35,6 @@ prepare() {
 
 build() {
     cd ${pkgname}
-
-    # Temporary, due to llvm-libs 9 being in [staging]
-    rustup update stable
 
     cd depends
     rust_crates=(
