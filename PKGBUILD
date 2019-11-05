@@ -2,7 +2,7 @@
 
 pkgname=linux-nitrous-headers
 pkgver=5.3.8
-pkgrel=11
+pkgrel=12
 _tar_pkgrel=9
 pkgdesc="Headers for linux-nitrous"
 arch=('x86_64')
