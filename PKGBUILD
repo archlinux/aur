@@ -68,7 +68,10 @@ build() {
 _package() {
   pkgdesc="Modified Linux kernel optimized for Haswell (and newer) compiled using clang"
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
-  optdepends=('crda: to set the correct wireless channels of your country')
+  optdepends=(
+    'crda: to set the correct wireless channels of your country'
+    'linux-nitrous-git-headers: to build DKMS modules against this kernel'
+  )
   provides=('linux')
   __kernelname=linux-nitrous
   backup=("etc/mkinitcpio.d/linux-nitrous.preset")

@@ -27,6 +27,7 @@ pkgname = linux-nitrous-git
 	depends = kmod
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
+	optdepends = linux-nitrous-git-headers: to build DKMS modules against this kernel
 	provides = linux
 	backup = etc/mkinitcpio.d/linux-nitrous.preset
 
