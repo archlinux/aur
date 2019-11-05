@@ -1,13 +1,13 @@
 pkgbase = deadwood
 	pkgdesc = Deadwood is MaraDNS 2.0's recursive resolver
-	pkgver = 3.2.12
+	pkgver = 3.3.02
 	pkgrel = 1
 	url = http://maradns.samiam.org/deadwood/
 	arch = x86_64
 	license = custom
-	source = http://maradns.org/deadwood/stable/deadwood-3.2.12.tar.bz2
+	source = https://github.com/samboy/MaraDNS/archive/deadwood-3.3.02.tar.gz
 	source = Deadwood.service
-	sha256sums = aedfb41c21a801423972d6c8aa8baa0d39cec5919669f0662615824d56c67bea
+	sha256sums = 82c8aecf71b8f844e2102efb26fbefbf03d2cb8a34b74eb1c6b75375b6fa6041
 	sha256sums = 0c3430f97fbf44e03d6e9024b3531ffe4366d04b692527b23293689a970b455b
 
 pkgname = deadwood
