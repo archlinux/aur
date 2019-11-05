@@ -8,7 +8,7 @@ _singleapplication=3.0.15
 
 pkgname=crow-translate
 pkgver=2.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple and lightweight translator that allows to translate and say selected text using Google, Yandex and Bing translate API"
 arch=('x86_64')
 url="https://github.com/crow-translate/crow-translate"
@@ -20,7 +20,7 @@ source=($pkgname-$pkgver.tar.gz::"https://github.com/crow-translate/crow-transla
         QHotkey-$_qhotkey.tar.gz::"https://github.com/Skycoder42/QHotkey/archive/$_qhotkey.tar.gz"
         QTaskbarControl-$_qtaskbarcontrol.tar.gz::"https://github.com//Skycoder42/QTaskbarControl/archive/$_qtaskbarcontrol.tar.gz"
         SingleApplication-$_singleapplication.tar.gz::"https://github.com/itay-grudev/SingleApplication/archive/$_singleapplication.tar.gz")
-sha256sums=('d2cc02229c3bc6a4fb5c3a27b7389f7b7d6af05d48e9b3f0f75dd59b90344329'
+sha256sums=('21049c3aed79ccd1e1340e689641b1b725489e5ec2f3e34a17181fe36dd09317'
             'fd667dc6efe9dabaeddfeddca47457590eaf4116693b316a4bf26dad9d29fe25'
             '1a5a6eb81738a8f232df2dd5c908839871077e10ca3b9a6437daf5fda53d86ad'
             '18de904fea3c3f2c388069055a7aa964833f216d9e2a23dabf66f7f545b52f8f'
