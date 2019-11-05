@@ -1,4 +1,8 @@
 # Maintainer: Frederik Schwan <frederik dot schwan at linux dot com>
+# Contributor: Vlad M. <vlad@archlinux.net>
+# Contributor: Attila Bukor <r1pp3rj4ck[at]w4it[dot]eu>
+# Contributor: D. Can Celasun <dcelasun[at]gmail[dot]com>
+# Contributor: Slava Volkov <sv99sv[at]gmail[dot]com>
 
 pkgbase=phpstorm
 pkgname=(phpstorm phpstorm-jre)
