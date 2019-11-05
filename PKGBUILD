@@ -1,6 +1,6 @@
 # Maintainer: Karl-Felix Glatzer <karl.glatzer@gmx.de>
 pkgname=mingw-w64-orc
-pkgver=0.4.30
+pkgver=0.4.31
 pkgrel=1
 pkgdesc="Optimized Inner Loop Runtime Compiler (mingw-w64)"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('mingw-w64-crt')
 makedepends=('mingw-w64-gcc' 'mingw-w64-meson' 'wine' 'git')
 options=('!strip' '!buildflags' '!libtool' 'staticlibs')
 #source=(https://gstreamer.freedesktop.org/data/src/orc/orc-${pkgver}.tar.xz{,.asc}
-_commit=ec359cbad8b554985b1b38c665b9db01ef29619a  # tags/0.4.30^0
+_commit=9901a96eaff271c2d3b595214213f6805ff803c8  # tags/0.4.31^0
 source=("git+https://gitlab.freedesktop.org/gstreamer/orc.git#commit=$_commit"
         meson_i686-w64-mingw32
         meson_x86_64-w64-mingw32)
