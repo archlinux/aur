@@ -3,7 +3,7 @@
 _pkgname=onedrive
 pkgname=$_pkgname-abraunegg
 pkgver=2.3.11
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Free OneDrive client written in D - abraunegg's fork. Follows the releases on https://github.com/abraunegg/onedrive/releases"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ conflicts=('onedrive' 'onedrive-abraunegg-git' 'onedrive-bin' 'onedrive-git' 'on
 source=("https://github.com/abraunegg/onedrive/archive/v$pkgver.tar.gz")
 provides=("onedrive=$pkgver")
 depends=('curl' 'libnotify' 'sqlite')
-makedepends=('dmd')
+makedepends=('d-compiler')
 
 build() {
 	cd "$_pkgname-$pkgver"
