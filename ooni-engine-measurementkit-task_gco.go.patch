@@ -1,0 +1,25 @@
+29,40c29,39
+< 	// #cgo linux,amd64 LDFLAGS: -static
+< 	// #cgo linux,amd64 LDFLAGS: /usr/local/lib/libmeasurement_kit.a
+< 	// #cgo linux,amd64 LDFLAGS: /usr/lib/libmaxminddb.a
+< 	// #cgo linux,amd64 LDFLAGS: /usr/lib/libcurl.a
+< 	// #cgo linux,amd64 LDFLAGS: /usr/lib/libnghttp2.a
+< 	// #cgo linux,amd64 LDFLAGS: /usr/lib/libevent_openssl.a
+< 	// #cgo linux,amd64 LDFLAGS: /usr/lib/libssl.a
+< 	// #cgo linux,amd64 LDFLAGS: /usr/lib/libcrypto.a
+< 	// #cgo linux,amd64 LDFLAGS: /usr/lib/libevent_core.a
+< 	// #cgo linux,amd64 LDFLAGS: /usr/lib/libevent_extra.a
+< 	// #cgo linux,amd64 LDFLAGS: /usr/lib/libevent_pthreads.a
+< 	// #cgo linux,amd64 LDFLAGS: /lib/libz.a
+---
+> 	// #cgo linux,amd64 LDFLAGS: -lmaxminddb
+> 	// #cgo linux,amd64 LDFLAGS: -lcurl
+> 	// #cgo linux,amd64 LDFLAGS: -lnghttp2
+> 	// #cgo linux,amd64 LDFLAGS: -levent_openssl
+> 	// #cgo linux,amd64 LDFLAGS: -lssl
+> 	// #cgo linux,amd64 LDFLAGS: -lcrypto
+> 	// #cgo linux,amd64 LDFLAGS: -levent_core
+> 	// #cgo linux,amd64 LDFLAGS: -levent_extra
+> 	// #cgo linux,amd64 LDFLAGS: -levent_pthreads
+> 	// #cgo linux,amd64 LDFLAGS: -lz
+> 	// #cgo linux,amd64 LDFLAGS: /usr/lib/libmeasurement_kit.a
