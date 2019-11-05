@@ -21,5 +21,5 @@ build() {
 
 package() {
     cd "$srcdir"
-    make DESTDIR="$pkgdir/" install
+    tar -xvf "$srcdir"/*.tar.xz -C "$pkgdir"
 }
