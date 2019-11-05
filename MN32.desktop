@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=MN32
+Comment=Configuration tool for Mionix Naos 3200
+Exec=mn32
+Icon=input-mouse
+Terminal=false
+Type=Application
+Categories=Utility
