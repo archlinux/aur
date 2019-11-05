@@ -18,6 +18,9 @@ distccd-x86_64.{service,config}
 install=readme.install
 noextract=("x-tools86-$_date.tar.zst")
 backup=(etc/config.d/distccd-x86_64)
+validpgpkeys=(
+'4E22BB637E26407D5DEE550988A032865EE46C4C' # graysky
+)
 sha256sums=('6511c4da8cd4a795d191934bdbebccaec608492dc82703c580631981cb778f18'
             'SKIP'
             '6511c4da8cd4a795d191934bdbebccaec608492dc82703c580631981cb778f18'

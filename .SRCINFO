@@ -17,6 +17,7 @@ pkgbase = distccd-x86_64
 	source = http://repo-ck.com/PKG_source/x-tools86-20191105.tar.zst
 	source = distccd-x86_64.service
 	source = distccd-x86_64.config
+	validpgpkeys = 4E22BB637E26407D5DEE550988A032865EE46C4C
 	sha256sums = 6511c4da8cd4a795d191934bdbebccaec608492dc82703c580631981cb778f18
 	sha256sums = SKIP
 	sha256sums = 6511c4da8cd4a795d191934bdbebccaec608492dc82703c580631981cb778f18
