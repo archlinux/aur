@@ -1,1 +1,1 @@
-SUBSYSTEM=="usb", ATTR{idVendor}=="316d", ATTR{idProduct}=="4c4b", GROUP="wheel" #, MODE="0666"
+SUBSYSTEM=="usb", ATTR{idVendor}=="316d", ATTR{idProduct}=="4c4b", GROUP="wheel", TAG+="uaccess"

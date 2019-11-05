@@ -1,13 +1,13 @@
 pkgbase = librem-key-udev
 	pkgdesc = Udev rules to allow the wheel group access to the Librem Key
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	install = librem-key-udev.install
 	arch = any
 	license = GPL2
 	depends = systemd
 	source = 51-librem-key.rules
-	md5sums = ffae0fb25bc851a4a0c062a88b1930f4
+	md5sums = c27e25e25cb9c3e638e4ac377c1096f5
 
 pkgname = librem-key-udev
 
