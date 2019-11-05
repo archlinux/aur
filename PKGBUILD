@@ -1,7 +1,7 @@
 # Maintainer: hfte@posteo.org
 pkgname=sws
 pkgver=2.10.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A collection of features that seamlessly integrate into REAPER"
 arch=('x86_64')
 url="http://www.sws-extension.org/"
@@ -12,10 +12,10 @@ provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 source=("git://github.com/reaper-oss/sws.git"
 	"git://github.com/justinfrankel/WDL.git/"
-	"https://swsaur.000webhostapp.com/files/reaper_plugin_functions.tar.xz")
+	"http://hosting121501.a2fb8.netcup.net/reaper_plugin_functions.h")
 sha256sums=('SKIP'
 	    'SKIP'
-            '5a8bfe55b1687ffcb173121bd85cf58ede78dc959dce230e5524e62fbe07890b')
+            '033f520e4e03e9311a1e0b7d65b9b00784c0c35f46da42cf7ca691db058a1be1')
 
 pkgver() {
 	cd "$pkgname"
