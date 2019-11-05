@@ -23,4 +23,7 @@ build() {
 package() {
     cd "$srcdir"
     tar -xvf "$srcdir"/*.tar.xz -C "$pkgdir"
+    for f in .BUILDINFO .INSTALL .MTREE .PKGINFO; do
+      rm -f "$pkgdir/$f"
+    done
 }
