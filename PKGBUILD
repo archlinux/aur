@@ -2,7 +2,7 @@
 
 pkgname=sopel
 pkgver=6.6.9
-pkgrel=1
+pkgrel=2
 pkgdesc="An easy-to-use and highly extensible IRC Bot framework (Formerly Willie)"
 arch=('any')
 license=('custom:EFL')
