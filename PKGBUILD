@@ -1,4 +1,5 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
+# shellcheck disable=SC2034,SC2164,SC2154
 
 _pkgname="mitsuba"
 _pkgver="0.6.0"
@@ -46,14 +47,20 @@ prepare() {
     # "You must build your code with position independent code
     #  if Qt was built with -reduce-relocations.
     # "Compile your code with -fPIC (-fPIE is not enough)."
-    sed -i "s/CXXFLAGS[ ]*= \[/&'-fPIC', /g" config.py
+    sed -i "s/^CXXFLAGS[ ]*= \[/&'-fPIC', /g" config.py
+
+    # Scons doesn't honor environment variables
+    # user has to export then manually in Sconscript file.
+    sed -E -i "s/^(SH)?LINKFLAGS[ ]*= \[/&\'${LDFLAGS}\', /g" config.py
+    sed -i "s/^CFLAGS[ ]*= \[/&\'${CFLAGS// /\',\'}\', /g" config.py
+    sed -i "s/^CXXFLAGS[ ]*= \[/&\'${CXXFLAGS// /\',\'}\', /g" config.py
 
     git apply ${srcdir}/python3.5.patch
 }
 
 build() {
     cd "${_pkgname}"
-    scons2 --jobs=$[${MAKEFLAGS/-j/} - 1]
+    scons2 --jobs=$((${MAKEFLAGS/-j/} - 1))
     
 }
 
@@ -83,7 +90,7 @@ package() {
 	install -m644 dist/data/ior/* ${pkgdir}/usr/share/mitsuba/data/ior
 	install -m644 dist/data/microfacet/* ${pkgdir}/usr/share/mitsuba/data/microfacet
 	install -m644 dist/python/2.7/mitsuba.so ${pkgdir}/usr/lib/python2.7/lib-dynload
-        install -m644 dist/python/${_pyver}/mitsuba.so ${pkgdir}/usr/lib/python${_pyver}/lib-dynload
+	install -m644 dist/python/${_pyver}/mitsuba.so ${pkgdir}/usr/lib/python${_pyver}/lib-dynload
 	install -m644 data/linux/mitsuba.desktop ${pkgdir}/usr/share/applications
 	install -m644 src/mtsgui/resources/mitsuba48.png ${pkgdir}/usr/share/pixmaps
 	install -m644 include/mitsuba/*.h ${pkgdir}/usr/include/mitsuba
