@@ -9,7 +9,7 @@ _dlurl=("https://www.snapgene.com/local/targets/viewer_download.php?os=linux_rpm
 _filename=$(curl --silent --head --location "$_dlurl" | grep -Po 'filename=".*"' | cut -d'"' -f2)
 pkgver="$(grep -Po '[0-9]([0-9]|\.)+[0-9]' <<< "$_filename")"
 source=("$_filename::$_dlurl")
-sha512sums=('7163cf178114073bba9d8e55c2afa56c1571b38ae5595328f8e141aec2af305f5883b8b198c9619093d153b383445147c5c246b3541d3584b9ab36610125c70f')
+sha512sums=('91b348cdaf2a7e399664252ceac96daf039f808c6bf297a7ccd8118cd2980c9b9f526442f0f9fa704e00f63ffafd35b74d8c313c8b9913ec1cf1f8ecbca8e635')
 
 package() {
     cd "$pkgdir"
