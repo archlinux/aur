@@ -30,6 +30,11 @@ build() {
   make build
 }
 
+check() {
+  cd $pkgname-$pkgver
+  make test
+}
+
 package() {
   cd $pkgname-$pkgver
   install -D stripe -t "$pkgdir"/usr/bin
