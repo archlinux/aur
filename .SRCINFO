@@ -1,6 +1,6 @@
 pkgbase = python-geopandas
 	pkgdesc = Geographic pandas extension
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/geopandas/geopandas
 	arch = any
@@ -20,8 +20,8 @@ pkgbase = python-geopandas
 	optdepends = python-geopy
 	optdepends = python-psycopg2
 	options = !emptydirs
-	source = https://github.com/geopandas/geopandas/archive/v0.6.0.tar.gz
-	sha256sums = b40fbb2110f333b2fbc72793541b4fbd0046f1127d8e67c1323107b1108a6a60
+	source = https://github.com/geopandas/geopandas/archive/v0.6.1.tar.gz
+	sha256sums = 07bd4427e28dccfaa5d2239c38896e1823d5dfddb151e8a266197b5595b3c2e5
 
 pkgname = python-geopandas
 
