@@ -3,7 +3,7 @@
 _pkgname=kicad-library-utils
 pkgname="${_pkgname}-git"
 pkgver=r992.0c0b035
-pkgrel=1
+pkgrel=2
 pkgdesc='Some scripts for helping with library development, git checkout'
 arch=('any')
 url='https://github.com/KiCad/kicad-library-utils'
