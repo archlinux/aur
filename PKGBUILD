@@ -1,7 +1,7 @@
 # Maintainer: TingPing tingping@tingping.se
 
 pkgname=hexchat-git
-pkgver=2.14.2.r15.gc1091c38
+pkgver=2.14.2.r25.g308838da
 pkgrel=1
 pkgdesc='A GTK+ based IRC client'
 arch=('i686' 'x86_64' 'armv6h')
