@@ -1,7 +1,7 @@
 # Maintainer: Alesh Slovak <aleshslovak@gmail.com>
 
 pkgname=steam-buddy
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc="..."
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/gamer-os/steam-buddy"
 license=('MIT')
 depends=('python' 'python-bottle' 'steam-tweaks' 'retroarch' 'libretro-genesis-plus-gx' 'libretro-nestopia' 'libretro-snes9x' 'retroarch-autoconfig-udev-git')
 source=("https://github.com/gamer-os/steam-buddy/archive/$pkgver.tar.gz")
-md5sums=('8d6827cb53a241670da52886c9e46f4e')
+md5sums=('f1e8e3acc0d999dde52dad7d7bcb3aea')
 
 package() {
   mkdir -p "$pkgdir/etc/systemd/system"
