@@ -1,7 +1,7 @@
 pkgbase = xflux-gui-git
 	pkgdesc = Better lighting for Linux. Open source GUI for xflux
 	pkgver = v1.2.0.r4.g23ac6af
-	pkgrel = 1
+	pkgrel = 2
 	url = https://justgetflux.com/linux.html
 	arch = any
 	license = MIT

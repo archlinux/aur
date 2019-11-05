@@ -2,7 +2,7 @@
 
 pkgname=xflux-gui-git
 pkgver=v1.2.0.r4.g23ac6af
-pkgrel=1
+pkgrel=2
 pkgdesc='Better lighting for Linux. Open source GUI for xflux'
 arch=(any)
 url='https://justgetflux.com/linux.html'
@@ -40,4 +40,5 @@ package(){
   cd "$srcdir/$_gitname"
   python setup.py install --root="$pkgdir"
   install -Dm755 LICENSE $pkgdir/usr/share/licenses/xflux-gui-git/LICENSE
+  rm -f "${pkgdir}/usr/share/glib-2.0/schemas/gschemas.compiled"
 }
