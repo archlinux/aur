@@ -1,11 +1,11 @@
 pkgname=dnf
-pkgver=4.2.11
+pkgver=4.2.15
 pkgrel=1
 pkgdesc="Package manager forked from Yum, using libsolv as a dependency resolver"
 arch=('any')
 url="https://github.com/rpm-software-management/$pkgname"
 license=('GPL2' 'GPL')
-depends=('libdnf>=0.35.5' 'libcomps>=0.1.8'
+depends=('libdnf>=0.36.0' 'libcomps>=0.1.8'
          'python' 'python-gpgme' 'rpm-org>=4.14.0')
 makedepends=('bash-completion' 'cmake' 'python-sphinx')
 checkdepends=('python-nose')
@@ -19,7 +19,7 @@ backup=("etc/$pkgname/automatic.conf"
         "etc/logrotate.d/$pkgname")
 options=('!emptydirs')
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('40770487691d9337fe30df200e8c1a4a')
+md5sums=('ac1b58ab10d41a0b5c2058f27eeebcc9')
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -58,6 +58,8 @@ package() {
 	   "$pkgdir/usr/share/man/man8/yum-shell.8"
 	ln -s $pkgname-3 "$pkgdir/usr/bin/$pkgname"
 	ln -s $pkgname-automatic-3 "$pkgdir/usr/bin/$pkgname-automatic"
+
+	rm "$pkgdir/etc/$pkgname/$pkgname-strict.conf"
 
 	install -Dp -m644 ../README.rst "$pkgdir/usr/share/doc/$pkgname/README.rst"
 }
