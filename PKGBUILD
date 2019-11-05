@@ -11,7 +11,7 @@ makedepends=('python2' 'python2-setuptools')
 
 source=("https://files.pythonhosted.org/packages/cf/71/3851700846f54fade72f1f8ec6744693632b388d38019eddfa767407b6c2/profilehooks-1.11.0.tar.gz"
         "LICENSE")
-sha256sums=('40eab473491bc37b70efe6462707781a0730d86f78a1f5fd1c02dc9e4186f94b'
+sha256sums=('af2c9f526ec5ff52689c2776df89cf850be1ecfbd707c76339e4af2c6789e011'
             '782297002c4e5baa591d289916113b39d8ae046e41855e6beb1266f26f9ec82a')
 
 build() {
