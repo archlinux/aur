@@ -1,7 +1,10 @@
 # Maintainer: renyuneyun (Rui ZHAO) <renyuneyun@gmail.com>
 pkgname=projfs
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
+pkgdesc='A FUSE filesystem doing projection of existing directory by a custom command'
+url='https://github.com/renyuneyun/projfs'
+license=('Apache')
 depends=('fuse2')
 makedepends=('rust' 'cargo')
 arch=('x86_64')
@@ -17,5 +20,4 @@ package() {
     cd "$pkgname"
     binname=proj_fs
     install -Dm755 "target/release/$binname" "$pkgdir/usr/bin/$pkgname"
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

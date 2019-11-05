@@ -1,4 +1,5 @@
 pkgbase = projfs
+	pkgdesc = A FUSE filesystem doing projection of existing directory by a custom command
 	pkgver = 0.1.1
 	pkgrel = 1
 	arch = x86_64
