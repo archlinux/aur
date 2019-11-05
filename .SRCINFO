@@ -1,0 +1,24 @@
+pkgbase = plasma5-applets-panon-git
+	pkgdesc = A Different Audio Spectrum Analyzer for KDE Plasma
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = http://github.com/rbn42/panon
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = plasma-workspace
+	depends = python-docopt
+	depends = python-numpy
+	depends = python-pillow
+	depends = python-pyaudio
+	depends = python-websockets
+	depends = qt5-websockets
+	depends = qt5-3d
+	provides = plasma5-applets-panon-git
+	conflicts = plasma5-applets-panon-git
+	conflicts = plasma5-applets-panon
+	source = git+https://github.com/rbn42/panon.git
+	md5sums = SKIP
+
+pkgname = plasma5-applets-panon-git
+
