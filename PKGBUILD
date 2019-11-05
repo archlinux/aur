@@ -1,6 +1,6 @@
 # Maintainer: Hans-Nikolai Viessmann <hv15 @ hw.ac.uk>
 pkgname=musikcube-git
-pkgver=r1767.cce2dbdb
+pkgver=0.70.0.r6.g9ce988f8
 pkgrel=1
 pkgdesc="a terminal-based cross-platform music player, audio engine, metadata indexer, and server"
 arch=('x86_64')
@@ -15,7 +15,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/${pkgname%-git}"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
