@@ -1,0 +1,12 @@
+pkgbase = projfs
+	pkgver = 0.1.1
+	pkgrel = 1
+	arch = x86_64
+	makedepends = rust
+	makedepends = cargo
+	depends = fuse2
+	source = git+https://github.com/renyuneyun/projfs.git#tag=v0.1.1
+	sha256sums = SKIP
+
+pkgname = projfs
+
