@@ -1,6 +1,6 @@
 pkgbase = kicad-library-utils-git
 	pkgdesc = Some scripts for helping with library development, git checkout
-	pkgver = r980.d3568c6
+	pkgver = r992.0c0b035
 	pkgrel = 1
 	url = https://github.com/KiCad/kicad-library-utils
 	arch = any
