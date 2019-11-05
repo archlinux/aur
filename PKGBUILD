@@ -1,10 +1,11 @@
 # Maintainer: Adrian Bacircea <adrian.bacircea@gmail.com>
+# Packager: Adrian Bacircea <adrian.bacircea@gmail.com>
 # Contributor: Alex Whitt <alex.joseph.whitt@gmail.com>
 
 _pkgsrcname=p4python
 pkgname=(python-p4python python2-p4python)
 pkgver=2018.2.1743033
-p4apiver=2018.1.1738923
+p4apiver=2018.1.1852931
 pkgrel=2
 pkgdesc="Interface to Perforce API for Python"
 url="https://www.perforce.com/perforce/doc.current/manuals/p4script/03_python.html"
@@ -13,7 +14,7 @@ license=('custom')
 source=($pkgname-$pkgver.tar.gz::"https://files.pythonhosted.org/packages/36/5a/0a1b192cdecd31cb8bc0d0ba39c73ffd84ce823053d0004823a1fdbe1440/p4python-2018.2.1743033.tar.gz"
         'http://ftp.perforce.com/perforce/r18.1/bin.linux26x86_64/p4api.tgz')
 sha256sums=('caa37ea520566f50181b042a474eb8012ff8dcbcc0512874170ad34bea1ba0c0'
-            'caa06e47fde11c5918524a1248fa51c7a08e597b01fb0d62a8cf85d95b359bb5')
+            '169ad6a504e03c45e74477e2f0e2d8e3d4f2db36311270663d6d0bad57f6426a')
 makedepends=('python-setuptools' 'python2-setuptools')
 depends=('openssl-1.0')
 
