@@ -1,7 +1,7 @@
 pkgbase = libinput-nomiddletap
 	pkgdesc = Input device management and event handling library (With middle button tap disabled)
 	pkgver = 1.14.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.freedesktop.org/wiki/Software/libinput/
 	arch = x86_64
 	license = custom:X11
@@ -18,9 +18,11 @@ pkgbase = libinput-nomiddletap
 	conflicts = libinput
 	source = https://freedesktop.org/software/libinput/libinput-1.14.3.tar.xz
 	source = https://freedesktop.org/software/libinput/libinput-1.14.3.tar.xz.sig
+	source = libinput-nomiddletap.patch
 	validpgpkeys = 3C2C43D9447D5938EF4551EBE23B7E70B467F0BF
 	sha512sums = f01d1bd1b25b8060519575644597d35f0c89de5386d298441f440128ceee3e57549921a058adec31adc8b33dbdedf4c0bd12c76905a69f752859d3136e26336d
 	sha512sums = SKIP
+	sha512sums = 4c95709c27794969459e31f8b0e71047e3c6b4fbd7ca6d9c2bac08b2c4dd1d25e44609175f1764e55e03c8e1510af8b712df3ee9879ec8b38e628ab0df540186
 
 pkgname = libinput-nomiddletap
 
