@@ -1,11 +1,11 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 _kvv="$(pacman -Qi linux-lts316|awk '/^Version/{print$3}')"
-_kvv="${_kvv:-3.16.69-1}"
+_kvv="${_kvv:-3.16.75-1}"
 _kvr="${_kvv:+${_kvv}-lts316}"
 _kvx="$(echo $_kvr|sed -e 's,\.[0-9][0-9]*-.*,,')"
 pkgname=openss7-modules-lts316-git
 _pkgname=openss7-modules-lts316
-pkgver=1.1.8.182.g5bbd5830b
+pkgver=1.1.8.206.g31908cb40
 pkgrel=1
 pkgdesc="OpenSS7 Fast-STREAMS and protocol Suites (${_kvx:-LTS 3.16} Kernel Modules)"
 arch=('x86_64' 'i686')
