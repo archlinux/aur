@@ -19,12 +19,12 @@ pkgbase = fcitx-mozc-neologd-ut+ut2
 	makedepends = bzip2
 	makedepends = unzip
 	source = https://osdn.net/frs/chamber_redir.php?m=iij&f=%2Fusers%2F24%2F24469%2Fmozc-neologd-ut-2.23.2815.102.20190911.1.tar.xz
-	source = https://ja.osdn.net/downloads/users/24/24326/mozc-2.23.2815.102%2Bdfsg~ut2-20171008d%2B20190718.tar.xz
+	source = https://ja.osdn.net/downloads/users/24/24521/mozc-2.23.2815.102%2Bdfsg~ut2-20171008d%2B20191014.tar.xz/
 	source = add-new-japanese-era.patch
 	source = fix-for-gcc81.patch
 	source = http://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-icon.tar.gz
 	sha1sums = SKIP
-	sha1sums = 08817779c4562cfeefb63b12185efbf9198982b1
+	sha1sums = 08befd9228998283b47bf29fefeb84442fb0b29e
 	sha1sums = 94502348e60659765d3e6ae2780d07e5104a06a2
 	sha1sums = 2bad0705a0a09d8d5a79c874b59c485052da2b38
 	sha1sums = 883f4fc489a9ed1c07d2d2ec37ca72509f04ea5d
