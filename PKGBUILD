@@ -8,7 +8,6 @@ arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/coapres/"
 license=("GPL3")
 depends=('java-environment')
-makedepends=('')
 source=(http://downloads.sourceforge.net/project/coapres/v$pkgver/Coapres.zip
         coapres.desktop
         coapres.png
