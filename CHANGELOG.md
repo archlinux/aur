@@ -1,7 +1,25 @@
 <a name="unreleased"></a>
 ## [Unreleased](https://gitlab.com/langurmonkey/gaiasky/tree/master)
-[Full changelog](https://gitlab.com/langurmonkey/gaiasky/compare/2.2.2...HEAD)
+[Full changelog](https://gitlab.com/langurmonkey/gaiasky/compare/2.2.3...HEAD)
 
+
+<a name="2.2.3"></a>
+## [2.2.3](https://gitlab.com/langurmonkey/gaiasky/tree/2.2.2) (2019-11-05)
+[Full changelog](https://gitlab.com/langurmonkey/gaiasky/compare/2.2.2...2.2.3)
+
+### Bug Fixes
+
+- improve user notification if wrong java version is used 
+- windows data loading crash -> [#308](https://gitlab.com/langurmonkey/gaiasky/issues/308) 
+### Build System
+
+- add some extra translations for Catalan, German and Spanish 
+### Features
+
+- update gaia sky icon with more modern version 
+- add more handy information in download manager 
+- add cancel download button to manager 
+- add support for release notes in download manager 
 
 <a name="2.2.2"></a>
 ## [2.2.2](https://gitlab.com/langurmonkey/gaiasky/tree/2.2.1) (2019-10-31)
