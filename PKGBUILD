@@ -8,7 +8,7 @@
 
 pkgbase=linux-galliumos
 _srcname=linux
-pkgver=4.14.14
+pkgver=4.16.18
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -26,7 +26,7 @@ _kernelname=${pkgbase#linux}
 prepare() {
   cd "${_srcname}"
 
-  bash galliumos/diffs/apply_all.sh
+  bash galliumos/bin/apply_patches
 
   cp galliumos/config .config
 
@@ -183,14 +183,6 @@ _package-headers() {
   # add wireless headers
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/net/mac80211/"
   cp net/mac80211/*.h "${pkgdir}/usr/lib/modules/${_kernver}/build/net/mac80211/"
-
-  # add dvb headers for external modules
-  # in reference to:
-  # http://bugs.archlinux.org/task/9912
-  mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/dvb-core"
-  cp drivers/media/dvb-core/*.h "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/dvb-core/"
-  # and...
-  # http://bugs.archlinux.org/task/11194
 
   # add dvb headers for http://mcentral.de/hg/~mrec/em28xx-new
   # in reference to:

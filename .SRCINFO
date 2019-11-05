@@ -1,5 +1,5 @@
 pkgbase = linux-galliumos
-	pkgver = 4.14.14
+	pkgver = 4.16.18
 	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = linux-galliumos
 	makedepends = git
 	makedepends = libelf
 	options = !strip
-	source = git+https://github.com/GalliumOS/linux.git#branch=v4.14.14-galliumos
+	source = git+https://github.com/GalliumOS/linux.git#branch=v4.16.18-galliumos
 	source = linux-galliumos.preset
 	sha256sums = SKIP
 	sha256sums = 2c8a0e7bea719c82005fd7158a4a7ca344b7af5a37fedce44b9fda488a9116c2
