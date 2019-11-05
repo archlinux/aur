@@ -1,6 +1,6 @@
 pkgbase = dive
 	pkgdesc = A tool for exploring each layer in a docker image
-	pkgver = 0.8.1
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/wagoodman/dive
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = dive
 	makedepends = go
 	depends = docker
 	conflicts = dive-git
-	source = dive-0.8.1.tar.gz::https://github.com/wagoodman/dive/archive/v0.8.1.tar.gz
-	sha256sums = 6663960b974a6aad1d1271fb04cdaa9c527adbffdb37b9ab62fa9ad323f0bcda
+	source = dive-0.9.0.tar.gz::https://github.com/wagoodman/dive/archive/v0.9.0.tar.gz
+	sha256sums = f72a6a0ae29b0e855cf6687062ba6b0c380c14527030e60f5b9091f0ddbcc135
 
 pkgname = dive
 

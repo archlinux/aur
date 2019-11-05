@@ -2,7 +2,7 @@
 # Contributor: David Stark <david@starkers.org>
 
 pkgname=dive
-pkgver=0.8.1
+pkgver=0.9.0
 pkgrel=1
 pkgdesc='A tool for exploring each layer in a docker image'
 url='https://github.com/wagoodman/dive'
@@ -12,16 +12,17 @@ depends=('docker')
 makedepends=('go')
 conflicts=('dive-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/wagoodman/dive/archive/v$pkgver.tar.gz")
-sha256sums=('6663960b974a6aad1d1271fb04cdaa9c527adbffdb37b9ab62fa9ad323f0bcda')
+sha256sums=('f72a6a0ae29b0e855cf6687062ba6b0c380c14527030e60f5b9091f0ddbcc135')
 
 build() {
-  # Trim pwd from path
-  export GOFLAGS="-gcflags=all=-trimpath=${PWD} -asmflags=all=-trimpath=${PWD} -ldflags=-extldflags=-zrelro -ldflags=-extldflags=-znow"
-
   cd $pkgname-$pkgver
-  go build --ldflags "-X main.version=$pkgver" .
+  go build \
+    -trimpath \
+    -ldflags "-X main.version=$pkgver" \
+    -o bin/dive \
+    .
 }
 
 package() {
-  install -Dm 755 "$srcdir/$pkgname-$pkgver/dive" "$pkgdir/usr/bin/dive"
+  install -Dm 755 "$srcdir/$pkgname-$pkgver/bin/dive" "$pkgdir/usr/bin/dive"
 }
