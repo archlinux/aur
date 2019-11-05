@@ -1,7 +1,7 @@
 # Maintainer: hfte@posteo.org
 pkgname=sws
 pkgver=2.10.0.1
-pkgrel=4
+pkgrel=5
 pkgdesc="A collection of features that seamlessly integrate into REAPER"
 arch=('x86_64')
 url="http://www.sws-extension.org/"
@@ -23,8 +23,7 @@ pkgver() {
 }
 
 prepare() {
-          cp "$srcdir/reaper_plugin_functions/reaper_plugin_functions.h"\
-             "$srcdir/$pkgname"
+          cp "$srcdir/reaper_plugin_functions.h" "$srcdir/$pkgname"
 }
 
 

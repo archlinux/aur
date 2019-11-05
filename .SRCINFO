@@ -1,7 +1,7 @@
 pkgbase = sws
 	pkgdesc = A collection of features that seamlessly integrate into REAPER
 	pkgver = 2.10.0.1
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.sws-extension.org/
 	arch = x86_64
 	license = MIT
