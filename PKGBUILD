@@ -6,9 +6,10 @@
 pkgname=snapd
 pkgdesc="Service and tools for management of snap packages."
 depends=('squashfs-tools' 'libseccomp' 'libsystemd' 'apparmor')
-optdepends=('bash-completion: bash completion support')
-pkgver=2.42
-pkgrel=2
+optdepends=('bash-completion: bash completion support'
+            'xdg-desktop-portal: desktop integration')
+pkgver=2.42.1
+pkgrel=1
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://github.com/snapcore/snapd"
 license=('GPL3')
@@ -16,8 +17,12 @@ makedepends=('git' 'go' 'go-tools' 'libseccomp' 'libcap' 'systemd' 'xfsprogs' 'p
 conflicts=('snap-confine')
 options=('!strip' 'emptydirs')
 install=snapd.install
-source=("$pkgname-$pkgver.tar.xz::https://github.com/snapcore/${pkgname}/releases/download/${pkgver}/${pkgname}_${pkgver}.vendor.tar.xz")
-sha256sums=('44a7cf510495d3d057606d2f9cf7c851b4cc48fc60abbe83040dff6a85d9fe6d')
+source=("$pkgname-$pkgver.tar.xz::https://github.com/snapcore/${pkgname}/releases/download/${pkgver}/${pkgname}_${pkgver}.vendor.tar.xz"
+        "0001-sandbox-seccomp-accept-build-ID-generated-by-Go-tool.patch"
+        "0002-cmd-snap-seccomp-syscalls-update-the-list-of-known-s.patch")
+sha256sums=('5f9b6483cba19bcb5c8d2fbaae194db29b747b7bb0a32c16a3477efd228cea3c'
+            '572c0a67c6c68ee7bf344d97a3612813fb09264ade9cba87f4a8770c89984104'
+            'f3e8be1d15896e334335dac4bebd978d2e2465e65e6c02f706ef32857398541a')
 
 _gourl=github.com/snapcore/snapd
 
@@ -32,6 +37,15 @@ prepare() {
   # above describes.
   mkdir -p "$(dirname "$GOPATH/src/${_gourl}")"
   ln --no-target-directory -fs "$srcdir/$pkgname-$pkgver" "$GOPATH/src/${_gourl}"
+
+  for name in "${source[@]}"; do
+      if [[ "${name%.patch}" == "$name" ]]; then
+          # not a patch
+          continue
+      fi
+      msg2 "applying $name"
+      patch -p1 -i "$srcdir/$name"
+  done
 }
 
 build() {
