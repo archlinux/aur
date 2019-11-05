@@ -13,7 +13,7 @@
 pkgbase=linux-nitrous-git
 _srcname=linux-nitrous
 pkgver=5.3.8
-pkgrel=13
+pkgrel=14
 arch=('x86_64')
 url="https://gitlab.com/xdevs23/linux-nitrous"
 license=('GPL2')
@@ -135,12 +135,17 @@ _package-headers() {
   install -dm755 "${pkgdir}/usr/lib/modules/${_kernver}"
 
   cd "${_srcname}"
+
   install -D -m644 Makefile \
     "${pkgdir}/usr/lib/modules/${_kernver}/build/Makefile"
   install -D -m644 kernel/Makefile \
     "${pkgdir}/usr/lib/modules/${_kernver}/build/kernel/Makefile"
   install -D -m644 .config \
     "${pkgdir}/usr/lib/modules/${_kernver}/build/.config"
+
+  for f in Makefile kernel/Makefile; do
+    sed -i -re '/^.*[+]= *(-Qunused-arguments|-mno-global-merge|-ftrivial-auto-var-init=pattern)$/d' $f
+  done
 
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/include"
 

@@ -1,6 +1,7 @@
 good
 *.pkg.tar.xz
 *.tar
+*.pkg
 pkg
 src
 zen-config
