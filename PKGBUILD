@@ -1,32 +1,30 @@
+# Maintainer: Andrew Sun <adsun701 at gmail dot com>
+# Contributor: Crocomo <crocomo@gmx.net>
 # Author: Mondrian Nuessle <mondrian.nuessle@googlemail.com>
 # Author: Andreas Neuper <ANeuper-at-web-dot-de>
 # Author: Olivier Matheret <matheret@free.fr>
 # Author: Pete Hildebrandt <send2ph@googlemail.com>
-# Maintainer: Crocomo <crocomo@gmx.net>
 
 pkgname=sispmctl
-pkgver=4.0
+pkgver=4.2
 pkgrel=1
 pkgdesc="Enabling the use of the Gembird SIS-PM Silver Shield device family"
 arch=('i686' 'x86_64')
-url="http://sispmctl.sourceforge.net/"
-license=('GPL')
+url="http://sispmctl.sourceforge.net"
+license=('GPL2')
 depends=('libusb-compat')
-makedepends=('pkgconfig')
-source=(http://downloads.sourceforge.net/project/$pkgname/$pkgname/$pkgname-$pkgver/$pkgname-$pkgver.tar.gz)
-md5sums=('b66b62dd4068b95b5a7652120d864ff8')
+source=("https://downloads.sourceforge.net/project/${pkgname}/${pkgname}/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('300adc32ab35a4f9260705f8f57ccd83c3c6601fc493dbe7d259335938819aaf')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-
-  ./configure --prefix=/usr --enable-webless
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-
-  make DESTDIR="$pkgdir" install
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  make DESTDIR="${pkgdir}" install
 }
 
 # vim:set ts=2 sw=2 et:

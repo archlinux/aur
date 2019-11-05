@@ -1,15 +1,14 @@
 pkgbase = sispmctl
 	pkgdesc = Enabling the use of the Gembird SIS-PM Silver Shield device family
-	pkgver = 4.0
+	pkgver = 4.2
 	pkgrel = 1
-	url = http://sispmctl.sourceforge.net/
+	url = http://sispmctl.sourceforge.net
 	arch = i686
 	arch = x86_64
-	license = GPL
-	makedepends = pkgconfig
+	license = GPL2
 	depends = libusb-compat
-	source = http://downloads.sourceforge.net/project/sispmctl/sispmctl/sispmctl-4.0/sispmctl-4.0.tar.gz
-	md5sums = b66b62dd4068b95b5a7652120d864ff8
+	source = https://downloads.sourceforge.net/project/sispmctl/sispmctl/sispmctl-4.2/sispmctl-4.2.tar.gz
+	sha256sums = 300adc32ab35a4f9260705f8f57ccd83c3c6601fc493dbe7d259335938819aaf
 
 pkgname = sispmctl
 
