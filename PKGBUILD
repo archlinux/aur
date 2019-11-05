@@ -3,7 +3,7 @@
 pkgbase=linux-nitrous-headers
 pkgname=linux-nitrous-headers
 pkgver=5.3.8
-pkgrel=14
+pkgrel=15
 _tar_pkgrel=12
 pkgdesc="Headers for linux-nitrous"
 arch=('x86_64')
@@ -24,8 +24,10 @@ build() {
 package() {
     cd "$srcdir"
     cp -R "$srcdir/." "$pkgdir/."
-    mv "$srcdir/.INSTALL" "${startdir}/linux-nitrous-headers.install"
-    install="linux-nitrous-headers.install"
+    if [ -f "$srcdir/.INSTALL" ]; then
+      mv "$srcdir/.INSTALL" "${startdir}/linux-nitrous-headers.install"
+      install="linux-nitrous-headers.install"
+    fi
     for f in .BUILDINFO .INSTALL .MTREE .PKGINFO; do
       rm -f "$pkgdir/$f"
     done
