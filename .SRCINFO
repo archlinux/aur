@@ -1,7 +1,7 @@
 pkgbase = emacs-gtk2
 	pkgdesc = The extensible, customizable, self-documenting real-time display editor
-	pkgver = 26.1
-	pkgrel = 3
+	pkgver = 26.3
+	pkgrel = 1
 	url = http://www.gnu.org/software/emacs/emacs.html
 	arch = x86_64
 	license = GPL3
@@ -19,18 +19,12 @@ pkgbase = emacs-gtk2
 	depends = gnutls
 	provides = emacs
 	conflicts = emacs
-	source = ftp://ftp.gnu.org/gnu/emacs/emacs-26.1.tar.xz
-	source = ftp://ftp.gnu.org/gnu/emacs/emacs-26.1.tar.xz.sig
-	source = 0001-Ignore-color-fonts-when-using-Xft.patch
-	source = 0001-Port-FC_COLOR-change-to-older-fontconfig.patch
-	source = 0001-src-ftfont.c-ftfont_spec_pattern-Fix-whitespace.patch
+	source = ftp://ftp.gnu.org/gnu/emacs/emacs-26.3.tar.xz
+	source = ftp://ftp.gnu.org/gnu/emacs/emacs-26.3.tar.xz.sig
 	validpgpkeys = B29426DEFB07724C3C35E5D36592E9A3A0B0F199
 	validpgpkeys = 28D3BED851FDF3AB57FEF93C233587A47C207910
-	sha256sums = 1cf4fc240cd77c25309d15e18593789c8dbfba5c2b44d8f77c886542300fd32c
+	sha256sums = 4d90e6751ad8967822c6e092db07466b9d383ef1653feb2f95c93e7de66d3485
 	sha256sums = SKIP
-	sha256sums = 5bc53171bbb82e6dea26950f14da6a06f4371162b3bccb624397365e6e02f480
-	sha256sums = 6d16de2078108d742a8935044926f439869e231cc18ec23777bbed4857625f96
-	sha256sums = ca48398d6a83e9a22a4117beca151f476e6286a9abbfddd0f7c0f187ebfc50d7
 
 pkgname = emacs-gtk2
 
