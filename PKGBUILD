@@ -49,22 +49,17 @@ source=("${_TIANO_DIR_}::git+https://github.com/tianocore/edk2.git#branch=master
 sha1sums=('SKIP')
 
 pkgver() {
-
 	cd "${srcdir}/${_TIANO_DIR_}/"
 	echo "$(git rev-list --count HEAD).$(git describe --always)" | sed -e 's|-|\.|g'
-
 }
 
 _setup_env_vars() {
-
 	msg "Setup UDK PATH ENV variables"
 	export _UDK_DIR="${srcdir}/${_TIANO_DIR_}"
 	export EDK_TOOLS_PATH="${_UDK_DIR}/BaseTools"
-
 }
 
 _prepare_tianocore_sources() {
-
 	cd "${_UDK_DIR}/"
 
 	msg "Cleanup UDK config files"
@@ -98,21 +93,17 @@ _prepare_tianocore_sources() {
 	sed "s|IA32|X64|g" -i "${EDK_TOOLS_PATH}/Conf/target.template" || true
 
 	chmod 0755 "${_UDK_DIR}/BaseTools/BuildEnv"
-
 }
 
 prepare() {
-
 	_setup_env_vars
 
 	msg "Prepare Tianocore Sources"
 	_prepare_tianocore_sources
 	echo
-
 }
 
 build() {
-
 	_setup_env_vars
 
 	cd "${_UDK_DIR}/"
@@ -155,11 +146,9 @@ build() {
 		"${EDK_TOOLS_PATH}/BinWrappers/PosixLike/build" -p "${_UDK_TARGET}" -a "IA32" -b "${_TIANOCORE_TARGET}" -t "${_COMPILER}"
 		echo
 	fi
-
 }
 
 package() {
-
 	_setup_env_vars
 
 	msg "Install the UEFI Shell v2 ${_TIANO_ARCH} binary"
@@ -171,5 +160,4 @@ package() {
 		install -d "${pkgdir}/usr/share/uefi-shell"
 		install -D -m0644 "${_UDK_DIR}/Build/${_TIANOCORE_PKG}/${_TIANOCORE_TARGET}_${_COMPILER}/IA32/Shell_${_GUID}.efi" "${pkgdir}/usr/share/uefi-shell/shellia32_v2.efi"
 	fi
-
 }
