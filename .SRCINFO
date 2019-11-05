@@ -6,6 +6,7 @@ pkgbase = linux-nitrous
 	arch = x86_64
 	license = GPL2
 	makedepends = tar
+	optdepends = linux-nitrous-headers: to build DKMS modules against this kernel
 	provides = linux
 	conflicts = linux-nitrous-git
 	source = https://github.com/xdevs23/linux-nitrous/releases/download/v5.3.8-12/linux-nitrous-git-5.3.8-12-x86_64.pkg.tar.xz

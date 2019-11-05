@@ -13,6 +13,9 @@ depends=()
 provides=('linux')
 conflicts=('linux-nitrous-git')
 makedepends=('tar')
+optdepends=(
+    'linux-nitrous-headers: to build DKMS modules against this kernel'
+    )
 source=("https://github.com/xdevs23/linux-nitrous/releases/download/v$pkgver-$_tar_pkgrel/linux-nitrous-git-$pkgver-$_tar_pkgrel-x86_64.pkg.tar.xz")
 sha256sums=('fe0023e1f244a7f98247d434b01a5ab20eb23aebcccc61ddd8188ed06c5111b9')
 
