@@ -59,12 +59,12 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=4.14
-_minor=151
+_minor=152
 _srcname=linux-${_major}
 _clr=${_major}.150-72
 pkgbase=linux-clear-lts2017
 pkgver=${_major}.${_minor}
-pkgrel=5
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux-lts2017"
 license=('GPL2')
@@ -80,7 +80,7 @@ source=(
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
-export KBUILD_BUILD_TIMESTAMP="@${SOURCE_DATE_EPOCH:-$(date +%s)}"
+export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
 prepare() {
     cd ${_srcname}
@@ -318,7 +318,7 @@ done
 
 sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'SKIP'
-            '1a7fd60f82c659ada834780a57517fe4f851111db2d3a6476cc6713c428076ad'
+            '36ad97ba38c7d63c3047d76b24f79231d5942c6011bd4947cde1703861ab4e86'
             'SKIP'
             '8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5')
 
