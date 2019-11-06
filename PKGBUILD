@@ -10,7 +10,7 @@ _pkgname=${pkgname%-git}
 provides=(gimp)
 conflicts=(gimp)
 epoch=2
-pkgver=2.99.1.r4007.d217028032
+pkgver=2.99.1.r4050.6592671e21
 pkgrel=1
 pkgdesc="GNU Image Manipulation Program (non-conflicting git version)"
 arch=('i686' 'x86_64')
@@ -38,7 +38,7 @@ depends=(
 	'appstream-glib>=0.7.7'
         'gobject-introspection>=1.32.0'
 	)
-makedepends=('git' 'gutenprint>=5.0.0' 'intltool>=0.40.1'
+makedepends=('git' 'intltool>=0.40.1'
              'alsa-lib>=1.0.0' 'libxslt' 'glib-networking'
              'alsa-lib' 'curl' 'ghostscript' 'libxpm' 'webkit2gtk'
              'libheif' 'libwebp' 'libmng' 'iso-codes' 'aalib' 'zlib'
