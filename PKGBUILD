@@ -1,18 +1,18 @@
 # Maintainer: Maxim Polishchuck <mpolishchuck[at]gmail[dot]com>
 
 pkgname=eusw
-pkgver=1.3.1.22
+pkgver=1.3.1.35
 pkgrel=1
 pkgdesc="IIT End User CA-1. Sign (web)"
 url="http://iit.com.ua"
 arch=('i686' 'x86_64')
 
 if [[ $CARCH = i686 ]]; then
-    _src_md5sum='6715a8e3e89ac70fa08b012efa1f14d8'
+    _src_md5sum='0f327f66fbcac2eb291f941d495bb6fe'
     _srcuri_filename='euswi.deb'
     _src_filename="eusw_${pkgver}_i386.deb"
 else
-    _src_md5sum='8f27bf27e64bebd5a3739484ac4ddbb1'
+    _src_md5sum='5abb7409c0e3b2a7f6529b1bc92efd21'
     _srcuri_filename='euswi.64.deb'
     _src_filename="eusw_${pkgver}_amd64.deb"
 fi
