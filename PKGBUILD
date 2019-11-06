@@ -1,7 +1,7 @@
 # Maintainer: Marc Jose <marc@marc-jose.de>
 
 pkgname='python-pybadges-git'
-pkgver=r43.9106d2e
+pkgver=r49.d2897da
 pkgrel=1
 conflicts=('python-pybadges')
 provides=('python-pybadges')
@@ -11,13 +11,13 @@ url="https://github.com/google/pybadges"
 license=('Apache')
 depends=('python')
 makedepends=('git' 'python-setuptools' 'grep')
-source=("${pkgname}-${pkgver}::git+https://github.com/google/pybadges.git")
+source=("${pkgname}::git+https://github.com/google/pybadges.git")
 md5sums=('SKIP')
 
 pkgver() {
     set -o pipefail
     
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/${pkgname}"
     
 
     gitversion=$(printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)")
@@ -36,12 +36,12 @@ pkgver() {
 }
 
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/${pkgname}"
     python setup.py build
 }
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/${pkgname}"
     
     python setup.py install --skip-build -O1 --root="${pkgdir}"
     

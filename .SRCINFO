@@ -1,6 +1,6 @@
 pkgbase = python-pybadges-git
 	pkgdesc = A Python library for creating Github-style badges
-	pkgver = r43.9106d2e
+	pkgver = r49.d2897da
 	pkgrel = 1
 	url = https://github.com/google/pybadges
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-pybadges-git
 	depends = python
 	provides = python-pybadges
 	conflicts = python-pybadges
-	source = python-pybadges-git-r43.9106d2e::git+https://github.com/google/pybadges.git
+	source = python-pybadges-git::git+https://github.com/google/pybadges.git
 	md5sums = SKIP
 
 pkgname = python-pybadges-git
