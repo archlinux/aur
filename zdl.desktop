@@ -1,0 +1,13 @@
+[Desktop Entry]
+Comment=A frontend for multiple Doom source ports
+Exec=zdl
+Categories=Game
+Name=ZDL
+Icon=zdl
+NoDisplay=false
+Path[$e]=
+StartupNotify=true
+Terminal=0
+TerminalOptions=
+Type=Application
+

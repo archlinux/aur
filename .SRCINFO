@@ -1,0 +1,24 @@
+pkgbase = qzdl-git
+	pkgdesc = A ZDoom launcher using Qt - git version
+	pkgver = 491.68668f1
+	pkgrel = 1
+	url = http://zdl.vectec.net
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	depends = qt5-base
+	depends = hicolor-icon-theme
+	optdepends = gzdoom
+	optdepends = prboom-plus
+	optdepends = chocolate-doom
+	optdepends = crispy-doom
+	optdepends = freedoom
+	conflicts = qzdl
+	source = git+https://github.com/qbasicer/qzdl.git
+	source = zdl.desktop
+	sha256sums = SKIP
+	sha256sums = ba17717a3dee6043696e349ea56951fa2848d8fc5271b0ce3d4ac8fafdd711a7
+
+pkgname = qzdl-git
+
