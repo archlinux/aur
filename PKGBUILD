@@ -57,9 +57,9 @@ _localetor() {
 	local _fulllocale="$(locale | grep LANG | cut -d= -f2 | cut -d. -f1 | sed s/_/\-/)"
 	local _shortlocale="$(locale | grep LANG | cut -d= -f2 | cut -d_ -f1)"
 
-	if curl --output /dev/null --silent --head --fail "${_urlbase}/${pkgname}-${_archstr}-${pkgver}_${_fulllocale}.tar.xz"; then
+	if curl --output /dev/null --silent --head --fail "${_urlbase}/tor-browser-${_archstr}-${pkgver}_${_fulllocale}.tar.xz"; then
 		echo -n "${_fulllocale}"
-	elif curl --output /dev/null --silent --head --fail "${_urlbase}/${pkgname}-${_archstr}-${pkgver}_${_shortlocale}.tar.xz"; then
+	elif curl --output /dev/null --silent --head --fail "${_urlbase}/tor-browser-${_archstr}-${pkgver}_${_shortlocale}.tar.xz"; then
 		echo -n "${_shortlocale}"
 	else
 		echo -n 'en-US'
@@ -77,8 +77,8 @@ _dist_checksum() {
 	curl --silent --fail "${_urlbase}/sha256sums-signed-build.txt" | grep "${1}-${pkgver}_${_language}.tar.xz" | cut -d ' ' -f1
 
 }
-source_i686=("${_urlbase}/${pkgname}-${_tag_i686}-${pkgver}_${_language}.tar.xz"{,.asc})
-source_x86_64=("${_urlbase}/${pkgname}-${_tag_x86_64}-${pkgver}_${_language}.tar.xz"{,.asc})
+source_i686=("${_urlbase}/tor-browser-${_tag_i686}-${pkgver}_${_language}.tar.xz"{,.asc})
+source_x86_64=("${_urlbase}/tor-browser-${_tag_x86_64}-${pkgver}_${_language}.tar.xz"{,.asc})
 source=("${pkgname}.desktop"
 	"${pkgname}.png"
 	"${pkgname}.sh")
@@ -95,8 +95,8 @@ sha256sums_i686=($(_dist_checksum "${_tag_i686}")
 sha256sums_x86_64=($(_dist_checksum "${_tag_x86_64}")
                    'SKIP')
 
-noextract=("${pkgname}-${_tag_i686}-${pkgver}_${_language}.tar.xz"
-           "${pkgname}-${_tag_x86_64}-${pkgver}_${_language}.tar.xz")
+noextract=("tor-browser-${_tag_i686}-${pkgver}_${_language}.tar.xz"
+           "tor-browser-${_tag_x86_64}-${pkgver}_${_language}.tar.xz")
 
 prepare() {
 
@@ -144,7 +144,7 @@ package() {
 	install -Dm 644 "${pkgname}.png"		"${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 	install -Dm 755 "${pkgname}.sh"		"${pkgdir}/usr/bin/${pkgname}"
 
-	install -Dm 644 "${pkgname}-${_archstr}-${pkgver}_${_language}.tar.xz" "${pkgdir}/opt/${pkgname}/${pkgname}-${_archstr}-${pkgver}_${_language}.tar.xz"
+	install -Dm 644 "tor-browser-${_archstr}-${pkgver}_${_language}.tar.xz" "${pkgdir}/opt/${pkgname}/tor-browser-${_archstr}-${pkgver}_${_language}.tar.xz"
 
 }
 
