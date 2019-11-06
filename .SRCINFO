@@ -44,5 +44,5 @@ pkgbase = trueconf-client
 	sha1sums = 830c54f74be17071bc7ae58e15f8810cefd65910
 	sha1sums = c916985ed95004a15eb1c84c59f3ca313f5ea3be
 
-pkgname = trueconf
+pkgname = trueconf-client
 
