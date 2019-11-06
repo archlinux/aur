@@ -5,7 +5,6 @@ libalpm = dependency('libalpm')
 json = dependency('json-glib-1.0')
 libsoup = dependency('libsoup-2.4')
 polkit = dependency('polkit-gobject-1')
-libcurl = dependency('libcurl')
 libnotify = dependency('libnotify')
 appstream = dependency('appstream-glib')
 
@@ -30,7 +29,7 @@ common_sources = ['common.vala', 'package.vala', 'alpm_package.vala', 'pamac_con
 # preferences_sources = ['preferences_dialog.vala']
 
 libpamac_sources = [common_sources, 'alpm_config.vala', 'aur.vala', 'database.vala', 'transaction_interface.vala', 'alpm_utils.vala', 'transaction_interface_root.vala', 'daemon_interface.vala', 'transaction_interface_daemon.vala', 'transaction.vala']
-libpamac_dependencies = [alpm_deps, math, json, appstream, libsoup, libcurl]
+libpamac_dependencies = [alpm_deps, math, json, appstream, libsoup]
 
 if get_option('enable-snap')
 	snapd = dependency('snapd-glib')
@@ -75,7 +74,7 @@ libpamac_dep = declare_dependency(link_with: libpamac)
 
 executable('pamac-daemon',
 	sources: ['common_daemon.vala', 'alpm_utils.vala', 'alpm_config.vala', 'daemon.vala'],
-	dependencies: [vala_deps, alpm_deps, json, math, libsoup, polkit, libcurl, appstream, libpamac_dep],
+	dependencies: [vala_deps, alpm_deps, json, math, libsoup, polkit, appstream, libpamac_dep],
 	vala_args: common_vala_args,
 	c_args: [common_c_args, alpm_c_args],
 	install : true)
