@@ -1,13 +1,13 @@
 pkgbase = ohsnap-otb
-	pkgdesc = Monospaced font based on Artwiz Snap with bold and versions with status icons (OTB version)
+	pkgdesc = Monospaced font based on Artwiz Snap (OTB version)
 	pkgver = 1.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sourceforge.net/projects/osnapfont
 	arch = any
-	license = custom
+	license = GPL2
 	makedepends = git
 	makedepends = fonttosfnt-git
-	source = https://sourceforge.net/projects/osnapfont/files/latest/download/ohsnap-1.8.0.tar.gz
+	source = https://sourceforge.net/projects/osnapfont/files/ohsnap-1.8.0.tar.gz
 	md5sums = aeb3d8e1f9634900036f886a14b3b03a
 	sha256sums = 081729e01699a867b9ad792e63a17d2ab333a6073833a6a8f3f27f32fc27185f
 
