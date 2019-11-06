@@ -8,6 +8,7 @@ pkgbase = openboardview
 	license = MIT
 	makedepends = git
 	makedepends = cmake
+	makedepends = python
 	depends = sdl2
 	depends = sqlite
 	depends = zlib

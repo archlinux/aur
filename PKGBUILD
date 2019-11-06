@@ -9,20 +9,20 @@ arch=('i686' 'x86_64')
 url='https://openboardview.org/'
 license=('MIT')
 depends=('sdl2' 'sqlite' 'zlib' 'fontconfig' 'gtk3' 'libpng')
-makedepends=('git' 'cmake')
+makedepends=('git' 'cmake' 'python')
 source=("git+https://github.com/OpenBoardView/OpenBoardView.git#tag=R${pkgver}")
 sha512sums=('SKIP')
 
 build() {
-    mkdir -p "${srcdir}/${_pkgname}/build"
-    cd "${srcdir}/${_pkgname}/build"
-    cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
-    make
+  mkdir -p ${_pkgname}/build
+  cd ${_pkgname}/build
+  cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
+  make
 }
 
 package() {
-    cd "${srcdir}/${_pkgname}"
-    install -Dm755 build/src/openboardview/openboardview "${pkgdir}/usr/bin/openboardview"
-    install -Dm755 utilities/bvconv.sh "${pkgdir}/usr/bin/bvconv"
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  cd ${_pkgname}
+  install -Dm755 build/src/openboardview/openboardview "${pkgdir}"/usr/bin/openboardview
+  install -Dm755 utilities/bvconv.sh "${pkgdir}"/usr/bin/bvconv
+  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
