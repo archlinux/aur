@@ -1,0 +1,13 @@
+[Unit]
+Description=Authentication Mail Filter Daemon
+After=network.target nss-lookup.target
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/vendor_perl/authentication_milter --control=start
+ExecStop=/usr/bin/vendor_perl/authentication_milter --control=stop
+ExecReload=/usr/bin/vendor_perl/authentication_milter --control=restart
+PIDFile=/run/authentication_milter.pid
+
+[Install]
+WantedBy=multi-user.target
