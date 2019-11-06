@@ -15,7 +15,7 @@ arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://gitlab.manjaro.org/applications/pamac"
 license=('GPL3')
 depends=('glib2>=2.42' 'json-glib' 'libsoup' 'dbus-glib' 'polkit' 'vte3>=0.38' 'gtk3>=3.22'
-         'libnotify' 'desktop-file-utils' 'pacman>=5.1' 'gnutls>=3.4'
+         'libnotify' 'desktop-file-utils' 'pacman>=5.2' 'gnutls>=3.4'
          'appstream-glib' 'archlinux-appstream-data')
 
   optdepends=('polkit-gnome: needed for authentification in Cinnamon, Gnome'
