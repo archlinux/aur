@@ -1,6 +1,6 @@
 pkgbase = igdm
 	pkgdesc = Desktop application for Instagram DMs
-	pkgver = 2.7.1
+	pkgver = 2.8.1
 	pkgrel = 1
 	url = https://github.com/ifedapoolarewaju/igdm
 	arch = x86_64
@@ -13,14 +13,14 @@ pkgbase = igdm
 	depends = gconf
 	provides = igdm
 	conflicts = igdm
-	noextract = IGdm-2.7.1.zip
-	noextract = IGdm-2.7.1-ia32.zip
+	noextract = IGdm-2.8.1.zip
+	noextract = IGdm-2.8.1-ia32.zip
 	source = igdm.desktop
 	sha512sums = 3389360a07b982774c4043684b1a0d63ace26a5a4106b052748b806ada8f2aa9a94991e144cb2bdda50aa859bb478237cb201d5864b565f4590b84745df8583c
-	source_x86_64 = https://github.com/ifedapoolarewaju/igdm/releases/download/v2.7.1/IGdm-2.7.1.zip
-	sha512sums_x86_64 = 5a8ff9185e9f145b860ab578f431f1f14371fd86178ff4d7cc62a3ca07b4a713c7209c2ae15ed8f8f2cd768c570f1086f9d9432680b8425e0fa137da9ab027af
-	source_i686 = https://github.com/ifedapoolarewaju/igdm/releases/download/v2.7.1/IGdm-2.7.1-ia32.zip
-	sha512sums_i686 = 68683911ec40ae9683dc01c53e8ebc24b1447d3ff1d2a7e440824658db714a9c8be1f1601d4dd23e6f93bc2c4e9f0d15406e5c53f668ae6c9e072f5340525ff4
+	source_x86_64 = https://github.com/ifedapoolarewaju/igdm/releases/download/v2.8.1/IGdm-2.8.1.zip
+	sha512sums_x86_64 = 18953485759236432a6a67d71a530718455a8405d79be86cbdccca9c523cc6e0a5498219acdfa6f3b668ebbff5dd5a9d7e2210493c0f3c13beb0ed517e781267
+	source_i686 = https://github.com/ifedapoolarewaju/igdm/releases/download/v2.8.1/IGdm-2.8.1-ia32.zip
+	sha512sums_i686 = 4cdec64dd0e2d98a3aa7971f8169a81f4f95592df9d2050187962e1ecd1c311cbd5a2329900d4273d1d6dac28c520270b57eef0991fb3f3038b2f098d9ab194f
 
 pkgname = igdm
 
