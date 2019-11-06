@@ -1,9 +1,10 @@
 # Maintainer: bilabila <bilabila@qq.com>
-_url=$(curl -w "%{url_effective}" -ILsS http://www.qingtaoke.com/jump/guge -o /dev/null 2>/dev/null|sed 's/ /%20/g')
-_ver=$(sed 's/.*v\(\([0-9]\|\.\)\+\).*/\1/;s/\.//g'<<<$_url)
+_url=http://www.qingtaoke.com/jump/chrome
+_url=$(curl -w "%{url_effective}" -ILsS $_url -o /dev/null 2>/dev/null|sed 's/ /%20/g')
+_ver=$(sed 's/.*%20\(\([0-9]\|\.\)\+\)\.zip/\1/'<<<$_url)
 pkgname=qingtaoke
-pkgver=r20$_ver
-pkgrel=2
+pkgver=$_ver
+pkgrel=1
 pkgdesc=轻淘客插件
 arch=(x86_64)
 url=http://www.qingtaoke.com
