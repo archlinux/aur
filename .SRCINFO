@@ -1,0 +1,25 @@
+pkgbase = mingw-w64-taglib
+	pkgdesc = A Library for reading and editing the meta-data of several popular audio formats
+	pkgver = 1.11.1
+	pkgrel = 1
+	url = https://taglib.github.io/
+	arch = x86_64
+	license = LGPL
+	license = MPL
+	makedepends = mingw-w64-cmake
+	makedepends = mingw-w64-boost
+	depends = mingw-w64-zlib
+	depends = mingw-w64-crt
+	depends = mingw-w64-cppunit
+	options = staticlibs
+	options = !buildflags
+	options = !strip
+	source = https://taglib.github.io/releases/taglib-1.11.1.tar.gz
+	source = taglib-ogg-corruption.patch::https://github.com/taglib/taglib/commit/9336c82d.patch
+	source = fix-finding-cppunit.patch::https://raw.githubusercontent.com/msys2/MINGW-packages/master/mingw-w64-taglib/fix-finding-cppunit.patch
+	sha256sums = b6d1a5a610aae6ff39d93de5efd0fdc787aa9e9dc1e7026fa4c961b26563526b
+	sha256sums = bf15f9d99263ca9e3cd96ee16dbfe38ca02932a0e8e2d77696d7188679bda272
+	sha256sums = 460e2dd83e6233145e4980a4c63a400e9e8297980e3cfae910dadefa2475e7d0
+
+pkgname = mingw-w64-taglib
+

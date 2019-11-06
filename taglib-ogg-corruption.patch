@@ -1,0 +1,22 @@
+From 9336c82da3a04552168f208cd7a5fa4646701ea4 Mon Sep 17 00:00:00 2001
+From: Tsuda Kageyu <tsuda.kageyu@gmail.com>
+Date: Thu, 1 Dec 2016 11:32:01 +0900
+Subject: [PATCH] Fix possible Ogg packet losses.
+
+---
+ taglib/ogg/oggfile.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/taglib/ogg/oggfile.cpp b/taglib/ogg/oggfile.cpp
+index 86b0b0764..c36e4d46c 100644
+--- a/taglib/ogg/oggfile.cpp
++++ b/taglib/ogg/oggfile.cpp
+@@ -253,7 +253,7 @@ void Ogg::File::writePacket(unsigned int i, const ByteVector &packet)
+   ByteVectorList packets = firstPage->packets();
+   packets[i - firstPage->firstPacketIndex()] = packet;
+ 
+-  if(firstPage != lastPage && lastPage->packetCount() > 2) {
++  if(firstPage != lastPage && lastPage->packetCount() > 1) {
+     ByteVectorList lastPagePackets = lastPage->packets();
+     lastPagePackets.erase(lastPagePackets.begin());
+     packets.append(lastPagePackets);
