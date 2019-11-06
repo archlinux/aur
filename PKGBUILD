@@ -13,8 +13,8 @@ optdepends_x86_64=('lib32-glibc: dts support')
 provides=('makemkv')
 conflicts=('makemkv')
 install=makemkv.install
-source=(${url}/download/makemkv-bin-${pkgver}.tar.gz
-        ${url}/download/makemkv-oss-${pkgver}.tar.gz
+source=("${url}/download/makemkv-bin-${pkgver}.tar.gz"
+        "${url}/download/makemkv-oss-${pkgver}.tar.gz"
         makemkvcon.1
         mmdtsdec.1)
 sha512sums=('9086444f30de71a83d93cf9814f4485b5ebe78940acd722a549029af89408fd39a2a25a145ce2444fb97de90bc3c3acdf2df323865e74bada6e5052d23d94d30'
