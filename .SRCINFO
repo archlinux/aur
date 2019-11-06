@@ -15,7 +15,7 @@ pkgbase = python-jenkins-git
 	depends = python-multi_key_dict
 	provides = python-jenkins
 	conflicts = python-jenkins
-	source = python-jenkins-git-r291.1749d4d::git+https://opendev.org/jjb/python-jenkins/
+	source = python-jenkins-git::git+https://opendev.org/jjb/python-jenkins/
 	md5sums = SKIP
 
 pkgname = python-jenkins-git

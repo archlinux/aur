@@ -11,13 +11,13 @@ url="https://opendev.org/jjb/python-jenkins/"
 license=('BSD')
 depends=('python' 'python-six' 'python-pbr' 'python-requests' 'python-multi_key_dict')
 makedepends=('git' 'python-setuptools' 'grep')
-source=("${pkgname}-${pkgver}::git+https://opendev.org/jjb/python-jenkins/")
+source=("${pkgname}::git+https://opendev.org/jjb/python-jenkins/")
 md5sums=('SKIP')
 
 pkgver() {
     set -o pipefail
     
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/${pkgname}"
     
 
     gitversion=$(printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)")
@@ -36,12 +36,12 @@ pkgver() {
 }
 
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/${pkgname}"
     python setup.py build
 }
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/${pkgname}"
     
     python setup.py install --skip-build -O1 --root="${pkgdir}"
     
