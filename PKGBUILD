@@ -7,13 +7,13 @@ pkgver=27.89bab1e
 pkgrel=1
 pkgdesc='A simple PolicyKit authentication agent for XFCE'
 arch=('x86_64' 'i686')
-url="https://github.com/ncopa/xfce-polkit"
-license=(GPL)
+url='https://github.com/ncopa/xfce-polkit'
+license=('GPL')
 depends=('polkit' 'libxfce4ui')
 makedepends=('git')
 provides=("${_pkgname}" "polkit-gnome")
 conflicts=("${_pkgname}" "polkit-gnome")
-source=(git+$url
+source=("git+$url"
         xfce-polkit.desktop)
 sha256sums=('SKIP'
             'c7a18aa56a9e0b7b35f0817fa420a506b4b78d18baf62cece4e7488b3e93d968')
