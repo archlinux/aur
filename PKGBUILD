@@ -1,6 +1,6 @@
 # Maintainer: 
 pkgname='trueconf'
-pkgver='7.3.4.72'
+pkgver='7.3.4.191'
 pkgrel='2'
 pkgdesc='Video conference client with a range of rich collaborative tools and an easy-to-use interface'
 arch=('x86_64')
