@@ -3,8 +3,8 @@
 pkgbase=linux
 pkgver=5.3.8.1
 pkgrel=1
-_srcver=${pkgver%.*}-arch${pkgver##*.}
-url="https://git.archlinux.org/linux.git/log/?h=v$_srcver"
+_srctag=v${pkgver%.*}-arch${pkgver##*.}
+url="https://git.archlinux.org/linux.git/log/?h=$_srctag"
 arch=(x86_64)
 license=(GPL2)
 makedepends=(
@@ -15,7 +15,7 @@ makedepends=(
 options=('!strip')
 _srcname=archlinux-linux
 source=(
-  "$_srcname::git+https://git.archlinux.org/linux.git?signed#tag=v$_srcver"
+  "$_srcname::git+https://git.archlinux.org/linux.git?signed#tag=$_srctag"
   config         # the main kernel config file
 )
 validpgpkeys=(
