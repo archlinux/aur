@@ -1,7 +1,7 @@
 # Maintainer: Emanuele 'Lele aka eldios' Calo' <xeldiosx@gmail.com>
 
 pkgname=teleport
-pkgver=4.1.2
+pkgver=4.1.4
 pkgrel=1
 pkgdesc="Modern SSH server for teams managing distributed infrastructure"
 arch=('x86_64' 'arm')
@@ -15,7 +15,7 @@ source_x86_64=(
     "teleport.yaml"
     )
 sha256sums_x86_64=(
-    '921cfe48055c068fd3a839c0e7ba635290f6e979f629ea39d4a038338c3b755e'
+    '10a41e68545cf99fecb112fb44890bfd2dd5ad9be70095fca7c5e95f0a3c161e'
     '0cc7b68844d4926d30f2cee4bb6cec67436a95219cf1ba84954aaa34942229f9'
     '3b26c48a1ade6feea6658a663fe5db7210df24a191816ce95939dc0eddefa0bc'
     )
@@ -24,8 +24,9 @@ source_arm=(
     "teleport.service"
     "teleport.yaml"
     )
+
 sha256sums_arm=(
-    'e8f3418b1736dcb837d09568d1bedd1e2c30d36f3b2b37cd95c7a7722cf60fab'
+    '938a4022b4691639892b6855dca6e6dd54a697c3a07c247865601915ed3beff1'
     '0cc7b68844d4926d30f2cee4bb6cec67436a95219cf1ba84954aaa34942229f9'
     '3b26c48a1ade6feea6658a663fe5db7210df24a191816ce95939dc0eddefa0bc'
     )
@@ -45,4 +46,3 @@ package() {
     install -m755 -t "${pkgdir}/usr/bin/" teleport tctl tsh
     # no man pages, docs or web assets in release tarball
 }
-
