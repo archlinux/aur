@@ -15,6 +15,6 @@ package() {
   cd "${srcdir}"/"pkg2zip-${pkgver}"
   make CFLAGS="-DNDEBUG -O2 -Wno-format-truncation"
 
-  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/"pkg2zip"/LICENSE
+  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/pkg2zip/LICENSE
   install -Dm755 pkg2zip "${pkgdir}"/usr/bin/pkg2zip
 }
