@@ -12,7 +12,7 @@
 pkgbase=lvm2-noudev
 pkgname=('lvm2-noudev' 'device-mapper-noudev')
 pkgver=2.02.186
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://sourceware.org/lvm2/'
 license=('GPL2' 'LGPL2.1')
@@ -30,6 +30,8 @@ sha256sums=('SKIP'
             'e10f24b57582d6e2da71f7c80732a62e0ee2e3b867fe84591ccdb53e80fa92e0')
 
 _backports=(
+# pvscan: fix activation of incomplete VGs
+  '6b12930860a993624d6325aec2e9c561f4412aa9'
 )
 
 prepare() {
