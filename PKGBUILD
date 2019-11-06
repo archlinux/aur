@@ -29,5 +29,5 @@ build() {
 package() {
 	cd "$srcdir/$_gitname"
 	make DESTDIR="$pkgdir/" install
-    install -Dm644 COPYING "$pkgdir/usr/share/licenses/$_gitname/COPYING"
+	install -Dm644 COPYING "$pkgdir/usr/share/licenses/$_gitname/COPYING"
 }
