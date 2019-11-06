@@ -1,0 +1,15 @@
+pkgbase = subuid-register
+	pkgdesc = A simple tool to let user to register subuid / subgid range.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/adrien1018/subuid-register
+	arch = i686
+	arch = x86_64
+	provides = subuid-register
+	source = Makefile
+	source = subuid-register.cpp
+	sha256sums = e55c8d5f1a8948aa4535042a1db2e67938cc99d37619305a0254a45fdddd89a5
+	sha256sums = 48ba9e0a504631e83339bc4873771b34388ae829f6bff235e2bb6fc3b6c2d919
+
+pkgname = subuid-register
+
