@@ -11,7 +11,7 @@ license=('Commercial')
 depends=('glib2')
 conflicts=('0xdbe' '0xdbe-eap')
 options=('!strip')
-source=(https://download.jetbrains.com/${pkgbase}/${pkgbase}-${pkgver}.tar.gz
+source=("https://download.jetbrains.com/${pkgbase}/${pkgbase}-${pkgver}.tar.gz"
         jetbrains-datagrip.desktop)
 sha512sums=('79661f0833c26663646f1dbb07a8ab1808be329c179c6f25f7293db421ad01b5d5b874f9f233df3cafe6e3f1826282e02fcfa09184ade65108460b12219d343a'
             '4172c0c7065a91148c7b5b2bec1f84572fc7d302cd63e2f132f66297fd96c3969c403975a1eec93ec5d931406a7631fd9972222752d924338ed2b2cee44ba052')
