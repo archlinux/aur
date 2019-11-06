@@ -1,6 +1,6 @@
 pkgbase = sahel-fonts
 	pkgdesc = A beautiful Persian font.
-	pkgver = 3.1.0
+	pkgver = 3.1.1
 	pkgrel = 1
 	url = https://github.com/rastikerdar/sahel-font
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = sahel-fonts
 	depends = fontconfig
 	provides = ttf-sahel
 	conflicts = ttf-sahel
-	source = sahel-fonts-3.1.0.zip::https://github.com/rastikerdar/sahel-font/releases/download/v3.1.0/sahel-font-v3.1.0.zip
-	sha256sums = 4311a49c77e49b313dfebf90c9f812d3f5ff14cc370d38f75f70ce702635f024
+	source = sahel-fonts-3.1.1.zip::https://github.com/rastikerdar/sahel-font/releases/download/v3.1.1/sahel-font-v3.1.1.zip
+	sha256sums = 82c978e152f58b89c114f79560d8e091ba6655099c104ebe358a08524a37b9d4
 
 pkgname = sahel-fonts
 
