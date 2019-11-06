@@ -4,8 +4,8 @@
 # Contributor: Benjamin Robinben <jarobin@gmail.com>
 # Contributor: Karsten Pufahl <contact@karstenpufahl.de>
 pkgname=eclipse-arm
-pkgver=4.6.1
-date=201909231407
+pkgver=4.7.1
+date=201911052135
 pkgrel=1
 pkgdesc="GNU MCU Eclipse Plug-in"
 arch=('any')
@@ -15,7 +15,7 @@ license=("GPL")
 options=('!strip')
 depends=('eclipse-cpp')
 source=("https://github.com/gnu-mcu-eclipse/eclipse-plugins/releases/download/v$pkgver-$date/ilg.gnumcueclipse.repository-$pkgver-$date.zip")
-sha512sums=('8c0f7d45bb999804dc13a1abc8af540bd9661cd8ccb01321e3805b71f615c459cad819dffce71430ec61d62b75a26f400a464ee521c0fbb1d550cc53284f205b')
+sha512sums=('f172e746d3323c31fbb2b95fb369aff4fc2083462febf8489a7b848091d62e80e527e0b0881802528cfbbc248f06c80dcf65642ce6212c888a53cde4b9ed7716')
 
 package() {
   _dest="${pkgdir}/usr/lib/eclipse/dropins/${pkgname/eclipse-}/eclipse"
