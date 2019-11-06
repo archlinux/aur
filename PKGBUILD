@@ -5,19 +5,18 @@
 
 pkgname=st
 pkgver=0.8.2
-pkgrel=9
+pkgrel=10
 pkgdesc='A simple virtual terminal emulator for X.'
 arch=('i686' 'x86_64' 'armv7h')
 license=('MIT')
 depends=(libxft)
-makedepends=(libxext ncurses)
 url=https://st.suckless.org
 source=(https://dl.suckless.org/$pkgname/$pkgname-$pkgver.tar.gz
         terminfo.patch
         README.terminfo.rst)
 sha256sums=(aeb74e10aa11ed364e1bcc635a81a523119093e63befd2f231f8b0705b15bf35
-            b282c0b963a24299d02e485af30260d237ca2e8e6b06282d385022c9c10a0950
-            9a1b764cedd3a6288cc6601a3cdce06f4ab993f44de7aea5afd69511c13df7c0)
+            bf6c8b73a606a8e513c7919d91f93ed7aeb5f44e80269bb244cc01659145a5ea
+            0ebcbba881832adf9c98ce9fe7667c851d3cc3345077cb8ebe32702698665be2)
 _sourcedir=$pkgname-$pkgver
 _makeopts="--directory=$_sourcedir"
 
@@ -69,4 +68,5 @@ package() {
   install $installopts "$licdir" "$_sourcedir/LICENSE"
   install $installopts "$docdir" "$_sourcedir/README"
   install $installopts "$docdir" README.terminfo.rst
+  install $installopts "$shrdir/$pkgname" "$_sourcedir/st.info"
 }
