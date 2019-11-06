@@ -2,7 +2,7 @@
 
 pkgname=certbot-git
 _reponame="certbot"
-pkgver=0.31.0.r3.gec4c03fa6
+pkgver=0.40.0.r4.g9b848b1d6
 pkgrel=1
 pkgdesc="A tool to automatically receive and install X.509 certificates to enable TLS on servers. The client will interoperate with the Let’s Encrypt CA which will be issuing browser-trusted certificates for free."
 arch=('any')
@@ -49,7 +49,7 @@ package() {
 	cd "${srcdir}/${_reponame}"
 
 	# Install files
-	python setup.py install --root="${pkgdir}" --optimize=1
+	python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 
 	# Create configuration, log and lib directories
 	install -d "${pkgdir}"/etc/letsencrypt	# TODO: someday this will probably change
