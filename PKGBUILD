@@ -9,11 +9,12 @@ url='https://github.com/jlesquembre/pass-sshaskpass'
 license=('GPLv2')
 arch=('any')
 depends=('pass' 'zenity')
+makedepends=('git')
 source=(git://github.com/jlesquembre/$pkgname.git)
-md5sums=('SKIP')
+sha512sums=('SKIP')
 
 package() {
-  cd "${srcdir}/${pkgname}/"
+  cd ${pkgname}
   make DESTDIR="${pkgdir}" install
-  rm -rf ${pkgdir}/etc
+  rm -rf "${pkgdir}"/etc
 }
