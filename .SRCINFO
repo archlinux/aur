@@ -1,7 +1,7 @@
 pkgbase = kicad-rc
 	pkgdesc = Official KiCad release candidates and dev snapshots
-	pkgver = 5.1.4
-	pkgrel = 2
+	pkgver = 5.1.5.1
+	pkgrel = 1
 	url = http://kicad-pcb.org/
 	arch = any
 	license = GPL3
@@ -26,8 +26,8 @@ pkgbase = kicad-rc
 	conflicts = kicad-git
 	conflicts = kicad-scripting-git
 	conflicts = kicad-bzr
-	source = https://github.com/KiCad/kicad-source-mirror/archive/5.1.4.tar.gz
-	md5sums = 97105e4816c1cddf6f8380cc356e28ea
+	source = https://github.com/KiCad/kicad-source-mirror/archive/5.1.5-rc1.tar.gz
+	md5sums = 2f71525d53a861016e6cc514024cc7cd
 
 pkgname = kicad-rc
 
