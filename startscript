@@ -1,2 +1,2 @@
 #!/bin/sh
-exec "$JAVA_HOME/bin/java" -jar /usr/share/java/open-ecard/open-ecard.jar
+exec /usr/bin/java -jar /usr/share/java/open-ecard/open-ecard.jar
