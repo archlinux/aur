@@ -1,8 +1,8 @@
 # Maintainer: PastLeo <chgu82837@gmail.com>
 pkgname=measurement-kit-git
 pkgver=r3296.a5f8fc0c
-pkgrel=1
-pkgdesc=""
+pkgrel=2
+pkgdesc="Network measurement engine"
 arch=('i686' 'x86_64')
 url='https://github.com/measurement-kit/measurement-kit'
 license=('BSD')
