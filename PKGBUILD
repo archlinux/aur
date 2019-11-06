@@ -1,7 +1,7 @@
 # Maintainer: Jon Noble <jonnobleuk@gmail.com>
 pkgname=mediahandling
-pkgver=0.0.1
-pkgrel=2
+pkgver=0.0.2
+pkgrel=1
 pkgdesc="A library solely intended for the use in the project Chestnut by handling all media-file operations"
 arch=(x86_64)
 url="https://github.com/jonno85uk/mediahandling"
@@ -9,8 +9,8 @@ license=('MIT')
 depends=('ffmpeg')
 makedepends=('cmake') 
 provides=("${pkgname%}")
-source=("https://github.com/jonno85uk/mediahandling/archive/0.0.1.tar.gz")
-md5sums=('cdfb633ecdca02c4f53caf36bcbdc877')
+source=("https://github.com/jonno85uk/mediahandling/archive/${pkgver}.tar.gz")
+md5sums=('bbd420d498ac38bae2c3150222b89651')
 
 prepare() {
     rm -rf "mediahandling"
@@ -31,8 +31,7 @@ build() {
 package() {
     cd "$srcdir/mediahandling"
     make install
-    # Temporary until CMakeLists.txt and api is updated
+    # Temporary until CMakeLists.txt is updated
     mkdir -p ${pkgdir}/usr/include/mediahandling/
     cp Include/* ${pkgdir}/usr/include/mediahandling/
-    cp ffmpeg/*.h ${pkgdir}/usr/include/mediahandling/
 }

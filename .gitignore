@@ -1,0 +1,5 @@
+*.pkg.tar.xz
+*.tar.gz
+src/
+pkg/
+mediahandling/
