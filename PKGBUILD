@@ -1,7 +1,7 @@
 # Maintainer: Eric Biggers <ebiggers3 at gmail dot com>
 
 pkgname=fsverity-utils-git
-pkgver=0.0.r50.2151209
+pkgver=1.0.r0.g6585eb4
 pkgrel=1
 pkgdesc='A userspace utility for fs-verity'
 arch=('x86_64' 'i686')
@@ -15,8 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/fsverity-utils"
-	printf "0.0.r%d.%s\n" $(git rev-list HEAD --count) \
-			      $(git rev-parse --short HEAD)
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
