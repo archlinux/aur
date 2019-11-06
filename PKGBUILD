@@ -1,7 +1,7 @@
 pkgbase='python-flask-paginate'
 pkgname=('python-flask-paginate')
 _module='flask-paginate'
-pkgver='0.5.4'
+pkgver='0.5.5'
 pkgrel=1
 pkgdesc="Simple paginate support for flask"
 url="https://github.com/lixxu/flask-paginate"
@@ -9,8 +9,8 @@ depends=('python')
 makedepends=('python-setuptools')
 license=('BSD')
 arch=('any')
-source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-sha256sums=('60079a1c4c600cb4d4a9f7c386ea357b5ee02355ae6d6e8b41f769ae3f7af3ad')
+source=("https://files.pythonhosted.org/packages/a2/5a/133899485b67440d0bddbead5f90191f9bbb3c60b600dbddd184f85c2c1a/flask_paginate-${pkgver}-py2.py3-none-any.whl")
+sha256sums=('d2aa07b4ef27f56f973482aaa06a0d93dc769a3e4d3e9c382a305ab72ac38ad9')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
