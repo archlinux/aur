@@ -1,7 +1,7 @@
 pkgbase = anki-drive-sdk-git
 	pkgdesc = C SDK for message protocols and data parsing to communicate with Anki Drive vehicles
-	pkgver = 0.3.0.r40.20180115
-	pkgrel = 3
+	pkgver = 0.3.0.r41.20191106
+	pkgrel = 1
 	url = https://github.com/anki/drive-sdk
 	arch = i686
 	arch = x86_64
@@ -10,9 +10,10 @@ pkgbase = anki-drive-sdk-git
 	makedepends = gcc
 	depends = glib2
 	optdepends = bluez-utils: for command line tool btmgmt (hciconfig is deprecated)
+	optdepends = readline: for command line tool vehicle-tool to communicate with Anki cars
 	conflicts = libankidrive
 	replaces = libankidrive
-	source = anki-drive-sdk-git::git+https://github.com/anki/drive-sdk.git
+	source = anki-drive-sdk-git::git+https://github.com/OpenHelios/drive-sdk.git
 	md5sums = SKIP
 
 pkgname = anki-drive-sdk-git

@@ -2,18 +2,22 @@
 
 pkgname=('anki-drive-sdk-git')
 pkgdesc="C SDK for message protocols and data parsing to communicate with Anki Drive vehicles"
-pkgver=0.3.0.r40.20180115
-pkgrel=3
+pkgver=0.3.0.r41.20191106
+pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/anki/drive-sdk"
 license=('Apache')
 depends=('glib2')
-optdepends=('bluez-utils: for command line tool btmgmt (hciconfig is deprecated)')
+optdepends=(
+	'bluez-utils: for command line tool btmgmt (hciconfig is deprecated)'
+	'readline: for command line tool vehicle-tool to communicate with Anki cars'
+)
 makedepends=('cmake' 'gcc')
 conflicts=('libankidrive')
 replaces=('libankidrive')
 source=(
-	"$pkgname::git+https://github.com/anki/drive-sdk.git"
+#	"$pkgname::git+https://github.com/anki/drive-sdk.git"
+	"$pkgname::git+https://github.com/OpenHelios/drive-sdk.git"
 )
 md5sums=('SKIP')
 pkgver() {
