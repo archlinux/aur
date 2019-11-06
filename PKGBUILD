@@ -22,7 +22,7 @@ md5sums=("SKIP")
 validpgpkeys=()
 
 build() {
-	cd "QuickWall-${pkgver}"
+	cd "QuickWall-${pkgver}-${pkgrel}"
 	python setup.py build
 }
 
