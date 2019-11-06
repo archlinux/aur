@@ -10,7 +10,7 @@ license=('MIT')
 makedepends=('go')
 conflicts=('dovecot-xaps-daemon-git')
 backup=('etc/xapsd/xapsd.conf')
-source=(https://github.com/st3fan/dovecot-xaps-daemon/archive/v${pkgver}.tar.gz)
+source=("https://github.com/st3fan/dovecot-xaps-daemon/archive/v${pkgver}.tar.gz")
 sha512sums=('0df0194844cfa7643cb37fad63990af21547318c4e7ff23a68f72c8f61a2147cacfcc4e4466fa7b9fdc1212b71800c24d5bf9c420e01fe043fd06e42d61f1fd1')
 
 prepare() {
