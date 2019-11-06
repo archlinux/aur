@@ -15,7 +15,7 @@ depends=('glibc')
 optdepends=('tcl: ispin graphical interface'
             'swarm: improved performance on large verification problems'
             'ispin: GUI for Spin')
-source=(https://github.com/nimble-code/Spin/archive/version-${pkgver}.tar.gz)
+source=("https://github.com/nimble-code/Spin/archive/version-${pkgver}.tar.gz")
 sha512sums=('0beeb1faea93f806c37a4b76c2c407363990596134fc60b15c3f3a2d33ccf59680acd30e251c4f83fb725903aecb6238b166af7dbc9296a8a34259feabeeae24')
 
 build() {
