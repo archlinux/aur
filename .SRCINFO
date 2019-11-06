@@ -1,17 +1,19 @@
 pkgbase = cheat
 	pkgdesc = Allows you to create and view interactive cheatsheets on the command-line
-	pkgver = 3.0.3
-	pkgrel = 2
+	pkgver = 3.0.4
+	pkgrel = 1
 	url = https://github.com/cheat/cheat
 	arch = x86_64
 	license = MIT
 	makedepends = go-pie
 	optdepends = fzf: for Fuzzy Finder integration
+	optdepends = bash-completion: for bash completions
+	optdepends = fish: for fish completions
 	conflicts = cheat-bash-git
 	conflicts = cheat-git
 	replaces = python-cheat
-	source = cheat-3.0.3.tar.gz::https://github.com/cheat/cheat/archive/3.0.3.tar.gz
-	sha256sums = a9c0d7f46fe4dd19b17fadb4c071629d8dd118a775ee842218a2e9199ec75923
+	source = cheat-3.0.4.tar.gz::https://github.com/cheat/cheat/archive/3.0.4.tar.gz
+	sha256sums = f2c8fe12a915856c5dcb7786c3ce4ed5f05c11711b2619cd7a1722e83cf408c0
 
 pkgname = cheat
 
