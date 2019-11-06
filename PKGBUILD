@@ -177,8 +177,8 @@ _package-docs() {
   mkdir -p "$builddir"
   cp -t "$builddir" -a Documentation
 
-  msg2 "Removing doctrees..."
-  rm -r "$builddir/Documentation/output/.doctrees"
+  msg2 "Removing unneeded files..."
+  rm -rv "$builddir"/Documentation/{,output/}.[^.]*
 
   msg2 "Moving HTML docs..."
   local src dst
