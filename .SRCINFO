@@ -1,7 +1,7 @@
 pkgbase = caddy2
 	pkgdesc = Fast, cross-platform HTTP/2 web server with automatic HTTPS
 	pkgver = beta9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/caddyserver/caddy
 	arch = x86_64
 	license = Apache

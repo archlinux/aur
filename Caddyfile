@@ -1,0 +1,8 @@
+{
+    storage file_system {
+        root /var/lib/caddy2
+    }
+}
+
+# config goes below
+

@@ -2,7 +2,7 @@
 
 pkgname=caddy2
 pkgver=beta9
-pkgrel=2
+pkgrel=3
 pkgdesc='Fast, cross-platform HTTP/2 web server with automatic HTTPS'
 arch=('x86_64')
 license=('Apache')
@@ -22,7 +22,8 @@ build() {
 }
 
 package() {
-  mkdir -p "$pkgdir/etc/caddy"
+  mkdir -p "$pkgdir/var/lib/caddy2"
+  install -D -m 0644 Caddyfile "$pkgdir/etc/caddy2/Caddyfile"
   install -D -m 0644 caddy.service "$pkgdir/usr/lib/systemd/system/caddy.service"
   cd ${srcdir}/caddy-2.0.0-${pkgver}
   install -D -m 0755 caddy "$pkgdir/usr/bin/caddy"
