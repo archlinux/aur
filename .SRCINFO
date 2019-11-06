@@ -7,6 +7,7 @@ pkgbase = mediahandling
 	license = MIT
 	makedepends = cmake
 	depends = ffmpeg
+	depends = boost-libs
 	provides = mediahandling
 	source = https://github.com/jonno85uk/mediahandling/archive/0.0.2.tar.gz
 	md5sums = bbd420d498ac38bae2c3150222b89651
