@@ -1,7 +1,7 @@
 pkgbase = conrad-venv-bin
 	pkgdesc = conrad helps you track conferences and meetups on your terminal! [installed inside a virtualenv to prevent depedencies directly on the system]
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vinayak-mehta/conrad
 	arch = i686
 	arch = x86_64
