@@ -9,10 +9,10 @@ url='http://www.jetbrains.com/toolbox/'
 license=('Commercial')
 depends=('java-runtime>=8' 'fuse' 'glib2' 'libxslt' 'libxss')
 options=('!strip')
-source=(https://download.jetbrains.com/toolbox/${pkgname}-${pkgver}.tar.gz
+source=("https://download.jetbrains.com/toolbox/${pkgname}-${pkgver}.tar.gz"
         jetbrains-toolbox.desktop)
 sha512sums=('cf5dd392e38b6229924a03262c9aef4a4c8bb359ba8f2c073e00a47553a411d032d66eba9351de5edf89c3dafa3aa7149450a0b739a21c9d7b6588ab02cf759e'
-            '727b6378a8e3803c552ccae2c0d252eb8e79d213eabeecbd00bc25352cd0ffc6f53abaabf016688136822a65a76b2838f99e909931c21f49382934332446d1b4')
+            '81456c724cc424d78f209ba6a0ba925f3aec6d5b01569f481745090d06bf2635f7dd0d05e2ad9e2bba9e2185ec5f606c97374d1e0fd6e92349ad3a7d6b9237db')
 
 package() {
   install -dm755 "${pkgdir}"/usr/bin/
