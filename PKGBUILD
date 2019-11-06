@@ -9,7 +9,7 @@ pkgdesc='Controller for Ubiquiti UniFi accesspoints'
 arch=('any')
 url='http://www.ubnt.com/'
 license=('custom')
-depends=('mongodb' 'java-runtime')
+depends=('mongodb' 'java-runtime' 'fontconfig')
 provides=('unifi')
 conflicts=('unifi' 'unifi-controller-beta')
 replaces=('unifi-controller-beta')
@@ -27,48 +27,48 @@ sha512sums=('c86b586408cc3117263d62e218d5e5ba989d120b38da42acfa8f14461b65d3e739a
             '22e0a4d5be7645e7f1dd760a1b93fa5a49a7e92ce6f23f2a7d0f72043cd0be057bd3faecabd1d3048ecf93480b47d278926b99b5abc17ecbe91a5b15763f0a9c')
 
 package() {
-    # lib
-    install -dm755 "${pkgdir}"/usr/lib/unifi
-    cp -r UniFi/{bin,dl,lib,webapps} "${pkgdir}"/usr/lib/unifi
-    rm -r "${pkgdir}"/usr/lib/unifi/lib/native/{Mac,Windows}
-    case ${CARCH} in
-    armv7h)
-        rm -r "${pkgdir}"/usr/lib/unifi/lib/native/Linux/{aarch64,x86_64}
-        ;;
-    x86_64)
-        rm -r "${pkgdir}"/usr/lib/unifi/lib/native/Linux/{aarch64,armv7}
-        ;;
-    aarch64)
-        rm -r "${pkgdir}"/usr/lib/unifi/lib/native/Linux/{x86_64,armv7}
-        ;;
-    *)
-        rm -r "${pkgdir}"/usr/lib/unifi/lib/native/Linux
-        ;;
-    esac
+  # lib
+  install -dm755 "${pkgdir}"/usr/lib/unifi
+  cp -r UniFi/{bin,dl,lib,webapps} "${pkgdir}"/usr/lib/unifi
+  rm -r "${pkgdir}"/usr/lib/unifi/lib/native/{Mac,Windows}
+  case ${CARCH} in
+  armv7h)
+      rm -r "${pkgdir}"/usr/lib/unifi/lib/native/Linux/{aarch64,x86_64}
+      ;;
+  x86_64)
+      rm -r "${pkgdir}"/usr/lib/unifi/lib/native/Linux/{aarch64,armv7}
+      ;;
+  aarch64)
+      rm -r "${pkgdir}"/usr/lib/unifi/lib/native/Linux/{x86_64,armv7}
+      ;;
+  *)
+      rm -r "${pkgdir}"/usr/lib/unifi/lib/native/Linux
+      ;;
+  esac
 
-    # fix incompatibility with mongodb >= 3.6
-    rm "${pkgdir}"/usr/lib/unifi/bin/mongod
-    install -Dm755 "${srcdir}"/mongod "${pkgdir}"/usr/lib/unifi/bin/mongod
+  # fix incompatibility with mongodb >= 3.6
+  rm "${pkgdir}"/usr/lib/unifi/bin/mongod
+  install -Dm755 "${srcdir}"/mongod "${pkgdir}"/usr/lib/unifi/bin/mongod
 
-    # data
-    install -dm750 "${pkgdir}"/var/lib/unifi
-    for _d in {data,run,work}; do
-        install -dm750 "${pkgdir}"/var/lib/unifi/${_d}
-        ln -s ../../../var/lib/unifi/${_d} "${pkgdir}"/usr/lib/unifi/${_d}
-    done
+  # data
+  install -dm750 "${pkgdir}"/var/lib/unifi
+  for _d in {data,run,work}; do
+      install -dm750 "${pkgdir}"/var/lib/unifi/${_d}
+      ln -s ../../../var/lib/unifi/${_d} "${pkgdir}"/usr/lib/unifi/${_d}
+  done
 
-    # log
-    install -dm750 "${pkgdir}"/var/log/unifi
-    ln -s ../../../var/log/unifi "${pkgdir}"/usr/lib/unifi/logs
+  # log
+  install -dm750 "${pkgdir}"/var/log/unifi
+  ln -s ../../../var/log/unifi "${pkgdir}"/usr/lib/unifi/logs
 
-    # readme
-    install -Dm644 UniFi/readme.txt "${pkgdir}"/usr/share/doc/${pkgname}/README
+  # readme
+  install -Dm644 UniFi/readme.txt "${pkgdir}"/usr/share/doc/${pkgname}/README
 
-    # license
-    install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+  # license
+  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 
-    # systemd
-    install -Dm644 unifi.service "${pkgdir}"/usr/lib/systemd/system/unifi.service
-    install -Dm644 unifi.tmpfiles "${pkgdir}"/usr/lib/tmpfiles.d/unifi.conf
-    install -Dm644 unifi.sysusers "${pkgdir}"/usr/lib/sysusers.d/unifi.conf
+  # systemd
+  install -Dm644 unifi.service "${pkgdir}"/usr/lib/systemd/system/unifi.service
+  install -Dm644 unifi.tmpfiles "${pkgdir}"/usr/lib/tmpfiles.d/unifi.conf
+  install -Dm644 unifi.sysusers "${pkgdir}"/usr/lib/sysusers.d/unifi.conf
 }

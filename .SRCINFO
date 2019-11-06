@@ -7,6 +7,7 @@ pkgbase = unifi-beta
 	license = custom
 	depends = mongodb
 	depends = java-runtime
+	depends = fontconfig
 	provides = unifi
 	conflicts = unifi
 	conflicts = unifi-controller-beta
