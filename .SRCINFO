@@ -1,0 +1,16 @@
+pkgbase = perl-convert-x509
+	pkgdesc = interface module to help analizing X509 data
+	pkgver = 0.3
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Convert-X509
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	depends = perl-convert-asn1
+	options = !emptydirs
+	source = http://cpan.perl.org/modules/by-module/Convert/Convert-X509-0.3.tar.gz
+	sha256sums = 606c2873b09ebe4ab5596db3054797cf3db54fbd81c2f3003e68bf51e8667921
+
+pkgname = perl-convert-x509
+
