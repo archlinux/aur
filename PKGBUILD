@@ -8,7 +8,7 @@
 
 pkgname=hipchat
 pkgver=4.30.5.1680
-pkgrel=1
+pkgrel=2
 pkgdesc='Persistent group chat using XMPP'
 arch=('x86_64')
 url='https://www.hipchat.com/linux'
@@ -24,21 +24,18 @@ sha512sums=('8ff9cd653c62044ec26f0eca7ef06ac7be6183ec1fc6052d27da11a079bd95d4971
             '6f7affb6cf85a16452bd934c8ebb996d5f98bc82100d1a4b7c308438ff4dd90c36552ec533de803264201fdfbf7e127cb8ecbfce92f24f205fcf762576a8b51f')
 
 prepare() {
-  cd "${srcdir}"
-  mkdir "${pkgname}-${pkgver}"
-  cd "${pkgname}-${pkgver}"
-  tar xzf "${srcdir}"/data.tar.gz
-  patch -p1 -i "${srcdir}/fix-seccomp-sandbox-bug.patch"
+  mkdir ${pkgname}-${pkgver}
+  tar xzf data.tar.gz -C ${pkgname}-${pkgver}
+  patch -p0 -i "${srcdir}"/fix-seccomp-sandbox-bug.patch
 }
 
 package() {
-  install -D -m644 "${srcdir}/license.html" "${pkgdir}/usr/share/licenses/${pkgname}/license.html"
-  cp -R "${srcdir}/${pkgname}-${pkgver}/"{opt,usr} "${pkgdir}"
-  mkdir -p "${pkgdir}/usr/bin"
-  ln -nsf /opt/HipChat4/bin/HipChat4 "${pkgdir}/usr/bin/hipchat4"
-
-  ln -nsf /usr/lib/libssl.so.1.0.0 "${pkgdir}/opt/HipChat4/lib/"
-  ln -nsf libssl.so.1.0.0 "${pkgdir}/opt/HipChat4/lib/libssl.so"
-  ln -nsf /usr/lib/libcrypto.so.1.0.0 "${pkgdir}/opt/HipChat4/lib/"
-  ln -nsf libcrypto.so.1.0.0 "${pkgdir}/opt/HipChat4/lib/libcrypto.so"
+  install -Dm644 "${srcdir}"/license.html "${pkgdir}"/usr/share/licenses/${pkgname}/license.html
+  cp -R ${pkgname}-${pkgver}/{opt,usr} "${pkgdir}"
+  mkdir -p "${pkgdir}"/usr/bin
+  ln -nsf /opt/HipChat4/bin/HipChat4 "${pkgdir}"/usr/bin/hipchat4
+  ln -nsf /usr/lib/libssl.so.1.0.0 "${pkgdir}"/opt/HipChat4/lib/
+  ln -nsf libssl.so.1.0.0 "${pkgdir}"/opt/HipChat4/lib/libssl.so
+  ln -nsf /usr/lib/libcrypto.so.1.0.0 "${pkgdir}"/opt/HipChat4/lib/
+  ln -nsf libcrypto.so.1.0.0 "${pkgdir}"/opt/HipChat4/lib/libcrypto.so
 }

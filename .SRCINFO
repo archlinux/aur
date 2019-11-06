@@ -1,7 +1,7 @@
 pkgbase = hipchat
 	pkgdesc = Persistent group chat using XMPP
 	pkgver = 4.30.5.1680
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.hipchat.com/linux
 	arch = x86_64
 	license = custom
