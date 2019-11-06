@@ -2,23 +2,23 @@
 
 pkgname="mongodb-bin-4.0"
 pkgver=4.0.13
-basever=4.0
 pkgrel=1
 pkgdesc='A high-performance, open source, schema-free document-oriented database'
 arch=("x86_64")
 url='https://www.mongodb.com/'
-license=("SSPLv1")
+license=('custom')
+depends=('curl')
 provides=("mongodb=$pkgver")
 conflicts=("mongodb" "mongodb-bin")
 optdepends=("mongodb-tools: The MongoDB tools provide import, export, and diagnostic capabilities.")
-source=("https://repo.mongodb.org/apt/ubuntu/dists/bionic/mongodb-org/${basever}/multiverse/binary-amd64/mongodb-org-shell_${pkgver}_amd64.deb"
-        "https://repo.mongodb.org/apt/ubuntu/dists/bionic/mongodb-org/${basever}/multiverse/binary-amd64/mongodb-org-server_${pkgver}_amd64.deb"
-        "https://repo.mongodb.org/apt/ubuntu/dists/bionic/mongodb-org/${basever}/multiverse/binary-amd64/mongodb-org-mongos_${pkgver}_amd64.deb"
-        "mongodb.service"
-        "mongodb.conf"
-        "mongodb.sysusers"
-        "mongodb.tmpfiles"
-        "LICENSE")
+source=("https://repo.mongodb.org/apt/ubuntu/dists/bionic/mongodb-org/${pkgver%.*}/multiverse/binary-amd64/mongodb-org-shell_${pkgver}_amd64.deb"
+        "https://repo.mongodb.org/apt/ubuntu/dists/bionic/mongodb-org/${pkgver%.*}/multiverse/binary-amd64/mongodb-org-server_${pkgver}_amd64.deb"
+        "https://repo.mongodb.org/apt/ubuntu/dists/bionic/mongodb-org/${pkgver%.*}/multiverse/binary-amd64/mongodb-org-mongos_${pkgver}_amd64.deb"
+        mongodb.service
+        mongodb.conf
+        mongodb.sysusers
+        mongodb.tmpfiles
+        LICENSE)
 
 sha512sums=('bd5296656df376fb560ab34d7a1fe5ca5029d2d2c766167f8e44852d0dace9a318c6e294f980c837faf89b935242d73129c0cecf5bd2451cacdd82fd54db6a88'
             '93f4b3f6b23c176eb3b3963e0044da5cb0e24437b6b751c10aee7d437efb401cf0cda7a08c9d5a0719f09e8d86e96b9d7a16c8cd44bf77d60d5990c059a6022e'
@@ -32,21 +32,21 @@ sha512sums=('bd5296656df376fb560ab34d7a1fe5ca5029d2d2c766167f8e44852d0dace9a318c
 backup=("etc/mongodb.conf")
 
 prepare() {
-  mkdir -p "${srcdir}/output"
-  tar -xvf "${srcdir}/data.tar.xz" -C "${srcdir}/output" #mongos extracted
+  mkdir -p output
+  tar -xvf data.tar.xz -C output #mongos extracted
   ar x mongodb-org-server_${pkgver}_amd64.deb
-  tar -xvf "${srcdir}/data.tar.xz" -C "${srcdir}/output" #server extracted
+  tar -xvf data.tar.xz -C output #server extracted
   ar x mongodb-org-shell_${pkgver}_amd64.deb
-  tar -xvf "${srcdir}/data.tar.xz" -C "${srcdir}/output" #shell extracted
+  tar -xvf data.tar.xz -C output #shell extracted
 }
 
 package() {
-  install -dm755 "${pkgdir}/usr/share/man"
-  cp -r "${srcdir}/output/usr/bin" "${pkgdir}/usr/"
-  cp -r "${srcdir}/output/usr/share/man/man1" "${pkgdir}/usr/share/man/"
-  install -Dm644 "${srcdir}/mongodb.conf" "${pkgdir}/etc/mongodb.conf"
-  install -Dm644 "${srcdir}/mongodb.service" "${pkgdir}/usr/lib/systemd/system/mongodb.service"
-  install -Dm644 "${srcdir}/mongodb.sysusers" "${pkgdir}/usr/lib/sysusers.d/mongodb.conf"
-  install -Dm644 "${srcdir}/mongodb.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/mongodb.conf"
-  install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -dm755 "${pkgdir}"/usr/share/man
+  cp -r output/usr/bin "${pkgdir}"/usr/
+  cp -r output/usr/share/man/man1 "${pkgdir}"/usr/share/man/
+  install -Dm644 mongodb.conf "${pkgdir}"/etc/mongodb.conf
+  install -Dm644 mongodb.service "${pkgdir}"/usr/lib/systemd/system/mongodb.service
+  install -Dm644 mongodb.sysusers "${pkgdir}"/usr/lib/sysusers.d/mongodb.conf
+  install -Dm644 mongodb.tmpfiles "${pkgdir}"/usr/lib/tmpfiles.d/mongodb.conf
+  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }

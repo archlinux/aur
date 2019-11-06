@@ -4,7 +4,8 @@ pkgbase = mongodb-bin-4.0
 	pkgrel = 1
 	url = https://www.mongodb.com/
 	arch = x86_64
-	license = SSPLv1
+	license = custom
+	depends = curl
 	optdepends = mongodb-tools: The MongoDB tools provide import, export, and diagnostic capabilities.
 	provides = mongodb=4.0.13
 	conflicts = mongodb
