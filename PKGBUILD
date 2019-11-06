@@ -7,7 +7,7 @@
 pkgname=digikam
 _pkgver=6.4.0
 pkgver=${_pkgver//-/_} # for beta versions
-pkgrel=1
+pkgrel=2
 pkgdesc="An advanced digital photo management application"
 arch=(x86_64)
 license=(GPL)
@@ -18,13 +18,18 @@ makedepends=(extra-cmake-modules doxygen eigen boost kdoctools libkvkontakte)
 optdepends=('hugin: panorama tool' 'qt5-imageformats: support for additional image formats (WEBP, TIFF)'
             'libkvkontakte: VKontakte plugin'
             'rawtherapee: RAW import' 'darktable: RAW import')
-source=("https://download.kde.org/stable/$pkgname/$_pkgver/$pkgname-$_pkgver.tar.xz"{,.sig})
+source=("https://download.kde.org/stable/$pkgname/$_pkgver/$pkgname-$_pkgver.tar.xz"{,.sig}
+         initialize-imagemagick.patch)
 sha256sums=('6532c02d51a9861f101092dfde92f8de478b1554d3449bbf3a11e50d32d39460'
-            'SKIP')
+            'SKIP'
+            'bc1dc65eb62a0e339698980ee438a17efa39f293419e4134948c7ee8f6733dad')
 validpgpkeys=(D1CF2444A7858C5F2FB095B74A77747BC2386E50) # digiKam.org (digiKam project) <digikamdeveloper@gmail.com>
 
 prepare() {
   mkdir -p build
+
+  cd $pkgname-$pkgver
+  patch -p1 -i ../initialize-imagemagick.patch # Properly initialize exceptions in imagemagick
 }
 
 build() {
