@@ -38,5 +38,4 @@ package() {
     mkdir -p "$pkgdir/usr/share/$pkgname"
     cp -a --no-preserve=ownership * "$pkgdir/usr/share/$pkgname"
     chmod -R 777 "$pkgdir/usr/share/$pkgname"
-    chmod -R +x "$pkgdir/usr/share/$pkgname/scripts/"
 }
