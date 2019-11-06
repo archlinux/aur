@@ -1,6 +1,7 @@
 pkgbase = linux-bfq
+	pkgdesc = Linux BFQ-dev
 	pkgver = 5.3.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sirlucjan/bfq-mq-lucjan
 	arch = x86_64
 	license = GPL2
@@ -32,7 +33,7 @@ pkgbase = linux-bfq
 	sha512sums = e8ada62bb3cec4828d5440bdf82d1b340e9b0f446af625f0351e6f455ff6eb34af8e9393e288769d0fa453f91300a47ef6345a5b86aefce261b48aa0d013bd6d
 
 pkgname = linux-bfq
-	pkgdesc = The Linux-bfq kernel and modules with the BFQ-dev
+	pkgdesc = The Linux BFQ-dev kernel and modules
 	depends = coreutils
 	depends = kmod
 	depends = initramfs
@@ -41,10 +42,10 @@ pkgname = linux-bfq
 	optdepends = modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig
 
 pkgname = linux-bfq-headers
-	pkgdesc = Header files and scripts for building modules for Linux-bfq kernel
+	pkgdesc = Headers and scripts for building modules for the Linux BFQ-dev kernel
 	depends = linux-bfq
 
 pkgname = linux-bfq-docs
-	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-bfq kernel
+	pkgdesc = Kernel hacker's manual for the Linux BFQ-dev kernel
 	depends = linux-bfq
 
