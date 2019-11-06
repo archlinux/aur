@@ -3,8 +3,8 @@
 # Contributor: [Vitaliy Berdinskikh](mailto:ur6lad@archlinux.org.ua) aka UR6LAD
 
 pkgname=slf4j
-pkgver=1.7.28
-pkgrel=4
+pkgver=1.7.29
+pkgrel=1
 pkgdesc="Simple Logging Facade for Java for various logging frameworks (e.g. java.util.logging, logback, log4j)"
 arch=('any')
 url="https://www.slf4j.org"
@@ -59,16 +59,16 @@ package() {
 }
 
 sha256sums=('899cb2e2f92e74ec969e477503c6442fb50bec5d523bc87dc40bad3419113c3b'
-            'b81f5f910da9708c7a6a77b720a7de20154cced4065b56f33301945c04aaad70'
-            '67c99ffdef691c3b0f817e130c2047fa43ecf12017613ff597f66f768d745475'
-            'c24e45c905f0c3b1dcc873164f5409bbfe3ee8860e366d1cd2190f798227f864'
-            'fb6e4f67a2a4689e3e713584db17a5d1090c1ebe6eec30e9e0349a6ee118141e'
-            'a5ea85ee27d0c2a1bae03c7c298770896d0aa52e0a9297a1cf45b0e3e65363cf'
-            'b10201fef9dfa2544d38cae97b6101e2ea7544d198be0db01098bf13b761d063'
-            'fc1e0ba3114b3f8b007b6f9fcc2b87c05c9fe12ebc58de66993a24da19d94ed3'
-            'ad926e9a170d96519eab7553c94462d7849d55c4886c9b5d386782090e321fd6'
-            '933d21ce95099aed7645ed44c32459eb040cc142db865a3bf5d63e1996b997aa'
-            '0bb2941f7f0fbc71dae156f69a4cf3d1469bfdbf6e1ff1bfe6e8d8397eff3abd'
-            '60ef3adc6c1847c46e1abd7a8062255aa3e2ce1db2c08dfb1fd43f1a46207736'
+            'd7949af5620aff966e8ee2d72c0a59c972bd069940e0b4cadef5e3b2217b9120'
+            'ac6f86a0afe572c505c88bfd8a79e86b3508926d8cca14533fbda8cb83634a26'
+            '9c6500852b976f05eeb5a0167d539c8f8a61ae571c04227a92351df5a36cd1c0'
+            '47b624903c712f9118330ad2fb91d0780f7f666c3f22919d0fc14522c5cad9ea'
+            '7f31d275d08f5829604643922089bef6d8d3156d866013a54f95fc5a8746d157'
+            '952d59bd55fed0659a7776131bf54be9ed7d1d652eaac681acedd47429e5fd31'
+            'dedf1ea6e2e6f75af514a6de4a5c6484829ae944df1919c1d788c6741c182d18'
+            'add7e4f6084ba3a335c46725e9cb27098d2c3be606a1a0f9996f392b8f6de035'
+            'def9c93e01756c76f4c9280082c55100da7c06b1025d0cfdcd67eff29b1609bf'
+            '3693a7782b918eaa0c99ed3d9eac4dbf0b91af634eb8a9a16f963a079d8d8fba'
+            '180c4715e1708c5415db03da3154a3f5e1ad6b9422893e5d227138800b4b0a74'
             '9a1efcd3b99c0ef88e1fbdf361a7832f09a925802a7518629f271ff8e08ae940'
             '3fa0fb54bd4b0cd91e16b882002943d0ea3d0985ecf8fa870c9afc9b73656dba')
