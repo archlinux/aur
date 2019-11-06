@@ -27,7 +27,7 @@ build() {
 }
 
 package() {
-	cd "QuickWall-${pkgver}"
+	cd "QuickWall-${pkgver}-${pkgrel}"
 	python setup.py install --prefix=/usr --root="$pkgdir/" --optimize=1 --skip-build
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
