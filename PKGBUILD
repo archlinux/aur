@@ -11,10 +11,10 @@ license=('Apache')
 depends=('bash' 'java-runtime')
 makedepends=('imagemagick' 'maven' 'git')
 source=("git+https://github.com/tomighty/tomighty.git#branch=version-0.7"
-        'pomxml.patch'
-        'tomighty.sh'
-        'tomighty.desktop'
-        'https://github.com/ccidral/tomighty/raw/50d0094c024f1923bd0d6ff1bf77572ae5f5b5f6/img/tomato.ico')
+        pomxml.patch
+        tomighty.sh
+        tomighty.desktop
+        https://github.com/ccidral/tomighty/raw/50d0094c024f1923bd0d6ff1bf77572ae5f5b5f6/img/tomato.ico)
 sha512sums=('SKIP'
             '9dd7636093df5f53295bbefa99747f9426e6d9800b1927c54033c462f2b636661df192cc4aeb304f5f11f7a144aaefa4c8b308a5c6e57d15392fb470ba96aa38'
             '97e1aa44a6037af9bd4bbbd131dd1a7c6657cbac4875b83f0bfa075bea9164ba642ca0d09c0490401d2c567048391d48deff10c8d215d53de6e36f23909e90b8'
