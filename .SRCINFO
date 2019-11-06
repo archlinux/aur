@@ -1,15 +1,8 @@
 pkgbase = dell-unified-printer-driver
-	pkgdesc = Drivers for Dell Printers Model #'s: s1130n 1130 1133 1135n 1815 2145cn 2335dn 2355dn 5330 B1160 B1160w B1165nfw B1260dn B1265dfw B1265dnf B2365dnf
+	pkgdesc = Please use dell-unified-driver instead.
 	pkgver = 1.03
 	pkgrel = 1
-	url = http://www.dell.com/support/home/us/en/19/drivers/driversdetails?driverId=C10W1
 	arch = x86_64
-	license = unknown
-	depends = cups
-	conflicts = samsung-unified-driver-printer
-	conflicts = dell-unified-driver-printer
-	source = dell-unified-printer-driver-1.03.tar.gz::https://downloads.dell.com/FOLDER01511597M/1/B1265dnf_Linux_v1.03_Driver.tar.gz
-	sha256sums = a1aa742cd266f60ae756c5678cdc27ee5be788d3ec088694f2bd03efffc17e36
 
 pkgname = dell-unified-printer-driver
 
