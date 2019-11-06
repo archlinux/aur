@@ -1,17 +1,18 @@
 pkgbase = realtek-firmware
 	pkgdesc = Realtek-specific firmware for WiFI, Bluetooth and Ethernet cards
-	pkgver = 20191022.2b016af
+	pkgver = 20191022
 	pkgrel = 1
 	url = https://git.kernel.org/?p=linux/kernel/git/firmware/linux-firmware.git;a=summary
 	arch = any
 	license = GPL2
 	license = GPL3
 	license = custom
-	makedepends = git
 	options = !strip
-	source = git+https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git#commit=2b016afc348ba4b5fb2016ffcb2822f4a293da0c?signed
+	source = https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/snapshot/linux-firmware-20191022.tar.gz
+	source = https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/snapshot/linux-firmware-20191022.tar.asc
 	validpgpkeys = 4CDE8575E547BF835FE15807A31B6BD72486CFD6
-	md5sums = SKIP
+	sha1sums = a1d5004d013db94cf3779a8b268858a93b585ed4
+	sha1sums = SKIP
 
 pkgname = realtek-firmware
 	conflicts = linux-firmware
