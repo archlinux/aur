@@ -12,9 +12,9 @@ sha256sums=('f2a347448324a027edf02cf80dee695394bfcb73298203fd355f0e33e014989b')
 
 package() {
 
-  cd "${srcdir}"/"${pkgname}-${pkgver}"
+  cd "${srcdir}"/"pkg2zip-${pkgver}"
   make CFLAGS="-DNDEBUG -O2 -Wno-format-truncation"
 
-  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
+  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/"pkg2zip"/LICENSE
   install -Dm755 pkg2zip "${pkgdir}"/usr/bin/pkg2zip
 }
