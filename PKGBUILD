@@ -26,7 +26,7 @@ sha512sums=('bcf7f07eb9cdd0c76b5d2dba3d410b8ee5912d3373966a8d54c0a241c2cd1170d21
 package() {
   cd fanshim-${pkgver}
   python setup.py install --root="${pkgdir}" --optimize=1
-  install -D -m 755 "${srcdir}/fanshim-${pkgver}-${pkgrel}.py" "${pkgdir}/usr/bin/fanshim"
+  install -D -m 755 "${srcdir}/fanshim-${_scripthash}.py" "${pkgdir}/usr/bin/fanshim"
   install -D -m 644 "${srcdir}/fanshim.service" "${pkgdir}/usr/lib/systemd/system/fanshim.service"
 }
 
