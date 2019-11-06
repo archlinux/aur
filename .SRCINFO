@@ -1,0 +1,19 @@
+pkgbase = perl-mail-milter-authentication-handler-smime
+	pkgdesc = Authentication Milter Module for validation of SMIME
+	pkgver = 2.20180510
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Mail-Milter-Authentication-Handler-SMIME
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	makedepends = perl-test-perl-critic
+	depends = perl
+	depends = perl-mail-milter-authentication
+	depends = perl-convert-x509
+	depends = perl-crypt-smime
+	options = !emptydirs
+	source = http://cpan.perl.org/modules/by-module/Mail/Mail-Milter-Authentication-Handler-SMIME-2.20180510.tar.gz
+	sha256sums = be26a02d6848faee2e850f4d7ac8fe7d9fe5449e153c3cf08a6c3acb80d31237
+
+pkgname = perl-mail-milter-authentication-handler-smime
+
