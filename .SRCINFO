@@ -1,6 +1,6 @@
 pkgbase = linux-ck
-	pkgver = 5.3.8
-	pkgrel = 4
+	pkgver = 5.3.9
+	pkgrel = 1
 	url = https://wiki.archlinux.org/index.php/Linux-ck
 	arch = x86_64
 	license = GPL2
@@ -9,8 +9,8 @@ pkgbase = linux-ck
 	makedepends = bc
 	makedepends = libelf
 	options = !strip
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.3.8.tar.xz
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.3.8.tar.sign
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.3.9.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.3.9.tar.sign
 	source = config
 	source = enable_additional_cpu_optimizations-20190822.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20190822.tar.gz
 	source = http://ck.kolivas.org/patches/5.0/5.3/5.3-ck1/patch-5.3-ck1.xz
@@ -19,9 +19,9 @@ pkgbase = linux-ck
 	source = 0002-Bluetooth-hidp-Fix-assumptions-on-the-return-value-o.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	sha256sums = 78f3cfc6c20b10ff21c0bb22d7d257cab03781c44d8c5aae289f749f94f76649
+	sha256sums = d72579aa732edd0e25779adfc43e68a53f77e80020c4aab5db2f5b28c247e98a
 	sha256sums = SKIP
-	sha256sums = 08a798facbb6bfb85448661d23551d50d6bf6219e59d095feb28f1e0658f751c
+	sha256sums = e749cd85d37d4d70099b0a7f54e852b039ae07c14e4ab8be299c64edae5d4ba4
 	sha256sums = 8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5
 	sha256sums = 5b66761eae4efa4cb967aba9d4e555aa320cf5c004f0848e6bfbcb75ef66fbf1
 	sha256sums = 01367272cd82cafc24ae04d309d5c738352949727dc2a37f8578c14c7a90b9f0
@@ -35,11 +35,11 @@ pkgname = linux-ck
 	depends = initramfs
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
-	provides = linux-ck=5.3.8
+	provides = linux-ck=5.3.9
 
 pkgname = linux-ck-headers
 	pkgdesc = Header files and scripts for building modules for Linux-ck kernel
 	depends = linux-ck
-	provides = linux-ck-headers=5.3.8
-	provides = linux-headers=5.3.8
+	provides = linux-ck-headers=5.3.9
+	provides = linux-headers=5.3.9
 

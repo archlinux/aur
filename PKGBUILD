@@ -61,9 +61,9 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck
-_srcver=5.3.8-arch1
+_srcver=5.3.9-arch1
 pkgver=${_srcver%-*}
-pkgrel=4
+pkgrel=1
 _ckpatchversion=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -85,9 +85,9 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('78f3cfc6c20b10ff21c0bb22d7d257cab03781c44d8c5aae289f749f94f76649'
+sha256sums=('d72579aa732edd0e25779adfc43e68a53f77e80020c4aab5db2f5b28c247e98a'
             'SKIP'
-            '08a798facbb6bfb85448661d23551d50d6bf6219e59d095feb28f1e0658f751c'
+            'e749cd85d37d4d70099b0a7f54e852b039ae07c14e4ab8be299c64edae5d4ba4'
             '8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5'
             '5b66761eae4efa4cb967aba9d4e555aa320cf5c004f0848e6bfbcb75ef66fbf1'
             '01367272cd82cafc24ae04d309d5c738352949727dc2a37f8578c14c7a90b9f0'
@@ -96,7 +96,7 @@ sha256sums=('78f3cfc6c20b10ff21c0bb22d7d257cab03781c44d8c5aae289f749f94f76649'
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
-export KBUILD_BUILD_TIMESTAMP="@${SOURCE_DATE_EPOCH:-$(date +%s)}"
+export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
 prepare() {
   cd linux-${pkgver}
@@ -183,8 +183,6 @@ build() {
 
 _package() {
   pkgdesc="The ${pkgbase/linux/Linux} kernel and modules with the ck1 patchset featuring MuQSS CPU scheduler"
-  #_Kpkgdesc="The ${pkgbase/linux/Linux} kernel and modules with the ck1 patchset featuring MuQSS CPU scheduler"
-  #pkgdesc="${_Kpkgdesc}"
   depends=(coreutils kmod initramfs)
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
@@ -221,8 +219,6 @@ _package() {
 
 _package-headers() {
   pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel"
-  #_Hpkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel"
-  #pkgdesc="${_Hpkgdesc}"
   depends=('linux-ck') # added to keep kernel and headers packages matched
   provides=("linux-ck-headers=${pkgver}" "linux-headers=${pkgver}")
   #groups=('ck-generic')
