@@ -1,6 +1,7 @@
 pkgbase = linux-lqx
+	pkgdesc = Linux LQX
 	pkgver = 5.3.8_2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://liquorix.net/
 	arch = x86_64
 	license = GPL2
@@ -20,7 +21,7 @@ pkgbase = linux-lqx
 	sha512sums = 48677db9901be4c6a9494310d5d572980f03c33ec545b671133a7c0940bbdfb4bf33987539c369b22809090d73232d5d376f6a116a7df08dd8ce79ec59db8201
 
 pkgname = linux-lqx
-	pkgdesc = A desktop oriented kernel and modules with Liquorix patches
+	pkgdesc = The Linux LQX kernel and modules
 	depends = coreutils
 	depends = kmod
 	depends = initramfs
@@ -29,10 +30,10 @@ pkgname = linux-lqx
 	optdepends = modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig
 
 pkgname = linux-lqx-headers
-	pkgdesc = Header files and scripts to build modules for linux-lqx
+	pkgdesc = Headers and scripts for building modules for the Linux LQX kernel
 	depends = linux-lqx
 
 pkgname = linux-lqx-docs
-	pkgdesc = Kernel hackers manual - HTML documentation that comes with the linux-lqx.
+	pkgdesc = Kernel hacker's manual for the Linux LQX kernel
 	depends = linux-lqx
 
