@@ -1,6 +1,6 @@
 pkgbase = gstreamer-git
 	pkgdesc = GStreamer Multimedia Framework (Git version)
-	pkgver = 1.17.0.1.18629.b50abd9f4
+	pkgver = 1.16.0.r187.g78041a774
 	pkgrel = 1
 	url = http://gstreamer.freedesktop.org/
 	arch = i686
@@ -9,6 +9,8 @@ pkgbase = gstreamer-git
 	makedepends = intltool
 	makedepends = pkgconfig
 	makedepends = gtk-doc
+	makedepends = meson
+	makedepends = gtk3
 	makedepends = gobject-introspection
 	makedepends = git
 	depends = libxml2
@@ -16,8 +18,10 @@ pkgbase = gstreamer-git
 	depends = libcap
 	depends = libunwind
 	depends = libelf
+	depends = bash-completion
+	depends = python
 	optdepends = sh: feedback script
-	provides = gstreamer=1.17.0.1.18629.b50abd9f4
+	provides = gstreamer=1.16.0.r187.g78041a774
 	conflicts = gstreamer
 	options = !libtool
 	source = git+git://anongit.freedesktop.org/gstreamer/gstreamer

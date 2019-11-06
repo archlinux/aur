@@ -3,15 +3,19 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=gstreamer-git
-pkgver=1.17.0.1.18629.b50abd9f4
+pkgver=1.16.0.r187.g78041a774
 pkgrel=1
 pkgdesc='GStreamer Multimedia Framework (Git version)'
 arch=('i686' 'x86_64')
 license=('LGPL')
 url='http://gstreamer.freedesktop.org/'
-depends=('libxml2' 'glib2' 'libcap' 'libunwind' 'libelf')
+depends=('libxml2' 'glib2' 'libcap'
+          'libunwind' 'libelf'
+          'bash-completion' 'python')
 optdepends=('sh: feedback script')
-makedepends=('intltool' 'pkgconfig' 'gtk-doc' 'gobject-introspection' 'git')
+makedepends=('intltool' 'pkgconfig' 'gtk-doc'
+             'meson' 'gtk3'
+             'gobject-introspection' 'git')
 provides=('gstreamer='$pkgver)
 conflicts=('gstreamer')
 options=('!libtool')
@@ -23,18 +27,13 @@ md5sums=('SKIP')
 
 pkgver() {
   cd $_gitname
-  version=$(grep AC_INIT configure.ac | sed 's/AC_INIT(\[GStreamer\],\[//' | sed 's/\],\[http:\/\/bugzilla.gnome.org\/enter_bug.cgi?product=GStreamer\],\[gstreamer\])//')
-  hash=$(git log --pretty=format:'%h' -n 1)
-  revision=$(git rev-list --count HEAD)
-  
-  echo $version.$revision.$hash
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd $_gitname
-  ./autogen.sh --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
-    --libexecdir=/usr/lib --enable-gtk-doc --disable-static
-  make
+  arch-meson gstreamer build \
+    -Ddbghelp=disabled -Ddoc=disabled
+  ninja -C build
 }
 
 #check() {
@@ -43,6 +42,5 @@ build() {
 #}
 
 package() {
-  cd $_gitname
-  make DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" ninja -C build install
 }
