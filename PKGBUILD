@@ -2,26 +2,26 @@
 # Contributor:
 
 pkgname=marker
-pkgver=2018.07.03
+pkgver=2019.11.06
 pkgrel=1
 pkgdesc='Markdown editor for linux made with Gtk+-3.0'
 arch=('x86_64')
-url='https://github.com/fabiocolacio/Marker'
+url='https://fabiocolacio.github.io/Marker/'
 license=('GPL3')
 depends=('gtksourceview3' 'gtkspell3' 'webkit2gtk')
-makedepends=('meson')
+makedepends=('git' 'meson')
 optdepends=('pandoc: export to HTML, PDF, RTF, OTF, DOCX, LaTeX')
 options=(!buildflags)
-source=("${pkgname}-${pkgver}.zip::${url}/releases/download/${pkgver}/${pkgname}.zip")
-sha256sums=('9038a2f8b976e6bfb199d14dbf60e7281b66e5ee94a6333ca48e89e63e6096ef')
+source=("$pkgname::git+https://github.com/fabiocolacio/Marker.git#tag=$pkgver")
+sha256sums=('SKIP')
 
 prepare() {
-    #fix "Cant get charter to work #187"
-    sed -i 's/en_US/C/' ${pkgname}/src/scidown/src/charter/src/svg.c
+    cd $pkgname
+    git submodule update --init --recursive
 }
 
 build() {
-    arch-meson ${pkgname} build
+    arch-meson $pkgname build
     ninja -C build
 }
 
