@@ -1,6 +1,6 @@
 # Maintainer: Martins Mozeiko <martins.mozeiko@gmail.com>
 
-pkgname=pkg2zip
+pkgname=pkg2zip-fork
 pkgver=2.2
 pkgrel=1
 pkgdesc="This is for lusid1's fork, recomended by NoPayStation. Decrypts PlayStation Vita pkg file and packages to zip archive"
