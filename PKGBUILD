@@ -65,6 +65,7 @@ _clr=${_major}.79-86
 pkgbase=linux-clear-lts2018
 pkgver=${_major}.${_minor}
 pkgrel=1
+pkgdesc='Clear Linux lts2018'
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux-lts2018"
 license=('GPL2')
@@ -199,7 +200,7 @@ build() {
 }
 
 _package() {
-    pkgdesc="Clearlinux lts2018 kernel and modules"
+    pkgdesc="The $pkgdesc kernel and modules"
     depends=('coreutils' 'kmod' 'initramfs')
     optdepends=('crda: to set the correct wireless channels of your country'
                 'linux-firmware: firmware images needed for some devices'
@@ -231,7 +232,7 @@ _package() {
 }
 
 _package-headers() {
-    pkgdesc="Header files and scripts for building modules for linux-clear-lts2018"
+    pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
 
     cd ${_srcname}
     local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
