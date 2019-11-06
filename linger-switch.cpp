@@ -22,7 +22,7 @@ int main(int argc, char** argv) {
   if (setresuid(uid, uid, 0) < 0) Err("setuid");
   umask(0022);
   bool del = false, flag = false;
-  if (argv == 0) Help("linger");
+  if (argv == 0) Help("linger-switch");
   else if (argc != 2) Help(argv[0]);
   try {
     std::string mode_str(argv[1]);
