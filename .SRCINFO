@@ -6,7 +6,7 @@ pkgbase = pkg2zip-fork
 	arch = i686
 	arch = x86_64
 	license = custom:unlicense
-	source = https://github.com/lusid1/pkg2zip-fork/archive/2.2.tar.gz
+	source = https://github.com/lusid1/pkg2zip/archive/2.2.tar.gz
 	sha256sums = f2a347448324a027edf02cf80dee695394bfcb73298203fd355f0e33e014989b
 
 pkgname = pkg2zip-fork
