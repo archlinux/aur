@@ -19,11 +19,11 @@ source=(https://github.com/imapsync/imapsync/archive/${pkgname}-${pkgver}.tar.gz
 sha512sums=('cb8c2c545a54ae63d944fc56790595a0de9260d3451d11b43a5d58dab0c87653be633572ce1de6715334091b667187585eedd21ca12bc438abaeee2a65a1a6bd')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgname}-${pkgver}"
+  cd ${pkgname}-${pkgname}-${pkgver}
   make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgname}-${pkgver}"
+  cd ${pkgname}-${pkgname}-${pkgver}
   make DESTDIR="${pkgdir}" install
 }
