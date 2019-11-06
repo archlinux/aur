@@ -1,10 +1,10 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
-# Maintainer: wangjiezhe <wangjiezhe AT yandex DOT com>
+# Maintainer: Saeed Rasooli <saeed.gnu@gmail.com>
 
 _pkgbase=pygobject
-pkgbase=pygobject-git
+pkgbase=pygobject
 pkgname=(python-gobject-git python2-gobject-git pygobject-devel-git)
-pkgver=3.27.1+1+gdf77beb7
+pkgver=3.34.0+8+g15ae6328
 pkgrel=1
 pkgdesc="Python Bindings for GLib/GObject/GIO/GTK+"
 url="https://wiki.gnome.org/Projects/PyGObject"
@@ -13,61 +13,59 @@ license=(LGPL)
 depends=(gobject-introspection-runtime)
 makedepends=(python-cairo python2-cairo gobject-introspection git gnome-common)
 optdepends=('cairo: Cairo bindings')
-source=("git://git.gnome.org/pygobject")
+source=("git+https://gitlab.gnome.org/GNOME/pygobject.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd $_pkgbase
-  git describe --tags | sed 's/-/+/g'
+	cd $_pkgbase
+	git describe --tags | sed 's/-/+/g'
 }
 
 prepare() {
-  mkdir -p build-py{2,3} devel
-  cd $_pkgbase
-  NOCONFIGURE=1 ./autogen.sh
+	mkdir -p devel
 }
 
 _build() (
-  cd build-py$1
-  ../$_pkgbase/configure --prefix=/usr --with-python=/usr/bin/python$1
-  sed -i 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
-  make
+	cd $_pkgbase
+	python$1 setup.py build
 )
 
 build() {
-  _build 2
-  _build 3
+	_build 2
+	_build 3
 }
 
 package_python-gobject-git() {
-  depends=("pygobject-devel=$pkgver" python)
-  provides=("python-gobject=$pkgver")
-  conflicts=("python-gobject")
+	depends=("pygobject-devel=$pkgver" python)
+	provides=("python-gobject=$pkgver")
+	conflicts=("python-gobject")
 
-  cd build-py3
-  make DESTDIR="$pkgdir" install
-  mv "$pkgdir"/usr/{include,lib/pkgconfig} "$srcdir/devel"
+	cd $_pkgbase
+	python3 setup.py install --prefix="/usr/" --root="$pkgdir"
+	mv "$pkgdir/usr/include/pygobject-3.0/pygobject.h" "$srcdir/devel"
+	mv "$pkgdir/usr/lib/pkgconfig/pygobject-3.0.pc" "$srcdir/devel"
 }
 
 package_python2-gobject-git() {
-  pkgdesc="${pkgdesc/Python/Python2}"
-  depends=("pygobject-devel=$pkgver" python2)
-  provides=("python2-gobject=$pkgver")
-  conflicts=("python2-gobject")
+	pkgdesc="${pkgdesc/Python/Python2}"
+	depends=("pygobject-devel=$pkgver" python2)
+	provides=("python2-gobject=$pkgver")
+	conflicts=("python2-gobject")
 
-  cd build-py2
-  make DESTDIR="$pkgdir" install
-  python2 -m compileall "$pkgdir"/usr/lib/python2.7/site-packages/gi
-  rm -r "$pkgdir"/usr/{include,lib/pkgconfig}
+	cd $_pkgbase
+	python2 setup.py install --prefix="/usr/" --root="$pkgdir"
+	mv "$pkgdir/usr/include/pygobject-3.0/pygobject.h" "$srcdir/devel"
+	mv "$pkgdir/usr/lib/pkgconfig/pygobject-3.0.pc" "$srcdir/devel"
 }
 
 package_pygobject-devel-git() {
-  pkgdesc="Common development files for pygobject"
-  provides=("pygobject-devel=$pkgver")
-  conflicts=("pygobject-devel")
+	pkgdesc="Common development files for pygobject"
+	provides=("pygobject-devel=$pkgver")
+	conflicts=("pygobject-devel")
 
-  cd devel
-  mkdir -p "$pkgdir/usr/lib"
-  mv include "$pkgdir/usr/"
-  mv pkgconfig "$pkgdir/usr/lib/"
+	mkdir -p "$pkgdir/usr/include/pygobject-3.0/"
+	cp "$srcdir/devel/pygobject.h" "$pkgdir/usr/include/pygobject-3.0/pygobject.h"
+
+	mkdir -p "$pkgdir/usr/lib/pkgconfig/"
+	cp "$srcdir/devel/pygobject-3.0.pc" "$pkgdir/usr/lib/pkgconfig/pygobject-3.0.pc"
 }
