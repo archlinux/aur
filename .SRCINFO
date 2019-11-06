@@ -1,6 +1,6 @@
 pkgbase = grabserial
 	pkgdesc = Serial dump and timing program
-	pkgver = 1.9.3
+	pkgver = 1.9.9
 	pkgrel = 1
 	url = https://github.com/tbird20d/grabserial
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = grabserial
 	makedepends = git
 	makedepends = python2-setuptools
 	depends = python2-pyserial
-	source = https://github.com/tbird20d/grabserial/archive/v1.9.3.tar.gz
-	md5sums = SKIP
+	source = https://github.com/tbird20d/grabserial/archive/v1.9.9.tar.gz
+	sha256sums = 604d61199827b5ed27306204116779e759dfb34de78098028dc28b0c0f099323
 
 pkgname = grabserial
 
