@@ -5,7 +5,7 @@
 pkgbase="monero"
 pkgname=('monero' 'libmonero-wallet')
 pkgver=0.15.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Monero: the secure, private, untraceable currency - release version (includes daemon, wallet and miner)"
 license=('custom:Cryptonote')
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -15,9 +15,15 @@ makedepends=('git' 'cmake' 'boost' 'gtest' 'qt5-tools')
 provides=('monero' 'libmonero-wallet')
 conflicts=('bitmonero-git' 'libmonero-wallet-git')
 
-source=("${pkgname}"::"git+https://github.com/monero-project/monero#tag=v${pkgver}")
+source=(
+    "${pkgname}"::"git+https://github.com/monero-project/monero#tag=v${pkgver}"
+    "monero.sysusers"
+    "monero.tmpfiles")
 
-sha256sums+=('SKIP')
+sha256sums+=(
+    'SKIP'
+    '57f4c4c54c7a27f2de874c00034995ce14811aca81dd3f30317ae5066c84bb0d'
+    '88e80a3bbda159a22e034461e03ab8f0c1108cfb0a7475a2c94de47730493d7f')
 
 _monero="${pkgbase}"
 _build="build"
