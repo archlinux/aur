@@ -1,6 +1,7 @@
 pkgbase = ooni-probe-cli-git
+	pkgdesc = Next generation OONI Probe CLI
 	pkgver = r232.946289d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ooni/probe-cli
 	arch = i686
 	arch = x86_64

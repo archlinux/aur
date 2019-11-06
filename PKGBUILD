@@ -1,7 +1,7 @@
 # Maintainer: PastLeo <chgu82837@gmail.com>
 pkgname=ooni-probe-cli-git
 pkgver=r232.946289d
-pkgrel=1
+pkgrel=2
 pkgdesc="Next generation OONI Probe CLI"
 arch=('i686' 'x86_64')
 url='https://github.com/ooni/probe-cli'
