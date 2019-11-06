@@ -30,7 +30,7 @@ package() {
   # Install the program.
   mkdir -p "$pkgdir/usr/share/$_gitname/modules"
   install -Dm755 dwmbar "$pkgdir/usr/bin/$_gitname"
-  cp -a --no-preserve=ownership * "$pkgdir/usr/share/$_gitname"
+  cp -a --no-preserve=ownership {config,bar.sh,modules} "$pkgdir/usr/share/$_gitname"
   chmod +x "$pkgdir/usr/bin/$_gitname"
 # chmod -R 777 "$pkgdir/usr/share/$_gitname"
 }
