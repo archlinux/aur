@@ -6,12 +6,12 @@ pkgname=namebench
 pkgver=1.3
 pkgrel=1
 pkgdesc='Open-source DNS benchmark utility'
-arch=(any)
+arch=('any')
 url='http://code.google.com/p/namebench/'
 license=(Apache)
 depends=('python2-dnspython' 'python2-httplib2' 'python2-simplejson' 'python2-jinja'
          'python2-graphy')
-makedepends=(git)
+makedepends=('git')
 optdepends=('tk: gui'
             'python2-pmw: gui')
 source=("namebench::git+https://github.com/google/${pkgname}.git#branch=${pkgver}")
