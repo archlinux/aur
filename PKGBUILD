@@ -69,6 +69,7 @@ _clr=${_major}.7-853
 pkgbase=linux-clear
 pkgver=${_major}.${_minor}
 pkgrel=1
+pkgdesc='Clear Linux'
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux"
 license=('GPL2')
@@ -209,7 +210,7 @@ build() {
 }
 
 _package() {
-    pkgdesc="Clearlinux kernel and modules"
+    pkgdesc="The $pkgdesc kernel and modules"
     depends=('coreutils' 'kmod' 'initramfs')
     optdepends=('crda: to set the correct wireless channels of your country'
                 'linux-firmware: firmware images needed for some devices'
@@ -241,7 +242,7 @@ _package() {
 }
 
 _package-headers() {
-    pkgdesc="Header files and scripts for building modules for linux-clear"
+    pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
 
     cd ${_srcname}
     local builddir="$pkgdir/usr/lib/modules/$(<version)/build"

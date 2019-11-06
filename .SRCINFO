@@ -1,4 +1,5 @@
 pkgbase = linux-clear
+	pkgdesc = Clear Linux
 	pkgver = 5.3.9
 	pkgrel = 1
 	url = https://github.com/clearlinux-pkgs/linux
@@ -28,7 +29,7 @@ pkgbase = linux-clear
 	sha256sums = dbf4ac4b873ce6972e63b78d74ddba18f2701716163bb7f4b4fe5e909346a6e1
 
 pkgname = linux-clear
-	pkgdesc = Clearlinux kernel and modules
+	pkgdesc = The Clear Linux kernel and modules
 	install = linux.install
 	depends = coreutils
 	depends = kmod
@@ -39,5 +40,5 @@ pkgname = linux-clear
 	provides = WIREGUARD-MODULE
 
 pkgname = linux-clear-headers
-	pkgdesc = Header files and scripts for building modules for linux-clear
+	pkgdesc = Headers and scripts for building modules for the Clear Linux kernel
 
