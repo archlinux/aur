@@ -51,7 +51,8 @@ _major=5.3
 _minor=9
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=1
+pkgrel=2
+pkgdesc='Linux AUFS'
 arch=('x86_64')
 url="https://github.com/sfjro/aufs5-standalone"
 license=('GPL2')
@@ -186,7 +187,7 @@ build() {
 }
 
 _package() {
-    pkgdesc="The ${pkgbase/linux/Linux} kernel and modules with the AUFS"
+    pkgdesc="The $pkgdesc kernel and modules"
     depends=('coreutils' 'kmod' 'initramfs')
     optdepends=('crda: to set the correct wireless channels of your country'
                 'linux-firmware: firmware images needed for some devices'
@@ -215,7 +216,7 @@ _package() {
 }
 
 _package-headers() {
-   pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel"
+   pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
    depends=('linux-aufs')
 
   cd $_srcname
@@ -294,7 +295,7 @@ _package-headers() {
 }
 
 _package-docs() {
-    pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase/linux/Linux} kernel"
+    pkgdesc="Kernel hacker's manual for the $pkgdesc kernel"
     depends=('linux-aufs')
 
   cd $_srcname
@@ -304,8 +305,8 @@ _package-docs() {
   mkdir -p "$builddir"
   cp -t "$builddir" -a Documentation
 
-  msg2 "Removing doctrees..."
-  rm -r "$builddir/Documentation/output/.doctrees"
+  msg2 "Removing unneeded files..."
+  rm -rv "$builddir"/Documentation/{,output/}.[^.]*
 
   msg2 "Moving HTML docs..."
   local src dst

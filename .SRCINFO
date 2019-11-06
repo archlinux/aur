@@ -1,6 +1,7 @@
 pkgbase = linux-aufs
+	pkgdesc = Linux AUFS
 	pkgver = 5.3.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sfjro/aufs5-standalone
 	arch = x86_64
 	license = GPL2
@@ -30,7 +31,7 @@ pkgbase = linux-aufs
 	sha512sums = f5ab5730de15f24e5b773411ca2257573643ff639fa9cfa759bcd8f4b5c7064a6080224fbf191df82dfce9bb50f0b474d2e717c29b45b3f9b227cf69c147ce06
 
 pkgname = linux-aufs
-	pkgdesc = The Linux-aufs kernel and modules with the AUFS
+	pkgdesc = The Linux AUFS kernel and modules
 	depends = coreutils
 	depends = kmod
 	depends = initramfs
@@ -39,10 +40,10 @@ pkgname = linux-aufs
 	optdepends = modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig
 
 pkgname = linux-aufs-headers
-	pkgdesc = Header files and scripts for building modules for Linux-aufs kernel
+	pkgdesc = Headers and scripts for building modules for the Linux AUFS kernel
 	depends = linux-aufs
 
 pkgname = linux-aufs-docs
-	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-aufs kernel
+	pkgdesc = Kernel hacker's manual for the Linux AUFS kernel
 	depends = linux-aufs
 
