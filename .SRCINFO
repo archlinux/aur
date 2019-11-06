@@ -6,6 +6,7 @@ pkgbase = nodejs-shadow-cljs
 	arch = any
 	license = EPL
 	makedepends = npm
+	makedepends = jq
 	depends = nodejs
 	noextract = shadow-cljs-2.8.39.tgz
 	source = https://registry.npmjs.org/shadow-cljs/-/shadow-cljs-2.8.39.tgz
