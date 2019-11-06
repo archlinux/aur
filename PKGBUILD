@@ -1,7 +1,7 @@
 # Maintainer: Omar Pakker <archlinux@opakker.nl>
 
 pkgname=php-transip-api
-pkgver=5.16
+pkgver=5.18.0
 pkgrel=1
 pkgdesc="Official PHP library for access to TransIP's services through their API"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://www.transip.nl/transip/api/"
 license=('Apache')
 depends=('php')
 source=("https://github.com/transip/transip-api-php/archive/v${pkgver}.tar.gz")
-sha512sums=('e6dd0185d5b6be370a86e6ab7e2eee679f0737f868c7470332ae3c32edb76ac1f0e55502b1058074300a49e00a18c8383778ac37a4b6c9248af927966431d660')
+sha512sums=('b9694279007c0d866e20acabef7b0063960e071ee4bab721e602b8246fc5b76162ac9081a1451204f416648199dc359c81538975c1b16a984b63a1c25f7f54b2')
 
 package() {
 	cd "transip-api-php-${pkgver}"
