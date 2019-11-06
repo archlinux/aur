@@ -1,7 +1,7 @@
 pkgbase = otf-linguistics-pro
-	pkgdesc = he Linguistics Pro font family is based on the Utopia Nova font family
+	pkgdesc = A font family (Linguistics Pro) based on the Utopia Nova font family
 	pkgver = 1.010
-	pkgrel = 1
+	pkgrel = 2
 	url = https://fontlibrary.org/en/font/linguistics-pro
 	arch = any
 	license = custom:OFL

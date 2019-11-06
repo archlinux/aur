@@ -1,8 +1,8 @@
 # Maintainer: M. Scholz <srtlg>
 pkgname=otf-linguistics-pro
 pkgver=1.010
-pkgrel=1
-pkgdesc="he Linguistics Pro font family is based on the Utopia Nova font family"
+pkgrel=2
+pkgdesc="A font family (Linguistics Pro) based on the Utopia Nova font family"
 url="https://fontlibrary.org/en/font/linguistics-pro"
 arch=('any')
 license=('custom:OFL')
