@@ -4,7 +4,7 @@
 
 pkgname_=mididings
 pkgname=$pkgname_-git
-pkgver=20191029.bbec99a
+pkgver=r706.bbec99a
 pkgrel=1
 pkgdesc="A MIDI router and processor based on Python, supporting ALSA and JACK MIDI (python3 patched)"
 arch=('i686' 'x86_64')
@@ -24,8 +24,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$pkgname"
-  # uuuugly code to use date + current git hash in lieu of absent release tag
-  echo "$(date +%Y%m%d).$(git describe --always)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
