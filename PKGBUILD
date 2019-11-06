@@ -1,7 +1,7 @@
 # Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 pkgname=orcaqm
-pkgver=4.2.0
+pkgver=4.2.1
 pkgrel=1
 pkgdesc="ORCA is an ab initio, DFT, and semi-empirical SCF-MO package"
 url="https://orcaforum.kofo.mpg.de/app.php/portal"
@@ -14,7 +14,7 @@ makedepends=('xz')
 source=("local://orca_${pkgver//./_}_linux_x86-64_shared_openmpi${_openmpi_ver//./}.tar.xz"
         "orcaqm")
 noextract=("orca_${pkgver//./_}_linux_x86-64_shared_openmpi${_openmpi_ver//./}.tar.xz")
-sha1sums=('d37bf4ea63f0ac03d36f2b2efd42c3cd9b807a8d'
+sha1sums=('fe16ea2d16b04ba9edac98498aa8f5bb2448463d'
           'dd42dc249e1327cf99cd09dc1cda459a6fc48df6')
 
 PKGEXT='.pkg.tar'
