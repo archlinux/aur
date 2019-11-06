@@ -53,7 +53,7 @@ build() {
   -DWITH_OPEN_MP=OFF \
   ../${_pkgname}
 
-  make -j4
+  make
 }
 
 package() {
