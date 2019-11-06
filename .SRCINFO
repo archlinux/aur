@@ -1,6 +1,6 @@
 pkgbase = mediahandling
 	pkgdesc = A library solely intended for the use in the project Chestnut by handling all media-file operations
-	pkgver = 0.0.2
+	pkgver = 0.0.3
 	pkgrel = 1
 	url = https://github.com/jonno85uk/mediahandling
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = mediahandling
 	depends = ffmpeg
 	depends = boost-libs
 	provides = mediahandling
-	source = https://github.com/jonno85uk/mediahandling/archive/0.0.2.tar.gz
-	md5sums = bbd420d498ac38bae2c3150222b89651
+	source = https://github.com/jonno85uk/mediahandling/archive/0.0.3.tar.gz
+	md5sums = 5edf615b41643a438c5d410441eb7934
 
 pkgname = mediahandling
 
