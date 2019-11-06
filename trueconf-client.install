@@ -1,0 +1,78 @@
+cmd_present() {
+	command -v "$1" >/dev/null 2>&1
+}
+
+pre_install() {
+	echo ""
+}
+
+post_install() {	
+  	BASE_TC_PATH="/opt/trueconf"
+	STARTUP_SCRIPT="${BASE_TC_PATH}/trueconf-client"
+	AUTORUN_SCRIPT="${BASE_TC_PATH}/trueconf-client-autostart"
+	chmod a+x ${STARTUP_SCRIPT}
+	chmod a+x ${AUTORUN_SCRIPT}	
+	LINK_FILE="/usr/bin/trueconf"
+	if [ -f ${LINK_FILE} ]; then
+		rm ${LINK_FILE}
+	fi
+	if [ ! -f ${LINK_FILE} ]; then
+		ln -s -f ${STARTUP_SCRIPT} ${LINK_FILE}
+	fi
+	if cmd_present "gconftool-2"; then
+		gconftool-2 -s /desktop/gnome/url-handlers/visicall/command '/opt/trueconf/trueconf-client %s' --type String
+		gconftool-2 -s /desktop/gnome/url-handlers/visicall/enabled --type Boolean true
+		
+		gconftool-2 -s /desktop/gnome/url-handlers/trueconf/command '/opt/trueconf/trueconf-client %s' --type String
+		gconftool-2 -s /desktop/gnome/url-handlers/trueconf/enabled --type Boolean true
+	fi
+	if cmd_present "xdg-desktop-menu"; then
+		xdg-desktop-menu install --novendor --mode system /opt/trueconf/trueconf.desktop
+		xdg-desktop-menu forceupdate --mode system
+	else
+		echo "WARNING: Could not find xdg-desktop-menu" >&2
+	fi
+	if cmd_present "kbuildsycoca4"; then
+		kbuildsycoca4 --noincremental
+	fi
+	if cmd_present "appstreamcli"; then
+		appstreamcli refresh
+	fi       
+	pid=$(ps axco pid,command | awk '$2 == "TrueConf" {print $1; }')
+	if [ -n "$pid" ]; then
+		for process in "$pid"; do
+				kill -s 50 $process 
+		done
+	fi
+}
+
+pre_upgrade() {
+	echo ""
+}
+
+post_upgrade() {
+	post_install
+}
+
+pre_remove() {    
+  if cmd_present 'xdg-desktop-menu'; then
+      xdg-desktop-menu uninstall --novendor --mode system /opt/trueconf/trueconf.desktop
+      xdg-desktop-menu forceupdate --mode system
+  else
+      echo "WARNING: Could not find xdg-desktop-menu" >&2
+  fi
+  autostart_dir="${HOME}/.config/autostart"
+  if [ -f ${autostart_dir}/trueconf.desktop ]; then
+      rm ${autostart_dir}/trueconf.desktop
+  fi
+  if [ -f ${autostart_dir}/trueconf-autostart.desktop ]; then
+      rm ${autostart_dir}/trueconf-autostart.desktop
+  fi
+}
+
+post_remove() {	
+  LINK_FILE="/usr/bin/trueconf"
+  if [ -f ${LINK_FILE} ]; then
+      rm ${LINK_FILE}
+  fi
+}
