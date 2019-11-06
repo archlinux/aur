@@ -5,12 +5,12 @@ pkgname=python2-graphy
 pkgver=1.0
 pkgrel=2
 pkgdesc='Simple Chart Library for Python (deprecated Google Chart API)'
-arch=(any)
+arch=('any')
 url='https://code.google.com/p/graphy/'
 license=(Apache)
 depends=('python2')
 makedepends=('python2-distribute')
-source=(https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/graphy/graphy_${pkgver}.tar.bz2
+source=("https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/graphy/graphy_${pkgver}.tar.bz2"
         setup.py)
 sha512sums=('39b85b21dd0e984a3b7895a090d6676d2fc12e629bcb5f2e486ad02b6cacdd57ab150c1aa4364cae571cd8e6fbca20b5744c079be532b6f4ea2668899c9932e3'
             '0b2fe89d2ad55137b635c3910f815e9c51283e180a3d62c6d666923fd0f6e555184a0cb3e7d4c172aa1e93944191d95421494891e8bb4942fd3c6657fb5e0339')
