@@ -22,34 +22,33 @@ sha512sums=('bd788b498d4c453608540a88216c2ff6f7008ef4a5de1dfd5e6ccb928bd29380deb
             '061e8b777b3a8b6c592d4ac5a99b6782acbdc43b1f4ed85d17f8a91560be136f9c4274a58eff583d18ede7d67e583779fdb8ba7f0b407e6e7bcd89f2119fa4f8')
 
 build() {
-	cd ${srcdir}
-	for n in *.rpm; do
-		bsdtar xf ${n}
-	done
+  for n in *.rpm; do
+    bsdtar xf ${n}
+  done
 
-	patch -p1 < 0001-brother-hl4150cdn.patch
+  patch -p1 < 0001-brother-hl4150cdn.patch
 }
 
 package() {
-	install -d ${pkgdir}/usr/share
-	cp -R usr/bin ${pkgdir}/usr
-	cp -R usr/local/Brother ${pkgdir}/usr/share/Brother
+  install -d "${pkgdir}"/usr/share
+  cp -R usr/bin "${pkgdir}"/usr
+  cp -R usr/local/Brother "${pkgdir}"/usr/share/Brother
 
-	echo 'Fixing paths...'
-	find ${pkgdir} -type f -exec sed -i s#/usr/local/Brother#/usr/share/Brother#g {} \;
+  # Fixing paths...
+  find "${pkgdir}" -type f -exec sed -i s#/usr/local/Brother#/usr/share/Brother#g {} \;
 
-	echo 'Installing PPD.'
-	mkdir -p ${pkgdir}/usr/share/cups/model/
+  # Installing PPD
+  mkdir -p "${pkgdir}"/usr/share/cups/model/
 
-	PKGDIR=${pkgdir} SRCDIR=${srcdir} DESTDIR=${pkgdir} DRIVER_PREFIX=/usr/share/Brother \
-	usr/local/Brother/Printer/hl4150cdn/cupswrapper/cupswrapperhl4150cdn -s
+  PKGDIR="${pkgdir}" SRCDIR="${srcdir}" DESTDIR="${pkgdir}" DRIVER_PREFIX=/usr/share/Brother \
+  usr/local/Brother/Printer/hl4150cdn/cupswrapper/cupswrapperhl4150cdn -s
 
-	rm ${pkgdir}/usr/share/Brother/Printer/hl4150cdn/cupswrapper/cupswrapperhl4150cdn 
-	rm ${pkgdir}/usr/share/Brother/Printer/hl4150cdn/inf/setupPrintcapij
+  rm "${pkgdir}"/usr/share/Brother/Printer/hl4150cdn/cupswrapper/cupswrapperhl4150cdn
+  rm "${pkgdir}"/usr/share/Brother/Printer/hl4150cdn/inf/setupPrintcapij
 
-	chown root:lp ${pkgdir}/usr/share/Brother/Printer/hl4150cdn/inf
-	chmod 775 ${pkgdir}/usr/share/Brother/Printer/hl4150cdn/inf
-	chown daemon:lp ${pkgdir}/usr/share/Brother/Printer/hl4150cdn/inf/brhl4150cdnrc
-	chmod 664 ${pkgdir}/usr/share/Brother/Printer/hl4150cdn/inf/brhl4150cdnrc
-	install -Dm644 Brother.license ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+  chown root:lp "${pkgdir}"/usr/share/Brother/Printer/hl4150cdn/inf
+  chmod 775 "${pkgdir}"/usr/share/Brother/Printer/hl4150cdn/inf
+  chown daemon:lp "${pkgdir}"/usr/share/Brother/Printer/hl4150cdn/inf/brhl4150cdnrc
+  chmod 664 "${pkgdir}"/usr/share/Brother/Printer/hl4150cdn/inf/brhl4150cdnrc
+  install -Dm644 Brother.license "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
