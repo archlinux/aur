@@ -47,9 +47,10 @@ _1k_HZ_ticks=
 ### Do not edit below this line unless you know what you're doing
 
 pkgbase=linux-next-git
-pkgver=20191105.r0.g51309b9d73f5
+pkgver=20191106.r0.gdcd34bd23418
 _srcname=linux-next
 pkgrel=1
+pkgdesc='Linux NEXT'
 arch=('x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -181,7 +182,7 @@ build() {
 }
 
 _package() {
-    pkgdesc="The ${pkgbase/linux/Linux} kernel and modules"
+    pkgdesc="The $pkgdesc kernel and modules"
     depends=('coreutils' 'kmod' 'initramfs')
     optdepends=('crda: to set the correct wireless channels of your country'
                 'linux-firmware: firmware images needed for some devices'
@@ -210,7 +211,7 @@ _package() {
 }
 
 _package-headers() {
-   pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel"
+   pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
    depends=('linux-next-git')
 
   cd $_srcname
@@ -290,7 +291,7 @@ _package-headers() {
 
 
 _package-docs() {
-    pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase/linux/Linux} kernel"
+    pkgdesc="Kernel hacker's manual for the $pkgdesc kernel"
     depends=('linux-next-git')
 
   cd $_srcname
@@ -300,8 +301,8 @@ _package-docs() {
   mkdir -p "$builddir"
   cp -t "$builddir" -a Documentation
 
-  msg2 "Removing doctrees..."
-  rm -r "$builddir/Documentation/output/.doctrees"
+  msg2 "Removing unneeded files..."
+  rm -rv "$builddir"/Documentation/{,output/}.[^.]*
 
   msg2 "Moving HTML docs..."
   local src dst
