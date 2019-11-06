@@ -1,6 +1,6 @@
 # Maintainer: Vlad Zahorodnii <vladzzag@gmail.com>
 pkgname=dynamic-wallpaper-importer
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="Dynamic wallpaper importer"
 arch=(x86_64)
@@ -9,7 +9,7 @@ license=('GPL')
 depends=(libheif libplist qt5-base)
 makedepends=(cmake extra-cmake-modules)
 source=("$pkgname-$pkgver.tar.gz"::"https://github.com/zzag/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('904e863501fb573351a5b2401571a1fe7d2e36351d431820217675eede5a4181')
+sha256sums=('f9d14ce182603040332a1740c49de7db6d306181dab9dcb47cc299ca2662bf63')
 
 prepare() {
     mkdir -p build

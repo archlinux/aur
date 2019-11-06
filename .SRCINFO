@@ -1,6 +1,6 @@
 pkgbase = dynamic-wallpaper-importer
 	pkgdesc = Dynamic wallpaper importer
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://github.com/zzag/dynamic-wallpaper-importer
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = dynamic-wallpaper-importer
 	depends = libheif
 	depends = libplist
 	depends = qt5-base
-	source = dynamic-wallpaper-importer-1.0.tar.gz::https://github.com/zzag/dynamic-wallpaper-importer/archive/1.0.tar.gz
-	sha256sums = 904e863501fb573351a5b2401571a1fe7d2e36351d431820217675eede5a4181
+	source = dynamic-wallpaper-importer-1.1.tar.gz::https://github.com/zzag/dynamic-wallpaper-importer/archive/1.1.tar.gz
+	sha256sums = f9d14ce182603040332a1740c49de7db6d306181dab9dcb47cc299ca2662bf63
 
 pkgname = dynamic-wallpaper-importer
 
