@@ -1,6 +1,6 @@
 pkgbase = ungoogled-chromium-bin
 	pkgdesc = A lightweight approach to removing Google web service dependency
-	pkgver = 77.0.3865.120
+	pkgver = 78.0.3904.87
 	pkgrel = 1
 	url = https://ungoogled-software.github.io/
 	arch = x86_64
@@ -31,12 +31,15 @@ pkgbase = ungoogled-chromium-bin
 	optdepends = kdialog: needed for file dialogs in KDE
 	optdepends = gnome-keyring: for storing passwords in GNOME keyring
 	optdepends = kwallet: for storing passwords in KWallet
+	optdepends = libva-intel-driver: for hardware video acceleration with Intel GPUs
+	optdepends = libva-mesa-driver: for hardware video acceleration with AMD/ATI GPUs
+	optdepends = libva-vdpau-driver: for hardware video acceleration with NVIDIA GPUs
 	provides = chromium
 	conflicts = chromium
 	conflicts = iridium
 	conflicts = ungoogled-chromium
-	source = https://github.com/laamalif/ungoogled-chromium-binaries/releases/download/77.0.3865.120-1/ungoogled-chromium-77.0.3865.120-1-x86_64.pkg.tar.xz
-	sha256sums = 985ce82a7c2c503b5d8a6969e0f08eb5096d4fef74b2b1b1c55db1149935e1b1
+	source = https://repo.vin.ovh/arch/x86_64/ungoogled-chromium-78.0.3904.87-1-x86_64.pkg.tar.xz
+	sha256sums = 8217e09c63678fae9693103851d5083940b085201953cbac442fec322960299c
 
 pkgname = ungoogled-chromium-bin
 
