@@ -11,10 +11,10 @@ pkgbase = fanshim
 	depends = python-plasmalights
 	depends = python-raspberry-gpio
 	source = https://files.pythonhosted.org/packages/source/f/fanshim/fanshim-0.0.2.tar.gz
-	source = fanshim-058ebc3f021736e2efcec60b1e6d10842cd2b857.py::https://github.com/pimoroni/fanshim-python/blob/058ebc3f021736e2efcec60b1e6d10842cd2b857/examples/automatic.py
+	source = fanshim-058ebc3f021736e2efcec60b1e6d10842cd2b857.py::https://raw.githubusercontent.com/pimoroni/fanshim-python/058ebc3f021736e2efcec60b1e6d10842cd2b857/examples/automatic.py
 	source = fanshim.service
 	sha512sums = bcf7f07eb9cdd0c76b5d2dba3d410b8ee5912d3373966a8d54c0a241c2cd1170d21d8cdb227a5dc593c094ea8f88d74cd4d4491bab03b080d306c64b241ac1fa
-	sha512sums = 784ae071513f0d555d8d6adde64ffddbe67996ce43754998f4834099ef5788397923d5d3019b90166485ff5dc21069f5365b0e04854b0c35d2b085742d09e146
+	sha512sums = 35db868516da1d5ba5f4d337de3fa0c43b210d4b4a6e37efba45801e12f88c7c0e66d39c5307f98811f3268af2b2bc69a9cc476b8986abc699aed2ff0e6b0ae0
 	sha512sums = 10bf465ab1d5d5a769ad2f656030cd6e9cf247efc0a7446797ae2df70bc10e91f1e0b5a478f68a46974a3aa84c01f35bd4119c17739b1bbb0cb98806382354e5
 
 pkgname = fanshim
