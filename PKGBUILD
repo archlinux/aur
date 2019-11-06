@@ -3,19 +3,16 @@
 pkgbase=certbot-plugins-git
 pkgname=("certbot-nginx-git" "certbot-apache-git")
 _reponame="certbot"
-pkgver=0.31.0.r3.gec4c03fa6
+pkgver=0.40.0.r4.g9b848b1d6
 pkgrel=1
 pkgdesc="Plugins for Certbot"
 arch=('any')
 license=('Apache')
 url="https://github.com/certbot/${_reponame}"
-depends=('')
 # Most AUR helpers unfortunately do not support versioned deps in the AUR ("certbot=$pkgver" "python-acme=$pkgver")
 makedepends=('git' 'certbot-git' 'python-acme-git' 'python-pyopenssl'
 	'python-pyparsing' 'python-setuptools' 'python-mock' 'python-zope-interface'
 	'python-zope-component' 'python-augeas')
-provides=("")
-conflicts=("")
 source=("${_reponame}"::"git+https://github.com/certbot/${_reponame}")
 sha512sums=('SKIP')
 
@@ -48,7 +45,7 @@ package_certbot-nginx-git() {
 	conflicts=("certbot-nginx" "letsencrypt-nginx")
 
 	cd "${srcdir}/${_reponame}/certbot-nginx"
-	python setup.py install --root="${pkgdir}" --optimize=1
+	python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
 
 package_certbot-apache-git() {
@@ -60,5 +57,5 @@ package_certbot-apache-git() {
 	conflicts=("certbot-apache" "letsencrypt-apache")
 
 	cd "${srcdir}/${_reponame}/certbot-apache"
-	python setup.py install --root="${pkgdir}" --optimize=1
+	python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
