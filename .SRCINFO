@@ -1,4 +1,5 @@
 pkgbase = linux-clear-lts2017
+	pkgdesc = Clear Linux lts2017
 	pkgver = 4.14.152
 	pkgrel = 1
 	url = https://github.com/clearlinux-pkgs/linux-lts2017
@@ -25,7 +26,7 @@ pkgbase = linux-clear-lts2017
 	sha256sums = 8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5
 
 pkgname = linux-clear-lts2017
-	pkgdesc = Clearlinux lts2017 kernel and modules
+	pkgdesc = The Clear Linux lts2017 kernel and modules
 	install = linux.install
 	depends = coreutils
 	depends = kmod
@@ -36,5 +37,5 @@ pkgname = linux-clear-lts2017
 	provides = WIREGUARD-MODULE
 
 pkgname = linux-clear-lts2017-headers
-	pkgdesc = Header files and scripts for building modules for linux-clear-lts2017
+	pkgdesc = Headers and scripts for building modules for the Clear Linux lts2017 kernel
 
