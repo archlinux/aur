@@ -1,23 +1,12 @@
 post_install() {
-  echo "To start tcpcrypt, run 'systemctl start tcpcryptd.service'. Secure"
+  echo "To start tcpcrypt, run 'systemctl start tcpcryptd'. Secure"
   echo "connections should Just Work between tcpcrypt-enabled machines."
-  echo "To start it at boot, run 'systemctl enable tcpcryptd.service'"
   echo
   echo "This implementation of tcpcrypt is relatively safe. In the worst case"
   echo "the daemon crashes and you lose all connectivity. When that happens,"
-  echo "just run 'systemctl stop tcpcryptd.service' to tear down iptables"
+  echo "just run 'systemctl stop tcpcryptd' to tear down iptables"
   echo "rules and everything will continue."
   echo
   echo "For debugging, run 'tcnetstat' to list all active encrypted connections"
   echo "Run 'iptables -vnL' to check if iptables rules were set up correctly"
-  post_upgrade
-}
-
-post_upgrade() {
-  systemd-sysusers tcpcryptd.conf
-  systemd-tmpfiles --create tcpcryptd.conf
-}
-
-pre_remove() {
-  echo
 }

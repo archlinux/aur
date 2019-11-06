@@ -1,4 +1,2 @@
-# systemd tmpfile settings for tcpcryptd
-# See tmpfiles.d(5) for details
-
-d /run/tcpcryptd 0700 tcpcryptd tcpcryptd -
+# chrooted jail directory for tcpcryptd:
+d /run/tcpcryptd 0755 tcpcryptd root - -

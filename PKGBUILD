@@ -3,7 +3,7 @@
 # Maintainer: mutantmonkey <aur@mutantmonkey.in>
 
 pkgname=tcpcrypt-git
-pkgver=346.ec01927
+pkgver=369.25c9a85
 pkgrel=1
 pkgdesc="Transparent user space implementation for the tcpcrypt TCP extensions"
 arch=('i686' 'x86_64')
@@ -20,10 +20,10 @@ source=("git+https://github.com/scslab/tcpcrypt.git"
         'tcpcryptd.conf' 'tcpcryptd.service'
         'tcpcryptd.tmpfiles' 'tcpcryptd.sysusers')
 sha256sums=('SKIP'
-            'a41bfa7b0c8f527f96c993f68e0a02265ad672fe6c2e10f41bc00b8b1f819305'
-            '68a3227f971dce0056bbe8768b570fade4ee8b17aca2e354c35352f2bf0a7028'
-            '95393df0fca7e228e36b9594e29a3f32514c8f7229b329e0b9a37dab4985b28f'
-            'e9c73c4eeff3f14f0fedd14a529f8c81f591ada543b91e82252e5b2b8f11d916')
+            '4a12aafddb6600a49652acdec13e703a5f4305fd19fdb5c35581b188cd7cca58'
+            'ac10f4c3de034bfc0ca8fd7034da7633a95d8fce7a9d12304a998a9c3b6fa51b'
+            '3ed90191d41add525242e7e84769c17b6d40b5fa461937739b4d5b7532afc83d'
+            '3eeaaa4124904c673cfe7584e6c399ea2ab060f0e1d4d181323552ffee782c81')
 
 pkgver() {
   cd tcpcrypt
@@ -40,11 +40,6 @@ prepare() {
 build() {
   cd tcpcrypt
 
-  export JAIL_DIR=/run/tcpcryptd
-  export JAIL_USER=tcpcryptd
-  export DIVERT_PORT=1666
-  export CONTROL_SOCKET=\"/run/tcpcryptd.control\"
-
   ./configure --prefix=/usr
   make
 }
@@ -53,14 +48,14 @@ package() {
   cd tcpcrypt
   make DESTDIR="$pkgdir" install
 
-  install -dm755 "$pkgdir/usr/lib/tmpfiles.d"
-  echo 'd /run/tcpcryptd 0700 tcpcryptd tcpcryptd' >"$pkgdir/usr/lib/tmpfiles.d/tcpcryptd.conf"
+  install -dm644 "$pkgdir"/usr/share/tcpcryptd
 
-  install -Dm644 "$srcdir"/tcpcrypt/LICENSE   "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
-  install -Dm644 "$srcdir"/tcpcryptd.conf     "$pkgdir"/etc/conf.d/tcpcryptd.conf
-  install -Dm644 "$srcdir"/tcpcryptd.service  "$pkgdir"/usr/lib/systemd/system/tcpcryptd.service
-  install -Dm644 "$srcdir"/tcpcryptd.tmpfiles "$pkgdir"/usr/lib/tmpfiles.d/tcpcryptd.conf
-  install -Dm644 "$srcdir"/tcpcryptd.sysusers "$pkgdir"/usr/lib/sysusers.d/tcpcryptd.conf
+  install -Dm755 src/iptables.sh       "$pkgdir"/usr/share/tcpcryptd/iptables.sh
+  install -Dm644 ../tcpcrypt/LICENSE   "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
+  install -Dm644 ../tcpcryptd.conf     "$pkgdir"/etc/conf.d/tcpcryptd.conf
+  install -Dm644 ../tcpcryptd.service  "$pkgdir"/usr/lib/systemd/system/tcpcryptd.service
+  install -Dm644 ../tcpcryptd.tmpfiles "$pkgdir"/usr/lib/tmpfiles.d/tcpcryptd.conf
+  install -Dm644 ../tcpcryptd.sysusers "$pkgdir"/usr/lib/sysusers.d/tcpcryptd.conf
 }
 
 # vim:set ts=2 sw=2 et:
