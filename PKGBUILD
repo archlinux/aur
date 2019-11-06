@@ -5,7 +5,7 @@
 pkgbase="monero"
 pkgname=('monero' 'libmonero-wallet')
 pkgver=0.15.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Monero: the secure, private, untraceable currency - release version (includes daemon, wallet and miner)"
 license=('custom:Cryptonote')
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -69,8 +69,8 @@ package_monero() {
 
   install -Dm644 "${srcdir}/${_monero}/utils/conf/monerod.conf" "${pkgdir}/etc/monerod.conf"
   install -Dm644 "${srcdir}/${_monero}/utils/systemd/monerod.service" "${pkgdir}/usr/lib/systemd/system/monerod.service"
-  install -Dm644 "${srcdir}/../monero.sysusers" "${pkgdir}/usr/lib/sysusers.d/monero.conf"
-  install -Dm644 "${srcdir}/../monero.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/monero.conf"
+  install -Dm644 "${srcdir}/monero.sysusers" "${pkgdir}/usr/lib/sysusers.d/monero.conf"
+  install -Dm644 "${srcdir}/monero.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/monero.conf"
 
   install -Dm755 "${srcdir}/${_monero}/build/bin/monero-blockchain-ancestry" "${pkgdir}/usr/bin/monero-blockchain-ancestry"
   install -Dm755 "${srcdir}/${_monero}/build/bin/monero-blockchain-depth" "${pkgdir}/usr/bin/monero-blockchain-depth"
