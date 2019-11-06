@@ -1,0 +1,27 @@
+pkgbase = micmac-git
+	pkgdesc = Free open-source photogrammetry software tools - Version GIT
+	pkgver = 1.0.beta13.r602.g4667e6ee3
+	pkgrel = 1
+	url = http://micmac.ensg.eu
+	arch = i686
+	arch = x86_64
+	license = CECILL-B
+	makedepends = cmake
+	makedepends = doxygen
+	makedepends = git
+	depends = imagemagick
+	depends = exiv2
+	depends = proj
+	optdepends = opencl-headers
+	optdepends = qt5-base
+	provides = micmac
+	conflicts = micmac
+	replaces = micmac
+	options = staticlibs
+	source = micmac::git+https://github.com/micmacIGN/micmac.git
+	source = fix_videovisage.patch
+	md5sums = SKIP
+	md5sums = 4ea3f15b5425c9a98e9a252fc5166d98
+
+pkgname = micmac-git
+

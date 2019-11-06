@@ -1,0 +1,13 @@
+diff --git src/uti_phgrm/CPP_VideoVisage.cpp.cp src/uti_phgrm/CPP_VideoVisage.cpp
+index 6990f5873..66e337c4e 100644
+--- src/uti_phgrm/CPP_VideoVisage.cpp.cp
++++ src/uti_phgrm/CPP_VideoVisage.cpp
+@@ -43,7 +43,7 @@ Header-MicMac-eLiSe-25/06/2007*/
+ 
+ std::string Str5OfInt(int aK)
+ {
+-    char aBuf[10];
++    char aBuf[11];
+     sprintf(aBuf,"%05d",aK);
+ 
+     return aBuf;
