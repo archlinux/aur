@@ -1,17 +1,22 @@
 pkgbase = python-pybadges
 	pkgdesc = A Python library for creating Github-style badges
-	pkgver = 2.2.0
+	pkgver = 2.2.1
 	pkgrel = 1
 	url = https://github.com/google/pybadges
 	arch = any
 	license = Apache
 	makedepends = git
 	makedepends = python-setuptools
+	makedepends = python-requests
+	makedepends = python-jinja
 	depends = python
+	optdepends = python-pillow
+	optdepends = python-fonttools
+	optdepends = python-pytest
 	provides = python-pybadges
 	conflicts = python-pybadges
-	source = python-pybadges-2.2.0.tar.gz::https://github.com/google/pybadges/archive/2.2.0.tar.gz
-	sha512sums = 49c3c0205450430ae23e8f6bb45c8ac805be15ec114f8c68be95ad3739d4219453d10d75977c7db82cbd423c8db90f811d48e35dca63e5c16a92e60b7af0a585
+	source = python-pybadges-2.2.1.tar.gz::https://github.com/google/pybadges/archive/2.2.1.tar.gz
+	sha512sums = 0ae0379f98b1f385b97708e4edfb5df43164e5191c7909441213594e359512bd65cb722031879ae8fabaf91079e5a843e46f4b3a7799679b0acd5e8c7ca8517b
 
 pkgname = python-pybadges
 
