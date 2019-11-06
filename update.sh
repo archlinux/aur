@@ -40,8 +40,8 @@ else
     echo "Version changed, updating PKG version & setting PKG release to 1..."
 
     for file in $(find . -maxdepth 1 -type f -name 'PKGBUILD' -or -name '.SRCINFO'); do
-      sed -i -E "s/(pkgver\s*=\s*).*/\1${LATEST}/" ./PKGBUILD
-      sed -i -E "s/(pkgrel\s*=\s*).*/\11/" ./PKGBUILD
+      sed -i -E "s/(pkgver\s*=\s*).*/\1${LATEST}/" $file 
+      sed -i -E "s/(pkgrel\s*=\s*).*/\11/" $file 
     done
 
     git commit --all --message "$LATEST"
