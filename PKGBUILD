@@ -1,7 +1,7 @@
 # Maintainer: eomanis at web dot de
 
 pkgname='getgarfield'
-_pkgverUpstream="0.1.5"
+_pkgverUpstream="0.2.0"
 pkgver="${_pkgverUpstream//-/.}"
 pkgrel=1
 pkgdesc="Java application that downloads all Garfield comic strips"
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('java-runtime-headless>=8' 'bash')
 makedepends=('java-environment>=8')
 source=("https://eomanis.duckdns.org/permshare/getgarfield/getgarfield-${_pkgverUpstream}.tar.gz")
-sha384sums=('462f29a7e62cb7987e4b6368e29cd710d52dd5e6ec65063ceb61114228188291d628a8326acfbc83e1935d9a707f1f2d')
+sha384sums=('a3868605e3fc2dda4c15e62696962129a559cbb3faaae59fe61e47bae167059a58cfb0eaad04dbc3ed0dd4c899d09ccb')
 
 build() {
     local IFS=$'\n'
@@ -39,7 +39,7 @@ build() {
     # Create a versioned runnable .jar file containing the contents of
     # the jar directory and having the correct program entry point
     echo "Creating getgarfield-${pkgver}.jar" >&2
-    while read -rs item; do
+    while read -rsd $'\n' item; do
         jarItemsArgs+=( -C )
         jarItemsArgs+=( jar )
         jarItemsArgs+=( "$item" )
