@@ -1,7 +1,7 @@
 pkgbase = anope
 	pkgdesc = A set of IRC Services designed for flexibility and ease of use
-	pkgver = 2.0.6
-	pkgrel = 2
+	pkgver = 2.0.7
+	pkgrel = 1
 	url = http://www.anope.org/
 	install = anope.install
 	arch = i686
@@ -10,15 +10,14 @@ pkgbase = anope
 	makedepends = cmake
 	optdepends = mariadb: MySQL database backend support
 	optdepends = sqlite: SQLite database backend support
-	optdepends = cyrus-sasl: SASL authentication support
-	source = https://github.com/anope/anope/releases/download/2.0.6/anope-2.0.6-source.tar.gz
+	source = https://github.com/anope/anope/releases/download/2.0.7/anope-2.0.7-source.tar.gz
 	source = anope.install
 	source = anope.service
 	source = anope.tmpfiles
-	sha1sums = bba0c947657f7388da2980241bc11b03f9f64743
-	sha1sums = 289a9ce8a4cd32bb58b650cb5d9b4bdc8cc7847d
-	sha1sums = 9ffa7e103e05cc7fee52e13794ecf7172f3e3f42
-	sha1sums = 7d38218fef729433ca32b81514264beea9981cf8
+	sha256sums = 4507d6c127b3bc5a95414217049e01e2b605b1f817d5519b8e5d03acebc5dbab
+	sha256sums = 310487f9962d9c6f5b968453b7954be40b1c4bf8f591d8ac550e36e6eb80d846
+	sha256sums = 93d656d74d1ab405e1484eb625c7e45843cc2915c492d0c76da890ff55c06ce0
+	sha256sums = c0e4605b6e92b93f40d3f33a9fe39777c5bc8a0863a3b07c282f7331f5bacc53
 
 pkgname = anope
 

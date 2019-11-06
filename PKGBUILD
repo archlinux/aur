@@ -1,8 +1,8 @@
 # Maintainer: Steven Cook <visage@deadhexagon.com>
 # Contributor: Adam Eberlin <ae@adameberlin.com>
 pkgname=anope
-pkgver=2.0.6
-pkgrel=2
+pkgver=2.0.7
+pkgrel=1
 pkgdesc="A set of IRC Services designed for flexibility and ease of use"
 arch=('i686' 'x86_64')
 url="http://www.anope.org/"
@@ -11,7 +11,6 @@ makedepends=('cmake')
 optdepends=(
     'mariadb: MySQL database backend support'
     'sqlite: SQLite database backend support'
-    'cyrus-sasl: SASL authentication support'
 )
 install="anope.install"
 source=(
@@ -20,10 +19,12 @@ source=(
     "anope.service"
     "anope.tmpfiles"
 )
-sha1sums=('bba0c947657f7388da2980241bc11b03f9f64743'
-          '289a9ce8a4cd32bb58b650cb5d9b4bdc8cc7847d'
-          '9ffa7e103e05cc7fee52e13794ecf7172f3e3f42'
-          '7d38218fef729433ca32b81514264beea9981cf8')
+sha256sums=(
+    '4507d6c127b3bc5a95414217049e01e2b605b1f817d5519b8e5d03acebc5dbab'
+    '310487f9962d9c6f5b968453b7954be40b1c4bf8f591d8ac550e36e6eb80d846'
+    '93d656d74d1ab405e1484eb625c7e45843cc2915c492d0c76da890ff55c06ce0'
+    'c0e4605b6e92b93f40d3f33a9fe39777c5bc8a0863a3b07c282f7331f5bacc53'
+)
 
 prepare() {
     echo "If you want to enable any extra modules before building Anope,"
@@ -86,4 +87,3 @@ package() {
     cp -r data/* "${pkgdir}/var/lib/${pkgname}"
     cp -r locale/* "${pkgdir}/usr/lib/${pkgname}/locale"
 }
-
