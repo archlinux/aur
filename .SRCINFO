@@ -2,6 +2,7 @@ pkgbase = bubblemail
 	pkgdesc = Unread mail notification service
 	pkgver = 0.1
 	pkgrel = 0
+	url = https://framagit.org/razer/bubblemail/
 	arch = any
 	license = GPL2
 	makedepends = python-setuptools
