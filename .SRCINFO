@@ -10,7 +10,6 @@ pkgbase = gimp-develop-git
 	license = LGPL
 	checkdepends = xorg-server-xvfb
 	makedepends = git
-	makedepends = gutenprint>=5.0.0
 	makedepends = intltool>=0.40.1
 	makedepends = alsa-lib>=1.0.0
 	makedepends = libxslt
