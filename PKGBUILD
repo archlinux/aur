@@ -14,8 +14,8 @@ depends_x86_64=('lib32-glibc')
 install=brother-hl4150cdn.install
 source=(0001-brother-hl4150cdn.patch
         Brother.license
-        http://download.brother.com/welcome/dlf005939/hl4150cdnlpr-${pkgver}-${pkgrel}.i386.rpm
-        http://download.brother.com/welcome/dlf005941/hl4150cdncupswrapper-${pkgver}-${pkgrel}.i386.rpm)
+        "http://download.brother.com/welcome/dlf005939/hl4150cdnlpr-${pkgver}-${pkgrel}.i386.rpm"
+        "http://download.brother.com/welcome/dlf005941/hl4150cdncupswrapper-${pkgver}-${pkgrel}.i386.rpm")
 sha512sums=('bd788b498d4c453608540a88216c2ff6f7008ef4a5de1dfd5e6ccb928bd29380deb335697e2dd44e34576cb7f6afb03e6e8b0c1eb1ea28556cf8d6fb1cae6d60'
             '109215f5c3f835b5923d1334ab2812a2faf859a3fa813a214116b44fc3c14a2022deeb0a4a5c6be5a99833cd7b5997cf02b33f2fa13391b7cb02a3cb15e74bb0'
             '999d04ea915fea49e5a80dc2bda848579b1956d708ca14eccba3605a0866d9bbde03d757bb550e0ad8752d6fc3ad13fb2f9844c2d60c63b5a2e773b7204fa251'
