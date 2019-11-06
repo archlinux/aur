@@ -1,0 +1,14 @@
+pkgbase = dumptorrent
+	pkgdesc = non-interactive text mode program which displays BitTorrent .torrent file information
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://sourceforge.net/projects/dumptorrent/
+	arch = i686
+	arch = x86_64
+	license = GPL-2
+	depends = glibc
+	source = http://downloads.sourceforge.net/dumptorrent/dumptorrent-1.2.tar.gz
+	md5sums = 90c68a0889bd0eae2ed3392bd5e1fb03
+
+pkgname = dumptorrent
+
