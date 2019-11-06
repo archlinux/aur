@@ -16,8 +16,8 @@ depends=('alsa-lib' 'cairo' 'dbus-glib' 'desktop-file-utils' 'fontconfig'
          'libmng' 'libpng' 'libvpx' 'libxt' 'mozilla-common' 'nspr' 'nss'
          'shared-mime-info' 'sqlite' 'startup-notification')
 optdepends=('libcanberra: for sound support')
-provides=("thunderbird=$_version")
-install="$pkgname.install"
+provides=("thunderbird=${_version}")
+install="${pkgname}.install"
 
 FX_SRC="thunderbird-${_version}.en-US.linux-${CARCH}"
 FX_SRC_URI="https://download-installer.cdn.mozilla.net/pub/thunderbird/nightly/latest-comm-central/${FX_SRC}"
