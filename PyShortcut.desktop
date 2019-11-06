@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=PyShortcut
+Type=Application
+Comment=PyShortcut
+Terminal=false
+Icon=/usr/lib/python3.7/site-packages/pyshortcuts/icons/py.ico
+Exec=/usr/sbin/python /usr/bin/pyshortcut --wxgui
