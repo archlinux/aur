@@ -1,6 +1,6 @@
 # Maintainer: Jon Noble <jonnobleuk@gmail.com>
 pkgname=chestnut
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="An open-source NLE video editor "
 arch=(x86_64)
@@ -15,14 +15,14 @@ replaces=()
 backup=()
 options=()
 install=
-source=('https://github.com/jonno85uk/chestnut/archive/v0.1.1.tar.gz')
+source=("https://github.com/jonno85uk/chestnut/archive/v${pkgver}.tar.gz")
 noextract=()
-md5sums=('7fc612bc1c17c05deb5493183d6b36fc')
+md5sums=('c6b4754afd72c85251846c7c71a2b351')
 
 prepare() {
     rm -rf "chestnut"
-    tar xaf v0.1.1.tar.gz
-    mv chestnut-0.1.1 chestnut
+    tar xaf v${pkgver}.tar.gz
+    mv chestnut-${pkgver} chestnut
     cd chestnut
     qmake CONFIG+=release    
 }
