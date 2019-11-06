@@ -13,7 +13,7 @@ depends=('mongodb' 'java-runtime' 'fontconfig')
 provides=('unifi')
 conflicts=('unifi' 'unifi-controller-beta')
 replaces=('unifi-controller-beta')
-source=(${pkgname}-${pkgver}.zip::https://www.ubnt.com/downloads/unifi/${pkgver}-${_pkgver}/UniFi.unix.zip
+source=("${pkgname}-${pkgver}.zip::https://www.ubnt.com/downloads/unifi/${pkgver}-${_pkgver}/UniFi.unix.zip"
         mongod
         unifi.service
         unifi.sysusers
