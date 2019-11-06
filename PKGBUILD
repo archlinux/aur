@@ -1,6 +1,6 @@
 # Maintainer: Vlad Zahorodnii <vladzzag@gmail.com>
 pkgname=plasma5-wallpapers-dynamic
-pkgver=2.6.2
+pkgver=2.6.3
 pkgrel=1
 pkgdesc="Dynamic wallpaper plugin for KDE Plasma"
 arch=(x86_64)
@@ -9,7 +9,7 @@ license=('GPL')
 depends=(plasma-framework qt5-base qt5-declarative qt5-location)
 makedepends=(cmake extra-cmake-modules)
 source=("$pkgname-$pkgver.tar.gz"::"https://github.com/zzag/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('20587600ed744a8028fa98166e773de8d2506f758d51593c03dcfe511cca97e7')
+sha256sums=('1b5dc3307092d849cd8dc824e2ebf8b55ac5b5a7d63a90938ac4ef2707f263be')
 
 prepare() {
     mkdir -p build
