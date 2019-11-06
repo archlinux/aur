@@ -1,6 +1,7 @@
 pkgbase = linux-rt-bfq
+	pkgdesc = Linux RT-BFQ-dev
 	pkgver = 5.2.21.rt13
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/sirlucjan/bfq-mq-lucjan
 	arch = x86_64
 	license = GPL2
@@ -40,7 +41,7 @@ pkgbase = linux-rt-bfq
 	sha512sums = 8f6cdf859cf1c712749de734bb9ad5769ff03e2c426cdc3adad8db91adc447e8ca050d7752b30108363330e4b6ad881330c4dbcfdf357e87c6848dae409ef1f4
 
 pkgname = linux-rt-bfq
-	pkgdesc = The Linux-rt-bfq kernel and modules with the RT patch.
+	pkgdesc = The Linux RT-BFQ-dev kernel and modules
 	depends = coreutils
 	depends = kmod
 	depends = initramfs
@@ -49,10 +50,10 @@ pkgname = linux-rt-bfq
 	optdepends = modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig
 
 pkgname = linux-rt-bfq-headers
-	pkgdesc = Header files and scripts for building modules for Linux-rt-bfq kernel
+	pkgdesc = Headers and scripts for building modules for the Linux RT-BFQ-dev kernel
 	depends = linux-rt-bfq
 
 pkgname = linux-rt-bfq-docs
-	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-rt-bfq kernel
+	pkgdesc = Kernel hacker's manual for the Linux RT-BFQ-dev kernel
 	depends = linux-rt-bfq
 
