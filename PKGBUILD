@@ -10,7 +10,7 @@ url='https://chisel.eecs.berkeley.edu/'
 license=('BSD')
 depends=('java-environment' 'verilator')
 makedepends=('sbt' 'graphviz')
-source=(https://github.com/freechipsproject/chisel3/archive/v$pkgver.tar.gz)
+source=("https://github.com/freechipsproject/chisel3/archive/v$pkgver.tar.gz")
 sha512sums=('b37557c92bcb5d9f73af3d8bbaf843404537b417532872467144a821cf42efb1b0173b503623fb8892e94beebab1bef0c312177721c31c4765781b44d2466078')
 
 build(){
