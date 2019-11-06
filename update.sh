@@ -25,12 +25,15 @@ echo "Using $LATEST as the latest version"
 if [ "$PKG_LATEST" = "$LATEST"  ]; then
   (
     echo "No change in version, Incrementing PKG release..."
-    increment=$(grep -oP "pkgrel\s*=\s*(\d+)" ./PKGBUILD | grep -oP "\d+")
-    let "increment++"
+    current=$(grep -oP "pkgrel\s*=\s*(\d+)" ./PKGBUILD | grep -oP "\d+")
+    next=$current
+    let "next++"
 
     for file in $(find . -maxdepth 1 -type f -name 'PKGBUILD' -or -name '.SRCINFO'); do
-      sed -i -E "s/(pkgrel\s*=\s*).*/\1$increment/" $file
+      sed -i -E "s/(pkgrel\s*=\s*).*/\1$next/" $file
     done
+
+    git commit --all --message "$LATEST release $current => $next"
   )
 else
   (
@@ -40,7 +43,12 @@ else
       sed -i -E "s/(pkgver\s*=\s*).*/\1${LATEST}/" ./PKGBUILD
       sed -i -E "s/(pkgrel\s*=\s*).*/\11/" ./PKGBUILD
     done
+
+    git commit --all --message "$LATEST"
   )
 fi
 
-echo "AUR PKG update successful, repo is ready to be commited"
+git diff --color --minimal --unified=0  @^ | cat
+
+echo "AUR PKG update successful, repo is ready to be pushed"
+
