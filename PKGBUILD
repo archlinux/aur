@@ -35,9 +35,10 @@ build() {
 
 package() {
   cd "$_src_prefix$_tag"
-  # install modules
-  #make ARCH=x86_64 INSTALL_MOD_PATH="${pkgdir}" modules_install
+  # modules
+  make ARCH=x86_64 INSTALL_MOD_PATH="${pkgdir}" modules_install
 
+  # zimage
   make ARCH=x86_64 INSTALL_PATH="${pkgdir}" install
 }
 
