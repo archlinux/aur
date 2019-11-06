@@ -10,7 +10,7 @@ url='https://www.jetbrains.com/go/'
 license=('Commercial')
 depends=('glib2')
 options=('!strip')
-source=(https://download.jetbrains.com/go/${pkgbase%-eap}-${pkgver}.tar.gz
+source=("https://download.jetbrains.com/go/${pkgbase%-eap}-${pkgver}.tar.gz"
         jetbrains-goland-eap.desktop)
 sha512sums=('7b409dd4ede75b0f53fafc0169f05b0003e44d797ec97578f9900c6d987f85df2ca0d7d699fe85e6a4f79031e61fd7bb4fcae822b97658bfe1f6fb3d84cc5a09'
             '23048f7fe57ff86e45ff62f047903f0ad976382084b93c86ba5d5991813f62771e901c365101471a6f42d4cd55f33532175223fce3f1c152edcadd0d3404e0ef')
