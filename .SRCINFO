@@ -1,0 +1,20 @@
+pkgbase = i915-firmware
+	pkgdesc = Intel's integrated GPU firmware
+	pkgver = 20191022
+	pkgrel = 1
+	url = https://git.kernel.org/?p=linux/kernel/git/firmware/linux-firmware.git;a=summary
+	arch = any
+	license = GPL2
+	license = GPL3
+	license = custom
+	options = !strip
+	source = https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/snapshot/linux-firmware-20191022.tar.gz
+	source = https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/snapshot/linux-firmware-20191022.tar.asc
+	validpgpkeys = 4CDE8575E547BF835FE15807A31B6BD72486CFD6
+	sha1sums = a1d5004d013db94cf3779a8b268858a93b585ed4
+	sha1sums = SKIP
+
+pkgname = i915-firmware
+	conflicts = linux-firmware
+	conflicts = linux-firmware-git
+
