@@ -1,16 +1,17 @@
 pkgbase = duperemove-git
 	pkgdesc = Btrfs extent deduplication utility
-	pkgver = 344.976b3ee
+	pkgver = 636.128acd9
 	pkgrel = 1
 	url = https://github.com/markfasheh/duperemove
-	arch = any
+	arch = x86_64
+	arch = i686
 	license = GPL
 	makedepends = git
 	depends = glib2
 	depends = sqlite
 	conflicts = duperemove
 	source = duperemove-git::git://github.com/markfasheh/duperemove.git#branch=master
-	md5sums = SKIP
+	sha512sums = SKIP
 
 pkgname = duperemove-git
 
