@@ -3,21 +3,18 @@
 pkgbase=python-acme-git
 pkgname=("python-acme-git" "python2-acme-git")
 _reponame="certbot"
-pkgver=0.31.0.r3.gec4c03fa6
+pkgver=0.40.0.r4.g9b848b1d6
 pkgrel=1
 pkgdesc="ACME protocol implementation for Python"
 arch=('any')
 license=('Apache')
 url="https://github.com/certbot/${_reponame}"
-depends=('')
 makedepends=('git' 'python-setuptools' 'python2-setuptools' 'python-pyasn1' 'python2-pyasn1'
 	'python-cryptography' 'python2-cryptography' 'python-pyopenssl' 'python2-pyopenssl'
 	'python-ndg-httpsclient' 'python2-ndg-httpsclient' 'python-pyrfc3339'
 	'python2-pyrfc3339' 'python-pytz' 'python2-pytz' 'python-requests'
 	'python2-requests' 'python-six' 'python2-six' 'python-werkzeug' 'python2-werkzeug'
 	'python-mock' 'python2-mock')
-provides=("")
-conflicts=("")
 source=("${_reponame}"::"git+https://github.com/certbot/${_reponame}")
 sha512sums=('SKIP')
 
@@ -54,7 +51,7 @@ package_python-acme-git() {
 	conflicts=("python-acme")
 
 	cd "${srcdir}/${_reponame}/acme"
-	python setup.py install --root="${pkgdir}" --optimize=1
+	python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
 
 package_python2-acme-git() {
@@ -66,5 +63,5 @@ package_python2-acme-git() {
 	conflicts=("python2-acme")
 
 	cd "${srcdir}/${_reponame}/acme-py2"
-	python2 setup.py install --root="${pkgdir}" --optimize=1
+	python2 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
