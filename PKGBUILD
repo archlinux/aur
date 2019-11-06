@@ -3,7 +3,7 @@
 # Co-Maintainer: Joost Bremmer <contact at madeofmagicandwires dot online>
 pkgname=cheat
 pkgver=3.0.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Allows you to create and view interactive cheatsheets on the command-line"
 arch=('x86_64')
 url="https://github.com/cheat/cheat"
@@ -18,7 +18,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/cheat/cheat/archive/$pkgver
         'conf.yml'
         'git+https://github.com/cheat/cheatsheets.git')
 sha256sums=('f2c8fe12a915856c5dcb7786c3ce4ed5f05c11711b2619cd7a1722e83cf408c0'
-            'a63073ee867fd385ef5e7d749362f81eb93327c71b7948759674a658ab5c64e4'
+            'ddb53e68a39d0f33b210383724721a162f561e8766434fa1cf062c36e5af76c0'
             'SKIP')
 
 prepare() {
@@ -63,7 +63,7 @@ package() {
 		"$pkgdir/usr/share/fish/completions/cheat.fish"
 	install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
 	
-	install -dm644 "$pkgdir/usr/share/cheatsheets/community"
-	cp "$srcdir/"cheatsheets/* "$pkgdir/usr/share/cheatsheets/community"
+	install -dm644 "$pkgdir/usr/share/$pkgname/cheatsheets/community"
+	cp "$srcdir/"cheatsheets/* "$pkgdir/usr/share/$pkgname/cheatsheets/community"
 	install -Dm744 "$srcdir/conf.yml" "$pkgdir/etc/cheat/conf.yml"
 }
