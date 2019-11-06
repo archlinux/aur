@@ -1,0 +1,13 @@
+pkgbase = argparse
+	pkgdesc = Argument Parser for Modern C++
+	pkgver = 1.9
+	pkgrel = 1
+	url = https://github.com/p-ranav/argparse
+	arch = any
+	license = MIT
+	makedepends = cmake
+	source = https://github.com/p-ranav/argparse/archive/v1.9.tar.gz
+	sha512sums = 6cfc7fc274a11093fe5254f244adaacdcc81123b1d7e9b51110ffdfe9a344fb59044ec9d98017f25aa8ea417d57cfca330fdea7161226da26f1b4fc199fdc4fb
+
+pkgname = argparse
+
