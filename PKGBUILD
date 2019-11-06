@@ -19,7 +19,7 @@ source=("${url}/download/${pkgname}_client_arch_x86_64.pkg.tar.xz"
         "${pkgname}-client.sh"
         "${pkgname}-client-autostart.sh"
         )
-sha1sums=('59c7550f7a2fe1d5d48ddc42b1dfd3f09252c3ac'
+sha1sums=('367a764ce29ad915fa52e724846ab3698ba02f15'
           '9fdfaf3ad3ead18be09a4dea306347369e47e4c1'
           '830c54f74be17071bc7ae58e15f8810cefd65910'
           'c916985ed95004a15eb1c84c59f3ca313f5ea3be'          
