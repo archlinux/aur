@@ -1,6 +1,6 @@
 # Maintainer: Frank Siegert <frank.siegert@googlemail.com>
 pkgname=rivet-hg
-pkgver=r7248.4e530be4f27e
+pkgver=r7598.b0777896b24b
 pkgrel=1
 pkgdesc="A particle physics package for data analysis and validation of Monte Carlo event generators -- latest build from hg-repo"
 arch=('x86_64' 'i686')
@@ -14,7 +14,7 @@ optdepends=('texlive-core: Plotting functionality'
             'imagemagick: PNG plot output'
             'python2: For Python2 module in addition to Python3')
 makedepends=('cython')
-source=('rivet::hg+https://phab.hepforge.org/source/rivethg#branch=multiweight-merge27')
+source=('rivet::hg+https://phab.hepforge.org/source/rivethg#branch=release-3-0-x')
 md5sums=('SKIP')
 
 build() {
