@@ -1,6 +1,6 @@
 pkgbase = eclipse-arm
 	pkgdesc = GNU MCU Eclipse Plug-in
-	pkgver = 4.6.1
+	pkgver = 4.7.1
 	pkgrel = 1
 	url = http://gnu-mcu-eclipse.github.io
 	install = eclipse-arm.install
@@ -8,8 +8,8 @@ pkgbase = eclipse-arm
 	license = GPL
 	depends = eclipse-cpp
 	options = !strip
-	source = https://github.com/gnu-mcu-eclipse/eclipse-plugins/releases/download/v4.6.1-201909231407/ilg.gnumcueclipse.repository-4.6.1-201909231407.zip
-	sha512sums = 8c0f7d45bb999804dc13a1abc8af540bd9661cd8ccb01321e3805b71f615c459cad819dffce71430ec61d62b75a26f400a464ee521c0fbb1d550cc53284f205b
+	source = https://github.com/gnu-mcu-eclipse/eclipse-plugins/releases/download/v4.7.1-201911052135/ilg.gnumcueclipse.repository-4.7.1-201911052135.zip
+	sha512sums = f172e746d3323c31fbb2b95fb369aff4fc2083462febf8489a7b848091d62e80e527e0b0881802528cfbbc248f06c80dcf65642ce6212c888a53cde4b9ed7716
 
 pkgname = eclipse-arm
 
