@@ -1,31 +1,24 @@
 # Maintainer: Leonardo Gates <leogatesx9r@protonmail.com>
 
 pkgname=realtek-firmware
-_commit=2b016afc348ba4b5fb2016ffcb2822f4a293da0c
-pkgver=20191022.2b016af
+pkgver=20191022
 pkgrel=1
 pkgdesc="Realtek-specific firmware for WiFI, Bluetooth and Ethernet cards"
-makedepends=('git')
 arch=('any')
 url="https://git.kernel.org/?p=linux/kernel/git/firmware/linux-firmware.git;a=summary"
 license=('GPL2' 'GPL3' 'custom')
 options=(!strip)
 validpgpkeys=('4CDE8575E547BF835FE15807A31B6BD72486CFD6') # Josh Boyer <jwboyer@fedoraproject.org>
-source=("git+https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git#commit=${_commit}?signed")
-md5sums=('SKIP')
-
-pkgver() {
-  cd "${srcdir}/linux-firmware"
-
-  # Commit date + short rev
-  echo $(TZ=UTC git show -s --pretty=%cd --date=format-local:%Y%m%d HEAD).$(git rev-parse --short HEAD)
-}
+source=("https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/snapshot/linux-firmware-${pkgver}.tar.gz"
+        "https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/snapshot/linux-firmware-${pkgver}.tar.asc")
+sha1sums=('a1d5004d013db94cf3779a8b268858a93b585ed4'
+          'SKIP')
 
 package() {
     conflicts=('linux-firmware'
                'linux-firmware-git')
 
-    cd "${srcdir}/linux-firmware"
+    cd "${srcdir}/linux-firmware-${pkgver}"
 
     install -d -m755 "${pkgdir}/usr/lib/firmware/"
     install -d -m755 "${pkgdir}/usr/share/licenses/linux-firmware/"
