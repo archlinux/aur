@@ -1,7 +1,7 @@
 pkgbase = obmenu3
 	pkgdesc = Openbox menu editor - replacement of obmenu
 	pkgver = 1.04
-	pkgrel = 1
+	pkgrel = 2
 	url = http://sourceforge.net/projects/obmenu3
 	arch = i686
 	arch = x86_64

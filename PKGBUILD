@@ -2,12 +2,11 @@
 
 pkgname=obmenu3
 pkgver=1.04
-pkgrel=1
+pkgrel=2
 pkgdesc="Openbox menu editor - replacement of obmenu"
 url="http://sourceforge.net/projects/obmenu3"
 license=('GPL')
 depends=('gtk2')
-makedepends=('')
 arch=('i686' 'x86_64')
 source=(http://sourceforge.net/projects/obmenu3/files/$pkgver/obmenu3-$pkgver-$CARCH.tgz)
 if [[ $CARCH == 'i686' ]]; then
