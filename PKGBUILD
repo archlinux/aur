@@ -10,10 +10,16 @@ arch=('any')
 url='https://build.opensuse.org/package/show?package=pdfposter&project=devel%3Alanguages%3Apython'
 license=('GPL3')
 depends=('python-pypdf2')
+makedepends=('python-setuptools')
 source=("https://gitlab.com/pdftools/pdfposter/-/archive/v${pkgver}/pdfposter-v${pkgver}.tar.bz2")
 sha512sums=('f399477df3a627ccd954a9f9fee55e8876c6ccb7895e3bac514c38d9905c44afd34a2405e0a6f475201a6104d3efb5796381ede84ddb66d78d9a6a4022b25c14')
 
+build() {
+  cd ${pkgname}-v${pkgver}
+  python setup.py build
+}
+
 package() {
-    cd "${srcdir}/${pkgname}-v${pkgver}"
-    python setup.py install --root="${pkgdir}" --optimize=1
+  cd ${pkgname}-v${pkgver}
+  NO_THIRD_PARTY=true python setup.py install --skip-build --root="${pkgdir}" --optimize=1
 }
