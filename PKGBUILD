@@ -16,13 +16,15 @@ package() {
     cd "${srcdir}/ohsnap-${pkgver}"
 
     install -d "${pkgdir}/usr/share/doc/${pkgname}"
+    install -m644 README.ohsnap "${pkgdir}/usr/share/doc/${pkgname}"
 
     for f in *.pcf; do
         fonttosfnt -c -o "${f/pcf/otb}" "$f"
     done
 
-    install -m644 *.otb "${pkgdir}/usr/share/fonts/misc/"
-    install -m644 README.ohsnap "${pkgdir}/usr/share/doc/${pkgname}"
+    for i in *.otb; do
+        install -Dm 644 $i "${pkgdir}/usr/share/fonts/misc/$i"
+    done
 }
 
 # vim:set ts=2 sw=2
