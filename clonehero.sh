@@ -20,11 +20,6 @@ pkgname=clonehero
 # I am the second maintainer of this package, and I concur;
 # this hack is horrible. I do offer my thanks though to the original
 # maintainer; debugging this must have been a pain in the ass.
-#
-# The Clone Hero devs are probably going
-# to focus on project Note Hitter instead of this game, so I don't
-# expect new releases to be coming soon, meaning that this issue will
-# not be fixed, at least not in the near future.
 
 if [[ ! -d "$HOME/.$pkgname" ]]; then
     mkdir -p "$HOME/.$pkgname"
