@@ -1,15 +1,13 @@
 pkgbase = guile-commonmark
 	pkgdesc = Guile library for parsing CommonMark
-	pkgver = 0.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/OrangeShark/guile-commonmark
 	arch = any
 	license = LGPL3
 	depends = guile
-	source = https://github.com/OrangeShark/guile-commonmark/releases/download/v0.1/guile-commonmark-0.1.tar.gz
-	source = fix-guile-version.patch
-	sha512sums = cacb58392b0c5bc69e06da04b2f1d8ea7d6e8a06f1d76a92a7a6fbd97279a234ba435f065ee928343f96bdce5becf61d503a3d1a674a61d3a3d2d86f951f6f38
-	sha512sums = b43dacc6c0c0953c1c98ed9e2a5f17b0b9f45d325a55db9bc050f9c4e46cd2f75936a38b8e194cb6b4689eaa5316d720134ae5a0d799c26326188e38849fd7bb
+	source = https://github.com/OrangeShark/guile-commonmark/releases/download/v0.1.2/guile-commonmark-0.1.2.tar.gz
+	sha512sums = a2ed34bb4bc5d7b33875beff7eb959c0119fa62950c8f9de2c5c59ef85301e47354af3d2b38990802389e6b9c94653b927d380c6918feaeb82099ad92a91bf07
 
 pkgname = guile-commonmark
 
