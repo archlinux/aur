@@ -1,6 +1,5 @@
 # Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
 pkgname=('python-sentry_sdk' 'python2-sentry_sdk')
-pkgbase=python-sentry_sdk
 _pkgname=sentry-sdk
 pkgver=0.13.1
 pkgrel=1
@@ -22,7 +21,7 @@ build() {
 	cd "$_pkgname-$pkgver" 
 	python setup.py build
 	
-	cd .. && cd "$_pkgname-$pkgver-py2"
+	cd ../"$_pkgname-$pkgver-py2"
 	python2 setup.py build
 }
 
