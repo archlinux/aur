@@ -2,19 +2,47 @@
 # Maintainer: Dave Reisner <dreisner@archlinux.org>
 # Maintainer: Tom Gundersen <teg@jklm.no>
 
-pkgbase=systemd
-pkgname=('systemd' 'systemd-libs' 'systemd-resolvconf' 'systemd-sysvcompat')
+# Specify "systemd" to use systemd-backlight, any other backlight control (light, xorg-xbacklight, etc) or "none" to remove dependency.
+# See https://wiki.archlinux.org/index.php/Backlight#Backlight_utilities
+_backlight="systemd"
+
+# Specify "systemd" to use bootctl, any other boot loader (grub, syslinux, etc) or "none" to remove dependency (not recommended, except if you use EFI stub)
+# See https://wiki.archlinux.org/index.php/Arch_boot_process#Boot_loader
+_bootloader="systemd"
+
+# Specify "systemd" to use systemd-networkd, any other network manager (connman, networkmanager, etc) or "none" to remove dependency.
+# See https://wiki.archlinux.org/index.php/Network_configuration#Network_managers
+_network="systemd"
+
+# Specify "systemd" to use systemd-resolved, any other DNS server (dnsmasq, unbound, etc) or "none" to remove dependency.
+# See https://wiki.archlinux.org/index.php/Domain_name_resolution#DNS_servers
+_resolver="systemd"
+
+# Specify "systemd" to use systemd-timesyncd, any other NTP client (chrony, ntp, etc) or "none" to remove dependency.
+# See https://wiki.archlinux.org/index.php/System_time#Time_synchronization
+_timesync="systemd"
+
+# Prepend with ! to disable support.
+_security=(seccomp !selinux !apparmor !smack)
+
+# Specify non-empty to enable these features
+_cryptsetup="y"  # Disk encryption (LUKS)
+_clear=""  #  Clearlinux patches
+
+pkgbase=systemd-light
+_pkgbase=${pkgbase%-light}
+pkgname=('systemd-light' 'systemd-light-libs')
 # Can be from either systemd or systemd-stable
 _commit='ef677436aa203c24816021dd698b57f219f0ff64'
 pkgver=243.78
-pkgrel=2
+pkgrel=1
 arch=('x86_64')
 url='https://www.github.com/systemd/systemd'
-makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam' 'libelf'
+makedepends=('acl' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam' 'libelf'
              'intltool' 'iptables' 'kmod' 'libcap' 'libidn2' 'libgcrypt'
              'libmicrohttpd' 'libxslt' 'util-linux' 'linux-api-headers'
-             'python-lxml' 'quota-tools' 'shadow' 'gnu-efi-libs' 'git'
-             'meson' 'libseccomp' 'pcre2' 'audit' 'kexec-tools' 'libxkbcommon'
+             'python-lxml' 'quota-tools' 'shadow' 'git'
+             'meson' 'pcre2' 'audit' 'kexec-tools' 'libxkbcommon'
              'bash-completion')
 options=('strip')
 validpgpkeys=('63CDA1E5D3FC22B998D20DD6327F26951A015CC4'  # Lennart Poettering <lennart@poettering.net>
@@ -69,8 +97,68 @@ _backports=(
 _reverts=(
 )
 
+if [ "$_bootloader" = 'systemd' ]; then
+  makedepends+=('gnu-efi-libs')
+fi
+
+if [ -n "$_cryptsetup" ]; then
+  makedepends+=('cryptsetup')
+fi
+
+if [ -n "$_clear" ]; then
+  local _clrrel=267
+  source+=("git+https://github.com/clearlinux-pkgs/${_pkgbase}#tag=${pkgver%.*}-${_clrrel}?signed")
+  sha512sums+=('SKIP')
+fi
+
+bool_opt() {
+  local needle=$1; shift
+
+  local i opt
+  for (( i = $#; i > 0; i-- )); do
+    opt=${!i}
+    if [ "$opt" = "$needle" ]; then
+      # enabled
+      echo "true"
+      return
+    elif [ "$opt" = "!$needle" ]; then
+      # disabled
+      echo "false"
+      return
+    fi
+  done
+
+  # not found
+  echo "false"
+}
+
+for opt in seccomp selinux smack; do
+  if [ "$(bool_opt "$opt" "${_security[@]}")" = "true" ]; then
+    makedepends+=("lib${opt}")
+  fi
+done
+if [ "$(bool_opt 'apparmor' "${_security[@]}")" = "true" ]; then
+  makedepends+=('apparmor')
+fi
+
+is_nonempty() {
+  if [ -n "$1" ]; then
+    echo "true"
+  else
+    echo "false"
+  fi
+}
+
+is_systemd() {
+  if [ "$1" = 'systemd' ]; then
+    echo "true"
+  else
+    echo "false"
+  fi
+}
+
 prepare() {
-  cd "$pkgbase-stable"
+  cd "$_pkgbase-stable"
 
   # add upstream repository for cherry-picking
   git remote add -f upstream ../systemd
@@ -88,12 +176,18 @@ prepare() {
     git revert -n "${_c}"
   done
 
+  if [ -n "$_clear" ]; then
+    for i in $(grep '^Patch' "${srcdir}/clearlinux/${_pkgbase}.spec" | grep -Ev '^Patch0123' | sed -n 's/.*: //p'); do
+      patch -Np1 -i "${srcdir}/clearlinux/${i}"
+    done
+  fi
+
   # Replace cdrom/dialout/tape groups with optical/uucp/storage
   patch -Np1 -i ../0001-Use-Arch-Linux-device-access-groups.patch
 }
 
 pkgver() {
-  cd "$pkgbase-stable"
+  cd "$_pkgbase-stable"
 
   local _version _count
   _version="$(git describe --abbrev=0 --tags)"
@@ -120,7 +214,6 @@ build() {
   local _meson_options=(
     -Dversion-tag="${pkgver}-${pkgrel}-arch"
 
-    -Dgnu-efi=true
     -Dima=false
     -Dlibidn2=true
     -Dlz4=true
@@ -136,9 +229,25 @@ build() {
     -Drpmmacrosdir=no
     -Dsysvinit-path=
     -Dsysvrcnd-path=
+
+    -Dbacklight=$(is_systemd "$_backlight")
+    -Defi=$(is_systemd "$_bootloader")
+    -Dgnu-efi=$(is_systemd "$_bootloader")
+    -Dnetworkd=$(is_systemd "$_network")
+    -Dresolve=$(is_systemd "$_resolver")
+    -Dgnutls=$(is_systemd "$_resolver")
+    -Dopenssl=$(is_systemd "$_resolver")
+    -Dnss-resolve=$(is_systemd "$_resolver")
+    -Dtimedated=$(is_systemd "$_timesync")
+    -Dtimesyncd=$(is_systemd "$_timesync")
+    -Dlibcryptsetup=$(is_nonempty "$_cryptsetup")
   )
 
-  arch-meson "$pkgbase-stable" build "${_meson_options[@]}"
+  for opt in seccomp selinux apparmor smack; do
+    _meson_options+=("-D${opt}=$(bool_opt "$opt" "${_security[@]}")")
+  done
+
+  arch-meson "$_pkgbase-stable" build "${_meson_options[@]}"
 
   ninja -C build
 }
@@ -147,15 +256,15 @@ check() {
   meson test -C build
 }
 
-package_systemd() {
+package_systemd-light() {
   pkgdesc='system and service manager'
   license=('GPL2' 'LGPL2.1')
   depends=('acl' 'bash' 'cryptsetup' 'dbus' 'iptables' 'kbd' 'kmod' 'hwids' 'libcap'
-           'libgcrypt' 'systemd-libs' 'libidn2' 'libidn2.so' 'lz4' 'pam' 'libelf'
-           'libseccomp' 'util-linux' 'xz' 'pcre2' 'audit')
-  provides=('nss-myhostname' "systemd-tools=$pkgver" "udev=$pkgver")
-  replaces=('nss-myhostname' 'systemd-tools' 'udev')
-  conflicts=('nss-myhostname' 'systemd-tools' 'udev')
+           'libgcrypt' "systemd-light-libs=$pkgver" 'libidn2' 'libidn2.so' 'lz4' 'pam' 'libelf'
+           'util-linux' 'xz' 'pcre2' 'audit')
+  provides=("systemd=$pkgver" 'nss-myhostname' "systemd-tools=$pkgver" "udev=$pkgver")
+  replaces=('systemd' 'nss-myhostname' 'systemd-tools' 'udev')
+  conflicts=('systemd' 'nss-myhostname' 'systemd-tools' 'udev')
   optdepends=('libmicrohttpd: remote journald capabilities'
               'quota-tools: kernel-level quota management'
               'systemd-sysvcompat: symlink package to provide sysvinit binaries'
@@ -167,14 +276,46 @@ package_systemd() {
           etc/systemd/journal-remote.conf
           etc/systemd/journal-upload.conf
           etc/systemd/logind.conf
-          etc/systemd/networkd.conf
-          etc/systemd/resolved.conf
           etc/systemd/sleep.conf
           etc/systemd/system.conf
-          etc/systemd/timesyncd.conf
           etc/systemd/user.conf
           etc/udev/udev.conf)
   install=systemd.install
+
+  if [ "$_backlight" != "system" -a "$_backlight" != "none" ]; then
+    optdepends+=("${_backlight}: replacement for systemd-backlight")
+  fi
+
+  if [ "$_bootloader" != "system" -a "$_bootloader" != "none" ]; then
+    optdepends+=("${_bootloader}: replacement for bootctl")
+  fi
+
+  if [ "$_network" = "systemd" ]; then
+    backup+=(etc/systemd/networkd.conf)
+  elif [ "$_network" != "none" ]; then
+    optdepends+=("${_network}: replacement for systemd-networkd")
+  fi
+
+  if [ "$_resolver" = "systemd" ]; then
+    backup+=(etc/systemd/resolved.conf)
+  elif [ "$_resolver" != "none" ]; then
+    optdepends+=("${_resolver}: replacement for systemd-resolved")
+  fi
+
+  if [ "$_timesync" = "systemd" ]; then
+    backup+=(etc/systemd/timesyncd.conf)
+  elif [ "$_timesync" != "none" ]; then
+    optdepends+=("${_resolver}: replacement for systemd-timesyncd")
+  fi
+
+  for opt in seccomp selinux smack; do
+    if [ "$(bool_opt "$opt" "${_security[@]}")" = "true" ]; then
+      depends+=("lib${opt}")
+    fi
+  done
+  if [ "$(bool_opt 'apparmor' "${_security[@]}")" = "true" ]; then
+    depends+=('apparmor')
+  fi
 
   DESTDIR="$pkgdir" meson install -C build
 
@@ -200,7 +341,7 @@ package_systemd() {
     -e '/^C \/etc\/issue/d' "$pkgdir"/usr/lib/tmpfiles.d/etc.conf
 
   # add back tmpfiles.d/legacy.conf, normally omitted without sysv-compat
-  install -m0644 $pkgbase-stable/tmpfiles.d/legacy.conf "$pkgdir"/usr/lib/tmpfiles.d
+  install -m0644 $_pkgbase-stable/tmpfiles.d/legacy.conf "$pkgdir"/usr/lib/tmpfiles.d
 
   # ship default policy to leave services disabled
   echo 'disable *' >"$pkgdir"/usr/lib/systemd/system-preset/99-default.preset
@@ -220,9 +361,11 @@ package_systemd() {
   install -d -o root -g 102 -m 0750 "$pkgdir"/usr/share/polkit-1/rules.d
 
   # add example bootctl configuration
-  install -D -m0644 arch.conf "$pkgdir"/usr/share/systemd/bootctl/arch.conf
-  install -D -m0644 loader.conf "$pkgdir"/usr/share/systemd/bootctl/loader.conf
-  install -D -m0644 splash-arch.bmp "$pkgdir"/usr/share/systemd/bootctl/splash-arch.bmp
+  if [ "$_bootloader" = 'systemd' ]; then
+    install -D -m0644 arch.conf "$pkgdir"/usr/share/systemd/bootctl/arch.conf
+    install -D -m0644 loader.conf "$pkgdir"/usr/share/systemd/bootctl/loader.conf
+    install -D -m0644 splash-arch.bmp "$pkgdir"/usr/share/systemd/bootctl/splash-arch.bmp
+  fi
 
   # pacman hooks
   install -D -m0755 systemd-hook "$pkgdir"/usr/share/libalpm/scripts/systemd-hook
@@ -232,7 +375,7 @@ package_systemd() {
   install -D -m0644 systemd-user.pam "$pkgdir"/etc/pam.d/systemd-user
 }
 
-package_systemd-libs() {
+package_systemd-light-libs() {
   pkgdesc='systemd client libraries'
   depends=('glibc' 'libcap' 'libgcrypt' 'lz4' 'xz')
   license=('LGPL2.1')
@@ -242,36 +385,6 @@ package_systemd-libs() {
 
   install -d -m0755 "$pkgdir"/usr
   mv systemd-libs "$pkgdir"/usr/lib
-}
-
-package_systemd-resolvconf() {
-  pkgdesc='systemd resolvconf replacement (for use with systemd-resolved)'
-  license=('LGPL2.1')
-  depends=('systemd')
-  provides=('openresolv' 'resolvconf')
-  conflicts=('openresolv')
-
-  install -d -m0755 "$pkgdir"/usr/bin
-  ln -s resolvectl "$pkgdir"/usr/bin/resolvconf
-
-  install -d -m0755 "$pkgdir"/usr/share/man/man1
-  ln -s resolvectl.1.gz "$pkgdir"/usr/share/man/man1/resolvconf.1.gz
-}
-
-package_systemd-sysvcompat() {
-  pkgdesc='sysvinit compat for systemd'
-  license=('GPL2')
-  conflicts=('sysvinit')
-  depends=('systemd')
-
-  install -D -m0644 -t "$pkgdir"/usr/share/man/man8 \
-    build/man/{telinit,halt,reboot,poweroff,runlevel,shutdown}.8
-
-  install -d -m0755 "$pkgdir"/usr/bin
-  ln -s ../lib/systemd/systemd "$pkgdir"/usr/bin/init
-  for tool in runlevel reboot shutdown poweroff halt telinit; do
-    ln -s systemctl "$pkgdir"/usr/bin/$tool
-  done
 }
 
 # vim:ft=sh syn=sh et sw=2:
