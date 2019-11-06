@@ -1,6 +1,6 @@
 pkgbase = python-sl-cli-git
 	pkgdesc = Stockholms Lokaltrafik - Command Line Interface
-	pkgver = 1.1.r136.g2f0b76c
+	pkgver = 1.1.r163.g6b53572
 	pkgrel = 1
 	url = https://github.com/Sebelino/SL-CLI
 	arch = any

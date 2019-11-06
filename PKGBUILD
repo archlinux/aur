@@ -1,7 +1,7 @@
 # Maintainer: sasvari
 _pkgname="SL-CLI"
 pkgname="python-sl-cli-git"
-pkgver=1.1.r136.g2f0b76c
+pkgver=1.1.r163.g6b53572
 pkgrel=1
 pkgdesc="Stockholms Lokaltrafik - Command Line Interface"
 arch=(any)
