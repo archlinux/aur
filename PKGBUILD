@@ -13,7 +13,7 @@ makedepends=('git')
 provides=('tpacpi-bat')
 conflicts=('tpacpi-bat')
 backup=('etc/conf.d/tpacpi')
-source=(git://github.com/teleshoes/tpacpi-bat.git)
+source=('git://github.com/teleshoes/tpacpi-bat.git')
 sha512sums=('SKIP')
 
 pkgver() {
