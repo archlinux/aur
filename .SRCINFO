@@ -1,6 +1,7 @@
 pkgbase = linux-uksm
+	pkgdesc = Linux UKSM
 	pkgver = 5.3.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dolohow/uksm
 	arch = x86_64
 	license = GPL2
@@ -30,7 +31,7 @@ pkgbase = linux-uksm
 	sha512sums = dcaa2a9e440da12013a07f3c011ceb8db3777a9e4e7e8bb26a9e73b3fdd9e83b8f56c09da9ea06448ceb8277fc131c562b0601977c69fc02b4152c2dc9af944b
 
 pkgname = linux-uksm
-	pkgdesc = The Linux-uksm kernel and modules with the UKSM
+	pkgdesc = The Linux UKSM kernel and modules
 	depends = coreutils
 	depends = kmod
 	depends = initramfs
@@ -39,10 +40,10 @@ pkgname = linux-uksm
 	optdepends = modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig
 
 pkgname = linux-uksm-headers
-	pkgdesc = Header files and scripts for building modules for Linux-uksm kernel
+	pkgdesc = Headers and scripts for building modules for the Linux UKSM kernel
 	depends = linux-uksm
 
 pkgname = linux-uksm-docs
-	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-uksm kernel
+	pkgdesc = Kernel hacker's manual for the Linux UKSM kernel
 	depends = linux-uksm
 
