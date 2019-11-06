@@ -14,7 +14,7 @@ license=('Commercial')
 url='https://www.jetbrains.com/phpstorm/'
 depends=('glib2' 'python')
 options=('!strip')
-source=(https://download.jetbrains.com/webide/PhpStorm-${pkgver%b*}.tar.gz
+source=("https://download.jetbrains.com/webide/PhpStorm-${pkgver%b*}.tar.gz"
         jetbrains-phpstorm.desktop)
 sha512sums=('f1215162c9b459afc967b49966bcc12813284432b115af16fc6ccb60da0043a4d7a1a44bd7c712d123d972031bb38e27ee011dc84104281b8e299a7faaf9ec31'
             'b10edd04a7d48641bec7a9e23037510b426acb5a3059267b2081ec0fce41272d8de413f0b4c1dddd3387bb0ce330c48b3f7894f4817973cd6d32a74a14af3528')
