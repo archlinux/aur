@@ -15,7 +15,7 @@ optdepends=('adobe-icc: ICC profiles from Adobe'
             'eci-icc: ICC profiles from ECI')
 conflicts=('gimp-plugin-separate')
 replaces=('gimp-plugin-separate')
-source=(http://dl.sourceforge.jp/separate-plus/47873/separate+-${pkgver}.zip)
+source=("http://dl.sourceforge.jp/separate-plus/47873/separate+-${pkgver}.zip")
 sha512sums=('1e2ecf00ff6e604d0a04337ebf25ca9370e2d46d302d3fca7b7df577c37983f870704ad6018c03152bcba3bcddda59a4acceb35b3ba5d0bfd589fa1e99413aa3')
 
 build() {
