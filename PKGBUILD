@@ -2,7 +2,7 @@
 
 pkgname=letshelp-certbot-git
 _reponame="certbot"
-pkgver=0.31.0.r3.gec4c03fa6
+pkgver=0.40.0.r4.g9b848b1d6
 pkgrel=1
 pkgdesc="Let's help Certbot client"
 arch=('any')
@@ -32,5 +32,5 @@ build() {
 
 package() {
 	cd "${srcdir}/${_reponame}/letshelp-certbot"
-	python setup.py install --root="${pkgdir}" --optimize=1
+	python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
