@@ -16,7 +16,6 @@ sha512sums=('cbcb6c4c94d139ffcd901fc5ebdc797ce84b46f1227aba3723aa303089552d57aab
             '134bfaf9bec754be7137f1c4da1721eda7120c8d1a0ba62093f02b5fe82b0dc23bb4ed04d8eb562236eaa333629714c2fddb3309081dc0a3a2b24f770fd5664c')
 
 package() {
-	cd "${srcdir}"
 	install -d "${pkgdir}"/usr/share/{color/icc,doc/adobe-icc,licenses/adobe-icc}
 	install -m644 */*/*.icc "${pkgdir}"/usr/share/color/icc
 	install -m644 */*.pdf "${pkgdir}"/usr/share/doc/adobe-icc
