@@ -1,0 +1,25 @@
+pkgbase = kmplayer-git-master
+	pkgdesc = Video player plugin for Konqueror and basic MPlayer/Xine/ffmpeg/ffserver/VDR frontend for KDE. master branch.
+	pkgver = 0.12.0.b
+	pkgrel = 5
+	url = https://kmplayer.kde.org
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	license = FDL
+	makedepends = extra-cmake-modules
+	makedepends = kdesignerplugin
+	makedepends = kdoctools
+	makedepends = kinit
+	depends = kmediaplayer
+	depends = kdelibs4support
+	depends = phonon-qt5
+	depends = hicolor-icon-theme
+	optdepends = mplayer: mplayer backend
+	provides = kmplayer
+	conflicts = kmplayer
+	source = git://anongit.kde.org/kmplayer.git#branch=master
+	sha256sums = SKIP
+
+pkgname = kmplayer-git-master
+
