@@ -7,7 +7,7 @@ pkgdesc="This is for lusid1's fork, recomended by NoPayStation. Decrypts PlaySta
 url='https://github.com/lusid1/pkg2zip'
 arch=('i686' 'x86_64')
 license=('custom:unlicense')
-source=("https://github.com/lusid1/${pkgname}/archive/${pkgver}.tar.gz")
+source=("https://github.com/lusid1/pkg2zip/archive/${pkgver}.tar.gz")
 sha256sums=('f2a347448324a027edf02cf80dee695394bfcb73298203fd355f0e33e014989b')
 
 package() {
