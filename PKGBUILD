@@ -5,7 +5,7 @@
 
 pkgname=insync
 pkgver=3.0.23.40579
-pkgrel=2
+pkgrel=3
 _dist=buster
 pkgdesc="An unofficial Google Drive client that runs on Linux, with support for various desktops"
 url="https://www.insynchq.com/downloads"
