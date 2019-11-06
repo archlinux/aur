@@ -50,5 +50,5 @@ _fonts=('solaimanlipi'
 
 #source=($(for i in ${_fonts[@]}; do curl -s http://ekushey.org/?page/$i | sed -e 's/"/\n/g' | grep 'http:.*.ttf'; done))
 
-source=(https://sources.archlinux.org/other/packages/${pkgname}/ttf-freebanglafont-20130212-2.src.tar.gz)
+source=("https://sources.archlinux.org/other/packages/${pkgname}/ttf-freebanglafont-20130212-2.src.tar.gz")
 sha256sums=('19a85c6b76e1b3bff3864485a40724fad7c1224a5e20960be08e31659b91e502')
