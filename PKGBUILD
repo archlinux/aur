@@ -23,7 +23,7 @@ source=('git+https://gitlab.com/xdevs23/linux-nitrous.git/'
         # standard config files for mkinitcpio ramdisk
         "${_srcname}.preset")
 sha256sums=('SKIP'
-            '02a08e1df74541e9848685da38134d701684694c43e3428197c6db41e968f246')
+            '03a08e1df74541e9848685da38134d701684694c43e3428197c6db41e968f246')
 
 _kernelname=${pkgbase#linux}
 
