@@ -1,7 +1,7 @@
 # Maintainer: PastLeo <chgu82837@gmail.com>
 pkgname=ooni-probe-cli-git
 pkgver=r232.946289d
-pkgrel=2
+pkgrel=3
 pkgdesc="Next generation OONI Probe CLI"
 arch=('i686' 'x86_64')
 url='https://github.com/ooni/probe-cli'
@@ -31,7 +31,7 @@ build() {
 	export GOPATH="$srcdir/go"
 
 	go mod download
-	chmod -R 755 "$srcdir/go/pkg/mod/github.com/ooni/probe-engine@v0.1.2-0.20191028114635-c87abaaf94e7/measurementkit"
+	chmod -R 755 "$srcdir/go/pkg/mod"
 	patch "$srcdir/go/pkg/mod/github.com/ooni/probe-engine@v0.1.2-0.20191028114635-c87abaaf94e7/measurementkit/task_cgo.go" "$srcdir/ooni-engine-measurementkit-task_gco.go.patch"
 
 	go build -o dist/linux/amd64/ooniprobe -v ./cmd/ooniprobe
