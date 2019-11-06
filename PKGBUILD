@@ -1,57 +1,55 @@
-# Maintainer: Assaf Sapir <meijin007 at gmail.com> PGP-Key: 271386AA2EB7672F
-# Original Maintainer: Yuval Adam <yuval at y3xz dot com> PGP-Key: 271386AA2EB7672F
+# Maintainer: Jimmy Xu <me at jimmyxu dot org>
+# Contributor: Assaf Sapir <meijin007 at gmail dot com>
+# Contributor: Yuval Adam <yuval at y3xz dot com>
 
 pkgname=flightradar24
-pkgver=1.0.18
-_pkgverorig=1.0.18-5
-_pkgverorigarmhf=1.0.19-15
-pkgrel=3
-pkgdesc="Feeder software for Flightradar24.com"
-url="http://forum.flightradar24.com/threads/7563-Flightradar24-decoder-feeder-BETA-testing-%28Win-RPi-Linux-OSX%29"
+_pkgname=fr24feed
+pkgver=1.0.24
+pkgrel=5
+pkgdesc='Feeder software for Flightradar24.com'
 arch=('x86_64' 'i686' 'armv6h' 'armv7h')
-license=('unknown')
-depends=('zlib' 'gcc-libs')
-install=flightradar24.install
+url='https://www.flightradar24.com/share-your-data'
+license=('custom')
+depends=()
 optdepends=('dump1090-git: for dump1090 in RasppberyPi')
+backup=(etc/fr24feed.ini)
+install=flightradar24.install
+source=('fr24feed.service'
+        'flightradar24.tmpfiles'
+        'flightradar24.sysusers')
+source_x86_64=("https://repo-feed.flightradar24.com/linux_x86_64_binaries/${_pkgname}_${pkgver}-${pkgrel}_amd64.tgz")
+source_i686=("https://repo-feed.flightradar24.com/linux_x86_binaries/${_pkgname}_${pkgver}-${pkgrel}_i386.tgz")
+source_armv6h=("https://repo-feed.flightradar24.com/rpi_binaries/${_pkgname}_${pkgver}-${pkgrel}_armhf.tgz")
+source_armv7h=("https://repo-feed.flightradar24.com/rpi_binaries/${_pkgname}_${pkgver}-${pkgrel}_armhf.tgz")
 
-source=(fr24feed.service flightradar24.tmpfiles flightradar24.sysusers)
-sha256sums=(
-  '5bd37206a05f8c07c8ce91d9cfc7c41bdbd76a0023e523c426c791fcc70d8d24'
-  '32f6f289efe8e3e303767239b2a276405b2d7c0fcbbde8ed9473ee6889b676ff'
-  '7e5e1a28769559a2e2e1312894a1f9d315c4812bb34e2f1c45b2f877e4f4eeb0'
-)
-
-source_i686=("http://feed.flightradar24.com/linux/fr24feed_${_pkgverorig}_i386.tgz")
-sha256sums_i686=('9d80b8a6fe55fc70b3b8e773e3d07d61ceee95c41db50a682eaab208abd3a391')
-
-source_x86_64=("http://feed.flightradar24.com/linux/fr24feed_${_pkgverorig}_amd64.tgz")
-sha256sums_x86_64=('770e86b640bcbb8850df67aaa8072a85ac941e2e2f79ea25ef44d67e89bc5649')
-
-source_armv6h=("http://repo.feed.flightradar24.com/rpi_binaries/fr24feed_${_pkgverorigarmhf}_armhf.tgz")
-sha256sums_armv6h=('ea2674b5eaa071d3e469a103971a2d42973014d5fde8fd3b0fe123dbd4f1476b')
-
-source_armv7h=("http://repo.feed.flightradar24.com/rpi_binaries/fr24feed_${_pkgverorigarmhf}_armhf.tgz")
-sha256sums_armv7h=('ea2674b5eaa071d3e469a103971a2d42973014d5fde8fd3b0fe123dbd4f1476b')
+sha256sums=('7c0d1a5508917851789477b035cd91eafb84f8706c3214babea7125f8a82a0d2'
+            '32f6f289efe8e3e303767239b2a276405b2d7c0fcbbde8ed9473ee6889b676ff'
+            '7e5e1a28769559a2e2e1312894a1f9d315c4812bb34e2f1c45b2f877e4f4eeb0')
+sha256sums_x86_64=('cc88150f753e734327bf35574f6de5b11d8f989ddb1186514a4ce02e6e61600b')
+sha256sums_i686=('68dc31cf7f085074d1c639fe8bf383dc614704a0c526d98a6ab52a32f1833f9d')
+sha256sums_armv6h=('10e6a0633e7208e430ee03cfd749c8dde1061a3e1e8bd04971b1a8a68b0d785c')
+sha256sums_armv7h=('10e6a0633e7208e430ee03cfd749c8dde1061a3e1e8bd04971b1a8a68b0d785c')
 
 package() {
-  cd "$srcdir"
-  if [[ $CARCH = "i686" ]]; then
-    pushd fr24feed_i386
-  elif [[ $CARCH = "x86_64" ]]; then
-    pushd fr24feed_amd64
-  elif [[ $CARCH = "armv6h" ]]; then
-    pushd fr24feed_armhf
-  elif [[ $CARCH = "armv7h" ]]; then
-    pushd fr24feed_armhf
-  fi
+  case $CARCH in
+  i686)
+    pushd ${_pkgname}_i386
+    ;;
+  x86_64)
+    pushd ${_pkgname}_amd64
+    ;;
+  arm*)
+    pushd ${_pkgname}_armhf
+    ;;
+  esac
 
-  install -Dm755 fr24feed "$pkgdir/usr/bin/fr24feed"
-  install -Dm644 LICENSE.fr24feed "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm755 -t "$pkgdir/usr/bin" fr24feed
+  install -Dm644 licences/LICENSE.fr24feed.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   popd
 
-  install -Dm644 fr24feed.service "$pkgdir/usr/lib/systemd/system/fr24feed.service"
-  install -Dm644 flightradar24.tmpfiles "$pkgdir/usr/lib/tmpfiles.d/flightradar24.conf"
-  install -Dm644 flightradar24.sysusers "$pkgdir/usr/lib/sysusers.d/flightradar24.conf"
+  install -Dm644 -t "$pkgdir/usr/lib/systemd/system" fr24feed.service
+  install -Dm644 flightradar24.tmpfiles "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
+  install -Dm644 flightradar24.sysusers "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
 }
 
 # vim:set ts=2 sw=2 et:

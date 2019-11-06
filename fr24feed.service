@@ -8,9 +8,7 @@ User=fr24
 ProtectSystem=full
 ProtectHome=true
 RuntimeDirectory=fr24feed
-
 ExecStart=/usr/bin/fr24feed --config-file=/etc/fr24feed.ini --logfile=/var/log/fr24feed.log
 
 [Install]
 WantedBy=network.target
-
