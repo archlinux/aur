@@ -1,6 +1,6 @@
 pkgbase = keeweb
 	pkgdesc = Desktop password manager compatible with KeePass databases
-	pkgver = 1.12.2
+	pkgver = 1.12.3
 	pkgrel = 1
 	url = https://keeweb.info
 	arch = any
@@ -14,12 +14,10 @@ pkgbase = keeweb
 	depends = electron
 	optdepends = xdotool: for auto-type
 	conflicts = keeweb-desktop
-	source = keeweb::git+https://github.com/keeweb/keeweb.git#tag=v1.12.2
-	source = hide-menubar.patch
+	source = keeweb::git+https://github.com/keeweb/keeweb.git#tag=v1.12.3
 	source = keeweb.sh
 	source = package.json.patch.js
 	sha1sums = SKIP
-	sha1sums = a55c2ed276c6073b7954452cdc88209633d51ace
 	sha1sums = c925527f25e732d58438ee16b1c93b33be7bf9c4
 	sha1sums = 19c9db9079a08e82b5418609596201b358ac815d
 
