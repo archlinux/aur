@@ -8,8 +8,8 @@
 # If you want to help keep it up to date, please open a Pull Request there.
 
 pkgname='cronie-selinux'
-pkgver=1.5.4
-pkgrel=3
+pkgver=1.5.5
+pkgrel=1
 pkgdesc='Daemon that runs specified programs at scheduled times and related tools with SELinux support'
 url='https://github.com/cronie-crond/cronie/'
 license=('custom:BSD')
@@ -21,14 +21,12 @@ conflicts=('cron' "${pkgname/-selinux}" "selinux-${pkgname/-selinux}")
 provides=('cron' "${pkgname/-selinux}=${pkgver}-${pkgrel}"
           "selinux-${pkgname/-selinux}=${pkgver}-${pkgrel}")
 groups=('selinux')
-source=("https://github.com/cronie-crond/cronie/releases/download/${pkgname/-selinux}-${pkgver}-final/${pkgname/-selinux}-${pkgver}.tar.gz"
-        '0001-do-not-log-carriage-return.patch'
+source=("https://github.com/cronie-crond/cronie/releases/download/${pkgname/-selinux}-${pkgver}/${pkgname/-selinux}-${pkgver}.tar.gz"
         '80-cronie.hook'
         'service'
         'pam.d'
         'deny')
-sha256sums=('af8970559cad4262f8ffd7ec72abf682d2dcce04fdfb8f206a71d96566aba882'
-            '595e96997afe506ad93a98896830f3651667f56406a5ae67f4bcf513cfcb45ad'
+sha256sums=('be34c79505e5544323281854744b9955ff16b160ee569f9df7c0dddae5720eac'
             'f85e9a68bf3bf446f8a6167f068371c06afffe11ca71935d8ee5487b38b2c9db'
             'ac3ff3c8a5ce1b6367b06877b4b12ff74e7f18a3c510fb9f80d6ea6b6321e3b1'
             '00864268b491bab8c66400a4a4b4bf85f168a6e44e85676105e084940924090c'
@@ -37,11 +35,6 @@ backup=('etc/cron.deny'
         'etc/pam.d/crond'
         'etc/cron.d/0hourly'
         'etc/anacrontab')
-
-prepare() {
-	cd "${srcdir}/${pkgname/-selinux}-${pkgver}"
-	patch -Np1 < ../0001-do-not-log-carriage-return.patch
-}
 
 build() {
 	cd "${srcdir}/${pkgname/-selinux}-${pkgver}"
