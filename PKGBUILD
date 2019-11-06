@@ -14,7 +14,7 @@ depends=('dkms' 'exfat-utils-nofuse')
 makedepends=('git')
 conflicts=('exfat' 'exfat-git')
 options=('!strip')
-source=(git+https://github.com/barrybingo/exfat-nofuse.git
+source=('git+https://github.com/barrybingo/exfat-nofuse.git'
         dkms.conf)
 sha512sums=('SKIP'
             'cbb4fff8f158d5feacd6ad9c4ec42e13b70891b532dd89eda5fd5b6327d22b702d69e46a268af73f04eefcf7deef78ba0a5cfb57381e38eb3493136b9628fd43')
