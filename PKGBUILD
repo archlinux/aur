@@ -2,12 +2,12 @@
 
 pkgname="conrad-venv-bin"
 pkgver="0.2.0"
-pkgrel="3"
+pkgrel="4"
 pkgdesc="conrad helps you track conferences and meetups on your terminal! [installed inside a virtualenv to prevent depedencies directly on the system]"
 arch=('i686' 'x86_64')
 url="https://github.com/vinayak-mehta/conrad"
 license=('MIT')
-depends=('python''python-virtualenv''python-pip')
+depends=('python' 'python-virtualenv' 'python-pip' )
 optdepends=()
 conflicts=()
 source=()
