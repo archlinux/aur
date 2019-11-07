@@ -1,12 +1,11 @@
 pkgbase = buildkit
 	pkgdesc = A toolkit for converting source code to build artifacts in an efficient, expressive and repeatable manner.
 	pkgver = 0.6.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/moby/buildkit
 	arch = any
 	license = Apache
-	makedepends = git
-	makedepends = go>=1.12
+	makedepends = make
 	depends = docker
 	provides = buildkit
 	conflicts = buildkit
