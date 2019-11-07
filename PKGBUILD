@@ -7,7 +7,7 @@ _setFullLibdir="${_setPrefix}/${_setLibdir}"
 _pkgbasename=glslang
 
 pkgname=lib32-$_pkgbasename
-pkgver=7.12.3352
+pkgver=7.13.3496
 pkgrel=1
 pkgdesc='OpenGL and OpenGL ES shader front end and validator (32bit)'
 arch=('x86_64')
@@ -25,7 +25,7 @@ makedepends=(
         )
 options=('staticlibs')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/KhronosGroup/glslang/archive/${pkgver}.tar.gz)
-sha256sums=('4ecce011b73dd7196a5114f66776d5a4c4c3674fc9bc6f39ad3c1ee15a8abbe1')
+sha256sums=('170d1538a670af4cae300e875d7cda9744b1acee1ab7252ecf7c4004186bb922')
 
 build() {
   export CCFLAGS="-m32"
