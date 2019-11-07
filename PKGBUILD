@@ -1,7 +1,7 @@
 # Maintainer: Javier Domingo Cansino <javierdo1@gmail.com>
 pkgname=triumph-adler-printer-drivers
 pkgver=20140115
-pkgrel=1
+pkgrel=2
 pkgdesc="Triumph Adler printer drivers"
 url="https://www.triumph-adler.de/"
 arch=('x86_64' 'i686')
@@ -26,5 +26,6 @@ package() {
   mkdir -p ${pkgdir}/usr/share/cups/model/UTAX_TA/
   mkdir -p ${pkgdir}/usr/lib/cups/filter/
   find ${srcdir}/${_folder} -name kyofilter_B | grep $_arch | grep kyo | head -n 1 | xargs -n 1 -I, cp ',' ${pkgdir}/usr/lib/cups/filter/
+  chmod +x ${pkgdir}/usr/lib/cups/filter/kyofilter_B
   find ${srcdir}/${_folder} -type f           | grep $_arch | grep $_location | grep $_language | grep -i PPD | xargs -n 1 -I, cp ',' ${pkgdir}/usr/share/cups/model/UTAX_TA/
 }
