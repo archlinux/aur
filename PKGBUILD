@@ -45,8 +45,9 @@ build() {
         -DENABLE_LASH=1 \
         -DENABLE_OSC=1 \
         -DENABLE_RTAUDIO=1 ..
-  sed -i -e 's/CXX_INCLUDES = /CXX_INCLUDES = -I\/usr\/include\/harfbuzz/' muse/lv2Gtk2Support/CMakeFiles/lv2_gtk2_support.dir/flags.make
-  make
+  sed -i -e 's/CXX_INCLUDES = /CXX_INCLUDES = -I\/usr\/include\/harfbuzz /' muse/lv2Gtk2Support/CMakeFiles/lv2_gtk2_support.dir/flags.make
+
+  make -j$(nproc)
 }
 
 package() {
