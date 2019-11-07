@@ -1,9 +1,9 @@
 # Maintainer: Bruno Silva <brunofernandes at ua dot pt>
 
 pkgname='omnetpp-qt'
-pkgver=6.0pre2
-_pkgver=6-0pre2
-pkgrel=2
+pkgver=6.0pre4
+_pkgver=6-0pre4
+pkgrel=1
 _pkgname='omnetpp'
 pkgdesc='OMNeT++ Discrete Event Simulator. OMNeT++ is an extensible, modular, component-based C++ simulation library and framework, primarily for building network simulators: QT version'
 url='http://www.omnetpp.org'
@@ -17,11 +17,11 @@ conflicts=('omnetpp')
 
 source=(OMNeT++.desktop
 	omnetpp.sh
-	omnetpp-${pkgver}-src-linux.tgz::https://ipfs.omnetpp.org/release/test/omnetpp-6.0pre2-src-linux.tgz)
+	"omnetpp-${pkgver}-src-linux.tgz::https://github.com/omnetpp/omnetpp/releases/download/omnetpp-6.0pre4/omnetpp-${pkgver}-src-linux.tgz")
 
 sha512sums=('a5772a605592ed2db839609f8298d1d71fb9141eb1b30dac584b788414dfe49b250ba803351a3a84f90c6b89f8e09e7b129a037af17c9b94c22dff2003a5edd8'
 'facb711a01c41665c7909f82b4cee65ddee232e0c526f754ce1ab148dbc6c65abb9b24255f985be245fb2c33f91623365eac730ef83cb1a7c595a09726856fa1'
-'7515126e9a465fa1bf5a5e705df5501deb9733e9a8d1108da327fbf7f168adb60eae850a76f8f01d555039b3503fa7c2fb5948b798b53abf3061907568300cd5')
+'5b4d331ee9c81f8d22f6d204e9b2622755e1564fc786c4328d7a28c7b71592dd556b58eb94ba929a7a91bf714d0f43cde0006bfe2d9fc1a99bc2007551055234')
 
 build() {
 	cd ${srcdir}/${_pkgname}-${pkgver}
