@@ -1,6 +1,6 @@
 pkgname=dwm-git
 _pkgname=dwm
-pkgver=6.2
+pkgver=6.2.r0.gcb3f58a
 pkgrel=1
 pkgdesc="A dynamic window manager for X"
 url="http://dwm.suckless.org"
@@ -12,21 +12,22 @@ makedepends=('git')
 install=dwm.install
 provides=('dwm')
 conflicts=('dwm')
-epoch=1
 source=(dwm.desktop
-        "$_pkgname::git+http://git.suckless.org/dwm")
+        "$_pkgname::git+http://git.suckless.org/dwm"
+        config.h)
 md5sums=('939f403a71b6e85261d09fc3412269ee'
-         'SKIP')
+         'SKIP'
+         'SKIP') # so you can customize config.h
 
 pkgver(){
   cd $_pkgname
-  git describe --tags |sed 's/-/./g'
+  git describe --long --tags | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
 prepare() {
   cd $_pkgname
-  if [[ -f "$SRCDEST/$pkgname/config.h" ]]; then
-    cp -f "$SRCDEST/$pkgname/config.h" config.h
+  if [[ -f "$srcdir/config.h" ]]; then
+    cp -fv "$srcdir/config.h" config.h
   fi
 }
 

@@ -1,8 +1,7 @@
 pkgbase = dwm-git
 	pkgdesc = A dynamic window manager for X
-	pkgver = 6.2
+	pkgver = 6.2.r0.gcb3f58a
 	pkgrel = 1
-	epoch = 1
 	url = http://dwm.suckless.org
 	install = dwm.install
 	arch = i686
@@ -17,7 +16,9 @@ pkgbase = dwm-git
 	options = zipman
 	source = dwm.desktop
 	source = dwm::git+http://git.suckless.org/dwm
+	source = config.h
 	md5sums = 939f403a71b6e85261d09fc3412269ee
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = dwm-git
