@@ -20,6 +20,7 @@ md5sums=('SKIP')
 
 package() {
   cd "${srcdir}/${_basename}"
+  rm ./kde/plasmoid/contents/shaders/example-*
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${_basename%-*}/LICENSE"
 
   cd kde
