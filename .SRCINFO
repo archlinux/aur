@@ -1,6 +1,6 @@
 pkgbase = azote
 	pkgdesc = Wallpaper manager for Sway, i3 and some other WMs
-	pkgver = 1.7.2
+	pkgver = 1.7.3
 	pkgrel = 1
 	url = https://github.com/nwg-piotr/azote
 	arch = x86_64
@@ -12,10 +12,17 @@ pkgbase = azote
 	depends = gtk3
 	depends = feh
 	depends = xorg-xrandr
-	depends = wmctrl
 	optdepends = python-send2trash: trash support
-	source = https://github.com/nwg-piotr/azote/archive/v1.7.2.tar.gz
-	md5sums = e562d5e98950fbeb7a31add099fb0850
+	optdepends = grim: for screen color picker on Sway
+	optdepends = slurp: for screen color picker on Sway maim:
+	optdepends = for
+	optdepends = screen
+	optdepends = color
+	optdepends = picker
+	optdepends = on
+	optdepends = X11
+	source = https://github.com/nwg-piotr/azote/archive/v1.7.3.tar.gz
+	md5sums = 9ffc85692270b5a81cac66a199c9f4ee
 
 pkgname = azote
 
