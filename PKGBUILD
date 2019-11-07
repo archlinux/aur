@@ -1,16 +1,16 @@
 # Maintainer: Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
 
 pkgname="asf"
-pkgver="4.0.4.3"
+pkgver="4.1.0.3"
 pkgrel=1
 pkgdesc="Steam cards farmer."
 arch=('x86_64' 'arm' 'i686')
 url="https://github.com/JustArchiNET/ArchiSteamFarm"
 license=('Apache')
-depends_x86_64=('dotnet-host' 'libunwind' 'openssl-1.0')
-depends_arm=('dotnet-host' 'libunwind' 'openssl-1.0')
-depends_i686=('dotnet-runtime')
-makedepends=('p7zip')
+depends_x86_64=('dotnet-host>=3.0' 'libunwind' 'openssl-1.0')
+depends_arm=('dotnet-host>=3.0' 'libunwind' 'openssl-1.0')
+depends_i686=('dotnet-runtime>=3.0')
+makedepends=('unzip')
 changelog=changelog
 backup=('var/lib/asf/config/ASF.json' 'usr/lib/asf/NLog.config')
 install=install
@@ -27,13 +27,13 @@ sha256sums=('8d76996c1024b80704b25af8a8800ef3f8a8a518d19c2a1e85ba62b58b22cdfd'
             'c6e89b39537f64e10195c6be5ee98fe66ed564d3126cc2140eaa49d53b68be8c'
             'e63a92fd8008c40dab963161bdac967b57146553c00f114469c204ac6e1795b2'
             '2807b65c35959b0a0a255850facecc0286b7afdb5aa9b7b9315bf0165e87b0e0')
-sha256sums_x86_64=('69d4631099504c089712f86779de3fe4c64882340552b727c72cf97fb112c20f')
-sha256sums_arm=('a8c06ab44c0829a1265796715924ea6a10c7510699a51ae57d0c15ec30651c5b')
-sha256sums_i686=('885b38dba15c679e93f29e7935ad353a3182bac2a1e0f77714ca3760d31bc1f4')
+sha256sums_x86_64=('e61550b5e961a602a68e399dd08fe84855087810602937cd50be148c1c1bdc45')
+sha256sums_arm=('6b34766976b1fabc10b6ffa2eddb2f41c9030bf9d0f9f9d6e242a0f6c3d591ea')
+sha256sums_i686=('c9dedc65c03bf18dbbe8f24a49f0796d05ad610dcec47d73ae337324f500b62d')
 noextract=("${source_x86_64[@]%%::*}" "${source_arm[@]%%::*}" "${source_i686[@]%%::*}")
 
 prepare() {
-    7z x -o"${srcdir}/asf" ${pkgname}-${pkgver}-${CARCH}.zip
+    unzip -d "${srcdir}/asf" ${pkgname}-${pkgver}-${CARCH}.zip
 }
 
 package() {

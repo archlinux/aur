@@ -1,3 +1,12 @@
+2019-11-07 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 4.1.0.3-1:
+    [!] ASF V4.1 opens a new minor milestone due to NET Core 3.0 runtime upgrade.
+    Version property of /Api/ASF and /Api/ASF/Update IPC endpoints is now a string due to .NET Core changes. This is a breaking change for those that are using it.
+    Fixed a very rare situation in which some items or games to idle could be doubled.
+    Fixed Forwarding not always working properly with RateLimited bots (#1460).
+    Latest ASF-ui with new features, improvements and bugfixes.
+    Usual amount of other core improvements, optimizations and bugfixes.
+    pkg: switch to the smaller 'unzip' for ZIP64 support
 2019-09-04 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 4.0.4.3-1:
     ASF's default logging was enhanced to follow ${currentdir}, which results in log.txt and logs directory respecting used --path, as opposed to always being in the program's directory. If you're using custom logging config, you might want to reflect this change.
