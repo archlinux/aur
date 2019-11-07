@@ -1,7 +1,7 @@
 # Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-ffmpeg
-pkgver=0.3.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="OCaml bindings to the FFmpeg library"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('ocaml' 'ffmpeg')
 makedepends=('ocaml-findlib')
 options=('!strip')
 source=("https://github.com/savonet/ocaml-ffmpeg/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('bddf3bdf6938f3990ef06d735ac32273cc3055d97d9a709db7d67a9ce9d6c499fb9fdb25bfcab2045d24a3dc0b76beeda73b713ba961dfb5d82a99e0779e1682')
+sha512sums=('279034401ff9fc76291420d9e5a0ba184778ce66df5522372af7bc80fa60b63f8e204bc4d0a02512bafa1ac8bb00168d48989e182a1123876fca6cb781e1c5df')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
