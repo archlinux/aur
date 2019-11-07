@@ -1,7 +1,7 @@
 pkgbase = julia-binaryprovider
 	pkgdesc = A reliable binary provider for Julia
-	pkgver = 0.5.5
-	pkgrel = 2
+	pkgver = 0.5.8
+	pkgrel = 1
 	url = https://github.com/JuliaPackaging/BinaryProvider.jl
 	arch = any
 	license = MIT
@@ -10,14 +10,14 @@ pkgbase = julia-binaryprovider
 	makedepends = julia-distrohelper
 	depends = julia
 	depends = julia-loadpath
-	source = julia-binaryprovider-0.5.5.tar.gz::https://github.com/JuliaPackaging/BinaryProvider.jl/archive/v0.5.5.tar.gz
-	source = julia-binaryprovider-0.5.5-Deps.toml::https://raw.githubusercontent.com/JuliaRegistries/General/dbac6903980b6f4f75de6c8afa46ef6b91be183f/B/BinaryProvider/Deps.toml
-	source = julia-binaryprovider-0.5.5-Package.toml::https://raw.githubusercontent.com/JuliaRegistries/General/dbac6903980b6f4f75de6c8afa46ef6b91be183f/B/BinaryProvider/Package.toml
-	source = julia-binaryprovider-0.5.5-Versions.toml::https://raw.githubusercontent.com/JuliaRegistries/General/dbac6903980b6f4f75de6c8afa46ef6b91be183f/B/BinaryProvider/Versions.toml
-	sha256sums = b58e648c096d1b37ed97ca70d2a66d5dbe433ecf4803c43fe98a19087a2f11a5
-	sha256sums = 1a47c7478e81d378c24a1b7f6e7ec893fb6b9615bdff17f52c93d1c560e4c65a
+	source = julia-binaryprovider-0.5.8.tar.gz::https://github.com/JuliaPackaging/BinaryProvider.jl/archive/v0.5.8.tar.gz
+	source = julia-binaryprovider-0.5.8-Deps.toml::https://raw.githubusercontent.com/JuliaRegistries/General/3d029a0b70aa1c168db4fc473ff0f36d7480bd99/B/BinaryProvider/Deps.toml
+	source = julia-binaryprovider-0.5.8-Package.toml::https://raw.githubusercontent.com/JuliaRegistries/General/3d029a0b70aa1c168db4fc473ff0f36d7480bd99/B/BinaryProvider/Package.toml
+	source = julia-binaryprovider-0.5.8-Versions.toml::https://raw.githubusercontent.com/JuliaRegistries/General/3d029a0b70aa1c168db4fc473ff0f36d7480bd99/B/BinaryProvider/Versions.toml
+	sha256sums = c9af3eef513454ca5f971cf7825961d48a638dc424d8cc2ba9d6f4cbfa45edb1
+	sha256sums = 9901a26bda7b1b15467dd5129ff95b770fa2c063f6fc0e0dbf845c0b778bc615
 	sha256sums = decb333c3e4cf96c9f35d0b2bd5d42dbda88517f18ec7e68761aae4825fb7b85
-	sha256sums = eff45ae09624693a2d276f2b1fedc79f338cdbeabc6fd61406e0749ae6336941
+	sha256sums = 1540260a51a3b3dfeac114e521d808a710121da5fa5c7e5a5168bc871bf0b5f0
 
 pkgname = julia-binaryprovider
 

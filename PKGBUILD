@@ -2,8 +2,8 @@
 
 pkgname=julia-binaryprovider
 _pkgname=BinaryProvider
-pkgver=0.5.5
-pkgrel=2
+pkgver=0.5.8
+pkgrel=1
 pkgdesc='A reliable binary provider for Julia'
 arch=(any)
 url=https://github.com/JuliaPackaging/BinaryProvider.jl
@@ -12,15 +12,15 @@ depends=(julia julia-loadpath)
 makedepends=(julia-distrohelper)
 checkdepends=(curl git)
 
-_commit=dbac6903980b6f4f75de6c8afa46ef6b91be183f
+_commit=3d029a0b70aa1c168db4fc473ff0f36d7480bd99
 source=($pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz
         $pkgname-$pkgver-Deps.toml::https://raw.githubusercontent.com/JuliaRegistries/General/$_commit/${_pkgname:0:1}/$_pkgname/Deps.toml
         $pkgname-$pkgver-Package.toml::https://raw.githubusercontent.com/JuliaRegistries/General/$_commit/${_pkgname:0:1}/$_pkgname/Package.toml
         $pkgname-$pkgver-Versions.toml::https://raw.githubusercontent.com/JuliaRegistries/General/$_commit/${_pkgname:0:1}/$_pkgname/Versions.toml)
-sha256sums=('b58e648c096d1b37ed97ca70d2a66d5dbe433ecf4803c43fe98a19087a2f11a5'
-            '1a47c7478e81d378c24a1b7f6e7ec893fb6b9615bdff17f52c93d1c560e4c65a'
+sha256sums=('c9af3eef513454ca5f971cf7825961d48a638dc424d8cc2ba9d6f4cbfa45edb1'
+            '9901a26bda7b1b15467dd5129ff95b770fa2c063f6fc0e0dbf845c0b778bc615'
             'decb333c3e4cf96c9f35d0b2bd5d42dbda88517f18ec7e68761aae4825fb7b85'
-            'eff45ae09624693a2d276f2b1fedc79f338cdbeabc6fd61406e0749ae6336941')
+            '1540260a51a3b3dfeac114e521d808a710121da5fa5c7e5a5168bc871bf0b5f0')
 
 _slug() {
 	dh_julia slug "$srcdir"/"$pkgname"-$pkgver-{Package,Versions}.toml
