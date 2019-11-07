@@ -1,0 +1,13 @@
+diff -ura pynput-1.4.5.orig/setup.py pynput-1.4.5/setup.py
+--- pynput-1.4.5.orig/setup.py	2019-11-07 11:03:19.516856715 +0100
++++ pynput-1.4.5/setup.py	2019-11-07 11:03:34.060189458 +0100
+@@ -23,8 +23,7 @@
+ 
+ #: Additional requirements used during setup
+ SETUP_PACKAGES = [
+-    'setuptools-lint >=0.5',
+-    'sphinx >=1.3.1']
++    'setuptools-lint >=0.5']
+ 
+ #: Packages requires for different environments
+ EXTRA_PACKAGES = {
