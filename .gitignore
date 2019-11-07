@@ -1,0 +1,4 @@
+*.pkg.tar.xz
+/guile-gnome-platform
+/pkg/
+/src/
