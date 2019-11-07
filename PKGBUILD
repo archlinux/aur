@@ -6,7 +6,7 @@ arch=('x86_64')
 license=('MPL' 'GPL' 'LGPL')
 url="https://www.basilisk-browser.org"
 depends=('gtk2' 'libxt' 'mime-types' 'alsa-lib' 'ffmpeg' 'ttf-font')
-makedepends=('unzip' 'zip' 'gcc8' 'python2' 'yasm' 'mesa' 'autoconf2.13')
+makedepends=('unzip' 'zip' 'python2' 'yasm' 'mesa' 'autoconf2.13')
 options=('!emptydirs')
 source=("https://github.com/MoonchildProductions/UXP/archive/v$pkgver.tar.gz")
 sha256sums=('c9da24fb6daa5e8583dfbf39011d2acc0ba298831f231e41fe02b3905a259302')
@@ -86,7 +86,7 @@ EOF
 build() {
   cd "$srcdir/UXP-$pkgver"
 
-  CC="cc-8" CXX="c++-8" CPP="cpp-8" ./mach build
+  ./mach build
 }
 
 package() {

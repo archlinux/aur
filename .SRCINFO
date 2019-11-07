@@ -9,7 +9,6 @@ pkgbase = basilisk
 	license = LGPL
 	makedepends = unzip
 	makedepends = zip
-	makedepends = gcc8
 	makedepends = python2
 	makedepends = yasm
 	makedepends = mesa
