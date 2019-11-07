@@ -7,7 +7,7 @@
 
 pkgname=thunderbird-60-bin
 _pkgname=thunderbird
-pkgver=60.9.0
+pkgver=60.9.1
 _major=${pkgver/rc*}
 _build=${pkgver/*rc}
 pkgrel=1
@@ -27,10 +27,13 @@ source=('thunderbird-60-bin.desktop'
 source_x86_64=("https://ftp.mozilla.org/pub/thunderbird/releases/$pkgver/linux-x86_64/en-US/thunderbird-$pkgver.tar.bz2")
 source_i686=("https://ftp.mozilla.org/pub/thunderbird/releases/$pkgver/linux-i686/en-US/thunderbird-$pkgver.tar.bz2")
 
-sha512sums=('35b40d061202606eff895eb9ab5de3db7f52e6a06a8ec8b6bb77c3b0417f4cc2da2f32f3577fa763981b290f421072c61779ad068f06059bf0b77b6a6d549573'
+# Hashes for the source files specified in the 'source' array
+sha512sums=('366b4e0033892cf4bba7ff25ad5d2fc5f8b71da01c0332f5cdb0be0e5d873affe477e02efa02a71caf2933f80c7dafae28064e68019c9946ad26172cf5ad6d5a'
             'aeb444784732267f1b1e87e6084a776f82a1912c4c2637d2cf1de1c135dd9d41d2ef66d2bd3f9cbd3a79fad32d17ea6e2968ba644d5f887cb66ba6c09a2098f5')
-sha512sums_x86_64=('0a490a7b7b02bf13b2a47e7c838b9e1dec7848f2f40445744f74ed3294fda0588c2ed6ee402f3722d0dfccd0a9df9ed3e38021807ff337be3f340ca85c96acfa')
-sha512sums_i686=('b5e3a7d7df69f788408b9d83b05d45c6f8464e9930416d6feaf70a5da58d464b71993b6891d77969537a1f806227565096d2649e19b87bf46ce81550cf7f59fe')
+# This is for 'source_x86_64'
+sha512sums_x86_64=('109ae1a376a6e65ede652c85fda7ebd497b781717cef65d0e0462a4c3d76dcca69163b96acaf1259e347ede8826a647dea3c739c2cf38f214c2628f2b9b7fe19')
+# This is for 'source_i686'
+sha512sums_i686=('707d48e10ce34363a339ce7db40d4a5b3ad2e56401ab335edf916ebf74e46fa3d81364f2cdeedc8f0f5829adbcb1ba56001399bd278a249d71827c93dd171b9a')
 
 # RC
 if [[ $_build = ? ]]; then
