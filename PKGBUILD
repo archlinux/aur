@@ -24,6 +24,8 @@ sha256sums=('SKIP'
             
 prepare() {
 	cd "$srcdir/${pkgname%-git}"
+	
+	# Remove shortcut creation as files cannot be placed in $HOME in fakeroot environment
 	patch -Np1 -i "$srcdir/$pkgname.patch"
 }
 
