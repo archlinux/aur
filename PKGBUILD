@@ -3,7 +3,7 @@
 pkgname=d-stdx-allocator
 _pkgname=stdx-allocator
 pkgver=3.0.2
-pkgrel=6
+pkgrel=7
 pkgdesc='Extracted std.experimental.allocator'
 arch=('x86_64')
 url='https://github.com/dlang-community/stdx-allocator'
@@ -19,6 +19,9 @@ prepare() {
   cd $_pkgname-$pkgver
 
   patch -p1 < ../add-dependency.patch
+
+  # Meson forgot to add this flag when creating a shared library.
+  sed -i "/soversion:/a link_args: '-shared'," meson.build
 }
 
 build() {
@@ -28,6 +31,9 @@ build() {
   export DC=ldc
 
   arch-meson ..
+
+  # meson broke -soname for D in the latest update
+  sed -i "s/-soname,/=-soname=/g" build.ninja
 
   ninja
 }
