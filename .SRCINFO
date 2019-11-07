@@ -1,0 +1,15 @@
+pkgbase = rclonesync-git
+	pkgdesc = A Bidirectional Cloud Sync Utility using rclone
+	pkgver = 2.9.r39
+	pkgrel = 1
+	url = https://github.com/cjnaz/rclonesync-V2
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = rclone
+	source = rclonesync::git+https://github.com/cjnaz/rclonesync-V2
+	sha256sums = SKIP
+
+pkgname = rclonesync-git
+
