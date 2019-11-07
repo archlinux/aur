@@ -10,8 +10,8 @@ url="https://github.com/Alecaddd/sequeler"
 license=('GPL3')
 depends=('gtk3' 'granite' 'libxml2' 'libgda' 'libgda-mysql' 'libgda-postgres' 'gtksourceview3')
 makedepends=('git' 'meson' 'ninja' 'vala')
-provides=("$_pkgname")
-conflicts=("$_pkgname")
+provides=("$_gitname")
+conflicts=("$_gitname")
 source=("git+https://github.com/Alecaddd/sequeler.git")
 md5sums=('SKIP')
 

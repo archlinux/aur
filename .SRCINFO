@@ -18,6 +18,8 @@ pkgbase = sequeler-git
 	depends = libgda-postgres
 	depends = gtksourceview3
 	source = git+https://github.com/Alecaddd/sequeler.git
+	conflicts = sequeler
+	provides = sequeler
 	md5sums = SKIP
 
 pkgname = sequeler-git
