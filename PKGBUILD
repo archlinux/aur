@@ -16,32 +16,33 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 # Maintainer: Luong Thanh Lam <ltlam93@gmail.com>
-# Contributor: Tran Van Cong
+# Contributor: Tran Van Cong 
 
 
 pkgname=ibus-bamboo
-pkgver=0.6.0
-pkgrel=1
+pkgver=0.6.1
+pkgrel=2
+[[ $pkgrel -eq 1 ]] && _pkgver=$pkgver || _pkgver="$pkgver-$((pkgrel-1))"
 pkgdesc='A Vietnamese IME for IBus'
 arch=(any)
 license=(GPL3)
 url="https://github.com/BambooEngine/ibus-bamboo"
 depends=('ibus')
 makedepends=('go' 'libx11' 'libxtst')
-source=("$pkgname-$pkgver.tar.gz"::"https://github.com/BambooEngine/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('e50d22fec9a64694ba1db9bd0086c95021cf9e3af01f8ec73f26c3a7b14333a5')
+source=("$pkgname-$_pkgver.tar.gz"::"https://github.com/BambooEngine/$pkgname/archive/v$_pkgver.tar.gz")
+sha256sums=('65c9ce23f30c65b81484b02675a0079dc4d276be55412d613afa0550612b1339')
 options=('!strip')
 conflicts=(ibus-bamboo-git)
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname-$_pkgver"
 
   make
 }
 
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname-$_pkgver"
 
   make DESTDIR="$pkgdir/" install
 }
