@@ -1,34 +1,28 @@
 # Maintainer: Steven Seifried <gitlab@canox.net>
+# Contributor: Steven Seifried <gitlab@canox.net>
 pkgname=spdynu
+_pkgbase=spdynu
 pkgver=2018.11
-pkgrel=0
-pkgdesc="An Dynamic DNS Client for spdyn.de"
-arch=('any')
-url="https://gitlab.com/CANOXNET/spdynu"
-license=('GPL2')
-#depends=('')
-makedepends=('gcc')
-source=(git+https://gitlab.com/CANOXNET/spdynu)
-install=
-md5sums=('SKIP')
-
-package() {
-  mkdir -p "${srcdir}/tmp"
-  cd "${srcdir}/tmp"
-  wget https://gitlab.com/CANOXNET/spdynu/raw/master/spdynUpdater.c
-  gcc spdynUpdater.c -o spdynu
-  sudo chmod u+x spdynu
-  sudo cp -r spdynu /usr/bin/spdynu
-  wget https://gitlab.com/CANOXNET/spdynu/raw/master/spdynu.conf
-  wget https://gitlab.com/CANOXNET/spdynu/raw/master/aur/spdynu.service
-  wget https://gitlab.com/CANOXNET/spdynu/raw/master/spdynu.timer
-  sudo cp -r spdynu.conf /etc/spdynu.conf
-  sudo cp -r spdynu.service /etc/systemd/system/
-  sudo cp -r spdynu.timer /etc/systemd/system/
-  sudo systemctl enable spdynu.service
-  sudo systemctl enable spdynu.timer
-  sudo systemctl start spdynu.service
-  sudo systemctl start spdynu.timer
-  echo -e "\033[31m\033[1m\033[4mThe systemd Service and Timer was automatically enabled and started\033[0m"
-  echo -e "\033[31m\033[1m\033[4mDon't forget to edit /etc/spdynu.conf\033[0m"
+pkgrel=1
+pkgdesc="DynDNS Client for spdyn.de"
+url="https://gitlab.com/StevenSeifried/spdynu/"
+license=("GPL2")
+arch=('any') 
+makedepends=('git' 'gcc' 'make')
+depends=('make' 'gcc')
+source=("https://gitlab.com/StevenSeifried/spdynu/-/archive/$pkgver/spdynu-$pkgver.tar.gz")
+sha256sums=('ea2878e5b468e0d56c0e6c7f1691f849e9006255d4503b3942480f70a6cb2409')
+sha512sums=('c707f61929e2ebbe25f3eafc392de100084d75c0d0e59ed254de9f7c25ee6a7abbd83efacf029017f10f13e074e01b37997723180a2b4d17b0b8bdaec683f802')
+build() {
+ gcc $srcdir/$pkgname-$pkgver/spdynUpdater.c -o $srcdir/$pkgname-$pkgver/spdynu
 }
+package() {
+ wget https://gitlab.com/StevenSeifried/spdynu/raw/master/aur/spdynu-aur.service -O $srcdir/$pkgname-$pkgver/spdynu-aur.service
+ install -Dm755 "$srcdir/$pkgname-$pkgver/spdynu" "${pkgdir}/usr/bin/spdynu"
+ install -Dm755 "$srcdir/$pkgname-$pkgver/spdynu.conf" "${pkgdir}/etc/spdynu.conf"
+ install -Dm755 "$srcdir/$pkgname-$pkgver/spdynu-aur.service" "${pkgdir}/etc/systemd/system/spdynu.service"
+ install -Dm755 "$srcdir/$pkgname-$pkgver/spdynu.timer" "${pkgdir}/etc/systemd/system/spdynu.timer"
+ echo -e "\033[31m\033[1m\033[4mThe systemd Service and Timer must be manually enabled and started\033[0m"
+ echo -e "\033[31m\033[1m\033[4mDon't forget to edit /etc/spdynu.conf\033[0m"
+}
+
