@@ -39,6 +39,7 @@ build() {
         -DENABLE_VST_VESTIGE=1 \
         -DENABLE_VST_NATIVE=1 \
         -DENABLE_LV2=1 \
+        -DENABLE_LV2_MAKE_PATH=1 \
         -DENABLE_PYTHON=1 \
         -DENABLE_FLUID=1 \
         -DENABLE_DSSI=1 \
