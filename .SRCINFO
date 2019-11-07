@@ -1,7 +1,7 @@
 pkgbase = passwordsafe
 	pkgdesc = Simple & Secure Password Management
 	pkgver = 1.08.2BETA
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pwsafe.org/
 	arch = i686
 	arch = x86_64
@@ -18,14 +18,15 @@ pkgbase = passwordsafe
 	depends = qrencode
 	optdepends = xvkbd: virtual-keyboard support
 	conflicts = passwordsafe-debian
-	conflicts = passwordsafe-git
 	conflicts = pwsafe
 	conflicts = pwsafe-gui
 	source = https://github.com/pwsafe/pwsafe/archive/1.08.2BETA.tar.gz
 	source = https://github.com/pwsafe/pwsafe/releases/download/1.08.2BETA/1.08.2BETA.tar.gz.sig
+	source = 412458d281-glibc2.30-fix.patch
 	validpgpkeys = C8876BE69A8EC6414C8C8729B131423D7F2F1BB9
 	sha1sums = 0643f708517302a715a68241f90072dcb41a0c46
 	sha1sums = SKIP
+	sha1sums = 6d7c571d9f03f4f56fd60f8756d2db46e0e334b7
 
 pkgname = passwordsafe
 
