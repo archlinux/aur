@@ -8,5 +8,4 @@ push: check-srcinfo-diff
 	git push origin master
 
 push-aur: check-srcinfo-diff
-	git remote set-url --add aur https://aur.archlinux.org/keybase-git.git/
 	git push aur master
