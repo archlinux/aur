@@ -14,7 +14,7 @@ pkgbase = ice-dev
 	optdepends = google-chrome: Browser to use
 	optdepends = vivaldi: Browser to use
 	source = ice-dev-6.1.0.tar.gz::https://github.com/ebadoo/ice-dev/archive/6.1.0.tar.gz
-	md5sums = B96BB1405F9C8C691C849750DF5B50A2
+	md5sums = AD3F3CEB76C191B18AE8BBAE44147CA2
 
 pkgname = ice-dev
 
