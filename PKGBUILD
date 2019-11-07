@@ -2,7 +2,7 @@
 pkgbase=python-camb
 pkgname=("python-camb" "python2-camb")  
 pkgver=1.0.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Code for Anisotropies in the Microwave Background"
 arch=(any)
 url="https://github.com/cmbant/CAMB"
@@ -28,6 +28,6 @@ package_python-camb() {
 package_python2-camb() {
   depends=('python2-numpy' 'gcc-fortran')
   cd "$srcdir/CAMB-$pkgver/"
-  python setup.py install --root="$pkgdir/" --optimize=1
+  python2 setup.py install --root="$pkgdir/" --optimize=1
   install -D -m644 $srcdir/../LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE" 
 }
