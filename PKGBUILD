@@ -4,8 +4,8 @@
 
 pkgbase=fcitx
 pkgname=('fcitx' 'fcitx-gtk2' 'fcitx-gtk3')
-pkgver=4.2.9.6
-pkgrel=2
+pkgver=4.2.9.7
+pkgrel=1
 groups=('fcitx-im')
 arch=('x86_64')
 url="https://fcitx-im.org"
@@ -13,7 +13,7 @@ license=('GPL' 'LGPL')
 makedepends=('extra-cmake-modules' 'doxygen' 'gtk2' 'gtk3' 'icu' 'mesa' 'opencc' \
              'iso-codes' 'gobject-introspection' 'libxkbfile' 'enchant' 'python2')
 source=("https://download.fcitx-im.org/$pkgbase/$pkgbase-${pkgver}_dict.tar.xz"{,.sig})
-sha512sums=('dc8308d1a4e9b7595da285ca6521f33027f5b8e6968bc28f751bd4f40116166cabbe1c05e29072afbe88473d2a9d6999124476260785e07f62a243df6e896bb0'
+sha512sums=('b940478c648e30b2ea55903465ed02c8a0c3ae3539e4bd5b77be46a9e4d0c13ceff074ddd7532f86893111eb96308e1740db621a83fb809e4fd02256d75ebe7b'
             'SKIP')
 validpgpkeys=('2CC8A0609AD2A479C65B6D5C8E8B898CBF2412F9')  # Weng Xuetian
 
