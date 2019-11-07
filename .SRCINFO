@@ -1,7 +1,7 @@
 pkgbase = networkmanager-consolekit
 	pkgdesc = NetworkManager with ConsoleKit support for non-systemd systems and user applications
-	pkgver = 1.20.4
-	pkgrel = 2
+	pkgver = 1.20.6
+	pkgrel = 1
 	url = https://wiki.gnome.org/Projects/NetworkManager
 	install = networkmanager.install
 	arch = i686
@@ -25,7 +25,7 @@ pkgbase = networkmanager-consolekit
 	makedepends = dhcpcd
 	makedepends = iwd
 	makedepends = dnsmasq
-	depends = libnm>=1.20.4
+	depends = libnm>=1.20.6
 	depends = iproute2
 	depends = polkit-consolekit
 	depends = consolekit
@@ -46,11 +46,11 @@ pkgbase = networkmanager-consolekit
 	optdepends = openresolv: resolvconf support
 	optdepends = ppp: dialup connection support
 	optdepends = iwd: wpa_supplicant alternative
-	provides = networkmanager=1.20.4
+	provides = networkmanager=1.20.6
 	conflicts = networkmanager
 	replaces = networkmanager
 	backup = etc/NetworkManager/NetworkManager.conf
-	source = git+https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git#commit=27dee3b113bb45ffb53367f30a7c750eb146d980
+	source = git+https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git#commit=7910cdfe5a9ffe02cd0780d56fcc66500e292d09
 	source = NetworkManager.conf
 	source = networkmanager.rc
 	source = 20-connectivity.conf

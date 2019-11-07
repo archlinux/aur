@@ -10,8 +10,8 @@
 # Contributor: Chris Cromer <chris@cromer.cl>
 
 pkgname=networkmanager-consolekit
-pkgver=1.20.4
-pkgrel=2
+pkgver=1.20.6
+pkgrel=1
 _pppver=2.4.7
 pkgdesc="NetworkManager with ConsoleKit support for non-systemd systems and user applications"
 arch=('i686' 'x86_64')
@@ -37,7 +37,7 @@ conflicts=('networkmanager')
 backup=('etc/NetworkManager/NetworkManager.conf')
 groups=('gnome')
 install=networkmanager.install
-_commit=27dee3b113bb45ffb53367f30a7c750eb146d980 # tags/1.20.4^0
+_commit=7910cdfe5a9ffe02cd0780d56fcc66500e292d09 # tags/1.20.6^0
 source=(#https://download.gnome.org/sources/NetworkManager/${pkgver:0:3}/NetworkManager-$pkgver.tar.xz
         "git+https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git#commit=$_commit"
         NetworkManager.conf
@@ -51,10 +51,6 @@ sha256sums=('SKIP'
 
 prepare() {
   cd NetworkManager
-
-  # https://bugs.archlinux.org/task/64335
-  git cherry-pick -n 59923ad85d1a1cf2216a4f14649702d24d3f2360
-  git cherry-pick -n 186d22a9634e2bf94658ed6f1cf2b332ecb3a32c
 
   NOCONFIGURE=1 ./autogen.sh
 }
