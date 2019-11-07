@@ -1,7 +1,7 @@
 # Maintainer: Étienne Deparis <etienne@depar.is>
 pkgname=chwall-git
 _gitname=chwall
-pkgver=0.4.5r206.cf9a3fa
+pkgver=0.4.5r247.d2fd57c
 pkgrel=1
 pkgdesc="A tiny wallpaper changer, written in python"
 arch=("any")
@@ -16,7 +16,7 @@ md5sums=("SKIP")
 
 pkgver() {
     cd "$srcdir/${_gitname}"
-    curver=$(python -c "from chwall.utils import VERSION;print(VERSION)")
+    curver=$(python setup.py --version)
     printf "%sr%s.%s" "$curver" "$(git rev-list --count HEAD)" \
            "$(git rev-parse --short HEAD)"
 }
