@@ -76,7 +76,7 @@ package_python-bcc() {
 	pkgdesc='BPF Compiler Collection - Python 3 bindings'
 	arch=('any')
 	depends=('bcc' 'python')
-	optdepends=('python-netaddr2: Network address representation and manipulation'
+	optdepends=('python-netaddr: Network address representation and manipulation'
 		'python-pyroute2: Netlink and Linux network configuration')
 
 	cd "${srcdir}/${pkgbase}-${pkgver}/build"
@@ -97,7 +97,7 @@ package_python2-bcc() {
 	pkgdesc='BPF Compiler Collection - Python 2 bindings'
 	arch=('any')
 	depends=('bcc' 'python2')
-	optdepends=('python2-netaddr2: Network address representation and manipulation'
+	optdepends=('python2-netaddr: Network address representation and manipulation'
 		'python2-pyroute2: Netlink and Linux network configuration')
 
 	cd "${srcdir}/${pkgbase}-${pkgver}/build"

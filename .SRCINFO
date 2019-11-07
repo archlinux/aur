@@ -44,7 +44,7 @@ pkgname = python-bcc
 	arch = any
 	depends = bcc
 	depends = python
-	optdepends = python-netaddr2: Network address representation and manipulation
+	optdepends = python-netaddr: Network address representation and manipulation
 	optdepends = python-pyroute2: Netlink and Linux network configuration
 
 pkgname = python2-bcc
@@ -52,5 +52,5 @@ pkgname = python2-bcc
 	arch = any
 	depends = bcc
 	depends = python2
-	optdepends = python2-netaddr2: Network address representation and manipulation
+	optdepends = python2-netaddr: Network address representation and manipulation
 	optdepends = python2-pyroute2: Netlink and Linux network configuration
