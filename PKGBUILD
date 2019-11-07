@@ -2,8 +2,8 @@
 
 pkgname=julia-datastructures
 _pkgname=DataStructures
-pkgver=0.17.0
-pkgrel=2
+pkgver=0.17.5
+pkgrel=1
 pkgdesc='Julia implementation of Data structures'
 arch=(any)
 url=https://github.com/JuliaCollections/DataStructures.jl
@@ -15,15 +15,15 @@ depends=(julia
 ) # julia-primes) circular dependency for check()
 makedepends=(julia-distrohelper)
 
-_commit=cb1789de11e6e5fa59d7380c99824fedf204d5ef
+_commit=8c6382e5d7f28d4d70f136d7bdf7d9571acfa3ee
 source=($pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz
         $pkgname-$pkgver-Deps.toml::https://raw.githubusercontent.com/JuliaRegistries/General/$_commit/${_pkgname:0:1}/$_pkgname/Deps.toml
         $pkgname-$pkgver-Package.toml::https://raw.githubusercontent.com/JuliaRegistries/General/$_commit/${_pkgname:0:1}/$_pkgname/Package.toml
         $pkgname-$pkgver-Versions.toml::https://raw.githubusercontent.com/JuliaRegistries/General/$_commit/${_pkgname:0:1}/$_pkgname/Versions.toml)
-sha256sums=('b5c633571407bbd16b9fa229246bf0d57f43c0279fd5fa169a6b6f0bbbd948f3'
-            'cecdff8d42dd008af9df6e584e8e93d1d308eb94c5672454359ac6d32093a231'
+sha256sums=('9f4ad9a8e67510511fd87b8fce15653517a09e75413b497f7b714dcac7259e79'
+            '2b02ef870d8d589deb4c52ada6bcd4b95c2454f48cc84d24638feb2e1eb41351'
             '7f7668d5864d661e32aa75e5ef6e9de218e160ec849b67d7555e66a48b2aa4e9'
-            'aae3c2136dc1b186e58bf84ef557078dba48b564cc3006bd0f2c046864e52e4d')
+            '6a434b7a9ba888d09e33dc75df18313df4fc351586fefc6a039036d2fec0bd34')
 
 _slug() {
 	dh_julia slug "$srcdir"/"$pkgname"-$pkgver-{Package,Versions}.toml $pkgver
