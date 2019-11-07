@@ -5,28 +5,29 @@
 
 # Maintainer: Thayne McCombs <astrothayne@gmail.com>
 pkgname=dart-sass
-pkgver=1.23.2
+pkgver=1.23.3
 pkgrel=1
 pkgdesc="Sass makes CSS fun again (canonical implementation)"
 arch=(x86_64)
 url="http://sass-lang.com/"
 license=('MIT')
-depends=(dart)
+makedepends=("dart>=2.6.0")
+options=(!strip)
 provides=('sass')
 conflicts=('ruby-sass')
-source=("https://github.com/sass/$pkgname/archive/$pkgver.tar.gz" "sass.sh")
-sha256sums=('053c5c0f5d0ebe3b7e05a77012fd02fde8811febe20cbae02d877ab9d3acdfdf'
-            '33c9cea95e4a4d03eb184f7f18ef817e31eb6b136bdf4e7aed49f1ea51b1a431')
+source=("https://github.com/sass/$pkgname/archive/$pkgver.tar.gz")
+sha256sums=('ed0bbee54d4b974f22ec29431a78e5036041a2e5302d582268ab62de98bc2bec')
 
 build() {
   cd "$pkgname-$pkgver"
   pub get
-  pub run grinder native-executable
+  /opt/dart-sdk/bin/dart2native bin/sass.dart -o sass
 }
 
 package() {
-  install -D -m755 sass.sh "$pkgdir/usr/bin/sass"
   cd "$pkgname-$pkgver"
-  install -D -m644 build/sass.dart.native "$pkgdir/usr/lib/sass/app.snapshot"
+  pwd
+  echo build/sass
+  install -D -m755 sass "$pkgdir/usr/bin/sass"
   install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
