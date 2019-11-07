@@ -1,0 +1,23 @@
+pkgbase = lucurious-git
+	pkgdesc = [Desktop Engine, Library] for building and styling 2D/3D Vulkan Wayland Compositors
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/EasyIP2023/lucurious
+	arch = x86_64
+	license = MIT
+	makedepends = meson
+	makedepends = ninja
+	makedepends = git
+	makedepends = wayland-protocols
+	makedepends = vulkan-headers
+	makedepends = check
+	depends = shaderc
+	depends = vulkan-driver
+	depends = vulkan-icd-loader
+	depends = cglm
+	depends = wayland
+	source = lucurious-git::git+https://github.com/EasyIP2023/lucurious
+	sha512sums = SKIP
+
+pkgname = lucurious-git
+
