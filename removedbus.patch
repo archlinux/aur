@@ -1,0 +1,10 @@
+--- setup.py.old	2019-11-07 20:21:06.022444616 +0100
++++ setup.py	2019-11-07 20:21:12.885788423 +0100
+@@ -49,7 +49,6 @@
+         "lxml >= 3",
+         "pychromecast >= 2.3.0",
+         "PyGObject >= 3.3.0",
+-        "dbus-python >= 1.0.0",
+     ],
+     entry_points={
+         "console_scripts": [
