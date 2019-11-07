@@ -1,66 +1,68 @@
-#!/bin/sh
-post_install() {
-  DOKKU_ROOT="/home/dokku"
-  DOKKU_LIB_ROOT="/var/lib/dokku"
+#!/bin/bash
 
+readonly DOKKU_ROOT="${DOKKU_ROOT:-/home/dokku}"
+readonly DOKKU_LIB_ROOT="${DOKKU_LIB_PATH:-/var/lib/dokku}"
+readonly DOKKU_LOGS_DIR="${DOKKU_LOGS_DIR:-/var/log/dokku}"
+
+post_install() {
   echo "Create dokku user"
   sshcommand create dokku /usr/bin/dokku &>/dev/null
 
   echo "Add dokku user to docker group"
-  (egrep -i "^docker" /etc/group || groupadd docker) &>/dev/null
+  (grep -E "^docker" /etc/group || groupadd docker) &>/dev/null
   usermod -aG docker dokku
-  mkdir -p "$DOKKU_ROOT/.ssh" "$DOKKU_ROOT/.dokkurc"
-  touch "$DOKKU_ROOT/.ssh/authorized_keys"
-  chown -R dokku:dokku "$DOKKU_ROOT/.ssh" "${DOKKU_ROOT}/.dokkurc"
+  mkdir -p "${DOKKU_ROOT}/.ssh" "${DOKKU_ROOT}/.dokkurc"
+  touch "${DOKKU_ROOT}/.ssh/authorized_keys"
+  chown -R dokku:dokku "${DOKKU_ROOT}/.ssh" "${DOKKU_ROOT}/.dokkurc"
 
   echo "Setting up storage directories"
-  mkdir -p "$DOKKU_LIB_ROOT/data/storage"
-  chown dokku:dokku "$DOKKU_LIB_ROOT/data" "$DOKKU_LIB_ROOT/data/storage"
+  mkdir -p "${DOKKU_LIB_ROOT}/data/storage"
+  chown dokku:dokku "${DOKKU_LIB_ROOT}/data" "${DOKKU_LIB_ROOT}/data/storage"
 
   echo "Setting up plugin directories"
   # should be replaced by `plugn init`
-  mkdir -p "$DOKKU_LIB_ROOT/core-plugins/available" "$DOKKU_LIB_ROOT/plugins/available"
-  mkdir -p "$DOKKU_LIB_ROOT/core-plugins/enabled" "$DOKKU_LIB_ROOT/plugins/enabled"
-  touch "$DOKKU_LIB_ROOT/core-plugins/config.toml" "$DOKKU_LIB_ROOT/plugins/config.toml"
+  mkdir -p "${DOKKU_LIB_ROOT}/core-plugins/available" "${DOKKU_LIB_ROOT}/plugins/available"
+  mkdir -p "${DOKKU_LIB_ROOT}/core-plugins/enabled" "${DOKKU_LIB_ROOT}/plugins/enabled"
+  touch "${DOKKU_LIB_ROOT}/core-plugins/config.toml" "${DOKKU_LIB_ROOT}/plugins/config.toml"
 
   echo "Migrating old plugins"
-  find "$DOKKU_LIB_ROOT/plugins" -mindepth 1 -maxdepth 1 -type d -printf '%f\n' | while read -r plugin; do
-    if [ "$plugin" = "available" ] || [ "$plugin" = "enabled" ]; then
+  find "${DOKKU_LIB_ROOT}/plugins" -mindepth 1 -maxdepth 1 -type d -printf '%f\n' | while read -r plugin; do
+    if [ "${plugin}" = "available" ] || [ "${plugin}" = "enabled" ]; then
       continue
-    elif [ -f "$DOKKU_LIB_ROOT/plugins/$plugin/.core" ]; then
-      rm -rf "$DOKKU_LIB_ROOT/plugins/$plugin"
-    elif [ ! -d "$DOKKU_LIB_ROOT/plugins/available/$plugin" ]; then
-      mv "$DOKKU_LIB_ROOT/plugins/$plugin" "$DOKKU_LIB_ROOT/plugins/available"
+    elif [ -f "${DOKKU_LIB_ROOT}/plugins/${plugin}/.core" ]; then
+      rm -rf "${DOKKU_LIB_ROOT}/plugins/${plugin}"
+    elif [ ! -d "${DOKKU_LIB_ROOT}/plugins/available/${plugin}" ]; then
+      mv "${DOKKU_LIB_ROOT}/plugins/${plugin}" "${DOKKU_LIB_ROOT}/plugins/available"
     fi
   done
 
   echo "Enabling all core plugins"
-  find "$DOKKU_LIB_ROOT/core-plugins/available" -mindepth 1 -maxdepth 1 -type d -printf '%f\n' | while read -r plugin; do
-    if [ ! -d "$DOKKU_LIB_ROOT/plugins/available/$plugin" ]; then
-      ln -s "$DOKKU_LIB_ROOT/core-plugins/available/$plugin" "$DOKKU_LIB_ROOT/plugins/available/$plugin"
-      PLUGIN_PATH="$DOKKU_LIB_ROOT/core-plugins" plugn enable $plugin
-      PLUGIN_PATH="$DOKKU_LIB_ROOT/plugins" plugn enable $plugin
+  find "${DOKKU_LIB_ROOT}/core-plugins/available" -mindepth 1 -maxdepth 1 -type d -printf '%f\n' | while read -r plugin; do
+    if [ ! -d "${DOKKU_LIB_ROOT}/plugins/available/${plugin}" ]; then
+      ln -s "${DOKKU_LIB_ROOT}/core-plugins/available/${plugin}" "${DOKKU_LIB_ROOT}/plugins/available/${plugin}"
+      PLUGIN_PATH="${DOKKU_LIB_ROOT}/core-plugins" plugn enable "${plugin}"
+      PLUGIN_PATH="${DOKKU_LIB_ROOT}/plugins" plugn enable "${plugin}"
     fi
   done
-  find -L $DOKKU_LIB_ROOT -type l -delete
-  chown dokku:dokku -R "$DOKKU_LIB_ROOT/plugins" "$DOKKU_LIB_ROOT/core-plugins"
-
-  echo "Ensure proper sshcommand path"
-  echo /usr/bin/dokku > "$DOKKU_ROOT/.sshcommand"
-  if [[ -f .ssh/authorized_keys ]]; then
-    sed -i.bak 's#/usr/local/bin/dokku#/usr/bin/dokku#' "$DOKKU_ROOT/.ssh/authorized_keys"
-    rm "$DOKKU_ROOT/.ssh/authorized_keys"
-  fi
+  find -L "${DOKKU_LIB_ROOT}" -type l -delete
+  chown dokku:dokku -R "${DOKKU_LIB_ROOT}/plugins" "${DOKKU_LIB_ROOT}/core-plugins"
 
   echo "Install all core plugins"
   dokku plugin:install --core
 
+  echo "Ensure proper sshcommand path"
+  echo /usr/bin/dokku > "${DOKKU_ROOT}/.sshcommand"
+  if [[ -f .ssh/authorized_keys ]]; then
+    sed -i.bak 's#/usr/local/bin/dokku#/usr/bin/dokku#' "${DOKKU_ROOT}/.ssh/authorized_keys"
+    rm "${DOKKU_ROOT}/.ssh/authorized_keys"
+  fi
+
   echo "Update version file"
-  rm -f "$DOKKU_ROOT/VERSION"
-  cp "$DOKKU_LIB_ROOT/VERSION" "$DOKKU_ROOT/VERSION"
+  rm -f "${DOKKU_ROOT}/VERSION"
+  cp "${DOKKU_LIB_ROOT}/VERSION" "${DOKKU_ROOT}/VERSION"
 
   echo "Update hostname"
-  hostname -f > "$DOKKU_ROOT/HOSTNAME"
+  hostname -f > "${DOKKU_ROOT}/HOSTNAME"
 
   echo "
     Please add your ssh pubkey like:
@@ -74,7 +76,16 @@ post_install() {
 }
 
 post_upgrade() {
-  post_install $1
+  post_install "$1"
+}
+
+pre_remove() {
+  echo "Destroying deployed applications"
+  for app in $(DOKKU_QUIET_OUTPUT=1 dokku apps); do
+    dokku --force apps:destroy "${app}"
+  done
+
+  dokku cleanup
 }
 
 post_remove() {
@@ -88,8 +99,8 @@ post_remove() {
   rm -f /etc/nginx/conf.d/dokku.conf
   systemctl reload nginx &>/dev/null
 
-  rm -rf /var/lib/dokku
-  rm -rf /var/log/dokku
+  rm -rf "${DOKKU_LIB_PATH}"
+  rm -rf "${DOKKU_LOGS_DIR}"
 
   userdel -r dokku &>/dev/null
   rm -rf /home/dokku
