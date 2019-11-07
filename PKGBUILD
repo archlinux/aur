@@ -5,7 +5,9 @@
 pkgname=flightradar24
 _pkgname=fr24feed
 pkgver=1.0.24
-pkgrel=5
+pkgrel=6
+_pkgver=1.0.24-5
+_pkgverarm=1.0.24-6
 pkgdesc='Feeder software for Flightradar24.com'
 arch=('x86_64' 'i686' 'armv6h' 'armv7h')
 url='https://www.flightradar24.com/share-your-data'
@@ -17,18 +19,18 @@ install=flightradar24.install
 source=('fr24feed.service'
         'flightradar24.tmpfiles'
         'flightradar24.sysusers')
-source_x86_64=("https://repo-feed.flightradar24.com/linux_x86_64_binaries/${_pkgname}_${pkgver}-${pkgrel}_amd64.tgz")
-source_i686=("https://repo-feed.flightradar24.com/linux_x86_binaries/${_pkgname}_${pkgver}-${pkgrel}_i386.tgz")
-source_armv6h=("https://repo-feed.flightradar24.com/rpi_binaries/${_pkgname}_${pkgver}-${pkgrel}_armhf.tgz")
-source_armv7h=("https://repo-feed.flightradar24.com/rpi_binaries/${_pkgname}_${pkgver}-${pkgrel}_armhf.tgz")
+source_x86_64=("https://repo-feed.flightradar24.com/linux_x86_64_binaries/${_pkgname}_${_pkgver}_amd64.tgz")
+source_i686=("https://repo-feed.flightradar24.com/linux_x86_binaries/${_pkgname}_${_pkgver}_i386.tgz")
+source_armv6h=("https://repo-feed.flightradar24.com/rpi_binaries/${_pkgname}_${_pkgverarm}_armhf.tgz")
+source_armv7h=("https://repo-feed.flightradar24.com/rpi_binaries/${_pkgname}_${_pkgverarm}_armhf.tgz")
 
 sha256sums=('7c0d1a5508917851789477b035cd91eafb84f8706c3214babea7125f8a82a0d2'
             '32f6f289efe8e3e303767239b2a276405b2d7c0fcbbde8ed9473ee6889b676ff'
             '7e5e1a28769559a2e2e1312894a1f9d315c4812bb34e2f1c45b2f877e4f4eeb0')
 sha256sums_x86_64=('cc88150f753e734327bf35574f6de5b11d8f989ddb1186514a4ce02e6e61600b')
 sha256sums_i686=('68dc31cf7f085074d1c639fe8bf383dc614704a0c526d98a6ab52a32f1833f9d')
-sha256sums_armv6h=('10e6a0633e7208e430ee03cfd749c8dde1061a3e1e8bd04971b1a8a68b0d785c')
-sha256sums_armv7h=('10e6a0633e7208e430ee03cfd749c8dde1061a3e1e8bd04971b1a8a68b0d785c')
+sha256sums_armv6h=('09e0ef461ea592097817324ef2b33add6c37f9c6e03cdf47c5ea6cd3960e9280')
+sha256sums_armv7h=('09e0ef461ea592097817324ef2b33add6c37f9c6e03cdf47c5ea6cd3960e9280')
 
 package() {
   case $CARCH in
