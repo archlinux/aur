@@ -29,7 +29,6 @@ source=("git+https://github.com/cnr-isti-vclab/meshlab.git"
         "meshlabserver_GLU.patch"
         "mpir.patch"
         "rpath.patch"
-        "import_bundle_out.patch"
         "qt5.11.patch"
         "meshlab.desktop")
 sha256sums=('SKIP'
@@ -44,7 +43,6 @@ sha256sums=('SKIP'
             '5a041c414777036ebd8925108a9bb51f66ab435324ff4671012bdcb806fcf400'
             '865b318f4196b1a34b17867dc18e116ef5f702b4905bb2d536609eb79af1c1bc'
             'c43cb14de251f369734330e1f93744f71527360e1894c93e9f9f8abe686db050'
-            'b3a72caff34d3c05840298bc7b758061dc353b662e1bb526dfb5463fa2a7cd18'
             '2236863292bf078b2e89d278bad834fd08563613d40e33ec471ae92588132a57'
             '030ab1dcafb7d793bed3bc455497208addadf1091a4619576fe7e044aed4231a')
 
@@ -83,8 +81,6 @@ prepare() {
   msg "fix muparser unicode string"
   patch -Np1 -i ../muparser_drop_unicode.patch
   cd ${srcdir}/vcglib
-  msg "fix import bundler/nvm"
-  patch -Np1 -i ../import_bundle_out.patch
 }
 
 build() {
