@@ -28,6 +28,7 @@ build() {
     # janet_build=$(printf "JANET_BUILD=\"%s\"" "$(git rev-parse --short HEAD)")
     make PREFIX="/usr" CC=clang -j7
     make PREFIX="/usr" build/janet.pc
+    make PREFIX="/usr" docs
 }
 
 package() {
@@ -42,4 +43,7 @@ package() {
     install -Dm 644 "janet.1" "${pkgdir}/usr/share/man/janet.1"
     install -Dm 644 "jpm.1" "${pkgdir}/usr/share/man/jpm.1"
     install -Dm 644 "build/janet.pc" "${pkgdir}/usr/lib/pkgconfig/janet.pc"
+
+    cp -a examples ${pkgdir}/usr/share/janet
+    cp -a build/doc.html ${pkgdir}/usr/share/janet
 }
