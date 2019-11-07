@@ -1,5 +1,5 @@
 pkgname=chkservice
-pkgver=0.1
+pkgver=0.3
 pkgrel=1
 pkgdesc="Ncurses based gui for systemd"
 url="https://github.com/linuxenko/chkservice"
