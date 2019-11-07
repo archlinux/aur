@@ -3,7 +3,7 @@
 pkgname=topgrade
 pkgver=3.2.0
 pkgrel=1
-pkgdesc='Invoke the upgrade proceadure of multiple package managers'
+pkgdesc='Invoke the upgrade procedure of multiple package managers'
 arch=('x86_64' 'armv7')
 url='https://github.com/r-darwish/topgrade'
 license=('GPL3')
