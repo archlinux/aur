@@ -1,8 +1,9 @@
 # Maintainer: Josh Hoffer <hoffer.joshua@gmail.com>
 _pkgname=paraview-nightly
 pkgname=paraview-nightly-bin
-pkgver=ParaView.5.7.0.r662.g3e20962
+pkgver=5.7.0.r662.g3e20962
 pkgrel=1
+epoch=1
 pkgdesc='Open-source, multi-platform data analysis and visualization application.'
 arch=('x86_64')
 license=('BSD')
@@ -32,7 +33,7 @@ pkgver() {
 	cd "$srcdir"
 	# If anyone knows a better way of getting the version please tell me
 	# All of the executables require an Xsession
-	echo $(ls -d ${_prefix}* | sed -e "s/$prefix\|$_suffix//g" | sed 's/\([^-]*-g\)/r\1/;s/-/./g')
+	echo $(ls -d ${_prefix}* | sed -e "s/$_prefix\|$_suffix//g" | sed 's/\([^-]*-g\)/r\1/;s/-/./g')
 }
 
 package() {
