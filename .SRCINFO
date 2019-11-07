@@ -1,6 +1,6 @@
 pkgbase = genie-systemd
 	pkgdesc = A quick way into a systemd "bottle" for WSL
-	pkgver = 1.16
+	pkgver = 1.17
 	pkgrel = 1
 	url = https://github.com/arkane-systems/genie
 	arch = x86_64
@@ -11,9 +11,11 @@ pkgbase = genie-systemd
 	depends = hostess
 	provides = genie-systemd
 	conflicts = genie-systemd
-	source = https://github.com/arkane-systems/genie/releases/download/1.16/genie.tar.gz
+	source = https://github.com/arkane-systems/genie/releases/download/1.17/genie.tar.gz
+	source = change_target.patch
 	source = LICENSE
-	sha256sums = 53fc71545f947ad291ee6da0d15fc440f100e4de3f9eebb8cfd9e043675b19f0
+	sha256sums = 438bdd397edb19fb834bbfbc146cd0f11f5c6a57bb3de6d334e9d940970af766
+	sha256sums = c48ff96bca7780e6057f92ce875916ed9d0b5f2ed4b0933eba3ff75242582a2d
 	sha256sums = 88d9b4eb60579c191ec391ca04c16130572d7eedc4a86daa58bf28c6e14c9bcd
 
 pkgname = genie-systemd
