@@ -2,12 +2,12 @@
 
 pkgname=blosc-git
 pkgver=1.17.0.r12.gaa8ee96
-pkgrel=1
+pkgrel=2
 pkgdesc="A blocking, shuffling and loss-less compression library"
 arch=('i686' 'x86_64')
 url="https://blosc.org/"
 license=('BSD')
-depends=('glibc' 'snappy' 'zstd')
+depends=('glibc' 'lz4' 'snappy' 'zlib' 'zstd')
 makedepends=('git' 'cmake')
 provides=('blosc')
 conflicts=('blosc')
