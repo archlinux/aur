@@ -1,7 +1,7 @@
 # Maintainer: Étienne Deparis <etienne@depar.is>
 
 pkgname=molotov
-pkgver=4.1.0
+pkgver=4.2.0
 pkgrel=1
 pkgdesc="Streaming access to French (only) TV channels."
 arch=('i686' 'x86_64')
@@ -12,13 +12,13 @@ makedepends=('p7zip')
 options=('!strip')
 source=("Molotov-${pkgver}.AppImage::http://desktop-auto-upgrade.molotov.tv/linux/${pkgver}/$pkgname.AppImage"
         'molotov')
-sha256sums=('7904a87e4a8e5bf668b98c2da4049a75704811bae0557ee43e8e816508d572dd'
+sha256sums=('dec2f4a90c6dc81110b9f45b265a76a08eef9944d33633c1a7f59b472999c09b'
             '3a2d0c45ec2a964b229ee44a729d5d86319d573296ca44c8a33e171ce23a3b47')
 
 prepare() {
     cd $srcdir
     chmod u+x Molotov-${pkgver}.AppImage
-    ./Molotov-${pkgver}.AppImage --appimage-extract 2> /dev/null
+    ./Molotov-${pkgver}.AppImage --appimage-extract &> /dev/null
 }
 
 build() {
@@ -47,3 +47,8 @@ package() {
     install -D -m755 Molotov-$pkgver.AppImage $pkgdir/opt/appimages/Molotov-$pkgver.AppImage
     rm -r squashfs-root
 }
+
+
+# Local Variables:
+# sh-basic-offset: 4
+# End:
