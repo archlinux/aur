@@ -9,7 +9,7 @@ pkgbase = autojump-git
 	depends = python
 	provides = autojump
 	conflicts = autojump
-	source = git+https://github.com/joelthelion/autojump.git
+	source = git+https://github.com/wting/autojump.git
 	md5sums = SKIP
 
 pkgname = autojump-git

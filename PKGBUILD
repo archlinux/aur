@@ -16,7 +16,7 @@ conflicts=('autojump')
 provides=('autojump')
 replaces=()
 backup=()
-source=('git+https://github.com/joelthelion/autojump.git')
+source=('git+https://github.com/wting/autojump.git')
 md5sums=('SKIP')
 
 _gitname="autojump"
