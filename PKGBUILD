@@ -1,5 +1,5 @@
 pkgname=mingw-w64-paraview-git
-pkgver=r72233.1b0aa7b3b1
+pkgver=r72297.640b8593cc
 pkgrel=1
 pkgdesc='Parallel Visualization Application using VTK (mingw-w64)'
 arch=('any')
@@ -50,6 +50,7 @@ build() {
       -DVTK_MODULE_USE_EXTERNAL_VTK_libharu=OFF \
       -Dqt_xmlpatterns_executable=/usr/bin/${_arch}-xmlpatterns \
       ..
+    make vtkCommonCore-hierarchy VERBOSE=1
     WINEPATH="/usr/${_arch}/bin;${PWD}/bin" make
     popd
   done
