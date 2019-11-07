@@ -1,71 +1,85 @@
 # $Id$
 # Maintainer: Jonas Heinrich <onny@project-insanity.org>
 # Contributor: Jonas Heinrich <onny@project-insantiy.org>
+# Contributor: Max Mazurov <fox.cpp at disroot dot org>
 
-pkgname=maddy-git
-pkgver=0.1
-pkgrel=6
-pkgdesc="Fast, cross-platform mail server"
-arch=(any)
-url="https://github.com/emersion/maddy"
+pkgname='maddy-git'
+pkgver=r607.1bc7036
+pkgrel=1
+pkgdesc='Simple, fast, secure all-in-one mail server'
+arch=('x86_64')
+url='https://github.com/foxcpp/maddy'
 license=('MIT')
-makedepends=('git' 'go' 'scdoc')
-source=("git+https://github.com/emersion/maddy.git"
-	"git+https://github.com/foxcpp/go-imap-sql.git#branch=dev"
+depends=('glibc')
+makedepends=('go-pie' 'git' 'scdoc')
+source=("$pkgname::git+https://github.com/foxcpp/maddy.git"
 	"maddy.sysusers"
-	"maddy.tmpfiles"
-	"maddy.service")
-conflicts=("maddy")
-provides=("maddy")
-backup=('etc/maddy/maddy.conf')
+	"maddy.tmpfiles")
+conflicts=('maddy')
+provides=('maddy')
+backup=(etc/maddy/maddy.conf)
 sha512sums=('SKIP'
-	    'SKIP'
-	    '750346110adb8caa61f537560018497f73543dc01ff26aceed2f052f281a35fdc659c9c478cc55775eadf8a3d17b511d5bed86334d1c455732dcb9a273120589'
-	    'f33135b81129d6ef3006d8e9f410ec0d7e44226ae640dea77d756268d0e97828d8965ac75d0d9b49604a19b8b9e0384d15007d33c4b813f359108d28a10702b5'
-	    '34e63fd415ed225bdf0a974523cc4d903b1c25ebf5d3c8a7e9bbfe48cb7fe5019f79f4ff058e463d54c996cfdec31c456c155a525a9bbb76ab05a2ef920f95fa')
+            '750346110adb8caa61f537560018497f73543dc01ff26aceed2f052f281a35fdc659c9c478cc55775eadf8a3d17b511d5bed86334d1c455732dcb9a273120589'
+            'f33135b81129d6ef3006d8e9f410ec0d7e44226ae640dea77d756268d0e97828d8965ac75d0d9b49604a19b8b9e0384d15007d33c4b813f359108d28a10702b5')
 
 pkgver() {
-  cd "maddy"
-  echo "0.1"
-  #git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    cd "$srcdir/$pkgname"
+
+    ( set -o pipefail
+      git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+      printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    )
 }
 
 prepare() {
-  cd "${srcdir}/maddy"
-  export GOPATH="${srcdir}"
-  export GO111MODULE=on
-  go get -v
+	cd "$srcdir/$pkgname"
 
-  cd "${srcdir}/go-imap-sql"
-  go get -v
+	mkdir -p "$srcdir/gopath"
+	export GOPATH="$srcdir/gopath"
+	go get -v -d ./...
 }
 
 build() {
-  cd "${srcdir}/maddy"
-  export GOPATH="${srcdir}"
-  export GO111MODULE=on
-  go build -v
-  scdoc < maddy.conf.5.scd > maddy.conf.5
-  scdoc < maddy.1.scd > maddy.1
-  gzip -c maddy.conf.5 > "maddy.conf.5.gz"
-  gzip -c maddy.1 > "maddy.1.gz"
-  cd cmd/maddy
-  go build -v
+	cd "$srcdir/$pkgname"
+	export GOPATH="$srcdir/gopath"
+	export CGO_CFLAGS=$CFLAGS
+	export CGO_LDFLAGS=$LDFLAGS
 
-  cd "${srcdir}/go-imap-sql/cmd/imapsql-ctl"
-  go build -v
+    go build -o maddy -trimpath -buildmode=pie -ldflags "-extldflags $LDFLAGS -X main.Version=$pkgver" github.com/foxcpp/maddy/cmd/maddy
+    go build -o maddyctl -trimpath -buildmode=pie -ldflags "-extldflags $LDFLAGS -X main.Version=$pkgver" github.com/foxcpp/maddy/cmd/maddyctl
+
+    #for f in man/*; do
+    #    scdoc < $f > "$(basename -s .scd "$f")"
+    #done
+}
+
+check() {
+    cd "$srcdir/$pkgname"
+
+    go test ./...
 }
 
 package() {
-  install -Dm 0755 "${srcdir}/maddy/cmd/maddy/maddy" "${pkgdir}/usr/bin/maddy"
-  install -Dm 0755 "${srcdir}/go-imap-sql/cmd/imapsql-ctl/imapsql-ctl" "${pkgdir}/usr/bin/imapsql-ctl"
-  install -D "${srcdir}/maddy/LICENSE" "${pkgdir}/usr/share/licenses/maddy/LICENSE"
+	cd "$srcdir/$pkgname"
 
-  install -Dm 0644 "${srcdir}/maddy/maddy.conf" "${pkgdir}/etc/maddy/maddy.conf"
-  install -Dm 0644 "${srcdir}/maddy/maddy.1.gz" "${pkgdir}/usr/share/man/man1/maddy.1.gz"
-  install -Dm 0644 "${srcdir}/maddy/maddy.conf.5.gz" "${pkgdir}/usr/share/man/man5/maddy.conf.5.gz"
+	install -Dm 0755 maddy "$pkgdir/usr/bin/maddy"
+	install -Dm 0755 maddyctl "$pkgdir/usr/bin/maddyctl"
 
-  install -Dm 0644 "${srcdir}/maddy.service" "${pkgdir}/usr/lib/systemd/system/maddy.service"
+	install -Dm 0644 maddy.conf "$pkgdir/etc/maddy/maddy.conf"
+
+    for f in man/*.1.scd; do
+        install -Dm 0644 "$(basename -s .scd "$f")" "$pkgdir/usr/share/man/man1"
+    done
+    for f in man/*.5.scd; do
+        install -Dm 0644 "$(basename -s .scd "$f")" "$pkgdir/usr/share/man/man5"
+    done
+    install -Dm 0644 LICENSE "$pkgdir/usr/share/licenses/maddy"
+
+	install -Dm 0644 -t "$pkgdir/usr/lib/systemd/system" dist/systemd/maddy.service dist/systemd/maddy@.service
   install -Dm 0644 "${srcdir}/maddy.sysusers" "${pkgdir}/usr/lib/sysusers.d/maddy.conf"
   install -Dm 0644 "${srcdir}/maddy.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/maddy.conf"
+
+	install -Dm 0644 -t "$pkgdir/usr/share/vim/vimfiles/ftdetect/" dist/vim/ftdetect/maddy-conf.vim
+	install -Dm 0644 -t "$pkgdir/usr/share/vim/vimfiles/ftplugin/" dist/vim/ftplugin/maddy-conf.vim
+	install -Dm 0644 -t "$pkgdir/usr/share/vim/vimfiles/syntax/" dist/vim/syntax/maddy-conf.vim
 }

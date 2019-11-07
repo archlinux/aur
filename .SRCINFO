@@ -1,26 +1,23 @@
 pkgbase = maddy-git
-	pkgdesc = Fast, cross-platform mail server
-	pkgver = 0.1
-	pkgrel = 6
-	url = https://github.com/emersion/maddy
-	arch = any
+	pkgdesc = Simple, fast, secure all-in-one mail server
+	pkgver = r607.1bc7036
+	pkgrel = 1
+	url = https://github.com/foxcpp/maddy
+	arch = x86_64
 	license = MIT
+	makedepends = go-pie
 	makedepends = git
-	makedepends = go
 	makedepends = scdoc
+	depends = glibc
 	provides = maddy
 	conflicts = maddy
 	backup = etc/maddy/maddy.conf
-	source = git+https://github.com/emersion/maddy.git
-	source = git+https://github.com/foxcpp/go-imap-sql.git#branch=dev
+	source = maddy-git::git+https://github.com/foxcpp/maddy.git
 	source = maddy.sysusers
 	source = maddy.tmpfiles
-	source = maddy.service
-	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = 750346110adb8caa61f537560018497f73543dc01ff26aceed2f052f281a35fdc659c9c478cc55775eadf8a3d17b511d5bed86334d1c455732dcb9a273120589
 	sha512sums = f33135b81129d6ef3006d8e9f410ec0d7e44226ae640dea77d756268d0e97828d8965ac75d0d9b49604a19b8b9e0384d15007d33c4b813f359108d28a10702b5
-	sha512sums = 34e63fd415ed225bdf0a974523cc4d903b1c25ebf5d3c8a7e9bbfe48cb7fe5019f79f4ff058e463d54c996cfdec31c456c155a525a9bbb76ab05a2ef920f95fa
 
 pkgname = maddy-git
 
