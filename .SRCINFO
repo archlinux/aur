@@ -1,6 +1,6 @@
 pkgbase = systemd-light
 	pkgver = 243.78
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.github.com/systemd/systemd
 	arch = x86_64
 	makedepends = acl

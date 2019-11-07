@@ -33,7 +33,7 @@ pkgname=('systemd-light' 'systemd-light-libs')
 # Can be from either systemd or systemd-stable
 _commit='ef677436aa203c24816021dd698b57f219f0ff64'
 pkgver=243.78
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url='https://www.github.com/systemd/systemd'
 makedepends=('acl' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam' 'libelf'
@@ -105,7 +105,7 @@ fi
 
 if [ -n "$_clear" ]; then
   local _clrrel=267
-  source+=("git+https://github.com/clearlinux-pkgs/${_pkgbase}#tag=${pkgver%.*}-${_clrrel}?signed")
+  source+=("clearlinux::git+https://github.com/clearlinux-pkgs/${_pkgbase}#tag=${pkgver%.*}-${_clrrel}")
   sha512sums+=('SKIP')
 fi
 
