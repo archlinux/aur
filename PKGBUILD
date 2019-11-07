@@ -1,14 +1,14 @@
-# Maintainer: Cedric Girard <girard.cedric@gmail.com>
+# Maintainer: Cedric Girard <cgirard [dot] archlinux [at] valinor [dot] fr>
 # Contributor: Jason Axelson <jason.axelsonATgmail.com>
 # Contributor: Sean Escriva <sean.escrivaATgmail.com>
 # Contributor: William Ting <william.h.tingATgmail.com>
 
 pkgname=autojump-git
-pkgver=22.3.0.r14.g9a6e286
+pkgver=22.5.3.r0.g06e082c
 pkgrel=1
 pkgdesc="A faster way to navigate your filesystem from the command line"
 arch=(any)
-url="http://github.com/joelthelion/autojump"
+url="http://github.com/wting/autojump"
 license=('GPL3')
 depends=('python')
 makedepends=('git')
