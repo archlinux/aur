@@ -8,14 +8,15 @@
 _bldtype=Release
 
 _mozcver=2.23.2815.102
-_dicver=20191014
+_neodicver=20191024
+_ut2dicver=20191014
 _revision=1
 
 _pkgbase=mozc
 pkgbase=fcitx-mozc-neologd-ut+ut2
 pkgname=fcitx-mozc-neologd-ut+ut2
 true && pkgname=('mozc-neologd-ut+ut2' 'fcitx-mozc-neologd-ut+ut2')
-pkgver=${_mozcver}.${_dicver}.${_revision}
+pkgver=${_mozcver}.${_neodicver}.${_revision}
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://osdn.net/users/utuhiro/pf/utuhiro/files/"
@@ -23,7 +24,7 @@ license=('custom')
 makedepends=('clang' 'ninja' 'pkg-config' 'python2' 'curl' 'gtk2' 'qt5-base' 'zinnia' 'fcitx' 'libxcb' 'glib2' 'bzip2' 'unzip')
 
 source=("https://osdn.net/frs/chamber_redir.php?m=ymu&f=%2Fusers%2F24%2F24574%2Fmozc-neologd-ut-2.23.2815.102.20191024.1.tar.xz"
-        "https://ja.osdn.net/downloads/users/24/24521/mozc-2.23.2815.102%2Bdfsg~ut2-20171008d%2B20191014.tar.xz/"
+        "https://ja.osdn.net/downloads/users/24/24521/mozc-2.23.2815.102%2Bdfsg~ut2-20171008d%2B20191014.tar.xz"
 		add-new-japanese-era.patch
         # https://github.com/google/mozc/issues/441#issue-321728877
         fix-for-gcc81.patch
@@ -36,7 +37,7 @@ sha1sums=('SKIP'
           '883f4fc489a9ed1c07d2d2ec37ca72509f04ea5d')
 
 prepare() {
-  cp -f $srcdir/mozc-${_mozcver}+dfsg\~ut2-20171008d+${_dicver}/mut/src/data/dictionary_oss/dictionary*.txt $srcdir/mozc-neologd-ut-${pkgver}/src/data/dictionary_oss/
+  cp -f $srcdir/mozc-${_mozcver}+dfsg\~ut2-20171008d+${_ut2dicver}/mut/src/data/dictionary_oss/dictionary*.txt $srcdir/mozc-neologd-ut-${pkgver}/src/data/dictionary_oss/
   cd mozc-neologd-ut-${pkgver}/src
 
   # add a new Japanese era

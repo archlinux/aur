@@ -1,5 +1,5 @@
 pkgbase = fcitx-mozc-neologd-ut+ut2
-	pkgver = 2.23.2815.102.20191014.1
+	pkgver = 2.23.2815.102.20191024.1
 	pkgrel = 1
 	url = https://osdn.net/users/utuhiro/pf/utuhiro/files/
 	arch = i686
@@ -19,7 +19,7 @@ pkgbase = fcitx-mozc-neologd-ut+ut2
 	makedepends = bzip2
 	makedepends = unzip
 	source = https://osdn.net/frs/chamber_redir.php?m=ymu&f=%2Fusers%2F24%2F24574%2Fmozc-neologd-ut-2.23.2815.102.20191024.1.tar.xz
-	source = https://ja.osdn.net/downloads/users/24/24521/mozc-2.23.2815.102%2Bdfsg~ut2-20171008d%2B20191014.tar.xz/
+	source = https://ja.osdn.net/downloads/users/24/24521/mozc-2.23.2815.102%2Bdfsg~ut2-20171008d%2B20191014.tar.xz
 	source = add-new-japanese-era.patch
 	source = fix-for-gcc81.patch
 	source = http://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-icon.tar.gz
