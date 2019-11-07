@@ -1,8 +1,8 @@
 # Maintainer: JP Cimalando <jp-dev@inbox.ru>
 pkgname=pd-flext-git
 _pkgname=flext
-pkgver=r1353.098455b
-pkgrel=3
+pkgver=r1362.4280d93
+pkgrel=1
 pkgdesc="C++ development layer for Pure Data"
 arch=('i686' 'x86_64')
 url="https://grrrr.org/research/software/flext/"
@@ -16,20 +16,13 @@ replaces=()
 backup=()
 options=('staticlibs')
 install=
-source=("$_pkgname::git+https://github.com/grrrr/flext.git"
-        'flext-cpp11.patch')
-md5sums=('SKIP'
-         '21e110a285bb2bfed260557b39de46a5')
+source=("$_pkgname::git+https://github.com/grrrr/flext.git")
+md5sums=('SKIP')
 noextract=()
 
 pkgver() {
   cd "$srcdir/$_pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd "$srcdir/$_pkgname"
-  patch -p1 -i "$srcdir/$_pkgname-cpp11.patch"
 }
 
 build() {
