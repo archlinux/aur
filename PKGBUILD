@@ -12,7 +12,7 @@ pkgver() {
   git describe --long | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'
 }
 pkgver=0.5.4.r3.17a5dfd
-pkgrel=1
+pkgrel=2
 
 pkgdesc="The mustache template engine written in python"
 arch=('x86_64')
@@ -41,7 +41,8 @@ check() {
 	mkdir test_dir
 	cd "$_pkgname"
 	python setup.py install --root=../test_dir
-	PYTHONPATH=../test_dir/usr/lib/python3.7/site-packages/ \
+	_py3ver="$(python -V | sed 's/Python \(3\.[0-9]\+\).*/\1/')"
+	PYTHONPATH="../test_dir/usr/lib/python$_py3ver/site-packages/" \
 		../test_dir/usr/bin/pystache-test .
 }
 
