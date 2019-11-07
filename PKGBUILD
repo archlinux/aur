@@ -2,8 +2,8 @@
 
 pkgname=julia-ijulia
 _pkgname=IJulia
-pkgver=1.19.0
-pkgrel=3
+pkgver=1.20.1
+pkgrel=1
 pkgdesc='Julia-language backend combined with the Jupyter interactive environment'
 arch=(any)
 url=https://github.com/JuliaLang/IJulia.jl
@@ -23,15 +23,15 @@ makedepends=(
   julia-versionparsing
 )
 
-_commit=b030e7985a02e5e6af2af60d66f5e53b66029498
+_commit=3d5f64bcb304c00931addd7c3bd68b6e38590b59
 source=($pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz
         $pkgname-$pkgver-Deps.toml::https://raw.githubusercontent.com/JuliaRegistries/General/$_commit/${_pkgname:0:1}/$_pkgname/Deps.toml
         $pkgname-$pkgver-Package.toml::https://raw.githubusercontent.com/JuliaRegistries/General/$_commit/${_pkgname:0:1}/$_pkgname/Package.toml
         $pkgname-$pkgver-Versions.toml::https://raw.githubusercontent.com/JuliaRegistries/General/$_commit/${_pkgname:0:1}/$_pkgname/Versions.toml)
-sha256sums=('a124d84bb661500f3789a00c954204e0e070f7e8d04cc3c7861021b47ce6c933'
-            'c43cd2d213a9a1bd27f7a30af4b1ff1a83bd17bc70a41d08a8da3d601c1c03f4'
+sha256sums=('8829d8a5ad0da02de43d268e951081afe16f522ed2592ca08843051152a1aae3'
+            '6a6d750fba39049f4b0a5903b7a7812f2ff89f5ed5132b44f5404451ee7176d6'
             '8f528e7a9177c8b3a30fb17b50b9fbc3bbc4f8a677a3d4cc940446182885e6b0'
-            '74d2175cf2dec5a601b974242a878cc56d26dbc12b3481d33da8f7e72b26b361')
+            '2ffb78fbd365fbb9db4a16e24a851bcda52cf39553513fb62300dcc8cf356254')
 
 _slug() {
 	dh_julia slug "$srcdir"/"$pkgname"-$pkgver-{Package,Versions}.toml
@@ -55,7 +55,7 @@ build() {
 
 	# Fix reference to $srcdir
 	sed -i "s|$srcdir/$_pkgname.jl-$pkgver|/usr/share/julia/vendor/$_pkgname|" \
-	        "$srcdir"/.local/share/jupyter/kernels/julia-1.1/kernel.json
+	        "$srcdir"/.local/share/jupyter/kernels/julia-1.2/kernel.json
 
 	msg2 "NOTE: If the Julia kernel fails to run, clear your $HOME/.julia/cache"
 }
@@ -74,6 +74,6 @@ package() {
 
 	install -Dm644 $_pkgname.jl-$pkgver/LICENSE.md "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 
-	install -Dm644 "$srcdir"/.local/share/jupyter/kernels/julia-1.1/kernel.json \
-	               "$pkgdir"/usr/share/jupyter/kernels/julia-1.1/kernel.json
+	install -Dm644 "$srcdir"/.local/share/jupyter/kernels/julia-1.2/kernel.json \
+	               "$pkgdir"/usr/share/jupyter/kernels/julia-1.2/kernel.json
 }
