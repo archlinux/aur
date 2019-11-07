@@ -3,8 +3,8 @@
 
 pkgname=dupliseek-git
 pkgver() { git -C "${pkgname%-git}" describe | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'; }
-pkgver=0.0.2alpha.r56.eee4fd7
-pkgrel=3
+pkgver=0.0.2alpha.r57.3bac8b6
+pkgrel=1
 
 pkgdesc='Duplicate image finder written in Python/Qt5'
 arch=('x86_64')
@@ -45,8 +45,10 @@ package() {
   install -Dm644 README.md -t"$pkgdir/usr/share/doc/${pkgname%-git}/"
   install -Dm644 LICENSE -t"$pkgdir/usr/share/licenses/${pkgname%-git}/"
   install -dm755 "$pkgdir/usr/bin"
-  ln -sf "/usr/lib/python3.7/site-packages/DupliSeek/main.py" "$pkgdir/usr/bin/${pkgname%-git}"
-  chmod 755 "$pkgdir/usr/lib/python3.7/site-packages/DupliSeek/main.py"
+  _py3ver=$(python --version | sed 's/Python \(3\.[0-9]\+\).*/\1/')
+  ln -sf "/usr/lib/python$_py3ver/site-packages/DupliSeek/main.py" "$pkgdir/usr/bin/${pkgname%-git}"
+  chmod 755 "$pkgdir/usr/lib/python$_py3ver/site-packages/DupliSeek/main.py"
 }
+
 
 # vim: ts=2 sw=2 et ft=PKGBUILD:
