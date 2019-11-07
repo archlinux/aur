@@ -1,0 +1,23 @@
+pkgbase = vapoursynth-plugin-lvsfunc-git
+	pkgdesc = Plugin for Vapoursynth: lvsfunc (GIT version)
+	pkgver = r109.bdb96a1
+	pkgrel = 1
+	url = https://github.com/Irrational-Encoding-Wizardry/lvsfunc
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = vapoursynth
+	depends = vapoursynth-plugin-fvsfunc
+	depends = vapoursynth-plugin-havsfunc
+	depends = vapoursynth-plugin-kagefunc
+	depends = vapoursynth-plugin-mvsfunc
+	depends = vapoursynth-plugin-edi_rpow2-git
+	depends = vapoursynth-plugin-vstaambk
+	depends = vapoursynth-plugin-vsutil
+	provides = vapoursynth-plugin-lvsfunc
+	conflicts = vapoursynth-plugin-lvsfunc
+	source = lvsfunc::git+https://github.com/Irrational-Encoding-Wizardry/lvsfunc.git
+	sha256sums = SKIP
+
+pkgname = vapoursynth-plugin-lvsfunc-git
+
