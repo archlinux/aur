@@ -1,17 +1,31 @@
 # Maintainer: Vladimir Panteleev <arch-pkg at thecybershadow.net>
 
 pkgname=aconfmgr-git
-pkgver=r92.a1ed28e
+pkgver=r629.8c22856
 pkgrel=1
 pkgdesc="A configuration manager for Arch Linux"
 arch=('any')
 url="https://github.com/CyberShadow/aconfmgr"
 license=('MIT')
-depends=('bash' 'git' 'pacman' 'pacutils')
+depends=(
+  'bash'
+  # "Optional" in the sense that without these, `aconfmgr --help` will
+  # run but they will be needed to actually save/restore
+  # configurations
+  'pacman' 'gawk' 'diffutils' 'pacutils'
+)
 makedepends=('git')
-optdepends=('pacaur: pacaur integration'
-			'yaourt: yaourt integration'
-			'augeas: configuration file editing')
+optdepends=(
+  # AUR helpers
+  'aurman: aurman integration'
+  'pacaur: pacaur integration'
+  'yaourt: yaourt integration'
+  'yay: yay integration'
+  # used for building AUR packages
+  'git: for fetching AUR packages'
+  # other helpers
+  'augeas: configuration file editing'
+)
 source=("git+https://github.com/CyberShadow/aconfmgr"
 	    "license.txt")
 md5sums=('SKIP'
