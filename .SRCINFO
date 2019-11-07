@@ -1,6 +1,6 @@
 pkgbase = systemd-light
 	pkgver = 243.78
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.github.com/systemd/systemd
 	arch = x86_64
 	makedepends = acl
@@ -148,9 +148,12 @@ pkgname = systemd-light-libs
 	depends = libgcrypt
 	depends = lz4
 	depends = xz
+	provides = systemd-libs=243.78
 	provides = libsystemd
 	provides = libsystemd.so
 	provides = libudev.so
+	conflicts = systemd-libs
 	conflicts = libsystemd
+	replaces = systemd-libs
 	replaces = libsystemd
 

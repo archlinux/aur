@@ -1,6 +1,4 @@
-# Maintainer: Christian Hesse <mail@eworm.de>
-# Maintainer: Dave Reisner <dreisner@archlinux.org>
-# Maintainer: Tom Gundersen <teg@jklm.no>
+# Maintainer: Ranieri Althoff <ranisalt+aur at gmail dot com>
 
 # Specify "systemd" to use systemd-backlight, any other backlight control (light, xorg-xbacklight, etc) or "none" to remove dependency.
 # See https://wiki.archlinux.org/index.php/Backlight#Backlight_utilities
@@ -35,7 +33,7 @@ pkgname=('systemd-light' 'systemd-light-libs')
 # Can be from either systemd or systemd-stable
 _commit='ef677436aa203c24816021dd698b57f219f0ff64'
 pkgver=243.78
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://www.github.com/systemd/systemd'
 makedepends=('acl' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam' 'libelf'
@@ -379,9 +377,9 @@ package_systemd-light-libs() {
   pkgdesc='systemd client libraries'
   depends=('glibc' 'libcap' 'libgcrypt' 'lz4' 'xz')
   license=('LGPL2.1')
-  provides=('libsystemd' 'libsystemd.so' 'libudev.so')
-  conflicts=('libsystemd')
-  replaces=('libsystemd')
+  provides=("systemd-libs=$pkgver" 'libsystemd' 'libsystemd.so' 'libudev.so')
+  conflicts=('systemd-libs' 'libsystemd')
+  replaces=('systemd-libs' 'libsystemd')
 
   install -d -m0755 "$pkgdir"/usr
   mv systemd-libs "$pkgdir"/usr/lib
