@@ -20,7 +20,7 @@ conflicts=(keybase keybase-release keybase-bin keybase-gui kbfs)
 source=(
   'git+https://github.com/keybase/client'
 )
-md5sums=('SKIP' 'SKIP')
+md5sums=('SKIP')
 install=keybase.install
 
 build() {

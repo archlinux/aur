@@ -29,7 +29,6 @@ pkgbase = keybase-git
 	conflicts = kbfs
 	source = git+https://github.com/keybase/client
 	md5sums = SKIP
-	md5sums = SKIP
 
 pkgname = keybase-git
 
