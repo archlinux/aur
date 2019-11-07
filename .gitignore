@@ -1,0 +1,6 @@
+pkg/
+src/
+SoundFile-*.tar.gz
+python-soundfile-*.pkg.tar.xz
+python-soundfile-*.src.tar.gz
+.AURINFO
