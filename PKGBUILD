@@ -2,8 +2,8 @@
 
 pkgname=julia-parsers
 _pkgname=Parsers
-pkgver=0.3.1
-pkgrel=2
+pkgver=0.3.8
+pkgrel=1
 pkgdesc='fast parsing machinery for basic types in Julia'
 arch=(any)
 url=https://github.com/JuliaData/Parsers.jl
@@ -13,15 +13,15 @@ depends=(julia
 )
 makedepends=(julia-distrohelper)
 
-_commit=ad64a7aee16cfd155607dc3811d78077b029b74a
+_commit=e60442b47cd7a3000b5b97d46610761216709052
 source=($pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz
         $pkgname-$pkgver-Deps.toml::https://raw.githubusercontent.com/JuliaRegistries/General/$_commit/${_pkgname:0:1}/$_pkgname/Deps.toml
         $pkgname-$pkgver-Package.toml::https://raw.githubusercontent.com/JuliaRegistries/General/$_commit/${_pkgname:0:1}/$_pkgname/Package.toml
         $pkgname-$pkgver-Versions.toml::https://raw.githubusercontent.com/JuliaRegistries/General/$_commit/${_pkgname:0:1}/$_pkgname/Versions.toml)
-sha256sums=('488ef515a895c9be8df242d916473a5fab15849b2bffcd72a5499ad12b44f9e0'
+sha256sums=('b105cad49c17bb9487aaab5d2974e9683d2ebd6888dea7d5f4d2664b95162a7a'
             'd92a1fcb955e22ed2a2fda52557a7c2c19d3086707c7920d7f1dde470c6601aa'
             'f6e93a0b4e0f8d305088c29e85d41c0d38364f6e3634729a66392c42b4d4574c'
-            '86244b49571f6792c678eb12a6ae7f40b695cd8495e7d3f7a1c58e7c5e7ddb4b')
+            '124437bd5cdae58bd0d6c522dcc092fe10c26bc3578a252f0dbd6d9ced7214d8')
 
 _slug() {
 	dh_julia slug "$srcdir"/"$pkgname"-$pkgver-{Package,Versions}.toml
