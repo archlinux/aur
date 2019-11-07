@@ -2,7 +2,7 @@
 
 pkgname=genie-systemd-git
 _pkgname=genie
-pkgver=1.12.r12.g21ce15b
+pkgver=1.17.r1.gb2e3431
 pkgrel=1
 pkgdesc="A quick way into a systemd \"bottle\" for WSL (development version)"
 arch=('x86_64')
@@ -13,8 +13,10 @@ makedepends=('dotnet-sdk')
 conflicts=('genie-systemd')
 provides=('genie-systemd')
 source=('git+https://github.com/arkane-systems/genie.git'
+        'change_target.patch'
         'LICENSE')
 sha256sums=('SKIP'
+            '895f0ae01b5d5c9b07af2c1fc239c51abdf613b9c3152cc5cd6386ac88c700e9'
             '88d9b4eb60579c191ec391ca04c16130572d7eedc4a86daa58bf28c6e14c9bcd')
 
 pkgver() {
@@ -23,7 +25,10 @@ pkgver() {
 }
 
 prepare() {
+  export DOTNET_CLI_TELEMETRY_OPTOUT=1
+  export DOTNET_SKIP_FIRST_TIME_EXPERIENCE=true
   cd "${srcdir}/$_pkgname"
+   git apply --index "${srcdir}/change_target.patch"
 }
 
 build() {
