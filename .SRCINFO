@@ -1,7 +1,7 @@
 pkgbase = python-pyelliptic
 	pkgdesc = Python OpenSSL wrapper for ECC (ECDSA, ECIES), AES, HMAC, Blowfish, ...
 	pkgver = 2.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/radfish/pyelliptic
 	arch = any
 	license = GPL3
@@ -10,9 +10,5 @@ pkgbase = python-pyelliptic
 	source = https://github.com/radfish/pyelliptic/archive/2.0.1.tar.gz
 	sha256sums = 840ad6f5e79c633e1de79fb08be78bf76fe07a7f260905eea31efb5ddf00180d
 
-pkgname = python2-pyelliptic
-	provides = python2-pyelliptic=2.0.1
-
 pkgname = python-pyelliptic
-	provides = python-pyelliptic=2.0.1
 
