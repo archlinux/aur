@@ -1,0 +1,12 @@
+pkgbase = ttf-secuela
+	pkgdesc = Geometric neo-gothic humanist sans serif typeface
+	pkgver = 1.4889dab
+	pkgrel = 1
+	url = https://github.com/defharo/secuela-variable
+	arch = any
+	license = custom:OFL
+	source = ttf-secuela::git+https://github.com/defharo/secuela-variable#commit=4889dab
+	sha512sums = SKIP
+
+pkgname = ttf-secuela
+
