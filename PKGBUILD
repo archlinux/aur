@@ -5,7 +5,7 @@
 
 pkgname=abiword-git
 pkgver=20502.91faa0e0a
-pkgrel=1
+pkgrel=2
 pkgdesc="Fully-featured word processor from official gnome gitlab mirror"
 arch=('i686' 'x86_64')
 url="http://www.abisource.com"
@@ -27,12 +27,12 @@ sha256sums=('SKIP'
             '379908e0a2d9fd58fe7529283378079c79da6a519d99dc59a2e774f2f045a8e4')
 
 pkgver() {
-  cd ${pkgname%-git}
+  cd AbiWord
   printf "%s.%s" $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
 }
 
 prepare() {
-  cd ${pkgname%-git}
+  cd AbiWord
   # Install missing m4 files
   install -m644 ../aiksaurus-plugin.m4 plugins/aiksaurus/plugin.m4
   install -m644 ../command-plugin.m4 .
@@ -44,7 +44,7 @@ prepare() {
 }
 
 build() {
-  cd ${pkgname%-git}
+  cd AbiWord
   export CXXFLAGS+=" -O3"
   NOCONFIGURE=1 ./autogen.sh
   ./configure --prefix=/usr \
@@ -65,6 +65,6 @@ build() {
 }
 
 package() {
-  cd ${pkgname%-git}
+  cd AbiWord
   make DESTDIR="$pkgdir/" install
 }
