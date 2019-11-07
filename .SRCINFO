@@ -1,0 +1,16 @@
+pkgbase = multimidicast
+	pkgdesc = multimidicast sends and receives MIDI from Alsa sequencers over your network, It is designed to interoperate with QmidiNet, TouchDAW, and ipMIDI.
+	pkgver = 1.4
+	pkgrel = 1
+	url = https://llg.cubic.org/tools/multimidicast/
+	arch = x86_64
+	arch = armv7l
+	arch = aarch64
+	groups = pro-audio
+	license = BSD
+	depends = alsa-lib
+	source = https://llg.cubic.org/tools/multimidicast/multimidicast-1.4.tar.gz
+	sha256sums = 5aff3b4ade85b02c0becd6e8dd74b689e3d7246e0237be572fceec169b3d68c6
+
+pkgname = multimidicast
+
