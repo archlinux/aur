@@ -1,6 +1,6 @@
 pkgbase = vcvrack-bin
 	pkgdesc = Open-source virtual modular synthesizer
-	pkgver = 1.1.5
+	pkgver = 1.1.6
 	pkgrel = 1
 	url = https://vcvrack.com/
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = vcvrack-bin
 	optdepends = jack
 	provides = vcvrack
 	conflicts = vcvrack
-	source = https://vcvrack.com/downloads/Rack-1.1.5-lin.zip
+	source = https://vcvrack.com/downloads/Rack-1.1.6-lin.zip
 	source = vcvrack
-	sha256sums = b3e8a90204955c79f8585c2bb32e9987bf2dd221ca44be58552d3bce709f7955
+	sha256sums = be610e226b33ef002baf8f58847f238537ed8e334a9f948a5a8828fb258e42c7
 	sha256sums = d98a5e0c8d811aa9edf0040570e5363da712d676b46e82b2c64e8aad4b876417
 
 pkgname = vcvrack-bin
