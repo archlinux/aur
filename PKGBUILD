@@ -5,7 +5,7 @@
 
 pkgname='maddy-git'
 pkgver=r607.1bc7036
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple, fast, secure all-in-one mail server'
 arch=('x86_64')
 url='https://github.com/foxcpp/maddy'
@@ -67,12 +67,12 @@ package() {
 
 	install -Dm 0644 maddy.conf "$pkgdir/etc/maddy/maddy.conf"
 
-    for f in man/*.1.scd; do
-        install -Dm 0644 "$(basename -s .scd "$f")" "$pkgdir/usr/share/man/man1"
-    done
-    for f in man/*.5.scd; do
-        install -Dm 0644 "$(basename -s .scd "$f")" "$pkgdir/usr/share/man/man5"
-    done
+    #for f in man/*.1.scd; do
+    #    install -Dm 0644 "$(basename -s .scd "$f")" "$pkgdir/usr/share/man/man1"
+    #done
+    #for f in man/*.5.scd; do
+    #    install -Dm 0644 "$(basename -s .scd "$f")" "$pkgdir/usr/share/man/man5"
+    #done
     install -Dm 0644 LICENSE "$pkgdir/usr/share/licenses/maddy"
 
 	install -Dm 0644 -t "$pkgdir/usr/lib/systemd/system" dist/systemd/maddy.service dist/systemd/maddy@.service
