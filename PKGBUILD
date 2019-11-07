@@ -25,7 +25,7 @@ _pkgver_minor="${_pkgver_major_rem%%.*}"
 _base_pkgver=$_pkgver_major.$_pkgver_minor.x
 _pkgver=$pkgver
 
-source=(http://ftp.rpm.org/releases/rpm-$_base_pkgver/rpm-$pkgver.tar.bz2
+source=(https://ftp.osuosl.org/pub/rpm/releases/rpm-$_base_pkgver/rpm-$pkgver.tar.bz2
 	rpmextract.sh rpmlib-filesystem-check.patch bfdfix.patch)
 sha1sums=('879fb5c560323aecae8314a3303cd8e7e1294705'
           '74849919207885ae024f1ab8ed68a76474d67ad7'
