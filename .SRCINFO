@@ -1,13 +1,14 @@
 pkgbase = elementary-feedback
 	pkgdesc = GitHub Issue Reporter for elementary team
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/elementary/feedback
 	arch = any
 	groups = pantheon-stable
 	license = GPL3
-	makedepends = vala
+	makedepends = meson
 	makedepends = granite
+	makedepends = vala
 	depends = gtk3
 	optdepends = pantheon-default-settings
 	provides = elementary-feedback
