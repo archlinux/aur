@@ -18,7 +18,7 @@ optdepends=('libnotify: desktop notifications'
             'ttf-opensans: default Open Sans font family')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#branch=dev"
+source=("tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#tag=dev"
         "libtgvoip::git+https://github.com/telegramdesktop/libtgvoip"
         "variant::git+https://github.com/mapbox/variant"
         "Catch2::git+https://github.com/catchorg/Catch2.git"
@@ -114,7 +114,7 @@ build() {
     sed -i "$NUM r ../CMakeLists.inj" out/Release/CMakeLists.txt
     cd "$srcdir/tdesktop/out/Release"
     cmake . -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -UTDESKTOP_OFFICIAL_TARGET 
-    make -j17
+    make
 }
 
 package() {
