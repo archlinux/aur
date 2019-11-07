@@ -2,9 +2,8 @@
 
 pkgname=julia-mbedtls
 _pkgname=MbedTLS
-# 0.7.0 is for Julia 1.2, 0.6.8 works with Julia 1.1
-pkgver=0.6.8
-pkgrel=3
+pkgver=0.7.0
+pkgrel=1
 pkgdesc='Wrapper around mbedtls for Julia'
 arch=(any)
 url=https://github.com/JuliaWeb/MbedTLS.jl
@@ -12,16 +11,16 @@ license=(MIT)
 depends=(julia julia-binaryprovider julia-compat julia-loadpath mbedtls)
 makedepends=(julia-distrohelper)
 
-_commit=29e46ee379eff5814d5c69420bdbc7d271647208
+_commit=0a75c48ef01672cb1cc3405b2b95ba9f93f4a87e
 source=($pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz
         $pkgname-$pkgver-Deps.toml::https://raw.githubusercontent.com/JuliaRegistries/General/$_commit/${_pkgname:0:1}/$_pkgname/Deps.toml
         $pkgname-$pkgver-Package.toml::https://raw.githubusercontent.com/JuliaRegistries/General/$_commit/${_pkgname:0:1}/$_pkgname/Package.toml
         $pkgname-$pkgver-Versions.toml::https://raw.githubusercontent.com/JuliaRegistries/General/$_commit/${_pkgname:0:1}/$_pkgname/Versions.toml
         'disable-test-logsecrets.patch')
-sha256sums=('a5ab7686da0052cfd073afe3676c47475c79991d1c71584eb640ec3cebd02c4d'
-            '400a4cf81b265b76bb5e17ad04ce613adf128b9c17dcfbe4f5ae7412c40ff830'
+sha256sums=('485450278f3c722806d171ff0ebc9deff98d0286d707d0c1e08face6e67c75c3'
+            '4cf31ea674eae673e49089fcf3eb91b550d986c06fcb0484039ce3e3684fd8a2'
             '04d846b75adf0693bf0cda4db3339bb419ac0a338c90dcbd2ac79c1966fb0091'
-            'e0584c5771a2c30d65075a5bdad68d96f801bea0ad68f3f5151c8cc61d53e4b1'
+            'e91cc1ad5c3be31034e9c13a4dfaaf8c80cd0ef19cb7705bfcb377e7237d41cc'
             'b6a539c928f02bec79734c6edf45d2a83ab169a696b0591344296615d46d8e1b')
 
 _slug() {
@@ -41,54 +40,44 @@ prepare() {
 	# Test currently fails
 	patch -Np1 -i ../disable-test-logsecrets.patch
 
-# Need to use bundled mbedtls 2.13 for Julia 1.1. Switch back for Julia 1.2 and 0.7.0
-#
-#	cat >deps/deps.jl << 'EOF'
-#if isdefined((@static VERSION < v"0.7.0-DEV.484" ? current_module() : @__MODULE__), :Compat)
-#    import Compat.Libdl
-#elseif VERSION >= v"0.7.0-DEV.3382"
-#    import Libdl
-#end
-#const libmbedcrypto = "/usr/lib/libmbedcrypto.so"
-#const libmbedtls = "/usr/lib/libmbedtls.so"
-#const libmbedx509 = "/usr/lib/libmbedx509.so"
-#function check_deps()
-#    global libmbedcrypto
-#    if !isfile(libmbedcrypto)
-#        error("$(libmbedcrypto) does not exist, please report an issue with this PKGBUILD.")
-#    end
-#
-#    if Libdl.dlopen_e(libmbedcrypto) == C_NULL
-#        error("$(libmbedcrypto) cannot be opened, please report an issue with this PKGBUILD")
-#    end
-#
-#    global libmbedtls
-#    if !isfile(libmbedtls)
-#        error("$(libmbedtls) does not exist, please report an issue with this PKGBUILD")
-#    end
-#
-#    if Libdl.dlopen_e(libmbedtls) == C_NULL
-#        error("$(libmbedtls) cannot be opened, please report an issue with this PKGBUILD")
-#    end
-#
-#    global libmbedx509
-#    if !isfile(libmbedx509)
-#        error("$(libmbedx509) does not exist, please report an issue with this PKGBUILD")
-#    end
-#
-#    if Libdl.dlopen_e(libmbedx509) == C_NULL
-#        error("$(libmbedx509) cannot be opened, please report an issue with this PKGBUILD")
-#    end
-#end
-#EOF
-}
+	cat >deps/deps.jl << 'EOF'
+if isdefined((@static VERSION < v"0.7.0-DEV.484" ? current_module() : @__MODULE__), :Compat)
+    import Compat.Libdl
+elseif VERSION >= v"0.7.0-DEV.3382"
+    import Libdl
+end
+const libmbedcrypto = "/usr/lib/libmbedcrypto.so"
+const libmbedtls = "/usr/lib/libmbedtls.so"
+const libmbedx509 = "/usr/lib/libmbedx509.so"
+function check_deps()
+    global libmbedcrypto
+    if !isfile(libmbedcrypto)
+        error("$(libmbedcrypto) does not exist, please report an issue with this PKGBUILD.")
+    end
 
-build() {
-	# Need to use bundled mbedtls 2.13 for Julia 1.1. Switch back for Julia 1.2.
-	cd $_pkgname.jl-$pkgver/deps
-	HOME="$srcdir" julia build.jl
+    if Libdl.dlopen_e(libmbedcrypto) == C_NULL
+        error("$(libmbedcrypto) cannot be opened, please report an issue with this PKGBUILD")
+    end
 
-	rm -fr usr/{bin,downloads,logs}
+    global libmbedtls
+    if !isfile(libmbedtls)
+        error("$(libmbedtls) does not exist, please report an issue with this PKGBUILD")
+    end
+
+    if Libdl.dlopen_e(libmbedtls) == C_NULL
+        error("$(libmbedtls) cannot be opened, please report an issue with this PKGBUILD")
+    end
+
+    global libmbedx509
+    if !isfile(libmbedx509)
+        error("$(libmbedx509) does not exist, please report an issue with this PKGBUILD")
+    end
+
+    if Libdl.dlopen_e(libmbedx509) == C_NULL
+        error("$(libmbedx509) cannot be opened, please report an issue with this PKGBUILD")
+    end
+end
+EOF
 }
 
 package() {
