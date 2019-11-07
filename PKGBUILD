@@ -1,16 +1,17 @@
-# Mantainer: Dave Kleinschmidt <gmail.com: dave.f.kleinschmidt>
+# Maintainer: Dave Kleinschmidt <gmail.com: dave.f.kleinschmidt>
+# Maintainer: Michael <th-nuernberg.de: bauermi86944>
 # Contributor: <gmail.com: jese.jaara>
 
 pkgname=pandoc-fignos
-pkgver=2.2.0
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="Figure number filter for pandoc"
 url="https://github.com/tomduck/pandoc-fignos"
-depends=('pandoc-xnos>=2.0.0')
+depends=('pandoc-xnos>=2.5.0' 'pandoc-xnos<3.0')
 license=('GPL')
 arch=('any')
 source=("https://github.com/tomduck/pandoc-fignos/archive/${pkgver}.tar.gz")
-md5sums=('4223327adbb46fbb05ba2c785573da01')
+md5sums=('582de1eef11e659e067f323e574bcb31')
 
 build() {
     cd "$srcdir/pandoc-fignos-${pkgver}"
