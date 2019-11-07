@@ -43,7 +43,8 @@ package() {
 
   # Launchers
   ln -s /opt/$_pkgname/thunderbird "$pkgdir"/usr/bin/$_pkgname
-  ln -sf thunderbird "$pkgdir"/opt/$_pkgname/thunderbird-bin
+  # breaks application as of 68.0b1
+  # ln -sf thunderbird "$pkgdir"/opt/$_pkgname/thunderbird-bin
 
   # vendor.js
   _vendorjs="$pkgdir/opt/$_pkgname/defaults/preferences/vendor.js"
