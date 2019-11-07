@@ -1,13 +1,13 @@
 pkgbase = o
 	pkgdesc = Small, fast and limited text editor
-	pkgver = 2.5.5
+	pkgver = 2.6.0
 	pkgrel = 1
 	url = https://github.com/xyproto/o
 	arch = x86_64
 	license = BSD
 	makedepends = git
 	makedepends = gcc-go
-	source = git+https://github.com/xyproto/o#tag=2.5.5
+	source = git+https://github.com/xyproto/o#tag=2.6.0
 	sha256sums = SKIP
 
 pkgname = o
