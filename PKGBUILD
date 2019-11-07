@@ -5,7 +5,7 @@
 pkgname=picard
 pkgver=2.2.3
 _commit=f2c1d58f97f35a4b33436ad9a1cb08f4f9a80676
-pkgrel=1
+pkgrel=2
 pkgdesc='Official MusicBrainz tagger'
 url='https://picard.musicbrainz.org/'
 license=('GPL')
