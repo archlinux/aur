@@ -8,8 +8,10 @@ pkgdesc="The Open Motion Planning Library (OMPL) consists of many state-of-the-a
 arch=('i686' 'x86_64')
 url="http://ompl.kavrakilab.org/"
 license=('BSD')
-depends=('boost-libs' 'python' 'python-matplotlib')
-makedepends=('boost' 'cmake')
+# The restrictions on boost-libs and boost here are just until OMPL 1.50.0 is released, as it fixes
+# compatibility with boost 1.71.0 via commit 962961f
+depends=('boost-libs<=1.69.0' 'python' 'python-matplotlib')
+makedepends=('boost<=1.69.0' 'cmake')
 optdepends=('py++: Python binding'
             'ode: Plan using the Open Dynamics Engine'
             'eigen: For an informed sampling technique')

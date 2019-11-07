@@ -6,9 +6,9 @@ pkgbase = ompl
 	arch = i686
 	arch = x86_64
 	license = BSD
-	makedepends = boost
+	makedepends = boost<=1.69.0
 	makedepends = cmake
-	depends = boost-libs
+	depends = boost-libs<=1.69.0
 	depends = python
 	depends = python-matplotlib
 	optdepends = py++: Python binding
