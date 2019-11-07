@@ -1,5 +1,5 @@
 pkgname=basilisk
-pkgver=2019.09.12
+pkgver=2019.10.31
 pkgrel=1
 pkgdesc="Standalone web browser forked from mozilla.org, UXP version"
 arch=('x86_64')
@@ -9,7 +9,7 @@ depends=('gtk2' 'libxt' 'mime-types' 'alsa-lib' 'ffmpeg' 'ttf-font')
 makedepends=('unzip' 'zip' 'gcc8' 'python2' 'yasm' 'mesa' 'autoconf2.13')
 options=('!emptydirs')
 source=("https://github.com/MoonchildProductions/UXP/archive/v$pkgver.tar.gz")
-sha256sums=('1949160b83a214875e97909040306b14b1d2d438e3bde5f4ab80edc0332579bb')
+sha256sums=('c9da24fb6daa5e8583dfbf39011d2acc0ba298831f231e41fe02b3905a259302')
 
 prepare() {
   cd "$srcdir/UXP-$pkgver"
