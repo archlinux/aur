@@ -3,7 +3,7 @@
 _pkgname=janet
 pkgname=janet-lang
 pkgver=1.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A dynamic Lisp dialect and bytecode vm"
 arch=('armv6h' 'armv7h' 'i686' 'x86_64' 'aarch64')
 url="https://janet-lang.org/"
@@ -29,6 +29,7 @@ build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
     make PREFIX="/usr" CC=clang $janet_build -j7
     make PREFIX="/usr" build/janet.pc
+    make PREFIX="/usr" docs
 }
 
 package() {
@@ -43,4 +44,7 @@ package() {
     install -Dm 644 "janet.1" "${pkgdir}/usr/share/man/janet.1"
     install -Dm 644 "jpm.1" "${pkgdir}/usr/share/man/jpm.1"
     install -Dm 644 "build/janet.pc" "${pkgdir}/usr/lib/pkgconfig/janet.pc"
+
+    cp -a examples ${pkgdir}/usr/share/janet
+    cp -a build/doc.html ${pkgdir}/usr/share/janet
 }
