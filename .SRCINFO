@@ -16,6 +16,8 @@ pkgbase = lucurious-git
 	depends = vulkan-icd-loader
 	depends = cglm
 	depends = wayland
+	provides = lucurious=0.0.1
+	conflicts = lucurious
 	source = lucurious-git::git+https://github.com/EasyIP2023/lucurious
 	sha512sums = SKIP
 
