@@ -1,7 +1,7 @@
 # Maintainer: Inochi Amaoto <libraryindexsky@gmail.com>
 
 pkgname=mpv-full-build-git
-pkgver=0.30.0.r27.g8e50d7a746
+pkgver=0.30.0.r102.g8a0929973d
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 with all possible libs (uses statically linked ffmpeg with all possible libs). (GIT version )"
 arch=('x86_64')
@@ -72,6 +72,7 @@ depends=(
          'lilv'
          'luajit'
          'lv2'
+         'mujs'
          'ocl-icd'
          'openal'
          'opencore-amr'
@@ -91,6 +92,7 @@ depends=(
          'twolame'
          'uchardet'
          'v4l-utils'
+         'vapoursynth'
          'vid.stab'
          'vulkan-icd-loader'
          'wavpack'
@@ -132,7 +134,6 @@ optdepends=(
             'libopenmpt: Additional libopenmpt support for ffmpeg'
             'kvazaar: Additional libkvazaar support for ffmpeg'
             'mpv-bash-completion-git: Additional completion definitions for Bash users'
-            'mujs: Additional libmujs support for mpv'
             'nvidia-utils: for hardware accelerated video decoding with CUDA'
             'openh264: Additional libopenh264 support for ffmpeg'
             'rockchip-mpp: Additional rkmpp support for ffmpeg'
@@ -191,9 +192,6 @@ if [ -z ${MPV_NO_CHECK_OPT_DEPEND+yes} ]; then
   if [ -f /usr/lib/libopenmpt.so ]; then
     depends+=('libopenmpt')
   fi
-  if [ -f /usr/lib/libmujs.so ]; then
-    depends+=('mujs')
-  fi
   if [ -f /usr/lib/libopenh264.so ]; then
     depends+=('openh264')
   fi
@@ -211,9 +209,6 @@ if [ -z ${MPV_NO_CHECK_OPT_DEPEND+yes} ]; then
   fi
   if [ -f /usr/lib/libtensorflow.so ]; then
     depends+=('tensorflow')
-  fi
-  if [ -f /usr/lib/libvapoursynth.so ]; then
-    depends+=('vapoursynth')
   fi
   if [ -f /usr/lib/libvo-amrwbenc.so ]; then
     depends+=('vo-amrwbenc')
@@ -458,9 +453,6 @@ prepare() {
     if [ -f /usr/lib/libtensorflow.so ]; then
       _ffmpeg_options+=('--enable-libtensorflow')
       _ffmpeg_options+=('--extra-cflags=-I/usr/include/tensorflow')
-    fi
-    if [ -f /usr/lib/libvapoursynth.so ]; then
-      _mpv_options+=('--enable-vapoursynth')
     fi
     if [ -f /usr/lib/libvo-amrwbenc.so ]; then
       _ffmpeg_options+=('--enable-libvo-amrwbenc')
