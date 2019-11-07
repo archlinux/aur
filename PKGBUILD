@@ -2,7 +2,7 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=wordpress-plugin-jetpack
-pkgver=7.8
+pkgver=7.9
 pkgrel=1
 pkgdesc="Traffic analysis, security and performance enhancements for Wordpress"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('wordpress')
 makedepends=()
 options=('!strip')
 source=("${pkgname}-${pkgver}.tar.gz::https://downloads.wordpress.org/plugin/jetpack.${pkgver}.zip")
-sha512sums=('662aa5cc2f4915a1a13b1122bb4883033ef2170d74cf48ad287d131f26cb10bdba3ea2a331add032cb089a120419d1553189b9be3cd5de413470369da1f3a27e')
+sha512sums=('cba32f0c28809230c6b81667770500334e1db5d25e2e0aaf4799c322b3ade77a91cc84cf8f803b0ba690182966e3f9f3c25a34e72fbad6ef504e55043bc8ca72')
 
 package() {
   install -d "${pkgdir}/usr/share/webapps/wordpress/wp-content/plugins"
