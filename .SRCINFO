@@ -1,0 +1,13 @@
+pkgbase = ycat
+	pkgdesc = Print yaml files with color (powered by goccy/go-yaml)
+	pkgver = 1.0.6
+	pkgrel = 1
+	url = https://github.com/goccy/go-yaml
+	arch = any
+	license = MIT
+	makedepends = go-pie
+	source = https://github.com/goccy/go-yaml/archive/v1.0.6.tar.gz
+	sha256sums = 79c4608e2826cb4c8dd1dba50494a76f330e4b47fce598668690dfa61dfb7779
+
+pkgname = ycat
+
