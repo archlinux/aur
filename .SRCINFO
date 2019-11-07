@@ -1,5 +1,5 @@
 pkgbase = flightradar24
-	pkgdesc = Feeder software for Flightradar24.com
+	pkgdesc = Feeder software for Flightradar24.com (fr24feed)
 	pkgver = 1.0.24
 	pkgrel = 6
 	url = https://www.flightradar24.com/share-your-data
