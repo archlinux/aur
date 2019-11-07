@@ -33,7 +33,7 @@ optdepends=('zenity: simple dialog boxes'
 	'gst-libav: H.264 video'
 	'libpulse: PulseAudio audio driver'
 	'libnotify: Gnome dialog boxes')
-install="${pkgname}.install"
+install="tor-browser.install"
 
 _tag_i686='linux32'
 _tag_x86_64='linux64'
@@ -79,9 +79,9 @@ _dist_checksum() {
 }
 source_i686=("${_urlbase}/tor-browser-${_tag_i686}-${pkgver}_${_language}.tar.xz"{,.asc})
 source_x86_64=("${_urlbase}/tor-browser-${_tag_x86_64}-${pkgver}_${_language}.tar.xz"{,.asc})
-source=("${pkgname}.desktop"
-	"${pkgname}.png"
-	"${pkgname}.sh")
+source=("tor-browser.desktop"
+	"tor-browser.png"
+	"tor-browser.sh")
 
 ### IMPORTANT #################################################################
 # No need for `makepkg -g`: the following sha256sums¸don't need to be updated #
@@ -110,17 +110,17 @@ prepare() {
 		local _COL_DEFAULT_='\e[0m'
 	fi
 
-	msg "Packaging ${pkgname} (language: ${_language})..."
+	msg "Packaging tor-browser (language: ${_language})..."
 
 	if [[ -z "${TORBROWSER_PKGLANG}" ]]; then
-		echo -e "\n  ${_COL_BBLUE_}->${_COL_DEFAULT_} ${_COL_BRED_}NOTE:${_COL_DEFAULT_} If you want to package ${_COL_BWHITE_}${pkgname}${_COL_DEFAULT_} in a different language, please"
+		echo -e "\n  ${_COL_BBLUE_}->${_COL_DEFAULT_} ${_COL_BRED_}NOTE:${_COL_DEFAULT_} If you want to package ${_COL_BWHITE_}tor-browser${_COL_DEFAULT_} in a different language, please"
 		echo -e "     set a \`${_COL_YELLOW_}TORBROWSER_PKGLANG${_COL_DEFAULT_}\` environment variable before running makepkg.\n"
 		echo '     For instance:'
 		echo -e "\n        ${_COL_LIGHTGREY_}TORBROWSER_PKGLANG='en-US' makepkg${_COL_DEFAULT_}\n"
 	fi
 
 	# we search and replace using sed with / as delimiter below so don't allow slashes in these vars.
-	# makepkg already enforces that there're no slashes in ${pkgname}, so we don't check that again here.
+	# makepkg already enforces that there're no slashes in tor-browser, so we don't check that again here.
 	if [[ ${pkgver} = */* || ${_language} = */* || ${pkgdesc} = */* ]]; then
 		error '${pkgver}, ${_language} and ${pkgdesc} for this package are not allowed to contain /' >&2
 		return 1
@@ -132,19 +132,19 @@ package() {
 
 	cd "${srcdir}"
 
-	sed -i "s/__REPL_LANGUAGE__/${_language}/g" "${pkgname}.desktop"
+	sed -i "s/__REPL_LANGUAGE__/${_language}/g" "tor-browser.desktop"
 
-	sed -i "s/__REPL_NAME__/${pkgname}/g"		"${pkgname}.sh"
-	sed -i "s/__REPL_VERSION__/${pkgver}/g"	"${pkgname}.sh"
-	sed -i "s/__REPL_RELEASE__/${pkgrel}/g"	"${pkgname}.sh"
-	sed -i "s/__REPL_LANGUAGE__/${_language}/g"	"${pkgname}.sh"
-	sed -i "s/__REPL_ARCH__/${_archstr}/g"		"${pkgname}.sh"
+	sed -i "s/__REPL_NAME__/tor-browser/g"		"tor-browser.sh"
+	sed -i "s/__REPL_VERSION__/${pkgver}/g"	"tor-browser.sh"
+	sed -i "s/__REPL_RELEASE__/${pkgrel}/g"	"tor-browser.sh"
+	sed -i "s/__REPL_LANGUAGE__/${_language}/g"	"tor-browser.sh"
+	sed -i "s/__REPL_ARCH__/${_archstr}/g"		"tor-browser.sh"
 
-	install -Dm 644 "${pkgname}.desktop"		"${pkgdir}/usr/share/applications/${pkgname}.desktop"
-	install -Dm 644 "${pkgname}.png"		"${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-	install -Dm 755 "${pkgname}.sh"		"${pkgdir}/usr/bin/${pkgname}"
+	install -Dm 644 "tor-browser.desktop"		"${pkgdir}/usr/share/applications/tor-browser.desktop"
+	install -Dm 644 "tor-browser.png"		"${pkgdir}/usr/share/pixmaps/tor-browser.png"
+	install -Dm 755 "tor-browser.sh"		"${pkgdir}/usr/bin/tor-browser"
 
-	install -Dm 644 "tor-browser-${_archstr}-${pkgver}_${_language}.tar.xz" "${pkgdir}/opt/${pkgname}/tor-browser-${_archstr}-${pkgver}_${_language}.tar.xz"
+	install -Dm 644 "tor-browser-${_archstr}-${pkgver}_${_language}.tar.xz" "${pkgdir}/opt/tor-browser/tor-browser-${_archstr}-${pkgver}_${_language}.tar.xz"
 
 }
 
