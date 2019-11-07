@@ -1,8 +1,8 @@
 # Maintainer: Alexander Bus <busfromrus@gmail.com>
 
 pkgname=nlohmann-json-bin
-pkgver=3.7.0
-pkgrel=3
+pkgver=3.7.1
+pkgrel=1
 pkgdesc='Header-only JSON library for Modern C++ (quick installation without testing)'
 arch=('any')
 url='https://github.com/nlohmann/json'
@@ -14,7 +14,7 @@ source=("include-${pkgver}.zip::https://github.com/nlohmann/json/releases/downlo
         "nlohmann_jsonConfig.cmake"
         "nlohmann_jsonConfigVersion.cmake"
         "nlohmann_jsonTargets.cmake")
-sha256sums=('541c34438fd54182e9cdc68dd20c898d766713ad6d901fb2c6e28ff1f1e7c10d'
+sha256sums=('77b9f54b34e7989e6f402afb516f7ff2830df551c3a36973085e2c7a6b1045fe'
             'SKIP'
             'SKIP'
             'SKIP'
