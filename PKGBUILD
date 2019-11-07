@@ -6,21 +6,20 @@ _name="jira"
 _module="$_name"
 _cmd="jirashell"
 
-pkgname=("python-$_module" "python2-$_module")
+pkgname=("python-$_module")
 pkgdesc="Python library for interacting with JIRA via REST APIs"
 pkgver="2.0.0"
-pkgrel=2
+pkgrel=3
 url="https://github.com/pycontribs/jira"
 license=('BSD')
 arch=('any')
-makedepends=("python-pbr>=1.9" "python2-pbr>=1.9")
+makedepends=("python-pbr>=1.9")
 source=("https://files.pythonhosted.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('e2a94adff98e45b29ded030adc76103eab34fa7d4d57303f211f572bedba0e93')
 
 build() {
     cd "$_name-$pkgver"
     python setup.py build
-    python2 setup.py build
 }
 
 package_python-jira(){
@@ -34,18 +33,4 @@ package_python-jira(){
     cd "$_name-$pkgver"
     python setup.py install --skip-build --root="$pkgdir" --optimize=1
     install -D --mode 644 --target-directory "$pkgdir/usr/share/licenses/$pkgname" LICENSE
-}
-
-package_python2-jira(){
-    depends=("python2-pbr"
-             "python2-requests-oauthlib>=0.6.1"
-             "python2-requests>=2.10.0"
-             "python2-requests-toolbelt"
-             "python2-setuptools>=20.10.1"
-             "python2-six>=1.10.0"
-             "python2-defusedxml")
-    cd "$_name-$pkgver"
-    python2 setup.py install --skip-build --root="$pkgdir" --optimize=1
-    install -D --mode 644 --target-directory "$pkgdir/usr/share/licenses/$pkgname" LICENSE
-    mv "$pkgdir/usr/bin/$_cmd" "$pkgdir/usr/bin/$_cmd-python2"
 }
