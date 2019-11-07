@@ -1,4 +1,4 @@
-pkgbase = gcc-arm-none-eabi-bin
+pkgbase = gcc-arm-none-eabi-bin-83
 	pkgdesc = GNU Tools ARM Embedded Processors (binary distribution, includes newlib, does NOT include GDB)
 	pkgver = 8_2019_q3_update
 	pkgrel = 1
@@ -8,18 +8,18 @@ pkgbase = gcc-arm-none-eabi-bin
 	depends = glibc
 	optdepends = arm-none-eabi-gdb: GNU Debugger for ARM EABI
 	provides = gcc-arm-none-eabi
+	provides = gcc-arm-none-eabi-83
 	provides = arm-none-eabi-gcc
+	provides = arm-none-eabi-gcc-83
 	provides = arm-none-eabi-binutils
+	provides = arm-none-eabi-binutils-83
 	provides = arm-none-eabi-newlib
-	conflicts = gcc-arm-none-eabi
-	conflicts = arm-none-eabi-gcc
-	conflicts = arm-none-eabi-binutils
-	conflicts = arm-none-eabi-newlib
+	provides = arm-none-eabi-newlib-83
 	options = !strip
 	options = staticlibs
 	source = https://armkeil.blob.core.windows.net/developer/Files/downloads/gnu-rm/8-2019q3/RC1.1/gcc-arm-none-eabi-8-2019-q3-update-linux.tar.bz2
 	md5sums = 6341f11972dac8de185646d0fbd73bfc
 	sha256sums = b50b02b0a16e5aad8620e9d7c31110ef285c1dde28980b1a9448b764d77d8f92
 
-pkgname = gcc-arm-none-eabi-bin
+pkgname = gcc-arm-none-eabi-bin-83
 
