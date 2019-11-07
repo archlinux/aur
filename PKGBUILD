@@ -1,8 +1,8 @@
 # Maintainer: Josh Hoffer <hoffer.joshua@gmail.com>
 _pkgname=paraview-nightly
 pkgname=paraview-nightly-bin
-pkgver=5.6.0.r1634.g0fa7f74
-pkgrel=2
+pkgver=ParaView.5.7.0.r662.g3e20962
+pkgrel=1
 pkgdesc='Open-source, multi-platform data analysis and visualization application.'
 arch=('x86_64')
 license=('BSD')
@@ -15,27 +15,29 @@ depends=('boost-libs' 'qt5-tools' 'qt5-x11extras' 'intel-tbb' 'openmpi'
          'double-conversion' 'expat' 'freetype2' 'glew' 'hdf5' 
          'libjpeg' 'jsoncpp' 'libxml2' 'lz4' 'xz' 'python-mpi4py' 'netcdf'
          'libogg' 'libpng' 'pugixml' 'libtheora' 'libtiff' 'zlib')
-source=("$pkgname.tar.gz::https://www.paraview.org/paraview-downloads/download.php?submit=Download&version=nightly&type=binary&os=Linux&downloadFile=ParaView-latest-MPI-Linux-64bit.tar.gz")
+#source=("$pkgname.tar.gz::https://www.paraview.org/paraview-downloads/download.php?submit=Download&version=nightly&type=binary&os=Linux&downloadFile=ParaView-latest-MPI-Linux-64bit.tar.gz")
+source=("$pkgname.tar.gz::https://www.paraview.org/paraview-downloads/download.php?submit=Download&version=nightly&type=binary&os=Linux&downloadFile=ParaView-latest-MPI-Linux-Python3.7-64bit.tar.gz")
 noextract=("$pkgname.tar.gz")
 md5sums=("SKIP")
 
 _prefix="ParaView-"
-_suffix="-MPI-Linux-64bit"
+_suffix="-MPI-Linux-Python3.7-64bit"
 prepare() {
 	cd "$srcdir"
-	bsdtar -xf $pkgname.tar.gz --strip-components=1
-	#bsdtar -xf $pkgname.tar.gz
+	#bsdtar -xf $pkgname.tar.gz --strip-components=1
+	bsdtar -xf $pkgname.tar.gz
 }
 
-#pkgver() {
-#	cd "$srcdir"
+pkgver() {
+	cd "$srcdir"
 	# If anyone knows a better way of getting the version please tell me
 	# All of the executables require an Xsession
-	#echo $(ls -d ${_prefix}* | sed -e "s/$prefix\|$_suffix//g" | sed 's/\([^-]*-g\)/r\1/;s/-/./g')
-#}
+	echo $(ls -d ${_prefix}* | sed -e "s/$prefix\|$_suffix//g" | sed 's/\([^-]*-g\)/r\1/;s/-/./g')
+}
 
 package() {
-	cd "$srcdir"
+	subfolder=$(ls -d ${_prefix}*)
+	cd "$srcdir/$subfolder"
 	# Create destination directory
 	install -dm755 "${pkgdir}/usr/bin"
 	install -dm755 "${pkgdir}/opt/${_pkgname}"

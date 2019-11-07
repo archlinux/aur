@@ -1,7 +1,7 @@
 pkgbase = paraview-nightly-bin
 	pkgdesc = Open-source, multi-platform data analysis and visualization application.
-	pkgver = 5.6.0.r1634.g0fa7f74
-	pkgrel = 2
+	pkgver = ParaView.5.7.0.r662.g3e20962
+	pkgrel = 1
 	url = https://www.paraview.org
 	arch = x86_64
 	license = BSD
@@ -37,7 +37,7 @@ pkgbase = paraview-nightly-bin
 	depends = zlib
 	conflicts = paraview
 	noextract = paraview-nightly-bin.tar.gz
-	source = paraview-nightly-bin.tar.gz::https://www.paraview.org/paraview-downloads/download.php?submit=Download&version=nightly&type=binary&os=Linux&downloadFile=ParaView-latest-MPI-Linux-64bit.tar.gz
+	source = paraview-nightly-bin.tar.gz::https://www.paraview.org/paraview-downloads/download.php?submit=Download&version=nightly&type=binary&os=Linux&downloadFile=ParaView-latest-MPI-Linux-Python3.7-64bit.tar.gz
 	md5sums = SKIP
 
 pkgname = paraview-nightly-bin
