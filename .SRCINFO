@@ -1,6 +1,6 @@
 pkgbase = linux-drm-fixes-git
 	pkgdesc = DRM kernel graphics driver development tree
-	pkgver = 5.4.857540.e6bb711600db
+	pkgver = 5.5.872742.ff9234583d4f
 	pkgrel = 1
 	url = https://cgit.freedesktop.org/drm/drm
 	arch = x86_64
@@ -15,7 +15,6 @@ pkgbase = linux-drm-fixes-git
 	makedepends = python-sphinx_rtd_theme
 	makedepends = graphviz
 	makedepends = imagemagick
-	makedepends = git
 	options = !strip
 	source = linux-drm-fixes-git::git://anongit.freedesktop.org/drm/drm#branch=drm-fixes
 	source = config
@@ -23,10 +22,10 @@ pkgbase = linux-drm-fixes-git
 	source = 90-linux.hook
 	source = linux.preset
 	sha256sums = SKIP
-	sha256sums = eda52e1c1f1bc1b0681ec9b1cf2ad27bac4a7c06650a7a2a187f4d72419e7a63
+	sha256sums = 166ee15de54cd8385ed12599cf8402009df5e5c59e961e0547c7745fa385b6a2
 	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
-	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
-	sha256sums = 997dd1ca5c59e526a35d8367e6371a68406b1a58b90006e6f85d59a580c7503f
+	sha256sums = 834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0
+	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
 
 pkgname = linux-drm-fixes-git
 	pkgdesc = The Linux-drm-fixes-git kernel and modules

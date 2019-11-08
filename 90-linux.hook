@@ -2,11 +2,10 @@
 Type = File
 Operation = Install
 Operation = Upgrade
-Operation = Remove
-Target = usr/lib/modules/%KERNVER%/*
-Target = usr/lib/modules/%EXTRAMODULES%/*
+Target = boot/vmlinuz-%PKGBASE%
+Target = usr/lib/initcpio/*
 
 [Action]
-Description = Updating %PKGBASE% module dependencies...
+Description = Updating %PKGBASE% initcpios
 When = PostTransaction
-Exec = /usr/bin/depmod %KERNVER%
+Exec = /usr/bin/mkinitcpio -p %PKGBASE%
