@@ -2,26 +2,32 @@
 # Contributor: Tobias Brunner <tobias@tobru.ch>
 
 _npmname=cloudron
-_npmver=2.0.2
-pkgname=cloudron-cli # All lowercase
-pkgver=2.0.2
+_npmver=2.3.1
+pkgname=cloudron-cli
+pkgver=$_npmver
 pkgrel=1
 pkgdesc="Cloudron Commandline Tool"
-arch=(any)
+arch=('any')
 url="https://git.cloudron.io/cloudron/cloudron-cli"
-license=(MIT)
-depends=('nodejs' 'npm' )
+license=('MIT')
+depends=('nodejs')
+makedepends=('npm' 'jq')
 optdepends=()
-source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
-noextract=($_npmname-$_npmver.tgz)
-sha1sums=(c97349bc60414007245d8b2bc9a54c673c81eaaf)
+source=("http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz")
+noextract=("$_npmname-$_npmver.tgz")
+sha256sums=('546d4a828f8ec3844bc09b0b7b7ad719c25c4037f1d82db6cfc042758479c0f1')
 
 package() {
-  cd $srcdir
-  local _npmdir="$pkgdir/usr/lib/node_modules/"
-  mkdir -p $_npmdir
-  cd $_npmdir
-  npm install -g --prefix "$pkgdir/usr" $_npmname@$_npmver
-}
+ 	npm install -g --user root --prefix "$pkgdir/usr" "$srcdir/$_npmname-$pkgver.tgz"
+	find "$pkgdir/usr" -type d -exec chmod 755 {} +
 
-# vim:set ts=2 sw=2 et:
+	# Remove references to $pkgdir
+	find "$pkgdir" -type f -name package.json -print0 | xargs -0 sed -i "/_where/d"
+
+	# Remove references to $srcdir
+	local tmppackage="$(mktemp)"
+	local pkgjson="$pkgdir/usr/lib/node_modules/$_npmname/package.json"
+	jq '.|=with_entries(select(.key|test("_.+")|not))' "$pkgjson" > "$tmppackage"
+	mv "$tmppackage" "$pkgjson"
+	chmod 644 "$pkgjson" 
+}
