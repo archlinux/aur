@@ -10,6 +10,7 @@ pkgbase = linux-nitrous
 	provides = linux
 	conflicts = linux-nitrous-git-headers
 	conflicts = linux-nitrous-git
+	options = !strip
 	source = https://github.com/xdevs23/linux-nitrous/releases/download/v5.3.9-6/linux-nitrous-git-5.3.9-6-x86_64.pkg.tar.xz
 	sha256sums = 2aa89bc10bdb4ebca251cea16cf94fca3933724838e87c79342b46ad1145cc83
 
