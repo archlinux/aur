@@ -2,7 +2,7 @@
 # Contributor: sebfry <sebfry -at- gmail -dot- com>
 
 pkgname=python-pyqtchart
-pkgver=5.12
+pkgver=5.13.1
 pkgrel=1
 pkgdesc="Python bindings for the Qt Charts library"
 url="https://www.riverbankcomputing.com/software/pyqtchart/"
@@ -10,13 +10,13 @@ depends=('python-pyqt5' 'qt5-charts' 'sip')
 license=('GPL3')
 arch=('i686' 'x86_64')
 source=(
-    "https://www.riverbankcomputing.com/static/Downloads/PyQtChart/$pkgver/PyQtChart_gpl-$pkgver.tar.gz"
+    "https://www.riverbankcomputing.com/static/Downloads/PyQtChart/$pkgver/PyQtChart-$pkgver.tar.gz"
 )
-sha256sums=('aceac6a09f81dfb1a58bb571ac87ce5284237b1204c4030f63ab6bab273bc0d7')
+sha256sums=('49960a1483527857b38c1527f9b6328d30bdcc84521f579c0a561a892f54130e')
 
 
 build() {
-  cd "$srcdir/PyQtChart_gpl-$pkgver"
+  cd "$srcdir/PyQtChart-$pkgver"
 
   local _pyver=$(python -c 'import sys; print("%i.%i" % sys.version_info[:2])')
   local _moddir="/usr/lib/python${_pyver}/site-packages/PyQt5"
@@ -30,7 +30,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/PyQtChart_gpl-$pkgver"
+  cd "$srcdir/PyQtChart-$pkgver"
 
   make -j 1 INSTALL_ROOT="${pkgdir}" install
 }
