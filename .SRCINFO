@@ -9,6 +9,7 @@ pkgbase = linux-nitrous
 	optdepends = linux-nitrous-headers: to build DKMS modules against this kernel
 	provides = linux
 	conflicts = linux-nitrous-git
+	conflicts = linux-nitrous-git-headers
 	source = https://github.com/xdevs23/linux-nitrous/releases/download/v5.3.9-3/linux-nitrous-git-5.3.9-3-x86_64.pkg.tar.xz
 	sha256sums = 75245891078bd3af1000e4453743475bd1e840da3da8c5c097d1e6197c6851a0
 
