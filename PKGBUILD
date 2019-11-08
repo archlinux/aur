@@ -9,7 +9,7 @@
 _target=m68k-elf
 _target_cpu=m68000
 pkgname=${_target}-gcc-bootstrap
-pkgver=9.1.0
+pkgver=9.2.0
 _mpfrver=4.0.2
 _mpcver=1.1.0
 _gmpver=6.1.2
