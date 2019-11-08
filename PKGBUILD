@@ -1,6 +1,6 @@
 
 pkgname=libcxxwrap-julia
-pkgver=0.5.3
+pkgver=0.6.3
 pkgrel=1
 pkgdesc="C++ library for backing CxxWrap.jl"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('julia')
 makedepends=('cmake')
 source=("https://github.com/JuliaInterop/libcxxwrap-julia/archive/v${pkgver}.tar.gz")
-sha256sums=('0d99b63a2024e80757fa520c2fa618281cb81b16e0af0bda68d6926dec46f3e5')
+sha256sums=('70afac191e7fe9f29c6c582e2822384dfa9275d2ace4cb1bbd85611e340defef')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
