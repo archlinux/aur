@@ -2,8 +2,8 @@
 # Co-Maintainer: Jameson Pugh <imntreal at gmail dot com>
 # Co-Maintainer: Joost Bremmer <contact at madeofmagicandwires dot online>
 pkgname=cheat
-pkgver=3.0.4
-pkgrel=3
+pkgver=3.0.5
+pkgrel=1
 pkgdesc="Allows you to create and view interactive cheatsheets on the command-line"
 arch=('x86_64')
 url="https://github.com/cheat/cheat"
@@ -17,7 +17,7 @@ replaces=('python-cheat')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/cheat/cheat/archive/$pkgver.tar.gz"
         'conf.yml'
         'git+https://github.com/cheat/cheatsheets.git')
-sha256sums=('f2c8fe12a915856c5dcb7786c3ce4ed5f05c11711b2619cd7a1722e83cf408c0'
+sha256sums=('67d1eae872657de7a6405c6f288926f5ad3fcb2de17acebaee624a95dd408a20'
             'ddb53e68a39d0f33b210383724721a162f561e8766434fa1cf062c36e5af76c0'
             'SKIP')
 
