@@ -4,7 +4,7 @@
 _basename=chromaprint
 pkgname="lib32-$_basename"
 pkgver=1.4.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Library that implements a custom algorithm for extracting fingerprints from any audio source (32-bit)'
 url='https://acoustid.org/chromaprint'
 arch=('x86_64')
@@ -37,6 +37,8 @@ package() {
     make DESTDIR="$pkgdir" install
 
     cd "$pkgdir"/usr
+
+    sed -e "s|/usr/lib|/usr/lib32|" -i lib/pkgconfig/libchromaprint.pc
 
     rm -r include
     mv lib lib32

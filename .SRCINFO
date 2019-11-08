@@ -1,7 +1,7 @@
 pkgbase = lib32-chromaprint
 	pkgdesc = Library that implements a custom algorithm for extracting fingerprints from any audio source (32-bit)
 	pkgver = 1.4.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://acoustid.org/chromaprint
 	arch = x86_64
 	license = LGPL
