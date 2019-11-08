@@ -1,6 +1,6 @@
 pkgbase = gallery-dl-git
 	pkgdesc = Command-line program to download image-galleries and collections from several image hosting sites
-	pkgver = 1.10.6.r37.g8361d87
+	pkgver = 1.11.0.r0.g6c86fbf
 	pkgrel = 1
 	url = https://github.com/mikf/gallery-dl
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = gallery-dl-git
 	optdepends = youtube-dl: Download videos
 	provides = gallery-dl
 	conflicts = gallery-dl
-	source = git+https://github.com/mikf/gallery-dl.git
+	source = git+https://github.com/mikf/gallery-dl
 	sha512sums = SKIP
 
 pkgname = gallery-dl-git
