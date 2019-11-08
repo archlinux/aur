@@ -3,9 +3,11 @@
 srcname="archlinux-realtime-generic-setup"
 pkgname="realtime-generic-setup"
 pkgdesc="Generic realtime setup configuration"
-pkgver=r2.0ad3e92
+pkgver=r4.a423690
 pkgrel=1
 arch=('any')
+optdepends=('linux-rt: The Linux-rt kernel and modules'
+            'rtirq: Realtime IRQ thread system tuning')
 url="https://github.com/redtide/${srcname}"
 source=("git://github.com/redtide/${srcname}.git")
 md5sums=('SKIP')

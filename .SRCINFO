@@ -1,9 +1,11 @@
 pkgbase = realtime-generic-setup
 	pkgdesc = Generic realtime setup configuration
-	pkgver = r2.0ad3e92
+	pkgver = r4.a423690
 	pkgrel = 1
 	url = https://github.com/redtide/archlinux-realtime-generic-setup
 	arch = any
+	optdepends = linux-rt: The Linux-rt kernel and modules
+	optdepends = rtirq: Realtime IRQ thread system tuning
 	source = git://github.com/redtide/archlinux-realtime-generic-setup.git
 	md5sums = SKIP
 
