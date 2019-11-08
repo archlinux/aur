@@ -3,7 +3,7 @@
 pkgname=dbvis
 pkgver=10.0.24
 __pkgver_underscore=10_0_24
-pkgrel=2
+pkgrel=1
 pkgdesc="DbVisualizer free - The Universal Database Tool"
 url="http://www.dbvis.com/"
 license=('custom')
