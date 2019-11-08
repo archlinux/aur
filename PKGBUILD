@@ -3,7 +3,7 @@
 # shellcheck disable=SC2154
 
 pkgname=clickhouse-static
-pkgver=19.16.2.2
+pkgver=19.16.3.6
 pkgrel=1
 pkgdesc='An open-source column-oriented database management system that allows generating analytical data reports in real time. Static binary'
 arch=('i686' 'x86_64')
@@ -47,7 +47,7 @@ source=("https://github.com/yandex/ClickHouse/archive/v$pkgver-stable.tar.gz"
   'zstd.tgz::https://github.com/facebook/zstd/archive/25559750.tar.gz'
 )
 sha256sums=(
-  145e43fa7a2af862bf4e05e91f661c08718449b6bc1a9d5183a35348cc7c7dbd # clickhouse sources
+  3a7ea35a21ab5e618e5c9b8ea8b8d0e5e7140e82cfd7756178cbbe4711d0be7a # clickhouse sources
   80837520237b40e27c36edb5b71127dd9051e3bcb93e26d7fa3301f2e0563e3f # arrow.tgz
   fd586532ea7c0f297f36f1fa076da6ca421abc5d2dee05f96175267a753e7154 # base64.tgz
   18a057463753f377524d2223b38c32319a704f1f220b1fd307dabeceed6f3bd1 # boost.tgz
