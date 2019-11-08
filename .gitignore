@@ -1,0 +1,4 @@
+*.pkg.tar.xz
+/emacsy-0.4.1.tar.gz
+/pkg/
+/src/

@@ -1,0 +1,17 @@
+pkgbase = guile-emacsy
+	pkgdesc = An embeddable Emacs-like library using GNU Guile
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://savannah.nongnu.org/projects/emacsy
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = guile
+	depends = guile-lib
+	source = https://download.savannah.nongnu.org/releases/emacsy/emacsy-0.4.1.tar.gz
+	source = without-examples.patch
+	sha256sums = d792f7767d4633b381e061953bca806f5e59dd3e5074c1c8682bda405b41ebb2
+	sha256sums = 72968b2d320d154d75c0bf2d5211c9a2fe200a3421f03d598ae91e252d18aa51
+
+pkgname = guile-emacsy
+

@@ -1,0 +1,426 @@
+diff --git a/Makefile.in b/Makefile.in
+index 005d6d1..247c99b 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -113,7 +113,7 @@ host_triplet = @host@
+ bin_PROGRAMS = $(am__EXEEXT_1) $(am__EXEEXT_2)
+ @HELLO_EMACSY_TRUE@am__append_1 = hello-emacsy
+ #nodist_hello_emacsy_SOURCES = example/hello-emacsy.c.x
+-@HELLO_EMACSY_TRUE@am__append_2 = example/hello-emacsy.c.x
++am__append_2 = example/hello-emacsy.c.x
+ @EMACSY_WEBKIT_GTK_TRUE@am__append_3 = \
+ @EMACSY_WEBKIT_GTK_TRUE@ emacsy-webkit-gtk				\
+ @EMACSY_WEBKIT_GTK_TRUE@ emacsy-webkit-gtk-w-buffers			\
+@@ -1886,7 +1886,7 @@ info-am: $(INFO_DEPS)
+ 
+ install-data-am: install-dist_docDATA install-dist_emacsy_scmDATA \
+ 	install-dist_includeHEADERS install-dist_infoimageDATA \
+-	install-emacsy_goDATA install-etc_emacsyDATA install-info-am \
++	install-emacsy_goDATA install-info-am \
+ 	install-pkgconfigDATA
+ 
+ install-dvi: install-dvi-am
+@@ -1906,7 +1906,7 @@ install-dvi-am: $(DVIS)
+ 	  echo " $(INSTALL_DATA) $$files '$(DESTDIR)$(dvidir)'"; \
+ 	  $(INSTALL_DATA) $$files "$(DESTDIR)$(dvidir)" || exit $$?; \
+ 	done
+-install-exec-am: install-binPROGRAMS install-libLTLIBRARIES
++install-exec-am: install-libLTLIBRARIES
+ 
+ install-html: install-html-am
+ 
+@@ -2031,10 +2031,10 @@ ps: ps-am
+ 
+ ps-am: $(PSS)
+ 
+-uninstall-am: uninstall-binPROGRAMS uninstall-dist_docDATA \
++uninstall-am: uninstall-dist_docDATA \
+ 	uninstall-dist_emacsy_scmDATA uninstall-dist_includeHEADERS \
+ 	uninstall-dist_infoimageDATA uninstall-dvi-am \
+-	uninstall-emacsy_goDATA uninstall-etc_emacsyDATA \
++	uninstall-emacsy_goDATA \
+ 	uninstall-html-am uninstall-info-am uninstall-libLTLIBRARIES \
+ 	uninstall-pdf-am uninstall-pkgconfigDATA uninstall-ps-am
+ 
+diff --git a/configure b/configure
+index 1316dc2..7335f53 100755
+--- a/configure
++++ b/configure
+@@ -13363,279 +13363,6 @@ else
+ fi
+ 
+ 
+-
+-pkg_failed=no
+-{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for freeglut >= 3.0" >&5
+-$as_echo_n "checking for freeglut >= 3.0... " >&6; }
+-
+-if test -n "$FREEGLUT_CFLAGS"; then
+-    pkg_cv_FREEGLUT_CFLAGS="$FREEGLUT_CFLAGS"
+- elif test -n "$PKG_CONFIG"; then
+-    if test -n "$PKG_CONFIG" && \
+-    { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"freeglut >= 3.0\""; } >&5
+-  ($PKG_CONFIG --exists --print-errors "freeglut >= 3.0") 2>&5
+-  ac_status=$?
+-  $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
+-  test $ac_status = 0; }; then
+-  pkg_cv_FREEGLUT_CFLAGS=`$PKG_CONFIG --cflags "freeglut >= 3.0" 2>/dev/null`
+-		      test "x$?" != "x0" && pkg_failed=yes
+-else
+-  pkg_failed=yes
+-fi
+- else
+-    pkg_failed=untried
+-fi
+-if test -n "$FREEGLUT_LIBS"; then
+-    pkg_cv_FREEGLUT_LIBS="$FREEGLUT_LIBS"
+- elif test -n "$PKG_CONFIG"; then
+-    if test -n "$PKG_CONFIG" && \
+-    { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"freeglut >= 3.0\""; } >&5
+-  ($PKG_CONFIG --exists --print-errors "freeglut >= 3.0") 2>&5
+-  ac_status=$?
+-  $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
+-  test $ac_status = 0; }; then
+-  pkg_cv_FREEGLUT_LIBS=`$PKG_CONFIG --libs "freeglut >= 3.0" 2>/dev/null`
+-		      test "x$?" != "x0" && pkg_failed=yes
+-else
+-  pkg_failed=yes
+-fi
+- else
+-    pkg_failed=untried
+-fi
+-
+-
+-
+-if test $pkg_failed = yes; then
+-        { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+-$as_echo "no" >&6; }
+-
+-if $PKG_CONFIG --atleast-pkgconfig-version 0.20; then
+-        _pkg_short_errors_supported=yes
+-else
+-        _pkg_short_errors_supported=no
+-fi
+-        if test $_pkg_short_errors_supported = yes; then
+-	        FREEGLUT_PKG_ERRORS=`$PKG_CONFIG --short-errors --print-errors --cflags --libs "freeglut >= 3.0" 2>&1`
+-        else
+-	        FREEGLUT_PKG_ERRORS=`$PKG_CONFIG --print-errors --cflags --libs "freeglut >= 3.0" 2>&1`
+-        fi
+-	# Put the nasty error message in config.log where it belongs
+-	echo "$FREEGLUT_PKG_ERRORS" >&5
+-
+-	as_fn_error $? "Package requirements (freeglut >= 3.0) were not met:
+-
+-$FREEGLUT_PKG_ERRORS
+-
+-Consider adjusting the PKG_CONFIG_PATH environment variable if you
+-installed software in a non-standard prefix.
+-
+-Alternatively, you may set the environment variables FREEGLUT_CFLAGS
+-and FREEGLUT_LIBS to avoid the need to call pkg-config.
+-See the pkg-config man page for more details." "$LINENO" 5
+-elif test $pkg_failed = untried; then
+-        { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+-$as_echo "no" >&6; }
+-	{ { $as_echo "$as_me:${as_lineno-$LINENO}: error: in \`$ac_pwd':" >&5
+-$as_echo "$as_me: error: in \`$ac_pwd':" >&2;}
+-as_fn_error $? "The pkg-config script could not be found or is too old.  Make sure it
+-is in your PATH or set the PKG_CONFIG environment variable to the full
+-path to pkg-config.
+-
+-Alternatively, you may set the environment variables FREEGLUT_CFLAGS
+-and FREEGLUT_LIBS to avoid the need to call pkg-config.
+-See the pkg-config man page for more details.
+-
+-To get pkg-config, see <http://pkg-config.freedesktop.org/>.
+-See \`config.log' for more details" "$LINENO" 5; }
+-else
+-	FREEGLUT_CFLAGS=$pkg_cv_FREEGLUT_CFLAGS
+-	FREEGLUT_LIBS=$pkg_cv_FREEGLUT_LIBS
+-        { $as_echo "$as_me:${as_lineno-$LINENO}: result: yes" >&5
+-$as_echo "yes" >&6; }
+-	HAVE_FREEGLUT=yes
+-fi
+-
+-pkg_failed=no
+-{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for gl >= 18.0.0" >&5
+-$as_echo_n "checking for gl >= 18.0.0... " >&6; }
+-
+-if test -n "$GL_CFLAGS"; then
+-    pkg_cv_GL_CFLAGS="$GL_CFLAGS"
+- elif test -n "$PKG_CONFIG"; then
+-    if test -n "$PKG_CONFIG" && \
+-    { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"gl >= 18.0.0\""; } >&5
+-  ($PKG_CONFIG --exists --print-errors "gl >= 18.0.0") 2>&5
+-  ac_status=$?
+-  $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
+-  test $ac_status = 0; }; then
+-  pkg_cv_GL_CFLAGS=`$PKG_CONFIG --cflags "gl >= 18.0.0" 2>/dev/null`
+-		      test "x$?" != "x0" && pkg_failed=yes
+-else
+-  pkg_failed=yes
+-fi
+- else
+-    pkg_failed=untried
+-fi
+-if test -n "$GL_LIBS"; then
+-    pkg_cv_GL_LIBS="$GL_LIBS"
+- elif test -n "$PKG_CONFIG"; then
+-    if test -n "$PKG_CONFIG" && \
+-    { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"gl >= 18.0.0\""; } >&5
+-  ($PKG_CONFIG --exists --print-errors "gl >= 18.0.0") 2>&5
+-  ac_status=$?
+-  $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
+-  test $ac_status = 0; }; then
+-  pkg_cv_GL_LIBS=`$PKG_CONFIG --libs "gl >= 18.0.0" 2>/dev/null`
+-		      test "x$?" != "x0" && pkg_failed=yes
+-else
+-  pkg_failed=yes
+-fi
+- else
+-    pkg_failed=untried
+-fi
+-
+-
+-
+-if test $pkg_failed = yes; then
+-        { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+-$as_echo "no" >&6; }
+-
+-if $PKG_CONFIG --atleast-pkgconfig-version 0.20; then
+-        _pkg_short_errors_supported=yes
+-else
+-        _pkg_short_errors_supported=no
+-fi
+-        if test $_pkg_short_errors_supported = yes; then
+-	        GL_PKG_ERRORS=`$PKG_CONFIG --short-errors --print-errors --cflags --libs "gl >= 18.0.0" 2>&1`
+-        else
+-	        GL_PKG_ERRORS=`$PKG_CONFIG --print-errors --cflags --libs "gl >= 18.0.0" 2>&1`
+-        fi
+-	# Put the nasty error message in config.log where it belongs
+-	echo "$GL_PKG_ERRORS" >&5
+-
+-	as_fn_error $? "Package requirements (gl >= 18.0.0) were not met:
+-
+-$GL_PKG_ERRORS
+-
+-Consider adjusting the PKG_CONFIG_PATH environment variable if you
+-installed software in a non-standard prefix.
+-
+-Alternatively, you may set the environment variables GL_CFLAGS
+-and GL_LIBS to avoid the need to call pkg-config.
+-See the pkg-config man page for more details." "$LINENO" 5
+-elif test $pkg_failed = untried; then
+-        { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+-$as_echo "no" >&6; }
+-	{ { $as_echo "$as_me:${as_lineno-$LINENO}: error: in \`$ac_pwd':" >&5
+-$as_echo "$as_me: error: in \`$ac_pwd':" >&2;}
+-as_fn_error $? "The pkg-config script could not be found or is too old.  Make sure it
+-is in your PATH or set the PKG_CONFIG environment variable to the full
+-path to pkg-config.
+-
+-Alternatively, you may set the environment variables GL_CFLAGS
+-and GL_LIBS to avoid the need to call pkg-config.
+-See the pkg-config man page for more details.
+-
+-To get pkg-config, see <http://pkg-config.freedesktop.org/>.
+-See \`config.log' for more details" "$LINENO" 5; }
+-else
+-	GL_CFLAGS=$pkg_cv_GL_CFLAGS
+-	GL_LIBS=$pkg_cv_GL_LIBS
+-        { $as_echo "$as_me:${as_lineno-$LINENO}: result: yes" >&5
+-$as_echo "yes" >&6; }
+-	HAVE_GL=yes
+-fi
+-
+-pkg_failed=no
+-{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for glu >= 9.0.0" >&5
+-$as_echo_n "checking for glu >= 9.0.0... " >&6; }
+-
+-if test -n "$GLU_CFLAGS"; then
+-    pkg_cv_GLU_CFLAGS="$GLU_CFLAGS"
+- elif test -n "$PKG_CONFIG"; then
+-    if test -n "$PKG_CONFIG" && \
+-    { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"glu >= 9.0.0\""; } >&5
+-  ($PKG_CONFIG --exists --print-errors "glu >= 9.0.0") 2>&5
+-  ac_status=$?
+-  $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
+-  test $ac_status = 0; }; then
+-  pkg_cv_GLU_CFLAGS=`$PKG_CONFIG --cflags "glu >= 9.0.0" 2>/dev/null`
+-		      test "x$?" != "x0" && pkg_failed=yes
+-else
+-  pkg_failed=yes
+-fi
+- else
+-    pkg_failed=untried
+-fi
+-if test -n "$GLU_LIBS"; then
+-    pkg_cv_GLU_LIBS="$GLU_LIBS"
+- elif test -n "$PKG_CONFIG"; then
+-    if test -n "$PKG_CONFIG" && \
+-    { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"glu >= 9.0.0\""; } >&5
+-  ($PKG_CONFIG --exists --print-errors "glu >= 9.0.0") 2>&5
+-  ac_status=$?
+-  $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
+-  test $ac_status = 0; }; then
+-  pkg_cv_GLU_LIBS=`$PKG_CONFIG --libs "glu >= 9.0.0" 2>/dev/null`
+-		      test "x$?" != "x0" && pkg_failed=yes
+-else
+-  pkg_failed=yes
+-fi
+- else
+-    pkg_failed=untried
+-fi
+-
+-
+-
+-if test $pkg_failed = yes; then
+-        { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+-$as_echo "no" >&6; }
+-
+-if $PKG_CONFIG --atleast-pkgconfig-version 0.20; then
+-        _pkg_short_errors_supported=yes
+-else
+-        _pkg_short_errors_supported=no
+-fi
+-        if test $_pkg_short_errors_supported = yes; then
+-	        GLU_PKG_ERRORS=`$PKG_CONFIG --short-errors --print-errors --cflags --libs "glu >= 9.0.0" 2>&1`
+-        else
+-	        GLU_PKG_ERRORS=`$PKG_CONFIG --print-errors --cflags --libs "glu >= 9.0.0" 2>&1`
+-        fi
+-	# Put the nasty error message in config.log where it belongs
+-	echo "$GLU_PKG_ERRORS" >&5
+-
+-	as_fn_error $? "Package requirements (glu >= 9.0.0) were not met:
+-
+-$GLU_PKG_ERRORS
+-
+-Consider adjusting the PKG_CONFIG_PATH environment variable if you
+-installed software in a non-standard prefix.
+-
+-Alternatively, you may set the environment variables GLU_CFLAGS
+-and GLU_LIBS to avoid the need to call pkg-config.
+-See the pkg-config man page for more details." "$LINENO" 5
+-elif test $pkg_failed = untried; then
+-        { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+-$as_echo "no" >&6; }
+-	{ { $as_echo "$as_me:${as_lineno-$LINENO}: error: in \`$ac_pwd':" >&5
+-$as_echo "$as_me: error: in \`$ac_pwd':" >&2;}
+-as_fn_error $? "The pkg-config script could not be found or is too old.  Make sure it
+-is in your PATH or set the PKG_CONFIG environment variable to the full
+-path to pkg-config.
+-
+-Alternatively, you may set the environment variables GLU_CFLAGS
+-and GLU_LIBS to avoid the need to call pkg-config.
+-See the pkg-config man page for more details.
+-
+-To get pkg-config, see <http://pkg-config.freedesktop.org/>.
+-See \`config.log' for more details" "$LINENO" 5; }
+-else
+-	GLU_CFLAGS=$pkg_cv_GLU_CFLAGS
+-	GLU_LIBS=$pkg_cv_GLU_LIBS
+-        { $as_echo "$as_me:${as_lineno-$LINENO}: result: yes" >&5
+-$as_echo "yes" >&6; }
+-	HAVE_GLU=yes
+-fi
+  if test x$HAVE_FREEGLUT$HAVE_GL$HAVE_GLU = xyesyesyes; then
+   HELLO_EMACSY_TRUE=
+   HELLO_EMACSY_FALSE='#'
+@@ -13645,97 +13372,6 @@ else
+ fi
+ 
+ 
+-
+-pkg_failed=no
+-{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for webkit2gtk-4.0" >&5
+-$as_echo_n "checking for webkit2gtk-4.0... " >&6; }
+-
+-if test -n "$WEBKIT_CFLAGS"; then
+-    pkg_cv_WEBKIT_CFLAGS="$WEBKIT_CFLAGS"
+- elif test -n "$PKG_CONFIG"; then
+-    if test -n "$PKG_CONFIG" && \
+-    { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"webkit2gtk-4.0\""; } >&5
+-  ($PKG_CONFIG --exists --print-errors "webkit2gtk-4.0") 2>&5
+-  ac_status=$?
+-  $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
+-  test $ac_status = 0; }; then
+-  pkg_cv_WEBKIT_CFLAGS=`$PKG_CONFIG --cflags "webkit2gtk-4.0" 2>/dev/null`
+-		      test "x$?" != "x0" && pkg_failed=yes
+-else
+-  pkg_failed=yes
+-fi
+- else
+-    pkg_failed=untried
+-fi
+-if test -n "$WEBKIT_LIBS"; then
+-    pkg_cv_WEBKIT_LIBS="$WEBKIT_LIBS"
+- elif test -n "$PKG_CONFIG"; then
+-    if test -n "$PKG_CONFIG" && \
+-    { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"webkit2gtk-4.0\""; } >&5
+-  ($PKG_CONFIG --exists --print-errors "webkit2gtk-4.0") 2>&5
+-  ac_status=$?
+-  $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
+-  test $ac_status = 0; }; then
+-  pkg_cv_WEBKIT_LIBS=`$PKG_CONFIG --libs "webkit2gtk-4.0" 2>/dev/null`
+-		      test "x$?" != "x0" && pkg_failed=yes
+-else
+-  pkg_failed=yes
+-fi
+- else
+-    pkg_failed=untried
+-fi
+-
+-
+-
+-if test $pkg_failed = yes; then
+-        { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+-$as_echo "no" >&6; }
+-
+-if $PKG_CONFIG --atleast-pkgconfig-version 0.20; then
+-        _pkg_short_errors_supported=yes
+-else
+-        _pkg_short_errors_supported=no
+-fi
+-        if test $_pkg_short_errors_supported = yes; then
+-	        WEBKIT_PKG_ERRORS=`$PKG_CONFIG --short-errors --print-errors --cflags --libs "webkit2gtk-4.0" 2>&1`
+-        else
+-	        WEBKIT_PKG_ERRORS=`$PKG_CONFIG --print-errors --cflags --libs "webkit2gtk-4.0" 2>&1`
+-        fi
+-	# Put the nasty error message in config.log where it belongs
+-	echo "$WEBKIT_PKG_ERRORS" >&5
+-
+-	as_fn_error $? "Package requirements (webkit2gtk-4.0) were not met:
+-
+-$WEBKIT_PKG_ERRORS
+-
+-Consider adjusting the PKG_CONFIG_PATH environment variable if you
+-installed software in a non-standard prefix.
+-
+-Alternatively, you may set the environment variables WEBKIT_CFLAGS
+-and WEBKIT_LIBS to avoid the need to call pkg-config.
+-See the pkg-config man page for more details." "$LINENO" 5
+-elif test $pkg_failed = untried; then
+-        { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+-$as_echo "no" >&6; }
+-	{ { $as_echo "$as_me:${as_lineno-$LINENO}: error: in \`$ac_pwd':" >&5
+-$as_echo "$as_me: error: in \`$ac_pwd':" >&2;}
+-as_fn_error $? "The pkg-config script could not be found or is too old.  Make sure it
+-is in your PATH or set the PKG_CONFIG environment variable to the full
+-path to pkg-config.
+-
+-Alternatively, you may set the environment variables WEBKIT_CFLAGS
+-and WEBKIT_LIBS to avoid the need to call pkg-config.
+-See the pkg-config man page for more details.
+-
+-To get pkg-config, see <http://pkg-config.freedesktop.org/>.
+-See \`config.log' for more details" "$LINENO" 5; }
+-else
+-	WEBKIT_CFLAGS=$pkg_cv_WEBKIT_CFLAGS
+-	WEBKIT_LIBS=$pkg_cv_WEBKIT_LIBS
+-        { $as_echo "$as_me:${as_lineno-$LINENO}: result: yes" >&5
+-$as_echo "yes" >&6; }
+-	HAVE_WEBKIT=yes
+-fi
+  if test x$HAVE_WEBKIT = xyes; then
+   EMACSY_WEBKIT_GTK_TRUE=
+   EMACSY_WEBKIT_GTK_FALSE='#'
