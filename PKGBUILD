@@ -11,7 +11,7 @@ license=('GPL2')
 groups=()
 depends=()
 provides=('linux')
-conflicts=('linux-nitrous-git' 'linux-nitrous-git-headers')
+conflicts=('linux-nitrous-git-headers' 'linux-nitrous-git')
 makedepends=('tar')
 optdepends=(
     'linux-nitrous-headers: to build DKMS modules against this kernel'
