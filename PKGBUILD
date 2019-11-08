@@ -1,17 +1,15 @@
 # Maintainer: Lily Wilson <hotaru@thinkindifferent.net>
 pkgname=raspberrypi-userland-aarch64-git
-pkgver=r731.2f85f2d
+pkgver=r740.666d281
 pkgrel=1
 pkgdesc="aarch64-compatible bits of /opt/vc for Raspberry Pi (vcgencmd, tvservice, etc.)" 
 arch=('aarch64')
 url="https://github.com/raspberrypi/userland"
 license=('custom')
-makedepends=('git' 'cmake')
+makedepends=('git' 'cmake' 'ed')
 source=('git+https://github.com/raspberrypi/userland.git'
-        'arch.patch'
         'raspberrypi-userland.conf')
 md5sums=('SKIP'
-         '3a2d63af72521dc284035679aa4029be'
          '72e0d5818fc513ece1b964f25f7e7882')
 
 pkgver() {
@@ -22,7 +20,7 @@ pkgver() {
 
 prepare() {
 	cd "$srcdir/userland"
-	patch -p1 -i "$srcdir/arch.patch"
+	echo -e "1,\$s/sudo /true sudo /\nw\nq"|ed buildme
 }
 
 build() {
