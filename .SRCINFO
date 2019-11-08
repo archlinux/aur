@@ -1,0 +1,15 @@
+pkgbase = gohosts
+	pkgdesc = go-makepkg tool
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = go
+	makedepends = git
+	backup = etc/gohosts.json
+	source = gohosts::git://github.com/vitaliy-kuzmich/gohosts.git#branch=master
+	md5sums = SKIP
+
+pkgname = gohosts
+
