@@ -2,7 +2,7 @@
 # Contributor: Shalygin Konstantin <k0ste@k0ste.ru>
 
 pkgname='ipt_ndpi'
-pkgver=1.2_2.8.0.1501.56d8788
+pkgver=1.2_2.8.0.1530.8bd3384
 pkgrel=1
 pkgdesc='nDPI as netfilter extension.'
 arch=('any')
@@ -12,11 +12,9 @@ depends=('iptables')
 makedepends=('git')
 source=("${pkgname}::git+${url}")
 sha256sums=('SKIP')
-# define 'lts' for linux-lts package
-_linux_custom="ARCH"
 # define '-lts' for linux-lts package
-_linux_localversion=""
-_kernver="`pacman -Ql linux${_linux_localversion} | awk '/(\/modules\/)([0-9.-])+-(.*)-'${_linux_custom}'\/$/ {print $2}'`"
+_linux_custom=""
+_kernver="`pacman -Ql linux${_linux_custom} | awk '/(\/modules\/)([0-9.-])+-(.*)'${_linux_custom}'\/$/ {print $2}' | head -n1`"
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
