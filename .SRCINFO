@@ -1,0 +1,15 @@
+pkgbase = libgeneral-git
+	pkgdesc = General stuff for tihmstar's projects - git version
+	pkgver = r26.4c96389
+	pkgrel = 1
+	url = https://github.com/tihmstar/libgeneral
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	provides = libgeneral
+	conflicts = libgeneral
+	source = git+https://github.com/tihmstar/libgeneral.git
+	sha256sums = SKIP
+
+pkgname = libgeneral-git
+
