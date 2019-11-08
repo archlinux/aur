@@ -1,0 +1,21 @@
+pkgbase = llvm-xtensa-git
+	pkgdesc = LLVM fork for ESP32 xtensa.
+	pkgver = 20191108
+	pkgrel = 1
+	url = https://github.com/espressif/llvm-xtensa
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = ninja
+	makedepends = cmake
+	depends = python2
+	depends = libxml2
+	depends = python
+	provides = llvm-xtensa
+	source = git://github.com/espressif/llvm-xtensa
+	source = git://github.com/espressif/clang-xtensa
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = llvm-xtensa-git
+
