@@ -12,6 +12,7 @@ groups=()
 depends=()
 provides=('linux')
 conflicts=('linux-nitrous-git-headers' 'linux-nitrous-git')
+options=('!strip')
 makedepends=('tar')
 optdepends=(
     'linux-nitrous-headers: to build DKMS modules against this kernel'
