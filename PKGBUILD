@@ -3,8 +3,8 @@
 
 _gemname=pry
 pkgname=ruby-$_gemname
-pkgver=0.11.3
-pkgrel=3
+pkgver=0.12.2
+pkgrel=1
 pkgdesc='An IRB alternative and runtime developer console.'
 arch=(any)
 url='http://pryrepl.org'
@@ -14,7 +14,7 @@ makedepends=(rubygems ruby-rdoc)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('0f8c7d6073d6f3bd4c2ca0d4fdeb240ee90b54bc1c98102f909a243fa60803d6')
+sha256sums=('c9bc4f2dffe767043bde6b2aad52aa24916b68727420bd38f34d860c7a383503')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
