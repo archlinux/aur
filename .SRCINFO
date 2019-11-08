@@ -1,0 +1,23 @@
+pkgbase = tuxedo-keyboard
+	pkgdesc = TUXEDO Keyboard Kernel Module
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://github.com/tuxedocomputers/tuxedo-keyboard
+	install = tuxedo-keyboard.install
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = linux-headers
+	makedepends = gcc
+	makedepends = make
+	depends = dkms
+	conflicts = tuxedo-keyboard-dkms
+	conflicts = tuxedo-wmi
+	conflicts = tuxedo-wmi-dkms
+	source = git+https://github.com/tuxedocomputers/tuxedo-keyboard.git
+	source = tuxedo_keyboard.conf
+	sha512sums = SKIP
+	sha512sums = 76158393cae3959af9a0ccef7e3f72d44522796f1ea81d031a91958c47d6f48f83bf8311a1932bb4db7dd35abae1603f1051f1d0e315a0484053ede97e2e7de7
+
+pkgname = tuxedo-keyboard
+
