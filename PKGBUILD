@@ -1,8 +1,8 @@
 # Maintainer: thorko contact@thorko.de
-pkgname=sensu-agent
+pkgname=sensu-cli
 pkgver=5.14.2
 pkgrel=1
-pkgdesc="Sensu Go Backend"
+pkgdesc="Sensu Go cli"
 arch=('x86_64' 'armv7h')
 url='https://sensu.io'
 license=('MIT')
