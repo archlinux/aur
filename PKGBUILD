@@ -2,7 +2,7 @@
 
 pkgname=ava-plugins
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Harrison Consoles VST Plugin Suite."
 arch=('x86_64')
 url="https://www.harrisonconsoles.com/site/ava-plugins.html"
@@ -26,7 +26,7 @@ package() {
 	for plugin in DS LegacyQ MC ME; do
 		if [ -f $srcdir/Harrison_AVA/vst/AVA-$plugin.so ]; then
 			install -Dm644 "$srcdir/Harrison_AVA/vst/AVA-$plugin.so" "$pkgdir/usr/lib/vst/AVA-$plugin.so"
-			# install -Dm644 "../AVA-$plugin.pdf" $pkgdir/usr/share/doc/harrison_consoles/ava/AVA-$plugin.pdf ## Manual is optional, download and save as appropriately named files.
+			# install -Dm644 "../AVA-$plugin.pdf" $pkgdir/usr/share/doc/harrison_consoles/ava-plugins/AVA-$plugin.pdf ## Manual is optional, download and save as appropriately named files.
 		fi
 	done
 	
