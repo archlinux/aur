@@ -1,0 +1,10 @@
+--- a/lib/CMakeLists.txt
++++ b/lib/CMakeLists.txt
+@@ -104,5 +104,6 @@
+ target_link_libraries(gnuradio-fosphor ${fosphor_libraries})
+ target_compile_definitions(gnuradio-fosphor PRIVATE QT_NO_KEYWORDS)
+ 
+-
++set(VERSION "3.8.0")
++set(LIBVER "3.8.0")
+ GR_LIBRARY_FOO(gnuradio-fosphor)

@@ -1,0 +1,4 @@
+38c38
+<     DESTINATION ${GR_PYTHON_DIR}/gnuradio/fosphor
+---
+> 	DESTINATION ${CMAKE_INSTALL_PREFIX}/${GR_PYTHON_DIR}/gnuradio/fosphor

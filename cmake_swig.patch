@@ -1,0 +1,5 @@
+53c53,54
+< GR_SWIG_INSTALL(TARGETS fosphor_swig DESTINATION ${GR_PYTHON_DIR}/gnuradio/fosphor)
+---
+> GR_SWIG_INSTALL(TARGETS fosphor_swig DESTINATION ${CMAKE_INSTALL_PREFIX}/${GR_PYTHON_DIR}/gnuradio/fosphor)
+> message(STATUS "DEST: ${GR_PYTHON_DIR}")

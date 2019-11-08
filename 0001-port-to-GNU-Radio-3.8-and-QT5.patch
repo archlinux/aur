@@ -1,0 +1,4824 @@
+From f24c4d3941dd2c1e3e0efd09af93dd9689e19d64 Mon Sep 17 00:00:00 2001
+From: Bastian Bloessl <mail@bastibl.net>
+Date: Thu, 18 Jul 2019 21:18:26 +0200
+Subject: [PATCH] port to GNU Radio 3.8 and QT5
+
+---
+ CMakeLists.txt                                | 150 ++--
+ apps/CMakeLists.txt                           |   2 +-
+ cmake/Modules/CMakeParseArgumentsCopy.cmake   |   2 +-
+ cmake/Modules/FindCppUnit.cmake               |  36 -
+ cmake/Modules/GrComponent.cmake               | 114 ---
+ cmake/Modules/GrMiscUtils.cmake               | 304 -------
+ cmake/Modules/GrPlatform.cmake                |  62 --
+ cmake/Modules/GrPython.cmake                  | 301 -------
+ cmake/Modules/GrSwig.cmake                    | 272 -------
+ cmake/Modules/GrTest.cmake                    | 166 ----
+ cmake/Modules/GrVersion.cmake                 |  91 ---
+ cmake/Modules/fosphorConfig.cmake             |  31 +
+ cmake/Modules/targetConfig.cmake.in           |  26 +
+ docs/CMakeLists.txt                           |   7 +-
+ docs/README.fosphor                           |   2 +-
+ docs/doxygen/CMakeLists.txt                   |   2 +-
+ docs/doxygen/Doxyfile.in                      | 765 ++++++++++++++----
+ docs/doxygen/Doxyfile.swig_doc.in             | 139 ++--
+ docs/doxygen/doxyxml/__init__.py              |   5 +-
+ docs/doxygen/doxyxml/base.py                  |  20 +-
+ docs/doxygen/doxyxml/doxyindex.py             |  96 ++-
+ docs/doxygen/doxyxml/generated/__init__.py    |   1 +
+ docs/doxygen/doxyxml/generated/compound.py    |   8 +-
+ .../doxyxml/generated/compoundsuper.py        |  40 +-
+ docs/doxygen/doxyxml/generated/index.py       |   6 +-
+ docs/doxygen/doxyxml/generated/indexsuper.py  |  21 +-
+ docs/doxygen/doxyxml/text.py                  |   7 +-
+ docs/doxygen/swig_doc.py                      | 154 +++-
+ grc/CMakeLists.txt                            |   2 +-
+ grc/fosphor_qt_sink_c.block.yml               |   4 +-
+ include/gnuradio/fosphor/base_sink_c.h        |  16 +-
+ include/gnuradio/fosphor/qt_sink_c.h          |  10 +-
+ lib/CMakeLists.txt                            |  34 +-
+ lib/QGLSurface.cc                             |  37 +-
+ lib/QGLSurface.h                              |  27 +-
+ lib/base_sink_c_impl.cc                       |  27 +-
+ lib/base_sink_c_impl.h                        |  13 +-
+ lib/glfw_sink_c_impl.cc                       |  28 +
+ lib/glfw_sink_c_impl.h                        |   5 +
+ lib/qt_sink_c_impl.cc                         |  14 +-
+ lib/qt_sink_c_impl.h                          |  10 +-
+ swig/CMakeLists.txt                           |  13 +-
+ 42 files changed, 1223 insertions(+), 1847 deletions(-)
+ delete mode 100644 cmake/Modules/FindCppUnit.cmake
+ delete mode 100644 cmake/Modules/GrComponent.cmake
+ delete mode 100644 cmake/Modules/GrMiscUtils.cmake
+ delete mode 100644 cmake/Modules/GrPlatform.cmake
+ delete mode 100644 cmake/Modules/GrPython.cmake
+ delete mode 100644 cmake/Modules/GrSwig.cmake
+ delete mode 100644 cmake/Modules/GrTest.cmake
+ delete mode 100644 cmake/Modules/GrVersion.cmake
+ create mode 100644 cmake/Modules/fosphorConfig.cmake
+ create mode 100644 cmake/Modules/targetConfig.cmake.in
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 47154fc..faf2736 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,6 +1,6 @@
+ # Copyright 2011,2012 Free Software Foundation, Inc.
+ #
+-# This file is part of GNU Radio
++# This file is part of gr-fosphor
+ #
+ # GNU Radio is free software; you can redistribute it and/or modify
+ # it under the terms of the GNU General Public License as published by
+@@ -17,83 +17,115 @@
+ # the Free Software Foundation, Inc., 51 Franklin Street,
+ # Boston, MA 02110-1301, USA.
+ 
+-
+ ########################################################################
+ # Project setup
+ ########################################################################
+-cmake_minimum_required(VERSION 2.6)
++cmake_minimum_required(VERSION 3.8)
+ project(gr-fosphor CXX C)
+ enable_testing()
+ 
+-#select the release build type by default to get optimization flags
++# Install to PyBOMBS target prefix if defined
++if(DEFINED ENV{PYBOMBS_PREFIX})
++    set(CMAKE_INSTALL_PREFIX $ENV{PYBOMBS_PREFIX})
++    message(STATUS "PyBOMBS installed GNU Radio. Setting CMAKE_INSTALL_PREFIX to $ENV{PYBOMBS_PREFIX}")
++endif()
++
++# Select the release build type by default to get optimization flags
+ if(NOT CMAKE_BUILD_TYPE)
+    set(CMAKE_BUILD_TYPE "Release")
+    message(STATUS "Build type not specified: defaulting to release.")
+ endif(NOT CMAKE_BUILD_TYPE)
+ set(CMAKE_BUILD_TYPE ${CMAKE_BUILD_TYPE} CACHE STRING "")
+ 
+-list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/Modules)
++# Make sure our local CMake Modules path comes first
++list(INSERT CMAKE_MODULE_PATH 0 ${CMAKE_SOURCE_DIR}/cmake/Modules)
+ 
+ # Set the version information here
+ set(VERSION_INFO_MAJOR_VERSION 3)
+ set(VERSION_INFO_API_COMPAT    8)
+ set(VERSION_INFO_MINOR_VERSION 0)
+ set(VERSION_INFO_MAINT_VERSION git)
+-include(GrVersion) #setup version info
++
++cmake_policy(SET CMP0011 NEW)
++
++# Enable generation of compile_commands.json for code completion engines
++set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+ 
+ ########################################################################
+ # Compiler specific setup
+ ########################################################################
+-if(CMAKE_COMPILER_IS_GNUCXX AND NOT WIN32)
++if((CMAKE_CXX_COMPILER_ID MATCHES "Clang" OR
++    CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
++    AND NOT WIN32)
+     #http://gcc.gnu.org/wiki/Visibility
+     add_definitions(-fvisibility=hidden)
+ endif()
+ 
+-########################################################################
+-# Find boost
+-########################################################################
+-if(UNIX AND EXISTS "/usr/lib64")
+-    list(APPEND BOOST_LIBRARYDIR "/usr/lib64") #fedora 64-bit fix
+-endif(UNIX AND EXISTS "/usr/lib64")
+-set(Boost_ADDITIONAL_VERSIONS
+-    "1.35.0" "1.35" "1.36.0" "1.36" "1.37.0" "1.37" "1.38.0" "1.38" "1.39.0" "1.39"
+-    "1.40.0" "1.40" "1.41.0" "1.41" "1.42.0" "1.42" "1.43.0" "1.43" "1.44.0" "1.44"
+-    "1.45.0" "1.45" "1.46.0" "1.46" "1.47.0" "1.47" "1.48.0" "1.48" "1.49.0" "1.49"
+-    "1.50.0" "1.50" "1.51.0" "1.51" "1.52.0" "1.52" "1.53.0" "1.53" "1.54.0" "1.54"
+-    "1.55.0" "1.55" "1.56.0" "1.56" "1.57.0" "1.57" "1.58.0" "1.58" "1.59.0" "1.59"
+-    "1.60.0" "1.60" "1.61.0" "1.61" "1.62.0" "1.62" "1.63.0" "1.63" "1.64.0" "1.64"
+-    "1.65.0" "1.65" "1.66.0" "1.66" "1.67.0" "1.67" "1.68.0" "1.68" "1.69.0" "1.69"
+-)
+-find_package(Boost "1.35" COMPONENTS system thread)
+-
+-if(NOT Boost_FOUND)
+-    message(FATAL_ERROR "Boost required to compile gr-fosphor")
+-endif()
+-
+-add_definitions(-DBOOST_ALL_DYN_LINK)
++IF(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
++    SET(CMAKE_CXX_STANDARD 11)
++ELSEIF(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
++    SET(CMAKE_CXX_STANDARD 11)
++ELSEIF(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
++    SET(CMAKE_CXX_STANDARD 11)
++ELSE()
++    message(WARNING "C++ standard could not be set because compiler is not GNU, Clang or MSVC.")
++ENDIF()
++
++IF(CMAKE_C_COMPILER_ID STREQUAL "GNU")
++    SET(CMAKE_C_STANDARD 11)
++ELSEIF(CMAKE_C_COMPILER_ID MATCHES "Clang")
++    SET(CMAKE_C_STANDARD 11)
++ELSEIF(CMAKE_C_COMPILER_ID STREQUAL "MSVC")
++    SET(CMAKE_C_STANDARD 11)
++ELSE()
++    message(WARNING "C standard could not be set because compiler is not GNU, Clang or MSVC.")
++ENDIF()
+ 
+ ########################################################################
+ # Install directories
+ ########################################################################
++find_package(Gnuradio "3.8" REQUIRED fft)
++include(GrVersion)
++
+ include(GrPlatform) #define LIB_SUFFIX
+-set(GR_RUNTIME_DIR      bin)
+-set(GR_LIBRARY_DIR      lib${LIB_SUFFIX})
+-set(GR_INCLUDE_DIR      include)
+-set(GR_DATA_DIR         share)
++
++if(NOT CMAKE_MODULES_DIR)
++  set(CMAKE_MODULES_DIR lib${LIB_SUFFIX}/cmake)
++endif(NOT CMAKE_MODULES_DIR)
++
++set(GR_INCLUDE_DIR      include/fosphor)
++set(GR_CMAKE_DIR        ${CMAKE_MODULES_DIR}/fosphor)
+ set(GR_PKG_DATA_DIR     ${GR_DATA_DIR}/${CMAKE_PROJECT_NAME})
+-set(GR_DOC_DIR          ${GR_DATA_DIR}/doc)
+ set(GR_PKG_DOC_DIR      ${GR_DOC_DIR}/${CMAKE_PROJECT_NAME})
+-set(GR_CONF_DIR         etc)
+ set(GR_PKG_CONF_DIR     ${GR_CONF_DIR}/${CMAKE_PROJECT_NAME}/conf.d)
+-set(GR_LIBEXEC_DIR      libexec)
+ set(GR_PKG_LIBEXEC_DIR  ${GR_LIBEXEC_DIR}/${CMAKE_PROJECT_NAME})
+-set(GRC_BLOCKS_DIR      ${GR_PKG_DATA_DIR}/grc/blocks)
++
++########################################################################
++# On Apple only, set install name and use rpath correctly, if not already set
++########################################################################
++if(APPLE)
++    if(NOT CMAKE_INSTALL_NAME_DIR)
++        set(CMAKE_INSTALL_NAME_DIR
++            ${CMAKE_INSTALL_PREFIX}/${GR_LIBRARY_DIR} CACHE
++            PATH "Library Install Name Destination Directory" FORCE)
++    endif(NOT CMAKE_INSTALL_NAME_DIR)
++    if(NOT CMAKE_INSTALL_RPATH)
++        set(CMAKE_INSTALL_RPATH
++            ${CMAKE_INSTALL_PREFIX}/${GR_LIBRARY_DIR} CACHE
++            PATH "Library Install RPath" FORCE)
++    endif(NOT CMAKE_INSTALL_RPATH)
++    if(NOT CMAKE_BUILD_WITH_INSTALL_RPATH)
++        set(CMAKE_BUILD_WITH_INSTALL_RPATH ON CACHE
++            BOOL "Do Build Using Library Install RPath" FORCE)
++    endif(NOT CMAKE_BUILD_WITH_INSTALL_RPATH)
++endif(APPLE)
+ 
+ ########################################################################
+ # Find gr-fosphor build dependencies
+ ########################################################################
+ 
+ # Required
++set(OpenGL_GL_PREFERENCE "LEGACY")
+ find_package(OpenGL)
+ if(NOT OPENGL_FOUND)
+ 	message(FATAL_ERROR "OpenGL required to compile gr-fosphor")
+@@ -124,30 +156,22 @@ endif (Qt5_FOUND)
+ ########################################################################
+ # Find gnuradio build dependencies
+ ########################################################################
+-set(GR_REQUIRED_COMPONENTS RUNTIME FFT)
+-find_package(Gnuradio 3.8.0 REQUIRED)
+-
+-find_package(CppUnit)
+-if(NOT CPPUNIT_FOUND)
+-    message(FATAL_ERROR "CppUnit required to compile gr-fosphor")
+-endif()
+-
+ find_package(Doxygen)
+ 
+-find_package(PythonLibs 3)
+-
+-find_package(SWIG)
++########################################################################
++# Setup doxygen option
++########################################################################
++if(DOXYGEN_FOUND)
++    option(ENABLE_DOXYGEN "Build docs using Doxygen" ON)
++else(DOXYGEN_FOUND)
++    option(ENABLE_DOXYGEN "Build docs using Doxygen" OFF)
++endif(DOXYGEN_FOUND)
+ 
+ ########################################################################
+ # Setup the components
+ ########################################################################
+-
+ include(GrComponent)
+ 
+-GR_REGISTER_COMPONENT("Python" ENABLE_PYTHON
+-    PYTHONLIBS_FOUND SWIG_FOUND
+-)
+-
+ GR_REGISTER_COMPONENT("GLFW" ENABLE_GLFW
+     GLFW3_FOUND
+ )
+@@ -162,26 +186,6 @@ macro(list_cond_append cond list_name)
+     endif(${cond})
+ endmacro(list_cond_append)
+ 
+-########################################################################
+-# Setup the include and linker paths
+-########################################################################
+-include_directories(
+-    ${CMAKE_SOURCE_DIR}/include
+-    ${Boost_INCLUDE_DIRS}
+-    ${CPPUNIT_INCLUDE_DIRS}
+-    ${GNURADIO_ALL_INCLUDE_DIRS}
+-)
+-
+-link_directories(
+-    ${Boost_LIBRARY_DIRS}
+-    ${CPPUNIT_LIBRARY_DIRS}
+-    ${GNURADIO_ALL_LIBRARY_DIRS}
+-)
+-
+-# Set component parameters
+-set(GR_FOSPHOR_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/include CACHE INTERNAL "" FORCE)
+-set(GR_FOSPHOR_SWIG_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/swig CACHE INTERNAL "" FORCE)
+-
+ ########################################################################
+ # Create uninstall target
+ ########################################################################
+diff --git a/apps/CMakeLists.txt b/apps/CMakeLists.txt
+index c837d77..43caa4b 100644
+--- a/apps/CMakeLists.txt
++++ b/apps/CMakeLists.txt
+@@ -1,6 +1,6 @@
+ # Copyright 2011 Free Software Foundation, Inc.
+ #
+-# This file is part of GNU Radio
++# This file is part of gr-fosphor
+ #
+ # GNU Radio is free software; you can redistribute it and/or modify
+ # it under the terms of the GNU General Public License as published by
+diff --git a/cmake/Modules/CMakeParseArgumentsCopy.cmake b/cmake/Modules/CMakeParseArgumentsCopy.cmake
+index 7ce4c49..66016cb 100644
+--- a/cmake/Modules/CMakeParseArgumentsCopy.cmake
++++ b/cmake/Modules/CMakeParseArgumentsCopy.cmake
+@@ -58,7 +58,7 @@
+ # the new option.
+ # E.g. my_install(TARGETS foo DESTINATION OPTIONAL) would result in
+ # MY_INSTALL_DESTINATION set to "OPTIONAL", but MY_INSTALL_DESTINATION would
+-# be empty and MY_INSTALL_OPTIONAL would be set to TRUE therefor.
++# be empty and MY_INSTALL_OPTIONAL would be set to TRUE therefore.
+ 
+ #=============================================================================
+ # Copyright 2010 Alexander Neundorf <neundorf@kde.org>
+diff --git a/cmake/Modules/FindCppUnit.cmake b/cmake/Modules/FindCppUnit.cmake
+deleted file mode 100644
+index 9af308f..0000000
+--- a/cmake/Modules/FindCppUnit.cmake
++++ /dev/null
+@@ -1,36 +0,0 @@
+-# http://www.cmake.org/pipermail/cmake/2006-October/011446.html
+-# Modified to use pkg config and use standard var names
+-
+-#
+-# Find the CppUnit includes and library
+-#
+-# This module defines
+-# CPPUNIT_INCLUDE_DIR, where to find tiff.h, etc.
+-# CPPUNIT_LIBRARIES, the libraries to link against to use CppUnit.
+-# CPPUNIT_FOUND, If false, do not try to use CppUnit.
+-
+-INCLUDE(FindPkgConfig)
+-PKG_CHECK_MODULES(PC_CPPUNIT "cppunit")
+-
+-FIND_PATH(CPPUNIT_INCLUDE_DIRS
+-    NAMES cppunit/TestCase.h
+-    HINTS ${PC_CPPUNIT_INCLUDE_DIR}
+-    PATHS
+-    /usr/local/include
+-    /usr/include
+-)
+-
+-FIND_LIBRARY(CPPUNIT_LIBRARIES
+-    NAMES cppunit
+-    HINTS ${PC_CPPUNIT_LIBDIR}
+-    PATHS
+-    ${CPPUNIT_INCLUDE_DIRS}/../lib
+-    /usr/local/lib
+-    /usr/lib
+-)
+-
+-LIST(APPEND CPPUNIT_LIBRARIES ${CMAKE_DL_LIBS})
+-
+-INCLUDE(FindPackageHandleStandardArgs)
+-FIND_PACKAGE_HANDLE_STANDARD_ARGS(CPPUNIT DEFAULT_MSG CPPUNIT_LIBRARIES CPPUNIT_INCLUDE_DIRS)
+-MARK_AS_ADVANCED(CPPUNIT_LIBRARIES CPPUNIT_INCLUDE_DIRS)
+diff --git a/cmake/Modules/GrComponent.cmake b/cmake/Modules/GrComponent.cmake
+deleted file mode 100644
+index da50c64..0000000
+--- a/cmake/Modules/GrComponent.cmake
++++ /dev/null
+@@ -1,114 +0,0 @@
+-# Copyright 2010-2011 Free Software Foundation, Inc.
+-#
+-# This file is part of GNU Radio
+-#
+-# GNU Radio is free software; you can redistribute it and/or modify
+-# it under the terms of the GNU General Public License as published by
+-# the Free Software Foundation; either version 3, or (at your option)
+-# any later version.
+-#
+-# GNU Radio is distributed in the hope that it will be useful,
+-# but WITHOUT ANY WARRANTY; without even the implied warranty of
+-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+-# GNU General Public License for more details.
+-#
+-# You should have received a copy of the GNU General Public License
+-# along with GNU Radio; see the file COPYING.  If not, write to
+-# the Free Software Foundation, Inc., 51 Franklin Street,
+-# Boston, MA 02110-1301, USA.
+-
+-if(DEFINED __INCLUDED_GR_COMPONENT_CMAKE)
+-    return()
+-endif()
+-set(__INCLUDED_GR_COMPONENT_CMAKE TRUE)
+-
+-set(_gr_enabled_components "" CACHE INTERNAL "" FORCE)
+-set(_gr_disabled_components "" CACHE INTERNAL "" FORCE)
+-
+-if(NOT DEFINED ENABLE_DEFAULT)
+-    set(ENABLE_DEFAULT ON)
+-    message(STATUS "")
+-    message(STATUS "The build system will automatically enable all components.")
+-    message(STATUS "Use -DENABLE_DEFAULT=OFF to disable components by default.")
+-endif()
+-
+-########################################################################
+-# Register a component into the system
+-# - name: canonical component name
+-# - var: variable for enabled status
+-# - argn: list of dependencies
+-########################################################################
+-function(GR_REGISTER_COMPONENT name var)
+-    include(CMakeDependentOption)
+-    message(STATUS "")
+-    message(STATUS "Configuring ${name} support...")
+-    foreach(dep ${ARGN})
+-        message(STATUS "  Dependency ${dep} = ${${dep}}")
+-    endforeach(dep)
+-
+-    #if the user set the var to force on, we note this
+-    if("${${var}}" STREQUAL "ON")
+-        set(var_force TRUE)
+-    else()
+-        set(var_force FALSE)
+-    endif()
+-
+-    #rewrite the dependency list so that deps that are also components use the cached version
+-    unset(comp_deps)
+-    foreach(dep ${ARGN})
+-        list(FIND _gr_enabled_components ${dep} dep_enb_index)
+-        list(FIND _gr_disabled_components ${dep} dep_dis_index)
+-        if (${dep_enb_index} EQUAL -1 AND ${dep_dis_index} EQUAL -1)
+-            list(APPEND comp_deps ${dep})
+-        else()
+-            list(APPEND comp_deps ${dep}_cached) #is a component, use cached version
+-        endif()
+-    endforeach(dep)
+-
+-    #setup the dependent option for this component
+-    CMAKE_DEPENDENT_OPTION(${var} "enable ${name} support" ${ENABLE_DEFAULT} "${comp_deps}" OFF)
+-    set(${var} "${${var}}" PARENT_SCOPE)
+-    set(${var}_cached "${${var}}" CACHE INTERNAL "" FORCE)
+-
+-    #force was specified, but the dependencies were not met
+-    if(NOT ${var} AND var_force)
+-        message(FATAL_ERROR "user force-enabled ${name} but configuration checked failed")
+-    endif()
+-
+-    #append the component into one of the lists
+-    if(${var})
+-        message(STATUS "  Enabling ${name} support.")
+-        list(APPEND _gr_enabled_components ${name})
+-    else(${var})
+-        message(STATUS "  Disabling ${name} support.")
+-        list(APPEND _gr_disabled_components ${name})
+-    endif(${var})
+-    message(STATUS "  Override with -D${var}=ON/OFF")
+-
+-    #make components lists into global variables
+-    set(_gr_enabled_components ${_gr_enabled_components} CACHE INTERNAL "" FORCE)
+-    set(_gr_disabled_components ${_gr_disabled_components} CACHE INTERNAL "" FORCE)
+-endfunction(GR_REGISTER_COMPONENT)
+-
+-########################################################################
+-# Print the registered component summary
+-########################################################################
+-function(GR_PRINT_COMPONENT_SUMMARY)
+-    message(STATUS "")
+-    message(STATUS "######################################################")
+-    message(STATUS "# gr-fosphor enabled components                       ")
+-    message(STATUS "######################################################")
+-    foreach(comp ${_gr_enabled_components})
+-        message(STATUS "  * ${comp}")
+-    endforeach(comp)
+-
+-    message(STATUS "")
+-    message(STATUS "######################################################")
+-    message(STATUS "# gr-fosphor disabled components                      ")
+-    message(STATUS "######################################################")
+-    foreach(comp ${_gr_disabled_components})
+-        message(STATUS "  * ${comp}")
+-    endforeach(comp)
+-
+-    message(STATUS "")
+-endfunction(GR_PRINT_COMPONENT_SUMMARY)
+diff --git a/cmake/Modules/GrMiscUtils.cmake b/cmake/Modules/GrMiscUtils.cmake
+deleted file mode 100644
+index 920e8ad..0000000
+--- a/cmake/Modules/GrMiscUtils.cmake
++++ /dev/null
+@@ -1,304 +0,0 @@
+-# Copyright 2010-2011,2014 Free Software Foundation, Inc.
+-#
+-# This file is part of GNU Radio
+-#
+-# GNU Radio is free software; you can redistribute it and/or modify
+-# it under the terms of the GNU General Public License as published by
+-# the Free Software Foundation; either version 3, or (at your option)
+-# any later version.
+-#
+-# GNU Radio is distributed in the hope that it will be useful,
+-# but WITHOUT ANY WARRANTY; without even the implied warranty of
+-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+-# GNU General Public License for more details.
+-#
+-# You should have received a copy of the GNU General Public License
+-# along with GNU Radio; see the file COPYING.  If not, write to
+-# the Free Software Foundation, Inc., 51 Franklin Street,
+-# Boston, MA 02110-1301, USA.
+-
+-if(DEFINED __INCLUDED_GR_MISC_UTILS_CMAKE)
+-    return()
+-endif()
+-set(__INCLUDED_GR_MISC_UTILS_CMAKE TRUE)
+-
+-########################################################################
+-# Set global variable macro.
+-# Used for subdirectories to export settings.
+-# Example: include and library paths.
+-########################################################################
+-function(GR_SET_GLOBAL var)
+-    set(${var} ${ARGN} CACHE INTERNAL "" FORCE)
+-endfunction(GR_SET_GLOBAL)
+-
+-########################################################################
+-# Set the pre-processor definition if the condition is true.
+-#  - def the pre-processor definition to set and condition name
+-########################################################################
+-function(GR_ADD_COND_DEF def)
+-    if(${def})
+-        add_definitions(-D${def})
+-    endif(${def})
+-endfunction(GR_ADD_COND_DEF)
+-
+-########################################################################
+-# Check for a header and conditionally set a compile define.
+-#  - hdr the relative path to the header file
+-#  - def the pre-processor definition to set
+-########################################################################
+-function(GR_CHECK_HDR_N_DEF hdr def)
+-    include(CheckIncludeFileCXX)
+-    CHECK_INCLUDE_FILE_CXX(${hdr} ${def})
+-    GR_ADD_COND_DEF(${def})
+-endfunction(GR_CHECK_HDR_N_DEF)
+-
+-########################################################################
+-# Include subdirectory macro.
+-# Sets the CMake directory variables,
+-# includes the subdirectory CMakeLists.txt,
+-# resets the CMake directory variables.
+-#
+-# This macro includes subdirectories rather than adding them
+-# so that the subdirectory can affect variables in the level above.
+-# This provides a work-around for the lack of convenience libraries.
+-# This way a subdirectory can append to the list of library sources.
+-########################################################################
+-macro(GR_INCLUDE_SUBDIRECTORY subdir)
+-    #insert the current directories on the front of the list
+-    list(INSERT _cmake_source_dirs 0 ${CMAKE_CURRENT_SOURCE_DIR})
+-    list(INSERT _cmake_binary_dirs 0 ${CMAKE_CURRENT_BINARY_DIR})
+-
+-    #set the current directories to the names of the subdirs
+-    set(CMAKE_CURRENT_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/${subdir})
+-    set(CMAKE_CURRENT_BINARY_DIR ${CMAKE_CURRENT_BINARY_DIR}/${subdir})
+-
+-    #include the subdirectory CMakeLists to run it
+-    file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR})
+-    include(${CMAKE_CURRENT_SOURCE_DIR}/CMakeLists.txt)
+-
+-    #reset the value of the current directories
+-    list(GET _cmake_source_dirs 0 CMAKE_CURRENT_SOURCE_DIR)
+-    list(GET _cmake_binary_dirs 0 CMAKE_CURRENT_BINARY_DIR)
+-
+-    #pop the subdir names of the front of the list
+-    list(REMOVE_AT _cmake_source_dirs 0)
+-    list(REMOVE_AT _cmake_binary_dirs 0)
+-endmacro(GR_INCLUDE_SUBDIRECTORY)
+-
+-########################################################################
+-# Check if a compiler flag works and conditionally set a compile define.
+-#  - flag the compiler flag to check for
+-#  - have the variable to set with result
+-########################################################################
+-macro(GR_ADD_CXX_COMPILER_FLAG_IF_AVAILABLE flag have)
+-    include(CheckCXXCompilerFlag)
+-    CHECK_CXX_COMPILER_FLAG(${flag} ${have})
+-    if(${have})
+-      if(${CMAKE_VERSION} VERSION_GREATER "2.8.4")
+-        STRING(FIND "${CMAKE_CXX_FLAGS}" "${flag}" flag_dup)
+-        if(${flag_dup} EQUAL -1)
+-          set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${flag}")
+-          set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${flag}")
+-        endif(${flag_dup} EQUAL -1)
+-      endif(${CMAKE_VERSION} VERSION_GREATER "2.8.4")
+-    endif(${have})
+-endmacro(GR_ADD_CXX_COMPILER_FLAG_IF_AVAILABLE)
+-
+-########################################################################
+-# Generates the .la libtool file
+-# This appears to generate libtool files that cannot be used by auto*.
+-# Usage GR_LIBTOOL(TARGET [target] DESTINATION [dest])
+-########################################################################
+-function(GR_LIBTOOL)
+-    if(NOT DEFINED GENERATE_LIBTOOL)
+-        set(GENERATE_LIBTOOL OFF) #disabled by default
+-    endif()
+-
+-    if(GENERATE_LIBTOOL)
+-        include(CMakeParseArgumentsCopy)
+-        CMAKE_PARSE_ARGUMENTS(GR_LIBTOOL "" "TARGET;DESTINATION" "" ${ARGN})
+-
+-        find_program(LIBTOOL libtool)
+-        if(LIBTOOL)
+-            include(CMakeMacroLibtoolFile)
+-            CREATE_LIBTOOL_FILE(${GR_LIBTOOL_TARGET} /${GR_LIBTOOL_DESTINATION})
+-        endif(LIBTOOL)
+-    endif(GENERATE_LIBTOOL)
+-
+-endfunction(GR_LIBTOOL)
+-
+-########################################################################
+-# Do standard things to the library target
+-# - set target properties
+-# - make install rules
+-# Also handle gnuradio custom naming conventions w/ extras mode.
+-########################################################################
+-function(GR_LIBRARY_FOO target)
+-    #set additional target properties
+-    set_target_properties(${target} PROPERTIES SOVERSION ${LIBVER})
+-
+-    #install the generated files like so...
+-    install(TARGETS ${target}
+-        LIBRARY DESTINATION ${GR_LIBRARY_DIR} # .so/.dylib file
+-        ARCHIVE DESTINATION ${GR_LIBRARY_DIR} # .lib file
+-        RUNTIME DESTINATION ${GR_RUNTIME_DIR} # .dll file
+-    )
+-
+-    #extras mode enabled automatically on linux
+-    if(NOT DEFINED LIBRARY_EXTRAS)
+-        set(LIBRARY_EXTRAS ${LINUX})
+-    endif()
+-
+-    #special extras mode to enable alternative naming conventions
+-    if(LIBRARY_EXTRAS)
+-
+-        #create .la file before changing props
+-        GR_LIBTOOL(TARGET ${target} DESTINATION ${GR_LIBRARY_DIR})
+-
+-        #give the library a special name with ultra-zero soversion
+-        set_target_properties(${target} PROPERTIES OUTPUT_NAME ${target}-${LIBVER} SOVERSION "0.0.0")
+-        set(target_name lib${target}-${LIBVER}.so.0.0.0)
+-
+-        #custom command to generate symlinks
+-        add_custom_command(
+-            TARGET ${target}
+-            POST_BUILD
+-            COMMAND ${CMAKE_COMMAND} -E create_symlink ${target_name} ${CMAKE_CURRENT_BINARY_DIR}/lib${target}.so
+-            COMMAND ${CMAKE_COMMAND} -E create_symlink ${target_name} ${CMAKE_CURRENT_BINARY_DIR}/lib${target}-${LIBVER}.so.0
+-            COMMAND ${CMAKE_COMMAND} -E touch ${target_name} #so the symlinks point to something valid so cmake 2.6 will install
+-        )
+-
+-        #and install the extra symlinks
+-        install(
+-            FILES
+-            ${CMAKE_CURRENT_BINARY_DIR}/lib${target}.so
+-            ${CMAKE_CURRENT_BINARY_DIR}/lib${target}-${LIBVER}.so.0
+-            DESTINATION ${GR_LIBRARY_DIR}
+-        )
+-
+-    endif(LIBRARY_EXTRAS)
+-endfunction(GR_LIBRARY_FOO)
+-
+-########################################################################
+-# Create a dummy custom command that depends on other targets.
+-# Usage:
+-#   GR_GEN_TARGET_DEPS(unique_name target_deps <target1> <target2> ...)
+-#   ADD_CUSTOM_COMMAND(<the usual args> ${target_deps})
+-#
+-# Custom command can't depend on targets, but can depend on executables,
+-# and executables can depend on targets. So this is the process:
+-########################################################################
+-function(GR_GEN_TARGET_DEPS name var)
+-    file(
+-        WRITE ${CMAKE_CURRENT_BINARY_DIR}/${name}.cpp.in
+-        "int main(void){return 0;}\n"
+-    )
+-    execute_process(
+-        COMMAND ${CMAKE_COMMAND} -E copy_if_different
+-        ${CMAKE_CURRENT_BINARY_DIR}/${name}.cpp.in
+-        ${CMAKE_CURRENT_BINARY_DIR}/${name}.cpp
+-    )
+-    add_executable(${name} ${CMAKE_CURRENT_BINARY_DIR}/${name}.cpp)
+-    if(ARGN)
+-        add_dependencies(${name} ${ARGN})
+-    endif(ARGN)
+-
+-    if(CMAKE_CROSSCOMPILING)
+-        set(${var} "DEPENDS;${name}" PARENT_SCOPE) #can't call command when cross
+-    else()
+-        set(${var} "DEPENDS;${name};COMMAND;${name}" PARENT_SCOPE)
+-    endif()
+-endfunction(GR_GEN_TARGET_DEPS)
+-
+-########################################################################
+-# Run GRCC to compile .grc files into .py files.
+-#
+-# Usage: GRCC(filename, directory)
+-#    - filenames: List of file name of .grc file
+-#    - directory: directory of built .py file - usually in
+-#                 ${CMAKE_CURRENT_BINARY_DIR}
+-#    - Sets PYFILES: output converted GRC file names to Python files.
+-########################################################################
+-function(GRCC)
+-  # Extract directory from list of args, remove it for the list of filenames.
+-  list(GET ARGV -1 directory)
+-  list(REMOVE_AT ARGV -1)
+-  set(filenames ${ARGV})
+-  file(MAKE_DIRECTORY ${directory})
+-
+-  SET(GRCC_COMMAND ${CMAKE_SOURCE_DIR}/gr-utils/python/grcc)
+-
+-  # GRCC uses some stuff in grc and gnuradio-runtime, so we force
+-  # the known paths here
+-  list(APPEND PYTHONPATHS
+-    ${CMAKE_SOURCE_DIR}
+-    ${CMAKE_SOURCE_DIR}/gnuradio-runtime/python
+-    ${CMAKE_SOURCE_DIR}/gnuradio-runtime/lib/swig
+-    ${CMAKE_BINARY_DIR}/gnuradio-runtime/lib/swig
+-    )
+-
+-  if(WIN32)
+-    #SWIG generates the python library files into a subdirectory.
+-    #Therefore, we must append this subdirectory into PYTHONPATH.
+-    #Only do this for the python directories matching the following:
+-    foreach(pydir ${PYTHONPATHS})
+-      get_filename_component(name ${pydir} NAME)
+-      if(name MATCHES "^(swig|lib|src)$")
+-        list(APPEND PYTHONPATHS ${pydir}/${CMAKE_BUILD_TYPE})
+-      endif()
+-    endforeach(pydir)
+-  endif(WIN32)
+-
+-  file(TO_NATIVE_PATH "${PYTHONPATHS}" pypath)
+-
+-  if(UNIX)
+-    list(APPEND pypath "$PYTHONPATH")
+-    string(REPLACE ";" ":" pypath "${pypath}")
+-    set(ENV{PYTHONPATH} ${pypath})
+-  endif(UNIX)
+-
+-  if(WIN32)
+-    list(APPEND pypath "%PYTHONPATH%")
+-    string(REPLACE ";" "\\;" pypath "${pypath}")
+-    #list(APPEND environs "PYTHONPATH=${pypath}")
+-    set(ENV{PYTHONPATH} ${pypath})
+-  endif(WIN32)
+-
+-  foreach(f ${filenames})
+-    execute_process(
+-      COMMAND ${GRCC_COMMAND} -d ${directory} ${f}
+-      )
+-    string(REPLACE ".grc" ".py" pyfile "${f}")
+-    string(REPLACE "${CMAKE_CURRENT_SOURCE_DIR}" "${CMAKE_CURRENT_BINARY_DIR}" pyfile "${pyfile}")
+-    list(APPEND pyfiles ${pyfile})
+-  endforeach(f)
+-
+-  set(PYFILES ${pyfiles} PARENT_SCOPE)
+-endfunction(GRCC)
+-
+-########################################################################
+-# Check if HAVE_PTHREAD_SETSCHEDPARAM and HAVE_SCHED_SETSCHEDULER
+-#  should be defined
+-########################################################################
+-macro(GR_CHECK_LINUX_SCHED_AVAIL)
+-set(CMAKE_REQUIRED_LIBRARIES -lpthread)
+-    CHECK_CXX_SOURCE_COMPILES("
+-        #include <pthread.h>
+-        int main(){
+-            pthread_t pthread;
+-            pthread_setschedparam(pthread,  0, 0);
+-            return 0;
+-        } " HAVE_PTHREAD_SETSCHEDPARAM
+-    )
+-    GR_ADD_COND_DEF(HAVE_PTHREAD_SETSCHEDPARAM)
+-
+-    CHECK_CXX_SOURCE_COMPILES("
+-        #include <sched.h>
+-        int main(){
+-            pid_t pid;
+-            sched_setscheduler(pid, 0, 0);
+-            return 0;
+-        } " HAVE_SCHED_SETSCHEDULER
+-    )
+-    GR_ADD_COND_DEF(HAVE_SCHED_SETSCHEDULER)
+-endmacro(GR_CHECK_LINUX_SCHED_AVAIL)
+diff --git a/cmake/Modules/GrPlatform.cmake b/cmake/Modules/GrPlatform.cmake
+deleted file mode 100644
+index 00a53d0..0000000
+--- a/cmake/Modules/GrPlatform.cmake
++++ /dev/null
+@@ -1,62 +0,0 @@
+-# Copyright 2011 Free Software Foundation, Inc.
+-#
+-# This file is part of GNU Radio
+-#
+-# GNU Radio is free software; you can redistribute it and/or modify
+-# it under the terms of the GNU General Public License as published by
+-# the Free Software Foundation; either version 3, or (at your option)
+-# any later version.
+-#
+-# GNU Radio is distributed in the hope that it will be useful,
+-# but WITHOUT ANY WARRANTY; without even the implied warranty of
+-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+-# GNU General Public License for more details.
+-#
+-# You should have received a copy of the GNU General Public License
+-# along with GNU Radio; see the file COPYING.  If not, write to
+-# the Free Software Foundation, Inc., 51 Franklin Street,
+-# Boston, MA 02110-1301, USA.
+-
+-if(DEFINED __INCLUDED_GR_PLATFORM_CMAKE)
+-    return()
+-endif()
+-set(__INCLUDED_GR_PLATFORM_CMAKE TRUE)
+-
+-########################################################################
+-# Setup additional defines for OS types
+-########################################################################
+-if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
+-    set(LINUX TRUE)
+-endif()
+-
+-if(NOT CMAKE_CROSSCOMPILING AND LINUX AND EXISTS "/etc/debian_version")
+-    set(DEBIAN TRUE)
+-endif()
+-
+-if(NOT CMAKE_CROSSCOMPILING AND LINUX AND EXISTS "/etc/redhat-release")
+-    set(REDHAT TRUE)
+-endif()
+-
+-if(NOT CMAKE_CROSSCOMPILING AND LINUX AND EXISTS "/etc/slackware-version")
+-    set(SLACKWARE TRUE)
+-endif()
+-
+-########################################################################
+-# when the library suffix should be 64 (applies to redhat linux family)
+-########################################################################
+-if (REDHAT OR SLACKWARE)
+-    set(LIB64_CONVENTION TRUE)
+-endif()
+-
+-if(NOT DEFINED LIB_SUFFIX AND LIB64_CONVENTION AND CMAKE_SYSTEM_PROCESSOR MATCHES "64$")
+-    set(LIB_SUFFIX 64)
+-endif()
+-
+-########################################################################
+-# Detect /lib versus /lib64
+-########################################################################
+-if (CMAKE_INSTALL_LIBDIR MATCHES lib64)
+-    set(LIB_SUFFIX 64)
+-endif()
+-
+-set(LIB_SUFFIX ${LIB_SUFFIX} CACHE STRING "lib directory suffix")
+diff --git a/cmake/Modules/GrPython.cmake b/cmake/Modules/GrPython.cmake
+deleted file mode 100644
+index eb9e1fd..0000000
+--- a/cmake/Modules/GrPython.cmake
++++ /dev/null
+@@ -1,301 +0,0 @@
+-# Copyright 2010-2016 Free Software Foundation, Inc.
+-#
+-# This file is part of GNU Radio
+-#
+-# GNU Radio is free software; you can redistribute it and/or modify
+-# it under the terms of the GNU General Public License as published by
+-# the Free Software Foundation; either version 3, or (at your option)
+-# any later version.
+-#
+-# GNU Radio is distributed in the hope that it will be useful,
+-# but WITHOUT ANY WARRANTY; without even the implied warranty of
+-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+-# GNU General Public License for more details.
+-#
+-# You should have received a copy of the GNU General Public License
+-# along with GNU Radio; see the file COPYING.  If not, write to
+-# the Free Software Foundation, Inc., 51 Franklin Street,
+-# Boston, MA 02110-1301, USA.
+-
+-if(DEFINED __INCLUDED_GR_PYTHON_CMAKE)
+-    return()
+-endif()
+-set(__INCLUDED_GR_PYTHON_CMAKE TRUE)
+-
+-########################################################################
+-# Setup the python interpreter:
+-# This allows the user to specify a specific interpreter,
+-# or finds the interpreter via the built-in cmake module.
+-########################################################################
+-
+-if (PYTHON_EXECUTABLE)
+-    message(STATUS "User set python executable ${PYTHON_EXECUTABLE}")
+-    find_package(PythonInterp ${GR_PYTHON_MIN_VERSION} REQUIRED)
+-else (PYTHON_EXECUTABLE)
+-    message(STATUS "PYTHON_EXECUTABLE not set - using default python3")
+-    message(STATUS "Use -DPYTHON_EXECUTABLE=/path/to/python2 to build for python2.")
+-    find_package(PythonInterp ${GR_PYTHON3_MIN_VERSION} REQUIRED)
+-endif (PYTHON_EXECUTABLE)
+-
+-if (${PYTHON_VERSION_MAJOR} VERSION_EQUAL 3)
+-    set(PYTHON3 TRUE)
+-endif ()
+-
+-find_package(PythonLibs ${PYTHON_VERSION_MAJOR}.${PYTHON_VERSION_MINOR} EXACT)
+-
+-if (CMAKE_CROSSCOMPILING)
+-    set(QA_PYTHON_EXECUTABLE "/usr/bin/python")
+-else (CMAKE_CROSSCOMPILING)
+-    set(QA_PYTHON_EXECUTABLE ${PYTHON_EXECUTABLE})
+-endif(CMAKE_CROSSCOMPILING)
+-
+-#make the path to the executable appear in the cmake gui
+-set(PYTHON_EXECUTABLE ${PYTHON_EXECUTABLE} CACHE FILEPATH "python interpreter")
+-set(QA_PYTHON_EXECUTABLE ${QA_PYTHON_EXECUTABLE} CACHE FILEPATH "python interpreter for QA tests")
+-
+-########################################################################
+-# Check for the existence of a python module:
+-# - desc a string description of the check
+-# - mod the name of the module to import
+-# - cmd an additional command to run
+-# - have the result variable to set
+-########################################################################
+-macro(GR_PYTHON_CHECK_MODULE_RAW desc python_code have)
+-    execute_process(
+-        COMMAND ${PYTHON_EXECUTABLE} -c "${python_code}"
+-        OUTPUT_QUIET ERROR_QUIET
+-        RESULT_VARIABLE return_code
+-    )
+-    if(return_code EQUAL 0)
+-        message(STATUS "Python checking for ${desc} - found")
+-        set(${have} TRUE)
+-    else()
+-        message(STATUS "Python checking for ${desc} - not found")
+-        set(${have} FALSE)
+-    endif()
+-endmacro(GR_PYTHON_CHECK_MODULE_RAW)
+-
+-macro(GR_PYTHON_CHECK_MODULE desc mod cmd have)
+-    GR_PYTHON_CHECK_MODULE_RAW(
+-        "${desc}" "
+-#########################################
+-try:
+-    import ${mod}
+-    assert ${cmd}
+-except (ImportError, AssertionError): exit(-1)
+-except: pass
+-#########################################"
+-    "${have}")
+-endmacro(GR_PYTHON_CHECK_MODULE)
+-
+-########################################################################
+-# Sets the python installation directory GR_PYTHON_DIR
+-########################################################################
+-if(NOT DEFINED GR_PYTHON_DIR)
+-execute_process(COMMAND ${PYTHON_EXECUTABLE} -c "
+-import site
+-print(site.getsitepackages()[0])
+-" OUTPUT_VARIABLE GR_PYTHON_DIR OUTPUT_STRIP_TRAILING_WHITESPACE
+-)
+-endif()
+-file(TO_CMAKE_PATH ${GR_PYTHON_DIR} GR_PYTHON_DIR)
+-
+-########################################################################
+-# Create an always-built target with a unique name
+-# Usage: GR_UNIQUE_TARGET(<description> <dependencies list>)
+-########################################################################
+-function(GR_UNIQUE_TARGET desc)
+-    file(RELATIVE_PATH reldir ${CMAKE_BINARY_DIR} ${CMAKE_CURRENT_BINARY_DIR})
+-    execute_process(COMMAND ${PYTHON_EXECUTABLE} -c "import re, hashlib
+-unique = hashlib.md5(b'${reldir}${ARGN}').hexdigest()[:5]
+-print(re.sub('\\W', '_', '${desc} ${reldir} ' + unique))"
+-    OUTPUT_VARIABLE _target OUTPUT_STRIP_TRAILING_WHITESPACE)
+-    add_custom_target(${_target} ALL DEPENDS ${ARGN})
+-endfunction(GR_UNIQUE_TARGET)
+-
+-########################################################################
+-# Install python sources (also builds and installs byte-compiled python)
+-########################################################################
+-function(GR_PYTHON_INSTALL)
+-    include(CMakeParseArgumentsCopy)
+-    CMAKE_PARSE_ARGUMENTS(GR_PYTHON_INSTALL "" "DESTINATION" "FILES;PROGRAMS;DIRECTORY" ${ARGN})
+-
+-    ####################################################################
+-    if(GR_PYTHON_INSTALL_FILES)
+-    ####################################################################
+-        install(${ARGN}) #installs regular python files
+-
+-        #create a list of all generated files
+-        unset(pysrcfiles)
+-        unset(pycfiles)
+-        unset(pyofiles)
+-        foreach(pyfile ${GR_PYTHON_INSTALL_FILES})
+-            get_filename_component(pyfile ${pyfile} ABSOLUTE)
+-            list(APPEND pysrcfiles ${pyfile})
+-
+-            #determine if this file is in the source or binary directory
+-            file(RELATIVE_PATH source_rel_path ${CMAKE_CURRENT_SOURCE_DIR} ${pyfile})
+-            string(LENGTH "${source_rel_path}" source_rel_path_len)
+-            file(RELATIVE_PATH binary_rel_path ${CMAKE_CURRENT_BINARY_DIR} ${pyfile})
+-            string(LENGTH "${binary_rel_path}" binary_rel_path_len)
+-
+-            #and set the generated path appropriately
+-            if(${source_rel_path_len} GREATER ${binary_rel_path_len})
+-                set(pygenfile ${CMAKE_CURRENT_BINARY_DIR}/${binary_rel_path})
+-            else()
+-                set(pygenfile ${CMAKE_CURRENT_BINARY_DIR}/${source_rel_path})
+-            endif()
+-            list(APPEND pycfiles ${pygenfile}c)
+-            list(APPEND pyofiles ${pygenfile}o)
+-
+-            #ensure generation path exists
+-            get_filename_component(pygen_path ${pygenfile} PATH)
+-            file(MAKE_DIRECTORY ${pygen_path})
+-
+-        endforeach(pyfile)
+-
+-        #the command to generate the pyc files
+-        add_custom_command(
+-            DEPENDS ${pysrcfiles} OUTPUT ${pycfiles}
+-            COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_BINARY_DIR}/python_compile_helper.py ${pysrcfiles} ${pycfiles}
+-        )
+-
+-        #the command to generate the pyo files
+-        add_custom_command(
+-            DEPENDS ${pysrcfiles} OUTPUT ${pyofiles}
+-            COMMAND ${PYTHON_EXECUTABLE} -O ${CMAKE_BINARY_DIR}/python_compile_helper.py ${pysrcfiles} ${pyofiles}
+-        )
+-
+-        #create install rule and add generated files to target list
+-        set(python_install_gen_targets ${pycfiles} ${pyofiles})
+-        install(FILES ${python_install_gen_targets}
+-            DESTINATION ${GR_PYTHON_INSTALL_DESTINATION}
+-        )
+-
+-    ####################################################################
+-    elseif(GR_PYTHON_INSTALL_DIRECTORY)
+-    ####################################################################
+-        install(${ARGN}) #installs regular python files
+-
+-        # collect all python files in given directories
+-        # #############################################
+-        unset(pysrcfiles)
+-        foreach(pydir ${GR_PYTHON_INSTALL_DIRECTORY})
+-            file(GLOB_RECURSE pysrcfiles_tmp "${pydir}/*.py")
+-            list(APPEND pysrcfiles ${pysrcfiles_tmp})
+-        endforeach(pydir)
+-
+-        # build target lists
+-        # ##################
+-        unset(pycfiles)  # pyc targets
+-        unset(pyofiles)  # pyo targets
+-        unset(pygen_paths)  # all paths of py[oc] targets
+-        foreach(pyfile ${pysrcfiles})
+-            # determine if this file is in the source or binary directory
+-            file(RELATIVE_PATH source_rel_path ${CMAKE_CURRENT_SOURCE_DIR} ${pyfile})
+-            string(LENGTH "${source_rel_path}" source_rel_path_len)
+-            file(RELATIVE_PATH binary_rel_path ${CMAKE_CURRENT_BINARY_DIR} ${pyfile})
+-            string(LENGTH "${binary_rel_path}" binary_rel_path_len)
+-
+-            # and set the generated path appropriately
+-            if(${source_rel_path_len} GREATER ${binary_rel_path_len})
+-                set(pygenfile ${CMAKE_CURRENT_BINARY_DIR}/${binary_rel_path})
+-            else()
+-                set(pygenfile ${CMAKE_CURRENT_BINARY_DIR}/${source_rel_path})
+-            endif()
+-            list(APPEND pycfiles "${pygenfile}c")
+-            list(APPEND pyofiles "${pygenfile}o")
+-
+-            get_filename_component(pygen_path "${pygenfile}" DIRECTORY)
+-            list(APPEND pygen_paths "${pygen_path}")
+-            file(MAKE_DIRECTORY "${pygen_path}")
+-        endforeach(pyfile)
+-        list(REMOVE_DUPLICATES pygen_paths)
+-        list(SORT pygen_paths)
+-
+-        # generate the py[oc] files
+-        # #########################
+-        add_custom_command(
+-            DEPENDS ${pysrcfiles} OUTPUT ${pycfiles}
+-            COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_BINARY_DIR}/python_compile_helper.py ${pysrcfiles} ${pycfiles}
+-        )
+-        add_custom_command(
+-            DEPENDS ${pysrcfiles} OUTPUT ${pyofiles}
+-            COMMAND ${PYTHON_EXECUTABLE} -O ${CMAKE_BINARY_DIR}/python_compile_helper.py ${pysrcfiles} ${pyofiles}
+-        )
+-        set(python_install_gen_targets ${pycfiles} ${pyofiles})
+-
+-        # per-directory install rules
+-        # ###########################
+-        foreach(pygen_path ${pygen_paths})
+-            # find all targets in that directory (no "list(FILTER ...)")
+-            unset(pygen_path_targets)
+-            foreach(pyget_target ${python_install_gen_targets})
+-                get_filename_component(pyget_target_path "${pyget_target}" PATH)
+-                if(pygen_path STREQUAL pyget_target_path)
+-                    list(APPEND pygen_path_targets "${pyget_target}")
+-                endif()
+-            endforeach(pyget_target)
+-
+-            # install relative to current binary dir
+-            file(RELATIVE_PATH pygen_path_rel "${CMAKE_CURRENT_BINARY_DIR}" "${pygen_path}")
+-            list(SORT pygen_path_targets)
+-            install(
+-                FILES ${pygen_path_targets}
+-                DESTINATION "${GR_PYTHON_INSTALL_DESTINATION}/${pygen_path_rel}"
+-            )
+-        endforeach(pygen_path)
+-
+-    ####################################################################
+-    elseif(GR_PYTHON_INSTALL_PROGRAMS)
+-    ####################################################################
+-        file(TO_NATIVE_PATH ${PYTHON_EXECUTABLE} pyexe_native)
+-
+-        if (CMAKE_CROSSCOMPILING)
+-           set(pyexe_native "/usr/bin/env python")
+-        endif()
+-
+-        foreach(pyfile ${GR_PYTHON_INSTALL_PROGRAMS})
+-            get_filename_component(pyfile_name ${pyfile} NAME)
+-            get_filename_component(pyfile ${pyfile} ABSOLUTE)
+-            string(REPLACE "${CMAKE_SOURCE_DIR}" "${CMAKE_BINARY_DIR}" pyexefile "${pyfile}.exe")
+-            list(APPEND python_install_gen_targets ${pyexefile})
+-
+-            get_filename_component(pyexefile_path ${pyexefile} PATH)
+-            file(MAKE_DIRECTORY ${pyexefile_path})
+-
+-            add_custom_command(
+-                OUTPUT ${pyexefile} DEPENDS ${pyfile}
+-                COMMAND ${PYTHON_EXECUTABLE} -c
+-                "import re; R=re.compile('^\#!.*$\\n',flags=re.MULTILINE); open('${pyexefile}','w').write('\#!${pyexe_native}\\n'+R.sub('',open('${pyfile}','r').read()))"
+-                COMMENT "Shebangin ${pyfile_name}"
+-                VERBATIM
+-            )
+-
+-            #on windows, python files need an extension to execute
+-            get_filename_component(pyfile_ext ${pyfile} EXT)
+-            if(WIN32 AND NOT pyfile_ext)
+-                set(pyfile_name "${pyfile_name}.py")
+-            endif()
+-
+-            install(PROGRAMS ${pyexefile} RENAME ${pyfile_name}
+-                DESTINATION ${GR_PYTHON_INSTALL_DESTINATION}
+-            )
+-        endforeach(pyfile)
+-
+-    endif()
+-
+-    GR_UNIQUE_TARGET("pygen" ${python_install_gen_targets})
+-
+-endfunction(GR_PYTHON_INSTALL)
+-
+-########################################################################
+-# Write the python helper script that generates byte code files
+-########################################################################
+-file(WRITE ${CMAKE_BINARY_DIR}/python_compile_helper.py "
+-import sys, py_compile
+-files = sys.argv[1:]
+-srcs, gens = files[:len(files)//2], files[len(files)//2:]
+-for src, gen in zip(srcs, gens):
+-    py_compile.compile(file=src, cfile=gen, doraise=True)
+-")
+diff --git a/cmake/Modules/GrSwig.cmake b/cmake/Modules/GrSwig.cmake
+deleted file mode 100644
+index 87d5e60..0000000
+--- a/cmake/Modules/GrSwig.cmake
++++ /dev/null
+@@ -1,272 +0,0 @@
+-# Copyright 2010-2011 Free Software Foundation, Inc.
+-#
+-# This file is part of GNU Radio
+-#
+-# GNU Radio is free software; you can redistribute it and/or modify
+-# it under the terms of the GNU General Public License as published by
+-# the Free Software Foundation; either version 3, or (at your option)
+-# any later version.
+-#
+-# GNU Radio is distributed in the hope that it will be useful,
+-# but WITHOUT ANY WARRANTY; without even the implied warranty of
+-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+-# GNU General Public License for more details.
+-#
+-# You should have received a copy of the GNU General Public License
+-# along with GNU Radio; see the file COPYING.  If not, write to
+-# the Free Software Foundation, Inc., 51 Franklin Street,
+-# Boston, MA 02110-1301, USA.
+-
+-if(DEFINED __INCLUDED_GR_SWIG_CMAKE)
+-    return()
+-endif()
+-set(__INCLUDED_GR_SWIG_CMAKE TRUE)
+-
+-include(GrPython)
+-
+-########################################################################
+-# Builds a swig documentation file to be generated into python docstrings
+-# Usage: GR_SWIG_MAKE_DOCS(output_file input_path input_path....)
+-#
+-# Set the following variable to specify extra dependent targets:
+-#   - GR_SWIG_DOCS_SOURCE_DEPS
+-#   - GR_SWIG_DOCS_TARGET_DEPS
+-########################################################################
+-function(GR_SWIG_MAKE_DOCS output_file)
+-    if(ENABLE_DOXYGEN)
+-
+-        #setup the input files variable list, quote formatted
+-        set(input_files)
+-        unset(INPUT_PATHS)
+-        foreach(input_path ${ARGN})
+-            if(IS_DIRECTORY ${input_path}) #when input path is a directory
+-                file(GLOB input_path_h_files ${input_path}/*.h)
+-            else() #otherwise its just a file, no glob
+-                set(input_path_h_files ${input_path})
+-            endif()
+-            list(APPEND input_files ${input_path_h_files})
+-            set(INPUT_PATHS "${INPUT_PATHS} \"${input_path}\"")
+-        endforeach(input_path)
+-
+-        #determine the output directory
+-        get_filename_component(name ${output_file} NAME_WE)
+-        get_filename_component(OUTPUT_DIRECTORY ${output_file} PATH)
+-        set(OUTPUT_DIRECTORY ${OUTPUT_DIRECTORY}/${name}_swig_docs)
+-        make_directory(${OUTPUT_DIRECTORY})
+-
+-        #generate the Doxyfile used by doxygen
+-        configure_file(
+-            ${CMAKE_SOURCE_DIR}/docs/doxygen/Doxyfile.swig_doc.in
+-            ${OUTPUT_DIRECTORY}/Doxyfile
+-        @ONLY)
+-
+-        #Create a dummy custom command that depends on other targets
+-        include(GrMiscUtils)
+-        GR_GEN_TARGET_DEPS(_${name}_tag tag_deps ${GR_SWIG_DOCS_TARGET_DEPS})
+-
+-        #call doxygen on the Doxyfile + input headers
+-        add_custom_command(
+-            OUTPUT ${OUTPUT_DIRECTORY}/xml/index.xml
+-            DEPENDS ${input_files} ${GR_SWIG_DOCS_SOURCE_DEPS} ${tag_deps}
+-            COMMAND ${DOXYGEN_EXECUTABLE} ${OUTPUT_DIRECTORY}/Doxyfile
+-            COMMENT "Generating doxygen xml for ${name} docs"
+-        )
+-
+-        #call the swig_doc script on the xml files
+-        add_custom_command(
+-            OUTPUT ${output_file}
+-            DEPENDS ${input_files} ${stamp-file} ${OUTPUT_DIRECTORY}/xml/index.xml
+-            COMMAND ${PYTHON_EXECUTABLE} -B
+-                ${CMAKE_SOURCE_DIR}/docs/doxygen/swig_doc.py
+-                ${OUTPUT_DIRECTORY}/xml
+-                ${output_file}
+-            COMMENT "Generating python docstrings for ${name}"
+-            WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/docs/doxygen
+-        )
+-
+-    else(ENABLE_DOXYGEN)
+-        file(WRITE ${output_file} "\n") #no doxygen -> empty file
+-    endif(ENABLE_DOXYGEN)
+-endfunction(GR_SWIG_MAKE_DOCS)
+-
+-########################################################################
+-# Build a swig target for the common gnuradio use case. Usage:
+-# GR_SWIG_MAKE(target ifile ifile ifile...)
+-#
+-# Set the following variables before calling:
+-#   - GR_SWIG_FLAGS
+-#   - GR_SWIG_INCLUDE_DIRS
+-#   - GR_SWIG_LIBRARIES
+-#   - GR_SWIG_SOURCE_DEPS
+-#   - GR_SWIG_TARGET_DEPS
+-#   - GR_SWIG_DOC_FILE
+-#   - GR_SWIG_DOC_DIRS
+-########################################################################
+-macro(GR_SWIG_MAKE name)
+-    set(ifiles ${ARGN})
+-
+-    # Take care of a SWIG < 3.0 bug with handling std::vector<size_t>,
+-    # by mapping to the correct sized type on the runtime system, one
+-    # of "unsigned int", "unsigned long", or "unsigned long long".
+-    # Compare the sizeof(size_t) with the sizeof the other types, and
+-    # pick the first one in the list with the same sizeof. The logic
+-    # in gnuradio-runtime/swig/gr_types.i handles the rest. It is
+-    # probably not necessary to do this assignment all of the time,
+-    # but it's easier to do it this way than to figure out the
+-    # conditions when it is necessary -- and doing it this way won't
+-    # hurt.  This bug seems to have been fixed with SWIG >= 3.0, and
+-    # mostly happens when not doing a native build (e.g., on Mac OS X
+-    # when using a 64-bit CPU but building for 32-bit).
+-
+-    if(SWIG_VERSION VERSION_LESS "3.0.0")
+-        include(CheckTypeSize)
+-        check_type_size("size_t" SIZEOF_SIZE_T)
+-        check_type_size("unsigned int" SIZEOF_UINT)
+-        check_type_size("unsigned long" SIZEOF_UL)
+-        check_type_size("unsigned long long" SIZEOF_ULL)
+-
+-        if(${SIZEOF_SIZE_T} EQUAL ${SIZEOF_UINT})
+-            list(APPEND GR_SWIG_FLAGS -DSIZE_T_UINT)
+-        elseif(${SIZEOF_SIZE_T} EQUAL ${SIZEOF_UL})
+-            list(APPEND GR_SWIG_FLAGS -DSIZE_T_UL)
+-        elseif(${SIZEOF_SIZE_T} EQUAL ${SIZEOF_ULL})
+-            list(APPEND GR_SWIG_FLAGS -DSIZE_T_ULL)
+-        else()
+-            message(FATAL_ERROR "GrSwig: Unable to find replace for std::vector<size_t>; this should never happen!")
+-        endif()
+-    endif()
+-
+-    #do swig doc generation if specified
+-    if(GR_SWIG_DOC_FILE)
+-        set(GR_SWIG_DOCS_SOURCE_DEPS ${GR_SWIG_SOURCE_DEPS})
+-        list(APPEND GR_SWIG_DOCS_TARGET_DEPS ${GR_SWIG_TARGET_DEPS})
+-        GR_SWIG_MAKE_DOCS(${GR_SWIG_DOC_FILE} ${GR_SWIG_DOC_DIRS})
+-        add_custom_target(${name}_swig_doc DEPENDS ${GR_SWIG_DOC_FILE})
+-        list(APPEND GR_SWIG_TARGET_DEPS ${name}_swig_doc ${GR_RUNTIME_SWIG_DOC_FILE})
+-    endif()
+-
+-    #append additional include directories
+-    list(APPEND GR_SWIG_INCLUDE_DIRS ${PYTHON_INCLUDE_PATH}) #deprecated name (now dirs)
+-    list(APPEND GR_SWIG_INCLUDE_DIRS ${PYTHON_INCLUDE_DIRS})
+-
+-    #prepend local swig directories
+-    list(INSERT GR_SWIG_INCLUDE_DIRS 0 ${CMAKE_CURRENT_SOURCE_DIR})
+-    list(INSERT GR_SWIG_INCLUDE_DIRS 0 ${CMAKE_CURRENT_BINARY_DIR})
+-
+-    #determine include dependencies for swig file
+-    execute_process(
+-        COMMAND ${PYTHON_EXECUTABLE}
+-            ${CMAKE_BINARY_DIR}/get_swig_deps.py
+-            "${ifiles}" "${GR_SWIG_INCLUDE_DIRS}"
+-        OUTPUT_STRIP_TRAILING_WHITESPACE
+-        OUTPUT_VARIABLE SWIG_MODULE_${name}_EXTRA_DEPS
+-        WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+-    )
+-
+-    #Create a dummy custom command that depends on other targets
+-    include(GrMiscUtils)
+-    GR_GEN_TARGET_DEPS(_${name}_swig_tag tag_deps ${GR_SWIG_TARGET_DEPS})
+-    set(tag_file ${CMAKE_CURRENT_BINARY_DIR}/${name}.tag)
+-    add_custom_command(
+-        OUTPUT ${tag_file}
+-        DEPENDS ${GR_SWIG_SOURCE_DEPS} ${tag_deps}
+-        COMMAND ${CMAKE_COMMAND} -E touch ${tag_file}
+-    )
+-
+-    #append the specified include directories
+-    include_directories(${GR_SWIG_INCLUDE_DIRS})
+-    list(APPEND SWIG_MODULE_${name}_EXTRA_DEPS ${tag_file})
+-
+-    if (PYTHON3)
+-        set(py3 "-py3")
+-    endif (PYTHON3)
+-
+-    #setup the swig flags with flags and include directories
+-    set(CMAKE_SWIG_FLAGS -fvirtual -modern -keyword -w511 -w314 -relativeimport ${py3} -module ${name} ${GR_SWIG_FLAGS})
+-
+-    #set the C++ property on the swig .i file so it builds
+-    set_source_files_properties(${ifiles} PROPERTIES CPLUSPLUS ON)
+-
+-    #setup the actual swig library target to be built
+-    include(UseSWIG)
+-    SWIG_ADD_MODULE(${name} python ${ifiles})
+-    if(APPLE)
+-      set(PYTHON_LINK_OPTIONS "-undefined dynamic_lookup")
+-    else()
+-      set(PYTHON_LINK_OPTIONS ${PYTHON_LIBRARIES})
+-    endif(APPLE)
+-    SWIG_LINK_LIBRARIES(${name} ${PYTHON_LINK_OPTIONS} ${GR_SWIG_LIBRARIES})
+-    if(${name} STREQUAL "runtime_swig")
+-        SET_TARGET_PROPERTIES(${SWIG_MODULE_runtime_swig_REAL_NAME} PROPERTIES DEFINE_SYMBOL "gnuradio_runtime_EXPORTS")
+-    endif(${name} STREQUAL "runtime_swig")
+-
+-endmacro(GR_SWIG_MAKE)
+-
+-########################################################################
+-# Install swig targets generated by GR_SWIG_MAKE. Usage:
+-# GR_SWIG_INSTALL(
+-#   TARGETS target target target...
+-#   [DESTINATION destination]
+-# )
+-########################################################################
+-macro(GR_SWIG_INSTALL)
+-
+-    include(CMakeParseArgumentsCopy)
+-    CMAKE_PARSE_ARGUMENTS(GR_SWIG_INSTALL "" "DESTINATION" "TARGETS" ${ARGN})
+-
+-    foreach(name ${GR_SWIG_INSTALL_TARGETS})
+-        install(TARGETS ${SWIG_MODULE_${name}_REAL_NAME}
+-            DESTINATION ${GR_SWIG_INSTALL_DESTINATION}
+-        )
+-
+-        include(GrPython)
+-        GR_PYTHON_INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/${name}.py
+-            DESTINATION ${GR_SWIG_INSTALL_DESTINATION}
+-        )
+-
+-        GR_LIBTOOL(
+-            TARGET ${SWIG_MODULE_${name}_REAL_NAME}
+-            DESTINATION ${GR_SWIG_INSTALL_DESTINATION}
+-        )
+-
+-    endforeach(name)
+-
+-endmacro(GR_SWIG_INSTALL)
+-
+-########################################################################
+-# Generate a python file that can determine swig dependencies.
+-# Used by the make macro above to determine extra dependencies.
+-# When you build C++, CMake figures out the header dependencies.
+-# This code essentially performs that logic for swig includes.
+-########################################################################
+-file(WRITE ${CMAKE_BINARY_DIR}/get_swig_deps.py "
+-
+-import os, sys, re, io
+-
+-i_include_matcher = re.compile('%(include|import)\\s*[<|\"](.*)[>|\"]')
+-h_include_matcher = re.compile('#(include)\\s*[<|\"](.*)[>|\"]')
+-include_dirs = sys.argv[2].split(';')
+-
+-def get_swig_incs(file_path):
+-    if file_path.endswith('.i'): matcher = i_include_matcher
+-    else: matcher = h_include_matcher
+-    file_contents = io.open(file_path, 'r', encoding='utf-8').read()
+-    return matcher.findall(file_contents, re.MULTILINE)
+-
+-def get_swig_deps(file_path, level):
+-    deps = [file_path]
+-    if level == 0: return deps
+-    for keyword, inc_file in get_swig_incs(file_path):
+-        for inc_dir in include_dirs:
+-            inc_path = os.path.join(inc_dir, inc_file)
+-            if not os.path.exists(inc_path): continue
+-            deps.extend(get_swig_deps(inc_path, level-1))
+-            break #found, we don't search in lower prio inc dirs
+-    return deps
+-
+-if __name__ == '__main__':
+-    ifiles = sys.argv[1].split(';')
+-    deps = sum([get_swig_deps(ifile, 3) for ifile in ifiles], [])
+-    #sys.stderr.write(';'.join(set(deps)) + '\\n\\n')
+-    print(';'.join(set(deps)))
+-")
+diff --git a/cmake/Modules/GrTest.cmake b/cmake/Modules/GrTest.cmake
+deleted file mode 100644
+index c12601f..0000000
+--- a/cmake/Modules/GrTest.cmake
++++ /dev/null
+@@ -1,166 +0,0 @@
+-# Copyright 2010-2011 Free Software Foundation, Inc.
+-#
+-# This file is part of GNU Radio
+-#
+-# GNU Radio is free software; you can redistribute it and/or modify
+-# it under the terms of the GNU General Public License as published by
+-# the Free Software Foundation; either version 3, or (at your option)
+-# any later version.
+-#
+-# GNU Radio is distributed in the hope that it will be useful,
+-# but WITHOUT ANY WARRANTY; without even the implied warranty of
+-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+-# GNU General Public License for more details.
+-#
+-# You should have received a copy of the GNU General Public License
+-# along with GNU Radio; see the file COPYING.  If not, write to
+-# the Free Software Foundation, Inc., 51 Franklin Street,
+-# Boston, MA 02110-1301, USA.
+-
+-if(DEFINED __INCLUDED_GR_TEST_CMAKE)
+-    return()
+-endif()
+-set(__INCLUDED_GR_TEST_CMAKE TRUE)
+-
+-########################################################################
+-# Add a unit test and setup the environment for a unit test.
+-# Takes the same arguments as the ADD_TEST function.
+-#
+-# Before calling set the following variables:
+-# GR_TEST_TARGET_DEPS  - built targets for the library path
+-# GR_TEST_LIBRARY_DIRS - directories for the library path
+-# GR_TEST_PYTHON_DIRS  - directories for the python path
+-# GR_TEST_ENVIRONS  - other environment key/value pairs
+-########################################################################
+-function(GR_ADD_TEST test_name)
+-
+-        #Ensure that the build exe also appears in the PATH.
+-        list(APPEND GR_TEST_TARGET_DEPS ${ARGN})
+-
+-        #In the land of windows, all libraries must be in the PATH.
+-        #Since the dependent libraries are not yet installed,
+-        #we must manually set them in the PATH to run tests.
+-        #The following appends the path of a target dependency.
+-        foreach(target ${GR_TEST_TARGET_DEPS})
+-            get_target_property(location ${target} LOCATION)
+-            if(location)
+-                get_filename_component(path ${location} PATH)
+-                string(REGEX REPLACE "\\$\\(.*\\)" "${CMAKE_BUILD_TYPE}" path "${path}")
+-                list(APPEND GR_TEST_LIBRARY_DIRS ${path})
+-            endif(location)
+-        endforeach(target)
+-
+-    if(WIN32)
+-        #SWIG generates the python library files into a subdirectory.
+-        #Therefore, we must append this subdirectory into PYTHONPATH.
+-        #Only do this for the python directories matching the following:
+-        foreach(pydir ${GR_TEST_PYTHON_DIRS})
+-            get_filename_component(name ${pydir} NAME)
+-            if(name MATCHES "^(swig|lib|src)$")
+-                list(APPEND GR_TEST_PYTHON_DIRS ${pydir}/${CMAKE_BUILD_TYPE})
+-            endif()
+-        endforeach(pydir)
+-    endif(WIN32)
+-
+-    file(TO_NATIVE_PATH ${CMAKE_CURRENT_SOURCE_DIR} srcdir)
+-    file(TO_NATIVE_PATH "${GR_TEST_LIBRARY_DIRS}" libpath) #ok to use on dir list?
+-    file(TO_NATIVE_PATH "${GR_TEST_PYTHON_DIRS}" pypath) #ok to use on dir list?
+-
+-    set(environs "VOLK_GENERIC=1" "GR_DONT_LOAD_PREFS=1" "srcdir=${srcdir}"
+-        "GR_CONF_CONTROLPORT_ON=False")
+-    list(APPEND environs ${GR_TEST_ENVIRONS})
+-
+-    #http://www.cmake.org/pipermail/cmake/2009-May/029464.html
+-    #Replaced this add test + set environs code with the shell script generation.
+-    #Its nicer to be able to manually run the shell script to diagnose problems.
+-    #ADD_TEST(${ARGV})
+-    #SET_TESTS_PROPERTIES(${test_name} PROPERTIES ENVIRONMENT "${environs}")
+-
+-    if(UNIX)
+-        set(LD_PATH_VAR "LD_LIBRARY_PATH")
+-        if(APPLE)
+-            set(LD_PATH_VAR "DYLD_LIBRARY_PATH")
+-        endif()
+-
+-        set(binpath "${CMAKE_CURRENT_BINARY_DIR}:$PATH")
+-        list(APPEND libpath "$${LD_PATH_VAR}")
+-        list(APPEND pypath "$PYTHONPATH")
+-
+-        #replace list separator with the path separator
+-        string(REPLACE ";" ":" libpath "${libpath}")
+-        string(REPLACE ";" ":" pypath "${pypath}")
+-        list(APPEND environs "PATH=${binpath}" "${LD_PATH_VAR}=${libpath}" "PYTHONPATH=${pypath}")
+-
+-        #generate a bat file that sets the environment and runs the test
+-	if (CMAKE_CROSSCOMPILING)
+-                set(SHELL "/bin/sh")
+-        else(CMAKE_CROSSCOMPILING)
+-                find_program(SHELL sh)
+-        endif(CMAKE_CROSSCOMPILING)
+-        set(sh_file ${CMAKE_CURRENT_BINARY_DIR}/${test_name}_test.sh)
+-        file(WRITE ${sh_file} "#!${SHELL}\n")
+-        #each line sets an environment variable
+-        foreach(environ ${environs})
+-            file(APPEND ${sh_file} "export ${environ}\n")
+-        endforeach(environ)
+-        #load the command to run with its arguments
+-        foreach(arg ${ARGN})
+-            file(APPEND ${sh_file} "${arg} ")
+-        endforeach(arg)
+-        file(APPEND ${sh_file} "\n")
+-
+-        #make the shell file executable
+-        execute_process(COMMAND chmod +x ${sh_file})
+-
+-        add_test(${test_name} ${SHELL} ${sh_file})
+-    endif(UNIX)
+-
+-    if(WIN32)
+-        list(APPEND libpath ${DLL_PATHS} "%PATH%")
+-        list(APPEND pypath "%PYTHONPATH%")
+-
+-        #replace list separator with the path separator (escaped)
+-        string(REPLACE ";" "\\;" libpath "${libpath}")
+-        string(REPLACE ";" "\\;" pypath "${pypath}")
+-        list(APPEND environs "PATH=${libpath}" "PYTHONPATH=${pypath}")
+-
+-        #generate a bat file that sets the environment and runs the test
+-        set(bat_file ${CMAKE_CURRENT_BINARY_DIR}/${test_name}_test.bat)
+-        file(WRITE ${bat_file} "@echo off\n")
+-        #each line sets an environment variable
+-        foreach(environ ${environs})
+-            file(APPEND ${bat_file} "SET ${environ}\n")
+-        endforeach(environ)
+-        #load the command to run with its arguments
+-        foreach(arg ${ARGN})
+-            file(APPEND ${bat_file} "${arg} ")
+-        endforeach(arg)
+-        file(APPEND ${bat_file} "\n")
+-
+-        add_test(${test_name} ${bat_file})
+-    endif(WIN32)
+-
+-endfunction(GR_ADD_TEST)
+-
+-########################################################################
+-# Add a C++ unit test and setup the environment for a unit test.
+-# Takes the same arguments as the ADD_TEST function.
+-#
+-# test_name -- An identifier for your test, for usage with ctest -R
+-# test_source -- Path to the .cc file
+-#
+-# Before calling set the following variables:
+-# GR_TEST_TARGET_DEPS  - built targets for the library path
+-########################################################################
+-function(GR_ADD_CPP_TEST test_name test_source)
+-    add_executable(${test_name} ${test_source})
+-    target_link_libraries(
+-        ${test_name}
+-        ${GR_TEST_TARGET_DEPS}
+-    )
+-    set_target_properties(${test_name}
+-        PROPERTIES COMPILE_DEFINITIONS "BOOST_TEST_DYN_LINK;BOOST_TEST_MAIN"
+-    )
+-    GR_ADD_TEST(${test_name} ${test_name})
+-endfunction(GR_ADD_CPP_TEST)
+-
+diff --git a/cmake/Modules/GrVersion.cmake b/cmake/Modules/GrVersion.cmake
+deleted file mode 100644
+index 938d14e..0000000
+--- a/cmake/Modules/GrVersion.cmake
++++ /dev/null
+@@ -1,91 +0,0 @@
+-# Copyright 2011,2013 Free Software Foundation, Inc.
+-#
+-# This file is part of GNU Radio
+-#
+-# GNU Radio is free software; you can redistribute it and/or modify
+-# it under the terms of the GNU General Public License as published by
+-# the Free Software Foundation; either version 3, or (at your option)
+-# any later version.
+-#
+-# GNU Radio is distributed in the hope that it will be useful,
+-# but WITHOUT ANY WARRANTY; without even the implied warranty of
+-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+-# GNU General Public License for more details.
+-#
+-# You should have received a copy of the GNU General Public License
+-# along with GNU Radio; see the file COPYING.  If not, write to
+-# the Free Software Foundation, Inc., 51 Franklin Street,
+-# Boston, MA 02110-1301, USA.
+-
+-if(DEFINED __INCLUDED_GR_VERSION_CMAKE)
+-    return()
+-endif()
+-set(__INCLUDED_GR_VERSION_CMAKE TRUE)
+-
+-#eventually, replace version.sh and fill in the variables below
+-set(MAJOR_VERSION ${VERSION_INFO_MAJOR_VERSION})
+-set(API_COMPAT    ${VERSION_INFO_API_COMPAT})
+-set(MINOR_VERSION ${VERSION_INFO_MINOR_VERSION})
+-set(MAINT_VERSION ${VERSION_INFO_MAINT_VERSION})
+-
+-########################################################################
+-# Extract the version string from git describe.
+-########################################################################
+-find_package(Git)
+-
+-MACRO(create_manual_git_describe)
+-    if(NOT GR_GIT_COUNT)
+-        set(GR_GIT_COUNT "compat-xxx")
+-    endif()
+-    if(NOT GR_GIT_HASH)
+-        set(GR_GIT_HASH "xunknown")
+-    endif()
+-    set(GIT_DESCRIBE "v${MAJOR_VERSION}.${API_COMPAT}-${GR_GIT_COUNT}-${GR_GIT_HASH}")
+-ENDMACRO()
+-
+-if(GIT_FOUND AND EXISTS ${CMAKE_SOURCE_DIR}/.git)
+-    message(STATUS "Extracting version information from git describe...")
+-    execute_process(
+-        COMMAND ${GIT_EXECUTABLE} describe --always --abbrev=8 --long
+-        OUTPUT_VARIABLE GIT_DESCRIBE OUTPUT_STRIP_TRAILING_WHITESPACE
+-        WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+-    )
+-    if(GIT_DESCRIBE STREQUAL "")
+-        create_manual_git_describe()
+-    endif()
+-else()
+-    create_manual_git_describe()
+-endif()
+-
+-########################################################################
+-# Use the logic below to set the version constants
+-########################################################################
+-if("${MINOR_VERSION}" STREQUAL "git")
+-    # VERSION: 3.3git-xxx-gxxxxxxxx
+-    # DOCVER:  3.3git
+-    # LIBVER:  3.3git
+-    set(VERSION "${GIT_DESCRIBE}")
+-    set(DOCVER  "${MAJOR_VERSION}.${API_COMPAT}${MINOR_VERSION}")
+-    set(LIBVER  "${MAJOR_VERSION}.${API_COMPAT}${MINOR_VERSION}")
+-    set(RC_MINOR_VERSION "0")
+-    set(RC_MAINT_VERSION "0")
+-elseif("${MAINT_VERSION}" STREQUAL "git")
+-    # VERSION: 3.3.1git-xxx-gxxxxxxxx
+-    # DOCVER:  3.3.1git
+-    # LIBVER:  3.3.1git
+-    set(VERSION "${GIT_DESCRIBE}")
+-    set(DOCVER  "${MAJOR_VERSION}.${API_COMPAT}.${MINOR_VERSION}${MAINT_VERSION}")
+-    set(LIBVER  "${MAJOR_VERSION}.${API_COMPAT}.${MINOR_VERSION}${MAINT_VERSION}")
+-    math(EXPR RC_MINOR_VERSION "${MINOR_VERSION} - 1")
+-    set(RC_MAINT_VERSION "0")
+-else()
+-    # This is a numbered release.
+-    # VERSION: 3.3.1{.x}
+-    # DOCVER:  3.3.1{.x}
+-    # LIBVER:  3.3.1{.x}
+-    set(VERSION "${MAJOR_VERSION}.${API_COMPAT}.${MINOR_VERSION}.${MAINT_VERSION}")
+-    set(DOCVER "${VERSION}")
+-    set(LIBVER "${VERSION}")
+-    set(RC_MINOR_VERSION ${MINOR_VERSION})
+-    set(RC_MAINT_VERSION ${MAINT_VERSION})
+-endif()
+diff --git a/cmake/Modules/fosphorConfig.cmake b/cmake/Modules/fosphorConfig.cmake
+new file mode 100644
+index 0000000..fa4d0f6
+--- /dev/null
++++ b/cmake/Modules/fosphorConfig.cmake
+@@ -0,0 +1,31 @@
++INCLUDE(FindPkgConfig)
++PKG_CHECK_MODULES(PC_FOSPHOR fosphor)
++
++FIND_PATH(
++    FOSPHOR_INCLUDE_DIRS
++    NAMES fosphor/api.h
++    HINTS $ENV{FOSPHOR_DIR}/include
++        ${PC_FOSPHOR_INCLUDEDIR}
++    PATHS ${CMAKE_INSTALL_PREFIX}/include
++          /usr/local/include
++          /usr/include
++)
++
++FIND_LIBRARY(
++    FOSPHOR_LIBRARIES
++    NAMES gnuradio-fosphor
++    HINTS $ENV{FOSPHOR_DIR}/lib
++        ${PC_FOSPHOR_LIBDIR}
++    PATHS ${CMAKE_INSTALL_PREFIX}/lib
++          ${CMAKE_INSTALL_PREFIX}/lib64
++          /usr/local/lib
++          /usr/local/lib64
++          /usr/lib
++          /usr/lib64
++          )
++
++include("${CMAKE_CURRENT_LIST_DIR}/fosphorTarget.cmake")
++
++INCLUDE(FindPackageHandleStandardArgs)
++FIND_PACKAGE_HANDLE_STANDARD_ARGS(FOSPHOR DEFAULT_MSG FOSPHOR_LIBRARIES FOSPHOR_INCLUDE_DIRS)
++MARK_AS_ADVANCED(FOSPHOR_LIBRARIES FOSPHOR_INCLUDE_DIRS)
+diff --git a/cmake/Modules/targetConfig.cmake.in b/cmake/Modules/targetConfig.cmake.in
+new file mode 100644
+index 0000000..79e4a28
+--- /dev/null
++++ b/cmake/Modules/targetConfig.cmake.in
+@@ -0,0 +1,26 @@
++# Copyright 2018 Free Software Foundation, Inc.
++#
++# This file is part of GNU Radio
++#
++# GNU Radio is free software; you can redistribute it and/or modify
++# it under the terms of the GNU General Public License as published by
++# the Free Software Foundation; either version 3, or (at your option)
++# any later version.
++#
++# GNU Radio is distributed in the hope that it will be useful,
++# but WITHOUT ANY WARRANTY; without even the implied warranty of
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++# GNU General Public License for more details.
++#
++# You should have received a copy of the GNU General Public License
++# along with GNU Radio; see the file COPYING.  If not, write to
++# the Free Software Foundation, Inc., 51 Franklin Street,
++# Boston, MA 02110-1301, USA.
++
++include(CMakeFindDependencyMacro)
++
++set(target_deps "@TARGET_DEPENDENCIES@")
++foreach(dep IN LISTS target_deps)
++    find_dependency(${dep})
++endforeach()
++include("${CMAKE_CURRENT_LIST_DIR}/@TARGET@Targets.cmake")
+diff --git a/docs/CMakeLists.txt b/docs/CMakeLists.txt
+index 446b86a..1a7557d 100644
+--- a/docs/CMakeLists.txt
++++ b/docs/CMakeLists.txt
+@@ -1,6 +1,6 @@
+ # Copyright 2011 Free Software Foundation, Inc.
+ #
+-# This file is part of GNU Radio
++# This file is part of gr-fosphor
+ #
+ # GNU Radio is free software; you can redistribute it and/or modify
+ # it under the terms of the GNU General Public License as published by
+@@ -17,6 +17,11 @@
+ # the Free Software Foundation, Inc., 51 Franklin Street,
+ # Boston, MA 02110-1301, USA.
+ 
++########################################################################
++# Setup dependencies
++########################################################################
++find_package(Doxygen)
++
+ ########################################################################
+ # Begin conditional configuration
+ ########################################################################
+diff --git a/docs/README.fosphor b/docs/README.fosphor
+index 3f34db0..62d55df 100644
+--- a/docs/README.fosphor
++++ b/docs/README.fosphor
+@@ -1,4 +1,4 @@
+-To use the fosphor blocks in Python, import it as :
++To use the fosphor blocks in Python, import it as:
+ 
+     from gnuradio import fosphor
+ 
+diff --git a/docs/doxygen/CMakeLists.txt b/docs/doxygen/CMakeLists.txt
+index 1b44799..56f945a 100644
+--- a/docs/doxygen/CMakeLists.txt
++++ b/docs/doxygen/CMakeLists.txt
+@@ -1,6 +1,6 @@
+ # Copyright 2011 Free Software Foundation, Inc.
+ #
+-# This file is part of GNU Radio
++# This file is part of gr-fosphor
+ #
+ # GNU Radio is free software; you can redistribute it and/or modify
+ # it under the terms of the GNU General Public License as published by
+diff --git a/docs/doxygen/Doxyfile.in b/docs/doxygen/Doxyfile.in
+index eb16447..1df1dfe 100644
+--- a/docs/doxygen/Doxyfile.in
++++ b/docs/doxygen/Doxyfile.in
+@@ -1,14 +1,16 @@
+-# Doxyfile 1.5.7.1
++# Doxyfile 1.8.4
+ 
+ # This file describes the settings to be used by the documentation system
+-# doxygen (www.doxygen.org) for a project
++# doxygen (www.doxygen.org) for a project.
+ #
+-# All text after a hash (#) is considered a comment and will be ignored
++# All text after a double hash (##) is considered a comment and is placed
++# in front of the TAG it is preceding .
++# All text after a hash (#) is considered a comment and will be ignored.
+ # The format is:
+ #       TAG = value [value, ...]
+ # For lists items can also be appended using:
+ #       TAG += value [value, ...]
+-# Values that contain spaces should be placed between quotes (" ")
++# Values that contain spaces should be placed between quotes (" ").
+ 
+ #---------------------------------------------------------------------------
+ # Project related configuration options
+@@ -22,8 +24,9 @@
+ 
+ DOXYFILE_ENCODING      = UTF-8
+ 
+-# The PROJECT_NAME tag is a single word (or a sequence of words surrounded
+-# by quotes) that should identify the project.
++# The PROJECT_NAME tag is a single word (or sequence of words) that should
++# identify the project. Note that if you do not use Doxywizard you need
++# to put quotes around the project name if it contains spaces.
+ 
+ PROJECT_NAME           = "GNU Radio's FOSPHOR Package"
+ 
+@@ -33,6 +36,19 @@ PROJECT_NAME           = "GNU Radio's FOSPHOR Package"
+ 
+ PROJECT_NUMBER         =
+ 
++# Using the PROJECT_BRIEF tag one can provide an optional one line description
++# for a project that appears at the top of each page and should give viewer
++# a quick idea about the purpose of the project. Keep the description short.
++
++PROJECT_BRIEF          =
++
++# With the PROJECT_LOGO tag one can specify an logo or icon that is
++# included in the documentation. The maximum height of the logo should not
++# exceed 55 pixels and the maximum width should not exceed 200 pixels.
++# Doxygen will copy the logo to the output directory.
++
++PROJECT_LOGO           =
++
+ # The OUTPUT_DIRECTORY tag is used to specify the (relative or absolute)
+ # base path where the generated documentation will be put.
+ # If a relative path is entered, it will be relative to the location
+@@ -54,11 +70,11 @@ CREATE_SUBDIRS         = NO
+ # information to generate all constant output in the proper language.
+ # The default language is English, other supported languages are:
+ # Afrikaans, Arabic, Brazilian, Catalan, Chinese, Chinese-Traditional,
+-# Croatian, Czech, Danish, Dutch, Farsi, Finnish, French, German, Greek,
+-# Hungarian, Italian, Japanese, Japanese-en (Japanese with English messages),
+-# Korean, Korean-en, Lithuanian, Norwegian, Macedonian, Persian, Polish,
+-# Portuguese, Romanian, Russian, Serbian, Serbian-Cyrilic, Slovak, Slovene,
+-# Spanish, Swedish, and Ukrainian.
++# Croatian, Czech, Danish, Dutch, Esperanto, Farsi, Finnish, French, German,
++# Greek, Hungarian, Italian, Japanese, Japanese-en (Japanese with English
++# messages), Korean, Korean-en, Latvian, Lithuanian, Norwegian, Macedonian,
++# Persian, Polish, Portuguese, Romanian, Russian, Serbian, Serbian-Cyrillic,
++# Slovak, Slovene, Spanish, Swedish, Ukrainian, and Vietnamese.
+ 
+ OUTPUT_LANGUAGE        = English
+ 
+@@ -112,7 +128,9 @@ FULL_PATH_NAMES        = NO
+ # only done if one of the specified strings matches the left-hand part of
+ # the path. The tag can be used to show relative paths in the file list.
+ # If left blank the directory from which doxygen is run is used as the
+-# path to strip.
++# path to strip. Note that you specify absolute paths here, but also
++# relative paths, which will be relative from the directory where doxygen is
++# started.
+ 
+ STRIP_FROM_PATH        =
+ 
+@@ -126,7 +144,7 @@ STRIP_FROM_PATH        =
+ STRIP_FROM_INC_PATH    =
+ 
+ # If the SHORT_NAMES tag is set to YES, doxygen will generate much shorter
+-# (but less readable) file names. This can be useful is your file systems
++# (but less readable) file names. This can be useful if your file system
+ # doesn't support long names like on DOS, Mac, or CD-ROM.
+ 
+ SHORT_NAMES            = NO
+@@ -181,6 +199,13 @@ TAB_SIZE               = 8
+ 
+ ALIASES                =
+ 
++# This tag can be used to specify a number of word-keyword mappings (TCL only).
++# A mapping has the form "name=value". For example adding
++# "class=itcl::class" will allow you to use the command class in the
++# itcl::class meaning.
++
++TCL_SUBST              =
++
+ # Set the OPTIMIZE_OUTPUT_FOR_C tag to YES if your project consists of C
+ # sources only. Doxygen will then generate output that is more tailored for C.
+ # For instance, some of the names that are used will be different. The list
+@@ -207,11 +232,40 @@ OPTIMIZE_FOR_FORTRAN   = NO
+ 
+ OPTIMIZE_OUTPUT_VHDL   = NO
+ 
++# Doxygen selects the parser to use depending on the extension of the files it
++# parses. With this tag you can assign which parser to use for a given
++# extension. Doxygen has a built-in mapping, but you can override or extend it
++# using this tag. The format is ext=language, where ext is a file extension,
++# and language is one of the parsers supported by doxygen: IDL, Java,
++# Javascript, CSharp, C, C++, D, PHP, Objective-C, Python, Fortran, VHDL, C,
++# C++. For instance to make doxygen treat .inc files as Fortran files (default
++# is PHP), and .f files as C (default is Fortran), use: inc=Fortran f=C. Note
++# that for custom extensions you also need to set FILE_PATTERNS otherwise the
++# files are not read by doxygen.
++
++EXTENSION_MAPPING      =
++
++# If MARKDOWN_SUPPORT is enabled (the default) then doxygen pre-processes all
++# comments according to the Markdown format, which allows for more readable
++# documentation. See http://daringfireball.net/projects/markdown/ for details.
++# The output of markdown processing is further processed by doxygen, so you
++# can mix doxygen, HTML, and XML commands with Markdown formatting.
++# Disable only in case of backward compatibilities issues.
++
++MARKDOWN_SUPPORT       = YES
++
++# When enabled doxygen tries to link words that correspond to documented
++# classes, or namespaces to their corresponding documentation. Such a link can
++# be prevented in individual cases by by putting a % sign in front of the word
++# or globally by setting AUTOLINK_SUPPORT to NO.
++
++AUTOLINK_SUPPORT       = YES
++
+ # If you use STL classes (i.e. std::string, std::vector, etc.) but do not want
+ # to include (a tag file for) the STL sources as input, then you should
+ # set this tag to YES in order to let doxygen match functions declarations and
+ # definitions whose arguments contain STL classes (e.g. func(std::string); v.s.
+-# func(std::string) {}). This also make the inheritance and collaboration
++# func(std::string) {}). This also makes the inheritance and collaboration
+ # diagrams that involve STL classes more complete and accurate.
+ 
+ BUILTIN_STL_SUPPORT    = YES
+@@ -227,10 +281,10 @@ CPP_CLI_SUPPORT        = NO
+ 
+ SIP_SUPPORT            = NO
+ 
+-# For Microsoft's IDL there are propget and propput attributes to indicate getter
+-# and setter methods for a property. Setting this option to YES (the default)
+-# will make doxygen to replace the get and set methods by a property in the
+-# documentation. This will only work if the methods are indeed getting or
++# For Microsoft's IDL there are propget and propput attributes to indicate
++# getter and setter methods for a property. Setting this option to YES (the
++# default) will make doxygen replace the get and set methods by a property in
++# the documentation. This will only work if the methods are indeed getting or
+ # setting a simple type. If this is not the case, or you want to show the
+ # methods anyway, you should set this option to NO.
+ 
+@@ -251,6 +305,22 @@ DISTRIBUTE_GROUP_DOC   = NO
+ 
+ SUBGROUPING            = YES
+ 
++# When the INLINE_GROUPED_CLASSES tag is set to YES, classes, structs and
++# unions are shown inside the group in which they are included (e.g. using
++# @ingroup) instead of on a separate page (for HTML and Man pages) or
++# section (for LaTeX and RTF).
++
++INLINE_GROUPED_CLASSES = NO
++
++# When the INLINE_SIMPLE_STRUCTS tag is set to YES, structs, classes, and
++# unions with only public data fields or simple typedef fields will be shown
++# inline in the documentation of the scope in which they are defined (i.e. file,
++# namespace, or group documentation), provided this scope is documented. If set
++# to NO (the default), structs, classes, and unions are shown on a separate
++# page (for HTML and Man pages) or section (for LaTeX and RTF).
++
++INLINE_SIMPLE_STRUCTS  = NO
++
+ # When TYPEDEF_HIDES_STRUCT is enabled, a typedef of a struct, union, or enum
+ # is documented as struct, union, or enum with the name of the typedef. So
+ # typedef struct TypeS {} TypeT, will appear in the documentation as a struct
+@@ -261,21 +331,16 @@ SUBGROUPING            = YES
+ 
+ TYPEDEF_HIDES_STRUCT   = NO
+ 
+-# The SYMBOL_CACHE_SIZE determines the size of the internal cache use to
+-# determine which symbols to keep in memory and which to flush to disk.
+-# When the cache is full, less often used symbols will be written to disk.
+-# For small to medium size projects (<1000 input files) the default value is
+-# probably good enough. For larger projects a too small cache size can cause
+-# doxygen to be busy swapping symbols to and from disk most of the time
+-# causing a significant performance penality.
+-# If the system has enough physical memory increasing the cache will improve the
+-# performance by keeping more symbols in memory. Note that the value works on
+-# a logarithmic scale so increasing the size by one will rougly double the
+-# memory usage. The cache size is given by this formula:
+-# 2^(16+SYMBOL_CACHE_SIZE). The valid range is 0..9, the default is 0,
+-# corresponding to a cache size of 2^16 = 65536 symbols
+-
+-SYMBOL_CACHE_SIZE      = 4
++# The size of the symbol lookup cache can be set using LOOKUP_CACHE_SIZE. This
++# cache is used to resolve symbols given their name and scope. Since this can
++# be an expensive process and often the same symbol appear multiple times in
++# the code, doxygen keeps a cache of pre-resolved symbols. If the cache is too
++# small doxygen will become slower. If the cache is too large, memory is wasted.
++# The cache size is given by this formula: 2^(16+LOOKUP_CACHE_SIZE). The valid
++# range is 0..9, the default is 0, corresponding to a cache size of 2^16 = 65536
++# symbols.
++
++LOOKUP_CACHE_SIZE      = 0
+ 
+ #---------------------------------------------------------------------------
+ # Build related configuration options
+@@ -284,7 +349,7 @@ SYMBOL_CACHE_SIZE      = 4
+ # If the EXTRACT_ALL tag is set to YES doxygen will assume all entities in
+ # documentation are documented, even if no documentation was available.
+ # Private class members and static file members will be hidden unless
+-# the EXTRACT_PRIVATE and EXTRACT_STATIC tags are set to YES
++# the EXTRACT_PRIVATE respectively EXTRACT_STATIC tags are set to YES
+ 
+ EXTRACT_ALL            = YES
+ 
+@@ -293,6 +358,11 @@ EXTRACT_ALL            = YES
+ 
+ EXTRACT_PRIVATE        = NO
+ 
++# If the EXTRACT_PACKAGE tag is set to YES all members with package or internal
++# scope will be included in the documentation.
++
++EXTRACT_PACKAGE        = NO
++
+ # If the EXTRACT_STATIC tag is set to YES all static members of a file
+ # will be included in the documentation.
+ 
+@@ -315,7 +385,7 @@ EXTRACT_LOCAL_METHODS  = NO
+ # extracted and appear in the documentation as a namespace called
+ # 'anonymous_namespace{file}', where file will be replaced with the base
+ # name of the file that contains the anonymous namespace. By default
+-# anonymous namespace are hidden.
++# anonymous namespaces are hidden.
+ 
+ EXTRACT_ANON_NSPACES   = NO
+ 
+@@ -375,6 +445,12 @@ HIDE_SCOPE_NAMES       = NO
+ 
+ SHOW_INCLUDE_FILES     = YES
+ 
++# If the FORCE_LOCAL_INCLUDES tag is set to YES then Doxygen
++# will list include files with double quotes in the documentation
++# rather than with sharp brackets.
++
++FORCE_LOCAL_INCLUDES   = NO
++
+ # If the INLINE_INFO tag is set to YES (the default) then a tag [inline]
+ # is inserted in the documentation for inline members.
+ 
+@@ -394,6 +470,16 @@ SORT_MEMBER_DOCS       = YES
+ 
+ SORT_BRIEF_DOCS        = NO
+ 
++# If the SORT_MEMBERS_CTORS_1ST tag is set to YES then doxygen
++# will sort the (brief and detailed) documentation of class members so that
++# constructors and destructors are listed first. If set to NO (the default)
++# the constructors will appear in the respective orders defined by
++# SORT_MEMBER_DOCS and SORT_BRIEF_DOCS.
++# This tag will be ignored for brief docs if SORT_BRIEF_DOCS is set to NO
++# and ignored for detailed docs if SORT_MEMBER_DOCS is set to NO.
++
++SORT_MEMBERS_CTORS_1ST = NO
++
+ # If the SORT_GROUP_NAMES tag is set to YES then doxygen will sort the
+ # hierarchy of group names into alphabetical order. If set to NO (the default)
+ # the group names will appear in their defined order.
+@@ -410,6 +496,15 @@ SORT_GROUP_NAMES       = NO
+ 
+ SORT_BY_SCOPE_NAME     = NO
+ 
++# If the STRICT_PROTO_MATCHING option is enabled and doxygen fails to
++# do proper type resolution of all parameters of a function it will reject a
++# match between the prototype and the implementation of a member function even
++# if there is only one candidate or it is obvious which candidate to choose
++# by doing a simple string match. By disabling STRICT_PROTO_MATCHING doxygen
++# will still accept a match between prototype and implementation in such cases.
++
++STRICT_PROTO_MATCHING  = NO
++
+ # The GENERATE_TODOLIST tag can be used to enable (YES) or
+ # disable (NO) the todo list. This list is created by putting \todo
+ # commands in the documentation.
+@@ -435,15 +530,16 @@ GENERATE_BUGLIST       = NO
+ GENERATE_DEPRECATEDLIST= NO
+ 
+ # The ENABLED_SECTIONS tag can be used to enable conditional
+-# documentation sections, marked by \if sectionname ... \endif.
++# documentation sections, marked by \if section-label ... \endif
++# and \cond section-label ... \endcond blocks.
+ 
+ ENABLED_SECTIONS       =
+ 
+ # The MAX_INITIALIZER_LINES tag determines the maximum number of lines
+-# the initial value of a variable or define consists of for it to appear in
++# the initial value of a variable or macro consists of for it to appear in
+ # the documentation. If the initializer consists of more lines than specified
+ # here it will be hidden. Use a value of 0 to hide initializers completely.
+-# The appearance of the initializer of individual variables and defines in the
++# The appearance of the initializer of individual variables and macros in the
+ # documentation can be controlled using \showinitializer or \hideinitializer
+ # command in the documentation regardless of this setting.
+ 
+@@ -455,12 +551,6 @@ MAX_INITIALIZER_LINES  = 30
+ 
+ SHOW_USED_FILES        = YES
+ 
+-# If the sources in your project are distributed over multiple directories
+-# then setting the SHOW_DIRECTORIES tag to YES will show the directory hierarchy
+-# in the documentation. The default is NO.
+-
+-SHOW_DIRECTORIES       = NO
+-
+ # Set the SHOW_FILES tag to NO to disable the generation of the Files page.
+ # This will remove the Files entry from the Quick Index and from the
+ # Folder Tree View (if specified). The default is YES.
+@@ -468,7 +558,8 @@ SHOW_DIRECTORIES       = NO
+ SHOW_FILES             = YES
+ 
+ # Set the SHOW_NAMESPACES tag to NO to disable the generation of the
+-# Namespaces page.  This will remove the Namespaces entry from the Quick Index
++# Namespaces page.
++# This will remove the Namespaces entry from the Quick Index
+ # and from the Folder Tree View (if specified). The default is YES.
+ 
+ SHOW_NAMESPACES        = NO
+@@ -483,15 +574,26 @@ SHOW_NAMESPACES        = NO
+ 
+ FILE_VERSION_FILTER    =
+ 
+-# The LAYOUT_FILE tag can be used to specify a layout file which will be parsed by
+-# doxygen. The layout file controls the global structure of the generated output files
+-# in an output format independent way. The create the layout file that represents
+-# doxygen's defaults, run doxygen with the -l option. You can optionally specify a
+-# file name after the option, if omitted DoxygenLayout.xml will be used as the name
+-# of the layout file.
++# The LAYOUT_FILE tag can be used to specify a layout file which will be parsed
++# by doxygen. The layout file controls the global structure of the generated
++# output files in an output format independent way. To create the layout file
++# that represents doxygen's defaults, run doxygen with the -l option.
++# You can optionally specify a file name after the option, if omitted
++# DoxygenLayout.xml will be used as the name of the layout file.
+ 
+ LAYOUT_FILE            =
+ 
++# The CITE_BIB_FILES tag can be used to specify one or more bib files
++# containing the references data. This must be a list of .bib files. The
++# .bib extension is automatically appended if omitted. Using this command
++# requires the bibtex tool to be installed. See also
++# http://en.wikipedia.org/wiki/BibTeX for more info. For LaTeX the style
++# of the bibliography can be controlled using LATEX_BIB_STYLE. To use this
++# feature you need bibtex and perl available in the search path. Do not use
++# file names with spaces, bibtex cannot handle them.
++
++CITE_BIB_FILES         =
++
+ #---------------------------------------------------------------------------
+ # configuration options related to warning and progress messages
+ #---------------------------------------------------------------------------
+@@ -520,7 +622,7 @@ WARN_IF_UNDOCUMENTED   = YES
+ 
+ WARN_IF_DOC_ERROR      = YES
+ 
+-# This WARN_NO_PARAMDOC option can be abled to get warnings for
++# The WARN_NO_PARAMDOC option can be enabled to get warnings for
+ # functions that are documented, but have no documentation for their parameters
+ # or return value. If set to NO (the default) doxygen will only warn about
+ # wrong or incomplete parameter documentation, but not about the absence of
+@@ -552,7 +654,8 @@ WARN_LOGFILE           =
+ # directories like "/usr/src/myproject". Separate the files or directories
+ # with spaces.
+ 
+-INPUT                  = @top_srcdir@ @top_builddir@
++INPUT                  = @top_srcdir@ \
++                         @top_builddir@
+ 
+ # This tag can be used to specify the character encoding of the source files
+ # that doxygen parses. Internally doxygen uses the UTF-8 encoding, which is
+@@ -566,8 +669,9 @@ INPUT_ENCODING         = UTF-8
+ # FILE_PATTERNS tag to specify one or more wildcard pattern (like *.cpp
+ # and *.h) to filter out the source-files in the directories. If left
+ # blank the following patterns are tested:
+-# *.c *.cc *.cxx *.cpp *.c++ *.java *.ii *.ixx *.ipp *.i++ *.inl *.h *.hh *.hxx
+-# *.hpp *.h++ *.idl *.odl *.cs *.php *.php3 *.inc *.m *.mm *.py *.f90
++# *.c *.cc *.cxx *.cpp *.c++ *.d *.java *.ii *.ixx *.ipp *.i++ *.inl *.h *.hh
++# *.hxx *.hpp *.h++ *.idl *.odl *.cs *.php *.php3 *.inc *.m *.mm *.dox *.py
++# *.f90 *.f *.for *.vhd *.vhdl
+ 
+ FILE_PATTERNS          = *.h \
+                          *.dox
+@@ -578,18 +682,20 @@ FILE_PATTERNS          = *.h \
+ 
+ RECURSIVE              = YES
+ 
+-# The EXCLUDE tag can be used to specify files and/or directories that should
++# The EXCLUDE tag can be used to specify files and/or directories that should be
+ # excluded from the INPUT source files. This way you can easily exclude a
+ # subdirectory from a directory tree whose root is specified with the INPUT tag.
++# Note that relative paths are relative to the directory from which doxygen is
++# run.
+ 
+ EXCLUDE                = @abs_top_builddir@/docs/doxygen/html \
+-		         @abs_top_builddir@/docs/doxygen/xml \
++                         @abs_top_builddir@/docs/doxygen/xml \
+                          @abs_top_builddir@/docs/doxygen/other/doxypy.py \
+-			 @abs_top_builddir@/_CPack_Packages \
++                         @abs_top_builddir@/_CPack_Packages \
+                          @abs_top_srcdir@/cmake
+ 
+-# The EXCLUDE_SYMLINKS tag can be used select whether or not files or
+-# directories that are symbolic links (a Unix filesystem feature) are excluded
++# The EXCLUDE_SYMLINKS tag can be used to select whether or not files or
++# directories that are symbolic links (a Unix file system feature) are excluded
+ # from the input.
+ 
+ EXCLUDE_SYMLINKS       = NO
+@@ -615,13 +721,26 @@ EXCLUDE_PATTERNS       = */.deps/* \
+ # wildcard * is used, a substring. Examples: ANamespace, AClass,
+ # AClass::ANamespace, ANamespace::*Test
+ 
+-EXCLUDE_SYMBOLS        = \
++EXCLUDE_SYMBOLS        = ad9862 \
+                          numpy \
+                          *swig* \
+                          *Swig* \
++                         *my_top_block* \
++                         *my_graph* \
++                         *app_top_block* \
++                         *am_rx_graph* \
++                         *_queue_watcher_thread* \
++                         *parse* \
++                         *MyFrame* \
++                         *MyApp* \
+                          *PyObject* \
++                         *wfm_rx_block* \
+                          *_sptr* \
+-                         *debug*
++                         *debug* \
++                         *wfm_rx_sca_block* \
++                         *tv_rx_block* \
++                         *wxapt_rx_block* \
++                         *example_signal*
+ 
+ # The EXAMPLE_PATH tag can be used to specify one or more files or
+ # directories that contain example code fragments that are included (see
+@@ -654,17 +773,22 @@ IMAGE_PATH             =
+ # by executing (via popen()) the command <filter> <input-file>, where <filter>
+ # is the value of the INPUT_FILTER tag, and <input-file> is the name of an
+ # input file. Doxygen will then use the output that the filter program writes
+-# to standard output.  If FILTER_PATTERNS is specified, this tag will be
+-# ignored.
++# to standard output.
++# If FILTER_PATTERNS is specified, this tag will be ignored.
++# Note that the filter must not add or remove lines; it is applied before the
++# code is scanned, but not when the output code is generated. If lines are added
++# or removed, the anchors will not be placed correctly.
+ 
+ INPUT_FILTER           =
+ 
+ # The FILTER_PATTERNS tag can be used to specify filters on a per file pattern
+-# basis.  Doxygen will compare the file name with each pattern and apply the
+-# filter if there is a match.  The filters are a list of the form:
++# basis.
++# Doxygen will compare the file name with each pattern and apply the
++# filter if there is a match.
++# The filters are a list of the form:
+ # pattern=filter (like *.cpp=my_cpp_filter). See INPUT_FILTER for further
+-# info on how filters are used. If FILTER_PATTERNS is empty, INPUT_FILTER
+-# is applied to all files.
++# info on how filters are used. If FILTER_PATTERNS is empty or if
++# non of the patterns match the file name, INPUT_FILTER is applied.
+ 
+ FILTER_PATTERNS        = *.py=@top_srcdir@/doc/doxygen/other/doxypy.py
+ 
+@@ -674,6 +798,21 @@ FILTER_PATTERNS        = *.py=@top_srcdir@/doc/doxygen/other/doxypy.py
+ 
+ FILTER_SOURCE_FILES    = NO
+ 
++# The FILTER_SOURCE_PATTERNS tag can be used to specify source filters per file
++# pattern. A pattern will override the setting for FILTER_PATTERN (if any)
++# and it is also possible to disable source filtering for a specific pattern
++# using *.ext= (so without naming a filter). This option only has effect when
++# FILTER_SOURCE_FILES is enabled.
++
++FILTER_SOURCE_PATTERNS =
++
++# If the USE_MD_FILE_AS_MAINPAGE tag refers to the name of a markdown file that
++# is part of the input, its contents will be placed on the main page
++# (index.html). This can be useful if you have a project on for instance GitHub
++# and want reuse the introduction page also for the doxygen output.
++
++USE_MDFILE_AS_MAINPAGE =
++
+ #---------------------------------------------------------------------------
+ # configuration options related to source browsing
+ #---------------------------------------------------------------------------
+@@ -692,7 +831,7 @@ INLINE_SOURCES         = NO
+ 
+ # Setting the STRIP_CODE_COMMENTS tag to YES (the default) will instruct
+ # doxygen to hide any special comment blocks from generated source code
+-# fragments. Normal C and C++ comments will always remain visible.
++# fragments. Normal C, C++ and Fortran comments will always remain visible.
+ 
+ STRIP_CODE_COMMENTS    = NO
+ 
+@@ -711,7 +850,8 @@ REFERENCES_RELATION    = YES
+ # If the REFERENCES_LINK_SOURCE tag is set to YES (the default)
+ # and SOURCE_BROWSER tag is set to YES, then the hyperlinks from
+ # functions in REFERENCES_RELATION and REFERENCED_BY_RELATION lists will
+-# link to the source code.  Otherwise they will link to the documentstion.
++# link to the source code.
++# Otherwise they will link to the documentation.
+ 
+ REFERENCES_LINK_SOURCE = YES
+ 
+@@ -775,7 +915,14 @@ HTML_FILE_EXTENSION    = .html
+ 
+ # The HTML_HEADER tag can be used to specify a personal HTML header for
+ # each generated HTML page. If it is left blank doxygen will generate a
+-# standard header.
++# standard header. Note that when using a custom header you are responsible
++#  for the proper inclusion of any scripts and style sheets that doxygen
++# needs, which is dependent on the configuration options used.
++# It is advised to generate a default header using "doxygen -w html
++# header.html footer.html stylesheet.css YourConfigFile" and then modify
++# that header. Note that the header is subject to change so you typically
++# have to redo this when upgrading to a newer version of doxygen or when
++# changing the value of configuration settings such as GENERATE_TREEVIEW!
+ 
+ HTML_HEADER            =
+ 
+@@ -787,27 +934,80 @@ HTML_FOOTER            =
+ 
+ # The HTML_STYLESHEET tag can be used to specify a user-defined cascading
+ # style sheet that is used by each HTML page. It can be used to
+-# fine-tune the look of the HTML output. If the tag is left blank doxygen
+-# will generate a default style sheet. Note that doxygen will try to copy
+-# the style sheet file to the HTML output directory, so don't put your own
+-# stylesheet in the HTML output directory as well, or it will be erased!
++# fine-tune the look of the HTML output. If left blank doxygen will
++# generate a default style sheet. Note that it is recommended to use
++# HTML_EXTRA_STYLESHEET instead of this one, as it is more robust and this
++# tag will in the future become obsolete.
+ 
+ HTML_STYLESHEET        =
+ 
+-# If the HTML_ALIGN_MEMBERS tag is set to YES, the members of classes,
+-# files or namespaces will be aligned in HTML using tables. If set to
+-# NO a bullet list will be used.
++# The HTML_EXTRA_STYLESHEET tag can be used to specify an additional
++# user-defined cascading style sheet that is included after the standard
++# style sheets created by doxygen. Using this option one can overrule
++# certain style aspects. This is preferred over using HTML_STYLESHEET
++# since it does not replace the standard style sheet and is therefore more
++# robust against future updates. Doxygen will copy the style sheet file to
++# the output directory.
+ 
+-HTML_ALIGN_MEMBERS     = YES
++HTML_EXTRA_STYLESHEET  =
++
++# The HTML_EXTRA_FILES tag can be used to specify one or more extra images or
++# other source files which should be copied to the HTML output directory. Note
++# that these files will be copied to the base HTML output directory. Use the
++# $relpath^ marker in the HTML_HEADER and/or HTML_FOOTER files to load these
++# files. In the HTML_STYLESHEET file, use the file name only. Also note that
++# the files will be copied as-is; there are no commands or markers available.
++
++HTML_EXTRA_FILES       =
++
++# The HTML_COLORSTYLE_HUE tag controls the color of the HTML output.
++# Doxygen will adjust the colors in the style sheet and background images
++# according to this color. Hue is specified as an angle on a colorwheel,
++# see http://en.wikipedia.org/wiki/Hue for more information.
++# For instance the value 0 represents red, 60 is yellow, 120 is green,
++# 180 is cyan, 240 is blue, 300 purple, and 360 is red again.
++# The allowed range is 0 to 359.
++
++HTML_COLORSTYLE_HUE    = 220
++
++# The HTML_COLORSTYLE_SAT tag controls the purity (or saturation) of
++# the colors in the HTML output. For a value of 0 the output will use
++# grayscales only. A value of 255 will produce the most vivid colors.
++
++HTML_COLORSTYLE_SAT    = 100
++
++# The HTML_COLORSTYLE_GAMMA tag controls the gamma correction applied to
++# the luminance component of the colors in the HTML output. Values below
++# 100 gradually make the output lighter, whereas values above 100 make
++# the output darker. The value divided by 100 is the actual gamma applied,
++# so 80 represents a gamma of 0.8, The value 220 represents a gamma of 2.2,
++# and 100 does not change the gamma.
++
++HTML_COLORSTYLE_GAMMA  = 80
++
++# If the HTML_TIMESTAMP tag is set to YES then the footer of each generated HTML
++# page will contain the date and time when the page was generated. Setting
++# this to NO can help when comparing the output of multiple runs.
++
++HTML_TIMESTAMP         = NO
+ 
+ # If the HTML_DYNAMIC_SECTIONS tag is set to YES then the generated HTML
+ # documentation will contain sections that can be hidden and shown after the
+-# page has loaded. For this to work a browser that supports
+-# JavaScript and DHTML is required (for instance Mozilla 1.0+, Firefox
+-# Netscape 6.0+, Internet explorer 5.0+, Konqueror, or Safari).
++# page has loaded.
+ 
+ HTML_DYNAMIC_SECTIONS  = NO
+ 
++# With HTML_INDEX_NUM_ENTRIES one can control the preferred number of
++# entries shown in the various tree structured indices initially; the user
++# can expand and collapse entries dynamically later on. Doxygen will expand
++# the tree to such a level that at most the specified number of entries are
++# visible (unless a fully collapsed tree already exceeds this amount).
++# So setting the number of entries 1 will produce a full collapsed tree by
++# default. 0 is a special value representing an infinite number of entries
++# and will result in a full expanded tree by default.
++
++HTML_INDEX_NUM_ENTRIES = 100
++
+ # If the GENERATE_DOCSET tag is set to YES, additional index files
+ # will be generated that can be used as input for Apple's Xcode 3
+ # integrated development environment, introduced with OSX 10.5 (Leopard).
+@@ -816,7 +1016,8 @@ HTML_DYNAMIC_SECTIONS  = NO
+ # directory and running "make install" will install the docset in
+ # ~/Library/Developer/Shared/Documentation/DocSets so that Xcode will find
+ # it at startup.
+-# See http://developer.apple.com/tools/creatingdocsetswithdoxygen.html for more information.
++# See http://developer.apple.com/tools/creatingdocsetswithdoxygen.html
++# for more information.
+ 
+ GENERATE_DOCSET        = NO
+ 
+@@ -834,6 +1035,16 @@ DOCSET_FEEDNAME        = "Doxygen generated docs"
+ 
+ DOCSET_BUNDLE_ID       = org.doxygen.Project
+ 
++# When GENERATE_PUBLISHER_ID tag specifies a string that should uniquely
++# identify the documentation publisher. This should be a reverse domain-name
++# style string, e.g. com.mycompany.MyDocSet.documentation.
++
++DOCSET_PUBLISHER_ID    = org.doxygen.Publisher
++
++# The GENERATE_PUBLISHER_NAME tag identifies the documentation publisher.
++
++DOCSET_PUBLISHER_NAME  = Publisher
++
+ # If the GENERATE_HTMLHELP tag is set to YES, additional index files
+ # will be generated that can be used as input for tools like the
+ # Microsoft HTML help workshop to generate a compiled HTML help file (.chm)
+@@ -878,10 +1089,10 @@ BINARY_TOC             = NO
+ 
+ TOC_EXPAND             = YES
+ 
+-# If the GENERATE_QHP tag is set to YES and both QHP_NAMESPACE and QHP_VIRTUAL_FOLDER
+-# are set, an additional index file will be generated that can be used as input for
+-# Qt's qhelpgenerator to generate a Qt Compressed Help (.qch) of the generated
+-# HTML documentation.
++# If the GENERATE_QHP tag is set to YES and both QHP_NAMESPACE and
++# QHP_VIRTUAL_FOLDER are set, an additional index file will be generated
++# that can be used as input for Qt's qhelpgenerator to generate a
++# Qt Compressed Help (.qch) of the generated HTML documentation.
+ 
+ GENERATE_QHP           = NO
+ 
+@@ -893,57 +1104,99 @@ QCH_FILE               =
+ 
+ # The QHP_NAMESPACE tag specifies the namespace to use when generating
+ # Qt Help Project output. For more information please see
+-# <a href="http://doc.trolltech.com/qthelpproject.html#namespace">Qt Help Project / Namespace</a>.
++# http://doc.trolltech.com/qthelpproject.html#namespace
+ 
+ QHP_NAMESPACE          = org.doxygen.Project
+ 
+ # The QHP_VIRTUAL_FOLDER tag specifies the namespace to use when generating
+ # Qt Help Project output. For more information please see
+-# <a href="http://doc.trolltech.com/qthelpproject.html#virtual-folders">Qt Help Project / Virtual Folders</a>.
++# http://doc.trolltech.com/qthelpproject.html#virtual-folders
+ 
+ QHP_VIRTUAL_FOLDER     = doc
+ 
++# If QHP_CUST_FILTER_NAME is set, it specifies the name of a custom filter to
++# add. For more information please see
++# http://doc.trolltech.com/qthelpproject.html#custom-filters
++
++QHP_CUST_FILTER_NAME   =
++
++# The QHP_CUST_FILT_ATTRS tag specifies the list of the attributes of the
++# custom filter to add. For more information please see
++# <a href="http://doc.trolltech.com/qthelpproject.html#custom-filters">
++# Qt Help Project / Custom Filters</a>.
++
++QHP_CUST_FILTER_ATTRS  =
++
++# The QHP_SECT_FILTER_ATTRS tag specifies the list of the attributes this
++# project's
++# filter section matches.
++# <a href="http://doc.trolltech.com/qthelpproject.html#filter-attributes">
++# Qt Help Project / Filter Attributes</a>.
++
++QHP_SECT_FILTER_ATTRS  =
++
+ # If the GENERATE_QHP tag is set to YES, the QHG_LOCATION tag can
+ # be used to specify the location of Qt's qhelpgenerator.
+ # If non-empty doxygen will try to run qhelpgenerator on the generated
+-# .qhp file .
++# .qhp file.
+ 
+ QHG_LOCATION           =
+ 
+-# The DISABLE_INDEX tag can be used to turn on/off the condensed index at
+-# top of each HTML page. The value NO (the default) enables the index and
+-# the value YES disables it.
++# If the GENERATE_ECLIPSEHELP tag is set to YES, additional index files
++#  will be generated, which together with the HTML files, form an Eclipse help
++# plugin. To install this plugin and make it available under the help contents
++# menu in Eclipse, the contents of the directory containing the HTML and XML
++# files needs to be copied into the plugins directory of eclipse. The name of
++# the directory within the plugins directory should be the same as
++# the ECLIPSE_DOC_ID value. After copying Eclipse needs to be restarted before
++# the help appears.
+ 
+-DISABLE_INDEX          = YES
++GENERATE_ECLIPSEHELP   = NO
+ 
+-# This tag can be used to set the number of enum values (range [1..20])
+-# that doxygen will group on one line in the generated HTML documentation.
++# A unique identifier for the eclipse help plugin. When installing the plugin
++# the directory name containing the HTML and XML files should also have
++# this name.
+ 
+-ENUM_VALUES_PER_LINE   = 4
++ECLIPSE_DOC_ID         = org.doxygen.Project
++
++# The DISABLE_INDEX tag can be used to turn on/off the condensed index (tabs)
++# at top of each HTML page. The value NO (the default) enables the index and
++# the value YES disables it. Since the tabs have the same information as the
++# navigation tree you can set this option to NO if you already set
++# GENERATE_TREEVIEW to YES.
++
++DISABLE_INDEX          = YES
+ 
+ # The GENERATE_TREEVIEW tag is used to specify whether a tree-like index
+ # structure should be generated to display hierarchical information.
+-# If the tag value is set to FRAME, a side panel will be generated
++# If the tag value is set to YES, a side panel will be generated
+ # containing a tree-like index structure (just like the one that
+ # is generated for HTML Help). For this to work a browser that supports
+-# JavaScript, DHTML, CSS and frames is required (for instance Mozilla 1.0+,
+-# Netscape 6.0+, Internet explorer 5.0+, or Konqueror). Windows users are
+-# probably better off using the HTML help feature. Other possible values
+-# for this tag are: HIERARCHIES, which will generate the Groups, Directories,
+-# and Class Hierarchy pages using a tree view instead of an ordered list;
+-# ALL, which combines the behavior of FRAME and HIERARCHIES; and NONE, which
+-# disables this behavior completely. For backwards compatibility with previous
+-# releases of Doxygen, the values YES and NO are equivalent to FRAME and NONE
+-# respectively.
++# JavaScript, DHTML, CSS and frames is required (i.e. any modern browser).
++# Windows users are probably better off using the HTML help feature.
++# Since the tree basically has the same information as the tab index you
++# could consider to set DISABLE_INDEX to NO when enabling this option.
+ 
+ GENERATE_TREEVIEW      = YES
+ 
++# The ENUM_VALUES_PER_LINE tag can be used to set the number of enum values
++# (range [0,1..20]) that doxygen will group on one line in the generated HTML
++# documentation. Note that a value of 0 will completely suppress the enum
++# values from appearing in the overview section.
++
++ENUM_VALUES_PER_LINE   = 4
++
+ # If the treeview is enabled (see GENERATE_TREEVIEW) then this tag can be
+ # used to set the initial width (in pixels) of the frame in which the tree
+ # is shown.
+ 
+ TREEVIEW_WIDTH         = 180
+ 
++# When the EXT_LINKS_IN_WINDOW option is set to YES doxygen will open
++# links to external symbols imported via tag files in a separate window.
++
++EXT_LINKS_IN_WINDOW    = NO
++
+ # Use this tag to change the font size of Latex formulas included
+ # as images in the HTML documentation. The default is 10. Note that
+ # when you change the font size after a successful doxygen run you need
+@@ -952,6 +1205,112 @@ TREEVIEW_WIDTH         = 180
+ 
+ FORMULA_FONTSIZE       = 10
+ 
++# Use the FORMULA_TRANPARENT tag to determine whether or not the images
++# generated for formulas are transparent PNGs. Transparent PNGs are
++# not supported properly for IE 6.0, but are supported on all modern browsers.
++# Note that when changing this option you need to delete any form_*.png files
++# in the HTML output before the changes have effect.
++
++FORMULA_TRANSPARENT    = YES
++
++# Enable the USE_MATHJAX option to render LaTeX formulas using MathJax
++# (see http://www.mathjax.org) which uses client side Javascript for the
++# rendering instead of using prerendered bitmaps. Use this if you do not
++# have LaTeX installed or if you want to formulas look prettier in the HTML
++# output. When enabled you may also need to install MathJax separately and
++# configure the path to it using the MATHJAX_RELPATH option.
++
++USE_MATHJAX            = NO
++
++# When MathJax is enabled you can set the default output format to be used for
++# the MathJax output. Supported types are HTML-CSS, NativeMML (i.e. MathML) and
++# SVG. The default value is HTML-CSS, which is slower, but has the best
++# compatibility.
++
++MATHJAX_FORMAT         = HTML-CSS
++
++# When MathJax is enabled you need to specify the location relative to the
++# HTML output directory using the MATHJAX_RELPATH option. The destination
++# directory should contain the MathJax.js script. For instance, if the mathjax
++# directory is located at the same level as the HTML output directory, then
++# MATHJAX_RELPATH should be ../mathjax. The default value points to
++# the MathJax Content Delivery Network so you can quickly see the result without
++# installing MathJax.
++# However, it is strongly recommended to install a local
++# copy of MathJax from http://www.mathjax.org before deployment.
++
++MATHJAX_RELPATH        = http://cdn.mathjax.org/mathjax/latest
++
++# The MATHJAX_EXTENSIONS tag can be used to specify one or MathJax extension
++# names that should be enabled during MathJax rendering.
++
++MATHJAX_EXTENSIONS     =
++
++# The MATHJAX_CODEFILE tag can be used to specify a file with javascript
++# pieces of code that will be used on startup of the MathJax code.
++
++MATHJAX_CODEFILE       =
++
++# When the SEARCHENGINE tag is enabled doxygen will generate a search box
++# for the HTML output. The underlying search engine uses javascript
++# and DHTML and should work on any modern browser. Note that when using
++# HTML help (GENERATE_HTMLHELP), Qt help (GENERATE_QHP), or docsets
++# (GENERATE_DOCSET) there is already a search function so this one should
++# typically be disabled. For large projects the javascript based search engine
++# can be slow, then enabling SERVER_BASED_SEARCH may provide a better solution.
++
++SEARCHENGINE           = NO
++
++# When the SERVER_BASED_SEARCH tag is enabled the search engine will be
++# implemented using a web server instead of a web client using Javascript.
++# There are two flavours of web server based search depending on the
++# EXTERNAL_SEARCH setting. When disabled, doxygen will generate a PHP script for
++# searching and an index file used by the script. When EXTERNAL_SEARCH is
++# enabled the indexing and searching needs to be provided by external tools.
++# See the manual for details.
++
++SERVER_BASED_SEARCH    = NO
++
++# When EXTERNAL_SEARCH is enabled doxygen will no longer generate the PHP
++# script for searching. Instead the search results are written to an XML file
++# which needs to be processed by an external indexer. Doxygen will invoke an
++# external search engine pointed to by the SEARCHENGINE_URL option to obtain
++# the search results. Doxygen ships with an example indexer (doxyindexer) and
++# search engine (doxysearch.cgi) which are based on the open source search
++# engine library Xapian. See the manual for configuration details.
++
++EXTERNAL_SEARCH        = NO
++
++# The SEARCHENGINE_URL should point to a search engine hosted by a web server
++# which will returned the search results when EXTERNAL_SEARCH is enabled.
++# Doxygen ships with an example search engine (doxysearch) which is based on
++# the open source search engine library Xapian. See the manual for configuration
++# details.
++
++SEARCHENGINE_URL       =
++
++# When SERVER_BASED_SEARCH and EXTERNAL_SEARCH are both enabled the unindexed
++# search data is written to a file for indexing by an external tool. With the
++# SEARCHDATA_FILE tag the name of this file can be specified.
++
++SEARCHDATA_FILE        = searchdata.xml
++
++# When SERVER_BASED_SEARCH AND EXTERNAL_SEARCH are both enabled the
++# EXTERNAL_SEARCH_ID tag can be used as an identifier for the project. This is
++# useful in combination with EXTRA_SEARCH_MAPPINGS to search through multiple
++# projects and redirect the results back to the right project.
++
++EXTERNAL_SEARCH_ID     =
++
++# The EXTRA_SEARCH_MAPPINGS tag can be used to enable searching through doxygen
++# projects other than the one defined by this configuration file, but that are
++# all added to the same external search index. Each project needs to have a
++# unique id set via EXTERNAL_SEARCH_ID. The search mapping then maps the id
++# of to a relative location where the documentation can be found.
++# The format is: EXTRA_SEARCH_MAPPINGS = id1=loc1 id2=loc2 ...
++
++EXTRA_SEARCH_MAPPINGS  =
++
+ #---------------------------------------------------------------------------
+ # configuration options related to the LaTeX output
+ #---------------------------------------------------------------------------
+@@ -969,6 +1328,9 @@ LATEX_OUTPUT           = latex
+ 
+ # The LATEX_CMD_NAME tag can be used to specify the LaTeX command name to be
+ # invoked. If left blank `latex' will be used as the default command name.
++# Note that when enabling USE_PDFLATEX this option is only used for
++# generating bitmaps for formulas in the HTML output, but not in the
++# Makefile that is written to the output directory.
+ 
+ LATEX_CMD_NAME         = latex
+ 
+@@ -985,8 +1347,8 @@ MAKEINDEX_CMD_NAME     = makeindex
+ COMPACT_LATEX          = NO
+ 
+ # The PAPER_TYPE tag can be used to set the paper type that is used
+-# by the printer. Possible values are: a4, a4wide, letter, legal and
+-# executive. If left blank a4wide will be used.
++# by the printer. Possible values are: a4, letter, legal and
++# executive. If left blank a4 will be used.
+ 
+ PAPER_TYPE             = letter
+ 
+@@ -1002,6 +1364,20 @@ EXTRA_PACKAGES         =
+ 
+ LATEX_HEADER           =
+ 
++# The LATEX_FOOTER tag can be used to specify a personal LaTeX footer for
++# the generated latex document. The footer should contain everything after
++# the last chapter. If it is left blank doxygen will generate a
++# standard footer. Notice: only use this tag if you know what you are doing!
++
++LATEX_FOOTER           =
++
++# The LATEX_EXTRA_FILES tag can be used to specify one or more extra images
++# or other source files which should be copied to the LaTeX output directory.
++# Note that the files will be copied as-is; there are no commands or markers
++# available.
++
++LATEX_EXTRA_FILES      =
++
+ # If the PDF_HYPERLINKS tag is set to YES, the LaTeX that is generated
+ # is prepared for conversion to pdf (using ps2pdf). The pdf file will
+ # contain links (just like the HTML output) instead of page references
+@@ -1028,6 +1404,19 @@ LATEX_BATCHMODE        = NO
+ 
+ LATEX_HIDE_INDICES     = NO
+ 
++# If LATEX_SOURCE_CODE is set to YES then doxygen will include
++# source code with syntax highlighting in the LaTeX output.
++# Note that which sources are shown also depends on other settings
++# such as SOURCE_BROWSER.
++
++LATEX_SOURCE_CODE      = NO
++
++# The LATEX_BIB_STYLE tag can be used to specify the style to use for the
++# bibliography, e.g. plainnat, or ieeetr. The default style is "plain". See
++# http://en.wikipedia.org/wiki/BibTeX for more info.
++
++LATEX_BIB_STYLE        = plain
++
+ #---------------------------------------------------------------------------
+ # configuration options related to the RTF output
+ #---------------------------------------------------------------------------
+@@ -1059,7 +1448,7 @@ COMPACT_RTF            = NO
+ 
+ RTF_HYPERLINKS         = NO
+ 
+-# Load stylesheet definitions from file. Syntax is similar to doxygen's
++# Load style sheet definitions from file. Syntax is similar to doxygen's
+ # config file, i.e. a series of assignments. You only have to provide
+ # replacements, missing definitions are set to their default value.
+ 
+@@ -1114,18 +1503,6 @@ GENERATE_XML           = @enable_xml_docs@
+ 
+ XML_OUTPUT             = xml
+ 
+-# The XML_SCHEMA tag can be used to specify an XML schema,
+-# which can be used by a validating XML parser to check the
+-# syntax of the XML files.
+-
+-XML_SCHEMA             =
+-
+-# The XML_DTD tag can be used to specify an XML DTD,
+-# which can be used by a validating XML parser to check the
+-# syntax of the XML files.
+-
+-XML_DTD                =
+-
+ # If the XML_PROGRAMLISTING tag is set to YES Doxygen will
+ # dump the program listings (including syntax highlighting
+ # and cross-referencing information) to the XML output. Note that
+@@ -1133,6 +1510,21 @@ XML_DTD                =
+ 
+ XML_PROGRAMLISTING     = NO
+ 
++#---------------------------------------------------------------------------
++# configuration options related to the DOCBOOK output
++#---------------------------------------------------------------------------
++
++# If the GENERATE_DOCBOOK tag is set to YES Doxygen will generate DOCBOOK files
++# that can be used to generate PDF.
++
++GENERATE_DOCBOOK       = NO
++
++# The DOCBOOK_OUTPUT tag is used to specify where the DOCBOOK pages will be put.
++# If a relative path is entered the value of OUTPUT_DIRECTORY will be put in
++# front of it. If left blank docbook will be used as the default path.
++
++DOCBOOK_OUTPUT         = docbook
++
+ #---------------------------------------------------------------------------
+ # configuration options for the AutoGen Definitions output
+ #---------------------------------------------------------------------------
+@@ -1164,8 +1556,10 @@ GENERATE_PERLMOD       = NO
+ PERLMOD_LATEX          = NO
+ 
+ # If the PERLMOD_PRETTY tag is set to YES the Perl module output will be
+-# nicely formatted so it can be parsed by a human reader.  This is useful
+-# if you want to understand what is going on.  On the other hand, if this
++# nicely formatted so it can be parsed by a human reader.
++# This is useful
++# if you want to understand what is going on.
++# On the other hand, if this
+ # tag is set to NO the size of the Perl module output will be much smaller
+ # and Perl will parse it just the same.
+ 
+@@ -1202,7 +1596,7 @@ MACRO_EXPANSION        = NO
+ EXPAND_ONLY_PREDEF     = NO
+ 
+ # If the SEARCH_INCLUDES tag is set to YES (the default) the includes files
+-# in the INCLUDE_PATH (see below) will be search if a #include is found.
++# pointed to by INCLUDE_PATH will be searched when a #include is found.
+ 
+ SEARCH_INCLUDES        = YES
+ 
+@@ -1232,15 +1626,15 @@ PREDEFINED             =
+ # If the MACRO_EXPANSION and EXPAND_ONLY_PREDEF tags are set to YES then
+ # this tag can be used to specify a list of macro names that should be expanded.
+ # The macro definition that is found in the sources will be used.
+-# Use the PREDEFINED tag if you want to use a different macro definition.
++# Use the PREDEFINED tag if you want to use a different macro definition that
++# overrules the definition found in the source code.
+ 
+ EXPAND_AS_DEFINED      =
+ 
+ # If the SKIP_FUNCTION_MACROS tag is set to YES (the default) then
+-# doxygen's preprocessor will remove all function-like macros that are alone
+-# on a line, have an all uppercase name, and do not end with a semicolon. Such
+-# function macros are typically used for boiler-plate code, and will confuse
+-# the parser if not removed.
++# doxygen's preprocessor will remove all references to function-like macros
++# that are alone on a line, have an all uppercase name, and do not end with a
++# semicolon, because these will confuse the parser if not removed.
+ 
+ SKIP_FUNCTION_MACROS   = YES
+ 
+@@ -1248,20 +1642,18 @@ SKIP_FUNCTION_MACROS   = YES
+ # Configuration::additions related to external references
+ #---------------------------------------------------------------------------
+ 
+-# The TAGFILES option can be used to specify one or more tagfiles.
+-# Optionally an initial location of the external documentation
+-# can be added for each tagfile. The format of a tag file without
+-# this location is as follows:
+-#   TAGFILES = file1 file2 ...
++# The TAGFILES option can be used to specify one or more tagfiles. For each
++# tag file the location of the external documentation should be added. The
++# format of a tag file without this location is as follows:
++#
++# TAGFILES = file1 file2 ...
+ # Adding location for the tag files is done as follows:
+-#   TAGFILES = file1=loc1 "file2 = loc2" ...
+-# where "loc1" and "loc2" can be relative or absolute paths or
+-# URLs. If a location is present for each tag, the installdox tool
+-# does not have to be run to correct the links.
+-# Note that each tag file must have a unique name
+-# (where the name does NOT include the path)
+-# If a tag file is not located in the directory in which doxygen
+-# is run, you must also specify the path to the tagfile here.
++#
++# TAGFILES = file1=loc1 "file2 = loc2" ...
++# where "loc1" and "loc2" can be relative or absolute paths
++# or URLs. Note that each tag file must have a unique name (where the name does
++# NOT include the path). If a tag file is not located in the directory in which
++# doxygen is run, you must also specify the path to the tagfile here.
+ 
+ TAGFILES               =
+ 
+@@ -1282,6 +1674,12 @@ ALLEXTERNALS           = NO
+ 
+ EXTERNAL_GROUPS        = YES
+ 
++# If the EXTERNAL_PAGES tag is set to YES all external pages will be listed
++# in the related pages index. If set to NO, only the current project's
++# pages will be listed.
++
++EXTERNAL_PAGES         = YES
++
+ # The PERL_PATH should be the absolute path and name of the perl script
+ # interpreter (i.e. the result of `which perl').
+ 
+@@ -1294,9 +1692,8 @@ PERL_PATH              = /usr/bin/perl
+ # If the CLASS_DIAGRAMS tag is set to YES (the default) Doxygen will
+ # generate a inheritance diagram (in HTML, RTF and LaTeX) for classes with base
+ # or super classes. Setting the tag to NO turns the diagrams off. Note that
+-# this option is superseded by the HAVE_DOT option below. This is only a
+-# fallback. It is recommended to install and use dot, since it yields more
+-# powerful graphs.
++# this option also works with HAVE_DOT disabled, but it is recommended to
++# install and use dot, since it yields more powerful graphs.
+ 
+ CLASS_DIAGRAMS         = YES
+ 
+@@ -1322,33 +1719,38 @@ HIDE_UNDOC_RELATIONS   = YES
+ 
+ HAVE_DOT               = @HAVE_DOT@
+ 
+-# By default doxygen will write a font called FreeSans.ttf to the output
+-# directory and reference it in all dot files that doxygen generates. This
+-# font does not include all possible unicode characters however, so when you need
+-# these (or just want a differently looking font) you can specify the font name
+-# using DOT_FONTNAME. You need need to make sure dot is able to find the font,
+-# which can be done by putting it in a standard location or by setting the
+-# DOTFONTPATH environment variable or by setting DOT_FONTPATH to the directory
+-# containing the font.
++# The DOT_NUM_THREADS specifies the number of dot invocations doxygen is
++# allowed to run in parallel. When set to 0 (the default) doxygen will
++# base this on the number of processors available in the system. You can set it
++# explicitly to a value larger than 0 to get control over the balance
++# between CPU load and processing speed.
++
++DOT_NUM_THREADS        = 0
++
++# By default doxygen will use the Helvetica font for all dot files that
++# doxygen generates. When you want a differently looking font you can specify
++# the font name using DOT_FONTNAME. You need to make sure dot is able to find
++# the font, which can be done by putting it in a standard location or by setting
++# the DOTFONTPATH environment variable or by setting DOT_FONTPATH to the
++# directory containing the font.
+ 
+-DOT_FONTNAME           = FreeSans
++DOT_FONTNAME           = Helvetica
+ 
+ # The DOT_FONTSIZE tag can be used to set the size of the font of dot graphs.
+ # The default size is 10pt.
+ 
+ DOT_FONTSIZE           = 10
+ 
+-# By default doxygen will tell dot to use the output directory to look for the
+-# FreeSans.ttf font (which doxygen will put there itself). If you specify a
+-# different font using DOT_FONTNAME you can set the path where dot
+-# can find it using this tag.
++# By default doxygen will tell dot to use the Helvetica font.
++# If you specify a different font using DOT_FONTNAME you can use DOT_FONTPATH to
++# set the path where dot can find it.
+ 
+ DOT_FONTPATH           =
+ 
+ # If the CLASS_GRAPH and HAVE_DOT tags are set to YES then doxygen
+ # will generate a graph for each documented class showing the direct and
+ # indirect inheritance relations. Setting this tag to YES will force the
+-# the CLASS_DIAGRAMS tag to NO.
++# CLASS_DIAGRAMS tag to NO.
+ 
+ CLASS_GRAPH            = YES
+ 
+@@ -1370,6 +1772,15 @@ GROUP_GRAPHS           = YES
+ 
+ UML_LOOK               = NO
+ 
++# If the UML_LOOK tag is enabled, the fields and methods are shown inside
++# the class node. If there are many fields or methods and many nodes the
++# graph may become too big to be useful. The UML_LIMIT_NUM_FIELDS
++# threshold limits the number of items for each type to make the size more
++# manageable. Set this to 0 for no limit. Note that the threshold may be
++# exceeded by 50% before the limit is enforced.
++
++UML_LIMIT_NUM_FIELDS   = 10
++
+ # If set to YES, the inheritance and collaboration graphs will show the
+ # relations between templates and their instances.
+ 
+@@ -1406,11 +1817,11 @@ CALL_GRAPH             = NO
+ CALLER_GRAPH           = NO
+ 
+ # If the GRAPHICAL_HIERARCHY and HAVE_DOT tags are set to YES then doxygen
+-# will graphical hierarchy of all classes instead of a textual one.
++# will generate a graphical hierarchy of all classes instead of a textual one.
+ 
+ GRAPHICAL_HIERARCHY    = YES
+ 
+-# If the DIRECTORY_GRAPH, SHOW_DIRECTORIES and HAVE_DOT tags are set to YES
++# If the DIRECTORY_GRAPH and HAVE_DOT tags are set to YES
+ # then doxygen will show the dependencies a directory has on other directories
+ # in a graphical way. The dependency relations are determined by the #include
+ # relations between the files in the directories.
+@@ -1418,11 +1829,22 @@ GRAPHICAL_HIERARCHY    = YES
+ DIRECTORY_GRAPH        = YES
+ 
+ # The DOT_IMAGE_FORMAT tag can be used to set the image format of the images
+-# generated by dot. Possible values are png, jpg, or gif
+-# If left blank png will be used.
++# generated by dot. Possible values are svg, png, jpg, or gif.
++# If left blank png will be used. If you choose svg you need to set
++# HTML_FILE_EXTENSION to xhtml in order to make the SVG files
++# visible in IE 9+ (other browsers do not have this requirement).
+ 
+ DOT_IMAGE_FORMAT       = png
+ 
++# If DOT_IMAGE_FORMAT is set to svg, then this option can be set to YES to
++# enable generation of interactive SVG images that allow zooming and panning.
++# Note that this requires a modern browser other than Internet Explorer.
++# Tested and working are Firefox, Chrome, Safari, and Opera. For IE 9+ you
++# need to set HTML_FILE_EXTENSION to xhtml in order to make the SVG files
++# visible. Older versions of IE do not have SVG support.
++
++INTERACTIVE_SVG        = NO
++
+ # The tag DOT_PATH can be used to specify the path where the dot tool can be
+ # found. If left blank, it is assumed the dot tool can be found in the path.
+ 
+@@ -1434,6 +1856,12 @@ DOT_PATH               =
+ 
+ DOTFILE_DIRS           =
+ 
++# The MSCFILE_DIRS tag can be used to specify one or more directories that
++# contain msc files that are included in the documentation (see the
++# \mscfile command).
++
++MSCFILE_DIRS           =
++
+ # The DOT_GRAPH_MAX_NODES tag can be used to set the maximum number of
+ # nodes that will be shown in the graph. If the number of nodes in a graph
+ # becomes larger than this value, doxygen will truncate the graph, which is
+@@ -1480,12 +1908,3 @@ GENERATE_LEGEND        = YES
+ # the various graphs.
+ 
+ DOT_CLEANUP            = YES
+-
+-#---------------------------------------------------------------------------
+-# Configuration::additions related to the search engine
+-#---------------------------------------------------------------------------
+-
+-# The SEARCHENGINE tag specifies whether or not a search engine should be
+-# used. If set to NO the values of all tags below this one will be ignored.
+-
+-SEARCHENGINE           = NO
+diff --git a/docs/doxygen/Doxyfile.swig_doc.in b/docs/doxygen/Doxyfile.swig_doc.in
+index 19014c4..33bc2af 100644
+--- a/docs/doxygen/Doxyfile.swig_doc.in
++++ b/docs/doxygen/Doxyfile.swig_doc.in
+@@ -1,8 +1,10 @@
+-# Doxyfile 1.8.3.1
++# Doxyfile 1.8.4
+ 
+ # This file describes the settings to be used by the documentation system
+ # doxygen (www.doxygen.org) for a project.
+ #
++# All text after a double hash (##) is considered a comment and is placed
++# in front of the TAG it is preceding .
+ # All text after a hash (#) is considered a comment and will be ignored.
+ # The format is:
+ #       TAG = value [value, ...]
+@@ -70,9 +72,9 @@ CREATE_SUBDIRS         = NO
+ # Afrikaans, Arabic, Brazilian, Catalan, Chinese, Chinese-Traditional,
+ # Croatian, Czech, Danish, Dutch, Esperanto, Farsi, Finnish, French, German,
+ # Greek, Hungarian, Italian, Japanese, Japanese-en (Japanese with English
+-# messages), Korean, Korean-en, Lithuanian, Norwegian, Macedonian, Persian,
+-# Polish, Portuguese, Romanian, Russian, Serbian, Serbian-Cyrillic, Slovak,
+-# Slovene, Spanish, Swedish, Ukrainian, and Vietnamese.
++# messages), Korean, Korean-en, Latvian, Lithuanian, Norwegian, Macedonian,
++# Persian, Polish, Portuguese, Romanian, Russian, Serbian, Serbian-Cyrillic,
++# Slovak, Slovene, Spanish, Swedish, Ukrainian, and Vietnamese.
+ 
+ OUTPUT_LANGUAGE        = English
+ 
+@@ -119,7 +121,7 @@ INLINE_INHERITED_MEMB  = NO
+ # path before files name in the file list and in the header files. If set
+ # to NO the shortest path that makes the file name unique will be used.
+ 
+-FULL_PATH_NAMES        = YES
++FULL_PATH_NAMES        = NO
+ 
+ # If the FULL_PATH_NAMES tag is set to YES then the STRIP_FROM_PATH tag
+ # can be used to strip a user-defined part of the path. Stripping is
+@@ -252,10 +254,10 @@ EXTENSION_MAPPING      =
+ 
+ MARKDOWN_SUPPORT       = YES
+ 
+-# When enabled doxygen tries to link words that correspond to documented classes,
+-# or namespaces to their corresponding documentation. Such a link can be
+-# prevented in individual cases by by putting a % sign in front of the word or
+-# globally by setting AUTOLINK_SUPPORT to NO.
++# When enabled doxygen tries to link words that correspond to documented
++# classes, or namespaces to their corresponding documentation. Such a link can
++# be prevented in individual cases by by putting a % sign in front of the word
++# or globally by setting AUTOLINK_SUPPORT to NO.
+ 
+ AUTOLINK_SUPPORT       = YES
+ 
+@@ -311,11 +313,11 @@ SUBGROUPING            = YES
+ INLINE_GROUPED_CLASSES = NO
+ 
+ # When the INLINE_SIMPLE_STRUCTS tag is set to YES, structs, classes, and
+-# unions with only public data fields will be shown inline in the documentation
+-# of the scope in which they are defined (i.e. file, namespace, or group
+-# documentation), provided this scope is documented. If set to NO (the default),
+-# structs, classes, and unions are shown on a separate page (for HTML and Man
+-# pages) or section (for LaTeX and RTF).
++# unions with only public data fields or simple typedef fields will be shown
++# inline in the documentation of the scope in which they are defined (i.e. file,
++# namespace, or group documentation), provided this scope is documented. If set
++# to NO (the default), structs, classes, and unions are shown on a separate
++# page (for HTML and Man pages) or section (for LaTeX and RTF).
+ 
+ INLINE_SIMPLE_STRUCTS  = NO
+ 
+@@ -329,30 +331,14 @@ INLINE_SIMPLE_STRUCTS  = NO
+ 
+ TYPEDEF_HIDES_STRUCT   = NO
+ 
+-# The SYMBOL_CACHE_SIZE determines the size of the internal cache use to
+-# determine which symbols to keep in memory and which to flush to disk.
+-# When the cache is full, less often used symbols will be written to disk.
+-# For small to medium size projects (<1000 input files) the default value is
+-# probably good enough. For larger projects a too small cache size can cause
+-# doxygen to be busy swapping symbols to and from disk most of the time
+-# causing a significant performance penalty.
+-# If the system has enough physical memory increasing the cache will improve the
+-# performance by keeping more symbols in memory. Note that the value works on
+-# a logarithmic scale so increasing the size by one will roughly double the
+-# memory usage. The cache size is given by this formula:
+-# 2^(16+SYMBOL_CACHE_SIZE). The valid range is 0..9, the default is 0,
+-# corresponding to a cache size of 2^16 = 65536 symbols.
+-
+-SYMBOL_CACHE_SIZE      = 0
+-
+-# Similar to the SYMBOL_CACHE_SIZE the size of the symbol lookup cache can be
+-# set using LOOKUP_CACHE_SIZE. This cache is used to resolve symbols given
+-# their name and scope. Since this can be an expensive process and often the
+-# same symbol appear multiple times in the code, doxygen keeps a cache of
+-# pre-resolved symbols. If the cache is too small doxygen will become slower.
+-# If the cache is too large, memory is wasted. The cache size is given by this
+-# formula: 2^(16+LOOKUP_CACHE_SIZE). The valid range is 0..9, the default is 0,
+-# corresponding to a cache size of 2^16 = 65536 symbols.
++# The size of the symbol lookup cache can be set using LOOKUP_CACHE_SIZE. This
++# cache is used to resolve symbols given their name and scope. Since this can
++# be an expensive process and often the same symbol appear multiple times in
++# the code, doxygen keeps a cache of pre-resolved symbols. If the cache is too
++# small doxygen will become slower. If the cache is too large, memory is wasted.
++# The cache size is given by this formula: 2^(16+LOOKUP_CACHE_SIZE). The valid
++# range is 0..9, the default is 0, corresponding to a cache size of 2^16 = 65536
++# symbols.
+ 
+ LOOKUP_CACHE_SIZE      = 0
+ 
+@@ -363,7 +349,7 @@ LOOKUP_CACHE_SIZE      = 0
+ # If the EXTRACT_ALL tag is set to YES doxygen will assume all entities in
+ # documentation are documented, even if no documentation was available.
+ # Private class members and static file members will be hidden unless
+-# the EXTRACT_PRIVATE and EXTRACT_STATIC tags are set to YES
++# the EXTRACT_PRIVATE respectively EXTRACT_STATIC tags are set to YES
+ 
+ EXTRACT_ALL            = YES
+ 
+@@ -756,8 +742,10 @@ IMAGE_PATH             =
+ # is the value of the INPUT_FILTER tag, and <input-file> is the name of an
+ # input file. Doxygen will then use the output that the filter program writes
+ # to standard output.
+-# If FILTER_PATTERNS is specified, this tag will be
+-# ignored.
++# If FILTER_PATTERNS is specified, this tag will be ignored.
++# Note that the filter must not add or remove lines; it is applied before the
++# code is scanned, but not when the output code is generated. If lines are added
++# or removed, the anchors will not be placed correctly.
+ 
+ INPUT_FILTER           =
+ 
+@@ -787,9 +775,9 @@ FILTER_SOURCE_FILES    = NO
+ FILTER_SOURCE_PATTERNS =
+ 
+ # If the USE_MD_FILE_AS_MAINPAGE tag refers to the name of a markdown file that
+-# is part of the input, its contents will be placed on the main page (index.html).
+-# This can be useful if you have a project on for instance GitHub and want reuse
+-# the introduction page also for the doxygen output.
++# is part of the input, its contents will be placed on the main page
++# (index.html). This can be useful if you have a project on for instance GitHub
++# and want reuse the introduction page also for the doxygen output.
+ 
+ USE_MDFILE_AS_MAINPAGE =
+ 
+@@ -925,7 +913,7 @@ HTML_STYLESHEET        =
+ # user-defined cascading style sheet that is included after the standard
+ # style sheets created by doxygen. Using this option one can overrule
+ # certain style aspects. This is preferred over using HTML_STYLESHEET
+-# since it does not replace the standard style sheet and is therefor more
++# since it does not replace the standard style sheet and is therefore more
+ # robust against future updates. Doxygen will copy the style sheet file to
+ # the output directory.
+ 
+@@ -934,7 +922,7 @@ HTML_EXTRA_STYLESHEET  =
+ # The HTML_EXTRA_FILES tag can be used to specify one or more extra images or
+ # other source files which should be copied to the HTML output directory. Note
+ # that these files will be copied to the base HTML output directory. Use the
+-# $relpath$ marker in the HTML_HEADER and/or HTML_FOOTER files to load these
++# $relpath^ marker in the HTML_HEADER and/or HTML_FOOTER files to load these
+ # files. In the HTML_STYLESHEET file, use the file name only. Also note that
+ # the files will be copied as-is; there are no commands or markers available.
+ 
+@@ -969,7 +957,7 @@ HTML_COLORSTYLE_GAMMA  = 80
+ # page will contain the date and time when the page was generated. Setting
+ # this to NO can help when comparing the output of multiple runs.
+ 
+-HTML_TIMESTAMP         = YES
++HTML_TIMESTAMP         = NO
+ 
+ # If the HTML_DYNAMIC_SECTIONS tag is set to YES then the generated HTML
+ # documentation will contain sections that can be hidden and shown after the
+@@ -1203,7 +1191,7 @@ FORMULA_TRANSPARENT    = YES
+ USE_MATHJAX            = NO
+ 
+ # When MathJax is enabled you can set the default output format to be used for
+-# thA MathJax output. Supported types are HTML-CSS, NativeMML (i.e. MathML) and
++# the MathJax output. Supported types are HTML-CSS, NativeMML (i.e. MathML) and
+ # SVG. The default value is HTML-CSS, which is slower, but has the best
+ # compatibility.
+ 
+@@ -1226,6 +1214,11 @@ MATHJAX_RELPATH        = http://cdn.mathjax.org/mathjax/latest
+ 
+ MATHJAX_EXTENSIONS     =
+ 
++# The MATHJAX_CODEFILE tag can be used to specify a file with javascript
++# pieces of code that will be used on startup of the MathJax code.
++
++MATHJAX_CODEFILE       =
++
+ # When the SEARCHENGINE tag is enabled doxygen will generate a search box
+ # for the HTML output. The underlying search engine uses javascript
+ # and DHTML and should work on any modern browser. Note that when using
+@@ -1251,8 +1244,8 @@ SERVER_BASED_SEARCH    = NO
+ # which needs to be processed by an external indexer. Doxygen will invoke an
+ # external search engine pointed to by the SEARCHENGINE_URL option to obtain
+ # the search results. Doxygen ships with an example indexer (doxyindexer) and
+-# search engine (doxysearch.cgi) which are based on the open source search engine
+-# library Xapian. See the manual for configuration details.
++# search engine (doxysearch.cgi) which are based on the open source search
++# engine library Xapian. See the manual for configuration details.
+ 
+ EXTERNAL_SEARCH        = NO
+ 
+@@ -1323,7 +1316,7 @@ COMPACT_LATEX          = NO
+ 
+ # The PAPER_TYPE tag can be used to set the paper type that is used
+ # by the printer. Possible values are: a4, letter, legal and
+-# executive. If left blank a4wide will be used.
++# executive. If left blank a4 will be used.
+ 
+ PAPER_TYPE             = a4wide
+ 
+@@ -1346,6 +1339,13 @@ LATEX_HEADER           =
+ 
+ LATEX_FOOTER           =
+ 
++# The LATEX_EXTRA_FILES tag can be used to specify one or more extra images
++# or other source files which should be copied to the LaTeX output directory.
++# Note that the files will be copied as-is; there are no commands or markers
++# available.
++
++LATEX_EXTRA_FILES      =
++
+ # If the PDF_HYPERLINKS tag is set to YES, the LaTeX that is generated
+ # is prepared for conversion to pdf (using ps2pdf). The pdf file will
+ # contain links (just like the HTML output) instead of page references
+@@ -1471,18 +1471,6 @@ GENERATE_XML           = YES
+ 
+ XML_OUTPUT             = xml
+ 
+-# The XML_SCHEMA tag can be used to specify an XML schema,
+-# which can be used by a validating XML parser to check the
+-# syntax of the XML files.
+-
+-XML_SCHEMA             =
+-
+-# The XML_DTD tag can be used to specify an XML DTD,
+-# which can be used by a validating XML parser to check the
+-# syntax of the XML files.
+-
+-XML_DTD                =
+-
+ # If the XML_PROGRAMLISTING tag is set to YES Doxygen will
+ # dump the program listings (including syntax highlighting
+ # and cross-referencing information) to the XML output. Note that
+@@ -1490,6 +1478,21 @@ XML_DTD                =
+ 
+ XML_PROGRAMLISTING     = YES
+ 
++#---------------------------------------------------------------------------
++# configuration options related to the DOCBOOK output
++#---------------------------------------------------------------------------
++
++# If the GENERATE_DOCBOOK tag is set to YES Doxygen will generate DOCBOOK files
++# that can be used to generate PDF.
++
++GENERATE_DOCBOOK       = NO
++
++# The DOCBOOK_OUTPUT tag is used to specify where the DOCBOOK pages will be put.
++# If a relative path is entered the value of OUTPUT_DIRECTORY will be put in
++# front of it. If left blank docbook will be used as the default path.
++
++DOCBOOK_OUTPUT         = docbook
++
+ #---------------------------------------------------------------------------
+ # configuration options for the AutoGen Definitions output
+ #---------------------------------------------------------------------------
+@@ -1639,6 +1642,12 @@ ALLEXTERNALS           = NO
+ 
+ EXTERNAL_GROUPS        = YES
+ 
++# If the EXTERNAL_PAGES tag is set to YES all external pages will be listed
++# in the related pages index. If set to NO, only the current project's
++# pages will be listed.
++
++EXTERNAL_PAGES         = YES
++
+ # The PERL_PATH should be the absolute path and name of the perl script
+ # interpreter (i.e. the result of `which perl').
+ 
+@@ -1693,7 +1702,7 @@ DOT_NUM_THREADS        = 0
+ # the DOTFONTPATH environment variable or by setting DOT_FONTPATH to the
+ # directory containing the font.
+ 
+-DOT_FONTNAME           = FreeSans
++DOT_FONTNAME           = Helvetica
+ 
+ # The DOT_FONTSIZE tag can be used to set the size of the font of dot graphs.
+ # The default size is 10pt.
+@@ -1735,7 +1744,7 @@ UML_LOOK               = NO
+ # the class node. If there are many fields or methods and many nodes the
+ # graph may become too big to be useful. The UML_LIMIT_NUM_FIELDS
+ # threshold limits the number of items for each type to make the size more
+-# managable. Set this to 0 for no limit. Note that the threshold may be
++# manageable. Set this to 0 for no limit. Note that the threshold may be
+ # exceeded by 50% before the limit is enforced.
+ 
+ UML_LIMIT_NUM_FIELDS   = 10
+diff --git a/docs/doxygen/doxyxml/__init__.py b/docs/doxygen/doxyxml/__init__.py
+index 5cd0b3c..16d1587 100644
+--- a/docs/doxygen/doxyxml/__init__.py
++++ b/docs/doxygen/doxyxml/__init__.py
+@@ -1,7 +1,7 @@
+ #
+ # Copyright 2010 Free Software Foundation, Inc.
+ #
+-# This file is part of GNU Radio
++# This file is part of gr-fosphor
+ #
+ # GNU Radio is free software; you can redistribute it and/or modify
+ # it under the terms of the GNU General Public License as published by
+@@ -63,8 +63,9 @@ This line is uninformative and is only to test line breaks in the comments.
+ u'Outputs the vital aadvark statistics.'
+ 
+ """
++from __future__ import unicode_literals
+ 
+-from doxyindex import DoxyIndex, DoxyFunction, DoxyParam, DoxyClass, DoxyFile, DoxyNamespace, DoxyGroup, DoxyFriend, DoxyOther
++from .doxyindex import DoxyIndex, DoxyFunction, DoxyParam, DoxyClass, DoxyFile, DoxyNamespace, DoxyGroup, DoxyFriend, DoxyOther
+ 
+ def _test():
+     import os
+diff --git a/docs/doxygen/doxyxml/base.py b/docs/doxygen/doxyxml/base.py
+index e8f026a..9e4a579 100644
+--- a/docs/doxygen/doxyxml/base.py
++++ b/docs/doxygen/doxyxml/base.py
+@@ -1,7 +1,7 @@
+ #
+ # Copyright 2010 Free Software Foundation, Inc.
+ #
+-# This file is part of GNU Radio
++# This file is part of gr-fosphor
+ #
+ # GNU Radio is free software; you can redistribute it and/or modify
+ # it under the terms of the GNU General Public License as published by
+@@ -24,24 +24,26 @@ A base class is created.
+ Classes based upon this are used to make more user-friendly interfaces
+ to the doxygen xml docs than the generated classes provide.
+ """
++from __future__ import print_function
++from __future__ import unicode_literals
+ 
+ import os
+ import pdb
+ 
+ from xml.parsers.expat import ExpatError
+ 
+-from generated import compound
++from .generated import compound
+ 
+ 
+ class Base(object):
+ 
+-    class Duplicate(StandardError):
++    class Duplicate(Exception):
+         pass
+ 
+-    class NoSuchMember(StandardError):
++    class NoSuchMember(Exception):
+         pass
+ 
+-    class ParsingError(StandardError):
++    class ParsingError(Exception):
+         pass
+ 
+     def __init__(self, parse_data, top=None):
+@@ -94,7 +96,7 @@ class Base(object):
+         for cls in self.mem_classes:
+             if cls.can_parse(mem):
+                 return cls
+-        raise StandardError(("Did not find a class for object '%s'." \
++        raise Exception(("Did not find a class for object '%s'." \
+                                  % (mem.get_name())))
+ 
+     def convert_mem(self, mem):
+@@ -102,11 +104,11 @@ class Base(object):
+             cls = self.get_cls(mem)
+             converted = cls.from_parse_data(mem, self.top)
+             if converted is None:
+-                raise StandardError('No class matched this object.')
++                raise Exception('No class matched this object.')
+             self.add_ref(converted)
+             return converted
+-        except StandardError, e:
+-            print e
++        except Exception as e:
++            print(e)
+ 
+     @classmethod
+     def includes(cls, inst):
+diff --git a/docs/doxygen/doxyxml/doxyindex.py b/docs/doxygen/doxyxml/doxyindex.py
+index 0132ab8..1897974 100644
+--- a/docs/doxygen/doxyxml/doxyindex.py
++++ b/docs/doxygen/doxyxml/doxyindex.py
+@@ -1,7 +1,7 @@
+ #
+ # Copyright 2010 Free Software Foundation, Inc.
+ #
+-# This file is part of GNU Radio
++# This file is part of gr-fosphor
+ #
+ # GNU Radio is free software; you can redistribute it and/or modify
+ # it under the terms of the GNU General Public License as published by
+@@ -22,12 +22,14 @@
+ Classes providing more user-friendly interfaces to the doxygen xml
+ docs than the generated classes provide.
+ """
++from __future__ import absolute_import
++from __future__ import unicode_literals
+ 
+ import os
+ 
+-from generated import index
+-from base import Base
+-from text import description
++from .generated import index
++from .base import Base
++from .text import description
+ 
+ class DoxyIndex(Base):
+     """
+@@ -43,13 +45,16 @@ class DoxyIndex(Base):
+         self._root = index.parse(os.path.join(self._xml_path, 'index.xml'))
+         for mem in self._root.compound:
+             converted = self.convert_mem(mem)
+-            # For files we want the contents to be accessible directly
+-            # from the parent rather than having to go through the file
+-            # object.
++            # For files and namespaces we want the contents to be
++            # accessible directly from the parent rather than having
++            # to go through the file object.
+             if self.get_cls(mem) == DoxyFile:
+                 if mem.name.endswith('.h'):
+                     self._members += converted.members()
+                     self._members.append(converted)
++            elif self.get_cls(mem) == DoxyNamespace:
++                self._members += converted.members()
++                self._members.append(converted)
+             else:
+                 self._members.append(converted)
+ 
+@@ -80,13 +85,29 @@ class DoxyCompMem(Base):
+         self._data['brief_description'] = bd
+         self._data['detailed_description'] = dd
+ 
++    def set_parameters(self, data):
++        vs = [ddc.value for ddc in data.detaileddescription.content_]
++        pls = []
++        for v in vs:
++            if hasattr(v, 'parameterlist'):
++                pls += v.parameterlist
++        pis = []
++        for pl in pls:
++            pis += pl.parameteritem
++        dpis = []
++        for pi in pis:
++            dpi = DoxyParameterItem(pi)
++            dpi._parse()
++            dpis.append(dpi)
++        self._data['params'] = dpis
++
++
+ class DoxyCompound(DoxyCompMem):
+     pass
+ 
+ class DoxyMember(DoxyCompMem):
+     pass
+ 
+-
+ class DoxyFunction(DoxyMember):
+ 
+     __module__ = "gnuradio.utils.doxyxml"
+@@ -98,10 +119,13 @@ class DoxyFunction(DoxyMember):
+             return
+         super(DoxyFunction, self)._parse()
+         self.set_descriptions(self._parse_data)
+-        self._data['params'] = []
+-        prms = self._parse_data.param
+-        for prm in prms:
+-            self._data['params'].append(DoxyParam(prm))
++        self.set_parameters(self._parse_data)
++        if not self._data['params']:
++            # If the params weren't set by a comment then just grab the names.
++            self._data['params'] = []
++            prms = self._parse_data.param
++            for prm in prms:
++                self._data['params'].append(DoxyParam(prm))
+ 
+     brief_description = property(lambda self: self.data()['brief_description'])
+     detailed_description = property(lambda self: self.data()['detailed_description'])
+@@ -121,9 +145,39 @@ class DoxyParam(DoxyMember):
+         self.set_descriptions(self._parse_data)
+         self._data['declname'] = self._parse_data.declname
+ 
++    @property
++    def description(self):
++        descriptions = []
++        if self.brief_description:
++            descriptions.append(self.brief_description)
++        if self.detailed_description:
++            descriptions.append(self.detailed_description)
++        return '\n\n'.join(descriptions)
++
+     brief_description = property(lambda self: self.data()['brief_description'])
+     detailed_description = property(lambda self: self.data()['detailed_description'])
+-    declname = property(lambda self: self.data()['declname'])
++    name = property(lambda self: self.data()['declname'])
++
++class DoxyParameterItem(DoxyMember):
++    """A different representation of a parameter in Doxygen."""
++
++    def _parse(self):
++        if self._parsed:
++            return
++        super(DoxyParameterItem, self)._parse()
++        names = []
++        for nl in self._parse_data.parameternamelist:
++            for pn in nl.parametername:
++                names.append(description(pn))
++        # Just take first name
++        self._data['name'] = names[0]
++        # Get description
++        pd = description(self._parse_data.get_parameterdescription())
++        self._data['description'] = pd
++
++    description = property(lambda self: self.data()['description'])
++    name = property(lambda self: self.data()['name'])
++
+ 
+ class DoxyClass(DoxyCompound):
+ 
+@@ -139,12 +193,14 @@ class DoxyClass(DoxyCompound):
+         if self._error:
+             return
+         self.set_descriptions(self._retrieved_data.compounddef)
++        self.set_parameters(self._retrieved_data.compounddef)
+         # Sectiondef.kind tells about whether private or public.
+         # We just ignore this for now.
+         self.process_memberdefs()
+ 
+     brief_description = property(lambda self: self.data()['brief_description'])
+     detailed_description = property(lambda self: self.data()['detailed_description'])
++    params = property(lambda self: self.data()['params'])
+ 
+ Base.mem_classes.append(DoxyClass)
+ 
+@@ -177,6 +233,16 @@ class DoxyNamespace(DoxyCompound):
+ 
+     kind = 'namespace'
+ 
++    def _parse(self):
++        if self._parsed:
++            return
++        super(DoxyNamespace, self)._parse()
++        self.retrieve_data()
++        self.set_descriptions(self._retrieved_data.compounddef)
++        if self._error:
++            return
++        self.process_memberdefs()
++
+ Base.mem_classes.append(DoxyNamespace)
+ 
+ 
+@@ -227,11 +293,11 @@ class DoxyOther(Base):
+ 
+     __module__ = "gnuradio.utils.doxyxml"
+ 
+-    kinds = set(['variable', 'struct', 'union', 'define', 'typedef', 'enum', 'dir', 'page'])
++    kinds = set(['variable', 'struct', 'union', 'define', 'typedef', 'enum',
++                 'dir', 'page', 'signal', 'slot', 'property'])
+ 
+     @classmethod
+     def can_parse(cls, obj):
+         return obj.kind in cls.kinds
+ 
+ Base.mem_classes.append(DoxyOther)
+-
+diff --git a/docs/doxygen/doxyxml/generated/__init__.py b/docs/doxygen/doxyxml/generated/__init__.py
+index 3982397..23095c1 100644
+--- a/docs/doxygen/doxyxml/generated/__init__.py
++++ b/docs/doxygen/doxyxml/generated/__init__.py
+@@ -5,3 +5,4 @@ These do the real work of parsing the doxygen xml files but the
+ resultant classes are not very friendly to navigate so the rest of the
+ doxyxml module processes them further.
+ """
++from __future__ import unicode_literals
+diff --git a/docs/doxygen/doxyxml/generated/compound.py b/docs/doxygen/doxyxml/generated/compound.py
+index 1522ac2..acfa0dd 100644
+--- a/docs/doxygen/doxyxml/generated/compound.py
++++ b/docs/doxygen/doxyxml/generated/compound.py
+@@ -3,15 +3,17 @@
+ """
+ Generated Mon Feb  9 19:08:05 2009 by generateDS.py.
+ """
++from __future__ import absolute_import
++from __future__ import unicode_literals
++
+ 
+-from string import lower as str_lower
+ from xml.dom import minidom
+ from xml.dom import Node
+ 
+ import sys
+ 
+-import compoundsuper as supermod
+-from compoundsuper import MixedContainer
++from . import compoundsuper as supermod
++from .compoundsuper import MixedContainer
+ 
+ 
+ class DoxygenTypeSub(supermod.DoxygenType):
+diff --git a/docs/doxygen/doxyxml/generated/compoundsuper.py b/docs/doxygen/doxyxml/generated/compoundsuper.py
+index 6255dda..6e984e1 100644
+--- a/docs/doxygen/doxyxml/generated/compoundsuper.py
++++ b/docs/doxygen/doxyxml/generated/compoundsuper.py
+@@ -4,12 +4,17 @@
+ # Generated Thu Jun 11 18:44:25 2009 by generateDS.py.
+ #
+ 
++from __future__ import print_function
++from __future__ import unicode_literals
++
+ import sys
+-import getopt
+-from string import lower as str_lower
++
+ from xml.dom import minidom
+ from xml.dom import Node
+ 
++import six
++
++
+ #
+ # User methods
+ #
+@@ -19,9 +24,9 @@ from xml.dom import Node
+ 
+ try:
+     from generatedssuper import GeneratedsSuper
+-except ImportError, exp:
++except ImportError as exp:
+ 
+-    class GeneratedsSuper:
++    class GeneratedsSuper(object):
+         def format_string(self, input_data, input_name=''):
+             return input_data
+         def format_integer(self, input_data, input_name=''):
+@@ -64,7 +69,7 @@ def showIndent(outfile, level):
+         outfile.write('    ')
+ 
+ def quote_xml(inStr):
+-    s1 = (isinstance(inStr, basestring) and inStr or
++    s1 = (isinstance(inStr, six.string_types) and inStr or
+           '%s' % inStr)
+     s1 = s1.replace('&', '&amp;')
+     s1 = s1.replace('<', '&lt;')
+@@ -72,7 +77,7 @@ def quote_xml(inStr):
+     return s1
+ 
+ def quote_attrib(inStr):
+-    s1 = (isinstance(inStr, basestring) and inStr or
++    s1 = (isinstance(inStr, six.string_types) and inStr or
+           '%s' % inStr)
+     s1 = s1.replace('&', '&amp;')
+     s1 = s1.replace('<', '&lt;')
+@@ -102,7 +107,7 @@ def quote_python(inStr):
+             return '"""%s"""' % s1
+ 
+ 
+-class MixedContainer:
++class MixedContainer(object):
+     # Constants for category:
+     CategoryNone = 0
+     CategoryText = 1
+@@ -4221,7 +4226,7 @@ class codelineType(GeneratedsSuper):
+         if attrs.get('lineno'):
+             try:
+                 self.lineno = int(attrs.get('lineno').value)
+-            except ValueError, exp:
++            except ValueError as exp:
+                 raise ValueError('Bad integer attribute (lineno): %s' % exp)
+         if attrs.get('refkind'):
+             self.refkind = attrs.get('refkind').value
+@@ -4504,12 +4509,12 @@ class referenceType(GeneratedsSuper):
+         if attrs.get('endline'):
+             try:
+                 self.endline = int(attrs.get('endline').value)
+-            except ValueError, exp:
++            except ValueError as exp:
+                 raise ValueError('Bad integer attribute (endline): %s' % exp)
+         if attrs.get('startline'):
+             try:
+                 self.startline = int(attrs.get('startline').value)
+-            except ValueError, exp:
++            except ValueError as exp:
+                 raise ValueError('Bad integer attribute (startline): %s' % exp)
+         if attrs.get('refid'):
+             self.refid = attrs.get('refid').value
+@@ -4627,17 +4632,17 @@ class locationType(GeneratedsSuper):
+         if attrs.get('bodystart'):
+             try:
+                 self.bodystart = int(attrs.get('bodystart').value)
+-            except ValueError, exp:
++            except ValueError as exp:
+                 raise ValueError('Bad integer attribute (bodystart): %s' % exp)
+         if attrs.get('line'):
+             try:
+                 self.line = int(attrs.get('line').value)
+-            except ValueError, exp:
++            except ValueError as exp:
+                 raise ValueError('Bad integer attribute (line): %s' % exp)
+         if attrs.get('bodyend'):
+             try:
+                 self.bodyend = int(attrs.get('bodyend').value)
+-            except ValueError, exp:
++            except ValueError as exp:
+                 raise ValueError('Bad integer attribute (bodyend): %s' % exp)
+         if attrs.get('bodyfile'):
+             self.bodyfile = attrs.get('bodyfile').value
+@@ -6778,12 +6783,12 @@ class docTableType(GeneratedsSuper):
+         if attrs.get('rows'):
+             try:
+                 self.rows = int(attrs.get('rows').value)
+-            except ValueError, exp:
++            except ValueError as exp:
+                 raise ValueError('Bad integer attribute (rows): %s' % exp)
+         if attrs.get('cols'):
+             try:
+                 self.cols = int(attrs.get('cols').value)
+-            except ValueError, exp:
++            except ValueError as exp:
+                 raise ValueError('Bad integer attribute (cols): %s' % exp)
+     def buildChildren(self, child_, nodeName_):
+         if child_.nodeType == Node.ELEMENT_NODE and \
+@@ -7108,7 +7113,7 @@ class docHeadingType(GeneratedsSuper):
+         if attrs.get('level'):
+             try:
+                 self.level = int(attrs.get('level').value)
+-            except ValueError, exp:
++            except ValueError as exp:
+                 raise ValueError('Bad integer attribute (level): %s' % exp)
+     def buildChildren(self, child_, nodeName_):
+         if child_.nodeType == Node.TEXT_NODE:
+@@ -8283,7 +8288,7 @@ Options:
+ """
+ 
+ def usage():
+-    print USAGE_TEXT
++    print(USAGE_TEXT)
+     sys.exit(1)
+ 
+ 
+@@ -8339,4 +8344,3 @@ if __name__ == '__main__':
+     main()
+     #import pdb
+     #pdb.run('main()')
+-
+diff --git a/docs/doxygen/doxyxml/generated/index.py b/docs/doxygen/doxyxml/generated/index.py
+index 7a70e14..0c63512 100644
+--- a/docs/doxygen/doxyxml/generated/index.py
++++ b/docs/doxygen/doxyxml/generated/index.py
+@@ -3,14 +3,16 @@
+ """
+ Generated Mon Feb  9 19:08:05 2009 by generateDS.py.
+ """
++from __future__ import absolute_import
++from __future__ import unicode_literals
+ 
+ from xml.dom import minidom
+ 
+ import os
+ import sys
+-import compound
++from . import compound
+ 
+-import indexsuper as supermod
++from . import indexsuper as supermod
+ 
+ class DoxygenTypeSub(supermod.DoxygenType):
+     def __init__(self, version=None, compound=None):
+diff --git a/docs/doxygen/doxyxml/generated/indexsuper.py b/docs/doxygen/doxyxml/generated/indexsuper.py
+index a991530..11312db 100644
+--- a/docs/doxygen/doxyxml/generated/indexsuper.py
++++ b/docs/doxygen/doxyxml/generated/indexsuper.py
+@@ -4,12 +4,16 @@
+ # Generated Thu Jun 11 18:43:54 2009 by generateDS.py.
+ #
+ 
++from __future__ import print_function
++from __future__ import unicode_literals
++
+ import sys
+-import getopt
+-from string import lower as str_lower
++
+ from xml.dom import minidom
+ from xml.dom import Node
+ 
++import six
++
+ #
+ # User methods
+ #
+@@ -19,9 +23,9 @@ from xml.dom import Node
+ 
+ try:
+     from generatedssuper import GeneratedsSuper
+-except ImportError, exp:
++except ImportError as exp:
+ 
+-    class GeneratedsSuper:
++    class GeneratedsSuper(object):
+         def format_string(self, input_data, input_name=''):
+             return input_data
+         def format_integer(self, input_data, input_name=''):
+@@ -64,7 +68,7 @@ def showIndent(outfile, level):
+         outfile.write('    ')
+ 
+ def quote_xml(inStr):
+-    s1 = (isinstance(inStr, basestring) and inStr or
++    s1 = (isinstance(inStr, six.string_types) and inStr or
+           '%s' % inStr)
+     s1 = s1.replace('&', '&amp;')
+     s1 = s1.replace('<', '&lt;')
+@@ -72,7 +76,7 @@ def quote_xml(inStr):
+     return s1
+ 
+ def quote_attrib(inStr):
+-    s1 = (isinstance(inStr, basestring) and inStr or
++    s1 = (isinstance(inStr, six.string_types) and inStr or
+           '%s' % inStr)
+     s1 = s1.replace('&', '&amp;')
+     s1 = s1.replace('<', '&lt;')
+@@ -102,7 +106,7 @@ def quote_python(inStr):
+             return '"""%s"""' % s1
+ 
+ 
+-class MixedContainer:
++class MixedContainer(object):
+     # Constants for category:
+     CategoryNone = 0
+     CategoryText = 1
+@@ -462,7 +466,7 @@ Options:
+ """
+ 
+ def usage():
+-    print USAGE_TEXT
++    print(USAGE_TEXT)
+     sys.exit(1)
+ 
+ 
+@@ -520,4 +524,3 @@ if __name__ == '__main__':
+     main()
+     #import pdb
+     #pdb.run('main()')
+-
+diff --git a/docs/doxygen/doxyxml/text.py b/docs/doxygen/doxyxml/text.py
+index 629edd1..9d9568d 100644
+--- a/docs/doxygen/doxyxml/text.py
++++ b/docs/doxygen/doxyxml/text.py
+@@ -1,7 +1,7 @@
+ #
+ # Copyright 2010 Free Software Foundation, Inc.
+ #
+-# This file is part of GNU Radio
++# This file is part of gr-fosphor
+ #
+ # GNU Radio is free software; you can redistribute it and/or modify
+ # it under the terms of the GNU General Public License as published by
+@@ -21,12 +21,13 @@
+ """
+ Utilities for extracting text from generated classes.
+ """
++from __future__ import unicode_literals
+ 
+ def is_string(txt):
+     if isinstance(txt, str):
+         return True
+     try:
+-        if isinstance(txt, unicode):
++        if isinstance(txt, str):
+             return True
+     except NameError:
+         pass
+@@ -49,7 +50,7 @@ def description_bit(obj):
+     elif is_string(obj):
+         return obj
+     else:
+-        raise StandardError('Expecting a string or something with content, content_ or value attribute')
++        raise Exception('Expecting a string or something with content, content_ or value attribute')
+     # If this bit is a paragraph then add one some line breaks.
+     if hasattr(obj, 'name') and obj.name == 'para':
+         result += "\n\n"
+diff --git a/docs/doxygen/swig_doc.py b/docs/doxygen/swig_doc.py
+index 4e1ce2e..3c86257 100644
+--- a/docs/doxygen/swig_doc.py
++++ b/docs/doxygen/swig_doc.py
+@@ -1,7 +1,7 @@
+ #
+ # Copyright 2010,2011 Free Software Foundation, Inc.
+ #
+-# This file is part of GNU Radio
++# This file is part of gr-fosphor
+ #
+ # GNU Radio is free software; you can redistribute it and/or modify
+ # it under the terms of the GNU General Public License as published by
+@@ -26,14 +26,12 @@ The file instructs SWIG to transfer the doxygen comments into the
+ python docstrings.
+ 
+ """
++from __future__ import unicode_literals
+ 
+-import sys
+-
+-try:
+-    from doxyxml import DoxyIndex, DoxyClass, DoxyFriend, DoxyFunction, DoxyFile, base
+-except ImportError:
+-    from gnuradio.doxyxml import DoxyIndex, DoxyClass, DoxyFriend, DoxyFunction, DoxyFile, base
++import sys, time
+ 
++from doxyxml import DoxyIndex, DoxyClass, DoxyFriend, DoxyFunction, DoxyFile
++from doxyxml import DoxyOther, base
+ 
+ def py_name(name):
+     bits = name.split('_')
+@@ -56,18 +54,41 @@ class Block(object):
+         # Check for a parsing error.
+         if item.error():
+             return False
+-        return item.has_member(make_name(item.name()), DoxyFriend)
++        friendname = make_name(item.name())
++        is_a_block = item.has_member(friendname, DoxyFriend)
++        # But now sometimes the make function isn't a friend so check again.
++        if not is_a_block:
++            is_a_block = di.has_member(friendname, DoxyFunction)
++        return is_a_block
++
++class Block2(object):
++    """
++    Checks if doxyxml produced objects correspond to a new style
++    gnuradio block.
++    """
++
++    @classmethod
++    def includes(cls, item):
++        if not isinstance(item, DoxyClass):
++            return False
++        # Check for a parsing error.
++        if item.error():
++            return False
++        is_a_block2 = item.has_member('make', DoxyFunction) and item.has_member('sptr', DoxyOther)
++        return is_a_block2
+ 
+ 
+ def utoascii(text):
+     """
+-    Convert unicode text into ascii and escape quotes.
++    Convert unicode text into ascii and escape quotes and backslashes.
+     """
+     if text is None:
+         return ''
+     out = text.encode('ascii', 'replace')
+-    out = out.replace('"', '\\"')
+-    return out
++    # swig will require us to replace blackslash with 4 backslashes
++    out = out.replace(b'\\', b'\\\\\\\\')
++    out = out.replace(b'"', b'\\"').decode('ascii')
++    return str(out)
+ 
+ 
+ def combine_descriptions(obj):
+@@ -83,9 +104,15 @@ def combine_descriptions(obj):
+         description.append(dd)
+     return utoascii('\n\n'.join(description)).strip()
+ 
++def format_params(parameteritems):
++    output = ['Args:']
++    template = '    {0} : {1}'
++    for pi in parameteritems:
++        output.append(template.format(pi.name, pi.description))
++    return '\n'.join(output)
+ 
+ entry_templ = '%feature("docstring") {name} "{docstring}"'
+-def make_entry(obj, name=None, templ="{description}", description=None):
++def make_entry(obj, name=None, templ="{description}", description=None, params=[]):
+     """
+     Create a docstring entry for a swig interface file.
+ 
+@@ -102,6 +129,9 @@ def make_entry(obj, name=None, templ="{description}", description=None):
+         return ''
+     if description is None:
+         description = combine_descriptions(obj)
++    if params:
++        description += '\n\n'
++        description += utoascii(format_params(params))
+     docstring = templ.format(description=description)
+     if not docstring:
+         return ''
+@@ -121,27 +151,31 @@ def make_func_entry(func, name=None, description=None, params=None):
+             used as the description instead of extracting it from func.
+     params - a parameter list that overrides using func.params.
+     """
+-    if params is None:
+-        params = func.params
+-    params = [prm.declname for prm in params]
+-    if params:
+-        sig = "Params: (%s)" % ", ".join(params)
+-    else:
+-        sig = "Params: (NONE)"
+-    templ = "{description}\n\n" + sig
+-    return make_entry(func, name=name, templ=utoascii(templ),
+-                      description=description)
+-
+-
+-def make_class_entry(klass, description=None):
++    #if params is None:
++    #    params = func.params
++    #params = [prm.declname for prm in params]
++    #if params:
++    #    sig = "Params: (%s)" % ", ".join(params)
++    #else:
++    #    sig = "Params: (NONE)"
++    #templ = "{description}\n\n" + sig
++    #return make_entry(func, name=name, templ=utoascii(templ),
++    #                  description=description)
++    return make_entry(func, name=name, description=description, params=params)
++
++
++def make_class_entry(klass, description=None, ignored_methods=[], params=None):
+     """
+     Create a class docstring for a swig interface file.
+     """
++    if params is None:
++        params = klass.params
+     output = []
+-    output.append(make_entry(klass, description=description))
++    output.append(make_entry(klass, description=description, params=params))
+     for func in klass.in_category(DoxyFunction):
+-        name = klass.name() + '::' + func.name()
+-        output.append(make_func_entry(func, name=name))
++        if func.name() not in ignored_methods:
++            name = klass.name() + '::' + func.name()
++            output.append(make_func_entry(func, name=name))
+     return "\n\n".join(output)
+ 
+ 
+@@ -175,11 +209,33 @@ def make_block_entry(di, block):
+     # the make function.
+     output = []
+     output.append(make_class_entry(block, description=super_description))
+-    creator = block.get_member(block.name(), DoxyFunction)
+     output.append(make_func_entry(make_func, description=super_description,
+-                                  params=creator.params))
++                                  params=block.params))
+     return "\n\n".join(output)
+ 
++def make_block2_entry(di, block):
++    """
++    Create class and function docstrings of a new style gnuradio block for a
++    swig interface file.
++    """
++    descriptions = []
++    # For new style blocks all the relevant documentation should be
++    # associated with the 'make' method.
++    class_description = combine_descriptions(block)
++    make_func = block.get_member('make', DoxyFunction)
++    make_description = combine_descriptions(make_func)
++    description = class_description + "\n\nConstructor Specific Documentation:\n\n" + make_description
++    # Associate the combined description with the class and
++    # the make function.
++    output = []
++    output.append(make_class_entry(
++            block, description=description,
++            ignored_methods=['make'], params=make_func.params))
++    makename = block.name() + '::make'
++    output.append(make_func_entry(
++            make_func, name=makename, description=description,
++            params=make_func.params))
++    return "\n\n".join(output)
+ 
+ def make_swig_interface_file(di, swigdocfilename, custom_output=None):
+ 
+@@ -196,39 +252,59 @@ def make_swig_interface_file(di, swigdocfilename, custom_output=None):
+ 
+     # Create docstrings for the blocks.
+     blocks = di.in_category(Block)
++    blocks2 = di.in_category(Block2)
++
+     make_funcs = set([])
+     for block in blocks:
+         try:
+             make_func = di.get_member(make_name(block.name()), DoxyFunction)
+-            make_funcs.add(make_func.name())
+-            output.append(make_block_entry(di, block))
++            # Don't want to risk writing to output twice.
++            if make_func.name() not in make_funcs:
++                make_funcs.add(make_func.name())
++                output.append(make_block_entry(di, block))
++        except block.ParsingError:
++            sys.stderr.write('Parsing error for block {0}\n'.format(block.name()))
++            raise
++
++    for block in blocks2:
++        try:
++            make_func = block.get_member('make', DoxyFunction)
++            make_func_name = block.name() +'::make'
++            # Don't want to risk writing to output twice.
++            if make_func_name not in make_funcs:
++                make_funcs.add(make_func_name)
++                output.append(make_block2_entry(di, block))
+         except block.ParsingError:
+-            print('Parsing error for block %s' % block.name())
++            sys.stderr.write('Parsing error for block {0}\n'.format(block.name()))
++            raise
+ 
+     # Create docstrings for functions
+     # Don't include the make functions since they have already been dealt with.
+-    funcs = [f for f in di.in_category(DoxyFunction) if f.name() not in make_funcs]
++    funcs = [f for f in di.in_category(DoxyFunction)
++             if f.name() not in make_funcs and not f.name().startswith('std::')]
+     for f in funcs:
+         try:
+             output.append(make_func_entry(f))
+         except f.ParsingError:
+-            print('Parsing error for function %s' % f.name())
++            sys.stderr.write('Parsing error for function {0}\n'.format(f.name()))
+ 
+     # Create docstrings for classes
+     block_names = [block.name() for block in blocks]
+-    klasses = [k for k in di.in_category(DoxyClass) if k.name() not in block_names]
++    block_names += [block.name() for block in blocks2]
++    klasses = [k for k in di.in_category(DoxyClass)
++               if k.name() not in block_names and not k.name().startswith('std::')]
+     for k in klasses:
+         try:
+             output.append(make_class_entry(k))
+         except k.ParsingError:
+-            print('Parsing error for class %s' % k.name())
++            sys.stderr.write('Parsing error for class {0}\n'.format(k.name()))
+ 
+     # Docstrings are not created for anything that is not a function or a class.
+     # If this excludes anything important please add it here.
+ 
+     output = "\n\n".join(output)
+ 
+-    swig_doc = file(swigdocfilename, 'w')
++    swig_doc = open(swigdocfilename, 'w')
+     swig_doc.write(output)
+     swig_doc.close()
+ 
+@@ -236,7 +312,7 @@ if __name__ == "__main__":
+     # Parse command line options and set up doxyxml.
+     err_msg = "Execute using: python swig_doc.py xml_path outputfilename"
+     if len(sys.argv) != 3:
+-        raise StandardError(err_msg)
++        raise Exception(err_msg)
+     xml_path = sys.argv[1]
+     swigdocfilename = sys.argv[2]
+     di = DoxyIndex(xml_path)
+diff --git a/grc/CMakeLists.txt b/grc/CMakeLists.txt
+index 114a2b1..7ad2f9a 100644
+--- a/grc/CMakeLists.txt
++++ b/grc/CMakeLists.txt
+@@ -1,6 +1,6 @@
+ # Copyright 2011 Free Software Foundation, Inc.
+ #
+-# This file is part of GNU Radio
++# This file is part of gr-fosphor
+ #
+ # GNU Radio is free software; you can redistribute it and/or modify
+ # it under the terms of the GNU General Public License as published by
+diff --git a/grc/fosphor_qt_sink_c.block.yml b/grc/fosphor_qt_sink_c.block.yml
+index 7ad8919..7a73f75 100644
+--- a/grc/fosphor_qt_sink_c.block.yml
++++ b/grc/fosphor_qt_sink_c.block.yml
+@@ -5,8 +5,8 @@ parameters:
+ -   id: wintype
+     label: Window Type
+     dtype: int
+-    default: firdes.WIN_BLACKMAN_hARRIS
+-    options: [firdes.WIN_BLACKMAN_hARRIS, firdes.WIN_HAMMING, firdes.WIN_HANN, firdes.WIN_BLACKMAN, firdes.WIN_RECTANGULAR, firdes.WIN_KAISER, firdes.WIN_FLATTOP]
++    default: firdes.WIN_BLACKMAN_HARRIS
++    options: [firdes.WIN_BLACKMAN_HARRIS, firdes.WIN_HAMMING, firdes.WIN_HANN, firdes.WIN_BLACKMAN, firdes.WIN_RECTANGULAR, firdes.WIN_KAISER, firdes.WIN_FLATTOP]
+     option_labels: [Blackman-harris, Hamming, Hann, Blackman, Rectangular, Kaiser, Flat-top]
+     hide: part
+ -   id: freq_center
+diff --git a/include/gnuradio/fosphor/base_sink_c.h b/include/gnuradio/fosphor/base_sink_c.h
+index 286061b..b809c23 100644
+--- a/include/gnuradio/fosphor/base_sink_c.h
++++ b/include/gnuradio/fosphor/base_sink_c.h
+@@ -46,14 +46,14 @@ namespace gr {
+         DB_PER_DIV_DOWN,
+         REF_UP,
+         REF_DOWN,
+-	ZOOM_TOGGLE,
+-	ZOOM_WIDTH_UP,
+-	ZOOM_WIDTH_DOWN,
+-	ZOOM_CENTER_UP,
+-	ZOOM_CENTER_DOWN,
+-	RATIO_UP,
+-	RATIO_DOWN,
+-	FREEZE_TOGGLE,
++        ZOOM_TOGGLE,
++        ZOOM_WIDTH_UP,
++        ZOOM_WIDTH_DOWN,
++        ZOOM_CENTER_UP,
++        ZOOM_CENTER_DOWN,
++        RATIO_UP,
++        RATIO_DOWN,
++        FREEZE_TOGGLE,
+       };
+ 
+       virtual void execute_ui_action(enum ui_action_t action) = 0;
+diff --git a/include/gnuradio/fosphor/qt_sink_c.h b/include/gnuradio/fosphor/qt_sink_c.h
+index 3773bca..26df618 100644
+--- a/include/gnuradio/fosphor/qt_sink_c.h
++++ b/include/gnuradio/fosphor/qt_sink_c.h
+@@ -22,13 +22,17 @@
+ #ifndef INCLUDED_GR_FOSPHOR_QT_SINK_C_H
+ #define INCLUDED_GR_FOSPHOR_QT_SINK_C_H
+ 
++#ifdef ENABLE_PYTHON
++#include <Python.h>
++#endif
++
+ #include <gnuradio/fosphor/api.h>
+ #include <gnuradio/fosphor/base_sink_c.h>
+ 
+ #include <gnuradio/sync_block.h>
+ 
+-class QApplication;
+-class QWidget;
++#include <QWidget>
++#include <QApplication>
+ 
+ namespace gr {
+   namespace fosphor {
+@@ -55,7 +59,7 @@ namespace gr {
+       virtual void exec_() = 0;
+       virtual QWidget* qwidget() = 0;
+ 
+-#if defined(PY_VERSION) || defined(SWIGPYTHON)
++#ifdef ENABLE_PYTHON
+       virtual PyObject* pyqwidget() = 0;
+ #else
+       virtual void* pyqwidget() = 0;
+diff --git a/lib/CMakeLists.txt b/lib/CMakeLists.txt
+index 2ab545a..9ec02ed 100644
+--- a/lib/CMakeLists.txt
++++ b/lib/CMakeLists.txt
+@@ -1,6 +1,6 @@
+ # Copyright 2011,2012 Free Software Foundation, Inc.
+ #
+-# This file is part of GNU Radio
++# This file is part of gr-fosphor
+ #
+ # GNU Radio is free software; you can redistribute it and/or modify
+ # it under the terms of the GNU General Public License as published by
+@@ -23,8 +23,6 @@
+ include(GrPlatform) #define LIB_SUFFIX
+ include(GrMiscUtils)
+ 
+-find_package(PythonInterp 3)
+-
+ add_custom_command(
+   WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/fosphor
+   OUTPUT fosphor/resource_data.c
+@@ -35,19 +33,6 @@ add_custom_command(
+   COMMAND ${PYTHON_EXECUTABLE} -B mkresources.py fft.cl display.cl cmap_simple.glsl cmap_bicubic.glsl cmap_fallback.glsl DroidSansMonoDotted.ttf > ${CMAKE_CURRENT_BINARY_DIR}/fosphor/resource_data.c
+ )
+ 
+-include_directories(
+-	${OPENGL_INCLUDE_DIRS}
+-	${OpenCL_INCLUDE_DIRS}
+-	${FREETYPE_INCLUDE_DIRS}
+-	${Boost_INCLUDE_DIR}
+-)
+-link_directories(
+-	${OPENGL_LIBRARY_DIRS}
+-	${OpenCL_LIBRARY_DIRS}
+-	${FREETYPE_LIBRARY_DIRS}
+-	${Boost_LIBRARY_DIRS}
+-)
+-
+ if(WIN32)
+    find_package(GLEW REQUIRED)
+    include_directories(${GLEW_INCLUDE_DIRS})
+@@ -102,7 +87,22 @@ list_cond_append(ENABLE_GLFW fosphor_libraries ${GLFW3_LIBRARIES})
+ list_cond_append(ENABLE_QT   fosphor_libraries ${Qt5_LIBRARIES})
+ 
+ add_library(gnuradio-fosphor SHARED ${fosphor_sources})
+-target_link_libraries(gnuradio-fosphor ${fosphor_libraries})
++target_link_libraries(gnuradio-fosphor gnuradio::gnuradio-runtime gnuradio::gnuradio-fft)
++target_include_directories(gnuradio-fosphor
++    PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/../include>
++    PUBLIC $<INSTALL_INTERFACE:include>
++  )
++target_include_directories(gnuradio-fosphor PUBLIC
++	${OPENGL_INCLUDE_DIRS}
++	${OpenCL_INCLUDE_DIRS}
++	${FREETYPE_INCLUDE_DIRS})
++target_link_directories(gnuradio-fosphor PUBLIC
++	${OPENGL_LIBRARY_DIRS}
++	${OpenCL_LIBRARY_DIRS}
++	${FREETYPE_LIBRARY_DIRS})
+ set_target_properties(gnuradio-fosphor PROPERTIES DEFINE_SYMBOL "gnuradio_fosphor_EXPORTS")
++target_link_libraries(gnuradio-fosphor ${fosphor_libraries})
++target_compile_definitions(gnuradio-fosphor PRIVATE QT_NO_KEYWORDS)
++
+ 
+ GR_LIBRARY_FOO(gnuradio-fosphor)
+diff --git a/lib/QGLSurface.cc b/lib/QGLSurface.cc
+index f9e7613..fcc0a5a 100644
+--- a/lib/QGLSurface.cc
++++ b/lib/QGLSurface.cc
+@@ -20,21 +20,56 @@
+ 
+ #include <QtEvents>
+ #include "QGLSurface.h"
++
+ #include "qt_sink_c_impl.h"
+ 
+ #include <stdio.h>
++#include <chrono>
+ 
+ namespace gr {
+   namespace fosphor {
+ 
++Worker::Worker(qt_sink_c_impl *sink) {
++	d_sink = sink;
++}
++
++Worker::~Worker() {
++}
++
++void Worker::process() {
++	d_sink->worker();
++}
++
++
+ QGLSurface::QGLSurface(QWidget *parent, qt_sink_c_impl *block)
+   : QGLWidget(parent), d_block(block)
+ {
+-	this->doneCurrent();
+ 	this->setFocusPolicy(Qt::StrongFocus);
+ 	this->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+ }
+ 
++void
++QGLSurface::handOver() {
++
++	d_thread = new QThread();
++	Worker *worker = new Worker(d_block);
++	worker->moveToThread(d_thread);
++
++	connect(d_thread, SIGNAL(started()), worker, SLOT(process()));
++
++	context()->doneCurrent();
++	context()->moveToThread(d_thread);
++
++	d_thread->start();
++}
++
++void
++QGLSurface::closeEvent(QCloseEvent *event) {
++	d_block->d_active = false;
++	std::this_thread::sleep_for(std::chrono::milliseconds(100));
++	event->accept();
++}
++
+ void
+ QGLSurface::paintEvent(QPaintEvent *pe)
+ {
+diff --git a/lib/QGLSurface.h b/lib/QGLSurface.h
+index cf49a1c..3e3a566 100644
+--- a/lib/QGLSurface.h
++++ b/lib/QGLSurface.h
+@@ -22,25 +22,50 @@
+ #define INCLUDED_GR_FOSPHOR_QGLSURFACE_H
+ 
+ #include <QGLWidget>
++#include <QThread>
+ 
+ namespace gr {
+   namespace fosphor {
+ 
+     class qt_sink_c_impl;
+ 
+-    class QGLSurface : public ::QGLWidget
++    class Worker : public QObject
+     {
+       Q_OBJECT
+ 
++     public:
++      Worker(qt_sink_c_impl *sink);
++      ~Worker();
++
++     public Q_SLOTS:
++      void process();
++
++     Q_SIGNALS:
++      void finished();
++      void error(QString err);
++
++     private:
++      qt_sink_c_impl *d_sink;
++    };
++
++
++    class QGLSurface : public QGLWidget
++    {
++      Q_OBJECT
++
++     private:
+       qt_sink_c_impl *d_block;
+ 
+      protected:
+       void paintEvent(QPaintEvent *pe);
+       void resizeEvent(QResizeEvent *re);
+       void keyPressEvent(QKeyEvent *ke);
++      void closeEvent(QCloseEvent * event);
+ 
+      public:
+       QGLSurface(QWidget *parent, qt_sink_c_impl *d_block);
++      void handOver();
++      QThread *d_thread;
+     };
+ 
+   } // namespace fosphor
+diff --git a/lib/base_sink_c_impl.cc b/lib/base_sink_c_impl.cc
+index c4af03e..ef468dd 100644
+--- a/lib/base_sink_c_impl.cc
++++ b/lib/base_sink_c_impl.cc
+@@ -87,6 +87,7 @@ base_sink_c_impl::~base_sink_c_impl()
+ void base_sink_c_impl::worker()
+ {
+ 	/* Zero-init */
++	this->d_active = true;
+ 	this->d_fosphor = NULL;
+ 
+ 	/* Init GL context */
+@@ -131,12 +132,6 @@ error:
+ 	this->glctx_fini();
+ }
+ 
+-void base_sink_c_impl::_worker(base_sink_c_impl *obj)
+-{
+-        obj->worker();
+-}
+-
+-
+ void
+ base_sink_c_impl::render(void)
+ {
+@@ -434,25 +429,5 @@ base_sink_c_impl::work(
+ 	return l;
+ }
+ 
+-bool base_sink_c_impl::start()
+-{
+-	bool rv = base_sink_c::start();
+-	if (!this->d_active) {
+-		this->d_active = true;
+-		this->d_worker = gr::thread::thread(_worker, this);
+-	}
+-	return rv;
+-}
+-
+-bool base_sink_c_impl::stop()
+-{
+-	bool rv = base_sink_c::stop();
+-	if (this->d_active) {
+-		this->d_active = false;
+-		this->d_worker.join();
+-	}
+-	return rv;
+-}
+-
+   } /* namespace fosphor */
+ } /* namespace gr */
+diff --git a/lib/base_sink_c_impl.h b/lib/base_sink_c_impl.h
+index fbce636..7c93e40 100644
+--- a/lib/base_sink_c_impl.h
++++ b/lib/base_sink_c_impl.h
+@@ -43,14 +43,8 @@ namespace gr {
+     class base_sink_c_impl : virtual public base_sink_c
+     {
+      private:
+-      /* Worker thread */
+-      gr::thread::thread d_worker;
+-      bool d_active;
+       bool d_frozen;
+ 
+-      void worker();
+-      static void _worker(base_sink_c_impl *obj);
+-
+       /* fosphor core */
+       fifo *d_fifo;
+ 
+@@ -68,7 +62,7 @@ namespace gr {
+         SETTING_POWER_RANGE	= (1 << 1),
+         SETTING_FREQUENCY_RANGE	= (1 << 2),
+         SETTING_FFT_WINDOW	= (1 << 3),
+-	SETTING_RENDER_OPTIONS	= (1 << 4),
++        SETTING_RENDER_OPTIONS	= (1 << 4),
+       };
+ 
+       uint32_t d_settings_changed;
+@@ -112,7 +106,10 @@ namespace gr {
+       /* Callbacks from GL window */
+       void cb_reshape(int width, int height);
+ 
++      bool d_active;
++
+      public:
++      void worker();
+       virtual ~base_sink_c_impl();
+ 
+       /* gr::fosphor::base_sink_c implementation */
+@@ -130,8 +127,6 @@ namespace gr {
+                 gr_vector_const_void_star &input_items,
+                 gr_vector_void_star &output_items);
+ 
+-      bool start();
+-      bool stop();
+     };
+ 
+   } // namespace fosphor
+diff --git a/lib/glfw_sink_c_impl.cc b/lib/glfw_sink_c_impl.cc
+index 79b52b4..654c62f 100644
+--- a/lib/glfw_sink_c_impl.cc
++++ b/lib/glfw_sink_c_impl.cc
+@@ -43,6 +43,34 @@ glfw_sink_c_impl::glfw_sink_c_impl()
+ 	/* Nothing to do but super call */
+ }
+ 
++void
++glfw_sink_c_impl::_worker(base_sink_c_impl *obj)
++{
++        obj->worker();
++}
++
++bool
++glfw_sink_c_impl::start()
++{
++	bool rv = base_sink_c::start();
++	if (!this->d_active) {
++		this->d_active = true;
++		this->d_worker = gr::thread::thread(_worker, this);
++	}
++	return rv;
++}
++
++bool
++glfw_sink_c_impl::stop()
++{
++	bool rv = base_sink_c::stop();
++	if (this->d_active) {
++		this->d_active = false;
++		this->d_worker.join();
++	}
++	return rv;
++}
++
+ 
+ void
+ glfw_sink_c_impl::glfw_cb_reshape(int w, int h)
+diff --git a/lib/glfw_sink_c_impl.h b/lib/glfw_sink_c_impl.h
+index 75c55b8..13e7c72 100644
+--- a/lib/glfw_sink_c_impl.h
++++ b/lib/glfw_sink_c_impl.h
+@@ -40,11 +40,14 @@ namespace gr {
+      private:
+       /* GLFW stuff */
+       GLFWwindow *d_window;
++      /* Worker thread */
++      gr::thread::thread d_worker;
+ 
+       void glfw_render(void);
+       void glfw_cb_reshape(int w, int h);
+       void glfw_cb_key(int key, int scancode, int action, int mods);
+ 
++      static void _worker(base_sink_c_impl *obj);
+       static void _glfw_cb_reshape(GLFWwindow *wnd, int w, int h);
+       static void _glfw_cb_key(GLFWwindow *wnd, int key, int scancode, int action, int mods);
+ 
+@@ -58,6 +61,8 @@ namespace gr {
+ 
+      public:
+       glfw_sink_c_impl();
++      virtual bool start();
++      virtual bool stop();
+     };
+ 
+   } // namespace fosphor
+diff --git a/lib/qt_sink_c_impl.cc b/lib/qt_sink_c_impl.cc
+index 80f9647..6da0b5f 100644
+--- a/lib/qt_sink_c_impl.cc
++++ b/lib/qt_sink_c_impl.cc
+@@ -18,10 +18,6 @@
+  * Boston, MA 02110-1301, USA.
+  */
+ 
+-#ifdef ENABLE_PYTHON
+-# include <Python.h>
+-#endif
+-
+ #ifdef HAVE_CONFIG_H
+ #include "config.h"
+ #endif
+@@ -31,6 +27,7 @@
+ #include <QApplication>
+ #include <QWidget>
+ #include <QGLWidget>
++#include <QThread>
+ 
+ #include "QGLSurface.h"
+ 
+@@ -38,6 +35,8 @@
+ namespace gr {
+   namespace fosphor {
+ 
++
++
+ qt_sink_c::sptr
+ qt_sink_c::make(QWidget *parent)
+ {
+@@ -45,7 +44,7 @@ qt_sink_c::make(QWidget *parent)
+ }
+ 
+ qt_sink_c_impl::qt_sink_c_impl(QWidget *parent)
+-  : base_sink_c("glfw_sink_c")
++  : base_sink_c("qt_sink_c"), d_parent(parent)
+ {
+ 	/* QT stuff */
+ 	if(qApp != NULL) {
+@@ -57,10 +56,10 @@ qt_sink_c_impl::qt_sink_c_impl(QWidget *parent)
+ 		d_qApplication = new QApplication(argc, argv);
+ 	}
+ 
+-	this->d_gui = new QGLSurface(parent, this);
++	this->d_gui = new QGLSurface(d_parent, this);
++	this->d_gui->handOver();
+ }
+ 
+-
+ void
+ qt_sink_c_impl::glctx_init()
+ {
+@@ -105,7 +104,6 @@ qt_sink_c_impl::qwidget()
+ 	return dynamic_cast<QWidget*>(this->d_gui);
+ }
+ 
+-
+ #ifdef ENABLE_PYTHON
+ PyObject*
+ qt_sink_c_impl::pyqwidget()
+diff --git a/lib/qt_sink_c_impl.h b/lib/qt_sink_c_impl.h
+index fadeae7..631c98d 100644
+--- a/lib/qt_sink_c_impl.h
++++ b/lib/qt_sink_c_impl.h
+@@ -25,12 +25,13 @@
+ #include <gnuradio/fosphor/qt_sink_c.h>
+ 
+ #include "base_sink_c_impl.h"
+-
+-class QGLWidget;
++#include "QGLSurface.h"
+ 
+ namespace gr {
+   namespace fosphor {
+ 
++  class QGLSurface;
++
+     /*!
+      * \brief Qt version of fosphor sink (implementation)
+      * \ingroup fosphor
+@@ -40,7 +41,8 @@ namespace gr {
+      friend class QGLSurface;
+ 
+      private:
+-      QGLWidget *d_gui;
++      QGLSurface *d_gui;
++      QWidget* d_parent;
+ 
+      protected:
+       /* Delegated implementation of GL context management */
+@@ -56,7 +58,7 @@ namespace gr {
+       void exec_();
+       QWidget* qwidget();
+ 
+-#if defined(PY_VERSION) || defined(SWIGPYTHON)
++#if ENABLE_PYTHON
+       PyObject* pyqwidget();
+ #else
+       void* pyqwidget();
+diff --git a/swig/CMakeLists.txt b/swig/CMakeLists.txt
+index 3d56e59..9b86ba2 100644
+--- a/swig/CMakeLists.txt
++++ b/swig/CMakeLists.txt
+@@ -1,6 +1,6 @@
+ # Copyright 2011 Free Software Foundation, Inc.
+ #
+-# This file is part of GNU Radio
++# This file is part of gr-fosphor
+ #
+ # GNU Radio is free software; you can redistribute it and/or modify
+ # it under the terms of the GNU General Public License as published by
+@@ -21,7 +21,7 @@
+ # Include swig generation macros
+ ########################################################################
+ find_package(SWIG)
+-find_package(PythonLibs 2)
++find_package(PythonLibs)
+ if(NOT SWIG_FOUND OR NOT PYTHONLIBS_FOUND)
+     return()
+ endif()
+@@ -31,16 +31,19 @@ include(GrPython)
+ ########################################################################
+ # Setup swig generation
+ ########################################################################
+-foreach(incdir ${GNURADIO_ALL_INCLUDE_DIRS})
+-    list(APPEND GR_SWIG_INCLUDE_DIRS ${incdir}/gnuradio/swig)
+-endforeach(incdir)
++set(GR_SWIG_INCLUDE_DIRS $<TARGET_PROPERTY:gnuradio::runtime_swig,INTERFACE_INCLUDE_DIRECTORIES>)
++set(GR_SWIG_TARGET_DEPS gnuradio::runtime_swig)
+ 
+ set(GR_SWIG_LIBRARIES gnuradio-fosphor)
++
+ set(GR_SWIG_DOC_FILE ${CMAKE_CURRENT_BINARY_DIR}/fosphor_swig_doc.i)
+ set(GR_SWIG_DOC_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/../include/gnuradio/fosphor)
+ 
+ list_cond_append(ENABLE_GLFW GR_SWIG_FLAGS -DENABLE_GLFW)
+ list_cond_append(ENABLE_QT   GR_SWIG_FLAGS -DENABLE_QT)
++if(ENABLE_PYTHON)
++    list_cond_append(ENABLE_QT   GR_SWIG_FLAGS -DENABLE_PYTHON)
++endif()
+ 
+ GR_SWIG_MAKE(fosphor_swig fosphor_swig.i)
+ 
+-- 
+2.20.1
+

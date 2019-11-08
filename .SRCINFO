@@ -1,0 +1,29 @@
+pkgbase = gr-fosphor
+	pkgdesc = GNU Radio block for RTSA-like spectrum visualization; repackaged from Ubuntu
+	pkgver = 3.8
+	pkgrel = 1
+	url = http://sdr.osmocom.org/trac/wiki/fosphor
+	install = gr-fosphor.install
+	arch = x86_64
+	groups = 
+	license = GPL
+	depends = boost
+	depends = gnuradio>=3.8.0.0
+	depends = hicolor-icon-theme
+	depends = log4cpp
+	depends = python>=3.7.0
+	depends = qt5-base>=5.12.2
+	depends = opencl-driver
+	options = !strip
+	options = !emptydirs
+	source = debian.tar.xz::https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/gr-fosphor/3.8~1.278b66e-2/gr-fosphor_3.8~1.278b66e-2.debian.tar.xz
+	source = gr-fosphor.tar.xz::https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/gr-fosphor/3.8~1.278b66e-2/gr-fosphor_3.8~1.278b66e.orig.tar.xz
+	source = cmake_swig.patch
+	source = cmake_python.patch
+	sha512sums = 2ca99e78205314c6e72c8553658ed168ba433253e30a303e7cb28d76997b0a31c2689581567bd5c3750d94a94e7a4fb3a246359e8f66a773a11ed24832b0c2aa
+	sha512sums = f0e622bd1efc79bb2120d660b964028c3fa1c4436afa32673d86edbe67d72bf76bf49a75ac33efe638a6334944ed82e431191c2773b9bf91da7a48733e31e31e
+	sha512sums = 4602104ba845f598fa16ae736c38dd22768d02c21e29e4e87721a3889ba6624dbd1792ee2d26e499d8737153612faa3c4584c58323a0d32946f5b76cf4968e22
+	sha512sums = c603e5cc0e891cb0e1d751f960b9aafffa7c804bcc18ff1c072cde89579d79de10aeced8237db4b18febba75e818c56bd176c66e93188eaab1f76ec567ffbc70
+
+pkgname = gr-fosphor
+
