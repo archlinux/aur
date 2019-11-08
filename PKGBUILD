@@ -8,11 +8,10 @@ url="https://srevinsaju.github.io/guiscrcpy"
 license=('GPL3')
 depends=('scrcpy' 'python-pyqt5' 'python-psutil' 'python-qdarkstyle' 'python-gitpython' 
          'python-pillow' 'python-pynput')
-makedepends=('python-setuptools')
+makedepends=('git' 'python-setuptools')
 optdepends=('python-pystray: for developers'
             'usbaudio: AOA audio, deprecated since Android 8.0')
-_commit=c6169d4eee732575da197934e7b7a36e9fd1bfca
-source=("git+https://github.com/srevinsaju/guiscrcpy.git#commit=$_commit" # 2.0
+source=("git+https://github.com/srevinsaju/guiscrcpy.git#tag=$pkgver"
         "$pkgname.desktop"
         "$pkgname.sh"
         "$pkgname.patch")

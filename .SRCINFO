@@ -6,6 +6,7 @@ pkgbase = guiscrcpy
 	arch = i686
 	arch = x86_64
 	license = GPL3
+	makedepends = git
 	makedepends = python-setuptools
 	depends = scrcpy
 	depends = python-pyqt5
@@ -16,7 +17,7 @@ pkgbase = guiscrcpy
 	depends = python-pynput
 	optdepends = python-pystray: for developers
 	optdepends = usbaudio: AOA audio, deprecated since Android 8.0
-	source = git+https://github.com/srevinsaju/guiscrcpy.git#commit=c6169d4eee732575da197934e7b7a36e9fd1bfca
+	source = git+https://github.com/srevinsaju/guiscrcpy.git#tag=2.0
 	source = guiscrcpy.desktop
 	source = guiscrcpy.sh
 	source = guiscrcpy.patch
