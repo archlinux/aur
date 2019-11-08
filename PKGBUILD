@@ -4,7 +4,7 @@
 
 pkgname=annie
 pkgver=0.9.6
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'i686')
 pkgdesc="A fast, simple and clean video downloader written in Go"
 url="https://github.com/iawia002/annie"
@@ -20,8 +20,8 @@ prepare(){
 	ln -rTsf $pkgname $srcdir/gopath/src/github.com/$pkgname
 	export GOPATH="$srcdir"/gopath
 	cd $GOPATH/src/github.com/$pkgname
-	#dep init
-	dep ensure
+	dep init
+	#dep ensure
 }
 
 build(){
