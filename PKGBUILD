@@ -3,14 +3,14 @@
 # Maintainer: Victor Häggqvist <aur a snilius d com>
 
 pkgname=migrate
-pkgver=4.6.2
-pkgrel=2
+pkgver=4.7.0
+pkgrel=1
 pkgdesc="Database migration handling"
 url="https://github.com/golang-migrate/migrate"
 arch=("x86_64")
 license=("MIT")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/golang-migrate/migrate/archive/v$pkgver.tar.gz")
-sha256sums=("f7f07e240bc2d0afbcafc83f46eef0136ceb678ced4ece87ed619e901993c569")
+sha256sums=("d3f5d2ede4dac95cc2ccf0ec051331e3980b5414b182d9854da2baa0d9cbdfb1")
 makedepends=("go")
 
 build() {
