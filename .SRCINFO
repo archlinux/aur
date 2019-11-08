@@ -1,0 +1,15 @@
+pkgbase = guile-curl
+	pkgdesc = A GNU Guile library for client-side URL transfers based on libcurl
+	pkgver = 0.6
+	pkgrel = 1
+	url = http://www.lonelycactus.com/guile-curl.html
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = guile
+	depends = curl
+	source = http://www.lonelycactus.com/tarball/guile_curl-0.6.tar.gz
+	sha256sums = e0304f67d66cb4b242a68368ba5b2680980b2a30113575e7337e2224a685addf
+
+pkgname = guile-curl
+

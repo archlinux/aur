@@ -1,0 +1,4 @@
+*.pkg.tar.xz
+/guile_curl-0.6.tar.gz
+/pkg/
+/src/
