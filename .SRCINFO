@@ -1,16 +1,16 @@
 pkgbase = octave-io
 	pkgdesc = Input/Output in external formats.
-	pkgver = 2.4.12
+	pkgver = 2.4.13
 	pkgrel = 1
 	url = https://octave.sourceforge.io/io/
 	install = octave-io.install
 	arch = any
 	groups = octave-forge
 	license = custom
-	depends = octave>=3.8.0
-	noextract = io-2.4.12.tar.gz
-	source = https://downloads.sourceforge.net/octave/io-2.4.12.tar.gz
-	sha256sums = 22a13296cacd69bb8a4d67fd5ef3e359496f41e3d9d3c2d2324f691351cc7d38
+	depends = octave>=4.0.0
+	noextract = io-2.4.13.tar.gz
+	source = https://downloads.sourceforge.net/octave/io-2.4.13.tar.gz
+	sha256sums = 309bdf4fe7d64a29eafc893ceb115ee06f979365470118f71f73f1785ec30c9d
 
 pkgname = octave-io
 
