@@ -1,0 +1,18 @@
+pkgbase = rust-xtensa-git
+	pkgdesc = Rust for ESP32 xtensa.
+	pkgver = r97629.d7b76db
+	pkgrel = 1
+	url = https://github.com/MabezDev/rust-xtensa
+	install = rust-xtensa-git.install
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = ninja
+	makedepends = cmake
+	makedepends = llvm-xtensa
+	provides = rust-xtensa
+	source = git://github.com/mattcaron/rust-xtensa
+	sha256sums = SKIP
+
+pkgname = rust-xtensa-git
+

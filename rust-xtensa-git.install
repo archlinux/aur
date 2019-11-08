@@ -1,0 +1,3 @@
+post_install() {
+  echo "Toolchain installed to /opt/rust-xtensa. Link it in rustup using 'rustup toolchain link xtensa /opt/rust-xtensa'."
+}
