@@ -17,7 +17,7 @@ optdepends=(
     'linux-nitrous-headers: to build DKMS modules against this kernel'
     )
 source=("https://github.com/xdevs23/linux-nitrous/releases/download/v$pkgver-$_tar_pkgrel/linux-nitrous-git-$pkgver-$_tar_pkgrel-x86_64.pkg.tar.xz")
-sha256sums=('75245891078bd3af1000e4453743475bd1e840da3da8c5c097d1e6197c6851a0  linux-nitrous-git-5.3.9-3-x86_64.pkg.tar.xz')
+sha256sums=('75245891078bd3af1000e4453743475bd1e840da3da8c5c097d1e6197c6851a0')
 
 build() {
     echo "No need to build anything"
