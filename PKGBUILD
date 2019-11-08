@@ -1,13 +1,13 @@
 # Maintainer: lod <aur@cyber-anlage.de>
 
 pkgname=amdvlk
-pkgver=2019.Q4.1
+pkgver=2019.Q4.2
 pkgrel=1
 
-_llpc_commit=3f15347d38da804814fdd9e24e2875ee0b2b9245
-_xgl_commit=19a031d9f73b95101fd4d3d594aca27c00feb180
-_pal_commit=39abe2297ca58a2b84dcd9bc5e238fbc399bd6e0
-_llvmproject_commit=40fbaf4c5446a361269c241d9112fff26575b5d0
+_llpc_commit=2ba438ad4c592229a4ae14bd4368e318ac4f81eb
+_xgl_commit=ef2f9c22455a79eea10c14e44fe371c003322ba1
+_pal_commit=76c5b997630e558158dbdd8ca24a120071068631
+_llvmproject_commit=2c15e55bc4b7171d6fa4bbb0cd9265bb8ad999b8
 _spvgen_commit=f1bc2ba988273c3724afffe72fe9cd933a022ce7
 _spirvtools_commit=9702d47c6fe4cefbc55f905b0e9966452124b6c2
 _spirvheaders_commit=af64a9e826bf5bb5fcd2434dd71be1e41e922563
@@ -36,11 +36,11 @@ source=(AMDVLK-$pkgname-$pkgver.tar.gz::https://github.com/GPUOpen-Drivers/AMDVL
         MetroHash-$pkgname-$pkgver.tar.gz::https://github.com/GPUOpen-Drivers/MetroHash/archive/${_metrohash_commit}.tar.gz
         CWPack-$pkgname-$pkgver.tar.gz::https://github.com/GPUOpen-Drivers/CWPack/archive/${_cwpack_commit}.tar.gz)
   
-sha256sums=('2265bd0be973d4511cd47da29052b368369e5ac4133f3b08ab8c89c51d759986'
-            'd1957eb1aaaab89aab78f3d375cea93c4b91e47f602627b048f0fb71d8e7eb3d'
-            '47fdcb4ed0c9b2e1f61abe761bab912ca228dfd6103c2070c94244c6a2f13b5e'
-            '3def3a94e20dbb67cb4effdacc4c180ebf5bf30a4ae27ad6849cd32aa0628463'
-            '6f469cac7c2deaff595cd689a83067da6cfbee0f97362f6fa9f6c50b5bb23b56'
+sha256sums=('385c84e1a5cf6476d2a547418fdc41a10921c7a45be25dd0b7e7dfaee6cd63f8'
+            '6a5af19c2797261f12e956a01ad2579122f439b8c2c724449c40e19d21f756fa'
+            '2dc052d20f36f9544036a6ad1b467d62b7274e42e276041cf6ee54be88a83496'
+            'fb828be64ab7ee30793df82ef7b537c8e94be88b46a631235416c1e9e296d867'
+            '601f4f32147ef8d676b2ca7ef21a58ae3b0d0fd9c23018083790fad4bf202e59'
             '77a4cad8691960b825e86b624bb5433f5098b8a49cb0d758e17c6d59e25a9361'
             '64820fab5f07b9525ae09afb7bd5c6cd2c898da41026f6517e83e67547bb659c'
             'f128ff27d185fbf7fadb5d498d9f2ca265d5e046025fa262d725dfaa2ab2c030'
