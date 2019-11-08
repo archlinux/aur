@@ -1,6 +1,6 @@
 pkgbase = jacksettings
 	pkgdesc = JACK settings using jackd via systemd
-	pkgver = r32.23267e9
+	pkgver = r33.a61f59c
 	pkgrel = 1
 	url = https://github.com/azdrums/jacksettings
 	arch = x86_64
