@@ -1,0 +1,37 @@
+diff --git a/Makefile.in b/Makefile.in
+index ecf9729..95dde59 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -285,8 +285,13 @@ CLEANFILES = $(GOBJECTS)
+ EXTRA_DIST = $(SOURCES) $(NOCOMP_SOURCES) pre-inst-env.in package.scm
+ GUILE_WARNINGS = -Wunbound-variable -Warity-mismatch -Wformat
+ SUFFIXES = .scm .go
+-moddir = $(prefix)/share/guile/site/2.0
+-godir = $(libdir)/guile/2.0/ccache
++
++guile_site_dir        := $(shell $(GUILE) -c '(display (%site-dir))')
++guile_site_ccache_dir := $(shell $(GUILE) -c '(display (%site-ccache-dir))')
++
++moddir=$(guile_site_dir)
++godir=$(guile_site_ccache_dir)
++
+ bin_SCRIPTS = \
+   scripts/shroud
+ 
+diff --git a/configure b/configure
+index ec8d94d..639b783 100755
+--- a/configure
++++ b/configure
+@@ -2435,8 +2435,10 @@ $as_echo_n "checking for Guile version >= $_guile_required_version... " >&6; }
+   if test "$_guile_major_version" -ge "$_major_version"; then
+     if test "$_guile_minor_version" -ge "$_minor_version"; then
+       if test -n "$_micro_version"; then
+-        if test "$_guile_micro_version" -lt "$_micro_version"; then
+-          as_fn_error $? "Guile $_guile_required_version required, but $_guile_prog_version found" "$LINENO" 5
++        if test "$_guile_minor_version" -eq "$_minor_version"; then
++          if test "$_guile_micro_version" -lt "$_micro_version"; then
++            as_fn_error $? "Guile $_guile_required_version required, but $_guile_prog_version found" "$LINENO" 5
++          fi
+         fi
+       fi
+     elif test "$GUILE_EFFECTIVE_VERSION" == "$_major_version.$_minor_version" -a -z "$_micro_version"; then

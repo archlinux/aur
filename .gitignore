@@ -1,0 +1,4 @@
+*.pkg.tar.xz
+/shroud-0.1.1.tar.gz
+/pkg/
+/src/
