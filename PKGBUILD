@@ -1,6 +1,6 @@
 # Maintainer: Frederick Zhang <frederick888@tsundere.moe>
 pkgname=aptible-cli
-pkgver=0.16.2
+pkgver=0.16.3
 pkgrel=1
 pkgdesc="The full stack of aptible-toolbelt"
 arch=('x86_64')
