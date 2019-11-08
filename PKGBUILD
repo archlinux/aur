@@ -5,7 +5,7 @@
 pkgbase=python-daemon
 pkgname=('python-daemon' 'python2-daemon')
 pkgver=2.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Library to implement a well-behaved Unix daemon process'
 arch=('any')
 url='https://pypi.python.org/pypi/python-daemon'
