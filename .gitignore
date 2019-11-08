@@ -1,0 +1,6 @@
+*
+!.gitignore
+!gdl.profile
+!gdl-python3.patch 
+!PKGBUILD
+!.SRCINFO
