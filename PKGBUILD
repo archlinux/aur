@@ -6,13 +6,13 @@ pkgrel=1
 _srcname=linux-5.3
       url="https://www.kernel.org/"
 _major=5.3
-_minor=8
+_minor=9
 _minorc=$((_minor+1))
 _rcver=1
 _rcpatch=patch-${_major}.${_minorc}-rc${_rcver}
 pkgver=${_major}.${_minorc}rc${_rcver}
 arch=(x86_64)
-license=('GPL2')
+license=(GPL2)
 makedepends=(
        kmod inetutils bc libelf
 )
@@ -30,9 +30,9 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('41dabaa3f24a744ac9aa7ef49ecda4ac350b948bdac2de8c3a10afca3a522ae0'
+sha256sums=('7e138c3ba5826428eac60a0d9131119e67d61d4b97146a4081183acda0aac743'
             'SKIP'
-            '78f3cfc6c20b10ff21c0bb22d7d257cab03781c44d8c5aae289f749f94f76649'
+            'd72579aa732edd0e25779adfc43e68a53f77e80020c4aab5db2f5b28c247e98a'
             'SKIP'
             'e749cd85d37d4d70099b0a7f54e852b039ae07c14e4ab8be299c64edae5d4ba4'
             '1594f81f1b1ed4f3d474aaa2ebfc03623fc0168d0243d1654c250fb7b32ad5d7'
