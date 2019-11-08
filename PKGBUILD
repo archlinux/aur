@@ -3,14 +3,14 @@
 
 _basename=gst-plugins-bad
 pkgname=lib32-gst-plugins-bad
-pkgver=1.14.4
-pkgrel=6
-pkgdesc="GStreamer Multimedia Framework Bad Plugins (32-bit)"
+pkgver=1.16.1
+pkgrel=1
+pkgdesc="GStreamer open-source multimedia framework bad plugins (32-bit)"
 url="https://gstreamer.freedesktop.org/"
 arch=(x86_64)
 license=(LGPL)
 depends=(lib32-aom lib32-bluez-libs lib32-celt lib32-chromaprint lib32-curl lib32-faac lib32-faad2
-         lib32-fluidsynth lib32-glu lib32-gnutls lib32-gst-plugins-base-libs lib32-ladspa
+         lib32-fluidsynth lib32-gnutls lib32-gst-plugins-base-libs lib32-gst-plugins-good lib32-ladspa
          lib32-lcms2 lib32-libbs2b lib32-libdc1394 lib32-libdca lib32-libde265 lib32-libdvdnav
          lib32-libdvdread lib32-libexif lib32-libfdk-aac lib32-libgme lib32-libgudev lib32-libkate
          lib32-libmms lib32-libmodplug lib32-libmpcdec  lib32-libmpeg2 lib32-libnice lib32-libofa
@@ -19,11 +19,11 @@ depends=(lib32-aom lib32-bluez-libs lib32-celt lib32-chromaprint lib32-curl lib3
          lib32-rtmpdump lib32-sbc lib32-soundtouch lib32-spandsp lib32-srt lib32-vulkan-icd-loader
          lib32-wayland lib32-webrtc-audio-processing lib32-wildmidi lib32-x265 lib32-zbar lib32-zvbi
          gst-plugins-bad)
-makedepends=(autoconf-archive git gobject-introspection lib32-gtk3 lib32-libtiger python
-             vulkan-headers lib32-vulkan-validation-layers)
-_commit=566e4ecc223b18fce8bd932f5e4885f41f746dd4  # tags/1.14.4^0
-source=("git+https://anongit.freedesktop.org/git/gstreamer/gst-plugins-bad#commit=$_commit"
-        'gst-common::git+https://anongit.freedesktop.org/git/gstreamer/common')
+makedepends=(git gobject-introspection lib32-gtk3 lib32-libtiger lib32-vulkan-validation-layers
+             meson python vulkan-headers)
+_commit=c3c54aad2d45fb246a9b9e8a5e05488c15c27173  # tags/1.16.1^0
+source=("git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-bad.git#commit=$_commit"
+        'gst-common::git+https://gitlab.freedesktop.org/gstreamer/common.git')
 sha256sums=('SKIP'
             'SKIP')
 
@@ -36,64 +36,56 @@ pkgver() {
 prepare() {
     cd $_basename
 
-    # libfdk-aac 2.0.0
-    git cherry-pick -n \
-        f4fdb9770c76113f38515245fecc5f11b3ace20d \
-        19d34f6b5e1633d5ec4bb2832c58470f0c829cab
-
     git submodule init
     git config --local submodule.common.url "$srcdir/gst-common"
     git submodule update
 
     sed -e 's|-std=c++98||' -i ext/openexr/Makefile.am # openexr 2.4 requires c++11
-
-    NOCONFIGURE=1 ./autogen.sh
+    sed -e "s|'-std=c++98'||" -i ext/openexr/meson.build
 }
 
 build() {
-    cd $_basename
-
     export CC='gcc -m32'
     export CXX='g++ -m32'
-    export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
+    export PKG_CONFIG='/usr/bin/i686-pc-linux-gnu-pkg-config'
 
-    ./configure \
-        --build=i686-pc-linux-gnu \
-        --prefix=/usr \
-        --sysconfdir=/etc \
-        --localstatedir=/var \
-        --libexecdir=/usr/lib32 \
+    arch-meson $_basename build \
         --libdir=/usr/lib32 \
-        --with-package-name="GStreamer Bad Plugins (Arch Linux)" \
-        --with-package-origin="https://www.archlinux.org/" \
-        --with-gtk=3.0 \
-        --enable-experimental \
-        --disable-gtk-doc \
-        --disable-static \
-        --disable-directfb \
-        --disable-flite \
-        --disable-gl \
-        --disable-opencv \
-        --disable-qt
+        -D directfb=disabled \
+        -D flite=disabled \
+        -D gsm=disabled \
+        -D iqa=disabled \
+        -D msdk=disabled \
+        -D nvdec=disabled \
+        -D nvenc=disabled \
+        -D opencv=disabled \
+        -D openh264=disabled \
+        -D openmpt=disabled \
+        -D openni2=disabled \
+        -D opensles=disabled \
+        -D sctp=disabled \
+        -D tinyalsa=disabled \
+        -D voaacenc=disabled \
+        -D voamrwbenc=disabled \
+        -D wasapi=disabled \
+        -D wpe=disabled \
+        -D gl=disabled \
+        -D gobject-cast-checks=disabled \
+        -D glib-asserts=disabled \
+        -D glib-checks=disabled \
+        -D package-name="GStreamer Bad Plugins (Arch Linux)" \
+        -D package-origin="https://www.archlinux.org/"
 
-    sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+    ninja -C build
 
-    make
 }
 
 check() {
-    cd $_basename
-
-    # bad tests are bad
-    #make -k check || :
+    meson test -C build --print-errorlogs
 }
 
 package() {
-    cd $_basename
+    DESTDIR="$pkgdir" meson install -C build
 
-    make DESTDIR="$pkgdir" install
-
-    cd "$pkgdir/usr"
-
-    rm -r include share
+    rm -rf "${pkgdir}"/usr/{bin,include,share}
 }
