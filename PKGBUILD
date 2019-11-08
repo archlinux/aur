@@ -1,7 +1,7 @@
 # Maintainer: Squalou <squalou.jenkins [at] gmail [dot] com>
 pkgname=google-chat-linux-git
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Unofficial electron-based desktop client for Google Chat, electron included"
 arch=('x86_64' 'i686')
 url="https://github.com/squalou/google-chat-linux.git"
@@ -23,6 +23,12 @@ build() {
   npm install --prefix $srcdir/${pkgname}/ ${electron_version}
   cd "$srcdir/${pkgname}"
   npm install --production=true
+  rm -rf node_modules/7zip-bin
+  rm -rf node_modules/dmg-builder
+  rm -rf node_modules/app-builder-bin
+  rm -rf node_modules/app-builder-lib
+
+
 }
 
 package() {
