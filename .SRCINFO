@@ -1,0 +1,17 @@
+pkgbase = 3dmeshmetric-bin
+	pkgdesc = A visualization tool based on the VTK library.
+	pkgver = 1.4.3
+	pkgrel = 1
+	url = https://www.nitrc.org/projects/meshmetric3d/
+	arch = x86_64
+	license = GPL
+	makedepends = gendesk
+	depends = gcc-libs
+	depends = zlib
+	provides = 3dmeshmetric=1.4.3
+	conflicts = 3dmeshmetric
+	source = 3dmeshmetric-bin-1.4.3.tar::https://www.nitrc.org/frs/download.php/6714/3DMetricTools1.4.3-Linux.tar
+	sha512sums = c62a252b6583fc4ee7d5e92f8538b152aa98baf1ca217d72d0f3ffeb61234e54ef37bed8d1a212c752bbb97c5eff4c28a655a3dfcc0c399b5600352746a4eea3
+
+pkgname = 3dmeshmetric-bin
+
