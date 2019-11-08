@@ -1,6 +1,5 @@
-diff -r c53985209d09 source/event_gpio.c
---- a/source/event_gpio.c	Sun Oct 30 22:41:09 2016 +0000
-+++ b/source/event_gpio.c	Thu Feb 23 18:22:28 2017 +0100
+--- a/source/event_gpio.c	2019-11-08 19:58:16.496007561 +0100
++++ b/source/event_gpio.c	2019-11-08 19:59:57.682280245 +0100
 @@ -24,6 +24,7 @@
  #include <sys/epoll.h>
  #include <stdio.h>
@@ -9,13 +8,18 @@ diff -r c53985209d09 source/event_gpio.c
  #include <errno.h>
  #include <fcntl.h>
  #include <unistd.h>
-@@ -62,17 +63,64 @@
+@@ -62,6 +63,7 @@
  int thread_running = 0;
  int epfd_thread = -1;
  int epfd_blocking = -1;
 +int pin_base = -1;
  
  /************* /sys/class/gpio functions ************/
+ #define x_write(fd, buf, len) do {                                  \
+@@ -73,10 +75,54 @@
+     }                                                               \
+ } while (/* CONSTCOND */ 0)
+ 
 +void gpio_find_chip_base()
 +{
 +    DIR *gpio_dir;
@@ -65,18 +69,21 @@ diff -r c53985209d09 source/event_gpio.c
      int fd, len;
 -    char str_gpio[3];
 +    char str_gpio[64];
+     char filename[33];
  
-     if ((fd = open("/sys/class/gpio/export", O_WRONLY)) < 0)
+     snprintf(filename, sizeof(filename), "/sys/class/gpio/gpio%d", gpio);
+@@ -90,7 +136,9 @@
         return -1;
+     }
  
 -    len = snprintf(str_gpio, sizeof(str_gpio), "%d", gpio);
 +    gpio_find_chip_base();
 +
 +    len = snprintf(str_gpio, sizeof(str_gpio), "%d", pin_base + gpio);
-     write(fd, str_gpio, len);
+     x_write(fd, str_gpio, len);
      close(fd);
  
-@@ -82,12 +130,14 @@
+@@ -100,12 +148,14 @@
  int gpio_unexport(unsigned int gpio)
  {
      int fd, len;
@@ -90,24 +97,24 @@ diff -r c53985209d09 source/event_gpio.c
 +    gpio_find_chip_base();
 +
 +    len = snprintf(str_gpio, sizeof(str_gpio), "%d", pin_base + gpio);
-     write(fd, str_gpio, len);
+     x_write(fd, str_gpio, len);
      close(fd);
  
-@@ -99,9 +149,11 @@
+@@ -117,9 +167,11 @@
      int retry;
      struct timespec delay;
      int fd;
 -    char filename[33];
 +    char filename[64];
++
++    gpio_find_chip_base();
  
 -    snprintf(filename, sizeof(filename), "/sys/class/gpio/gpio%d/direction", gpio);
-+    gpio_find_chip_base();
-+
 +    snprintf(filename, sizeof(filename), "/sys/class/gpio/gpio%d/direction", pin_base + gpio);
  
      // retry waiting for udev to set correct file permissions
      delay.tv_sec = 0;
-@@ -126,9 +178,11 @@
+@@ -144,9 +196,11 @@
  int gpio_set_edge(unsigned int gpio, unsigned int edge)
  {
      int fd;
@@ -121,7 +128,7 @@ diff -r c53985209d09 source/event_gpio.c
  
      if ((fd = open(filename, O_WRONLY)) < 0)
          return -1;
-@@ -141,10 +195,12 @@
+@@ -159,10 +213,12 @@
  int open_value_file(unsigned int gpio)
  {
      int fd;
