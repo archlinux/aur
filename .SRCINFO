@@ -8,6 +8,7 @@ pkgbase = linux-nitrous-headers
 	makedepends = tar
 	provides = linux
 	conflicts = linux-nitrous-git-headers
+	options = !strip
 	source = https://github.com/xdevs23/linux-nitrous/releases/download/v5.3.9-6/linux-nitrous-git-headers-5.3.9-6-x86_64.pkg.tar.xz
 	sha256sums = b6200b4d1e596557ac579971b56b391563f4fa77bcfc6063aa6a2cff87b00a7c
 
