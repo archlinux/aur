@@ -1,10 +1,9 @@
 pkgbase = realtime-generic-setup
 	pkgdesc = Generic realtime setup configuration
-	pkgver = 0.1
+	pkgver = r2.0ad3e92
 	pkgrel = 1
 	url = https://github.com/redtide/archlinux-realtime-generic-setup
 	arch = any
-	license = GPL2
 	source = git://github.com/redtide/archlinux-realtime-generic-setup.git
 	md5sums = SKIP
 

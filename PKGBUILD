@@ -7,7 +7,6 @@ pkgver=r2.0ad3e92
 pkgrel=1
 arch=('any')
 url="https://github.com/redtide/${srcname}"
-license=('GPL2')
 source=("git://github.com/redtide/${srcname}.git")
 md5sums=('SKIP')
 pkgver() {
