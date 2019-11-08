@@ -1,5 +1,5 @@
-# Maintainer: Ricardo (XenGi) Band <email@ricardo.band>
-pkgname=sensu-go-backend
+# Maintainer: thorko contact@thorko.de
+pkgname=sensu-backend
 pkgver=5.14.2
 pkgrel=1
 pkgdesc="Sensu Go Backend"
