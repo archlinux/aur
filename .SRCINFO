@@ -1,0 +1,15 @@
+pkgbase = zivid-genicam
+	pkgdesc = Defining the Future of 3D Machine Vision
+	pkgver = 1.6.0+7a245bbe_26
+	pkgrel = 1
+	url = https://www.zivid.com
+	arch = x86_64
+	groups = zivid-all
+	license = custom
+	depends = zivid
+	options = !strip
+	source = https://www.zivid.com/hubfs/softwarefiles/releases/1.6.0+7a245bbe-26/u18/zivid-genicam_1.6.0+7a245bbe-26_amd64.deb
+	sha256sums = 23e7437b6b7d435c49f06290ee7bf33cf3d26a5e5a54814c479b270902934d7a
+
+pkgname = zivid-genicam
+
