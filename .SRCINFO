@@ -1,7 +1,7 @@
 pkgbase = pulseaudio-dlna-aharter-python3-git
 	pkgdesc = Small DLNA server which brings DLNA/UPnP support to PulseAudio
 	pkgver = r732.e7357dc
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/aharter/pulseaudio-dlna
 	arch = x86_64
 	license = GPL3
@@ -29,7 +29,7 @@ pkgbase = pulseaudio-dlna-aharter-python3-git
 	source = pulseaudio-dlna-aharter-python3::git+https://github.com/aharter/pulseaudio-dlna#branch=python3
 	source = removedbus.patch
 	sha256sums = SKIP
-	sha256sums = be378effc87757e30f684c129d4eead61add4ba8c1355fb411e2e417ad5bb213
+	sha256sums = 81305bac7e6a2f2220c68dc661d1e361b0d6cb7673c82e4aa338018f6223c5c7
 
 pkgname = pulseaudio-dlna-aharter-python3-git
 
