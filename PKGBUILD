@@ -2,7 +2,7 @@
 pkgname=sensu-agent
 pkgver=5.14.2
 pkgrel=1
-pkgdesc="Sensu Go Backend"
+pkgdesc="Sensu Go Agent"
 arch=('x86_64' 'armv7h')
 url='https://sensu.io'
 license=('MIT')

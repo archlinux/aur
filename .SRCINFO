@@ -1,5 +1,5 @@
 pkgbase = sensu-agent
-	pkgdesc = Sensu Go Backend
+	pkgdesc = Sensu Go Agent
 	pkgver = 5.14.2
 	pkgrel = 1
 	url = https://sensu.io
