@@ -1,0 +1,15 @@
+pkgbase = perl-tap-formatter-camelcade
+	pkgdesc = Converts test events from TAP::Harness to the TeamCity format
+	pkgver = 0.009
+	pkgrel = 1
+	url = https://metacpan.org/release/TAP-Formatter-Camelcade
+	arch = any
+	license = PerlArtistic
+	depends = perl
+	options = !emptydirs
+	options = purge
+	source = https://cpan.metacpan.org/authors/id/H/HU/HURRICUP/TAP-Formatter-Camelcade-0.009.tar.gz
+	sha256sums = 469c34d2c39e377e1d6626faf77feea674c728b6f39ff78e2f2c92827a8dbb98
+
+pkgname = perl-tap-formatter-camelcade
+
