@@ -1,0 +1,39 @@
+--- PKGBUILD.orig	2019-11-08 15:45:24.622273183 +0100
++++ PKGBUILD	2019-11-08 15:49:19.612271708 +0100
+@@ -42,2 +42,5 @@
+ 
++provides+=("hplip=${pkgver}")
++conflicts+=('hplip')
++options+=('ccache')
+ prepare() {
+@@ -69,3 +72,29 @@
+              --enable-cups-drv-install \
+-             --enable-pp-build #--help
++             --enable-pp-build \
++             --disable-qt3 \
++             --enable-doc-build \
++             --disable-hpijs-only-build \
++             --disable-lite-build \
++             --disable-hpcups-only-build \
++             --disable-hpijs-install \
++             --disable-new-hpcups \
++             --enable-hpps-install \
++             --enable-network-build \
++             --enable-pp-build \
++             --disable-class-driver \
++             --enable-scan-build \
++             --enable-gui-build \
++             --enable-fax-build \
++             --disable-apparmor_build \
++             --enable-dbus-build \
++             --disable-cups11-build \
++             --disable-udev_sysfs_rules \
++             --disable-shadow-build \
++             --disable-libusb01_build \
++             --disable-foomatic-ppd-install \
++             --disable-foomatic-drv-install \
++             --disable-cups-ppd-install \
++             --disable-foomatic-rip-hplip-install \
++             --enable-policykit \
++             #--help
+  make

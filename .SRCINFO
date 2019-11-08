@@ -1,0 +1,52 @@
+pkgbase = hplip-3.18
+	pkgdesc = HPLIP, fixed version 3.18.x (with supports for some printers which were removed in 3.19), and with patch for uncompressed scanning on LEDM-based peripherals.
+	pkgver = 3.18.12
+	pkgrel = 1
+	url = http://hplipopensource.com
+	arch = x86_64
+	license = GPL
+	makedepends = python-pyqt5
+	makedepends = python-gobject
+	makedepends = sane
+	makedepends = rpcbind
+	makedepends = cups
+	makedepends = libusb
+	depends = python-dbus
+	depends = ghostscript
+	depends = net-snmp
+	depends = foomatic-db-engine
+	optdepends = cups: for printing support
+	optdepends = sane: for scanner support
+	optdepends = xsane: sane scanner frontend
+	optdepends = python-pillow: for commandline scanning support
+	optdepends = python-reportlab: for pdf output in hp-scan
+	optdepends = rpcbind: for network support
+	optdepends = python-pyqt5: for running GUI and hp-toolbox
+	optdepends = python-gobject: for running hp-toolbox
+	optdepends = libusb: for advanced usb support
+	optdepends = wget: for network support
+	optdepends = hplip-plugin: binary blobs for specific devices (AUR) or run hp-setup to download the plugin
+	provides = hplip=3.18.12
+	provides = hplip-raw-ledm=3.18.12
+	conflicts = hplip
+	conflicts = hplip-raw-ledm
+	backup = etc/hp/hplip.conf
+	backup = etc/sane.d/dll.d/hpaio
+	source = http://downloads.sourceforge.net/hplip/hplip-3.18.12.tar.gz
+	source = http://downloads.sourceforge.net/hplip/hplip-3.18.12.tar.gz.asc
+	source = disable_upgrade.patch
+	source = hpscan-ledm-raw.patch
+	source = 0022-Add-include-cups-ppd.h-in-various-places-as-CUPS-2.2.patch
+	source = 0023-Fix-handling-of-unicode-filenames-in-sixext.py.patch
+	source = hplip-colorlaserjet-mfp-m278-m281.patch
+	validpgpkeys = 4ABA2F66DBD5A95894910E0673D770CDA59047B9
+	sha1sums = 48a3c2dc95bfb83f3a5296de214e6d893c912cb6
+	sha1sums = SKIP
+	sha1sums = 2348bcbca0c52dc09cceb47ed13281a4ccb9d83e
+	sha1sums = 7e4b095d8bf9a0af9f0d035ca37691f733e271e0
+	sha1sums = 2ef86972ab51c0fdcb8bfc653b9f6f69459449a5
+	sha1sums = 0e36f31b98faf2f14137431bc8f82b74de22705b
+	sha1sums = 89e0ed0ed9acc6e50812c843ffb5f996fffb829e
+
+pkgname = hplip-3.18
+
