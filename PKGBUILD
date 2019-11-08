@@ -3,7 +3,7 @@
 pkgname=airsonic
 pkgver=10.5.0
 _relver=10.5
-pkgrel=2
+pkgrel=1
 pkgdesc="A free, web-based media streamer and jukebox."
 arch=('any')
 url="https://github.com/Airsonic/airsonic/"
