@@ -3,7 +3,7 @@
 _basename=aom
 pkgname=lib32-aom
 pkgver=1.0.0.errata1
-pkgrel=2
+pkgrel=3
 pkgdesc="Alliance for Open Media video codec (32-bit)"
 url="https://aomedia.org/"
 arch=(x86_64)
@@ -41,7 +41,8 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DBUILD_SHARED_LIBS=1 \
         -DENABLE_TESTS=0 \
-        -DENABLE_DOCS=0
+        -DENABLE_DOCS=0 \
+        -DLIB_INSTALL_DIR=/usr/lib32
 
     cmake --build .
 }
@@ -53,6 +54,7 @@ package() {
 
     cd "$pkgdir/usr"
 
-    mv lib lib32
+    sed -e "s|/lib|/lib32|" -i lib32/pkgconfig/aom.pc
+
     rm -r bin include
 }
