@@ -20,6 +20,10 @@ sha256sums=(
 
 # TODO: better build from source
 # build() {}
+post_install() {
+  groupadd sensu
+  useradd -s /sbin/nologin -d /opt/sensu -G sensu sensu
+}
 
 package() {
     install -Dm755 "${srcdir}/sensu-backend" "${pkgdir}/usr/bin/sensu-backend"
