@@ -2,8 +2,9 @@
 # Contributor: Hokuto <abrahamhokuto@outlook.com>
 
 pkgname=windows-xp-icons-git
-pkgver=r26.68520e3
+pkgver=3.r2.g68520e3
 pkgrel=1
+epoch=1
 pkgdesc="Remake of classic YlmfOS theme with some mods for icons to scale right"
 arch=('any')
 url="https://github.com/B00merang-Project/WinXP-Icons"
@@ -14,7 +15,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/WinXP-Icons"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
