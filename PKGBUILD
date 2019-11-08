@@ -14,11 +14,9 @@ conflicts=('xtables-addons-dkms')
 replaces=('xtables-addons-dkms')
 source=("https://sourceforge.net/projects/${pkgname}/files/Xtables-addons//${pkgname}-${pkgver}.tar.xz")
 sha256sums=('189ff57a0b8960969bd99141a6c79c345efa67e4461f450e2f162c9bd3d17da6')
-# define 'lts' for linux-lts package
-_linux_custom="ARCH"
 # define '-lts' for linux-lts package
-_linux_localversion=""
-_kernver="`pacman -Ql linux${_linux_localversion} | awk '/(\/modules\/)([0-9.-])+-(.*)-'${_linux_custom}'\/$/ {print $2}'`"
+_linux_custom=""
+_kernver="`pacman -Ql linux${_linux_custom} | awk '/(\/modules\/)([0-9.-])+-(.*)'${_linux_custom}'\/$/ {print $2}' | head -n1`"
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
