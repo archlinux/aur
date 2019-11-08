@@ -4,15 +4,16 @@
 # Former Maintainer: Daniel Wallace <danielwallace at gtmanfred dot com>
 pkgname=mlpack
 pkgver=3.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc='A fast, flexible, scalable C++ machine learning library'
 arch=('x86_64')
 url="https://mlpack.org/"
 license=('BSD')
 depends=(
-  'armadillo'
+  'armadillo>=8.400.0'
   'boost>=1.49'
   'lapack'
+  'ensmallen>=2.10.0'
   'libxml2>=2.6.0'
   'cython>=0.24'
   'python-numpy'
@@ -28,7 +29,7 @@ makedepends=(
   'txt2man'
   'python-setuptools'
 )
-source=("http://www.mlpack.org/files/${pkgname}-${pkgver}.tar.gz")
+source=("https://www.mlpack.org/files/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('3fa25157a0a6e91fd5ba223ebd911e5d86c0664d969ea3f7768d823448562f36')
 options=(!emptydirs)
 
