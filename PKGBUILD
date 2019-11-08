@@ -1,13 +1,13 @@
 # Maintainer: vimacs <https://vimacs.lcpu.club>
 
 pkgname=mrustc-git
-pkgver=0.0.3195
+pkgver=v0.9.15
 pkgrel=1
 pkgdesc='Alternative rust compiler written in C++'
 arch=('x86_64')
 url='https://github.com/thepowersgang/mrustc'
 license=('MIT')
-depends=()
+depends=('clang') # mrustc will crash if built with GCC 9
 makedepends=()
 provides=()
 conflicts=()
@@ -18,15 +18,15 @@ sha256sums=('SKIP'
 
 pkgver() {
 	cd "$srcdir/mrustc"
-	echo 0.0.$(git rev-list --count HEAD)
+	git describe --tags | sed -e 's/-g.*//g' -e 's/-/./g'
 }
 
 build() {
 	cd "$srcdir/mrustc"
 	patch -p1 -i "$srcdir/minicargo-use-system-mrustc.patch"
 	sed -i 's/x86_64-linux-gnu/x86_64-pc-linux-gnu/g' tools/common/target_detect.h src/trans/target.cpp
-	make
-	make -C tools/minicargo
+	make CXX=clang++
+	make CXX=clang++ -C tools/minicargo
 }
 
 package() {
@@ -40,5 +40,6 @@ package() {
 		-e 's/tools\/bin/\/usr\/bin/g' \
 		-e 's/\(script-overrides\|lib\)\//\/usr\/share\/mrustc\/\1\//g' \
 		-e '/Makefile all/d' -e '/tools\/minicargo/d' \
+		-e 's/$(RUSTCSRC)build\/bin\/llvm-config/\/usr\/bin\/llvm-config/g' \
 		minicargo.mk > "$pkgdir/usr/share/mrustc/minicargo.mk"
 }
