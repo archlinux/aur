@@ -1,0 +1,15 @@
+pkgbase = cf-tool
+	pkgdesc = A command-line tool for Codeforces contests
+	pkgver = 0.8.2
+	pkgrel = 1
+	url = https://github.com/xalanq/cf-tool
+	arch = x86_64
+	license = MIT
+	makedepends = go-pie
+	makedepends = git
+	depends = glibc
+	source = cf-tool-0.8.2.tar.gz::https://github.com/xalanq/cf-tool/archive/v0.8.2.tar.gz
+	sha512sums = 19e616fd702928323adfffb840521f6d0828278c79d6ee9fe3af1f666f754545c2865bb10afc0487c03d5c87d0ff7b23c3f9a7d68085ede6bfc8b780da8d439a
+
+pkgname = cf-tool
+
