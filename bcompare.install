@@ -1,6 +1,7 @@
 post_install() {
   update-mime-database /usr/share/mime 1> /dev/null
   update-desktop-database -q
+  ldconfig
 }
 
 post_upgrade() {
