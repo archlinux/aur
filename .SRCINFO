@@ -1,0 +1,15 @@
+pkgbase = perl-test-harness
+	pkgdesc = Run Perl standard test scripts with statistics
+	pkgver = 3.42
+	pkgrel = 1
+	url = https://metacpan.org/release/Test-Harness
+	arch = any
+	license = PerlArtistic
+	depends = perl
+	options = !emptydirs
+	options = purge
+	source = https://cpan.metacpan.org/authors/id/L/LE/LEONT/Test-Harness-3.42.tar.gz
+	sha256sums = 0fd90d4efea82d6e262e6933759e85d27cbcfa4091b14bf4042ae20bab528e53
+
+pkgname = perl-test-harness
+
