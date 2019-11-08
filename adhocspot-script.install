@@ -1,0 +1,15 @@
+post_install() {
+  post_upgrade
+}
+
+post_upgrade() {
+  echo ""
+  echo "========"
+  echo "  Default values for the adhocspot-script are hard-coded within the script."
+  echo "  If you want to change settings, override defaults on the command line, or"
+  echo "  write a wrapper script which uses your preferred defaults."
+  echo "  If you really want to change the defaults within the script, you have to"
+  echo "  edit it."
+  echo "========"
+  echo ""
+}

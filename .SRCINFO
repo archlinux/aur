@@ -1,0 +1,26 @@
+pkgbase = adhocspot-script-git
+	pkgdesc = Bash script to easily configure your interface to share your internet connection and configure a DHCP and DNS and TFTP boot server to listen on it. IP, DHCP, DNS can be configured, and for WiFi interfaces also wireless mode and encryption.
+	pkgver = 20190514.1
+	pkgrel = 2
+	epoch = 0
+	install = adhocspot-script.install
+	arch = any
+	license = custom: Public Domain
+	makedepends = git
+	depends = bash
+	depends = dnsmasq
+	depends = iptables
+	depends = net-tools
+	depends = wireless_tools
+	depends = wpa_supplicant
+	provides = adhocspot-script=20190514.1
+	conflicts = adhocspot-script
+	replaces = adhocspot-script<=20190514.1
+	options = emptydirs
+	source = adhocspot-script::git+http://gitea.felics.kettenbruch.de/felics/adhocspot-script.git
+	source = adhocspot-script.install
+	sha256sums = SKIP
+	sha256sums = f05052583b9d7ba8215897bc621fea38d18fea20e1040fcbda4fd2ab76fc8867
+
+pkgname = adhocspot-script-git
+
