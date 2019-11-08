@@ -13,12 +13,10 @@ depends=('linux' 'iptables')
 makedepends=('gcc' 'gzip' 'gawk' 'sed')
 source=("${pkgname}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('6655b7dcfac6035368728e4c3a49b059f9eaa4576c2c129b75ddbe54a6efb118')
-# define 'lts' for linux-lts package
-_linux_custom="ARCH"
 # define '-lts' for linux-lts package
-_linux_localversion=""
-_kdir="`pacman -Qe linux${_linux_localversion} | awk '{print "/usr/lib/modules/"$2"-'${_linux_custom}'/"}' | sed 's|\.arch|\-arch|g'`"
-_kver="`pacman -Qe linux${_linux_localversion} | awk '{print $2"-'${_linux_custom}'"}' | sed 's|\.arch|\-arch|g'`"
+_linux_custom=""
+_kdir="`pacman -Ql linux${_linux_custom} | awk '/(\/modules\/)([0-9.-])+-(.*)'${_linux_custom}'\/$/ {print $2}' | head -n1`"
+_kver="`pacman -Ql linux${_linux_custom} | gawk 'match($0, /(\/usr\/lib\/modules\/)([0-9\.\-a-z]+)\/$/, a) {print a[2]}'`"
 
 prepare() {
   cd "${srcdir}/${_netflow}-${pkgver}"
