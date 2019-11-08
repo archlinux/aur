@@ -5,14 +5,14 @@
 
 pkgname=gnuradio-git
 _gitname=gnuradio
-pkgver=v3.8.0.0.41.g00c1b64fd
+pkgver=v3.8.0.0.78.gf78c95897
 pkgrel=1
 pkgdesc="General purpose DSP and SDR toolkit, with drivers for usrp and fcd."
 arch=('i686' 'x86_64')
 url="https://github.com/gnuradio/gnuradio"
 license=('GPL')
 depends=('fftw' 'python' 'python-numpy' 'python-mako' 'python-click' 'python-click-plugins' 'python-pyqt5' 'cppunit' 'gsl' 'blas' 'guile' 'boost-libs>=1.54' 'libusbx' 'portaudio' 'libuhd' 'zeromq' 'libvolk' 'log4cpp')
-makedepends=('git' 'boost' 'cmake' 'python-cairo' 'python-yaml' 'python-cheetah' 'glu' 'swig' 'pygtk' 'wxpython' 'qwtplot3d' 'qwt' 'python-sphinx')
+makedepends=('git' 'boost' 'cmake' 'python-cairo' 'python-yaml' 'python-cheetah' 'glu' 'swig' 'pygtk' 'qwt' 'python-sphinx')
 optdepends=('python-lxml: Some GRC modules use lxml optionally for improved performance')
 source=("git+https://github.com/gnuradio/gnuradio.git")
 md5sums=('SKIP')
@@ -35,6 +35,7 @@ build() {
         -DENABLE_GRC=ON \
         -DENABLE_GR_QTGUI=ON \
         -DENABLE_INTERNAL_VOLK=OFF \
+        -DENABLE_GR_CTRLPORT=OFF \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DGR_PYTHON_DIR=/usr/lib/python3.7/site-packages \
         -DQWT_LIBRARIES=/usr/lib/libqwt.so -Wno-dev ../
