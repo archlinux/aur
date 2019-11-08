@@ -1,15 +1,17 @@
 pkgbase = python2-backports.tempfile
 	pkgdesc = Backport of new features in Python's tempfile module
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pjdelport/backports.tempfile
 	arch = any
 	license = Python
 	makedepends = python2-setuptools
 	depends = python2
+	depends = python2-backports.weakref
 	source = https://files.pythonhosted.org/packages/source/b/backports.tempfile/backports.tempfile-1.0.tar.gz
 	sha256sums = 1c648c452e8770d759bdc5a5e2431209be70d25484e1be24876cf2168722c762
 
 pkgname = python2-backports.tempfile
 	depends = python2
+	depends = python2-backports.weakref
 

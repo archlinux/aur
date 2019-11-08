@@ -3,10 +3,10 @@ pkgbase='python2-backports.tempfile'
 pkgname=('python2-backports.tempfile')
 _module='backports.tempfile'
 pkgver='1.0'
-pkgrel=1
+pkgrel=2
 pkgdesc="Backport of new features in Python's tempfile module"
 url="https://github.com/pjdelport/backports.tempfile"
-depends=('python2')
+depends=('python2' 'python2-backports.weakref')
 makedepends=('python2-setuptools')
 license=('Python')
 arch=('any')
@@ -23,4 +23,5 @@ package() {
     cd "${srcdir}/${_module}-${pkgver}"
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     python2 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+    rm "$pkgdir/usr/lib/python2.7/site-packages/backports/__init__.py"*
 }
