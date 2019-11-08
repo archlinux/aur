@@ -1,0 +1,16 @@
+pkgbase = quickwall
+	pkgdesc = Quickly set wallpapers from CLI directly from Unsplash.
+	pkgver = 0.0.1
+	pkgrel = 4
+	url = https://github.com/deepjyoti30/QuickWall
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python>=3.6
+	depends = python-setuptools
+	optdepends = nitrogen>=1.6.1: Set wallpaper
+	source = QuickWall-master.tar.gz::https://github.com/deepjyoti30/QuickWall/archive/master.tar.gz
+	md5sums = SKIP
+
+pkgname = quickwall
+
