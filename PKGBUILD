@@ -26,6 +26,8 @@ prepare() {
 }
 
 build() {
+  CFLAGS+=' -fgnu89-inline'
+
   cd "$srcdir"/librabbitmq-$pkgver
   python setup.py build --with-librabbitmq=/usr
 
