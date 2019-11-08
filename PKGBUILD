@@ -12,11 +12,9 @@ depends=('linux' 'iptables')
 makedepends=('git' 'libtool' 'gcc' 'gzip' 'gawk' 'sed')
 source=("${pkgname}::git+${url}")
 sha256sums=('SKIP')
-# define 'lts' for linux-lts package
-_linux_custom="ARCH"
 # define '-lts' for linux-lts package
-_linux_localversion=""
-_kernver="`pacman -Ql linux${_linux_localversion} | awk '/(\/modules\/)([0-9.-])+-(.*)-'${_linux_custom}'\/$/ {print $2}'`"
+_linux_custom=""
+_kernver="`pacman -Ql linux${_linux_custom} | awk '/(\/modules\/)([0-9.-])+-(.*)'${_linux_custom}'\/$/ {print $2}' | head -n1`"
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
