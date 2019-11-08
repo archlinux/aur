@@ -1,8 +1,9 @@
-# Maintainer: Aniket Pradhan <aniket17133@iiitd.ac.in>
+# Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
+# Contributor: Aniket Pradhan <aniket17133@iiitd.ac.in>
 # Owner/Cofntributer: Xinzhao Xu <z2d@jifangcheng.com>
 
 pkgname=annie
-pkgver=0.9.5
+pkgver=0.9.6
 pkgrel=1
 arch=('x86_64' 'i686')
 pkgdesc="A fast, simple and clean video downloader written in Go"
