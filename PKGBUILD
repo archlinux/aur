@@ -1,11 +1,11 @@
 # Maintainer: Jon Noble <jonnobleuk@gmail.com>
 pkgname=mediahandling
 pkgver=0.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A library solely intended for the use in the project Chestnut by handling all media-file operations"
 arch=(x86_64)
 url="https://github.com/jonno85uk/mediahandling"
-license=('MIT')
+license=('BSD')
 depends=('ffmpeg' 'boost-libs')
 makedepends=('cmake') 
 provides=("${pkgname%}")
@@ -33,5 +33,7 @@ package() {
     make install
     # Temporary until CMakeLists.txt is updated
     mkdir -p ${pkgdir}/usr/include/mediahandling/
+    mkdir -p ${pkgdir}/usr/share/licenses/
     cp Include/* ${pkgdir}/usr/include/mediahandling/
+    cp LICENSE  ${pkgdir}/usr/share/licenses/mediahandling
 }
