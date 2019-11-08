@@ -1,7 +1,7 @@
 # Maintainer: onemorelag@gmail.com
 
 _pkgname=hplip
-pkgname=$_pkgname318
+pkgname=hplip318
 _pkgver=3.18.12
 pkgver=12
 pkgrel=1
