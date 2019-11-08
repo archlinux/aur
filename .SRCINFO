@@ -1,6 +1,6 @@
 pkgbase = nvidia-container-runtime-bin
 	pkgdesc = NVIDIA container runtime
-	pkgver = 3.1.3
+	pkgver = 3.1.4
 	pkgrel = 1
 	url = https://github.com/NVIDIA/nvidia-container-runtime
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = nvidia-container-runtime-bin
 	depends = nvidia-container-toolkit<2.0.0
 	provides = nvidia-container-runtime=3.1.2
 	conflicts = nvidia-container-runtime
-	source = https://nvidia.github.io/nvidia-container-runtime/centos7/x86_64/nvidia-container-runtime-3.1.3-1.x86_64.rpm
-	sha256sums = 8ea2735941bfe64db318504d46cb0cfbce4a8cbcb68d2ef11c9de149dedc764b
+	source = https://nvidia.github.io/nvidia-container-runtime/centos7/x86_64/nvidia-container-runtime-3.1.4-1.x86_64.rpm
+	sha256sums = d4be6198bd8b64b9bbd79e91e7ce6a60ff75918611d9d30af9ce7e4af3be7618
 
 pkgname = nvidia-container-runtime-bin
 
