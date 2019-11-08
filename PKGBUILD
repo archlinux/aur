@@ -1,8 +1,8 @@
 # Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-froidzen
-pkgver=5.3.8.1
-pkgrel=2
+pkgver=5.3.9.2
+pkgrel=1
 _srcver=${pkgver%.*}-zen${pkgver##*.}
 url="https://github.com/zen-kernel/zen-kernel/commits/v$_srcver"
 arch=(x86_64)
