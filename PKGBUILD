@@ -20,6 +20,8 @@ md5sums=('34e22dbd85811879f16b3c30a0122fb2'
          'aa2208275aec7d92a874f32d9d52d4fe')
 
 prepare() {
+  # don't know why makepkg stopped gunzipping these
+  [ -f rplay_3.3.2-11.1.diff ] || gzip -dc rplay_3.3.2-11.1.diff.gz >rplay_3.3.2-11.1.diff
   cd $pkgname-release_3-3-2
   patch -Np1 <../rplay_3.3.2-11.1.diff
 }
