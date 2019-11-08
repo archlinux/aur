@@ -1,7 +1,7 @@
 # Maintainer: Andrew Whatson <whatson@gmail.com>
 _pkgname=shroud
 pkgname=${_pkgname}-git
-pkgver=v0.1.2.r2.gce77970
+pkgver=0.1.2.r2.gce77970
 pkgrel=1
 pkgdesc='A simple command-line secret manager using GNU Guile'
 arch=('i686' 'x86_64')
@@ -15,8 +15,8 @@ source=("git+https://git.dthompson.us/shroud.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd shroud
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd ${_pkgname}
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
