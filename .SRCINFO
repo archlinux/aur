@@ -1,12 +1,17 @@
 pkgbase = img4tool-git
 	pkgdesc = Tool for manipulating IMG4, IM4M and IM4P files
-	pkgver = 1
-	pkgrel = 2
+	pkgver = r162.d514ce5
+	pkgrel = 1
 	url = https://github.com/tihmstar/img4tool
 	arch = x86_64
 	license = LGPL3
+	makedepends = git
 	makedepends = lzfse
-	makedepends = libplist
+	depends = libgeneral
+	depends = libplist
+	depends = openssl
+	provides = img4tool
+	conflicts = img4tool
 	source = git+https://github.com/tihmstar/img4tool.git
 	sha512sums = SKIP
 
