@@ -2,7 +2,7 @@
 
 _pkgname=gallery-dl
 pkgname=$_pkgname-git
-pkgver=1.10.6.r37.g8361d87
+pkgver=1.11.0.r0.g6c86fbf
 pkgrel=1
 pkgdesc="Command-line program to download image-galleries and collections from several image hosting sites"
 arch=('any')
@@ -14,7 +14,7 @@ optdepends=('ffmpeg: Convert Pixiv Ugoira to WebM'
 	    'youtube-dl: Download videos')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=(git+https://github.com/mikf/gallery-dl.git)
+source=(git+"$url")
 sha512sums=('SKIP')
 
 pkgver() {
@@ -22,15 +22,12 @@ pkgver() {
     git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare(){
+build(){
   cd $_pkgname
-  sed -i 's|etc/bash_completion.d|share/bash-completion/completions|' setup.py
+  make
 }
 
 package() {
   cd $_pkgname
-  make
   python setup.py install -O1 --root="$pkgdir"
-  mv "${pkgdir}/usr/share/bash-completion/completions/gallery-dl.bash_completion" \
-     "${pkgdir}/usr/share/bash-completion/completions/gallery-dl"
 }
