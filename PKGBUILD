@@ -1,7 +1,7 @@
 # Author: RedTide <redtid3@gmail.com>
 
 pkgname=jacksettings
-pkgver=r32.23267e9
+pkgver=r33.a61f59c
 pkgrel=1
 pkgdesc="JACK settings using jackd via systemd"
 url="https://github.com/azdrums/${pkgname}"
@@ -28,4 +28,5 @@ package() {
     cd "${srcdir}/${pkgname}"
     make INSTALL_ROOT=$pkgdir install
     install -Dm644 "${srcdir}/${pkgname}/systemd/a2jmidi@.service" "${pkgdir}/usr/lib/systemd/user/a2jmidi@.service"
+    install -Dm644 "${srcdir}/${pkgname}/systemd/jacksettings@.service" "${pkgdir}/usr/lib/systemd/user/jacksettings@.service"
 }
