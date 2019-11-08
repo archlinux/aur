@@ -1,6 +1,6 @@
 pkgbase = libclstl-git
 	pkgdesc = The CodeLog Standard Template Library
-	pkgver = r2.f9a4560
+	pkgver = r2.a623908
 	pkgrel = 1
 	url = https://github.com/Code-Log/clstl
 	arch = any
@@ -8,6 +8,8 @@ pkgbase = libclstl-git
 	makedepends = clang
 	makedepends = git
 	makedepends = cmake
+	provides = libclstl
+	conflicts = libclstl
 	source = libclstl::git+https://github.com/Code-Log/clstl#branch=master
 	md5sums = SKIP
 

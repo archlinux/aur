@@ -1,8 +1,10 @@
 # Maintainer: Jaco Malan <jacomalan.12@gmail.com>
 pkgname=libclstl-git
 pkgrel=1
-pkgver=r2.f9a4560
+pkgver=r2.a623908
 pkgdesc="The CodeLog Standard Template Library"
+provides=('libclstl')
+conflicts=('libclstl')
 arch=('any')
 url="https://github.com/Code-Log/clstl"
 license=('MIT')
