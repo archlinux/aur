@@ -1,5 +1,5 @@
 pkgbase = gohosts
-	pkgdesc = host file merge tool, written in go
+	pkgdesc = hosts file merge tool, written in go
 	pkgver = 1.0.0
 	pkgrel = 1
 	arch = i686
