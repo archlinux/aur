@@ -7,6 +7,7 @@ pkgbase = libclstl-git
 	license = MIT
 	makedepends = clang
 	makedepends = git
+	makedepends = cmake
 	source = libclstl::git+https://github.com/Code-Log/clstl#branch=master
 	md5sums = SKIP
 

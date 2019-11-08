@@ -6,7 +6,7 @@ pkgdesc="The CodeLog Standard Template Library"
 arch=('any')
 url="https://github.com/Code-Log/clstl"
 license=('MIT')
-makedepends=('clang' 'git')
+makedepends=('clang' 'git' 'cmake')
 source=('libclstl::git+https://github.com/Code-Log/clstl#branch=master')
 
 pkgver() {
