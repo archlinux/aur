@@ -1,0 +1,15 @@
+pkgbase = qt5-quick3d-git
+	pkgdesc = a high level 3D API for Qt Quick to introduce 3D content into Qt Quick applications
+	pkgver = r837.10f50fb
+	pkgrel = 1
+	url = https://git.qt.io/annichol/qtquick3d/
+	arch = x86_64
+	groups = qt
+	groups = qt5
+	license = GPL3
+	depends = qt5-declarative
+	source = git+https://git.qt.io/annichol/qtquick3d.git
+	sha256sums = SKIP
+
+pkgname = qt5-quick3d-git
+
