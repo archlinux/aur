@@ -1,6 +1,6 @@
 pkgbase = scipoptsuite
 	pkgdesc = Toolbox for generating and solving optimization problems.
-	pkgver = 6.0.0
+	pkgver = 6.0.2
 	pkgrel = 1
 	url = http://scip.zib.de
 	arch = x86_64
@@ -16,12 +16,16 @@ pkgbase = scipoptsuite
 	depends = gmp
 	depends = readline
 	depends = zlib
-	provides = scip=4.0.1
-	provides = soplex=3.0.1
-	provides = zimpl=3.3.4
+	optdepends = coin-or-ipopt: COIN-OR Interior Point Optimizer IPOPT
+	optdepends = gsl: GNU Scientific Library
+	optdepends = cliquer: C routines for finding cliques in an arbitrary weighted graph
+	optdepends = bliss: Library for computing automorphism groups and canonical forms of graphs
+	provides = scip=6.0.2
+	provides = soplex=4.0.2
+	provides = zimpl=3.3.8
 	replaces = ziboptsuite
-	source = http://scip.zib.de/download/release/scipoptsuite-6.0.0.tgz
-	sha256sums = a91119687e521575070c43eaa30bc15ce461e9dc414651793ea4c4ca33b89750
+	source = http://scip.zib.de/download/release/scipoptsuite-6.0.2.tgz
+	sha256sums = e25329a2ed4fbdde8a32279a4c955ee7a8b8795429b6e7105ae17998c2ecbe66
 
 pkgname = scipoptsuite
 
