@@ -1,5 +1,5 @@
 # Maintainer: Deepjyoti <deep.barman30@gmail.com>
-pkgname=python-playx
+pkgname=playx
 pkgver=1.0.2
 pkgrel=0
 pkgdesc="Search and play any song from terminal."

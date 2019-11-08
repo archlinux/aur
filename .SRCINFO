@@ -1,4 +1,4 @@
-pkgbase = python-playx
+pkgbase = playx
 	pkgdesc = Search and play any song from terminal.
 	pkgver = 1.0.2
 	pkgrel = 0
@@ -13,5 +13,5 @@ pkgbase = python-playx
 	source = playx-develop.tar.gz::https://github.com/NISH1001/playx/archive/develop.tar.gz
 	md5sums = SKIP
 
-pkgname = python-playx
+pkgname = playx
 
