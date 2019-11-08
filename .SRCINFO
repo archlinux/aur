@@ -1,0 +1,16 @@
+pkgbase = tilengine-git
+	pkgdesc = The 2D retro graphics engine
+	pkgver = r170.ea888ae
+	pkgrel = 1
+	url = https://github.com/megamarc/Tilengine.git
+	arch = x86_64
+	license = Mozilla Public License 2.0
+	makedepends = gcc
+	makedepends = make
+	depends = libpng
+	depends = sdl2
+	source = git+https://github.com/megamarc/Tilengine.git
+	sha256sums = SKIP
+
+pkgname = tilengine-git
+
