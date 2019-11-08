@@ -1,6 +1,6 @@
 pkgbase = lib32-libfilezilla
 	pkgdesc = Small and modern C++ library, offering some basic functionality to build high-performing, platform-independent programs (32-bit)
-	pkgver = 0.18.2
+	pkgver = 0.19.0
 	pkgrel = 1
 	url = https://lib.filezilla-project.org/
 	arch = x86_64
@@ -13,8 +13,8 @@ pkgbase = lib32-libfilezilla
 	depends = lib32-nettle
 	depends = lib32-gnutls
 	depends = libfilezilla
-	source = https://download.filezilla-project.org/libfilezilla/libfilezilla-0.18.2.tar.bz2
-	sha512sums = 6f165a008ea8e3090554070685ef042b5304a8e7fdeb9f16c81a01c00b5fcb3d4acd356cfaf3fc1189c04db0b726dd005c592f6c7c6b06a527d8b82e7890257b
+	source = https://download.filezilla-project.org/libfilezilla/libfilezilla-0.19.0.tar.bz2
+	sha512sums = a652c996e7c924d7c3a5c3da69ed396e19ebaebf98e8553ed8e1a718f5dff412e3dfec46b0008784c342a8443a0e7e34764211218d88a0888fece89edc582deb
 
 pkgname = lib32-libfilezilla
 
