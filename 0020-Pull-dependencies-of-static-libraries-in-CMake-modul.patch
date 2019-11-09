@@ -1,7 +1,7 @@
-From 890e47124906afd97de44bc40520338bde5dc5d3 Mon Sep 17 00:00:00 2001
+From bf63f766c525dfb28c26f981397ad4fdfb171900 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 18:32:00 +0200
-Subject: [PATCH 20/33] Pull dependencies of static libraries in CMake modules
+Subject: [PATCH 20/32] Pull dependencies of static libraries in CMake modules
 
 When doing a static build of Qt, the dependencies of the Qt
 libraries and plugins itself must be specified when linking
@@ -20,16 +20,18 @@ e.g. to use QMAKE_PRL_LIBS instead of QMAKE_PRL_LIBS_FOR_CMAKE.
 
 See https://github.com/Martchus/PKGBUILDs/issues/86#issuecomment-476840055
 for further details on 2.
+
+Change-Id: Id818ed54ff2bfb86bfefee6e39ebc791e8343d3a
 ---
  .../data/cmake/Qt5BasicConfig.cmake.in        | 192 ++++++++++++------
  .../data/cmake/Qt5PluginTarget.cmake.in       |  11 +-
  2 files changed, 136 insertions(+), 67 deletions(-)
 
 diff --git a/mkspecs/features/data/cmake/Qt5BasicConfig.cmake.in b/mkspecs/features/data/cmake/Qt5BasicConfig.cmake.in
-index d4fd057682..838279515c 100644
+index f4a34d6e48..88ea04ce2c 100644
 --- a/mkspecs/features/data/cmake/Qt5BasicConfig.cmake.in
 +++ b/mkspecs/features/data/cmake/Qt5BasicConfig.cmake.in
-@@ -53,10 +53,18 @@ function(_qt5_$${CMAKE_MODULE_NAME}_process_prl_file prl_file_location Configura
+@@ -53,6 +53,10 @@ function(_qt5_$${CMAKE_MODULE_NAME}_process_prl_file prl_file_location Configura
      set(_lib_deps)
      set(_link_flags)
  
@@ -37,7 +39,10 @@ index d4fd057682..838279515c 100644
 +    set(CMAKE_FIND_LIBRARY_SUFFIXES .a .lib)
 +    set(CMAKE_FIND_LIBRARY_PREFIXES lib \"\")
 +
-     get_filename_component(_qt5_install_libs \"${_qt5$${CMAKE_MODULE_NAME}_install_prefix}/lib\" ABSOLUTE)
+ !!IF isEmpty(CMAKE_LIB_DIR_IS_ABSOLUTE)
+     set(_qt5_install_libs \"${_qt5$${CMAKE_MODULE_NAME}_install_prefix}/$${CMAKE_LIB_DIR}\")
+ !!ELSE
+@@ -61,6 +65,10 @@ function(_qt5_$${CMAKE_MODULE_NAME}_process_prl_file prl_file_location Configura
  
      if(EXISTS \"${prl_file_location}\")
          file(STRINGS \"${prl_file_location}\" _prl_strings REGEX \"QMAKE_PRL_LIBS_FOR_CMAKE[ \\t]*=\")
@@ -48,7 +53,7 @@ index d4fd057682..838279515c 100644
  
          # file(STRINGS) replaces all semicolons read from the file with backslash semicolons.
          # We need to do a reverse transformation in CMake. For that we replace all backslash
-@@ -75,7 +83,7 @@ function(_qt5_$${CMAKE_MODULE_NAME}_process_prl_file prl_file_location Configura
+@@ -79,7 +87,7 @@ function(_qt5_$${CMAKE_MODULE_NAME}_process_prl_file prl_file_location Configura
                  # Handle normal libraries passed as -lfoo
                  set(_lib \"${CMAKE_MATCH_1}\")
                  foreach(_standard_library ${_standard_libraries})
@@ -57,7 +62,7 @@ index d4fd057682..838279515c 100644
                          set(_lib_is_default_linked TRUE)
                          break()
                      endif()
-@@ -116,6 +124,37 @@ function(_qt5_$${CMAKE_MODULE_NAME}_process_prl_file prl_file_location Configura
+@@ -120,6 +128,37 @@ function(_qt5_$${CMAKE_MODULE_NAME}_process_prl_file prl_file_location Configura
      set(${lib_deps} ${_lib_deps} PARENT_SCOPE)
      set(${link_flags} \"SHELL:${_link_flags}\" PARENT_SCOPE)
  endfunction()
@@ -95,7 +100,7 @@ index d4fd057682..838279515c 100644
  !!ENDIF
  
  !!IF !equals(TEMPLATE, aux)
-@@ -129,52 +168,39 @@ macro(_populate_$${CMAKE_MODULE_NAME}_target_properties Configuration LIB_LOCATI
+@@ -133,52 +172,39 @@ macro(_populate_$${CMAKE_MODULE_NAME}_target_properties Configuration LIB_LOCATI
      set(imported_location \"$${CMAKE_DLL_DIR}${LIB_LOCATION}\")
  !!ENDIF
      _qt5_$${CMAKE_MODULE_NAME}_check_file_exists(${imported_location})
@@ -166,7 +171,7 @@ index d4fd057682..838279515c 100644
  !!ENDIF
  
  !!IF !isEmpty(CMAKE_WINDOWS_BUILD)
-@@ -191,6 +217,15 @@ macro(_populate_$${CMAKE_MODULE_NAME}_target_properties Configuration LIB_LOCATI
+@@ -195,6 +221,15 @@ macro(_populate_$${CMAKE_MODULE_NAME}_target_properties Configuration LIB_LOCATI
      endif()
  !!ENDIF
  endmacro()
@@ -182,7 +187,7 @@ index d4fd057682..838279515c 100644
  !!ENDIF
  
  if (NOT TARGET Qt5::$${CMAKE_MODULE_NAME})
-@@ -360,13 +395,15 @@ if (NOT TARGET Qt5::$${CMAKE_MODULE_NAME})
+@@ -364,13 +399,15 @@ if (NOT TARGET Qt5::$${CMAKE_MODULE_NAME})
  
      add_library(Qt5::$${CMAKE_MODULE_NAME} STATIC IMPORTED)
      set_property(TARGET Qt5::$${CMAKE_MODULE_NAME} PROPERTY IMPORTED_LINK_INTERFACE_LANGUAGES "CXX")
@@ -200,7 +205,7 @@ index d4fd057682..838279515c 100644
  !!IF !equals(TEMPLATE, aux)
  !!IF !isEmpty(CMAKE_BUILD_IS_FRAMEWORK)
      set_property(TARGET Qt5::$${CMAKE_MODULE_NAME} PROPERTY FRAMEWORK 1)
-@@ -381,6 +418,56 @@ if (NOT TARGET Qt5::$${CMAKE_MODULE_NAME})
+@@ -385,6 +422,56 @@ if (NOT TARGET Qt5::$${CMAKE_MODULE_NAME})
      set_property(TARGET Qt5::$${CMAKE_MODULE_NAME} PROPERTY INTERFACE_QT_ENABLED_FEATURES $$join(QT.$${MODULE}.enabled_features, ";"))
      set_property(TARGET Qt5::$${CMAKE_MODULE_NAME} PROPERTY INTERFACE_QT_DISABLED_FEATURES $$join(QT.$${MODULE}.disabled_features, ";"))
  
@@ -257,7 +262,7 @@ index d4fd057682..838279515c 100644
      set(_Qt5$${CMAKE_MODULE_NAME}_PRIVATE_DIRS_EXIST TRUE)
      foreach (_Qt5$${CMAKE_MODULE_NAME}_PRIVATE_DIR ${Qt5$${CMAKE_MODULE_NAME}_OWN_PRIVATE_INCLUDE_DIRS})
          if (NOT EXISTS ${_Qt5$${CMAKE_MODULE_NAME}_PRIVATE_DIR})
-@@ -399,9 +486,13 @@ if (NOT TARGET Qt5::$${CMAKE_MODULE_NAME})
+@@ -403,9 +490,13 @@ if (NOT TARGET Qt5::$${CMAKE_MODULE_NAME})
                  list(APPEND _Qt5$${CMAKE_MODULE_NAME}_PRIVATEDEPS ${dep}Private)
              endif()
          endforeach()
@@ -271,7 +276,7 @@ index d4fd057682..838279515c 100644
      endif()
  
  !!IF !equals(TEMPLATE, aux)
-@@ -471,9 +562,11 @@ if (NOT TARGET Qt5::$${CMAKE_MODULE_NAME})
+@@ -475,9 +566,11 @@ if (NOT TARGET Qt5::$${CMAKE_MODULE_NAME})
  !!ELSE
          \"$${CMAKE_IMPLIB_FILE_LOCATION_RELEASE}\" )
  !!ENDIF
@@ -285,7 +290,7 @@ index d4fd057682..838279515c 100644
  !!ENDIF // CMAKE_RELEASE_TYPE
  !!ENDIF // CMAKE_FIND_OTHER_LIBRARY_BUILD
  
-@@ -484,33 +577,6 @@ if (NOT TARGET Qt5::$${CMAKE_MODULE_NAME})
+@@ -488,33 +581,6 @@ if (NOT TARGET Qt5::$${CMAKE_MODULE_NAME})
      )
  !!ENDIF // TEMPLATE != aux
  
@@ -343,5 +348,5 @@ index 5baf0fdb10..ec5f3cc437 100644
 +
 +endif()
 -- 
-2.23.0
+2.24.0
 
