@@ -1,0 +1,16 @@
+pkgbase = ruby-pg_query
+	pkgdesc = PostgreSQL query parsing and normalization library
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = http://github.com/lfittl/pg_query
+	arch = i686
+	arch = x86_64
+	license = BSD-3-Clause
+	depends = ruby
+	noextract = pg_query-1.1.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/pg_query-1.1.0.gem
+	md5sums = 6da6b326fa0c290107a3d28b12bebfea
+
+pkgname = ruby-pg_query
+
