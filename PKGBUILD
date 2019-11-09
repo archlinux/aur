@@ -2,7 +2,7 @@
 
 pkgname=clash-dashboard
 pkgver=0.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="web port of clash"
 arch=('any')
 url="https://github.com/Dreamacro/clash-dashboard"
@@ -20,7 +20,7 @@ source=(
   "${pkgname}.service"
 )
 sha1sums=('b4a1f9f2d71ce972ab45d4474f6b7a5fd199b8f9'
-          '3815fd8b887e8c92e9afece3ce1a223d2c19c57e')
+          '14481461e8af49e6d5bcfb3e23546f96697ebf17')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -33,9 +33,9 @@ build() {
 }
 
 package() {
-  install -dm755 "${pkgdir}/usr/lib"
-  cp -r "${srcdir}/${pkgname}-${pkgver}" "${pkgdir}/usr/lib/${pkgname}"
-  find "${pkgdir}/usr/lib/${pkgname}/node_modules" \
+  install -dm755 "${pkgdir}/usr/share"
+  cp -r "${srcdir}/${pkgname}-${pkgver}" "${pkgdir}/usr/share/${pkgname}"
+  find "${pkgdir}/usr/share/${pkgname}/node_modules" \
     -name "*.a" -exec rm '{}' \; \
     -or -name "*.bat" -exec rm '{}' \; \
     -or -name "*.c" -exec rm '{}' \; \
