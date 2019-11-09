@@ -1,7 +1,7 @@
 pkgbase = ohsnap-otb
 	pkgdesc = Monospaced font based on Artwiz Snap (OTB version)
 	pkgver = 1.8.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://sourceforge.net/projects/osnapfont
 	arch = any
 	license = GPL2

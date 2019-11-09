@@ -2,7 +2,7 @@
 
 pkgname=ohsnap-otb
 pkgver=1.8.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Monospaced font based on Artwiz Snap (OTB version)"
 url="https://sourceforge.net/projects/osnapfont"
 arch=('any')
