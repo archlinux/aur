@@ -1,30 +1,26 @@
 pkgbase = python-naima
 	pkgdesc = Derivation of non-thermal particle distributions through MCMC spectral fitting
-	pkgver = 0.8.4
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://naima.readthedocs.io/
 	arch = i686
 	arch = x86_64
 	license = BSD
-	checkdepends = python-pytest-astropy
+	checkdepends = python-pytest
+	checkdepends = python-astropy
 	checkdepends = python-corner
-	checkdepends = python-yaml
+	checkdepends = python-emcee<3.0
+	checkdepends = python-sherpa
 	makedepends = python-setuptools
-	makedepends = python-astropy
-	makedepends = python-astropy-helpers>=3.1
-	makedepends = python-sphinx-astropy
-	makedepends = python-emcee
-	source = https://files.pythonhosted.org/packages/source/n/naima/naima-0.8.4.tar.gz
-	md5sums = d74e64cb53179886d45936c56a0934fd
+	source = https://files.pythonhosted.org/packages/source/n/naima/naima-0.9.0.tar.gz
+	md5sums = 7c50e8576273a3004de45961b70e9e51
 
 pkgname = python-naima
 	depends = python>=3.5
 	depends = python-astropy>=1.0.2
-	depends = python-emcee>=2.2.0
+	depends = python-emcee<3.0
 	depends = python-corner
+	depends = python-yaml
 	optdepends = python-sherpa: For using Sherpa models
 	optdepends = python-naima-doc: Documentation for Naima
-
-pkgname = python-naima-doc
-	pkgdesc = Documentation for Python Naima module
 
