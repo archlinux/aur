@@ -10,7 +10,7 @@ arch=('any')
 url='[% url %]'
 license=('PerlArtistic' 'GPL')
 makedepends=('perl-module-build-tiny>=0.035')
-depends=('perl')
+depends=('perl-http-date')
 checkdepends=('perl-test-requires')
 source=([% source %])
 options=(!emptydirs)
@@ -38,5 +38,5 @@ package() {
 	cd [% distdir %]
 	sanitize
 	perl Build install
-	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+	find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
 }
