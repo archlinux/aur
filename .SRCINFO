@@ -13,7 +13,7 @@ pkgbase = img4tool-git
 	provides = img4tool
 	conflicts = img4tool
 	source = git+https://github.com/tihmstar/img4tool.git
-	sha512sums = SKIP
+	sha256sums = SKIP
 
 pkgname = img4tool-git
 
