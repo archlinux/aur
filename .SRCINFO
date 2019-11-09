@@ -1,7 +1,7 @@
 pkgbase = bananapkg-git
 	pkgdesc = Low-level package manager written in shell bash.
 	pkgver = r160.3e2d238
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bananapkg.github.io
 	arch = any
 	license = MIT
