@@ -11,22 +11,24 @@ url="http://www.sourceforge.net/projects/xineliboutput"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
 makedepends=('avahi' 'dbus-glib' 'git' 'glu' 'libcec' 'libextractor' 'libxrandr' 'mesa' "vdr-api=${_vdrapi}" 'xine-lib')
-_plugname=${pkgname//vdr-/}
 source=("$pkgbase::git://git.code.sf.net/p/xineliboutput/git#commit=$_gitver"
         'xineliboutput_fix_vdrversion_check.diff'
-        "50-$_plugname.conf")
+        'xineliboutput-glvnd-1.2-compat.patch'
+        "50-$pkgbase.conf")
 md5sums=('SKIP'
          'd1f1c591b9f927fd0b86e7ff19c09951'
+         'b659774446056f4c3410437314dc7b22'
          'c3b2b26732606b4f95ca95cea6ce2084')
 
 pkgver() {
   cd "${srcdir}/$pkgbase"
-  git describe --tags | sed "s/$_plugname.//g;s/_/./g;s/-/./g"
+  git describe --tags | sed "s/$pkgbase.//g;s/_/./g;s/-/./g"
 }
 
 prepare() {
   cd "${srcdir}/$pkgbase"
   patch -p1 -i "$srcdir/xineliboutput_fix_vdrversion_check.diff"
+  patch -p1 -i "$srcdir/xineliboutput-glvnd-1.2-compat.patch"
 }
 
 build() {
@@ -40,8 +42,8 @@ package_vdr-xineliboutput() {
   depends=('avahi' 'libextractor' 'libbluray' "vdr-api=${_vdrapi}")
   optdepends=('xineliboutput-xineplug: local output device'
               'xineliboutput-frontends: remote output device')
-  backup=("etc/vdr/conf.avail/50-$_plugname.conf"
-          "var/lib/vdr/plugins/$_plugname/allowed_hosts.conf")
+  backup=("etc/vdr/conf.avail/50-$pkgbase.conf"
+          "var/lib/vdr/plugins/$pkgbase/allowed_hosts.conf")
   cd "${srcdir}/$pkgbase"
 
   mkdir -p "$pkgdir/usr/lib/vdr/plugins"
@@ -49,8 +51,8 @@ package_vdr-xineliboutput() {
 
   rm -r "$pkgdir/usr/bin"
   rm -r "$pkgdir/usr/lib/xine"
-  install -Dm644 examples/allowed_hosts.conf "$pkgdir/var/lib/vdr/plugins/$_plugname/allowed_hosts.conf"
-  install -Dm644 "$srcdir/50-$_plugname.conf" "$pkgdir/etc/vdr/conf.avail/50-$_plugname.conf"
+  install -Dm644 examples/allowed_hosts.conf "$pkgdir/var/lib/vdr/plugins/$pkgbase/allowed_hosts.conf"
+  install -Dm644 "$srcdir/50-$pkgbase.conf" "$pkgdir/etc/vdr/conf.avail/50-$pkgbase.conf"
 
   chown -R 666:666 "$pkgdir/var/lib/vdr"
 }

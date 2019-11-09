@@ -1,0 +1,56 @@
+diff --git a/configure b/configure
+index 0222f4f..63cd39c 100755
+--- a/configure
++++ b/configure
+@@ -236,7 +236,7 @@ FEATURES="
+   xrandr
+   xrender
+   xshape
+-  opengl
++  gl
+   pthread
+   dlfcn
+   vdpau
+@@ -281,7 +281,7 @@ show_help(){
+   echo "  --disable-xrandr       disable Xrandr support [no]"
+   echo "  --disable-xrender      disable Xrender support (HUD OSD) [no]"
+   echo "  --disable-xshape       disable Xshape support (non-transparent HUD OSD without composite manager) [no]"
+-  echo "  --disable-opengl       disable OpenGL support (transparent HUD OSD without composite manager) [no]"
++  echo "  --disable-gl           disable OpenGL support (transparent HUD OSD without composite manager) [no]"
+   echo "  --disable-vdpau        disable VDPAU support (X11) [no]"
+   echo "  --disable-i18n         disable i18n support [no]"
+   echo "  --disable-libcap       disable libcap support [no]"
+@@ -339,10 +339,10 @@ done
+ 
+ check_deps(){
+   disabled libxine && disable x11 fb libavutil libjpeg libcec
+-  disabled x11     && disable dbus-glib-1 xshm xrandr xrender xshape opengl xdpms xinerama vdpau
++  disabled x11     && disable dbus-glib-1 xshm xrandr xrender xshape gl xdpms xinerama vdpau
+   disabled vdr     && disable libextractor libcap libbluray avahi-client
+-  disabled dlfcn   && disable opengl
+-  disabled pthread && disable opengl
++  disabled dlfcn   && disable gl
++  disabled pthread && disable gl
+   disabled xrender && disable xshape xshm
+ }
+ 
+@@ -397,7 +397,7 @@ if enabled libxine; then
+     test_library X11  xshape       "X11/extensions/shape.h"    "-lXext"      "XShapeQueryExtension(0,0,0)"
+     test_library X11  xdpms        "X11/extensions/dpms.h"     "-lXext"      "DPMSDisable(0)"
+     test_library X11  xinerama     "X11/extensions/Xinerama.h" "-lXinerama"  "XineramaQueryScreens(0,0)"
+-    test_library X11  opengl       "GL/glx.h"                  "-lGL -lGLU"  "glXQueryVersion(0,0,0)"
++    test_library X11  gl           "GL/glx.h"                  "-lGL -lGLU"  "glXQueryVersion(0,0,0)"
+     test_library none vdpau        "vdpau/vdpau_x11.h"         "-lvdpau"     "vdp_device_create_x11(0,0,0,0)"
+     test_library X11  dbus-glib-1  \
+       "dbus/dbus-glib.h" \
+@@ -412,8 +412,8 @@ check_deps
+ 
+ # need -lm for ceil/floor in HUD OSD
+ enabled xrender && add_flags "LIBS_X11" "-lm"
+-# need -ldl and -lpthread with opengl
+-enabled opengl  && add_flags "LIBS_X11" $LIBS_DLFCN $LIBS_PTHREAD
++# need -ldl and -lpthread with gl
++enabled gl      && add_flags "LIBS_X11" $LIBS_DLFCN $LIBS_PTHREAD
+ # need -ldl for dlopen() in vdr plugin
+ enabled vdr     && add_flags "LIBS_VDR" $LIBS_DLFCN
+ 
