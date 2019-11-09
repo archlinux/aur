@@ -2,10 +2,10 @@
 
 pkgname='python-eq3bt'
 pkgver='0.1.11'
-pkgrel=1
-pkgdesc='Click support for Python’s Datetime types.'
+pkgrel=2
+pkgdesc='Python library and command-line tool for EQ3 Smart Bluetooth thermostats.'
 arch=('any')
-url='https://github.com/click-contrib/click-datetime'
+url='https://github.com/rytilahti/python-eq3bt'
 license=('MIT')
 depends=('python' 'python-click-datetime' 'python-construct' 'python-bluepy')
 makedepends=('python-setuptools')
