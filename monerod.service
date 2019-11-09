@@ -6,17 +6,31 @@ After=network.target
 User=monero
 Group=monero
 WorkingDirectory=~
+RuntimeDirectory=monero
 
+# Clearnet config
+#
 Type=forking
-ExecStart=/usr/bin/monerod --config-file /etc/monerod.conf --detach
+PIDFile=/run/monero/monerod.pid
+ExecStart=/usr/bin/monerod --config-file /etc/monerod.conf \
+    --detach --pidfile /run/monero/monerod.pid
 
-# This is necessary because monerod does not yet support
-# writing a PID file, which means systemd tries to guess the PID
-# by default, but it guesses wrong (sometimes, depending on
-# random timing of events), because the daemon forks twice.
-# The ultimate fix is for the daemon to write a PID file, and
-# a workaround is to disable the guessing feature in systemd.
-GuessMainPID=no
+# Tor config
+#
+## We have to use simple, not forking, because we cannot pass --detach
+## because stderr/stdout is not available when detached, but torsocks
+## attempts to write to it, and fails with 'invalid argument', causing
+## monerod to fail.
+#Type=simple
+#Environment=DNS_PUBLIC=tcp
+## The following is needed only when accessing wallet from a different
+## host in the LAN, VPN, etc, the RPC must bind to 0.0.0.0, but
+## by default torsocks only allows binding to localhost.
+#Environment=TORSOCKS_ALLOW_INBOUND=1
+#ExecStart=/usr/bin/torsocks /usr/bin/monerod --config-file /etc/monerod.conf \
+#    --non-interactive
+
+Restart=always
 
 [Install]
 WantedBy=multi-user.target
