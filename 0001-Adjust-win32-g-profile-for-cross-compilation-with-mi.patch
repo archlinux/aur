@@ -1,7 +1,7 @@
-From a378fa39cd0e8100c8c3ee0a5906868663158bbf Mon Sep 17 00:00:00 2001
+From e04f26325dae3daefcdfcb8f744e262faee0c508 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Fri, 3 Feb 2017 18:30:51 +0100
-Subject: [PATCH 01/33] Adjust win32-g++ profile for cross compilation with
+Subject: [PATCH 01/32] Adjust win32-g++ profile for cross compilation with
  mingw-w64
 
 Adding a new, separate mkspec instead of patching the existing one
@@ -161,5 +161,5 @@ index 5de482f23b..3c3d22c699 100644
  
  QMAKE_LINK              = $${CROSS_COMPILE}g++
 -- 
-2.23.0
+2.24.0
 

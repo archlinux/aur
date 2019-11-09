@@ -1,7 +1,7 @@
-From 0e4aad7814d0b407d92b34e8fcc9fba70d9bd765 Mon Sep 17 00:00:00 2001
+From 7819e3f236674e2bfb22f07bd91eaef0e0c7926e Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 18:04:42 +0200
-Subject: [PATCH 17/33] Use system zlib for build tools
+Subject: [PATCH 17/32] Use system zlib for build tools
 
 ---
  src/tools/bootstrap/bootstrap.pro | 4 +++-
@@ -23,5 +23,5 @@ index 83e44ff9a4..4734623936 100644
  } else {
      CONFIG += no_core_dep
 -- 
-2.23.0
+2.24.0
 
