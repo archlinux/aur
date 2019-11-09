@@ -1,0 +1,14 @@
+pkgbase = brother-hl3170cdw-lpr-bin
+	pkgdesc = LPR driver for Brother HL-3170CDW printer
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://support.brother.com/g/b/producttop.aspx?c=us&lang=en&prod=hl3170cdw_all
+	arch = i686
+	arch = x86_64
+	groups = base-devel
+	license = EULA
+	source = https://support.brother.com/g/b/files/dlf/dlf007056/hl3170cdwlpr-1.1.2-1.i386.deb
+	md5sums = aba0d86cabac559db68d110de7717aac
+
+pkgname = brother-hl3170cdw-lpr-bin
+
