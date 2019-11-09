@@ -1,24 +1,19 @@
 pkgbase = python-pythran
 	pkgdesc = Ahead of Time compiler for numeric kernels
-	pkgver = 0.9.2
+	pkgver = 0.9.3.post1
 	pkgrel = 1
 	url = https://pythran.readthedocs.io/
 	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = python-numpy
-	makedepends = python2-numpy
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
-	source = python-pythran-0.9.2.tar.gz::https://github.com/serge-sans-paille/pythran/archive/0.9.2.tar.gz
-	sha256sums = 4429cd36b45faff68fa02f8c9d8ac7d4237daf8292bc111e7422aee95a193232
-
-pkgname = python-pythran
 	depends = python
 	depends = python-networkx
 	depends = python-ply
 	depends = python-numpy
-	depends = python-gast
+	depends = python-beniget==0.1.0
+	depends = python-gast==0.2.2
 	depends = python-six
 	depends = gperftools
 	depends = gmp
@@ -26,18 +21,8 @@ pkgname = python-pythran
 	optdepends = python-colorlog: Coloured output during compilation
 	provides = python-pythran
 	conflicts = python-pythran-git
+	source = python-pythran-0.9.3.post1.tar.gz::https://files.pythonhosted.org/packages/source/p/pythran/pythran-0.9.3.post1.tar.gz
+	sha256sums = 3744eca3e2284aee3137c8995025bde7ea76d5b78fad6d26e709a8c167c5a61d
 
-pkgname = python2-pythran
-	depends = python2
-	depends = python2-networkx
-	depends = python2-ply
-	depends = python2-numpy
-	depends = python2-gast
-	depends = python2-six
-	depends = gperftools
-	depends = gmp
-	optdepends = boost: Use system Boost libraries
-	optdepends = python2-colorlog: Coloured output during compilation
-	provides = python2-pythran
-	conflicts = python2-pythran-git
+pkgname = python-pythran
 
