@@ -1,13 +1,16 @@
 pkgbase = bgrep
 	pkgdesc = Binary grep
-	pkgver = 0.2
+	pkgver = 1.0
 	pkgrel = 1
-	url = https://github.com/tmbinc/bgrep
+	url = https://github.com/rsharo/bgrep
 	arch = i686
 	arch = x86_64
+	arch = armv7h
 	license = BSD
-	source = https://github.com/tmbinc/bgrep/archive/bgrep-0.2.tar.gz
-	md5sums = 99846d0a782bd72665349fd0269eaf11
+	checkdepends = vim
+	depends = glibc
+	source = https://github.com/rsharo/bgrep/archive/bgrep-1.0.tar.gz
+	md5sums = 1d69eb383eea5c6b3e6e5532a0fba37f
 
 pkgname = bgrep
 

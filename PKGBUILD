@@ -1,24 +1,34 @@
-# Maintainer: Anton Leontiev <bunder /at/ t-25.ru>
+# Maintainer: Anton Leontiev <scileont /at/ gmail.com>
+
 pkgname=bgrep
-pkgver=0.2
+pkgver=1.0
 pkgrel=1
 pkgdesc='Binary grep'
-arch=('i686' 'x86_64')
-url='https://github.com/tmbinc/bgrep'
+arch=('i686' 'x86_64' 'armv7h')
+url='https://github.com/rsharo/bgrep'
 license=('BSD')
-source=(https://github.com/tmbinc/bgrep/archive/$pkgname-$pkgver.tar.gz)
-md5sums=('99846d0a782bd72665349fd0269eaf11')
+depends=('glibc')
+checkdepends=('vim')
+source=(https://github.com/rsharo/bgrep/archive/$pkgname-$pkgver.tar.gz)
+md5sums=('1d69eb383eea5c6b3e6e5532a0fba37f')
+
+prepare() {
+	cd $pkgname-$pkgname-$pkgver
+    ./bootstrap
+}
 
 build() {
-	cd "$srcdir/$pkgname-$pkgname-$pkgver"
+	cd $pkgname-$pkgname-$pkgver
+    ./configure --prefix=/usr
 	make
 }
 
 check() {
-	cd "$srcdir/$pkgname-$pkgname-$pkgver/test"
-	./bgrep-test.sh
+	cd $pkgname-$pkgname-$pkgver
+	make check
 }
 
 package() {
-	install -Dm755 "$srcdir/$pkgname-$pkgname-$pkgver/bgrep" "$pkgdir/usr/bin/bgrep"
+	cd $pkgname-$pkgname-$pkgver
+    make install DESTDIR="$pkgdir"
 }
