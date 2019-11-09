@@ -1,0 +1,21 @@
+pkgbase = rtl8812au422-dkms-git
+	pkgdesc = rtl8821AU/rtl8812AU/rtl8811AU driver with firmware version 4.2.2 (7502.20130507) (Tested and working as of Linux kernel 5.3.8-arch1-1)
+	pkgver = 4.2.2.r7502.c20130507
+	pkgrel = 1
+	url = https://github.com/gnab/rtl8812au/tree/master
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = dkms
+	conflicts = rtl8812au
+	conflicts = rtl8812au-dkms-git
+	conflicts = rtl8821au-dkms-git
+	conflicts = rtl88xxau-aircrack-dkms-git
+	source = git+https://github.com/gnab/rtl8812au
+	source = dkms.conf
+	sha256sums = SKIP
+	sha256sums = 63d3e54d2aa63bfec9b6f3ddbd615a1534a16e554a8aeb3d3c8cc137f63d9e4c
+
+pkgname = rtl8812au422-dkms-git
+
