@@ -11,6 +11,7 @@ pkgbase = plasma5-applets-panon-git
 	depends = python-numpy
 	depends = python-pillow
 	depends = python-pyaudio
+	depends = python-cffi
 	depends = python-websockets
 	depends = qt5-websockets
 	depends = qt5-3d
