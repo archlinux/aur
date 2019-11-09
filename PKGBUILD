@@ -2,7 +2,7 @@
 # Maintainer: John Hamelink <john@johnhamelink.com>
 # Maintainer: Tobias Backer Dirks <omgitsaheadcrab@gmail.com>
 pkgname=popsql
-pkgver=0.7.7
+pkgver=0.7.8
 pkgrel=1
 pkgdesc="Collaborative SQL editor to write, run, and share queries instantly"
 arch=('x86_64')
@@ -17,7 +17,7 @@ optdepends=(
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source_x86_64=("$pkgname-$pkgver-$pkgrel.deb::https://get.popsql.io/download/linux_deb_64")
-sha512sums_x86_64=('f90eeb48542f81ed3f43080fe357927a617392f298e24c4abf212c9572c0d455dfabee9bb629e8a241a3bb0e7e08602d80ed02a35a97e79d7731efc0d6e3e3d0')
+sha512sums_x86_64=('9995b6aa51f5f159999b21ae48e007f65aa233a56d557f872d6f39ad586b8e05c9f1838f6be90cbb306fac1333651f090c4f8eaed3baac2f36def126cca0a47c')
 
 package(){
   # Extract package data
