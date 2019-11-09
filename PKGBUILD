@@ -2,46 +2,41 @@
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=switchboard-plug-elementary-tweaks-git
-pkgver=0.0.1.r1.g211e2a9
+pkgver=0.0.1.r45.g7032d22
 pkgrel=1
 pkgdesc='Elementary Tweaks plug for Switchboard'
 arch=('i686' 'x86_64')
 url='https://github.com/elementary-tweaks/elementary-tweaks'
 license=('GPL3')
 groups=('pantheon-unstable')
-depends=('gconf' 'glib2' 'glibc' 'gtk3' 'libgee'
+depends=('gconf' 'gtk3' 'libgee'
          'libgranite.so' 'libswitchboard-2.0.so')
-makedepends=('bzr' 'cmake' 'vala')
+makedepends=('git' 'meson' 'vala')
 provides=(switchboard-plug-elementary-tweaks{,-bzr})
 conflicts=('switchboard-plug-elementary-tweaks')
-source=('switchboard-plug-elementary-tweaks::git+https://github.com/elementary-tweaks/elementary-tweaks.git')
-sha256sums=('SKIP')
+source=('switchboard-plug-elementary-tweaks::git+https://github.com/elementary-tweaks/elementary-tweaks.git'
+        'public-to-protected.patch')
+sha256sums=('SKIP'
+            '3fa13fad3cf1d41b977d6834fa4ea62fe2d015912e8193fccfcc748245a45ff1')
 
 pkgver() {
   cd switchboard-plug-elementary-tweaks
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+  cd switchboard-plug-elementary-tweaks
+  patch -Np0 < ../public-to-protected.patch
+}
 
 build() {
-  cd switchboard-plug-elementary-tweaks
-
-  if [[ -d build ]]; then
-    rm -rf build
-  fi
-  mkdir build && cd build
-
-  cmake .. \
-    -DCMAKE_BUILD_TYPE='Release' \
-    -DCMAKE_INSTALL_PREFIX='/usr' \
-    -DCMAKE_INSTALL_LIBDIR='/usr/lib'
-  make
+  arch-meson switchboard-plug-elementary-tweaks build
+  ninja -C build
 }
 
 package() {
-  cd switchboard-plug-elementary-tweaks/build
 
-  make DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" ninja -C build install
 }
 
 # vim: ts=2 sw=2 et:
