@@ -3,7 +3,7 @@
 pkgbase=mxnet
 pkgname=('mxnet' 'mxnet-cuda' 'mxnet-mkl')
 pkgver=1.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Flexible and Efficient Library for Deep Learning"
 arch=('x86_64')
 url="http://mxnet.io/"
@@ -180,7 +180,7 @@ package_mxnet-cuda() {
 	pkgdesc="$pkgdesc (with CUDA)"
 	depends+=(cblas lapack cuda cudnn nccl)
 	conflicts=(mxnet)
-	provides=(mxent)
+	provides=(mxnet)
 	_package
 }
 
@@ -188,6 +188,6 @@ package_mxnet-mkl() {
 	pkgdesc="$pkgdesc (with MKL)"
 	depends+=(intel-mkl mkl-dnn)
 	conflicts=(mxnet)
-	provides=(mxent)
+	provides=(mxnet)
 	_package
 }

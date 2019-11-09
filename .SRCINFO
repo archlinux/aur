@@ -83,7 +83,7 @@ pkgname = mxnet-cuda
 	depends = cuda
 	depends = cudnn
 	depends = nccl
-	provides = mxent
+	provides = mxnet
 	conflicts = mxnet
 
 pkgname = mxnet-mkl
@@ -95,6 +95,6 @@ pkgname = mxnet-mkl
 	depends = python-requests
 	depends = intel-mkl
 	depends = mkl-dnn
-	provides = mxent
+	provides = mxnet
 	conflicts = mxnet
 
