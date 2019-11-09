@@ -6,6 +6,7 @@ pkgbase = libdecaf
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
+	makedepends = git
 	makedepends = python
 	source = libdecaf-1.0.0::git+git://git.code.sf.net/p/ed448goldilocks/code
 	source = cmake.patch
