@@ -1,0 +1,14 @@
+pkgbase = brother-hl3170cdw-cups-bin
+	pkgdesc = CUPS wrapper for Brother HL-3170CDW printer
+	pkgver = 1.1.4
+	pkgrel = 1
+	url = https://support.brother.com/g/b/producttop.aspx?c=us&lang=en&prod=hl3170cdw_all
+	arch = i686
+	arch = x86_64
+	groups = base-devel
+	license = EULA
+	source = https://download.brother.com/welcome/dlf007058/hl3170cdwcupswrapper-1.1.4-0.i386.deb
+	md5sums = e76d71b234ca8586dd89e334bc380119
+
+pkgname = brother-hl3170cdw-cups-bin
+
