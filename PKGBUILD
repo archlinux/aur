@@ -1,9 +1,7 @@
-# Maintainer: Tomasz Maciej Nowak <com[dot]gmail[at]tmn505>
+# Contributor: Tomasz Maciej Nowak <com[dot]gmail[at]tmn505>
 # Contributor: Jonathan Conder <jonno.conder@gmail.com>
 # Contributor: Jaroslaw Swierczynski <swiergot@aur.archlinux.org>
 # Contributor: Camille Moncelier <pix@devlife.org>
-
-# All my PKGBUILDs are managed at https://github.com/tmn505/AUR
 
 pkgname=linuxtv-dvb-apps
 pkgver=1505
@@ -15,7 +13,7 @@ url='https://www.linuxtv.org'
 license=('GPL')
 depends=('glibc')
 makedepends=('mercurial')
-optdepends=('dtv-scan-tables-git: initial tuning data necessary for scannig utils')
+optdepends=('dtv-scan-tables-git: initial tuning data necessary for scanning utils')
 source=("hg+https://linuxtv.org/hg/dvb-apps/#revision=${_hgrev}"
         'https://gitweb.gentoo.org/repo/gentoo.git/plain/media-tv/linuxtv-dvb-apps/files/linuxtv-dvb-apps-1.1.1.20100223-perl526.patch'
         'https://git.busybox.net/buildroot/plain/package/dvb-apps/0003-handle-static-shared-only-build.patch'
