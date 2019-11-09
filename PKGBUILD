@@ -1,8 +1,8 @@
 # Maintainer : Colin Berry <colinb969@gmail.com>
-pkgname=flashpoint-git
+pkgname=flashpoint-launcher-git
 pkgver=fd01bbe
 pkgrel=1.3
-pkgdesc="Launcher for BlueMaxima's Flashpoint"
+pkgdesc="Launcher for BlueMaxima's Flashpoint - Does not include data files! - Launcher software only."
 arch=('x86_64')
 url="http://bluemaxima.org/flashpoint/"
 license=('MIT')
