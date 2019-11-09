@@ -11,7 +11,7 @@
 # Get the info from the yaml
 info() {
 	if [ ! -f info.yml ]; then
-		curl -s "https://storage.googleapis.com/shadow-update/launcher/preprod/linux/ubuntu_18.04/latest-linux.yml" -o info.yml
+		curl -s "https://storage.googleapis.com/shadow-update/launcher/${basename}/linux/ubuntu_18.04/latest-linux.yml" -o info.yml
 	fi
 
 	eval $(parse_yaml info.yml "shadow_")
