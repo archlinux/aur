@@ -2,7 +2,7 @@
 # Contributor: Shalygin Konstantin <k0ste@k0ste.ru>
 
 pkgname='skydive'
-pkgver='0.25.0'
+pkgver='0.26.0'
 pkgrel='1'
 pkgdesc='Real-time network topology and protocols analyzer'
 arch=('x86_64' 'i686')
@@ -12,7 +12,7 @@ makedepends=('go' 'libpcap' 'libxml2' 'protobuf' 'libvirt' 'npm')
 source=("https://github.com/${pkgname}-project/${pkgname}/archive/v${pkgver}.tar.gz"
 	"${pkgname}.tmpfiles"
 	"${pkgname}.sysusers")
-sha256sums=('698413e4c9c5dbd5977328bd46e912cd760b500dacf6ec4f4c453f6a494c09ec'
+sha256sums=('6d324044ed13a56162ad95af4a2e12733b7cdbe7bc39d4e1c6038a32ae9890b7'
             '5d3b4f628a485363ec47897054b2d4a84ef680b9db93562a58e42971f5597bc3'
             'acbccbc4dace958b4d7eeeb3879e6f80fe798ffb5e7be5375008970f6ee30c34')
 options=('!buildflags')
