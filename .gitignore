@@ -1,7 +1,10 @@
 pkg/
 src/
-shadowbeta.deb
+*.deb
 *.pkg.tar
 *.pkg.tar.xz
 .directory
 *.zip
+*.part
+*.AppImage
+*.yml

@@ -1,7 +1,3 @@
-post_install() {
-	ln -sf '/opt/Shadow/shadow' '/usr/bin/shadow'
-}
-
 post_remove() {
 	# Remove configuration
 	for user in `ls /home`
@@ -17,8 +13,4 @@ pre_upgrade(){
 	if [ -d "/opt/Shadow" ]; then
 	    rm -r "/opt/Shadow"
 	fi
-}
-
-post_upgrade(){
-	post_install
 }

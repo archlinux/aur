@@ -4,55 +4,104 @@
 # Creator Blade <contact@blade-group.com>
 
 # Made with https://github.com/NicolasGuilloux/blade-shadow-beta
-_commit=9add3366d25530d51d168608c54b5339b64d2a4e
-pkgname=shadow-tech
-pkgver=4.7.10
-pkgrel=1
-pkgdesc="Shadow launcher (stable version)"
-arch=('x86_64')
-url="http://shadow.tech"
-license=('unknown')
-depends=('desktop-file-utils' 'freetype2' 'libuv' 'gconf' 'hicolor-icon-theme' 'json-c' 'libappindicator-gtk2' 'libbsd' 'libcurl-gnutls' 'libdrm' 'libnotify' 'libva' 'libxtst' 'nss' 'opus' 'qt5-base' 'qt5-svg' 'sdl2' 'libappindicator' 'libcurl-compat' 'sdl' 'gcc7-libs' 'ttf-dejavu' 'libxss' 'libsndio-61-compat')
-provides=(shadow-tech)
-source=('https://update.shadow.tech/launcher/prod/linux/ubuntu_18.04/Shadow.zip')
-md5sums=('2057d3656d67156d52b7fb3bf1f5abaa')
-install=$pkgname.install
+
+# Import parse_yaml script
+. parse_yaml.sh
+
+# Get the info from the yaml
+info() {
+	if [ ! -f info.yml ]; then
+		curl -s "https://storage.googleapis.com/shadow-update/launcher/${basename}/linux/ubuntu_18.04/latest-linux.yml" -o info.yml
+	fi
+
+	eval $(parse_yaml info.yml "shadow_")
+}
+
+# Get the package version
+pkgver() {
+	info
+
+    echo "$shadow_version"
+}
+
+# Get the SHA512 checksum
+sha512sum() {
+	info
+
+	echo "$shadow_sha512"
+}
+
+file() {
+	echo "$pkgname-$pkgver-$pkgrel.AppImage"
+}
+
+# Extract the zip file and prepare for the build
+prepare() {
+	# Give execution rights
+	chmod +x $(file)
+
+	# Extract AppImage
+	./$(file) --appimage-extract
+}
 
 # Build the package
 package() {
+	# Make the directories
+	mkdir -p "${pkgdir}/opt"
 
-	### Create working folder
-	mkdir shadow
+	# Move directories
+	mv "${srcdir}/squashfs-root/usr" "${pkgdir}"
+	mv "${srcdir}/squashfs-root" "${pkgdir}/opt/${pkgname}"
 
-	### Extract zip file
-	bsdtar -x -f Shadow.zip -C shadow
+	# Move de icons
+	mv "${pkgdir}/usr/share/icons/hicolor/0x0/" "${pkgdir}/usr/share/icons/hicolor/1024x1024/"
 
-	### Extract the deb
-	ar xv shadow/Shadow*.deb
+	# Make a copy of the icons
+	cp "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/shadow.png" "${pkgdir}/usr/share/icons/"
 
-	### Extract the data
-	bsdtar xf data.tar.xz
+	# Fix rights
+	chmod -R g-w "${pkgdir}/usr"
+	chmod -R g-w "${pkgdir}/opt"
 
-	mv "${srcdir}/usr/share/icons/hicolor/0x0/" "${srcdir}/usr/share/icons/hicolor/1024x1024/"
-	mv "${srcdir}/usr/share/icons/hicolor/1024x1024/apps/shadow.png" "${srcdir}/usr/share/icons/shadow.png"
-
-	chmod -R g-w usr
-	mv usr "${pkgdir}"
-
-	chmod -R g-w opt
-	mv opt "${pkgdir}"
+	# Create shortcut folder
+	mkdir "${pkgdir}/usr/share/applications"
 
 	# Move to shortcut directory
-	cd "${pkgdir}/usr/share/applications/"
+	cd "${pkgdir}/usr/share/applications"
 
-	sed -i -e 's/^Categories=.*$/Categories=Games;Game;Utility;Virtualization/g' shadow.desktop
-	sed -i -e 's/^Icon=.*$/Icon=shadow.png/g' shadow.desktop
-	sed -i -e 's/^Exec=.*$/& --no-sandbox/g' shadow.desktop
-	mv shadow.desktop "$srcdir/shadow.desktop"
+	mv "${pkgdir}/opt/${pkgname}/shadow.desktop" "${pkgname}.desktop"
+	sed -i -e 's/^Categories=.*$/Categories=Games;Game;Utility;Virtualization/g' ${pkgname}.desktop
+	sed -i -e "s/^Exec=.*$/Exec=\/opt\/${pkgname}\/shadow --no-sandbox/g" ${pkgname}.desktop
 
-	# Move the source directory
-	cd "$srcdir"
+	chmod g-w ${pkgname}.desktop
 
-	chmod g-w shadow.desktop
-	mv shadow.desktop "${pkgdir}/usr/share/applications/shadow.desktop"
+	# Create shortcut
+	mkdir -p "${pkgdir}/usr/bin"
+	ln -srf "../..//opt/${pkgname}/shadow" "${pkgdir}/usr/bin/{$pkgname}"
+
+	# Remove AppImage related files
+	rm "${pkgdir}/opt/${pkgname}/AppRun"
+
+	# Remove embedded libraries to avoid conflicts
+	rm -R "${pkgdir}/usr/lib"
+
+	# Fix rights
+	chmod 755 -R "${pkgdir}"
 }
+
+_commit=9add3366d25530d51d168608c54b5339b64d2a4e
+pkgname=shadow-tech
+basename=prod
+pkgver="$(pkgver)"
+pkgrel=1
+pkgdesc="Shadow xxa application"
+arch=('x86_64')
+url="https://shadow.tech"
+license=('unknown')
+depends=('desktop-file-utils' 'freetype2' 'libuv' 'gconf' 'hicolor-icon-theme' 'json-c' 'libappindicator-gtk2' 'libbsd' 'libcurl-gnutls' 'libdrm' 'libnotify' 'libva' 'libxtst' 'nss' 'opus' 'qt5-base' 'qt5-svg' 'sdl2' 'libappindicator' 'libcurl-compat' 'sdl' 'gcc7-libs' 'ttf-dejavu' 'libxss' 'libsndio-61-compat' 'gnome-keyring')
+optdepends=('libva-vdpau-driver-shadow-nvidia: Patch for recent Nvidia GPU' 'nouveau-fw: Driver for old Nvidia GPU' 'libva-intel-driver: Driver for Intel GPU')
+provides=(shadow-tech)
+source=("$(file)::https://update.shadow.tech/launcher/${basename}/linux/ubuntu_18.04/Shadow.AppImage")
+# sha512sums=("$(sha512sum))
+sha512sums=('SKIP')
+install=$pkgname.install

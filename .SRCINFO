@@ -1,8 +1,8 @@
 pkgbase = shadow-tech
-	pkgdesc = Shadow launcher (stable version)
-	pkgver = 4.7.10
+	pkgdesc = Shadow xxa application
+	pkgver = 5.0.226
 	pkgrel = 1
-	url = http://shadow.tech
+	url = https://shadow.tech
 	install = shadow-tech.install
 	arch = x86_64
 	license = unknown
@@ -31,9 +31,13 @@ pkgbase = shadow-tech
 	depends = ttf-dejavu
 	depends = libxss
 	depends = libsndio-61-compat
+	depends = gnome-keyring
+	optdepends = libva-vdpau-driver-shadow-nvidia: Patch for recent Nvidia GPU
+	optdepends = nouveau-fw: Driver for old Nvidia GPU
+	optdepends = libva-intel-driver: Driver for Intel GPU
 	provides = shadow-tech
-	source = https://update.shadow.tech/launcher/prod/linux/ubuntu_18.04/Shadow.zip
-	md5sums = 2057d3656d67156d52b7fb3bf1f5abaa
+	source = shadow-tech-5.0.226-1.AppImage::https://update.shadow.tech/launcher/prod/linux/ubuntu_18.04/Shadow.AppImage
+	sha512sums = SKIP
 
 pkgname = shadow-tech
 
