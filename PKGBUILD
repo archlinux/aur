@@ -1,7 +1,7 @@
 # Maintainer: dryes <joswiseman@cock.li>
 pkgname='pyrescene-hg'
-pkgver=646
-pkgrel=2
+pkgver=806
+pkgrel=1
 pkgdesc='pyReScene is a port of ReScene .NET to the Python programming language.'
 url='https://bitbucket.org/Gfy/pyrescene'
 arch=('any')
@@ -9,7 +9,8 @@ license=('MIT' 'GPL' 'Custom')
 depends=('python2' 'chromaprint' 'python2-numpy' 'unrar' 'lib32-libstdc++5')
 makedepends=('mercurial' 'git')
 source=('hg+https://bitbucket.org/Gfy/pyrescene/' 'git://github.com/dryes/rarlinux.git')
-md5sums=('SKIP' 'SKIP')
+md5sums=('SKIP'
+         'SKIP')
 
 pkgver() {
   cd "${srcdir}/${pkgname%-hg}"
