@@ -13,6 +13,7 @@ depends=(
     'gtk3'
     'nss'
     'libxss'
+    'gnome-keyring'
 )
 
 source=('LICENSE'
