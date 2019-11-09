@@ -1,14 +1,14 @@
 pkgbase = python-pulse-control
 	pkgdesc = Python high-level interface and ctypes-based bindings for PulseAudio.
-	pkgver = 19.9.5
+	pkgver = 19.10.4
 	pkgrel = 1
 	url = http://github.com/mk-fg/python-pulse-control
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = https://files.pythonhosted.org/packages/d8/db/7c0055f9c2ff291c86cbd1f66baa63e8266086e650bb583262dbd642257f/pulsectl-19.9.5.tar.gz
-	md5sums = f7e0b469bf8f63203b49f2a069568567
+	source = https://pypi.io/packages/source/p/pulsectl/pulsectl-19.10.4.tar.gz
+	md5sums = c51f573fcec8e398a793ea54015d5ec8
 
 pkgname = python-pulse-control
 	depends = python
