@@ -1,6 +1,6 @@
 # Maintainer: Eloy Garcia Almaden <eloy.garcia.pca@gmail.com>
 pkgname=buttermanager
-pkgver=1.6
+pkgver=1.6.1
 pkgrel=3
 epoch=
 pkgdesc="Graphical tool to create BTRFS snapshots, balance filesystems and upgrade the system safetly"
