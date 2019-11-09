@@ -1,6 +1,6 @@
 # Maintainer: Auteiy <dmitry@auteiy.me>
 
-pkgname=kotatogram-desktop-bin
+pkgname=kotatogram-desktop
 pkgver=1.1
 pkgrel=4
 pkgdesc="Experimental Telegram Desktop fork."
