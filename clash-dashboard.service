@@ -1,0 +1,10 @@
+[Unit]
+Description=web port of clash
+After=network.target
+
+[Service]
+WorkingDirectory=/usr/lib/clash-dashboard
+ExecStart=/usr/bin/node node_modules/.bin/webpack-dev-server --config=configs/webpack/dev.js
+
+[Install]
+WantedBy=multi-user.target
