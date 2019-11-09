@@ -1,0 +1,17 @@
+pkgbase = python-j2cli
+	pkgdesc = Command-line interface to Jinja2 for templating in shell scripts.
+	pkgver = 0.3.12b
+	pkgrel = 1
+	url = https://github.com/kolypto/j2cli
+	arch = any
+	license = BSD
+	checkdepends = python-nose
+	makedepends = python-setuptools
+	depends = python
+	depends = python-jinja
+	depends = python-pyaml
+	source = python-j2cli-0.3.12b.tar.gz::https://github.com/kolypto/j2cli/archive/v0.3.12b.tar.gz
+	sha256sums = 5313700543db9a73bdc4a8634457870d0b49e1c83aae461974134c56405773cd
+
+pkgname = python-j2cli
+
