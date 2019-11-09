@@ -1,7 +1,7 @@
 pkgbase = vscodium-bin
 	pkgdesc = Binary releases of VS Code without MS branding/telemetry/licensing.
 	pkgver = 1.40.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/VSCodium/vscodium
 	arch = x86_64
 	license = MIT
@@ -21,10 +21,10 @@ pkgbase = vscodium-bin
 	optdepends = libdbusmenu-glib: For KDE global menu
 	provides = code
 	conflicts = code
-	noextract = vscodium-bin-1.40.0-1.tar.gz
+	noextract = vscodium-bin-1.40.0-2.tar.gz
 	source = vscodium-bin.desktop
-	source = vscodium-bin-1.40.0-1.tar.gz::https://github.com/VSCodium/vscodium/releases/download/1.40.0/VSCodium-linux-x64-1.40.0.tar.gz
-	sha256sums = 7275ddd94fc356374ca2a883bd1210863a8f2e5ad2f3e6194a42240941d119a4
+	source = vscodium-bin-1.40.0-2.tar.gz::https://github.com/VSCodium/vscodium/releases/download/1.40.0/VSCodium-linux-x64-1.40.0.tar.gz
+	sha256sums = 31fbf764608b74abedaa4dbb5bf8b7d62570345e2a7079bdbc156e5f7c2357ff
 	sha256sums = 4482f533bc639d0462a0b98f1a5a13f0adf50a4e7bb75102280bee18297c217a
 
 pkgname = vscodium-bin
