@@ -1,4 +1,7 @@
 2019-11-07 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 4.1.0.3-2:
+    pkg: preserve staticlibs (*.a) files
+2019-11-07 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 4.1.0.3-1:
     [!] ASF V4.1 opens a new minor milestone due to NET Core 3.0 runtime upgrade.
     Version property of /Api/ASF and /Api/ASF/Update IPC endpoints is now a string due to .NET Core changes. This is a breaking change for those that are using it.

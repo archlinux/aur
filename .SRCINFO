@@ -1,7 +1,7 @@
 pkgbase = asf
 	pkgdesc = Steam cards farmer.
 	pkgver = 4.1.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/JustArchiNET/ArchiSteamFarm
 	install = install
 	changelog = changelog
@@ -13,6 +13,7 @@ pkgbase = asf
 	noextract = asf-4.1.0.3-x86_64.zip
 	noextract = asf-4.1.0.3-arm.zip
 	noextract = asf-4.1.0.3-i686.zip
+	options = staticlibs
 	backup = var/lib/asf/config/ASF.json
 	backup = usr/lib/asf/NLog.config
 	source = asf.sh

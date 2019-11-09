@@ -2,7 +2,7 @@
 
 pkgname="asf"
 pkgver="4.1.0.3"
-pkgrel=1
+pkgrel=2
 pkgdesc="Steam cards farmer."
 arch=('x86_64' 'arm' 'i686')
 url="https://github.com/JustArchiNET/ArchiSteamFarm"
@@ -13,6 +13,7 @@ depends_i686=('dotnet-runtime>=3.0')
 makedepends=('unzip')
 changelog=changelog
 backup=('var/lib/asf/config/ASF.json' 'usr/lib/asf/NLog.config')
+options=('staticlibs')
 install=install
 source=("${pkgname}.sh"
         "service"
