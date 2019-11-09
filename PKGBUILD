@@ -2,7 +2,7 @@
 # Contributor: xantares
 
 pkgname=python-pythran
-pkgver=0.9.3.post1
+pkgver=0.9.4.post0
 pkgrel=1
 pkgdesc="Ahead of Time compiler for numeric kernels"
 arch=('i686' 'x86_64')
@@ -11,10 +11,10 @@ license=('BSD')
 makedepends=('python-numpy' 'python-setuptools')
 _name=${pkgname#python-}
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('3744eca3e2284aee3137c8995025bde7ea76d5b78fad6d26e709a8c167c5a61d')
+sha256sums=('d5d913c86cdc3a0c6387e796ec1f65c1563ca34f10201c43ae5acc757c70fd8d')
 depends=(
   'python' 'python-networkx' 'python-ply' 'python-numpy'
-  'python-beniget==0.1.0' 'python-gast==0.2.2' 'python-six' 'gperftools' 'gmp'
+  'python-beniget>=0.2.0' 'python-gast>=0.3.0' 'python-six' 'gperftools' 'gmp'
 )
 optdepends=(
   'boost: Use system Boost libraries'

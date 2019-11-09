@@ -1,6 +1,6 @@
 pkgbase = python-pythran
 	pkgdesc = Ahead of Time compiler for numeric kernels
-	pkgver = 0.9.3.post1
+	pkgver = 0.9.4.post0
 	pkgrel = 1
 	url = https://pythran.readthedocs.io/
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = python-pythran
 	depends = python-networkx
 	depends = python-ply
 	depends = python-numpy
-	depends = python-beniget==0.1.0
-	depends = python-gast==0.2.2
+	depends = python-beniget>=0.2.0
+	depends = python-gast>=0.3.0
 	depends = python-six
 	depends = gperftools
 	depends = gmp
@@ -21,8 +21,8 @@ pkgbase = python-pythran
 	optdepends = python-colorlog: Coloured output during compilation
 	provides = python-pythran
 	conflicts = python-pythran-git
-	source = python-pythran-0.9.3.post1.tar.gz::https://files.pythonhosted.org/packages/source/p/pythran/pythran-0.9.3.post1.tar.gz
-	sha256sums = 3744eca3e2284aee3137c8995025bde7ea76d5b78fad6d26e709a8c167c5a61d
+	source = python-pythran-0.9.4.post0.tar.gz::https://files.pythonhosted.org/packages/source/p/pythran/pythran-0.9.4.post0.tar.gz
+	sha256sums = d5d913c86cdc3a0c6387e796ec1f65c1563ca34f10201c43ae5acc757c70fd8d
 
 pkgname = python-pythran
 
