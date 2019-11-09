@@ -1,0 +1,150 @@
+diff -U3 -r a/JUCE/modules/juce_graphics/colour/juce_PixelFormats.h b/JUCE/modules/juce_graphics/colour/juce_PixelFormats.h
+--- a/JUCE/modules/juce_graphics/colour/juce_PixelFormats.h	2019-11-09 17:47:03.667336495 +0000
++++ b/JUCE/modules/juce_graphics/colour/juce_PixelFormats.h	2019-11-09 17:47:14.317222479 +0000
+@@ -105,22 +105,9 @@
+ 
+     //==============================================================================
+     forcedinline uint8 getAlpha() const noexcept      { return components.a; }
+-    forcedinline uint8 getRed() const noexcept        { return components.r; }
++    forcedinline uint8 getRed()   const noexcept      { return components.r; }
+     forcedinline uint8 getGreen() const noexcept      { return components.g; }
+-    forcedinline uint8 getBlue() const noexcept       { return components.b; }
+-
+-   #if JUCE_GCC
+-    // NB these are here as a workaround because GCC refuses to bind to packed values.
+-    forcedinline uint8& getAlpha() noexcept           { return comps [indexA]; }
+-    forcedinline uint8& getRed() noexcept             { return comps [indexR]; }
+-    forcedinline uint8& getGreen() noexcept           { return comps [indexG]; }
+-    forcedinline uint8& getBlue() noexcept            { return comps [indexB]; }
+-   #else
+-    forcedinline uint8& getAlpha() noexcept           { return components.a; }
+-    forcedinline uint8& getRed() noexcept             { return components.r; }
+-    forcedinline uint8& getGreen() noexcept           { return components.g; }
+-    forcedinline uint8& getBlue() noexcept            { return components.b; }
+-   #endif
++    forcedinline uint8 getBlue()  const noexcept      { return components.b; }
+ 
+     //==============================================================================
+     /** Copies another pixel colour over this one.
+@@ -340,9 +327,6 @@
+     {
+         uint32 internal;
+         Components components;
+-       #if JUCE_GCC
+-        uint8 comps[4];  // helper struct needed because gcc does not allow references to packed union members
+-       #endif
+     };
+ }
+ #ifndef DOXYGEN
+@@ -425,13 +409,9 @@
+ 
+     //==============================================================================
+     forcedinline uint8 getAlpha() const noexcept    { return 0xff; }
+-    forcedinline uint8 getRed() const noexcept      { return r; }
++    forcedinline uint8 getRed()   const noexcept    { return r; }
+     forcedinline uint8 getGreen() const noexcept    { return g; }
+-    forcedinline uint8 getBlue() const noexcept     { return b; }
+-
+-    forcedinline uint8& getRed() noexcept           { return r; }
+-    forcedinline uint8& getGreen() noexcept         { return g; }
+-    forcedinline uint8& getBlue() noexcept          { return b; }
++    forcedinline uint8 getBlue()  const noexcept    { return b; }
+ 
+     //==============================================================================
+     /** Copies another pixel colour over this one.
+@@ -646,11 +626,9 @@
+ 
+     //==============================================================================
+     forcedinline uint8 getAlpha() const noexcept    { return a; }
+-    forcedinline uint8& getAlpha() noexcept         { return a; }
+-
+-    forcedinline uint8 getRed() const noexcept      { return 0; }
++    forcedinline uint8 getRed()   const noexcept    { return 0; }
+     forcedinline uint8 getGreen() const noexcept    { return 0; }
+-    forcedinline uint8 getBlue() const noexcept     { return 0; }
++    forcedinline uint8 getBlue()  const noexcept    { return 0; }
+ 
+     //==============================================================================
+     /** Copies another pixel colour over this one.
+diff -U3 -r a/JUCE/modules/juce_graphics/native/juce_RenderingHelpers.h b/JUCE/modules/juce_graphics/native/juce_RenderingHelpers.h
+--- a/JUCE/modules/juce_graphics/native/juce_RenderingHelpers.h	2019-11-09 17:47:03.674003090 +0000
++++ b/JUCE/modules/juce_graphics/native/juce_RenderingHelpers.h	2019-11-09 17:48:26.099788240 +0000
+@@ -581,18 +581,10 @@
+             : destData (image), sourceColour (colour)
+         {
+             if (sizeof (PixelType) == 3 && destData.pixelStride == sizeof (PixelType))
+-            {
+                 areRGBComponentsEqual = sourceColour.getRed() == sourceColour.getGreen()
+                                             && sourceColour.getGreen() == sourceColour.getBlue();
+-                filler[0].set (sourceColour);
+-                filler[1].set (sourceColour);
+-                filler[2].set (sourceColour);
+-                filler[3].set (sourceColour);
+-            }
+             else
+-            {
+                 areRGBComponentsEqual = false;
+-            }
+         }
+ 
+         forcedinline void setEdgeTableYPos (const int y) noexcept
+@@ -643,7 +635,6 @@
+         const Image::BitmapData& destData;
+         PixelType* linePixels;
+         PixelARGB sourceColour;
+-        PixelRGB filler [4];
+         bool areRGBComponentsEqual;
+ 
+         forcedinline PixelType* getPixel (const int x) const noexcept
+@@ -658,47 +649,10 @@
+ 
+         forcedinline void replaceLine (PixelRGB* dest, const PixelARGB colour, int width) const noexcept
+         {
+-            if (destData.pixelStride == sizeof (*dest))
+-            {
+-                if (areRGBComponentsEqual)  // if all the component values are the same, we can cheat..
+-                {
+-                    memset (dest, colour.getRed(), (size_t) width * 3);
+-                }
+-                else
+-                {
+-                    if (width >> 5)
+-                    {
+-                        const int* const intFiller = reinterpret_cast<const int*> (filler);
+-
+-                        while (width > 8 && (((pointer_sized_int) dest) & 7) != 0)
+-                        {
+-                            dest->set (colour);
+-                            ++dest;
+-                            --width;
+-                        }
+-
+-                        while (width > 4)
+-                        {
+-                            int* d = reinterpret_cast<int*> (dest);
+-                            *d++ = intFiller[0];
+-                            *d++ = intFiller[1];
+-                            *d++ = intFiller[2];
+-                            dest = reinterpret_cast<PixelRGB*> (d);
+-                            width -= 4;
+-                        }
+-                    }
+-
+-                    while (--width >= 0)
+-                    {
+-                        dest->set (colour);
+-                        ++dest;
+-                    }
+-                }
+-            }
+-            else
+-            {
+-                JUCE_PERFORM_PIXEL_OP_LOOP (set (colour))
+-            }
++            if ((size_t) destData.pixelStride == sizeof (*dest) && areRGBComponentsEqual)
++                memset ((void*) dest, colour.getRed(), (size_t) width * 3);   // if all the component values are the same, we can cheat..
++            else
++                JUCE_PERFORM_PIXEL_OP_LOOP (set (colour));
+         }
+ 
+         forcedinline void replaceLine (PixelAlpha* dest, const PixelARGB colour, int width) const noexcept
