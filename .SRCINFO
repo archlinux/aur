@@ -1,6 +1,6 @@
 pkgbase = syncthingtray
 	pkgdesc = Tray application for Syncthing
-	pkgver = 0.10.2
+	pkgver = 0.10.3
 	pkgrel = 1
 	url = https://github.com/Martchus/syncthingtray
 	arch = i686
@@ -27,7 +27,7 @@ pkgbase = syncthingtray
 	depends = qt5-declarative
 	optdepends = kio: KIO plugin for Syncthing actions in Dolphin
 	optdepends = plasma-workspace: Plasmoid for Plasma 5 desktop
-	source = syncthingtray-0.10.2.tar.gz::https://github.com/Martchus/syncthingtray/archive/v0.10.2.tar.gz
+	source = syncthingtray-0.10.3.tar.gz::https://github.com/Martchus/syncthingtray/archive/v0.10.3.tar.gz
 	sha256sums = 84f6085c9d1a21d396fa85545b934f7fcd22eab91da0da961bfe6ac0d41632e9
 
 pkgname = syncthingtray
