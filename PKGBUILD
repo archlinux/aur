@@ -2,7 +2,7 @@
 
 pkgname=rav1e
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The fastest and safest AV1 encoder"
 arch=('i686' 'x86_64')
 url="https://github.com/xiph/rav1e"
@@ -11,8 +11,6 @@ depends=('gcc-libs')
 makedepends=('rust'
   # aom dependency
   'cmake' 'perl' 'nasm')
-# aom dependency
-checkdepends=('python')
 source=("https://github.com/xiph/rav1e/archive/$pkgver.tar.gz")
 sha256sums=('00395087eaba4778d17878924e007716e2f399116b8011bf057fd54cc528a6cb')
 
@@ -32,7 +30,7 @@ check() {
 package() {
   cd "$pkgname-$pkgver"
 
-  cargo install --root "$pkgdir/usr" --path "$srcdir/rav1e"
+  cargo install --root "$pkgdir/usr" --path "$srcdir/$pkgname-$pkgver"
 
   install -Dm644 "README.md" -t "$pkgdir/usr/share/doc/rav1e"
   install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/rav1e"
