@@ -1,0 +1,14 @@
+pkgbase = eclipse-sql-explorer
+	pkgdesc = SQL Explorer plugin for Eclipse IDE
+	pkgver = 3.6.2
+	pkgrel = 1
+	url = https://sourceforge.net/projects/eclipsesql/
+	arch = any
+	license = LGPL2.0
+	depends = eclipse>=4.5.0
+	options = !strip
+	source = download.zip::https://downloads.sourceforge.net/project/eclipsesql/SQL%20Explorer%20Plugin/3.6.2/sqlexplorer_plugin-3.6.2.zip
+	sha256sums = 05c4a361fab1ddf4105bd29096acba19aafd818de19767e20c61df08e243849b
+
+pkgname = eclipse-sql-explorer
+
