@@ -6,10 +6,10 @@ pkgbase = quickwall
 	arch = any
 	license = MIT
 	makedepends = git
+	makedepends = python-setuptools
 	depends = python>=3.6
-	depends = python-setuptools
-	optdepends = nitrogen>=1.6.1: Set wallpaper
-	source = QuickWall-master.tar.gz::https://github.com/deepjyoti30/QuickWall/archive/master.tar.gz
+	depends = nitrogen>=1.6.1
+	source = https://github.com/deepjyoti30/QuickWall/archive/0.0.1-4.tar.gz
 	md5sums = SKIP
 
 pkgname = quickwall
