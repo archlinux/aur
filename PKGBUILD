@@ -3,7 +3,7 @@
 
 pkgname=python-distributed
 _pkgname=distributed
-pkgver=2.6.0
+pkgver=2.7.0
 pkgrel=1
 pkgdesc="Python library for distributed computing"
 arch=('any')
@@ -34,11 +34,16 @@ optdepends=(
 url="http://distributed.readthedocs.org/en/stable/"
 license=('BSD')
 source=("$pkgver.tar.gz::https://codeload.github.com/dask/distributed/tar.gz/$pkgver")
-sha256sums=('2b3e602047cc72f44533b6ad7533943c57e908a5dbfa0dd37e116125948f98ff')
+sha256sums=('8e47fe92540cd2f03c4f339eb5345f114f6392fe679d69b7ede75a8e81be2c26')
+
+build() {
+  cd "$_pkgname-$pkgver"
+  python setup.py build
+}
 
 package() {
-  cd "$srcdir/$_pkgname-$pkgver"
-  python setup.py install --root="$pkgdir" --prefix=/usr --optimize=1
+  cd "$_pkgname-$pkgver"
+  python setup.py install --skip-build --root="$pkgdir" --prefix=/usr --optimize=1
   install -d "$pkgdir/usr/share/licenses/$pkgname"
   install LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname"
 }
