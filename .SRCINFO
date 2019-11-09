@@ -1,7 +1,7 @@
 pkgbase = clash-dashboard
 	pkgdesc = web port of clash
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Dreamacro/clash-dashboard
 	install = clash-dashboard.install
 	arch = any
