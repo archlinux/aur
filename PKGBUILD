@@ -2,7 +2,7 @@
 # Contributor: Kibouo <csonka.mihaly@hotmail.com>
 # Contributor: Ward Segers <w@rdsegers.be>
 # Contributor: Alex Branham <alex.branham@gmail.com>
-_cranver=2.2.1
+_cranver=2.3.0
 _cranname=testthat
 _pkgtar=${_cranname}_${_cranver}.tar.gz
 pkgname=r-testthat
@@ -12,10 +12,11 @@ pkgdesc='Unit Testing for R'
 arch=('x86_64')
 url='https://cran.r-project.org/package=testthat'
 license=('MIT')
-depends=('r>=3.1' 'r-cli' 'r-crayon>=1.3.4' 'r-digest' 'r-evaluate' 'r-magrittr' 'r-praise' 'r-r6>=2.2.0' 'r-rlang>=0.3.0' 'r-withr>=2.0.0')
+depends=('r>=3.1' 'r-cli' 'r-crayon>=1.3.4' 'r-digest' 'r-ellipsis' 'r-evaluate' 'r-magrittr' 'r-pkgload' 'r-praise' 'r-r6>=2.2.0' 'r-rlang>=0.4.1' 'r-withr>=2.0.0')
 optdepends=('r-covr' 'r-curl' 'r-devtools' 'r-knitr' 'r-rmarkdown' 'r-usethis' 'r-vctrs' 'r-xml2')
 source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
-md5sums=('b0ee8c0485ccf7b9e68108c87d8d1b16')
+#source=("https://cran.r-project.org/src/contrib/Archive/${_pkgtar}") # unccoment if 404 error
+md5sums=('67e54e6aae63a32b21799133591a34ef')
 
 build(){
     cd "${srcdir}"
