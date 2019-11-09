@@ -2,7 +2,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=code-eli-git
 pkgver=r821.f9ff74f
-pkgrel=2
+pkgrel=3
 pkgdesc='Collection of C++ libraries that provide a variety of functionalities.'
 arch=('i686' 'x86_64')
 url='https://github.com/ramcdona/Code-Eli'
@@ -13,7 +13,6 @@ optdepends=('cpptest: unit tests'
 makedepends=('cmake' 'git')
 _name=Code-Eli
 provides=('code-eli')
-conflicts=('')
 source=("git+https://github.com/ramcdona/Code-Eli.git")
 md5sums=('SKIP')
 
