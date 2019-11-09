@@ -1,0 +1,17 @@
+post_install() {
+  # Add regular users to audio and realtime groups if not already in
+
+  regular_users=$(getent group users | cut -d: -f4 | sed -e "s/,/ /g")
+  audio_groups="audio realtime"
+
+  for username in ${regular_users}; do
+    for audio_group in ${audio_groups}; do
+      if ! getent group ${audio_group} | grep &>/dev/null ${username}; then
+        gpasswd -a ${username} ${audio_group}
+      fi
+    done
+  done
+}
+post_upgrade() {
+  post_install
+}
