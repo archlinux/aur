@@ -25,10 +25,15 @@ package() {
     cd bananapkg
 
     # replace /usr/libexec/banana to /usr/lib/banana
-    sed --in-place 's@/usr/libexec@/usr/lib@g' {banana,core.sh,install.sh}
+    sed --in-place 's@/usr/libexec@/usr/lib@g' {banana,core.sh}
 
-    # using default bananapkg installer
-    ./install.sh DESTDIR="${pkgdir}"
+    # install files manually
+    install -vDm755 -t "${pkgdir}/usr/bin/" "banana"
+    install -vDm644 -t "${pkgdir}/usr/share/man/pt_BR/man8/" 'banana.8'
+    install -vDm644 -t "${pkgdir}/usr/lib/banana/" {core,help}'.sh'
+    install -vDm644 -t "${pkgdir}/etc/banana/" "banana.conf"
+    # create dirs
+    mkdir -vp "${pkgdir}/var/lib/banana/"{list,desc,remove}
 
     install -vDm644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" 'LICENSE'
 }
