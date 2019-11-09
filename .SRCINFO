@@ -1,0 +1,24 @@
+pkgbase = bc-gh
+	pkgdesc = Implementation of dc and POSIX bc with GNU extensions
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = https://github.com/gavinhoward/bc
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = BSD
+	provides = bc=1.07.1-3
+	conflicts = bc=1.07.1-3
+	source = bc-gh-2.3.0.tar.xz::https://github.com/gavinhoward/bc/releases/download/2.3.0/bc-2.3.0.tar.xz
+	source = bc-gh-2.3.0.tar.xz.sig::https://github.com/gavinhoward/bc/releases/download/2.3.0/bc-2.3.0.tar.xz.sig
+	validpgpkeys = E2A30324A4465A4D5882692EC08038BDF280D33E
+	sha256sums = 5a4d14721688ce0a2679fb02680fe8dc41574417f60647be3a125d53d5672f5d
+	sha256sums = 62b82db46d3cdc8c99862807f41e5e78e5bcbd13d2f844dae17d3e236f815c18
+	sha512sums = e57b429e3af2afc4e830e7689dfc036bf8f722dacfec34e22e33cae28db6696ff0a9e3245f743d08644324e2e566dd9795b72885b8b44c696e4d9632b4e0aacc
+	sha512sums = bd170e48e8f56d17f9a4ee5ef86ebd0ea38f420cff3f0dbbb55a359083165d400c72bab3585056651a68575d09e66db6537dc148c8fd71c8473ada48c901ff21
+
+pkgname = bc-gh
+
