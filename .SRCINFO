@@ -1,0 +1,23 @@
+pkgbase = mingw-w64-scipoptsuite
+	pkgdesc = Toolbox for generating and solving optimization problems. (mingw-w64)
+	pkgver = 6.0.2
+	pkgrel = 1
+	url = http://scip.zib.de
+	arch = any
+	license = LGPL3
+	license = custom:ZIB Academic License
+	makedepends = mingw-w64-cmake
+	depends = mingw-w64-gmp
+	depends = mingw-w64-readline
+	depends = mingw-w64-libgnurx
+	depends = mingw-w64-zlib
+	depends = mingw-w64-gsl
+	depends = mingw-w64-coin-or-ipopt
+	options = staticlibs
+	options = !strip
+	options = !buildflags
+	source = http://scip.zib.de/download/release/scipoptsuite-6.0.2.tgz
+	sha256sums = e25329a2ed4fbdde8a32279a4c955ee7a8b8795429b6e7105ae17998c2ecbe66
+
+pkgname = mingw-w64-scipoptsuite
+
