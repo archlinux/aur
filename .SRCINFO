@@ -1,16 +1,17 @@
 pkgbase = octave-nan
 	pkgdesc = A statistics and machine learning toolbox for data with and w/o missing values
-	pkgver = 3.1.4
+	pkgver = 3.4.5
 	pkgrel = 1
 	url = https://octave.sourceforge.io/nan/
 	install = octave-nan.install
 	arch = any
 	groups = octave-forge
 	license = GPL3
-	depends = octave>3.2.0
-	noextract = nan-3.1.4.tar.gz
-	source = https://downloads.sourceforge.net/octave/nan-3.1.4.tar.gz
-	sha256sums = 083707ce86fe8d64581d18cf1d355c385cfcd36d57af305e299de7690eee988b
+	depends = octave>3.8.0
+	depends = libsvm
+	noextract = nan-3.4.5.tar.gz
+	source = https://pub.ist.ac.at/~schloegl/matlab/NaN/nan-3.4.5.tar.gz
+	sha256sums = 19aad8662c4bc1abe076ff751c50a7f3c0e481297b2942a8619ffcfddb322def
 
 pkgname = octave-nan
 
