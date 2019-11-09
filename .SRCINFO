@@ -7,7 +7,6 @@ pkgbase = git-delta
 	license = MIT
 	makedepends = rust
 	depends = git
-	replaces = delta-diff
 	source = https://github.com/dandavison/delta/archive/0.0.14.tar.gz
 	sha256sums = 777b90bb20c89b63eb158d238dfb38914c3bc4617d65f8a0e465227f9c6884f9
 

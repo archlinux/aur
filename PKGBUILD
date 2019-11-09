@@ -11,8 +11,6 @@ arch=('x86_64')
 url="https://github.com/dandavison/$_name"
 license=('MIT')
 
-replaces=('delta-diff')
-
 depends=('git')
 makedepends=('rust')
 
