@@ -8,13 +8,14 @@
 
 ### MERGE REQUESTS SELECTION
 
-# available MR: ('!429' '!493' '!575' '!579' !719 '!724' '!762' '!909')
+# available MR: ('!429' '!493' '!575' '!579' !719 '!724' '!762')
+# _merge_requests_to_use=('!493' '!575' '!579' !719 '!724' '!762')
 _merge_requests_to_use=('!575' '!724' '!909')
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgname=mutter-performance
-pkgver=3.34.1+33+g34b5a07d5
+pkgver=3.34.1+52+g403d8fcc6
 pkgrel=1
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -29,12 +30,13 @@ provides=(mutter mutter-781835-workaround)
 conflicts=(mutter)
 replaces=(mutter-781835-workaround)
 groups=(gnome)
-_commit=34b5a07d58b9a6ef525f648477b5f46ccd6ab359  # master
+_commit=403d8fcc6624f5d027dd599c934411e71d248754  # gnome-3-34
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
-	fix-build.patch)
+        918.patch
+        fix-build.patch)
 sha256sums=('SKIP'
+            '775fbcd209a170b6ca13326367ef62b8d35acff16019553c40eb24f0684c3495'
             '28aa24daed161f2566ca2b159beb43285184c533956b851a7eb318de741da935')
-
 
 pkgver() {
   cd $pkgname
@@ -80,11 +82,14 @@ prepare() {
   cd $pkgname
 
   ### Adding and fetching remotes providing the selected merge-requests
+  git reset --hard
   git cherry-pick --abort || true
   git remote add vanvugt https://gitlab.gnome.org/vanvugt/mutter.git || true
+  # git remote add verdre https://gitlab.gnome.org/verdre/mutter.git || true # !429
   git remote add 3v1no https://gitlab.gnome.org/3v1n0/mutter.git || true
 
   git fetch vanvugt
+  # git fetch verdre
   git fetch 3v1no
 
   ### Merge Requests
@@ -154,12 +159,8 @@ prepare() {
   pick_mr '!719' 97140ab6346bd29208e99c9c9aab892c2eec0e52 'revert'
   pick_mr '!762' e9ba9dc2 'merge'
 
-  # Title: x11-display: Don't unset the X11 focused window after setting one
-  # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/909
-  # Type: 3
-  # Status: 2
-  # Comment:
-  pick_mr '!909' b1b7c597^..765c8a3a 'merge'
+  # https://gitlab.gnome.org/GNOME/mutter/merge_requests/918
+  git apply -3 ../918.patch
 
   patch -Np1 < ../fix-build.patch
 
