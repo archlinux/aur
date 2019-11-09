@@ -1,7 +1,7 @@
-From a612704b7c2144f2074f7b98ceaed47aa8470dce Mon Sep 17 00:00:00 2001
+From 6d78391d7d88a4726926383c1fcadd85a85131c8 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 14:25:40 +0200
-Subject: [PATCH 15/33] Rename qtmain to qt5main
+Subject: [PATCH 15/32] Rename qtmain to qt5main
 
 Prevents conflict with mingw-w64-qt4 package
 ---
@@ -25,10 +25,10 @@ index 5208d22bd6..1a058b787f 100644
  QMAKE_IDL               = $${CROSS_COMPILE}widl
  QMAKE_LIB               = $${CROSS_COMPILE}ar -rc
 diff --git a/mkspecs/features/create_cmake.prf b/mkspecs/features/create_cmake.prf
-index 376a7ded5d..4fe2ef2326 100644
+index 314cd5cc67..a3cb474b67 100644
 --- a/mkspecs/features/create_cmake.prf
 +++ b/mkspecs/features/create_cmake.prf
-@@ -270,8 +270,8 @@ mac {
+@@ -271,8 +271,8 @@ mac {
      CMAKE_LIB_FILE_LOCATION_RELEASE = $${CMAKE_QT_STEM}.dll
  
      mingw {
@@ -68,5 +68,5 @@ index 9cb6ab0c59..4327ba365e 100644
  
  CONFIG += static
 -- 
-2.23.0
+2.24.0
 

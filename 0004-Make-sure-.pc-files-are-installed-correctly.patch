@@ -1,7 +1,7 @@
-From 7d3c1a5d57a996c8eaef937486df04ad0c2559cd Mon Sep 17 00:00:00 2001
+From f72528e215897c6064ec0ae1132b6b103efaf69b Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 13:54:12 +0200
-Subject: [PATCH 04/33] Make sure *.pc files are installed correctly
+Subject: [PATCH 04/32] Make sure *.pc files are installed correctly
 
 ---
  qmake/generators/makefile.cpp          | 8 ++++++--
@@ -10,10 +10,10 @@ Subject: [PATCH 04/33] Make sure *.pc files are installed correctly
  3 files changed, 8 insertions(+), 4 deletions(-)
 
 diff --git a/qmake/generators/makefile.cpp b/qmake/generators/makefile.cpp
-index a45b676d5f..6065ca4c77 100644
+index 22ac7bf534..003ad2baf2 100644
 --- a/qmake/generators/makefile.cpp
 +++ b/qmake/generators/makefile.cpp
-@@ -3240,7 +3240,7 @@ MakefileGenerator::openOutput(QFile &file, const QString &build) const
+@@ -3245,7 +3245,7 @@ MakefileGenerator::openOutput(QFile &file, const QString &build) const
  }
  
  QString
@@ -22,7 +22,7 @@ index a45b676d5f..6065ca4c77 100644
  {
      QString ret = project->first("QMAKE_PKGCONFIG_FILE").toQString();
      if (ret.isEmpty()) {
-@@ -3265,7 +3265,11 @@ MakefileGenerator::pkgConfigFileName(bool fixify)
+@@ -3270,7 +3270,11 @@ MakefileGenerator::pkgConfigFileName(bool fixify)
      if(fixify) {
          if(QDir::isRelativePath(ret) && !project->isEmpty("DESTDIR"))
              ret.prepend(project->first("DESTDIR").toQString());
@@ -62,5 +62,5 @@ index 266bae7e64..8222854cfc 100644
                      uninst.append("\n\t");
                  uninst.append("-$(DEL_FILE) " + escapeFilePath(dst_pc));
 -- 
-2.23.0
+2.24.0
 
