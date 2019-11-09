@@ -1,5 +1,5 @@
 pkgbase = shadow-tech
-	pkgdesc = Shadow xxa application
+	pkgdesc = Shadow application
 	pkgver = 5.0.226
 	pkgrel = 1
 	url = https://shadow.tech
