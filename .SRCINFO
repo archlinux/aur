@@ -1,7 +1,7 @@
 pkgbase = python-git
 	pkgdesc = Next generation of the python high-level scripting language
-	pkgver = 3.9.0a0.r105547.3e04cd268e
-	pkgrel = 2
+	pkgver = 3.9.0a0.r105755.7e43373317
+	pkgrel = 1
 	url = https://www.python.org/
 	arch = x86_64
 	license = custom
@@ -28,9 +28,9 @@ pkgbase = python-git
 	optdepends = xz: for lzma
 	optdepends = tk: for tkinter
 	source = git+https://github.com/python/cpython#branch=master
-	source = 0001-compileall-Fix-ddir-when-recursing.patch
+	source = python-git-issue38692.diff
 	sha512sums = SKIP
-	sha512sums = ebd04c3b6d41321b1f0d439d356e0ce463760db55dc64109854c70d017cf56608aa19de9fc4a21bf840795ff202b4703444f9af8074b661780798c17e03089ff
+	sha512sums = 0755b1da26bec440409b6c3246b7fcaa5d252a9ce973062ad392ce3c1b4b2826a338b86991e01dd37456e0285387f05b121397489a944682d4f13aa82645b0dc
 
 pkgname = python-git
 
