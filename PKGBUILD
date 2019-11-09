@@ -1,6 +1,6 @@
 # Maintainer: gileri <twiked at gmail d(0)t com>
 pkgname=libosmium-git
-pkgver=2.10.3.r21.g006aa4ce
+pkgver=2.15.3.r3.g49f8c54c
 pkgrel=1
 pkgdesc="Fast and flexible C++ library for working with OpenStreetMap data."
 url="http://osmcode.org/libosmium/"
@@ -38,5 +38,5 @@ build() {
 package() {
   cd "${srcdir}/libosmium/build"
   make DESTDIR="${pkgdir}" install
-  install -Dm644 ../LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
