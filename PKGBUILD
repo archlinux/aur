@@ -2,12 +2,27 @@
 
 pkgname=kotatogram-desktop
 pkgver=1.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Experimental Telegram Desktop fork."
 arch=(x86_64)
 url="https://github.com/kotatogram/kotatogram-desktop"
 license=(GPLv3)
-# depends=() 
+depends=(
+    desktop-file-utils
+    glib2
+    hicolor-icon-theme
+    libdbus
+    libx11
+)
+makedepends=(
+    chrpath
+)
+optdepends=(
+    'libappindicator-gtk2: to hide Telegram in the tray bar (GTK2-based desktop environment)'
+    'libappindicator-gtk3: to hide Telegram in the tray bar (GTK3-based desktop environment)'
+    'libappindicator-sharp: to hide Telegram in the tray bar (Unity-based desktop environment)'
+    'xdg-utils: for automatic opening of URLs, files and directories in proper applications'
+)
 
 source=(
 
