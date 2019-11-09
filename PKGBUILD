@@ -2,7 +2,7 @@
 # Maintainer: Nikolay Kuzin <develnk@gmail.com>
 
 pkgname=asofe
-pkgver=2.1.0_1
+pkgver=2.1.0
 _commit=53244ded9e61ab570c47232b231051ba3f1c4195
 pkgrel=1
 pkgdesc='Permissionless financial system employing zero-knowledge security'
@@ -13,12 +13,10 @@ depends=('boost-libs' 'libevent' 'qpid-proton' 'zeromq')
 makedepends=('boost' 'cmake' 'git' 'gmock' 'python' 'rustup' 'wget')
 heckdepends=('python2-pyblake2' 'python2-pyzmq' 'python2-qpid-proton')
 source=("git+https://github.com/TheLightSide/asofe.git#commit=${_commit}"
-        'libsnark-no-gtest.patch'
         'use-system-qpid-proton.patch'
         'use-system-rust.patch'
         'asofed.service')
 sha512sums=('SKIP'
-            'b4792cc6f4c1e4e633d34257b68a4fbf882dfc692fedc14a06905705dd0778f22097b1e0645e00231ddc366245fe76ff63a43b53fb468496daf5100b15ad2fee'
             '019870971a0cec093d0552585f4140f39dd65f90cb56b97e512bbaf0d79c0f1574295e722310d4e1762af12ff693802fc465765d4d1410d209e259326f307d6a'
             'e2bdf46696e70a93ffcb45bf4e081c780cda8f11f6fa346b6807731f7c739f18c689c4e78a71f8bd7099874108b6b6584b8a96395bbca8d5441f7600a3fe0ebe'
             'bfc39352e50078c7897ae3b8167f06d152f26c52dc7199ae952bad85b99a9da4f9d25d63edfe52291ad27b6e08b828c5db205eb0dc6091ec3fc75dc2b1bfca19')
@@ -29,7 +27,6 @@ prepare() {
     # Set gitattributes on src/clientversion.cpp
     git archive --format=tar ${_commit} -- src/clientversion.cpp | tar -xf -
 
-    patch -Np1 -i ../libsnark-no-gtest.patch
     patch -Np1 -i ../use-system-qpid-proton.patch
     patch -Np1 -i ../use-system-rust.patch
 
