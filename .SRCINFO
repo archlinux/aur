@@ -1,15 +1,12 @@
 pkgbase = optimfrog
 	pkgdesc = A lossless audio compression program.
-	pkgver = 5.003
+	pkgver = 5.100
 	pkgrel = 1
 	url = http://www.losslessaudio.org
-	arch = i686
 	arch = x86_64
 	license = custom:OptimFROG
-	source_i686 = http://www.losslessaudio.org/Downloads/A1C0/5003/Linux/OptimFROG_Linux_x86_5003.zip
-	sha1sums_i686 = 1786d03f1650509c90c2a90f32e61b36ef70ce0a
-	source_x86_64 = http://www.losslessaudio.org/Downloads/A1C0/5003/Linux/OptimFROG_Linux_x64_5003.zip
-	sha1sums_x86_64 = 0d28f871df7c35599699d94031faa6870e955d0f
+	source = http://www.losslessaudio.org/Downloads/A1C0/5100/Linux/OptimFROG_Linux_x64_5100.zip
+	sha1sums = e3dd9fd56ee11c544b1faadee24ae6adef661b6a
 
 pkgname = optimfrog
 
