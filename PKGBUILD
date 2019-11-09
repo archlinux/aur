@@ -3,7 +3,7 @@
 
 pkgname=rtl8812au422-dkms-git
 _pkgbase=rtl8812au
-pkgver=4.2.2.r7502.c20130507
+pkgver=4.2.2.r7502.gc20130507aur2
 pkgrel=1
 pkgdesc="rtl8821AU/rtl8812AU/rtl8811AU driver with firmware version 4.2.2 (7502.20130507) (Tested and working as of Linux kernel 5.3.8-arch1-1)"
 arch=('i686' 'x86_64')
@@ -20,6 +20,7 @@ sha256sums=('SKIP'
 
 pkgver() {
     cd ${srcdir}/rtl8812au
+    printf "%s" "${pkgver}"
 }
 
 package() {
