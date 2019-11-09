@@ -1,9 +1,0 @@
-[Desktop Entry]
-Terminal=false
-Type=Application
-Name=Google Chat Linux
-Comment=Desktop client for Google Chat
-Exec=/usr/bin/google-chat-linux.sh
-Icon=google-chat-linux.png
-StartupWMClass=google-chat-linux
-Categories=Network;InstantMessaging;
