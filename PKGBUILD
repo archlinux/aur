@@ -4,27 +4,35 @@
 
 pkgname=('python2-pymupdf' 'python-pymupdf')
 _name='PyMuPDF'
-pkgver=1.16.6
+pkgver=1.16.7
 pkgrel=1
 pkgdesc='Python bindings for MuPDF'
 arch=('x86_64')
 url='https://github.com/pymupdf/PyMuPDF'
 license=('AGPL3')
-depends=('libjpeg-turbo' 'jbig2dec' 'openjpeg2'  'freetype2' 'harfbuzz')
+depends=('libjpeg-turbo' 'jbig2dec' 'openjpeg2'  'freetype2')
 makedepends=('python2-setuptools' 'python-setuptools' 'libmupdf>=1.16' 'libmupdf<1.17')
 
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-${pkgver}.tar.gz")
-sha256sums=('7d938cf23a95cd999d236f249881a4e6748b474fed67f3fff836ef36e2659054')
+sha256sums=('b16c85b2f89cc89e36b59fe734f14e5c939c8b24697bf33ff7a19584e8334976')
 
 prepare() {
     cd "${_name}-${pkgver}"
-    sed -i "s:# 'jbig2dec', 'openjp2', 'jpeg', 'freetype',:'jbig2dec', 'openjp2', 'jpeg', 'freetype', 'harfbuzz',:g" setup.py
+    sed -i "s:# 'jbig2dec', 'openjp2', 'jpeg', 'freetype',:'jbig2dec', 'openjp2', 'jpeg', 'freetype',:g" setup.py
 }
 
 build() {
     cd "${_name}-${pkgver}"
     python2 setup.py build
     python setup.py build
+}
+
+check() {
+	cd "${_name}-${pkgver}"
+	local python2_version=$(python2 -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
+	PYTHONPATH="$PWD/build/lib.linux-$CARCH-${python2_version}" python2 -c 'import sys; sys.path.remove(""); import fitz'
+	local python_version=$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
+	PYTHONPATH="$PWD/build/lib.linux-$CARCH-${python_version}" python -c 'import sys; sys.path.remove(""); import fitz'
 }
 
 package_python2-pymupdf() {
