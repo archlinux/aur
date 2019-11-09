@@ -1,7 +1,0 @@
-post_install() {
-  ldconfig
-}
-
-post_upgrade() {
-  ldconfig
-}

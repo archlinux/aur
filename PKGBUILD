@@ -1,42 +1,32 @@
-# Contributor: Moritz Lipp <mlq@pwmt.org>
+# Maintainer: Andrew Sun <adsun701 at gmail dot com>
+# Contributor: Moritz Lipp <mlq at pwmt dot org>
 
 pkgname=libfiu
-pkgver=0.95
+pkgver=1.00
 pkgrel=1
 pkgdesc="userspace fault injection framework"
 arch=('i686' 'x86_64')
 url="https://blitiri.com.ar/p/libfiu/"
 license=('custom')
-depends=()
-makedepends=('make' 'gcc' 'python2')
-source=("https://blitiri.com.ar/p/$pkgname/files/$pkgver/$pkgname-$pkgver.tar.gz"
-        "$pkgname-$pkgver.patch")
-md5sums=('f420196aded3c7a60c8f92739fad54f0'
-         '91b295e1fbf4bd0a2bf73bb97a6ed91b')
-install=$pkgname-$pkgver.install
-
-prepare() {
-  cd $srcdir/$pkgname-$pkgver
-
-  patch -p1 < $startdir/$pkgname-$pkgver.patch
-}
+depends=('sh')
+makedepends=('python')
+source=("https://blitiri.com.ar/p/${pkgname}/files/${pkgver}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('0d9141d793154bb258be5eba0bba2303ee26d5abd92c3ee9baae7a6e03fdf3d3')
 
 build() {
-  cd $srcdir/$pkgname-$pkgver
-
-  make PREFIX=$pkgdir/usr
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  make PREFIX=${pkgdir}/usr
 }
 
 package() {
-  cd $srcdir/$pkgname-$pkgver
-
-  make PREFIX=$pkgdir/usr install
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  make PREFIX=${pkgdir}/usr install
 
   # Fix paths
   sed -e "s|${pkgdir}||g" \
     -i $pkgdir/usr/lib/pkgconfig/libfiu.pc \
     -i $pkgdir/usr/bin/fiu-run
 
-  # Install LICENSE
-  install -D -m664 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  # License
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
