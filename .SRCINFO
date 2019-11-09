@@ -1,0 +1,14 @@
+pkgbase = kotatogram-desktop
+	pkgdesc = Experimental Telegram Desktop fork.
+	pkgver = 1.1
+	pkgrel = 2
+	url = https://github.com/kotatogram/kotatogram-desktop
+	arch = x86_64
+	license = GPLv3
+	source = kotatogram-desktop-1.1.tar.gz::https://github.com/kotatogram/kotatogram-desktop/releases/download/k1.1/1.1.tar.xz
+	source = kotatogram-desktop.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = kotatogram-desktop
+
