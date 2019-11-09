@@ -1,0 +1,13 @@
+diff --git a/Makefile.in b/Makefile.in.old
+index 17f9515..146a9fc 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -36,7 +36,7 @@ OBJECTS=$(SOURCES:.cpp=.o) src/mash/capnp/MinHash.capnp.o
+ all : mash libmash.a
+ 
+ mash : libmash.a src/mash/memcpyWrap.o
+-	$(CXX) $(CXXFLAGS) $(CPPFLAGS) -o mash src/mash/memcpyWrap.o libmash.a @mathlib@ -lstdc++ -lz -lm -lpthread -lcapnp -lkj
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) -o mash src/mash/memcpyWrap.o libmash.a @capnp@/lib/libcapnp.a @capnp@/lib/libkj.a @mathlib@ -lstdc++ -lz -lm -lpthread
+ 
+ libmash.a : $(OBJECTS)
+ 	ar -cr libmash.a $(OBJECTS)

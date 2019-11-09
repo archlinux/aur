@@ -1,0 +1,15 @@
+pkgbase = mash
+	pkgdesc = Fast genome and metagenome distance estimation using MinHash
+	pkgver = 2.2
+	pkgrel = 1
+	url = https://github.com/marbl/Mash/
+	arch = x86_64
+	license = BSD
+	makedepends = capnproto
+	source = https://github.com/marbl/Mash/archive/v2.2.tar.gz
+	source = dynamic-capnp.patch
+	sha256sums = 7ad006dbf0d6ffc3e164713ba955aab4cd24eaf85c864ac905f48cd8ba332691
+	sha256sums = 61cd860e66e57f6cc3dac317cb19665263aaa1de9b8c487cb9133ccde2388d92
+
+pkgname = mash
+
