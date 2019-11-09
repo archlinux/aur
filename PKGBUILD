@@ -10,15 +10,15 @@ arch=('x86_64')
 url='https://asofe.org/'
 license=('MIT')
 depends=('boost-libs' 'libevent' 'qpid-proton' 'zeromq')
-makedepends=('boost' 'cmake' 'git' 'gmock' 'python' 'rustup' 'wget')
-heckdepends=('python2-pyblake2' 'python2-pyzmq' 'python2-qpid-proton')
+makedepends=('boost' 'cmake' 'git' 'gmock' 'python' 'rust' 'wget')
+checkdepends=('python2-pyblake2' 'python2-pyzmq' 'python2-qpid-proton')
 source=("git+https://github.com/TheLightSide/asofe.git#commit=${_commit}"
         'use-system-qpid-proton.patch'
         'use-system-rust.patch'
         'asofed.service')
 sha512sums=('SKIP'
             '019870971a0cec093d0552585f4140f39dd65f90cb56b97e512bbaf0d79c0f1574295e722310d4e1762af12ff693802fc465765d4d1410d209e259326f307d6a'
-            'e2bdf46696e70a93ffcb45bf4e081c780cda8f11f6fa346b6807731f7c739f18c689c4e78a71f8bd7099874108b6b6584b8a96395bbca8d5441f7600a3fe0ebe'
+            '8878b5c805d6cdf159dbac0ef73fb47d0fbd2fc35332f1c15f05d6041c0eca7f16b12aeb1cc20615d0a325a68e8d22bb3961cadebbfa54b87783ad5de35b92fb'
             'bfc39352e50078c7897ae3b8167f06d152f26c52dc7199ae952bad85b99a9da4f9d25d63edfe52291ad27b6e08b828c5db205eb0dc6091ec3fc75dc2b1bfca19')
 
 prepare() {
