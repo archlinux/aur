@@ -1,0 +1,17 @@
+pkgbase = ruby-pgdexter
+	pkgdesc = The automatic indexer for Postgres
+	pkgver = 0.3.5
+	pkgrel = 1
+	url = https://github.com/ankane/dexter
+	arch = any
+	depends = ruby
+	depends = ruby-slop
+	depends = ruby-pg
+	depends = ruby-pg_query
+	noextract = pgdexter-0.3.5.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/pgdexter-0.3.5.gem
+	sha256sums = 6fa4f7eb6a64647ad1351ff96d556caf31720c33f35aba4bcf683bfd51d9db55
+
+pkgname = ruby-pgdexter
+
