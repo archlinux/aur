@@ -5,6 +5,7 @@ pkgrel=1
 pkgdesc='Free software for accessing MiniDisc devices'
 arch=('i686' 'x86_64' 'armv7h')
 url='https://wiki.physik.fu-berlin.de/linux-minidisc/doku.php'
+makedepends=('qt5-tools')
 depends=('qt5-base' 'glib2' 'libgcrypt' 'libmad' 'sox' 'libid3tag' 'libusbx' 'taglib')
 license=('GPL')
 source=($pkgname-$pkgver.tar.gz::https://github.com/glaubitz/$pkgname/archive/$pkgver.tar.gz)

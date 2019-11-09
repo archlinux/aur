@@ -7,6 +7,7 @@ pkgbase = linux-minidisc
 	arch = x86_64
 	arch = armv7h
 	license = GPL
+	makedepends = qt5-tools
 	depends = qt5-base
 	depends = glib2
 	depends = libgcrypt
