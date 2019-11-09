@@ -1,0 +1,20 @@
+pkgbase = rav1e
+	pkgdesc = The fastest and safest AV1 encoder
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/xiph/rav1e
+	arch = i686
+	arch = x86_64
+	license = BSD
+	license = custom
+	checkdepends = python
+	makedepends = rust
+	makedepends = cmake
+	makedepends = perl
+	makedepends = nasm
+	depends = gcc-libs
+	source = https://github.com/xiph/rav1e/archive/0.1.0.tar.gz
+	sha256sums = 00395087eaba4778d17878924e007716e2f399116b8011bf057fd54cc528a6cb
+
+pkgname = rav1e
+
