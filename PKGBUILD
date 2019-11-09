@@ -8,7 +8,7 @@
 
 _qt_module=qtconnectivity
 pkgname="mingw-w64-qt5-connectivity"
-pkgver=5.13.1
+pkgver=5.13.2
 pkgrel=1
 arch=('any')
 pkgdesc="Provides access to Bluetooth hardware (mingw-w64)"
@@ -20,7 +20,7 @@ license=('GPL3' 'LGPL3' 'FDL' 'custom')
 url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('a1c4120ca00a8b6f275d6ad3f94565fd154b5ec2c7ca167f99cdccf6b0d5ee6f')
+sha256sums=('644e234eb64f602ef5cdeb8802ef9b58e75478f1124f001937275d62ed692e17')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 [[ $NO_STATIC_LIBS ]] || \
