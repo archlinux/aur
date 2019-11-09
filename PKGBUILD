@@ -1,6 +1,6 @@
 # Maintainer: Deepjyoti <deep.barman30@gmail.com>
 pkgname=playx
-pkgver=1.0.2
+pkgver=1.4.1
 pkgrel=0
 pkgdesc="Search and play any song from terminal."
 arch=("any")
@@ -8,12 +8,11 @@ url="https://github.com/NISH1001/playx"
 license=('MIT')
 depends=(
 		"python>=3.6"
-		"python-setuptools"
 		"mpv"
 		"chromium"
 		"youtube-dl"
 		)
-makedepends=()
+makedepends=("git" "python-setuptools")
 optdepends=()
 provides=()
 conflicts=()
