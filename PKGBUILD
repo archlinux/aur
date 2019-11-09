@@ -1,16 +1,16 @@
 # Maintainer: Sefa Eyeoglu <contact@scrumplex.net>
 
-_branch=master
+_branch=dev
 _pkgname=espanso
 pkgname=${_pkgname}-git
-pkgver=v0.2.4.r15.gf277558
+pkgver=r245.fddc498
 pkgrel=1
 pkgdesc="Cross-platform Text Expander written in Rust"
 arch=(x86_64)
 url="https://espanso.org/"
 license=("GPL3")
 depends=("xdotool" "xclip" "libxtst")
-makedepends=("rust" "git")
+makedepends=("rust" "git" "cmake")
 provides=($_pkgname)
 conflicts=($_pkgname)
 install="${pkgname}.install"
@@ -21,7 +21,7 @@ sha512sums=('SKIP')
 pkgver() {
     cd "$_pkgname"
 
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
