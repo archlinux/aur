@@ -5,7 +5,7 @@
 
 pkgname=gnome-shell-performance
 _pkgname=gnome-shell
-pkgver=3.34.1+7+g750c5acd3
+pkgver=3.34.1+12+ga43c22e3a
 pkgrel=1
 epoch=1
 pkgdesc="Next generation desktop shell"
@@ -23,7 +23,7 @@ groups=(gnome)
 provides=(gnome-shell gnome-shell=$pkgver)
 conflicts=(gnome-shell)
 install=$pkgname.install
-_commit=750c5acd30ef724b2398bb9d9178a130b58e046b   # gnome-3-34
+_commit=a43c22e3af01782cdb960c05f48d4bb8c2d63e3f  # gnome-3-34
 source=("git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=$_commit"
         "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git")
 sha256sums=('SKIP'
