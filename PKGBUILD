@@ -3,7 +3,7 @@
 
 _srcname=public-ip-gnome-extension
 pkgname=gnome-shell-extension-public-ip-git
-pkgver=r43.1dd3422
+pkgver=r47.0e4d9fe
 pkgrel=1
 pkgdesc="Tiny extension, which show public IP and nothing more."
 arch=('any')
