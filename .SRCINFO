@@ -6,6 +6,7 @@ pkgbase = bcunit-git
 	arch = x86_64
 	license = GPL
 	makedepends = cmake
+	makedepends = git
 	provides = bcunit
 	conflicts = bcunit
 	source = git+https://gitlab.linphone.org/BC/public/bcunit.git
