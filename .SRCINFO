@@ -3,9 +3,17 @@ pkgbase = realtime-generic-setup
 	pkgver = r4.a423690
 	pkgrel = 1
 	url = https://github.com/redtide/archlinux-realtime-generic-setup
+	install = realtime-generic-setup.install
 	arch = any
+	depends = realtime-privileges
 	optdepends = linux-rt: The Linux-rt kernel and modules
+	optdepends = htop: Interactive process viewer
+	optdepends = iotop: View I/O usage of processes
+	optdepends = rt-tests: A collection of latency testing tools for the linux(-rt) kernel
 	optdepends = rtirq: Realtime IRQ thread system tuning
+	optdepends = tuna: Thread and IRQ affinity setting GUI and cmd line tool
+	optdepends = sysstat: a collection of performance monitoring tools (iostat,isag,mpstat,pidstat,sadf,sar)
+	optdepends = schedtool: Query or alter a process scheduling policy
 	source = git://github.com/redtide/archlinux-realtime-generic-setup.git
 	md5sums = SKIP
 
