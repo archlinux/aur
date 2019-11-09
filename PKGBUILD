@@ -2,7 +2,7 @@
 
 pkgname=eclipse-sql-explorer
 pkgver=3.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="SQL Explorer plugin for Eclipse IDE"
 arch=('any')
 url="https://sourceforge.net/projects/eclipsesql/"
@@ -15,10 +15,6 @@ sha256sums=('05c4a361fab1ddf4105bd29096acba19aafd818de19767e20c61df08e243849b')
 package() {
   _dest=${pkgdir}/usr/lib/eclipse/dropins/${pkgname/eclipse-}/eclipse
   cd ${srcdir}
-
-  # remove features and plug-ins containing sources
-  rm features/*.source_*
-  rm plugins/*.source_*
 
   # Features
   find features -type f | while read _feature ; do
