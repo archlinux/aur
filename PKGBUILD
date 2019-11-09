@@ -15,7 +15,7 @@ _enable_libsyncthing=${MINGW_W64_SYNCTHING_TRAY_JS_PROVIDER:-ON}
 _reponame=syncthingtray
 pkgname=mingw-w64-syncthingtray
 _name=${pkgname#mingw-w64-}
-pkgver=0.10.2
+pkgver=0.10.3
 pkgrel=1
 arch=('any')
 pkgdesc='Tray application for Syncthing (mingw-w64)'
@@ -108,6 +108,10 @@ build() {
 
 package() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
+
+  install \
+    -D --target-directory="$pkgdir/usr/share/licenses/$pkgname" \
+    LICENSES-windows-distribution.md
 
   for _arch in "${_architectures[@]}"; do
     for _cfg in "${_configurations[@]}"; do
