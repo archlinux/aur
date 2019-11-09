@@ -5,7 +5,7 @@ post_install() {
   $ sudo systemctl enable clash-dashboard
   $ sudo systemctl start clash-dashboard
   
-  or set /usr/lib/clash-dashboard/dist as root on nginx
+  or set /usr/lib/clash-dashboard/dist as nginx server's root
 
 EOF
 }

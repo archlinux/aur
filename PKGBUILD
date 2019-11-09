@@ -35,7 +35,6 @@ build() {
 package() {
   install -dm755 "${pkgdir}/usr/lib"
   cp -r "${srcdir}/${pkgname}-${pkgver}" "${pkgdir}/usr/lib/${pkgname}"
-  install -Dm644 "${srcdir}/${pkgname}-${pkgver}/.stylelintrc" "${pkgdir}/usr/lib/${pkgname}/.stylelintrc"
   find "${pkgdir}/usr/lib/${pkgname}/node_modules" \
     -name "*.a" -exec rm '{}' \; \
     -or -name "*.bat" -exec rm '{}' \; \
