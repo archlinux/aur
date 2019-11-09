@@ -10,12 +10,8 @@ pkgbase = tiny-media-manager-bin
 	noextract = tmm_3.0.5_linux.tar.gz
 	source = http://release.tinymediamanager.org/v3/dist/tmm_3.0.5_linux.tar.gz
 	source = tinyMediaManager.desktop
-	source = tinymediamanager
-	source = tinymediamanager-cli
 	md5sums = 9d080ca788cf2f81cdbd52fecaf94e83
-	md5sums = 010f5308884b7293bb398b2a63079883
-	md5sums = c382f9ba03915a1f70f5aaea8699cfe5
-	md5sums = 677bed3f438e84ecd948c9f6faa37194
+	md5sums = 2a7ff77b909df626dd2062db14be8faa
 
 pkgname = tiny-media-manager-bin
 
