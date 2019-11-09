@@ -42,6 +42,9 @@ build() {
 	# Fix Python2/Python3 conflicts.
 	/usr/share/ros-build-tools/fix-python-scripts.sh -v 3 ${srcdir}/${_dir}
 
+	# Set python version for env hook
+	ROS_PYTHON_VERSION=3
+
 	# Build the project.
 	cmake ${srcdir}/${_dir} \
 		-DCMAKE_BUILD_TYPE=Release \
