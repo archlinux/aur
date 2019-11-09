@@ -1,0 +1,13 @@
+pkgbase = dia-integrated
+	pkgdesc = A shortcut to display a GTK+ based diagram creation program in a single window (with --integrated argument).
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = http://live.gnome.org/Dia
+	arch = any
+	license = GPL
+	makedepends = dia
+	depends = dia
+	provides = dia-integrated
+
+pkgname = dia-integrated
+
