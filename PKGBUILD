@@ -9,8 +9,8 @@
 
 _qt_module=qtserialport
 pkgname="mingw-w64-qt5-serialport"
-pkgver=5.13.1
-pkgrel=2
+pkgver=5.13.2
+pkgrel=1
 arch=('any')
 pkgdesc="Provides access to hardware and virtual serial ports (mingw-w64)"
 depends=('mingw-w64-qt5-base')
@@ -20,10 +20,8 @@ groups=('mingw-w64-qt5')
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
 url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-everywhere-src-$pkgver"
-source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/$pkgver/submodules/${_pkgfqn}.tar.xz"
-        '0001-Revert-Emit-_q_notify-only-if-there-s-no-notificatio.patch')
-sha256sums=('d96706f406d89b459ed0ecd129b68309a91cea0f132b839958b5311ea0d118d2'
-            '93f027427ebde7ecd969b0ddca9526fbea0c4524cc4b62b31ce6d0b7a2693e52')
+source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/$pkgver/submodules/${_pkgfqn}.tar.xz")
+sha256sums=('7677ffc1dce3b75c0a98d07d215588a8dccb5c276c55b4ecd60c35ed1c89cb34')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 [[ $NO_STATIC_LIBS ]] || \
@@ -38,11 +36,6 @@ prepare() {
 
   # don't build examples or tests.
   sed -i 's/ examples tests//' qtserialport.pro
-
-  # apply patches; further descriptions can be found in patch files itself
-  for patch in "$srcdir/"*.patch; do
-    patch -p1 -i "$patch"
-  done
 }
 
 build() {
