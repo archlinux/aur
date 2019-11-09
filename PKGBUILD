@@ -9,7 +9,7 @@
 
 _qt_module=qtwebglplugin
 pkgname="mingw-w64-qt5-webglplugin"
-pkgver=5.13.1
+pkgver=5.13.2
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="QPA plugin for running an application via a browser using streamed WebGL commands (mingw-w64)"
@@ -22,8 +22,8 @@ url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz"
         '0001-Hardcode-linker-flags-for-platform-plugin.patch')
-sha256sums=('fb40c4077f0dc3954c786c47f065e8fa1816af70bd1d42359aac70bf59652b1a'
-            'ca03e23308c9887f1c406839188126dae9f134be120475fd02f475ce4006a32b')
+sha256sums=('ae369929d5a3356391bccd25cac22846dc44cbb726ce7b60924f53944addabb7'
+            'aac4bdc80a8305477edca42abb8843712b2c6a2e20c6bafa131ca4b10ef02c04')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 [[ $NO_STATIC_LIBS ]] || \
