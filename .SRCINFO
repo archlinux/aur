@@ -1,7 +1,7 @@
 pkgbase = mash
 	pkgdesc = Fast genome and metagenome distance estimation using MinHash
 	pkgver = 2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/marbl/Mash/
 	arch = x86_64
 	license = BSD
