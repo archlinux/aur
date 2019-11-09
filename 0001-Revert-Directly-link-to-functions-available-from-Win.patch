@@ -1,4 +1,4 @@
-From ecdad153169066f5fae320e898ab420a0cddc6f1 Mon Sep 17 00:00:00 2001
+From bdf1efddd731cd894066c7782dc953335ed8e072 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 27 May 2018 14:23:11 +0200
 Subject: [PATCH] Revert "Directly link to functions available from Windows 7
@@ -294,5 +294,5 @@ index 705c48c..5d93c6b 100644
      qwintaskbarprogress.cpp \
      windowsguidsdefs.cpp \
 -- 
-2.23.0
+2.24.0
 
