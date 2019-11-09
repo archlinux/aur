@@ -1,0 +1,24 @@
+pkgbase = kotatogram-desktop-bin
+	pkgdesc = Experimental Telegram Desktop fork.
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/kotatogram/kotatogram-desktop
+	arch = x86_64
+	license = GPLv3
+	makedepends = chrpath
+	depends = desktop-file-utils
+	depends = glib2
+	depends = hicolor-icon-theme
+	depends = libdbus
+	depends = libx11
+	optdepends = libappindicator-gtk2: to hide Telegram in the tray bar (GTK2-based desktop environment)
+	optdepends = libappindicator-gtk3: to hide Telegram in the tray bar (GTK3-based desktop environment)
+	optdepends = libappindicator-sharp: to hide Telegram in the tray bar (Unity-based desktop environment)
+	optdepends = xdg-utils: for automatic opening of URLs, files and directories in proper applications
+	source = kotatogram-desktop-bin-1.1.tar.gz::https://github.com/kotatogram/kotatogram-desktop/releases/download/k1.1/1.1.tar.xz
+	source = kotatogram-desktop-bin.desktop
+	sha256sums = b2cd1949f1ec1110fd9453a45c7963008467222308c5a0199cde34ba606e22ac
+	sha256sums = 6b40ccc530a891d376b0d34f13ec09223a769a9f42fa0a82a173a33bc8032bd6
+
+pkgname = kotatogram-desktop-bin
+
