@@ -1,0 +1,13 @@
+pkgbase = seclists-c
+	pkgdesc = An extended version of the original SecLists repository
+	pkgver = 20191109
+	pkgrel = 1
+	url = https://github.com/camas/seclists-c
+	arch = any
+	license = MIT
+	options = !strip
+	source = https://github.com/camas/seclists-c/archive/20191109.tar.gz
+	sha256sums = 8ee2435c83d6b9656bb4d9c63a72123135738d90346c9c6c82f81d7453dc04aa
+
+pkgname = seclists-c
+
