@@ -1,6 +1,6 @@
 pkgbase = yacas
 	pkgdesc = Yet another computer algebra system
-	pkgver = 1.7.0
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = http://www.yacas.org/
 	install = yacas.install
@@ -33,12 +33,12 @@ pkgbase = yacas
 	optdepends = fbreader: Reading EPUB manual
 	conflicts = yagy
 	noextract = yacas.epub
-	source = yacas-1.7.0.tar.gz::https://github.com/grzegorzmazur/yacas/archive/v1.7.0.tar.gz
-	source = https://media.readthedocs.org/epub/yacas/v1.6.1/yacas.epub
+	source = yacas-1.8.0.tar.gz::https://github.com/grzegorzmazur/yacas/archive/v1.8.0.tar.gz
+	source = https://buildmedia.readthedocs.org/media/epub/yacas/v1.8.0/yacas.epub
 	source = yacas.desktop
 	source = yacas-docs.desktop
-	md5sums = cd91867dba8aa858643d4bb9777f608c
-	md5sums = 1278f790a15792996931c2adc56dd8aa
+	md5sums = f8c06e6c7ab8b5e9e7e48ee85c68646b
+	md5sums = becd320686b3b9aa2e6c39477f37ff06
 	md5sums = eb776002fabe21623716ed2642f6d365
 	md5sums = 04d2a47c02fba5d88f337a404e02929c
 

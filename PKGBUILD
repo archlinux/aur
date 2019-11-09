@@ -4,8 +4,8 @@
 # Maintainer : Marcos Heredia <chelqo@gmail.com>
 
 pkgname=yacas
-pkgver=1.7.0
-_docver=1.6.1
+pkgver=1.8.0
+_docver=1.8.0
 pkgrel=1
 pkgdesc='Yet another computer algebra system'
 url='http://www.yacas.org/'
@@ -28,12 +28,12 @@ conflicts=('yagy')
 install=${pkgname}.install
 noextract=('yacas.epub')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/grzegorzmazur/yacas/archive/v${pkgver}.tar.gz"
-        "https://media.readthedocs.org/epub/yacas/v${_docver}/yacas.epub"
+        "https://buildmedia.readthedocs.org/media/epub/yacas/v${_docver}/yacas.epub"
         "yacas.desktop"
         "yacas-docs.desktop"
         )
-md5sums=('cd91867dba8aa858643d4bb9777f608c'  # yacas source
-         '1278f790a15792996931c2adc56dd8aa'  # Epub manual
+md5sums=('f8c06e6c7ab8b5e9e7e48ee85c68646b'  # yacas source
+         'becd320686b3b9aa2e6c39477f37ff06'  # Epub manual
          'eb776002fabe21623716ed2642f6d365'  # yacas.desktop
          '04d2a47c02fba5d88f337a404e02929c'  # yacas-docs.desktop
          )
@@ -59,17 +59,16 @@ build() {
 package() {
   cd ${srcdir}/${pkgname}-${pkgver}/build
   msg "### instalation " ; make DESTDIR=$pkgdir install
-  rm -rf ${pkgdir}/usr/share/doc/${pkgname}
   cd ..
   _appdir=${pkgdir}/usr/share/applications
   _pngdir=${pkgdir}/usr/share/pixmaps
-  _docdir=${pkgdir}/usr/share/doc/${pkgname}-${pkgver}
+  _docdir=${pkgdir}/usr/share/doc/${pkgname}
   _licdir=${pkgdir}/usr/share/licenses/${pkgname}
   install -dm755 ${_appdir} ${_pngdir} ${_docdir} ${_licdir}
   install -Dpm644 ${srcdir}/yacas.desktop ${_appdir}/
   install -Dpm644 ${srcdir}/yacas-docs.desktop ${_appdir}/
   [ ${_build_gui} == "OFF" ] && install -Dpm644 ${srcdir}/${pkgname}-${pkgver}/cyacas/yacas-gui/resources/pixmaps/yacas-gui.png ${_pngdir}
-  install -Dpm644 AUTHORS ChangeLog INSTALL.rst README.rst TODO ${_docdir}/
+  install -Dpm644 AUTHORS CODE_OF_CONDUCT.md ChangeLog README.rst TODO ${_docdir}/
   install -Dpm644 ${srcdir}/yacas.epub ${pkgdir}/usr/share/yacas/
   install -Dpm644 COPYING ${_licdir}/
   (cd ${_docdir} ; ln -s ../../yacas/yacas.epub .)
