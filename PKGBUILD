@@ -5,7 +5,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium-ozone
-pkgver=78.0.3904.87
+pkgver=78.0.3904.97
 pkgrel=1
 _launcher_ver=6
 _meta_browser_sha=34ef417cdcf848839b59c086be046c2b4a96ac32
@@ -37,7 +37,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         fix-spammy-unique-font-matching-log.patch
         chromium-widevine.patch
         chromium-skia-harmony.patch)
-sha256sums=('8df6ffca4087fc43e7d0443acc4f758399b248e96482705bd4fe7e88d239eb56'
+sha256sums=('d1f49ab9f4f973536166f587114553c21a29977bdc350dd407a89d34e22a9d07'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
             '892026717ac487e1a92073d7a363a7f4a12b06ed6ac61825842ad734eda857d7'
             '49052e8aa630c4aa57bf46823edc32b7b309493275163c3bb3f9fd390c73356e'
