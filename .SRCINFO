@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-headers
 	pkgdesc = MinGW-w64 headers for Windows
-	pkgver = 6.0.0
+	pkgver = 7.0.0
 	pkgrel = 1
 	url = http://mingw-w64.sourceforge.net
 	arch = any
@@ -10,10 +10,10 @@ pkgbase = mingw-w64-headers
 	options = !strip
 	options = !libtool
 	options = !emptydirs
-	source = https://sourceforge.net/projects/mingw-w64/files/mingw-w64/mingw-w64-release/mingw-w64-v6.0.0.tar.bz2
-	source = https://sourceforge.net/projects/mingw-w64/files/mingw-w64/mingw-w64-release/mingw-w64-v6.0.0.tar.bz2.sig
+	source = https://sourceforge.net/projects/mingw-w64/files/mingw-w64/mingw-w64-release/mingw-w64-v7.0.0.tar.bz2
+	source = https://sourceforge.net/projects/mingw-w64/files/mingw-w64/mingw-w64-release/mingw-w64-v7.0.0.tar.bz2.sig
 	validpgpkeys = CAF5641F74F7DFBA88AE205693BDB53CD4EBC740
-	sha256sums = 805e11101e26d7897fce7d49cbb140d7bac15f3e085a91e0001e80b2adaf48f0
+	sha256sums = f5c9a04e1a6c02c9ef2ec19b3906ec4613606d1b5450d34bbd3c4d94ac696b3b
 	sha256sums = SKIP
 
 pkgname = mingw-w64-headers
