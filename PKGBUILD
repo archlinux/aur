@@ -2,7 +2,7 @@
 
 pkgname=python-recommonmark
 pkgver=0.6.0.194.48f9d1a
-pkgrel=1
+pkgrel=2
 _gitcommit=48f9d1a6848c77a104854f556c053f3ed3c2c354
 pkgdesc='Markdown parser for docutils'
 url='https://github.com/readthedocs/recommonmark'
@@ -16,7 +16,7 @@ source=(${pkgname}::"git+https://github.com/readthedocs/recommonmark#commit=$_gi
         recommonmark-sphinx-2.patch)
 sha512sums=('SKIP'
             '66ef07ac21643b913c8ee551c7c71753fcb6442712e4fb11b84ea5f34265715471759b2c5a1badc1e299ca6aa831713b12284144801616349b2db61738607e8a'
-            '608c44a861f589964ffd30818917dd46aa0df2a249d74cf54f1dbd2e595dc3e1914357df563608d0c3f10bc3d387aece36d69178161c9d4fa824224a72c367e5')
+            '317b7139819bb183184e0a5abf4f74b955746779c841cf3b9e7e8032cc23ac3ce5f54a1ebd2d4c012038041c58ab849a09271d806f9fc3c5c0dadd1ad92eddae')
 
 pkgver() {
   cd ${pkgbase}
