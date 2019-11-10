@@ -1,6 +1,6 @@
 # Maintainer: Donald Webster <fryfrog@gmail.com>
 pkgname='traktarr'
-pkgver=1.2.4
+pkgver=1.2.5
 pkgrel=1
 pkgdesc="Use Trakt to add shows to Sonarr and movies to Radarr."
 arch=(any)
@@ -24,7 +24,7 @@ source=("traktarr-${pkgver}.tar.gz::https://github.com/l3uddz/traktarr/archive/$
         'config.json'
         'traktarr.sysusers')
 
-sha512sums=('66f5f056ebd4b536642d3461843a6af8725a5ace3b815618065d1daa528ffa5a61d31d69c81340e6e6f418b05a0a41bfdd9e9f885d70bab45dbcf111c96a2cfb'
+sha512sums=('26a593de6f4a5cd7a618db178a555429ccd75e805f4eb7985ae9e60f38af2bfcabb9f32ba683e7471bdd0afb042cf0ec94f7ddd3e3b0d5ec1229ce906d5488dd'
             'eca779036f63676e8e8d621d9ec24d991ea7f240bde43d1b18f523d6d08ca9a1fc1ffdfff6796acbfaacfc484b3e6d64140973cabae67ed4638b48cb19a743f2'
             '39cc9feb5620578d4bc56e873fbbf524cdd579dc904a947b734517eafec1969fa9589ee42ee158a908066f1d284f5623161597a3404e1d6be2605a6da6c9bb18'
             'cc5f858a8e903894b6ee992dc8946d6ffeffe0cb25293d0721c82f24d36905f36c33625c8d81afbd8825b928d2938674b14b14122055d861c948e1a3bd9a60e6'
