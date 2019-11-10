@@ -1,0 +1,15 @@
+pkgbase = terraform-provider-vcd
+	pkgdesc = Terraform VMware vCloud Director provider
+	pkgver = 2.5.0
+	pkgrel = 1
+	url = https://github.com/terraform-providers/terraform-provider-vcd
+	arch = i686
+	arch = x86_64
+	license = MPL
+	makedepends = go
+	makedepends = git
+	source = https://github.com/terraform-providers/terraform-provider-vcd/archive/v2.5.0.tar.gz
+	sha256sums = 1f7c9639d19d8ec093f25283a2ad1fb4cdb1ac1206a82c5b63af7ddf1ec9e234
+
+pkgname = terraform-provider-vcd
+
