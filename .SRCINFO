@@ -1,7 +1,7 @@
 pkgbase = digital
 	pkgdesc = A digital logic designer and circuit simulator.
 	pkgver = 0.23
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/hneemann/Digital
 	arch = x86_64
 	license = GPL
