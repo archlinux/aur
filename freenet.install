@@ -1,41 +1,36 @@
 post_install() {
-  getent passwd freenet &>/dev/null || {
-        echo -n ">>> Creating freenet system user... "
+    getent passwd freenet &>/dev/null || {
+        echo -n "==> Creating freenet system user... "
         useradd --system \
                 --user-group \
                 --home /opt/freenet \
                 freenet &&
         echo "ok" || echo "fail"
     }
-    chown -R freenet:freenet /opt/freenet /run/freenet
-    echo
-    echo "Freenet will be slow during first startup while it discovers the network."
-    echo "You may see 'Data Not Found' or 'Route Not Found' errors, this is normal."
-    echo "For best performance Freenet should be run 24/7 as much as possible."
-    echo "Your node's configuration WebUI is located at http://127.0.0.1:8888/ "
-    echo "https://freenetproject.org/faq.html"
-    echo
+    chown -R freenet:freenet /opt/freenet
+    echo "==> Freenet will be slow during first startup while it discovers the network."
+    echo "==> You may see 'Data Not Found' or 'Route Not Found' errors, this is normal."
+    echo "==> For best performance Freenet should be run 24/7 as much as possible."
+    echo "==> Your node's configuration WebUI is located at http://127.0.0.1:8888/ "
+    echo "==> https://freenetproject.org/faq.html"
 }
 
 post_upgrade() {
-    chown -R freenet:freenet /opt/freenet /run/freenet
-
     ## remove me at a later date
     [[ -d /opt/freenet/conf/node ]] && {
         sed -i /opt/freenet/conf/freenet.ini \
             -e "s:node.install.nodeDir=/opt/freenet/conf/node:node.install.nodeDir=/opt/freenet/noderef:" \
             -e "s:JSTUN;::"
         mv /opt/freenet/conf/node /opt/freenet/noderef
-    }
+    } || true
 
-    echo
+    chown -R freenet:freenet /opt/freenet
 }
 
 pre_remove() {
     getent passwd freenet &>/dev/null && {
-        echo -n ">>> Removing freenet system user... "
-        userdel freenet
-        echo "ok"
-        echo
+        echo -n "==> Removing freenet system user... "
+        userdel freenet &&
+        echo "ok" || echo "fail"
     }
 }

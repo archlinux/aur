@@ -1,13 +1,27 @@
 [Unit]
 Description=An encrypted network without censorship and monitoring.
-After=network.target
+After=network.target time-sync.target
 
 [Service]
 Type=forking
 User=freenet
-ExecStart=/opt/freenet/run.sh start --quiet
-ExecStop=/opt/freenet/run.sh stop --quiet
-WorkingDirectory=/opt/freenet
+PIDFile=/run/freenet/freenet.pid
+
+NoNewPrivileges=yes
+PrivateTmp=yes
+PrivateDevices=yes
+DeviceAllow=/dev/null rw
+DeviceAllow=/dev/urandom r
+LimitNOFILE=4096
+
+ExecStart=/usr/bin/java-service-wrapper /opt/freenet/wrapper.config \
+    wrapper.name=freenet \
+    wrapper.syslog.ident=freenet \
+    wrapper.daemonize=TRUE TZ=UTC
+ExecReload=/bin/kill -USR1 $MAINPID
+ExecStop=/bin/kill -TERM $MAINPID
+SendSIGKILL=no
+SuccessExitStatus=0 2 3
 
 [Install]
 WantedBy=multi-user.target

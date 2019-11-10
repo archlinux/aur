@@ -1,0 +1,2 @@
+d /run/freenet 0700 freenet freenet
+d /opt/freenet 0700 freenet freenet

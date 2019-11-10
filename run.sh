@@ -4,8 +4,7 @@
 _USER="freenet"
 WRAPPER_CMD="/usr/bin/java-service-wrapper"
 WRAPPER_CONF="/opt/freenet/wrapper.config"
-PIDDIR="/run/freenet"
-PIDFILE="$PIDDIR/freenet.pid"
+PIDFILE="/run/freenet/freenet.pid"
 TIMEOUT=60
 #-----------------------------------------------------------------------------
 
@@ -16,10 +15,6 @@ fail() {
 
 check_user() {
     if [[ "$(id -un)" != "$_USER" ]]; then
-        if [[ ! -d "$PIDDIR" ]]; then
-            install -dm700 "$PIDDIR"
-            chown ${_USER}:${_USER} "$PIDDIR"
-        fi
         SCRIPT_PATH="$(cd $(dirname $0) && pwd)/$(basename $0)"
         su - "$_USER" -c "${SCRIPT_PATH} $@"
         exit $?
@@ -35,7 +30,7 @@ init_vars() {
         fail "Attempting to start as root! Please edit $(basename $0) and set the variable \$_USER"
     [[ "$(id -un "$_USER")" != "$_USER" ]] &&
         fail "\$_USER does not exist: $_USER"
-    COMMAND_LINE="\"$WRAPPER_CMD\" \"$WRAPPER_CONF\" wrapper.syslog.ident=\"freenet\" wrapper.name=\"freenet\""
+    COMMAND_LINE="\"$WRAPPER_CMD\" \"$WRAPPER_CONF\" wrapper.syslog.ident=\"freenet\" wrapper.name=\"freenet\" TZ=UTC"
 }
 
 get_wrapper_pid() {
@@ -72,7 +67,7 @@ _console() {
         eval $COMMAND_LINE
         [[ $? != 0 ]] && fail "Failed to launch the wrapper!"
     else
-        echo "Freenet is already running"
+        echo "Freenet is already running! (pid: $pid)"
     fi
 }
 
@@ -83,18 +78,16 @@ _start() {
         eval $COMMAND_LINE
         [[ $? != 0 ]] && fail "Failed to launch the wrapper!"
         i=0
-        if [[ ! $_quiet ]]; then
-            while [[ ! "$pid" || $i < $TIMEOUT ]]; do
-                echo -n "."
-                sleep 1
-                check_if_running
-                ((i++))
-            done
-        fi
+        while [[ ! "$pid" || $i < $TIMEOUT ]]; do
+            echo -n "."
+            sleep 1
+            check_if_running
+            ((i++))
+        done
         [[ $(get_pid) ]] &&
             echo " done" || fail "timeout: Failed to start wrapper!"
     else
-        echo "Freenet is already running"
+        echo "Freenet is already running! (pid: $pid)"
     fi
 }
 
@@ -109,26 +102,19 @@ _stop() {
         kill -TERM $(get_wrapper_pid)
         [[ $? != 0 ]] && fail "Unable to stop Freenet: kill -TERM $pid"
         i=0
-        if [[ ! $_quiet ]]; then
-            while [[ "$pid" || $i > $TIMEOUT ]]; do
-                echo -n "."
-                sleep 1
-                [[ ! $(get_pid) ]] && unset pid
-                ((i++))
-            done
-            if [[ "$pid" ]]; then
-                fail "timeout: Failed to stop wrapper!"
-            fi
+        while [[ "$pid" || $i > $TIMEOUT ]]; do
+            echo -n "."
+            sleep 1
+            [[ ! $(get_pid) ]] && unset pid
+            ((i++))
+        done
+        if [[ "$pid" ]]; then
+            fail "timeout: Failed to stop wrapper!"
         fi
         echo " done"
     else
         echo "Freenet is not running."
     fi
-}
-
-_status() {
-    [[ "$pid" ]] &&
-        echo "Freenet is running: PID:$pid" || echo "Freenet is not running."
 }
 
 _dump() {
@@ -143,12 +129,21 @@ _dump() {
 }
 #-----------------------------------------------------------------------------
 
-check_user "$*"
-init_vars
-check_if_running
+[[ "$1" != @(console|start|stop|restart|dump) ]] && {
+    echo "Usage: $(basename $0) [command]"
+    echo
+    echo "Commands:"
+    echo "  console     Launch in the current console"
+    echo "  start       Start in the background as a daemon process"
+    echo "  stop        Stop if running as a daemon or in another console"
+    echo "  restart     Restart the JVM"
+    echo "  dump        Request a Java thread dump if running"
+    exit
+}
 
-[[ "$2" = '--quiet' ]] &&
-    _quiet=true
+check_user "$*"
+check_if_running
+init_vars
 
 case "$1" in
      'console') _console
@@ -159,21 +154,6 @@ case "$1" in
                 ;;
      'restart') _restart
                 ;;
-      'status') _status
-                ;;
         'dump') _dump
                 ;;
-
-    *)  echo "Usage: $(basename $0) [command]"
-        echo
-        echo "Commands:"
-        echo "  console     Launch in the current console"
-        echo "  start       Start in the background as a daemon process"
-        echo "  stop        Stop if running as a daemon or in another console"
-        echo "  restart     Restart the JVM"
-        echo "  status      Query the current status"
-        echo "  dump        Request a Java thread dump if running"
-        echo
-        ;;
 esac
-exit 0

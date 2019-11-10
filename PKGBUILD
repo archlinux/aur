@@ -9,8 +9,6 @@ _upnp=#tag=10007
 _pkgver=0.7.5
 _plugins=('WebOfTrust' 'UPnP' 'KeyUtils')
 
-# comment out to run unit tests
-BUILDENV+=('!check')
 
 pkgname=freenet
 pkgver=0.7.5.1484
@@ -21,7 +19,7 @@ license=('GPL2')
 arch=('i686' 'x86_64')
 install='freenet.install'
 depends=('java-runtime>=8' 'gmp' 'java-service-wrapper')
-makedepends=('java-environment>=8' 'java-environment<13' 'apache-ant' 'git' 'zip' 'gradle')
+makedepends=('java-environment>=8' 'apache-ant' 'git' 'zip')
 backup=('opt/freenet/wrapper.config'
         'opt/freenet/conf/freenet.ini')
 
@@ -32,7 +30,7 @@ source=("git+https://github.com/freenet/fred.git${_fred}"
         "IpToCountry.dat::http://software77.net/geo-ip/?DL=4"
         "https://github.com/freenet/seedrefs/files/1609768/seednodes.zip"
         '0001-strip-non-compile-deps.patch'
-        'run.sh' 'freenet.service' 'freenet.ini' 'wrapper.config')
+        'run.sh' 'freenet.ini' 'wrapper.config' 'freenet.service' 'freenet.tmpfiles')
 
 sha256sums=('SKIP'
             'SKIP'
@@ -40,11 +38,12 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             '0d91d2462f36d35235cc86cbdee11890cadec91a0a01b89d96010924f6c2be99'
-            'd3d2f43e2bdaa93bfaa60fa2c82f6b42fb50539db2ad48e03664b537a4aa8071'
-            'a6581d33448c2989ef9f7e888e7e47a8784b0159e76bf8f6bc97eec1d7d55769'
-            '434f67e2e86edb555b7dfb572a52d7ff719373989e1f1830f779bfccc678539f'
+            '4b2017c3da5f2dad1bc7aec2a1afb33a8d0a8cbf754f8f8d95cb0bb34f71d2ae'
+            '171dc64316dcdafc98ddc0136ed4b14ab2d6688817e9e9c08be97560a38f2879'
             'c0ce093a098d91dee6be294f8a2fc929aabad95612f994933194d0da5c4cdd25'
-            '30788b1b7856fbcfcfbe6825cd772a22b75cf1d680c2cbfd9b15ef3fc2d0c077')
+            '30788b1b7856fbcfcfbe6825cd772a22b75cf1d680c2cbfd9b15ef3fc2d0c077'
+            'f03cb422c1b1c068b61092d118838a6f77462e80d78a32cf231146ffcc6b9a7a'
+            'f4fa90c9840cfdb62ec384b366ae3472246300ddacca74310e1e06a5c1fb582c')
 
 pkgver() {
     cd "fred"
@@ -55,20 +54,22 @@ pkgver() {
 prepare() {
     cd "fred"
 
-    # Gradle 5.4+ and Java 11 support
-    git pull origin pull/658/head
+    # Gradle 6 and Java 13 support
+    git pull origin pull/683/head
     git apply -v "$srcdir/0001-strip-non-compile-deps.patch"
 }
 
 build() {
     cd "fred"
 
-    export GRADLE_USER_HOME="$srcdir/.gradle"
+    export GRADLE_USER_HOME="$startdir/.gradle"
+    export GRADLE_OPTS="-Dorg.gradle.internal.launcher.welcomeMessageEnabled=false"
 
     msg "Building Freenet..."
-    gradle -DtargetJavaVersion=$(javac -version 2>&1 |awk '{print $2}') \
-           --no-build-cache --no-daemon \
-           copyRuntimeLibs
+    ./gradlew \
+            -DtargetJavaVersion=$(javac -version 2>&1 |awk '{print $2}') \
+            --no-build-cache --no-daemon \
+            copyRuntimeLibs
 
     build_plugins
 }
@@ -88,22 +89,15 @@ build_plugins() {
     done
 }
 
-check() {
-    cd "fred"
-
-    # these tests use alot of memory and can cause OOM's
-    #rm -f test/freenet/client/async/{*Storage,ClientRequestSelector}Test.java
-    gradle test
-}
-
 package() {
     cd "fred"
 
     # freenet
     install -dm755 "$pkgdir"/usr/bin
     install -dm700 "$pkgdir"/run/freenet
-    install -dm700 "$pkgdir"/opt/freenet/tmp
-    install -dm750 "$pkgdir"/opt/freenet/{downloads,lib,conf,noderef,persistent-temp,plugins/data,user/{data,certs}}
+    install -dm700 "$pkgdir"/opt/freenet
+    install -dm700 "$pkgdir"/opt/freenet/{tmp,downloads,lib,conf,noderef,persistent-temp,plugins,user}
+    install -dm700 "$pkgdir"/opt/freenet/{plugins/data,user/{data,certs}}
 
     install -m640  "$srcdir"/{wrapper.config,run.sh,IpToCountry.dat} "$pkgdir"/opt/freenet
     install -m640  "$srcdir"/freenet.ini                             "$pkgdir"/opt/freenet/conf
@@ -125,11 +119,9 @@ package() {
     ln -s /opt/freenet/run.sh "$pkgdir"/usr/bin/freenet
 
     # systemd
-    install -dm755 "$pkgdir"/usr/lib/tmpfiles.d
+    install -Dm644 "$srcdir"/freenet.tmpfiles   "$pkgdir"/usr/lib/tmpfiles.d/freenet.conf
     install -Dm644 "$srcdir"/freenet.service    "$pkgdir"/usr/lib/systemd/system/freenet.service
-    echo 'd /run/freenet 0700 freenet freenet' >"$pkgdir"/usr/lib/tmpfiles.d/freenet.conf
 
     # license
-    install -dm755        "$pkgdir"/usr/share/licenses/freenet
-    install -m644 LICENSE "$pkgdir"/usr/share/licenses/freenet/LICENSE
+    install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/freenet/LICENSE
 }
