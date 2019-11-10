@@ -13,12 +13,12 @@ source=("https://installer.id.ee/media/ubuntu/pool/main/c/$pkgname/${pkgname}_$p
 sha256sums=('aaaa3095d9637d4e3c53ec581883325cc8186e2121f42a1108ba00aa6c4ddee7')
 
 build() {
-    cd "$srcdir/"
+    cd "$srcdir/$pkgname/host-linux"
     make
 }
 
 package() {
-    cd "$srcdir/"
+    cd "$srcdir/$pkgname/"
     # Istall files
     install -Dm755 ./host-linux/chrome-token-signing -t "$pkgdir/usr/bin"
     install -Dm644 ./host-linux/ee.ria.esteid.json -t "$pkgdir/usr/share/chrome-token-signing"
