@@ -1,7 +1,7 @@
 # Maintainer: LaFr4nc3 <lafr4nc3 at gmail dot com>
 pkgname=ttf-hackgen
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="HackGen is a composite font of Hack and GenJyuu-Gothic."
 arch=("any")
 url="https://github.com/yuru7/HackGen"
@@ -13,7 +13,7 @@ md5sums=("64ff0044d3435c599854530f1d1e8876"
 
 package() {
     install -d ${pkgdir}/usr/share/fonts/TTF
-    install -m644 *.ttf ${pkgdir}/usr/share/fonts/TTF/
+    install -m644 HackGen_v${pkgver}/*.ttf ${pkgdir}/usr/share/fonts/TTF/
 
     cd ${srcdir}
 
