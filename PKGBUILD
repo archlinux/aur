@@ -1,7 +1,7 @@
 # Maintainer: Brad Erhart <brae.04+aur@gmail.com>
 
 pkgname=zapier-platform-cli
-pkgver=8.3.0
+pkgver=8.4.2
 pkgrel=1
 pkgdesc="This CLI is your gateway to creating custom applications on the Zapier platform"
 arch=('x86_64')
@@ -21,8 +21,9 @@ package() {
 	# See https://github.com/npm/npm/issues/9359 for details.
 	find "${pkgdir}"/usr -type d -exec chmod 755 {} +
 
-	# Remove references to $pkgdir
-	find "$pkgdir" -name package.json -print0 | xargs -0 sed -i '/_where/d'
+	# Remove references to $srcdir/$pkgdir
+	find "$pkgdir" -name package.json -print0 | xargs -r -0 sed -i '/_where/d'
+
 
 	# Remove references to $srcdir
 	local tmppackage="$(mktemp)"
