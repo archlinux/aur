@@ -4,15 +4,18 @@ pkgname=naiveproxy-bin
 _pkgname=naiveproxy
 pkgdesc='Make a fortune quietly'
 pkgver=78.0.3904.70
-pkgrel=2
-arch=('x86_64' 'aarch64' 'arm')
+pkgrel=4
+arch=('x86_64' 'i386' 'i686' 'pentium4' 'aarch64' 'arm' 'armv7h')
 url='https://github.com/klzgrad/naiveproxy'
 license=('BSD')
 depends=('nspr' 'nss')
 _arch=""
-case "$(uname -m)" in
-  x86_64)
+case "$CARCH" in
+  x86_64|amd64)
     _arch="x64"
+  ;;
+  i686|i386|pentium4)
+    _arch="x86"
   ;;
   arm|armv7*)
     _arch="arm"
@@ -23,10 +26,6 @@ case "$(uname -m)" in
   *)
     _arch="unknown"
   ;;
-# no prebuilt binarie has been made for x86 architecture
-# i686|i386)
-#   _arch="x86"
-# ;;
 esac
 source=( ${_pkgname}-${pkgver}-${pkgrel}-${_arch}.tar.gz::https://github.com/klzgrad/naiveproxy/releases/download/v${pkgver}-${pkgrel}/naiveproxy-v${pkgver}-${pkgrel}-linux-${_arch}.tar.xz)
 optdepends=("ccache: Speed up compilation")
