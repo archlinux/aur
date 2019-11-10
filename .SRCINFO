@@ -15,7 +15,7 @@ pkgbase = planck
 	depends = libzip
 	depends = zlib
 	conflicts = planck-git
-	source = https://github.com/mfikes/planck/archive/2.24.0.tar.gz
+	source = https://github.com/planck-repl/planck/archive/2.24.0.tar.gz
 	sha256sums = b4b1b36786fd55be829a6b0a42771d9134152b503dafa92ee0f2c6e57c8cb3ca
 
 pkgname = planck

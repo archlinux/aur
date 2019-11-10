@@ -12,12 +12,13 @@ depends=('webkit2gtk' 'libzip' 'zlib')
 makedepends=('java-environment' 'cmake' 'clojure' 'leiningen' 'unzip' 'vim')
 license=('EPL-1.0')
 source=(
-  https://github.com/mfikes/${pkgname}/archive/${pkgver}.tar.gz
+  https://github.com/planck-repl/${pkgname}/archive/${pkgver}.tar.gz
 )
 sha256sums=('b4b1b36786fd55be829a6b0a42771d9134152b503dafa92ee0f2c6e57c8cb3ca')
 
 build() {
   cd "$srcdir/${_pkgnamever}"
+  sed 's_lib/closure_lib/closure/goog_' -i planck-cljs/script/build.clj
   script/build
 }
 
