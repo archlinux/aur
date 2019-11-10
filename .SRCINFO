@@ -1,0 +1,17 @@
+pkgbase = fail2web-git
+	pkgdesc = REST server for fail2ban
+	pkgver = r67.0a7d4bb
+	pkgrel = 1
+	url = https://github.com/Sean-Der/fail2web
+	arch = any
+	license = MIT
+	makedepends = nodejs
+	makedepends = npm
+	depends = fail2rest
+	provides = fail2web
+	conflicts = fail2web
+	source = fail2web::git+https://github.com/Sean-Der/fail2web
+	sha512sums = SKIP
+
+pkgname = fail2web-git
+
