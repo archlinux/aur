@@ -2,7 +2,7 @@
 
 pkgname=zapier-platform-cli
 pkgver=8.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="This CLI is your gateway to creating custom applications on the Zapier platform"
 arch=('x86_64')
 url="https://zapier.github.io/zapier-platform-cli/cli"
@@ -10,7 +10,7 @@ license=('UNLICENSED')
 depends=('nodejs')
 makedepends=('npm' 'jq')
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
-sha256sums=('7bab662c5e03d133a10dd354acbbb709ddd8c39e89ec09be56f2ff0e80ea07e5')
+sha256sums=('2bd76bc53e3e12985131af46329593ee228efe1d1c8b9bda67fe523a5170340f')
 noextract=("$pkgname-$pkgver.tgz")
 options=('!strip')
 
