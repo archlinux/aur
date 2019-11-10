@@ -6,8 +6,8 @@
 # Contributor: Andrey Vlasovskikh <andrey.vlasovskikh@gmail.com>
 
 pkgname=rider-eap
-pkgver=193.4778.12
-_dlver="2019.3-EAP1-193.4778.12.Checked"
+pkgver=193.5096.45
+_dlver="2019.3-EAP3-${pkgver}.Checked"
 pkgrel=1
 epoch=1
 pkgdesc="A cross-platform C# IDE by JetBrains."
@@ -22,7 +22,7 @@ groups=("development" "IDE" "editor" "jetbrains")
 
 source=("https://download.jetbrains.com/rider/JetBrains.Rider-${_dlver}.tar.gz"
         "${pkgname}.desktop")
-sha256sums=('60d69225f4bb17578c0e705b8c7ae639558348363df0c95456983c39c32f0671'
+sha256sums=('4e8cbfba856bb188f186409d03a11e048f6df525c00c203cdc61661431967092'
             'cbb7c9b847c92c95403be237ab01183eb0516b4a9b46c8ba27c87243fed8cbb8')
 
 package() {
