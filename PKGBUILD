@@ -2,12 +2,12 @@
 
 pkgname=cocoa
 pkgver=0.99601
-pkgrel=2
+pkgrel=3
 pkgdesc="A C++ library for doing Computations in Commutative Algebra. Also includes the CoCoA-5 Interpreter."
 arch=('i686' 'x86_64')
 url="http://cocoa.dima.unige.it/"
 license=('GPL')
-depends=('cddlib' 'gsl' 'boost-libs' 'normaliz' 'cblas' 'lapack' 'readline')
+depends=('gmp' 'cddlib' 'boost-libs' 'normaliz' 'readline')
 makedepends=('frobby' 'boost')
 source=("http://cocoa.dima.unige.it/cocoalib/tgz/CoCoALib-$pkgver.tgz" "cocoa5")
 sha256sums=('caf37f71398b9715be262e434f04a218db05cfa58e08bce954626d7f4ffd6b75'
@@ -15,7 +15,7 @@ sha256sums=('caf37f71398b9715be262e434f04a218db05cfa58e08bce954626d7f4ffd6b75'
 
 build() {
   cd "$srcdir/CoCoALib-$pkgver"
-  ./configure
+  ./configure --with-libfrobby='/usr/lib/libfrobby.a' --with-libnormaliz='/usr/lib/libnormaliz.so' --with-libcddgmp='/usr/lib/libcddgmp.so'
   make -s CXXFLAGS='-Wno-deprecated-declarations -fPIC' library
   cd src/CoCoA-5
   make -s CXXFLAGS='-Wno-deprecated-declarations -fPIC' cocoa5
