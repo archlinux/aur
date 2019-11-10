@@ -1,7 +1,7 @@
 
 pkgname=mingw-w64-libsvm
-pkgver=3.23
-pkgrel=2
+pkgver=3.24
+pkgrel=1
 pkgdesc="A library for Support Vector Machines classification (mingw-w64)"
 arch=(any)
 url="http://www.csie.ntu.edu.tw/~cjlin/libsvm/"
@@ -10,7 +10,7 @@ depends=('mingw-w64-crt')
 makedepends=('mingw-w64-gcc')
 options=('!buildflags' '!strip' 'staticlibs')
 source=("http://www.csie.ntu.edu.tw/~cjlin/libsvm/libsvm-${pkgver}.tar.gz")
-sha256sums=('257aed630dc0a0163e12cb2a80aea9c7dc988e55f28d69c945a38b9433c0ea4a')
+sha256sums=('d5881a201a4e6227bf8e2f5de7d6eeaef481c6c2bb9540aeca547737844f8696')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"      
 
@@ -19,7 +19,7 @@ build()
   cd "$srcdir/libsvm-$pkgver"
   for _arch in ${_architectures}; do
     mkdir -p "build-${_arch}" && pushd "build-${_arch}"
-    ${_arch}-c++ -D_FORTIFY_SOURCE=2 -O2 -pipe -fno-plt -fexceptions --param=ssp-buffer-size=4 -c ../svm.cpp
+    ${_arch}-c++ -D_FORTIFY_SOURCE=0 -O2 -pipe -fno-plt -fexceptions --param=ssp-buffer-size=4 -c ../svm.cpp
     ${_arch}-c++ -shared -o libsvm.dll svm.o -Wl,--out-implib,libsvm.dll.a
     ${_arch}-ar cr libsvm.a svm.o 
     ${_arch}-ranlib libsvm.a
