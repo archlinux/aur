@@ -8,7 +8,7 @@ pkgname=('nvidia-full-beta-all'
          'nvidia-settings-full-beta-all'
          'lib32-nvidia-utils-full-beta-all'
          'lib32-opencl-nvidia-full-beta-all')
-pkgver=440.26
+pkgver=440.31
 pkgrel=1
 pkgdesc='Full NVIDIA driver package for all kernels on the system (drivers, utilities and libraries) (beta version)'
 arch=('x86_64')
@@ -22,7 +22,7 @@ source=("https://us.download.nvidia.com/XFree86/Linux-${CARCH}/${pkgver}/${_pkg}
         'nvidia-utils-full-beta-all.sysusers'
         'FS62142.patch'
         'nvidia-settings-full-beta-all-change-desktop-paths.patch')
-sha256sums=('5f98e7af0643aea8c5538128bfef2f70dab0cd2559c97d0a8598210a3761c32b'
+sha256sums=('cd592f385c9bfb798f973225dfd086654973984762b669c7d765b074c0d8850f'
             '5519cdb420a45c15030f99c5c8c73eff322dc24b55d20e0167f0f5e97ebf0a97'
             'd8d1caa5d72c71c6430c2a0d9ce1a674787e9272ccce28b9d5898ca24e60a167'
             'c961006882afb691410c017c239e2c2ef61badb88f15735d37112b513ef0a99d'
