@@ -1,1 +1,5 @@
-git.sh
+*.deb
+*.tar
+*.part
+pkg/*
+src/*
