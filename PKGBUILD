@@ -6,7 +6,7 @@ url='https://wiki.ros.org/ros_environment'
 pkgname='ros-melodic-ros-environment'
 pkgver='1.2.1'
 arch=('any')
-pkgrel=2
+pkgrel=3
 license=('Apache License 2.0')
 
 ros_makedepends=(
@@ -41,6 +41,9 @@ build() {
 
 	# Fix Python2/Python3 conflicts.
 	/usr/share/ros-build-tools/fix-python-scripts.sh -v 3 ${srcdir}/${_dir}
+
+	# Set python version for env hook
+	ROS_PYTHON_VERSION=3
 
 	# Build the project.
 	cmake ${srcdir}/${_dir} \
