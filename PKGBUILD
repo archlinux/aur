@@ -1,16 +1,17 @@
 # Maintainer: XavierCLL <xavier.corredor.llano (a) gmail.com>
+# Contributor: MoDoJ
 
 pkgname=insync-dolphin
-pkgver=1.3.12.36116
+pkgver=3.0.22.40446
 pkgrel=1
-pkgdesc="Dolphin integration for insync (kf5)"
+pkgdesc="Dolphin integration for insync"
 url="https://www.insynchq.com/downloads"
 license=('custom:insync')
 options=(!strip)
 arch=('any')
 depends=("insync" "dolphin")
-source=("${pkgname}-${pkgver}.deb::http://s.insynchq.com/builds/${pkgname}_${pkgver}-precise_all.deb")
-sha256sums=('9f5f961814ae728a01fa6d36db584b21bff568fc74fbbaca5b5425f5ddb57b58')
+source=("${pkgname}-${pkgver}.deb::http://s.insynchq.com/builds/${pkgname}_${pkgver}_all.deb")
+sha256sums=('b431e97a77a0c338526552e0bbb65652a90107278734eb4d6fc917cf5f65eed1')
 noextract=("${pkgname}-${pkgver}.deb")
 
 package() {
