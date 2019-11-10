@@ -1,0 +1,22 @@
+pkgbase = livekeys
+	pkgdesc = Computer vision coding environment that displays results in real time
+	pkgver = 1.6.1
+	pkgrel = 1
+	url = https://github.com/live-keys/livekeys
+	arch = x86_64
+	license = LGPL3
+	makedepends = qt5-base
+	makedepends = python-bcolz
+	depends = opencv
+	depends = qt5-quickcontrols
+	depends = qt5-websockets
+	provides = livekeys
+	source = livekeys-1.6.1.tar.gz::https://github.com/live-keys/livekeys/archive/v1.6.1.tar.gz
+	source = https://github.com/livecv/live-pm/archive/master.zip
+	source = livekeys.patch
+	sha256sums = dce9e6b78a068b57ca8dd2a565c21c378effa710634af6e74c5dc0bb94c57f84
+	sha256sums = bcbd550e744ee7a77dadbae265a66c8646108062cdd79836f1eb4a3b1d56d2cd
+	sha256sums = c9bd85f5cde78a312e44ea70ce3ca124bcd50e5eded978071038691169f617c3
+
+pkgname = livekeys
+

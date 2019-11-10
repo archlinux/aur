@@ -1,0 +1,66 @@
+--- project/functions.pri	2019-10-24 10:00:08.000000000 +0200
++++ project/functions.pri	2019-11-10 20:51:51.407572092 +0100
+@@ -64,7 +64,7 @@
+ 
+     LIB_NAME = $$2
+     LIB_INCLUDE_PATH = $$PROJECT_ROOT/lib/$$1/include
+-    !isEmpty($$3):LIB_INCLUDE_PATH=$$3
++    !isEmpty(3):LIB_INCLUDE_PATH=$$3
+ 
+     # use *= instead of += to prevent duplications of link path cofigurations
+     LIBS *= -L$$LIB_PATH
+@@ -93,7 +93,7 @@
+     LIB_NAME = $$2
+     LIB_INCLUDE_PATH = $$PROJECT_ROOT/lib/$$1/include
+     !isEmpty(LIVEKEYS_DEV_PATH):LIB_INCLUDE_PATH = $$LIVEKEYS_DEV_PATH/lib/$$1/include
+-    !isEmpty($$3):LIB_INCLUDE_PATH=$$3
++    !isEmpty(3):LIB_INCLUDE_PATH=$$3
+ 
+     # use *= instead of += to prevent duplications of link path cofigurations
+     LIBS *= -L$$LIB_PATH
+@@ -120,7 +120,7 @@
+ 
+     LIB_NAME = $$2
+     LIB_INCLUDE_PATH = $$PROJECT_ROOT/plugins/$$1/include
+-    !isEmpty($$3):LIB_INCLUDE_PATH=$$3
++    !isEmpty(3):LIB_INCLUDE_PATH=$$3
+ 
+     # use *= instead of += to prevent duplications of link path cofigurations
+     LIBS *= -L$$LIB_PATH
+@@ -187,7 +187,7 @@
+     LIB_NAME = $$2
+     LIB_INCLUDE_PATH = $$libraryIncludePath()/plugins/$$1/include
+ 
+-    !isEmpty($$3):LIB_INCLUDE_PATH=$$3
++    !isEmpty(3):LIB_INCLUDE_PATH=$$3
+ 
+     # use *= instead of += to prevent duplications of link path cofigurations
+     LIBS *= -L$$LIB_PATH
+--- lib/lvbase/src/applicationcontext.cpp	2019-11-10 21:37:50.537329742 +0100
++++ "lib/lvbase/src/applicationcontext copy.cpp"	2019-11-10 21:44:25.662093935 +0100
+@@ -103,7 +103,13 @@
+     m_d->externalPath = applicationPath() + "/external";
+     m_d->librariesPath = applicationPath() + "/libraries";
+     m_d->developmentPath = applicationPath() + "/dev";
+-    m_d->configPath = applicationPath() + "/config";
++
++    QString homePath = ".livekeys";
++    if(!QDir::home().exists(homePath)) {
++        QDir::home().mkdir(homePath);
++    }
++    homePath = QDir::home().absoluteFilePath(homePath);
++    m_d->configPath = homePath.toStdString() + "/config";
+ #endif
+ }
+ 
+--- application/src/main.cpp	2019-11-10 21:53:40.179579879 +0100
++++ "application/src/main copy.cpp"	2019-11-10 21:55:35.496068179 +0100
+@@ -40,6 +40,8 @@
+     QGuiApplication app(argc, argv);
+     QGuiApplication::setApplicationName("Livekeys");
+     QGuiApplication::setApplicationVersion(Livekeys::versionString());
++    QGuiApplication::setOrganizationName("Livekeys");
++    QGuiApplication::setOrganizationDomain("livekeys.io");
+ 
+ //    QtWebEngine::initialize();
+ 
