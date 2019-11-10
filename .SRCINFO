@@ -1,0 +1,42 @@
+pkgbase = linux-clear-preempt-rt
+	pkgdesc = Clear Linux Preempt-RT
+	pkgver = 5.2.21
+	pkgrel = 1
+	url = https://github.com/clearlinux-pkgs/linux-preempt-rt
+	arch = x86_64
+	license = GPL2
+	makedepends = bc
+	makedepends = cpio
+	makedepends = git
+	makedepends = inetutils
+	makedepends = kmod
+	makedepends = libelf
+	makedepends = xmlto
+	options = !strip
+	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.2.21.tar.xz
+	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.2.21.tar.sign
+	source = https://cdn.kernel.org/pub/linux/kernel/projects/rt/5.2/patch-5.2.21-rt13.patch.xz
+	source = clearlinux-preempt-rt::git+https://github.com/clearlinux-pkgs/linux-preempt-rt.git#tag=5.2.21-46
+	source = enable_additional_cpu_optimizations-20190822.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20190822.tar.gz
+	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
+	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
+	sha256sums = 9a8ee3ff75dabffa76141c8dc7529dfbb3ca07888a3708a13f15b412268b3538
+	sha256sums = SKIP
+	sha256sums = 3251dd8f97d5117fe76d29d7eade1725a36bded072488a4e6618c51920462610
+	sha256sums = SKIP
+	sha256sums = 8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5
+
+pkgname = linux-clear-preempt-rt
+	pkgdesc = The Clear Linux Preempt-RT kernel and modules
+	install = linux.install
+	depends = coreutils
+	depends = kmod
+	depends = initramfs
+	optdepends = crda: to set the correct wireless channels of your country
+	optdepends = linux-firmware: firmware images needed for some devices
+	optdepends = modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig
+	provides = WIREGUARD-MODULE
+
+pkgname = linux-clear-preempt-rt-headers
+	pkgdesc = Headers and scripts for building modules for the Clear Linux Preempt-RT kernel
+
