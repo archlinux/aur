@@ -2,7 +2,7 @@
 _name=alex
 pkgname=alexjs
 pkgver=8.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Catch insensitive, inconsiderate writing"
 arch=('any')
 url="https://alexjs.com"
@@ -27,6 +27,6 @@ package() {
 	mv "${pkgdir}"/usr/bin/alex "${pkgdir}"/usr/bin/alexjs
 
 	install -D -m644 \
-		"${srcdir}/package/LICENSE" \
+		"${srcdir}/package/license" \
 		"${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

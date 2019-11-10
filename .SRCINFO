@@ -1,7 +1,7 @@
 pkgbase = alexjs
 	pkgdesc = Catch insensitive, inconsiderate writing
 	pkgver = 8.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://alexjs.com
 	arch = any
 	license = MIT
