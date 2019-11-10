@@ -6,7 +6,7 @@ url='https://wiki.ros.org/ros_environment'
 pkgname='ros-melodic-ros-environment'
 pkgver='1.2.1'
 arch=('any')
-pkgrel=2
+pkgrel=3
 license=('Apache License 2.0')
 
 ros_makedepends=(
