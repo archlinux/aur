@@ -29,7 +29,7 @@ elif [[ $CARCH == 'x86_64' ]]; then
 fi
 
 prepare() {
-	cd ${srcdir}/Xilinx_ISE_DS_Lin_14.7_1015_1
+	cd "${srcdir}"/Xilinx_ISE_DS_Lin_14.7_1015_1
 
 	# Generate a sample batch install file
 	yes | ./bin/$_arch/batchxsetup -samplebatchscript install.txt
@@ -39,31 +39,31 @@ prepare() {
 }
 
 package() {
-	cd ${srcdir}/Xilinx_ISE_DS_Lin_14.7_1015_1
+	cd "${srcdir}"/Xilinx_ISE_DS_Lin_14.7_1015_1
 
 	# Run the installer, agreeing to all the licenses
 	yes | ./bin/$_arch/batchxsetup -batch install.txt
 
 	# Trim the pkgdir path from the installation directory
-	for _file in ${pkgdir}/opt/Xilinx/14.7/ISE_DS/settings*; do
-		sed -i "s!${pkgdir}!!g" $_file
+	for _file in "${pkgdir}"/opt/Xilinx/14.7/ISE_DS/settings*; do
+		sed -i "s!${pkgdir}!!g" "$_file"
 	done
 
 	# Replace ISE's outdated libstdc++.so with symlinks to the system version
-	for _dir in ${pkgdir}/opt/Xilinx/14.7/ISE_DS/{ISE,common}/lib/${_arch}; do
-		rm ${_dir}/libstdc++.so{,.6,.6.0.8}
-		ln -s /usr/lib/libstdc++.so ${_dir}/libstdc++.so
-		ln -s libstdc++.so ${_dir}/libstdc++.so.6
-		ln -s libstdc++.so ${_dir}/libstdc++.so.6.0.8
-		ln -s /usr/lib/libstdc++.so.5 ${_dir}/libstdc++.so.5
-		ln -s /usr/lib/libXm.so.4 ${_dir}/libXm.so.3
+	for _dir in "${pkgdir}"/opt/Xilinx/14.7/ISE_DS/{ISE,common}/lib/${_arch}; do
+		rm "${_dir}"/libstdc++.so{,.6,.6.0.8}
+		ln -s /usr/lib/libstdc++.so "${_dir}"/libstdc++.so
+		ln -s libstdc++.so "${_dir}"/libstdc++.so.6
+		ln -s libstdc++.so "${_dir}"/libstdc++.so.6.0.8
+		ln -s /usr/lib/libstdc++.so.5 "${_dir}"/libstdc++.so.5
+		ln -s /usr/lib/libXm.so.4 "${_dir}"/libXm.so.3
 	done
 
 	# Fix for the license configuration manager
 	# https://forums.xilinx.com/t5/Installation-and-Licensing/ISE-14-7-on-CentOS-6-4-missing-libQt-Network-so-workaround/td-p/379325
-	install -d ${pkgdir}/usr/lib
-	ln -s /usr/lib/libQtNetwork.so ${pkgdir}/usr/lib/libQt_Network.so
+	install -d "${pkgdir}"/usr/lib
+	ln -s /usr/lib/libQtNetwork.so "${pkgdir}"/usr/lib/libQt_Network.so
 
 	# Install .desktop file
-	install -Dm 644 ${srcdir}/xilinx-ise-${_bits}.desktop ${pkgdir}/usr/share/applications/xilinx-ise.desktop
+	install -Dm 644 "${srcdir}"/xilinx-ise-${_bits}.desktop "${pkgdir}"/usr/share/applications/xilinx-ise.desktop
 }
