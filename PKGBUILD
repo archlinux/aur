@@ -1,6 +1,6 @@
 pkgname=mingw-w64-paraview
 _majordotminor=5.7
-pkgver=${_majordotminor}.0
+pkgver=${_majordotminor}.1
 _pkgver=${pkgver}
 pkgrel=1
 pkgdesc='Parallel Visualization Application using VTK (mingw-w64)'
@@ -11,7 +11,7 @@ depends=('mingw-w64-qt5-xmlpatterns' 'mingw-w64-qt5-tools' 'mingw-w64-boost' 'mi
 makedepends=('mingw-w64-cmake' 'mingw-w64-eigen' 'mingw-w64-utf8cpp' 'mingw-w64-wine' 'protobuf')
 options=('!buildflags' '!strip' 'staticlibs')
 source=("http://paraview.org/files/v${_majordotminor}/ParaView-v${_pkgver}.tar.gz")
-sha256sums=('8d39889668c10e4890a9bd3775675af981cf919a56b8d3a2397347308375d5e6')
+sha256sums=('ecf0c09283c0e5987be30e131b42022d7bcfef4fbddb03d4078e9cf635141838')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
