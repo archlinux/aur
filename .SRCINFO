@@ -9,6 +9,7 @@ pkgbase = dmenu-wayland-git
 	makedepends = git
 	makedepends = meson
 	makedepends = ninja
+	depends = wayland
 	depends = wayland-protocols
 	depends = cairo
 	depends = pango

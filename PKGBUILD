@@ -15,7 +15,7 @@ pkgdesc="Wayland port of a generic menu for X"
 url="https://github.com/nyyManni/dmenu-wayland"
 arch=('i686' 'x86_64')
 license=('MIT')
-depends=('wayland-protocols' 'cairo' 'pango' 'libxkbcommon' 'glib2')
+depends=('wayland' 'wayland-protocols' 'cairo' 'pango' 'libxkbcommon' 'glib2')
 makedepends=('git' 'meson' 'ninja')
 # Not providing "dmenu" is intented: it does not provide a "dmenu" command, it's "dmenu-wl"
 provides=(dmenu-wayland dmenu)
