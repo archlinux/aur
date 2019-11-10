@@ -1,12 +1,16 @@
 # Maintainer: 0x9fff00 <0x9fff00+git@protonmail.ch>
 # Contributor: Alad Wenter <alad@archlinux.org>
+# Contributor: John Jenkins twodopeshaggy@gmail.com
+# Contributor: Sean Anderson seanga2@gmail.com
 # Contributor: Benjamin Chrétien <chretien at lirmm dot fr>
+
+# Based on python-kitchen in [community]
 
 _name=kitchen
 pkgname=python2-$_name
 pkgver=1.2.6
-pkgrel=2
-pkgdesc='Kitchen contains a cornucopia of useful code'
+pkgrel=3
+pkgdesc='Useful snippets of python code'
 arch=('any')
 url="https://github.com/fedora-infra/$_name"
 license=('LGPL')

@@ -1,7 +1,7 @@
 pkgbase = python2-kitchen
-	pkgdesc = Kitchen contains a cornucopia of useful code
+	pkgdesc = Useful snippets of python code
 	pkgver = 1.2.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/fedora-infra/kitchen
 	arch = any
 	license = LGPL
