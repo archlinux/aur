@@ -4,7 +4,7 @@
 ## ATTENTION!! You will need to download the trial and/or obtain a license from Harrison Consoles. Then, drop all appropriate files in the root with the PKGBUILD directory. Also, uncomment the lines that reference the license file if you want an easy install process.
 
 pkgname=mixbus
-pkgver=5.2.191
+pkgver=5.3.0
 pkgrel=1
 pkgdesc="Harrison Mixbus - Digital Audio Workstation"
 arch=('i686' 'x86_64')
@@ -41,14 +41,14 @@ cp -r $srcdir/Mixbus_$(uname -m)-$pkgver/* $pkgdir/opt/$pkgname
 msg2 "Installing Mixbus Licenses..."
 for plugin in essentials ${pkgname}5 xt_bc3 xt_ds xt_eg xt_eq xt_lc xt_mc xt_me xt_sc xt_tg; do
 	if [ -f ../license_key_harrison_$plugin.txt ]; then
-		install -D ../license_key_harrison_$plugin.txt $pkgdir/opt/$pkgname/license_key_harrison_$plugin.txt
+		install -Dm644 ../license_key_harrison_$plugin.txt $pkgdir/usr/local/share/license_key_harrison_$plugin.txt
 	fi
 done
 
 msg2 "Installing X42 Plugin Licenses"
 for plugin in eq whirl; do
 	if [ -f ../x42-$plugin.txt ]; then
-		install -D ../x42-$plugin.txt $pkgdir/opt/$pkgname/x42-$plugin.txt
+		install -Dm644 ../x42-$plugin.txt $pkgdir/usr/local/share/x42-$plugin.txt
 	fi
 done
 
