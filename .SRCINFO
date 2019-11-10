@@ -1,0 +1,14 @@
+pkgbase = aws-ssm-session-manager-plugin
+	pkgdesc = The AWS Systems Manager - Session Manager Plugin
+	pkgver = 1.1.35.0
+	pkgrel = 1
+	url = https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with.html
+	install = aws-ssm-session-manager-plugin.install
+	arch = x86_64
+	license = unknown
+	provides = aws-ssm-session-manager-plugin
+	source = session-manager-plugin-1.1.35.0-1.deb::https://s3.amazonaws.com/session-manager-downloads/plugin/latest/ubuntu_64bit/session-manager-plugin.deb
+	sha256sums = 4361bd8bf6ad7c61ebec38577a01e2db4b1f2b126d99a05e83aa6dbb647e2907
+
+pkgname = aws-ssm-session-manager-plugin
+
