@@ -3,6 +3,8 @@
 # Contributor: Daniel Wallace <danielwallace at gtmanfred dot com>
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
+# Based on python-docopt in [community]
+
 _name=docopt
 pkgname=python2-$_name
 pkgver=0.6.2
