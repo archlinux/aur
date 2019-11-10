@@ -2,7 +2,7 @@
 
 pkgname=rav1e-git
 pkgver=r2093.241065b9
-pkgrel=1
+pkgrel=2
 pkgdesc="The fastest and safest AV1 encoder"
 arch=('i686' 'x86_64')
 url="https://github.com/xiph/rav1e"
@@ -14,6 +14,7 @@ makedepends=('git' 'rust'
 # aom dependency
 provides=('rav1e')
 conflicts=('rav1e')
+options=('staticlibs')
 source=("git+https://github.com/xiph/rav1e.git")
 sha256sums=('SKIP')
 
