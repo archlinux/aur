@@ -1,14 +1,14 @@
 # Maintainer: Hork <aliyuchang33@outlook.com>
 # Contributer: ArielAxionL <i at axionl dot me>
 pkgname=qv2ray-dev-git
-pkgver=1.3.8.0.r0.g4179cf2
-pkgrel=4
+pkgver=1.3.8.0.r4f49dad
+pkgrel=1
 pkgdesc="Qt cross platform v2ray GUI client (Dev branch build release)"
 arch=('x86_64')
 url="https://github.com/lhy0403/Qv2ray"
 license=('GPL3')
 depends=('hicolor-icon-theme' 'grpc' 'qt5-charts')
-makedepends=('git' 'make' 'qt5-tools' 'protobuf' 'which' 'gcc')
+makedepends=('git' 'make' 'qt5-tools' 'protobuf' 'which' 'gcc' 'qt5-declarative')
 optdepends=('v2ray' 'v2ray-domain-list-community' 'v2ray-geoip')
 provides=('qv2ray')
 conflicts=('qv2ray')
@@ -18,7 +18,7 @@ sha512sums=('SKIP')
 
 pkgver() {
     cd ${pkgname}
-    git describe --long --tags "$(git rev-list --tags --max-count=1)" | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    printf "%s.r%s" $(git describe --long --tags | sed 's/v//;s/-\S*//g') $(git rev-parse --short HEAD)
 }
 
 prepare() {
