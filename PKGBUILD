@@ -9,7 +9,7 @@ license=("custom:cc-by-sa-4.0" "custom")
 install=$pkgname.install
 optdepends=(
 "goldendict: for using this dictionary"
-"goldendict-qt4: for using this dictionary"
+"goldendict-qt5-git: for using this dictionary"
 )
 makedepends=(
 "pyglossary"
