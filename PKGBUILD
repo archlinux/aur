@@ -4,7 +4,7 @@
 # _commit=76fea495eda10a2a7edef93609d176ac141c648e
 pkgname=aws-ssm-session-manager-plugin
 pkgver=1.1.35.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The AWS Systems Manager - Session Manager Plugin"
 arch=('x86_64')
 url="https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with.html"
@@ -19,7 +19,7 @@ install=$pkgname.install
 package() {
 
 	### Extract the deb
-	ar xv session-manager-plugin.deb
+	ar xv session-manager-plugin-$pkgver-$pkgrel.deb
 
 	### Extract the data
 	bsdtar xfz data.tar.gz
