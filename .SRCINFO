@@ -1,6 +1,6 @@
 pkgbase = qdigidoc4
 	pkgdesc = DigiDoc4 Client is an application for digitally signing and encrypting documents; the software includes functionality to manage Estonian ID-card - change pin codes, update certificates etc.
-	pkgver = 4.2.2.51
+	pkgver = 4.2.3.60
 	pkgrel = 1
 	url = http://www.id.ee/
 	arch = x86_64
@@ -19,8 +19,8 @@ pkgbase = qdigidoc4
 	provides = qesteidutil
 	conflicts = qdigidoc
 	conflicts = qesteidutil
-	source = https://installer.id.ee/media/ubuntu/pool/main/q/qdigidoc4/qdigidoc4_4.2.2.51.orig.tar.xz
-	sha256sums = 2a27523b3f98aeabc3cd8b135c5dc1e624acd97246be07b52a721c1ac3773de2
+	source = https://installer.id.ee/media/ubuntu/pool/main/q/qdigidoc4/qdigidoc4_4.2.3.60.orig.tar.xz
+	sha256sums = 3c90cbc109518a117f0732280d3207af63930f4491fa7d23348851df3b949b46
 
 pkgname = qdigidoc4
 
