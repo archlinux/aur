@@ -31,6 +31,7 @@ mk_add_options MOZ_MAKE_FLAGS=-j${X%.*}
 fi
 
 ac_add_options "MOZ_ALLOW_LEGACY_EXTENSIONS=1"
+export MOZ_REQUIRE_SIGNING=0
 
 ac_add_options MOZ_PGO=1
 ac_add_options --enable-strip
@@ -42,7 +43,6 @@ ac_add_options --libdir=/opt
 ac_add_options --enable-rust-simd # on x86 requires SSE2
 
 ac_add_options --enable-gold
-#ac_add_options --disable-jemalloc
 ac_add_options --enable-lto
 ac_add_options --enable-release
 ac_add_options --enable-application=browser
