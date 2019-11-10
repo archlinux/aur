@@ -1,7 +1,7 @@
 pkgbase = python-iso639
 	pkgdesc = Python library for ISO 639 standard
 	pkgver = 0.4.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/noumar/iso639
 	arch = any
 	license = AGPL3
