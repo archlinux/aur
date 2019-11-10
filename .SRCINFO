@@ -1,15 +1,16 @@
 pkgbase = mt7630-pcie-wifi-dkms
 	pkgdesc = MT7630e PCIe Wifi (DKMS)
-	pkgver = 2.1.0
+	pkgver = 2.1.0.r12.5193c55
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/neurobin/MT7630E
-	arch = x86_64
+	arch = any
 	license = GPL
+	makedepends = git
 	depends = dkms
 	optdepends = linux-headers: If running standard kernel, otherwise find matching headers for your kernel
-	source = https://github.com/neurobin/MT7630E/archive/096b17e82c8ccf3c577638a3f773490bf3ec90ea.tar.gz
-	md5sums = 681c6059c313376fae0be59b49472ed9
+	source = git+https://github.com/neurobin/MT7630E.git#commit=5193c55a055aed723bc78f77cc0b853582026eb6
+	sha256sums = SKIP
 
 pkgname = mt7630-pcie-wifi-dkms
 
