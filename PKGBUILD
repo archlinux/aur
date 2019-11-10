@@ -1,7 +1,7 @@
 # Maintainer: Janek Thomaschewski <janek@thomaschewski.dev>
 
 pkgname=homematic-manager-bin
-pkgver=2.6.1
+pkgver=2.6.2
 pkgrel=1
 pkgdesc='Homematic Device Configuration and Administration'
 arch=('x86_64')
@@ -12,7 +12,7 @@ provides=('homematic-manager')
 conflicts=('homematic-manager')
 options=('!strip')
 source=("https://github.com/hobbyquaker/homematic-manager/releases/download/${pkgver}/homematic-manager_${pkgver}_amd64.deb")
-sha256sums=('4ea0d431de50589bd6d777cacdfe0a7e30f01800c9ad5ed959506ad396aeea93')
+sha256sums=('38efa9f2ad79ddf00bf4011efb8538a7cb2684eb64481bd03b2357f2abe4bf2f')
 
 package() {
   # extract package data
