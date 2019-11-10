@@ -1,0 +1,19 @@
+pkgbase = qrencode-git
+	pkgdesc = A fast and compact QR Code encoding library
+	pkgver = 4.0.2.r43.g13b159f
+	pkgrel = 1
+	url = https://fukuchi.org/works/qrencode/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	makedepends = sdl
+	depends = glibc
+	depends = libpng
+	provides = qrencode
+	conflicts = qrencode
+	source = git+https://github.com/fukuchi/libqrencode.git
+	sha256sums = SKIP
+
+pkgname = qrencode-git
+
