@@ -3,18 +3,18 @@
 
 _pkgname=mintstick
 pkgname=$_pkgname-git
-pkgver=r177.860ea2c
-pkgrel=2
+pkgver=r198.09aa95f
+pkgrel=1
 pkgdesc="Format or write images to usb-sticks (Linux Mint tool)"
 arch=('any')
 url="https://github.com/linuxmint/mintstick"
 license=('GPL')
-depends=('desktop-file-utils' 'dosfstools' 'python2-dbus' 'python2-gobject' 'python2-pyparted' 'python2-xapp' 'udisks2' 'xapps')
+depends=('desktop-file-utils' 'dosfstools' 'python-dbus' 'python-gobject' 'python-pyparted' 'python-xapp' 'udisks2' 'xapps')
 optdepends=('dosfstools: FAT filesystems' 'e2fsprogs: Ext filesystems' 'ntfs-3g: NTFS filesystems')
 makedepends=('git')
 provides=($_pkgname)
 conflicts=($_pkgname)
-source=($pkgname::git://github.com/linuxmint/mintstick.git)
+source=($pkgname::git+https://github.com/linuxmint/mintstick.git)
 md5sums=(SKIP)
 
 pkgver() {
@@ -30,13 +30,14 @@ prepare() {
 
 package() {
   cd $pkgname
+
+  install -d "$pkgdir/usr/share"
+  cp -a share/nemo "$pkgdir/usr/share"
+
   install -d "$pkgdir/usr/bin"
   install -d "$pkgdir/usr/share/applications"
   install -d "$pkgdir/usr/share/kde4/apps/solid/actions"
-  install -d "$pkgdir/usr/share/polkit-1/actions"
-
-  cp -rp share/nemo "$pkgdir/usr/share"
-
+  install -d "$pkgdir/usr/share/polkit/org.linuxmint.im.policy"
   ./install.sh
 }
 
