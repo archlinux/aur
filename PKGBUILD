@@ -4,28 +4,21 @@
 
 _pkgname=repo
 pkgname=repo-git
-pkgver=1.13.2.r0.g13f323b2
+pkgver=1.13.7.1.r0.gb466854b
 pkgrel=1
 pkgdesc="The Multiple Git Repository Tool"
 arch=('any')
 url="https://source.android.com/source/developing.html"
 license=('Apache')
-depends=('git' 'python2')
+depends=('git' 'python')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("$_pkgname::git+https://gerrit.googlesource.com/git-repo"
-        "python2.patch")
-sha256sums=('SKIP'
-            'bdb224e0e04060d6ec7e2fcc95bcf09ad46585e0ff65d914050192b60ce990d4')
+source=("$_pkgname::git+https://gerrit.googlesource.com/git-repo")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
-  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-build() {
   cd "$_pkgname"
-  patch -Np1 -i "$srcdir"/python2.patch
+  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {

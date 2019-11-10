@@ -1,18 +1,16 @@
 pkgbase = repo-git
 	pkgdesc = The Multiple Git Repository Tool
-	pkgver = 1.13.2.r0.g13f323b2
+	pkgver = 1.13.7.1.r0.gb466854b
 	pkgrel = 1
 	url = https://source.android.com/source/developing.html
 	arch = any
 	license = Apache
 	depends = git
-	depends = python2
+	depends = python
 	provides = repo
 	conflicts = repo
 	source = repo::git+https://gerrit.googlesource.com/git-repo
-	source = python2.patch
 	sha256sums = SKIP
-	sha256sums = bdb224e0e04060d6ec7e2fcc95bcf09ad46585e0ff65d914050192b60ce990d4
 
 pkgname = repo-git
 
