@@ -59,9 +59,9 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=4.14
-_minor=152
+_minor=153
 _srcname=linux-${_major}
-_clr=${_major}.150-72
+_clr=${_major}.152-75
 pkgbase=linux-clear-lts2017
 pkgver=${_major}.${_minor}
 pkgrel=1
@@ -97,7 +97,7 @@ prepare() {
         echo "${pkgbase#linux}" > localversion.20-pkgname
 
     ### Add Clearlinux patches
-        for i in $(grep '^Patch' ${srcdir}/${pkgbase}/linux-lts2017.spec | grep -Ev '^Patch0127' | sed -n 's/.*: //p'); do
+        for i in $(grep '^Patch' ${srcdir}/${pkgbase}/linux-lts2017.spec | grep -Ev '^Patch0127|^Patch0130' | sed -n 's/.*: //p'); do
         msg2 "Applying patch ${i}..."
         patch -Np1 -i "$srcdir/${pkgbase}/${i}"
         done
@@ -319,7 +319,7 @@ done
 
 sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'SKIP'
-            '36ad97ba38c7d63c3047d76b24f79231d5942c6011bd4947cde1703861ab4e86'
+            '9f2770d110e36ad7de90e1ff0760de4f52b4d2d376b59d6dbde5f2b79e2fdb54'
             'SKIP'
             '8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5')
 
