@@ -1,0 +1,14 @@
+pkgbase = sway-launcher-desktop
+	pkgdesc = A launcher menu made for the Sway window manager made with bash and the amazing fzf.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Biont/sway-launcher-desktop
+	arch = x86_64
+	license = GPL
+	depends = sway
+	depends = fzf
+	source = sway-launcher-desktop-1.0.0.tar.gz::https://github.com/Biont/sway-launcher-desktop/archive/v1.0.0.tar.gz
+	md5sums = a0bce97a26b7086bac33bc8701f723e2
+
+pkgname = sway-launcher-desktop
+
