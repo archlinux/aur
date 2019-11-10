@@ -1,6 +1,6 @@
 pkgbase = mixbus32c
 	pkgdesc = Harrison Mixbus - Digital Audio Workstation (32C Version)
-	pkgver = 5.2.191
+	pkgver = 5.3.0
 	pkgrel = 1
 	url = http://harrisonconsoles.com/site/mixbus32c.html
 	arch = i686
