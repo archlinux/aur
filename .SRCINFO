@@ -1,5 +1,5 @@
 pkgbase = fail2web-git
-	pkgdesc = REST server for fail2ban
+	pkgdesc = fail2web is an fail2ban GUI powered by fail2rest
 	pkgver = r67.0a7d4bb
 	pkgrel = 1
 	url = https://github.com/Sean-Der/fail2web
