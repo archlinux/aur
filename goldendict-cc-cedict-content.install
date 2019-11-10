@@ -1,0 +1,11 @@
+pre_install() {
+  echo
+  echo '    ********************************************************'
+  echo '    *           If your GoldenDict instance does not       *'
+  echo '    *    recognise new dictionaries then add the system    *'
+  echo '    *               config path in the settings:           *'
+  echo '    *                                                      *'
+  echo '    *              /usr/share/goldendict/content           *'
+  echo '    ********************************************************'
+  echo
+}

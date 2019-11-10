@@ -1,0 +1,18 @@
+pkgbase = goldendict-cc-cedict-content
+	pkgdesc = CC-CEDICT Chinese-English Dictionary for Goldendict
+	pkgver = 1.0_r20191109
+	pkgrel = 1
+	url = https://www.mdbg.net/chinese/dictionary?page=cedict
+	install = goldendict-cc-cedict-content.install
+	arch = any
+	license = CC-SA-4.0
+	makedepends = pyglossary
+	optdepends = goldendict: for using this dictionary
+	optdepends = goldendict-qt4: for using this dictionary
+	source = cc-cedict.png
+	source = https://www.mdbg.net/chinese/export/cedict/cedict_1_0_ts_utf-8_mdbg.txt.gz
+	md5sums = 729e16b892fb38a6d1c5853330191e93
+	md5sums = SKIP
+
+pkgname = goldendict-cc-cedict-content
+

@@ -1,0 +1,13 @@
+*
+
+# git files
+!.gitignore
+
+# package files
+!PKGBUILD
+!.SRCINFO
+
+# installed files
+!LICENSE
+!*.install
+!*.png
